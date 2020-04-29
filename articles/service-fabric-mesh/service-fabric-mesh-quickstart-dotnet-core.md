@@ -1,16 +1,16 @@
 ---
-title: Quickstart - Azure Service Fabric Mesh'e bir web uygulaması dağıtma
-description: Bu hızlı başlangıç, visual studio kullanarak bir ASP.NET Core web sitesi oluşturmanızı ve Azure Service Fabric Mesh'te nasıl yayınlayacağınızı gösterir.
+title: Hızlı başlangıç-bir Web uygulamasını Azure Service Fabric ağı 'na dağıtma
+description: Bu hızlı başlangıçta, ASP.NET Core bir Web sitesi oluşturma ve Visual Studio kullanarak Azure Service Fabric ağı 'nda yayımlama işlemlerinin nasıl yapılacağı gösterilmektedir.
 author: dkkapur
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 276f8860f407693a7ff08048399fa6edf16aaf0a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75459076"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Hızlı Başlangıç: Web uygulaması oluşturup Azure Service Fabric Mesh’e dağıtma
@@ -25,7 +25,7 @@ Bir Azure aboneliğine sahip olmanız gerekir. Azure aboneliğiniz yoksa başlam
 
 ## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric Mesh projesi oluşturma
 
-Visual Studio'u açın ve **Dosya** > **Yeni** > **Projesi'ni seçin...**
+Visual Studio 'yu açın ve **Dosya** > **Yeni** > **proje..** . öğesini seçin
 
 **Yeni Proje** iletişim kutusunun en üstündeki **Ara** kutusuna `mesh` yazın. **Service Fabric Mesh Uygulaması** şablonunu seçin. (Bu şablonu görmüyorsanız [geliştirme ortamınızı ayarlama](service-fabric-mesh-howto-setup-developer-environment-sdk.md) bölümünde anlatılan şekilde Mesh SDK'sını ve VS araçları önizleme sürümünü yüklediğinizden emin olun.) 
 
@@ -65,7 +65,7 @@ Service Fabric Mesh projenizi Azure’da yayımlamak için Visual Studio’da **
 
 ![Visual Studio Service Fabric Mesh yayımla iletişim kutusu](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-publish-dialog.png)
 
-Azure hesabınızı ve aboneliğinizi seçin. **Konum**seçin. Bu makalede **Doğu ABD** kullanılmıştır.
+Azure hesabınızı ve aboneliğinizi seçin. Bir **konum**seçin. Bu makalede **Doğu ABD** kullanılmıştır.
 
 **Kaynak grubu** bölümünde **\<Yeni Kaynak Grubu Oluştur...>** öğesini seçin. **Kaynak Grubu Oluştur** iletişim kutusu görüntülenir. **Kaynak grubu adı**’nı ve **Konum**’u ayarlayın.  Bu hızlı başlangıçta, **Doğu ABD** konumu kullanılmış ve grup **sfmeshTutorial1RG** olarak adlandırılmıştır (kuruluşunuzda aynı aboneliği kullanan birden fazla kişi varsa benzersiz bir kaynak grubu adı seçin).  **Oluştur**'a tıklayarak kaynak grubunu oluşturun ve yayımla iletişim kutusuna geri dönün.
 

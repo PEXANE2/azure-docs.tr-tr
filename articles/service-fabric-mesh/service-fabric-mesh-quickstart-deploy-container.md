@@ -1,15 +1,15 @@
 ---
-title: Quickstart - Azure Servis Kumaş Örgü'ye Merhaba Dünyası Dağıt
+title: Hızlı başlangıç-Merhaba Dünya Azure Service Fabric ağı 'na dağıtma
 description: Bu hızlı başlangıçta, bir Service Fabric Mesh uygulamasının Azure Service Fabric Mesh’e nasıl dağıtıldığı gösterilir.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.openlocfilehash: ce897b6e0e9d6a0b9b672907a64f4683f907b677
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75458965"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
@@ -47,9 +47,9 @@ az group create --name myResourceGroup --location eastus
 az mesh deployment create --resource-group myResourceGroup --template-uri https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
-Önceki komut [linux.json şablonunu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)kullanarak bir Linux uygulaması dağıtıyor. Bir Windows uygulaması dağıtmak istiyorsanız, [windows.json şablonu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json)kullanın. Windows kapsayıcı görüntüleri Linux kapsayıcı görüntülerinden büyüktür ve dağıtılması daha uzun sürebilir.
+Yukarıdaki komut, [Linux. JSON şablonunu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.linux.json)kullanarak bir Linux uygulaması dağıtır. Bir Windows uygulaması dağıtmak istiyorsanız, [Windows. JSON şablonunu](https://raw.githubusercontent.com/Azure-Samples/service-fabric-mesh/master/templates/helloworld/helloworld.windows.json)kullanın. Windows kapsayıcı görüntüleri Linux kapsayıcı görüntülerinden büyüktür ve dağıtılması daha uzun sürebilir.
 
-Bu komut, aşağıda gösterilen bir JSON parçacığı üretecektir. JSON ```outputs``` çıktıbölümü altında, özelliği ```publicIPAddress``` kopyalayın.
+Bu komut, aşağıda gösterilen bir JSON kod parçacığı oluşturur. JSON çıktısının ```outputs``` bölümü altında, ```publicIPAddress``` özelliğini kopyalayın.
 
 ```json
 "outputs": {
@@ -60,7 +60,7 @@ Bu komut, aşağıda gösterilen bir JSON parçacığı üretecektir. JSON ```ou
 }
 ```
 
-Bu bilgiler ARM ```outputs``` şablonundaki bölümden gelir. Aşağıda gösterildiği gibi, bu bölümde ortak IP adresini almak için Ağ Geçidi kaynağı başvurur. 
+Bu bilgiler ARM şablonundaki ```outputs``` bölümünden gelir. Aşağıda gösterildiği gibi, bu bölüm genel IP adresini getirmek için ağ geçidi kaynağına başvurur. 
 
 ```json
   "outputs": {

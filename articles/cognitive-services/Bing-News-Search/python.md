@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Python ve Bing Haberler Arama REST API ile bir haber araması gerçekleştirin'
+title: 'Hızlı başlangıç: Python ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
 titleSuffix: Azure Cognitive Services
-description: Python'u kullanarak Bing Haberler Arama REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: Python kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448487"
 ---
-# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Quickstart: Python ve Bing Haberler Arama REST API kullanarak bir haber araması gerçekleştirin
+# <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: Python ve Bing Haber Arama REST API kullanarak bir haber arama gerçekleştirme
 
-Bing Haberler Arama API'sine ilk aramanızı yapmak ve Bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması API'ye bir arama sorgusu gönderir ve sonuçları işler. Bu uygulama Python'da yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Haber Arama API'si ilk çağrısını yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir arama sorgusu gönderir ve sonuçları işler. Bu uygulama Python 'da yazıldığı sırada API, bir veya daha fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir.
 
-Bu kod örneğini [MyBinder'da](https://mybinder.org) Jupyter dizüstü bilgisayar olarak başlat Bağlayıcı rozetine tıklayarak çalıştırabilirsiniz: 
+Bu kod örneğini, [myciltçi](https://mybinder.org) üzerinde bir Jupyter Not defteri olarak çalıştırabilirsiniz. 
 
-[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
+[![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingNewsSearchAPI.ipynb)
 
-Bu örnek için kaynak kodu [github'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)da mevcuttur.
+Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingNewsSearchv7.py)' da de mevcuttur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -34,7 +34,7 @@ Bu örnek için kaynak kodu [github'da](https://github.com/Azure-Samples/cogniti
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve istek modüllerini içe aktarın. Abonelik anahtarınız, bitiş noktanız ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve istek modülünü içeri aktarın. Abonelik anahtarınız, uç nokta ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```python
 import requests
@@ -46,16 +46,16 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
 
 ### <a name="create-parameters-for-the-request"></a>İstek için parametreler oluşturma
 
-1. Anahtar olarak kullanarak `"Ocp-Apim-Subscription-Key"` abonelik anahtarınızı yeni bir sözlük için ekleyin. Arama parametreleriniz için de aynısını yapın.
+1. Abonelik anahtarınızı anahtar olarak kullanarak `"Ocp-Apim-Subscription-Key"` yeni bir sözlüğe ekleyin. Arama parametreleriniz için aynısını yapın.
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
     params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```
 
-## <a name="send-a-request-and-get-a-response"></a>İstek gönderme ve yanıt alma
+## <a name="send-a-request-and-get-a-response"></a>İstek gönderme ve yanıt edinme
 
-1. Abonelik anahtarınızı kullanarak Bing Görsel Arama API'sını ve son adımda oluşturulan sözlük nesnelerini aramak için istek kitaplığını kullanın.
+1. Abonelik anahtarınızı ve son adımda oluşturulan sözlük nesnelerini kullanarak Bing Görsel Arama API'si çağırmak için istekler kitaplığını kullanın.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -63,7 +63,7 @@ search_url = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
     search_results = response.json()
     ```
 
-2. `search_results`Bir JSON nesnesi olarak API yanıtı içerir. Yanıtta yer alan makalelerin açıklamalarına erişin.
+2. `search_results`API 'den bir JSON nesnesi olarak gelen yanıtı içerir. Yanıtta yer alan makalelerin açıklamalarına erişin.
     
     ```python
     descriptions = [article["description"] for article in search_results["value"]]

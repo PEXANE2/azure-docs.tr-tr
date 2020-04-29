@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: C# ile haber araması yapın - Bing Haberler Arama REST API'
+title: 'Hızlı başlangıç: C# ile bir haber araması gerçekleştirin Bing Haber Arama REST API'
 titleSuffix: Azure Cognitive Services
-description: C#'ı kullanarak Bing Haberler Arama REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: C# kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,21 +12,21 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448470"
 ---
-# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Quickstart: C# ve Bing Haberler Arama REST API'sını kullanarak haber arama
+# <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: C# ve Bing Haber Arama REST API kullanarak haberleri arama
 
-Bing Haberler Arama API'sine ilk aramanızı yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması API'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğin tam kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)bulunabilir.
+Bing Haber Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe tam kod [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingNewsSearchv7.cs)'da bulunabilir.
 
 Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Visual Studio 2017 veya sonrası](https://www.visualstudio.com/downloads/)herhangi bir baskı .
+* Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
 * NuGet paketi olarak kullanılabilen [Json.NET](https://www.newtonsoft.com/json) çerçevesi.
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
 
@@ -34,7 +34,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio'da yeni bir C# konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
     
     ```csharp
     using System;
@@ -44,14 +44,14 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
     using System.Collections.Generic;
     ```
 
-2. API uç noktası, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+2. API uç noktası, abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     const string accessKey = "enter key here";
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Bing Haberler Arama yanıtını biçimlendirmek için bir yapı oluşturma
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Bing Haber Arama yanıtını biçimlendirmek için bir yapı oluşturma
 
 1. Görüntü arama sonuçlarını ve JSON üst bilgi bilgilerini içerecek bir `SearchResult` yapısı tanımlayın.
 
@@ -65,7 +65,7 @@ Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle 
 
 ## <a name="create-and-handle-a-news-search-request"></a>Haber arama isteği oluşturma ve işleme
 
-API’ye çağrı yapmak için `BingNewsSearch` adlı bir yöntem oluşturun ve dönüş türünü daha önce oluşturduğunuz `SearchResult` yapısına ayarlayın. Yöntemde aşağıdaki adımları gerçekleştirin:
+API’ye çağrı yapmak için `BingNewsSearch` adlı bir yöntem oluşturun ve dönüş türünü daha önce oluşturduğunuz `SearchResult` yapısına ayarlayın. Yönteminde aşağıdaki adımları gerçekleştirin:
 
 1. Arama isteği için URI oluşturun. `toSearch` arama teriminin dizeye eklenmeden önce biçimlendirilmesi gerektiğini unutmayın.
 
@@ -104,9 +104,9 @@ API’ye çağrı yapmak için `BingNewsSearch` adlı bir yöntem oluşturun ve 
     return searchResult;
     ```
 
-## <a name="process-the-response"></a>Yanıtı işleme
+## <a name="process-the-response"></a>Yanıtı işle
 
-1. Ana yöntemde `BingNewsSearch()` çağrısı yapın ve döndürülen yanıtı depolayın. Ardından JSON’ı bir nesnede seri durumdan çıkarın. Daha sonra yanıtdeğerlerini görüntüleyebilirsiniz.
+1. Ana yöntemde `BingNewsSearch()` çağrısı yapın ve döndürülen yanıtı depolayın. Ardından JSON’ı bir nesnede seri durumdan çıkarın. Daha sonra yanıtın değerlerini görüntüleyebilirsiniz.
 
     ```csharp
     SearchResult result = BingNewsSearch(searchTerm);
@@ -115,7 +115,7 @@ API’ye çağrı yapmak için `BingNewsSearch` adlı bir yöntem oluşturun ve 
     Console.WriteLine(jsonObj["value"][0])
     ```
 
-## <a name="json-response"></a>JSON Yanıt
+## <a name="json-response"></a>JSON yanıtı
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 

@@ -9,20 +9,20 @@ author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
 ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75659890"
 ---
 >[!IMPORTANT]
->Oluşturduğunuz kaynakları diğer Azure Machine Learning öğreticileri ve nasıl yapılan makaleler için ön koşul olarak kullanabilirsiniz.
+>Diğer Azure Machine Learning öğreticileri ve nasıl yapılır makaleleri için önkoşul olarak oluşturduğunuz kaynakları kullanabilirsiniz.
 
-### <a name="delete-everything"></a>Her şeyi silme
+### <a name="delete-everything"></a>Her şeyi sil
 
-Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir ücret ödememek için tüm kaynak grubunu silin.
+Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir ücret ödemeniz için tüm kaynak grubunu silin.
 
-1. Azure portalında, pencerenin sol tarafındaki **Kaynak gruplarını** seçin.
+1. Azure portal, pencerenin sol tarafındaki **kaynak grupları** ' nı seçin.
  
    ![Azure portalında kaynak grubunu silme](./media/aml-ui-cleanup/delete-resources.png)
 
@@ -30,20 +30,20 @@ Oluşturduğunuz herhangi bir şeyi kullanmayı planlamıyorsanız, herhangi bir
 
 1. **Kaynak grubunu sil**'i seçin.
 
-Kaynak grubunu silmek, tasarımcıda oluşturduğunuz tüm kaynakları da siler. 
+Kaynak grubunun silinmesi, tasarımcıda oluşturduğunuz tüm kaynakları da siler. 
 
-### <a name="delete-individual-assets"></a>Tek tek varlıkları silme
+### <a name="delete-individual-assets"></a>Tek tek varlıkları Sil
 
-Denemenizi oluşturduğunuz tasarımcıda, varlıkları seçerek ve sonra **Sil** düğmesini seçerek tek tek varlıkları silin.
+Denemenizi oluşturduğunuz tasarımcıda, her bir varlığı seçerek ve ardından **Sil** düğmesini seçerek tek tek varlıkları silin.
 
-Burada oluşturduğunuz işlem hedefi, kullanılmadığı zaman otomatik olarak sıfır düğümlere *otomatik ölçeklendirilir.* Bu eylem ücretleri en aza indirmek için alınır.İşlem hedefini silmek istiyorsanız aşağıdaki adımları izleyin:
+Burada oluşturduğunuz işlem hedefi, kullanılmadıysa *otomatik olarak sıfır düğümlere otomatik olarak ölçeklendirilir* . Bu eylem, ücretleri en aza indirmek için yapılır.İşlem hedefini silmek istiyorsanız şu adımları uygulayın:
 
-![Varlıkları silme](./media/aml-ui-cleanup/delete-asset.png)
+![Varlıkları Sil](./media/aml-ui-cleanup/delete-asset.png)
 
-Her veri kümesini seçerek ve **KayıtTan Çıkar'ı**seçerek çalışma alanınızdan veri kümelerini çıkarabilirsiniz.
+Her bir veri kümesini seçip **kayıt Sil**' i seçerek, veri kümelerinin kaydını çalışma alanınızdan silebilirsiniz.
 
-![Veri kümesini kayıt dışı bırak](./media/aml-ui-cleanup/unregister-dataset1225.png)
+![Veri kümesinin kaydını sil](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
-Bir veri kümesini silmek için Azure portalını veya Azure Depolama Gezgini'ni kullanarak depolama hesabına gidin ve bu varlıkları el ile silin.
+Bir veri kümesini silmek için Azure portal veya Azure Depolama Gezgini kullanarak depolama hesabına gidin ve bu varlıkları el ile silin.
 
 

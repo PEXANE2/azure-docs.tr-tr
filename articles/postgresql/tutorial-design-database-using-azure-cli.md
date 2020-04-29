@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: PostgreSQL için bir Azure Veritabanı Tasarla - Tek Sunucu - Azure CLI'
-description: Bu öğretici, Azure CLI kullanarak PostgreSQL - Single Server için ilk Azure Veritabanınızı nasıl oluşturup, yapılandıracak ve sorgulayacağımız gösterir.
+title: 'Öğretici: PostgreSQL için Azure veritabanı tasarlama-tek sunucu-Azure CLı'
+description: Bu öğreticide, Azure CLı kullanarak ilk PostgreSQL için Azure veritabanı-tek sunucu oluşturma, yapılandırma ve sorgulama işlemlerinin nasıl yapılacağı gösterilir.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,13 +9,13 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.openlocfilehash: c79e64fddaf404b459dd2215e4a2e9236f1bc221
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75459997"
 ---
-# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: PostgreSQL için bir Azure Veritabanı Tasarla - Azure CLI kullanarak Tek Sunucu 
+# <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>Öğretici: Azure CLı kullanarak bir PostgreSQL için Azure veritabanı tasarlama-tek sunucu 
 Bu öğreticide, şunları nasıl yapacağınızı öğrenmek için Azure CLI (komut satırı arabirimi) ve diğer yardımcı programları kullanırsınız:
 > [!div class="checklist"]
 > * PostgreSQL için Azure Veritabanı sunucusu oluşturma
@@ -46,12 +46,12 @@ az group create --name myresourcegroup --location westus
 ## <a name="create-an-azure-database-for-postgresql-server"></a>PostgreSQL için Azure Veritabanı sunucusu oluşturma
 [az postgres server create](/cli/azure/postgres/server) komutunu kullanarak [PostgreSQL sunucusu için Azure SQL Veritabanı ](overview.md) oluşturun. Sunucu, grup olarak yönetilen bir veritabanı grubu içerir. 
 
-Aşağıdaki örnekte, `myresourcegroup` adlı kaynak grubunuzda `myadmin` sunucu yöneticisi oturum adına sahip `mydemoserver` adlı bir sunucu oluşturulur. Bir sunucunun adı DNS adıyla eşleşir ve bu nedenle sunucunun Azure’da genel olarak benzersiz olması gerekir. `<server_admin_password>` değerini kendi değerinizle değiştirin. Bu genel amaçlı, 2 vCores ile Gen 5 sunucu.
+Aşağıdaki örnekte, `myresourcegroup` adlı kaynak grubunuzda `myadmin` sunucu yöneticisi oturum adına sahip `mydemoserver` adlı bir sunucu oluşturulur. Bir sunucunun adı DNS adıyla eşleşir ve bu nedenle sunucunun Azure’da genel olarak benzersiz olması gerekir. `<server_admin_password>` değerini kendi değerinizle değiştirin. 2 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 --version 9.6
 ```
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
-+ `--sku-name B_Gen5_2`Temel, Gen 5 ve 2 vCores haritaları.
++ `--sku-name B_Gen5_2`Temel, Gen 5 ve 2 sanal çekirdekler ile eşlenir.
 + `--sku-name GP_Gen5_32` Genel Amaçlı, Gen 5 ve 32 sanal çekirdekle eşleşir.
 + `--sku-name MO_Gen5_2` Bellek için iyileştirilmiş, Gen 5 ve 2 sanal çekirdekle eşleşir.
 
@@ -132,7 +132,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    ```
 
    > [!TIP]
-   > Postgres'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL `%40`kullanıcı adı ile @ oturum açmasını kodlar. Örneğin psql bağlantı dizesi,
+   > Postgres 'e bağlanmak için bir URL yolu kullanmayı tercih ediyorsanız, URL, Kullanıcı adında @ işaretini ile `%40`kodlayın. Örneğin, psql için bağlantı dizesi,
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -142,7 +142,7 @@ Sonuç JSON biçimindedir. **administratorLogin** ve **fullyQualifiedDomainName*
    CREATE DATABASE mypgsqldb;
    ```
 
-3. İstemde, yeni oluşturulan veritabanı **mypgsqldb**bağlantı geçmek için aşağıdaki komutu yürütmek:
+3. Komut isteminde, bağlantıyı yeni oluşturulan **mypgsqldb**veritabanına geçirmek için aşağıdaki komutu yürütün:
    ```sql
    \c mypgsqldb
    ```

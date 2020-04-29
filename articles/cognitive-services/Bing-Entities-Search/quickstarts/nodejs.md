@@ -1,7 +1,7 @@
 ---
-title: "Quickstart: Node.js kullanarak REST API'ye arama isteği gönderme - Bing Entity Search"
+title: 'Hızlı başlangıç: node. js kullanarak REST API arama isteği gönderme-Bing Varlık Arama'
 titleSuffix: Azure Cognitive Services
-description: C#'ı kullanarak Bing Entity Search REST API'sine istek göndermek ve JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: C# kullanarak Bing Varlık Arama REST API isteği göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 12/11/2019
 ms.author: aahi
 ms.openlocfilehash: f3585e96376a25721f478f9dd621835e75e3c600
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448624"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: Node.js kullanarak Bing Entity Search REST API'ye arama isteği gönderme
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: node. js kullanarak Bing Varlık Arama REST API bir arama isteği gönderme
 
-Bing Entity Search API'ye ilk aramanızı yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması API'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örnek için kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js)kullanılabilir.
+Bing Varlık Arama API'si ilk çağrısını yapmak ve JSON yanıtını görüntülemek için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API 'ye bir haber arama sorgusu gönderir ve yanıtı görüntüler. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js)' da kullanılabilir.
 
-Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,7 +40,7 @@ Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyuml
     let https = require ('https');
     ```
 
-2. API bitiş noktası, abonelik anahtarınız ve arama sorgusu için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+2. API uç noktası, abonelik anahtarınız ve arama sorgunuz için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     let subscriptionKey = 'ENTER YOUR KEY HERE';
@@ -51,14 +51,14 @@ Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyuml
     let q = 'italian restaurant near me';
     ```
 
-3. Pazar ve sorgu parametrelerinizi ' `query`adı verilen bir dize ye ekleme. Sorgunuzu url'de şifrelediğinden `encodeURI()`emin olun.
+3. Pazar ve sorgu parametrelerinizi adlı `query`bir dizeye ekleyin. Sorgunuzu URL ile `encodeURI()`kodlayıp kodlayadığınızdan emin olun.
     ```javascript 
     let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
     ```
 
 ## <a name="handle-and-parse-the-response"></a>Yanıtı işleme ve ayrıştırma
 
-1. Parametre olarak `response_handler` HTTP çağrısı `response`alan adlandırılmış bir işlev tanımlayın. Bu işlev içinde aşağıdaki adımları gerçekleştirin:
+1. Parametresi olarak `response`, http `response_handler` çağrısını alan adlı bir işlev tanımlayın. Bu işlev içinde aşağıdaki adımları gerçekleştirin:
 
     1. JSON yanıtının gövdesini içerecek bir değişken tanımlayın.  
         ```javascript
@@ -74,7 +74,7 @@ Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyuml
         });
         ```
 
-    3. Bir **son** bayrak sinyali verildiğinde, JSON'u ayrıştırın ve yazdırın.
+    3. Bir **bitiş** bayrağına işaret EDILDIĞINDE, JSON 'ı ayrıştırır ve yazdırın.
 
         ```javascript
         response.on ('end', function () {
@@ -85,10 +85,10 @@ Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyuml
 
 ## <a name="send-a-request"></a>İstek gönderme
 
-1. Arama isteği `Search` göndermek için çağrılan bir işlev oluşturun. Içinde, aşağıdaki adımları gerçekleştirin.
+1. Arama isteği göndermek için `Search` adlı bir işlev oluşturun. Burada, aşağıdaki adımları gerçekleştirin.
 
-   1. İstek parametrelerinizi içeren bir JSON `Get` nesnesi oluşturun: yöntem için kullanın ve ana bilgisayar ve yol bilgilerinizi ekleyin. Abonelik anahtarınızı üstbilgiye `Ocp-Apim-Subscription-Key` ekleyin. 
-   2. Daha `https.request()` önce oluşturulan yanıt işleyicisi ve arama parametrelerinizle isteği göndermek için kullanın.
+   1. İstek parametrelerinizi içeren bir JSON nesnesi oluşturun: yöntemi `Get` için kullanın ve ana bilgisayar ve yol bilgilerinizi ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. 
+   2. Daha `https.request()` önce oluşturulan yanıt işleyicisine ve arama parametreleriniz ile isteği göndermek için kullanın.
     
       ```javascript
       let Search = function () {
@@ -106,7 +106,7 @@ Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyuml
       }
       ```
 
-2. `Search()` İşlevi ara.
+2. `Search()` İşlevi çağırın.
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 
@@ -176,7 +176,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek sayfalık bir web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
+> [Tek sayfalı web uygulaması oluşturma](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Varlık Arama API'si nedir?](../overview.md )
-* [Bing Varlık Arama API Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+* [Bing Varlık Arama API'si Başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)

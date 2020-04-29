@@ -1,5 +1,5 @@
 ---
-title: Öğretici- Bir uygulamayı Azure Hizmet Kumaş Kafesi'ne dağıtma
+title: Öğretici-Azure Service Fabric ağı 'na uygulama dağıtma
 description: Bu öğreticide, şablon kullanarak Service Fabric Mesh'e uygulama dağıtmayı öğreneceksiniz.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75494931"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
@@ -38,7 +38,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 * [Docker'ı yükleyin](service-fabric-mesh-howto-setup-developer-environment-sdk.md#install-docker)
 
@@ -100,7 +100,7 @@ Kayıt defteri oluşturulduğunda aşağıdakilere benzer bir çıkış görürs
 
 ## <a name="push-the-images-to-azure-container-registry"></a>Azure Container Registry’ye görüntüleri gönderme
 
-Bu öğreticide örnek olarak Yapılacaklar Listesi örnek uygulaması kullanılmıştır.  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) hizmetlerine ait kapsayıcı görüntüleri Docker Hub'da mevcuttur. Visual Studio'da uygulamanın nasıl oluşturulabildiğini öğrenmek için [Service Fabric Mesh web uygulaması oluşturun'a](service-fabric-mesh-tutorial-create-dotnetcore.md) bakın. Service Fabric Mesh, Windows veya Linux Docker kapsayıcılarıyla çalışabilir.  Linux kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Linux containers** (Linux kapsayıcılarına geç) öğesini seçin.  Windows kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Windows containers** (Windows kapsayıcılarına geç) öğesini seçin.
+Bu öğreticide örnek olarak Yapılacaklar Listesi örnek uygulaması kullanılmıştır.  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) hizmetlerine ait kapsayıcı görüntüleri Docker Hub'da mevcuttur. Visual Studio 'da uygulama oluşturma hakkında bilgi için bkz. [Service Fabric kafes Web uygulaması oluşturma](service-fabric-mesh-tutorial-create-dotnetcore.md) . Service Fabric Mesh, Windows veya Linux Docker kapsayıcılarıyla çalışabilir.  Linux kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Linux containers** (Linux kapsayıcılarına geç) öğesini seçin.  Windows kapsayıcılarıyla çalışıyorsanız Docker'da **Switch to Windows containers** (Windows kapsayıcılarına geç) öğesini seçin.
 
 ACR örneğine görüntü gönderebilmeniz için önce bir kapsayıcı görüntünüz olmalıdır. Yerel kapsayıcı görüntünüz yoksa [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) komutunu kullanarak [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) ve [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) görüntülerini Docker Hub'dan çekin.
 
@@ -130,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Azure Konteyner Kayıt Defteri'nde oturum açın.
+Azure Container Registry oturum açın.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -351,7 +351,7 @@ Uygulamayı dağıtmak için şu komutu çalıştırın:
 az mesh deployment create --resource-group myResourceGroup --template-file c:\temp\mesh_rp.windows.json --parameters c:\temp\mesh_rp.windows.parameters.json
 ```
 
-Bu komut, aşağıda gösterilen bir JSON parçacığı üretecektir. JSON ```outputs``` çıktıbölümü altında, özelliği ```publicIPAddress``` kopyalayın.
+Bu komut, aşağıda gösterilen bir JSON kod parçacığı oluşturur. JSON çıktısının ```outputs``` bölümü altında, ```publicIPAddress``` özelliğini kopyalayın.
 
 ```json
 "outputs": {
@@ -362,7 +362,7 @@ Bu komut, aşağıda gösterilen bir JSON parçacığı üretecektir. JSON ```ou
 }
 ```
 
-Bu bilgiler ARM ```outputs``` şablonundaki bölümden gelir. Aşağıda gösterildiği gibi, bu bölümde ortak IP adresini almak için Ağ Geçidi kaynağı başvurur. 
+Bu bilgiler ARM şablonundaki ```outputs``` bölümünden gelir. Aşağıda gösterildiği gibi, bu bölüm genel IP adresini getirmek için ağ geçidi kaynağına başvurur. 
 
 ```json
   "outputs": {
