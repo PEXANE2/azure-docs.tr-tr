@@ -1,6 +1,6 @@
 ---
 title: Azure AD ile kimlik sağlama nedir? | Microsoft Belgeleri
-description: Kimlik sağlama genel görünümünü açıklar.
+description: Kimlik sağlamaya genel bakış açıklanmaktadır.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,57 +12,57 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76712544"
 ---
 # <a name="what-is-identity-provisioning"></a>Kimlik sağlama nedir?
 
-Günümüzde işletmeler ve şirketler şirket içi ve bulut uygulamalarının daha fazla bir karışımı haline gelmektedir.  Kullanıcılar, hem şirket içinde hem de bulutta uygulamalara erişim gerektirir. Bu çeşitli uygulamalar (şirket içi ve bulut) arasında tek bir kimliğe sahip olmak gerekir.
+Bugün, işletmeler ve şirketler, şirket içi ve bulut uygulamalarının daha fazla ve daha fazlasını haline geliyor.  Kullanıcıların hem şirket içinde hem de bulutta uygulamalara erişmesi gerekir. Bu çeşitli uygulamalar (Şirket içi ve bulut) genelinde tek bir kimliğe sahip olması gerekir.
 
-Sağlama, belirli koşullara dayalı bir nesne oluşturma, nesneyi güncel tutma ve koşullar artık karşılanmadığında nesneyi silme işlemidir. Örneğin, kuruluşunuza yeni bir kullanıcı katıldığında, bu kullanıcı İk sistemine girilir.  Bu noktada, sağlama bulutta, Active Directory'de ve kullanıcının erişmesi gereken farklı uygulamalarda karşılık gelen bir kullanıcı hesabı oluşturabilir.  Bu, kullanıcının çalışmaya başlamasını ve ilk gün ihtiyaç duydukları uygulamalara ve sistemlere erişmesine olanak tanır. 
+Sağlama, belirli koşullara göre nesne oluşturma, nesneyi güncel tutma ve koşullar artık karşılanmadıklarından nesneyi silme işlemidir. Örneğin, yeni bir Kullanıcı kuruluşunuza katıldığında, bu kullanıcı HR sistemine girilir.  Bu noktada, sağlama bulutta karşılık gelen bir kullanıcı hesabı, Active Directory ve kullanıcının erişmesi gereken farklı uygulamalar oluşturabilir.  Bu, kullanıcının çalışmaya başlamasını ve gün içinde ihtiyaç duydukları uygulamalara ve sistemlere erişmesini sağlar. 
 
 ![bulut sağlama](media/what-is-provisioning/cloud1.png)
 
-Azure Etkin Dizini ile ilgili olarak, sağlama aşağıdaki önemli senaryolara bölünebilir.  
+Azure Active Directory açısından, sağlama aşağıdaki temel senaryolara ayrılabilir.  
 
-- **[İk odaklı sağlama](#hr-driven-provisioning)**  
+- **[HR odaklı sağlama](#hr-driven-provisioning)**  
 - **[Uygulama sağlama](#app-provisioning)**  
 - **[Dizin sağlama](#directory-provisioning)** 
 
-## <a name="hr-driven-provisioning"></a>İk odaklı sağlama
+## <a name="hr-driven-provisioning"></a>HR odaklı sağlama
 
 ![bulut sağlama](media/what-is-provisioning/cloud2.png)
 
-İk'dan buluta sağlama, İk sisteminizdeki bilgilere dayalı nesnelerin (kullanıcılar, roller, gruplar, vb.) oluşturulmasını içerir.  
+HR 'dan buluta sağlama, HR sisteminizdeki bilgilere göre nesnelerin (kullanıcılar, roller, gruplar, vb.) oluşturulmasını içerir.  
 
-En yaygın senaryo, yeni bir çalışan şirketinize katıldığında İk sistemine girilmesidir.  Bu gerçekleştiğinde, buluta göre sağlanırlar.  Bu durumda, Azure AD.  İk'dan temin aşağıdaki senaryoları kapsayabilir. 
+En yaygın senaryo, yeni bir çalışan şirketinize katıldığında bu durumda HR sistemine girilmiştir.  Bu durumda, bulut tarafından sağlanır.  Bu durumda, Azure AD.  HR 'dan sağlama aşağıdaki senaryoları kapsayabilir. 
 
-- **Yeni çalışanların işe alınması** - Bulut İk'ya yeni bir çalışan eklendiğinde, Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak bir kullanıcı hesabı oluşturulur ve e-posta adresinin Cloud HR'ye yazılması yla birlikte.
-- **Çalışan özniteliği ve profil güncelleştirmeleri** - Bir çalışan kaydı bulut İk'da (adı, unvanı veya yöneticisi gibi) güncelleştirildiğinde, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak güncelleştirilir.
-- **Çalışan sonlandırmaları** - Bir çalışanın bulut İk'da sonlandırılması durumunda, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak devre dışı bırakılır.
-- **Çalışan yeniden işe alma -** Bir çalışan bulut İk'da yeniden işe alındığında, eski hesabı otomatik olarak yeniden etkinleştirilebilir veya (tercihinize bağlı olarak) Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarına yeniden sağlanabilir.
+- **Yeni çalışanların işe** Alım-bulut HR 'a yeni bir çalışan eklendiğinde, bir kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak oluşturulur. Bu, e-posta adresi Ile bulut HR 'ye geri yazılır.
+- **Çalışan özniteliği ve profil güncelleştirmeleri** -bir çalışan kaydı bulut HR (ad, başlık veya yönetici gibi) güncelleştirildiğinde, kullanıcı hesabı Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak güncelleştirilir.
+- **Çalışan sonlandırmaları** -bulut HR ' de bir çalışan sonlandırıldığında, kullanıcı hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamalarında otomatik olarak devre dışı bırakılır.
+- **Çalışan rehires** -bir çalışan bulut HR 'da yeniden çalıştırıldığında, eski hesapları Active Directory, Azure Active Directory ve isteğe bağlı olarak Office 365 ve Azure AD tarafından desteklenen diğer SaaS uygulamaları için otomatik olarak yeniden etkinleştirilebilir veya yeniden sağlanabilir.
 
 
 ## <a name="app-provisioning"></a>Uygulama sağlama
 
 ![bulut sağlama](media/what-is-provisioning/cloud3.png)
 
-Azure Etkin Dizini'nde (Azure AD) **[uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** terimi, kullanıcıların erişilmesi gereken bulut uygulamalarında otomatik olarak kullanıcı kimlikleri ve rolleri oluşturmayı ifade eder. Kullanıcı kimlikleri oluşturmaya ek olarak, otomatik sağlama, durum veya roller değiştikçe kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Sık karşılaşılan senaryolar arasında Bir Azure AD kullanıcısına [Dropbox,](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial) [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)ve daha fazlası gibi uygulamalarda yardımcı olmak yer almaktadır.
+Azure Active Directory (Azure AD) ' de, **[uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** terimi, kullanıcıların erişmesi gereken bulut uygulamalarında kullanıcı kimliklerinin ve rollerinin otomatik olarak oluşturulmasını ifade eder. Otomatik sağlama, kullanıcı kimliklerinin oluşturulmasına ek olarak, durum veya rol değişikliği olarak Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bir Azure AD kullanıcısını [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)gibi uygulamalarda sağlamayı içerir.
 
 ## <a name="directory-provisioning"></a>Dizin sağlama
 
 ![bulut sağlama](media/what-is-provisioning/cloud4.png)
 
-Şirket içi sağlama, şirket içi kaynaklardan (Active Directory gibi) Azure AD'ye sağlama yı içerir.  
+Şirket içi sağlama, şirket içi kaynaklardan (Active Directory benzer) Azure AD 'ye sağlamayı içerir.  
 
-En yaygın senaryo, Active Directory (AD)'deki bir kullanıcı Azure AD'de sağlandığında olur.
+En yaygın senaryo, Active Directory (AD) ' deki bir Kullanıcı Azure AD 'ye sağlandığında olur.
 
-Bu, Azure AD Connect eşitleme, Azure AD Connect bulut sağlama ve Microsoft Identity Manager tarafından gerçekleştirilmiştir. 
+Bu, bulut sağlama ve Microsoft Identity Manager Azure AD Connect Azure AD Connect eşitleme tarafından gerçekleştirilir. 
  
 ## <a name="next-steps"></a>Sonraki adımlar 
 
 - [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
-- [Bulut sağlama yı yükleme](how-to-install.md)
+- [Bulut sağlamasını yükler](how-to-install.md)
