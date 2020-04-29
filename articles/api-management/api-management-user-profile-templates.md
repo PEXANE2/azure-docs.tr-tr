@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi'nde kullanıcı profili şablonları | Microsoft Dokümanlar
-description: Azure API Yönetimi'ndeki geliştirici portalındaki Kullanıcı Profili sayfalarının içeriğini nasıl özelleştireceğimiz öğrenin.
+title: Azure API Management Kullanıcı profili şablonları | Microsoft Docs
+description: Azure API Management 'de geliştirici portalındaki Kullanıcı profili sayfalarının içeriğini özelleştirmeyi öğrenin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4e3e430874f9d5b64f717b6ebb1cacb0eae46b1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243958"
 ---
-# <a name="user-profile-templates-in-azure-api-management"></a>Azure API Yönetimi'nde kullanıcı profili şablonları
-Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içeriklerini yapılandıran bir dizi şablon kullanarak özelleştirme olanağı sağlar. [DotLiquid](http://dotliquidmarkup.org/) sözdizimini ve [Tasarımcılar için DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)gibi seçtiğiniz düzenleyiciyi ve sağlanan yerelleştirilmiş [String kaynakları,](api-management-template-resources.md#strings) [Glyph kaynakları](api-management-template-resources.md#glyphs)ve Sayfa [denetimleri](api-management-page-controls.md)kümesini kullanarak, bu şablonları kullanarak uygun gördüğünüz sayfaların içeriğini yapılandırmak için büyük bir esnekliğe sahipsiniz.  
+# <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management Kullanıcı profili şablonları
+Azure API Management, içeriğini yapılandıran bir dizi şablon kullanarak geliştirici portalı sayfalarının içeriğini özelleştirmenizi sağlar. Bu şablonları kullanarak uygun gördüğünüz şekilde, sayfanın içeriğini yapılandırmak için [dotsıvı](http://dotliquidmarkup.org/) Syntax ve seçtiğiniz düzenleyiciyi ( [Örneğin, tasarımcılar için dotlikit](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) ve sağlanan bir yerelleştirilmiş [dize kaynakları](api-management-template-resources.md#strings), [glif kaynakları](api-management-template-resources.md#glyphs)ve [sayfa denetimleri](api-management-page-controls.md)ile birlikte kullanabilirsiniz.  
   
- Bu bölümdeki şablonlar, geliştirici portalındaki Kullanıcı profil sayfalarının içeriğini özelleştirmenize olanak tanır.  
+ Bu bölümdeki şablonlar, geliştirici portalındaki Kullanıcı profili sayfalarının içeriğini özelleştirmenizi sağlar.  
   
 -   [Profil](#Profile)  
   
@@ -34,16 +34,16 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 -   [Hesap bilgilerini güncelleştir](#UpdateAccountInfo)  
   
 > [!NOTE]
->  Örnek varsayılan şablonlar aşağıdaki belgelere dahildir, ancak sürekli iyileştirmeler nedeniyle değiştirilebilir. İstenilen tek tek şablonlara yönlendirerek geliştirici portalındaki canlı varsayılan şablonları görüntüleyebilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)bakın.  
+>  Örnek varsayılan şablonlar aşağıdaki belgelere dahil edilmiştir, ancak sürekli iyileştirmeler nedeniyle değişikliğe tabidir. Canlı varsayılan şablonları, istenen ayrı şablonlara giderek Geliştirici Portalında görüntüleyebilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>Profil  
- **Profil** şablonu, geliştirici portalındaki kullanıcı profili sayfasının kullanıcı profili bölümünü özelleştirmenize olanak tanır.  
+##  <a name="profile"></a><a name="Profile"></a>Profilinizi  
+ **Profil** şablonu, geliştirici portalındaki Kullanıcı profili sayfasının Kullanıcı profili bölümünü özelleştirmenizi sağlar.  
   
- ![Kullanıcı Profili Sayfası](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM Kullanıcı Profili Sayfası")  
+ ![Kullanıcı profili sayfası](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APıM Kullanıcı profili sayfası")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -98,12 +98,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Bu şablon herhangi bir [sayfa denetimi](api-management-page-controls.md)kullanmayabilir.  
+ Bu şablon, herhangi bir [sayfa denetimini](api-management-page-controls.md)kullanamaz.  
   
 ### <a name="data-model"></a>Veri modeli  
   
 > [!NOTE]
->  [Profil,](#Profile) [Uygulamalar](#Applications)ve [Abonelikler şablonları](#Subscriptions) aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
+>  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
@@ -111,12 +111,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  
-|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analitiğini görüntülemek için göreli URL.|  
-|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının toplanması.|Geçerli kullanıcının abonelikleri.|  
-|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının toplanması.|Geçerli kullanıcının uygulamaları.|  
-|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirmek için göreli URL.|  
-|`changeNameOrEmailUrl`|string|Geçerli kullanıcının adını ve e-postasını değiştirmek için göreli URL.|  
-|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremeyeceği.|  
+|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analizlerini görüntülemek için göreli URL.|  
+|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının koleksiyonu.|Geçerli Kullanıcı için abonelikler.|  
+|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli kullanıcının uygulamaları.|  
+|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirecek göreli URL.|  
+|`changeNameOrEmailUrl`|string|Geçerli Kullanıcı için adı ve e-postayı değiştirecek göreli URL.|  
+|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremediğini belirtir.|  
 |`isSystemUser`|boole|Geçerli kullanıcının yerleşik [gruplardan](api-management-key-concepts.md#groups)birinin üyesi olup olmadığı.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
@@ -185,10 +185,10 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>Abonelik  
- **Abonelikler** şablonu, geliştirici portalındaki kullanıcı profili sayfasının abonelikler bölümünü özelleştirmenize olanak tanır.  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a>Aboneliklerin  
+ **Abonelikler** şablonu, geliştirici portalındaki Kullanıcı profili sayfasının abonelikler bölümünü özelleştirmenizi sağlar.  
   
- ![Kullanıcı Abonelik Sayfası](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM Kullanıcı Abonelik Sayfası")  
+ ![Kullanıcı aboneliği sayfası](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APıM Kullanıcı aboneliği sayfası")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -319,12 +319,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ### <a name="controls"></a>Denetimler  
  Bu şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
--   [abonelik iptal](api-management-page-controls.md#subscription-cancel)  
+-   [abonelik-iptal et](api-management-page-controls.md#subscription-cancel)  
   
 ### <a name="data-model"></a>Veri modeli  
   
 > [!NOTE]
->  [Profil,](#Profile) [Uygulamalar](#Applications)ve [Abonelikler şablonları](#Subscriptions) aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
+>  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
@@ -332,12 +332,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  
-|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analitiğini görüntülemek için göreli URL.|  
-|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının toplanması.|Geçerli kullanıcının abonelikleri.|  
-|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının toplanması.|Geçerli kullanıcının uygulamaları.|  
-|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirmek için göreli URL.|  
-|`changeNameOrEmailUrl`|string|Geçerli kullanıcının adını ve e-postasını değiştirmek için göreli URL.|  
-|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremeyeceği.|  
+|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analizlerini görüntülemek için göreli URL.|  
+|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının koleksiyonu.|Geçerli Kullanıcı için abonelikler.|  
+|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli kullanıcının uygulamaları.|  
+|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirecek göreli URL.|  
+|`changeNameOrEmailUrl`|string|Geçerli Kullanıcı için adı ve e-postayı değiştirecek göreli URL.|  
+|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremediğini belirtir.|  
 |`isSystemUser`|boole|Geçerli kullanıcının yerleşik [gruplardan](api-management-key-concepts.md#groups)birinin üyesi olup olmadığı.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
@@ -406,10 +406,10 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>Uygulama  
- **Uygulamalar** şablonu, geliştirici portalındaki kullanıcı profili sayfasının abonelikler bölümünü özelleştirmenize olanak tanır.  
+##  <a name="applications"></a><a name="Applications"></a>Uygulamaları  
+ **Uygulamalar** şablonu, geliştirici portalındaki Kullanıcı profili sayfasının abonelikler bölümünü özelleştirmenizi sağlar.  
   
- ![Kullanıcı Hesabı Uygulamaları Sayfası](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM Kullanıcı Hesabı Uygulamaları Sayfası")  
+ ![Kullanıcı hesabı uygulamaları sayfası](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APıM Kullanıcı hesabı uygulamaları sayfası")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -482,12 +482,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ### <a name="controls"></a>Denetimler  
  Bu şablon aşağıdaki [sayfa denetimlerini](api-management-page-controls.md)kullanabilir.  
   
--   [uygulama eylemleri](api-management-page-controls.md#app-actions)  
+-   [Uygulama-eylemler](api-management-page-controls.md#app-actions)  
   
 ### <a name="data-model"></a>Veri modeli  
   
 > [!NOTE]
->  [Profil,](#Profile) [Uygulamalar](#Applications)ve [Abonelikler şablonları](#Subscriptions) aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
+>  [Profil](#Profile), [uygulamalar](#Applications)ve [abonelikler](#Subscriptions) şablonları aynı veri modelini paylaşır ve aynı şablon verilerini alır.  
   
 |Özellik|Tür|Açıklama|  
 |--------------|----------|-----------------|  
@@ -495,12 +495,12 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 |`lastName`|string|Geçerli kullanıcının soyadı.|  
 |`companyName`|string|Geçerli kullanıcının şirket adı.|  
 |`addresserEmail`|string|Geçerli kullanıcının e-posta adresi.|  
-|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analitiğini görüntülemek için göreli URL.|  
-|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının toplanması.|Geçerli kullanıcının abonelikleri.|  
-|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının toplanması.|Geçerli kullanıcının uygulamaları.|  
-|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirmek için göreli URL.|  
-|`changeNameOrEmailUrl`|string|Geçerli kullanıcının adını ve e-postasını değiştirmek için göreli URL.|  
-|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremeyeceği.|  
+|`developersUsageStatisticsLink`|string|Geçerli kullanıcının analizlerini görüntülemek için göreli URL.|  
+|`subscriptions`|[Abonelik](api-management-template-data-model-reference.md#Subscription) varlıklarının koleksiyonu.|Geçerli Kullanıcı için abonelikler.|  
+|`applications`|[Uygulama](api-management-template-data-model-reference.md#Application) varlıklarının koleksiyonu.|Geçerli kullanıcının uygulamaları.|  
+|`changePasswordUrl`|string|Geçerli kullanıcının parolasını değiştirecek göreli URL.|  
+|`changeNameOrEmailUrl`|string|Geçerli Kullanıcı için adı ve e-postayı değiştirecek göreli URL.|  
+|`canChangePassword`|boole|Geçerli kullanıcının parolasını değiştirip değiştiremediğini belirtir.|  
 |`isSystemUser`|boole|Geçerli kullanıcının yerleşik [gruplardan](api-management-key-concepts.md#groups)birinin üyesi olup olmadığı.|  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
@@ -570,9 +570,9 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ```  
   
 ##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a>Hesap bilgilerini güncelleştir  
- **Hesap bilgilerini güncelleştir** şablonu, geliştirici portalındaki **Hesap Bilgilerini Güncelleştir** sayfasını özelleştirmenize olanak tanır.  
+ **Hesap bilgilerini güncelleştir** şablonu, geliştirici portalındaki **Hesap bilgilerini güncelleştir** sayfasını özelleştirmenize olanak sağlar.  
   
- ![Kullanıcı Hesabı Bilgi Sayfası Geliştirici Portalı Şablonları](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APIM Kullanıcı Hesabı Bilgi Sayfası Geliştirici Portalı Şablonları")  
+ ![Kullanıcı hesabı bilgileri sayfası geliştirici portalı şablonları](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "APıM Kullanıcı hesabı bilgileri sayfası geliştirici portalı şablonları")  
   
 ### <a name="default-template"></a>Varsayılan şablon  
   
@@ -607,10 +607,10 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ```  
   
 ### <a name="controls"></a>Denetimler  
- Bu şablon herhangi bir [sayfa denetimi](api-management-page-controls.md)kullanmayabilir.  
+ Bu şablon, herhangi bir [sayfa denetimini](api-management-page-controls.md)kullanamaz.  
   
 ### <a name="data-model"></a>Veri modeli  
- [Kullanıcı hesabı bilgi](api-management-template-data-model-reference.md#UserAccountInfo) varlığı.  
+ [Kullanıcı hesabı bilgileri](api-management-template-data-model-reference.md#UserAccountInfo) varlığı.  
   
 ### <a name="sample-template-data"></a>Örnek şablon verileri  
   
@@ -627,4 +627,4 @@ Azure API Yönetimi, geliştirici portal sayfalarının içeriğini, içerikleri
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](api-management-developer-portal-templates.md)bakın.
+Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](api-management-developer-portal-templates.md).

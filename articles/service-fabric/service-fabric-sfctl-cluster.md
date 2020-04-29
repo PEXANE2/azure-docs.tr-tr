@@ -1,15 +1,15 @@
 ---
-title: Azure Servis Kumaş CLI- sfctl kümesi
-description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Kümeleri yönetmek için komutların listesini içerir.
+title: Azure Service Fabric CLı-sfctl kümesi
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Kümeleri yönetmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906143"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
@@ -19,439 +19,439 @@ Service Fabric kümelerini seçin, yönetin ve çalıştırın.
 
 |Komut|Açıklama|
 | --- | --- |
-| kod sürümleri | Service Fabric kümesinde sağlanan kumaş kodu sürümlerinin listesini alır. |
-| config sürümleri | Service Fabric kümesinde bulunan kumaş config sürümlerinin listesini alır. |
-| Sağlık | Service Fabric kümesinin durumunu alır. |
+| kod sürümleri | Service Fabric kümesinde sağlanan doku kodu sürümlerinin bir listesini alır. |
+| yapılandırma-sürümler | Service Fabric kümesinde sağlanan yapı yapılandırma sürümlerinin bir listesini alır. |
+| denetiminde | Service Fabric kümesinin sistem durumunu alır. |
 | bildirim | Service Fabric küme bildirimini alın. |
-| işlem iptal | Kullanıcı kaynaklı bir hata işlemini iptal eder. |
-| operasyon listesi | Sağlanan girdi tarafından filtre uygulanmış kullanıcı kaynaklı hata işlemlerinin listesini alır. |
-| Sağlanması | Hizmet Kumaşı kümesinin kod veya yapılandırma paketlerini sağlama. |
-| kurtarma sistemi | Hizmet Kumaşı kümesine, şu anda çoğunluk kaybına bağlı olan sistem hizmetlerini kurtarmaya çalışması gerektiğini gösterir. |
-| rapor-sağlık | Hizmet Kumaşı kümesi hakkında bir sistem durumu raporu gönderir. |
-| Seçin | Service Fabric kümesi bitiş noktasına bağlanır. |
-| show-bağlantı | Bu sfctl örneğinin bağlı olduğu Hizmet Kumaşı kümesini gösterin. |
-| hükümsüz | Hizmet Kumaşı kümesinin kod veya yapılandırma paketlerini sağlama. |
-| yükseltme | Service Fabric kümesinin kod veya yapılandırma sürümünü yükseltmeye başlayın. |
-| yükseltme-özgeçmiş | Küme yükseltmesinin bir sonraki yükseltme etki alanına taşınmasını sağla. |
-| yükseltme-geri alma | Service Fabric kümesinin yükseltmesini geri getirin. |
-| yükseltme durumu | Geçerli küme yükseltmesinin ilerlemesini alır. |
-| yükseltme-güncelleme | Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin. |
+| işlem-iptal | Kullanıcı tarafından alınmış bir hata işlemini iptal eder. |
+| işlem-liste | Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirilen hata işlemlerinin bir listesini alır. |
+| sağlamaya | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın. |
+| kurtarma-sistem | Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir. |
+| rapor-sistem durumu | Service Fabric kümesinde bir sistem durumu raporu gönderir. |
+| seçin | Service Fabric küme uç noktasına bağlanır. |
+| bağlantıyı göster | Bu sfctl örneğinin hangi Service Fabric kümesini bağlandığını gösterin. |
+| kaldırmak | Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kaldırma. |
+| yükseltme | Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın. |
+| yükseltme-özgeçmişi | Küme yükseltmesini bir sonraki yükseltme etki alanına geçiş yapın. |
+| yükseltme-geri alma | Service Fabric kümesinin yükseltmesini geri alma. |
+| yükseltme-durum | Geçerli küme yükseltmesinin ilerlemesini alır. |
+| yükseltme-güncelleştirme | Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin. |
 
-## <a name="sfctl-cluster-code-versions"></a>sfctl küme kod sürümleri
-Service Fabric kümesinde sağlanan kumaş kodu sürümlerinin listesini alır.
+## <a name="sfctl-cluster-code-versions"></a>sfctl küme kodu-sürümler
+Service Fabric kümesinde sağlanan doku kodu sürümlerinin bir listesini alır.
 
-Kümede sağlanan kumaş kodu sürümleri yle ilgili bilgilerin listesini alır. Parametre CodeVersion isteğe bağlı olarak yalnızca belirli bir sürüme çıktı filtrelemek için kullanılabilir.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --kod sürümü | Service Fabric ürün sürümü. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
-
-### <a name="global-arguments"></a>Küresel Argümanlar
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
-
-## <a name="sfctl-cluster-config-versions"></a>sfctl küme config-versiyonları
-Service Fabric kümesinde bulunan kumaş config sürümlerinin listesini alır.
-
-Kümede bulunan kumaş config sürümleri hakkında bir bilgi listesi alır. ConfigVersion parametresi, çıktıyı yalnızca belirli bir sürüme isteğe bağlı olarak filtrelemek için kullanılabilir.
+Kümede sağlanan yapı kodu sürümleri hakkındaki bilgilerin listesini alır. CodeVersion parametresi, isteğe bağlı olarak çıktıyı yalnızca belirli bir sürüme filtrelemek için kullanılabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --config-version | Service Fabric config sürümü. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --Code-Version | Service Fabric ürün sürümü. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-health"></a>sfctl küme sağlık
-Service Fabric kümesinin durumunu alır.
+## <a name="sfctl-cluster-config-versions"></a>sfctl küme yapılandırması-sürümler
+Service Fabric kümesinde sağlanan yapı yapılandırma sürümlerinin bir listesini alır.
 
-Sistem durumu durumuna göre kümede bildirilen sistem durumu olaylarının toplanmasını filtrelemek için EventsHealthStateFilter'i kullanın. Benzer şekilde, düğümlerin ve uygulamaların toplanmış sistem durumu temel alınarak döndürülen düğümlerin ve uygulamaların toplanmasını filtrelemek için DüğümlerHealthStateFilter ve ApplicationsHealthStateFilter'i kullanın.
+Kümede sağlanan Fabric yapılandırma sürümleri hakkındaki bilgilerin listesini alır. ConfigVersion parametresi, çıktıyı isteğe bağlı olarak yalnızca belirli bir sürüme filtrelemek için kullanılabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --uygulamalar-sağlık-durum-filtre | Sistem durumu durumuna göre küme durumu sorgusu sonucunda döndürülen uygulama durumu durumu nesnelerinin filtrelemesine izin verir. Bu parametre için olası değerler, üyelerden elde edilen tamsayı değerini veya HealthStateFilter numaralandırma üyelerinezdinde bitwise işlemleri içerir. Yalnızca filtreyle eşleşen uygulamalar döndürülür. Tüm uygulamalar, toplu sağlık durumunu değerlendirmek için kullanılır. Belirtilmemişse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bitwise 'VEYA' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, sağlanan değer 6 ise, Ok (2) ve Uyarı (4) HealthState değerine sahip uygulamaların sistem durumu döndürülür.  <br> - Varsayılan - Varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> - Yok - Herhangi bir HealthState değeriyle eşleşmeyen filtre. Belirli bir durum koleksiyonunda sonuç vermek için kullanılır. Değeri 1'dir.  <br> - Tamam - HealthState değeri Ok ile giriş eşleşen filtre. Değeri 2'dir.  <br> - Uyarı - HealthState değer Uyarısı ile girdi eşleşen filtre. Değeri 4'dür.  <br> - Hata - HealthState değer Hatası ile giriş eşleşen filtre. Değeri 8'dir.  <br> - Tümü - Herhangi bir HealthState değeriyle girişle eşleşen filtre. Değeri 65535' tir. |
-| --olaylar-sağlık-durum-filtre | HealthEvent nesnelerinin toplanmasının sistem durumu durumuna göre filtrelemesine olanak tanır. Bu parametre için olası değerler, aşağıdaki sistem durumu durumlarından birinin tamsayı değerini içerir. Yalnızca filtreyle eşleşen olaylar döndürülür. Tüm olaylar toplu sağlık durumunu değerlendirmek için kullanılır. Belirtilmemişse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bitwise 'VEYA' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, sağlanan değer 6 ise, Ok (2) ve Warning (4) HealthState değerine sahip tüm olaylar döndürülür.  <br> - Varsayılan - Varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> - Yok - Herhangi bir HealthState değeriyle eşleşmeyen filtre. Belirli bir durum koleksiyonunda sonuç vermek için kullanılır. Değeri 1'dir.  <br> - Tamam - HealthState değeri Ok ile giriş eşleşen filtre. Değeri 2'dir.  <br> - Uyarı - HealthState değer Uyarısı ile girdi eşleşen filtre. Değeri 4'dür.  <br> - Hata - HealthState değer Hatası ile giriş eşleşen filtre. Değeri 8'dir.  <br> - Tümü - Herhangi bir HealthState değeriyle girişle eşleşen filtre. Değeri 65535' tir. |
-| --dışlama-sağlık-istatistik | Sistem durumu istatistiklerinin sorgu sonucunun bir parçası olarak döndürülüp döndürülmemesi gerektiğini gösterir. Varsayılan olarak false. İstatistikler, ok, uyarı ve hata durumu sağlık durumundaki çocuk varlıkların sayısını gösterir. |
-| --dahil-sistem-uygulama-sağlık-istatistik | Sistem istatistiklerinin kumaş\:/Sistem uygulaması sistem sistem istatistiklerini içerip içermemesi gerektiğini gösterir. Varsayılan olarak false. IncludeSystemApplicationHealthStatistics doğru ayarlanmışsa, sistem istatistikleri kumaş\:/ Sistem uygulamasına ait varlıkları içerir. Aksi takdirde, sorgu sonucu yalnızca kullanıcı uygulamaları için sistem durumu istatistiklerini içerir. Bu parametrenin uygulanabilmesi için sistem durumu istatistikleri sorgu sonucuna dahil edilmelidir. |
-| --düğümler-sağlık-durum-filtre | Küme durumu sorgusu nun sonucu olarak döndürülen düğüm durumu durumu nesnelerinin sistem durumu durumuna göre filtrelemesine izin verir. Bu parametre için olası değerler, aşağıdaki sistem durumu durumlarından birinin tamsayı değerini içerir. Yalnızca filtreyle eşleşen düğümler döndürülür. Tüm düğümler, birleştirilmiş sistem durumunu değerlendirmek için kullanılır. Belirtilmemişse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bitwise 'VEYA' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, sağlanan değer 6 ise, Ok (2) ve Warning (4) HealthState değerine sahip düğümlerin sistem durumu döndürülür.  <br> - Varsayılan - Varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> - Yok - Herhangi bir HealthState değeriyle eşleşmeyen filtre. Belirli bir durum koleksiyonunda sonuç vermek için kullanılır. Değeri 1'dir.  <br> - Tamam - HealthState değeri Ok ile giriş eşleşen filtre. Değeri 2'dir.  <br> - Uyarı - HealthState değer Uyarısı ile girdi eşleşen filtre. Değeri 4'dür.  <br> - Hata - HealthState değer Hatası ile giriş eşleşen filtre. Değeri 8'dir.  <br> - Tümü - Herhangi bir HealthState değeriyle girişle eşleşen filtre. Değeri 65535' tir. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --config-Version | Service Fabric yapılandırma sürümü. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-manifest"></a>sfctl küme manifestosu
+## <a name="sfctl-cluster-health"></a>sfctl küme durumu
+Service Fabric kümesinin sistem durumunu alır.
+
+Kümede bildirilen sistem durumu olaylarının toplanmasını sistem durumuna göre filtrelemek için EventsHealthStateFilter ' i kullanın. Benzer şekilde, toplanan sistem durumlarına göre döndürülen düğümlerin ve uygulamaların koleksiyonunu filtrelemek için NodesHealthStateFilter ve ApplicationsHealthStateFilter ' ı kullanın.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --uygulamalar-sistem durumu-durum-filtre | Küme durumu sorgusunun sonucunda döndürülen uygulama sistem durumu nesnelerinin sistem durumlarına göre filtrelemesine izin verir. Bu parametre için olası değerler, veya HealthStateFilter numaralandırması üyeleri üzerinde, üye veya bit düzeyinde işlemlerden elde edilen tamsayı değerini içerir. Yalnızca filtreyle eşleşen uygulamalar döndürülür. Tüm uygulamalar, toplanan sistem durumunu değerlendirmek için kullanılır. Belirtilmezse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bit düzeyinde ' OR ' işleci kullanılarak elde edilen değerlerin bir birleşimi olabilir. Örneğin, girilen değer 6 ise, HealthState değeri OK (2) ve uyarı (4) olan uygulamaların sistem durumu döndürülür.  <br> -Varsayılan-varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> -None-hiçbir HealthState değerle eşleşmeyen filtre. Belirli bir durum koleksiyonuna sonuç döndürmek için kullanılır. Değer 1 ' dir.  <br> -Ok-HealthState değer ile girişle eşleşen filtre. Değer 2 ' dir.  <br> -Warning-değerle HealthState değer uyarısıyla eşleşen filtre. Değer 4 ' dir.  <br> -Error-bir değerle HealthState değer hatası ile eşleşen filtre. Değer 8 ' dir.  <br> -Bir HealthState değer ile girişle eşleşen All filtresi. Değer 65535 ' dir. |
+| --Events-Sistem durumu-durum-filtre | Sistem durumu temelinde döndürülen HealthEvent nesnelerinin toplanmasını filtrelemeye izin verir. Bu parametre için olası değerler aşağıdaki sistem durumlarından birine ait tamsayı değerini içerir. Yalnızca filtreyle eşleşen olaylar döndürülür. Tüm olaylar, toplanan sistem durumunu değerlendirmek için kullanılır. Belirtilmezse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bit düzeyinde ' OR ' işleci kullanılarak elde edilen bu değerlerin bir birleşimi olabilir. Örneğin, girilen değer 6 ise, HealthState değeri (2) ve uyarı (4) olan tüm olaylar döndürülür.  <br> -Varsayılan-varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> -None-hiçbir HealthState değerle eşleşmeyen filtre. Belirli bir durum koleksiyonuna sonuç döndürmek için kullanılır. Değer 1 ' dir.  <br> -Ok-HealthState değer ile girişle eşleşen filtre. Değer 2 ' dir.  <br> -Warning-değerle HealthState değer uyarısıyla eşleşen filtre. Değer 4 ' dir.  <br> -Error-bir değerle HealthState değer hatası ile eşleşen filtre. Değer 8 ' dir.  <br> -Bir HealthState değer ile girişle eşleşen All filtresi. Değer 65535 ' dir. |
+| --exclude-sistem durumu-istatistikler | Durum istatistiklerinin Sorgu sonucunun bir parçası olarak döndürülüp döndürülmeyeceğini gösterir. Varsayılan olarak false. İstatistikler sistem durumu Tamam, uyarı ve hata içindeki alt öğe varlıklarının sayısını gösterir. |
+| --Include-System-Application-Health-STATISTICS | Sistem durumu istatistiklerinin doku\:/sistem uygulama durumu istatistiklerini içerip içermediğini belirtir. Varsayılan olarak false. IncludeSystemApplicationHealthStatistics true olarak ayarlanırsa, sistem durumu istatistikleri doku\:/System uygulamasına ait olan varlıkları içerir. Aksi takdirde, sorgu sonucu yalnızca kullanıcı uygulamaları için sistem durumu istatistiklerini içerir. Bu parametrenin uygulanması için durum istatistiklerinin, sorgu sonucuna dahil olması gerekir. |
+| --Nodes-sistem durumu-durum-filtre | Küme durumu sorgusunun sonucunda döndürülen düğüm durumu nesnelerinin sistem durumlarına bağlı olarak filtrelemesine izin verir. Bu parametre için olası değerler aşağıdaki sistem durumlarından birine ait tamsayı değerini içerir. Yalnızca filtreyle eşleşen düğümler döndürülür. Tüm düğümler, toplanan sistem durumunu değerlendirmek için kullanılır. Belirtilmezse, tüm girişler döndürülür. Durum değerleri bayrak tabanlı numaralandırmadır, bu nedenle değer bit düzeyinde ' OR ' işleci kullanılarak elde edilen değerlerin bir birleşimi olabilir. Örneğin, girilen değer 6 ise, HealthState değeri OK (2) ve uyarı (4) olan düğümlerin sistem durumu döndürülür.  <br> -Varsayılan-varsayılan değer. Herhangi bir HealthState ile eşleşir. Değer sıfırdır.  <br> -None-hiçbir HealthState değerle eşleşmeyen filtre. Belirli bir durum koleksiyonuna sonuç döndürmek için kullanılır. Değer 1 ' dir.  <br> -Ok-HealthState değer ile girişle eşleşen filtre. Değer 2 ' dir.  <br> -Warning-değerle HealthState değer uyarısıyla eşleşen filtre. Değer 4 ' dir.  <br> -Error-bir değerle HealthState değer hatası ile eşleşen filtre. Değer 8 ' dir.  <br> -Bir HealthState değer ile girişle eşleşen All filtresi. Değer 65535 ' dir. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-cluster-manifest"></a>sfctl kümesi bildirimi
 Service Fabric küme bildirimini alın.
 
-Service Fabric küme bildirimini alın. Küme bildirimi küme, güvenlik yapılandırmaları, hata ve yükseltme etki alanı topolojileri, vb farklı düğüm türleri içeren küme özelliklerini içerir. Bu özellikler, tek başına bir küme dağıtılırken ClusterConfig.JSON dosyasının bir parçası olarak belirtilir. Ancak, küme bildirimindeki bilgilerin çoğu, diğer dağıtım senaryolarında (örneğin Azure portalı kullanırken) küme dağıtımı sırasında hizmet dokusu tarafından dahili olarak oluşturulur. Küme manifestosunun içeriği yalnızca bilgilendirme amaçlıdır ve kullanıcıların dosya içeriğinin biçimine veya yorumlanmasına bağımlı olması beklenmez.
+Service Fabric küme bildirimini alın. Küme bildirimi, küme üzerinde farklı düğüm türleri, güvenlik yapılandırması, hata ve yükseltme etki alanı topolojileri vb. dahil olmak üzere kümenin özelliklerini içerir. Bu özellikler, tek başına bir küme dağıtıldığında ClusterConfig. JSON dosyasının bir parçası olarak belirtilir. Ancak, küme bildirimindeki bilgilerin çoğu, diğer dağıtım senaryolarında (örn. Azure portal kullanılırken) küme dağıtımı sırasında Service Fabric tarafından dahili olarak oluşturulur. Küme bildiriminin içeriği yalnızca bilgilendirme amaçlıdır ve kullanıcıların dosya içerikleri veya yorumu için bir bağımlılığı olması beklenmez.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl küme işlemi-iptal
-Kullanıcı kaynaklı bir hata işlemini iptal eder.
+Kullanıcı tarafından alınmış bir hata işlemini iptal eder.
 
-Aşağıdaki API'ler CancelOperation\: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition kullanılarak iptal edilebilecek hata işlemlerini başlatır. Kuvvet yanlışsa, kullanıcı tarafından başlatılan işlem incelikle durdurulur ve temizlenir.  Eğer kuvvet doğruysa, komut iptal edilir ve bazı iç durum geride bırakılabilir.  Kuvvetin doğru olarak belirtilmesi özenle kullanılmalıdır. Bu API'yi doğru ayarlanmış bir güçle çağırmak, bu API'nin önce yanlış olarak ayarlanmış kuvvetle aynı test komutuna çağrılmasına veya test komutunun zaten OperationState.RollingBack'e ait bir OperationState.The OperationState'e sahip olmadığı sürece izin verilmez. Açıklama\: OperationState.RollingBack sistem olacak / komut yürütme kaynaklanan iç sistem durumu temizliyor anlamına gelir.  Test komutu veri kaybına neden olacaksa verileri geri yüklemez.  Örneğin, StartDataLoss'u arayarak bu API'yi ararsanız, sistem yalnızca iç durumu komutu çalıştırarak temizler. Komut veri kaybına neden olacak kadar ilerlediyse, hedef bölümün verilerini geri yüklemez. Bu\: API kuvvetle çağrılması durumunda önemli not==doğru, iç durum geride bırakılabilir.
-
-### <a name="arguments"></a>Bağımsız Değişkenler
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --operation-id [Gerekli] | Bu API'nin çağrısını tanımlayan bir GUID.  Bu, ilgili GetProgress API'sine aktarılır. |
-| --kuvvet | Kullanıcı kaynaklı işlemi yürüterek değiştirilen dahili sistem durumunu zarif bir şekilde geri alıp temizlemeyeceklerini gösterir. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
-
-### <a name="global-arguments"></a>Küresel Argümanlar
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
-
-## <a name="sfctl-cluster-operation-list"></a>sfctl küme işlem listesi
-Sağlanan girdi tarafından filtre uygulanmış kullanıcı kaynaklı hata işlemlerinin listesini alır.
-
-Sağlanan girdi tarafından filtre uygulanarak kullanıcı kaynaklı hata işlemlerinin listesini alır.
+Aşağıdaki API 'Ler CancelOperation\: startdataloss, Startquorumkaybetme, StartPartitionRestart, StartNodeTransition kullanılarak iptal edilmiş olabilecek hata işlemlerini başlatır. Zorla false ise, belirtilen kullanıcı tarafından alınmış işlem düzgün şekilde durdurulur ve temizlenir.  Zorla true ise, komut iptal edilir ve bazı iç durum arka planda kalabilir.  Doğru olarak zorla belirtilmesi, dikkatli kullanılmalıdır. Bu API, zorla değeri false olarak ayarlanmış olan aynı test komutunda zaten çağrılmadıkça veya test komutunun OperationState. RollingBack öğesinin OperationState 'i zaten mevcut değilse, bu API 'yi true olarak ayarla özelliği true olarak ayarlanmalıdır. Açıklama\: operationstate. RollingBack, sistemin, komut yürütülerek oluşan iç sistem durumunu temizleyebileceği anlamına gelir.  Sınama komutu veri kaybına neden olduysa, verileri geri yükleme işlemi olmayacaktır.  Örneğin, StartDataLoss 'yi çağırırsanız bu API 'yi çağırırsanız, sistem yalnızca komutu çalıştırmadan iç durumu temizler. Komut, veri kaybına neden olacak kadar ilerlemedi, hedef bölümün verilerini geri yükler. Önemli Note\: bu API zorla = = true ile çağrılırsa iç durum arkasında kalabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --durum filtresi | Kullanıcı kaynaklı işlemler için OperationState'infiltresini filtrelemek için kullanılır. - 65535 - Select All - 1 - Select Running - 2 - Select RollingBack - 8 - select Completed - 16 - select Faulted - 32 - Select Canceled - 64 - forcecancelled'i seçin.  Varsayılan\: 65535. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
-| --tip filtresi | Kullanıcı kaynaklı işlemler için OperationType'ı filtrelemek için kullanılır. - 65535 - tümünü seçin - 1 - PartitionDataLoss'u seçin. - 2 - PartitionQuorumLoss seçin. - 4 - PartitionRestart'ı seçin. - 8 - Düğüm Geçişi'ni seçin.  Varsayılan\: 65535. |
+| --işlem kimliği [gerekli] | Bu API 'nin bir çağrısını tanımlayan GUID.  Bu, karşılık gelen GetProgress API 'sine geçirilir. |
+| --zorla | Kullanıcı tarafından düzenlenen işlemi yürüterek, iç sistem durumunun düzgün bir şekilde geri döndürülüp temizlenip temizlenmeyeceğini gösterir. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-provision"></a>sfctl küme hükmü
-Hizmet Kumaşı kümesinin kod veya yapılandırma paketlerini sağlama.
+## <a name="sfctl-cluster-operation-list"></a>sfctl kümesi işlemi-liste
+Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirilen hata işlemlerinin bir listesini alır.
 
-Hizmet Kumaşı kümesinin kod veya yapılandırma paketlerini doğrulayın ve sağlayın.
+Belirtilen girişe göre filtrelenmiş Kullanıcı tarafından gerçekleştirilen hata işlemlerinin listesini alır.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --küme-manifest-dosya-yol | Küme bildirimi dosya yolu. |
-| --kod-dosya-yol | Küme kodu paketi dosya yolu. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --durum-filtre | Kullanıcı tarafından kullanılan işlemler için OperationState 'e filtre uygulamak üzere kullanılır. -65535-1-Select çalışıyor-2-Seçme çalıştırılan-2-Seçme RollingBack-8-Select tamamlandı-16-Select, 64 32 hata  Varsayılan\: 65535. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+| --tür-filtre | Kullanıcı tarafından kullanılan işlemler için OperationType 'a filtre uygulamak için kullanılır. -65535-1-Select PartitionDataLoss öğesini seçin. -2-Partitionquorumkaybetme seçeneğini belirleyin. -4-PartitionRestart ' ı seçin. -8-NodeTransition seçin.  Varsayılan\: 65535. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-recover-system"></a>sfctl küme kurtarma sistemi
-Hizmet Kumaşı kümesine, şu anda çoğunluk kaybına bağlı olan sistem hizmetlerini kurtarmaya çalışması gerektiğini gösterir.
+## <a name="sfctl-cluster-provision"></a>sfctl kümesi sağlama
+Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlayın.
 
-Hizmet Kumaşı kümesine, şu anda çoğunluk kaybına bağlı olan sistem hizmetlerini kurtarmaya çalışması gerektiğini gösterir. Bu işlem yalnızca aşağı olan yinelemelerin kurtarılamayacağı biliniyorsa gerçekleştirilmelidir. Bu API'nin yanlış kullanımı olası veri kaybına neden olabilir.
+Service Fabric kümesinin kodunu veya yapılandırma paketlerini doğrulayın ve sağlayın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --Cluster-manifest-dosya-yolu | Küme bildirim dosyası yolu. |
+| --Code-File-Path | Küme kodu paket dosyası yolu. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-report-health"></a>sfctl küme rapor-sağlık
-Hizmet Kumaşı kümesi hakkında bir sistem durumu raporu gönderir.
+## <a name="sfctl-cluster-recover-system"></a>sfctl kümesi kurtarma-sistem
+Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir.
 
-Hizmet Kumaşı kümesi nde bir sistem durumu raporu gönderir. Rapor, sağlık raporunun kaynağı ve raporlandığı özellik hakkındaki bilgileri içermelidir. Rapor, sağlık deposuna ileten Bir Hizmet Kumaşı ağ geçidi düğümüne gönderilir. Rapor ağ geçidi tarafından kabul edilebilir, ancak ek doğrulama sonra sağlık deposu tarafından reddedilir. Örneğin, sistem durumu deposu, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle raporu reddedebilir. Raporun sistem durumu deposunda uygulanıp uygulanmadığını görmek için GetClusterHealth'i çalıştırın ve raporun HealthEvents bölümünde görünüp görünmediğini denetleyin.
+Service Fabric kümesine, şu anda yetersayı kaybından takılı olan sistem hizmetlerini kurtarmaya çalışılması gerektiğini gösterir. Bu işlem yalnızca, alt kopyaların kurtarılamamış olduğu biliniyorsa gerçekleştirilmelidir. Bu API 'nin yanlış kullanımı olası veri kaybına neden olabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --sağlık-özellik [Gerekli] | Sağlık bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporları olabilir. Özellik, muhabirin raporu tetikleyen durum durumunu kategorilere ayırmaesnekliğine izin vermek için sabit bir numaralandırma değil, bir dizedir. Örneğin, SourceId "LocalWatchdog" olan bir muhabir, kullanılabilir diskin bir düğümüzerindeki durumunu izleyebilir, böylece bu düğümdeki "AvailableDisk" özelliğini bildirebilir. Aynı muhabir düğüm bağlantısını izleyebilir, böylece aynı düğümüzerinde bir özellik "Bağlantı" bildirebilir. Sağlık deposunda, bu raporlar belirtilen düğüm için ayrı sağlık olayları olarak kabul edilir. Kaynak Kimliği ile birlikte, özellik benzersiz sağlık bilgilerini tanımlar. |
-| --sağlık durumu [Gerekli] | Olası değerler\: arasında 'Geçersiz', 'Tamam', 'Uyarı', 'Hata', 'Bilinmiyor' sayılabilir. |
-| --kaynak-id [Gerekli] | Sistem bilgilerini oluşturan istemci/izleme örgütü/sistem bileşenini tanımlayan kaynak adı. |
-| --açıklama | Sağlık bilgilerinin açıklaması. <br><br> Rapor hakkında insan tarafından okunabilir bilgiler eklemek için kullanılan ücretsiz metni temsil eder. Açıklama için maksimum dize uzunluğu 4096 karakterdir. Sağlanan dize daha uzunsa, otomatik olarak kesilir. Kesildiğinde, açıklamanın son karakterleri "[Kesildi]" işareti ni içerir ve toplam dize boyutu 4096 karakterdir. İşaretçinin varlığı kullanıcılara kesilme nin oluştuğunu gösterir. Kesildiğinde, açıklamanın özgün dizedeki 4096 karakterden az olduğunu unutmayın. |
-| --hemen | Raporun hemen gönderilmesi gerekip gerekmediğini belirten bir bayrak. <br><br> Sağlık raporu, sağlık deposuna ileten Bir Hizmet Dokusu ağ geçidi Uygulamasına gönderilir. Hemen doğru ayarlanırsa, rapor HTTP Ağ Geçidi Uygulaması'nın kullandığı kumaş istemci ayarlarına bakılmaksızın hemen HTTP Ağ Geçidi'nden sağlık deposuna gönderilir. Bu, en kısa sürede gönderilmesi gereken kritik raporlar için yararlıdır. Zamanlamaya ve diğer koşullara bağlı olarak, örneğin HTTP Ağ Geçidi kapalıysa veya ileti Ağ Geçidi'ne ulaşamazsa, rapor göndermek yine de başarısız olabilir. Anında yanlış olarak ayarlanırsa, rapor HTTP Ağ Geçidi'ndeki sağlık istemcisi ayarlarına göre gönderilir. Bu nedenle, HealthReportSendInterval yapılandırmasına göre toplu olarak düzenlenecektir. Bu, sistem durumu istemcisinin sağlık deposuna gelen sağlık raporlama iletilerini ve sistem durumu raporu işlemeyi optimize etmesine olanak sağladığından önerilen ayardır. Varsayılan olarak, raporlar hemen gönderilmez. |
-| --kaldırma-ne zaman-süresi doldu | Raporun süresi dolduğunda sistem durumu deposundan kaldırılıp kaldırılmadığını gösteren değer. <br><br> Doğru olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. Yanlış olarak ayarlanmışsa, süresi dolduğunda rapor bir hata olarak kabul edilir. Bu özelliğin değeri varsayılan olarak yanlıştır. İstemciler düzenli aralıklarla rapor verdiğinde, RemoveWhenExpired false (varsayılan) olarak ayarlanmalıdır. Bu şekilde, muhabirin sorunları (örn. kilitlenme) vardır ve rapor edemez, sağlık raporu sona erdiğinde varlık hata olarak değerlendirilir. Bu, varlığı Hata durumu durumunda olarak gösterir. |
-| --sıra numarası | Sayısal dize olarak bu sistem durumu raporunun sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, rapor eklendiğinde bir sıra numarası sistem durumu istemcisi tarafından otomatik olarak oluşturulur. |
-| --zaman ayarı -t | Varsayılan\: 60. |
-| --ttl | Bu sağlık raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ISO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak rapor verdiğinde, yaşamak için zamandan daha yüksek sıklıkta raporlar göndermelidir. İstemciler geçiş hakkında rapor verirlerse, zamanı sonsuz alete ayarlayabilirler. Yaşam süresi dolduğunda, sağlık bilgilerini içeren sağlık olayı, RemoveWhenExpired doğruysa, sağlık deposundan kaldırılır veya hata yla değerlendirilir, RemoveWhenExpired false ise. Belirtilmemişse, sonsuz değerde varsayılan olarak yaşama zamanı. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-select"></a>sfctl küme seçin
-Service Fabric kümesi bitiş noktasına bağlanır.
+## <a name="sfctl-cluster-report-health"></a>sfctl kümesi raporu-sistem durumu
+Service Fabric kümesinde bir sistem durumu raporu gönderir.
 
-Güvenli kümeye bağlanıyorsanız, bir cert (.crt) ve anahtar dosyasına (.key) veya her ikisine (.pem) sahip tek bir dosyaya mutlak bir yol belirtin. Her ikisini de belirtmeyin. İsteğe bağlı olarak, güvenli bir kümeye bağlanıyorsanız, ca paketi dosyasına veya güvenilir CA sertifika dizinine mutlak bir yol da belirtin.  Bu komutu önce çalıştırmadan bir kümeyle bağlantı yoktur, localhost bağlantısı da dahil. Ancak, yerel bir kümeye bağlanmak için açık bir uç nokta gerekmez.  Kendi imzalı bir sertifika veya iyi bilinen bir CA tarafından imzalanmayan başka bir sertifika kullanıyorsanız, doğrulamanın geçtiğinden emin olmak için --ca parametresini geçirin. Bir üretim kümesinde değilse, istemci tarafı doğrulamasını atlamak için (kendi imzası olan veya iyi bilinen CA imzalı için kullanışlı), --doğrulama seçeneğini kullanın. Mümkün olsa da, üretim kümeleri için önerilmez. Bir sertifika doğrulama hatası aksi neden olabilir.
+Service Fabric kümesinde bir sistem durumu raporu gönderir. Rapor, sistem durumu raporunun ve rapor alındığı özelliğin kaynağı hakkında bilgi içermelidir. Rapor, sistem durumu deposuna ileten bir Service Fabric ağ geçidi düğümüne gönderilir. Rapor, ağ geçidi tarafından kabul edilebilir, ancak ek doğrulamadan sonra sistem durumu deposu tarafından reddedildi. Örneğin, eski bir sıra numarası gibi geçersiz bir parametre nedeniyle sistem durumu deposu raporu reddedebilir. Raporun sistem durumu deposuna uygulanıp uygulanmadığını görmek için GetClusterHealth ' ı çalıştırın ve raporun HealthEvents bölümünde görünüp görüntülenmediğini denetleyin.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --aad | Kimlik doğrulaması için Azure Etkin Dizini'ni kullanın. |
-| --ca | Geçerli veya CA paket dosyası olarak ele almak için CA sertifikadizini için mutlak yol. OpenSSL tarafından sağlanan CA `c_rehash <directory>` sertifikalarının bir dizinini kullanıyorsanız, önce sertifika kalıplarını hesaplamak ve uygun sembolik bağlantılar oluşturmak için çalıştırılmalıdır. Bu, küme tarafından döndürülen sertifikanın geçerli olduğunu doğrulamak için kullanılır. |
-| --cert | İstemci sertifikası dosyasına giden mutlak yol. |
-| --uç nokta | Bağlantı noktası ve HTTP veya HTTPS öneki de dahil olmak üzere uç nokta URL'yi kümele. Genellikle, bitiş noktası https\://<url'niz 19080>\:gibi görünür. Bitiş noktası verilmezse, varsayılan olarak\:http //localhost\:19080 olur.  Varsayılan\: \:http //localhost\:19080. |
-| --anahtar | İstemci sertifikası anahtar dosyasına mutlak yol. |
-| --doğrulama | HTTPS kullanırken sertifikalar için doğrulamayı\: devre dışı, bunun güvenli olmayan bir seçenek olduğunu ve üretim ortamları için kullanılmaması gerektiğini unutmayın. |
-| --pem | .pem dosyası olarak istemci sertifikasına giden mutlak yol. |
+| --Health-Property [gerekli] | Sistem durumu bilgilerinin özelliği. <br><br> Bir varlık, farklı özellikler için sistem durumu raporlarına sahip olabilir. Özelliği, rapor tetikleyen durum koşulunu kategorilere ayırmak için Raporlayıcı esnekliğine izin veren sabit bir sabit listesi olmayan bir dizedir. Örneğin, SourceId "Localizçi" olan bir Raporlayıcı, bir düğümdeki kullanılabilir diskin durumunu izleyebilir, bu nedenle söz konusu düğümdeki "AvailableDisk" özelliğini bildirebilirler. Aynı Reporter, düğüm bağlantısını izleyip aynı düğümde bir özelliği "bağlantı" bildirebilirler. Sistem durumu deposunda, bu raporlar belirtilen düğüm için ayrı sistem durumu olayları olarak kabul edilir. SourceID ile birlikte, özelliği sistem durumu bilgilerini benzersiz şekilde tanımlar. |
+| --sistem durumu-durumu [gerekli] | Olası değerler\: ' geçersiz ', ' Tamam ', ' uyarı ', ' Error ', ' Unknown ' değerleridir. |
+| --kaynak-kimliği [gerekli] | Sistem durumu bilgilerini oluşturan istemci/izleme/sistem bileşenini tanımlayan kaynak adı. |
+| --Açıklama | Sistem durumu bilgilerinin açıklaması. <br><br> Bu, raporla ilgili okunabilir bilgileri eklemek için kullanılan serbest metni temsil eder. Açıklama için en fazla dize uzunluğu 4096 karakterdir. Belirtilen dize daha uzunsa otomatik olarak kesilir. Kesilmişse, açıklamanın son karakterleri "[kesildi]" işaretçisini ve toplam dize boyutu 4096 karakterdir. İşaretin varlığı, kesilmesinin gerçekleştiği kullanıcılara işaret eden anlamına gelir. Kesilmişse, açıklamanın özgün dizeden 4096 karakterden daha az olduğunu unutmayın. |
+| --hemen | Raporun hemen gönderilmesi gerekip gerekmediğini belirten bir bayrak. <br><br> Bir sistem durumu raporu, sistem durumu deposuna ileten bir Service Fabric ağ geçidi uygulamasına gönderilir. Immediate değeri true olarak ayarlanırsa, HTTP ağ geçidi uygulamasının kullandığı doku istemci ayarlarından bağımsız olarak, rapor HTTP ağ geçidinden sistem durumu deposuna anında gönderilir. Bu, mümkün olan en kısa sürede gönderilmesi gereken kritik raporlar için kullanışlıdır. Zamanlama ve diğer koşullara bağlı olarak, raporun gönderilmesi yine de başarısız olabilir, örneğin, HTTP ağ geçidi kapalıysa veya ileti ağ geçidine ulaşmazsa. Anında false değeri ayarlandıysa, rapor HTTP ağ geçidindeki sistem durumu istemci ayarlarına bağlı olarak gönderilir. Bu nedenle, Healthreportsendınterval yapılandırmasına göre toplu hale gelir. Durum istemcisinin sistem durumu raporlama iletilerini sistem durumu rapor işleme ile en iyi hale getirmesine izin verdiğinden, bu önerilen ayardır. Varsayılan olarak, raporlar anında gönderilmez. |
+| ----süre sonu | Raporun süresi dolmuşsa sistem durumu deposundan kaldırılıp kaldırılmadığını belirten değer. <br><br> True olarak ayarlanırsa, rapor süresi dolduktan sonra sistem durumu deposundan kaldırılır. False olarak ayarlanırsa rapor, süre dolduğunda hata olarak değerlendirilir. Bu özelliğin değeri varsayılan olarak false 'tur. İstemciler düzenli olarak rapor edildiğinde Removewhenererererfalse (varsayılan) olarak ayarlanmalıdır. Bu şekilde, Raporlayıcı sorunları (örn. kilitlenme) ve raporleyemiyorum, sistem durumu raporunun süresi dolarsa varlık hata olarak değerlendirilir. Bu, varlığı hata sağlık durumunda olduğu şekilde işaretler. |
+| --sıra-sayısı | Bu sistem durumu raporunun sayısal bir dize olarak sıra numarası. <br><br> Rapor sıra numarası, eski raporları algılamak için sistem durumu deposu tarafından kullanılır. Belirtilmemişse, bir rapor eklendiğinde sistem durumu istemcisi tarafından otomatik olarak bir sıra numarası oluşturulur. |
+| --timeout-t | Varsayılan\: 60. |
+| --TTL | Bu sistem durumu raporunun geçerli olduğu süre. Bu alan, süreyi belirtmek için ıSO8601 biçimini kullanır. <br><br> İstemciler düzenli olarak raporladığında, en yüksek sıklıkta raporlar göndermelidir. İstemciler geçişe rapor alıyorsa, süresi sonsuz olarak ayarlayabilir. Yaşam süresi dolduğunda, sistem durumu bilgilerini içeren sistem durumu olayı sistem durumu deposundan kaldırılır, Removewhenexpires true ise ya da Removewhenexpires false olduğunda hata durumunda değerlendirilir. Belirtilmemişse, yaşam süresi varsayılan olarak sonsuz değer olur. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
-
-|Bağımsız Değişken|Açıklama|
-| --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
-
-## <a name="sfctl-cluster-show-connection"></a>sfctl küme show-bağlantısı
-Bu sfctl örneğinin bağlı olduğu Hizmet Kumaşı kümesini gösterin.
-
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-unprovision"></a>sfctl küme unprovision
-Hizmet Kumaşı kümesinin kod veya yapılandırma paketlerini sağlama.
+## <a name="sfctl-cluster-select"></a>sfctl kümesi seçme
+Service Fabric küme uç noktasına bağlanır.
 
-Ayrı ayrı hükümsüz kod ve yapılandırma için desteklenir.
+Güvenli kümeye bağlanıyorsanız, bir sertifika (. CRT) ve anahtar dosyası (. Key) için mutlak bir yol veya hem (. ped) ile tek bir dosya belirtin. Her ikisini de belirtmeyin. İsteğe bağlı olarak, güvenli bir kümeye bağlanıyorsanız, CA paket dosyası veya güvenilir CA sertifikaları dizini için mutlak bir yol da belirtin.  Localhost bağlantısı da dahil olmak üzere, önce bu komutu çalıştırmadan bir kümeye bağlantı yoktur. Ancak, yerel bir kümeye bağlanmak için açık uç nokta gerekmez.  Otomatik olarak imzalanan bir sertifika veya iyi bilinen bir CA tarafından imzalanmamış diğer bir sertifika kullanılıyorsa, doğrulamanın başarılı olmasını sağlamak için--CA parametresini geçirin. Bir üretim kümesinde yoksa, istemci tarafı doğrulamayı atlamak için (kendinden imzalı veya iyi bilinen CA imzalı için yararlıdır),--No-Verify seçeneğini kullanın. Mümkün olsa da, üretim kümeleri için önerilmez. Sertifika doğrulama hatası, aksi takdirde oluşabilir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --kod sürümü | Küme kodu paket sürümü. |
-| --config-version | Küme manifesto sürümü. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --aad | Kimlik doğrulaması için Azure Active Directory kullanın. |
+| --CA | CA sertifikaları dizinine yönelik mutlak yol, geçerli veya CA paket dosyası olarak değerlendirilir. Sertifika karmalarını hesaplamak ve uygun sembolics bağlantılarını oluşturmak için, OpenSSL tarafından sağlanmış bir CA sertifikaları dizini kullanılıyorsa, `c_rehash <directory>` önce çalıştırılmalıdır. Bu, küme tarafından döndürülen sertifikanın geçerli olduğunu doğrulamak için kullanılır. |
+| --CERT | İstemci sertifika dosyasının mutlak yolu. |
+| --uç nokta | Bağlantı noktası ve HTTP ya da HTTPS ön eki dahil küme uç noktası URL 'SI. Genellikle, uç nokta https\://<-url 'niz>\:19080 gibi görünür. Uç nokta verilmezse, varsayılan olarak http\:/localhost\:19080 olur.  Varsayılan\: http\:/localhost\:19080. |
+| --anahtar | İstemci sertifikası anahtar dosyasının mutlak yolu. |
+| --No-doğrula | HTTPS kullanırken sertifikaların doğrulanmasını devre dışı bırak,\: bu güvenli olmayan bir seçenektir ve üretim ortamları için kullanılmamalıdır. |
+| --pek | . Pek dosyası olarak istemci sertifikasına mutlak yol. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-upgrade"></a>sfctl küme yükseltme
-Service Fabric kümesinin kod veya yapılandırma sürümünü yükseltmeye başlayın.
+## <a name="sfctl-cluster-show-connection"></a>sfctl kümesi gösterme-bağlantı
+Bu sfctl örneğinin hangi Service Fabric kümesini bağlandığını gösterin.
 
-Sağlanan yükseltme parametrelerini doğrulayın ve parametreler geçerliyse Service Fabric kümesinin kod veya yapılandırma sürümünü yükseltmeye başlayın.
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-cluster-unprovision"></a>sfctl kümesi sağlamayı kaldırma
+Service Fabric kümesinin kodunu veya yapılandırma paketlerini sağlamayı kaldırma.
+
+Kod ve yapılandırmanın ayrı ayrı sağlanması desteklenir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --app-health-map | JSON, hata yükseltmeden önce uygulama adı ve maksimum yüzde sağlıksız çiftleri sözlüğü kodladı. |
-| --uygulama türü-sağlık-harita | JSON, hata yükseltmeden önce uygulama türü adı ve maksimum yüzde sağlıksız çiftleri sözlüğü kodlanır. |
-| --kod sürümü | Küme kodu sürümü. |
-| --config-version | Küme yapılandırma sürümü. |
-| --delta-sağlık-değerlendirme | Her yükseltme etki alanı tamamlandıktan sonra mutlak sağlık değerlendirmesi yerine delta sağlık değerlendirmesi sağlar. |
-| --delta-sağlıksız düğümler | Küme yükseltmeleri sırasında izin verilen düğümlerin sistem durumu bozulmasının izin verilen maksimum yüzdesi.  Varsayılan\: 10. <br><br> Delta yükseltme başında düğümlerin durumu ve sağlık değerlendirmesi sırasında düğümlerin durumu arasında ölçülür. Denetim, kümenin genel durumunun tolere edilen sınırlar içinde olduğundan emin olmak için her yükseltme etki alanı yükseltmesi tamamlandıktan sonra gerçekleştirilir. |
-| --hata-eylem | Olası değerler\: arasında 'Geçersiz', 'Geri Alma', 'El Kitabı' sayılabilir. |
-| --kuvvet yeniden başlatma | Kod sürümü değişmemiş olsa bile, işlemler yükseltme sırasında zorla yeniden başlatılır. <br><br> Yükseltme yalnızca yapılandırmayı veya verileri değiştirir. |
-| --sağlık-kontrol-yeniden deneme | Uygulama veya küme sağlıklı değilse, sistem durumu denetimleri gerçekleştirme girişimleri arasındaki süre. |
-| --sağlık-kontrol-kararlı | Yükseltme bir sonraki yükseltme etki alanına geçmeden önce uygulamanın veya kümenin sağlıklı kalması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --sağlık-check-bekle | Sistem durumu denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra bekleme süresi. |
-| --çoğaltma-ayar-çek-zaman dilimi | Yükseltme etki alanının işlenmesini engellemek ve beklenmeyen sorunlar olduğunda kullanılabilirlik kaybını önlemek için en yüksek süre. <br><br> Bu zaman aşımı sona erdiğinde, kullanılabilirlik kaybı sorunları ne olursa olsun yükseltme etki alanının işlenmesi devam eder. Zaman anına sıfırlama, her yükseltme etki alanının başında sıfırlanır. Geçerli değerler 0 ile 42949672925 arasındadır. |
-| --yuvarlanma-yükseltme modu | Olası değerler\: arasında 'Geçersiz', 'İzlenmeyen Otomatik', 'İzlenmeyen Kılavuz', 'İzlenen'.  Varsayılan\: UnmonitoredAuto. |
-| --zaman ayarı -t | Varsayılan\: 60. |
-| --sağlıksız uygulamalar | Bir hatayı bildirmeden önce izin verilen en yüksek sağlıksız uygulamaların yüzdesi. <br><br> Örneğin, uygulamaların %10'unun sağlıksız olmasını sağlamak için bu değer 10 olacaktır. Bu yüzde, küme hata olarak kabul edilmeden önce sağlıksız olabilecek uygulamaların en yüksek tolere edilen yüzdesini temsil eder. Yüzdeye saygı duyulur ancak en az bir sağlıksız uygulama varsa, sistem durumu Uyarı olarak değerlendirilir. Bu, ApplicationTypeHealthPolicyMap'e dahil edilen uygulama türlerinin uygulamaları hariç olmak üzere, sağlıksız uygulama sayısının kümedeki toplam uygulama örneği sayısına bölünmesiyle hesaplanır. Hesaplama, az sayıda uygulamada bir başarısızlığa tolerans göstermek için yuvarlar. |
-| --sağlıksız düğümler | Bir hatayı bildirmeden önce izin verilen en yüksek sağlıksız düğüm yüzdesi. <br><br> Örneğin, düğümlerin %10'unun sağlıksız olmasını sağlamak için bu değer 10 olacaktır. Yüzde, küme hata olarak kabul edilmeden önce sağlıksız olabilecek düğümlerin en yüksek tolere edilen yüzdesini temsil eder. Yüzdeye saygı duyulur ancak en az bir sağlıksız düğüm varsa, sistem durumu Uyarı olarak değerlendirilir. Yüzde, kümedeki toplam düğüm sayısına sağlıksız düğüm sayısı bölünerek hesaplanır. Hesaplama, küçük sayıda düğümdeki bir başarısızlığa tolerans göstermek için yuvarlar. Büyük kümelerde, bazı düğümler her zaman aşağı veya onarım için dışarı olacak, bu nedenle bu yüzde bunu tolere etmek için yapılandırılmalıdır. |
-| --upgrade-etki alanı-delta-sağlıksız düğümler | Küme yükseltmeleri sırasında izin verilen yükseltme etki alanı düğümlerinin en fazla izin verilen yüzdesi.  Varsayılan\: 15. <br><br> Delta, yükseltmenin başındaki yükseltme etki alanı düğümlerinin durumu ile sistem durumu değerlendirmesi sırasında yükseltme etki alanı düğümlerinin durumu arasında ölçülür. Denetim, yükseltme etki alanlarının durumunun tolere edilen sınırlar içinde olduğundan emin olmak için tamamlanan tüm yükseltme etki alanları için her yükseltme etki alanı yükseltmesi tamamlandıktan sonra gerçekleştirilir. |
-| --upgrade-etki alanı-zaman ayarı | FailureAction yürütülmeden önce her yükseltme etki alanının tamamlanması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --yükseltme-zaman ayarı | FailureAction yürütülmeden önce genel yükseltmenin tamamlanması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --uyarı-as-hata | Uyarıların hatalarla aynı önemle davranılıp işitilen olmadığını gösterir. |
+| --Code-Version | Küme kod paketi sürümü. |
+| --config-Version | Küme bildirimi sürümü. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-upgrade-resume"></a>sfctl küme yükseltme-özgeçmiş
-Küme yükseltmesinin bir sonraki yükseltme etki alanına taşınmasını sağla.
+## <a name="sfctl-cluster-upgrade"></a>sfctl küme yükseltmesi
+Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın.
 
-Küme kodunu veya yapılandırma yükseltmesini uygunsa bir sonraki yükseltme etki alanına taşıyın.
+Sağlanan yükseltme parametrelerini doğrulayın ve parametreler geçerliyse Service Fabric kümesinin kodunu veya yapılandırma sürümünü yükseltmeye başlayın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --upgrade-etki alanı [Gerekli] | Bu küme yükseltmesi için bir sonraki yükseltme etki alanı. |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --uygulama-sistem durumu-eşleme | Hata dağıtılmadan önce uygulama adı çiftlerinin ve en yüksek yüzdelerin JSON kodlu sözlüğü. |
+| --Uygulama-türü-sistem durumu-eşleme | Hata dağıtılmadan önce uygulama türü adı çiftlerinin ve en yüksek yüzdelerin JSON kodlu sözlüğü. |
+| --Code-Version | Küme kod sürümü. |
+| --config-Version | Küme yapılandırma sürümü. |
+| --Delta-sistem durumu-değerlendirme | Her yükseltme etki alanının tamamlanmasından sonra mutlak sistem durumu değerlendirmesi yerine Delta sistem durumu değerlendirmesini mümkün bir şekilde sunar. |
+| --Delta-sağlıksız-düğümler | Küme yükseltmeleri sırasında izin verilen düğümlerin izin verilen en yüksek sınır yüzdesi.  Varsayılan\: 10. <br><br> Delta, yükseltmenin başlangıcında düğümlerin durumu ve sistem durumu değerlendirmesi sırasında düğümlerin durumu arasında ölçülür. Denetim, kümenin genel durumunun toleranslı limitlerin içinde olduğundan emin olmak için her yükseltme etki alanı yükseltmesinin tamamlanmasından sonra gerçekleştirilir. |
+| --hata-eylem | Olası değerler\: ' geçersiz ', ' geri alma ', ' Manual ' değerleridir. |
+| --zorla-yeniden Başlat | Kod sürümü değiştirilmese bile, yükseltme işlemi sırasında süreçler zorla yeniden başlatılır. <br><br> Yükseltme yalnızca yapılandırmayı veya verileri değiştirir. |
+| --sistem durumu-denetimi-yeniden dene | Uygulama veya küme sağlıklı değilse sistem durumu denetimleri gerçekleştirme denemeleri arasındaki süre uzunluğu. |
+| --Sistem Durumu-Çek-kararlı | Yükseltme bir sonraki yükseltme etki alanına geçmeden önce uygulamanın veya kümenin sağlıklı kalması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --Sistem Durumu-Çek-bekle | Durum denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra beklenecek sürenin uzunluğu. |
+| --Çoğaltma-ayarlama-denetim-zaman aşımı | Bir yükseltme etki alanının işlenmesi engellenecek en uzun süre (veya beklenmedik sorunlar olduğunda kullanılabilirlik kaybını önleme). <br><br> Bu zaman aşımı süresi dolduğunda, yükseltme etki alanının işlenmesi, kullanılabilirlik kaybı sorunlarından bağımsız olarak devam edecektir. Zaman aşımı, her yükseltme etki alanının başlangıcında sıfırlanır. Geçerli değerler 0 ile 42949672925 (dahil) arasındadır. |
+| --sıralı-yükseltme modu | Olası değerler '\: geçersiz ', ' Unmonitortoredauto ', ' Unmonitortoredmanual ', ' izleniyor ' değerleridir.  Varsayılan\: olarak depountoredauto. |
+| --timeout-t | Varsayılan\: 60. |
+| --sağlıksız-uygulamalar | Bir hata raporlanmadan önce, sağlıksız uygulamaların izin verilen en büyük yüzdesi. <br><br> Örneğin, uygulamaların %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde değeri, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en yüksek toleranslı yüzdesini temsil eder. Yüzde oranı dikkate alınmaz ancak en az bir sağlıksız uygulama varsa, sistem durumu uyarı olarak değerlendirilir. Bu, ApplicationTypeHealthPolicyMap 'e dahil edilen uygulama türlerinin uygulamaları hariç, sağlıksız uygulama sayısının kümedeki Toplam uygulama örneği sayısına bölünerek hesaplanır. Hesaplama, küçük sayıda uygulamada bir hata olduğunu kabul etmek için yukarı yuvarlar. |
+| --sağlıksız-düğümler | Bir hata raporlanmadan önce, sağlıksız düğümlerin izin verilen en büyük yüzdesi. <br><br> Örneğin, düğümlerin %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek düğümlerin maksimum toleranslı yüzdesini temsil eder. Yüzde oranı kabul edilir ancak en az bir sağlıksız düğüm varsa, sistem durumu uyarı olarak değerlendirilir. Yüzde, sağlıksız düğümlerin sayısı kümedeki toplam düğüm sayısına bölünerek hesaplanır. Hesaplama, küçük sayıda düğümde bir hata olduğunu tolerans için yukarı yuvarlar. Büyük kümelerde, bazı düğümler her zaman onarım için kapatılacaktır ve bu nedenle bu yüzdenin bu yüzdeyi kabul edecek şekilde yapılandırılması gerekir. |
+| --Upgrade-Domain-Delta-sağlıksız-Nodes | Küme yükseltmeleri sırasında izin verilen yükseltme etki alanı düğümlerinin izin verilen maksimum yüzdesi.  Varsayılan\: 15. <br><br> Delta, yükseltmenin başlangıcında yükseltme etki alanı düğümlerinin durumu ve sistem durumu değerlendirmesi sırasında yükseltme etki alanı düğümlerinin durumu arasında ölçülür. Denetim, yükseltme etki alanlarının durumunun toleranslı limitlerin içinde olduğundan emin olmak için tüm tamamlanan yükseltme etki alanlarında her yükseltme etki alanı yükseltme tamamlandıktan sonra gerçekleştirilir. |
+| --Upgrade-etki alanı zaman aşımı | Her yükseltme etki alanının, FailureAction yürütülmeden önce tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --Upgrade-Timeout | FailureAction yürütülmeden önce genel yükseltmenin tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --hata olarak uyarı | Uyarıların hatalarla aynı önem derecesine sahip olup olmadığını gösterir. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl küme yükseltme-rollback
-Service Fabric kümesinin yükseltmesini geri getirin.
+## <a name="sfctl-cluster-upgrade-resume"></a>sfctl kümesi yükseltme-özgeçmişi
+Küme yükseltmesini bir sonraki yükseltme etki alanına geçiş yapın.
 
-Service Fabric kümesinin kodu veya yapılandırma yükseltmesini geri al.
+Uygunsa, küme kodunu veya yapılandırma yükseltmesini bir sonraki yükseltme etki alanına taşımayı unutmayın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --Upgrade-etkialanı [gerekli] | Bu küme yükseltmesinin sonraki yükseltme etki alanı. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-upgrade-status"></a>sfctl küme yükseltme durumu
+## <a name="sfctl-cluster-upgrade-rollback"></a>sfctl kümesi yükseltme-geri alma
+Service Fabric kümesinin yükseltmesini geri alma.
+
+Service Fabric kümesinin kodunu veya yapılandırma yükseltmesini geri alın.
+
+### <a name="arguments"></a>Bağımsız Değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
+
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
+
+|Bağımsız Değişken|Açıklama|
+| --- | --- |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
+
+## <a name="sfctl-cluster-upgrade-status"></a>sfctl kümesi yükseltme-durum
 Geçerli küme yükseltmesinin ilerlemesini alır.
 
-Devam eden küme yükseltmesinin geçerli ilerlemesini alır. Şu anda yükseltme devam ediyorsa, önceki küme yükseltmesinin son durumunu alın.
+Devam eden küme yükseltmesinin geçerli ilerlemesini alır. Şu anda devam eden bir yükseltme yoksa, önceki küme yükseltmesinin son durumunu alın.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --zaman ayarı -t | İşlemi saniyeler içinde gerçekleştirmek için sunucu zaman. Bu zaman sonu, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametrenin varsayılan değeri 60 saniyedir.  Varsayılan\: 60. |
+| --timeout-t | İşlemi saniye cinsinden gerçekleştirmek için sunucu zaman aşımı. Bu zaman aşımı, istemcinin istenen işlemin tamamlanmasını beklemek istediği süreyi belirtir. Bu parametre için varsayılan değer 60 saniyedir.  Varsayılan\: 60. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-cluster-upgrade-update"></a>sfctl küme yükseltme-güncelleme
+## <a name="sfctl-cluster-upgrade-update"></a>sfctl küme yükseltmesi-güncelleştirme
 Service Fabric küme yükseltmesinin yükseltme parametrelerini güncelleştirin.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --app-health-map | JSON, hata yükseltmeden önce uygulama adı ve maksimum yüzde sağlıksız çiftleri sözlüğü kodladı. |
-| --uygulama türü-sağlık-harita | JSON, hata yükseltmeden önce uygulama türü adı ve maksimum yüzde sağlıksız çiftleri sözlüğü kodlanır. |
-| --delta-sağlık-değerlendirme | Her yükseltme etki alanı tamamlandıktan sonra mutlak sağlık değerlendirmesi yerine delta sağlık değerlendirmesi sağlar. |
-| --delta-sağlıksız düğümler | Küme yükseltmeleri sırasında izin verilen düğümlerin sistem durumu bozulmasının izin verilen maksimum yüzdesi.  Varsayılan\: 10. <br><br> Delta yükseltme başında düğümlerin durumu ve sağlık değerlendirmesi sırasında düğümlerin durumu arasında ölçülür. Denetim, kümenin genel durumunun tolere edilen sınırlar içinde olduğundan emin olmak için her yükseltme etki alanı yükseltmesi tamamlandıktan sonra gerçekleştirilir. |
-| --hata-eylem | Olası değerler\: arasında 'Geçersiz', 'Geri Alma', 'El Kitabı' sayılabilir. |
-| --kuvvet yeniden başlatma | Kod sürümü değişmemiş olsa bile, işlemler yükseltme sırasında zorla yeniden başlatılır. <br><br> Yükseltme yalnızca yapılandırmayı veya verileri değiştirir. |
-| --sağlık-kontrol-yeniden deneme | Uygulama veya küme sağlıklı değilse, sistem durumu denetimleri gerçekleştirme girişimleri arasındaki süre. |
-| --sağlık-kontrol-kararlı | Yükseltme bir sonraki yükseltme etki alanına geçmeden önce uygulamanın veya kümenin sağlıklı kalması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --sağlık-check-bekle | Sistem durumu denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra bekleme süresi. |
-| --çoğaltma-ayar-çek-zaman dilimi | Yükseltme etki alanının işlenmesini engellemek ve beklenmeyen sorunlar olduğunda kullanılabilirlik kaybını önlemek için en yüksek süre. <br><br> Bu zaman aşımı sona erdiğinde, kullanılabilirlik kaybı sorunları ne olursa olsun yükseltme etki alanının işlenmesi devam eder. Zaman anına sıfırlama, her yükseltme etki alanının başında sıfırlanır. Geçerli değerler 0 ile 42949672925 arasındadır. |
-| --yuvarlanma-yükseltme modu | Olası değerler\: arasında 'Geçersiz', 'İzlenmeyen Otomatik', 'İzlenmeyen Kılavuz', 'İzlenen'.  Varsayılan\: UnmonitoredAuto. |
-| --zaman ayarı -t | Varsayılan\: 60. |
-| --sağlıksız uygulamalar | Bir hatayı bildirmeden önce izin verilen en yüksek sağlıksız uygulamaların yüzdesi. <br><br> Örneğin, uygulamaların %10'unun sağlıksız olmasını sağlamak için bu değer 10 olacaktır. Bu yüzde, küme hata olarak kabul edilmeden önce sağlıksız olabilecek uygulamaların en yüksek tolere edilen yüzdesini temsil eder. Yüzdeye saygı duyulur ancak en az bir sağlıksız uygulama varsa, sistem durumu Uyarı olarak değerlendirilir. Bu, ApplicationTypeHealthPolicyMap'e dahil edilen uygulama türlerinin uygulamaları hariç olmak üzere, sağlıksız uygulama sayısının kümedeki toplam uygulama örneği sayısına bölünmesiyle hesaplanır. Hesaplama, az sayıda uygulamada bir başarısızlığa tolerans göstermek için yuvarlar. |
-| --sağlıksız düğümler | Bir hatayı bildirmeden önce izin verilen en yüksek sağlıksız düğüm yüzdesi. <br><br> Örneğin, düğümlerin %10'unun sağlıksız olmasını sağlamak için bu değer 10 olacaktır. Yüzde, küme hata olarak kabul edilmeden önce sağlıksız olabilecek düğümlerin en yüksek tolere edilen yüzdesini temsil eder. Yüzdeye saygı duyulur ancak en az bir sağlıksız düğüm varsa, sistem durumu Uyarı olarak değerlendirilir. Yüzde, kümedeki toplam düğüm sayısına sağlıksız düğüm sayısı bölünerek hesaplanır. Hesaplama, küçük sayıda düğümdeki bir başarısızlığa tolerans göstermek için yuvarlar. Büyük kümelerde, bazı düğümler her zaman aşağı veya onarım için dışarı olacak, bu nedenle bu yüzde bunu tolere etmek için yapılandırılmalıdır. |
-| --upgrade-etki alanı-delta-sağlıksız düğümler | Küme yükseltmeleri sırasında izin verilen yükseltme etki alanı düğümlerinin en fazla izin verilen yüzdesi.  Varsayılan\: 15. <br><br> Delta, yükseltmenin başındaki yükseltme etki alanı düğümlerinin durumu ile sistem durumu değerlendirmesi sırasında yükseltme etki alanı düğümlerinin durumu arasında ölçülür. Denetim, yükseltme etki alanlarının durumunun tolere edilen sınırlar içinde olduğundan emin olmak için tamamlanan tüm yükseltme etki alanları için her yükseltme etki alanı yükseltmesi tamamlandıktan sonra gerçekleştirilir. |
-| --upgrade-etki alanı-zaman ayarı | FailureAction yürütülmeden önce her yükseltme etki alanının tamamlanması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --yükseltme türü | Olası değerler\: arasında 'Geçersiz', 'Yuvarlanma', 'Rolling_ForceRestart' sayılabilir.  Varsayılan\: Yuvarlama. |
-| --yükseltme-zaman ayarı | FailureAction yürütülmeden önce genel yükseltmenin tamamlanması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Bu başarısız olursa, o zaman milisaniye toplam sayısını temsil eden bir sayı olarak yorumlanır. |
-| --uyarı-as-hata | Uyarıların hatalarla aynı önemle davranılıp işitilen olmadığını gösterir. |
+| --uygulama-sistem durumu-eşleme | Hata dağıtılmadan önce uygulama adı çiftlerinin ve en yüksek yüzdelerin JSON kodlu sözlüğü. |
+| --Uygulama-türü-sistem durumu-eşleme | Hata dağıtılmadan önce uygulama türü adı çiftlerinin ve en yüksek yüzdelerin JSON kodlu sözlüğü. |
+| --Delta-sistem durumu-değerlendirme | Her yükseltme etki alanının tamamlanmasından sonra mutlak sistem durumu değerlendirmesi yerine Delta sistem durumu değerlendirmesini mümkün bir şekilde sunar. |
+| --Delta-sağlıksız-düğümler | Küme yükseltmeleri sırasında izin verilen düğümlerin izin verilen en yüksek sınır yüzdesi.  Varsayılan\: 10. <br><br> Delta, yükseltmenin başlangıcında düğümlerin durumu ve sistem durumu değerlendirmesi sırasında düğümlerin durumu arasında ölçülür. Denetim, kümenin genel durumunun toleranslı limitlerin içinde olduğundan emin olmak için her yükseltme etki alanı yükseltmesinin tamamlanmasından sonra gerçekleştirilir. |
+| --hata-eylem | Olası değerler\: ' geçersiz ', ' geri alma ', ' Manual ' değerleridir. |
+| --zorla-yeniden Başlat | Kod sürümü değiştirilmese bile, yükseltme işlemi sırasında süreçler zorla yeniden başlatılır. <br><br> Yükseltme yalnızca yapılandırmayı veya verileri değiştirir. |
+| --sistem durumu-denetimi-yeniden dene | Uygulama veya küme sağlıklı değilse sistem durumu denetimleri gerçekleştirme denemeleri arasındaki süre uzunluğu. |
+| --Sistem Durumu-Çek-kararlı | Yükseltme bir sonraki yükseltme etki alanına geçmeden önce uygulamanın veya kümenin sağlıklı kalması gereken süre. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --Sistem Durumu-Çek-bekle | Durum denetimleri işlemini başlatmadan önce bir yükseltme etki alanını tamamladıktan sonra beklenecek sürenin uzunluğu. |
+| --Çoğaltma-ayarlama-denetim-zaman aşımı | Bir yükseltme etki alanının işlenmesi engellenecek en uzun süre (veya beklenmedik sorunlar olduğunda kullanılabilirlik kaybını önleme). <br><br> Bu zaman aşımı süresi dolduğunda, yükseltme etki alanının işlenmesi, kullanılabilirlik kaybı sorunlarından bağımsız olarak devam edecektir. Zaman aşımı, her yükseltme etki alanının başlangıcında sıfırlanır. Geçerli değerler 0 ile 42949672925 (dahil) arasındadır. |
+| --sıralı-yükseltme modu | Olası değerler '\: geçersiz ', ' Unmonitortoredauto ', ' Unmonitortoredmanual ', ' izleniyor ' değerleridir.  Varsayılan\: olarak depountoredauto. |
+| --timeout-t | Varsayılan\: 60. |
+| --sağlıksız-uygulamalar | Bir hata raporlanmadan önce, sağlıksız uygulamaların izin verilen en büyük yüzdesi. <br><br> Örneğin, uygulamaların %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde değeri, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek uygulamaların en yüksek toleranslı yüzdesini temsil eder. Yüzde oranı dikkate alınmaz ancak en az bir sağlıksız uygulama varsa, sistem durumu uyarı olarak değerlendirilir. Bu, ApplicationTypeHealthPolicyMap 'e dahil edilen uygulama türlerinin uygulamaları hariç, sağlıksız uygulama sayısının kümedeki Toplam uygulama örneği sayısına bölünerek hesaplanır. Hesaplama, küçük sayıda uygulamada bir hata olduğunu kabul etmek için yukarı yuvarlar. |
+| --sağlıksız-düğümler | Bir hata raporlanmadan önce, sağlıksız düğümlerin izin verilen en büyük yüzdesi. <br><br> Örneğin, düğümlerin %10 ' un sağlıksız olmasını sağlamak için bu değer 10 olur. Yüzde, küme hatalı olarak değerlendirilmeden önce sağlıksız olabilecek düğümlerin maksimum toleranslı yüzdesini temsil eder. Yüzde oranı kabul edilir ancak en az bir sağlıksız düğüm varsa, sistem durumu uyarı olarak değerlendirilir. Yüzde, sağlıksız düğümlerin sayısı kümedeki toplam düğüm sayısına bölünerek hesaplanır. Hesaplama, küçük sayıda düğümde bir hata olduğunu tolerans için yukarı yuvarlar. Büyük kümelerde, bazı düğümler her zaman onarım için kapatılacaktır ve bu nedenle bu yüzdenin bu yüzdeyi kabul edecek şekilde yapılandırılması gerekir. |
+| --Upgrade-Domain-Delta-sağlıksız-Nodes | Küme yükseltmeleri sırasında izin verilen yükseltme etki alanı düğümlerinin izin verilen maksimum yüzdesi.  Varsayılan\: 15. <br><br> Delta, yükseltmenin başlangıcında yükseltme etki alanı düğümlerinin durumu ve sistem durumu değerlendirmesi sırasında yükseltme etki alanı düğümlerinin durumu arasında ölçülür. Denetim, yükseltme etki alanlarının durumunun toleranslı limitlerin içinde olduğundan emin olmak için tüm tamamlanan yükseltme etki alanlarında her yükseltme etki alanı yükseltme tamamlandıktan sonra gerçekleştirilir. |
+| --Upgrade-etki alanı zaman aşımı | Her yükseltme etki alanının, FailureAction yürütülmeden önce tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --yükseltme-tür | Olası değerler\: ' geçersiz ', ' kayan ', ' Rolling_ForceRestart ' değerleridir.  Varsayılan\: olarak alınıyor. |
+| --Upgrade-Timeout | FailureAction yürütülmeden önce genel yükseltmenin tamamlaması gereken süre miktarı. <br><br> İlk olarak ISO 8601 süresini temsil eden bir dize olarak yorumlanır. Başarısız olursa, Toplam milisaniye sayısını temsil eden bir sayı olarak yorumlanır. |
+| --hata olarak uyarı | Uyarıların hatalarla aynı önem derecesine sahip olup olmadığını gösterir. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Servis Kumaşı CLI'yi [kur.](service-fabric-cli.md)
-- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

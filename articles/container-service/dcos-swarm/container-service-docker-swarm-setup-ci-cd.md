@@ -1,6 +1,6 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti ve Sürülü CI/CD
-description: Sürekli olarak çok kapsayıcı .NET Core uygulaması sunmak için Docker Swarm, Azure Konteyner Kayıt Defteri ve Azure DevOps ile Azure Kapsayıcı Hizmetini kullanın
+title: Kullanım DıŞı Azure Container Service ve Sısınma ile CI/CD
+description: Sürekli olarak çok kapsayıcılı bir .NET Core uygulaması sunmak için Docker Sısınma, bir Azure Container Registry ve Azure DevOps ile Azure Container Service kullanın
 author: jcorioland
 ms.service: container-service
 ms.topic: conceptual
@@ -8,218 +8,218 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76549062"
 ---
-# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(AmortismanA Uğradı) Azure DevOps Hizmetlerini kullanarak Docker Swarm ile Azure Konteyner Hizmeti'nde çoklu kapsayıcı uygulaması dağıtmak için tam CI/CD ardışık
+# <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>Kullanım DıŞı Azure DevOps Services kullanarak Docker Sısınma ile Azure Container Service çok kapsayıcılı bir uygulama dağıtmak için tam CI/CD işlem hattı
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bulut için modern uygulamalar geliştirirken karşılaşılan en büyük zorluklardan biri, bu uygulamaları sürekli olarak sunabilmektir. Bu makalede, Docker Swarm, Azure Konteyner Kayıt Defteri ve Azure Boru Hatları yönetimiyle Azure Konteyner Hizmeti'ni kullanarak tam sürekli tümleştirme ve dağıtım (CI/CD) ardışık hattını nasıl uygulayacağınızı öğreneceksiniz.
+Bulut için modern uygulamalar geliştirilirken en büyük zorluklardan biri, bu uygulamaları sürekli olarak sunabilmektedir. Bu makalede, Docker Sısınma, Azure Container Registry ve Azure Pipelines yönetimiyle Azure Container Service kullanarak tam bir sürekli tümleştirme ve dağıtım (CI/CD) işlem hattı uygulamayı nasıl uygulayacağınızı öğreneceksiniz.
 
 
-![MyShop örnek uygulama](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
+![MyShop örnek uygulaması](./media/container-service-docker-swarm-setup-ci-cd/myshop-application.png)
 
-Amaç, Azure DevOps Hizmetlerini kullanarak bu uygulamayı sürekli olarak Docker Swarm kümesinde sunmaktır. Aşağıdaki şekil bu sürekli teslimat boru hattı ayrıntıları:
+Amaç, Azure DevOps Services kullanarak bu uygulamayı bir Docker Sısınma kümesinde sürekli olarak sunmaya yönelik bir uygulamadır. Aşağıdaki şekilde bu sürekli teslim işlem hattı ayrıntıları verilmiştir:
 
-![MyShop örnek uygulama](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
+![MyShop örnek uygulaması](./media/container-service-docker-swarm-setup-ci-cd/full-ci-cd-pipeline.png)
 
-İşte adımların kısa bir açıklaması:
+Bu adımların kısa bir açıklaması aşağıda verilmiştir:
 
-1. Kod değişiklikleri kaynak kod deposuna adamıştır (burada, GitHub) 
-1. GitHub, Azure DevOps Hizmetlerinde bir yapıyı tetikler 
-1. Azure DevOps Hizmetleri kaynakların en son sürümünü alır ve uygulamayı oluşturan tüm görüntüleri oluşturur 
-1. Azure DevOps Hizmetleri, her görüntüyü Azure Kapsayıcı Kayıt Defteri hizmeti kullanılarak oluşturulan docker kayıt defterine iter 
-1. Azure DevOps Hizmetleri yeni bir sürümü tetikler 
-1. Sürüm, Azure kapsayıcı hizmet küme ana düğümünde SSH kullanarak bazı komutları çalıştırıyor 
-1. Kümedeki Docker Swarm görüntülerin en son sürümünü çekiyor 
+1. Kod değişiklikleri kaynak kodu deposuna (burada, GitHub) kaydedilir 
+1. GitHub, Azure DevOps Services bir derlemeyi tetikler 
+1. Azure DevOps Services, kaynakların en son sürümünü alır ve uygulamayı oluşturan tüm görüntüleri oluşturur 
+1. Azure DevOps Services her görüntüyü Azure Container Registry hizmeti kullanılarak oluşturulan bir Docker kayıt defterine gönderir 
+1. Azure DevOps Services yeni bir sürümü tetikler 
+1. Sürüm, Azure Container Service kümesi ana düğümünde SSH kullanarak bazı komutları çalıştırır 
+1. Kümedeki Docker Sısınma görüntülerin en son sürümünü çeker 
 1. Uygulamanın yeni sürümü Docker Compose kullanılarak dağıtılır 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiye başlamadan önce aşağıdaki görevleri tamamlamanız gerekir:
+Bu öğreticiye başlamadan önce, aşağıdaki görevleri gerçekleştirmeniz gerekir:
 
 - [Azure Container Service'te Swarm kümesi oluşturma](container-service-deployment.md)
 - [Azure Container Service'teki Swarm kümesine bağlanma](../container-service-connect.md)
-- [Azure kapsayıcı kayıt defteri oluşturma](../../container-registry/container-registry-get-started-portal.md)
-- [Azure DevOps Hizmetleri organizasyonu ve projesi oluşturuldu](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-- [GitHub deposunu GitHub hesabınıza çatal](https://github.com/jcorioland/MyShop/)
+- [Azure Container Registry oluşturma](../../container-registry/container-registry-get-started-portal.md)
+- [Azure DevOps Services kuruluş ve proje oluşturma](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [GitHub deponuzu GitHub hesabınıza çatalla](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Ayrıca Docker yüklü bir Ubuntu (14.04 veya 16.04) makine gerekir. Bu makine, Azure Ardışık İşlemleri işlemleri sırasında Azure DevOps Hizmetleri tarafından kullanılır. Bu makineyi oluşturmanın bir yolu, Azure Marketi'nde bulunan görüntüyü kullanmaktır. 
+Docker 'ın yüklü olduğu bir Ubuntu (14,04 veya 16,04) makinesine de ihtiyacınız vardır. Bu makine, Azure Pipelines süreçler sırasında Azure DevOps Services tarafından kullanılır. Bu makineyi oluşturmanın bir yolu, Azure Marketi 'nde bulunan görüntüyü kullanmaktır. 
 
-## <a name="step-1-configure-your-azure-devops-services-organization"></a>Adım 1: Azure DevOps Hizmetleri kuruluşunuzu yapılandırın 
+## <a name="step-1-configure-your-azure-devops-services-organization"></a>1. Adım: Azure DevOps Services kuruluşunuzu yapılandırma 
 
-Bu bölümde, Azure DevOps Hizmetleri kuruluşunuzu yapılandırın.
+Bu bölümde, Azure DevOps Services kuruluşunuzu yapılandırırsınız.
 
-### <a name="configure-an-azure-devops-services-linux-build-agent"></a>Azure DevOps Services Linux yapı aracısı yapılandırma
+### <a name="configure-an-azure-devops-services-linux-build-agent"></a>Azure DevOps Services Linux derleme Aracısı yapılandırma
 
-Docker görüntüleri oluşturmak ve bu görüntüleri Bir Azure DevOps Hizmetleri yapısından bir Azure kapsayıcı kayıt defterine itmek için bir Linux aracısı kaydetmeniz gerekir. Bu yükleme seçenekleri var:
+Docker görüntüleri oluşturmak ve bu görüntüleri bir Azure DevOps Services derlemeden bir Azure Kapsayıcı kayıt defterine göndermek için bir Linux Aracısı kaydetmeniz gerekir. Şu yükleme seçenekleriniz vardır:
 
-* [Linux'ta bir aracı dağıtma](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
+* [Linux üzerinde bir Aracı dağıtma](https://www.visualstudio.com/docs/build/admin/agents/v2-linux)
 
-* [Azure DevOps Hizmetleri aracısını çalıştırmak için Docker'ı kullanın](https://hub.docker.com/r/microsoft/vsts-agent)
+* [Azure DevOps Services aracısını çalıştırmak için Docker 'ı kullanma](https://hub.docker.com/r/microsoft/vsts-agent)
 
-### <a name="install-the-docker-integration-azure-devops-services-extension"></a>Docker TümleştirmeAzure DevOps Hizmetleri uzantısını yükleme
+### <a name="install-the-docker-integration-azure-devops-services-extension"></a>Docker tümleştirme Azure DevOps Services uzantısını yükler
 
-Microsoft, Azure Pipelines işlemlerinde Docker ile çalışmak için bir Azure DevOps Hizmetleri uzantısı sağlar. Bu uzantı Azure [DevOps Hizmetleri Marketplace'te](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker)kullanılabilir. Bu uzantıyı Azure DevOps Hizmetleri kuruluşunuza eklemek için **Yükle'yi** tıklatın:
+Microsoft, Azure Pipelines işlemlerinde Docker ile çalışmak için bir Azure DevOps Services uzantısı sağlar. Bu uzantı [Azure DevOps Services marketi](https://marketplace.visualstudio.com/items?itemName=ms-vscs-rm.docker)'nde kullanılabilir. Bu uzantıyı Azure DevOps Services kuruluşunuza eklemek için, **yükler** ' e tıklayın:
 
-![Docker Tümleştirmesini Yükleyin](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
+![Docker tümleştirmesini yükler](./media/container-service-docker-swarm-setup-ci-cd/install-docker-vsts.png)
 
-Kimlik bilgilerinizi kullanarak Azure DevOps Hizmetleri kuruluşunuza bağlanmanız istenir. 
+Kimlik bilgilerinizi kullanarak Azure DevOps Services kuruluşunuza bağlanmanız istenir. 
 
-### <a name="connect-azure-devops-services-and-github"></a>Azure DevOps Hizmetlerini ve GitHub'ı bağlayın
+### <a name="connect-azure-devops-services-and-github"></a>Azure DevOps Services ve GitHub 'ı bağlama
 
-Azure DevOps Hizmetleri projeniz ile GitHub hesabınız arasında bir bağlantı kurun.
+Azure DevOps Services projeniz ile GitHub hesabınız arasında bir bağlantı kurun.
 
-1. Azure DevOps Hizmetleri projenizde araç çubuğundaki **Ayarlar** simgesini tıklatın ve **Hizmetler'i**seçin.
+1. Azure DevOps Services projenizde, araç çubuğunda **Ayarlar** simgesine tıklayın ve **Hizmetler**' i seçin.
 
-    ![Azure Devops Hizmetleri - Dış Bağlantı](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
+    ![Azure DevOps Services-dış bağlantı](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. Solda, Yeni **Hizmet Bitiş Noktası** > **GitHub'ı**tıklatın.
+1. Sol tarafta **yeni hizmet uç noktası** > **GitHub**' a tıklayın.
 
-    ![Azure Devops Hizmetleri - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
+    ![Azure DevOps Services-GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-1. Azure DevOps Hizmetleri'nin GitHub hesabınızla çalışmasına izin vermek için **Yet'i** tıklatın ve açılan pencerede yordamı izleyin.
+1. Azure DevOps Services GitHub hesabınızla çalışacak şekilde yetkilendirmek için **Yetkilendir** ' e tıklayın ve açılan penceredeki yordamı izleyin.
 
-    ![Azure DevOps Hizmetleri - GitHub'ı Yetkilendirme](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
+    ![Azure DevOps Services-GitHub 'ı yetkilendir](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
-### <a name="connect-azure-devops-services-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Azure DevOps Hizmetlerini Azure kapsayıcı kayıt defterinize ve Azure Kapsayıcı Hizmeti kümenize bağlayın
+### <a name="connect-azure-devops-services-to-your-azure-container-registry-and-azure-container-service-cluster"></a>Azure DevOps Services Azure Container Registry ve Azure Container Service kümenize bağlama
 
-CI/CD ardışık şirketine girmeden önceki son adımlar, konteyner kayıt defterinize ve Azure'daki Docker Swarm kümenize dış bağlantıları yapılandırmaktır. 
+CI/CD işlem hattına almadan önce geçen adımlar, Azure 'da kapsayıcı kayıt defteriniz ve Docker Sısınma kümeniz için dış bağlantıları yapılandırmaktır. 
 
-1. Azure DevOps Hizmetleri projenizin **Hizmetler** ayarlarında Docker **Kayıt Defteri**türüne bir hizmet bitiş noktası ekleyin. 
+1. Azure DevOps Services projenizin **Hizmetler** ayarları ' nda **Docker kayıt defteri**türünde bir hizmet uç noktası ekleyin. 
 
-1. Açılan açılır pencerede, URL'yi ve Azure konteyner kayıt defterinizin kimlik bilgilerini girin.
+1. Açılan pencerede, Azure Container Registry 'nizin URL 'sini ve kimlik bilgilerini girin.
 
-    ![Azure DevOps Hizmetleri - Docker Kayıt Defteri](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
+    ![Azure DevOps Services-Docker kayıt defteri](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-1. Docker Swarm kümesi için **SSH**türünün bir bitiş noktası ekleyin. Ardından Swarm kümenizin SSH bağlantı bilgilerini girin.
+1. Docker Sısınma kümesi için **SSH**türünde bir uç nokta ekleyin. Ardından, Sısınma kümenizin SSH bağlantı bilgilerini girin.
 
-    ![Azure Devops Hizmetleri - SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
+    ![Azure DevOps Services-SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
-Tüm yapılandırma şimdi yapılır. Sonraki adımlarda, uygulamayı Docker Swarm kümesine oluşturan ve dağıtan CI/CD ardışık bir yapı oluşturursunuz. 
+Tüm yapılandırma şimdi yapılır. Sonraki adımlarda, uygulamayı oluşturup Docker Sısınma kümesine dağıtan CI/CD işlem hattını oluşturursunuz. 
 
-## <a name="step-2-create-the-build-pipeline"></a>Adım 2: Yapı ardışık hattını oluşturma
+## <a name="step-2-create-the-build-pipeline"></a>2. Adım: derleme işlem hattını oluşturma
 
-Bu adımda, Azure DevOps Hizmetleri projeniz için bir yapı ardışık hattı ayarlar sınız ve konteyner resimleriniz için yapı iş akışını tanımlarsınız
+Bu adımda, Azure DevOps Services projeniz için bir yapı işlem hattı ayarlarsınız ve kapsayıcı görüntüleriniz için derleme iş akışını tanımlarsınız
 
-### <a name="initial-pipeline-setup"></a>İlk ardışık düzen kurulumu
+### <a name="initial-pipeline-setup"></a>İlk işlem hattı kurulumu
 
-1. Yapı ardışık bir yapı oluşturmak için Azure DevOps Hizmetleri projenize bağlanın ve **& Sürümü Oluştur'u**tıklatın. 
+1. Bir derleme işlem hattı oluşturmak için Azure DevOps Services projenize bağlanın ve **derleme & sürüm**' ya tıklayın. 
 
-1. Yapı **tanımları** bölümünde **+ Yeni'yi**tıklatın. Boş **şablonu** seçin.
+1. **Derleme tanımları** bölümünde **+ Yeni**' ye tıklayın. **Boş** şablonu seçin.
 
-    ![Azure Devops - Yeni Yapı Boru Hattı](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
+    ![Azure DevOps-yeni derleme işlem hattı](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-1. Yeni yapıyı bir GitHub deposu kaynağıyla yapılandırın, **Sürekli tümleştirmeyi**denetleyin ve Linux aracınızı kaydettiğiniz aracı kuyruğunu seçin. Yapı ardışık hattını oluşturmak için **Oluştur'u** tıklatın.
+1. Yeni derlemeyi GitHub deposu kaynağıyla yapılandırın, **sürekli tümleştirmeyi**denetleyin ve Linux aracınızı kaydettiğiniz aracı kuyruğunu seçin. Derleme işlem hattını oluşturmak için **Oluştur** ' a tıklayın.
 
-    ![Azure Devops Hizmetleri - Yapı Ardışık Hattı Oluştur](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
+    ![Azure DevOps Services-derleme işlem hattı oluşturma](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-1. Yapı **Tanımları** sayfasında, önce **Depo** sekmesini açın ve önkoşullarda oluşturduğunuz MyShop projesinin çatalını kullanacak şekilde yapıyı yapılandırın. **Varsayılan dal**olarak *acs-docs* seçtiğinizden emin olun.
+1. **Derleme tanımları** sayfasında, önce **Depo** sekmesini açın ve derlemeyi, Önkoşullarda oluşturduğunuz myshop projesinin çatalını kullanacak şekilde yapılandırın. **Varsayılan dal**olarak *ACS-docs* ' i seçtiğinizden emin olun.
 
-    ![Azure DevOps Hizmetleri - Repository Configuration oluştur](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
+    ![Azure DevOps Services-depo yapılandırması oluştur](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-1. **Tetikleyiciler** sekmesinde, yapıyı her işlemeden sonra tetiklenecek şekilde yapılandırın. **Sürekli tümleştirme** ve **Toplu İşlem değişikliklerini**seçin.
+1. **Tetikleyiciler** sekmesinde, her işlemeden sonra tetiklenecek derlemeyi yapılandırın. **Sürekli tümleştirme** ve **toplu değişiklikler**' i seçin.
 
-    ![Azure Devops Hizmetleri - Tetikleyici Yapılandırması Oluştur](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
+    ![Azure DevOps Services-tetikleyici yapılandırması oluştur](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
-### <a name="define-the-build-workflow"></a>Yapı iş akışını tanımlama
-Sonraki adımlar yapı iş akışını tanımlar. *MyShop* uygulaması için oluşturmak için beş konteyner görüntüleri vardır. Her resim, proje klasörlerinde bulunan Dockerfile kullanılarak oluşturulur:
+### <a name="define-the-build-workflow"></a>Derleme iş akışını tanımlama
+Sonraki adımlar derleme iş akışını tanımlar. *Myshop* uygulaması için oluşturulacak beş kapsayıcı görüntüsü vardır. Her görüntü, proje klasörlerinde bulunan Dockerfile kullanılarak oluşturulmuştur:
 
-* ÜrünlerApi
+* Productsapı
 * Ara sunucu
-* DerecelendirmeApi
-* ÖnerilerApi
+* Oytingsapı
+* RecommendationsApi
 * ShopFront
 
-Her görüntü için iki Docker adımı eklemeniz, bir resmi oluşturmak için ve bir de görüntüyü Azure kapsayıcı kayıt defterine itmek için eklemeniz gerekir. 
+Her görüntü için, biri görüntüyü derlemek ve bir diğeri de görüntüyü Azure Container Registry 'de göndermek için iki Docker adımı eklemeniz gerekir. 
 
-1. Yapı iş akışına bir adım eklemek için **+ Yapı adımı ekle'yi** tıklatın ve **Docker'ı**seçin.
+1. Derleme iş akışında bir adım eklemek için **+ derleme Ekle adımı** ve **Docker**' ı seçin.
 
-    ![Azure Devops Hizmetleri - Yapı Adımları Ekle](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
+    ![Azure DevOps Services-derleme adımları Ekle](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-1. Her görüntü için, komutu `docker build` kullanan bir adımı yapılandırın.
+1. Her görüntü için, `docker build` komutunu kullanan bir adımı yapılandırın.
 
-    ![Azure Devops Hizmetleri - Docker Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
+    ![Azure DevOps Services-Docker derlemesi](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    Yapı işlemi için Azure kapsayıcı kayıt defterinizi, görüntü eylemi **oluşturun'u** ve her görüntüyü tanımlayan Dockerfile'ı seçin. Yapı **bağlamını** Dockerfile kök dizini olarak ayarlayın ve **Görüntü Adı'nı**tanımlayın. 
+    Yapı işlemi için, Azure Container kayıt defterinizi, **görüntü oluşturma** eylemini ve her görüntüyü tanımlayan Dockerfile dosyasını seçin. **Oluşturma bağlamını** dockerfile kök dizini olarak ayarlayın ve **görüntü adını**tanımlayın. 
     
-    Önceki ekranda gösterildiği gibi, görüntü adını Azure kapsayıcı kayıt defterinizin URI'si ile başlatın. (Bu örnekteki yapı tanımlayıcısı gibi görüntünün etiketini parametrelendirmek için bir yapı değişkeni de kullanabilirsiniz.)
+    Önceki ekranda gösterildiği gibi, Azure Container Registry 'nizin URI 'siyle birlikte görüntü adını başlatın. (Bu örnekteki derleme tanımlayıcısı gibi, görüntünün etiketini parametreleştirmek için de bir yapı değişkeni kullanabilirsiniz.)
 
-1. Her görüntü için komutu `docker push` kullanan ikinci bir adımı yapılandırın.
+1. Her görüntü için, `docker push` komutunu kullanan ikinci bir adımı yapılandırın.
 
-    ![Azure Devops Hizmetleri - Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
+    ![Azure DevOps Services-Docker Push](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
-    Push işlemi için Azure kapsayıcı kayıt defterinizi, **görüntü eylemini İtirahat la** ve önceki adımda oluşturulmuş **Görüntü Adı'nı** girin.
+    Gönderme işlemi için, Azure Container kayıt defterinizi, **bir görüntü gönder** eylemini seçin ve önceki adımda oluşturulan **görüntü adını** girin.
 
-1. Beş görüntünün her biri için yapı ve itme adımlarını yapılandırıldıktan sonra, yapı iş akışına iki adım daha ekleyin.
+1. Beş görüntünün her biri için derleme ve gönderme adımlarını yapılandırdıktan sonra, derleme iş akışına iki adım daha ekleyin.
 
-    a. Docker-compose.yml dosyasındaki *BuildNumber* oluşumunu geçerli yapı Kimliği ile değiştirmek için bash komut dosyası kullanan bir komut satırı görevi. Ayrıntılar için aşağıdaki ekrana bakın.
+    a. Docker-Compose. yıml dosyasındaki *BuildNumber* oluşumunu geçerli derleme kimliğiyle değiştirmek için bash betiği kullanan bir komut satırı görevi. Ayrıntılar için aşağıdaki ekrana bakın.
 
-    ![Azure DevOps Hizmetleri - Dosyayı Güncelleştir](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
+    ![Azure DevOps Services-oluşturma dosyasını güncelleştir](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
-    b. Sürümde kullanılabilecek şekilde, güncelleştirilmiş Derleme dosyasını yapı yapı olarak düşüren bir görev. Ayrıntılar için aşağıdaki ekrana bakın.
+    b. Sürümde kullanılabilmesi için güncelleştirilmiş oluşturma dosyasını yapı yapıtı olarak bırakılanlar görevi. Ayrıntılar için aşağıdaki ekrana bakın.
 
-    ![Azure DevOps Hizmetleri - Oluştur dosyası yaz](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
+    ![Azure DevOps Services-oluşturma dosyası Yayımla](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-1. **Kaydet'i** tıklatın ve yapı ardışık adınızı adlandırın.
+1. **Kaydet** ' e tıklayın ve derleme işlem hattınızı adlandırın.
 
-## <a name="step-3-create-the-release-pipeline"></a>Adım 3: Sürüm ardışık hattını oluşturma
+## <a name="step-3-create-the-release-pipeline"></a>3. Adım: yayın işlem hattını oluşturma
 
-Azure DevOps Hizmetleri, [ortamlar arasında sürümleri yönetmenize](https://www.visualstudio.com/team-services/release-management/)olanak tanır. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığınızdan emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Kapsayıcı Hizmeti Docker Swarm kümenizi temsil eden yeni bir ortam oluşturabilirsiniz.
+Azure DevOps Services [ortamlar genelinde yayınları yönetmenizi](https://www.visualstudio.com/team-services/release-management/)sağlar. Uygulamanızın farklı ortamlarınızda (geliştirme, test, ön üretim ve üretim gibi) sorunsuz bir şekilde dağıtıldığından emin olmak için sürekli dağıtımı etkinleştirebilirsiniz. Azure Container Service Docker Sısınma kümenizi temsil eden yeni bir ortam oluşturabilirsiniz.
 
-![Azure DevOps Hizmetleri - ACS sürümü](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
+![Azure DevOps Services-ACS yayını](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-acs.png) 
 
-### <a name="initial-release-setup"></a>İlk sürüm kurulumu
+### <a name="initial-release-setup"></a>İlk yayın kurulumu
 
-1. Sürüm ardışık bir sözcük oluşturmak **için, Sürümler** > **+ Sürüm'ü** tıklatın
+1. Yayın işlem hattı oluşturmak için, **yayınlar** > **+ yayın** ' a tıklayın.
 
-1. Yapı kaynağını yapılandırmak **için, Yapı** > **Link an artifact source**Kaynağı'nı tıklatın. Burada, bu yeni sürüm ardışık hattını önceki adımda tanımladığınız yapıya bağlayabilirsiniz. Bunu yaparak, docker-compose.yml dosyası sürüm sürecinde kullanılabilir.
+1. Yapıt kaynağını yapılandırmak için,**yapıt kaynak bağlantısı**' **na tıklayın.** >  Burada, bu yeni yayın ardışık düzenini önceki adımda tanımladığınız yapıya bağlayın. Bunu yaptığınızda, Docker-Compose. yıml dosyası yayın sürecinde kullanılabilir.
 
-    ![Azure DevOps Hizmetleri - Sürüm Yapıları](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
+    ![Azure DevOps Services-yayın yapıtları](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-1. Sürüm tetikleyicisini yapılandırmak için **Tetikleyiciler'i** tıklatın ve **Sürekli Dağıtım'ı**seçin. Tetikleyiciyi aynı yapı kaynağına ayarlayın. Bu ayar, yapı başarıyla tamamlanır tamamlanmaz yeni bir sürümün başlatılmasını sağlar.
+1. Yayın tetikleyicisini yapılandırmak için **Tetikleyiciler** ' e tıklayın ve **sürekli dağıtım**' ı seçin. Tetikleyiciyi aynı yapıt kaynağında ayarlayın. Bu ayar, yapı başarıyla tamamlandıktan hemen sonra yeni bir sürümün başlamasını sağlar.
 
-    ![Azure DevOps Hizmetleri - Sürüm Tetikleyicileri](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
+    ![Azure DevOps Services-yayın Tetikleyicileri](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
-### <a name="define-the-release-workflow"></a>Sürüm iş akışını tanımlama
+### <a name="define-the-release-workflow"></a>Yayın iş akışını tanımlama
 
-Sürüm iş akışı, eklediğiniz iki görevden oluşur.
+Yayın iş akışı, eklediğiniz iki görevden oluşur.
 
-1. Daha önce yapılandırdığınız SSH bağlantısını kullanarak, oluşturma dosyasını Docker Swarm ana düğümündeki bir *dağıtım* klasörüne güvenli bir şekilde kopyalamak için bir görevi yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
+1. Daha önce yapılandırdığınız SSH bağlantısını kullanarak, oluşturma dosyasını Docker Sısınma ana düğümündeki bir *dağıtım* klasörüne güvenli bir şekilde kopyalamak için bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
 
-    ![Azure Devops Hizmetleri - Sürüm SCP](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
+    ![Azure DevOps Services-yayın SCP 'si](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-1. Çalıştırmak `docker` için bir bash komutu yürütmek `docker-compose` için ikinci bir görev yapılandırın ve ana düğüm üzerinde komutları. Ayrıntılar için aşağıdaki ekrana bakın.
+1. Ana düğümde ve `docker` `docker-compose` komutları çalıştırmak için bash komutunu yürütmek üzere ikinci bir görev yapılandırın. Ayrıntılar için aşağıdaki ekrana bakın.
 
-    ![Azure Devops Hizmetleri - Yayın Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
+    ![Azure DevOps Services-Bash yayını](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
-    Ana görevde yürütülen komut, aşağıdaki görevleri yapmak için Docker CLI ve Docker-Compose CLI'yi kullanır:
+    Ana bilgisayarda yürütülen komut, aşağıdaki görevleri yapmak için Docker CLı ve Docker-Compose CLı kullanın:
 
-   - Azure kapsayıcı kayıt defterine giriş yapın **(Değişkenler** sekmesinde tanımlanan üç yapı variab'les kullanır)
-   - Swarm bitiş noktasıyla çalışmak için **DOCKER_HOST** değişkeni tanımlayın (:2375)
-   - Önceki güvenli kopyalama görevi tarafından oluşturulan ve docker-compose.yml dosyasını içeren *dağıtım* klasörüne gidin 
-   - Yeni `docker-compose` görüntüleri çeken, hizmetleri durduran, hizmetleri kaldıran ve kapsayıcıları oluşturan komutları yürütün.
+   - Azure Container Registry 'de oturum açın ( **değişkenler** sekmesinde tanımlanan üç yapı varinlarını kullanır)
+   - Sısınma uç noktasıyla çalışacak **DOCKER_HOST** değişkenini tanımlayın (: 2375)
+   - Önceki güvenli kopyalama görevi tarafından oluşturulan *dağıtım* klasörüne gidin ve Docker-Compose. yıml dosyasını içerir 
+   - Yeni `docker-compose` görüntüleri çekmek, hizmetleri durdurmak, Hizmetleri kaldırmak ve kapsayıcıları oluşturmak için komutları yürütün.
 
      >[!IMPORTANT]
-     > Önceki ekranda gösterildiği gibi, **STDERR** onay kutusunda Fail'i işaretsiz bırakın. Bu önemli bir ayardır, çünkü `docker-compose` kapsayıcılar gibi birkaç tanılama iletisini yazdırır, standart hata çıktısı üzerinde durdurulabilir veya silinir. Onay kutusunu işaretleseniz, Azure DevOps Hizmetleri her şey yolunda gitse bile sürüm sırasında hatalar oluştuğunu bildirir.
+     > Önceki ekranda gösterildiği gibi, **stderr üzerinde başarısız oldu** onay kutusunu işaretlenmemiş olarak bırakın. Bu önemli bir ayardır, çünkü `docker-compose` kapsayıcılar gibi çeşitli tanılama iletileri, standart hata çıktısındaki bir şekilde durdurulur veya silinir. Onay kutusunu işaretlerseniz, Azure DevOps Services yayın sırasında oluşan, ancak her şey iyi gitse de oluşan hataları raporlar.
      >
-1. Bu yeni sürüm ardışık hattını kaydedin.
+1. Bu yeni sürüm ardışık düzenini kaydedin.
 
 
 >[!NOTE]
->Eski hizmetleri durdurup yenisini çalıştırdığımız için bu dağıtım biraz kapalı kalma süresi içerir. Mavi-yeşil bir dağıtım yaparak bunu önlemek mümkündür.
+>Eski Hizmetleri durdurmakta ve yenisini çalıştırdığımızda bu dağıtımda bazı kapalı kalma süreleri vardır. Mavi yeşil bir dağıtım gerçekleştirerek bunu önlemek mümkündür.
 >
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4. Adım. CI/CD ardışık hattını test edin
+## <a name="step-4-test-the-cicd-pipeline"></a>4. Adım. CI/CD işlem hattını sınama
 
-Şimdi yapılandırma ile yapılır, bu yeni CI / CD ardışık zaman. Bunu test etmenin en kolay yolu kaynak kodu güncelleştirmek ve değişiklikleri GitHub deponuza işlemektir. Kodu ittikten birkaç saniye sonra Azure DevOps Hizmetlerinde çalışan yeni bir yapı görürsünüz. Başarıyla tamamlandığında, yeni bir sürüm tetiklenir ve uygulamanın yeni sürümünü Azure Kapsayıcı Hizmeti kümesine dağıtacaktır.
+Yapılandırma ile işiniz bittiğinde, bu yeni CI/CD işlem hattını test etme zamanı. Bunu test etmenin en kolay yolu, kaynak kodu güncellemek ve değişiklikleri GitHub deponuza yürütmesidir. Kodu gönderdikten sonra birkaç saniye sonra, Azure DevOps Services ' de çalışan yeni bir yapı görürsünüz. Başarılı bir şekilde tamamlandıktan sonra yeni bir yayın tetiklenir ve Azure Container Service kümesinde uygulamanın yeni sürümünü dağıtacaktır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Azure DevOps Hizmetleri ile CI/CD hakkında daha fazla bilgi için [Azure Ardışık Hatları Belgeleri](/azure/devops/pipelines/?view=azure-devops) makalesine bakın.
+* Azure DevOps Services ile CI/CD hakkında daha fazla bilgi için [Azure Pipelines belge](/azure/devops/pipelines/?view=azure-devops) makalesine bakın.

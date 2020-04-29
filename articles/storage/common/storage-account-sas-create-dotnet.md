@@ -1,7 +1,7 @@
 ---
 title: .NET ile hesap SAS oluşturma
 titleSuffix: Azure Storage
-description: .NET istemci kitaplığını kullanarak paylaşılan erişim imzası (SAS) hesabını nasıl oluşturursunuz öğrenin.
+description: .NET istemci kitaplığını kullanarak hesap paylaşılan erişim imzası (SAS) oluşturmayı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,23 +11,23 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 9da27cef7bafa94715a42db86fc5a5675a049eb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137878"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET ile hesap SAS oluşturma
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-Bu makalede, [.NET için Azure Depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile bir hesap SAS oluşturmak için depolama hesabı anahtarının nasıl kullanılacağı nı gösterir.
+Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)Ile hesap SAS oluşturmak üzere depolama hesabı anahtarının nasıl kullanılacağı gösterilmektedir.
 
 ## <a name="create-an-account-sas"></a>Hesap SAS’si oluşturma
 
-Bir kapsayıcı için hesap SAS oluşturmak için [CloudStorageAccount.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) yöntemini arayın.
+Bir kapsayıcı için hesap SAS oluşturmak için [Cloudstorageaccount. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.getsharedaccesssignature) metodunu çağırın.
 
-Aşağıdaki kod örneği, Blob ve Dosya hizmetleri için geçerli olan bir hesap SAS oluşturur ve istemciye hizmet düzeyi API'lerine erişmek için okuma, yazma ve liste izinleri verir. SAS hesabı protokolü HTTPS ile sınırlandırırken, istek HTTPS ile yapılmalıdır. Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Aşağıdaki kod örneği, blob ve dosya hizmetleri için geçerli olan bir hesap SAS oluşturur ve hizmet düzeyi API 'Lerine erişmek için istemci izinleri okuma, yazma ve listeleme izinleri verir. Hesap SAS, protokolü HTTPS olarak kısıtlar, bu nedenle isteğin HTTPS ile yapılması gerekir. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```csharp
 static string GetAccountSASToken()
@@ -51,9 +51,9 @@ static string GetAccountSASToken()
 }
 ```
 
-## <a name="use-an-account-sas-from-a-client"></a>İstemciden gelen bir hesap SAS kullanma
+## <a name="use-an-account-sas-from-a-client"></a>İstemciden hesap SAS kullanma
 
-Blob hizmetiiçin hizmet düzeyi API'lerine erişmek için SAS hesabını kullanmak için, depolama hesabınız için SAS ve Blob depolama bitiş noktasını kullanarak bir Blob hizmet istemcisi nesnesi oluşturun. Açı parantezindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+Blob hizmeti için hizmet düzeyi API 'Lerine erişmek üzere hesap SAS 'yi kullanmak için, depolama hesabınız için SAS ve BLOB depolama uç noktasını kullanarak bir blob hizmeti istemci nesnesi oluşturun. Açılı ayraçlar içindeki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -97,5 +97,5 @@ static void UseAccountSAS(string sasToken)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni verme](storage-sas-overview.md)
+- [Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md)
 - [Hesap SAS’si oluşturma](/rest/api/storageservices/create-account-sas)

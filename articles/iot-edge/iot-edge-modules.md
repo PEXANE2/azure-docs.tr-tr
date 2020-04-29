@@ -1,6 +1,6 @@
 ---
-title: Aygıtlarınızda modüllerin mantığı nasıl çalıştırdığını öğrenin - Azure IoT Edge | Microsoft Dokümanlar
-description: Azure IoT Edge modülleri, IoT Edge aygıtlarında iş mantığı çalıştırabilmeniz için uzaktan dağıtılabilen ve yönetilebilen kapsayıcılaştırılmış mantık birimleridir
+title: Modüllerin cihazlarınızda mantık çalıştırma hakkında bilgi edinin-Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge modüller, IoT Edge cihazlarda iş mantığını çalıştırabilmeniz için uzaktan dağıtılabilecek ve yönetilebilen mantıksal birim birimleridir.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1c625e628f53d156ad56a1c69df1c23aec9120ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76548722"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge modüllerini anlama
 
-Azure IoT Edge, *modüller*biçiminde kenarda iş mantığı dağıtmanızı ve yönetmenize olanak tanır. Azure IoT Edge modülleri, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure hizmetlerini (Azure Akış Analizi gibi) veya kendi çözüme özel kodunuzu içerebilir. Modüllerin nasıl geliştirildiğini, dağıtılabildiğini ve sürdürüldünü anlamak için, bir modülün dört kavramsal öğesini göz önünde bulundurun:
+Azure IoT Edge, çalışma mantığını uç üzerinde *modüller*biçiminde dağıtmanıza ve yönetmenize olanak tanır. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure Hizmetleri (Azure Stream Analytics gibi) veya kendi çözüme özgü kodunuzla bulunabilir. Modüllerin nasıl geliştirildiğini, dağıtıldığını ve yapıldığını anlamak için, bir modülün dört kavramsal öğesini göz önünde bulundurun:
 
-* **Modül görüntüsü,** bir modülü tanımlayan yazılımı içeren bir pakettir.
-* **Modül örneği,** modül görüntüsünü bir IoT Edge aygıtında çalıştıran belirli bir hesaplama birimidir. Modül örneği IoT Edge çalışma zamanı tarafından başlatılır.
-* **Modül kimliği,** IoT Hub'ında depolanan ve her modül örneğiyle ilişkili bir bilgi dir (güvenlik kimlik bilgileri dahil).
-* **Modül ikizi,** IoT Hub'da depolanan ve meta veriler, yapılandırmalar ve koşullar da dahil olmak üzere bir modül örneği için durum bilgilerini içeren bir JSON belgesidir.
+* **Modül görüntüsü** , bir modülü tanımlayan yazılımı içeren bir pakettir.
+* **Modül örneği** , bir IoT Edge cihazında modül görüntüsünü çalıştıran belirli bir hesaplama birimidir. Modül örneği IoT Edge çalışma zamanı tarafından başlatılır.
+* **Modül kimliği** , her modül örneğiyle ilişkili IoT Hub depolanan bir bilgi parçasıdır (güvenlik kimlik bilgileri dahil).
+* **Modül ikizi** , meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere bir modül örneği için durum bilgilerini içeren IoT Hub depolanan bir JSON belgesidir.
 
 ## <a name="module-images-and-instances"></a>Modül görüntüleri ve örnekleri
 
-IoT Edge modül görüntüleri, IoT Edge çalışma zamanının yönetim, güvenlik ve iletişim özelliklerinden yararlanan uygulamalar içerir. Kendi modül resimlerinizi geliştirebilir veya Azure Akış Analizi gibi desteklenen bir Azure hizmetinden bir tane dışa aktarabilirsiniz.
-Görüntüler bulutta bulunur ve farklı çözümlerde güncellenebilir, değiştirilebilir ve dağıtılabilir. Örneğin, üretim hattı çıktısını tahmin etmek için makine öğrenimini kullanan bir modül, bir drone'u kontrol etmek için bilgisayar görüşünü kullanan bir modülden ayrı bir görüntü olarak bulunur.
+IoT Edge modül görüntüleri, IoT Edge çalışma zamanının yönetim, güvenlik ve iletişim özelliklerinden faydalanan uygulamalar içerir. Kendi modül görüntülerinizi geliştirebilir veya Azure Stream Analytics gibi desteklenen bir Azure hizmetinden dışarı aktarabilirsiniz.
+Görüntüler bulutta bulunur ve farklı çözümlerde güncelleştirilebilirler, değiştirilebilir ve dağıtılabilir. Örneğin, üretim satırı çıkışını tahmin etmek için makine öğrenimi kullanan bir modül, bir drone 'yi denetlemek için bilgisayar vizyonu kullanan bir modülden ayrı bir görüntü olarak mevcuttur.
 
-Bir aygıta her modül görüntüsü dağıtıldığında ve IoT Edge çalışma zamanı tarafından başlatıldığında, bu modülün yeni bir örneği oluşturulur. Dünyanın farklı yerlerinde iki cihaz aynı modül görüntüsünü kullanabilir. Ancak, modül cihazda başlatıldığında her aygıtın kendi modül örneği olacaktır.
+Bir cihaza her bir modül görüntüsü dağıtıldığında ve IoT Edge çalışma zamanı tarafından başlatıldığında, Bu modülün yeni bir örneği oluşturulur. Dünyanın farklı kısımlarındaki iki cihaz aynı modül görüntüsünü kullanabilir. Ancak, modül cihazda başlatıldığında her cihazın kendi modül örneği olur.
 
-![Diyagram - Buluttaki modül görüntüleri, cihazlardaki modül örnekleri](./media/iot-edge-modules/image_instance.png)
+![Diyagram-buluttaki modül resimleri, cihazlardaki modül örnekleri](./media/iot-edge-modules/image_instance.png)
 
-Uygulamada, modül görüntüleri bir depoda kapsayıcı görüntüleri olarak bulunur ve modül örnekleri aygıtlarda kapsayıcıdır.
+Uygulamada, modüller görüntüleri bir depodaki kapsayıcı görüntüleri olarak bulunur ve modül örnekleri cihazlarda kapsayıcılardır.
 
 <!--
 As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
@@ -41,19 +41,19 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 ## <a name="module-identities"></a>Modül kimlikleri
 
-IoT Edge çalışma zamanı tarafından yeni bir modül örneği oluşturulduğunda, karşılık gelen bir modül kimliği alır. Modül kimliği IoT Hub'da depolanır ve bu modül örneği için tüm yerel ve bulut iletişimleri için adresleme ve güvenlik kapsamı olarak kullanılır.
+IoT Edge çalışma zamanı tarafından yeni bir modül örneği oluşturulduğunda, buna karşılık gelen bir modül kimliği alır. Modül kimliği IoT Hub depolanır ve söz konusu modül örneği için tüm yerel ve bulut iletişimleri için adresleme ve güvenlik kapsamı olarak kullanılır.
 
-Modül örneğiyle ilişkili kimlik, örneğin çalıştırıldığı aygıtın kimliğine ve çözümünüzde bu modüle sağladığınız ada bağlıdır. Örneğin, Azure Akış `insight` Analizi kullanan bir modülü çağırır sanız ve bunu bir `Hannover01`aygıta dağıtırsanız, IoT Edge `/devices/Hannover01/modules/insight`çalışma zamanı , ilgili modül kimliği oluşturur.
+Bir modül örneğiyle ilişkili kimlik, örneğin çalıştığı aygıtın kimliğine ve çözümünüzde Bu modüle sağladığınız ada bağlıdır. Örneğin, bir Azure Stream Analytics kullanan bir `insight` modül çağırırsanız ve bunu adlı `Hannover01`bir cihaza dağıtırsanız, IoT Edge çalışma zamanı adlı `/devices/Hannover01/modules/insight`karşılık gelen bir modül kimliğini oluşturur.
 
-Açıkçası, senaryolarda bir modül görüntüsünü aynı aygıta birden çok kez dağıtmanız gerektiğinde, aynı görüntüyü farklı adlarla birden çok kez dağıtabilirsiniz.
+Açık olarak, bir modül görüntüsünü aynı cihaza birden çok kez dağıtmanız gerektiğinde, aynı görüntüyü farklı adlarla birden çok kez dağıtabilirsiniz.
 
-![Diyagram - Modül kimlikleri aygıtlar içinde ve cihazlar arasında benzersizdir](./media/iot-edge-modules/identity.png)
+![Diyagram-modül kimlikleri cihazlar ve cihazlar arasında benzersizdir](./media/iot-edge-modules/identity.png)
 
-## <a name="module-twins"></a>Modül ikizleri
+## <a name="module-twins"></a>Modül TWINS
 
-Her modül örneğinde, modül örneğini yapılandırmak için kullanabileceğiniz karşılık gelen bir modül ikizi de vardır. Örnek ve ikiz modül kimliği ile birbirleri ile ilişkilidir.
+Her modül örneğinin Ayrıca modül örneğini yapılandırmak için kullanabileceğiniz karşılık gelen bir modül ikizi vardır. Örnek ve ikizi, modül kimliği aracılığıyla birbirleriyle ilişkilendirilir.
 
-Modül ikizi, modül bilgilerini ve yapılandırma özelliklerini depolayan bir JSON belgesidir. Bu kavram, IoT [Hub'daki aygıt ikiz](../iot-hub/iot-hub-devguide-device-twins.md) konseptine paraleldir. Bir modül ikiz yapısı bir cihaz ikiz aynıdır. Her iki ikiz tipiyle etkileşimde kullanılan API'ler de aynıdır. İkisi arasındaki tek fark, istemci SDK'yı anında taklit etmek için kullanılan kimliktir.
+Modül ikizi, modül bilgilerini ve yapılandırma özelliklerini depolayan bir JSON belgesidir. Bu kavram, IoT Hub [cihaz ikizi](../iot-hub/iot-hub-devguide-device-twins.md) kavramını paraleldir. İkizi modülünün yapısı bir Device ikizi ile aynıdır. Her iki tür TWINS ile etkileşim kurmak için kullanılan API 'Ler de aynıdır. İkisi arasındaki tek fark, istemci SDK 'sını örneklemek için kullanılan kimliktir.
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a
@@ -68,9 +68,9 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>Çevrimdışı özellikler
 
-Azure IoT Edge modülleri, IoT Hub ile en az bir kez eşitledikten sonra süresiz olarak çevrimdışı çalışabilir. IoT Edge aygıtları bu çevrimdışı özelliği diğer IoT aygıtlarına da genişletebilir. Daha fazla bilgi için bkz. [IoT Edge aygıtları, modülleri ve alt aygıtları için genişletilmiş çevrimdışı özellikleri anlayın.](offline-capabilities.md)
+Azure IoT Edge modüller, en az bir kez IoT Hub eşitlemeden sonra sonsuza kadar çevrimdışı olarak çalışabilir. IoT Edge cihazlar, bu çevrimdışı özelliği diğer IoT cihazlarına da genişletebilir. Daha fazla bilgi için bkz. [IoT Edge cihazları, modülleri ve alt cihazları için genişletilmiş çevrimdışı özellikleri anlama](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [IoT Edge modülleri geliştirmek için gereksinimleri ve araçları anlama](module-development.md)
-* [Azure IoT Edge çalışma süresini ve mimarisini anlama](iot-edge-runtime.md)
+* [IoT Edge modülleri geliştirmeye yönelik gereksinimleri ve araçları anlayın](module-development.md)
+* [Azure IoT Edge çalışma zamanını ve mimarisini anlayın](iot-edge-runtime.md)

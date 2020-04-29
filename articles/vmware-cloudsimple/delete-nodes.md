@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından VMware Çözümü için düğümleri silme - Azure
-description: CloudSimple dağıtımı ile VMWare'inizdeki düğümleri nasıl silebilirsiniz öğrenin
+title: CloudSimple-Azure tarafından VMware çözümü için düğümleri silme
+description: CloudSimple dağıtımıyla VMWare 'nizden düğümleri silmeyi öğrenin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -9,44 +9,44 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024747"
 ---
-# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware Çözümünden düğümleri silme
+# <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından Azure VMware çözümünden düğümleri silme
 
-CloudSimple düğümleri oluşturulduktan sonra ölçülür.  Düğümlerin ölçümlerini durdurmak için düğümlerin silinmesi gerekir.  Azure portalında kullanılmayan düğümleri silersiniz.
+CloudSimple düğümleri oluşturulduktan sonra ölçümlerdir.  Düğümlerin ölçümünü durdurmak için düğümlerin silinmesi gerekir.  Azure portal kullanılmayan düğümleri silersiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bir düğüm yalnızca aşağıdaki koşullar altında silinebilir:
+Düğüm, yalnızca aşağıdaki koşullarda silinebilir:
 
-* Düğümlerle oluşturulan Özel Bulut silinir.  Özel Bulut'u silmek için [bkz.](delete-private-cloud.md)
-* Düğüm, Özel Bulut küçültilerek Özel Bulut'tan kaldırıldı.  Özel Bulut'u küçültmek için [CloudSimple Private Cloud tarafından Azure VMware Çözümlerini Küçült](shrink-private-cloud.md)ün .
+* Düğümlerle oluşturulan özel bir bulut silinir.  Özel bir bulutu silmek için bkz. [CloudSimple özel bulutu tarafından Azure VMware çözümünü silme](delete-private-cloud.md).
+* Özel bulutu daraltarak düğüm özel buluttan kaldırılmıştır.  Özel bulutu daraltmak için bkz. [CloudSimple özel bulutu tarafından Azure VMware çözümünü küçültme](shrink-private-cloud.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
-## <a name="delete-cloudsimple-node"></a>CloudSimple düğümünü sil
+## <a name="delete-cloudsimple-node"></a>CloudSimple düğümünü Sil
 
 1. **Tüm Hizmetler**’i seçin.
 
-2. **CloudSimple Düğümleri**arayın.
+2. **Cloudsimple düğümleri**için arama yapın.
 
-   ![Arama BulutuBasit Düğümler](media/create-cloudsimple-node-search.png)
+   ![CloudSimple düğümlerinde arama yapın](media/create-cloudsimple-node-search.png)
 
-3. **CloudSimple Düğümlerini**seçin.
+3. **Cloudsimple düğümlerini**seçin.
 
-4. Silmek için Özel Bulut'a ait olmayan düğümleri seçin.  **ÖZEL BULUT İsİm** sütunu düğümün ait olduğu Özel Bulut adını gösterir.  Bir düğüm Özel Bulut tarafından kullanılmazsa, değer boş olur. 
+4. Silinecek özel buluta ait olmayan düğümleri seçin.  **Özel bulut adı** sütunu, bir düğümün ait olduğu özel bulut adını gösterir.  Bir düğüm özel bir bulut tarafından kullanılmıyorsa, değer boş olur. 
 
-    ![CloudSimple Düğümleri seçin](media/select-delete-cloudsimple-node.png)
+    ![CloudSimple düğümlerini seçin](media/select-delete-cloudsimple-node.png)
 
 > [!NOTE]
-> Yalnızca Özel Bulut'un bir parçası olmayan düğümler silinebilir.
+> Yalnızca özel bulutun bir parçası olmayan düğümler silinebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özel [Bulut](cloudsimple-private-cloud.md) hakkında bilgi edinin
+* [Özel bulut](cloudsimple-private-cloud.md) hakkında bilgi edinin

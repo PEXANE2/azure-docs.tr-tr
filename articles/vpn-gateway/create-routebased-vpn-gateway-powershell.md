@@ -1,6 +1,6 @@
 ---
-title: 'Azure VPN Ağ Geçidi: Rota tabanlı ağ geçidi oluşturma: PowerShell'
-description: PowerShell'i kullanarak rota tabanlı VPN Ağ Geçidi'ni hızla oluşturun
+title: 'Azure VPN Gateway: rota tabanlı ağ geçidi oluşturma: PowerShell'
+description: PowerShell kullanarak hızlı bir şekilde rota tabanlı VPN Gateway oluşturma
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152967"
 ---
-# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell'i kullanarak rota tabanlı VPN ağ geçidi oluşturma
+# <a name="create-a-route-based-vpn-gateway-using-powershell"></a>PowerShell kullanarak rota temelli VPN ağ geçidi oluşturma
 
-Bu makale, PowerShell'i kullanarak rota tabanlı bir Azure VPN ağ geçidi oluşturmanıza yardımcı olur. Şirket içi ağınıza VPN bağlantısı oluşturulurken VPN ağ geçidi kullanılır. VNets'i bağlamak için vpn ağ geçidi de kullanabilirsiniz.
+Bu makale, PowerShell kullanarak hızlı bir şekilde rota tabanlı Azure VPN Gateway oluşturmanıza yardımcı olur. VPN ağ geçidi, şirket içi ağınıza bir VPN bağlantısı oluştururken kullanılır. VNET 'leri bağlamak için bir VPN ağ geçidi de kullanabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaledeki adımlar bir VNet, bir alt ağ, ağ geçidi alt ağı ve rota tabanlı VPN ağ geçidi (sanal ağ ağ geçidi) oluşturur. Ağ geçidi oluşturma tamamlandıktan sonra, bağlantılar oluşturabilirsiniz. Bu adımlar için Azure aboneliği gerekir. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Bu makaledeki adımlarda bir VNet, alt ağ, bir ağ geçidi alt ağı ve rota tabanlı VPN Gateway (sanal ağ geçidi) oluşturulur. Ağ geçidi oluşturma işlemi tamamlandıktan sonra bağlantılar oluşturabilirsiniz. Bu adımlar, bir Azure aboneliği gerektirir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+### <a name="working-with-azure-powershell"></a>Azure PowerShell çalışma
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir kaynak grubu oluşturun. PowerShell'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yüksek ayrıcalıklarla `Connect-AzAccount` açın ve komutu kullanarak Azure'a bağlanın.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bir kaynak grubu oluşturun. PowerShell 'i yerel olarak çalıştırıyorsanız, PowerShell konsolunuzu yükseltilmiş ayrıcalıklarla açın ve `Connect-AzAccount` komutunu kullanarak Azure 'a bağlanın.
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
@@ -36,7 +36,7 @@ New-AzResourceGroup -Name TestRG1 -Location EastUS
 
 ## <a name="create-a-virtual-network"></a><a name="vnet"></a>Sanal ağ oluşturma
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile sanal ağ oluşturun. Aşağıdaki örnek, **EastUS** konumunda **VNet1** adlı bir sanal ağ oluşturur:
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek **EastUS** konumunda **VNet1** adlı bir sanal ağ oluşturur:
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -46,7 +46,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.1.0.0/16
 ```
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet kullanarak bir alt net yapılandırması oluşturun.
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) cmdlet 'ini kullanarak bir alt ağ yapılandırması oluşturun.
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -55,7 +55,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet'i kullanarak sanal ağ için alt ağ yapılandırmasını ayarlayın.
+[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet 'ini kullanarak sanal ağ için alt ağ yapılandırmasını ayarlayın.
 
 
 ```azurepowershell-interactive
@@ -64,29 +64,29 @@ $virtualNetwork | Set-AzVirtualNetwork
 
 ## <a name="add-a-gateway-subnet"></a><a name="gwsubnet"></a>Ağ geçidi alt ağı ekleme
 
-Ağ geçidi alt ağı, sanal ağ ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Ağ geçidi alt ağı eklemek için aşağıdaki örnekleri kullanın:
+Ağ geçidi alt ağı, sanal ağ geçidi hizmetlerinin kullandığı ayrılmış IP adreslerini içerir. Bir ağ geçidi alt ağı eklemek için aşağıdaki örnekleri kullanın:
 
-VNet'iniz için bir değişken ayarlayın.
+VNet 'iniz için bir değişken ayarlayın.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) cmdlet kullanarak ağ geçidi alt netoluşturun.
+[Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) cmdlet 'ini kullanarak ağ geçidi alt ağını oluşturun.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet'i kullanarak sanal ağ için alt ağ yapılandırmasını ayarlayın.
+[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork) cmdlet 'ini kullanarak sanal ağ için alt ağ yapılandırmasını ayarlayın.
 
 ```azurepowershell-interactive
 $vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Herkese açık bir IP adresi isteme
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>Genel IP adresi iste
 
-VPN ağ geçidinin dinamik olarak ayrılmış genel BIR IP adresi olmalıdır. VPN ağ geçidine bağlantı oluşturduğunuzda, bu belirttiğiniz IP adresidir. Genel bir IP adresi istemek için aşağıdaki örneği kullanın:
+VPN ağ geçidi, dinamik olarak ayrılmış bir genel IP adresine sahip olmalıdır. Bir VPN ağ geçidine bağlantı oluşturduğunuzda, belirttiğiniz IP adresidir. Genel IP adresi istemek için aşağıdaki örneği kullanın:
 
 ```azurepowershell-interactive
 $gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
@@ -103,7 +103,7 @@ $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $s
 ```
 ## <a name="create-the-vpn-gateway"></a><a name="CreateGateway"></a>VPN ağ geçidini oluşturma
 
-VPN ağ geçidinin oluşturulması 45 dakika veya daha uzun sürebilir. Ağ geçidi tamamlandıktan sonra, sanal ağınızla başka bir VNet arasında bağlantı oluşturabilirsiniz. Veya sanal ağınızla şirket içi konumunuz arasında bir bağlantı kurun. [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet'i kullanarak bir VPN ağ geçidi oluşturun.
+VPN ağ geçidinin oluşturulması 45 dakika veya daha uzun sürebilir. Ağ Geçidi tamamlandıktan sonra, sanal ağınız ile başka VNet arasında bir bağlantı oluşturabilirsiniz. Veya, sanal ağınız ile şirket içi bir konum arasında bir bağlantı oluşturun. [New-AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) cmdlet 'ini kullanarak bir VPN Ağ Geçidi oluşturun.
 
 ```azurepowershell-interactive
 New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
@@ -113,13 +113,13 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 ## <a name="view-the-vpn-gateway"></a><a name="viewgw"></a>VPN ağ geçidini görüntüleme
 
-Vpn ağ geçidini [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) cmdlet'i kullanarak görüntüleyebilirsiniz.
+VPN ağ geçidini [Get-AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) cmdlet 'ini kullanarak görüntüleyebilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
-Çıktı bu örneğe benzer:
+Çıktı aşağıdaki örneğe benzer şekilde görünür:
 
 ```
 Name                   : VNet1GW
@@ -164,15 +164,15 @@ BgpSettings            : {
      
 ```
 
-## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>Genel IP adresini görüntüleme
+## <a name="view-the-public-ip-address"></a><a name="viewgwpip"></a>Genel IP adresini görüntüle
 
-VPN ağ geçidinizin genel IP adresini görüntülemek için [Get-AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) cmdlet'i kullanın.
+VPN ağ geçidinizin genel IP adresini görüntülemek için [Get-Azpublicıpaddress](/powershell/module/az.network/Get-azPublicIpAddress) cmdlet 'ini kullanın.
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
-Örnek yanıtta, IpAddress değeri ortak IP adresidir.
+Örnek yanıtta, IPAddress değeri genel IP adresidir.
 
 ```
 Name                     : VNet1GWIP
@@ -203,7 +203,7 @@ IpTags                   : {}
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Oluşturduğunuz kaynaklara artık ihtiyacınız olmadığında, kaynak grubunu silmek için [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın. Böylece, kaynak grubu ve içerdiği tüm kaynaklar silinir.
+Oluşturduğunuz kaynaklara artık ihtiyacınız kalmadığında, kaynak grubunu silmek için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın. Böylece, kaynak grubu ve içerdiği tüm kaynaklar silinir.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
@@ -211,9 +211,9 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ağ geçidi oluşturma yı bitirdikten sonra, sanal ağınızla başka bir VNet arasında bağlantı oluşturabilirsiniz. Veya sanal ağınızla şirket içi konumunuz arasında bir bağlantı kurun.
+Ağ geçidinin oluşturma işlemi tamamlandıktan sonra, sanal ağınız ile başka bir VNet arasında bir bağlantı oluşturabilirsiniz. Veya, sanal ağınız ile şirket içi bir konum arasında bir bağlantı oluşturun.
 
 > [!div class="nextstepaction"]
 > [Siteden siteye bağlantı oluşturma](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [Noktadan siteye bağlantı oluşturma](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
-> [Başka bir VNet'e bağlantı oluşturma](vpn-gateway-vnet-vnet-rm-ps.md)
+> [Başka bir VNet bağlantısı oluşturma](vpn-gateway-vnet-vnet-rm-ps.md)

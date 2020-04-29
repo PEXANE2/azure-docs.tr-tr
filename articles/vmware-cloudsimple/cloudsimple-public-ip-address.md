@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Genel IP adresi
-description: CloudSimple tarafından Azure VMware Solution'da genel IP adresleri ve avantajları hakkında bilgi edinin
+title: CloudSimple-genel IP adresi tarafından Azure VMware çözümü
+description: CloudSimple tarafından Azure VMware çözümünde genel IP adresleri ve bunların avantajları hakkında bilgi edinin
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,28 +9,28 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024985"
 ---
 # <a name="cloudsimple-public-ip-address-overview"></a>CloudSimple genel IP adresine genel bakış
 
-Genel BIR IP adresi, internet kaynaklarının özel bir IP adresinden Özel Bulut kaynaklarına gelen iletişim kurmasına olanak tanır. Özel IP adresi, Özel Bulut vCenter'ınızda sanal bir makine veya yazılım yük dengeleyicisidir. Genel IP adresi, Özel Bulut'unuzda çalışan hizmetleri internete maruz bırakmanızı sağlar.
+Genel bir IP adresi, internet kaynaklarının özel bir IP adresindeki özel bulut kaynaklarıyla iletişim kurmasına olanak tanır. Özel IP adresi, özel bulut vCenter 'unuzda bir sanal makine veya yazılım yük dengeleyicidir. Genel IP adresi, özel bulutunuzda çalışan hizmetleri Internet 'e sunmanıza olanak tanır.
 
-Herkese açık IP adresi, siz atayana kadar özel IP adresine adanmıştır. Ortak bir IP adresi yalnızca bir özel IP adresine atanabilir.
+Genel IP adresi, atamasını kaldırana kadar özel IP adresine ayrılmıştır. Genel IP adresi yalnızca bir özel IP adresine atanabilir.
 
-Genel bir IP adresiyle ilişkili bir kaynak, internet erişimi için her zaman genel IP adresini kullanır. Varsayılan olarak, herkese açık bir IP adresinde yalnızca giden internet erişimine izin verilir.  Genel IP adresine gelen trafik reddedildi.  Gelen trafiğe izin vermek için, belirli bağlantı noktasına açılan genel IP adresi için bir güvenlik duvarı kuralı oluşturun.
+Genel IP adresiyle ilişkili bir kaynak, her zaman internet erişimi için genel IP adresini kullanır. Varsayılan olarak, genel IP adresinde yalnızca giden internet erişimine izin verilir.  Genel IP adresindeki gelen trafik reddedildi.  Gelen trafiğe izin vermek için, genel IP adresi için belirli bir bağlantı noktasına bir güvenlik duvarı kuralı oluşturun.
 
 ## <a name="benefits"></a>Avantajlar
 
-Gelen iletişim kurmak için ortak bir IP adresi kullanmak şunları sağlar:
+Gelen iletişim için genel bir IP adresi kullanmak şunları sağlar:
 
-* Dağıtılmış hizmet reddi (DDoS) saldırı önleme. Bu koruma, genel IP adresi için otomatik olarak etkinleştirilir.
-* Her zaman trafik izleme ve ortak ağ düzeyinde saldırıların gerçek zamanlı azaltma. Bu savunma, Microsoft çevrimiçi hizmetleri tarafından kullanılan aynı savunmadır.
-* Azure global ağının tüm ölçeği. Ağ, bölgeler arasında saldırı trafiğini dağıtmak ve azaltmak için kullanılabilir.  
+* Dağıtılmış hizmet reddi (DDoS) saldırısı engellemesi. Bu koruma, genel IP adresi için otomatik olarak etkinleştirilir.
+* Her zaman açık trafik izleme ve genel ağ düzeyinde saldırıları gerçek zamanlı olarak azaltma. Bu savunmaları, Microsoft çevrimiçi hizmetler tarafından kullanılan savunlardır.
+* Azure genel ağının tüm ölçeği. Ağ, bölgeler arasında saldırı trafiğini dağıtmak ve azaltmak için kullanılabilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Genel BIR IP adresini](public-ips.md) nasıl tahsis edemeyen
+* [Genel IP adresi ayırmayı](public-ips.md) öğrenin

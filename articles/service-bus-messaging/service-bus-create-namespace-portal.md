@@ -1,6 +1,6 @@
 ---
-title: Azure portalında Hizmet Veri Servisi ad alanı oluşturma
-description: Bu makalede, Azure portalında bir Azure Hizmet Veri Servisi ad alanı oluşturmak için yönergeler sağlanmaktadır.
+title: Azure portal Service Bus ad alanı oluşturma
+description: Bu makalede Azure portal bir Azure Service Bus ad alanı oluşturmaya yönelik yönergeler sağlanmaktadır.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: b6351fade23f1671573964f946005d57671d3cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761075"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure portalı ile Service Bus ad alanı oluşturma
 
-Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar. Bu makalede, Azure portalında bir ad alanı oluşturmak için yönergeler sağlanmaktadır. 
+Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar. Bu makalede Azure portal ad alanı oluşturmaya yönelik yönergeler sağlanmaktadır. 
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 

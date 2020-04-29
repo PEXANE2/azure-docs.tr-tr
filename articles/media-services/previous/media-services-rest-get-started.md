@@ -1,6 +1,6 @@
 ---
-title: REST | Microsoft Dokümanlar
-description: Bu öğretici, REST API'yi kullanarak Azure Media Services ile isteğe bağlı içerik teslim uygulaması uygulama adımlarında size yol göstersin.
+title: REST kullanarak isteğe bağlı içerik sunmaya başlayın | Microsoft Docs
+description: Bu öğretici, REST API kullanarak Azure Media Services bir isteğe bağlı içerik teslim uygulaması uygulama adımlarında size yol gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773675"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST'i kullanarak isteğe bağlı içerik sunmaya başlayın  
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST kullanarak isteğe bağlı içerik sunmaya başlayın  
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Bu hızlı başlangıç, Azure Medya Hizmetleri (AMS) REST API'lerini kullanarak Isteğe Bağlı Video (VoD) içerik teslim uygulamasını uygulama adımlarında size yol göstersin.
+Bu hızlı başlangıç, Azure Media Services (AMS) REST API 'Lerini kullanarak Isteğe bağlı video (VoD) içerik teslim uygulaması uygulama adımlarında size yol gösterir.
 
-Öğretici, temel Media Services iş akışını ve Media Services geliştirmek için gereken en genel programlama nesnelerini ve görevleri tanıtır. Öğreticinin tamamlanmasından sonra, yüklediğiniz, kodladığınız ve indirdiğiniz örnek bir ortam dosyasını akışla yükleyebilir veya aşamalı olarak indirebilirsiniz.
+Öğretici, temel Media Services iş akışını ve Media Services geliştirmek için gereken en genel programlama nesnelerini ve görevleri tanıtır. Öğreticinin tamamlanmasında, karşıya yüklediğiniz, Kodladığınız ve indirdiğiniz bir örnek medya dosyasını akışla veya aşamalı olarak indirebilirsiniz.
 
 Aşağıdaki resimde Media Services OData modeliyle VoD uygulamaları geliştirirken en sık kullanılan nesnelerin bazıları gösterilmektedir.
 
@@ -37,36 +37,36 @@ Resmi tam boyutlu görüntülemek için tıklayın.
 <a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
 
 ## <a name="prerequisites"></a>Ön koşullar
-REST API'leri ile Medya Hizmetleri ile geliştirmeye başlamak için aşağıdaki ön koşullar gereklidir.
+REST API 'Leri ile Media Services geliştirmeye başlamak için aşağıdaki Önkoşullar gereklidir.
 
 * Bir Azure hesabı. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Bir Media Services hesabı oluşturmak için bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
-* Medya Hizmetleri REST API ile nasıl geliştirileceğimiz hakkında anlayış. Daha fazla bilgi için Medya [Hizmetleri REST API genel bakış](media-services-rest-how-to-use.md)bakın.
-* HTTP isteklerini ve yanıtlarını gönderebilen seçtiğiniz bir uygulama. Bu öğretici [Fiddler](https://www.telerik.com/download/fiddler)kullanır.
+* Media Services REST API nasıl geliştirileceği hakkında anlamak. Daha fazla bilgi için bkz. [Media Services REST API genel bakış](media-services-rest-how-to-use.md).
+* Tercih ettiğiniz ve HTTP isteklerini ve yanıtlarını gönderebilen bir uygulama. Bu öğretici [Fiddler](https://www.telerik.com/download/fiddler)kullanır.
 
-Aşağıdaki görevler bu hızlı başlatmada gösterilir.
+Bu hızlı başlangıçta aşağıdaki görevler gösterilmiştir.
 
 1. Akış uç noktalarını başlatın (Azure portalını kullanarak).
-2. REST API ile Medya Hizmetleri hesabına bağlanın.
-3. Yeni bir varlık oluşturun ve REST API ile bir video dosyası yükleyin.
-4. Kaynak dosyayı REST API ile uyarlanabilir bitrate MP4 dosyaları kümesine kodlayın.
-5. Varlığı yayımlayın ve REST API ile akış ve aşamalı indirme URL'leri alın.
+2. REST API Media Services hesabına bağlanın.
+3. Yeni bir varlık oluşturun ve REST API bir video dosyası yükleyin.
+4. Kaynak dosyayı, REST API bir uyarlamalı bit hızı MP4 dosyaları kümesine kodlayın.
+5. Varlığı yayımlayın ve REST API ile akış ve aşamalı indirme URL 'Lerini alın.
 6. İçeriğinizi oynatın.
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Her zaman aynı gün / erişim izinleri kullanıyorsanız, örneğin, uzun bir süre (yükleme olmayan ilkeler) yerinde kalması amaçlanan bulucular için ilkeler kullanıyorsanız aynı ilke kimliği kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı gün/erişim izinlerini (örneğin, uzun bir süre (karşıya yükleme olmayan ilkeler) yerinde kalması amaçlanan konum belirleyicilerinin ilkeleri gibi her zaman kullandığınız ilke KIMLIĞINI kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
-Bu makalede kullanılan AMS REST varlıkları hakkında ayrıntılı bilgi için Azure [Medya Hizmetleri REST API Başvurusu'na](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)bakın. Ayrıca, bkz. [Azure Medya Hizmetleri kavramları.](media-services-concepts.md)
+Bu makalede kullanılan AMS REST varlıkları hakkında daha fazla bilgi için bkz. [Azure Media Services REST API'si Reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Ayrıca bkz. [Azure Media Services kavramları](media-services-concepts.md).
 
 >[!NOTE]
->Medya Hizmetleri'ndeki varlıklara erişirken, HTTP isteklerinizde belirli üstbilgi alanları ve değerleri belirlemeniz gerekir. Daha fazla bilgi için Medya [Hizmetleri REST API Geliştirme kurulumu'na](media-services-rest-how-to-use.md)bakın.
+>Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
 
 ## <a name="start-streaming-endpoints-using-the-azure-portal"></a>Azure portal ile akış uç noktalarını başlatma
 
-Azure Medya Hizmetleri ile çalışırken, en yaygın senaryolardan biri uyarlanabilir bithızı akışı üzerinden video sunmaktır. Media Services, bu akış biçimlerinin her birinin önceden paketlenmiş sürümlerini depolamanıza gerek kalmadan, uyarlamalı bit hızı MP4 ile kodlanmış içeriğinizi Media Services tarafından desteklenen akış biçimlerinde (MPEG DASH, HLS, Kesintisiz Akış) tam vaktinde göndermenize olanak tanıyan dinamik paketleme özelliğine sahiptir.
+Azure Media Services ile çalışırken en sık karşılaşılan senaryolardan biri bit hızı uyarlamalı akış aracılığıyla video teslim edilir. Media Services, bu akış biçimlerinin her birinin önceden paketlenmiş sürümlerini depolamanıza gerek kalmadan, uyarlamalı bit hızı MP4 ile kodlanmış içeriğinizi Media Services tarafından desteklenen akış biçimlerinde (MPEG DASH, HLS, Kesintisiz Akış) tam vaktinde göndermenize olanak tanıyan dinamik paketleme özelliğine sahiptir.
 
 >[!NOTE]
->AMS hesabınız **oluşturulduğunda,** **Durduruldu** durumunda hesabınıza varsayılan akış bitiş noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
+>AMS hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
 
 Akış uç noktasını başlatmak için aşağıdakileri yapın:
 
@@ -79,26 +79,26 @@ Akış uç noktasını başlatmak için aşağıdakileri yapın:
 4. Başlat simgesine tıklayın.
 5. Yaptığınız değişiklikleri kaydetmek için Kaydet düğmesine tıklayın.
 
-## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>REST API ile Medya Hizmetleri hesabına bağlanın
+## <a name="connect-to-the-media-services-account-with-rest-api"></a><a id="connect"></a>REST API Media Services hesabına bağlanma
 
-AMS API'sine nasıl bağlanabileceğiniz hakkında bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
+AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Rest API ile yeni bir varlık oluşturun ve bir video dosyası yükleyin
+## <a name="create-a-new-asset-and-upload-a-video-file-with-rest-api"></a><a id="upload"></a>Yeni bir varlık oluşturun ve REST API bir video dosyası yükleyin
 
-Media Services’de dijital dosyalar bir varlığa yüklenir. **Varlık** varlığı video, ses, görüntü, küçük resim koleksiyonları, metin parçaları ve kapalı altyazı dosyaları (ve bu dosyalarla ilgili meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde saklanır.
+Media Services’de dijital dosyalar bir varlığa yüklenir. Varlık **varlığı video** , ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı alt yazı dosyaları (ve bu dosyalar hakkındaki meta veriler) içerebilir.  Dosyalar varlığa yüklendikten sonra, içeriğiniz daha fazla işlem ve akış için bulutta güvenli bir şekilde depolanır.
 
-Bir varlık oluştururken sağlamanız gereken değerlerden biri varlık oluşturma seçenekleridir. **Seçenekler** özelliği, bir Kıymetin oluşturulabileceği şifreleme seçeneklerini açıklayan bir numaralandırma değeridir. Geçerli bir değer, aşağıdaki listedeki değerlerden biridir, bu listedeki değerlerin bir birleşimi değildir:
+Bir varlık oluştururken sağlamanız gereken değerlerden biri varlık oluşturma seçenekleridir. **Options** özelliği, bir varlığın oluşturulabilen şifreleme seçeneklerini açıklayan bir sabit listesi değeridir. Geçerli bir değer, bu listedeki değerlerin birleşimini değil, aşağıdaki listedeki değerlerden biridir:
 
-* **Yok** = **0** - Şifreleme kullanılmaz. Bu seçeneği kullanırken içeriğiniz taşıma sırasında veya depolama alanında korumalı değildir.
+* **Hiçbiri** = **0** -şifreleme kullanılmaz. Bu seçeneği kullandığınızda, içeriğiniz aktarım sırasında veya depolamadaki bekleyen sırada korunmaz.
     Aşamalı indirme kullanarak bir MP4 iletmeyi planlıyorsanız bu seçeneği kullanın.
-* **StorageEncrypted** = **1** - AES-256 bit şifrelemekullanarak net içeriğinizi yerel olarak şifreler ve ardından güvenli bir şekilde şifrelendiği Azure Depolama'ya yükler. Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
-* **CommonEncryptionProtected** = **2** - Daha önce şifrelenmiş ve Ortak Şifreleme veya PlayReady DRM ile korunmuş içerik yüklüyorsanız bu seçeneği kullanın (örneğin, PlayReady DRM ile korunan Sorunsuz Akış).
-* **EnvelopeEncryptionProtected** = **4** – AES ile şifrelenmiş HLS yüklüyorsanız bu seçeneği kullanın. Dosyalar Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
+* **Storageencryptıon**1-AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifreler ve sonra da bu dosyayı Rest 'te şifreli olarak depolandığı Azure depolama 'ya yükler.**1**  =  Depolama Şifrelemesi ile korunan varlıklar, kodlamadan önce otomatik olarak şifrelenerek şifrelenmiş bir dosya sistemine yerleştirilir ve yeni bir çıktı varlığı şeklinde geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama Şifrelemesinin birincil kullanım nedeni, yüksek kaliteli girdi medya dosyalarınızın güvenliğini güçlü şifrelemeyle diskte bekleyen konumda sağlamak istediğiniz durumdur.
+* **CommonEncryptionProtected** = **2** -daha önce şifrelenen ve Common Encryption veya PlayReady DRM ile korunan içeriği (örneğin, PlayReady DRM ile korunan kesintisiz akış) karşıya yüklüyorsanız bu seçeneği kullanın.
+* **EnvelopeEncryptionProtected** = **4** – HLS 'leri AES ile şifreli olarak karşıya yüklüyorsanız bu seçeneği kullanın. Dosyalar, Transform Manager tarafından kodlanmış ve şifrelenmiş olmalıdır.
 
 ### <a name="create-an-asset"></a>Varlık oluşturma
-Varlık, Video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı altyazı dosyaları da dahil olmak üzere Medya Hizmetleri'ndeki birden çok nesne türü veya kümeiçin bir kapsayıcıdır. REST API'de, bir Varlık oluşturmak için Medya Hizmetlerine POSTA isteği gönderilmesi ve kıymetinizle ilgili tüm özellik bilgilerini istek gövdesine yerleştirmeniz gerekmektedir.
+Varlık, video, ses, görüntüler, küçük resim koleksiyonları, metin parçaları ve kapalı açıklamalı altyazı dosyaları dahil olmak üzere Media Services birden çok tür veya nesne kümesi için bir kapsayıcıdır. REST API bir varlık oluşturmak için POST isteğinin Media Services gönderilmesi ve istek gövdesine varlığınızın herhangi bir özellik bilgisini yerleştirilmesi gerekir.
 
-Aşağıdaki örnekte, bir varlığın nasıl oluşturulabildiğini gösterilmektedir.
+Aşağıdaki örnek, bir varlığın nasıl oluşturulacağını göstermektedir.
 
 **HTTP İsteği**
 
@@ -117,9 +117,9 @@ Aşağıdaki örnekte, bir varlığın nasıl oluşturulabildiğini gösterilmek
     {"Name":"BigBuckBunny.mp4", "Options":"0"}
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
-Başarılı olursa, aşağıdaki döndürülür:
+Başarılı olursa aşağıdakiler döndürülür:
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -149,10 +149,10 @@ Başarılı olursa, aşağıdaki döndürülür:
        "StorageAccountName":"storagetestaccount001"
     }
 
-### <a name="create-an-assetfile"></a>Varlık Dosyası Oluşturma
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) varlığı, bir blob kapsayıcısında depolanan bir video veya ses dosyasını temsil eder. Kıymet dosyası her zaman bir varlıkla ilişkilidir ve bir varlık bir veya birden çok Varlık Dosyası içerebilir. Bir varlık dosyası nesnesi bir blob kapsayıcısındaki dijital bir dosyayla ilişkilendirilmezse, Medya Hizmetleri Encoder görevi başarısız olur.
+### <a name="create-an-assetfile"></a>Assetdosyası oluşturma
+[Assetfile](https://docs.microsoft.com/rest/api/media/operations/assetfile) varlığı bir blob kapsayıcısında depolanan bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla Assetdosyası içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
 
-Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, AssetFile'ı medya dosyanızla ilgili bilgilerle güncelleştirmek için **BIRLEŞTIRME** HTTP isteğini kullanırsınız (konunun ilerleyen saatlerinde gösterildiği gibi).
+Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, Assetdosyasını medya dosyanız hakkındaki bilgilerle (konunun ilerleyen kısımlarında gösterildiği gibi) güncellemek için **merge** http isteğini kullanırsınız.
 
 **HTTP İsteği**
 
@@ -176,7 +176,7 @@ Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, AssetFil
     }
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -212,9 +212,9 @@ Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, AssetFil
 
 
 ### <a name="creating-the-accesspolicy-with-write-permission"></a>Yazma izniyle AccessPolicy oluşturma
-Herhangi bir dosyayı blob depolamaalanına yüklemeden önce, bir varlığa yazmak için erişim ilkesi haklarını ayarlayın. Bunu yapmak için AccessPolicies varlık kümesine bir HTTP isteği gönderin. Oluşturulduktan sonra Bir DurationInMinutes değeri tanımlayın veya yanıt olarak 500 Dahili Sunucu hata iletisi alırsınız. AccessPolicys hakkında daha fazla bilgi için [AccessPolicy'ye](https://docs.microsoft.com/rest/api/media/operations/accesspolicy)bakın.
+Blob depolamaya herhangi bir dosyayı yüklemeden önce, bir varlığa yazma için erişim ilkesi haklarını ayarlayın. Bunu yapmak için AccessPolicies varlık kümesine bir HTTP isteği GÖNDERIN. Oluşturma sonrasında bir DurationInMinutes değeri tanımlayın veya yanıt olarak 500 Iç sunucu hatası iletisi alırsınız. AccessPolicies hakkında daha fazla bilgi için bkz. [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
-Aşağıdaki örnekte AccessPolicy nasıl oluşturulutur gösterilmektedir:
+Aşağıdaki örnek, bir AccessPolicy nasıl oluşturulacağını gösterir:
 
 **HTTP İsteği**
 
@@ -231,7 +231,7 @@ Aşağıdaki örnekte AccessPolicy nasıl oluşturulutur gösterilmektedir:
 
     {"Name":"NewUploadPolicy", "DurationInMinutes":"440", "Permissions":"2"}
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
 Başarılı olursa, aşağıdaki yanıt döndürülür:
 
@@ -259,21 +259,21 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
        "Permissions":2
     }
 
-### <a name="get-the-upload-url"></a>Yükleme URL'sini alın
+### <a name="get-the-upload-url"></a>Karşıya yükleme URL 'sini alın
 
-Gerçek yükleme URL'sini almak için bir SAS Bulucu oluşturun. Konumlayıcılar, Bir Varlıktaki Dosyalar'a erişmek isteyen istemciler için başlangıç saatini ve bağlantı bitiş noktasını tanımlar. Farklı istemci istek ve gereksinimlerini işlemek için belirli bir AccessPolicy ve Varlık çifti için birden çok Konumlayıcı varlık oluşturabilirsiniz. Bu Konum belirleyicilerin her biri, bir URL'nin kullanabileceği süreyi belirlemek için Başlangıç Zamanı değerini ve AccessPolicy'nin DurationInMinutes değerini kullanır. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/media/operations/locator)
+Gerçek karşıya yükleme URL 'sini almak için SAS Bulucu oluşturun. Konumlandırıcı, bir varlıktaki dosyalara erişmek isteyen istemciler için başlangıç saatini ve bağlantı uç noktası türünü tanımlar. Farklı istemci isteklerini ve ihtiyaçlarını işlemek için, belirli bir AccessPolicy ve varlık çifti için birden çok Konumlandırıcı varlığı oluşturabilirsiniz. Bu belirleyicilerinin her biri, bir URL 'nin kullanılabileceği sürenin uzunluğunu öğrenmek için StartTime değerini ve AccessPolicy DurationInMinutes değerini kullanır. Daha fazla bilgi için bkz. [Locator](https://docs.microsoft.com/rest/api/media/operations/locator).
 
-Bir SAS URL'si aşağıdaki biçime sahiptir:
+SAS URL 'SI aşağıdaki biçime sahiptir:
 
     {https://myaccount.blob.core.windows.net}/{asset name}/{video file name}?{SAS signature}
 
 Bazı dikkate alınması gereken noktalar vardır:
 
-* Belirli bir Varlıkla aynı anda ilişkili beşten fazla benzersiz Yer Bulucu'nuz olamaz. 
-* Dosyalarınızı hemen yüklemeniz gerekiyorsa, Başlangıç Zamanı değerinizi geçerli saatin beş dakika öncesine ayarlamanız gerekir. Bunun nedeni, istemci makineniz ile Medya Hizmetleri arasında saat çarpıtması olabilir. Ayrıca, Başlangıç Saati değeriniz aşağıdaki DateTime biçiminde olmalıdır: YYYY-MM-DDTHH:mm:ssZ (örneğin, "2014-05-23T17:53:50Z").    
-* Bir Locator oluşturulduktan sonra kullanıma hazır olduğunda 30-40 saniyelik bir gecikme olabilir. Bu sorun hem [SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) URL'si hem de Origin Locators için geçerlidir.
+* Belirli bir varlıkla ilişkilendirilmiş beş taneden fazla benzersiz Konum Belirleyicisi olamaz. 
+* Dosyalarınızı hemen karşıya yüklemeniz gerekiyorsa, StartTime değerini geçerli zamandan beş dakika önce ayarlamanız gerekir. Bunun nedeni, istemci makineniz ve Media Services arasında saat çarpıklığı olabilir. Ayrıca, StartTime değeri şu tarih saat biçiminde olmalıdır: YYYY-MM-DDTHH: mm: ssZ (örneğin, "2014-05-23T17:53:50Z").    
+* Bir bulucunun kullanım için kullanılabilir olduğu durumlarda, bir bulucu oluşturulduktan sonra 30-40 saniyelik bir gecikme olabilir. Bu sorun hem [SAS URL 'si](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) hem de Kaynak Konum Belirleyicileri için geçerlidir.
 
-Aşağıdaki örnek, istek gövdesindeki Type özelliğinde tanımlandığı gibi bir SAS URL Bulucu'nun nasıl oluşturulurdu ("1" bir SAS bulucu için ve Isteğe Bağlı kaynak bulucu için "2" olarak) gösterir. Döndürülen **Yol** özelliği, dosyanızı yüklemek için kullanmanız gereken URL'yi içerir.
+Aşağıdaki örnek, bir SAS URL Konumlandırıcısı 'nın, istek gövdesinde (SAS Konumlandırıcı için "1" ve Isteğe bağlı bir kaynak bulucu için "2") tanımlanan tür özelliği tarafından tanımlandığı şekilde nasıl oluşturulacağını gösterir. Döndürülen **Path** özelliği, dosyanızı karşıya yüklemek için kullanmanız gereken URL 'yi içerir.
 
 **HTTP İsteği**
 
@@ -296,7 +296,7 @@ Aşağıdaki örnek, istek gövdesindeki Type özelliğinde tanımlandığı gib
     }
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
 Başarılı olursa, aşağıdaki yanıt döndürülür:
 
@@ -328,18 +328,18 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
        "Name":null
     }
 
-### <a name="upload-a-file-into-a-blob-storage-container"></a>Dosyayı blob depolama kabına yükleme
-AccessPolicy ve Locator kümesine sahip olduktan sonra, gerçek dosya Azure Depolama REST API'leri kullanılarak azure blob depolama kapsayıcısına yüklenir. Dosyaları blok blobs olarak yüklemeniz gerekir. Sayfa lekeleri Azure Medya Hizmetleri tarafından desteklenmez.  
+### <a name="upload-a-file-into-a-blob-storage-container"></a>BLOB depolama kapsayıcısına dosya yükleme
+AccessPolicy ve Locator kümesine sahip olduğunuzda, gerçek dosya Azure depolama REST API 'Leri kullanılarak bir Azure Blob depolama kapsayıcısına yüklenir. Dosyaları blok Blobları olarak yüklemeniz gerekir. Sayfa Blobları Azure Media Services tarafından desteklenmez.  
 
 > [!NOTE]
-> Yüklemek istediğiniz dosyanın dosya adını önceki bölümde alınan Konumbelirleme **Yolu** değerine eklemeniz gerekir. Örneğin, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
+> Karşıya yüklemek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin, `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
-Azure depolama lekeleri ile çalışma hakkında daha fazla bilgi için [Blob Service REST API'ye](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)bakın.
+Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-### <a name="update-the-assetfile"></a>Varlık Dosyasını Güncelleştir
-Dosyanızı yüklediğinize göre FileAsset boyutunu (ve diğer) bilgileri güncelleyin. Örnek:
+### <a name="update-the-assetfile"></a>Assetdosyasını güncelleştirme
+Dosyanızı karşıya yüklediğinize göre, Filevarlık boyutu (ve diğer) bilgilerini güncelleştirin. Örneğin:
 
     MERGE https://wamsbayclus001rest-hs.cloudapp.net/api/Files('nb%3Acid%3AUUID%3Af13a0137-0a62-9d4c-b3b9-ca944b5142c5') HTTP/1.1
     Content-Type: application/json
@@ -360,14 +360,14 @@ Dosyanızı yüklediğinize göre FileAsset boyutunu (ve diğer) bilgileri günc
     }
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
-Başarılı olursa, aşağıdaki döndürülür:
+Başarılı olursa aşağıdakiler döndürülür:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="delete-the-locator-and-accesspolicy"></a>Konum Bulucu ve AccessPolicy'yi silme
+## <a name="delete-the-locator-and-accesspolicy"></a>Konumlandırıcı ve AccessPolicy silme
 **HTTP İsteği**
 
     DELETE https://wamsbayclus001rest-hs.cloudapp.net/api/Locators('nb%3Alid%3AUUID%3Aaf57bdd8-6751-4e84-b403-f3c140444b54') HTTP/1.1
@@ -380,9 +380,9 @@ Başarılı olursa, aşağıdaki döndürülür:
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
-Başarılı olursa, aşağıdaki döndürülür:
+Başarılı olursa aşağıdakiler döndürülür:
 
     HTTP/1.1 204 No Content
     ...
@@ -398,25 +398,25 @@ Başarılı olursa, aşağıdaki döndürülür:
     x-ms-version: 2.19
     Host: wamsbayclus001rest-hs.cloudapp.net
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
-Başarılı olursa, aşağıdaki döndürülür:
+Başarılı olursa aşağıdakiler döndürülür:
 
     HTTP/1.1 204 No Content
     ...
 
-## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>Kaynak dosyayı uyarlanabilir bitrate MP4 dosyalarına kodlama
+## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a><a id="encode"></a>Kaynak dosyayı bir uyarlamalı bit hızı MP4 dosyaları kümesine kodlayın
 
-Varlıklar Medya Hizmetlerine alındıktan sonra, ortam istemcilere teslim edilmeden önce kodlanabilir, transmuxed, filigranlı ve benzeri olabilir. Bu etkinlikler, yüksek performans ve kullanılabilirlik sağlamak için birden fazla arka plan rol örneğinde zamanlanır ve çalıştırılır. Bu etkinliklere İşler denir ve her İş, Varlık dosyasındaki fiili çalışmayı yapan atomik Görevlerden oluşur (daha fazla bilgi için [Bkz. İş](https://docs.microsoft.com/rest/api/media/operations/job), [Görev](https://docs.microsoft.com/rest/api/media/operations/task) açıklamaları).
+Varlıkları Media Services 'e gönderdikten sonra medya, istemcilere teslim edilmeden önce kodlanmış, transmuxed, su olarak işaretlenmiş ve benzeri olabilir. Bu etkinlikler, yüksek performans ve kullanılabilirlik sağlamak için birden fazla arka plan rol örneğinde zamanlanır ve çalıştırılır. Bu etkinliklere Işler adı verilir ve her bir Iş, varlık dosyası üzerinde asıl işi yapan atomik görevlerden oluşur (daha fazla bilgi için, bkz. [iş](https://docs.microsoft.com/rest/api/media/operations/job), [görev](https://docs.microsoft.com/rest/api/media/operations/task) açıklamaları).
 
-Daha önce de belirtildiği gibi, Azure Medya Hizmetleri ile çalışırken en yaygın senaryolardan biri, müşterilerinize uyarlanabilir bit hızı akışı sağlamaktır. Medya Hizmetleri, bir dizi uyarlanabilir bitrate MP4 dosyasını aşağıdaki biçimlerden birine dinamik olarak paketleyebilir: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH.
+Daha önce belirtildiği gibi, en yaygın senaryolarından biri Azure Media Services ile çalışırken, istemcilerinize bit hızı uyarlamalı akış teslim edilir. Media Services bir uyarlamalı bit hızı MP4 dosyası kümesini dinamik olarak şu biçimlerden birine paketleyebilir: HTTP Canlı Akışı (HLS), Kesintisiz Akış, MPEG DASH.
 
-Aşağıdaki bölümde, bir kodlama görevi içeren bir iş nasıl oluşturulacağını gösterir. Görev, asma dosyayı **Media Encoder Standard'ı**kullanarak uyarlanabilir bitrate MP4'lere dönüştürmek için belirtir. Bölüm ayrıca iş işleme ilerlemesinin nasıl izlendiğini de gösterir. İş tamamlandığında, varlıklarınıza erişmek için gereken yer bulucular oluşturabilirsiniz.
+Aşağıdaki bölümde, bir kodlama görevi içeren bir iş oluşturma işlemi gösterilmektedir. Görev, **Media Encoder Standard**kullanarak Mezzanine dosyasının bir uyarlamalı bit hızı kümesine dönüştürülmesini belirtir. Bu bölümde ayrıca iş işleme ilerleme durumunun nasıl izleneceği gösterilmektedir. İş tamamlandığında, varlıklarınıza erişim sağlamak için gereken konum belirleyicilerinin oluşturulması mümkün olacaktır.
 
-### <a name="get-a-media-processor"></a>Ortam işlemcisi alın
-Medya Hizmetleri'nde ortam işlemcisi, medya içeriğini kodlama, biçim dönüştürme, şifreleme veya şifre çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Bu öğreticide gösterilen kodlama görevi için Media Encoder Standard'ı kullanacağız.
+### <a name="get-a-media-processor"></a>Medya işlemcisi al
+Media Services, medya işlemcisi kodlama, biçim dönüştürme, şifreleme veya medya içeriğini çözme gibi belirli bir işleme görevini işleyen bir bileşendir. Bu öğreticide gösterilen kodlama görevi için Media Encoder Standard kullanacağız.
 
-Aşağıdaki kod kodlayıcının kimliğini ister.
+Aşağıdaki kod, kodlayıcının kimliğini ister.
 
 **HTTP İsteği**
 
@@ -430,7 +430,7 @@ Aşağıdaki kod kodlayıcının kimliğini ister.
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -460,9 +460,9 @@ Aşağıdaki kod kodlayıcının kimliğini ister.
     }
 
 ### <a name="create-a-job"></a>Bir iş oluşturma
-Her İş, gerçekleştirmek istediğiniz işlem türüne bağlı olarak bir veya daha fazla Göreve sahip olabilir. REST API aracılığıyla, İşler'i ve ilgili Görevleri iki şekilde oluşturabilirsiniz: Görevler, İş varlıklarındaki Görevler gezinti özelliği veya OData toplu işlemi yoluyla satır satır olarak tanımlanabilir. Medya Hizmetleri SDK toplu işleme kullanır. Ancak, bu makaledeki kod örneklerinin okunabilirliği için görevler satır satır olarak tanımlanır. Toplu işleme hakkında bilgi için [Açık Veri Protokolü (OData) Toplu İşleme'ye](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)bakın.
+Her Işin, gerçekleştirmek istediğiniz işleme türüne bağlı olarak bir veya daha fazla görevi olabilir. REST API aracılığıyla Işleri ve bunlarla ilgili görevleri iki şekilde oluşturabilirsiniz: görevler, Iş varlıklarındaki görevler gezintisi özelliği aracılığıyla veya OData toplu işleme aracılığıyla satır içi olarak tanımlanabilir. Media Services SDK toplu işlemeyi kullanır. Ancak, bu makaledeki kod örneklerinin okunabilirliğini için görevler satır içi olarak tanımlanmıştır. Toplu işleme hakkında daha fazla bilgi için bkz. [Açık Veri Protokolü (OData) toplu işleme](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
-Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede bir video kodlamak için tek bir Görev kümesiyle bir İş'i nasıl oluşturup gönderebildiğinizi gösterir. Aşağıdaki dokümantasyon bölümü, Media Encoder Standart işlemci tarafından desteklenen tüm [görev hazır ayarlarının](https://msdn.microsoft.com/library/mt269960) listesini içerir.  
+Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede video kodlamak için bir görev ayarlama ile bir Işi nasıl oluşturup nakledeceğiniz gösterilmektedir. Aşağıdaki belgeler bölümü, Media Encoder Standard işlemcisi tarafından desteklenen tüm [görev önayarlarının](https://msdn.microsoft.com/library/mt269960) listesini içerir.  
 
 **HTTP İsteği**
 
@@ -496,7 +496,7 @@ Aşağıdaki örnek, belirli bir çözünürlükte ve kalitede bir video kodlama
        ]
     }
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
 Başarılı olursa, aşağıdaki yanıt döndürülür:
 
@@ -558,35 +558,35 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
     }
 
 
-Herhangi bir İş isteğinde dikkat edilmesi gereken birkaç önemli nokta vardır:
+Herhangi bir Iş isteğinde dikkat etmeniz gereken birkaç önemli nokta vardır:
 
-* TaskBody özellikleri, Görev tarafından kullanılan giriş veya çıktı varlıklarını tanımlamak için gerçek XML kullanmalı. Görev makalesi XML için XML Şema Tanımı içerir.
-* TaskBody tanımında, her iç `<inputAsset>` `<outputAsset>` değer için ve JobInputAsset(değer) veya JobOutputAsset (değer) olarak ayarlanmalıdır.
-* Bir görevin birden çok çıktı varlığı olabilir. Bir JobOutputAsset(x) bir işte bir görevin çıktısı olarak yalnızca bir kez kullanılabilir.
-* JobInputAsset veya JobOutputAsset'i görevin giriş varlığı olarak belirtebilirsiniz.
-* Görevler bir döngü oluşturmamalıdır.
-* JobInputAsset veya JobOutputAsset'e geçtiğiniz değer parametresi, bir Varlığın dizin değerini temsil eder. Gerçek Varlıklar, İş varlığı tanımındaki InputMediaAssets ve OutputMediaAssets navigasyon özelliklerinde tanımlanır.
+* TaskBody özellikleri, giriş sayısını veya görev tarafından kullanılan çıkış varlıklarını tanımlamak için değişmez XML kullanmalıdır. Görev makalesi XML için XML şema tanımı içerir.
+* TaskBody tanımında, ve `<inputAsset>` `<outputAsset>` için her bir Iç değerin jobınputasset (değer) veya Joi putasset (değer) olarak ayarlanması gerekir.
+* Bir görevde birden fazla çıkış varlığı olabilir. Bir joi Putasset (x), bir iş içindeki görevin çıktısı olarak yalnızca bir kez kullanılabilir.
+* Jobınputasset veya Joi Putasset değerini bir görevin giriş varlığı olarak belirtebilirsiniz.
+* Görevler bir bisiklet oluşturmamalıdır.
+* Jobınputasset veya Joi Putasset 'e geçirdiğiniz değer parametresi bir varlık için dizin değerini temsil eder. Gerçek varlıklar, Iş varlığı tanımındaki ınputmediavarlıklar ve Outputmediavarlıklarının gezinti özelliklerinde tanımlanmıştır.
 
 > [!NOTE]
-> Medya Hizmetleri OData v3 üzerine kurulduğundan, InputMediaAssets ve OutputMediaAssets navigasyon özellik koleksiyonlarındaki tek tek varlıklar "__metadata : uri" ad değeri çifti aracılığıyla başvurulur.
+> Media Services OData v3 üzerinde oluşturulduğundan, ınputmediavarlıklarının ve Outputmediavarlıklarının gezinti özelliği koleksiyonlarındaki tek tek varlıklar "__metadata: URI" ad-değer çifti üzerinden başvuruluyor.
 >
 >
 
-* InputMediaAssets, Medya Hizmetleri'nde oluşturduğunuz bir veya daha fazla Varlıkla eşler. OutputMediaAssets sistem tarafından oluşturulur. Varolan bir varlığa başvurmaz.
-* OutputMediaAssets assetName özniteliği kullanılarak adlandırılabilir. Bu öznitelik yoksa, OutputMediaAsset'in adı, `<outputAsset>` öğenin iç metin değerinin, İş Adı değerinin veya İş Kimliği değerinin soneğiyle (Ad özelliğinin tanımlanmamış olması durumunda) ne olursa olsun. Örneğin, varlık Adı için bir değer "Örnek" olarak ayarlarsanız, OutputMediaAsset Adı özelliği "Örnek" olarak ayarlanır. Ancak, assetName için bir değer belirlemediyseniz, ancak iş adını "NewJob" olarak ayarladıysanız, OutputMediaAsset Adı "JobOutputAsset(değer)_NewJob" olacaktır.
+* Inputmediavarlıkların, Media Services oluşturduğunuz bir veya daha fazla varlık ile eşlenir. Outputmediavarlıklar sistem tarafından oluşturulur. Mevcut bir varlığa başvurmazlar.
+* Outputmediavarlıklarının adı assetName özniteliği kullanılarak yapılabilir. Bu öznitelik yoksa, Outputmediakıymetin adı, `<outputAsset>` öğenin iç metin değerinin, iş adı değeri veya iş kimliği değeri (ad özelliğinin tanımlı olmadığı durumlarda) bir sonekine sahip olduğu her şey olur. Örneğin, assetName için bir değeri "Sample" olarak ayarlarsanız, Outputmediavarlık Name özelliği "Sample" olarak ayarlanır. Ancak, assetName için bir değer belirtmediyseniz ancak iş adını "NewJob" olarak ayarlarsanız, Outputmediavarlık adı "Joverputasset (değer) _NewJob" olacaktır.
 
-    Aşağıdaki örnek, varlık Adı özniteliğinin nasıl ayarlanır:
+    Aşağıdaki örnekte, assetName özniteliğinin nasıl ayarlanacağı gösterilmektedir:
 
         "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"
-* Görev zincirleme etkinleştirmek için:
+* Görev zincirlemesini etkinleştirmek için:
 
   * Bir işin en az iki görevi olmalıdır
-  * Girdisi işteki başka bir görevin çıktısı olan en az bir görev olmalıdır.
+  * Girişi işteki başka bir görevin çıktısı olan en az bir görev olmalıdır.
 
-Daha fazla bilgi için bkz: [Media Services REST API ile Kodlama İşi Oluşturma.](media-services-rest-encode-asset.md)
+Daha fazla bilgi için, [Media Services REST API bir kodlama Işi oluşturma](media-services-rest-encode-asset.md)konusuna bakın.
 
-### <a name="monitor-processing-progress"></a>İşlem İlerlemeyi İzle
-Aşağıdaki örnekte gösterildiği gibi, Devlet özelliğini kullanarak İş durumunu alabilirsiniz:
+### <a name="monitor-processing-progress"></a>İzleme Işlemi Ilerleme durumu
+Aşağıdaki örnekte gösterildiği gibi, durum özelliğini kullanarak Iş durumunu elde edebilirsiniz:
 
 **HTTP İsteği**
 
@@ -601,7 +601,7 @@ Aşağıdaki örnekte gösterildiği gibi, Devlet özelliğini kullanarak İş d
     Content-Length: 0
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
 Başarılı olursa, aşağıdaki yanıt döndürülür:
 
@@ -621,9 +621,9 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
 
 
 ### <a name="cancel-a-job"></a>Bir işi iptal etme
-Medya Hizmetleri, CancelJob işlevi aracılığıyla çalışan işleri iptal etmenizi sağlar. Bu arama, durumu iptal edildiğinde, iptal edildiğinde, iptal edildiğinde, hata yaptığında veya tamamlandığında Bir İş'i iptal etmeye çalışırsanız 400 hata kodu döndürür.
+Media Services, çalışan işleri CancelJob işlevi aracılığıyla iptal etmenizi sağlar. Bu çağrı, durumu iptal edildiğinde, iptal edildiğinde, hatada veya tamamlandığında bir Işi iptal etmeyi denerseniz bir 400 hata kodu döndürür.
 
-Aşağıdaki örnek, CancelJob'un nasıl adlandırılabildiğini gösterir.
+Aşağıdaki örnek, CancelJob çağrısının nasıl çağrılacağını gösterir.
 
 **HTTP İsteği**
 
@@ -637,15 +637,15 @@ Aşağıdaki örnek, CancelJob'un nasıl adlandırılabildiğini gösterir.
     Host: wamsbayclus001rest-hs.net
 
 
-Başarılı olursa, 204 yanıt kodu ileti gövdesi olmadan döndürülür.
+Başarılı olursa, ileti gövdesi olmadan 204 yanıt kodu döndürülür.
 
 > [!NOTE]
-> CancelJob'a parametre olarak aktarırken iş kimliğini (normalde nb:jid:UUID: somevalue) URL kodlamanız gerekir.
+> İşi CancelJob 'a bir parametre olarak geçirirken iş kimliğini (normalde NB: JID: UUID: someValue) kodlamanız gerekir.
 >
 >
 
-### <a name="get-the-output-asset"></a>Çıktı varlığını alma
-Aşağıdaki kod, çıktı varlık Kimliği'nin nasıl istenecek lerini gösterir.
+### <a name="get-the-output-asset"></a>Çıkış varlığını al
+Aşağıdaki kod, çıkış varlığı kimliğini nasıl isteyeceğini gösterir.
 
 **HTTP İsteği**
 
@@ -660,7 +660,7 @@ Aşağıdaki kod, çıktı varlık Kimliği'nin nasıl istenecek lerini gösteri
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -692,14 +692,14 @@ Aşağıdaki kod, çıktı varlık Kimliği'nin nasıl istenecek lerini gösteri
        ]
     }
 
-## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>Varlığı yayımlayın ve REST API ile akış ve aşamalı indirme URL'leri alın
+## <a name="publish-the-asset-and-get-streaming-and-progressive-download-urls-with-rest-api"></a><a id="publish_get_urls"></a>REST API ile varlığı yayımlayın ve akış ve aşamalı indirme URL 'Lerini alın
 
 Bir varlığı akışla aktarmak veya indirmek için söz konusu varlığı önce bir bulucu oluşturarak “yayımlamak” gerekir. Bulucular varlıkta bulunan dosyalara erişim imkanı sağlar. Media Services, iki tür bulucuyu destekler: Medyayı akışla aktarmak (örneğin MPEG DASH, HLS veya Kesintisiz Akış) için kullanılan OnDemandOrigin bulucuları ve medya dosyalarını indirmek için kullanılan Erişim İmzası (SAS) bulucuları. 
 
-Yer bulucuları oluşturduktan sonra, dosyalarınızı akışveya indirmek için kullanılan URL'leri oluşturabilirsiniz.
+Bulıcıları oluşturduktan sonra, dosyalarınızı akışa almak veya indirmek için kullanılan URL 'Leri oluşturabilirsiniz.
 
 >[!NOTE]
->AMS hesabınız **oluşturulduğunda,** **Durduruldu** durumunda hesabınıza varsayılan akış bitiş noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
+>AMS hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir.
 
 Kesintisiz Akışa ilişkin bir akış URL'si aşağıdaki biçime sahiptir:
 
@@ -717,16 +717,16 @@ Dosya indirmek için kullanılan bir SAS URL'si aşağıdaki biçime sahiptir:
 
     {blob container name}/{asset name}/{file name}/{SAS signature}
 
-Bu bölümde, varlıklarınızı "yayınlamak" için gereken aşağıdaki görevlerin nasıl gerçekleştirililecektir gösterilmektedir.  
+Bu bölümde, varlıklarınızı "yayımlamak" için gerekli olan aşağıdaki görevlerin nasıl gerçekleştirileceği gösterilmektedir.  
 
 * Okuma izniyle AccessPolicy oluşturma
-* İçerik indirmek için SAS URL'si oluşturma
-* İçerik akışı için başlangıç URL'si oluşturma
+* İçerik indirmek için SAS URL 'SI oluşturma
+* Akış içeriği için kaynak URL 'SI oluşturma
 
 ### <a name="creating-the-accesspolicy-with-read-permission"></a>Okuma izniyle AccessPolicy oluşturma
-Herhangi bir medya içeriğini indirmeden veya yayınlamadan önce, önce okuma izinleriyle bir AccessPolicy tanımlayın ve müşterileriniz için etkinleştirmek istediğiniz teslim mekanizmasının türünü belirten uygun Konumbelirleyici varlık oluşturun. Kullanılabilir özellikler hakkında daha fazla bilgi için [AccessPolicy Entity Properties'e](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties)bakın.
+Herhangi bir medya içeriğini indirmeden veya akışa almadan önce, okuma izinleriyle bir AccessPolicy tanımlayın ve istemcileriniz için etkinleştirmek istediğiniz teslim mekanizması türünü belirten uygun Bulucu varlığını oluşturun. Kullanılabilen özellikler hakkında daha fazla bilgi için bkz. [AccessPolicy Entity Properties](https://docs.microsoft.com/rest/api/media/operations/accesspolicy#accesspolicy_properties).
 
-Aşağıdaki örnekte, belirli bir Varlık için okuma izinleri için Access Policy'nin nasıl belirtileceğini gösterilmektedir.
+Aşağıdaki örnek, belirli bir varlık için AccessPolicy for Read izinlerinin nasıl ekleneceğini gösterir.
 
     POST https://wamsbayclus001rest-hs.net/API/AccessPolicies HTTP/1.1
     Content-Type: application/json
@@ -741,15 +741,15 @@ Aşağıdaki örnekte, belirli bir Varlık için okuma izinleri için Access Pol
 
     {"Name": "DownloadPolicy", "DurationInMinutes" : "300", "Permissions" : 1}
 
-Başarılı olursa, oluşturduğunuz AccessPolicy kuruluşunu açıklayan bir 201 başarı kodu döndürülür. Daha sonra AccessPolicy Id'yi, Teslim etmek istediğiniz dosyayı (çıktı varlığı gibi) içeren varlığın Varlık Kimliği ile birlikte Konumbelirleme varlığını oluşturmak için kullanırsınız.
+Başarılı olursa, oluşturduğunuz AccessPolicy varlığını açıklayan bir 201 başarılı kodu döndürülür. Daha sonra AccessPolicy ID 'yi, Konumlandırıcı varlığını oluşturmak için teslim etmek istediğiniz dosyayı (örneğin, bir çıktı varlığı) içeren varlığın varlık kimliğiyle birlikte kullanırsınız.
 
 > [!NOTE]
-> Bu temel iş akışı, bir Varlığı sindirirken dosya yüklemekle aynıdır (bu konuda daha önce tartışıldığı gibi). Ayrıca, dosya yükleme gibi, dosyalarınıza (veya müşterilerinizin) hemen erişmeniz gerekiyorsa, Başlangıç Zamanı değerinizi geçerli zamandan beş dakika öncesine ayarlayın. İstemci ve Medya Hizmetleri arasında saat eğriliği olabileceğinden, bu eylem gereklidir. Başlangıç Saati değeri aşağıdaki DateTime biçiminde olmalıdır: YYYY-MM-DDTHH:mm:ssZ (örneğin, "2014-05-23T17:53:50Z").
+> Bu temel iş akışı, bir varlığı alırken (Bu konunun önceki kısımlarında anlatıldığı gibi) bir dosyayı karşıya yüklerken de aynıdır. Ayrıca, dosyaları karşıya yükleme gibi (veya istemcileriniz) dosyalarınıza hemen erişmeniz gerekiyorsa, StartTime değerini geçerli zamandan beş dakika önce olarak ayarlayın. Bu eylem, istemci ve Media Services arasında saat çarpıklığı olabileceğinden gereklidir. StartTime değeri şu tarih saat biçiminde olmalıdır: YYYY-MM-DDTHH: mm: ssZ (örneğin, "2014-05-23T17:53:50Z").
 >
 >
 
-### <a name="creating-a-sas-url-for-downloading-content"></a>İçerik indirmek için SAS URL'si oluşturma
-Aşağıdaki kod, daha önce oluşturulmuş ve yüklenen bir ortam dosyasını indirmek için kullanılabilecek bir URL'yi nasıl elde edebileceğinizi gösterir. AccessPolicy izinleri belirlemiştir ve Konum belirleme yolu Bir SAS indirme URL'sine başvurur.
+### <a name="creating-a-sas-url-for-downloading-content"></a>İçerik indirmek için SAS URL 'SI oluşturma
+Aşağıdaki kod, daha önce oluşturulup karşıya yüklenen bir medya dosyasını indirmek için kullanılabilecek bir URL 'nin nasıl alınacağını gösterir. AccessPolicy okuma izinlerine sahiptir ve Konumlandırıcı yolu bir SAS indirme URL 'sine başvurur.
 
     POST https://wamsbayclus001rest-hs.net/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -806,22 +806,22 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
        }
     }
 
-Döndürülen **Yol** özelliği SAS URL'sini içerir.
+Döndürülen **yol** özelliği SAS URL 'sini içerir.
 
 > [!NOTE]
-> Depolama şifrelenmiş içeriği karşıdan yükledikten önce, bu içeriği oluşturmadan önce el ile şifreçözme işlemini kullanmanız veya işlenmiş dosyaları bir OutputAsset'e açık olarak çıktılamak ve ardından bu Varlıktan indirmek için bir işleme görevinde Depolama Şifre Çözme MediaProcessor'i kullanmanız gerekir. İşleme hakkında daha fazla bilgi için bkz. Ayrıca, SAS URL Yer bulucuları oluşturulduktan sonra güncelleştirilemez. Örneğin, aynı Locator'u güncelleştirilmiş bir Başlangıç Zamanı değeriyle yeniden kullanamazsınız. Bunun nedeni, SAS URL'lerinin oluşturulma biçimidir. Bir Konum belirleyicinin süresi dolduktan sonra indirilebilmek için bir varlığa erişmek istiyorsanız, yeni bir Başlangıç Saati ile yeni bir kıymet oluşturmanız gerekir.
+> Depolama şifrelenmiş içeriği indirdiğinizde, işlemeden önce el ile şifresini çözmeniz veya bir işleme görevinde depolama şifre çözme MediaProcessor ' ı kullanarak, bir OutputAsset içinde işlenen dosyaların çıkışını kaldırın ve ardından bu varlıktan indirin. İşleme hakkında daha fazla bilgi için, Media Services REST API bir kodlama Işi oluşturma konusuna bakın. Ayrıca, SAS URL Konumlandırıcı oluşturulduktan sonra güncelleştirilemez. Örneğin, güncelleştirilmiş bir StartTime değeri ile aynı Konumlandırıcı 'yı yeniden kullanamazsınız. Bunun nedeni SAS URL 'Lerinin oluşturulma yöntemidir. Bir bulucunun süresi dolduktan sonra bir varlığa indirme için erişmek istiyorsanız yeni bir StartTime ile yeni bir başlangıç oluşturmanız gerekir.
 >
 >
 
 ### <a name="download-files"></a>Dosyaları indirme
-AccessPolicy ve Locator kümesini ayarladıktan sonra, Azure Depolama REST API'lerini kullanarak dosyaları indirebilirsiniz.  
+AccessPolicy ve Locator kümesini aldıktan sonra Azure depolama REST API 'Lerini kullanarak dosyaları indirebilirsiniz.  
 
 > [!NOTE]
-> İndirmek istediğiniz dosyanın dosya adını önceki bölümde alınan Konumbelirleme **Yolu** değerine eklemeniz gerekir. Örneğin, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> İndirmek istediğiniz dosyanın adını, önceki bölümde alınan Konumlandırıcı **yolu** değerine eklemeniz gerekir. Örneğin, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 
-Azure depolama lekeleri ile çalışma hakkında daha fazla bilgi için [Blob Service REST API'ye](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)bakın.
+Azure depolama Blobları ile çalışma hakkında daha fazla bilgi için bkz. [BLOB hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-Daha önce gerçekleştirdiğiniz kodlama işinin (Uyarlamalı MP4 kümesine kodlama) bir sonucu olarak, aşamalı olarak indirebileceğiniz birden çok MP4 dosyanız var. Örnek:    
+Daha önce gerçekleştirdiğiniz kodlama işinin bir sonucu olarak (Uyarlamalı MP4 kümesine kodlama), aşamalı olarak indirebileceğiniz birden fazla MP4 dosyasına sahip olursunuz. Örneğin:    
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
@@ -839,8 +839,8 @@ Daha önce gerçekleştirdiğiniz kodlama işinin (Uyarlamalı MP4 kümesine kod
 
     https://storagetestaccount001.blob.core.windows.net/asset-38058602-a4b8-4b33-b9f0-6880dc1490ea/BigBuckBunny_AAC_und_ch2_56kbps.mp4?sv=2012-02-12&sr=c&si=166d5154-b801-410b-a226-ee2f8eac1929&sig=P2iNZJAvAWpp%2Bj9yV6TQjoz5DIIaj7ve8ARynmEM6Xk%3D&se=2015-02-14T01:13:05Z
 
-### <a name="creating-a-streaming-url-for-streaming-content"></a>İçerik akışı için akış URL'si oluşturma
-Aşağıdaki kod, akışlı URL Bulucu'nun nasıl oluşturulabildiğini gösterir:
+### <a name="creating-a-streaming-url-for-streaming-content"></a>Akış içeriği için akış URL 'SI oluşturma
+Aşağıdaki kod, akış URL Konumlandırıcısı 'nın nasıl oluşturulacağını gösterir:
 
     POST https://wamsbayclus001rest-hs/API/Locators HTTP/1.1
     Content-Type: application/json
@@ -897,15 +897,15 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
        }
     }
 
-Akışlı bir ortam oynatıcıda Düzgün Akış kaynağı URL'si akışı sağlamak için, Yol özelliğini Düzgün Akış bildirimi dosyasının adıyla ve ardından "/manifest" ile iliştirmeniz gerekir.
+Bir akış medya yürütücüsünde Kesintisiz Akış kaynak URL 'sini akışa almak için, Path özelliğini Kesintisiz Akış bildirim dosyasının adı ile ve ardından "/manifest" ile eklemeniz gerekir.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest
 
-HLS akışı için "/manifest"den sonra (format=m3u8-aapl) ekin.
+HLS akışı için, "/manifest" öğesinden sonra Append (format = M3U8-AAPL).
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
-MPEG DASH'i akış için "/manifest"den sonra (format=mpd-time-csf) ekine.
+MPEG DASH akışını sağlamak için, "/manifest" öğesinden sonra (format = MPD-Time-CSF) ekleyin.
 
     http://amstestaccount001.streaming.mediaservices.windows.net/ebf733c4-3e2e-4a68-b67b-cc5159d1d7f2/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
@@ -913,7 +913,7 @@ MPEG DASH'i akış için "/manifest"den sonra (format=mpd-time-csf) ekine.
 ## <a name="play-your-content"></a><a id="play"></a>İçeriğinizi oynatma
 Videonuzu akışla aktarmak için [Azure Media Services Oynatıcısı](https://aka.ms/azuremediaplayer)’nı kullanın.
 
-Aşamalı karşıdan yüklemeyi test etmek için bir URL'yi tarayıcıya yapıştırın (örneğin, IE, Chrome, Safari).
+Aşamalı indirmeyi test etmek için bir tarayıcıya URL (örneğin, IE, Chrome, Safari) yapıştırın.
 
 ## <a name="next-steps-media-services-learning-paths"></a>Sonraki Adımlar: Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

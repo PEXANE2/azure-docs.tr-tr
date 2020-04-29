@@ -1,6 +1,6 @@
 ---
-title: Azure Media Player ile Oynatma - Azure | Microsoft Dokümanlar
-description: Azure Media Player, Microsoft Azure Media Services'in medya içeriğini çok çeşitli tarayıcılarda ve cihazlarda oynatmak için oluşturulmuş bir web video oynatıcıdır.
+title: Azure Media Player-Azure ile kayıttan yürütme | Microsoft Docs
+description: Azure Media Player, medya içeriğini çok çeşitli tarayıcılarda ve cihazlarda Microsoft Azure Media Services çalmak için oluşturulmuş bir web video oyuncusu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,46 +12,46 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
 ms.openlocfilehash: d9e42e809443a2dd6cdeb989f692b96d63269f79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78673570"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player'a genel bakış
 
-Azure Media Player, Microsoft Azure Media Services'in medya içeriğini çok çeşitli tarayıcılarda ve cihazlarda oynatmak için oluşturulmuş bir web video oynatıcıdır. Azure Media Player, zenginleştirilmiş bir uyarlamalı akış deneyimi sağlamak için HTML5, Media Source Extensions (MSE) ve Şifreli Medya Uzantıları (EME) gibi endüstri standartlarını kullanır. Bu standartlar bir aygıtta veya tarayıcıda kullanılamadığında, Azure Media Player geri dönüş teknolojisi olarak Flash ve Silverlight'ı kullanır. Kullanılan oynatma teknolojisine bakılmaksızın, geliştiriciler API'lere erişmek için birleşik bir JavaScript arabirimine sahip olacaktır. Bu, Azure Medya Hizmetleri tarafından sunulan içeriğin ekstra bir çaba sarf edilmeden çok çeşitli aygıtlarda ve tarayıcılarda oynatılmasına olanak tanır.
+Azure Media Player, medya içeriğini çok çeşitli tarayıcılarda ve cihazlarda Microsoft Azure Media Services çalmak için oluşturulmuş bir web video oyuncusu. Azure Media Player HTML5, medya kaynağı uzantıları (MSE) ve şifreli Medya Uzantıları (EME) gibi sektör standartlarını, zenginleştirilmiş bir uyarlamalı akış deneyimi sağlamak için kullanır. Bu standartlar bir cihazda veya bir tarayıcıda kullanılabilir olmadığında, Azure Media Player Flash ve Silverlight 'ı geri dönüş teknolojisi olarak kullanır. Kullanılan kayıttan yürütme teknolojisinden bağımsız olarak, geliştiricilerin API 'Lere erişmek için birleştirilmiş bir JavaScript arabirimi olacaktır. Bu, Azure Media Services tarafından sunulan içeriğin ek bir çaba olmadan çok sayıda cihaz ve tarayıcıda yürütülebilmesini sağlar.
 
-Microsoft Azure Media Services, içeriği oynatmak için içeriğihls, DASH, Düzgün Akış akış biçimleriyle birlikte sunulmasını sağlar. Azure Media Player bu çeşitli biçimleri dikkate alır ve platform/tarayıcı özelliklerine göre otomatik olarak en iyi bağlantıyı çalar. Medya Hizmetleri ayrıca PlayReady şifreleme veya AES-128 bit zarf şifreleme ile varlıkların dinamik şifreleme sağlar. Azure Media Player, uygun şekilde yapılandırıldığında PlayReady ve AES-128 bit şifreli içeriğin şifresini çözmenize olanak tanır. 
+Microsoft Azure Media Services, içeriğin kayıttan yürütülmesi için HLS, DASH, Kesintisiz Akış akış biçimleriyle birlikte sunulmasını sağlar. Azure Media Player, bu çeşitli biçimleri dikkate alır ve platform/tarayıcı özelliklerine göre en iyi bağlantıyı otomatik olarak yürütür. Media Services Ayrıca, PlayReady şifrelemesi veya AES-128 bit zarfı Şifrelemeli varlıkların dinamik şifrelemesine olanak tanır. Azure Media Player, uygun şekilde yapılandırıldığında PlayReady ve AES-128 bit şifreli içeriğin şifresini çözmeye izin verir. 
 
 > [!NOTE]
-> Widevine şifreli içerik için HTTPS oynatma gereklidir.
+> Wdevine şifrelenmiş içerik için HTTPS kayıttan yürütme gereklidir.
 
-## <a name="use-azure-media-player-demo-page"></a>Azure Media Player demo sayfasını kullanma
+## <a name="use-azure-media-player-demo-page"></a>Azure Media Player demo sayfası kullanma
 
 ### <a name="start-using"></a>Kullanmaya başlayın
 
-Azure Media [Player demo sayfasını](https://aka.ms/azuremediaplayer) Azure Medya Hizmetleri örneklerini veya kendi akışınızı çalmak için kullanabilirsiniz.  
+[Azure Media Player Demo sayfasını](https://aka.ms/azuremediaplayer) kullanarak Azure Media Services örnekleri veya kendi akışınızı oynatabilirsiniz.  
 
-Yeni bir video oynatmak için farklı bir URL yapıştırın ve **Güncelleştir'e**basın.
+Yeni bir video oynatmak için, farklı bir URL yapıştırın ve **Güncelleştir**' e basın.
 
-Çeşitli oynatma seçeneklerini (örneğin, teknoloji, dil veya şifreleme) yapılandırmak için **Gelişmiş Seçenekler'e**basın.
+Çeşitli kayıttan yürütme seçeneklerini yapılandırmak için (örneğin, teknik, dil veya şifreleme), **Gelişmiş Seçenekler**' e basın.
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Video akışının tanılamalarını izleme
 
-Bir video akışının tanılamalarını izlemek için [Azure Media Player demo sayfasını](https://aka.ms/azuremediaplayer) kullanabilirsiniz. 
+Video akışının tanılamalarını izlemek için [Azure Media Player Demo sayfasını](https://aka.ms/azuremediaplayer) kullanabilirsiniz. 
 
 ![Azure Media Player tanılama](./media/azure-media-player/diagnostics.png)
 
-## <a name="set-up-azure-media-player-in-your-html"></a>HTML'nizde Azure Media Player'ı ayarlama
+## <a name="set-up-azure-media-player-in-your-html"></a>HTML 'inizdeki Azure Media Player ayarlama
 
-Azure Media Player'ın kurulumu kolaydır. Medya Hizmetleri hesabınızdan medya içeriğinin temel olarak oynatmasını almak yalnızca birkaç dakika nızı alır. Azure Media Player'ı nasıl ayarlayıp yapılandırılabildiğini öğrenmek için [Azure Media Player belgelerine](https://aka.ms/ampdocs) bakın. 
+Azure Media Player kolayca ayarlanabilir. Media Services hesabınızdan medya içeriğinin temel oynatımını almak yalnızca birkaç dakika sürer. Azure Media Player ayarlama ve yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure Media Player belgeleri](https://aka.ms/ampdocs) . 
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

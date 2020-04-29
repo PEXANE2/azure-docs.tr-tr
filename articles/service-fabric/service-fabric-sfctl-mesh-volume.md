@@ -1,15 +1,15 @@
 ---
-title: Azure Servis Kumaş CLI- sfctl örgü hacmi
-description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Birim kaynaklarını almak ve silen komutların listesini içerir.
+title: Azure Service Fabric CLı-sfctl ağ birimi
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Birim kaynaklarını alma ve silmeye yönelik komutların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905918"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -21,66 +21,66 @@ Birim kaynaklarını alın ve silin.
 | --- | --- |
 | delete | Birim kaynağını siler. |
 | list | Tüm birim kaynaklarını listeler. |
-| göster | Verilen ada sahip Birim kaynağını alır. |
+| göster | Verilen ada sahip birim kaynağını alır. |
 
-## <a name="sfctl-mesh-volume-delete"></a>sfctl örgü ses silme
+## <a name="sfctl-mesh-volume-delete"></a>sfctl kafes birimi silme
 Birim kaynağını siler.
 
-Adla tanımlanan Birim kaynağını siler.
+Ad tarafından tanımlanan birim kaynağını siler.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --isim -n [Gerekli] | Birimin adı. |
+| --Name-n [gerekli] | Birimin adı. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-mesh-volume-list"></a>sfctl örgü ses listesi
+## <a name="sfctl-mesh-volume-list"></a>sfctl kafes birim listesi
 Tüm birim kaynaklarını listeler.
 
-Belirli bir kaynak grubundaki tüm birim kaynakları hakkındaki bilgileri alır. Bilgiler, Birimin açıklamasını ve diğer özelliklerini içerir.
+Belirli bir kaynak grubundaki tüm birim kaynaklarıyla ilgili bilgileri alır. Bilgiler, birimin açıklaması ve diğer özelliklerini içerir.
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
-## <a name="sfctl-mesh-volume-show"></a>sfctl örgü ses gösterisi
-Verilen ada sahip Birim kaynağını alır.
+## <a name="sfctl-mesh-volume-show"></a>sfctl ağ birimi Show
+Verilen ada sahip birim kaynağını alır.
 
-Verilen adla Birim kaynağı hakkındaki bilgileri alır. Bilgiler, Birimin açıklamasını ve diğer özelliklerini içerir.
+Verilen ada sahip birim kaynağıyla ilgili bilgileri alır. Bilgiler, birimin açıklaması ve diğer özelliklerini içerir.
 
 ### <a name="arguments"></a>Bağımsız Değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --isim -n [Gerekli] | Birimin adı. |
+| --Name-n [gerekli] | Birimin adı. |
 
-### <a name="global-arguments"></a>Küresel Argümanlar
+### <a name="global-arguments"></a>Genel bağımsız değişkenler
 
 |Bağımsız Değişken|Açıklama|
 | --- | --- |
-| --hata ayıklama | Tüm hata ayıklama günlüklerini göstermek için günlüğe kaydetme ayrıntılılığını artırın. |
-| --yardım -h | Bu yardım iletisi ve çıkış göster. |
-| --çıkış -o | Çıktı biçimi.  İzin\: verilen değerler json, jsonc, tablo, tsv.  Varsayılan\: json. |
-| --sorgu | JMESPath sorgu dizesi. Daha\:fazla bilgi ve örnekler için http //jmespath.org/'a bakın. |
-| --ayrıntılı | Günlüğe kaydetme ayrıntılılığını artırın. Tam hata ayıklama günlükleri için --hata ayıklama kullanın. |
+| --Hata Ayıkla | Tüm hata ayıklama günlüklerini göstermek için günlük ayrıntı düzeyini artırın. |
+| --Yardım-h | Bu yardım iletisini gösterin ve çıkın. |
+| --çıkış-o | Çıkış biçimi.  İzin verilen\: JSON, jsonc, tablo, TSV değerleri.  Varsayılan\: JSON. |
+| --sorgu | JMESPath sorgu dizesi. Daha fazla\:bilgi ve örnek için bkz. http//jmespath.org/. |
+| --ayrıntılı | Günlük ayrıntı düzeyini artırın. Tam hata ayıklama günlükleri için--Debug kullanın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Servis Kumaş ı CLI'yi [ayarlayın.](service-fabric-cli.md)
-- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

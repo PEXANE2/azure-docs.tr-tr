@@ -1,7 +1,7 @@
 ---
-title: SMTP banner denetimi için ters arama bölgelerini yapılandırma
+title: Bir SMTP başlık denetimi için ters arama bölgelerini yapılandırma
 titlesuffix: Azure Virtual Network
-description: Azure'da Bir SMTP banner denetimi için ters arama bölgelerini nasıl yapılandırıştırılabildiğini açıklar
+description: Azure 'da bir SMTP başlık denetimi için geriye doğru arama bölgelerinin nasıl yapılandırılacağını açıklar.
 services: virtual-network
 documentationcenter: virtual-network
 author: genlin
@@ -14,34 +14,34 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201705"
 ---
-# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>SMTP banner denetimi için ters arama bölgelerini yapılandırma
+# <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Bir SMTP başlık denetimi için ters arama bölgelerini yapılandırma
 
-Bu makalede, Azure DNS'de ters bölge nasıl kullanılacağı ve SMTP Banner Denetimi için bir Ters DNS (PTR) kaydının nasıl oluşturuluyorum.
+Bu makalede, Azure DNS ' de ters bir bölgenin nasıl kullanılacağı ve SMTP başlık denetimi için ters DNS (PTR) kaydı oluşturma açıklanır.
 
 ## <a name="symptom"></a>Belirti
 
-Microsoft Azure'da bir SMTP sunucusu barındırıyorsanız, uzak posta sunucularından ileti gönderirken veya aldığınızda aşağıdaki hata iletisini alabilirsiniz:
+Microsoft Azure bir SMTP sunucusu barındırdığınızda, uzak posta sunucularından bir ileti gönderdiğinizde veya alırken aşağıdaki hata iletisini alabilirsiniz:
 
-**554: PTR Kaydı Yok**
+**554: PTR kaydı yok**
 
 ## <a name="solution"></a>Çözüm
 
-Azure'daki sanal bir IP adresi için ters kayıtlar özel etki alanı bölgelerinde değil, Microsoft'a ait etki alanı bölgelerinde oluşturulur.
+Azure 'daki bir sanal IP adresi için, ters kayıtlar özel etki alanı bölgelerinde değil, Microsoft 'un sahip olduğu etki alanı bölgelerinde oluşturulur.
 
-Microsoft'a ait bölgelerdeki PTR kayıtlarını yapılandırmak için PublicIpAddress kaynağındaki -ReverseFqdn özelliğini kullanın. Daha fazla bilgi için [Azure'da barındırılan hizmetler için ters DNS'yi yapılandır' 'a](../dns/dns-reverse-dns-for-azure-services.md)bakın.
+Microsoft 'a ait bölgelerde PTR kayıtlarını yapılandırmak için, Publicıpaddress kaynağında-Smarfqdn özelliğini kullanın. Daha fazla bilgi için bkz. [Azure 'da barındırılan hizmetler için ters DNS yapılandırma](../dns/dns-reverse-dns-for-azure-services.md).
 
-PTR kayıtlarını yapılandırdığınızda, IP adresinin ve ters FQDN'nin aboneye ait olduğundan emin olun. Aboneğe ait olmayan ters bir FQDN ayarlamaya çalışırsanız, aşağıdaki hata iletisini alırsınız:
+PTR kayıtlarını yapılandırırken, IP adresinin ve ters FQDN 'nin aboneliğe ait olduğundan emin olun. Aboneliğe ait olmayan bir ters FQDN ayarlamaya çalışırsanız aşağıdaki hata iletisini alırsınız:
 
     Set-AzPublicIpAddress : ReverseFqdn mail.contoso.com that PublicIPAddress ip01 is trying to use does not belong to subscription <Subscription ID>. One of the following conditions need to be met to establish ownership:
                         
-    1) ReverseFqdn abonelik altında herhangi bir kamu ip kaynağıfqdn eşleşir;
-    2) ReverseFqdn abonelik altında herhangi bir kamu ip kaynağının fqdn (CName kayıt zinciri üzerinden) giderir;
-    3) Abonelik altında statik bir kamu ip kaynağının ip adresine (CName ve A kayıt zinciri aracılığıyla) giderir.
+    1) Smarfqdn, abonelik kapsamındaki herhangi bir genel IP kaynağının FQDN 'siyle eşleşir;
+    2) Smarfqdn, abonelik kapsamındaki herhangi bir genel IP kaynağının FQDN 'sine (CName kayıtları zinciri aracılığıyla) çözümleniyor;
+    3) Abonelik altında statik bir genel IP kaynağının IP adresine (CName ve A kayıt zinciri aracılığıyla) çözümlenmektedir.
 
-SMTP banner'ınızı varsayılan ters FQDN ile eşleşecek şekilde el ile değiştirirseniz, Uzak posta sunucusu yine de başarısız olabilir, çünkü SMTP banner ana bilgisayarının etki alanının MX kaydıyla eşleşmesini bekleyebilir.
+SMTP başlığını varsayılan ters FQDN 'umuza uyacak şekilde el ile değiştirirseniz, uzak posta sunucusu, SMTP başlık konağının etki alanı için MX kaydıyla eşleşmesini beklediği için yine de başarısız olabilir.

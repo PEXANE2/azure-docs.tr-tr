@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Şirket içi ve Özel Bulut arasında VPN yapılandırın
-description: Şirket içi ağınızla CloudSimple Private Cloud'unuz arasında Siteden Siteye veya Site'ye VPN bağlantısının nasıl yapılandırılabildiğini açıklar
+title: CloudSimple tarafından Azure VMware çözümü-şirket içi ve özel bulut arasında VPN yapılandırma
+description: Şirket içi ağınız ile CloudSimple özel bulutunuz arasında siteden siteye veya Noktadan siteye VPN bağlantısının nasıl yapılandırılacağını açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,83 +9,83 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087133"
 ---
-# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple Private Cloud'unuza VPN bağlantısı yapılandırma
+# <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma
 
-VPN ağ geçitleri, cloudsimple ağına şirket içi ağınızdan ve bir istemci bilgisayarından uzaktan bağlanmanızı sağlar.  Bu makalede, CloudSimple portalından VPN ağ geçitleri kurma hakkında bilgi bulabilirsiniz.  Şirket içi ağınızla CloudSimple ağınız arasındaki VPN bağlantısı, vCenter'a ve Özel Bulut'unuzdaki iş yüklerine erişim sağlar. CloudSimple hem Noktadan Siteye VPN'i hem de Siteden Siteye VPN ağ geçitlerini destekler.
+VPN ağ geçitleri, CloudSimple ağına şirket içi ağınızdan ve bir istemci bilgisayardan uzaktan bağlanmanızı sağlar.  Bu makalede, CloudSimple portalından VPN ağ geçitlerini ayarlama hakkında bilgi edinebilirsiniz.  Şirket içi ağınız ile CloudSimple ağınız arasında bir VPN bağlantısı, özel bulutunuzda vCenter ve iş yüklerine erişim sağlar. CloudSimple, hem Noktadan siteye VPN 'i hem de siteden siteye VPN ağ geçitlerini destekler.
 
 ## <a name="vpn-gateway-types"></a>VPN ağ geçidi türleri
 
-* **Site'ye noktadan kullanıcıya VPN** bağlantısı, Özel Bulut'unuza bilgisayarınızdan bağlanmanın en basit yoludur. Özel Bulut'a uzaktan bağlanmak için Site'ye Noktavpn bağlantısını kullanın.
-* **Siteden Siteye VPN** bağlantısı, Şirket içi hizmetlere erişmek için Özel Bulut iş yüklerinizi ayarlamanıza olanak tanır. Ayrıca, Özel Bulut vCenter'ınıza kimlik doğrulama yapmak için şirket içi Active Directory'yi kimlik kaynağı olarak da kullanabilirsiniz.  Şu anda, **İlke Tabanlı VPN** türü desteklenir.
+* **Noktadan sıteye VPN** bağlantısı, bilgisayarınızdan özel bulutunuzu bağlamak için en kolay yoldur. Özel buluta uzaktan bağlanmak için Noktadan siteye VPN bağlantısı kullanın.
+* **Siteden sıteye VPN** bağlantısı, şirket içi hizmetlere erişmek Için özel bulut iş yüklerinizi ayarlamanıza olanak sağlar. Ayrıca, özel bulut vCenter 'unuzda kimlik doğrulaması için bir kimlik kaynağı olarak şirket içi Active Directory de kullanabilirsiniz.  Şu anda, **Ilke tabanlı VPN** türü desteklenir.
 
-Bir bölgede, bir Siteden Siteye VPN ağ geçidi ve bir Noktadan Siteye VPN ağ geçidi oluşturabilirsiniz.
+Bir bölgede, bir siteden siteye VPN ağ geçidi ve bir noktadan siteye VPN ağ geçidi oluşturabilirsiniz.
 
 ## <a name="point-to-site-vpn"></a>Noktadan Siteye VPN
 
-Bir Noktaya Sayfa VPN ağ geçidi oluşturmak için [bkz.](vpn-gateway.md#create-point-to-site-vpn-gateway)
+Noktadan siteye VPN ağ geçidi oluşturmak için bkz. [noktadan sıteye VPN ağ geçidi oluşturma](vpn-gateway.md#create-point-to-site-vpn-gateway).
 
-### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Siteye Göre VPN kullanarak CloudSimple'a bağlanın
+### <a name="connect-to-cloudsimple-using-point-to-site-vpn"></a>Noktadan siteye VPN kullanarak CloudSimple 'a bağlanma
 
-Bilgisayarınızdan CloudSimple'a bağlanmak için VPN istemcisi gereklidir.  macOS ve OS X için Windows veya [Viskozite](https://www.sparklabs.com/viscosity/download/) için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
+VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  MacOS ve OS X için Windows veya [viscosity](https://www.sparklabs.com/viscosity/download/) Için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
 
-1. CloudSimple portalını başlatın ve **Ağ'ı**seçin.
-2. **VPN Ağ Geçidi'ni**seçin.
-3. VPN ağ geçitleri listesinden, Siteye Giriş VPN ağ geçidine tıklayın.
+1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
+2. **VPN Gateway**seçin.
+3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
 4. **Kullanıcılar**’ı seçin.
-5. VPN **yapılandırmamı indir'e** tıklayın
+5. **VPN yapılandırması 'Nı indir** 'e tıklayın
 
     ![VPN yapılandırmasını indirme](media/download-p2s-vpn-configuration.png)
 
-6. VPN istemcinizde yapılandırmayı alma
+6. VPN istemcinizdeki yapılandırmayı içeri aktarın
 
-    * Windows [istemcisi üzerinde yapılandırma alma](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) yönergeleri
-    * [macOS veya OS X'te yapılandırma alma](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection) yönergeleri
+    * [Windows istemcisinde yapılandırmayı içeri aktarma](https://openvpn.net/vpn-server-resources/connecting-to-access-server-with-windows/#openvpn-open-source-openvpn-gui-program) yönergeleri
+    * [MacOS veya OS X üzerinde yapılandırmayı içeri aktarma](https://www.sparklabs.com/support/kb/article/getting-started-with-viscosity-mac/#creating-your-first-connection) yönergeleri
 
-7. CloudSimple VPN ağ geçidine bağlanın.
+7. CloudSimple VPN Gateway 'e bağlanın.
 
-Aşağıdaki **örnekviskozite istemcisi**kullanarak bağlantı alma gösterir.
+Aşağıdaki örnekte, **viscosity istemcisi**kullanılarak bağlantı içeri aktarma gösterilmektedir.
 
-#### <a name="import-connection-on-viscosity-client"></a>Viskozite istemcisi üzerinde alma bağlantısı
+#### <a name="import-connection-on-viscosity-client"></a>Viscosity istemcisinde bağlantı içeri aktar
 
-1. Vpn yapılandırmasının içeriğini indirilen .zip dosyasından ayıklayın.
+1. İndirilen. zip dosyasından VPN yapılandırmasının içeriğini ayıklayın.
 
-2. Bilgisayarınızda Viskozite'yi açın.
+2. Bilgisayarınızda viscosity 'yi açın.
 
-3. Simgeyi **+** tıklatın ve**Dosyadan** **Bağlantı** > Aktar'ı seçin.
+3. **+** Simgeye tıklayın ve **bağlantıyı** > **dosyadan**içeri aktar ' ı seçin.
 
-    ![Dosyadan VPN yapılandırmasını alma](media/import-p2s-vpn-config.png)
+    ![VPN yapılandırmasını dosyadan içeri aktar](media/import-p2s-vpn-config.png)
 
-4. Kullanmak istediğiniz protokol için OpenVPN yapılandırma dosyasını (.ovpn) seçin ve **Aç'ı**tıklatın.
+4. Kullanmak istediğiniz protokol için OpenVPN yapılandırma dosyasını (. ovpn) seçin ve **Aç**' a tıklayın.
 
     ![VPN](media/import-p2s-vpn-config-choose-ovpn.png)
 
-Bağlantı artık Viskozite menüsünde görünür.
+Bağlantı artık viscosity menüsünde görüntülenir.
 
 #### <a name="connect-to-the-vpn"></a>VPN'e bağlanın
 
-Viscosity OpenVPN istemcisini kullanarak VPN'e bağlanmak için menüden bağlantıyı seçin. Bağlantının kurulduğunu belirtmek için menü simgesi güncellenir.
+Viscosity OpenVPN istemcisini kullanarak VPN 'ye bağlanmak için, menüden bağlantıyı seçin. Menü simgesi, bağlantının oluşturulduğuna işaret etmek için güncellenir.
 
 ![VPN](media/vis03.png)
 
-### <a name="connecting-to-multiple-private-clouds"></a>Birden Çok Özel Bulutlara Bağlanma
+### <a name="connecting-to-multiple-private-clouds"></a>Birden çok özel bulutlara bağlanma
 
-Site'ye Noktavpn bağlantısı, oluşturduğunuz ilk Özel Bulut'un DNS adlarını çözer. Diğer Özel Bulutlara erişmek istediğinizde, VPN istemcinizdeki DNS sunucusunu güncelleştirmeniz gerekir.
+Noktadan siteye VPN bağlantısı, oluşturduğunuz ilk özel bulutun DNS adlarını çözer. Diğer özel bulutlara erişmek istediğinizde, VPN istemcinizdeki DNS sunucusunu güncelleştirmeniz gerekir.
 
-1. [CloudSimple portalına](access-cloudsimple-portal.md)başlatın.
+1. [Cloudsimple portalını](access-cloudsimple-portal.md)başlatın.
 
-2. Özel **Kaynaklar** > **Bulutları'na** gidin ve bağlanmak istediğiniz Özel Bulut'u seçin.
+2. **Kaynaklar** > **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
-3. Private Cloud'un **Özet** sayfasında, Özel Bulut DNS sunucu IP adresini **Temel Bilgiler**altında kopyalayın.
+3. Özel bulutun **Özet** sayfasında, **temel bilgi**altında özel bulut DNS sunucusu IP adresini kopyalayın.
 
-    ![Özel Bulut DNS sunucuları](media/private-cloud-dns-server.png)
+    ![Özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
 
-4. Bilgisayarınızın sistem tepsisindeki Viskozite simgesine sağ tıklayın ve **Tercihler'i**seçin.
+4. Bilgisayarınızın sistem tepsisindeki viscosity simgesine sağ tıklayın ve **Tercihler**' i seçin.
 
     ![VPN](media/vis00.png)
 
@@ -93,28 +93,28 @@ Site'ye Noktavpn bağlantısı, oluşturduğunuz ilk Özel Bulut'un DNS adların
 
     ![VPN Bağlantısı](media/viscosity-client.png)
 
-6. Bağlantı özelliklerini değiştirmek için **Edit'i** tıklatın.
+6. Bağlantı özelliklerini değiştirmek için **Düzenle** ' ye tıklayın.
 
-    ![VPN Bağlantısını Edin](media/viscosity-edit-connection.png)
+    ![VPN bağlantısını Düzenle](media/viscosity-edit-connection.png)
 
-7. **Ağ** sekmesini tıklatın ve virgül veya boşluk ve etki alanı ile ```cloudsimple.io```ayrılmış Özel Bulut DNS sunucusu IP adreslerini girin.  **VPN sunucusu tarafından gönderilen DNS ayarlarını yoksay'ı**seçin.
+7. **Ağ** sekmesine tıklayın ve virgülle veya alana ve etki alanına göre ayrılmış özel bulut DNS sunucusu IP adreslerini girin ```cloudsimple.io```.  **VPN sunucusu tarafından GÖNDERILEN DNS ayarlarını yoksay**' ı seçin.
 
-    ![VPN Ağ](media/viscosity-edit-connection-networking.png)
+    ![VPN ağı](media/viscosity-edit-connection-networking.png)
 
 > [!IMPORTANT]
-> İlk Özel Bulut'unuza bağlanmak için bu ayarları kaldırın ve VPN sunucusuna bağlanın.
+> İlk özel bulutunuzu bağlamak için bu ayarları kaldırın ve VPN sunucusuna bağlanın.
 
 ## <a name="site-to-site-vpn"></a>Siteler arası VPN
 
-Siteden Siteye VPN ağ geçidi oluşturmak için [bkz.](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)  Şirket içi ağınızdan Özel Bulut'unuza site-to-Site VPN bağlantısı bu avantajları sağlar.  
+Siteden siteye VPN ağ geçidi oluşturmak için bkz. [siteden sıteye VPN ağ geçidi oluşturma](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway).  Şirket içi ağınızdan özel bulutunuz için siteden siteye VPN bağlantısı bu avantajları sağlar.  
 
-* Özel Bulut vCenter'ınızın şirket içi ağınızdaki herhangi bir iş istasyonundan erişilebilirliği
-* Şirket içi Active Directory'nizi vCenter kimlik kaynağı olarak kullanma
-* Şirket içi kaynaklarınızdan Özel Bulut vCenter'ınıza VM şablonlarının, ISO'larının ve diğer dosyaların rahat çalarından aktarılması
-* Şirket içi ağınızdan Özel Bulut'unuzda çalışan iş yüklerinin erişilebilirliği
+* Şirket içi ağınızdaki herhangi bir iş istasyonundan özel bulut vCenter ' nin erişilebilirliği
+* Bir vCenter Identity kaynağı olarak şirket içi Active Directory kullanımı
+* VM şablonlarının, IOS 'nin ve diğer dosyaların şirket içi kaynaklarınızın özel bulut vCenter 'larınıza uygun şekilde aktarılması
+* Şirket içi ağınızdan özel bulutunuzda çalışan iş yüklerinin erişilebilirliği
 
-Şirket içi VPN ağ geçidinizi yüksek kullanılabilirlik modunda kurmak için [bkz.](high-availability-vpn-connection.md)
+Şirket içi VPN ağ geçidinizi yüksek kullanılabilirlik modunda ayarlamak için bkz. [yüksek kullanılabilirliğe sahıp VPN bağlantısını yapılandırma](high-availability-vpn-connection.md).
 
 > [!IMPORTANT]
->    1. VPN cihazınızda TCP MSS Bağlamayı 1200 olarak ayarlayın. Veya VPN aygıtlarınız MSS bağlamayı desteklemiyorsa, tünel arabirimindeki MTU'yu alternatif olarak 1240 bayt olarak ayarlayabilirsiniz.
-> 2. Siteden Siteye VPN kurulduktan sonra, *.cloudsimple.io için DNS isteklerini Özel Bulut DNS sunucularına iletin.  Şirket Içi [DNS Kurulumu'ndaki](on-premises-dns-setup.md)yönergeleri izleyin.
+>    1. VPN cihazınızda 1200 ' de TCP ve üst sınırı ayarlayın. Ya da VPN cihazlarınız, sahip olma özelliğini desteklemiyorsa, bunun yerine tünel arabirimindeki MTU değerini 1240 bayta ayarlayabilirsiniz.
+> 2. Siteden siteye VPN kurulduktan sonra, *. cloudsimple.io için DNS isteklerini özel bulut DNS sunucularına iletin.  Şirket [ıçı DNS kurulumu](on-premises-dns-setup.md)'ndaki yönergeleri izleyin.

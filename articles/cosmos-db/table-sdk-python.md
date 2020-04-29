@@ -1,6 +1,6 @@
 ---
-title: Python için Azure Cosmos DB Tablo API
-description: Sürüm tarihleri, emeklilik tarihleri ve her sürüm arasında yapılan değişiklikler dahil olmak üzere Azure Cosmos DB Tablo API'si hakkında her şeyi öğrenin.
+title: Python için Azure Cosmos DB Tablo API'si
+description: Sürüm tarihleri, emeklilik tarihleri ve her sürüm arasında yapılan değişiklikler dahil olmak üzere Azure Cosmos DB Tablo API'si hakkında bilgi edinin.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
@@ -9,13 +9,13 @@ ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 420c9e5a1e86f54e52905e7d7d2459fa2f68e405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76771283"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Python için Azure Cosmos DB Tablo API SDK: Sürüm notları ve kaynakları
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Python için Tablo API'si SDK Azure Cosmos DB: sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -26,11 +26,11 @@ ms.locfileid: "76771283"
 
 |   |   |
 |---|---|
-|**SDK indir**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
+|**SDK indirmesi**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
 |**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
-|**SDK kurulum talimatları**|[Python SDK yükleme talimatları](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**SDK'ya Katkıda Bulunun**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Geçerli desteklenen platform**|[Python 2.7](https://www.python.org/downloads/) veya [Python 3.3, 3.4, 3.5 veya 3.6](https://www.python.org/downloads/)|
+|**SDK yükleme yönergeleri**|[Python SDK yükleme yönergeleri](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**SDK 'ya katkıda bulunma**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Desteklenen geçerli platform**|[Python 2,7](https://www.python.org/downloads/) veya [python 3,3, 3,4, 3,5 veya 3,6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Önizleme sırasında bir Tablo API hesabı oluşturduysanız, genel kullanıma açık Tablo API SDK’ları ile çalışmak için lütfen [yeni Tablo API hesabı](create-table-dotnet.md#create-a-database-account) oluşturun.
@@ -42,16 +42,16 @@ ms.locfileid: "76771283"
 * Genel kullanılabilirlik sürümü
 
 ### <a name="0371"></a><a name="0.37.1"/>0.37.1
-* Ön sürüm SDK
+* Yayın öncesi SDK
 
-## <a name="release-and-retirement-dates"></a>Serbest bırakma ve emeklilik tarihleri
-Microsoft, daha yeni/desteklenen bir sürüme geçişi kolaylaştırmak için bir SDK'nın emekliye geçmesinden en az **12 ay** önce bildirim de verecektir.
+## <a name="release-and-retirement-dates"></a>Yayın ve emeklilik tarihleri
+Microsoft, daha yeni/desteklenen bir sürüme geçişi düzgünleştirmek için SDK 'nın devre dışı bırakılmasının ardından en az **12 ay** önce bildirim sağlayacaktır.
 
-Yeni özellikler, işlevsellik ve optimizasyonlar yalnızca geçerli SDK'ya eklenir, bu nedenle her zaman en son SDK sürümüne mümkün olduğunca erken yükseltmeniz önerilir. 
+Yeni özellikler ve işlevler ve iyileştirmeler yalnızca geçerli SDK 'ya eklenir, bu nedenle en son SDK sürümüne her zaman olabildiğince erken yükseltmeniz önerilir. 
 
 <br/>
 
-| Sürüm | Yayın Tarihi | Emeklilik Tarihi |
+| Sürüm | Yayın Tarihi | Emeklilik tarihi |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15 Kasım 2017 |--- |
 | [0.37.1](#0.37.1) |05 Ekim 2017 |--- |
@@ -61,5 +61,5 @@ Yeni özellikler, işlevsellik ve optimizasyonlar yalnızca geçerli SDK'ya ekle
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-Cosmos DB hakkında daha fazla bilgi edinmek için [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfasına bakın. 
+Cosmos DB hakkında daha fazla bilgi için bkz. [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) hizmet sayfası. 
 

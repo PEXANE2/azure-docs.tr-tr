@@ -4,10 +4,10 @@ description: Resource Manager dağıtım modeli ile klasik (veya Hizmet Yönetim
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064521"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager ile klasik dağıtım karşılaştırması: Dağıtım modellerini ve kaynaklarınızın durumunu anlama
@@ -15,15 +15,15 @@ ms.locfileid: "77064521"
 > [!NOTE]
 > Bu makalede sağlanan bilgiler, yalnızca klasik dağıtımdan Azure Resource Manager dağıtımına geçiş yaptığınızda kullanılır.
 
-Bu makalede Azure Resource Manager ve klasik dağıtım modelleri hakkında bilgi edineceksiniz. Resource Manager ve klasik dağıtım modelleri, Azure çözümlerinizi dağıtmanın ve yönetmenin iki farklı yolunu temsil eder. Bu dağıtım modelleriyle iki farklı API kümesi aracılığıyla çalışırsınız ve dağıtılan kaynaklar önemli farklılıklar içerebilir. İki model birbiriyle uyumlu değildir. Bu makalede söz konusu farklılıklar açıklanmaktadır.
+Bu makalede Azure Resource Manager ve klasik dağıtım modelleri hakkında bilgi edineceksiniz. Resource Manager ve klasik dağıtım modelleri, Azure çözümlerinizi dağıtmanın ve yönetmenin iki farklı yolunu temsil eder. Bu dağıtım modelleriyle iki farklı API kümesi aracılığıyla çalışırsınız ve dağıtılan kaynaklar önemli farklılıklar içerebilir. İki model birbirleriyle uyumlu değildir. Bu makalede söz konusu farklılıklar açıklanmaktadır.
 
 Microsoft, kaynakların dağıtımını ve yönetimini kolaylaştırmak amacıyla tüm yeni kaynaklar için Resource Manager kullanmanızı önerir. Microsoft, mümkünse var olan kaynakları Resource Manager ile yeniden dağıtmanızı önerir.
 
-Kaynak Yöneticisi'nde yeniyseniz, öncelikle [Azure Kaynak Yöneticisi'ne genel bakışta](overview.md)tanımlanan terminolojiyi gözden geçirmek isteyebilirsiniz.
+Kaynak Yöneticisi yeni başladıysanız, önce [Azure Resource Manager genel bakışta](overview.md)tanımlanan terminolojiyi gözden geçirmek isteyebilirsiniz.
 
 ## <a name="history-of-the-deployment-models"></a>Dağıtım modellerinin geçmişi
 
-Azure başlangıçta yalnızca klasik dağıtım modelini sağlamıştır. Bu modelde her kaynak bağımsız bir şekilde mevcuttu ve ilgili kaynakları gruplandırmanın bir yolu yoktu. Bunun yerine, çözümünüzü ya da uygulamanızı oluşturan kaynakları el ile izlemeniz ve eşgüdümlü bir şekilde yönetmeyi unutmamanız gerekiyordu. Bir çözümü dağıtmak için her bir kaynağı portal aracılığıyla tek tek oluşturmanız ya da tüm kaynakları doğru sırayla dağıtan bir betik oluşturmanız zorunluydu. Çözümü silmek için her bir kaynağı ayrı ayrı silmeniz gerekiyordu. İlgili kaynaklar için erişim denetimi ilkelerini kolayca uygulayamadınız ve güncelleştiremediniz. Son olarak, kaynaklarınızı izlemenize ve faturalandırmayı yönetmenize yardımcı olan terimlerle etiketlemek için etiketleri kaynaklara uygulayamadınız.
+Azure başlangıçta yalnızca klasik dağıtım modelini sağlamıştır. Bu modelde her kaynak bağımsız bir şekilde mevcuttu ve ilgili kaynakları gruplandırmanın bir yolu yoktu. Bunun yerine, çözümünüzü ya da uygulamanızı oluşturan kaynakları el ile izlemeniz ve eşgüdümlü bir şekilde yönetmeyi unutmamanız gerekiyordu. Bir çözümü dağıtmak için her bir kaynağı portal aracılığıyla tek tek oluşturmanız ya da tüm kaynakları doğru sırayla dağıtan bir betik oluşturmanız zorunluydu. Çözümü silmek için her bir kaynağı ayrı ayrı silmeniz gerekiyordu. İlgili kaynaklar için erişim denetimi ilkelerini kolayca uygulamanız ve güncelleştiremezsiniz. Son olarak, kaynakları izlemenize ve faturalandırmayı yönetmenize yardımcı olacak koşullarla etiketlemek için kaynaklara Etiketler uygulayamadık.
 
 Azure, kaynak grubu kavramını ortaya çıkaran Resource Manager’ı 2014 yılında kullanıma sundu. Kaynak grubu, ortak bir yaşam döngüsünü paylaşan kaynaklara yönelik bir kapsayıcıdır. Resource Manager dağıtım modeli çeşitli avantajlar sunar:
 
@@ -34,19 +34,19 @@ Azure, kaynak grubu kavramını ortaya çıkaran Resource Manager’ı 2014 yıl
 * Çözümünüzün altyapısını tanımlamak için JavaScript Nesne Gösterimi (JSON) kullanabilirsiniz. JSON dosyası bir Resource Manager şablonu olarak bilinir.
 * Doğru sırayla dağıtılmalarını sağlamak için kaynaklarınız arasındaki bağımlılıkları tanımlayabilirsiniz.
 
-Resource Manager eklendiğinde, tüm kaynaklar geriye dönük olarak varsayılan kaynak gruplarına eklenmiştir. Şimdi klasik dağıtım yoluyla bir kaynak oluşturursanız, dağıtımdaki kaynak grubunu belirtmemiş olsanız bile kaynak, bu hizmet için varsayılan bir kaynak grubunda otomatik olarak oluşturulur. Ancak, kaynak grubunda var olmak, kaynağın Kaynak Yöneticisi modeline dönüştürüldüğü anlamına gelmez.
+Resource Manager eklendiğinde, tüm kaynaklar geriye dönük olarak varsayılan kaynak gruplarına eklenmiştir. Klasik dağıtım aracılığıyla bir kaynak oluşturursanız, dağıtım sırasında o kaynak grubunu belirtmediğiniz halde kaynak, bu hizmet için varsayılan bir kaynak grubu içinde otomatik olarak oluşturulur. Ancak, bir kaynak grubu içinde mevcut olan bir kaynak, kaynağın Kaynak Yöneticisi modeline dönüştürüldüğünü anlamına gelmez.
 
 ## <a name="understand-support-for-the-models"></a>Modellere yönelik desteği anlama
 
 Dikkat edilmesi gereken üç senaryo vardır:
 
-1. Bulut Hizmetleri, Kaynak Yöneticisi dağıtım modelini desteklemez.
+1. Cloud Services, Kaynak Yöneticisi dağıtım modelini desteklemez.
 2. Sanal makineler, depolama hesapları ve sanal ağlar hem Resource Manager hem de klasik dağıtım modellerini destekler.
 3. Diğer tüm Azure hizmetleri, Resource Manager’ı destekler.
 
-Sanal makineler, depolama hesapları ve sanal ağlar için kaynak klasik dağıtımla oluşturulmuşsa, kaynağı klasik işlemlerle çalıştırmaya devam etmeniz gerekir. Sanal makine, depolama hesabı ya da sanal ağ Resource Manager dağıtımı ile oluşturulmuşsa, Resource Manager işlemlerini kullanarak devam etmeniz gerekir. Aboneliğinizde Resource Manager ve klasik dağıtım ile oluşturulmuş kaynakların bir karışımı olduğunda bu farklılık kafa karıştırıcı olabilir. Kaynaklar aynı işlemleri desteklemediği için bu kaynak birleşimi beklenmeyen sonuçlar oluşturabilir.
+Sanal makineler, depolama hesapları ve sanal ağlar için kaynak klasik dağıtımla oluşturulmuşsa, kaynağı klasik işlemlerle çalıştırmaya devam etmeniz gerekir. Sanal makine, depolama hesabı ya da sanal ağ Resource Manager dağıtımı ile oluşturulmuşsa, Resource Manager işlemlerini kullanarak devam etmeniz gerekir. Aboneliğinizde Resource Manager ve klasik dağıtım ile oluşturulmuş kaynakların bir karışımı olduğunda bu farklılık kafa karıştırıcı olabilir. Kaynaklar aynı işlemleri desteklemediğinden, bu kaynakların birleşimi beklenmeyen sonuçlar oluşturabilir.
 
-Bazı durumlarda, bir Resource Manager komutu klasik dağıtımla oluşturulmuş bir kaynağa ilişkin bilgileri alabilir veya klasik bir kaynağı başka bir kaynak grubuna taşımak gibi bir yönetim görevi gerçekleştirebilir. Ancak, bu gibi durumlarda tür Kaynak Yöneticisi işlemleri destekler izlenimi vermemelidir. Örneğin, klasik dağıtım ile oluşturulmuş sanal makine içeren bir kaynak grubunuzun olduğunu varsayalım. Aşağıdaki Resource Manager PowerShell komutu çalıştırırsanız:
+Bazı durumlarda, bir Resource Manager komutu klasik dağıtımla oluşturulmuş bir kaynağa ilişkin bilgileri alabilir veya klasik bir kaynağı başka bir kaynak grubuna taşımak gibi bir yönetim görevi gerçekleştirebilir. Ancak, bu durumlar, türün Kaynak Yöneticisi işlemleri desteklediği izlenimi vermememelidir. Örneğin, klasik dağıtım ile oluşturulmuş sanal makine içeren bir kaynak grubunuzun olduğunu varsayalım. Aşağıdaki Resource Manager PowerShell komutu çalıştırırsanız:
 
 ```powershell
 Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
@@ -64,13 +64,13 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Ancak, Kaynak Yöneticisi cmdlet **Get-AzVM** yalnızca Kaynak Yöneticisi aracılığıyla dağıtılan sanal makineleri döndürür. Aşağıdaki komut, klasik dağıtım yoluyla oluşturulan sanal makineyi döndürmez.
+Ancak, **Get-AzVM** Kaynak Yöneticisi cmdlet 'i yalnızca Kaynak Yöneticisi aracılığıyla dağıtılan sanal makineleri döndürür. Aşağıdaki komut, klasik dağıtım aracılığıyla oluşturulmuş sanal makineyi döndürmez.
 
 ```powershell
 Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
-Yalnızca Resource Manager ile oluşturulan kaynaklar etiketleri destekler. Etiketleri klasik kaynaklara uygulayamazsınız.
+Yalnızca Resource Manager ile oluşturulan kaynaklar etiketleri destekler. Klasik kaynaklara Etiketler uygulayamazsınız.
 
 ## <a name="changes-for-compute-network-and-storage"></a>İşlem, ağ ve depolama ile ilgili değişiklikler
 
@@ -82,10 +82,10 @@ Kaynaklar arasındaki aşağıdaki ilişkilere dikkat edin:
 
 * Tüm kaynaklar bir kaynak grubu içinde mevcuttur.
 * Sanal makine, Depolama kaynak sağlayıcısı içinde blob depolamada diskleri depolamak (zorunlu) üzere tanımlanmış belirli bir depolama hesabına bağımlıdır.
-* Sanal makine, Ağ kaynak sağlayıcısında tanımlanan belirli bir ağ arabirimi kartına (gerekli) ve Bilgi İşlem kaynak sağlayıcısında (isteğe bağlı) tanımlanan bir kullanılabilirlik kümesine başvurur.
-* Ağ arabirimi kartı, sanal makinenin atanan IP adresine (gerekli), sanal makine için sanal ağın alt ağına (gerekli) ve Ağ Güvenlik Grubu'na (isteğe bağlı) başvurur.
+* Sanal makine, ağ kaynak sağlayıcısında (gerekli) tanımlanan belirli bir ağ arabirimi kartına ve Işlem Kaynak sağlayıcısında tanımlanan bir kullanılabilirlik kümesine (isteğe bağlı) başvurur.
+* Ağ arabirim kartı, sanal makinenin atanan IP adresine (gerekli), sanal makinenin sanal ağ alt ağına (gerekli) ve bir ağ güvenlik grubuna (isteğe bağlı) başvurur.
 * Bir sanal ağ içindeki alt ağ, bir Ağ Güvenlik Grubuna (isteğe bağlı) başvurur.
-* Yük dengeleyici örneği, sanal bir makinenin ağ arabirim kartını içeren IP adreslerinin arka uç havuzuna (isteğe bağlı) ve bir yük dengeleyicisi ortak veya özel IP adresine (isteğe bağlı) başvurur.
+* Yük dengeleyici örneği, bir sanal makinenin ağ arabirim kartını (isteğe bağlı) içeren ve yük dengeleyici ortak veya özel IP adresine (isteğe bağlı) başvuran IP adreslerinin arka uç havuzuna başvurur.
 
 Klasik dağıtım bileşenleri ve aralarındaki ilişkiler aşağıda verilmiştir:
 
@@ -93,32 +93,32 @@ Klasik dağıtım bileşenleri ve aralarındaki ilişkiler aşağıda verilmişt
 
 Bir sanal makineyi barındırmaya yönelik klasik çözüm şunları içerir:
 
-* Sanal makineleri barındırmaya yönelik bir kapsayıcı olarak görev yapan zorunlu bir bulut hizmeti (işlem). Sanal makinelere otomatik olarak bir ağ arabirimi kartı ve Azure tarafından atanan bir IP adresi sağlanır. Ayrıca, bulut hizmeti bir dış yük dengeleyici örneği, bir ortak IP adresi ve Windows tabanlı sanal makineler için uzak masaüstü ile uzaktan PowerShell trafiğine, Linux tabanlı sanal makineler için de Secure Shell (SSH) trafiğine izin veren varsayılan uç noktalar içerir.
-* İşletim sistemi, geçici ve ek veri diskleri (depolama) dahil olmak üzere sanal sabit diskleri sanal bir makine için depolayan gerekli depolama hesabı.
-* Alt ağlı bir yapı oluşturabileceğiniz ve sanal makinenin (ağ) bulunduğu alt ağı seçebileceğiniz ek bir kapsayıcı gibi davranan isteğe bağlı bir sanal ağ.
+* Sanal makineleri barındırmaya yönelik bir kapsayıcı olarak görev yapan zorunlu bir bulut hizmeti (işlem). Sanal makineler, bir ağ arabirimi kartı ve Azure tarafından atanan bir IP adresi ile otomatik olarak sağlanır. Ayrıca, bulut hizmeti bir dış yük dengeleyici örneği, bir ortak IP adresi ve Windows tabanlı sanal makineler için uzak masaüstü ile uzaktan PowerShell trafiğine, Linux tabanlı sanal makineler için de Secure Shell (SSH) trafiğine izin veren varsayılan uç noktalar içerir.
+* İşletim sistemi, geçici ve ek veri diskleri (depolama) dahil olmak üzere, sanal makine için sanal sabit diskleri depolayan gerekli bir depolama hesabı.
+* Bir alt ağ yapısı oluşturabileceğiniz ve sanal makinenin bulunduğu alt ağı seçebileceğiniz (ağ) ek bir kapsayıcı görevi gören isteğe bağlı bir sanal ağ.
 
 Aşağıdaki tabloda İşlem, Ağ ve Depolama kaynak sağlayıcılarının etkileşimlerinde meydana gelen değişiklikler açıklanmıştır:
 
 | Öğe | Klasik | Resource Manager |
 | --- | --- | --- |
 | Virtual Machines için Bulut Hizmeti |Bulut Hizmeti, platformdan ve Yük Dengeleme’den Uygunluk gereken sanal makineleri barındırmak için bir kapsayıcıydı. |Bulut Hizmeti artık yeni modeli kullanarak bir Sanal Makine oluşturmak için gereken nesne değildir. |
-| Sanal Ağlar |Sanal ağ, sanal makine için isteğe bağlıdır. Dahil edilirse, sanal ağ Kaynak Yöneticisi ile dağıtılamaz. |Sanal makine, Resource Manager ile dağıtılmış bir sanal ağ gerektirir. |
+| Sanal Ağlar |Sanal ağ, sanal makine için isteğe bağlıdır. Dahil edilen sanal ağ, Kaynak Yöneticisi ile dağıtılamaz. |Sanal makine, Resource Manager ile dağıtılmış bir sanal ağ gerektirir. |
 | Depolama Hesapları |Sanal makine, işletim sistemi, geçici ve ek veri diskleri için sanal sabit diskleri depolayan bir depolama hesabı gerektirir. |Sanal makine, disklerini blob depolamada depolamak için bir depolama hesabı gerektirir. |
 | Kullanılabilirlik Kümeleri |Platformun uygunluğu Sanal Makinelerde "AvailabilitySetName" yapılandırılarak belirtilirdi. Hata etki alanlarının en yüksek sayısı 2’ydi. |Kullanılabilirlik kümesi, Microsoft.Compute Sağlayıcısı tarafından sağlanan bir kaynaktır. Yüksek kullanılabilirliğin gerektiği Sanal Makineler Kullanılabilirlik Kümesi içinde bulunmalıdır. Hata etki alanlarının en yüksek sayısı artık 3’tür. |
-| Benzeşim Grupları |Benzeşim Grupları Sanal Ağlar oluşturmak için gerekliydi. Ancak, Bölgesel Sanal Ağlar tanıtımı ile, artık gerekli değildi. |Basitleştirmek için, Benzeşim Grupları kavramı Azure Resource Manager aracılığıyla sunulan API'lerde yok. |
+| Benzeşim Grupları |Benzeşim Grupları Sanal Ağlar oluşturmak için gerekliydi. Ancak, bölgesel sanal ağların kullanıma sunulmasıyla birlikte artık gerekli değildir. |Basitleştirmek için, Benzeşim Grupları kavramı Azure Resource Manager aracılığıyla sunulan API'lerde yok. |
 | Yük Dengeleme |Bulut Hizmeti oluşturulması dağıtılan Virtual Machines için örtük yük dengeleyici sağlar. |Load Balancer, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Yük dengeli olması gereken Virtual Machines’in birincil ağ arabirimi yük dengeleyiciye baş vurmalıdır. Yük Dengeleyiciler dahili ve harici olabilir. Bir yük dengeleyici örneği, bir sanal makinenin NIC’sini içeren IP adresleri arka uç havuzuna (isteğe bağlı) ve bir yük dengeleyici genel ya da özel IP adresine (isteğe bağlı) başvurur. |
 | Sanal IP Adresi |Bulut hizmetine bir VM eklendiğinde, Cloud Services varsayılan VIP’yi (Sanal IP Adresi) alır. Sanal IP Adresi örtük yük dengeleyiciyle ilişkili adrestir. |Genel IP Adresi, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Genel IP adresi statik (ayrılmış) veya dinamik olabilir. Dinamik genel IP’ler bir Yük Dengeleyiciye atanabilir. Genel IP’ler Güvenlik Grupları kullanılarak güvenli hale getirilebilir. |
 | Ayrılmış IP Adresi |Azure’da bir IP adresini ayırabilir ve IP Adresinin yapışkan olmasını sağlamak için bunu Bulut Hizmetiyle ilişkilendirebilirsiniz. |Genel IP adresi, statik modda oluşturulabilir ve bir ayrılmış IP adresi ile aynı özelliği sunar. |
 | Genel IP Adresi (PIP) / VM |Genel IP Adresleri ayrıca bir VM ile doğrudan ilişkilendirilebilir. |Genel IP Adresi, Microsoft.Network sağlayıcısı tarafından sunulan bir kaynaktır. Genel IP Adresi statik (ayrılmış) veya dinamik olabilir. |
 | Uç Noktalar |Giriş Uç Noktaları, belirli bağlantı noktaları bağlantısının açık olması için bir Sanal Makinede yapılandırılmalıdır. Sanal makinelere bağlanmanın yaygın modlarında biri de giriş uç noktaları ayarlanarak yapılır. |Gelen NAT kuralları, VM’lere bağlanması için belirli bağlantı noktalarındaki uç noktaların etkinleştirilmesiyle aynı beceriyi gerçekleştirmek için Yük Dengeleyicilerde yapılandırılabilir. |
 | DNS Adı |Bulut hizmeti örtük bir genel benzersiz DNS Adı almalıdır. Örneğin: `mycoffeeshop.cloudapp.net`. |DNS Adları, Genel IP Adresi kaynağında belirtilebilen isteğe bağlı parametrelerdir. FQDN şu biçimdedir: `<domainlabel>.<region>.cloudapp.azure.com`. |
-| Ağ Arabirimleri |Birincil ve İkincil Ağ Arabirimi ve özellikleri Sanal makinenin ağ yapılandırması olarak tanımlanmıştı. |Ağ Arabirimi, Microsoft.Network Sağlayıcısı tarafından sunulan bir kaynaktır. Ağ Arabiriminin yaşam döngüsü sanal makineye bağlı değildir. Sanal makineye atanan IP adresine (zorunlu), sanal makinenin sanal ağ alt ağına (zorunlu) ve bir Ağ Güvenlik Grubuna (isteğe bağlı) başvurur. |
+| Ağ Arabirimleri |Birincil ve İkincil Ağ Arabirimi ve özellikleri Sanal makinenin ağ yapılandırması olarak tanımlanmıştı. |Ağ Arabirimi, Microsoft.Network Sağlayıcısı tarafından sunulan bir kaynaktır. Ağ arabiriminin yaşam döngüsü bir sanal makineye bağlı değil. Sanal makineye atanan IP adresine (zorunlu), sanal makinenin sanal ağ alt ağına (zorunlu) ve bir Ağ Güvenlik Grubuna (isteğe bağlı) başvurur. |
 
 Farklı dağıtım modellerinden sanal ağları bağlama hakkında bilgi almak için bkz. [Portalda farklı dağıtım modellerinden sanal ağları bağlama](../../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md).
 
 ## <a name="migrate-from-classic-to-resource-manager"></a>Klasikten Resource Manager’a geçiş
 
-Kaynaklarınızı klasik dağıtımdan Kaynak Yöneticisi dağıtımına geçirtmeye hazırsanız bkz:
+Kaynaklarınızı klasik dağıtımdan Kaynak Yöneticisi dağıtımına geçirmeye hazırsanız, bkz.:
 
 1. [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../../virtual-machines/windows/migration-classic-resource-manager-deep-dive.md)
 2. [IaaS kaynaklarının Klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)
@@ -129,11 +129,11 @@ Kaynaklarınızı klasik dağıtımdan Kaynak Yöneticisi dağıtımına geçirt
 
 **Klasik dağıtım kullanılarak oluşturulan bir sanal ağı dağıtmak için Resource Manager kullanarak sanal makine oluşturabilir miyim?**
 
-Bu yapılandırma desteklenmez. Sanal bir makineyi klasik dağıtım kullanılarak oluşturulan sanal ağa dağıtmak için Kaynak Yöneticisi'ni kullanamazsınız.
+Bu yapılandırma desteklenmiyor. Bir sanal makineyi klasik dağıtım kullanılarak oluşturulan bir sanal ağa dağıtmak için Kaynak Yöneticisi kullanamazsınız.
 
 **Klasik dağıtım modeli kullanılarak oluşturulmuş bir kullanıcı görüntüsünden Resource Manager kullanarak bir sanal makine oluşturabilir miyim?**
 
-Bu yapılandırma desteklenmez. Ancak, sanal sabit disk dosyalarını klasik dağıtım modeli kullanılarak oluşturulan bir depolama hesabından kopyalayabilir ve Kaynak Yöneticisi aracılığıyla oluşturulan yeni bir hesaba ekleyebilirsiniz.
+Bu yapılandırma desteklenmiyor. Ancak, sanal sabit disk dosyalarını, klasik dağıtım modeli kullanılarak oluşturulan bir depolama hesabından kopyalayabilir ve Kaynak Yöneticisi aracılığıyla oluşturulan yeni bir hesaba ekleyebilirsiniz.
 
 **Aboneliğimle ilgili kotaya etkisi nedir?**
 

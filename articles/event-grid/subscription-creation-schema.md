@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Izgarası abonelik şeması
-description: Bu makalede, Azure Olay Ağıt'ı olan bir etkinliğe abone olma özellikleri açıklanmaktadır. Olay Grid abonelik şeması.
+title: Azure Event Grid abonelik şeması
+description: Bu makalede, Azure Event Grid bir olaya abone olmak için özellikler açıklanmaktadır. Event Grid abonelik şeması.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,50 +8,50 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: babanisa
 ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720767"
 ---
-# <a name="event-grid-subscription-schema"></a>Olay Izgara abonelik şeması
+# <a name="event-grid-subscription-schema"></a>Event Grid abonelik şeması
 
-Olay Izgara aboneliği oluşturmak için Olay Oluştur aboneliği işlemine istek gönderirsiniz. Şu biçimi kullanın:
+Event Grid bir abonelik oluşturmak için, olay aboneliği oluşturma işlemine bir istek gönderirsiniz. Şu biçimi kullanın:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/{group-name}/providers/{resource-provider}/{resource-type}/{resource-name}/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Örneğin, adlı `examplestorage` `examplegroup`kaynak grubunda adı geçen bir depolama hesabı için olay aboneliği oluşturmak için aşağıdaki biçimi kullanın:
+Örneğin, adlı `examplestorage` `examplegroup`bir kaynak grubunda adlı bir depolama hesabı için bir olay aboneliği oluşturmak için aşağıdaki biçimi kullanın:
 
 ```HTTP
 PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageaccounts/examplestorage/Microsoft.EventGrid/eventSubscriptions/{event-type-definitions}?api-version=2018-01-01
 ``` 
 
-Olay Aboneliği adı 3-64 karakter uzunluğunda olmalı ve yalnızca a-z, A-Z, 0-9 ve "-" içerebilir. Makalede, isteğin gövdesi için özellikleri ve şema açıklanmaktadır.
+Olay abonelik adı 3-64 karakter uzunluğunda olmalıdır ve yalnızca a-z, A-Z, 0-9 ve "-" karakterlerini içerebilir. Makalede, isteğin gövdesi için özellikler ve şema açıklanmaktadır.
  
-## <a name="event-subscription-properties"></a>Olay abonelik özellikleri
+## <a name="event-subscription-properties"></a>Olay aboneliği özellikleri
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| hedef | object | Bitiş noktasını tanımlayan nesne. |
-| filtre | object | Olay türlerini filtreleme için isteğe bağlı bir alan. |
+| hedef | object | Uç noktasını tanımlayan nesne. |
+| filtre | object | Olay türlerini filtrelemek için isteğe bağlı bir alan. |
 
 ### <a name="destination-object"></a>hedef nesne
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| endpointType | string | Aboneliğin bitiş noktası türü (webhook/HTTP, Event Hub veya kuyruk). | 
-| endpointUrl | string | Bu etkinlik aboneliğindeki etkinliklerin hedef URL'si. | 
+| endpointType | string | Abonelik için uç nokta türü (Web kancası/HTTP, Olay Hub 'ı veya kuyruğu). | 
+| endpointUrl | string | Bu olay aboneliğindeki olaylar için hedef URL. | 
 
 ### <a name="filter-object"></a>filtre nesnesi
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| dahilEventTypes | array | Olay iletisindeki olay türü, bu olay türü adlarından biriyle tam olarak eşleşince eşleştirin. Olay adı, olay kaynağıiçin kayıtlı olay türü adlarıyla eşleşmediğinde hata kaldırır. Varsayılan tüm olay türleri eşleşir. |
-| subjectBeginsWith | string | Olay iletisinde konu alanına bir önek eşleştirme filtresi. Varsayılan veya boş dize tümünü eşleşir. | 
-| subjectEndsWith | string | Olay iletisinde konu alanına sonek eşleme filtresi. Varsayılan veya boş dize tümünü eşleşir. |
-| isSubjectCaseHassas | string | Filtreler için büyük/küçük harf duyarlı eşleştirmeyi denetler. |
+| includedEventTypes | array | Olay iletisindeki olay türü, bu olay türü adlarından biriyle tam olarak eşleşiyorsa eşleşir. Olay adı olay kaynağı için kayıtlı olay türü adlarıyla eşleşmediği zaman bir hata oluşturur. Varsayılan değer tüm olay türleriyle eşleşir. |
+| subjectBeginsWith | string | Olay iletisindeki Konu alanı için bir önek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. | 
+| subjectEndsWith | string | Olay iletisindeki Konu alanına bir sonek eşleşmesi filtresi. Varsayılan veya boş dize tümü ile eşleşir. |
+| isSubjectCaseSensitive | string | Filtreler için büyük/küçük harfe duyarlı eşleştirmeyi denetler. |
 
 
 ## <a name="example-subscription-schema"></a>Örnek abonelik şeması
@@ -77,4 +77,4 @@ Olay Aboneliği adı 3-64 karakter uzunluğunda olmalı ve yalnızca a-z, A-Z, 0
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay Izgarasına giriş için [olay ızgarası nedir'e bakın?](overview.md)
+* Event Grid giriş için bkz. [Event Grid nedir?](overview.md)

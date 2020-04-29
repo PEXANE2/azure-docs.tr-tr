@@ -1,5 +1,5 @@
 ---
-title: Azure Olay Izgara güvenliği ve kimlik doğrulaması
+title: Azure Event Grid güvenlik ve kimlik doğrulaması
 description: Azure Event Grid ve kavramlarını açıklar.
 services: event-grid
 author: banisadr
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899288"
 ---
-# <a name="authorizing-access-to-event-grid-resources"></a>Olay Izgara kaynaklarına erişim yetkisi
-Azure Olay İzlemi, farklı kullanıcılara verilen erişim düzeyini kontrol etmenizi ve etkinlik aboneliklerini listele, yenilerini oluşturmave anahtar oluşturma gibi çeşitli yönetim işlemleri yapmanızı sağlar. Olay Ağı, Azure'un rol tabanlı erişim denetimini (RBAC) kullanır.
+# <a name="authorizing-access-to-event-grid-resources"></a>Event Grid kaynaklarına erişimi yetkilendirme
+Azure Event Grid, farklı kullanıcılara verilen erişim düzeyini, olay abonelikleri listeleme, yenilerini oluşturma ve anahtar oluşturma gibi çeşitli yönetim işlemlerini yapmak için denetlemenizi sağlar. Event Grid, Azure 'un rol tabanlı erişim denetimi 'ni (RBAC) kullanır.
 
 ## <a name="operation-types"></a>İşlem türleri
 
-Olay Grid aşağıdaki eylemleri destekler:
+Event Grid aşağıdaki eylemleri destekler:
 
-* Microsoft.EventGrid/*/oku
-* Microsoft.EventGrid/*/yazma
-* Microsoft.EventGrid/*/silme
-* Microsoft.EventGrid/eventSubscriptions/getFullUrl/action
-* Microsoft.EventGrid/topics/listKeys/action
-* Microsoft.EventGrid/topics/regenerateKey/action
+* Microsoft. EventGrid/*/Read
+* Microsoft. EventGrid/*/Write
+* Microsoft. EventGrid/*/Delete
+* Microsoft. EventGrid/Eventabonelikler/getFullUrl/eylem
+* Microsoft. EventGrid/konular/listKeys/ACTION
+* Microsoft. EventGrid/konular/regenerateKey/Action
 
-Son üç işlem, normal okuma işlemlerinden filtrelenen gizli bilgileri döndürür. Bu işlemlere erişimi kısıtlamanız önerilir. 
+Son üç işlem, normal okuma işlemlerinden filtre uygulanan olası gizli bilgileri döndürür. Bu işlemlere erişimi kısıtlamanız önerilir. 
 
 ## <a name="built-in-roles"></a>Yerleşik roller
 
-Olay Grid, olay aboneliklerini yönetmek için iki yerleşik rol sağlar. Kullanıcılara etkinlik etki alanınızdaki konulara abone olmaları için gereken izinleri verdikleri için [olay etki alanlarını](event-domains.md) uygularken önemlidirler. Bu roller olay aboneliklerine odaklanır ve konu oluşturma gibi eylemlere erişim vermez.
+Event Grid, olay aboneliklerini yönetmek için iki yerleşik rol sağlar. Kullanıcılara olay etki alanındaki konulara abone olmaları için ihtiyaç duydukları izinleri verdiklerinden, bunlar [olay etki alanlarını](event-domains.md) uygularken önemlidir. Bu roller olay aboneliklerine odaklanılmıştır ve konu başlıkları oluşturma gibi eylemler için erişim vermez.
 
-Bu [rolleri bir kullanıcıya veya gruba atayabilirsiniz.](../role-based-access-control/quickstart-assign-role-user-portal.md)
+[Bu rolleri bir kullanıcıya veya gruba atayabilirsiniz](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
-**EventGrid EventSubscription Katılımcısı**: Event Grid abonelik işlemlerini yönetin
+**Eventgrid EventSubscription katılımcısı**: Event Grid abonelik işlemlerini yönetme
 
 ```json
 [
@@ -73,7 +73,7 @@ Bu [rolleri bir kullanıcıya veya gruba atayabilirsiniz.](../role-based-access-
 ]
 ```
 
-**EventGrid EventAbonelik Okuyucu**: Olay Izgara aboneliklerini okuyun
+**Eventgrid EventSubscription okuyucusu**: Event Grid abonelikleri okuma
 
 ```json
 [
@@ -107,11 +107,11 @@ Bu [rolleri bir kullanıcıya veya gruba atayabilirsiniz.](../role-based-access-
 
 ## <a name="custom-roles"></a>Özel roller
 
-Yerleşik rollerden farklı izinler belirtmeniz gerekiyorsa, özel roller oluşturabilirsiniz.
+Yerleşik rollerden farklı izinleri belirtmeniz gerekiyorsa, özel roller oluşturabilirsiniz.
 
-Aşağıda, kullanıcıların farklı eylemlerde yer almasına olanak tanıyan örnek Olay Izgarası rol tanımları verilmiştir. Bu özel roller yerleşik rollerden farklıdır, çünkü olay aboneliklerinden daha geniş erişim verirler.
+Aşağıda, kullanıcıların farklı eylemler yapmasına izin veren örnek Event Grid rol tanımları verilmiştir. Bu özel roller, yalnızca olay aboneliklerinden daha geniş erişim verdiklerinden, yerleşik rollerden farklıdır.
 
-**EventGridReadOnlyRole.json**: Yalnızca salt okunur işlemlere izin verir.
+**Eventgridreadonlyrole. JSON**: yalnızca salt okuma işlemlerine izin verir.
 
 ```json
 {
@@ -130,7 +130,7 @@ Aşağıda, kullanıcıların farklı eylemlerde yer almasına olanak tanıyan �
 }
 ```
 
-**EventGridNoDeleteListKeysRole.json**: Sınırlı gönderi eylemlerine izin verin, ancak eylemleri silmeme izin verin.
+**Eventgridnodeletelistkeysrole. JSON**: kısıtlı gönderi eylemlerine izin verin ancak silme eylemlerine izin vermeyin.
 
 ```json
 {
@@ -153,7 +153,7 @@ Aşağıda, kullanıcıların farklı eylemlerde yer almasına olanak tanıyan �
 }
 ```
 
-**EventGridContributorRole.json**: Tüm olay ızgara eylemleri sağlar.
+**EventGridContributorRole. JSON**: tüm olay Kılavuzu eylemlerine izin verir.
 
 ```json
 {
@@ -175,14 +175,14 @@ Aşağıda, kullanıcıların farklı eylemlerde yer almasına olanak tanıyan �
 }
 ```
 
-[PowerShell,](../role-based-access-control/custom-roles-powershell.md) [Azure CLI](../role-based-access-control/custom-roles-cli.md)ve [REST](../role-based-access-control/custom-roles-rest.md)ile özel roller oluşturabilirsiniz.
+[PowerShell](../role-based-access-control/custom-roles-powershell.md), [Azure CLI](../role-based-access-control/custom-roles-cli.md)ve [rest](../role-based-access-control/custom-roles-rest.md)ile özel roller oluşturabilirsiniz.
 
 
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
-Olay Izgara hizmeti tarafından diske yazılan tüm olaylar veya veriler, microsoft tarafından yönetilen bir anahtarla şifrelenir ve bu durum istirahatte şifrelenir. Ayrıca, olayların veya verilerin tutulduğu maksimum [süre, Olay Izgarayeniden deneme ilkesine](delivery-and-retry.md)bağlı olarak 24 saattir. Olay Grid, 24 saat sonra tüm olayları veya verileri veya hangisi daha azsa, etkinlik süresini otomatik olarak siler.
+Event Grid hizmeti tarafından diske yazılan tüm olaylar veya veriler, bekleyen bir şekilde şifrelendiğinden emin olmak için Microsoft tarafından yönetilen bir anahtarla şifrelenir. Ayrıca, olayların veya verilerin saklanacağı en uzun süre, [Event Grid yeniden deneme ilkesiyle](delivery-and-retry.md)ilgili olarak 24 saat olur. Event Grid, 24 saat sonra tüm olayları veya verileri otomatik olarak siler veya olayın yaşam süresi (hangisi daha az) olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay Izgarasına giriş için [Olay Izgarası Hakkında'ya](overview.md) bakın
+* Event Grid giriş için bkz. [Event Grid hakkında](overview.md)

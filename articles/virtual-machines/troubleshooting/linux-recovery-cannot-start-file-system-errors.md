@@ -1,6 +1,6 @@
 ---
-title: Dosya sistemi hataları nedeniyle Linux VM başlangıç sorunları | Microsoft Dokümanlar
-description: Linux VM'nin neden başlayamadığını ve sorunu nasıl çözeceğini açıklar.
+title: Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme | Microsoft Docs
+description: Linux VM 'nin neden başlayabileceğini ve sorunun nasıl çözüleceğini açıklar.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,19 +15,19 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842410"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux VM başlangıç sorunlarını giderme
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Dosya sistemi hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
-Secure Shell (SSH) kullanarak bir Azure Linux sanal makinesine (VM) bağlanamazsınız. [Azure portalında](https://portal.azure.com/)Önyükleme Tanılama özelliğini çalıştırdığınızda, aşağıdaki örneklere benzeyen günlük girişleri görürsünüz.
+Secure Shell (SSH) kullanarak bir Azure Linux sanal makinesine (VM) bağlanamazsınız. [Azure Portal](https://portal.azure.com/)' de önyükleme Tanılama özelliğini çalıştırdığınızda aşağıdaki örneklere benzeyen günlük girdileri görürsünüz.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıda olası hatalara örnekler verilmiştir.
+Olası hataların örnekleri aşağıda verilmiştir.
 
 ### <a name="example-1"></a>Örnek 1 
 
@@ -57,7 +57,7 @@ An error occurred while mounting /.
 
 ### <a name="example-4"></a>Örnek 4 
 
-Bu örnek temiz bir fsck neden olur. Bu durumda, VM (/dev/sdc1 ve /dev/sde1) ek veri diskleri de vardır.
+Bu örnek, temiz bir fsck nedeniyle oluşur. Bu durumda, VM 'ye bağlı ek veri diskleri de vardır (/dev/sdc1 ve/dev/sde1).
 
 ```
 Checking all file systems. 
@@ -69,32 +69,32 @@ Checking all file systems.
 /dev/sde1 : clean, 51/67043328 files, 4259482/268173037 blocks
 ```
 
-Dosya sistemi temiz olarak kapatılmazsa veya depolamayla ilgili sorunlar varsa, bu sorun oluşabilir. Sorunlar arasında donanım veya yazılım hataları, sürücülerveya programlar ile ilgili sorunlar, yazma hataları, vb. yer alır. Kritik verilerin yedeğine sahip olmak her zaman önemlidir. Bu makalede açıklanan araçlar dosya sistemlerini kurtarmaya yardımcı olabilir, ancak veri kaybı hala oluşabilir.
+Bu sorun, dosya sistemi sorunsuz veya depolamayla ilgili sorunları kapatmadığında ortaya çıkabilir. Sorunlar, donanım veya yazılım hatalarını, sürücü veya programlarla ilgili sorunları, yazma hatalarını vb. içerir. Kritik verilerin yedeklenmesi her zaman önemlidir. Bu makalede açıklanan araçlar dosya sistemlerinin kurtarılmasına yardımcı olabilir, ancak veri kaybı devam edebilir.
 
-Linux'ta birkaç dosya sistemi denetleyicisi mevcuttur. Azure'daki dağıtımlar için en yaygın olanlardır: [FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)ve [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
+Linux 'ta kullanılabilir çeşitli dosya sistemi denetleyicileri vardır. Azure 'daki dağıtımlar için en yaygın olarak şunlardır: [fsck](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/fsck-fs-specific), [E2FSCK](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/fsck-fs-specific)ve [Xfs_repair](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/storage_administration_guide/xfsrepair).
 
 ## <a name="resolution"></a>Çözüm
 
-Bu sorunu gidermek için, [seri konsolu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) kullanarak VM'yi acil durum moduna önyükleme yapın ve dosya sistemini onarmak için bu aracı kullanın. Seri konsol VM'nizde etkinleştirili değilse veya çalışmıyorsa, bu [makalenin VM çevrimdışı bölümünü onarmaya](#repair-the-vm-offline) bakın.
+Bu sorunu çözmek için, [seri konsolunu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) kullanarak VM 'yi acil modda önyükleyin ve dosya sistemini onarmak için bu aracı kullanın. Seri konsol VM 'niz üzerinde etkinleştirilmemişse veya işe yaramazsa, bu makaledeki [VM 'yi çevrimdışı ortamda onarma](#repair-the-vm-offline) bölümüne bakın.
 
 ## <a name="use-the-serial-console"></a>Seri konsolu kullanma
 
 1. Seri konsoluna bağlanın.
 
    > [!Note]
-   > Linux için seri konsol kullanma hakkında daha fazla bilgi için bkz:
-   > * [GRUB'a ve tek kullanıcı moduna erişmek için seri konsolu kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
-   > * [SysRq ve NMI aramaları için seri konsol u kullanma](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
+   > Linux için seri konsol kullanma hakkında daha fazla bilgi için bkz.:
+   > * [GRUB ve tek kullanıcı moduna erişmek için seri konsol kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+   > * [SysRq ve NMI çağrıları için seri konsol kullan](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-nmi-sysrq)
 
-2. Güç simgesi düğmesini seçin ve ardından VM'yi Yeniden Başlat'ı seçin. (Seri konsol etkin değilse veya başarıyla bağlanamazsa, düğmeyi görmezsiniz.)
+2. Güç simgesi düğmesini seçin ve ardından VM 'yi yeniden Başlat ' ı seçin. (Seri konsol etkinleştirilmemişse veya başarıyla bağlanmayacaksa, düğmesini görmezsiniz.)
 
    ![GÖRÜNTÜ](./media/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck/restart-vm.png)
 
-3. VM'yi acil durum moduna önyükleme.
+3. VM 'yi acil modda önyükleyin.
 
-4. Acil durum modunda oturum açabilmek için kök hesabınızın parolasını girin.
+4. Acil durum modunda oturum açmak için kök hesabınızın parolasını girin.
 
-5. Dosya sistemindeki hataları algılamak için -n seçeneğine sahip xfs_repair kullanın. Aşağıdaki örnekte, sistem bölünmesinin /dev/sda1 olduğunu varsayıyoruz. VM'iniz için uygun değerle değiştirin:
+5. Dosya sistemindeki hataları algılamak için-n seçeneğiyle birlikte xfs_repair kullanın. Aşağıdaki örnekte, sistem bölümünün/dev/sda1. olduğunu varsaytık VM 'niz için uygun değer ile değiştirin:
 
    ```
    xfs_repair -n /dev/sda1
@@ -106,39 +106,39 @@ Bu sorunu gidermek için, [seri konsolu](https://docs.microsoft.com/azure/virtua
    xfs_repair /dev/sda1
    ```
 
-7. "HATA: Dosya sisteminde yeniden oynan değerli meta veri değişiklikleri var" hata iletisi alırsanız, geçici bir dizin oluşturun ve dosya sistemini monte edin:
+7. Hata iletisini alırsanız "hata: FileSystem 'ın yeniden yürütülmesi gereken bir günlükte değerli meta veri değişiklikleri vardır", geçici bir dizin oluşturup dosya sistemini bağlama:
 
    ```
    mkdir /temp
    mount /dev/sda1 /temp
    ```
 
-8. Disk monte edilemezse, -L seçeneği (kuvvet günlüğü sıfırlama) ile xfs_repair komutu çalıştırın:
+8. Disk takılamazsa-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlaması zorla):
 
    ```
    xfs_repair /dev/sda1 -L
    ```
 
-9. Ardından, dosya sistemini takmayı deneyin. Disk başarıyla monte edilirse, aşağıdaki çıktıyı alırsınız:
+9. Sonra, dosya sistemini bağlamaya çalışın. Disk başarıyla bağlanmışsa, şu çıktıyı alırsınız:
  
    ```
    XFS (sda1): Mounting V1 Filesystem
    XFS (sda1): Ending clean mount
    ```
 
-10. VM'yi yeniden başlatın ve sorunun çözülüp çözülmeyeceğini denetleyin.
+10. VM 'yi yeniden başlatın ve sorunun çözümlenip çözümlenmediğini denetleyin.
 
     ```
     Reboot -f
     ```
 
-## <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onar
+## <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. VM'nin sistem diskini bir kurtarma VM'ine (çalışan herhangi bir Linux VM) veri diski olarak takın. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM'ini ayarlamayı otomatikleştirebilirsiniz.
+1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
 
-2. Eklediğiniz sistem diskinin sürücü etiketini bulun. Bu durumda, iliştirdiğiniz sistem diskinin etiketinin /dev/sdc1 olduğunu varsayıyoruz. VM'iniz için uygun değerle değiştirin.
+2. Eklediğiniz sistem diskinin sürücü etiketini bulun. Bu durumda, eklediğiniz sistem diskinin etiketinin/dev/sdc1olduğunu varsaytık. VM 'niz için uygun değer ile değiştirin.
 
-3. Dosya sistemindeki hataları algılamak için -n seçeneğine sahip xfs_repair kullanın.
+3. Dosya sistemindeki hataları algılamak için-n seçeneğiyle birlikte xfs_repair kullanın.
 
    ```
    xfs_repair -n /dev/sdc1
@@ -150,7 +150,7 @@ Bu sorunu gidermek için, [seri konsolu](https://docs.microsoft.com/azure/virtua
    xfs_repair /dev/sdc1
    ```
 
-5. "HATA: Dosya sisteminde yeniden oynan değerli meta veri değişiklikleri var" hata iletisi alırsanız, geçici bir dizin oluşturun ve dosya sistemini monte edin:
+5. Hata iletisini alırsanız "hata: FileSystem 'ın yeniden yürütülmesi gereken bir günlükte değerli meta veri değişiklikleri vardır", geçici bir dizin oluşturup dosya sistemini bağlama:
 
    ```
    mkdir /temp
@@ -158,13 +158,13 @@ Bu sorunu gidermek için, [seri konsolu](https://docs.microsoft.com/azure/virtua
    mount /dev/sdc1 /temp
    ```
 
-   Disk monte edilemezse, -L seçeneği (kuvvet günlüğü sıfırlama) ile xfs_repair komutu çalıştırın:
+   Disk takılamazsa-L seçeneğiyle xfs_repair komutunu çalıştırın (günlük sıfırlaması zorla):
 
    ```
    xfs_repair /dev/sdc1 -L
    ```
 
-6. Ardından, dosya sistemini takmayı deneyin. Disk başarıyla monte edilirse, aşağıdaki çıktıyı alırsınız:
+6. Sonra, dosya sistemini bağlamaya çalışın. Disk başarıyla bağlanmışsa, şu çıktıyı alırsınız:
 
    ```
    XFS (sdc1): Mounting V1 Filesystem
@@ -172,12 +172,12 @@ Bu sorunu gidermek için, [seri konsolu](https://docs.microsoft.com/azure/virtua
    XFS (sdc1): Ending clean mount
    ```
 
-7. Özgün sanal sabit diski söküp ayırın ve sonra orijinal sistem diskinden bir VM oluşturun. Bunu yapmak için, kurtarma VM oluşturmak için bunları kullandıysanız [CLI komutları](troubleshoot-recovery-disks-linux.md) veya [VM onarım komutları](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) kullanabilirsiniz.
+7. Özgün sanal sabit diski çıkarın ve kullanımdan çıkarın ve ardından özgün sistem diskinden bir VM oluşturun. Bunu yapmak için, onları kurtarma VM 'sini oluşturmak üzere kullandıysanız [CLI komutlarını](troubleshoot-recovery-disks-linux.md) veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) kullanabilirsiniz.
 
-8. Sorunun çözülüp çözülmeyeceğini denetleyin.
+8. Sorunun çözümlenip çözümlenmediğini denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure CLI 2.0 ile işletim sistemi diskini kurtarma VM'ine takarak bir Linux VM sorun giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Linux VM'ye veri diski eklemek için portalı kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
+* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [Bir Linux VM 'sine veri diski eklemek için portalı kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal)
 

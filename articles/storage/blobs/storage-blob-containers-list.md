@@ -1,6 +1,6 @@
 ---
-title: Blob kaplarını .NET ile listele - Azure Depolama
-description: .NET istemci kitaplığını kullanarak Azure Depolama hesabınızdaki blob kapsayıcılarını nasıl listeleyiş süreceğinizi öğrenin.
+title: .NET-Azure depolama ile blob kapsayıcılarını listeleme
+description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki blob kapsayıcılarını listeleyeceğinizi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135913"
 ---
-# <a name="list-blob-containers-with-net"></a>Blob kapları .NET ile listele
+# <a name="list-blob-containers-with-net"></a>.NET ile blob kapsayıcılarını listeleme
 
-Kodunuzdan bir Azure Depolama hesabındaki kapsayıcıları listelediğinizde, sonuçların Azure Depolama'dan nasıl döndürülebileceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Bu makalede, [.NET için Azure Depolama istemci kitaplığını](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanarak kapsayıcıların nasıl listelenebildiğini gösterir.  
+Kodlarınızdan bir Azure depolama hesabındaki kapsayıcıları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanılarak kapsayıcıların nasıl listeyapılacağı gösterilmektedir.  
 
-## <a name="understand-container-listing-options"></a>Konteyner listeleme seçeneklerini anlama
+## <a name="understand-container-listing-options"></a>Kapsayıcı listesi seçeneklerini anlama
 
-Depolama hesabınızdaki kapsayıcıları listelemek için aşağıdaki yöntemlerden birini arayın:
+Depolama hesabınızdaki kapsayıcıları listelemek için aşağıdaki yöntemlerden birini çağırın:
 
-- [ListeContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
-- [ListeContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
+- [Listcontainerskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
+- [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-Bu yöntemleriçin aşırı yüklemeler, kapsayıcıların listeleme işlemi tarafından nasıl döndürülür şekilde döndürülmesini yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
+Bu yöntemlerin aşırı yüklemeleri, kapsayıcıların listeleme işlemi tarafından nasıl döndürüleceğini yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürülür yönetme
+### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir defada en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek `maxresults` **için, ListContainerSegmented** yöntemlerinden birini ararken parametre için sıfır olmayan bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listcontainerkesimli** metotlardan birini `maxresults` çağırırken parametresi için sıfır dışında bir değer sağlayın.
 
-Depolama hesabınızda 5000'den fazla kapsayıcı varsa veya kayıt `maxresults` işleminin depolama hesabında kapsayıcıların bir alt kümesini döndürecek bir değer belirtmişseniz, Azure Depolama kapsayıcılar listesiyle birlikte bir *devam belirteci* döndürür. Devam belirteci, Azure Depolama'dan bir sonraki sonuç kümesini almak için kullanabileceğiniz opak bir değerdir.
+Depolama hesabınızda 5000 ' den fazla kapsayıcı varsa veya liste işlemi depolama hesabındaki kapsayıcıların bir alt kümesini döndürdüğünde `maxresults` bu şekilde bir değer belirttiyseniz, Azure Storage kapsayıcı listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
-Kodunuzda, null olup olmadığını belirlemek için devam belirteci değerini denetleyin. Devam belirteci null olduğunda, sonuç kümesi tamamlanır. Devam belirteci null değilse, daha sonra **listContainersSegmented** veya **ListContainersSegmentedAsync** tekrar, devamı belirteci sonraki sonuç kümesini almak için geçen, devamı belirteci null kadar arayın.
+Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devam belirteci null olana kadar, sonraki sonuç kümesini almak için **Listcontainerskesimli** veya **ListContainersSegmentedAsync** yeniden çağırın.
 
-### <a name="filter-results-with-a-prefix"></a>Sonuçları önek ile filtreleme
+### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
-Kapsayıcılar listesini filtrelemek için parametre `prefix` için bir dize belirtin. Önek dize bir veya daha fazla karakter içerebilir. Azure Depolama daha sonra yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
+Kapsayıcılar listesini filtrelemek için, `prefix` parametre için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan kapsayıcıları döndürür.
 
-### <a name="return-metadata"></a>Meta verileri döndürme
+### <a name="return-metadata"></a>Meta veri döndür
 
-Kapsayıcı meta verilerini sonuçlarla döndürmek [için, ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) numaralandırması için **Meta veri** değerini belirtin. Azure Depolama, döndürülen her kapsayıcıyla birlikte meta veriler içerir, bu nedenle kapsayıcı meta verilerini almak için **Alma Nitelikleri** yöntemlerinden birini de aramanız gerekmez.
+Sonuçlarla kapsayıcı meta verileri döndürmek için [Containerlistingdetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her kapsayıcı tarafından döndürülen meta verileri içerir, bu nedenle kapsayıcı meta verilerini almak için **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
 
-## <a name="example-list-containers"></a>Örnek: Kapsayıcıları listele
+## <a name="example-list-containers"></a>Örnek: liste kapsayıcıları
 
-Aşağıdaki örnek, belirtilen bir önek ile başlayan bir depolama hesabındakapsayıcıları eş senkronize olarak listeler. Örnek, kapsayıcıları bir seferde 5 sonuç artışlı olarak listeler ve sonuçların bir sonraki bölümünü almak için devamı belirteci kullanır. Örnek, kapsayıcı meta verilerini de sonuçlarla birlikte döndürür.
+Aşağıdaki örnek, belirtilen bir önek ile başlayan bir depolama hesabındaki kapsayıcıları zaman uyumsuz olarak listeler. Örnek, kapsayıcıları tek seferde 5 sonuçtan oluşan artışlarla listeler ve sonraki sonuç segmentini almak için devamlılık belirtecini kullanır. Örnek ayrıca, sonuçlarla birlikte kapsayıcı meta verileri döndürür.
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
@@ -101,4 +101,4 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 ## <a name="see-also"></a>Ayrıca bkz.
 
 [List Containers](/rest/api/storageservices/list-containers2)
-[Blob Kaynaklarını Listele Konteynerleri](/rest/api/storageservices/enumerating-blob-resources) Listele
+[BLOB kaynaklarını listeler](/rest/api/storageservices/enumerating-blob-resources) halinde listeleme kapsayıcıları

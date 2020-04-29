@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi sayfa denetimleri | Microsoft Dokümanlar
-description: Azure API Yönetimi'ndeki geliştirici portal şablonlarında kullanılmak üzere kullanılabilen sayfa denetimleri hakkında bilgi edinin.
+title: Azure API Management sayfa denetimleri | Microsoft Docs
+description: Azure API Management 'de geliştirici portalı şablonlarında kullanılabilecek sayfa denetimleri hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,44 +13,44 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244023"
 ---
-# <a name="azure-api-management-page-controls"></a>Azure API Yönetimi sayfa denetimleri
-Azure API Yönetimi, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki denetimleri sağlar.  
+# <a name="azure-api-management-page-controls"></a>Azure API Management sayfa denetimleri
+Azure API Management, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki denetimleri sağlar.  
   
-Denetimi kullanmak için, geliştirici portalı şablonunda istenilen konuma yerleştirin. [Uygulama eylemleri](#app-actions) denetimi gibi bazı denetimlerde, aşağıdaki örnekte gösterildiği gibi parametreler vardır:  
+Bir denetimi kullanmak için, uygulamayı geliştirici portalı şablonunda istenen konuma yerleştirin. Aşağıdaki örnekte gösterildiği gibi, [uygulama eylemleri](#app-actions) denetimi gibi bazı denetimlerin parametreleri vardır:  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
 ```  
   
-Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geçirilir. Çoğu durumda, doğru çalışması için her denetim için sağlanan örneğe yapıştırabilirsiniz. Parametre değerleri hakkında daha fazla bilgi için, denetimin kullanılabildiği her şablon için veri modeli bölümünü görebilirsiniz.  
+Parametrelerin değerleri, şablon için veri modelinin bir parçası olarak geçirilir. Çoğu durumda, doğru çalışması için her bir denetim için yalnızca belirtilen örneğe yapıştırabilirsiniz. Parametre değerleri hakkında daha fazla bilgi için, bir denetimin kullanılabileceği her bir şablon için veri modeli bölümünü görebilirsiniz.  
 
-Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)bakın.  
+Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-## <a name="developer-portal-template-page-controls"></a>Geliştirici portalı şablon uymaktadır sayfa denetimleri  
+## <a name="developer-portal-template-page-controls"></a>Geliştirici Portalı şablon sayfası denetimleri  
   
--   [uygulama eylemleri](#app-actions)  
--   [temel oturum açma](#basic-signin)  
--   [sayfalama-kontrol](#paging-control)  
--   [Sağlayıcı](#providers)  
+-   [Uygulama-eylemler](#app-actions)  
+-   [temel-oturum açma](#basic-signin)  
+-   [sayfalama denetimi](#paging-control)  
+-   [sağlayıcılarla](#providers)  
 -   [arama denetimi](#search-control)  
--   [Kayıt](#sign-up)  
--   [abone düğmesi](#subscribe-button)  
--   [abonelik iptal](#subscription-cancel)  
+-   [Kaydolma](#sign-up)  
+-   [abone ol-düğme](#subscribe-button)  
+-   [abonelik-iptal et](#subscription-cancel)  
   
-##  <a name="app-actions"></a><a name="app-actions"></a>uygulama eylemleri  
- Denetim, `app-actions` geliştirici portalındaki kullanıcı profili sayfasındaki uygulamalarla etkileşim kurmak için bir kullanıcı arabirimi sağlar.  
+##  <a name="app-actions"></a><a name="app-actions"></a>Uygulama-eylemler  
+ `app-actions` Denetim, geliştirici portalındaki Kullanıcı profili sayfasında uygulamalarla etkileşim kurmak için bir kullanıcı arabirimi sağlar.  
   
- ![uygulama&#45;eylem kontrolü](./media/api-management-page-controls/APIM-app-actions-control.png "APIM uygulama eylemleri kontrolü")  
+ ![Uygulama&#45;eylemleri denetimi](./media/api-management-page-controls/APIM-app-actions-control.png "APıM uygulaması-eylemler denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -62,17 +62,17 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
   
 |Parametre|Açıklama|  
 |---------------|-----------------|  
-|appId|Başvurunun kimliği.|  
+|appId|Uygulamanın KIMLIĞI.|  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `app-actions` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `app-actions` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Uygulamalar](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a><a name="basic-signin"></a>temel oturum açma  
- Denetim, `basic-signin` geliştirici portalındaki oturum açma sayfasında kullanıcı oturum açma bilgilerini toplamak için bir denetim sağlar.  
+##  <a name="basic-signin"></a><a name="basic-signin"></a>temel-oturum açma  
+ `basic-signin` Denetim, geliştirici portalındaki oturum açma sayfasında Kullanıcı oturum açma bilgilerini toplamaya yönelik bir denetim sağlar.  
   
- ![temel&#45;işaret kontrolü](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM temel oturum açma kontrolü")  
+ ![temel&#45;oturum açma denetimi](./media/api-management-page-controls/APIM-basic-signin-control.png "APıM temel-oturum açma denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -84,14 +84,14 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `basic-signin` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `basic-signin` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Oturum aç](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a><a name="paging-control"></a>sayfalama-kontrol  
- Öğelerin `paging-control` listesini görüntüleyen geliştirici portal sayfalarında sayfalama işlevi sağlar.  
+##  <a name="paging-control"></a><a name="paging-control"></a>sayfalama denetimi  
+ , `paging-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında sayfalama işlevselliği sağlar.  
   
- ![sayfalama kontrolü](./media/api-management-page-controls/APIM-paging-control.png "APIM sayfalama kontrolü")  
+ ![sayfalama denetimi](./media/api-management-page-controls/APIM-paging-control.png "APıM sayfalama denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -103,7 +103,7 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `paging-control` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `paging-control` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [API listesi](api-management-api-templates.md#APIList)  
   
@@ -111,10 +111,10 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
   
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a><a name="providers"></a>Sağlayıcı  
- Denetim, `providers` geliştirici portalındaki oturum açma sayfasında kimlik doğrulama sağlayıcılarının seçimi için bir denetim sağlar.  
+##  <a name="providers"></a><a name="providers"></a>sağlayıcılarla  
+ `providers` Denetim, geliştirici portalındaki oturum açma sayfasında kimlik doğrulama sağlayıcılarının seçimine yönelik bir denetim sağlar.  
   
- ![sağlayıcılar kontrol](./media/api-management-page-controls/APIM-providers-control.png "APIM sağlayıcıları kontrolü")  
+ ![sağlayıcılar denetimi](./media/api-management-page-controls/APIM-providers-control.png "APıM sağlayıcıları denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -126,14 +126,14 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `providers` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `providers` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Oturum aç](api-management-page-templates.md#SignIn)  
   
 ##  <a name="search-control"></a><a name="search-control"></a>arama denetimi  
- Öğelerin `search-control` listesini görüntüleyen geliştirici portal sayfalarında arama işlevselliği sağlar.  
+ , `search-control` Bir öğe listesini görüntüleyen geliştirici portalı sayfalarında arama işlevi sağlar.  
   
- ![arama denetimi](./media/api-management-page-controls/APIM-search-control.png "APIM arama kontrolü")  
+ ![arama denetimi](./media/api-management-page-controls/APIM-search-control.png "APıM arama denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -145,16 +145,16 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `search-control` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `search-control` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [API listesi](api-management-api-templates.md#APIList)  
   
 -   [Ürün listesi](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a><a name="sign-up"></a>Kayıt  
- Denetim, `sign-up` geliştirici portalındaki kayıt sayfasında kullanıcı profili bilgilerini toplamak için bir denetim sağlar.  
+##  <a name="sign-up"></a><a name="sign-up"></a>Kaydolma  
+ `sign-up` Denetim, geliştirici portalındaki kaydolma sayfasında Kullanıcı profili bilgilerini toplamaya yönelik bir denetim sağlar.  
   
- ![&#45;kayıt kontrolü](./media/api-management-page-controls/APIM-sign-up-control.png "APIM kayıt kontrolü")  
+ ![&#45;denetimini imzala](./media/api-management-page-controls/APIM-sign-up-control.png "APıM kaydolma denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -166,14 +166,14 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `sign-up` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `sign-up` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
 -   [Kaydolma](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a><a name="subscribe-button"></a>abone düğmesi  
- Kullanıcıyı `subscribe-button` bir ürüne abone etmek için bir denetim sağlar.  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a>abone ol-düğme  
+ , `subscribe-button` Bir kullanıcıya bir ürüne abone olmak için bir denetim sağlar.  
   
- ![&#45;düğmesine abone olun](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM abone düğmesi kontrolü")  
+ ![abone ol&#45;Button denetimi](./media/api-management-page-controls/APIM-subscribe-button-control.png "APıM Subscribe-düğme denetimi")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -185,14 +185,14 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
  Yok.  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `subscribe-button` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `subscribe-button` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
--   [Ürün](api-management-product-templates.md#Product)  
+-   [Ürünüyle](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>abonelik iptal  
- Denetim, `subscription-cancel` geliştirici portalındaki kullanıcı profili sayfasındaki bir ürünün aboneliğini iptal etmek için bir denetim sağlar.  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a>abonelik-iptal et  
+ `subscription-cancel` Denetim, geliştirici portalındaki Kullanıcı profili sayfasında bir ürüne aboneliği iptal etmek için bir denetim sağlar.  
   
- ![denetimi iptal&#45;abonelik](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM abonelik-iptal kontrolü")  
+ ![abonelik&#45;iptal denetimi](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APıM aboneliği-denetimi iptal et")  
   
 ### <a name="usage"></a>Kullanım  
   
@@ -206,13 +206,13 @@ Parametrelerin değerleri şablon için veri modelinin bir parçası olarak geç
   
 |Parametre|Açıklama|  
 |---------------|-----------------|  
-|subscriptionId|İptal etmek için aboneliğin kimliği.|  
-|cancelUrl|Abonelik URL'yi iptal eder.|  
+|subscriptionId|İptal edilecek aboneliğin KIMLIĞI.|  
+|cancelUrl 'Si|Abonelik URL 'YI iptal eder.|  
   
 ### <a name="developer-portal-templates"></a>Geliştirici portalı şablonları  
- Denetim `subscription-cancel` aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
+ `subscription-cancel` Denetim aşağıdaki geliştirici portalı şablonlarında kullanılabilir:  
   
--   [Ürün](api-management-product-templates.md#Product)
+-   [Ürünüyle](api-management-product-templates.md#Product)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](api-management-developer-portal-templates.md)bakın.
+Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](api-management-developer-portal-templates.md).

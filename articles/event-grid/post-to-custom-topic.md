@@ -1,6 +1,6 @@
 ---
-title: Olayı özel Azure Olay Ağı konusuna gönder
-description: Bu makalede, bir olay özel bir konuya nasıl gönderilen açıklanmaktadır. Gönderi ve olay verilerinin biçimini gösterir.
+title: Etkinliği özel Azure Event Grid konusuna gönder
+description: Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır. Gönderi ve olay verilerinin biçimini gösterir.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721566"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Olay Idamı için özel konuya gönderme
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid için özel konuya gönderi gönder
 
-Bu makalede, bir olay özel bir konuya nasıl gönderilen açıklanmaktadır. Gönderi ve olay verilerinin biçimini gösterir. [Hizmet Düzeyi Sözleşmesi (SLA),](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) yalnızca beklenen biçimle eşleşen gönderiler için geçerlidir.
+Bu makalede, özel bir konuya bir olay nasıl nakledeceğiniz açıklanmaktadır. Gönderi ve olay verilerinin biçimini gösterir. [Hizmet düzeyi sözleşmesi (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) yalnızca beklenen biçimle eşleşen gönderimler için geçerlidir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="endpoint"></a>Uç Nokta
 
-HTTP POST'u özel bir konuya gönderirken `https://<topic-endpoint>?api-version=2018-01-01`URI biçimini kullanın: .
+HTTP GÖNDERISINI özel bir konuya gönderirken URI biçimini kullanın: `https://<topic-endpoint>?api-version=2018-01-01`.
 
 Örneğin, geçerli bir URI: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-Azure CLI ile özel bir konu için bitiş noktasını elde etmek için şunları kullanın:
+Azure CLı ile özel bir konu için uç noktayı almak üzere şunu kullanın:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Azure PowerShell ile özel bir konu için bitiş noktasını elde etmek için şunları kullanın:
+Azure PowerShell bir özel konu için uç noktayı almak için şunu kullanın:
 
 ```powershell
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
@@ -41,17 +41,17 @@ Azure PowerShell ile özel bir konu için bitiş noktasını elde etmek için ş
 
 ## <a name="header"></a>Üst bilgi
 
-İstekte, kimlik doğrulaması için `aeg-sas-key` bir anahtar içeren adlandırılmış bir üstbilgi değeri ekleyin.
+İstekte, kimlik doğrulaması için bir anahtar içeren adlı `aeg-sas-key` bir başlık değeri ekleyin.
 
-Örneğin, geçerli bir üstbilgi `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`değeri.
+Örneğin, geçerli bir üst bilgi değeri `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Azure CLI ile özel bir konunun anahtarını almak için şunları kullanın:
+Azure CLı ile özel bir konunun anahtarını almak için şunu kullanın:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-PowerShell ile özel bir konunun anahtarını almak için şunları kullanın:
+PowerShell ile özel bir konunun anahtarını almak için şunu kullanın:
 
 ```powershell
 (Get-AzEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -59,7 +59,7 @@ PowerShell ile özel bir konunun anahtarını almak için şunları kullanın:
 
 ## <a name="event-data"></a>Olay verileri
 
-Özel konular için, üst düzey veriler standart kaynak tanımlı olaylarla aynı alanları içerir. Bu özelliklerden biri, özel konuya özgü özellikleri içeren bir veri özelliğidir. Olay yayımcısı olarak, bu veri nesnesinin özelliklerini siz belirlersiniz. Aşağıdaki şema kullanın:
+Özel konularda, en üst düzey veriler standart kaynak tanımlı olaylarla aynı alanları içerir. Bu özelliklerden biri, özel konuya özgü özellikleri içeren bir veri özelliğidir. Olay yayımcısı olarak, bu veri nesnesinin özelliklerini belirlersiniz. Aşağıdaki şemayı kullanın:
 
 ```json
 [
@@ -76,10 +76,10 @@ PowerShell ile özel bir konunun anahtarını almak için şunları kullanın:
 ]
 ```
 
-Bu özelliklerin açıklaması için [Azure Olay Ağı etkinliği şemasına](event-schema.md)bakın. Olayları bir olay ızgarası konusuna gönderirken, dizinin toplam boyutu 1 MB'a kadar olabilir. Dizideki her olay 64 KB (Genel Kullanılabilirlik) veya 1 MB (önizleme) ile sınırlıdır.
+Bu özelliklerin açıklaması için bkz. [olay şeması Azure Event Grid](event-schema.md). Olayları bir Event Grid konusuna naklederken, dizi toplam boyutu 1 MB olabilir. Dizideki her olay 64 KB (genel kullanılabilirlik) veya 1 MB (Önizleme) ile sınırlıdır.
 
 > [!NOTE]
-> 64 KB'ye kadar boyut landırma olayı Genel Kullanılabilirlik (GA) Hizmet Düzeyi Sözleşmesi (SLA) kapsamındadır. 1 MB'a kadar boyutlandırma etkinliği desteği şu anda önizlemededir. 64 KB üzerindeki olaylar 64-KB artışlarla ücretlendirilir. 
+> 64 KB 'a kadar olan bir olay, genel kullanım (GA) Hizmet Düzeyi Sözleşmesi (SLA) ile ele alınmıştır. 1 MB 'a kadar olan bir olay desteği şu anda önizleme aşamasındadır. 64 KB üzerindeki olaylar 64 KB 'lik artışlarla ücretlendirilir. 
 
 Örneğin, geçerli bir olay veri şeması:
 
@@ -99,17 +99,17 @@ Bu özelliklerin açıklaması için [Azure Olay Ağı etkinliği şemasına](ev
 
 ## <a name="response"></a>Yanıt
 
-Konu bitiş noktasına gönderdikten sonra bir yanıt alırsınız. Yanıt standart bir HTTP yanıt kodudur. Bazı yaygın yanıtlar şunlardır:
+Konu uç noktasına gönderdikten sonra bir yanıt alırsınız. Yanıt standart bir HTTP yanıt kodudur. Bazı genel yanıtlar şunlardır:
 
 |Sonuç  |Yanıt  |
 |---------|---------|
 |Başarılı  | 200 TAMAM  |
-|Olay verilerinin yanlış biçimi vardır | 400 Kötü İstek |
+|Olay verileri hatalı biçime sahip | 400 Hatalı Istek |
 |Geçersiz erişim anahtarı | 401 Yetkisiz |
-|Yanlış bitiş noktası | 404 Bulunamadı |
-|Dizi veya olay boyut sınırlarını aşıyor | 413 Yük Çok Büyük |
+|Geçersiz uç nokta | 404 Bulunamadı |
+|Dizi veya olay boyut sınırlarını aşıyor | 413 yükü çok büyük |
 
-Hatalar için ileti gövdesi aşağıdaki biçime sahiptir:
+Hatalar için ileti gövdesi aşağıdaki biçimdedir:
 
 ```json
 {
@@ -126,6 +126,6 @@ Hatalar için ileti gövdesi aşağıdaki biçime sahiptir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimlerini izleme hakkında daha fazla bilgi için [Bkz.](monitor-event-delivery.md)
-* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için [Olay Izgara güvenliği ve kimlik doğrulama](security-authentication.md)sı'na bakın.
-* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Olay teslimatlarını izleme hakkında bilgi için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
+* Kimlik doğrulama anahtarı hakkında daha fazla bilgi için bkz. [Event Grid Security and Authentication](security-authentication.md).
+* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).

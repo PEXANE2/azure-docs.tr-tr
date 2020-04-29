@@ -1,6 +1,6 @@
 ---
-title: Varolan bir kullanılabilirlik kümesine Azure VM'leri eklemenin desteklenebilirliği | Microsoft Dokümanlar
-description: Bu makalede, aynı kullanılabilirlik kümesinde karıştırabileceğiniz VM serisi hakkında bir desteklenebilirlik matrisi sağlar
+title: Mevcut bir kullanılabilirlik kümesine Azure VM 'lerinin eklenmesinin desteklenebilirliği | Microsoft Docs
+description: Bu makalede, aynı Kullanılabilirlik kümesinde hangi VM serisine karıştırabilmeniz için bir desteklenebilirlik matrisi sunulmaktadır
 documentationcenter: ''
 author: Deland-Han
 manager: dcscontentpm
@@ -9,27 +9,27 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.openlocfilehash: a9ca8f219bef787de04b51600209bfd3a24dd166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77122928"
 ---
-# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Varolan kullanılabilirlik kümesine Azure VM'leri eklemenin desteklenebilirliği
+# <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Mevcut bir kullanılabilirlik kümesine Azure VM 'lerinin eklenmesinin desteklenebilirliği
 
-Varolan bir kullanılabilirlik kümesine yeni sanal makineler (VM) eklediğinizde zaman zaman sınırlamalarla karşılaşabilirsiniz. Aynı kullanılabilirlik kümesinde karıştırabileceğiniz VM serisinin ayrıntılarını içeren aşağıdaki grafik ayrıntıları.
+Mevcut bir kullanılabilirlik kümesine yeni sanal makineler (VM 'Ler) eklerken zaman zaman sınırlamalar yaşayabilirsiniz. Aşağıdaki grafikte, aynı Kullanılabilirlik kümesinde karıştırabilmeniz gereken VM Serisi ayrıntıları verilmiştir.
 
-Farklı VM türlerini bir araya getirmek için desteklenebilirlik matrisi aşağıda verilmiştir:
+Farklı türlerde VM 'leri karıştırmak için desteklenebilirlik matrisi aşağıda verilmiştir:
 
-Seri & Kullanılabilirlik Seti|İkinci VM|A|Av2|D|Dv2|Dv3|
+Dizi & kullanılabilirlik kümesi|İkinci VM|A|AV2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |İlk VM|||||||
 |A||Tamam|Tamam|Tamam|Tamam|Tamam|
-|Av2||Tamam|Tamam|Tamam|Tamam|Tamam|
+|AV2||Tamam|Tamam|Tamam|Tamam|Tamam|
 |D||Tamam|Tamam|Tamam|Tamam|Tamam|
 |Dv2||Tamam|Tamam|Tamam|Tamam|Tamam|
 |Dv3||Tamam|Tamam|Tamam|Tamam|Tamam|
 
-Belirli bir donanım gerektirdiğinden, diğer tüm seriler aynı kullanılabilirlik kümesinde bulunamaz.
+Tüm diğer seriler, belirli bir donanım gerektirdiğinden aynı Kullanılabilirlik kümesinde yer alamadı.
 
-A8/A9 VM boyutu, özel RDMA arka uç ağındaki gereksinim nedeniyle karıştırılamaz.
+Adanmış RDMA arka uç ağı gereksinimi nedeniyle A8/A9 VM boyutu karıştırılamaz.

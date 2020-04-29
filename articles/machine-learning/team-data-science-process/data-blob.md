@@ -1,6 +1,6 @@
 ---
-title: Gelişmiş analitikle Azure blob verilerini işleme - Ekip Veri Bilimi Süreci
-description: Gelişmiş analizleri kullanarak Azure Blob depolama alanında depolanan verilerden verileri keşfedin ve özellikler oluşturun.
+title: Gelişmiş analiz ile Azure blob verilerini işleme-Team Data Science Işlemi
+description: Gelişmiş analiz kullanarak Azure Blob depolama alanında depolanan verilerden veri bulun ve Özellikler oluşturun.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,19 +12,19 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721107"
 ---
 # <a name="process-azure-blob-data-with-advanced-analytics"></a><a name="heading"></a>Azure blob verilerini gelişmiş analiz ile işleme
-Bu belge, Azure Blob depolama alanında depolanan verilerden veri keşfetmeyi ve özellikler oluşturmayı kapsar. 
+Bu belge, Azure Blob depolamada depolanan verilerden veri araştırmayı ve özellikleri oluşturmayı içerir. 
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>Verileri Pandalar veri çerçevesine yükleme
-Bir veri kümesini keşfetmek ve işlemek için, blob kaynağından pandalar veri çerçevesine yüklenebilen yerel bir dosyaya indirilmesi gerekir. Bu yordam için izlenir adımlar şunlardır:
+## <a name="load-the-data-into-a-pandas-data-frame"></a>Verileri bir Pandas veri çerçevesine yükleme
+Bir veri kümesini araştırmak ve işlemek için, blob kaynağından bir Pandas veri çerçevesine yüklenebilecek bir yerel dosyaya indirilmelidir. Bu yordamda izlenecek adımlar aşağıda verilmiştir:
 
-1. Blob hizmetini kullanarak aşağıdaki örnek Python koduyla Azure blob'undan verileri indirin. Aşağıdaki koddaki değişkeni belirli değerlerinizle değiştirin: 
+1. Blob hizmetini kullanarak aşağıdaki örnek Python koduna sahip Azure blobundan verileri indirin. Aşağıdaki koddaki değişkeni belirli değerlerinizle değiştirin: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -41,52 +41,52 @@ Bir veri kümesini keşfetmek ve işlemek için, blob kaynağından pandalar ver
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Verileri indirilen dosyadan Pandas veri çerçevesine okuyun.
+2. İndirilen dosyadaki verileri bir Pandas veri çerçevesine okuyun.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Artık verileri keşfetmeye ve bu veri setinde özellikler oluşturmaya hazırsınız.
+Artık verileri keşfetmeye ve bu veri kümesinde Özellik oluşturmaya hazırsınız.
 
-## <a name="data-exploration"></a><a name="blob-dataexploration"></a>Veri Arama
-Pandaları kullanarak verileri keşfetmenin birkaç yolu verilmiştir:
+## <a name="data-exploration"></a><a name="blob-dataexploration"></a>Veri araştırması
+Aşağıda, Pandas kullanarak verileri keşfetmeye yönelik yöntemlere birkaç örnek verilmiştir:
 
-1. Satır ve sütun sayısını denetleme 
+1. Satır ve sütun sayısını İnceleme 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. Veri kümesindeki ilk veya son birkaç satırı aşağıdaki gibi inceleyin:
+2. Veri kümesindeki ilk veya son birkaç satırı aşağıda gösterildiği gibi inceleyin:
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. Her sütunun aşağıdaki örnek kodu kullanarak içe aktarılyış edildiği veri türünü denetleyin
+3. Aşağıdaki örnek kodu kullanarak her bir sütunun içeri aktarıldığı veri türünü denetleyin
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. Veri kümesindeki sütunların temel istatistiklerini aşağıdaki gibi denetleyin
+4. Veri kümesindeki sütunların temel istatistiklerini aşağıda gösterildiği gibi denetleyin
    
         dataframe_blobdata.describe()
-5. Her sütun değeri için giriş sayısına aşağıdaki gibi bakın
+5. Her bir sütun değeri için aşağıdaki gibi giriş sayısına bakın
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. Aşağıdaki örnek kodu kullanarak her sütundaki gerçek giriş sayısına karşılık eksik değerleri sayma
+6. Aşağıdaki örnek kodu kullanarak eksik değerleri ve her bir sütundaki gerçek girdi sayısını say
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. Verilerde belirli bir sütun için eksik değerleriniz varsa, bunları aşağıdaki gibi bırakabilirsiniz:
+7. Verilerdeki belirli bir sütun için eksik değerler varsa, bunları aşağıdaki gibi bırakabilirsiniz:
    
         dataframe_blobdata_noNA = dataframe_blobdata.dropna()
         dataframe_blobdata_noNA.shape
    
-   Eksik değerleri değiştirmenin başka bir yolu mod işlevidir:
+   Eksik değerleri değiştirmek için başka bir yol da Mode işlevidir:
    
         dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
-8. Bir değişkenin dağılımını çizmek için değişken sayıda depo kutusu kullanarak bir histogram çizimi oluşturma    
+8. Bir değişkenin dağılımını çizmek için değişken sayıda depo gözü kullanarak bir histogram çizimi oluşturma    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. Bir dağılım çizimi kullanarak veya yerleşik korelasyon işlevini kullanarak değişkenler arasındaki korelasyonlara bakın
+9. Bir dağınık terçiz kullanarak veya yerleşik bağıntı işlevini kullanarak değişkenler arasında bağıntılar 'e bakın
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
@@ -94,49 +94,49 @@ Pandaları kullanarak verileri keşfetmenin birkaç yolu verilmiştir:
         #correlation between column_a and column_b
         dataframe_blobdata[['<column_a>', '<column_b>']].corr()
 
-## <a name="feature-generation"></a><a name="blob-featuregen"></a>Özellik Oluşturma
-Python'u kullanarak aşağıdaki gibi özellikler oluşturabiliriz:
+## <a name="feature-generation"></a><a name="blob-featuregen"></a>Özellik oluşturma
+Python kullanarak şu şekilde özellik üretebiliriz:
 
-### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Gösterge değeri tabanlı Özellik Oluşturma
+### <a name="indicator-value-based-feature-generation"></a><a name="blob-countfeature"></a>Gösterge değer tabanlı özellik oluşturma
 Kategorik özellikler aşağıdaki gibi oluşturulabilir:
 
-1. Kategorik sütunun dağılımını inceleyin:
+1. Kategorik sütununun dağıtımını inceleyin:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Sütun değerlerinin her biri için gösterge değerleri oluşturma
+2. Her sütun değeri için gösterge değerlerini oluştur
    
         #generate the indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Orijinal veri çerçevesiyle gösterge sütununa katılma 
+3. Gösterge sütununa özgün veri çerçevesini ekleyin 
    
             #Join the dummy variables back to the original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Özgün değişkenin kendisini kaldırın:
+4. Özgün değişkeni kaldırın:
    
         #Remove the original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
-### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>Binning Özellik Oluşturma
-Binned özellikleri oluşturmak için, aşağıdaki gibi devam edin:
+### <a name="binning-feature-generation"></a><a name="blob-binningfeature"></a>Özellik oluşturmayı atma
+Bağlanabilir özellikler oluşturmak için aşağıdaki gibi ilerliyoruz:
 
-1. Sayısal bir sütunu depolamak için bir sütun dizisi ekleme
+1. Bin sayısal bir sütuna bir sütun dizisi ekleyin
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Binning'i boolean değişkenleri dizisine dönüştürün
+2. Binmek 'yi Boole değişkenleri dizisine Dönüştür
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Son olarak, sahte değişkenleri orijinal veri çerçevesine geri katılma
+3. Son olarak, kukla değişkenleri özgün veri çerçevesine geri katın
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
-## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Azure Machine Learning'de verileri Azure blob'una geri yazma ve tüketme
-Verileri araştırdıktan ve gerekli özellikleri oluşturduktan sonra, verileri (örneklenmiş veya örneklenmiş) bir Azure blob'una yükleyebilir ve aşağıdaki adımları kullanarak Azure Machine Learning'de tüketebilirsiniz: Azure Machine Learning'de ek özellikler oluşturulabilir Stüdyo (klasik) de. 
+## <a name="writing-data-back-to-azure-blob-and-consuming-in-azure-machine-learning"></a><a name="sql-featuregen"></a>Verileri Azure Blob 'a geri yazma ve Azure Machine Learning kullanma
+Verileri araştırdıktan ve gerekli özellikleri oluşturduktan sonra, verileri (örneklendirilmiş veya uygun) bir Azure blobuna yükleyebilir ve aşağıdaki adımları kullanarak Azure Machine Learning kullanabilirsiniz: ek özellikler, Azure Machine Learning Studio (klasik) içinde da oluşturulabilir. 
 
-1. Veri çerçevesini yerel dosyaya yazma
+1. Veri çerçevesini yerel dosyaya yaz
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Verileri Azure blob'una aşağıdaki gibi yükleyin:
+2. Verileri Azure Blob 'a aşağıdaki gibi yükleyin:
    
         from azure.storage.blob import BlobService
         import tables
@@ -157,9 +157,9 @@ Verileri araştırdıktan ve gerekli özellikleri oluşturduktan sonra, verileri
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Artık veriler aşağıdaki ekranda gösterildiği gibi Azure Machine Learning [Import Data][import-data] modüllerini kullanarak blob'dan okunabilir:
+3. Artık veriler, aşağıdaki ekranda gösterildiği gibi Azure Machine Learning [veri alma][import-data] modülünü kullanarak bloba okunabilir:
 
-![okuyucu blob][1]
+![okuyucu blobu][1]
 
 [1]: ./media/data-blob/reader_blob.png
 

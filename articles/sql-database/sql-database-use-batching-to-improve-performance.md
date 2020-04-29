@@ -1,6 +1,6 @@
 ---
-title: Uygulama performansını artırmak için toplu işleme nasıl kullanılır?
-description: Konu, toplu veritabanı işlemlerinin Azure SQL Veritabanı uygulamalarınızın hızını ve ölçeklenebilirliğini büyük ölçüde artırdığına dair kanıt sağlar. Bu toplu iş teknikleri herhangi bir SQL Server veritabanı için çalışsa da, makalenin odak noktası Azure'dur.
+title: Uygulama performansını artırmak için toplu işlem kullanma
+description: Bu konuda, veritabanı işlemlerinin toplu olarak, Azure SQL veritabanı uygulamalarınızın hızını ve ölçeklenebilirliğini büyük ölçüde geliştirip gelişmediğini belirten bir kanıt sunulmaktadır. Bu toplu işlem teknikleri tüm SQL Server veritabanları için çalışabilse de makalenin konusu Azure 'da yer alır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,42 +12,42 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76545033"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL Veritabanı uygulama performansını artırmak için işlem grubu oluşturma
 
-İşlemleri Azure SQL Veritabanı'na toplu olarak yapmak, uygulamalarınızın performansını ve ölçeklenebilirliğini önemli ölçüde artırır. Faydaları anlamak için, bu makalenin ilk bölümü, sıralı ve toplu istekleri bir SQL Veritabanı ile karşılaştıran bazı örnek test sonuçlarını kapsar. Makalenin geri kalanı, Azure uygulamalarınızda toplu işlemi başarıyla kullanmanıza yardımcı olacak teknikleri, senaryoları ve dikkatleri gösterir.
+Azure SQL veritabanı 'na toplu işlem işlemleri, uygulamalarınızın performansını ve ölçeklenebilirliğini önemli ölçüde geliştirir. Avantajları anlamak için, bu makalenin ilk kısmı sıralı ve toplu istekleri bir SQL veritabanı ile karşılaştıran bazı örnek test sonuçlarını ele almaktadır. Makalenin geri kalanında Azure uygulamalarınızda toplu işlem oluşturmayı başarıyla kullanmanıza yardımcı olacak teknikler, senaryolar ve önemli noktalar gösterilmektedir.
 
-## <a name="why-is-batching-important-for-sql-database"></a>SQL Veritabanı için toplu işlem neden önemlidir?
+## <a name="why-is-batching-important-for-sql-database"></a>SQL veritabanı için neden toplu işlem önemlidir?
 
-Uzak bir hizmete çağrı toplu işletmek, performansı ve ölçeklenebilirliği artırmak için iyi bilinen bir stratejidir. Serileştirme, ağ aktarımı ve deserialization gibi uzak bir hizmetle yapılan etkileşimlerde sabit işlem maliyetleri vardır. Birçok ayrı işlemin tek bir toplu iş halinde paketlenmesi bu maliyetleri en aza indirir.
+Uzak bir hizmete yapılan toplu çağrılar, performansı ve ölçeklenebilirliği artırmak için iyi bilinen bir stratejidir. Serileştirme, ağ aktarımı ve seri durumundan çıkarma gibi uzak bir hizmetle her türlü etkileşimlere yönelik sabit işleme maliyetleri vardır. Tek bir toplu işte çok sayıda ayrı işlem paketleme bu maliyetleri en aza indirir.
 
-Bu yazıda, çeşitli SQL Veritabanı toplu işleme stratejilerini ve senaryolarını incelemek istiyoruz. Bu stratejiler, SQL Server kullanan şirket içi uygulamalar için de önemli olsa da, SQL Veritabanı için toplu iş kullanımını vurgulamanın birkaç nedeni vardır:
+Bu yazıda, çeşitli SQL veritabanı toplu işlem stratejilerini ve senaryolarını incelemek istiyoruz. Bu stratejiler SQL Server kullanan şirket içi uygulamalar için de önemli olsa da SQL veritabanı için toplu işlem kullanımını vurgulamanın çeşitli nedenleri vardır:
 
-* Özellikle aynı Microsoft Azure veri merkezinin dışından SQL Veritabanı'na erişiyorsanız, SQL Veritabanı'na erişme de büyük ölçüde daha fazla ağ gecikmesi olabilir.
-* SQL Veritabanı'nın çok kiracılı özellikleri, veri erişim katmanının etkinliğinin veritabanının genel ölçeklenebilirliğiyle ilişkili olduğu anlamına gelir. SQL Veritabanı, tek bir kiracının/kullanıcının veritabanı kaynaklarını diğer kiracıların zararına tekeline etmesini engellemelidir. Önceden tanımlanmış kotaları aşan kullanıma yanıt olarak, SQL Veritabanı iş verisini azaltabilir veya azaltma özel durumları ile yanıt verebilir. Toplu iş oluşturma gibi verimlilikler, bu sınırlara ulaşmadan önce SQL Veritabanı üzerinde daha fazla çalışma yapmanızı sağlar. 
-* Toplu oluşturma, birden çok veritabanı (parçalama) kullanan mimariler için de etkilidir. Her veritabanı birimiyle etkileşiminizin verimliliği, genel ölçeklenebilirliğinizde hala önemli bir faktördür. 
+* SQL veritabanına erişirken, özellikle de aynı Microsoft Azure veri merkezi dışından SQL veritabanı 'na erişirken büyük olasılıkla daha fazla ağ gecikmesi vardır.
+* SQL veritabanı 'nın çoklu kiracı özellikleri, veri erişim katmanının verimliliğinin veritabanının genel ölçeklenebilirliğiyle ilişkili olduğu anlamına gelir. SQL veritabanı, tek bir kiracının/kullanıcının veritabanı kaynaklarını diğer kiracıların dekeline karşı kullanmasını önlemektir. Önceden tanımlanmış kotaların daha fazla olması halinde SQL veritabanı, performansı azaltabilir veya azaltma özel durumları ile yanıt verebilir. Toplu işlem gibi verimlilik, bu sınırlara ulaşmadan önce SQL veritabanı üzerinde daha fazla çalışma olanağı sağlar. 
+* Toplu işlem, birden çok veritabanı kullanan mimariler için de geçerlidir (parçalama). Her veritabanı birimi ile etkileşimin verimliliği, genel ölçeklenebilirlik için hala önemli bir faktördür. 
 
-SQL Veritabanı'nı kullanmanın avantajlarından biri, veritabanını barındıran sunucuları yönetmek zorunda kalmamanızdır. Ancak, bu yönetilen altyapı, veritabanı optimizasyonları hakkında farklı düşünmeniz gerektiği anlamına da gelir. Artık veritabanı donanımını veya ağ altyapısını geliştirmeye bakamazsınız. Microsoft Azure bu ortamları denetler. Denetlediğiniz ana alan, uygulamanızın SQL Veritabanı ile nasıl etkileşimde bulunduğudur. Toplu iş bu optimizasyonlardan biridir. 
+SQL veritabanı kullanmanın avantajlarından biri, veritabanını barındıran sunucuları yönetmeniz gerekmez. Ancak, bu yönetilen altyapı ayrıca veritabanı iyileştirmeleri hakkında farklı düşünmeniz gereken anlamına gelir. Artık veritabanı donanımını veya ağ altyapısını geliştirmek için göz atabilirsiniz. Microsoft Azure bu ortamları denetler. Denetleyebilmeniz gereken ana alan, uygulamanızın SQL veritabanı ile nasıl etkileşime gidir. Toplu işleme, bu iyileştirmelerin biridir. 
 
-Makalenin ilk bölümünde SQL Veritabanı kullanan .NET uygulamaları için çeşitli toplu iş teknikleri incelenir. Son iki bölüm toplu işleme yönergelerini ve senaryoları kapsar.
+Kağıdın ilk bölümü, SQL veritabanı kullanan .NET uygulamalarına yönelik çeşitli toplu işlem tekniklerini inceler. Son iki bölüm toplu işlem kılavuzlarını ve senaryolarını kapsar.
 
-## <a name="batching-strategies"></a>Toplu iş stratejileri
+## <a name="batching-strategies"></a>Toplu işleme stratejileri
 
-### <a name="note-about-timing-results-in-this-article"></a>Bu makaledeki zamanlama sonuçları hakkında not
+### <a name="note-about-timing-results-in-this-article"></a>Bu makaledeki zamanlama sonuçları hakkında bilgi alın
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir, ancak **göreli performans**göstermek içindir. Zamanlamalar en az 10 test çalışmasının ortalamasına dayanır. İşlemler boş bir tabloya eklenir. Bu testler V12 öncesi ölçüldü ve yeni [DTU hizmet katmanları](sql-database-service-tiers-dtu.md) veya [vCore hizmet katmanları](sql-database-service-tiers-vcore.md)kullanılarak bir V12 veritabanında karşılaşabileceğiniz iş haline karşılık gelmez. Toplu işleme tekniğinin göreli yararı benzer olmalıdır.
+> Sonuçlar kıyaslamalar değildir ancak **göreli performansı**göstermek için tasarlanmıştır. Zamanlamalar, en az 10 test çalıştırmalarının ortalamasını temel alır. İşlemler boş bir tabloya eklenir. Bu sınamalar önceden V12 ölçülmüş ve yeni [DTU hizmeti katmanlarını](sql-database-service-tiers-dtu.md) veya [Vcore hizmeti katmanlarını](sql-database-service-tiers-vcore.md)kullanarak bir V12 veritabanında karşılaşabileceğiniz aktarım hızına karşılık gelmez. Toplu işleme tekniğinin göreli avantajı benzer olmalıdır.
 
 ### <a name="transactions"></a>İşlemler
 
-Bu işlemleri tartışarak toplu bir inceleme başlamak için garip görünüyor. Ancak istemci tarafı hareketlerinin kullanımı, performansı artıran ince bir sunucu tarafı toplu iş efekti ne sahiptir. Ve hareketler yalnızca birkaç kod satırıyla eklenebilir, böylece sıralı işlemlerin performansını artırmak için hızlı bir yol sağlarlar.
+İşlemleri tartışarak toplu işi gözden geçirmeyi başlatmak garip bir şekilde görünür. Ancak, istemci tarafı işlemlerin kullanımı performansı artıran hafif bir sunucu tarafı toplu işlem etkisine sahiptir. Ve işlemler yalnızca birkaç satır kodla eklenebilir, bu nedenle sıralı işlemlerin performansını artırmanın hızlı bir yolunu sağlar.
 
-Basit bir tabloda bir dizi ekleme ve güncelleştirme işlemleri içeren aşağıdaki C# kodunu düşünün.
+Basit bir tabloda INSERT ve Update işlemleri dizisini içeren aşağıdaki C# kodunu göz önünde bulundurun.
 
 ```csharp
 List<string> dbOperations = new List<string>();
@@ -58,7 +58,7 @@ dbOperations.Add("insert MyTable values ('new value',1)");
 dbOperations.Add("insert MyTable values ('new value',2)");
 dbOperations.Add("insert MyTable values ('new value',3)");
 ```
-Aşağıdaki ADO.NET kodu sırayla bu işlemleri gerçekleştirir.
+Aşağıdaki ADO.NET kodu ardışık olarak bu işlemleri gerçekleştirir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -73,7 +73,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Bu kodu en iyi duruma getirmenin en iyi yolu, bu çağrıların bir tür istemci tarafı toplu oluşturmasını uygulamaktır. Ancak, yalnızca bir işlemdeki arama sırasını saran bu kodun performansını artırmanın basit bir yolu vardır. Burada, bir hareketi kullanan kodun aynısı vereb vardır.
+Bu kodu iyileştirmenin en iyi yolu, bu çağrıların bazı istemci tarafı toplu işlem biçimini uygulamaktır. Ancak, bu kodun performansını artırmanın basit bir yolu vardır ve yalnızca bir işlemdeki çağrı dizisini sarmalayarak. Bir işlem kullanan aynı kod aşağıda verilmiştir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -91,22 +91,22 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Hareketler aslında bu örneklerin her ikisinde de kullanılmaktadır. İlk örnekte, her çağrı örtülü bir işlemdir. İkinci örnekte, açık bir işlem tüm aramaları sarar. [Yazma hareketi günlüğü](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belgelere göre, günlük kayıtları işlem işlendiğinde diske atılır. Bu nedenle, bir işleme daha fazla çağrı ekleyerek, işlem günlüğüne yazma işlemi işlenene kadar gecikebilir. Sonuç olarak, sunucunun işlem günlüğüne yazmalar için toplu işlemi etkinleştirme nizi sağlarsınız.
+İşlemler aslında bu örneklerin her ikisinde de kullanılır. İlk örnekte, her bir çağrı örtük bir işlemdir. İkinci örnekte, açık bir işlem tüm çağrıları sarmalar. [Yazma öncesi işlem günlüğü](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)için belge başına, işlem tamamlandığında günlük kayıtları diske silinir. Bu nedenle, bir işleme daha fazla çağrı dahil ederek işlem günlüğüne yazma işlemi, işlem kaydedilene kadar geciktirebilirler. Aslında, sunucunun işlem günlüğüne yazma işlemleri için toplu işleme etkinleştiriliyor.
 
-Aşağıdaki tablobazı geçici test sonuçlarını gösterir. Testler, hareketli ve işlemsiz aynı sıralı eklemeleri gerçekleştirdi. Daha fazla perspektif için, ilk test kümesi dizüstü bilgisayardan Microsoft Azure'daki veritabanına uzaktan çalıştırılır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde bulunan bir bulut hizmeti nden ve veritabanından çalıştırDı. Aşağıdaki tablo, hareketli ve hareketsiz sıralı eklerin milisaniyecinsinden süresini gösterir.
+Aşağıdaki tabloda bazı geçici test sonuçları gösterilmektedir. Testler, ve işlemleri olmadan aynı sıralı eklemeleri gerçekleştirdi. Daha fazla bakış için, ilk test kümesi bir dizüstü bilgisayardan Microsoft Azure içindeki veritabanına uzaktan çalışır. İkinci test kümesi, her ikisi de aynı Microsoft Azure veri merkezi (Batı ABD) içinde yer alan bir bulut hizmetinden ve veritabanından çalışır. Aşağıdaki tabloda, işlemleri ile ve olmayan sıralı ekleme süresinin milisaniye cinsinden gösterilmektedir.
 
-**Şirket Içi -Azure:**
+**Şirket Içinden Azure 'a**:
 
-| İşlemler | İşlem Yok (ms) | İşlem (ms) |
+| İşlemler | Işlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure'dan Azure'a (aynı veri merkezi)**:
+**Azure 'Dan Azure 'a (aynı veri merkezi)**:
 
-| İşlemler | İşlem Yok (ms) | İşlem (ms) |
+| İşlemler | Işlem yok (MS) | İşlem (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -114,19 +114,19 @@ Aşağıdaki tablobazı geçici test sonuçlarını gösterir. Testler, hareketl
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 
-Önceki test sonuçlarına göre, tek bir işlemi bir işlemde sarmak aslında performansı düşürür. Ancak, tek bir işlemdeki işlem sayısını artırdıkça, performans geliştirme daha belirgin hale gelir. Microsoft Azure veri merkezi içinde tüm işlemler gerçekleştiğinde performans farkı da daha belirgindir. Microsoft Azure veri merkezi nin dışından SQL Veritabanı kullanmanın artan gecikme sayılmı, hareketleri kullanmanın performans kazancını gölgede bırakır.
+Önceki test sonuçlarına bağlı olarak, bir işlemdeki tek bir işlemin sarmalanması performansı düşürür. Ancak, tek bir işlem içindeki işlem sayısını artırdıkça, performans iyileştirmesi daha fazla işaretlenmiş olur. Performans farkı, Microsoft Azure veri merkezinde tüm işlemler gerçekleştiğinde da daha belirgin bir şekilde görülür. Microsoft Azure veri merkezi dışından SQL veritabanı kullanmanın artmasıyla gecikme süresi, işlemleri kullanmanın performans kazanmasına neden olacak.
 
-Hareketlerin kullanımı performansı artırabilir, ancak [hareketler ve bağlantılar için en iyi uygulamaları gözlemlemek için](https://msdn.microsoft.com/library/ms187484.aspx)devam edin. Hareketi olabildiğince kısa tutun ve çalışma tamamlandıktan sonra veritabanı bağlantısını kapatın. Önceki örnekteki using deyimi, sonraki kod bloğu tamamlandığında bağlantının kapalı olduğunu garanti eder.
+İşlemlerin kullanımı performansı artırabilir, ancak [işlemler ve bağlantılar için en iyi yöntemleri gözlemlemeye](https://msdn.microsoft.com/library/ms187484.aspx)devam edin. İşlemi mümkün olduğunca kısa tutun ve iş tamamlandıktan sonra veritabanı bağlantısını kapatın. Önceki örnekteki using deyimleri, sonraki kod bloğu tamamlandığında bağlantının kapalı olmasını sağlar.
 
-Önceki örnek, iki satırlı herhangi bir ADO.NET koduna yerel bir hareket ekleyebileceğinizi gösterir. Hareketler, sıralı ekleme, güncelleştirme ve silme işlemleri yapan kodun performansını artırmak için hızlı bir yol sunar. Ancak, en hızlı performans için, tablo değeri olan parametreler gibi istemci tarafı toplu işlerinden yararlanmak için kodu daha fazla değiştirmeyi düşünün.
+Önceki örnekte, iki satırlık herhangi bir ADO.NET koduna yerel bir işlem ekleyebileceğinizi gösterir. İşlemler sıralı ekleme, güncelleştirme ve silme işlemleri yapan kodun performansını artırmanın hızlı bir yolunu sunar. Bununla birlikte, en hızlı performans için, tablo değerli parametreler gibi istemci tarafı toplu işlem avantajlarından faydalanmak için kodu daha fazla değiştirmeyi göz önünde bulundurun.
 
-ADO.NET'daki işlemler hakkında daha fazla bilgi için [ADO.NET'daki Yerel İşlemler'e](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)bakın.
+ADO.NET içindeki işlemler hakkında daha fazla bilgi için bkz. [ADO.net Içindeki yerel işlemler](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>Tablo değeri olan parametreler
+### <a name="table-valued-parameters"></a>Tablo değerli parametreler
 
-Tablo değeri olan parametreler, Transact-SQL deyimlerinde, depolanan yordamlarda ve işlevlerde kullanıcı tarafından tanımlanan tablo türlerini parametreler olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerindeki parametre içinde birden çok veri satırı göndermenize olanak tanır. Tablo değeri olan parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL deyimi **MyTableType**adlı bir tablo türü oluşturur.
+Tablo değerli parametreler, Kullanıcı tanımlı tablo türlerini Transact-SQL deyimleriyle, saklı yordamlarda ve işlevlerde parametre olarak destekler. Bu istemci tarafı toplu işleme tekniği, tablo değerli parametre içinde birden fazla veri satırı göndermenizi sağlar. Tablo değerli parametreleri kullanmak için önce bir tablo türü tanımlayın. Aşağıdaki Transact-SQL beyanı, **Mytabletype**adlı bir tablo türü oluşturur.
 
 ```sql
     CREATE TYPE MyTableType AS TABLE 
@@ -134,7 +134,7 @@ Tablo değeri olan parametreler, Transact-SQL deyimlerinde, depolanan yordamlard
       num INT );
 ```
 
-Kod olarak, tablo türünün tam adları ve türlerine sahip bir **DataTable** oluşturursunuz. Bu **DataTable'ı** metin sorgusunda veya depolanan yordam çağrısında bir parametrede geçirin. Aşağıdaki örnekte bu teknik gösterilmektedir:
+Kodda, tablo türünün tam olarak aynı adlarıyla ve türleriyle bir **DataTable** oluşturacaksınız. Bu **DataTable** 'ı bir metin sorgusundaki veya saklı yordam çağrısındaki bir parametreye geçirin. Aşağıdaki örnek bu tekniği göstermektedir:
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -167,9 +167,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Önceki örnekte, **SqlCommand** nesnesi tablo değeri olan bir parametre olan ** \@TestTvp'ten**satırları ekler. Daha önce oluşturulmuş **DataTable** nesnesi **sqlcommand.parameters.add** yöntemi ile bu parametreye atanır. Eklerin tek bir çağrıda toplu olarak gruplanması, sıralı eklere göre performansı önemli ölçüde artırır.
+Önceki örnekte, **SqlCommand** nesnesi tablo değerli bir parametre olan ** \@testtvp**öğesinden satır ekler. Önceden oluşturulan **DataTable** nesnesi, **SqlCommand. Parameters. Add** yöntemiyle bu parametreye atanır. Eklemeleri tek bir çağrıda toplu olarak işleme, sıralı eklemelerin performansını önemli ölçüde artırır.
 
-Önceki örneği daha da geliştirmek için metin tabanlı komut yerine depolanmış yordam kullanın. Aşağıdaki Transact-SQL **komutu, SimpleTestTableType** tablo değerindeki parametresini alan bir depolanmış yordam oluşturur.
+Önceki örneği daha da geliştirmek için metin tabanlı komut yerine bir saklı yordam kullanın. Aşağıdaki Transact-SQL komutu, **Simpletesttabletype** tablo değerli parametresini alan bir saklı yordam oluşturur.
 
 ```sql
 CREATE PROCEDURE [dbo].[sp_InsertRows] 
@@ -182,18 +182,18 @@ END
 GO
 ```
 
-Daha sonra önceki kod örneğindeki **SqlCommand** nesne bildirimini aşağıdaki gibi değiştirin.
+Ardından, önceki kod örneğinde **SqlCommand** nesne bildirimini aşağıdaki şekilde değiştirin.
 
 ```csharp
 SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
 cmd.CommandType = CommandType.StoredProcedure;
 ```
 
-Çoğu durumda, tablo değeri olan parametreler, diğer toplu iş tekniklerine göre eşdeğer veya daha iyi performansa sahiptir. Tablo değeri olan parametreler genellikle tercih edilir, çünkü diğer seçeneklere göre daha esnektirler. Örneğin, SQL toplu kopya gibi diğer teknikler yalnızca yeni satır eklemeye izin verir. Ancak tablo değeri taşıyan parametrelerle, depolanan yordamdaki mantığı kullanarak hangi satırların güncelleştirme olduğunu ve hangi eklerin ek olduğunu belirleyebilirsiniz. Tablo türü, belirtilen satırın eklenmesi, güncelleştirilmesi veya silinmesi gerekip gerekmediğini belirten bir "İşlem" sütunu içerecek şekilde de değiştirilebilir.
+Çoğu durumda, tablo değerli parametrelerin diğer toplu işlem tekniklerinden eşdeğer veya daha iyi bir performansı vardır. Tablo değerli parametreler genellikle diğer seçeneklerden daha esnek olduklarından tercih edilir. Örneğin, SQL toplu kopyalama gibi diğer teknikler yalnızca yeni satırların eklenmesine izin verir. Ancak tablo değerli parametrelerle, hangi satırların hangilerinin ekleneceğini ve hangilerinin ekleneceğini tespit etmek için saklı yordamdaki mantığı kullanabilirsiniz. Tablo türü Ayrıca, belirtilen satırın eklenip eklenmeyeceğini, güncelleştirileceğini veya silinip silinmeyeceğini belirten bir "Işlem" sütunu içerecek şekilde değiştirilebilir.
 
-Aşağıdaki tabloda, tablo değeri olan parametrelerin milisaniye cinsinden kullanımı için özel test sonuçları gösterilmektedir.
+Aşağıdaki tabloda, tablo değerli parametrelerin kullanım için milisaniye cinsinden geçici test sonuçları gösterilmektedir.
 
-| İşlemler | Şirket Içi -Azure (ms) | Azure aynı veri merkezi (ms) |
+| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -202,17 +202,17 @@ Aşağıdaki tabloda, tablo değeri olan parametrelerin milisaniye cinsinden kul
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 > 
 > 
 
-Toplu işlemden elde edilen performans artışı hemen belirgindir. Önceki ardışık testte, veri merkezinin dışında 129 saniye, veri merkezinin içinden ise 21 saniye işlem yapıldı. Ancak tablo değeri olan parametrelerle, 1000 işlem veri merkezinin dışında yalnızca 2,6 saniye, veri merkezi içinde ise 0,4 saniye sürer.
+Toplu işleme ait performans kazancı hemen görünür. Önceki sıralı testte, 1000 işlemleri veri merkezinde 129 saniye ve veri merkezi içinde 21 saniye sürdü. Ancak tablo değerli parametrelerle 1000 işlem, veri merkezi içindeki veri merkezi ve 0,4 saniye dışında yalnızca 2,6 saniye sürer.
 
-Tablo değeri olan parametreler hakkında daha fazla bilgi için tablo [değeri olan parametrelere](https://msdn.microsoft.com/library/bb510489.aspx)bakın.
+Tablo değerli parametreler hakkında daha fazla bilgi için bkz. [tablo değerli parametreler](https://msdn.microsoft.com/library/bb510489.aspx).
 
-### <a name="sql-bulk-copy"></a>SQL toplu kopya
+### <a name="sql-bulk-copy"></a>SQL toplu kopyalama
 
-SQL toplu kopya hedef veritabanına büyük miktarda veri eklemek için başka bir yoludur. .NET uygulamaları, toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** komut satırı aracı, **Bcp.exe**veya Transact-SQL deyimi, **BULK INSERT**işlevi benzer. Aşağıdaki kod örneği, kaynak DataTable , tablodaki satırların SQL Server, **MyTable'daki**hedef tabloya nasıl toplu kopyalanırgibi olduğunu gösterir.
+SQL toplu kopyalama, bir hedef veritabanına büyük miktarlarda veri eklemenin başka bir yoludur. .NET uygulamaları toplu ekleme işlemleri gerçekleştirmek için **SqlBulkCopy** sınıfını kullanabilir. **SqlBulkCopy** , işlevinde komut satırı aracına, **bcp. exe**' ye veya Transact-SQL bildirimine benzer **bulk INSERT**. Aşağıdaki kod örneği, kaynak **DataTable**, tablosundaki satırların SQL Server, myTable içindeki hedef tabloya nasıl toplu şekilde kopyalanacağını gösterir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -229,11 +229,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Tablo değeri olan parametreleryerine toplu kopyanın tercih edildiği bazı durumlar vardır. [Tablo-Değerli Parametreler](https://msdn.microsoft.com/library/bb510489.aspx)makalesinde Tablo Değeri olan parametrelerile BULK INSERT işlemlerinin karşılaştırma tablosuna bakın.
+Toplu kopyalamanın tablo değerli parametreler üzerinden tercih edildiği bazı durumlar vardır. Tablo değerli parametrelerin karşılaştırma tablosuna ve [tablo değerli parametrelerde](https://msdn.microsoft.com/library/bb510489.aspx)bulk INSERT işlemlerine bakın.
 
-Aşağıdaki özel test **sonuçları, SqlBulkCopy** ile toplu işlemenin performansını milisaniye cinsinden gösterir.
+Aşağıdaki geçici test sonuçları, her saniye içinde **SqlBulkCopy** ile toplu işleme performansını gösterir.
 
-| İşlemler | Şirket Içi -Azure (ms) | Azure aynı veri merkezi (ms) |
+| İşlemler | Şirket Içinden Azure 'a (MS) | Azure aynı veri merkezi (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -242,17 +242,17 @@ Aşağıdaki özel test **sonuçları, SqlBulkCopy** ile toplu işlemenin perfor
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 > 
 > 
 
-Daha küçük toplu iş boyutlarında, kullanım tablosu değerindeki parametreler **SqlBulkCopy** sınıfından daha iyi performans gösterdi. Ancak, **SqlBulkCopy** 1.000 ve 10.000 satır testleri için tablo değerli parametrelerden % 12-31 daha hızlı performans gösterdi. Tablo değeri olan parametreler gibi **SqlBulkCopy** de, özellikle toplu işlem performansıyla karşılaştırıldığında toplu eklemeler için iyi bir seçenektir.
+Daha küçük toplu iş boyutlarında, tablo değerli parametreleri kullan parametresi **SqlBulkCopy sınıfını başarıyla** gerçekleştirdi. Ancak, **SqlBulkCopy** , 1.000 ve 10.000 satırları testleri için tablo değerli parametrelerden% 12-31 daha hızlı gerçekleştirdi. Tablo değerli parametreler gibi, **SqlBulkCopy** , özellikle toplu olmayan işlemlerin performansına kıyasla, toplu ekleme için iyi bir seçenektir.
 
-ADO.NET'da toplu kopya hakkında daha fazla bilgi için [SQL Server'da Toplu Kopyalama İşlemleri'ne](https://msdn.microsoft.com/library/7ek5da1a.aspx)bakın.
+ADO.NET ' de toplu kopyalama hakkında daha fazla bilgi için [SQL Server Içindeki toplu kopyalama işlemleri](https://msdn.microsoft.com/library/7ek5da1a.aspx)konusuna bakın.
 
-### <a name="multiple-row-parameterized-insert-statements"></a>Çok satırlı Parametreli INSERT deyimleri
+### <a name="multiple-row-parameterized-insert-statements"></a>Birden çok satır parametreli INSERT deyimleri
 
-Küçük toplu işler için bir alternatif, birden çok satır ekler büyük bir parametreli INSERT deyimi oluşturmaktır. Aşağıdaki kod örneği bu tekniği göstermektedir.
+Küçük toplu işlemlere yönelik bir alternatif, birden çok satır ekleyen büyük parametreli INSERT deyimlerinin oluşturulması içindir. Aşağıdaki kod örneği bu tekniği gösterir.
 
 ```csharp
 using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
@@ -274,58 +274,58 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Bu örnek, temel kavramı göstermek içindir. Sorgu dizesini ve komut parametrelerini aynı anda oluşturmak için gerekli varlıklar arasında daha gerçekçi bir senaryo döngü olur. Toplam 2100 sorgu parametreniz ile sınırlısınız, bu nedenle bu şekilde işlenebilen toplam satır sayısını sınırlar.
+Bu örnek, temel kavramı göstermek için tasarlanmıştır. Daha gerçekçi bir senaryo, sorgu dizesini ve komut parametrelerini aynı anda oluşturmak için gereken varlıklarda döngü sağlar. Toplam 2100 sorgu parametresi ile sınırlı olursunuz, bu nedenle bu şekilde işlenebilecek toplam satır sayısını kısıtlar.
 
-Aşağıdaki geçici test sonuçları, bu tür bir ekleme deyiminin performansını milisaniye cinsinden gösterir.
+Aşağıdaki geçici test sonuçları, bu tür INSERT deyimlerinin performansını milisaniye cinsinden gösterir.
 
-| İşlemler | Tablo değeri olan parametreler (ms) | Tek ifadeli INSERT (ms) |
+| İşlemler | Tablo değerli parametreler (MS) | Tek deyimli Insert (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 > 
 > 
 
-Bu yaklaşım, 100 satırdan küçük toplu işlerle biraz daha hızlı olabilir. İyileştirme küçük olsa da, bu teknik belirli uygulama senaryonuzda iyi çalışabilecek başka bir seçenektir.
+Bu yaklaşım 100 satırdan az olan toplu işlemler için biraz daha hızlı olabilir. Geliştirme küçük olsa da, bu teknik, özel uygulama senaryonuzda uygun olabilecek başka bir seçenektir.
 
-### <a name="dataadapter"></a>Dataadapter
+### <a name="dataadapter"></a>✔
 
-**DataAdapter** sınıfı, bir **DataSet** nesnesini değiştirmenize ve değişiklikleri INSERT, UPDATE ve DELETE işlemleri olarak göndermenize olanak tanır. **DataAdapter'ı** bu şekilde kullanıyorsanız, her ayrı işlem için ayrı çağrılar yapıldığını unutmayın. Performansı artırmak **için, UpdateBatchSize** özelliğini bir seferde toplu olarak alınması gereken işlem sayısına göre kullanın. Daha fazla bilgi için bkz: [DataAdapters kullanarak Toplu İşlemler Gerçekleştirme.](https://msdn.microsoft.com/library/aadf8fk2.aspx)
+**DataAdapter** sınıfı, bir **veri kümesi** nesnesini DEĞIŞTIRMENIZE ve sonra değişiklikleri INSERT, Update ve DELETE işlemleri olarak göndermenize olanak tanır. Bu şekilde **DataAdapter** kullanıyorsanız, her farklı işlem için ayrı çağrıların yapıldığını unutmayın. Performansı artırmak için, **UpdateBatchSize** özelliğini tek seferde toplu olarak oluşturulacak işlem sayısına göre kullanın. Daha fazla bilgi için bkz. [DataAdapter kullanarak Batch Işlemleri gerçekleştirme](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Varlık çerçevesi
 
-Entity Framework şu anda toplu işlemi desteklemiyor. Topluluktaki farklı geliştiriciler, **SaveChanges** yöntemini geçersiz kılmak gibi geçici geçici çözümlerini göstermeye çalıştı. Ancak çözümler genellikle karmaşıktır ve uygulama ve veri modeline göre özelleştirilmiştir. Varlık Çerçevesi codeplex projesinin şu anda bu özellik isteğiyle ilgili bir tartışma sayfası vardır. Bu tartışmayı görüntülemek için Tasarım Toplantı Notları ' na bakın [- 2 Ağustos 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework, şu anda toplu işlemeyi desteklemiyor. Topluluktaki farklı geliştiriciler, **SaveChanges** metodunu geçersiz kılma gibi geçici çözümler göstermeye çalıştı. Ancak çözümler genellikle karmaşıktır ve uygulama ve veri modeli için özelleştirilir. Entity Framework CodePlex projesi şu anda bu özellik isteğinde bir tartışma sayfasına sahip. Bu tartışmayı görüntülemek için bkz. [Toplantı notlarını tasarlama-2 ağustos 2012](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
 
-Bütünlük için, bir toplu iş stratejisi olarak XML hakkında konuşmak için önemli olduğunu hissediyorum. Ancak, XML kullanımı diğer yöntemler ve çeşitli dezavantajları üzerinde hiçbir avantajı vardır. Yaklaşım tablo değerindeki parametrelere benzer, ancak xml dosyası veya dize kullanıcı tanımlı tablo yerine depolanan yordamı geçirilir. Depolanan yordam, depolanan yordamdaki komutları ayrışdırır.
+Bir toplu işlem stratejisi olarak XML hakkında konuşmak için önemli olduğunu biliyoruz. Ancak, XML kullanımı diğer yöntemlere ve birçok dezavantaja yönelik avantaja sahip değildir. Yaklaşım tablo değerli parametrelere benzerdir, ancak bir XML dosyası veya dize, Kullanıcı tanımlı bir tablo yerine bir saklı yordama geçirilir. Saklı yordam saklı yordamdaki komutları ayrıştırır.
 
 Bu yaklaşımın çeşitli dezavantajları vardır:
 
-* XML ile çalışmak hantal ve hataya yatkın olabilir.
-* XML'i veritabanında ayrıştırma CPU yoğun olabilir.
-* Çoğu durumda, bu yöntem tablo değerindeki parametrelerden daha yavaştır.
+* XML ile çalışma, sıkıcı ve hataya açık olabilir.
+* Veritabanında XML ayrıştırma CPU kullanımı yoğun olabilir.
+* Çoğu durumda, bu yöntem tablo değerli parametrelerden daha yavaştır.
 
-Bu nedenlerden dolayı, toplu iş sorguları için XML kullanımı önerilmez.
+Bu nedenlerden dolayı, Batch sorguları için XML kullanılması önerilmez.
 
-## <a name="batching-considerations"></a>Toplu iş konuları
+## <a name="batching-considerations"></a>Toplu işleme konuları
 
-Aşağıdaki bölümler, SQL Veritabanı uygulamalarında toplu iş kullanımı için daha fazla kılavuz sağlar.
+Aşağıdaki bölümler SQL veritabanı uygulamalarında toplu işlem kullanımı için daha fazla rehberlik sağlar.
 
-### <a name="tradeoffs"></a>Artıları
+### <a name="tradeoffs"></a>Bileşim
 
-Mimarinize bağlı olarak, toplu iş, performans ve esneklik arasında bir denge içerebilir. Örneğin, rolünüzün beklenmedik bir şekilde düştüğü senaryoyu göz önünde bulundurun. Bir veri satırı kaybederseniz, etkisi gönderilmemiş büyük bir yığın satır kaybetme etkisinden daha küçüktür. Satırları belirli bir zaman penceresinde veritabanına göndermeden önce arabelleğe aldığınızda daha büyük bir risk vardır.
+Mimarinize bağlı olarak, toplu işleme performans ve dayanıklılık arasında bir zorunluluğunu getirir içerebilir. Örneğin, rolünüzün beklenmedik bir şekilde sona uğradığında senaryoyu göz önünde bulundurun. Bir veri satırını kaybederseniz, etki çok büyük bir toplu yığın olmayan satırları kaybetme etkisinden daha küçüktür. Belirli bir zaman penceresinde veritabanına göndermeden önce satırları arabelleğe aldığınızda daha fazla risk vardır.
 
-Bu işlem nedeniyle, toplu işlem türünü değerlendirin. Daha agresif (daha büyük toplu iş ve daha uzun zaman pencereleri) daha az kritik veri ile toplu.
+Bu zorunluluğunu getirir nedeniyle, toplu işlem yaptığınız işlemlerin türünü değerlendirin. Daha az kritik verilerle toplu olarak daha fazla kararlılık (daha büyük toplu işler ve daha uzun zaman pencereleri).
 
 ### <a name="batch-size"></a>Toplu iş boyutu
 
-Testlerimizde, büyük toplu parçaları daha küçük parçalara bölmenin hiçbir avantajı yoktu. Aslında, bu alt bölüm genellikle tek bir büyük toplu iş gönderme daha yavaş performans ile sonuçlandı. Örneğin, 1000 satır eklemek istediğiniz bir senaryo düşünün. Aşağıdaki tablo, daha küçük gruplara bölündüğünde 1000 satır eklemek için tablo değeri olan parametrelerin ne kadar süreceğini gösterir.
+Testlerimizde, genellikle büyük toplu işleri küçük parçalara ayırma avantajı yoktur. Aslında, bu alt bölüm genellikle tek bir büyük toplu işlem gönderilmeden daha yavaş performansa neden olur. Örneğin, 1000 satır eklemek istediğiniz bir senaryoyu düşünün. Aşağıdaki tabloda, daha küçük toplu işlemlere ayrıldığınızda 1000 satır eklemek için tablo değerli parametrelerin ne kadar süreceği gösterilmektedir.
 
-| Toplu iş boyutu | Yineleme | Tablo değeri olan parametreler (ms) |
+| Toplu iş boyutu | Tekrarları | Tablo değerli parametreler (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -333,21 +333,21 @@ Testlerimizde, büyük toplu parçaları daha küçük parçalara bölmenin hiç
 | 50 |20 |630 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 > 
 > 
 
-1000 satır için en iyi performansın hepsini aynı anda göndermek olduğunu görebilirsiniz. Diğer testlerde (burada gösterilmez), 5000 iki toplu iş halinde 10000 satır toplu kırmak için küçük bir performans kazancı vardı. Ancak bu testler için tablo şeması nispeten basittir, bu nedenle bu bulguları doğrulamak için belirli verileriniz ve toplu iş boyutlarınız üzerinde testler gerçekleştirmeniz gerekir.
+1000 satırı için en iyi performansın her seferinde bir kez göndermesi gerektiğini görebilirsiniz. Diğer testlerde (burada gösterilmez), 10000 satır toplu işini iki farklı 5000 toplu işe bölmek için küçük bir performans kazancı vardı. Ancak bu testlerin tablo şeması nispeten basittir. bu nedenle, bu bulguları doğrulamak için belirli verileriniz ve toplu iş boyutlarınız üzerinde testler gerçekleştirmeniz gerekir.
 
-Göz önünde bulundurulması gereken bir diğer faktör de, toplam toplu iş çok büyük olursa, SQL Veritabanı'nın toplu iş vermeyi azaltıp reddedebileceğidir. En iyi sonuçlar için, ideal bir toplu iş boyutu olup olmadığını belirlemek için özel senaryonuzu test edin. Performansa veya hatalara dayalı hızlı ayarlamalar sağlamak için toplu iş boyutunu çalışma zamanında yapılandırılabilir hale getirin.
+Göz önünde bulundurulması gereken başka bir faktör ise, toplam toplu işlem çok büyük hale gelirse SQL veritabanı, toplu işi gerçekleştirmeyi ve reddedebilir. En iyi sonuçlar için, ideal bir toplu iş boyutu olup olmadığını öğrenmek üzere belirli senaryonuzu test edin. Performans veya hatalara göre hızlı ayarlamaları etkinleştirmek için toplu iş boyutunu çalışma zamanında yapılandırılabilir hale getirin.
 
-Son olarak, toplu iş boyutunu toplu iş ile ilişkili risklerle dengeleyin. Geçici hatalar varsa veya rol başarısız olursa, işlemi yeniden denemenin veya toplu işteki verileri kaybetmenin sonuçlarını göz önünde bulundurun.
+Son olarak, toplu işlemin boyutunu toplu işleme ile ilişkili riskler ile dengeleyin. Geçici hatalar varsa veya rol başarısız olursa, işlemi yeniden deneme veya toplu işteki verileri kaybetme sonuçlarını göz önünde bulundurun.
 
 ### <a name="parallel-processing"></a>Paralel işleme
 
-Toplu iş boyutunu küçültme yaklaşımını benimsediyseniz ancak işi yürütmek için birden çok iş parçacığı kullandıysanız ne olur? Yine, bizim testler birkaç küçük çok iş parçacığı toplu genellikle tek bir büyük toplu daha kötü performans gösterdi. Aşağıdaki test, bir veya daha fazla paralel toplu iş halinde 1000 satır eklemeyi dener. Bu test, daha fazla eşzamanlı toplu iş aslında performansı nasıl azalttığını gösterir.
+Toplu iş boyutunu azaltmanın yaklaşımı gerçekleştirmeniz ancak çalışmayı yürütmek için birden çok iş parçacığı kullandıysanız ne olacak? Bundan sonra, sınamalarımız birkaç küçük çok iş parçacıklı toplu işlemin tipik olarak tek bir büyük toplu iş sürümünden daha kötü bir Aşağıdaki test bir veya daha fazla paralel toplu işlem içine 1000 satır eklemeye çalışır. Bu test, daha fazla eşzamanlı toplu işlerin performansı gerçekten azaltdığını gösterir.
 
-| Toplu iş boyutu [Yinelemeler] | İki iş parçacığı (ms) | Dört iş parçacığı (ms) | Altı iş parçacığı (ms) |
+| Toplu iş boyutu [yinelemeler] | İki iş parçacığı (MS) | Dört iş parçacığı (MS) | Altı iş parçacığı (MS) |
 | --- | --- | --- | --- |
 | 1000 [1] |277 |315 |266 |
 | 500 [2] |548 |278 |256 |
@@ -355,42 +355,42 @@ Toplu iş boyutunu küçültme yaklaşımını benimsediyseniz ancak işi yürü
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> Sonuçlar kıyaslama değildir. Bu [makaledeki zamanlama sonuçları yla ilgili nota](#note-about-timing-results-in-this-article)bakın.
+> Sonuçlar kıyaslamalar değildir. [Bu makaledeki zamanlama sonuçları hakkında nota](#note-about-timing-results-in-this-article)bakın.
 > 
 > 
 
-Paralellik nedeniyle performanstaki bozulmanın çeşitli olası nedenleri vardır:
+Paralellik nedeniyle performans düşüşünün birkaç olası nedeni vardır:
 
-* Bir yerine birden çok eşzamanlı ağ çağrısı vardır.
-* Tek bir tabloya karşı birden fazla işlem çekişme ve engelleme neden olabilir.
-* Çok iş parçacığı ile ilişkili genel giderler vardır.
-* Birden fazla bağlantı açma nın gideri paralel işlemenin avantajından daha ağır basar.
+* Bunun yerine birden çok eş zamanlı ağ çağrısı vardır.
+* Tek bir tabloya karşı birden çok işlem çekişmeye ve engellemeye yol açabilir.
+* Çoklu iş parçacıklı ile ilişkili fazla kafa vardır.
+* Birden çok bağlantı açma gideri, paralel işlemenin avantajına göre daha ağır.
 
-Farklı tabloları veya veritabanlarını hedefliyorsanız, bu stratejiyle bazı performans artışı görmek mümkündür. Veritabanı parçaları veya federasyonlar bu yaklaşım için bir senaryo olacaktır. Sharding birden çok veritabanı kullanır ve her veritabanına farklı verileri yönlendirir. Her küçük toplu iş farklı bir veritabanına gidiyorsa, işlemleri paralel olarak gerçekleştirmek daha verimli olabilir. Ancak, performans kazancı, çözümünüzün veritabanı parçalamasını kullanma kararı için temel olarak kullanılacak kadar önemli değildir.
+Farklı tabloları veya veritabanlarını hedefliyorsanız, bu stratejiyle ilgili bazı performans kazanımı görmeniz mümkündür. Veritabanı parçaları veya Federasyonları bu yaklaşım için bir senaryo olabilir. Parçalama birden çok veritabanını kullanır ve her bir veritabanına farklı verileri yönlendirir. Her küçük toplu iş farklı bir veritabanına gitecekse, işlemleri paralel olarak gerçekleştirmek daha verimli olabilir. Ancak, performans kazancı, çözümünüzde veritabanı parçalama kullanma kararının temeli olarak kullanılmak üzere yeterince önemli değildir.
 
-Bazı tasarımlarda, daha küçük toplu işaklerinin paralel olarak yürütülmesi, yük altındaki bir sistemde isteklerin daha iyi işlenmesine neden olabilir. Bu durumda, tek bir büyük toplu işlemi işlemek daha hızlı olsa da, birden çok toplu işlemi paralel olarak işlemek daha verimli olabilir.
+Bazı tasarımlarda, daha küçük toplu işlerin paralel yürütmesi yük altında bir sistemdeki isteklerin artmasında daha fazla verim oluşmasına neden olabilir. Bu durumda, tek bir büyük toplu işi işlemek daha hızlı olsa da, paralel olarak birden çok toplu işin işlenmesi daha verimli olabilir.
 
-Paralel yürütme kullanıyorsanız, en fazla sayıda alt iş parçacığının denetlemeyi düşünün. Daha küçük bir sayı daha az çekişme ve daha hızlı yürütme süresi neden olabilir. Ayrıca, bu tutarın hem bağlantılarda hem de hareketlerde hedef veritabanına yerleştirir ek yükünü göz önünde bulundurun.
+Paralel yürütme kullanırsanız, en fazla çalışan iş parçacığı sayısını denetlemeyi göz önünde bulundurun. Daha küçük bir sayı, daha az çekişme ve daha hızlı bir yürütme süresine neden olur. Ayrıca, bu, hedef veritabanında hem bağlantılar hem de işlemlerde yer alan ek yükü göz önünde bulundurun.
 
 ### <a name="related-performance-factors"></a>İlgili performans faktörleri
 
-Veritabanı performansı yla ilgili tipik kılavuz, toplu işlemi de etkiler. Örneğin, büyük bir birincil anahtarı veya çok sayıda kümelenmemiş dizini olan tablolar için ekleme performansı azalır.
+Veritabanı performansına ilişkin tipik yönergeler de toplu işlemeyi etkiler. Örneğin, büyük bir birincil anahtara veya çok sayıda kümelenmemiş dizine sahip tablolar için ekleme performansı azalır.
 
-Tablo değeri olan parametreler depolanmış bir yordam kullanıyorsa, yordamın başında **NOCOUNT ON** komutunu kullanabilirsiniz. Bu deyim, yordamdaki etkilenen satır sayısının dönüşünü bastırır. Ancak, testlerimizde, **SET NOCOUNT ON** kullanımının herhangi bir etkisi veya performansı nın düşmesi gerekmemişti. Test depolanan yordam, tablo değerindeki parametreden tek bir **INSERT** komutu ile basitti. Bu bildirimden daha karmaşık depolanmış yordamların yararlanabilmesi mümkündür. Ancak, depolanan **yordamınıza SET NOCOUNT ON** eklemenin performansı otomatik olarak artırdığını düşünmeyin. Efekti anlamak için, depolanan yordamınızı **SET NOCOUNT ON** deyimiyle ve olmadan test edin.
+Tablo değerli parametreler saklı yordam kullanıyorsa, yordamın başlangıcında **NOCOUNT komut kümesini** kullanabilirsiniz. Bu ifade, yordamda etkilenen satırların sayısının döndürülmesini bastırır. Ancak, testlerimizde, **SET NOCOUNT** kullanımı hiçbir etkisi veya azaltıldı. Test saklı yordamı tablo değerli parametresindeki tek bir **Insert** komutuyla basittir. Daha karmaşık saklı yordamların bu deyimden faydalanabilir olması mümkündür. Ancak, saklı yordamınıza bir **NOCOUNT kümesi** eklemenin performansı otomatik olarak artırmadığını varsaymayın. Etkiyi anlamak için, saklı yordamınız ile ve **SET NOCOUNT on** ifadesiyle test edin.
 
 ## <a name="batching-scenarios"></a>Toplu işlem senaryoları
 
-Aşağıdaki bölümlerde, tablo değeri olan parametrelerin üç uygulama senaryosunda nasıl kullanılacağı açıklanmıştır. İlk senaryo, arabelleğe alma ve toplu çalışmanın birlikte nasıl çalışabileceğini gösterir. İkinci senaryo, tek bir depolanmış yordam çağrısında ana ayrıntı işlemleri gerçekleştirerek performansı artırır. Son senaryo, "UPSERT" işleminde tablo değeri olan parametrelerin nasıl kullanılacağını gösterir.
+Aşağıdaki bölümlerde, tablo değerli parametrelerin üç uygulama senaryosunda nasıl kullanılacağı açıklanır. İlk senaryo, arabelleğe alma ve toplu işleme 'nin birlikte nasıl çalıştığını gösterir. İkinci senaryo, tek bir saklı yordam çağrısında ana ayrıntı işlemlerini gerçekleştirerek performansı geliştirir. Son senaryo, tablo değerli parametrelerin bir "UPSERT" işleminde nasıl kullanılacağını gösterir.
 
-### <a name="buffering"></a>Tamponlama
+### <a name="buffering"></a>Ara
 
-Toplu iş için bariz bir aday olan bazı senaryolar olsa da, gecikmiş işleme ile toplu işlemden yararlanabilecek birçok senaryo vardır. Ancak, gecikmiş işleme de veri beklenmeyen bir hata durumunda kaybolur daha büyük bir risk taşır. Bu riski anlamak ve sonuçlarını göz önünde bulundurmak önemlidir.
+Toplu işleme için belirgin aday olan bazı senaryolar olsa da, Gecikmeli işleme tarafından toplu işlemin avantajlarından yararlanan birçok senaryo vardır. Ancak gecikmeli işleme, verilerin beklenmeyen bir hata durumunda kaybolduğu daha büyük bir risk taşır. Bu riski anlamak ve sonuçları göz önünde bulundurmanız önemlidir.
 
-Örneğin, her kullanıcının gezinme geçmişini izleyen bir web uygulaması düşünün. Her sayfa isteğinde, uygulama kullanıcının sayfa görünümünü kaydetmek için bir veritabanı araması yapabilir. Ancak, kullanıcıların gezinme etkinliklerini arabelleğe alarak ve bu verileri toplu olarak veritabanına göndererek daha yüksek performans ve ölçeklenebilirlik elde edilebilir. Veritabanı güncelleştirmesini geçen zamana ve/veya arabellek boyutuna göre tetikleyebilirsiniz. Örneğin, bir kural toplu işlemin 20 saniye sonra veya arabellek 1000 öğeye ulaştığında işlenmesi gerektiğini belirtebilir.
+Örneğin, her kullanıcının gezinti geçmişini izleyen bir Web uygulaması düşünün. Her sayfa isteğinde, uygulama, kullanıcının sayfa görünümünü kaydetmek için bir veritabanı çağrısı yapabilir. Ancak daha yüksek performans ve ölçeklenebilirlik, kullanıcıların gezinti etkinliklerinin arabelleğe alınması ve sonra bu verilerin veritabanına toplu işlem halinde gönderilmesi ile elde edilebilir. Veritabanı güncelleştirmesini geçen süre ve/veya arabellek boyutuna göre tetikleyebilirsiniz. Örneğin, bir kural, toplu işin 20 saniye sonra veya arabelleğin 1000 öğeye ulaştığında işlenmesi gerektiğini belirtebilir.
 
-Aşağıdaki kod örneği, bir izleme sınıfı tarafından yükseltilen arabelleğe alndaki olayları işlemek için [Reaktif Uzantıları - Rx](https://msdn.microsoft.com/data/gg577609) kullanır. Arabellek dolduğunda veya bir zaman aşıntısı na ulaşıldığında, kullanıcı verilerinin toplu tablosu değerli bir parametre ile veritabanına gönderilir.
+Aşağıdaki kod örneği, bir izleme sınıfı tarafından oluşturulan arabelleğe alınmış olayları işlemek için [reaktif uzantıları-RX](https://msdn.microsoft.com/data/gg577609) kullanır. Arabellek dolguları veya zaman aşımı ulaşıldığında, Kullanıcı verisi toplu işi veritabanına tablo değerli bir parametre ile gönderilir.
 
-Aşağıdaki NavHistoryData sınıfı, kullanıcı gezinti ayrıntılarını modeller. Kullanıcı tanımlayıcısı, erişilen URL ve erişim süresi gibi temel bilgileri içerir.
+Aşağıdaki Navgeçmişini veri sınıfı kullanıcı Gezinti ayrıntılarını modeller. Kullanıcı tanımlayıcısı, erişilen URL ve erişim zamanı gibi temel bilgileri içerir.
 
 ```csharp
 public class NavHistoryData
@@ -403,7 +403,7 @@ public class NavHistoryData
 }
 ```
 
-NavHistoryDataMonitor sınıfı, kullanıcı gezinti verilerini veritabanına arabelleğe almakla yükümlüdür. Bir yöntem içerir, RecordUserNavigationEntry, bir **OnAdded** olay yükselterek yanıt verir. Aşağıdaki kod, olaya dayalı gözlemlenebilir bir koleksiyon oluşturmak için Rx kullanan oluşturucu mantığını gösterir. Daha sonra Buffer yöntemi ile bu gözlemlenebilir koleksiyona abone olur. Aşırı yükleme, arabelleğe her 20 saniyede bir veya 1000 giriş gönderilmesi gerektiğini belirtir.
+Navizdatamonitor sınıfı, Kullanıcı gezintisi verilerinin veritabanına arabelleğini sağlamaktan sorumludur. **OnAdded** olayını yükselterek yanıt veren bir yöntem, RecordUserNavigationEntry içerir. Aşağıdaki kod, olaya dayalı bir observable koleksiyonu oluşturmak için RX kullanan Oluşturucu mantığını gösterir. Daha sonra bu observable koleksiyonuna buffer yöntemiyle abone olur. Aşırı yükleme, arabelleğin 20 saniyede bir veya 1000 girişe gönderilmesi gerektiğini belirtir.
 
 ```csharp
 public NavHistoryDataMonitor()
@@ -415,7 +415,7 @@ public NavHistoryDataMonitor()
 }
 ```
 
-İşleyici, arabelleğe alan tüm öğeleri tablo değerindeki bir türe dönüştürür ve bu türü toplu işleyen depolanmış yordama geçirir. Aşağıdaki kod, hem NavHistoryDataEventArgs hem de NavHistoryDataMonitor sınıfları için tam tanımı gösterir.
+İşleyici, tüm arabelleğe alınmış öğeleri tablo değerli bir türe dönüştürür ve sonra bu türü toplu işi işleyen bir saklı yordama geçirir. Aşağıdaki kod, hem navizdataeventargs hem de Navizdatamonitor sınıfları için tüm tanımlamayı gösterir.
 
 ```csharp
 public class NavHistoryDataEventArgs : System.EventArgs
@@ -437,7 +437,7 @@ public class NavHistoryDataMonitor
     }
 ```
 
-İşleyici, arabelleğe alan tüm öğeleri tablo değerindeki bir türe dönüştürür ve bu türü toplu işleyen depolanmış yordama geçirir. Aşağıdaki kod, hem NavHistoryDataEventArgs hem de NavHistoryDataMonitor sınıfları için tam tanımı gösterir.
+İşleyici, tüm arabelleğe alınmış öğeleri tablo değerli bir türe dönüştürür ve sonra bu türü toplu işi işleyen bir saklı yordama geçirir. Aşağıdaki kod, hem navizdataeventargs hem de Navizdatamonitor sınıfları için tüm tanımlamayı gösterir.
 
 ```csharp
     public class NavHistoryDataEventArgs : System.EventArgs
@@ -480,11 +480,11 @@ public class NavHistoryDataMonitor
 }
 ```
 
-Bu arabelleğe alma sınıfını kullanmak için uygulama statik bir NavHistoryDataMonitor nesnesi oluşturur. Bir kullanıcı bir sayfaya her erişinde, uygulama NavHistoryDataMonitor.RecordUserNavigationEntry yöntemini çağırır. Arabelleğe alma mantığı, bu girişleri toplu olarak veritabanına göndermenin icabına bakmaya devam eder.
+Bu arabelleğe alma sınıfını kullanmak için, uygulama bir statik Navıizdatamonitor nesnesi oluşturur. Bir Kullanıcı bir sayfaya her eriştiğinde, uygulama Navizdatamonitor. RecordUserNavigationEntry yöntemini çağırır. Arabelleğe alma mantığı, bu girişlerin veritabanına toplu olarak gönderilmesi için işlem gerçekleştirir.
 
-### <a name="master-detail"></a>Ana detay
+### <a name="master-detail"></a>Ana ayrıntı
 
-Tablo değerli parametrelerbasit INSERT senaryoları için yararlıdır. Ancak, birden fazla tablo içeren toplu eklemeler için daha zor olabilir. "Ana/ayrıntı" senaryosu iyi bir örnektir. Ana tablo birincil varlığı tanımlar. Bir veya daha fazla ayrıntı tabloları varlık hakkında daha fazla veri depolar. Bu senaryoda, yabancı anahtar ilişkileri benzersiz bir ana varlık ayrıntıları ilişkisini zorlar. PurchaseOrder tablosunun ve ilişkili OrderDetail tablosunun basitleştirilmiş bir sürümünü düşünün. Aşağıdaki Transact-SQL, OrderID, OrderDate, CustomerID ve Status olmak üzere dört sütunlu PurchaseOrder tablosunu oluşturur.
+Tablo değerli parametreler basit ekleme senaryoları için faydalıdır. Ancak, birden fazla tablo içeren toplu ekleme eklemeleri daha zor olabilir. "Ana/ayrıntı" senaryosu iyi bir örnektir. Ana tablo, birincil varlığı tanımlar. Bir veya daha fazla ayrıntı tablosu varlık hakkında daha fazla veri depolar. Bu senaryoda, yabancı anahtar ilişkileri, Ayrıntılar için benzersiz bir ana varlıkla ilişki uygular. Bir PurchaseOrder tablosunun basitleştirilmiş bir sürümünü ve ilişkili OrderDetail tablosunu göz önünde bulundurun. Aşağıdaki Transact-SQL, dört sütunlu bir PurchaseOrder tablosu oluşturuyor: OrderID, OrderDate, CustomerID ve Status.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrder](
@@ -496,7 +496,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrder]
 PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 ```
 
-Her sipariş bir veya daha fazla ürün satın alma içerir. Bu bilgiler PurchaseOrderDetail tablosunda yakalanır. Aşağıdaki Transact-SQL, OrderID, OrderDetailID, ProductID, UnitPrice ve OrderQty olmak üzere beş sütunlu PurchaseOrderDetail tablosunu oluşturur.
+Her sipariş bir veya daha fazla ürün satın alma içerir. Bu bilgiler PurchaseOrderDetail tablosunda yakalanır. Aşağıdaki Transact-SQL, beş sütunlu PurchaseOrderDetail tablosunu oluşturur: OrderID, Orderdetailıd, ProductID, UnitPrice ve Ordermik.
 
 ```sql
 CREATE TABLE [dbo].[PurchaseOrderDetail](
@@ -509,7 +509,7 @@ CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED
 ( [OrderID] ASC, [OrderDetailID] ASC ))
 ```
 
-PurchaseOrderDetail tablosundaki OrderID sütunu, PurchaseOrder tablosundan bir siparişe başvurmalıdır. Yabancı anahtarın aşağıdaki tanımı bu kısıtlamayı uygular.
+PurchaseOrderDetail tablosundaki OrderID sütunu, PurchaseOrder tablosundan bir sıralama başvurmalıdır. Yabancı anahtarın aşağıdaki tanımı bu kısıtlamayı zorlar.
 
 ```sql
 ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
@@ -517,7 +517,7 @@ CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
 REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 ```
 
-Tablo değeri olan parametreleri kullanmak için, her hedef tablo için kullanıcı tanımlı bir tablo türüne sahip olmalısınız.
+Tablo değerli parametreleri kullanabilmeniz için, her bir hedef tablo için Kullanıcı tanımlı bir tablo türüne sahip olmanız gerekir.
 
 ```sql
 CREATE TYPE PurchaseOrderTableType AS TABLE 
@@ -535,7 +535,7 @@ CREATE TYPE PurchaseOrderDetailTableType AS TABLE
 GO
 ```
 
-Ardından, bu tür tabloları kabul eden depolanmış bir yordam tanımlayın. Bu yordam, bir uygulamanın tek bir çağrıda bir dizi sipariş ve sipariş ayrıntılarını yerel olarak toplu olarak toplu olarak ayırmasına olanak tanır. Aşağıdaki Transact-SQL, bu satınalma siparişi örneği için depolanan yordam bildiriminin tamamını sağlar.
+Sonra bu türlerin tablolarını kabul eden bir saklı yordam tanımlayın. Bu yordam, bir uygulamanın bir dizi siparişi ve siparişi ayrıntılarını tek bir çağrıda yerel olarak toplu olarak toplu olarak toplu olarak toplu olarak Aşağıdaki Transact-SQL, bu satın alma siparişi örneği için tam saklı yordam bildirimini sağlar.
 
 ```sql
 CREATE PROCEDURE sp_InsertOrdersBatch (
@@ -580,9 +580,9 @@ JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
 GO
 ```
 
-Bu örnekte, yerel @IdentityLink olarak tanımlanan tablo, yeni eklenen satırlardan gerçek OrderID değerlerini depolar. Bu sıra @orders tanımlayıcıları, @details tablo değeri olan parametrelerdeki geçici OrderID değerlerinden farklıdır. Bu @IdentityLink nedenle, tablo daha sonra Sipariş Kimliği @orders değerlerini parametreden SatınAlma Sipariş tablosundaki yeni satırlar için gerçek OrderID değerlerine bağlar. Bu adımdan @IdentityLink sonra tablo, yabancı anahtar kısıtlamasını karşılayan gerçek OrderID ile sipariş ayrıntılarının eklenmesini kolaylaştırabilir.
+Bu örnekte, yerel olarak tanımlanan @IdentityLink tablo, yeni yerleştirilen satırlardan gerçek OrderID değerlerini depolar. Bu sıra tanımlayıcıları, @orders ve @details tablo değerli parametrelerde geçici OrderID değerlerinden farklıdır. Bu nedenle, @IdentityLink tablo, tablodaki ordervalues değerlerini @orders , PurchaseOrder tablosundaki yeni satırların gerçek OrderID değerlerine bağlar. Bu adımdan sonra @IdentityLink tablo, yabancı anahtar kısıtlamasını karşılayan gerçek OrderID ile sipariş ayrıntılarının eklenmesi işlemini kolaylaştırabilir.
 
-Bu depolanan yordam koddan veya diğer Transact-SQL çağrılarından kullanılabilir. Kod örneği için bu makalenin tablo değerindeki parametreler bölümüne bakın. Aşağıdaki Transact-SQL nasıl sp_InsertOrdersBatch çağrıgösterir.
+Bu saklı yordam, koddan veya diğer Transact-SQL çağrılarından kullanılabilir. Kod örneği için bu kağıdın tablo değerli parametreler bölümüne bakın. Aşağıdaki Transact-SQL sp_InsertOrdersBatch nasıl çağrılacağını gösterir.
 
 ```sql
 declare @orders as PurchaseOrderTableType
@@ -604,15 +604,15 @@ VALUES(1, 10, $11.50, 1),
 exec sp_InsertOrdersBatch @orders, @details
 ```
 
-Bu çözüm, her toplu iş 1'den başlayan bir dizi OrderID değeri kullanmasına olanak tanır. Bu geçici OrderID değerleri toplu işteki ilişkileri açıklar, ancak asıl OrderID değerleri ekleme işlemi sırasında belirlenir. Önceki örnekte aynı ifadeleri tekrar tekrar çalıştırabilir ve veritabanında benzersiz siparişler oluşturabilirsiniz. Bu nedenle, bu toplu iş tekniğini kullanırken yinelenen siparişleri engelleyen daha fazla kod veya veritabanı mantığı eklemeyi düşünün.
+Bu çözüm, her toplu işin 1 ile başlayan bir OrderID değeri kümesini kullanmasına izin verir. Bu geçici OrderID değerleri toplu işteki ilişkileri tanımlar, ancak gerçek OrderID değerleri ekleme işlemi sırasında belirlenir. Önceki örnekteki aynı deyimleri tekrar tekrar çalıştırabilirsiniz ve veritabanında benzersiz siparişler oluşturabilirsiniz. Bu nedenle, bu toplu işlem tekniğinin kullanıldığı sırada yinelenen siparişlerin önlediği daha fazla kod veya veritabanı mantığı eklemeyi göz önünde bulundurun.
 
-Bu örnek, ana ayrıntı işlemleri gibi daha karmaşık veritabanı işlemlerinin tablo değerindeki parametreler kullanılarak toplu olarak toplu hale alınabileceğini göstermektedir.
+Bu örnek, ana ayrıntı işlemleri gibi daha karmaşık veritabanı işlemlerinin tablo değerli parametreler kullanılarak toplu olarak kullanılabileceğini gösterir.
 
 ### <a name="upsert"></a>UPSERT
 
-Başka bir toplu işlem senaryosu aynı anda varolan satırları güncelleştirmeyi ve yeni satırlar eklemeyi içerir. Bu işlem bazen "UPSERT" (update + insert) işlemi olarak adlandırılır. INSERT ve UPDATE için ayrı aramalar yapmak yerine, BIRLEŞTIRME deyimi bu göreve en uygun şekilde sunulur. MERGE deyimi, tek bir çağrıda ekleme ve güncelleştirme işlemlerini gerçekleştirebilir.
+Başka bir toplu işlem senaryosu aynı anda mevcut satırları güncellemeyi ve yeni satırlar eklemeyi içerir. Bu işlem bazen "UPSERT" (güncelleştirme + ekleme) işlemi olarak adlandırılır. INSERT ve UPDATE için ayrı çağrılar yapmak yerine MERGE deyimleri bu göreve en uygun seçenektir. MERGE deyimleri tek bir çağrıda hem INSERT hem de Update işlemleri gerçekleştirebilir.
 
-Tablo değeri olan parametreler, güncelleştirmeleri ve eklergerçekleştirmek için BIRLEŞTIRME deyimi yle birlikte kullanılabilir. Örneğin, aşağıdaki sütunları içeren basitleştirilmiş bir Çalışan tablosu düşünün: EmployeeID, FirstName, LastName, SocialSecurityNumber:
+Tablo değerli parametreler, güncelleştirme ve ekleme işlemleri için MERGE ifadesiyle birlikte kullanılabilir. Örneğin, şu sütunları içeren basitleştirilmiş bir çalışan tablosu düşünün: EmployeeID, FirstName, LastName, SocialSecurityNumber:
 
 ```sql
 CREATE TABLE [dbo].[Employee](
@@ -624,7 +624,7 @@ CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED
 ([EmployeeID] ASC ))
 ```
 
-Bu örnekte, SocialSecurityNumber'ın birden çok çalışanın birleştirilmesi için benzersiz olduğu gerçeğini kullanabilirsiniz. İlk olarak, kullanıcı tanımlı tablo türünü oluşturun:
+Bu örnekte, SocialSecurityNumber ' ın birden çok çalışanın BIRLEŞTIRME işlemini gerçekleştirmek için benzersiz olduğu gerçeğinden yararlanabilirsiniz. İlk olarak, Kullanıcı tanımlı tablo türünü oluşturun:
 
 ```sql
 CREATE TYPE EmployeeTableType AS TABLE 
@@ -635,7 +635,7 @@ CREATE TYPE EmployeeTableType AS TABLE
 GO
 ```
 
-Ardından, güncelleştirme ve ekleme gerçekleştirmek için MERGE deyimini kullanan depolanmış bir yordam veya kod yazın. Aşağıdaki örnek, EmployeeTableType türünden tablo değeri @employeesolan bir parametrede BIRLEŞTIRME deyimini kullanır. Tablonun @employees içeriği burada gösterilmez.
+Sonra, bir saklı yordam oluşturun veya Update ve INSERT işlemini gerçekleştirmek için MERGE ifadesini kullanan kodu yazın. Aşağıdaki örnek, EmployeeTableType türünde tablo değerli bir parametre @employeesüzerinde Merge ifadesini kullanır. @employees Tablonun içeriği burada gösterilmez.
 
 ```sql
 MERGE Employee AS target
@@ -651,30 +651,30 @@ WHEN NOT MATCHED THEN
     VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 ```
 
-Daha fazla bilgi için, BIRLEŞTIRME deyimi için belgelere ve örneklere bakın. Aynı çalışma, ayrı INSERT ve UPDATE işlemleriyle çok aşamalı depolanmış yordam çağrısında gerçekleştirilebilse de, BIRLEŞTIRME deyimi daha verimlidir. Veritabanı kodu, INSERT ve UPDATE için iki veritabanı çağrısı gerektirmeden doğrudan BIRLEŞTIRME deyimini kullanan Transact-SQL çağrıları da yapabilir.
+Daha fazla bilgi için MERGE deyimin belgelerine ve örneklerine bakın. Aynı iş, ayrı ekleme ve GÜNCELLEŞTIRME işlemleriyle birden çok adımlı bir saklı yordam çağrısında gerçekleştirilebileceği halde MERGE deyimleri daha etkilidir. Veritabanı kodu, INSERT ve UPDATE için iki veritabanı çağrısı gerektirmeden doğrudan MERGE ifadesini kullanan Transact-SQL çağrıları da oluşturabilir.
 
-## <a name="recommendation-summary"></a>Öneri özeti
+## <a name="recommendation-summary"></a>Öneri Özeti
 
-Aşağıdaki liste, bu makalede tartışılan toplu iş önerilerinin bir özetini sağlar:
+Aşağıdaki listede, bu makalede ele alınan toplu işlem önerilerinin özeti verilmiştir:
 
-* SQL Veritabanı uygulamalarının performansını ve ölçeklenebilirliğini artırmak için arabelleğe alma ve toplu işleme yi kullanın.
-* Toplu işleme/arabelleğe alma ve esneklik arasındaki dengeleri anlayın. Bir rol başarısızlığı sırasında, işlenmemiş bir iş açısından kritik veri toplu kaybetme riski toplu işlemin performans avantajından daha ağır basabilir.
-* Gecikme süresini azaltmak için veritabanına yapılan tüm aramaları tek bir veri merkezi içinde tutmaya çalış.
-* Tek bir toplu iş tekniği seçerseniz, tablo değeri olan parametreler en iyi performansı ve esnekliği sunar.
-* En hızlı kesici uç performansı için şu genel yönergelere uyun, ancak senaryonuzu test edin:
-  * 100 satır < için tek bir parametreli INSERT komutu kullanın.
-  * 1000 satır < için tablo değeri olan parametreleri kullanın.
-  * >= 1000 satır için SqlBulkCopy'i kullanın.
-* Güncelleştirme ve silme işlemleri için, tablo parametresindeki her satırda doğru işlemi belirleyen depo değerine sahip parametreleri depodeğerine sahip parametreleri kullanın.
-* Toplu iş boyutu yönergeleri:
+* SQL veritabanı uygulamalarının performansını ve ölçeklenebilirliğini artırmak için arabelleğe alma ve toplu işlem kullanma.
+* Toplu işlem/arabelleğe alma ve dayanıklılık arasındaki avantajları anlayın. Bir rol hatası sırasında, işlenmemiş iş açısından kritik verileri kaybetme riski, toplu işlemin performans avantajını engelleyebilir.
+* Gecikme süresini azaltmak için tek bir veri merkezi içindeki veritabanına yapılan tüm çağrıları tutmayı deneyin.
+* Tek bir toplu işleme tekniği seçerseniz tablo değerli parametreler en iyi performansı ve esnekliği sunar.
+* En hızlı ekleme performansı için aşağıdaki genel yönergeleri izleyin, ancak senaryonuzu test edin:
+  * < 100 satırları için tek parametreli bir INSERT komutu kullanın.
+  * < 1000 satırları için tablo değerli parametreleri kullanın.
+  * >= 1000 satırları için SqlBulkCopy kullanın.
+* Güncelleştirme ve silme işlemleri için tablo parametresi içindeki her satırda doğru işlemi belirleyen saklı yordam mantığı ile tablo değerli parametreleri kullanın.
+* Toplu işlem boyut yönergeleri:
   * Uygulamanız ve iş gereksinimleriniz için anlamlı olan en büyük toplu iş boyutlarını kullanın.
-  * Büyük toplu iş birimlerinin performans kazancını geçici veya yıkıcı arıza riskleri ile dengeleyin. Yeniden denemelerin veya toplu işteki verilerin kaybının sonucu nedir? 
-  * SQL Veritabanı'nın reddetmediğini doğrulamak için en büyük toplu iş boyutunu sınama.
-  * Toplu iş boyutu veya arabelleğe alma süresi penceresi gibi toplu işlemi denetleyen yapılandırma ayarları oluşturun. Bu ayarlar esneklik sağlar. Bulut hizmetini yeniden dağıtmadan üretimdeki toplu işleme davranışını değiştirebilirsiniz.
-* Tek bir veritabanında tek bir tabloda çalışan toplu işlerden paralel yürütülmesini önleyin. Tek bir toplu işlemi birden çok alt iş parçacığına bölmeyi seçerseniz, ideal iş parçacığı sayısını belirlemek için testleri çalıştırın. Belirtilmeyen bir eşiğe sonra, daha fazla iş parçacığı performansı artırmak yerine düşürür.
-* Daha fazla senaryo için toplu işleme uygulamanın bir yolu olarak boyut ve zaman arabelleğe alma düşünün.
+  * Büyük toplu işlerin performans kazancını, geçici veya çok önemli arızaların riskleri ile dengeleyin. İşlemdeki verilerin ne kadar yeniden denenmesi veya kaybedilmesi ne olur? 
+  * SQL veritabanının bu dosyayı reddetmediğinden emin olmak için en büyük toplu iş boyutunu test edin.
+  * Toplu iş boyutu veya arabelleğe alma zaman penceresi gibi toplu işlemeyi denetleyen yapılandırma ayarları oluşturun. Bu ayarlar esneklik sağlar. Üretimde toplu işlem davranışını bulut hizmetini yeniden dağıtmaya gerek kalmadan değiştirebilirsiniz.
+* Tek bir veritabanında tek bir tabloda çalışan toplu işlerin paralel yürütmesini önleyin. Tek bir toplu işi birden çok çalışan iş parçacığı arasında bölmek istiyorsanız, ideal iş parçacığı sayısını belirlemek için testler çalıştırın. Belirtilmeyen eşikten sonra, daha fazla iş parçacığı, performansı artırmak yerine performansı düşürür.
+* Daha fazla senaryo için toplu işleme uygulama yöntemi olarak boyut ve zaman arabelleğini göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, veritabanı tasarımı ve toplu işile ilgili kodlama tekniklerinin uygulama performansınızı ve ölçeklenebilirliği nizi nasıl artırabileceği üzerinde duruluyorum. Ama bu genel strateji sadece bir faktördür. Performansı ve ölçeklenebilirliği artırmanın daha fazla yolu için, [tek veritabanları için Azure SQL Veritabanı performans kılavuzuna](sql-database-performance-guidance.md) ve [elastik bir havuz için Fiyat ve performans hususlarına](sql-database-elastic-pool-guidance.md)bakın.
+Bu makalede, toplu işleme ile ilgili veritabanı tasarımı ve kodlama teknikleri, uygulama performansınızı ve ölçeklenebilirliğini nasıl iyileştirebileceğinizi yoğunlaşmaktadır. Ancak bu, genel stratejinizde yalnızca bir faktördür. Performansı ve ölçeklenebilirliği artırmanın daha fazla yolu için bkz. [tek veritabanları Için Azure SQL veritabanı performans Kılavuzu](sql-database-performance-guidance.md) ve [elastik havuz için fiyat ve performans konuları](sql-database-elastic-pool-guidance.md).
 

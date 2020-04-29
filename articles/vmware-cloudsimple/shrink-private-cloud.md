@@ -1,6 +1,6 @@
 ---
-title: CloudSimple Private Cloud tarafından Azure VMware Çözümlerini Küçültün
-description: CloudSimple Private Cloud'un nasıl küçültürülü
+title: Azure VMware çözümünü CloudSimple özel bulutu ile küçültme
+description: CloudSimple özel bulutunun nasıl küçültüleceği açıklanır.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -9,58 +9,58 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77014275"
 ---
-# <a name="shrink-a-cloudsimple-private-cloud"></a>Bir CloudSimple Özel Bulutu Küçültün
+# <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutunu daraltma
 
-CloudSimple, Özel Bulut'u dinamik olarak küçültme esnekliği sağlar.  Özel Bulut, bir veya daha fazla vSphere kümesinden oluşur. Her kümede 3 ila 16 düğüm olabilir. Özel Bulut'u küçültterken, varolan kümeden bir düğüm kaldırır veya tüm kümeyi silersiniz. 
+CloudSimple, özel bir bulutu dinamik olarak küçültme esnekliği sağlar.  Bir özel bulut, bir veya daha fazla vSphere kümesinden oluşur. Her küme 3 ile 16 arasında düğüme sahip olabilir. Özel bir bulutu daraldığınızda, var olan kümeden bir düğümü kaldırır veya tüm kümeyi silersiniz. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Özel Bulut'un küçültülmesi için aşağıdaki koşullar yerine getirilmelidir.  Özel Bulut oluşturulduğunda oluşturulan yönetim kümesi (ilk küme) silinemez.
+Özel bulutun küçültülmesi için aşağıdaki koşulların karşılanması gerekir.  Özel bir bulut oluşturulduğunda oluşturulan yönetim kümesi (ilk küme) silinemez.
 
-* Bir vSphere kümesinin üç düğümü olmalıdır.  Yalnızca üç düğümü olan bir küme küçültülemez.
-* Tüketilen toplam depolama, kümenin küçüldükten sonraki toplam kapasitesini aşmamalıdır.
-* Dağıtılmış Kaynak Zamanlayıcısı (DRS) kurallarının sanal bir makinenin vMotion'ını engelleyip engellemedığını kontrol edin.  Kurallar varsa, kuralları devre dışı edin veya silin.  DRS kuralları, yakınlık kurallarını barındıracak sanal makineyi içerir.
+* VSphere kümesi üç düğüme sahip olmalıdır.  Yalnızca üç düğümü olan bir küme daraltılamaz.
+* Tüketilen toplam depolama alanı, kümenin küçültülmeden sonra toplam kapasiteyi aşmamalıdır.
+* Dağıtılmış kaynak Zamanlayıcı (DRS) kurallarının sanal bir makinenin vMotion 'ı önlediği olup olmadığını denetleyin.  Kurallar varsa, kuralları devre dışı bırakın veya silin.  DRS kuralları konak benzeşim kurallarını barındırmak için sanal makineyi içerir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="shrink-a-private-cloud"></a>Özel Bulutu küçültme
 
-1. [CloudSimple portalına erişin.](access-cloudsimple-portal.md)
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md).
 
 2. **Kaynaklar** sayfasını açın.
 
-3. Küçültmek istediğiniz Özel Bulut'a tıklayın
+3. Küçültmek istediğiniz özel buluta tıklayın
 
-4. Özet sayfasında **Shrink'i**tıklatın.
+4. Özet sayfasında **Küçült**' e tıklayın.
 
-    ![Özel bulutu küçültme](media/shrink-private-cloud.png)
+    ![Özel bulutu Küçült](media/shrink-private-cloud.png)
 
 5. Küçültmek veya silmek istediğiniz kümeyi seçin. 
 
-    ![Özel bulutu küçültme - küme yi seçin](media/shrink-private-cloud-select-cluster.png)
+    ![Özel bulutu Küçült-küme Seç](media/shrink-private-cloud-select-cluster.png)
 
-6. **Bir düğümü kaldır'ı** veya **tüm kümeyi sil'i**seçin. 
+6. **Bir düğüm kaldır** ' ı veya **tüm kümeyi Sil**' i seçin. 
 
 7. Küme kapasitesini doğrulama
 
-8. Özel Bulut'u küçültmek için **Gönder'i** tıklatın.
+8. Özel bulutu daraltmak için **Gönder** ' e tıklayın.
 
-Özel Bulut'un Küçültüşu başlıyor.  Görevlerdeki ilerlemeyi izleyebilirsiniz.  Küçültme işlemi, vSAN üzerinde yeniden senkronize edilmesi gereken verilere bağlı olarak birkaç saat sürebilir.
+Özel bulutun küçültülmesi başlar.  Görevlerin ilerlemesini izleyebilirsiniz.  Daraltma işlemi, sanal San 'da yeniden eşitlenmesi gereken verilere bağlı olarak birkaç saat sürebilir.
 
 > [!NOTE]
-> 1. Veri merkezindeki son veya tek kümeyi silerek özel bir bulutu küçülterseniz, veri merkezi silinmez.
-> 2. Herhangi bir DRS kural ihlali oluşursa, düğüm kümeden kaldırılmaz ve görev açıklaması bir düğümü kaldırmanın kümedeki DRS kurallarını ihlal edeceğini gösterir.    
+> 1. Veri merkezinde son veya tek kümeyi silerek özel bir bulutu daraldıysanız, veri merkezi silinmez.
+> 2. Herhangi bir DRS kuralı ihlali oluşursa, düğüm kümeden kaldırılmaz ve görev açıklaması, düğüm kaldırma işleminin kümedeki DRS kurallarını ihlal edeceğini gösterir.    
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure'da VMware sanal makinelerini kullanma](quickstart-create-vmware-virtual-machine.md)
-* [Özel Bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin
+* [Özel bulutlar](cloudsimple-private-cloud.md) hakkında daha fazla bilgi edinin

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - Güvenlik duvarı tabloları ve kuralları ayarlama
-description: Alt ağlar ve VN'lerde trafiği kısıtlamak için Özel Bulut güvenlik duvarı tablolarının ve kurallarının nasıl ayarlanır şekilde ayarlanır.
+title: CloudSimple tarafından Azure VMware çözümü-güvenlik duvarı tablolarını ve kurallarını ayarlama
+description: Alt ağlardaki ve VLAN 'larda trafiği kısıtlamak için özel bulut güvenlik duvarı tablolarının ve kurallarının nasıl ayarlanacağını açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,71 +9,71 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244673"
 ---
-# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Özel Bulutlar için güvenlik duvarı tabloları ve kuralları ayarlama
+# <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Özel bulutlar için güvenlik duvarı tabloları ve kuralları ayarlama
 
-Güvenlik duvarı tabloları ve ilişkili kurallar, belirli alt ağlara ve VLAN'lara uygulanacak trafik kısıtlamaları belirtmenize olanak sağlar.
+Güvenlik Duvarı tabloları ve ilişkili kurallar, belirli alt ağlara ve VLAN 'Lara uygulanacak trafikte kısıtlamalar belirtmenize olanak tanır.
 
-* Bir alt ağ tek bir güvenlik duvarı tablosuyla ilişkilendirilebilir.
-* Güvenlik duvarı tablosu birden çok alt ağla ilişkilendirilebilir.
+* Bir alt ağ, bir güvenlik duvarı tablosuyla ilişkilendirilebilir.
+* Bir güvenlik duvarı tablosu, birden çok alt ağ ile ilişkilendirilebilir.
 
 ## <a name="add-a-new-firewall-table"></a>Yeni bir güvenlik duvarı tablosu ekleme
 
-1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüde **Ağ'ı** seçin.
-2. **Güvenlik Duvarı Tabloları'nı**seçin.
-3. **Güvenlik duvarı tablosu oluştur'u**seçin.
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüdeki **ağ** ' ı seçin.
+2. **Güvenlik duvarı tabloları**' nı seçin.
+3. **Güvenlik duvarı tablosu oluştur**' u seçin.
 
     ![VLAN/alt ağ sayfası](media/firewall-tables-page.png)
 
 4. Tablo için bir ad girin.
-5. Tablo için varsayılan kural listelenir. Ek bir kural oluşturmak için **Yeni Kural Oluştur'u** tıklatın. Ayrıntılar için aşağıdaki yordama bakın.
-6. Güvenlik duvarı tablosunu kaydetmek için **Bitti'yi** tıklatın.
+5. Tablo için varsayılan bir kural listelenir. **Yeni kural** oluştur ' a tıklayarak ek bir kural oluşturun. Ayrıntılar için aşağıdaki yordama bakın.
+6. Güvenlik Duvarı tablosunu kaydetmek için **bitti** ' ye tıklayın.
 
 > [!IMPORTANT]
-> Özel Bulut başına en fazla iki Güvenlik Duvarı masası oluşturabilirsiniz.
+> Özel bulut başına en fazla iki güvenlik duvarı tablosu oluşturabilirsiniz.
 
 ## <a name="firewall-rules"></a>Güvenlik duvarı kuralları
 
-Güvenlik duvarı kuralları, güvenlik duvarının belirli trafik türlerini nasıl ele alsüreceğini belirler. Seçili bir güvenlik duvarı tablosunun **Kurallar** sekmesi, ilişkili tüm kuralları listeler.
+Güvenlik duvarı kuralları, güvenlik duvarının belirli trafik türlerini nasıl ele aldığını tespit eder. Seçili bir güvenlik duvarı tablosu için **kurallar** sekmesi, ilişkili tüm kuralları listeler.
 
 ![Güvenlik duvarı kuralları tablosu](media/firewall-rules-tab.png)
 
 ## <a name="create-a-firewall-rule"></a>Güvenlik duvarı kuralı oluşturma
 
-1. Aşağıdakiyollardan birinde bir güvenlik duvarı kuralı oluşturmak için ayarları görüntüleyin:
-    * Güvenlik duvarı tablosu oluştururken **Kuralı Ekle'yi** tıklatın.
-    * Ağ > Güvenlik Duvarı **Tabloları** sayfasında belirli bir güvenlik duvarı tablosunu seçin ve yeni güvenlik duvarı kuralı **oluştur'u**tıklatın.
-2. Kuralı aşağıdaki gibi ayarlayın:
-    * **Adı**. Kurala bir isim ver.
-    * **Öncelik**. Kurala öncelik atayın. Önce daha düşük sayılara sahip kurallar yürütülür.
-    * **Trafik türü.** Kuralın Özel Bulut, Internet veya VPN trafiği (durum belirtemesi) veya genel bir IP adresi (durum belirteç) için olup olmadığını seçin.
-    * **Protokol.** Kuralın kapsadığı protokolü (TCP, UDP veya herhangi bir protokol) seçin.
+1. Aşağıdaki yollarla bir güvenlik duvarı kuralı oluşturmak için ayarları görüntüleyin:
+    * Bir güvenlik duvarı tablosu oluştururken **Kural Ekle** ' ye tıklayın.
+    * **Ağ > güvenlik duvarı tabloları** sayfasında belirli bir güvenlik duvarı tablosu seçin ve **yeni güvenlik duvarı kuralı oluştur**' a tıklayın.
+2. Kuralı aşağıdaki şekilde ayarlayın:
+    * **Ad**. Kurala bir ad verin.
+    * **Öncelik**. Kurala bir öncelik atayın. Daha düşük sayı olan kurallar önce yürütülür.
+    * **Trafik türü**. Kuralın özel bulut, Internet veya VPN trafiği (durum bilgisiz) veya genel IP adresi (durum bilgisi) için olup olmadığını seçin.
+    * **Protokol**. Kuralın kapsadığı Protokolü (TCP, UDP veya herhangi bir protokol) seçin.
     * **Yön**. Kuralın gelen veya giden trafik için olup olmadığını seçin. Gelen ve giden trafik için ayrı kurallar tanımlamanız gerekir.
-    * **Eylem**. Kural eşleşiyorsa (izin verin veya reddedin) yapılacak eylemi seçin.
-    * **Kaynak**. Kuralın kapsadığı kaynakları (CIDR bloğu, dahili veya herhangi bir kaynak) belirtin.
-    * **Kaynak bağlantı noktası aralığı.** Kurala tabi bağlantı noktalarının aralığını belirtin.
-    * **Yön**. Gelen veya giden'i seçin.
-    * **Hedef**. Kuralın kapsadığı hedefleri (CIDR bloğu, dahili veya herhangi bir kaynak) belirtin.
-    * **Kaynak bağlantı noktası aralığı.** Kurala tabi bağlantı noktalarının aralığını belirtin.
+    * **Eylem**. Kural eşleşiyorsa gerçekleştirilecek eylemi seçin (izin ver veya Reddet).
+    * **Kaynak**. Kural (CıDR bloğu, iç veya herhangi bir kaynak) tarafından kapsanan kaynakları belirtin.
+    * **Kaynak bağlantı noktası aralığı**. Kurala tabi olan bağlantı noktası aralığını belirtin.
+    * **Yön**. Gelen veya giden ' ı seçin.
+    * **Hedef**. Kural (CıDR bloğu, iç veya herhangi bir kaynak) tarafından kapsanan hedefleri belirtin.
+    * **Kaynak bağlantı noktası aralığı**. Kurala tabi olan bağlantı noktası aralığını belirtin.
 
-    ![Güvenlik duvarı tablosu kuralı ekle](media/firewall-rule-create.png)
+    ![Güvenlik Duvarı tablosu kural ekle](media/firewall-rule-create.png)
 
-3. Kuralı kaydetmek ve güvenlik duvarı tablosuiçin kurallar listesine eklemek için **Bitti'yi** tıklatın.
+3. Kuralı kaydetmek ve güvenlik duvarı tablosu için kurallar listesine eklemek için **bitti** ' ye tıklayın.
 
 > [!IMPORTANT]
-> Her Güvenlik Duvarı tablosunda en fazla 10 gelen kuralı ve 20 giden kural olabilir. Bu limitler [desteğe başvurarak](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)artırılabilir.
+> Her güvenlik duvarı tablosu en fazla 10 gelen kurala ve 20 giden kurala sahip olabilir. Bu sınırlar, [Destek ile iletişim](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)kurarak artırılabilir.
 
-## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>V'leri/alt ağlarını takın
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>VLAN 'Ları/alt ağları Ekle
 
-Güvenlik duvarı tablosunu tanımladıktan sonra, tablodaki kurallara tabi olan alt ağları belirtebilirsiniz.
+Bir güvenlik duvarı tablosu tanımladıktan sonra, tablodaki kurallara tabi olan alt ağları belirtebilirsiniz.
 
-1. **Ağ** > **Güvenlik Duvarı Tabloları** sayfasında bir güvenlik duvarı tablosu seçin.
-2. Ekli **VLAN'lar/Altnet** sekmesini açın.
-3. **VLAN/Subnet'e Ekle'yi**tıklatın.
-4. Özel Bulut ve VLAN'ı seçin. İlişkili alt ağ adı ve CIDR bloğu gösterilir.
-5. **Gönder'i**tıklatın.
+1. **Ağ** > **güvenlik duvarı tabloları** sayfasında, bir güvenlik duvarı tablosu seçin.
+2. **Bağlı VLAN/alt ağ** sekmesini açın.
+3. **VLAN/subnet 'e Ekle**' ye tıklayın.
+4. Özel bulutu ve VLAN 'ı seçin. İlişkili alt ağ adı ve CıDR bloğu gösterilmektedir.
+5. **Gönder**' e tıklayın.

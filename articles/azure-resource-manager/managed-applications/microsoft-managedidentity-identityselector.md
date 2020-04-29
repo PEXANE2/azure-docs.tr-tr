@@ -1,34 +1,34 @@
 ---
-title: IdentitySelector UI öğesi
-description: Azure portalı için Microsoft.ManagedIdentity.IdentitySelector UI öğesini açıklar. Yönetilen kimlikleri kaynağa atamak için kullanın.
+title: Identityselector Kullanıcı arabirimi öğesi
+description: Azure portal için Microsoft. Managedıdentity. ıdentityselector Kullanıcı arabirimi öğesini açıklar. Bir kaynağa Yönetilen kimlikler atamak için kullanın.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tomfitz
 ms.openlocfilehash: cb66a2684e0b83f4f0cc01a07cc724f6beab4d68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77087550"
 ---
-# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft.ManagedIdentity.IdentitySelector UI öğesi
+# <a name="microsoftmanagedidentityidentityselector-ui-element"></a>Microsoft. Managedıdentity. ıdentityselector Kullanıcı arabirimi öğesi
 
-Dağıtımdaki bir kaynak için [yönetilen kimlikatama](../../active-directory/managed-identities-azure-resources/overview.md) denetimi.
+Dağıtımdaki bir kaynak için [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) atamaya yönelik bir denetim.
 
 ## <a name="ui-sample"></a>UI örneği
 
 Denetim aşağıdaki öğelerden oluşur:
 
-![Microsoft.ManagedIdentity.IdentitySelector ilk adım](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
+![Microsoft. Managedıdentity. ıdentityselector ilk adım](./media/managed-application-elements/microsoft.managedidentity.identityselector1.png)
 
-Kullanıcı **Ekle'yi**seçtiğinde aşağıdaki form açılır. Kullanıcı kaynak için bir veya daha fazla kullanıcı tarafından atanan kimlik seçebilir.
+Kullanıcı **Ekle**' yi seçtiğinde aşağıdaki form açılır. Kullanıcı, kaynak için bir veya daha fazla kullanıcı tarafından atanan kimlik seçebilir.
 
-![Microsoft.ManagedIdentity.IdentitySelector ikinci adım](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
+![Microsoft. Managedıdentity. ıdentityselector ikinci adım](./media/managed-application-elements/microsoft.managedidentity.identityselector2.png)
 
 Seçili kimlikler tabloda görüntülenir. Kullanıcı bu tablodan öğe ekleyebilir veya silebilir.
 
-![Microsoft.ManagedIdentity.IdentitySelector üçüncü adım](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
+![Microsoft. Managedıdentity. ıdentityselector üçüncü adım](./media/managed-application-elements/microsoft.managedidentity.identityselector3.png)
 
 ## <a name="schema"></a>Şema
 
@@ -69,16 +69,16 @@ Seçili kimlikler tabloda görüntülenir. Kullanıcı bu tablodan öğe ekleyeb
 
 ## <a name="remarks"></a>Açıklamalar
 
-- Atanan sistem için bir başlangıç değeri ayarlamak için **defaultValue.systemAssignedIdentity'i** kullanın. Varsayılan değer **Kapalıdır.** Aşağıdaki değerlere izin verilir:
-  - **On** – Kaynağa kimlik atanan bir sistem atanır.
-  - **Kapalı** – Kaynağa atanan bir sistem atanmamış.
-  - **OnOnly** – Kaynağa kimlik atanan bir sistem atanır. Kullanıcılar dağıtım sırasında bu değeri kaldıramaz.
-  - **OffOnly** – Kaynağa kimlik atanan bir sistem atanmadı. Kullanıcılar dağıtım sırasında bu değeri kaldıramaz.
+- Sistem tarafından atanan kimlik seçenekleri denetimi için bir başlangıç değeri ayarlamak üzere **DefaultValue. Systemassignedıdentity** kullanın. Varsayılan değer **kapalıdır**. Aşağıdaki değerlere izin verilir:
+  - **Açık** – kaynağa bir sistem tarafından atanan kimlik atanır.
+  - **Off** : sisteme atanan bir kimlik kaynağa atanmaz.
+  - **Ononly** : kaynağa bir sistem tarafından atanan kimlik atanır. Kullanıcılar bu değeri dağıtım sırasında düzenleyemez.
+  - **Yalnızca çevrimdışı** : kaynağa bir sistem tarafından atanan kimlik atanmaz. Kullanıcılar bu değeri dağıtım sırasında düzenleyemez.
 
-- **options.hideSystemAssignedIdentity** **doğru**ayarlanmışsa, atanan sistemi yapılandırmak için ui kimlik görüntülenmez. Bu seçeneğin varsayılan değeri **yanlıştır.**
-- **options.hideUserAssignedIdentity** **doğru**ayarlanmışsa, atanan kullanıcıkimliğini yapılandırmak için kullanıcı ui görüntülenmez. Kaynağa atanmış bir kullanıcı kimliği atanmamış. Bu seçeneğin varsayılan değeri **yanlıştır.**
+- **Options. Hidesystemassignedıdentity** **true**olarak ayarlanırsa, sistem tarafından atanan kimliği yapılandırmak için Kullanıcı arabirimi gösterilmez. Bu seçenek için varsayılan değer **false**'dur.
+- **Options. Hideuseratandıdentity** **değeri true**olarak ayarlanırsa, Kullanıcı tarafından atanan KIMLIĞI yapılandırmak için Kullanıcı arabirimi gösterilmez. Kaynağa Kullanıcı tarafından atanan bir kimlik atanmamıştır. Bu seçenek için varsayılan değer **false**'dur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
-- UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.
+- UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
+- UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).

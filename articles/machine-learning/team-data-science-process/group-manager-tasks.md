@@ -1,6 +1,6 @@
 ---
-title: Takım Veri Bilimi Süreci grup yöneticisi görevleri
-description: Bir grup yöneticisinin veri bilimi ekibi projesinde tamamlar görevlerin bu ayrıntılı walkthrough izleyin.
+title: Team Data Science Işlem Grubu Yöneticisi görevleri
+description: Bir grup yöneticisi 'nin bir veri bilimi takım projesinde tamamladığı görevlere ilişkin ayrıntılı izlenecek yolu izleyin.
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,186 +11,186 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721362"
 ---
-# <a name="team-data-science-process-group-manager-tasks"></a>Takım Veri Bilimi Süreci grup yöneticisi görevleri
+# <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Işlem Grubu Yöneticisi görevleri
 
-Bu makalede, bir *grup yöneticisinin* bir veri bilimi organizasyonu için tamamladığını görevler açıklanır. Grup yöneticisi, bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi biriminin, her biri farklı iş dikeylerinde birçok veri bilimi projesi üzerinde çalışan birkaç ekibi olabilir. Grup yöneticisinin amacı, [Team Data Science Process](overview.md) (TDSP) üzerinde standartlaştırılabilen ortak bir grup ortamı oluşturmaktır. TDSP'yi standartlaştıran bir veri bilimi ekibi tarafından gerçekleştirilen tüm personel rollerinin ve ilişkili görevlerin ana hatlarını öğrenmek [için, Ekip Veri Bilimi Süreci rolleri ve görevleri bölümüne](roles-tasks.md)bakın.
+Bu makalede bir veri bilimi organizasyonu için bir *grup yöneticisinin* tamamladığı görevler açıklanmaktadır. Grup Yöneticisi, bir kuruluştaki tüm veri bilimi birimini yönetir. Bir veri bilimi birimi, her biri ayrı iş verticinde birçok veri bilimi projesi üzerinde çalışan çeşitli takımlara sahip olabilir. Grup yöneticisinin hedefi, [ekip veri bilimi işlemini](overview.md) (TDSP) standartlaştırın bir işbirliğine dayalı grup ortamı kurmak. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi tarafından işlenen tüm personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
-Aşağıdaki diyagramaltı ana grup yöneticisi kurulum görevlerini gösterir. Grup yöneticileri görevlerini vekillere devredebilir, ancak rolile ilişkili görevler değişmez.
+Aşağıdaki diyagramda altı ana grup yöneticisi kurulum görevi gösterilmektedir. Grup yöneticileri kendi görevlerini yedeklerin temsilcileriyle devredebilir, ancak rolle ilişkili görevler değişmez.
 
-![Grup yöneticisi görevleri](./media/group-manager-tasks/tdsp-group-manager.png)
+![Grup Yöneticisi görevleri](./media/group-manager-tasks/tdsp-group-manager.png)
 
 1. Grup için bir **Azure DevOps organizasyonu** ayarlayın.
-2. Azure DevOps kuruluşunda varsayılan **GroupCommon projesini** oluşturun.
-3. Azure Depolarında **GroupProjectTemplate** deposunu oluşturun.
-4. Azure Depolarında **GroupUtilities** deposunu oluşturun.
-5. Microsoft TDSP ekibinin **ProjectTemplate** ve **Yardımcı Programlar** depolarının içeriğini grup ortak depolarına aktarın.
-6. Ekip üyelerinin gruba erişmeleri için **üyelik** ve **izinler** ayarlayın.
+2. Azure DevOps kuruluşunda varsayılan **Groupcommon projesini** oluşturun.
+3. Azure Repos ' de **Groupprojecttemplate** deposu oluşturun.
+4. Azure Repos ' de **Grouputilities** deposu oluşturun.
+5. Microsoft TDSP ekibinin **ProjectTemplate** ve **yardımcı program** depolarının içeriğini grup ortak depolarında içeri aktarın.
+6. Gruba erişmek için takım üyelerinin **üyeliğini** ve **izinlerini** ayarlayın.
 
-Aşağıdaki öğretici adımları ayrıntılı olarak gözden geçirir. 
+Aşağıdaki öğreticide, ayrıntılı adımlarda adım adım gösterilmektedir. 
 
 > [!NOTE] 
-> Bu makalede, TDSP grup ortamını ayarlamak için Azure DevOps kullanır, çünkü Microsoft'ta TDSP böyle uygulanır. Grubunuz diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, Grup Yöneticisi'nin görevleri aynıdır, ancak bunları tamamlama yolu farklı olabilir.
+> Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP grup ortamı ayarlamak için Azure DevOps kullanılır. Grubunuz diğer kod barındırma veya geliştirme platformlarını kullanıyorsa, Grup Yöneticisi 'nin görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
-## <a name="create-an-organization-and-project-in-azure-devops"></a>Azure DevOps'lerde bir kuruluş ve proje oluşturma
+## <a name="create-an-organization-and-project-in-azure-devops"></a>Azure DevOps 'da bir kuruluş ve proje oluşturma
 
-1. [visualstudio.microsoft.com](https://visualstudio.microsoft.com)gidin, sağ üstte **Oturum Aç'ı** seçin ve Microsoft hesabınızda oturum açın. 
+1. [VisualStudio.Microsoft.com](https://visualstudio.microsoft.com)adresine gidin, sağ üst köşedeki **oturum aç** ' ı seçin ve Microsoft hesabı oturum açın. 
    
-   ![Microsoft hesabınızda oturum açma](./media/group-manager-tasks/signinvs.png)
+   ![Microsoft hesabı oturum açın](./media/group-manager-tasks/signinvs.png)
    
-   Microsoft hesabınız yoksa, **şimdi Kaydol'** u, bir Microsoft hesabı oluşturun ve bu hesabı kullanarak oturum açın'ı seçin. Kuruluşunuzun Visual Studio aboneliği varsa, bu aboneliğin kimlik bilgileriyle oturum açın.
+   Microsoft hesabı yoksa, **Şimdi kaydol**' u seçin, bir Microsoft hesabı oluşturun ve bu hesabı kullanarak oturum açın. Kuruluşunuzun bir Visual Studio aboneliği varsa, bu aboneliğin kimlik bilgileriyle oturum açın.
    
-1. Oturum açmadan sonra, Azure DevOps sayfasında sağ üstte **yeni kuruluş oluştur'u**seçin.
+1. Oturum açtıktan sonra, Azure DevOps sayfasında sağ üst köşedeki **yeni kuruluş oluştur**' u seçin.
    
-   ![Yeni kuruluş oluşturma](./media/group-manager-tasks/create-organization.png)
+   ![Yeni kuruluş oluştur](./media/group-manager-tasks/create-organization.png)
    
-1. Hizmet Koşullarını, Gizlilik Bildirimini ve Davranış Kurallarını kabul etmeniz istenirse, **Devam et'i**seçin.
+1. Hizmet koşulları, gizlilik bildirimi ve kullanım kuralları 'nı kabul etmeniz istenirse **devam**' ı seçin.
    
-1. Kayıt iletişim kutusunda, Azure DevOps kuruluşunuzun adını belirleyin ve ana bilgisayar bölge atamasını kabul edin veya aşağı inip farklı bir bölge seçin. Daha sonra **Devam** seçeneğini belirleyin. 
+1. Kaydolma iletişim kutusunda Azure DevOps kuruluşunuzu adlandırın ve konak bölgesi atamasını kabul edin veya aşağı açılır ve farklı bir bölge seçin. Daha sonra **Devam** seçeneğini belirleyin. 
 
-1. **Başlamak için proje oluştur** *altında, GroupCommon'ı*girin ve ardından **proje oluştur'u**seçin. 
+1. Başlamak **için bir proje oluşturun**altında *groupcommon*' i girin ve ardından **proje oluştur**' u seçin. 
    
    ![Proje oluşturma](./media/group-manager-tasks/create-project.png)
 
-**GroupCommon** proje **Özeti** sayfası açılır. Sayfa URL *https:\//\<servername\<>/ organizasyon adı>/GroupCommon*.
+**Groupcommon** Project **Özet** sayfası açılır. Sayfa URL 'si *https\//\<: ServerName>\</kuruluş-adı>/groupcommon*.
 
-![Proje özeti sayfası](./media/group-manager-tasks/project-summary.png)
+![Proje özet sayfası](./media/group-manager-tasks/project-summary.png)
 
-## <a name="set-up-the-group-common-repositories"></a>Grup ortak depolarını ayarlama
+## <a name="set-up-the-group-common-repositories"></a>Grup ortak depoları ayarlama
 
-Azure Repos, grubunuz için aşağıdaki depo türlerini barındırar:
+Azure Repos grubunuz için aşağıdaki depo türlerini barındırır:
 
-- **Grup ortak depoları**: Veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği genel amaçlı depolardır. 
-- **Takım depoları**: Veri bilimi birimi içindeki belirli ekipler için depolar. Bu depolar bir takımın gereksinimlerine özgüdir ve bu ekip içindeki birden çok proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok ekip arasında kullanılacak kadar genel değildir.
-- **Proje depoları**: Belirli projeler için depolar. Bu tür depolar, bir takım içindeki birden çok proje veya veri bilimi birimindeki diğer ekipler için yeterince genel olmayabilir.
+- **Ortak depoları gruplandırma**: genel amaçlı depolar, bir veri bilimi birimi içindeki birden çok ekibin birçok veri bilimi projesi için benimseyebileceği depolardır. 
+- **Ekip depoları**: bir veri bilimi birimi içindeki belirli takımlar için depolar. Bu depolar bir ekibin ihtiyaçlarına özgüdür ve bu takım dahilinde birden fazla proje için kullanılabilir, ancak bir veri bilimi birimi içindeki birden çok takım genelinde kullanılmak üzere yeterince genel değildir.
+- **Proje depoları**: belirli projeler için depolar. Bu depolar, bir takım içindeki birden fazla proje için veya bir veri bilimi birimindeki diğer takımlar için yeterince genel olmayabilir.
 
-Projenizdeki grup ortak depolarını ayarlamak için şunları yapacaksınız: 
-- Varsayılan **GroupCommon** deposunu **GroupProjectTemplate** olarak yeniden adlandırın
-- Yeni bir **GroupUtilities** deposu oluşturma
+Projenizde grup ortak depoları ayarlamak için şunları yapın: 
+- Varsayılan **Groupcommon** deposunu **groupprojecttemplate** olarak yeniden adlandırın
+- Yeni bir **Grouputilities** deposu oluşturma
 
-### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Varsayılan proje deposunu GroupProjectTemplate olarak yeniden adlandırın
+### <a name="rename-the-default-project-repository-to-groupprojecttemplate"></a>Varsayılan proje deposunu GroupProjectTemplate olarak yeniden adlandır
 
-Varsayılan **GroupCommon** proje deposunu **GroupProjectTemplate**olarak yeniden adlandırmak için:
+Varsayılan **Groupcommon** proje deposunu **groupprojecttemplate**olarak yeniden adlandırmak için:
 
-1. **GroupCommon** proje **Özeti** sayfasında **Depoları**seçin. Bu eylem, şu anda boş olan GroupCommon projesinin varsayılan **GroupCommon** deposuna götürür.
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. Bu eylem, şu anda boş olan GroupCommon projesinin varsayılan **groupcommon** deposuna götürür.
    
-1. Sayfanın üst kısmında, **GroupCommon'un** yanındaki oku bırakın ve **depoları yönet'i**seçin.
+1. Sayfanın üst kısmında, **Groupcommon** öğesinin yanındaki oku aşağı kaydırın ve **depoları Yönet**' i seçin.
    
    ![Depoları yönetme](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
    
-1. Proje **Ayarları** sayfasında, **GroupCommon'un**yanındaki **...** seçeneğini seçin ve ardından **Resay deposunu**seçin. 
+1. **Proje ayarları** sayfasında, **groupcommon**' ın yanındaki **...** öğesini seçin ve ardından **Depoyu yeniden adlandır**' ı seçin. 
    
-   ![Seçin... ve sonra Resay deposunu seçin](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
+   ![Seç... sonra depoyu yeniden adlandır ' ı seçin.](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
    
-1. **GroupCommon deposuaçılır penceresini yeniden adlandırın,** *GroupProjectTemplate'i*girin ve ardından **Yeniden Adlandır'ı**seçin. 
+1. **GroupCommon deposunu yeniden adlandır** açılan penceresinde *groupprojecttemplate*girin ve **Yeniden Adlandır**' ı seçin. 
    
-   ![Rede deposu](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
+   ![Depoyu yeniden adlandır](./media/group-manager-tasks/rename-groupcommon-repo-6.png)
 
 ### <a name="create-the-grouputilities-repository"></a>GroupUtilities deposunu oluşturma
 
-**GroupUtilities** deposunu oluşturmak için:
+**Grouputilities** deposunu oluşturmak için:
 
-1. **GroupCommon** proje **Özeti** sayfasında **Depoları**seçin. 
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. 
    
-1. Sayfanın üst kısmında, **GroupProjectTemplate'in** yanındaki oku bırakın ve **Yeni depoyu**seçin.
+1. Sayfanın üst kısmında **Groupprojecttemplate** ' in yanındaki oku ve **yeni depo**' ı seçin.
    
-   ![Yeni depo seçin](./media/group-manager-tasks/create-grouputilities-repo-1.png)
+   ![Yeni depo Seç](./media/group-manager-tasks/create-grouputilities-repo-1.png)
    
-1. Yeni **bir depo oluştur** iletişim kutusunda, **Tür**olarak **Git'i** seçin, Depo **adı**olarak *GroupUtilities'i* girin ve sonra **Oluştur'u**seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür**olarak **Git** ' i seçin, **Depo adı**olarak *grouputilities* ' i girin ve ardından **Oluştur**' u seçin.
    
    ![GroupUtilities deposu oluşturma](./media/group-manager-tasks/create-grouputilities-repo-2.png)
    
-1. Proje **Ayarları** sayfasında, iki grup deposunu görmek için sol navigasyonda **Depolar'ın** altındaki **Depoları** seçin: **GroupProjectTemplate** ve **GroupUtilities.**
+1. **Proje ayarları** sayfasında sol gezinmede yer **Repositories** alan depolar **' ı** seçerek Iki grup deposunu görüntüleyin: **groupprojecttemplate** ve **grouputilities**.
    
    ![İki grup deposu](./media/group-manager-tasks/two-repositories.png)
 
-## <a name="import-the-microsoft-tdsp-team-repositories"></a>Microsoft TDSP takım depolarını alma
+## <a name="import-the-microsoft-tdsp-team-repositories"></a>Microsoft TDSP ekip depolarını içeri aktarma
 
-Öğreticinin bu bölümünde, Microsoft TDSP ekibi tarafından yönetilen **ProjectTemplate** ve **Yardımcı Programlar** depolarının içeriğini **GroupProjectTemplate** ve **GroupUtilities** depolarınıza aktarırsınız. 
+Öğreticinin bu bölümünde, Microsoft TDSP ekibi tarafından yönetilen **ProjectTemplate** ve **yardımcı** program depoları içeriğini **Groupprojecttemplate** ve **grouputilities** Depolarınıza içeri aktarırsınız. 
 
-TDSP takım depolarını almak için:
+TDSP ekip depolarını içeri aktarmak için:
 
-1. **GroupCommon** proje ana sayfasından, sol navigasyonda **Repos'u** seçin. Varsayılan **GroupProjectTemplate** repo açılır. 
+1. **Grouportak** proje giriş sayfasından sol **Gezinti bölmesinde yer ' i** seçin. Varsayılan **Groupprojecttemplate** deposu açılır. 
    
-1. **GroupProjectTemplate** boş sayfada, **Içe Aktar'ı**seçin. 
+1. **Groupprojecttemplate boş** sayfasında **içeri aktar**' ı seçin. 
    
-   ![Alma'yı seçin](./media/group-manager-tasks/import-repo.png)
+   ![Içeri aktar 'ı seçin](./media/group-manager-tasks/import-repo.png)
    
-1. Git **deposu iletişim** kutusunda, Kaynak türü olarak **Git'i** seçin ve Klon **URL'si**için *https:\//github.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. **Source type** Sonra **İçe Aktar'ı**seçin. Microsoft TDSP ekibi ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL 'si**için *https:\//GitHub.com/Azure/Azure-TDSP-ProjectTemplate.git* girin. Ardından **Içeri aktar**' ı seçin. Microsoft TDSP Team ProjectTemplate deposunun içeriği GroupProjectTemplate deponuza aktarılır. 
    
-   ![Microsoft TDSP takım deposunu içe aktarma](./media/group-manager-tasks/import-repo-2.png)
+   ![Microsoft TDSP ekip deposunu içeri aktar](./media/group-manager-tasks/import-repo-2.png)
    
-1. **Deposayfasının** üst kısmında, aşağı bırakın ve **GroupUtilities** deposunu seçin.
+1. **Depo** sayfasının en üstünde aşağı açılır ve **grouputilities** deposunu seçin.
    
-1. Microsoft TDSP ekibi **Yardımcı Programlar** deposunun içeriğini almak için alma işlemini yineleyin, *https:\//github.com/Azure/Azure-TDSP-Utilities.git*, **GroupUtilities** deponuza. 
+1. Microsoft TDSP Team **Utilities** deposunun ( *https:\//GitHub.com/Azure/Azure-TDSP-Utilities.git*) içeriğini **grouputilities** deponuza aktarmak için içeri aktarma işlemini tekrarlayın. 
    
-İki grup deponuzun her biri, Microsoft TDSP ekibinin ilgili deposundaki *.git* dizinindekiler hariç tüm dosyaları içerir. 
+Her iki grup deponuz artık, Microsoft TDSP ekibinin karşılık gelen deposundan *. git* diziniyle hariç tüm dosyaları içerir. 
 
 ## <a name="customize-the-contents-of-the-group-repositories"></a>Grup depolarının içeriğini özelleştirme
 
-Grubunuzun özel gereksinimlerini karşılayacak şekilde grup depolarınızın içeriğini özelleştirmek istiyorsanız, bunu şimdi yapabilirsiniz. Dosyaları değiştirebilir, dizin yapısını değiştirebilir veya grubunuzun geliştirdiği veya grubunuz için yararlı olan dosyaları ekleyebilirsiniz.
+Grubunuzun belirli ihtiyaçlarını karşılamak üzere Grup depolarınızın içeriğini özelleştirmek istiyorsanız bunu şimdi yapabilirsiniz. Dosyaları değiştirebilir, dizin yapısını değiştirebilir veya grubunuzun geliştirdiği veya grubunuz için yararlı olan dosyaları ekleyebilirsiniz.
 
-### <a name="make-changes-in-azure-repos"></a>Azure Repos'ta değişiklik yapma
+### <a name="make-changes-in-azure-repos"></a>Azure Repos değişiklik yap
 
 Depo içeriğini özelleştirmek için:
 
-1. **GroupCommon** proje **Özeti** sayfasında **Depoları**seçin. 
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin. 
    
 1. Sayfanın üst kısmında, özelleştirmek istediğiniz depoyu seçin.
 
-1. Repo dizini yapısında, değiştirmek istediğiniz klasöre veya dosyaya gidin. 
+1. Depo dizin yapısında, değiştirmek istediğiniz klasöre veya dosyaya gidin. 
    
-   - Yeni klasörler veya dosyalar oluşturmak için **Yeni'nin**yanındaki oku seçin. 
+   - Yeni klasör veya dosya oluşturmak için **Yeni**' nin yanındaki oku seçin. 
      
-     ![Yeni dosya oluşturma](./media/group-manager-tasks/new-file.png)
+     ![Yeni dosya oluştur](./media/group-manager-tasks/new-file.png)
      
-   - Dosya yüklemek için **Dosya(lar) dosyasını yükleyin'i**seçin. 
+   - Dosyaları karşıya yüklemek için, **karşıya dosya yükle**' yi seçin. 
      
      ![Dosyaları karşıya yükleme](./media/group-manager-tasks/upload-files.png)
      
-   - Varolan dosyaları yeniden sağlamak için dosyaya gidin ve ardından **Edit'i**seçin. 
+   - Varolan dosyaları düzenlemek için dosyasına gidin ve ardından **Düzenle**' yi seçin. 
      
-     ![Dosyayı edin](./media/group-manager-tasks/edit-file.png)
+     ![Bir dosyayı düzenleme](./media/group-manager-tasks/edit-file.png)
      
-1. Dosya ekledikten veya düzenlemeden sonra **Commit'i**seçin.
+1. Dosya ekledikten veya düzenledikten sonra, **Yürüt**' ü seçin.
    
-   ![Değişiklikler gerçekleştirme](./media/group-manager-tasks/commit.png)
+   ![Değişiklikleri Kaydet](./media/group-manager-tasks/commit.png)
 
-### <a name="make-changes-using-your-local-machine-or-dsvm"></a>Yerel makinenizi veya DSVM'nizi kullanarak değişiklik yapın
+### <a name="make-changes-using-your-local-machine-or-dsvm"></a>Yerel makinenizi veya DSVM 'nizi kullanarak değişiklik yapma
 
-Yerel makinenizi veya DSVM'nizi kullanarak değişiklik yapmak ve değişiklikleri grup depolarına itmek istiyorsanız, Git ve DSVM'lerle çalışmak için ön koşullara sahip olduğunuzdan emin olun:
+Yerel makinenizi veya DSVM 'yi kullanarak değişiklik yapmak ve değişiklikleri grup depolarına iletmek istiyorsanız git ve DSVMs ile çalışmaya yönelik önkoşullara sahip olduğunuzdan emin olun:
 
-- Bir DSVM oluşturmak istiyorsanız, Azure aboneliği.
-- Git makinenize yüklendi. DSVM kullanıyorsanız, Git önceden yüklenmiş. Aksi takdirde, [Platformlar ve araçlar ekine](platforms-and-tools.md#appendix)bakın.
-- Bir DSVM kullanmak istiyorsanız, Windows veya Linux DSVM oluşturulan ve Azure'da yapılandırılan. Daha fazla bilgi ve talimatlar için [Veri Bilimi Sanal Makine Dokümantasyonu'na](/azure/machine-learning/data-science-virtual-machine/)bakın.
-- Windows DSVM için makinenizde [Git Kimlik Bilgisi Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) yüklenir. *README.md* dosyasında, **İndir ve Yükle** bölümüne gidin ve en son **yükleyiyi**seçin. *.exe* yükleyicisini yükleyici sayfasından indirin ve çalıştırın. 
-- Bir Linux DSVM için, DSVM'nizde ayarlanmış ve Azure DevOps'lere eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve talimatlar için Platformlar ve [araçlar ekindeki](platforms-and-tools.md#appendix) **SSH ortak anahtar oluşturma** bölümüne bakın. 
+- DSVM oluşturmak istiyorsanız, bir Azure aboneliği.
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
+- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
+- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
+- Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
 
-İlk olarak, depoyu yerel makinenize kopyalayın veya *klonlayın.* 
+İlk olarak, depoyu yerel makinenize *kopyalayın veya kopyalayın* . 
    
-1. **GroupCommon** proje **Özeti** **sayfasında, Depolar'ı**seçin ve sayfanın üst kısmında klonlamak istediğiniz depoyu seçin.
+1. **Groupcommon** proje **Özeti** sayfasında, **Depo**' yı seçin ve sayfanın en üstünde, kopyalamak istediğiniz depoyu seçin.
    
-1. Repo sayfasında sağ üstteki **Klon'u** seçin.
+1. Depo sayfasında sağ üstteki **kopya** ' ı seçin.
    
-1. Klon **deposu** iletişim kutusunda, HTTP bağlantısı için **HTTPS** veya SSH bağlantısı için **SSH'yi** seçin ve **Komut satırıaltındaki** klon URL'sini panonuza kopyalayın.
+1. **Depoyu Kopyala** iletişim kutusunda, http bağlantısı için **https** ' yi veya bir SSH bağlantısı için **SSH** ' yi SEÇIN ve **komut satırı** altına kopya URL 'sini panonuza kopyalayın.
    
-   ![Klon repo](./media/group-manager-tasks/clone.png)
+   ![Depoyu Kopyala](./media/group-manager-tasks/clone.png)
    
 1. Yerel makinenizde aşağıdaki dizinleri oluşturun:
    
    - Windows için: **C:\GitRepos\GroupCommon**
-   - Linux için, **$/GitRepos/GroupCommon** ev dizininizde 
+   - Linux için, giriş dizininizde **$/GitRepos/GroupCommon** 
    
-1. Oluşturduğunuz dizine değiştirin.
+1. Oluşturduğunuz dizine geçin.
    
-1. Git Bash'te, komutu çalıştırın`git clone <clone URL>.`
+1. Git Bash 'de komutunu çalıştırın`git clone <clone URL>.`
    
-   Örneğin, aşağıdaki komutlardan **biri, GroupUtilities** deposunu yerel makinenizdeki *GroupCommon* dizinine klonlar. 
+   Örneğin, aşağıdaki komutlardan biri **Grouputilities** deposunu yerel makinenizde *groupcommon* dizinine kopyalar. 
    
    **HTTPS bağlantısı:**
    
@@ -204,9 +204,9 @@ Yerel makinenizi veya DSVM'nizi kullanarak değişiklik yapmak ve değişiklikle
    git clone git@ssh.dev.azure.com:v3/DataScienceUnit/GroupCommon/GroupUtilities
    ```
 
-Deponuzun yerel klonunda istediğiniz değişiklikleri yaptıktan sonra, değişiklikleri paylaşılan grup ortak depolarına itebilirsiniz. 
+Deponuzun yerel kopyasına istediğiniz değişiklikleri yaptıktan sonra, değişiklikleri paylaşılan grup ortak depolarında gönderebilirsiniz. 
 
-Yerel **GroupProjectTemplate** veya **GroupUtilities** dizininizden aşağıdaki Git Bash komutlarını çalıştırın.
+Yerel **Groupprojecttemplate** veya **grouputilities** dizininden aşağıdaki git Bash komutlarını çalıştırın.
 
 ```bash
 git add .
@@ -215,49 +215,49 @@ git push
 ```
 
 > [!NOTE]
-> İlk defa bir Git deposuna söz ediyorsanız, `git commit` komutu çalıştırmadan önce genel parametreleri *user.name* ve *user.email'i* yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
+> Git deposuna ilk kez çalışıyorsanız, `git commit` komutu çalıştırmadan önce *User.Name* ve *User. email* genel parametrelerini yapılandırmanız gerekebilir. Aşağıdaki iki komutu çalıştırın:
 > 
 > `git config --global user.name <your name>`
 > 
 > `git config --global user.email <your email address>`
 > 
-> Birkaç Git deposuna taahhütte bulunduysanız, hepsi için aynı adı ve e-posta adresini kullanın. Git etkinliklerinizi birden çok depoda izlemek için Power BI panoları inşa ederken aynı adı ve e-posta adresini kullanmak uygundur.
+> Birden çok git deposuna çalışıyorsanız, hepsi için aynı adı ve e-posta adresini kullanın. Aynı ad ve e-posta adresinin kullanılması, git etkinliklerinizi birden çok depoda izlemek üzere Power BI panolar oluştururken kullanışlıdır.
 
 ## <a name="add-group-members-and-configure-permissions"></a>Grup üyeleri ekleme ve izinleri yapılandırma
 
 Gruba üye eklemek için:
 
-1. Azure DevOps'te, **GroupCommon** proje giriş sayfasından sol gezintiden **Proje ayarlarını** seçin. 
+1. Azure DevOps 'da, **Groupcommon** Project giriş sayfasından sol gezinti ' den **proje ayarları** ' nı seçin. 
    
-1. Proje **Ayarları'nda** sol gezintiden **Takımlar'ı**seçin, ardından **Takımlar** sayfasında **GroupCommon Team'i**seçin. 
+1. **Proje ayarları** sol gezinti listesinden **takımlar**' ı seçin, ardından **takımlar** sayfasında, **groupcommon ekibini**seçin. 
    
-   ![Takımları Yapılandır](./media/group-manager-tasks/teams.png)
+   ![Takımları yapılandırma](./media/group-manager-tasks/teams.png)
    
-1. Takım **Profili** sayfasında **Ekle'yi**seçin.
+1. **Takım profili** sayfasında **Ekle**' yi seçin.
    
-   ![GroupCommon Ekibine Ekle](./media/group-manager-tasks/add-to-team.png)
+   ![GroupCommon ekibine Ekle](./media/group-manager-tasks/add-to-team.png)
    
-1. Kullanıcı **ekle ve gruplar** iletişim kutusunda, gruba eklenecek üyeleri arayın ve seçin ve ardından **değişiklikleri kaydet'i**seçin. 
+1. **Kullanıcı ve Grup Ekle** iletişim kutusunda, gruba eklenecek üyeleri arayıp seçin ve ardından **Değişiklikleri Kaydet**' i seçin. 
    
-   ![Kullanıcı ve grup ekleme](./media/group-manager-tasks/add-users.png)
+   ![Kullanıcı ve Grup Ekle](./media/group-manager-tasks/add-users.png)
    
 
 Üyeler için izinleri yapılandırmak için:
 
-1. Proje **Ayarları'nda** sol gezintiden **İzinler'i**seçin. 
+1. **Proje ayarları** sol gezinti listesinden **izinler**' i seçin. 
    
 1. **İzinler** sayfasında, üye eklemek istediğiniz grubu seçin. 
    
-1. Bu grubun sayfasında **Üyeler'i**seçin ve sonra **Ekle'yi**seçin. 
+1. Bu grubun sayfasında, **Üyeler**' i seçin ve ardından **Ekle**' yi seçin. 
    
-1. Davet **üyeleri** açılır, arama ve gruba eklemek için üyeleri seçin ve sonra **Kaydet**seçin. 
+1. **Üyeleri davet et** açılan penceresinde, gruba eklenecek üyeleri arayıp seçin ve ardından **Kaydet**' i seçin. 
    
    ![Üyelere izin verme](./media/group-manager-tasks/grant-permissions.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıda, Ekip Veri Bilimi Sürecindeki diğer rol ve görevlerin ayrıntılı açıklamalarına bağlantılar verilmiştir:
+Team Data Science Işlemindeki diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
-- [Veri bilimi ekibi için Takım Müşteri Adayı görevleri](team-lead-tasks.md)
-- [Veri bilimi ekibi için Proje Müşteri Adayı görevleri](project-lead-tasks.md)
-- [Veri bilimi ekibi için Project Individual Katılımcı görevleri](project-ic-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Veri bilimi ekibi için proje lideri görevleri](project-lead-tasks.md)
+- [Bir veri bilimi ekibi için projeye bireysel katkıda bulunan görevleri](project-ic-tasks.md)

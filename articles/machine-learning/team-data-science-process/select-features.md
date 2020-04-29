@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Sürecinde Özellik Seçimi
-description: Özellik seçiminin amacını açıklar ve makine öğreniminin veri geliştirme sürecindeki rollerinden örnekler sağlar.
+title: Takım veri bilimi Işleminde Özellik seçimi
+description: Özellik seçiminin amacını açıklar ve Machine Learning 'in veri geliştirme sürecinde rollerinin örneklerini sağlar.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,56 +12,56 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76716674"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Team Data Science Process’te (TDSP) özellik seçimi
-Bu makalede, özellik seçiminin amaçları açıklanmaktadır ve makine öğreniminin veri geliştirme sürecindeki rolüne örnekler verilmiştir. Bu örnekler Azure Machine Learning Studio'dan alınmıştır.
+Bu makalede, özellik seçiminin amaçları açıklanmakta ve makine öğrenimi 'nin veri geliştirme sürecinde rolün örnekleri verilmiştir. Bu örnekler Azure Machine Learning Studio çizilir.
 
-Özelliklerin mühendislik ve seçimi, makalede özetlenen Team Data Science Process 'in (TDSP) bir [parçasıdır.](overview.md) Özellik mühendisliği ve seçimi, TDSP'nin **Özellikler Geliştirme** adımının bir parçasıdır.
+Özelliklerin mühendislik ve seçimi, ekip veri bilimi işleminin (TDSP) [Team Data Science süreci nedir?](overview.md)makalesinde özetlenen bir parçasıdır. Özellik Mühendisliği ve seçimi, TDSP 'nin **Özellikler geliştirme** adımının parçalarından oluşur.
 
-* **özellik mühendisliği**: Bu işlem, verilerdeki mevcut ham özelliklerden ek ilgili özellikler oluşturmaya ve öğrenme algoritmasına tahmin gücünü artırmaya çalışır.
-* **özellik seçimi**: Bu işlem, eğitim sorununun boyutlarını azaltmak amacıyla özgün veri özelliklerinin temel alt kümesini seçer.
+* **özellik Mühendisliği**: Bu işlem, verilerdeki mevcut ham özelliklerden ek ilgili özellikler oluşturmaya çalışır ve öğrenme algoritmasına tahmine dayalı güç düzeyini artırır.
+* **Özellik seçimi**: Bu işlem, eğitim sorununun boyutlılık düzeyini azaltmak için bir denemede orijinal veri özelliklerinin anahtar alt kümesini seçer.
 
-Normalde **özellik mühendisliği** ek özellikler oluşturmak için ilk uygulanır ve daha sonra **özellik seçimi** adımı alakasız, gereksiz veya yüksek korelasyon özellikleri ortadan kaldırmak için gerçekleştirilir.
+Normalde **özellik Mühendisliği** , ek özellikler oluşturmak için önce uygulanır ve ardından **Özellik seçimi** adımı, ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldırmak için gerçekleştirilir.
 
-## <a name="filter-features-from-your-data---feature-selection"></a>Verilerinizdeki özellikleri filtreleyin - özellik seçimi
-Özellik seçimi sınıflandırma veya regresyon görevleri için kullanılabilir. Amaç, verilerdeki maksimum varyans miktarını temsil etmek için en az özellik kümesini kullanarak boyutlarını azaltan orijinal veri kümesinden özelliklerin bir alt kümesini seçmektir. Bu özellik alt kümesi modeli eğitmek için kullanılır. Özellik seçimi iki ana amac için kullanılır.
+## <a name="filter-features-from-your-data---feature-selection"></a>Veri özelliği seçiminizden özellikleri filtreleme
+Özellik seçimi, sınıflandırma veya regresyon görevleri için kullanılabilir. Amaç, başlangıçtaki veri kümesinden alınan özelliklerin bir alt kümesini seçmek, verilerdeki en fazla varyans miktarını göstermek için minimum bir özellik kümesi kullanarak boyutlarını azaltır. Bu özellik alt kümesi, modeli eğitme için kullanılır. Özellik seçimi iki ana amaca hizmet eder.
 
-* İlk olarak, özellik seçimi genellikle alakasız, gereksiz veya son derece ilişkili özellikleri ortadan kaldırarak sınıflandırma doğruluğunu artırır.
-* İkinci olarak, model eğitim sürecini daha verimli hale getiren özellik sayısını azaltır. Verimlilik, destek vektör makineleri gibi eğitmek pahalı olan öğrenciler için önemlidir.
+* İlk olarak, özellik seçimi genellikle ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldırarak sınıflandırma doğruluğunu artırır.
+* İkincisi, model eğitimi sürecini daha verimli hale getiren Özellik sayısını düşürür. Verimlilik, destek vektör makineleri gibi tren açısından pahalı olan öğrenenler için önemlidir.
 
-Özellik seçimi modeli eğitmek için kullanılan veri kümesindeki özelliklerin sayısını azaltmaya çalışsa da, "boyutsallık azaltma" terimiyle anılacaktır. Özellik seçimi yöntemleri, verilerdeki orijinal özelliklerin bir alt kümesini değiştirmeden ayıklar.  Boyutsallık azaltma yöntemleri, özgün özellikleri dönüştürebilen ve böylece değiştirebilen tasarlanmış özellikleri kullanır. Boyutsallık azaltma yöntemlerine örnek olarak Temel Bileşen Analizi, kanonik korelasyon analizi ve Tekil Değer Ayrıştırma verilebilir.
+Özellik seçimi, modeli eğitmek için kullanılan veri kümesindeki özelliklerin sayısını azaltmak için arama yapmaz, ancak "boyutlılık azaltma" terimiyle eşleşmez. Özellik seçimi yöntemleri, verileri değiştirmeden özgün özelliklerin bir alt kümesini ayıklar.  Boyutlılık azaltma yöntemleri, özgün özellikleri dönüştürebildiği ve bu nedenle bunları değiştirebilen, uygulanan özellikler sunar. Boyut azaltma yöntemlerine örnek olarak, sorumlu bileşen analizi, kurallı bağıntı Analizi ve tekil değer ayrıştırma sayılabilir.
 
-Diğerlerinin yanı sıra, denetlenen bir bağlamda yaygın olarak uygulanan özellik seçimi yöntemlerikategorisine "filtre tabanlı özellik seçimi" adı verilir. Bu yöntemler, her özellik ve hedef öznitelik arasındaki korelasyonu değerlendirerek, her özelliğe bir puan atamak için istatistiksel bir ölçü uygular. Özellikler daha sonra, belirli bir özelliği tutmak veya ortadan kaldırmak için eşiğin ayarlanmasına yardımcı olmak için kullanılabilecek puana göre sıralanır. Bu yöntemlerde kullanılan istatistiksel ölçütler arasında Kişi korelasyon, karşılıklı bilgi ve Ki kare testi verilebilir.
+Diğer bir deyişle, denetimli bağlamdaki Özellik seçimi yöntemlerinin yaygın olarak uygulanan bir kategorisi, "filtre tabanlı özellik seçimi" olarak adlandırılır. Her özellik ve hedef öznitelik arasındaki bağıntıyı değerlendirerek, bu yöntemler her özelliğe puan atamak için istatistiksel bir ölçü uygular. Özellikler daha sonra puanla derecelendirilir ve belirli bir özelliği tutma veya ortadan kaldırma eşiğini ayarlamaya yardımcı olmak için kullanılabilir. Bu yöntemlerde kullanılan istatistiksel ölçülere örnek olarak kişi bağıntı, karşılıklı bilgi ve kikare test dahildir.
 
-Azure Machine Learning Studio'da özellik seçimi için sağlanan modüller vardır. Aşağıdaki şekilde gösterildiği gibi, bu modüller [Filtre Tabanlı Özellik Seçimi][filter-based-feature-selection] ve Fisher [Lineer Ayrımcı Analizi][fisher-linear-discriminant-analysis]içerir.
+Azure Machine Learning Studio, özellik seçimi için belirtilen modüller vardır. Aşağıdaki şekilde gösterildiği gibi, bu modüller [filtre tabanlı özellik seçimi][filter-based-feature-selection] ve [Fisher doğrusal ayrılmış minant analizini][fisher-linear-discriminant-analysis]içerir.
 
-![Özellik Seçimi modülleri](./media/select-features/feature-Selection.png)
+![Özellik seçimi modülleri](./media/select-features/feature-Selection.png)
 
-Örneğin, Filtre Tabanlı Özellik [Seçimi][filter-based-feature-selection] modülünün kullanımını göz önünde bulundurun. Kolaylık sağlamak için metin madenciliği örneğini kullanmaya devam edin. [Özellik Karma][feature-hashing] modülü aracılığıyla 256 özellik kümesi oluşturulduktan sonra bir regresyon modeli oluşturmak istediğinizi ve yanıt değişkeninin 1 ile 5 arasında değişen kitap inceleme derecelendirmeleri içeren "Col1" olduğunu varsayalım. "Özellik puanlama yöntemi"ni "Pearson Korelasyon" olarak, "Hedef sütun"u "Col1" ve "İstenilen özellik sayısı" 50 olarak ayarlayarak. Daha sonra Filtre [Tabanlı Özellik Seçimi][filter-based-feature-selection] modülü, hedef özniteliği "Col1" ile birlikte 50 özellik içeren bir veri kümesi üretir. Aşağıdaki şekil, bu deneyin akışını ve giriş parametrelerini gösterir:
+Örneğin, [filtre tabanlı özellik seçimi][filter-based-feature-selection] modülünün kullanımını göz önünde bulundurun. Kolaylık sağlaması için metin araştırma örneğini kullanmaya devam edin. [Özellik karma][feature-hashing] modülü aracılığıyla bir dizi 256 Özellik oluşturulduktan sonra bir regresyon modeli oluşturmak istediğinizi ve yanıt değişkeninin 1 ile 5 arasında defter İnceleme derecelendirmeleri Içeren "Sütun1" olduğunu varsayalım. "Özellik Puanlama yöntemi" ni "Pearson bağıntı", "hedef sütun" i "Sütun1" ve "istenen özellik sayısı" olarak 50 olarak ayarlayarak. Ardından modül [filtresi tabanlı özellik seçimi][filter-based-feature-selection] , "Sütun1" hedef özniteliğiyle birlikte 50 özellikleri içeren bir veri kümesi oluşturur. Aşağıdaki şekilde, bu denemenin ve giriş parametrelerinin akışı gösterilmektedir:
 
-![Filtre Tabanlı Özellik Seçimi modülü özellikleri](./media/select-features/feature-Selection1.png)
+![Filtre tabanlı özellik seçimi modül özellikleri](./media/select-features/feature-Selection1.png)
 
-Aşağıdaki şekil, elde edilen veri kümelerini gösterir:
+Aşağıdaki şekilde, elde edilen veri kümeleri gösterilmektedir:
 
-![Filtre Tabanlı Özellik Seçimi modülü için ortaya çıkan veri kümesi](./media/select-features/feature-Selection2.png)
+![Filtre tabanlı özellik seçimi modülü için sonuç veri kümesi](./media/select-features/feature-Selection2.png)
 
-Her özellik, kendisi ve hedef özniteliği "Col1" arasındaki Pearson Korelasyon'a göre puanlandırılır. En yüksek puana sahip özellikler korunur.
+Her özellik, kendisini ve "Sütun1" hedef özniteliği arasındaki Pearson bağıntı temelinde puanlanır. En üst puanları olan özellikler tutulur.
 
-Seçili özelliklerin karşılık gelen puanları aşağıdaki şekilde gösterilmiştir:
+Seçilen özelliklerin karşılık gelen puanları aşağıdaki şekilde gösterilmiştir:
 
-![Filtre Tabanlı Özellik Seçimi modülü için puanlar](./media/select-features/feature-Selection3.png)
+![Filtre tabanlı özellik seçimi modülünün puanları](./media/select-features/feature-Selection3.png)
 
-Bu Filtre [Tabanlı Özellik Seçimi][filter-based-feature-selection] modülü uygulanarak, "Pearson Korelasyon" puanlama yöntemine dayalı hedef değişken "Col1" ile en ilişkili özelliklere sahip oldukları için 256 özellikten 50'si seçilir.
+Bu [filtre tabanlı özellik seçimi][filter-based-feature-selection] modülünü uygulayarak, "Pearson bağıntı" Puanlama metoduna bağlı olarak "Sütun1" hedef değişkeni ile en çok bağıntılı özelliklere sahip olduklarından 50 'den 256 tanesi seçilidir.
 
 ## <a name="conclusion"></a>Sonuç
-Özellik mühendisliği ve özellik seçimi, verilerde yer alan temel bilgileri ayıklamagirişiminde bulunan eğitim sürecinin verimliliğini artıran, yaygın olarak tasarlanmış ve seçili iki özelliktir. Ayrıca, giriş verilerini doğru bir şekilde sınıflandırmak ve ilginin sonuçlarını daha sağlam bir şekilde tahmin etmek için bu modellerin gücünü artırırlar. Özellik mühendisliği ve seçimi de öğrenme daha hesaplamalı olarak traktör yapmak için birleştirebilir. Bunu, bir modeli kalibre etmek veya eğitmek için gereken özelliklerin sayısını artırarak ve azaltarak yapar. Matematiksel olarak konuşursak, modeli eğitmek için seçilen özellikler, verilerdeki desenleri açıklayan ve sonuçları başarılı bir şekilde tahmin eden en az bağımsız değişken kümesidir.
+Özellik Mühendisliği ve Özellik seçimi, yaygın olarak oluşturulan iki özelliktir ve seçilen özellikler, veride bulunan anahtar bilgilerini çıkarmaya deneyen Eğitim sürecinin verimliliğini artırır. Ayrıca, giriş verilerini doğru şekilde sınıflandırmak ve daha fazla robustly hakkında daha fazla bilgi almak için bu modellerin gücünden de gelişir. Daha ayrıntılı bilgi edinmek için özellik Mühendisliği ve seçimi de birleştirebilir. Bu, bir modeli ayarlamak veya eğitme için gereken özellik sayısını artırır ve azaltır. Matematik olarak konuşma, modeli eğitme için seçilen özellikler, verilerdeki desenleri açıklayan ve sonra sonuçları başarıyla tahmin eden en düşük bağımsız değişkenler kümesidir.
 
-Her zaman mutlaka özellik mühendisliği veya özellik seçimi gerçekleştirmek değildir. Gerekip gerekmediği toplanan verilere, seçilen algoritmaya ve denemenin amacına bağlıdır.
+Her zaman özellik Mühendisliği veya özellik seçimi yapmak gerekmez. Gerekli olup olmadığı, toplanan verilere, seçilen algoritmaya ve denemenin hedefine bağlıdır.
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -1,6 +1,6 @@
 ---
-title: .NET - Azure Depolama ile liste lekeleri
-description: .NET istemci kitaplığını kullanarak Azure Depolama hesabınızdaki bir kapsayıcıdaki lekeleri nasıl listeleyişsüreceğinizi öğrenin. Kod örnekleri, düz bir listedeki lekelerin nasıl listeleniyi veya dizinveya klasörler halinde düzenlenmiş gibi blob'ları hiyerarşik olarak nasıl listelediklerini gösterir.
+title: .NET-Azure depolama ile Blobları listeleme
+description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki bir kapsayıcıdaki Blobları listeleyeceğinizi öğrenin. Kod örnekleri, blob 'ların bir düz listede nasıl ekleneceğini ya da dizin veya klasörler halinde düzenlendikleri gibi Blobları hiyerarşik olarak nasıl listelemiş olduğunu gösterir.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137929"
 ---
-# <a name="list-blobs-with-net"></a>.NET ile blobs listele
+# <a name="list-blobs-with-net"></a>.NET ile Blobları listeleme
 
-Kodunuzdaki lekeleri listelediğinizde, sonuçların Azure Depolama'dan nasıl döndürülebileceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri alabilirsiniz. Adları bu karakter veya dize yle başlayan lekeleri döndürmek için bir önek belirtebilirsiniz. Ve düz bir liste yapısında veya hiyerarşik olarak lekeleri listeleyebilirsiniz. Hiyerarşik bir liste, blobs'ları klasörler halinde düzenlenmiş gibi döndürür. 
+Kodlarınızdan blob 'ları listelürsünüz, sonuçların Azure depolama 'dan nasıl döndürüleceğini yönetmek için bir dizi seçenek belirtebilirsiniz. Her bir sonuç kümesinde döndürülecek sonuç sayısını belirtebilir ve ardından sonraki kümeleri elde edebilirsiniz. Adları bu karakterle veya dizeyle başlayan Blobları döndürmek için bir ön ek belirtebilirsiniz. Blob 'ları düz bir liste yapısında veya hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir liste Blobları klasörler halinde düzenlenmiş gibi döndürür. 
 
-Bu makalede, [.NET için Azure Depolama istemci kitaplığını](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanarak lekelernasıl listelenebilen gösterir.  
+Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)kullanılarak Blobların nasıl listeyapılacağı gösterilmektedir.  
 
 ## <a name="understand-blob-listing-options"></a>Blob listeleme seçeneklerini anlama
 
-Depo hesabındaki lekeleri listelemek için aşağıdaki yöntemlerden birini arayın:
+Blob 'ları bir depolama hesabında listelemek için şu yöntemlerden birini çağırın:
 
-- [CloudBlobClient.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
-- [CloudBlobClient.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
-- [CloudBlobClient.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
+- [CloudBlobClient. Listblob 'Lar](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
+- [CloudBlobClient. Listblobskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
+- [CloudBlobClient. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
 
-Bir kapsayıcıdaki lekeleri listelemek için aşağıdaki yöntemlerden birini arayın:
+Bir kapsayıcıdaki Blobları listelemek için şu yöntemlerden birini çağırın:
 
-- [CloudBlobContainer.ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
-- [CloudBlobContainer.ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
-- [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
+- [CloudBlobContainer. Listblob 'Lar](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
+- [CloudBlobContainer. Listblobskesimli](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
+- [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-Bu yöntemleriçin aşırı yüklemeler, lekelerin listeleme işlemi yle nasıl döndürülür olduğunu yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
+Bu yöntemlerin aşırı yüklemeleri, Blobların listeleme işlemi tarafından nasıl döndürüldüğünü yönetmek için ek seçenekler sağlar. Bu seçenekler aşağıdaki bölümlerde açıklanmıştır.
 
-### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürülür yönetme
+### <a name="manage-how-many-results-are-returned"></a>Kaç sonuç döndürüldüğünü yönetin
 
-Varsayılan olarak, bir listeleme işlemi bir defada en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için `maxresults` **ListBlobs** yöntemlerinden birini ararken parametre için sıfır olmayan bir değer sağlayın.
+Varsayılan olarak, bir listeleme işlemi bir seferde en fazla 5000 sonuç döndürür. Daha küçük bir sonuç kümesi döndürmek için, **Listblobları** yöntemlerinden birini çağırırken `maxresults` parametresi için sıfır dışında bir değer sağlayın.
 
-Bir giriş işlemi 5000'den fazla blob döndürürse `maxresults` veya giriş işleminin depolama hesabında kapsayıcıların bir alt kümesini döndürecek bir değer belirtmişseniz, Azure Depolama blob listesiyle birlikte bir *devam belirteci* döndürür. Devam belirteci, Azure Depolama'dan bir sonraki sonuç kümesini almak için kullanabileceğiniz opak bir değerdir.
+Bir listeleme işlemi 5000 'den fazla BLOB döndürürse ya da listeleme işlemi depolama hesabındaki kapsayıcıların bir alt kümesini `maxresults` döndürdüğünde bu şekilde bir değer belirttiyseniz Azure Storage, blob 'ların listesini içeren bir *devamlılık belirteci* döndürür. Devamlılık belirteci, Azure depolama 'nın bir sonraki sonuç kümesini almak için kullanabileceğiniz donuk bir değerdir.
 
-Kodunuzda, null olup olmadığını belirlemek için devam belirteci değerini denetleyin. Devam belirteci null olduğunda, sonuç kümesi tamamlanır. Devam belirteci null değilse, devamı belirteci null olana kadar, sonraki sonuç kümesialmak için devamı belirteci geçen, yeniden arama listeleme işlemi.
+Kodunuzda, null olup olmadığını anlamak için devamlılık belirtecinin değerini denetleyin. Devamlılık belirteci null olduğunda, sonuç kümesi tamamlanır. Devamlılık belirteci null değilse, devamlılık belirteci null olana kadar, sonraki sonuç kümesini almak için devamlılık belirtecini geçirerek Listeleme işlemini yeniden çağırın.
 
-### <a name="filter-results-with-a-prefix"></a>Sonuçları önek ile filtreleme
+### <a name="filter-results-with-a-prefix"></a>Sonuçları bir ön eke göre filtrele
 
-Kapsayıcılar listesini filtrelemek için parametre `prefix` için bir dize belirtin. Önek dize bir veya daha fazla karakter içerebilir. Azure Depolama daha sonra yalnızca adları bu önek ile başlayan lekeleri döndürür.
+Kapsayıcılar listesini filtrelemek için, `prefix` parametre için bir dize belirtin. Ön ek dizesi bir veya daha fazla karakter içerebilir. Daha sonra Azure Storage yalnızca adları bu önek ile başlayan blob 'ları döndürür.
 
-### <a name="return-metadata"></a>Meta verileri döndürme
+### <a name="return-metadata"></a>Meta veri döndür
 
-Sonuçlarla blob meta verilerini döndürmek [için, BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması için **Meta veri** değerini belirtin. Azure Depolama, döndürülen her blob ile meta veriler içerir, bu nedenle blob meta verilerini almak için bu bağlamda **Alma Öznitelikleri** yöntemlerinden birini aramanız gerekmez.
+Sonuçlara blob meta verileri döndürmek için [Bloblistingdetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) numaralandırması Için **meta veri** değerini belirtin. Azure depolama, her blob döndürülen meta verileri içerir, bu nedenle blob meta verilerini almak için bu bağlamdaki **Fetchattributes** yöntemlerinden birini çağırmanız gerekmez.
 
-### <a name="flat-listing-versus-hierarchical-listing"></a>Düz listeleme karşı hiyerarşik listeleme
+### <a name="flat-listing-versus-hierarchical-listing"></a>Düz liste ve hiyerarşik listeye karşı
 
-Azure Depolama'daki blob'lar hiyerarşik bir paradigma (klasik dosya sistemi gibi) yerine düz bir paradigma yla düzenlenir. Ancak, bir klasör yapısını taklit etmek için blob'ları *sanal dizinler* halinde düzenleyebilirsiniz. Sanal dizin blob adının bir parçasını oluşturur ve delimiter karakteri ile gösterilir.
+Azure depolama 'daki Bloblar, hiyerarşik bir paradigma (klasik bir dosya sistemi gibi) yerine düz bir paradigma göre düzenlenir. Ancak, bir klasör yapısını benzemek için Blobları *sanal dizinlere* göre düzenleyebilirsiniz. Bir sanal dizin, blob adının bir parçasını oluşturur ve sınırlayıcı karakterle belirtilir.
 
-Blob'ları sanal dizinler halinde düzenlemek için, blob adında bir sınır dışılayıcı karakteri kullanın. Varsayılan sınır layıcı karakter bir forward slash (/), ancak delimiter olarak herhangi bir karakter belirtebilirsiniz.
+Blob 'ları sanal dizinlere göre düzenlemek için blob adında bir sınırlayıcı karakter kullanın. Varsayılan sınırlayıcı karakter eğik çizgidir (/), ancak sınırlayıcı olarak herhangi bir karakter belirtebilirsiniz.
 
-Lekelerinize bir delimiter kullanarak isim atarsanız, lekeleri hiyerarşik olarak listelemeyi seçebilirsiniz. Hiyerarşik bir listeleme işlemi için Azure Depolama, ana nesnenin altındaki sanal dizinleri ve lekeleri döndürür. Hiyerarşide geçiş yapmak için giriş işlemini özyinelemeli olarak çağırabilirsiniz, benzer şekilde klasik bir dosya sisteminden programlı olarak geçebilirsiniz.
+Bloblarınızı bir sınırlayıcı kullanarak adlandırın, Blobları hiyerarşik olarak listeleyebilirsiniz. Hiyerarşik bir listeleme işlemi için Azure depolama, üst nesnenin altındaki tüm sanal dizinleri ve BLOB 'ları döndürür. Bir klasik dosya sisteminin programlama yoluyla nasıl gezineceği gibi, hiyerarşide çapraz geçiş yapmak için Listeleme işlemini yinelemeli olarak çağırabilirsiniz.
 
-## <a name="use-a-flat-listing"></a>Düz bir liste kullanma
+## <a name="use-a-flat-listing"></a>Düz liste kullan
 
-Varsayılan olarak, bir listeleme işlemi düz bir girişteki lekeleri döndürür. Düz bir liste, blobs sanal dizin tarafından organize edilmez.
+Varsayılan olarak, bir listeleme işlemi blob 'ları düz bir listede döndürür. Düz bir listede, Bloblar sanal dizin tarafından düzenlenmez.
 
-Aşağıdaki örnekte, belirtilen kapsayıcıdaki lekeler, isteğe bağlı bir segment boyutu belirtilmiş olarak düz bir liste kullanarak listeler ve blob adını bir konsol penceresine yazar.
+Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını bir konsol penceresine yazar.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -108,7 +108,7 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
-Örnek çıktıaşağıdakilere benzer:
+Örnek çıkış şuna benzerdir:
 
 ```
 Blob name: FolderA/blob1.txt
@@ -122,13 +122,13 @@ Blob name: FolderA/FolderB/FolderC/blob2.txt
 Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
-## <a name="use-a-hierarchical-listing"></a>Hiyerarşik bir liste kullanma
+## <a name="use-a-hierarchical-listing"></a>Hiyerarşik bir liste kullanın
 
-Bir listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Depolama hiyerarşinin ilk düzeyinde sanal dizinleri ve lekeleri döndürür. Her sanal dizinin [Önek](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) özelliği, bir sonraki dizini almak için özyinelemeli bir çağrıda önek geçirebilmeniz için ayarlanır.
+Bir Listeleme işlemini hiyerarşik olarak çağırdığınızda, Azure Storage hiyerarşinin ilk düzeyindeki sanal dizinleri ve Blobları döndürür. Her sanal dizinin [önek](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) özelliği, bir sonraki dizini almak için bir özyinelemeli çağrıda öneki geçirebilmeniz için ayarlanır.
 
-Blobs'u hiyerarşik olarak `useFlatBlobListing` listelemek için, listeleme yönteminin parametresini **false**olarak ayarlayın.
+Blobları hiyerarşik olarak listelemek için, `useFlatBlobListing` listeleme yönteminin parametresini **false**olarak ayarlayın.
 
-Aşağıdaki örnekte, belirtilen kapsayıcıdaki lekeler, isteğe bağlı bir segment boyutu belirtilmiş olarak düz bir liste kullanarak listeler ve blob adını konsol penceresine yazar.
+Aşağıdaki örnek, bir düz liste kullanarak belirtilen kapsayıcıdaki Blobları listeler ve isteğe bağlı bir kesim boyutu belirtildi ve BLOB adını konsol penceresine yazar.
 
 ```csharp
 private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer container, string prefix)
@@ -183,7 +183,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
-Örnek çıktıaşağıdakilere benzer:
+Örnek çıkış şuna benzerdir:
 
 ```
 Virtual directory prefix: FolderA/
@@ -203,11 +203,11 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
 > [!NOTE]
-> Blob anlık görüntüleri hiyerarşik bir listeleme işleminde listelenemez.
+> Blob anlık görüntüleri hiyerarşik bir listeleme işleminde listelenmiş olamaz.
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blobs listesi](/rest/api/storageservices/list-blobs)
-- [Blob Kaynaklarını Derecelendirme](/rest/api/storageservices/enumerating-blob-resources)
+- [Blobları Listele](/rest/api/storageservices/list-blobs)
+- [Blob kaynaklarını numaralandırma](/rest/api/storageservices/enumerating-blob-resources)

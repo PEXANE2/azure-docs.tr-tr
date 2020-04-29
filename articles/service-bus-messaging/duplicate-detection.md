@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Servisi yinelenen ileti algılama | Microsoft Dokümanlar
-description: Bu makalede, Azure Hizmet Veri Servisi iletilerinde yinelenenleri nasıl algılayabildiğiniz açıklanmaktadır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
+title: Yinelenen ileti algılamayı Azure Service Bus | Microsoft Docs
+description: Bu makalede Azure Service Bus iletilerinde yinelenenleri nasıl Algılayabileceğiniz açıklanır. Yinelenen ileti yoksayılabilir ve bırakılabilir.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,61 +14,61 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760377"
 ---
 # <a name="duplicate-detection"></a>Yineleme algılama
 
-Bir uygulama, ileti gönderdikten hemen sonra ölümcül bir hata nedeniyle başarısız olursa ve yeniden başlatılan uygulama örneği hatalı bir şekilde önceki ileti tesliminin gerçekleşmediğini düşünüyorsa, sonraki bir gönderme aynı iletinin sistemde iki kez görünmesine neden olur.
+Bir uygulama, bir ileti gönderdikten hemen sonra önemli bir hata nedeniyle başarısız olursa ve yeniden başlatılan uygulama örneği, önceki ileti tesliminin gerçekleşmediği görüldüğü takdirde, sonraki bir gönderme aynı iletinin iki kez sistemde görünmesine neden olur.
 
-İstemci veya ağ düzeyinde bir hatanın bir an önce oluşması ve gönderilen bir iletinin sıraya işlenmesi ve bildirimin istemciye başarıyla döndürülmesi de mümkündür. Bu senaryo, istemciyi gönderme işleminin sonucu hakkında şüpheye soyar.
+Ayrıca, istemci veya ağ düzeyindeki bir hata daha önce gerçekleşmesi ve gönderilmiş bir iletinin sıraya teslim edilmesiyle, bildirim istemciye başarıyla döndürülmediği için de mümkündür. Bu senaryo, istemciyi gönderme işleminin sonucu hakkında şüpheli halde bırakır.
 
-Yinelenen algılama, gönderenin aynı iletiyi yeniden göndermesini sağlayarak bu durumların şüphesini ortadan çıkarır ve sıra veya konu yinelenen kopyaları atar.
+Yinelenen algılama, gönderenin aynı iletiyi yeniden göndermesini sağlayarak bu durumlardan yararlanır ve kuyruk veya konu, yinelenen kopyaları atar.
 
-Yinelenen algılamayı etkinleştirmek, belirli bir zaman penceresinde kuyruğa veya konuya gönderilen tüm iletilerin uygulama kontrollü *MessageId'ini* izlemeye yardımcı olur. Zaman penceresinde günlüğe kaydedilmiş *MessageId* ile yeni bir ileti gönderilirse, ileti kabul edilmiş olarak bildirilir (gönderme işlemi başarılı olur), ancak yeni gönderilen ileti anında yoksayılır ve bırakılır. *İletinin MessageId* dışında başka hiçbir bölümü dikkate alınmaz.
+Yinelenen saptamayı etkinleştirmek, belirli bir zaman penceresi sırasında bir sıraya veya konuya gönderilen tüm iletilerin uygulama denetimli *MessageID* ' i izlemeye devam eder. Zaman penceresi sırasında günlüğe kaydedilen *MessageID* ile yeni bir ileti gönderilirse, ileti kabul edildi olarak bildirilir (gönderme işlemi başarılı olur), ancak yeni gönderilen ileti anında yoksayılır ve bırakılır. İletinin *MessageID* dışında başka hiçbir bölümü göz önünde bulundurulmamasıdır.
 
-Tanımlayıcının uygulama denetimi esastır, çünkü yalnızca bu uygulamanın *MessageId'i* bir hata oluştuğunda tahmin edilebilir şekilde yeniden oluşturulabileceği bir iş süreci bağlamına bağlamasına olanak tanır.
+Yalnızca *uygulamanın, bir* hata oluştuğunda öngörülebilir olarak yeniden oluşturulduğu bir iş süreci bağlamına erişmesini sağladığından, tanımlayıcının uygulama denetimi gereklidir.
 
-Bazı uygulama bağlamını işleme sürecinde birden çok iletinin gönderildiği bir iş süreci için *MessageId,* satınalma sipariş numarası gibi uygulama düzeyi bağlam tanımlayıcısının ve örneğin **12345.2017/payment'ın**konusunun bir lösyonu olabilir.
+Bazı uygulama bağlamını işleme sürecinde birden fazla iletinin gönderildiği bir iş süreci için, *MessageID* , bir satın alma siparişi numarası gibi uygulama düzeyi bağlam tanımlayıcısının bir bileşimi olabilir ve örneğin, **12345.2017/ödeme**gibi ileti konusu olabilir.
 
-*MessageId* her zaman bazı GUID olabilir, ancak tanımlayıcıyı iş sürecine bağlamak, yinelenen algılama özelliğinden etkin bir şekilde yararlanmak için istenen öngörülebilir tekrarlanabilirlik sağlar.
+*MessageID* her zaman bir GUID olabilir, ancak tanımlayıcıyı iş işlemine tutturma, yinelenen algılama özelliğini etkin bir şekilde kullanmak için istenen tahmin edilebilir yinelenebilirlik verir.
 
 > [!NOTE]
-> Yinelenen algılama etkinleştirilmişse ve oturum kimliği veya bölüm anahtarı ayarlanmazsa, ileti kimliği bölüm anahtarı olarak kullanılır. İleti kimliği de ayarlı değilse, .NET ve AMQP kitaplıkları ileti için otomatik olarak bir ileti kimliği oluşturur. Daha fazla bilgi için [bkz.](service-bus-partitioning.md#use-of-partition-keys)
+> Yinelenen algılama etkinse ve oturum KIMLIĞI ya da bölüm anahtarı ayarlanmamışsa, bölüm anahtarı olarak ileti KIMLIĞI kullanılır. İleti KIMLIĞI de ayarlanmamışsa, .NET ve AMQP kitaplıkları ileti için otomatik olarak bir ileti KIMLIĞI oluşturur. Daha fazla bilgi için bkz. [bölüm anahtarlarının kullanımı](service-bus-partitioning.md#use-of-partition-keys).
 
-## <a name="enable-duplicate-detection"></a>Yinelenen algılamayı etkinleştirme
+## <a name="enable-duplicate-detection"></a>Yinelenen algılamayı etkinleştir
 
-Portalda, özellik varsayılan olarak kapalı olan **yinelenen algılama** onay kutusunu etkinleştir ile varlık oluşturma sırasında açılır. Yeni konular oluşturmak için ayar eşdeğerdir.
+Portalda, özellik varsayılan olarak kapalı olan **yinelenen saptamayı etkinleştir** onay kutusu ile varlık oluşturma sırasında açıktır. Yeni konu başlıkları oluşturma ayarı eşdeğerdir.
 
 ![][1]
 
 > [!IMPORTANT]
-> Sıra oluşturulduktan sonra yinelenen algılamayı etkinleştiremez/devre dışı kalamazsınız. Bunu yalnızca sırayı oluştururken yapabilirsiniz. 
+> Sıra oluşturulduktan sonra yinelenen saptamayı etkinleştiremez/devre dışı bırakabilirsiniz. Bunu yalnızca kuyruğu oluşturma sırasında yapabilirsiniz. 
 
-Programlı olarak, tam çerçeve .NET API üzerinde [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) özelliği ile bayrağı ayarlarsınız. Azure Kaynak Yöneticisi API ile [değer, queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliğiyle ayarlanır.
+Programlama yoluyla, bayrağı Full Framework .NET API 'sindeki [Queuedescription. requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) özelliği ile ayarlarsınız. Azure Resource Manager API 'SI ile, değeri [Queueproperties. requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
 
-Yinelenen algılama süresi geçmişi, en fazla yedi günlük bir değerle kuyruklar ve konular için 30 saniyeye kadar varsayılandır. Bu ayarı Azure portalındaki sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
+Yinelenen algılama zaman geçmişi, kuyruklar ve konular için en fazla yedi gün olacak şekilde 30 saniye olur. Bu ayarı, Azure portal sıra ve konu özellikleri penceresinde değiştirebilirsiniz.
 
 ![][2]
 
-Programlı olarak, tam .NET Framework API ile [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) özelliğini kullanarak ileti kimliklerinin tutulduğu yinelenen algılama penceresinin boyutunu yapılandırabilirsiniz. Azure Kaynak Yöneticisi API ile değer [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliğiyle ayarlanır.
+Programlama yoluyla, tam .NET Framework API 'SI ile [Queuedescription. DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) özelliğini kullanarak ileti kimliklerinin saklanacağı yinelenen saptama penceresinin boyutunu yapılandırabilirsiniz. Azure Resource Manager API 'SI ile, değeri [Queueproperties. duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) özelliği ile ayarlanır.
 
-Yinelenen algılamayı etkinleştirmek ve pencerenin boyutu, kaydedilen tüm ileti kimliklerinin yeni gönderilen ileti tanımlayıcısı ile eşleşmesi gerektiğinden, sıra (ve konu) çıktısını doğrudan etkiler.
+Tüm kayıtlı ileti kimliklerinin yeni gönderilen ileti tanımlayıcısına karşı eşleşmesi gerektiğinden, yinelenen saptamayı etkinleştirmek ve pencerenin boyutu doğrudan sırayı (ve konu) verimini etkiler.
 
-Pencereyi küçük tutmak, daha az ileti kimliği nin saklanıp eşleşmesi ve iş çıktısının daha az etkilemesi gerektiği anlamına gelir. Yinelenen algılama gerektiren yüksek iş elde varlıklar için pencereyi olabildiğince küçük tutmanız gerekir.
+Pencerenin küçük tutulması, daha az ileti kimliği tutulması ve eşleştirilmesi gerektiği ve verimlilik daha az etkilenildiği anlamına gelir. Yinelenen saptamayı gerektiren yüksek aktarım hızı varlıkları için, pencereyi mümkün olduğunca küçük tutmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus konu başlıklarını ve aboneliklerini kullanma](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-İstemci kodunun eskisi gibi aynı *MessageId'e* sahip bir iletiyi yeniden gönderemediği senaryolarda, güvenli bir şekilde yeniden işlenebilen iletiler tasarlamak önemlidir. [Idemiktidarhakkında](https://particular.net/blog/what-does-idempotent-mean) bu blog yazısı bunu yapmak için nasıl çeşitli teknikler açıklar.
+İstemci kodunun daha önceki bir *MessageID* ile bir iletiyi yeniden gönderemediği senaryolarda, güvenli bir şekilde işlenebilen iletiler tasarlamak önemlidir. [Eşkuvvetlilik hakkında bu blog gönderisi](https://particular.net/blog/what-does-idempotent-mean) , bunun nasıl yapılacağı hakkında çeşitli teknikler açıklamaktadır.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

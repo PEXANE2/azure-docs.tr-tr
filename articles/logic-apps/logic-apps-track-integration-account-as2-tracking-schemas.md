@@ -1,6 +1,6 @@
 ---
 title: B2B iletileri için AS2 izleme şemaları
-description: Azure Logic Apps'ta AS2 iletilerini izlemek için izleme şemaları oluşturun
+description: Azure Logic Apps 'de AS2 iletilerini izlemek için izleme şemaları oluşturma
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,18 +9,18 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/01/2020
 ms.openlocfilehash: bccf69362279afd9e8148b20b61ff3ea9b472a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906965"
 ---
-# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Mantık Uygulamalarında AS2 iletilerini izlemek için şemalar oluşturun
+# <a name="create-schemas-for-tracking-as2-messages-in-azure-logic-apps"></a>Azure Logic Apps 'de izleme AS2 iletileri için şemalar oluşturma
 
-İşletmeler arası (B2B) işlemlerin başarılarını, hatalarını ve ileti özelliklerini izlemenize yardımcı olmak için, entegrasyon hesabınızda şu AS2 izleme şemalarını kullanabilirsiniz:
+İşletmeden işletmeye (B2B) işlemleri için başarı, hata ve ileti özelliklerini izlemenize yardımcı olması için, tümleştirme hesabınızda bu AS2 izleme şemalarını kullanabilirsiniz:
 
 * AS2 ileti izleme şeması
-* AS2 İleti Düzenleme Bildirimi (MDN) izleme şeması
+* AS2 Ileti değerlendirmesi bildirimi (MDN) izleme şeması
 
 ## <a name="as2-message-tracking-schema"></a>AS2 ileti izleme şeması
 
@@ -54,25 +54,25 @@ ms.locfileid: "76906965"
 
 | Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
-| gönderenPartnerName | Hayır | Dize | AS2 ileti gönderenin iş ortağı adı |
-| receiverPartnerName | Hayır | Dize | AS2 ileti alıcının ortak adı |
-| as2To | Evet | Dize | AS2 iletisinin üsterlerinden AS2 ileti alıcısının adı |
-| as2Kaynak | Evet | Dize | AS2 iletisinin üsterlerinden GÖNDERENin adı |
-| anlaşmaAdı | Hayır | Dize | İletilerin çözüldüğü AS2 anlaşmasının adı |
-| yön | Evet | Dize | İleti akışının yönü, ya `receive` da`send` |
-| Messageıd | Hayır | Dize | AS2 iletisinin üsterlerinden AS2 ileti kimliği |
-| dispositionType | Hayır | Dize | İleti Disposition Bildirimi (MDN) disposition türü değeri |
-| fileName | Hayır | Dize | AS2 iletisinin üstbilgisinden dosya adı |
-| isMessageFailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
-| isMessageSigned | Evet | Boole | AS2 iletisinin imzalanıp imzalanmadığını |
-| isMessageEncrypted | Evet | Boole | AS2 iletisinin şifrelenip şifrelenmediğini |
-| isMessageCompressed | Evet | Boole | AS2 iletisinin sıkıştırılıp sıkıştırılmadığı |
-| correlationMessageId | Hayır | Dize | İletileri MDN'lerle ilişkilendirmek için AS2 ileti kimliği |
-| gelen Headers | Hayır | JToken Sözlüğü | Gelen AS2 ileti üstbilgisi ayrıntıları |
-| giden Headers | Hayır | JToken Sözlüğü | Giden AS2 ileti üstbilgi ayrıntıları |
-| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağı |
-| isMdnBeklenen | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağı |
-| mdnTip | Evet | Sabit Listesi | İzin verilen `NotConfigured` `Sync`değerler: , , ve`Async` |
+| senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
+| as2To | Yes | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti alıcısının adı |
+| as2From | Yes | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti gönderenin adı |
+| agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
+| yön | Yes | Dize | İleti akışının yönü, ya da `receive``send` |
+| Ileti | Hayır | Dize | AS2 iletisinin üst bilgilerinden AS2 ileti KIMLIĞI |
+| dispositionType | Hayır | Dize | İleti değerlendirmesi bildirimi (MDN) değerlendirme türü değeri |
+| fileName | Hayır | Dize | AS2 iletisinin üstbilgisindeki dosya adı |
+| ımessagefailed | Yes | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Yes | Boole | AS2 iletisinin imzalı olup olmadığı |
+| ımessageşifrelendi | Yes | Boole | AS2 iletisinin şifreli olup olmadığı |
+| ımessagecompressed | Yes | Boole | AS2 iletisinin sıkıştırılmış olup olmadığı |
+| Correlationmessageıd | Hayır | Dize | AS2 ileti KIMLIĞI, iletileri MDNs ile ilişkilendirmek için |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen AS2 ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden AS2 ileti üst bilgisi ayrıntıları |
+| isNrrEnabled | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| ımdnexted | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| mdnType | Yes | Sabit Listesi | İzin verilen değerler `NotConfigured`: `Sync`,, ve`Async` |
 |||||
 
 ## <a name="as2-mdn-tracking-schema"></a>AS2 MDN izleme şeması
@@ -107,28 +107,28 @@ ms.locfileid: "76906965"
 
 | Özellik | Gerekli | Tür | Açıklama |
 |----------|----------|------|-------------|
-| gönderenPartnerName | Hayır | Dize | AS2 ileti gönderenin iş ortağı adı |
-| receiverPartnerName | Hayır | Dize | AS2 ileti alıcının ortak adı |
-| as2To | Evet | Dize | AS2 iletisini alan iş ortağı adı |
-| as2Kaynak | Evet | Dize | AS2 iletisini gönderen iş ortağı adı |
-| anlaşmaAdı | Hayır | Dize | İletilerin çözüldüğü AS2 anlaşmasının adı |
-| yön | Evet | Dize | İleti akışının yönü, ya `receive` da`send` |
-| Messageıd | Hayır | Dize | AS2 ileti kimliği |
-| originalMessageId | Hayır | Dize | AS2 orijinal ileti kimliği |
-| dispositionType | Hayır | Dize | MDN disposition türü değeri |
-| isMessageFailed | Evet | Boole | AS2 iletisinin başarısız olup olmadığı |
-| isMessageSigned | Evet | Boole | AS2 iletisinin imzalanıp imzalanmadığını |
-| isNrrEnabled | Evet | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağı |
-| Statuscode | Evet | Sabit Listesi | İzin verilen `Accepted` `Rejected`değerler: , , ve`AcceptedWithErrors` |
-| micVerificationStatus | Evet | Sabit Listesi | İzin verilen`NotApplicable` `Succeeded`değerler: , , ve`Failed` |
-| correlationMessageId | Hayır | Dize | MDN yapılandırılmış orijinal iletinin kimliği olan Korelasyon Kimliği |
-| gelen Headers | Hayır | JToken Sözlüğü | Gelen ileti üstbilgisi ayrıntıları |
-| giden Headers | Hayır | JToken Sözlüğü | Giden ileti üstbilgi ayrıntıları |
+| senderPartnerName | Hayır | Dize | AS2 ileti göndericisinin iş ortağı adı |
+| receiverPartnerName | Hayır | Dize | AS2 ileti alıcısının iş ortağı adı |
+| as2To | Yes | Dize | AS2 iletisini alan iş ortağı adı |
+| as2From | Yes | Dize | AS2 iletisini gönderen iş ortağı adı |
+| agreementName | Hayır | Dize | İletilerin çözümlenme AS2 sözleşmesinin adı |
+| yön | Yes | Dize | İleti akışının yönü, ya da `receive``send` |
+| Ileti | Hayır | Dize | AS2 ileti KIMLIĞI |
+| Originalmessageıd | Hayır | Dize | AS2 özgün ileti KIMLIĞI |
+| dispositionType | Hayır | Dize | MDN değerlendirme türü değeri |
+| ımessagefailed | Yes | Boole | AS2 iletisinin başarısız olup olmadığı |
+| ısmessagesigned | Yes | Boole | AS2 iletisinin imzalı olup olmadığı |
+| isNrrEnabled | Yes | Boole | Değer bilinmiyorsa varsayılan değerin kullanılıp kullanılmayacağını belirtir |
+| Durum | Yes | Sabit Listesi | İzin verilen değerler `Accepted`: `Rejected`,, ve`AcceptedWithErrors` |
+| Micdoğrulamaları Icationstatus | Yes | Sabit Listesi | İzin verilen değerler`NotApplicable`: `Succeeded`,, ve`Failed` |
+| Correlationmessageıd | Hayır | Dize | MDN yapılandırılmış özgün iletinin KIMLIĞI olan bağıntı KIMLIĞI |
+| ıncomingheaders | Hayır | JToken sözlüğü | Gelen ileti üst bilgisi ayrıntıları |
+| outgoingHeaders | Hayır | JToken sözlüğü | Giden ileti üst bilgisi ayrıntıları |
 |||||
 
 ## <a name="b2b-protocol-tracking-schemas"></a>B2B protokol izleme şemaları
 
-B2B protokol izleme şemaları hakkında bilgi için bkz:
+B2B protokol izleme şemaları hakkında daha fazla bilgi için bkz.:
 
 * [X12 izleme şemaları](logic-apps-track-integration-account-x12-tracking-schema.md)
 * [B2B özel izleme şemaları](logic-apps-track-integration-account-custom-tracking-schema.md)

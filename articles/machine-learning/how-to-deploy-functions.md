@@ -1,7 +1,7 @@
 ---
-title: ML modellerini Azure İşlevleri Uygulamalarına dağıtma (önizleme)
+title: Azure Işlevleri uygulamalarına ml modellerini dağıtma (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Bir modeli Azure İşlevleri Uygulamasına dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğrenin.
+description: Azure Işlevleri uygulamasına model dağıtmak için Azure Machine Learning kullanmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,57 +11,57 @@ author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.openlocfilehash: d03a3d482d147d3bc69354ee09dfe0b187610a09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78927433"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure İşlevlerine makine öğrenimi modeli dağıtma (önizleme)
+# <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure İşlevler'de işlev uygulaması olarak Azure Machine Learning'den bir modeli nasıl dağıtılayın öğrenin.
+Azure Işlevlerinde bir işlev uygulaması olarak Azure Machine Learning bir modeli dağıtmayı öğrenin.
 
 > [!IMPORTANT]
-> Hem Azure Machine Learning hem de Azure İşlevleri genel olarak kullanılabilir olsa da, İşlevler için Machine Learning hizmetinden bir modeli paketleme olanağı önizlemededir.
+> Hem Azure Machine Learning hem de Azure Işlevleri genel kullanıma sunulduğunda, Işlevleri için Machine Learning hizmetinden bir modeli paketleyebilme özelliği önizlemededir.
 
-Azure Machine Learning ile eğitimli makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Azure Machine Learning artık bu makine öğrenimi modellerini [Azure İşlevlerine](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)dağıtılabilen işlev uygulamalarına dönüştürmek için önizleme işlevine sahiptir.
+Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Artık Azure Machine Learning, bu makine öğrenimi modellerini [Azure işlevlerine dağıtılabilecek](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies#docker-container)işlev uygulamalarına derlemek için Önizleme işlevselliğine sahiptir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı](how-to-manage-workspace.md) oluştur makalesine bakın.
+* Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-* Çalışma alanınızda kayıtlı eğitimli bir makine öğrenme modeli. Bir modeliniz yoksa, Resim [sınıflandırma öğreticisini kullanın:](tutorial-train-models-with-aml.md) bir modeli eğitmek ve kaydetmek için model eğitin.
+* Çalışma alanınıza kayıtlı eğitilen makine öğrenimi modeli. Bir modeliniz yoksa, görüntü oluşturma öğreticisini kullanın: eğitim ve kayıt yapmak için [modeli eğitme](tutorial-train-models-with-aml.md) .
 
     > [!IMPORTANT]
-    > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarladığınızvarsa varsaymaktadır:
+    > Bu makaledeki kod parçacıkları aşağıdaki değişkenleri ayarlamış olduğunu varsayar:
     >
-    > * `ws`- Azure Makine Öğrenimi çalışma alanınız.
-    > * `model`- Dağıtılacak kayıtlı model.
-    > * `inference_config`- Model için çıkarım yapılandırması.
+    > * `ws`-Azure Machine Learning çalışma alanınız.
+    > * `model`-Dağıtılacak kayıtlı model.
+    > * `inference_config`-Modelin çıkarım yapılandırması.
     >
-    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için Azure [Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
+    > Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Dağıtım için hazırlanma
 
-Dağıtmadan önce, modeli bir web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki liste, dağıtım için gereken temel öğeleri açıklar:
+Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki listede bir dağıtım için gereken temel öğeler açıklanmaktadır:
 
-* Bir __giriş komut dosyası__. Bu komut dosyası istekleri kabul eder, modeli kullanarak isteği puanlar ve sonuçları döndürür.
+* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
-    > Giriş komut dosyası modelinize özgüdür; gelen istek verilerinin biçimini, modeliniz tarafından beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamanız gerekir.
+    > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
     >
-    > İstek verileri modeliniz tarafından kullanılabilir olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca istemciye dönmeden önce yanıtı dönüştürebilir.
+    > İstek verileri modelinize uygun olmayan bir biçimdeyse, komut dosyası bunu kabul edilebilir bir biçime dönüştürebilir. Ayrıca, istemciye döndürmeden önce yanıtı dönüştürebilir.
     >
-    > Varsayılan olarak işlevler için paketleme yaparken, giriş metin olarak kabul edilir. Girişin ham baytlarını tüketmek istiyorsanız (örneğin Blob tetikleyicileri için), [ham verileri kabul etmek için AMLRequest'i](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)kullanmalısınız.
+    > Varsayılan olarak, işlevler için paketleme sırasında giriş metin olarak değerlendirilir. Girişin ham baytlarını kullanmak istiyorsanız (örneğin, blob Tetikleyicileri için), [ham verileri kabul etmek Için Amlrequest](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data)' i kullanmanız gerekir.
 
 
-* Giriş komut dosyasını veya modeli çalıştırmak için gereken yardımcı komut dosyaları veya Python/Conda paketleri gibi **bağımlılıklar**
+* Giriş betiğini veya modelini çalıştırmak için gereken yardımcı betikler veya Python/Conda paketleri gibi **Bağımlılıklar**
 
-Bu varlıklar bir __çıkarım yapılandırmasına__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
+Bu varlıklar bir __çıkarım yapılandırmasında__kapsüllenir. Çıkarım yapılandırması, giriş betiğine ve diğer bağımlılıklara başvurur.
 
 > [!IMPORTANT]
-> Azure İşlevleri ile kullanılmak üzere çıkarım yapılandırması oluştururken bir [Çevre](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, sürüm >= 1,0,45 pip bağımlılığı olarak azureml varsayılanları eklemeniz gerektiğini lütfen unutmayın. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve çıkarım yapılandırmasıyla kullanmayı gösterir:
+> Azure Işlevleri ile kullanmak üzere bir çıkarım yapılandırması oluştururken, bir [ortam](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) nesnesi kullanmanız gerekir. Özel bir ortam tanımlıyorsanız, bir PIP bağımlılığı olarak >= 1.0.45 sürümü ile azureml-varsayılan değer eklemeniz gerektiğini unutmayın. Bu paket, modeli bir Web hizmeti olarak barındırmak için gereken işlevleri içerir. Aşağıdaki örnek, bir ortam nesnesi oluşturmayı ve bunu bir çıkarım yapılandırmasıyla kullanmayı gösterir:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -77,16 +77,16 @@ Bu varlıklar bir __çıkarım yapılandırmasına__kapsüllenir. Çıkarım yap
 > inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 > ```
 
-Ortamlar hakkında daha fazla bilgi için [bkz.](how-to-use-environments.md)
+Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için ortamları oluşturma ve yönetme](how-to-use-environments.md).
 
-Çıkarım yapılandırması hakkında daha fazla bilgi için [Azure Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
+Çıkarım yapılandırması hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
-> İşlevlere dağıtılırken, __dağıtım yapılandırması__oluşturmanız gerekmez.
+> IŞLEVLERE dağıtım yaparken, bir __dağıtım yapılandırması__oluşturmanız gerekmez.
 
-## <a name="install-the-sdk-preview-package-for-functions-support"></a>Fonksiyon desteği için SDK önizleme paketini yükleyin
+## <a name="install-the-sdk-preview-package-for-functions-support"></a>İşlevler desteği için SDK önizleme paketini yükler
 
-Azure İşlevler için paket oluşturmak için SDK önizleme paketini yüklemeniz gerekir.
+Azure Işlevlerine yönelik paketler oluşturmak için SDK önizleme paketini yüklemelisiniz.
 
 ```bash
 pip install azureml-contrib-functions
@@ -94,10 +94,10 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Azure İşlevler'e dağıtılan Docker görüntüsünü oluşturmak için [azureml.contrib.functions.package'ı](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) veya kullanmak istediğiniz tetikleyici için belirli paket işlevini kullanın. Aşağıdaki kod snippet modeli ve çıkarım yapılandırmabir blob tetikleyici ile yeni bir paket oluşturmak için nasıl gösterir:
+Azure Işlevlerine dağıtılan Docker görüntüsünü oluşturmak için, kullanarak ilgilendiğiniz tetikleyici için [azureml. contrib. Functions. Package](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py) veya belirli paket işlevini kullanın. Aşağıdaki kod parçacığı, model ve çıkarım yapılandırmasından bir blob tetikleyicisi ile nasıl yeni bir paket oluşturulacağını göstermektedir:
 
 > [!NOTE]
-> Kod snippet kayıtlı `model` bir model içeren ve `inference_config` çıkarım ortamı için yapılandırma içeren varsayar. Daha fazla bilgi için Azure [Machine Learning ile Modelleri Dağıt'a](how-to-deploy-and-where.md)bakın.
+> Kod parçacığı, kayıtlı bir `model` model içerdiğini ve çıkarım ortamının yapılandırmasını `inference_config` içeren olduğunu varsayar. Daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ```python
 from azureml.contrib.functions import package
@@ -108,17 +108,17 @@ blob.wait_for_creation(show_output=True)
 print(blob.location)
 ```
 
-Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem tamamlandığında, çalışma alanınız için görüntü Azure Kapsayıcı Kayıt Defteri'nde oluşturulur. Görüntü yüklendikten sonra Azure Konteyner Kayıt Defterinizdeki konum görüntülenir. Döndürülen konum biçimindedir. `<acrinstance>.azurecr.io/package@sha256:<hash>`
+Ne `show_output=True`zaman, Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package@sha256:<hash>`.
 
 > [!NOTE]
-> Şu anda http tetikleyicileri, Blob tetikleyicileri ve Servis veri veri metotları tetikleyicileri işlevleri için paketleme destekler. Tetikleyiciler hakkında daha fazla bilgi için [Azure İşlevleri bağlamalarına](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns)bakın.
+> İşlevlerin paketlenmesi Şu anda HTTP tetikleyicilerini, blob Tetikleyicileri ve Service Bus tetikleyicilerini desteklemektedir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Azure işlevleri bağlamaları](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
 
 > [!IMPORTANT]
-> Görüntüyü dağıtırken kullanıldığı gibi konum bilgilerini kaydedin.
+> Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
 
-## <a name="deploy-image-as-a-web-app"></a>Görüntüyü web uygulaması olarak dağıtma
+## <a name="deploy-image-as-a-web-app"></a>Web uygulaması olarak görüntü dağıtma
 
-1. Görüntüyü içeren Azure Kapsayıcı Kayıt Defteri'nin giriş kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<myacr>` önce döndürülen değerle `package.location`değiştir: 
+1. Görüntüyü içeren Azure Container Registry oturum açma kimlik bilgilerini almak için aşağıdaki komutu kullanın. Daha `<myacr>` önce döndürülen değerle değiştirin `package.location`: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -144,19 +144,19 @@ Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem
 
     __Kullanıcı adı__ ve __parolalardan__biri için değeri kaydedin.
 
-1. Hizmeti dağıtmak için zaten bir kaynak grubunuz veya uygulama hizmet planınız yoksa, aşağıdaki komutlar her ikisini birden nasıl oluşturabileceğinizi gösterir:
+1. Hizmeti dağıtmaya yönelik bir kaynak grubunuz veya App Service planınız yoksa, aşağıdaki komutlar her ikisinin de nasıl oluşturulacağını gösterir:
 
     ```azurecli-interactive
     az group create --name myresourcegroup --location "West Europe"
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    Bu örnekte, bir _Linux_ `--sku B1`temel fiyatlandırma katmanı ( ) kullanılır.
+    Bu örnekte, bir _Linux temel_ Fiyatlandırma Katmanı (`--sku B1`) kullanılır.
 
     > [!IMPORTANT]
-    > Azure Machine Learning tarafından oluşturulan görüntüler Linux'u kullanır, bu nedenle parametreyi `--is-linux` kullanmanız gerekir.
+    > Azure Machine Learning tarafından oluşturulan görüntüler Linux kullanır, bu nedenle `--is-linux` parametresini kullanmanız gerekir.
 
-1. Web iş depolama için kullanmak ve bağlantı dizesini almak için depolama hesabı oluşturun. Kullanmak `<webjobStorage>` istediğiniz adla değiştirin.
+1. Web işi depolaması için kullanılacak depolama hesabını oluşturun ve bağlantı dizesini alın. Kullanmak `<webjobStorage>` istediğiniz adla değiştirin.
 
     ```azurecli-interactive
     az storage account create --name <webjobStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -165,16 +165,16 @@ Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem
     az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
     ```
 
-1. İşlev uygulamasını oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Daha `<acrinstance>` `<imagename>` önce döndürülen `package.location` değerlerle değiştirin. Önceki `<webjobStorage>` adımdaki depolama hesabının adı ile değiştirin:
+1. İşlev uygulaması oluşturmak için aşağıdaki komutu kullanın. Kullanmak `<app-name>` istediğiniz adla değiştirin. Ve `<acrinstance>` `<imagename>` değerlerini daha önce döndürülen `package.location` değerlerle değiştirin. Önceki `<webjobStorage>` adımda bulunan depolama hesabının adıyla değiştirin:
 
     ```azurecli-interactive
     az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
     ```
 
     > [!IMPORTANT]
-    > Bu noktada, işlev uygulaması oluşturuldu. Ancak, görüntüiçeren Azure Kapsayıcı Kayıt Defteri'ne blob tetikleyicisi veya kimlik bilgileri için bağlantı dizesi sağlamadığınıziçin, işlev uygulaması etkin değildir. Sonraki adımlarda, bağlantı dizesini ve kapsayıcı kayıt defteri için kimlik doğrulama bilgilerini sağlarsınız. 
+    > Bu noktada, işlev uygulaması oluşturulmuştur. Ancak, blob tetikleyicisi için bağlantı dizesini veya görüntüyü içeren Azure Container Registry kimlik bilgilerini sağlamadıysanız, işlev uygulaması etkin değil. Sonraki adımlarda, kapsayıcı kayıt defteri için bağlantı dizesini ve kimlik doğrulama bilgilerini sağlarsınız. 
 
-1. Blob tetikleme depolaması için kullanılacak depolama hesabını oluşturun ve bağlantı dizesini alın. Kullanmak `<triggerStorage>` istediğiniz adla değiştirin.
+1. Blob tetikleyici depolaması için kullanılacak depolama hesabını oluşturun ve bağlantı dizesini alın. Kullanmak `<triggerStorage>` istediğiniz adla değiştirin.
 
     ```azurecli-interactive
     az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
@@ -182,9 +182,9 @@ Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem
     ```azurecli-interactiv
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
-    İşlev uygulamasına sağlamak için bu bağlantı dizesini kaydedin. Biz daha sonra istediğimizde kullanacağız`<triggerConnectionString>`
+    İşlev uygulamasına sağlamak için bu bağlantı dizesini kaydedin. Daha sonra, şunu sorduğumuz zaman kullanacağız`<triggerConnectionString>`
 
-1. Depolama hesabındaki giriş ve çıktı için kapsayıcıları oluşturun. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin:
+1. Depolama hesabındaki giriş ve çıkış için kapsayıcıları oluşturun. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -193,25 +193,25 @@ Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. Tetikleyici bağlantı dizesini işlev uygulamasıyla ilişkilendirmek için aşağıdaki komutu kullanın. İşlev uygulamasının adı ile değiştirin. `<app-name>` Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin:
+1. Tetikleyici bağlantı dizesini işlev uygulamasıyla ilişkilendirmek için aşağıdaki komutu kullanın. İşlev `<app-name>` uygulamasının adıyla değiştirin. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin:
 
     ```azurecli-interactive
     az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
     ```
-1. Aşağıdaki komutu kullanarak oluşturulan kapsayıcı ile ilişkili etiketi almak gerekir. Kapsayıcı `<username>` kayıt defterinden daha önce döndürülen kullanıcı adı ile değiştirin:
+1. Aşağıdaki komutu kullanarak oluşturulan kapsayıcı ile ilişkili etiketi almanız gerekir. Daha `<username>` önce kapsayıcı kayıt defterinden döndürülen kullanıcı adıyla değiştirin:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Döndürülen değeri kaydedin, bir `imagetag` sonraki adımda olarak kullanılacaktır.
+    Döndürülen değeri kaydedin, sonraki adımda `imagetag` ' de kullanılır.
 
-1. İşlev uygulamasına kapsayıcı kayıt defterine erişmek için gereken kimlik bilgilerini sağlamak için aşağıdaki komutu kullanın. İşlev uygulamasının adı ile değiştirin. `<app-name>` Bir `<acrinstance>` `<imagetag>` önceki adımdaki AZ CLI çağrısının değerlerini değiştirin. Daha `<username>` `<password>` önce alınan ACR giriş bilgilerini değiştirin ve bu bilgilerle değiştirin:
+1. İşlev uygulamasını kapsayıcı kayıt defterine erişmek için gereken kimlik bilgileriyle sağlamak için aşağıdaki komutu kullanın. İşlev `<app-name>` uygulamasının adıyla değiştirin. Ve `<acrinstance>` `<imagetag>` değerlerini, ÖNCEKI adımda bulunan az CLI çağrısındaki değerlerle değiştirin. Ve `<username>` `<password>` daha önce alınan ACR oturum açma bilgileriyle değiştirin:
 
     ```azurecli-interactive
     az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
-    Bu komut, aşağıdaki JSON belgesine benzer bilgileri döndürür:
+    Bu komut aşağıdaki JSON belgesine benzer bilgiler döndürür:
 
     ```json
     [
@@ -245,28 +245,28 @@ Docker `show_output=True`yapı işleminin çıktısı gösterildiğinde. İşlem
 Bu noktada, işlev uygulaması görüntüyü yüklemeye başlar.
 
 > [!IMPORTANT]
-> Görüntünün yüklenmesi birkaç dakika sürebilir. Azure Portalı'nı kullanarak ilerlemeyi izleyebilirsiniz.
+> Görüntünün yüklenmesi birkaç dakika sürebilir. Azure portalını kullanarak ilerlemeyi izleyebilirsiniz.
 
 ## <a name="test-the-deployment"></a>Dağıtımı test etme
 
-Resim yüklendikten ve uygulama kullanılabilir hale geldiklerinde, uygulamayı tetiklemek için aşağıdaki adımları kullanın:
+Görüntü yüklendikten ve uygulama kullanılabilir olduğunda, uygulamayı tetiklemek için aşağıdaki adımları kullanın:
 
-1. score.py dosyasının beklediği verileri içeren bir metin dosyası oluşturun. Aşağıdaki örnek, 10 sayıdan oluşan bir dizi bekleyen bir score.py çalışır:
+1. Score.py dosyasının beklediği verileri içeren bir metin dosyası oluşturun. Aşağıdaki örnek, 10 sayıdan oluşan bir dizi bekleyen bir score.py ile çalışır:
 
     ```json
     {"data": [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]]}
     ```
 
     > [!IMPORTANT]
-    > Verilerin biçimi, score.py ve modelinizin ne beklediğine bağlıdır.
+    > Verilerin biçimi, score.py ve modelinizin beklediklerinize bağlıdır.
 
-2. Bu dosyayı daha önce oluşturulan tetikleyici depolama blob'undaki giriş kapsayıcısına yüklemek için aşağıdaki komutu kullanın. Verileri `<file>` içeren dosyanın adı ile değiştirin. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `input` daha önce oluşturulan giriş kapsayıcısının adı verilmiştir. Farklı bir ad kullandıysanız, bu değeri değiştirin:
+2. Bu dosyayı daha önce oluşturulan tetikleyici Depolama Blobu içindeki giriş kapsayıcısına yüklemek için aşağıdaki komutu kullanın. Verileri `<file>` içeren dosyanın adıyla değiştirin. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `input` daha önce oluşturulan giriş kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin:
 
     ```azurecli-interactive
     az storage blob upload --container-name input --file <file> --name <file> --connection-string <triggerConnectionString>
     ```
 
-    Bu komutun çıktısı aşağıdaki JSON'a benzer:
+    Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 
     ```json
     {
@@ -275,15 +275,15 @@ Resim yüklendikten ve uygulama kullanılabilir hale geldiklerinde, uygulamayı 
     }
     ```
 
-3. İşlev tarafından üretilen çıktıyı görüntülemek için, oluşturulan çıktı dosyalarını listelemek için aşağıdaki komutu kullanın. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `output` daha önce oluşturulan çıkış kapsayıcısının adıdır. Farklı bir ad kullandıysanız, bu değeri değiştirin:
+3. İşlev tarafından üretilen çıktıyı görüntülemek için, oluşturulan çıkış dosyalarını listelemek için aşağıdaki komutu kullanın. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `output` daha önce oluşturulan çıkış kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin::
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv
     ```
 
-    Bu komutun çıktısı `sample_input_out.json`.
+    Bu komutun çıktısı öğesine `sample_input_out.json`benzerdir.
 
-4. Dosyayı indirmek ve içeriğini incelemek için aşağıdaki komutu kullanın. Önceki `<file>` komuttarafından döndürülen dosya adı ile değiştirin. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin: 
+4. Dosyayı indirmek ve içerikleri incelemek için aşağıdaki komutu kullanın. Önceki `<file>` komutun döndürdüğü dosya adıyla değiştirin. Daha `<triggerConnectionString>` önce döndürülen bağlantı dizesiyle değiştirin: 
 
     ```azurecli-interactive
     az storage blob download --container-name output --file <file> --name <file> --connection-string <triggerConnectionString>
@@ -291,12 +291,12 @@ Resim yüklendikten ve uygulama kullanılabilir hale geldiklerinde, uygulamayı 
 
     Komut tamamlandıktan sonra dosyayı açın. Model tarafından döndürülen verileri içerir.
 
-Blob tetikleyicilerini kullanma hakkında daha fazla bilgi için Azure Blob depolama makalesi [tarafından tetiklenen bir işlev oluştur'a](/azure/azure-functions/functions-create-storage-blob-triggered-function) bakın.
+Blob tetikleyicilerini kullanma hakkında daha fazla bilgi için bkz. [Azure Blob depolama tarafından tetiklenen bir Işlev oluşturma](/azure/azure-functions/functions-create-storage-blob-triggered-function) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Fonksiyonlar](/azure/azure-functions/functions-create-function-linux-custom-image) dokümanında İşlevler Uygulamanızı yapılandırmayı öğrenin.
-* Blob depolama tetikleyicileri [Azure Blob depolama ciltleri](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)hakkında daha fazla bilgi edinin.
-* [Modelinizi Azure Uygulama Hizmeti'ne dağıtın.](how-to-deploy-app-service.md)
-* [Web hizmeti olarak dağıtılan bir ML Modelini tüketin](how-to-consume-web-service.md)
+* [İşlevler belgelerindeki](/azure/azure-functions/functions-create-function-linux-custom-image) işlevlerinizi uygulamanızı yapılandırma hakkında bilgi edinin.
+* BLOB depolama, [Azure Blob depolama bağlamalarını](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)tetikler hakkında daha fazla bilgi edinin.
+* [Modelinizi Azure App Service Için dağıtın](how-to-deploy-app-service.md).
+* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
 * [API Başvurusu](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

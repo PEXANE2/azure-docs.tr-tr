@@ -1,6 +1,6 @@
 ---
-title: Buluttaki etkinlikleri yayımla, abone ol - Azure Event Grid IoT Edge | Microsoft Dokümanlar
-description: IoT Edge'de Event Grid ile Webhook'u kullanarak buluttaki etkinlikleri yayımlayın, abone olun
+title: Cloud-Azure Event Grid IoT Edge yayımlayın, olaylara abone olun | Microsoft Docs
+description: IoT Edge Event Grid ile Web kancasını kullanarak bulutta olaylara abone olun, yayımlayın
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,31 +10,31 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844607"
 ---
-# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Öğretici: Yayımla, buluttaki etkinliklere abone ol
+# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Öğretici: bulutta olaylara abone olma
 
-Bu makale, IoT Edge'deki Olay Izgarasını kullanarak etkinlikleri yayımlamak ve bunlara abone olmak için gereken tüm adımları gözden geçirir. Bu öğretici, Olay İşleyicisi olarak Azure İşi'ni kullanır. Ek hedef türleri için [olay işleyicilerine](event-handlers.md)bakın.
+Bu makalede, IoT Edge Event Grid kullanarak olayları yayımlamak ve bunlara abone olmak için gereken tüm adımlar açıklanmaktadır. Bu öğretici, olay Işleyicisi olarak ve Azure Işlevini kullanır. Ek hedef türleri için bkz. [olay işleyicileri](event-handlers.md).
 
-Devam etmeden önce olay ızgarası konusunun ve aboneliğinin ne olduğunu anlamak için [Olay Izgara Kavramları'na](concepts.md) bakın.
+Devam etmeden önce bir olay Kılavuzu konusunun ve aboneliğinin ne olduğunu anlamak için bkz. [Event Grid kavramları](concepts.md) .
 
 ## <a name="prerequisites"></a>Ön koşullar 
-Bu öğreticiyi tamamlamak için şunları yapmanız gerekir:
+Bu öğreticiyi tamamlayabilmeniz için şunlar gerekir:
 
-* **Azure aboneliği** - Zaten hesabınız yoksa ücretsiz bir [hesap](https://azure.microsoft.com/free) oluşturun. 
-* **Azure IoT Hub ve IoT Edge aygıtı** - Linux [veya](../../iot-edge/quickstart-linux.md) [Windows aygıtlarınız](../../iot-edge/quickstart.md) yoksa hızlı başlatma adımlarını izleyin.
+* **Azure aboneliği** -henüz bir [hesabınız yoksa ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun. 
+* **Azure IoT Hub ve IoT Edge cihazı** -henüz yoksa [Linux](../../iot-edge/quickstart-linux.md) veya [Windows cihazlarında](../../iot-edge/quickstart.md) Hızlı Başlangıç bölümündeki adımları izleyin.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
-## <a name="create-an-azure-function-in-the-azure-portal"></a>Azure portalında Azure işlevi oluşturma
+## <a name="create-an-azure-function-in-the-azure-portal"></a>Azure portal bir Azure işlevi oluşturun
 
-Bir Azure işlevi oluşturmak için [öğreticide](../../azure-functions/functions-create-first-azure-function.md) belirtilen adımları izleyin. 
+Azure işlevi oluşturmak için [öğreticide](../../azure-functions/functions-create-first-azure-function.md) özetlenen adımları izleyin. 
 
-Kod parçacıkını aşağıdaki kodla değiştirin:
+Kod parçacığını aşağıdaki kodla değiştirin:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -58,16 +58,16 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-Yeni işlevinizde sağ üstteki **İşlev URL'sini al'ı** seçin, varsayılan **(İşlev tuşu)** seçeneğini seçin ve ardından **Kopyala'yı**seçin. Daha sonra öğreticide işlev URL değerini kullanırsınız.
+Yeni işlevinizde, sağ üst köşedeki **işlev URL 'Sini al** ' ı seçin, varsayılan (**işlev anahtarı**) seçeneğini belirleyin ve ardından **Kopyala**' yı seçin. İşlevin URL 'SI değerini daha sonra öğreticide kullanacaksınız.
 
 > [!NOTE]
-> Bir EventGrid olayının tetikleyicilerini kullanarak olaylara tepki verme konusunda daha fazla örnek ve öğretici için [Azure İşlevler](../../azure-functions/functions-overview.md) belgelerine bakın.
+> EventGrid olay tetikleyicilerini kullanarak olaylara yeniden davranmaya yönelik daha fazla örnek ve öğretici için [Azure işlevleri](../../azure-functions/functions-overview.md) belgelerine bakın.
 
 ## <a name="create-a-topic"></a>Konu başlığı oluşturma
 
-Bir olayın yayımcısı olarak, bir olay ızgarası konusu oluşturmanız gerekir. Konu, yayıncıların olayları gönderebileceği bir bitiş noktası anlamına gelir.
+Bir olayın yayımcısı olarak bir olay Kılavuzu konusu oluşturmanız gerekir. Konu, yayımcıların olayları gönderebileceği bir uç nokta anlamına gelir.
 
-1. Aşağıdaki içerikle topic2.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içeriğe sahip Topic2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
          {
@@ -77,12 +77,12 @@ Bir olayın yayımcısı olarak, bir olay ızgarası konusu oluşturmanız gerek
           }
         }
     ```
-1. Konuyu oluşturmak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
+1. Konuyu oluşturmak için aşağıdaki komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
-1. Konunun başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
+1. Konunun başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -106,11 +106,11 @@ Bir olayın yayımcısı olarak, bir olay ızgarası konusu oluşturmanız gerek
 
 ## <a name="create-an-event-subscription"></a>Olay aboneliği oluşturma
 
-Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herhangi bir olay almak için, abonelerin ilgi duyulan bir konuda bir Olay ızgarası aboneliği oluşturmaları gerekir.
+Aboneler, bir konuya yayımlanan olaylara kaydolabilirler. Herhangi bir olay almak için, abonelerin ilgilendiğiniz konu başlığında bir olay Kılavuzu aboneliği oluşturması gerekir.
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Aşağıdaki içerikle subscription2.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içeriğe sahip subscription2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         {
@@ -126,13 +126,13 @@ Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herh
     ```
 
    >[!NOTE]
-   > **Uç Nokta Türü,** abonenin bir Webhook olduğunu belirtir.  **EndpointUrl,** abonenin olayları dinlediği URL'yi belirtir. Bu URL, daha önce kurduğunuz Azure İşlevi örneğine karşılık gelir.
-2. Aboneliği oluşturmak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
+   > **EndpointType** , abonenin bir Web kancası olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce kurulum yaptığınız Azure Işlev örneğine karşılık gelir.
+2. Aboneliği oluşturmak için aşağıdaki komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
     ```
-3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için aşağıdaki komutu çalıştırın. 200 OK HTTP Durum Kodu döndürülmelidir.
+3. Aboneliğin başarıyla oluşturulduğunu doğrulamak için şu komutu çalıştırın. 200 Tamam HTTP durum kodu döndürülmelidir.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
@@ -157,9 +157,9 @@ Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herh
         }
     ```
 
-## <a name="publish-an-event"></a>Etkinlik yayınlama
+## <a name="publish-an-event"></a>Olay yayımlama
 
-1. Aşağıdaki içerikle event2.json oluşturun. Yük le ilgili ayrıntılar için [API belgelerimize](api.md) bakın.
+1. Aşağıdaki içeriğe sahip EVENT2. JSON oluşturun. Yük hakkındaki ayrıntılar için [API belgelerimize](api.md) bakın.
 
     ```json
         [
@@ -176,7 +176,7 @@ Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herh
           }
         ]
     ```
-1. Olayı yayımlamak için aşağıdaki komutu çalıştırın
+1. Olayı yayımlamak için şu komutu çalıştırın
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/events?api-version=2019-01-01-preview
@@ -184,7 +184,7 @@ Aboneler bir konuyla yayınlanan etkinlikler için kayıt yaptırabilirler. Herh
 
 ## <a name="verify-event-delivery"></a>Olay teslimini doğrulama
 
-Azure portalında teslim edilen etkinliği, işlevinizin **Monitör** seçeneği altında görüntüleyebilirsiniz.
+İşlevin **izleyici** seçeneğinde Azure Portal teslim edilen olayı görüntüleyebilirsiniz.
 
 ## <a name="cleanup-resources"></a>Kaynakları temizleme
 
@@ -194,15 +194,15 @@ Azure portalında teslim edilen etkinliği, işlevinizin **Monitör** seçeneği
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
 
-* Azure portalında oluşturulan Azure işlevini silin.
+* Azure portal oluşturulan Azure işlevini silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir olay ızgarası konusu, abonelik ve yayımlanmış olaylar oluşturdunuz. Artık temel adımları bildiğinize göre, aşağıdaki makalelere bakın:
+Bu öğreticide, bir olay Kılavuzu konusu, abonelik ve yayımlanan olaylar oluşturdunuz. Artık temel adımları bildiğinize göre aşağıdaki makalelere bakın:
 
-* IoT Edge'de Azure Olay Kılavuzu'nu kullanmayla ilgili sorunları gidermek için [Sorun Giderme kılavuzuna](troubleshoot.md)bakın.
-* [Filtrelerle](advanced-filtering.md)abonelik oluşturma/güncelleme.
-* [Linux](persist-state-linux.md) veya [Windows'da](persist-state-windows.md) Olay Izgara modülünün kalıcılığını ayarlama
-* İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleme
-* Bu [öğreticiyi](forward-events-event-grid-cloud.md) izleyerek olayları buluttaki Azure Etkinlik Izgarasına iletin
-* [Konuları ve abonelikleri kenarda izleme](monitor-topics-subscriptions.md)
+* IoT Edge Azure Event Grid kullanmayla ilgili sorunları gidermek için bkz. [sorun giderme kılavuzu](troubleshoot.md).
+* [Filtrelerle](advanced-filtering.md)abonelik oluşturun/güncelleştirin.
+* [Linux](persist-state-linux.md) veya [Windows](persist-state-windows.md) üzerinde Event Grid modülünün kalıcılığını ayarlama
+* İstemci kimlik doğrulamasını yapılandırmak için [belgeleri](configure-client-auth.md) izleyin
+* Bu [öğreticiyi](forward-events-event-grid-cloud.md) izleyerek olayları buluta Azure Event Grid iletin
+* [Kenarda konuları ve abonelikleri izleyin](monitor-topics-subscriptions.md)

@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning etkinliklerini tüketin
+title: Azure Machine Learning olaylarını tüketme
 titleSuffix: Azure Machine Learning
-description: Bu makalede, Azure Machine Learning tarafından oluşturulan etkinliklere abone olmak, tepki vermek ve aboneliğinizi iptal etmek için Azure Olay Izgarasını nasıl kullanacağınızı öğrenin.
+description: Bu makalede, Azure Machine Learning tarafından oluşturulan olaylara abone olma, tepki verme ve aboneliği kaldırma Azure Event Grid nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,51 +10,51 @@ ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
 ms.openlocfilehash: d8a975487c68a21b2c8b6fa2f07d86c312243f12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79139054"
 ---
-# <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning etkinliklerini tüketin (Önizleme)
+# <a name="consume-azure-machine-learning-events-preview"></a>Azure Machine Learning olaylarını tüketme (Önizleme)
 
-Azure Machine Learning, model eğitimi, model dağıtımı ve izleme de dahil olmak üzere makine öğrenimi sürecinin tüm yaşam döngüsünü yönetir. Azure Machine Learning etkinlikleri, uygulamaların, eğitim çalıştırmalarının tamamlanması, modellerin kaydedilmesi ve dağıtılması ve veri kaymasının algılanması gibi makine öğrenimi yaşam döngüsü sırasında ki olaylara modern sunucusuz kullanarak tepki göstermesine olanak tanır Mimarileri. 
+Azure Machine Learning, model eğitimi, model dağıtımı ve izleme dahil olmak üzere makine öğrenimi işlemi yaşam döngüsünün tamamını yönetir. Azure Machine Learning olaylar, uygulamaların makine öğrenimi yaşam döngüsü sırasında, eğitim çalıştırmaları tamamlandığında, modellerin kaydı ve dağıtılması ve modern sunucusuz mimariler kullanılarak veri kayması saptanması gibi olaylara tepki vermesini sağlar. 
 
-Bu etkinlikler [Azure Olay Ağıtı](https://azure.microsoft.com/services/event-grid/)üzerinden yayınlanır. Müşteriler Azure portalı, Powershell veya Azure CLI'yi kullanarak [bir veya daha fazla olay türü belirterek ve filtreleme koşullarını](/azure/event-grid/event-filtering)belirterek olaylara kolayca abone olabilir. Müşterilerin Azure İşlevler, Azure Mantık Uygulamaları veya genel web hook'ları gibi çok çeşitli olay işleyicileri oluşturma seçenekleri de vardır. Azure Machine Learning, Azure Etkinlik Ağıtı ile birlikte, etkinlik odaklı uygulamalar oluşturmanız için kullanılabilir yüksek, güvenilir ve hataya dayanıklı bir etkinlik teslim platformu sağlar.
+Bu olaylar [Azure Event Grid](https://azure.microsoft.com/services/event-grid/)aracılığıyla yayımlanır. Azure portal, PowerShell veya Azure CLı kullanarak, müşteriler [bir veya daha fazla olay türünü ve filtreleme koşullarını belirterek](/azure/event-grid/event-filtering)olaylara kolayca abone olabilir. Müşteriler ayrıca Azure Işlevleri, Azure Logic Apps veya genel Web kancaları gibi çok çeşitli olay işleyicileri oluşturmayı tercih etiyor. Azure Machine Learning, Azure Event Grid birlikte, olay odaklı uygulamalar oluşturmanız için yüksek düzeyde kullanılabilir, güvenilir ve hataya dayanıklı bir olay teslim platformu sağlar.
 
-Etkinlik Ağıla Azure Machine Learning'i kullanma hakkında daha fazla bilgi [için](how-to-use-event-grid.md)bkz.
+Event Grid ile Azure Machine Learning kullanma hakkında daha fazla bilgi için bkz. [olay odaklı Machine Learning Iş akışları oluşturma (Önizleme)](how-to-use-event-grid.md).
 
 ## <a name="the-event-model"></a>Olay modeli 
 
-Azure Olay Ağı,Azure Machine Learning ve diğer Azure hizmetleri gibi kaynaklardan gelen etkinlikleri okur. Bu olaylar daha sonra Azure Etkinlik Hub'ları, Azure İşlevleri, Mantık Uygulamaları ve diğerleri gibi olay işleyicilerine gönderilir. Aşağıdaki diyagram, Olay Izgara'sının kaynakları ve işleyicileri nasıl bağdaştırdığını gösterir, ancak desteklenen tümleştirmelerin kapsamlı bir listesi değildir.
+Azure Event Grid, Azure Machine Learning ve diğer Azure hizmetleri gibi kaynaklardaki olayları okur. Bu olaylar daha sonra Azure Event Hubs, Azure Işlevleri, Logic Apps ve diğerleri gibi olay işleyicilerine gönderilir. Aşağıdaki diyagramda kaynakları ve işleyicileri Event Grid nasıl bağlandığı, ancak desteklenen tümleştirmelerin kapsamlı bir listesi olmadığı gösterilmiştir.
 
-![Azure Olay Izgarası fonksiyonel modeli](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
+![Azure Event Grid işlevsel modeli](./media/concept-event-grid-integration/azure-event-grid-functional-model.png)
 
-Olay kaynakları ve olay işleyicileri hakkında daha fazla bilgi için olay [ızgarası nedir?](/azure/event-grid/overview)
+Olay kaynakları ve olay işleyicileri hakkında daha fazla bilgi için bkz. [Event Grid nedir?](/azure/event-grid/overview).
 
-## <a name="azure-machine-learning-event-types"></a>Azure Machine Learning etkinlik türleri
+## <a name="azure-machine-learning-event-types"></a>Azure Machine Learning olay türleri
 
-Azure Machine Learning, makine öğrenimi yaşam döngüsünün çeşitli noktalarında etkinlikler sağlar: 
+Azure Machine Learning, çeşitli makine öğrenimi yaşam noktalarında Olaylar sağlar: 
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| `Microsoft.MachineLearningServices.RunCompleted` | Makine öğrenme denemesi tamamlandığında yükseltildi |
-| `Microsoft.MachineLearningServices.ModelRegistered` | Çalışma alanına bir makine öğrenme modeli kaydedildiğinde yükseltildi |
-| `Microsoft.MachineLearningServices.ModelDeployed` | Bir veya daha fazla modelle çıkarım hizmetinin dağıtımı tamamlandığında yükseltildi |
-| `Microsoft.MachineLearningServices.DatasetDriftDetected` | İki veri kümesi için veri kayması algılama işi tamamlandığında yükseltildi |
-| `Microsoft.MachineLearningServices.RunStatusChanged` | Bir çalıştırma durumu değiştiğinde yükseltilmiş, şu anda yalnızca bir çalıştırma durumu 'başarısız' olduğunda yükseltilmiş |
+| `Microsoft.MachineLearningServices.RunCompleted` | Machine Learning deneme çalıştırması tamamlandığında tetiklenir |
+| `Microsoft.MachineLearningServices.ModelRegistered` | Bir makine öğrenimi modeli çalışma alanına kaydedildiğinde tetiklenir |
+| `Microsoft.MachineLearningServices.ModelDeployed` | Bir veya daha fazla modelle bir çıkarım hizmeti dağıtımı tamamlandığında tetiklenir |
+| `Microsoft.MachineLearningServices.DatasetDriftDetected` | İki veri kümesi için bir veri drara algılama işi tamamlandığında tetiklenir |
+| `Microsoft.MachineLearningServices.RunStatusChanged` | Çalışma durumu değiştirildiğinde, şu anda yalnızca bir çalıştırma durumu ' Failed ' olduğunda tetiklenir |
 
-## <a name="subscribe-to-machine-learning-events"></a>Machine Learning etkinliklerine abone olun
+## <a name="subscribe-to-machine-learning-events"></a>Machine Learning olaylarına abone olma
 
-Azure Machine Learning etkinlikleri için abonelikler rol tabanlı erişim denetimi (RBAC) tarafından korunur. Yalnızca bir çalışma alanının [sahibi veya katılımcısı](how-to-assign-roles.md#default-roles) olay abonelikleri oluşturabilir, güncelleyebilir ve silebilir.
+Azure Machine Learning olaylar için abonelikler rol tabanlı erişim denetimi (RBAC) tarafından korunur. Yalnızca bir çalışma alanının [katılımcısı veya sahibi](how-to-assign-roles.md#default-roles) olay abonelikleri oluşturabilir, güncelleştirebilir ve silebilir.
 
-Olay abonelikleri çeşitli koşullara göre filtrelenebilir. Filtreler olay aboneliğinin [oluşturulması](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) sırasında veya [daha sonraki bir zamanda](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)olay aboneliklerine uygulanabilir. 
+Olay abonelikleri, çeşitli koşullara göre filtrelenebilir. Filtre, olay aboneliklerinin [oluşturulması](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) sırasında veya [daha sonraki bir zamanda](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest)olay aboneliklerine uygulanabilir. 
 
-### <a name="filter-by-event-type"></a>Olay türüne göre filtreleme
-Etkinlik aboneliği bir veya daha fazla Azure Machine Learning etkinlik türü belirtebilir.
+### <a name="filter-by-event-type"></a>Olay türüne göre filtrele
+Bir olay aboneliği, bir veya daha fazla Azure Machine Learning olay türü belirtebilir.
 
-### <a name="filter-by-event-subject"></a>Olay konusuna göre filtreleme
-Azure Olay Idamı, eşleşen bir konuya sahip olayların aboneye teslim edilebilmeleri için, __eşlemelerle başlayan__ ve __biten__ ekişlere göre konu filtrelerini destekler. Farklı makine öğrenimi etkinlikleri farklı konu biçimine sahiptir.
+### <a name="filter-by-event-subject"></a>Olay konusuna göre filtrele
+Azure Event Grid, __ile başlayan__ ve eşleştirmelerle __biten__ konu filtrelerini destekler, böylece eşleşen bir konuya sahip olaylar aboneye teslim edilir. Farklı makine öğrenimi olaylarının farklı konu formatı vardır.
 
 | Olay türü | Konu biçimi | Örnek konu |
 | ---------- | ----------- | ----------- |
@@ -66,40 +66,40 @@ Azure Olay Idamı, eşleşen bir konuya sahip olayların aboneye teslim edilebil
 
 ### <a name="advanced-filtering"></a>Gelişmiş filtreleme
 
-Azure Olay Ağış, yayımlanmış olay şemasına dayalı gelişmiş filtreleme yi de destekler. Azure Machine Learning etkinlik şeması ayrıntıları, [Azure Machine Learning için Azure Olay Ağı etkinlik şemasında](../event-grid/event-schema-machine-learning.md)bulunabilir.
+Azure Event Grid, yayımlanan olay şemasına göre gelişmiş filtrelemeyi de destekler. Azure Machine Learning olay şeması ayrıntıları, [Azure Machine Learning için Azure Event Grid olay şeması](../event-grid/event-schema-machine-learning.md)' nda bulunabilir.
 
-Gerçekleştirebileceğiniz bazı örnek gelişmiş filtreler şunlardır:
+Gerçekleştirebileceğiniz bazı örnek Gelişmiş Filtreler şunları içerir:
 
-* Olay `Microsoft.MachineLearningServices.ModelRegistered` için, modelin etiket değerini filtrelemek için:
+* For `Microsoft.MachineLearningServices.ModelRegistered` olayı, modelin etiket değerini filtrelemek için:
 
     ```
     --advanced-filter data.ModelTags.key1 StringIn ('value1')
     ```
 
-Filtrelerin nasıl uygulanacağı hakkında daha fazla bilgi edinmek [için Olay Izgarası için Filtre olayları'na](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)bakın.
+Filtrelerin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [Event Grid olayları filtreleme](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-## <a name="consume-machine-learning-events"></a>Makine Öğrenimi etkinliklerini tüketin
+## <a name="consume-machine-learning-events"></a>Machine Learning olaylarını tüketme
 
-Machine Learning etkinliklerini işleyen uygulamalar önerilen birkaç uygulamayı izlemelidir:
+Machine Learning olaylarını işleyen uygulamalar, önerilen birkaç uygulamayı izlemelidir:
 
 > [!div class="checklist"]
-> * Birden çok abonelik olayları aynı olay işleyicisine yönlendirecek şekilde yapılandırılabildiği için, olayların belirli bir kaynaktan geldiğini varsaymak değil, beklediğiniz makine öğrenimi çalışma alanından geldiğinden emin olmak için iletinin konusunu denetlemek önemlidir.
-> * Benzer şekilde, eventType'ın işlemeye hazır olup olmadığını denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını varsaymayın.
-> * İletiler bozuk olduğundan ve biraz gecikmeden sonra, nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için etag alanlarını kullanın.  Ayrıca, belirli bir nesnedeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın.
-> * Anlamadığınız alanları yoksay. Bu uygulama, gelecekte eklenebilir yeni özelliklere karşı esnek tutmanıza yardımcı olacaktır.
-> * Başarısız olan veya iptal edilen Azure Machine Learning işlemleri bir olayı tetiklemez. Örneğin, bir model dağıtımı başarısız olursa Microsoft.MachineLearningServices.ModelDeployed tetiklenmez. Uygulamalarınızı tasarlarken bu tür hata modunu göz önünde bulundurun. Bir işlemin durumunu kontrol etmek ve ayrıntılı hata nedenlerini anlamak için Azure Machine Learning SDK, CLI veya portalı her zaman kullanabilirsiniz.
+> * Birden çok abonelik olayları aynı olay işleyicisine yönlendirmek üzere yapılandırılabildiğiniz için, olayların belirli bir kaynaktan olduğunu varsaymamak önemlidir, ancak beklediğiniz makine öğrenimi çalışma alanından geldiğinden emin olmak için iletinin konusunu kontrol edin.
+> * Benzer şekilde, eventType için hazırlanmakta olan bir olay olduğunu ve aldığınız tüm olayların istediğiniz tür olacağını kabul edin.
+> * İletiler sıraya alınır ve bir gecikmeden sonra, nesneler hakkındaki bilgilerinizin güncel olup olmadığını anlamak için ETag alanlarını kullanın.  Ayrıca, belirli bir nesne üzerindeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın.
+> * Anladığınızı alanları yoksayın. Bu uygulama, gelecekte eklenebilecek yeni özelliklere dayanıklı tutmaya yardımcı olur.
+> * İşlem başarısız veya iptal edildi Azure Machine Learning işlemler bir olayı tetiklemez. Örneğin, bir model dağıtımı başarısız olursa Microsoft. MachineLearningServices. Modeldağıtılan tetiklenmez. Uygulamalarınızı tasarlarken bu hata modunu göz önünde bulundurun. Bir işlemin durumunu denetlemek ve ayrıntılı hata nedenlerini anlamak için Azure Machine Learning SDK, CLı veya Portal 'ı her zaman kullanabilirsiniz.
 
-Azure Olay İzlemi, müşterilerin Azure Machine Learning etkinlikleri tarafından tetiklenebilen çift siz ileti işleyicileri oluşturmasına olanak tanır. İleti işleyicilerinin bazı önemli örnekleri şunlardır:
+Azure Event Grid, müşterilerin Azure Machine Learning olayları tetiklenebilecek, birlikte bulunan ileti işleyicileri oluşturmasına izin verir. İleti işleyicilerinin bazı önemli örnekleri şunlardır:
 * Azure İşlevleri
 * Azure Logic Apps
 * Azure Event Hubs
-* Azure Veri Fabrikası Boru Hattı
-* Azure platformunda veya başka bir yerde barındırılabilen genel webhook'lar
+* Azure Data Factory işlem hattı
+* Azure platformunda veya başka bir yerde barındırılabilen genel Web kancaları
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Etkinlik Ağıt'ı hakkında daha fazla bilgi edinin ve Azure Machine Learning etkinliklerini deneyin:
+Event Grid hakkında daha fazla bilgi edinin ve Azure Machine Learning olaylarına bir deneme verin:
 
 - [Event Grid Hakkında](../event-grid/overview.md)
-- [Azure Makine Öğrenimi için Azure Olay Izgara etkinliği şeması](../event-grid/event-schema-machine-learning.md)
-- [Azure Machine Learning ile etkinlik odaklı iş akışları oluşturun](how-to-use-event-grid.md)
+- [Azure Machine Learning için Azure Event Grid olay şeması](../event-grid/event-schema-machine-learning.md)
+- [Azure Machine Learning olay odaklı iş akışları oluşturma](how-to-use-event-grid.md)

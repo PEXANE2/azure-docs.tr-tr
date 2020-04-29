@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Süreci yaşam döngüsü
-description: Ekip Veri Bilimi Süreci (TDSP), veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar.
+title: Team Data Science Işlem yaşam döngüsü
+description: Ekip veri bilimi Işlemi (TDSP), veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz, önerilen bir yaşam döngüsü sağlar.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,21 +12,21 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720461"
 ---
-# <a name="the-team-data-science-process-lifecycle"></a>Ekip Veri Bilimi Süreci yaşam döngüsü
+# <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsü
 
-Ekip Veri Bilimi Süreci (TDSP), veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği tüm adımları özetler. Veri Madenciliği için Çapraz Endüstri Standart Süreci [(CRISP-DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), Veritabanlarında Bilgi Bulma [(KDD)](https://wikipedia.org/wiki/Data_mining#Process)veya kuruluşunuzun kendi özel işlemi gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, yine de görev tabanlı TDSP'yi kullanabilirsiniz. 
+Ekip veri bilimi Işlemi (TDSP), veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz, önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, başarılı projelerin izlediği adımların tamamını özetler. Veri madenciliği için platformlar arası standart Işlem [(net DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), veritabanlarında bilgi bulma [(kdd)](https://wikipedia.org/wiki/Data_mining#Process)veya kuruluşunuzun kendi özel süreci gibi başka bir veri bilimi yaşam döngüsü kullanıyorsanız, görev tabanlı TDSP 'yi kullanmaya devam edebilirsiniz. 
 
-Bu yaşam döngüsü, akıllı uygulamaların bir parçası olarak gönderilmeyi amaçlayan veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, tahmine dayalı analitik için makine öğrenimi veya yapay zeka modellerini devreye sokar. Araştırmacı veri bilimi projeleri ve doğaçlama analiz projeleri de bu sürecin kullanımından yararlanabilir. Ancak bu projeler için, burada açıklanan bazı adımlara gerek olmayabilir. 
+Bu yaşam döngüsü, akıllı uygulamaların bir parçası olarak teslim etmek üzere tasarlanan veri bilimi projeleri için tasarlanmıştır. Bu uygulamalar, tahmine dayalı analiz için makine öğrenimi veya yapay zeka modelleri dağıtır. Araştırmacı veri bilimi projeleri ve improvised Analytics projeleri, bu işlemin kullanımıyla de faydalanabilir. Ancak bu projeler için burada açıklanan adımlardan bazıları gerekmeyebilir. 
 
 ## <a name="five-lifecycle-stages"></a>Beş yaşam döngüsü aşaması
 
-TDSP yaşam döngüsü yinelemeli olarak yürütülen beş ana aşamadan oluşur. Bu aşamalar şunlardır:
+TDSP yaşam döngüsü tekrarlayarak yürütülen beş ana aşamadan oluşur. Bu aşamalar şunları içerir:
 
    1. [Kurumsal yaklaşım](lifecycle-business-understanding.md)
    2. [Veri edinme ve anlama](lifecycle-data.md)
@@ -34,21 +34,21 @@ TDSP yaşam döngüsü yinelemeli olarak yürütülen beş ana aşamadan oluşur
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-TDSP yaşam döngüsünün görsel bir gösterimi aşağıdavelvettir: 
+TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir: 
 
 ![TDSP yaşam döngüsü](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
-TDSP yaşam döngüsü, tahmine dayalı modelleri kullanmak için gereken görevler hakkında rehberlik sağlayan bir dizi yeniden biçimlendirilmiş adım olarak modellenir. Akıllı uygulamalar oluşturmak için kullanmayı planladığınız üretim ortamında tahmine dayalı modelleri dağıtMış olursunuz. Bu işlem yaşam döngüsünün amacı, bir veri bilimi projesini net bir etkileşim bitiş noktasına taşımaya devam etmektir. Veri bilimi araştırma ve keşif bir egzersizdir. Standart şablonlar kullanan iyi tanımlanmış bir yapı tonu kullanarak görevleri ekibinize ve müşterilerinize iletebilme özelliği yanlış anlamaları önlemeye yardımcı olur. Bu şablonları kullanmak, karmaşık bir veri bilimi projesinin başarıyla tamamlanması olasılığını da artırır.
+TDSP yaşam döngüsü, tahmine dayalı modeller kullanmak için gereken görevlere rehberlik sağlayan bir yinelenmemiş adım dizisi olarak modellenir. Tahmine dayalı modelleri, akıllı uygulamalar oluşturmak için kullanmayı planladığınız üretim ortamında dağıtırsınız. Bu işlem yaşam döngüsünün amacı, bir veri bilimi projesini açık bir katılım uç noktasına taşımaya devam olmaktır. Veri bilimi, araştırma ve bulma konusunda bir uygulamadır. Standartlaştırılmış şablonlar kullanan iyi tanımlanmış bir yapıt kümesi kullanarak, görevleri takımınızla ve müşterilerinizle iletişim kurma özelliği, yanlış anlayışları önlemeye yardımcı olur. Bu şablonların kullanılması, karmaşık bir veri bilimi projesinin başarıyla tamamlanmasının olasılığını da artırır.
 
-Her aşama için aşağıdaki bilgileri sağlarız:
+Her aşamada aşağıdaki bilgileri sağlıyoruz:
 
-   * **Hedefler**: Belirli hedefler.
-   * **Nasıl yapılacağını**: Belirli görevlerin ana hatlarını ve bunların nasıl tamamlanılabildiğini anlatan kılavuzlar.
-   * **Eserler**: Teslim ve bunları üretmek için destek.
+   * **Hedefler**: belirli amaçlar.
+   * **Nasıl yapılır**: belirli görevlerin bir özeti ve bunların nasıl tamamlanacağı hakkında rehberlik.
+   * **Yapıtlar**: teslim edilebilirler ve bunları oluşturmak için destek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam uçtan uca izlenme ler salıyoruz. [Örnek walkthroughs](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları içeren senaryoların bir listesini sağlar. İzler, bulut, şirket içi araçlar ve hizmetlerin akıllı bir uygulama oluşturmak için iş akışı veya ardışık ardışık yollarla nasıl birleştirilebildiğini gösterir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren eksiksiz bir uçtan uca izlenecek yol sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSP'lerde adımların nasıl yürütüldüne ilgili örnekler [için](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bkz.
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

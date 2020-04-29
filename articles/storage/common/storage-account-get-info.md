@@ -1,7 +1,7 @@
 ---
 title: .NET ile depolama hesabı türü ve SKU adı alın
 titleSuffix: Azure Storage
-description: .NET istemci kitaplığını kullanarak Azure Depolama hesap türünü ve SKU adını nasıl alacağınızı öğrenin.
+description: .NET istemci kitaplığını kullanarak Azure depolama hesabı türü ve SKU adı alma hakkında bilgi edinin.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,29 +10,29 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 1495ed55c24a0f94b911d60d1db0f32940ea134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137067"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET ile depolama hesabı türü ve SKU adı alın
 
-Bu makalede, [.NET için Azure](/dotnet/api/overview/azure/storage?view=azure-dotnet)Depolama istemci kitaplığını kullanarak bir blob için Azure Depolama hesap türü ve SKU adı nasıl alınır gösterilmektedir.
+Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)'nı kullanarak bir blob Için Azure depolama hesabı türü ve SKU adının nasıl alınacağı gösterilmektedir.
 
-Hesap bilgileri, 2018-03-28 sürümüyle başlayan hizmet sürümlerinde mevcuttur.
+Hesap bilgileri, sürüm 2018-03-28 ' den başlayarak hizmet sürümlerinde kullanılabilir.
 
 ## <a name="about-account-type-and-sku-name"></a>Hesap türü ve SKU adı hakkında
 
-**Hesap türü**: Geçerli `BlobStorage` `BlockBlobStorage`hesap `FileStorage` `Storage`türleri `StorageV2`, , , , ve . [Azure depolama hesabına genel bakış,](storage-account-overview.md) çeşitli depolama hesaplarının açıklamaları da dahil olmak üzere daha fazla bilgiye sahiptir.
+**Hesap türü**: geçerli hesap türleri, `BlobStorage`, `BlockBlobStorage`, `FileStorage`ve `Storage` `StorageV2`içerir. [Azure depolama hesabına genel bakış](storage-account-overview.md) , çeşitli depolama hesaplarının açıklamaları dahil olmak üzere daha fazla bilgi içerir.
 
-**SKU adı**: Geçerli `Premium_LRS`SKU adları `Standard_RAGRS`, `Standard_RAGZRS`, `Standard_ZRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS`, `Standard_LRS`, , , ve . SKU adları büyük/küçük harf duyarlıdır ve [SkuName Sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)dize alanlarıdır.
+**SKU adı**: geçerli SKU adları, `Premium_LRS` `Premium_ZRS` `Standard_GRS` `Standard_GZRS` `Standard_LRS`,,,, `Standard_RAGRS`, `Standard_RAGZRS`, ve `Standard_ZRS`içerir. SKU adları büyük/küçük harfe duyarlıdır ve [Skuname sınıfında](/dotnet/api/microsoft.azure.management.storage.models.skuname?view=azure-dotnet)dize alanlarıdır.
 
-## <a name="retrieve-account-information"></a>Hesap bilgilerini alma
+## <a name="retrieve-account-information"></a>Hesap bilgilerini al
 
-Bir blob ile ilişkili depolama hesabı türünü ve SKU adını almak için GetAccountProperties veya [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) yöntemini arayın. [GetAccountProperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet)
+Depolama hesabı türünü ve bir blob ile ilişkili SKU adını almak için, [Getaccountproperties](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountproperties?view=azure-dotnet) veya [GetAccountPropertiesAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getaccountpropertiesasync?view=azure-dotnet) yöntemini çağırın.
 
-Aşağıdaki kod örneği, salt okunur hesap özelliklerini alır ve görüntüler.
+Aşağıdaki kod örneği, salt okunurdur hesap özelliklerini alır ve görüntüler.
 
 ```csharp
 private static async Task GetAccountInfoAsync(CloudBlob blob)
@@ -62,6 +62,6 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure portalı](https://portal.azure.com) ve Azure REST API'si aracılığıyla bir depolama hesabında gerçekleştirebileceğiniz diğer işlemler hakkında bilgi edinin.
+[Azure Portal](https://portal.azure.com) ve Azure REST API aracılığıyla bir depolama hesabında gerçekleştirebileceğiniz diğer işlemler hakkında bilgi edinin.
 
-- [Hesap Bilgileri alma işlemi (REST)](/rest/api/storageservices/get-account-information)
+- [Hesap bilgilerini al işlemi (REST)](/rest/api/storageservices/get-account-information)

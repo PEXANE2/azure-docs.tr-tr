@@ -1,6 +1,6 @@
 ---
-title: Azure CLI kullanarak Azure VM'de yönetilen kimlikleri yapılandırma - Azure AD
-description: Azure CLI kullanarak bir Azure VM'de sistem ve kullanıcı tarafından atanan yönetilen kimlikleri yapılandırmak için adım adım yönergeler.
+title: Azure CLı kullanarak Azure VM 'de yönetilen kimlikleri Yapılandırma-Azure AD
+description: Azure CLı kullanarak bir Azure VM 'de sistem ve Kullanıcı tarafından atanan yönetilen kimlikleri yapılandırmaya yönelik adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,44 +16,44 @@ ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2efaceefc53b3c0b5dfd899baf9fd30fdf9a76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244153"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLI'yi kullanarak Azure VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLı kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Azure kaynakları için yönetilen kimlikler, Azure Etkin Dizini'nde otomatik olarak yönetilen bir kimlik le Azure hizmetlerine olanak sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini doğrulamak için kullanabilirsiniz. 
+Azure kaynakları için Yönetilen kimlikler, Azure Active Directory ' de otomatik olarak yönetilen bir kimlikle Azure hizmetleri sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz. 
 
-Bu makalede, Azure CLI'yi kullanarak, Azure kaynakları işlemleri için aşağıdaki yönetilen kimlikleri bir Azure VM'de nasıl gerçekleştireceklerini öğrenirsiniz:
+Bu makalede, Azure CLı 'yı kullanarak Azure VM 'de Azure kaynakları işlemleri için aşağıdaki yönetilen kimliklerin nasıl gerçekleştirileceğini öğreneceksiniz:
 
-- Azure VM'de sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı
-- Azure VM'de kullanıcı tarafından atanan yönetilen bir kimlik ekleme ve kaldırma
+- Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme ve devre dışı bırakma
+- Azure VM 'ye Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için yönetilen kimliklere aşina değilseniz, [genel bakış bölümüne](overview.md)göz atın. ** [Sistem tarafından atanan ve kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirin.**
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- CLI komut dosyası örneklerini çalıştırmak için üç seçeneğiniz var:
-    - Azure portalından [Azure Bulut Shell'i](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
-    - Her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesi aracılığıyla gömülü Azure Bulut Kabuğu'nu kullanın.
-    - Yerel bir CLI konsolu kullanmayı tercih ediyorsanız [Azure CLI'nin en son sürümünü yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli) 
+- CLı betiği örneklerini çalıştırmak için üç seçeneğiniz vardır:
+    - Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
+    - Katıştırılmış Azure Cloud Shell her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak kullanın.
+    - Yerel bir CLı konsolu kullanmayı tercih ediyorsanız [Azure CLI 'nın en son sürümünü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli) . 
       
       > [!NOTE]
-      > Komutlar Azure [CLI'nin](https://docs.microsoft.com/cli/azure/install-azure-cli)en son sürümüyansıtacak şekilde güncelleştirildi.     
+      > Komutlar, [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)'nın en son sürümünü yansıtacak şekilde güncelleştirilmiştir.     
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="system-assigned-managed-identity"></a>Sistem le atanmış yönetilen kimlik
+## <a name="system-assigned-managed-identity"></a>Sistem tarafından atanan yönetilen kimlik
 
-Bu bölümde, Azure CLI'yi kullanarak bir Azure VM'de sistem tarafından atanan yönetilen kimliği etkinleştirmeyi ve devre dışı kalmayı öğrenirsiniz.
+Bu bölümde, Azure CLı kullanarak bir Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmeyi ve devre dışı bırakmayı öğreneceksiniz.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında sistem tarafından atanmış yönetilen kimliği etkinleştirme
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-Sistem tarafından atanan yönetilen kimliği etkinleştirilmiş bir Azure VM oluşturmak için, hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol atamasına ihtiyacı vardır.  Ek Azure AD dizin idemi rol atamaları gerekmez.
+Sistem tarafından atanan yönetilen kimlik etkin bir Azure VM 'si oluşturmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. Azure CLI'yi yerel bir konsolda kullanıyorsanız, önce [az login](/cli/azure/reference-index#az-login) kullanarak Azure'da oturum açın. VM'yi dağıtırken kullanmak istediğiniz Azure aboneliğiyle ilişkilendirilmiş bir hesap kullanın:
 
@@ -67,42 +67,42 @@ Sistem tarafından atanan yönetilen kimliği etkinleştirilmiş bir Azure VM ol
    az group create --name myResourceGroup --location westus
    ```
 
-3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametre tarafından istendiği gibi sistem tarafından atanmış yönetilen bir kimliğe sahip *myVM* adlı bir VM oluşturur. `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
+3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından istenen şekilde, sistem tarafından atanan yönetilen kimlik Ile *MYVM* adlı bir VM oluşturur. `--admin-username` ve `--admin-password` parametreleri, sanal makinede oturum açmak için yönetici hesabının kullanıcı adı ve parolasını belirtir. Bu değerleri ortamınıza uyacak şekilde güncelleştirin: 
 
    ```azurecli-interactive 
    az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
    ```
 
-### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Varolan bir Azure VM'de sistem le atanmış yönetilen kimliği etkinleştirme
+### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>Mevcut bir Azure VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirme
 
-VM'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol atamasına ihtiyacı vardır.  Ek Azure AD dizin idemi rol atamaları gerekmez.
+Bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Azure CLI'yi yerel bir konsolda kullanıyorsanız, önce [az login](/cli/azure/reference-index#az-login) kullanarak Azure'da oturum açın. VM içeren Azure aboneliğiyle ilişkili bir hesap kullanın.
+1. Azure CLI'yi yerel bir konsolda kullanıyorsanız, önce [az login](/cli/azure/reference-index#az-login) kullanarak Azure'da oturum açın. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesap kullanın.
 
    ```azurecli-interactive
    az login
    ```
 
-2. Az [vm kimlik atama](/cli/azure/vm/identity/) `identity assign` komutu ile sistem tarafından atanan kimliği varolan bir VM'ye etkinleştirin:
+2. Sistem tarafından atanan kimliği mevcut bir VM `identity assign` 'ye etkinleştirmek için [az VM Identity Assign](/cli/azure/vm/identity/) komutunu kullanın:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
    ```
 
-### <a name="disable-system-assigned-identity-from-an-azure-vm"></a>Azure VM'den sistem le atanmış kimliği devre dışı
+### <a name="disable-system-assigned-identity-from-an-azure-vm"></a>Azure VM 'den sistem tarafından atanan kimliği devre dışı bırakma
 
-VM'de sistem tarafından atanan yönetilen kimliği devre dışı katmak için hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol atamasına ihtiyacı vardır.  Ek Azure AD dizin idemi rol atamaları gerekmez.
+Bir VM 'de sistem tarafından atanan yönetilen kimliği devre dışı bırakmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-Sistem tarafından atanan kimliğe artık ihtiyaç duymadığı, ancak yine de kullanıcı tarafından atanan kimliklere ihtiyaç duymadığı bir Sanal Makineniz varsa, aşağıdaki komutu kullanın:
+Artık sistem tarafından atanan kimliğe ihtiyacı olmayan ancak hala Kullanıcı tarafından atanan kimliklere ihtiyaç duyulmayan bir sanal makineniz varsa, aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned' 
 ```
 
-Artık sistem tarafından atanmış kimliğe ihtiyaç duymadığı bir sanal makineniz varsa ve kullanıcı tarafından atanmış kimlikleri yoksa aşağıdaki komutu kullanın:
+Artık sistem tarafından atanan kimliğe ihtiyacı olmayan ve Kullanıcı tarafından atanan kimlikleri olmayan bir sanal makineniz varsa, aşağıdaki komutu kullanın:
 
 > [!NOTE]
-> Değer `none` büyük/küçük harf duyarlıdır. Küçük olmalı. 
+> Değer `none` büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır. 
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
@@ -111,13 +111,13 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 
 ## <a name="user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik
 
-Bu bölümde, Azure CLI'yi kullanarak kullanıcı tarafından atanan yönetilen bir kimliği azure VM'den nasıl ekleyeceğinizi ve kaldıracağınızı öğreneceksiniz.
+Bu bölümde, Azure CLı kullanarak bir Azure VM 'sinden Kullanıcı tarafından atanan yönetilen kimlik ekleme ve kaldırma hakkında bilgi edineceksiniz.
 
-### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında kullanıcı tarafından atanmış yönetilen bir kimlik atama
+### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM oluşturma sırasında Kullanıcı tarafından atanan yönetilen kimlik atama
 
-Oluşturma sırasında bir VM'ye kullanıcı tarafından atanan bir kimlik atamak için, hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [Yönetilen Kimlik Operatörü](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin idemi rol atamaları gerekmez.
+Oluşturma sırasında bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Kullanmak istediğiniz bir kaynak grubunuz varsa bu adımı atlayabilirsiniz. Az [grubu](~/articles/azure-resource-manager/management/overview.md#terminology) oluşturmayı kullanarak, kullanıcı tarafından atanan yönetilen kimliğinizin oluşturulması ve dağıtılması için bir kaynak [grubu oluşturun.](/cli/azure/group/#az-group-create) `<RESOURCE GROUP>` ve `<LOCATION>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. :
+1. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu adımı atlayabilirsiniz. [Az Group Create](/cli/azure/group/#az-group-create)kullanarak Kullanıcı tarafından atanan yönetilen kimliğinizin kapsama ve dağıtımına yönelik bir [kaynak grubu](~/articles/azure-resource-manager/management/overview.md#terminology) oluşturun. `<RESOURCE GROUP>` ve `<LOCATION>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -130,7 +130,7 @@ Oluşturma sırasında bir VM'ye kullanıcı tarafından atanan bir kimlik atama
    ```azurecli-interactive
    az identity create -g myResourceGroup -n myUserAssignedIdentity
    ```
-   Yanıt, aşağıdakine benzer şekilde oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. Kullanıcı tarafından atanan yönetilen kimliğe atanan kaynak kimliği değeri aşağıdaki adımda kullanılır.
+   Yanıt, aşağıdaki gibi oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. Kullanıcı tarafından atanan yönetilen kimliğe atanan kaynak KIMLIĞI değeri aşağıdaki adımda kullanılır.
 
    ```json
    {
@@ -147,25 +147,25 @@ Oluşturma sırasında bir VM'ye kullanıcı tarafından atanan bir kimlik atama
    }
    ```
 
-3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametretarafından belirtildiği gibi, yeni kullanıcı tarafından atanan kimlikle ilişkili bir VM oluşturur. `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. 
+3. [az vm create](/cli/azure/vm/#az-vm-create) kullanarak VM oluşturun. Aşağıdaki örnek, `--assign-identity` parametresi tarafından belirtilen yeni kullanıcı tarafından atanan kimlikle ILIŞKILI bir VM oluşturur. `<RESOURCE GROUP>`, `<VM NAME>`, `<USER NAME>`, `<PASSWORD>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <USER ASSIGNED IDENTITY NAME>
    ```
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Kullanıcı tarafından atanan yönetilen bir kimliği varolan bir Azure VM'sine atama
+### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>Mevcut bir Azure VM 'sine Kullanıcı tarafından atanan bir yönetilen kimlik atama
 
-Bir VM'ye kullanıcı tarafından atanan bir kimlik atamak için, hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [Yönetilen Kimlik Operatörü](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin idemi rol atamaları gerekmez.
+Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) ve [yönetilen kimlik işleci](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
-1. Kullanıcı tarafından atanan kimliği oluşturmak için [az identity create](/cli/azure/identity#az-identity-create) kullanın.  Parametre, `-g` kullanıcı tarafından atanan kimliğin oluşturulduğu kaynak grubunu `-n` ve parametrenin adını belirtir. `<RESOURCE GROUP>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
+1. Kullanıcı tarafından atanan kimliği oluşturmak için [az identity create](/cli/azure/identity#az-identity-create) kullanın.  `-g` Parametresi, Kullanıcı tarafından atanan kimliğin oluşturulduğu kaynak grubunu belirtir ve `-n` parametresi adını belirtir. `<RESOURCE GROUP>` ve `<USER ASSIGNED IDENTITY NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın:
 
     > [!IMPORTANT]
-    > Addaki özel karakterlerle (yani alt alt) kullanıcı tarafından atanan yönetilen kimlikler oluşturmak şu anda desteklenmez. Lütfen alfasayısal karakterler kullanın. Güncelleştirmeler için sonra yeniden denetleyin.  Daha fazla bilgi için [Bkz. SSS ve bilinen sorunlar](known-issues.md)
+    > Adında özel karakterler (alt çizgi) ile Kullanıcı tarafından atanan Yönetilen kimlikler oluşturma işlemi şu anda desteklenmiyor. Lütfen alfasayısal karakterler kullanın. Güncelleştirmeler için sonra yeniden denetleyin.  Daha fazla bilgi için bkz. [SSS ve bilinen sorunlar](known-issues.md)
 
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-   Yanıt, aşağıdakine benzer şekilde oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. 
+   Yanıt, aşağıdaki gibi oluşturulan kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını içerir. 
 
    ```json
    {
@@ -182,42 +182,42 @@ Bir VM'ye kullanıcı tarafından atanan bir kimlik atamak için, hesabınızın
    }
    ```
 
-2. Az vm kimliğini atayarak kullanıcı tarafından atanan kimliği VM'nize [atayın.](/cli/azure/vm) `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kullanıcı `<USER ASSIGNED IDENTITY NAME>` tarafından atanan yönetilen kimliğin `name` kaynak özelliği, önceki adımda oluşturulduğu gibi:
+2. [Az VM Identity Assign](/cli/azure/vm)kullanarak VM 'nize Kullanıcı tarafından atanan kimlik atayın. `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY NAME>` Önceki adımda oluşturulduğu gibi kullanıcı tarafından atanan yönetilen kimliğin `name` kaynak özelliğidir:
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
     ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Kullanıcı tarafından atanan yönetilen kimliği Azure VM'den kaldırma
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Kullanıcı tarafından atanan yönetilen kimliği bir Azure VM 'den kaldırma
 
-Bir VM'ye kullanıcı tarafından atanan bir kimliği kaldırmak için, hesabınızın [Sanal Makine Katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rol atamasına ihtiyacı vardır. 
+Kullanıcı tarafından atanan kimliği bir VM 'ye kaldırmak için hesabınızın [sanal makine katılımcısı](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) rolü ataması gerekir. 
 
-Bu, sanal makineye atanan tek kullanıcı atanmış `UserAssigned` yönetilen kimlikse, kimlik türü değerinden kaldırılır.  `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kullanıcı `<USER ASSIGNED IDENTITY>` tarafından atanan kimliğin `name` özelliği, sanal makinenin kimlik bölümünde bulunabilir: `az vm identity show`
+Sanal makineye atanan tek kullanıcı tarafından atanan yönetilen kimlik ise, `UserAssigned` kimlik türü değerinden kaldırılır.  `<RESOURCE GROUP>` ve `<VM NAME>` parametre değerlerini kendi değerlerinizle değiştirmeyi unutmayın. , `<USER ASSIGNED IDENTITY>` Kullanıcı tarafından atanan kimliğin `name` özelliği olur ve bu, şu kullanılarak `az vm identity show`sanal makinenin kimlik bölümünde bulunabilir:
 
 ```azurecli-interactive
 az vm identity remove -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
-VM'nizde sistem leatanmış yönetilen bir kimlik yoksa ve kullanıcı tarafından atanan tüm kimlikleri bu kimlikten kaldırmak istiyorsanız, aşağıdaki komutu kullanın:
+SANAL makinenizin sistem tarafından atanan bir yönetilen kimliği yoksa ve bundan sonra Kullanıcı tarafından atanan tüm kimlikleri kaldırmak istiyorsanız aşağıdaki komutu kullanın:
 
 > [!NOTE]
-> Değer `none` büyük/küçük harf duyarlıdır. Küçük olmalı.
+> Değer `none` büyük/küçük harfe duyarlıdır. Küçük harfle yazılmalıdır.
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none" identity.userAssignedIdentities=null
 ```
 
-VM'nizde hem sistem le hem de kullanıcı tarafından atanmış kimlikler varsa, yalnızca sistem tarafından atanan kimlikleri kullanmak için geçiş yaparak kullanıcı tarafından atanan tüm kimlikleri kaldırabilirsiniz. Aşağıdaki komutu kullanın:
+SANAL makinenizin hem sistem tarafından atanan hem de Kullanıcı tarafından atanan kimlikleri varsa, yalnızca sistem tarafından atanan ' i kullanarak Kullanıcı tarafından atanan tüm kimlikleri kaldırabilirsiniz. Aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure kaynaklarına genel bakış için yönetilen kimlikler](overview.md)
-- Tam Azure VM oluşturma Quickstarts için bkz: 
-  - [CLI ile Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-cli.md)  
-  - [CLI ile bir Linux sanal makine oluşturun](../../virtual-machines/linux/quick-create-cli.md) 
+- [Azure kaynaklarına genel bakış için Yönetilen kimlikler](overview.md)
+- Azure VM oluşturma hızlı başlangıçlarını tam olarak görmek için bkz.: 
+  - [CLı ile Windows sanal makinesi oluşturma](../../virtual-machines/windows/quick-create-cli.md)  
+  - [CLı ile Linux sanal makinesi oluşturma](../../virtual-machines/linux/quick-create-cli.md) 
 
 
 

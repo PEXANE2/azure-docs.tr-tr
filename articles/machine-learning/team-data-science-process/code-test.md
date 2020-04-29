@@ -1,6 +1,6 @@
 ---
-title: Azure DevOps Hizmetleri ile test veri bilimi kodu - Ekip Veri Bilimi Süreci
-description: Team Data Science Process ve Azure DevOps Hizmetleri ile UCI yetişkin gelir tahmini veri seti ile Azure'da veri bilimi kodu testi
+title: Azure DevOps Services Team Data Science Işlemiyle veri bilimi kodunu test etme
+description: Team Data Science Process ve Azure DevOps Services ile Azure 'da, uya yetişkin gelir tahmini veri kümesiyle Azure 'da veri bilimi kodu testi
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,150 +12,150 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722065"
 ---
-# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Ekip Veri Bilimi Süreci ve Azure DevOps Hizmetleri ile Azure'da veri bilimi kodu testi
-Bu makalede, bir veri bilimi iş akışında kod test etmek için ön yönergeler verir. Bu tür testler, veri bilimcilere kodlarının kalitesini ve beklenen sonucunu kontrol etmek için sistematik ve verimli bir yol sağlar. Kod testinin nasıl yapılabileceğini göstermek için daha önce yayınladığımız [UCI Yetişkin Gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir Ekip Veri Bilimi Süreci (TDSP) projesini kullanıyoruz. 
+# <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
+Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 
 
-## <a name="introduction-on-code-testing"></a>Kod testine giriş
-"Birim testi" yazılım geliştirme için uzun süredir devam eden bir uygulamadır. Ancak veri bilimi için, "birim testi"nin ne anlama geldiğini ve bir veri bilimi yaşam döngüsünün farklı aşamaları için kodu nasıl test etmeniz gerektiği genellikle açık değildir:
+## <a name="introduction-on-code-testing"></a>Kod testi ile ilgili giriş
+"Birim testi", yazılım geliştirme için bir longbir uygulamadır. Ancak veri bilimi için, "birim testi" ne anlama geldiğini ve bir veri bilimi yaşam döngüsünün farklı aşamaları için kodu test etmeyi nasıl test etmemelisiniz, örneğin:
 
 * Veri hazırlama
 * Veri kalitesi incelemesi
 * Modelleme
 * Model dağıtımı 
 
-Bu makale, "birim testi" teriminin yerine "kod testi" ile değiştirilir. Bir veri bilimi yaşam döngüsünün belirli bir adımı için kod "beklendiği gibi" sonuçlar üreten olup olmadığını değerlendirmek için yardımcı işlevleri olarak test anlamına gelir. Testi yazan kişi, işlevin sonucuna bağlı olarak (örneğin, veri kalitesi denetimi veya modelleme) "beklendiği gibi" olanı tanımlar.
+Bu makale, "birim testi" terimini "kod testi" ile değiştirir. Bu, bir veri bilimi yaşam döngüsünün belirli bir adımından kodun beklenildiği gibi sonuçlar üretmesine yardımcı olan işlevler olarak test eder. Testi yazan kişi, işlevin sonucuna bağlı olarak "beklendiği gibi" ne olduğunu tanımlar. Örneğin, veri kalitesi denetimi veya modelleme.
 
-Bu makalede yararlı kaynaklar olarak başvurular sağlar.
+Bu makalede, yararlı kaynaklar olarak başvurular sağlanmaktadır.
 
 ## <a name="azure-devops-for-the-testing-framework"></a>Test çerçevesi için Azure DevOps
-Bu makalede, Azure DevOps kullanarak sınama nın nasıl gerçekleştirilip otomatikleştirilen anlatılmaktadır. Alternatif araçlar kullanmaya karar verebilirsiniz. Ayrıca, Azure DevOps'leri kullanarak otomatik bir yapının nasıl ayarlanır ve aracılar oluşturabileceğimizi de gösteririz. Yapı aracıları için Azure Veri Bilimi Sanal Makineleri (DSVM) kullanıyoruz.
+Bu makalede, Azure DevOps kullanılarak testlerin nasıl gerçekleştirileceği ve otomatikleştirdiği açıklanır. Alternatif araçları kullanmaya karar verebilirsiniz. Ayrıca, Azure DevOps ve yapı aracılarını kullanarak otomatik bir derlemeyi nasıl ayarlayacağız de göstereceğiz. Derleme aracıları için Azure veri bilimi sanal makinelerini (DSVMs) kullanacağız.
 
 ## <a name="flow-of-code-testing"></a>Kod testi akışı
-Bir veri bilimi projesinde test kodunun genel iş akışı aşağıdaki gibi görünür: 
+Bir veri bilimi projesindeki test kodunun genel iş akışı şuna benzer: 
 
-![Kod testinin akış şeması](./media/code-test/test-flow-chart.PNG)
+![Kod testi akış grafiği](./media/code-test/test-flow-chart.PNG)
 
     
 ## <a name="detailed-steps"></a>Ayrıntılı adımlar
 
-Bir yapı aracısı ve Azure DevOps kullanarak kod testi ve otomatik yapı yı kurmak ve çalıştırmak için aşağıdaki adımları kullanın:
+Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmiş bir derlemeyi ayarlamak ve çalıştırmak için aşağıdaki adımları kullanın:
 
-1. Visual Studio masaüstü uygulamasında bir proje oluşturun:
+1. Visual Studio Desktop uygulamasında bir proje oluşturun:
 
-    ![Visual Studio'da "yeni proje oluşturma" ekranı](./media/code-test/create_project.PNG)
+    ![Visual Studio 'da "yeni proje oluştur" ekranı](./media/code-test/create_project.PNG)
 
-   Projenizi oluşturduktan sonra, projeyi çözüm gezgininde sağ bölmede bulabilirsiniz:
+   Projenizi oluşturduktan sonra sağ bölmede Çözüm Gezgini görürsünüz:
     
     ![Proje oluşturma adımları](./media/code-test/create_python_project_in_vs.PNG)
 
     ![Çözüm Gezgini](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Proje kodunuzu Azure DevOps proje kodu deposuna taşıyın: 
+1. Proje kodunuzu Azure DevOps proje kod deposuna akışla: 
 
-    ![Proje kodu deposu](./media/code-test/create_repo.PNG)
+    ![Proje kod deposu](./media/code-test/create_repo.PNG)
 
-1. Veri alma, özellik mühendisliği ve etiket sütunları oluşturma gibi bazı veri hazırlama çalışmaları yaptığınızı varsayalım. Kodunuzun beklediğiniz sonuçları ürettiğinden emin olmak istiyorsunuz. Veri işleme kodunun düzgün çalışıp çalışmadığını sınamak için kullanabileceğiniz bazı kodlar aşağıda verebilirsiniz:
+1. Veri alma, özellik Mühendisliği ve etiket sütunları oluşturma gibi bazı veri hazırlama işleri yapmayı istediğinizi varsayalım. Kodunuzun, beklediğinizi sonuçları ürettirken emin olmak istiyorsunuz. Veri işleme kodunun düzgün çalışıp çalışmadığını test etmek için kullanabileceğiniz bazı kodlar aşağıda verilmiştir:
 
-    * Sütun adlarının doğru olup olmadığını kontrol edin:
+    * Sütun adlarının doğru olup olmadığını denetleyin:
     
       ![Eşleşen sütun adları için kod](./media/code-test/check_column_names.PNG)
 
-    * Yanıt düzeylerinin doğru olup olmadığını kontrol edin:
+    * Yanıt düzeylerinin doğru olup olmadığını denetleyin:
 
-      ![Eşleşen düzeyleri için kod](./media/code-test/check_response_levels.PNG)
+      ![Eşleşen düzeyler için kod](./media/code-test/check_response_levels.PNG)
 
-    * Yanıt yüzdenin makul olup olmadığını kontrol edin:
+    * Yanıt yüzdesinin makul olduğunu kontrol edin:
 
-      ![Yanıt yüzdesi için kod](./media/code-test/check_response_percentage.PNG)
+      ![Yanıt yüzdesi kodu](./media/code-test/check_response_percentage.PNG)
 
-    * Verilerdeki her sütunun eksik oranını denetleyin:
+    * Verilerdeki her bir sütunun eksik oranını denetleyin:
     
-      ![Eksik oran kodu](./media/code-test/check_missing_rate.PNG)
+      ![Eksik hız için kod](./media/code-test/check_missing_rate.PNG)
 
 
-1. Veri işleme ve özellik mühendisliği işini yaptıktan ve iyi bir model eğittikten sonra, eğittiğiniz modelin yeni veri kümelerini doğru şekilde puanlayabilmesini unutmayın. Tahmin düzeylerini ve etiket değerlerinin dağılımını denetlemek için aşağıdaki iki testi kullanabilirsiniz:
+1. Veri işleme ve özellik Mühendisliği işini tamamladıktan sonra iyi bir model eğitimişseniz, eğitilen modelin yeni veri kümelerini doğru bir şekilde puanlayıp elde ettiğinizden emin olun. Etiket değerlerinin tahmin düzeylerini ve dağıtımını denetlemek için aşağıdaki iki testi kullanabilirsiniz:
 
-    * Tahmin düzeylerini kontrol edin:
+    * Tahmin düzeylerini denetle:
     
-      ![Tahmin düzeylerini denetleme kodu](./media/code-test/check_prediction_levels.PNG)
+      ![Tahmin düzeylerini denetlemek için kod](./media/code-test/check_prediction_levels.PNG)
 
-    * Tahmin değerlerinin dağılımını denetleyin:
+    * Tahmin değerlerinin dağıtımını kontrol edin:
 
-      ![Tahmin değerlerini denetleme kodu](./media/code-test/check_prediction_values.PNG)
+      ![Tahmin değerlerini denetlemek için kod](./media/code-test/check_prediction_values.PNG)
 
-1. Tüm test **işlevlerini test_funcs.py**adlı bir Python komut dosyasına koyun:
+1. Tüm test işlevlerini birlikte **test_funcs. Kopyala**adlı bir Python betiğine yerleştirin:
 
-    ![Test işlevleri için Python komut dosyası](./media/code-test/create_file_test_func.PNG)
+    ![Test işlevleri için Python betiği](./media/code-test/create_file_test_func.PNG)
 
 
-1. Test kodları hazırlandıktan sonra Visual Studio'da test ortamını ayarlayabilirsiniz.
+1. Test kodları hazırlandıktan sonra, Visual Studio 'da test ortamı ayarlayabilirsiniz.
 
-   **test1.py**adlı bir Python dosyası oluşturun. Bu dosyada, yapmak istediğiniz tüm testleri içeren bir sınıf oluşturun. Aşağıdaki örnek, hazırlanan altı testi gösterir:
+   **Test1.py**adlı bir Python dosyası oluşturun. Bu dosyada, yapmak istediğiniz tüm testleri içeren bir sınıf oluşturun. Aşağıdaki örnek, hazırlanan altı testi göstermektedir:
     
-    ![Sınıftaki testlerin listesini içeren Python dosyası](./media/code-test/create_file_test1_class.PNG)
+    ![Bir sınıftaki testlerin listesi ile Python dosyası](./media/code-test/create_file_test1_class.PNG)
 
-1. Bu testler, sınıf adınızın ardından **codetest.testCase** koyarsanız otomatik olarak keşfedilebilir. Sağ bölmede Test Gezgini'ni açın ve **Tümünü Çalıştır'ı**seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını size söyleyecektir.
+1. Bu testler, sınıfınızın adından sonra **CodeTEST. testCase** 'i yerleştirirseniz otomatik olarak bulunabilir. Sağ bölmedeki test Gezgini ' ni açın ve **Tümünü Çalıştır**' ı seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını bildirir.
 
     ![Testleri çalıştırma](./media/code-test/run_tests.PNG)
 
-1. Git komutlarını kullanarak kodunuzu proje deposuna iade edin. En son çalışmalarınız kısa süre içinde Azure DevOps'a yansıyacaktır.
+1. Git komutlarını kullanarak kodunuzu proje deposuna iade edin. En son çalışmanız Azure DevOps 'da kısa bir süre içinde yansıtılır.
 
-    ![Kodu kontrol etmek için git komutları](./media/code-test/git_check_in.PNG)
+    ![Kodu iade etmek için Git komutları](./media/code-test/git_check_in.PNG)
 
-    ![Azure DevOps'deki en son çalışma](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Azure DevOps 'da en son çalışan](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Azure DevOps'lerde otomatik oluşturma ve test oluşturma:
+1. Azure DevOps 'da otomatik derleme ve test ayarlama:
 
-    a. Proje deposunda, **Yapı ve Serbest Bırak'ı**seçin ve ardından yeni bir yapı işlemi oluşturmak için **+Yeni'yi** seçin.
+    a. Proje deposunda, **Oluştur ve Yayınla**' yı seçin ve ardından yeni bir yapı işlemi oluşturmak Için **+ Yeni** ' yi seçin.
 
-    ![Yeni bir yapı işlemi başlatmak için seçimler](./media/code-test/create_new_build.PNG)
+    ![Yeni derleme işlemi başlatma seçimleri](./media/code-test/create_new_build.PNG)
 
-    b. Kaynak kodu konumunuzu, proje adınızı, deponuzu ve şube bilgilerinizi seçmek için istemleri izleyin.
+    b. Kaynak kodu konumunuzu, proje adınızı, deponuzu ve şube bilgilerini seçmek için istemleri izleyin.
     
-    ![Kaynak, ad, depo ve şube bilgileri](./media/code-test/fill_in_build_info.PNG)
+    ![Kaynak, ad, depo ve dal bilgileri](./media/code-test/fill_in_build_info.PNG)
 
-    c. Bir şablon seçin. Python proje şablonu olmadığından, **Boş işlemi**seçerek başlayın. 
+    c. Bir şablon seçin. Python proje şablonu olmadığından, **boş işlem**' i seçerek başlayın. 
 
-    ![Şablonlar listesi ve "Boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
+    ![Şablonların listesi ve "boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
 
-    d. Yapının adını ve aracıyı seçin. Yapı işlemini tamamlamak için bir DSVM kullanmak istiyorsanız varsayılanı burada seçebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için yapı [ve sürüm aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts)hakkında bilgi.
+    d. Derlemeyi adlandırın ve aracıyı seçin. Derleme işlemini gerçekleştirmek için DSVM kullanmak istiyorsanız, varsayılan olarak bu seçeneği belirleyebilirsiniz. Aracıları ayarlama hakkında daha fazla bilgi için bkz. [derleme ve yayın aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
     ![Yapı ve aracı seçimleri](./media/code-test/select_agent.PNG)
 
-    e. Bu **+** yapı aşaması için bir görev eklemek için sol bölmede seçin. Tüm denetimleri tamamlamak için Python komut dosyasını **test1.py** çalıştıracağız çünkü, bu görev Python kodunu çalıştırmak için powershell komutu kullanıyor.
+    e. Bu **+** derleme aşamasına yönelik bir görev eklemek için sol bölmede öğesini seçin. Tüm denetimleri tamamlaması için Python betiğini **test1.py** çalıştıracağız, bu görev Python kodunu çalıştırmak Için bir PowerShell komutu kullanıyor.
     
-    ![PowerShell seçili "Görev ekle" bölmesi](./media/code-test/add_task_powershell.PNG)
+    ![PowerShell seçiliyken "görev ekleme" bölmesi](./media/code-test/add_task_powershell.PNG)
 
-    f. PowerShell ayrıntılarında, PowerShell'in adı ve sürümü gibi gerekli bilgileri doldurun. Tür olarak Satır Satır Komut **Dosyası'nı** seçin. 
+    f. PowerShell ayrıntılarında, PowerShell 'in adı ve sürümü gibi gerekli bilgileri girin. Tür olarak **satır Içi betiği** seçin. 
     
-    **Inline Script**altındaki kutuda, **python test1.py**yazabilirsiniz. Ortam değişkeninin Python için doğru ayarlandıkdığından emin olun. Python'un farklı bir sürümüne veya çekirdeğine ihtiyacınız varsa, yolu şekilde gösterildiği şekilde açıkça belirtebilirsiniz: 
+    **Satır Içi betik**altındaki kutuya **Python test1.py**yazabilirsiniz. Ortam değişkeninin Python için doğru şekilde ayarlandığından emin olun. Python 'un farklı bir sürümüne veya çekirdeğe ihtiyacınız varsa, yolu şekilde gösterildiği gibi açıkça belirtebilirsiniz: 
     
     ![PowerShell ayrıntıları](./media/code-test/powershell_scripts.PNG)
 
-    g. Yapı ardışık işlem işlemini tamamlamak için **& sırayı kaydet'i** seçin.
+    g. Derleme ardışık düzeni işlemini gerçekleştirmek için **& kuyruğu kaydet** ' i seçin.
 
-    !["& sırayı kaydet" düğmesi](./media/code-test/save_and_queue_build_definition.PNG)
+    !["& kuyruğunu kaydet" düğmesi](./media/code-test/save_and_queue_build_definition.PNG)
 
-Şimdi, yeni bir taahhüt kod deposuna her itildinde, yapı işlemi otomatik olarak başlatılır. (Burada depo olarak master kullanın, ancak herhangi bir dalı tanımlayabilirsiniz.) İşlem, kodda tanımlanan her şeyin doğru çalıştığından emin olmak için aracı makinesindeki **test1.py** dosyasını çalıştırZ. 
+Artık kod deposuna her yeni bir işleme gönderildiğinde, derleme işlemi otomatik olarak başlatılır. (Burada depo olarak ana öğe kullanıyoruz, ancak herhangi bir dalı tanımlayabilirsiniz.) İşlem, kodda tanımlanan her şeyin düzgün çalıştığından emin olmak için aracı makinesinde **test1.py** dosyasını çalıştırır. 
 
-Uyarılar doğru şekilde ayarlanırsa, yapı tamamlandığında e-posta yla bilgilendirilirsiniz. Azure DevOps'te yapı durumunu da kontrol edebilirsiniz. Başarısız olursa, yapının ayrıntılarını kontrol edebilir ve hangi parçanın kırıldığını öğrenebilirsiniz.
+Uyarılar doğru ayarlandıysa, derleme bittiğinde e-posta ile bildirilir. Ayrıca, Azure DevOps 'daki yapı durumunu da denetleyebilirsiniz. Başarısız olursa, yapı ayrıntılarını denetleyebilir ve hangi parçanın bozuk olduğunu bulabilirsiniz.
 
-![Yapı başarısının e-posta bildirimi](./media/code-test/email_build_succeed.PNG)
+![Derleme başarısı e-posta bildirimi](./media/code-test/email_build_succeed.PNG)
 
-![Azure DevOps yapı başarısı bildirimi](./media/code-test/vs_online_build_succeed.PNG)
+![Derleme başarısı için Azure DevOps bildirimi](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Veri bilimi senaryoları için birim testlerinin somut örnekleri için [UCI gelir tahmin deposuna](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bakın.
-* Kendi veri bilimi projelerinizde UCI gelir tahmini senaryosundan önceki anahat ve örnekleri izleyin.
+* Yukarıdaki ana hattı ve örnekleri, kendi veri bilimi projelerinizde UCı gelir tahmin senaryosundan izleyin.
 
 ## <a name="references"></a>Başvurular
 * [Team Data Science Process](https://aka.ms/tdsp)
-* [Visual Studio Test Araçları](https://www.visualstudio.com/vs/features/testing-tools/)
-* [Azure Devops Test Kaynakları](https://www.visualstudio.com/team-services/)
+* [Visual Studio test araçları](https://www.visualstudio.com/vs/features/testing-tools/)
+* [Azure DevOps sınama kaynakları](https://www.visualstudio.com/team-services/)
 * [Veri Bilimi Sanal Makineleri](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

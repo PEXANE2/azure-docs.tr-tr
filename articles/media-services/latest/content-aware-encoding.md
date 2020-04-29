@@ -1,6 +1,6 @@
 ---
-title: İçerik duyarlı kodlama için önceden ayarlanmış - Azure Medya Hizmetleri
-description: Bu makalede, Microsoft Azure Media Services v3'te içerik duyarlı kodlama açıklanmaktadır.
+title: İçeriğe duyarlı kodlama için önceden ayarlanmış-Azure Media Services
+description: Bu makalede, Microsoft Azure Media Services v3 'de içeriğe duyarlı kodlama ele alınmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,50 +13,50 @@ ms.date: 01/24/2020
 ms.author: juliako
 ms.custom: ''
 ms.openlocfilehash: 3ea6c4226a59ba020a477cc5811033ff3dc3c2e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76772074"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Belirli bir çözünürlük için en uygun bit hızı değerini bulmak için içerik duyarlı kodlama ön ayarını kullanın
+# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>Belirli bir çözüm için en iyi bit hızı değerini bulmak için içerik algılayan kodlama ön ayarını kullanın
 
-Adaptif [bitrate akışı](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)ile teslimat için içerik hazırlamak için, video birden fazla bit hızında (düşük yüksek) kodlanması gerekir. Bu, bitrate düşürüldükçe videonun çözünürlüğü gibi, kalitenin zarif bir şekilde bozulmasını sağlar. Bu tür çoklu bit hızı kodlama, kod çözme merdiveni olarak adlandırılan bir tabloolan çözüm ve bitrates tablosundan yararlanılır, [bkz.](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)
+İçeriği [Uyarlamalı bit hızı akışı](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)ile teslim etmek üzere hazırlamak için videonun birden çok bit hızında (yüksek-düşük) kodlanması gerekir. Bu, bit hızı düşürüldü, bu da videonun çözümü olduğundan, performansı düzgün bir şekilde azalmasını sağlar. Bu tür bir çoklu bit hızı kodlaması, bir çözüm ve bit fiyatları tablosu olarak adlandırılan, Media Services [yerleşik kodlama önayarları](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)' na bakın.
 
-İşlediğiniz içeriğin farkında olmalı ve kodlama merdivenini tek tek videonun karmaşıklığına göre özelleştirmeli/ayarlamalısınız. Her çözünürlükte, kalitedeki herhangi bir artışın algısal olmadığı bir bithızı vardır – kodlayıcı bu optimum bithızı değeriyle çalışır. Bir sonraki optimizasyon düzeyi, içeriğe dayalı çözünürlükleri seçmektir – örneğin, PowerPoint sunumunun videosu 720p'nin altına inmekten yarar lanamaz. Daha ileri giderek, kodlayıcı video içinde her çekim için ayarları optimize etmek için görevlendirilebilir. 
+İşlemekte olduğunuz içeriği bilmeniz ve kodlama merdiveni ' ni tek tek videonun karmaşıklığına göre özelleştirmeniz/ayarlamanız gerekir. Her çözünürlükte, kalitedeki artışın Perceptive olmadığı bir bit hızı vardır: kodlayıcı bu en iyi bit hızı değerinde çalışır. Bir sonraki iyileştirme düzeyi, içeriğe göre çözümlerin seçmesidir. Örneğin, bir PowerPoint sunusunun videosu, 720p 'in altına gitmesinin avantajına sahip değildir. Diğer bir deyişle, Kodlayıcıdaki her bir görüntü için ayarları iyileştirmek üzere kodlayıcı eklenebilir. 
 
-Microsoft'un [Uyarlanabilir Akış](autogen-bitrate-ladder.md) önceden ayarlanmış kısmen kalite ve kaynak videoların çözümünde değişkenlik sorunu giderir. Müşterilerimiz, bazıları 1080p, diğerleri 720p ve SD ve daha düşük çözünürlükte birkaç içerik çeşitli bir karışımı var. Ayrıca, tüm kaynak içeriği film veya TV stüdyolarından yüksek kaliteli mezzaninler olduğunu. Uyarlanabilir Akış önayı, bithızı merdiveninin çözünürlüğü veya giriş asma katının ortalama bit hızını asla aşmamasını sağlayarak bu sorunları giderır. Ancak, bu ön ayar çözünürlük ve bitrate dışında kaynak özelliklerini incelemez.
+Microsoft 'un [uyarlamalı akış](autogen-bitrate-ladder.md) önceden ayarı, kaynak videoların kalite ve çözünürlüğündeki değişkenlik sorununa kısmen yöneliktir. Müşterilerimiz, bazı 1080p, 720p ve daha az sayıda SD ve daha düşük çözünürlükte içerik karışımına sahiptir. Ayrıca, tüm kaynak içerikleri film veya TV Studios 'den yüksek kaliteli mezzanines değildir. Uyarlamalı akış önceden ayarı, bit hızı el merdivenine, giriş Mezzanine 'nin çözünürlüğü veya Ortalama bit hızını aşmamasını sağlayarak bu sorunları giderir. Ancak, bu önayar çözünürlük ve bit hızı dışında kaynak özelliklerini incelemez.
 
-## <a name="the-content-aware-encoding"></a>İçerik duyarlı kodlama 
+## <a name="the-content-aware-encoding"></a>İçeriğe duyarlı kodlama 
 
-İçerik farkında kodlama ön ayarı, kodlayıcının belirli bir çözünürlük için en uygun bithızı değerini aramasını sağlayan, ancak kapsamlı hesaplamalı analiz gerektirmeden özel bir mantık ekleyerek "uyarlanabilir bitrate akışı" mekanizmasını genişletir. Bu önceden ayarlanmış, GOP uyumlu bir MP4 kümesi üretir. Herhangi bir giriş içeriği göz önüne alındığında, hizmet giriş içeriğinin ilk hafif analizini gerçekleştirir ve sonuçları uyarlanabilir akışla teslim için en uygun katman sayısını, uygun bit hızı ve çözünürlük ayarlarını belirlemek için kullanır. Bu ön ayar, özellikle düşük ve orta karmaşıklıkta videolar için etkilidir, çıktı dosyaları Adaptive Streaming önceden ayarlanmış daha düşük bitrates olacak ama yine de izleyiciler için iyi bir deneyim sunan bir kalitede. Çıkış video ve ses interleaved mp4 dosyaları içerecektir
+İçerik kullanan kodlama önceden ayarı, "Uyarlamalı bit hızı akışı" mekanizmasını genişleterek, kodlayıcının belirli bir çözüm için en iyi bit hızı değerini, ancak kapsamlı hesaplama Analizi gerektirmeksizin araymasına imkan tanıyan özel mantık ekleyerek. Bu önayar bir GOP hizalanmış MP4 'leri kümesi oluşturur. Herhangi bir giriş içeriği verildiğinde, hizmet, giriş içeriğinin ilk hafif analizini yapar ve en iyi katman sayısını, uyarlamalı akışa göre teslim etmek için uygun bit hızını ve çözüm ayarlarını belirlemede sonuçları kullanır. Bu ön ayar özellikle düşük ve orta ölçekli karmaşıklık videoları için geçerlidir. burada, çıkış dosyalarının uyarlamalı akış önayarıyla, ancak yine de görüntüleyicilere iyi bir deneyim sunan bir kaliteden daha düşük bitoranlarda olması gerekir. Çıktı, video ve ses Aralanmış ile MP4 dosyaları içerir
 
-Aşağıdaki örnek [grafikler, PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)gibi kalite ölçümleri kullanılarak karşılaştırmayı göstermektedir. Kaynak, kodlayıcıyı vurgulamak amacıyla film ve TV programlarından gelen yüksek karmaşıklıktaki çekimlerin kısa kliplerinin biraraya getirmekle oluşturuldu. Tanım olarak, bu ön ayar içerikten içeriğe değişen sonuçlar üretir – aynı zamanda bazı içerikler için bitrate'de önemli bir azalma veya kalitede iyileşme olmayacağı anlamına da gelir.
+Aşağıdaki örnek grafiklerde [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) ve [vmaf](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)gibi kalite ölçümlerini kullanarak karşılaştırma gösterilmektedir. Kaynak, kodlayıcılarını stres amacıyla tasarlanan filmlerden ve TV gösterlerinden gelen yüksek karmaşıklık görüntüleriyle kısa küçük resimleri birleştirerek oluşturulmuştur. Tanım olarak, bu ön ayar içerikten içeriğe farklılık gösteren sonuçlar üretir. Ayrıca, bazı içerikler için bit hızı veya kalite açısından önemli bir azalma olmadığı anlamına gelir.
 
-![PSNR kullanarak hız bozulması (RD) eğrisi](media/content-aware-encoding/msrv1.png)
+![PSNR kullanan hız deformasyonu (RD) eğrisi](media/content-aware-encoding/msrv1.png)
 
-**Şekil 1: Yüksek karmaşıklık kaynağı için PSNR metrik kullanılarak hız bozulması (RD) eğrisi**
+**Şekil 1: yüksek karmaşıklık kaynağı için PSNR ölçümünü kullanarak oran deformasyonu (RD) eğrisi**
 
-![VMAF kullanarak hız bozulması (RD) eğrisi](media/content-aware-encoding/msrv2.png)
+![VMAF kullanan hız deformasyonu (RD) eğrisi](media/content-aware-encoding/msrv2.png)
 
-**Şekil 2: Yüksek karmaşıklık kaynağı için VMAF metrik kullanılarak hız bozulması (RD) eğrisi**
+**Şekil 2: yüksek karmaşıklık kaynağı için VMAF ölçümünü kullanarak oran deformasyonu (RD) eğrisi**
 
-Aşağıda, kodlayıcının girişin düşük kalitede olduğunu (düşük bit hızı nedeniyle birçok sıkıştırma yapıları) olduğunu belirleyebildiği başka bir kaynak içeriği kategorisinin sonuçları verilmiştir. İçeriğe duyarlı önceden ayarlanmış olan kodlayıcının, çoğu istemcinin oyalanmadan akışı oynatabilmesi için yeterince düşük bir bit hızında tek bir çıkış katmanı üretmeye karar verdiğini unutmayın.
+Aşağıda, bir kaynak içeriği kategorisinin sonuçları verilmiştir ve bu, kodlayıcının girişin düşük kaliteli olduğunu (düşük bit hızı nedeniyle birçok sıkıştırma yapıtı) belirleyebilmesini sağlar. İçerik algılayan ön ayarda, kodlayıcının, çok düşük bir bit hızında yalnızca bir çıkış katmanı üretmesine karar ettiğini unutmayın. bu sayede, çoğu istemci, akışı etkilemeden oynatabilir.
 
-![PSNR kullanarak RD eğrisi](media/content-aware-encoding/msrv3.png)
+![PSNR kullanan RD eğrisi](media/content-aware-encoding/msrv3.png)
 
-**Şekil 3: Düşük kaliteli giriş için PSNR kullanan RD eğrisi (1080p' de)**
+**Şekil 3: düşük kaliteli giriş için PSNR kullanan RD eğrisi (1080p 'de)**
 
-![VMAF kullanarak RD eğrisi](media/content-aware-encoding/msrv4.png)
+![VMAF kullanan RD eğrisi](media/content-aware-encoding/msrv4.png)
 
-**Şekil 4: Düşük kaliteli giriş için VMAF kullanan RD eğrisi (1080p'de)**
+**Şekil 4: düşük kaliteli giriş için VMAF kullanan RD eğrisi (1080p 'de)**
 
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>İçerik duyarlı kodlama ön ayarını kullanma 
+## <a name="how-to-use-the-content-aware-encoding-preset"></a>İçerik algılayan kodlama ön ayarını kullanma 
 
-Bu ön aseti aşağıdaki gibi kullanan dönüşümler oluşturabilirsiniz. 
+Bu önayarı kullanan dönüşümler aşağıdaki gibi oluşturulabilir. 
 
 > [!TIP]
-> Tranform çıktılarını kullanan öğreticiler için [Sonraki adımlar](#next-steps) bölümüne bakın. Çıktı varlığı, MPEG-DASH ve HLS gibi protokollerde (öğreticilerde gösterildiği gibi) Medya Hizmetleri akış uç noktalarından teslim edilebilir.
+> Dönüştürün çıkışlarını kullanan öğreticiler için [sonraki adımlar](#next-steps) bölümüne bakın. Çıkış varlığı, MPEG-DASH ve HLS gibi protokollerde Media Services akış uç noktalarından (öğreticilerde gösterildiği gibi) teslim edilebilir.
 
 
 ```csharp
@@ -76,12 +76,12 @@ TransformOutput[] output = new TransformOutput[]
 ```
 
 > [!NOTE]
-> Ön akümeyi `ContentAwareEncoding` kullanarak işleri kodlama, çıktı dakikaları temel alınarak faturalandırılır. 
+> `ContentAwareEncoding` Ön ayarı kullanan kodlama işleri, çıkış dakikalarına göre faturalandırılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: Medya Hizmetleri v3 ile video yükleme, kodlama ve akış](stream-files-tutorial-with-api.md)
-* [Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışı - REST](stream-files-tutorial-with-rest.md)
-* [Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışlayın - CLI](stream-files-cli-quickstart.md)
-* [Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışlayın - .NET](stream-files-dotnet-quickstart.md)
-* [Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışı - Node.js](stream-files-nodejs-quickstart.md)
+* [Öğretici: Media Services v3 ile videoları karşıya yükleme, kodlama ve akışla](stream-files-tutorial-with-api.md)
+* [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı](stream-files-tutorial-with-rest.md)
+* [Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve video CLı 'yı akışa koyun](stream-files-cli-quickstart.md)
+* [Öğretici: URL 'yi temel alarak uzak bir dosyayı kodlayın ve videoyu akışa sunun-.NET](stream-files-dotnet-quickstart.md)
+* [Öğretici: URL 'ye göre uzak bir dosya kodlama ve video-Node. js akışı](stream-files-nodejs-quickstart.md)

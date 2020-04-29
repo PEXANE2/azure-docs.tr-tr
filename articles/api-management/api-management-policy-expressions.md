@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi ilkesi ifadeleri | Microsoft Dokümanlar
-description: Azure API Yönetimi'nde ilke ifadeleri hakkında bilgi edinin.
+title: Azure API Management ilke ifadeleri | Microsoft Docs
+description: Azure API Management 'de ilke ifadeleri hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,29 +14,29 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244010"
 ---
-# <a name="api-management-policy-expressions"></a>API Yönetimi ilkesi ifadeleri
-Bu makalede C# 7'de ilke ifadeleri sözdizimi anlatılmaktadır. Her ifade, örtülü olarak sağlanan [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerinin izin verilen [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişebilir.
+# <a name="api-management-policy-expressions"></a>API Management İlkesi ifadeleri
+Bu makalede C# 7 ' de ilke ifadeleri sözdizimi anlatılmaktadır. Her bir ifadenin örtük olarak sağlanmış [bağlam](api-management-policy-expressions.md#ContextVariables) değişkenine ve .NET Framework türlerin izin verilen bir [alt kümesine](api-management-policy-expressions.md#CLRTypes) erişimi vardır.
 
 Daha fazla bilgi için:
 
-- Bağlam bilgilerini arka uç hizmetinize nasıl sağlayacağınızı görün. Bu bilgileri sağlamak için [Sorgu dizesini ve](api-management-transformation-policies.md#SetQueryStringParameter) http üstbilgi ilkelerini [ayarlayın'](api-management-transformation-policies.md#SetHTTPheader) ı ayarlayın.
-- Belirteç taleplerine dayalı işlemlere erişimi ön yetkilendirmek için [JWT doğrula](api-management-access-restriction-policies.md#ValidateJWT) ilkesini nasıl kullanacağız bakın.
-- İlkelerin nasıl değerlendirildiğini ve bu değerlendirmelerin sonuçlarını görmek için [API Denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) izlemesinin nasıl kullanılacağını görün.
-- API Yönetimi yanıt önbelleğini yapılandırmak için [önbellekten Ve Depo'dan](api-management-caching-policies.md#GetFromCache) [önbellek ilkelerine](api-management-caching-policies.md#StoreToCache) yönelik ifadeleri nasıl kullanacağını görün. Desteklenen hizmetin `Cache-Control` yönergesi tarafından belirtildiği gibi arka uç hizmetinin yanıt önbelleğe alma yla eşleşen bir süre ayarlayın.
-- İçerik filtrelemenin nasıl gerçekleştirildiğini görün. [Denetim akışı](api-management-advanced-policies.md#choose) ve [Set gövde](api-management-transformation-policies.md#SetBody) ilkeleri kullanarak arka uçtan alınan yanıttan veri öğelerini kaldırın.
-- İlke bildirimlerini indirmek için [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub repo'ya bakın.
+- Bkz. arka uç hizmetinize bağlam bilgilerini sağlama. [Sorgu dizesi ayarla parametresini](api-management-transformation-policies.md#SetQueryStringParameter) kullanın ve bu bilgileri sağlamak için [http üst bilgi ilkelerini ayarlayın](api-management-transformation-policies.md#SetHTTPheader) .
+- Belirteç taleplerine göre işlemlere erişimi önceden yetkilendirmek için bkz. [JWT](api-management-access-restriction-policies.md#ValidateJWT) ilkesini nasıl kullanacağınızı öğrenin.
+- İlkelerin nasıl değerlendirileceğini ve bu değerlendirmelerinin sonuçlarını görmek için [API denetçisi](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) izlemesini nasıl kullanacağınızı öğrenin.
+- API Management yanıtı önbelleğe almayı yapılandırmak için, bkz. bir [önbellekten al](api-management-caching-policies.md#GetFromCache) ve [önbellek ilkelerine depola](api-management-caching-policies.md#StoreToCache) ilkeleri kullanma. Desteklenen hizmetin `Cache-Control` yönergesinde belirtilen arka uç hizmetinin yanıt önbelleklemesi ile eşleşen bir süre ayarlayın.
+- Bkz. içerik filtrelemeyi gerçekleştirme. [Denetim akışını](api-management-advanced-policies.md#choose) ve [gövde ilkelerini ayarla](api-management-transformation-policies.md#SetBody) ' yı kullanarak arka uçta alınan yanıttan veri öğelerini kaldırın.
+- İlke deyimlerini indirmek için bkz. [api-Management-Samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub deposu.
 
 
 ## <a name="syntax"></a><a name="Syntax"></a>Sözdizimi
-Tek ifade ifadeleri, iyi `@(expression)`biçimlendirilmiş bir C# ifadesinin bulunduğu yere `expression` eklenmiştir.
+Tek deyim ifadeleri içine alınmıştır `@(expression)`, burada `expression` Iyi biçimlendirilmiş bir C# ifade deyimidir.
 
-Çok ifadeli ifadeler `@{expression}`. Çok ifadeli ifadeler deki tüm kod `return` yolları bir deyimle sona ermelidir.
+Çoklu deyim ifadeleri içine alınmıştır `@{expression}`. Çok deyimli ifadeler içindeki tüm kod yollarının bir `return` ifadesiyle bitmesi gerekir.
 
 ## <a name="examples"></a><a name="PolicyExpressionsExamples"></a>Örnekler
 
@@ -65,192 +65,192 @@ Tek ifade ifadeleri, iyi `@(expression)`biçimlendirilmiş bir C# ifadesinin bul
 }
 ```
 
-## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Kullanım
-İfadeler, herhangi bir API Yönetimi [ilkelerinde](api-management-policies.md) öznitelik değerleri veya metin değerleri olarak kullanılabilir (ilke başvurusu aksini belirtmediği sürece).
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Kullanımıyla
+İfadeler, herhangi [bir API Management ilkesinde](api-management-policies.md) öznitelik değerleri veya metin değerleri olarak kullanılabilir (ilke başvurusu aksini belirtmedikleri sürece).
 
 > [!IMPORTANT]
-> İlke ifadeleri kullandığınızda, ilke tanımlandığında ilke ifadelerinin yalnızca sınırlı bir şekilde doğrulanması vardır. İfadeler çalışma zamanında ağ geçidi tarafından yürütülür, ilke ifadeleri tarafından oluşturulan tüm özel durumlar çalışma zamanı hatasına neden olur.
+> İlke ifadelerini kullandığınızda, ilke tanımlandığında ilke ifadelerinin yalnızca sınırlı doğrulaması vardır. İfadeler çalışma zamanında ağ geçidi tarafından yürütülür, ilke ifadeleri tarafından oluşturulan tüm özel durumlar bir çalışma zamanı hatasına neden oluşur.
 
-## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>.NET Framework türleri ilke ifadelerinde izin verilen
-Aşağıdaki tabloda .NET Framework türleri ve ilke ifadelerinde izin verilen üyeleri listelenir.
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a>İlke ifadelerinde izin verilen .NET Framework türleri
+Aşağıdaki tablo, ilke ifadelerinde izin verilen .NET Framework türlerini ve üyelerini listelemektedir.
 
-|Tür|Desteklenen üyeler|
+|Tür|Desteklenen Üyeler|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|Tümü|
-|Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Tümü|
-|Newtonsoft.Json.Linq.JArray|Tümü|
-|Newtonsoft.Json.Linq.JConstructor|Tümü|
-|Newtonsoft.Json.Linq.JContainer|Tümü|
-|Newtonsoft.Json.Linq.JObject|Tümü|
-|Newtonsoft.Json.Linq.JEmlak|Tümü|
-|Newtonsoft.Json.Linq.JRaw|Tümü|
-|Newtonsoft.Json.Linq.JToken|Tümü|
-|Newtonsoft.Json.Linq.JTokenType|Tümü|
-|Newtonsoft.Json.Linq.JValue|Tümü|
-|Array|Tümü|
-|System.BitConverter|Tümü|
-|System.Boolean|Tümü|
-|System.Byte|Tümü|
-|Char|Tümü|
-|System.Collections.Generic.Dictionary<TKey, TValue>|Tümü|
-|System.Collections.Generic.HashSet\<T>|Tümü|
-|System.Collections.Generic.ICollection\<T>|Tümü|
-|System.Collections.Generic.IDictionary<TKey, TValue>|Tümü|
-|System.Collections.Generic.Imenumerable\<T>|Tümü|
-|System.Collections.Generic.IEnumerator\<T>|Tümü|
-|System.Collections.Generic.IList\<T>|Tümü|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Tümü|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Tümü|
-|System.Collections.Generic.ISet\<T>|Tümü|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Tümü|
-|System.Collections.Generic.List\<T>|Tümü|
-|System.Collections.Generic.Queue\<T>|Tümü|
-|System.Collections.Generic.Stack\<T>|Tümü|
-|Convert|Tümü|
-|Datetime|(Constructor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, Tarih, DayOfYear, DayInMonth, Saat, IsDaylightSavingTime, IsLeapYear, MaxValue, Millisaniye, Dakika, MinValue, Ay, Şimdi , Ayrıştırmak, İkinci, Çıkarma, Keneler, TimeOfDay, Bugün, ToString, UtcNow, Yıl|
-|System.DateTimeKind|Utc|
-|System.DateTimeOffset|Tümü|
-|Decimal|Tümü|
-|Double|Tümü|
-|Exception|Tümü|
-|System.Guid|Tümü|
-|Sistem.Int16|Tümü|
-|Sistem.Int32|Tümü|
-|Sistem.Int64|Tümü|
-|System.IO.StringReader|Tümü|
-|System.IO.StringWriter|Tümü|
-|System.Linq.Sayısal|Tümü|
-|Math|Tümü|
-|System.MidpointRounding|Tümü|
-|System.Net.WebUtility|Tümü|
-|Nullable|Tümü|
-|System.Random|Tümü|
-|System.SByte|Tümü|
-|System.Security.Cryptography.Asimetrik Algoritma|Tümü|
-|System.Security.Cryptography.CipherMode|Tümü|
-|System.Security.Cryptography.HashAlgorithm|Tümü|
-|System.Security.Cryptography.HashAlgorithmName|Tümü|
-|System.Security.Cryptography.HMAC|Tümü|
-|System.Security.Cryptography.HMACMD5|Tümü|
-|System.Security.Cryptography.HMACSHA1|Tümü|
-|System.Security.Cryptography.HMACSHA256|Tümü|
-|System.Security.Cryptography.HMACSHA384|Tümü|
-|System.Security.Cryptography.HMACSHA512|Tümü|
-|System.Security.Cryptography.KeyedHashAlgorithm|Tümü|
-|System.Security.Cryptography.MD5|Tümü|
-|System.Security.Cryptography.Oid|Tümü|
-|System.Security.Cryptography.PaddingMode|Tümü|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Tümü|
-|System.Security.Cryptography.RSA|Tümü|
-|System.Security.Cryptography.RSAEncryptionPadding|Tümü|
-|System.Security.Cryptography.RSASignaturePadding|Tümü|
-|System.Security.Cryptography.SHA1|Tümü|
-|System.Security.Cryptography.SHA1Yönetilen|Tümü|
-|System.Security.Cryptography.SHA256|Tümü|
-|System.Security.Cryptography.SHA256Yönetilen|Tümü|
-|System.Security.Cryptography.SHA384|Tümü|
-|System.Security.Cryptography.SHA384Yönetilen|Tümü|
-|System.Security.Cryptography.SHA512|Tümü|
-|System.Security.Cryptography.SHA512Yönetilen|Tümü|
-|System.Security.Cryptography.SymmetricAlgorithm|Tümü|
-|System.Security.Cryptography.X509Certificates.PublicKey|Tümü|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Tümü|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Adı|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Tümü|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Tümü|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Tümü|
-|System.Security.Cryptography.X509Certificates.X509NameType|Tümü|
-|System.Single|Tümü|
-|System|Tümü|
-|System.StringComparer|Tümü|
-|System.StringKarşılaştırma|Tümü|
-|System.StringSplitOptions|Tümü|
-|System.Text.Kodlama|Tümü|
-|System.Text.RegularExpressions.Capture|Dizin, Uzunluk, Değer|
-|System.Text.RegularExpressions.CaptureCollection|Sayım, Öğe|
-|System.Text.RegularExpressions.Group|Yakalar, Başarı|
-|System.Text.RegularExpressions.GroupCollection|Sayım, Öğe|
-|System.Text.RegularExpressions.Match|Boş, Gruplar, Sonuç|
-|System.Text.RegularExpressions.Regex|(Constructor), IsMatch, Match, Maçlar, Değiştir, Unescape, Split|
-|System.Text.RegularExpressions.RegexOptions|Tümü|
-|Stringbuilder|Tümü|
-|Timespan|Tümü|
-|System.TimeZone|Tümü|
-|System.TimeZoneInfo.AdjustmentRule|Tümü|
-|System.TimeZoneInfo.TransitionTime|Tümü|
-|System.TimeZoneInfo|Tümü|
-|System.Tuple|Tümü|
-|Sistem.UInt16|Tümü|
-|Sistem.UInt32|Tümü|
-|Sistem.UInt64|Tümü|
-|Uri|Tümü|
-|System.UriPartial|Tümü|
-|System.Xml.Linq.Extensions|Tümü|
-|System.Xml.Linq.XAttribute|Tümü|
-|System.Xml.Linq.XCData|Tümü|
-|System.Xml.Linq.XYorum|Tümü|
-|System.Xml.Linq.XContainer|Tümü|
-|System.Xml.Linq.XDeclaration|Tümü|
-|System.Xml.Linq.XBelgesi|Hariç: Yük|
-|System.Xml.Linq.XDocumentType|Tümü|
-|System.Xml.Linq.XElement|Tümü|
-|System.Xml.Linq.XName|Tümü|
-|System.Xml.Linq.XNamespace|Tümü|
-|System.Xml.Linq.XNode|Tümü|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Tümü|
-|System.Xml.Linq.XNodeEqualityKarşılaştırılabilir|Tümü|
-|System.Xml.Linq.XObject|Tümü|
-|System.Xml.Linq.XProcessingInstruction|Tümü|
-|System.Xml.Linq.XText|Tümü|
-|System.Xml.XmlNodeType|Tümü|
+|Newtonsoft. JSON. Formatting|Tümü|
+|Newtonsoft. JSON. JsonConvert|SerializeObject, DeserializeObject|
+|Newtonsoft. JSON. LINQ. Extensions|Tümü|
+|Newtonsoft. JSON. LINQ. JArray|Tümü|
+|Newtonsoft. JSON. LINQ. JConstructor|Tümü|
+|Newtonsoft. JSON. LINQ. JContainer|Tümü|
+|Newtonsoft. JSON. LINQ. JObject|Tümü|
+|Newtonsoft. JSON. Linq. JProperty|Tümü|
+|Newtonsoft. JSON. LINQ. JRaw|Tümü|
+|Newtonsoft. JSON. LINQ. JToken|Tümü|
+|Newtonsoft. JSON. LINQ. JTokenType|Tümü|
+|Newtonsoft. JSON. LINQ. JValue|Tümü|
+|System. Array|Tümü|
+|System. BitConverter|Tümü|
+|System. Boolean|Tümü|
+|System. Byte|Tümü|
+|System. Char|Tümü|
+|System. Collections. Generic. Dictionary<TKey, TValue>|Tümü|
+|System. Collections. Generic. HashSet\<T>|Tümü|
+|System. Collections. Generic. ICollection\<T>|Tümü|
+|System. Collections. Generic. IDictionary<TKey, TValue>|Tümü|
+|System. Collections. Generic. IEnumerable\<T>|Tümü|
+|System. Collections. Generic. IEnumerator\<T>|Tümü|
+|System. Collections. Generic. IList\<T>|Tümü|
+|System. Collections. Generic. IReadOnlyCollection\<T>|Tümü|
+|System. Collections. Generic. IReadOnlyDictionary<TKey, TValue>|Tümü|
+|System. Collections. Generic. ISet\<T>|Tümü|
+|System. Collections. Generic. KeyValuePair<TKey, TValue>|Tümü|
+|System. Collections. Generic. List\<T>|Tümü|
+|System. Collections. Generic. Queue\<T>|Tümü|
+|System. Collections. Generic. Stack\<T>|Tümü|
+|System. Convert|Tümü|
+|System. DateTime|(Oluşturucu), ekleme, Addgün, AddHours, AddMilliseconds, AddMinutes, Addaylar, AddSeconds, AddTicks, Addyear, Date, Day, DayOfWeek, DayOfYear, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, milisaniyeye, dakika, MinValue, month, Now, Parse, Second, Subtract, ticks, TimeOfDay, bugün, ToString, UtcNow, Year|
+|System. DateTimeKind|UTC|
+|System. DateTimeOffset|Tümü|
+|System. Decimal|Tümü|
+|System. Double|Tümü|
+|System. Exception|Tümü|
+|System. Guid|Tümü|
+|System. Int16|Tümü|
+|System. Int32|Tümü|
+|System. Int64|Tümü|
+|System. ıO. StringReader|Tümü|
+|System. ıO. StringWriter|Tümü|
+|System. LINQ. sıralanabilir|Tümü|
+|System. Math|Tümü|
+|System. MidpointRounding|Tümü|
+|System .net. Webugiyi|Tümü|
+|System. Nullable|Tümü|
+|System. Random|Tümü|
+|System. SByte|Tümü|
+|System. Security. Cryptography. AsymmetricAlgorithm|Tümü|
+|System. Security. Cryptography. CipherMode|Tümü|
+|System. Security. Cryptography. HashAlgorithm|Tümü|
+|System. Security. Cryptography. HashAlgorithmName|Tümü|
+|System. Security. Cryptography. HMAC|Tümü|
+|System. Security. Cryptography. HMACMD5|Tümü|
+|System. Security. Cryptography. HMACSHA1|Tümü|
+|System. Security. Cryptography. HMACSHA256|Tümü|
+|System. Security. Cryptography. HMACSHA384|Tümü|
+|System. Security. Cryptography. HMACSHA512|Tümü|
+|System. Security. Cryptography. KeyedHashAlgorithm|Tümü|
+|System. Security. Cryptography. MD5|Tümü|
+|System. Security. Cryptography. OID|Tümü|
+|System. Security. Cryptography. doldurma Ingmode|Tümü|
+|System. Security. Cryptography. RNGCryptoServiceProvider|Tümü|
+|System. Security. Cryptography. RSA|Tümü|
+|System. Security. Cryptography. RSAEncryptionPadding|Tümü|
+|System. Security. Cryptography. Rsatifturepekleniyor|Tümü|
+|System. Security. Cryptography. SHA1|Tümü|
+|System. Security. Cryptography. SHA1Managed|Tümü|
+|System. Security. Cryptography. SHA256|Tümü|
+|System. Security. Cryptography. SHA256Managed|Tümü|
+|System. Security. Cryptography. SHA384|Tümü|
+|System. Security. Cryptography. SHA384Managed|Tümü|
+|System. Security. Cryptography. SHA512 olur|Tümü|
+|System. Security. Cryptography. SHA512Managed|Tümü|
+|System. Security. Cryptography. SymmetricAlgorithm|Tümü|
+|System. Security. Cryptography. X509Certificates. PublicKey|Tümü|
+|System. Security. Cryptography. X509Certificates. RSACertificateExtensions|Tümü|
+|System. Security. Cryptography. X509Certificates. X500DistinguishedName|Adı|
+|System. Security. Cryptography. X509Certificates. X509Certificate|Tümü|
+|System. Security. Cryptography. X509Certificates. X509Certificate2|Tümü|
+|System. Security. Cryptography. X509Certificates. X509ContentType|Tümü|
+|System. Security. Cryptography. X509Certificates. X509NameType|Tümü|
+|System. Single|Tümü|
+|System. String|Tümü|
+|System. StringComparer|Tümü|
+|System. StringComparison|Tümü|
+|System. Stringsptoptions|Tümü|
+|System. Text. Encoding|Tümü|
+|System. Text. RegularExpressions. Capture|Dizin, uzunluk, değer|
+|System. Text. RegularExpressions. CaptureCollection|Sayı, öğe|
+|System. Text. RegularExpressions. Group|Yakalamalar, başarılı|
+|System. Text. RegularExpressions. GroupCollection|Sayı, öğe|
+|System. Text. RegularExpressions. Match|Boş, gruplar, sonuç|
+|System. Text. RegularExpressions. Regex|(Oluşturucu), IsMatch, Eşleştir, eşleşmeler, Değiştir, Unkaçış, Böl|
+|System. Text. RegularExpressions. RegexOptions|Tümü|
+|System. Text. StringBuilder|Tümü|
+|System. TimeSpan|Tümü|
+|System. TimeZone|Tümü|
+|System. TimeZoneInfo. AdjustmentRule|Tümü|
+|System. TimeZoneInfo. geçişli Tiontime|Tümü|
+|System. TimeZoneInfo|Tümü|
+|System. Tuple|Tümü|
+|System. UInt16|Tümü|
+|System. UInt32|Tümü|
+|System. UInt64|Tümü|
+|System. Uri|Tümü|
+|System. UriPartial|Tümü|
+|System. xml. LINQ. Extensions|Tümü|
+|System. xml. LINQ. XAttribute|Tümü|
+|System. xml. Linq. XCData|Tümü|
+|System. xml. LINQ. XComment|Tümü|
+|System. xml. LINQ. XContainer|Tümü|
+|System. xml. LINQ. XDeclaration|Tümü|
+|System. xml. Linq. XDocument|Tümü, şunun dışında: yükleme|
+|System. xml. LINQ. XDocumentType|Tümü|
+|System. xml. LINQ. XElement|Tümü|
+|System. xml. LINQ. XName|Tümü|
+|System. xml. Linq. XNamespace|Tümü|
+|System. xml. LINQ. XNode|Tümü|
+|System. xml. Linq. XNodeDocumentOrderComparer|Tümü|
+|System. xml. Linq. XNodeEqualityComparer|Tümü|
+|System. xml. LINQ. XObject|Tümü|
+|System. xml. Linq. Xprocessingyönergesi|Tümü|
+|System. xml. LINQ. XText|Tümü|
+|System. xml. XmlNodeType|Tümü|
 
 ## <a name="context-variable"></a><a name="ContextVariables"></a>Bağlam değişkeni
-Adlandırılmış `context` bir değişken örtülü olarak her ilke [ifadesinde](api-management-policy-expressions.md#Syntax)kullanılabilir. Üyeleri, ilgili bilgileri `\request`sağlar. Tüm `context` üyeler salt okunur.
+Adlı `context` bir değişken, her ilke [ifadesinde](api-management-policy-expressions.md#Syntax)örtülü olarak kullanılabilir. Üyeleri ile ilgili bilgiler sağlar `\request`. Tüm `context` Üyeler salt okunurdur.
 
-|Bağlam Değişkeni|İzin verilen yöntemler, özellikler ve parametre değerleri|
+|Bağlam değişkeni|İzin verilen Yöntemler, Özellikler ve parametre değerleri|
 |----------------------|-------------------------------------------------------|
-|bağlam|[Api](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçen: TimeSpan - Zaman damgası değeri ve geçerli zaman arasındaki zaman aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürün](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> RequestId: Guid - benzersiz istek tanımlayıcısı<br /><br /> [Yanıt](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> Zaman damgası: DateTime - istek alındığı zaman noktası<br /><br /> İzleme: bool - izlemenin kapalı veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcı](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary<dize, nesne><br /><br /> void Trace(mesaj: string)|
-|<a id="ref-context-api"></a>Bağlam. Apı|Id: string<br /><br /> IsCurrentRevision: bool<br /><br />  Adı: string<br /><br /> Yol: string<br /><br /> Revizyon: string<br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> Sürüm: string |
-|<a id="ref-context-deployment"></a>Bağlam. Dağıtım|Bölge: string<br /><br /> ServiceName: string<br /><br /> Sertifikalar: IReadOnlyDictionary<dizesi, X509Certificate2>|
-|<a id="ref-context-lasterror"></a>Bağlam. Son Hata|Kaynak: string<br /><br /> Sebep: string<br /><br /> İleti: string<br /><br /> Kapsam: string<br /><br /> Bölüm: string<br /><br /> Yol: string<br /><br /> PolicyId: dize<br /><br /> Bağlam hakkında daha fazla bilgi için. LastError, bkz. [Hata işleme.](api-management-error-handling-policies.md)|
-|<a id="ref-context-operation"></a>Bağlam. Işlem|Id: string<br /><br /> Yöntem: string<br /><br /> Adı: string<br /><br /> UrlTemplate: dize|
-|<a id="ref-context-product"></a>Bağlam. Ürün|Apis: [IApi'<](#ref-iapi) Imumerable\><br /><br /> Onay Gerekli: bool<br /><br /> Gruplar: [IGroup'<](#ref-igroup)\><br /><br /> Id: string<br /><br /> Adı: string<br /><br /> Durum: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> Abonelik Gerekli: bool|
-|<a id="ref-context-request"></a>Bağlam. Istek|Gövde: [IMessageBody](#ref-imessagebody) veya `null` istek bir gövdeye sahip değilse.<br /><br /> Sertifika: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Üstbilgi](#ref-context-request-headers): IReadOnlyDictionary<dize, string[]><br /><br /> IpAddress: dize<br /><br /> Eşleşen Parametreler: IReadOnlyDictionary<dize, dize><br /><br /> Yöntem: string<br /><br /> OrijinalUrl: [IUrl](#ref-iurl)<br /><br /> Url: [IUrl](#ref-iurl)|
-|<a id="ref-context-request-headers"></a>dize bağlamı. Request.Headers.GetValueOrDefault(üstbilgiAdı: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: dize<br /><br /> Virgülden ayrılmış istek üstbilgi `defaultValue` değerlerini veya üstbilgi bulunamazsa döndürür.|
-|<a id="ref-context-response"></a>Bağlam. Yanıt|Gövde: [IMessageBody](#ref-imessagebody)<br /><br /> [Üstbilgi](#ref-context-response-headers): IReadOnlyDictionary<dize, string[]><br /><br /> StatusCode: int<br /><br /> StatusReason: dize|
-|<a id="ref-context-response-headers"></a>dize bağlamı. Response.Headers.GetValueOrDefault(headerName: string, defaultValue: string)|headerName: string<br /><br /> defaultValue: dize<br /><br /> Virgülden ayrılmış yanıt üstbilgi `defaultValue` değerlerini veya üstbilgi bulunamazsa döndürür.|
-|<a id="ref-context-subscription"></a>Bağlam. Abonelik|Oluşturulan Saat: DateTime<br /><br /> Bitiş Tarihi: DateTime?<br /><br /> Id: string<br /><br /> Anahtar: string<br /><br /> Adı: string<br /><br /> PrimaryKey: dize<br /><br /> SecondaryKey: dize<br /><br /> Başlangıç Tarihi: DateTime?|
-|<a id="ref-context-user"></a>Bağlam. Kullanıcı|E-posta: string<br /><br /> NameName: string<br /><br /> Gruplar: [IGroup'<](#ref-igroup)\><br /><br /> Id: string<br /><br /> Kimlikler: [IUserIdentity](#ref-iuseridentity)<Tanımlanabilir\><br /><br /> Soyadı: string<br /><br /> Not: string<br /><br /> Kayıt Tarihi: DateTime|
-|<a id="ref-iapi"></a>IApi|Id: string<br /><br /> Adı: string<br /><br /> Yol: string<br /><br /> Protokoller: Imumerable<dize\><br /><br /> ServiceUrl: [IUrl](#ref-iurl)<br /><br /> AbonelikKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
-|<a id="ref-igroup"></a>IGroup|Id: string<br /><br /> Adı: string|
-|<a id="ref-imessagebody"></a>IMessageBody|<T\>(preserveContent: bool = false): Where T: string, bayt[],JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Ve `context.Request.Body.As<T>` `context.Response.Body.As<T>` yöntemler, bir istek ve yanıt iletisi `T`gövdesini belirli bir türde okumak için kullanılır. Varsayılan olarak yöntem özgün ileti gövdesi akışını kullanır ve döndükten sonra kullanılamaz hale getirir. Yöntemin gövde akışının bir kopyası üzerinde çalışmasını sağlayarak `preserveContent` bunu önlemek `true`için parametreyi . Bir örnek görmek için [buraya](api-management-transformation-policies.md#SetBody) gidin.|
-|<a id="ref-iurl"></a>IUrl|Ana bilgisayar: string<br /><br /> Yol: string<br /><br /> Bağlantı noktası: int<br /><br /> [Sorgu](#ref-iurl-query): IReadOnlyDictionary<dize, string[]><br /><br /> QueryString: string<br /><br /> Şema: string|
-|<a id="ref-iuseridentity"></a>IUserIdentity|Id: string<br /><br /> Sağlayıcı: string|
-|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Üstbilgi: string<br /><br /> Sorgu: string|
-|<a id="ref-iurl-query"></a>string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: string<br /><br /> defaultValue: dize<br /><br /> Virgülden ayrılmış sorgu parametre `defaultValue` değerlerini veya parametre bulunamazsa döndürür.|
-|<a id="ref-context-variables"></a>T bağlamı. Variables.GetValueOrDefault<T\>(variableName: string, defaultValue: T)|variableName: string<br /><br /> defaultValue: T<br /><br /> Değişken değeri dökümunu `T` `defaultValue` türe veya değişken bulunamazsa döndürür.<br /><br /> Belirtilen tür döndürülen değişkenin gerçek türüyle eşleşmiyorsa, bu yöntem bir özel durum oluşturur.|
-|BasicAuthCredentials AsBasic(giriş: bu dize)|giriş: string<br /><br /> Giriş parametresi geçerli bir HTTP Temel Kimlik Doğrulama yetkilendirme isteği üstbilgi değeri `BasicAuthCredentials`içeriyorsa, yöntem tür bir nesne döndürür; aksi takdirde yöntem null döndürür.|
-|bool TryParseBasic(giriş: bu dize, sonuç: BasicAuthCredentials çıktı)|giriş: string<br /><br /> sonuç: dışarı BasicAuthCredentials<br /><br /> Giriş parametresi istek üstbilgisinde geçerli bir HTTP Temel Kimlik Doğrulama `true` yetkilendirme değeri içeriyorsa yöntem `BasicAuthCredentials`döndürür ve sonuç parametresi bir tür değeri içerir; aksi takdirde `false`yöntem döndürür.|
-|BasicAuth Kimlik Bilgileri|Şifre: string<br /><br /> UserId: string|
-|Jwt AsJwt(giriş: bu dize)|giriş: string<br /><br /> Giriş parametresi geçerli bir JWT belirteç değeri içeriyorsa, yöntem bir tür `Jwt`nesnesi döndürür; aksi takdirde `null`yöntem döndürür.|
-|bool TryParseJwt(giriş: bu dize, sonuç: Jwt çıkış)|giriş: string<br /><br /> sonuç: dışarı Jwt<br /><br /> Giriş parametresi geçerli bir JWT belirteç değeri `true` içeriyorsa, yöntem döndürür ve sonuç parametresi bir tür `Jwt`değeri içerir; aksi takdirde `false`yöntem döndürür.|
-|Jwt|Algoritma: dize<br /><br /> İzleyici: Ayrılmaz<dize\><br /><br /> İddialar: IReadOnlyDictionary<dize, string[]><br /><br /> Sona Erme Zamanı: DateTime?<br /><br /> Id: string<br /><br /> Veren: string<br /><br /> İhraç: DateTime?<br /><br /> NotBefore: DateTime?<br /><br /> Konu: string<br /><br /> Türü: string|
-|string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: string<br /><br /> defaultValue: dize<br /><br /> Virgülden ayrılmış talep `defaultValue` değerlerini veya üstbilgi bulunamazsa döndürür.|
-|byte[] Encrypt(giriş: bu bayt[], alg: string, key:byte[], iv:byte[])|giriş - düz metin şifrelenecek<br /><br />alg - simetrik şifreleme algoritmasının adı<br /><br />anahtar - şifreleme anahtarı<br /><br />iv - başbaşlatma vektörü<br /><br />Şifreli düz metni döndürür.|
-|byte[] Encrypt(giriş: bu bayt[], alg: System.Security.Cryptography.SymmetricAlgorithm)|giriş - düz metin şifrelenecek<br /><br />alg - şifreleme algoritması<br /><br />Şifreli düz metni döndürür.|
-|byte[] Encrypt(giriş: bu bayt[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|giriş - düz metin şifrelenecek<br /><br />alg - şifreleme algoritması<br /><br />anahtar - şifreleme anahtarı<br /><br />iv - başbaşlatma vektörü<br /><br />Şifreli düz metni döndürür.|
-|byte[] Decrypt(giriş: bu bayt[], alg: string, key:byte[], iv:byte[])|giriş - cypher metin şifresi çözülecek<br /><br />alg - simetrik şifreleme algoritmasının adı<br /><br />anahtar - şifreleme anahtarı<br /><br />iv - başbaşlatma vektörü<br /><br />Düz metni döndürür.|
-|byte[] Decrypt(giriş: bu bayt[], alg: System.Security.Cryptography.SymmetricAlgorithm)|giriş - cypher metin şifresi çözülecek<br /><br />alg - şifreleme algoritması<br /><br />Düz metni döndürür.|
-|byte[] Decrypt(giriş: bu bayt[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|giriş - cypher metin şifresi çözülecek<br /><br />alg - şifreleme algoritması<br /><br />anahtar - şifreleme anahtarı<br /><br />iv - başbaşlatma vektörü<br /><br />Düz metni döndürür.|
-|bool VerifyNoRevocation(giriş: bu System.Security.Cryptography.X509Certificates.X509Certificate2)|Sertifika iptal durumunu denetlemeden X.509 zincir doğrulaması gerçekleştirir.<br /><br />giriş - sertifika nesnesi<br /><br />Doğrulama `true` başarılı olursa döndürür; `false` doğrulama başarısız olursa.|
+|bağlam|[API](#ref-context-api): [ıapi](#ref-iapi)<br /><br /> [Dağıtım](#ref-context-deployment)<br /><br /> Geçen: zaman damgası ve geçerli saat değeri arasındaki TimeSpan-Time aralığı<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [İşlem](#ref-context-operation)<br /><br /> [Ürünüyle](#ref-context-product)<br /><br /> [İstek](#ref-context-request)<br /><br /> RequestId: Guid-benzersiz istek tanımlayıcısı<br /><br /> [Yanıtıyla](#ref-context-response)<br /><br /> [Abonelik](#ref-context-subscription)<br /><br /> Zaman damgası: DateTime-isteğin alındığı zaman içinde nokta<br /><br /> İzleme: bool-izlemenin açık veya kapalı olup olmadığını gösterir <br /><br /> [Kullanıcı](#ref-context-user)<br /><br /> [Değişkenler](#ref-context-variables): IReadOnlyDictionary<dize, nesne><br /><br /> void trace (ileti: dize)|
+|<a id="ref-context-api"></a>bağlam. 'Sindeki|Kimlik: dize<br /><br /> IsCurrentRevision: bool<br /><br />  Ad: dize<br /><br /> Yol: dize<br /><br /> Düzeltme: dize<br /><br /> ServiceUrl: [Iurl](#ref-iurl)<br /><br /> Sürüm: dize |
+|<a id="ref-context-deployment"></a>bağlam. Dağıtmak|Bölge: dize<br /><br /> HizmetAdı: dize<br /><br /> Sertifikalar: IReadOnlyDictionary<dize, X509Certificate2>|
+|<a id="ref-context-lasterror"></a>bağlam. LastError|Kaynak: dize<br /><br /> Neden: dize<br /><br /> İleti: dize<br /><br /> Kapsam: dize<br /><br /> Bölüm: dize<br /><br /> Yol: dize<br /><br /> PolicyId: dize<br /><br /> Bağlam hakkında daha fazla bilgi için. LastError, bkz. [hata işleme](api-management-error-handling-policies.md).|
+|<a id="ref-context-operation"></a>bağlam. Çalışmasını|Kimlik: dize<br /><br /> Yöntem: dize<br /><br /> Ad: dize<br /><br /> UrlTemplate: dize|
+|<a id="ref-context-product"></a>bağlam. Ürünüyle|API 'ler: IEnumerable<[ıapi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Gruplar: IEnumerable<[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Ad: dize<br /><br /> Durum: enum ProductState {Notyayýmlandý}<br /><br /> SubscriptionLimit: int?<br /><br /> Abonelik gerekli: bool|
+|<a id="ref-context-request"></a>bağlam. İsteyen|Body: [ımessagebody](#ref-imessagebody) veya `null` isteğin gövdesi yok.<br /><br /> Sertifika: System. Security. Cryptography. X509Certificates. X509Certificate2<br /><br /> [Üstbilgiler](#ref-context-request-headers): IReadOnlyDictionary<dize, dize [] ><br /><br /> IPAddress: dize<br /><br /> MatchedParameters: IReadOnlyDictionary<dize, dize><br /><br /> Yöntem: dize<br /><br /> OriginalUrl: [Iurl](#ref-iurl)<br /><br /> URL: [Iurl](#ref-iurl)|
+|<a id="ref-context-request-headers"></a>dize bağlamı. Request. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış istek üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
+|<a id="ref-context-response"></a>bağlam. Yanıtıyla|Gövde: [ımessagebody](#ref-imessagebody)<br /><br /> [Üstbilgiler](#ref-context-response-headers): IReadOnlyDictionary<dize, dize [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: dize|
+|<a id="ref-context-response-headers"></a>dize bağlamı. Response. Headers. GetValueOrDefault (headerName: String, defaultValue: String)|headerName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış yanıt üst bilgisi değerlerini döndürür veya `defaultValue` üst bilgi bulunamadı.|
+|<a id="ref-context-subscription"></a>bağlam. Aboneliğiniz|CreatedTime: DateTime<br /><br /> EndDate: DateTime<br /><br /> Kimlik: dize<br /><br /> Anahtar: dize<br /><br /> Ad: dize<br /><br /> PrimaryKey: String<br /><br /> SecondaryKey: dize<br /><br /> StartDate: TarihSaat?|
+|<a id="ref-context-user"></a>bağlam. Kullanıcısını|E-posta: dize<br /><br /> FirstName: dize<br /><br /> Gruplar: IEnumerable<[Igroup](#ref-igroup)\><br /><br /> Kimlik: dize<br /><br /> Kimlikler: IEnumerable<[ıuserıdentity](#ref-iuseridentity)\><br /><br /> LastName: dize<br /><br /> Note: dize<br /><br /> RegistrationDate: DateTime|
+|<a id="ref-iapi"></a>Iapi|Kimlik: dize<br /><br /> Ad: dize<br /><br /> Yol: dize<br /><br /> Protokoller: IEnumerable<dizesi\><br /><br /> ServiceUrl: [Iurl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
+|<a id="ref-igroup"></a>Igroup|Kimlik: dize<br /><br /> Ad: dize|
+|<a id="ref-imessagebody"></a>Imessagebody|<T\>(preservecontent: bool = false): burada t: String, Byte [], JObject, Jtoken, jarray, XNode, XElement, XDocument<br /><br /> Ve `context.Request.Body.As<T>` `context.Response.Body.As<T>` yöntemleri, belirli bir türdeki `T`bir istek ve yanıt iletisi gövdelerini okumak için kullanılır. Varsayılan olarak, yöntemi özgün ileti gövdesi akışını kullanır ve çağrıldıktan sonra kullanılamaz hale getirir. Yöntemin gövde akışının bir kopyası üzerinde çalışmasını sağlayarak bunu önlemek için `preserveContent` parametresini olarak `true`ayarlayın. Bir örnek görmek için [buraya](api-management-transformation-policies.md#SetBody) gidin.|
+|<a id="ref-iurl"></a>Iurl|Ana bilgisayar: dize<br /><br /> Yol: dize<br /><br /> Bağlantı noktası: int<br /><br /> [Sorgu](#ref-iurl-query): IReadOnlyDictionary<dize, dize [] ><br /><br /> QueryString: String<br /><br /> Düzen: dize|
+|<a id="ref-iuseridentity"></a>Iuserıdentity|Kimlik: dize<br /><br /> Sağlayıcı: dize|
+|<a id="ref-isubscriptionkeyparameternames"></a>ISubscriptionKeyParameterNames|Üstbilgi: dize<br /><br /> Sorgu: dize|
+|<a id="ref-iurl-query"></a>String Iurl. Query. GetValueOrDefault (queryParameterName: String, defaultValue: String)|queryParameterName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış sorgu parametresi değerlerini döndürür veya `defaultValue` parametre bulunmazsa.|
+|<a id="ref-context-variables"></a>T bağlamı. Variables. GetValueOrDefault<T\>(VariableName: String, DefaultValue: T)|variableName: dize<br /><br /> defaultValue: T<br /><br /> Değişken değeri türüne `T` dönüştürme veya `defaultValue` değişken bulunamazsa döndürür.<br /><br /> Bu yöntem, belirtilen tür döndürülen değişkenin gerçek türüyle eşleşmiyorsa bir özel durum oluşturur.|
+|BasicAuthCredentials AsBasic (giriş: Bu dize)|Giriş: dize<br /><br /> Giriş parametresi geçerli bir HTTP temel kimlik doğrulaması yetkilendirme isteği üst bilgisi değeri içeriyorsa, yöntemi türünde `BasicAuthCredentials`bir nesne döndürür. Aksi takdirde yöntem null değerini döndürür.|
+|bool TryParseBasic (giriş: Bu dize, sonuç: Out BasicAuthCredentials)|Giriş: dize<br /><br /> Sonuç: Out BasicAuthCredentials<br /><br /> Giriş parametresi istek üstbilgisinde geçerli bir HTTP temel kimlik doğrulaması yetkilendirme değeri içeriyorsa, yöntem döner `true` ve sonuç parametresi türünde `BasicAuthCredentials`bir değer içerir. Aksi takdirde, yöntemi `false`döndürür.|
+|BasicAuthCredentials|Parola: dize<br /><br /> UserID: String|
+|JWT AsJwt (giriş: Bu dize)|Giriş: dize<br /><br /> Giriş parametresi geçerli bir JWT belirteci değeri içeriyorsa, yöntemi türünde `Jwt`bir nesne döndürür. Aksi takdirde, yöntemi `null`döndürür.|
+|bool TryParseJwt (giriş: Bu dize, sonuç: Out JWT)|Giriş: dize<br /><br /> Sonuç: Out JWT<br /><br /> Giriş parametresi geçerli bir JWT belirteci değeri içeriyorsa, yöntemi döner `true` ve sonuç parametresi türünde `Jwt`bir değer içerir; Aksi takdirde, yöntemi `false`döndürür.|
+|JWT|Algoritma: dize<br /><br /> Hedef kitle: IEnumerable<dizesi\><br /><br /> Talepler: IReadOnlyDictionary<dize, dize [] ><br /><br /> ExpirationTime: DateTime<br /><br /> Kimlik: dize<br /><br /> Veren: dize<br /><br /> Issuedat: DateTime<br /><br /> NotBefore: DateTime?<br /><br /> Subject: dize<br /><br /> Tür: dize|
+|String JWT. Claim. GetValueOrDefault (claimName: String, defaultValue: String)|claimName: dize<br /><br /> defaultValue: dize<br /><br /> Virgülle ayrılmış talep değerlerini döndürür veya `defaultValue` üst bilgi bulunmazsa.|
+|Byte [] Encrypt (Input: this Byte [], alg: String, Key: Byte [], IV: Byte [])|şifrelenecek giriş düz metin<br /><br />alg-simetrik şifreleme algoritmasının adı<br /><br />anahtar şifreleme anahtarı<br /><br />IV-başlatma vektörü<br /><br />Şifrelenmiş düz metin döndürür.|
+|Byte [] şifreleyin (input: Bu Byte [], alg: System. Security. Cryptography. SymmetricAlgorithm)|şifrelenecek giriş düz metin<br /><br />alg-şifreleme algoritması<br /><br />Şifrelenmiş düz metin döndürür.|
+|Byte [] şifreleyin (input: Bu Byte [], alg: System. Security. Cryptography. SymmetricAlgorithm, Key: Byte [], IV: Byte [])|şifrelenecek giriş düz metin<br /><br />alg-şifreleme algoritması<br /><br />anahtar şifreleme anahtarı<br /><br />IV-başlatma vektörü<br /><br />Şifrelenmiş düz metin döndürür.|
+|Byte [] şifre çözme (giriş: Bu Byte [], alg: dize, anahtar: Byte [], IV: Byte [])|Şifresi çözülecek Input-şifresi üzerinde anlaşılamadı metni<br /><br />alg-simetrik şifreleme algoritmasının adı<br /><br />anahtar şifreleme anahtarı<br /><br />IV-başlatma vektörü<br /><br />Düz metin döndürür.|
+|Byte [] şifre çözme (giriş: Bu Byte [], alg: System. Security. Cryptography. SymmetricAlgorithm)|Şifresi çözülecek Input-şifresi üzerinde anlaşılamadı metni<br /><br />alg-şifreleme algoritması<br /><br />Düz metin döndürür.|
+|Byte [] şifre çözme (giriş: Bu Byte [], alg: System. Security. Cryptography. SymmetricAlgorithm, Key: Byte [], IV: Byte [])|Şifresi çözülecek Input-şifresi üzerinde anlaşılamadı metni<br /><br />alg-şifreleme algoritması<br /><br />anahtar şifreleme anahtarı<br /><br />IV-başlatma vektörü<br /><br />Düz metin döndürür.|
+|bool Verifynoiptali (giriş: Bu System. Security. Cryptography. X509Certificates. X509Certificate2)|Sertifika iptal durumunu denetlemeden bir X. 509.440 zinciri doğrulaması gerçekleştirir.<br /><br />Giriş-sertifika nesnesi<br /><br />Doğrulamanın `true` başarılı olup olmadığını döndürür; `false` doğrulama başarısız olursa.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlkelerle çalışan daha fazla bilgi için bkz:
+İlkelerle çalışma hakkında daha fazla bilgi için bkz.
 
-+ [API Yönetiminde İlkeler](api-management-howto-policies.md)
-+ [API'leri Dönüştür](transform-api.md)
-+ [İlke](api-management-policy-reference.md) deyimlerinin ve ayarlarının tam listesi için İlke Başvurusu
++ [API Management ilkeler](api-management-howto-policies.md)
++ [API dönüştürme](transform-api.md)
++ İlke deyimlerinin ve ayarlarının tam listesi için [Ilke başvurusu](api-management-policy-reference.md)
 + [İlke örnekleri](policy-samples.md)

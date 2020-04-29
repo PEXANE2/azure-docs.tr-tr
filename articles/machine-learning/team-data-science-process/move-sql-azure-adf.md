@@ -1,6 +1,6 @@
 ---
-title: SQL Server verileri Azure Veri Fabrikası ile SQL Azure'a - Takım Veri Bilimi Süreci
-description: Verileri şirket içinde ve bulutta veritabanları arasında günlük olarak hareket ettiren iki veri geçiş aktivitesi oluşturan bir ADF ardışık hattı ayarlayın.
+title: Azure Data Factory Team Data Science süreciyle SQL Azure verileri SQL Server
+description: Birlikte verileri şirket içinde ve bulutta veritabanları arasında günlük olarak taşıyacağınız iki veri geçiş etkinliğini oluşturan bir ADF işlem hattı ayarlayın.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,102 +12,102 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722501"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Veri Fabrikası ile verileri şirket içi SQL sunucusundan SQL Azure'a taşıma
+# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verileri şirket içi SQL Server 'dan Azure Data Factory ile SQL Azure taşıma
 
-Bu makalede, Azure Veri Fabrikası (ADF) kullanarak verileri şirket içi SQL Server Veritabanından Azure Blob Depolama üzerinden SQL Azure Veritabanına nasıl taşıyacağınızı gösterir: Bu yöntem, yinelenen bir evreleme kopyasının avantajlarına sahip desteklenen bir eski yaklaşımdır, ancak [en son seçenekler için veri geçiş sayfamıza bakmanızı öneririz.](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)
+Bu makalede, Azure Blob depolama aracılığıyla Azure Data Factory (ADF) kullanarak verileri şirket içi SQL Server veritabanından SQL Azure veritabanına taşıma işlemi gösterilmektedir: Bu yöntem, çoğaltılan bir hazırlama kopyasının avantajlarına sahip desteklenen bir eski yaklaşımdır, ancak [en son seçenekler için veri geçiş sayfamıza bakmak tavsiye ederiz](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
 
-Verileri Azure SQL Veritabanına taşımak için çeşitli seçenekleri özetleyen bir tablo [için](move-sql-azure.md)bkz.
+Verileri bir Azure SQL veritabanına taşımaya yönelik çeşitli seçenekleri özetleyen bir tablo için bkz. [Azure Machine Learning için verileri Azure SQL veritabanına taşıma](move-sql-azure.md).
 
 ## <a name="introduction-what-is-adf-and-when-should-it-be-used-to-migrate-data"></a><a name="intro"></a>Giriş: ADF nedir ve verileri geçirmek için ne zaman kullanılmalıdır?
-Azure Veri Fabrikası, verilerin hareketini ve dönüşümunu düzenleyen ve otomatikleştiren tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. ADF modelinde anahtar kavram boru hattıdır. Ardışık iş, her biri Veri Kümeleri'nde bulunan verilerüzerinde gerçekleşecek eylemleri tanımlayan mantıksal bir Etkinlik grubudur. Bağlantılı hizmetler, Veri Fabrikası'nın veri kaynaklarına bağlanması için gereken bilgileri tanımlamak için kullanılır.
+Azure Data Factory, verilerin hareketini ve dönüştürülmesini düzenleyen ve otomatikleştiren, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. ADF modelindeki anahtar kavram işlem hattı. İşlem hattı, her biri veri kümelerinde yer alan verilerde gerçekleştirilecek eylemleri tanımlayan bir mantıksal etkinlik gruplandırmasıdır. Bağlı hizmetler, Data Factory veri kaynaklarına bağlanmak için gereken bilgileri tanımlamak üzere kullanılır.
 
-ADF ile, varolan veri işleme hizmetleri bulutta yüksek oranda kullanılabilir ve yönetilen veri ardışık hatlarında oluşturulabilir. Bu veri ardışık hatları verileri yutmak, hazırlamak, dönüştürmek, analiz etmek ve yayımlamak için zamanlanabilir ve ADF karmaşık verileri ve işleme bağımlılıklarını yönetir ve yönetir. Çözümler, giderek artan sayıda şirket içi ve bulut veri kaynağını birbirine bağlayarak bulutta hızla oluşturulabilir ve dağıtılabilir.
+ADF ile, var olan veri işleme hizmetleri, bulutta yüksek oranda kullanılabilir ve yönetilen veri işlem hatlarına eklenebilir. Bu veri ardışık düzenleri verileri almak, hazırlamak, dönüştürmek, analiz etmek ve yayımlamak için zamanlanabilir ve ADF, karmaşık verileri ve işleme bağımlılıklarını yönetip düzenler. Çözümler bulutta hızla oluşturulup dağıtılabilir ve artan sayıda şirket içi ve bulut veri kaynağını birbirine gönderebilir.
 
-ADF kullanmayı düşünün:
+ADF 'yi kullanmayı düşünün:
 
-* verilerin hem şirket içi hem de bulut kaynaklarına erişen karma bir senaryoda sürekli olarak geçirilmesi gerektiğinde
-* verilerin dönüşümlere ihtiyacı olduğunda veya geçirilirken iş mantığının eklenmesigerektiğinde.
+* verilerin hem şirket içi hem de bulut kaynaklarına erişen bir karma senaryoya sürekli geçirilmesi gerektiğinde
+* veriler dönüşümlere ihtiyaç duyduğunda veya geçirildiğinde iş mantığı eklendiğinde.
 
-ADF, verilerin hareketini periyodik olarak yöneten basit JSON komut dosyalarını kullanarak işlerin zamanlanmasına ve izlenmesine olanak tanır. ADF'nin karmaşık işlemler için destek gibi başka yetenekleri de vardır. ADF hakkında daha fazla bilgi için [Azure Veri Fabrikası'ndaki (ADF)](https://azure.microsoft.com/services/data-factory/)belgelere bakın.
+ADF, verilerin düzenli aralıklarla taşınmasını yöneten basit JSON betikleri kullanılarak işlerin zamanlamasını ve izlenmesini sağlar. ADF Ayrıca karmaşık işlemler için destek gibi başka yetenekler de içerir. ADF hakkında daha fazla bilgi için [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)belgelerine bakın.
 
 ## <a name="the-scenario"></a><a name="scenario"></a>Senaryo
-İki veri geçiş aktivitesi oluşturan bir ADF ardışık hattı kurduk. Birlikte, verileri şirket içi BIR SQL Veritabanı ile buluttaki bir Azure SQL Veritabanı arasında günlük olarak taşırlar. İki etkinlik şunlardır:
+İki veri geçiş etkinliğini oluşturan bir ADF işlem hattı ayarladık. Bir arada, verileri şirket içi SQL veritabanı ve buluttaki bir Azure SQL veritabanı arasında günlük olarak taşır. İki etkinlik şunlardır:
 
-* verileri şirket içi SQL Server veritabanından Azure Blob Depolama hesabına kopyalama
-* verileri Azure Blob Depolama hesabından bir Azure SQL Veritabanına kopyalayın.
+* Şirket içi SQL Server veritabanından Azure Blob depolama hesabına veri kopyalama
+* Azure Blob depolama hesabından Azure SQL veritabanına veri kopyalama.
 
 > [!NOTE]
-> Burada gösterilen adımlar, ADF ekibi tarafından sağlanan daha ayrıntılı öğreticiden uyarlanmıştır: [Şirket içi bir SQL Server veritabanından Azure Blob depolama](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) Başvuruları'na verileri uygun olduğunda sağlanmıştır.
+> Burada gösterilen adımlar, ADF ekibi tarafından sunulan daha ayrıntılı öğreticiden uyarlanmıştır: Şirket [içi SQL Server veritabanından Azure Blob depolama başvurularına veri kopyalama](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) ilgili konunun ilgili bölümlerine, uygun olduğunda verilmiştir.
 >
 >
 
 ## <a name="prerequisites"></a><a name="prereqs"></a>Ön koşullar
-Bu öğretici var sayıyor:
+Bu öğreticide şunları kabul edersiniz:
 
-* **Azure aboneliği.** Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
-* Bir **Azure depolama hesabı.** Verileri bu öğreticide depolamak için bir Azure depolama hesabı kullanırsınız. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [Depolama hesabı erişim anahtarlarını yönet.](../../storage/common/storage-account-keys-manage.md)
-* **Azure SQL Veritabanına**erişim. Bir Azure SQL Veritabanı ayarlamanız gerekiyorsa, [Microsoft Azure SQL Veritabanı ile Başlarken](../../sql-database/sql-database-get-started.md) konusu, Azure SQL Veritabanı'nın yeni bir örneğini nasıl sağbırakabileceğiniz hakkında bilgi sağlar.
-* **Azure PowerShell'i** yerel olarak yükledi ve yapılandırıldı. Talimatlar için Azure [PowerShell'i nasıl yükleyip yapılandıracağınıza](/powershell/azure/overview)bakın.
+* Bir **Azure aboneliği**. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
+* Bir **Azure depolama hesabı**. Bu öğreticide verileri depolamak için bir Azure depolama hesabı kullanın. Azure depolama hesabınız yoksa [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın. Depolama hesabını oluşturduktan sonra, depolamaya erişmek için kullanılan hesap anahtarını edinmeniz gerekir. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
+* **Azure SQL veritabanına**erişim. Azure SQL veritabanı ayarlamanız gerekirse [Microsoft Azure SQL veritabanı Ile çalışmaya](../../sql-database/sql-database-get-started.md) başlama konusu, Azure SQL veritabanı 'nın yeni bir örneğini sağlama hakkında bilgi sağlar.
+* **Azure PowerShell** yerel olarak yüklendi ve yapılandırıldı. Yönergeler için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
 
 > [!NOTE]
-> Bu yordam, [Azure portalını](https://portal.azure.com/)kullanır.
+> Bu yordam [Azure Portal](https://portal.azure.com/)kullanır.
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Verileri şirket içi SQL Server'ınıza yükleyin
-Geçiş işlemini göstermek için [NYC Taxi veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC Taksi veri seti, bu yazı belirtildiği gibi, Azure blob depolama [NYC Taksi Veri](https://www.andresmh.com/nyctaxitrips/)mevcuttur. Veriler, gezi ayrıntılarını içeren trip_data.csv dosyası ve her yolculuk için ödenen ücretin ayrıntılarını içeren trip_far.csv dosyası olmak üzere iki dosyaya sahiptir. Bir örnek ve bu dosyaların açıklaması [NYC Taksi Gezileri Dataset Açıklama](sql-walkthrough.md#dataset)sağlanmaktadır.
+## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Verileri şirket içi SQL Server yükleyin
+Geçiş işlemini göstermek için [NYC TAXI veri kümesini](https://chriswhong.com/open-data/foil_nyc_taxi/) kullanıyoruz. NYC TAXI veri kümesi, Azure Blob Storage [NYC TAXI verilerinde](https://www.andresmh.com/nyctaxitrips/)bu gönderde belirtildiği gibi kullanılabilir. Verilerin iki dosyası vardır; seyahat ayrıntılarını içeren trip_data. csv dosyası ve her yolculuğa yönelik tarifeli havayolu ayrıntılarını içeren trip_far. csv dosyası. Bu dosyaların bir örneği ve açıklaması [NYC TAXI gezme veri kümesi açıklamasında](sql-walkthrough.md#dataset)verilmiştir.
 
-Burada sağlanan yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC Taxi veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC Taxi veri kümesini şirket içi SQL Server veritabanınıza yüklemek için, Toplu Alma Verilerinde özetlenen yordamı [SQL Server Veritabanı'na](sql-walkthrough.md#dbload)uygulayın. Bu yönergeler Azure Sanal Makine'deki bir SQL Server içindir, ancak şirket içi SQL Server'a yükleme yordamı aynıdır.
+Burada belirtilen yordamı kendi verilerinizin kümesine uyarlayabilir veya NYC TAXI veri kümesini kullanarak açıklanan adımları izleyebilirsiniz. NYC TAXI veri kümesini şirket içi SQL Server veritabanınıza yüklemek için, [verileri SQL Server veritabanına toplu Içeri aktarma](sql-walkthrough.md#dbload)bölümünde özetlenen yordamı izleyin. Bu yönergeler bir Azure sanal makinesinde SQL Server yöneliktir, ancak şirket içi SQL Server yükleme yordamı aynıdır.
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Veri Fabrikası Oluşturma
-[Azure portalında](https://portal.azure.com/) yeni bir Azure Veri Fabrikası ve kaynak grubu oluşturma yönergeleri [bir Azure Veri Fabrikası Oluştur](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)sağlanır. Yeni ADF örneği *adfdsp* adı ve kaynak grubu *adfdsprg*oluşturulan adı .
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Azure Data Factory oluşturma
+Yeni bir Azure Data Factory ve [Azure Portal](https://portal.azure.com/) kaynak grubu oluşturma yönergeleri [Azure Data Factory oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Yeni ADF örneğini *adfdsp* olarak adlandırın ve kaynak grubunun adını *adfdsprg*olarak adlandırın.
 
-## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Veri Fabrikası Tümleştirme Çalışma Süresini yükleme ve yapılandırma
-Tümleştirme Runtime, Azure Veri Fabrikası tarafından farklı ağ ortamlarında veri tümleştirme yetenekleri sağlamak için kullanılan müşteri tarafından yönetilen bir veri tümleştirme altyapısıdır. Bu çalışma süresi eskiden "Veri Yönetimi Ağ Geçidi" olarak adlandırılıyordu.
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime yükleyip yapılandırın
+Integration Runtime, farklı ağ ortamlarında veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan müşteri tarafından yönetilen bir veri tümleştirme altyapısıdır. Bu çalışma zamanına daha önce "Veri Yönetimi Gateway" adı verilir.
 
-Kurmak [için, bir boru hattı oluşturmak için yönergeleri izleyin](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+Ayarlamak için işlem [hattı oluşturma yönergelerini izleyin](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
-## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Veri kaynaklarına bağlanmak için bağlantılı hizmetler oluşturma
-Bağlantılı bir hizmet, Azure Veri Fabrikası'nın bir veri kaynağına bağlanması için gereken bilgileri tanımlar. Bu senaryoda, bağlantılı hizmetlere ihtiyaç duyulan üç kaynağımız vardır:
+## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>Veri kaynaklarına bağlanmak için bağlı hizmetler oluşturma
+Bağlı bir hizmet Azure Data Factory bir veri kaynağına bağlanmak için gereken bilgileri tanımlar. Bu senaryoda bağlı hizmetlerin gerektiği üç kaynağı vardır:
 
-1. Şirket Içi SQL Server
+1. Şirket içi SQL Server
 2. Azure Blob Depolama
 3. Azure SQL Veritabanı
 
-Bağlantılı hizmetler oluşturmak için adım adım [yordam, Bağlantılı Hizmetler Oluştur'da](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)sağlanır.
+Bağlı hizmetler oluşturmak için adım adım yordam, [bağlı hizmetler oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)bölümünde verilmiştir.
 
 
-## <a name="define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>Veri kümelerine nasıl erişilisüreceğini belirtmek için tabloları tanımlama ve oluşturma
-Aşağıdaki komut dosyası tabanlı yordamlarla veri kümelerinin yapısını, konumunu ve kullanılabilirliğini belirten tablolar oluşturun. JSON dosyaları tabloları tanımlamak için kullanılır. Bu dosyaların yapısı hakkında daha fazla bilgi için [Datasets bölümüne](../../data-factory/concepts-datasets-linked-services.md)bakın.
+## <a name="define-and-create-tables-to-specify-how-to-access-the-datasets"></a><a name="adf-tables"></a>Veri kümelerine nasıl erişecağınızı belirtmek için tablo tanımlama ve oluşturma
+Aşağıdaki komut dosyası tabanlı yordamlarla veri kümelerinin yapısını, konumunu ve kullanılabilirliğini belirten tablolar oluşturun. JSON dosyaları tabloları tanımlamak için kullanılır. Bu dosyaların yapısı hakkında daha fazla bilgi için bkz. [veri kümeleri](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> Komut yürütme `Add-AzureAccount` için doğru Azure aboneliğinin seçildiğini doğrulamak için [Yeni AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet'i çalıştırmadan önce cmdlet'i çalıştırmalısınız. Bu cmdlet'in belgeleri için Bkz. [Azure Hesabı Ekle.](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0)
+> Komut yürütmesi için doğru `Add-AzureAccount` Azure aboneliğinin seçili olduğunu onaylamak üzere [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet 'ini yürütmeden önce cmdlet 'ini yürütmelisiniz. Bu cmdlet 'in belgeleri için bkz. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
 Tablolardaki JSON tabanlı tanımlar aşağıdaki adları kullanır:
 
-* şirket içi SQL sunucusundaki **tablo adı** *nyctaxi_data*
-* Azure Blob Depolama hesabındaki **kapsayıcı adı** *kapsayıcı adıdır*
+* Şirket içi SQL Server 'daki **tablo adı** *nyctaxi_data*
+* Azure Blob depolama hesabındaki **kapsayıcı adı** *ContainerName*
 
-Bu ADF ardışık hattı için üç tablo tanımı gereklidir:
+Bu ADF işlem hattı için üç tablo tanımı gereklidir:
 
-1. [SQL şirket içi Tablo](#adf-table-onprem-sql)
-2. [Blob Tablo](#adf-table-blob-store)
-3. [SQL Azure Tablosu](#adf-table-azure-sql)
+1. [SQL şirket içi tablosu](#adf-table-onprem-sql)
+2. [Blob tablosu](#adf-table-blob-store)
+3. [SQL Azure tablosu](#adf-table-azure-sql)
 
 > [!NOTE]
-> Bu yordamlar, ADF etkinliklerini tanımlamak ve oluşturmak için Azure PowerShell'i kullanır. Ancak bu görevler Azure portalı kullanılarak da gerçekleştirilebilir. Ayrıntılar için bkz. [veri kümelerini oluştur.](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
+> Bu yordamlar ADF etkinliklerini tanımlamak ve oluşturmak için Azure PowerShell kullanır. Ancak bu görevler Azure portal kullanılarak da gerçekleştirilebilir. Ayrıntılar için bkz. [veri kümeleri oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 >
 >
 
-### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL şirket içi Tablo
+### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>SQL şirket içi tablosu
 Şirket içi SQL Server için tablo tanımı aşağıdaki JSON dosyasında belirtilmiştir:
 
 ```json
@@ -136,15 +136,15 @@ Bu ADF ardışık hattı için üç tablo tanımı gereklidir:
 }
 ```
 
-Sütun adları burada yer almadı. Sütun adlarını buraya ekleyerek alt seçim yapabilirsiniz (ayrıntılar için [ADF dokümantasyon](../../data-factory/copy-activity-overview.md) konusunu kontrol edin.
+Sütun adları buraya eklenmedi. Sütun adlarında bunları buraya ekleyerek seçebilirsiniz (Ayrıntılar için [ADF belgelerinin](../../data-factory/copy-activity-overview.md) konusunu inceleyin.
 
-Tablonun JSON tanımını *onpremtabledef.json* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.json*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet ile ADF tablo oluşturun:
+Tablonun JSON tanımını *onpremtabledef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\onpremtabledef.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
-### <a name="blob-table"></a><a name="adf-table-blob-store"></a>Blob Tablo
-Çıktı blob konumu için tablo tanımı aşağıdaki gibidir (bu haritalar şirket içinde Azure blob için yutulan verileri eşler):
+### <a name="blob-table"></a><a name="adf-table-blob-store"></a>Blob tablosu
+Çıkış blobu konumunun tablosunun tanımı aşağıdaki konumdadır (Bu, alınan verileri Şirket içinden Azure blobuna eşler):
 
 ```json
 {
@@ -171,12 +171,12 @@ Tablonun JSON tanımını *onpremtabledef.json* adlı bir dosyaya kopyalayın ve
 }
 ```
 
-Tablonun JSON tanımını *bloboutputtabledef.json* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\bloboutputtabledef.json*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet ile ADF tablo oluşturun:
+Tablonun JSON tanımını *bloi puttabledef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\blomaputtabledef.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
-### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure Tablosu
-SQL Azure çıktısı için tablo tanımı aşağıdaki gibidir (bu şema blob gelen verileri eşler):
+### <a name="sql-azure-table"></a><a name="adf-table-azure-sql"></a>SQL Azure tablosu
+SQL Azure çıktısı için olan tablonun tanımı aşağıda verilmiştir (Bu şema, Blobun gelen verileri eşler):
 
 ```json
 {
@@ -203,23 +203,23 @@ SQL Azure çıktısı için tablo tanımı aşağıdaki gibidir (bu şema blob g
 }
 ```
 
-Tablonun JSON tanımını *AzureSqlTable.json* adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\AzureSqlTable.json*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet ile ADF tablo oluşturun:
+Tablonun JSON tanımını *Azurestabtable. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada, *C:\temp\azuresoptable.exe*olarak kabul edilir). ADF 'de aşağıdaki Azure PowerShell cmdlet 'ini kullanarak tablo oluşturun:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
-## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>Boru hattını tanımlayın ve oluşturun
-Ardışık ardışık aygıta ait etkinlikleri belirtin ve aşağıdaki komut dosyası tabanlı yordamlarla ardışık ardışık ardışık ardışık Bir JSON dosyası, ardışık hat özelliklerini tanımlamak için kullanılır.
+## <a name="define-and-create-the-pipeline"></a><a name="adf-pipeline"></a>İşlem hattını tanımlama ve oluşturma
+İşlem hattına ait etkinlikleri belirtin ve aşağıdaki komut dosyası tabanlı yordamlarla işlem hattı oluşturun. Ardışık düzen özelliklerini tanımlamak için bir JSON dosyası kullanılır.
 
-* Komut **dosyası, ardışık işlem adı** *AMLDSProcessPipeline*olduğunu varsayar.
-* Ayrıca, günlük olarak yürütülecek boru hattının periyodikliğini ayarladiğimizı ve iş için varsayılan yürütme süresini kullandığımızı da unutmayın (12:00 UTC).
+* Betik, işlem **hattı adının** *Amldsprocesspipeline*olduğunu varsayar.
+* Ayrıca, işlem hattının dönemselliğini günlük olarak yürütüyoruz ve iş için varsayılan yürütme süresini (12. UTC) kullanacağınızı unutmayın.
 
 > [!NOTE]
-> Aşağıdaki yordamlar, ADF ardışık hattını tanımlamak ve oluşturmak için Azure PowerShell'i kullanır. Ancak bu görev Azure portalı kullanılarak da gerçekleştirilebilir. Ayrıntılar için [bkz.](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)
+> Aşağıdaki yordamlar, ADF ardışık düzenini tanımlamak ve oluşturmak için Azure PowerShell kullanır. Ancak bu görev Azure portal kullanılarak da gerçekleştirilebilir. Ayrıntılar için bkz. işlem [hattı oluşturma](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 >
 >
 
-Daha önce sağlanan tablo tanımları kullanılarak, ADF için boru hattı tanımı aşağıdaki gibi belirtilir:
+Daha önce sunulan tablo tanımlarını kullanarak ADF 'nin işlem hattı tanımı aşağıdaki gibi belirtilir:
 
 ```json
 {
@@ -288,18 +288,18 @@ Daha önce sağlanan tablo tanımları kullanılarak, ADF için boru hattı tan�
 }
 ```
 
-Pipeline'ın bu JSON tanımını *pipelinedef.json* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.json*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet ile ADF'de ardışık hatlar oluştur:
+İşlem hattının bu JSON tanımını, *pipelinedef. JSON* dosyası adlı bir dosyaya kopyalayın ve bilinen bir konuma kaydedin (burada *C:\temp\pipelinedef.exe*olarak kabul edilir). Aşağıdaki Azure PowerShell cmdlet 'ini kullanarak ADF 'de işlem hattı oluşturun:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
 
-## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>Boru Hattını Başlat
-Ardışık hatlar artık aşağıdaki komut kullanılarak çalıştırılabilir:
+## <a name="start-the-pipeline"></a><a name="adf-pipeline-start"></a>İşlem hattını başlatma
+İşlem hattı artık aşağıdaki komutu kullanarak çalıştırılabilir:
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-*Başlangıç tarihi* ve bitiş *tarihi* parametre değerlerinin, ardışık hattın çalışmasını istediğiniz gerçek tarihlerle değiştirilmesi gerekir.
+*StartDate* ve *EndDate* parametre değerlerinin, işlem hattının çalışmasını istediğiniz gerçek tarihlerle değiştirilmeleri gerekir.
 
-Ardışık iş tonu yürütüldünden sonra, veri blob için seçilen kapsayıcıda, günde bir dosya olarak görünebilirsiniz.
+İşlem hattı yürütüldükten sonra, veriler blob için seçilen kapsayıcıda, günde bir dosya olduğunu görebilmelisiniz.
 
-Verileri aşamalı olarak aktarmak için ADF tarafından sağlanan işlevselliği kullanamayacağız. Bunun nasıl yapılacılacıyla ilgili daha fazla bilgi ve ADF tarafından sağlanan diğer yürütücüler hakkında daha fazla bilgi için [ADF belgelerine](https://azure.microsoft.com/services/data-factory/)bakın.
+ADF tarafından verileri artımlı olarak boru için sunulan işlevleri yararlanılabilir ettik. ADF 'nin sağladığı bu ve diğer yeteneklerin nasıl yapılacağı hakkında daha fazla bilgi için [ADF belgelerine](https://azure.microsoft.com/services/data-factory/)bakın.

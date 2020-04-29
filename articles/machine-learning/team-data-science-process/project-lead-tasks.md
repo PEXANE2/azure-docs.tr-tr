@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Sürecinde proje liderliği için görevler
-description: Ekip Veri Bilimi Süreci ekibinde proje lideri için görevlerin ayrıntılı bir şekilde gözden geçirimi
+title: Projenin görevleri ekip veri bilimi Işleminde ortaya çıkmasına neden
+description: Takım veri bilimi süreç ekibi üzerinde bir proje için görevlere ilişkin ayrıntılı bir anlatım
 author: marktab
 manager: marktab
 editor: marktab
@@ -11,90 +11,90 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76714422"
 ---
-# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Ekip Veri Bilimi Sürecinde Proje müşteri adayı görevleri
+# <a name="project-lead-tasks-in-the-team-data-science-process"></a>Team Data Science Işlemindeki proje sağlama görevleri
 
-Bu makalede, ekip [Veri Bilimi Süreci](overview.md) 'nde (TDSP) proje ekibi için bir depo ayarlamak için proje müşteri *adayının* tamamladığını belirten görevler açıklanmaktadır. TDSP, Microsoft tarafından geliştirilen ve bulut tabanlı, tahmine dayalı analitik çözümlerini verimli bir şekilde yürütmek için yapılandırılmış bir etkinlik dizisi sağlayan bir çerçevedir. TDSP, işbirliği ve ekip öğrenimini geliştirmeye yardımcı olmak için tasarlanmıştır. TDSP'de standartlaştırılan bir veri bilimi ekibinin personel rollerinin ve ilişkili görevlerinin ana hatlarını öğrenmek [için, Ekip Veri Bilimi Süreci rolleri ve görevleri](roles-tasks.md)bölümüne bakın.
+Bu makalede, [ekip veri bilimi işlemindeki](overview.md) (TDSP) proje ekibi için bir depo ayarlamak üzere bir *projenin liderine* yönelik olarak tamamladığı görevler açıklanmaktadır. TDSP, bulut tabanlı, tahmine dayalı analiz çözümlerini verimli bir şekilde yürütmek için yapılandırılmış bir etkinlik dizisi sağlayan Microsoft tarafından geliştirilen bir çerçevedir. TDSP, işbirliğinin ve Team Learning 'in artırılmasına yardımcı olmak için tasarlanmıştır. TDSP üzerinde standartlaştırarak bir veri bilimi ekibi için personel rollerinin ve ilişkili görevlerin bir özeti için bkz. [Team Data Science işlem rolleri ve görevleri](roles-tasks.md).
 
-Bir proje kurşun TDSP belirli bir veri bilimi projesi üzerinde bireysel veri bilim adamlarının günlük faaliyetlerini yönetir. Aşağıdaki diyagram, proje iş adayı görevleri için iş akışını gösterir:
+Proje lideri, TDSP 'deki belirli bir veri bilimi projesinde bireysel veri bilimcilerinin günlük etkinliklerini yönetir. Aşağıdaki diyagramda proje sağlama görevleri için iş akışı gösterilmektedir:
 
-![Proje iş gücü görev iş akışı](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![Proje müşteri adayı görev iş akışı](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
-Bu öğretici Adım 1: Proje deposu oluşturma ve Adım 2: Takım ProjectTemplate deposundan tohum proje deposunu kapsar. 
+Bu öğreticide 1. Adım: proje deposu oluşturma ve adım 2: çekirdek proje deposu ekip ProjectTemplate deponuzdan ele alınmaktadır. 
 
-Adım 3 için: Proje için Özellik iş öğesi oluşturma ve Adım 4: Proje aşamaları için Öyküler ekleme, [bkz.](agile-development.md)
+3. Adım: proje için özellik iş öğesi oluşturma ve 4. Adım: proje aşamaları için hikaye ekleme, bkz. [veri bilimi projelerinin çevik geliştirmesi](agile-development.md).
 
-Adım 5 için: Depolama/analiz varlıkları oluşturun ve özelleştirin ve gerekirse ekip [verileri ve analiz kaynakları oluşturun'a](team-lead-tasks.md#create-team-data-and-analytics-resources)bakın.
+5. Adım: depolama/analiz varlıkları ve paylaşma oluşturma ve özelleştirme hakkında bilgi için bkz. [Takım verileri ve Analytics kaynakları oluşturma](team-lead-tasks.md#create-team-data-and-analytics-resources).
 
-Adım 6 için: Proje deposunun güvenlik denetimini ayarlayın, [bkz.](team-lead-tasks.md#add-team-members-and-configure-permissions)
+6. Adım: proje deposunun güvenlik denetimini ayarlama için bkz. [Takım üyeleri ekleme ve izinleri yapılandırma](team-lead-tasks.md#add-team-members-and-configure-permissions).
 
 > [!NOTE] 
-> Bu makalede, TDSP projesi ayarlamak için Azure Repos'u kullanmaktadır, çünkü TDSP Microsoft'ta bu şekilde uygulanacağıdır. Ekibiniz başka bir kod barındırma platformu kullanıyorsa, proje müşteri adayı görevleri aynıdır, ancak bunları tamamlama yolu farklı olabilir.
+> Bu makalede, Microsoft 'ta TDSP 'nin uygulanması nedeniyle bir TDSP projesi kurmak için Azure Repos kullanılmıştır. Ekibiniz başka bir kod barındırma platformu kullanıyorsa, proje sağlama görevleri aynıdır, ancak bunları tamamlamaya yönelik yol farklı olabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici, [grup yöneticinizin](group-manager-tasks.md) ve [ekip müşteri adayınızın](team-lead-tasks.md) aşağıdaki kaynakları ve izinleri ayarladığını varsayar:
+Bu öğreticide, [Grup Yöneticisi](group-manager-tasks.md) ve [ekip lideri](team-lead-tasks.md) aşağıdaki kaynakları ve izinleri ayarladığını varsayar:
 
 - Veri biriminiz için Azure DevOps **organizasyonu**
-- Veri bilimi ekibiniz için bir ekip **projesi**
-- Takım şablonu ve yardımcı program **depoları**
-- Projeniz için depo oluşturmanız ve düzenlemeniz için kuruluş hesabınızdaki **izinler**
+- Veri bilimi takımınız için bir takım **projesi**
+- Ekip şablonu ve yardımcı program **depoları**
+- Projeniz için depolar oluşturmanız ve düzenlemeniz için kuruluş hesabınızdaki **izinler**
 
-Yerel makinenizde veya Veri Bilimi Sanal Makinenizde (DSVM) depoları klonlamak ve içeriği değiştirmek veya Azure dosya depolamasını ayarlayıp DSVM'nize monte etmek için bu denetim listesini de göz önünde bulundurmanız gerekir:
+Depoları kopyalamak ve yerel makinenizde veya Veri Bilimi Sanal Makinesi (DSVM) içeriğini değiştirmek ya da Azure dosya depolama alanını ayarlayıp DSVM 'nize bağlamak için şu denetim listesini göz önünde bulundurmanız gerekir:
 
 - Azure aboneliği.
-- Git makinenize yüklendi. DSVM kullanıyorsanız, Git önceden yüklenmiş. Aksi takdirde, [Platformlar ve araçlar ekine](platforms-and-tools.md#appendix)bakın.
-- Bir DSVM kullanmak istiyorsanız, Windows veya Linux DSVM oluşturulan ve Azure'da yapılandırılan. Daha fazla bilgi ve talimatlar için [Veri Bilimi Sanal Makine Dokümantasyonu'na](/azure/machine-learning/data-science-virtual-machine/)bakın.
-- Windows DSVM için makinenizde [Git Kimlik Bilgisi Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) yüklenir. *README.md* dosyasında, **İndir ve Yükle** bölümüne gidin ve en son **yükleyiyi**seçin. *.exe* yükleyicisini yükleyici sayfasından indirin ve çalıştırın. 
-- Bir Linux DSVM için, DSVM'nizde ayarlanmış ve Azure DevOps'lere eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve talimatlar için Platformlar ve [araçlar ekindeki](platforms-and-tools.md#appendix) **SSH ortak anahtar oluşturma** bölümüne bakın. 
+- Git makinenizde yüklü. DSVM kullanıyorsanız git önceden yüklüdür. Aksi takdirde, [platformlar ve araçlar ek](platforms-and-tools.md#appendix)bölümüne bakın.
+- DSVM 'yi, Azure 'da oluşturulan ve yapılandırılan Windows veya Linux DSVM 'yi kullanmak istiyorsanız. Daha fazla bilgi ve yönergeler için [veri bilimi sanal makinesi belgelerine](/azure/machine-learning/data-science-virtual-machine/)bakın.
+- Bir Windows DSVM için, makinenizde yüklü [Git kimlik bilgileri Yöneticisi (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) . *README.MD* dosyasında, **indir ve yükle** bölümüne gidin ve **en son yükleyiciyi**seçin. Yükleyici sayfasından *. exe* yükleyicisini indirin ve çalıştırın. 
+- Bir Linux DSVM için, DSVM 'niz üzerinde ayarlanan ve Azure DevOps 'a eklenen bir SSH ortak anahtarı. Daha fazla bilgi ve yönergeler için [platformlar ve araçlar EKINDE](platforms-and-tools.md#appendix) **SSH ortak anahtarı oluşturma** bölümüne bakın. 
 
-## <a name="create-a-project-repository-in-your-team-project"></a>Ekip projenizde proje deposu oluşturma
+## <a name="create-a-project-repository-in-your-team-project"></a>Takım projenizde bir proje deposu oluşturma
 
-Ekibinizin **MyTeam** projesinde bir proje deposu oluşturmak için:
+Takımınızın **myTeam** projesinde bir proje deposu oluşturmak için:
 
-1. Https'de ekibinizin proje **Özeti** sayfasına *\//\<gidin:\<sunucu adı\<>/ kuruluş adı>/ takım adı>*, örneğin, **https:\//dev.azure.com/DataScienceUnit/MyTeam**, ve sol navigasyondan **Repos'u** seçin. 
+1. *\<\<Https\/: sunucu adı>/kuruluş adı>/\<takım adı>(örneğin, https:/dev.Azure.com/DataScienceUnit/myTeam) ve sol gezinmede bulunan ' i seçerek takımınızın Proje Özeti sayfasına/ *gidin. **Summary** **\/** **Repos** 
    
-1. Sayfanın üst kısmındaki depo adını seçin ve açılan sayfadan **Yeni depoyu** seçin.
+1. Sayfanın üst kısmındaki depo adını seçin ve ardından açılan menüden **yeni depo** ' ı seçin.
    
-   ![Yeni depo seçin](./media/project-lead-tasks/project-leads-9-select-repos.png)
+   ![Yeni depo Seç](./media/project-lead-tasks/project-leads-9-select-repos.png)
    
-1. Yeni **bir depo oluştur** iletişim kutusunda, **Git'in Türü**altında seçildiğinden emin olun. **Git** **Depo adı**altında *DSProject1'i* girin ve ardından **Oluştur'u**seçin.
+1. **Yeni depo oluştur** Iletişim kutusunda **tür**altında **Git** ' in seçildiğinden emin olun. **Depo adı**bölümüne *DSProject1* girin ve ardından **Oluştur**' u seçin.
    
-   ![Depo oluşturma](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
+   ![Depo oluştur](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
    
-1. Proje ayarları sayfanızda yeni **DSProject1** deposunu görebileceğinizi doğrulayın. 
+1. Yeni **DSProject1** deposunu proje ayarları sayfasında göreistediğinizi onaylayın. 
    
-   ![Proje Ayarlarında Proje deposu](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
+   ![Proje ayarlarındaki proje deposu](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
-## <a name="import-the-team-template-into-your-project-repository"></a>Takım şablonunu proje deponuza alma
+## <a name="import-the-team-template-into-your-project-repository"></a>Takım şablonunu proje deponuza aktarın
 
-Proje deponuzu ekip şablonu deponuzun içeriğiyle doldurmak için:
+Proje deponuzu takım şablonu deponuzun içeriğiyle doldurmak için:
 
-1. Ekibinizin proje **Özeti** sayfasından sol navigasyonda **Depolar'ı** seçin. 
+1. Takımınızın proje **Özeti** sayfasında sol **Gezinti bölmesinde yer** seçin. 
    
-1. Sayfanın üst kısmındaki depo adını seçin ve açılır sayfadan **DSProject1'i** seçin.
+1. Sayfanın üst kısmındaki depo adını seçin ve açılan listeden **DSProject1** öğesini seçin.
    
-1. **DSProject1 boş** sayfada, **Içe Aktar'ı**seçin. 
+1. **DSProject1 boş** sayfasında **içeri aktar**' ı seçin. 
    
-   ![Alma'yı seçin](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
+   ![Içeri aktar 'ı seçin](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. Git **deposu** iletişim kutusunda, **Kaynak türü**olarak **Git'i** seçin ve **TeamTemplate** deponuzun URL'sini **Klon URL'si**altında girin. URL *\//\<https: sunucu adı\<>/ kuruluş\<adı>/\<takım adı>/_git/ takım şablonu deposu adı>. * Örneğin: **https:\//dev.azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. **Git deposunu Içeri aktar** iletişim kutusunda, **kaynak türü**olarak **Git** ' i seçin ve **kopya URL**'si altında **teamtemplate** deponuzun URL 'sini girin. URL *: https:\//\<sunucu adı>\</kuruluş adı>/\<takım adı>/_Git/\<takım şablonu Depo adı>*. Örneğin: **https:\//dev.Azure.com/DataScienceUnit/myTeam/_Git/TeamTemplate**. 
    
-1. **İçeri aktar**'ı seçin. Takım şablonu deponuzun içeriği proje deponuza aktarılır. 
+1. **İçeri aktar**'ı seçin. Ekip şablonu deponuzun içeriği proje deponuza aktarılır. 
    
-   ![Takım şablondeposunu içe aktarma](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
+   ![Takım şablonu deposunu içeri aktar](./media/project-lead-tasks/project-leads-6-create-project-repo-5.png)
 
-Projenizin özel gereksinimlerini karşılayacak şekilde proje deponuzun içeriğini özelleştirmeniz gerekiyorsa, depo dosya ve klasörleri ekleyebilir, silebilir veya değiştirebilirsiniz. Doğrudan Azure Deposu'nda çalışabilir veya depoyu yerel makinenize veya DSVM'nize kopyalayabilir, değişiklik yapabilir ve güncelleştirmelerinizi paylaşılan proje deposuna işleyip itebilirsiniz. [Takım depolarının içeriğini Özelleştir'deki](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)yönergeleri izleyin.
+Projenizin özel ihtiyaçlarını karşılamak için proje deponuzun içeriğini özelleştirmeniz gerekiyorsa, depo dosyalarını ve klasörlerini ekleyebilir, silebilir veya değiştirebilirsiniz. Doğrudan Azure Repos çalışabilir veya depoyu yerel makinenize veya DSVM 'nize kopyalayabilir, değişiklikler yapabilir ve güncelleştirmelerinizi paylaşılan proje deposuna gönderebilirsiniz. [Ekip depolarının Içeriğini özelleştirme](team-lead-tasks.md#customize-the-contents-of-the-team-repositories)bölümündeki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıda, Ekip Veri Bilimi Süreci tarafından tanımlanan diğer rollerin ve görevlerin ayrıntılı açıklamalarına bağlantılar verilmiştir:
+Team Data Science Işlemi tarafından tanımlanan diğer roller ve görevler hakkında ayrıntılı açıklamaların bağlantıları aşağıda verilmiştir:
 
 - [Veri bilimi ekibi için Grup Yöneticisi görevleri](group-manager-tasks.md)
-- [Veri bilimi ekibi için Takım Müşteri Adayı görevleri](team-lead-tasks.md)
-- [Veri bilimi ekibi için bireysel Katılımcı görevleri](project-ic-tasks.md)
+- [Bir veri bilimi ekibi için ekip sağlama görevleri](team-lead-tasks.md)
+- [Bir veri bilimi ekibi için bireysel katkıda bulunan görevler](project-ic-tasks.md)

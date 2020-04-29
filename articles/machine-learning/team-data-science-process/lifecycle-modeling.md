@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Süreci yaşam döngüsünün modelleme aşaması
-description: Veri bilimi projelerinizin modelleme aşaması için hedefler, görevler ve teslim edilebilir ler
+title: Team Data Science Işlem yaşam döngüsünün modelleme aşaması
+description: Veri bilimi projelerinizin modelleme aşamasına yönelik hedefler, görevler ve teslim edilebilirler
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720478"
 ---
-# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Ekip Veri Bilimi Süreci yaşam döngüsünün modelleme aşaması
+# <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün modelleme aşaması
 
-Bu makalede, Takım Veri Bilimi Süreci'nin (TDSP) modelleme aşamasıyla ilişkili hedefler, görevler ve teslim edilebilirler sıralanmıştır. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
+Bu makalede, Team Data Science Işleminin (TDSP) modelleme aşamasına ilişkin hedefler, görevler ve teslim edilebilirler özetlenmektedir. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler, genellikle yinelemeli olarak:
 
    1. **Kurumsal yaklaşım**
    2. **Veri edinme ve anlama**
@@ -28,59 +28,59 @@ Bu makalede, Takım Veri Bilimi Süreci'nin (TDSP) modelleme aşamasıyla ilişk
    4. **Dağıtım**
    5. **Müşteri kabulü**
 
-TDSP yaşam döngüsünün görsel bir gösterimi aşağıdavelvettir:
+TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir:
 
 ![TDSP yaşam döngüsü](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Hedefler
-* Makine öğrenimi modeli için en uygun veri özelliklerini belirleyin.
-* Hedefi en doğru şekilde tahmin eden bilgilendirici bir makine öğrenme modeli oluşturun.
-* Üretim için uygun bir makine öğrenme modeli oluşturun.
+* Machine Learning modeli için en iyi veri özelliklerini saptayın.
+* En doğru hedefi tahmin eden bilgilendirici bir makine öğrenimi modeli oluşturun.
+* Üretime uygun bir makine öğrenimi modeli oluşturun.
 
-## <a name="how-to-do-it"></a>Nasıl yapılacağını
-Bu aşamada ele üç ana görev vardır:
+## <a name="how-to-do-it"></a>Nasıl yapılır?
+Bu aşamada listelenen üç ana görev vardır:
 
-  * **Özellik mühendisliği**: Model eğitimini kolaylaştırmak için ham verilerden veri özellikleri oluşturun.
-  * **Model eğitimi**: Başarı ölçümlerini karşılaştırarak soruyu en doğru şekilde yanıtlayan modeli bulun.
-  * Modelinizin **üretim için uygun** olup olmadığını belirleyin.
+  * **Özellik Mühendisliği**: model eğitimini kolaylaştırmak için ham verilerden veri özellikleri oluşturun.
+  * **Model eğitimi**: başarı ölçümlerini karşılaştırarak soruyu en doğru şekilde yanıtlayan modeli bulun.
+  * Modelinizin **üretime uygun** olup olmadığını belirleme.
 
 ### <a name="feature-engineering"></a>Özellik mühendisliği
-Özellik mühendisliği, analizde kullanılan özellikleri oluşturmak için ham değişkenlerin dahil edilmesini, toplanması ve dönüşümünün kullanılmasını içerir. Bir modeli neyin yönlendirdiğinize dair bir fikir edinmek istiyorsanız, özelliklerin birbiriyle nasıl ilişkili olduğunu ve makine öğrenme algoritmalarının bu özellikleri nasıl kullandığını anlamanız gerekir. 
+Özellik Mühendisliği, çözümlemede kullanılan özellikleri oluşturmak için ham değişkenlerin dahil edilmesi, toplanmasını ve dönüştürülmesini içerir. Bir modeli yönlendiren Öngörüler hakkında bilgi edinmek istiyorsanız, özelliklerin birbirleriyle nasıl ilişkilendirildiğini ve makine öğrenimi algoritmalarının bu özellikleri nasıl kullandığını anlamanız gerekir. 
 
-Bu adım, etki alanı uzmanlığının ve veri arama adımından elde edilen öngörülerin yaratıcı bir birleşimini gerektirir. Özellik mühendisliği, bilgilendirici değişkenleri bulmak ve içeren bir dengeleme eylemidir, ancak aynı zamanda çok fazla ilgisiz değişkenden kaçınmaya çalışır. Bilgilendirici değişkenler sonucunuzu geliştirir; ilgisiz değişkenler modele gereksiz gürültü ekler. Ayrıca puanlama sırasında elde edilen herhangi bir yeni veri için bu özellikleri oluşturmanız gerekir. Sonuç olarak, bu özelliklerin üretimi yalnızca puanlama sırasında kullanılabilen verilere bağlı olabilir. 
+Bu adım, etki alanı uzmanlığından oluşan yaratıcı bir bileşim ve veri araştırma adımından elde edilen Öngörüler gerektirir. Özellik Mühendisliği, bilgilendirici değişkenleri bulmayı ve dahil etme ve çok fazla ilgisiz değişkenden kaçınmaya çalışan aynı zamanda bir işlem işlemidir. Bilgilendirici değişkenler sonucu geliştirir; ilişkisiz değişkenler, modele gereksiz gürültü sunar. Ayrıca, Puanlama sırasında elde edilen yeni veriler için bu özellikleri oluşturmanız gerekir. Sonuç olarak, bu özelliklerin oluşturulması yalnızca Puanlama sırasında bulunan verilere bağlı olabilir. 
 
-Çeşitli Azure veri teknolojilerinden yararlanırken özellik mühendisliği hakkında teknik rehberlik için [veri bilimi sürecinde Özellik mühendisliğibölümüne](create-features.md)bakın. 
+Çeşitli Azure veri teknolojilerini kullanırken Özellik Mühendisliği hakkında teknik yönergeler için bkz. [veri bilimi Işlemindeki Özellik Mühendisliği](create-features.md). 
 
 ### <a name="model-training"></a>Model eğitimi
-Yanıtlamaya çalıştığınız sorunun türüne bağlı olarak, birçok modelleme algoritması vardır. Algoritmaları seçme kılavuzu için Microsoft [Azure Machine Learning için algoritmaları nasıl seçeceğiniz e](../studio/algorithm-choice.md)bakın. Bu makalede Azure Machine Learning kullanılsa da, sağladığı kılavuz tüm makine öğrenimi projeleri için yararlıdır. 
+Yanıtlamaya çalıştığınız soru türüne bağlı olarak, kullanılabilir birçok modelleme algoritması vardır. Algoritmaları seçme hakkında yönergeler için bkz. [Microsoft Azure Machine Learning algoritmaları seçme](../studio/algorithm-choice.md). Bu makalede Azure Machine Learning kullanılsa da, sağladığı rehberlik tüm makine öğrenimi projeleri için yararlıdır. 
 
-Model eğitimi süreci aşağıdaki adımları içerir: 
+Model eğitimi işlemi aşağıdaki adımları içerir: 
 
-   * Bir eğitim veri kümesi ve test veri kümesi içine modelleme için giriş verilerini rasgele **bölün.**
-   * Eğitim veri kümesini kullanarak **modelleri oluşturun.**
-   * Eğitimi ve test veri kümesini **değerlendirin.** Geçerli verilerle ilgili soruyu yanıtlamaya yönelik çeşitli ilişkili aparat parametreleri *(parametre süpürmesi*olarak bilinir) ile birlikte bir dizi rakip makine öğrenme algoritması kullanın.
-   * Alternatif yöntemler arasındaki başarı ölçümlerini karşılaştırarak soruyu yanıtlamak için **"en iyi" çözümü belirleyin.**
+   * Modelleme verileri kümesine ve bir test veri kümesine modelleme için **giriş verilerini rastgele Böl** .
+   * Eğitim veri kümesini kullanarak **modeller oluşturun** .
+   * Eğitimi ve test veri kümesini **değerlendirin** . Geçerli verilerle ilgili soruya yanıt verme sorusunu karşılayan çeşitli ilişkili ayarlama parametreleri ( *parametre tarama*olarak bilinir) ile birlikte, bir dizi rekabet makinesi öğrenme algoritması kullanın.
+   * Diğer Yöntemler arasındaki başarı ölçümlerini karşılaştırarak soruyu yanıtlamak için **"en iyi" çözümü belirleme** .
 
 > [!NOTE]
-> **Sızıntıyı önle**: Bir modelin veya makine öğrenme algoritmasının gerçekçi olmayan derecede iyi tahminlerde bulunamasına olanak tanıyan eğitim veri setinin dışından veri sızıntısına neden olabilirsiniz. Sızıntı, veri bilimciler gerçek olamayacak kadar iyi görünen tahmine dayalı sonuçlar elde ettiklerinde tedirgin olmalarının yaygın bir nedenidir. Bu bağımlılıkları tespit etmek zor olabilir. Sızıntıyı önlemek için genellikle bir analiz veri kümesi oluşturma, bir model oluşturma ve sonuçların doğruluğunu değerlendirmek arasında yineleyici gerektirir. 
+> **Sızıntıdan kaçının**: bir model veya makine öğrenimi algoritmasının, gerçekçi bir şekilde sağlam tahminler yapmasına izin veren eğitim verileri kümesinin dışından veri eklerseniz veri sızıntılarına neden olabilirsiniz. Sızıntı, veri bilimcilerinin, doğru olması için çok iyi sonuç veren tahmine dayalı sonuçlar edindiklerinde nervous elde ettikleri yaygın bir nedendir. Bu bağımlılıkların algılanması zor olabilir. Sızıntı olmaması için genellikle analiz veri kümesi oluşturma, model oluşturma ve sonuçların doğruluğunu değerlendirme arasında yineleme yapılması gerekir. 
 > 
 > 
 
-TDSP ile bir temel model oluşturmak için birden çok algoritma ve parametre süpürmesi ile çalışan otomatik bir [modelleme ve raporlama aracı](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) salıyoruz. Ayrıca, değişken önemi de dahil olmak üzere her model ve parametre kombinasyonunun performansını özetleyen bir temel modelleme raporu da üretir. Bu süreç aynı zamanda daha fazla özellik mühendisliği sürücü olarak yinelemeli. 
+TDSP ile, bir temel model oluşturmak için birden çok algoritmadan ve parametre süpürmeleri aracılığıyla çalışabilecek [otomatik bir modelleme ve Raporlama Aracı](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) sağlıyoruz. Ayrıca, değişken önem dahil her modelin ve parametre birleşiminin performansını özetleyen bir temel modelleme raporu da üretir. Bu işlem, daha fazla özellik Mühendisliği için de kullanılabilir. 
 
 ## <a name="artifacts"></a>Yapıtlar
-Bu aşamada üretilen eserler şunlardır:
+Bu aşamada oluşturulan yapıtlar şunlardır:
 
-   * [Özellik kümeleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): Modelleme için geliştirilen **özellikler, Veri tanım** raporunun **Özellik kümeleri** bölümünde açıklanmıştır. Özellikleri oluşturmak için kod işaretçileri ve özelliğin nasıl oluşturulduğuna ilgili bir açıklama içerir.
-   * [Model raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Denenen her model için, her deneme hakkında ayrıntılı bilgi sağlayan standart, şablon tabanlı bir rapor üretilir.
-   * **Kontrol noktası kararı**: Modelin üretim için yeterli performans yapıp etmediğini değerlendirin. Sorması gereken bazı önemli sorular şunlardır:
-     * Model, test verileri göz önüne alındığında soruyu yeterli güvenle yanıtlır mu? 
-     * Herhangi bir alternatif yaklaşım denemeli misiniz? Ek veri toplamalı, daha fazla özellik mühendisliği yapmalı veya diğer algoritmalarla denemeniz mi gerekiyor?
+   * [Özellik kümeleri](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): modelleme için geliştirilen özellikler, **veri tanımı** raporunun **özellik kümeleri** bölümünde açıklanmaktadır. Özellik oluşturmak için kodun işaretçilerini ve özelliğin nasıl oluşturulduğunu gösteren bir açıklama içerir.
+   * [Model raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): denenen her bir model için, her bir denemeye ilişkin ayrıntıları sağlayan standart, şablon tabanlı bir rapor oluşturulur.
+   * **Kontrol noktası kararı**: modelin üretim için yeterince performans yapıp gerçekleştirmediğini değerlendirin. Sorabileceğiniz bazı önemli sorular şunlardır:
+     * Model, test verileri için yeterli güvenle sorusuna yanıt veriyor mu? 
+     * Alternatif yaklaşımlar denemeli mi? Ek verileri toplamanız, daha fazla özellik mühendisi mi, yoksa diğer algoritmalardan mi denemeler yapmanız gerekir?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
+TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
    1. [Kurumsal yaklaşım](lifecycle-business-understanding.md)
    2. [Veri edinme ve anlama](lifecycle-data.md)
@@ -88,6 +88,6 @@ TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam uçtan uca izlenme ler salıyoruz. [Örnek walkthroughs](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları içeren senaryoların bir listesini sağlar. İzler, bulut, şirket içi araçlar ve hizmetlerin akıllı bir uygulama oluşturmak için iş akışı veya ardışık ardışık yollarla nasıl birleştirilebildiğini gösterir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren eksiksiz bir uçtan uca izlenecek yol sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSP'lerde adımların nasıl yürütüldüne ilgili örnekler [için](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bkz. 
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 

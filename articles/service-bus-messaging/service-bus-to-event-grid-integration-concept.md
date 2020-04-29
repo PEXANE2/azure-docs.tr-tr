@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus - Event Grid tümleştirmesine genel bakış | Microsoft Docs
-description: Bu makalede, Azure Servis Veri Servisi iletilerinin Azure Etkinlik Ağıt'ı ile nasıl tümleştirilebildiğini açıklayan bir açıklama sunulmaktadır.
+description: Bu makalede, Azure Service Bus mesajlaşma 'nın Azure Event Grid ile nasıl tümleştirildiğini gösteren bir açıklama sunulmaktadır.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773474"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus - Event Grid tümleştirmesine Genel Bakış
@@ -38,7 +38,7 @@ Service Bus artık bir alıcı mevcut olmadığında ve bir kuyrukta veya abonel
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Katkıda bulunan erişimine sahip olduğunuzu doğrulama
-Hizmet Veri Merkezi ad alanınıza gidin ve ardından **Access denetimi (IAM)** seçeneğini belirleyin ve **Rol atamaları** sekmesini seçin. 
+Service Bus ad alanına gidin ve ardından **erişim denetimi (IAM)** seçeneğini belirleyin ve **rol atamaları** sekmesini seçin. ad alanına katkıda bulunan erişimi olduğunu doğrulayın. 
 
 ### <a name="events-and-event-schemas"></a>Olaylar ve olay şemaları
 
@@ -111,7 +111,7 @@ Varsayılan olarak Service Bus, ad alanındaki tüm varlıklar için olaylar gö
 
 ### <a name="use-filters-to-limit-where-you-get-events-from"></a>Olayları aldığınız yeri sınırlamak için filtreleri kullanma
 
-Örneğin, yalnızca ad alanınızdaki bir abonelik veya kuyruktan olaylar almak istiyorsanız, Event Grid tarafından sağlanan *ile başlar* veya *ile biter* filtrelerini kullanabilirsiniz. Bazı arabirimlerde *filtrelerE Pre* ve *Soneki* filtreleri denir. Tümü için değil, birden fazla kuyruk ve abonelik için olaylar almak istiyorsanız, birden fazla Event Grid aboneliği oluşturabilir ve her birine ilişkin bir filtre sağlayabilirsiniz.
+Örneğin, yalnızca ad alanınızdaki bir abonelik veya kuyruktan olaylar almak istiyorsanız, Event Grid tarafından sağlanan *ile başlar* veya *ile biter* filtrelerini kullanabilirsiniz. Bazı arabirimlerde filtrelere, *ön* ve *sonek* filtreleri adı verilir. Tümü için değil, birden fazla kuyruk ve abonelik için olaylar almak istiyorsanız, birden fazla Event Grid aboneliği oluşturabilir ve her birine ilişkin bir filtre sağlayabilirsiniz.
 
 ## <a name="create-event-grid-subscriptions-for-service-bus-namespaces"></a>Service Bus ad alanları için Event Grid abonelikleri oluşturma
 
@@ -126,7 +126,7 @@ Service Bus ad alanları için Event Grid abonelikleri oluşturmanın üç farkl
 Yeni Event Grid aboneliği oluşturmak için aşağıdakileri yapın:
 1. Azure portalında ad alanınıza gidin.
 2. Sol bölmede **Event Grid**’i seçin. 
-3. **Olay Aboneliği'ni**seçin.  
+3. **Olay aboneliği**seçin.  
 
    Aşağıdaki resimde, bir Event Grid aboneliği içeren bir ad alanı gösterilmektedir:
 
@@ -138,7 +138,7 @@ Yeni Event Grid aboneliği oluşturmak için aşağıdakileri yapın:
 
 ## <a name="azure-cli-instructions"></a>Azure CLI yönergeleri
 
-İlk olarak, Azure CLI sürüm 2.0 veya üzerinin yüklü olduğundan emin olun. [Yükleyiciyi indirin](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). **Windows + X'i**seçin ve ardından yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
+İlk olarak, Azure CLI sürüm 2.0 veya üzerinin yüklü olduğundan emin olun. [Yükleyiciyi indirin](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). **Windows + X**' i seçin ve ardından Yönetici izinleriyle yeni bir PowerShell konsolu açın. Alternatif olarak Azure portalındaki bir komut kabuğunu kullanabilirsiniz.
 
 Şu kodu yürütün:
 

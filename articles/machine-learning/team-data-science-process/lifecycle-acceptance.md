@@ -1,6 +1,6 @@
 ---
-title: Ekip Veri Bilimi Süreci yaşam döngüsünün müşteri kabul aşaması
-description: Veri bilimi projelerinizin müşteri kabul aşaması için hedefler, görevler ve teslim edilebilir ler
+title: Team Data Science Işlem yaşam döngüsünün müşteri kabul aşaması
+description: Veri bilimi projelerinizin müşteri kabul aşamasına yönelik hedefler, görevler ve teslim edilebilirler
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7224a7bb26ef491915df9fcb9b6b84ff171a9fc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720529"
 ---
-# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Ekip Veri Bilimi Süreci yaşam döngüsünün müşteri kabul aşaması
+# <a name="customer-acceptance-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Işlem yaşam döngüsünün müşteri kabul aşaması
 
-Bu makalede, Ekip Veri Bilimi Süreci'nin (TDSP) müşteri kabul aşamasıyla ilişkili hedefler, görevler ve teslim edilebilir ler sıralanmıştır. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin genellikle yineleyici olarak yürüttüğü başlıca aşamaları özetler:
+Bu makalede, Team Data Science Işleminin (TDSP) müşteri kabul aşamasına ilişkin hedefler, görevler ve teslim edilebilirler özetlenmektedir. Bu işlem, veri bilimi projelerinizi yapılandırmak için kullanabileceğiniz önerilen bir yaşam döngüsü sağlar. Yaşam döngüsü, projelerin tipik olarak yürütülen ana aşamaları özetler, genellikle yinelemeli olarak:
 
    1. **Kurumsal yaklaşım**
    2. **Veri edinme ve anlama**
@@ -28,29 +28,29 @@ Bu makalede, Ekip Veri Bilimi Süreci'nin (TDSP) müşteri kabul aşamasıyla il
    4. **Dağıtım**
    5. **Müşteri kabulü**
 
-TDSP yaşam döngüsünün görsel bir gösterimi aşağıdavelvettir: 
+TDSP yaşam döngüsünün görsel bir gösterimi aşağıda verilmiştir: 
 
 ![TDSP yaşam döngüsü](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goal"></a>Hedef
-**Proje teslim edilebilirlerini sonuçlandırmak**: Boru hattının, modelin ve bunların üretim ortamında dağıtımLarının müşterinin hedeflerini karşıladığını onaylayın.
+**Proje teslim edilebilirleri Sonlandır**: işlem hattının, modelin ve bir üretim ortamındaki dağıtımının müşterinin hedeflerini karşıladığından emin olun.
 
-## <a name="how-to-do-it"></a>Nasıl yapılacağını
-Bu aşamada ele verilen iki ana görev vardır:
+## <a name="how-to-do-it"></a>Nasıl yapılır?
+Bu aşamada belirtilen iki ana görev vardır:
 
-   * **Sistem doğrulama**: Dağıtılan modelin ve boru hattının müşterinin ihtiyaçlarını karşıladığını doğrulayın.
-   * **Proje teslimi**: Projeyi, sistemi üretimde çalıştıracak varlığa teslim edin.
+   * **Sistem doğrulaması**: dağıtılan modelin ve işlem hattının müşterinin gereksinimlerini karşıladığını onaylayın.
+   * **Proje el ile**: projeyi üretimde çalıştırmaya devam eden varlığa bırakın.
 
-Müşteri, sistemin iş gereksinimlerini karşıladığını ve istemcinin uygulaması tarafından kullanılmak üzere sistemi üretime dağıtmak için kabul edilebilir bir doğrulukla soruları yanıtladığını doğrulamalıdır. Tüm belgeler sonuçlandırılır ve gözden geçirilir. Proje, operasyonlardan sorumlu kuruluşa devredilir. Bu varlık, örneğin, bir BT veya müşteri veri bilimi ekibi veya üretimde sistemi çalıştırmaktan sorumlu müşterinin temsilcisi olabilir. 
+Müşteri, sistemin kendi iş gereksinimlerini karşıladığını ve sistemin, istemci uygulaması tarafından kullanılmak üzere uygulamayı üretime dağıtmak için kabul edilebilir doğrulukla soruların yanıt verdiği doğrulaması gerekir. Tüm belgeler sonlandırılır ve gözden geçirilir. Proje, işlemlerden sorumlu varlığa devredilmiştir. Bu varlık, örneğin, bir BT veya müşteri veri bilimi ekibi ya da müşterinin üretimde sistem çalıştırmasından sorumlu bir aracı olabilir. 
 
 ## <a name="artifacts"></a>Yapıtlar
-Bu son aşamada üretilen ana eser **müşteri için projenin Çıkış raporudur.** Bu teknik rapor, sistemin nasıl işletilmesi hakkında bilgi edinmek için yararlı olan projenin tüm ayrıntılarını içerir. TDSP bir [Çıkış raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) şablonu sağlar. Şablonu olduğu gibi kullanabilir veya belirli istemci gereksinimlerine göre özelleştirebilirsiniz. 
+Bu son aşamada üretilen ana yapıt, **müşterinin projenin çıkış rapordur**. Bu teknik rapor, sistemin nasıl çalışalınacağını öğrenmek için yararlı olan projenin tüm ayrıntılarını içerir. TDSP bir [Çıkış raporu](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) şablonu sağlar. Şablonu olduğu gibi kullanabilir veya belirli istemci ihtiyaçları için özelleştirebilirsiniz. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
+TDSP yaşam döngüsüyle her adımın bağlantıları aşağıda verilmiştir:
 
    1. [Kurumsal yaklaşım](lifecycle-business-understanding.md)
    2. [Veri edinme ve anlama](lifecycle-data.md)
@@ -58,6 +58,6 @@ TDSP'nin yaşam döngüsündeki her adıma bağlantılar aşağıda vereb
    4. [Dağıtım](lifecycle-deployment.md)
    5. [Müşteri kabulü](lifecycle-acceptance.md)
 
-Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenme ler sağlarız. [Örnek walkthroughs](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları içeren senaryoların bir listesini sağlar. İzler, bulut, şirket içi araçlar ve hizmetlerin akıllı bir uygulama oluşturmak için iş akışı veya ardışık ardışık yollarla nasıl birleştirilebildiğini gösterir. 
+Belirli senaryolar için işlemdeki tüm adımları gösteren tam izlenecek yollar sunuyoruz. [Örnek yönergeler](walkthroughs.md) makalesi, bağlantılar ve küçük resim açıklamaları olan senaryoların bir listesini sağlar. İzlenecek yollar, akıllı bir uygulama oluşturmak için bulut, şirket içi araçların ve hizmetlerin bir iş akışı veya işlem hattına nasıl birleştirileceğini gösterir. 
 
-Azure Machine Learning Studio kullanan TDSP'lerde adımların nasıl yürütüldüne ilgili örnekler [için](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)bkz.
+Azure Machine Learning Studio kullanan TDSPs 'de adımların nasıl yürütüleceği hakkında örnekler için, bkz. [Azure Machine Learning Ile TDSP kullanma](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

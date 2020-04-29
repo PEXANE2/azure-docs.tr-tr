@@ -1,5 +1,5 @@
 ---
-title: CloudSimple'a göre Azure VMware Çözümü - Genel IP adreslerini ayırma
+title: CloudSimple ile Azure VMware çözümü genel IP adreslerini ayır
 description: Özel Bulut ortamındaki sanal makineler için genel IP adreslerinin nasıl ayrılacağını açıklar
 author: sharaths-cs
 ms.author: b-shsury
@@ -9,29 +9,29 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024305"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Özel Bulut ortamı için genel IP adreslerini ayırma
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Özel bulut ortamı için genel IP adresleri ayır
 
-Özel Bulut ortamınızdaki sanal makineler için genel IP adreslerini ayırmak için Ağ sayfasındaki Genel IP'ler sekmesini açın.
+Özel bulut ortamınızdaki sanal makineler için genel IP adresleri ayırmak üzere ağ sayfasında ortak IP 'Ler sekmesini açın.
 
-1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüde **Ağ'ı** seçin.
-2. **Genel IP'leri**seçin.
-3. **Yeni Genel IP'yi**tıklatın.
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve yan menüdeki **ağ** ' ı seçin.
+2. **Genel IP 'leri**seçin.
+3. **Yeni genel IP**' ye tıklayın.
 
-    ![Genel IP'ler sayfası](media/public-ips-page.png)
+    ![Genel IP 'Ler sayfası](media/public-ips-page.png)
 
 4. IP adresi girişini tanımlamak için bir ad girin.
 5. Varsayılan konumu koruyun.
-6. Gerekirse boşta kalan zaman anına değiştirmek için kaydırıcıyı kullanın.
-7. Herkese açık bir IP adresi atamak istediğiniz yerel IP adresini girin.
+6. Gerekirse, boşta kalma zaman aşımını değiştirmek için kaydırıcıyı kullanın.
+7. Genel IP adresi atamak istediğiniz yerel IP adresini girin.
 8. İlişkili bir DNS adı girin.
-9. **Gönder'i**tıklatın.
+9. **Gönder**' e tıklayın.
 
-![Genel IP'leri ayırma](media/network-public-ip-allocate.png)
+![Genel IP 'Leri ayır](media/network-public-ip-allocate.png)
 
-Genel IP adresini ayırma görevi başlar. **Görevler etkinliği** sayfasında görevin durumunu > kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş Genel IP'ler sayfasında gösterilir.
+Genel IP adresini ayırma görevi başlar. Görevin durumunu **etkinlik > görevler** sayfasında kontrol edebilirsiniz. Ayırma tamamlandığında, yeni giriş genel IP 'Ler sayfasında gösterilir.

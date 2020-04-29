@@ -1,6 +1,6 @@
 ---
-title: AMS REST API kullanarak içeriğinizi depolama şifrelemesiyle şifreleme
-description: AMS REST API'lerini kullanarak içeriğinizi depolama şifrelemesiyle nasıl şifreleriz öğrenin.
+title: AMS REST API kullanarak içeriğinizi depolama şifreleme ile şifreleme
+description: AMS REST API 'Leri kullanarak içeriğinizi depolama şifrelemesiyle nasıl şifreleyeceğinizi öğrenin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,71 +15,71 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773595"
 ---
-# <a name="encrypting-your-content-with-storage-encryption"></a>İçeriğinizi depolama şifrelemesi ile şifreleme 
+# <a name="encrypting-your-content-with-storage-encryption"></a>Depolama şifrelemesiyle içeriğinizi şifreleme 
 
 > [!NOTE]
-> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   > Media Services v2'ye yeni özellikler veya işlevler eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).   Media Services V2 'ye yeni özellik veya işlevsellik eklenmiyor >. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 >   
 
-AES-256 bit şifreleme kullanarak içeriğinizi yerel olarak şifrelemeniz ve ardından güvenli bir şekilde şifrelendiği Azure Depolama'ya yüklemeniz önerilir.
+AES-256 bit şifrelemeyi kullanarak içeriğinizi yerel olarak şifrelemeniz ve sonra geri kalanı şifreli olarak depolandığı Azure depolama 'ya yüklemeniz kesinlikle önerilir.
 
-Bu makalede, AMS depolama şifrelemesine genel bir bakış sunar ve depolama şifrelenmiş içeriğinasıl yükleyeceğimiz gösterilmektedir:
+Bu makale, AMS depolama şifrelemesi hakkında genel bir bakış sunar ve depolama şifreli içeriğini karşıya yükleme işleminin nasıl yapılacağını gösterir:
 
 * Bir içerik anahtarı oluşturun.
-* Bir Varlık Oluşturun. Varlık Oluşturma Seçeneğini, Varlık Oluştururken StorageEncryption'a ayarlayın.
+* Bir varlık oluşturun. Varlığı oluştururken AssetCreationOption öğesini StorageEncryption olarak ayarlayın.
   
-     Şifrelenmiş varlıklar içerik anahtarlarıyla ilişkilidir.
-* İçerik anahtarını varlığa bağla.  
-* AssetFile varlıklarındaki şifrelemeyle ilgili parametreleri ayarlayın.
+     Şifrelenmiş varlıklar, içerik anahtarlarıyla ilişkilendirilir.
+* İçerik anahtarını varlığa bağlayın.  
+* AssetFile varlıklarında şifrelemeyle ilgili parametreleri ayarlayın.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler 
 
-Depolama şifreli bir varlık teslim etmek istiyorsanız, varlığın teslim ilkesini yapılandırmanız gerekir. Varlığınız akışa geçmeden önce, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışı sağlar. Daha fazla bilgi için [bkz.](media-services-rest-configure-asset-delivery-policy.md)
+Depolama ile şifrelenmiş bir varlık sağlamak istiyorsanız, varlığın teslim ilkesini yapılandırmanız gerekir. Varlığınızın akışı için, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışa çıkarır. Daha fazla bilgi için bkz. [varlık teslim Ilkelerini yapılandırma](media-services-rest-configure-asset-delivery-policy.md).
 
-Medya Hizmetleri'ndeki varlıklara erişirken, HTTP isteklerinizde belirli üstbilgi alanları ve değerleri belirlemeniz gerekir. Daha fazla bilgi için Medya [Hizmetleri REST API Geliştirme kurulumu'na](media-services-rest-how-to-use.md)bakın. 
+Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md). 
 
-### <a name="storage-side-encryption"></a>Depolama tarafı şifreleme
+### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi
 
 |Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Medya Hizmetleri Depolama Şifrelemesi|AES-256 şifreleme, Medya Hizmetleri tarafından yönetilen anahtar|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
-|[Veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure Depolama tarafından sunulan sunucu tarafı şifrelemesi, Azure veya müşteri tarafından yönetilen anahtar|Destekleniyor|Destekleniyor|
-|[Depolama İstemci Tarafı Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Anahtar Vault'ta müşteri tarafından yönetilen anahtar olan Azure depolama tarafından sunulan istemci tarafı şifrelemesi|Desteklenmiyor|Desteklenmiyor|
+|Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan, Azure veya müşteri tarafından yönetilen anahtar olan sunucu tarafı şifrelemesi|Destekleniyor|Destekleniyor|
+|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan istemci tarafı şifreleme, Key Vault ' de müşteri tarafından yönetilen anahtar|Desteklenmiyor|Desteklenmiyor|
 
-<sup>1</sup> Medya Hizmetleri içeriğin açık/net bir şekilde işlenmesini desteklerken, bunu yapmak önerilmez.
+<sup>1</sup> Media Services, şifresiz ve herhangi bir şifreleme formu olmadan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 
-<sup>2</sup> Medya Hizmetleri v3'te depolama şifrelemesi (AES-256 şifrelemesi), yalnızca Varlıklarınız Medya Hizmetleri v2 ile oluşturulduğunda geriye dönük uyumluluk için desteklenir. Yani v3 varolan depolama şifreli varlıklarla çalışır, ancak yenilerinin oluşturulmasına izin vermez.
+<sup>2</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca varlıklarınız Media Services V2 ile oluşturulduysa geriye dönük uyumluluk için desteklenir. V3, mevcut depolama şifrelenmiş varlıklarla çalışır, ancak yenilerini oluşturulmasına izin vermez.
 
 ## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
-AMS API'sine nasıl bağlanabileceğiniz hakkında bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
+AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
 
-## <a name="storage-encryption-overview"></a>Depolama şifrelemesi genel bakış
-AMS depolama şifrelemesi tüm dosyaya **AES-TO** modu şifrelemesi uygular.  AES-TO modu, dolguya gerek kalmadan rasgele uzunluktaki verileri şifreleyebilen bir blok şifrelemesidir. AES algoritması ile bir sayaç bloğunu şifreleyerek ve ardından AES çıktısını şifrelemek veya şifresini çözmek için verilerle XOR-ing ile çalışır.  Kullanılan sayaç bloğu, InitializationVector değerinin 0-7 sayaç değerine kopyalanmasıyla oluşturulur ve sayaç değerinin 8-15'inin baytları sıfıra ayarlanır. 16 baytlık sayaç bloğundan 8 ila 15 bayt (yani en az önemli baytlar), sonraki her veri bloğu için bir sayı yla artıp işlenen ve ağ bayt sırasına göre tutulan basit bir 64 bit imzasız tamsayı olarak kullanılır. Bu tamsayı maksimum değere ulaşırsa (0xFFFFFFFFFFFFFFFFFFFFFFFFFFF) daha sonra, sayaç takidiğer 64 bitini (yani 0'dan 7'ye bayt) etkilemeden blok sayacını sıfırlayarak sıfırlar (bayt 8-15).   AES-TO modu şifrelemesinin güvenliğini sağlamak için, her içerik anahtarı için belirli bir Anahtar Tanımlayıcısı için InitializationVector değeri benzersiz olacaktır ve dosyalar 2^64 bloktan daha kısa uzunlukta olacaktır.  Bu benzersiz değer, sayaç değerinin belirli bir anahtarla hiçbir zaman yeniden kullanılmadığından emin olmak tır. TO modu hakkında daha fazla bilgi için [bu wiki sayfasına](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) bakın (wiki makalesi "InitializationVector" yerine "Nonce" terimini kullanır).
+## <a name="storage-encryption-overview"></a>Depolama şifrelemeye genel bakış
+AMS depolama şifrelemesi, tüm dosyanın **AES-Mrk** modu şifrelemesini uygular.  AES-Mrk modu, doldurma gerekmeden rastgele uzunluktaki verileri şifreleyebilen bir blok şifredir. Bu işlem, AES algoritması ile bir sayaç bloğunu şifreleyerek ve sonra şifrelenecek veya şifresinin çözülmesi gereken verilerle AES çıkışı XOR ile çalışır.  Kullanılan sayaç bloğu, ınitializationvector değeri sayaç değerinin 0 ile 7 arasında ve sayaç değerinin 8 ile 15 ' i arasında bir değer sıfıra ayarlandığında oluşturulur. 16 baytlık sayaç bloğunun 3 ile 15 arasında (yani en az sayıda bayt), işlenen her veri bloğu için bir tane tarafından arttırılan ve ağ bayt düzeninde tutulan basit bir 64 bitlik işaretsiz tamsayı olarak kullanılır. Bu tamsayı en büyük değere (0xFFFFFFFFFFFFFFFF) ulaşırsa, bu süreyi arttırın, sayacın diğer 64 bitlerini etkilemeden blok sayacını sıfıra (bayt 8 ' e kadar) sıfırlar (yani, bayt 0 ile 7 arasında).   AES-Mrk modu şifrelemenin güvenliğini sağlamak için her bir içerik anahtarı için belirli bir anahtar tanımlayıcısı için ınitializationvector değeri her dosya için benzersiz olacaktır ve dosyalar 2 ^ 64 blok uzunluğunda olacaktır.  Bu benzersiz değer, bir sayaç değerinin belirli bir anahtarla hiçbir şekilde yeniden kullanılmamasını sağlamaktır. MRK modu hakkında daha fazla bilgi için bkz. [Bu wiki sayfası](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#CTR) (wiki makalesi "ınitializationvector" yerine "nonce" terimini kullanır).
 
-Temiz içeriğinizi AES-256 bit şifrelemekullanarak yerel olarak şifrelemek için **Depolama Şifreleme'yi** kullanın ve ardından güvenli bir şekilde şifrelendiği Azure Depolama'ya yükleyin. Depolama şifrelemesi ile korunan varlıklar otomatik olarak şifrelenmez ve kodlamadan önce şifrelenmiş bir dosya sistemine yerleştirilir ve isteğe bağlı olarak yeni bir çıktı varlığı olarak geri yüklemeden önce yeniden şifrelenir. Depolama şifrelemesi için birincil kullanım örneği, yüksek kaliteli giriş ortam dosyalarınızı diskte güçlü şifreleme yle güvence altına almak istediğinizde olur.
+AES-256 bit şifrelemesini kullanarak açık içeriğinizi yerel olarak şifrelemek için **depolama şifrelemeyi** kullanın ve ardından, geri kalanı şifreli olarak depolandığı Azure depolama 'ya yükleyin. Depolama şifrelemesi ile korunan varlıklar, kodlama öncesinde otomatik olarak şifrelenmez ve şifreli bir dosya sistemine yerleştirilir ve yeni bir çıkış varlığı olarak geri yüklenmeden önce isteğe bağlı olarak yeniden şifrelenir. Depolama şifrelemesi için birincil kullanım örneği, yüksek kaliteli giriş medya dosyalarınızı diskte bekleyen bir şekilde güçlü şifreleme ile güvenli hale getirmek istediğinizde kullanılır.
 
-Depolama şifreli bir varlık sunmak için, Medya Hizmetleri'nin içeriğinizi nasıl teslim etmek istediğinizi bilmesi için varlığın teslim politikasını yapılandırmanız gerekir. Varlığınız akışa geçmeden önce, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini (örneğin, AES, ortak şifreleme veya şifreleme olmadan) kullanarak içeriğinizi akışı sağlar.
+Depolama şifrelenmiş bir varlık teslim etmek için varlığın teslim ilkesini yapılandırmanız gerekir, böylece içeriğinizi nasıl teslim etmek istediğinizi bilir Media Services. Varlığınızın akışı silinmeden önce, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini (örneğin, AES, ortak şifreleme veya şifreleme olmadan) kullanarak içeriğinizi akışa alabilir.
 
-## <a name="create-contentkeys-used-for-encryption"></a>Şifreleme için kullanılan İçerikTuşlarını Oluşturma
-Şifrelenmiş varlıklar Depolama Şifreleme anahtarları ile ilişkilidir. Varlık dosyalarını oluşturmadan önce şifreleme için kullanılacak içerik anahtarını oluşturun. Bu bölümde içerik anahtarının nasıl oluşturulacak olduğu açıklanmaktadır.
+## <a name="create-contentkeys-used-for-encryption"></a>Şifreleme için kullanılan ContentKeys oluşturma
+Şifrelenmiş varlıklar, depolama şifreleme anahtarlarıyla ilişkilendirilir. Varlık dosyalarını oluşturmadan önce şifreleme için kullanılacak içerik anahtarını oluşturun. Bu bölümde, içerik anahtarının nasıl oluşturulacağı açıklanmaktadır.
 
-Aşağıda, şifrelenmek istediğiniz varlıklarla ilişkilendirdiğiniz içerik anahtarları oluşturmak için genel adımlar veremeniz gerekir. 
+Aşağıda, şifrelenmesini istediğiniz varlıklarla ilişkilendirdiğiniz içerik anahtarlarının oluşturulması için genel adımlar verilmiştir. 
 
-1. Depolama şifrelemesi için rasgele 32 baytlık bir AES anahtarı oluşturun. 
+1. Depolama şifrelemesi için rastgele bir 32 baytlık AES anahtarı oluşturun. 
    
-    32 baytlık AES Anahtarı, kıymetinizin içerik anahtarıdır, bu da söz le ilişkili tüm dosyaların şifre çözme sırasında aynı içerik anahtarını kullanması gerektiği anlamına gelir. 
-2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X.509 Sertifikasını almak için [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) yöntemlerini arayın.
-3. İçerik anahtarınızı X.509 Sertifikası'nın ortak anahtarıyla şifreleyin. 
+    32 baytlık AES anahtarı, varlığınızın içerik anahtarıdır. Bu, söz konusu varlıkla ilişkili tüm dosyaların şifre çözme sırasında aynı içerik anahtarını kullanması gerektiği anlamına gelir. 
+2. İçerik anahtarınızı şifrelemek için kullanılması gereken doğru X. 509.952 sertifikasını almak için [Getprotectionkeyıd](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) ve [getprotectionkey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) yöntemlerini çağırın.
+3. İçerik anahtarınızı X. 509.440 sertifikasının ortak anahtarıyla şifreleyin. 
    
-   Medya Hizmetleri .NET SDK şifreleme yaparken OAEP ile RSA kullanır.  [EncryptSymmetricKeyData işlevinde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)bir .NET örneği görebilirsiniz.
-4. Anahtar tanımlayıcısı ve içerik anahtarı kullanılarak hesaplanan bir çekum değeri oluşturun. Aşağıdaki .NET örneği, anahtar tanımlayıcının GUID kısmını ve net içerik anahtarını kullanarak çekumhesaplar.
+   Media Services .NET SDK, şifrelemeyi yaparken OAEP ile RSA kullanır.  Bir .NET örneğini [Encryptsymmetrickeydata işlevinde](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)görebilirsiniz.
+4. Anahtar tanımlayıcısı ve içerik anahtarı kullanılarak hesaplanan bir sağlama toplamı değeri oluşturun. Aşağıdaki .NET örneği, anahtar tanımlayıcısının GUID bölümünü ve açık içerik anahtarını kullanarak sağlama toplamını hesaplar.
 
     ```csharp
             public static string CalculateChecksum(byte[] contentKey, Guid keyId)
@@ -109,22 +109,22 @@ Aşağıda, şifrelenmek istediğiniz varlıklarla ilişkilendirdiğiniz içerik
             }
     ```
 
-5. Önceki adımlarda aldığınız **EncryptedContentKey** (base64 kodlanmış dizeye dönüştürülür), **ProtectionKeyId,** **ProtectionKeyType,** **ContentKeyType**ve **Checksum** değerleri ile İçerik anahtarını oluşturun.
+5. Önceki adımlarda aldığınız **Encryptedcontentkey** (base64 kodlu dizeye dönüştürülmüş), **protectionkeyıd**, **Protectionkeytype**, **Contentkeytype**ve **sağlama toplamı** değerleri ile içerik anahtarı oluşturun.
 
-    Depolama şifrelemesi için, aşağıdaki özelliklerin istek gövdesine dahil edilmesi gerekir.
+    Depolama şifrelemesi için, aşağıdaki özellikler istek gövdesine eklenmelidir.
 
-    Gövde özelliği isteğinde bulunun    | Açıklama
+    İstek gövdesi özelliği    | Açıklama
     ---|---
-    Kimlik | ContentKey ID aşağıdaki biçimde oluşturulur, "nb:kid:UUID:\<Yenİ GUID>".
-    İçerikKeyType | İçerik anahtar türü, anahtarı tanımlayan bir karşıcıdır. Depolama şifreleme biçimi için değer 1'dir.
-    ŞifreliİçerikAnahtar | 256 bit (32 bayt) değerinde yeni bir içerik anahtar değeri oluşturuyoruz. Anahtar, GetProtectionKeyId ve GetProtectionKey Yöntemleri için http GET isteği gerçekleştirerek Microsoft Azure Medya Hizmetleri'nden aldığımız depolama şifrelemex.509 sertifikası kullanılarak şifrelenir. Örnek olarak, aşağıdaki .NET koduna bakın: [Burada](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tanımlanan **EncryptSymmetricKeyData** yöntemi.
-    KorumaKeyid | Bu, içerik anahtarımızı şifrelemek için kullanılan depolama şifreleme X.509 sertifikasının koruma anahtarı kimliğidir.
-    ProtectionKeyType | Bu, içerik anahtarını şifrelemek için kullanılan koruma anahtarının şifreleme türüdür. Bu değer, örneğimiz için StorageEncryption(1) değeridir.
-    Sağlama |MD5, içerik anahtarı için hesaplanan checksum'u hesapladı. İçerik numarası içerik anahtarı ile şifrelenerek hesaplanır. Örnek kod, checksum'un nasıl hesaplanacağını gösterir.
+    Kimlik | ContentKey KIMLIĞI, "NB: KID: UUID:\<NEW GUID>" biçimi kullanılarak oluşturulur.
+    ContentKeyType | İçerik anahtar türü, anahtarı tanımlayan bir tamsayıdır. Depolama şifreleme biçimi için değer 1 ' dir.
+    EncryptedContentKey | 256 bitlik (32 bayt) bir değer olan yeni bir içerik anahtarı değeri oluşturacağız. Anahtar, Getprotectionkeyıd ve GetProtectionKey yöntemleri için bir HTTP GET isteği yürüterek Microsoft Azure Media Services elde ettiğimiz depolama şifreleme X. 509.440 sertifikası kullanılarak şifrelenir. Örnek olarak, aşağıdaki .NET koduna bakın: [burada](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)tanımlanan **Encryptsymmetrickeydata** yöntemi.
+    Protectionkeyıd | Bu, içerik anahtarımızı şifrelemek için kullanılan depolama şifrelemesi X. 509.440 sertifikası için koruma anahtarı KIMLIĞIDIR.
+    ProtectionKeyType | Bu, içerik anahtarını şifrelemek için kullanılan koruma anahtarı için şifreleme türüdür. Bu değer, örneğimiz için StorageEncryption (1).
+    Sağlama |İçerik anahtarı için MD5 hesaplanan sağlama toplamı. İçerik KIMLIĞI içerik anahtarıyla şifrelenerek hesaplanır. Örnek kod, sağlama toplamı nasıl hesaplanacağını gösterir.
 
 
-### <a name="retrieve-the-protectionkeyid"></a>ProtectionKeyId'i alın
-Aşağıdaki örnek, içerik anahtarınızı şifrelerken kullanmanız gereken sertifika için bir sertifika parmak izi olan ProtectionKeyId'in nasıl alındığını gösterir. Makinenizde zaten uygun sertifikaya sahip olduğundan emin olmak için bu adımı yapın.
+### <a name="retrieve-the-protectionkeyid"></a>Protectionkeyıd 'yi alma
+Aşağıdaki örnek, içerik anahtarınızı şifrelerken kullanmanız gereken sertifika için bir sertifika parmak izi olan Protectionkeyıd 'nin nasıl alınacağını gösterir. Makinenizde uygun sertifikaya zaten sahip olduğunuzdan emin olmak için bu adımı gerçekleştirin.
 
 İstek:
 
@@ -154,8 +154,8 @@ Yanıt:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>ProtectionKeyId için ProtectionKey'i alın
-Aşağıdaki örnek, önceki adımda aldığınız ProtectionKeyId'i kullanarak X.509 sertifikasını nasıl alabileceğinizi gösterir.
+### <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Protectionkeyıd için ProtectionKey değerini alma
+Aşağıdaki örnek, önceki adımda aldığınız Protectionkeyıd kullanarak X. 509.440 sertifikasının nasıl alınacağını gösterir.
 
 İstek:
 
@@ -189,11 +189,11 @@ Yanıt:
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
 ### <a name="create-the-content-key"></a>İçerik anahtarını oluşturma
-X.509 sertifikasını aldıktan ve içerik anahtarınızı şifrelemek için ortak anahtarını kullandıktan sonra, bir **ContentKey** tüzel kişiliği oluşturun ve özellik değerlerini buna göre ayarlayın.
+X. 509.952 sertifikasını aldıktan ve kendi ortak anahtarını, içerik anahtarınızı şifrelemek için kullandıktan sonra, bir **contentkey** varlığı oluşturun ve özellik değerlerini uygun şekilde ayarlayın.
 
-İçerik anahtarını oluştururken ayarlamanız gereken değerlerden biri de türdür. Depolama şifrelemesi kullanırken, değer '1' olarak ayarlanmalıdır. 
+İçerik anahtarını oluştururken ayarlamanız gereken değerlerden biri türdür. Depolama şifrelemesi kullanılırken, değer ' 1 ' olarak ayarlanmalıdır. 
 
-Aşağıdaki örnek, depolama şifrelemesi için **ContentKeyType** kümesi ("1") ve koruma anahtarı kimliğinin X.509 sertifikası parmak izi olduğunu belirtmek için **ProtectionKeyType** kümesi "0" olan bir **ContentKey'in** nasıl oluşturultuğu gösterilmektedir.  
+Aşağıdaki örnek, depolama şifrelemesi için bir **Contentkeytype** kümesi ("1") ve **Protectionkeytype** 'ın X. 509.440 sertifika parmak izi olduğunu göstermek için "0" olarak ayarlanmış bir **contentkey** oluşturmayı gösterir.  
 
 İstek
 
@@ -243,7 +243,7 @@ Yanıt:
     "Checksum":"calculated checksum"}
 
 ## <a name="create-an-asset"></a>Varlık oluşturma
-Aşağıdaki örnekte, bir varlığın nasıl oluşturulabildiğini gösterilmektedir.
+Aşağıdaki örnek, bir varlığın nasıl oluşturulacağını göstermektedir.
 
 **HTTP İsteği**
 
@@ -259,7 +259,7 @@ Aşağıdaki örnekte, bir varlığın nasıl oluşturulabildiğini gösterilmek
 
     {"Name":"BigBuckBunny" "Options":1}
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
 Başarılı olursa, aşağıdaki yanıt döndürülür:
 
@@ -289,8 +289,8 @@ Başarılı olursa, aşağıdaki yanıt döndürülür:
        "StorageAccountName":"storagetestaccount001"
     }
 
-## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey'i Bir Varlıkla Ilişkilendir
-ContentKey'i oluşturduktan sonra, aşağıdaki örnekte gösterildiği gibi, $links işlemini kullanarak Kıymetinizle ilişkilendirin:
+## <a name="associate-the-contentkey-with-an-asset"></a>ContentKey 'i bir varlıkla ilişkilendir
+ContentKey oluşturduktan sonra, aşağıdaki örnekte gösterildiği gibi $links işlemini kullanarak varlığınızla ilişkilendirin:
 
 İstek:
 
@@ -310,12 +310,12 @@ Yanıt:
 
     HTTP/1.1 204 No Content 
 
-## <a name="create-an-assetfile"></a>Varlık Dosyası Oluşturma
-[AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) varlığı, bir blob kapsayıcısında depolanan bir video veya ses dosyasını temsil eder. Kıymet dosyası her zaman bir varlıkla ilişkilidir ve bir varlık bir veya birden çok varlık dosyası içerebilir. Bir varlık dosyası nesnesi bir blob kapsayıcısındaki dijital bir dosyayla ilişkilendirilmezse, Medya Hizmetleri Encoder görevi başarısız olur.
+## <a name="create-an-assetfile"></a>Assetdosyası oluşturma
+[Assetfile](https://docs.microsoft.com/rest/api/media/operations/assetfile) varlığı bir blob kapsayıcısında depolanan bir videoyu veya ses dosyasını temsil eder. Bir varlık dosyası her zaman bir varlıkla ilişkilendirilir ve bir varlık bir veya daha fazla varlık dosyası içerebilir. Bir varlık dosya nesnesi bir blob kapsayıcısındaki dijital dosyayla ilişkilendirilmediğinde Media Services kodlayıcı görevi başarısız olur.
 
-**AssetFile** örneği ve gerçek ortam dosyası iki farklı nesnedir. AssetFile örneği medya dosyası yla ilgili meta verileri içerirken, ortam dosyası gerçek medya içeriğini içerir.
+**Assetfile** örneği ve gerçek medya dosyası iki ayrı nesne. Maldosya örneği medya dosyası hakkındaki meta verileri içerir, ancak medya dosyası gerçek medya içeriğini içerir.
 
-Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, AssetFile'ı medya dosyanızla ilgili bilgilerle (bu makalede gösterilmez) güncelleştirmek için **BIRLEŞTIRME** HTTP isteğini kullanırsınız. 
+Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, Assetdosyasını medya dosyanız (Bu makalede gösterilmez) hakkındaki bilgilerle güncelleştirmek için **merge** http isteğini kullanırsınız. 
 
 **HTTP İsteği**
 
@@ -343,7 +343,7 @@ Dijital medya dosyanızı bir blob kapsayıcısına yükledikten sonra, AssetFil
        "ParentAssetId":"nb:cid:UUID:9bc8ff20-24fb-4fdb-9d7c-b04c7ee573a1"
     }
 
-**HTTP Yanıt**
+**HTTP yanıtı**
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache

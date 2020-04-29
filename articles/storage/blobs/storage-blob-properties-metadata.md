@@ -1,6 +1,6 @@
 ---
-title: .NET - Azure Depolama ile bir blob için özellikleri ve meta verileri yönetme
-description: .NET istemci kitaplığını kullanarak sistem özelliklerini nasıl ayarlayıp alabildiğini ve Azure Depolama hesabınızdaki blob'larda özel meta verileri nasıl depolayacağım öğren.
+title: .NET-Azure depolama ile bir blob için özellikleri ve meta verileri yönetme
+description: .NET istemci kitaplığını kullanarak Azure Storage hesabınızdaki bloblarda sistem özelliklerini ayarlama ve alma ve özel meta verileri depolama hakkında bilgi edinin.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,30 +9,30 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137671"
 ---
-# <a name="manage-blob-properties-and-metadata-with-net"></a>Blob özelliklerini ve meta verileri .NET ile yönetme
+# <a name="manage-blob-properties-and-metadata-with-net"></a>.NET ile blob özelliklerini ve meta verileri yönetme
 
-İçerdikleri verilere ek olarak, blobs destek sistem özellikleri ve kullanıcı tanımlı meta veriler. Bu makalede, [.NET için Azure Depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile sistem özellikleri nin ve kullanıcı tanımlı meta verilerin nasıl yönetilengösterilen
+Blob 'lar, içerdikleri verilere ek olarak sistem özelliklerini ve Kullanıcı tanımlı meta verileri destekler. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile sistem özelliklerinin ve Kullanıcı tanımlı meta verilerin nasıl yönetileceği gösterilmektedir.
 
 ## <a name="about-properties-and-metadata"></a>Özellikler ve meta veriler hakkında
 
-- **Sistem özellikleri**: Her Blob depolama kaynağında sistem özellikleri bulunur. Bazıları okunabilir veya ayarlanabilir, diğerleri ise salt okunur. Kapakların altında, bazı sistem özellikleri belirli standart HTTP üstbilgilerine karşılık gelir. .NET için Azure Depolama istemci kitaplığı bu özellikleri sizin için korur.
+- **Sistem Özellikleri**: her BLOB depolama kaynağında sistem özellikleri bulunur. Bazıları okunabilir veya ayarlanabilir, diğerleri salt okunurdur. Kapakların altında bazı sistem özellikleri bazı standart HTTP üst bilgilerine karşılık gelir. .NET için Azure depolama istemci kitaplığı, bu özellikleri sizin için korur.
 
-- **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, Blob depolama kaynağı için belirttiğiniz bir veya daha fazla ad değeri çiftinden oluşur. Kaynakla ek değerler depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amaçlarınız içindir ve kaynağın nasıl etkilediğini etkilemez.
+- **Kullanıcı tanımlı meta veriler**: Kullanıcı tanımlı meta veriler, bir BLOB depolama kaynağı için belirlediğiniz bir veya daha fazla ad-değer çiftinden oluşur. Kaynak ile ek değerleri depolamak için meta verileri kullanabilirsiniz. Meta veri değerleri yalnızca kendi amacınıza yöneliktir ve kaynağın nasıl davranacağını etkilemez.
 
-Blob depolama kaynağı için meta veri ve özellik değerlerini almak iki adımlı bir işlemdir. Bu değerleri okuyamadan önce, bu değerleri `FetchAttributes` çağırarak `FetchAttributesAsync` veya yönteme çağırarak açıkça getirmeniz gerekir. Bu kuralın `Exists` istisnası, `ExistsAsync` ve yöntemlerin `FetchAttributes` kapakların altında uygun yöntemi çağırmasıdır. Bu yöntemlerden birini aradiğinizde, `FetchAttributes`''
+BLOB depolama kaynağı için meta verilerin ve özellik değerlerinin alınması, iki adımlı bir işlemdir. Bu değerleri okuyabilmeniz için önce `FetchAttributes` veya `FetchAttributesAsync` metodunu çağırarak açıkça almanız gerekir. Bu kuralın istisnası, `Exists` ve `ExistsAsync` yöntemlerinin, kapsamakta olan uygun `FetchAttributes` yöntemi çağırmasını sağlar. Bu yöntemlerden birini çağırdığınızda, ' ı da çağırmanız `FetchAttributes`gerekmez.
 
 > [!IMPORTANT]
-> Depolama kaynağının özelliğinin veya meta veri değerlerinin doldurulmadığını fark ederseniz, `FetchAttributes` kodunuzu veya `FetchAttributesAsync` yöntemi çağırıp çağırmadığını denetleyin.
+> Bir depolama kaynağı için özellik veya meta veri değerlerinin doldurulmadığını fark ederseniz, kodunuzun `FetchAttributes` veya `FetchAttributesAsync` yöntemini çağırmadığını kontrol edin.
 
 ## <a name="set-and-retrieve-properties"></a>Özellikleri ayarlama ve alma
 
-Aşağıdaki kod örneği `ContentType` bir `ContentLanguage` blob üzerinde ve sistem özelliklerini ayarlar.
+Aşağıdaki kod örneği bir Blobun `ContentType` ve `ContentLanguage` sistem özelliklerini ayarlar.
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -60,7 +60,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-Blob özelliklerini almak `FetchAttributes` için, `FetchAttributesAsync` `Properties` özelliği doldurmak için blob veya yöntem arayın. Aşağıdaki kod örneği bir blob sistem özelliklerini alır ve bazı değerleri görüntüler:
+Blob özelliklerini almak için, `FetchAttributes` `FetchAttributesAsync` `Properties` özelliği doldurmak üzere bloba veya yöntemini çağırın. Aşağıdaki kod örneği, bir Blobun sistem özelliklerini alır ve bazı değerleri görüntüler:
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -89,16 +89,16 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>Meta verileri ayarlama ve alma
 
-Bir blob veya kapsayıcı kaynağında meta verileri bir veya daha fazla ad değeri çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için, kaynaktaki `Metadata` koleksiyona ad değeri çiftleri ekleyin. Ardından, değerleri yazmak için aşağıdaki yöntemlerden birini arayın:
+Meta verileri bir blob veya kapsayıcı kaynağında bir veya daha fazla ad-değer çifti olarak belirtebilirsiniz. Meta verileri ayarlamak için kaynaktaki `Metadata` koleksiyona ad-değer çiftleri ekleyin. Ardından, değerleri yazmak için aşağıdaki yöntemlerden birini çağırın:
 
-- [SetMeta veri](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
+- [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 
-Meta veri adı/değer çiftleri geçerli HTTP üstbilgileridir ve HTTP üstbilgileri yle ilgili tüm kısıtlamalara uymalıdır. Meta veri adları geçerli http üstbilgi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterleri içerebilir ve büyük/küçük harf duyarsız olarak ele alınmalıdır. ASCII olmayan karakterler içeren meta veri değerlerini [temel 64 kodlayın](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) veya [URL kodlayın.](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode)
+Meta veri adı/değer çiftleri geçerli HTTP başlıklardır ve HTTP üst bilgilerini yöneten tüm kısıtlamalara uymalıdır. Meta veri adları geçerli HTTP üst bilgisi adları ve geçerli C# tanımlayıcıları olmalıdır, yalnızca ASCII karakterler içerebilir ve büyük/küçük harfe duyarsız olarak değerlendirilmelidir. [Base64 kodlama](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) veya [URL-](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) ASCII olmayan karakterler içeren meta veri değerlerini kodla.
 
-Meta verilerinizin adı C# tanımlayıcılarının adlandırma kurallarına uygun olmalıdır. Meta veri adları oluşturulduklarında kullanılan servis talebinin korunmasını, ancak ayarlandığında veya okunduğunda büyük/küçük harf duyarsızlığı dır. Bir kaynak için aynı adı kullanan iki veya daha fazla meta veri üstbilgisi gönderilirse, Azure Blob depolama alanı HTTP hata kodu 400 (Kötü İstek) döndürür.
+Meta verilerinizin adı, C# tanımlayıcıları için adlandırma kurallarına uygun olmalıdır. Meta veri adları, oluşturulduklarında kullanılan durumu korur, ancak ayarlandığında veya okurken büyük/küçük harfe duyarsızdır. Bir kaynak için aynı adı kullanan iki veya daha fazla meta veri üstbilgisi gönderilirse Azure Blob depolama, 400 (Hatalı Istek) HTTP hata kodunu döndürür.
 
-Aşağıdaki kod örneği, meta verileri bir blob üzerinde ayarlar. Bir değer, koleksiyonun `Add` yöntemi kullanılarak ayarlanır. Diğer değer örtülü anahtar/değer sözdizimi kullanılarak ayarlanır.
+Aşağıdaki kod örneği bir blob üzerinde meta verileri ayarlar. Bir değer, koleksiyonun `Add` yöntemi kullanılarak ayarlanır. Diğer değer örtük anahtar/değer sözdizimi kullanılarak ayarlanır.
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -125,7 +125,7 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
 }
 ```
 
-Meta verileri almak `FetchAttributes` için, `FetchAttributesAsync` `Metadata` koleksiyonu doldurmak için blob veya kapsayıcınızdaki veya yöntemi arayın ve aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
+Meta verileri almak için, blobu `FetchAttributes` veya `FetchAttributesAsync` kapsayıcıdaki yöntemi, `Metadata` koleksiyonu doldurmak için çağırın, sonra aşağıdaki örnekte gösterildiği gibi değerleri okuyun.
 
 ```csharp
 public static async Task ReadBlobMetadataAsync(CloudBlob blob)
@@ -160,7 +160,7 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Blob Properties işlemini ayarla](/rest/api/storageservices/set-blob-properties)
-- [Blob Properties işlemini alın](/rest/api/storageservices/get-blob-properties)
-- [Blob Metaveri işlemini ayarlama](/rest/api/storageservices/set-blob-metadata)
-- [Blob Metadata işlemini alın](/rest/api/storageservices/get-blob-metadata)
+- [Blob özelliklerini ayarlama işlemi](/rest/api/storageservices/set-blob-properties)
+- [Blob özelliklerini al işlemi](/rest/api/storageservices/get-blob-properties)
+- [Blob meta veri işlemini ayarlama](/rest/api/storageservices/set-blob-metadata)
+- [Blob meta verileri al işlemi](/rest/api/storageservices/get-blob-metadata)

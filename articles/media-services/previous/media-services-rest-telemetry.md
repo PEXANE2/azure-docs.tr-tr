@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri telemetrisini REST ile yapılandırma| Microsoft Dokümanlar
-description: Bu makalede, REST API'yi kullanarak Azure Medya Hizmetleri telemetrisini nasıl kullanacağınızı gösterilmektedir...
+title: REST ile Azure Media Services telemetrisini yapılandırma | Microsoft Docs
+description: Bu makalede, REST API kullanarak Azure Media Services telemetrinin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774878"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Medya Hizmetleri telemetrisini REST ile yapılandırma
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>REST ile Azure Media Services telemetrisini yapılandırma
 
-Bu konu, REST API'yi kullanarak Azure Medya Hizmetleri (AMS) telemetrisini yapılandırırken atabileceğiniz genel adımları açıklar. 
+Bu konu, REST API kullanarak Azure Media Services (AMS) telemetrisini yapılandırırken gerçekleştirebileceğiniz genel adımları açıklamaktadır. 
 
 >[!NOTE]
->AMS telemetrisinin ne olduğu ve nasıl tüketileceğine ilişkin ayrıntılı açıklama için [genel bakış](media-services-telemetry-overview.md) konusuna bakın.
+>AMS telemetrinin ve nasıl kullanılacağı hakkında ayrıntılı açıklama için [genel bakış](media-services-telemetry-overview.md) konusuna bakın.
 
 Bu konuda açıklanan adımlar şunlardır:
 
-- Medya Hizmetleri hesabıyla ilişkili depolama hesabıalma
-- Bildirim Bitiş Noktalarını Alma
-- İzleme için Bildirim Bitiş Noktası Oluşturma. 
+- Media Services hesabıyla ilişkili depolama hesabı alınıyor
+- Bildirim uç noktalarını alma
+- Izleme için bir bildirim uç noktası oluşturuluyor. 
 
-    Bildirim Bitiş Noktası oluşturmak için EndPointType'ı AzureTable (2) ve endPontAddress kümesini depolama\/tablosuna (örneğin, https: /telemetryvalidationstore.table.core.windows.net/) ayarlayın.
+    Bir bildirim uç noktası oluşturmak için, EndPointType öğesini AzureTable (2) ve endPontAddress depolama tablosuna (örneğin, https:\//telemetryvalidationstore.Table.Core.Windows.net/) ayarlayın.
   
-- İzleme yapılandırmalarını alın
+- İzleme yapılandırmasını al
 
-    İzlemek istediğiniz hizmetler için bir izleme yapılandırma sı oluşturmak. En fazla birden fazla izleme yapılandırma ayarı izin verilir. 
+    İzlemek istediğiniz hizmetler için bir izleme yapılandırma ayarları oluşturun. Birden fazla izleme yapılandırma ayarı yapılmasına izin verilmez. 
 
 - İzleme yapılandırması ekleme
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Medya Hizmetleri hesabıyla ilişkili depolama hesabını alma
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Bir Media Services hesabıyla ilişkili depolama hesabını al
 
 ### <a name="request"></a>İstek
 
@@ -72,7 +72,7 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Bildirim Bitiş Noktalarını Alın
+## <a name="get-the-notification-endpoints"></a>Bildirim uç noktalarını al
 
 ### <a name="request"></a>İstek
 
@@ -105,7 +105,7 @@ Bu konuda açıklanan adımlar şunlardır:
         }
     }
  
-## <a name="create-a-notification-endpoint-for-monitoring"></a>İzleme için Bildirim Bitiş Noktası Oluşturma
+## <a name="create-a-notification-endpoint-for-monitoring"></a>İzleme için bir bildirim uç noktası oluşturma
 
 ### <a name="request"></a>İstek
 
@@ -126,7 +126,7 @@ Bu konuda açıklanan adımlar şunlardır:
     }
 
 > [!NOTE]
-> "https:\//telemetryvalidationstore.table.core.windows.net" değerini depolama hesabınızla değiştirmeyi unutmayın.
+> "Https:\//telemetryvalidationstore.Table.Core.Windows.net" değerini depolama hesabınızla değiştirmeyi unutmayın.
 
 ### <a name="response"></a>Yanıt
 
@@ -147,7 +147,7 @@ Bu konuda açıklanan adımlar şunlardır:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>İzleme yapılandırmalarını alın
+## <a name="get-the-monitoring-configurations"></a>İzleme yapılandırmasını al
 
 ### <a name="request"></a>İstek
 
@@ -233,9 +233,9 @@ Bu konuda açıklanan adımlar şunlardır:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Telemetri bilgilerini tüketme
+## <a name="consuming-telemetry-information"></a>Telemetri bilgilerini kullanma
 
-Telemetri bilgileri tüketme hakkında bilgi için [bu](media-services-telemetry-overview.md) konuya bakın.
+Telemetri bilgilerini tüketme hakkında bilgi için [Bu](media-services-telemetry-overview.md) konuya bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

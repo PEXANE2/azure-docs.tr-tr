@@ -1,6 +1,6 @@
 ---
-title: Depolama Gezgini ile Azure Blob Depolama kaynaklarını yönetme | Microsoft Dokümanlar
-description: Depolama Gezgini ile Azure Blob Kapsayıcılarını ve Blob'ları yönetme
+title: Depolama Gezgini ile Azure Blob depolama kaynaklarını yönetme | Microsoft Docs
+description: Azure Blob kapsayıcıları ve Bloblarını Depolama Gezgini ile yönetme
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244400"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Depolama kaynaklarını Depolama Gezgini'yle yönetme
 
 ## <a name="overview"></a>Genel Bakış
 
-[Azure Blob Depolama,](storage/blobs/storage-dotnet-how-to-use-blobs.md) http veya HTTPS üzerinden dünyanın her yerinden erişilebilen metin veya ikili veri gibi büyük miktarlarda yapılandırılmamış veri depolamak için bir hizmettir.
-Verileri genel olarak herkese açık kullanıma sunmak veya uygulama verilerini özel olarak depolamak için Blob Storage’ı kullanabilirsiniz. Bu makalede, blob kapsayıcıları ve lekeleri ile çalışmak için Depolama Gezgini'ni nasıl kullanacağınızı öğreneceksiniz.
+[Azure Blob depolama](storage/blobs/storage-dotnet-how-to-use-blobs.md) , http veya HTTPS aracılığıyla dünyanın her yerinden erişilebilen metin veya ikili veriler gibi büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir.
+Verileri genel olarak herkese açık kullanıma sunmak veya uygulama verilerini özel olarak depolamak için Blob Storage’ı kullanabilirsiniz. Bu makalede, blob kapsayıcıları ve bloblarla çalışmak için Depolama Gezgini kullanmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,189 +37,189 @@ Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
 ## <a name="create-a-blob-container"></a>Blob kapsayıcısı oluşturma
 
-Tüm lekeler sadece blobs mantıksal bir gruplama bir blob konteyner, ikamet etmelidir. Bir hesap sınırsız sayıda kapsayıcı içerebilir ve her kapsayıcı sınırsız sayıda blob saklayabilir.
+Tüm Bloblar yalnızca blob 'ların mantıksal gruplandırması olan bir blob kapsayıcısında yer almalıdır. Hesap sınırsız sayıda kapsayıcı içerebilir ve her kapsayıcı sınırsız sayıda blob depolayabilirler.
 
-Aşağıdaki adımlar, Depolama Gezgini içinde bir blob kapsayıcısının nasıl oluşturulabildiğini gösterir.
+Aşağıdaki adımlarda Depolama Gezgini içinde bir blob kapsayıcısının nasıl oluşturulacağı gösterilmektedir.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, blob kapsayıcısını oluşturmak istediğiniz depolama hesabını genişletin.
-3. Blob **Containers**sağ tıklatın ve - bağlam menüsünden - **Blob Konteyner oluştur'u**seçin.
+3. **BLOB kapsayıcıları**' na sağ tıklayın ve bağlam menüsünden **BLOB kapsayıcısı oluştur**' u seçin.
 
-   ![Blob kapsayıcıları bağlam menüsü oluşturma][0]
-4. **Blob Containers** klasörün altında bir metin kutusu görünür. Blob kapsayıcınızın adını girin. Bkz. Blob kapsayıcılarını adlandırma kuralları ve kısıtlamaları hakkında bilgi için [bir kapsayıcı oluştur.](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)
+   ![Blob kapsayıcıları Oluştur bağlam menüsü][0]
+4. **BLOB kapsayıcıları** klasörünün altında bir metin kutusu görünür. Blob kapsayıcınızın adını girin. Blob kapsayıcıları adlandırma kuralları ve kısıtlamaları hakkında bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
 
-   ![Blob Konteynerleri metin kutusu oluşturma][1]
-5. Blob kapsayıcısını oluşturmak için yapıldığında **Enter** tuşuna basın veya iptal etmek için **Esc** tuşuna basın. Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **Blob Kapsayıcıları** klasörü altında görüntülenir.
+   ![Blob kapsayıcıları oluştur metin kutusu][1]
+5. Blob kapsayıcısını oluşturmak için veya iptal etmek için **ESC** **tuşuna basın** . Blob kapsayıcısı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
 
-   ![Blob Konteyner oluşturuldu][2]
+   ![Blob kapsayıcısı oluşturuldu][2]
 
-## <a name="view-a-blob-containers-contents"></a>Blob konteynerinin içeriğini görüntüleme
+## <a name="view-a-blob-containers-contents"></a>Blob kapsayıcısının içeriğini görüntüleme
 
-Blob kapsayıcılar blobs ve klasörler (aynı zamanda lekeler içerebilir) içerir.
+Blob kapsayıcıları, Bloblar ve klasörler (Ayrıca blob 'lar de içerebilir) içerir.
 
-Aşağıdaki adımlar, Depolama Gezgini içindeki bir blob kapsayıcısının içeriğini nasıl görüntülenebildiğini gösterir:
-
-1. Depolama Gezgini'ni açın.
-2. Sol bölmede, görüntülemek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. Görüntülemek istediğiniz blob kapsayıcısına sağ tıklayın ve bağlam menüsünden **Blob Konteyner Düzenleyicisini Aç'ı**seçin.
-   Ayrıca görüntülemek istediğiniz blob kabına çift tıklayabilirsiniz.
-
-   ![Blob container editor bağlam menüsünü aç][19]
-5. Ana bölmede blob konteynerinin içindekiler görüntülenir.
-
-   ![Blob konteyner editörü][3]
-
-## <a name="delete-a-blob-container"></a>Blob kapsayıcısı silme
-
-Blob kapsayıcıları kolayca oluşturulabilir ve gerektiğinde silinebilir. (Tek tek lekeleri nasıl silmek için görmek için, bölüme bakın, [bir blob kapsayıcılekeleri yönetme](#managing-blobs-in-a-blob-container).)
-
-Aşağıdaki adımlar, Depolama Gezgini içindeki bir blob kapsayıcısının nasıl silinir gösteriş olduğunu gösterir:
+Aşağıdaki adımlarda Depolama Gezgini içindeki bir blob kapsayıcısının içeriğini görüntüleme gösterilmektedir:
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, görüntülemek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. Silmek istediğiniz blob kapsayıcısına sağ tıklayın ve - bağlam menüsünden - **Sil'i**seçin.
-   Ayrıca, şu anda seçili blob kapsayıcısını silmek için **Sil** tuşuna da basabilirsiniz.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. Görüntülemek istediğiniz blob kapsayıcısını sağ tıklatın ve bağlam menüsünden, **BLOB kapsayıcı Düzenleyicisi 'Ni aç**' ı seçin.
+   Ayrıca görüntülemek istediğiniz blob kapsayıcısına çift tıklayabilirsiniz.
 
-   ![Blob kapsayıcı bağlam menüsünü silme][4]
+   ![Blob kapsayıcı düzenleyici bağlam menüsünü aç][19]
+5. Ana bölmede blob kapsayıcısının içeriği görüntülenir.
+
+   ![Blob kapsayıcı Düzenleyicisi][3]
+
+## <a name="delete-a-blob-container"></a>Blob kapsayıcısını silme
+
+Blob kapsayıcıları, gerektiğinde kolayca oluşturulup silinebilir. (Tek tek Blobları silmeyi görmek için [bir blob kapsayıcısında Blobları yönetme](#managing-blobs-in-a-blob-container)bölümüne bakın.)
+
+Aşağıdaki adımlarda Depolama Gezgini içindeki bir blob kapsayıcısının nasıl silineceği gösterilmektedir:
+
+1. Depolama Gezgini'ni açın.
+2. Sol bölmede, görüntülemek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. Silmek istediğiniz blob kapsayıcısını sağ tıklatın ve bağlam menüsünden **Sil**' i seçin.
+   Şu anda seçili olan blob kapsayıcısını silmek için **Sil** 'e de basabilirsiniz.
+
+   ![Blob kapsayıcısı bağlam menüsünü Sil][4]
 5. Onay iletişim kutusunda **Evet**’i seçin.
 
-   ![Blob Konteyner onayIni silme][5]
+   ![Blob kapsayıcısını silme onayı][5]
 
-## <a name="copy-a-blob-container"></a>Blob kabını kopyalama
+## <a name="copy-a-blob-container"></a>Blob kapsayıcısını kopyalama
 
-Depolama Gezgini, bir blob kapsayıcısını panoya kopyalamanızı ve sonra bu blob kapsayıcısını başka bir depolama hesabına yapıştırmamanızı sağlar. (Tek tek lekelerin nasıl kopyalanıştırılabildiğini görmek için, [blob kabındaki lekeleri yönetme](#managing-blobs-in-a-blob-container)bölümüne bakın.)
+Depolama Gezgini, panoya bir blob kapsayıcısı kopyalamanızı ve sonra bu blob kapsayıcısını başka bir depolama hesabına yapıştırmayı sağlar. (Ayrı Blobları nasıl kopyalayaöğrenmek için, [BLOB kapsayıcısında Blobları yönetme](#managing-blobs-in-a-blob-container)bölümüne bakın.)
 
-Aşağıdaki adımlar, bir blob kapsayıcısının bir depolama hesabından diğerine nasıl kopyalanıriş olduğunu gösterir.
+Aşağıdaki adımlarda bir blob kapsayıcısının bir depolama hesabından diğerine nasıl kopyalanacağı gösterilmektedir.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, kopyalamak istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. Kopyalamak istediğiniz blob kapsayıcısına sağ tıklayın ve - bağlam menüsünden - **Blob Kapsayıcıyı Kopyala'yı**seçin.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. Kopyalamak istediğiniz blob kapsayıcısını sağ tıklatın ve bağlam menüsünden, **BLOB kapsayıcısını Kopyala**' yı seçin.
 
-   ![Blob kapsayıcı bağlam menüsünü kopyala][6]
-5. Blob kabını yapıştırmak istediğiniz istenilen "hedef" depolama hesabına sağ tıklayın ve - bağlam menüsünden - **Ekle Blob Kapsayıcı'yı**seçin.
+   ![Blob kapsayıcısı bağlam menüsünü Kopyala][6]
+5. Blob kapsayıcısını yapıştırmak istediğiniz istenen "hedef" depolama hesabına sağ tıklayın ve bağlam menüsünden, **BLOB kapsayıcısını Yapıştır**' ı seçin.
 
-   ![Blob konteyner bağlam menüsünü yapıştır][7]
+   ![Blob kapsayıcısı bağlam menüsünü Yapıştır][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>Blob kapsayıcısı için SAS alma
 
 [Paylaşılan erişim imzası (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md), depolama hesabınızdaki kaynaklara temsilci erişimi sağlar.
 Başka bir deyişle, hesap erişim anahtarlarınızı paylaşmak zorunda kalmadan, depolama hesabınızdaki nesnelere belirli bir süre için ve belirli bir izin kümesiyle sınırlı istemci izinleri verebilirsiniz.
 
-Aşağıdaki adımlar, bir blob kapsayıcı için bir SAS oluşturmak için nasıl gösteriş:
+Aşağıdaki adımlarda bir blob kapsayıcısı için SAS oluşturma gösterilmektedir:
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, SAS almak istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. İstenilen blob kapsayıcısını sağ tıklatın ve - bağlam menüsünden - **Paylaşılan Erişim İmzasını Al'ı**seçin.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. İstediğiniz blob kapsayıcısına sağ tıklayın ve bağlam menüsünden **paylaşılan erişim Imzası al**' ı seçin.
 
-   ![SAS bağlam menüsünü alın][8]
+   ![SAS bağlam menüsünü al][8]
 5. **Paylaşılan Erişim İmzası** iletişim kutusunda ilkeyi, başlangıç ve sona erme tarihlerini, saat dilimini ve kaynak için istediğiniz erişim düzeylerini belirtin.
 
-   ![SAS seçeneklerini alın][9]
+   ![SAS seçeneklerini al][9]
 6. SAS seçeneklerini belirtmeyi tamamladığınızda **Oluştur**’u seçin.
-7. İkinci bir **Paylaşılan Erişim İmzailetişim** kutusu, depolama kaynağına erişmek için kullanabileceğiniz URL ve QueryStrings ile birlikte blob kapsayıcısını listeleyen görüntüler.
+7. İkinci bir **paylaşılan erişim imzası** iletişim kutusu daha sonra blob kapsayıcısını, depolama kaynağına erişmek IÇIN kullanabileceğiniz URL ve querystrings ile birlikte listeler.
    Panoya kopyalamak istediğiniz URL’nin yanındaki **Kopyala** öğesini seçin.
 
-   ![SAS URL'lerini kopyala][10]
+   ![SAS URL 'Lerini Kopyala][10]
 8. İşiniz bittiğinde **Kapat**’ı seçin.
 
-## <a name="manage-access-policies-for-a-blob-container"></a>Blob kapsayıcısı için Erişim İlkeleri'ni yönetme
+## <a name="manage-access-policies-for-a-blob-container"></a>Blob kapsayıcısı için erişim Ilkelerini yönetme
 
-Aşağıdaki adımlar, bir blob kapsayıcısı için erişim ilkelerinin nasıl yönetilen (ekleve kaldırılacak) gösteriş yapılacağını gösterir:
+Aşağıdaki adımlarda bir blob kapsayıcısı için erişim ilkelerini yönetme (ekleme ve kaldırma) gösterilmektedir:
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, erişim ilkelerini yönetmek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. İstenilen blob kapsayıcısını seçin ve bağlam menüsünden **Erişim İlkelerini Yönet'i**seçin.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. İstediğiniz blob kapsayıcısını seçin ve bağlam menüsünden **erişim Ilkelerini Yönet**' i seçin.
 
    ![Erişim ilkelerini yönet bağlam menüsü][11]
-5. **Access İlkeleri** iletişim kutusu, seçili blob kapsayıcısı için zaten oluşturulmuş erişim ilkelerini listeler.
+5. **Erişim ilkeleri** iletişim kutusu seçili blob kapsayıcısı için önceden oluşturulmuş olan tüm erişim ilkelerini listeler.
 
-   ![Erişim İlkesi seçenekleri][12]
+   ![Erişim Ilkesi seçenekleri][12]
 6. Erişim ilkesi yönetim görevine bağlı olarak aşağıdaki adımları izleyin:
 
    * **Yeni bir erişim ilkesi ekleme** - **Ekle**’yi seçin. Oluşturulduktan sonra, **Erişim İlkeleri** iletişim kutusunda yeni eklenen erişim ilkesi (varsayılan ayarlarla birlikte) gösterilir.
-   * **Erişim ilkesini edin** - İstenilen tüm değişlmeleri yapve **Kaydet'** i seçin.
+   * **Erişim Ilkesini düzenleyin** -istediğiniz düzenlemeleri yapın ve **Kaydet**' i seçin.
    * **Erişim ilkesini kaldırma** - Kaldırmak istediğiniz erişim ilkesinin yanındaki **Kaldır** öğesini seçin.
 
-## <a name="set-the-public-access-level-for-a-blob-container"></a>Blob kapsayıcısı için Genel Erişim Düzeyini ayarlama
+## <a name="set-the-public-access-level-for-a-blob-container"></a>Blob kapsayıcısı için genel erişim düzeyini ayarlama
 
-Varsayılan olarak, her blob kapsayıcı "Ortak erişim yok" olarak ayarlanır.
+Varsayılan olarak, her blob kapsayıcısı "genel erişim yok" olarak ayarlanır.
 
-Aşağıdaki adımlar, bir blob kapsayıcısı için ortak erişim düzeyinin nasıl belirtilen gösteriş olduğunu gösterir.
+Aşağıdaki adımlarda, bir blob kapsayıcısı için genel erişim düzeyinin nasıl ayarlanacağı gösterilmektedir.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, erişim ilkelerini yönetmek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. İstenilen blob kapsayıcısını seçin ve bağlam menüsünden **Ortak Erişim Düzeyini Ayarla'yı**seçin.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. İstediğiniz blob kapsayıcısını seçin ve bağlam menüsünden **genel erişim düzeyini ayarla**' yı seçin.
 
-   ![Genel erişim düzeyi bağlam menüsünü ayarlama][13]
-5. Kapsayıcı **Ortak Erişim Düzeyini Ayarla** iletişim kutusunda, istenen erişim düzeyini belirtin.
+   ![Genel erişim düzeyi bağlam menüsünü ayarla][13]
+5. **Kapsayıcı genel erişim düzeyini ayarla** iletişim kutusunda istenen erişim düzeyini belirtin.
 
-   ![Genel erişim düzeyi seçeneklerini ayarlama][14]
+   ![Genel erişim düzeyi seçeneklerini ayarla][14]
 6. **Uygula**’yı seçin.
 
-## <a name="managing-blobs-in-a-blob-container"></a>Blob kabında lekeleri yönetme
+## <a name="managing-blobs-in-a-blob-container"></a>Blob kapsayıcısında blob 'ları yönetme
 
-Bir blob kapsayıcı oluşturduktan sonra, bu blob kapsayıcısına bir blob yükleyebilir, yerel bilgisayarınıza bir blob indirebilir, yerel bilgisayarınızda bir damla açabilir ve çok daha fazlasını yapabilirsiniz.
+Blob kapsayıcısını oluşturduktan sonra bu blob kapsayıcısına bir blob yükleyebilir, yerel bilgisayarınıza bir blob indirebilir, yerel bilgisayarınızda bir blob açabilir ve çok daha fazlasını yapabilirsiniz.
 
-Aşağıdaki adımlar, blob kapsayıcısı içindeki lekelerin (ve klasörlerin) nasıl yönetilenini gösterir.
+Aşağıdaki adımlarda blob kapsayıcısı içindeki Blobların (ve klasörlerinin) nasıl yönetileceği gösterilmektedir.
 
 1. Depolama Gezgini'ni açın.
 2. Sol bölmede, yönetmek istediğiniz blob kapsayıcısını içeren depolama hesabını genişletin.
-3. Depolama hesabının **Blob Kapları'nı**genişletin.
-4. Görüntülemek istediğiniz blob kabına çift tıklayın.
-5. Ana bölmede blob konteynerinin içindekiler görüntülenir.
+3. Depolama hesabının **BLOB kapsayıcıları**' nı genişletin.
+4. Görüntülemek istediğiniz blob kapsayıcısına çift tıklayın.
+5. Ana bölmede blob kapsayıcısının içeriği görüntülenir.
 
-   ![Blob kabını görüntüle][3]
-6. Ana bölmede blob konteynerinin içindekiler görüntülenir.
+   ![Blob kapsayıcısını görüntüle][3]
+6. Ana bölmede blob kapsayıcısının içeriği görüntülenir.
 7. Gerçekleştirmek istediğiniz göreve bağlı olarak aşağıdaki adımları izleyin:
 
-   * **Dosyaları blob kapsayıcısına yükleme**
+   * **Blob kapsayıcısına dosya yükleme**
 
-     1. Ana bölmenin araç çubuğunda **Yükle'yi**ve ardından açılan menüden **Dosyaları Yükle'yi** seçin.
+     1. Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **dosyaları karşıya yükle** ' yi seçin.
 
         ![Dosyaları karşıya yükleme menüsü][15]
      2. **Dosyaları Karşıya Yükle** iletişim kutusunda, **Dosyalar** metin kutusunun sağ tarafındaki üç noktayı (**…**) seçerek karşıya yüklemek istediğiniz dosyaları belirleyin.
 
-        ![Dosya yükleme seçenekleri][16]
-     3. **Blob türünü**belirtin. Bkz. Daha fazla bilgi için [bir kapsayıcı oluştur.](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)
-     4. İsteğe bağlı olarak, seçili dosyanın(lar) yüklendiği hedef klasörü belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Yükle'yi**seçin.
-   * **Blob kapsayıcısına klasör yükleme**
+        ![Karşıya dosya yükleme seçenekleri][16]
+     3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
+     4. İsteğe bağlı olarak, seçili dosyaların karşıya yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
+     5. **Karşıya yükle**' yi seçin.
+   * **Blob kapsayıcısına bir klasör yükleme**
 
-     1. Ana bölmenin araç **çubuğunda,** açılan menüden Yükle ve ardından **Klasörü Yükle'yi** seçin.
+     1. Ana bölmedeki araç çubuğunda **karşıya yükle**' yi ve ardından açılan menüden **klasörü karşıya yükle** ' yi seçin.
 
         ![Klasörü karşıya yükle menüsü][17]
      2. **Klasörü karşıya yükle** iletişim kutusunda, **Klasör** metin kutusunun sağ tarafındaki üç noktayı (**…**) seçerek içeriklerini karşıya yüklemek istediğiniz klasörü belirleyin.
 
-        ![Klasör ekleme seçenekleri][18]
-     3. **Blob türünü**belirtin. Bkz. Daha fazla bilgi için [bir kapsayıcı oluştur.](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)
+        ![Klasör yükleme seçenekleri][18]
+     3. **BLOB türünün**türünü belirtin. Daha fazla bilgi için bkz. [kapsayıcı oluşturma](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) .
      4. İsteğe bağlı olarak, seçili klasörün içeriklerinin yükleneceği bir hedef klasör belirtin. Hedef klasör mevcut değilse, oluşturulur.
-     5. **Yükle'yi**seçin.
-   * **Yerel bilgisayarınıza bir damla indirme**
+     5. **Karşıya yükle**' yi seçin.
+   * **Yerel bilgisayarınıza blob indirme**
 
-     1. İndirmek istediğiniz blob'u seçin.
+     1. İndirmek istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **İndir**’i seçin.
-     3. İndirilen blob iletişim kutusunu **nereye kaydedebileceğinizi belirtin'de,** blob'un indirilmesini istediğiniz yeri ve vermek istediğiniz adı belirtin.  
-     4. **Kaydet'i**seçin.
-   * **Yerel bilgisayarınızda bir leke açma**
+     3. **İndirilen blob 'un kaydedileceği yeri belirtin** iletişim kutusunda, blob 'un indirilmesini istediğiniz konumu ve vermek istediğiniz adı belirtin.  
+     4. **Kaydet**’i seçin.
+   * **Yerel bilgisayarınızda bir blob açın**
 
-     1. Açmak istediğiniz blob seçin.
+     1. Açmak istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **Aç**’ı seçin.
-     3. Blob indirilir ve blob'un temel dosya türüile ilişkili uygulama kullanılarak açılır.
-   * **Panoya bir leke kopyalama**
+     3. Blob, blob 'un temel alınan dosya türü ile ilişkili uygulama kullanılarak indirilir ve açılır.
+   * **Bir blobu panoya kopyalama**
 
-     1. Kopyalamak istediğiniz blob'u seçin.
+     1. Kopyalamak istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **Kopyala**’yı seçin.
-     3. Sol bölmede, başka bir blob kapsayıcısına gidin ve ana bölmede görüntülemek için çift tıklatın.
-     4. Ana bölmenin araç çubuğunda, blob'un bir kopyasını oluşturmak için **Yapıştır'ı** seçin.
+     3. Sol bölmede başka bir blob kapsayıcısına gidin ve ana bölmede görüntülemek için çift tıklayın.
+     4. Ana bölmedeki araç çubuğunda, Blobun bir kopyasını oluşturmak için **Yapıştır** ' ı seçin.
    * **Blob silme**
 
-     1. Silmek istediğiniz blob'u seçin.
+     1. Silmek istediğiniz blobu seçin.
      2. Ana bölmedeki araç çubuğunda **Sil**’i seçin.
      3. Onay iletişim kutusunda **Evet**’i seçin.
 

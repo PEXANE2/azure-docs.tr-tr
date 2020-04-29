@@ -1,6 +1,6 @@
 ---
-title: Etki alanından bağımsız bir çalışma grubu kullanılabilirlik grubunu yapılandırma
-description: Azure'daki bir SQL Server sanal makinesinde Her Zaman Kullanılabilirlik Grubunda Etkin Dizin Etki Alanı bağımsız bir çalışma grubunu nasıl yapılandırabilirsiniz öğrenin.
+title: Etki alanı bağımsız bir çalışma grubu kullanılabilirlik grubunu yapılandırma
+description: Azure 'da SQL Server bir sanal makinede Active Directory Etki Alanı bağımsız bir çalışma grubu Always on kullanılabilirlik grubunu yapılandırmayı öğrenin.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,72 +14,72 @@ ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
 ms.openlocfilehash: 72c04cf5e3e5fbdeac2d267dfc7b2703bd37a1c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77122681"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 
-Bu makalede, her zaman kullanılabilirlik grubu olan Active Directory etki alanı bağımsız küme oluşturmak için gerekli adımları açıklar; bu, çalışma grubu kümesi olarak da bilinir. Bu makalede, çalışma grubu ve kullanılabilirlik grubunun hazırlanması ve yapılandırılmasıyla ilgili adımlar abartılır ve kümenin nasıl oluşturulması veya kullanılabilirlik grubunun nasıl dağıtılanacağı gibi diğer makalelerde kapsanan adımların üzerinde parlaklıklar yer alır. 
+Bu makalede, her zaman açık kullanılabilirlik grubu ile Active Directory bir etki alanı bağımsız kümesi oluşturmak için gereken adımlar açıklanmaktadır; Bu, çalışma grubu kümesi olarak da bilinir. Bu makale, çalışma grubu ve kullanılabilirlik grubunu hazırlamaya ve yapılandırmaya yönelik adımlara ve küme oluşturma veya kullanılabilirlik grubunu dağıtma gibi diğer makalelerde kapsanan adımları glosses. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için aşağıdakilere ihtiyacınız var:
-- En az iki Windows Server 2016 (veya daha yüksek) SANAL makineler SQL Server 2016 (veya daha yüksek) çalıştıran, statik IP adresleri kullanarak aynı kullanılabilirlik kümesine veya farklı kullanılabilirlik bölgelerine dağıtılır. 
-- Alt ağda en az 4 ücretsiz IP adresi olan yerel bir ağ. 
-- SQL Server içinde sysadmin hakları da olan yönetici grubundaki her makinede bir hesap. 
+Bir çalışma grubu kullanılabilirlik grubunu yapılandırmak için şunlar gerekir:
+- SQL Server 2016 (veya üzeri) çalıştıran sanal makineler, aynı Kullanılabilirlik kümesine veya statik IP adresleri kullanılarak farklı kullanılabilirlik bölgelerine dağıtılır. 2016 
+- Alt ağda en az 4 boş IP adresi olan bir yerel ağ. 
+- Yönetici grubundaki her makinede, SQL Server içinde sysadmin haklarına sahip bir hesap. 
 - Açık bağlantı noktaları: TCP 1433, TCP 5022, TCP 59999. 
 
-Başvuru için, aşağıdaki parametreler bu makalede kullanılır, ancak gerektiği gibi değiştirilebilir: 
+Başvuru için, bu makalede aşağıdaki parametreler kullanılır, ancak gerekli olduğu gibi değiştirilebilir: 
 
 | **Adı** | **Parametre** |
 | :------ | :---------------------------------- |
 | **Düğüm1**   | AGNode1 (10.0.0.4) |
 | **Düğüm2**   | AGNode2 (10.0.0.5) |
 | **Küme adı** | AGWGAG (10.0.0.6) |
-| **Dinleyici** | AGDinleyicier (10.0.0.7) | 
+| **Dinleyici** | AGListener (kısmına 10.0.0.7) | 
 | **DNS Son Ek** | ag.wgcluster.example.com | 
-| **Çalışma grubu adı** | AGÇalışma Grubu | 
+| **Çalışma grubu adı** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>DNS soneki ayarlama 
+## <a name="set-dns-suffix"></a>DNS sonekini ayarla 
 
-Bu adımda, her iki sunucu için DeNS soneki yapılandırın. Örneğin, `ag.wgcluster.example.com`. Bu, ağınızda tam nitelikli bir adres olarak bağlanmak istediğiniz nesnenin adını kullanmanıza olanak sağlar. `AGNode1.ag.wgcluster.example.com` 
+Bu adımda, her iki sunucu için de DNS sonekini yapılandırın. Örneğin, `ag.wgcluster.example.com`. Bu, bağlanmak istediğiniz nesnenin adını ağınız içinde (gibi) tam bir adres olarak kullanmanıza olanak tanır `AGNode1.ag.wgcluster.example.com`. 
 
 DNS sonekini yapılandırmak için aşağıdaki adımları izleyin:
 
-1. RDP ilk düğümünüze ve Sunucu Yöneticisi'ni açın. 
-1. **Yerel Sunucu'yu** seçin ve ardından Sanal Makinenizin adını **Bilgisayar adı**altında seçin. 
-1. Bu bilgisayarı **yeniden adlandırmak için** **Değiştir'i...** seçin. 
-1. Çalışma grubu adının adını anlamlı bir şey olacak `AGWORKGROUP`şekilde değiştirin: 
+1. İlk düğümünüz için RDP ve Sunucu Yöneticisi açın. 
+1. **Yerel sunucu** ' yı seçin ve ardından **bilgisayar adı**bölümünde sanal makinenizin adını seçin. 
+1. **Bu bilgisayarı yeniden adlandırmak Için** **Değiştir..** . öğesini seçin... 
+1. Çalışma grubu adının adını, şöyle `AGWORKGROUP`bir anlamlı olacak şekilde değiştirin: 
 
-   ![Çalışma grubu adını değiştirme](media/virtual-machines-windows-sql-workgroup-availability-group/1-change-workgroup-name.png)
+   ![Çalışma grubu adını değiştir](media/virtual-machines-windows-sql-workgroup-availability-group/1-change-workgroup-name.png)
 
-1. **DNS Soneki ve NetBIOS Bilgisayar Adı** iletişim kutusunu açmak için **Daha Fazla...** seçeneğini belirleyin. 
-1. **Bu bilgisayarın Birincil DNS sonekinin altına DNS sonekinizin**adını yazın `ag.wgcluster.example.com` ve sonra **Tamam'ı**seçin: 
+1. **DNS son eki ve NetBIOS bilgisayar adı** iletişim kutusunu açmak Için **daha fazla...** seçeneğini belirleyin. 
+1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki**altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam**' ı seçin: 
 
-   ![DNS soneki ekle](media/virtual-machines-windows-sql-workgroup-availability-group/2-add-dns-suffix.png)
+   ![DNS son eki Ekle](media/virtual-machines-windows-sql-workgroup-availability-group/2-add-dns-suffix.png)
 
-1. **Tam bilgisayar adının** artık DNS sonekini gösterdiğini doğrulayın ve değişikliklerinizi kaydetmek için **Tamam'ı** seçin: 
+1. **Tam bilgisayar adının** artık DNS sonekini gösteriyor olduğunu onaylayın ve ardından değişikliklerinizi kaydetmek için **Tamam** ' ı seçin: 
 
-   ![DNS soneki ekle](media/virtual-machines-windows-sql-workgroup-availability-group/3-confirm-full-computer-name.png)
+   ![DNS son eki Ekle](media/virtual-machines-windows-sql-workgroup-availability-group/3-confirm-full-computer-name.png)
 
-1. Sizden istendiğinde sunucuyu yeniden başlatın. 
+1. İstendiğinde sunucuyu yeniden başlatın. 
 1. Kullanılabilirlik grubu için kullanılacak diğer düğümlerde bu adımları yineleyin. 
 
-## <a name="edit-host-file"></a>Ana bilgisayar dosyalarını düzenleyin
+## <a name="edit-host-file"></a>Konak dosyasını Düzenle
 
-Etkin bir dizin olmadığından, windows bağlantılarını doğrulamanın bir yolu yoktur. Bu nedenle, ana bilgisayar dosyasını bir metin düzenleyicisi ile düzenleyerek güven atayın. 
+Active Directory olmadığından, Windows bağlantılarının kimliklerinin doğrulanması bir yolu yoktur. Bu nedenle, ana bilgisayar dosyasını bir metin düzenleyicisiyle düzenleyerek güven atayın. 
 
-Ana bilgisayar dosyasını düzenleyin, aşağıdaki adımları izleyin:
+Konak dosyasını düzenlemek için aşağıdaki adımları izleyin:
 
-1. RDP sanal makineiçine. 
-1. Gitmek için Dosya `c:\windows\system32\drivers\etc` **Gezgini'ni** kullanın. 
-1. **Ana bilgisayar** dosyasını sağ tıklatın ve **Notepad** (veya başka bir metin düzenleyicisi) ile dosyayı açın.
-1. Dosyanın sonunda, her düğüm, kullanılabilirlik grubu ve dinleyici `IP Address, DNS Suffix #comment` için aşağıdaki ler şeklinde bir giriş ekleyin: 
+1. Sanal makinenize RDP ekleyin. 
+1. Gitmek için **Dosya Gezgini** 'ni kullanın `c:\windows\system32\drivers\etc`. 
+1. **Hosts** dosyasına sağ tıklayın ve dosyayı **Notepad** (veya başka bir metin düzenleyici) ile açın.
+1. Dosyanın sonunda, her düğüm için bir giriş, kullanılabilirlik grubu ve `IP Address, DNS Suffix #comment` şunun gibi bir şekilde dinleyici ekleyin: 
 
    ```
    10.0.0.4 AGNode1.ag.wgcluster.example.com #Availability group node
@@ -88,13 +88,13 @@ Ana bilgisayar dosyasını düzenleyin, aşağıdaki adımları izleyin:
    10.0.0.7 AGListener.ag.wgcluster.example.com #Listener IP
    ```
  
-   ![IP adresi, küme ve dinleyici için girişleri ana bilgisayar dosyasına ekleme](media/virtual-machines-windows-sql-workgroup-availability-group/4-host-file.png)
+   ![Ana bilgisayar dosyasına IP adresi, küme ve dinleyici girdilerini ekleyin](media/virtual-machines-windows-sql-workgroup-availability-group/4-host-file.png)
 
 ## <a name="set-permissions"></a>İzinleri ayarlama
 
-İzinleri yönetmek için Etkin Dizin olmadığından, kümeoluşturmak için yerleşik olmayan bir yerel yönetici hesabının el ile izin vermeniz gerekir. 
+İzinleri yönetmek için Active Directory olmadığından, yerleşik olmayan bir yerel yönetici hesabına kümeyi oluşturmak için el ile izin vermeniz gerekir. 
 
-Bunu yapmak için, her düğümüzerinde idari bir PowerShell oturumunda aşağıdaki PowerShell cmdlet çalıştırın: 
+Bunu yapmak için, aşağıdaki PowerShell cmdlet 'ini her düğümde bir yönetim PowerShell oturumunda çalıştırın: 
 
 ```PowerShell
 
@@ -103,46 +103,46 @@ new-itemproperty -path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\
 
 ## <a name="create-the-failover-cluster"></a>Yük devretme kümesini oluşturma
 
-Bu adımda, failover kümesini oluşturursunuz. Bu adımları bilmiyorsanız, [bunları failover küme öğreticisinden](virtual-machines-windows-portal-sql-create-failover-cluster.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)takip edebilirsiniz.
+Bu adımda, yük devretme kümesi oluşturacaksınız. Bu adımları tanımıyorsanız, bunları [Yük devretme kümesi öğreticiden](virtual-machines-windows-portal-sql-create-failover-cluster.md#step-2-configure-the-windows-server-failover-cluster-with-storage-spaces-direct)izleyebilirsiniz.
 
-Öğretici ile bir çalışma grubu kümesi için yapılması gerekenler arasındaki önemli farklar:
-- Küme doğrulaması çalıştırırken **Depolama**ve **Depolama Alanları Doğrudan'ın** denetimini kaldırın. 
-- Düğümleri kümeye eklerken, aşağıdakiler gibi tam nitelikli adı ekleyin:
+Öğretici ve bir çalışma grubu kümesi için yapılması gerekenler arasındaki önemli farklılıklar:
+- **Depolama**işaretini kaldırın ve küme doğrulamayı çalıştırırken **depolama alanları doğrudan** . 
+- Kümeye düğüm eklerken, tam adı şu şekilde ekleyin:
    - `AGNode1.ag.wgcluster.example.com`
    - `AGNode2.ag.wgcluster.example.com`
-- İşaretle **Kümeye tüm uygun depolama alanını ekle.** 
+- **Tüm uygun depolamayı kümeye ekle**seçeneğinin işaretini kaldırın. 
 
-Küme oluşturulduktan sonra statik bir Cluster IP adresi atayın. Bunu yapmak için şu adımları uygulayın:
+Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak için şu adımları uygulayın:
 
-1. Düğümlerden birinde **Failover Cluster Manager'ı**açın, kümeyi seçin, Adı sağ **tıklatın: \<ClusterNam>** **Küme Çekirdek Kaynakları** altında ve ardından **Özellikler'i**seçin. 
+1. Düğümlerden birinde **Yük devretme kümesi Yöneticisi**açın, kümeyi seçin, **küme çekirdek kaynakları** altındaki ** \<Clusternam>adına** sağ tıklayın ve ardından **Özellikler**' i seçin. 
 
    ![Küme adı için başlatma özellikleri](media/virtual-machines-windows-sql-workgroup-availability-group/5-launch-cluster-name-properties.png)
 
-1. **IP Adresleri'nin** altındaki IP adresini seçin ve **Edit'i**seçin. 
-1. **Statik Kullan'ı**seçin, kümenin IP adresini girin ve sonra **Tamam'ı**seçin: 
+1. **IP adresleri** altında IP adresini seçin ve **Düzenle**' yi seçin. 
+1. **Statik kullan**' ı seçin, kümenin IP adresini belirtin ve ardından **Tamam**' ı seçin: 
 
-   ![Küme için statik bir IP adresi sağlama](media/virtual-machines-windows-sql-workgroup-availability-group/6-provide-static-ip-for-cluster.png)
+   ![Küme için statik bir IP adresi sağlayın](media/virtual-machines-windows-sql-workgroup-availability-group/6-provide-static-ip-for-cluster.png)
 
-1. Ayarlarınızın doğru görünmesini doğrulayın ve bunları kaydetmek için **Tamam'ı** seçin:
+1. Ayarlarınızın doğru göründüğünü doğrulayın ve ardından bunları kaydetmek için **Tamam** ' ı seçin:
 
    ![Küme özelliklerini doğrulama](media/virtual-machines-windows-sql-workgroup-availability-group/7-verify-cluster-properties.png)
 
 ## <a name="create-a-cloud-witness"></a>Bulut tanığı oluşturma 
 
-Bu adımda, bir bulut paylaşımı tanığını yapılandırın. Adımlara aşina değilseniz, [failover kümesi öğreticisine](virtual-machines-windows-portal-sql-create-failover-cluster.md#create-a-cloud-witness)bakın. 
+Bu adımda, bir bulut paylaşma tanığı yapılandırın. Adımları tanımıyorsanız [Yük devretme kümesi öğreticisi](virtual-machines-windows-portal-sql-create-failover-cluster.md#create-a-cloud-witness)' ne bakın. 
 
-## <a name="enable-availability-group-feature"></a>Kullanılabilirlik grubu özelliğini etkinleştirme 
+## <a name="enable-availability-group-feature"></a>Kullanılabilirlik grubu özelliğini etkinleştir 
 
-Bu adımda, kullanılabilirlik grubu özelliğini etkinleştirin. Adımlara aşina değilseniz, [kullanılabilirlik grubu öğreticisine](virtual-machines-windows-portal-sql-availability-group-tutorial.md#enable-availability-groups)bakın. 
+Bu adımda, kullanılabilirlik grubu özelliğini etkinleştirin. Adımlara alışkın değilseniz, [kullanılabilirlik grubu öğreticisine](virtual-machines-windows-portal-sql-availability-group-tutorial.md#enable-availability-groups)bakın. 
 
-## <a name="create-keys-and-certificate"></a>Anahtarlar ve sertifika oluşturma
+## <a name="create-keys-and-certificate"></a>Anahtar ve sertifika oluşturma
 
-Bu adımda, SQL girişinin şifreli bitiş noktasında kullandığı sertifikalar oluşturun. Sertifika yedeklemelerini tutmak için her düğümde bir `c:\certs`klasör oluşturun. 
+Bu adımda, bir SQL oturum açmanın şifreli uç noktada kullandığı sertifikalar oluşturun. Her düğümde, sertifika yedeklerini tutacak bir klasör oluşturun (örneğin,) `c:\certs`. 
 
 İlk düğümü yapılandırmak için aşağıdaki adımları izleyin: 
 
-1. **SQL Server Management Studio'u** açın ve ilk `AGNode1`düğümünüze bağlayın. 
-1. **Yeni** Sorgu penceresi açın ve karmaşık ve güvenli bir parolaya güncelleştirdikten sonra aşağıdaki Transact-SQL (T-SQL) deyimini çalıştırın:
+1. **SQL Server Management Studio** açın ve ilk düğüme bağlanın, örneğin `AGNode1`. 
+1. Yeni bir **sorgu** penceresi açın ve karmaşık ve güvenli bir parolaya güncelleştirdikten sonra aşağıdaki Transact-SQL (T-SQL) ifadesini çalıştırın:
 
    ```sql
    USE master;  
@@ -160,7 +160,7 @@ Bu adımda, SQL girişinin şifreli bitiş noktasında kullandığı sertifikala
    GO  
    ```
 
-1. Ardından, HADR bitiş noktasını oluşturun ve bu Transact-SQL (T-SQL) deyimini çalıştırarak sertifikayı kimlik doğrulaması için kullanın:
+1. Ardından, HADR uç noktasını oluşturun ve bu Transact-SQL (T-SQL) ifadesini çalıştırarak kimlik doğrulaması için sertifikayı kullanın:
 
    ```sql
    --CREATE or ALTER the mirroring endpoint
@@ -178,13 +178,13 @@ Bu adımda, SQL girişinin şifreli bitiş noktasında kullandığı sertifikala
    GO  
    ```
 
-1. **Sertifikanızın** bulunduğu dosya konumuna gitmek için Dosya `c:\certs`Gezgini'ni kullanın. 
-1. Sertifikanın ilk düğümden , `AGNode1Cert.crt`örneğin bir kopyasını el ile yapın ve ikinci düğümde aynı konuma aktarın. 
+1. Sertifikanızın olduğu dosya konumuna gitmek için **Dosya Gezgini** 'ni kullanın `c:\certs`. 
+1. Sertifikanın bir kopyasını (örneğin `AGNode1Cert.crt`, ilk düğümden) el ile oluşturun ve ikinci düğümdeki aynı konuma aktarın. 
 
 İkinci düğümü yapılandırmak için aşağıdaki adımları izleyin: 
 
-1. **SQL Server Management Studio**ile ikinci düğüme `AGNode2`bağlanın, örneğin . 
-1. Yeni **Sorgu** penceresinde, karmaşık ve güvenli bir parolaya güncelleştirdikten sonra aşağıdaki Transact-SQL (T-SQL) deyimini çalıştırın: 
+1. İkinci düğüme, gibi **SQL Server Management Studio**bağlayın `AGNode2`. 
+1. Yeni bir **sorgu** penceresinde, karmaşık ve güvenli bir parolaya güncelleştirdikten sonra aşağıdaki Transact-SQL (T-SQL) ifadesini çalıştırın: 
 
    ```sql
    USE master;  
@@ -201,7 +201,7 @@ Bu adımda, SQL girişinin şifreli bitiş noktasında kullandığı sertifikala
    GO
    ```
 
-1. Ardından, HADR bitiş noktasını oluşturun ve bu Transact-SQL (T-SQL) deyimini çalıştırarak sertifikayı kimlik doğrulaması için kullanın:
+1. Ardından, HADR uç noktasını oluşturun ve bu Transact-SQL (T-SQL) ifadesini çalıştırarak kimlik doğrulaması için sertifikayı kullanın:
 
    ```sql
    --CREATE or ALTER the mirroring endpoint
@@ -219,16 +219,16 @@ Bu adımda, SQL girişinin şifreli bitiş noktasında kullandığı sertifikala
    GO  
    ```
 
-1. **Sertifikanızın** bulunduğu dosya konumuna gitmek için Dosya `c:\certs`Gezgini'ni kullanın. 
-1. Sertifikanın ikinci düğümden , `AGNode2Cert.crt`gibi bir kopyasını el ile yapın ve ilk düğümde aynı konuma aktarın. 
+1. Sertifikanızın olduğu dosya konumuna gitmek için **Dosya Gezgini** 'ni kullanın `c:\certs`. 
+1. Sertifikanın bir kopyasını (örneğin `AGNode2Cert.crt`, ikinci düğümden) el ile oluşturun ve ilk düğümde aynı konuma aktarın. 
 
-Kümede başka düğümvarsa, ilgili sertifika adlarını değiştirerek bu adımları da yineleyin. 
+Kümede başka bir düğüm varsa, ilgili sertifika adlarını değiştirerek bu adımları da yineleyin. 
 
-## <a name="create-logins"></a>Oturum açma
+## <a name="create-logins"></a>Oturum açma işlemleri oluşturma
 
-Sertifika kimlik doğrulaması düğümler arasında veri eşitlemek için kullanılır. Buna izin vermek için, diğer düğüm için bir giriş oluşturun, oturum açma için bir kullanıcı oluşturun, yedeklenen sertifikayı kullanmak için oturum açma sertifikası oluşturun ve ardından yansıtma bitiş noktasına bağlanma izni verin. 
+Sertifika kimlik doğrulaması, düğümleri arasında verileri eşzamanlı hale getirmek için kullanılır. Buna izin vermek için, diğer düğüm için bir oturum açın, oturum açma için bir kullanıcı oluşturun, yedeklenen sertifikayı kullanmak için oturum açma için bir sertifika oluşturun ve ardından yansıtma uç noktasında Connect 'e verin. 
 
-Bunu yapmak için, ilk düğümde aşağıdaki Transact-SQL (T-SQL) sorgusunu `AGNode1`çalıştırın: 
+Bunu yapmak için ilk düğümde aşağıdaki Transact-SQL (T-SQL) sorgusunu çalıştırın, örneğin `AGNode1`: 
 
 ```sql
 --create a login for the AGNode2
@@ -251,7 +251,7 @@ GRANT CONNECT ON ENDPOINT::hadr_endpoint TO [AGNode2_login];
 GO
 ```
 
-Daha sonra, aşağıdaki Transact-SQL (T-SQL) sorgusunu ikinci `AGNode2`düğümde çalıştırın: 
+Sonra, ikinci düğümde aşağıdaki Transact-SQL (T-SQL) sorgusunu çalıştırın, örneğin `AGNode2`: 
 
 ```sql
 --create a login for the AGNode1
@@ -274,22 +274,22 @@ GRANT CONNECT ON ENDPOINT::hadr_endpoint TO [AGNode1_login];
 GO
 ```
 
-Kümede başka düğümler varsa, ilgili sertifikayı ve kullanıcı adlarını değiştirerek bu adımları da burada yineleyin. 
+Kümede başka bir düğüm varsa, ilgili sertifikayı ve Kullanıcı adlarını değiştirerek bu adımları da yineleyin. 
 
-## <a name="configure-availability-group"></a>Kullanılabilirlik grubunu yapılandırma
+## <a name="configure-availability-group"></a>Kullanılabilirlik grubunu yapılandır
 
-Bu adımda, kullanılabilirlik grubunuzu yapılandırın ve veritabanlarınızı bu gruba ekleyin. Şu anda bir dinleyici oluşturmayın. Adımları bilmiyorsanız, [kullanılabilirlik grubu öğreticisine](virtual-machines-windows-portal-sql-availability-group-tutorial.md#create-the-availability-group)bakın. Her şeyin olması gerektiği gibi çalıştığını doğrulamak için bir failover ve failback başlattığından emin olun. 
+Bu adımda, kullanılabilirlik grubunuzu yapılandırın ve veritabanlarınızı ona ekleyin. Şu an bir dinleyici oluşturmayın. Adımlara alışkın değilseniz, [kullanılabilirlik grubu öğreticisi](virtual-machines-windows-portal-sql-availability-group-tutorial.md#create-the-availability-group)' ne bakın. Her şeyin olması gerektiği şekilde çalıştığını doğrulamak için bir yük devretme ve yeniden çalışma işlemi başlattığınızdan emin olun. 
 
    > [!NOTE]
-   > Eşitleme işlemi sırasında bir hata varsa, geçici olarak `NT AUTHORITY\SYSTEM` gibi `AGNode1` ilk düğümüzerinde küme kaynakları oluşturmak için sysadmin hakları vermek gerekebilir. 
+   > Eşitleme işlemi sırasında bir hata oluşursa, ilk düğümde geçici olarak olduğu `NT AUTHORITY\SYSTEM` `AGNode1` gibi küme kaynakları oluşturmak için sysadmin hakları vermeniz gerekebilir. 
 
 ## <a name="configure-load-balancer"></a>Yük dengeleyiciyi yapılandırma
 
-Bu son adımda, [Azure portalını](virtual-machines-windows-portal-sql-alwayson-int-listener.md) veya [PowerShell'i](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) kullanarak yük bakiyesini yapılandırın
+Bu son adımda, [Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md) veya [PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) 'i kullanarak yük dengeleyiciyi yapılandırın
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Kullanılabilirlik grubunu yapılandırmak için [Az SQL VM CLI'yi](virtual-machines-windows-sql-availability-group-cli.md) de kullanabilirsiniz. 
+Kullanılabilirlik grubunu yapılandırmak için [az SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) de kullanabilirsiniz. 
 
 

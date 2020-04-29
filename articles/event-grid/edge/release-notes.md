@@ -1,6 +1,6 @@
 ---
-title: Sürüm Notları - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
-description: IoT Edge Yayın Notları'nda Azure Olay Izgarası
+title: Sürüm notları-Azure Event Grid IoT Edge | Microsoft Docs
+description: IoT Edge sürüm notlarında Azure Event Grid
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,42 +9,42 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 18a4fb9a979841bbf6cd0090fc67a77327c61596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76849714"
 ---
-# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Sürüm Notları: IoT Edge'de Azure Olay Izgarası
+# <a name="release-notes-azure-event-grid-on-iot-edge"></a>Sürüm notları: IoT Edge üzerinde Azure Event Grid
 
-## <a name="100-preview1"></a>1.0.0-önizleme1
+## <a name="100-preview1"></a>1.0.0-preview1 'i
 
-Azure Olay Izgarası'nın IoT Edge'deki ilk sürümü. Dahil edilen özellikler:
+IoT Edge Azure Event Grid ilk sürümü. Dahil edilen özellikler:
 
 * Konu oluşturma
-* Olay Aboneliği oluşturma
-* Gelişmiş Filtreler
+* Olay aboneliği oluşturma
+* Gelişmiş filtreler
 * Çıkışı toplu işleme
 * Yeniden deneme ilkeleri
-* Modülden modüle yayıncılık
-* Hedef olarak WebHook'ta yayımla
-* Hedef olarak IoT Edge Hub'da yayımla
-* Hedef olarak Azure Olay Izgara bulut hizmetinde yayımlama
+* Modülün modül yayımlaması
+* Web kancasına hedef olarak yayımlama
+* IoT Edge hub 'a hedef olarak yayımlama
+* Azure Event Grid bulut hizmetinde hedef olarak yayımlama
 * Meta veriler için kalıcı durum
-* Blob depolama modülü entegrasyonu
+* BLOB depolama modülü tümleştirmesi
 
-Etiketler:`1.0.0-preview1`
+Lerimi`1.0.0-preview1`
 
-## <a name="100-preview2"></a>1.0.0-önizleme2
+## <a name="100-preview2"></a>1.0.0-preview2
 
-IoT Edge'deki Azure Etkinlik Izgarası önizleme 2'ye eklendi:
+IoT Edge eklenen Azure Event Grid önizlemesi 2:
 
-* Diske yapılandırılabilir kalıcı olaylar
+* Kalıcı olayları diske göre yapılandırılabilir
 * Konu ölçümleri
-* Olay abonelik ölçümleri
-* Hedef olarak Etkinlik Hub'larında yayımlama
-* Hedef olarak Servis Veri Hizmetleri Kuyruklarına Yayımlama
-* Hedef olarak Hizmet Veri Günü Konularını Yayımla
-* Hedef olarak Depolama Kuyrukları'nda yayımlama
+* Olay aboneliği ölçümleri
+* Hedef olarak Event Hubs yayımlayın
+* Service Bus kuyruklarda hedef olarak yayımlama
+* Service Bus konularına bir hedef olarak yayımlama
+* Depolama kuyruklarına hedef olarak yayımlama
 
-Etiketler: `1.0.0-preview2` `1.0`, ,`latest`
+Etiketler: `1.0.0-preview2`, `1.0`,`latest`

@@ -1,7 +1,7 @@
 ---
-title: ML deneyleri için MLflow Takibi
+title: ML denemeleri için MLflow Izleme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ile MLflow'u, Databricks kümelerinde, yerel ortamınızda veya VM ortamında oluşturulan ML modellerinden ölçümleri ve yapıları günlüğe kaydetmek için ayarlayın.
+description: Databricks kümelerinde, yerel ortamınızda veya VM ortamınızda oluşturulan ML modellerinden ölçümleri ve yapıtları günlüğe kaydetmek için Azure Machine Learning ile MLflow ayarlayın.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -12,44 +12,44 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: dce7db9fc508c70d79be62a7e97b3bf52a316b22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76983707"
 ---
-# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning ile model ölçümlerini izleme (önizleme)
+# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile model ölçümlerini izleyin
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, MLflow denemelerinizi ve Azure Machine Learning'inizi bağlamak için MLflow'un izleme URI'sini ve toplu olarak [MLflow İzleme](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen günlük API'sini nasıl etkinleştireceğimiz gösteriş. Bunu yapmak, [Azure Machine Learning çalışma alanınızda](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)deneme ölçümlerini ve yapılarını izlemenize ve günlüğe kaydetmenize olanak tanır. Denemeleriniz için MLflow İzleme'yi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
+Bu makalede, mlflow denemeleri ve Azure Machine Learning bağlamak için mlflow izleme URI 'SI ve günlük API 'si ve [Mlflow izleme](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen günlüğe kaydetme API 'sinin nasıl etkinleştirileceği gösterilmektedir. Bunun yapılması, [Azure Machine Learning çalışma](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces)alanınızdaki deneme ölçümlerini ve yapıtları izlemenize ve günlüğe almanıza olanak sağlar. Denemeleri için MLflow Izlemeyi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
 
 <!--
 + Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
 -->
 
-[MLflow,](https://www.mlflow.org) makine öğrenimi deneylerinizin yaşam döngüsünü yönetmek için açık kaynak kodlu bir kitaplıktır. MLFlow Tracking, denemenizin ortamı ne olursa olsun, uzaktan bilgi işlem hedefi, sanal makine veya Azure Databricks kümesinde, denemenizin ortamı ne olursa olsun, eğitim çalışma ölçümlerinizi ve model yapılarınızı günlüğe kaydeden ve izleyen MLflow'un bir bileşenidir. 
+[Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izleme, bir MLflow bileşeni olan ve denemenizin ortamınız tarafından, uzak bir işlem hedefinde, bir sanal makinede veya Azure Databricks kümesinde yerel olarak, kendi ortamınızda olduğu gibi, eğitim çalıştırma ölçümleri ve model yapıtlarını kaydeder ve izler. 
 
-Aşağıdaki diyagram, MLflow İzleme ile bir denemenin çalışma ölçümlerini izlediğinizve model yapılarını Azure Machine Learning çalışma alanınızda sakladığınızı göstermektedir.
+Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning çalışma alanınızda bir deneyin çalışma ölçümlerini ve mağaza modeli yapılarını izlersiniz.
 
-![masmavi makine öğrenme diyagramı ile mlflow](./media/how-to-use-mlflow/mlflow-diagram-track.png)
+![Azure Machine Learning diyagramı ile mlflow](./media/how-to-use-mlflow/mlflow-diagram-track.png)
 
 > [!TIP]
-> Bu belgedeki bilgiler öncelikle model eğitim sürecini izlemek isteyen veri bilimciler ve geliştiriciler içindir. Kotalar, tamamlanmış eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning'deki kaynak kullanımını ve etkinlikleri izlemek isteyen bir yöneticiyseniz, [bkz.](monitor-azure-machine-learning.md)
+> Bu belgedeki bilgiler öncelikli olarak, model eğitimi sürecini izlemek isteyen veri bilimcileri ve geliştiricileri içindir. Kotalar, tamamlanan eğitim çalıştırmaları veya tamamlanmış model dağıtımları gibi Azure Machine Learning kaynak kullanımını ve olayları izlemek isteyen bir yöneticiyseniz, bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
 
 ## <a name="compare-mlflow-and-azure-machine-learning-clients"></a>MLflow ve Azure Machine Learning istemcilerini karşılaştırın
 
- Aşağıdaki tabloda, Azure Machine Learning'i kullanabilen farklı istemciler ve bunların ilgili işlev yetenekleri özetlenmiştir.
+ Aşağıdaki tabloda Azure Machine Learning kullanılabilecek farklı istemciler ve ilgili işlev özellikleri özetlenmektedir.
 
- MLflow Tracking, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)üzerinden yalnızca başka bir şekilde kullanılabilen metrik günlük ve yapı depolama işlevleri sunar.
+ MLflow Izleme yalnızca [Azure Machine Learning Python SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)aracılığıyla kullanılabilen ölçüm günlüğü ve yapıt depolama işlevleri sunar.
 
 
-| | MLflow&nbsp;Takibi <!--& Deployment--> | Azure Machine Öğrenme Python SDK |  Azure Makine Öğrenme CLI | Azure Machine Learning Studio|
+| | MLflow&nbsp;izleme <!--& Deployment--> | Python SDK Azure Machine Learning |  Azure Machine Learning CLı | Azure Machine Learning Studio|
 |---|---|---|---|---|
-| Çalışma alanını yönetme |   | ✓ | ✓ | ✓ |
+| Çalışma alanını yönet |   | ✓ | ✓ | ✓ |
 | Veri depolarını kullanma  |   | ✓ | ✓ | |
 | Günlük ölçümleri      | ✓ | ✓ |   | |
-| Eserleri yükleme | ✓ | ✓ |   | |
+| Yapıtları karşıya yükle | ✓ | ✓ |   | |
 | Ölçümleri görüntüle     | ✓ | ✓ | ✓ | ✓ |
 | İşlemi yönetme   |   | ✓ | ✓ | ✓ |
 
@@ -59,26 +59,26 @@ Aşağıdaki diyagram, MLflow İzleme ile bir denemenin çalışma ölçümlerin
 -->
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [MLflow'u yükleyin.](https://mlflow.org/docs/latest/quickstart.html)
-* [Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) yerel bilgisayarınıza yükleyin SDK, Çalışma alanınıza erişmek için MLflow bağlantısı sağlar.
-* [Azure Makine Öğrenimi Çalışma Alanı oluşturun.](how-to-manage-workspace.md)
+* [MLflow 'ı yükler.](https://mlflow.org/docs/latest/quickstart.html)
+* [Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) yerel BILGISAYARıNıZA yüklediğinizde SDK, çalışma alanınıza erişmek Için mlflow bağlantısını sağlar.
+* [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
 
-## <a name="track-local-runs"></a>Yerel çalıştırmaları izleme
+## <a name="track-local-runs"></a>Yerel çalıştırmaları izle
 
-Azure Machine Learning ile MLflow İzleme, yerel koşularınızdan günlüğe kaydedilmiş ölçümleri ve yapıları Azure Machine Learning çalışma alanınızda saklamanıza olanak tanır.
+Azure Machine Learning ile MLflow Izleme, yerel çalıştırmanıza ait günlüğe kaydedilen ölçümleri ve yapıtları Azure Machine Learning çalışma alanınıza depolamanıza olanak sağlar.
 
-Bir `azureml-mlflow` Jupyter Notebook veya kod düzenleyicisinde yerel olarak yürütülen denemelerinizde Azure Machine Learning ile MLflow İzleme'yi kullanmak için paketi yükleyin.
+Denemeleri veya `azureml-mlflow` kod düzenleyicisinde yerel olarak Jupyter Notebook çalıştırdığınız Azure Machine Learning Ile Mlflow izlemeyi kullanmak için paketini yükler.
 
 ```shell
 pip install azureml-mlflow
 ```
 
 >[!NOTE]
->Hizmeti geliştirmeye çalıştığımıziçin azureml.contrib ad alanı sık sık değişir. Bu nedenle, bu ad alanındaki her şey önizleme olarak kabul edilmeli ve Microsoft tarafından tam olarak desteklenmemelidir.
+>Hizmetin geliştirilmesi için çalışdığımız için, azureml. contrib ad alanı sıklıkla değişir. Bu nedenle, bu ad alanındaki her şey Microsoft tarafından tam olarak desteklenmez ve önizleme olarak değerlendirilmelidir.
 
-MLflow'un izleme URI'sine erişmek `mlflow` ve çalışma alanınızı yapılandırmak için sınıfları [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) içe aktarın.
+MLflow `mlflow` 'un [`Workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) izleme URI 'sine erişmek ve çalışma alanınızı yapılandırmak için ve sınıflarını içeri aktarın.
 
-Aşağıdaki kodda, `get_mlflow_tracking_uri()` yöntem çalışma alanına `ws`benzersiz bir izleme URI adresi `set_tracking_uri()` atar ve MLflow izleme URI'yi bu adrese işaret eleştirir.
+Aşağıdaki kodda `get_mlflow_tracking_uri()` yöntemi, çalışma alanına `ws`benzersiz bir izleme URI adresi atar ve `set_tracking_uri()` mlflow izleme URI 'sini bu adrese yönlendirir.
 
 ```Python
 import mlflow
@@ -90,9 +90,9 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ```
 
 >[!NOTE]
->İzleme URI bir saat veya daha az geçerlidir. Komut dosyanızı boşta kaldıktan sonra yeniden başlatAcakolursanız, yeni bir URI almak için get_mlflow_tracking_uri API'yi kullanın.
+>İzleme URI 'SI saat veya daha az bir saate kadar geçerlidir. Bir boşta kalma zamanından sonra betiğinizi yeniden başlatırsanız, yeni bir URI almak için get_mlflow_tracking_uri API 'sini kullanın.
 
-MLflow deneme adını `set_experiment()` ayarlayın ve eğitim `start_run()`çalışmanızı '' ile başlatın. Ardından, `log_metric()` MLflow günlük API'sini etkinleştirmek ve eğitim çalıştırma ölçümlerinizi günlüğe kaydetmeye başlamak için kullanın.
+MLflow deney adını ile `set_experiment()` ayarlayın ve öğreticinizi ile `start_run()`çalıştırın. Daha sonra `log_metric()` mlflow günlüğü API 'sini etkinleştirmek ve eğitim çalıştırma ölçümlerinizi günlüğe kaydetmeye başlamak için kullanın.
 
 ```Python
 experiment_name = 'experiment_with_mlflow'
@@ -102,13 +102,13 @@ with mlflow.start_run():
     mlflow.log_metric('alpha', 0.03)
 ```
 
-## <a name="track-remote-runs"></a>Uzaktan çalıştırmaları izleme
+## <a name="track-remote-runs"></a>Uzak çalıştırmaları izle
 
-Azure Machine Learning ile MLflow İzleme, kaydedilmiş ölçümleri ve yapıları uzaktan çalıştırmalarınızdan Azure Machine Learning çalışma alanınızda saklamanıza olanak tanır.
+Azure Machine Learning ile MLflow Izleme, uzak çalıştırmanıza ait günlüğe kaydedilen ölçümleri ve yapıtları Azure Machine Learning çalışma alanınıza depolamanıza olanak sağlar.
 
-Uzaktan çalıştırmalar, modellerinizi GPU özellikli sanal makineler veya Machine Learning Compute kümeleri gibi daha güçlü hesaplamalar üzerinde eğitmenize olanak sağlar. Farklı bilgi işlem seçenekleri hakkında bilgi edinmek [için model eğitimi için bilgi işlem hedeflerini ayarlama'ya](how-to-set-up-training-targets.md) bakın.
+Uzak çalıştırmalar, modellerinizi GPU etkin sanal makineler veya Machine Learning İşlem kümeler gibi daha güçlü bir şekilde bir şekilde eğitmenizi sağlar. Farklı işlem seçenekleri hakkında bilgi edinmek için bkz. [model eğitimi için işlem hedeflerini ayarlama](how-to-set-up-training-targets.md) .
 
-İşlem ve eğitim çalışma ortamınızı [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) sınıfla birlikte yapılandırın. Çevre `mlflow` `azureml-mlflow` [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) bölümüne paketleri ekleyin ve pip layın. Sonra [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) işlem hedefi olarak uzaktan işlem ile inşa edin.
+İşlem ve eğitim çalıştırma ortamınızı [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) sınıfıyla yapılandırın. Ortamın `mlflow` [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) bölümüne `azureml-mlflow` ekleme ve PIP paketleri. Sonra işlem [`ScriptRunConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?view=azure-ml-py) hedefi olarak uzak işlem ile oluşturun.
 
 ```Python
 from azureml.core.environment import Environment
@@ -130,7 +130,7 @@ src.run_config.target = 'my-remote-compute-compute'
 src.run_config.environment = mlflow_env
 ```
 
-Eğitim komut dosyanızda, MLflow günlük API'lerini kullanmak için içe aktarın `mlflow` ve çalışma ölçümlerinizi günlüğe kaydetmeye başlayın.
+Eğitim betiğinizdeki MLflow `mlflow` günlüğü API 'lerini kullanmak için içeri aktarın ve çalıştırma ölçümlerinizi günlüğe kaydetmeye başlayın.
 
 ```Python
 import mlflow
@@ -139,35 +139,35 @@ with mlflow.start_run():
     mlflow.log_metric('example', 1.23)
 ```
 
-Bu işlem ve eğitim çalıştırma yapılandırması `Experiment.submit('train.py')` ile, bir çalıştırma göndermek için yöntemi kullanın. Bu yöntem, MLflow izleme URI'yi otomatik olarak ayarlar ve günlüğe kaydetmeyi MLflow'dan Çalışma Alanınıza yönlendirir.
+Bu işlem ve eğitim çalıştırma yapılandırmasıyla, bir çalıştırma göndermek `Experiment.submit('train.py')` için yöntemini kullanın. Bu yöntem, MLflow izleme URI 'sini otomatik olarak ayarlar ve MLflow oturumunu çalışma alanınıza yönlendirir.
 
 ```Python
 run = exp.submit(src)
 ```
 
-## <a name="track-azure-databricks-runs"></a>Azure Veri Tuğlaları çalışanlarını izleme
+## <a name="track-azure-databricks-runs"></a>Azure Databricks çalıştırmalarını izleyin
 
-Azure Machine Learning ile MLflow İzleme, Azure Veri Tuğlaları'nızdaki günlüğe kaydedilmiş ölçümleri ve yapıları Azure Machine Learning çalışma alanınızda depolamanıza olanak tanır.
+Azure Machine Learning ile MLflow Izleme, Azure Machine Learning çalışma alanınızda Azure Databricks çalıştırınızdan günlüğe kaydedilen ölçümleri ve yapıtları depolamanıza olanak tanır.
 
-Azure Databricks ile Mlflow denemelerinizi çalıştırmak için öncelikle bir [Azure Databricks çalışma alanı ve küme](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturmanız gerekir. Kümenizde, kümenizin gerekli işlevlere ve sınıflara erişebilmesini sağlamak için PyPi'den *azureml-mlflow* kitaplığını yüklediğinizden emin olun.
+Mlflow denemeleri Azure Databricks çalıştırmak için öncelikle bir [Azure Databricks çalışma alanı ve küme](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)oluşturmanız gerekir. Kümenizde, kümenizin gerekli işlevlere ve sınıflara erişebildiğinden emin olmak için, PyPI 'den *azureml-mlflow* kitaplığını yüklediğinizden emin olun.
 
-Buradan deneme not defterinizi içe aktarın, Azure Databricks kümenize takın ve denemenizi çalıştırın. 
+Buradan, deneme not defterinizi içeri aktarın, Azure Databricks kümenize ekleyin ve denemenizi çalıştırın. 
 
-### <a name="install-libraries"></a>Kitaplıkları yükleme
+### <a name="install-libraries"></a>Kitaplıkları yükler
 
-Kümenize kitaplıkyüklemek için **Kitaplıklar** sekmesine gidin ve **Yeni Yükle'yi** tıklatın
+Kümenizi kümenize yüklemek için **Kitaplıklar** sekmesine gidin ve **Yeni** ' ye tıklayın
 
- ![masmavi makine öğrenme diyagramı ile mlflow](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
+ ![Azure Machine Learning diyagramı ile mlflow](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
 
-**Paket** alanında azureml-mlflow yazın ve sonra yükle'yi tıklatın. Denemeniz için kümenize diğer ek paketleri yüklemek için gerektiğinde bu adımı yineleyin.
+**Paket** alanına, azureml-mlflow yazın ve ardından Install ' a tıklayın. Bu adımı, denemeniz için kümenize diğer ek paketleri yüklemek için gereken şekilde tekrarlayın.
 
- ![masmavi makine öğrenme diyagramı ile mlflow](./media/how-to-use-mlflow/install-libraries.png)
+ ![Azure Machine Learning diyagramı ile mlflow](./media/how-to-use-mlflow/install-libraries.png)
 
 ### <a name="set-up-your-notebook-and-workspace"></a>Not defterinizi ve çalışma alanınızı ayarlama
 
-Kümeniz kurulduktan sonra deneme not defterinizi içe aktarın, açın ve kümenizi ona takın.
+Kümeniz kurulduktan sonra, deneme not defterinizi içeri aktarın, açın ve kümenizi ona ekleyin.
 
-Aşağıdaki kod deneme not defterinizde olmalıdır. Bu kod, çalışma alanınızı anında oluşturmak için Azure aboneliğinizin ayrıntılarını alır. Bu kod, varolan bir kaynak grubunuz ve Azure Machine Learning çalışma alanınız olduğunu varsayar, aksi takdirde [bunları oluşturabilirsiniz.](how-to-manage-workspace.md) 
+Aşağıdaki kod, deneme Not defterinizde olmalıdır. Bu kod, çalışma alanınızı oluşturmak için Azure aboneliğinizin ayrıntılarını alır. Bu kod, var olan bir kaynak grubuna ve Azure Machine Learning çalışma alanına sahip olduğunuzu varsayar, aksi takdirde [bunları oluşturabilirsiniz](how-to-manage-workspace.md). 
 
 ```python
 import mlflow
@@ -192,37 +192,37 @@ ws = Workspace.get(name=workspace_name,
                    resource_group=resource_group)
 ```
 
-#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Veri Tuğlalarınızı ve Azure Makine Öğrenimi çalışma alanlarınızı bağlayın
+#### <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks ve Azure Machine Learning çalışma alanlarınızı bağlama
 
-Azure [portalında,](https://ms.portal.azure.com)Azure Veri Tuğlaları (ADB) çalışma alanınızı yeni veya varolan bir Azure Machine Learning çalışma alanına bağlayabilirsiniz. Bunu yapmak için ADB çalışma alanınıza gidin ve sağ alttaki **Azure Machine Learning çalışma alanı** bağlantısını seçin. Çalışma alanlarınızı bağlamak, Deneme verilerinizi Azure Machine Learning çalışma alanında izlemenize olanak tanır. 
+[Azure Portal](https://ms.portal.azure.com), Azure Databricks (ADB) çalışma alanınızı yeni veya mevcut bir Azure Machine Learning çalışma alanına bağlayabilirsiniz. Bunu yapmak için ADB çalışma alanınıza gidin ve sağ alt köşedeki **Azure Machine Learning çalışma alanını bağla** düğmesini seçin. Çalışma alanlarınızı bağlamak, deneme verilerinizi Azure Machine Learning çalışma alanında izlemenize olanak sağlar. 
 
-### <a name="link-mlflow-tracking-to-your-workspace"></a>MLflow izlemeyi çalışma alanınıza bağla
+### <a name="link-mlflow-tracking-to-your-workspace"></a>MLflow izlemeyi çalışma alanınıza bağlama
 
-Çalışma alanınızı anında ayarladıktan sonra, URI'yi takip eden MLflow'u ayarlayın. Bunu yaparak, MLflow izlemeyi Azure Machine Learning çalışma alanına bağlarsınız. Bağlantı yaptıktan sonra, tüm denemeleriniz yönetilen Azure Machine Learning izleme hizmetine iner.
+Çalışma alanınızı örnekledikten sonra MLflow izleme URI 'sini ayarlayın. Bunu yaparak, MLflow izlemesini Azure Machine Learning çalışma alanına bağlarsınız. Bağlandıktan sonra, tüm denemeleri yönetilen Azure Machine Learning izleme hizmetine eklenecektir.
 
-#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Not defterinizde Doğrudan MLflow İzleme'yi ayarlayın
+#### <a name="directly-set-mlflow-tracking-in-your-notebook"></a>Not defterinizde MLflow Izlemeyi doğrudan ayarlama
 
 ```python
 uri = ws.get_mlflow_tracking_uri()
 mlflow.set_tracking_uri(uri)
 ```
 
-Eğitim komut dosyanızda, MLflow günlük API'lerini kullanmak için mlflow'u alın ve çalışma ölçümlerinizi günlüğe kaydetmeye başlayın. Aşağıdaki örnek, dönem kaybı metrik kaydeder. 
+Eğitim betiğinizdeki mlflow günlüğü API 'Lerini kullanmak için mlflow 'u içeri aktarın ve çalıştırma ölçümlerinizi günlüğe kaydetmeye başlayın. Aşağıdaki örnek, dönem kayıp ölçümünü günlüğe kaydeder. 
 
 ```python
 import mlflow 
 mlflow.log_metric('epoch_loss', loss.item()) 
 ```
 
-#### <a name="automate-setting-mlflow-tracking"></a>Ayar MLflow İzleme'yi otomatikleştirin
+#### <a name="automate-setting-mlflow-tracking"></a>MLflow Izleme ayarını otomatikleştirin
 
-Sonraki her deneme not defteri oturumunda izleme URI'sini kümelerinizde el ile ayarlamak yerine, bu [Azure Machine Learning Tracking Cluster Init komut dosyasını](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)otomatik olarak kullanarak bunu yapın.
+Kümelerinizde sonraki tüm denemeler Not defteri oturumunda izleme URI 'sini el ile ayarlamak yerine bu [Azure Machine Learning Izleme kümesi Init betiğini](https://github.com/Azure/MachineLearningNotebooks/blob/3ce779063b000e0670bdd1acc6bc3a4ee707ec13/how-to-use-azureml/azure-databricks/linking/README.md)kullanarak otomatik olarak bunu yapın.
 
-Doğru şekilde yapılandırıldığında, MLflow izleme verilerinizi Azure Machine Learning REST API'sinde ve tüm istemcilerde ve Azure Databricks'te MLflow kullanıcı arabirimi üzerinden veya MLflow istemcisini kullanarak görebilirsiniz.
+Doğru yapılandırıldığında, MLflow izleme verilerinizi Azure Machine Learning REST API ve tüm istemcilerde ve Azure Databricks ' de MLflow Kullanıcı arabirimi aracılığıyla veya MLflow istemcisini kullanarak görebileceksiniz.
 
-## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Çalışma alanınızdaki ölçümleri ve yapıları görüntüleme
+## <a name="view-metrics-and-artifacts-in-your-workspace"></a>Çalışma alanınızdaki ölçümleri ve yapıtları görüntüleme
 
-MLflow günlüğe kaydetmedeki ölçümler ve yapılar çalışma alanınızda tutulur. Bunları her zaman görüntülemek için çalışma alanınıza gidin ve [Azure Machine Learning stüdyosunda](https://ml.azure.com)çalışma alanınızda denemeyi ada göre bulun.  Veya aşağıdaki kodu çalıştırın. 
+MLflow günlüğü 'ndeki ölçümler ve yapıtlar çalışma alanınızda tutulur. Bunları dilediğiniz zaman görüntülemek için, çalışma alanınıza gidin ve [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda ada göre deneyin ' i bulun.  Veya aşağıdaki kodu çalıştırın. 
 
 ```python
 run.get_metrics()
@@ -391,10 +391,10 @@ If you don't plan to use the logged metrics and artifacts in your workspace, the
 
  -->
 
- ## <a name="example-notebooks"></a>Örnek defterler
+ ## <a name="example-notebooks"></a>Örnek Not defterleri
 
-[Azure ML dizüstü bilgisayarlara sahip MLflow,](https://aka.ms/azureml-mlflow-examples) bu makalede sunulan kavramları gösterir ve genişletir.
+[Azure ML Not defterleri Ile Mlflow](https://aka.ms/azureml-mlflow-examples) , bu makalede sunulan kavramları gösterir ve genişletir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Modellerinizi yönetin.](concept-model-management-and-deployment.md)
+* [Modellerinizi yönetin](concept-model-management-and-deployment.md).
 * [Veri kayması](how-to-monitor-data-drift.md)için üretim modellerinizi izleyin.

@@ -1,6 +1,6 @@
 ---
-title: CloudSimple Private Cloud tarafından bir Azure VMware Çözümünü silme
-description: CloudSimple Private Cloud'un nasıl silinir olduğunu açıklar.
+title: CloudSimple özel bulutuna sahip bir Azure VMware çözümünü silme
+description: CloudSimple özel bulutun nasıl silineceğini açıklar.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024764"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>Bir CloudBasit Özel Bulutu Silme
+# <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutunu silme
 
-CloudSimple, Özel Bulut'u silme esnekliği sağlar.  Özel Bulut, bir veya daha fazla vSphere kümesinden oluşur. Her kümede 3 ila 16 düğüm olabilir. Bir Özel Bulut'u sildiğinizde, tüm kümeler silinir.
+CloudSimple, özel bir bulutu silme esnekliği sağlar.  Bir özel bulut, bir veya daha fazla vSphere kümesinden oluşur. Her küme 3 ile 16 arasında düğüme sahip olabilir. Özel bir bulutu sildiğinizde, tüm kümeler silinir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Özel Bulut'un silinmesi, Tüm Özel Bulut'u siler.  Özel Bulut'un tüm bileşenleri silinir.  Verilerden herhangi birini saklamak istiyorsanız, verileri şirket içi depolama veya Azure depolama sına yedeklediğinizden emin olun.
+Özel bulutun silinmesi, tüm özel bulutun silinmesine neden olacak.  Özel bulutun tüm bileşenleri silinecek.  Verilerin herhangi birini tutmak istiyorsanız, verileri şirket içi depolamaya veya Azure Storage 'a yedeklemiş olduğunuzdan emin olun.
 
-Özel Bulut'un bileşenleri şunlardır:
+Özel bulutun bileşenleri şunlardır:
 
-* CloudSimple Düğümleri
+* CloudSimple düğümleri
 * Sanal makineler
 * VLAN’lar/Alt Ağlar
-* Özel Bulut'ta depolanan tüm kullanıcı verileri
-* VLAN/Subnet'e tüm güvenlik duvarı kuralı ekleri
+* Özel bulutta depolanan tüm Kullanıcı verileri
+* Bir VLAN/subnet 'e yönelik tüm güvenlik duvarı kuralı ekleri
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="delete-a-private-cloud"></a>Özel Bulutu silme
 
-1. [CloudSimple portalına erişin.](access-cloudsimple-portal.md)
+1. [CloudSimple portalına erişin](access-cloudsimple-portal.md).
 
 2. **Kaynaklar** sayfasını açın.
 
-3. Silmek istediğiniz Özel Bulut'a tıklayın
+3. Silmek istediğiniz özel buluta tıklayın
 
-4. Özet sayfasında **Sil'i**tıklatın.
+4. Özet sayfasında **Sil**' e tıklayın.
 
-    ![Özel bulutu silme](media/delete-private-cloud.png)
+    ![Özel bulutu Sil](media/delete-private-cloud.png)
 
-5. Onay sayfasında, Özel Bulut'un adını girin ve **Sil'i**tıklatın. 
+5. Onay sayfasında, özel bulutun adını girin ve **Sil**' e tıklayın. 
 
-    ![Özel bulutu silme - onaylayın](media/delete-private-cloud-confirm.png)
+    ![Özel bulutu Sil-Onayla](media/delete-private-cloud-confirm.png)
 
-Özel Bulut silme için işaretlenir.  Silme işlemi üç saat sonra başlar ve Özel Bulut'u siler.
+Özel bulut silinmek üzere işaretlendi.  Silme işlemi üç saat sonra başlar ve özel bulutu siler.
 
 > [!CAUTION]
-> Özel Bulut silindikten sonra düğümler silinmelidir.  Düğümlerin ölçümü, düğümler aboneliğinizden silinene kadar devam eder.
+> Özel bulutun silinmesinden sonra düğümlerin silinmesi gerekir.  Düğüm ölçümü, düğümlerin aboneliğinizden silindiği zamana kadar devam edecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

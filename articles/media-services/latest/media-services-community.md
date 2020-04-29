@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v3 topluluğuna genel bakış
-description: Bu Azure Medya Hizmetleri topluluk sayfası, medya hizmetleri hakkında soru sorabileceğiniz, geri bildirimde bulabileceğiniz ve güncellemeler alabileceğiniz farklı yolları tartışır.
+title: Azure Media Services v3 topluluğuna genel bakış
+description: Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildirimde bulunmak ve Media Services ilgili güncelleştirmeler alabileceğiniz farklı yollar açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
 ms.openlocfilehash: 70d366551dc3130d2a1bdac6108e3b3de95976d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76545934"
 ---
-# <a name="azure-media-services-v3-community"></a>Azure Medya Hizmetleri v3 topluluğu  
+# <a name="azure-media-services-v3-community"></a>Azure Media Services v3 topluluğu  
 
-Bu Azure Medya Hizmetleri topluluk sayfası, medya hizmetleri hakkında soru sorabileceğiniz, geri bildirimde bulabileceğiniz ve güncellemeler alabileceğiniz farklı yolları tartışır.
+Bu Azure Media Services topluluk sayfasında, soru sorabileceğiniz, geri bildirimde bulunmak ve Media Services ilgili güncelleştirmeler alabileceğiniz farklı yollar açıklanmaktadır.
 
-## <a name="provide-feedback-and-make-suggestions"></a>Geri bildirimde bulunun ve önerilerde bulunun
+## <a name="provide-feedback-and-make-suggestions"></a>Geri bildirim sağlayın ve öneri yapın
 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
@@ -32,17 +32,17 @@ Bu Azure Medya Hizmetleri topluluk sayfası, medya hizmetleri hakkında soru sor
 
 ### <a name="twitter"></a>Twitter
 
-Bizimle iletişim [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) kurmak veya Twitter'daki güncellemeleri takip etmek için twitter kulplarını kullanabilirsiniz. Twitter'da destek istemek için twitter tutamacını [@AzureSupport](https://twitter.com/azuresupport) kullanın.  
+Twitter tanıtıcısını kullanarak [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) bizimle iletişim kurun veya Twitter 'daki güncelleştirmeleri takip edebilirsiniz. Twitter 'da [@AzureSupport](https://twitter.com/azuresupport) destek istemek için Twitter tanıtıcısını kullanın.  
 
-### <a name="online-forums"></a>Çevrimiçi forumlar
+### <a name="online-forums"></a>Çevrimiçi Forumlar
 
-Aşağıdaki forumlar güncel ürünler ve özellikler hakkında sorular sormak için kullanılabilir.
+Aşağıdaki Forumlar, geçerli ürünler ve özellikler hakkında sorular sormak için kullanılabilir.
 
-Şu anda MSDN, Medya Hizmetleri ekibinin birincil topluluk forumudur.
+Şu anda, MSDN Media Services ekibin birincil topluluk Forumu ' dur.
 
-[![Msdn](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
+[![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
-Ekip ayrıca Stack Overflow'da etiketlenen soruları 'azure-media-services' ile izler.
+Ekip, ' Azure-Media-Services ' ile Stack Overflow etiketli soruları de izler.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 

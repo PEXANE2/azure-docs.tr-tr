@@ -1,6 +1,6 @@
 ---
-title: Azure portalında yüksek kontrastı açın | Microsoft Dokümanlar
-description: Gösterilen arka plan ve yazı tipi renklerini seçmek için Azure portalı temasını değiştirin. Azure portalını daha hızlı ve okunması daha kolay hale getirmek için yüksek kontrastı açın.
+title: Azure portal yüksek karşıtlığı aç | Microsoft Docs
+description: Azure portal temasını değiştirerek gösterilen arka plan ve yazı tipi renklerini seçin. Azure portal daha hızlı ve daha kolay okunabilir hale getirmek için yüksek karşıtlığı etkinleştirin.
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -11,38 +11,38 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: ae135e0d7ac613d78b1c1f76e233503a60570f0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76310773"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure portalındaki yüksek karşıtlığı açın veya teonu değiştirin
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure portal yüksek karşıtlığı açın veya temayı değiştirin
 
-Yüksek kontrast ayarları Azure portalının okunmasını kolaylaştırır. Ayrıca, portalın arka plan renklerini değiştiren bir tema da seçebilirsiniz.
+Yüksek karşıtlık ayarları Azure portal okumayı daha kolay hale getirir. Ayrıca portalın arka plan renklerini değiştiren bir tema seçebilirsiniz.
 
-Daha fazla kontrasta ihtiyacınız varsa veya Azure portalındaki renk düzenini değiştirmek istiyorsanız, değişikliği yapmak için portal ayarlarına gidin.
+Daha fazla karşıtlığa ihtiyacınız varsa veya Azure portal renk düzenini değiştirmek istiyorsanız, değişikliği yapmak için portal ayarları ' na gidin.
 
 ## <a name="turn-on-high-contrast"></a>Yüksek karşıtlığı açma
 
-1. [Azure portalının](https://portal.azure.com)üstbilgisinde **Ayarlar'ı**seçin.
+1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Azure portalındaki portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
-1. **Beyaz** veya **Siyah'ı**seçin.
+    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+1. **Beyaz** veya **Siyah**seçeneğini belirleyin.
 
-    ![Azure portal ayarlarında yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Azure portal ayarlarındaki yüksek karşıtlık seçeneklerini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. **Uygula**’yı seçin.
 
 > [!NOTE]
-> Yüksek kontrastlı bir tema seçerseniz, diğer tüm tema seçimlerini geçersiz kılar.
+> Yüksek karşıtlık teması seçerseniz, diğer tüm tema seçimlerini geçersiz kılar.
 >
 >
 
-## <a name="change-theme"></a>Teması değiştir
+## <a name="change-theme"></a>Temayı Değiştir
 
-1. [Azure portalının](https://portal.azure.com)üstbilgisinde **Ayarlar'ı**seçin.
+1. [Azure Portal](https://portal.azure.com)üst bilgisinde **Ayarlar**' ı seçin.
 
-    ![Azure portalındaki portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Azure portal portal ayarları dişli simgesini gösteren ekran görüntüsü](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
 1. Tema seçin.
 
@@ -52,5 +52,5 @@ Daha fazla kontrasta ihtiyacınız varsa veya Azure portalındaki renk düzenini
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalında klavye kısayolları](azure-portal-keyboard-shortcuts.md)
+- [Azure portal klavye kısayolları](azure-portal-keyboard-shortcuts.md)
 - [Desteklenen tarayıcılar ve cihazlar](../azure-preview-portal-supported-browsers-devices.md)

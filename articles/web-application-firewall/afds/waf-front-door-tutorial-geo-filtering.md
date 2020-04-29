@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı hizmeti için coğrafi filtreleme web uygulaması güvenlik duvarı ilkesini yapılandırma
-description: Bu eğitimde, bir coğrafi filtreleme ilkesi oluşturmayı ve politikayı mevcut Ön Kapı ön yüz ana bağlantı sunucunuzla ilişkilendirmeyi öğreneceksiniz
+title: Azure ön kapı hizmeti için coğrafi filtreleme Web uygulaması güvenlik duvarı ilkesini yapılandırma
+description: Bu öğreticide, coğrafi filtreleme ilkesi oluşturmayı ve ilkeyi mevcut ön kapılı ön uç konunuzla ilişkilendirmeyi öğreneceksiniz
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,50 +9,50 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: abcef61d478eccb4e979b60eb845ac8d398a49f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135879"
 ---
-# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Ön Kapınız için coğrafi filtreleme WAF ilkesi ni ayarlama
+# <a name="set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Ön kapılarınız için bir coğrafi filtreleme WAF ilkesi ayarlama
 
-Bu öğreticide, örnek bir coğrafi filtreleme ilkesi oluşturmak ve bu ilkeyi mevcut bir Front Door ön uç konağı ile ilişkilendirmek için Azure PowerShell kullanma gösterilmektedir. Bu örnek coğrafi filtreleme ilkesi, Amerika Birleşik Devletleri dışındaki tüm diğer ülkelerden/bölgelerden gelen istekleri engeller.
+Bu öğreticide, örnek bir coğrafi filtreleme ilkesi oluşturmak ve bu ilkeyi mevcut bir Front Door ön uç konağı ile ilişkilendirmek için Azure PowerShell kullanma gösterilmektedir. Bu örnek coğrafi filtreleme ilkesi, Birleşik Devletler dışındaki diğer tüm ülke/bölgelerden gelen istekleri engeller.
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir coğrafi filtre ilkesi ayarlamaya başlamadan önce PowerShell ortamınızı ayarlayın ve bir Ön Kapı profili oluşturun.
+Bir coğrafi filtre İlkesi ayarlamaya başlamadan önce, PowerShell ortamınızı ayarlayın ve bir ön kapı profili oluşturun.
 ### <a name="set-up-your-powershell-environment"></a>PowerShell ortamınızı hazırlama
 Azure PowerShell, Azure kaynaklarınızı yönetmek için [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) modelini kullanan bir dizi cmdlet sunar. 
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmanız ve Az PowerShell modüllerini yüklemek için sayfadaki yönergeleri izleyin.
+[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)'i yerel makinenize yükleyebilir ve herhangi bir PowerShell oturumunda kullanabilirsiniz. Azure kimlik bilgilerinizle oturum açmak ve az PowerShell modülünü yüklemek için sayfadaki yönergeleri izleyin.
 
-#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açmak için etkileşimli bir iletişim kutusuyla Azure'a bağlanın
+#### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>Oturum açmak için etkileşimli iletişim kutusuyla Azure 'a bağlanın
 
 ```
 Install-Module -Name Az
 Connect-AzAccount
 ```
-PowerShellGet'in geçerli sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
+PowerShellGet 'in güncel sürümünün yüklü olduğundan emin olun. Aşağıdaki komutu çalıştırın ve PowerShell'i yeniden açın.
 
 ```
 Install-Module PowerShellGet -Force -AllowClobber
 ``` 
-#### <a name="install-azfrontdoor-module"></a>Az.FrontDoor modüllerini yükleyin 
+#### <a name="install-azfrontdoor-module"></a>Install az. Frontkapı Module 
 
 ```
 Install-Module -Name Az.FrontDoor
 ```
 
-### <a name="create-a-front-door-profile"></a>Ön Kapı profili oluşturma
+### <a name="create-a-front-door-profile"></a>Ön kapı profili oluşturma
 
-[Quickstart: Ön Kapı profili](../../frontdoor/quickstart-create-front-door.md)oluşturma'da açıklanan yönergeleri izleyerek bir Ön Kapı profili oluşturun.
+[Hızlı başlangıç: ön kapı profili oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun.
 
-## <a name="define-geo-filtering-match-condition"></a>Coğrafi filtreleme eşleşmesi koşulunu tanımlama
+## <a name="define-geo-filtering-match-condition"></a>Coğrafi filtreleme eşleştirme koşulunu tanımlayın
 
-Eşleşme koşulu oluştururken parametrelerde [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) kullanarak "ABD"den gelmeyen istekleri seçen örnek bir eşleşme koşulu oluşturun. Azure Ön Kapı için bir [etki alanında coğrafi filtreleme nedir?](waf-front-door-geo-filtering.md)
+Bir eşleşme koşulu oluştururken [New-AzFrontDoorWafMatchConditionObject](/powershell/module/az.frontdoor/new-azfrontdoorwafmatchconditionobject) on Parameters KULLANıLARAK "ABD" den gelenlerin kullanıldığı istekleri seçen bir örnek eşleşme koşulu oluşturun. Ülke eşleme için iki harfli ülke kodu [, Azure ön kapısının bir etki alanında coğrafi filtreleme](waf-front-door-geo-filtering.md)olarak sunulmaktadır.
 
 ```azurepowershell-interactive
 $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
@@ -64,7 +64,7 @@ $nonUSGeoMatchCondition = New-AzFrontDoorWafMatchConditionObject `
  
 ## <a name="add-geo-filtering-match-condition-to-a-rule-with-action-and-priority"></a>Eylem ve Öncelik ile bir kurala coğrafi filtreleme eşleşme koşulu ekleme
 
-`nonUSBlockRule` [New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak eşleşme koşuluna, Eyleme ve Önceliğe dayalı bir CustomRule nesnesi oluşturun.  Bir CustomRule'un birden fazla MatchCondition'ı olabilir.  Bu örnekte Eylem Engelle değerine, Öncelik ise en yüksek öncelik olan 1 değerine ayarlanmıştır.
+[New-AzFrontDoorWafCustomRuleObject](/powershell/module/az.frontdoor/new-azfrontdoorwafcustomruleobject)kullanarak eşleşme `nonUSBlockRule` koşuluna, eyleme ve önceliğe göre bir customrule nesnesi oluşturun.  Bir CustomRule'un birden fazla MatchCondition'ı olabilir.  Bu örnekte Eylem Engelle değerine, Öncelik ise en yüksek öncelik olan 1 değerine ayarlanmıştır.
 
 ```
 $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
@@ -75,11 +75,11 @@ $nonUSBlockRule = New-AzFrontDoorWafCustomRuleObject `
 -Priority 1
 ```
 
-## <a name="add-rules-to-a-policy"></a>İlkelere kural ekleme
+## <a name="add-rules-to-a-policy"></a>İlkeye kural ekleme
 
-Ön Kapı profilini içeren kaynak grubunun adını `Get-AzResourceGroup`bulun. Ardından, Ön `geoPolicy` Kapı `nonUSBlockRule` profilini içeren belirtilen kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak içeren bir ilke nesnesi oluşturun. Coğrafi politika için benzersiz bir ad sağlamanız gerekir. 
+Kullanarak `Get-AzResourceGroup`ön kapı profilini içeren kaynak grubunun adını bulun. Ardından, ön kapı `geoPolicy` profilini içeren belirtilen `nonUSBlockRule` kaynak grubunda [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) kullanarak içeren bir ilke nesnesi oluşturun. Coğrafi ilke için benzersiz bir ad sağlamanız gerekir. 
 
-Aşağıdaki örnekte, [Quickstart: Create the Front Door](../../frontdoor/quickstart-create-front-door.md) makalesinde sağlanan yönergeleri kullanarak Ön Kapı profilini oluşturduğunuz varsayımıyla Kaynak Grubu adı *myResourceGroupFD1'i* kullanır. Aşağıdaki örnekte, *geoPolicyAllowUSYalnızca* benzersiz bir ilke adı ile ilke adını değiştirin.
+Aşağıdaki örnek, [hızlı başlangıç: ön kapı oluşturma](../../frontdoor/quickstart-create-front-door.md) makalesinde sunulan yönergeleri kullanarak ön kapı profilini oluşturduğunuz varsayımıyla *myResourceGroupFD1* kaynak grubu adını kullanır. Aşağıdaki örnekte, *Geopolicyallowusname* Ilke adını yalnızca benzersiz bir ilke adıyla değiştirin.
 
 ```
 $geoPolicy = New-AzFrontDoorWafPolicy `
@@ -90,27 +90,27 @@ $geoPolicy = New-AzFrontDoorWafPolicy `
 -EnabledState Enabled
 ```
 
-## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF politikasını Ön Kapı ön yüz ana bilgisayara bağla
+## <a name="link-waf-policy-to-a-front-door-frontend-host"></a>WAF ilkesini bir ön kapılı ön uç konağına bağlama
 
-WAF ilkesi nesnesini mevcut Ön Kapı ön yüz ana bilgisayarına bağla ve Ön Kapı özelliklerini güncelleştir. 
+WAF ilke nesnesini mevcut ön kapı ön uç konağına bağlayın ve ön kapı özelliklerini güncelleştirin. 
 
-Bunu yapmak için, ilk [Get-AzFrontDoor](/powershell/module/az.frontdoor/get-azfrontdoor)kullanarak Ön Kapı nesnealmak. 
+Bunu yapmak için ilk olarak [Get-Azfrontkapısı](/powershell/module/az.frontdoor/get-azfrontdoor)kullanarak ön kapı nesnenizin alınması gerekir. 
 
 ```
 $geoFrontDoorObjectExample = Get-AzFrontDoor -ResourceGroupName myResourceGroupFD1
 $geoFrontDoorObjectExample[0].FrontendEndpoints[0].WebApplicationFirewallPolicyLink = $geoPolicy.Id
 ```
 
-Ardından, ön uç WebApplicationFirewallPolicyLink özelliğini `geoPolicy`kullanarak [Set-AzFrontDoor'un](/powershell/module/az.frontdoor/set-azfrontdoor)resourceId'ine ayarlayın.
+Ardından, ön uç WebApplicationFirewallPolicyLink özelliğini, `geoPolicy` [set-azfrontkapısının](/powershell/module/az.frontdoor/set-azfrontdoor)kullanıldığı RESOURCEID olarak ayarlayın.
 
 ```
 Set-AzFrontDoor -InputObject $geoFrontDoorObjectExample[0]
 ```
 
 > [!NOTE] 
-> Bir WAF ilkesini Ön Kapı ön yüz ana bilgisayara bağlamak için WebApplicationFirewallPolicyLink özelliğini yalnızca bir kez ayarlamanız gerekir. Sonraki ilke güncelleştirmeleri otomatik olarak ön uç ana bilgisayara uygulanır.
+> Bir WAF ilkesini bir ön kapılı ön uç konağına bağlamak için yalnızca WebApplicationFirewallPolicyLink özelliğini bir kez ayarlamanız gerekir. Sonraki ilke güncelleştirmeleri, ön uç konağına otomatik olarak uygulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [web uygulaması güvenlik duvarı](../overview.md)hakkında bilgi edinin.
+- [Azure Web uygulaması güvenlik duvarı](../overview.md)hakkında bilgi edinin.
 - [Front Door oluşturmayı](../../frontdoor/quickstart-create-front-door.md) öğrenin.

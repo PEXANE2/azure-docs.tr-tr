@@ -1,43 +1,43 @@
 ---
-title: Azure Servis Kumaş CLI- sfctl
-description: Azure Service Fabric komut satırı arabirimi sfctl hakkında bilgi edinin. Komutların ve alt grupların listesini içerir.
+title: Azure Service Fabric CLı-sfctl
+description: Azure Service Fabric komut satırı arabirimi olan sfctl hakkında bilgi edinin. Komutların ve alt grupların bir listesini içerir.
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 56efa15a7de3414f9c535e66bd80c94594cd5038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906212"
 ---
 # <a name="sfctl"></a>sfctl
-Service Fabric kümelerini ve varlıklarını yönetme komutları. Bu sürüm Service Fabric 7.0 çalışma süresi ile uyumludur.
+Service Fabric kümelerini ve varlıklarını yönetmeye yönelik komutlar. Bu sürüm, Service Fabric 7,0 çalışma zamanı ile uyumludur.
 
-Komutlar isim-fiil deseni izler. Daha fazla bilgi için alt gruplara bakın.
+Komutlar, isim-fiil modelini izler. Daha fazla bilgi için bkz. alt gruplar.
 
-## <a name="subgroups"></a>Alt gruplar
-|Alt|Açıklama|
+## <a name="subgroups"></a>Alt
+|Atama|Açıklama|
 | --- | --- |
-| [uygulama](service-fabric-sfctl-application.md) | Uygulamaları ve uygulama türlerini oluşturun, silin ve yönetin. |
-| [Kaos](service-fabric-sfctl-chaos.md) | Kaos test hizmetini başlatın, durdurun ve rapor edin. |
-| [Küme](service-fabric-sfctl-cluster.md) | Service Fabric kümelerini seçin, yönetin ve çalıştırın. |
-| [Oluşturmak](service-fabric-sfctl-compose.md) | Docker Comcreate uygulamaları oluşturun, silin ve yönetin. |
-| [Kapsayıcı](service-fabric-sfctl-container.md) | Küme düğümünde kapsayıcı ile ilgili komutları çalıştırın. |
-| [Olay](service-fabric-sfctl-events.md) | Olaylar mağazasından olayları alın (EventStore hizmeti zaten yüklüyse). |
-| [is](service-fabric-sfctl-is.md) | Komutları altyapı hizmetine sorgula ve gönder. |
-| [mesh](service-fabric-sfctl-mesh.md) | Service Fabric Mesh uygulamalarını silin ve yönetin. |
-| [Düğüm](service-fabric-sfctl-node.md) | Küme oluşturan düğümleri yönetin. |
-| [Bölüm](service-fabric-sfctl-partition.md) | Herhangi bir hizmet için bölümleri sorgula ve yönet. |
-| [Özellik](service-fabric-sfctl-property.md) | Hizmet Kumaşı adları altında özellikleri depolayın ve sorgulayın. |
-| [Çoğaltma](service-fabric-sfctl-replica.md) | Hizmet bölümlerine ait yinelemeleri yönetin. |
-| [Rpm](service-fabric-sfctl-rpm.md) | Komutları onarım yöneticisi hizmetine sorgula ve gönder. |
-| [sa-küme](service-fabric-sfctl-sa-cluster.md) | Tek başına Service Fabric kümelerini yönetin. |
-| [Hizmet](service-fabric-sfctl-service.md) | Hizmet, hizmet türleri ve hizmet paketleri oluşturun, silin ve yönetin. |
-| [ayarlar](service-fabric-sfctl-settings.md) | Ayarları bu sfctl örneğine göre yerel olarak yapılandırın. |
-| [mağaza](service-fabric-sfctl-store.md) | Küme görüntü deposunda temel dosya düzeyi işlemlerini gerçekleştirin. |
+| [uygulama](service-fabric-sfctl-application.md) | Uygulamalar ve uygulama türleri oluşturun, silin ve yönetin. |
+| [Chaos](service-fabric-sfctl-chaos.md) | Chaos test hizmetini başlatın, durdurun ve rapor edin. |
+| [içi](service-fabric-sfctl-cluster.md) | Service Fabric kümelerini seçin, yönetin ve çalıştırın. |
+| [iletinizi](service-fabric-sfctl-compose.md) | Docker Compose uygulamalar oluşturun, silin ve yönetin. |
+| [kapsayıcı](service-fabric-sfctl-container.md) | Kapsayıcı ile ilgili komutları bir küme düğümünde çalıştırın. |
+| [olayları](service-fabric-sfctl-events.md) | Olayları olay deposundan al (EventStore hizmeti zaten yüklüyse). |
+| [is](service-fabric-sfctl-is.md) | Altyapı hizmetine komutları sorgulayın ve gönderin. |
+| [mesh](service-fabric-sfctl-mesh.md) | Service Fabric kafes uygulamalarını silin ve yönetin. |
+| [düğümüne](service-fabric-sfctl-node.md) | Bir küme oluşturan düğümleri yönetin. |
+| [bölümünüzün](service-fabric-sfctl-partition.md) | Tüm hizmet için bölümleri sorgulayın ve yönetin. |
+| [özelliði](service-fabric-sfctl-property.md) | Service Fabric adları altında mağaza ve sorgu özellikleri. |
+| [yinelemeden](service-fabric-sfctl-replica.md) | Hizmet bölümlerine ait çoğaltmaları yönetin. |
+| [RPM](service-fabric-sfctl-rpm.md) | Komutları onarma Yöneticisi hizmetine sorgula ve gönder. |
+| [sa kümesi](service-fabric-sfctl-sa-cluster.md) | Tek başına Service Fabric kümelerini yönetin. |
+| [hizmetle](service-fabric-sfctl-service.md) | Hizmeti, hizmet türlerini ve hizmet paketlerini oluşturun, silin ve yönetin. |
+| [ayarlar](service-fabric-sfctl-settings.md) | Bu sfctl örneği için yerel ayarları yapılandırın. |
+| [mağaza](service-fabric-sfctl-store.md) | Küme görüntü deposunda temel dosya düzeyi işlemleri gerçekleştirin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Servis Kumaş ı CLI'yi [ayarlayın.](service-fabric-cli.md)
-- [Örnek komut dosyalarını](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI'yi nasıl kullanacağınızı öğrenin.
+- Service Fabric CLı 'yi [ayarlayın](service-fabric-cli.md) .
+- [Örnek betikleri](/azure/service-fabric/scripts/sfctl-upgrade-application)kullanarak Service Fabric CLI 'nın nasıl kullanılacağını öğrenin.

@@ -1,54 +1,54 @@
 ---
-title: Azure Blockchain Workbench REST API'lerini kullanma
-description: Azure Blockchain Workbench Preview REST API'nin nasıl kullanılacağına yönelik senaryolar
+title: Azure blok zinciri çalışma ekranı REST API 'Lerini kullanma
+description: Azure blok zinciri çalışma ekranı önizlemesi 'nin nasıl kullanılacağına yönelik senaryolar REST API
 ms.date: 03/05/2020
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 3084fcf343bc42fe01bf352b6791916d62f63540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672744"
 ---
-# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure Blockchain Çalışma Tezgahı Önizleme REST API'sini kullanma
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure blok zinciri çalışma ekranı önizleme 'yi kullanma REST API
 
-Azure Blockchain Workbench Preview REST API, geliştiricilere ve bilgi çalışanlarına blockchain uygulamalarına zengin entegrasyonlar oluşturmanın bir yolunu sağlar. Bu makalede, Workbench REST API'nin nasıl kullanılacağına ilişkin çok sayıda senaryo vurgulanmıştır. Örneğin, oturum açmış kullanıcıların atanan blockchain uygulamalarını görüntülemesine ve bunlarla etkileşimde kurmasına olanak tanıyan özel bir blockchain istemcisi oluşturmak istediğinizi varsayalım. İstemci, sözleşme örneklerini görüntülemek ve akıllı sözleşmeler üzerinde işlem yapmak için Blockchain Workbench API'sini kullanabilir.
+Azure blok zinciri çalışma ekranı önizlemesi REST API geliştiricilere ve bilgi çalışanlarına, blok zinciri uygulamalarına yönelik zengin tümleştirmeler oluşturma olanağı sağlar. Bu makalede, REST API çalışma ekranı kullanımı hakkında çeşitli senaryolar vurgulanmıştır. Örneğin, oturum açan kullanıcıların atanan blok zinciri uygulamalarını görüntülemesine ve bunlarla etkileşime girmesine izin veren özel bir blok zinciri istemcisi oluşturmak istediğinizi varsayalım. İstemci, sözleşme örneklerini görüntülemek ve akıllı sözleşmelerde işlem yapmak için blok zinciri çalışma ekranı API 'sini kullanabilir.
 
-## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Çalışma Tezgahı API bitiş noktası
+## <a name="blockchain-workbench-api-endpoint"></a>Blok zinciri çalışma ekranı API uç noktası
 
-Blockchain Workbench API'leri dağıtım Için bir bitiş noktasından erişilir. Dağıtımınız için API uç noktası URL'sini almak için:
+Blok zinciri çalışma ekranı API 'Lerine, dağıtımınız için bir uç nokta üzerinden erişilir. Dağıtımınız için API uç nokta URL 'sini almak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Sol daki gezinti bölmesinde **Kaynak gruplarını**seçin.
-1. Dağıtılmış Blockchain Workbench kaynak grubu adını seçin.
-1. Listeyi türe göre alfabetik olarak sıralamak için **TYPE** sütununa başlığını seçin.
-1. Tip **Uygulama Hizmeti**ile iki kaynak vardır. "-api" soneki *ile* **Uygulama Hizmeti** türünü seçin.
-1. Uygulama **Hizmetine Genel**Bakış'ta, dağıtılan Blockchain Çalışma Tezgahı'nın API uç noktası URL'sini temsil eden **URL** değerini kopyalayın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol taraftaki Gezinti bölmesinde **kaynak grupları**' nı seçin.
+1. Dağıtılmış blok zinciri çalışma ekranı ' nı kaynak grubu adı ' nı seçin.
+1. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
+1. **App Service**türünde iki kaynak vardır. "-Api" sonekiyle **App Service** *with* türde kaynağı seçin.
+1. App Service **genel bakışta**, dağıtılan blok zinciri çalışma EKRANıNA yönelik API uç noktası URL 'sini temsil eden **URL** değerini kopyalayın.
 
-    ![Uygulama hizmeti API bitiş noktası URL'si](media/use-api/app-service-api.png)
+    ![App Service API uç nokta URL 'SI](media/use-api/app-service-api.png)
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Blockchain Workbench REST API'sine gelen istekler Azure Etkin Dizini (Azure AD) ile korunur.
+Blok zinciri çalışma ekranı REST API istekleri Azure Active Directory (Azure AD) ile korunuyor.
 
-REST API'lerine kimlik doğrulaması yapmak için, ISTEMCI kodunun API'yi aramadan önce geçerli kimlik bilgilerini içeren kimlik doğrulaması gerekir. Kimlik doğrulama, Azure AD tarafından çeşitli aktörler arasında koordine edilir ve müşterinize kimlik doğrulamasının kanıtı olarak bir [erişim belirteci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) sağlar. Belirteç daha sonra REST API isteklerinin HTTP Yetkilendirme üstbilgisinde gönderilir. Azure AD kimlik doğrulaması hakkında daha fazla bilgi edinmek [için geliştiriciler için Azure Etkin Dizini'ne](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)bakın.
+REST API 'Lerine kimliği doğrulanmış bir istek yapmak için, API 'yi çağırabilmeniz için istemci kodu geçerli kimlik bilgileriyle kimlik doğrulaması gerektirir. Kimlik doğrulaması, Azure AD tarafından çeşitli aktörler arasında düzenlenir ve istemcinizi kimlik doğrulaması kanıtı olarak bir [erişim belirteci](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#access-token) sağlar. Belirteç daha sonra REST API isteklerinin HTTP yetkilendirme üstbilgisinde gönderilir. Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [geliştiriciler için Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-Kimlik doğrulama örnekleri için [REST API örneklerine](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) bakın.
+Kimlik doğrulaması ile ilgili örnekler için bkz. [REST API örnekleri](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples) .
 
 ## <a name="using-postman"></a>Postman'i kullanma
 
-Workbench API'lerini sınamak veya deneme yapmak istiyorsanız, dağıtımınıza API çağrıları yapmak için [Postacı'yı](https://www.postman.com) kullanabilirsiniz. GitHub'dan [Workbench API isteklerinden oluşan örnek bir Postacı koleksiyonunu indirin.](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) API isteklerini doğrulamak ve örnek API isteklerini kullanma yla ilgili ayrıntılar için README dosyasına bakın.
+Çalışma ekranı API 'Lerini test etmek veya denemek istiyorsanız, dağıtımınıza yönelik API çağrıları yapmak için [Postman](https://www.postman.com) kullanabilirsiniz. GitHub 'dan [bir çalışma ekranı API 'si isteklerinin örnek Postman koleksiyonunu indirin](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/rest-api-samples/postman) . Örnek API isteklerini kimlik doğrulama ve kullanma hakkında ayrıntılı bilgi için BENIOKU dosyasına bakın.
 
 ## <a name="create-an-application"></a>Uygulama oluşturma
 
-Blockchain Workbench uygulaması oluşturmak için iki API çağrısı kullanırsınız. Bu yöntem yalnızca Workbench yöneticisi olan kullanıcılar tarafından gerçekleştirilebilir.
+İki API çağrısı kullanarak bir blok zinciri çalışma ekranı uygulaması oluşturun. Bu yöntem yalnızca, çalışma ekranı yöneticileri olan kullanıcılar tarafından gerçekleştirilebilir.
 
-Uygulamanın JSON dosyasını yüklemek ve bir uygulama kimliği almak için [Applications POST API'yi](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) kullanın.
+Uygulamanın JSON dosyasını karşıya yüklemek ve bir uygulama KIMLIĞI almak için [uygulamalar GÖNDERI API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationspost) 'sini kullanın.
 
 ### <a name="applications-post-request"></a>Uygulamalar POST isteği
 
-Yapılandırma dosyasını istek gövdesinin bir parçası olarak göndermek için **appFile** parametresini kullanın.
+Yapılandırma dosyasını istek gövdesinin bir parçası olarak göndermek için **Appfile** parametresini kullanın.
 
 ``` http
 POST /api/v1/applications
@@ -58,9 +58,9 @@ Content-Disposition: form-data; name="appFile"; filename="/C:/smart-contract-sam
 Content-Type: application/json
 ```
 
-### <a name="applications-post-response"></a>Uygulamalar POST yanıtı
+### <a name="applications-post-response"></a>Uygulamalar GÖNDERI yanıtı
 
-Oluşturulan uygulama kimliği yanıt olarak döndürülür. Bir sonraki API'yi aradiğinizde yapılandırma dosyasını kod dosyasıyla ilişkilendirmek için uygulama kimliğine ihtiyacınız vardır.
+Oluşturulan uygulama KIMLIĞI yanıtta döndürülür. Sonraki API 'YI çağırdığınızda yapılandırma dosyasını kod dosyası ile ilişkilendirmek için uygulama KIMLIĞI gereklidir.
 
 ``` http
 HTTP/1.1 200 OK
@@ -68,16 +68,16 @@ Content-Type: "application/json"
 1
 ```
 
-### <a name="contract-code-post-request"></a>Sözleşme kodu POST isteği
+### <a name="contract-code-post-request"></a>Sözleşme kodu GÖNDERI isteği
 
-Uygulamanın Solidity kodu dosyasını yüklemek için uygulama kimliğini geçirerek [Uygulamalar sözleşme kodu POST API'yi](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) kullanın. Yük tek bir Solidity dosyası veya Katılık dosyaları içeren sıkıştırılmış bir dosya olabilir.
+Uygulamanın Solidity kod dosyasını karşıya yüklemek için uygulama KIMLIĞINI geçirerek [uygulamalar anlaşma kodu GÖNDERI API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/contractcodepost) 'sini kullanın. Yük, tek bir Solidity dosyası veya Solidity dosyalarını içeren daraltılmış bir dosya olabilir.
 
 Aşağıdaki değerleri değiştirin:
 
 | Parametre | Değer |
 |-----------|-------|
-| {applicationId} | Post API uygulamalarından iade değeri. |
-| {ledgerId} | Genel muhasebe dizini. Değer genellikle 1'dir. Değer için [Genel Muhasebe tablosunu](data-sql-management-studio.md) da denetleyebilirsiniz. |
+| Uygulama | Uygulama SONRASı API 'sindeki değeri döndürün. |
+| {LedgerID} | Genel muhasebe dizini. Değer genellikle 1 ' dir. Ayrıca, bu değere ait [Defter tablosunu](data-sql-management-studio.md) da denetleyebilirsiniz. |
 
 ``` http
 POST /api/v1/applications/{applicationId}/contractCode?ledgerId={ledgerId}
@@ -86,9 +86,9 @@ Authorization : Bearer {access token}
 Content-Disposition: form-data; name="contractFile"; filename="/C:/smart-contract-samples/HelloWorld.sol"
 ```
 
-### <a name="contract-code-post-response"></a>Sözleşme kodu POST yanıtı
+### <a name="contract-code-post-response"></a>Sözleşme kodu GÖNDERI yanıtı
 
-Başarılı olursa, [yanıt, ContractCode tablosundan](data-sql-management-studio.md)oluşturulan sözleşme kodu kimliğini içerir.
+Başarılı olursa, yanıt, [contractcode tablosundan](data-sql-management-studio.md)oluşturulan sözleşme kodu kimliğini içerir.
 
 ``` http
 HTTP/1.1 200 OK
@@ -98,7 +98,7 @@ Content-Type: "application/json"
 
 ## <a name="assign-roles-to-users"></a>Kullanıcılara rol atama
 
-Belirtilen blockchain uygulamasında kullanıcıdan role eşleme oluşturmak için uygulama kimliği, kullanıcı kimliği ve uygulama rol kimliği geçirerek [Uygulamalar rol atamaları POST API'yi](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) kullanın. Bu yöntem yalnızca Workbench yöneticisi olan kullanıcılar tarafından gerçekleştirilebilir.
+Belirtilen blok zinciri uygulamasında bir kullanıcı rolü eşlemesi oluşturmak için uygulama KIMLIĞI, Kullanıcı KIMLIĞI ve uygulama rolü KIMLIĞINI geçirerek [uygulamalar rol ATAMALARı gönderme API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/roleassignmentspost) 'sini kullanın. Bu yöntem yalnızca, çalışma ekranı yöneticileri olan kullanıcılar tarafından gerçekleştirilebilir.
 
 ### <a name="role-assignments-post-request"></a>Rol atamaları POST isteği
 
@@ -106,9 +106,9 @@ Aşağıdaki değerleri değiştirin:
 
 | Parametre | Değer |
 |-----------|-------|
-| {applicationId} | Uygulamalar POST API'den iade değeri. |
-| {userId} | [Kullanıcı tablosundan kullanıcı](data-sql-management-studio.md)kimliği değeri. |
-| {applicationRoleId} | [ApplicationRole tablosundan](data-sql-management-studio.md)uygulama kimliğiyle ilişkili uygulama rolü kimliği değeri. |
+| Uygulama | Uygulama SONRASı API 'sindeki değeri döndürün. |
+| UserID | [Kullanıcı tablosundan](data-sql-management-studio.md)Kullanıcı kimliği değeri. |
+| {Applicationroleıd} | [ApplicationRole tablosundan](data-sql-management-studio.md)uygulama kimliğiyle ilişkili uygulama rolü kimliği değeri. |
 
 ``` http
 POST /api/v1/applications/{applicationId}/roleAssignments
@@ -121,9 +121,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="role-assignments-post-response"></a>Rol atamaları POST yanıtı
+### <a name="role-assignments-post-response"></a>Rol atamaları GÖNDERI yanıtı
 
-Yanıt başarılı olursa, [RoleAssignment tablosundan](data-sql-management-studio.md)oluşturulan rol atama kimliğini içerir.
+Başarılı olursa, yanıt [roleatama tablosundan](data-sql-management-studio.md)oluşturulan rol atama kimliğini içerir.
 
 ``` http
 HTTP/1.1 200
@@ -132,21 +132,21 @@ HTTP/1.1 200
 
 ## <a name="list-applications"></a>Uygulamaları listeleme
 
-Kullanıcı için tüm Blockchain Workbench uygulamalarını almak için [GET API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) uygulamalarını kullanın. Bu örnekte, oturum açmış kullanıcıiki uygulamaya erişebilir:
+Kullanıcı için tüm blok zinciri çalışma ekranı uygulamalarını almak için [UYGULAMALARı al API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget) 'sini kullanın. Bu örnekte, oturum açmış kullanıcının iki uygulamaya erişimi vardır:
 
-- [Varlık transferi](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
-- [Soğutulmuş taşımacılık](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
+- [Varlık aktarımı](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md)
+- [Soğutma ulaşım](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md)
 
-### <a name="applications-get-request"></a>Başvurular İstek alın
+### <a name="applications-get-request"></a>Uygulamalar GET isteği
 
 ``` http
 GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-### <a name="applications-get-response"></a>Uygulamalar yanıt alın
+### <a name="applications-get-response"></a>Uygulamalar GET yanıtı
 
-Yanıt, bir kullanıcının Blockchain Workbench'te erişebilen tüm blockchain uygulamalarını listeler. Blockchain Workbench yöneticileri her blockchain uygulamasını alır. Çalışma Tezgahı olmayan yöneticiler, en az bir ilişkili uygulama rolüne veya ilişkili akıllı sözleşme örneği rolüne sahip oldukları tüm blockchain uygulamalarını alır.
+Yanıt, bir kullanıcının blok zinciri çalışma ekranı 'nda erişebileceği tüm blok zinciri uygulamalarını listeler. Blok zinciri çalışma ekranı yöneticileri tüm blok zinciri uygulamasını alır. Çalışma ekranı olmayan yöneticiler, en az bir ilişkili uygulama rolüne ya da ilişkili bir akıllı sözleşme örneği rolüne sahip oldukları tüm blok zinciri uygulamalarını alırlar.
 
 ``` http
 HTTP/1.1 200 OK
@@ -180,7 +180,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Uygulama için iş akışlarını listeleme
 
-Bir kullanıcının Blockchain Workbench'te erişebilen belirli bir blockchain uygulamasının tüm iş akışlarını listelemek için [Uygulamalar İş Akışlarını GET API'yi](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) kullanın. Her blok zinciri uygulamasının bir veya birden çok iş akışı vardır ve her iş akışının sıfır veya akıllı anlaşma örnekleri bulunur. Yalnızca bir iş akışına sahip bir blockchain istemci uygulaması için, kullanıcıların uygun iş akışını seçmesine olanak tanıyan kullanıcı deneyimi akışını atlamanızı öneririz.
+[Uygulama Iş akışları](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget) , bir kullanıcının blok zinciri çalışma ekranına erişimi olan belirtilen bir blok zinciri uygulamasının tüm iş akışlarını LISTELEMEK IÇIN API Al ' i kullanın. Her blok zinciri uygulamasının bir veya birden çok iş akışı vardır ve her iş akışının sıfır veya akıllı anlaşma örnekleri bulunur. Yalnızca bir iş akışına sahip bir blok zinciri istemci uygulaması için, kullanıcıların uygun iş akışını seçmesini sağlayan kullanıcı deneyimi akışının atlanmasını öneririz.
 
 ### <a name="application-workflows-request"></a>Uygulama iş akışları isteği
 
@@ -191,7 +191,7 @@ Authorization: Bearer {access token}
 
 ### <a name="application-workflows-response"></a>Uygulama iş akışları yanıtı
 
-Blockchain Workbench yöneticileri her blockchain iş akışını alır. Çalışma Tezgahı olmayan yöneticiler, en az bir ilişkili uygulama rolüne sahip oldukları veya akıllı sözleşme örneği rolüyle ilişkili tüm iş akışlarını alır.
+Blok zinciri çalışma ekranı yöneticileri tüm blok zinciri iş akışını alır. Çalışma ekranı olmayan yöneticiler, en az bir ilişkili uygulama rolüne sahip oldukları veya bir akıllı sözleşme örneği rolüyle ilişkilendirilen tüm iş akışlarını alırlar.
 
 ``` http
 HTTP/1.1 200 OK
@@ -214,10 +214,10 @@ Content-type: application/json
 
 ## <a name="create-a-contract-instance"></a>Sözleşme örneği oluşturma
 
-İş akışı için yeni bir akıllı sözleşme örneği oluşturmak için [Sözleşmeler V2 POST API'yi](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) kullanın. Kullanıcılar yalnızca, kullanıcı iş akışı için akıllı bir sözleşme örneği başlatabilecek bir uygulama rolüyle ilişkiliyse yeni bir akıllı sözleşme örneği oluşturabilir.
+Bir iş akışı için yeni bir akıllı sözleşme örneği oluşturmak üzere [sözleşmeleri v2 Post API 'sini](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contractsv2/contractpost) kullanın. Kullanıcılar, iş akışı için bir akıllı sözleşme örneği başlatabilecek bir uygulama rolüyle ilişkilendirildiğinde yalnızca yeni bir akıllı sözleşme örneği oluşturabilir.
 
 > [!NOTE]
-> Bu örnekte, API sürümü 2 kullanılır. Sürüm 2 sözleşme API'leri, ilişkili ProvisioningStatus alanları için daha ayrıntılı bilgi sağlar.
+> Bu örnekte, API 'nin 2. sürümü kullanılır. Sürüm 2 sözleşme API 'Leri, ilişkili ProvisioningStatus alanları için daha fazla ayrıntı sağlar.
 
 ### <a name="contracts-post-request"></a>Sözleşmeler POST isteği
 
@@ -225,16 +225,16 @@ Aşağıdaki değerleri değiştirin:
 
 | Parametre | Değer |
 |-----------|-------|
-| {iş akışıId} | İş akışı kimliği değeri, [Sözleşmenin İş Akışı tablosundaki](data-sql-management-studio.md)ConstructorID'sidir. |
-| {contractCodeId} | [ContractCode tablosundan sözleşme](data-sql-management-studio.md)kodu kimlik değeri. Oluşturmak istediğiniz sözleşme örneğinin uygulama kimliğini ve genel muhasebe kimliğini ilişkilendirin. |
-| {connectionId} | [Bağlantı tablosundan](data-sql-management-studio.md)bağlantı kimliği değeri. |
+| Workflowıd | İş akışı KIMLIĞI değeri, [Iş akışı tablosundan](data-sql-management-studio.md)sözleşmenin construcıd değeridir. |
+| {Contractcodeıd} | [Contractcode tablosundan](data-sql-management-studio.md)anlaşma kodu kimliği değeri. Oluşturmak istediğiniz sözleşme örneği için uygulama KIMLIĞI ve hesap KIMLIĞI ile bağıntı kurun. |
+| ConnectionID | [Bağlantı tablosundan](data-sql-management-studio.md)bağlantı kimliği değeri. |
 
-İstek gövdesi için, değerleri aşağıdaki bilgileri kullanarak ayarlayın:
+İstek gövdesi için aşağıdaki bilgileri kullanarak değerleri ayarlayın:
 
 | Parametre | Değer |
 |-----------|-------|
-| iş akışıFunctionID | [İş Akışı İşlevi tablosundan](data-sql-management-studio.md)kimlik. |
-| iş akışıEylemParametreleri | Ad değeri çiftlerini oluşturana geçirilen parametreler. Her parametre [için, İş AkışıFonksiyonuParametre](data-sql-management-studio.md) tablosundaki İş akışıFonksiyonParameterID değerini kullanın. |
+| Workflowfunctionıd | [Workflowfunction TABLOSUNDAN](data-sql-management-studio.md)kimlik. |
+| workflowActionParameters | Oluşturucuya geçirilen parametrelerin değer çiftlerini adlandırın. Her parametre için [Workflowfunctionparameter](data-sql-management-studio.md) tablosundan Workflowfunctionparameterıd değerini kullanın. |
 
 ``` http
 POST /api/v2/contracts?workflowId={workflowId}&contractCodeId={contractCodeId}&connectionId={connectionId}
@@ -253,9 +253,9 @@ Authorization : Bearer {access token}
 }
 ```
 
-### <a name="contracts-post-response"></a>Sözleşmeler POST yanıtı
+### <a name="contracts-post-response"></a>Sözleşmelerin GÖNDERI yanıtı
 
-Başarılı olursa, rol atamaları API [ContractActionPARAmeter tablosundan](data-sql-management-studio.md)ContractActionID döndürür.
+Başarılı olursa, rol atamaları API 'SI [Contractactionparameter tablosundan](data-sql-management-studio.md)sözleşmeli Tactionıd döndürür.
 
 ``` http
 HTTP/1.1 200 OK
@@ -264,9 +264,9 @@ HTTP/1.1 200 OK
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>İş akışı için akıllı anlaşma örneklerini listeleme
 
-İş akışı için tüm akıllı sözleşme örneklerini göstermek için [GET API'yi](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) kullanın. Ya da kullanıcıların gösterilen akıllı sözleşme örneklerinden herhangi birini derinlemesine dalmalarına izin verebilirsiniz.
+Sözleşmeleri kullanarak bir iş akışının tüm akıllı sözleşme örneklerini göstermek için [API al](/rest/api/azure-blockchain-workbench/contractsv2/contractsget) . Ya da kullanıcıların gösterilen akıllı sözleşme örneklerinin herhangi birine derinlemesine bir şekilde gidebilsin.
 
-### <a name="contracts-request"></a>Sözleşme talebi
+### <a name="contracts-request"></a>Sözleşme isteği
 
 Bu örnekte, kullanıcının bir eylem yapmak için akıllı anlaşma örneklerinden biriyle etkileşimli çalışmak istediğini düşünün.
 
@@ -277,7 +277,7 @@ Authorization: Bearer {access token}
 
 ### <a name="contracts-response"></a>Sözleşme yanıtı
 
-Yanıt, belirtilen iş akışının tüm akıllı sözleşme örneklerini listeler. Çalışma tezgahı yöneticileri tüm akıllı sözleşme örnekleri olsun. Çalışma Tezgahı olmayan yöneticiler, en az bir ilişkili uygulama rolüne sahip oldukları veya akıllı sözleşme örneği rolüyle ilişkili olan her akıllı sözleşme örneğini alır.
+Yanıt, belirtilen iş akışının tüm akıllı sözleşme örneklerini listeler. Çalışma ekranı yöneticileri tüm akıllı sözleşme örneklerini alır. Çalışma ekranı olmayan yöneticiler, en az bir ilişkili uygulama rolüne sahip oldukları veya bir akıllı sözleşme örneği rolüyle ilişkilendirilen her akıllı sözleşme örneğini alır.
 
 ``` http
 HTTP/1.1 200 OK
@@ -367,11 +367,11 @@ Content-type: application/json
 
 ## <a name="list-available-actions-for-a-contract"></a>Anlaşma için kullanılabilir eylemleri listeleme
 
-Sözleşmenin durumu göz önüne alındığında kullanılabilir kullanıcı eylemlerini göstermek için [Sözleşme Eylem GET API'sını](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) kullanın. 
+Sözleşmenin durumuna verilen kullanıcı eylemlerini göstermek için [API al sözleşme eylemini](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget) kullanın. 
 
-### <a name="contract-action-request"></a>Sözleşme eylem isteği
+### <a name="contract-action-request"></a>Sözleşme eylemi isteği
 
-Bu örnekte, kullanıcı oluşturdukları yeni bir akıllı sözleşme için kullanılabilir tüm eylemlere bakıyor.
+Bu örnekte, Kullanıcı oluşturdukları yeni bir akıllı sözleşme için tüm kullanılabilir eylemlere bakıyor.
 
 ``` http
 GET /api/v1/contracts/{contractId}/actions
@@ -383,7 +383,7 @@ Authorization: Bearer {access token}
 Yanıtta belirtilen akıllı anlaşma örneğinin geçerli durumuna göre kullanıcının gerçekleştirebileceği tüm eylemler listelenir.
 
 * Modify: Kullanıcının, bir varlığın açıklamasını ve fiyatını değiştirmesine olanak tanır.
-* Sonlandırma: Kullanıcının varlığın sözleşmesini sona erdirmesine izin verir.
+* Sonlandır: kullanıcının varlık sözleşmesini sonlandırmasına Izin verir.
 
 Belirtilen akıllı anlaşma örneğinin geçerli durumuna göre ilişkili bir uygulama rolü olan veya akıllı anlaşma örneği rolüyle ilişkili olan kullanıcılar tüm uygun eylemleri alır.
 
@@ -440,11 +440,11 @@ Content-type: application/json
 
 ## <a name="execute-an-action-for-a-contract"></a>Anlaşma için bir eylem yürütme
 
-Belirtilen akıllı sözleşme örneği için işlem yapmak için [Sözleşme Eylem SONRASı API'yi](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) kullanın.
+Belirtilen akıllı sözleşme örneği için işlem gerçekleştirmek üzere [sözleşme EYLEMI gönderi API 'sini](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost) kullanın.
 
-### <a name="contract-action-post-request"></a>Sözleşme eylem POST isteği
+### <a name="contract-action-post-request"></a>Sözleşme eylemi POST isteği
 
-Bu durumda, bir kullanıcının bir varlığın açıklamasını ve fiyatını değiştirmek istediği senaryoyu düşünün.
+Bu durumda, bir kullanıcının bir varlığın açıklamasını ve fiyatını değiştirmek istediğiniz senaryoyu göz önünde bulundurun.
 
 ``` http
 POST /api/v1/contracts/{contractId}/actions
@@ -466,7 +466,7 @@ actionInformation: {
 
 Kullanıcılar ancak belirtilen akıllı anlaşma örneğinin geçerli durumuna ve kullanıcının ilişkili uygulama rolüne veya akıllı anlaşma örneği rolüne göre eylem yürütebilir.
 
-### <a name="contract-action-post-response"></a>Sözleşme eylem POST yanıtı
+### <a name="contract-action-post-response"></a>Sözleşme eylemi GÖNDERI yanıtı
 
 Gönderi başarılı olursa, yanıt gövdesi olmayan bir HTTP 200 OK yanıtı döndürülür.
 
@@ -477,4 +477,4 @@ Content-type: application/json
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Blockchain Workbench API'leri hakkında başvuru bilgileri için [Azure Blockchain Workbench REST API başvurusuna](https://docs.microsoft.com/rest/api/azure-blockchain-workbench)bakın.
+Blok zinciri çalışma ekranı API 'Leri hakkında başvuru bilgileri için bkz. [Azure blok zinciri çalışma ekranı REST API başvurusu](https://docs.microsoft.com/rest/api/azure-blockchain-workbench).

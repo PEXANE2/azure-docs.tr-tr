@@ -1,6 +1,6 @@
 ---
-title: .NET ile blob kapsayıcısı oluşturma veya silme - Azure Depolama
-description: .NET istemci kitaplığını kullanarak Azure Depolama hesabınızda bir blob kapsayıcısını nasıl oluşturarak veya silmeyi öğrenin.
+title: .NET-Azure depolama ile bir blob kapsayıcısı oluşturma veya silme
+description: .NET istemci kitaplığını kullanarak Azure depolama hesabınızda bir blob kapsayıcısı oluşturmayı veya silmeyi öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135947"
 ---
-# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure Depolama'da bir kapsayıcı oluşturma veya silme
+# <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET ile Azure depolama 'da kapsayıcı oluşturma veya silme
 
-Azure Depolama'daki blob'lar kapsayıcılar halinde düzenlenir. Bir blob yükleyebilirsiniz önce bir kapsayıcı oluşturmanız gerekir. Bu makalede, [.NET için Azure Depolama istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile kapsayıcılar oluşturmak ve silmek nasıl gösterilmektedir.
+Azure depolama 'daki Bloblar kapsayıcılar halinde düzenlenir. Bir blobu karşıya yüklemeden önce, önce bir kapsayıcı oluşturmanız gerekir. Bu makalede, [.net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage?view=azure-dotnet)ile kapsayıcıları oluşturma ve silme işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-## <a name="name-a-container"></a>Bir kapsayıcının adını
+## <a name="name-a-container"></a>Bir kapsayıcıyı adlandırın
 
-Kapsayıcıyı veya lekelerini gidermek için kullanılan benzersiz URI'nin bir parçasını oluşturduğundan, kapsayıcı adı geçerli bir DNS adı olmalıdır. Bir kapsayıcıyı adlandırırken aşağıdaki kurallara uyun:
+Kapsayıcı adı, kapsayıcıyı veya bloblarını ele almak için kullanılan benzersiz URI 'nin bir parçasını oluşturan geçerli bir DNS adı olmalıdır. Bir kapsayıcıyı adlandırırken bu kuralları izleyin:
 
-- Kapsayıcı adları 3 ile 63 karakter uzunluğunda olabilir.
-- Kapsayıcı adları bir harf veya sayıyla başlamalıdır ve yalnızca küçük harfler, sayılar ve tire (-) karakterini içerebilir.
+- Kapsayıcı adları 3 ila 63 karakter uzunluğunda olabilir.
+- Kapsayıcı adları bir harf veya sayıyla başlamalıdır ve yalnızca küçük harf, rakam ve tire (-) karakterini içerebilir.
 - Kapsayıcı adlarında iki veya daha fazla ardışık çizgi karakterine izin verilmez.
 
-Bir kapsayıcının URI'si şu biçimdedir:
+Bir kapsayıcının URI 'SI şu biçimdedir:
 
 `https://myaccount.blob.core.windows.net/mycontainer`
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
 
-Kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini arayın:
+Bir kapsayıcı oluşturmak için aşağıdaki yöntemlerden birini çağırın:
 
 - [Oluştur](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
-- [CreateifNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
+- [Createıfnotexists çağırmanız](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
 
-Aynı ada sahip bir kapsayıcı zaten **varsa, Create** ve **CreateAsync** yöntemleri bir özel durum oluşturur.
+Aynı ada sahip bir kapsayıcı zaten varsa **Create** ve **createasync** yöntemleri bir özel durum oluşturur.
 
-**CreateIfNotExists** ve **CreateIfNotExistsAsync** yöntemleri kapsayıcı nın oluşturulup oluşturulmadığını belirten bir Boolean değeri döndürür. Aynı ada sahip bir kapsayıcı zaten varsa, bu yöntemler yeni bir kapsayıcı oluşturulmadığını belirtmek için **False** döndürün.
+**Createifnotexists** ve **Createifnotexistsasync** yöntemleri, kapsayıcının oluşturulup oluşturulmayacağını gösteren bir Boole değeri döndürür. Aynı ada sahip bir kapsayıcı zaten varsa, bu yöntemler yeni bir kapsayıcının oluşturulamadığını göstermek için **false** döndürür.
 
-Kapsayıcılar depolama hesabının hemen altında oluşturulur. Bir kabı diğerinin altına yerleştirmek mümkün değildir.
+Kapsayıcılar depolama hesabının hemen altında oluşturulur. Bir kapsayıcıyı diğerinin altına yerleştirmek mümkün değildir.
 
-Aşağıdaki örnek, eşzamanlı bir kapsayıcı oluşturur:
+Aşağıdaki örnek zaman uyumsuz olarak bir kapsayıcı oluşturur:
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -81,13 +81,13 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 
 ## <a name="create-the-root-container"></a>Kök kapsayıcısını oluşturma
 
-Kök kapsayıcı, depolama hesabınız için varsayılan bir kapsayıcı görevi görededir. Her depolama hesabının $root olarak adlandırılması gereken bir kök kapsayıcısı *olabilir.* Kök kapsayıcıyı açıkça oluşturmanız veya silmeniz gerekir.
+Kök kapsayıcı, depolama hesabınız için varsayılan kapsayıcı görevi görür. Her depolama hesabının bir kök kapsayıcısı olabilir ve bu $root adı verilmelidir *.* Kök kapsayıcıyı açıkça oluşturmanız veya silmeniz gerekir.
 
-Kök kapsayıcı adını girmeden kök kapsayıcısında depolanan bir blob başvurur. Kök kapsayıcı, depolama hesabı hiyerarşisinin en üst düzeyinde bir blob başvuru sağlar. Örneğin, kök kapsayıcısında bulunan bir blob'a aşağıdaki şekilde başvurulayabilirsiniz:
+Kök kapsayıcı adını dahil etmeden kök kapsayıcısında depolanan bir blob 'a başvurabilirsiniz. Kök kapsayıcı, depolama hesabı hiyerarşisinin en üst düzeyindeki bir bloba başvurmanızı sağlar. Örneğin, kök kapsayıcıda bulunan bir Blobun aşağıdaki şekilde başvurabilirsiniz:
 
 `https://myaccount.blob.core.windows.net/default.html`
 
-Aşağıdaki örnek, kök kapsayıcısını eşzamanlı olarak oluşturur:
+Aşağıdaki örnek, eş zamanlı olarak kök kapsayıcısını oluşturur:
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -117,18 +117,18 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
 
 ## <a name="delete-a-container"></a>Kapsayıcı silme
 
-.NET'teki bir kapsayıcıyı silmek için aşağıdaki yöntemlerden birini kullanın:
+.NET 'teki bir kapsayıcıyı silmek için aşağıdaki yöntemlerden birini kullanın:
 
 - [Sil](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
-- [Deleteasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
-- [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
-- [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+- [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
+- [Deleteıfexists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
+- [Deleteıfexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
 
-**Sil** ve **SilAsync** yöntemleri, kapsayıcı yoksa bir özel durum oluşturur.
+**Delete** ve **DeleteAsync** yöntemleri, kapsayıcı yoksa bir özel durum oluşturur.
 
-**DeleteIfExists** ve **DeleteIfExistsAsync** yöntemleri, kapsayıcının silinip silinmediğini belirten bir Boolean değeri döndürer. Belirtilen kapsayıcı yoksa, bu yöntemler kapsayıcının silinmediğini belirtmek için **False** döndürülmez.
+**Deleteifexists** ve **Deleteifvartsasync** yöntemleri kapsayıcının silinip silinmediğini gösteren bir Boole değeri döndürür. Belirtilen kapsayıcı yoksa, bu yöntemler kapsayıcının silinmediğini göstermek için **false** döndürür.
 
-Bir kapsayıcıyı sildikten sonra, aynı ada sahip bir kapsayıcıyı en az 30 saniye ve büyük olasılıkla daha uzun süre oluşturamazsınız. Kapsayıcı silinirken, aynı ada sahip bir kapsayıcı oluşturma girişimi HTTP hata kodu 409 (Çakışma) ile başarısız olur. Kapsayıcıdaki diğer işlemler veya içerdiği lekeler, kapsayıcı silinirken HTTP hata kodu 404 (Bulunamadı) ile başarısız olur.
+Bir kapsayıcıyı sildikten sonra, en az 30 saniye için aynı ada sahip bir kapsayıcı ve muhtemelen daha uzun bir kapsayıcı oluşturamazsınız. Kapsayıcı silinirken, aynı ada sahip bir kapsayıcı oluşturma girişimi, HTTP hata kodu 409 (çakışma) ile başarısız olur. Kapsayıcı silinirken, kapsayıcıda veya içerdiği bloblarda bulunan diğer işlemler 404 (bulunamadı) HTTP hata kodu ile başarısız olur.
 
 Aşağıdaki örnek, belirtilen kapsayıcıyı siler ve kapsayıcı yoksa özel durumu işler:
 
@@ -153,7 +153,7 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
 }
 ```
 
-Aşağıdaki örnek, belirtilen bir önek ile başlayan tüm kapsayıcıların nasıl silinecek olduğunu gösterir. Örnek, kapsayıcıda varolan bir kira varsa kirayı bozar.
+Aşağıdaki örnek, belirtilen bir önek ile başlayan tüm kapsayıcıların nasıl silineceğini gösterir. Kapsayıcıda mevcut bir kira varsa, örnek kirayı keser.
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -187,5 +187,5 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Kapsayıcı işlemi oluşturma](/rest/api/storageservices/create-container)
+- [Kapsayıcı oluşturma işlemi](/rest/api/storageservices/create-container)
 - [Kapsayıcıyı Silme işlemi](/rest/api/storageservices/delete-container)

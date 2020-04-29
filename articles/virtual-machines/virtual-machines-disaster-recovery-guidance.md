@@ -1,51 +1,51 @@
 ---
 title: Olağanüstü durum kurtarma senaryoları
-description: Bir Azure hizmetikesintisinin Azure sanal makinelerini etkilemesi durumunda ne yapmanız gerektiğini öğrenin.
+description: Azure hizmet çalışmasının Azure sanal makinelerini etkilediği olayda ne yapılacağını öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
 ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77115618"
 ---
-# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Bir Azure hizmeti kesintisi Azure VM'lerini etkilerse ne olur?
-Microsoft olarak, hizmetlerimizin ihtiyacınız olduğunda her zaman kullanabileceğiniz den emin olmak için çok çalışırız. Kontrolümüz dışındaki güçler bazen bizi planlanmamış hizmet kesintilerine neden olacak şekilde etkiler.
+# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Azure hizmet kesintisi, Azure sanal makinelerini etkiler
+Microsoft 'ta, hizmetlerimizin ihtiyacınız olduğunda her zaman sizin için kullanılabilir olduğundan emin olmak için çok çalıştık. Denetiimizin ötesine geçmeye, planlanmamış hizmet kesintilerine neden olacak şekilde bizi etkilemekte yarar vardır.
 
-Microsoft, çalışma süresi ve bağlantı taahhüdü olarak hizmetleri için bir Hizmet Düzeyi Sözleşmesi (SLA) sağlar. Azure hizmetleri için SLA, [Azure Hizmet Düzeyi Sözleşmeleri'nde](https://azure.microsoft.com/support/legal/sla/)bulunabilir.
+Microsoft, hizmet için çalışma süresi ve bağlantı taahhüdünde bir Hizmet Düzeyi Sözleşmesi (SLA) sağlar. Bireysel Azure hizmetleri için SLA, [Azure hizmet düzeyi sözleşmeleri](https://azure.microsoft.com/support/legal/sla/)' nde bulunabilir.
 
-Azure'da zaten yüksek kullanılabilir uygulamaları destekleyen birçok yerleşik platform özelliği bulunuyor. Bu hizmetler hakkında daha fazla bilgi için, [Azure uygulamaları için Olağanüstü Durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)bilgisini okuyun.
+Azure 'da, yüksek oranda kullanılabilir uygulamaları destekleyen birçok yerleşik platform özelliği zaten var. Bu hizmetler hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-Bu makalede, tüm bölge büyük doğal afet veya yaygın hizmet kesintisi nedeniyle bir kesinti yaşadığı gerçek bir felaket kurtarma senaryosu kapsar. Bunlar nadir görülen olaylardır, ancak tüm bölgenin kesintisi olma olasılığına hazırlıklı olmalısınız. Tüm bölge bir hizmet kesintisiyle karşılanırsa, verilerinizin yerel olarak gereksiz kopyaları geçici olarak kullanılamaz. Coğrafi çoğaltmayı etkinleştirdiyseniz, Azure Depolama blob'larınızın ve tablolarınızın üç ek kopyası farklı bir bölgede depolanır. Tam bir bölgesel kesinti veya birincil bölgenin kurtarılamayan bir felaket durumunda, Azure tüm DNS girişlerini coğrafi olarak çoğaltılan bölgeye yeniden eşler.
+Bu makalede, bir bütün bölge ana doğal olağanüstü durum veya geniş çaplı hizmet kesintisi nedeniyle bir kesinti yaşandığında, doğru bir olağanüstü durum kurtarma senaryosu ele alınmaktadır. Bunlar nadir oluşumlardır, ancak bir bölgenin tamamı için bir kesinti olması olasılığa hazırlanmanız gerekir. Bir bölgenin tamamı bir hizmet kesintisi yaşıyorsa, verilerinizin yerel olarak yedekli kopyaları geçici olarak devre dışı olur. Coğrafi çoğaltmayı etkinleştirdiyseniz, Azure Storage bloblarınızın ve tablolarının üç ek kopyası farklı bir bölgede depolanır. Tam bir bölgesel kesinti veya birincil bölgenin kurtarılabilir olmadığı bir olağanüstü durum durumunda Azure, tüm DNS girdilerini coğrafi olarak çoğaltılan bölgeye yeniden eşler.
 
-Bu nadir olayları ele alabildiğinize yardımcı olmak için, Azure sanal makine uygulamanızın dağıtıldığı tüm bölgenin hizmet kesintisi durumunda Azure sanal makineleri için aşağıdaki kılavuzu sağlarız.
+Bu nadir oluşumları işleyebilmeniz için, Azure sanal makine uygulamanızın dağıtıldığı bölgenin tamamına yönelik bir hizmet kesintisi olması durumunda Azure sanal makineleri için aşağıdaki kılavuza sağlıyoruz.
 
-## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Seçenek 1: Azure Site Kurtarma'yı kullanarak bir hata başlatma
-Birkaç dakika içinde tek bir tıklamayla uygulamanızı kurtarabilmeniz için Azure Site Kurtarma'yı VM'leriniz için yapılandırabilirsiniz. Seçtiğiniz Azure bölgesine çoğaltabilirsiniz ve eşleştirilmiş bölgelerle sınırlı değildir. [Sanal makineleri çoğaltarak](https://aka.ms/a2a-getting-started)başlatabilirsiniz. Uygulamanız için tüm başarısız süreci otomatikleştirebilmeniz için [bir kurtarma planı oluşturabilirsiniz.](../site-recovery/site-recovery-create-recovery-plans.md) Üretim uygulamasını veya devam eden çoğaltmayı etkilemeden [başarısız larınızı](../site-recovery/site-recovery-test-failover-to-azure.md) önceden test edebilirsiniz. Birincil bir bölgenin bozulması durumunda, [sadece bir başarısızlık başlatın](../site-recovery/site-recovery-failover.md) ve uygulamanızı hedef bölgeye getirirsiniz.
+## <a name="option-1-initiate-a-failover-by-using-azure-site-recovery"></a>Seçenek 1: Azure Site Recovery kullanarak yük devretme başlatma
+Uygulamanızı birkaç dakika içinde tek bir tıklama ile kurtarabilmeniz için sanal makinelerinize yönelik Azure Site Recovery yapılandırabilirsiniz. Tercih ettiğiniz Azure bölgesine çoğaltabilir ve eşleştirilmiş bölgelerle sınırlı değildir. [Sanal makinelerinizi çoğaltarak](https://aka.ms/a2a-getting-started)çalışmaya başlamanızı sağlayabilirsiniz. Uygulamanız için tüm yük devretme sürecini otomatikleştirebilmek üzere [bir kurtarma planı oluşturabilirsiniz](../site-recovery/site-recovery-create-recovery-plans.md) . Üretim uygulamasını veya devam eden Çoğaltmayı etkilemeden yük devretmeleri önceden [Test](../site-recovery/site-recovery-test-failover-to-azure.md) edebilirsiniz. Birincil bölge kesintisi durumunda, yalnızca [bir yük devretme başlatın](../site-recovery/site-recovery-failover.md) ve uygulamanızı hedef bölgeye getirin.
 
 
-## <a name="option-2-wait-for-recovery"></a>Seçenek 2: Kurtarma için bekleyin
-Bu durumda, sizin tarafınızdan herhangi bir işlem yapılması gerekmez. Hizmet kullanılabilirliğini geri yüklemek için özenle çalıştığımızı bilin. [Azure Hizmet Durumu Panosumuzda](https://azure.microsoft.com/status/)geçerli hizmet durumunu görebilirsiniz.
+## <a name="option-2-wait-for-recovery"></a>Seçenek 2: kurtarma için bekle
+Bu durumda, sizin bölüminizdeki hiçbir işlem yapmanız gerekmez. Hizmet kullanılabilirliğini geri yüklemek için çalıştık bir çalışmamız olduğunu öğrenin. Geçerli hizmet durumunu [Azure hizmet durumu panoımızda](https://azure.microsoft.com/status/)görebilirsiniz.
 
-Azure Site Kurtarma, okuma-erişim coğrafi yedekli depolama veya kesintiden önce coğrafi yedekli depolama ayarlamadıysanız, en iyi seçenek budur. VM sanal sabit disklerinizin (VHD'lerinizin) depolandığı depolama hesabı için coğrafi yedekli depolama veya okuma erişimi coğrafi yedekli depolama ayarladıysanız, temel görüntü VHD'yi kurtarmaya ve ondan yeni bir VM sağlamaya çalışabilirsiniz. Verilerin eşitlemesi garantisi olmadığından, bu tercih edilen bir seçenek değildir. Sonuç olarak, bu seçeneğin çalışması garanti edilmez.
+Bu, kesintiye uğramadan önce Azure Site Recovery, Okuma Erişimli Coğrafi olarak yedekli depolama veya coğrafi olarak yedekli depolama alanı ayarlamadıysanız en iyi seçenektir. VM sanal sabit sürücülerinizin (VHD) depolandığı depolama hesabı için coğrafi olarak yedekli depolama veya Okuma Erişimli Coğrafi olarak yedekli depolama ayarladıysanız, temel görüntü VHD 'sini kurtarmaya ve bundan sonra yeni bir VM sağlamaya çalışırsanız bakabilirsiniz. Verilerin eşitlenmesi garantisi olmadığından, bu tercih edilen bir seçenek değildir. Sonuç olarak, bu seçeneğin çalışması garanti edilmez.
 
 
 > [!NOTE]
-> Bu işlem üzerinde herhangi bir denetiminiz olmadığını ve yalnızca bölge genelinde ki hizmet kesintileri için oluşacağını unutmayın. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmeniz gerekir. Daha fazla bilgi [için, olağanüstü durum kurtarma için Veri stratejileri bölümüne](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)bakın.
+> Bu işlem üzerinde herhangi bir denetiminiz olmadığı ve yalnızca bölge genelinde hizmet kesintileri için gerçekleşmeyeceği hakkında dikkat edin. Bu nedenle, en yüksek kullanılabilirlik düzeyini elde etmek için uygulamaya özgü diğer yedekleme stratejilerine de güvenmelidir. Daha fazla bilgi için [olağanüstü durum kurtarma Için veri stratejileri](https://docs.microsoft.com/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan)bölümüne bakın.
 >
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Site Kurtarma'yı kullanarak [Azure sanal makinelerinde çalışan uygulamalarınızı korumaya](https://aka.ms/a2a-getting-started) başlayın
+- Azure Site Recovery kullanarak [Azure sanal makinelerinde çalışan uygulamalarınızı korumaya](https://aka.ms/a2a-getting-started) başlayın
 
-- Olağanüstü durum kurtarma ve yüksek kullanılabilirlik stratejisinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için Azure [uygulamaları için Olağanüstü Durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)bölümünü görün.
+- Olağanüstü durum kurtarma ve yüksek kullanılabilirlik stratejisi uygulama hakkında daha fazla bilgi edinmek için bkz. [Azure uygulamaları Için olağanüstü durum kurtarma ve yüksek kullanılabilirlik](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md).
 
-- Bir bulut platformunun yetenekleri hakkında ayrıntılı bir teknik anlayış geliştirmek için [Azure esnekliği teknik kılavuzuna](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance)bakın.
+- Bulut platformunun yeteneklerini ayrıntılı bir şekilde anlamak için bkz. [Azure dayanıklılığı teknik kılavuzu](/azure/data-lake-store/data-lake-store-disaster-recovery-guidance).
 
 
-- Talimatlar açık değilse veya Microsoft'un işlemleri sizin adınıza yapmasını istiyorsanız, [Müşteri Desteği'ne](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)başvurun.
+- Yönergeler net değilse veya Microsoft 'un sizin adınıza işlem yapması istiyorsanız [müşteri desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)'ne başvurun.

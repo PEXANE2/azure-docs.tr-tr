@@ -1,6 +1,6 @@
 ---
-title: Kendi parolanızı sıfırlamak için kimlik doğrulama bilgilerini kaydedin - Azure AD
-description: Doğrulama yöntemi bilgilerinizi Azure AD self servis parola sıfırlama için kaydedin, böylece yönetici yardımı olmadan kendi parolanızı sıfırlayabilirsiniz.
+title: Kendi parolanızı sıfırlamak için kimlik doğrulama bilgilerini kaydetme-Azure AD
+description: Azure AD self servis parola sıfırlama için doğrulama yöntemi bilgilerinizi kaydedin, böylece yönetici yardımı olmadan kendi parolanızı sıfırlayabilirsiniz.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,53 +13,53 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 397e1fd7695fd7e74e1f22959d0f9f24af7d1ea3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062651"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Kendi parolanızı sıfırlamak için doğrulama yöntemi bilgilerinizi kaydedin
 
-İş veya okul parolanızı unuttuysanız, kuruluşunuzdan hiçbir zaman şifre alamadımveya hesabınız kilitlendiyse, iş veya okul şifrenizi sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz.
+İş veya okul parolanızı unuttuysanız, kuruluşunuzda hiç parola yoksa veya hesabınızı kilitlediyseniz, iş veya okul parolanızı sıfırlamak için güvenlik bilgilerinizi ve mobil cihazınızı kullanabilirsiniz.
 
-Bilgilerinizi kaydedebilmeniz ve kendi parolanızı sıfırlayabilmek için yöneticinizin bu özelliği açmanız gerekir. **Parolamı Unuttum** seçeneğini görmüyorsanız, yöneticinizin kuruluşunuz için özelliği açmadığı anlamına gelir. Bunun yanlış olduğunu düşünüyorsanız, yardım için yardım masanıza başvurun.
+Bilgilerinizi kaydedebilmeniz ve kendi parolanızı sıfırlayabilmeniz için yöneticinizin bu özelliği açmanız gerekir. **Parolamı unuttum** seçeneğini görmüyorsanız, yöneticiniz kuruluşunuzun özelliğini etkinleştirmemiş demektir. Bunun yanlış olduğunu düşünüyorsanız yardım için yardım masasına başvurun.
 
 >[!Important]
->Bu makale, self servis parola sıfırlama için kaydolmak kullanmaya çalışan kullanıcılar için tasarlanmıştır. Bu, yöneticinizin yardımına gerek kalmadan kendi çalışma veya alain@contoso.comokul parolanızı (örneğin,) sıfırlayabildiğiniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılar için self servis parola sıfırlamayı nasıl açabileceğiniz hakkında bilgi arayan bir yöneticiyseniz, Azure AD self servis parola sıfırlama ve [diğer makaleleri dağıt'a](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)bakın.
+>Bu makale, self servis parola sıfırlama için kaydolma kullanmaya çalışan kullanıcılara yöneliktir. Bu, kendi iş veya okul parolanızı (örneğin, alain@contoso.com) yöneticinizin yardım 'ına gerek kalmadan sıfırlayabilmeniz anlamına gelir. Çalışanlarınız veya diğer kullanıcılarınız için self servis parola sıfırlamayı açma hakkında bilgi için bkz. [Azure AD self servis parola sıfırlama ve diğer makalelere dağıtım](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Parola sıfırlama doğrulama yönteminizi ayarlama
 
-1. Cihazınızdaki web tarayıcısını açın ve [güvenlik bilgileri sayfasına](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup)gidin.
+1. Cihazınızda Web tarayıcısını açın ve [güvenlik bilgileri sayfasına](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup)gidin.
 
-2. Yöneticinizin kuruluşunuzu nasıl kurduğuna bağlı olarak, güvenlik doğrulama yönteminiz olarak ayarlamanız için aşağıdaki seçeneklerden biri veya birkaçı kullanılabilir. Birden çok seçenek varsa, yöntemlerinizden birinin kullanılamaması durumunda güvenlik doğrulama yönteminiz olarak birden fazla kullanmanızı öneririz.
+2. Yöneticinizin kuruluşunuzu nasıl ayarladığına bağlı olarak, güvenlik doğrulama yönteminiz olarak ayarlamanız için aşağıdaki seçeneklerden biri veya daha fazlası kullanılabilir olacaktır. Birden çok seçenek varsa, metotlarınız kullanılamaz hale gelirse güvenlik doğrulama yönteminiz olarak birden fazla kullanmanız önerilir.
 
-    - **Kimlik doğrulama uygulaması.** Güvenlik doğrulama yönteminiz olarak Microsoft Authenticator uygulamasını veya diğer kimlik doğrulayıcı uygulamasını kullanmayı seçin. Uygulamayı ayarlama hakkında daha fazla bilgi için microsoft [authenticator uygulamasını doğrulama yönteminiz olarak ayarlama'ya](security-info-setup-auth-app.md)bakın.
+    - **Kimlik doğrulama uygulaması.** Microsoft Authenticator uygulamasını veya diğer kimlik doğrulayıcı uygulamasını güvenlik doğrulama yönteminiz olarak kullanmayı seçin. Uygulamayı ayarlama hakkında daha fazla bilgi için bkz. [doğrulama yöntemi olarak Microsoft Authenticator uygulamasını ayarlama](security-info-setup-auth-app.md).
 
-    - **Kısa mesaj.** Mobil cihazınıza kendinize kısa mesaj göndermeyi seçin. Kısa mesaj ayarlama hakkında daha fazla bilgi için, [doğrulama yönteminiz olarak kısa mesaj ayarlama'ya](security-info-setup-text-msg.md)bakın.
+    - **SMS mesajı.** Kendinize ait metin iletilerini mobil cihazınıza göndermek için seçin. Metin iletilerini ayarlama hakkında daha fazla bilgi için bkz. [doğrulama yönteminiz olarak metin mesajlaşma 'Yı ayarlama](security-info-setup-text-msg.md).
 
-    - **Telefon.** Kayıtlı telefon numaranıza telefon görüşmesi yapmayı seçin. Telefon görüşmelerini ayarlama hakkında daha fazla bilgi için [bkz.](security-info-setup-phone-number.md)
+    - **Telefon görüşmeleri.** Kayıtlı telefon numaranız için telefon araması almayı seçin. Telefon çağrılarını ayarlama hakkında daha fazla bilgi için bkz. [doğrulama yönteminiz olarak bir telefon numarası ayarlama](security-info-setup-phone-number.md).
 
-    - **Güvenlik anahtarı.** Microsoft uyumlu bir güvenlik anahtarı kullanmayı seçin. Daha fazla bilgi için [bkz.](security-info-setup-security-key.md)
+    - **Güvenlik anahtarı.** Microsoft uyumlu bir güvenlik anahtarı kullanmayı seçin. Daha fazla bilgi için bkz. [doğrulama yönteminiz olarak bir güvenlik anahtarı ayarlama](security-info-setup-security-key.md).
 
-    - **E-posta adresi.** Unutulan veya eksik parolanızı gerektirmeden kullanılabilecek alternatif bir e-posta adresi kullanmayı seçin. Bu yalnızca parola sıfırlama için çalışır, güvenlik doğrulama yöntemi olarak değil. Bir e-posta adresi ayarlama hakkında daha fazla bilgi için [bkz.](security-info-setup-email.md)
+    - **E-posta adresi.** Unutulan veya eksik parola gerekmeden kullanılabilecek alternatif bir e-posta adresi kullanmayı seçin. Bu, bir güvenlik doğrulama yöntemi olarak değil, yalnızca parola sıfırlama için geçerlidir. E-posta adresi ayarlama hakkında daha fazla bilgi için bkz. [doğrulama yönteminiz olarak bir e-posta adresi ayarlama](security-info-setup-email.md).
 
-    - **Güvenlik soruları.** Yöneticiniz tarafından önceden tanımlanmış güvenlik sorularını ayarlamayı ve yanıtlamayı seçin. Bu yalnızca parola sıfırlama için çalışır, güvenlik doğrulama yöntemi olarak değil. Güvenlik soruları hakkında daha fazla bilgi için [bkz.](security-info-setup-questions.md)
+    - **Güvenlik soruları.** Yöneticiniz tarafından ayarlanan önceden tanımlanmış güvenlik sorularını ayarlamayı ve yanıtlamayı seçin. Bu, bir güvenlik doğrulama yöntemi olarak değil, yalnızca parola sıfırlama için geçerlidir. Güvenlik soruları hakkında daha fazla bilgi için bkz. [doğrulama yönteminiz olarak güvenlik sorularını ayarlama](security-info-setup-questions.md).
 
-3. Yöntemlerinizi seçip ayarladıktan sonra işlemi tamamlamak için **Finish'i** seçin.
+3. Yöntemlerinizi seçip ayarladıktan sonra, işlemi gerçekleştirmek için **son** ' u seçin.
 
     > [!Note]
-    > Telefon numaranız veya e-posta adresiniz için eklenen bilgiler kuruluşunuzun genel dizini ile paylaşılmaz. Bu bilgileri görebilen tek kişiler siz ve yöneticinizdir. Güvenlik sorularınızın yanıtlarını yalnızca siz görebilirsiniz.
+    > Telefon numaranız veya e-posta adresiniz için eklenen bilgiler kuruluşunuzun genel diziniyle paylaşılmaz. Bu bilgileri yalnızca siz ve yöneticiniz görebilirler. Yalnızca güvenlik sorularınıza yanıt verebilirsiniz.
 
 ## <a name="common-problems-and-their-solutions"></a>Yaygın sorunlar ve çözümleri
 
- Bazı yaygın hata örnekleri ve çözümleri şunlardır:
+ Aşağıda bazı yaygın hata durumları ve çözümleri verilmiştir:
 
 | Hata iletisi |  Olası çözüm |
 | --- | --- | --- |
-| Lütfen yöneticinize başvurun.<br>Kullanıcı hesabı parolanızın Microsoft tarafından yönetilmediğini tespit ettik. Sonuç olarak, parolanızı otomatik olarak sıfırlayamıyoruz.<br>Daha fazla yardım için BT personelinizle iletişime geçin.| Kullanıcı Kimliğinizi yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuzun parolanızı dahili olarak yönettiği ve **hesap bağlantınıza erişeme** kten parolanızı sıfırlamanızı istemediği anlamına gelir. Bu durumda parolanızı sıfırlamak için yardım için kuruluşunuzun yardım masasına veya yöneticinize başvurmanız gerekir. |
-| Parola sıfırlama için hesabınız etkinleştirildi.<br>Üzgünüz, ancak BT personeliniz hesabınızı bu hizmeti kullanmak üzere ayarlamadı.<br>İsterseniz, sizin için parolanızı sıfırlamak için kuruluşunuzdaki bir yöneticiyle iletişime geçebiliriz. | Kullanıcı Kimliğinizi yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuzun parola sıfırlama özelliğini açmadığı veya kullanmanıza izin verilmedi. Bu durumda parolanızı sıfırlamak için **bir yöneticiyle Bağlantı** bağlantısını seçmeniz gerekir. Bağlantıyı tıklattıktan sonra, kuruluşunuzun yardım masasına veya yöneticisine bir e-posta gönderilir ve parolanızı sıfırlamak istediğinizi bildiren bir e-posta gönderilir. |
-| Hesabınızı doğrulayabildik.<br>İsterseniz, sizin için parolanızı sıfırlamak için kuruluşunuzdaki bir yöneticiyle iletişime geçebiliriz. | Kullanıcı Kimliğinizi yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuzun parola sıfırlamayı açık olduğu ve bu iletiyi kullanabileceğiniz, ancak hizmetiçin kaydolmadığınız anlamına gelir. Bu durumda, parolanızı sıfırlamak için kuruluşunuzun yardım masasına veya yöneticisine başvurmanız gerekir. Cihazınıza geri döndükten sonra parola sıfırlama için kaydolmak hakkında bilgi için, bu makalede yukarıdaki işleme bakın. |
+| Lütfen yöneticinize başvurun.<br>Kullanıcı hesabınızın parolasının Microsoft tarafından yönetilmediğini belirledik. Sonuç olarak, parolanızı otomatik olarak sıfırlayamıyoruz.<br>Daha fazla yardım için BT personelinize başvurun.| Kullanıcı KIMLIĞINIZI yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuz parolanızı dahili olarak yönetir ve parolanızı, **Hesap bağlantısına erişemez** hale getirmek istemiyor demektir. Bu durumda parolanızı sıfırlamak için kuruluşunuzun yardım masasına veya yardım için yöneticinize başvurmanız gerekir. |
+| Hesabınız parola sıfırlama için etkinleştirilmemiş.<br>Üzgünüz, ancak BT personeliniz hesabınızı bu hizmetle kullanılmak üzere ayarlamadı.<br>İsterseniz, parolanızı sizin için sıfırlayabilmeniz için kuruluşunuzdaki bir yöneticiye başvururuz. | Kullanıcı KIMLIĞINIZI yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuzun parola sıfırlama özelliğini etkinleştirmediği veya onu kullanmasına izin verilmediği anlamına gelir. Bu durumda parolanızı sıfırlamak için **yönetici Ile Iletişim kurun** bağlantısını seçmeniz gerekir. Bağlantıya tıkladıktan sonra kuruluşunuzun yardım masasına veya yöneticisine bir e-posta gönderilir ve bu, parolanızı sıfırlamak istediğinizi bilecektir. |
+| Hesabınızı doğrulayamıyoruz.<br>İsterseniz, parolanızı sizin için sıfırlayabilmeniz için kuruluşunuzdaki bir yöneticiye başvururuz. | Kullanıcı KIMLIĞINIZI yazdıktan sonra bu hata iletisini alırsanız, kuruluşunuzun parola sıfırlama özelliği açık olduğu ve bunu kullanabileceğiniz, ancak hizmet için kaydolmadığınız anlamına gelir. Bu durumda, parolanızı sıfırlamak için kuruluşunuzun yardım masasına veya yöneticisiyle iletişim kurmanız gerekir. Cihazınıza geri döndüğünüzde parola sıfırlamayı kaydetme hakkında bilgi için, bu makaledeki yukarıdaki işleme bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Bulut sağlama ile Tek Oturum Açma nasıl kullanılır?
-description: Bu makalede, bulut sağlama ile sso'nun nasıl yüklenir ve kullanılacağı açıklanmaktadır.
+title: Bulut sağlama ile çoklu oturum açma kullanma
+description: Bu makalede, bulut sağlama ile SSO 'yu yüklemeyi ve kullanmayı açıklar.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,14 +12,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3667dd529ce5542be84c5e357053d8cd11eb91e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76908998"
 ---
-# <a name="using-single-sign-on-with-cloud-provisioning"></a>Bulut sağlama ile Tek Oturum Açma'yı kullanma
-Aşağıdaki belgede, bulut sağlama yla tek oturum açma nın nasıl kullanılacağı açıklanmaktadır.
+# <a name="using-single-sign-on-with-cloud-provisioning"></a>Bulut sağlama ile çoklu oturum açma kullanma
+Aşağıdaki belge, bulut sağlama ile çoklu oturum açma 'nın nasıl kullanılacağını açıklamaktadır.
 
 [!INCLUDE [active-directory-cloud-provisioning-sso.md](../../../includes/active-directory-cloud-provisioning-sso.md)]
 

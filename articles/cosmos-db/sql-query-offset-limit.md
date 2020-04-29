@@ -1,23 +1,23 @@
 ---
-title: Azure Cosmos DB'de OFSET SINIRI yan tümcesi
-description: Azure Cosmos DB'de sorgu yaparken belirli değerleri atlamak ve almak için OFSET LIMIT yan tümcesini nasıl kullanacağınızı öğrenin
+title: Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
+description: Azure Cosmos DB sorgulanırken belirli değerleri atlamak ve almak için, fark SıNıRı yan tümcesini kullanmayı öğrenin
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
 ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76771568"
 ---
-# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'de OFSET SINIRI yan tümcesi
+# <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki konum SıNıRı yan tümcesi
 
-OFSET LIMIT yan tümcesi, sorgudan bir takım değer almak için atlamak için isteğe bağlı bir yan tümcedir. OFSET sayısı ve LIMIT sayısı OFSET LIMIT işurında gereklidir.
+Konum SıNıRı yan tümcesi, atlamak için isteğe bağlı bir yan tümce ve sonra sorgudan birkaç değer alır. Konum sayısı ve sınır sayısı, sınır SıNıRı yan tümcesinde gereklidir.
 
-OFSET LIMITi bir ORDER BY yan tümcesi ile birlikte kullanıldığında, sonuç kümesi atlama ve sipariş edilen değerleri alarak üretilir. Order BY yan tümcesi kullanılmazsa, deterministic bir değerler sırasına neden olur.
+Sınır sınırı ORDER BY yan tümcesiyle birlikte kullanıldığında, sonuç kümesi, sıralı değerler üzerinde atlama ve alma işlemleri gerçekleştirerek oluşturulur. ORDER BY yan tümcesi kullanılmazsa, değerin belirleyici bir sırası oluşur.
 
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,23 +29,23 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 - `<offset_amount>`
 
-   Sorgu sonuçlarının atlaması gereken tamsayı sayısını belirtir.
+   Sorgu sonuçlarının atlayacağı öğelerin tamsayı sayısını belirtir.
 
 - `<limit_amount>`
   
-   Sorgu sonuçlarının içermesi gereken tamsayı sayısını belirtir
+   Sorgu sonuçlarının içermesi gereken öğelerin tamsayı sayısını belirtir
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Hem `OFFSET` sayım hem `LIMIT` de sayım maddesi gereklidir. `OFFSET LIMIT` İsteğe `ORDER BY` bağlı bir yan tümce kullanılırsa, sonuç kümesi sıralanan değerlerin üzerinden atlama yaparak üretilir. Aksi takdirde, sorgu sabit bir değerler sırasını döndürür.
+  Tümce içinde `OFFSET` hem Count hem `LIMIT` de Count gereklidir. `OFFSET LIMIT` İsteğe bağlı `ORDER BY` bir yan tümce kullanılırsa, sonuç kümesi sıralı değerlerin atlanarak oluşturulur. Aksi halde sorgu sabit bir değerler sırası döndürür.
 
-  Mahsup edilen terim `OFFSET LIMIT` sayısı arttıkça, sorgunun RU ücreti artar. Birden çok sayfa sonuç alan sorgular için genellikle devam belirteçlerini kullanmanızı öneririz. Devam belirteçleri, sorgunun daha sonra devam edebileceği yer için bir "yer imi"dir. Eğer kullanırsanız, `OFFSET LIMIT`hiçbir "yer imi" dir. Sorgunun bir sonraki sayfasını döndürmek istiyorsanız, baştan başlamanız gerekir.
+  Bir sorgunun ile olan `OFFSET LIMIT` ru ücreti, kaydırılmakta olan koşulların sayısı arttıkça artacaktır. Birden fazla sonuç sayfasına sahip sorgularda, genellikle devamlılık belirteçlerini kullanmanızı öneririz. Devamlılık belirteçleri, sorgunun daha sonra sürdürülebileceği yerde bir "yer işaretidir". Kullanırsanız `OFFSET LIMIT`, "Bookmark" yoktur. Sorgunun sonraki sayfasını döndürmek isterseniz, baştan başlamanız gerekir.
   
-  Belgeleri tamamen `OFFSET LIMIT` atlamak ve istemci kaynaklarını kaydetmek istediğiniz durumlar için kullanmalısınız. Örneğin, `OFFSET LIMIT` 1000. Arka uçta, `OFFSET LIMIT` atlananlar da dahil olmak üzere her belgeyi yükler. Performans avantajı, gerekli olmayan belgeleri işlemekten kaçınarak istemci kaynaklarında tasarruf etmektir.
+  Belgeleri tamamen atlamak `OFFSET LIMIT` ve istemci kaynaklarını kaydetmek istediğinizde, bu durumlarda kullanmanız gerekir. Örneğin, 1000. sorgu sonucuna `OFFSET LIMIT` atlamak istiyorsanız ve sonuçları 1 ile 999 arasında görüntülemeniz gerekmiyorsa ' i kullanmanız gerekir. Arka uçta, `OFFSET LIMIT` atlanan olanlar da dahil olmak üzere her bir belgeyi hala yükler. Performans avantajı, gerekli olmayan belgeleri işlemeyi önleyerek istemci kaynaklarındaki tasarruf sağlar.
 
 ## <a name="examples"></a>Örnekler
 
-Örneğin, burada ilk değeri atlayan ve ikinci değeri döndüren (yerleşik şehrin adının sırasına göre) bir sorgu verilmiştir:
+Örneğin, ilk değeri atlayan ve ikinci değeri döndüren (yerleşik şehrin adının sırasıyla) bir sorgu aşağıda verilmiştir:
 
 ```sql
     SELECT f.id, f.address.city
@@ -65,7 +65,7 @@ Sonuçlar:
     ]
 ```
 
-Burada, ilk değeri atlayan ve ikinci değeri (sipariş vermeden) döndüren bir sorgu aşağıda veda eder:
+İlk değeri atlayan ve ikinci değeri döndüren (sıralama olmadan) bir sorgu aşağıda verilmiştir:
 
 ```sql
    SELECT f.id, f.address.city
@@ -88,4 +88,4 @@ Sonuçlar:
 
 - [Başlarken](sql-query-getting-started.md)
 - [SELECT yan tümcesi](sql-query-select.md)
-- [MADDEYE GÖRE SİPARİş](sql-query-order-by.md)
+- [ORDER BY yan tümcesi](sql-query-order-by.md)
