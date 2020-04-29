@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Özel bir ses asistanı oluşturma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: özel bir ses Yardımcısı oluşturma-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, özel bir ses asistanı oluşturmak için Konuşma SDK'sını kullanırsınız.
+description: Bu makalede, özel bir ses Yardımcısı oluşturmak için konuşma SDK 'sını kullanacaksınız.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: travisw
 zone_pivot_groups: programming-languages-set-fourteen
 ms.openlocfilehash: 4e0cf7a977e0369e6bae4a44fcb22563226a3501
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241209"
 ---
-# <a name="quickstart-create-a-custom-voice-assistant"></a>Quickstart: Özel bir ses asistanı oluşturma
+# <a name="quickstart-create-a-custom-voice-assistant"></a>Hızlı başlangıç: özel bir ses Yardımcısı oluşturma
 
 [!INCLUDE [Header](../includes/quickstarts/voice-assistants/header.md)]
 

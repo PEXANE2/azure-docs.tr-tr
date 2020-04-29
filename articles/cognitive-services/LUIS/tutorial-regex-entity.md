@@ -1,48 +1,48 @@
 ---
-title: 'Öğretici: Normal ifade varlığı - LUIS'
-description: Düzenli İfade varlığını kullanarak bir sözcükten sürekli biçimlendirilmiş verileri ayıklayın.
+title: 'Öğretici: normal ifade varlığı-LUSıS'
+description: Normal Ifade varlığını kullanarak, düzenli olarak biçimlendirilen verileri bir utterden ayıklayın.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545828"
 ---
-# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Öğretici: Söyleyişten iyi biçimlendirilmiş veriler alın
-Bu öğreticide, bir sözcükten sürekli biçimlendirilmiş verileri ayıklamak için düzenli bir ifade varlığı oluşturun.
+# <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Öğretici: söylenişi 'ten iyi biçimlendirilmiş veriler alın
+Bu öğreticide, düzenli olarak biçimlendirilen verileri bir utterde çıkarmak için bir normal ifade varlığı oluşturun.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Uygulama alma
+> * Uygulamayı içeri aktar
 > * Amaç ekleme
 > * Normal ifade varlığı ekleme
-> * Çıkarılan verileri almak için uygulama, yayımlama ve sorgu uygulaması
+> * Ayıklanan verileri almak için uygulamayı eğitme, yayımlama ve sorgulama
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="regular-expression-entities"></a>Normal ifade varlıkları
 
-Bir söyleyişten iyi biçimlendirilmiş metni çıkarmak için normal ifade varlığını kullanın. Konuşmanın amacı her zaman makine öğrenimi ile belirlenirse de bu özel varlık türü makine öğrenimli değildir. Normal ifade varlığı için iyi bir kullanım, düzenli bir [ifade](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)yle sürekli olarak temsil edilebilen herhangi bir metindir.
+Düzenli ifade varlığı kullanarak bir noktadan iyi biçimlendirilmiş metin çekin. Konuşmanın amacı her zaman makine öğrenimi ile belirlenirse de bu özel varlık türü makine öğrenimli değildir. Normal ifade varlığı için iyi bir kullanım, [düzenli bir ifadeyle](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)sürekli olarak gösterilebilen bir metindir.
 
 `Send pizza delivery time to x123432`
 
-Bu örnek, metin iletileri göndermek için kısa bir _kod_ kullanır. Bu kısa kod, x ile önceden belirlenmiş 5 veya 6 basamaklı sayısal bir koddur `x\d{5,6}`ve normal ifade ile tanımlanabilir.
+Bu örnek, SMS mesajları göndermek için _kısa bir kod_ kullanır. Bu kısa kod, 5 veya 6 basamaklı bir sayısal koddur, bir x önekli ve normal ifadeyle `x\d{5,6}`açıklanabilir.
 
-Bir LUIS uygulamasına normal bir ifade varlığı eklediğinizde, metni normal ifade varlığıyla [etiketlemeniz](label-entity-example-utterance.md) gerekmez. Tüm niyetlerle tüm sözlerle uygulanır.
+Bir LUSıS uygulamasına normal ifade varlığı eklediğinizde, metni normal Express varlığıyla [etiketlemenize](label-entity-example-utterance.md) gerek yoktur. Tüm amaçlar için tüm söyleye uygulanır.
 
-## <a name="import-example-json-to-begin-app"></a>Uygulama başlatmak için alma örneği .json
+## <a name="import-example-json-to-begin-app"></a>Uygulamayı başlatmak için example. JSON al
 
-1.  Uygulamayı indirin ve kaydedin [JSON dosyasını.](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)
+1.  [Uygulama json dosyasını](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)indirip kaydedin.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="create-intent-for-sending-confirmation-text-messages"></a>Onay metin iletileri göndermek için niyet oluşturma
+## <a name="create-intent-for-sending-confirmation-text-messages"></a>Onay metin iletileri göndermek için amaç oluştur
 
-1. Bir sözcük teyidinin onay metni gönderme niyetini sınıflandırmak için yeni bir amaç oluşturmak için **+ Oluştur'u** seçin.
+1. Bir onay metni göndermek için bir deterance 'in amacını sınıflandırmak üzere yeni bir amaç oluşturmak için **+ Oluştur** ' u seçin.
 
 1. Açılan iletişim kutusuna `ConfirmationText` girip **Done** (Bitti) öğesini seçin.
 
@@ -50,49 +50,49 @@ Bir LUIS uygulamasına normal bir ifade varlığı eklediğinizde, metni normal 
 
     |Örnek konuşmalar|
     |--|
-    |x123432 pizza teslim süresi gönder|
-    |Zaman için Txt x234567|
+    |X123432 'e pizza teslim süresi gönder|
+    |X234567 için txt|
     |bildirim için x23987|
 
-    Makinede öğrenilen varlıkları ayıklamak için, varlığı çeşitli söyleyişlerle içeren örnekler vermelisiniz, ancak bu makine de öğrenilmemiş varlıkla, varyasyon önemli değildir. Metin normal ifadeyle eşleşeceği sürece ayıklanır.
+    Makine tarafından öğrenilen varlıkları ayıklamak için, varlığı farklı çeşitçlerle birlikte içeren örnekler sağlamanız gerekir, ancak bu makine tarafından öğrenilmemiş varlık, çeşitleme önemli değildir. Metin normal ifadeyle eşleştiği sürece ayıklanacaktır.
 
-## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>İyi biçimlendirilmiş veriler için normal ifade varlığını kullanma
-Metin numarasıyla eşleşecek normal bir ifade varlığı oluşturun. Bu normal ifade metinle eşleşir, ancak büyük/küçük harf ve kültür türevlerini yok sayar.
+## <a name="use-the-regular-expression-entity-for-well-formatted-data"></a>İyi biçimlendirilmiş veriler için normal ifade varlığını kullanın
+Metin numarasıyla eşleşecek bir normal ifade varlığı oluşturun. Bu normal ifade metinle eşleşiyor, ancak Case ve Culture türevlerini yoksayar.
 
 1. Sol panelde **Entities** (Varlıklar) öğesini seçin.
 
-1. Varlıklar listesi sayfasında **+ Oluştur'u** seçin.
+1. Varlıklar listesi sayfasında **+ Oluştur** ' u seçin.
 
-1. Açılan iletişim kutusunda, yeni varlık adını `ConfirmationTextRegEx`girin , varlık türü olarak **RegEx'i** seçin ve sonra **İleri'yi**seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Normal ifade varlığı için varlık oluşturma adımlarını başlatın](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
-
-1. **Regex varlık**oluştur'da, `x\d{5,6}` **Regex** değeri olarak girin ve sonra **Oluştur'u**seçin.
+1. Açılan iletişim kutusunda yeni varlık adını `ConfirmationTextRegEx`girin, varlık türü olarak **Regex** ' ı seçin ve ardından **İleri**' yi seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Örnek söyleyişten veri ayıklamak için düzenli ifade girin](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
+    > ![Normal ifade varlığı için varlık oluşturma adımlarını Başlat](./media/luis-quickstart-intents-regex-entity/pizza-create-new-entity.png)
 
-1. Sol menüden **Niyetler'i** seçin, ardından sözcüklerle etiketlenmiş normal ifadeyi görmek için **Onay Metni'ni** seçin.
+1. **Regex varlığı oluştur**' da, **Regex** değeri `x\d{5,6}` olarak girin ve ardından **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Örnek ifadelerle etiketlenmiş normal ifadeyi görüntüleme](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+    > ![Örnek dıklarından verileri ayıklamak için normal ifade girin](./media/luis-quickstart-intents-regex-entity/pizza-set-regular-expression-for-new-entity.png)
 
-    Varlık makinede öğrenilen bir varlık olmadığından, varlık söyleyişe uygulanır ve oluşturulduğu anda LUIS portalında görüntülenir.
+1. Sol menüden **amaçlar** ' ı seçin, ardından **ConfirmationText** amacını görürsünüz.
 
-## <a name="train-the-app-before-testing-or-publishing"></a>Uygulamayı test etmeden veya yayınlamadan önce eğitin
+    > [!div class="mx-imgBorder"]
+    > ![Örnek söylerdeki etiketli normal ifadeyi görüntüle](./media/luis-quickstart-intents-regex-entity/pizza-reg-ex-entity-shown-example-utterances-intent.png)
+
+    Varlık, makine tarafından öğrenilen bir varlık olmadığından, varlık, oluşturma işlemi tamamlandıktan hemen sonra LUO portalında görüntülenir.
+
+## <a name="train-the-app-before-testing-or-publishing"></a>Test veya yayımlamadan önce uygulamayı eğitme
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak için yayımlama
+## <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak üzere yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Bitiş noktasından niyet ve varlık tahmini alın
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktadan amacı ve varlık tahminini alın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adres çubuğundaki URL'nin sonuna gidin ve _YOUR_QUERY_HERE_ değiştirin:
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile değiştirin:
 
     `Text my pizza delivery to x23456 x234567 x12345`
 
@@ -179,9 +179,9 @@ Metin numarasıyla eşleşecek normal bir ifade varlığı oluşturun. Bu normal
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Kavram - varlıklar](luis-concept-entity-types.md)
-* [Normal ifade varlığının JSON referansı](reference-entity-regular-expression.md?tabs=V3)
-* [Veri ayıklamak için varlıklar ekleme](luis-how-to-add-entities.md)
+* [Kavram-varlıklar](luis-concept-entity-types.md)
+* [Normal ifade varlığının JSON başvurusu](reference-entity-regular-expression.md?tabs=V3)
+* [Verileri ayıklamak için varlık ekleme](luis-how-to-add-entities.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide yeni bir amaç oluşturuldu, örnek konuşmalar eklendi ve ardından konuşmalardan düzgün biçimlendirilmiş veriler ayıklamak için normal ifade varlığı eklendi. Uygulama eğitildikten ve yayımlandıktan sonra uç noktaya gönderilen bir sorgu amacı tanımladı ve ayıklanan verileri döndürdü.

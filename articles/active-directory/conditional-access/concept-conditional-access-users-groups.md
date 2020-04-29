@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim ilkesindeki kullanıcılar ve gruplar - Azure Etkin Dizini
-description: Azure AD Koşullu Erişim ilkesinde kullanıcılar ve gruplar kimler?
+title: Koşullu erişim ilkesindeki kullanıcılar ve gruplar-Azure Active Directory
+description: Bir Azure AD koşullu erişim ilkesinde kullanıcılar ve gruplar kim
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,64 +12,64 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755277"
 ---
-# <a name="conditional-access-users-and-groups"></a>Koşullu Erişim: Kullanıcılar ve gruplar
+# <a name="conditional-access-users-and-groups"></a>Koşullu erişim: kullanıcılar ve gruplar
 
-Koşullu Erişim ilkesi, karar sürecindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar Koşullu Erişim ilkelerine dahil edilebilir veya hariç tutulabilir. 
+Koşullu erişim ilkesi, karar işlemindeki sinyallerden biri olarak bir kullanıcı ataması içermelidir. Kullanıcılar koşullu erişim ilkelerine dahil edilebilir veya dışlanıyor olabilir. 
 
-![Koşullu Erişim tarafından alınan kararlarda sinyal olarak kullanıcı](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+![Koşullu erişim tarafından yapılan kararlara sinyal olarak Kullanıcı](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
 ## <a name="include-users"></a>Kullanıcıları dahil et
 
-Bu kullanıcı listesi genellikle bir kuruluşun Koşullu Erişim ilkesinde hedef aldığı tüm kullanıcıları içerir. 
+Bu kullanıcı listesi genellikle bir kuruluşun koşullu erişim ilkesinde hedeflediği tüm kullanıcıları içerir. 
 
-Koşullu Erişim ilkesi oluşturulurken aşağıdaki seçenekleri içerecek şekilde kullanılabilir.
+Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler bulunabilir.
 
-- None
-   - Kullanıcı seçilmedi
+- Hiçbiri
+   - Hiçbir Kullanıcı seçilmedi
 - Tüm kullanıcılar
-   - B2B konukları da dahil olmak üzere dizinde bulunan tüm kullanıcılar.
+   - B2B konukları dahil dizinde bulunan tüm kullanıcılar.
 - Kullanıcıları ve grupları seçme
    - Tüm konuk ve dış kullanıcılar
-      - Bu seçim, b2B `user type` `guest`konukları ve dış kullanıcıları içerir. Bu seçim, Bulut Çözüm Sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm harici kullanıcı için de geçerlidir. 
+      - Bu seçim, `user type` özniteliği olarak `guest`ayarlanmış herhangi bir Kullanıcı dahIl olmak üzere tüm B2B konukları ve harici kullanıcıları içerir. Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
    - Dizin rolleri
-      - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure REKLAM dizini rollerini seçmelerine olanak tanır. Örneğin, kuruluşlar genel yönetici rolü atanan kullanıcılar üzerinde daha kısıtlayıcı bir ilke oluşturabilir.
+      - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir.
    - Kullanıcılar ve gruplar
-      - Belirli kullanıcı kümelerinin hedeflenemesine izin verir. Örneğin, bir İk uygulaması bulut uygulaması olarak seçildiğinde kuruluşlar İk departmanının tüm üyelerini içeren bir grup seçebilir. Grup, dinamik veya atanmış güvenlik ve dağıtım grupları da dahil olmak üzere Azure AD'deki herhangi bir grup türü olabilir.
+      - Belirli kullanıcı kümelerinin hedeflenmesini sağlar. Örneğin, kuruluşlar, bulut uygulaması olarak bir ık uygulaması seçildiğinde ık departmanın tüm üyelerini içeren bir grup seçebilir. Bir grup, dinamik veya atanan güvenlik ve dağıtım grupları dahil olmak üzere Azure AD 'de herhangi bir grup türü olabilir.
 
-## <a name="exclude-users"></a>Kullanıcıları hariç tutma
+## <a name="exclude-users"></a>Kullanıcıları hariç tut
 
-Kuruluşlar bir kullanıcıyı veya grubu hem dahil ettihem de dışladığında, bir dışlama eylemi ilkedeki bir dahiliyeyi geçersiz kıldığından, kullanıcı veya grup ilkenin dışında tutulur. Dışlamalar genellikle acil erişim veya kesme cam hesapları için kullanılır. Acil erişim hesapları ve bunların neden önemli olduğu hakkında daha fazla bilgiyi aşağıdaki makalelerde bulabilirsiniz: 
+Kuruluşların her ikisi de bir kullanıcıyı veya grubu dahil ve hariç tutdığında, Kullanıcı veya grup ilkeden hariç tutulur, hariç tutma eylemi ilkede bir içerme işlemini geçersiz kılar. Dışlamalar genellikle acil durum erişimi veya kesme camı hesapları için kullanılır. Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla bilgi aşağıdaki makalelerde bulunabilir: 
 
-* [Azure AD'de acil erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)
-* [Azure Active Directory ile esnek bir erişim denetimi yönetimi stratejisi oluşturun](../authentication/concept-resilient-controls.md)
+* [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)
+* [Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma](../authentication/concept-resilient-controls.md)
 
-Koşullu Erişim ilkesi oluşturulurken aşağıdaki seçenekleri hariç tutmak için kullanılabilir.
+Koşullu erişim ilkesi oluştururken aşağıdaki seçenekler dışarıda tutulacak.
 
 - Tüm konuk ve dış kullanıcılar
-   - Bu seçim, b2B `user type` `guest`konukları ve dış kullanıcıları içerir. Bu seçim, Bulut Çözüm Sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm harici kullanıcı için de geçerlidir. 
+   - Bu seçim, `user type` özniteliği olarak `guest`ayarlanmış herhangi bir Kullanıcı dahIl olmak üzere tüm B2B konukları ve harici kullanıcıları içerir. Bu seçim Ayrıca, bulut çözümü sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm dış kullanıcılar için de geçerlidir. 
 - Dizin rolleri
-   - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure REKLAM dizini rollerini seçmelerine olanak tanır. Örneğin, kuruluşlar genel yönetici rolü atanan kullanıcılar üzerinde daha kısıtlayıcı bir ilke oluşturabilir.
+   - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure AD dizin rollerini seçmesine olanak sağlar. Örneğin kuruluşlar, genel yönetici rolüne atanan kullanıcılara daha kısıtlayıcı bir ilke oluşturabilir.
 - Kullanıcılar ve gruplar
-   - Belirli kullanıcı kümelerinin hedeflenemesine izin verir. Örneğin, bir İk uygulaması bulut uygulaması olarak seçildiğinde kuruluşlar İk departmanının tüm üyelerini içeren bir grup seçebilir. Grup, dinamik veya atanmış güvenlik ve dağıtım grupları da dahil olmak üzere Azure AD'deki herhangi bir grup türü olabilir.
+   - Belirli kullanıcı kümelerinin hedeflenmesini sağlar. Örneğin, kuruluşlar, bulut uygulaması olarak bir ık uygulaması seçildiğinde ık departmanın tüm üyelerini içeren bir grup seçebilir. Bir grup, dinamik veya atanan güvenlik ve dağıtım grupları dahil olmak üzere Azure AD 'de herhangi bir grup türü olabilir.
 
-### <a name="preventing-administrator-lockout"></a>Yönetici kilitlemesini önleme
+### <a name="preventing-administrator-lockout"></a>Yönetici kilitlemeyi önler
 
-**Tüm kullanıcılara** ve **tüm uygulamalara**uygulanan bir ilke oluştururken bir yöneticinin kendilerini dizinlerinin dışına kilitlemesini önlemek için aşağıdaki uyarıyı görürler.
+**Tüm kullanıcılara** ve **tüm uygulamalara**uygulanan bir ilke oluştururken bir yöneticinin kendilerini kendi dizininden kilitlemesini engellemek için aşağıdaki uyarıyı görür.
 
-> Kendini dışarıda bırakmayın! Bir ilkeyi beklendiği gibi doğrulamak için önce küçük bir kullanıcı kümesine uygulamanızı öneririz. Ayrıca, bu ilkeden en az bir yöneticinin hariç çıkarılmasını öneririz. Bu, hala erişiminiz olmasını sağlar ve bir değişiklik gerekirse bir ilkeyi güncelleştirebilirsiniz. Lütfen etkilenen kullanıcıları ve uygulamaları inceleyin.
+> Kendinizi kilitlemeyin! Önce küçük bir kullanıcı kümesine, beklendiği gibi davrandığını doğrulamak için bir ilke uygulanmasını öneririz. Ayrıca, bu ilkeden en az bir yöneticiyi dışlamamız önerilir. Bu, hala erişiminizin olmasını sağlar ve bir değişiklik gerekliyse bir ilkeyi güncelleştirebilir. Lütfen etkilenen kullanıcıları ve uygulamaları gözden geçirin.
 
-Varsayılan olarak ilke, geçerli kullanıcıyı ilkeden dışlama seçeneği sağlar, ancak bu varsayılan değer aşağıdaki resimde gösterildiği gibi yönetici tarafından geçersiz kılınabilir. 
+Varsayılan olarak, ilke geçerli kullanıcıyı ilkeden hariç tutmak için bir seçenek sağlar, ancak bu varsayılan, aşağıdaki görüntüde gösterildiği gibi yönetici tarafından geçersiz kılınabilir. 
 
-![Uyarı, kendini kilitleme!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+![Uyarı, kendinizi kilitlemeyin!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu Erişim: Bulut uygulamaları veya eylemleri](concept-conditional-access-cloud-apps.md)
+- [Koşullu erişim: bulut uygulamaları veya eylemleri](concept-conditional-access-cloud-apps.md)
 
-- [Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)

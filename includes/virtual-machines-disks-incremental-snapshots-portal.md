@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80628409"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -27,20 +27,20 @@ ms.locfileid: "80628409"
 ## <a name="portal"></a>Portal
 
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın ve anlık görüntü almak istediğiniz diske gidin.
-1. Diskinizde **Anlık Görüntü Oluştur'u** seçin
+1. [Azure Portal](https://portal.azure.com/) oturum açın ve anlık görüntü eklemek istediğiniz diske gidin.
+1. Diskinizde **anlık görüntü oluştur** ' u seçin.
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Ekran görüntüsü. Diskinizin bıçağı, **+Anlık görüntü oluştur** vurgulanır, çünkü seçmeniz gereken budur.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-snapshot-button-incremental.png" alt-text="Yakala. Seçtiğiniz gibi, * * + anlık görüntü oluştur * * vurgulanmış olarak diskinizin dikey pencerenizin olması gerekir.":::
 
 1. Kullanmak istediğiniz kaynak grubunu seçin ve bir ad girin.
-1. **Artımlı'yı** seçin ve **Gözden Geçir + Oluştur'u** seçin
+1. **Artımlı** ' i seçin ve **gözden geçir + oluştur** seçeneğini belirleyin
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Ekran görüntüsü. Bir anlık görüntü bıçağı oluşturun, adı doldurun ve artımlı seçin, ardından anlık fotoğrafınızı oluşturun.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Yakala. Bir anlık görüntü dikey penceresi oluşturun, adı doldurup artımlı ' i seçin ve ardından anlık görüntü oluşturun.":::
 
-1. **Oluştur**’u seçin
+1. **Oluştur** ' u seçin
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Ekran görüntüsü. Anlık görüntünüz için doğrulama sayfası, seçimlerinizi onaylayın ve ardından anlık görüntü oluşturun.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Yakala. Anlık görüntü için doğrulama sayfası, seçimlerinizi onaylayın ve ardından anlık görüntüyü oluşturun.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-.NET'i kullanarak artımlı anlık görüntünün diferansiyel yeteneğini gösteren örnek kodu görmek istiyorsanız, [Azure Yönetilen Diskleri yedeklemelerini artımlı anlık görüntü fark özelliğine sahip başka bir bölgeye](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)kopyalayın'a bakın.
+.NET kullanarak Artımlı anlık görüntülerin fark yeteneğini gösteren örnek kodu görmek isterseniz, bkz. [Azure yönetilen diskler yedeklemelerini, artımlı anlık görüntülerin fark yeteneği ile başka bir bölgeye kopyalama](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

@@ -1,54 +1,54 @@
 ---
 title: REST API ile Azure dosya paylaşımlarını yedekleme
-description: Kurtarma Hizmetleri Kasası'ndaki Azure dosya paylaşımlarını yedeklemek için REST API'yi nasıl kullanacağınızı öğrenin
+description: Kurtarma Hizmetleri kasasındaki Azure dosya paylaşımlarını yedeklemek için REST API kullanmayı öğrenin
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 2cf385830ec1be17cb62432e6ef9cba7d82a9db1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248105"
 ---
-# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Geri Ödeme API'si aracılığıyla Azure Yedekleme'yi kullanarak Azure dosya paylaşımını yedekleme
+# <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API aracılığıyla Azure Backup kullanarak Azure dosya paylaşma 'yı yedekleme
 
-Bu makalede, REST API üzerinden Azure Yedekleme kullanarak bir Azure Dosyası paylaşımının nasıl yedeklenilen açıklanmaktadır.
+Bu makalede, REST API aracılığıyla Azure Backup kullanarak bir Azure dosya paylaşımının nasıl yedekleneceği açıklanır.
 
-Bu makalede, dosya paylaşımınız için yedekleme yapılandırmak için zaten bir kurtarma hizmetleri kasası ve ilkesi oluşturduğunuz varsayar. Yapmadıysanız, [tonoz oluşturma'ya](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) bakın ve yeni kasalar ve ilkeler oluşturmak için ilke REST API öğreticileri [oluşturun.](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)
+Bu makalede, zaten bir kurtarma hizmetleri Kasası oluşturdunuz ve dosya paylaşımınızda yedeklemeyi yapılandırmak için ilke oluşturdunuz. Yapmadıysanız, yeni kasalar ve ilkeler oluşturmak için [kasa oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatevault) ve [ilke oluşturma](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy) REST API öğreticiler bölümüne başvurun.
 
-Bu makale için aşağıdaki kaynakları kullanacağız:
+Bu makalede, aşağıdaki kaynakları kullanacağız:
 
-- **RecoveryServicesVault**: *azurefilesvault*
+- **Recoveryserviceskasası**: *azurefilesvault*
 
-- **İlke:** *zamanlama1*
+- **İlke:** *schedule1*
 
 - **Kaynak grubu**: *azurefiles*
 
-- **Depolama Hesabı**: *testvault2*
+- **Depolama hesabı**: *testvault2*
 
-- **Dosya Paylaş**: *testshare*
+- **Dosya paylaşma**: *TestShare*
 
-## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>REST API'yi kullanarak korumasız bir Azure dosya paylaşımı için yedeklemeyi yapılandırma
+## <a name="configure-backup-for-an-unprotected-azure-file-share-using-rest-api"></a>REST API kullanarak korumasız bir Azure dosya paylaşımının yedeklemesini yapılandırma
 
-### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Korumasız Azure dosya paylaşımlarıyla depolama hesaplarını keşfedin
+### <a name="discover-storage-accounts-with-unprotected-azure-file-shares"></a>Korumasız Azure dosya paylaşımlarına sahip depolama hesaplarını bulma
 
-Kasanın, Kurtarma Hizmetleri Kasası'na yedeklenebilen dosya paylaşımlarıyla abonelikteki tüm Azure depolama hesaplarını keşfetmesi gerekir. Bu, [yenileme işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Kasanın geçerli abonelikteki korumasız Azure Dosyası hisselerinin en son listesini almasını ve bunları 'önbelleğe almasını' sağlayan eşzamanlı bir *POST* işlemidir. Dosya paylaşımı 'önbelleğe alındıktan' sonra Kurtarma hizmetleri dosya paylaşımına erişebilir ve dosyayı koruyabilir.
+Kasanın, kurtarma hizmetleri kasasına yedeklenebilir dosya paylaşımları ile abonelikte bulunan tüm Azure depolama hesaplarını bulması gerekir. Bu, [yenileme işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/refresh)kullanılarak tetiklenir. Bu, kasasının geçerli abonelikteki tüm korumasız Azure dosya paylaşımlarının en son listesini almasını ve bu nesnelerin ' önbelleğe alınmasını sağlayan zaman uyumsuz bir *gönderi* işlemidir. Dosya paylaşımının ' önbelleğe alınması ' olduğunda, kurtarma hizmetleri dosya paylaşımında erişebilir ve koruma sağlayabilir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01&$filter={$filter}
 ```
 
-POST URI, `{subscriptionId}` `{vaultName}`, `{vaultresourceGroupName}`, `{fabricName}` ve parametreleri vardır. Örneğimizde, farklı parametrelerin değeri aşağıdaki gibi olacaktır:
+Post URI 'sinin, `{subscriptionId}`, `{vaultName}`ve `{vaultresourceGroupName}` `{fabricName}` parametreleri vardır. Örneğimizde, farklı parametrelerin değeri aşağıdaki gibi olacaktır:
 
-- `{fabricName}`*Azure'dur*
+- `{fabricName}`*Azure*
 
-- `{vaultName}`*azurefilesvault* olduğunu
+- `{vaultName}`*azurefilesvault*
 
 - `{vaultresourceGroupName}`*azurefiles*
 
-- $filter=backupManagementType eq 'AzureStorage'
+- $filter = backupManagementType EQ ' AzureStorage '
 
-Uri'de gerekli tüm parametreler verildiğinden, ayrı bir istek organına gerek yoktur.
+URI 'de tüm gerekli parametreler verildiğinden, ayrı bir istek gövdesine gerek yoktur.
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -56,13 +56,13 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="responses"></a>Yanıtlar
 
-'Yenileme' işlemi eşzamanlı bir [işlemdir.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Bu işlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur anlamına gelir.
+' Refresh ' işlemi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
-İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
+Başka bir işlem oluşturulduğunda 202 (kabul edildi) ve bu işlem tamamlandığında 200 (Tamam) iki yanıt döndürür.
 
 ##### <a name="example-responses"></a>Örnek yanıtlar
 
-*POST* isteği gönderildikten sonra, 202 (Kabul edilen) bir yanıt döndürülür.
+*Post* isteği gönderildikten sonra, 202 (kabul edildi) yanıtı döndürülür.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -83,13 +83,13 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 'Date': 'Mon, 03 Feb 2020 09:13:25 GMT'
 ```
 
-Basit bir *GET* komutuyla "Konum" üstbilgisini kullanarak ortaya çıkan işlemi izleme
+Basit bir *Get* komutuyla "konum" üst bilgisini kullanarak ortaya çıkan işlemi izleyin
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-Tüm Azure Depolama hesapları keşfedildikten sonra GET komutu 200 (İçerik Yok) yanıtını döndürür. Kasa artık abonelik içinde yedeklenebilen dosya paylaşımları olan herhangi bir depolama hesabını keşfedebilir.
+Tüm Azure depolama hesapları keşfedildiğinde GET komutu bir 200 (Içerik yok) yanıtı döndürür. Kasa artık, abonelik içinde yedeklenebilir dosya paylaşımları olan herhangi bir depolama hesabını keşfedebilecektir.
 
 ```http
 HTTP/1.1 200 NoContent
@@ -106,15 +106,15 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Kurtarma Hizmetleri kasası ile korunabilen depolama hesaplarının listesini alın
+### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Kurtarma Hizmetleri kasası ile korunabilen depolama hesaplarının listesini al
 
-"Önbelleğe alma" yapıldığını doğrulamak için, abonelik altındaki tüm korunabilir depolama hesaplarını listele. Ardından yanıtta istenen depolama hesabını bulun. Bu, GET [ProtectableContainers](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) işlemi kullanılarak yapılır.
+"Önbelleğe alma" işleminin yapıldığını doğrulamak için, aboneliğin altındaki tüm korunabilir depolama hesaplarını listeleyin. Ardından, yanıttaki istenen depolama hesabını bulun. Bu işlem, [korunabilir kapsayıcı al](https://docs.microsoft.com/rest/api/backup/protectablecontainers/list) işlemi kullanılarak yapılır.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
 ```
 
-*GET* URI gerekli tüm parametrelere sahiptir. Ek istek gövdesi gerekmez.
+*Get* URI 'sinin tüm gerekli parametreleri vardır. Ek istek gövdesi gerekli değildir.
 
 Yanıt gövdesi örneği:
 
@@ -156,26 +156,26 @@ protectableContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-*Testvault2* depolama hesabını dost adı ile yanıt gövdesinde bulabildiğimizden, yukarıda yapılan yenileme işlemi başarılı oldu. Kurtarma hizmetleri kasası artık aynı abonelikte korumasız dosya paylaşımları bulunan depolama hesaplarını başarıyla keşfedebilir.
+Yanıt gövdesinde kolay ada sahip *testvault2* Storage hesabını bulabileceğinizden, yukarıda gerçekleştirilen yenileme işlemi başarılı oldu. Kurtarma Hizmetleri Kasası artık aynı abonelikte korunmayan dosya paylaşımlarına sahip depolama hesaplarını başarıyla bulabilir.
 
-### <a name="register-storage-account-with-recovery-services-vault"></a>Kurtarma Hizmetleri kasasına kayıt depolama hesabı
+### <a name="register-storage-account-with-recovery-services-vault"></a>Depolama hesabını kurtarma hizmetleri kasasıyla kaydetme
 
-Bu adım, yalnızca depolama hesabını kasaya daha önce kaydetmediyseniz gereklidir. [Koruma Konteynerleri-Kayıt işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)ile kasayı kaydedebilirsiniz.
+Bu adım yalnızca depolama hesabını daha önce kasaya kaydetmediyseniz gereklidir. Kasayı [Protectioncontainers-Register işlemi](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register)aracılığıyla kaydedebilirsiniz.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}?api-version=2016-12-01
 ```
 
-URI değişkenlerini aşağıdaki gibi ayarlayın:
+URI için değişkenleri aşağıdaki şekilde ayarlayın:
 
-- {resourceGroupName} - *azurefiles*
-- {fabricName} - *Azure*
-- {vaultName} - *azurefilesvault*
-- {containerName} - Get ProtectableContainers işleminin yanıt gövdesindeki ad özniteliğidir.
-   Örneğimizde, *StorageContainer; Depolama; AzureDosyalar;testvault2*
+- {resourceGroupName}- *azurefiles*
+- {fabricName}- *Azure*
+- {vaultName}- *azurefilesvault*
+- {containerName}-bu, korunabilir kapsayıcı al işleminin yanıt gövdesinde ad özniteliğidir.
+   Bizim örneğimizde, *Storagecontainer; Depo AzureFiles; testvault2*
 
 >[!NOTE]
-> Her zaman yanıtın ad özniteliğini alın ve bu istekle doldurun. Sabit kod lamayı veya kapsayıcı adı biçimini oluşturmayın. Oluşturur veya sabit kodlarsanız, kapsayıcı adı biçimi gelecekte değişirse API çağrısı başarısız olur.
+> Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini sabit kodlamayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi gelecekte değişirse API çağrısı başarısız olur.
 
 <br>
 
@@ -183,7 +183,7 @@ URI değişkenlerini aşağıdaki gibi ayarlayın:
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2?api-version=2016-12-01
 ```
 
-Create istek gövdesi aşağıdaki gibidir:
+Oluşturma isteği gövdesi aşağıdaki gibidir:
 
 ```json
 {
@@ -209,9 +209,9 @@ Create istek gövdesi aşağıdaki gibidir:
  }
 ```
 
-İstek gövdesinin tanımlarının tam listesi ve diğer ayrıntılar için [ProtectionContainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)bölümüne bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tam listesi için, [Protectioncontainers-Register](https://docs.microsoft.com/rest/api/backup/protectioncontainers/register#azurestoragecontainer)bölümüne bakın.
 
-Bu eşzamanlı bir işlemdir ve iki yanıt verir: "202 Kabul Edildi" işlemi kabul edildiğinde ve işlem tamamlandığında "200 Tamam".  İşlem durumunu izlemek için, işlemin en son durumunu almak için konum üstbilgisini kullanın.
+Bu zaman uyumsuz bir işlemdir ve iki yanıt döndürür 202: işlem kabul edildiğinde "200 Tamam" ve işlem tamamlandığında "Tamam".  İşlem durumunu izlemek için, işlemin en son durumunu almak üzere konum üst bilgisini kullanın.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AzureFiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/operationresults/1a3c8ee7-e0e5-43ed-b8b3-73cc992b6db9?api-version=2016-12-01
@@ -237,27 +237,27 @@ protectionContainers/StorageContainer;Storage;AzureFiles;testvault2",
 }
 ```
 
-Yanıt gövdesindeki *kayıt durumu* parametresinin değerinden kaydın başarılı olup olmadığını doğrulayabilirsiniz. Bizim durumumuzda, *testvault2*için kayıtlı olarak durumunu gösterir , bu nedenle kayıt işlemi başarılı oldu.
+Yanıt gövdesinde, kayıt işleminin *registrationstatus* parametresinin değerinden başarılı olup olmadığını doğrulayabilirsiniz. Bu durumda, *testvault2*için kayıtlı durumu gösterir, bu nedenle kayıt işlemi başarılı oldu.
 
-### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Korumasız tüm dosya paylaşımlarını bir depolama hesabı altında sorgula
+### <a name="inquire-all-unprotected-files-shares-under-a-storage-account"></a>Bir depolama hesabı altındaki tüm korumasız dosya paylaşımlarını sorgula
 
-[Koruma Kapları-Sorgula](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) işlemini kullanarak bir depolama hesabındaki korunabilir öğeler hakkında bilgi alabilirsiniz. Bu bir eşzamanlı işlemdir ve sonuçlar konum üstbilgikullanılarak izlenmelidir.
+[Koruma kapsayıcıları-sorgulama](https://docs.microsoft.com/rest/api/backup/protectioncontainers/inquire) işlemini kullanarak bir depolama hesabındaki korunabilir öğeler hakkında sorgulama yapabilirsiniz. Bu, zaman uyumsuz bir işlemdir ve sonuçların konum üst bilgisi kullanılarak izlenmesi gerekir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire?api-version=2016-12-01
 ```
 
-Yukarıdaki URI değişkenlerini aşağıdaki gibi ayarlayın:
+Yukarıdaki URI için değişkenleri aşağıdaki şekilde ayarlayın:
 
-- {vaultName} - *azurefilesvault*
-- {fabricName} - *Azure*
-- {containerName}- GET ProtectableContainers işleminin yanıt gövdesindeki ad özniteliğine bakın. Örneğimizde, *StorageContainer; Depolama; AzureDosyalar;testvault2*
+- {vaultName}- *azurefilesvault*
+- {fabricName}- *Azure*
+- {containerName}-korunabilir kapsayıcı al işleminin yanıt gövdesinde name özniteliğine bakın. Bizim örneğimizde, *Storagecontainer; Depo AzureFiles; testvault2*
 
 ```http
 https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/inquire?api-version=2016-12-01
 ```
 
-İstek başarılı olduktan sonra , "Tamam" durum kodunu döndürür
+İstek başarılı olduktan sonra, "Tamam" durum kodunu döndürür
 
 ```http
 Cache-Control : no-cache
@@ -274,18 +274,18 @@ x-ms-routing-request-id   : CENTRALUSEUAP:20200127T105305Z:68727f1e-b8cf-4bf1-bf
 Date  : Mon, 27 Jan 2020 10:53:05 GMT
 ```
 
-### <a name="select-the-file-share-you-want-to-back-up"></a>Yedeklemek istediğiniz dosya paylaşımını seçin
+### <a name="select-the-file-share-you-want-to-back-up"></a>Yedeklemek istediğiniz dosya payını seçin
 
-Abonelik altında tüm korunabilir öğeleri listeleyebilir ve [GET backupprotectableItems](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) işlemini kullanarak yedeklenecek istenilen dosya paylaşımını bulabilirsiniz.
+Abonelik kapsamındaki tüm korunabilir öğeleri listeleyebilir ve [Backupkorunabilir bir Tableıtems al](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list) işlemi kullanılarak yedeklenecek istenen dosya paylaşımının yerini bulabilirsiniz.
 
 ```http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupProtectableItems?api-version=2016-12-01&$filter={$filter}
 ```
 
-URI'yi aşağıdaki gibi inşa edin:
+URI 'yi şu şekilde oluşturun:
 
-- {vaultName} - *azurefilesvault*
-- {$filter} - *backupManagementType eq 'AzureStorage'*
+- {vaultName}- *azurefilesvault*
+- {$filter}- *Backupmanagementtype EQ ' AzureStorage '*
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupProtectableItems?$filter=backupManagementType eq 'AzureStorage'&api-version=2016-12-01
@@ -347,33 +347,33 @@ Status Code:200
 }
 ```
 
-Yanıt, tüm korumasız dosya paylaşımlarının listesini içerir ve yedeklemeyi yapılandırmak için Azure Kurtarma Hizmeti tarafından gerekli tüm bilgileri içerir.
+Yanıt, tüm korumasız dosya paylaşımlarının listesini içerir ve Azure kurtarma hizmeti 'nin yedeklemeyi yapılandırmak için gereken tüm bilgileri içerir.
 
-### <a name="enable-backup-for-the-file-share"></a>Dosya paylaşımı için yedeklemeyi etkinleştirme
+### <a name="enable-backup-for-the-file-share"></a>Dosya paylaşımında yedeklemeyi etkinleştir
 
-İlgili dosya paylaşımı dost adı ile "tanımlanır" sonra, korumak için ilke seçin. Kasadaki varolan ilkeler hakkında daha fazla bilgi edinmek için [İlke API listesine](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)bakın. Ardından, ilke adına atıfta bulunarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) seçin. İlkeler oluşturmak [için, ilke öğreticisi oluşturmak](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)için bakın.
+İlgili dosya paylaşımının kolay adıyla "tanımlanması" durumunda, korunacak ilkeyi seçin. Kasadaki mevcut ilkeler hakkında daha fazla bilgi edinmek için [liste ILKESI API](https://docs.microsoft.com/rest/api/backup/backuppolicies/list)'sine bakın. Ardından ilke adına başvurarak [ilgili ilkeyi](https://docs.microsoft.com/rest/api/backup/protectionpolicies/get) seçin. İlke oluşturmak için [ilke oluşturma öğreticisi](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-createorupdatepolicy)' ne bakın.
 
-Korumayı etkinleştirmek, "korunan öğe" oluşturan eşzamanlı bir *PUT* işlemidir.
+Korumayı etkinleştirme, "korumalı öğe" oluşturan zaman uyumsuz bir *PUT* işlemidir.
 
 ```http
 PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-GET backupprotectableitems işleminin yanıt gövdesindeki kimlik özniteliğini kullanarak **kapsayıcı adı** ve **korumalı madde adı** değişkenlerini ayarlayın.
+ContainerName ve korunabilir olan tablo öğelerinin yanıt gövdesinde ID özniteliğini kullanarak **ContainerName** ve **korunabilir dıtemname** değişkenlerini ayarlayın.
 
-Örneğimizde, korumak istediğimiz dosya paylaşımının kimliği:
+Bizim örneğimizde, korumak istediğimiz dosya paylaşımının KIMLIĞI:
 
 ```output
 "/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/storagecontainer;storage;azurefiles;testvault2/protectableItems/azurefileshare;testshare
 ```
 
-- {containername} - *storagecontainer;storage;azurefiles;testvault2*
-- {protectedItemName} - *azurefileshare;testshare*
+- {ContainerName}- *storagecontainer; depolama; azurefiles; testvault2*
+- {Korunabilir}- *azurefileshare; TestShare*
 
-Veya koruma kapsayıcısının **ad** özniteliğine ve korunabilir madde yanıtlarına başvurabilirsiniz.
+Ya da koruma kapsayıcısının ve korunabilir öğe yanıtlarının **ad** özniteliğine başvurabilirsiniz.
 
 >[!NOTE]
->Her zaman yanıtın ad özniteliğini alın ve bu istekle doldurun. Kapsayıcı adı biçimini veya korumalı madde adı biçimini sabit kodlamayı veya oluşturmayın. Oluşturur veya sabit kodlarsanız, kapsayıcı adı biçimi veya korumalı madde adı biçimi gelecekte değişirse API çağrısı başarısız olur.
+>Yanıtın ad özniteliğini her zaman alın ve bu isteğe girin. Kapsayıcı adı biçimini veya korumalı öğe adı biçimini sabit kodlamayın veya oluşturun. Bunu oluşturursanız veya sabit kodınızda, kapsayıcı adı biçimi veya korunan öğe adı biçimi gelecekte değişirse API çağrısı başarısız olur.
 
 <br>
 
@@ -381,7 +381,7 @@ Veya koruma kapsayıcısının **ad** özniteliğine ve korunabilir madde yanıt
 PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;Storage;AzureFiles;testvault2/protectedItems/azurefileshare;testshare?api-version=2016-12-01
 ```
 
-İstek gövdesi oluşturun:
+İstek gövdesi oluştur:
 
 Aşağıdaki istek gövdesi, korumalı bir öğe oluşturmak için gereken özellikleri tanımlar.
 
@@ -395,13 +395,13 @@ Aşağıdaki istek gövdesi, korumalı bir öğe oluşturmak için gereken özel
 }
 ```
 
-**SourceResourceId,** GET backupprotectableItems yanıtı olarak **parentcontainerFabricID'dir.**
+**Sourceresourceıd** , Get Backupkoruyucutablotems yanıtı olarak **parentcontainerfabricıd** 'dir.
 
 Örnek Yanıt
 
-Korumalı bir öğenin oluşturulması, izlenmesi gereken başka bir işlem oluşturan eşzamanlı bir işlemdir. İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
+Korumalı bir öğenin oluşturulması, izlenmesi gereken başka bir işlem oluşturan zaman uyumsuz bir işlemdir. Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 200 (Tamam) olduğunda iki yanıt döndürür: 202 (kabul edildi).
 
-Korumalı madde oluşturma veya güncelleştirme için *PUT* isteğini gönderdikten veya güncelleştirseniz, ilk yanıt 202 (Kabul edilir) ve bir konum üstbilgisidir.
+Korumalı öğe oluşturma veya güncelleştirme için *PUT* isteğini gönderdikten sonra, ilk yanıt bir konum üst bilgisi ile 202 (kabul edildi) olur.
 
 ```http
 HTTP/1.1 202 Accepted
@@ -421,15 +421,15 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Ardından, get *komutuyla* konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak ortaya çıkan işlemi izleyin.
+Ardından, *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
 ```
 
-İşlem tamamlandıktan sonra, yanıt gövdesindeki korumalı öğe içeriğiyle birlikte 200 (Tamam) döndürür.
+İşlem tamamlandıktan sonra, yanıt gövdesinde korunan öğe içeriğiyle 200 (Tamam) döndürür.
 
-Örnek Yanıt Gövdesi:
+Örnek yanıt gövdesi:
 
 ```json
 {
@@ -445,35 +445,35 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-Bu, dosya paylaşımı için korumanın etkin olduğunu ve ilk yedeklemenin ilke zamanlamasına göre tetikleneceğini doğrular.
+Bu, korumanın dosya paylaşımında etkinleştirildiğini ve ilk yedeklemenin ilke çizelgesine göre tetiklendiğini onaylar.
 
-## <a name="trigger-an-on-demand-backup-for-file-share"></a>Dosya paylaşımı için isteğe bağlı yedeklemeyi tetikleme
+## <a name="trigger-an-on-demand-backup-for-file-share"></a>Dosya paylaşma için isteğe bağlı yedekleme tetikleyin
 
-Bir Azure dosya paylaşımı yedekleme için yapılandırıldıktan sonra, yedeklemeler ilke zamanlamasına göre çalışır. İlk zamanlanmış yedeklemeyi bekleyebilir veya isteğe bağlı yedeklemeyi istediğiniz zaman tetikleyebilirsiniz.
+Yedekleme için bir Azure dosya paylaşımından yapılandırıldıktan sonra yedeklemeler, ilke zamanlamaya göre çalışır. Zamanlanan ilk yedeklemeyi bekleyebilir veya dilediğiniz zaman bir isteğe bağlı yedekleme tetikleyebilirsiniz.
 
-İsteğe bağlı yedeklemeyi tetiklemek bir POST işlemidir.
+İsteğe bağlı yedekleme tetiklenmesi bir POST işlemidir.
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-{containerName} ve {protectedItemName} yedeklemeyi etkinleştirirken yukarıda oluşturulmuştur. Örneğimiz için, bu çevirir:
+Yedekleme etkinleştirilirken {containerName} ve {korunabilir} ve {korunabilir} yukarıda oluşturulmuş. Örneğimiz için şu şekilde çeviri yapar:
 
 ```http
 POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;testvault2/protectedItems/AzureFileShare;testshare/backup?api-version=2017-07-01
 ```
 
-### <a name="create-request-body"></a>İstek gövdesi oluşturma
+### <a name="create-request-body"></a>İstek gövdesi oluştur
 
-İsteğe bağlı yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda veda edilir.
+İsteğe bağlı bir yedeklemeyi tetiklemek için, istek gövdesinin bileşenleri aşağıda verilmiştir.
 
 | Adı       | Tür                       | Açıklama                       |
 | ---------- | -------------------------- | --------------------------------- |
 | Özellikler | AzurefilesharebackupReques | BackupRequestResource özellikleri |
 
-İstek gövdesinin tanımlarının tam listesi ve diğer ayrıntılar [için, korumalı öğeler REST API belgesi için tetikleyici yedeklemelere](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body)bakın.
+İstek gövdesinin ve diğer ayrıntıların tanımlarının tamamı listesi için bkz. [korumalı öğeler için tetikleyici yedeklemeleri REST API belgesi](https://docs.microsoft.com/rest/api/backup/backups/trigger#request-body).
 
-İstek Gövdesi örneği
+İstek gövdesi örneği
 
 ```json
 {
@@ -489,13 +489,13 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 ### <a name="responses"></a>Yanıtlar
 
-İsteğe bağlı yedeklemeyi tetiklemek eşzamanlı bir [işlemdir.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) Bu işlem, ayrı olarak izlenmesi gereken başka bir işlem oluşturur anlamına gelir.
+İsteğe bağlı yedekleme tetiklenmesi [zaman uyumsuz bir işlemdir](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Bu işlemin Ayrıca izlenmesi gereken başka bir işlem oluşturduğu anlamına gelir.
 
-İki yanıt verir: başka bir işlem oluşturulduğunda 202 (Kabul) ve bu işlem tamamlandığında 200 (Tamam).
+Bu işlem tamamlandığında, başka bir işlem oluşturulduğunda ve 200 (Tamam) olduğunda iki yanıt döndürür: 202 (kabul edildi).
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 
-*İsteğe* bağlı yedekleme için POST isteğini gönderdikten sonra, ilk yanıt 202 (Kabul edilir) ve bir konum üstbilgisini veya Azure-async-üstbilgisini gösterir.
+İstek üzerine yedekleme için *Post* isteğini gönderdikten sonra, ilk yanıt bir konum üst bilgisi veya Azure-Async-header ile 202 (kabul edilir) olur.
 
 ```http
 'Cache-Control': 'no-cache'
@@ -516,13 +516,13 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 'Content-Length': '0'
 ```
 
-Ardından, get *komutuyla* konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak ortaya çıkan işlemi izleyin.
+Ardından, *Get* komutuyla konum üstbilgisini veya Azure-AsyncOperation üstbilgisini kullanarak elde edilen işlemi izleyin.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01
 ```
 
-İşlem tamamlandıktan sonra, yanıt gövdesinde ortaya çıkan yedekleme işinin kimliğiyle birlikte 200 (Tamam) döndürür.
+İşlem tamamlandıktan sonra, yanıt gövdesinde elde edilen yedekleme işinin KIMLIĞI ile 200 (Tamam) döndürür.
 
 #### <a name="sample-response-body"></a>Örnek yanıt gövdesi
 
@@ -540,8 +540,8 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-Yedekleme işi uzun süren bir işlem olduğundan, [REST API belgesini kullanarak monitör işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı gibi izlenmesi gerekir.
+Yedekleme işi uzun süredir çalışan bir işlem olduğundan, [REST API belge kullanan izleme işlerinde](https://docs.microsoft.com/azure/backup/backup-azure-arm-userestapi-managejobs#tracking-the-job)açıklandığı şekilde izlenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Rest API'yi kullanarak Azure dosya paylaşımlarını nasıl geri yükleyeceğimiz](restore-azure-file-share-rest-api.md)hakkında bilgi edinin.
+- [REST API kullanarak Azure dosya paylaşımlarını geri yüklemeyi](restore-azure-file-share-rest-api.md)öğrenin.

@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: 4f13c171c5fafb13875f5f87d4eb3d6013f0ff30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79485929"
 ---
-`deploymentconfig.json` [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine belge haritasındaki girişler. Aşağıdaki tabloda JSON belgesindeki varlıklar ile yöntemparametreleri arasındaki eşleme açıklanmaktadır:
+`deploymentconfig.json` Belgedeki girişler [aciwebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciservicedeploymentconfiguration?view=azure-ml-py)parametrelerine eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
-| `computeType` | NA | Bilgi işlem hedefi. ACI için değer `ACI`. |
-| `containerResourceRequirements` | NA | CPU ve bellek varlıkları için kapsayıcı. |
-| &emsp;&emsp;`cpu` | `cpu_cores` | Ayrılacak CPU çekirdeği sayısı. Varsayılan`0.1` |
-| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu web hizmeti için ayrılacak bellek miktarı (GB olarak). Varsayılan`0.5` |
-| `location` | `location` | Bu Web hizmetini dağıtmak için Azure bölgesi. Belirtilmemişse Çalışma Alanı konumu kullanılır. Mevcut bölgeler hakkında daha fazla bilgi için burada bulunabilir: [ACI Bölgeleri](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
-| `authEnabled` | `auth_enabled` | Bu Web hizmeti için auth etkinleştirmek ister. False varsayılanları |
-| `sslEnabled` | `ssl_enabled` | Bu Web hizmeti için SSL'yi etkinleştirip etkinleştirmeyeceğiniz. Varsayılan olarak False için. |
-| `appInsightsEnabled` | `enable_app_insights` | Bu Web hizmeti için AppInsights etkinleştirin olsun. False varsayılanları |
-| `sslCertificate` | `ssl_cert_pem_file` | SSL etkinse gerekli sertifika dosyası |
-| `sslKey` | `ssl_key_pem_file` | SSL etkinse gereken anahtar dosyası |
-| `cname` | `ssl_cname` | SSL etkinse cname |
-| `dnsNameLabel` | `dns_name_label` | Puanlama bitiş noktası için dns ad etiketi. Belirtilmezse, puanlama bitiş noktası için benzersiz bir dns adı etiketi oluşturulur. |
+| `computeType` | NA | Bilgi işlem hedefi. ACI için değer olmalıdır `ACI`. |
+| `containerResourceRequirements` | NA | CPU ve bellek varlıklarının kapsayıcısı. |
+| &emsp;&emsp;`cpu` | `cpu_cores` | Ayrılacak CPU çekirdeklerinin sayısı. Olarak`0.1` |
+| &emsp;&emsp;`memoryInGB` | `memory_gb` | Bu Web hizmeti için ayrılacak bellek miktarı (GB cinsinden). Varsayılanını`0.5` |
+| `location` | `location` | Bu Web hizmeti 'nin dağıtılacağı Azure bölgesi. Belirtilmemişse, çalışma alanı konumu kullanılacaktır. Kullanılabilir bölgeler hakkında daha fazla ayrıntı şurada bulunabilir: [acı bölgeleri](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=container-instances) |
+| `authEnabled` | `auth_enabled` | Bu Web hizmeti için kimlik doğrulamanın etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan değer false şeklindedir |
+| `sslEnabled` | `ssl_enabled` | Bu Web hizmeti için SSL etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan değer false şeklindedir. |
+| `appInsightsEnabled` | `enable_app_insights` | Bu Web hizmeti için Appınsights etkinleştirilip etkinleştirilmeyeceğini belirtir. Varsayılan değer false şeklindedir |
+| `sslCertificate` | `ssl_cert_pem_file` | SSL etkinse gereken sertifika dosyası |
+| `sslKey` | `ssl_key_pem_file` | SSL etkinse gereken anahtar dosya |
+| `cname` | `ssl_cname` | SSL etkinse için CNAME |
+| `dnsNameLabel` | `dns_name_label` | Puanlama uç noktası için DNS ad etiketi. Belirtilmemişse, Puanlama uç noktası için benzersiz bir DNS ad etiketi oluşturulacaktır. |
 
-Aşağıdaki JSON CLI ile kullanılmak üzere örnek bir dağıtım yapılandırmasıdır:
+Aşağıdaki JSON, CLı ile kullanılacak örnek bir dağıtım yapılandırması örneğidir:
 
 ```json
 {

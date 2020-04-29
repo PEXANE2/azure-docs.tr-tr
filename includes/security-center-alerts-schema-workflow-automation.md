@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 0b6864c3304b86e80549297fc073a2e387000d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272642"
 ---
 ```json
@@ -56,27 +56,27 @@ ms.locfileid: "80272642"
 }
 ```
 
-### <a name="the-data-model-of-the-schema"></a>Şema veri modeli
+### <a name="the-data-model-of-the-schema"></a>Şemanın veri modeli
 
 |Alan|Veri türü|Açıklama|
 |----|----|----|
-|**AlertDisplayName**|Dize|Uyarının görüntü adı.|
-|**Alerttype**|Dize|Uyarı türü. Aynı türdeki uyarılar aynı değere sahip olmalıdır. Bu alan, bir uyarı örneğinin değil, uyarı türünü temsil eden anahtarlı bir dizedir. Aynı algılama mantığı/analitik tüm uyarı örnekleri uyarı türü için aynı değere sahip olmalıdır.|
-|**Tehlikeye Varlık**|Dize|Bu uyarıyla en çok ilişkili kaynağın görüntü adı.|
+|**AlertDisplayName**|Dize|Uyarının görünen adı.|
+|**AlertType**|Dize|Uyarı türü. Aynı türdeki uyarılar aynı değere sahip olmalıdır. Bu alan, uyarı örneği olmayan bir uyarı türünü temsil eden anahtarlı bir dizedir. Aynı algılama mantığı/analitik içindeki tüm uyarı örnekleri, uyarı türü için aynı değere sahip olmalıdır.|
+|**Compromısedentity**|Dize|Bu uyarıyla ilgili olan kaynağın görünen adı.|
 |**Açıklama**|Dize|Uyarının açıklaması.|
-|**Son ZamanUtc**|DateTime|Uyarıya dahil edilen son olayın veya etkinliğin zamanı.  Alan, UTC saat dilimi bilgileri de dahil olmak üzere ISO8601 biçimine uygun bir dize olmalıdır.|
-|**Varlıklar**|Ayrılmaz (IEntity)|Uyarıyla ilgili varlıkların listesi. Bu liste, farklı türde varlıkların bir karışımını tutabilir. Varlıklar türü, Varlıklar bölümünde tanımlanan türlerden herhangi biri olabilir. Aşağıdaki listede olmayan varlıklar da gönderilebilir, ancak işlenmeleri garanti edilmez (uyarı yeni varlık türleri ile doğrulamada başarısız olmaz).|
-|**Genişletilmiş Özellikler**|Sözlük (String, String)|Sağlayıcılar (isteğe bağlı olarak) buraya özel alanlar içerebilir.|
-|**Niyet**|Sabit Listesi|Uyarının arkasındaki öldürme zinciriyle ilgili niyet. Desteklenen değerler listesi ve Azure Güvenlik Merkezi'nin desteklenen öldürme zinciri amaçlarının açıklamaları için [Bkz.](../articles/security-center/alerts-reference.md#intentions)<br/>Bu alanın birden çok değeri olabilir (virgülle ayrılmış).|
-|**IsIncident**|Bool|Bu alan, uyarının bir olay (birkaç uyarının bileşik gruplandırması) veya tek bir uyarı olup olmadığını belirler. Alan için varsayılan değer 'false' (tek bir uyarı anlamına gelir).|
-|**İşlemeSon Zaman**|DateTime|Uyarıyı tutan özgün üründeki son kullanıcı ya da uyarıyı elinde bulunduran son kullanıcıya erişilebildiği saat.|
-|**ProductName**|Dize|Bu uyarıyı yayınlayan ürünün adı (Azure Güvenlik Merkezi, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS vb.).|
-|**Düzeltme Adımları**|Liste<String>|Uyarıyı düzeltmek için el ile eylem öğeleri.|
-|**ResourceIdentifiers**|Liste (Kaynak Tanımlayıcıları)|Uyarıyı doğru ürün pozlama grubuna (kiracı, çalışma alanı, abonelik vb.) yönlendirmek için kullanılabilecek bu uyarının kaynak tanımlayıcıları. Uyarı başına farklı türde birden fazla tanımlayıcı olabilir.|
-|**Önem Derecesi**|Sabit Listesi|Sağlayıcı tarafından bildirilen uyarının önem derecesi. Olası Değerler: Bilgi, Düşük, Orta ve Yüksek.|
-|**Başlangıç ZamanıUtc**|DateTime|Uyarıya dahil edilen ilk olayın veya etkinliğin zamanı. Alan, UTC saat dilimi bilgileri de dahil olmak üzere ISO8601 biçimine uygun bir dize olmalıdır.|
-|**Durum**|Sabit Listesi|Uyarının yaşam döngüsü durumu.<br/>Desteklenen durumlar şunlardır: Yeni, Çözümlenmiş, Görevden Alınan, Bilinmeyen.<br/>Desteklenen seçenekler dışında bir değer belirten bir uyarı 'Bilinmiyor' durumu atanır.<br/>Değer belirtmeyen bir uyarıya 'Yeni' durumu atanır.|
-|**SystemAlertId**|Dize|Uyarı tanımlayıcısı.|
-|**TimeGenerated**|DateTime|Uyarının uyarı sağlayıcısı tarafından oluşturulduğu saat. Dahili uyarı sağlayıcıları tarafından bildirilmemişse, bir ürün ürün tarafından işlenmek üzere alınan zamanı atamayı seçebilir.  Alan, UTC saat dilimi bilgileri de dahil olmak üzere ISO8601 biçimine uygun bir dize olmalıdır.|
-|**Satıcıadı**|Dize|Uyarıyı yükselten satıcının adı.|
+|**EndTimeUtc**|DateTime|Uyarıya dahil edilen son olay veya etkinliğin saati.  Alan, UTC saat dilimi bilgileri de dahil olmak üzere ıSO8601 biçimine uygun bir dize olmalıdır.|
+|**Varlıklar**|IEnumerable (IEntity)|Uyarıyla ilgili varlıkların listesi. Bu liste, farklı türlerde varlıkların bir karışımını tutabilir. Varlıklar, varlıklar bölümünde tanımlanmış türlerden herhangi biri olabilir. Aşağıdaki listede yer alan varlıklar da gönderilebilir, ancak işlenebilecekleri garanti edilmez (uyarı, yeni varlık türleriyle doğrulanmayacak).|
+|**ExtendedProperties**|Sözlük (dize, dize)|Sağlayıcılar, burada özel alanları dahil edebilir (isteğe bağlı olarak).|
+|**Varsayılandır**|Sabit Listesi|Uyarının arkasındaki sonlandırma zinciri ile ilgili amaç. Desteklenen değerler listesi ve Azure Güvenlik Merkezi 'nin desteklenen sonlandırma zinciri amaçları hakkında açıklamalar için bkz. [amaçları](../articles/security-center/alerts-reference.md#intentions).<br/>Bu alan birden fazla değere sahip olabilir (virgülle ayrılmış olarak).|
+|**Isıncident**|Bool|Bu alan, uyarının bir olay (çeşitli uyarıların bileşik gruplandırması) veya tek bir uyarı olup olmadığını belirler. Alan için varsayılan değer ' false ' (yani tek bir uyarıdır).|
+|**ProcessingEndTime**|DateTime|Uyarının, uyarının tutulduğu orijinal üründeki Son Kullanıcı tarafından erişileme zamanı.|
+|**ProductName**|Dize|Bu uyarıyı yayımlayan ürünün adı (Azure Güvenlik Merkezi, Azure ATP, Microsoft Defender ATP, O365 ATP, MCAS vb.).|
+|**Düzeltme adımları**|Listele<String>|Uyarının düzeltilmesi için gerçekleştirilecek el ile eylem öğeleri.|
+|**Resourcetanımlayıcılar**|Liste (kaynak tanımlayıcıları)|Bu uyarının, uyarıyı doğru ürün pozlaması grubuna (kiracı, çalışma alanı, abonelik vb.) yönlendirmek için kullanılabilecek kaynak tanımlayıcıları. Uyarı başına farklı türde birden fazla tanımlayıcı olabilir.|
+|**Önem Derecesi**|Sabit Listesi|Uyarının sağlayıcının bildirdiği şekilde önem derecesi. Olası değerler: bilgilendirici, düşük, orta ve yüksek.|
+|**StartTimeUtc**|DateTime|Uyarıya dahil edilen ilk olay veya etkinliğin saati. Alan, UTC saat dilimi bilgileri de dahil olmak üzere ıSO8601 biçimine uygun bir dize olmalıdır.|
+|**Durum**|Sabit Listesi|Uyarının yaşam döngüsü durumu.<br/>Desteklenen durumlar: yeni, çözümlenmiş, kapatıldı, bilinmiyor.<br/>Desteklenen seçeneklerden başka bir değer belirten bir uyarı ' bilinmiyor ' durumuna atandı.<br/>Değer belirtmeyen bir uyarıya ' New ' durumu atanır.|
+|**Systemalertıd**|Dize|Uyarı tanımlayıcısı.|
+|**TimeGenerated**|DateTime|Uyarının uyarı sağlayıcısı tarafından oluşturulduğu zaman. İç uyarı sağlayıcılarına göre bildirilmezse, ürün tarafından işlenmek üzere alındığı zamanı atamayı tercih edebilirsiniz.  Alan, UTC saat dilimi bilgileri de dahil olmak üzere ıSO8601 biçimine uygun bir dize olmalıdır.|
+|**SatıcıAdı**|Dize|Uyarıyı Başlatan satıcının adı.|
 |||

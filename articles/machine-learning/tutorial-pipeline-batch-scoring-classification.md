@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: toplu puanlama için ML boru hatları'
+title: 'Öğretici: toplu Puanlama için ML işlem hatları'
 titleSuffix: Azure Machine Learning
-description: Bu öğreticide, görüntü sınıflandırma modelinde toplu puanlama gerçekleştirmek için bir makine öğrenme ardışık hattı oluşturursunuz. Azure Machine Learning, altyapı ve otomasyon yerine makine öğrenimine odaklanmanızı sağlar.
+description: Bu öğreticide, bir görüntü sınıflandırma modelinde Batch Puanlama gerçekleştirmek için bir makine öğrenimi işlem hattı oluşturacaksınız. Azure Machine Learning altyapı ve otomasyon yerine makine öğrenimine odaklanabilmenizi sağlar.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,47 +11,47 @@ ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
 ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472229"
 ---
-# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: Toplu puanlama için bir Azure Machine Learning ardışık hattı oluşturun
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Toplu puanlama işini çalıştırmak için Azure Machine Learning'de nasıl bir boru hattı oluşturabildiğini öğrenin. Makine öğrenimi boru hatları iş akışınızı hız, taşınabilirlik ve yeniden kullanımla optimize eder, böylece altyapı ve otomasyon yerine makine öğrenimine odaklanabilirsiniz. Bir ardışık yapı oluşturup yayımladıktan sonra, herhangi bir platformdaki herhangi bir HTTP kitaplığından ardışık lığını tetiklemek için kullanabileceğiniz bir DSAMA bitiş noktası nı yapılandırırsınız. 
+Batch Puanlama işini çalıştırmak için Azure Machine Learning bir işlem hattı oluşturmayı öğrenin. Makine öğrenimi ardışık düzenleri, iş akışınızı hız, taşınabilirlik ve yeniden kullanım açısından iyileştirerek altyapı ve otomasyon yerine makine öğrenimine odaklanmanıza olanak sağlayabilir. Bir işlem hattı derleyip yayımladıktan sonra, işlem hattını herhangi bir platformda herhangi bir HTTP kitaplığından tetiklemek için kullanabileceğiniz bir REST uç noktası yapılandırırsınız. 
 
-Örnek, etiketlenmemiş görüntüleri sınıflandırmak için Tensorflow'da uygulanan önceden eğitilmiş bir [Inception-V3](https://arxiv.org/abs/1512.00567) kıvrımlı sinir ağı modelini kullanır. [Makine öğrenimi boru hatları hakkında daha fazla bilgi edinin.](concept-ml-pipelines.md)
+Örnek, etiketli görüntüleri sınıflandırmak için TensorFlow 'da uygulanan önceden eğitilen [Inception-v3](https://arxiv.org/abs/1512.00567) sinir ağ modelini kullanır. [Makine öğrenimi işlem hatları hakkında daha fazla bilgi edinin](concept-ml-pipelines.md).
 
 Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 > [!div class="checklist"]
 > * Çalışma alanını yapılandırma 
-> * Örnek verileri karşıdan yükleme ve depolama
-> * Veri alma ve çıktı verileri için veri kümesi nesneleri oluşturma
-> * Modeli çalışma alanınızda indirin, hazırlayın ve kaydettirin
-> * Hesaplama hedeflerini sağlama ve puanlama komut dosyası oluşturma
-> * Async `ParallelRunStep` toplu puanlama için sınıfı kullanın
-> * Bir ardışık hat lar oluşturma, çalıştırma ve yayımlama
-> * Ardışık hatlar için BIR REST bitiş noktası etkinleştirme
+> * Örnek verileri indirme ve depolama
+> * Verileri getirmek ve çıkarmak için veri kümesi nesneleri oluşturma
+> * Çalışma alanınıza modeli indirme, hazırlama ve kaydetme
+> * İşlem hedeflerini sağlama ve bir Puanlama betiği oluşturma
+> * Zaman uyumsuz `ParallelRunStep` toplu Puanlama için sınıfı kullanın
+> * İşlem hattı oluşturma, çalıştırma ve yayımlama
+> * İşlem hattı için bir REST uç noktasını etkinleştirme
 
-Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Machine Learning çalışma alanınız veya dizüstü sanal makineniz yoksa, [kurulum öğreticisinin Bölüm 1'ini](tutorial-1st-experiment-sdk-setup.md)tamamlayın.
-* Kurulum öğreticisini bitirdiğinizde, *öğreticileri/makine öğrenimi-boru hatlarını-gelişmiş/öğretici-boru hattı-toplu-puanlama-sınıflandırma.ipynb* not defterini açmak için aynı dizüstü bilgisayar sunucusunu kullanın.
+* Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
+* Kurulum öğreticisini tamamladığınızda, *öğreticiler/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
 
-Kendi [yerel ortamda](how-to-configure-environment.md#local)kurulum öğretici çalıştırmak istiyorsanız, [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)üzerinde öğretici erişebilirsiniz. Gerekli `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` paketleri almak için çalıştırın.
+Kurulum öğreticisini kendi [Yerel ortamınızda](how-to-configure-environment.md#local)çalıştırmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials)'daki öğreticiye erişebilirsiniz. Gerekli `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` paketleri almak için öğesini çalıştırın.
 
-## <a name="configure-workspace-and-create-a-datastore"></a>Çalışma alanını yapılandırma ve bir veri deposu oluşturma
+## <a name="configure-workspace-and-create-a-datastore"></a>Çalışma alanını yapılandırma ve veri deposu oluşturma
 
-Varolan Azure Machine Learning çalışma alanından bir çalışma alanı nesnesi oluşturun.
+Mevcut Azure Machine Learning çalışma alanından bir çalışma alanı nesnesi oluşturun.
 
-- [Çalışma alanı,](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Çalışma alanı, model çalışmalarınızı izlemek ve izlemek için kullanabileceğiniz bir bulut kaynağı da oluşturur. 
-- `Workspace.from_config()`dosyayı `config.json` okur ve kimlik doğrulama ayrıntılarını adlı `ws`bir nesneye yükler. Nesne `ws` bu öğretici boyunca kod kullanılır.
+- [Çalışma alanı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) , Azure aboneliğinizi ve kaynak bilgilerinizi kabul eden bir sınıftır. Çalışma alanı, modelinizi izlemek ve izlemek için kullanabileceğiniz bir bulut kaynağı da oluşturur. 
+- `Workspace.from_config()``config.json` dosyayı okur ve ardından kimlik doğrulama ayrıntılarını adlı `ws`bir nesneye yükler. Bu `ws` öğreticide, nesne kodda kullanılır.
 
 ```python
 from azureml.core import Workspace
@@ -60,7 +60,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-a-datastore-for-sample-images"></a>Örnek görüntüler için bir veri deposu oluşturma
 
-Hesapta, `pipelinedata` imagenet değerlendirme genel veri örneğini ortak blob kapsayıcısından `sampledata` alın. Verileri `register_azure_blob_container()` çalışma alanı için kullanılabilir `images_datastore`hale getirmek için çağrı. Ardından, çalışma alanı varsayılan veri deposunu çıktı veri deposu olarak ayarlayın. Ardışık yöndeçıktı puanlamak için çıktı veri deposunu kullanın.
+`pipelinedata` Hesapta, `sampledata` genel blob kapsayıcısından ımagenet değerlendirmesi ortak veri örneğini alın. Verileri `register_azure_blob_container()` , ad `images_datastore`altında çalışma alanı için kullanılabilir hale getirmek için çağırın. Daha sonra, çalışma alanı varsayılan veri deposunu çıkış veri deposu olarak ayarlayın. İşlem hattındaki çıktıyı öğrenmek için çıkış veri deposunu kullanın.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -76,16 +76,16 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Veri kümesi nesneleri oluşturma
 
-Ardışık hatlar `Dataset` inşa edilirken, nesneler çalışma alanı veri `PipelineData` depolarından verileri okumak için kullanılır ve nesneler ara verileri ardışık satır adımları arasında aktarmak için kullanılır.
+İşlem hatları oluştururken, `Dataset` nesneler çalışma alanı veri depolarından verileri okumak için kullanılır ve `PipelineData` nesneler işlem hattı adımları arasında ara verileri aktarmak için kullanılır.
 
 > [!Important]
-> Bu öğreticideki toplu puanlama örneği yalnızca bir ardışık işlem adımı kullanır. Birden çok adımı olan kullanım durumlarında, tipik akış şu adımları içerir:
+> Bu öğreticideki toplu işlem Puanlama örneği yalnızca bir ardışık düzen adımını kullanır. Birden çok adımı olan kullanım durumlarında, tipik akış şu adımları içerir:
 >
-> 1. Ham `Dataset` veri almak, bazı dönüşüm gerçekleştirmek ve sonra bir `PipelineData` nesne *çıktısı* için *girişleri* olarak nesneleri kullanın.
+> 1. Ham `Dataset` verileri getirmek, bazı dönüşümleriniz gerçekleştirmek ve ardından bir `PipelineData` nesneyi *çıkarmak* için nesneleri *giriş* olarak kullanın.
 >
-> 2. Önceki adımdaki *çıktı nesnesini* *giriş nesnesi*olarak kullanın. `PipelineData` Sonraki adımlar için tekrarlayın.
+> 2. `PipelineData` Önceki adımda bir *giriş nesnesi*olarak *Çıkış nesnesini* kullanın. Sonraki adımlar için tekrarlayın.
 
-Bu senaryoda, `Dataset` hem giriş görüntüleri hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen nesneler oluşturursunuz. Ayrıca, toplu `PipelineData` iş puanlama çıktıverileri için bir nesne oluşturursunuz.
+Bu senaryoda, hem giriş görüntüleri `Dataset` hem de sınıflandırma etiketleri (y-test değerleri) için veri deposu dizinlerine karşılık gelen nesneler oluşturursunuz. Toplu Puanlama çıkış verileri `PipelineData` için de bir nesne oluşturun.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -98,7 +98,7 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-Ardından, veri kümelerini çalışma alanına kaydedin.
+Sonra, veri kümelerini çalışma alanına kaydedin.
 
 ```python
 
@@ -106,9 +106,9 @@ input_images = input_images.register(workspace = ws, name = "input_images")
 label_ds = label_ds.register(workspace = ws, name = "label_ds")
 ```
 
-## <a name="download-and-register-the-model"></a>Modeli indirin ve kaydettirin
+## <a name="download-and-register-the-model"></a>Modeli indir ve Kaydet
 
-Önceden eğitilmiş Tensorflow modelini bir ardışık hat ta yığın puanlamaiçin kullanmak için indirin. İlk olarak, modeli depoladığınız yerel bir dizin oluşturun. Daha sonra, modeli indirin ve ayıklayın.
+Bir işlem hattındaki toplu Puanlama için kullanmak üzere önceden eğitilen TensorFlow modelini indirin. İlk olarak, modeli depoladığınız yerel bir dizin oluşturun. Ardından, modeli indirip ayıklayın.
 
 ```python
 import os
@@ -123,7 +123,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Ardından, modeli çalışma alanınıza kaydedin, böylece ardışık işlemdeki modeli kolayca alabilirsiniz. `register()` Statik işlevde `model_name` parametre, modelinizi SDK boyunca bulmak için kullandığınız anahtardır.
+Ardından, modeli işlem hattı işleminde kolayca alabilmeniz için çalışma alanınıza kaydedin. `register()` Statik IŞLEVDE `model_name` parametresi SDK genelinde modelinizi bulmak için kullandığınız anahtardır.
 
 ```python
 from azureml.core.model import Model
@@ -135,11 +135,11 @@ model = Model.register(model_path="models/inception_v3.ckpt",
                        workspace=ws)
 ```
 
-## <a name="create-and-attach-the-remote-compute-target"></a>Uzak işlem hedefini oluşturma ve iliştirme
+## <a name="create-and-attach-the-remote-compute-target"></a>Uzaktan işlem hedefini oluşturma ve iliştirme
 
-Makine öğrenimi ardışık hatları yerel olarak çalıştırılamaz, bu nedenle bunları bulut kaynakları veya *uzaktan bilgi işlem hedefleri*üzerinde çalıştırın. Uzaktan işlem hedefi, denemeler ve makine öğrenimi iş akışları çalıştırdığınız yeniden kullanılabilir bir sanal bilgi işlem ortamıdır. 
+Makine öğrenimi ardışık düzenleri yerel olarak çalıştırılamaz, bu nedenle bunları bulut kaynaklarında veya *uzak işlem hedeflerinde*çalıştırmalısınız. Uzaktan işlem hedefi, denemeleri ve makine öğrenimi iş akışlarını çalıştırdığınız yeniden kullanılabilir bir sanal işlem ortamıdır. 
 
-GPU özellikli [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) bir hedef oluşturmak için aşağıdaki kodu çalıştırın ve ardından çalışma alanınıza takın. Bilgi işlem hedefleri hakkında daha fazla bilgi için [kavramsal makaleye](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)bakın.
+GPU etkin [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) bir hedef oluşturmak ve ardından çalışma alanınıza eklemek için aşağıdaki kodu çalıştırın. İşlem hedefleri hakkında daha fazla bilgi için [kavramsal makaleye](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)bakın.
 
 
 ```python
@@ -160,16 +160,16 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-## <a name="write-a-scoring-script"></a>Puanlama komut dosyası yazma
+## <a name="write-a-scoring-script"></a>Puanlama betiği yazma
 
-Puanlama yapmak için, bir toplu `batch_scoring.py`iş puanlama komut dosyası adlı oluşturun ve ardından geçerli dizine yazın. Komut dosyası giriş görüntülerini alır, sınıflandırma modelini uygular ve sonra tahminleri bir sonuç dosyasına çıkarır.
+Puanlama yapmak için, adlı `batch_scoring.py`bir Batch Puanlama betiği oluşturun ve sonra geçerli dizine yazın. Betik, giriş görüntülerini alır, sınıflandırma modelini uygular ve daha sonra tahminleri bir sonuç dosyasına çıkarır.
 
-`batch_scoring.py` Komut dosyası, daha sonra `ParallelRunStep` oluşturduğunuz dosyadan geçirilen aşağıdaki parametreleri alır:
+`batch_scoring.py` Betik, daha sonra oluşturduğunuz sunucudan `ParallelRunStep` geçirilen aşağıdaki parametreleri alır:
 
 - `--model_name`: Kullanılan modelin adı.
-- `--labels_name`: Dosyayı `labels.txt` `Dataset` tutanın adı.
+- `--labels_name`: `Dataset` `labels.txt` Dosyasını tutan öğesinin adı.
 
-Boru hattı altyapısı, parametreleri `ArgumentParser` boru hattı adımlarına geçirmek için sınıfı kullanır. Örneğin, aşağıdaki kodda, ilk `--model_name` bağımsız değişken özellik tanımlayıcısı `model_name`verilir. `init()` İşlev, `Model.get_model_path(args.model_name)` bu özelliğe erişmek için kullanılır.
+İşlem hattı altyapısı, parametreleri `ArgumentParser` işlem hattı adımlarına geçirmek için sınıfını kullanır. Örneğin, aşağıdaki kodda, ilk bağımsız değişkene `--model_name` özellik tanımlayıcısı `model_name`verilir. `init()` İşlevinde, `Model.get_model_path(args.model_name)` bu özelliğe erişmek için kullanılır.
 
 
 ```python
@@ -258,11 +258,11 @@ def run(mini_batch):
 ```
 
 > [!TIP]
-> Bu öğreticideki ardışık işlem yalnızca bir adımı vardır ve çıktıyı bir dosyaya yazar. Çok adımlı ardışık hatlar `ArgumentParser` için, sonraki adımlara giriş için çıktı verileri yazmak için bir dizin tanımlamak için de kullanın. `ArgumentParser` Tasarım deseni kullanarak birden çok satır adımı arasında veri geçirme örneği için [not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)bakın.
+> Bu öğreticideki işlem hattının yalnızca bir adımı vardır ve çıktıyı bir dosyaya yazar. Çok adımlı işlem hatları için, sonraki adımlara giriş `ArgumentParser` için çıkış verilerini yazmak üzere bir dizin tanımlamak üzere öğesini de kullanabilirsiniz. `ArgumentParser` Tasarım düzenini kullanarak birden çok işlem hattı adımı arasında veri geçirmenin bir örneği için bkz. [Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-the-pipeline"></a>Boru hattını oluşturun
+## <a name="build-the-pipeline"></a>İşlem hattını oluşturma
 
-Ardışık komut dosyasını çalıştırmadan önce, Python ortamını tanımlayan ve `batch_scoring.py` komut dosyanızın gerektirdiği bağımlılıkları oluşturan bir nesne oluşturun. Gerekli temel bağımlılık Tensorflow, ancak arka `azureml-defaults` plan işlemleri için de yükleyin. Bağımlılıkları `RunConfiguration` kullanarak bir nesne oluşturun. Ayrıca, Docker ve Docker-GPU desteğini belirtin.
+İşlem hattını çalıştırmadan önce, Python ortamını tanımlayan bir nesne oluşturun ve betiğinizin `batch_scoring.py` gerektirdiği bağımlılıkları oluşturur. Gerekli ana bağımlılık, TensorFlow ' dır, ancak arka plan `azureml-defaults` süreçlerini de yüklersiniz. Bağımlılıkları kullanarak `RunConfiguration` bir nesne oluşturun. Ayrıca, Docker ve Docker-GPU desteği de belirtin.
 
 ```python
 from azureml.core import Environment
@@ -275,9 +275,9 @@ env.python.conda_dependencies = cd
 env.docker.base_image = DEFAULT_GPU_IMAGE
 ```
 
-### <a name="create-the-configuration-to-wrap-the-script"></a>Komut dosyasını sarmak için yapılandırmayı oluşturma
+### <a name="create-the-configuration-to-wrap-the-script"></a>Betiği kaydırmak için yapılandırma oluştur
 
-Komut dosyasını, ortam yapılandırmasını ve parametreleri kullanarak ardışık yapı adımını oluşturun. Çalışma alanınıza zaten iliştirdiğiniz bilgi işlem hedefini belirtin.
+Komut dosyası, ortam yapılandırması ve parametreleri kullanarak işlem hattı adımını oluşturun. Çalışma alanınıza zaten eklediğiniz işlem hedefini belirtin.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -295,18 +295,18 @@ parallel_run_config = ParallelRunConfig(
 )
 ```
 
-### <a name="create-the-pipeline-step"></a>Boru hattı adımını oluşturma
+### <a name="create-the-pipeline-step"></a>İşlem hattı adımını oluşturma
 
-Bir ardışık ad, bir ardışık hattı çalıştırmak için gereken her şeyi kapsayan bir nesnedir:
+İşlem hattı adımı, aşağıdakiler dahil olmak üzere bir işlem hattı çalıştırmak için ihtiyacınız olan her şeyi kapsülleyen bir nesnedir:
 
-* Çevre ve bağımlılık ayarları
-* Boru hattını çalıştırmak için bilgi işlem kaynağı
-* Giriş ve çıktı verileri ve herhangi bir özel parametre
-* Adım sırasında çalıştırmak için bir komut dosyası na veya SDK mantığına başvuru
+* Ortam ve bağımlılık ayarları
+* İşlem hattının çalıştırılacağı işlem kaynağı
+* Giriş ve çıkış verileri ve tüm özel parametreler
+* Adım sırasında çalışacak bir betik veya SDK mantığına başvuru
 
-Üst sınıftan [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)birden çok sınıf devralır. Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak için sınıfları seçebilirsiniz. Bu örnekte, özel `ParallelRunStep` bir Python komut dosyası kullanarak adım mantığınızı tanımlamak için sınıfı kullanırsınız. Komut dosyanıza bir bağımsız değişken adım veya adım çıktısı için bir giriş ise, `arguments` bağımsız değişken hem `input` *dizi* de *hem de* ya da `output` parametre, sırasıyla tanımlanmalıdır. 
+Birden çok sınıf üst sınıftan [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)devralınır. Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak üzere sınıfları seçebilirsiniz. Bu örnekte, özel bir Python betiği `ParallelRunStep` kullanarak adım mantığınızı tanımlamak için sınıfını kullanırsınız. Betiğinizin bir bağımsız değişkeni, adımın bir girişi ya da adımın bir çıkışı ise, bağımsız değişkenin sırasıyla *hem* `arguments` *dizide hem de* `input` ya da `output` parametresinde tanımlanması gerekir. 
 
-Birden fazla adımın olduğu senaryolarda, `outputs` dizideki bir nesne başvurusu sonraki bir ardışık adım için *giriş* olarak kullanılabilir hale gelir.
+Birden fazla adımın olduğu senaryolarda `outputs` dizideki bir nesne başvurusu, sonraki bir işlem hattı adımı için *giriş* olarak kullanılabilir hale gelir.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -323,16 +323,16 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-Farklı adım türleri için kullanabileceğiniz tüm sınıfların listesi için [adımlar paketine](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)bakın.
+Farklı adım türleri için kullanabileceğiniz tüm sınıfların bir listesi için, bkz. [adımlar paketi](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
-## <a name="submit-the-pipeline"></a>Boru hattını gönderme
+## <a name="submit-the-pipeline"></a>İşlem hattını gönderme
 
-Şimdi, boru hattını çalıştırın. İlk olarak, `Pipeline` çalışma alanı başvurunuzu ve oluşturduğunuz ardışık hatlar adımını kullanarak bir nesne oluşturun. `steps` Parametre bir dizi adımdır. Bu durumda, toplu puanlama için yalnızca bir adım vardır. Birden çok adıma sahip ardışık hatlar oluşturmak için adımları bu dizide sırayla yerleştirin.
+Şimdi işlem hattını çalıştırın. İlk olarak, çalışma `Pipeline` alanı başvurusunu ve oluşturduğunuz işlem hattı adımını kullanarak bir nesne oluşturun. `steps` Parametresi bir adım dizisidir. Bu durumda, toplu Puanlama için yalnızca bir adım vardır. Birden çok adım içeren işlem hatları oluşturmak için, adımları Bu dizide sırayla yerleştirin.
 
-Ardından, yürütme `Experiment.submit()` için ardışık hatlar göndermek için işlevi kullanın. Ayrıca özel parametreyi `param_batch_size`de belirtirsiniz. İşlev, `wait_for_completion` boru hattı oluşturma işlemi sırasında günlükleri çıktırıyor. Geçerli ilerlemeyi görmek için günlükleri kullanabilirsiniz.
+Sonra, işlem hattını `Experiment.submit()` yürütmeye göndermek için işlevini kullanın. Özel parametresini `param_batch_size`de belirtirsiniz. `wait_for_completion` İşlevi, işlem hattı derleme işlemi sırasında günlükleri çıktı olarak verir. Geçerli ilerlemeyi görmek için günlükleri kullanabilirsiniz.
 
 > [!IMPORTANT]
-> İlk boru hattı çalışması yaklaşık *15 dakika*sürer. Tüm bağımlılıklar indirilmeli, Docker görüntüsü oluşturulmalı ve Python ortamı sağlanıp oluşturulmalıdır. Bu kaynaklar oluşturulduğu yerine yeniden kullanıldığından, ardışık alanı yeniden çalıştırmak çok daha az zaman alır. Ancak, ardışık işlem için toplam çalışma süresi komut dosyalarınızın iş yüküne ve her ardışık işlem adımında çalışan işlemlere bağlıdır.
+> İlk işlem hattı çalıştırması yaklaşık *15 dakika*sürer. Tüm bağımlılıklar indirilmelidir, bir Docker görüntüsü oluşturulur ve Python ortamı sağlanmakta ve oluşturulur. Bu kaynaklar oluşturulması yerine yeniden kullanıldığından işlem hattının yeniden çalıştırılması çok daha az zaman alır. Ancak, işlem hattının toplam çalışma süresi, betiklerinizin ve her bir ardışık düzen adımında çalışan işlemlerin iş yüküne bağlıdır.
 
 ```python
 from azureml.core import Experiment
@@ -343,9 +343,9 @@ pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
-### <a name="download-and-review-output"></a>Çıktıyı karşıdan yükleme ve gözden geçirme
+### <a name="download-and-review-output"></a>Çıktıyı indirin ve gözden geçirin
 
-Komut dosyasından oluşturulan çıktı dosyasını indirmek için `batch_scoring.py` aşağıdaki kodu çalıştırın. Ardından, puanlama sonuçlarını keşfedin.
+`batch_scoring.py` Betikten oluşturulan çıkış dosyasını indirmek için aşağıdaki kodu çalıştırın. Ardından, Puanlama sonuçlarını araştırın.
 
 ```python
 import pandas as pd
@@ -365,11 +365,11 @@ print("Prediction has ", df.shape[0], " rows")
 df.head(10)
 ```
 
-## <a name="publish-and-run-from-a-rest-endpoint"></a>REST bitiş noktasından yayımlayın ve çalıştırın
+## <a name="publish-and-run-from-a-rest-endpoint"></a>REST uç noktasından Yayımla ve Çalıştır
 
-Çalışma alanınıza ardışık ardışık hatlar hattını yayımlamak için aşağıdaki kodu çalıştırın. Azure Machine Learning stüdyosundaki çalışma alanınızda, çalışma geçmişi ve süreleri de dahil olmak üzere ardışık hatlar için meta verileri görebilirsiniz. Ayrıca stüdyodan el ile boru hattı çalıştırabilirsiniz.
+İşlem hattını çalışma alanınıza yayımlamak için aşağıdaki kodu çalıştırın. Azure Machine Learning Studio 'daki çalışma alanınızda çalışma geçmişi ve süreler dahil olmak üzere işlem hattı için meta verileri görebilirsiniz. Ardışık düzeni Studio 'dan el ile de çalıştırabilirsiniz.
 
-Ardışık kaynak yayımlama, ardışık ardışık lığı herhangi bir platformdaki herhangi bir HTTP kitaplığından çalıştırmak için kullanabileceğiniz bir REST bitiş noktası sağlar.
+İşlem hattının yayımlanması, herhangi bir platformda herhangi bir HTTP kitaplığından işlem hattını çalıştırmak için kullanabileceğiniz bir REST uç noktası sağlar.
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -378,11 +378,11 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-Ardışık ardışık hattı REST bitiş noktasından çalıştırmak için bir OAuth2 Taşıyıcı türü kimlik doğrulama üstbilgisine ihtiyacınız vardır. Aşağıdaki örnekte etkileşimli kimlik doğrulama (çizim amacıyla) kullanılır, ancak otomatik veya başsız kimlik doğrulaması gerektiren çoğu üretim senaryosu [için, bu makalede açıklandığı](how-to-setup-authentication.md)gibi hizmet temel kimlik doğrulamasını kullanın.
+İşlem hattını REST uç noktasından çalıştırmak için, OAuth2 taşıyıcı türünde bir kimlik doğrulama üst bilgisi gerekir. Aşağıdaki örnek etkileşimli kimlik doğrulaması kullanır (çizim amaçları için), ancak otomatik veya gözetimsiz kimlik doğrulaması gerektiren çoğu üretim senaryosunda, [Bu makalede açıklandığı](how-to-setup-authentication.md)gibi hizmet sorumlusu kimlik doğrulamasını kullanın.
 
-Hizmet temel kimlik doğrulaması, *Azure Etkin Dizini'nde* *bir Uygulama Kaydı* oluşturmayı içerir. İlk olarak, bir istemci sırrı oluşturursunuz ve ardından makine öğrenimi çalışma alanınıza hizmet temel *rol erişimi* verirsiniz. Kimlik [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) doğrulama akışınızı yönetmek için sınıfı kullanın. 
+Hizmet sorumlusu kimlik doğrulaması, *Azure Active Directory*bir *uygulama kaydı* oluşturulmasını içerir. İlk olarak, bir istemci parolası oluşturun ve ardından hizmet sorumlusu rolünüze Machine Learning çalışma alanınıza *erişim* verirsiniz. Kimlik doğrulama [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) akışınızı yönetmek için sınıfını kullanın. 
 
-Her [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) `ServicePrincipalAuthentication` ikisi `AbstractAuthentication`de ve miras . Her iki durumda [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) da, üstbilgi almak için işlevi aynı şekilde kullanın:
+Hem [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) hem `ServicePrincipalAuthentication` de ' `AbstractAuthentication`den devralınır. Her iki durumda da, üst [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) bilgiyi getirmek için işlevini aynı şekilde kullanın:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -391,11 +391,11 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-Yayınlanan ardışık ardışık nesnenin `endpoint` özelliğinden REST URL'sini alın. REST URL'sini azure machine learning stüdyosunda da çalışma alanınızda bulabilirsiniz. 
+Yayımlanan ardışık düzen nesnesinin `endpoint` ÖZELLIĞINDEN Rest URL 'sini alın. REST URL 'sini Azure Machine Learning Studio 'daki çalışma alanınızda de bulabilirsiniz. 
 
-Bitiş noktasına bir HTTP POST isteği oluşturun. İstekte kimlik doğrulama üstbilginizi belirtin. Deneme adı ve toplu iş boyutu parametresi olan bir JSON yük nesnesi ekleyin. Öğreticide daha önce `param_batch_size` belirtildiği gibi, `batch_scoring.py` komut dosyanızı adım `PipelineParameter` yapılandırmasında bir nesne olarak tanımladığınız için komut dosyanıza aktarılır.
+Uç noktaya bir HTTP POST isteği oluşturun. İstekte kimlik doğrulama üst bilgisini belirtin. Deneme adı ve toplu iş boyutu parametresine sahip bir JSON yük nesnesi ekleyin. Öğreticide daha önce belirtildiği gibi, `param_batch_size` adım yapılandırmasında bir `PipelineParameter` nesne olarak `batch_scoring.py` tanımladığınız için betiğe geçirilir.
 
-Çalıştırmayı tetiklemek için istekte bulunun. Çalışan kimliğin `Id` değerini almak için yanıt sözlüğünden anahtara erişmek için kod ekleyin.
+Çalıştırmayı tetiklemeye yönelik isteği yapın. Yanıt sözlüğünden `Id` anahtara erişmek için kodu ekleyin ve çalıştırma kimliği değerini alın.
 
 ```python
 import requests
@@ -408,9 +408,9 @@ response = requests.post(rest_endpoint,
 run_id = response.json()["Id"]
 ```
 
-Yeni çalıştırmanın durumunu izlemek için çalıştırılatan kimliği kullanın. Yeni çalıştırmak bitirmek için başka bir 10-15 dakika sürer. 
+Yeni çalıştırmanın durumunu izlemek için çalıştırma KIMLIĞINI kullanın. Yeni çalıştırmanın tamamlanmasının bir başka 10-15 dakika sürer. 
 
-Yeni çalıştırma, öğreticide daha önce çalıştırdığınız ardışık hatlara benzer. Tam çıktıyı görüntülememeyi seçebilirsiniz.
+Yeni çalıştırma öğreticide daha önce çalıştırdığınız işlem hattına benzer şekilde görünür. Tam çıktıyı görüntüleme seçeneğini belirleyebilirsiniz.
 
 ```python
 from azureml.pipeline.core.run import PipelineRun
@@ -422,30 +422,30 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Diğer Azure Machine Learning eğitimlerini çalıştırmayı planlıyorsanız bu bölümü tamamlamayın.
+Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız, bu bölümü tamammayın.
 
-### <a name="stop-the-compute-instance"></a>İşlem örneğini durdurma
+### <a name="stop-the-compute-instance"></a>İşlem örneğini durdur
 
 [!INCLUDE [aml-stop-server](../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Her şeyi silme
+### <a name="delete-everything"></a>Her şeyi sil
 
-Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, bunları silin, böylece herhangi bir ücret ödemezsiniz:
+Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, hiçbir ücret ödemezsiniz:
 
-1. Azure portalında, sol menüde **Kaynak gruplarını**seçin.
-1. Kaynak grupları listesinde oluşturduğunuz kaynak grubunu seçin.
+1. Azure portal, sol taraftaki menüden **kaynak grupları**' nı seçin.
+1. Kaynak grupları listesinde, oluşturduğunuz kaynak grubunu seçin.
 1. **Kaynak grubunu sil**'i seçin.
-1. Kaynak grup adını girin. Ardından **Sil'i**seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**' i seçin.
 
-Kaynak grubunu da tutabilir, ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve sonra **Sil'i**seçin.
+Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve sonra **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makine öğrenme boru hatları öğretici, aşağıdaki görevleri yaptı:
+Bu makine öğrenimi ardışık düzenleri öğreticisinde aşağıdaki görevleri yaptınız:
 
 > [!div class="checklist"]
-> * Uzak bir GPU bilgi işlem kaynağında çalışacak ortam bağımlılıkları içeren bir ardışık hat lar oluşturun.
-> * Önceden eğitilmiş tensorflow modelini kullanarak toplu oluşturma tahminlerini çalıştırmak için bir puanlama komut dosyası oluşturdu.
-> * Bir ardışık hatlar yayımladı ve bir REST bitiş noktasından çalıştırılmasına olanak sağladı.
+> * Uzak bir GPU işlem kaynağında çalışacak ortam bağımlılıklarıyla bir işlem hattı oluşturuldu.
+> * Önceden eğitilen bir TensorFlow modeli kullanarak toplu tahminleri çalıştırmak için bir Puanlama betiği oluşturuldu.
+> * Bir işlem hattı yayımlandı ve bir REST uç noktasından çalıştırılmak üzere etkinleştirildi.
 
-Makine öğrenme SDK kullanarak boru hatları oluşturmak için nasıl daha fazla örnek için, [not defteri deposubakın.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
+Machine Learning SDK 'Yı kullanarak işlem hattı oluşturma hakkında daha fazla örnek için [Not defteri deposuna](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)bakın.

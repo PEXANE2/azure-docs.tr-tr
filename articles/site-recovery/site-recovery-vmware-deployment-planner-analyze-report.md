@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu analiz edin
-description: Bu makalede, Azure Site Kurtarma kullanarak VMware olağanüstü durum kurtarma için Kurtarma Dağıtım Planlayıcısı tarafından oluşturulan raporun Azure'a nasıl çözümleneneaçıklanmıştır.
+title: VMware olağanüstü durum kurtarma Dağıtım Planlayıcısı raporunu Azure Site Recovery ile çözümleyin
+description: Bu makalede, Azure Site Recovery kullanılarak Azure 'da VMware olağanüstü durum kurtarma için kurtarma Dağıtım Planlayıcısı tarafından oluşturulan raporun nasıl çözümleneceği açıklanır.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: mayg
 ms.openlocfilehash: 4dad11e8331064a9df1b1aed561e00b9a9b24017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257517"
 ---
-# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu Azure'a çözümleme
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure 'da VMware olağanüstü durum kurtarma için Dağıtım Planlayıcısı raporunu analiz etme
 
 Oluşturulan Microsoft Excel raporu aşağıdaki sayfaları içerir:
 ## <a name="on-premises-summary"></a>Şirket içi özeti
@@ -22,7 +22,7 @@ Oluşturulan Microsoft Excel raporu aşağıdaki sayfaları içerir:
 
 ![VMware ortamının şirket içi özeti](media/site-recovery-vmware-deployment-planner-analyze-report/on-premises-summary-v2a.png)
 
-**Başlangıç Tarihi** ve **Bitiş Tarihi**: Rapor oluşturma için kabul edilen profil oluşturma verilerinin başlangıç ve bitiş tarihleri. Varsayılan olarak, başlangıç tarihi profil oluşturmanın başladığı, bitiş tarihi ise profil oluşturmanın durdurulduğu tarihtir. Rapor bu parametrelerle oluşturulduysa bunlar ‘StartDate’ ve ‘EndDate’ değerleri olabilir.
+**Başlangıç tarihi** ve **bitiş tarihi**: rapor oluşturma için göz önünde bulundurmanız düşünülen profil oluşturma verilerinin başlangıç ve bitiş tarihleri. Varsayılan olarak, başlangıç tarihi profil oluşturmanın başladığı, bitiş tarihi ise profil oluşturmanın durdurulduğu tarihtir. Rapor bu parametrelerle oluşturulduysa bunlar ‘StartDate’ ve ‘EndDate’ değerleri olabilir.
 
 **Profil oluşturulan toplam gün sayısı**: Raporun oluşturulduğu başlangıç ile bitiş tarihleri arasında profil oluşturulan toplam gün sayısı.
 
@@ -34,7 +34,7 @@ Oluşturulan Microsoft Excel raporu aşağıdaki sayfaları içerir:
 
 **Ortalama disk boyutu (GB)**: Tüm uyumlu sanal makinelerde hesaplanan ortalama disk boyutudur.
 
-**İstenilen RPO (dakika)**: Gerekli bant genişliğini tahmin etmek için rapor oluşturma sırasında 'DesiredRPO' parametresi için varsayılan kurtarma noktası hedefi veya geçirilen değer.
+**Istenen RPO (dakika)**: varsayılan kurtarma noktası hedefi veya rapor oluşturma sırasında gerekli bant genişliğini tahmin etmek üzere ' DesiredRPO ' parametresi için geçirilen değer.
 
 **İstenen bant genişliği (Mb/sn)**: Rapor oluşturma sırasında ulaşılabilir RPO’yu tahmin etmek üzere ‘Bandwidth’ parametresi için geçirdiğiniz değerdir.
 
@@ -53,7 +53,7 @@ VMware’den Azure'a dağıtım raporunun öneriler sayfasında, seçilen ve ist
 
 **Sunucu Adı**: sanal makinelerinin raporu oluşturulan VMware vCenter veya ESXi ana bilgisayarının adı ya da IP adresi.
 
-**İstenen RPO**: Dağıtımınıza yönelik kurtarma noktası hedefi. Varsayılan olarak, gerekli ağ bant genişliği 15, 30 ve 60 dakikalık RPO değerleri için hesaplanır. Seçim temel alınarak, etkilenen değerler sayfada güncelleştirilir. Raporu oluştururken *İstenilen RPOinMin* parametresini kullandıysanız, bu değer Istenilen RPO sonucu gösterilir.
+**İstenen RPO**: Dağıtımınıza yönelik kurtarma noktası hedefi. Varsayılan olarak, gerekli ağ bant genişliği 15, 30 ve 60 dakikalık RPO değerleri için hesaplanır. Seçim temel alınarak, etkilenen değerler sayfada güncelleştirilir. Raporu oluştururken *Desiredrpoinmin* parametresini kullandıysanız, bu değer istenen RPO sonucunda gösterilir.
 
 ### <a name="profiling-overview"></a>Profil oluşturmaya genel bakış
 
@@ -71,7 +71,7 @@ VMware’den Azure'a dağıtım raporunun öneriler sayfasında, seçilen ve ist
 
 ![Dağıtım planlayıcısında gerekli ağ bant genişliği](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
 
-**RPO'yu yüzde 100 karşılamak için:** İstenilen RPO'yu yüzde 100 karşılamak için ayrılacak Mbps'deki önerilen bant genişliği. Bu bant genişliği miktarı, herhangi bir RPO ihlalini önlemek üzere tüm uyumlu sanal makinelerinizin kararlı durum delta çoğaltması için ayrılmalıdır.
+**%100 RPO süresini karşılamak için:** Sürenin yüzde 100 ' ünü karşılayacak şekilde ayrılacak, MB/sn cinsinden önerilen bant genişliği. Bu bant genişliği miktarı, herhangi bir RPO ihlalini önlemek üzere tüm uyumlu sanal makinelerinizin kararlı durum delta çoğaltması için ayrılmalıdır.
 
 **Yüzde 90 RPO süresini karşılamak için**: Geniş bant fiyatlandırması veya istediğiniz yüzde 100 RPO süresini karşılamak için gereken bant genişliğini ayarlayamamanız durumunda başka bir nedenle, istediğiniz yüzde 90 RPO süresini karşılayabilen daha düşük bir bant genişliği ayarlamayı seçebilirsiniz. Daha düşük olan bu bant genişliğini ayarlamanın etkilerini anlamak için, raporda beklenen RPO ihlallerinin sayısı ve süresine ilişkin bir ne yapmalı analizi sağlar.
 
@@ -92,7 +92,7 @@ Aracı korunan sanal makinelere zaten sahip olan bir yapılandırma sunucusu vey
 Tüm kurumsal Site Recovery dağıtımları için [ExpressRoute](https://aka.ms/expressroute) kullanılması önerilir.
 
 ### <a name="required-storage-accounts"></a>Gerekli depolama hesapları
-Aşağıdaki grafikte tüm uyumlu sanal makineleri korumak için gereken depolama hesaplarının (standart ve premium) toplam sayısı gösterilmektedir. Her bir VM için kullanılacak depolama hesabını öğrenmek için "VM depolama yerleşimi" bölümüne bakın. Dağıtım Planlayıcısı'nın v2.5'ini kullanıyorsanız, bu öneri yalnızca veriler Yönetilen Diskler'e doğrudan yazıldığından çoğaltma için gereken standart önbellek depolama hesaplarının sayısını gösterir.
+Aşağıdaki grafikte tüm uyumlu sanal makineleri korumak için gereken depolama hesaplarının (standart ve premium) toplam sayısı gösterilmektedir. Her bir VM için kullanılacak depolama hesabını öğrenmek için "VM depolama yerleşimi" bölümüne bakın. V 2.5 for Dağıtım Planlayıcısı kullanıyorsanız, bu öneri yalnızca veriler doğrudan yönetilen disklere yazıldığı için çoğaltma için gereken standart önbellek depolama hesaplarının sayısını gösterir.
 
 ![Dağıtım planlayıcısında gerekli depolama hesapları](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
@@ -157,19 +157,19 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 ## <a name="vm-storage-placement"></a>VM-depolama yerleşimi
 
 >[!Note]
->Dağıtım Planlayıcısı v2.5 itibaren doğrudan yönetilen disklere çoğaltacak makineler için depolama yerleşimi önerir.
+>Dağıtım Planlayıcısı v 2.5 onmalları, doğrudan yönetilen disklere çoğaltılacak makineler için depolama yerleşimini önerir.
 
 ![VM-depolama yerleşimi](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
-**Çoğaltma Depolama Türü**: VM'lerde belirtilen tüm karşılık gelen **VM'leri** yerine kopyalamak için kullanılan standart veya premium yönetilen disk.
+**Çoğaltma depolama türü**: sütun **yerleştirilecek VM** 'Lerde bahsedilen tüm ilgili sanal makineleri çoğaltmak için kullanılan standart veya Premium yönetilen bir disk.
 
-**Günlük Depolama Hesap Türü**: Tüm çoğaltma günlükleri standart bir depolama hesabında depolanır.
+**Günlük depolama hesabı türü**: tüm çoğaltma günlükleri standart depolama hesabında depolanır.
 
-**Depolama Hesabı için Önerilen Önek**: Önbellek depolama hesabının adlandırılması nda kullanılabilecek önerilen üç karakterli önek. Kendi ön ekinizi kullanabilirsiniz, ancak aracın önerisi [depolama hesapları için bölüm adlandırma kuralına](https://aka.ms/storage-performance-checklist) uygundur.
+**Depolama hesabı Için önerilen önek**: önbellek depolama hesabını adlandırırken kullanılabilecek üç karakterlik önerilen ön ek. Kendi ön ekinizi kullanabilirsiniz, ancak aracın önerisi [depolama hesapları için bölüm adlandırma kuralına](https://aka.ms/storage-performance-checklist) uygundur.
 
-**Önerilen Günlük Hesap Adı**: Önerilen önek'i ekledikten sonra depolama hesabı adı. Köşeli ayraç (< ve >) içindeki adı özel girdinizle değiştirin.
+**Önerilen günlük hesabı adı**: önerilen ön eki ekledikten sonra depolama hesabı adı. Köşeli ayraç (< ve >) içindeki adı özel girdinizle değiştirin.
 
-**Yerleşim Özeti**: Depolama türüne göre VM'leri korumak için gereken disklerin özeti. Toplam VM sayısını, tüm disklerde toplam sağlanan boyutu ve toplam disk sayısını içerir.
+**Yerleştirme Özeti**: depolama türüne göre korunan VM 'lere gereken disklerin bir özeti. Toplam sanal makine sayısı, tüm disklerde toplam sağlanan boyut ve toplam disk sayısı dahildir.
 
 **Yerleştirilecek Sanal Makineler**: En iyi performans ve kullanım için belirli bir depolama hesabına yerleştirilmesi gereken tüm sanal makinelerin listesi.
 
@@ -178,7 +178,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **VM Adı**: Bir rapor oluşturulurken VMListFile içinde kullanılan VM adı veya IP adresi. Bu sütunda ayrıca sanal makinelere bağlanan diskler (VMDK) listelenir. Yinelenen adlara veya IP adreslerine sahip vCenter sanal makinelerini birbirinden ayırt etmek için, adlar ESXi ana bilgisayar adını içerir. Listelenen ESXi ana bilgisayarı, profil oluşturma sırasında araç keşfettiğinde VM’in yerleştirildiği yerdir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet\*** şeklindedir. **Evet,** \* VM'nin [premium SSD'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu durumlar içindir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örnek:
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet\*** şeklindedir. **Evet** \* , VM 'nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulmuş yüksek değişim sıklığı veya IOPS diski P20 ya da P30 kategorisine uyar, ancak diskin boyutu diskin bir P10 veya P20 ile eşlenmesine neden olur. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir. Örneğin:
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15'tir
 * 256 GB ile 512 GB arası P20'dir.
@@ -186,11 +186,11 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 * 1025 GB ile 2048 GB arası P40'dır.
 * 2049 GB ile 4095 GB arası P50'dir.
 
-Örneğin, bir diskin iş yükü özellikleri onu P20 veya P30 kategorisine koyduysa, ancak boyut daha düşük bir premium depolama disk türüne göre eşleyse, araç VM'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 
-**Çoğaltma için oluşturulan Asrseeddisk (Yönetilen Disk)**: Çoğaltmayı etkinleştirdiğinizde oluşturulan diskin adı. Verileri ve anlık görüntülerini Azure'da saklar.
+**Çoğaltma için oluşturulan Asrseeddisk (yönetilen disk)**: çoğaltmayı etkinleştirdiğinizde oluşturulan diskin adı. Verileri ve anlık görüntülerini Azure 'da depolar.
 
 **En Yüksek Okuma/Yazma IOPS (Büyüme Faktörü ile)**: Disk üzerinde gelecekteki büyüme faktörünü de (varsayılan değer yüzde 30) içeren en yoğun iş yükü okuma/yazma IOPS değeridir (varsayılan değer yüzde 95’lik dilim). Sanal makinenin en yoğun okuma/yazma IOPS değeri profil oluşturma işleminin her dakikası boyunca tek disklerin okuma/yazma IOPS değerinin toplamı olduğundan, bir sanal makinenin toplam okuma/yazma IOPS değeri her zaman sanal makinenin ayrı disklerinin okuma/yazma IOPS değerine eşit değildir.
 
@@ -200,7 +200,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **Disk Sayısı**: Sanal makine üzerindeki toplam disk sayısı (VMDK).
 
-**Disk boyutu (GB)**: VM'nin tüm disklerinin toplam kurulum boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
+**Disk boyutu (GB)**: sanal makinenin tüm disklerinin toplam kurulum boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
 
 **Çekirdek**: Sanal makine üzerindeki CPU çekirdeği sayısı.
 
@@ -210,7 +210,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **Önyükleme Türü**: Sanal makinenin önyükleme türü. BIOS veya EFI olabilir.  Azure Site Recovery şu anda önyükleme diskindeki bölüm sayısı 4’ten az ve önyükleme kesimi boyutu 512 bayt olmak şartıyla Windows Server EFI VM’lerini (Windows Server 2012, 2012 R2 ve 2016) desteklemektedir. EFI VM'lerini korumak için Azure Site Recovery hareketlilik hizmeti sürümü 9.13 veya üstü olmalıdır. EFI VM'ler için yalnızca yük devretme desteklenir. Yeniden çalışma desteklenmez.  
 
-**İşletim Sistemi Türü**: VM'nin işletim sistemi türüdür. VM oluşturulurken VMware vSphere’den seçilen şablona bağlı olarak Windows veya Linux ya da başka bir işletim sistemi olabilir.  
+**Işletim sistemi türü**: VM 'nin işletim sistemi türüdür. VM oluşturulurken VMware vSphere’den seçilen şablona bağlı olarak Windows veya Linux ya da başka bir işletim sistemi olabilir.  
 
 ## <a name="incompatible-vms"></a>Uyumsuz VM’ler
 
@@ -221,14 +221,14 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **VM Uyumluluğu**: Belirli bir sanal makinenin, Site Recovery ile kullanım için neden uyumlu olmadığını gösterir. Sanal makinenin her uyumsuz diski için, yayımlanan [depolama sınırlarına](https://aka.ms/azure-storage-scalbility-performance) göre nedenler aşağıdakilerden biri olabilir:
 
-* Yanlış veri disk boyutu veya yanlış işletim sistemi disk boyutu. Destek sınırlarını [gözden geçirin.](vmware-physical-azure-support-matrix.md#azure-vm-requirements) 
+* Yanlış veri diski boyutu veya yanlış işletim sistemi disk boyutu. Destek sınırlarını [gözden geçirin](vmware-physical-azure-support-matrix.md#azure-vm-requirements) . 
 * Toplam VM boyutu (çoğaltma + TFO), desteklenen depolama hesabı boyut sınırını (35 TB) aşıyor. Bu uyumsuzluk genellikle sanal makine içindeki tek bir diskin standart depolama için desteklenen Azure veya Site Recovery sınırlarını aşan bir performans özelliği olduğunda gerçekleşir. Bu tür bir örnek, sanal makineyi premium depolama bölgesine iter. Ancak, bir premium depolama hesabı için desteklenen en büyük boyut 35 TB’dir ve tek bir korunan sanal makine birden fazla depolama hesabında korunamaz. Ayrıca, korunan bir sanal makine üzerinde yük devretme testi yürütüldüğünde, test ile çoğaltma aynı depolama hesabında devam eder. Bu örnekte, çoğaltmanın ilerlemesi ve yük devretme testinin paralel olarak başarılı olması için disk boyutunun 2 katını ayarlayın.
 
 * Kaynak IOPS, depolama IOPS için disk başına desteklenen 7500 sınırını aşıyor.
 
 * Kaynak IOPS, depolama IOPS için VM başına desteklenen 80.000 limitini aşıyor.
 
-* Ortalama veri karmaşası, disk için ortalama G/Ç boyutu için desteklenen Site Kurtarma veri karmaşası sınırını 20 MB/sn'yi aşar.
+* Ortalama veri dalgalanması, disk için Ortalama g/ç boyutu için desteklenen Site Recovery veri değişim sınırı olan 20 MB/sn 'yi aşıyor.
 
 * Sanal makine üzerindeki tüm disklerde bulunan en yüksek veri değişim sıklığı, VM başına 54 MB/sn’lik desteklenen Site Recovery en yüksek veri değişim sıklığı sınırını aşıyor.
 
@@ -245,7 +245,7 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 
 **Disk Sayısı**: Sanal makine üzerindeki toplam VMDK sayısı.
 
-**Disk boyutu (GB)**: VM'nin tüm disklerinin toplam kurulum boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
+**Disk boyutu (GB)**: sanal makinenin tüm disklerinin toplam kurulum boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
 
 **Çekirdek**: Sanal makine üzerindeki CPU çekirdeği sayısı.
 
@@ -260,14 +260,14 @@ Site Recovery çoğaltması için x MB/sn’den fazla bant genişliği ayarlayam
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery limitleri
 Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar. Bu limitler yaptığımız testleri temel alsa da mümkün olan tüm uygulama G/Ç birleşimlerini kapsamamaktadır. Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir. En iyi sonuçlar için, uygulamanın gerçek performans görüntüsünü elde etmek üzere, dağıtım planlamasından sonra bile yük devretme testi kullanılarak her zaman kapsamlı uygulama testleri gerçekleştirilmesi önerilir.
 
-**Çoğaltma depolama hedefi** | **Ortalama kaynak disk G/Ç boyutu** |**Ortalama kaynak disk veri değişim sıklığı** | **Günde toplam kaynak disk veri karmaşası**
+**Çoğaltma depolama hedefi** | **Ortalama kaynak disk G/Ç boyutu** |**Ortalama kaynak disk veri değişim sıklığı** | **Gün başına toplam kaynak disk veri değişim sıklığı**
 ---|---|---|---
 Standart depolama | 8 KB | 2 MB/sn | Disk başına 168 GB
 Premium P10 veya P15 disk | 8 KB  | 2 MB/sn | Disk başına 168 GB
 Premium P10 veya P15 disk | 16 KB | 4 MB/sn |  Disk başına 336 GB
 Premium P10 veya P15 disk | 32 KB veya daha büyük | 8 MB/sn | Disk başına 672 GB
 Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 421 GB
-Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük | 20 MB/sN | Disk başına 1684 GB
+Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük | 20 MB/sn | disk başına 1684 GB
 
 **Kaynak veri değişim sıklığı** | **Üst Sınır**
 ---|---

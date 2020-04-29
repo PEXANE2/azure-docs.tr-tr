@@ -5,22 +5,22 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: larryfr
 ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477264"
 ---
-Bir web hizmetini güncelleştirmek `update` için yöntemi kullanın. Yeni bir model, yeni bir giriş komut dosyası veya çıkarım yapılandırmasında belirtilebilen yeni bağımlılıkları kullanmak için web hizmetini güncelleştirebilirsiniz. Daha fazla bilgi için [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)belgelerine bakın.
+Bir Web hizmetini güncelleştirmek için `update` yöntemini kullanın. Web hizmetini yeni bir model, yeni bir giriş betiği veya bir çıkarım yapılandırmasında belirtime yeni bağımlılıklar kullanacak şekilde güncelleştirebilirsiniz. Daha fazla bilgi için, bkz. [WebService. Update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)belgeleri.
 
 > [!IMPORTANT]
 > Bir modelin yeni bir sürümünü oluşturduğunuzda, kullanmak istediğiniz her hizmeti el ile güncelleştirmeniz gerekir.
 >
-> Azure Machine Learning tasarımcısından yayınlanan bir web hizmetini güncelleştirmek için SDK'yı kullanamazsınız.
+> Azure Machine Learning tasarımcısından yayınlanan bir Web hizmetini güncelleştirmek için SDK 'Yı kullanamazsınız.
 
 **SDK’yı kullanarak**
 
-Aşağıdaki kod, bir web hizmetinin modelini, ortamını ve giriş komut dosyasını güncelleştirmek için SDK'nın nasıl kullanılacağını gösterir:
+Aşağıdaki kod, bir Web hizmeti için model, ortam ve giriş betiğini güncelleştirmek üzere SDK 'nın nasıl kullanılacağını gösterir:
 
 ```python
 from azureml.core import Environment
@@ -51,9 +51,9 @@ print(service.state)
 print(service.get_logs())
 ```
 
-**CLI'yi kullanma**
+**CLı 'yi kullanma**
 
-Ayrıca ML CLI kullanarak bir web hizmetini güncelleyebilirsiniz. Aşağıdaki örnek, yeni bir model kaydetmeyi ve ardından yeni modeli kullanmak üzere bir web hizmetini güncelleştirmeyi gösterir:
+Ayrıca, ML CLı kullanarak bir Web hizmetini güncelleştirebilirsiniz. Aşağıdaki örnek, yeni bir modeli kaydetmeyi ve sonra bir Web hizmetini yeni modeli kullanacak şekilde güncelleştirmeyi gösterir:
 
 ```azurecli
 az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment --output-metadata-file modelinfo.json
@@ -61,8 +61,8 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 ```
 
 > [!TIP]
-> Bu örnekte, bir JSON belgesi, model bilgilerini kayıt komutundan güncelleştirme komutuna geçirmek için kullanılır.
+> Bu örnekte, kayıt komutundan model bilgilerini Update komutuna iletmek için bir JSON belgesi kullanılır.
 >
-> Yeni bir giriş komut dosyası veya ortamı kullanmak için hizmeti güncelleştirmek için, `ic` bir [çıkarım yapılandırma dosyası](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) oluşturun ve parametre ile belirtin.
+> Hizmeti yeni bir giriş betiği veya ortamı kullanacak şekilde güncelleştirmek için bir [çıkarım yapılandırma dosyası](/azure/machine-learning/service/reference-azure-machine-learning-cli#inference-configuration-schema) oluşturun ve `ic` parametresini parametresiyle birlikte belirtin.
 
-Daha fazla bilgi için [az ml hizmet güncelleştirme](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) belgelerine bakın.
+Daha fazla bilgi için, [az ml Service Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-update) belgelerine bakın.

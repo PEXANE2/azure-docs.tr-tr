@@ -1,6 +1,6 @@
 ---
-title: Azure Haritalar ile erişilebilir bir harita uygulaması oluşturun | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar'ı kullanarak erişilebilirlik özelliklerine sahip bir uygulamayı nasıl oluşturabileceğinizi öğreneceksiniz.
+title: Azure haritalar ile erişilebilir harita uygulaması oluşturma | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları kullanarak erişilebilirlik özellikleriyle uygulama oluşturmayı öğreneceksiniz.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -9,80 +9,80 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473328"
 ---
 # <a name="building-an-accessible-application"></a>Erişilebilir bir uygulama oluşturma
 
-İnternet kullanıcılarının %20'den fazlasının erişilebilir web uygulamalarına ihtiyacı vardır. Bu nedenle, uygulamanızın herhangi bir kullanıcının kolayca kullanabileceği şekilde tasarlandıklarından emin olmak önemlidir. Erişilebilirliği tamamlanması gereken bir görev kümesi olarak düşünmek yerine, bunu genel kullanıcı deneyiminizin bir parçası olarak düşünün. Uygulamanız ne kadar erişilebilirse, uygulamayı o kadar çok kişi kullanabilir. 
+Internet kullanıcılarının %20 ' si için, erişilebilir Web uygulamalarına ihtiyacı vardır. Bu nedenle, uygulamanızın herhangi bir kullanıcının kolayca kullanabileceği şekilde tasarlandığından emin olmak önemlidir. Tamamlanacak görevler kümesi olarak erişilebilirliği düşünmek yerine, bunu genel Kullanıcı deneyiminizin bir parçası olarak düşünün. Uygulamanız daha fazla erişilebilir olduğunda, daha fazla kişi tarafından kullanılabilir. 
 
-Harita gibi zengin etkileşimli içeriğe gelince, bazı yaygın erişilebilirlik konuları şunlardır:
-- Web uygulamasını görmekte güçlük çeken kullanıcılar için ekran okuyucuyu destekleyin.
-- Fare, dokunma ve klavye gibi web uygulamasıyla etkileşim kurmak ve gezinmek için birden çok yönteme sahip olmak.
-- Renk kontrastı, renklerin birbirine karışmadığından ve birbirinden ayırt etmek zor laşır. 
+Harita gibi zengin etkileşimli içeriğe geldiğinde bazı yaygın erişilebilirlik konuları şunlardır:
+- Web uygulamasını görmekte güçlük çeken kullanıcılar için ekran okuyucuyu destekler.
+- , Fare, dokunmatik ve klavye gibi Web uygulamasıyla etkileşim kurmak ve gezinmek için birden çok yöntem vardır.
+- Renk karşıtlığın, renklerin birlikte karıştırılmadığından ve birbirinden ayırt edilebilmesi için oldukça zor olduğundan emin olun. 
 
-Azure Haritalar Web SDK, aşağıdakiler gibi birçok erişilebilirlik özelliğiyle önceden oluşturulmuş olarak sunulur:
-- Ekran okuyucu, harita hareket ettiğinde ve kullanıcı bir denetime veya açılır pencereye odaklandığında açıklamalar sunar.
-- Fare, dokunma ve klavye desteği.
-- Yol haritası stilinde erişilebilir renk kontrastı desteği.
+Azure Haritalar Web SDK 'Sı, şu gibi birçok erişilebilirlik özelliği ile önceden oluşturulmuş olarak sunulur:
+- Harita ne zaman taşındığını ve Kullanıcı bir denetime veya açılan pencereye odaklanmışken ekran okuyucu açıklamaları.
+- Fare, dokunmatik ve klavye desteği.
+- Yol haritası stilinde erişilebilir renk karşıtlığı desteği.
 
-Tüm Microsoft ürünleri için tam erişilebilirlik uygunluk ayrıntılarını [burada](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)bulabilirsiniz. Belgeyi özellikle Azure Haritalar Web SDK'sı için bulmak için "Azure Haritalar web"i arayın. 
+Tüm Microsoft ürünlerine yönelik tam erişilebilirlik uyumluluğu ayrıntıları [burada](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)bulunabilir. Azure Haritalar Web SDK 'Sı için belgeyi özel olarak bulmak üzere "Azure Maps web" araması yapın. 
 
 ## <a name="navigating-the-map"></a>Haritada gezinme
 
-Haritanın yakınlaştırılabildiği, kaydırılabildiği, döndürülebileceği ve pitched edilebildiği birkaç farklı yol vardır. Aşağıdaki ayrıntıları harita gezinmek için tüm farklı yolları.
+Haritanın Yakınlaştırılıp Yakınlaştırılıp döndürülmemiş, döndürülebileceği ve açık bir şekilde birçok farklı yolu vardır. Haritada gezinmek için kullanabileceğiniz farklı yollar aşağıda verilmiştir.
 
-**Haritayı yakınlaştır**
+**Haritayı Yakınlaştır**
 
-- Fareyi kullanarak, bir seviyeyi yakınlaştırmak için haritayı çift tıklatın.
-- Fareyi kullanarak, haritayı yakınlaştırmak için tekerleği kaydırın.
-- Dokunmatik ekran kullanarak haritaya iki parmağınızla dokunun ve yakınlaştırmak için parmaklarınızı uzaklaştırmak veya yaymak için birbirine sıkıştırın.
-- Dokunmatik ekran kullanarak, bir seviyeyi yakınlaştırmak için haritaya çift dokunun.
-- Harita odaklanmışken, bir seviyeyi`+`yakınlaştırmak için`=`Artı işaretini ( ) veya Eşittir işaretini kullanın.
-- Harita odaklanmışken, bir seviyeyi uzaklaştırmak`-`için Eksi`_`işareti, Hyphen ( veya Alt Puan ( ) işaretini kullanın.
-- Fare, dokunma veya klavye sekmesi/enter tuşları ile yakınlaştırma denetimini kullanın.
-- `Shift` Düğmeye basın ve basılı tutun ve harita üzerinde sol fare düğmesine basın ve harita içine yakınlaştırmak için bir alan çizmek için sürükleyin.
+- Bir fare kullanarak, bir düzey yakınlaştırmak için Haritayı çift tıklayın.
+- Fareyi kullanarak Haritayı yakınlaştırmak için tekerleği kaydırın.
+- Dokunmatik ekran kullanarak parmakları yakınlaştırmak veya yaymak için iki parmağınızla ve Pinç ile Haritayı dokunarak bir araya geçirin.
+- Dokunmatik ekran kullanarak, bir düzey yakınlaştırmak için haritaya çift dokunun.
+- Eşleme odaklı olduğunda, bir düzey yakınlaştırmak için artı işaretini`+`() veya eşittir işaretini`=`() kullanın.
+- Eşleme odaklı olduğunda, bir düzey uzaklaştırmak için eksi işaretini, kısa`-`çizgi () veya alt`_`çizgi () kullanın.
+- Yakınlaştırma denetimini fare, dokunmatik veya klavye ile kullanma/ENTER tuşları.
+- Düğmeye basın ve basılı `Shift` tutun ve Haritayı yakınlaştırmak için bir alan çizmek üzere, haritada sol fare düğmesine basın ve sürükleyin.
 
 **Haritayı kaydır**
 
-- Fareyi kullanarak, haritada sol fare tuşu ile aşağı tuşuna basın ve herhangi bir yöne sürükleyin.
-- Dokunmatik ekran kullanarak haritaya dokunun ve herhangi bir yöne sürükleyin.
-- Harita odaklanmışken, haritayı taşımak için ok tuşlarını kullanın.
+- Fare kullanarak haritada sol fare düğmesine basın ve herhangi bir yöne sürükleyin.
+- Dokunmatik ekran kullanarak Haritayı dokunarak istediğiniz yöne sürükleyin.
+- Eşleme odaklı olduğunda, Haritayı taşımak için ok tuşlarını kullanın.
 
 **Haritayı döndürme**
 
-- Fareyi kullanarak, haritada sağ fare düğmesiyle aşağı doğru bastırın ve sola veya sağa sürükleyin. 
-- Dokunmatik ekran kullanarak haritaya iki parmağınızla dokunun ve döndürün.
-- Harita odaklanmışken, shift tuşunu ve sol veya sağ ok tuşlarını kullanın.
-- Döndürme denetimini fare, dokunma veya klavye sekmesi/enter tuşları ile kullanın.
+- Fare kullanarak haritada sağ fare düğmesiyle basın ve sol veya sağ sürükleyin. 
+- Dokunmatik ekran kullanarak Haritayı iki parmağınızla dokunarak ve döndürün.
+- Eşleme odaklı olduğunda SHIFT tuşunu ve sol veya sağ ok tuşlarını kullanın.
+- Döndürme denetimini fare, dokunmatik veya klavye sekmesi/ENTER tuşlarıyla kullanma.
 
-**Haritayı pitch**
+**Haritayı sıklık**
 
-- Fareyi kullanarak, haritaüzerinde sağ fare düğmesi ile aşağı tuşuna basın ve yukarı veya aşağı sürükleyin. 
-- Dokunmatik ekran kullanarak haritaya iki parmağınızla dokunun ve birlikte yukarı veya aşağı sürükleyin.
-- Harita odaklanmışken, shift tuşunu ve yukarı veya aşağı ok tuşlarını kullanın. 
-- Bir fare, dokunmatik veya klavye sekmesi/enter tuşları ile adım denetimini kullanın.
+- Fareyi kullanarak haritada sağ fare düğmesiyle aşağı basın ve yukarı veya aşağı sürükleyin. 
+- Dokunmatik ekran kullanarak haritada iki parmağınızla dokunarak dokunun ve bunları birlikte yukarı veya aşağı sürükleyin.
+- Eşlemle odaklanan şekilde SHIFT tuşunu ve yukarı veya aşağı ok tuşlarını kullanın. 
+- Sıklık denetimini fare, dokunmatik veya klavye sekmesi/ENTER tuşları ile kullanma.
 
-## <a name="change-the-map-style"></a>Harita Stilini Değiştir
+## <a name="change-the-map-style"></a>Harita stilini değiştirme
 
-Tüm geliştiriciler olası tüm harita stillerinin uygulamalarında kullanılabilir olmasını istemez. Geliştirici haritanın stil seçici denetimini görüntülerse, kullanıcı fareyi, dokunuşu veya sekmeyi veya enter tuşu yla klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde hangi harita stillerini kullanılabilir hale getirmek istediklerini belirtebilir. Ayrıca, geliştirici programlı olarak ayarlayabilir ve harita stilini değiştirebilir.
+Tüm geliştiriciler, tüm olası harita stillerinin uygulamalarıyla kullanılabilmesini ister. Geliştirici haritanın stil Seçicisi denetimini görüntülerse Kullanıcı, sekme veya ENTER tuşu ile fare, dokunmatik veya klavyeyi kullanarak harita stilini değiştirebilir. Geliştirici, harita stili seçici denetiminde kullanılabilir hale getirmek istedikleri eşleme stillerini belirtebilir. Ayrıca geliştirici, harita stilini programlı bir şekilde ayarlayıp değiştirebilir.
 
 **Yüksek karşıtlığı kullan**
 
-- Eşlemi denetimi yüklendiğinde, yüksek karşıtlık etkinleştirilip etkinleştirİlmeygösterilemesini denetler ve tarayıcı bunu destekler.
-- Harita denetimi aygıtın yüksek kontrast lı modunu izlemez. Aygıt modu değişirse, harita değişmez. Bu nedenle, kullanıcının sayfayı yenileyerek haritayı yeniden yüklemesi gerekir.
-- Yüksek kontrast algılandığında, harita stili otomatik olarak yüksek karşıtlıka geçer ve tüm yerleşik denetimler yüksek kontrast stili kullanır. Örneğin, ZoomControl, PitchControl, CompassControl, StyleControl ve diğer yerleşik denetimler yüksek kontrast stili kullanır.
-- Yüksek kontrast, açık ve koyu iki türü vardır. Yüksek karşıtlık türü harita denetimleri tarafından algılanabiliyorsa, haritanın davranışı buna göre ayarlanır. Işık varsa, grayscale_light harita stili yüklenir. Tür algılanamıyorsa veya karanlıksa, high_contrast_dark stili yüklenir.
-- Özel denetimler oluşturuyorsanız, yerleşik denetimlerin yüksek karşıtlık stili ni kullanıp kullanmamasını bilmek yararlıdır. Geliştiriciler kontrol etmek için harita kapsayıcı div bir css sınıfı ekleyebilirsiniz. Eklenecek css sınıfları `high-contrast-dark` ve `high-contrast-light`. JavaScript'i kullanarak kontrol etmek için şunları kullanın:
+- Harita denetimi yüklendiğinde, yüksek karşıtlık özelliğinin etkinleştirilip etkinleştirilmediğini ve tarayıcının bunu destekleyip desteklemediğini denetler.
+- Harita denetimi, cihazın yüksek karşıtlık modunu izlemez. Cihaz modu değişirse, eşleme olmayacaktır. Bu nedenle, kullanıcının sayfayı yenileyerek Haritayı yeniden yüklemesi gerekir.
+- Yüksek karşıtlık algılandığında, harita stili otomatik olarak yüksek karşıtlığa geçiş yapar ve tüm yerleşik denetimler yüksek karşıtlık stilini kullanır. Örneğin, ZoomControl, Lıchcontrol, CompassControl, StyleControl ve diğer yerleşik denetimler, yüksek karşıtlık stili kullanacaktır.
+- İki tür yüksek karşıtlık, açık ve koyu. Yüksek karşıtlık türü harita denetimleri tarafından algılanıyorsa, haritanın davranışı buna uygun şekilde ayarlanacaktır. Işık ise grayscale_light harita stili yüklenir. Tür algılanamadığından veya karanlık ise high_contrast_dark stili yüklenir.
+- Özel denetimler oluşturuyorsanız, yerleşik denetimlerin yüksek karşıtlık stili kullanıp kullanmediğini bilmemiz yararlı olur. Geliştiriciler, denetlemek için harita kapsayıcısı div öğesine bir CSS sınıfı ekleyebilir. Eklenecek CSS sınıfları ve ' `high-contrast-dark` `high-contrast-light`dir. JavaScript kullanmayı denetlemek için şunu kullanın:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
 ```
 
-veya, kullanın:
+veya şunu kullanın:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-light")
@@ -90,42 +90,42 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 ## <a name="keyboard-shortcuts"></a>Klavye kısayolları
 
-Harita, haritayı kullanmayı kolaylaştıran bir dizi klavye kısayol özelliğine sahiptir. Bu klavye kısayolları, harita nın odak noktası olduğunda çalışır.
+Haritada, eşlemenin kullanımını kolaylaştıran yerleşik bir dizi klavye kısayolu vardır. Bu klavye kısayolları, eşleme odağa sahip olduğunda çalışır.
 
 | Anahtar      | Eylem                            |
 |----------|-----------------------------------|
-| `Tab` | Haritadaki denetimler ve açılır pencereler arasında gezinin. |
-| `ESC` | Odak noktasını haritadaki herhangi bir öğeden üst düzey eş öğe öğesine taşıyın. |
-| `Ctrl` + `Shift` + `D` | Ekran okuyucu ayrıntı düzeyini geçiş.  |
-| Sol ok tuşu | Haritayı 100 piksel sola kaydırma |
-| Sağ ok tuşu | Haritayı sağa kaydırma 100 piksel |
-| Aşağı ok tuşu | Haritayı 100 piksel aşağı kaydırma |
-| Yukarı ok tuşu | Haritayı 100 piksele kaydırma |
-| `Shift`+ yukarı ok | Harita adımlarını 10 derece artırın |
-| `Shift`+ aşağı ok | Harita adımlarını 10 derece azaltın |
-| `Shift`+ sağ ok | Haritayı saat yönünde 15 derece döndürme |
-| `Shift`+ sol ok | Haritayı saat yönünün tersine 15 derece döndürme |
-| Artı işareti`+`( <sup>*</sup>) veya`=`Eşittir işareti ( ) | Yakınlaştır |
-| Eksi işareti, Tire`-`( <sup>*</sup>),`_`veya Alt Puan ( ) | Uzaklaştır | 
-| `Shift`+ alan çizmek için haritaüzerinde + fare sürükleme | Alana yakınlaştırma |
+| `Tab` | Haritadaki denetimler ve açılır pencereler arasında gezinme. |
+| `ESC` | Haritadaki herhangi bir öğeden odağı en üst düzey harita öğesine taşıyın. |
+| `Ctrl` + `Shift` + `D` | Ekran okuyucusu ayrıntı düzeyini değiştirin.  |
+| Sol ok tuşu | Haritayı sola kaydır 100 piksel |
+| Sağ ok tuşu | Haritayı sağa kaydır 100 piksel |
+| Aşağı ok tuşu | Haritayı aşağı kaydırın 100 piksel |
+| Yukarı ok tuşu | Haritayı 100 piksel yukarı kaydır |
+| `Shift`+ yukarı ok | Eşleme aralığını 10 derece artır |
+| `Shift`+ aşağı ok | Eşleme aralığını 10 derece azalt |
+| `Shift`+ sağ ok | Haritayı saat yönünde 15 derece döndürün |
+| `Shift`+ sol ok | Haritayı saatin tersi yönde 15 derece döndürün |
+| Artı işareti (`+`) veya <sup>*</sup>eşittir işareti (`=`) | Yakınlaştır |
+| Eksi işareti, kısa çizgi`-`() veya <sup>*</sup>alt çizgi`_`() | Uzaklaştır | 
+| `Shift`çizim alanına haritada fare sürükleme | Alana Yakınlaştır |
 
-<sup>*</sup>Bu tuş kısayolları genellikle klavyede aynı tuşu paylaşır. Bu kısayollar, kullanıcı deneyimini geliştirmek için eklendi. Kullanıcının bu kısayollar için shift tuşunu kullanıp kullanmadığı da önemli değildir.
+<sup>*</sup>Bu anahtar kısayollar genellikle klavyede aynı anahtarı paylaşır. Bu kısayollar, Kullanıcı deneyimini geliştirmek için eklenmiştir. Ayrıca, kullanıcının bu kısayollar için değil, Shift tuşunu kullanıp kullanmadığını önemli değildir.
 
-## <a name="screen-reader-support"></a>Screen Reader desteği
+## <a name="screen-reader-support"></a>Ekran okuyucu desteği
 
-Kullanıcılar klavyeyi kullanarak haritada gezinebilir. Ekran okuyucu çalışıyorsa, harita kullanıcıya durumundaki değişiklikleri bildirir. Örneğin, harita kaydırıldığında veya yakınlaştırıldığında kullanıcılara harita değişiklikleri bildirilir. Varsayılan olarak, harita, haritanın merkezinin yakınlaştırma düzeyini ve koordinatlarını dışlayan basitleştirilmiş açıklamalar sağlar. Kullanıcı klavye kısa `Ctrl`  +  `Shift`  +  `D`kese sini kullanarak bu açıklamaların ayrıntı düzeyini geçişyapabilir.
+Kullanıcılar, klavyeyi kullanarak haritada gezinebilirler. Bir ekran okuyucu çalışıyorsa, eşleme kullanıcıya durumunda değişiklikleri bilgilendirir. Örneğin, eşleme değiştirildiğinde veya yakınlaştırıldığında kullanıcılara eşleme değişiklikleri bildirilir. Eşleme, varsayılan olarak haritanın merkezinin yakınlaştırma düzeyini ve koordinatlarını hariç tutarak basit açıklamalar sağlar. Kullanıcı klavye kısa kesmeyi `Ctrl`  +  `Shift`  +  `D`kullanarak bu açıklamaların ayrıntı düzeyini değiştirebilir.
 
-Temel haritaya yerleştirilen ek bilgiler, ekran okuyucu kullanıcıları için karşılık gelen metin bilgilerine sahip olmalıdır. Erişilebilir Zengin [İnternet Uygulamaları (ARIA),](https://www.w3.org/WAI/standards-guidelines/aria/)alt ve uygun olduğunda başlık öznitelikleri eklemek için emin olun. 
+Temel haritaya yerleştirilmiş ek bilgiler, ekran okuyucu kullanıcıları için ilgili metin bilgilerine sahip olmalıdır. Uygun yerlerde, [erişilebilir zengin Internet uygulamaları (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), alt ve başlık öznitelikleri eklediğinizden emin olun. 
 
-## <a name="make-popups-keyboard-accessible"></a>Pop-up klavyeyi erişilebilir hale getirin
+## <a name="make-popups-keyboard-accessible"></a>Açılır klavyeden erişilebilir yap
 
-İşaretçi veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Kullanıcı işaretçiyle etkileşimde bulunduğunda, konumla ilgili ek bilgiler genellikle açılır pencerede görüntülenir. Çoğu uygulamada, kullanıcı bir işaretçiyi tıklattığında veya dokunduğunda açılır pencereler görünür. Ancak, tıklatma ve dokunma, kullanıcının sırasıyla bir fare ve dokunmatik ekran kullanmasını gerektirir. İyi bir uygulama, açılır pencereleri klavye kullanırken erişilebilir hale getirmektir. Bu işlevsellik, her veri noktası için bir açılır pencere oluşturarak ve eşe ekleyerek elde edilebilir. 
+Bir işaretleyici veya sembol genellikle haritadaki bir konumu temsil etmek için kullanılır. Bu konum hakkında ek bilgiler genellikle Kullanıcı işaretleyiciyle etkileşime geçtiğinde bir açılan pencerede görüntülenir. Çoğu uygulamada, bir Kullanıcı bir işaretçiye tıkladığında veya dokunduğunda açılır pencere görünür. Ancak, tıklatmak ve dokunmak, kullanıcının sırasıyla bir fare ve dokunmatik ekran kullanmasını gerektirir. Klavye kullanırken açılır pencerelere erişilebilir hale getirmek iyi bir uygulamadır. Bu işlevsellik, her bir veri noktası için bir açılan pencere oluşturup haritaya eklenerek elde edilebilir. 
 
-Aşağıdaki örnek, bir sembol katmanı kullanarak haritadaki ilgi alanlarını yükler ve ilgi çekici her nokta için haritaya bir açılır pencere ekler. Her açılır pencereiçin bir başvuru her veri noktasının özelliklerinde depolanır. Bir işaretçi tıklatıldığında olduğu gibi bir işaretçi için de alınabilir. Haritaya odaklandığında, sekme tuşuna basıldığında kullanıcının haritadaki her açılır pencereden geçmesine olanak sağlar.
+Aşağıdaki örnek, bir sembol katmanını kullanarak haritada ilgi çekici noktaları yükler ve her bir ilgi noktası için haritaya bir açılan pencere ekler. Her bir açılan pencerede bir başvuru, her bir veri noktasının özelliklerinde saklanır. Ayrıca, bir işaretleyicinin ne zaman tıklandığı gibi bir işaretleyici için de alınabilir. Haritada odaklandığında Tab tuşuna basmak, kullanıcının haritadaki her açılan pencerede ilerlemenize izin verir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama yapma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Kalem <a href='https://codepen.io'>CodePen'de</a>Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>Haritalar tarafından erişilebilir bir uygulama <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>yapın</a> ( ) </iframe>
+<iframe height='500' scrolling='no' title='Erişilebilir bir uygulama oluşturma' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bkz. Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io'>codepen</a>'Da <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>erişilebilir bir uygulama oluşturma</a> . </iframe>
 
 <br/>
 
@@ -133,48 +133,48 @@ Aşağıdaki örnek, bir sembol katmanı kullanarak haritadaki ilgi alanlarını
 
 Web eşleme uygulamanızı daha erişilebilir hale getirmek için bazı ek ipuçları aşağıda verilmiştir.
 
-- Haritada çok sayıda etkileşimli nokta verisi görüntüleniyorsa, dağınıklığı azaltmayı düşünün ve kümelemeyi kullanın. 
-- Metin/semboller ve arka plan renkleri arasındaki renk kontrast oranının 4,5:1 veya daha fazla olduğundan emin olun.
-- Ekran okuyucunuzu (ARIA, alt ve başlık öznitelikleri) iletilerinizi kısa, açıklayıcı ve anlamlı tutun. Gereksiz jargon ve kısaltmalardan kaçının.
-- Kullanıcının sindirmesi kolay kısa anlamlı bilgiler sağlamak için ekran okuyucuya gönderilen iletileri en iyi duruma getirmeye çalışın. Örneğin, ekran okuyucuyu haritanın hareket halinde olduğu gibi yüksek frekansta güncelleştirmek istiyorsanız, aşağıdaki noktaları yapmayı düşünün:
-    - Ekran okuyucuyu güncelleştirmek için haritanın hareket etmesi bitene kadar bekleyin.
-    - Güncelleştirmeleri birkaç saniyede bir daraltın. 
-    - İletileri mantıksal bir şekilde birleştirin. 
-- Bilgi iletmenin tek yolu olarak renk kullanmaktan kaçının. Rengi tamamlamak veya değiştirmek için metin, simge veya desen kullanın. Bazı hususlar:
-    - Veri noktaları arasındaki göreli değeri göstermek için bir kabarcık katmanı kullanıyorsanız, her kabarcığın yarıçapını ölçeklendirmeyi, kabarcığı veya her ikisini birden renklendirmeyi düşünün. 
-    - Üçgenler, yıldızlar ve kareler gibi farklı metrik kategoriler için farklı simgelere sahip bir sembol katmanı kullanmayı düşünün. Sembol katmanı da simgenin boyutunu ölçekleme destekler. Metin etiketi de görüntülenebilir.
-    - Satır verileri görüntüleniyorsa, genişlik ağırlığı veya boyutu temsil etmek için kullanılabilir. Tire dizisi deseni, farklı satır kategorilerini temsil etmek için kullanılabilir. Sembol katmanı, satır boyunca simgeleri kaplamak için bir çizgiyle birlikte kullanılabilir. Bir ok simgesi kullanmak, çizginin akışını veya yönünü göstermek için yararlıdır.
-    - Çokgen verileri görüntüleniyorsa, çizgiler gibi bir desen, renge alternatif olarak kullanılabilir. 
-- Isı haritaları, döşeme katmanları ve görüntü katmanları gibi bazı görselleştirmelere görme bozukluğu olan kullanıcılar erişemez. Bazı hususlar:
-    - Ekran okuyucunun haritaya eklendiğinde katmanın ne görüntülenecek olduğunu açıklamasını sağlar. Örneğin, bir hava radarı döşeme katmanı görüntüleniyorsa, ekran okuyucuya "Hava radarı verileri haritanın üzerine konmuştur" detirin.
-- Fare gezinilmesi gereken işlevsellik miktarını sınırlayın. Bu işlevlere, uygulamanızla etkileşimde kalmak için klavye veya dokunmatik aygıt kullanan kullanıcılar erişilemez. Not, tıklanabilir simgeler, bağlantılar ve düğmeler gibi etkileşimli içerik için gezinme stiline sahip olmak yine de iyi bir uygulamadır.
-- Klavyeyi kullanarak uygulamanızda gezinmeyi deneyin. Sekme sıralamanın mantıklı olduğundan emin olun.
-- Klavye kısayolları oluşturuyorsanız, iki veya daha az tuşla sınırlamayı deneyin. 
+- Haritada birçok etkileşimli nokta verisi görüntülüyorsanız, dağınıklığı azaltmayı ve kümeleme kullanmayı göz önünde bulundurun. 
+- Metin/semboller ve arka plan renkleri arasındaki renk karşıtlığı oranının 4.5:1 veya daha fazla olduğundan emin olun.
+- Ekran okuyucunuzu (ARıA, alt ve başlık öznitelikleri), kısa, açıklayıcı ve anlamlı bir şekilde saklayın. Gereksiz öğretmek ve kısaltmalardan kaçının.
+- Kullanıcının özetlemenin kolay olduğu kısa anlamlı bilgiler sağlamak için ekran okuyucusuna gönderilen iletileri iyileştirmeye çalışın. Örneğin, harita hareketli olduğu gibi yüksek bir sıklıkta ekran okuyucuyu güncelleştirmek istiyorsanız aşağıdaki noktaları yapmayı göz önünde bulundurun:
+    - Ekran okuyucuyu güncelleştirmek için haritanın taşınmasını bitirene kadar bekleyin.
+    - Güncelleştirmeleri birkaç saniyede bir kez daha kısıtlama. 
+    - İletileri bir mantıksal şekilde birleştirin. 
+- Bilgi iletmenin tek yolu olarak renk kullanmaktan kaçının. Rengi tamamlamak veya değiştirmek için metin, simgeler veya desenler kullanın. Bazı hususlar:
+    - Veri noktaları arasındaki göreli değeri göstermek için bir kabarcık katmanı kullanıyorsanız, her kabarcığun yarıçapını ölçeklendirin, kabarcığun renklendirilmesini veya her ikisini de göz önünde bulundurun. 
+    - Üçgenler, yıldızlar ve kareler gibi farklı ölçüm kategorileri için farklı simgelere sahip bir sembol katmanı kullanmayı düşünün. Sembol katmanı Ayrıca simgenin boyutunu ölçeklendirmeyi destekler. Metin etiketi de görüntülenebilir.
+    - Çizgi verileri görüntülenmiyorsa, genişlik veya boyutu temsil etmek için Genişlik kullanılabilir. Çizgi dizisi düzeni, farklı satır kategorilerini temsil etmek için kullanılabilir. Bir sembol katmanı, çizgi üzerinde simgelerin yer aldığı bir satırla birlikte kullanılabilir. Bir ok simgesi kullanmak çizginin akışını veya yönünü göstermek için yararlıdır.
+    - Çokgen verileri görüntülenmiyorsa, renk için bir alternatif olarak şerit gibi bir kalıp kullanılabilir. 
+- Heatmaps, döşeme katmanları ve görüntü katmanları gibi bazı görselleştirmeler, görme engelli kullanıcılar için erişilebilir değildir. Bazı hususlar:
+    - Ekran okuyucunun, haritaya eklendiğinde katmanın ne şekilde görüntülediğine ilişkin açıklamayı görüntülemesini sağlayabilirsiniz. Örneğin, bir hava durumu radar kutucuk katmanı görüntüleniyorsa ekran okuyucunuzun "Hava durumu radar verileri haritada yer alır" deyin.
+- Fare üzerine gelme gerektiren işlev miktarını sınırlayın. Bu işlevlere, uygulamanızla etkileşimde bulunmak için klavye veya dokunmatik cihaz kullanan kullanıcılar erişemez. Bu durumda, tıklatılabilir simgeler, bağlantılar ve düğmeler gibi etkileşimli içerik için bir vurgulama stili olması iyi bir uygulamadır.
+- Klavyeyi kullanarak uygulamanıza gezinmenize çalışın. Sekme sıralamanın mantıklı olduğundan emin olun.
+- Klavye kısayolları oluşturuyorsanız, iki anahtar veya daha kısa bir süre sonra sınırlamayı deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Web SDK modüllerinde erişilebilirlik hakkında bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Çizim araçları erişilebilirlik](drawing-tools-interactions-keyboard-shortcuts.md)
+> [Çizim araçları erişilebilirliği](drawing-tools-interactions-keyboard-shortcuts.md)
 
 Microsoft Learn ile erişilebilir uygulamalar geliştirme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Action Dijital Rozet Öğrenme Yolunda Erişilebilirlik](https://ready.azurewebsites.net/learning/track/2940)
+> [Işlem dijital rozet öğrenme yolunda erişilebilirlik](https://ready.azurewebsites.net/learning/track/2940)
 
-Şu yararlı erişilebilirlik araçlarına bir göz atın:
+Aşağıdaki yararlı erişilebilirlik araçlarına göz atın:
 > [!div class="nextstepaction"]
 > [Erişilebilir uygulamalar geliştirme](https://developer.microsoft.com/windows/accessible-apps)
 
 > [!div class="nextstepaction"]
-> [WAI-ARIA Genel Bakış](https://www.w3.org/WAI/standards-guidelines/aria/)
+> [WAı-ARIA genel bakış](https://www.w3.org/WAI/standards-guidelines/aria/)
 
 > [!div class="nextstepaction"]
-> [Web Erişilebilirlik Değerlendirme Aracı (WAVE)](https://wave.webaim.org/)
+> [Web Erişilebilirlik değerlendirme aracı (dalga)](https://wave.webaim.org/)
 
 > [!div class="nextstepaction"]
-> [WebAim renk kontrast denetleyicisi](https://webaim.org/resources/contrastchecker/)
+> [WebAim renk karşıtlığı denetleyicisi](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [No Coffee Vision Simulator](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [Kafevision simülatörü yok](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)

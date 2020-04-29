@@ -1,6 +1,6 @@
 ---
-title: Log Analytics çalışma alanında Azure kaynak günlüklerini toplama
-description: Azure kaynak günlüklerini Azure Monitor'da bir Günlük Analizi çalışma alanına nasıl aktartınız öğrenin.
+title: Log Analytics çalışma alanında Azure Kaynak günlüklerini toplayın
+description: Azure Kaynak günlüklerinin Azure Izleyici 'de bir Log Analytics çalışma alanına akışını nasıl sağlayacağınızı öğrenin.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,120 +8,120 @@ ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: 36bd464624118b7671a3879bcc1d34114bba9ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248599"
 ---
-# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor'da Log Analytics çalışma alanında Azure platform günlüklerini toplama
-Azure Etkinliği günlüğü ve kaynak günlükleri de dahil olmak üzere Azure'daki [platform günlükleri,](platform-logs-overview.md) Azure kaynakları ve bağlı oldukları Azure platformu için ayrıntılı tanılama ve denetleme bilgileri sağlar. Bu makalede, güçlü günlük sorguları kullanarak Azure Monitor Günlükleri'nde toplanan diğer izleme verileriyle analiz etmenizi ve ayrıca uyarılar ve uyarılar gibi diğer Azure Monitor özelliklerinden yararlanmanızı sağlayan bir Log Analytics çalışma alanında kaynak günlükleri toplama özelliği açıklanmaktadır. Görsel. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics çalışma alanında Azure platform günlüklerini toplayın
+Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. Bu makalede, güçlü günlük sorguları ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Izleyici özelliklerinden yararlanmak üzere Azure Izleyici günlüklerinde toplanan diğer izleme verileriyle analiz etmenizi sağlayan Log Analytics çalışma alanındaki kaynak günlüklerinin toplanması açıklanmaktadır. 
 
 
-## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Çalışma alanında platform günlükleri ile yapabilecekler
-Bir Log Analytics çalışma alanında platform günlüklerini toplamak, tüm Azure kaynaklarınızın günlüklerini birlikte analiz etmenizi ve Azure [Monitör Günlükleri'nde](data-platform-logs.md) bulunan ve aşağıdakileri içeren tüm özelliklerden yararlanmanızı sağlar:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Çalışma alanında platform günlükleriyle yapabilecekleriniz
+Log Analytics çalışma alanında platform günlüklerinin toplanması, tüm Azure kaynaklarınızın günlüklerini birlikte analiz etmenize ve aşağıdakiler de dahil olmak üzere [Azure Izleyici günlüklerine](data-platform-logs.md) sunulan tüm özelliklerden yararlanmanıza olanak sağlar:
 
-* **Günlük sorguları** - Tanılama verilerinizi hızlı bir şekilde analiz etmek ve öngörüler elde etmek ve Azure Monitor'daki diğer kaynaklardan toplanan verilerle analiz etmek için güçlü bir sorgu dili kullanarak [günlük sorguları](../log-query/log-query-overview.md) oluşturun.
-* **Uyarı -** [Azure Monitor'daki günlük uyarılarını](alerts-log.md)kullanarak kaynak günlüklerinizde tanımlanan kritik koşullar ve desenler hakkında proaktif bildirim alın.
-* **Görselleştirmeler** - Günlük sorgusunun sonuçlarını Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına ekleyin.
+* **Günlük sorguları** -tanılama verilerinizi hızlıca çözümlemek ve bunlarla ilgili Öngörüler elde etmek ve Azure izleyici 'deki diğer kaynaklardan toplanan verilerle analiz etmek için güçlü bir sorgu dili kullanarak [günlük sorguları](../log-query/log-query-overview.md) oluşturun.
+* **Uyarı** - [Azure izleyici 'de günlük uyarılarını](alerts-log.md)kullanarak kaynak günlükleriniz için tanımlanan kritik koşullar ve desenlerin öngörülü bildirimini alın.
+* **Görselleştirmeler** -bir günlük sorgusunun sonuçlarını bir Azure panosuna sabitleyin veya etkileşimli bir raporun parçası olarak çalışma kitabına dahil edin.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Zaten bir çalışma alanınız yoksa [yeni bir çalışma alanı oluşturmanız](../learn/quick-create-workspace.md) gerekir. Çalışma alanı, ayarı yapılandıran kullanıcı her iki aboneye de uygun RBAC erişimine sahip olduğu sürece, kaynak gönderen günlüklerle aynı abonelikte olmak zorunda değildir.
+Henüz bir tane yoksa [Yeni bir çalışma alanı oluşturmanız](../learn/quick-create-workspace.md) gerekir. Ayarı yapılandıran kullanıcının her iki aboneliğe de uygun RBAC erişimi olduğundan, çalışma alanının kaynakla aynı abonelikte olması gerekmez.
 
-## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluşturma
-Azure kaynağı için tanılama ayarı oluşturarak platform günlüklerini Log Analytics çalışma alanına ve diğer hedeflere gönderin. Ayrıntılar [için Azure'da günlükleri ve ölçümleri toplamak için tanı lama ayarını oluştur'a](diagnostic-settings.md) bakın.
+## <a name="create-a-diagnostic-setting"></a>Tanılama ayarı oluştur
+Azure kaynağı için bir tanılama ayarı oluşturarak, platform günlüklerini Log Analytics çalışma alanına ve diğer hedeflere gönderin. Ayrıntılar için bkz. [Azure 'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturma](diagnostic-settings.md) .
 
 
 ## <a name="activity-log-collection"></a>Etkinlik günlüğü koleksiyonu
-Etkinlik günlüğünü herhangi bir abonelikten en fazla beş Log Analytics çalışma alanlarına gönderebilirsiniz. Günlük Analizi çalışma alanında toplanan kaynak günlüğü verileri **AzureActivity** tablosunda depolanır. 
+Etkinlik günlüğünü en fazla beş Log Analytics çalışma alanına, tek bir abonelikten gönderebilirsiniz. Log Analytics çalışma alanında toplanan kaynak günlüğü verileri **AzureActivity** tablosunda depolanır. 
 
 ## <a name="resource-log-collection-mode"></a>Kaynak günlüğü toplama modu
-Log Analytics çalışma alanında toplanan kaynak günlüğü verileri, Azure [Monitör Günlüklerinin Yapısı'nda](../log-query/logs-structure.md)açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın ne tür bir koleksiyon kullandığına bağlıdır:
+Log Analytics çalışma alanında toplanan kaynak günlüğü verileri, [Azure Izleyici günlüklerinin yapısı](../log-query/logs-structure.md)bölümünde açıklandığı gibi tablolarda depolanır. Kaynak günlükleri tarafından kullanılan tablolar, kaynağın kullandığı koleksiyon türüne bağlıdır:
 
-- Azure tanılama - Yazılan tüm veriler _Azure Diagnostics_ tablosuna dır.
-- Kaynağa özel - Veriler, kaynağın her kategorisi için tek tek tabloya yazılır.
+- Azure tanılama-yazılan tüm veriler _AzureDiagnostics_ tablosuna gönderilir.
+- Kaynağa özgü veriler, kaynağın her kategorisi için ayrı ayrı tabloya yazılır.
 
 ### <a name="azure-diagnostics-mode"></a>Azure Tanılama modu 
-Bu modda, herhangi bir [tanıa ayardaki](diagnostic-settings.md) tüm veriler _Azure Diagnostics_ tablosunda toplanır. Bu, günümüzde çoğu Azure hizmeti tarafından kullanılan eski yöntemdir.
+Bu modda, herhangi bir [Tanılama ayarının](diagnostic-settings.md) tüm verileri _AzureDiagnostics_ tablosunda toplanır. Bu, bugün en çok Azure hizmeti tarafından kullanılan eski yöntemdir.
 
-Birden çok kaynak türü aynı tabloya veri gönderdiğinden, şema, toplanan tüm farklı veri türlerinin şemalarının üst kümesidir.
+Birden çok kaynak türü aynı tabloya veri gönderdiğinden, bu şema, toplanmakta olan tüm farklı veri türlerinin şemaların üst kümesidir.
 
-Tanılama ayarlarının aşağıdaki veri türleri için aynı çalışma alanında toplandığı aşağıdaki örneği göz önünde bulundurun:
+Aşağıdaki veri türleri için tanılama ayarlarının aynı çalışma alanında toplandığı aşağıdaki örneği göz önünde bulundurun:
 
-- Hizmet 1 denetim günlükleri (A, B ve C sütunlarından oluşan bir şema)  
-- Hizmet 1 hata günlükleri (D, E ve F sütunlarından oluşan bir şema)  
-- Hizmet 2 denetim günlükleri (G, H ve I sütunlarından oluşan bir şema olması)  
+- Hizmet 1 ' in denetim günlükleri (A, B ve C sütunlarından oluşan bir şemaya sahip)  
+- Hizmet 1 ' in hata günlükleri (D, E ve F sütunlarından oluşan bir şemaya sahip)  
+- Hizmet 2 ' nin denetim günlükleri (G, H ve I sütunlarından oluşan bir şemaya sahip)  
 
-Azure Diagnostics tablosu aşağıdaki gibi görünecektir:  
+AzureDiagnostics tablosu şöyle görünür:  
 
 | ResourceProvider    | Kategori     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Microsoft.Service1 | Denetim Kayıtları    | x1 | y1 | Z1 |    |    |    |    |    |    |
-| Microsoft.Service1 | Hata Günlükleri    |    |    |    | Q1 | w1 | e1 |    |    |    |
-| Microsoft.Service2 | Denetim Kayıtları    |    |    |    |    |    |    | j1 | k1 | l1 |
-| Microsoft.Service1 | Hata Günlükleri    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Microsoft.Service2 | Denetim Kayıtları    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Microsoft.Service1 | Denetim Kayıtları    | x5 | y5 | z5 |    |    |    |    |    |    |
+| Microsoft. Service1 | AuditLogs    | x1 | Y1 | z1 |    |    |    |    |    |    |
+| Microsoft. Service1 | Günlüklerini    |    |    |    | Q1 | W1 | E1 |    |    |    |
+| Microsoft. Service2 | AuditLogs    |    |    |    |    |    |    | j1 | K1 | L1 |
+| Microsoft. Service1 | Günlüklerini    |    |    |    | üç | W2 | E2 |    |    |    |
+| Microsoft. Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | L3 |
+| Microsoft. Service1 | AuditLogs    | x5 | Y5 | z5 |    |    |    |    |    |    |
 | ... |
 
-### <a name="resource-specific"></a>Kaynağa Özel
-Bu modda, tanılama ayarında seçilen her kategori için seçili çalışma alanında tek tek tablolar oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getirir, şemaların ve yapılarının daha iyi keşfedilebilirliğini sağlar, hem yutma gecikmesi hem de sorgu süreleri boyunca performansı artırır ve belirli bir tablo. Tüm Azure hizmetleri sonunda Kaynağa Özel moduna geçer. 
+### <a name="resource-specific"></a>Kaynağa özgü
+Bu modda, seçilen çalışma alanındaki tek tablolar, tanılama ayarında seçilen her kategori için oluşturulur. Bu yöntem, günlük sorgularındaki verilerle çalışmayı çok daha kolay hale getiren, şemaların ve yapısının daha iyi keşfedilmesini sağlayan, hem alma gecikmesi hem de sorgu sürelerinde performansı artıran ve belirli bir tabloda RBAC hakları verme olanağı sağladığından önerilir. Tüm Azure Hizmetleri, sonunda kaynağa özgü moda geçirilir. 
 
-Yukarıdaki örnek, üç tablo nun oluşturulmasına neden olur:
+Yukarıdaki örnek, üç tablo oluşturulmasını neden olur:
  
-- Tablo *Service1AuditLogs* aşağıdaki gibidir:
+- Tablo *Service1AuditLogs* aşağıdaki gibi:
 
-    | Kaynak Sağlayıcı | Kategori | A | B | C |
+    | Kaynak sağlayıcısı | Kategori | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Hizmet1 | Denetim Kayıtları | x1 | y1 | Z1 |
-    | Hizmet1 | Denetim Kayıtları | x5 | y5 | z5 |
+    | Service1 | AuditLogs | x1 | Y1 | z1 |
+    | Service1 | AuditLogs | x5 | Y5 | z5 |
     | ... |
 
-- Tablo *Service1ErrorLogs* aşağıdaki gibidir:  
+- Tablo *Service1ErrorLogs* aşağıdaki gibi:  
 
-    | Kaynak Sağlayıcı | Kategori | D | E | F |
+    | Kaynak sağlayıcısı | Kategori | D | E | F |
     | -- | -- | -- | -- | -- | 
-    | Hizmet1 | Hata Günlükleri |  Q1 | w1 | e1 |
-    | Hizmet1 | Hata Günlükleri |  q2 | w2 | e2 |
+    | Service1 | Günlüklerini |  Q1 | W1 | E1 |
+    | Service1 | Günlüklerini |  üç | W2 | E2 |
     | ... |
 
-- Tablo *Service2AuditLogs* aşağıdaki gibidir:  
+- Tablo *Service2AuditLogs* aşağıdaki gibi:  
 
-    | Kaynak Sağlayıcı | Kategori | G | H | I |
+    | Kaynak sağlayıcısı | Kategori | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Servis2 | Denetim Kayıtları | j1 | k1 | l1|
-    | Servis2 | Denetim Kayıtları | j3 | k3 | l3|
+    | Service2 | AuditLogs | j1 | K1 | L1|
+    | Service2 | AuditLogs | j3 | k3 | L3|
     | ... |
 
 
 
-### <a name="select-the-collection-mode"></a>Toplama modunu seçin
-Azure kaynaklarının çoğu, size seçenek bırakmadan **Azure Tanılama** veya **Kaynağa Özel modda** çalışma alanına veri yazar. Hangi modda kullandığı ayrıntılar için [her hizmetin belgelerine](diagnostic-logs-schema.md) bakın. Tüm Azure hizmetleri sonunda Kaynağa Özel modu kullanır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenize olanak sağlar. Verilerin yönetilmesini kolaylaştırdığı ve daha sonraki bir tarihte karmaşık geçişleri önlemenize yardımcı olabileceğinden, yeni tanılama ayarları için kaynağa özgü mod belirtmelisiniz.
+### <a name="select-the-collection-mode"></a>Koleksiyon modunu seçin
+Azure kaynaklarının çoğu, verileri bir seçim yapmadan **Azure tanılama** veya **kaynağa özgü modda** çalışma alanına yazar. Hangi modun kullandığı hakkında ayrıntılı bilgi edinmek için [her hizmet için belgelere](diagnostic-logs-schema.md) bakın. Tüm Azure Hizmetleri, sonunda kaynağa özgü modu kullanacaktır. Bu geçişin bir parçası olarak, bazı kaynaklar tanılama ayarında bir mod seçmenizi sağlayacak. Tüm yeni tanılama ayarları için kaynağa özgü modu belirtmeniz gerekir, çünkü bu, verilerin daha kolay yönetilmesini sağlar ve daha sonraki bir tarihte karmaşık geçişlere karşı kaçınmanıza yardımcı olabilir.
   
-   ![Tanı ayarları modu seçici](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
+   ![Tanılama ayarları mod seçicisi](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
 
 
 
 > [!NOTE]
-> Şu anda, **Azure tanılama** ve **Kaynağa özgü** mod yalnızca Azure portalındaki tanılama ayarını yapılandırırken seçilebilir. Ayarı CLI, PowerShell veya Rest API kullanarak yapılandırırsanız, varsayılan olarak **Azure tanılama**için.
+> Şu anda, **Azure tanılama** ve **kaynağa özgü** mod yalnızca Azure Portal tanılama ayarı yapılandırılırken seçilebilir. Ayarı CLı, PowerShell veya REST API kullanarak yapılandırırsanız, varsayılan olarak **Azure tanılama**olur.
 
-Varolan bir tanılama ayarını kaynağa özgü modda değiştirebilirsiniz. Bu durumda, zaten toplanan veriler, çalışma alanı için bekletme ayarınıza göre kaldırılana kadar _Azure Diagnostics_ tablosunda kalır. Yeni veriler ilgili tabloda toplanır. Her iki tabloda da verileri sorgulamak için [birleşim](https://docs.microsoft.com/azure/kusto/query/unionoperator) işlecikullanın.
+Mevcut bir tanılama ayarını kaynağa özgü mod olarak değiştirebilirsiniz. Bu durumda, zaten toplanmış olan veriler, çalışma alanının saklama ayarına göre kaldırılana kadar _AzureDiagnostics_ tablosunda kalır. Yeni veriler, ' de adanmış tabloya toplanacaktır. Her iki tablo genelinde verileri sorgulamak için [UNION](https://docs.microsoft.com/azure/kusto/query/unionoperator) işlecini kullanın.
 
-Kaynağa Özel modu destekleyen Azure hizmetleri yle ilgili duyurular için [Azure Güncelleştirmeleri](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
+Kaynağa özgü modu destekleyen Azure hizmetleri hakkında duyurular için [Azure Updates](https://azure.microsoft.com/updates/) blogunu izlemeye devam edin.
 
-### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics'te sütun sınırı
-Azure Monitör Günlükleri'ndeki tüm tablolar için 500 özellik sınırı vardır. Bu sınıra ulaşıldıktan sonra, ilk 500'ün dışında herhangi bir özelliği olan verileri içeren satırlar yutma zamanında bırakılır. *Azure Diagnostics* tablosu, bu sınıra yazı yazan tüm Azure hizmetlerinin özelliklerini içerdiğinden, özellikle bu sınıra açıktır.
+### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics içinde sütun sınırı
+Azure Izleyici günlüklerinde herhangi bir tablo için 500 Özellik sınırı vardır. Bu sınıra ulaşıldığında, ilk 500 dışında herhangi bir özelliği olan verileri içeren tüm satırlar alma zamanında bırakılır. *AzureDiagnostics* tablosu, bu sınıra yönelik olan tüm Azure hizmetlerinin özelliklerini içerdiğinden bu sınıra açıktır.
 
-Birden çok hizmetten kaynak günlükleri topluyorsanız, _AzureDiagnostics_ bu sınırı aşabilir ve veriler gözden kaçırılabilir. Tüm Azure hizmetleri kaynağa özgü modu destekleyene kadar, kaynakları 500 sütun sınırına ulaşma olasılığını azaltmak için birden çok çalışma alanlarına yazacak şekilde yapılandırmanız gerekir.
+Birden çok hizmetten kaynak günlükleri topluyorsanız, _AzureDiagnostics_ bu sınırı aşabilir ve veriler kaçırılacaktır. Tüm Azure hizmetleri kaynağa özgü modu destekleene kadar, 500 sütun sınırına ulaşma olasılığını azaltmak üzere kaynakları birden fazla çalışma alanına yazacak şekilde yapılandırmanız gerekir.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Veri Fabrikası, çok ayrıntılı günlükler kümesi nedeniyle, çok sayıda sütun yazdığı bilinen ve _Azure Diagnostics'in_ sınırını aşması için büyük bir neden olabilir. Kaynağa özel mod etkinleştirilmeden önce yapılandırılan tanılama ayarları için, herhangi bir faaliyete karşı benzersiz adlandırılmış kullanıcı parametresi için yeni bir sütun oluşturulur. Etkinlik giriş ve çıktılarının ayrıntılı doğası nedeniyle daha fazla sütun oluşturulur.
+Azure Data Factory, çok ayrıntılı bir günlük kümesi nedeniyle, çok sayıda sütun yazmak bilinen ve olası _AzureDiagnostics_ nedeni olan bir hizmettir. Kaynağa özgü mod etkinleştirilmeden önce yapılandırılan tüm Tanılama ayarları için, her bir etkinliğe karşı benzersiz olarak adlandırılan her Kullanıcı parametresi için yeni bir sütun oluşturulur. Etkinlik girişlerinin ve çıktıların ayrıntılı doğası nedeniyle daha fazla sütun oluşturulacak.
  
-Kaynağa özel modu mümkün olan en kısa sürede kullanmak için günlüklerinizi geçirmelisiniz. Bunu hemen yapamıyorsanız, ara bir alternatif, bu günlüklerin çalışma alanlarınızda toplanan diğer günlük türlerini etkileme olasılığını en aza indirmek için Azure Veri Fabrikası günlüklerini kendi çalışma alanlarına yalıtmaktır.
+Günlüklerinizi kaynağa özgü modu en kısa sürede kullanmak üzere geçirmeniz gerekir. Hemen bunu yapamadıysanız, geçici bir alternatif, bu günlüklerin çalışma alanınızda toplanmakta olan diğer günlük türlerini etkileme olasılığını en aza indirmek için Azure Data Factory günlüklerini kendi çalışma alanlarında yalıtmaktır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kaynak günlükleri hakkında daha fazla bilgi edinin.](platform-logs-overview.md)
-* [Azure'da günlükleri ve ölçümleri toplamak için tanılama ayarı oluşturun.](diagnostic-settings.md)
+* [Kaynak günlükleri hakkında daha fazla bilgi edinin](platform-logs-overview.md).
+* [Azure 'da günlüklerin ve ölçümlerin toplanması için tanılama ayarı oluşturun](diagnostic-settings.md).

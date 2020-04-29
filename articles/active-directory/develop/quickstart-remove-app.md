@@ -1,5 +1,5 @@
 ---
-title: Microsoft kimlik platformuna kayıtlı uygulamayı kaldırma | Azure
+title: Microsoft Identity platformu ile kaydedilen uygulamayı kaldırma | Mavisi
 description: Microsoft kimlik platformuna kaydedilmiş bir uygulamayı kaldırmayı öğrenin.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240852"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Quickstart: Microsoft kimlik platformuna kayıtlı bir uygulamayı kaldırma
+# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma
 
 Microsoft kimlik platformuna kayıtlı uygulamaları olan kurumsal geliştiricilerin ve hizmet olarak yazılım (SaaS) sağlayıcılarının bir uygulamanın kaydını kaldırması gerekebilir.
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Uygulamaları kayıtlı bir kiracınız olmalıdır. Uygulama eklemeyi ve kaydetmeyi öğrenmek için bkz. [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md).
+Uygulamaları kayıtlı olan bir kiracınız olmalıdır. Uygulama eklemeyi ve kaydetmeyi öğrenmek için bkz. [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md).
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 
@@ -40,7 +40,7 @@ Kendiniz veya kuruluşunuz tarafından kaydedilmiş uygulamalar gerek bir uygula
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 2. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-3. Sol daki gezinti bölmesinde Azure **Etkin Dizin** hizmetini seçin ve ardından **Uygulama kayıtlarını**seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
+3. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' ı seçin. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtikten sonra uygulamanın **Genel Bakış** sayfasını görebilirsiniz.
 4. **Genel Bakış** sayfasından **Sil**'i seçin.
 5. Uygulamayı silmek istediğinizi onaylamak için **Evet**'i seçin.
 

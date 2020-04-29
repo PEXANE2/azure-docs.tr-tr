@@ -1,7 +1,7 @@
 ---
-title: 'Veriye Katılma: Modül Başvurusu'
+title: 'Veri birleştirin: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Veri kümelerini birleştirmek için Azure Machine Learning'de Veriye Katıl modülünü nasıl kullanacağınızı öğrenin.
+description: Veri kümelerini birleştirmek için Azure Machine Learning ' de birleştirme verilerini birleştirme modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,62 +10,62 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
 ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477587"
 ---
 # <a name="join-data"></a>Verileri birleştirme
 
-Bu makalede, veritabanı stili birleştirme işlemini kullanarak iki veri kümesini birleştirmek için Azure Machine Learning tasarımcısında (önizleme) **Veri birleştirme** modülünün nasıl kullanılacağı açıklanmaktadır.  
+Bu makalede, bir veritabanı stili birleştirme işlemi kullanarak iki veri kümesini birleştirmek için Azure Machine Learning Tasarımcısı 'nda (Önizleme) **veri birleştirme** modülünün nasıl kullanılacağı açıklanır.  
 
-## <a name="how-to-configure-join-data"></a>Birleştirme Verilerini yapılandırma
+## <a name="how-to-configure-join-data"></a>JOIN verileri nasıl yapılandırılır
 
-İki veri kümesinde birleştirme gerçekleştirmek için, bunlar anahtar bir sütun la ilişkili olmalıdır. Birden çok sütun kullanarak bileşik tuşları da desteklenir. 
+İki veri kümesi üzerinde bir JOIN gerçekleştirmek için, anahtar sütunuyla ilişkili olmaları gerekir. Birden çok sütun kullanan bileşik anahtarlar da desteklenir. 
 
-1. Birleştirmek istediğiniz veri kümelerini ekleyin ve ardından **Verileri Birleştir** modülünüzü ardınıza sürükleyin. 
+1. Birleştirmek istediğiniz veri kümelerini ekleyin ve sonra **birleştirme verileri** modülünü işlem hattınızla sürükleyin. 
 
-    Modülü **Veri Dönüşümü** kategorisinde, **Manipülasyon**altında bulabilirsiniz.
+    Modülü, **veri dönüştürme** kategorisinde, **düzenleme**altında bulabilirsiniz.
 
-1. Veri kümelerini **Veri birleştirme** modülüne bağlayın. 
+1. **Veri kümelerini veri JOIN** modülüne bağlayın. 
  
-1. Anahtar sütun(lar) seçmek için **Başlat sütun seçicisini** seçin. Hem sol hem de sağ girişler için sütun seçmeyi unutmayın.
+1. Anahtar sütun (ler) i seçmek için **sütun seçiciyi Başlat** ' ı seçin. Sol ve sağ girdilerin her ikisi için de sütun seçeceğini unutmayın.
 
     Tek bir anahtar için:
 
-    Her iki giriş için de tek bir anahtar sütunu seçin.
+    Her iki giriş için tek bir anahtar sütun seçin.
     
     Bileşik anahtar için:
 
-    Sol girişten tüm anahtar sütunları ve sağ girişi aynı sırada seçin. **Veriye Katıl** modülü, tüm anahtar sütunlar eşleştiğinde tablolara katılır. Sütun sırası özgün tabloyla aynı değilse, yinelenenlere izin ver seçeneğini işaretleyin **ve sütun sırasını seçimde koruyun.** 
+    Sol girişte bulunan tüm anahtar sütunlarını ve sağ girişi aynı sırayla seçin. Tüm anahtar sütunları eşleşiyorsa, **verileri Birleştir** modülü tabloları birleştirir. Sütun sırası orijinal tabloyla aynı değilse, **seçimdeki yinelemelere Izin ver ve sütun sırasını koru** seçeneğini işaretleyin. 
 
-    ![sütun seçici](media/module/join-data-column-selector.png)
+    ![Sütun seçici](media/module/join-data-column-selector.png)
 
 
-1. Metin sütunu birleştirmede büyük/küçük harf duyarlılığını korumak **istiyorsanız, Büyük/Küçük Harf** seçeneğini belirleyin. 
+1. Metin sütunu **birleştirmesinden** büyük/küçük harf duyarlılığı korumak istiyorsanız, büyük/küçük harf seçeneğini belirleyin. 
    
-1. Veri kümelerinin nasıl birleştirileceğini belirtmek için **Join türü** açılır listesini kullanın.  
+1. Veri kümelerinin nasıl birleştirildiğini belirtmek için **JOIN türü** açılan listesini kullanın.  
   
-    * **Inner Join**: *İç birleştirme* en yaygın birleştirme işlemidir. Yalnızca anahtar sütunların değerleri eşleştiğinde birleştirilmiş satırları döndürür.  
+    * **Iç birleşim**: bir *iç birleşim* en yaygın birleşim işlemidir. Yalnızca anahtar sütunlarının değerleri eşleşiyorsa Birleşik satırları döndürür.  
   
-    * **Sol Dış Birleştirme**: Sol tablodaki tüm satırlar için *sol dış birleştirme,* birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır yoksa, döndürülen satır sağ tablodan gelen tüm sütunlar için eksik değerler içerir. Eksik değerler için bir değiştirme değeri de belirtebilirsiniz.  
+    * **Sol dış birleşim**: sol *dış birleşim* , sol tablodaki tüm satırlar için birleştirilmiş satırları döndürür. Sol tablodaki bir satır sağ tabloda eşleşen satır içermiyorsa, döndürülen satırda doğru tablodan gelen tüm sütunlar için eksik değerler bulunur. Eksik değerler için de bir değiştirme değeri belirtebilirsiniz.  
   
-    * **Tam Dış Birleştirme**: *Tam dış birleştirme* sol tablodaki tüm satırları döndürür (**tablo1**) ve sağ tablodan **(tablo2).**  
+    * **Tam dış birleşim**: *tam dış birleşim* , sol tablodaki (**Table1**) ve sağ tablodaki (**Table2**) tüm satırları döndürür.  
   
-         Her iki tablodaki diğerinde eşleşen satır olmayan satırların her biri için, sonuç eksik değerleri içeren bir satır içerir.  
+         Herhangi bir tabloda, birbirleriyle eşleşen satırları olmayan her bir satır için, sonuç eksik değerler içeren bir satır içerir.  
   
-    * **Sol Yarı Birleştirme**: *Sol yarı birleştirme,* anahtar sütunların değerleri eşleştiğinde yalnızca sol tablodaki değerleri döndürür.  
+    * **Sol yarı ekleme**: *sol yarı JOIN* yalnızca, anahtar sütunlarının değerleri eşleşiyorsa sol tablodaki değerleri döndürür.  
 
-1. Seçenek için **sağ tuş sütunlarını birleştirilmiş tabloda tutun:**
+1. **Birleşik tablodaki doğru anahtar sütunları tut**seçeneği için:
 
-    * Her iki giriş tablolarından tuşları görüntülemek için bu seçeneği belirleyin.
-    * Yalnızca sol girişteki anahtar sütunları döndürmek için seçin.
+    * Her iki giriş tablolarından anahtarları görüntülemek için bu seçeneği belirleyin.
+    * Yalnızca sol girdiden anahtar sütunları döndürmek için seçimi kaldırın.
 
-1. Boru hattını gönderin.
+1. İşlem hattını gönderme.
 
-1. Sonuçları görüntülemek için **Verileri Birleştir'e** sağ tıklayın ve **Görselleştir'i**seçin.
+1. Sonuçları görüntülemek için, **verileri Birleştir** ' e sağ tıklayın ve **Görselleştir**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

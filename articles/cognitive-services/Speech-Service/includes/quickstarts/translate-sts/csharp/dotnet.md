@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Konuşma-konuşma, C# (.NET Framework Windows) çevirin - Konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, C# (.NET Framework Windows)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,23 +11,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
 ms.openlocfilehash: cee0f5c1cdb71f182399356cc7e1dce8d738fd4e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671513"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. **Program.cs**açın ve aşağıdakilerle tüm kodu değiştirin.
+1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin.
 
    ```csharp
    using System;
@@ -118,15 +118,15 @@ Başlamadan önce şunları unutmayın:
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
+1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
+1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
 
-1. İngilizce bir deyim ya da cümle söyleyin. Uygulama konuşmanızı konuşma hizmetine iletir ve metne (bu durumda Almanca'ya) çevirir ve aktarır. Konuşma hizmeti daha sonra sentezlenen sesi ve metni görüntülenmek üzere uygulamaya geri gönderir.
+1. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra birleştirilmiş sesi ve metni görüntülenmek üzere uygulamaya geri gönderir.
 
 ````
 Say something...

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitör çalışma kitapları veri kaynakları | Microsoft dokümanlar
-description: Birden çok veri kaynağından oluşturulmuş önceden oluşturulmuş ve özel parametrelendirilmiş Azure Monitor Çalışma Kitapları yla karmaşık raporlamayı basitleştirin
+title: Azure Izleyici çalışma kitapları veri kaynakları | Microsoft docs
+description: Birden çok veri kaynağından oluşturulan önceden oluşturulmuş ve özel parametreli Azure Izleyici çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
 services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,77 +11,77 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248586"
 ---
-# <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitör çalışma kitapları veri kaynakları
+# <a name="azure-monitor-workbooks-data-sources"></a>Azure Izleyici çalışma kitapları veri kaynakları
 
-Çalışma kitapları çok sayıda veri kaynağıyla uyumludur. Bu makale, şu anda Azure Monitor çalışma kitapları için kullanılabilen veri kaynaklarında size yol açacaktır.
+Çalışma kitapları çok sayıda veri kaynağı ile uyumludur. Bu makale, şu anda Azure Izleyici çalışma kitapları için kullanılabilen veri kaynakları boyunca size yol gösterecektir.
 
 ## <a name="logs"></a>Günlükler
 
 Çalışma kitapları aşağıdaki kaynaklardan günlükleri sorgulamaya izin verir:
 
-* Azure Monitör Günlükleri (Uygulama Öngörüleri Kaynakları ve Günlük Analizi Çalışma Alanları.)
-* Kaynak merkezli veriler (Etkinlik günlükleri)
+* Azure Izleyici günlükleri (Application Insights kaynakları ve Log Analytics çalışma alanları.)
+* Kaynak merkezli veriler (etkinlik günlükleri)
 
-Çalışma kitabı yazarları, metin, grafikler veya ızgaralar olarak görselleştirilebilen bir sonuç kümesi seçmek için temel kaynak verilerini dönüştüren KQL sorgularını kullanabilir.
+Çalışma kitabı yazarları, temel kaynak verilerini dönüştüren KQL sorgularını, metin, grafikler veya kılavuzlar olarak görselleştirilebilen bir sonuç kümesi seçmek için kullanabilir.
 
-![Çalışma kitaplarının ekran görüntüsü günlükleri rapor arabirimi](./media/workbooks-overview/logs.png)
+![Çalışma kitabı günlüğü rapor arabiriminin ekran görüntüsü](./media/workbooks-overview/logs.png)
 
-Çalışma kitabı yazarları, gerçekten birleşik zengin raporlama deneyimi oluşturarak birden çok kaynak arasında kolayca sorgulayabilir.
+Çalışma kitabı yazarları, gerçekten Birleşik bir zengin raporlama deneyimi oluşturarak birden çok kaynak genelinde kolayca sorgu yapabilir.
 
 ## <a name="metrics"></a>Ölçümler
 
-Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçümler](data-platform-metrics.md) yontabilir. Ölçümlere, hedef kaynakları, istenen ölçümleri ve bunların toplarını belirtmenize olanak tanıyan özel bir denetim aracılığıyla çalışma kitaplarında erişilebilir. Bu veriler daha sonra grafiklerde veya ızgaralarda çizilebilir.
+Azure kaynakları, çalışma kitapları aracılığıyla erişilebilen [ölçümleri](data-platform-metrics.md) yayar. Ölçümlere, hedef kaynakları, istenen ölçümleri ve bunların toplamasını belirtmenize olanak tanıyan özelleştirilmiş bir denetim aracılığıyla çalışma kitaplarından erişilebilir. Bu veriler daha sonra grafiklerde veya kılavuzlarda çizilebilirler.
 
-![Çalışma kitabı ölçüm lerinin cpu kullanımı grafiklerinin ekran görüntüsü](./media/workbooks-overview/metrics-graph.png)
+![CPU kullanımının çalışma kitabı ölçüm grafiklerinin ekran görüntüsü](./media/workbooks-overview/metrics-graph.png)
 
 ![Çalışma kitabı ölçümleri arabiriminin ekran görüntüsü](./media/workbooks-overview/metrics.png)
 
 ## <a name="azure-resource-graph"></a>Azure Kaynak Grafiği 
 
-Çalışma kitapları, Azure Kaynak Grafiği 'ni (ARG) kullanarak kaynakları ve meta verilerini sorgulamayı destekler. Bu işlev, öncelikle raporlar için özel sorgu kapsamları oluşturmak için kullanılır. Kaynak kapsamı, ARG'nin desteklediği bir KQL alt kümesi aracılığıyla ifade edilir ve bu genellikle yaygın kullanım durumları için yeterlidir.
+Çalışma kitapları, Azure Kaynak Grafiği (ARG) kullanarak kaynakları ve bunların meta verilerini sorgulamayı destekler. Bu işlevsellik öncelikle raporlar için özel sorgu kapsamları oluşturmak için kullanılır. Kaynak kapsamı, bağımsız değişken tarafından desteklenen bir KQL-alt kümesi ile ifade edilir ve genellikle yaygın kullanım örnekleri için yeterlidir.
 
-Sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure Kaynak Grafiği'ni seçmek ve hedeflemek için abonelikleri seçmek için Sorgu türü açılır dosyasını kullanın. İlginç bir kaynak alt kümesi ni seçen ARG KQL alt kümesini eklemek için Sorgu denetimini kullanın.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure Kaynak Grafiği ' ni seçmek üzere sorgu türü açılan listesini kullanın ve hedeflenecek abonelikleri seçin. İlgi çekici bir kaynak alt kümesi seçen ARG KQL-alt kümesini eklemek için sorgu denetimini kullanın.
 
 
 ![Azure Kaynak Grafiği KQL sorgusunun ekran görüntüsü](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>Uyarılar (önizleme)
+## <a name="alerts-preview"></a>Uyarılar (Önizleme)
 
-Çalışma kitapları, kullanıcıların kaynaklarıyla ilgili etkin uyarıları görselleştirmelerine olanak sağlar. Bu özellik, bildirim verilerini (uyarı) ve tanılama bilgilerini (ölçümler, günlükler) tek bir rapor da bir araya getiren raporların oluşturulmasına olanak tanır. Bu bilgiler, bu veri kaynakları arasında öngörüleri birleştiren zengin raporlar oluşturmak için de biraraya getirilebilir.
+Çalışma kitapları, kullanıcıların kaynaklarıyla ilgili etkin uyarıları görselleştirmesine olanak tanır. Bu özellik bildirim verileri (uyarı) ve tanılama bilgilerini (ölçümler, Günlükler) tek bir raporda oluşturan raporların oluşturulmasına olanak sağlar. Bu bilgiler ayrıca, bu veri kaynakları genelinde öngörüleri birleştiren zengin raporlar oluşturmak için birlikte birleştirilebilir.
 
-Sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Uyarıları seçmek ve hedeflemek için abonelikleri, kaynak gruplarını veya kaynakları seçmek için Sorgu türü açılır dosyasını kullanın. Analitik gereksinimleriniz için ilginç bir uyarı alt kümesini seçmek için uyarı filtresi açılır düşüşlerini kullanın.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için sorgu türü açılan listesini kullanarak Uyarılar ' ı seçin ve hedeflenecek abonelikleri, kaynak gruplarını veya kaynakları seçin. Analitik gereksinimleriniz için uyarıların ilginç bir alt kümesini seçmek üzere uyarı filtresi açılan listelerini kullanın.
 
-![Uyarılar sorgusunun ekran görüntüsü](./media/workbooks-overview/alerts.png)
+![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/alerts.png)
 
-## <a name="workload-health-preview"></a>İş yükü durumu (önizleme)
+## <a name="workload-health-preview"></a>İş yükü sistem durumu (Önizleme)
 
-Azure Monitor, Windows veya Linux konuk işletim sistemlerinin kullanılabilirliğini ve performansını proaktif olarak izleyen işlevsellik lere sahiptir. Azure Monitor, önemli bileşenleri ve ilişkilerini, bu bileşenlerin sistem durumunu nasıl ölçeceklerine ilişkin ölçütleri ve sağlıksız bir durum algılandığında hangi bileşenlerin sizi uyarmasını sağlar. Çalışma kitapları, kullanıcıların zengin etkileşimli raporlar oluşturmak için bu bilgileri kullanmasına olanak sağlar.
+Azure Izleyici, Windows veya Linux konuk işletim sistemlerinin kullanılabilirliğini ve performansını önceden izleyerek izleyen işlevlere sahiptir. Azure Izleyici, temel bileşenleri ve bunların ilişkilerini, bu bileşenlerin sistem durumunu ölçme ölçütlerini ve sağlıksız bir durum algılandığında hangi bileşenlerin sizi uyarmasını sağlar. Çalışma kitapları, kullanıcıların zengin etkileşimli raporlar oluşturmak için bu bilgileri kullanmasına izin verir.
 
-Sorgu denetimi yapmak için bu veri kaynağını kullanın, İş Yükü Durumu'nu seçmek ve hedeflemek için abonelik, kaynak grubu veya VM kaynaklarını seçmek için **Sorgu türü** açılır dosyasını kullanın. Analitik gereksinimleriniz için sağlık olaylarının ilginç bir alt kümesini seçmek için sistem durumu filtresi açılır düşüşlerini kullanın.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, **sorgu türü** açılan listesini kullanarak Iş yükü sistem durumunu seçin ve hedeflenen abonelik, kaynak grubu veya VM kaynakları ' nı seçin. Analiz gereksinimleriniz için sistem durumu olaylarının ilgi çekici bir alt kümesini seçmek üzere durum filtre açılan listelerini kullanın.
 
-![Uyarılar sorgusunun ekran görüntüsü](./media/workbooks-overview/workload-health.png)
+![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure kaynak durumu 
+## <a name="azure-resource-health"></a>Azure Kaynak durumu 
 
-Çalışma kitapları, zengin, etkileşimli sistem durumu raporları oluşturmak için Azure kaynak sağlığının elde etmesini ve diğer veri kaynaklarıyla birleştirilmesini destekleme
+Çalışma kitapları, Azure Kaynak durumu almayı ve zengin, etkileşimli sistem durumu raporları oluşturmak için diğer veri kaynaklarıyla birleştirmeyi destekler
 
-Sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için, Azure sistem durumunu seçmek ve hedeflenene kaynakları seçmek için **Sorgu türü** açılır dosyasını kullanın. Analitik gereksinimleriniz için ilginç bir kaynak sorunları alt kümesini seçmek için sistem durumu filtresi açılır düşüşlerini kullanın.
+Bir sorgu denetiminin bu veri kaynağını kullanmasını sağlamak için **sorgu türü** açılan listesini kullanarak Azure sistem durumu ' nu seçin ve hedeflenecek kaynakları seçin. Analiz gereksinimleriniz için kaynak sorunlarının ilginç bir alt kümesini seçmek üzere durum filtre açılan listelerini kullanın.
 
-![Uyarılar sorgusunun ekran görüntüsü](./media/workbooks-overview/resource-health.png)
+![Uyarı sorgusunun ekran görüntüsü](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure Veri Gezgini (önizleme)
+## <a name="azure-data-explorer-preview"></a>Azure Veri Gezgini (Önizleme)
 
-Çalışma kitapları artık güçlü [Kusto](https://docs.microsoft.com/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
+Artık çalışma kitapları, güçlü [kusto](https://docs.microsoft.com/azure/kusto/query/index) sorgu diliyle [Azure Veri Gezgini](https://docs.microsoft.com/azure/data-explorer/) kümelerinden sorgulama desteğine sahiptir.   
 
 ![Kusto sorgu penceresinin ekran görüntüsü](./media/workbooks-overview/data-explorer.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çalışma kitapları hakkında daha fazla bilgi [edinmeye başlayın](workbooks-visualizations.md) birçok zengin görselleştirme seçeneği.
-* Çalışma kitabı kaynaklarınıza erişimi [kontrol](workbooks-access-control.md) edin ve paylaşın.
+* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
+* Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.

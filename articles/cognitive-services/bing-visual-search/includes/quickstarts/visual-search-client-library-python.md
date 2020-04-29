@@ -1,5 +1,5 @@
 ---
-title: Bing Görsel Arama Python istemci kitaplığı hızlı başlat
+title: Bing Görsel Arama Python istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: debc5130824a0f661a3736b8d24d950fc789f2f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550005"
 ---
-Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görüntü öngörüleri almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama çoğu programlama diliyle uyumlu bir REST API'sine sahip olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örneğin kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) bulunabilir 
+Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görüntü öngörülerini almaya başlamak için bu hızlı başlangıcı kullanın. Bing Görsel Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) 'da bulunabilir 
 
-[Referans belgeleri](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [Paketi (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [Örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Başvuru belge](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/visualsearch?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-visualsearch) | [paketi (Pypı)](https://pypi.org/project/azure-cognitiveservices-search-visualsearch/) | [örnekleri](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Piton](https://www.python.org/) 2.x veya 3.x
-* [Sanal](https://docs.python.org/3/tutorial/venv.html)ortam kullanılması önerilir. Sana ortamı [venv modülü](https://pypi.python.org/pypi/virtualenv) ile yükleyin ve başlatın.
+* [Python](https://www.python.org/) 2. x veya 3. x
+* [Sanal bir ortam](https://docs.python.org/3/tutorial/venv.html)kullanmanız önerilir. Sana ortamı [venv modülü](https://pypi.python.org/pypi/virtualenv) ile yükleyin ve başlatın.
 * Python için Bing Görsel Arama istemci kitaplığı. Aşağıdaki komutlarla yükleyebilirsiniz:
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
@@ -32,7 +32,7 @@ Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görün
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Favori IDE veya düzenleyicinizde yeni bir Python dosyası oluşturun ve aşağıdaki alma deyimlerini ekleyin. 
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarma deyimlerini ekleyin. 
 
     ```python
     import http.client, urllib.parse
@@ -48,7 +48,7 @@ Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görün
     )
     from msrest.authentication import CognitiveServicesCredentials
     ```
-2. Abonelik anahtarınız, Özel Yapılandırma Kimliğiniz ve yüklemek istediğiniz resim için değişkenler oluşturun. 
+2. Abonelik anahtarınız, özel yapılandırma KIMLIĞINIZ ve karşıya yüklemek istediğiniz görüntü için değişkenler oluşturun. 
     
     ```python
     subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
@@ -63,9 +63,9 @@ Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görün
     client = VisualSearchClient(endpoint="https://api.cognitive.microsoft.com", credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-## <a name="send-the-search-request"></a>Arama isteğini gönderme
+## <a name="send-the-search-request"></a>Arama isteğini gönder
 
-1. Resim dosyası açıkken, `VisualSearchRequest()`serihale edin `knowledge_request` ve parametre `visual_search()`olarak geçirin.
+1. Görüntü dosyası açıkken, serileştirilir `VisualSearchRequest()`ve için `knowledge_request` parametresi olarak geçirin. `visual_search()`
 
     ```python
     with open(image_path, "rb") as image_fd:
@@ -76,7 +76,7 @@ Python istemci kitaplığını kullanarak Bing Görsel Arama hizmetinden görün
         result = client.images.visual_search(image=image_fd, knowledge_request=knowledge_request)
     ```
 
-2. Herhangi bir sonuç döndürüldüyse, bunları, etiketleri ve ilk etiketteki eylemleri yazdırın.
+2. Herhangi bir sonuç döndürülürse, bunları, etiketleri ve ilk etiketteki eylemleri yazdırın.
 
     ```python
     if not result:

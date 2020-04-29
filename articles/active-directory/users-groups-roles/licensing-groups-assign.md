@@ -1,6 +1,6 @@
 ---
-title: Bir gruba lisans atama - Azure Etkin Dizin | Microsoft Dokümanlar
-description: Azure Active Directory grup lisanslama yoluyla kullanıcılara lisans atama
+title: Bir gruba lisans atama-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory Grup Lisanslama aracılığıyla kullanıcılara lisans atama
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
@@ -16,90 +16,90 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79253071"
 ---
-# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory'de grup üyeliğine göre kullanıcılara lisans atama
+# <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory ' de grup üyeliğine göre kullanıcılara lisans atama
 
-Bu makale, bir grup kullanıcıya ürün lisansları atamanız ve Azure Active Directory 'de (Azure AD) doğru lisanslı olduklarını doğrulamanız için size yol göstermektedir.
+Bu makalede, bir kullanıcı grubuna ürün lisansları atama ve Azure Active Directory (Azure AD) ' de doğru lisanslandığının doğrulanması anlatılmaktadır.
 
-Bu örnekte, kiracı **İk Bölümü**adlı bir güvenlik grubu içerir. Bu grup, insan kaynakları departmanının tüm üyelerini (yaklaşık 1.000 kullanıcı) içerir. Tüm departmana Office 365 Enterprise E3 lisansları atamak istiyorsunuz. Ürüne dahil edilen Yammer Enterprise hizmeti, departman kullanmaya hazır olana kadar geçici olarak devre dışı bırakılmalı. Ayrıca, aynı kullanıcı grubuna Enterprise Mobility + Security lisansları dağıtmak istiyorsunuz.
+Bu örnekte, kiracı **HR departmanı**adlı bir güvenlik grubu içerir. Bu grup, insan kaynakları bölümünün tüm üyelerini içerir (1.000 kullanıcının etrafında). Office 365 Kurumsal E3 lisanslarını tüm departmana atamak istiyorsunuz. Departman kullanmaya başlamaya hazırlanana kadar ürüne dahil olan Yammer Enterprise hizmeti geçici olarak devre dışı bırakılmalıdır. Ayrıca, Enterprise Mobility + Security lisanslarını aynı kullanıcı grubuna dağıtmak istersiniz.
 
 > [!NOTE]
-> Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Lisansın bir kullanıcıya atanmadan önce, yöneticinin kullanıcıüzerindeki Kullanım konumu özelliğini belirtilmesi gerekir.
+> Bazı Microsoft hizmetleri tüm konumlarda kullanılamaz. Bir lisansın bir kullanıcıya atanabilmesi için önce yönetici kullanıcı üzerinde kullanım konumu özelliğini belirtmelidir.
 >
-> Grup lisans ataması için, kullanım yeri belirtilmeyen kullanıcılar dizinin konumunu devralır. Birden çok konumda kullanıcılarınız varsa, kullanım konumunu her zaman Azure AD'deki kullanıcı oluşturma akışınızın bir parçası olarak ayarlamanızı öneririz (örn. AAD Connect yapılandırması yoluyla) bu da lisans atamasının sonucunun her zaman doğru olmasını ve kullanıcıların almamasını sağlar izin verilmeyen yerlerde ki hizmetler.
+> Grup lisansı ataması için, kullanım konumu belirtilmemiş tüm kullanıcılar dizinin konumunu alır. Birden çok konumdaki kullanıcılarınız varsa, her zaman kullanım konumunu Azure AD 'de Kullanıcı oluşturma akışınızın bir parçası olarak ayarlamanızı öneririz (örn. AAD Connect yapılandırması aracılığıyla); lisans atamasının sonucunun her zaman doğru ve kullanıcıların izin verilmeyen konumlarda hizmet almamasını sağlar.
 
-## <a name="step-1-assign-the-required-licenses"></a>Adım 1: Gerekli lisansları atama
+## <a name="step-1-assign-the-required-licenses"></a>1. Adım: gerekli lisansları atama
 
-1. Azure AD [**yönetici merkezinde**](https://aad.portal.azure.com) lisans yöneticisi hesabıyla oturum açın. Lisansları yönetmek için hesabın bir lisans yöneticisi, kullanıcı yöneticisi veya genel yönetici olması gerekir.
+1. [**Azure AD Yönetim merkezinde**](https://aad.portal.azure.com) bir lisans yönetici hesabıyla oturum açın. Lisansları yönetmek için hesabın Lisans Yöneticisi, Kullanıcı Yöneticisi veya genel yönetici olması gerekir.
 
-1. Kiracıdaki tüm lisanslanabilir ürünleri görebileceğiniz ve yönetebileceğiniz bir sayfa açmak için **Lisanslar'ı** seçin.
+1. Kiracıdaki tüm lisanslanabilir ürünleri görebileceğiniz ve yönetebileceğiniz bir sayfa açmak için **lisanslar** ' ı seçin.
 
-1. **Tüm ürünler**altında, ürün adlarını seçerek hem Office 365 Enterprise E5 hem de Enterprise Mobility + Security E3'ü seçin. Atamayı başlatmak için sayfanın üst kısmında **Ata'yı** seçin.
+1. **Tüm ürünler**altında, ürün adlarını seçerek hem Office 365 Kurumsal E5 hem de Enterprise Mobility + Security E3 ' nı seçin. Atamayı başlatmak için sayfanın en üstünde bulunan **ata** ' yı seçin.
 
-   ![Lisans atamak için ürünleri seçme](./media/licensing-groups-assign/licenses-all-products-assign.png)
+   ![Lisans atamak için ürünleri seçin](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
-1. Lisans **Atla** sayfasında, kullanıcıların ve grupların listesini açmak için **Kullanıcılar ve gruplar** seçin.
+1. **Lisans ata** sayfasında kullanıcılar ve gruplar ' **ı seçerek kullanıcılar** ve gruplar listesini açın.
 
-1. Bir kullanıcı veya grup seçin ve seçiminizi onaylamak için sayfanın altındaki **Seç** düğmesini kullanın.
+1. Bir kullanıcı veya grup seçin ve sonra seçiminizi onaylamak için sayfanın alt kısmındaki **Seç** düğmesini kullanın.
 
-1. Lisans **Atama** sayfasında, daha önce seçtiğimiz iki üründe yer alan tüm hizmet planlarını görüntüleyen **Atama seçeneklerini**tıklatın. **Yammer Enterprise'ı** bulun ve bu hizmeti ürün lisansından devre dışı bırakabilmek için **kapatın.** **Lisans seçeneklerinin**altındaki **Tamam'ı** tıklatarak onaylayın.
+1. **Lisans ata** sayfasında, daha önce seçtiğimiz iki ürüne dahil olan tüm hizmet planlarını görüntüleyen **atama seçenekleri**' ne tıklayın. **Yammer Enterprise** 'ı bulun ve ürün lisansından bu hizmeti devre dışı bırakmak için **devre** dışı bırakın. **Lisans seçeneklerinin**altındaki **Tamam** ' a tıklayarak onaylayın.
 
    ![lisanslar için hizmet planlarını seçin](./media/licensing-groups-assign/assignment-options.png)
   
-1. Atamayı tamamlamak için, **Lisans Ata** sayfasında, sayfanın altındaki **Atama'yı** tıklatın.
+1. Atamayı tamamladıktan sonra, **Lisans ata** sayfasında, sayfanın en altında bulunan **ata** ' ya tıklayın.
 
-1. Sağ üst köşede, işlemin durumunu ve sonucunu gösteren bir bildirim görüntülenir. Gruba atama tamamlanamadıysa (örneğin, gruptaki önceden varolan lisanslar nedeniyle), hatanın ayrıntılarını görüntülemek için bildirimi tıklatın.
+1. Sağ üst köşede, işlemin durumunu ve sonucunu gösteren bir bildirim görüntülenir. Gruba atama işlemi tamamlanamadığından (örneğin, gruptaki önceden var olan lisanslar nedeniyle), hatanın ayrıntılarını görüntülemek için bildirime tıklayın.
 
-Bir gruba lisans atadığında, Azure AD bu grubun tüm varolan üyelerini işler. Bu işlem, grubun boyutuna göre değişen, biraz zaman alabilir. Bir sonraki adımda, işlemin tamamlanıp tamamlanamayacağına nasıl doğruvereceği ve sorunları çözmek için daha fazla dikkat gerekip gerekmedi
+Bir gruba lisans atarken, Azure AD söz konusu grubun tüm mevcut üyelerini işler. Bu işlem, grubun boyutuyla değiştirerek biraz zaman alabilir. Sonraki adımda, işlemin tamamlandığını doğrulamak ve sorunları çözmek için daha fazla dikkat gerekip gerekmediğini belirleme açıklanmaktadır.
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>Adım 2: İlk atamanın tamamladığını doğrulama
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>2. Adım: ilk atamanın tamamlandığını doğrulama
 
-1. Azure **Etkin Dizin** > **Gruplarına**gidin. Lisansların atandığı grubu seçin.
+1. **Azure Active Directory** > **gruplara**gidin. Lisansın atandığı grubu seçin.
 
-1. Grup sayfasında **Lisanslar'ı**seçin. Bu, lisansların kullanıcılara tam olarak atanmış olup olmadığını ve bakmanız gereken hatalar olup olmadığını hızlı bir şekilde onaylamanızı sağlar. Aşağıdaki bilgiler kullanılabilir:
+1. Grup sayfasında, **lisanslar**' ı seçin. Bu, lisansların kullanıcılara tam olarak atandığını ve aramanız gereken herhangi bir hata olup olmadığını hızlı bir şekilde doğrulamanıza olanak sağlar. Aşağıdaki bilgiler kullanılabilir:
 
-   - Şu anda gruba atanan hizmet lisansları. Etkinleştirilen belirli hizmetleri göstermek ve değişiklik yapmak için bir giriş seçin.
+   - Gruba atanmış olan hizmet lisansları. Etkinleştirilen belirli hizmetleri göstermek ve değişiklik yapmak için bir giriş seçin.
 
-   - Değişiklikler işleniyorsa veya tüm kullanıcı üyeleri için işlem tamamlanmışsa kullanılabilir olan en son lisans değişikliklerinin durum güncelleştirmeleri.
+   - Değişiklikler işlendiğinde veya tüm Kullanıcı üyeleri için işleme bitiyorsa kullanılabilir olan en son lisans değişikliklerinin durum güncelleştirmeleri.
 
-   - Hata durumunda olan kullanıcı lisansı atamaları hakkında bilgi.
+   - Bir hata durumundaki Kullanıcı Lisans atamaları hakkında bilgiler.
 
-   ![lisans hataları ve lisans durumu](./media/licensing-groups-assign/assignment-errors.png)
+   ![Lisanslama hataları ve lisans durumu](./media/licensing-groups-assign/assignment-errors.png)
 
-1. **Azure Etkin Dizin** > **Kullanıcıları ve grup** > *adı* > **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi bakın. Aşağıdaki etkinlikleri kontrol edin:
+1. **Azure Active Directory** > **Kullanıcılar ve gruplar** > *Grup adı* > **Denetim günlükleri**altında lisans işleme hakkında daha ayrıntılı bilgi görüntüleyin. Aşağıdaki etkinlikleri denetleyin:
 
-   - Etkinlik: `Start applying group based license to users`. Sistem gruptaki lisans atama değişikliğini aldığında ve tüm kullanıcı üyelerine uygulamaya başladığında bu günlüğe kaydedilir. Yapılan değişiklik hakkında bilgi içerir.
+   - Etkinlik: `Start applying group based license to users`. Bu, sistem gruptaki lisans ataması değişikliğini seçtiğinde günlüğe kaydedilir ve tüm Kullanıcı üyelerine uygulamayı başlatır. Yapılan değişiklik hakkında bilgi içerir.
 
-   - Etkinlik: `Finish applying group based license to users`. Sistem gruptaki tüm kullanıcıları işlemeyi bitirdiğinde bu günlüğe kaydedilir. Kaç kullanıcının başarıyla işlendiğinin ve kaç kullanıcıya grup lisansı atanamadığının bir özetini içerir.
+   - Etkinlik: `Finish applying group based license to users`. Bu, sistem gruptaki tüm kullanıcıları işlemeyi tamamladığında günlüğe kaydedilir. Kaç kullanıcının başarıyla işlendiğini ve kaç kullanıcıya grup lisansı atanmadığını bir Özet içerir.
 
-   Denetim günlüklerinin grup tabanlı lisanslama tarafından yapılan değişiklikleri analiz etmek için nasıl kullanAbileceği hakkında daha fazla bilgi edinmek için [bu bölümü okuyun.](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)
+   Denetim günlüklerinin, grup tabanlı lisanslama tarafından yapılan değişiklikleri analiz etmek için nasıl kullanılabileceği hakkında daha fazla bilgi edinmek için [Bu bölümü okuyun](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity) .
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>Adım 3: Lisans sorunlarını denetleyin ve bunları çözün
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>3. Adım: lisans sorunlarını denetleyin ve çözümleyin
 
-1. Azure **Etkin Dizin** > **Grupları'na**gidin ve lisansların atandığı grubu bulun.
-1. Grup sayfasında **Lisanslar'ı**seçin. Sayfanın üstündeki bildirim, lisansların atanamayacağı 10 kullanıcı olduğunu gösterir. Bu grup için lisans hatası durumundaki tüm kullanıcıların listesini görmek için açın.
-1. **Başarısız atamalar** sütunu, her iki ürün lisansının da kullanıcılara atanamayacağını söyler. Hata sütununun **en üst nedeni,** hatanın nedenini içerir. Bu durumda, **çakışan hizmet planları.**
+1. **Azure Active Directory** > **gruplar**' a gidin ve Lisansların atandığı grubu bulun.
+1. Grup sayfasında, **lisanslar**' ı seçin. Sayfanın üst kısmındaki bildirim, lisansların atanabileceği 10 Kullanıcı olduğunu gösterir. Bu grup için bir lisanslama hata durumunda tüm kullanıcıların listesini görmek için onu açın.
+1. **Başarısız atamalar** sütunu, kullanıcılara her iki ürün lisansının atanmayacağını söyler. **Hata sütununun en üstteki nedeni** , hatanın nedenini içerir. Bu durumda, bu **Çakışan hizmet planlarımız**.
 
-   ![atanamayan lisanslar](./media/licensing-groups-assign/failed-assignments.png)
+   ![atanmayan lisanslar](./media/licensing-groups-assign/failed-assignments.png)
 
-1. Kullanıcının **Lisanslar** sayfasını açmak için bir kullanıcı seçin. Bu sayfa, şu anda kullanıcıya atanan tüm lisansları gösterir. Bu örnekte, kullanıcı **Kiosk kullanıcıları** grubundan devralınan Office 365 Enterprise E1 lisansına sahiptir. Bu, sistemin **İk Departmanı** grubundan uygulamaya çalıştığı E3 lisansıyla çelişiyor. Sonuç olarak, bu gruptaki lisansların hiçbiri kullanıcıya atanmadı.
+1. Kullanıcının **lisanslar** sayfasını açmak için bir kullanıcı seçin. Bu sayfa, kullanıcıya şu anda atanmış olan tüm lisansları gösterir. Bu örnekte, kullanıcının **bilgi noktası kullanıcıları** grubundan devralınan Office 365 Kurumsal E1 lisansına sahip olması gerekir. Bu, sistemin **HR departmanı** grubundan uygulanmaya çalıştığı E3 lisansıyla çakışıyor. Sonuç olarak, bu gruptan lisanslardan hiçbiri kullanıcıya atanmaz.
 
    ![Bir kullanıcı için tüm lisans çakışmalarını görüntüleme](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
-1. Bu çakışmayı çözmek için kullanıcıyı **Kiosk kullanıcıları** grubundan kaldırın. Azure AD değişikliği işledikten **sonra, İk Departmanı** lisansları doğru şekilde atanır.
+1. Bu çakışmayı çözümlemek için, kullanıcıyı **bilgi noktası kullanıcıları** grubundan kaldırın. Azure AD değişikliği tamamladıktan sonra, **HR departmanı** lisansları doğru şekilde atanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Grupları kullanarak lisans ataması için özellik kümesi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Grupları kullanarak lisans atamaya yönelik özellik kümesi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure Active Directory'de grup tabanlı lisanslama nedir?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
+- [Azure Active Directory 'de grup tabanlı lisanslama nedir?](/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)
 - [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 - [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-- [Azure Active Directory'de grup tabanlı lisanslama yı kullanarak kullanıcıların ürün lisansları arasında geçiş ilertirme](licensing-groups-change-licenses.md)
+- [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
 - [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](../active-directory-licensing-group-advanced.md)
-- [Azure Active Directory'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)
+- [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

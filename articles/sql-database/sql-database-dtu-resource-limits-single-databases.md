@@ -1,6 +1,6 @@
 ---
-title: DTU kaynak sınırları tek veritabanları
-description: Bu sayfada, Azure SQL Veritabanı'ndaki tek veritabanları için bazı yaygın DTU kaynak sınırları açıklanmaktadır.
+title: DTU kaynağı tek veritabanlarını sınırlar
+description: Bu sayfada, Azure SQL veritabanı 'nda tek veritabanları için bazı yaygın DTU kaynak sınırları açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,24 +12,24 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
 ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256321"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>DTU satın alma modeli kullanıldığında tek veritabanları için kaynak sınırları
 
-Bu makalede, DTU satın alma modelini kullanarak Azure SQL Veritabanı tek veritabanları için ayrıntılı kaynak sınırları sağlar.
+Bu makalede, DTU satın alma modelini kullanarak Azure SQL veritabanı tekil veritabanları için ayrıntılı kaynak sınırları sağlanmaktadır.
 
-Elastik havuzlar için DTU satın alma modeli kaynak sınırları için [DTU kaynak limitlerine bakın - elastik havuzlar.](sql-database-dtu-resource-limits-elastic-pools.md) vCore kaynak sınırları için [vCore kaynak limitlerine](sql-database-vcore-resource-limits-single-databases.md) bakın - tek veritabanları ve [vCore kaynak sınırları - elastik havuzlar.](sql-database-vcore-resource-limits-elastic-pools.md) Farklı satın alma modelleri ile ilgili daha fazla bilgi için Satın [Alma modelleri ve hizmet katmanlarına](sql-database-purchase-models.md)bakın.
+Elastik havuzlar için DTU satın alma modeli kaynak sınırları için bkz. [DTU kaynak limitleri-elastik havuzlar](sql-database-dtu-resource-limits-elastic-pools.md). VCore kaynak sınırları için bkz. [Vcore kaynak limitleri-tek veritabanları](sql-database-vcore-resource-limits-single-databases.md) ve [sanal çekirdek kaynak limitleri-elastik havuzlar](sql-database-vcore-resource-limits-elastic-pools.md). Farklı satın alma modelleriyle ilgili daha fazla bilgi için bkz. [model ve hizmet katmanları satın alma](sql-database-purchase-models.md).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Tek veritabanı: Depolama boyutları ve işlem boyutları
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Tek veritabanı: depolama boyutları ve işlem boyutları
 
-Aşağıdaki tablolar, her hizmet katmanı ve işlem boyutunda tek bir veritabanı için kullanılabilir kaynakları gösterir. [Azure portalı,](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server) [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell,](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases) [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)veya [REST API'yi](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases)kullanarak tek bir veritabanı için hizmet katmanını, işlem boyutunu ve depolama tutarını ayarlayabilirsiniz.
+Aşağıdaki tablolarda, her bir hizmet katmanında ve işlem boyutunda tek bir veritabanı için kullanılabilir kaynaklar gösterilmektedir. [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), [Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases)veya [REST API](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases)kullanarak tek bir veritabanı için hizmet katmanını, işlem boyutunu ve depolama miktarını ayarlayabilirsiniz.
 
 > [!IMPORTANT]
-> Kılavuz ve dikkatleri ölçeklendirmek için [bkz.](sql-database-single-database-scale.md)
+> Ölçeklendirme Kılavuzu ve konuları için bkz. [tek bir veritabanını ölçeklendirme](sql-database-single-database-scale.md)
 
 ### <a name="basic-service-tier"></a>Temel hizmet katmanı
 
@@ -37,16 +37,16 @@ Aşağıdaki tablolar, her hizmet katmanı ve işlem boyutunda tek bir veritaban
 | :--- | --: |
 | Maks. DTU | 5 |
 | Dahil edilen depolama alanı (GB) | 2 |
-| Maksimum depolama seçenekleri (GB) | 2 |
+| En fazla depolama seçimi (GB) | 2 |
 | Maks. bellek içi OLTP depolama alanı (GB) |Yok |
-| Maksimum eşzamanlı çalışanlar (istekler) | 30 |
+| Maksimum eş zamanlı çalışan (istek) | 30 |
 | Maks. eş zamanlı oturum | 300 |
 |||
 
 > [!IMPORTANT]
-> Temel hizmet katmanı birden az vCore (CPU) sağlar.  CPU yoğun iş yükleri için, S3 veya daha büyük bir hizmet katmanı önerilir. 
+> Temel hizmet katmanı, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
 >
->Veri depolama ile ilgili olarak, Temel hizmet katmanı Standart Sayfa Blobs yerleştirilir. Standart Sayfa Blob'ları sabit disk sürücüsü (HDD) tabanlı depolama ortamını kullanır ve performans değişkenliğine daha az duyarlı geliştirme, sınama ve seyrek erişilen diğer iş yükleri için en uygun olanlardır.
+>Veri depolama hakkında temel hizmet katmanı standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
 >
 
 ### <a name="standard-service-tier"></a>Standart hizmet katmanı
@@ -55,27 +55,27 @@ Aşağıdaki tablolar, her hizmet katmanı ve işlem boyutunda tek bir veritaban
 | :--- |---:| ---:|---:|---:|
 | Maks. DTU | 10 | 20 | 50 | 100 |
 | Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 |
-| Maksimum depolama seçenekleri (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
+| En fazla depolama seçimi (GB) | 250 | 250 | 250 | 250, 500, 750, 1024 |
 | Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |
-| Maksimum eşzamanlı çalışanlar (istekler)| 60 | 90 | 120 | 200 |
+| Maksimum eş zamanlı çalışan (istek)| 60 | 90 | 120 | 200 |
 | Maks. eş zamanlı oturum |600 | 900 | 1200 | 2400 |
 ||||||
 
 > [!IMPORTANT]
-> Standart S0, S1 ve S2 katmanları birden az vCore (CPU) sağlar.  CPU yoğun iş yükleri için, S3 veya daha büyük bir hizmet katmanı önerilir. 
+> Standart S0, S1 ve S2 katmanları, birden az sanal çekirdek (CPU) sağlar.  CPU yoğunluklu iş yükleri için S3 veya daha büyük bir hizmet katmanı önerilir. 
 >
->Veri depolama ile ilgili olarak, Standart S0 ve S1 hizmet katmanları Standart Sayfa Blobs yerleştirilir. Standart Sayfa Blob'ları sabit disk sürücüsü (HDD) tabanlı depolama ortamını kullanır ve performans değişkenliğine daha az duyarlı geliştirme, sınama ve seyrek erişilen diğer iş yükleri için en uygun olanlardır.
+>Veri depolama ile ilgili Standart S0 ve S1 hizmet katmanları standart sayfa Bloblarına yerleştirilir. Standart sayfa Blobları, sabit disk sürücüsü (HDD) tabanlı depolama medyası kullanır ve performans çeşitliliğine daha az duyarlı olan geliştirme, test ve diğer Seyrek erişilen iş yükleri için idealdir.
 >
 
-### <a name="standard-service-tier-continued"></a>Standart hizmet katmanı (devam)
+### <a name="standard-service-tier-continued"></a>Standart hizmet katmanı (devamı)
 
 | **İşlem boyutu** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maks. DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Dahil edilen depolama alanı (GB) | 250 | 250 | 250 | 250 | 250 |
-| Maksimum depolama seçenekleri (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
+| En fazla depolama seçimi (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Maks. bellek içi OLTP depolama alanı (GB) | Yok | Yok | Yok | Yok |Yok |
-| Maksimum eşzamanlı çalışanlar (istekler)| 400 | 800 | 1600 | 3200 |6000 |
+| Maksimum eş zamanlı çalışan (istek)| 400 | 800 | 1600 | 3200 |6000 |
 | Maks. eş zamanlı oturum |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
 
@@ -84,25 +84,25 @@ Aşağıdaki tablolar, her hizmet katmanı ve işlem boyutunda tek bir veritaban
 | **İşlem boyutu** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maks. DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| Dahil edilen depolama alanı (GB) | 500 | 500 | 500 | 500 | 4096* | 4096* |
-| Maksimum depolama seçenekleri (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
+| Dahil edilen depolama alanı (GB) | 500 | 500 | 500 | 500 | 4096 * | 4096 * |
+| En fazla depolama seçimi (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096 * | 4096 * |
 | Maks. bellek içi OLTP depolama alanı (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
-| Maksimum eşzamanlı çalışanlar (istekler)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
+| Maksimum eş zamanlı çalışan (istek)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
 | Maks. eş zamanlı oturum | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\*1024 GB'dan 4096 GB'a kadar 256 GB'lık artışlarla
+\*1024 GB 'den 4096 GB 'a kadar, 256 GB 'lik artışlarla
 
 > [!IMPORTANT]
-> Premium katmanında 1 TB'den fazla depolama şu anda Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Batı Orta ABD, ABD DoD bölgeleri ve ABD Hükümeti Merkezi hariç tüm bölgelerde kullanılabilir. Bu bölgelerde, Premium katmandaki depolama limiti 1 TB ile sınırlıdır.  Daha fazla bilgi için [P11-P15 geçerli sınırlamaları'na](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)bakın.  
+> Premium katmanda 1 TB 'den fazla depolama alanı şu anda tüm bölgelerde kullanılabilir: Çin Doğu, Çin Kuzey, Almanya Orta, Almanya Kuzeydoğu, Orta Batı ABD, US DoD bölgeleri ve ABD Devlet Merkezi. Bu bölgelerde, Premium katmanda en fazla depolama alanı 1 TB ile sınırlıdır.  Daha fazla bilgi için bkz. [P11-P15 geçerli sınırlamalar](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 > [!NOTE]
-> Limitler için `tempdb` [tempdb limitlerine](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)bakın.
+> Sınırlar `tempdb` için bkz. [tempdb sınırları](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Tek bir veritabanı için vCore kaynak sınırları [için, vCore satın alma modelini kullanarak tek veritabanları için kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md) bakın
-- Elastik havuzlar için vCore kaynak sınırları için, [vCore satın alma modelini kullanarak elastik havuzlar için kaynak sınırlarına](sql-database-vcore-resource-limits-elastic-pools.md) bakın
-- Elastik havuzlar için DTU kaynak sınırları için, [DTU satın alma modelini kullanan elastik havuzlar için kaynak sınırlarına](sql-database-dtu-resource-limits-elastic-pools.md) bakın
-- Yönetilen örnekler için kaynak sınırları için [yönetilen örnek kaynak sınırlarına](sql-database-managed-instance-resource-limits.md)bakın.
-- Genel Azure sınırları hakkında bilgi için Azure [abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md)abakın.
-- Veritabanı sunucusundaki kaynak sınırları hakkında bilgi için, sunucu ve abonelik düzeylerindeki sınırlar hakkında bilgi için [bir SQL Veritabanı sunucusundaki kaynak sınırlarına genel bakış](sql-database-resource-limits-database-server.md) bakın.
+- Tek bir veritabanı için sanal çekirdek kaynak sınırları için bkz [. Vcore satın alma modelini kullanarak tek veritabanları için kaynak sınırları](sql-database-vcore-resource-limits-single-databases.md)
+- Elastik havuzların sanal çekirdek kaynak sınırları için bkz [. Vcore satın alma modelini kullanarak elastik havuzlar için kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md)
+- Elastik havuzların DTU kaynak sınırları için bkz [. DTU satın alma modelini kullanarak elastik havuzlar için kaynak limitleri](sql-database-dtu-resource-limits-elastic-pools.md)
+- Yönetilen örnekler için kaynak sınırları için bkz. [yönetilen örnek kaynak sınırları](sql-database-managed-instance-resource-limits.md).
+- Genel Azure limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- Bir veritabanı sunucusundaki kaynak sınırları hakkında daha fazla bilgi için bkz. sunucu ve abonelik düzeylerindeki sınırlamalar hakkında bilgi için bkz. [SQL veritabanı sunucusundaki kaynak sınırlarına genel bakış](sql-database-resource-limits-database-server.md) .

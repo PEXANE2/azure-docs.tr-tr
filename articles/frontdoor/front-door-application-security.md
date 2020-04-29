@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - Uygulama katmanı güvenliği | Microsoft Dokümanlar
-description: Bu makale, Azure Ön Kapı'nın uygulama arka uçlarınızı nasıl koruduğuve güvenli hale getirebildiğini anlamanıza yardımcı olur
+title: Azure ön kapısı-uygulama katmanı güvenliği | Microsoft Docs
+description: Bu makale, Azure ön kapısının uygulamanızın arka uçlarınızın korunmasına ve güvenliğini sağlamanıza nasıl olanak sağladığını anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,41 +12,41 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471804"
 ---
-# <a name="application-layer-security-with-front-door"></a>Ön Kapılı uygulama katmanı güvenliği
-Azure Ön Kapı, web uygulamalarınızı ağ saldırılarına ve SQL Injection veya Cross Site Scripting (XSS) gibi yaygın web güvenlik açıklarından korumak için web uygulama koruma özelliği sağlar. Ön uçlar için etkinleştirilen Front Door'un uygulama katmanı güvenliği, azure'un ağ kenarında, arka uçlarınızdan uzakta, kötü amaçlı saldırıları durdurarak genel olarak dağıtılır ve her zaman açıktır. Daha fazla güvenlik ve performans optimizasyonu ile Ön Kapı, son kullanıcılarınıza hızlı ve güvenli web deneyimleri sunar.
+# <a name="application-layer-security-with-front-door"></a>Ön kapılı uygulama katmanı güvenliği
+Azure ön kapısı, Web uygulamalarınızı ağ saldırılarına karşı korumak için Web uygulaması koruma yeteneği ve SQL ekleme veya siteler arası betik oluşturma (XSS) gibi yaygın web güvenlik açıklarını sağlar. Http (s) ön uçları için etkin, ön kapıların uygulama katmanı güvenliği küresel olarak dağıtılır ve her zaman açıktır, bu da arka uçınızdan uzakta olan Azure 'un ağ ucunda kötü amaçlı saldırıları durduruyor. Ön kapı, ek güvenlik ve performans iyileştirmesi sayesinde son kullanıcılarınıza hızlı ve güvenli Web deneyimleri sunar.
 
 ## <a name="application-protection"></a>Uygulama koruması
-Front Door'un uygulama koruması, dünyanın her bir kenar ortamında, uygulamalara uygun olarak yapılandırılır ve otomatik olarak web uygulamalarınıza ulaşmasını engelleyen http(ler) olmayan trafiği engeller. Çok kiracılı dağıtılmış mimarimiz, performanstan ödün vermeden ölçekte küresel koruma sağlar. Http(ler) iş yükleri için, Front Door'un web uygulama koruma hizmeti özel kurallar için zengin bir kural altyapısı, yaygın saldırılara karşı önceden yapılandırılmış kural kümesi ve bir kuralla eşleşen tüm istekler için ayrıntılı günlük sağlar. Yalnızca izin verme, engelleme veya günlük gibi esnek eylemler desteklenir.
+Ön kapı uygulama koruması, dünyanın her tarafında, uygulamalar ile birlikte her bir kenar ortamında yapılandırılır ve http olmayan trafiğin Web uygulamalarınıza ulaşmasını otomatik olarak engeller. Çok kiracılı dağıtılmış mimarimiz, performansı etkilemeden genel koruma kullanılmasına izin vermez. Http (s) iş yükleri için, ön kapıdaki Web uygulaması koruma hizmeti özel kurallar için zengin bir kural altyapısı, yaygın saldırılara karşı önceden yapılandırılmış RuleSet ve bir kuralla eşleşen tüm istekler için ayrıntılı günlük kaydı sağlar. Yalnızca izin verme, engelleme veya günlüğe kaydetme dahil esnek eylemler desteklenir.
 
-## <a name="custom-access-control-rules"></a>Özel erişim denetim kuralları
-- **IP izin listesi ve blok listesi:** İstemci IP adresleri listesine göre web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz. Hem IP v4 hem de IP v6 desteklenir
-- **Coğrafi tabanlı erişim kontrolü:** Web uygulamalarınız için erişimi bir istemci IP'nin geldiği ülke koduna göre denetlemek için özel kurallar yapılandırabilirsiniz
-- **HTTP parametreleri filtreleme:** Üstbilgi, URL ve sorgu dizeleri de dahil olmak üzere http(ler) istek parametrelerini eşleştirerek özel erişim kurallarını yapılandırabilirsiniz
+## <a name="custom-access-control-rules"></a>Özel erişim denetimi kuralları
+- **IP izin verilenler listesi ve Engellenenler listesi:** İstemci IP adresleri listesine göre Web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz. IP v4 ve IP V6 desteklenir
+- **Coğrafi tabanlı erişim denetimi:** İstemci IP 'sinden alınan ülke koduna göre Web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz
+- **Http parametreleri filtreleme:** Üst bilgiler, URL ve sorgu dizeleri dahil olmak üzere eşleşen http (s) istek parametrelerine göre özel erişim kuralları yapılandırabilirsiniz
 
 ## <a name="azure-managed-rules"></a>Azure tarafından yönetilen kurallar
-- Genel olarak üst Düzey OWASP güvenlik açıklarına karşı önceden yapılandırılmış bir kural kümesi varsayılan olarak etkinleştirilir. Önizlemede, kurallar kümesi sqli ve xss isteklerini denetlemeyi içerir. Ek kurallar eklenecektir. Önceden yapılandırılmış kuralların uygulamalarınız için beklendiği gibi çalıştığını doğrulamak için yalnızca günlük eylemiyle başlamayı seçebilirsiniz 
+- Yaygın en üst OWASP güvenlik açıklarına karşı önceden yapılandırılmış bir kurallar kümesi varsayılan olarak etkinleştirilmiştir. Önizleme aşamasında, kurallar kümesi SQLi ve XSS istekleri denetimini içerir. Ek kurallar eklenecek. Önceden yapılandırılmış kuralların uygulamalarınız için beklendiği gibi çalıştığını doğrulamak için yalnızca günlük eylemi ile başlatmayı seçebilirsiniz 
 
 ## <a name="rate-limiting"></a>Hız sınırlaması
-- Bir oran denetimi kuralı herhangi bir istemci IP anormal yüksek trafik sınırlamaktır.  Bir dakikalık süre boyunca istemci IP tarafından izin verilen web istekleri sayısına bir eşik belirleyebilirsiniz.
+- Bir hız denetim kuralı, anormal yüksek trafiği herhangi bir istemci IP 'sinden sınırlayabilmektir.  Bir dakikalık süre boyunca istemci IP 'si tarafından izin verilen Web istekleri sayısında bir eşik ayarlayabilirsiniz.
 
-## <a name="centralized-protection-policy"></a>Merkezi koruma politikası
-- Birkaç koruma kuralı tanımlayabilir ve bunları öncelik sırasına göre bir İlke'ye ekleyebilirsiniz. Özel kurallar, özel durumlara izin vermek için yönetilen kural kümesinden daha yüksek önceliğe sahiptir. Tek bir ilke web uygulamanızla ilişkilidir.  Aynı web uygulaması koruma ilkesi tüm konumlardaki tüm kenar sunucularına çoğaltılır, tüm bölgelerde tutarlı güvenlik ilkesi sağlar
+## <a name="centralized-protection-policy"></a>Merkezi koruma ilkesi
+- Birkaç koruma kuralı tanımlayabilir ve bunları öncelik sırasıyla bir Ilkeye ekleyebilirsiniz. Özel kurallar, özel durumlara izin vermek için yönetilen RuleSet 'ten daha yüksek önceliğe sahiptir. Web uygulamanızla tek bir ilke ilişkilendirilir.  Aynı Web uygulaması koruma ilkesi tüm konumlarda tüm kenar sunucularına çoğaltılırsa, tüm bölgelerde tutarlı güvenlik ilkesi olduğundan emin olun
 
 ## <a name="configuration"></a>Yapılandırma
-- Önizleme sırasında, Front Door'un uygulama koruma kurallarını ve ilkelerini oluşturmak ve dağıtmak için REST API'lerini, PowerShell'i veya CLI'yi kullanabilirsiniz. Hizmet genel olarak kullanılabilir olmadan önce portal erişimi desteklenir. 
+- Önizleme süresince, ön kapıda uygulama koruma kuralları ve ilkeleri oluşturup dağıtmak için REST API 'Leri, PowerShell veya CLı kullanabilirsiniz. Hizmet genel kullanıma açılmadan önce Portal erişimi desteklenecektir. 
 
 
 ## <a name="monitoring"></a>İzleme
-Front Door, uyarıları izlemek ve eğilimleri kolayca izlemek için Azure Monitor ile entegre edilmiş gerçek zamanlı ölçümler kullanarak saldırılara karşı web uygulamalarını izleme olanağı sağlar.
+Ön kapı, uyarıları izlemek ve eğilimleri kolayca izlemek için Azure Izleyici ile tümleştirilmiş gerçek zamanlı ölçümleri kullanarak Web uygulamalarını izleme olanağı sağlar.
 
 ## <a name="pricing"></a>Fiyatlandırma
-Ön Kapı'nın uygulama katmanı güvenliği önizleme sırasında ücretsizdir.
+Ön kapısının uygulama katmanı güvenliği önizleme sırasında ücretsizdir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

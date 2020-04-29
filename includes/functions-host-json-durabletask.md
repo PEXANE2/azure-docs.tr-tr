@@ -8,15 +8,15 @@ ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80117138"
 ---
-[Dayanıklı Fonksiyonlar](../articles/azure-functions/durable-functions-overview.md)için yapılandırma ayarları.
+[Dayanıklı işlevler](../articles/azure-functions/durable-functions-overview.md)için yapılandırma ayarları.
 
-### <a name="durable-functions-1x"></a>Dayanıklı Fonksiyonlar 1.x
+### <a name="durable-functions-1x"></a>Dayanıklı İşlevler 1. x
 
 ```json
 {
@@ -43,7 +43,7 @@ ms.locfileid: "80117138"
 }
 ```
 
-### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Dayanıklı Fonksiyonlar 2.x
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Dayanıklı İşlevler 2. x
 
 ```json
 {
@@ -90,29 +90,29 @@ ms.locfileid: "80117138"
 
 ```
 
-Görev hub adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulamasının varsayılan görev hub adı **DurableFunctionsHub'dır.** Daha fazla bilgi için [Görev hub'larına](../articles/azure-functions/durable-functions-task-hubs.md)bakın.
+Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulaması için varsayılan görev hub 'ı adı **Durablefunctionshub**olur. Daha fazla bilgi için bkz. [görev hub 'ları](../articles/azure-functions/durable-functions-task-hubs.md).
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|hubName|Dayanıklı FonksiyonlarHub|Alternatif [görev hub](../articles/azure-functions/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar bile, birden çok Dayanıklı İşlev uygulamasını birbirinden ayırmak için kullanılabilir.|
-|controlQueueBatchSize|32|Bir seferde denetim kuyruğundan çekilecek ileti sayısı.|
-|controlQueueBufferThreshold|256|Bir defada bellekte arabelleğe alınabilecek denetim sırası iletilerinin sayısı, bu noktada gönderici ek iletileri sıralamadan önce bekler.|
-|partitionCount |4|Denetim sırası için bölüm sayısı. 1 ile 16 arasında pozitif bir tamsayı olabilir.|
-|controlQueueVisibilityTimeout |5 dakika|Sırayı yikama denetim sırası iletilerinin görünürlük zaman ları.|
-|workItemQueueVisibilityTimeout |5 dakika|Sıradan çıkmış iş öğesi sıra iletilerinin görünürlük zaman süresi.|
-|maxConcurrentAktiviteFonksiyonları |Geçerli makinedeki işlemci sayısı 10 kat|Tek bir ana bilgisayar örneğinde aynı anda işlenebilen maksimum etkinlik işlevi sayısı.|
-|maxConcurrentOrchestratorFunctions |Geçerli makinedeki işlemci sayısı 10 kat|Tek bir ana bilgisayar örneğinde aynı anda işlenebilen maksimum orchestrator işlevi sayısı.|
-|maxQueuePollingInterval|30 saniye|*Hh:mm:ss* formatındaki maksimum denetim ve iş öğesi sıra yoklama aralığı. Daha yüksek değerler, ileti işleme gecikmelerinin artmasına neden olabilir. Daha düşük değerler, artan depolama işlemleri nedeniyle daha yüksek depolama maliyetlerine neden olabilir.|
-|azureStorageConnectionStringName |AzureWebJobsStorage|Temel Azure Depolama kaynaklarını yönetmek için kullanılan Azure Depolama bağlantı dizesine sahip uygulama ayarı adı.|
-|izlemeStoreConnectionStringName||Geçmiş ve Örnekler tabloları için kullanılacak bir bağlantı dizesinin adı. Belirtilmemişse, `azureStorageConnectionStringName` bağlantı kullanılır.|
-|izlemeStoreNamePrefix||Belirtildiğinde `trackingStoreConnectionStringName` Geçmiş ve Örnekler tabloları için kullanılacak önek. Ayarlanmazsa, varsayılan önek değeri `DurableTask`. `trackingStoreConnectionStringName` Belirtilmemişse, Geçmiş ve Örnekler tabloları `hubName` değeri önekleri olarak kullanır ve `trackingStoreNamePrefix` herhangi bir ayar yoksayılır.|
-|traceInputsAndOutputs |yanlış|İşlev çağrılarının girdi ve çıktılarının izlenip izlenmeyeceğini gösteren bir değer. İşlev yürütme olaylarını takip ederken varsayılan davranış, işlev çağrıları için serileştirilmiş giriş ve çıktılara bayt sayısını eklemektir. Bu davranış, günlükleri şişirme veya yanlışlıkla hassas bilgileri açığa çıkarmadan giriş ve çıkışların nasıl göründüğü hakkında en az bilgi sağlar. Bu özelliği niçin doğru olarak ayarlamak, varsayılan işlev günlüğe kaydetmenin işlev giriş ve çıktılarının tüm içeriğini günlüğe kaydetmesini sağlar.|
-|logReplayEtkinlikler|yanlış|Uygulama Öngörüleri'ne düzenleme tekrar etkinlikleri yazıp yazılmayacağını gösteren bir değer.|
-|olayGridTopicEndpoint ||Azure Olay Izgarası özel konu bitiş noktasının URL'si. Bu özellik ayarlandığında, orkestrasyon yaşam döngüsü bildirim olayları bu bitiş noktasına yayımlanır. Bu özellik Uygulama Ayarları çözünürlüğünü destekler.|
-|olayGridKeySettingName ||Azure Olay Izgarası özel konusuyla kimlik doğrulaması için kullanılan `EventGridTopicEndpoint`anahtarı içeren uygulama ayarı adı.|
-|olayGridPublishRetryCount|0|Olay Izgara Konusu'na yayımlama başarısız olursa yeniden deneme sayısı.|
-|olayGridPublishRetryInterval|5 dakika|Olay *Izgarahh:mm:ss* biçiminde yeniden deneme aralığı yayımlar.|
-|olayGridPublishEventTypes||Olay Izgara'da yayımlanacak olay türlerinin listesi. Belirtilmemişse, tüm olay türleri yayımlanacaktır. İzin verilen `Started` `Completed`değerler `Failed` `Terminated`, , , .|
-|useGracefulShutdown|yanlış|(Önizleme) Ana bilgisayar kapatmalarının işlem içi işlev yürütmelerinde başarısız olma olasılığını azaltmak için incelikle kapatmayı etkinleştirin.|
+|hubName|DurableFunctionsHub|Diğer [görev hub 'ı](../articles/azure-functions/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar dahi, birden çok dayanıklı işlevler uygulamayı birbirinden yalıtmak için kullanılabilir.|
+|controlQueueBatchSize|32|Denetim sırasından tek seferde çekilecek ileti sayısı.|
+|controlQueueBufferThreshold|256|Aynı anda bellekte ara belleğe alınmış olan denetim sırası iletilerinin sayısı, bu noktada dağıtıcı herhangi bir ek ileti kuyruğa almadan önce bekleyeceği süre.|
+|partitionCount |4|Denetim kuyruğu için bölüm sayısı. 1 ile 16 arasında pozitif bir tamsayı olabilir.|
+|controlQueueVisibilityTimeout |5 dakika|Sıradan çıkarılan denetim sırası iletilerinin görünürlük zaman aşımı.|
+|Workıtemqueuevisibilitytimeout |5 dakika|Sıraya alınan iş öğesi sıra iletilerinin görünürlük zaman aşımı.|
+|maxConcurrentActivityFunctions |10 x geçerli makinedeki işlemci sayısı|Tek bir konak örneğinde eşzamanlı olarak işlenebilecek etkinlik işlevlerinin maksimum sayısı.|
+|maxConcurrentOrchestratorFunctions |10 x geçerli makinedeki işlemci sayısı|Tek bir konak örneğinde eşzamanlı olarak işlenebilecek Orchestrator işlevlerinin maksimum sayısı.|
+|Maxqueuepollingınterval|30 saniye|*SS: DD: ss* biçiminde maksimum denetim ve iş öğesi kuyruğu yoklama aralığı. Daha yüksek değerler ileti işleme gecikmelerinin oluşmasına neden olabilir. Daha düşük değerler, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.|
+|Azurestoraygeconnectionstringname |AzureWebJobsStorage|Temel Azure depolama kaynaklarını yönetmek için kullanılan Azure depolama bağlantı dizesine sahip uygulama ayarının adı.|
+|trackingStoreConnectionStringName||Geçmiş ve örnekler tabloları için kullanılacak bağlantı dizesinin adı. Belirtilmemişse, `azureStorageConnectionStringName` bağlantı kullanılır.|
+|trackingStoreNamePrefix||Belirtildiğinde `trackingStoreConnectionStringName` , geçmiş ve örnekleri tabloları için kullanılacak ön ek. Ayarlanmamışsa, varsayılan ön ek değeri olacaktır `DurableTask`. `trackingStoreConnectionStringName` Belirtilmemişse, geçmiş ve örnekler tabloları ön ekler olarak `hubName` değeri kullanır ve için `trackingStoreNamePrefix` herhangi bir ayar yok sayılır.|
+|traceInputsAndOutputs |yanlış|İşlev çağrılarının giriş ve çıkışları takip edilip edilmeyeceğini belirten bir değer. İşlev yürütme olaylarının izlenirken, işlev çağrılarının seri hale getirilmiş giriş ve çıkışlarındaki bayt sayısını eklemek varsayılan davranıştır. Bu davranış, girişlerin ve çıktıların günlüğe kaydetmeksizin veya farkında olmadan hassas bilgileri açığa çıkarmadan nasıl göründüğünü öğrenmek için en az bilgi sağlar. Bu özelliğin true olarak ayarlanması, işlev girişlerinin ve çıktıların tüm içeriğini günlüğe kaydetmek için varsayılan işlev günlüğe kaydetmenin oluşmasına neden olur.|
+|Günlüğe kaydetme Yevents|yanlış|Application Insights için düzenleme yeniden yürütme olaylarının yazılacağını belirten bir değer.|
+|eventGridTopicEndpoint ||Azure Event Grid özel konu uç noktasının URL 'SI. Bu özellik ayarlandığında, düzenleme yaşam döngüsü bildirim olayları bu uç noktada yayımlanır. Bu özellik uygulama ayarları çözümlemesini destekler.|
+|eventGridKeySettingName ||Üzerinde `EventGridTopicEndpoint`Azure Event Grid özel konu ile kimlik doğrulaması için kullanılan anahtarı içeren uygulama ayarının adı.|
+|eventGridPublishRetryCount|0|Event Grid konusunda yayımlama başarısız olursa kaç kez yeniden deneneceği.|
+|Eventgridpublishretryınterval|5 dakika|Event Grid, *HH: mm: ss* biçiminde yeniden deneme aralığı yayımlar.|
+|eventGridPublishEventTypes||Event Grid yayımlanacak olay türlerinin listesi. Belirtilmezse, tüm olay türleri yayımlanır. İzin verilen değerler `Started`şunlardır `Completed` `Failed`,, `Terminated`,.|
+|useGracefulShutdown|yanlış|Önizle İşlem sırasında işlev yürütmelerinin başarısız olmasına neden olan konak kapanmalarının olasılığını azaltmak için düzgün bir şekilde kapatmayı etkinleştirin.|
 
-Bu ayarların çoğu performansı optimize etmek içindir. Daha fazla bilgi için [Performans ve ölçek'e](../articles/azure-functions/durable-functions-perf-and-scale.md)bakın.
+Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable-functions-perf-and-scale.md).

@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
 ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80408030"
 ---
 > [!NOTE]
-> Azure Dijital İkizler önizleme programına olan ilginiz için teşekkür ederiz. Yoğun talep nedeniyle, yeni yeteneklerin yakında yayınlanmasına hazırlanırken önizleme programı geçici olarak kapatılır. Sonuç olarak, şu anda yeni Azure Digital Twins kaynakları oluşturamayabilirsiniz. Lütfen yeni bilgiler için tekrar kontrol etmeye devam edin.
+> Azure Digital TWINS Önizleme programına ilgilendiğiniz için teşekkür ederiz. Yoğun istek nedeniyle, yeni yeteneklerin yakında piyasaya çıkacak sürümüne hazırlandığımız için Önizleme programı geçici olarak kapatıldı. Sonuç olarak, şu anda yeni Azure dijital TWINS kaynakları oluşturabilemeyebilirsiniz. Lütfen yeni bilgileri yeniden denetlemeye devam edin.

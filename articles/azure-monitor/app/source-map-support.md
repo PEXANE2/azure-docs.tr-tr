@@ -1,86 +1,86 @@
 ---
-title: JavaScript uygulamaları için kaynak harita desteği - Azure Monitor Uygulama Öngörüleri
-description: Uygulama Öngörüleri'ni kullanarak kaynak haritalarını kendi depolama hesabınız olan Blob kapsayıcınıza nasıl yükleyebilirsiniz öğrenin.
+title: JavaScript uygulamaları için kaynak eşleme desteği-Azure Izleyici Application Insights
+description: Application Insights kullanarak, kendi depolama hesabı blobu kapsayıcınıza kaynak haritaları yüklemeyi öğrenin.
 ms.topic: conceptual
 author: markwolff
 ms.author: marwolff
 ms.date: 03/04/2020
 ms.openlocfilehash: 4b452b31338760a8f53eed54420319101836bc00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474892"
 ---
-# <a name="source-map-support-for-javascript-applications"></a>JavaScript uygulamaları için kaynak harita desteği
+# <a name="source-map-support-for-javascript-applications"></a>JavaScript uygulamaları için kaynak eşleme desteği
 
-Application Insights, kaynak haritaların kendi Depolama Hesabı Blob Konteynerinize yüklenmesini destekler.
-Kaynak eşlemler, işlem ayrıntıları sayfasının sonunda bulunan arama yığınlarını en aza indirgemeyen ler için kullanılabilir. [JavaScript SDK][ApplicationInsights-JS] veya [Node.js SDK][ApplicationInsights-Node.js] tarafından gönderilen herhangi bir istisna kaynak haritalar ile unminified olabilir.
+Application Insights, kaynak eşlemelerinin kendi depolama hesabı blobu kapsayıcınıza yüklenmesini destekler.
+Kaynak haritaları, uçtan uca işlem ayrıntıları sayfasında bulunan çağrı yığınlarını kaldırmak için kullanılabilir. [JavaScript SDK 'sı][ApplicationInsights-JS] veya [Node. js SDK 'sı][ApplicationInsights-Node.js] tarafından gönderilen herhangi bir özel durum, kaynak eşlemeleriyle korumasız olabilir.
 
-![Bir Depolama Hesabı'na bağlanarak Çağrı Yığınını Unminify](./media/source-map-support/details-unminify.gif)
+![Bir depolama hesabıyla bağlantı kurarak çağrı yığınını geri alma](./media/source-map-support/details-unminify.gif)
 
-## <a name="create-a-new-storage-account-and-blob-container"></a>Yeni bir depolama hesabı ve Blob kapsayıcısı oluşturma
+## <a name="create-a-new-storage-account-and-blob-container"></a>Yeni bir depolama hesabı ve BLOB kapsayıcısı oluşturun
 
-Zaten varolan bir depolama hesabınız veya blob kapsayıcınız varsa, bu adımı atlayabilirsiniz.
+Zaten mevcut bir depolama hesabınız veya blob kapsayıcınız varsa, bu adımı atlayabilirsiniz.
 
 1. [Yeni depolama hesabı oluşturma][create storage account]
-2. Depolama hesabınızda [bir blob kapsayıcısı oluşturun.][create blob container] Kaynak haritalarınızın herkese açık olmamasını `Private`sağlamak için "Genel erişim düzeyini" ayarladığından emin olun.
+2. Depolama hesabınızda [bir blob kapsayıcısı oluşturun][create blob container] . Kaynak Haritalarınızın genel olarak erişilebilir olmamasını sağlamak için "genel `Private`erişim düzeyi" seçeneğini olarak ayarladığınızdan emin olun.
 
 > [!div class="mx-imgBorder"]
->![Konteyner erişim düzeyiniz Özel olarak ayarlanmalıdır](./media/source-map-support/container-access-level.png)
+>![Kapsayıcı erişim düzeyiniz özel olarak ayarlanmalıdır](./media/source-map-support/container-access-level.png)
 
-## <a name="push-your-source-maps-to-your-blob-container"></a>Kaynak haritalarınızı Blob kabınıza itin
+## <a name="push-your-source-maps-to-your-blob-container"></a>Kaynak haritalarınızı blob kapsayıcınıza gönderin
 
-Kaynak haritalarınızı otomatik olarak yapılandırılmış Blob kapsayıcısına yükecek şekilde yapılandırarak sürekli dağıtım ardışık ardınızı depolama hesabınızla entegre etmelisiniz. Kaynak haritalarınızı Blob kapsayıcısındaki bir alt klasöre yüklememelisiniz; şu anda kaynak harita yalnızca kök klasöründen getirilecektir.
+Kaynak haritalarınızı yapılandırılan blob kapsayıcısına otomatik olarak yükleyecek şekilde yapılandırarak, sürekli dağıtım işlem hattınızı depolama hesabınızla tümleştirmelisiniz. Kaynak haritalarınızı blob kapsayıcısındaki bir alt klasöre yüklememelisiniz; Şu anda kaynak eşleme yalnızca kök klasörden alınacaktır.
 
-### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Kaynak haritalarını Azure Ardışık Hatları ile yükleme (önerilir)
+### <a name="upload-source-maps-via-azure-pipelines-recommended"></a>Kaynak haritalarını Azure Pipelines aracılığıyla karşıya yükle (önerilir)
 
-Uygulamanızı sürekli olarak oluşturmak ve dağıtmak için Azure Ardışık Hatları kullanıyorsanız, kaynak haritalarınızı otomatik olarak yüklemek için ardınıza bir [Azure Dosya Kopyalama][azure file copy] görevi ekleyin.
+Uygulamanızı sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanıyorsanız, kaynak haritalarınızı otomatik olarak yüklemek için işlem hattınıza bir [Azure dosya kopyalama][azure file copy] görevi ekleyin.
 
 > [!div class="mx-imgBorder"]
-> ![Kaynak haritalarınızı Azure Blob Depolamasına yüklemek için Ardınıza Azure Dosya Kopyalama görevi ekleyin](./media/source-map-support/azure-file-copy.png)
+> ![Kaynak haritalarınızı Azure Blob depolamaya yüklemek için işlem hattınıza bir Azure dosya kopyalama görevi ekleyin](./media/source-map-support/azure-file-copy.png)
 
-## <a name="configure-your-application-insights-resource-with-a-source-map-storage-account"></a>Uygulama Öngörüleri kaynağınızı Kaynak Harita depolama hesabıyla yapılandırın
+## <a name="configure-your-application-insights-resource-with-a-source-map-storage-account"></a>Kaynak eşleme depolama hesabıyla Application Insights kaynağınızı yapılandırma
 
 ### <a name="from-the-end-to-end-transaction-details-page"></a>Uçtan uca işlem ayrıntıları sayfasından
 
-Uçtan uca işlem ayrıntıları sekmesinden, *Unminify'i* tıklatabilirsiniz ve kaynağınız yapılandırılmamışsa yapılandırmaemri görüntülenir.
+Uçtan uca işlem ayrıntıları sekmesinden, en *azal* ' a tıklayabilirsiniz ve kaynağınızın yapılandırılmamış olması halinde yapılandırmak için bir istem görüntülenir.
 
-1. Portalda, minified bir özel durum ayrıntılarını görüntüleyin.
-2. *Unminify'e* tıklayın
-3. Kaynağınız yapılandırılmamışsa, yapılandırmanızı isteyen bir ileti görüntülenir.
+1. Portalda, mini kullanılan bir özel durumun ayrıntılarını görüntüleyin.
+2. En *azal* seçeneğine tıklayın
+3. Kaynağınız yapılandırılmamışsa, yapılandırmak isteyip istemediğinizi soran bir ileti görüntülenir.
 
 ### <a name="from-the-properties-page"></a>Özellikler sayfasından
 
-Uygulama Öngörüleri Kaynağınıza bağlı depolama hesabını veya Blob kapsayıcısını yapılandırmak veya değiştirmek istiyorsanız, bunu Application Insights kaynağının *Özellikler* sekmesini görüntüleyerek yapabilirsiniz.
+Application Insights kaynağınız ile bağlantılı depolama hesabı veya blob kapsayıcısını yapılandırmak veya değiştirmek isterseniz, bunu Application Insights kaynağının *Özellikler* sekmesini görüntüleyerek yapabilirsiniz.
 
 1. Application Insights kaynağınızın *Özellikler* sekmesine gidin.
-2. Kaynak *haritası blob konteyner değiştir'e*tıklayın.
-3. Kaynak haritalı kapsayıcı olarak farklı bir Blob kapsayıcıseçin.
+2. *Kaynak eşleme blobu kapsayıcısını Değiştir*' e tıklayın.
+3. Kaynak haritaları Kapsayıcınız olarak farklı bir blob kapsayıcısı seçin.
 4. `Apply` öğesine tıklayın.
 
 > [!div class="mx-imgBorder"]
-> ![Özellikler Blade'e giderek seçtiğiniz Azure Blob Konteynerini yeniden yapılandırın](./media/source-map-support/reconfigure.png)
+> ![Özellikler dikey penceresine giderek seçtiğiniz Azure Blob kapsayıcınızı yeniden yapılandırın](./media/source-map-support/reconfigure.png)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Blob kapsayıcınızda gerekli rol tabanlı erişim denetimi (RBAC) ayarları
+### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Blob kapsayıcıda gerekli rol tabanlı erişim denetimi (RBAC) ayarları
 
-Portal'da bu özelliği kullanan herhangi bir kullanıcı en azından Blob kapsayıcınıza [Depolama Blob Veri Okuyucusu][storage blob data reader] olarak atanmalıdır. Bu rolü, bu özellik aracılığıyla kaynak eşlemleri kullanacak olan herkese atamanız gerekir.
+Bu özelliği kullanan portaldaki herhangi bir kullanıcının blob kapsayıcısına en az bir [Depolama Blobu veri okuyucusu][storage blob data reader] olarak atanması gerekir. Bu rolü, bu özellik aracılığıyla kaynak haritaları kullanacak başka bir kişiye atamanız gerekir.
 
 > [!NOTE]
-> Kapsayıcının nasıl oluşturulduğuna bağlı olarak, bu işlem size veya ekibinize otomatik olarak atanmamış olabilir.
+> Kapsayıcının nasıl oluşturulduğuna bağlı olarak, bu otomatik olarak size veya ekibinize atanmamış olabilir.
 
-### <a name="source-map-not-found"></a>Kaynak harita bulunamadı
+### <a name="source-map-not-found"></a>Kaynak eşlemesi bulunamadı
 
-1. İlgili kaynak haritasının doğru blob kapsayıcısına yüklendiğini doğrulayın
-2. Kaynak harita dosyasının adını eşlenere eşlenere sahip `.map`JavaScript dosyasından alan ve suffixed ile doğrulayın.
-    - Örneğin, `/static/js/main.4e2ca5fa.chunk.js` adlı blob için arayacaktır`main.4e2ca5fa.chunk.js.map`
-3. Herhangi bir hata günlüğe kaydedilip kaydedilmemekte olup olmadığını görmek için tarayıcınızın konsolunu kontrol edin. Bunu herhangi bir destek biletine ekleyin.
+1. Karşılık gelen kaynak eşlemesinin doğru blob kapsayıcısına yüklendiğini doğrulayın
+2. Kaynak eşleme dosyasının eşlendiği JavaScript dosyasından sonra adlandırılmış olduğunu doğrulayın `.map`.
+    - Örneğin, `/static/js/main.4e2ca5fa.chunk.js` adlı blobu arama yapılacak`main.4e2ca5fa.chunk.js.map`
+3. Günlüğe yazılan herhangi bir hata olup olmadığını görmek için tarayıcınızın konsoluna bakın. Bunu herhangi bir destek biletinde ekleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [Azure Dosya Kopyalama görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
+* [Azure dosya kopyalama görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)
 
 
 <!-- Remote URLs -->

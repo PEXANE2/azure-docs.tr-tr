@@ -1,6 +1,6 @@
 ---
-title: VMware VM'leri Azure Site Kurtarma ile şirket içi bir siteye yeniden koruma
-description: Azure Site Kurtarma ile Azure'a geçtikten sonra VMware VM'leri nasıl yeniden koruyacağınızı öğrenin.
+title: VMware VM 'lerini Azure Site Recovery ile şirket içi bir siteye yeniden koruma
+description: Azure Site Recovery ile Azure 'a yük devretmeden sonra VMware VM 'lerini yeniden nasıl koruyacağınızı öğrenin.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,72 +8,72 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
 ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257179"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>Azure’dan şirket içi ortama yeniden koruma
 
-Şirket içi VMware VM'lerinin veya fiziksel sunucuların Azure'da [başarısız](site-recovery-failover.md) olmasının ardından, şirket içi sitenize geri dönmenin ilk adımı, başarısız lık sırasında oluşturulan Azure VM'lerini yeniden korumaktır. Bu makalede, bunun nasıl yapılacağını açıklanmaktadır. 
+Şirket içi VMware VM 'lerini veya fiziksel sunucuları Azure 'a [yük devrettikten](site-recovery-failover.md) sonra, şirket içi sitenize geri dönme aşamasında ilk adım yük devretme sırasında oluşturulan Azure VM 'lerinin yeniden korunmasında olur. Bu makalede bunun nasıl yapılacağı açıklanır. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-1. Azure'da bir işlem sunucusu ve şirket içi ana hedef sunucu oluşturma ve siteden siteye VPN veya ExpressRoute özel eşlemesini hata geri almak için yapılandırmak da dahil olmak üzere yeniden koruma ve geri dönüşe hazırlanmak için [bu makaledeki](vmware-azure-prepare-failback.md) adımları izleyin.
-2. Şirket içi yapılandırma sunucusunun çalışır durumda olduğundan ve Azure'a bağlı olduğundan emin olun. Azure'a geçerken şirket içi siteye erişilemeyebilir ve yapılandırma sunucusu kullanılamayabilir veya kapatılabilir. Geri hata sırasında, VM yapılandırma sunucusu veritabanında bulunmalıdır. Aksi takdirde, failback başarısız olur.
-3. Şirket içi ana hedef sunucudaki anlık görüntüleri silin. Anlık görüntüler varsa yeniden koruma çalışmaz.  VM'deki anlık görüntüler, yeniden koruma işi sırasında otomatik olarak birleştirilir.
-4. Çoklu VM tutarlılığı için bir çoğaltma grubuna toplanan VM'leri yeniden koruyorsanız, hepsinin aynı işletim sistemine (Windows veya Linux) sahip olduğundan emin olun ve dağıttığınız ana hedef sunucunun aynı işletim sistemi türüne sahip olduğundan emin olun. Çoğaltma grubundaki tüm VM'ler aynı ana hedef sunucuyu kullanmalıdır.
-5. Geri dönüş için [gerekli bağlantı noktalarını](vmware-azure-prepare-failback.md#ports-for-reprotectionfailback) açın.
-6. Başarısız olmadan önce vCenter Server'ın bağlı olduğundan emin olun. Aksi takdirde, disklerin bağlantısını kesmek ve sanal makineye takmak başarısız olur.
-7. Bir vCenter sunucusu başarısız olduğunuz VM'leri yönetiyorsa, gerekli izinlere sahip olduğundan emin olun. Salt okunur kullanıcı vCenter bulma gerçekleştirin ve sanal makineleri korumak, koruma başarılı olur ve başarısız çalışır. Ancak, yeniden koruma sırasında, veri depoları bulunamadığından ve yeniden koruma sırasında listelenmediği için başarısız olur. Bu sorunu gidermek için, vCenter kimlik bilgilerini uygun bir [hesap/izinle](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)güncelleştirebilir ve ardından işi yeniden deneyebilirsiniz. 
-8. Sanal makinelerinizi oluşturmak için bir şablon kullandıysanız, her VM'nin diskler için kendi UUID'si olduğundan emin olun. Her ikisi de aynı şablondan oluşturulduğu için şirket içi VM UUID ana hedef sunucunun UUID'si ile çakışıyorsa, yeniden koruma başarısız olur. Farklı bir şablondan dağıtın.
-9. Alternatif bir vCenter Server'a geri dönülmeye çalışıyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemiyorsa veya **Reprotect'de**görülemiyorsa.
-10. Başarısız olamadığınız aşağıdaki senaryoları doğrulayın:
-    - ESXi 5.5 ücretsiz sürümü veya vSphere 6 Hypervisor ücretsiz sürümünü kullanıyorsanız. Farklı bir sürüme yükseltin.
+1. Azure 'da bir işlem sunucusu ve şirket içi ana hedef sunucusu ayarlama ve bir siteden siteye VPN veya ExpressRoute özel eşlemesini yeniden çalışma için yapılandırma dahil, yeniden koruma ve yeniden çalışma için hazırlanmak üzere [Bu makaledeki](vmware-azure-prepare-failback.md) adımları izleyin.
+2. Şirket içi yapılandırma sunucusunun çalıştığından ve Azure 'a bağlı olduğundan emin olun. Azure 'a yük devretme sırasında şirket içi siteye erişilemeyebilir ve yapılandırma sunucusu kullanılamıyor olabilir veya kapatılabilir. Yeniden çalışma sırasında VM 'nin yapılandırma sunucusu veritabanında mevcut olması gerekir. Aksi takdirde, yeniden çalışma başarısız olur.
+3. Şirket içi ana hedef sunucusundaki tüm anlık görüntüleri silin. Anlık görüntüler varsa yeniden koruma çalışmaz.  Yeniden koruma işi sırasında VM 'deki anlık görüntüler otomatik olarak birleştirilir.
+4. Çoklu VM tutarlılığı için bir çoğaltma grubuna toplanan VM 'Leri yeniden koruyorsanız, tümünün aynı işletim sistemine (Windows veya Linux) sahip olduklarından emin olun ve dağıttığınız ana hedef sunucunun aynı işletim sistemi türüne sahip olduğundan emin olun. Bir çoğaltma grubundaki tüm VM 'Lerin aynı ana hedef sunucuyu kullanması gerekir.
+5. Yeniden çalışma için [gereken bağlantı noktalarını](vmware-azure-prepare-failback.md#ports-for-reprotectionfailback) açın.
+6. Yeniden çalışma öncesinde vCenter Server bağlı olduğundan emin olun. Aksi takdirde, disklerin bağlantısının kesilmesi ve sanal makineye geri eklenmesi başarısız olur.
+7. Bir vCenter sunucusu, geri dönecek VM 'Leri yönetirse, gerekli izinlere sahip olduğunuzdan emin olun. Salt okuma Kullanıcı vCenter bulmayı ve sanal makineleri koruyorsa, koruma başarılı olur ve yük devretme işlemi gerçekleştirilir. Bununla birlikte, yeniden koruma sırasında, veri depoları keşfedilmeden ve yeniden koruma sırasında listelenmediği için yük devretme başarısız olur. Bu sorunu çözmek için vCenter kimlik bilgilerini [uygun bir hesap/izinlerle](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)güncelleştirebilir ve ardından işi yeniden deneyebilirsiniz. 
+8. Sanal makinelerinizi oluşturmak için bir şablon kullandıysanız, her VM 'nin diskler için kendi UUID 'sine sahip olduğundan emin olun. Aynı şablondan oluşturulduğundan, şirket içi VM UUID 'SI ana hedef sunucunun UUID 'SI ile çakışıyor, yeniden koruma başarısız olur. Farklı bir şablondan dağıtın.
+9. Alternatif bir vCenter Server geri yüklüyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemez veya **yeniden koruma**bölümünde görünmez.
+10. Geri gerçekleştiremeyecek aşağıdaki senaryoları doğrulayın:
+    - ESXi 5,5 Free Edition ya da vSphere 6 hiper yönetici ücretsiz sürümü kullanıyorsanız. Farklı bir sürüme yükseltin.
     - Windows Server 2008 R2 SP1 fiziksel sunucunuz varsa.
-    - VMware VM'ler Hyper-V'ye geri dönemez.
-    - [Geçirilen VM'ler.](migrate-overview.md#what-do-we-mean-by-migration)
-    - Başka bir kaynak grubuna taşınmış bir VM.
-    - Silinmiş bir yineleme Azure VM.
-    - Korunmayan bir yineleme Azure VM (şirket içi siteye çoğaltma).
-10. Kullanabileceğiniz [geri dönüş türlerini gözden geçirin](concepts-types-of-failback.md) - özgün konum kurtarma ve alternatif konum kurtarma.
+    - VMware VM 'Leri Hyper-V ' d e geri yük devredemeyebilir.
+    - [Geçirilen](migrate-overview.md#what-do-we-mean-by-migration)VM 'ler.
+    - Başka bir kaynak grubuna taşınan bir VM.
+    - Silinen bir çoğaltma Azure VM 'si.
+    - Korunmayan bir çoğaltma Azure VM 'si (Şirket içi siteye çoğaltma).
+10. Yeniden [çalışma türlerini gözden geçirin](concepts-types-of-failback.md) -özgün konum kurtarma ve alternatif konum kurtarma kullanabilirsiniz.
 
 
-## <a name="enable-reprotection"></a>Yeniden koruma yı etkinleştirme
+## <a name="enable-reprotection"></a>Yeniden korumayı etkinleştir
 
-Çoğaltmayı etkinleştirin. Belirli VM'leri veya kurtarma planını yeniden koruyabilirsiniz:
+Çoğaltmayı etkinleştirin. Belirli VM 'Leri veya bir kurtarma planını yeniden koruyabilirsiniz:
 
-- Bir kurtarma planını yeniden koruyorsanız, korunan her makineiçin değerleri sağlamanız gerekir.
-- VM'ler çoklu VM tutarlılığı için bir çoğaltma grubuna aitse, yalnızca kurtarma planı kullanılarak yeniden korunabilirler. Çoğaltma grubundaki VM'ler aynı ana hedef sunucuyu kullanmalıdır
+- Bir kurtarma planını yeniden koruyorduysanız, korunan her makinenin değerlerini sağlamanız gerekir.
+- VM 'Ler çoklu VM tutarlılığı için bir çoğaltma grubuna aitse, yalnızca bir kurtarma planı kullanılarak yeniden korunabilir. Bir çoğaltma grubundaki VM 'Lerin aynı ana hedef sunucuyu kullanması gerekir
 
 ### <a name="before-you-start"></a>Başlamadan önce
 
-- Başarısız olduktan sonra Azure'da bir VM önyüklemesi yaptıktan sonra aracının yapılandırma sunucusuna (15 dakikaya kadar) kaydolması biraz zaman alır. Bu süre zarfında yeniden koruyamazsınız ve bir hata iletisi aracının yüklü olmadığını gösterir. Bu durumda, birkaç dakika bekleyin ve sonra yeniden koruyun.
-- Azure VM'yi mevcut bir şirket içi VM'ye geri vermek istemiyorsanız, ana hedef sunucunun ESXi ana bilgisayarında okuma/yazma erişimiyle şirket içi VM veri depolarını monte edin.
-- Alternatif bir konuma geri dönmek istiyorsanız (örneğin şirket içi VM yoksa, ana hedef sunucu için yapılandırılan bekletme sürücüsünü ve veri deposunu seçin. Şirket içi siteye geri döndüğünüzde, failback koruma planındaki VMware sanal makineleri ana hedef sunucuyla aynı veri deposunu kullanır. VCenter'da yeni bir VM oluşturulur.
+- Yük devretmeden sonra Azure 'da bir VM önyüklendiğinde, aracının yapılandırma sunucusuna (15 dakikaya kadar) kaydolması biraz zaman alır. Bu süre boyunca yeniden koruyamazsınız ve bir hata mesajı aracının yüklenmediğini gösterir. Bu durumda, birkaç dakika bekleyin ve sonra yeniden koruyun.
+- Azure VM 'yi mevcut bir şirket içi VM 'ye geri yüklemek istiyorsanız, şirket içi VM veri depolarını, ana hedef sunucunun ESXi konağına okuma/yazma erişimiyle bağlayın.
+- Alternatif bir konuma yeniden yük devretmek istiyorsanız, örneğin şirket içi VM yoksa, ana hedef sunucusu için yapılandırılan bekletme sürücüsünü ve veri deposunu seçin. Şirket içi siteye geri döndüğünüzde, yeniden çalışma koruma planındaki VMware sanal makineleri, ana hedef sunucuyla aynı veri deposunu kullanır. Daha sonra vCenter 'da yeni bir VM oluşturulur.
 
-Yeniden korumayı aşağıdaki gibi etkinleştirin:
+Yeniden korumayı aşağıdaki şekilde etkinleştirin:
 
-1. **Vault** > **Çoğaltılan öğeleri**seçin. Üzerinde başarısız olan sanal makineyi sağ tıklatın ve ardından **Yeniden Koruyun'u**seçin. Veya komut düğmelerinden makineyi seçin ve ardından **Yeniden Koruyun'u**seçin.
-2. **Azure'dan Şirket Içi** koruma yönünün seçildiğini doğrulayın.
-3. **Master Target Server** ve Process **Server'da**şirket içi ana hedef sunucusunu ve işlem sunucusunu seçin.  
-4. **Datastore**için, diskleri şirket içinde kurtarmak istediğiniz veri mağazasını seçin. Bu seçenek, şirket içi sanal makine silindiğinde ve yeni diskler oluşturmanız gerektiğinde kullanılır. Diskler zaten varsa bu seçenek yoksayılır. Yine de bir değer belirtmeniz gerekir.
+1. **Kasa** > **çoğaltılan öğeleri**seçin. Yük devredilen sanal makineye sağ tıklayın ve ardından **yeniden koru**' yı seçin. Ya da, komut düğmelerinden makineyi seçip **yeniden koru**' yı seçin.
+2. **Azure 'dan şirket içi** koruma yönünün seçildiğini doğrulayın.
+3. **Ana hedef sunucusu** ve **işlem sunucusu**' nda, şirket içi ana hedef sunucusunu ve işlem sunucusunu seçin.  
+4. **Veri deposu**için, şirket içi diskleri kurtarmak istediğiniz veri deposunu seçin. Bu seçenek, şirket içi sanal makine silindiğinde ve yeni diskler oluşturmanız gerektiğinde kullanılır. Diskler zaten mevcutsa bu seçenek yoksayılır. Yine de bir değer belirtmeniz gerekir.
 5. Bekletme sürücüsünü seçin.
 6. Yeniden çalışma ilkesi otomatik olarak seçilir.
-7. Yeniden korunmaya başlamak için **Tamam'ı** seçin.
+7. Yeniden korumaya başlamak için **Tamam ' ı** seçin.
 
-    ![İletişim kutusunu yeniden koruma](./media/vmware-azure-reprotect/reprotectinputs.png)
+    ![Yeniden Koru iletişim kutusu](./media/vmware-azure-reprotect/reprotectinputs.png)
     
-8. Bir iş, Azure VM'yi şirket içi siteye çoğaltmaya başlar. **İşler** sekmesinde ilerleme durumunu izleyebilirsiniz.
+8. Bir iş, Azure VM 'yi şirket içi siteye çoğaltmaya başlar. **İşler** sekmesinde ilerleme durumunu izleyebilirsiniz.
     - Yeniden koruma başarılı olduğunda, VM korumalı bir duruma girer.
     - Şirket içi VM yeniden koruma sırasında kapatılır. Bu işlem, çoğaltma sırasında veri tutarlığını sağlar.
-    - Yeniden koruma bittikten sonra şirket içi VM'yi açmayın.
+    - Yeniden koruma tamamlandıktan sonra şirket içi VM 'yi açık duruma getirin.
    
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Herhangi bir sorunla karşılaşırsanız, [sorun giderme makalesini](vmware-azure-troubleshoot-failback-reprotect.md)gözden geçirin.
-- Azure VM'ler korunduktan sonra [bir geri ödeme çalıştırabilirsiniz.](vmware-azure-failback.md) Failback, Azure VM'yi kapatır ve şirket içi VM'yi önyüklemeye neden eder. Uygulama için biraz kapalı kalma süresi bekleyin ve buna göre bir geri dönüş süresi seçin.
+- Herhangi bir sorunla karşılaşırsanız [sorun giderme makalesini](vmware-azure-troubleshoot-failback-reprotect.md)inceleyin.
+- Azure VM 'Leri korunduktan sonra yeniden [çalışma çalıştırabilirsiniz](vmware-azure-failback.md). Yeniden çalışma, Azure VM 'yi kapatır ve şirket içi VM 'yi önyükler. Uygulama için bazı kesinti süreleri bekliyor ve uygun bir yeniden çalışma süresi seçin.
 
 

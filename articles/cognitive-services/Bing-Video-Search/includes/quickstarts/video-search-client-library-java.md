@@ -1,5 +1,5 @@
 ---
-title: Bing Video Arama Java istemci kitaplığı hızlı başlat
+title: Bing Video Arama Java istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: aahi
 ms.openlocfilehash: 8124afef1aa12dbf3ec51e10597cb1567fc85551
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289773"
 ---
-Java için Bing Video Arama istemci kitaplığı ile haber aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Aramaçoğu programlama diliyle uyumlu bir REST API'ye sahip olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)bulunabilir , ek ek açıklamalar ile, ve özellikler.
+Java için Bing Video Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Video Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu, ek açıklamalar ve özellikler ile [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)'da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Geliştirme Kiti(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * [Gson kitaplığı](https://github.com/google/gson)
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](~/includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
-Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing Video Arama istemci kitaplığı bağımlılıklarını yükleyin. Maven POM dosyası şu bildirimi gerektirir:
+Maven, Gradle veya başka bir bağımlılık yönetim sistemini kullanarak Bing Video Arama istemci kitaplığı bağımlılıklarını yükler. Maven POM dosyası şu bildirimi gerektirir:
 
 ```xml
   <dependencies>
@@ -55,9 +55,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     import java.util.List; 
 ```
 
-## <a name="create-a-search-client"></a>Arama istemcisi oluşturma
+## <a name="create-a-search-client"></a>Arama İstemcisi Oluşturma
 
-1. API `VideoSearchAPIImpl` bitiş noktanızı ve sınıfın bir örneğini `ServiceClientCredentials` gerektiren istemciyi uygulayın.
+1. API uç `VideoSearchAPIImpl` noktanızı ve `ServiceClientCredentials` sınıfının bir örneğini gerektiren istemciyi uygulayın.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -70,7 +70,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
 
     Uygulamak `ServiceClientCredentials`için aşağıdaki adımları izleyin:
 
-    1. bir `OkHttpClient.Builder` nesne `applyCredentialsFilter()` parametre olarak işlevi geçersiz kılın. 
+    1. parametresi olarak `applyCredentialsFilter()` bir `OkHttpClient.Builder` nesnesi ile işlevi geçersiz kılın. 
         
         ```java
         //...
@@ -82,7 +82,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
         ```
     
-    2. Içinde `applyCredentialsFilter()`, `builder.addNetworkInterceptor()`çağrı . Yeni `Interceptor` bir nesne oluşturun ve `intercept()` bir `Chain` durdurucu nesnealmak için yöntemini geçersiz kılın.
+    2. İçinde `applyCredentialsFilter()`, çağırın `builder.addNetworkInterceptor()`. Yeni `Interceptor` bir nesne oluşturun ve `intercept()` yöntemini bir `Chain` dinleyici nesnesi alacak şekilde geçersiz kılın.
 
         ```java
         //...
@@ -96,7 +96,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         ///...
         ```
 
-    3. `intercept` İşlev içinde, isteğiniz için değişkenler oluşturun. İsteğinizi oluşturmak için kullanın. `Request.Builder()` Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin `chain.proceed()` ve istek nesnesini döndürün.
+    3. `intercept` İşlevi içinde, isteğiniz için değişkenler oluşturun. İsteğinizi `Request.Builder()` derlemek için kullanın. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin ve istek nesnesine dönün `chain.proceed()` .
             
         ```java
         //...
@@ -111,9 +111,9 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Arama isteği gönderme ve yanıt alma 
+## <a name="send-a-search-request-and-receive-the-response"></a>Arama isteği gönderme ve yanıtı alma 
 
-1. Abonelik anahtarınızı `VideoSearch()` dize olarak alan bir işlev oluşturun. Daha önce oluşturulan arama istemcisini anında anons edin.
+1. Abonelik anahtarınızı bir dize `VideoSearch()` olarak alan adlı bir işlev oluşturun. Daha önce oluşturulan arama istemcisinin örneğini oluşturun.
     
     ```java
     public static void VideoSearch(String subscriptionKey){
@@ -121,7 +121,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
         //...
     }
     ```
-2. Içinde, `VideoSearch()`arama terimi `SwiftKey` olarak istemciyi kullanarak bir video arama isteği gönderin. Video Arama API'sı bir sonuç döndürürse, ilk sonucu alın ve iade edilen toplam video sayısıyla birlikte kimliğini, adını ve URL'sini yazdırın. 
+2. İçinde `VideoSearch()`, arama terimi `SwiftKey` olarak, istemcisini kullanarak bir video arama isteği gönderin. Video Arama API 'SI bir sonuç döndürdüğünden, ilk sonucu alın ve kimliğini, adını ve URL 'sini, döndürülen toplam video sayısı ile birlikte yazdırın. 
     
     ```java
     VideosInner videoResults = client.searchs().list("SwiftKey");
@@ -144,7 +144,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
     }
     ```
 
-3. Arama yöntemini ana yönteminizden arayın.
+3. Main yönteminizin arama yöntemini çağırın.
 
     ```java
     public static void main(String[] args) {
@@ -155,7 +155,7 @@ Sık kullandığınız IDE ortamında veya düzenleyicide yeni bir Java projesi 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Tek bir sayfaweb uygulaması oluşturma](../../tutorial-bing-video-search-single-page-app.md)
+> [Tek sayfalı Web uygulaması oluşturma](../../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 

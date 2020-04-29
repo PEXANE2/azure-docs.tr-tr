@@ -1,87 +1,87 @@
 ---
-title: Kapsayıcılar için Azure Monitor ile ölçümleri gerçek zamanlı olarak görüntüleyin | Microsoft Dokümanlar
-description: Bu makalede, kapsayıcılar için Azure Monitor ile kubectl kullanmadan ölçümlerin gerçek zamanlı görünümü açıklanmaktadır.
+title: Kapsayıcılar için Azure Izleyici ile ölçümleri gerçek zamanlı olarak görüntüleyin | Microsoft Docs
+description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullanılmadan ölçümlerin gerçek zamanlı görünümü açıklanır.
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 4604635c985057ec0b7f49a0d1cca7111dfc8eec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79216569"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Ölçümleri gerçek zamanlı görüntüleme
 
-Kapsayıcılar için Azure Monitor Canlı Veri (önizleme) özelliği, kümedeki düğüm ve bölme durumu yla ilgili ölçümleri gerçek zamanlı olarak görselleştirmenize olanak tanır. Bu Insight ile birlikte yer `kubectl top nodes` `kubectl get pods –all-namespaces`alan `kubectl get nodes` performans grafiklerinde verileri aramak, ayrışdırmak ve görselleştirmek için ,, ve komutları doğrudan erişim öyküner. 
+Kapsayıcılar için Azure Izleyici canlı veriler (Önizleme) özelliği, bir kümede gerçek zamanlı olarak düğüm ve pod durumu hakkında ölçümleri görselleştirmenize olanak tanır. Bu öngörüye dahil edilen performans `kubectl top nodes`grafiklerindeki `kubectl get pods –all-namespaces`verileri çağırmak `kubectl get nodes` , ayrıştırmak ve görselleştirmek için,, ve komutlarına doğrudan erişim sağlar. 
 
-Bu makalede ayrıntılı bir genel bakış sağlar ve bu özelliği nasıl kullanacağınızı anlamanıza yardımcı olur.  
-
->[!NOTE]
->[Özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen AKS kümeleri bu özellik ile desteklenmez. Bu özellik, tarayıcınızdan bir proxy sunucusu aracılığıyla Kubernetes API'ye doğrudan erişmenize dayanır. Bu proxy Kubernetes API engellemek için ağ güvenliği etkinleştirmek bu trafiği engeller. 
+Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullanılacağını anlamanıza yardımcı olur.  
 
 >[!NOTE]
->Bu özellik, Azure Çin'i de dahil olmak üzere tüm Azure bölgelerinde kullanılabilir. Şu anda Azure ABD Hükümeti'nde kullanılamıyor.
+>Bu özellikle [özel kümeler](https://azure.microsoft.com/updates/aks-private-cluster/) olarak etkinleştirilen aks kümeleri desteklenmez. Bu özellik, tarayıcınızdan bir ara sunucu aracılığıyla Kubernetes API 'sine doğrudan erişim sağlar. Bu proxy 'den Kubernetes API 'sini engellemek için ağ güvenliğinin etkinleştirilmesi, bu trafiği engeller. 
 
-Canlı Veri (önizleme) özelliğini ayarlama veya sorun giderme ile ilgili yardım için [kurulum kılavuzumuzu](container-insights-livedata-setup.md)inceleyin.
+>[!NOTE]
+>Bu özellik, Azure Çin dahil olmak üzere tüm Azure bölgelerinde kullanılabilir. Azure ABD kamu 'da Şu anda kullanılamıyor.
+
+Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgili yardım için [Kurulum kılavuzumuzu](container-insights-livedata-setup.md)gözden geçirin.
 
 ## <a name="how-it-works"></a>Nasıl çalışır? 
 
-Canlı Veri (önizleme) özelliği doğrudan Kubernetes API'ye erişebilir ve kimlik doğrulama modeli hakkında ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
+Canlı veriler (Önizleme) özelliği, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz. 
 
-Bu özellik, varsayılan olarak her beş saniyede bir `/api/v1/nodes` `/apis/metrics.k8s.io/v1beta1/nodes`olan `/api/v1/pods`ölçümler uç noktalarına (, ve ) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınmış ve **Canlı Ol (önizleme)** seçeneğini seçerek **Cluster** sekmesindeki kapsayıcılar için Azure Monitor'da bulunan dört performans grafiğinde listelenir. Sonraki her anket, beş dakikalık bir görselleştirme penceresine grafiklenir. 
+Bu özellik, varsayılan olarak her beş saniyede bir olan ölçüm uç `/api/v1/nodes`noktalarına `/apis/metrics.k8s.io/v1beta1/nodes`(, `/api/v1/pods`ve dahil) karşı bir yoklama işlemi gerçekleştirir. Bu veriler tarayıcınızda önbelleğe alınır ve **canlı çalış (Önizleme)** seçeneği belirlenerek **küme** sekmesindeki kapsayıcılar için Azure izleyici 'de yer alan dört Performans grafiklerinde görüntülenir. Sonraki her yoklama, beş dakikalık bir görselleştirme penceresine göre yapılır. 
 
-![Küme görünümünde Canlı'ya Git seçeneği](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
+![Küme görünümündeki canlı git seçeneği](./media/container-insights-livedata-metrics/cluster-view-go-live-example-01.png)
 
-Yoklama **aralığı, her** 1, 5, 15 ve 30 saniyede bir yeni veriler için yoklama ayarlamanızı sağlayan Set aralığı açılır tarihinden yapılandırılır. 
+Yoklama aralığı, 1, 5, 15 ve 30 saniyede bir yeni veri yoklamasını ayarlamanıza olanak sağlayan **set Interval** açılır listesinden yapılandırılır. 
 
-![Go Live açılır yoklama aralığı](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
-
->[!IMPORTANT]
->Bir sorunu kısa bir süre için sorun giderirken yoklama aralığını bir saniyeye ayarlamanızı öneririz. Bu istekler, Kubernetes API'sinin kümenizdeki kullanılabilirliğini ve daraltma durumunu etkileyebilir. Daha sonra, daha uzun bir yoklama aralığına yeniden yapılandırır. 
+![Canlı açılan yoklama aralığına git](./media/container-insights-livedata-metrics/cluster-view-polling-interval-dropdown.png)
 
 >[!IMPORTANT]
->Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanır. Bu oturum sırasında yakalanan tüm bilgiler, tarayıcınızı kapattığınızda veya özellikten uzaklaştığınızda hemen silinir. Veriler yalnızca beş dakikalık pencere içinde görselleştirme için mevcut kalır; beş dakikadan eski tüm ölçümler de kalıcı olarak silinir.
+>Kısa bir süre boyunca sorun giderirken yoklama aralığını bir saniye olarak ayarlamayı öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir. Daha sonra, daha uzun bir yoklama aralığına yeniden yapılandırın. 
+
+>[!IMPORTANT]
+>Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Bu oturum sırasında yakalanan tüm bilgiler, tarayıcınızı kapattığınızda veya özellikten ayrıldığınızda hemen silinir. Veriler yalnızca beş dakikalık bir pencere içinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de kalıcı olarak silinir.
 
 Bu grafikler, canlı modda görüntülediğiniz son Azure panosuna sabitlenemez.
 
 ## <a name="metrics-captured"></a>Yakalanan ölçümler
 
-### <a name="node-cpu-utilization---node-memory-utilization-"></a>Düğüm CPU kullanımı % / Düğüm Bellek kullanımı % 
+### <a name="node-cpu-utilization---node-memory-utilization-"></a>Düğüm CPU kullanımı%/düğüm bellek kullanımı% 
 
-Bu iki performans grafiği, `kubectl top nodes` **cpu%ve MEMORY%** sütunlarının sonuçlarını ilgili **MEMORY%** grafiğe çağırmak ve yakalamak eşdeğeri ile eşleştirilir. 
+Bu iki performans grafiği, `kubectl top nodes` **% CPU** ve **bellek%** sütunlarının sonuçlarını çağırmaya ve yakalamaya karşılık gelen grafiğe eşlenir. 
 
-![Kubectl üst düğümleri örnek sonuçlar](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
+![Kubectl üst düğümleri örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-top-nodes-example.png)
 
 ![Düğümler CPU kullanım yüzdesi grafiği](./media/container-insights-livedata-metrics/cluster-view-node-cpu-util.png)
 
-![Düğüm Bellek kullanım yüzdesi grafiği](./media/container-insights-livedata-metrics/cluster-view-node-memory-util.png)
+![Düğüm belleği kullanım yüzdesi grafiği](./media/container-insights-livedata-metrics/cluster-view-node-memory-util.png)
 
-Yüzdelik hesaplamalar, kümenizdeki aykırı düğümleri belirlemeye yardımcı olmak için daha büyük kümelerde çalışır. Örneğin, düğümlerin küçültme amacıyla yeterince kullanılmadığını anlamak için. **Min** toplama kullanarak kümede hangi düğümlerin düşük kullanıma sahip olduğunu görebilirsiniz. Daha fazla araştırmak için **Düğümler** sekmesini seçin ve ızgarayı CPU veya bellek kullanımına göre sıralayın.
+Yüzdebirlik hesaplamaları, kümenizdeki aykırı değerleri belirlemenize yardımcı olmak için daha büyük kümeler halinde çalışır. Örneğin, düğümlerin ölçeği azaltma amaçlarıyla kullanıldığını anlamak için. **En az** toplamayı kullanarak hangi düğümlerin kümede düşük kullanım olduğunu görebilirsiniz. Daha fazla araştırma yapmak için **düğümler** sekmesini seçin ve Kılavuzu CPU veya bellek kullanımına göre sıralayın.
 
-Bu, hangi düğümlerin sınırlarına itildiğini ve ölçeklendirme gerekip gerekip gerekip gerekmeytolmadığını anlamanıza da yardımcı olur. **Hem Max** hem de **P95** toplamalarını kullanmak, kümede yüksek kaynak kullanımı olan düğümler olup olmadığını görmenize yardımcı olabilir. Daha fazla araştırma için, yine Düğümler sekmesine **geçersiniz.**
+Bu Ayrıca, hangi düğümlerin sınırlarına itilmekte olduğunu ve ölçek genişletme için gerekli olabileceğini anlamanıza yardımcı olur. **Maksimum** ve **P95** toplamaların kullanımı, kümede yüksek kaynak kullanımıyla düğüm olup olmadığını görmenizi sağlayabilir. Daha fazla araştırma için **düğümler** sekmesine geçiş yapmanız gerekir.
 
 ### <a name="node-count"></a>Düğüm sayısı
 
-Bu performans grafiği, DURUM sütununa göre `kubectl get nodes` **durum** türlerine göre gruplanmış bir grafiğe gerek yok etme ve eşleme eşdeğeri eşlenir.
+Bu performans grafiği, durum sütununu çağırma `kubectl get nodes` ve eşleme ile durum sütununu **STATUS** gruplanmış bir grafik ile eşleme eşdeğerini ile eşlenir.
 
-![Kubectl düğümleri örnek sonuçlar olsun](./media/container-insights-livedata-metrics/kubectl-get-nodes-example.png)
+![Kubectl düğüm al örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-get-nodes-example.png)
 
-![Düğümsayısı grafiği](./media/container-insights-livedata-metrics/cluster-view-node-count-01.png)
+![Düğüm sayısı grafiği](./media/container-insights-livedata-metrics/cluster-view-node-count-01.png)
 
-Düğümler **Hazır** veya **Hazır Değil** durumunda bildirilir. Bunlar sayılır (ve toplam sayı oluşturulur) ve bu iki toplamanın sonuçları listelenir.
-Örneğin, düğümlerinizin başarısız durumlara düşüp düşmediğini anlamak için. **Hazır Olmayan** toplamayı kullanarak kümenizdeki düğüm sayısını şu anda **Hazır Değil** durumunda hızla görebilirsiniz.
+Düğümler, **Ready** ya da **Ready** durumunda bildirilir. Bunlar sayılır (ve toplam bir sayı oluşturulur) ve bu iki toplamaların sonuçları gösterilir.
+Örneğin, düğümlerinizin başarısız durumlara düşmesini anlamak için. Hazırlama dışı **toplamayı kullanarak** kümenizdeki düğüm sayısını, şu anda **henüz Ready** durumunda görebilirsiniz.
 
-### <a name="active-pod-count"></a>Etkin pod sayısı
+### <a name="active-pod-count"></a>Etkin Pod sayısı
 
-Bu performans grafiği, durum türlerine `kubectl get pods –all-namespaces` göre gruplanan **DURUM** sütunu çağıran eşdeğeri ile eşlenir.
+Bu performans grafiği, çağırma `kubectl get pods –all-namespaces` ve **durum sütununu,** durum türlerine göre gruplanmış şekilde eşleştiren bir eşdeğerine eşlenir.
 
-![Kubectl bakla örnek sonuçları olsun](./media/container-insights-livedata-metrics/kubectl-get-pods-example.png)
+![Kubectl Get Pod örnek sonuçları](./media/container-insights-livedata-metrics/kubectl-get-pods-example.png)
 
-![Düğümler bölme sayım grafiği](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
+![Düğüm Pod sayısı grafiği](./media/container-insights-livedata-metrics/cluster-view-node-pod-count.png)
 
 >[!NOTE]
->Tarafından yorumlanan durum `kubectl` adları grafikte tam olarak eşleşmeyebilir. 
+>Tarafından `kubectl` yorumlanan durum adları, grafikte tam olarak eşleşmeyebilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uyarılar, görselleştirmeler oluşturmak veya kümelerinizin daha fazla analizini gerçekleştirmek için önceden tanımlanmış sorguları ve örnekleri görmek için [günlük sorgu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.
+Önceden tanımlanmış sorguları ve uyarı oluşturma, görselleştirmeler oluşturmak veya kümelerinizde daha fazla analiz yapmak için örnekleri görmek için [günlük sorgusu örneklerini](container-insights-log-search.md#search-logs-to-analyze-data) görüntüleyin.

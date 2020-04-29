@@ -1,6 +1,6 @@
 ---
-title: '& sorgu Oluşturma Azure Veri Gölü Analizi - Azure CLI'
-description: Azure Veri Gölü Analizi hesabı oluşturmak ve bir U-SQL işi göndermek için Azure Komut satırı Arabirimini nasıl kullanacağınızı öğrenin.
+title: '& sorgusu oluşturma Azure Data Lake Analytics-Azure CLı'
+description: Azure Data Lake Analytics bir hesap oluşturmak ve U-SQL işini göndermek için Azure komut satırı arabirimini nasıl kullanacağınızı öğrenin.
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -8,22 +8,22 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.openlocfilehash: d9fc9bee98391f7272a417324b9c3a540b6adbe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474518"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Azure CLI kullanarak Azure Data Lake Analytics ile çalışmaya başlama
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Bu makalede, Azure Veri Gölü Analizi hesapları oluşturmak, USQL işleri göndermek ve kataloglar oluşturmak için Azure CLI komut satırı arabiriminin nasıl kullanılacağı açıklanmaktadır. İş, sekmeyle ayrılmış değerler (TSV) dosyasını okur ve bu dosyayı virgülle ayrılmış değerler (CSV) dosyasına dönüştürür. 
+Bu makalede, Azure Data Lake Analytics hesapları oluşturmak, USQL işleri ve katalogları göndermek için Azure CLı komut satırı arabirimi 'nin nasıl kullanılacağı açıklanır. İş, sekmeyle ayrılmış değerler (TSV) dosyasını okur ve bu dosyayı virgülle ayrılmış değerler (CSV) dosyasına dönüştürür. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce aşağıdaki öğelerin olması gerekir:
 
 * **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* Bu makalede, Azure CLI sürüm 2.0 veya daha sonra çalıştırdığınızı gerektirir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
+* Bu makalede, Azure CLı sürüm 2,0 veya üstünü çalıştırıyor olmanız gerekir. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
 
 
 
@@ -48,7 +48,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics hesabı oluşturma
 Herhangi bir işi çalıştırmadan önce bir Data Lake Analytics hesabına sahip olmanız gerekir. Bir Data Lake Analytics hesabı oluşturmak için aşağıdaki öğeleri belirtmeniz gerekir:
 
-* **Azure Kaynak Grubu**. Azure Kaynak Grubu'nda bir Data Lake Analytics hesabı oluşturulmalıdır. [Azure Kaynak Yöneticisi,](../azure-resource-manager/management/overview.md) uygulamanızdaki kaynaklarla grup olarak çalışmanızı sağlar. Uygulamanıza ilişkin tüm kaynakları tek ve eşgüdümlü bir işlem ile dağıtabilir, güncelleştirebilir veya silebilirsiniz.  
+* **Azure Kaynak Grubu**. Azure Kaynak Grubu'nda bir Data Lake Analytics hesabı oluşturulmalıdır. [Azure Resource Manager](../azure-resource-manager/management/overview.md) , uygulamanızdaki kaynaklarla bir grup olarak çalışmanıza olanak sağlar. Uygulamanıza ilişkin tüm kaynakları tek ve eşgüdümlü bir işlem ile dağıtabilir, güncelleştirebilir veya silebilirsiniz.  
 
 Aboneliğiniz altındaki mevcut kaynak gruplarını listelemek için:
 
@@ -62,9 +62,9 @@ Yeni bir kaynak grubu oluşturmak için:
 az group create --name "<Resource Group Name>" --location "<Azure Location>"
 ```
 
-* **Data Lake Analytics hesap adı.** Her Data Lake Analytics hesabının bir adı vardır.
+* **Data Lake Analytics hesap adı**. Her Data Lake Analytics hesabının bir adı vardır.
 * **Konum**. Data Lake Analytics'i destekleyen Azure veri merkezlerinden birini kullanın.
-* **Varsayılan Veri Gölü Deposu hesabı**: Her Veri Gölü Analizi hesabının varsayılan bir Data Lake Store hesabı vardır.
+* **Varsayılan Data Lake Store hesabı**: her Data Lake Analytics hesabının varsayılan bir Data Lake Store hesabı vardır.
 
 Mevcut bir Data Lake Store hesabını listelemek için:
 
@@ -96,7 +96,7 @@ Bu eğiticide, bazı arama günlüklerini işleyeceksiniz.  Arama günlüğü, D
 
 Azure portalı, bir arama günlüğü dosyası içeren bazı örnek veri dosyalarını varsayılan Data Lake Store hesabına kopyalamak için bir kullanıcı arabirimi sağlar. Verileri varsayılan Data Lake Store hesabına yüklemek için bkz. [Kaynak verileri hazırlama](data-lake-analytics-get-started-portal.md).
 
-Azure CLI kullanarak dosya yüklemek için aşağıdaki komutları kullanın:
+Azure CLı kullanarak dosyaları karşıya yüklemek için aşağıdaki komutları kullanın:
 
 ```azurecli
 az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Source File Path>" --destination-path "<Destination File Path>"
@@ -129,7 +129,7 @@ Bu U-SQL betiği, **Extractors.Tsv()** öğesini kullanarak kaynak veri dosyası
 
 Kaynak dosyayı farklı bir konuma kopyalamadıkça bu iki yolu değiştirmeyin.  Data Lake Analytics, mevcut olmaması halinde çıkış klasörünü oluşturur.
 
-Varsayılan Data Lake Store hesaplarında depolanan dosyalar için göreli yolların kullanılması daha basittir. Mutlak yol da kullanabilirsiniz.  Örnek:
+Varsayılan Data Lake Store hesaplarında depolanan dosyalar için göreli yolların kullanılması daha basittir. Mutlak yol da kullanabilirsiniz.  Örneğin:
 
 ```
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
@@ -154,7 +154,7 @@ Bir işi göndermek için aşağıdaki söz dizimini kullanın.
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
@@ -184,7 +184,7 @@ az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/Sea
 az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
@@ -192,6 +192,6 @@ az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-fr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Veri Gölü Analizi Azure CLI başvuru belgesini görmek için [Bkz. Veri Gölü Analizi.](/cli/azure/dla)
-* Veri Gölü Deposu Azure CLI başvuru belgesini görmek için [Bkz.](/cli/azure/dls)
+* Data Lake Analytics Azure CLı başvuru belgesini görmek için bkz. [Data Lake Analytics](/cli/azure/dla).
+* Data Lake Store Azure CLı başvuru belgesini görmek için bkz. [Data Lake Store](/cli/azure/dls).
 * Daha karmaşık bir sorgu görmek için [Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme](data-lake-analytics-analyze-weblogs.md) makalesine bakın.

@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB'de toplam işlevler
-description: Azure Cosmos DB tarafından desteklenen SQL toplu işlev sözdizimi, toplu işlev türleri hakkında bilgi edinin.
+title: Azure Cosmos DB içindeki toplama işlevleri
+description: SQL toplama işlevi sözdizimi, Azure Cosmos DB tarafından desteklenen toplama işlevlerinin türleri hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79464470"
 ---
-# <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB'de toplam işlevler
+# <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
 
-Toplam işlevler `SELECT` yan tümcedeki bir değer kümesi üzerinde bir hesaplama yapar ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu `Families` kapsayıcıiçindeki maddelerin sayısını döndürür:
+Toplama işlevleri, `SELECT` yan tümcesindeki bir değer kümesi üzerinde bir hesaplama gerçekleştirir ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu, `Families` kapsayıcı içindeki öğelerin sayısını döndürür:
 
 ## <a name="examples"></a>Örnekler
 
@@ -32,7 +32,7 @@ Sonuçlar:
     }]
 ```
 
-Ayrıca, VALUE anahtar sözcüğlerini kullanarak yalnızca toplamın skaler değerini döndürebilirsiniz. Örneğin, aşağıdaki sorgu değerlerin sayısını tek bir sayı olarak döndürür:
+Ayrıca, VALUE anahtar sözcüğünü kullanarak toplamanın yalnızca skaler değerini de döndürebilirsiniz. Örneğin, aşağıdaki sorgu değer sayısını tek bir sayı olarak döndürür:
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -45,7 +45,7 @@ Sonuçlar:
     [ 2 ]
 ```
 
-Toplamaları filtrelerle de birleştirebilirsiniz. Örneğin, aşağıdaki sorgu adres durumu ile öğelerin `WA`sayısını döndürür.
+Toplamaları filtreler ile de birleştirebilirsiniz. Örneğin, aşağıdaki sorgu, adres durumu olan öğe sayısını döndürür `WA`.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -59,29 +59,29 @@ Sonuçlar:
     [ 1 ]
 ```
 
-## <a name="types-of-aggregate-functions"></a>Toplu fonksiyon türleri
+## <a name="types-of-aggregate-functions"></a>Toplama işlevlerinin türleri
 
-SQL API aşağıdaki toplam işlevleri destekler. `SUM`ve `AVG` sayısal değerler üzerinde çalışmak `COUNT` `MIN`ve `MAX` , , ve sayılar, dizeleri, Booleans ve nulls üzerinde çalışmak.
+SQL API aşağıdaki toplama işlevlerini destekler. `SUM`ve `AVG` sayı, dize, Boole değerleri `COUNT`ve `MIN`null değerler `MAX` üzerinde çalışır.
 
 | İşlev | Açıklama |
 |-------|-------------|
-| COUNT | İfadedeki öğe sayısını döndürür. |
-| SUM   | İfadedeki tüm değerlerin toplamını verir. |
-| MIN   | İfadedeki minimum değeri verir. |
-| MAX   | İfadedeki en büyük değeri verir. |
+| COUNT | İfadedeki öğelerin sayısını döndürür. |
+| SUM   | İfadedeki tüm değerlerin toplamını döndürür. |
+| MIN   | İfadedeki en küçük değeri döndürür. |
+| MAX   | İfadedeki en büyük değeri döndürür. |
 | AVG   | İfadedeki değerlerin ortalamasını döndürür. |
 
-Ayrıca, bir dizi yinelemesinin sonuçları üzerinde toplayabilirsiniz.
+Ayrıca, bir dizi yinelemesi sonuçlarının üzerine toplayabilirsiniz.
 
 > [!NOTE]
-> Azure portalının Veri Gezgini'nde, toplama sorguları yalnızca bir sorgu sayfasında kısmi sonuçlar toplayabilir. SDK tüm sayfalarda tek bir kümülatif değer üretir. Kodu kullanarak toplama sorguları gerçekleştirmek için .NET SDK 1.12.0, .NET Core SDK 1.1.0 veya Java SDK 1.9.5 veya üzeri gerekir.
+> Azure portal Veri Gezgini, toplama sorguları kısmi sonuçları yalnızca bir sorgu sayfasından toplayabilir. SDK tüm sayfalarda tek bir kümülatif değer üretir. Kodu kullanarak toplama sorguları gerçekleştirmek için .NET SDK 1.12.0, .NET Core SDK 1.1.0 veya Java SDK 1.9.5 ya da üstünü kullanmanız gerekir.
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu toplam sistem işlevleri bir [aralık dizini](index-policy.md#includeexclude-strategy)yararlanacaktır. Bir özellik üzerinde `COUNT`bir `SUM` `MIN`, `MAX`, `AVG` , , veya bir özellik yapmayı bekliyorsanız, [dizin oluşturma ilkesine ilgili yolu eklemeniz](index-policy.md#includeexclude-strategy)gerekir.
+Bu toplama sistemi işlevleri, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır. Bir `COUNT`özelliği, `SUM` `MIN` `MAX`,,, veya `AVG` bir özelliğinde yapmanız beklendiğinde, [Dizin oluşturma ilkesine ilgili yolu dahil](index-policy.md#includeexclude-strategy)etmelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Azure Cosmos DB giriş](introduction.md)
 - [Sistem işlevleri](sql-query-system-functions.md)
-- [Kullanıcı tanımlı fonksiyonlar](sql-query-udfs.md)
+- [Kullanıcı tanımlı işlevler](sql-query-udfs.md)

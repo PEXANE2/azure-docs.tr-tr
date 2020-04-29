@@ -1,221 +1,221 @@
 ---
-title: 'Öğretici: makine öğrenilen varlık ile yapılandırılmış veri ayıklamak - LUIS'
-description: Makinede öğrenilen varlığı kullanarak bir söyleyişten yapılandırılmış veri ayıklayın. Çıkarma doğruluğunu artırmak için, tanımlayıcılar ve kısıtlamalar içeren alt bileşenler ekleyin.
+title: 'Öğretici: makine tarafından öğrenilen varlık-LUSıS ile yapılandırılmış verileri Ayıkla'
+description: Makine tarafından öğrenilen varlığı kullanarak bir utterden yapılandırılmış verileri ayıklayın. Ayıklama doğruluğunu artırmak için, tanımlayıcılar ve kısıtlamalara sahip alt bileşenler ekleyin.
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80545848"
 ---
-# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Öğretici: Dil Anlama (LUIS) makine öğrenilen varlıklar ile kullanıcı söyleyerek yapılandırılmış veri ayıklayın
+# <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Öğretici: Language Understanding (LUSıS) içindeki makine tarafından öğrenilen varlıklarla yapılandırılmış verileri Kullanıcı utkiden Ayıkla
 
-Bu öğreticide, makinede öğrenilen varlığı kullanarak bir söyleyişten yapılandırılmış verileri ayıklayın.
+Bu öğreticide, makine tarafından öğrenilen varlığı kullanarak bir utterden yapılandırılmış verileri ayıklayın.
 
-Makinede öğrenilen varlık, alt bileşen varlıklarına tanımlayıcılarını ve kısıtlamalarını sağlayarak [model ayrıştırma kavramını](luis-concept-model.md#v3-authoring-model-decomposition) destekler.
+Makine tarafından öğrenilen varlık, kendi tanımlayıcılarını ve kısıtlamalarını içeren alt bileşen varlıkları sağlayarak [model ayrıştırma kavramını](luis-concept-model.md#v3-authoring-model-decomposition) destekler.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
-> * Örnek uygulamayı içe aktarma
-> * Makinede öğrenilen varlık ekleme
-> * Alt bileşen ekleme
-> * Alt bileşenin tanımlayıcısı ekleme
-> * Alt bileşenin kısıtlaması ekleme
+> * Örnek uygulamayı içeri aktar
+> * Makine tarafından öğrenilen varlık Ekle
+> * Alt bileşen Ekle
+> * Alt bileşen tanımlayıcısını ekle
+> * Alt bileşen kısıtlaması Ekle
 > * Uygulamayı eğitme
 > * Test uygulaması
 > * Uygulama yayımlama
-> * Bitiş noktasından varlık tahmini alma
+> * Uç noktadan varlık tahminini al
 
 [!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
 
 
-## <a name="why-use-a-machine-learned-entity"></a>Neden makineden öğrenilen bir varlık kullanıyorsun?
+## <a name="why-use-a-machine-learned-entity"></a>Makine tarafından öğrenilen bir varlık neden kullanılmalıdır?
 
-Bu öğretici, bir söyleyişten veri ayıklamak için makineden öğrenilen bir varlık ekler.
+Bu öğretici, bir yerden veri ayıklamak için makine tarafından öğrenilen bir varlık ekler.
 
-Varlık, söyleyiş içinden çıkarılacak verileri tanımlar. Buna, verilere bir ad, bir tür (mümkünse), belirsizlik varsa verilerin herhangi bir çözünürlüğü ve verileri oluşturan tam metin verilmesi dahildir.
+Varlık, ayıklananlık içinden Ayıklanacak verileri tanımlar. Bu, verileri bir ad, bir tür (mümkünse), belirsizlik varsa verilerin herhangi bir çözümlemesini ve verileri oluşturan tam metni içerir.
 
-Varlığı tanımlamak için, varlığı oluşturmanız ve sonra varlığı temsil eden metni tüm niyetler içinde örnek sözlemelerde etiketlemeniz gerekir. Bu etiketli örnekler LUIS'e varlığın ne olduğunu ve bir söyleyiş içinde nerede bulunabileceğini öğretir.
+Varlığı tanımlamak için, varlığı oluşturmanız ve ardından tüm amaçlar içindeki örnekteki varlıktaki varlığı temsil eden metni etiketetmeniz gerekir. Bu etiketlenmiş örnekler, LUID 'in varlığın ne olduğunu ve bir utterde nerede bulabileceklerini öğretin.
 
-## <a name="entity-decomposability-is-important"></a>Varlık decomposability önemlidir
+## <a name="entity-decomposability-is-important"></a>Varlık ayırıcı, önemli
 
-Varlık ayrıştırılabilirliği hem niyet tahmini hem de varlıkla veri ayıklama için önemlidir.
+Varlık ayırıcı, hem amaç tahmini hem de varlıkla veri ayıklama için önemlidir.
 
-Veri ayıklama için başlangıç ve üst düzey varlık olan makine den öğrenilen bir varlıkla başlayın. Ardından varlığı istemci uygulamasının gerektirdiği parçalara ayırın.
+Veri ayıklama için başlangıç ve en üst düzey varlık olan makine tarafından öğrenilen bir varlık ile başlayın. Sonra varlığı, istemci uygulaması için gereken bölümlere ayırın.
 
-Uygulamanızı başlattığınızda varlığınızı ne kadar ayrıntılı istediğinizi bilmeseniz de, en iyi uygulama makinede öğrenilen bir varlıkla başlamak, ardından uygulamanız olgunlaştıkça alt bileşenlerle ayrışmaktır.
+Uygulamanıza başladığınızda varlığınızın ne kadar ayrıntılı olmasını bildiğinize karşın, en iyi uygulama makine tarafından öğrenilen bir varlıkla başlamak ve sonra uygulama malarınızın alt bileşenleri ile çıkarılması gerekir.
 
-Bunda, bir pizza uygulaması siparişini temsil edecek makineden öğrenilen bir varlık oluşturursunuz. Sipariş, siparişi tam olarak yerine getirmek için gerekli olan tüm parçalara sahip olmalıdır. Başlamak için, varlık boyutu ve miktarı çekerek, sipariş ile ilgili metin ayıklanır.
+Bu, bir pizza uygulaması için bir siparişi temsil eden makine tarafından öğrenilen bir varlık oluşturursunuz. Sıralamada sıra için gereken tüm parçalar olmalıdır. Başlamak için varlık, sipariş ile ilgili metni, kullanıma hazır boyutunu ve miktarı ayıklar.
 
-Için `Please deliver one large cheese pizza to me` bir söyleyiş `one large cheese pizza` sipariş olarak ayıklamak `1` `large`gerekir, sonra da ayıklamak ve .
+İçin `Please deliver one large cheese pizza to me` bir söylenişi, sırasıyla `one large cheese pizza` ayıklanmalı ve `large`sonra da ayıklamalıdır `1` .
 
-Topingler veya kabuk için alt bileşenler oluşturma gibi ekleyebilirsiniz daha fazla çürüme vardır. Bu eğitimden sonra, bu alt bileşenleri mevcut `Order` varlığınıza ekleyerek kendinizi güvende hissetmeniz gerekir.
+Toppings veya Crust için alt bileşenler oluşturma gibi ek bir ayrıştırma daha vardır. Bu Öğreticiden sonra, bu alt bileşenleri var olan `Order` varlığınıza eklememelisiniz.
 
-## <a name="import-example-json-to-begin-app"></a>Uygulama başlatmak için alma örneği .json
+## <a name="import-example-json-to-begin-app"></a>Uygulamayı başlatmak için example. JSON al
 
-1.  Uygulamayı indirin ve kaydedin [JSON dosyasını.](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)
+1.  [Uygulama json dosyasını](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)indirip kaydedin.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
-## <a name="label-text-as-entities-in-example-utterances"></a>Metni örnek sözlerle varlıklar olarak etiketleme
+## <a name="label-text-as-entities-in-example-utterances"></a>Metni örnek söyleyde varlıklar olarak etiketle
 
-Pizza siparişi hakkında ayrıntıları ayıklamak için, en `Order` üst düzeyde, makineden öğrenilen bir varlık oluşturun.
+Bir pizza sırası hakkındaki ayrıntıları ayıklamak için, en üst düzey, makine tarafından öğrenilen `Order` bir varlık oluşturun.
 
-1. **Niyetler** sayfasında **OrderPizza** amacını seçin.
+1. **Amaçlar** sayfasında **orderpizza** hedefini seçin.
 
-1. Örnek söyleyerek ler listesinde aşağıdaki söyleyiyi seçin.
+1. Örnek söyleyenlik listesinde, aşağıdaki utterance ' ı seçin.
 
-    |Sipariş örneği söyleyiş|
+    |Sipariş örneği|
     |--|
     |`pickup a cheddar cheese pizza large with extra anchovies`|
 
-    (#1'ın en sol metninden `pickup` hemen önce seçim yapmaya başlayın, ardından `anchovies` en çok sağdaki metnin ötesine geçin (#2 - bu etiketleme işlemini sona erdiriyor). Açılır menü görüntülenir. Açılan kutuya varlığın adını `Order` (#3 olarak girin. Ardından `Order - Create new entity` listeden (#4) seçin.
+    En solundaki `pickup` (#1) metinden hemen önce seçmeye başlayın, sonra sağ taraftaki metnin hemen ötesine geçin `anchovies` (#2-bu etiketleme işlemini sonlandırır). Bir açılır menü görünür. Açılır kutuya varlığın adını (#3) olarak `Order` girin. Sonra listeden `Order - Create new entity` (#4) öğesini seçin.
 
-    ![Tam sipariş için metnin başlayıp bitişini etiketleme](media/tutorial-machine-learned-entity/mark-complete-order.png)
+    ![Metnin başlangıç ve bitiş sırası için etiketi](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
-    > Bir varlık her zaman tüm söyleyiş olmayacak. Bu özel durumda, `pickup` siparişin nasıl alınacağı gösterilir. Kavramsal bir bakış `pickup` açısıyla, sipariş için etiketli varlığın bir parçası olmalıdır.
+    > Bir varlık her zaman tüm söylik olmaz. Bu özel durumda, `pickup` siparişin nasıl alınacağını gösterir. Kavramsal bir perspektiften, `pickup` sıralama için etiketlenmiş varlığın bir parçası olmalıdır.
 
-1. Varlık türü kutusu **seç'te** **Yapı Ekle'yi** seçin ve **ardından İleri'yi**seçin. Boyut ve miktar gibi alt bileşenler eklemek için yapı gereklidir.
+1. **Varlık türü seçin** kutusunda, **Yapı Ekle** ' yi seçin ve ardından **İleri**' yi seçin. Boyut ve miktar gibi alt bileşenleri eklemek için yapı gereklidir.
 
-    ![Varlığa yapı ekleme](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
+    ![Varlığa yapı Ekle](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. Makine **öğrenilen varlık** kutusunda Yapı **kutusunda** ekle `Size` ve enter'u seçin.
-1. Tanımlayıcı eklemek **için,** `+` **Tanımlayıcılar** alanındaki leri seçin ve **ardından yeni tümcecik listesi oluştur'u**seçin.
+1. Makine tarafından **öğrenilen varlık oluştur** kutusunda, **Yapı** kutusunda ENTER ' `Size` ı seçin.
+1. Bir **tanımlayıcı**eklemek Için, **tanımlayıcılar** alanında `+` öğesini seçin ve ardından **Yeni tümcecik listesi oluştur**' u seçin.
 
-1. Yeni **ifade listesi açıklayıcı sıcadım** kutusuna, `SizeDescriptor` adı girin `small` `medium`sonra `large`değerlerini girin: , , ve . **Öneriler** kutusu dolduğunda `extra large`, ve `xl`. Yeni tümcecik listesini oluşturmak için **Bitti'yi** seçin.
+1. **Yeni tümcecik liste tanımlayıcısı oluştur** kutusuna adı `SizeDescriptor` girin, sonra şu değerleri girin: `small`, `medium`, ve. `large` **Öneriler** kutusu dolduğunda, ve `extra large` `xl`' yi seçin. Yeni tümcecik listesini oluşturmak için **bitti** ' yi seçin.
 
-    Bu ifade listesi tanımlayıcısı, alt bileşenin `Size` örnek sözcükler sunarak boyutla ilgili sözcükleri bulmasına yardımcı olur. Bu listenin her boyuttasözcüğü içermesi gerekmez, ancak boyutu göstermesi beklenen sözcükleri içermelidir.
+    Bu tümcecik listesi tanımlayıcısı, `Size` alt bileşenin boyutla ilgili sözcükleri örnek sözcüklerle bulmasına yardımcı olur. Bu listenin her kelime içermesi gerekmez, ancak boyutu göstermek için beklenen sözcükleri içermesi gerekir.
 
     ![Boyut alt bileşeni için bir tanımlayıcı oluşturma](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
 
-1. Makine **öğrenilen varlık** penceresinde, `Size` alt bileşeni oluşturmak için **Oluştur'u** seçin.
+1. Makine tarafından **öğrenilen varlık oluştur** penceresinde **Oluştur** ' u seçerek alt `Size` bileşeni oluşturmayı tamamlayın.
 
-    Bileşeni `Order` olan `Size` varlık oluşturulur, ancak `Order` yalnızca varlık söyleyeme uygulanmıştır. Varlık metnini `Size` örnek söyleyiş olarak etiketlemeniz gerekir.
+    Bir `Order` `Size` bileşeni olan varlık oluşturulur ancak yalnızca `Order` varlık, utterance 'e uygulandı. Örnek utüterde `Size` varlık metnini etiketetmeniz gerekir.
 
-1. Aynı örnekte, sözcüğü **Size** `large` seçerek ve ardından açılan listeden **Boyut** varlığını seçerek Boyut alt bileşenini etiketle.
+1. Aynı örnek utterde, daha sonra açılan listeden **Boyut** varlığını seçerek `large` sözcüğü seçerek **Boyut** alt bileşenini etiketleyerek.
 
-    ![Metin için boyut varlığını söyleyiş olarak etiketlendi.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
+    ![Boyut varlığını utterance 'teki metin için etiketleyin.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
-    Metni _açıkça_ etiketlediğiniz için hem etiketleme hem de tahmin eşleşip metnin altında düz bir çizgi bulunur.
+    Metni _açıkça_ etiketlediğiniz için hem etiketleme hem de tahmin eşleşmesi nedeniyle satır metnin altında kalındır.
 
-1. `Order` Varlığı, büyük varlıkla birlikte kalan tümlonlarla etiketle. Metindeki kare ayraçlar, etiketli `Order` varlığı `Size` ve içindeki varlığı gösterir.
+1. Kalan titerlerdeki `Order` varlığı boyut varlığıyla birlikte etiketleyin. Metindeki köşeli ayraç etiketli `Order` varlığı ve içindeki `Size` varlığı gösterir.
 
-    |Sipariş örneği söyleyinmeleri|
+    |Sipariş örneği|
     |--|
     |`can i get [a pepperoni pizza and a can of coke] please`|
     |`can i get [a [small] pizza with onions peppers and olives]`|
     |`[delivery for a [small] pepperoni pizza]`|
     |`i need [2 [large] cheese pizzas 6 [large] pepperoni pizzas and 1 [large] supreme pizza]`|
 
-    ![Kalan tüm örnek tüm söyleyişlerde varlık ve alt bileşenler yapın.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
+    ![Tüm kalan örnekler için varlık ve alt bileşenler oluşturun.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
 
     > [!CAUTION]
-    > Tek bir pizzayı ima eden `a` mektup gibi zımni verileri nasıl ele alasınız? Ya da `pickup` pizzanın `delivery` nerede beklendiğini niçin ve eksikliği? Veya küçük veya büyük varsayılan boyutunu belirtmek için bir boyut eksikliği? Luis yerine veya LUIS'e ek olarak istemci uygulamasında zımni veri işlemeyi iş kurallarınızın bir parçası olarak ele almayı düşünün.
+    > Tek bir pizza 'nin bir adı `a` gibi kapsanan verileri nasıl değerlendirirsiniz? `pickup` Veya, pizza 'nin nerede beklendiğine işaret ediyor `delivery` mu? Ya da küçük veya büyük boyutlu varsayılan boyutunu belirten bir boyut eksikliği mı var? Açık Veri işlemeyi, LUTO 'ın yanı sıra, istemci uygulamasındaki iş kurallarınızın bir parçası olarak kabul etmeyi düşünün.
 
-1. Uygulamayı eğitmek için **Train'i**seçin. Eğitim, etkin modele yeni varlıklar ve etiketli sözcük ler gibi değişiklikleri uygular.
+1. Uygulamayı eğiteiçin **eğitme**' yi seçin. Eğitim, etkin modele yeni varlıklar ve etiketli utterler gibi değişiklikleri uygular.
 
-1. Eğitimden sonra, LUIS'in makineden öğrenilen varlığı ne kadar iyi anladığını görmek için niyete yeni bir örnek söyleyiş ekleyin.
+1. Eğitimin ardından, makinenin makine tarafından öğrenilen varlığı ne kadar iyi anladığını görmek için amaca uygun yeni bir örnek ekleyin.
 
-    |Sipariş örneği söyleyiş|
+    |Sipariş örneği|
     |--|
     |`pickup XL meat lovers pizza`|
 
-    Genel üst varlık, `Order` etiketlenir `Size` ve alt bileşen de noktalı çizgilerle etiketlenir.
+    Genel en üst varlık `Order` etiketlidir ve alt `Size` bileşen de noktalı çizgilerle etiketlidir.
 
-    ![Varlıkla öngörülen yeni örnek](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
+    ![Varlıkla öngörülen yeni örnek söylenişi](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-    Noktalı çizgi öngörüyü gösterir.
+    Noktalı çizgi, tahminini gösterir.
 
-1. Öngörüyü etiketli bir varlığa dönüştürmek için satırı seçin ve ardından **varlık tahminlerini doğrula'yı**seçin.
+1. Tahmini etiketli bir varlık olarak değiştirmek için satırı seçin ve ardından **varlık tahminlerini Onayla**' yı seçin.
 
-    ![Varlık tahminini onayla'yı seçerek tahmini kabul edin.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
+    ![Varlık tahminini Onayla ' yı seçerek tahmin kabul edin.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
 
-    Bu noktada, makinede öğrenilen varlık, varlığı yeni bir örnek söyleyiş içinde bulabildiği için çalışır. Örnek sözcükler eklediğinizde, varlık doğru tahmin edilemediyse, varlığı ve alt bileşenleri etiketlayın. Varlık doğru tahmin edilirse, tahminleri doğruladıklarından emin olun.
+    Bu noktada, varlığı yeni bir örnek içinde bulabildiğinden makine tarafından öğrenilen varlık çalışır. Örnek eklemelerinde, varlık doğru şekilde tahmin edilmez, varlığı ve alt bileşenleri etiketleyin. Varlık doğru bir şekilde tahmin edildiğinde, tahminleri onaylamanız emin olun.
 
-## <a name="add-prebuilt-number-to-help-extract-data"></a>Veri ayıklama yardımcı olmak için önceden oluşturulmuş sayı ekleme
+## <a name="add-prebuilt-number-to-help-extract-data"></a>Veri ayıklamaya yardımcı olmak için önceden oluşturulmuş numara ekleyin
 
-Sipariş bilgileri, siparişte kaç tane madde olduğu gibi kaç tane pizza olduğunu da içermelidir. Bu verileri ayıklamak için, makineden öğrenilen yeni `Order` bir alt bileşenin eklenmesi gerekir ve bu bileşenin önceden oluşturulmuş bir sayının kısıtlamasına ihtiyacı vardır. Varlığı önceden oluşturulmuş bir sayıyla zorlayarak, varlık metnin basamak `2`veya metin olup olmadığını `two`bulur ve ayıklar.
+Sipariş bilgileri ayrıca, kaç tane Pizzas gibi bir öğenin sırada olduğunu de içermelidir. Bu verileri ayıklamak için, makineye öğrenilen yeni bir alt bileşenin eklenmesi gerekir `Order` ve bu bileşenin önceden oluşturulmuş bir sayının kısıtlaması olması gerekir. Varlığı önceden oluşturulmuş bir sayıyla karşılaştırarak, metin bir basamak, `2`veya metin olan sayıları bulur ve ayıklar. `two`
 
-Uygulamaya önceden oluşturulmuş sayı varlığını ekleyerek başlayın.
+Uygulamaya önceden oluşturulmuş sayı varlığı ekleyerek başlayın.
 
-1. Sol menüden **Varlıklar'ı** seçin, ardından **+ Önceden oluşturulmuş varlık ekle'yi**seçin.
+1. Sol menüden **varlıklar** ' ı seçin ve ardından **+ önceden oluşturulmuş varlık Ekle**' yi seçin.
 
-1. Önceden **oluşturulmuş varlıklar ekle** kutusunda, arama ve **sayı** seçin sonra **Bitti**seçin.
+1. **Önceden oluşturulmuş varlıklar Ekle** kutusunda, **numarayı** arayıp seçin ve **bitti**' yi seçin.
 
-    ![Önceden oluşturulmuş varlık ekleme](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
+    ![Önceden oluşturulmuş varlık Ekle](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
 
     Önceden oluşturulmuş varlık uygulamaya eklenir, ancak henüz bir kısıtlama değildir.
 
-## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Veri ayıklamanıza yardımcı olmak için kısıtlanmış alt bileşen varlığı oluşturma
+## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Veri ayıklamaya yardımcı olmak için kısıtlama ile alt bileşen varlığı oluşturma
 
-Bir `Order` öğenin `Quantity` kaç tanesinin sırada olduğunu belirlemek için bir alt bileşene sahip olması gerekir. Ayıklanan verilerin istemci uygulamasına hemen ada göre kullanılabilmesi için miktar bir sayıyla sınırlandırılmalıdır.
+`Order` Varlığın siparişte kaç tane öğe `Quantity` olduğunu belirleyebilmek için bir alt bileşeni olmalıdır. Ayıklanan verilerin istemci uygulaması adına göre hemen kullanılabilmesi için miktarın bir sayıyla sınırlandırılması gerekir.
 
-Kısıtlama, metin eşleşmesi olarak, tam eşleme (liste varlığı gibi) veya normal ifadeler (normal ifade varlığı veya önceden oluşturulmuş bir varlık gibi) aracılığıyla uygulanır.
+Bir kısıtlama, tam eşleşme (bir liste varlığı gibi) veya normal ifadeler (örneğin, bir normal ifade varlığı veya önceden oluşturulmuş bir varlık gibi) ile bir metin eşleşmesi olarak uygulanır.
 
-Bir kısıtlama kullanılarak, yalnızca bu kısıtlamayla eşleşen metin ayıklanır.
+Kısıtlama kullanarak yalnızca bu kısıtlamayla eşleşen metin ayıklanır.
 
-1. **Varlıklar'ı** seçin `Order` ve ardından varlığı seçin.
-1. + **Bileşen Ekle'yi** `Quantity` seçin ve ardından yeni alt bileşeni `Order` varlığa eklemek için adı girin'i seçin.
-1. Başarı bildiriminden sonra, **Gelişmiş Seçenekler'de**Kısıtlama kalemini seçin.
-1. Açılan listede önceden oluşturulmuş numarayı seçin.
+1. **Varlıklar** ' ı seçin ve `Order` ardından varlığı seçin.
+1. Varlığa yeni alt bileşeni eklemek için **+ Bileşen Ekle** ' yi seçin ve `Quantity` ardından ENTER ' u seçin. `Order`
+1. Başarı bildiriminden sonra, **Gelişmiş Seçenekler**' de kısıtlama kurşun kalem ' i seçin.
+1. Açılan listede, önceden oluşturulmuş numarayı seçin.
 
-    ![Kısıtlama olarak önceden oluşturulmuş sayıile miktar varlığı oluşturun.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
+    ![Önceden oluşturulmuş sayıyla kısıtlama olarak miktar varlığı oluşturun.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
-    Metin `Quantity` önceden oluşturulmuş sayı varlığıyla eşleştiğinde varlık uygulanır.
+    `Quantity` Varlık, önceden oluşturulmuş sayı varlığıyla eşleştiğinde uygulanır.
 
-    Kısıtlamalı varlık oluşturulur, ancak henüz örnek sözlemelere uygulanmaz.
+    Kısıtlaması olan varlık oluşturulur ancak örnek utetlerini henüz uygulanmaz.
 
     > [!NOTE]
-    > Bir alt bileşen, 5 düzeye kadar bir alt bileşen içinde iç içe olabilir. Bu makalede gösterilmese de, portal ve API'den edinilebilir.
+    > Bir alt bileşen, 5 düzeye kadar bir alt bileşen içinde iç içe olabilir. Bu makalede gösterilmediğinde Portal ve API 'den erişilebilir.
 
-## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Varlık hakkında LUIS öğretmek için etiket örneği söyleyiş
+## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Bir varlık hakkında LUSıS öğretmek için etiket örneği
 
-1. Sol daki gezintiden **Niyetler'i** seçin ve **ardından OrderPizza** amacını seçin. Aşağıdaki ifadelerdeki üç sayı etiketlenir, ancak görsel olarak `Order` varlık çizgisinin altındadır. Bu alt düzey, varlıkların bulunduğu, ancak varlığın `Order` bir parçası olarak kabul edilmeyişlerinin anlamına gelir.
+1. Sol taraftaki gezinmede **amaçları** seçin, sonra **orderpizza** hedefini seçin. Aşağıdaki söyleyenlerdeki üç sayı etiketlidir ancak `Order` varlık satırının altında görsel olarak bulunur. Bu alt düzey, varlıkların bulunduğu ancak `Order` varlığın bir parçası olarak kabul edildiği anlamına gelir.
 
-    ![Önceden oluşturulmuş sayı bulunur, ancak henüz Sipariş varlığı dışında düşünülmez.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
+    ![Önceden oluşturulmuş sayı bulundu ancak sipariş varlığı henüz kabul edilmez.](media/tutorial-machine-learned-entity/prebuilt-number-not-part-of-order-entity.png)
 
-1. Listeden seçerek `Quantity` `2` `Quantity` örnekteki söyleyiyi seçerek sayıları varlıkla etiketlendirin. Etiket `6` ve `1` aynı örnek söyleyiş.
+1. Örnekte, listeden öğesini seçerek `Quantity` `2` `Quantity` , sayıları varlıkla etiketleyin. Aynı örnekte `6` ve ile `1` etiketleyin.
 
-    ![Metni miktar varlığıyla etiketle.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
+    ![Metin olarak miktar tüzel kişiliği etiketi.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
 
-## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Varlık değişikliklerini uygulamaya uygulamak için uygulamayı eğitin
+## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Uygulamaya varlık değişikliklerini uygulamak için uygulamayı eğitme
 
-Bu yeni söyleyişlerle uygulamayı eğitmek için **Train'i** seçin. Eğitimden sonra, `Quantity` alt bileşen `Order` bileşende doğru bir şekilde tahmin edilir. Bu doğru tahmin düz bir çizgi ile gösterilir.
+Uygulamayı bu yeni dıklarla eğitmek için **eğitme** ' yi seçin. Eğitim sonrasında, `Quantity` alt bileşen `Order` bileşende doğru şekilde tahmin edilir. Bu doğru tahmin, katı bir çizgi ile belirtilmiştir.
 
-![Uygulamayı eğitin ve örnek söyleyişleri inceleyin.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
+![Uygulamayı eğitme örnek, örnekleri gözden geçirin.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
-Bu noktada, sipariş ayıklanabilir bazı ayrıntıları (boyut, miktar ve toplam sipariş metni) vardır. Pizza topingler, kabuk `Order` türü ve yan siparişler gibi varlığın daha fazla rafine olduğunu. Bunların her biri varlığın `Order` alt bileşenleri olarak oluşturulmalıdır.
+Bu noktada, sıralamada ayıklanabilen bazı ayrıntılar (boyut, miktar ve toplam sipariş metni) vardır. `Order` Varlıkla, pizza toppings, Crust türü ve yan emirler gibi daha ayrıntılı bir şekilde iyileştirilmesi vardır. Bunların her biri `Order` varlığın alt bileşenleri olarak oluşturulmalıdır.
 
-## <a name="test-the-app-to-validate-the-changes"></a>Değişiklikleri doğrulamak için uygulamayı test edin
+## <a name="test-the-app-to-validate-the-changes"></a>Değişiklikleri doğrulamak için uygulamayı test etme
 
-İnteraktif **Test** panelini kullanarak uygulamayı test edin. Bu işlem, etkin ve eğitimli uygulamanın ne kadar iyi çalıştığını görmek için yeni bir sözcük girmenizi ve tahmin sonuçlarını görüntülemenizi sağlar. Niyet tahmini oldukça emin olmalıdır (%70'in üzerinde) ve varlık çıkarma en azından `Order` varlık almalısınız. 5 söyleyiş her durumda işlemek için yeterli olmadığından, sipariş varlığının ayrıntıları eksik olabilir.
+Etkileşimli **Test** panelini kullanarak uygulamayı test edin. Bu işlem, etkin ve eğitilen uygulamanın ne kadar iyi çalıştığını görmek için yeni bir söylik girmenize ve tahmin sonuçlarını görüntülemenize imkan tanır. Amaç tahmini oldukça emin olmalıdır (%70 üzerinde) ve varlık ayıklama en az `Order` varlığı almalıdır. 5 utlaslar her durumda işlenecek kadar, sipariş varlığının ayrıntıları eksik olabilir.
 
 1. Üst gezinti bölmesinde **Test**'i seçin.
-1. Söyleyiyi `deliver a medium veggie pizza` girin ve Enter'u seçin. Aktif model% 70'in üzerinde güven ile doğru niyet öngördü.
+1. Söylenişi `deliver a medium veggie pizza` ' i girip ENTER ' u seçin. Etkin Model %70 güvenilirlikle doğru amacı tahmin eden tahmini.
 
-    ![Niyeti test etmek için yeni bir söyleyiş girin.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
+    ![Amacı test etmek için yeni bir söylenişi girin.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
-1. Varlık tahminlerini görmek için **Denetle'yi** seçin.
+1. Varlık tahminlerini görmek için **İnceleme** ' yi seçin.
 
     ![Etkileşimli test panelinde varlık tahminlerini görüntüleyin.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance-and-entity-predictions.png)
 
-    Boyutu doğru olarak tanımlanmış. `OrderPizza` Amaçtaki örnek ifadelerin boyut `medium` olarak bir örneği olmadığını, ancak orta içeren bir `SizeDescriptor` ifade listesinin tanımlayıcısını kullandığını unutmayın.
+    Boyut doğru şekilde tanımlandı. `OrderPizza` Amaç 'daki örnek, boyut `medium` olarak bir örnektir ancak orta içeren bir `SizeDescriptor` tümcecik listesi tanımlayıcısı kullanın.
 
-    Miktar doğru tahmin edilmez. LUIS tahmininde boyut döndürülmezse, istemci uygulamanızda boyutu varsayılan olarak bir (1) olarak düzeltebilirsiniz.
+    Miktar doğru şekilde tahmin edilmez. Bu işlemi, lusıs tahminiyle bir boyut döndürülmezse, istemci uygulamanızda, boyutu bir (1) olarak en az olacak şekilde düzeltemedi.
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>HTTP bitiş noktasından erişmek için uygulamayı yayımlayın
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Uygulamayı HTTP uç noktasından erişmek üzere yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>HTTP bitiş noktasından niyet ve varlık tahmini alın
+## <a name="get-intent-and-entity-prediction-from-http-endpoint"></a>HTTP uç noktasından amacı ve varlık tahminini alın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adres çubuğundaki URL'nin sonuna gidin ve _YOUR_QUERY_HERE_ etkileşimli test paneline girdiğiniz sorguyla değiştirin.
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ , etkileşimli test paneline girdiğiniz sorguyla değiştirin.
 
     `deliver a medium veggie pizza`
 
@@ -290,16 +290,16 @@ Bu noktada, sipariş ayıklanabilir bazı ayrıntıları (boyut, miktar ve topla
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Öğretici - niyet](luis-quickstart-intents-only.md)
-* [Kavram - varlıklar](luis-concept-entity-types.md) kavramsal bilgi
-* [Kavram - kavramsal](luis-concept-feature.md) bilgi özellikleri
-* [Nasıl eğitilir?](luis-how-to-train.md)
+* [Öğretici-amaçlar](luis-quickstart-intents-only.md)
+* [Kavram varlıkları](luis-concept-entity-types.md) kavramsal bilgileri
+* [Kavram-Özellikler](luis-concept-feature.md) kavramsal bilgileri
+* [Eğitme](luis-how-to-train.md)
 * [Yayımlama](luis-how-to-publish-app.md)
-* [LUIS portalında test nasıl](luis-interactive-test.md)
+* [LUSıS portalında test etme](luis-interactive-test.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, uygulama, kullanıcının söyleyiş niyetini bulmak ve bu sözden ayrıntıları ayıklamak için makineden öğrenilen bir varlık kullanır. Makinede öğrenilen varlığı kullanmak, varlığın ayrıntılarını ayrıştırmanızı sağlar.
+Bu öğreticide, uygulama, bir kullanıcının utterliği amacını bulmak ve bu noktadan ayrıntıları ayıklamak için makine tarafından öğrenilen bir varlık kullanır. Makine tarafından öğrenilen varlığın kullanılması, varlığın ayrıntılarını parçalara ayırmayı sağlar.
 
 > [!div class="nextstepaction"]
 > [Önceden oluşturulmuş keyphrase varlığı ekleme](luis-quickstart-intent-and-key-phrase.md)

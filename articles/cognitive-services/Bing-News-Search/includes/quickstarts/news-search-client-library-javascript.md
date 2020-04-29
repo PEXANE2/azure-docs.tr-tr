@@ -1,5 +1,5 @@
 ---
-title: Bing Haber Arama JavaScript istemci kitaplığı quickstart
+title: Bing Haber Arama JavaScript istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: 858e6b9e0e40ab988a4cdf04b31580c1ca28d40a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503898"
 ---
-JavaScript için Bing Haberler Arama istemci kitaplığı ile haber aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Aramaçoğu programlama diliyle uyumlu bir REST API'si olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)bulunabilir.
+JavaScript için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -30,7 +30,7 @@ Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarl
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Abonelik anahtarınız ve arama teriminiz için değişkenler oluşturun.
+1. `CognitiveServicesCredentials` nesnesinin bir örneğini oluşturun. Abonelik anahtarınız ve bir arama terimi için değişkenler oluşturun.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
@@ -38,16 +38,16 @@ Bing Haber Arama istemci kitaplığını kullanarak bir konsol uygulaması ayarl
     let search_term = 'Winter Olympics'
     ```
 
-2. müşteri anlık:
+2. istemcinin örneğini oluşturma:
     
     ```javascript
     const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
     let client = new NewsSearchAPIClient(credentials);
     ```
 
-## <a name="send-a-search-query"></a>Arama sorgusu gönderme
+## <a name="send-a-search-query"></a>Arama sorgusu gönder
 
-1. Bu durumda "Kış Olimpiyatları" bir sorgu terimi ile arama istemcisi kullanın:
+1. Bir sorgu terimiyle aramak için istemcisini kullanın, bu durumda "Kış Olimpiyatları":
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {

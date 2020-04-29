@@ -1,141 +1,141 @@
 ---
-title: 'Öğretici: Roller ile bağlamsal veri - LUIS'
-description: İlgili verileri içeriğe göre bulun. Örneğin, bir bina ya da ofisten başka bir bina ya da ofise fiziksel olarak taşınmada çıkış ve varış konumları.
+title: 'Öğretici: rollerle bağlama verisi-LUSıS'
+description: Bağlama göre ilgili verileri bulun. Örneğin, bir bina ya da ofisten başka bir bina ya da ofise fiziksel olarak taşınmada çıkış ve varış konumları.
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475832"
 ---
-# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: Bir söyleyişten bağlamsal olarak ilgili verileri ayıklama
+# <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: bağlamsal olarak ilgili verileri bir söylenişi 'ten ayıklayın
 
-Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için başlangıç ve hedef konumlar. Her iki veri parçası gerekli olabilir ve birbirleriyle ilişkilidir.
+Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için kaynak ve hedef konumlar. Her iki veri parçası de gerekli olabilir ve birbirleriyle ilişkilidir.
 
-Bir rol önceden oluşturulmuş veya özel varlık türüyle kullanılabilir ve hem örnek söz hem de desenlerde kullanılabilir.
+Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Yeni uygulama oluşturma
 > * Amaç ekleme
-> * Rolleri kullanarak başlangıç ve hedef bilgilerini alma
+> * Rolleri kullanarak kaynak ve hedef bilgilerini al
 > * Eğitim
 > * Yayımlama
-> * Son noktadan niyet ve varlık rolleri alın
+> * Uç noktadan amaçları ve varlık rollerini al
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="related-data"></a>İlgili veriler
 
-Bu uygulama, bir çalışanın başlangıç şehrinden hedef şehre nereye taşınacağını belirler. Şehir adlarını tanımlamak için geographyv2 önceden oluşturulmuş bir varlık kullanır ve söyleyiş içindeki konum türlerini (başlangıç ve hedef) belirlemek için rolleri kullanır.
+Bu uygulama, bir çalışanın kaynak şehirden hedef şehre nereye taşınacağını belirler. Şehir adlarını belirlemek için GeographyV2 önceden oluşturulmuş bir varlık kullanır ve konum türlerini (Origin ve Destination) söylik içinde belirlemek için rolleri kullanır.
 
-Bir rol, varlık verilerini ayıklamak için kullanıldığında kullanılmalıdır:
+Ayıklanacak varlık verileri için bir rol kullanılmalıdır:
 
-* Söyleyiş bağlamında birbiriyle ilişkilidir.
-* Her rolü belirtmek için belirli sözcük seçimi kullanır. Bu sözcüklere örnekler şunlardır: from/to, leaving/headed to, away from/toward (çıkış/varış, ayrılıyor/gidiyor, kaynaktan/hedefe doğru)
-* Her iki rol de sık sık aynı söyleyiş içindedir ve LUIS'in bu sık bağlamsal kullanımdan ders almasına olanak sağlar.
+* , Utterance bağlamında birbirleriyle ilişkilidir.
+* Her bir rolü göstermek için belirli bir sözcük seçimi kullanır. Bu sözcüklere örnekler şunlardır: from/to, leaving/headed to, away from/toward (çıkış/varış, ayrılıyor/gidiyor, kaynaktan/hedefe doğru)
+* Her iki rol de genellikle aynı şekilde, LUSıS 'in bu sık kullanılan bağlamsal kullanımdan öğrenmesine izin verir.
 * İstemci uygulama tarafından bir bilgi birimi olarak gruplanmaları ve işlenmeleri gerekir.
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
-1. [LUIS **önizleme** portalında](https://preview.luis.ai)oturum açın.
+1. [Lusıs **Önizleme** portalında](https://preview.luis.ai)oturum açın.
 
-1. **Konuşma için + Yeni uygulama** `HumanResources` seçin, adını girin ve varsayılan kültür, **İngilizce**tutmak . Açıklama ve tahmin kaynağını boş bırakın. **Done** (Bitti) öğesini seçin.
+1. **Konuşma için + yeni uygulama**' yı seçin, adı `HumanResources` girin ve varsayılan kültür olan **İngilizce**'yi koruyun. Açıklama ve tahmin kaynağını boş bırakın. **Done** (Bitti) öğesini seçin.
 
-## <a name="create-an-intent-to-move-employees-between-cities"></a>Çalışanları şehirler arasında taşıma niyeti oluşturma
+## <a name="create-an-intent-to-move-employees-between-cities"></a>Çalışanları şehir arasında taşımak için bir amaç oluşturun
 
-Bir amaç, kullanıcının doğal dil metninden belirlenen niyetine göre kullanıcı nın söyleyişlerini sınıflandırmak için kullanılır.
+Amaç, kullanıcının doğal dil metinden belirlenen amaç temelinde sınıflandırılır.
 
-Bir söyleyiyi sınıflandırmak için, niyetin bu niyetle sınıflandırılması gereken kullanıcı söyleyiş örneklerine ihtiyacı vardır.
+Bir utterance sınıflandırmak için, amaç bu amaca göre sınıflandırılması gereken Kullanıcı arasları örneklerine ihtiyaç duyuyor.
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Seçin **+ Oluştur**.
+1. **+ Oluştur**seçeneğini belirleyin.
 
 1. Açılan iletişim kutusuna `MoveEmployeeToCity` girip **Done** (Bitti) öğesini seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Create new intent (Yeni amaç oluştur) iletişim kutusunun ekran görüntüsü](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. Bir kullanıcının sormasını beklediğiniz bu amacla birkaç örnek sözcük ekleyin.
+1. Bir kullanıcının sormasını beklediğinizi bu amaca birkaç örnek ekleyin.
 
     |Örnek konuşmalar|
     |--|
-    |Hareket John W. Smith Orlando başlı Seattle bırakarak|
-    |Jill Jones'u Seattle'dan Kahire'ye transfer etmek|
-    |John Jackson'ı Tampa'dan uzaklaştırın, Atlanta'ya geliyor. |
-    |Debra Doughtery'yi Chicago'dan Tulsa'ya taşıyın|
-    |mv Jill Jones Kahire'den ayrılarak Tampa'ya doğru yola çıktı|
-    |Shift Alice Anderson Oakland Redmond gelen|
-    |San Francisco'dan Redmond'a Carl Chamerlin|
-    |Steve Standish'i San Diego'dan Bellevue'ye transfer et |
-    |Kansas şehrinden Tanner Thompson asansör ve Chicago vardiya|
+    |John W. Smith 'i Seattle uçlu, Orlando 'ya taşı|
+    |Jill Jones Seattle 'dan Cairo 'ya aktar|
+    |John Jackson yerine, Atlanta 'e yaklaşan |
+    |KAG Chicago 'ten Tulsa 'ya taşı|
+    |MV Jill Jones, Cairo uçlu|
+    |Ali Anderson 'dan Oakland 'e kaydır|
+    |San Francisco 'dan Redmond 'a Carl Chamerlin|
+    |San Diego 'dan Bellevue 'e doğru Steve Stançe aktarma |
+    |SSAS şehrinde Tanner Thompson 'yı kaldırın ve Chicago 'ye SHIFT 'e gidin|
 
     > [!div class="mx-imgBorder"]
     > ![MoveEmployee amacındaki yeni konuşmaları gösteren LUIS uygulaması ekran görüntüsü](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
-## <a name="add-prebuilt-entity-geographyv2"></a>Önceden oluşturulmuş varlık coğrafyası ekleV2
+## <a name="add-prebuilt-entity-geographyv2"></a>Önceden oluşturulmuş varlık geographyV2 Ekle
 
-Önceden oluşturulmuş varlık, **geographyV2,** şehir adları da dahil olmak üzere konum bilgilerini ayıklar. Bu bağlamda birbirleriyle ilgili iki şehir adı olduğundan, bu bağlamı ayıklamak için rolleri kullanın.
+Önceden oluşturulmuş varlık olan **geographyV2**, şehir adları dahil konum bilgilerini ayıklar. Söyleyenlerde iki şehir adı bulunduğundan, bağlamdaki birbirleriyle ilgili olarak bu bağlamı ayıklamak için roller kullanın.
 
-1. Sol taraftaki gezintiden **Varlıklar'ı** seçin.
+1. Sol taraftaki gezinmede **varlıklar** ' ı seçin.
 
-1. Önceden **oluşturulmuş varlık ekle**seçeneğini `geo` seçin, ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğuna girin.
+1. **+ Önceden oluşturulmuş varlık Ekle**' yi seçin ve `geo` ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğuna girin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulamaya geographyV2 önceden oluşturulmuş varlık ekleme](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
-1. Onay kutusunu seçin ve **Bitti'yi**seçin.
+1. Onay kutusunu seçin ve **bitti**' yi seçin.
 
-## <a name="add-roles-to-prebuilt-entity"></a>Önceden oluşturulmuş varlığa rol ekleme
+## <a name="add-roles-to-prebuilt-entity"></a>Önceden oluşturulmuş varlığa roller ekleme
 
-1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2'yi** seçin.
-1. Bir rol eklemek **+** için aşağıdaki iki rolü `Origin`seçin `Destination`ve ekleyin: ve .
-
-    > [!div class="mx-imgBorder"]
-    > ![Önceden oluşturulmuş varlığa rol ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-
-## <a name="label-entity-roles-in-example-utterances"></a>Örnek sözlerle etiket varlık rolleri
-
-1. Sol taraftaki gezintiden **Niyetler'i** seçin ve ardından **MoveEmployeeToCity** amacını seçin. Dikkat edin şehir adları önceden oluşturulmuş varlık **coğrafyasıV2**ile etiketlenir.
-1. Bağlam araç çubuğunda, _kalem simgesiyle_ **Varlık paletini** seçin.
+1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2** seçin.
+1. Rol eklemek için aşağıdaki iki rolü **+** seçin ve ekleyin: `Origin`, ve. `Destination`
 
     > [!div class="mx-imgBorder"]
-    > ![İçerik araç çubuğundan Entity Palette'yi seçin](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+    > ![Önceden oluşturulmuş varlığa roller ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
-1. Önceden oluşturulmuş varlık, **geographyV2**seçin, sonra **Varlık denetçisi**seçin.
-1. Taraf **denetçisinde,** bir rol seçin, **Hedef**. Bu, fare imlecini değiştirir. Use the cursor to label the text in all the utterances that is the destination location.
+## <a name="label-entity-roles-in-example-utterances"></a>Örnek Meklerde varlık rollerini etiketleme
+
+1. Sol taraftaki gezinmede **amaçları** seçin, sonra **Moveemployeetocity** hedefini seçin. Şehir adlarının **geographyV2**önceden oluşturulmuş varlıkla etiketlendirildiğine dikkat edin.
+1. Bağlam araç çubuğunda _kalem simgesini_içeren **varlık paletini** seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Varlık Paletinde Rol Seçin](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+    > ![İçerik araç çubuğundan varlık paleti seçin](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Önceden oluşturulmuş varlığı seçin, **geographyV2**ve ardından **varlık denetçisi**' ni seçin.
+1. **Varlık denetçisinde**bir rol, **hedef**' i seçin. Bu, fare imlecini değiştirir. Hedef konum olan tüm söyleylerdeki metni etiketlemek için imleci kullanın.
+
+    > [!div class="mx-imgBorder"]
+    > ![Varlık paletinde rol seçin](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
 
 
-1. **Entity denetçisine**dön , Rolü **Origin'e değiştirin.** Use the cursor to label the text in all the utterances that is the origin location.
+1. **Varlık denetçisi**' ne dönün, role **kaynak**olarak geçin. Kaynak konumu olan tüm söyleylerdeki metni etiketlemek için imleci kullanın.
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Yok amacına örnek söz ekleme
+## <a name="add-example-utterances-to-the-none-intent"></a>Hiçbiri amacına örnek ekleme
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamada yapılan değişikliklerin test edilebilmeleri için uygulamayı eğitin
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamaya yapılan değişikliklerin test edilebilir olması için uygulamayı eğitme
 
-Uygulamayı eğitmek için **Train'i**seçin. Eğitim, etkin modele yeni varlıklar ve etiketli sözcük ler gibi değişiklikleri uygular.
+Uygulamayı eğiteiçin **eğitme**' yi seçin. Eğitim, etkin modele yeni varlıklar ve etiketli utterler gibi değişiklikleri uygular.
 
-## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>HTTP bitiş noktasından erişmek için uygulamayı yayımlayın
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Uygulamayı HTTP uç noktasından erişmek üzere yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Bitiş noktasından niyet ve varlık tahmini alın
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Uç noktadan amacı ve varlık tahminini alın
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. Adres çubuğundaki URL'nin sonuna gidin ve `Please move Carl Chamerlin from Tampa to Portland` _YOUR_QUERY_HERE'yi_ değiştirin.
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile `Please move Carl Chamerlin from Tampa to Portland`değiştirin.
 
-Bu söyleyiş, etiketli tüm söyleyişlerle aynı değildir, bu nedenle iyi bir `MoveEmployee` testtir ve çıkarılan varlıkla niyeti geri getirmelidir.
+Bu söylenişi, etiketlendirmelerdeki herhangi biriyle aynı değildir ve bu sayede iyi bir test olur ve ayıklanan varlıkla ilgili `MoveEmployee` amacı döndürmelidir.
 
     ```json
     {
@@ -179,17 +179,17 @@ Bu söyleyiş, etiketli tüm söyleyişlerle aynı değildir, bu nedenle iyi bir
 
 ## <a name="related-information"></a>İlgili bilgiler
 
-* [Varlıklar kavramları](luis-concept-entity-types.md)
-* [Roller kavramları](luis-concept-roles.md)
+* [Varlık kavramları](luis-concept-entity-types.md)
+* [Rol kavramları](luis-concept-roles.md)
 * [Önceden oluşturulmuş varlıklar listesi](luis-reference-prebuilt-entities.md)
-* [Nasıl eğitilir?](luis-how-to-train.md)
+* [Eğitme](luis-how-to-train.md)
 * [Yayımlama](luis-how-to-publish-app.md)
-* [LUIS portalında test nasıl](luis-interactive-test.md)
+* [LUSıS portalında test etme](luis-interactive-test.md)
 * [Roller](luis-concept-roles.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici yeni bir amaç oluşturdu ve kaynak ve hedef konumlarının bağlamsal olarak öğrenilen verileri için örnek ifadeler ekledi. Uygulama eğitilip yayımlandıktan sonra bir istemci uygulama bu bilgileri ilgili bilgilerle bir taşınma bileti oluşturmak için kullanabilir.
+Bu öğretici, kaynak ve hedef konumların bağlamsal olarak öğrenilen verileri için yeni bir amaç ve ek bir örnek açıklaması oluşturdu. Uygulama eğitilip yayımlandıktan sonra bir istemci uygulama bu bilgileri ilgili bilgilerle bir taşınma bileti oluşturmak için kullanabilir.
 
 > [!div class="nextstepaction"]
 > [Bileşik varlık eklemeyi öğrenin](luis-tutorial-composite-entity.md)

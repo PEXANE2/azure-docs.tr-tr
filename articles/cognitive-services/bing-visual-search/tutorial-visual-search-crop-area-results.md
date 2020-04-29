@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Bing Görsel Arama SDK ile bir görüntü kırpma'
-description: Görüntüdeki belirli ares'lerden öngörüler almak için Bing Görsel Arama SDK'sını kullanın.
+title: 'Öğretici: Bing Görsel Arama SDK ile görüntü kırpma'
+description: Bir görüntüdeki belirli uygulamalardan Öngörüler almak için Bing Görsel Arama SDK 'sını kullanın.
 services: cognitive-services
 titleSuffix: Azure Cognitive Services
 author: aahill
@@ -11,32 +11,32 @@ ms.topic: tutorial
 ms.date: 03/31/2019
 ms.author: aahi
 ms.openlocfilehash: 4778a4089c7374c1ac6a9312064dcfb1e0325b63
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478487"
 ---
-# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Öğretici: C için Bing Görsel Arama SDK ile bir görüntü kırpma #
+# <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Öğretici: C için Bing Görsel Arama SDK ile görüntü kırpma #
 
-Bing Görsel Arama SDK benzer çevrimiçi görüntüleri bulmadan önce bir görüntü kırpmanızı sağlar. Bu uygulama, birden fazla kişi içeren bir resimden tek bir kişiyi eker ve ardından çevrimiçi bulunan benzer görüntüleri içeren arama sonuçlarını döndürür.
+Bing Görsel Arama SDK, benzer çevrimiçi görüntüleri bulmadan önce bir görüntüyü kırpmanızı sağlar. Bu uygulama, birden fazla kişi içeren bir görüntüden tek bir kişiyi kırpar ve sonra çevrimiçi bulunan benzer görüntüleri içeren arama sonuçları döndürür.
 
-Bu uygulama için tam kaynak kodu [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchCropImage.cs)üzerinde ek hata işleme ve ek açıklamalar ile kullanılabilir.
+Bu uygulamanın tam kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchCropImage.cs)'da ek hata işleme ve ek açıklama ile kullanılabilir.
 
-Bu öğretici nasıl gösteriş gösterir:
+Bu öğreticide nasıl yapılacağı gösterilmektedir:
 
 > [!div class="checklist"]
-> * Bing Görsel Arama SDK'sını kullanarak istek gönderme
-> * Bing Görsel Arama ile arama yapmak için görüntü alanı kırpma
-> * Yanıtı alma ve işleme
-> * Yanıttaki eylem öğelerinin URL'lerini bulma
+> * Bing Görsel Arama SDK kullanarak istek gönderme
+> * Bing Görsel Arama ile aramak için bir görüntünün alanını kırpın
+> * Yanıtı al ve işle
+> * Yanıtta eylem öğelerinin URL 'Lerini bulun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Visual Studio 2019](https://www.visualstudio.com/downloads/)herhangi bir baskı .
+* Herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/)sürümü.
 * Linux/MacOS kullanıyorsanız bu uygulama, [Mono](https://www.mono-project.com/) kullanılarak çalıştırılabilir.
 * [NuGet Özel Arama](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) paketinin yüklenmiş olması.
-    - Visual Studio'daki Solution Explorer'dan projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet'i** seçin. `Microsoft.Azure.CognitiveServices.Search.CustomSearch` paketini yükleyin. NuGet Özel Arama paketini yüklediğinizde aşağıdaki derlemeler de yüklenir:
+    - Visual Studio 'daki Çözüm Gezgini projenize sağ tıklayın ve menüden **NuGet Paketlerini Yönet** ' i seçin. `Microsoft.Azure.CognitiveServices.Search.CustomSearch` paketini yükleyin. NuGet Özel Arama paketini yüklediğinizde aşağıdaki derlemeler de yüklenir:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -45,11 +45,11 @@ Bu öğretici nasıl gösteriş gösterir:
 
 ## <a name="specify-the-image-crop-area"></a>Görüntü kırpma alanını belirtin
 
-Bu uygulama, Microsoft üst düzey liderlik ekibinin bu görüntünün bir alanını oluşturur. Bu kırpma alanı, tüm görüntünün yüzdesi olarak temsil edilen üst-sol ve alt-sağ koordinatları kullanılarak tanımlanır:  
+Bu uygulama, Microsoft üst düzey liderliği ekibinin bu görüntüsünün bir alanını kırpar. Bu kırpma alanı, tüm görüntünün yüzdesi olarak temsil edilen sol üst ve sağ alt koordinatları kullanılarak tanımlanır:  
 
 ![Microsoft Üst Düzey Liderlik Ekibi](./media/MS_SrLeaders.jpg)
 
-Bu görüntü kırpma alanından `ImageInfo` bir nesne oluşturarak kırpılır ve nesneyi `ImageInfo` bir `VisualSearchRequest`. Nesne `ImageInfo` ayrıca resmin URL'sini de içerir:
+Bu görüntü, kırpma alanından bir `ImageInfo` nesne oluşturularak ve `ImageInfo` nesnesi bir `VisualSearchRequest`öğesine yüklenirken kırpılır. `ImageInfo` Nesne Ayrıca görüntünün URL 'sini de içerir:
 
 ```csharp
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
@@ -59,9 +59,9 @@ ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
 ```
 
-## <a name="search-for-images-similar-to-the-crop-area"></a>Kırpma alanına benzer görüntüleri arama
+## <a name="search-for-images-similar-to-the-crop-area"></a>Kırpma alanına benzer görüntüleri ara
 
-Değişken, `VisualSearchRequest` resmin kırpma alanı ve URL'si hakkında bilgi içerir. Yöntem `VisualSearchMethodAsync()` sonuçları alır:
+Değişkeni `VisualSearchRequest` , görüntünün kırpma alanı ve URL 'si hakkındaki bilgileri içerir. `VisualSearchMethodAsync()` Yöntemi sonuçları alır:
 
 ```csharp
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
@@ -69,11 +69,11 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>URL verilerini`ImageModuleAction`
+## <a name="get-the-url-data-from-imagemoduleaction"></a>URL verilerini al`ImageModuleAction`
 
-Bing Görsel Arama `ImageTag` sonuçları nesnelerdir. Her etiket bir `ImageAction` nesneleri listesi içerir. Her `ImageAction` biri, eylem türüne bağlı değerlerin bir listesi olan bir `Data` alan içerir.
+Bing Görsel Arama sonuçları `ImageTag` nesneler. Her etiket bir `ImageAction` nesneleri listesi içerir. Her `ImageAction` biri, `Data` eylem türüne bağlı değerlerin listesi olan bir alan içerir.
 
-Aşağıdaki kodile çeşitli türleri yazdırabilirsiniz:
+Çeşitli türleri aşağıdaki kodla yazdırabilirsiniz:
 
 ```csharp
 Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " + i.WebSearchUrl);
@@ -83,20 +83,20 @@ Tam uygulama şunları döndürür:
 
 |EylemTürü  |URL'si  | |
 |---------|---------|---------|
-|WebSearchURL Dahil Sayfalar     |         |
-|MoreSizes WebSearchURL     |         |  
-|VisualSearch WebSearchURL    |         |
-|ImageById WebSearchURL     |         |  
-|RelatedSearchs WebSearchURL     |         |
-|Varlık -> WebSearchUrl     | https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v=1&r=https%3a%2f%2fwww.bing.com%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5380.1        |
-|Konu Sonuçları -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fdiscover%2fnadella%2bsatya&p=DevEx,5382.1        |
-|ImageResults -> WebSearchUrl    |  https\://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJ szgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx,5384.1        |
+|Websearchurl dahil Pages     |         |
+|Mosearchurl 'Yi yeniden boyutlandırır     |         |  
+|VisualSearch WebSearchURL 'Si    |         |
+|Imagebyıd WebSearchURL     |         |  
+|Relatedaramaweb Searchurl     |         |
+|Entity-> WebSearchUrl     | https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = BvvDoRtmZ35Xc_UZE4lZx6_eg7FHgcCkigU1D98NHQo&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = devex, 5380.1        |
+|TopicResults-> WebSearchUrl    |  https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = 3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fdiscover% 2fnadella% 2bsatya&p = devex, 5382.1        |
+|Imageresults-> WebSearchUrl    |  https\://www.BING.com/CR?IG=E40D0E1A13404994ACB073504BC937A4&CıD = 03DCF882D7386A442137F49BD6596BEF&RD = 1&h = l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v = 1&r = https %3 a %2 f %2 f www. Bing. com% 2fimages% 2fsearch% 3Fq% 3dSatya% 2bNadella&p = devex, 5384.1        |
 
-Yukarıda gösterildiği `Entity` gibi, ActionType tanınabilir bir kişi, yer veya şey hakkında bilgi döndüren bir Bing arama sorgusu içerir. `TopicResults` ve `ImageResults` türleri, ilgili görüntülerin sorgularını içerir. Listedeki URL’ler Bing arama sonuçlarına yönlendirir.
+Yukarıda gösterildiği gibi, `Entity` ActionType tanınabilir bir kişi, yer veya bir şey hakkında bilgi döndüren bir Bing arama sorgusu içerir. `TopicResults` ve `ImageResults` türleri, ilgili görüntülerin sorgularını içerir. Listedeki URL’ler Bing arama sonuçlarına yönlendirir.
 
-## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Görüntüler için `PagesIncluding` `ActionType` URL'ler alın
+## <a name="get-urls-for-pagesincluding-actiontype-images"></a>Görüntüler için `PagesIncluding` `ActionType` URL 'ler al
 
-Gerçek görüntü URL’lerini almak için, bir `ActionType` türünü `ImageModuleAction` olarak okuyan bir tür dönüştürme gerekir. Bu tür ise değerler listesine sahip bir `Data` öğesi içerir. Her değer, bir görüntünün URL’sidir. Aşağıdaki `PagesIncluding` eylem türünü atar `ImageModuleAction` ve değerleri okur:
+Gerçek görüntü URL’lerini almak için, bir `ActionType` türünü `ImageModuleAction` olarak okuyan bir tür dönüştürme gerekir. Bu tür ise değerler listesine sahip bir `Data` öğesi içerir. Her değer, bir görüntünün URL’sidir. Aşağıdaki `PagesIncluding` eylem türünü öğesine `ImageModuleAction` yayınlar ve değerleri okur:
 
 ```csharp
     if (i.ActionType == "PagesIncluding")
@@ -110,7 +110,7 @@ Gerçek görüntü URL’lerini almak için, bir `ActionType` türünü `ImageMo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
-> [Görsel Arama tek sayfalık web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)
+> [Görsel Arama tek sayfalı Web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 > [Bing Görsel Arama API’si nedir?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

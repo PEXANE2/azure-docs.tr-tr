@@ -1,56 +1,56 @@
 ---
 title: Kaynak yönetimi en iyi uygulamaları
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmeti'nde (AKS) kaynak yönetimi için uygulama geliştiricisinin en iyi uygulamalarını öğrenin
+description: Azure Kubernetes Service (AKS) ' de kaynak yönetimine yönelik uygulama geliştiricisi en iyi uygulamalarını öğrenin
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
 ms.openlocfilehash: 0052657c947f8a9ff9c9d6aef86ff16d9a22adae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80803492"
 ---
-# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti 'ndeki (AKS) kaynakları yönetmek için uygulama geliştiricileri için en iyi uygulamalar
+# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Uygulama geliştiricilerinin Azure Kubernetes Service (AKS) içindeki kaynakları yönetmesi için en iyi uygulamalar
 
-Azure Kubernetes Hizmeti'nde (AKS) uygulama geliştirip çalıştırdığınızda, göz önünde bulundurulması gereken birkaç önemli alan vardır. Uygulama dağıtımlarınızı nasıl yönetebileceğiniz, sağladığınız hizmetlerin son kullanıcı deneyimini olumsuz etkileyebilir. Başarılı olmak için, AKS'de uygulamaları geliştirirken ve çalıştırırken takip edebileceğiniz en iyi uygulamaları aklınızda bulundurun.
+Azure Kubernetes Service 'te (AKS) uygulama geliştirip çalıştırırken göz önünde bulundurmanız gereken birkaç anahtar alan vardır. Uygulamanızın dağıtımlarını nasıl yöneteceğiniz, sağladığınız hizmetlerin son kullanıcı deneyimini olumsuz etkileyebilir. Başarılı olmanıza yardımcı olması için, AKS 'te uygulama geliştirirken ve çalıştırırken kullanabileceğiniz en iyi uygulamaları aklınızda bulundurun.
 
-Bu en iyi uygulamalar makalesi, kümenizi ve iş yüklerinizi uygulama geliştiricisi açısından nasıl çalıştırılacağını zayiata odaklanır. Yönetimen iyi uygulamalar hakkında bilgi için Azure [Kubernetes Hizmeti'nde (AKS) yalıtım ve kaynak yönetimi için Cluster işleci nin en iyi uygulamaları'na][operator-best-practices-isolation]bakın. Bu makalede, öğrenmek:
+Bu en iyi yöntemler makalesi, bir uygulama geliştirici perspektifinden kümenizi ve iş yüklerinizi nasıl çalıştıracağınızı odaklanır. En iyi yönetim uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service 'te (AKS) yalıtım ve kaynak yönetimi Için küme işletmeni en iyi uygulamaları][operator-best-practices-isolation]. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Pod kaynak istekleri ve sınırları nelerdir
-> * Dev Spaces ve Visual Studio Code ile uygulama geliştirme nin ve dağıtmanın yolları
-> * Dağıtımlarla ilgili `kube-advisor` sorunları denetlemek için aracı kullanma
+> * Pod kaynak istekleri ve limitleri nelerdir?
+> * Geliştirme alanları ve Visual Studio Code uygulamalar geliştirme ve dağıtmaya yönelik yollar
+> * Dağıtımlarla ilgili sorunları `kube-advisor` denetlemek için aracı kullanma
 
 ## <a name="define-pod-resource-requests-and-limits"></a>Pod kaynak isteklerini ve sınırlarını tanımlama
 
-**En iyi uygulama kılavuzu** - YAML bildirimlerinizdeki tüm bölmelerde pod isteklerini ve sınırlarını ayarlayın. AKS kümesi *kaynak kotaları kullanıyorsa,* bu değerleri tanımlamazsanız dağıtımınız reddedilebilir.
+**En iyi Yöntem Kılavuzu** -YAML bildirimlerinizde tüm yığınlarda Pod isteklerini ve sınırlarını ayarlayın. AKS kümesi *kaynak kotalarını*kullanıyorsa, bu değerleri tanımlamadıysanız dağıtımınız reddedilebilir.
 
-Aks kümesi içindeki bilgi işlem kaynaklarını yönetmenin birincil yolu, bölme isteklerini ve sınırlarını kullanmaktır. Bu istekler ve sınırlar, Kubernetes zamanlayıcısına bir bölmenin hangi bilgi işlem kaynaklarının atanması gerektiğini bilmesini sağlar.
+Bir AKS kümesindeki işlem kaynaklarını yönetmenin birincil yolu Pod isteklerini ve sınırlarını kullanmaktır. Bu istekler ve sınırlar, Kubernetes Scheduler 'ın bir pod 'ın hangi işlem kaynaklarına atanması gerektiğini bilmesini sağlar.
 
-* **Pod CPU/Bellek istekleri,** bölmenin düzenli olarak ihtiyaç duyduğu belirli bir cpu ve bellek miktarını tanımlar.
-    * Kubernetes zamanlayıcısı bir düğüme bölme yerleştirmeye çalıştığında, bölme istekleri zamanlama için kullanılabilir sayıda kaynağa sahip olduğunu belirlemek için kullanılır.
-    * Bir bölme isteği ayarlanmamak, isteği tanımlanan sınıra varsayılan olarak belirler.
-    * Bu istekleri ayarlamak için uygulamanızın performansını izlemek çok önemlidir. Yetersiz isteklerde bulunulursa, başvurunuz bir düğümün zamanlaması nedeniyle bozulmuş performans alabilir. İstekler fazla tahmin ediliyorsa, uygulamanız zamanlanma da zorluk larını artırabilir.
-* **Pod CPU/Bellek sınırları,** bir bölmenin kullanabileceği maksimum CPU ve bellek miktarıdır. Bu sınırlar, yetersiz kaynaklar nedeniyle düğüm kararsızlığı durumunda hangi bölmelerin öldürülmesi gerektiğini tanımlamaya yardımcı olur. Uygun sınırlar olmadan, kaynak baskısı kaldırılana kadar kapsüller öldürülecektir.
-    * Pod sınırları, bir bölmenin kaynak tüketimi denetimini kaybettiğinde tanımlanmasına yardımcı olur. Bir sınır aşıldığında, düğüm durumunu korumak ve düğümü paylaşan bölmelere etkisini en aza indirmek için bölmeye öldürme için öncelik verilir.
-    * Bir bölme sınırı ayarlanmaması varsayılan olarak belirli bir düğümdeki kullanılabilir en yüksek değere iner.
-    * Düğümlerinizin destekedebileceğinden daha yüksek bir bölme sınırı belirlemeyin. Her AKS düğümü, çekirdek Kubernetes bileşenleri için belirli bir cpu ve bellek miktarı ayırır. Uygulamanız, diğer bölmelerin başarıyla çalıştırılaması için düğümüzerinde çok fazla kaynak tüketmeyi deneyebilir.
-    * Yine, gün veya hafta boyunca farklı zamanlarda uygulamanızın performansını izlemek için çok önemlidir. En yüksek talebin ne zaman olduğunu belirleyin ve pod sınırlarını uygulamanın maksimum gereksinimlerini karşılamak için gereken kaynaklarla hizalayın.
+* **Pod CPU/bellek istekleri** , Pod 'un düzenli olarak ihtiyacı olan bir CPU ve bellek kümesi tanımlar.
+    * Kubernetes Scheduler bir düğüme bir pod yerleştirmeyi denediğinde Pod istekleri, hangi düğümde zamanlama için kullanılabilir kaynak olduğunu tespit etmek için kullanılır.
+    * Pod isteği ayarlamamaya, varsayılan olarak tanımlanan sınıra sahip olur.
+    * Bu istekleri ayarlamak için uygulamanızın performansını izlemek çok önemlidir. Yetersiz istek yapılırsa, bir düğümün zamanlanması nedeniyle uygulamanız performans düşüklüğü alabilir. İstekler fazla tahmin alıyorsa, uygulamanız zamanlanan zorluk derecesini artırabilir.
+* **Pod CPU/bellek sınırları** , Pod 'ın kullanabileceği en yüksek CPU ve bellek miktarıdır. Bu sınırlar, yetersiz kaynak nedeniyle düğüm kararsızlığı durumunda hangi yığınların sonlandırılanıp tanımlanabileceğine yardımcı olur. Uygun limitler olmadan, kaynak baskısı yükseltilmemiş olana kadar Pod kümesi sonlandırılacak.
+    * Pod sınırları, Pod 'ın kaynak tüketiminin denetimini kaybettiği ne zaman olduğunu tanımlamaya yardımcı olur. Sınır aşıldığında Pod, düğüm durumunun bakımını yapma ve düğümü paylaşan etkiyi en aza indirme için önceliklendirilir.
+    * Pod sınırı ayarlamamaya, belirli bir düğümdeki en yüksek kullanılabilir değere göre varsayılan değer verilmez.
+    * Düğümlerinizin destekleyebileceğinden daha yüksek bir pod sınırı ayarlama. Her AKS düğümü, çekirdek Kubernetes bileşenleri için ayarlanan bir CPU ve bellek miktarı ayırır. Uygulamanız, diğer yığınların başarıyla çalıştırılması için düğümde çok fazla kaynak kullanmayı deneyebilir.
+    * Ayrıca, gün veya hafta boyunca uygulamanızın performansını farklı zamanlarda izlemek çok önemlidir. En yoğun talebin ne zaman olduğunu belirleme ve pod sınırlarını uygulamanın en fazla ihtiyaçlarını karşılamak için gereken kaynaklara hizalayın.
 
-Pod belirtimlerinizde, yukarıdaki bilgilere dayanarak bu istek ve sınırları tanımlamak **en iyi uygulamadır ve çok önemlidir.** Bu değerleri eklemezseniz, Kubernetes zamanlayıcısı, uygulamalarınızın zamanlama kararlarına yardımcı olmak için ihtiyaç duyduğu kaynakları dikkate alamaz.
+Pod belirtimleriniz, yukarıdaki bilgilere göre bu istekleri ve limitleri tanımlamak için **en iyi uygulamadır ve çok önemlidir** . Bu değerleri eklemezseniz, Kubernetes Scheduler, uygulamalarınızın zamanlama kararlarına yardımcı olması için ihtiyaç duyduğu kaynakları hesaba katmaz.
 
-Zamanlayıcı, yetersiz kaynaklara sahip bir düğümüzerine bir bölme yerleştirirse, uygulama performansı düşürülür. Küme yöneticilerinin kaynak istekleri ni ve sınırlarını ayarlamanızı gerektiren bir ad alanında *kaynak kotaları ayarlamaları* önerilir. Daha fazla bilgi için [AKS kümelerinde kaynak kotalarına][resource-quotas]bakın.
+Zamanlayıcı, kaynakları yetersiz olan bir düğüme bir pod yerleştiriyor, uygulama performansı düşecek. Küme yöneticilerinin, kaynak isteklerini ve sınırlarını ayarlamanızı gerektiren bir ad alanı üzerinde *kaynak kotaları* ayarlaması önemle önerilir. Daha fazla bilgi için bkz. [AKS kümelerinde kaynak kotaları][resource-quotas].
 
-Bir CPU isteği veya sınırı tanımladığınızda, değer CPU birimleri cinsinden ölçülür. 
-* *1.0* CPU düğümüzerinde bir altta yatan sanal CPU çekirdeğine eşittir. 
-* Aynı ölçüm GPU'lar için kullanılır.
-* Milicorecinsinden ölçülen kesirleri tanımlayabilirsiniz. Örneğin, *100m* altta yatan bir vCPU çekirdeğinin *0,1'idir.*
+Bir CPU isteği veya sınırı tanımladığınızda, değer CPU birimlerinde ölçülür. 
+* *1,0* CPU, düğüm üzerindeki bir temel sanal CPU çekirdeğe eşit. 
+* GPU 'Lar için aynı ölçü kullanılır.
+* Miliçekirdekte ölçülen kesirleri tanımlayabilirsiniz. Örneğin, *100 milyon* , temel alınan bir vCPU Core *0,1* ' dir.
 
-Tek bir NGINX pod için aşağıdaki temel örnekte, pod *100m* CPU süresi ve *128Mi* bellek ister. Bölme için kaynak sınırları *250m* CPU ve *256Mi* bellek olarak ayarlanır:
+Tek bir NGıNX pod için aşağıdaki temel örnekte Pod, *100* GB CPU süresi ve *128mı* bellek ister. Pod için kaynak sınırları *250E* CPU ve *256mı* bellek olarak ayarlanır:
 
 ```yaml
 kind: Pod
@@ -70,46 +70,46 @@ spec:
         memory: 256Mi
 ```
 
-Kaynak ölçümleri ve atamaları hakkında daha fazla bilgi için [kapsayıcılar için bilgi işlem kaynaklarını yönetme'ye][k8s-resource-limits]bakın.
+Kaynak ölçümleri ve atamaları hakkında daha fazla bilgi için bkz. [kapsayıcılar için işlem kaynaklarını yönetme][k8s-resource-limits].
 
-## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Bir AKS kümesine karşı uygulamalar geliştirme ve hata ayıklama
+## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS kümesinde uygulama geliştirme ve hata ayıklama
 
-**En iyi uygulama kılavuzu** - Geliştirme ekipleri Dev Spaces kullanarak bir AKS kümesine karşı dağıtmalı ve hata ayıklama yapmalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimlerinin, ağ veya depolama gereksinimlerinin uygulanmasını sağlar.
+**En iyi yöntem kılavuzumuzu** geliştirme ekipleri, dev alanlarını kullanarak bir aks kümesine karşı dağıtım ve hata ayıklamalıdır. Bu geliştirme modeli, uygulama üretime dağıtılmadan önce rol tabanlı erişim denetimleri, ağ veya depolama gereksinimlerinizin uygulandığından emin olur.
 
-Azure Dev Spaces ile uygulamaları doğrudan bir AKS kümesine karşı geliştirir, hata ayıklar ve test ekarsınız. Ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca oluşturmak ve test etmek için birlikte çalışır. Visual Studio veya Visual Studio Code gibi varolan araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği veren Dev Spaces için bir uzantı yüklenir:
+Azure Dev Spaces ile, uygulamaları doğrudan bir AKS kümesine karşı geliştirin, hata ayıklayın ve test edersiniz. Bir ekip içindeki geliştiriciler, uygulama yaşam döngüsü boyunca derleme ve test yapmak için birlikte çalışır. Visual Studio veya Visual Studio Code gibi mevcut araçları kullanmaya devam edebilirsiniz. Bir AKS kümesinde uygulamayı çalıştırma ve hata ayıklama seçeneği sunan dev alanları için bir uzantı yüklenir:
 
-![Dev Spaces ile bir AKS kümesindeki hata ayıklama uygulamaları](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+![Dev Spaces ile bir AKS kümesindeki uygulamalarda hata ayıklama](media/developer-best-practices-resource-management/dev-spaces-debug.png)
 
-Dev Spaces ile bu entegre geliştirme ve test [süreci, minikube][minikube]gibi yerel test ortamları için ihtiyacı azaltır. Bunun yerine, bir AKS kümesi geliştirmek ve karşı test. Bu küme, bir kümeyi mantıksal olarak yalıtmak için ad alanlarının kullanımı yla ilgili önceki bölümde belirtildiği gibi güvenli ve yalıtılabilir. Uygulamalarınız üretime dağıtılanmaya hazır olduğunda, geliştirmeniz gerçek bir AKS kümesine karşı yapıldığı için güvenle dağıtabilirsiniz.
+Geliştirme alanları ile bu tümleşik geliştirme ve test süreci, [minikube][minikube]gibi yerel test ortamları gereksinimini azaltır. Bunun yerine, bir AKS kümesinde geliştirme ve test edersiniz. Bu küme güvenli hale getirilir ve bir kümeyi mantıksal olarak yalıtmak için ad alanları kullanmanın önceki bölümünde belirtildiği gibi yalıtılabilir. Uygulamalarınız üretime dağıtılmaya hazırsanız, geliştirmenin hepsi gerçek bir AKS kümesine karşı yapıldığından güvenle dağıtım yapabilirsiniz.
 
-Azure Dev Spaces, Linux bölmeleri ve düğümleri üzerinde çalışan uygulamalarda kullanılmak üzere tasarlanmıştır.
+Azure dev Spaces, Linux Pod ve düğümlerinde çalışan uygulamalarla kullanılmak üzere tasarlanmıştır.
 
 ## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Kubernetes için Visual Studio Code uzantısını kullanma
 
-**En iyi uygulama kılavuzu** - YAML bildirimlerini yazarken Kubernetes için VS Kodu uzantısını yükleyin ve kullanın. Uzantıyı, AKS kümesiyle seyrek etkileşimde bulunan uygulama sahiplerine yardımcı olabilecek tümleşik dağıtım çözümü için de kullanabilirsiniz.
+**En iyi Yöntem Kılavuzu** -YAML bildirimleri yazarken Kubernetes için vs Code uzantısını yükler ve kullanın. Tümleşik dağıtım çözümü uzantısını da kullanabilirsiniz; Bu, AKS kümesiyle sık sık etkileşimde bulunan uygulama sahiplerine yardımcı olabilir.
 
-[Kubernetes için Visual Studio Code uzantısı,][vscode-kubernetes] uygulamaları GELIŞTIRMEnize ve AKS'ye dağıtmanıza yardımcı olur. Uzantı, Kubernetes kaynakları ve Miğfer grafikleri ve şablonları için intellisense sağlar. Ayrıca VS Code'un içinden Kubernetes kaynaklarına göz atabilir, dağıtabilir ve edinebilirsiniz. Uzantı ayrıca, bakla belirtimlerinde ayarlanan kaynak istekleri veya sınırları için intellisense denetimi de sağlar:
+[Kubernetes için Visual Studio Code uzantısı][vscode-kubernetes] , aks 'e uygulama geliştirmenize ve dağıtmanıza yardımcı olur. Uzantı, Kubernetes kaynakları ve HELI grafikleri ve şablonları için IntelliSense sağlar. Ayrıca, VS Code içinden Kubernetes kaynaklarını da tarayabilirsiniz, dağıtabilir ve düzenleyebilirsiniz. Uzantı Ayrıca, Pod belirtimlerinde ayarlanan kaynak istekleri veya sınırlar için bir IntelliSense denetimi sağlar:
 
-![Eksik bellek limitleri hakkında Kubernetes uyarısı için VS Kodu uzantısı](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
+![Eksik bellek sınırları hakkında Kubernetes uyarısı için VS Code uzantısı](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Kube-advisor ile uygulama sorunlarını düzenli olarak kontrol edin
+## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Kuin-Advisor ile uygulama sorunlarını düzenli olarak denetleme
 
-**En iyi uygulama kılavuzu** - Kümenizdeki sorunları algılamak için açık kaynak aracının `kube-advisor` en son sürümünü düzenli olarak çalıştırın. Varolan bir AKS kümesine kaynak kotaları uygularsanız, kaynak istekleri ve sınırları tanımlı olmayan bölmeleri bulmak için önce çalıştırın. `kube-advisor`
+**En iyi Yöntem Kılavuzu** -kümenizdeki sorunları algılamak için `kube-advisor` açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, kaynak istekleri ve sınırları `kube-advisor` tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
 
-[Kube-danışman][kube-advisor] aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunları raporlayan ilişkili bir AKS açık kaynak projesidir. Yararlı denetimlerden biri, kaynak istekleri ve sınırları olmayan bölmeleri tanımlamaktır.
+[Kuin-Advisor][kube-advisor] Aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunlar hakkında rapor veren ilişkili bir aks açık kaynak projesidir. Tek bir faydalı denetim, kaynak istekleri ve sınırları olmayan Pod 'yi belirlemektir.
 
-Kube-advisor aracı kaynak isteği ve Windows uygulamaları için PodSpecs yanı sıra Linux uygulamaları eksik sınırları rapor edebilirsiniz, ancak kube-danışman aracı kendisi bir Linux pod üzerinde zamanlanmış olmalıdır. Pod yapılandırmasında bir [düğüm seçici][k8s-node-selector] kullanarak belirli bir işletim sistemi ile bir düğüm havuzunda çalışacak bir bölme zamanlayabilirsiniz.
+Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod özelliklerinin yanı sıra kaynak isteği ve limitleri rapor edebilir, ancak Kuto-Advisor aracının kendisi bir Linux pod üzerinde zamanlanmalıdır. Pod 'un yapılandırmasındaki [düğüm seçicisini][k8s-node-selector] kullanarak belirli bir işletim sistemine sahip bir düğüm havuzunda çalışacak bir pod zamanlayabilirsiniz.
 
-Birçok geliştirme ekibi ve uygulamayı barındıran bir AKS kümesinde, bu kaynak istekleri ve sınırları ayarlı olmadan bölmeleri izlemek zor olabilir. En iyi uygulama olarak, `kube-advisor` AKS kümelerinizde düzenli olarak çalıştırın.
+Birçok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak AKS kümelerinizde düzenli olarak çalışır `kube-advisor` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu en iyi uygulamalar makalesi, kümenizi ve iş yüklerinizi küme işleci perspektifinden nasıl çalıştırılacak üzerinde odaklanmıştır. Yönetimen iyi uygulamalar hakkında bilgi için Azure [Kubernetes Hizmeti'nde (AKS) yalıtım ve kaynak yönetimi için Cluster işleci nin en iyi uygulamaları'na][operator-best-practices-isolation]bakın.
+Bu en iyi yöntemler, küme operatörü perspektifinden kümenizi ve iş yüklerinizi nasıl çalıştıracağınızı odaklanan makaledir. En iyi yönetim uygulamaları hakkında daha fazla bilgi için bkz. [Azure Kubernetes Service 'te (AKS) yalıtım ve kaynak yönetimi Için küme işletmeni en iyi uygulamaları][operator-best-practices-isolation].
 
 Bu en iyi uygulamalardan bazılarını uygulamak için aşağıdaki makalelere bakın:
 
 * [Dev Spaces ile geliştirme][dev-spaces]
-* [Kube-advisor ile ilgili sorunları kontrol edin][aks-kubeadvisor]
+* [Kuto Danışmanı ile ilgili sorunlar olup olmadığını denetleyin][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/

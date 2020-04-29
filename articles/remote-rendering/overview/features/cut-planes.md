@@ -1,37 +1,37 @@
 ---
-title: Uçakları kes
-description: Kesilen uçakların ne olduğunu ve nasıl kullanılacağını açıklar
+title: Düzlemleri kesme
+description: Kesilen düzlemleri ve bunların nasıl kullanılacağını açıklar.
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
 ms.openlocfilehash: 8075d9cd4530bafb12a338830baf0fe22eb03bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681031"
 ---
-# <a name="cut-planes"></a>Uçakları kes
+# <a name="cut-planes"></a>Düzlemleri kesme
 
-*Kesilmiş düzlem,* sanal düzlemin bir tarafındaki pikselleri kesen ve [meshes'in](../../concepts/meshes.md)içini ortaya çıkaran görsel bir özelliktir.
-Aşağıdaki resim etkisini göstermektedir. Sol, sağdaki mesh içine bakabilirsiniz orijinal örgü gösterir:
+*Kesilen düzlem* , sanal düzlemin bir tarafında bulunan ve [kafeslerin](../../concepts/meshes.md)içini gösteren bir görsel özelliktir.
+Aşağıdaki görüntüde etkisi gösterilmektedir. Sol, sağ taraftaki orijinal kafesi gösterdiği gibi, kafesin içinde görünür:
 
 ![Düzlemi kes](./media/cutplane-1.png)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Azure Uzaktan İşlem, şimdilik en **fazla sekiz etkin kesme düzlemi**destekler. Daha fazla kesme düzlem bileşeni oluşturabilirsiniz, ancak aynı anda daha fazla etkinleştirmeye çalışırsanız, etkinleştirme yoksayacaktır. Hangi bileşenin sahneyi etkilemesi gerektiğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı düşürün.
-* Her kesilmiş düzlem, uzaktan işlenen tüm nesneleri etkiler. Şu anda belirli nesneleri veya kafes parçalarını dışlamanın bir yolu yoktur.
-* Kesme düzlemleri tamamen görsel bir özelliktir, [uzamsal sorguların](spatial-queries.md)sonucunu etkilemezler. Açık bir kafese döküm ışınlamak istiyorsanız, rayın başlangıç noktasını kesik düzlemde olacak şekilde ayarlayabilirsiniz. Bu şekilde ışın sadece görünür parçalara çarpabilir.
+* Azure uzaktan Işleme, şu anda **en fazla sekiz etkin kesme düzlemleri**destekler. Daha fazla kesme bileşeni oluşturabilirsiniz, ancak aynı anda daha fazlasını etkinleştirmeyi denerseniz, etkinleştirme yok sayılacak. Hangi bileşenin sahneyi etkileyeceğini değiştirmek istiyorsanız, önce diğer düzlemleri devre dışı bırakın.
+* Her bir kesim, tüm uzaktan işlenen nesneleri etkiler. Şu anda belirli nesneleri veya kafes parçalarını hariç tutma yolu yoktur.
+* Düzlemleri kesin bir görsel özelliktir, bu, [uzamsal sorguların](spatial-queries.md)sonucunu etkilemez. Bir kes açık bir ağ içine ışın dönüştürmek istiyorsanız, ışın başlangıç noktasını kes düzlede olacak şekilde ayarlayabilirsiniz. Bu şekilde, ışın yalnızca görünür bölümler alabilir.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-Her etkin kesme düzlemi işleme sırasında küçük bir maliyete neden oluyor. Gerekli olmadığında kesilen düzlemleri devre dışı veya silin.
+Her etkin kesilen düzlem, işleme sırasında küçük bir maliyet doğurur. Gerekli olmadığında kesilen düzlemleri devre dışı bırakın veya silin.
 
 ## <a name="cutplanecomponent"></a>CutPlaneComponent
 
-*Bir CutPlaneComponent*oluşturarak sahneye bir kesme düzlemi eklersiniz. Düzlemin konumu ve yönü bileşenin sahibi [taraf](../../concepts/entities.md)tarafından belirlenir.
+Bir *CutPlaneComponent*oluşturarak sahneye kesme düzlemi eklersiniz. Düzlemin konumu ve yönü, bileşenin sahip [varlığına](../../concepts/entities.md)göre belirlenir.
 
 ```cs
 void CreateCutPlane(AzureSession session, Entity ownerEntity)
@@ -45,17 +45,17 @@ void CreateCutPlane(AzureSession session, Entity ownerEntity)
 
 ### <a name="cutplanecomponent-properties"></a>CutPlaneComponent özellikleri
 
-Aşağıdaki özellikler kesilmiş düzlem bileşeninde açığa alınır:
+Aşağıdaki özellikler kesilmiş bir düzlem bileşeni üzerinde kullanıma sunuldu:
 
-* **Etkinleştirilmiş:** Bileşeni devre dışı bırakarak kesilmiş düzlemleri geçici olarak kapatabilirsiniz. Devre dışı bırakılan uçaklar genel akış oluşturma yapmaz ve aynı zamanda küresel kesme düzlem sınırına dahil değildir.
+* **Etkin:** Bileşeni devre dışı bırakarak, geçici olarak kesme düzlemleri kapatabilirsiniz. Devre dışı bırakılan kesme düzlemleri işleme ek yüküne neden olmaz ve ayrıca genel kesme düzeyi sınırına göre sayılmaz.
 
-* **Normal:** Düzlem normal olarak hangi yönün (+X,-X,+Y,-Y,+Z,-Z) kullanılacağını belirtir. Bu yön, sahibi varlığın yönlendirmesine göredir. Tam yerleşim için sahibi varlığı taşıyın ve döndürün.
+* **Normal:** Düzlem olarak hangi yönün (+ X,-X, + Y,-Y, + Z,-Z) kullanıldığını belirtir. Bu yön, sahip varlığın yönüne göredir. Tam yerleştirme için sahip varlığını taşıyın ve döndürün.
 
 * **FadeColor** ve **FadeLength:**
 
-  *FadeColor'un* alfa değeri sıfır değilse, kesilen düzleme yakın pikseller FadeColor'un RGB kısmına doğru kaybolur. Alfa kanalının gücü, solgun renk doğru tamamen solmaya ya da sadece kısmen olup olmadığını belirler. *FadeLength,* bu solmanın hangi mesafede gerçekleşeceğini tanımlar.
+  *FadeColor* Alpha değeri sıfır değilse, kesme düzlemine yakın olan pikseller FADECOLOR 'in RGB bölümüne doğru bir şekilde görünür. Alfa kanalının kuvveti, silinme rengine tamamen veya kısmen doğru bir şekilde mi solacağını belirler. *FadeLength* , bu belirme mesafesinin ne kadar olacağını tanımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Tek taraflı görüntüleme](single-sided-rendering.md)
+* [Tek taraflı işleme](single-sided-rendering.md)
 * [Uzamsal sorgular](spatial-queries.md)

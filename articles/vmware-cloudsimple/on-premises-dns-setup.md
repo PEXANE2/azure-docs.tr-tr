@@ -1,6 +1,6 @@
 ---
-title: CloudSimple tarafından Azure VMware Çözümü - CloudSimple Private Cloud için DNS'yi yapılandırın
-description: Şirket içi iş istasyonlarından CloudSimple Private Cloud'daki vCenter sunucusuna erişmek için DNS ad çözünürlüğünün nasıl ayarlanır olduğunu açıklar
+title: CloudSimple tarafından Azure VMware çözümü-CloudSimple özel bulutu için DNS 'yi yapılandırma
+description: Şirket içi iş istasyonlarından CloudSimple özel bulutu üzerinde vCenter Server erişimi için DNS ad çözümlemesi ayarlamayı açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,41 +9,41 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246116"
 ---
-# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından Özel Bulut vCenter erişimi için ad çözümü için DNS'yi yapılandırın
+# <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
-Bir CloudSimple Private Cloud'daki vCenter sunucusuna şirket içi iş istasyonlarından erişmek için, vCenter sunucusunun ana bilgisayar adı ve IP adresiyle ele alınabilmesi için DNS adres çözünürlüğünü yapılandırmanız gerekir.
+Şirket içi iş istasyonlarından CloudSimple özel bulutu üzerindeki vCenter Server 'a erişmek için, vCenter Server 'ın ana bilgisayar adının yanı sıra IP adresi ile adreslenmesi için DNS adresi çözümlemesini yapılandırmanız gerekir.
 
-## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Özel Bulut'unuzun DNS sunucusunun IP adresini edinin
+## <a name="obtain-the-ip-address-of-the-dns-server-for-your-private-cloud"></a>Özel bulutunuz için DNS sunucusunun IP adresini edinin
 
-1. [CloudSimple portalında](access-cloudsimple-portal.md)oturum açın.
+1. [Cloudsimple portalında](access-cloudsimple-portal.md)oturum açın.
 
-2. Özel **Kaynaklar** > **Bulutları'na** gidin ve bağlanmak istediğiniz Özel Bulut'u seçin.
+2. **Kaynaklar** > **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
-3. **Temel Bilgiler**altında Özel Bulut'un **Özet** sayfasında, Private Cloud DNS sunucu IP adresini kopyalayın.
+3. **Temel bilgi**altında özel bulutun **Özet** SAYFASıNDA, özel bulut DNS sunucusu IP adresini kopyalayın.
 
-    ![Özel Bulut DNS sunucuları](media/private-cloud-dns-server.png)
+    ![Özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
 
 
 DNS yapılandırması için bu seçeneklerden birini kullanın.
 
-* [*.cloudsimple.io için DNS sunucusunda bir bölge oluşturma](#create-a-zone-on-a-microsoft-windows-dns-server)
-* [*.cloudsimple.io çözmek için şirket içi DNS sunucunuzda koşullu bir iletme oluşturun](#create-a-conditional-forwarder)
+* [*. Cloudsimple.io için DNS sunucusunda bir bölge oluşturun](#create-a-zone-on-a-microsoft-windows-dns-server)
+* [*. Cloudsimple.io çözümlemek için şirket içi DNS sunucunuzda koşullu bir iletici oluşturun](#create-a-conditional-forwarder)
 
-## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>*.cloudsimple.io için DNS sunucusunda bir bölge oluşturma
+## <a name="create-a-zone-on-the-dns-server-for-cloudsimpleio"></a>*. Cloudsimple.io için DNS sunucusunda bir bölge oluşturun
 
-Bir bölge saplama bölgesi olarak ayarlayabilir ve ad çözümlemesi için Özel Bulut'taki DNS sunucularını işaret edebilirsiniz. Bu bölümde, BIND DNS sunucusu veya Microsoft Windows DNS sunucusu kullanma hakkında bilgi verilmektedir.
+Bir bölgeyi saplama bölgesi olarak ayarlayabilir ve ad çözümlemesi için özel buluttaki DNS sunucularına işaret edebilirsiniz. Bu bölüm, BIND DNS sunucusu veya Microsoft Windows DNS sunucusu kullanma hakkında bilgi sağlar.
 
-### <a name="create-a-zone-on-a-bind-dns-server"></a>BIND DNS sunucusunda bölge oluşturma
+### <a name="create-a-zone-on-a-bind-dns-server"></a>BIND DNS sunucusu üzerinde bölge oluşturma
 
-Yapılandırmak için belirli dosya ve parametreler, bireysel DNS kurulumunuza bağlı olarak değişebilir.
+Belirli dosya ve yapılandırılacak parametreler, bireysel DNS kuruluma göre farklılık gösterebilir.
 
-Örneğin, varsayılan BIND sunucu yapılandırması için, DNS sunucunuzdaki /etc/named.conf dosyasını düzenleme ve aşağıdaki bölge bilgilerini ekleyin.
+Örneğin, varsayılan BIND sunucu yapılandırması için DNS sunucunuzdaki/etc/Named.exe dosyasını düzenleyin ve aşağıdaki bölge bilgilerini ekleyin.
 
 ```
 zone "az.cloudsimple.io"
@@ -56,35 +56,35 @@ zone "az.cloudsimple.io"
 
 ### <a name="create-a-zone-on-a-microsoft-windows-dns-server"></a>Microsoft Windows DNS sunucusunda bölge oluşturma
 
-1. DNS sunucusuna sağ tıklayın ve **Yeni Bölge'yi**seçin. 
+1. DNS sunucusuna sağ tıklayın ve **Yeni bölge**' yi seçin. 
   
-    ![Yeni Bölge](media/DNS01.png)
-2. **Saplama Bölgesi'ni** seçin ve **İleri'yi**tıklatın.
+    ![Yeni bölge](media/DNS01.png)
+2. **Saplama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
 
-    ![Yeni Bölge](media/DNS02.png)
-3. Ortamınıza bağlı olarak uygun seçeneği seçin ve **İleri'yi**tıklatın.
+    ![Yeni bölge](media/DNS02.png)
+3. Ortamınıza bağlı olarak uygun seçeneği belirleyin ve **İleri**' ye tıklayın.
 
-    ![Yeni Bölge](media/DNS03.png)
-4. **İleri arama bölgesini** seçin ve **İleri'yi**tıklatın.
+    ![Yeni bölge](media/DNS03.png)
+4. **İleri arama bölgesi** ' ni seçin ve **İleri**' ye tıklayın.
 
-    ![Yeni Bölge](media/DNS01.png)
-5. Bölge adını girin ve **İleri'yi**tıklatın.
+    ![Yeni bölge](media/DNS01.png)
+5. Bölge adını girin ve **İleri**' ye tıklayın.
 
-    ![Yeni Bölge](media/DNS05.png)
-6. CloudSimple portalından elde ettiğiniz Özel Bulut için DNS sunucularının IP adreslerini girin.
+    ![Yeni bölge](media/DNS05.png)
+6. CloudSimple portalından edindiğiniz özel bulutunuz için DNS sunucularının IP adreslerini girin.
 
-    ![Yeni Bölge](media/DNS06.png)
-7. Sihirbaz kurulumını tamamlamak için gerektiği gibi **İleri'yi** tıklatın.
+    ![Yeni bölge](media/DNS06.png)
+7. Sihirbaz kurulumunu gerçekleştirmek için gerektiğinde **İleri** ' ye tıklayın.
 
-## <a name="create-a-conditional-forwarder"></a>Koşullu iletme oluştur
+## <a name="create-a-conditional-forwarder"></a>Koşullu iletici oluşturma
 
-Koşullu bir iletme, tüm DNS ad çözümleme isteklerini belirlenen sunucuya ileter. Bu kurulumla, *.cloudsimple.io'a yapılan tüm istekler Özel Bulut'ta bulunan DNS sunucularına iletilir. Aşağıdaki örnekler, farklı DNS sunucutürlerinde iletmelerin nasıl ayarlanacağı gösterilmektedir.
+Koşullu iletici, tüm DNS ad çözümleme isteklerini belirtilen sunucuya iletir. Bu kurulumla, tüm *. cloudsimple.io istekleri özel bulutta bulunan DNS sunucularına iletilir. Aşağıdaki örneklerde, farklı türlerde DNS sunucularında ileticilerin nasıl ayarlanacağı gösterilmektedir.
 
-### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS sunucusunda koşullu iletme oluşturma
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS sunucusunda koşullu iletici oluşturma
 
-Yapılandırmak için belirli dosya ve parametreler, bireysel DNS kurulumunuza bağlı olarak değişebilir.
+Belirli dosya ve yapılandırılacak parametreler, bireysel DNS kuruluma göre farklılık gösterebilir.
 
-Örneğin, varsayılan BIND sunucu yapılandırması için, DNS sunucunuzdaki /etc/named.conf dosyasını düzenleme ve aşağıdaki koşullu iletme bilgilerini ekleyin.
+Örneğin, varsayılan BIND sunucu yapılandırması için DNS sunucunuzdaki/etc/Named.exe dosyasını düzenleyin ve aşağıdaki koşullu iletme bilgilerini ekleyin.
 
 ```
 zone "az.cloudsimple.io" {
@@ -93,10 +93,10 @@ zone "az.cloudsimple.io" {
 };
 ```
 
-### <a name="create-a-conditional-forwarder-on-a-microsoft-windows-dns-server"></a>Microsoft Windows DNS sunucusunda koşullu iletme oluşturma
+### <a name="create-a-conditional-forwarder-on-a-microsoft-windows-dns-server"></a>Microsoft Windows DNS sunucusunda koşullu iletici oluşturma
 
-1. DNS sunucusunda DNS Yöneticisi'ni açın.
-2. **Koşullu İletmeciler'e** sağ tıklayın ve yeni bir koşullu iletme seçeneği ni seçin.
+1. DNS sunucusunda DNS Yöneticisi 'Ni açın.
+2. **Koşullu ileticiler** ' e sağ tıklayın ve yeni bir koşullu iletici ekleme seçeneğini belirleyin.
 
-    ![Koşullu İletme 1 Windows DNS](media/DNS08.png)
-3. Özel Bulut'a DNS etki alanını ve DNS sunucularının IP adresini girin ve **Tamam'ı**tıklatın.
+    ![Koşullu Iletici 1 Windows DNS](media/DNS08.png)
+3. DNS etki alanını ve özel buluttaki DNS sunucularının IP adresini girip **Tamam**' a tıklayın.

@@ -1,5 +1,5 @@
 ---
-title: Microsoft'u tanımlama platformu uygulama hesaplarını değiştirin | Azure
+title: Microsoft tarafından platform uygulama hesaplarını değiştirme | Mavisi
 description: Kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için Microsoft kimlik platformuyla kayıtlı bir uygulama yapılandırın.
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80050237"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlatma: Bir uygulama tarafından desteklenen hesapları değiştirme
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme
 
 Bir uygulamayı Microsoft kimlik platformunda kaydederken uygulamaya yalnızca kuruluşunuzdaki kullanıcılar tarafından erişim sağlanmasını isteyebilirsiniz. Alternatif olarak, uygulamanızın dış kuruluşlardaki kullanıcılar tarafından veya dış kuruluşlardaki kullanıcılar ve bir kuruluşun parçası olmayan kullanıcılar (kişisel hesaplar) tarafından da erişilebilir olmasını isteyebilirsiniz.
 
@@ -39,7 +39,7 @@ Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol daki gezinti bölmesinde Azure **Active Directory** hizmetini seçin ve ardından **Uygulama kayıtlarını**seçin.
+1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' i seçin.
 1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
 1. [Uygulama kaydını farklı hesapları destekleyecek şekilde değiştirme](#change-the-application-registration-to-support-different-accounts) adımlarını izleyin.
 1. Tek sayfalı bir uygulamanız varsa, [OAuth 2.0 örtük onayını etkinleştirin](#enable-oauth-20-implicit-grant-for-single-page-applications).
@@ -57,7 +57,7 @@ Kuruluşunuzun dışındaki müşterilerinize veya iş ortaklarınıza sunmak is
     * Bir iş kolu uygulaması (LOB) oluşturuyorsanız **Yalnızca bu dizindeki hesaplar** seçeneğini belirleyin. Uygulama bir dizine kaydedilmiyorsa bu seçenek kullanılamaz.
     * Tüm iş ve eğitim kullanıcılarını hedeflemek istiyorsanız, **Herhangi bir kuruluş dizinindeki hesaplar** seçeneğini belirleyin.
     * En geniş müşteri kümesini hedeflemek için **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** seçeneğini belirleyin.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Tek sayfalı uygulamalar için OAuth 2.0 örtük onayını etkinleştirme
 
@@ -72,7 +72,7 @@ OAuth 2.0 örtük onay özelliği uygulamalar için varsayılan olarak devre dı
 1. Uygulamanın **Genel Bakış** sayfasında, **Kimlik doğrulaması** bölümünü seçin.
 1. **Gelişmiş ayarlar** altında, **Örtük onay** bölümünü bulun.
 1. **Kimlik belirteçleri**, **Erişim belirteçleri** veya her ikisini birden seçin.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Bing Autosuggest REST API ve Node.js ile arama sorguları önerin'
+title: 'Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node. js ile arama sorguları önerin'
 titleSuffix: Azure Cognitive Services
-description: Bing Autosuggest API ile arama terimlerini gerçek zamanlı olarak önermeye nasıl hızla başlayacağınızı öğrenin.
+description: Bing Otomatik Öneri API'si ile gerçek zamanlı olarak arama terimleri önerme hakkında hızlı bir başlangıç yapmayı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 11dc0d4f80e14c293fde4e84b5e97d39fe594629
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238948"
 ---
-# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Quickstart: Bing Autosuggest REST API ve Node.js ile arama sorguları önerin
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Otomatik Öneri REST API ve Node. js ile arama sorguları önerin
 
-Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak için bu hızlı başlangıcı kullanın. Bu basit Düğüm.js uygulaması API'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama JavaScript'te yazılı olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu örneğin kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) kullanılabilir
+Bing Otomatik Öneri API'si çağrı yapmaya başlamak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu basit Node. js uygulaması, API 'ye kısmi bir arama sorgusu gönderir ve aramalar için öneriler döndürür. Bu uygulama JavaScript 'e yazılırken, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingAutosuggestv7.js) 'da kullanılabilir
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,7 +37,7 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
     let https = require ('https');
     ```
 
-2. API uç nokta ana bilgisayar ve yol, abonelik anahtarınız, [pazar kodunuz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve arama terimi için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+2. API uç noktası Konağı ve yolu, abonelik anahtarınız, [Pazar kodu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)ve bir arama terimi için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -52,13 +52,13 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
 
 ## <a name="construct-the-search-request-and-query"></a>Arama isteği ve sorgu oluşturun.
 
-1. Piyasa kodunu `mkt=` parametreye, sorgunuzu da `q=` parametreye ekleyerek sorgunuz için bir parametre dizesi oluşturun.
+1. `mkt=` Parametreye piyasa kodu ekleyerek ve sorgunuzu `q=` parametresine ekleyerek sorgunuz için bir parametre dizesi oluşturun.
 
     ```javascript 
     let params = '?mkt=' + mkt + '&q=' + query;
     ```
 
-2. 'li bir `get_suggestions()`işlev oluşturun. API isteği için bir arama URL'sini biçimlendirmek için son adımlardaki değişkenleri kullanın. Arama teriminiz API'ye gönderilmeden önce URL kodlanmış olmalıdır.
+2. Adlı `get_suggestions()`bir işlev oluşturun. API isteği için bir arama URL 'SI biçimlendirmek üzere son adımlardan değişkenleri kullanın. API 'ye gönderilmeden önce arama teriminizi URL kodlamalı olmalıdır.
 
     ```javascript
     let get_suggestions = function () {
@@ -74,7 +74,7 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
     }
     ```
 
-    1. Aynı işlevde, sorgunuzu API'ye göndermek için istek kitaplığını kullanın. `response_handler`, sonraki bölümde tanımlanır.
+    1. Aynı işlevde, sorgunuzu API 'ye göndermek için istek kitaplığını kullanın. `response_handler`, sonraki bölümde tanımlanır.
     
         ```javascript
         //...
@@ -84,7 +84,7 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
 
 ## <a name="create-a-search-handler"></a>Arama işleyicisi oluşturma
 
-1. HTTP çağrısı (`response`) alan `response_handler` adlı bir işlevi parametre olarak tanımlayın. Bu işlev içinde aşağıdaki adımları yapın:
+1. HTTP çağrısı (`response`) alan `response_handler` adlı bir işlevi parametre olarak tanımlayın. Bu işlev içinde aşağıdaki adımları uygulayın:
     
     1. JSON yanıtının gövdesini içerecek bir değişken tanımlayın.  
 
@@ -102,7 +102,7 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
         });
         ```
 
-    3. Bir **son** bayrak sinyali verildiğinde, kullanıcı `JSON.parse()` ve `JSON.stringify()` yanıtı yazdırmak için.
+    3. Bir **bitiş** bayrağına işaret edildiğinde, Kullanıcı `JSON.parse()` ve `JSON.stringify()` yanıtı yazdırır.
     
         ```javascript
         response.on ('end', function () {
@@ -115,7 +115,7 @@ Bing Autosuggest API'sini arama yapmaya ve JSON yanıtını almaya başlamak iç
         });
         ```
 
-2. İsteği Bing Autosuggest API'sine göndermek için arayın. `get_suggestions()`
+2. İsteği `get_suggestions()` Bing otomatik öneri API'si göndermek için çağırın.
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 

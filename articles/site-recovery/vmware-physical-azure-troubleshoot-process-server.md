@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma işlem sunucusunu sorun giderme
-description: Bu makalede, Azure Site Kurtarma işlemi sunucusuyla ilgili sorunları nasıl giderikarşılayacakaçık
+title: Azure Site Recovery işlem sunucusu sorunlarını giderme
+description: Bu makalede Azure Site Recovery işlem sunucusu ile ilgili sorunların nasıl giderileceği açıklanmaktadır
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,135 +8,135 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256867"
 ---
-# <a name="troubleshoot-the-process-server"></a>İşlem sunucusunu sorun giderme
+# <a name="troubleshoot-the-process-server"></a>İşlem sunucusunda sorun giderme
 
-[Site Kurtarma](site-recovery-overview.md) işlemi sunucusu, şirket içi VMware VM'leri ve fiziksel sunucular için Azure'da olağanüstü durum kurtarma ayarladığında kullanılır. Bu makalede, çoğaltma ve bağlantı sorunları da dahil olmak üzere işlem sunucusu ile sorunları gidermek için nasıl açıklanmaktadır.
+[Site Recovery](site-recovery-overview.md) işlem sunucusu, şirket Içi VMware VM 'leri ve fiziksel sunucular için Azure 'da olağanüstü durum kurtarmayı ayarlarken kullanılır. Bu makalede, çoğaltma ve bağlantı sorunları da dahil olmak üzere işlem sunucusu ile ilgili sorunların nasıl giderileceği açıklanmaktadır.
 
-İşlem sunucusu hakkında [daha fazla bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)
+İşlem sunucusu hakkında [daha fazla bilgi edinin](vmware-physical-azure-config-process-server-overview.md) .
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 Sorun gidermeye başlamadan önce:
 
-1. [İşlem sunucularını](vmware-physical-azure-monitor-process-server.md)nasıl izleyeceğinizi anladığınızdan emin olun.
+1. [İşlem sunucularını nasıl izleyeceğinizi](vmware-physical-azure-monitor-process-server.md)anladığınızdan emin olun.
 2. Aşağıdaki en iyi uygulamaları gözden geçirin.
-3. Kapasite yle [ilgili hususları](site-recovery-plan-capacity-vmware.md#capacity-considerations)takip ettiğinizden ve [yapılandırma sunucusu](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) veya bağımsız işlem [sunucuları](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)için boyutlandırma kılavuzu kullandığınızdan emin olun.
+3. [Kapasite konularını](site-recovery-plan-capacity-vmware.md#capacity-considerations)izlediğinizden emin olun ve [yapılandırma sunucusu](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) veya [tek başına işlem sunucuları](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)için boyutlandırma kılavuzunu kullanın.
 
-## <a name="best-practices-for-process-server-deployment"></a>İşlem sunucusu dağıtımı için en iyi uygulamalar
+## <a name="best-practices-for-process-server-deployment"></a>İşlem sunucusu dağıtımı için en iyi yöntemler
 
-İşlem sunucularının optimum performansı için, bir dizi genel en iyi uygulamayı özetledik.
+İşlem sunucularının en iyi performansı için, çok sayıda genel en iyi uygulama özetlenmektedir.
 
-**En iyi uygulama** | **Şey**
+**En iyi uygulama** | **Bilgileri**
 --- |---
-**Kullanım** | Yapılandırma sunucusu/bağımsız işlem sunucusunun yalnızca amaç lanan amaç için kullanıldığından emin olun. Makinede başka bir şey çalıştırma.
-**IP adresi** | İşlem sunucusunun statik bir IPv4 adresi olduğundan ve NAT yapılandırılmamışolduğundan emin olun.
-**Bellek/CPU kullanımını denetleme** |CPU ve bellek kullanımını %70'in altında tutun.
-**Boş alan sağlayın** | Boş alan, işlem sunucusundaki önbellek disk alanı anlamına gelir. Çoğaltma verileri Azure'a yüklenmeden önce önbellekte depolanır.<br/><br/> Boş alanı %25'in üzerinde tutun. %20'nin altına düşerse, işlem sunucusuyla ilişkili çoğaltılmış makineler için çoğaltma azaltılır.
+**Kullanımıyla** | Yapılandırma sunucusu/tek başına işlem sunucusunun yalnızca amaçlanan amaç için kullanıldığından emin olun. Makinede başka bir şey çalıştırmayın.
+**IP adresi** | İşlem sunucusunun statik bir IPv4 adresi olduğundan ve NAT 'nin yapılandırılmadığından emin olun.
+**Belleği/CPU kullanımını denetleme** |CPU ve bellek kullanımını %70 altında tutun.
+**Boş alan sağlayın** | Boş alan, işlem sunucusundaki önbellek disk alanını gösterir. Çoğaltma verileri Azure 'a yüklenmeden önce önbellekte depolanır.<br/><br/> Boş alanı %25 üzerinde tutun. %20 ' nin altına gittiğinde işlem sunucusuyla ilişkili çoğaltılan makineler için çoğaltma kısıtlanacaktır.
 
-## <a name="check-process-server-health"></a>İşlem sunucusu durumunu denetleyin
+## <a name="check-process-server-health"></a>İşlem sunucusu sistem durumunu denetle
 
-Sorun gidermedeki ilk adım, işlem sunucusunun durumunu ve durumunu denetlemektir. Bunu yapmak için tüm uyarıları gözden geçirin, gerekli hizmetlerin çalıştığını kontrol edin ve işlem sunucusundan bir sinyal olduğunu doğrulayın. Bu adımlar aşağıdaki grafikte özetlenir ve ardından adımları gerçekleştirmenize yardımcı olacak yordamlar izlenir.
+Sorun gidermenin ilk adımı, işlem sunucusunun sistem durumunu ve durumunu denetleyemiyoruz. Bunu yapmak için tüm uyarıları gözden geçirin, gerekli hizmetlerin çalıştığından emin olun ve işlem sunucusundan bir sinyal olduğunu doğrulayın. Bu adımlar, adımları gerçekleştirmenize yardımcı olmak için aşağıdaki grafikte özetlenmektedir.
 
-![Sorun giderme işlemi sunucu sağlığı](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
+![İşlem sunucusu sistem durumu sorunlarını giderme](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-process-server-health.png)
 
-## <a name="step-1-troubleshoot-process-server-health-alerts"></a>Adım 1: Sorun giderme işlemi sunucusu sistem durumu uyarıları
+## <a name="step-1-troubleshoot-process-server-health-alerts"></a>1. Adım: işlem sunucusu sistem durumu uyarıları sorunlarını giderme
 
 İşlem sunucusu bir dizi sistem durumu uyarısı oluşturur. Bu uyarılar ve önerilen eylemler aşağıdaki tabloda özetlenmiştir.
 
 **Uyarı türü** | **Hata** | **Sorun giderme**
 --- | --- | --- 
-![Sağlam][green] | None  | İşlem sunucusu bağlı ve sağlıklı.
-![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. Hizmetlerin çalıştığını kontrol edin.<br/> 2. Hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Uyarı][yellow]  | CPU kullanımı son 15 dakika için %80 >. | 1. Yeni makineler eklemeyin.<br/>2. İşlem sunucusunu kullanan VM sayısının [tanımlanan sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)hizalanıp hizalanmadığını kontrol edin ve ek bir [işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/>3. Bağlantı ve [çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] |  CPU kullanımı son 15 dakika için %95 >. | 1. Yeni makineler eklemeyin.<br/>2. İşlem sunucusunu kullanan VM sayısının [tanımlanan sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)hizalanıp hizalanmadığını kontrol edin ve ek bir [işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/>3. Bağlantı ve [çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. Sorun devam ederse, VMware/fiziksel sunucu çoğaltma için [Dağıtım Planlayıcısını](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
-![Uyarı][yellow] | Bellek kullanımı son 15 dakika için %80 >. |  1. Yeni makineler eklemeyin.<br/>2. İşlem sunucusunu kullanan VM sayısının [tanımlanan sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)hizalanıp hizalanmadığını kontrol edin ve ek bir [işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/>3. Uyarıile ilgili talimatları uygulayın.<br/> 4. Sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] | Bellek kullanımı son 15 dakika için %95 >. | 1. Yeni makineler eklemeyin ve ek bir [işlem sunucusu](vmware-azure-set-up-process-server-scale.md)kurmayı düşünün.<br/> 2. Uyarı ile ilgili talimatları uygulayın.<br/> 3. 4. Sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. Sorun devam ederse, VMware/fiziksel sunucu çoğaltma sorunları için [Dağıtım Planlayıcısını](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
-![Uyarı][yellow] | Önbellek klasörü boş alan son 15 dakika için% 30 <. | 1. Yeni makineler eklemeyin ve ek bir [işlem sunucusu](vmware-azure-set-up-process-server-scale.md)kurmayı düşünün.<br/>2. İşlem sunucusunu kullanan VM sayısının [yönergelere](site-recovery-plan-capacity-vmware.md#capacity-considerations)uygun olup olmadığını kontrol edin.<br/> 3. Bağlantı ve [çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
-![Kritik][red] |  Boş alan son 15 dakika için %25 < | 1. Bu sorun için uyarı ile ilişkili yönergeleri izleyin.<br/> 2. 3. [Bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 3. Sorun devam ederse, VMware/fiziksel sunucu çoğaltma için [Dağıtım Planlayıcısını](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
-![Kritik][red] | İşlem sunucusundan 15 dakika veya daha fazla sinyal yok. Tmansvs hizmeti yapılandırma sunucusuyla iletişim kurmuyor. | 1) İşlem sunucusunun çalışır durumda olup olmadığını kontrol edin.<br/> 2. Tmassvc'nin işlem sunucusunda çalıştığını kontrol edin.<br/> 3. Bağlantı ve [çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
+![Sağlam][green] | Hiçbiri  | İşlem sunucusu bağlandı ve sağlıklı.
+![Uyarı][yellow] | Belirtilen hizmetler çalışmıyor. | 1. hizmetlerin çalıştığını denetleyin.<br/> 2. hizmetler beklendiği gibi çalışıyorsa, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
+![Uyarı][yellow]  | Son 15 dakika boyunca %80 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
+![Kritik][red] |  Son 15 dakika boyunca %95 > CPU kullanımı. | 1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Uyarı][yellow] | Son 15 dakika boyunca bellek kullanımı >% 80. |  1. yeni makine eklemeyin.<br/>2. işlem sunucusunu kullanan VM sayısının [tanımlı sınırlara](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalanacağını denetleyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı deneyin.<br/>3. uyarıyla ilişkili yönergeleri izleyin.<br/> 4. sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
+![Kritik][red] | Son 15 dakika boyunca bellek kullanımı >% 95. | 1. yeni makineler eklemeyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/> 2. uyarıyla ilişkili yönergeleri izleyin.<br/> 3.4. Sorun devam ederse, [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 4. sorun devam ederse, VMware/fiziksel sunucu çoğaltma sorunlarını [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Uyarı][yellow] | Son 15 dakika boyunca %30 < önbellek klasörü boş alanı. | 1. yeni makineler eklemeyin ve [ek bir işlem sunucusu](vmware-azure-set-up-process-server-scale.md)ayarlamayı düşünün.<br/>2. işlem sunucusunu kullanan VM sayısının [yönergelere](site-recovery-plan-capacity-vmware.md#capacity-considerations)göre hizalandığını denetleyin.<br/> 3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
+![Kritik][red] |  Son 15 dakika için < boş alan %25 | 1. bu sorun için uyarıyla ilişkili yönergeleri izleyin.<br/> 2.3. [Bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.<br/> 3. sorun devam ederse, VMware/fiziksel sunucu çoğaltması için [dağıtım planlayıcısı](https://aka.ms/asr-v2a-deployment-planner) çalıştırın.
+![Kritik][red] | 15 dakika veya daha fazlası için işlem sunucusundan sinyal yok. Tmansvs hizmeti yapılandırma sunucusuyla iletişim kurmuyor. | 1) işlem sunucusunun çalışır ve çalışıyor olduğunu denetleyin.<br/> 2. tmassvc 'in işlem sunucusunda çalışıp çalışmadığını denetleyin.<br/> 3. [bağlantı ve çoğaltma sorunlarını gidermek](#check-connectivity-and-replication)için aşağıdaki yönergeleri izleyin.
 
 
-![Tablo tuşu](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
+![Tablo anahtarı](./media/vmware-physical-azure-troubleshoot-process-server/table-key.png)
 
 
-## <a name="step-2-check-process-server-services"></a>Adım 2: İşlem sunucusu hizmetlerini denetleyin
+## <a name="step-2-check-process-server-services"></a>2. Adım: işlem sunucusu hizmetlerini denetleme
 
-İşlem sunucusunda çalıştırılması gereken hizmetler aşağıdaki tabloda özetlenmiştir. İşlem sunucusunun nasıl dağıtıldıklarına bağlı olarak hizmetlerde küçük farklılıklar vardır. 
+İşlem sunucusunda çalışması gereken hizmetler aşağıdaki tabloda özetlenmiştir. Hizmetler 'de, işlem sunucusunun nasıl dağıtıldığına bağlı olarak küçük farklılıklar vardır. 
 
-Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine) dışındaki tüm hizmetlerde, StartType'ın **Otomatik** veya **Otomatik (Gecikmeli Başlangıç)** olarak ayarlı olup olmadığını denetleyin.
+Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine) dışındaki tüm hizmetlerde, StartType 'ın **Otomatik** veya **Otomatik (Gecikmeli başlatma)** olarak ayarlandığından emin olun.
  
-**Dağıtım** | **Hizmetleri çalıştırma**
+**Dağıtım** | **Çalışan hizmetler**
 --- | ---
-**Yapılandırma sunucusundaki işlem sunucusu** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Günlük Yükleme Hizmeti (LogUpload); InMage Scout Uygulama Hizmeti; Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine); InMage Scout VX Agent-Sentinel/Outpost (svagents); tmansvc; World Wide Web Yayıncılık Hizmeti (W3SVC); MySQL; Microsoft Azure Site Kurtarma Hizmeti (dra)
-**Bağımsız sunucu olarak çalışan sunucuişlemini** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Günlük Yükleme Hizmeti (LogUpload); InMage Scout Uygulama Hizmeti; Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine); InMage Scout VX Agent-Sentinel/Outpost (svagents); tmansvc.
-**Hata geri ödeme için Azure'da dağıtılan işlem sunucusu** | ProcessServer; ProcessServerMonitor; cxprocessserver; InMage PushInstall; Günlük Yükleme Hizmeti (LogUpload)
+**Yapılandırma sunucusunda işlem sunucusu** | ProcessServer; ProcessServerMonitor; cxprocessserver InMage Pushınstall; Günlük karşıya yükleme hizmeti (LogUpload); InMage Scout uygulama hizmeti; Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine); InMage Scout, aracı-Sentinel/Outpost (svagents); tmansvc World Wide Web yayımlama hizmeti (W3SVC); MySQL Microsoft Azure Site Recovery hizmeti (DRA)
+**Tek başına sunucu olarak çalışan işlem sunucusu** | ProcessServer; ProcessServerMonitor; cxprocessserver InMage Pushınstall; Günlük karşıya yükleme hizmeti (LogUpload); InMage Scout uygulama hizmeti; Microsoft Azure Kurtarma Hizmetleri Aracısı (obengine); InMage Scout, aracı-Sentinel/Outpost (svagents); tmansvc.
+**Azure 'da yeniden çalışma için dağıtılan işlem sunucusu** | ProcessServer; ProcessServerMonitor; cxprocessserver InMage Pushınstall; Günlük karşıya yükleme hizmeti (LogUpload)
 
 
-## <a name="step-3-check-the-process-server-heartbeat"></a>Adım 3: İşlem sunucusu sinyalatışını denetleyin
+## <a name="step-3-check-the-process-server-heartbeat"></a>3. Adım: işlem sunucusu sinyalini denetleyin
 
-İşlem sunucusundan sinyal (hata kodu 806) sinyal yoksa, aşağıdakileri yapın:
+İşlem sunucusundan sinyal yoksa (hata kodu 806) şunları yapın:
 
-1. İşlem sunucusu VM'nin çalışır durumda olduğunu doğrulayın.
-2. Hatalar için bu günlükleri denetleyin.
+1. İşlem sunucusu VM 'sinin çalışır ve çalışır olduğunu doğrulayın.
+2. Bu günlüklere hata olup olmadığını denetleyin.
 
-    C:\ProgramData\ASR\home\svsystems\eventmanager *.log C\ProgramData\ASR\home\svsystems\monitor_protection*.log
+    C:\ProgramData\ASR\home\svsystems\eventmanager *. log C\ProgramData\ASR\home\svsystems\ monitor_protection*. log
 
-## <a name="check-connectivity-and-replication"></a>Bağlantı ve çoğaltmayı denetleyin
+## <a name="check-connectivity-and-replication"></a>Bağlantıyı ve çoğaltmayı denetleme
 
- İlk ve devam eden çoğaltma hataları genellikle kaynak makineler ve işlem sunucusu arasındaki veya işlem sunucusu ile Azure arasındaki bağlantı sorunlarından kaynaklanır. Bu adımlar aşağıdaki grafikte özetlenir ve ardından adımları gerçekleştirmenize yardımcı olacak yordamlar izlenir.
+ İlk ve devam eden çoğaltma hataları genellikle kaynak makineler ile işlem sunucusu arasındaki bağlantı sorunlarından veya işlem sunucusu ile Azure arasında oluşur. Bu adımlar, adımları gerçekleştirmenize yardımcı olmak için aşağıdaki grafikte özetlenmektedir.
 
-![Sorun giderme bağlantısı ve çoğaltma](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
-
-
-## <a name="step-4-verify-time-sync-on-source-machine"></a>Adım 4: Kaynak makinede zaman eşitleme doğrulayın
-
-Çoğaltılan makinenin sistem tarih/saatinin eşit olduğundan emin olun. [Daha fazla bilgi edinin](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-
-## <a name="step-5-check-anti-virus-software-on-source-machine"></a>Adım 5: Kaynak makinede anti-virüs yazılımı kontrol edin
-
-Çoğaltılan makinede hiçbir anti-virüs yazılımı Site Kurtarma engelliyor olup olmadığını kontrol edin. Site Kurtarma'yı virüsten koruma programlarından hariç tutmanız gerekiyorsa, [bu makaleyi](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)inceleyin.
-
-## <a name="step-6-check-connectivity-from-source-machine"></a>Adım 6: Kaynak makineden bağlantı kontrol edin
+![Bağlantı ve çoğaltma sorunlarını giderme](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
-1. Gerekirse [Telnet istemcisini](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) kaynak makineye töyorum. Ping kullanma.
-2. Kaynak makineden, Telnet ile HTTPS bağlantı noktasındaki işlem sunucusunu pingleyin. Varsayılan olarak 9443 çoğaltma trafiği için HTTPS bağlantı noktasıdır.
+## <a name="step-4-verify-time-sync-on-source-machine"></a>4. Adım: kaynak makinedeki zaman eşitlemesini doğrulama
+
+Çoğaltılan makinenin sistem tarihinin/saatinin eşitlenmiş olduğundan emin olun. [Daha fazla bilgi](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
+
+## <a name="step-5-check-anti-virus-software-on-source-machine"></a>5. Adım: kaynak makinedeki Anti-Virus yazılımını denetleme
+
+Çoğaltılan makinede virüsten koruma yazılımının Site Recovery engellemediğinden emin olun. Virüsten koruma programlarından Site Recovery dışlayamazsınız, [Bu makaleyi](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)gözden geçirin.
+
+## <a name="step-6-check-connectivity-from-source-machine"></a>6. Adım: kaynak makineden bağlantıyı denetleme
+
+
+1. Gerekirse, [Telnet istemcisini](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) kaynak makineye yükleyebilirsiniz. Ping kullanmayın.
+2. Kaynak makineden, HTTPS bağlantı noktasındaki işlem sunucusuna Telnet ile ping gönderin. Varsayılan olarak 9443, çoğaltma trafiği için HTTPS bağlantı noktasıdır.
 
     `telnet <process server IP address> <port>`
 
 3. Bağlantının başarılı olup olmadığını doğrulayın.
 
 
-**Bağlantı** | **Şey** | **Eylem**
+**Bağlantı** | **Bilgileri** | **Eylem**
 --- | --- | ---
-**Başarılı** | Telnet boş bir ekran gösterir ve işlem sunucusuna ulaşılabilir. | Başka bir işlem gerekli değildir.
-**Başarısız** | Bağlanamam | Gelen bağlantı noktası 9443'ün işlem sunucusunda izin aldığından emin olun. Örneğin, çevre ağınız veya ekranlı bir alt ağınız varsa. Bağlantıyı tekrar kontrol edin.
-**Kısmen başarılı** | Bağlanabilirsiniz, ancak kaynak makine işlem sunucusuna ulaşılamadığını bildirir. | Sonraki sorun giderme yordamı ile devam edin.
+**Başarısız** | Telnet boş bir ekran gösterir ve işlem sunucusuna erişilebilir. | Başka eylem gerekmiyor.
+**Dır** | Bağlanamazsınız | İşlem sunucusunda 9443 numaralı bağlantı noktasına izin verildiğinden emin olun. Örneğin, bir çevre ağınız veya bir denetimli alt ağınız varsa. Bağlantıyı yeniden denetleyin.
+**Kısmen başarılı** | Bağlanabilirsiniz, ancak kaynak makine işlem sunucusuna ulaşılamadığından rapor verebilir. | Bir sonraki sorun giderme yordamıyla devam edin.
 
-## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>Adım 7: Erişilemenebilen bir işlem sunucusunun sorun giderme
+## <a name="step-7-troubleshoot-an-unreachable-process-server"></a>7. Adım: ulaşılamaz bir işlem sunucusunda sorun giderme
 
-İşlem sunucusuna kaynak makineden erişilemiyorsa, hata 78186 görüntülenir. Bu sorun giderilemezse, hem uygulama tutarlılığı hem de kilitlenme tutarlıkurtarma noktalarının beklendiği gibi oluşturulmamalarına neden olur.
+İşlem sunucusuna kaynak makineden erişilemiyorsa, 78186 hatası görüntülenir. Bu sorun giderilmemişse, hem uygulamayla tutarlı hem de çökme ile tutarlı kurtarma noktalarının beklendiği gibi üretilmemesine neden olur.
 
-Kaynak makinenin işlem sunucusunun IP adresine erişip ulaşamayacağını kontrol ederek sorun giderme ve uçtan uca bağlantıyı denetlemek için kaynak makinedeki cxpsclient aracını çalıştırın.
+Kaynak makinenin işlem sunucusunun IP adresine erişip erişemeyeceğini denetleyerek sorun giderin ve uçtan uca bağlantıyı denetlemek için kaynak makinede cxpsclient aracını çalıştırın.
 
 
-### <a name="check-the-ip-connection-on-the-process-server"></a>İşlem sunucusundaki IP bağlantısını denetleme
+### <a name="check-the-ip-connection-on-the-process-server"></a>İşlem sunucusundaki IP bağlantısını denetleyin
 
-Telnet başarılı ysa ancak kaynak makine işlem sunucusuna ulaşılamayacağını bildiriyorsa, işlem sunucusunun IP adresine ulaşıp ulaşamayacağınızı denetleyin.
+Telnet başarılıysa, ancak kaynak makine işlem sunucusuna ulaşılamadığından, işlem sunucusunun IP adresine erişip erişemeyeceğini kontrol edin.
 
-1. Bir web tarayıcısında, IP adresine>:<PS_Data_Port>/> PS_IP <.
-2. Bu denetim bir HTTPS sertifika hatası gösteriyorsa, bu normaldir. Hatayı yoksanız, 400 - Kötü İstek görmeniz gerekir. Bu, sunucunun tarayıcı isteğine hizmet edilemeyebileceği ve standart HTTPS bağlantısının iyi olduğu anlamına gelir.
-3. Bu denetim işe yaramazsa, tarayıcı hata iletisini not edin. Örneğin, bir 407 hatası proxy kimlik doğrulamaile ilgili bir sorunu gösterir.
+1. Bir Web tarayıcısında, https://<IP adresine erişmeyi deneyin PS_IP>: <PS_Data_Port>/.
+2. Bu denetim, bir HTTPS sertifika hatası gösteriyorsa, bu normaldir. Hatayı yoksayarsanız, 400 hatalı bir Istek görmeniz gerekir. Bu, sunucu tarayıcı isteğine hizmeti veremeyeceği ve standart HTTPS bağlantısının iyi durumda olmadığı anlamına gelir.
+3. Bu denetim çalışmazsa, tarayıcı hata iletisine göz atın. Örneğin, bir 407 hatası proxy kimlik doğrulamasıyla ilgili bir sorun olduğunu gösterir.
 
-### <a name="check-the-connection-with-cxpsclient"></a>cxpsclient ile bağlantıyı kontrol edin
+### <a name="check-the-connection-with-cxpsclient"></a>Cxpsclient ile bağlantıyı denetleme
 
-Ayrıca, uçlardan uca bağlantıyı denetlemek için cxpsclient aracını çalıştırabilirsiniz.
+Ayrıca, uçtan uca bağlantıyı denetlemek için cxpsclient aracını çalıştırabilirsiniz.
 
 1. Aracı aşağıdaki gibi çalıştırın:
 
@@ -144,109 +144,109 @@ Ayrıca, uçlardan uca bağlantıyı denetlemek için cxpsclient aracını çal�
     <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
     ```
 
-2. İşlem sunucusunda, bu klasörlerde oluşturulan günlükleri denetleyin:
+2. İşlem sunucusunda, şu klasörlerdeki oluşturulan günlükleri kontrol edin:
 
     C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
 
 
 
-### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>Yükleme hataları için kaynak VM günlüklerini denetleyin (hata 78028)
+### <a name="check-source-vm-logs-for-upload-failures-error-78028"></a>Karşıya yükleme hataları için kaynak VM günlüklerine bakın (hata 78028)
 
-Kaynak makinelerden işlem hizmetine engellenen veri yüklemeleriyle ilgili sorun, hem kilitlenme tutarlısı hem de uygulama tutarlıkurtarma noktalarının oluşturulmamasına neden olabilir. 
+Kaynak makinelerden işlem hizmetine engellenen veri karşıya yüklemelerle ilgili sorun, kilitlenmeyle tutarlı ve uygulamayla tutarlı kurtarma noktalarının üretilmesiyle sonuçlanabilir. 
 
-1. Ağ yükleme hatalarını gidermek için bu günlükte hataları alabilirsiniz:
+1. Ağ yükleme hatalarını gidermek için, bu günlükteki hataları arayabilirsiniz:
 
-    C:\Program Dosyaları (x86)\Microsoft Azure Site Kurtarma\aracı\svagents*.log 
+    C:\Program Files (x86) \Microsoft Azure Site Recovery\agent\svagents *. log 
 
-2. Bu makaledeki yordamların geri kalanını kullanmak, veri yükleme sorunlarını çözmenize yardımcı olabilir.
+2. Bu makaledeki yordamın geri kalanını kullanın, veri yükleme sorunlarını çözmenize yardımcı olabilir.
 
 
 
-## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>Adım 8: İşlem sunucusunun verileri itip itmediğini denetleme
+## <a name="step-8-check-whether-the-process-server-is-pushing-data"></a>8. Adım: işlem sunucusunun verileri iletme işlemini denetleyin
 
-İşlem sunucusunun verileri Azure'a etkin bir şekilde taşıyıp itmediğini denetleyin.
+İşlem sunucusunun, verileri Azure 'a etkin bir şekilde iletme konusunda kontrol edin.
 
-  1. İşlem sunucusunda Görev Yöneticisi'ni açın (Ctrl+Shift+Esc tuşuna basın).
-  2. Kaynak İzleyicisi'ni **aç>** **Performans** sekmesini seçin.
-  3. **Kaynak İzle** sayfasında **Ağ** sekmesini seçin. **Ağ Etkinliği ile İşlemler**altında, cbengine.exe'nin büyük miktarda veri gönderip göndermediğini kontrol edin.
+  1. İşlem sunucusunda, Görev Yöneticisi 'ni açın (Ctrl + Shift + ESC tuşlarına basın).
+  2. **Kaynak İzleyicisi açmak**> **performans** sekmesini seçin.
+  3. **Kaynak İzleyicisi** sayfasında **ağ** sekmesini seçin. **Ağ etkinliği olan süreçler**' ın altında, cbengine. exe ' nin büyük hacimli verileri etkin bir şekilde gönderip göndermediğini denetleyin.
 
-       ![Ağ etkinliği olan işlemler kapsamındaki birimler](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Ağ etkinliği ile işlem kapsamındaki birimler](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
-  cbengine.exe büyük miktarda veri göndermiyorsa, aşağıdaki bölümlerdeki adımları tamamlayın.
+  Cbengine. exe büyük miktarda veri göndermemişse, aşağıdaki bölümlerdeki adımları izleyin.
 
-## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>Adım 9: Azure blob depolama işleminin sunucusu bağlantısını kontrol edin
+## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. Adım: Azure Blob depolama ile işlem sunucusu bağlantısını denetleme
 
-1. Kaynak İzle'de **cbengine.exe'yi**seçin.
-2. **TCP Connections**altında, işlem sunucusundan Azure depolamasına bağlantı olup olmadığını denetleyin.
+1. Kaynak İzleyicisi, **cbengine. exe**' yi seçin.
+2. **TCP bağlantıları**altında, Işlem sunucusundan Azure depolama 'ya bağlantı olup olmadığını denetleyin.
 
-  ![cbengine.exe ve Azure Blob depolama URL'si arasındaki bağlantı](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Cbengine. exe ve Azure Blob depolama URL 'SI arasında bağlantı](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
-### <a name="check-services"></a>Hizmetleri kontrol edin
+### <a name="check-services"></a>Hizmetleri denetle
 
-İşlem sunucusundan Azure blob depolama URL'sine bağlantı yoksa, hizmetlerin çalıştığını kontrol edin.
+İşlem sunucusundan Azure Blob depolama URL 'sine bağlantı yoksa, hizmetlerin çalışıp çalışmadığını denetleyin.
 
-1. Denetim Masası'nda **Hizmetler'i**seçin.
+1. Denetim Masası 'nda **Hizmetler**' i seçin.
 2. Aşağıdaki hizmetlerin çalıştığını doğrulayın:
 
     - cxprocessserver
-    - InMage Scout VX Ajan - Sentinel / Karakol
+    - InMage Scout, aracı – Sentinel/Outpost
     - Microsoft Azure Kurtarma Hizmetleri Aracısı
-    - Microsoft Azure Site Kurtarma Hizmeti
+    - Microsoft Azure Site Recovery hizmeti
     - tmansvc
 
 3. Çalışmayan herhangi bir hizmeti başlatın veya yeniden başlatın.
-4. İşlem sunucusunun bağlı ve ulaşılabilir olduğunu doğrulayın. 
+4. İşlem sunucusunun bağlı ve erişilebilir olduğunu doğrulayın. 
 
-## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>Adım 10: Azure genel IP adresine işlem sunucusu bağlantısını kontrol edin
+## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. Adım: işlem sunucusu bağlantısını Azure genel IP adresi ile denetleyin
 
-1. İşlem sunucusunda, **%programfiles%\Microsoft Azure Recovery Services Agent\Temp'ta**en son CBEngineCurr.errlog dosyasını açın.
-2. Dosyada, **443**için arama veya dize **bağlantı girişimi başarısız oldu.**
+1. İşlem sunucusunda, **%ProgramFiles%\Microsoft Azure Recovery Services fılestemp**bölümünde en son CBEngineCurr. errlog dosyasını açın.
+2. Dosyada, **443**için arama yapın veya dize **bağlantısı girişimi başarısız oldu**.
 
-  ![Temp klasöründe hata günlükleri](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
+  ![Geçici klasörde hata günlükleri](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
 
-3. Sorunlar görürseniz, CBEngineCurr.currLog dosyasında 443 no'lu bağlantı noktasını kullanarak Azure genel IP adresinizi konumlandı:
+3. Sorun görürseniz, 443 numaralı bağlantı noktasını kullanarak Azure genel IP adresinizi CBEngineCurr. currLog dosyasında bulabilirsiniz:
 
   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-5. İşlem sunucusundaki komut satırında, Azure genel IP adresinizi pinglemek için Telnet'i kullanın.
-6. Bağlanamıyorsanız, bir sonraki yordamı uygulayın.
+5. İşlem sunucusundaki komut satırında, Azure genel IP adresinizi ping etmek için Telnet ' i kullanın.
+6. Bağlanamıyorsanız, sonraki yordamı izleyin.
 
-## <a name="step-11-check-process-server-firewall-settings"></a>Adım 11: İşlem sunucusu güvenlik duvarı ayarlarını denetleyin. 
+## <a name="step-11-check-process-server-firewall-settings"></a>11. Adım: işlem sunucusu güvenlik duvarı ayarlarını denetleyin. 
 
 İşlem sunucusundaki IP adresi tabanlı güvenlik duvarının erişimi engelleyip engellemediğini denetleyin.
 
 1. IP adresi tabanlı güvenlik duvarı kuralları için:
 
-    a) Microsoft Azure [veri merkezi IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653)tam listesini indirin.
+    a) [Microsoft Azure veri MERKEZI IP aralıklarının](https://www.microsoft.com/download/details.aspx?id=41653)tüm listesini indirin.
 
-    b) Güvenlik duvarının Azure'a (ve varsayılan HTTPS bağlantı noktası, 443) iletişime izin verdiğinden emin olmak için IP adresi aralıklarını güvenlik duvarı yapılandırmanıza ekleyin.
+    b) güvenlik duvarının Azure (ve varsayılan HTTPS bağlantı noktası, 443) iletişimine izin verdiğinden emin olmak için, IP adresi aralıklarını Güvenlik Duvarı yapılandırmanıza ekleyin.
 
-    c) Aboneliğinizin Azure bölgesi ve Azure Batı ABD bölgesi (erişim denetimi ve kimlik yönetimi için kullanılır) için IP adres aralıklarına izin verin.
+    c) aboneliğinizin Azure bölgesi ve Azure Batı ABD bölgesi için IP adresi aralıklarına Izin verin (erişim denetimi ve kimlik yönetimi için kullanılır).
 
-2. URL tabanlı güvenlik duvarları için, aşağıdaki tabloda listelenen URL'leri güvenlik duvarı yapılandırmasına ekleyin.
+2. URL tabanlı güvenlik duvarları için aşağıdaki tabloda listelenen URL 'Leri Güvenlik Duvarı yapılandırmasına ekleyin.
 
     [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
 
-## <a name="step-12-verify-process-server-proxy-settings"></a>Adım 12: İşlem sunucusu proxy ayarlarını doğrulayın 
+## <a name="step-12-verify-process-server-proxy-settings"></a>12. Adım: işlem sunucusu proxy ayarlarını doğrulama 
 
-1. Proxy sunucusu kullanıyorsanız, proxy sunucu adının DNS sunucusu tarafından çözüldüğünden emin olun. Kayıt defteri anahtarıHKEY_LOCAL_MACHINE yapılandırma sunucusunu ayarlarken sağladığınız değeri **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Kurtarma\Proxy Ayarları'nı**denetleyin.
-2. Aynı ayarların veri göndermek için Azure Site Kurtarma aracısı tarafından kullanıldığından emin olun.
+1. Proxy sunucusu kullanıyorsanız, proxy sunucusu adının DNS sunucusu tarafından çözümlendiğinden emin olun. Configuration Server 'ı **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Azure site Recovery\ProxySettings**kayıt defteri anahtarında ayarlarken verdiğiniz değeri denetleyin.
+2. Verileri göndermek için Azure Site Recovery Aracısı tarafından aynı ayarların kullanıldığından emin olun.
 
-    a) **Microsoft Azure Yedekleme'yi**arayın.
+    a) **Microsoft Azure Backup**için arama yapın.
 
-    b) **Microsoft Azure Yedekleme'yi**açın ve **Eylem** > **Değişikliği Özellikleri'ni**seçin.
+    b) **Microsoft Azure Backup**açın ve **eylem** > **Değiştir Özellikler**' i seçin.
 
-    c) **Proxy Yapılandırma** sekmesinde, proxy adresi kayıt defteri ayarlarında gösterilen proxy adresiyle aynı olmalıdır. Değilse, aynı adrese değiştirin.
+    c) ara sunucu **yapılandırması** sekmesinde, proxy adresi, kayıt defteri ayarlarında gösterilen ara sunucu adresiyle aynı olmalıdır. Aksi takdirde, aynı adresle değiştirin.
 
-## <a name="step-13-check-bandwidth"></a>Adım 13: Bant genişliğini kontrol edin
+## <a name="step-13-check-bandwidth"></a>13. Adım: bant genişliğini denetleme
 
-İşlem sunucusu ile Azure arasındaki bant genişliğini artırın ve sorunun hala oluşup oluşmadığını denetleyin.
+İşlem sunucusu ile Azure arasındaki bant genişliğini artırın ve sorun olup olmadığını kontrol edin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla yardıma ihtiyacınız varsa, sorunuz Azure [Site Kurtarma forumunda](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)yayınlayın. 
+Daha fazla yardıma ihtiyacınız varsa sorunuzu [Azure Site Recovery forumuna](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)gönderin. 
 
 [green]: ./media/vmware-physical-azure-troubleshoot-process-server/green.png
 [yellow]: ./media/vmware-physical-azure-troubleshoot-process-server/yellow.png

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258947"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI'sı
@@ -22,7 +22,7 @@ Azure Service Fabric komut satırı arabirimi (CLI) Service Fabric varlıklarıy
 
 Yüklemeden önce ortamınızda Python ve pip uygulamalarının yüklü olduğundan emin olun. Daha fazla bilgi için [pip hızlı başlangıç belgelerine](https://pip.pypa.io/en/latest/quickstart/) ve resmi [Python yükleme belgelerine](https://wiki.python.org/moin/BeginnersGuide/Download) bakın.
 
-CLI Python 2.7, 3.5, 3.6 ve 3.7 sürümlerini destekler. Python 3.x önerilen sürümüdür, çünkü Python 2.7 yakında desteğin sonuna ulaşacaktır.
+CLı, 2,7, 3,5, 3,6 ve 3,7 Python sürümlerini destekler. Python 2,7, destek sonuna kadar yakında iletişime geçecağından, Python 3. x önerilen sürümdür.
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric hedef çalışma zamanı
 
@@ -30,7 +30,7 @@ Service Fabric CLI, Service Fabric SDK'sının en son çalışma zamanı sürüm
 
 | CLI sürümü   | desteklenen çalışma zamanı sürümü |
 |---------------|---------------------------|
-| En son (~=9)  | En son (~=7)              |
+| En son (~ = 9)  | En son (~ = 7)              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
@@ -57,11 +57,11 @@ pip ve Python'u platformunuza yüklemek için kullanabileceğiniz birçok yol va
 
 Windows 10, Windows Server 2016 ve Windows Server 2012 R2 için standart resmi yükleme talimatlarını kullanın. Python yükleyici pip'i de varsayılan olarak yükler.
 
-1. Resmi Python [indirme sayfasına](https://www.python.org/downloads/)gidin ve Python 3.7'nin en son sürümünden indirin.
+1. Resmi [Python İndirmeleri sayfasına](https://www.python.org/downloads/)gidin ve Python 3,7 ' un en son sürümünü indirin.
 
 2. Yükleyiciyi başlatın.
 
-3. İstemin altında, **PYTHON 3.7'yi PATH'e ekle'yi**seçin.
+3. İsteminin en altında, **yola Python 3,7 Ekle**' yi seçin.
 
 4. **Şimdi Yükle**'yi seçin ve yüklemeyi tamamlayın.
 
@@ -72,7 +72,7 @@ python --version
 pip --version
 ```
 
-Ardından Azure Hizmet Kumaşı CLI'yi (sfctl) yüklemek ve CLI yardım sayfasını görüntülemek için aşağıdaki komutu çalıştırın:
+Ardından, Azure Service Fabric CLı (sfctl) yüklemek ve CLı yardım sayfasını görüntülemek için aşağıdaki komutu çalıştırın:
 
 ```shell
 pip install sfctl
@@ -114,7 +114,7 @@ sudo pip3 install sfctl
 
 ### <a name="red-hat-enterprise-linux-74-service-fabric-preview-support"></a>Red Hat Enterprise Linux 7.4 (Service Fabric önizleme desteği)
 
-Hizmet Kumaşı CLI'yi Red Hat'e yüklemek için aşağıdaki komutları çalıştırın:
+Red Hat 'te CLı Service Fabric yüklemek için aşağıdaki komutları çalıştırın:
 
 ```bash
 sudo yum install -y python34
@@ -123,7 +123,7 @@ sudo easy_install-3.4 pip
 sudo pip3 install sfctl
 ```
 
-Yüklemeyi test etmek için, Linux bölümü **için Ubuntu ve Windows alt sisteminde** belirtilen adımlara bakabilirsiniz
+Yüklemeyi test etmek için **Ubuntu ve Linux Için Windows alt sistemi** bölümünde bahsedilen adımlara başvurabilirsiniz
 
 <a name = "cli-mac"></a>
 ### <a name="macos"></a>macOS
@@ -134,7 +134,7 @@ MacOS için [HomeBrew paket yöneticisini](https://brew.sh) kullanmanızı öner
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Ardından terminalden Python 3.7, pip ve Service Fabric CLI'yi aşağıdaki komutları çalıştırarak yükleyin:
+Bundan sonra terminalden aşağıdaki komutları çalıştırarak Python 3,7, PIP ve Service Fabric CLı 'yi çalıştırın:
 
 ```bash
 brew install python3
@@ -240,7 +240,7 @@ Belirtilen küme uç noktasının kullanılabilir olduğunu ve dinlediğini doğ
 
 ### <a name="detailed-logs"></a>Ayrıntılı günlükler
 
-Hata ayıkladığınız veya sorun bildirdiğiniz sırada ayrıntılı günlükler çoğunlukla yararlı olur. Bayrak `--debug` çıktının ayrıntılılığını artırır.
+Hata ayıkladığınız veya sorun bildirdiğiniz sırada ayrıntılı günlükler çoğunlukla yararlı olur. `--debug` Bayrak, çıkışın ayrıntı düzeyini artırır.
 
 ### <a name="command-help-and-syntax"></a>Komut yardımı ve söz dizimi
 

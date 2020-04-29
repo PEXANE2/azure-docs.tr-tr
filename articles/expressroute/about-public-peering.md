@@ -1,6 +1,6 @@
 ---
-title: Azure ExpressRoute genel bakış oluşturma ve yönetme
-description: Azure genel ekiylemeyi öğrenin ve yönetin
+title: Azure ExpressRoute ortak eşlemesi oluşturma ve yönetme
+description: Azure genel eşlemesini öğrenin ve yönetin
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,73 +8,73 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481142"
 ---
-# <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute genel bakış oluşturma ve yönetme
+# <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute ortak eşlemesini oluşturma ve yönetme
 
 > [!div class="op_single_selector"]
-> * [Madde - Kamu bakan](about-public-peering.md)
-> * [Video - Genel bakış](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Madde - Microsoft bakan](expressroute-circuit-peerings.md#microsoftpeering)
+> * [Makale-genel eşleme](about-public-peering.md)
+> * [Video-genel eşleme](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Makale-Microsoft eşleme](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-Bu makale, ExpressRoute devresi için genel eşleme yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca durumu denetleyebilir, güncelleyebilir veya silebilir ve eşleri yok edebilirsiniz. Bu makale, kamu hakemliği amortismana gitmeden önce oluşturulan Kaynak Yöneticisi devreleri için geçerlidir. Önceden varolan bir devreniz varsa (genel bakışlar amortismana alınmadan önce oluşturulmuşsa), [Azure PowerShell](#powershell), [Azure CLI](#cli)ve [Azure portalını](#portal)kullanarak genel bakışları yönetebilir/yapılandırabilirsiniz.
+Bu makale, bir ExpressRoute devresi için ortak eşleme Yönlendirme yapılandırması oluşturmanıza ve yönetmenize yardımcı olur. Ayrıca, durumu denetleyebilir, güncelleştirebilir veya silebilir ve yinelenenleri kaldırabilirsiniz. Bu makale, genel eşleme kullanım dışı olmadan önce oluşturulan Kaynak Yöneticisi devreler için geçerlidir. Önceden var olan bir devreniz varsa (genel eşleme kullanım dışı bırakılmadan önce oluşturulmuş), [Azure PowerShell](#powershell), [Azure CLI](#cli)ve [Azure Portal](#portal)kullanarak genel eşlemeyi yönetebilir/yapılandırabilirsiniz.
 
 >[!NOTE]
->Kamu yada bakmak küçümsüyor. Yeni ExpressRoute devrelerinde herkese açık bir bakış oluşturamazsınız. Bunun yerine yeni bir ExpressRoute devreniz varsa, Azure hizmetleriniz için [Microsoft'u gözden](expressroute-circuit-peerings.md#microsoftpeering) kullanabilirsiniz.
+>Ortak eşleme kullanım dışıdır. Yeni ExpressRoute devrelerine genel eşleme oluşturamazsınız. Yeni bir ExpressRoute devreniz varsa, Azure hizmetleriniz için [Microsoft eşlemesini](expressroute-circuit-peerings.md#microsoftpeering) kullanın.
 >
 
 ## <a name="connectivity"></a>Bağlantı
 
-Bağlantı her zaman WAN'ınızdan Microsoft Azure hizmetlerine başlatılır. Microsoft Azure hizmetleri, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz. ExpressRoute devreniz Azure genel bakışları için etkinleştirildiyse, devre üzerinden [Azure'da kullanılan genel IP aralıklarına](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) erişebilirsiniz.
+Bağlantı, WAN 'dan Microsoft Azure hizmetlerine her zaman başlatılır. Microsoft Azure hizmetler, bu yönlendirme etki alanı üzerinden ağınıza bağlantı başlatamaz. ExpressRoute devreniz Azure genel eşleme için etkinleştirildiyse, devre üzerinden [Azure 'da kullanılan genel IP aralıklarına](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) erişebilirsiniz.
 
-Herkese açık bir şekilde bakma özelliği etkinleştirildikten sonra, çoğu Azure hizmetine bağlanabilirsiniz. Rotaların reklamını yaptığımız hizmetleri seçici olarak seçmene izin vermiyoruz.
+Ortak eşleme etkinleştirildikten sonra, çoğu Azure hizmetine bağlanabilirsiniz. Yolların tanıtıldığı Hizmetleri seçmeli olarak seçmenizi vermedik.
 
-* Azure Depolama, SQL Veritabanları ve Web Siteleri gibi hizmetler genel IP adreslerinde sunulur.
-* Genel eşleme yönlendirme etki alanı aracılığıyla, bulut hizmetlerinizin VIP'leri de dahil olmak üzere genel IP adreslerinde barındırılan hizmetlere özel olarak bağlanabilirsiniz.
-* Ortak bakış alan adını DMZ'nize bağlayabilir ve internet üzerinden bağlanmak zorunda kalmadan WAN'ınızdaki herkese açık IP adreslerindeki tüm Azure hizmetlerine bağlanabilirsiniz.
+* Azure depolama, SQL veritabanları ve Web siteleri gibi hizmetler genel IP adreslerinde sunulur.
+* Ortak eşleme yönlendirme etki alanı aracılığıyla, bulut hizmetlerinizin VIP 'leri dahil olmak üzere genel IP adreslerinde barındırılan hizmetlere özel olarak bağlanabilirsiniz.
+* Genel eşleme etki alanını DMZ ' e bağlanabilir ve internet üzerinden bağlanmak zorunda kalmadan, genel IP adreslerinde bulunan tüm Azure hizmetlerine bağlanabilirsiniz.
 
-## <a name="services"></a><a name="services"></a>Hizmetleri
+## <a name="services"></a><a name="services"></a>Hizmetler
 
-Bu bölümde, genel bakış üzerinden kullanılabilir hizmetleri gösterir. Genel bakışlar amortismana uygun olduğundan, genel eşlemelere yeni veya ek hizmetler ekleme planı yoktur. Herkese açık bir bakış kullanıyorsanız ve kullanmak istediğiniz hizmet yalnızca Microsoft'un bakışları üzerinden desteklenmişse, Microsoft'a geçmeniz gerekir. Desteklenen hizmetlerin listesi için [Microsoft'un bakışını](expressroute-faqs.md#microsoft-peering) görün.
+Bu bölümde, genel eşleme üzerinden kullanılabilen hizmetler gösterilmektedir. Ortak eşleme kullanım dışı olduğundan, ortak eşlemeye yeni veya ek hizmetler ekleme planı yoktur. Ortak eşlemeyi kullanıyorsanız ve kullanmak istediğiniz hizmet yalnızca Microsoft eşlemesi üzerinden destekleniyorsa, Microsoft eşlemesi ' ne geçmeniz gerekir. Desteklenen hizmetlerin listesi için bkz. [Microsoft eşlemesi](expressroute-faqs.md#microsoft-peering) .
 
-**Desteklenen:**
+**Destek**
 
 * Power BI
-* Azure hizmetlerinin çoğu desteklenir. Desteği doğrulamak için kullanmak istediğiniz hizmetle doğrudan kontrol edin.
+* Azure hizmetlerinin çoğu desteklenir. Desteği doğrulamak için kullanmak istediğiniz hizmeti doğrudan denetleyin.
 
-**Desteklenmiyor:**
+**Desteklenmez:**
   * CDN
   * Azure Front Door
-  * Çok faktörlü Kimlik Doğrulama Sunucusu (eski)
+  * Multi-Factor Authentication sunucusu (eski)
   * Traffic Manager
 
-Belirli bir hizmetin kullanılabilirliğini doğrulamak için, bu hizmet için ayrılmış bir aralık olup olmadığını görmek için bu hizmetin belgelerini denetleyebilirsiniz. Daha sonra hedef hizmetin IP aralıklarına bakabilir [ve Azure IP Aralıkları ve Hizmet Etiketleri – Public Cloud XML dosyasında](https://www.microsoft.com/download/details.aspx?id=56519)listelenen aralıklarla karşılaştırabilirsiniz. Alternatif olarak, açıklama için söz konusu hizmet için bir destek bileti açabilirsiniz.
+Belirli bir hizmet için kullanılabilirliği doğrulamak üzere bu hizmetin belgelerini denetleyerek, bu hizmet için yayımlanmış bir Aralık olup olmadığını görebilirsiniz. Ardından, hedef hizmetin IP aralıklarını arayabilir ve [Azure IP aralıkları ve hizmet etiketleri – genel bulut XML dosyasında](https://www.microsoft.com/download/details.aspx?id=56519)listelenen aralıklardan karşılaştırırsınız. Alternatif olarak, açıklama için söz konusu hizmet için bir destek bileti açabilirsiniz.
 
 ## <a name="peering-comparison"></a><a name="compare"></a>Eşleme karşılaştırması
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Azure genel bakışlarının her BGP oturumuyla ilişkili 1 NAT IP adresi vardır. 2'den fazla NAT IP adresi için Microsoft'a bakın. Microsoft'un bakışları, kendi NAT ayırmalarınızı yapılandırmanıza ve seçici önek reklamlar için rota filtrelerini kullanmanıza olanak tanır. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)
+> Azure genel eşleme, her BGP oturumuyla ilişkili 1 NAT IP adresine sahiptir. 2 ' den fazla NAT IP adresi için Microsoft eşlemesi ' ne geçin. Microsoft eşleme, kendi NAT ayırmalarınızı yapılandırmanıza ve seçmeli ön ek tanıtımları için yol filtrelerini kullanmanıza olanak sağlar. Daha fazla bilgi için bkz. [Microsoft eşlemesi 'Ne taşıma](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
 >
 
-## <a name="custom-route-filters"></a>Özel rota filtreleri
+## <a name="custom-route-filters"></a>Özel yol filtreleri
 
-Yalnızca gereksinim duyduğunuz yolları tüketmek için ağınızdaözel rota filtreleri tanımlayabilirsiniz. Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [Yönlendirme](expressroute-routing.md) sayfasına bakın.
+Ağınız içindeki özel yol filtrelerini yalnızca ihtiyacınız olan yolları kullanacak şekilde tanımlayabilirsiniz. Yönlendirme yapılandırması hakkında ayrıntılı bilgi için [yönlendirme](expressroute-routing.md) sayfasına bakın.
 
 ## <a name="azure-powershell-steps"></a><a name="powershell"></a>Azure PowerShell adımları
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-Genel bakışlar amortismana hazır olduğundan, yeni bir ExpressRoute devresi üzerinde genel bakışları yapılandıramazsınız.
+Ortak eşleme kullanım dışı olduğundan, yeni bir ExpressRoute devresinde ortak eşlemeyi yapılandıramazsınız.
 
-1. Sağlanan ve aynı zamanda etkin bir ExpressRoute devreniz olduğunu doğrulayın. Şu örneği kullanın:
+1. Sağlanan ve ayrıca etkinleştirilen bir ExpressRoute devreniz olduğunu doğrulayın. Şu örneği kullanın:
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -105,7 +105,7 @@ Genel bakışlar amortismana hazır olduğundan, yeni bir ExpressRoute devresi �
    ServiceKey                       : **************************************
    Peerings                         : []
    ```
-2. Bağlantı hattı için Azure ortak eşlemesini yapılandırın. Daha fazla ilerlemeden önce aşağıdaki bilgilere sahip olduğundan emin olun.
+2. Bağlantı hattı için Azure ortak eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 
    * Birincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
@@ -114,7 +114,7 @@ Genel bakışlar amortismana hazır olduğundan, yeni bir ExpressRoute devresi �
    * İsteğe bağlı:
    * Kullanmayı seçerseniz bir MD5 karma değeri.
 
-   Devreniz için Azure genel eşlemi yapılandırmak için aşağıdaki örneği çalıştırın
+   Devreniz için Azure ortak eşlemesini yapılandırmak üzere aşağıdaki örneği çalıştırın
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -122,7 +122,7 @@ Genel bakışlar amortismana hazır olduğundan, yeni bir ExpressRoute devresi �
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-   BIR MD5 karma kullanmayı seçerseniz, aşağıdaki örneği kullanın:
+   Bir MD5 karması kullanmayı seçerseniz, aşağıdaki örneği kullanın:
 
    ```azurepowershell-interactive
    Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
@@ -135,9 +135,9 @@ Genel bakışlar amortismana hazır olduğundan, yeni bir ExpressRoute devresi �
    > 
    >
 
-### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Azure genel bakış ayrıntılarını elde etmek için
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>Azure genel eşleme ayrıntılarını almak için
 
-Aşağıdaki cmdlet kullanarak yapılandırma ayrıntılarını alabilirsiniz:
+Aşağıdaki cmdlet 'i kullanarak yapılandırma ayrıntılarını alabilirsiniz:
 
 ```azurepowershell-interactive
   $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -147,7 +147,7 @@ Aşağıdaki cmdlet kullanarak yapılandırma ayrıntılarını alabilirsiniz:
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Azure ortak eşleme yapılandırmasını güncelleştirmek için
 
-Yapılandırmanın herhangi bir bölümünü aşağıdaki örneği kullanarak güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN kimliği 200'den 600'e güncellenmektedir.
+Aşağıdaki örneği kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN KIMLIĞI 200 ' den 600 ' e güncelleştiriliyor.
 
 ```azurepowershell-interactive
 Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
@@ -157,19 +157,19 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Azure ortak eşlemesini silmek için
 
-Aşağıdaki örneği çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
+Aşağıdaki örneği çalıştırarak, eşleme yapılandırmanızı kaldırabilirsiniz:
 
 ```azurepowershell-interactive
 Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="azure-cli-steps"></a><a name="cli"></a>Azure CLI adımları
+## <a name="azure-cli-steps"></a><a name="cli"></a>Azure CLı adımları
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-1. Sağlandığından ve etkinleştirildiğinden emin olmak için ExpressRoute devresini kontrol edin. Şu örneği kullanın:
+1. Sağlanan ve ayrıca etkinleştirildiğinden emin olmak için ExpressRoute bağlantı hattını denetleyin. Şu örneği kullanın:
 
    ```azurecli-interactive
    az network express-route list
@@ -206,21 +206,21 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    "type": "Microsoft.Network/expressRouteCircuits]
    ```
 
-2. Bağlantı hattı için Azure ortak eşlemesini yapılandırın. Daha fazla ilerlemeden önce aşağıdaki bilgilere sahip olduğundan emin olun.
+2. Bağlantı hattı için Azure ortak eşlemesini yapılandırın. Devam etmeden önce aşağıdaki bilgilere sahip olduğunuzdan emin olun.
 
    * Birincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * İkincil bağlantı için bir /30 alt ağı. Bu geçerli bir ortak IPv4 öneki olmalıdır.
    * Bu eşlemenin kurulacağı geçerli bir VLAN kimliği. Bağlantı hattındaki başka bir eşlemenin aynı VLAN kimliğini kullanmadığından emin olun.
    * Eşleme için AS numarası. 2 bayt ve 4 bayt AS numaralarını kullanabilirsiniz.
-   * **İsteğe bağlı -** Bir kullanmayı seçerseniz bir MD5 karma.
+   * **Isteğe bağlı-** Kullanmayı seçerseniz bir MD5 karma değeri.
 
-   Devreniz için Azure genel eşlemi yapılandırmak için aşağıdaki örneği çalıştırın:
+   Devreniz için Azure ortak eşlemesini yapılandırmak üzere aşağıdaki örneği çalıştırın:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
    ```
 
-   BIR MD5 karma kullanmayı seçerseniz, aşağıdaki örneği kullanın:
+   Bir MD5 karması kullanmayı seçerseniz, aşağıdaki örneği kullanın:
 
    ```azurecli-interactive
    az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -231,7 +231,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>Azure ortak eşleme ayrıntılarını görüntülemek için
 
-Aşağıdaki örneği kullanarak yapılandırma ayrıntılarını alabilirsiniz:
+Yapılandırma ayrıntılarını aşağıdaki örneği kullanarak edinebilirsiniz:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -266,7 +266,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Azure ortak eşleme yapılandırmasını güncelleştirmek için
 
-Yapılandırmanın herhangi bir bölümünü aşağıdaki örneği kullanarak güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN kimliği 200'den 600'e güncellenmektedir.
+Aşağıdaki örneği kullanarak yapılandırmanın herhangi bir bölümünü güncelleştirebilirsiniz. Bu örnekte, devrenin VLAN KIMLIĞI 200 ' den 600 ' e güncelleştiriliyor.
 
 ```azurecli-interactive
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -274,7 +274,7 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 
 ### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>Azure ortak eşlemesini silmek için
 
-Aşağıdaki örneği çalıştırarak eşleme yapılandırmanızı kaldırabilirsiniz:
+Aşağıdaki örneği çalıştırarak, eşleme yapılandırmanızı kaldırabilirsiniz:
 
 ```azurecli-interactive
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -282,23 +282,23 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 ## <a name="azure-portal-steps"></a><a name="portal"></a>Azure portal adımları
 
-Eşlemi yapılandırmak için bu makalede yer alan PowerShell veya CLI adımlarını kullanın. Bir eşlemi yönetmek için aşağıdaki bölümleri kullanabilirsiniz. Başvuru için, bu adımlar [portalda](expressroute-howto-routing-portal-resource-manager.md#msft)bir Microsoft bakan yönetme benzer.
+Eşlemeyi yapılandırmak için bu makalede yer alan PowerShell veya CLı adımlarını kullanın. Bir eşlemeyi yönetmek için aşağıdaki bölümleri kullanabilirsiniz. Bu adımlar, başvuru için [portalda Microsoft eşlemesini](expressroute-howto-routing-portal-resource-manager.md#msft)yönetmeye benzer şekilde görünür.
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>Azure ortak eşleme ayrıntılarını görüntülemek için
 
-Portaldaki eşlemi seçerek Azure genel bakış özelliklerini görüntüleyin.
+Portalda eşlemeyi seçerek Azure ortak eşleme özelliklerini görüntüleyin.
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>Azure ortak eşleme yapılandırmasını güncelleştirmek için
 
-Eşleme için satırı seçin ve ardından bakan özellikleri değiştirin.
+Eşleme için satırı seçin ve ardından eşleme özelliklerini değiştirin.
 
 ### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>Azure ortak eşlemesini silmek için
 
-Silme simgesini seçerek eşleme yapılandırmanızı kaldırın.
+Eşleme yapılandırmanızı kaldırın ve Sil simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki adım, [Bir ExpressRoute devresine sanal ağ bağla.](expressroute-howto-linkvnet-arm.md)
+Sonraki adım, [bir sanal ağı ExpressRoute devresine bağlama](expressroute-howto-linkvnet-arm.md).
 
 * ExpressRoute iş akışları hakkında daha fazla bilgi için bkz. [ExpressRoute iş akışları](expressroute-workflows.md).
 * Bağlantı hattı eşlemesi hakkında daha fazla bilgi için bkz. [ExpressRoute bağlantı hattı ve yönlendirme etki alanları](expressroute-circuit-peerings.md).

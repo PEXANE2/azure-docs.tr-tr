@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: PowerShell ile konuk kullanıcı ekleme - Azure AD'
+title: 'Hızlı başlangıç: PowerShell ile Konuk Kullanıcı ekleme-Azure AD'
 description: Bu hızlı başlangıçta, şirket dışından bir Azure AD B2B işbirliği kullanıcısına davet göndermek için PowerShell’in nasıl kullanılacağını öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
@@ -13,17 +13,17 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0faaf0394bddc2e443afc194bbd0ecef72625f9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79240929"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Hızlı Başlangıç: PowerShell ile konuk kullanıcı ekleme
 
 Azure Active Directory B2B işbirliği ile uygulama ve hizmetlerinize şirket dışından ortaklar davet etmenin birçok yolu vardır. Önceki hızlı başlangıçta, doğrudan Azure Active Directory yönetim portalda nasıl konuk kullanıcı ekleneceğini gördünüz. Birer birer veya toplu olarak konuk kullanıcılar eklemek için de PowerShell’i kullanabilirsiniz. Bu hızlı başlangıçta, Azure kiracınıza bir konuk kullanıcı eklemek için New-AzureADMSInvitation komutunu kullanacaksınız.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -75,7 +75,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-an-invitation"></a>Davet gönderme
 
-1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın (test e-posta hesap adınız ve e-posta adresinizle **"Sanda"** ve **sanda\@fabrikam.com** değiştirin): 
+1. Test e-posta hesabınıza davetiye göndermek için aşağıdaki PowerShell komutunu çalıştırın ( **"Sanda"** ve **Sanda\@fabrikam.com** öğesini test e-posta hesabınızın adı ve e-posta adresiniz ile değiştirin): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.microsoft.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Davet ettiğiniz kullanıcının, *e-posta adresi*#EXT#\@*etki alanında*bir kullanıcı ana adı (UPN) ile listelendirildiğinden emin olmak için çıktıyı denetleyin. Örneğin, *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com,* davetiyeleri gönderdiğiniz kuruluş contoso.onmicrosoft.com yerdir.
+3. Davet ettiğiniz kullanıcının, bir Kullanıcı asıl adı (UPN) ile *emadresi*#EXT #\@*etki*biçiminde listelendiğinden emin olmak için çıktıyı denetleyin. Örneğin, *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, burada contoso.onmicrosoft.com, davetleri gönderdiğiniz kuruluştur.
 
    ![Eklenen konuk kullanıcıyı gösteren PowerShell çıktısı](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 

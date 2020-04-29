@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - önbelleğe alma | Microsoft Dokümanlar
-description: Bu makale, Azure Ön Kapı'nın arka uçlarınızın durumunu nasıl izlediğini anlamanıza yardımcı olur
+title: Azure ön kapı-önbelleğe alma | Microsoft Docs
+description: Bu makale, Azure ön kapısının arka uçlarınızın sistem durumunu nasıl izlediğini anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,105 +12,105 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471753"
 ---
-# <a name="caching-with-azure-front-door"></a>Azure Ön Kapı ile Önbelleğe Alma
-Aşağıdaki belge önbelleğe alma etkin yönlendirme kuralları ile Ön Kapı için davranış belirtir. Ön Kapı modern bir İçerik Dağıtım Ağı (CDN) ve böylece dinamik site ivme ve yük dengeleme ile birlikte, aynı zamanda diğer CDN gibi önbelleğe alma davranışları destekler.
+# <a name="caching-with-azure-front-door"></a>Azure ön kapılı önbelleğe alma
+Aşağıdaki belge ön kapı için önbelleğe almayı etkinleştirilen yönlendirme kurallarıyla ilgili davranışı belirtir. Ön kapı modern bir Content Delivery Network (CDN) ve bunun yanı sıra dinamik site hızlandırma ve Yük Dengeleme ile aynı zamanda diğer CDN gibi önbelleğe alma davranışlarını da destekler.
 
 ## <a name="delivery-of-large-files"></a>Büyük dosyaların teslimi
-Azure Ön Kapı, dosya boyutunda kapak olmayan büyük dosyalar sunar. Ön Kapı nesne parçalama denilen bir teknik kullanır. Büyük dosya isteği gönderildiğinde Front Door dosyayı arka uçtan küçük parçalar halinde alır. Front Door ortamı tam veya bayt aralığı belirtilen bir dosya isteği aldıktan sonra dosyayı 8 MB'lık parçalar halinde arka uçtan ister.
+Azure ön kapısı, dosya boyutu üst sınırı olmadan büyük dosyalar sunar. Ön kapı, nesne parçalama adlı bir teknik kullanır. Büyük dosya isteği gönderildiğinde Front Door dosyayı arka uçtan küçük parçalar halinde alır. Front Door ortamı tam veya bayt aralığı belirtilen bir dosya isteği aldıktan sonra dosyayı 8 MB'lık parçalar halinde arka uçtan ister.
 
-</br>Yığın Ön Kapı ortamına geldikten sonra önbelleğe alınarak hemen kullanıcıya sunulur. Ön Kapı sonra paralel olarak bir sonraki parçayı önceden getirir. Bu ön alma, içeriğin kullanıcıdan bir yığın önde kalmasını sağlar ve bu da gecikme süresini azaltır. Bu işlem, tüm dosya indirilene (istenirse), tüm bayt aralıkları kullanılabilir olana (istenirse) veya istemci bağlantıyı sonlandırıncaya kadar devam eder.
+</br>Öbek, ön kapılı ortama ulaştıktan sonra önbelleğe alınır ve anında kullanıcıya sunulur. Ön kapı daha sonra bir sonraki öbeği paralel olarak önceden getirir. Bu ön alım, içeriğin kullanıcının önüne bir öbek kalmasını sağlar ve gecikme süresini azaltır. Bu işlem, dosyanın tamamı indirilene kadar devam eder (isteniyorsa), tüm bayt aralıkları kullanılabilir (isteniyorsa) veya istemci bağlantıyı sonlandırır.
 
-</br>Bayt aralığı isteği hakkında daha fazla bilgi için [RFC 7233'ü](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)okuyun.
-Ön Kapı, alınan tüm parçaları önbelleğe almaz ve böylece tüm dosyanın Ön Kapı önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıkları için sonraki istekler önbellekten sunulur. Tüm parçalar önbelleğe alınmamışsa, ön alma arka uçtan parçalar istemek için kullanılır. Bu optimizasyon, arka uçtaki bayt aralığı isteklerini destekleme yeteneğine dayanır; Arka uç bayt aralığı isteklerini desteklemiyorsa, bu optimizasyon etkili değildir.
+</br>Bayt aralığı isteği hakkında daha fazla bilgi için, [RFC 7233](https://web.archive.org/web/20171009165003/http://www.rfc-base.org/rfc-7233.html)' i okuyun.
+Ön kapı, alındıkları tüm öbekleri önbelleğe alır ve tüm dosyanın ön kapı önbelleğinde önbelleğe alınması gerekmez. Dosya veya bayt aralıklarının sonraki istekleri önbellekten sunulur. Öbeklerin hepsi önbelleğe alınmamışsa, ön uç, arka ucun öbeklerini istemek için kullanılır. Bu en iyi duruma getirme, arka ucun bayt aralığı isteklerini destekleme özelliğine dayanır; arka uç, bayt aralığı isteklerini desteklemiyorsa, bu iyileştirme etkili olmaz.
 
 ## <a name="file-compression"></a>Dosya sıkıştırma
-Ön Kapı, içeriği dinamik olarak sıkıştırarak müşterilerinize daha küçük ve daha hızlı bir yanıt verebilir. Tüm dosyalar sıkıştırma için uygundur. Ancak, bir dosya sıkıştırma listesi için uygun bir MIME türünde olmalıdır. Şu anda, Ön Kapı bu listenin değiştirilmesine izin vermez. Geçerli liste:</br>
-- "uygulama/eot"
+Ön kapı, kenardaki içeriği dinamik olarak sıkıştırarak istemcileriniz için daha küçük ve daha hızlı bir yanıt elde edebilir. Tüm dosyalar sıkıştırmaya uygun. Ancak, bir dosyanın, sıkıştırma listesine uygun bir MIME türünde olması gerekir. Şu anda, ön kapı bu listenin değiştirilmesine izin vermiyor. Geçerli liste:</br>
+- "uygulama/duyot"
 - "uygulama/yazı tipi"
-- "uygulama/yazı tipi-sfnt"
-- "uygulama/javascript"
+- "Application/Font-sfnt"
+- "uygulama/JavaScript"
 - "application/json"
-- "uygulama/opentype"
-- "uygulama/otf"
-- "uygulama/pkcs7-pandomim"
-- "uygulama/truetype"
-- "uygulama/ttf",
-- "uygulama/vnd.ms-fontobject"
-- "uygulama/xhtml+xml"
-- "uygulama/xml"
-- "uygulama/xml+rss"
-- "uygulama/x-font-opentype"
-- "uygulama/x-font-truetype"
-- "uygulama/x-font-ttf"
-- "uygulama/x-httpd-cgi"
-- "uygulama/x-mpegurl"
-- "uygulama/x-opentype"
-- "uygulama/x-otf"
-- "uygulama/x-perl"
-- "uygulama/x-ttf"
-- "uygulama/x-javascript"
-- "yazı tipi/eot"
-- "yazı tipi/ttf"
-- "yazı tipi/otf"
-- "yazı tipi/opentype"
-- "görüntü/svg+xml"
-- "metin/css"
-- "metin/csv"
+- "Application/OpenType"
+- "Application/OTF"
+- "uygulama/PKCS7-MIME"
+- "uygulama/TrueType"
+- "uygulama/TTF",
+- "application/vnd. MS-fontobject"
+- "application/xhtml + xml"
+- "application/xml"
+- "application/xml + RSS"
+- "application/x-Font-OpenType"
+- "application/x-Font-TrueType"
+- "application/x-Font-TTF"
+- "application/x-httpd-CGI"
+- "application/x-mpegurl"
+- "application/x-OpenType"
+- "application/x-OTF"
+- "application/x-Perl"
+- "application/x-TTF"
+- "application/x-JavaScript"
+- "yazı tipi/EOT"
+- "yazı tipi/TTF"
+- "yazı tipi/OTF"
+- "yazı tipi/OpenType"
+- "image/SVG + XML"
+- "metin/CSS"
+- "metin/CSV"
 - "metin/html"
-- "metin/javascript"
+- "metin/JavaScript"
 - "metin/js", "metin/düz"
 - "metin/zengin metin"
-- "metin/sekme ayrılmış değerler"
+- "metin/sekmeyle ayrılmış değerler"
 - "metin/xml"
-- "metin/x-komut dosyası"
-- "metin/x-bileşeni"
-- "metin/x-java-kaynak"
+- "metin/x-betiği"
+- "metin/x-bileşen"
+- "metin/x-Java-kaynak"
 
-Ayrıca, dosya da boyutu, dahil 1 KB ve 8 MB arasında olmalıdır.
+Ayrıca, dosya aynı zamanda 1 KB ile 8 MB (dahil) arasında olmalıdır.
 
 Bu profiller aşağıdaki sıkıştırma kodlamalarını destekler:
 - [Gzip (GNU zip)](https://en.wikipedia.org/wiki/Gzip)
 - [Brotli](https://en.wikipedia.org/wiki/Brotli)
 
-Bir istek gzip ve Brotli sıkıştırmayı destekliyorsa, Brotli sıkıştırma önceliklidir.</br>
-Bir varlık için bir istek sıkıştırma belirtir ve bir önbellek özledim istek sonuçları, Ön Kapı doğrudan POP sunucusunda varlığın sıkıştırma gerçekleştirir. Daha sonra sıkıştırılmış dosya önbellekten servis edilir. Elde edilen öğe bir aktarım kodlaması ile döndürülür: chunked.
+Bir istek gzip ve Brotli sıkıştırmasını destekliyorsa, Brotli sıkıştırması önceliklidir.</br>
+Bir varlık isteği sıkıştırmayı belirttiğinde ve istek bir önbellek isabetsizliği ile sonuçlanırsa, ön kapı varlık sıkıştırmasını doğrudan POP sunucusunda gerçekleştirir. Daha sonra, sıkıştırılan dosya önbellekten sunulur. Elde edilen öğe bir Transfer-Encoding: öbekli ile döndürülür.
 
-## <a name="query-string-behavior"></a>Dize davranışını sorgula
-Ön Kapı ile, sorgu dizesi içeren bir web isteği için dosyaların önbelleğe nasıl önbelleğe alınır denetleyebilirsiniz. Sorgu dizesi olan bir web isteğinde, sorgu dizesi, soru işaretinden (?) sonra oluşan isteğin bu bölümüdür. Sorgu dizesi, alan adı ve değerinin eşit ler işaretiyle (=) ayrıldığı bir veya daha fazla anahtar değer çifti içerebilir. Her anahtar değeri çifti bir ampersand (&) ile ayrılır. Örneğin, `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Bir isteğin sorgu dizesinde birden fazla anahtar değeri çifti varsa, siparişleri önemli değildir.
-- **Sorgu dizelerini yoksay**: Varsayılan mod. Bu modda, Ön Kapı ilk istekte istekte bulunan sorgu dizelerini arka uca geçirir ve varlığı önbelleğe getirir. Ön Kapı ortamından sunulan kıymet için sonraki tüm istekler önbelleğe alınan kıymetin süresi dolana kadar sorgu dizelerini yoksa.
+## <a name="query-string-behavior"></a>Sorgu dizesi davranışı
+Ön kapıda, dosyaların sorgu dizesi içeren bir Web isteği için nasıl önbelleğe alınacağını denetleyebilirsiniz. Sorgu dizesi olan bir Web isteğinde, sorgu dizesi, isteğin bir soru işareti (?) sonrasında gerçekleşen bölümüdür. Sorgu dizesi bir veya daha fazla anahtar-değer çifti içerebilir; burada alan adı ve değeri bir eşittir işareti (=) ile ayrılmıştır. Her anahtar-değer çifti bir ve işareti (&) ile ayrılır. Örneğin, `http://www.contoso.com/content.mov?field1=value1&field2=value2`. Bir isteğin sorgu dizesinde birden fazla anahtar-değer çifti varsa, bunların sırası önemli değildir.
+- **Sorgu dizelerini yoksay**: varsayılan mod. Bu modda, ön kapı Sorgu dizelerini istek sahibine ilk istekteki arka uca geçirir ve varlığı önbelleğe alır. Ön kapı ortamından sunulan varlık için sonraki tüm istekler, önbelleğe alınmış varlık sona erene kadar Sorgu dizelerini yoksayar.
 
-- **Her benzersiz URL'yi önbelleğe alma**: Bu modda, sorgu dizesi de dahil olmak üzere benzersiz bir URL'ye sahip her istek, kendi önbelleğiyle benzersiz bir varlık olarak kabul edilir. Örneğin, istek için `www.example.ashx?q=test1` arka uçtan gelen yanıt Ön Kapı ortamında önbelleğe alınmış ve aynı sorgu dizesiyle sonraki önbellekler için döndürülür. Bir istek, `www.example.ashx?q=test2` kendi zaman-to-live ayarı ile ayrı bir varlık olarak önbelleğe alınr.
+- **Her benzersiz URL 'Yi önbelleğe al**: Bu modda, sorgu dizesi dahil olmak üzere benzersiz bir URL 'si olan her istek kendi önbelleğine sahip benzersiz bir varlık olarak değerlendirilir. Örneğin, için `www.example.ashx?q=test1` bir isteğin arka ucunun yanıtı, ön kapı ortamında önbelleğe alınır ve aynı sorgu dizesine sahip sonraki önbellekler için döndürülür. İçin `www.example.ashx?q=test2` bir istek, kendi yaşam süresi ayarıyla ayrı bir varlık olarak önbelleğe alınır.
 
-## <a name="cache-purge"></a>Önbellek temizleme
-Ön Kapı, varlığın süresi (TTL) süresi dolana kadar varlıkları önbelleğe alacaktır. Varlığın TTL'si sona erdikten sonra, bir istemci kıymeti istediğinde, Ön Kapı ortamı istemci isteğine hizmet etmek ve önbelleği yenilemek için varlığın yeni güncelleştirilmiş bir kopyasını alır.
-</br>Kullanıcılarınızın varlıklarınızın her zaman en son kopyasını aldığından emin olmak için en iyi yöntem, varlıklarınızı her güncelleştirme için sürüm altına almak ve bunları yeni URL'ler olarak yayımlamaktır. Ön Kapı, bir sonraki istemci istekleri için yeni varlıkları hemen geri alacaktır. Bazen önbelleğe alınan içeriği tüm kenar düğümlerinden temizlemek ve hepsini yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz. Bunun nedeni, web uygulamanızdaki güncelleştirmeler veya yanlış bilgiler içeren varlıkları hızla güncelleştirmek olabilir.
+## <a name="cache-purge"></a>Önbellek Temizleme
+Ön kapı, varlığın yaşam süresi (TTL) sona erene kadar varlıkları önbelleğe alacak. Varlığın TTL 'SI dolduktan sonra, bir istemci varlığı istediğinde, ön kapı ortamı, istemci isteğine yönelik yeni bir güncelleştirilmiş kopyasını alır ve mağaza önbelleği yeniler.
+</br>Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde ettiğinizden emin olmak için en iyi yöntem, varlıklarınızın her bir güncelleştirme için sürüm oluşturup yeni URL 'Ler olarak yayınlanmasına yöneliktir. Ön kapı, sonraki istemci istekleri için yeni varlıkları hemen alacak. Bazen önbelleğe alınmış içeriği tüm kenar düğümlerinden temizlemek ve bunları yeni güncelleştirilmiş varlıkları almaya zorlamak isteyebilirsiniz. Bunun nedeni, Web uygulamanızdaki güncelleştirmeler veya hatalı bilgiler içeren varlıkları hızlıca güncelleştirmeniz olabilir.
 
-</br>Kenar düğümlerinden temizlemek istediğiniz varlıkları seçin. Tüm varlıkları temizlemek istiyorsanız, Tüm Onay Kutusunu Temizleme'yi tıklatın. Aksi takdirde, temizlemek istediğiniz her varlığın yolunu Yol metin kutusuna yazın. Aşağıdaki biçimler yolda desteklenir.
-1. **Tek yol temizleme**: Varlığın tam yolunu (protokol ve etki alanı olmadan) belirterek, dosya uzantısı, örneğin ,/pictures/strasbourg.png;
-2. **Joker karakter temizleme**: Yıldız\*işareti ( ) joker karakter olarak kullanılabilir. Tüm klasörleri, alt klasörleri ve dosyaları bir bitiş\* noktası altında / yol içinde temizleme veya belirli bir klasör altında tüm\*alt klasörleri ve\*dosyaları tasfiye klasörü tarafından izlenen belirterek / , örneğin, / resimler / .
-3. **Kök etki alanı temizleme**: Yoldaki "/" ile bitiş noktasının kökünü temizle.
+</br>Kenar düğümlerinden hangi varlıkları temizlemek istediğinizi seçin. Tüm varlıkları temizlemek istiyorsanız tümünü temizle onay kutusuna tıklayın. Aksi takdirde, yol metin kutusuna temizlemek istediğiniz her varlığın yolunu yazın. Aşağıdaki biçimler yolunda desteklenir.
+1. **Tek yol temizleme**: varlığın tam yolunu (protokol ve etki alanı olmadan), dosya uzantısıyla (örneğin,/resim/Strasbourg.exe;) belirterek tek tek varlıkları temizle
+2. **Joker karakter Temizleme**: yıldız\*işareti () joker karakter olarak kullanılabilir. Bir uç nokta altındaki tüm klasörleri, alt klasörleri ve dosyaları yolda/\* içinde siler ya da klasörü belirterek/\*, örneğin,/resim/\*gibi belirli bir klasör altındaki tüm alt klasörleri ve dosyaları temizleyin.
+3. **Kök etki alanı temizleme**: yoldaki bitiş noktasının kökünü "/" ile temizleyin.
 
-Ön Kapı'daki önbellek tasfiyeleri büyük/küçük harf duyarsızdır. Ayrıca, bunlar sorgu dizesi agnostik, bir URL temizleme anlamına gelen tüm sorgu dize varyasyonları tasfiye edecek. 
+Ön kapıda önbellek temizler, büyük/küçük harfe duyarsızdır. Bunlara ek olarak, sorgu dizesi belirsiz olur, yani bir URL 'nin temizlenmesi, tüm sorgu dizesi çeşitlemelerini temizler. 
 
-## <a name="cache-expiration"></a>Önbellek süresi
-Bir öğenin önbelleğimizde ne kadar süre yle depolanacağını belirlemek için aşağıdaki üstbilgi sırası kullanılır:</br>
-1. Önbellek Kontrolü: s-maxage=\<saniye>
-2. Önbellek Kontrolü: max-age=\<saniye>
-3. Sona eriyor: \<http-tarih>
+## <a name="cache-expiration"></a>Önbellek süre sonu
+Bir öğenin önbellekte ne kadar süreyle depolanacağını anlamak için aşağıdaki üstbilgiler sırası kullanılır:</br>
+1. Cache-Control: s-maxage =\<saniye>
+2. Cache-Control: Max-Age =\<saniye>
+3. Süre sonu \<: http-Date>
 
-Yanıtın Önbellek Denetimi gibi önbelleğe alınamayacağını belirten Önbellek Denetimi yanıtı üstbilgisi: özel, Önbellek Denetimi: önbellek yok ve Önbellek Denetimi: mağaza yok. Ancak, aynı URL için bir POP'ta birden fazla istek varsa, yanıtı paylaşabilirler. Önbellek Denetimi yoksa varsayılan davranış AFD'nin kaynağı X miktarı için önbelleğe alması dır, X 1 ila 3 gün arasında rasgele seçilir.
+Yanıtın Cache-Control: Private, Cache-Control: No-Cache ve Cache-Control gibi önbelleğe alınacağını belirten Cache-Control yanıt üstbilgileri: No-Store kabul edilir. Ancak, aynı URL 'ye yönelik bir POP 'ta çok sayıda istek olduğunda, yanıt paylaşabilir. Cache-Control yoksa, varsayılan davranış, AFD 'ın X 'i 1 ila 3 gün arasında rastgele olarak seçtiğiniz X miktarı kadar önbelleğe alacak.
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
-Önbelleğe alma kullanırken aşağıdaki istek üstbilgisi arka uca iletilmeyecektir.
+Önbelleğe alma kullanılırken aşağıdaki istek üst bilgileri bir arka uca iletilmeyecektir.
 - İçerik Uzunluğu
-- Aktarım-Kodlama
+- Aktarım kodlaması
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
