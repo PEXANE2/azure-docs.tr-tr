@@ -1,6 +1,6 @@
 ---
-title: Apache Spark uygulamanızla bağlantı kurun - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
-description: Bu makalede, Kafka için Azure Etkinlik Hub'ları ile Apache Spark'ın nasıl kullanılacağı hakkında bilgi verilmektedir.
+title: Apache Spark App ile bağlantı kurmak-Azure Event Hubs | Microsoft Docs
+description: Bu makalede, Kafka için Azure Event Hubs ile Apache Spark kullanma hakkında bilgi sağlanır.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -10,19 +10,19 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 1b292f9b894dac7df6b9634ce1bad627c8d24fe6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632758"
 ---
-# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark uygulamanızı Azure Etkinlik Hub'larına bağlayın
-Bu öğretici, Spark uygulamanızı gerçek zamanlı akış için Olay Hub'larına bağlamanız için size yol eder. Bu tümleştirme, protokol istemcilerinizi değiştirmek ya da kendi Kafka veya Zookeeper kümelerinizi çalıştırmak zorunda kalmadan akış yapmanıza olanak tanır. Bu öğretici için Apache Spark v2.4+ ve Apache Kafka v2.0+ gerekir.
+# <a name="connect-your-apache-spark-application-with-azure-event-hubs"></a>Apache Spark uygulamanızı Azure Event Hubs bağlayın
+Bu öğretici, Spark uygulamanızı gerçek zamanlı akış için Event Hubs bağlama konusunda size kılavuzluk eder. Bu tümleştirme, protokol istemcilerinizi değiştirmek ya da kendi Kafka veya Zookeeper kümelerinizi çalıştırmak zorunda kalmadan akış yapmanıza olanak tanır. Bu öğretici için Apache Spark v2.4+ ve Apache Kafka v2.0+ gerekir.
 
 > [!NOTE]
-> Bu örnek [GitHub'da](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) mevcuttur
+> Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark/) 'da kullanılabilir
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama
@@ -43,7 +43,7 @@ Bu öğreticiye başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
-Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Bkz. Ad alanı ve olay hub'ı oluşturmak için yönergeler için bir [olay hub'ı oluşturma.](event-hubs-create.md) Daha sonra kullanmak üzere Event Hubs bağlantı dizesini ve tam etki alanı adını (FQDN) alın. Yönergeler için bkz. [Event Hubs bağlantı dizesi alma](event-hubs-get-connection-string.md). 
+Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Ad alanı ve Olay Hub 'ı oluşturma yönergeleri için bkz. bir [Olay Hub 'ı oluşturma](event-hubs-create.md) . Daha sonra kullanmak üzere Event Hubs bağlantı dizesini ve tam etki alanı adını (FQDN) alın. Yönergeler için bkz. [Event Hubs bağlantı dizesi alma](event-hubs-get-connection-string.md). 
 
 ## <a name="clone-the-example-project"></a>Örnek projeyi kopyalama
 Azure Event Hubs deposunu kopyalayın ve `tutorials/spark` alt klasörüne gidin:
@@ -79,7 +79,7 @@ val df_write = df.writeStream
 ```
 
 ## <a name="write-to-event-hubs-for-kafka"></a>Kafka için Event Hubs'a yazma
-Kafka'ya yazdığınız gibi Event Hub'larına da yazabilirsiniz. Yapılandırmanızı güncelleştirip **BOOTSTRAP_SERVERS** ve **EH_SASL** öğelerini Event Hubs ad alanınızdan gelen bilgilerle değiştirmeyi unutmayın.  Örnek kodun tamamı için GitHub'da sparkProducer.scala dosyasına bakın. 
+Ayrıca, Kafka 'e yazdığınız şekilde Event Hubs de yazabilirsiniz. Yapılandırmanızı güncelleştirip **BOOTSTRAP_SERVERS** ve **EH_SASL** öğelerini Event Hubs ad alanınızdan gelen bilgilerle değiştirmeyi unutmayın.  Örnek kodun tamamı için GitHub'da sparkProducer.scala dosyasına bakın. 
 
 ```scala
 df = /**Dataframe**/
@@ -99,12 +99,12 @@ df.writeStream
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kafka için Etkinlik Hub'ları ve Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
+Kafka için Event Hubs ve Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
 - [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
-- [Kafka Connect'i bir etkinlik merkeziyle bütünleştirin](event-hubs-kafka-connect-tutorial.md)
+- [Kafka Connect 'i bir olay hub 'ı ile tümleştirme](event-hubs-kafka-connect-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md)
-- [Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu](apache-kafka-developer-guide.md)
+- [Akka Streams’i bir olay hub’ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)
 

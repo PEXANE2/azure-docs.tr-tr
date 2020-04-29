@@ -1,6 +1,6 @@
 ---
-title: Bulut Hizmeti yaşam döngüsü etkinliklerini ele alın | Microsoft Dokümanlar
-description: Bulut Hizmeti rolünün yaşam döngüsü yöntemlerinin .NET'te nasıl kullanılabileceğini öğrenin
+title: Bulut hizmeti yaşam döngüsü olaylarını işle | Microsoft Docs
+description: Bulut hizmeti rolü yaşam döngüsü yöntemlerinin .NET 'te nasıl kullanılabileceğini öğrenin
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,40 +9,40 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652086"
 ---
-# <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET'te Bir Web veya İşçi rolünün Yaşam Döngüsünü özelleştirin
-Bir alt rol oluşturduğunuzda, yaşam döngüsü olaylarına yanıt vermenize izin veren yöntemleri geçersiz kılmanız için gereken yöntemleri sağlayan [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfını genişletirsiniz. Web rolleri için bu sınıf isteğe bağlıdır, bu nedenle yaşam döngüsü olaylarına yanıt vermek için kullanmanız gerekir.
+# <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET ' te bir Web veya çalışan rolünün yaşam döngüsünü özelleştirme
+Bir çalışan rolü oluşturduğunuzda, yaşam döngüsü olaylarına yanıt vermenize izin veren Yöntemler sağlayan [Roleentrypoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfını genişletebilirsiniz. Web rolleri için bu sınıf isteğe bağlıdır, bu nedenle yaşam döngüsü olaylarına yanıt vermek için kullanılmalıdır.
 
 ## <a name="extend-the-roleentrypoint-class"></a>RoleEntryPoint sınıfını genişletme
-[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfı, bir web veya çalışan rolünü **başlattığında,** **çalıştırdığında**veya **durdurduğunda** Azure tarafından çağrılan yöntemleri içerir. Rol başlatma, rol kapatma dizileri veya rolün yürütme iş parçacığı yönetmek için isteğe bağlı olarak bu yöntemleri geçersiz kılabilirsiniz. 
+[Roleentrypoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfı, bir Web veya çalışan rolünü **başlatan**, **çalıştırdığında**veya **durdurduğu** zaman Azure tarafından çağrılan yöntemleri içerir. Rol başlatma, rol kapatması sıraları veya rolün yürütme iş parçacığını yönetmek için isteğe bağlı olarak bu yöntemleri geçersiz kılabilirsiniz. 
 
-**RoleEntryPoint'i**genişletirken, yöntemlerin aşağıdaki davranışlarına dikkat etmeniz gerekir:
+**Roleentrypoint**'yi genişletirken, yöntemlerin aşağıdaki davranışlarından haberdar olmanız gerekir:
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) yöntemi boolean değerini döndürür, bu nedenle bu yöntemden **yanlış** dönmek mümkündür.
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) yöntemi bir Boole değeri döndürür, bu nedenle bu yöntemden **false** döndürmek mümkündür.
   
-   Kodunuz **yanlış**döndürürse, rol işlemi, herhangi bir kapatma sırası çalıştırmadan aniden sonlandırılır. Genel olarak, **OnStart** yönteminden **false** dönmekten kaçınmalısınız.
-* **RoleEntryPoint** yönteminin aşırı yüklenmesi nde yakalanmamış herhangi bir özel durum işlenmemiş bir özel durum olarak kabul edilir.
+   Kodunuz **yanlış**döndürürse, yapmış olduğunuz herhangi bir kapalı sırası çalıştırmadan rol işlemi aniden sonlandırılır. Genel olarak, **OnStart** yönteminden **false** döndürmekten kaçınmalısınız.
+* **Roleentrypoint** yönteminin aşırı yüklemesi içindeki yakalanamayan özel durum, işlenmemiş bir özel durum olarak değerlendirilir.
   
-   Yaşam döngüsü yöntemlerinden birinde bir özel durum oluşursa, Azure [İşlenmemiş Özel Durum](/dotnet/api/system.appdomain.unhandledexception) olayını yükseltir ve işlem sonlandırılır. Rolünüz çevrimdışı hale alındıktan sonra Azure tarafından yeniden başlatılır. İşlenmemiş bir özel durum oluştuğunda, [Durdurma](/previous-versions/azure/reference/ee758136(v=azure.100)) olayı yükseltilmez ve **OnStop** yöntemi çağrılmaz.
+   Yaşam döngüsü yöntemlerinden biri içinde bir özel durum oluşursa, Azure [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) olayını yükseltir ve sonra işlem sonlandırılır. Rolünüz çevrimdışına alındıktan sonra Azure tarafından yeniden başlatılır. İşlenmeyen bir özel durum oluştuğunda, [durdurma](/previous-versions/azure/reference/ee758136(v=azure.100)) olayı oluşturulmaz ve **OnStop** yöntemi çağrılmaz.
 
-Rolünüz başlamazsa veya başlatma, meşgul ve durdurma durumları arasında geri dönüşüm başlatıyorsa, kodunuz, rol her yeniden başlatılınca yaşam döngüsü olaylarından biri içinde işlenmemiş bir özel durum atıyor olabilir. Bu durumda, özel durumun nedenini belirlemek ve uygun şekilde işlemek için [İşlenmemiş Özel Durum](/dotnet/api/system.appdomain.unhandledexception) olayını kullanın. Rolünüz, rolün yeniden başlatılmasına neden olan [Çalıştır](/previous-versions/azure/reference/ee772746(v=azure.100)) yönteminden de dönüyor olabilir. Dağıtım durumları hakkında daha fazla bilgi için, [Rolleri Geri Dönüştürmeye Neden Olan Sık Karşılaşılan Sorunlar'a](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)bakın.
+Rolünüzün başlatılması veya başlatma, meşgul ve durdurma durumları arasında geri dönüştürülmesi durumunda, kodunuz rol her yeniden başlatıldığında bir yaşam döngüsü olaylarında işlenmeyen bir özel durum verebilir. Bu durumda, özel durumun nedenini öğrenmek ve uygun şekilde işlemek için [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) olayını kullanın. Rolünüz, rolün yeniden başlatılmasına neden olan [Run](/previous-versions/azure/reference/ee772746(v=azure.100)) yönteminden da döndürülemeyebilir. Dağıtım durumları hakkında daha fazla bilgi için bkz. [rollerin geri dönüştürülmesine neden olan yaygın sorunlar](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Uygulamanızı geliştirmek **için Microsoft Visual Studio için Azure Araçlarını** kullanıyorsanız, rol projesi şablonları *WebRole.cs* ve *WorkerRole.cs* dosyalarında **RoleEntryPoint** sınıfını sizin için otomatik olarak genişletir.
+> Uygulamanızı geliştirmek için **Microsoft Visual Studio Için Azure araçlarını** kullanıyorsanız, rol proje şablonları, *WebRole.cs* ve *WorkerRole.cs* dosyalarındaki **roleentrypoint** sınıfını sizin için otomatik olarak genişletir.
 > 
 > 
 
 ## <a name="onstart-method"></a>OnStart yöntemi
-Rol örneğiniz Azure tarafından çevrimiçi duruma getirildiğinde **OnStart** yöntemi çağrılır. OnStart kodu yürütülse de, rol örneği **Meşgul** olarak işaretlenir ve yük bakiyesi tarafından dış trafik yönlendirilmez. Olay işleyicileri uygulama ve [Azure Tanılama'yı](cloud-services-how-to-monitor.md)başlatma gibi başlatma çalışması gerçekleştirmek için bu yöntemi geçersiz kılabilirsiniz.
+**OnStart** yöntemi, rol örneğiniz Azure tarafından çevrimiçi yapıldığında çağrılır. OnStart kodu yürütülürken, rol örneği **meşgul** olarak işaretlenir ve yük dengeleyici tarafından buna hiçbir dış trafik yönlendirilmeyecektir. Olay işleyicilerini uygulama ve [Azure tanılama](cloud-services-how-to-monitor.md)başlatma gibi başlatma işlerini gerçekleştirmek için bu yöntemi geçersiz kılabilirsiniz.
 
-**OnStart** **doğru**döndürürse, örnek başarıyla başlatılır ve Azure **RoleEntryPoint.Run** yöntemini çağırır. **OnStart** yanlış döndürürse, rol planlanan kapatma sıralarını yürütmeden hemen sona erer. **false**
+**OnStart** **doğru**döndürürse, örnek başarıyla başlatılır ve Azure **roleentrypoint. Run** yöntemini çağırır. **OnStart** **yanlış**döndürürse, rol, planlı herhangi bir kapalı dizileri yürütmeden hemen sona erer.
 
-Aşağıdaki kod örneği, **OnStart** yöntemini nasıl geçersiz kılınan gösteriş gösterir. Bu yöntem, rol örneği başladığında ve günlüğe kaydetme verilerinin bir depolama hesabına aktarılmasını ayarladığında bir tanılama monitörünü yapılandırır ve başlatır:
+Aşağıdaki kod örneği, **OnStart** yönteminin nasıl geçersiz kılınacağını göstermektedir. Bu yöntem, rol örneği başlatıldığında bir tanılama izleyicisini yapılandırır ve başlatır ve günlüğe kaydetme verilerinin bir depolama hesabına aktarımını ayarlar:
 
 ```csharp
 public override bool OnStart()
@@ -59,23 +59,23 @@ public override bool OnStart()
 ```
 
 ## <a name="onstop-method"></a>OnStop yöntemi
-**OnStop** yöntemi, bir rol örneği Azure tarafından çevrimdışı hale alındıktan sonra ve işlem çıkmadan önce çağrılır. Rol örneğinizin temiz bir şekilde kapanması için gereken kodu çağırmak için bu yöntemi geçersiz kılabilirsiniz.
+**OnStop** yöntemi, bir rol örneği Azure tarafından çevrimdışına alındıktan sonra ve işlem çıkmadan önce çağrılır. Rol örneğiniz için gereken kodu, düzgün şekilde kapatılacak şekilde çağırmak için bu yöntemi geçersiz kılabilirsiniz.
 
 > [!IMPORTANT]
-> **OnStop** yönteminde çalışan kodun, kullanıcı tarafından başlatılan kapatma dışındaki nedenlerden ötürü çağrıldığında tamamlanması sınırlı bir süre vardır. Bu süre geçtikten sonra işlem sonlandırılır, bu nedenle **OnStop** yöntemindeki kodun hızlı bir şekilde çalıştırıladığından veya tamamlanmak üzere çalışmayan tolere edebileceğinden emin olmalısınız. **Durdurma** olayı yükseltildikten sonra **OnStop** yöntemi çağrılır.
+> **OnStop** yönteminde çalışan kodun, Kullanıcı tarafından başlatılan bir kapatmasından farklı nedenlerle çağrıldığında tamamlaması sınırlı bir zaman vardır. Bu süre dolduktan sonra, işlem sonlandırılır, bu nedenle **OnStop** yöntemindeki kodun, tamamlanana kadar hızlı veya tolerans ile çalışmasını sağlamak zorundasınız. **OnStop** yöntemi, **durdurma** olayı oluşturulduktan sonra çağrılır.
 > 
 > 
 
-## <a name="run-method"></a>Çalıştırma yöntemi
-Rol örneğiniz için uzun soluklu bir iş parçacığı uygulamak için **Çalıştır** yöntemini geçersiz kılabilirsiniz.
+## <a name="run-method"></a>Run yöntemi
+Rol örneğiniz için uzun süre çalışan bir iş parçacığı uygulamak üzere **Run** metodunu geçersiz kılabilirsiniz.
 
-**Çalıştır** yöntemini geçersiz kılmak gerekli değildir; varsayılan uygulama sonsuza kadar uyuyan bir iş parçacığı başlatır. **Çalıştır** yöntemini geçersiz kılarsanız, kodunuz süresiz olarak engellemelidir. **Çalıştır** yöntemi geri dönerse, rol otomatik olarak geri dönüştürülür; başka bir deyişle, Azure **Durdurma** olayını yükseltir ve kapatma dizilerinizin rol çevrimdışı olmadan önce yürütülebileceği **onstop** yöntemini çağırır.
+**Run** yönteminin geçersiz kılınması gerekli değildir; Varsayılan uygulama, sonsuza kadar uykudaki bir iş parçacığını başlatır. **Run** yöntemini geçersiz kılarsınız, kodunuz süresiz olarak engellenmelidir. **Run** yöntemi döndürürse, rol otomatik olarak düzgün şekilde geri dönüştürülür; diğer bir deyişle, Azure **durdurma** olayını yükseltir ve **OnStop** metodunu çağırarak, bu sayede, rol çevrimdışına alınmadan önce kapalı olması gerekir.
 
-### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Bir web rolü için ASP.NET yaşam döngüsü yöntemlerini uygulama
-**RoleEntryPoint** sınıfı tarafından sağlananlara ek olarak, bir web rolü için başlatma ve kapatma dizilerini yönetmek için ASP.NET yaşam döngüsü yöntemlerini kullanabilirsiniz. Bu, varolan bir ASP.NET uygulamasını Azure'a taşımanız durumunda uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **RoleEntryPoint** yöntemleri içinden çağrılır. **\_Application Start** yöntemi **RoleEntryPoint.OnStart** yöntemi bittikten sonra çağrılır. **\_Application End** yöntemi **RoleEntryPoint.OnStop** yöntemi çağrılmadan önce çağrılır.
+### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Web rolü için ASP.NET yaşam döngüsü yöntemlerini uygulama
+Bir Web rolü için başlatma ve kapalı dizileri yönetmek üzere **Roleentrypoint** sınıfı tarafından sağlananlara ek olarak ASP.net yaşam döngüsü yöntemlerini kullanabilirsiniz. Mevcut bir ASP.NET uygulamasını Azure 'a taşırken bu, uyumluluk amacıyla yararlı olabilir. ASP.NET yaşam döngüsü yöntemleri **Roleentrypoint** yöntemlerinin içinden çağırılır. **\_Uygulama başlatma** yöntemi **roleentrypoint. OnStart** yöntemi bittikten sonra çağrılır. **\_Uygulama End** yöntemi **roleentrypoint. OnStop** yöntemi çağrılmadan önce çağrılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bulut hizmet paketi oluşturmayı](cloud-services-model-and-package.md)öğrenin.
+[Bulut hizmeti paketi oluşturmayı](cloud-services-model-and-package.md)öğrenin.
 
 
 

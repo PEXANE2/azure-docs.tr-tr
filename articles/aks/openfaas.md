@@ -1,45 +1,45 @@
 ---
-title: Azure Kubernetes Hizmeti (AKS) ile OpenFaaS'ı kullanın
-description: Kapsayıcılarla sunucusuz işlevler oluşturmak için OpenFaaS'ı Azure Kubernetes Hizmeti (AKS) kümesinde nasıl dağıtıp kullanacağınızı öğrenin.
+title: Azure Kubernetes Service (AKS) ile OpenFaaS kullanma
+description: Kapsayıcılarla sunucusuz işlevler oluşturmak için bir Azure Kubernetes Service (AKS) kümesi üzerinde OpenFaaS dağıtma ve kullanma hakkında bilgi edinin.
 author: justindavies
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 95039573c607f516755f08f1ebad8b968416ec8b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631466"
 ---
-# <a name="using-openfaas-on-aks"></a>OpenFaaS'ı AKS'de kullanma
+# <a name="using-openfaas-on-aks"></a>AKS üzerinde OpenFaaS kullanma
 
-[OpenFaaS][open-faas] kapsayıcılar kullanarak sunucusuz işlevler oluşturmak için bir çerçevedir. Bir açık kaynak projesi olarak, toplum içinde büyük ölçekli benimsenmesi kazanmıştır. Bu belge, OpenFaas'ı bir Azure Kubernetes Hizmeti (AKS) kümesinde yüklemeyi ve kullanmayı ayrıntılarıyla anlatır.
+[Openfaas][open-faas] , kapsayıcıların kullanımı aracılığıyla sunucusuz işlevler oluşturmaya yönelik bir çerçevedir. Açık kaynak proje olarak, topluluk içinde büyük ölçekli benimseme kazanımıştır. Bu belge, Azure Kubernetes Service (AKS) kümesine OpenFaas yükleme ve kullanma ayrıntılarını inceleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları tamamlamak için aşağıdakileri yapmanız gerekir.
+Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
 
-* Kubernetes temel anlayış.
-* Geliştirme sisteminizde yapılandırılan Bir Azure Kubernetes Hizmeti (AKS) kümesi ve AKS kimlik bilgileri.
-* Azure CLI geliştirme sisteminize yüklendi.
-* Sisteminizde yüklü komut satırı araçları git.
+* Kubernetes 'in temel olarak anlaşılmasıdır.
+* Geliştirme sisteminizde yapılandırılmış bir Azure Kubernetes hizmeti (AKS) kümesi ve AKS kimlik bilgileri.
+* Azure CLı, geliştirme sisteminize yüklendi.
+* Sisteminizde yüklü olan git komut satırı araçları.
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>OpenFaaS dümen grafiği repo ekle
+## <a name="add-the-openfaas-helm-chart-repo"></a>OpenFaaS Held grafik deposu ekleme
 
-Azure [https://shell.azure.com](https://shell.azure.com) Bulut Shell'i tarayıcınızda açmak için gidin.
+Tarayıcınızda Azure Cloud Shell [https://shell.azure.com](https://shell.azure.com) açmak için bölümüne gidin.
 
-OpenFaaS, en son değişiklikleri takip etmek için kendi dümen grafiklerini korur.
+OpenFaaS, en son değişikliklerle güncel kalmasını sağlamak için kendi hele grafiklerini saklar.
 
 ```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
 helm repo update
 ```
 
-## <a name="deploy-openfaas"></a>OpenFaaS'ı dağıtın
+## <a name="deploy-openfaas"></a>OpenFaaS dağıtma
 
-İyi bir uygulama olarak, OpenFaaS ve OpenFaaS işlevleri kendi Kubernetes ad alanında depolanmalıdır.
+İyi bir uygulama olarak, OpenFaaS ve OpenFaaS işlevleri kendi Kubernetes ad alanı içinde depolanmalıdır.
 
 OpenFaaS sistemi ve işlevleri için bir ad alanı oluşturun:
 
@@ -47,7 +47,7 @@ OpenFaaS sistemi ve işlevleri için bir ad alanı oluşturun:
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-OpenFaaS UI Portalı ve REST API için bir parola oluşturun:
+OpenFaaS UI portalı ve REST API için bir parola oluşturun:
 
 ```console
 # generate a random password
@@ -58,11 +58,11 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-Sırrın değerini . `echo $PASSWORD`
+Gizli dizi değerini ile `echo $PASSWORD`edinebilirsiniz.
 
-Burada oluşturduğumuz parola, bulut LoadBalancer aracılığıyla Internet'e maruz kalan OpenFaaS Ağ Geçidi'nde temel kimlik doğrulamasını etkinleştirmek için dümen grafiği tarafından kullanılacaktır.
+Burada oluşturduğumuz parola, bir bulut yük dengeleyici aracılığıyla Internet 'e sunulan OpenFaaS ağ geçidinde temel kimlik doğrulamasını etkinleştirmek için helk grafiği tarafından kullanılacaktır.
 
-OpenFaaS için bir Miğfer grafiği klonlanmış depoya dahildir. OpenFaaS'ı AKS kümenize dağıtmak için bu grafiği kullanın.
+OpenFaaS için bir HELI grafiği kopyalanmış depoya dahil edilmiştir. AKS kümenize OpenFaaS dağıtmak için bu grafiği kullanın.
 
 ```console
 helm upgrade openfaas --install openfaas/openfaas \
@@ -94,13 +94,13 @@ To verify that openfaas has started, run:
   kubectl --namespace=openfaas get deployments -l "release=openfaas, app=openfaas"
 ```
 
-OpenFaaS ağ geçidine erişmek için ortak bir IP adresi oluşturulur. Bu IP adresini almak için [kubectl get service][kubectl-get] komutunu kullanın. IP adresinin hizmete atanması bir dakika sürebilir.
+OpenFaaS ağ geçidine erişmek için genel bir IP adresi oluşturulur. Bu IP adresini almak için [kubectl Get Service][kubectl-get] komutunu kullanın. IP adresinin hizmete atanması bir dakika sürebilir.
 
 ```console
 kubectl get service -l component=gateway --namespace openfaas
 ```
 
-Çıkış.
+Çıktıların.
 
 ```output
 NAME               TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)          AGE
@@ -108,34 +108,34 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-OpenFaaS sistemini test etmek için, bu örnekte 8080 `http://52.186.64.52:8080` no'daki bağlantı noktasındaki harici IP adresine göz atın. Oturum açmanız istenir. Parolanızı almak için `echo $PASSWORD`.
+OpenFaaS sistemini test etmek için, bu örnekte 8080 `http://52.186.64.52:8080` numaralı bağlantı NOKTASıNDAKI dış IP adresine gidin. Oturum açmanız istenir. Parolanızı getirmek için girin `echo $PASSWORD`.
 
-![OpenFaaS UI](media/container-service-serverless/openfaas.png)
+![OpenFaaS Kullanıcı arabirimi](media/container-service-serverless/openfaas.png)
 
-Son olarak, OpenFaaS CLI'yi yükleyin. Bu örnekte bira kullanılır, daha fazla seçenek için [OpenFaaS CLI belgelerine][open-faas-cli] bakın.
+Son olarak, OpenFaaS CLı 'yı yükler. Bu örnek Brew kullandı, daha fazla seçenek için [Openfaas CLI belgelerine][open-faas-cli] bakın.
 
 ```console
 brew install faas-cli
 ```
 
-Yukarıda `$OPENFAAS_URL` bulunan genel IP'ye ayarlayın.
+Yukarıda `$OPENFAAS_URL` bulunan genel IP 'ye ayarlayın.
 
-Azure CLI ile giriş yapın:
+Azure CLı ile oturum açın:
 
 ```console
 export OPENFAAS_URL=http://52.186.64.52:8080
 echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
-## <a name="create-first-function"></a>İlk işlevi oluşturma
+## <a name="create-first-function"></a>İlk işlev oluştur
 
-OpenFaaS çalışır durumda olduğuna göre, OpenFaas portalını kullanarak bir işlev oluşturun.
+OpenFaaS işletimsel olduğuna göre, OpenFaas portalını kullanarak bir işlev oluşturun.
 
-Yeni **İşlev Dağıt'a** tıklayın ve **Figlet'i**arayın. Figlet işlevini seçin ve **Dağıt'ı**tıklatın.
+**Yeni Işlev Dağıt ' a** tıklayın ve **figlet**için arama yapın. Figlet işlevini seçin ve **Dağıt**' a tıklayın.
 
 ![Figlet](media/container-service-serverless/figlet.png)
 
-İşlevi çağırmak için bukle'yi kullanın. Aşağıdaki örnekteki IP adresini OpenFaas ağ geçidinizle değiştirin.
+İşlevi çağırmak için kıvrımlı kullanın. Aşağıdaki örnekteki IP adresini OpenFaas ağ geçidinizin ile değiştirin.
 
 ```console
 curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
@@ -152,9 +152,9 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 
 ```
 
-## <a name="create-second-function"></a>İkinci işlev oluşturma
+## <a name="create-second-function"></a>İkinci işlev oluştur
 
-Şimdi ikinci bir fonksiyon oluşturun. Bu örnek OpenFaaS CLI kullanılarak dağıtılır ve özel bir kapsayıcı görüntüsü ve Cosmos DB'den veri alma içerir. İşlev oluşturmadan önce birkaç öğenin yapılandırılması gerekir.
+Şimdi ikinci bir işlev oluşturun. Bu örnek, OpenFaaS CLı kullanılarak dağıtılır ve özel bir kapsayıcı görüntüsü içerir ve bir Cosmos DB verileri alır. İşlev oluşturulmadan önce birkaç öğenin yapılandırılması gerekir.
 
 İlk olarak, Cosmos DB için yeni bir kaynak grubu oluşturun.
 
@@ -162,15 +162,15 @@ curl -X POST http://52.186.64.52:8080/function/figlet -d "Hello Azure"
 az group create --name serverless-backing --location eastus
 ```
 
-Bir `MongoDB`tür CosmosDB örneği dağıtın. Örneğin benzersiz bir ada `openfaas-cosmos` ihtiyacı var, ortamınıza özgü bir şey için güncelleştirin.
+Türünün `MongoDB`cosmosdb örneğini dağıtın. Örneğin benzersiz bir adı olmalıdır ve ortamınıza özgü `openfaas-cosmos` bir öğe için güncelleştirin.
 
 ```azurecli-interactive
 az cosmosdb create --resource-group serverless-backing --name openfaas-cosmos --kind MongoDB
 ```
 
-Cosmos veritabanı bağlantı dizesini alın ve bir değişkende saklayın.
+Cosmos veritabanı bağlantı dizesini alın ve bir değişkende depolayın.
 
-Bağımsız değişkenin `--resource-group` değerini kaynak grubunuzun adına, bağımsız `--name` değişkeni de Cosmos DB'nizin adına güncelleştirin.
+`--resource-group` Bağımsız değişkeninin değerini kaynak grubunuzun adı ve `--name` bağımsız değişkeni Cosmos db adı olarak güncelleştirin.
 
 ```azurecli-interactive
 COSMOS=$(az cosmosdb list-connection-strings \
@@ -180,7 +180,7 @@ COSMOS=$(az cosmosdb list-connection-strings \
   --output tsv)
 ```
 
-Şimdi Cosmos DB'yi test verileriyle doldur. Adlandırılmış `plans.json` bir dosya oluşturun ve aşağıdaki json'da kopyalayın.
+Artık Cosmos DB test verileriyle doldurun. Aşağıdaki JSON içinde adlı `plans.json` bir dosya oluşturun ve kopyalayın.
 
 ```json
 {
@@ -194,9 +194,9 @@ COSMOS=$(az cosmosdb list-connection-strings \
 }
 ```
 
-CosmosDB örneğini verilerle yüklemek için *mongoimport* aracını kullanın.
+CosmosDB örneğini verilerle birlikte yüklemek için *mongoımport* aracını kullanın.
 
-Gerekirse, MongoDB araçlarını yükleyin. Aşağıdaki örnek, bu araçları demleme kullanarak yükler, diğer seçenekler için [MongoDB belgelerine][install-mongo] bakın.
+Gerekirse, MongoDB araçları 'nı yükler. Aşağıdaki örnek, Brew kullanarak bu araçları yükle, diğer seçeneklere yönelik [MongoDB belgelerine][install-mongo] bakın.
 
 ```console
 brew install mongodb
@@ -215,20 +215,20 @@ mongoimport --uri=$COSMOS -c plans < plans.json
 2018-02-19T14:42:14.918+0000    imported 1 document
 ```
 
-İşlev oluşturmak için aşağıdaki komutu çalıştırın. OpenFaaS `-g` ağ geçidi adresinizle bağımsız değişkenin değerini güncelleştirin.
+İşlevi oluşturmak için aşağıdaki komutu çalıştırın. `-g` Bağımsız değişkenin değerini OpenFaaS ağ geçidi adresinizle güncelleştirin.
 
 ```console
 faas-cli deploy -g http://52.186.64.52:8080 --image=shanepeckham/openfaascosmos --name=cosmos-query --env=NODE_ENV=$COSMOS
 ```
 
-Dağıtıldıktan sonra, işlev için yeni oluşturulan OpenFaaS bitiş noktanızı görmeniz gerekir.
+Dağıtıldıktan sonra, işlev için yeni oluşturduğunuz OpenFaaS uç noktasını görmeniz gerekir.
 
 ```output
 Deployed. 202 Accepted.
 URL: http://52.186.64.52:8080/function/cosmos-query
 ```
 
-Bukle kullanarak işlevi test edin. IP adresini OpenFaaS ağ geçidi adresiyle güncelleştirin.
+İşlevi kıvrımlı kullanarak test edin. IP adresini OpenFaaS ağ geçidi adresiyle güncelleştirin.
 
 ```console
 curl -s http://52.186.64.52:8080/function/cosmos-query
@@ -240,13 +240,13 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 [{"ID":"","Name":"two_person","FriendlyName":"","PortionSize":"","MealsPerWeek":"","Price":72,"Description":"Our basic plan, delivering 3 meals per week, which will feed 1-2 people."}]
 ```
 
-Ayrıca OpenFaaS UI içindeki işlevi test edebilirsiniz.
+Ayrıca, işlevi OpenFaaS Kullanıcı arabirimi içinde de test edebilirsiniz.
 
 ![alternatif metin](media/container-service-serverless/OpenFaaSUI.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-OpenFaaS atölyesi ile kendi GitHub botunuzu oluşturma, sırları tüketme, ölçümleri görüntüleme ve otomatik ölçekleme gibi konuları kapsayan bir dizi uygulamalı laboratuvar aracılığıyla öğrenmeye devam edebilirsiniz.
+Kendi GitHub bot ' ı oluşturma, gizli dizileri kullanma, ölçümleri görüntüleme ve otomatik ölçeklendirme gibi konuları kapsayan bir uygulamalı laboratuvar kümesi aracılığıyla OpenFaaS Workshop ile bilgi almaya devam edebilirsiniz.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

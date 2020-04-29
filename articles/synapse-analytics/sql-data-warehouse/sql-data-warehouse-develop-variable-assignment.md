@@ -1,6 +1,6 @@
 ---
-title: Değişkenleri atama
-description: Bu makalede, SQL havuzunda T-SQL değişkenleri atamak için gerekli ipuçlarını bulacaksınız.
+title: Değişken atama
+description: Bu makalede, SQL havuzunda T-SQL değişkenlerini atamaya yönelik temel ipuçları bulacaksınız.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,26 +12,26 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633418"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>Synapse SQL havuzunda değişken atama
+# <a name="assign-variables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda değişken atama
 
-Bu makalede, SQL havuzunda T-SQL değişkenleri atamak için gerekli ipuçlarını bulacaksınız.
+Bu makalede, SQL havuzunda T-SQL değişkenlerini atamaya yönelik temel ipuçları bulacaksınız.
 
-## <a name="set-variables-with-declare"></a>DECLARE ile değişkenleri ayarlama
+## <a name="set-variables-with-declare"></a>DECLARE ile değişkenleri ayarla
 
-SQL havuzundaki değişkenler `DECLARE` deyim veya `SET` deyim kullanılarak ayarlanır. DEĞIŞKENleri DECLARE ile başlatma, SQL havuzunda değişken değeri ayarlamanın en esnek yollarından biridir.
+SQL havuzundaki değişkenler, `DECLARE` ifadesini veya `SET` ifadesini kullanarak ayarlanır. Değişkenleri DECLARE ile başlatmak, SQL havuzunda değişken değer ayarlamak için en esnek yollarla biridir.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-Aynı anda birden fazla değişken ayarlamak için DECLARE'yi de kullanabilirsiniz. Aşağıdakileri yapmak için SELECT veya UPDATE'i kullanamazsınız:
+Aynı anda birden fazla değişken ayarlamak için BILDIR ' i de kullanabilirsiniz. Şunları yapmak için SELECT veya UPDATE kullanamazsınız:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE deyiminde bir değişkeni baş harfe ve kullanamazsın. Noktayı göstermek için, hem başharfe @p1 hem de aynı DECLARE deyiminde kullanıldığından aşağıdaki örneğe izin **verilmez.** Bu nedenle, aşağıdaki örnekte bir hata verir:
+Aynı DECLARE ifadesinde bir değişkeni başlatamıyor ve kullanamazsınız. Bu @p1 noktayı göstermek için, aynı Declare ifadesinde hem başlatılmış hem de kullanıldığı için aşağıdaki **örneğe izin verilmez** . Bu nedenle, aşağıdaki örnek bir hata verir:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,11 +47,11 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="set-values-with-set"></a>SET ile değerleri ayarlama
+## <a name="set-values-with-set"></a>Değerleri ayarla ayarla
 
-SET, tek bir değişkeni ayarlamak için yaygın bir yöntemdir.
+SET, tek bir değişken ayarlamak için yaygın bir yöntemdir.
 
-Aşağıdaki ifadeler, SET ile bir değişken ayarlamak için geçerli yollardır:
+Aşağıdaki deyimler, SET ile bir değişken ayarlamaya yönelik tüm geçerli yollardır:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -60,7 +60,7 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-SET ile aynı anda yalnızca bir değişken ayarlayabilirsiniz. Ancak, bileşik işleçler izin verilir.
+Tek seferde yalnızca bir değişken ayarlayabilirsiniz. Ancak, bileşik işleçlere izin verilir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -68,4 +68,4 @@ Değişken atama için UPDATE kullanamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

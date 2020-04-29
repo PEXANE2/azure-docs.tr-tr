@@ -1,6 +1,6 @@
 ---
 title: Güvenlik denetimleri
-description: Azure SQL Veritabanı'nı değerlendirmek için güvenlik denetimleri denetim listesi
+description: Azure SQL veritabanı 'nı değerlendirmek için güvenlik denetimlerinin denetim listesi
 services: sql-database
 author: msmbaldwin
 manager: rkalrin
@@ -9,68 +9,68 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190684"
 ---
-# <a name="security-controls-for-azure-sql-database"></a>Azure SQL Veritabanı için güvenlik denetimleri
+# <a name="security-controls-for-azure-sql-database"></a>Azure SQL veritabanı için güvenlik denetimleri
 
-Bu makalede, Azure SQL Veritabanı'nda yerleşik güvenlik denetimleri belgelenir.
+Bu makale, Azure SQL veritabanı 'nda yerleşik olarak bulunan güvenlik denetimlerini belgeler.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-SQL Veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yönetilen örneği](sql-database-managed-instance.md)içerir. Aksi belirtilmedikçe, aşağıdaki girişler her iki teklif için de geçerlidir.
+SQL veritabanı hem [tek veritabanı](sql-database-single-index.yml) hem de [yönetilen örnek](sql-database-managed-instance.md)içerir. Aşağıdaki girişler, aksi belirtilmedikçe her iki teklife de uygulanır.
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet bitiş noktası desteği| Evet | Yalnızca [tek bir veritabanı](sql-database-single-index.yml) için geçerlidir. |
-| Azure Sanal Ağ enjeksiyon desteği| Evet | Yalnızca [yönetilen örnek](sql-database-managed-instance.md) için geçerlidir. |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet | Hem veritabanı düzeyinde hem de sunucu düzeyinde güvenlik duvarı. Ağ yalıtımı yalnızca [yönetilen örnektir.](sql-database-managed-instance.md) |
-| Zorunlu tünel desteği| Evet | [ExpressRoute](../expressroute/index.yml) VPN üzerinden [yönetilen örnek.](sql-database-managed-instance.md) |
+| Hizmet uç noktası desteği| Yes | Yalnızca [tek veritabanı](sql-database-single-index.yml) için geçerlidir. |
+| Azure sanal ağ ekleme desteği| Yes | Yalnızca [yönetilen örnek](sql-database-managed-instance.md) için geçerlidir. |
+| Ağ yalıtımı ve güvenlik duvarı desteği| Yes | Hem veritabanı düzeyinde hem de sunucu düzeyinde güvenlik duvarı. Ağ yalıtımı yalnızca [yönetilen örnek](sql-database-managed-instance.md) içindir. |
+| Zorlamalı tünel desteği| Yes | [ExpressRoute](../expressroute/index.yml) VPN aracılığıyla [yönetilen örnek](sql-database-managed-instance.md) . |
 
-## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
+## <a name="monitoring--logging"></a>& günlüğü izleme
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Günlük Analizi veya Uygulama Öngörüleri gibi Azure izleme desteği| Evet | Imperva'nın SIEM çözümü SecureSphere, [SQL denetimi](sql-database-auditing.md)yoluyla Azure [Event Hubs](../event-hubs/index.yml) entegrasyonu ile de desteklenir. |
-| Kontrol-düzlem ve yönetim-düzlem günlüğü ve denetimi| Evet | Yalnızca bazı etkinlikler için evet |
-| Veri düzlemi günlüğü ve denetimi | Evet | [VIA SQL denetimi](sql-database-auditing.md) |
+| Log Analytics veya Application Insights gibi Azure izleme desteği| Yes | EMVA 'dan SıEM çözümü olan SecureSphere, [SQL denetimi](sql-database-auditing.md)aracılığıyla [Azure Event Hubs](../event-hubs/index.yml) tümleştirme aracılığıyla da desteklenir. |
+| Denetim düzlemi ve yönetimi-düzlem günlüğü ve denetimi| Yes | Yalnızca bazı olaylar için Evet |
+| Veri düzlemi günlüğü ve denetimi | Yes | [SQL denetimi](sql-database-auditing.md) aracılığıyla |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik doğrulaması| Evet | Azure Active Directory (Azure AD) |
-| Yetkilendirme| Evet | None |
+| Kimlik Doğrulaması| Yes | Azure Active Directory (Azure AD) |
+| Yetkilendirme| Yes | Hiçbiri |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar |
+| Güvenlik denetimi | Evet/Hayır | Notlar |
 |---|---|--|
-| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet | "Şifreleme-in-use" olarak adlandırılan makalede açıklandığı gibi [Her Zaman Şifrelenmiş](sql-database-always-encrypted.md). Sunucu tarafı şifreleme [saydam veri şifreleme](transparent-data-encryption-azure-sql.md)kullanır.|
-| Aktarımda şifreleme:<ul><li>Azure ExpressRoute şifrelemesi</li><li>Sanal ağda şifreleme</li><li>Sanal ağlar arasında şifreleme</ul>| Evet | HTTPS'yi kullanma. |
-| CMK veya BYOK gibi şifreleme anahtarı işleme| Evet | Hem servis yönetimi hem de müşteri tarafından yönetilen anahtar işleme sunulmaktadır. İkincisi [Azure Key Vault](../key-vault/index.yml)üzerinden sunulmaktadır. |
-| Azure veri hizmetleri tarafından sağlanan sütun düzeyinde şifreleme| Evet | [Her zaman şifreli](sql-database-always-encrypted.md)üzerinden . |
-| Şifreli API aramaları| Evet | HTTPS/TLS kullanarak. |
+| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Yes | [Always Encrypted](sql-database-always-encrypted.md)makalesinde açıklandığı gibi "kullanımda olan şifreleme" olarak adlandırılır. Sunucu tarafı şifreleme, [Saydam veri şifrelemesi](transparent-data-encryption-azure-sql.md)kullanır.|
+| Aktarım sırasında şifreleme:<ul><li>Azure ExpressRoute şifrelemesi</li><li>Bir sanal ağda şifreleme</li><li>Sanal ağlar arasında şifreleme</ul>| Yes | HTTPS kullanma. |
+| CMK veya BYOK gibi şifreleme anahtarı işleme| Yes | Hem hizmet tarafından yönetilen hem de müşteri tarafından yönetilen anahtar işleme sunulur. İkincisi [Azure Key Vault](../key-vault/index.yml)aracılığıyla sunulur. |
+| Azure veri Hizmetleri tarafından sunulan sütun düzeyinde şifreleme| Yes | [Always Encrypted](sql-database-always-encrypted.md)üzerinden. |
+| Şifrelenmiş API çağrıları| Yes | HTTPS/TLS kullanma. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırmanın sürümü gibi yapılandırma yönetimi desteği| Hayır  | None |
+| Yapılandırma sürümü oluşturma gibi yapılandırma yönetimi desteği| Hayır  | Hiçbiri |
 
-## <a name="additional-security-controls-for-sql-database"></a>SQL Veritabanı için ek güvenlik denetimleri
+## <a name="additional-security-controls-for-sql-database"></a>SQL veritabanı için ek güvenlik denetimleri
 
-| Güvenlik kontrolü | Evet/Hayır | Notlar|
+| Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Önleyici: güvenlik açığı değerlendirmesi | Evet | Bkz. [SQL Güvenlik Açığı Değerlendirmesi hizmeti veritabanı güvenlik açıklarını belirlemenize yardımcı olur.](sql-vulnerability-assessment.md) |
-| Önleyici: veri bulma ve sınıflandırma  | Evet | Bkz. [Azure SQL Veritabanı ve SQL Veri Ambarı veri bulma & sınıflandırması.](sql-database-data-discovery-and-classification.md) |
-| Algılama: tehdit algılama | Evet | [Azure SQL Veritabanı için Gelişmiş Tehdit Koruması'na](sql-database-threat-detection-overview.md)bakın. |
+| Koruyucu: güvenlik açığı değerlendirmesi | Yes | Bkz. [SQL güvenlik açığı değerlendirmesi hizmeti, veritabanı güvenlik açıklarını belirlemenize yardımcı olur](sql-vulnerability-assessment.md). |
+| Koruyucu: veri bulma ve sınıflandırma  | Yes | Bkz. [Azure SQL veritabanı ve SQL veri ambarı veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md). |
+| Algılama: tehdit algılama | Yes | Bkz. [Azure SQL veritabanı Için Gelişmiş tehdit koruması](sql-database-threat-detection-overview.md). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

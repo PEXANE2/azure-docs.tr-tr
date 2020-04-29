@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB'deki WHERE yan tümcesi
+title: Azure Cosmos DB WHERE yan tümcesi
 description: Azure Cosmos DB için SQL WHERE yan tümcesi hakkında bilgi edinin
 author: timsander1
 ms.service: cosmos-db
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: tisande
 ms.openlocfilehash: 483a0533eafc81ef8698d260a753062ae074f6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898769"
 ---
-# <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'deki WHERE yan tümcesi
+# <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB WHERE yan tümcesi
 
-İsteğe bağlı`WHERE <filter_condition>`WHERE yan tümcesi ( ) koşul(lar) kaynak JSON öğelerinin sorgunun bunları sonuçlara dahil edilebis olması için karşılaması gerektiğini belirtir. Bir JSON öğesi, sonuç `true` için dikkate alınması gereken koşulları değerlendirmelidir. Dizin katmanı, sonucun parçası olabilecek kaynak öğelerin en küçük alt kümesini belirlemek için WHERE yan tümcesini kullanır.
+İsteğe bağlı WHERE yan tümcesi`WHERE <filter_condition>`(), sorgu IÇIN kaynak JSON öğelerinin sonuçlara dahil etmek için karşılaması gereken koşulları belirtir. Bir JSON öğesi, sonuç için göz önünde bulundurulması `true` için belirtilen koşulları değerlendirmelidir. Dizin Katmanı WHERE yan tümcesini kullanarak sonucun parçası olabilecek en küçük kaynak öğeleri alt kümesini tespit edebilir.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -29,21 +29,21 @@ WHERE <filter_condition>
 
 - `<filter_condition>`  
   
-   Belgelerin iade edilmesi için karşılanacak koşulu belirtir.  
+   Döndürülecek belgelerin karşılanabileceği koşulu belirtir.  
   
 - `<scalar_expression>`  
   
-   Hesaplanacak değeri temsil eden ifade. Ayrıntılar için [Skaler ifadelerine](sql-query-scalar-expressions.md) bakın.  
+   Hesaplanacağı değeri temsil eden ifade. Ayrıntılar için bkz. [skalar ifadeler](sql-query-scalar-expressions.md) .  
   
 ## <a name="remarks"></a>Açıklamalar
   
-  Belgenin döndürülebilmesi için filtre koşulu olarak belirtilen bir ifadenin doğru olarak değerlendirilmesi gerekir. Yalnızca Boolean `true` değeri durumu, başka bir değeri karşılar: tanımsız, null, false, Number, Array veya Object koşulu karşılamaz.
+  Belgenin döndürülmesi için filtre koşulu true olarak değerlendirilmelidir. Koşulu yalnızca Boole `true` değeri karşılanacak, diğer tüm değerler: tanımsız, null, yanlış, sayı, dizi veya nesne koşulu karşılamaz.
 
-  Eşitlik filtresinin `WHERE` bir parçası olarak yan tümceye bölüm anahtarınızı eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre olur.
+  Bölüm anahtarınızı bir eşitlik filtresinin parçası olarak `WHERE` yan tümcesine eklerseniz, sorgunuz otomatik olarak yalnızca ilgili bölümlere filtre uygulanır.
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıdaki sorgu, `id` değeri `AndersenFamily`. `id` Özelliği olmayan veya değeri eşleşmeyen `AndersenFamily`tüm öğeyi hariç tutar.
+Aşağıdaki sorgu, `id` `AndersenFamily`değeri olan bir özelliği içeren öğeleri ister. Özelliği olmayan veya değeri eşleşmeyen `id` `AndersenFamily`herhangi bir öğeyi dışlar.
 
 ```sql
     SELECT f.address
@@ -65,19 +65,19 @@ Sonuçlar:
 
 ### <a name="scalar-expressions-in-the-where-clause"></a>WHERE yan tümcesindeki skaler ifadeler
 
-Önceki örnekte basit bir eşitlik sorgusu gösterildi. SQL API ayrıca çeşitli [skaler ifadeleri](sql-query-scalar-expressions.md)destekler. En sık kullanılan ikili ve unary ifadelerdir. Kaynak JSON nesnesinden özellik başvuruları da geçerli ifadelerdir.
+Önceki örnekte basit bir eşitlik sorgusu gösteriliyordu. SQL API ayrıca çeşitli [Skalar ifadeleri](sql-query-scalar-expressions.md)destekler. En yaygın olarak kullanılan ikili ve birli ifadelerdir. Kaynak JSON nesnesinden Özellik başvuruları da geçerli ifadelerdir.
 
-Desteklenen aşağıdaki ikili işleçleri kullanabilirsiniz:  
+Aşağıdaki desteklenen ikili işleçleri kullanabilirsiniz:  
 
-|**Operatör türü**  | **Değer** |
+|**İşleç türü**  | **Deðerler** |
 |---------|---------|
-|Aritmetik | +,-,*,/,% |
-|Bitsel    | \|, &, ^, <<, >>, >>> (sıfır dolgu sağ kaydırma) |
-|Mantıksal    | VE, YA DA, DEĞIL      |
-|Karşılaştırma | =, &lt;!=, &gt; &lt;, &gt;, =, =, <> |
-|Dize     |  \|\|(concatenate) |
+|Tiğinin | +,-,*,/,% |
+|Operatörün    | \|, &, ^,  <<,  >>,  >>>  (sıfır dolgulu sağa kaydırma) |
+|Mantıksal    | VE, VEYA DEĞIL      |
+|Karşılaştırma | =,! =, &lt;, &gt;, &lt;=, &gt;=,  <> |
+|Dize     |  \|\|karakter |
 
-Aşağıdaki sorgular ikili işleçleri kullanır:
+Aşağıdaki sorgular ikili işleçler kullanır:
 
 ```sql
     SELECT *
@@ -93,7 +93,7 @@ Aşağıdaki sorgular ikili işleçleri kullanır:
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-Ayrıca aşağıdaki örneklerde gösterildiği gibi unary işleçleri +,-, ~ve NOT sorgularında kullanabilirsiniz:
+Ayrıca, aşağıdaki örneklerde gösterildiği gibi, sorgularda DEĞIL Birli İşleçler +,-, ~, kullanabilirsiniz:
 
 ```sql
     SELECT *
@@ -105,10 +105,10 @@ Ayrıca aşağıdaki örneklerde gösterildiği gibi unary işleçleri +,-, ~ve 
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sorgularda özellik başvurularını da kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE f.isRegistered` özelliği içeren JSON öğesini ' `isRegistered` `true`ye eşit değere sahip döndürür. `false`Maddeyi `null` `Undefined` `<number>` `<array>`sonuçtan hariç tutar. `<string>` `<object>`
+Sorgularda Özellik başvurularını da kullanabilirsiniz. Örneğin, `SELECT * FROM Families f WHERE f.isRegistered` değerine eşit olan ÖZELLIĞI `isRegistered` içeren JSON öğesini döndürür. `true` `false`,,, `<number>`, `<string>`, `<object>`, Veya `null` `<array>`gibi `Undefined`herhangi bir değer, sonucu sonuçtan dışlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Başlarken](sql-query-getting-started.md)
-- [IN anahtar sözcük](sql-query-keywords.md#in)
+- [IN anahtar sözcüğü](sql-query-keywords.md#in)
 - [FROM yan tümcesi](sql-query-from.md)

@@ -1,6 +1,6 @@
 ---
-title: SQL havuzunuzu Gen2'ye geçirin
-description: Varolan bir SQL havuzunu Gen2'ye geçirme yönergeleri ve bölgeye göre geçiş zamanlaması.
+title: SQL havuzunuzu Gen2 'e geçirin
+description: Var olan bir SQL havuzunu bölgeye göre Gen2 ve geçiş zamanlamalarına geçirmeye yönelik yönergeler.
 services: synapse-analytics
 author: mlee3gsd
 ms.author: anjangsh
@@ -12,114 +12,114 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 6f2af826473bfd13f8100796a540d41cbedbb037
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631575"
 ---
-# <a name="upgrade-your-sql-pool-to-gen2"></a>SQL havuzunuzu Gen2'ye yükseltin
+# <a name="upgrade-your-sql-pool-to-gen2"></a>SQL havuzunuzu Gen2 'ye yükseltme
 
-Microsoft, SQL havuzu çalıştırmanın giriş düzeyi maliyetini azaltmaya yardımcı oluyor.  Zorlu sorguları işleyebilen daha düşük bilgi işlem katmanları artık SQL havuzu için kullanılabilir. [Gen2 için](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)alt bilgi işlem katmanı desteği tam duyuru okuyun. Yeni teklif aşağıdaki tabloda belirtilen bölgelerde mevcuttur. Desteklenen bölgeler için, varolan Gen1 SQL havuzları aşağıdakilerden biri aracılığıyla Gen2'ye yükseltilebilir:
+Microsoft, bir SQL havuzu çalıştırmanın giriş düzeyi maliyetini azaltmaya yardımcı oluyor.  Yoğun sorguları işleyebilen daha düşük işlem katmanları artık SQL havuzu için kullanılabilir. Gen2 için eksiksiz duyuru [daha düşük işlem katmanı desteğini](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)okuyun. Yeni teklif, aşağıdaki tabloda belirtilen bölgelerde kullanılabilir. Desteklenen bölgeler için, mevcut Gen1 SQL havuzları şu iki şekilde Gen2 'e yükseltilebilir:
 
-- **Otomatik yükseltme işlemi:** Otomatik yükseltmeler, hizmet bir bölgede kullanılabilir olur olmaz başlamaz.  Belirli bir bölgede otomatik yükseltmeler başladığında, seçtiğiniz bakım zamanlaması sırasında tek tek veri ambarı yükseltmeleri gerçekleşir.
-- [**Gen2'ye kendi kendine yükseltme:**](#self-upgrade-to-gen2) Gen2'ye kendi kendine yükseltme yaparak ne zaman yükseltme yapacağınızı kontrol edebilirsiniz. Bölgeniz henüz desteklenmiyorsa, geri yükleme noktasından desteklenen bir bölgedeki Gen2 örneğine doğrudan geri yükleyebilirsiniz.
+- **Otomatik yükseltme işlemi:** Hizmet bir bölgede kullanılabilir duruma geldiğinde otomatik yükseltmeler başlatılmaz.  Belirli bir bölgede otomatik yükseltmeler başlatıldığında, seçtiğiniz bakım zamanlamasında tek tek veri ambarı yükseltmeleri gerçekleşmeyecektir.
+- [**Gen2 'e kendi kendine yükseltme:**](#self-upgrade-to-gen2) Gen2 'e kendi kendine yükseltme yaparak ne zaman yükselteceğiniz kontrol edebilirsiniz. Bölgeniz henüz desteklenmiyorsa, bir geri yükleme noktasından doğrudan desteklenen bir bölgedeki bir Gen2 örneğine geri yükleyebilirsiniz.
 
-## <a name="automated-schedule-and-region-availability-table"></a>Otomatik Zamanlama ve Bölge Kullanılabilirlik Tablosu
+## <a name="automated-schedule-and-region-availability-table"></a>Otomatik zamanlama ve bölge kullanılabilirlik tablosu
 
-Aşağıdaki tablo, Alt Gen2 işlem katmanının ne zaman kullanıma sunulacağına ve otomatik yükseltmelerin ne zaman başlayacağına göre özetler. Tarihler değişebilir. Bölgenizin ne zaman kullanıma sunulduğuna görmek için tekrar kontrol edin.
+Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve otomatik yükseltmeler başlatıldığında bölge tarafından özetlenmektedir. Tarihler değişebilir. Bölgenizin ne zaman kullanılabilir hale geldiğini görmek için yeniden denetleyin.
 
-\*bölge için belirli bir zamanlamanın şu anda kullanılamada olmadığını gösterir.
+\*bölge için belirli bir zamanlamanın Şu anda kullanılamadığını belirtir.
 
-| **Bölge** | **Alt Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
+| **Bölge** | **Düşük Gen2 kullanılabilir** | **Otomatik yükseltmeler başlar** |
 |:--- |:--- |:--- |
 | Doğu Kanada |1 Haziran 2020 |1 Temmuz 2020 |
 | Doğu Çin |\* |\* |
 | Kuzey Çin |\* |\* |
 | Orta Almanya |\* |\* |
-| Almanya Batı Orta |Kullanılabilir |Mayıs 1, 2020 |
-| Hindistan Batı |Kullanılabilir |Mayıs 1, 2020  |
+| Almanya Orta Batı |Kullanılabilir |1 Mayıs 2020 |
+| Hindistan Batı |Kullanılabilir |1 Mayıs 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Otomatik yükseltme işlemi
 
-Yukarıdaki kullanılabilirlik grafiğine bağlı olarak, Gen1 örnekleriniz için otomatik yükseltmeler zamanlayacağız. SQL havuzunun kullanılabilirliği yle ilgili beklenmeyen kesintileri önlemek için, otomatik yükseltmeler bakım zamanlamanız sırasında zamanlanır. Yeni bir Gen1 örneği oluşturma yeteneği, Gen2'ye otomatik yükseltme yapılan bölgelerde devre dışı bırakılır. Gen1, otomatik yükseltmeler tamamlandıktan sonra amortismana dahil edilecektir. Zamanlamalar hakkında daha fazla bilgi için [bkz.](maintenance-scheduling.md#view-a-maintenance-schedule)
+Yukarıdaki kullanılabilirlik grafiğine bağlı olarak, Gen1 örneklerinizin otomatik yükseltmelerini planlıyoruz. SQL havuzunun kullanılabilirliğine ilişkin beklenmeyen kesintilere engel olmak için, otomatik yükseltmeler bakım zamanlamanız sırasında zamanlanır. Yeni bir Gen1 örneği oluşturma özelliği, Gen2 'ye otomatik olarak yükseltme yapılmakta olan bölgelerde devre dışı bırakılacak. Otomatik yükseltmeler tamamlandıktan sonra Gen1 kullanımdan kalkacaktır. Zamanlamalar hakkında daha fazla bilgi için bkz. [bakım zamanlaması görüntüleme](maintenance-scheduling.md#view-a-maintenance-schedule)
 
-SQL havuzunuzu yeniden başlattığımızda yükseltme işlemi bağlantıda kısa bir düşüş (yaklaşık 5 dk) içerecektir.  SQL havuzunuz yeniden başlatıldıktan sonra, tamamen kullanılabilir olacaktır. Ancak, yükseltme işlemi arka plandaki veri dosyalarını yükseltmeye devam ederken performansta bir bozulma yaşayabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
+Yükseltme işlemi, SQL havuzunuzu yeniden başlatdığımızda bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  SQL havuzunuz yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Ancak, yükseltme işlemi arka planda veri dosyalarını yükseltmeye devam ederken performans düşüklüğüne karşılaşabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
 
-Ayrıca, yeniden başlatmadan sonra daha büyük bir SLO ve kaynak sınıfını kullanarak tüm birincil sütun deposu tablolarında [Alter Index yeniden oluşturmayı](sql-data-warehouse-tables-index.md) çalıştırarak veri dosyası yükseltme işlemini hızlandırabilirsiniz.
+Ayrıca, yeniden başlatmanın ardından daha büyük bir SLO ve kaynak sınıfı kullanarak tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri dosyası yükseltme işlemini de hızlandırabilir.
 
 > [!NOTE]
-> Alter Index yeniden oluşturma çevrimdışı bir işlemdir ve yeniden oluşturma tamamlanana kadar tablolar kullanılamaz.
+> Alter INDEX REBUILD çevrimdışı bir işlemdir ve tablolar yeniden oluşturma tamamlanana kadar kullanılamaz.
 
-## <a name="self-upgrade-to-gen2"></a>Gen2'ye kendi kendine yükseltme
+## <a name="self-upgrade-to-gen2"></a>Gen2 'e kendi kendine yükseltme
 
-Varolan bir Gen1 SQL havuzunda aşağıdaki adımları izleyerek kendi kendini yükseltmeyi seçebilirsiniz. Kendi kendine yükseltmeyi seçerseniz, bölgenizde otomatik yükseltme işlemi başlamadan önce bunu tamamlamanız gerekir. Bunu yapmak, bir çakışma neden otomatik yükseltmeleri herhangi bir risk önlemek sağlar.
+Mevcut bir Gen1 SQL havuzunda bu adımları izleyerek kendi kendine yükseltmeyi seçebilirsiniz. Kendi kendine yükseltmeyi seçerseniz, bölgenizde otomatik yükseltme işlemi başlamadan önce bunu tamamlamalısınız. Bunun yapılması, bir çakışmaya neden olan otomatik yükseltmelerin riskini önlemenize olanak sağlar.
 
-Kendi kendine yükseltme yaparken iki seçenek vardır.  Geçerli SQL havuzunuzu yerinde yükseltebilir veya Gen1 SQL havuzunuzu Gen2 örneğine geri yükleyebilirsiniz.
+Kendi kendine yükseltme yaparken iki seçenek vardır.  Geçerli SQL havuzunuzu yerinde yükseltebilir veya bir Gen1 SQL havuzunu Gen2 örneğine geri yükleyebilirsiniz.
 
-- [Yerinde yükseltme](upgrade-to-latest-generation.md) - Bu seçenek, mevcut Gen1 SQL havuzunuzu Gen2'ye yükseltecektir. SQL havuzunuzu yeniden başlattığımızda yükseltme işlemi bağlantıda kısa bir düşüş (yaklaşık 5 dk) içerecektir.  SQL havuzunuz yeniden başlatıldıktan sonra, tamamen kullanılabilir olacaktır. Yükseltme sırasında sorunlarla karşılaşırsanız, bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın ve olası neden olarak "Gen2 yükseltmesi"ne başvurun.
-- [Geri yükleme noktasından yükseltme](sql-data-warehouse-restore-points.md) - Geçerli Gen1 SQL havuzunuzda kullanıcı tanımlı bir geri yükleme noktası oluşturun ve ardından doğrudan bir Gen2 örneğine geri yükleyin. Mevcut Gen1 SQL havuzu yerinde kalacaktır. Geri yükleme tamamlandıktan sonra Gen2 SQL havuzunuz tamamen kullanılabilir olacaktır.  Geri yüklenen Gen2 örneğindeki tüm test ve doğrulama işlemlerini çalıştırdıktan sonra, orijinal Gen1 örneği silinebilir.
+- [Yerinde yükseltme](upgrade-to-latest-generation.md) -Bu seçenek, mevcut Gen1 SQL havuzunuzu Gen2 'ye yükseltir. Yükseltme işlemi, SQL havuzunuzu yeniden başlatdığımızda bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  SQL havuzunuz yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Yükseltme sırasında sorunlarla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) ve "Gen2 Upgrade" başvurusu açın.
+- [Geri yükleme noktasından Yükselt](sql-data-warehouse-restore-points.md) -GEÇERLI Gen1 SQL havuzunuzdaki Kullanıcı tanımlı bir geri yükleme noktası oluşturun ve ardından doğrudan bir Gen2 örneğine geri yükleyin. Mevcut Gen1 SQL havuzu yerinde kalır. Geri yükleme tamamlandıktan sonra, Gen2 SQL havuzunuz tam kullanıma açık olacaktır.  Geri yüklenen Gen2 örneğinde tüm test ve doğrulama süreçlerini çalıştırdıktan sonra, özgün Gen1 örneği silinebilir.
 
-  - Adım 1: Azure portalından [kullanıcı tanımlı bir geri yükleme noktası oluşturun.](sql-data-warehouse-restore-active-paused-dw.md)
-  - Adım 2: Kullanıcı tanımlı bir geri yükleme noktasından geri yükleme yaparken, "performans düzeyini" tercih ettiğiniz Gen2 katmanına ayarlayın.
+  - 1. Adım: Azure portal, [Kullanıcı tanımlı bir geri yükleme noktası oluşturun](sql-data-warehouse-restore-active-paused-dw.md).
+  - 2. Adım: Kullanıcı tanımlı bir geri yükleme noktasından geri yükleme yaparken, "performans düzeyi" ni tercih ettiğiniz Gen2 katmanına ayarlayın.
 
 Yükseltme işlemi arka planda veri dosyalarını yükseltmeye devam ederken bir süre için performansta düşüş yaşayabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
 
-Arka plan veri geçişi işlemini hızlandırmak için, daha büyük bir SLO ve kaynak sınıfında sorgulayacağınız tüm birincil sütun deposu tablolarında [Alter Index yeniden oluşturmayı](sql-data-warehouse-tables-index.md) çalıştırarak veri hareketini hemen zorlayabilirsiniz.
+Arka plan veri geçiş sürecini hızlandırmak için, daha büyük bir SLO ve kaynak sınıfında sorguladığınız tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri hareketini hemen zorlayabilirsiniz.
 
 > [!NOTE]
-> Alter Index yeniden oluşturma çevrimdışı bir işlemdir ve yeniden oluşturma tamamlanana kadar tablolar kullanılamaz.
+> Alter INDEX REBUILD çevrimdışı bir işlemdir ve tablolar yeniden oluşturma tamamlanana kadar kullanılamaz.
 
-SQL havuzunuzla ilgili herhangi bir sorunla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve "Gen2 yükseltmesi" referansı oluşturun.
+SQL havuzunuza herhangi bir sorunla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve "Gen2 Upgrade" başvurusu yapın.
 
-Daha fazla bilgi [için Gen2'ye Yükseltme'ye](upgrade-to-latest-generation.md)bakın.
+Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-generation.md).
 
-## <a name="migration-frequently-asked-questions"></a>Sık sorulan sorular
+## <a name="migration-frequently-asked-questions"></a>Geçiş hakkında sık sorulan sorular
 
-**S: Gen2'nin maliyeti Gen1 ile aynı mıdır?**
-
-- C: Evet.
-
-**S: Yükseltmeler otomasyon komut dosyalarımı nasıl etkileyecek?**
-
-- C: Hizmet Düzeyi Hedefine başvuran herhangi bir otomasyon komut dosyası Gen2 eşdeğerine karşılık gelecek şekilde değiştirilmelidir.  [Ayrıntılara buradan](upgrade-to-latest-generation.md#upgrade-in-a-supported-region-using-the-azure-portal)bakın.
-
-**S: Kendi kendine yükseltme normalde ne kadar sürer?**
-
-- C: Yerinde yükseltebilir veya geri yükleme noktasından yükseltebilirsiniz.
-
-  - Yerinde yükseltme, SQL havuzunuzun anlık olarak duraklatlanmasına ve devam ına neden olur.  SQL havuzu çevrimiçiyken bir arka plan işlemi devam edecektir.  
-  - Yükseltme tam geri yükleme işleminden geçecektir, çünkü bir geri yükleme noktası üzerinden yükseltme daha uzun sürer.
-
-**S: Otomatik yükseltme ne kadar sürer?**
-
-- C: Yükseltme için gerçek kapalı kalma süresi, yalnızca 5 ila 10 dakika arasında olan hizmeti duraklatmak ve devam ettirmek için gereken süredir. Kısa bir kapalı kalma süresinin ardından arka plan işlemi depolama geçişini çalıştırır. Arka plan işleminin süresi, SQL havuzunuzun boyutuna bağlıdır.
-
-**S: Bu otomatik yükseltme ne zaman gerçekleşecek?**
-
-- C: Bakım programınız sırasında. Seçtiğiniz bakım programından yararlanmak, işletmenizdeki aksamaları en aza indirir.
-
-**S: Arka plan yükseltme işlemim sıkışmış gibi görünüyorsa ne yapmalıyım?**
-
-- C: Sütun mağaza tablolarınızın yeniden dizini başlatın. Bu işlem sırasında tablonun yeniden dizini nin çevrimdışı olacağını unutmayın.
-
-**S: Gen2'de Gen1'de Sahip Olduğum Hizmet Düzeyi Hedefi yoksa ne olur?**
-
-- C: Gen1'de DW600 veya DW1200 çalıştırıyorsanız, Gen2 Gen1'den daha fazla bellek, kaynak ve daha yüksek performans sağladığından, sırasıyla DW500c veya DW1000c kullanmanız önerilir.
-
-**S: Coğrafi yedeklemeyi devre dışı edebilir miyim?**
-
-- C: Hayır. Coğrafi yedekleme, bir bölgenin kullanılamaması durumunda SQL havuzu kullanılabilirliğinizi korumak için bir kuruluş özelliğidir. Endişeleriniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
-
-**S: Gen1 ve Gen2 arasında T-SQL sözdiziminde bir fark var mıdır?**
-
-- C: T-SQL dil sözdiziminde Gen1'den Gen2'ye geçiş yoktur.
-
-**S: Gen2 Maintenance Windows'u destekliyor mu?**
+**S: Gen2 maliyeti Gen1 ile aynı mı?**
 
 - C: Evet.
 
-**S: Bölgem yükseltildikten sonra yeni bir Gen1 örneği oluşturabilecek miyim?**
+**S: yükseltmeler Otomasyon betiklerimi nasıl etkiler?**
+
+- Y: bir hizmet düzeyi hedefine başvuran tüm otomasyon betikleri, Gen2 eşdeğerine karşılık olacak şekilde değiştirilmelidir.  [Ayrıntılara bakın](upgrade-to-latest-generation.md#upgrade-in-a-supported-region-using-the-azure-portal).
+
+**S: kendi kendini yükseltme ne kadar sürer?**
+
+- Y: bir geri yükleme noktasından yerinde yükseltme yapabilir veya yükseltebilirsiniz.
+
+  - Yerinde yükseltme, SQL havuzunuzun geçici olarak duraklamasına ve sürdürülmesine neden olur.  SQL havuzu çevrimiçi olduğunda bir arka plan işlemi devam edecektir.  
+  - Bir geri yükleme noktası üzerinden yükseltiyorsanız, yükseltme tam geri yükleme işlemini yapacağı için daha uzun sürer.
+
+**S: otomatik yükseltme ne kadar sürer?**
+
+- Y: yükseltmenin gerçek kapalı kalma süresi yalnızca hizmeti duraklatma ve devam etmek için gereken süredir ve 5 ila 10 dakika arasındadır. Kısa bir kapalı kalma süresinin ardından arka plan işlemi depolama geçişini çalıştırır. Arka plan işlemi için zaman uzunluğu, SQL havuzunuzun boyutuna bağlıdır.
+
+**S: Bu otomatik yükseltme gerçekleşsin mi?**
+
+- A: bakım zamanlamanız sırasında. Seçtiğiniz bakım zamanlamalarınızın yararlanmak, işletmenizin kesintiye uğramasını en aza indirir.
+
+**S: arka plan yükseltme sürecim takılı görünüyorsa ne yapmam gerekir?**
+
+- Y: columnstore tablolarınızın bir yeniden kümesini başlatın. Bu işlem sırasında tablonun yeniden dizin oluşturma işleminin çevrimdışı olacağını unutmayın.
+
+**S: Gen1 üzerinde Gen2 hizmet düzeyi hedefi yoksa ne olursa?**
+
+- Y: Gen1 üzerinde DW600 veya DW1200 çalıştırıyorsanız, DW1000c daha fazla bellek, kaynak ve daha yüksek performans olduğundan Gen2 sırasıyla DW500c veya Gen1 kullanılması önerilir.
+
+**S: coğrafi yedeklemeyi devre dışı bırakabilir miyim?**
+
+- C: Hayır. Coğrafi yedekleme, bir bölgenin kullanılamaz duruma gelmesi durumunda SQL havuzu kullanılabilirliğini koruyabileceğiniz bir kurumsal özelliktir. Daha fazla endişeniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
+
+**S: T-SQL sözdiziminde gen1 ve Gen2 arasında bir fark var mı?**
+
+- Y: T-SQL dil sözdiziminde Gen1 ile Gen2 arasında bir değişiklik yoktur.
+
+**S: Gen2, bakım pencerelerini destekliyor mu?**
+
+- C: Evet.
+
+**S: bölgem yükseltildikten sonra yeni bir Gen1 örneği oluşturabileceksiniz mi?**
 
 - C: Hayır. Bir bölge yükseltildikten sonra, yeni Gen1 örneklerinin oluşturulması devre dışı bırakılır.
 
@@ -127,9 +127,9 @@ Daha fazla bilgi [için Gen2'ye Yükseltme'ye](upgrade-to-latest-generation.md)b
 
 - [Yükseltme adımları](upgrade-to-latest-generation.md)
 - [Bakım pencereleri](maintenance-scheduling.md)
-- [Kaynak durumu monitörü](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
-- [Geçişe başlamadan önce gözden geçir](upgrade-to-latest-generation.md#before-you-begin)
-- [Yerinde yükseltme ve geri yükleme noktasından yükseltme](upgrade-to-latest-generation.md)
+- [Kaynak sistem durumu İzleyicisi](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+- [Geçişe başlamadan önce gözden geçirin](upgrade-to-latest-generation.md#before-you-begin)
+- [Bir geri yükleme noktasından yerinde yükseltme ve yükseltme](upgrade-to-latest-generation.md)
 - [Kullanıcı tanımlı geri yükleme noktası oluşturma](sql-data-warehouse-restore-points.md)
-- [Gen2'ye nasıl geri yükleyin öğrenin](sql-data-warehouse-restore-active-paused-dw.md)
-- [SQL Veri Ambarı destek isteği açma](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Gen2 'e geri yüklemeyi öğrenin](sql-data-warehouse-restore-active-paused-dw.md)
+- [Bir SQL veri ambarı destek isteği açın](https://go.microsoft.com/fwlink/?linkid=857950)

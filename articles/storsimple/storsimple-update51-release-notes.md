@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 Serisi Güncelleme 5.1 sürüm notları
-description: StorSimple 8000 Serisi Güncelleştirme5.1'in yeni özelliklerini, sorunlarını ve geçici çözümlerini açıklar.
+title: StorSimple 8000 serisi güncelleştirme 5,1 sürüm notları
+description: StorSimple 8000 serisi güncelleştirme 5,1 için yeni özellikleri, sorunları ve geçici çözümleri açıklar.
 author: priestlg
 ms.assetid: ''
 ms.service: storsimple
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: 27778ea232353dcaa6a38fa19abbd64b11c809e2
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80657929"
 ---
-# <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 Serisi Güncelleme 5.1 sürüm notları
+# <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 serisi güncelleştirme 5,1 sürüm notları
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki sürüm notları yeni özellikleri açıklar ve StorSimple 8000 Serisi Güncelleştirme 5.1 için kritik açık sorunları tanımlar. Ayrıca, bu sürümde yer alan StorSimple yazılım güncelleştirmelerinin bir listesini de içerirler.
+Aşağıdaki sürüm notları, yeni özellikleri anlatmaktadır ve StorSimple 8000 serisi güncelleştirme 5,1 için kritik açık sorunları belirler. Ayrıca, bu sürüme dahil olan StorSimple yazılım güncelleştirmelerinin bir listesini içerir.
 
-Güncelleme 5.1, Güncelleme 5 çalıştıran herhangi bir StorSimple cihazına uygulanabilir. 5'ten küçük bir sürüm kullanıyorsanız, önce güncelleştirme 5'i uygulayın, sonra 5.1 uygulayın. Güncelleştirme 5.1 ile ilişkili aygıt sürümü 6.3.9600.17885'tir.
+Güncelleştirme 5,1, güncelleştirme 5 çalıştıran tüm StorSimple cihazlarına uygulanabilir. 5 ' ten daha düşük bir sürüm kullanıyorsanız, önce güncelleştirme 5 ' i uygulayın, sonra 5,1 uygulayın. Güncelleştirme 5,1 ile ilişkili cihaz sürümü 6.3.9600.17885.
 
 Güncelleştirmeyi StorSimple çözümünüze dağıtmadan önce sürüm notlarında yer alan bilgileri gözden geçirin.
 
 > [!IMPORTANT]
 >
-> * Güncelleştirme 5.1 zorunlu bir güncelleştirmedir ve hemen yüklenmesi gerekir. Daha fazla bilgi için [Güncelleştirme 5.1'i](storsimple-8000-install-update-51.md)nasıl uygulayacağı hakkında bilgi alabiliyorum.
-> * Güncelleştirme 5.1 yalnızca güvenlik güncelleştirmeleri vardır. Bu güncelleştirmeyi yüklemek yaklaşık 30 dakika sürer. Cihazınızın çalışmasını sağlamak için Güncelleme 5.1 uygulamanızı şiddetle öneririz.
-> * Yeni sürümler için güncelleştirmeleri aşamalı olarak kullanıma sunduğumuz için güncelleştirmeleri hemen göremeyebilirsiniz. Birkaç gün bekleyin ve bu güncelleştirmeler yakında kullanıma sunulacağı için güncelleştirmeleri yeniden tarayıp tarar.
+> * Güncelleştirme 5,1, zorunlu bir güncelleştirmedir ve hemen yüklenmesi gerekir. Daha fazla bilgi için bkz. [güncelleştirme 5,1 nasıl uygulanır](storsimple-8000-install-update-51.md).
+> * Güncelleştirme 5,1 yalnızca güvenlik güncelleştirmelerine sahiptir. Bu güncelleştirmenin yüklenmesi yaklaşık 30 dakika sürer. Cihazınızın çalışmasını sağlamak için güncelleştirme 5,1 ' i uygulamanızı kesinlikle öneririz.
+> * Güncelleştirmelerin aşamalı olarak piyasaya sürültiğimiz için yeni sürümler için güncelleştirmeleri hemen göremeyebilirsiniz. Birkaç gün bekleyin ve sonra bu güncelleştirmeler yakında kullanılabilir hale gelecağından güncelleştirmeleri yeniden tarayın.
 
-## <a name="whats-new-in-update-51"></a>Update 5.1'deki yenilikler
+## <a name="whats-new-in-update-51"></a>Güncelleştirme 5,1 ' deki yenilikler
 
-Güncelleştirme 5.1'de aşağıdaki önemli iyileştirmeler ve hata düzeltmeleri yapılmıştır:
+Güncelleştirme 5,1 ' de aşağıdaki temel geliştirmeler ve hata düzeltmeleri yapılmıştır:
 
-* **TLS 1.2** - Bu StorSimple güncellemesi tüm istemcilere TLS 1.2 uygular. Bu, tüm StorSimple 8000 serisi cihazlar için zorunlu bir güncelleştirmedir.
+* **Tls 1,2** -bu StorSimple güncelleştirmesi tüm istemcilerde TLS 1,2 ' i zorlayacaktır. Bu, tüm StorSimple 8000 serisi cihazlar için zorunlu bir güncelleştirmedir.
 
-## <a name="known-issues-in-update-51-from-previous-releases"></a>Önceki sürümlerden Güncelleştirme 5.1'de bilinen sorunlar
+## <a name="known-issues-in-update-51-from-previous-releases"></a>Önceki sürümlerden güncelleştirme 5,1 ' de bilinen sorunlar
 
-Güncelleştirme 5.1'de bilinen yeni bir sorun yok. Önceki sürümlerden Güncelleştirme 5.1'e taşınan sorunların listesi [için, Güncelleştirme 3 sürüm notlarına](storsimple-update3-release-notes.md#known-issues-in-update-3)gidin.
+Güncelleştirme 5,1 ' de bilinen yeni bir sorun yoktur. Güncelleştirme 5,1 ' ye önceki sürümlerden aktarılan sorunların listesi için [güncelleştirme 3 sürüm notları](storsimple-update3-release-notes.md#known-issues-in-update-3)' na gidin.
 
-## <a name="storsimple-cloud-appliance-updates-in-update-51"></a>StorSimple Cloud Appliance güncellemelerini Güncelleme 5.1'de
+## <a name="storsimple-cloud-appliance-updates-in-update-51"></a>Güncelleştirme 5,1 ' de StorSimple Cloud Appliance güncelleştirmeler
 
-Bu güncelleştirme StorSimple Cloud Appliance 'a (sanal aygıt olarak da bilinir) uygulanamaz. Yeni bulut cihazlarının Güncelleme 5.1 görüntüsü kullanılarak oluşturulması gerekir. StorSimple Cloud Appliance'ın nasıl oluşturulabildiğini öğrenmek için [Bir StorSimple Cloud Appliance'ı dağıt'a gidin ve yönetin.](storsimple-8000-cloud-appliance-u2.md)
+Bu güncelleştirme StorSimple Cloud Appliance uygulanamıyor (sanal cihaz olarak da bilinir). Yeni bulut gereçlerinin güncelleştirme 5,1 görüntüsü kullanılarak oluşturulması gerekir. StorSimple Cloud Appliance oluşturma hakkında daha fazla bilgi için, [StorSimple Cloud Appliance Dağıt ve Yönet](storsimple-8000-cloud-appliance-u2.md)' e gidin.
 
 ## <a name="next-step"></a>Sonraki adım
 
-StorSimple cihazınıza [Update 5.1'i](storsimple-8000-install-update-51.md) nasıl yükleyebilirsiniz öğrenin.
+StorSimple cihazınıza [güncelleştirme 5,1](storsimple-8000-install-update-51.md) ' i nasıl yükleyeceğinizi öğrenin.

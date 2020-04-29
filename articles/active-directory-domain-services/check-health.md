@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Etki Alanı Hizmetlerinin durumunu kontrol edin | Microsoft Dokümanlar
-description: Azure Etkin Dizin Etki Alanı Hizmetleri (Azure AD DS) yönetilen etki alanının sistem durumunu nasıl denetlerve Azure portalını kullanarak durum iletilerini nasıl anlayacağınızı öğrenin.
+title: Azure Active Directory Domain Services durumunu denetleme | Microsoft Docs
+description: Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanının sistem durumunu denetleme ve Azure portal kullanarak durum iletilerini anlama hakkında bilgi edinin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: iainfou
 ms.openlocfilehash: 27ab14af25704a4f7fb46aa5e86cdaf881c49442
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655630"
 ---
-# <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Etkin Dizin Etki Alanı Hizmetleri yönetilen etki alanının sistem durumunu denetleme
+# <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının durumunu denetleme
 
-Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS), yönetilen etki alanını sağlıklı ve güncel tutmak için bazı arka plan görevlerini yürütür. Bu görevler arasında yedekleme almak, güvenlik güncelleştirmeleri uygulamak ve Azure AD'den verileri eşitlemek yer almaktadır. Azure AD DS yönetilen etki alanıyla ilgili sorunlar varsa, bu görevler başarıyla tamamlanmamış olabilir. Herhangi bir sorunu gözden geçirmek ve çözmek için, Azure portalını kullanarak Azure AD DS yönetilen etki alanının sistem durumu durumunu denetleyebilirsiniz.
+Azure Active Directory Domain Services (Azure AD DS), yönetilen etki alanını sağlıklı ve güncel tutmak için bazı arka plan görevleri çalıştırır. Bu görevler, yedeklemeleri almayı, güvenlik güncelleştirmelerini uygulamayı ve Azure AD 'den verileri eşitlemeyi içerir. Azure AD DS yönetilen etki alanı ile ilgili sorunlar varsa, bu görevler başarıyla tamamlanmayabilir. Sorunları gözden geçirmek ve çözümlemek için Azure portal kullanarak Azure AD DS yönetilen bir etki alanının sistem durumunu kontrol edebilirsiniz.
 
-Bu makalede, Azure AD DS sistem durumu durumunu nasıl görüntülayacağınızı ve gösterilen bilgileri veya uyarıları nasıl anlayacağınızı gösterir.
+Bu makalede, Azure AD DS sistem durumunu görüntüleme ve gösterilen bilgileri ya da Uyarıları anlama konusu gösterilmektedir.
 
-## <a name="view-the-health-status"></a>Sağlık durumunu görüntüleme
+## <a name="view-the-health-status"></a>Sistem durumunu görüntüleme
 
-Azure AD DS yönetilen etki alanının sistem durumu, Azure portalı kullanılarak görüntülenir. Son yedekleme zamanı ve Azure AD ile eşitleme hakkındaki bilgilerin yanı sıra yönetilen etki alanının durumuyla ilgili bir sorun olduğunu gösteren uyarılar görülebilir. Azure AD DS yönetilen bir etki alanının sistem durumu durumunu görüntülemek için aşağıdaki adımları tamamlayın:
+Azure AD DS yönetilen bir etki alanının sistem durumu Azure portal kullanılarak görüntülenir. Son yedekleme zamanı ve Azure AD ile eşitleme hakkında bilgi, yönetilen etki alanının sistem durumuyla ilgili bir sorunu belirten uyarılarla birlikte görülebilir. Azure AD DS yönetilen bir etki alanının sistem durumunu görüntülemek için aşağıdaki adımları izleyin:
 
-1. Azure **portalında, Azure AD Etki Alanı Hizmetlerini**arayın ve seçin.
-1. azure AD DS yönetilen etki alanınızı seçin( örneğin *aaddscontoso.com.*
-1. Azure AD DS kaynak penceresinin sol **tarafında, Sistem Durumu'nu**seçin. Aşağıdaki örnek ekran görüntüsü, sağlıklı bir Azure AD DS yönetilen etki alanını ve son yedekleme ve Azure AD eşitleme durumunu gösterir:
+1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
+1. *Aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin.
+1. Azure AD DS kaynak penceresinin sol tarafında **sistem durumu**' nu seçin. Aşağıdaki örnek ekran görüntüsünde, sağlıklı bir Azure AD DS yönetilen etki alanı ve son yedekleme ve Azure AD eşitleme 'nin durumu gösterilmektedir:
 
-    ![Azure portalında Azure Etkin Dizin Etki Alanı Hizmetleri durumunu gösteren sistem durumu sayfasına genel bakış](./media/check-health/health-page.png)
+    ![Azure Active Directory Domain Services durumunu gösteren Azure portal durum sayfasına genel bakış](./media/check-health/health-page.png)
 
-Sistem durumu sayfasının *son değerlendirilen* zaman damgası, Azure AD DS yönetilen etki alanının en son ne zaman denetlenildiğini gösterir. Azure AD DS yönetilen bir etki alanının durumu her saat başı değerlendirilir. Azure AD DS yönetilen etki alanında herhangi bir değişiklik yaparsanız, güncelleştirilmiş sistem durumu durumunu görüntülemek için bir sonraki değerlendirme döngüsüne kadar bekleyin.
+Sistem durumu sayfasının *en son değerlendirilen* zaman damgası, Azure AD DS yönetilen etki alanının son ne zaman denetlendiğini gösterir. Azure AD DS yönetilen bir etki alanının sistem durumu her saat değerlendirilir. Azure AD DS yönetilen bir etki alanında herhangi bir değişiklik yaparsanız, güncelleştirilmiş sistem durumunu görüntülemek için bir sonraki değerlendirme döngüsüne kadar bekleyin.
 
-Sağ üstteki durum, Azure AD DS yönetilen etki alanının genel durumunu gösterir. Durum, etki alanınızdaki varolan tüm uyarıları etkenler. Aşağıdaki tabloda kullanılabilir durum göstergeleri ayrıntılı olarak açıkları yer almaktadır:
+Sağ üst köşedeki durum, Azure AD DS yönetilen etki alanının genel durumunu gösterir. Durum, etki alanındaki tüm mevcut uyarıları çarpanlar. Aşağıdaki tabloda, kullanılabilir durum göstergelerinin ayrıntıları verilmiştir:
 
 | Durum | Simge | Açıklama |
 | --- | :----: | --- |
-| Çalışıyor | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Azure AD DS yönetilen etki alanı doğru çalışıyor ve herhangi bir kritik veya uyarı uyarısı yok. Etki alanı nın bilgi uyarıları olabilir. |
-| Dikkat (uyarı) ihtiyacı | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Azure AD DS yönetilen etki alanında kritik uyarı yoktur, ancak ele alınması gereken bir veya daha fazla uyarı uyarısı vardır. |
-| Dikkat gerektirir (kritik) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Azure AD DS yönetilen etki alanında ele alınması gereken bir veya daha fazla kritik uyarı vardır. Ayrıca uyarı ve / veya bilgilendirme uyarıları olabilir. |
-| Dağıtma | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Azure AD DS etki alanı dağıtılıyor. |
+| Çalışıyor | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Azure AD DS yönetilen etki alanı düzgün çalışıyor ve kritik veya uyarı uyarıları yok. Etki alanında bilgilendirici uyarılar olabilir. |
+| İlgilenilmesi gerekiyor (uyarı) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Azure AD DS yönetilen etki alanında kritik uyarı yoktur, ancak giderilmesi gereken bir veya daha fazla uyarı uyarısı vardır. |
+| İlgilenilmesi gerekiyor (kritik) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Azure AD DS yönetilen etki alanında giderilmesi gereken bir veya daha fazla kritik uyarı vardır. Ayrıca uyarı ve/veya bilgilendirici uyarılarınız olabilir. |
+| Dağıtılmasını | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Azure AD DS etki alanı dağıtılıyor. |
 
-## <a name="understand-monitors-and-alerts"></a>Monitörleri ve uyarıları anlama
+## <a name="understand-monitors-and-alerts"></a>İzleyicileri ve Uyarıları anlama
 
-Azure AD DS yönetilen etki alanının sistem durumu iki tür bilgi gösterir ( *monitörler*ve *uyarılar.* İzleyiciler, temel arka plan görevlerinin tamamlandığı zamanı gösterir. Uyarılar, yönetilen etki alanının kararlılığını artırmak için bilgi veya öneriler sağlar.
+Azure AD DS yönetilen bir etki alanının sistem durumu, iki tür bilgi *İzleyicisi*ve *Uyarı*gösterir. İzleyiciler, temel arka plan görevlerinin tamamlandığı zamanı gösterir. Uyarılar, yönetilen etki alanının kararlılığını geliştirmek için bilgi veya öneriler sağlar.
 
 ### <a name="monitors"></a>İzleyiciler
 
-İzleyiciler, Azure AD DS yönetilen etki alanının düzenli olarak denetlenen alanlarıdır. Azure AD DS yönetilen etki alanı için etkin uyarılar varsa, monitörlerden birinin bir sorunu bildirmesine neden olabilir. Azure AD Etki Alanı Hizmetleri'nde şu anda aşağıdaki alanlar için monitörler bulunmaktadır:
+İzleyiciler, düzenli olarak denetlenen bir Azure AD DS yönetilen etki alanının alanlarıdır. Azure AD DS yönetilen etki alanı için etkin uyarılar varsa, bu durum izleyicilerinden birinin bir sorunu rapor vermesine neden olabilir. Azure AD Domain Services Şu anda aşağıdaki alanların izleyicilerine sahiptir:
 
 * Backup
 * Azure AD ile eşitleme
 
-#### <a name="backup-monitor"></a>Yedek monitör
+#### <a name="backup-monitor"></a>Yedekleme İzleyicisi
 
-Yedekleme monitörü, Azure AD DS yönetilen etki alanının otomatik düzenli yedeklemelerinin başarıyla çalıştırıldığını denetler. Aşağıdaki tablo, kullanılabilir yedek monitör durumunu ayrıntılarıyla anlatır:
+Yedekleme İzleyicisi, Azure AD DS yönetilen etki alanının otomatik düzenli yedeklerinin başarıyla çalıştırıldığını denetler. Aşağıdaki tabloda, kullanılabilir yedekleme İzleyicisi durumunun ayrıntıları verilmiştir:
 
 | Ayrıntı değeri | Açıklama |
 | --- | --- |
-| Hiç yedeklenmedi | Bu durum, yeni Azure AD DS yönetilen etki alanları için normaldir. İlk yedekleme, Azure AD DS yönetilen etki alanı dağıtıldıktan 24 saat sonra oluşturulmalıdır. Bu durum devam ederse, [bir Azure destek isteği açın.][azure-support] |
-| Son yedekleme 1-14 gün önce alındı | Bu zaman aralığı yedek monitör için beklenen durumdur. Bu dönemde otomatik düzenli yedeklemeler yapılmalıdır. |
-| Son destek 14 gün önce alınmış. | İki haftadan uzun bir zaman aşımı, otomatik normal yedeklemelerle ilgili bir sorun olduğunu gösterir. Etkin kritik uyarılar, Azure AD DS yönetilen etki alanının yedeklemesini engelleyebilir. Azure AD DS yönetilen etki alanı için etkin uyarıları çözümle. Yedekleme monitörü yeni bir yedeklemeyi bildirmek için durumu güncelleştirmezse, [bir Azure destek isteği açın.][azure-support] |
+| Hiç yedeklenmedi | Bu durum, yeni Azure AD DS yönetilen etki alanları için normaldir. İlk yedeklemenin Azure AD DS yönetilen etki alanı dağıtıldıktan sonra 24 saat oluşturulması gerekir. Bu durum devam ederse, [bir Azure destek isteği açın][azure-support]. |
+| Son yedekleme 1-14 gün önce gerçekleştirildi | Bu zaman aralığı, yedekleme izleyicisinin beklenen durumudur. Otomatikleştirilmiş düzenli yedeklemeler bu dönemde gerçekleşmelidir. |
+| Son yedekleme 14 günden daha önce alındı. | İki haftadan daha uzun bir zaman aralığı, otomatik normal yedeklemelerle ilgili bir sorun olduğunu gösterir. Etkin kritik uyarılar Azure AD DS yönetilen etki alanının yedeklenmesini engelleyebilir. Azure AD DS yönetilen etki alanı için etkin uyarıları çözün. Yedekleme izleyicisi daha sonra son yedeği raporlamak için durumu güncelleştirmezse [bir Azure destek isteği açın][azure-support]. |
 
-#### <a name="synchronization-with-azure-ad-monitor"></a>Azure AD monitörü ile senkronizasyon
+#### <a name="synchronization-with-azure-ad-monitor"></a>Azure AD İzleyicisi ile eşitleme
 
-Azure AD DS yönetilen bir etki alanı düzenli olarak Azure Etkin Dizini ile eşitlenir. Kullanıcı ve grup nesnelerinin sayısı ve son eşitlemeden bu yana Azure REKLAM dizininde yapılan değişikliklerin sayısı, eşitlemenin ne kadar sürdüğünü etkiler. Azure AD DS yönetilen etki alanı en son üç gün önce eşitlendiyse, etkin uyarıları denetleyin ve çözümleyin. Eşitleme monitörü, etkin uyarılara değindikten sonra son eşitleme göstermek için durumu güncelleştirmezse, [bir Azure destek isteği açın.][azure-support]
+Azure AD DS yönetilen bir etki alanı Azure Active Directory ile düzenli aralıklarla eşitlenir. Kullanıcı ve grup nesnelerinin sayısı ve son eşitlemeden sonra Azure AD dizininde yapılan değişikliklerin sayısı, eşitlemenin ne kadar sürdüğünü etkiler. Azure AD DS yönetilen etki alanı en son üç gün önce eşitlendiğinde, etkin uyarıları denetleyin ve çözün. Eşitleme İzleyicisi, etkin uyarıları adresledikten sonra son eşitlemeyi göstermek için durumu güncelleştirmezse [bir Azure destek isteği açın][azure-support].
 
 ### <a name="alerts"></a>Uyarılar
 
-Hizmetin düzgün çalışması için ele alınması gereken Azure AD DS yönetilen etki alanında sorunlar için uyarılar oluşturulur. Her uyarı sorunu açıklar ve sorunu çözmek için belirli adımları özetleyen bir URL verir. Olası uyarılar ve çözümleri hakkında daha fazla bilgi için [Sorun Giderme uyarılarına](troubleshoot-alerts.md)bakın.
+Azure AD DS yönetilen bir etki alanındaki, hizmetin düzgün çalışması için giderilmesi gereken sorunlar için uyarılar oluşturulur. Her uyarı sorunu açıklar ve sorunu çözmek için belirli adımları özetleyen bir URL sağlar. Olası uyarılar ve çözümleri hakkında daha fazla bilgi için bkz. [sorun giderme uyarıları](troubleshoot-alerts.md).
 
-Sistem durumu uyarıları aşağıdaki önem düzeylerine ayrılır:
+Sistem durumu uyarıları aşağıdaki önem derecelerine göre kategorize edilir:
 
- * **Kritik uyarılar,** Azure AD DS yönetilen etki alanını ciddi şekilde etkileyen sorunlardır. Bu uyarılar derhal ele alınmalıdır. Azure platformu, sorunlar çözülene kadar yönetilen etki alanını izleyip yönetemez, yönetemez, yarayaramaz ve eşitleme yapamaz.
- * **Uyarı uyarıları,** sorun devam ederse Azure AD DS yönetilen etki alanı işlemlerini etkileyebilecek sorunlar hakkında sizi bilgilendirir. Bu uyarılar, yönetilen etki alanını güvence altına almak için öneriler de sunar.
- * **Bilgilendirme uyarıları,** Azure AD DS yönetilen etki alanını olumsuz etkilemeyen bildirimlerdir. Bilgilendirme uyarıları, yönetilen etki alanında neler olduğuna dair bazı bilgiler sağlar.
+ * **Kritik uyarılar** , Azure AD DS yönetilen etki alanını ciddi bir şekilde etkileyen sorunlardır. Bu uyarıların hemen giderilmesi gerekir. Azure platformu, sorunlar çözülene kadar yönetilen etki alanını izleyemez, yönetemez, düzeltme eki ve eşitleyemiyor.
+ * **Uyarı uyarıları** , sorun devam ederse Azure AD DS yönetilen etki alanı işlemlerini etkileyebilecek sorunları bilgilendirir. Bu uyarılar, yönetilen etki alanının güvenliğini sağlamaya yönelik öneriler de sunmaktadır.
+ * **Bilgilendirici uyarılar** , Azure AD DS yönetilen etki alanını olumsuz yönde etkilemeyecek bildirimlerdir. Bilgilendirici uyarılar, yönetilen etki alanında neler olduğunu gösteren bazı Öngörüler sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sistem durumu durumu sayfasında gösterilen uyarılar hakkında daha fazla bilgi için yönetilen [etki alanınızdaki uyarıları][troubleshoot-alerts] çözümle'ye bakın
+Sistem durumu sayfasında gösterilen uyarılar hakkında daha fazla bilgi için bkz. [yönetilen etki alanındaki uyarıları çözümleme][troubleshoot-alerts]
 
 <!-- INTERNAL LINKS -->
 [azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka Connect- Azure Etkinlik Hub'ları ile tümleştir | Microsoft Dokümanlar
-description: Bu makalede, Kafka için Azure Etkinlik Hub'ları ile Apache Spark'ın nasıl kullanılacağı hakkında bilgi verilmektedir.
+title: Apache Kafka Connect ile tümleştirme-Azure Event Hubs | Microsoft Docs
+description: Bu makalede, Kafka için Azure Event Hubs ile Apache Spark kullanma hakkında bilgi sağlanır.
 services: event-hubs
 documentationcenter: .net
 author: ShubhaVijayasarathy
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 60c6207b1c90ca40f02097a1c82d2811a50f664d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632824"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Azure Event Hubs'a Apache Kafka Connect desteğiyle tümleştirme (Önizleme)
-İş gereksinimleri için alma işlemleri arttıkça, çeşitli dış kaynaklar ve havuzlar için alma gereksinimi de artıyor. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect), Kafka kümesi aracılığıyla MySQL, HDFS ve dosya sistemi gibi herhangi bir dış sistemden/sisteme bağlanmak ve verileri içeri/dışarı aktarmak için böyle bir çerçeve sağlar. Bu öğretici, Kafka Connect çerçevelerini Etkinlik Hub'ları ile kullanarak size yol görebilirsiniz.
+İş gereksinimleri için alma işlemleri arttıkça, çeşitli dış kaynaklar ve havuzlar için alma gereksinimi de artıyor. [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect), Kafka kümesi aracılığıyla MySQL, HDFS ve dosya sistemi gibi herhangi bir dış sistemden/sisteme bağlanmak ve verileri içeri/dışarı aktarmak için böyle bir çerçeve sağlar. Bu öğreticide, Event Hubs ile Kafka Connect Framework kullanımı gösterilmektedir.
 
-Bu öğretici, Kafka Connect'i bir etkinlik merkeziyle bütünleştirme ve temel FileStreamSource ve FileStreamSink konektörlerini dağıtma konusunda size yol açar. Bu özellik şu anda önizleme sürümündedir. Bu bağlayıcılar üretimde kullanıma yönelik olmasa da, Azure Event Hubs'ın bir Kafa aracısı işlevi üstlendiği uçtan uca bir Kafka Connect senaryosunu gösterirler.
+Bu öğretici, Kafka Connect 'i bir olay hub 'ı ile tümleştirerek temel FileStreamSource ve FileStreamSink bağlayıcılarını dağıtmanıza yardımcı olur. Bu özellik şu anda önizleme sürümündedir. Bu bağlayıcılar üretimde kullanıma yönelik olmasa da, Azure Event Hubs'ın bir Kafa aracısı işlevi üstlendiği uçtan uca bir Kafka Connect senaryosunu gösterirler.
 
 > [!NOTE]
 > Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect)'da sağlanır.
@@ -42,7 +42,7 @@ Bu yol gösterici adımları tamamlamak için aşağıdaki önkoşulların karş
 - [Apache Kafka için Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-for-kafka-ecosystem-overview) giriş makalesini okuyun
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
-Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Bkz. Ad alanı ve olay hub'ı oluşturmak için yönergeler için bir [olay hub'ı oluşturma.](event-hubs-create.md) Daha sonra kullanmak üzere Event Hubs bağlantı dizesini ve tam etki alanı adını (FQDN) alın. Yönergeler için bkz. [Event Hubs bağlantı dizesi alma](event-hubs-get-connection-string.md). 
+Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Ad alanı ve Olay Hub 'ı oluşturma yönergeleri için bkz. bir [Olay Hub 'ı oluşturma](event-hubs-create.md) . Daha sonra kullanmak üzere Event Hubs bağlantı dizesini ve tam etki alanı adını (FQDN) alın. Yönergeler için bkz. [Event Hubs bağlantı dizesi alma](event-hubs-get-connection-string.md). 
 
 ## <a name="clone-the-example-project"></a>Örnek projeyi kopyalama
 Azure Event Hubs deposunu kopyalayın ve tutorials/connect alt klasörüne gidin: 
@@ -105,9 +105,9 @@ Bu adımda, bir Kafka Connect çalışanı dağıtılmış modda yerel olarak ba
 4. `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` öğesini çalıştırın.  `'INFO Finished starting connectors and tasks'` iletisini gördüğünüzde Connect çalışanı REST API etkileşime hazır demektir. 
 
 > [!NOTE]
-> Kafka Connect, sıkıştırma da dahil olmak üzere önerilen yapılandırmalara sahip konuları otomatik olarak oluşturmak için Kafka AdminClient API'sini kullanır. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.
+> Kafka Connect, Kafka AdminClient API 'sini kullanarak, sıkıştırma de dahil olmak üzere önerilen yapılandırmalara sahip konuları otomatik olarak oluşturur. Azure portalında ad alanına hızla göz attığınızda, Connect çalışanı iç konusunun otomatik olarak oluşturulduğu ortaya çıkar.
 >
->Kafka Connect dahili konular **sıkıştırma kullanmalıdır.**  Dahili Connect konuları yanlış yapılandırılırsa, Olay Hub'ları ekibi hatalı yapılandırmaları düzeltmekten sorumlu değildir.
+>Kafka Connect iç konuları **sıkıştırmayı kullanmalıdır**.  Event Hubs ekibi, iç bağlantı konuları yanlış yapılandırılmışsa yanlış yapılandırmaların düzeltilmesinden sorumludur.
 
 ### <a name="create-connectors"></a>Bağlayıcıları oluşturma
 Bu bölümde FileStreamSource ve FileStreamSink bağlayıcılarını çalıştırma işleminde yol gösterilir. 
@@ -157,11 +157,11 @@ Kafka Connect, Connect kümesi devre dışı bırakıldıktan sonra bile kalıc�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kafka için Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
+Kafka için Event Hubs hakkında daha fazla bilgi için aşağıdaki makalelere bakın:  
 
 - [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
 - [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md)
-- [Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu](apache-kafka-developer-guide.md)
+- [Akka Streams’i bir olay hub’ına bağlama](event-hubs-kafka-akka-streams-tutorial.md)
+- [Azure Event Hubs için Apache Kafka Geliştirici Kılavuzu](apache-kafka-developer-guide.md)

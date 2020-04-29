@@ -1,6 +1,6 @@
 ---
-title: Azure Mantık Uygulamaları yla Azure Monitör Günlüklerini Kullanın ve Güç Otomatikleştir
-description: Azure Monitor konektörünü kullanarak tekrarlanabilir işlemleri hızla otomatikleştirmek için Azure Logic Apps ve Power Otomatikleştirme'yi nasıl kullanabileceğinizi öğrenin.
+title: Azure Logic Apps ve güç otomatikleştirme ile Azure Izleyici günlüklerini kullanma
+description: Azure Izleyici bağlayıcısını kullanarak tekrarlanabilir işlemleri hızlı bir şekilde otomatikleştirmek için Azure Logic Apps ve güç otomatikleştirmesini nasıl kullanabileceğinizi öğrenin.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
@@ -8,63 +8,63 @@ author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
 ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480020"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Mantıksal Uygulamalar ve Akış için Azure Monitör Günlükleri Konektörü
-[Azure Mantık Uygulamaları](/azure/logic-apps/) ve [Güç Otomatikleştirme,](https://ms.flow.microsoft.com) çeşitli hizmetler için yüzlerce eylem kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Monitör Günlükleri konektörü, Azure Monitor'da Bir Log Analytics çalışma alanından veya Uygulama Öngörüleri uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcı ile birlikte eylemleri açıklar ve bu verileri kullanarak bir iş akışı oluşturmak için bir gözden geçirme sağlar.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps ve Flow için Azure Izleyici günlükleri Bağlayıcısı
+[Azure Logic Apps](/azure/logic-apps/) ve [Güç otomatikleştirme](https://ms.flow.microsoft.com) , çeşitli hizmetler için yüzlerce eylemi kullanarak otomatik iş akışları oluşturmanıza olanak tanır. Azure Izleyici günlükleri Bağlayıcısı, Azure Izleyici 'deki bir Log Analytics çalışma alanından veya bir Application Insights uygulamasından veri alan iş akışları oluşturmanıza olanak tanır. Bu makalede, bağlayıcıya dahil edilen eylemler açıklanmakta ve bu verileri kullanarak iş akışı oluşturmaya yönelik bir yol sunulmaktadır.
 
-Örneğin, Office 365'ten gelen bir e-posta bildiriminde Azure Monitor günlük verilerini kullanmak, Azure DevOps'lerde hata oluşturmak veya Bir Slack iletisi göndermek için bir mantık uygulaması oluşturabilirsiniz.  Bir iş akışını basit bir zamanlamayla veya bağlı bir hizmetteki bazı eylemlerden örneğin posta veya tweet alınması gibi bir işlemle tetikleyebilirsiniz. 
+Örneğin, Azure Izleyici günlük verilerini Office 365 ' den bir e-posta bildiriminde kullanmak için bir mantıksal uygulama oluşturabilir, Azure DevOps 'da bir hata oluşturabilir veya bir bolluk iletisi postalayabilirsiniz.  Bir iş akışını basit bir zamanlamaya göre veya bir e-posta ya da tweet alınması gibi bağlı bir hizmette bazı bir eylemden tetikleyebilirsiniz. 
 
 ## <a name="actions"></a>Eylemler
-Aşağıdaki tabloda Azure Monitör Günlükleri bağlayıcısı ile birlikte gelen eylemler açıklanmaktadır. Her ikisi de bir Log Analytics çalışma alanı veya Application Insights uygulamasına karşı bir günlük sorgusu çalıştırmanızı sağlar. Fark, verilerin döndürülme şeklidir.
+Aşağıdaki tabloda, Azure Izleyici günlükleri bağlayıcısına dahil edilen eylemler açıklanmaktadır. Her ikisi de Log Analytics çalışma alanında veya Application Insights uygulamasında bir günlük sorgusu çalıştırmanızı sağlar. Fark, verilerin döndürülme yoludur.
 
 > [!NOTE]
-> Azure Monitör Günlükleri konektörü, [Azure Günlük Analizi bağlayıcısının](https://docs.microsoft.com/connectors/azureloganalytics/) ve [Azure Uygulama Öngörüleri bağlayıcısının](https://docs.microsoft.com/connectors/applicationinsights/)yerini alır. Bu bağlayıcı, diğerleriyle aynı işlevselliği sağlar ve bir Log Analytics çalışma alanına veya Application Insights uygulamasına karşı sorgu çalıştırmak için tercih edilen yöntemdir.
+> Azure Izleyici günlükleri Bağlayıcısı, [azure Log Analytics bağlayıcısının](https://docs.microsoft.com/connectors/azureloganalytics/) ve [Azure Application Insights bağlayıcısının](https://docs.microsoft.com/connectors/applicationinsights/)yerini alır. Bu bağlayıcı diğerleri ile aynı işlevleri sağlar ve bir Log Analytics çalışma alanında veya Application Insights uygulamasında bir sorgu çalıştırmak için tercih edilen yöntemdir.
 
 
 | Eylem | Açıklama |
 |:---|:---|
-| [Sorgu ve liste sonuçlarını çalıştırma](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Her satırı kendi nesnesi olarak döndürür. İş akışının geri kalanında her satırla ayrı ayrı çalışmak istediğinizde bu eylemi kullanın. Eylem genellikle her etkinlik [için](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)bir tarafından takip edilir. |
-| [Sorgu çalıştırma ve sonuçları görselleştir](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Tek biçimlendirilmiş nesne olarak ayarlanan sonuç tüm satırları döndürür. Sonuçları postayla göndermek gibi iş akışının geri kalanında birlikte ayarlanan sonucu kullanmak istediğinizde bu eylemi kullanın.  |
+| [Sorgu ve liste sonuçlarını Çalıştır](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-list-results) | Her bir satırı kendi nesnesi olarak döndürür. Bu eylemi, iş akışının geri kalanında her bir satırla ayrı olarak çalışmak istediğinizde kullanın. Eylem genellikle [her etkinlik için](../../logic-apps/logic-apps-control-flow-loops.md#foreach-loop)bir olur. |
+| [Sorgu Çalıştır ve sonuçları görselleştirin](https://docs.microsoft.com/connectors/azuremonitorlogs/#run-query-and-visualize-results) | Sonuç kümesindeki tüm satırları tek biçimli bir nesne olarak döndürür. Sonuç kümesini, sonuçları bir e-postaya göndermek gibi iş akışı geri kalanında birlikte kullanmak istediğinizde bu eylemi kullanın.  |
 
 ## <a name="walkthroughs"></a>İzlenecek Yollar
-Aşağıdaki öğreticiler Azure Mantıksal Uygulamaları'nda Azure Monitor bağlayıcılarının kullanımını göstermektedir. Bu aynı örneği Power Automate ile gerçekleştirebilirsiniz, tek fark ilk iş akışını nasıl oluşturup tamamlandığında çalıştırabileceğinizdir. İş akışının ve eylemlerin yapılandırması her ikisi arasında aynıdır. Bkz. Başlamak için [Power Automate'deki şablondan akış oluştur.](https://docs.microsoft.com/power-automate/get-started-logic-template)
+Aşağıdaki öğreticilerde Azure Logic Apps içindeki Azure Izleyici bağlayıcılarının kullanımı gösterilmektedir. Bu aynı örneği, Power otomatikleştirmede gerçekleştirebilirsiniz, ancak ilk iş akışını oluşturma ve tamamlandığında çalıştırma gibi tek fark. İş akışı ve eylemlerin yapılandırması her ikisi arasında aynıdır. Başlamak için bkz. [Power otomatikleştirmede bir şablondan akış oluşturma](https://docs.microsoft.com/power-automate/get-started-logic-template) .
 
 
 ### <a name="create-a-logic-app"></a>Mantıksal Uygulama oluşturma
 
-Azure portalındaki **Mantık Uygulamaları'na** gidin ve **Ekle'yi**tıklatın. Yeni mantık uygulamasını depolamak ve ardından benzersiz bir ad vermek için **abonelik,** **kaynak grubu**ve **Bölge'yi** seçin. Azure Monitor günlüklerini ayarla'da açıklandığı gibi çalışma zamanı verileri ve olaylar hakkında bilgi toplamak [ve Azure Logic Apps için tanılama verileri toplamak için](../../logic-apps/monitor-logic-apps-log-analytics.md)Log **Analytics** ayarını açabilirsiniz. Bu ayar, Azure Monitör Günlükleri konektörünü kullanmak için gerekli değildir.
+Azure portal **Logic Apps** gidin ve **Ekle**' ye tıklayın. Yeni mantıksal uygulamayı depolamak için bir **abonelik**, **kaynak grubu**ve **bölge** seçin ve benzersiz bir ad verin. [Azure izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../../logic-apps/monitor-logic-apps-log-analytics.md)bölümünde açıklandığı gibi çalışma zamanı verileri ve olayları hakkında bilgi toplamak için **Log Analytics** ayarını açabilirsiniz. Bu ayar, Azure Izleyici günlükleri bağlayıcısının kullanılması için gerekli değildir.
 
 ![Mantıksal uygulama oluşturma](media/logicapp-flow-connector/create-logic-app.png)
 
 
-**Gözden Geçir + oluştur'u** tıklatın ve sonra **Oluştur'** seçeneğini tıklatın. Dağıtım tamamlandığında, **Logic Apps Tasarımcısı'nı**açmak **için kaynağa git'i** tıklatın.
+**Gözden geçir + oluştur** ve sonra **Oluştur**' a tıklayın. Dağıtım tamamlandığında, **Logic Apps tasarımcısını**açmak Için **Kaynağa Git** ' e tıklayın.
 
-### <a name="create-a-trigger-for-the-logic-app"></a>Mantık uygulaması için tetikleyici oluşturma
-**Ortak bir tetikleyiciyle Başlat** **altında, Yineleme'yi**seçin. Bu, düzenli aralıklarla otomatik olarak çalışan bir mantık uygulaması oluşturur. Eylemin **Sıklık** kutusunda, **Gün'ü** seçin ve **Aralık** kutusuna iş akışını günde bir kez çalıştırmak için **1** girin.
+### <a name="create-a-trigger-for-the-logic-app"></a>Mantıksal uygulama için bir tetikleyici oluşturma
+**Ortak bir tetikleyiciden başla**' nın altında **yinelenme**' yi seçin. Bu, düzenli aralıklarla otomatik olarak çalışan bir mantıksal uygulama oluşturur. İşlemin **Sıklık** kutusunda, **gün** ' yı seçin, **zaman aralığı** kutusuna **1** girerek iş akışını günde bir kez çalıştırın.
 
-![Yineleme eylemi](media/logicapp-flow-connector/recurrence-action.png)
+![Yinelenme eylemi](media/logicapp-flow-connector/recurrence-action.png)
 
-## <a name="walkthrough-mail-visualized-results"></a>Walkthrough: Posta görselleştirilmiş sonuçlar
-Aşağıdaki öğretici, Azure Monitor günlük sorgusunun sonuçlarını e-posta ile gönderen bir mantık uygulamasının nasıl oluşturulabileceğinizi gösterir. 
+## <a name="walkthrough-mail-visualized-results"></a>İzlenecek yol: posta görselleştirilmemiş sonuçlar
+Aşağıdaki öğreticide, bir Azure Izleyici günlük sorgusunun sonuçlarını e-posta ile gönderen bir mantıksal uygulama oluşturma gösterilmektedir. 
 
-### <a name="add-azure-monitor-logs-action"></a>Azure Monitör Günlükleri eylemi ekleme
-Yineleme eyleminden sonra çalışan bir eylem eklemek için **+ Yeni adımı** tıklatın. Bir **eylem seçin,** **azure monitör** yazın ve ardından Azure Monitör **Günlükleri'ni**seçin.
+### <a name="add-azure-monitor-logs-action"></a>Azure Izleyici günlükleri ekleme eylemi
+Yineleme eyleminden sonra çalışacak bir eylem eklemek için **+ yeni adım** ' a tıklayın. **Eylem seçin**altında **Azure izleyici** yazın ve ardından **Azure izleyici günlükleri**' ni seçin.
 
-![Azure Monitör Günlükleri eylemi](media/logicapp-flow-connector/select-azure-monitor-connector.png)
+![Azure Izleme günlükleri eylemi](media/logicapp-flow-connector/select-azure-monitor-connector.png)
 
-Azure Günlük Analizi ' ni tıklatın **– Sorguyı çalıştırın ve sonuçları görselleştirin.**
+Azure Log Analytics ' e tıklayın **– sorgu çalıştırın ve sonuçları görselleştirin**.
 
-![Sorgu çalıştırma ve sonuç eylemini görselleştir](media/logicapp-flow-connector/select-query-action-visualize.png)
+![Sorgu Çalıştır ve sonuçları görselleştirin eylemi](media/logicapp-flow-connector/select-query-action-visualize.png)
 
 
-### <a name="add-azure-monitor-logs-action"></a>Azure Monitör Günlükleri eylemi ekleme
+### <a name="add-azure-monitor-logs-action"></a>Azure Izleyici günlükleri ekleme eylemi
 
-Günlük Analizi çalışma alanınız için **Abonelik** ve **Kaynak Grubu'nu** seçin. **Kaynak Türü** için Günlük Analizi *Çalışma Alanı'nı* seçin ve ardından **Kaynak Adı**altında çalışma alanının adını seçin.
+Log Analytics çalışma alanınız için **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** Için *Log Analytics çalışma alanı* ' nı seçin ve ardından **kaynak adı**altında çalışma alanının adını seçin.
 
 **Sorgu** penceresine aşağıdaki günlük sorgusunu ekleyin.  
 
@@ -76,38 +76,38 @@ Event
 | sort by Computer asc   
 ```
 
-**Zaman Aralığı** için *sorguda Ayarla'yı* ve Grafik Türü için **HTML Tablosu'nu** seçin. **Chart Type**
+**Grafik türü**Için **zaman aralığı** ve **HTML tablosu** *sorgusunda ayarla '* yı seçin.
    
-![Sorgu çalıştırma ve sonuç eylemini görselleştir](media/logicapp-flow-connector/run-query-visualize-action.png)
+![Sorgu Çalıştır ve sonuçları görselleştirin eylemi](media/logicapp-flow-connector/run-query-visualize-action.png)
 
-Posta, geçerli bağlantıyla ilişkili hesap tarafından gönderilecektir. **Bağlantıyı Değiştir'i**tıklatarak başka bir hesap belirtebilirsiniz.
+Posta, geçerli bağlantıyla ilişkili hesap tarafından gönderilir. **Bağlantıyı Değiştir**' i tıklayarak başka bir hesap belirtebilirsiniz.
 
-### <a name="add-email-action"></a>E-posta eylemi ekleme
+### <a name="add-email-action"></a>E-posta eylemi Ekle
 
-**+ Yeni adım'ı**tıklatın ve ardından + **Eylem Ekle'yi**tıklatın. Altında **bir eylem seçin,** **görünüm** yazın ve ardından **Office 365 Outlook'u**seçin.
+**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin**altında **Outlook** yazın ve ardından **Office 365 Outlook**' u seçin.
 
-![Outlook bağlayıcısı seçin](media/logicapp-flow-connector/select-outlook-connector.png)
+![Outlook bağlayıcısını seçin](media/logicapp-flow-connector/select-outlook-connector.png)
 
-**E-posta Gönder 'i (V2) seçin.**
+**E-posta gönder (v2)** seçeneğini belirleyin.
 
 ![Office 365 Outlook seçim penceresi](media/logicapp-flow-connector/select-mail-action.png)
 
-Dinamik **içerik** penceresi açmak için **Body** kutusunda herhangi bir yere tıklayın mantık uygulamasında önceki eylemlerden gelen değerlerle açılır. Log Analytics eyleminde sorgunun sonuçları olan **daha fazlasını** ve ardından **Gövde'yi** görün'ü seçin.
+Bir **dinamik içerik** penceresi açmak için **gövde** kutusunda herhangi bir yere tıklayın, mantıksal uygulamadaki önceki eylemlerden alınan değerlerle açılır. Log Analytics eyleminde sorgu sonuçları olan **daha fazla göster** ve **ilet** ' i seçin.
 
-![Gövde seçin](media/logicapp-flow-connector/select-body.png)
+![Gövde Seç](media/logicapp-flow-connector/select-body.png)
 
-**To** penceresinde bir alıcının e-posta adresini ve **Özne'deki**e-postanın konusunu belirtin. 
+**Kime** penceresinde bir alıcının e-posta adresini **ve ilgili e**-postanın konusunu belirtin. 
 
 ![Posta eylemi](media/logicapp-flow-connector/mail-action.png)
 
 
-### <a name="save-and-test-your-logic-app"></a>Mantık uygulamanızı kaydedin ve test edin
-Mantık uygulamasının test çalışmasını gerçekleştirmek için **Kaydet'i** ve ardından **Çalıştır'ı** tıklatın.
+### <a name="save-and-test-your-logic-app"></a>Mantıksal Uygulamanızı kaydetme ve test etme
+**Kaydet** ' e ve ardından **Çalıştır** ' a tıklayıp mantıksal uygulamanın test çalıştırmasını gerçekleştirin.
 
-![Kaydet ve çalıştır](media/logicapp-flow-connector/save-run.png)
+![Kaydet ve Çalıştır](media/logicapp-flow-connector/save-run.png)
 
 
-Mantık uygulaması tamamlandığında, belirttiğiniz alıcının postasını kontrol edin.  Aşağıdakilere benzer bir gövdeye sahip bir posta almış olmalısınız:
+Mantıksal uygulama tamamlandığında, belirttiğiniz alıcının postasını kontrol edin.  Aşağıdakine benzer bir gövde içeren bir e-posta almış olmanız gerekir:
 
 ![Örnek e-posta](media/logicapp-flow-connector/sample-mail.png)
 
@@ -115,7 +115,7 @@ Mantık uygulaması tamamlandığında, belirttiğiniz alıcının postasını k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Monitor'da günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
+- [Azure izleyici 'de günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
 - [Logic Apps](/azure/logic-apps/) hakkında daha fazla bilgi edinin
 - [Microsoft Flow](https://ms.flow.microsoft.com)hakkında daha fazla bilgi edinin.
 

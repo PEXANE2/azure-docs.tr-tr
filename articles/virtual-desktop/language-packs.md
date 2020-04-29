@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstünde Windows 10 VM'lere dil paketleri yükleme - Azure
-description: Windows Sanal Masaüstü'nde Windows 10 çok oturumlu VM'ler için dil paketleri nasıl yüklenir?
+title: Windows sanal masaüstü-Azure 'da Windows 10 VM 'lerine dil paketleri yüklemesi
+description: Windows sanal masaüstü 'nde Windows 10 çoklu oturum VM 'Leri için dil paketleri nasıl yüklenir.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,150 +9,150 @@ ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80634041"
 ---
 # <a name="install-language-packs"></a>Dil paketlerini yükleme
 
-Windows Sanal Masaüstü dağıtımlarını uluslararası olarak ayarladığınızda, dağıtımınızın birden çok dili desteklediğinden emin olmak iyi bir fikirdir. Kuruluşunuzun ihtiyacı olduğu kadar çok dili desteklemek için dil paketlerini Windows 10 Enterprise çok oturumlu sanal makine (VM) görüntüsüne yükleyebilirsiniz. Bu makalede, dil paketlerinin nasıl yüklenirve kullanıcılarınızın kendi görüntülü dillerini seçmesine izin veren görüntüleri nasıl yakalayabileceğiniz anlatılmaktadır.
+Windows sanal masaüstü dağıtımlarını uluslararası olarak ayarlarken, dağıtımınızın birden çok dili desteklediğinden emin olmak iyi bir fikirdir. Kuruluşunuzun ihtiyaç duyacağı sayıda dili desteklemek için bir Windows 10 Enterprise multi-session sanal makinesi (VM) görüntüsüne dil paketleri yükleyebilirsiniz. Bu makalede, kullanıcılarınızın kendi görüntüleme dillerini seçmesini sağlayan dil paketlerini ve yakalama görüntülerini nasıl yükleyeceğiniz anlatılmaktadır.
 
-[Azure portalı ile kullanılabilirlik bölgesinde Windows sanal makine oluştur'da](../virtual-machines/windows/create-portal-availability-zone.md)Azure'da VM dağıtımı hakkında daha fazla bilgi edinin.
+Azure 'da bir sanal makine dağıtma hakkında daha fazla bilgi için [, Azure Portal ile bir kullanılabilirlik alanında Windows sanal makinesi oluşturun](../virtual-machines/windows/create-portal-availability-zone.md).
 
 >[!NOTE]
->Bu makale, Windows 10 Enterprise çok oturumlu VM'ler için geçerlidir.
+>Bu makale, Windows 10 Enterprise çoklu oturum VM 'Leri için geçerlidir.
 
-## <a name="install-a-language-pack"></a>Dil paketi yükleme
+## <a name="install-a-language-pack"></a>Dil paketi yükler
 
-Dil paketleri içeren bir VM görüntüsü oluşturmak için öncelikle bir makineye dil paketleri yüklemeniz ve bir görüntüsünü yakalamanız gerekir.
+Dil paketleriyle bir VM görüntüsü oluşturmak için, önce dil paketlerini bir makineye yüklemeniz ve bir görüntüsünü yakalamanız gerekir.
 
 Dil paketlerini yüklemek için:
 
 1. Yönetici olarak oturum açın.
 2. En son Windows ve Windows Mağazası güncelleştirmelerini yüklediğinizden emin olun.
-3. **Ayarlar** > **Saati & Dil** > **Bölgesi'ne**gidin.
-4. **Ülke veya bölge**altında açılan menüden tercih ettiğiniz ülkeyi veya bölgeyi seçin.
-    Bu örnekte, aşağıdaki ekran görüntüsünde gösterildiği gibi **Fransa'yı**seçeceğiz:
+3. **Ayarlar** > **zaman & dil** > **bölgesine**gidin.
+4. **Ülke veya bölge**altında, açılır menüden tercih ettiğiniz ülkeyi veya bölgeyi seçin.
+    Bu örnekte, aşağıdaki ekran görüntüsünde gösterildiği gibi **Fransa**seçeceğiz:
 
-    ![Bölge sayfasının ekran görüntüsü. Şu anda seçilen bölge Fransa'dır.](media/region-page-france.png)
+    ![Bölge sayfasının ekran görüntüsü. Şu anda seçili bölge Fransa ' dır.](media/region-page-france.png)
 
-5. Bundan sonra **Dil'i**seçin ve ardından **dil ekle'yi**seçin. Listeden yüklemek istediğiniz dili seçin ve **ardından İleri'yi**seçin.
-6. Yükle **dili özellikleri** penceresi açıldığında, dil paketini yükle etiketli onay kutusunu seçin **ve Windows görüntü mresim dili olarak ayarlayın.**
+5. Bundan sonra **dil**' i seçin ve ardından **Dil ekle**' yi seçin. Listeden yüklemek istediğiniz dili seçin ve ardından **İleri**' yi seçin.
+6. **Dil özelliklerini yükler** penceresi açıldığında, **dil paketini yükler ve Windows görüntüleme dili olarak ayarla**etiketli onay kutusunu seçin.
 7. **Yükle**’yi seçin.
-8. Aynı anda birden çok dil eklemek için, **dil ekle'yi**seçin ve ardından 5 ve 6 adımlarında bir dil eklemek için işlemi yineleyin. Yüklemek istediğiniz her dil için bu işlemi yineleyin. Ancak, aynı anda yalnızca bir dil görüntülü dil olarak ayarlayabilirsiniz.
+8. Aynı anda birden çok dil eklemek için **Dil ekle**' yi seçin ve ardından 5 ve 6. adımlarda bir dil eklemek için işlemi tekrarlayın. Yüklemek istediğiniz her dil için bu işlemi tekrarlayın. Ancak, tek seferde yalnızca bir dil görüntüleme diliniz olarak ayarlayabilirsiniz.
 
-    Hızlı bir görsel gösteri den başlayalım. Aşağıdaki resimler, Fransızca ve Felemenkçe dil paketlerinin nasıl yüklenir, ardından Fransızcayı görüntü dili olarak nasıl ayarlaylayamaize gösterilmektedir.
+    Hızlı bir görsel tanıtım aracılığıyla çalıştıralım. Aşağıdaki resimlerde, Fransızca ve Felemenkçe dil paketlerinin nasıl yükleneceği gösterilmektedir ve ardından, görüntüleme dili olarak Fransızca ayarlanır.
 
-    ![İşlemin başındaki Dil sayfasının ekran görüntüsü. Seçili Windows görüntüleme dili İngilizcedir.](media/language-page-default.png)
+    ![İşlemin başındaki dil sayfasının ekran görüntüsü. Seçilen Windows görüntüleme dili Ingilizce.](media/language-page-default.png)
 
-    ![Dil seçim penceresinin ekran görüntüsü. Kullanıcı, Fransızca dil paketlerini bulmak için arama çubuğuna "Fransızca" girdi.](media/select-language-french.png)
+    ![Dil seçimi penceresinin ekran görüntüsü. Kullanıcı, Fransızca dil paketlerini bulmak için arama çubuğuna "Fransızca" girdi.](media/select-language-french.png)
 
-    ![Yükle dil özellikleri sayfasının ekran görüntüsü. Tercih edilen dil olarak Fransızca seçilir. Seçili seçenekler "Görüntü dilimi ayarla", "Dil paketini yükle", "Konuşma tanıma" ve "El yazısı" dır.](media/install-language-features.png)
+    ![Dil özelliklerini yüklemeyi sayfasının ekran görüntüsü. Fransızca tercih edilen dil olarak seçilidir. Seçilen seçenekler "görüntüleme dilmi ayarla", "dil paketini yükler," "konuşma tanıma" ve "el yazısı" dir.](media/install-language-features.png)
 
-    Dil paketleriniz yüklendikten sonra dil paketlerinizin adlarının diller listesinde göründüğünü görmeniz gerekir.
+    Dil Paketleriniz yüklendikten sonra dil paketlerinde dil paketlerinizin adlarının göründüğünü görmeniz gerekir.
 
-    ![Yeni dil paketleri yüklü dil sayfasının ekran görüntüsü. Fransızca ve Hollanda dil paketleri "tercih edilen diller" altında listelenir.](media/language-page-complete.png)
+    ![Yeni dil paketlerinin yüklü olduğu dil sayfasının ekran görüntüsü. Fransızca ve Hollanda dil paketleri "tercih edilen diller" altında listelenmiştir.](media/language-page-complete.png)
 
-9. Oturumunuzdan oturumunuzu imzalamanızı isteyen bir pencere belirirse. Oturum aç, sonra tekrar oturum aç. Görüntülü diliniz artık seçtiğiniz dil olmalıdır.
+9. Oturumunuz oturumunuzu kapatmak isteyip istemediğinizi soran bir pencere görünürse. Oturumu kapatın ve yeniden oturum açın. Görüntüleme diliniz artık seçtiğiniz dilde olmalıdır.
 
-10.  Kontrol **Paneli** > **Saati ve Bölge** > **Bölgesine**gidin.
+10.  **Denetim Masası** > **saat ve bölge** > **bölgesi**' ne gidin.
 
-11.  **Bölge** penceresi açıldığında, **İdare** sekmesini seçin ve ardından **Ayarları Kopyala'yı**seçin.
+11.  **Bölge** penceresi açıldığında, **Yönetim** sekmesini seçin ve ardından **Ayarları Kopyala**' yı seçin.
 
-12.  Hoş geldiniz ekranı **ve sistem hesapları ve** Yeni kullanıcı **hesapları**etiketli onay kutularını seçin.
+12.  **Hoş geldiniz ekranı ve sistem hesapları** ve **Yeni Kullanıcı hesapları**etiketli onay kutularını seçin.
 
-13.  **Tamam'ı**seçin.
+13.  **Tamam**’ı seçin.
 
-14.  Bir pencere açılır ve oturumunuzu yeniden başlatmanızı söyler. **Şimdi Yeniden Başlat'ı**seçin.
+14.  Bir pencere açılır ve oturumunuzu yeniden başlatmanızı söyleyecektir. **Şimdi yeniden Başlat**' ı seçin.
 
-15.  Geri giriş yaptıktan **sonra, Denetim Masası** > **Saati ve Bölge** > **Bölgesi'ne**geri dön.
+15.  Oturum açtıktan sonra, **Denetim Masası** > **saat ve bölge** > **bölgesi**' ne geri dönün.
 
 16.  **Yönetim** sekmesini seçin.
 
-17.  **Sistemi değiştir'i seçin.**
+17.  **Sistem yerel ayarını değiştir**' i seçin.
 
-18. **Geçerli sistem yerel öğesi**altındaki açılır menüde, kullanmak istediğiniz yerel dili seçin. Bundan sonra, **Tamam'ı**seçin.
+18. **Geçerli sistem yerel ayarı**altındaki açılan menüde, kullanmak istediğiniz yerel ayar dilini seçin. Bundan sonra **Tamam**' ı seçin.
 
-19. Oturumunuzu yeniden başlatmak için **şimdi yeniden başlat'ı** seçin.
+19. Oturumunuzu bir kez daha yeniden başlatmak için **Şimdi yeniden Başlat** ' ı seçin.
 
-Tebrikler, dil paketlerinizi yükledin!
+Tebrikler, dil paketlerinizi yüklediniz!
 
-Devam etmeden önce, sisteminizin Windows ve Windows mağazasının en son sürümlerinin yüklü olduğundan emin olun.
+Devam etmeden önce, sisteminizde en son Windows ve Windows Mağazası sürümlerinin yüklü olduğundan emin olun.
 
 ## <a name="sysprep"></a>Sysprep
 
-Daha sonra, görüntü yakalama işlemi için hazırlamak için makinesprep gerekir.
+Daha sonra, görüntü yakalama işlemine hazırlamak için makinenize Sysprep uygulamanız gerekir.
 
-Makinenizi sysprep için:
+Makinenize Sysprep eklemek için:
 
 1. Yönetici olarak PowerShell’i açın.
-2. Doğru dizine gitmek için aşağıdaki cmdlet'i çalıştırın:
+2. Doğru dizine gitmek için aşağıdaki cmdlet 'i çalıştırın:
    
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
-3. Ardından, aşağıdaki cmdlet çalıştırın:
+3. Sonra, aşağıdaki cmdlet 'i çalıştırın:
     
     ```powershell
     .\sysprep.exe
     ```
 
-4. Sistem Hazırlama Aracı penceresi açıldığında, **Genelleolarak**etiketli onay kutusunu seçin, ardından **Kapatma Seçenekleri'ne** gidin ve açılan menüden **Kapat'ı** seçin.
+4. Sistem Hazırlama aracı penceresi açıldığında, **generalize**etiketli onay kutusunu seçin, ardından **kapatma seçenekleri** ' ne gidin ve açılan menüden **Kapat** ' ı seçin.
 
 >[!NOTE]
->Syprep işleminin tamamlanması birkaç dakika sürer. VM kapanınca, uzak oturumunuz kesilir.
+>Syprep işleminin tamamlanması birkaç dakika sürer. VM kapandığı için uzak oturumunuzun bağlantısı kesilecek.
 
-### <a name="resolve-sysprep-errors"></a>Sysprep hatalarını çözme
+### <a name="resolve-sysprep-errors"></a>Sysprep hatalarını çözümle
 
-Sysprep işlemi sırasında bir hata iletisi görürseniz, yapmanız gerekenler şunlardır:
+Sysprep işlemi sırasında bir hata iletisi görürseniz şunları yapmanız gerekir:
 
-1. **Drive C'yi** açın ve **Windows** > **System32 Sysprep** > **Panther'e**gidin, ardından **kurulum dosyasını** açın.
+1. **C sürücüsünü** açın ve **Windows** > **System32 Sysprep** > **Panther**adresine gidip **Setuperr** dosyasını açın.
 
-   Hata dosyasındaki metin, aşağıdaki resimde gösterildiği gibi belirli bir dil paketini kaldırmanız gerektiğini söyler. Bir sonraki adım için dil paketi adını kopyalayın.
+   Hata dosyasındaki metinde, aşağıdaki görüntüde gösterildiği gibi belirli bir dil paketini kaldırmanız gerektiğini söyleyecektir. Sonraki adım için dil paketi adını kopyalayın.
 
-   ![Setuperr dosyasının ekran görüntüsü. Paket adını içeren metin koyu mavi ile vurgulanır.](media/setuperr-package-name.png)
+   ![Setuperr dosyasının ekran görüntüsü. Paket adına sahip metin koyu mavi renkle vurgulanır.](media/setuperr-package-name.png)
 
-2. Yeni bir PowerShell penceresi açın ve dil paketini kaldırmak için adım 2'de kopyaladığınız paket adı ile aşağıdaki cmdlet'i çalıştırın:
+2. Yeni bir PowerShell penceresi açın ve dil paketini kaldırmak için adım 2 ' de kopyaladığınız paket adıyla aşağıdaki cmdlet 'i çalıştırın:
 
    ```powershell
    Remove-AppxPackage <package name>
    ```
 
-3. `Remove-AppxPackage` Cmdlet'i tekrar çalıştırarak paketi kaldırdığınızdan emin olun. Paketi başarıyla kaldırdıysanız, kaldırmaya çalıştığınız paketin orada olmadığını belirten bir ileti görmeniz gerekir.
+3. `Remove-AppxPackage` Cmdlet 'i yeniden çalıştırarak paketi kaldırdığınızdan emin olun. Paketi başarıyla kaldırdıysanız, kaldırmaya çalıştığınız paketin orada olmadığını belirten bir ileti görmeniz gerekir.
 
-4. Cmdlet'i `sysprep.exe` tekrar çalıştırın.
+4. `sysprep.exe` Cmdlet 'i yeniden çalıştırın.
 
-## <a name="capture-the-image"></a>Görüntüyü yakalama
+## <a name="capture-the-image"></a>Görüntüyü yakala
 
-Sisteminiz hazır olduğuna göre, diğer kullanıcıların yapılandırma işlemini yinelemek zorunda kalmadan sisteminize göre VM kullanmaya başlayabilmesi için bir görüntü yakalayabilirsiniz.
+Sisteminiz hazır olduğuna göre, diğer kullanıcıların yapılandırma işlemini yinelemek zorunda kalmadan sistem sanal makinelerini kullanmaya başlayabilmesi için bir görüntü yakalayabilirsiniz.
 
-Görüntü yakalamak için:
+Bir görüntü yakalamak için:
 
-1. Azure portalına gidin ve [bir dil paketi](#install-a-language-pack) ve [sysprep'te](#sysprep)yapılandırdığınız makinenin adını seçin.
+1. Azure portal gidin ve [bir dil paketi](#install-a-language-pack) ve [Sysprep](#sysprep)yüklerken yapılandırdığınız makinenin adını seçin.
 
-2. **Capture'i**seçin.
+2. **Yakala**' yı seçin.
 
-3. Görüntünüz için **Ad** alanına bir ad girin ve aşağıdaki resimde gösterildiği gibi **Kaynak grubu** açılır menüsünü kullanarak kaynak grubuna atayın.
+3. **Ad** alanına görüntünüz için bir ad girin ve aşağıdaki görüntüde gösterildiği gibi **kaynak grubu** açılır menüsünü kullanarak kaynak grubuna atayın.
 
-   ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-image-fr" ve "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
+   ![Görüntü oluştur penceresinin ekran görüntüsü. Kullanıcının bu test görüntüsüne verdiği ad "vmwvd-Image-fr" dır ve bunu "testwvdimagerg" kaynak grubuna atamıştır.](media/create-image.png)
 
-4. **Oluştur'u**seçin.
+4. **Oluştur**’u seçin.
 
-5. Yakalama işleminin tamamlanması için birkaç dakika bekleyin. Görüntü hazır olduğunda, Bildirimler Merkezi'nde görüntünün yakalandığını bildiren bir ileti görmeniz gerekir.
+5. Yakalama işleminin tamamlanabilmesi için birkaç dakika bekleyin. Görüntü hazırsa, bildirim merkezinde görüntünün yakalandığını bildiren bir ileti görmeniz gerekir.
 
-Artık yeni resminizi kullanarak bir VM dağıtabilirsiniz. VM'yi dağıttığınızda, [Azure portalı ile kullanılabilirlik bölgesinde Windows sanal makine oluştur'daki](../virtual-machines/windows/create-portal-availability-zone.md)yönergeleri uyguladığından emin olun.
+Artık yeni görüntünüzü kullanarak bir VM dağıtabilirsiniz. VM 'yi dağıtırken, [Azure Portal bir kullanılabilirlik alanında Windows sanal makinesi oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)bölümündeki yönergeleri izlediğinizden emin olun.
 
-### <a name="how-to-change-display-language-for-standard-users"></a>Standart kullanıcılar için görüntü dilini değiştirme
+### <a name="how-to-change-display-language-for-standard-users"></a>Standart kullanıcılar için görüntüleme dilini değiştirme
 
-Standart kullanıcılar VM'lerindeki görüntü dilini değiştirebilir.
+Standart kullanıcılar, VM 'lerinde görüntüleme dilini değiştirebilir.
 
-Görüntü dilini değiştirmek için:
+Görüntüleme dilini değiştirmek için:
 
-1. Dil **Ayarları'na**gidin. Bunun nerede olduğunu bilmiyorsanız, Başlat Menüsündeki arama çubuğuna **Dil** girebilirsiniz.
+1. **Dil ayarları**' na gidin. Nerede olduğunu bilmiyorsanız, başlangıç menüsündeki arama çubuğuna **dil** girebilirsiniz.
 
-2. Windows görüntülü dil açılır menüsünde, görüntülü dil olarak kullanmak istediğiniz dili seçin.
+2. Windows görüntüleme dili açılan menüsünde, görüntüleme diliniz olarak kullanmak istediğiniz dili seçin.
 
-3. Oturumunuzu oturumunuzdan tamamlayın, sonra tekrar oturum açın. Görüntülü dil artık adım 2'de seçtiğiniz dil olmalıdır.
+3. Oturumunuzu kapatın ve yeniden oturum açın. Görüntüleme dili artık adım 2 ' de seçtiğiniz bir görünüm olmalıdır.

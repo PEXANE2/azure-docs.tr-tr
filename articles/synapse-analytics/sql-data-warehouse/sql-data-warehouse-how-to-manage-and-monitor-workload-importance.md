@@ -1,6 +1,6 @@
 ---
 title: İş yükü önem derecesini yönetme ve izleme
-description: Azure Synapse Analytics'te istek düzeyinin önemini nasıl yönettiğinizi ve izleyeceğinizi öğrenin.
+description: Azure SYNAPSE Analytics 'te istek düzeyi önemini yönetme ve izleme hakkında bilgi edinin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,20 +12,20 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633331"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te iş yükünün önemini yönetme ve izleme
+# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükü önemini yönetme ve izleme
 
-DMVs ve katalog görünümlerini kullanarak Azure Synapse'de Synapse SQL istek düzeyinin önemini yönetin ve izleyin.
+DMVs ve katalog görünümlerini kullanarak Azure SYNAPSE 'de SYNAPSE SQL istek düzeyi önem derecesini yönetin ve izleyin.
 
-## <a name="monitor-importance"></a>İzleme önemi
+## <a name="monitor-importance"></a>Önemli izleme
 
-[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütunundan sonra önemi izleyin.
-Aşağıdaki izleme sorgusu, sorgular için gönderme zamanını ve başlangıç saatini gösterir. Önemli olanın zamanlamayı nasıl etkilediğini görmek için gönderme süresini ve başlangıç saatini ve başlangıç saatini önemli olarak gözden geçirin.
+[Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütununu kullanarak önem derecesini izleyin.
+Aşağıdaki izleme sorgusunda sorgular için gönderme zamanı ve başlangıç saati gösterilmektedir. Zamanlamanın planlanmasının nasıl yapıldığını görmek için önem derecesine sahip gönderme süresini ve başlangıç saatini gözden geçirin.
 
 ```sql
 SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
@@ -35,11 +35,11 @@ SELECT s.login_name, r.status, r.importance, r.submit_time, r.start_time
 ORDER BY r.start_time
 ```
 
-Sorguların nasıl zamanlandığını daha fazla görmek için katalog görünümlerini kullanın.
+Sorguların zamanlamaya göre daha ayrıntılı bir şekilde bakmak için katalog görünümlerini kullanın.
 
 ## <a name="manage-importance-with-catalog-views"></a>Katalog görünümleriyle önemi yönetme
 
-sys.workload_management_workload_classifiers kataloğu görünümü sınıflandırıcılar hakkında bilgi içerir. Kaynak sınıflarına eşleyen sistem tanımlı sınıflandırıcıları hariç tutmak için aşağıdaki kodu yürütebilirsiniz:
+Sys. workload_management_workload_classifiers Katalog görünümü sınıflandırıcılerle ilgili bilgiler içerir. Kaynak sınıflarıyla eşlenen sistem tarafından tanımlanan sınıflandırıcıları dışlamak için aşağıdaki kodu yürütün:
 
 ```sql
 SELECT *
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Katalog görünümü, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), sınıflandırıcı oluşturulmasında kullanılan parametreler hakkında bilgi içerir.  Aşağıdaki sorgu, ExecutiveReports ile değerler ```membername``` için parametre üzerinde ExecReportsClassifier oluşturulduğunu gösterir:
+[Sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)Katalog görünümü sınıflandırıcının oluşturulmasında kullanılan parametrelerle ilgili bilgiler içerir.  Aşağıdaki sorgu, ExecReportsClassifier 'in Executıvereports değerleri ```membername``` için parametresinde oluşturulduğunu gösterir:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -59,8 +59,8 @@ SELECT c.name,cd.classifier_type, classifier_value
 
 ![sorgu sonuçları](./media/sql-data-warehouse-how-to-manage-and-monitor-workload-importance/wlm-query-results.png)
 
-Sorun giderme yanlış sınıflandırmasını basitleştirmek için, iş yükü sınıflayıcıları oluştururken kaynak sınıfı rol eşlemelerini kaldırmanızı tavsiye ettik. Aşağıdaki kod varolan kaynak sınıfı rol üyeliklerini döndürür. İlgili kaynak ```membername``` sınıfından döndürülen her biri için sp_droprolemember çalıştırın.
-Aşağıda, iş yükü sınıflandırıcıyı bırakmadan önce varlığı denetlemeye bir örnek verilmiştir:
+Hatalı sınıflandırmayla ilgili sorun gidermeyi kolaylaştırmak için, iş yükü sınıflandırıcıları oluştururken kaynak sınıfı rol eşlemelerini kaldırmanızı öneririz. Aşağıdaki kod, var olan kaynak sınıfı rolü üyeliklerini döndürür. Karşılık gelen kaynak sınıfından ```membername``` döndürülen her bir sp_droprolemember çalıştırın.
+Aşağıda, bir iş yükü sınıflandırıcısını bırakmadan önce varolup olmadığını denetleme örneği verilmiştir:
 
 ```sql
 IF EXISTS (SELECT 1 FROM sys.workload_management_workload_classifiers WHERE name = 'ExecReportsClassifier')
@@ -70,8 +70,8 @@ GO
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sınıflandırma hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-classification.md)
-- Önem hakkında daha fazla bilgi için İş [yükünün önemi](sql-data-warehouse-workload-importance.md) ne redeleyecek
+- Sınıflandırma hakkında daha fazla bilgi için bkz. [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).
+- Önem hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md)
 
 > [!div class="nextstepaction"]
-> [İş Yükünü Niçin Yapılandırmaya Git](sql-data-warehouse-how-to-configure-workload-importance.md)
+> [Iş yükü önemini yapılandırma bölümüne gidin](sql-data-warehouse-how-to-configure-workload-importance.md)

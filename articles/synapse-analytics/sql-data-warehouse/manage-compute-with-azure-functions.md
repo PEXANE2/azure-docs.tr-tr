@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure İşlevleriyle hesaplamayı yönetme'
-description: Azure Synapse Analytics'teki SQL havuzunuzun bilgi işlemini yönetmek için Azure işlevlerini kullanma.
+title: 'Öğretici: Azure Işlevleri ile işlem yönetme'
+description: Azure işlevleri 'ni kullanarak Azure SYNAPSE Analytics 'te SQL havuzunuzun işlem yönetimini yönetin.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,37 +12,37 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631961"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL havuzunda bilgi işlem kaynaklarını yönetmek için Azure Işlevlerini kullanın
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
-Bu öğretici, Azure Synapse Analytics'teki bir SQL havuzunun bilgi işlem kaynaklarını yönetmek için Azure İşlevlerini kullanır.
+Bu öğretici, Azure SYNAPSE Analytics 'teki bir SQL havuzunun işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanır.
 
-SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneğinizle aynı abonelik altında katılımcı erişimine sahip bir [Hizmet Sorumlusu Hesabı](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmanız gerekir.
+Azure İşlev Uygulaması 'yi SQL havuzuyla kullanabilmek için, SQL havuzu örneğinizle aynı abonelik altında katkıda bulunan erişimine sahip bir [hizmet sorumlusu hesabı](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmanız gerekir.
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonuyla zamanlayıcı tabanlı ölçekleme dağıtma
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla Zamanlayıcı tabanlı ölçeklendirmeyi dağıtma
 
-Şablonu dağıtmak için aşağıdaki bilgilere ihtiyacınız var:
+Şablonu dağıtmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
-- SQL havuz örneğinizin içinde olduğu kaynak grubunun adı
-- SQL havuz örneğinizin içinde olduğu mantıksal sunucunun adı
-- SQL havuz örneğinizin adı
+- SQL havuzu örneğinizin bulunduğu kaynak grubunun adı
+- SQL havuzu örneğinizin bulunduğu mantıksal sunucunun adı
+- SQL havuzu örneğinizin adı
 - Azure Active Directory'nizin Kiracı Kimliği (Dizin Kimliği)
 - Abonelik Kimliği
 - Hizmet Sorumlusu Uygulama Kimliği
 - Hizmet Sorumlusu Gizli Anahtarı
 
-Önceki bilgilere sahip olduktan sonra, bu şablonu dağıtın:
+Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Şablonu dağıttıktan sonra üç yeni kaynak bulmanız gerekir: ücretsiz Azure Uygulama Hizmet Planı, tüketim tabanlı İşlev Uygulaması planı ve günlüğe kaydetme ve işlem sırasını işleyen bir depolama hesabı. Dağıtılan işlevlerin gereksinimlerinize uyacak şekilde nasıl değiştirileceğini görmek için okumaya devam edin.
+Şablonu dağıttıktan sonra, üç yeni kaynak bulmanız gerekir: ücretsiz bir Azure App Service planı, tüketim tabanlı bir İşlev Uygulaması planı ve günlüğü ve işlemler kuyruğunu işleyen bir depolama hesabı. Dağıtılan işlevlerin gereksinimlerinize uyacak şekilde nasıl değiştirileceğini görmek için okumaya devam edin.
 
 ## <a name="change-the-compute-level"></a>İşlem düzeyini değiştirme
 
@@ -50,11 +50,11 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
 
    ![Şablonla dağıtılan işlevler](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Zaman ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. Açılan menüde Tümleştir'i seçin.
+2. Zaman ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. Açılan menüde tümleştirin ' ı seçin.
 
    ![İşlev için Tümleştir'i seçme](./media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Şu anda görüntülenen değer *%ScaleDownTime%* veya *%ScaleUpTime%* olmalıdır. Bu değerler, zamanlamanın [Uygulama Ayarları](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) altında tanımlanmış değerleri temel alacağını gösterir. Şimdilik, bu değeri yoksayabilir ve sonraki adımlara bağlı olarak zamanlamayı tercih ettiğiniz zamana değiştirebilirsiniz.
+3. Şu anda görüntülenen değer *%ScaleDownTime%* veya *%ScaleUpTime%* olmalıdır. Bu değerler, zamanlamanın [Uygulama Ayarları](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) altında tanımlanmış değerleri temel alacağını gösterir. Şimdilik, bu değeri yoksayabilir ve sonraki adımlara göre zamanlamayı tercih ettiğiniz zamana dönüştürebilirsiniz.
 
 4. Zamanlama alanında, SQL Veri Ambarı'nın ölçeğinin ne sıklıkta artırılmasını istediğinizi yansıtan zaman CRON ifadesini ekleyin.
 
@@ -66,7 +66,7 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
    {second} {minute} {hour} {day} {month} {day-of-week}
    ```
 
-   Örneğin, *"0 30 9 * * 1-5"* hafta içi her gün saat 09:30'da bir tetikleyiciyi yansıtır. Daha fazla bilgi için Azure İşlevleri[zamanlama örnekleri](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) sayfasını ziyaret edin.
+   Örneğin, *"0 30 9 * * 1-5"* bir tetikleyiciyi 9:30 ' da her hafta içinde yansıtır. Daha fazla bilgi için Azure İşlevleri[zamanlama örnekleri](../../azure-functions/functions-bindings-timer.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#example) sayfasını ziyaret edin.
 
 ## <a name="change-the-time-of-the-scale-operation"></a>Ölçek işleminin saatini değiştirme
 
@@ -76,7 +76,7 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
 
    ![İşlev tetikleyicisi işlem düzeyini değiştirme](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. *ServiceLevelObjective*'in değerini istediğiniz düzeyle değiştirin ve Kaydet'e tıklayın. Bu değer, veri ambarı örneğinizin Tümleştirme bölümünde tanımlanan zamanlamayı temel alan ölçeklendireceği bilgi işlem düzeyidir.
+3. *ServiceLevelObjective*'in değerini istediğiniz düzeyle değiştirin ve Kaydet'e tıklayın. Bu değer, veri ambarı örneğinizin tümleştirin bölümünde tanımlanan zamanlamaya göre ölçeklendirileceği işlem düzeyidir.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Ölçek yerine duraklatma veya sürdürme kullanma
 
@@ -91,13 +91,13 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
 3. Zamanlamalarını değiştirmek için ilgili tetikleyicilerin *Tümleştir* sekmelerine gidin.
 
    > [!NOTE]
-   > Ölçekleme tetikleyicileri ile duraklatma/devam tetikleyicileri arasındaki işlevsel fark, kuyruğa gönderilen iletidir. Daha fazla bilgi için [bkz.](manage-compute-with-azure-functions.md#add-a-new-trigger-function)
+   > Ölçeklendirme Tetikleyicileri ve duraklatma/devam Tetikleyicileri arasındaki işlevsel fark, kuyruğa gönderilen iletidir. Daha fazla bilgi için bkz. [Yeni tetikleyici Işlevi ekleme](manage-compute-with-azure-functions.md#add-a-new-trigger-function).
 
 ## <a name="add-a-new-trigger-function"></a>Yeni tetikleyici işlevi ekleme
 
-Şu anda, şablona dahil edilmiş yalnızca iki ölçeklendirme işlevi vardır. Bu işlevlerle, bir gün boyunca, yalnızca bir kez küçültebilir ve bir kez daha fazla. Günde birden çok kez ölçekleme veya hafta sonları farklı ölçekleme davranışı na sahip olmak gibi daha ayrıntılı denetim için başka bir tetikleyici eklemeniz gerekir.
+Şu anda, şablona dahil edilmiş yalnızca iki ölçeklendirme işlevi vardır. Bu işlevlerle, bir gün boyunca yalnızca bir kez ve bir kez ölçeği azaltabilirsiniz. Gün başına birden çok kez ölçekleme veya hafta sonları üzerinde farklı ölçeklendirme davranışına sahip gibi daha ayrıntılı denetim için, başka bir tetikleyici eklemeniz gerekir.
 
-1. Yeni boş bir işlev oluşturun. İşlev *+* şablonu bölmesini göstermek için Işlevler konumunun yanındaki düğmeyi seçin.
+1. Yeni boş bir işlev oluşturun. İşlev şablonu *+* bölmesini göstermek için işlevlerinizin konumunun yakınındaki düğmeyi seçin.
 
    ![Yeni işlev oluşturma](./media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -113,7 +113,7 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
 
    ![Index.js'yi kopyalama](././media/manage-compute-with-azure-functions/index-js.png)
 
-5. Operasyon değişkeninizi aşağıdaki gibi istenilen davranışa ayarlayın:
+5. İşlem değişkeninizi istenen davranışa aşağıdaki şekilde ayarlayın:
 
    ```javascript
    // Resume the SQL pool instance
@@ -135,7 +135,7 @@ SQL havuzu ile Azure İşlev Uygulaması'nı kullanmak için, SQL havuz örneği
 
 ## <a name="complex-scheduling"></a>Karmaşık zamanlama
 
-Bu bölümde, duraklatma, devam etme ve ölçekleme yeteneklerinin daha karmaşık bir şekilde zamanlanması için nelerin gerekli olduğu kısaca gösterin.
+Bu bölüm, duraklatma, devam etmeyi ve ölçeklendirme özelliklerini daha karmaşık bir şekilde planlamak için gereken öğeleri kısaca gösterir.
 
 ### <a name="example-1"></a>Örnek 1
 
@@ -148,7 +148,7 @@ Gündelik olarak 08:00'da DW600'a ölçeği artırma ve 20:00'da DW200'e ölçe�
 
 ### <a name="example-2"></a>Örnek 2
 
-Günlük ölçek 08:00'den DW1000'e kadar ölçeklendirin, 16:00'da DW600'e bir kez küçültün ve 22:00'de DW200'e kadar küçültün.
+Günlük ölçeği, 10:00 ' da DW1000 ' ye kadar bir kez ölçeklendirin, 4pm 'de DW600.
 
 | İşlev  | Zamanlama     | İşlem                                |
 | :-------- | :----------- | :--------------------------------------- |
@@ -171,4 +171,4 @@ Hafta içi günlerinde 08:00'da DW1000'e ölçeği artırma ve 16:00'da bir kez 
 
 [Zamanlayıcı tetikleyicisi](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure işlevleri hakkında daha fazla bilgi edinin.
 
-SQL havuz [örnekleri deposunu](https://github.com/Microsoft/sql-data-warehouse-samples)kullanıma alıyoruz.
+SQL havuzu [örnekleri deposunu](https://github.com/Microsoft/sql-data-warehouse-samples)kullanıma alın.

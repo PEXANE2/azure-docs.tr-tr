@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetlerinde kotalar ve sınırlar
-description: Bu konu, Microsoft Azure Medya Hizmetleri'ndeki kotaları ve sınırları açıklar.
+title: Azure Media Services kotalar ve sınırlar
+description: Bu konuda Microsoft Azure Media Services kotaları ve sınırları açıklanmaktadır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,101 +12,101 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
 ms.openlocfilehash: e9855a02a57d71793f3a5d6c5ce01cbfda341b70
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632220"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
-# <a name="azure-media-services-quotas-and-limits"></a>Azure Medya Hizmetleri kotaları ve sınırları
+# <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services kotaları ve limitleri
 
-Bu makalede, bazen kota olarak da adlandırılan en yaygın Microsoft Azure Medya Hizmetleri sınırlarından bazıları listelenir.
+Bu makalede, bazen kotalar olarak da adlandırılan en yaygın Microsoft Azure Media Services limitlerin bazıları listelenir.
 
 > [!NOTE]
-> Sabit olmayan kaynaklar için, kotalarda artış istemek için bir destek bileti açın. Daha yüksek sınırlar elde etmek için ek Azure Medya Hizmetleri hesapları oluşturmayın.
+> Düzeltilmeyen kaynaklar için, kotalarda artış istemek üzere bir destek bileti açın. Daha yüksek limitleri elde etmeye yönelik bir denemede ek Azure Media Services hesapları oluşturmayın.
 
-## <a name="account-limits"></a>Hesap limitleri
-
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| [Tek](media-services-account-concept.md) bir abonelikteki Medya Hizmetleri hesapları | 25 (sabit) |
-
-## <a name="asset-limits"></a>Varlık limitleri
+## <a name="account-limits"></a>Hesap sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| Medya Hizmetleri hesabı başına [varlıklar](assets-concept.md) | 1.000.000|
+| Tek bir abonelikteki [hesapları Media Services](media-services-account-concept.md) | 25 (sabit) |
 
-## <a name="storage-limits"></a>Depolama limitleri
+## <a name="asset-limits"></a>Varlık sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| Dosya boyutu| Bazı senaryolarda, Medya Hizmetleri'nde işlenmek üzere desteklenen en büyük dosya boyutunda bir sınır vardır. <sup>(1)</sup> |
-| [Depolama hesapları](storage-account-concept.md) | 100<sup>(2)</sup> (sabit) |
+| Media Services hesap başına [varlık](assets-concept.md) sayısı | 1.000.000|
 
-<sup>1</sup> Tek bir blob için desteklenen maksimum boyut şu anda Azure Blob Depolama'da 5 TB'a kadardır. Hizmet tarafından kullanılan VM boyutlarına dayalı Medya Hizmetlerinde ek sınırlar geçerlidir. Boyut sınırı, yüklediğiniz dosyalar ve Medya Hizmetleri işleme (kodlama veya çözümleme) sonucunda oluşturulan dosyalar için de geçerlidir. Kaynak dosyanız 260 GB'dan büyükse, İşiniz büyük olasılıkla başarısız olur. 
+## <a name="storage-limits"></a>Depolama sınırları
 
-Aşağıdaki tabloda medya ayrılmış birimleri S1, S2 ve S3 sınırları gösterir. Kaynak dosyanız tabloda tanımlanan sınırlardan daha büyükse, kodlama işiniz başarısız olur. Uzun süreli 4K çözünürlük kaynaklarını kodlarsanız, gereken performansı elde etmek için S3 ortam ayrılmış birimleri kullanmanız gerekir. S3 medya rezerve birimlerindeki 260 GB sınırından daha büyük 4K içeriğiniz varsa, bir destek bileti açın.
+| Kaynak | Varsayılan Sınır | 
+| --- | --- | 
+| Dosya boyutu| Bazı senaryolarda, Media Services ' de işlenmek üzere desteklenen en büyük dosya boyutu sınırı vardır. <sup>(1</sup> |
+| [Depolama hesapları](storage-account-concept.md) | 100<sup>(2)</sup> (Sabit) |
 
-|Ortam ayrılmış birim türü|Maksimum giriş boyutu (GB)|
+<sup>1</sup> tek bir blob için desteklenen en büyük boyut Şu anda Azure Blob depolamada 5 TB 'a kadar. Ek sınırlar, hizmet tarafından kullanılan VM boyutlarına göre Media Services geçerlidir. Boyut sınırı, karşıya yüklediğiniz dosyalar ve ayrıca Media Services işleme sonucu olarak oluşturulan dosyalar için geçerlidir (kodlama veya çözümleme). Kaynak dosyanız 260 GB 'tan büyükse, Işiniz muhtemelen başarısız olur. 
+
+Aşağıdaki tabloda S1, S2 ve S3 medya ayrılmış birimleri üzerindeki sınırlar gösterilmektedir. Kaynak dosyanız tabloda tanımlanan sınırlardan daha büyükse, kodlama işiniz başarısız olur. Uzun süreli 4K çözümleme kaynaklarını kodlarsanız, gereken performansı elde etmek için S3 medya ayrılmış birimlerini kullanmanız gerekir. S3 medya ayrılmış birimlerindeki 260 GB sınırından büyük 4K içeriğiniz varsa bir destek bileti açın.
+
+|Medya ayrılmış birim türü|Maksimum giriş boyutu (GB)|
 |---|---|
 |S1 |    26|
 |S2    | 60|
 |S3    |260|
 
-<sup>2</sup> Depolama hesapları aynı Azure aboneliğinden olmalıdır.
+<sup>2</sup> depolama hesapları aynı Azure aboneliğinden olmalıdır.
 
-## <a name="jobs-encoding--analyzing-limits"></a>İşler (kodlama & çözümleme) sınırları
-
-| Kaynak | Varsayılan Sınır | 
-| --- | --- | 
-| Medya Hizmetleri hesabı başına [işler](transforms-jobs-concept.md) | 500.000 <sup>(3)</sup> (sabit)|
-| İş Başına İş Girişleri | 50 (sabit)|
-| İş Başına İş çıktıları | 20 (sabit) |
-| Medya Hizmetleri hesabı başına [dönüşümler](transforms-jobs-concept.md) | 100 (sabit)|
-| Dönüşüm'de çıktıları dönüştürün | 20 (sabit) |
-| İş girişi başına dosyalar|10 (sabit)|
-
-<sup>3</sup> Bu numara sıralanmış, tamamlanmış, etkin leştirilmiş ve iptal edilen İşleri içerir. Silinen İşler içermez. 
-
-Toplam kayıt sayısı maksimum kotanın altında olsa bile, hesabınızdaki 90 günden büyük tüm İş kayıtları otomatik olarak silinir. 
-
-## <a name="live-streaming-limits"></a>Canlı akış limitleri
+## <a name="jobs-encoding--analyzing-limits"></a>İşler (kodlama & analiz) sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| Medya Hizmetleri hesabı başına [Canlı Etkinlikler](live-events-outputs-concept.md) <sup>(4)</sup> |5|
-| Canlı Etkinlik Başına Canlı Çıktılar |3 <sup>(5)</sup> |
-| Max Canlı Çıkış süresi | 25 saat |
+| Media Services hesap başına [iş](transforms-jobs-concept.md) sayısı | 500.000 <sup>(3)</sup> (Sabit)|
+| Iş başına iş girişleri | 50 (düzeltildi)|
+| Iş başına iş çıkışları | 20 (Sabit) |
+| Media Services hesap başına [dönüşümler](transforms-jobs-concept.md) | 100 (düzeltildi)|
+| Dönüşümde çıkışları dönüştürme | 20 (Sabit) |
+| İş girişi başına dosya sayısı|10 (Sabit)|
 
-<sup>4</sup> Live Event sınırları hakkında ayrıntılı bilgi için [Canlı Etkinlik türleri karşılaştırması ve limitlerine](live-event-types-comparison.md)bakın.
+<sup>3</sup> bu sayı, kuyruğa alınmış, tamamlanmış, etkin ve Iptal edilmiş işleri içerir. Silinen Işleri içermez. 
 
-<sup>5</sup> Canlı Çıktılar oluşturmayla başlar ve silindiğinde durur.
+Toplam kayıt sayısı maksimum kotanın altında olsa da, hesabınızdaki 90 günden eski bir Iş kaydı otomatik olarak silinir. 
 
-## <a name="packaging--delivery-limits"></a>Ambalaj & teslimat limitleri
+## <a name="live-streaming-limits"></a>Canlı akış sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| Medya Hizmetleri hesabı başına [Akış Uç Noktaları](streaming-endpoint-concept.md) (durduruldu veya çalışıyor)|2 |
+| Media Services hesap başına [canlı olaylar](live-events-outputs-concept.md) <sup>(4)</sup> |5|
+| Canlı olay başına canlı çıktılar |3 <sup>(5)</sup> |
+| En büyük canlı çıkış süresi | 25 saat |
+
+<sup>4</sup> canlı olay limitleri hakkında ayrıntılı bilgi için bkz. [canlı olay türleri karşılaştırması ve limitleri](live-event-types-comparison.md).
+
+<sup>5</sup> canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur.
+
+## <a name="packaging--delivery-limits"></a>Paketleme & teslim limitleri
+
+| Kaynak | Varsayılan Sınır | 
+| --- | --- | 
+| Media Services hesap başına [akış uç noktaları](streaming-endpoint-concept.md) (durdurulmuş veya çalışıyor)|2 |
 | [Dinamik Bildirim Filtreleri](filters-dynamic-manifest-overview.md)|100|
 | [Akış İlkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
-| Bir Varlıkla aynı anda ilişkili Benzersiz [Akış Konumbelirleyicileri](streaming-locators-concept.md) | 100<sup>(7)</sup> (sabit) |
+| Tek seferde bir varlıkla ilişkili benzersiz [akış Konumlandırıcı](streaming-locators-concept.md) | 100<sup>(7)</sup> (Sabit) |
 
-<sup>6</sup> Özel bir [Akış İlkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, Medya Hizmeti hesabınız için sınırlı sayıda bu tür ilke ler tasarlamalı ve aynı şifreleme seçenekleri ve protokolleri gerektiğinde Bunları StreamingLocators'Larınız için yeniden kullanmalısınız. Her Akış Bulucu için yeni bir Akış İlkesi oluşturmamalısınız.
+<sup>6</sup> özel bir [akış Ilkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
 
-<sup>7</sup> Akış Lı Konum belirleyiciler, kullanıcı başına erişim denetimini yönetmek için tasarlanmaz. Ayrı kullanıcılara farklı erişim hakları vermek için Digital Rights Management (DRM) çözümlerini kullanın.
+<sup>7</sup> akış Konumlandırıcı, Kullanıcı başına erişim denetimini yönetmek için tasarlanmamıştır. Ayrı kullanıcılara farklı erişim hakları vermek için Digital Rights Management (DRM) çözümlerini kullanın.
 
 ## <a name="protection-limits"></a>Koruma sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| İçerik [Anahtar İlkesi](content-key-policy-concept.md) Başına Seçenekler |30 | 
-| Medya Hizmetleri anahtar teslim hizmetindeki DRM türlerinin her biri için hesap başına aylık lisanslar|1.000.000|
+| [Içerik anahtarı ilkesi](content-key-policy-concept.md) başına seçenekler |30 | 
+| Hesap başına Media Services anahtar teslim hizmetindeki her bir DRM türü için aylık lisans sayısı|1.000.000|
 
 ## <a name="support-ticket"></a>Destek bileti
 
-Sabit olmayan kaynaklar için, bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların yükseltilmesini isteyebilirsiniz. İstenilen kota değişiklikleri, kullanım durumu senaryoları ve gerekli bölgeler le ilgili isteğe ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın**.
+Düzeltilmeyen kaynaklar için bir [destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak kotaların ortaya çıkarılmasını isteyebilirsiniz. İsteğe bağlı istenen kota değişiklikleri, kullanım örneği senaryoları ve gerekli bölgeler üzerinde ayrıntılı bilgi ekleyin. <br/>Daha yüksek sınırlar elde etmek için başka Azure Media Services hesapları **oluşturmayın**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

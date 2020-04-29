@@ -1,6 +1,6 @@
 ---
-title: ExpressRoute sanal ağ ağ geçitleri hakkında - Azure| Microsoft Dokümanlar
-description: ExpressRoute için sanal ağ ağ geçitleri hakkında bilgi edinin. Bu makalede, ağ geçidi SUS'ları ve türleri hakkında bilgiler yer almaktadır.
+title: ExpressRoute sanal ağ geçitleri hakkında-Azure | Microsoft Docs
+description: ExpressRoute için sanal ağ geçitleri hakkında bilgi edinin. Bu makale, ağ geçidi SKU 'Ları ve türleri hakkında bilgi içerir.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281424"
 ---
-# <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute sanal ağ ağ geçitleri hakkında
+# <a name="about-expressroute-virtual-network-gateways"></a>ExpressRoute sanal ağ geçitleri hakkında
 
-Azure sanal ağınızı ve şirket içi ağınızı ExpressRoute üzerinden bağlamak için önce bir sanal ağ ağ geçidi oluşturmanız gerekir. Sanal ağ ağ geçidi iki amacla hizmet eder: ağlar ve rota ağı trafiği arasında IP yolları değişimi. Bu makalede, ağ geçidi türleri, ağ geçidi SKU'ları ve SKU tarafından tahmini performansı açıklanmaktadır. Bu makalede, performansı artırmak için sanal ağ ağ ağ geçidi atlamak için şirket içi ağ dan ağ trafiğini sağlayan bir özellik olan ExpressRoute [FastPath](#fastpath)açıklar.
+Azure Sanal ağınızı ve şirket içi ağınızı ExpressRoute aracılığıyla bağlamak için önce bir sanal ağ geçidi oluşturmanız gerekir. Bir sanal ağ geçidi iki amaca hizmet eder: ağlar arasında Exchange IP yolları ve ağ trafiği yönlendirme. Bu makalede, SKU 'ya göre ağ geçidi türleri, ağ geçidi SKU 'Ları ve tahmini performans açıklanmaktadır. Bu makalede ayrıca, şirket içi ağınızdan gelen ağ trafiğinin performansı artırmak için sanal ağ geçidini atlaması sağlayan bir özellik olan ExpressRoute [FastPath](#fastpath)açıklanır.
 
 ## <a name="gateway-types"></a>Ağ geçidi türleri
 
-Sanal ağ ağ geçidi oluşturduğunuzda, birkaç ayar belirtmeniz gerekir. Gerekli ayarlardan biri olan '-GatewayType', ağ geçidinin ExpressRoute veya VPN trafiği için kullanılıp kullanılmayacağını belirtir. İki ağ geçidi türü şunlardır:
+Bir sanal ağ geçidi oluşturduğunuzda, birkaç ayar belirtmeniz gerekir. Gerekli ayarlardan biri olan '-GatewayType ', ağ geçidinin ExpressRoute veya VPN trafiği için kullanılıp kullanılmayacağını belirtir. İki ağ geçidi türü şunlardır:
 
-* **Vpn** - Genel Internet üzerinden şifreli trafik göndermek için ağ geçidi türünü 'Vpn' kullanırsınız. Bu, VPN ağ geçidi olarak da adlandırılır. Siteden Siteye, Noktadan Siteye ve Sanal Ağdan Sanal Ağa bağlantıların tümü VPN ağ geçidi kullanır.
+* **VPN** -genel Internet üzerinden şifrelenmiş trafik göndermek Için ' VPN ' ağ geçidi türünü kullanırsınız. Bu, VPN ağ geçidi olarak da adlandırılır. Siteden Siteye, Noktadan Siteye ve Sanal Ağdan Sanal Ağa bağlantıların tümü VPN ağ geçidi kullanır.
 
-* **ExpressRoute** - Ağ trafiğini özel bir bağlantıya göndermek için 'ExpressRoute' ağ geçidi türünü kullanırsınız. Bu, ExpressRoute ağ geçidi olarak da adlandırılır ve ExpressRoute'u yapılandırırken kullanılan ağ geçidi türüdür.
+* **ExpressRoute** -özel bir bağlantıda ağ trafiği göndermek Için ' ExpressRoute ' ağ geçidi türünü kullanırsınız. Bu, ExpressRoute ağ geçidi olarak da adlandırılır ve ExpressRoute yapılandırılırken kullanılan ağ geçidi türüdür.
 
 Bir sanal ağın her ağ geçidi türü için yalnızca bir sanal ağ geçidi olabilir. Örneğin, GatewayType Vpn kullanan bir sanal ağ geçidiniz ve GatewayType ExpressRoute kullanan bir sanal ağ geçidiniz olabilir.
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU'ları
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Ağ geçidinizi daha güçlü bir ağ geçidi olan SKU'ya yükseltmek istiyorsanız, çoğu durumda 'Resize-AzVirtualNetworkGateway' PowerShell cmdlet'ini kullanabilirsiniz. Bu, Standart ve Yüksek Performanslı SUS'lara yükseltmeler için çalışacaktır. Ancak, UltraPerformance SKU'ya yükseltmek için ağ geçidini yeniden oluşturmanız gerekir. Ağ geçidini yeniden oluşturmak kapalı kalma süresine neden oluyor.
+Ağ geçidinizin daha güçlü bir ağ geçidi SKU 'suna yükseltmek istiyorsanız, çoğu durumda ' Resize-AzVirtualNetworkGateway ' PowerShell cmdlet 'ini kullanabilirsiniz. Bu, standart ve HighPerformance SKU 'Larına yükseltmeler için çalışacaktır. Ancak, UltraPerformance SKU 'suna yükseltmek için, ağ geçidini yeniden oluşturmanız gerekecektir. Bir ağ geçidinin yeniden oluşturulması kapalı kalma süresini doğurur.
 
-### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>Ağ geçidi SKU tarafından tahmini performansları
-Aşağıdaki tabloda ağ geçidi türleri ve tahmini performansları gösterilmektedir. Bu tablo hem Resource Manager, hem de klasik dağıtım modellerine uygulanır.
+### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>Ağ Geçidi SKU 'SU tarafından tahmini performanons
+Aşağıdaki tabloda ağ geçidi türleri ve tahmini performanons gösterilmektedir. Bu tablo hem Resource Manager, hem de klasik dağıtım modellerine uygulanır.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
 > [!IMPORTANT]
-> Uygulama performansı, uçtan uca gecikme ve uygulamanın açtığı trafik akışları sayısı gibi birden çok etkene bağlıdır. Tablodaki sayılar, uygulamanın teorik olarak ideal bir ortamda elde edebileceği üst sınırı temsil eder.
+> Uygulama performansı, uçtan uca gecikme süresi ve uygulamanın açtığı trafik akışı sayısı gibi birden çok etkene bağlıdır. Tablodaki sayılar, uygulamanın teorik olarak ideal bir ortamda elde edilebileceği üst sınırı temsil eder.
 >
 >
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>Ağ geçidi alt ağı
 
-Bir ExpressRoute ağ geçidi oluşturmadan önce bir ağ geçidi alt ağı oluşturmanız gerekir. Ağ geçidi alt ağı, sanal ağ ağ geçidi VM'lerinin ve hizmetlerinin kullandığı IP adreslerini içerir. Sanal ağ ağ ağ geçidinizi oluşturduğunuzda, ağ geçidi VM'leri ağ geçidi alt ağına dağıtılır ve gerekli ExpressRoute ağ geçidi ayarlarıyla yapılandırılır. Ağ geçidi alt ağına başka bir şey (örneğin, ek VM'ler) dağıtmayın. Düzgün çalışması için ağ geçidi alt ağı 'GatewaySubnet' olarak adlandırılmalıdır. Ağ geçidi alt netini 'GatewaySubnet' olarak adlandırmak, Azure'un sanal ağ ağ vm'lerini ve hizmetlerini dağıtmak için alt ağ olduğunu bilmesini sağlar.
+ExpressRoute ağ geçidi oluşturmadan önce bir ağ geçidi alt ağı oluşturmanız gerekir. Ağ geçidi alt ağı, sanal ağ geçidi VM 'lerinin ve hizmetlerinin kullandığı IP adreslerini içerir. Sanal ağ geçidinizi oluşturduğunuzda, ağ geçidi VM 'Leri ağ geçidi alt ağına dağıtılır ve gerekli ExpressRoute ağ geçidi ayarlarıyla yapılandırılır. Ağ geçidi alt ağına hiçbir şeyi başka hiçbir şekilde (örneğin, ek VM 'Ler) dağıtmayın. Düzgün çalışması için ağ geçidi alt ağının ' GatewaySubnet ' olarak adlandırılması gerekir. Ağ geçidi alt ağının ' GatewaySubnet ' olarak adlandırılması, Azure 'un sanal ağ geçidi VM 'lerini ve hizmetlerini dağıtmak için bu alt ağ olduğunu bilmesini sağlar.
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
 >
 
-Ağ geçidi alt ağı oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt netindeki IP adresleri ağ geçidi VM'lerine ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalar için diğerlerinden daha fazla IP adresi gerekir. 
+Ağ geçidi alt ağı oluştururken, alt ağın içerdiği IP adresi sayısını belirtirsiniz. Ağ geçidi alt ağındaki IP adresleri ağ geçidi VM 'lerine ve ağ geçidi hizmetlerine ayrılır. Bazı yapılandırmalar için diğerlerinden daha fazla IP adresi gerekir. 
 
-Ağ geçidi alt ağ boyutunuzu planlarken, oluşturmayı planladığınız yapılandırma için belgelere bakın. Örneğin, ExpressRoute/VPN Ağ Geçidi birlikte var olan yapılandırma, diğer yapılandırmalardan daha büyük bir ağ geçidi alt ağı gerektirir. Ayrıca, ağ geçidi alt ağınızın gelecekteki olası ek yapılandırmaları barındıracak kadar IP adresi içerdiğinden emin olmak isteyebilirsiniz. /29 gibi küçük bir ağ geçidi alt ağı oluşturabilirsiniz, ancak bunu yapmak için kullanılabilir adres alanınız varsa /27 veya daha büyük (/27, /26 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Bu, çoğu yapılandırmayı barındırır.
+Ağ geçidi alt ağınızın boyutunu planlarken, oluşturmayı planladığınız yapılandırma için belgelere bakın. Örneğin, ExpressRoute/VPN Gateway bir arada bulunan yapılandırma, diğer birçok yapılandırmadan daha büyük bir ağ geçidi alt ağı gerektirir. Ayrıca, ağ geçidi alt ağınızın olası gelecekteki ek yapılandırmalara uyum sağlamak için yeterli IP adresi içerdiğinden emin olmak isteyebilirsiniz. /29 kadar küçük bir ağ geçidi alt ağı oluşturabileceğiniz gibi, kullanılabilir adres alanınız varsa/27 veya daha büyük (/27,/26 vb.) bir ağ geçidi alt ağı oluşturmanızı öneririz. Bu, çoğu yapılandırmaya uyum sağlayacaktır.
 
-Aşağıdaki Kaynak Yöneticisi PowerShell örneği, GatewaySubnet adlı bir ağ geçidi alt ağı gösterir. CIDR notasyonunun, şu anda var olan yapılandırmaların çoğu için yeterli IP adresine olanak tanıyan bir /27 belirtirolduğunu görebilirsiniz.
+Aşağıdaki Kaynak Yöneticisi PowerShell örneği, GatewaySubnet adlı bir ağ geçidi alt ağını göstermektedir. CıDR gösteriminin bir/27 olduğunu görebilirsiniz. Bu, şu anda mevcut olan çoğu yapılandırma için yeterli IP adresi sağlar.
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
@@ -63,40 +63,40 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="zone-redundant-gateway-skus"></a><a name="zrgw"></a>Bölge yedekli ağ geçidi SUS'lar
+### <a name="zone-redundant-gateway-skus"></a><a name="zrgw"></a>Bölge yedekli ağ geçidi SKU 'Ları
 
-Azure Kullanılabilirlik Bölgelerinde ExpressRoute ağ geçitlerini de dağıtabilirsiniz. Bu, fiziksel ve mantıksal olarak onları farklı Kullanılabilirlik Bölgeleri'ne ayırır ve şirket içi ağ bağlantınızı Azure'a bölge düzeyindeki hatalardan korur.
+Ayrıca, ExpressRoute ağ geçitlerini Azure Kullanılabilirlik Alanları de dağıtabilirsiniz. Bu fiziksel ve mantıksal olarak farklı Kullanılabilirlik Alanları ayırır ve şirket içi ağ bağlantınızı bölge düzeyindeki hatalardan Azure ile koruyabilirsiniz.
 
 ![Bölge yedekli ExpressRoute ağ geçidi](./media/expressroute-about-virtual-network-gateways/zone-redundant.png)
 
-Bölge yedekli ağ geçitleri, ExpressRoute ağ geçidi için belirli yeni ağ geçidi SUS'ları kullanır.
+Bölgesel olarak yedekli ağ geçitleri ExpressRoute ağ geçidi için özel yeni ağ geçidi SKU 'Ları kullanır.
 
 * ErGw1AZ
-* Ergw2AZ
-* Ergw3AZ
+* ErGw2AZ
+* ErGw3AZ
 
-Yeni ağ geçidi STU'ları, gereksinimlerinize en iyi şekilde uyacak diğer dağıtım seçeneklerini de destekler. Yeni ağ geçidi STU'larını kullanarak sanal ağ ağ geçidi oluştururken, ağ geçidini belirli bir bölgede dağıtma seçeneğiniz de vardır. Buna zonal ağ geçidi denir. Bir bölge ağ geçidi dağıttığınızda, ağ geçidinin tüm örnekleri aynı Kullanılabilirlik Bölgesi'nde dağıtılır.
+Yeni ağ geçidi SKU 'Ları, gereksinimlerinize en iyi şekilde eşleşen diğer dağıtım seçeneklerini de destekler. Yeni ağ geçidi SKU 'Larını kullanarak bir sanal ağ geçidi oluştururken, ağ geçidini belirli bir bölgeye dağıtma seçeneğiniz de vardır. Bu, bir bölgesel ağ geçidi olarak adlandırılır. Bir bölgesel ağ geçidi dağıttığınızda, ağ geçidinin tüm örnekleri aynı Kullanılabilirlik alanına dağıtılır.
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
-ExpressRoute sanal ağ ağ geçidi, ağ yollarını ve ağ trafiğini yönlendirmek için tasarlanmıştır. FastPath, şirket içi ağınızla sanal ağınız arasındaki veri yolu performansını artırmak için tasarlanmıştır. FastPath etkinleştirildiğinde ağ trafiğini doğrudan sanal ağdaki sanal makinelere göndererek ağ geçidini atlar.
+ExpressRoute sanal ağ geçidi, ağ yollarını Exchange ve ağ trafiğini yönlendirme için tasarlanmıştır. FastPath, şirket içi ağınız ve sanal ağınız arasındaki veri yolu performansını geliştirmek için tasarlanmıştır. Etkin olduğunda, FastPath ağ trafiğini, ağ geçidini atlayarak sanal ağdaki sanal makinelere doğrudan gönderir.
 
-Sınırlamalar ve gereksinimler de dahil olmak üzere FastPath hakkında daha fazla bilgi için [FastPath hakkında](about-fastpath.md)bilgi edinebilirsiniz.
+Sınırlamalar ve gereksinimler de dahil olmak üzere FastPath hakkında daha fazla bilgi için bkz. [FastPath hakkında](about-fastpath.md).
 
-## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API'ler ve PowerShell cmdlets
-Sanal ağ ağ geçidi yapılandırmaları için REST API'leri ve PowerShell cmdlets kullanırken ek teknik kaynaklar ve belirli sözdizimi gereksinimleri için aşağıdaki sayfalara bakın:
+## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST API 'leri ve PowerShell cmdlet 'leri
+Sanal ağ geçidi yapılandırmalarına yönelik REST API 'Leri ve PowerShell cmdlet 'lerini kullanırken ek teknik kaynaklar ve özel sözdizimi gereksinimleri için aşağıdaki sayfalara bakın:
 
-| **Klasik** | **Kaynak Yöneticisi** |
+| **Klasik** | **Resource Manager** |
 | --- | --- |
-| [Powershell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[Powershell](https://docs.microsoft.com/powershell/module/az.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kullanılabilir bağlantı yapılandırmaları hakkında daha fazla bilgi için [ExpressRoute Genel Bakış'a](expressroute-introduction.md)bakın.
+Kullanılabilir bağlantı yapılandırması hakkında daha fazla bilgi için bkz. [ExpressRoute 'A genel bakış](expressroute-introduction.md).
 
-ExpressRoute ağ geçitleri oluşturma hakkında daha fazla bilgi için [bkz.](expressroute-howto-add-gateway-resource-manager.md)
+ExpressRoute ağ geçitleri oluşturma hakkında daha fazla bilgi için bkz. [ExpressRoute için sanal ağ geçidi oluşturma](expressroute-howto-add-gateway-resource-manager.md).
 
-Bölge artıklarının yapılandırılması hakkında daha fazla bilgi için [bkz.](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md)
+Bölge yedekli ağ geçitlerini yapılandırma hakkında daha fazla bilgi için bkz. bölgesel olarak [yedekli sanal ağ geçidi oluşturma](../../articles/vpn-gateway/create-zone-redundant-vnet-gateway.md).
 
-FastPath hakkında daha fazla bilgi için [FastPath hakkında](about-fastpath.md)bilgi için bkz.
+FastPath hakkında daha fazla bilgi için bkz. [FastPath hakkında](about-fastpath.md).

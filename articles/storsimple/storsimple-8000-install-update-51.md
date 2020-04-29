@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihaza Güncelleme 5.1'i yükleyin | Microsoft Dokümanlar
-description: StorSimple 8000 serisi güncelleme 5.1'in nasıl yüklenir olduğunu Açıklar.
+title: StorSimple 8000 serisi cihaza güncelleştirme 5,1 ' ü yükler | Microsoft Docs
+description: StorSimple 8000 serisi cihazınızda StorSimple 8000 serisi güncelleştirme 5,1 ' nin nasıl yükleneceğini açıklar.
 services: storsimple
 documentationcenter: NA
 author: priestlg
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658046"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>StorSimple cihazınıza Güncelleme 5.1'i yükleyin
+# <a name="install-update-51-on-your-storsimple-device"></a>StorSimple cihazınıza güncelleştirme 5,1 ' ü yükler
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğretici, Azure portalı üzerinden daha önceki bir yazılım sürümünü çalıştıran Bir StorSimple cihazına Güncelleştirme 5.1'in nasıl yüklenirolduğunu açıklar. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+Bu öğreticide, Azure portal aracılığıyla önceki bir yazılım sürümünü çalıştıran bir StorSimple cihazına güncelleştirme 5,1 ' nin nasıl yükleneceği açıklanmaktadır. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-Güncelleştirme 5.1 kesintisiz güvenlik güncelleştirmeleri içerir. Kesintisiz veya düzenli güncelleştirmeler Azure portalı üzerinden uygulanabilir <!--or by the hotfix method-->.
+Güncelleştirme 5,1, kesintiye uğramayan güvenlik güncelleştirmeleri içerir. Kesintiye uğramamış veya düzenli güncelleştirmeler Azure portal aracılığıyla uygulanabilir <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * Güncelleştirme 5.1 zorunlu bir güncelleştirmedir ve hemen yüklenmesi gerekir. Daha fazla bilgi için [bkz.](storsimple-update51-release-notes.md)
-> * Donanım durumu ve ağ bağlantısı açısından aygıt durumunu belirlemek için yüklemeden önce bir dizi el ile ve otomatik ön denetim yapılır. Bu ön denetimler yalnızca Azure portalındaki güncelleştirmeleri uygularsanız gerçekleştirilir.
-> * Düzeltme yöntemini kullanarak yüklemek istiyorsanız, [Microsoft Destek'e](mailto:support@microsoft.com)başvurun.
+> * Güncelleştirme 5,1, zorunlu bir güncelleştirmedir ve hemen yüklenmesi gerekir. Daha fazla bilgi için bkz. [güncelleştirme 5,1 sürüm notları](storsimple-update51-release-notes.md).
+> * Donanım durumu ve ağ bağlantısı açısından cihaz sistem durumunu tespit etmek için, yüklemeden önce bir el ile ve otomatik denetimler kümesi yapılır. Bu ön denetimler yalnızca Azure portal güncelleştirmeleri uyguladığınızda gerçekleştirilir.
+> * Düzeltme yöntemini kullanarak yüklemek istiyorsanız, [Microsoft desteği](mailto:support@microsoft.com)başvurun.
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,30 +45,30 @@ Güncelleştirme 5.1 kesintisiz güvenlik güncelleştirmeleri içerir. Kesintis
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>Azure portalı üzerinden Güncelleme 5.1'i yükleme
+## <a name="install-update-51-through-the-azure-portal"></a>Güncelleştirme 5,1 ' yı Azure portal aracılığıyla yükler
 
-Cihazınızı güncelleştirmek için aşağıdaki adımları gerçekleştirin [5.1 güncelleştirin.](storsimple-update51-release-notes.md)
+Cihazınızı [güncelleştirme 5,1](storsimple-update51-release-notes.md)' ye güncelleştirmek için aşağıdaki adımları gerçekleştirin.
 
 > [!NOTE]
-> Microsoft aygıttan ek tanılama bilgileri çeker. Sonuç olarak, operasyon ekibimiz sorun olan aygıtları tanımladığında, cihazdan bilgi toplamak ve sorunları tanılamak için daha iyi donanıma sahip olacağız.
+> Microsoft cihazdan ek tanılama bilgileri çeker. Sonuç olarak, işletim ekibimiz sorun yaşayan cihazları tanımlarsa, cihazdan bilgi toplamak ve sorunları tanılamak için daha iyi bir şekilde donatılmıştır.
 
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Azure portalından bir güncelleştirmeyi yüklemek için
 
 1. StorSimple hizmet sayfasında cihazınızı seçin.
 
-    ![Cihazı seçin](./media/storsimple-8000-install-update-51/update1.png)
+    ![Cihaz Seç](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Aygıt **ayarlarına** > gidin**Aygıt güncelleştirmeleri**.
+2. **Cihaz ayarları** > **cihaz güncelleştirmeleri**' ne gidin.
 
-    ![Cihaz güncelleştirmelerini tıklatın](./media/storsimple-8000-install-update-51/update2.png)
+    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Yeni güncelleştirmeler varsa bir bildirim görüntülenir. Alternatif olarak, **Aygıt güncelleştirmeleri** **çubuğunda, Güncellemeleri Tazyir'i**tıklatın. Kullanılabilir güncelleştirmeleri taramak için bir iş oluşturulur. İş başarıyla tamamlandığında size bildirilir.
+3. Yeni güncelleştirmeler varsa bir bildirim görüntülenir. Alternatif olarak, **cihaz güncelleştirmeleri** dikey penceresinde **Güncelleştirmeleri Tara**' ya tıklayın. Kullanılabilir güncelleştirmeleri taramak için bir iş oluşturulur. İş başarıyla tamamlandığında size bildirilir.
 
-    ![Cihaz güncelleştirmelerini tıklatın](./media/storsimple-8000-install-update-51/update3.png)
+    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update3.png)
 
-4. Bir güncelleştirmeyi cihazınıza uygulamadan önce sürüm notlarını gözden geçirmeniz önerilir. Güncelleştirmeleri uygulamak için **güncelleştirmeleri yükle'yi**tıklatın. Düzenli **güncelleştirmeleri Onayla** bıçak bıçak, güncellemeleri uygulamadan önce tamamlamak için ön koşulları gözden geçirin. Aygıtı güncelleştirmeye hazır olduğunuzu belirtmek için onay kutusunu seçin ve ardından **Yükle'yi**tıklatın.
+4. Bir güncelleştirmeyi cihazınıza uygulamadan önce sürüm notlarını gözden geçirmeniz önerilir. Güncelleştirmeleri uygulamak için **güncelleştirmeleri yüklensin**' e tıklayın. **Düzenli güncelleştirmeleri Onayla** dikey penceresinde, güncelleştirmeleri uygulamadan önce tamamlanacak önkoşulları gözden geçirin. Cihazı güncelleştirmeye hazırız olduğunu göstermek için onay kutusunu işaretleyin ve ardından **Install**' a tıklayın.
 
-    ![Cihaz güncelleştirmelerini tıklatın](./media/storsimple-8000-install-update-51/update4.png)
+    ![Cihaz güncelleştirmeleri ' ne tıklayın](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Bir dizi önkoşul denetimi başlatılır. Bu denetimler şunlardır:
    
@@ -76,7 +76,7 @@ Cihazınızı güncelleştirmek için aşağıdaki adımları gerçekleştirin [
    * StorSimple cihazınızdaki tüm donanım bileşenlerinin sağlıklı olduğunu doğrulamaya yönelik **donanım bileşeni durum denetimleri**.
    * DATA 0’ın cihazınızda etkin olduğunu doğrulamaya yönelik **DATA 0 denetimleri**. Bu arabirim etkin değilse etkinleştirmeniz ve sonra yeniden denemeniz gerekir.
 
-     Güncelleştirme indirilir ve yalnızca tüm denetimler başarıyla tamamlanırsa yüklenir. Denetimler devam ederken size bildirilir. Ön denetimler başarısız olursa, o zaman başarısızlık nedenleri ile sağlanacaktır. Bu sorunları ele alın ve işlemi yeniden deneyin. Bu sorunları kendi başınıza çözemiyorsanız Microsoft Desteği’ne başvurmanız gerekebilir.
+     Güncelleştirme indirilir ve yalnızca tüm denetimler başarıyla tamamlanırsa yüklenir. Denetimler devam ederken size bildirilir. Ön denetimler başarısız olursa, hata nedenleri ile birlikte sağlanacaktır. Bu sorunları çözün ve işlemi yeniden deneyin. Bu sorunları kendi başınıza çözemiyorsanız Microsoft Desteği’ne başvurmanız gerekebilir.
 
 7. Ön denetimler başarıyla tamamlandıktan sonra bir güncelleştirme işi oluşturulur. Güncelleştirme işi başarıyla oluşturulduğunda size bildirilir.
    
@@ -88,14 +88,14 @@ Cihazınızı güncelleştirmek için aşağıdaki adımları gerçekleştirin [
 
     ![Güncelleştirme işi oluşturma](./media/storsimple-8000-install-update-51/update8.png)
 
-     Ayrıca, Aygıt **ayarlarından > İşler'den**de güncelleme işinin ilerlemesini izleyebilirsiniz. **İşler** bıçağında, güncelleştirmenin ilerlemesini görebilirsiniz.
+     Ayrıca, güncelleştirme işinin ilerlemesini **cihaz ayarları > işlerle**izleyebilirsiniz. **İşler** dikey penceresinde, güncelleştirme ilerlemesini görebilirsiniz.
 
      ![Güncelleştirme işi oluşturma](./media/storsimple-8000-install-update-51/update7.png)
 
-10. İş tamamlandıktan sonra Aygıt **ayarları> aygıt güncelleştirmelerine**gidin. Yazılım sürümü artık güncelleştirilmelidir.
+10. İş tamamlandıktan sonra cihaz **güncelleştirmeleri > cihaz ayarları**' na gidin. Yazılım sürümü şimdi güncellenmelidir.
 
 
-Cihazınızın **StorSimple 8000 Serisi Güncelleme 5.1 (6.3.9600.17885)** çalıştığını doğrulayın. **Son güncelleştirme tarihi** değiştirilmelidir.
+Cihazınızın **StorSimple 8000 serisi güncelleştirme 5,1 (6.3.9600.17885)** çalıştığını doğrulayın. **Son güncelleme tarihi** değiştirilmelidir.
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Update 5.1 sürümü](storsimple-update51-release-notes.md)hakkında daha fazla bilgi edinin.
+[Güncelleştirme 5,1 sürümü](storsimple-update51-release-notes.md)hakkında daha fazla bilgi edinin.

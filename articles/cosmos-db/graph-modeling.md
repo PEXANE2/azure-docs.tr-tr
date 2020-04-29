@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Gremlin API için grafik veri modellemesi
-description: Azure Cosmos DB Gremlin API'yi kullanarak grafik veritabanını nasıl modellendireceklerini öğrenin. Bu makalede, varlıkları ve ilişkileri modellemek için grafik veritabanı ve en iyi uygulamaları kullanmak için ne zaman açıklanır.
+title: Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
+description: Azure Cosmos DB Gremlin API kullanarak grafik veritabanını modelleyeceğinizi öğrenin. Bu makalede, bir grafik veritabanının ve varlıkları ve ilişkileri modellemek için en iyi uygulamaların ne zaman kullanılacağı açıklanır.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,109 +8,109 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: lbosq
 ms.openlocfilehash: dc9a5616aa2bb1f7e09045b9cfe4f4d7e9c69be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898322"
 ---
-# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API için grafik veri modellemesi
+# <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI için grafik veri modelleme
 
-Aşağıdaki belge grafik veri modelleme önerileri sağlamak için tasarlanmıştır. Bu adım, veriler geliştikçe grafik veritabanı sisteminin ölçeklenebilirliğini ve performansını sağlamak için hayati önem taşır. Verimli bir veri modeli özellikle büyük ölçekli grafikler için önemlidir.
+Aşağıdaki belge, grafik veri modelleme önerileri sağlamak için tasarlanmıştır. Bu adım, veri geliştikçe grafik veritabanı sisteminin ölçeklenebilirliğini ve performansını güvence altına almak için önemlidir. Verimli bir veri modeli büyük ölçekli grafiklerle özellikle önemlidir.
 
 ## <a name="requirements"></a>Gereksinimler
 
-Bu kılavuzda özetlenen işlem aşağıdaki varsayımlara dayanmaktadır:
- * Sorun-uzaydaki **varlıklar** tanımlanır. Bu varlıklar her istek için _atomik olarak_ tüketilmelidir. Başka bir deyişle, veritabanı sistemi birden çok sorgu isteğinde tek bir varlığın verilerini almak için tasarlanmaz.
- * Veritabanı sistemi için **okuma ve yazma gereksinimleri** bir anlayış vardır. Bu gereksinimler, grafik veri modeli için gereken optimizasyonları yönlendirecektir.
- * [Apache Tinkerpop özellik grafiği standardının](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) ilkeleri iyi anlaşılmıştır.
+Bu kılavuzda özetlenen işlem aşağıdaki varsayımlar temelinde olur:
+ * Sorun-alanı içindeki **varlıklar** tanımlanır. Bu varlıkların her istek için otomatik olarak _tüketilmesi_ amaçlanmıştır. Diğer bir deyişle, veritabanı sistemi birden çok sorgu isteğinde tek bir varlığın verilerini almak üzere tasarlanmamıştır.
+ * Veritabanı sistemi için **okuma ve yazma gereksinimlerinin** anlaşılmasıdır. Bu gereksinimler, grafik veri modeli için gereken iyileştirmelere kılavuzluk eder.
+ * [Apache Tinkerpop özelliği grafik standardının](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) ilkeleri iyi anlaşılmıştır.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Grafik veritabanına ne zaman ihtiyacım var?
 
-Bir veri etki alanındaki varlıklar ve ilişkiler aşağıdaki özelliklerden herhangi biri varsa, grafik veritabanı çözümü en iyi şekilde uygulanabilir: 
+Bir veri etki alanındaki varlıklar ve ilişkilerin aşağıdaki özelliklerden herhangi biri varsa, grafik veritabanı çözümü en iyi şekilde uygulanabilir: 
 
-* Varlıklar son derece açıklayıcı ilişkiler yoluyla **bağlı.** Bu senaryodaki yarar, ilişkilerin depolamada kalıcı olmasıdır.
-* **Döngüsel ilişkiler** veya **kendini referans alan varlıklar**vardır. Bu desen genellikle ilişkisel veya belge veritabanları kullanırken bir sorundur.
-* Varlıklar arasında **dinamik olarak gelişen ilişkiler** vardır. Bu desen özellikle birçok düzeyi olan hiyerarşik veya ağaç yapılı veriler için geçerlidir.
-* Varlıklar arasında **çok-çok ilişkileri** vardır.
-* Hem **varlıklar hem de ilişkiler de yazma ve okuma gereksinimleri**vardır. 
+* Varlıklar, açıklayıcı ilişkiler aracılığıyla **yüksek oranda bağlanır** . Bu senaryodaki avantaj, ilişkilerin depolamada kalıcı hale getirilir.
+* **Döngüsel ilişkiler** veya **kendine Başvurulmuş varlıklar**vardır. Bu model genellikle ilişkisel veya belge veritabanlarını kullanırken zorluk sergilemektir.
+* Varlıklar arasında **dinamik olarak gelişen ilişkiler** vardır. Bu model özellikle çok sayıda düzeyi olan hiyerarşik veya ağaç biçimli veriler için geçerlidir.
+* Varlıklar arasında **çok-çok ilişkisi** vardır.
+* **Hem varlıklarda hem de ilişkilerde yazma ve okuma gereksinimleri**vardır. 
 
-Yukarıdaki ölçütler karşılanırsa, grafik veritabanı yaklaşımının **sorgu karmaşıklığı,** veri **modeli ölçeklenebilirliği**ve **sorgu performansı**için avantajlar sağlaması olasıdır.
+Yukarıdaki kriterler karşılandıysanız, bir grafik veritabanı yaklaşımının **sorgu karmaşıklığı**, **veri modeli ölçeklenebilirliği**ve **sorgu performansı**için avantaj sağlaması olasıdır.
 
-Bir sonraki adım, grafiğin analitik veya işlemamaçlı olarak kullanıp kullanılmayacığını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanmıştır, [cosmos DB Spark bağlayıcı](https://docs.microsoft.com/azure/cosmos-db/spark-connector) ve [GraphX kitaplığı](https://spark.apache.org/graphx/)kullanımını keşfetmek için değer olacaktır. 
+Bir sonraki adım, grafiğin analitik veya işlemsel amaçlar için kullanılacağını belirlemektir. Grafik ağır hesaplama ve veri işleme iş yükleri için kullanılmak üzere tasarlanıyorsa, [Cosmos DB Spark bağlayıcısını](https://docs.microsoft.com/azure/cosmos-db/spark-connector) ve [GraphX kitaplığının](https://spark.apache.org/graphx/)kullanımını keşfetmeye değer de vardır. 
 
-## <a name="how-to-use-graph-objects"></a>Grafik nesneleri nasıl kullanılır?
+## <a name="how-to-use-graph-objects"></a>Graph nesnelerini kullanma
 
-[Apache Tinkerpop özellik grafiği standart](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) nesneleri **Vertices** ve **Kenarları**iki tür tanımlar. 
+[Apache Tinkerpop özelliği grafik standardı](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) iki tür nesne **köşeleri** ve **kenarlarını**tanımlar. 
 
 Grafik nesnelerindeki özellikler için en iyi uygulamalar şunlardır:
 
 | Nesne | Özellik | Tür | Notlar |
 | --- | --- | --- |  --- |
-| Köşe | Kimlik | Dize | Bölüm başına benzersiz bir şekilde uygulanır. Bir değer ekleme üzerine sağlanmazsa, otomatik olarak oluşturulan GUID depolanır. |
-| Köşe | etiket | Dize | Bu özellik, tepe noktasının temsil ettiği varlık türünü tanımlamak için kullanılır. Bir değer sağlanmazsa, varsayılan değer "tepe noktası" kullanılır. |
-| Köşe | properties | Yaylı Çalgılar, Boolean, Sayısal | Her tepe de anahtar değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
-| Köşe | bölüm tuşu | Yaylı Çalgılar, Boolean, Sayısal | Bu özellik, tepe noktasının ve giden kenarlarının nerede depolanacağını tanımlar. [Grafik bölümleme](graph-partitioning.md)hakkında daha fazla bilgi edinin. |
-| Edge | Kimlik | Dize | Bölüm başına benzersiz bir şekilde uygulanır. Varsayılan olarak otomatik olarak oluşturulur. Kenarlar genellikle bir kimlik tarafından benzersiz olarak alınması gerekmez. |
-| Edge | etiket | Dize | Bu özellik, iki vertices sahip ilişki türünü tanımlamak için kullanılır. |
-| Edge | properties | Yaylı Çalgılar, Boolean, Sayısal | Her kenarda anahtar değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
+| İzdüşüm | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Ekleme sırasında bir değer sağlanmazsa, otomatik olarak oluşturulan bir GUID depolanır. |
+| İzdüşüm | etiket | Dize | Bu özellik, köşeyi temsil eden varlık türünü tanımlamak için kullanılır. Değer sağlanmazsa, varsayılan "köşe" değeri kullanılacaktır. |
+| İzdüşüm | properties | Dize, Boolean, sayısal | Her köşede anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
+| İzdüşüm | bölüm anahtarı | Dize, Boolean, sayısal | Bu özellik, köşe ve giden kenarlarının depolanacağı yeri tanımlar. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. |
+| Edge | Kimlik | Dize | Bölüm başına benzersiz olarak uygulandı. Varsayılan olarak otomatik oluşturulur. Kenarlar genellikle bir KIMLIK tarafından benzersiz bir şekilde alınması gereksinimini içermez. |
+| Edge | etiket | Dize | Bu özellik, iki köşelerin sahip olduğu ilişkinin türünü tanımlamak için kullanılır. |
+| Edge | properties | Dize, Boolean, sayısal | Her bir kenarda anahtar-değer çiftleri olarak depolanan ayrı özelliklerin listesi. |
 
 > [!NOTE]
-> Değeri kaynak tepe noktalarına göre otomatik olarak atanır, çünkü kenarları bir bölüm anahtar değeri gerektirmez. [Grafik bölümleme](graph-partitioning.md) makalesinde daha fazla bilgi edinin.
+> Kenarları, kendi değeri kaynak köşelerine göre otomatik olarak atandığından bölüm anahtarı değeri gerektirmez. [Grafik bölümlendirme](graph-partitioning.md) makalesinde daha fazla bilgi edinin.
 
 ## <a name="entity-and-relationship-modeling-guidelines"></a>Varlık ve ilişki modelleme yönergeleri
 
-Aşağıda, Azure Cosmos DB Gremlin API grafik veritabanı için veri modellemeye yaklaşım için bir kılavuz kümesi verilmiştir. Bu yönergeler, bir veri etki alanının varolan bir tanımı olduğunu ve bunun için sorgular olduğunu varsayar.
+Aşağıda, bir Azure Cosmos DB Gremlin API grafik veritabanı için veri modellemeye yaklaşıma yönelik bir dizi kılavuz verilmiştir. Bu yönergeler, bir veri etki alanının ve sorgu sorgularının var olan bir tanımı olduğunu varsayar.
 
 > [!NOTE]
-> Aşağıda özetlenen adımlar öneriler olarak sunulmuştur. Son model, üretime hazır olarak değerlendirilmeden önce değerlendirilmeli ve test edilmelidir. Ayrıca, aşağıdaki öneriler Azure Cosmos DB'nin Gremlin API uygulamasına özgüdür. 
+> Aşağıda özetlenen adımlar öneriler olarak sunulmuştur. Son model, üretime hazırlanma olarak değerlendirilmeden önce değerlendirilmeli ve test edilmelidir. Ayrıca, aşağıdaki öneriler Azure Cosmos DB Gremlin API uygulamasına özgüdür. 
 
-### <a name="modeling-vertices-and-properties"></a>Vertices ve özellikleri modelleme 
+### <a name="modeling-vertices-and-properties"></a>Modelleme köşeleri ve özellikleri 
 
-Grafik veri modeli için ilk adım, tanımlanan her varlığı bir **tepe noktası nesnesi**ile eşlemektir. Tüm varlıkların vertices için bire bir eşleme bir ilk adım ve değişime tabi olmalıdır.
+Grafik veri modeli için ilk adım, tanımlanan her varlığı bir **köşe nesnesine**eşlemenize yöneliktir. Tüm varlıkların köşelere eşlenmesinin bir ilk adımı ve değişikliğe tabi olması gerekir.
 
-Ortak bir tuzak ayrı vertices olarak tek bir varlığın özelliklerini haritalamaktır. Aynı varlığın iki farklı şekilde temsil edildiği aşağıdaki örneği göz önünde bulundurun:
+Bir ortak giriş, tek bir varlığın özelliklerini ayrı köşeler olarak eşmaktır. Aşağıdaki örneği, aynı varlığın iki farklı şekilde temsil edildiği yerde göz önünde bulundurun:
 
-* **Vertex tabanlı özellikleri**: Bu yaklaşımda, varlık özelliklerini tanımlamak için üç ayrı tepe noktası ve iki kenar kullanır. Bu yaklaşım artıklığı azaltabilir, ancak model karmaşıklığını artırır. Model karmaşıklığındaki artış, ek gecikme, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model aynı zamanda bölümleme zorlukları sunabilir.
+* **Köşe tabanlı özellikler**: Bu yaklaşımda varlık, özelliklerini anlatmak için üç ayrı köşe ve iki kenar kullanır. Bu yaklaşım artıklığı azaltada, model karmaşıklığını artırır. Model karmaşıklığının artışı, eklenen gecikme süresi, sorgu karmaşıklığı ve hesaplama maliyetine neden olabilir. Bu model, Bölümlemede zorluk de sunabilir.
 
-![Özellikleri için vertices ile varlık modeli.](./media/graph-modeling/graph-modeling-1.png)
+![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-1.png)
 
-* **Özellik gömülü vertices**: Bu yaklaşım, bir tepe noktası içindeki varlığın tüm özelliklerini temsil etmek için anahtar değeri çifti listesinden yararlanır. Bu yaklaşım, daha basit sorgular ve daha düşük maliyetli geçişler yol açacaktır azaltılmış model karmaşıklığı sağlar.
+* **Özelliğe gömülü**köşeler: Bu yaklaşım, bir köşe içindeki varlığın tüm özelliklerini göstermek için anahtar-değer çifti listesinden yararlanır. Bu yaklaşım daha basit sorgulara ve daha düşük maliyetli traversals neden olacak şekilde daha az model karmaşıklığı sağlar.
 
-![Özellikleri için vertices ile varlık modeli.](./media/graph-modeling/graph-modeling-2.png)
-
-> [!NOTE]
-> Yukarıdaki örnekler, varlık özelliklerini bölmenin iki yolu arasındaki karşılaştırmayı yalnızca göstermek için basitleştirilmiş bir grafik modelini gösterir.
-
-**Özellik gömülü vertices** desen genellikle daha performant ve ölçeklenebilir bir yaklaşım sağlar. Yeni bir grafik veri modeline varsayılan yaklaşım bu desen doğru çekilmek gerekir.
-
-Ancak, bir özelliğe başvurmanın avantaj sağlayabileceği senaryolar vardır. Örneğin: başvurulan özellik sık sık güncelleştirilmişse. Sürekli değiştirilen bir özelliği temsil etmek için ayrı bir vertex kullanmak, güncelleştirmenin gerektirdiği yazma işlemleri miktarını en aza indirir.
-
-### <a name="relationship-modeling-with-edge-directions"></a>Kenar yönleri ile ilişki modelleme
-
-Vertices modellendikten sonra, kenarlar aralarındaki ilişkileri belirtmek için eklenebilir. Değerlendirilmesi gereken ilk yönü **ilişkinin yönüdür.** 
-
-Kenar `out()` nesneleri, işlevi `outE()` kullanırken bir geçiş tarafından izlenen varsayılan bir yöne sahiptir. Tüm tepe uçları giden kenarları ile depolanır beri bu doğal yön kullanarak verimli bir çalışma ile sonuçlanır. 
-
-Ancak, `in()` işlevi kullanarak bir kenarın ters yönde geçiş, her zaman bir çapraz bölüm sorgusu neden olur. [Grafik bölümleme](graph-partitioning.md)hakkında daha fazla bilgi edinin. `in()` İşlevi kullanarak sürekli olarak geçiş yapmanız gerekirse, her iki yöne de kenarlar eklemeniz önerilir.
-
-Gremlin adımına ait `.to()` `.from()` veya yüklemleri kullanarak kenar yönünü belirleyebilirsiniz. `.addE()` Veya [Gremlin API için toplu yürütme kitaplığı](bulk-executor-graph-dotnet.md)kullanarak .
+![Özellikler için köşeleri olan varlık modeli.](./media/graph-modeling/graph-modeling-2.png)
 
 > [!NOTE]
-> Kenar nesneleri varsayılan olarak bir yöne sahiptir.
+> Yukarıdaki örneklerde, yalnızca varlık özelliklerini bölmek için iki yol arasındaki karşılaştırmayı göstermek üzere basitleştirilmiş bir grafik modeli gösterilmektedir.
+
+**Özelliği gömülü** köşeler, genellikle daha performanslı ve ölçeklenebilir bir yaklaşım sağlar. Yeni bir grafik veri modeli için varsayılan yaklaşım bu düzene doğru olmalıdır.
+
+Ancak, bir özelliğe başvuruda bulunan senaryolar avantaj sağlayabilir. Örneğin: başvurulan özellik sık sık güncellendiyse. Sürekli olarak değiştirilen bir özelliği göstermek için ayrı bir köşe kullanmak, güncelleştirmenin gerektirdiği yazma işlemleri miktarını en aza indirir.
+
+### <a name="relationship-modeling-with-edge-directions"></a>Kenar yönlerine sahip ilişki modelleme
+
+Köşeler modellendikten sonra aralarındaki ilişkileri göstermek için kenarlar eklenebilir. Değerlendirilmesi gereken ilk boyut **ilişkinin yönüdür**. 
+
+Edge nesnelerinin, `out()` veya `outE()` işlevi kullanılırken bir çapraz geçiş tarafından izlenen varsayılan bir yönü vardır. Tüm köşeler giden kenarlarıyla depolandığından, bu doğal yönün kullanılması verimli bir işlem ile sonuçlanır. 
+
+Ancak, `in()` işlevi kullanılarak bir kenarın ters yönünde geçiş yapmak, her zaman bir çapraz bölüm sorgusuna neden olur. [Grafik bölümlendirme](graph-partitioning.md)hakkında daha fazla bilgi edinin. `in()` İşlevi kullanarak sürekli geçiş yapmanız gerekiyorsa, her iki yönde de kenar eklenmesi önerilir.
+
+Gremlin adımında `.to()` veya `.from()` koşullarını kullanarak kenar yönünü belirleyebilirsiniz. `.addE()` Ya da [Gremlin API için toplu yürütücü kitaplığı](bulk-executor-graph-dotnet.md)'nı kullanarak.
+
+> [!NOTE]
+> Edge nesnelerinin varsayılan olarak bir yönü vardır.
 
 ### <a name="relationship-labeling"></a>İlişki etiketleme
 
-Açıklayıcı ilişki etiketleri kullanmak, kenar çözünürlüğü işlemlerinin verimliliğini artırabilir. Bu desen aşağıdaki şekillerde uygulanabilir:
-* İlişkiyi etiketlemek için genel olmayan terimler kullanın.
-* Kaynak tepe noktasının etiketini, hedef tepe noktasının etiketiyle ilişki adı ile ilişkilendirin.
+Açıklayıcı ilişki etiketlerinin kullanılması, sınır çözümleme işlemlerinin verimliliğini artırır. Bu model aşağıdaki yollarla uygulanabilir:
+* Bir ilişkiyi etiketlemek için genel olmayan terimleri kullanın.
+* Kaynak köşesinin etiketini, ilişki adı ile hedef köşe etiketi ile ilişkilendirin.
 
 ![İlişki etiketleme örnekleri.](./media/graph-modeling/graph-modeling-3.png)
 
-Geçiş incisinin kenarları filtrelemek için kullanacağı etiket ne kadar spesifikse, o kadar iyi. Bu karar, sorgu maliyeti üzerinde de önemli bir etkiye sahip olabilir. YürütmeProfil [adımını kullanarak](graph-execution-profile.md)istediğiniz zaman sorgu maliyetini değerlendirebilirsiniz.
+Traverser 'ın kenarları filtrelemesini sağlamak için kullanacağı etiket daha iyidir. Bu karar, sorgu maliyetinde önemli bir etkiye sahip olabilir. Sorgu maliyetini, her zaman [executionProfile adımını kullanarak](graph-execution-profile.md)değerlendirebilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar: 
 * Desteklenen [Gremlin adımlarının](gremlin-support.md)listesine göz atın.
-* Büyük ölçekli grafiklerle başa çıkmak için [grafik veritabanı bölümleme](graph-partitioning.md) hakkında bilgi edinin.
-* [Yürütme Profili adımını](graph-execution-profile.md)kullanarak Gremlin sorgularınızı değerlendirin.
+* Büyük ölçekli grafiklerle başa çıkmak için [grafik veritabanı bölümlendirme](graph-partitioning.md) hakkında bilgi edinin.
+* [Yürütme profili adımını](graph-execution-profile.md)kullanarak Gremlin sorgularınızı değerlendirin.

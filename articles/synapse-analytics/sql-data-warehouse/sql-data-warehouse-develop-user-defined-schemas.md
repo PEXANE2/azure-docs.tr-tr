@@ -1,6 +1,6 @@
 ---
 title: Kullanıcı tanımlı şemaları kullanma
-description: Synapse SQL havuzunda çözümler geliştirmek için T-SQL kullanıcı tanımlı şemalar kullanma ipuçları.
+description: SYNAPSE SQL havuzunda çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanma ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633461"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Synapse SQL havuzunda kullanıcı tanımlı şemalar
-Bu makalede, Synapse SQL havuzunda çözümler geliştirmek için T-SQL kullanıcı tanımlı şemalar kullanmak için çeşitli ipuçları sağlamaya odaklanılmaktadır.
+# <a name="user-defined-schemas-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda Kullanıcı tanımlı şemalar
+Bu makale, SYNAPSE SQL havuzunda çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanmaya yönelik birkaç ipucu sağlamaya odaklanır.
 
-## <a name="schemas-for-application-boundaries"></a>Uygulama sınırları için şemalar
+## <a name="schemas-for-application-boundaries"></a>Uygulama sınırları şemaları
 
-Geleneksel veri ambarları genellikle iş yükü, etki alanı veya güvenliğe dayalı uygulama sınırları oluşturmak için ayrı veritabanları kullanır. 
+Geleneksel veri ambarları genellikle iş yüküne, etki alanına veya güvenliğe göre uygulama sınırları oluşturmak için ayrı veritabanları kullanır. 
 
-Örnek olarak, geleneksel bir SQL Server veri ambarı bir evreleme veritabanı, veri ambarı veritabanı ve bazı veri mart veritabanları içerebilir. Bu topolojide, her veritabanı mimaride bir iş yükü ve güvenlik sınırı olarak çalışır.
+Örnek olarak, geleneksel bir SQL Server veri ambarı hazırlama veritabanı, veri ambarı veritabanı ve bazı Data Mart veritabanlarını içerebilir. Bu topolojide, her veritabanı mimaride bir iş yükü ve güvenlik sınırı olarak çalışır.
 
-Bunun aksine, SQL havuzu tüm veri ambarı iş yükünü tek bir veritabanında çalıştırZ. Çapraz veritabanı birleştirmelerine izin verilmez. SQL havuzu, ambar tarafından kullanılan tüm tabloların tek bir veritabanında depolanmasını bekler.
+Bunun aksine, SQL havuzu tüm veri ambarı iş yükünü tek bir veritabanı içinde çalıştırır. Çapraz veritabanı birleştirmelerine izin verilmez. SQL havuzu, ambarın tarafından kullanılan tüm tabloların tek bir veritabanı içinde depolanmasını bekler.
 
 > [!NOTE]
-> SQL havuzu her türlü çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu modelden yararlanan veri ambarı uygulamalarının gözden geçirilmesi gerekir.
+> SQL havuzu herhangi bir türdeki çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu düzenin faydalarından yararlanan veri ambarı uygulamalarının yeniden gözden geçirilmesi gerekir.
 > 
 > 
 
 ## <a name="recommendations"></a>Öneriler
-Aşağıda, kullanıcı tanımlı şemalar kullanarak iş yüklerini, güvenlik, etki alanı ve işlevsel sınırları birleştirme önerileri şunlardır:
+Aşağıda, Kullanıcı tanımlı şemaları kullanarak iş yüklerini, güvenliği, etki alanını ve işlevsel sınırları birleştirme önerileri verilmiştir:
 
 - Tüm veri ambarı iş yükünüzü çalıştırmak için bir SQL havuzu veritabanı kullanın.
-- Bir SQL havuzu veritabanı nı kullanmak için varolan veri ambarı ortamınızı birleştirin.
-- Daha önce veritabanları kullanılarak uygulanan sınırı sağlamak için **kullanıcı tanımlı şemalardan** yararlanın.
+- Mevcut veri ambarı ortamınızı bir SQL havuzu veritabanını kullanacak şekilde birleştirin.
+- Daha önce veritabanları kullanılarak uygulanan sınırı sağlamak için **Kullanıcı tanımlı şemalardan** yararlanın.
 
-Kullanıcı tanımlı şemalar daha önce kullanılmamışsa, temiz bir sayfanız vardır. SQL havuz veritabanında kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
+Daha önce Kullanıcı tanımlı şemalar kullanılmazsa, temiz bir tablet görürsünüz. SQL havuzu veritabanındaki kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
 
-Şemalar zaten kullanılmışsa, birkaç seçeneğiniz vardır:
+Şemalar zaten kullanıldıysa, birkaç seçeneğiniz vardır:
 
-- Eski şema adlarını kaldırın ve yeni bir başlangıç.
-- Eski şema adlarını, eski şema adını tablo adına önceden bekleterek koruyun.
-- Eski şema yapısını yeniden oluşturmak için tablo üzerinde görünümleri ek bir şema da uygulayarak eski şema adlarını koruyun.
+- Eski şema adlarını kaldırın ve yeni bir başlangıç yapın.
+- Eski şema adlarını, eski şema adının tablo adına ön bekliyor olarak tutun.
+- Eski şema yapısını yeniden oluşturmak için ek bir şemadaki tablo üzerinde görünümler uygulayarak eski şema adlarını koruyun.
 
 > [!NOTE]
-> İlk denetim seçeneği 3 en cazip seçenek gibi görünebilir. Ancak, şeytan ayrıntılı olarak. Görünümler yalnızca SQL havuzunda okunur. Herhangi bir veri veya tablo değişikliği taban tablokarşı yapılması gerekir. Seçenek 3, sisteminize bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız, bu konuda ek bir düşünce vermek isteyebilirsiniz.
+> İlk denetleme seçeneği 3 en çekici seçenek gibi görünebilir. Ancak, DEVIL ayrıntılandırıyor. Görünümler, SQL havuzunda salt okunurdur. Herhangi bir veri veya tablo değişikliğini temel tabloya karşı gerçekleştirilmesi gerekir. Seçenek 3 Ayrıca sisteminizde bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız, buna ek bir fikir vermek isteyebilirsiniz.
 > 
 > 
 
 ### <a name="examples"></a>Örnekler:
-Veritabanı adlarına göre kullanıcı tanımlı şemalar uygulayın:
+Veritabanı adlarına göre Kullanıcı tanımlı şemaları Uygula:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -73,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Eski şema adlarını tablo adına önceden bekleterek saklayın. İş yükü sınırı için şemakullanın:
+Eski şema adlarını tablo adına ön bekliyor olarak bırakın. İş yükü sınırı için şemaları kullanın:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -91,7 +91,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Görünümleri kullanarak eski şema adlarını saklayın:
+Görünümleri kullanarak eski şema adlarını tut:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -119,10 +119,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Şema stratejisindeki herhangi bir değişiklik için veritabanı nın güvenlik modelinin gözden geçirilmesi gerekir. Çoğu durumda, şema düzeyinde izinler atayarak güvenlik modelini basitleştirebilirsiniz. Daha ayrıntılı izinler gerekiyorsa, veritabanı rollerini kullanabilirsiniz.
+> Şema stratejisindeki herhangi bir değişiklik, veritabanı için güvenlik modelinin gözden geçirilmesini gerektirir. Birçok durumda, şema düzeyinde izinler atayarak güvenlik modelini basitleştirebileceksiniz. Daha ayrıntılı izinler gerekiyorsa, veritabanı rollerini kullanabilirsiniz.
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).
 

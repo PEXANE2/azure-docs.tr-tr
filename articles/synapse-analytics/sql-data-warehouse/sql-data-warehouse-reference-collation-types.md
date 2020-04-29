@@ -1,6 +1,6 @@
 ---
 title: Veri ambarı harmanlama türleri
-description: Azure Synapse Analytics SQL havuzunda desteklenen harmanlama türleri.
+description: Azure SYNAPSE Analytics SQL havuzunda desteklenen harmanlama türleri.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,25 +11,25 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633082"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL havuzu için veritabanı harmanlama desteği
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzu için veritabanı harmanlama desteği
 
-Yeni bir Azure Synapse SQL havuz veritabanı oluşturduğunuzda varsayılan veritabanı harmasyonunu Azure portalından değiştirebilirsiniz. Bu özellik, desteklenen 3800 veritabanı harmanlamalarından birini kullanarak yeni bir veritabanı oluşturmayı daha da kolaylaştırır.
+Yeni bir Azure SYNAPSE SQL havuzu veritabanı oluştururken Azure portal varsayılan veritabanı harmanlamasını değiştirebilirsiniz. Bu özellik, 3800 desteklenen veritabanı harmanlamainden birini kullanarak yeni bir veritabanı oluşturulmasını kolaylaştırır.
 
-Harmanlamalar, karakter tabanlı veri türleri için yerel düzen, kod sayfası, sıralama sırası ve karakter duyarlılığı kurallarını sağlar. Seçildikten sonra, harmanlama bilgileri gerektiren tüm sütunlar ve ifadeler seçilen harmanlama veritabanı ayarından devralır. Varsayılan devralma, karakter tabanlı bir veri türü için farklı bir harmanlama açıkça belirterek geçersiz kılınabilir.
+Harmanlamalar karakter tabanlı veri türleri için yerel ayar, kod sayfası, sıralama düzeni ve karakter duyarlılığı kuralları sağlar. Seçildiğinde, harmanlama bilgilerini gerektiren tüm sütunlar ve ifadeler, seçili harmanlamayı veritabanı ayarından devralınır. Varsayılan devralma, karakter tabanlı bir veri türü için farklı bir harmanlama açıkça belirtilerek geçersiz kılınabilir.
 
-## <a name="changing-collation"></a>Harmanlama
+## <a name="changing-collation"></a>Harmanlamayı değiştirme
 
-Varsayılan harmanlamayı değiştirmek için, sağlama deneyimindeki Collation alanına güncelleştirin.
+Varsayılan harmanlamayı değiştirmek için sağlama deneyiminde harmanlama alanına güncelleştirin.
 
-Örneğin, varsayılan harmanlama durumunu büyük/küçük harf duyarlıolarak değiştirmek isterseniz, Collation'ı SQL_Latin1_General_CP1_CI_AS'dan SQL_Latin1_General_CP1_CS_AS'a yeniden adlandırmanız yeterlidir.
+Örneğin, Varsayılan harmanlamayı büyük/küçük harfe duyarlı olarak değiştirmek isterseniz, harmanlamayı SQL_Latin1_General_CP1_CI_AS SQL_Latin1_General_CP1_CS_AS olarak yeniden adlandırmanız yeterlidir.
 
-## <a name="list-of-unsupported-collation-types"></a>Desteklenmeyen harmanlama türleri listesi
+## <a name="list-of-unsupported-collation-types"></a>Desteklenmeyen harmanlama türlerinin listesi
 
 * Japanese_Bushu_Kakusu_140_BIN
 * Japanese_Bushu_Kakusu_140_BIN2
@@ -102,12 +102,12 @@ Varsayılan harmanlamayı değiştirmek için, sağlama deneyimindeki Collation 
 * SQL_EBCDIC1141_CP1_CS_AS
 * SQL_EBCDIC277_2_CP1_CS_AS
 
-## <a name="checking-the-current-collation"></a>Geçerli harmanlama denetimi
+## <a name="checking-the-current-collation"></a>Geçerli harmanlama denetleniyor
 
-Veritabanı için geçerli harmanlama denetlemek için aşağıdaki T-SQL snippet çalıştırabilirsiniz:
+Veritabanının geçerli harmanlamasını denetlemek için aşağıdaki T-SQL kod parçacığını çalıştırabilirsiniz:
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-Özellik parametresi olarak 'Harmasyon' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlama döndürür. Daha fazla bilgi için [DatabasePropertyEx'e](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
+Özellik parametresi olarak ' harmanlama ' geçirildiğinde, DatabasePropertyEx işlevi belirtilen veritabanı için geçerli harmanlamayı döndürür. Daha fazla bilgi için bkz. [databasepropertyex](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde StringToNumber
-description: Azure Cosmos DB'de SQL sistem fonksiyonu StringToNumber hakkında bilgi edinin.
+description: Azure Cosmos DB SQL sistem işlevi StringToNumber 'ı hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 5ca8d0c4a6d244823dda6f0f79a3cf5c743a12a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296431"
 ---
 # <a name="stringtonumber-azure-cosmos-db"></a>StringToNumber (Azure Cosmos DB)
- Bir Sayıya çevrilmiş ifadeyi döndürür. İfade çevrilemiyorsa, tanımsız döndürür.  
+ Sayıya çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,17 +26,17 @@ StringToNumber(<str_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   JSON Numarası ifadesi olarak ayrıştırılması gereken bir dize ifadesidir. JSON'daki sayılar bir tamsayı veya kayan nokta olmalıdır. JSON formatı hakkında ayrıntılı bilgi için [json.org](https://json.org/)  
+   , JSON sayı ifadesi olarak ayrıştırılacak bir dize ifadesidir. JSON 'daki Sayılar tamsayı veya kayan nokta olmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Bir Sayı ifadesini veya tanımlanmamış bir ifadesini döndürür.  
+  Bir sayı ifadesi veya tanımsız döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToNumber` farklı türlerde nasıl nasıl bir şekilde nasıl hissettiğini gösterir. 
+  Aşağıdaki örnek, farklı türlerde `StringToNumber` nasıl davrandığını gösterir. 
 
-Beyaz uzaya yalnızca Sayı'dan önce veya sonra izin verilir.
+Boşluğa yalnızca sayıdan önce veya sonra izin verilir.
 
 ```sql
 SELECT 
@@ -52,7 +52,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
-JSON'da geçerli bir Numara tamsayı veya kayan nokta numarası olmalıdır.
+JSON içinde geçerli bir sayı ya bir tamsayı ya da kayan nokta numarası olmalıdır.
 
 ```sql
 SELECT   
@@ -65,7 +65,7 @@ SELECT
 {{}}
 ```  
 
-Geçirilen ifade sayı ifadesi olarak ayrıştırılır; bu girdiler Sayı türü için değerlendirme yapmazlar ve böylece tanımsız döner. 
+Geçirilen ifade sayı ifadesi olarak ayrıştırılacak; Bu girişler tür numarası olarak değerlendirilmez ve tanımsız döndürür. 
 
 ```sql
 SELECT 
@@ -85,10 +85,10 @@ SELECT
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

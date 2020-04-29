@@ -1,38 +1,38 @@
 ---
-title: Kullanıcı oluşturma - MariaDB için Azure Veritabanı
-description: Bu makalede, MariaDB sunucusu için bir Azure Veritabanı ile etkileşim kurmak için nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanmaktadır.
+title: Kullanıcı oluşturma-MariaDB için Azure veritabanı
+description: Bu makalede, MariaDB sunucusu için Azure veritabanı ile etkileşim kurmak üzere nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/2/2020
 ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632279"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda kullanıcı oluşturma 
-Bu makalede, MariaDB için Azure Veritabanı'nda nasıl kullanıcı oluşturabileceğiniz açıklanmaktadır.
+Bu makalede, MariaDB için Azure veritabanı 'nda nasıl Kullanıcı oluşturabileceğiniz açıklanır.
 
-MariaDB için Azure Veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi giriş kullanıcı adı ve parola sağladınız. Daha fazla bilgi için [Quickstart'ı](quickstart-create-mariadb-server-database-using-azure-portal.md)takip edebilirsiniz. Azure portalından sunucu yönetici giriş kullanıcı adınızı bulabilirsiniz.
+MariaDB için Azure veritabanınızı ilk oluşturduğunuzda, Sunucu Yöneticisi oturum açma Kullanıcı adı ve parolası sağladınız. Daha fazla bilgi için [hızlı](quickstart-create-mariadb-server-database-using-azure-portal.md)başlangıcı izleyebilirsiniz. Sunucu Yöneticisi oturum açma kullanıcı adınızı Azure portal bulabilirsiniz.
 
-Sunucu yöneticisi kullanıcı listelenen sunucunuz için belirli ayrıcalıklar alır: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
+Sunucu Yöneticisi kullanıcısı, sunucunuzda listelenen belirli ayrıcalıkları alır: seçme, ekleme, GÜNCELLEŞTIRME, SILME, oluşturma, BıRAKMA, yeniden yükleme, Işleme, BAŞVURULARı, DIZIN, DEĞIŞTIRME, VERITABANLARıNı gösterme, GEÇICI tablolar oluşturma, TABLOLARı KILITLEME, yürütme, çoğaltma BAĞıMLı, çoğaltma ISTEMCISI, görünüm oluşturma, görünümü gösterme, rutın oluşturma, yordamı DEĞIŞTIRME, Kullanıcı, olay, TETIKLEYICI oluşturma
 
-MariaDB sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve yöneticierişimi vermek için ilk sunucu yöneticisi kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı tek tek veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcılar oluşturmak için kullanılabilir.
+MariaDB sunucusu için Azure veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve bunlara yönetici erişimi vermek için ilk sunucu yöneticisi Kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı ayrı veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcı oluşturmak için kullanılabilir.
 
 > [!NOTE]
-> SUPER ayrıcalığı ve DBA rolü desteklenmez. Hizmette desteklenmeyenleri anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privilege-support) gözden geçirin.
+> Süper ayrıcalık ve DBA rolü desteklenmez. Hizmette Nelerin desteklenmediğini anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privilege-support) gözden geçirin.
 
-## <a name="create-additional-admin-users"></a>Ek yönetici kullanıcıları oluşturma
+## <a name="create-additional-admin-users"></a>Ek yönetici kullanıcılar oluşturma
 1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.
-   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adı ve oturum açma bilgilerini **sunucugenel bakış** sayfasından veya Azure portalındaki **Özellikler** sayfasından kolayca bulabilirsiniz. 
+   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasından veya Azure Portal **Özellikler** sayfasından kolayca bulabilirsiniz. 
 
-2. Veritabanı sunucunuza bağlanmak için yönetici hesabını ve parolasını kullanın. MySQL Workbench, mysql.exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın. 
-   Nasıl bağlanıp bağlanıp bağlanabileceğinizden emin değilseniz, [verileri bağlamak ve sorgulamak için MySQL Workbench'i kullanın](./connect-workbench.md)
+2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, MySQL. exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın. 
+   Nasıl bağlanacağınızdan emin değilseniz, bkz. [bağlanmak ve veri sorgulamak Için MySQL çalışma ekranı kullanma](./connect-workbench.md)
 
-3. Aşağıdaki SQL kodunu edin ve çalıştırın. Yer tutucu değeri `new_master_user`için yeni kullanıcı adınızı değiştirin. Bu sözdizimi, tüm veritabanı şemalarında (*.*) kullanıcı adına (bu örnekte new_master_user) listelenen ayrıcalıkları verir. 
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yeni Kullanıcı adınızı yer tutucu değeri `new_master_user`için değiştirin. Bu sözdizimi, tüm veritabanı şemalarında (*.*) listelenen ayrıcalıkları Kullanıcı adına (bu örnekte new_master_user) verir. 
 
    ```sql
    CREATE USER 'new_master_user'@'%' IDENTIFIED BY 'StrongPassword!';
@@ -42,7 +42,7 @@ MariaDB sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcıl
    FLUSH PRIVILEGES;
    ```
 
-4. Hibeleri doğrulayın 
+4. İzni doğrula 
    ```sql
    USE sys;
    
@@ -52,14 +52,14 @@ MariaDB sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcıl
 ## <a name="create-database-users"></a>Veritabanı kullanıcıları oluşturma
 
 1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.
-   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adı ve oturum açma bilgilerini **sunucugenel bakış** sayfasından veya Azure portalındaki **Özellikler** sayfasından kolayca bulabilirsiniz. 
+   Veritabanı sunucusuna bağlanmak için tam sunucu adı ve yönetici oturum açma kimlik bilgileri gerekir. Sunucu adını ve oturum açma bilgilerini sunucuya **genel bakış** sayfasından veya Azure Portal **Özellikler** sayfasından kolayca bulabilirsiniz. 
 
-2. Veritabanı sunucunuza bağlanmak için yönetici hesabını ve parolasını kullanın. MySQL Workbench, mysql.exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın. 
-   Nasıl bağlanıp bağlanıp bağlanabileceğinizden emin değilseniz, [verileri bağlamak ve sorgulamak için MySQL Workbench'i kullanın](./connect-workbench.md)
+2. Veritabanı sunucunuza bağlanmak için yönetici hesabı ve parolasını kullanın. MySQL çalışma ekranı, MySQL. exe, HeidiSQL veya diğerleri gibi tercih ettiğiniz istemci aracını kullanın. 
+   Nasıl bağlanacağınızdan emin değilseniz, bkz. [bağlanmak ve veri sorgulamak Için MySQL çalışma ekranı kullanma](./connect-workbench.md)
 
-3. Aşağıdaki SQL kodunu edin ve çalıştırın. Yer tutucu değerini, `db_user` hedeflenenene yeni kullanıcı `testdb` adınızla ve yer tutucu değerini kendi veritabanı adınızile değiştirin.
+3. Aşağıdaki SQL kodunu düzenleyin ve çalıştırın. Yer tutucu değerini `db_user` amaçlanan Yeni Kullanıcı adınızla ve yer tutucu değerini `testdb` kendi veritabanı adınızla değiştirin.
 
-   Bu sql kodu sözdizimi, örneğin amaçlariçin testdb adında yeni bir veritabanı oluşturur. Daha sonra MariaDB hizmeti için Azure Veritabanı'nda yeni bir kullanıcı oluşturur ve bu kullanıcı için\*yeni veritabanı şemasına (testdb. ) tüm ayrıcalıklar verir. 
+   Bu SQL kod sözdizimi, örnek olarak TestDB adlı yeni bir veritabanı oluşturur. Daha sonra, MariaDB için Azure veritabanı hizmetinde yeni bir kullanıcı oluşturur ve bu kullanıcı için yeni veritabanı şemasına (TestDB.\*) tüm ayrıcalıklar verir. 
 
    ```sql
    CREATE DATABASE testdb;
@@ -71,21 +71,21 @@ MariaDB sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcıl
    FLUSH PRIVILEGES;
    ```
 
-4. Veritabanındaki hibeleri doğrulayın.
+4. Veritabanının içindeki izni doğrulayın.
    ```sql
    USE testdb;
    
    SHOW GRANTS FOR 'db_user'@'%';
    ```
 
-5. Yeni kullanıcı adı ve parolayı kullanarak belirlenen veritabanını belirterek sunucuya giriş yapın. Bu örnek, mysql komut satırını gösterir. Bu komutla, kullanıcı adının parolası istenir. Kendi sunucu adınızı, veritabanı adınızı ve kullanıcı adınızı değiştirin.
+5. Yeni Kullanıcı adı ve parolayı kullanarak, belirlenen veritabanını belirterek sunucuda oturum açın. Bu örnekte MySQL komut satırı gösterilmektedir. Bu komutla Kullanıcı adı için parola istenir. Kendi sunucu adı, veritabanı adı ve Kullanıcı adınızı değiştirin.
 
    ```bash
    mysql --host mydemoserver.mariadb.database.azure.com --database testdb --user db_user@mydemoserver -p
    ```
-   Kullanıcı hesabı yönetimi ile ilgili daha fazla bilgi için, [Kullanıcı hesabı yönetimi,](https://mariadb.com/kb/en/library/user-account-management/) [GRANT Sözdizimi](https://mariadb.com/kb/en/library/grant/)ve Ayrıcalıklar için MariaDB [belgelerine](https://mariadb.com/kb/en/library/grant/#privilege-levels)bakın.
+   Kullanıcı hesabı yönetimi hakkında daha fazla bilgi için bkz. [Kullanıcı hesabı yönetimi](https://mariadb.com/kb/en/library/user-account-management/)Için MariaDB belgeleri, [sözdizimi verme](https://mariadb.com/kb/en/library/grant/)ve [ayrıcalıklar](https://mariadb.com/kb/en/library/grant/#privilege-levels).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Yeni kullanıcıların makinelerinin IP adreslerinin bağlantı kurmasını sağlamak için güvenlik duvarını açın: [Azure portalını kullanarak MariaDB güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](howto-manage-firewall-portal.md)  
+Bağlantı kurmasını sağlamak için yeni kullanıcıların makinelerinin IP adresleri için güvenlik duvarını açın: [Azure Portal kullanarak MariaDB Için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-portal.md)  
 
 <!--or [Azure CLI](howto-manage-firewall-using-cli.md).-->

@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual WAN iş ortakları otomasyon kuralları | Microsoft Dokümanlar
-description: Bu makale, iş ortaklarının Azure Virtual WAN otomasyonu ayarlamalarına yardımcı olur.
+title: Azure sanal WAN iş ortakları Otomasyon yönergeleri | Microsoft Docs
+description: Bu makale, iş ortaklarının Azure sanal WAN Otomasyonu 'nu ayarlama konusunda yardımcı olur.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,85 +8,85 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190410"
 ---
-# <a name="automation-guidelines-for-virtual-wan-partners"></a>Sanal WAN iş ortakları için otomasyon yönergeleri
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Sanal WAN iş ortakları için Otomasyon yönergeleri
 
-Bu makale, Azure Virtual WAN için bir şube aygıtına (müşteri şirket içi VPN aygıtı veya SDWAN CPE) bağlanmak ve yapılandırmak için otomasyon ortamını nasıl ayarlayacağınızı anlamanıza yardımcı olur. IPsec/IKEv2 veya IPsec/IKEv1 üzerinden VPN bağlantısı barındırabilen şube aygıtları sağlayan bir sağlayıcıysanız, bu makale tam size göre.
+Bu makale, Azure sanal WAN için bir şube cihazını (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) bağlamak ve yapılandırmak üzere otomasyon ortamının nasıl ayarlanacağını anlamanıza yardımcı olur. IPSec/Ikev2 veya IPSec/IKEv1 üzerinden VPN bağlantısı barındırabilecek dal cihazları sağlayan bir sağlayıcısıysanız, bu makale sizin için sizin içindir.
 
-Bir şube aygıtı (müşteri şirket içi VPN aygıtı veya SDWAN CPE) genellikle sağlanması için bir denetleyici/aygıt panosu kullanır. SD-WAN çözüm yöneticileri, bir aygıtı ağa takılmadan önce önceden sağlamak için genellikle bir yönetim konsolu kullanabilir. Bu VPN özellikli cihaz kontrol düzlemi mantığını bir kumandadan alır. VPN Aygıtı veya SD-WAN denetleyicisi, Azure Virtual WAN bağlantısını otomatikleştirmek için Azure API'lerini kullanabilir. Bu tür bir bağlantı, şirket içi aygıtın kendisine dışarıdan bakan bir genel IP adresine sahip olmasını gerektirir.
+Bir dal aygıtı (bir müşteri şirket içi VPN cihazı veya SDWAN CPE) genellikle sağlanması için bir denetleyici/cihaz panosu kullanır. SD-WAN çözümü yöneticileri, bir cihazı ağa takılmadan önce önceden sağlamak için genellikle bir yönetim konsolu kullanabilirler. Bu VPN özellikli cihaz, bir denetleyiciden denetim düzlemi mantığını alır. VPN cihazı veya SD-WAN denetleyicisi, Azure sanal WAN bağlantısını otomatik hale getirmek için Azure API 'Leri kullanabilir. Bu tür bir bağlantı, şirket içi cihazın kendisine atanmış bir genel IP adresi olmasını gerektirir.
 
-## <a name="before-you-begin-automating"></a><a name ="before"></a>Otomatikmeye başlamadan önce
+## <a name="before-you-begin-automating"></a><a name ="before"></a>Otomatikleştirmeye başlamadan önce
 
-* Cihazınızın IPsec IKEv1/IKEv2'yi desteklediğini doğrulayın. [Varsayılan ilkelere](#default)bakın.
-* Azure Virtual WAN bağlantısını otomatikleştirmek için kullandığınız [REST API'lerini](#additional) görüntüleyin.
-* Azure Virtual WAN'ın portal deneyimini test edin.
-* Ardından, bağlantı adımlarının hangi bölümünü otomatikleştirmek istediğinize karar verin. En azından otomatikleme yapmanızı öneririz:
+* Cihazınızın IPSec IKEv1/Ikev2 desteklediğini doğrulayın. Bkz. [varsayılan ilkeler](#default).
+* Azure sanal WAN bağlantısını otomatikleştirmek için kullandığınız [REST API 'leri](#additional) görüntüleyin.
+* Azure sanal WAN 'ın Portal deneyimini test edin.
+* Sonra, bağlantı adımlarının hangi bölümünü otomatikleştirmek istediğinizi belirleyin. En azından, otomatikleştirilmesi önerilir:
 
   * Erişim Denetimi
-  * Şube aygıtı bilgilerinin Azure Virtual WAN'a yüklenmesi
-  * Azure yapılandırmasını indirme ve şube aygıtından Azure Virtual WAN'a bağlantı ayarlama
+  * Şube cihaz bilgilerini Azure sanal WAN 'a yükleme
+  * Azure yapılandırmasını indirme ve şube cihazından Azure sanal WAN 'a bağlantı ayarlama
 
 ### <a name="additional-information"></a><a name ="additional"></a>Ek bilgiler
 
-* Sanal Hub oluşturmaotomatikleştirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
-* Virtual WAN için Azure VPN ağ geçidini otomatikleştirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
-* VPN Sitesini Azure VPN Hub'ına bağlamak için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
-* [Varsayılan IPsec ilkeleri](#default)
+* Sanal hub oluşturmayı otomatikleştirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/virtualhubs)
+* Sanal WAN için Azure VPN ağ geçidini otomatik hale getirmek için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpngateways)
+* Bir VPNSite 'yi bir Azure VPN hub 'ına bağlamak için [REST API](https://docs.microsoft.com/rest/api/virtualwan/vpnconnections)
+* [Varsayılan IPSec ilkeleri](#default)
 
 ## <a name="customer-experience"></a><a name ="ae"></a>Müşteri deneyimi
 
-Azure Virtual WAN ile birlikte beklenen müşteri deneyimini anlayın.
+Beklenen müşteri deneyimini Azure sanal WAN ile birlikte anlayın.
 
-  1. Genellikle, sanal bir WAN kullanıcısı sanal wan kaynağı oluşturarak işlemi başlatır.
-  2. Kullanıcı, Azure Virtual WAN'a şube bilgilerini yazmak için şirket içi sistem (şube denetleyiciniz veya VPN aygıt sağlama yazılımı) için hizmet temeltabanlı kaynak grubu erişimi ayarlar.
-  3. Kullanıcı şu anda Kullanıcı Arabirimi'nize giriş yapmaya ve hizmet temel kimlik bilgilerini ayarlamaya karar verebilir. Bu tamamlandığında, kumandanız sağlayacağınız otomasyonla şube bilgilerini yükleyebilmelidir. Bunun Azure tarafındaki manuel karşılığı 'Site Oluştur'dur.
-  4. Site (dal aygıtı) bilgileri Azure'da kullanılabilir hale geldikten sonra, kullanıcı siteyi bir hub'a bağlar. Sanal hub, Microsoft tarafından yönetilen bir sanal ağdır. Hub'da, şirket içi ağınızdan (vpnsite) gelen bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları bulunur. Hub, bir bölgedeki ağınızın merkezidir. Azure bölgesi başına yalnızca bir hub olabilir ve bu işlem sırasında içindeki vpn bitiş noktası (vpngateway) oluşturulur. VPN ağ geçidi, bant genişliği ve bağlantı gereksinimlerine göre uygun boyutlara ulaşan ölçeklenebilir bir ağ geçididir. Şube cihaz denetleyici panonuzdan sanal hub ve vpngateway oluşturmayı otomatikleştirmeyi seçebilirsiniz.
-  5. Sanal Hub siteyle ilişkilendirildikten sonra, kullanıcının el ile karşıdan yüklenebilmek için bir yapılandırma dosyası oluşturulur. Otomasyonunuzun devreye girdiği ve kullanıcı deneyimini sorunsuz hale getirdiği yer burasıdır. Kullanıcının şube aygıtını el ile indirmesi ve yapılandırması yerine, otomasyonu ayarlayabilir ve kullanıcı aranızda en az tıklama deneyimi sağlayabilir ve böylelikle paylaşılan anahtar uyuşmazlığı, IPSec parametresi gibi tipik bağlantı sorunlarını hafifletebilirsiniz. uyumsuzluk, yapılandırma dosyası okunabilirlik vb.
-  6. Çözümünüzdeki bu adımın sonunda, kullanıcı şube aygıtı ile sanal hub arasında sorunsuz bir siteden siteye bağlantıya sahip olacaktır. Ayrıca diğer hub'larda ek bağlantılar da ayarlayabilirsiniz. Her bağlantı etkin-etkin bir tüneldir. Müşteriniz tünelin her bağlantıları için farklı bir ISS kullanmayı tercih edebilir.
-  7. CPE yönetim arabiriminde sorun giderme ve izleme özellikleri sağlamayı düşünün. Tipik senaryolar arasında "Müşteri CPE sorunu nedeniyle Azure kaynaklarına erişemez", "CPE tarafında IPsec parametrelerini göster" vb. yer alır.
+  1. Genellikle, bir sanal WAN kullanıcısı bir sanal WAN kaynağı oluşturarak bu işlemi başlatır.
+  2. Kullanıcı, şube bilgilerini Azure sanal WAN 'a yazmak için şirket içi sistem (Şube denetleyiciniz veya VPN cihaz sağlama yazılımınız) için bir hizmet sorumlusu tabanlı kaynak grubu erişimi ayarlar.
+  3. Kullanıcı, şu anda Kullanıcı ARABIRIMINDE oturum açıp hizmet sorumlusu kimlik bilgilerini ayarlama kararı verebilir. Bu işlem tamamlandıktan sonra denetleyicinizin, sağlayabileceğiniz Otomasyon ile dal bilgilerini karşıya yükleyebilmeleri gerekir. Azure tarafında bu değerin el ile eşdeğeri ' site oluştur ' ' tur.
+  4. Site (Şube aygıtı) bilgileri Azure 'da kullanılabilir olduğunda, kullanıcı siteyi bir hub 'a bağlayacaktır. Bir sanal hub, Microsoft tarafından yönetilen bir sanal ağ. Hub'da, şirket içi ağınızdan (vpnsite) gelen bağlantıyı etkinleştirmek için çeşitli hizmet uç noktaları bulunur. Hub, bir bölgedeki ağınızın merkezidir. Bu işlem sırasında, Azure bölgesi başına yalnızca bir hub olabilir ve içindeki VPN uç noktası (vpngateway) oluşturulur. VPN Gateway, bant genişliği ve bağlantı ihtiyaçlarına göre uygun şekilde boyutlardaki ölçeklenebilir bir ağ geçidindir. Sanal hub ve vpngateway oluşturma 'yı dal cihaz denetleyicisi panoınızdan otomatik hale getirmeyi seçebilirsiniz.
+  5. Sanal hub siteyle ilişkilendirildiğinde, kullanıcının el ile indirilmesi için bir yapılandırma dosyası oluşturulur. Bu, otomasyonunun içinde geldiği ve kullanıcının sorunsuz bir şekilde karşılaşmasına neden olur. Şirket cihazını el ile indirip yapılandırmak zorunda kalmadan, Otomasyonu ayarlayabilir ve Kullanıcı ARABIRIMINIZE en az tıklama deneyimi sağlayabilirsiniz, böylece paylaşılan anahtar uyumsuzluğu, IPSec parametre uyumsuzluğu, yapılandırma dosyası okunabilirliği vb. gibi tipik bağlantı sorunları hafifletmesini.
+  6. Çözümünüzde bu adımın sonunda, kullanıcının şube cihazı ile sanal hub arasında sorunsuz bir siteden siteye bağlantısı olacaktır. Ayrıca, diğer hub 'larda ek bağlantılar da ayarlayabilirsiniz. Her bağlantı etkin-etkin bir tüneldir. Müşteriniz, tünele ilgili bağlantıların her biri için farklı bir ISS kullanmayı tercih edebilir.
+  7. CPE yönetim arabiriminde sorun giderme ve izleme özellikleri sağlamayı düşünün. Tipik senaryolar, "bir CPE sorunu nedeniyle Azure kaynaklarına erişemeyebilirsiniz", "CPE tarafında IPSec parametrelerini göster" vb. arasında yer alır.
 
-## <a name="automation-details"></a><a name ="understand"></a>Otomasyon detayları
+## <a name="automation-details"></a><a name ="understand"></a>Otomasyon ayrıntıları
 
 ###  <a name="access-control"></a><a name="access"></a>Erişim denetimi
 
-Müşteriler, sanal wan için uygun erişim denetimini aygıt ui'sinde ayarlayabilmeli. Bu, bir Azure Hizmet Sorumlusu kullanılarak önerilir. Hizmet temel tabanlı erişim, aygıt denetleyicisine şube bilgilerini yüklemek için uygun kimlik doğrulaması sağlar. Daha fazla bilgi için [bkz.](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) Bu işlevsellik Azure Sanal WAN teklifinin dışında olsa da, azure'da erişimi ayarlamak için atılan ve ilgili ayrıntıların aygıt yönetimi panosuna girildiği tipik adımları aşağıda listeliyoruz.
+Müşteriler, cihaz Kullanıcı arabirimindeki sanal WAN için uygun erişim denetimini ayarlayabilmelidir. Bu, bir Azure hizmet sorumlusu kullanılarak önerilir. Hizmet sorumlusu tabanlı erişim, dal bilgilerini karşıya yüklemek için cihaz denetleyicisine uygun kimlik doğrulaması sağlar. Daha fazla bilgi için bkz. [hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Bu işlev, Azure sanal WAN teklifi dışında olduğundan, Azure 'da ilgili ayrıntıların cihaz yönetimi panosuna nasıl alınacağından önce Azure 'da erişim ayarlamak için geçen tipik adımların aşağıda listelenmektedir
 
-* Şirket içi aygıt denetleyiciniz için bir Azure Etkin Dizin uygulaması oluşturun.
-* Uygulama kimliği ve kimlik doğrulama anahtarı nı alma
+* Şirket içi cihaz denetleyiciniz için bir Azure Active Directory uygulaması oluşturun.
+* Uygulama KIMLIĞINI ve kimlik doğrulama anahtarını al
 * Kiracı kimliğini alma
-* "Katılımcı" rolüne uygulama atama
+* Uygulamayı "katkıda bulunan" rolüne ata
 
-###  <a name="upload-branch-device-information"></a><a name="branch"></a>Şube cihaz bilgilerini yükleme
+###  <a name="upload-branch-device-information"></a><a name="branch"></a>Şube cihaz bilgilerini karşıya yükle
 
-Azure'a şube (şirket içi site) bilgilerini yüklemek için kullanıcı deneyimini tasarlamanız gerekir. Sanal WAN'da site bilgilerini oluşturmak için VPNSitesi için [REST API'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) kullanabilirsiniz. Tüm dal SDWAN/VPN aygıtlarını sağlayabilir veya uygun şekilde aygıt özelleştirmelerini seçebilirsiniz.
+Şube (Şirket içi site) bilgilerini Azure 'a yüklemek için Kullanıcı deneyimini tasarlamanız gerekir. Sanal WAN 'da site bilgilerini oluşturmak için, VPNSite için [REST API 'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsites) kullanabilirsiniz. Tüm dal SDWAN/VPN cihazlarını verebilir veya uygun şekilde cihaz özelleştirmeleri seçebilirsiniz.
 
-### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Cihaz yapılandırma sıyükleme ve bağlantı
+### <a name="device-configuration-download-and-connectivity"></a><a name="device"></a>Cihaz yapılandırması indirme ve bağlantı
 
-Bu adım, Azure yapılandırmasını indirmeyi ve şube aygıtından Azure Virtual WAN'a bağlantı ayarlamayı içerir. Bu adımda, bir sağlayıcı kullanmayan bir müşteri Azure yapılandırmasını el ile karşıdan yükleyip şirket içi SDWAN/VPN aygıtına uygular. Sağlayıcı olarak, bu adımı otomatikleştirmeniz gerekir. Ek bilgi için rest [API'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) indirin. Aygıt denetleyicisi Azure yapılandırmasını indirmek için 'GetVpnConfiguration' REST API'yi arayabilir.
+Bu adım, Azure yapılandırmasını indirmeyi ve şube cihazından Azure sanal WAN 'a bağlantı kurmayı içerir. Bu adımda, sağlayıcı kullanmayan bir müşteri Azure yapılandırmasını el ile indirip şirket içi SDWAN/VPN cihazına uygular. Sağlayıcı olarak, bu adımı otomatikleştirmelisiniz. Ek bilgi için [REST API 'lerini](https://docs.microsoft.com/rest/api/virtualwan/vpnsitesconfiguration/download) indirin ' i görüntüleyin. Cihaz denetleyicisi, Azure yapılandırmasını indirmek için ' GetVpnConfiguration ' REST API çağırabilir.
 
 **Yapılandırma notları**
 
-  * Azure VNet'ler sanal hub'a bağlıysa, Bunlar ConnectedSubnets olarak görünür.
-  * VPN bağlantısı rota tabanlı yapılandırmayı kullanır ve hem IKEv1 hem de IKEv2 protokollerini destekler.
+  * Azure VNET 'ler sanal hub 'a bağlıysa, bu kişiler Connectedalt ağları olarak görünürler.
+  * VPN bağlantısı, rota tabanlı yapılandırmayı kullanır ve hem IKEv1 hem de IKEv2 protokollerini destekler.
 
-## <a name="device-configuration-file"></a><a name="devicefile"></a>Aygıt yapılandırma dosyası
+## <a name="device-configuration-file"></a><a name="devicefile"></a>Cihaz yapılandırma dosyası
 
 Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırken kullanacağınız ayarlar bulunur. Bu dosyayı görüntülediğinizde aşağıdaki bilgilere dikkat edin:
 
 * **vpnSiteConfiguration -** Bu bölümde sanal WAN'a bağlanan bir site olarak ayarlanmış cihazın ayrıntıları yer alır. Dal cihazının adını ve genel IP adresini içerir.
 * **vpnSiteConnections -** Bu bölümde aşağıdakilerle ilgili bilgiler yer alır:
 
-    * Sanal hub(lar) VNet adres **alanı.**<br>Örnek:
+    * Sanal hub 'lar VNet 'in **Adres alanı** .<br>Örnek:
  
         ```
         "AddressSpace":"10.1.0.0/24"
         ```
-    * Hub'a bağlı VNet'lerin **adres alanı.**<br>Örnek:
+    * Hub 'a bağlı sanal ağların **Adres alanı** .<br>Örnek:
 
          ```
         "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
@@ -97,7 +97,7 @@ Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırk
         "Instance0":"104.45.18.186"
         "Instance1":"104.45.13.195"
         ```
-    * BGP, önceden paylaşılan anahtar vb. gibi **Vpngateway bağlantı yapılandırma ayrıntıları** PSK, sizin için otomatik olarak oluşturulan önceden paylaşılan anahtardır. Dilediğiniz zaman genel bakış sayfasındaki bağlantıyı düzenleyerek özel bir PSK ekleyebilirsiniz.
+    * BGP, önceden paylaşılan anahtar vb. gibi **Vpngateway bağlantısı yapılandırma ayrıntıları** . PSK, sizin için otomatik olarak oluşturulan önceden paylaşılmış anahtardır. Dilediğiniz zaman genel bakış sayfasındaki bağlantıyı düzenleyerek özel bir PSK ekleyebilirsiniz.
   
 **Örnek cihaz yapılandırma dosyası**
 
@@ -206,7 +206,7 @@ Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırk
 
 ## <a name="connectivity-details"></a><a name="default"></a>Bağlantı ayrıntıları
 
-Şirket içi SDWAN/VPN aygıtınız veya SD-WAN yapılandırmanız, Azure IPsec/IKE ilkesinde belirttiğiniz aşağıdaki algoritmalar ve parametrelerle eşleşmeli veya içermelidir.
+Şirket içi SDWAN/VPN cihazınız veya SD-WAN yapılandırmanızın Azure IPSec/ıKE ilkesinde belirttiğiniz aşağıdaki algoritmaların ve parametrelerin eşleşmesi veya içermesi gerekir.
 
 * IKE şifreleme algoritması
 * IKE bütünlük algoritması
@@ -219,12 +219,12 @@ Cihaz yapılandırma dosyasında şirket içi VPN cihazınızı yapılandırırk
 
 [!INCLUDE [IPsec Default](../../includes/virtual-wan-ipsec-include.md)]
 
-### <a name="custom-policies-for-ipsec-connectivity"></a><a name="custom"></a>IPsec bağlantısı için özel ilkeler
+### <a name="custom-policies-for-ipsec-connectivity"></a><a name="custom"></a>IPSec bağlantısı için özel ilkeler
 
 [!INCLUDE [IPsec Custom](../../includes/virtual-wan-ipsec-custom-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Virtual WAN hakkında daha fazla bilgi için Azure Sanal WAN ve Azure [Sanal WAN SSS](virtual-wan-faq.md) [hakkında](virtual-wan-about.md) bilgi alabiliyorum.
+Sanal WAN hakkında daha fazla bilgi için bkz. [Azure sanal WAN](virtual-wan-about.md) ve [Azure sanal WAN hakkında SSS](virtual-wan-faq.md).
 
-Herhangi bir ek bilgi için, <azurevirtualwan@microsoft.com>lütfen bir e-posta gönderin. Şirketinizin adını konu satırına “[ ]” içinde yazın.
+Ek bilgi için lütfen adresine <azurevirtualwan@microsoft.com>bir e-posta gönderin. Şirketinizin adını konu satırına “[ ]” içinde yazın.

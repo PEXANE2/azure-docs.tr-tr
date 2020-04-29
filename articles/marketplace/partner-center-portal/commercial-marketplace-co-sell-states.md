@@ -1,6 +1,6 @@
 ---
-title: Ortak satış devlet ve il kodları | Azure Marketi
-description: Teklifinizin Co-sell sayfasında kişi bilgilerini sağlarken bu eyalet ve il kodlarını kullanın.
+title: Ortak satış eyalet ve eyalet kodları | Azure Marketi
+description: Teklifinizin ortak satış sayfasında iletişim bilgilerini sağlarken bu durum ve bölge kodlarını kullanın.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,42 +8,42 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619355"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Ortak satış devlet ve il kodları
+# <a name="co-sell-state-and-province-codes"></a>Ortak satış eyalet ve eyalet kodları
 
-Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commercial-marketplace-co-sell.md#contacts)Eyalet/Eyalet bilgilerini sağlamak için bu kodları kullanın.
+Uygulanabiliyorsa, [teklifinizin ortak satış sayfasında iletişim bilgilerini sağlarken](commercial-marketplace-co-sell.md#contacts)Eyalet/bölge bilgilerini sağlamak için bu kodları kullanın.
 
-## <a name="us-states-and-territories"></a>ABD eyaletleri ve bölgeleri
+## <a name="us-states-and-territories"></a>ABD ve toprakları
 
 |   Eyalet ve bölge adı          |   Kod    |
 |-------------------------------------|-----------|
 | Alabama                             | ABD-AL     |
 | Alaska                              | ABD-AK     |
 | Arizona                             | ABD-AZ     |
-| Arkansas                            | US-AR     |
+| Arkansas                            | ABD-AR     |
 | California                          | ABD-CA     |
 | Colorado                            | ABD-CO     |
 | Connecticut                         | ABD-CT     |
 | Delaware                            | ABD-DE     |
-| Florida                             | ABD FL     |
+| Florida                             | ABD-FL     |
 | Gürcistan                             | ABD-GA     |
 | Hawaii                              | ABD-HI     |
-| Idaho                               | ABD Kimliği     |
-| Illinois                            | ABD-IL     |
-| Indiana                             | ABD-IN     |
+| Idaho                               | ABD-KIMLIĞI     |
+| Illinois                            | ABD-ıL     |
+| Indiana                             | ABD-ıN     |
 | Iowa                                | ABD-IA     |
 | Kansas                              | ABD-KS     |
 | Kentucky                            | ABD-KY     |
 | Louisiana                           | ABD-LA     |
-| Maine                               | US-ME     |
+| Maine                               | ABD-BEN     |
 | Maryland                            | ABD-MD     |
 | Massachusetts                       | ABD-MA     |
-| Michigan                            | ABD-MI     |
+| Michigan                            | ABD-Mı     |
 | Minnesota                           | ABD-MN     |
 | Mississippi                         | ABD-MS     |
 | Missouri                            | ABD-MO     |
@@ -57,10 +57,10 @@ Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commerc
 | North Carolina                      | ABD-NC     |
 | North Dakota                        | ABD-ND     |
 | Ohio                                | ABD-OH     |
-| Oklahoma                            | ABD-OK     |
-| Oregon                              | ABD-VEYA     |
+| Oklahoma                            | ABD-TAMAM     |
+| Oregon                              | ABD VEYA     |
 | Pennsylvania                        | ABD-PA     |
-| Rhode Island                        | US-RI     |
+| Rhode Island                        | ABD-Rı     |
 | South Carolina                      | ABD-SC     |
 | South Dakota                        | ABD-SD     |
 | Tennessee                           | US-TN     |
@@ -74,15 +74,15 @@ Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commerc
 | Wyoming                             | ABD-WY     |
 | District of Columbia                | ABD-DC     |
 | Amerikan Samoası                      | ABD-AS     |
-| Guam                                | US-GU     |
-| Kuzey Mariana Adaları            | ABD Milletvekili     |
-| Porto Riko                         | US-PR     |
-| Amerika Birleşik Devletleri Küçük Dış Adalar | ABD-UM    |
+| Guam                                | ABD-GU     |
+| Kuzey Mariana Adaları            | ABD-MP     |
+| Porto Riko                         | ABD-PR     |
+| Birleşik Devletler küçük harici Adaları | ABD-UM    |
 | Virgin Adaları, ABD                 | ABD-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>Kanada eyaletleri ve bölgeleri
 
-|   İl ve bölge adı       |   Kod    |
+|   Eyalet ve bölge adı       |   Kod    |
 |-------------------------------------|-----------|
 | Alberta                             |  CA-AB    |
 | British Columbia                    |  CA-BC    |
@@ -115,4 +115,4 @@ Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commerc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Partner Center'da ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.
+- [Iş Ortağı Merkezi 'nde ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.

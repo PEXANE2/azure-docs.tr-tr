@@ -1,6 +1,6 @@
 ---
 title: İş yükünüzü çözümleme
-description: Azure Synapse Analytics'teki iş yükünüz için sorgu önceliklendirmelerini çözümleme teknikleri.
+description: Azure SYNAPSE Analytics 'teki iş yükünüz için sorgu önceliklendirmesini çözümleme teknikleri.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631255"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te iş yükünüzü analiz edin
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükünüzü çözümleyin
 
-Azure Synapse Analytics'te Synapse SQL iş yükünüzü analiz etme teknikleri.
+Azure SYNAPSE Analytics 'te SYNAPSE SQL iş yükünüzü çözümleme teknikleri.
 
 ## <a name="resource-classes"></a>Kaynak Sınıfları
 
-Synapse SQL, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için kaynak [sınıfları & iş yükü yönetimine](resource-classes-for-workload-management.md)bakın.  Sorguya atanan kaynak sınıfışu kullanılabilir olandan daha fazla kaynağa ihtiyaç duyarsa sorgular bekleyecektir.
+SYNAPSE SQL, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için bkz. [kaynak sınıfları & iş yükü yönetimi](resource-classes-for-workload-management.md).  Sorguya atanan kaynak sınıfının şu anda kullanılabilir olandan daha fazla kaynak ihtiyacı varsa sorgular bekleyecektir.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Sıralı sorgu algılama ve diğer DMV'ler
+## <a name="queued-query-detection-and-other-dmvs"></a>Sıraya alınan sorgu algılama ve diğer DMVs 'ler
 
-Eşzamanlılık kuyruğunda bekleyen sorguları tanımlamak için `sys.dm_pdw_exec_requests` DMV'yi kullanabilirsiniz. Eşzamanlılık yuvası bekleyen sorguların **askıya alınma**durumu vardır.
+Bir eşzamanlılık kuyruğunda bekleyen `sys.dm_pdw_exec_requests` sorguları tanımlamak için DMV ' y i kullanabilirsiniz. Eşzamanlılık yuvası için bekleyen sorguların durumu **askıya alındı**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-İş yükü yönetimi rolleri `sys.database_principals`ile görüntülenebilir.
+İş yükü yönetimi rolleri ile `sys.database_principals`görüntülenebilir.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -51,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-Aşağıdaki sorgu, her kullanıcının hangi role atandığını gösterir.
+Aşağıdaki sorgu, her bir kullanıcının hangi rolü atandığını gösterir.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -63,14 +63,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-Synapse SQL aşağıdaki bekleme türlerine sahiptir:
+SYNAPSE SQL aşağıdaki bekleme türlerini içerir:
 
-* **LocalQueriesConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesinin dışında yer alan sorgular. DMV sorguları ve sistem `SELECT @@VERSION` işlevleri gibi yerel sorguörnekleridir.
-* **UserConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesi içinde yer alan sorgular. Son kullanıcı tablolarına yönelik sorgular, bu kaynak türünü kullanacak örnekleri temsil eder.
-* **DmsConcurrencyResourceType**: Veri hareketi işlemlerinden kaynaklanan bekler.
-* **BackupConcurrencyResourceType**: Bu bekleme, bir veritabanının yedeklendiğini gösterir. Bu kaynak türü için en büyük değer 1'dir. Aynı anda birden çok yedekleme isteniyorsa, diğerleri sıraya alınır. Genel olarak, 10 dakikalık ardışık anlık görüntüler arasında en az bir süre öneririz.
+* **LocalQueriesConcurrencyResourceType**: eşzamanlılık yuva çerçevesinin dışında oturlan sorgular. DMV sorguları ve gibi sistem işlevleri `SELECT @@VERSION` , yerel sorguların örnekleridir.
+* **UserConcurrencyResourceType**: eşzamanlılık yuva çerçevesinin içinde yer alan sorgular. Son Kullanıcı tablolarına yönelik sorgular, bu kaynak türünü kullanacak örnekleri temsil eder.
+* **DmsConcurrencyResourceType**: bekleyen veri taşıma işlemleri.
+* **BackupConcurrencyResourceType**: Bu bekleme bir veritabanının yedeklenmekte olduğunu gösterir. Bu kaynak türü için en büyük değer 1 ' dir. Aynı anda birden çok yedekleme isteniyorsa, diğerleri kuyruk. Genel olarak, 10 dakikalık ardışık anlık görüntüler arasında en az bir süre öneriyoruz.
 
-DMV, `sys.dm_pdw_waits` bir isteğin beklediği kaynakları görmek için kullanılabilir.
+Bir `sys.dm_pdw_waits` isteğin beklediği kaynakları görmek için DMV kullanılabilir.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-DMV, `sys.dm_pdw_resource_waits` belirli bir sorguiçin bekleme bilgilerini gösterir. Kaynak bekleme süresi, kaynakların sağlanmasını bekleyen zamanı ölçer. Sinyal bekleme süresi, altta yatan SQL sunucuların sorguyu CPU'ya zamanlaması için gereken süredir.
+DMV, `sys.dm_pdw_resource_waits` belirli bir sorgu için bekleme bilgilerini gösterir. Kaynak bekleme süresi, kaynakların sağlanması için bekleyen süreyi ölçer. Sinyal bekleme süresi, temel alınan SQL sunucularının sorguyu CPU 'ya zamanlaması için gereken süredir.
 
 ```sql
 SELECT  [session_id]
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` Ayrıca, dmv kaç eşzamanlılık yuvası verildiğini hesaplamak için de kullanabilirsiniz.
+Ayrıca, `sys.dm_pdw_resource_waits` DMV ' de kaç eşzamanlılık yuvası verildiğini hesaplayabilirsiniz.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` DMV beklemelerin tarihsel eğilim analizi için kullanılabilir.
+DMV, `sys.dm_pdw_wait_stats` bekleyen eğilim analizi için kullanılabilir.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için [Synapse SQL'de güvenli veritabanı](sql-data-warehouse-overview-manage-security.md)na bakın. Daha büyük kaynak sınıflarının kümelenmiş sütun deposu dizini kalitesini nasıl iyileştirebileceği hakkında daha fazla bilgi [için](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)bkz.
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL 'de veritabanını güvenli hale getirme](sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [segment kalitesini artırmak için dizinleri yeniden oluşturma](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

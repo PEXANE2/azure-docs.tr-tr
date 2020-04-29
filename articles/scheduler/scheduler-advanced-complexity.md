@@ -1,6 +1,6 @@
 ---
-title: Gelişmiş iş zamanlamaları ve yinelemeler oluşturun
-description: Azure Zamanlayıcısı'ndaki işler için gelişmiş zamanlamalar ve yinelemeler oluşturmayı öğrenin
+title: Gelişmiş iş zamanlamaları ve tekrarları oluşturun
+description: Azure Scheduler 'da işler için gelişmiş zamanlamalar ve Yinelenmeler oluşturmayı öğrenin
 services: scheduler
 ms.service: scheduler
 author: derek1ee
@@ -10,72 +10,72 @@ ms.suite: infrastructure-services
 ms.topic: article
 ms.date: 11/14/2018
 ms.openlocfilehash: b85932bf0d4fd080afadef2bc28d6a218b2d627a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898595"
 ---
-# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Zamanlayıcısı'ndaki işler için gelişmiş zamanlamalar ve yinelemeler oluşturun
+# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler 'da işler için gelişmiş zamanlamalar ve Yinelenmeler oluşturma
 
 > [!IMPORTANT]
-> [Azure Logic Apps,](../logic-apps/logic-apps-overview.md) [kullanımdan kaldırılan](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Zamanlayıcısı'nın yerini alıyor. Zamanlayıcı'da ayarladığınız işlerle çalışmaya devam etmek için lütfen mümkün olan en kısa sürede [Azure Logic Apps'a geçirin.](../scheduler/migrate-from-scheduler-to-logic-apps.md) 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) , [devre dışı bırakılmakta](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)olan Azure Scheduler 'ı değiştiriyor. Zamanlayıcı 'da ayarladığınız işlerle çalışmaya devam etmek için lütfen en kısa sürede [Azure Logic Apps geçirin](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 >
-> Zamanlayıcı artık Azure portalında kullanılamıyor, ancak işlerinizi ve iş koleksiyonlarınızı yönetebilmeniz için [ŞU anda REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlets'i](scheduler-powershell-reference.md) kullanılabilir durumda kalır.
+> Zamanlayıcı artık Azure portal kullanılamıyor, ancak iş ve iş koleksiyonlarınızı yönetebilmeniz için [REST API](/rest/api/scheduler) ve [Azure Scheduler PowerShell cmdlet 'leri](scheduler-powershell-reference.md) Şu anda kullanılabilir durumda kalır.
 
-Azure [Zamanlayıcısı](../scheduler/scheduler-intro.md) işi içinde zamanlama, Zamanlayıcı hizmetinin işi ne zaman ve nasıl çalıştırdığını belirleyen temeldir. Zamanlayıcı ile bir iş için birden çok tek seferlik ve yinelenen zamanlamalar ayarlayabilirsiniz. Tek seferlik zamanlamalar belirli bir zamanda yalnızca bir kez çalışır ve temelde yalnızca bir kez çalışan yinelenen zamanlamalardır. Yinelenen zamanlamalar belirli bir sıklıkta çalışır. Bu esneklikle, örneğin çeşitli iş senaryoları için Zamanlayıcı'yı kullanabilirsiniz:
+Bir [Azure Scheduler](../scheduler/scheduler-intro.md) işi içinde zamanlama, Zamanlayıcı hizmetinin işi ne zaman ve nasıl çalıştıracağını belirleyen çekirdekdir. Zamanlayıcı ile bir iş için birden fazla tek seferlik ve yinelenen zamanlamalar ayarlayabilirsiniz. Tek seferlik zamanlamalar, belirli bir zamanda yalnızca bir kez çalışır ve temelde yalnızca bir kez çalışan bir yinelenen zamanlamalardır. Yinelenen zamanlamalar belirtilen sıklıkta çalışır. Bu esneklikle Zamanlayıcı 'yı çeşitli iş senaryoları için kullanabilirsiniz, örneğin:
 
-* **Verileri düzenli olarak temizleyin**: Üç aydan eski tüm tweetleri silen günlük bir iş oluşturun.
+* **Verileri düzenli olarak temizleyin**: üç aydan daha eski olan tüm fazla yer alan bir günlük iş oluşturun.
 
-* **Arşiv verileri**: Fatura geçmişini yedekleme hizmetine iten aylık bir iş oluşturun.
+* **Arşiv verileri**: bir yedekleme hizmetine fatura geçmişi veren bir aylık iş oluşturun.
 
-* **Dış veri isteği**: Her 15 dakikada bir çalışan ve NOAA'dan yeni bir hava durumu raporu çeken bir iş oluşturun.
+* **Dış veri isteme**: 15 dakikada bir çalışan ve NOAA 'den yeni bir hava durumu raporu çeken bir iş oluşturun.
 
-* **İşlem görüntüleri**: Yoğun olmayan saatlerde çalışan ve gün içinde yüklenen görüntüleri sıkıştırmak için bulut bilgi işlem kullanan bir hafta içi iş oluşturun.
+* **İşlem görüntüleri**: yoğun olmayan saatlerde çalışan bir iş günü işi oluşturun ve gün içinde karşıya yüklenen görüntüleri sıkıştırmak için bulut bilgi işlem kullanır.
 
-Bu makalede, Scheduler ve [Azure Scheduler REST API](/rest/api/scheduler)kullanarak oluşturabileceğiniz örnek işler açıklanır ve her zamanlama için JavaScript Nesne Gösterimi (JSON) tanımını içerir. 
+Bu makale Zamanlayıcı 'Yı ve [Azure zamanlayıcı REST API](/rest/api/scheduler)kullanarak oluşturabileceğiniz örnek işleri açıklar ve her bir zamanlama için JAVASCRIPT nesne GÖSTERIMI (JSON) tanımını içerir. 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Bu örnekler, Azure Zamanlayıcısı'nın desteklediği senaryo aralığını ve örneğin çeşitli davranış desenleri için zamanlamaların nasıl oluşturulacak olduğunu gösterir:
+Bu örnekler, Azure Scheduler 'ın desteklediği senaryoların aralığını ve çeşitli davranış desenleri için zamanlama oluşturmayı gösterir, örneğin:
 
 * Belirli bir tarih ve saatte bir kez çalıştırın.
-* Belirli sayıda çalıştırın ve yinele.
-* Hemen çalıştırın ve yinele.
-* Belirli bir andan başlayarak her *dakika,* saat, gün, hafta veya ay çalıştırın ve yineleyin.
-* Haftalık veya aylık olarak çalıştırın ve yinelenin, ancak yalnızca haftanın belirli günlerinde veya ayın belirli günlerinde.
-* Belirli bir süre için birden fazla kez çalıştırın ve yinele. Örneğin, her ay son Cuma ve Pazartesi günü veya her gün 05:15'te ve 17:15'te.
+* ' İ çalıştırın ve belirli sayıda kez tekrar edin.
+* Hemen çalıştırın ve tekrar edin.
+* Belirli bir zamandan başlayarak her *n* dakikada bir, saat, gün, hafta veya ay çalıştırın.
+* Yalnızca haftanın belirli günlerinde veya ayın belirli günlerinde, haftalık veya aylık olarak çalıştırın.
+* Belirli bir dönemde çalıştırın ve birden çok kez tekrarlarsınız. Örneğin, her ay son Cuma ve Pazartesi günü ya da 5:15: Saat ve 5:15 PM 'de günlük olarak.
 
-Bu makalede daha sonra bu senaryoları daha ayrıntılı olarak açıklanır.
+Bu makalede daha sonra bu senaryolar daha ayrıntılı olarak açıklanmaktadır.
 
 <a name="create-scedule"></a>
 
-## <a name="create-schedule-with-rest-api"></a>REST API ile zamanlama oluşturma
+## <a name="create-schedule-with-rest-api"></a>REST API zamanlama oluşturma
 
-[Azure Zamanlayıcısı REST API](/rest/api/scheduler)ile temel bir zamanlama oluşturmak için aşağıdaki adımları izleyin:
+[Azure Scheduler REST API](/rest/api/scheduler)temel bir zamanlama oluşturmak için aşağıdaki adımları izleyin:
 
-1. Kayıt işlemini - Kaynak Yöneticisi [REST API'yi](https://docs.microsoft.com/rest/api/resources/providers)kullanarak Azure aboneliğinizi bir kaynak sağlayıcısına kaydedin. Azure Zamanlayıcısı hizmetinin sağlayıcı adı **Microsoft.Scheduler'dır.** 
+1. [Kaynak Yöneticisi REST API Kaydet işlemini](https://docs.microsoft.com/rest/api/resources/providers)kullanarak Azure aboneliğinizi bir kaynak sağlayıcısına kaydedin. Azure Zamanlayıcı hizmeti için sağlayıcı adı **Microsoft. Scheduler**' dır. 
 
-1. Zamanlayıcı REST API'ndeki [iş koleksiyonları için Oluştur veya Güncelleştir işlemini](https://docs.microsoft.com/rest/api/scheduler/jobcollections) kullanarak bir iş koleksiyonu oluşturun. 
+1. Zamanlayıcı REST API [iş koleksiyonları Için oluşturma veya güncelleştirme işlemini](https://docs.microsoft.com/rest/api/scheduler/jobcollections) kullanarak bir iş koleksiyonu oluşturun. 
 
-1. İşler için Oluştur [veya Güncelleştir işlemini](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)kullanarak bir iş oluşturun. 
+1. [İşler Için oluşturma veya güncelleştirme işlemini](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate)kullanarak bir iş oluşturun. 
 
-## <a name="job-schema-elements"></a>İş şeması elemanları
+## <a name="job-schema-elements"></a>İş şeması öğeleri
 
-Bu tablo, yinelemeler ve işler için zamanlamalar ayarlarken kullanabileceğiniz başlıca JSON öğeleri için üst düzey bir genel bakış sağlar. 
+Bu tablo, işler için Yinelenmeler ve zamanlamalar ayarlarken kullanabileceğiniz büyük JSON öğeleri için üst düzey bir genel bakış sağlar. 
 
 | Öğe | Gerekli | Açıklama | 
 |---------|----------|-------------|
-| **startTime** | Hayır | [ISO 8601 biçiminde,](https://en.wikipedia.org/wiki/ISO_8601) işin temel bir zamanlamada ilk ne zaman başlayacağını belirten datetime dize değeri. <p>Karmaşık zamanlamalar için, iş **başlangıç Saatinden**daha erken başlar. | 
-| **yineleme** | Hayır | İş ne zaman çalışır için yineleme kuralları. **Yineleme nesnesi** bu öğeleri destekler: **sıklık,** **aralık,** **zamanlama,** **sayı,** ve **bitiş Zamanı**. <p>**Yineleme** öğesini kullanıyorsanız, diğer **yineleme** öğeleri isteğe bağlı **iken, sıklık** öğesini de kullanmanız gerekir. |
-| **Frekans** | Evet, **yineleme** kullandığınızda | Oluşumlar arasındaki zaman birimi ve bu değerleri destekler: "Dakika", "Saat", "Gün", "Hafta", "Ay" ve "Yıl" | 
-| **Aralığı** | Hayır | **Frekansa**göre olaylar arasındaki zaman birimlerinin sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **aralık** 10 ve **sıklık** "Hafta" ise, iş her 10 haftada bir yinelenir. <p>Burada her frekans için aralıkları en çok sayıda: <p>- 18 ay <br>- 78 hafta <br>- 548 gün <br>- Saat ve dakika için aralık 1 <= <*aralığı*> <= 1000'dir. | 
-| **Zamanlama** | Hayır | Belirtilen dakika işaretlerine, saat işaretlerine, haftanın günlerine ve ayın günlerine göre yinelemedeki değişiklikleri tanımlar | 
-| **count** | Hayır | Bitirmeden önce işin kaç kez çalıştığını belirten pozitif bir tamsayı. <p>Örneğin, günlük bir iş **sayısı** 7 olarak ayarlanmışsa ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışır. Başlangıç tarihi zaten geçtiyse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>**Bitiş Saati** veya **sayı**olmadan, iş sonsuz çalışır. Aynı işte hem **sayıyı** hem de **bitiş saatini** kullanamazsınız, ancak ilk bitiren kural yerine getirilmiştir. | 
-| **endTime** | Hayır | [ISO 8601 biçiminde,](https://en.wikipedia.org/wiki/ISO_8601) işin ne zaman çalışmayı durdurduğunu belirten bir Tarih veya DateTime dize değeri. Geçmişte olan son **Zaman** için bir değer ayarlayabilirsiniz. <p>**Bitiş Saati** veya **sayı**olmadan, iş sonsuz çalışır. Aynı işte hem **sayıyı** hem de **bitiş saatini** kullanamazsınız, ancak ilk bitiren kural yerine getirilmiştir. |
+| **startTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin ilk olarak temel bir zamanlamaya göre ne zaman başlayacağını belirten bir tarih saat dizesi değeri. <p>Karmaşık zamanlamalar için iş **StartTime**değerinden önce başlamaz. | 
+| **yinelemeyi** | Hayır | İşin çalıştığı zaman için yineleme kuralları. **Yinelenme** nesnesi şu öğeleri destekler: **Sıklık**, **Interval**, **zamanlama**, **sayı**ve **bitişsaati**. <p>**Yineleme** öğesini kullanırsanız **Sıklık** öğesini de kullanmanız gerekir, diğer **yineleme** öğeleri isteğe bağlıdır. |
+| **lemiyor** | Evet, **yinelenme** kullandığınızda | Oluşum arasındaki zaman birimi ve bu değerleri destekler: "Minute", "Hour", "Day", "Week", "month" ve "Year" | 
+| **aralığında** | Hayır | **Sıklık**temelinde oluşum arasındaki zaman birimi sayısını belirleyen pozitif bir tamsayı. <p>Örneğin, **Aralık** 10, **Sıklık** ise "Week" ise, iş her 10 haftada bir yinelenir. <p>Her bir sıklık için en fazla Aralık sayısı aşağıda verilmiştir: <p>-18 ay <br>-78 hafta <br>-548 gün <br>-Saat ve dakika için Aralık 1 <= <*aralığı*> <= 1000 olur. | 
+| **çizelgesini** | Hayır | Belirtilen dakika işaretleri, saat işaretleri, haftanın günleri ve ayın günleri temelinde tekrardaki değişiklikleri tanımlar | 
+| **biriktirme** | Hayır | İşin bitmeden önce kaç kez çalışacağını belirten pozitif bir tamsayı. <p>Örneğin, günlük iş **sayısı** 7 olarak ayarlandığında ve başlangıç tarihi Pazartesi ise, iş Pazar günü çalışmayı sonlandırır. Başlangıç tarihi zaten geçmişse, ilk çalıştırma oluşturma zamanından hesaplanır. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. | 
+| **endTime** | Hayır | [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601) , işin çalışmayı ne zaman durdurduğunu belirten bir tarih veya tarih saat dizesi değeri. Geçmişte olan **bitişsaati** için bir değer ayarlayabilirsiniz. <p>İş, **bitişsaati** veya **sayı**olmadan sonsuz çalışır. Aynı işte hem **Count** hem de **bitişsaati** kullanamazsınız, ancak önce sona erme kuralı kabul edilir. |
 |||| 
 
-Örneğin, bu JSON şeması bir iş için temel bir zamanlama ve yineleme açıklar: 
+Örneğin, bu JSON şeması bir iş için temel bir zamanlamayı ve yinelemeyi açıklar: 
 
 ```json
 "properties": {
@@ -93,28 +93,28 @@ Bu tablo, yinelemeler ve işler için zamanlamalar ayarlarken kullanabileceğini
 },
 ``` 
 
-*Tarihler ve DateTime değerleri*
+*Tarihler ve tarih saat değerleri*
 
-* Zamanlayıcı işlerinde tarihler yalnızca tarihi içerir ve [ISO 8601 belirtimini](https://en.wikipedia.org/wiki/ISO_8601)izler.
+* Zamanlayıcı işlerinde tarihler yalnızca tarihi içerir ve [ıso 8601 belirtimini](https://en.wikipedia.org/wiki/ISO_8601)izler.
 
-* Zamanlayıcı işlerinde tarih-saatler hem tarih hem de saat içerir, [ISO 8601 belirtimini](https://en.wikipedia.org/wiki/ISO_8601)izler ve UTC ofset belirtilmediğinde UTC olarak kabul edilir. 
+* Zamanlayıcı işlerinde tarih ve saat her ikisi de tarih ve saati içerir, [ıso 8601 belirtimini](https://en.wikipedia.org/wiki/ISO_8601)IZLEYIN ve UTC boşluğu belirtilmediğinde UTC olarak kabul edilir. 
 
-Daha fazla bilgi için [Kavramlar, terminoloji ve varlıklara](../scheduler/scheduler-concepts-terms.md)bakın.
+Daha fazla bilgi için bkz. [Kavramlar, terminoloji ve varlıklar](../scheduler/scheduler-concepts-terms.md).
 
 <a name="start-time"></a>
 
-## <a name="details-starttime"></a>Ayrıntılar: startTime
+## <a name="details-starttime"></a>Ayrıntılar: başlangıçsaati
 
-Bu **tabloda, başlangıç Zamanı'nın** bir işin çalışma biçimini nasıl denetlenen açıklanır:
+Bu tabloda, **StartTime** 'in bir işin çalışma biçimini nasıl denetlediği açıklanmaktadır:
 
-| startTime | Yineleme yok | Yineleme, zamanlama yok | Zamanlama ile yinelenme |
+| startTime | Yinelenme yok | Yinelenme, zamanlama yok | Zamanlama ile yinelenme |
 |-----------|---------------|-------------------------|--------------------------|
-| **Başlangıç saati yok** | Hemen bir kez koş. | Hemen bir kez koş. Son yürütme saatinden hesaplanan daha sonra yürütmeleri çalıştırın. | Hemen bir kez koş. Yineleme zamanlamasına göre daha sonraki yürütmeleri çalıştırın. | 
-| **Geçmişte başlangıç zamanı** | Hemen bir kez koş. | Başlangıç saatinden sonra gelecekteki ilk çalışma süresini hesaplayın ve o anda çalıştırın. <p>Son yürütme saatinden hesaplanan daha sonra yürütmeleri çalıştırın. <p>Bu tablodan sonraki örneğe bakın. | Belirtilen başlangıç saatinden *daha erken* işe başlayın. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir. <p>Yineleme zamanlamasına göre daha sonraki yürütmeleri çalıştırın. | 
-| **Gelecekte başlangıç saati veya geçerli saat** | Belirtilen başlangıç saatinde bir kez çalıştırın. | Belirtilen başlangıç saatinde bir kez çalıştırın. <p>Son yürütme saatinden hesaplanan daha sonra yürütmeleri çalıştırın. | Belirtilen başlangıç saatinden *daha erken* işe başlayın. İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir. <p>Yineleme zamanlamasına göre daha sonraki yürütmeleri çalıştırın. |
+| **Başlangıç saati yok** | Hemen çalıştırın. | Hemen çalıştırın. Son yürütme zamanından hesaplanan sonraki yürütmeleri çalıştırın. | Hemen çalıştırın. Daha sonraki yürütmeleri bir yinelenme zamanlaması temelinde çalıştırın. | 
+| **Geçmişteki başlangıç zamanı** | Hemen çalıştırın. | Başlangıç zamanından sonraki ilk gelecek çalışma süresini hesaplayın ve o zaman çalıştırın. <p>Son yürütme zamanından hesaplanan sonraki yürütmeleri çalıştırın. <p>Bu tablodan sonraki örneğe bakın. | Başlangıç işi belirtilen başlangıç zamanından *önce değil* . İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir. <p>Daha sonraki yürütmeleri bir yinelenme zamanlaması temelinde çalıştırın. | 
+| **Gelecekte veya geçerli zamanda başlangıç zamanı** | Belirtilen başlangıç zamanında bir kez çalıştırın. | Belirtilen başlangıç zamanında bir kez çalıştırın. <p>Son yürütme zamanından hesaplanan sonraki yürütmeleri çalıştırın. | Başlangıç işi belirtilen başlangıç zamanından *önce değil* . İlk yinelenme, başlangıç zamanından hesaplanan zamanlamaya göre gerçekleştirilir. <p>Daha sonraki yürütmeleri bir yinelenme zamanlaması temelinde çalıştırın. |
 ||||| 
 
-Bu koşullarla bu örneği varsayalım: geçmişte yinelenen bir başlangıç zamanı, ancak zamanlama yok.
+Şu koşullara sahip bir örnek olduğunu varsayalım: bir yinelenme ile geçmişteki bir başlangıç saati, ancak zamanlama yok.
 
 ```json
 "properties": {
@@ -126,85 +126,85 @@ Bu koşullarla bu örneği varsayalım: geçmişte yinelenen bir başlangıç za
 }
 ```
 
-* Şu anki tarih ve saat 08 Nisan 2015 saat 13:00'tir.
+* Geçerli tarih ve saat, 08 Nisan 2015, 1:00 PM.
 
-* Başlangıç tarihi ve saati 07 Nisan 2015 saat 14:00'tir ve bu tarih ve saatten öncedir.
+* Başlangıç tarihi ve saati, 07 Nisan 2015, geçerli tarih ve saatten önce olan 2:00 PM.
 
-* Nüks her iki günde bir.
+* Yinelenme her iki günde bir olur.
 
-1. Bu şartlar altında ilk infaz 09 Nisan 2015 tarihinde saat 14:00'te gerçekleştirilecektir. 
+1. Bu koşullar altında, ilk yürütme 09 Nisan 2015, 2:00 PM 'de yer alır. 
 
-   Zamanlayıcı yürütme oluşumlarını başlangıç saatini temel alınatır, geçmişteki tüm örnekleri atar ve gelecekte bir sonraki örneği kullanır. 
-   Bu durumda, **başlangıç Saati** 07 Nisan 2015 tarihinde saat 14:00'te, bu nedenle bir sonraki örnek o tarihten iki gün sonra, 09 Nisan 2015 saat 14:00'te.
+   Zamanlayıcı, başlangıç zamanına göre yürütme tekrarlamalarını hesaplar, geçmişteki tüm örnekleri atar ve gelecekte bir sonraki örneği kullanır. 
+   Bu durumda, **StartTime** , 07 Nisan 2015 ' de 2:00 pm tarihinde, sonraki örnek bu zamandan Itibaren 23 Nisan 2015, 2:00.
 
-   İlk yürütme **startTime** 2015-04-05 14:00 veya 2015-04-01 14:00 olup olmadığını aynıdır. İlk yürütmeden sonra, daha sonraki yürütmeler zamanlamaya göre hesaplanır. 
+   İlk yürütme, **StartTime** 'in 2015-04-05 14:00 mi yoksa 2015-04-01 14:00 mi olduğu ile aynıdır. İlk yürütmeden sonra, sonraki yürütmeler zamanlamaya göre hesaplanır. 
    
-1. Yürütmeler daha sonra bu sırada izleyin: 
+1. Yürütmeler daha sonra şu sırada izler: 
    
-   1. 2015-04-11 saat 14:00
-   1. 2015-04-13 saat 14:00 
-   1. 2015-04-15, 14:00
-   1. Ve böylece ...
+   1. 2015-04-11:2:00 PM
+   1. 2015-04-13:2:00 PM 
+   1. 2015-04-15:2:00 PM
+   1. Vb...
 
-1. Son olarak, bir işin bir zamanlaması olduğunda ancak belirli bir saat ve dakika yoksa, bu değerler sırasıyla ilk yürütmedeki saat ve dakikaiçin varsayılan dır.
+1. Son olarak, bir işin zamanlaması olduğunda ancak belirtilen saat ve dakika olmadığında, bu değerler varsayılan olarak ilk yürütmede saat ve dakika olarak belirlenir.
 
 <a name="schedule"></a>
 
 ## <a name="details-schedule"></a>Ayrıntılar: zamanlama
 
-İş yürütme sayısını *sınırlamak* için **zamanlamayı** kullanabilirsiniz. Örneğin, "ay" **sıklığı** olan bir iş yalnızca 31 gün çalışan bir zamanlama varsa, iş yalnızca 31 gün olan aylarda çalışır.
+İş yürütmelerinin sayısını *sınırlandırmak* için **Schedule** ' i kullanabilirsiniz. Örneğin, **sıklığı** "month" olan bir işin yalnızca 31. gününde çalışan bir zamanlaması varsa, iş yalnızca 31 günü olan aylarda çalışır.
 
-**Zamanlamayı,** iş yürütme sayısını *artırmak* için de kullanabilirsiniz. Örneğin, "ay" **sıklığı** olan bir iş, ay gün 1 ve 2'de çalışan bir zamanlamaya sahipse, iş ayda yalnızca bir kez değil, ayın ilk ve ikinci günlerinde çalışır.
+**Zamanlamayı** ayrıca iş yürütmelerinin sayısını *genişletmek* için de kullanabilirsiniz. Örneğin, **sıklığı** "month" olan bir iş, 1 ve 2. gün içinde çalışan bir zamanlamaya sahipse, iş ayda yalnızca bir kez değil ayın birinci ve ikinci günlerinde çalışır.
 
-Birden fazla zamanlama öğesi belirtirseniz, değerlendirme sırası en büyükten en küçme doğru: hafta sayısı, ay günü, hafta içi, saat ve dakika.
+Birden fazla zamanlama öğesi belirtirseniz, değerlendirme sırası en büyükten en küçüğe: hafta numarası, ay günü, gün, saat ve dakika olur.
 
 Aşağıdaki tabloda schedule öğeleri ayrıntılı bir şekilde açıklanmıştır:
 
 | JSON adı | Açıklama | Geçerli değerler |
 |:--- |:--- |:--- |
-| **minutes** |İşin çalıştığı saatin dakikaları. |Bir dizi sonal. |
-| **Saat** |İşin çalıştığı günün saatleri. |Bir dizi sonal. |
-| **weekDays** |Haftanın günleri iş çalışır. Yalnızca haftalık frekansla belirtilebilir. |Aşağıdaki değerlerden herhangi biri (maksimum dizi boyutu 7'dir):<br />- "Pazartesi"<br />- "Salı"<br />- "Çarşamba"<br />- "Perşembe"<br />- "Cuma"<br />- "Cumartesi"<br />- "Pazar"<br /><br />Davaya duyarlı değil. |
-| **monthlyOccurrences** |Ayın hangi günlerini çalışır belirler. Yalnızca aylık bir sıklıkta belirtilebilir. |**Aylık Oluşumlar** nesneleri dizisi:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **gün,** işin çalıştığı haftanın günüdür. Örneğin, *{Pazar}* ayın her Pazar günüdür. Gereklidir.<br /><br />**meydana** gelmesi ay boyunca günün meydana gelmesidir. Örneğin, *{Pazar, -1}* ayın son Pazar günüdür. İsteğe bağlı. |
-| **monthDays** |Ayın günü iş çalışır. Yalnızca aylık bir sıklıkta belirtilebilir. |Aşağıdaki değerlerden oluşan bir dizi:<br />- <= -1 ve >= -31 koşullarına uyan herhangi bir değer<br />- >= 1 ve <= 31 koşullarına uyan herhangi bir değer|
+| **dakika** |İşin çalıştırıldığı saatin dakikası. |Tamsayılar dizisi. |
+| **saatlerinin** |İşin çalıştırıldığı günün saati. |Tamsayılar dizisi. |
+| **weekDays** |İşin çalıştırıldığı haftanın günleri. Yalnızca haftalık sıklık ile belirtilebilir. |Aşağıdaki değerlerden herhangi birinin dizisi (en fazla dizi boyutu 7 ' dir):<br />-"Pazartesi"<br />-"Salı"<br />-"Çarşamba"<br />-"Perşembe"<br />-"Cuma"<br />-"Cumartesi"<br />-"Pazar"<br /><br />Büyük/küçük harfe duyarlı değildir. |
+| **monthlyOccurrences** |İşin ayın hangi günlerinde çalışacağını belirler. Yalnızca aylık bir sıklık ile belirtilebilir. |**Monthlyoccurrobjects** dizisi:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **gün** , işin çalıştığı haftanın günü. Örneğin, *{Pazar}* ayın her Pazar günü olur. Gereklidir.<br /><br />**oluşum** , ay içinde günün oluşma sayısıdır. Örneğin, *{Pazar,-1}* ayın son Pazar günüdür. İsteğe bağlı. |
+| **monthDays** |İşin çalıştırıldığı ayın günü. Yalnızca aylık bir sıklık ile belirtilebilir. |Aşağıdaki değerlerden oluşan bir dizi:<br />- <= -1 ve >= -31 koşullarına uyan herhangi bir değer<br />- >= 1 ve <= 31 koşullarına uyan herhangi bir değer|
 
-## <a name="examples-recurrence-schedules"></a>Örnekler: Yineleme çizelgeleri
+## <a name="examples-recurrence-schedules"></a>Örnekler: yinelenme zamanlamaları
 
-Aşağıdaki örneklerde çeşitli yineleme zamanlamaları gösterilmektedir. Örnekler zamanlama nesnesi ve alt öğeleri üzerinde duruluyor.
+Aşağıdaki örneklerde çeşitli yinelenme zamanlamaları gösterilmektedir. Örnekler zamanlama nesnesine ve alt öğelerine odaklanmaktadır.
 
-Bu **zamanlamalar, aralığın** 1 olarak ayarlanır\. Örnekler de **zamanlamadaki**değerler için doğru **frekans** değerlerini varsayar. Örneğin, "gün" **frekansını** kullanamazsınız ve **zamanlamada** **ay günleri** değişikliği niz vardır. Bu kısıtlamaları makalede daha önce açıklıyoruz.
+Bu zamanlamalar, **aralığın** 1 olarak ayarlandığını varsayar\. Örnekler Ayrıca **zamanlamaya**göre değerler için doğru **Sıklık** değerlerini de varsayar. Örneğin, "gün" **sıklığını** kullanamazsınız ve **zamanlamaya**göre bir **monthdays** değişikliği yapamazsınız. Bu kısıtlamaları makalenin önceki kısımlarında anlatmaktadır.
 
 | Örnek | Açıklama |
 |:--- |:--- |
-| `{"hours":[5]}` |Her gün sabah 5'te koş.<br /><br />Zamanlayıcı, işin çalıştığı tüm zamanların bir listesini oluşturmak için "dakika"daki her değerle "saat" deki her değeri tek tek eşleşir. |
+| `{"hours":[5]}` |Her gün 5 saat sonra çalıştırın.<br /><br />Zamanlayıcı, her bir değeri "dakikalar" içinde her bir değerle eşler, her bir değer, her bir değeri "dakika", her biri ile, işin çalıştığı tüm zamanların bir listesini oluşturur. |
 | `{"minutes":[15], "hours":[5]}` |Her gün 05.15'te çalıştır. |
 | `{"minutes":[15], "hours":[5,17]}` |Her gün 05.15 ve 17.15’te çalıştır. |
 | `{"minutes":[15,45], "hours":[5,17]}` |Her gün 05.15, 05.45, 17.15 ve 17.45’te çalıştır. |
 | `{"minutes":[0,15,30,45]}` |15 dakikada bir çalıştır. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Saatte bir çalıştır.<br /><br />Bu iş her saat başı çalışıyor. Dakika, belirtilirse **startTime**değeri tarafından denetlenir. Başlangıç **Zamanı** değeri belirtilmemişse, dakika oluşturma süresi tarafından denetlenir. Örneğin, başlangıç saati veya oluşturma zamanı (hangisi geçerliyse) 12:25 ise, iş 00:25, 01:25, 02:25, ..., 23:25'te çalışır.<br /><br />Zamanlama, "saat" **sıklığı,** 1 **aralığı** ve **zamanlama** değeri olmayan bir iş ile aynıdır. Fark, diğer işleri oluşturmak için farklı **sıklık** ve **aralık** değerleri ile bu zamanlama kullanabilirsiniz. Örneğin, **sıklık** "ay" ise, zamanlama her gün yerine ayda yalnızca bir kez çalışır **(sıklık** "gün" ise). |
-| `{minutes:[0]}` |Her saat başı çalıştır.<br /><br />Bu iş de her saat çalışır, ama saat (12, 01,02, 02:00 ve benzeri). Bu zamanlama, "saat" **sıklığı,** sıfır dakika **başlangıç Zamanı** değeri ve zamanlama **yok**, frekans "gün" ise bir iş ile aynıdır. Ancak, **sıklık** "hafta" veya "ay" ise, zamanlama sırasıyla haftada yalnızca bir gün veya ayda bir gün yürütür. |
-| `{"minutes":[15]}` |Saat başı 15 dakika koş.<br /><br />00:15, 01:15, 02:15, 02:15 ve benzeri her saat çalışır. 23:15'te bitiyor. |
-| `{"hours":[17], "weekDays":["saturday"]}` |Her hafta Cumartesi günü saat 17:00'de koşun. |
-| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri saat 17:00'de çalıştırın. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Saatte bir çalıştır.<br /><br />Bu iş her saat çalışır. Belirtilen dakika, belirtilmişse **StartTime**değeri ile denetlenir. **StartTime** değeri belirtilmemişse, dakika oluşturma zamanı tarafından denetlenir. Örneğin, başlangıç saati veya oluşturma saati (hangisi geçerlidir) 12:25 PM ise, iş 00:25, 01:25, 02:25,..., 23:25 üzerinde çalışır.<br /><br />Zamanlama, **sıklığı** "saat", **Aralık** 1 olan ve **zamanlama** değeri olmayan bir işle aynıdır. Fark, bu zamanlamayı başka işler oluşturmak için farklı **Sıklık** ve **Aralık** değerleriyle birlikte kullanmanıza olanak sağlar. Örneğin **Sıklık** "month" ise, zamanlama her gün yerine yalnızca ayda bir kez çalışır ( **Sıklık** "gün" ise). |
+| `{minutes:[0]}` |Her saat başı çalıştır.<br /><br />Bu iş aynı zamanda saatte bir çalışır, ancak saat üzerinde (12 har, 1 har, 2, vb.). Bu zamanlama **, sıklığı "** saat", **StartTime** değeri sıfır dakika ve sıklığı "gün" ise **zamanlama**olmadan aynıdır. Ancak **Sıklık** "Week" veya "month" ise, zamanlama sırasıyla yalnızca bir gün veya ayda bir gün yürütülür. |
+| `{"minutes":[15]}` |Saatte bir saat sonra 15 dakikada bir çalıştırın.<br /><br />Her saat, 00:15, 1:15, 2:15, vb. ile başlayarak çalışır. 11:15 PM tarihinde sona erer. |
+| `{"hours":[17], "weekDays":["saturday"]}` |Her hafta Cumartesi tarihinde 5 saat sonra çalıştırın. |
+| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri üzerinden 5 saat içinde çalıştırın. |
 | `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri saat 17.15 ve 17.45'te çalıştır. |
-| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri 05:00 ve 17:00'de çalıştırın. |
-| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri 05:15, 05:45, 17:15 ve Pazartesi, Çarşamba ve Cuma günleri çalıştırın. |
+| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri saat 5 ve 5 ' te çalıştırın. |
+| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Her hafta Pazartesi, Çarşamba ve Cuma günleri saat 5:15, 5:45, 5:15 ve 5:45:00 ' da çalıştırın. |
 | `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Haftanın her günü 15 dakikada bir çalıştır. |
-| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Hafta içi her 15 dakikada bir, 09:00-16:45 saatleri arasında çalıştırın. |
-| `{"weekDays":["sunday"]}` |Pazar günleri başlangıç saatinde koş. |
-| `{"weekDays":["tuesday", "thursday"]}` |Başlangıç saatinde salı ve perşembe günleri koşun. |
-| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Her ayın 28'inde sabah 6'da **çalıştırın** ("ay" sıklığı varsayarak). |
-| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |Ayın son günü sabah 6'da koş.<br /><br />Bir işi ayın son gününde çalıştırmak istiyorsanız, 28, 29, 30 veya 31 gün yerine -1 kullanın. |
-| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Her ayın ilk ve son gününde sabah 6'da çalıştırın. |
-| `{monthDays":[1,-1]}` |Her ayın ilk ve son gününde başlangıç saatinde çalıştırın. |
-| `{monthDays":[1,14]}` |Her ayın ilk ve 14. |
-| `{monthDays":[2]}` |Ayın ikinci gününde başlangıç saatinde çalıştırın. |
-| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Her ayın ilk Cuma günü sabah 5'te çalıştırın. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Her ayın ilk Cuma günü başlangıç saatinde çalıştırın. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |Ay sonundan itibaren üçüncü Cuma günü, her ay, başlangıç saatinde çalıştırın. |
+| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Haftanın her günü 15 dakikada bir Çalıştır, 9 saat ile 4:45 PM arasında. |
+| `{"weekDays":["sunday"]}` |Başlangıç zamanında bir Pazar günü çalıştırın. |
+| `{"weekDays":["tuesday", "thursday"]}` |Başlangıç zamanında Salı günleri ve Perşembe üzerinde çalıştırın. |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Her ayın 28. gününde 6 ' da çalıştırın ("month" **sıklığının** olduğu varsayılarak). |
+| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |Ayın son gününde 6 ' da Çalıştır.<br /><br />Bir işi ayın son gününde çalıştırmak istiyorsanız, 28, 29, 30 veya 31 gün yerine-1 kullanın. |
+| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Her ayın ilk ve son gününde 6 ' da çalışır. |
+| `{monthDays":[1,-1]}` |Başlangıç zamanında her ayın ilk ve son gününde çalıştırın. |
+| `{monthDays":[1,14]}` |Başlangıç zamanında her ayın ilk ve 14on gününde çalıştırın. |
+| `{monthDays":[2]}` |Başlangıç zamanında ayın ikinci gününde çalıştırın. |
+| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Her ayın ilk Cuma günü 5 ' te çalışır. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Başlangıç zamanında her ayın ilk Cuma gününde çalıştırın. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |Ayın sonundaki üçüncü Cuma günü, Başlangıç zamanında çalıştırın. |
 | `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Her ayın ilk ve son Cuma günü saat 05.15'te çalıştır. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Her ayın ilk ve son Cuma günü başlangıç saatinde çalıştırın. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Her ayın beşinci Cuma günü başlangıç saatinde çalıştırın.<br /><br />Bir ay içinde beşinci Cuma olmazsa, iş çalışmaz. İşi ayın son Cuma günü çalıştırmak istiyorsanız, olay için 5 yerine -1 kullanmayı düşünebilirsiniz. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Başlangıç zamanında her ayın ilk ve son Cuma gününde çalıştırın. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Başlangıç zamanında her ayın beşinci Cuma günü çalıştırın.<br /><br />Ayda beşinci Cuma yoksa, iş çalıştırılmaz. İşi ayın son Cuma günü üzerinde çalıştırmak istiyorsanız, yineleme için 5 yerine-1 kullanabilirsiniz. |
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Ayın son Cuma günü 15 dakikada bir çalıştır. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Her ayın üçüncü Çarşamba günü 05.15, 05.45, 17.15 ve 17.45’te çalıştır. |
 

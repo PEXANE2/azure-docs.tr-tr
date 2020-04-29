@@ -1,6 +1,6 @@
 ---
-title: Azure Linux VM'ye erişimi sıfırlama
-description: VMAccess Uzantısı ve Azure CLI'yi kullanarak linux vm'lerinde yönetim kullanıcıları nın yönetimi ve erişimini sıfırlama
+title: Azure Linux VM 'ye erişimi sıfırlama
+description: VMAccess uzantısı ve Azure CLı kullanarak yönetici kullanıcıları yönetme ve Linux VM 'lerinde erişimi sıfırlama
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -16,47 +16,47 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: bd9dc05a84a4ee54fce40e6c88e87ac90bfee8a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250367"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLI ile VMAccess Uzantısını kullanarak Linux VM'lerinde yönetim kullanıcılarını, SSH'yi ve diskleri kontrol edin veya onarın
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLı ile VMAccess uzantısını kullanarak Linux VM 'lerinde yönetim kullanıcılarını, SSH 'yi yönetme ve diskleri denetleme veya onarma
 ## <a name="overview"></a>Genel Bakış
-Linux VM'nizdeki disk hatalar gösteriyor. Bir şekilde Linux VM'nizin kök parolasını sıfırlar veya yanlışlıkla SSH özel anahtarınızı sildiniz. Bu veri merkezi gün geri oldu, orada sürücü ve daha sonra sunucu konsolu almak için KVM açmanız gerekir. Azure VMAccess uzantısını, Linux'a erişimi sıfırlamak veya disk düzeyinde bakım gerçekleştirmek için konsola erişmenize olanak tanıyan KVM anahtarı olarak düşünün.
+Linux sanal makinenizde bulunan disk hataları gösteriyor. Linux VM 'niz için kök parolayı bir daha sıfırlayabilirsiniz veya yanlışlıkla SSH özel anahtarınızı silmiş olursunuz. Bu, veri merkezinin günlerindeki geri gerçekleştiyse, daha sonra sunucu konsoluna ulaşmak için KVM 'yi açmanız gerekir. Linux 'a erişimi sıfırlamak veya disk düzeyinde bakım gerçekleştirmek üzere konsola erişmenize izin veren bir KVM anahtarı olarak Azure VMAccess uzantısını düşünün.
 
-Bu makalede, bir diski denetlemek veya onarmak, kullanıcı erişimini sıfırlamak, yönetimkullanıcı hesaplarını yönetmek veya Azure Kaynak Yöneticisi sanal makineleri olarak çalışırken Linux'taki SSH yapılandırmasını güncelleştirmek için Azure VMAccess Uzantısı'nı nasıl kullanacağınızı gösterir. Klasik sanal makineleri yönetmeniz gerekiyorsa, [klasik VM belgelerinde](../linux/classic/reset-access-classic.md)bulunan talimatları takip edebilirsiniz. 
+Bu makalede, Azure VMAccess uzantısını kullanarak bir diski denetleme veya onarma, Kullanıcı erişimini sıfırlama, yönetici kullanıcı hesaplarını yönetme veya Azure Resource Manager sanal makineler olarak çalışırken Linux üzerinde SSH yapılandırmasını güncelleştirme işlemlerinin nasıl yapılacağı gösterilir. Klasik sanal makineleri yönetmeniz gerekiyorsa, [klasık VM belgelerinde](../linux/classic/reset-access-classic.md)bulunan yönergeleri izleyebilirsiniz. 
  
 > [!NOTE]
-> AAD Giriş Uzantısı'nı yükledikten sonra VM'nizin parolasını sıfırlamak için VMAccess Uzantısı'nı kullanırsanız, makineniz için AAD Girişini yeniden etkinleştirmek için AAD Giriş Uzantısını yeniden çalıştırmanız gerekir.
+> AAD oturum açma uzantısını yükledikten sonra sanal makinenizin parolasını sıfırlamak için VMAccess uzantısını kullanırsanız, makinenizde AAD oturum açmayı yeniden etkinleştirmek için AAD oturum açma uzantısını yeniden çalıştırmanız gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 ### <a name="operating-system"></a>İşletim sistemi
 
-VM Access uzantısı bu Linux dağıtımlarına karşı çalıştırılabilir:
+VM erişimi uzantısı şu Linux dağıtımlarına karşı çalıştırılabilir:
 
 | Dağıtım | Sürüm |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS ve 12.04 LTS |
-| Debian | Debian 7.9+, 8.2+ |
-| Red Hat | RHEL 6.7+, 7.1+ |
-| Oracle Linux | 6.4+, 7.0+ |
-| Suse | 11 ve 12 |
-| Opensuse | openSUSE Leap 42.2+ |
-| CentOS | CentOS 6.3+, 7.0+ |
-| CoreOS | 494.4.0+ |
+| Ubuntu | 16,04 LTS, 14,04 LTS ve 12,04 LTS |
+| Debian | De, 7.9 +, 8.2 + |
+| Red Hat | RHEL 6.7 +, 7.1 + |
+| Oracle Linux | 6.4 +, 7.0 + |
+| SUSE | 11 ve 12 |
+| OpenSuse | openSUSE artık 42.2 + |
+| CentOS | CentOS 6.3 +, 7.0 + |
+| CoreOS | 494.4.0 + |
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>VMAccess Uzantısını kullanmanın yolları
-Linux VM'lerinizde VMAccess Uzantısı'nı kullanmanın iki yolu vardır:
+Linux sanal makinelerinizdeki VMAccess uzantısını kullanmanın iki yolu vardır:
 
-* Azure CLI'yi ve gerekli parametreleri kullanın.
-* [VMAccess Uzantı işlemi ham JSON dosyaları kullanın](#use-json-files-and-the-vmaccess-extension) ve sonra hareket.
+* Azure CLı ve gerekli parametreleri kullanın.
+* [VMAccess uzantısının işlem ve ardından üzerinde işlem yapması için ham JSON dosyalarını kullanın](#use-json-files-and-the-vmaccess-extension) .
 
-Aşağıdaki [örneklerde az vm kullanıcı](/cli/azure/vm/user) komutları kullanılır. Bu adımları gerçekleştirmek için, en son [Azure CLI'nin](/cli/azure/install-az-cli2) [az girişi](/cli/azure/reference-index)kullanarak bir Azure hesabına yüklenmesi ve oturum açması gerekir.
+Aşağıdaki örneklerde [az VM User](/cli/azure/vm/user) komutları kullanılır. Bu adımları gerçekleştirmek için, en son [Azure CLI](/cli/azure/install-az-cli2) 'nın yüklü olması ve [az oturum açma](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açmış olması gerekir.
 
 ## <a name="update-ssh-key"></a>SSH anahtarını güncelleştirme
-Aşağıdaki örnek, VM'de `azureuser` `myVM`kullanıcı için SSH tuşunu güncelleştirir:
+Aşağıdaki örnek, adlı `azureuser` `myVM`sanal makinede Kullanıcı için SSH anahtarını güncelleştirir:
 
 ```azurecli-interactive
 az vm user update \
@@ -66,10 +66,10 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-> **NOT:** Komut, `az vm user update` VM'deki yönetici kullanıcı `~/.ssh/authorized_keys` için dosyaya yeni ortak anahtar metnini ekler. Bu, varolan SSH anahtarlarının yerini almaz veya kaldırmaz. Bu, VMAccess Uzantısı aracılığıyla dağıtım zamanında ayarlanan önceki anahtarları veya sonraki güncelleştirmeleri kaldırmaz.
+> **Note:** `az vm user update` Komut, yeni ortak anahtar metnini VM 'deki Yönetici Kullanıcı `~/.ssh/authorized_keys` için dosyaya ekler. Bu, var olan SSH anahtarlarını değiştirmez veya kaldırmaz. Bu, dağıtım sırasında ayarlanan önceki anahtarları veya VMAccess uzantısı aracılığıyla sonraki güncelleştirmeleri kaldırmaz.
 
 ## <a name="reset-password"></a>Parola sıfırlama
-Aşağıdaki örnek, VM'deki `azureuser` `myVM`kullanıcının parolasını sıfırlar:
+Aşağıdaki örnek, adlı `azureuser` `myVM`sanal makinede Kullanıcı parolasını sıfırlar:
 
 ```azurecli-interactive
 az vm user update \
@@ -80,7 +80,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>SSH'yi yeniden başlatma
-Aşağıdaki örnek, SSH daemon'u yeniden başlatır ve SSH yapılandırmasını `myVM`bir VM adlı varsayılan değerlere sıfırlar:
+Aşağıdaki örnek, SSH arka plan programını yeniden başlatır ve SSH yapılandırmasını adlı `myVM`bir VM 'deki varsayılan değerlere sıfırlar:
 
 ```azurecli-interactive
 az vm user reset-ssh \
@@ -89,7 +89,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-an-administrativesudo-user"></a>Yönetici/sudo kullanıcısı oluşturma
-Aşağıdaki örnek, **sudo** `myNewUser` izinleri ile adlı bir kullanıcı oluşturur. Hesap, VM adlı `myVM`kimlik doğrulama için bir SSH tuşu kullanır. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutulması durumunda bir VM'ye yeniden erişmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
+Aşağıdaki örnek, **sudo** izinleri ile `myNewUser` adlı bir kullanıcı oluşturur. Hesap, adlı `myVM`sanal makinede kimlik doğrulaması IÇIN bir SSH anahtarı kullanır. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
 
 ```azurecli-interactive
 az vm user update \
@@ -100,7 +100,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Kullanıcı silme
-Aşağıdaki örnek, VM `myNewUser` adlı `myVM`bir kullanıcıyı siler:
+Aşağıdaki örnekte adlı `myNewUser` `myVM`VM 'de adlı bir Kullanıcı silinir:
 
 ```azurecli-interactive
 az vm user delete \
@@ -110,12 +110,12 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON uzantılarını ve VMAccess Uzantısını kullanma
-Aşağıdaki örneklerde ham JSON dosyaları kullanılır. JSON dosyalarınızı aramak için [az vm uzantısı ayarını](/cli/azure/vm/extension) kullanın. Bu JSON dosyaları Azure şablonlarından da çağrılabilir. 
+Aşağıdaki örnekler Ham JSON dosyalarını kullanır. Daha sonra JSON dosyalarınızı çağırmak için [az VM Extension set](/cli/azure/vm/extension) kullanın. Bu JSON dosyaları, Azure şablonlarından da çağrılabilir. 
 
-### <a name="reset-user-access"></a>Kullanıcı erişimini sıfırlama
-Linux VM'nizde kök erişiminizi kaybettiyseniz, bir kullanıcının SSH anahtarını veya parolasını güncellemek için bir VMAccess komut dosyası başlatabilirsiniz.
+### <a name="reset-user-access"></a>Kullanıcı erişimini Sıfırla
+Linux sanal makinenizde köke erişimi kaybettiyseniz, bir kullanıcının SSH anahtarını veya parolasını güncelleştirmek için bir VMAccess betiği başlatabilirsiniz.
 
-Bir kullanıcının SSH ortak anahtarını güncelleştirmek `update_ssh_key.json` için, adlı bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. Kendi değerlerinizi ve `username` `ssh_key` parametreleri değiştirin:
+Bir kullanıcının SSH ortak anahtarını güncelleştirmek için adlı `update_ssh_key.json` bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. `username` Ve `ssh_key` parametreleri için kendi değerlerinizi değiştirin:
 
 ```json
 {
@@ -124,7 +124,7 @@ Bir kullanıcının SSH ortak anahtarını güncelleştirmek `update_ssh_key.jso
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -136,7 +136,7 @@ az vm extension set \
   --protected-settings update_ssh_key.json
 ```
 
-Kullanıcı parolasını sıfırlamak için, `reset_user_password.json` adlandırılmış bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. Kendi değerlerinizi ve `username` `password` parametreleri değiştirin:
+Kullanıcı parolasını sıfırlamak için adlı `reset_user_password.json` bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. `username` Ve `password` parametreleri için kendi değerlerinizi değiştirin:
 
 ```json
 {
@@ -145,7 +145,7 @@ Kullanıcı parolasını sıfırlamak için, `reset_user_password.json` adlandı
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -158,7 +158,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>SSH'yi yeniden başlatma
-SSH daemon'u yeniden başlatmak ve SSH yapılandırmasını varsayılan değerlere sıfırlamak için . `reset_sshd.json` Aşağıdaki içeriği ekleyin:
+SSH arka plan programını yeniden başlatmak ve SSH yapılandırmasını varsayılan değerlere sıfırlamak için adlı `reset_sshd.json`bir dosya oluşturun. Aşağıdaki içeriği ekleyin:
 
 ```json
 {
@@ -166,7 +166,7 @@ SSH daemon'u yeniden başlatmak ve SSH yapılandırmasını varsayılan değerle
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -178,9 +178,9 @@ az vm extension set \
   --protected-settings reset_sshd.json
 ```
 
-### <a name="manage-administrative-users"></a>İdari kullanıcıları yönetme
+### <a name="manage-administrative-users"></a>Yönetici kullanıcıları yönetme
 
-Kimlik doğrulaması için SSH anahtarı kullanan **sudo** izinlerine sahip bir `create_new_user.json` kullanıcı oluşturmak için, adlı bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. Kendi değerlerinizi ve `username` `ssh_key` parametreleri değiştirin. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutulması durumunda bir VM'ye yeniden erişmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
+Kimlik doğrulaması için SSH anahtarı kullanan **sudo** izinlerine sahip bir kullanıcı oluşturmak için, adlı `create_new_user.json` bir dosya oluşturun ve aşağıdaki biçimde ayarları ekleyin. `username` Ve `ssh_key` parametreleri için kendi değerlerinizi değiştirin. Bu yöntem, geçerli kimlik bilgilerinin kaybolması veya unutuldu durumunda bir VM 'ye erişimi yeniden elde etmenize yardımcı olmak için tasarlanmıştır. En iyi uygulama olarak, **sudo** izinleri olan hesaplar sınırlı olmalıdır.
 
 ```json
 {
@@ -190,7 +190,7 @@ Kimlik doğrulaması için SSH anahtarı kullanan **sudo** izinlerine sahip bir 
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -202,7 +202,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Bir kullanıcıyı silmek için, adlı `delete_user.json` bir dosya oluşturun ve aşağıdaki içeriği ekleyin. Parametre için kendi `remove_user` değerinizi değiştirin:
+Bir kullanıcıyı silmek için adlı `delete_user.json` bir dosya oluşturun ve aşağıdaki içeriği ekleyin. `remove_user` Parametresi için kendi değerini değiştirin:
 
 ```json
 {
@@ -210,7 +210,7 @@ Bir kullanıcıyı silmek için, adlı `delete_user.json` bir dosya oluşturun v
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -223,9 +223,9 @@ az vm extension set \
 ```
 
 ### <a name="check-or-repair-the-disk"></a>Diski denetleme veya onarma
-VMAccess'i kullanarak Linux VM'ye eklediğiniz bir diski kontrol edebilir ve onarabilirsiniz.
+VMAccess kullanarak, Linux VM 'ye eklediğiniz bir diski de denetleyebilir ve onarabilirsiniz.
 
-Diski denetlemek ve onarmak için, `disk_check_repair.json` adlı bir dosya oluşturun ve aşağıdaki biçimde ayarlar ekleyin. Kendi değerinizi aşağıdaki ler `repair_disk`için değiştirin:
+Diski denetleyip onarmak için, adlı `disk_check_repair.json` bir dosya oluşturun ve aşağıdaki biçimde ayarları ekleyin. Adı için kendi değerini değiştirin `repair_disk`:
 
 ```json
 {
@@ -234,7 +234,7 @@ Diski denetlemek ve onarmak için, `disk_check_repair.json` adlı bir dosya olu�
 }
 ```
 
-VMAccess komut dosyasını aşağıdakilerle çalıştırın:
+VMAccess betiğini şu şekilde yürütün:
 
 ```azurecli-interactive
 az vm extension set \
@@ -249,7 +249,7 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı lı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı 'yı kullanarak aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
@@ -257,4 +257,4 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek al'ı seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

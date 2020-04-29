@@ -1,6 +1,6 @@
 ---
-title: REST API'leri ile duraklatma, devam, ölçeklendirme
-description: Azure Synapse Analytics veri ambarında işlem gücünü REST API'leri aracılığıyla yönetin.
+title: Duraklatma, devam etmeyi, REST API 'lerle ölçeklendirme
+description: REST API 'Leri aracılığıyla Azure SYNAPSE Analytics veri ambarındaki işlem gücünü yönetin.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633212"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı için REST API'leri
+# <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL veri ambarı için REST API 'Leri
 
-Azure Synapse Analytics veri ambarında bilgi işlem yönetimi için REST API'leri.
+Azure SYNAPSE Analytics veri ambarı 'nda işlem yönetimi için REST API 'Leri.
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
-Veri ambarı birimlerini değiştirmek için [Veritabanı OLUŞTUR veya Güncelleştir](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) API'sini kullanın. Aşağıdaki örnek, veri ambarı birimlerini, sunucu MyServer'da barındırılan MySQLDW veritabanı için DW1000 olarak ayarlar. Sunucu, ResourceGroup1 adlı bir Azure kaynak grubundadır.
+Veri ambarı birimlerini değiştirmek için [Create veya Update Database](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API kullanın. Aşağıdaki örnek, sunucu sunucum üzerinde barındırılan MySQLDW veritabanı için veri ambarı birimlerini DW1000 olarak ayarlar. Sunucu, ResourceGroup1 adlı bir Azure Kaynak grubunda bulunur.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,43 +37,43 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-## <a name="pause-compute"></a>İşlemi duraklatma
+## <a name="pause-compute"></a>İşlem Duraklat
 
-Veritabanını duraklatmak için [Veritabanı](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API'sini kullanın. Aşağıdaki örnek, Server01 adlı bir sunucuda barındırılan Database02 adlı bir veritabanını duraklatacaktır. Sunucu, ResourceGroup1 adlı bir Azure kaynak grubundadır.
+Bir veritabanını duraklatmak için [duraklatma veritabanını](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API kullanın. Aşağıdaki örnek, server01 adlı bir sunucuda barındırılan Database02 adlı bir veritabanını duraklatır. Sunucu, ResourceGroup1 adlı bir Azure Kaynak grubunda bulunur.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="resume-compute"></a>Özgeçmiş hesaplama
+## <a name="resume-compute"></a>İşlem işlemine geri dön
 
-Veritabanı başlatmak için [Özgeçmiş Veritabanı](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) REST API'sini kullanın. Aşağıdaki örnek, Server01 adlı bir sunucuda barındırılan Database02 adlı bir veritabanı nı başlatır. Sunucu, ResourceGroup1 adlı bir Azure kaynak grubundadır.
+Bir veritabanını başlatmak için REST API [özgeçmişi veritabanını](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanın. Aşağıdaki örnek, server01 adlı bir sunucuda barındırılan Database02 adlı bir veritabanını başlatır. Sunucu, ResourceGroup1 adlı bir Azure Kaynak grubunda bulunur.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="check-database-state"></a>Veritabanı durumunu denetleme
+## <a name="check-database-state"></a>Veritabanı durumunu denetle
 
 > [!NOTE]
-> Veritabanı çevrimiçi iş akışını tamamlarken veritabanı durumunu denetle, bağlantı hatalarına neden olabilir. Bağlantı girişimlerini tetiklemek için bu API çağrısını kullanıyorsanız, uygulama kodunuza 2 ila 3 dakika gecikme eklemeniz gerekebilir.
+> Veritabanı çevrimiçi iş akışını tamamlarken, bağlantı hatalarıyla sonuçlarken veritabanı durumu şu anda ÇEVRIMIÇI olarak dönebilir. Bağlantı girişimlerini tetiklemek için bu API çağrısını kullanıyorsanız, uygulama kodunuzda 2 ila 3 dakika gecikme eklemeniz gerekebilir.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>Bakım çizelgesi alın
+## <a name="get-maintenance-schedule"></a>Bakım zamanlaması al
 
-Veri ambarı için ayarlanan bakım zamanlamasını denetleyin.
+Bir veri ambarı için ayarlanmış bakım zamanlamasını denetleyin.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
 
 ```
 
-## <a name="set-maintenance-schedule"></a>Bakım çizelgesini ayarlama
+## <a name="set-maintenance-schedule"></a>Bakım zamanlamasını ayarla
 
-Varolan bir veri ambarında bakım çizelgesi ayarlamak ve güncelleştirmek için.
+Mevcut bir veri ambarında bakım zamanlaması ayarlamak ve güncelleştirmek için.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -99,4 +99,4 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [bkz.](sql-data-warehouse-manage-compute-overview.md)
+Daha fazla bilgi için bkz. [Işlem yönetimi](sql-data-warehouse-manage-compute-overview.md).

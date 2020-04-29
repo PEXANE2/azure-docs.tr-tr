@@ -1,6 +1,6 @@
 ---
-title: SQL havuzu için bilgi işlem kaynağını yönetme
-description: Azure Synapse Analytics SQL havuzundaki performans ölçeği yetenekleri hakkında bilgi edinin. DWUs'ları ayarlayarak ölçeklendirin veya veri ambarını duraklatarak maliyetleri düşürün.
+title: SQL havuzu için işlem kaynağını yönetme
+description: Azure SYNAPSE Analytics SQL havuzundaki performans ölçeği genişletme özellikleri hakkında bilgi edinin. Veri ambarını duraklatarak DWU 'ları veya daha düşük maliyetleri ayarlayarak ölçeği ölçeklendirin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: daf57c7e6ef40f75eac070c06547cf2a28338f21
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633237"
 ---
-# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Azure Synapse Analytics veri ambarında bilgi işlem yönetme
+# <a name="manage-compute-in-azure-synapse-analytics-data-warehouse"></a>Azure SYNAPSE Analytics veri ambarında işlem yönetme
 
-Azure Synapse Analytics SQL havuzunda bilgi işlem kaynaklarını yönetme hakkında bilgi edinin. SQL havuzunu duraklatarak maliyetleri düşürün veya performans taleplerini karşılamak için veri ambarını ölçeklendirin.
+Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetme hakkında bilgi edinin. SQL havuzunu duraklatarak veya performans taleplerini karşılamak için veri ambarını ölçeklendirerek maliyetleri düşürün.
 
 ## <a name="what-is-compute-management"></a>İşlem yönetimi nedir?
 
-Veri ambarının mimarisi depolama ve bilgi işlem ayrışarak her birinin bağımsız olarak ölçeklendirmesine olanak sağlar. Sonuçta, performans taleplerini karşılamak için işlemi veri depolamasından bağımsız olarak ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Bu mimarinin doğal bir sonucu, hesaplama ve depolama için [faturalandırmanın](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) ayrı olmasıdır. Veri ambarınızı bir süreliğine kullanmanız gerekmiyorsa, işlemi duraklatarak işlem maliyetlerinden tasarruf edebilirsiniz.
+Veri ambarının mimarisi, depolama ve işlem ayırır, her birinin bağımsız olarak ölçeklendirilmesine olanak tanır. Sonuçta, performans taleplerini karşılamak için işlemi veri depolamasından bağımsız olarak ölçeklendirebilirsiniz. Ayrıca işlem kaynaklarını duraklatabilir ve sürdürebilirsiniz. Bu mimarinin doğal bir sonucu, işlem ve depolama için [faturalandırmaya](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) yöneliktir. Veri ambarınızı bir süreliğine kullanmanız gerekmiyorsa, işlemi duraklatarak işlem maliyetlerinden tasarruf edebilirsiniz.
 
-## <a name="scaling-compute"></a>Ölçekleme hesaplaması
+## <a name="scaling-compute"></a>Ölçeklendirme işlem
 
-SQL havuzunuz için [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md) ayarını ayarlayarak hesaplamayı ölçeklendirebilir veya ölçeklendirebilirsiniz. Daha fazla veri ambarı birimi eklendikçe yükleme ve sorgu performansında doğrusal bir artış olur.
+SQL havuzunuz için [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md) ayarını ayarlayarak, işlem ölçeğini ölçeklendirebilir veya ölçeklendirebilirsiniz. Daha fazla veri ambarı birimi eklendikçe yükleme ve sorgu performansında doğrusal bir artış olur.
 
-Ölçeklendirme adımları için [Azure portalı](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)veya [T-SQL](quickstart-scale-compute-tsql.md) hızlı başlatmalar bakın. Ayrıca, [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)ile ölçeklendirme işlemleri de gerçekleştirebilirsiniz.
+Genişleme adımları için [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md)veya [T-SQL](quickstart-scale-compute-tsql.md) quickbaşlangıçlara bakın. Ayrıca, bir [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)genişleme işlemleri gerçekleştirebilirsiniz.
 
-Bir ölçek işlemi gerçekleştirmek için, SQL havuzu önce gelen tüm sorguları öldürür ve tutarlı bir durum sağlamak için hareketleri geri döndürer. Ölçeklendirme ancak işlemlerin geri alınması tamamlandıktan sonra gerçekleşir. Bir ölçek işlemi için sistem depolama katmanını işlem düğümlerinden ayırır, işlem düğümleri ekler ve depolama katmanını İşlem katmanına yeniden bağlar. Her SQL havuzu, işlem düğümlerine eşit olarak dağıtılan 60 dağıtım olarak depolanır. Daha fazla işlem düğümü eklemek daha fazla işlem gücü ekler. Bilgi işlem düğümlerinin sayısı arttıkça, işlem düğümü başına dağıtım sayısı azalır ve sorgularınız için daha fazla işlem gücü sağlar. Aynı şekilde, veri ambarı birimlerinin azaltılması, sorguların bilgi işlem kaynaklarını azaltan bilgi işlem düğümlerinin sayısını azaltır.
+Bir ölçeklendirme işlemi gerçekleştirmek için, SQL havuzu ilk olarak tüm gelen sorguları çıkarır ve sonra tutarlı bir durum sağlamak için işlemleri geri kaydeder. Ölçeklendirme ancak işlemlerin geri alınması tamamlandıktan sonra gerçekleşir. Bir ölçeklendirme işlemi için sistem, depolama katmanını işlem düğümlerinden ayırır, işlem düğümlerini ekler ve ardından depolama katmanını Işlem katmanına yeniden ekler. Her SQL havuzu, işlem düğümlerine eşit olarak dağıtılan 60 dağıtımları olarak depolanır. Daha fazla işlem düğümü eklemek daha fazla işlem gücü sağlar. İşlem düğümlerinin sayısı arttıkça, sorgular için daha fazla işlem gücü sağlayan işlem düğümü başına dağıtım sayısı azalır. Benzer şekilde, veri ambarı birimlerini düşürmek, sorguların işlem kaynaklarını azaltan işlem düğümü sayısını azaltır.
 
-Aşağıdaki tablo, veri ambarı birimleri değiştikçe Bilgi İşlem düğümü başına dağılım sayısının nasıl değiştiğini gösterir.  DW30000c 60 İşlem düğümü sağlar ve DW100c'den çok daha yüksek sorgu performansı sağlar.
+Aşağıdaki tabloda, veri ambarı birimleri değiştiğinde Işlem düğümü başına dağıtım sayısının nasıl değiştiği gösterilmektedir.  DW30000c 60 Işlem düğümleri sağlar ve DW100c ' den çok daha yüksek sorgu performansına erişir.
 
-| Veri ambarı birimleri  | \#işlem düğümleri | \#düğüm başına dağılımların |
+| Veri ambarı birimleri  | \#işlem düğümlerinin | \#düğüm başına dağıtım sayısı |
 | -------- | ---------------- | -------------------------- |
 | DW100c   | 1                | 60                         |
 | DW200c   | 1                | 60                         |
@@ -57,73 +57,73 @@ Aşağıdaki tablo, veri ambarı birimleri değiştikçe Bilgi İşlem düğüm�
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Veri ambarı birimlerinin doğru boyutunu bulma
 
-Özellikle daha büyük veri ambarı birimleri için ölçeklemenin performans avantajlarını görmek için en az 1-TB veri kümesi kullanmak istiyorsunuz. SQL havuzunuz için en iyi veri ambarı birimi sayısını bulmak için yukarı ve aşağı ölçeklemayı deneyin. Verilerinizi yükledikten sonra farklı sayıda veri ambarı birimiiçeren birkaç sorgu çalıştırın. Ölçekleme hızlı olduğundan, bir saat veya daha kısa sürede çeşitli performans düzeylerini deneyebilirsiniz.
+Özellikle büyük veri ambarı birimleri için, ölçeklendirmenin performans avantajlarını görmek için, en az 1 TB veri kümesi kullanmak istersiniz. SQL havuzunuzun en iyi veri ambarı birimi sayısını bulmak için ölçeği artırma ve azaltma seçeneğini deneyin. Verilerinizi yükledikten sonra farklı sayıda veri ambarı birimiyle birkaç sorgu çalıştırın. Ölçeklendirmenin hızlı olduğu için, çeşitli performans düzeylerini bir saat veya daha kısa sürede deneyebilirsiniz.
 
-En iyi veri ambarı birimlerini bulmak için öneriler:
+En iyi veri ambarı birimi sayısını bulmaya yönelik öneriler:
 
-- Geliştirme aşamasındaki bir SQL havuzu için, daha az sayıda veri ambarı birimi seçerek başlayın.  İyi bir başlangıç noktası DW400c veya DW200c olduğunu.
-- Gözlemlediğiniz performansla karşılaştırıldığında seçilen veri ambarı birimlerinin sayısını gözlemleyerek uygulama performansınızı izleyin.
-- Doğrusal bir ölçek varsayalım ve veri ambarı birimlerini artırmak veya azaltmak için ne kadar ihtiyacınız olduğunu belirleyin.
-- İş gereksinimleriniz için optimum performans düzeyine ulaşana kadar ayarlamalar yapmaya devam edin.
+- Geliştirme aşamasında bir SQL havuzu için, daha az sayıda veri ambarı birimi seçerek başlayın.  İyi bir başlangıç noktası DW400c veya DW200c.
+- Uygulama performansınızı izleyip, gözlemlediğiniz performansa göre seçilen veri ambarı birimlerinin sayısını gözlemleyin.
+- Doğrusal bir ölçek varsayın ve veri ambarı birimlerini ne kadar artırmanız veya azaltmanız gerektiğini belirleyebilirsiniz.
+- İş gereksinimleriniz için en iyi performans düzeyine ulaşana kadar ayarlamalar yapmaya devam edin.
 
-## <a name="when-to-scale-out"></a>Ne zaman ölçeklendirin
+## <a name="when-to-scale-out"></a>Ne zaman Ölçeklendirilecek
 
-Veri ambarı birimlerinin ölçekletilmesi performansın bu yönlerini etkiler:
+Veri ambarı birimlerinin ölçeklendirilmesi, bu performans yönlerini etkiler:
 
-- Doğrusal taramaları, toplamalar için sistemin performansını artırır ve CTAS ifadeleri.
-- Veri yüklemek için okuyucu ve yazar sayısını artırır.
-- Maksimum eşzamanlı sorgu sayısı ve eşzamanlılık yuvası.
+- Linerken, taramalar, Toplamalar ve CTAS deyimlerinin sistem performansını geliştirir.
+- Verileri yüklemek için okuyucu ve yazıcı sayısını artırır.
+- En fazla eşzamanlı sorgu ve eşzamanlılık yuvası sayısı.
 
-Veri ambarı birimlerini ne zaman ölçeklendirecek öneriler:
+Veri ambarı birimlerinin ne zaman ölçeklenebilmesini sağlayacak öneriler:
 
-- Ağır bir veri yükleme veya dönüştürme işlemi gerçekleştirmeden önce, verileri daha hızlı kullanılabilir hale getirmek için ölçeklendirin.
-- Yoğun çalışma saatlerinde, daha fazla eşzamanlı sorguyu barındıracak şekilde ölçeklendirin.
+- Yoğun veri yükleme veya dönüştürme işlemi gerçekleştirmeden önce, verileri daha hızlı kullanılabilir hale getirmek için ölçeği ölçeklendirin.
+- Yoğun iş saatlerinde daha fazla sayıda eşzamanlı sorgu sağlamak için ölçeği ölçeklendirin.
 
-## <a name="what-if-scaling-out-does-not-improve-performance"></a>Ölçekleme performansı artırmazsa ne olur?
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>Ölçeklendirmenin performansı artırmaz ne olursa?
 
-Paralelliği artıran veri ambarı birimleri ekleme. Çalışma Bilgi İşlem düğümleri arasında eşit olarak bölünürse, ek paralellik sorgu performansını artırır. Ölçekleme performansınızı değiştirmiyorsa, bunun bazı nedenleri olabilir. Verileriniz dağıtımlar arasında çarpık olabilir veya sorgular büyük miktarda veri hareketi başlatıyor olabilir. Sorgu performansı sorunlarını araştırmak için [Bkz. Performans sorun giderme.](sql-data-warehouse-troubleshoot.md#performance)
+Paralellik arttırılarak veri ambarı birimleri ekleme. İş, Işlem düğümleri arasında eşit olarak bölündüğünde, ek paralellik sorgu performansını geliştirir. Ölçeği genişletme, performansınızı değiştirmeiyorsa, bu nedenle oluşabilecek bazı nedenler vardır. Verileriniz dağıtımlar genelinde çarpıtılmış olabilir veya sorgular büyük miktarda veri hareketine giriş gösterebilir. Sorgu performans sorunlarını araştırmak için bkz. [Performans sorun giderme](sql-data-warehouse-troubleshoot.md#performance).
 
 ## <a name="pausing-and-resuming-compute"></a>İşlemi duraklatma ve sürdürme
 
-İşlemi duraklatma, depolama katmanının İşlem düğümlerinden ayrılmasına neden olur. İşlem kaynakları hesabınızdan serbest bırakılır. İşlem duraklatılmışken işlem için ücretlendirilmezsiniz. İşleme devam etmek depolamayı İşlem düğümlerine yeniden bağlar ve İşlem için ücretleri devam ettirer.
-Bir SQL havuzuduraklattığınızda:
+İşlem duraklatma, depolama katmanının Işlem düğümlerinden ayrılmasına neden olur. İşlem kaynakları hesabınızdan serbest bırakılır. İşlem duraklatıldığında işlem için ücretlendirilirsiniz. İşlemi sürdürmek işlem düğümlerine yeniden iliştirmeye devam eder ve Işlem için ücretleri sürdürür.
+Bir SQL havuzunu duraklattığınızda:
 
-- Bilgi işlem ve bellek kaynakları veri merkezindeki kullanılabilir kaynaklar havuzuna döndürülür
-- Veri ambarı birim maliyetleri duraklama süresi için sıfırdır.
+- İşlem ve bellek kaynakları, veri merkezindeki kullanılabilir kaynak havuzuna döndürülür
+- Duraklama süresi için veri ambarı birim maliyetleri sıfırdır.
 - Veri depolama etkilenmez ve verileriniz bozulmadan kalır.
-- Çalışan veya sıraya verilen tüm işlemler iptal edilir.
+- Tüm çalışan veya sıraya alınmış işlemler iptal edilir.
 
-Bir SQL havuzuna devam ettiğinizde:
+Bir SQL havuzunu sürdürürseniz:
 
-- SQL havuzu, veri ambarı birimleri ayarınız için bilgi işlem ve bellek kaynakları edinir.
-- Veri ambarı birimlerinizin işlem ücretleri devam ediyor.
+- SQL havuzu, veri ambarı birimleriniz ayarınız için işlem ve bellek kaynaklarını alır.
+- Veri ambarı birimleriniz için işlem ücretleri sürdürülür.
 - Verileriniz kullanılabilir hale gelir.
 - SQL havuzu çevrimiçi olduktan sonra iş yükü sorgularınızı yeniden başlatmanız gerekir.
 
-SQL havuzunuza her zaman erişilebilir olmasını istiyorsanız, duraklamak yerine en küçük boyuta kadar ölçeklemeyi düşünün.
+SQL havuzunuzun her zaman erişilebilir olmasını istiyorsanız, bunu duraklatma yerine en küçük boyuta ölçeklendirebilirsiniz.
 
-Duraklatma ve devam adımları için [Azure portalına](pause-and-resume-compute-portal.md)veya [PowerShell](pause-and-resume-compute-powershell.md) hızlı başlatmabaşlat'a bakın. Ayrıca [pause REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) veya [devam REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)kullanabilirsiniz.
+Duraklatma ve devam adımları için [Azure Portal](pause-and-resume-compute-portal.md)veya [PowerShell](pause-and-resume-compute-powershell.md) hızlı başlangıçlarını inceleyin. [Duraklatma REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) veya [Resume REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute)de kullanabilirsiniz.
 
 ## <a name="drain-transactions-before-pausing-or-scaling"></a>Duraklatma veya ölçeklendirme öncesinde işlemleri boşaltın
 
-Duraklatma veya ölçeklendirme işlemi başlatmadan önce varolan hareketlerin tamamlanmasına izin vermenizi öneririz.
+Duraklatma veya ölçeklendirme işlemi başlamadan önce mevcut işlemlerin bitmesini öneririz.
 
-SQL havuzunuzu duraklattığınızda veya ölçeklendirdiğinizde, duraklatma veya ölçeklendirme isteğini başlattığınızda sorgularınız iptal edilir. Basit bir SELECT sorgusunu hızlıca ve örnek duraklatma veya ölçeklendirme süresini neredeyse hiç etkilemeden iptal edebilirsiniz.  Ancak, verilerinizi veya verilerinizin yapısını değiştiren işlem sorguları o kadar hızlı durdurulamayabilir. **Bir işlem sorgusunun tamamlanması veya yaptığı değişiklikleri geri alması gerekir.** Bir işlem sorgusunun tamamladığı işi geri almak, sorgunun değişiklik yapmak için harcadığı süre kadar, hatta bazen daha fazla zaman alabilir. Örneğin, bir saattir çalışan ve satır silen bir sorguyu iptal etmeniz halinde sistemin silinmiş olan satırları geri eklemesi bir saat sürebilir. Duraklatma veya ölçeklendirme isteklerini işlemler devam ederken çalıştırmanız halinde, devam etmek için geri alma işleminin tamamlanmasını bekleyeceğinden ilgili duraklatma veya ölçeklendirme işleminin tamamlanması uzun sürebilir.
+SQL havuzunuzu duraklattığınızda veya ölçeklendirdikten sonra, duraklatma veya ölçeklendirme isteğini başlattığınızda yaptığınız arka planda sorgular iptal edilir. Basit bir SELECT sorgusunu hızlıca ve örnek duraklatma veya ölçeklendirme süresini neredeyse hiç etkilemeden iptal edebilirsiniz.  Ancak, verilerinizi veya verilerinizin yapısını değiştiren işlem sorguları o kadar hızlı durdurulamayabilir. **Bir işlem sorgusunun tamamlanması veya yaptığı değişiklikleri geri alması gerekir.** Bir işlem sorgusunun tamamladığı işi geri almak, sorgunun değişiklik yapmak için harcadığı süre kadar, hatta bazen daha fazla zaman alabilir. Örneğin, bir saattir çalışan ve satır silen bir sorguyu iptal etmeniz halinde sistemin silinmiş olan satırları geri eklemesi bir saat sürebilir. Duraklatma veya ölçeklendirme isteklerini işlemler devam ederken çalıştırmanız halinde, devam etmek için geri alma işleminin tamamlanmasını bekleyeceğinden ilgili duraklatma veya ölçeklendirme işleminin tamamlanması uzun sürebilir.
 
-Ayrıca bkz. [Hareketleri anlama](sql-data-warehouse-develop-transactions.md)ve hareketleri [optimize etme.](sql-data-warehouse-develop-best-practices-transactions.md)
+Ayrıca bkz. [Işlemleri anlama](sql-data-warehouse-develop-transactions.md)ve [işlemleri iyileştirme](sql-data-warehouse-develop-best-practices-transactions.md).
 
-## <a name="automating-compute-management"></a>Hesaplama yönetimini otomatikleştirmek
+## <a name="automating-compute-management"></a>İşlem yönetimini otomatikleştirme
 
-İşlem yönetimi işlemlerini otomatikleştirmek için Azure [işlevleriyle işlemi yönet'e](manage-compute-with-azure-functions.md)bakın.
+İşlem yönetimi işlemlerini otomatikleştirmek için bkz. [Azure işlevleri ile Işlem yönetme](manage-compute-with-azure-functions.md).
 
-Ölçeklendirme, duraklatma ve devam işlemlerinin tamamlanması birkaç dakika sürebilir. Otomatik olarak ölçekleme, duraklatma veya devam ediyorsanız, belirli işlemlerin başka bir eyleme geçmeden önce tamamlandığından emin olmak için mantık uygulamanızı öneririz. SQL havuzu durumunu çeşitli uç noktalardan denetlemek, bu tür işlemlerin otomasyonunu doğru şekilde uygulamanızı sağlar.
+Ölçek Genişletme, duraklatma ve devam eden işlemlerin her birinin tamamlanması birkaç dakika sürebilir. Otomatik olarak ölçeklendirme yaptıysanız, durakladıysanız veya devam ettiriyorsanız, başka bir eyleme geçmeden önce belirli işlemlerin tamamlanmasını sağlamak için mantık uygulamanız önerilir. SQL havuzu durumunun çeşitli uç noktalarla denetlenmesi, bu tür işlemlerin otomatikleştirilmesini doğru bir şekilde uygulamanıza olanak tanır.
 
-SQL havuz durumunu denetlemek için [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) veya [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) quickstart'ına bakın. [Ayrıca, REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)ile SQL havuz durumunu da kontrol edebilirsiniz.
+SQL havuzu durumunu denetlemek için bkz. [PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) veya [T-SQL](quickstart-scale-compute-tsql.md#check-data-warehouse-state) hızlı başlangıç. Ayrıca, SQL havuzu durumunu bir [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state)kontrol edebilirsiniz.
 
 ## <a name="permissions"></a>İzinler
 
-SQL havuzunu ölçekleme [alter DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)açıklanan izinleri gerektirir.  Duraklatma ve Devam et, özellikle Microsoft.Sql/servers/databases/action olmak üzere [SQL DB Katılımcısı](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) iznini gerektirir.
+SQL havuzunun ölçeklendirilmesi, [alter database](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bölümünde açıklanan izinleri gerektirir.  Duraklatma ve devam etmeyi, özellikle Microsoft. SQL/Servers/Database/Action [SQL DB katılımcısı](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#sql-db-contributor) iznini gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bilgi işlem](manage-compute-with-azure-functions.md) için nasıl yol gösterin başka bir yönü tek tek sorgular için farklı bilgi işlem kaynakları ayırmaktır. Daha fazla bilgi [için iş yükü yönetimi için Kaynak sınıfları'na](resource-classes-for-workload-management.md)bakın.
+[Yönetim](manage-compute-with-azure-functions.md) işlemi için nasıl yapılır Kılavuzu ' na bakın işlem kaynaklarını yönetmenin başka bir yönü de tekil sorgular için farklı işlem kaynakları ayırıyor. Daha fazla bilgi için bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md).

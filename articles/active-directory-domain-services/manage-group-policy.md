@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetlerinde grup ilkesi oluşturma ve yönetme | Microsoft Dokümanlar
-description: Yerleşik grup ilkesi nesnelerini (GDO' lar) nasıl dizeedin ve Azure Active Directory Domain Services yönetilen etki alanında kendi özel ilkelerinizi nasıl oluşturabileceğinizi öğrenin.
+title: Azure AD Domain Services Grup ilkesi oluşturma ve yönetme | Microsoft Docs
+description: Azure Active Directory Domain Services yönetilen bir etki alanında yerleşik Grup İlkesi nesnelerini (GPO 'Lar) düzenlemeyi ve kendi özel ilkelerinizi oluşturmayı öğrenin.
 author: iainfoulds
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -11,116 +11,116 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655046"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Etki Alanı Hizmetleri yönetilen bir etki alanında Grup İlkesi'ni yönetme
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services yönetilen bir etki alanında grup ilkesi yönetme
 
-Azure Etkin Dizin Etki Alanı Hizmetleri'ndeki (Azure AD DS) kullanıcı ve bilgisayar nesnelerinin ayarları genellikle Grup İlkesi Nesneleri (GPO) kullanılarak yönetilir. Azure AD DS, *AADDC Kullanıcıları* ve *AADDC Bilgisayar* kapsayıcıları için yerleşik GPO'lar içerir. Bu yerleşik GPO'ları, ortamınız için gerektiği gibi Grup İlkesi'ni yapılandırmak için özelleştirebilirsiniz. *Azure AD DC yöneticileri* grubunun üyeleri, Azure AD DS etki alanında Grup İlkesi yönetim ayrıcalıklarına sahiptir ve özel GPO'lar ve kuruluş birimleri (OSB) oluşturabilir. Grup İlkesi'nin ne olduğu ve nasıl çalıştığı hakkında daha fazla bilgi için [Bkz. Grup İlkesi genel bakış.][group-policy-overview]
+Azure Active Directory Domain Services (Azure AD DS) içindeki kullanıcı ve bilgisayar nesnelerine yönelik ayarlar genellikle grup ilkesi nesneleri (GPO 'Lar) kullanılarak yönetilir. Azure AD DS, *Aaddc kullanıcıları* ve *Aaddc bilgisayarları* kapsayıcıları için yerleşik GPO 'lar içerir. Bu yerleşik GPO 'Ları, ortamınız için gereken grup ilkesi yapılandırmak üzere özelleştirebilirsiniz. *Azure AD DC Administrators* grubunun üyeleri, Azure AD DS etki alanında Grup ilkesi yönetim ayrıcalıklarına sahiptir ve ayrıca özel GPO 'lar ve kuruluş birimleri (OU 'lar) oluşturabilir. Grup ilkesi ne olduğu ve nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Grup ilkesi genel bakış][group-policy-overview].
 
-Karma bir ortamda, şirket içi AD DS ortamında yapılandırılan grup ilkeleri Azure AD DS ile eşitlenmez. Azure AD DS'deki kullanıcılar veya bilgisayarlar için yapılandırma ayarlarını tanımlamak için varsayılan GPO'lardan birini düzenleme veya özel bir GPO oluşturun.
+Karma bir ortamda, şirket içi AD DS ortamda yapılandırılan Grup ilkeleri Azure AD DS ile eşitlenmez. Azure AD DS 'de kullanıcıların veya bilgisayarların yapılandırma ayarlarını tanımlamak için varsayılan GPO 'Lardan birini düzenleyin veya özel bir GPO oluşturun.
 
-Bu makalede, Grup İlkesi Yönetimi araçlarını nasıl yükleyip, yerleşik GPO'ları nasıl yükleyip özel GPO'lar oluşturabileceğinizi gösterilmektedir.
+Bu makalede grup ilkesi yönetim araçlarının nasıl yükleneceği ve ardından yerleşik GPO 'Ların nasıl düzenleneceği ve özel GPO 'Ların nasıl oluşturulduğu gösterilir.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
+Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
 * Etkin bir Azure aboneliği.
-    * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Aboneliğinizle ilişkili bir Azure Etkin Dizin kiracısı, şirket içi bir dizini veya yalnızca bulut dizininizle eşitlenir.
-    * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
-* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
-    * Gerekirse, bir Azure [Active Directory Etki Alanı Hizmetleri örneği oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi tamamlayın.
-* Azure AD DS yönetilen etki alanına katılan bir Windows Server yönetimi VM'si.
-    * Gerekirse, bir Windows [Server VM oluşturmak ve yönetilen bir etki alanına katılmak için][create-join-windows-vm]öğreticiyi tamamlayın.
-* Azure AD kiracınızda *Azure AD DC yöneticileri* grubunun üyesi olan bir kullanıcı hesabı.
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [Azure Active Directory Domain Services bir örnek oluşturmak ve yapılandırmak][create-azure-ad-ds-instance]için öğreticiyi doldurun.
+* Azure AD DS yönetilen etki alanına katılmış bir Windows Server Yönetim sanal makinesi.
+    * Gerekirse, [bir Windows Server VM oluşturma ve bunu yönetilen bir etki alanına katma][create-join-windows-vm]öğreticisini doldurun.
+* Azure AD kiracınızda *Azure AD DC Administrators* grubunun üyesi olan bir kullanıcı hesabı.
 
 > [!NOTE]
-> Yeni şablonları yönetim iş istasyonuna kopyalayarak Grup İlkesi Yönetim Şablonlarını kullanabilirsiniz. *.admx* `%SYSTEMROOT%\PolicyDefinitions` dosyalarını yereldosyalara özel *.adml* dosyalarını `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]` `Language-CountryRegion` *.adml* dosyalarının dili ve bölgesiyle eşleştiği şekilde kopyalayın.
+> Yeni şablonları yönetim iş istasyonuna kopyalayarak grup ilkesi Yönetim Şablonları kullanabilirsiniz. *. Admx* dosyalarını içine `%SYSTEMROOT%\PolicyDefinitions` kopyalayın ve yerel ayara özgü *. adml* dosyalarını öğesine `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`kopyalayın *. adml* dosyalarının `Language-CountryRegion` diliyle ve bölgesiyle eşleşir.
 >
-> Örneğin, *.adml* dosyalarının İngilizce, Abd sürümünü klasöre kopyalayın. `\en-us`
+> Örneğin, *. adml* dosyalarının ingilizce, Birleşik Devletler sürümünü `\en-us` klasörüne kopyalayın.
 >
-> Alternatif olarak, Grup İlkesi Yönetim Şablonunuzu Azure AD DS yönetilen etki alanının bir parçası olan etki alanı denetleyicilerinde merkezi olarak depolayabilirsiniz. Daha fazla bilgi [için, Windows'da Grup İlkesi Yönetim Şablonları için Merkez Mağaza'yı nasıl oluşturup yönetebilirsiniz'e](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)bakın.
+> Alternatif olarak, grup ilkesi yönetim şablonunuzu Azure AD DS yönetilen etki alanının parçası olan etki alanı denetleyicilerinde merkezi olarak saklayabilirsiniz. Daha fazla bilgi için bkz. [Windows 'da grup ilkesi Yönetim Şablonları Için merkezi mağaza oluşturma ve yönetme](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
-## <a name="install-group-policy-management-tools"></a>Grup İlke Yönetimi araçlarını yükleme
+## <a name="install-group-policy-management-tools"></a>grup ilkesi yönetim araçları 'nı yükler
 
-Grup İlkesi Nesnesi (GPO) oluşturmak ve yapılandırmak için Grup İlkesi Yönetimi araçlarını yüklemeniz gerekir. Bu araçlar Windows Server'da bir özellik olarak yüklenebilir. Bir Windows istemcisine yönetim araçlarının nasıl yüklenirhakkında daha fazla bilgi için, [uzaktan sunucu yönetim araçlarını (RSAT)][install-rsat]yükle'ye bakın.
+Grup ilkesi nesnesi (GPO) oluşturmak ve yapılandırmak için grup ilkesi yönetim araçlarını yüklemeniz gerekir. Bu araçlar, Windows Server 'da bir özellik olarak yüklenebilir. Windows istemcisine yönetimsel araçların nasıl yükleneceği hakkında daha fazla bilgi için bkz. Install [uzak sunucu yönetim araçları (RSAT)][install-rsat].
 
-1. Yönetim VM'nizde oturum açın. Azure portalını kullanarak bağlanma adımlarını öğrenmek [için windows server vm'ye bağlan'a][connect-windows-server-vm]bakın.
-1. VM'de oturum açtığınızda **Sunucu Yöneticisi** varsayılan olarak açılmalıdır. Değilse, **Başlat** menüsünde **Server Manager'ı**seçin.
-1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde, Rol ve **Özellikler Ekle'yi**seçin.
-1. Roller ve Özellikler Ekle *Sihirbazı'nın*Başlamadan **Önce** sayfasında **İleri'yi**seçin.
-1. Yükleme *Türü*için **Rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri'yi**seçin.
-1. Sunucu **Seçimi** sayfasında, sunucu havuzundan geçerli VM'yi seçin( *örneğin myvm.aaddscontoso.com*, sonra **İleri'yi**seçin.
-1. Sunucu **Rolleri** sayfasında **İleri'yi**tıklatın.
+1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
+1. **Sunucu Yöneticisi** , VM 'de oturum açtığınızda varsayılan olarak açılmalıdır. Aksi takdirde, **Başlat** menüsünde **Sunucu Yöneticisi**' yi seçin.
+1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
+1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
+1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDSCONTOSO.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında **Grup İlkesi Yönetimi** özelliğini seçin.
 
-    ![Özellikler sayfasından 'Grup İlkesi Yönetimi'ni yükleme](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
+    ![Özellikler sayfasından ' grup ilkesi Management ' öğesini yükler](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. **Onay** sayfasında **Yükle'yi**seçin. Grup İlkesi Yönetimi araçlarını yüklemek bir veya iki dakika sürebilir.
-1. Özellik yükleme tamamlandığında, Rol ve **Özellikler Ekle** sihirbazı'ndan çıkmak için **Kapat'ı** seçin.
+1. **Onay** sayfasında, **yükler**' i seçin. Grup ilkesi yönetim araçlarını yüklemek bir dakika veya iki dakika sürebilir.
+1. Özellik yüklemesi tamamlandığında, **rol ve özellik ekleme** Sihirbazı 'ndan çıkmak için **Kapat** ' ı seçin.
 
-## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Grup İlkesi Yönetim Konsolu'nu açın ve bir nesneyi
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Grup İlkesi Yönetim Konsolu açma ve nesneyi düzenleme
 
-Varsayılan grup ilkesi nesneleri (GPO'lar), Azure AD DS yönetilen etki alanında kullanıcılar ve bilgisayarlar için vardır. Önceki bölümden yüklenen Grup İlkesi Yönetimi özelliğiyle, varolan bir GPO'yu görüntüleyelim ve güncelleyelim. Sonraki bölümde, özel bir GPO oluşturursunuz.
+Azure AD DS yönetilen bir etki alanındaki kullanıcılar ve bilgisayarlar için varsayılan Grup İlkesi nesneleri (GPO 'Lar) vardır. Önceki bölümden yüklenmiş grup ilkesi yönetimi özelliği ile mevcut bir GPO 'YU görüntüleyip düzenleyelim. Sonraki bölümde, özel bir GPO oluşturursunuz.
 
 > [!NOTE]
-> Grup ilkesini Azure AD DS yönetilen bir etki alanında yönetmek için, *AAD DC Yöneticileri* grubunun üyesi bir kullanıcı hesabında oturum açmanız gerekir.
+> Azure AD DS yönetilen bir etki alanında Grup İlkesi 'ni yönetmek için *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
-1. Başlangıç ekranından **Yönetim Araçları'nı**seçin. Önceki bölümde yüklü **Grup İlkesi Yönetimi** de dahil olmak üzere kullanılabilir yönetim araçlarının listesi gösterilir.
-1. Grup İlkesi Yönetim Konsolu'nu (GPMC) açmak için **Grup İlkesi Yönetimi'ni**seçin.
+1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. Önceki bölümde yüklü **Grup İlkesi Yönetimi** de dahil olmak üzere kullanılabilir yönetim araçlarının bir listesi gösterilir.
+1. Grup İlkesi Yönetim Konsolu (GPMC) açmak için **Grup İlkesi Yönetim**' i seçin.
 
-    ![Grup İlke Yönetimi Konsolu, grup ilkesi nesnelerini yönetmeye hazır açılır](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+    ![Grup İlkesi Yönetim Konsolu, Grup İlkesi nesnelerini düzenlemeye hazırmı açılır](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Azure AD DS yönetilen etki alanında iki yerleşik Grup İlkesi İlkesi Nesnesi (GPO) vardır - biri *AADDC Computers* kapsayıcısı için, diğeri de *AADDC Kullanıcıları* kapsayıcısı için. Bu GPO'ları, Azure AD DS yönetilen etki alanınızda gerektiğinde grup ilkesini yapılandırmak için özelleştirebilirsiniz.
+*Aaddc bilgisayarları* kapsayıcısı Için bir Azure AD DS yönetilen etki alanında iki yerleşik Grup İlkesi nesnesi (GPO) vardır ve bir diğeri *Aaddc kullanıcıları* kapsayıcısı için bir tane vardır. Bu GPO 'Ları, Azure AD DS yönetilen etki alanında gerektiğinde grup ilkesini yapılandırmak için özelleştirebilirsiniz.
 
-1. Grup **İlkesi Yönetimi** konsolunda, **Orman: aaddscontoso.com** düğümü genişletin. Ardından, **Etki Alanları** düğümlerini genişletin.
+1. **Grup İlkesi Yönetim** konsolunda, **Orman: aaddscontoso.com** düğümünü genişletin. Sonra, **etki alanı** düğümlerini genişletin.
 
-    *AADDC Bilgisayarlar* ve *AADDC Kullanıcıları*için iki yerleşik kapsayıcı bulunmaktadır. Bu kapsayıcıların her biri, bunlara uygulanan varsayılan bir GPO'ya sahiptir.
+    *Aaddc bilgisayarları* ve *Aaddc kullanıcıları*için iki yerleşik kapsayıcı bulunur. Bu kapsayıcıların her birine, uygulanan varsayılan bir GPO vardır.
 
-    ![Varsayılan 'AADDC Bilgisayar' ve 'AADDC Kullanıcıları' kapsayıcılarına uygulanan yerleşik GPO'lar](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
+    ![Varsayılan ' AADDC Computers ' ve ' AADDC Users ' kapsayıcılarına uygulanan yerleşik GPO 'Lar](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Bu yerleşik GDO'lar, Azure AD DS yönetilen etki alanınızda belirli grup ilkelerini yapılandırmak için özelleştirilebilir. *AADDC Computers GPO*gibi GPO'lardan birini sağ seçin, ardından **Edit'i seçin...**
+1. Bu yerleşik GPO 'Lar, Azure AD DS yönetilen etki alanında belirli grup ilkelerini yapılandırmak için özelleştirilebilir. GPO 'Lardan birini ( *Aaddc bilgisayarları GPO 'su*gibi) sağ seçin ve **Düzenle...** seçeneğini belirleyin.
 
-    ![Yerleşik GPO'lardan birini 'Edit' seçeneğini seçin](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
+    ![Yerleşik GPO 'Lardan birini ' düzenleme ' seçeneğini belirleyin](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-1. Grup İlkesi Yönetimi Düzenleyicisi aracı, *Hesap İlkeleri*gibi GPO'yu özelleştirmenize izin vermek için açılır:
+1. *Hesap ilkeleri*gıbı, GPO 'yu özelleştirmenizi sağlamak için Grup İlkesi Yönetimi Düzenleyicisi aracı açılır:
 
-    ![Ayarları gerektiği gibi yapılandırmak için GPO'u özelleştirme](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Ayarları gerektiği gibi yapılandırmak için GPO 'YU özelleştirme](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-    Tamamlandığında, ilkeyi kaydetmek için **Dosya > Kaydet'i** seçin. Bilgisayarlar varsayılan olarak her 90 dakikada bir Grup İlkesini yeniler ve yaptığınız değişiklikleri uygular.
+    İşiniz bittiğinde, ilkeyi kaydetmek için **dosya > kaydet** ' i seçin. Bilgisayarlar varsayılan olarak her 90 dakikada bir grup ilkesi yeniler ve yaptığınız değişiklikleri uygular.
 
-## <a name="create-a-custom-group-policy-object"></a>Özel bir Grup İlkesi Nesnesi Oluşturma
+## <a name="create-a-custom-group-policy-object"></a>Özel bir grup ilkesi nesnesi oluşturma
 
-Benzer ilke ayarlarını gruplandırmak için, genellikle tek, varsayılan GPO'da gerekli tüm ayarları uygulamak yerine ek GPO'lar oluşturursunuz. Azure AD DS ile kendi özel grup ilke nesnelerinizi oluşturabilir veya içe aktarabilir ve bunları özel bir OU'ya bağlayabilirsiniz. Önce özel bir OU oluşturmanız gerekiyorsa, [Azure AD DS yönetilen etki alanında özel bir OU oluşturma'ya](create-ou.md)bakın.
+Benzer ilke ayarlarını gruplamak için, tüm gerekli ayarları tek, varsayılan GPO 'da uygulamak yerine genellikle ek GPO 'Lar oluşturursunuz. Azure AD DS ile kendi özel Grup İlkesi nesnelerinizi oluşturup içeri aktarabilir ve bunları özel bir OU 'ya bağlayabilirsiniz. Önce özel bir OU oluşturmanız gerekiyorsa, bkz. [Azure AD DS yönetilen etki alanında özel bır OU oluşturma](create-ou.md).
 
-1. Grup **İlkesi Yönetimi** konsolunda, *MyCustomOU*gibi özel kuruluş biriminizi (OU) seçin. Ou'yu sağ seçin ve bu etki alanında bir GPO oluştur'u seçin **ve buraya bağla...**:
+1. **Grup İlkesi Yönetim** konsolunda, *mycustomou*gibi özel kuruluş birimi (OU) seçeneğini belirleyin. OU 'yu sağ seçin ve **Bu etki alanında GPO oluştur ve buraya bağla ' yı seçin...**:
 
-    ![Grup İlkesi Yönetimi konsolunda özel bir GPO oluşturma](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+    ![grup ilkesi yönetim konsolunda özel bir GPO oluşturma](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
-1. *Özel GPO'm*gibi yeni GPO için bir ad belirtin, ardından **Tamam'ı**seçin. İsteğe bağlı olarak bu özel GPO'ya varolan bir GPO ve ilke seçenekleri kümesini dayandırabilirsiniz.
+1. Yeni GPO için *özel GPO 'IM*gibi bir ad belirtin ve ardından **Tamam**' ı seçin. İsteğe bağlı olarak bu özel GPO 'YU mevcut bir GPO 'da ve ilke seçenekleri kümesinde temel alabilirsiniz.
 
     ![Yeni özel GPO için bir ad belirtin](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-1. Özel GPO oluşturulur ve özel OU'nuza bağlanır. Şimdi ilke ayarlarını yapılandırmak için, özel GPO'yu sağ seçin ve **Edit'i seçin...**:
+1. Özel GPO oluşturulup özel OU 'nuzun bağlanır. İlke ayarlarını şimdi yapılandırmak için özel GPO 'YU sağ seçin ve **Düzenle...**' yi seçin:
 
-    ![Özel GPO'nuzu 'Edit' seçeneğini seçin](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+    ![Özel GPO 'nuzun ' düzenleme ' seçeneğini belirleyin](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
 
-1. **Grup İlkesi Yönetimi** Düzenleyicisi, GPO'yu özelleştirmenize izin vermek için açılır:
+1. **Grup İlkesi Yönetimi Düzenleyicisi** , GPO 'yu özelleştirmenize olanak sağlamak için açılır:
 
-    ![Ayarları gerektiği gibi yapılandırmak için GPO'u özelleştirme](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Ayarları gerektiği gibi yapılandırmak için GPO 'YU özelleştirme](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
-    Tamamlandığında, ilkeyi kaydetmek için **Dosya > Kaydet'i** seçin. Bilgisayarlar varsayılan olarak her 90 dakikada bir Grup İlkesini yeniler ve yaptığınız değişiklikleri uygular.
+    İşiniz bittiğinde, ilkeyi kaydetmek için **dosya > kaydet** ' i seçin. Bilgisayarlar varsayılan olarak her 90 dakikada bir grup ilkesi yeniler ve yaptığınız değişiklikleri uygular.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Grup İlkesi Yönetim Konsolu'nu kullanarak yapılandırabileceğiniz kullanılabilir Grup İlkesi ayarları hakkında daha fazla bilgi için [Grup İlkesi tercih öğeleriyle Çalışma'ya][group-policy-console]bakın.
+Grup İlkesi Yönetim Konsolu kullanarak yapılandırabileceğiniz kullanılabilir grup ilkesi ayarları hakkında daha fazla bilgi için bkz. [Grup İlkesi tercih öğeleriyle çalışma][group-policy-console].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
