@@ -11,58 +11,58 @@ ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
 ms.openlocfilehash: 52e3e65fb4f42530373decca547674a28a60f759
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446668"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Bing Görsel Arama API’si nedir?
 
-Bing Görsel Arama API'si, görüntü yle ilgili öngörüleri döndürür. Bir resim yükleyebilir veya birine URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntüyü içeren web sayfaları ve daha fazlasıdır. Bing Görsel Arama API'si tarafından döndürülen öngörüler, Bing.com/images'da gösterilenlere benzer. 
+Bing Görsel Arama API'si bir görüntü için öngörüleri döndürür. Bir görüntüyü karşıya yükleyebilir veya bir URL sağlayabilirsiniz. Öngörüler görsel olarak benzer görüntüler, alışveriş kaynakları, görüntü içeren Web sayfaları ve daha fazlasını içerir. Bing Görsel Arama API'si tarafından döndürülen Öngörüler, Bing.com/images 'de gösterilenlere benzerdir. 
 
-Bing Resim [Arama API'sini](../bing-image-search/overview.md)kullanıyorsanız, resim yüklemek yerine Bing Görsel Aramanız için bu API'nin arama sonuçlarından gelen içgörü belirteçlerini kullanabilirsiniz.
+[Bing resim arama API'si](../bing-image-search/overview.md)kullanıyorsanız, bir görüntüyü karşıya yüklemek yerine, bu API 'nin arama Bing Görsel Arama sonuçlarındaki öngörüleri belirteçlerini kullanabilirsiniz.
 
 > [!IMPORTANT]
-> Bing Resim Arama API'sini kullanarak görüntü öngörüleri alırsanız, daha kapsamlı öngörüler sağlayan Bing Görsel Arama API'sine geçmeyi düşünün.
+> Bing Resim Arama API'si kullanarak görüntü öngörüleri alırsanız, daha kapsamlı öngörüler sağlayan Bing Görsel Arama API'si geçmeyi göz önünde bulundurun.
 
 ## <a name="insights"></a>Insights
 
-Bing Görsel Arama'yı kullanarak aşağıdaki bilgileri keşfedebilirsiniz:
+Bing Görsel Arama kullanarak aşağıdaki öngörüleri bulabilirsiniz:
 
 | İçgörü                              | Açıklama |
 |--------------------------------------|-------------|
-| Görsel olarak benzer görüntüler              | Giriş görüntüsüne görsel olarak benzeyen görüntülerin listesi. |
-| Görsel olarak benzer ürünler            | Görsel olarak gösterilen ürüne benzer ürünler.            |
-| Alışveriş kaynakları                     | Giriş görüntüsünde gösterilen öğeyi satın alabileceğiniz yerler.            |
-| İlgili aramalar                     | Başkaları tarafından yapılan veya resmin içeriğine dayanan ilgili aramalar.            |
-| Resmi içeren web sayfaları     | Giriş görüntüsünü içeren web sayfaları.            |
-| Tarifler                              | Giriş görüntüsünde gösterilen yemeği yapmak için tarifler içeren web sayfaları.            |
-| Varlıklar                             | Tanınmış insanlar, yerler ve diğer şeyler. |
+| Görsel olarak benzer görüntüler              | Giriş resmine görsel olarak benzeyen görüntülerin listesi. |
+| Görsel açıdan benzer ürünler            | Gösterilen ürüne görsel olarak benzeyen ürünler.            |
+| Alışveriş kaynakları                     | Girdi görüntüsünde gösterilen öğeyi satın alabileceğiniz yer.            |
+| İlgili aramalar                     | Başkaları tarafından yapılan veya görüntünün içeriğini temel alan ilgili aramalar.            |
+| Görüntüyü içeren Web sayfaları     | Giriş görüntüsünü içeren Web sayfaları.            |
+| Lerini                              | Giriş görüntüsünde gösterilen çanağı oluşturmak için Tarifler içeren Web sayfaları.            |
+| Varlıklar                             | İyi bilinen kişiler, Yerlerim ve şeyler. |
 
-Bing Görsel Arama, öngörülere ek olarak, giriş görüntüsünden türetilen çeşitli terimleri (diğer bir deyişle etiketler) döndürür. Etiketler, kullanıcıların resimde bulunan kavramları keşfetmesini sağlar. Örneğin, giriş görüntüsü ünlü bir atlete aitse, etiketlerden biri sporcunun adı olabilir, başka bir etiket Spor olabilir. Veya, giriş görüntüsü bir elmalı turta ise, etiketleri Elmalı Turta, Pasta ve Tatlılar olabilir.
+Bing Görsel Arama, öngörülere ek olarak, giriş görüntüsünden elde edilen çeşitli terimleri (Etiketler) döndürür. Etiketler, kullanıcıların görüntüde bulunan kavramları keşfetmesine olanak tanır. Örneğin, giriş görüntüsü faur Athlete ise etiketlerden biri Athlete adı olabilir, başka bir etiket de spor olabilir. Ya da, giriş görüntüsü bir Apple pasta ise, Etiketler Apple pasta, Pyalar ve teknoloji olabilir.
 
-Bing Görsel Arama sonuçları, görüntüyle ilgili bölgeler için sınırlayıcı kutuları da içerir. Örneğin, görüntü birden çok ünlü içeriyorsa, sonuçlar tanınan ünlülerin her biri için sınırlayıcı kutular içerebilir. Veya Bing görüntüde bir ürün veya giysi tanıyorsa, sonuç tanınan öğe için bir sınırlayıcı kutu içerebilir.
+Bing Görsel Arama sonuçlar, görüntüde ilgilendiğiniz bölgelere yönelik sınırlayıcı kutuları da içerir. Örneğin, görüntüde birkaç ünlüler varsa, sonuçlar tanınan ünlülerin her biri için sınırlayıcı kutular içerebilir. Ya da Bing görüntüde bir ürün veya giyiği tanırsa, sonuç tanınan öğe için bir sınırlayıcı kutusu içerebilir.
 
 ## <a name="workflow"></a>İş akışı
 
-Bing Görsel Arama API'si, HTTP isteklerini gerçekleştirebilen ve JSON'u ayrıştırabilen herhangi bir programlama dilinden aramayı kolaylaştıran, yeniden hizmet veren bir web hizmetidir. Hizmet için REST API veya SDK'yı kullanabilirsiniz.
+Bing Görsel Arama API'si, yeniden bir Web hizmetidir ve HTTP istekleri yapıp JSON 'u ayrıştırabilen herhangi bir programlama dilinden çağrı yapmayı kolaylaştırır. Hizmet için REST API ya da SDK 'sını kullanabilirsiniz.
 
-1. Bing Arama API'lerine erişmek için bir [Bilişsel Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa, ücretsiz bir [hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/) Ücretsiz deneme sürümünü etkinleştirdikten sonra abonelik anahtarınızı Hesabınızı oluşturduktan sonra [Azure portalından](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) veya [Azure web sitesinden](https://azure.microsoft.com/try/cognitive-services/my-apis) alabilirsiniz.
-2. Geçerli bir arama sorgusuyla API'ye istek gönderin.
+1. Bing Arama API'leri erişmek için bilişsel [Hizmetler hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oluşturun. Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/). Hesabınızı oluşturduktan sonra [Azure Portal](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) abonelik anahtarınızı veya ücretsiz deneme sürümünü etkinleştirdikten sonra [Azure Web sitesi](https://azure.microsoft.com/try/cognitive-services/my-apis) 'ni alabilirsiniz.
+2. Geçerli bir arama sorgusuyla API 'ye bir istek gönderin.
 3. Döndürülen JSON iletisini ayrıştırarak API yanıtını işleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İlk olarak, Bing Görsel Arama API [etkileşimli demo](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)deneyin.
-Demo, bir arama sorgusunu nasıl hızlı bir şekilde özelleştirebileceğinizi ve resimler için web'i nasıl tarayabildiğinizi gösterir.
+İlk olarak Bing Görsel Arama API'si [etkileşimli tanıtımı](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)deneyin.
+Demo, bir arama sorgusunu hızlı bir şekilde nasıl özelleştirebileceğinizi ve görüntüleri görüntüler.
 
-Hızlı bir şekilde ilk isteğiile başlamak için, quickstarts bakın: [C #](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [düğümü.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
+İlk isteğinizi hızlıca kullanmaya başlamak için hızlı başlangıçlara bakın: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Görsel Ler - Görsel Arama](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) başvurusu, resim tabanlı arama sonuçları istemek için kullanabileceğiniz uç noktalar, istek üstbilgileri, yanıtlar ve sorgu parametreleri üzerindeki tanımları ve bilgileri açıklar.
+* [Görüntüler-görsel arama](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch) başvurusu, uç noktalar, istek üstbilgileri, yanıtlar ve görüntü tabanlı arama sonuçları istemek için kullanabileceğiniz sorgu parametreleri hakkında tanımları ve bilgileri açıklar.
 
-* [Bing Arama API kullanımı ve görüntüleme gereksinimleri,](../bing-web-search/use-display-requirements.md) Bing arama API'leri aracılığıyla elde edilen içeriğin ve bilgilerin kabul edilebilir kullanımlarını belirtir.
+* [BING arama API kullanımı ve görüntüleme gereksinimleri](../bing-web-search/use-display-requirements.md) , Bing arama API 'leri aracılığıyla elde edilen içerik ve bilgilerin kabul edilebilir kullanımlarını belirtir.
 
-* Diğer kullanılabilir API'leri keşfetmek için [Bing Arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.
+* Kullanılabilir diğer API 'Leri araştırmak için [BING arama API hub sayfasını](../bing-web-search/search-the-web.md) ziyaret edin.

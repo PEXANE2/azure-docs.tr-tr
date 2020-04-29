@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Mürekkep Recognizer REST API ve Java ile dijital mürekçeyi tanıyın'
+title: 'Hızlı başlangıç: mürekkep tanıyıcı REST API ve Java ile dijital mürekkep tanıma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta dijital mürekkep konturlarını tanımaya başlamak için Mürekkep Tanıyıcı API'sini kullanın.
+description: Bu hızlı başlangıçta dijital mürekkep vuruşlarını tanımayı başlatmak için mürekkep tanıyıcı API 'sini kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: d2cd4e56477ea39587ce318538c9ddd84c51b03b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75448115"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Quickstart: Mürekkep Recognizer REST API ve Java ile dijital mürekçeyi tanıyın
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Hızlı başlangıç: mürekkep tanıyıcı REST API ve Java ile dijital mürekkep tanıma
 
-Dijital mürekkep darbelerinde Mürekkep Tanıyıcı API'sini kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bu Java uygulaması JSON biçimli mürekkep kontur verilerini içeren bir API isteği gönderir ve yanıtı alır.
+Mürekkep tanıyıcı API 'sini dijital mürekkep vuruşları üzerinde kullanmaya başlamak için bu hızlı başlangıcı kullanın. Bu Java uygulaması JSON biçimli mürekkep konturu verilerini içeren bir API isteği gönderir ve yanıtı alır.
 
-Bu uygulama Java'da yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful web hizmetidir.
+Bu uygulama Java 'da yazıldığı sırada, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
-Genellikle bir dijital mürekkep uygulamasından API'yi çağırırsınız. Bu hızlı başlatma, json dosyasından aşağıdaki el yazısı örneği için mürekkep kontur verileri gönderir.
+Genellikle, API 'YI bir dijital mürekkep uygulamasının içinden çağıracağınızdan. Bu hızlı başlangıç, bir JSON dosyasından aşağıdaki el yazısı örneği için mürekkep konturu verileri gönderir.
 
-![el yazısı metin bir görüntü](../media/handwriting-sample.jpg)
+![El yazısı metin görüntüsü](../media/handwriting-sample.jpg)
 
-Bu hızlı başlatmanın kaynak kodu [GitHub'da](https://go.microsoft.com/fwlink/?linkid=2089904)bulunabilir.
+Bu hızlı başlangıç için kaynak kodu [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904)' da bulabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Java&trade; Geliştirme Kiti(JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya daha sonra.
+- [&trade; Java Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) veya üzeri.
 
-- Bu kütüphaneleri Maven Deposu'ndan alma
-    - [Java paketinde JSON](https://mvnrepository.com/artifact/org.json/json)
+- Bu kitaplıkları Maven deposundan içeri aktar
+    - [Java paketindeki JSON](https://mvnrepository.com/artifact/org.json/json)
     - [Apache HttpClient](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) paketi
 
-- Bu hızlı başlatma için örnek mürekkep darbesi verileri [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json)bulunabilir.
+- Bu hızlı başlangıç için örnek mürekkep konturu verileri [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-ink-strokes.json)'da bulunabilir.
 
-### <a name="create-an-ink-recognizer-resource"></a>Mürekkep Tanıyıcı kaynağı oluşturma
+### <a name="create-an-ink-recognizer-resource"></a>Mürekkep tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [creating an ink recognizer resource](../includes/setup-instructions.md)]
 
@@ -49,44 +49,44 @@ Bu hızlı başlatmanın kaynak kodu [GitHub'da](https://go.microsoft.com/fwlink
     
     [!code-java[import statements](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=imports)]
 
-2. Abonelik anahtarınız, bitiş noktanız ve JSON dosyanız için değişkenler oluşturun. Bitiş noktası daha sonra Mürekça tanıyan URI'ye eklenir.
+2. Abonelik anahtarınız, uç nokta ve JSON dosyanız için değişkenler oluşturun. Uç nokta daha sonra mürekkep tanıyıcı URI 'sine eklenecektir.
 
     [!code-java[initial vars](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>İstek göndermek için bir işlev oluşturma
 
-1. Yukarıda oluşturulan değişkenleri alan yeni `sendRequest()` bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
+1. Yukarıda oluşturulan değişkenleri alan adlı `sendRequest()` yeni bir işlev oluşturun. Ardından aşağıdaki adımları gerçekleştirin.
 
-2. API'ye istek gönderebilecek bir `CloseableHttpClient` nesne oluşturun. Bitiş noktanızı `HttpPut` ve Mürekkep Tanıyıcısı URL'sini birleştirerek isteği bir istek nesnesine gönderin.
+2. API 'ye `CloseableHttpClient` istek gönderebilen bir nesne oluşturun. Uç noktanızı ve mürekkep tanıyıcı `HttpPut` URL 'sini birleştirerek isteği bir istek nesnesine gönderin.
 
-3. Üstbilgiyi `application/json`ayarlamak `setHeader()` ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye eklemek için isteğin işlevini kullanın. `Content-Type`
+3. `Content-Type` Üstbilgiyi `application/json`ayarlamak için `Ocp-Apim-Subscription-Key` isteğin `setHeader()` işlevini kullanın ve abonelik anahtarınızı üstbilgiye ekleyin.
 
-4. Gönderilecek veriler için `setEntity()` isteğin işlevini kullanın.   
+4. Gönderilecek verilere isteğin `setEntity()` işlevini kullanın.   
 
-5. İstem göndermek `execute()` ve bir `CloseableHttpResponse` nesneye kaydetmek için istemcinin işlevini kullanın. 
+5. İsteği göndermek ve bir `execute()` `CloseableHttpResponse` nesnesine kaydetmek için istemcinin işlevini kullanın. 
 
-6. Yanıt `HttpEntity` içeriğini depolamak için bir nesne oluşturun. İçeriği `getEntity()`' ile alın. Yanıt boş değilse, iade edin.
+6. Yanıt içeriğini `HttpEntity` depolamak için bir nesne oluşturun. İçeriğini ile `getEntity()`alın. Yanıt boş değilse, döndürün.
     
     [!code-java[send a request](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=sendRequest)]
 
-## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönderme
+## <a name="send-an-ink-recognition-request"></a>Mürekkep tanıma isteği gönder
 
-Mürekkep darbesi `recognizeInk()` verilerinizi tanımak için çağrılan bir yöntem oluşturun. Bitiş `sendRequest()` noktanız, url'niz, abonelik anahtarınız ve json verilerinizle yukarıda oluşturulan yöntemi arayın. Sonucu alın ve konsola yazdırın.
+Mürekkep vuruşu verilerinizi tanımak `recognizeInk()` için adlı bir yöntem oluşturun. Uç nokta `sendRequest()` , URL, abonelik anahtarı ve JSON verileriniz ile yukarıda oluşturulan yöntemi çağırın. Sonucu alın ve konsola yazdırın.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 
-## <a name="load-your-digital-ink-data-and-send-the-request"></a>Dijital mürekkep verilerinizi yükleyin ve isteği nizi gönderin
+## <a name="load-your-digital-ink-data-and-send-the-request"></a>Dijital mürekkep verilerinizi yükleyin ve isteği gönderin
 
-1. Uygulamanızın ana yönteminde, isteklere eklenecek verileri içeren JSON dosyasında okuyun.
+1. Uygulamanızın ana yönteminde, isteklere eklenecek verileri içeren JSON dosyasını okuyun.
 
-2. Yukarıda oluşturulan mürekkep tanıma işlevini arayın.
+2. Yukarıda oluşturulan mürekkep tanıma işlevini çağırın.
     
     [!code-java[main method](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=main)]
 
 
-## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırın ve yanıtı görüntüleyin
+## <a name="run-the-application-and-view-the-response"></a>Uygulamayı çalıştırma ve yanıtı görüntüleme
 
-Uygulamayı çalıştırın. Başarılı bir yanıt JSON biçiminde döndürülür. Ayrıca [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json)json yanıtı bulabilirsiniz.
+Uygulamayı çalıştırın. JSON biçiminde başarılı bir yanıt döndürülür. Ayrıca, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/InkRecognition/quickstart/example-response.json)'da JSON yanıtını bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -94,7 +94,7 @@ Uygulamayı çalıştırın. Başarılı bir yanıt JSON biçiminde döndürül�
 > [REST API başvurusu](https://go.microsoft.com/fwlink/?linkid=2089907)
 
 
-Mürekkep Tanıma API'sinin dijital mürekkep uygulamasında nasıl çalıştığını görmek için GitHub'daki aşağıdaki örnek uygulamalara göz atın:
+Mürekkep tanıma API 'sinin dijital bir mürekkep uygulamasında nasıl çalıştığını görmek için GitHub 'da aşağıdaki örnek uygulamalara göz atın:
 * [C# Evrensel Windows Platformu (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript web tarayıcı uygulaması](https://go.microsoft.com/fwlink/?linkid=2089908)       

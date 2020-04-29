@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: REST API ve Python kullanarak görüntü öngörüleri alın - Bing Görsel Arama'
+title: 'Hızlı başlangıç: REST API ve Python kullanarak görüntü öngörülerini alın-Bing Görsel Arama'
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'sine nasıl görüntü yükleyip bu konuda bilgi edineceklerini öğrenin.
+description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: b56f6743b642904349797ac5b6167194f7916b45
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446599"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Quickstart: Bing Visual Search REST API ve Python'u kullanarak görüntü öngörüleri alın
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Python kullanarak görüntü öngörülerini alın
 
-Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Python uygulaması API'ye bir resim yükler ve döndürdgösterdiği bilgileri görüntüler. Bu uygulama Python'da yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Görsel Arama API'si ilk çağrısını yapmak ve sonuçları görüntülemek için bu hızlı başlangıcı kullanın. Bu Python uygulaması, API 'ye bir görüntü yükler ve döndürdüğü bilgileri görüntüler. Bu uygulama Python 'da yazılmış olsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -29,13 +29,13 @@ Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntüleme
 
 ## <a name="initialize-the-application"></a>Uygulamayı başlatma
 
-1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python `import` dosyası oluşturun ve aşağıdaki ifadeyi ekleyin:
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki `import` ifadeyi ekleyin:
 
     ```python
     import requests, json
     ```
 
-2. Abonelik anahtarınız, bitiş noktanız ve yüklediğiniz resme giden yol için değişkenler oluşturun. `BASE_URI`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir:
+2. Abonelik anahtarınız, uç noktanız ve karşıya yüklediğiniz görüntünün yolu için değişkenler oluşturun. `BASE_URI`Aşağıdaki genel uç nokta veya kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir:
 
     ```python
 
@@ -44,7 +44,7 @@ Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntüleme
     imagePath = 'your-image-path'
     ```
     
-    Yerel bir resim yüklediğinizde, form verilerinin üstbilgiiç `Content-Disposition` içermesi gerekir. Parametresini `name` "görüntü" olarak ayarlamanız gerekir ve `filename` parametreyi herhangi bir dize ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Yükleyebileceğiniz maksimum görüntü boyutu 1 MB'dır.
+    Yerel bir görüntüyü karşıya yüklediğinizde, form verileri `Content-Disposition` üstbilgiyi içermelidir. `name` Parametresini "Image" olarak ayarlamanız gerekir ve `filename` parametreyi herhangi bir dizeye ayarlayabilirsiniz. Formun içeriği görüntünün ikili verilerini içerir. Karşıya yükleyebileceğiniz en büyük görüntü boyutu 1 MB 'tır.
     
     ```
     --boundary_1234-abcd
@@ -55,21 +55,21 @@ Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntüleme
     --boundary_1234-abcd--
     ```
 
-3. İsteğinizin üstbilgi bilgilerini tutmak için bir sözlük nesnesi oluşturun. Abonelik anahtarınızı aşağıda gösterildiği `Ocp-Apim-Subscription-Key`gibi dize yle bağdın:
+3. İsteğiniz başlık bilgilerini tutmak için bir sözlük nesnesi oluşturun. Abonelik anahtarınızı aşağıda gösterildiği gibi dizeye `Ocp-Apim-Subscription-Key`bağlayın:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. İsteği gönderdiğinizde açılıp yüklenen resminizi içeren başka bir sözlük oluşturun:
+4. Görüntüsünü içeren ve isteği gönderdiğinizde açılan ve yüklenen bir başka sözlük oluşturun:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
     ```
 
-## <a name="parse-the-json-response"></a>Ayrışdırış JSON yanıtı
+## <a name="parse-the-json-response"></a>JSON yanıtını Ayrıştır
 
-1. API yanıtını `print_json()` almak için çağrılan bir yöntem oluşturun ve JSON'u yazdırın:
+1. API yanıtında gerçekleştirilecek adlı `print_json()` bir yöntem oluşturun ve JSON 'u yazdırın:
 
     ```python
     def print_json(obj):
@@ -77,9 +77,9 @@ Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntüleme
         print(json.dumps(obj, sort_keys=True, indent=2, separators=(',', ': ')))
     ```
 
-## <a name="send-the-request"></a>İsteği gönderme
+## <a name="send-the-request"></a>İsteği gönder
 
-1. Bing `requests.post()` Görsel Arama API'sine istek göndermek için kullanın. Bitiş noktanız, üstbilginiz ve dosya bilgileriniz için dizeyi ekleyin. `response.json()` Yazdır: `print_json()`
+1. Bing Görsel Arama API'si `requests.post()` bir istek göndermek için kullanın. Uç nokta, başlık ve dosya bilgileriniz için dize ekleyin. Yazdır `response.json()` `print_json()`:
 
     ```python
     try:
@@ -94,4 +94,4 @@ Bing Görsel Arama API'sine ilk aramanızı yapmak ve sonuçları görüntüleme
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Görsel Arama tek sayfalık web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)
+> [Görsel Arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Ses dosyası, C# içine synthesize konuşma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştirme, C# konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 ms.openlocfilehash: ba2c4cad2e98730493862683cd6cdfdeef322c71
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466576"
 ---
-Hemen atlayış etmeyi tercih ederseniz, GitHub'daki tüm <a href="https://aka.ms/speech/github-csharp">Speech SDK C# Örneklerini</a> görüntüleyin veya indirin. Yoksa başlayalım.
+Sağ tarafta doğrudan geçiş yapmayı tercih ediyorsanız, GitHub 'da tüm <a href="https://aka.ms/speech/github-csharp">konuşma SDK C# örneklerini</a> görüntüleyin veya indirin. Aksi takdirde, haydi başlayalım.

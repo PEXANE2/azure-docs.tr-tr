@@ -6,20 +6,20 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3c6059e131eadf1144fd189c47691b2352176745
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75446431"
 ---
-## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar değeri çiftleri ve tablolar için formları analiz edin
+## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
 
-Ardından, bir belgeyi çözümlemek ve anahtar değeri çiftleri ve tabloları ayıklamak için yeni eğitilmiş modelinizi kullanırsınız. Yeni bir Python komut dosyasında aşağıdaki kodu çalıştırarak **[Çözüm formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API'sini arayın. Komut dosyasını çalıştırmadan önce aşağıdaki değişiklikleri yapın:
+Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Formunuzun dosya yolu ile değiştirin `<file path>` (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL'si de olabilir. Bu hızlı başlangıç için, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
-1. Önceki `<model_id>` bölümde aldığınız model kimliğiyle değiştirin.
-1. Form `<endpoint>` Recognizer abonelik anahtarınızla elde ettiğiniz bitiş noktasıyla değiştirin. Form Recognizer kaynak **Genel Bakış** sekmenizde bulabilirsiniz.
-1. Dosya `<file type>` türüyle değiştirin. Desteklenen türleri: `application/pdf` `image/jpeg`, `image/png` `image/tiff`, , .
+1. Formunuzun `<file path>` dosya yoluyla değiştirin (örneğin, C:\temp\file.exe). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz.
+1. Önceki `<model_id>` bölümde ALDıĞıNıZ model kimliğiyle değiştirin.
+1. Form `<endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. Dosya `<file type>` türü ile değiştirin. Desteklenen türler: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
     ```python
@@ -58,15 +58,15 @@ Ardından, bir belgeyi çözümlemek ve anahtar değeri çiftleri ve tabloları 
         quit() 
     ```
 
-1. Kodu .py uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-analyze.py.*
+1. Kodu. Kopyala uzantılı bir dosyaya kaydedin. Örneğin, *form-recognizer-Analyze.py*.
 1. Bir komut istemi penceresi açın.
 1. İstemde, örneği çalıştırmak için `python` komutunu kullanın. Örneğin, `python form-recognizer-analyze.py`.
 
-**Çözümleme Formu** API'sini aradiğinizde, `201 (Success)` **İşlem-Konum** üstbilgisiyle bir yanıt alırsınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullanacağınız bir kimliktir. Yukarıdaki komut dosyası, bu üstbilginin değerini konsola yazdırır.
+**Analiz formu** API 'sini çağırdığınızda, bir **işlem konumu** üst bilgisine sahip `201 (Success)` bir yanıt alırsınız. Bu üstbilginin değeri, Çözümle işleminin sonuçlarını izlemek için kullanacağınız bir KIMLIĞIDIR. Yukarıdaki betik, bu üst bilginin değerini konsola yazdırır.
 
-## <a name="get-the-analyze-results"></a>Analiz sonuçlarını alın
+## <a name="get-the-analyze-results"></a>Analiz sonuçlarını al
 
-Python komut dosyanızın altına aşağıdaki kodu ekleyin. Bu, analiz sonuçlarını almak için yeni bir API çağrısında önceki çağrıdaki kimlik değerini kullanır. **Çözümleme Formu** işlemi eşzamanlıdır, bu nedenle bu komut dosyası sonuçlar kullanılabilir olana kadar API'yi düzenli aralıklarla çağırır. Bir veya daha fazla bir aralık öneririz.
+Aşağıdaki kodu Python betiğinizin altına ekleyin. Bu, analiz sonuçlarını almak için yeni bir API çağrısındaki önceki çağrıdan ID değerini kullanır. **Formu çözümle** işlemi zaman uyumsuzdur, bu nedenle, sonuçlar kullanılabilir olana kadar bu betik API 'yi düzenli aralıklarla çağırır. Bir saniye veya daha fazla Aralık öneririz.
 
 ```python 
 n_tries = 15
