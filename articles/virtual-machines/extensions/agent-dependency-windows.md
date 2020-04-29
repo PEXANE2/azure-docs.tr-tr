@@ -1,6 +1,6 @@
 ---
-title: Windows için Azure Monitör Bağımlılık sanal makine uzantısı
-description: Sanal makine uzantısı kullanarak Windows sanal makinesinde Azure Monitörü Bağımlılık aracısını dağıtın.
+title: Windows için Azure Izleyici bağımlılığı sanal makine uzantısı
+description: Azure Izleyici bağımlılık aracısını bir sanal makine uzantısı kullanarak Windows sanal makinesine dağıtın.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mgoedtel
@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250679"
 ---
-# <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows için Azure Monitör Bağımlılık sanal makine uzantısı
+# <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>Windows için Azure Izleyici bağımlılığı sanal makine uzantısı
 
-VMs Haritası için Azure Monitor özelliği, verilerini Microsoft Bağımlılık aracısından alır. Windows için Azure VM Bağımlılık aracısı sanal makine uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Bağımlılık aracısını Azure sanal makinelerine yükler. Bu belge, Windows için Azure VM Bağımlılık aracısı sanal makine uzantısı için desteklenen platformları, yapılandırmaları ve dağıtım seçeneklerini ayrıntılarıyla açıklar.
+VM'ler için Azure İzleyici Map özelliği, verileri Microsoft bağımlılık Aracısı 'ndan alır. Windows için Azure VM bağımlılık Aracısı sanal makine uzantısı, Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine bağımlılık Aracısı 'nı yüklüyor. Bu belgede, Windows için Azure VM bağımlılık Aracısı sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
 ## <a name="operating-system"></a>İşletim sistemi
 
-Windows için Azure VM Bağımlılık aracısı uzantısı, VM dağıtımı makalesiiçin Azure Monitor'un Desteklenen işletim sistemleri bölümünde listelenen desteklenen işletim [sistemleriyle](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) karşı çalıştırılabilir.
+Windows için Azure VM bağımlılık Aracısı uzantısı, VM'ler için Azure İzleyici dağıtım makalesinin [desteklenen işletim sistemleri](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) bölümünde listelenen desteklenen işletim sistemlerine karşı çalıştırılabilir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON, Azure Windows VM'deki Azure VM Bağımlılık aracısı uzantısı şemasını gösterir.
+Aşağıdaki JSON, Azure Windows VM 'de Azure VM bağımlılık Aracısı uzantısı için şemayı gösterir.
 
 ```json
 {
@@ -71,20 +71,20 @@ Aşağıdaki JSON, Azure Windows VM'deki Azure VM Bağımlılık aracısı uzant
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/Örnek |
+| Adı | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| yayımcı | Microsoft.Azure.Monitoring.DependencyAgent |
-| type | BağımlılıkAjanWindows |
-| typeHandlerVersion | 9.5 |
+| yayımcı | Microsoft. Azure. Monitoring. DependencyAgent |
+| type | DependencyAgentWindows |
+| typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure Kaynak Yöneticisi şablonlarıyla Azure VM uzantılarını dağıtabilirsiniz. Azure Kaynak Yöneticisi şablonu dağıtımı sırasında Azure VM Bağımlılık aracısı uzantısını çalıştırmak için Azure Kaynak Yöneticisi şablonunda önceki bölümde ayrıntılı JSON şemasını kullanabilirsiniz.
+Azure VM uzantılarını Azure Resource Manager şablonlarıyla dağıtabilirsiniz. Bir Azure Resource Manager şablon dağıtımı sırasında Azure VM bağımlılık Aracısı uzantısı 'nı çalıştırmak için bir Azure Resource Manager şablonunun önceki bölümünde ayrıntılı JSON şemasını kullanabilirsiniz.
 
-Sanal makine uzantısı için JSON sanal makine kaynağının içine iç içe olabilir. Veya, kaynak yöneticisi JSON şablonunun köküne veya en üst seviyesine yerleştirebilirsiniz. JSON'un yerleşimi kaynak adının ve türünün değerini etkiler. Daha fazla bilgi için [bkz.](../../azure-resource-manager/templates/child-resource-name-type.md)
+Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe olabilir. Ya da, bunu bir Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirebilirsiniz. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md).
 
-Aşağıdaki örnek, Bağımlılık aracısı uzantısı sanal makine kaynağı nın içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvaya yerleştirdiğinizde, JSON `"resources": []` sanal makinenin nesnesine yerleştirilir.
+Aşağıdaki örnek, bağımlılık Aracısı uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını iç içe aktardığınızda JSON, sanal makinenin `"resources": []` nesnesine yerleştirilir.
 
 
 ```json
@@ -105,7 +105,7 @@ Aşağıdaki örnek, Bağımlılık aracısı uzantısı sanal makine kaynağı 
 }
 ```
 
-UzantıJSON'u şablonun köküne yerleştirdiğinizde, kaynak adı üst sanal makineye bir başvuru içerir. Tür iç içe yapılandırmayı yansıtır.
+JSON uzantısını şablon köküne yerleştirdiğinizde, kaynak adı üst sanal makineye bir başvuru içerir. Tür, iç içe geçmiş yapılandırmayı yansıtır.
 
 ```json
 {
@@ -127,7 +127,7 @@ UzantıJSON'u şablonun köküne yerleştirdiğinizde, kaynak adı üst sanal ma
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Bağımlılık aracısı `Set-AzVMExtension` sanal makine uzantısını varolan bir sanal makineye dağıtmak için komutu kullanabilirsiniz. Komutu çalıştırmadan önce, genel ve özel yapılandırmaların PowerShell karma tablosunda depolanmış olması gerekir.
+Bağımlılık Aracısı sanal makine `Set-AzVMExtension` uzantısını var olan bir sanal makineye dağıtmak için komutunu kullanabilirsiniz. Komutu çalıştırmadan önce, ortak ve özel yapılandırmaların bir PowerShell karma tablosunda depolanması gerekir.
 
 ```powershell
 
@@ -144,13 +144,13 @@ Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı lı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure PowerShell modülü kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure PowerShell modüllerini kullanarak aşağıdaki komutu çalıştırın:
+Uzantı dağıtımlarının durumu hakkındaki veriler Azure portal alabilir ve Azure PowerShell modülü kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için Azure PowerShell modülünü kullanarak aşağıdaki komutu çalıştırın:
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
-Uzantı yürütme çıktısı aşağıdaki dizinde bulunan dosyalara kaydedilir:
+Uzantı yürütme çıkışı aşağıdaki dizinde bulunan dosyalara kaydedilir:
 
 ```cmd
 C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
@@ -158,4 +158,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Monitoring.DependencyAgent\
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Veya bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek **al'ı**seçin. Azure Desteği'ni nasıl kullanacağınız hakkında bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin. Azure desteğinin nasıl kullanılacağı hakkında bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

@@ -9,15 +9,15 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 3a5747912a18b8406cabd03c9823e3f6fe6898a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72808843"
 ---
 <!-- description of message routing used in the Azure CLI, PowerShell, and RM routing articles.-->
 
-Simülasyon cihazı tarafından iletiye eklenen özellikler temelinde iletileri farklı kaynaklara yönlendireceksiniz. Özel yönlendirmesi olmayan iletiler varsayılan uç noktaya gönderilir (iletiler/olaylar). Bir sonraki öğreticide, IoT Hub'ına ileti gönderir siniz ve bunların farklı hedeflere yönlendirildiğini görürsünüz.
+Simülasyon cihazı tarafından iletiye eklenen özellikler temelinde iletileri farklı kaynaklara yönlendireceksiniz. Özel yönlendirmesi olmayan iletiler varsayılan uç noktaya gönderilir (iletiler/olaylar). Sonraki öğreticide, IoT Hub iletileri gönderir ve bunların farklı hedeflere yönlendirildiğini görürsünüz.
 
 |Değer |Sonuç|
 |------|------|
@@ -25,4 +25,4 @@ Simülasyon cihazı tarafından iletiye eklenen özellikler temelinde iletileri 
 |level="critical" |Service Bus kuyruğuna yazın. Mantıksal Uygulama iletiyi kuyruktan alır ve Office 365 kullanarak iletiyi e-postayla gönderir.|
 |default |Power BI'ı kullanarak bu verileri görüntüleyin.|
 
-İlk adım, verilerin yönlendirileceği bitiş noktasını ayarlamaktır. İkinci adım, bu bitiş noktasını kullanan ileti yolunu ayarlamaktır. Yönlendirmeyi ayarladıktan sonra, portaldaki uç noktaları ve ileti yollarını görüntüleyebilirsiniz.
+İlk adım, verilerin yönlendirileceği uç noktayı kurmak olacaktır. İkinci adım, bu uç noktayı kullanan ileti yolunu ayarlamaya yönelik olur. Yönlendirmeyi ayarladıktan sonra, portalda uç noktaları ve ileti yollarını görüntüleyebilirsiniz.

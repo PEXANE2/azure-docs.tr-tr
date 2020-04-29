@@ -1,6 +1,6 @@
 ---
-title: PowerShell örneği - Azure SQL Veritabanı'nda yönetilen bir örnek oluşturma
-description: Azure SQL Veritabanı'nda yönetilen bir örnek oluşturmak için Azure PowerShell örnek komut dosyası
+title: PowerShell örneği-Azure SQL veritabanı 'nda yönetilen bir örnek oluşturma
+description: Azure SQL veritabanı 'nda yönetilen bir örnek oluşturmak için örnek betik Azure PowerShell
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,22 +12,22 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
 ms.openlocfilehash: 3e72a2f6754ad8e9c5bcfabe7eeee299468fa8f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73691634"
 ---
-# <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı yönetilen bir örnek oluşturmak için PowerShell'i kullanın
+# <a name="use-powershell-to-create-an-azure-sql-database-managed-instance"></a>PowerShell kullanarak Azure SQL veritabanı yönetilen örneği oluşturma
 
-Bu PowerShell komut dosyası örneği, yeni bir sanal ağ içinde özel bir alt ağda yönetilen bir Azure SQL Veritabanı örneği oluşturur. Ayrıca, sanal ağ için bir rota tablosu nu ve ağ güvenlik grubunu da yapılandırır. Komut dosyası başarıyla çalıştırıldıktan sonra, yönetilen örnek sanal ağ içinden veya şirket içi ortamdan erişilebilir. Azure [SQL Veritabanı Yönetilen Örneği'ne bağlanmak için Azure VM'yi yapılandırın](../sql-database-managed-instance-configure-vm.md) ve şirket [içinden Azure SQL Veritabanı Yönetilen Örneği'ne noktadan siteye bağlantı yapılandırın.](../sql-database-managed-instance-configure-p2s.md)
+Bu PowerShell betiği örneği, yeni bir sanal ağ içindeki ayrılmış bir alt ağda Azure SQL veritabanı yönetilen örneği oluşturur. Ayrıca, bir yol tablosu ve sanal ağ için bir ağ güvenlik grubu yapılandırır. Betik başarıyla çalıştırıldığında, yönetilen örneğe sanal ağ içinden veya şirket içi bir ortamdan erişilebilir. Azure [SQL veritabanı yönetilen örneğine bağlanmak için](../sql-database-managed-instance-configure-vm.md) bkz. Azure VM 'yi yapılandırma ve [ŞIRKET Içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma](../sql-database-managed-instance-configure-p2s.md).
 
 > [!IMPORTANT]
-> Sınırlamalar için [desteklenen bölgelere](../sql-database-managed-instance-resource-limits.md#supported-regions) ve [desteklenen abonelik türlerine](../sql-database-managed-instance-resource-limits.md#supported-subscription-types)bakın.
+> Sınırlamalar için bkz. [Desteklenen bölgeler](../sql-database-managed-instance-resource-limits.md#supported-regions) ve [desteklenen Abonelik türleri](../sql-database-managed-instance-resource-limits.md#supported-subscription-types).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici AZ PowerShell 1.4.0 veya daha sonra gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -48,16 +48,16 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur.
-| [Yeni-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Sanal ağ oluşturur |
-| [Ekle-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Sanal ağa alt ağ yapılandırması ekler |
-| [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Kaynak grubunda sanal ağ sağlar |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/Set-AzVirtualNetwork) | Sanal ağ için hedef durumu ayarlar |
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Get-AzVirtualNetworkSubnetConfig) | Sanal ağda bir alt ağ alır |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-AzVirtualNetworkSubnetConfig) | Sanal ağdaki alt ağ yapılandırması için hedef durumunu yapılandırır |
-| [Yeni-AzRouteTable](/powershell/module/az.network/New-AzRouteTable) | Rota tablosu oluşturur |
-| [Get-AzRouteTable](/powershell/module/az.network/Get-AzRouteTable) | Rota tabloları alır |
-| [Set-AzRouteTable](/powershell/module/az.network/Set-AzRouteTable) | Rota tablosu için hedef durumunu ayarlar |
-| [Yeni-AzSqlInstance](/powershell/module/az.sql/New-AzSqlInstance) | Azure SQL Veritabanı yönetilen örneği oluşturur |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Bir sanal ağ oluşturur |
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Add-AzVirtualNetworkSubnetConfig) | Bir sanal ağa alt ağ yapılandırması ekler |
+| [Get-AzVirtualNetwork](/powershell/module/az.network/Get-AzVirtualNetwork) | Bir kaynak grubundaki sanal ağı alır |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/Set-AzVirtualNetwork) | Bir sanal ağın hedef durumunu ayarlar |
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Get-AzVirtualNetworkSubnetConfig) | Bir sanal ağ içinde bir alt ağ alır |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/Set-AzVirtualNetworkSubnetConfig) | Bir sanal ağdaki alt ağ yapılandırması için hedef durumu yapılandırır |
+| [New-AzRouteTable](/powershell/module/az.network/New-AzRouteTable) | Yol tablosu oluşturur |
+| [Get-AzRouteTable](/powershell/module/az.network/Get-AzRouteTable) | Rota tablolarını alır |
+| [Set-AzRouteTable](/powershell/module/az.network/Set-AzRouteTable) | Bir yol tablosu için hedef durumunu ayarlar |
+| [New-Azsqlınstance](/powershell/module/az.sql/New-AzSqlInstance) | Azure SQL veritabanı yönetilen örneği oluşturur |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

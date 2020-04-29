@@ -1,6 +1,6 @@
 ---
-title: JavaScript kullanarak Azure Depolama örnekleri | Microsoft Dokümanlar
-description: Azure Depolama için örnek kodu ve uygulamaları görüntüleyin, indirin ve çalıştırın. JavaScript/Node.js depolama istemci kitaplıklarını kullanarak blobs, kuyruklar, tablolar ve dosyalar için başlangıç örnekleri alma keşfedin.
+title: JavaScript kullanarak Azure Storage örnekleri | Microsoft Docs
+description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. JavaScript/Node. js depolama istemci kitaplıklarını kullanarak blob, kuyruk, tablo ve dosya kullanmaya başlama örneklerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/19/2020
@@ -8,37 +8,37 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77485854"
 ---
-# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>v12 JavaScript istemci kitaplıklarını kullanarak Azure Depolama örnekleri
+# <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>V12 JavaScript istemci kitaplıklarını kullanan Azure depolama örnekleri
 
-Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların genel görünümünü sağlar. GitHub'da ilgili örnek kodu görüntülemek için bağlantıları tıklatın.
+Aşağıdaki tablolar, örnek havuzumuza ve her örnekte ele alınan senaryolara genel bir bakış sağlar. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
 > [!NOTE]
-> Bu örnekler en son Azure Depolama JavaScript v12 kitaplığını kullanır. Eski v11 kodu için bkz: GitHub deposundaki [Node.js'deki Azure Blob Hizmetiyle Başlarken.](https://github.com/Azure-Samples/storage-blob-node-getting-started)
+> Bu örnekler en son Azure Storage JavaScript V12 kitaplığını kullanır. Eski v11 kodu için bkz. GitHub deposundaki [Node. js ' de Azure Blob hizmetini kullanmaya](https://github.com/Azure-Samples/storage-blob-node-getting-started) başlama.
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
-      [Bağlantı dizelerini kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [Bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
    :::column span="":::
-      [SAS bağlantı dizelerini kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
+      [SAS bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/withConnString.js#L14)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Paylaşılan anahtar kimlik bilgisi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
+      [Paylaşılan anahtar kimlik bilgisini kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/sharedKeyCred.js#L5)
    :::column-end:::
    :::column span="":::
-      [AnonymousCredential kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
+      [AnonymousCredential kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/anonymousCred.js#L18)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -46,12 +46,12 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Azure Active Directory'yi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/azureAdAuth.js#L47)
    :::column-end:::
    :::column span="":::
-      [Proxy kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
+      [Proxy kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/proxyAuth.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Özel bir ardışık yol kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
+      [Özel bir işlem hattı kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/customPipeline.js#L26)
    :::column-end:::
 :::row-end:::
 
@@ -59,7 +59,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="2":::
-      [SAS URL'si kullanarak blob servis istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
+      [SAS URL 'SI kullanarak blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L39)
    :::column-end:::
 :::row-end:::
 
@@ -70,7 +70,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Bir kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L53)
    :::column-end:::
    :::column span="":::
-      [Paylaşılan anahtar kimlik bilgileri kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
+      [Paylaşılan anahtar kimlik bilgisi kullanarak kapsayıcı oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L38)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -78,12 +78,12 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Kapsayıcıları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L48)
    :::column-end:::
    :::column span="":::
-      [Yineleyici kullanarak kapsayıcıları listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
+      [Yineleyici kullanarak kapsayıcıları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L28)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kapsayıcıları sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
+      [Kapsayıcıları sayfaya göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-containers.js#L53)
    :::column-end:::
    :::column span="":::
       [Kapsayıcı silme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L82)
@@ -105,20 +105,20 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Blob indirme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/basic.js#L73)
    :::column-end:::
    :::column span="":::
-      [Bir yineleyici kullanarak blobs listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
+      [Yineleyici kullanarak Blobları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blobs'u sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
+      [Blobları sayfaya göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs.js#L66)
    :::column-end:::
    :::column span="":::
-      [Blobları hiyerarşiye göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
+      [Blobları hiyerarşiye göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-blobs-hierarchy.js#L70)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Beklemede kullanmadan damlaları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
+      [Await kullanmadan Blobları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/iterators-without-await.js#L42)
    :::column-end:::
    :::column span="":::
       [Blob anlık görüntüsü oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L56)
@@ -126,18 +126,18 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Blob anlık görüntüsünü indirin](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
+      [Blob anlık görüntüsü indirin](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/readingSnapshot.js#L61)
    :::column-end:::
    :::column span="":::
-      [Bir blob'a akış paralel yükleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
+      [Paralel blob 'a akış yükleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Paralel indirme blok blob](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
+      [Paralel indirme Blok Blobu](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L99)
    :::column-end:::
    :::column span="":::
-      [Erişim katmanını bir blob üzerinde ayarlama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
+      [Blob üzerinde erişim katmanını ayarlama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/advanced.js#L118)
    :::column-end:::
 :::row-end:::
 
@@ -145,16 +145,16 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="2":::
-      [Kapsayıcı istemcisi kullanarak kurtarılabilir bir hatayı tetikleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
+      [Kapsayıcı istemci kullanarak kurtarılabilir bir hata tetikleyin](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob/samples/javascript/errorsAndResponses.js#L33)
    :::column-end:::
 :::row-end:::
 
 
-## <a name="data-lake-storage-gen2-samples"></a>Data Lake Depolama Gen2 örnekleri
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage 2. örnekleri
 
 :::row:::
    :::column span="":::
-      [Veri Gölü hizmet istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
+      [Data Lake hizmet istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L36)
    :::column-end:::
    :::column span="":::
       [Dosya sistemi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L47)
@@ -162,7 +162,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosya sistemlerini listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
+      [Dosya sistemlerini Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L42)
    :::column-end:::
    :::column span="":::
       [Dosya oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L54)
@@ -170,7 +170,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosya sistemindeki yolları listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L63)
+      [Bir dosya sistemindeki yolları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L63)
    :::column-end:::
    :::column span="":::
       [Dosya indirme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-datalake/samples/javascript/basic.js#L69)
@@ -182,24 +182,24 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-files-samples"></a>Azure Dosyaları örnekleri
+## <a name="azure-files-samples"></a>Azure dosyaları örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
-      [Bağlantı dizesi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
+      [Bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Paylaşılan bir anahtar kimlik bilgisi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
+      [Paylaşılan anahtar kimlik bilgisi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [AnonymousCredential kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
+      [AnonymousCredential kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Özel bir ardışık yol kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
+      [Özel bir işlem hattı kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/customPipeline.js)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -212,15 +212,15 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="":::
-      [Paylaşım oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
+      [Bir paylaşma oluşturun](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L48)
    :::column-end:::
    :::column span="":::
-      [Hisseleri listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
+      [Paylaşımları Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Paylaşımları sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
+      [Paylaşımları sayfaya göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-shares.js#L51)
    :::column-end:::
    :::column span="":::
       [Paylaşımı silme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L104)
@@ -234,12 +234,12 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Dizin oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L54)
    :::column-end:::
    :::column span="":::
-      [Liste dosyaları ve dizinler](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
+      [Dosyaları ve dizinleri listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Dosyaları ve dizinleri sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
+      [Dosyaları ve dizinleri sayfaya göre listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-files-and-directories.js#L90)
    :::column-end:::
 :::row-end:::
 
@@ -247,10 +247,10 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="":::
-      [Paralel yükleme dosya](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L65)
+      [Paralel dosya yükleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L65)
    :::column-end:::
    :::column span="":::
-      [Okunabilir bir akış akışın paralel yükleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
+      [Paralel yükleme okunabilir bir akış](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L74)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -258,33 +258,33 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Paralel dosya indirme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/advanced.js#L93)
    :::column-end:::
    :::column span="":::
-      [Dosya tutamaçları listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
+      [Dosya tutamaçlarını listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L43)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Dosya işlamalarını sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
+      [Dosya tutamaçlarını sayfaya göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-file-share/samples/javascript/iterators-handles.js#L79)
    :::column-end:::
 :::row-end:::
 
-## <a name="queue-samples"></a>Sıra örnekleri
+## <a name="queue-samples"></a>Kuyruk örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
-      [Bağlantı dizesi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
+      [Bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/withConnString.js)
    :::column-end:::
    :::column span="":::
-      [Paylaşılan bir anahtar kimlik bilgisi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
+      [Paylaşılan anahtar kimlik bilgisi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/sharedKeyCred.js)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [AnonymousCredential kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
+      [AnonymousCredential kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/anonymousCred.js)
    :::column-end:::
    :::column span="":::
-      [Özel bir ardışık yol kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
+      [Özel bir işlem hattı kullanarak bağlanma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/customPipeline.js)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -296,11 +296,11 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Sıra hizmeti
+### <a name="queue-service"></a>Kuyruk hizmeti
 
 :::row:::
    :::column span="2":::
-      [Sıra hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
+      [Kuyruk hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L42)
    :::column-end:::
 :::row-end:::
 
@@ -308,15 +308,15 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="":::
-      [Yeni bir kuyruk oluşturma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
+      [Yeni kuyruk oluştur](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L54)
    :::column-end:::
    :::column span="":::
-      [Liste kuyrukları](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
+      [Sıraları listeleme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L27)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Kuyrukları sayfaya göre listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
+      [Kuyrukları sayfaya göre Listele](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/iterators.js#L51)
    :::column-end:::
    :::column span="":::
       [Bir kuyruk silme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L89)
@@ -327,7 +327,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="":::
-      [Kuyruğa ileti gönderme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
+      [Bir kuyruğa ileti gönderme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L62)
    :::column-end:::
    :::column span="":::
       [İletilere göz atın](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L68)
@@ -338,7 +338,7 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [İleti alma](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L76)
    :::column-end:::
    :::column span="":::
-      [İletileri silme](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
+      [İletileri Sil](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-queue/samples/javascript/basic.js#L80)
    :::column-end:::
 :::row-end:::
 
@@ -346,18 +346,18 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
 
 :::row:::
    :::column span="":::
-      [Toplu varlıklar](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
+      [Batch varlıkları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87)
    :::column-end:::
    :::column span="":::
-      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
+      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Varlığı/tabloyu silme](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
+      [Varlığı/tabloyu Sil](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L67)
    :::column-end:::
    :::column span="":::
-      [Varlığı ekleme/birleştirme/değiştirme](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+      [Varlığı Ekle/Birleştir/Değiştir](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -381,15 +381,15 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Paylaşılan Erişim İmzası (SAS)](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87)
    :::column-end:::
    :::column span="":::
-      [Tablo ACL](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
+      [Tablo ACL 'SI](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Tablo Çapraz Kökenli Kaynak Paylaşımı (CORS) kuralları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
+      [Tablo çıkış noktaları arası kaynak paylaşımı (CORS) kuralları](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149)
    :::column-end:::
    :::column span="":::
-      [Tablo özellikleri](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
+      [Tablo Özellikleri](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -397,34 +397,34 @@ Aşağıdaki tablolar, numune depomuzun ve her örnekte kapsanan senaryoların g
       [Tablo istatistikleri](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L243)
    :::column-end:::
    :::column span="":::
-      [Varlığı güncelleştir](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
+      [Varlığı Güncelleştir](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L49)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Azure kodu örnek kitaplıkları
+## <a name="azure-code-sample-libraries"></a>Azure Code örnek kitaplıkları
 
-JavaScript örnek kitaplıklarını tam olarak görüntülemek için şu
+JavaScript örnek kitaplıklarının tamamını görüntülemek için şuraya gidin:
 
-* [Azure blob kod örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
-* [Azure Veri Gölü kod örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
-* [Azure Dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
-* [Azure sıra kodu örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
+* [Azure Blob kodu örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples/javascript)
+* [Azure Data Lake kodu örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples/javascript)
+* [Azure dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-share/samples/javascript)
+* [Azure kuyruk kodu örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples/javascript)
 
-Her kitaplık için GitHub deposuna göz atabilir ve klonlayabilirsiniz.
+Her kitaplık için GitHub deposuna gözatıp kopyalayabilirsiniz.
 
-## <a name="getting-started-guides"></a>Kılavuzlara başlama
+## <a name="getting-started-guides"></a>Başlarken kılavuzlarını
 
-Azure Depolama İstemci Kitaplıkları'nı nasıl yükleyip başlatacağınız la ilgili yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
+Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
 
-* [JavaScript'te Azure Blob Hizmetine Başlarken](../blobs/storage-quickstart-blobs-nodejs.md)
-* [JavaScript'te Azure Kuyruk Hizmetiyle Başlarken](../queues/storage-quickstart-queues-nodejs.md)
-* [JavaScript'te Azure Tablo Hizmetine Başlarken](../../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [JavaScript 'te Azure Blob hizmetini kullanmaya başlama](../blobs/storage-quickstart-blobs-nodejs.md)
+* [JavaScript 'te Azure kuyruk hizmeti ile çalışmaya başlama](../queues/storage-quickstart-queues-nodejs.md)
+* [JavaScript 'te Azure Tablo hizmeti ile çalışmaya başlama](../../cosmos-db/table-storage-how-to-use-nodejs.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer dillere ait örnekler hakkında bilgi için:
+Diğer dillere yönelik örnekler hakkında bilgi için:
 
-* .NET: [.NET kullanarak Azure Depolama örnekleri](storage-samples-dotnet.md)
-* Java: [Java kullanarak Azure Depolama örnekleri](storage-samples-java.md)
-* Python: [Python kullanarak Azure Depolama örnekleri](storage-samples-python.md)
-* Diğer tüm diller: [Azure Depolama örnekleri](storage-samples.md)
+* .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
+* Java: [Java kullanan Azure depolama örnekleri](storage-samples-java.md)
+* Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
+* Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

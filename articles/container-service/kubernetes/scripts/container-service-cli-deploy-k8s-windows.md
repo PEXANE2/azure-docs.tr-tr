@@ -11,13 +11,13 @@ ms.topic: sample
 ms.date: 05/30/2017
 ms.author: iainfou
 ms.openlocfilehash: bc940f09a98eb4ee42290dcfd11d0800f6c3b9e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76270679"
 ---
-# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmeti Kubernetes Windows Cluster oluşturma
+# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>Kullanım DıŞı Azure Container Service Kubernetes Windows kümesi oluşturma
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 

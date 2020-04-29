@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell betik örneği - Özel konu oluşturma | Microsoft Docs
-description: Bu makalede, Olay Izgaraözel bir konu nun nasıl oluşturulurulur gösteriş yapan bir örnek Azure PowerShell komut dosyası sağlanmaktadır.
+description: Bu makale, bir Event Grid özel konusunun nasıl oluşturulacağını gösteren bir örnek Azure PowerShell betiği sağlar.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
 ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76719951"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>PowerShell ile Event Grid özel konusu oluşturma
@@ -36,7 +36,7 @@ Bu betik, özel konuyu oluşturmak için aşağıdaki komutu kullanır. Tablodak
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzEventgridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Event Grid özel konusu oluşturun. |
+| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Event Grid özel konusu oluşturun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

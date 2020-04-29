@@ -1,6 +1,6 @@
 ---
-title: Java'da kaba yeniden yerelleştirme
-description: Java'da kaba yeniden yerelleştirme yi kullanarak çapaların nasıl oluşturulup buluncayada bulunabildiğini derinlemesine açıklama.
+title: Java 'da kaba yeniden yerelleştirme
+description: Java 'da kaba yeniden yerelleştirme kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,13 +9,13 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7a13b3e838bd3083741eb903f39f3f7683f39ee4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76545237"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-java"></a>Java'da kaba yeniden yerelleştirme yi kullanarak çapa oluşturma ve bulma
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-java"></a>Java 'da kaba yeniden yerelleştirme kullanarak Tutturucular oluşturma ve bulma
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
@@ -25,16 +25,16 @@ ms.locfileid: "76545237"
 > * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Azure Uzamsal Çapalar, sensör verilerini oluşturduğunuz çapalarla aygıtta, konumlandırmayla ilişkilendirebilir. Bu veriler, cihazınızın yakınında çapa olup olmadığını hızlı bir şekilde belirlemek için de kullanılabilir. Daha fazla bilgi için [Bkz. Kaba yeniden yerelleştirme.](../concepts/coarse-reloc.md)
+Azure uzamsal bağlantıları, cihaz üzerinde ilişki oluşturabilir ve algılayıcı verilerini, oluşturduğunuz tutturucularla konumlamayı sağlayabilir. Bu veriler, cihazınızın yakınında yer olup olmadığını hızlı bir şekilde tespit etmek için de kullanılabilir. Daha fazla bilgi için bkz. [kaba yeniden yerelleştirme](../concepts/coarse-reloc.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu kılavuzu tamamlamak için şunları yaptığınızdan emin olun:
+Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 
-- Java temel bilgi.
-- [Azure Uzamsal Çapalar genel görünümünü](../overview.md)okuyun.
-- 5 dakikalık [Quickstarts](../index.yml)biri tamamlandı.
-- Oluştur'u okuyun [ve çapaları nasıl bulunur' bulun.](../create-locate-anchors-overview.md)
+- Java hakkında temel bilgiler.
+- [Azure uzamsal Tutturucuların genel bakış](../overview.md)bölümünü okuyun.
+- [5 dakikalık hızlı](../index.yml)başlangıçlardan biri tamamlandı.
+- [Oluşturma ve bağlantıları bulma ile nasıl yapılacağını](../create-locate-anchors-overview.md)okuyun.
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

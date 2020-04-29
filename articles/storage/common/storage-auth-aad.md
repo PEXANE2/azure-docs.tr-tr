@@ -1,7 +1,7 @@
 ---
-title: Active Directory'yi kullanarak blob'lara ve kuyruklara erişim yetkisi verme
+title: Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 titleSuffix: Azure Storage
-description: Azure Active Directory'yi kullanarak Azure bloblarına ve kuyruklarına erişimi yetkilendirmeyin.
+description: Azure Active Directory kullanarak Azure bloblarına ve kuyruklara erişim yetkisi verin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,82 +11,82 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255372"
 ---
-# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Etkin Dizini'ni kullanarak blob'lara ve kuyruklara erişimi yetkilendirme
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme
 
-Azure Depolama, Blob ve Queue depolamasına istekleri yetkilendirmek için Azure Active Directory (Azure AD) kullanarak destekler. Azure AD ile, kullanıcı, grup veya uygulama hizmeti ilkesi olabilecek bir güvenlik ilkesine izin vermek için rol tabanlı erişim denetimini (RBAC) kullanabilirsiniz. Güvenlik ilkesi, OAuth 2.0 belirteci döndürmek için Azure AD tarafından doğrulanır. Belirteç daha sonra Blob veya Queue depolama karşı bir istek yetkilendirmek için kullanılabilir.
+Azure depolama, istekleri blob ve kuyruk depolamaya yetkilendirmek için Azure Active Directory (Azure AD) kullanılmasını destekler. Azure AD ile rol tabanlı erişim denetimi 'ni (RBAC), bir Kullanıcı, Grup veya uygulama hizmeti sorumlusu olabilecek bir güvenlik sorumlusuna izinler vermek için kullanabilirsiniz. Güvenlik sorumlusunun bir OAuth 2,0 belirteci döndürmesi için Azure AD tarafından kimliği doğrulanır. Belirteç daha sonra blob veya kuyruk depolamaya karşı bir isteği yetkilendirmek için kullanılabilir.
 
-Azure AD ile Azure Depolama'ya karşı istekleri yetkilendirmek, Paylaşılan Anahtar yetkilendirmesi üzerinden üstün güvenlik ve kullanım kolaylığı sağlar. Microsoft, Paylaşılan Anahtar'ın doğasında bulunan olası güvenlik açıklarını en aza indirmek için mümkün olduğunda blob ve kuyruk uygulamalarınızla Azure AD yetkilendirmesini kullanmanızı önerir.
+Azure AD ile Azure depolama 'da istekleri yetkilendirmek, paylaşılan anahtar yetkilendirmesi üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Microsoft, paylaşılan anahtardaki olası güvenlik açıklarını en aza indirmek mümkün olduğunda blob ve kuyruk uygulamalarınızla Azure AD yetkilendirmesi kullanılmasını önerir.
 
-Azure AD ile yetkilendirme, tüm genel amaçlı ve blob depolama hesapları için tüm genel amaçlı bölgelerde ve ulusal bulutlarda kullanılabilir. Yalnızca Azure Kaynak Yöneticisi dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler.
+Azure AD ile yetkilendirme, tüm genel bölgelerde ve ulusal bulutlarda tüm genel amaçlı ve BLOB depolama hesapları için kullanılabilir. Yalnızca Azure Resource Manager dağıtım modeliyle oluşturulan depolama hesapları Azure AD yetkilendirmesini destekler.
 
-Blob depolama ayrıca Azure AD kimlik bilgileriyle imzalanmış paylaşılan erişim imzaları (SAS) oluşturmayı da destekler. Daha fazla bilgi için bkz: [Paylaşılan erişim imzaları ile verilere sınırlı erişim verme.](storage-sas-overview.md)
+Blob Storage Ayrıca Azure AD kimlik bilgileriyle imzalanmış paylaşılan erişim imzaları (SAS) oluşturulmasını destekler. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları ile verilere sınırlı erişim verme](storage-sas-overview.md).
 
-Azure Dosyaları, yalnızca etki alanına katılan VM'ler için SMB üzerinden AD (önizleme) veya Azure AD DS (GA) ile yetkilendirmeyi destekler. Azure Dosyaları için SMB üzerinden AD (önizleme) veya Azure AD DS (GA) kullanma hakkında bilgi edinmek [için, Kobİ erişimi için Azure Dosyalarına Genel Bakış kimlik tabanlı kimlik doğrulama desteğine](../files/storage-files-active-directory-overview.md)bakın.
+Azure dosyaları, AD (Önizleme) veya Azure AD DS (GA) ile yalnızca etki alanına katılmış VM 'Ler için SMB üzerinden yetkilendirmeyi destekler. Azure dosyaları için SMB üzerinden AD (Önizleme) veya Azure AD DS (GA) kullanma hakkında bilgi edinmek için bkz. [Azure dosyalarına genel bakış SMB erişimi için kimlik tabanlı kimlik doğrulama desteği](../files/storage-files-active-directory-overview.md).
 
-Azure AD ile yetkilendirme, Azure Tablo depolama alanı için desteklenmez. İstekleri Tablo depolama alanına yetkilendirmek için Paylaşılan Anahtar'ı kullanın.
+Azure AD ile yetkilendirme, Azure Tablo depolama için desteklenmez. İstekleri tablo depolamaya yetkilendirmek için paylaşılan anahtar kullanın.
 
-## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blobs ve kuyruklar için Azure AD'ye genel bakış
+## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için Azure AD 'ye Genel Bakış
 
-Bir güvenlik sorumlusu (kullanıcı, grup veya uygulama) bir blob veya sıra kaynağına erişmeye çalıştığında, anonim erişim için kullanılabilir bir blob olmadığı sürece istek yetkilendirilmelidir. Azure AD ile kaynağa erişim iki adımlı bir işlemdir. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2.0 belirteci döndürülür. Ardından, belirteç Blob veya Sıra hizmetine bir istek parçası olarak geçirilir ve belirtilen kaynağa erişim yetkisi vermek için hizmet tarafından kullanılır.
+Bir güvenlik sorumlusu (Kullanıcı, Grup veya uygulama) bir blob veya kuyruk kaynağına erişmeyi denediğinde, anonim erişim için kullanılabilir bir blob olmadığı takdirde isteğin yetkilendirilmiş olması gerekir. Azure AD ile bir kaynağa erişim iki adımlı bir işlemdir. İlk olarak, güvenlik sorumlusunun kimliği doğrulanır ve bir OAuth 2,0 belirteci döndürülür. Ardından, belirteç blob veya Kuyruk hizmeti bir isteğin parçası olarak geçirilir ve hizmet tarafından belirtilen kaynağa erişimi yetkilendirmek için kullanılır.
 
-Kimlik doğrulama adımı, bir uygulamanın çalışma zamanında bir OAuth 2.0 erişim belirteci istemesini gerektirir. Bir uygulama Azure VM, sanal makine ölçeği kümesi veya Azure İşlevler uygulaması gibi bir Azure varlığı içinden çalışıyorsa, blob'lara veya kuyruklara erişmek için yönetilen bir [kimliği](../../active-directory/managed-identities-azure-resources/overview.md) kullanabilir. Yönetilen bir kimlik tarafından yapılan istekleri Azure Blob veya Queue hizmetine nasıl yetkiverdiğinizi öğrenmek için Azure [Etkin Dizini ve Azure Kaynakları için yönetilen kimliklerle blob'lara ve kuyruklara erişimi yetkilendirme'ye](storage-auth-aad-msi.md)bakın.
+Kimlik doğrulama adımı, bir uygulamanın çalışma zamanında bir OAuth 2,0 erişim belirteci istemesini gerektirir. Bir uygulama, Azure VM, sanal makine ölçek kümesi veya Azure Işlevleri uygulaması gibi bir Azure varlığı içinden çalışıyorsa, bloblara veya kuyruklara erişmek için [yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md) kullanabilir. Yönetilen bir kimlik tarafından Azure Blob 'Una veya Kuyruk hizmeti yapılan isteklerin nasıl yetkilendirdiği hakkında bilgi edinmek için bkz. [Azure kaynakları için Azure Active Directory ve yönetilen kimliklerle blob 'lara ve kuyruklara erişim yetkisi verme](storage-auth-aad-msi.md).
 
-Yetkilendirme adımı, bir veya daha fazla RBAC rolünün güvenlik ilkesine atanmasını gerektirir. Azure Depolama, blob ve sıra verileri için ortak izin kümelerini kapsayan RBAC rolleri sağlar. Bir güvenlik ilkesine atanan roller, asıl ilkelerin sahip olacağı izinleri belirler. Azure Depolama için RBAC rolleri atama hakkında daha fazla bilgi edinmek için [bkz.](storage-auth-aad-rbac.md)
+Yetkilendirme adımı, güvenlik sorumlusuna bir veya daha fazla RBAC rolünün atanmasını gerektirir. Azure depolama, blob ve kuyruk verileri için ortak izin kümelerini çevreleyen RBAC rolleri sağlar. Bir güvenlik sorumlusu 'na atanan roller, sorumlunun sahip olacağı izinleri belirleyebilir. Azure depolama için RBAC rolleri atama hakkında daha fazla bilgi edinmek için bkz. [RBAC ile depolama verileri için erişim haklarını yönetme](storage-auth-aad-rbac.md).
 
-Azure Blob veya Queue hizmetine istekte bulunarak yerel uygulamalar ve web uygulamaları da Azure AD ile erişim yetkisi verebilir. Bir erişim jetonunu nasıl isteyeceğinizi ve blob veya kuyruk verileri için istekleri yetkilendirmek için nasıl kullanacağınızı öğrenmek için, [bir Azure Depolama uygulamasından Azure AD ile Azure Depolama'ya erişimi yetkilendirme](storage-auth-aad-app.md)'ye bakın.
+Azure Blob veya Kuyruk hizmeti istek yapan yerel uygulamalar ve Web uygulamaları da Azure AD ile erişimi yetkilendirebilirler. Erişim belirteci isteme ve BLOB veya kuyruk verileri için istekleri yetkilendirmek üzere kullanma hakkında bilgi edinmek için bkz. Azure depolama uygulamasından Azure [ad Ile Azure depolama 'ya erişim yetkisi verme](storage-auth-aad-app.md).
 
-## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rollerini atama
+## <a name="assign-rbac-roles-for-access-rights"></a>Erişim hakları için RBAC rolleri atama
 
-Azure Etkin Dizin (Azure AD), rol tabanlı [erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarına izin vermektedir. Azure Depolama, blob ve sıra verilerine erişmek için kullanılan ortak izin kümelerini kapsayan yerleşik RBAC rolleri kümesini tanımlar. Blob ve sıra verilerine erişmek için özel roller de tanımlayabilirsiniz.
+Azure Active Directory (Azure AD), [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md)aracılığıyla güvenli kaynaklara erişim haklarını yetkilendirir. Azure depolama, blob ve kuyruk verilerine erişmek için kullanılan ortak izin kümelerini çevreleyen yerleşik RBAC rollerinin bir kümesini tanımlar. Ayrıca, blob ve kuyruk verilerine erişim için özel roller de tanımlayabilirsiniz.
 
-Bir Azure REKLAM güvenlik ilkesine bir RBAC rolü atandığında, Azure bu güvenlik ilkesi için bu kaynaklara erişim sağlar. Erişim, abonelik düzeyine, kaynak grubuna, depolama hesabına veya tek bir kapsayıcı veya sıraya kadar kapsama edilebilir. Azure AD güvenlik ilkesi, [Azure kaynakları için](../../active-directory/managed-identities-azure-resources/overview.md)bir kullanıcı, bir grup, bir uygulama hizmeti ilkesi veya yönetilen bir kimlik olabilir.
+Azure AD güvenlik sorumlusuna bir RBAC rolü atandığında Azure, bu güvenlik sorumlusu için bu kaynaklara erişim izni verir. Erişim, aboneliğin düzeyi, kaynak grubu, depolama hesabı veya tek bir kapsayıcı veya kuyruk kapsamına eklenebilir. Azure AD güvenlik sorumlusu, bir Kullanıcı, Grup, uygulama hizmeti sorumlusu veya [Azure kaynakları için yönetilen bir kimlik](../../active-directory/managed-identities-azure-resources/overview.md)olabilir.
 
-### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>Blobs ve kuyruklar için yerleşik RBAC rolleri
+### <a name="built-in-rbac-roles-for-blobs-and-queues"></a>Blob 'lar ve kuyruklar için yerleşik RBAC rolleri
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-Yerleşik bir RBAC rolünü bir güvenlik ilkesine nasıl atayacağımöğrenmek için aşağıdaki makalelerden birine bakın:
+Bir güvenlik sorumlusuna yerleşik RBAC rolü atamayı öğrenmek için aşağıdaki makalelerden birine bakın:
 
 - [Azure portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-portal.md)
 - [Azure CLI kullanarak RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-cli.md)
 - [PowerShell kullanarak RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](storage-auth-aad-rbac-powershell.md)
 
-Azure Depolama için yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için [bkz.](../../role-based-access-control/role-definitions.md#management-and-data-operations) Özel RBAC rolleri oluşturma hakkında bilgi [için](../../role-based-access-control/custom-roles.md)bkz.
+Yerleşik rollerin Azure depolama için nasıl tanımlandığı hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](../../role-based-access-control/role-definitions.md#management-and-data-operations). Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için bkz. [Azure rol tabanlı Access Control için özel roller oluşturma](../../role-based-access-control/custom-roles.md).
 
-### <a name="access-permissions-for-data-operations"></a>Veri işlemleri için erişim izinlerine erişim
+### <a name="access-permissions-for-data-operations"></a>Veri işlemleri için erişim izinleri
 
-Belirli Blob veya Queue hizmet işlemlerini aramak için gereken izinlerle ilgili ayrıntılar [için, blob ve sıra veri işlemlerini çağırmak için İzinler'e](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)bakın.
+Belirli Blobu veya Kuyruk hizmeti işlemlerini çağırmak için gereken izinlerle ilgili ayrıntılı bilgi için bkz. [BLOB ve kuyruk verisi işlemlerini çağırma izinleri](https://docs.microsoft.com/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
 
 ## <a name="resource-scope"></a>Kaynak kapsamı
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="access-data-with-an-azure-ad-account"></a>Azure AD hesabıyla verilere erişin
+## <a name="access-data-with-an-azure-ad-account"></a>Azure AD hesabı ile verilere erişme
 
-Azure portalı, PowerShell veya Azure CLI üzerinden blob veya kuyruk verilerine erişim, kullanıcının Azure AD hesabını kullanarak veya hesap erişim anahtarlarını (Paylaşılan Anahtar yetkilendirmesi) kullanarak yetkilendirilebilir.
+Azure portal, PowerShell veya Azure CLı aracılığıyla blob veya kuyruk verilerine erişim, kullanıcının Azure AD hesabı kullanılarak veya hesap erişim anahtarları (paylaşılan anahtar yetkilendirmesi) kullanılarak yetkilendirilenebilir.
 
-### <a name="data-access-from-the-azure-portal"></a>Azure portalından veri erişimi
+### <a name="data-access-from-the-azure-portal"></a>Azure portal veri erişimi
 
-Azure portalı, azure depolama hesabındaki blob ve sıra verilerine erişmek için Azure AD hesabınızı veya hesap erişim anahtarlarını kullanabilir. Azure portalının hangi yetkilendirme düzenini kullandığı, size atanan RBAC rollerine bağlıdır.
+Azure portal, bir Azure depolama hesabındaki blob ve kuyruk verilerine erişmek için Azure AD hesabınızı veya hesap erişim anahtarlarını kullanabilir. Azure portal kullandığı yetkilendirme şeması size atanan RBAC rollerine bağlıdır.
 
-Blob veya sıra verilerine erişmeye çalıştığınızda, Azure portalı önce **Microsoft.Storage/storageAccounts/listkeys/action**ile bir RBAC rolü atanıp atanmadığınızı denetler. Bu eylemle bir rol atanmışsa, Azure portalı Paylaşılan Anahtar yetkilendirmesi aracılığıyla blob ve kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle size bir rol atanmamışsa, Azure portalı Azure REKLAM hesabınızı kullanarak verilere erişmeye çalışır.
+Blob veya kuyruk verilerine erişmeyi denediğinizde, Azure portal öncelikle **Microsoft. Storage/storageAccounts/ListKeys/Action**ile RBAC rolü atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa Azure portal, paylaşılan anahtar yetkilendirmesi aracılığıyla blob ve kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atamadıysanız, Azure portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
-Azure AD hesabınızı kullanarak Azure portalındaki blob veya sıra verilerine erişmek için, blob ve sıra verilerine erişmek için izinlere ve Azure portalındaki depolama hesabı kaynaklarında gezinmek için izinlere de ihtiyacınız vardır. Azure Depolama tarafından sağlanan yerleşik roller, blob ve sıra kaynaklarına erişim sağlar, ancak depolama hesabı kaynaklarına izin vermez. Bu nedenle, portala erişim, depolama hesabı veya daha yüksek düzeye yönelik [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü gibi bir Azure Kaynak Yöneticisi rolünün atanmasını da gerektirir. **Reader** rolü en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim sağlayan başka bir Azure Kaynak Yöneticisi rolü de kabul edilebilir. Azure AD hesabıyla Azure portalında veri erişimi için kullanıcılara izin atama hakkında daha fazla bilgi edinmek için Azure [portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni 'ne](storage-auth-aad-rbac-portal.md)bakın.
+Azure AD hesabınızı kullanarak Azure portal blob veya kuyruk verilerine erişmek için, blob ve kuyruk verilerine erişim izinleriniz olmalıdır ve ayrıca Azure portal depolama hesabı kaynakları arasında gezinmek için izinlerinizin olması gerekir. Azure depolama tarafından sunulan yerleşik roller, blob ve kuyruk kaynaklarına erişim izni verir, ancak depolama hesabı kaynaklarına izin vermez. Bu nedenle, portala erişim, Ayrıca, depolama hesabı düzeyi veya daha yüksek olan [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü gibi Azure Resource Manager rolün atanmasını da gerektirir. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir. Azure AD hesabıyla Azure portal veri erişimi için kullanıcılara izin atama hakkında daha fazla bilgi için, bkz. [Azure Blob 'a erişim verme ve Azure Portal RBAC ile kuyruk verileri](storage-auth-aad-rbac-portal.md)oluşturma.
 
-Azure portalı, bir kapsayıcıya veya kuyruğa gidince hangi yetkilendirme düzeninin kullanıldığını gösterir. Portaldaki veri erişimi hakkında daha fazla bilgi için [bkz.](storage-access-blobs-queues-portal.md)
+Azure portal, bir kapsayıcıya veya kuyruğa gittiğinizde hangi yetkilendirme şemasının kullanımda olduğunu gösterir. Portalda veri erişimi hakkında daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure Portal kullanma](storage-access-blobs-queues-portal.md).
 
-### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell veya Azure CLI'den veri erişimi
+### <a name="data-access-from-powershell-or-azure-cli"></a>PowerShell veya Azure CLı 'dan veri erişimi
 
-Azure CLI ve PowerShell, Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum açtıktan sonra oturumunuz bu kimlik bilgileri altında çalışır. Daha fazla bilgi edinmek [için, blob veya kuyruk verilerine erişmek için Azure AD kimlik bilgilerine sahip Azure CLI veya PowerShell komutlarını çalıştır'a](authorize-active-directory-powershell.md)bakın.
+Azure CLı ve PowerShell Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum açtıktan sonra oturumunuz bu kimlik bilgileri altında çalışır. Daha fazla bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI veya PowerShell komutlarını çalıştırma](authorize-active-directory-powershell.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Etkin Dizini ve Yönetilen kimliklerle Azure Kaynakları için blob'lara ve kuyruklara erişimi yetkilendirme](storage-auth-aad-msi.md)
-- [Blob'lara ve kuyruklara erişmek için bir uygulamadan Azure Active Directory ile yetkilendirme](storage-auth-aad-app.md)
-- [Azure Etkin Dizin tabanlı erişim denetimi için Azure Depolama desteği genellikle kullanılabilir](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)
+- [Azure kaynakları için Azure Active Directory ve yönetilen kimlikler ile bloblara ve kuyruklara erişim yetkisi verme](storage-auth-aad-msi.md)
+- [Bloblara ve kuyruklara erişim sağlamak için bir uygulamadan Azure Active Directory yetkilendirme](storage-auth-aad-app.md)
+- [Azure Active Directory tabanlı erişim denetimi için Azure depolama desteği genel kullanıma sunuldu](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)

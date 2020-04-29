@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure'da Linux sanal makinelerini izleyin
-description: Bu eğitimde, performansı izlemeyi ve Linux sanal makinelerinizde çalışan uygulama bileşenlerini nasıl keşfedersiniz.
+title: Öğretici-Azure 'da Linux sanal makinelerini Izleme
+description: Bu öğreticide, Linux sanal makinelerinizde çalışan performansı ve keşfedilen uygulama bileşenlerini izlemeyi öğreneceksiniz.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,23 +16,23 @@ ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: b06342d5034b820be4e6fd49436546a5aa7b7e02
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75749786"
 ---
-# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure'da bir Linux sanal makinesini izleyin
+# <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>Öğretici: Azure 'da Linux sanal makinesini Izleme
 
-Azure izleme, Azure Sanal Taşıtlarından önyükleme ve performans verileri toplamak, bu verileri Azure depolamaalanında depolamak ve portal, Azure PowerShell modülü ve Azure CLI üzerinden erişilebilir hale getirmek için aracıları kullanır. Gelişmiş izleme, performans ölçümleri toplayarak, VM'ye yüklenen uygulama bileşenlerini keşfederek ve performans grafikleri ve bağımlılık haritasını içeren VM'ler için Azure Monitor ile yapılır.
+Azure izleme, Azure VM 'lerinden önyükleme ve performans verilerini toplamak, bu verileri Azure depolama 'da depolamak ve Portal, Azure PowerShell modülü ve Azure CLı aracılığıyla erişilebilir hale getirmek için aracıları kullanır. Gelişmiş izleme, performans ölçümleri toplayarak, VM 'de yüklü olan uygulama bileşenlerini keşfeterek ve performans grafiklerini ve bağımlılık eşlemesini içerdiğinden VM'ler için Azure İzleyici ile birlikte sunulur.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * VM’de önyükleme tanılamalarını etkinleştirme
 > * Önyükleme tanılamasını görüntüleme
 > * VM konak ölçümlerini görüntüleme
-> * VM'ler için Azure Monitörünü etkinleştirme
+> * VM'ler için Azure İzleyici etkinleştir
 > * VM performans ölçümlerini görüntüleme
 > * Uyarı oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -123,40 +123,40 @@ Linux VM’si, Azure’da etkileşimde bulunduğu ayrılmış bir konağa sahipt
 
     ![Konak ölçümlerini görüntüleme](./media/tutorial-monitoring/monitor-host-metrics.png)
 
-## <a name="enable-advanced-monitoring"></a>Gelişmiş izlemeyi etkinleştirme
+## <a name="enable-advanced-monitoring"></a>Gelişmiş izlemeyi etkinleştir
 
-VM'ler için Azure VM'nizin Azure Monitor ile izlenmesini etkinleştirmek için:
+Azure VM 'nizi VM'ler için Azure İzleyici izlemeyi etkinleştirmek için:
 
 1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **İzleme** **bölümünde, Insights (önizleme) seçeneğini belirleyin.**
+2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
 
-3. **Öngörüler (önizleme)** sayfasında **şimdi Deneyin'i**seçin.
+3. **Öngörüler (Önizleme)** sayfasında **Şimdi dene**' yi seçin.
 
-    ![VM için VM'ler için Azure Monitörünü etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![VM için VM'ler için Azure İzleyici etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. Azure **Monitor Öngörüleri Onboarding** sayfasında, aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılan listede seçin.  
+4. **Azure Izleyici öngörüleri ekleme** sayfasında, aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, açılır listeden seçin.  
 
-    Liste, varsayılan çalışma alanını ve VM'nin abonelikte dağıtıldığı konumu önceden seçer. 
+    Liste, varsayılan çalışma alanını ve VM 'nin abonelikte dağıtıldığı konumu önceden seçer. 
 
     >[!NOTE]
-    >VM'deki izleme verilerini depolamak için yeni bir Log [Analytics çalışma](../../azure-monitor/learn/quick-create-workspace.md)alanı oluşturmak için bkz. Log Analytics çalışma alanınız desteklenen [bölgelerden](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)birine ait olmalıdır.
+    >İzleme verilerini VM 'den depolamak üzere yeni bir Log Analytics çalışma alanı oluşturmak için, bkz. [Log Analytics çalışma alanı oluşturma](../../azure-monitor/learn/quick-create-workspace.md). Log Analytics çalışma alanınız [desteklenen bölgelerden](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)birine ait olmalıdır.
 
-İzlemeyi etkinleştirdikten sonra, VM'nin performans ölçümlerini görüntüleyebilmeniz için birkaç dakika beklemeniz gerekebilir.
+İzlemeyi etkinleştirdikten sonra, VM 'nin performans ölçümlerini görüntüleyebilmeniz için birkaç dakika beklemeniz gerekebilir.
 
-![VM izleme dağıtım işlemleri için Azure Monitörünü etkinleştirme](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+![Dağıtım işlemeyi VM'ler için Azure İzleyici izlemeyi etkinleştir](../../azure-monitor/insights/media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="view-vm-performance-metrics"></a>VM performans ölçümlerini görüntüleme
 
-Sanal Ayarlar için Azure Monitörü, sanal bir makinenin ne kadar iyi performans gösterdiğini belirlemenize yardımcı olmak için birkaç önemli performans göstergesini (KPI) hedefleyen bir performans grafiği kümesi içerir. VM'nizden erişmek için aşağıdaki adımları gerçekleştirin.
+VM'ler için Azure İzleyici, bir sanal makinenin ne kadar iyi performans gösterdiğini belirlemenize yardımcı olmak üzere birkaç ana performans göstergelerini (KPI) hedefleyen bir performans grafikleri kümesi içerir. Sanal makinenize erişmek için aşağıdaki adımları uygulayın.
 
 1. Azure portalında **Kaynak Grupları**’na tıklayın, önce **myResourceGroupMonitor** seçeneğini belirleyin ve ardından kaynak listesinden **myVM**’yi seçin.
 
-2. VM sayfasında, **İzleme** **bölümünde, Insights (önizleme) seçeneğini belirleyin.**
+2. VM sayfasında, **izleme** bölümünde Öngörüler ' i **(Önizleme)** seçin.
 
 3. **Performans** sekmesini seçin.
 
-Bu sayfa yalnızca performans kullanım grafiklerini değil, aynı zamanda keşfedilen her mantıksal disk için, kapasitesini, kullanımını ve her ölçüye göre toplam ortalamayı gösteren bir tabloyu da içerir.
+Bu sayfa yalnızca performans kullanım grafiklerini içermez, aynı zamanda bulunan her bir mantıksal disk için bir tablo, kapasitesi, kullanımı ve her bir ölçünün toplam ortalaması dahil değildir.
 
 ## <a name="create-alerts"></a>Uyarı oluşturma
 
@@ -174,18 +174,18 @@ Aşağıdaki örnek, ortalama CPU kullanımı için bir uyarı oluşturur.
 
 5. İsteğe bağlı olarak e-posta bildirimi göndermek için *E-posta sahipleri, katkıda bulunanlar ve okuyucular* kutusunu işaretleyebilirsiniz. Varsayılan eylem olarak portalda bir bildirim sunulur.
 
-6. **Tamam** düğmesini tıklatın.
+6. **Tamam** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, VM'nizin performansını yapılandırmış ve görüntülediniz. Şunları öğrendiniz:
+Bu öğreticide VM 'nizin performansını yapılandırmış ve görüntülediyseniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Kaynak grubu ve sanal makine oluşturma
 > * VM’de önyükleme tanılamalarını etkinleştirme
 > * Önyükleme tanılamasını görüntüleme
 > * Konak ölçümlerini görüntüleme
-> * VM'ler için Azure Monitörünü etkinleştirme
+> * VM'ler için Azure İzleyici etkinleştir
 > * VM ölçümlerini görüntüleme
 > * Uyarı oluşturma
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI betik örneği - Blob depolama hesabına abone olma | Microsoft Docs
-description: Bu makalede, bir Azure Blob Depolama hesabı için olaylara nasıl abone olunur gösteren bir örnek Azure CLI komut dosyası sağlar.
+description: Bu makalede bir Azure Blob depolama hesabı için olaylara nasıl abone olunacağı gösteren örnek bir Azure CLı betiği sunulmaktadır.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: b6cb60273b0fc3ac101eb03c55a3392bd9b942a4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720888"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Azure CLI ile bir Blob depolama hesabı için olaylara abone olma

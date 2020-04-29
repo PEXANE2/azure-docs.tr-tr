@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Central ile sistem durumu veri triaj panosu oluşturma | Microsoft Dokümanlar
-description: Azure IoT Central uygulama şablonlarını kullanarak bir sistem durumu veri triaj panosu oluşturmayı öğrenin.
+title: Azure IoT Central bir durum verileri önceliklendirme panosu oluşturun | Microsoft Docs
+description: Azure IoT Central uygulama şablonlarını kullanarak bir durum verileri önceliklendirme panosu oluşturmayı öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 10/23/2019
@@ -9,73 +9,73 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 99b27ec53d955079b5f73986408e698955c0969b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021653"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Öğretici: Power BI sağlayıcı panosu oluşturma
 
 
 
-Sürekli hasta izleme çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane bakım ekibi için bir pano da oluşturabilirsiniz. Bu eğitimde, IoT Central sürekli hasta izleme uygulama şablonunuzdan bir Power BI gerçek zamanlı akış panosu oluşturmayı öğreneceksiniz.
+Sürekli hasta izleme Çözümünüzü oluştururken, hasta verilerini görselleştirmek için bir hastane ekibine yönelik bir pano da oluşturabilirsiniz. Bu öğreticide, IoT Central sürekli hasta izleme uygulaması şablonundan gerçek zamanlı Power BI bir akış panosu oluşturmayı öğreneceksiniz.
 
 >[!div class="mx-imgBorder"]
 >![Pano GIF](media/dashboard-gif-3.gif)
 
-Temel mimari bu yapıyı takip edecektir:
+Temel mimari bu yapıyı izler:
 
 >[!div class="mx-imgBorder"] 
->![Sağlayıcı Triyaj Panosu](media/dashboard-architecture.png)
+>![Sağlayıcı önceliklendirme panosu](media/dashboard-architecture.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure IoT Central'dan Azure Etkinlik Hub'larına veri verme
-> * Power BI akış veri kümesini ayarlama
-> * Mantık Uygulamanızı Azure Etkinlik Hub'larına bağlayın
-> * Mantık Uygulamanızdan Power BI'ye veri akışı
-> * Hasta hayati değerleri için gerçek zamanlı bir pano oluşturun
+> * Azure IoT Central verileri Azure 'a aktarın Event Hubs
+> * Power BI akış veri kümesi ayarlama
+> * Mantıksal uygulamanızı Azure 'a bağlama Event Hubs
+> * Mantıksal uygulamanızdan Power BI veri akışı
+> * Hasta için gerçek zamanlı bir pano oluşturun
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Azure IoT Merkezi sürekli hasta izleme uygulama şablonu. Zaten bir tane yoksa, [bir uygulama şablonu dağıtmak](overview-iot-central-healthcare.md)için adımları izleyebilirsiniz.
+* Azure IoT Central sürekli hasta izleme uygulaması şablonu. Henüz bir tane yoksa, [bir uygulama şablonu dağıtmak](overview-iot-central-healthcare.md)için adımları izleyebilirsiniz.
 
-* Bir Azure [Olay Hub'ları ad alanı ve Olay Hub'ı.](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Azure [Event Hubs ad alanı ve Olay Hub 'ı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
-* Etkinlik Hub'ınıza erişmek istediğiniz Mantık Uygulaması. Logic App'inizi Azure Etkinlik Hub'ları tetikleyicisiyle başlatmak için boş bir [Mantık Uygulamasına](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)ihtiyacınız vardır.
+* Olay Hub 'ınıza erişmek istediğiniz mantıksal uygulama. Mantıksal uygulamanızı Azure Event Hubs tetikleyicisiyle başlatmak için [boş bir mantıksal uygulama](https://docs.microsoft.com/azure/logic-apps/quickstart-create-first-logic-app-workflow)gerekir.
 
-* Bir Power BI hizmet hesabı. Zaten bir hesabınız yoksa, Power [BI hizmeti için ücretsiz bir deneme hesabı oluşturabilirsiniz.](https://app.powerbi.com/) Power BI'yi daha önce kullanmadıysanız, [Power BI ile başlamak](https://docs.microsoft.com/power-bi/service-get-started)için yararlı olabilir.
+* Power BI hizmeti hesabı. Henüz bir tane yoksa, [Power BI hizmeti için ücretsiz bir deneme hesabı oluşturabilirsiniz](https://app.powerbi.com/). Daha önce Power BI kullanmadıysanız, [Power BI kullanmaya başlama konusunda](https://docs.microsoft.com/power-bi/service-get-started)yararlı olabilir.
 
-## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Etkinlik Hub'larına sürekli veri dışa aktarma ayarlama
-Öncelikle Azure IoT Central uygulama şablonunuzdan aboneliğinizde Azure Etkinlik Hub'ına sürekli bir veri dışa aktarımı ayarlamanız gerekir. Bunu, [Olay Hub'larına Dışa Aktarma](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Sadece bu öğretici amaçları için telemetri için ihracat gerekir.
+## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs sürekli veri dışarı aktarma ayarlama
+İlk olarak Azure IoT Central uygulama şablonınızdan, aboneliğinizdeki Azure Olay Hub 'ına sürekli bir veri dışarı aktarma ayarlamanız gerekir. Bu işlemi, [Event Hubs dışarı aktarmak](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)Için bu Azure IoT Central öğreticisindeki adımları izleyerek yapabilirsiniz. Bu öğreticinin amaçları doğrultusunda yalnızca Telemetriyi dışa aktarmanız gerekir.
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI akış veri kümesi oluşturma
 
 1. Power BI hesabınızda oturum açın.
 
-2. Tercih ettiğiniz Çalışma Alanında, araç çubuğunun sağ üst köşesinde + **Oluştur** düğmesini seçerek yeni bir akış veri kümesi oluşturun. Panonuzda olmasını istediğiniz her hasta için ayrı bir veri kümesi oluşturmanız gerekir.
+2. Tercih ettiğiniz çalışma alanınızda, araç çubuğunun sağ üst köşesindeki **+ Oluştur** düğmesini seçerek yeni bir akış veri kümesi oluşturun. Panonuzda olmasını istediğiniz her hasta için ayrı bir veri kümesi oluşturmanız gerekir.
 
     >[!div class="mx-imgBorder"] 
     >![Akış veri kümesi oluşturma](media/create-streaming-dataset.png)
 
-3. Veri kümenizin kaynağı için **API'yi** seçin.
+3. Veri kümenizin kaynağı için **API** 'yi seçin.
 
-4. Veri kümeniz için bir **ad** (örneğin, hastanın adı) girin ve ardından akışınızdaki değerleri doldurun. Sürekli hasta izleme uygulama şablonundaki simüle edilmiş aygıtlardan gelen değerlere göre aşağıdaki bir örneği görebilirsiniz. Örnekte iki hasta vardır:
+4. Veri kümeniz için bir **ad** (örneğin, bir hasta adı) girin ve sonra akışınızdan değerleri doldurun. Sürekli hasta izleme uygulama şablonundaki sanal cihazlardan gelen değerlere göre aşağıdan bir örnek görebilirsiniz. Örnek iki hastaya sahiptir:
 
-    * Teddy Silvers, Smart Knee Brace verileri var
-    * Yesenia Sanford, Smart Vitals Patch verileri var
+    * Akıllı Knee ayracından veri bulunan oyuncak Siller
+    * Akıllı vitals düzeltme ekiyle veri içeren Yesenia Sanford
 
     >[!div class="mx-imgBorder"] 
     >![Veri kümesi değerlerini girin](media/enter-dataset-values.png)
 
-Power BI'de veri kümeleri akışı hakkında daha fazla bilgi edinmek için bu belgeyi [Power BI'de gerçek zamanlı akışta](https://docs.microsoft.com/power-bi/service-real-time-streaming)okuyabilirsiniz.
+Power BI veri kümeleri hakkında daha fazla bilgi edinmek için bu belgeyi [Power BI gerçek zamanlı akışta](https://docs.microsoft.com/power-bi/service-real-time-streaming)okuyabilirsiniz.
 
-## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Mantık Uygulamanızı Azure Etkinlik Hub'larına bağlayın
-Mantık Uygulamanızı Azure Etkinlik Hub'larına bağlamak için, [Azure Etkinlik Hub'ları ve Azure Mantıksal Uygulamaları ile etkinlik gönderme](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)ile ilgili bu belgede özetlenen yönergeleri takip edebilirsiniz. Önerilen bazı parametreler şunlardır:
+## <a name="connect-your-logic-app-to-azure-event-hubs"></a>Mantıksal uygulamanızı Azure 'a bağlama Event Hubs
+Mantıksal uygulamanızı Azure Event Hubs bağlamak için, [azure Event Hubs ve Azure Logic Apps ile olay gönderme](https://docs.microsoft.com/azure/connectors/connectors-create-api-azure-event-hubs#add-event-hubs-action)konusunda bu belgede özetlenen yönergeleri izleyebilirsiniz. Önerilen bazı parametreler şunlardır:
 
 |Parametre|Değer|
 |---|---|
@@ -83,17 +83,17 @@ Mantık Uygulamanızı Azure Etkinlik Hub'larına bağlamak için, [Azure Etkinl
 |Interval|3|
 |Frequency|Saniye|
 
-Bu adımın sonunda, Mantık Uygulama Tasarımcısı aşağıdaki gibi görünmelidir:
+Bu adımın sonunda, mantıksal uygulama Tasarlayıcıınızın şöyle görünmesi gerekir:
 
 >[!div class="mx-imgBorder"] 
->![Logic Apps Olay Hub'larına bağlanır](media/eh-logic-app.png)
+>![Logic Apps Event Hubs bağlanır](media/eh-logic-app.png)
 
-## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Mantık Uygulamanızdan Power BI'ye veri akışı
-Bir sonraki adım, etkinlik hub'ınızdan gelen verileri ayrıştırarak daha önce oluşturduğunuz Power BI veri kümelerine aktarmak olacaktır.
+## <a name="stream-data-to-power-bi-from-your-logic-app"></a>Mantıksal uygulamanızdan Power BI veri akışı
+Sonraki adım, Olay Hub 'ından gelen verileri daha önce oluşturduğunuz Power BI veri kümelerine akışa almak için ayrıştıracaktır.
 
-1. Bunu yapmadan önce, cihazınızdan Olay Hub'ınıza gönderilen JSON yükünü anlamanız gerekir. Bunu, bu [örnek şemaya](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) bakarak ve şemanızla eşleşecek şekilde değiştirerek veya iletileri incelemek için [Service Bus gezginini](https://github.com/paolosalvatori/ServiceBusExplorer) kullanarak yapabilirsiniz. Sürekli hasta izleme uygulamalarını kullanıyorsanız, iletileriniz aşağıdaki gibi görünür:
+1. Bunu yapabilmeniz için önce, cihazınızdan Olay Hub 'ına gönderilen JSON yükünü anlamanız gerekir. Bu [örnek şemaya](https://docs.microsoft.com/azure/iot-central/core/howto-export-data#telemetry) bakarak ve iletileri incelemek için [Service Bus Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer) 'ni kullanarak bunu yapabilirsiniz. Sürekli hasta izleme uygulamaları kullanıyorsanız, iletileriniz şöyle görünür:
 
-**Akıllı Vitals Yama telemetri**
+**Akıllı vitals düzeltme eki telemetrisi**
 
 ```json
 {
@@ -109,7 +109,7 @@ Bir sonraki adım, etkinlik hub'ınızdan gelen verileri ayrıştırarak daha ö
 }
 ```
 
-**Akıllı Diz Destek telemetri**
+**Akıllı Knee küme ayracı telemetrisi**
 
 ```json
 {
@@ -139,72 +139,72 @@ Bir sonraki adım, etkinlik hub'ınızdan gelen verileri ayrıştırarak daha ö
 }
 ```
 
-2. Artık JSON yüklerinizi incelediğinize göre, Logic App Designer'ınıza geri dönüp **+ Yeni Adım'ı**seçin. Bir sonraki adım olarak **Initialize değişkenini** arayın ve ekleyin ve aşağıdaki parametreleri girin:
+2. JSON yüklerinizi incedığınıza göre, mantıksal uygulama tasarlayana geri dönüp **+ yeni adım**' ı seçin. **Başlangıç değişkenini** bir sonraki adımla bulun ve ekleyin ve aşağıdaki parametreleri girin:
 
     |Parametre|Değer|
     |---|---|
-    |Adı|Arayüz Adı|
+    |Adı|Arabirim adı|
     |Tür|Dize|
 
     **Kaydet**'e tıklayın. 
 
-3. **String**olarak Türü olan **Gövde** adlı başka bir değişken ekleyin. Mantık Uygulamanız şu eylemleri ekleyecek:
+3. **String**olarak Type ile **Body** adlı başka bir değişken ekleyin. Mantıksal uygulamanız şu eylemleri ekledi:
 
     >[!div class="mx-imgBorder"]
-    >![Değişkenleri başlatma](media/initialize-string-variables.png)
+    >![Değişkenleri Başlat](media/initialize-string-variables.png)
     
-4. **+ Yeni Adım'ı** seçin ve Ayrı **ayrı JSON** eylemi ekleyin. Bunu **Ayrışma Özellikleri**olarak yeniden adlandırın. İçerik için Olay Hub'ından gelen **Özellikleri** seçin. Altta **şema oluşturmak için örnek yükü kullan'ı** seçin ve yukarıdaki Özellikler bölümünden örnek yükü yapıştırın.
+4. **+ Yeni adım** ' ı seçin ve BIR **ayrıştırma JSON** eylemi ekleyin. **Özellikleri ayrıştırmak**için bunu yeniden adlandırın. Içerik için Olay Hub 'ından gelen **Özellikler** ' i seçin. En altta **şema oluşturmak için örnek yük kullan** ' ı seçin ve yukarıdaki özellikler bölümünden örnek yükü yapıştırın.
 
-5. Ardından, **DeğişkenI Ayarla'yı** seçin ve **Arabirim Adı** değişkeninizi ayrıştılı JSON özelliklerinden **iothub-arabirim adı** ile güncelleştirin.
+5. Sonra, **değişken ayarla** eylemini seçin ve **arabirim adı** değişkeninizi ayrıştırılmış JSON özelliklerindeki **ıothub-Interface-Name** ile güncelleştirin.
 
-6. Bir sonraki eyleminiz olarak **Bölünmüş** Denetim ekleyin ve Açık parametresi olarak **Arabirim Adı** değişkenini seçin. Verileri doğru veri kümesine aktarmak için bunu kullanırsınız.
+6. Sonraki eyleminiz olarak **bölünmüş** bir denetim ekleyin ve **arabirim adı** değişkenini on parametresi olarak seçin. Bunu, verileri doğru veri kümesine huni için kullanacaksınız.
 
-7. Azure IoT Merkezi uygulamanızda, Smart Vitals Patch sağlık verileri için Arabirim Adı ve **Aygıt Şablonları** görünümünden Akıllı Diz Ayrısı sistem durumu verilerini bulun. Her Arabirim Adı için **Anahtar Denetimi** için iki farklı servis talebi oluşturun ve denetimi uygun şekilde yeniden adlandırın. Varsayılan servis durumunu **Denetimi Sonlandırma'yı** kullanacak şekilde ayarlayabilir ve hangi durumu göstermek istediğinizi seçebilirsiniz.
-
-    >[!div class="mx-imgBorder"] 
-    >![Bölme kontrolü](media/split-by-interface.png)
-
-8. Smart **Vitals Patch** kılıfı için Bir **Parse JSON** eylemi ekleyin. İçerik için Etkinlik Hub'ından gelen **İçeriği** seçin. Şemayı oluşturmak için yukarıdaki Smart Vitals Patch için örnek yükleri kopyalayın ve yapıştırın.
-
-9. Bir **Set değişken** eylem ilerve Adım 7'de ayrıştı JSON vücut ile **Vücut** değişkeni güncelleştirin. **Body**
-
-10. Bir sonraki eylem olarak bir **Durum** Kontrolü ekleyin ve **Vücut**için durum ayarlamak , **içerir**, **HeartRate**. Bu, Power BI veri kümesini doldurmadan önce Smart Vitals Patch'ten gelen doğru veri kümesine sahip olduğunuzu unutmayın. Adımlar 7-9 şu şekilde görünecektir:
+7. Azure IoT Central uygulamanızda, akıllı Vintals düzeltme durumu verileri için arabirim adını ve **cihaz şablonları** görünümündeki akıllı Knee küme ayracı sistem durumu verilerini bulun. Her arabirim adı için **anahtar** denetimi için iki farklı durum oluşturun ve denetimi uygun şekilde yeniden adlandırın. **Sonlandırma** denetimini kullanmak istediğiniz durumu seçmek için varsayılan durumu ayarlayabilirsiniz.
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals durum eklemek](media/smart-vitals-pbi.png)
+    >![Bölünmüş denetim](media/split-by-interface.png)
 
-11. Koşulun **Gerçek** durumu için, veri kümesi Güç BI **işlevine Satır Ekle** çağıran bir eylem ekleyin. Bunun için Power BI'ye giriş yapmak zorundasınız. **Yanlış** servis talebiniz yine **Sonlandırma** denetimini kullanabilir.
+8. **Akıllı vitals düzeltme** durumu IÇIN BIR **JSON JSON** eylemi ekleyin. Içerik için Olay Hub 'ından gelen **içerik** ' i seçin. Şemayı oluşturmak için yukarıdaki akıllı Vintals düzeltme ekinin örnek yüklerini kopyalayıp yapıştırın.
 
-12. Uygun **Çalışma Alanı,** **Dataset**ve **Tablo'yu**seçin. Power BI'de akış veri setinizi oluştururken belirttiğiniz parametreleri Olay Hub'ınızdan gelen ayrıştırılmış JSON değerleriyle eşlendirin. Doldurulmuş eylemleriniz şu şekilde görünmelidir:
+9. Bir **değişken kümesi** eylemi ekleyin ve **gövde** değişkenini adım 7 ' deki ayrıştırılmış JSON öğesinden gelen **gövdesiyle** güncelleştirin.
 
-    >[!div class="mx-imgBorder"] 
-    >![Power BI'ye satır ekleme](media/add-rows-yesenia.png)
-
-13. Smart **Knee Brace** anahtar kılıfı için, Içeriği ayrışdırmak için Adım 7'ye benzer bir **Ayrışdırış JSON** eylemi ekleyin. Ardından Power BI'deki Teddy Silvers veri setinizi güncellemek için **veri kümesine satır ekleyin.**
+10. Bir sonraki eyleminiz olarak bir **koşul** denetimi ekleyin ve koşulu **gövde**, **içerir**, duyun olarak **ayarlayın.** Bu, Power BI veri kümesini doldurmadan önce akıllı Vinals düzeltme ekiyle gelen doğru veri kümesine sahip olduğunuzdan emin olur. 7-9 adımları şöyle görünür:
 
     >[!div class="mx-imgBorder"] 
-    >![Smart Vitals durum eklemek](media/knee-brace-pbi.png)
+    >![Akıllı vitals koşul Ekle](media/smart-vitals-pbi.png)
 
-14. **Kaydet** tuşuna basın ve ardından Mantık Uygulamanızı çalıştırın.
+11. Koşulun **gerçek** durumu için, **bir veri kümesine satır ekle** Power BI işlevine çağıran bir eylem ekleyin. Bunun için Power BI oturum açmanız gerekir. **Yanlış** durum, **sonlandırma** denetimini yeniden kullanabilir.
 
-## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Hasta hayati değerleri için gerçek zamanlı bir pano oluşturun
-Şimdi Power BI'ye geri dön ve yeni bir **Pano**oluşturmak için **+ Oluştur'u** seçin. Panonuza bir ad verin ve **Oluştur'a**basın.
+12. Uygun **çalışma alanını**, **veri kümesini**ve **tabloyu**seçin. Power BI ' de akış veri kümenizi oluştururken belirttiğiniz parametreleri Olay Hub 'ınızdan gelen ayrıştırılmış JSON değerlerine eşleyin. Doldurulmuş eylemleriniz şuna benzemelidir:
 
-Üst gezinti çubuğundaki üç noktayı seçin ve ardından **+ Döşeme ekle'yi**seçin.
+    >[!div class="mx-imgBorder"] 
+    >![Power BI satır ekleme](media/add-rows-yesenia.png)
+
+13. **Akıllı Knee küme ayracı** anahtar durumu için, içeriği ayrıştırmak için 7. adıma benzer bir **JSON JSON** eylemi ekleyin. Ardından Power BI içindeki oyuncak Sillerinizi veri kümenizi güncelleştirmek için **bir veri kümesine satır ekleyin** .
+
+    >[!div class="mx-imgBorder"] 
+    >![Akıllı vitals koşul Ekle](media/knee-brace-pbi.png)
+
+14. **Kaydet** ' e basın ve ardından mantıksal uygulamanızı çalıştırın.
+
+## <a name="build-a-real-time-dashboard-for-patient-vitals"></a>Hasta için gerçek zamanlı bir pano oluşturun
+Şimdi Power BI dönün ve **+ Oluştur** ' u seçerek yeni bir **Pano**oluşturun. Panonuza bir ad verin ve **Oluştur**' a basın.
+
+Üst gezinti çubuğunda üç noktayı seçin ve ardından **+ kutucuk Ekle**' yi seçin.
 
 >[!div class="mx-imgBorder"] 
->![Panoya döşeme ekleme](media/add-tile.png)
+>![Panoya kutucuk Ekle](media/add-tile.png)
 
-Eklemek istediğiniz döşeme türünü seçin ve uygulamanızı istediğiniz gibi özelleştirin.
+Uygulamanızı eklemek ve özelleştirmek istediğiniz kutucuğun türünü seçin, ancak dilediğiniz gibi.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekseniz, kaynaklarınızı aşağıdaki adımlarla silin:
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla kaynaklarınızı silin:
 
-1. Azure portalından, oluşturduğunuz Etkinlik Hub'ı ve Mantıksal Uygulamalar kaynaklarını silebilirsiniz.
+1. Azure portal, oluşturduğunuz Olay Hub 'ını ve Logic Apps kaynaklarını silebilirsiniz.
 
-2. IoT Merkezi uygulamanız için İdare sekmesine gidin ve **Sil'i**seçin.
+2. IoT Central uygulamanız için Yönetim sekmesine gidin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Sürekli [hasta izleme mimarisi kılavuzunu](concept-continuous-patient-monitoring-architecture.md)gözden geçirin.
+* [Sürekli hasta izleme mimarisi kılavuzunu](concept-continuous-patient-monitoring-architecture.md)gözden geçirin.

@@ -1,115 +1,115 @@
 ---
-title: 'Öğretici: Uyarıları ve eylem gruplarını kullanarak Azure Bahar Bulutu kaynaklarını izleyin | Microsoft Dokümanlar'
-description: Bahar Bulutu uyarılarını nasıl kullanacağınızı öğrenin.
+title: 'Öğretici: uyarıları ve eylem gruplarını kullanarak Azure yay bulut kaynaklarını Izleme | Microsoft Docs'
+description: Yay bulutu uyarılarını nasıl kullanacağınızı öğrenin.
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.openlocfilehash: cf7e075244a83190b83e629ef300a4903b114a6d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77920085"
 ---
-# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: Uyarıları ve eylem gruplarını kullanarak Bahar Bulutu kaynaklarını izleyin
+# <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Öğretici: uyarıları ve eylem gruplarını kullanarak yay bulut kaynaklarını Izleme
 
-Azure Bahar Bulutu uyarıları, kullanılabilir depolama, istek oranı veya veri kullanımı gibi koşullara bağlı olarak izleme kaynaklarını destekler. Fiyatlar veya koşullar tanımlanan özellikleri karşıladığında bir uyarı bildirim gönderir.
+Azure yay bulut uyarıları, kullanılabilir depolama, istek hızı veya veri kullanımı gibi koşullara göre kaynakları izlemeyi destekler. Bir uyarı, oran veya koşullar tanımlı belirtimleri karşılıyorsa bildirim gönderir.
 
-Bir uyarı ardışık hattı ayarlamak için iki adım vardır: 
-1. E-posta, SMS, Runbook veya Webhook gibi bir uyarı tetiklendiğinde yapılacak eylemleri içeren bir Eylem Grubu ayarlayın. Eylem Grupları farklı uyarılar arasında yeniden kullanılabilir.
-2. Uyarı kurallarını ayarlayın. Kurallar, metrik desenleri hedef kaynağa, metrik, koşul, zaman toplama vb. dayalı eylem gruplarıyla bağlar.
+Bir uyarı ardışık düzeni kurmak için iki adım vardır: 
+1. E-posta, SMS, runbook veya Web kancası gibi bir uyarı tetiklendiğinde gerçekleştirilecek eylemlerle bir eylem grubu ayarlayın. Eylem grupları, farklı uyarılar arasında yeniden kullanılabilir.
+2. Uyarı kurallarını ayarlayın. Kurallar, ölçüm düzenlerini hedef kaynağa, ölçüme, koşula, zaman toplamaya, vb. göre eylem gruplarıyla bağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Azure Yay gereksinimlerine ek olarak, bu öğretici aşağıdaki kaynaklara bağlıdır.
+Bu öğretici, Azure Spring gereksinimlerine ek olarak aşağıdaki kaynaklara bağımlıdır.
 
-* Dağıtılmış bir Azure İlkbahar Bulutu örneği.  Başlamak için [hızlı bir şekilde başlayın.](spring-cloud-quickstart-launch-app-cli.md)
+* Dağıtılmış bir Azure yay bulutu örneği.  Başlamak için [hızlı](spring-cloud-quickstart-launch-app-cli.md) başlarımızı izleyin.
 
-* İzlenecek bir Azure kaynağı. Bu örnek, bir Bahar Bulutu örneğini izler.
+* İzlenecek bir Azure kaynağı. Bu örnek, bir yay bulutu örneğini izler.
  
-Aşağıdaki yordamlar, Bir Bahar Bulutu örneğinin sol gezinti bölmesinde **uyarılar** seçeneğinden başlayarak hem **Eylem Grubu** hem de **Uyarı'yı** başlatir. (Yordam, Azure portalının **Monitör Genel Bakış** sayfasından da başlayabilir.) 
+Aşağıdaki yordamlar, bir yay bulutu örneğinin sol gezinti bölmesindeki **Uyarılar** seçeneğinden başlayarak hem **Eylem grubunu** hem de **uyarıyı** başlatır. (Yordam, Azure portal **Izlemeye genel bakış** sayfasından da başlayabilir.) 
 
-Kaynak grubundan Bahar Bulutu örneğinize gidin. Sol bölmedeki **Uyarıları** seçin ve ardından **eylemleri yönet'i**seçin:
+Bir kaynak grubundan Spring Cloud örneğinize gidin. Sol bölmedeki **Uyarılar** ' ı seçin ve ardından **eylemleri Yönet**' i seçin:
 
-![Ekran görüntüsü portalı kaynak grup sayfası](media/alerts-action-groups/action-1-a.png)
+![Ekran görüntüsü portalı kaynak grubu sayfası](media/alerts-action-groups/action-1-a.png)
 
-## <a name="set-up-action-group"></a>Eylem Grubu'nun ayarla
+## <a name="set-up-action-group"></a>Eylem grubunu ayarlama
 
-Yeni bir **Eylem Grubu**başlatmak için yordamı başlatmak için , seçin + Eylem **grubu ekle**.
+Yeni bir **eylem grubu**başlatma yordamına başlamak için **+ eylem grubu Ekle**' yi seçin.
 
-![Ekran görüntüsü portalı Eylem grubu ekle](media/alerts-action-groups/action-1.png)
+![Ekran görüntüsü portalı eylem grubu Ekle](media/alerts-action-groups/action-1.png)
 
-Eylem **grubu ekle** sayfasında:
+**Eylem grubu Ekle** sayfasında:
 
- 1. Eylem **grubu adı** ve **Kısa adı**belirtin.
+ 1. Bir **eylem grubu adı** ve **kısa ad**belirtin.
 
- 1. **Abonelik** ve **Kaynak grubunu**belirtin.
+ 1. **Abonelik** ve **kaynak grubunu**belirtin.
 
- 1. **Eylem Adı**Belirtin.
+ 1. **Eylem adını**belirtin.
 
- 1. **Eylem Türünü**seçin.  Bu, etkinleştirmede yapılacak eylemi tanımlamak için sağda başka bir bölme açar.
+ 1. **Eylem türünü**seçin.  Bu işlem, etkinleştirme sırasında gerçekleştirilecek eylemi tanımlamak için sağdaki başka bir bölmeyi açar.
 
- 1. Eylemi sağ bölmedeki seçenekleri kullanarak tanımlayın.  Bu durumda e-posta bildirimi kullanır.
+ 1. Sağ bölmedeki seçenekleri kullanarak eylemi tanımlayın.  Bu durum, e-posta bildirimini kullanır.
 
- 1. Doğru eylem bölmesinde **Tamam'ı** tıklatın.
+ 1. Sağ eylem bölmesinde **Tamam** ' ı tıklatın.
 
- 1. Eylem grubu **ekle** iletişim kutusunda **Tamam'ı** tıklatın. 
+ 1. **Eylem grubu Ekle** Iletişim kutusunda **Tamam** ' a tıklayın. 
 
-  ![Ekran Görüntüsü Portalı eylemi tanımlar](media/alerts-action-groups/action-2.png)
+  ![Ekran görüntüsü portalı eylemini tanımla](media/alerts-action-groups/action-2.png)
 
-## <a name="set-up-alert"></a>Uyarı yı ayarlama 
+## <a name="set-up-alert"></a>Uyarı ayarlama 
 
-Önceki adımlar, e-posta kullanan bir **Eylem Grubu** oluşturdu. Telefon bildirimi, web hooks, Azure işlevleri, vb kullanabilirsiniz.  
+Önceki adımlar, e-posta kullanan bir **eylem grubu** oluşturdu. Telefon bildirimi, Web kancaları, Azure işlevleri vb. de kullanabilirsiniz.  
 
-**Bir Uyarıyı**yapılandırmak için **Uyarılar** sayfasına geri gidin ve **Uyarı Kurallarını Yönet'i**tıklatın.
+Bir **Uyarı**yapılandırmak Için, **Uyarılar** sayfasına dönün ve **Uyarı kurallarını yönet**' e tıklayın.
 
-  ![Ekran Görüntüsü Portalı uyarı yı tanımla](media/alerts-action-groups/alerts-2.png)
+  ![Ekran görüntüsü portalı uyarı tanımla](media/alerts-action-groups/alerts-2.png)
 
-1. Uyarı için **Kaynak'ı** seçin.
+1. Uyarının **kaynağını** seçin.
 
-1. **+ Yeni uyarı kuralını**tıklatın.
+1. **+ Yeni uyarı kuralı**' na tıklayın.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3.png)
 
-1. Oluştur **kuralı** sayfasında **KAYNAK'ı**belirtin.
+1. **Kural oluştur** sayfasında, **kaynağı**belirtin.
 
-1. **CONDITION** ayarı, **Bahar Bulutu** kaynaklarınızı izlemek için birçok seçenek sunar.  **Yapılaşı sinyali mantığı** bölmesini açmak için **Ekle'yi** tıklatın.
+1. **Koşul** ayarı, **bahar bulut** kaynaklarınızı izlemeye yönelik birçok seçenek sağlar.  **Sinyal mantığını Yapılandır** bölmesini açmak için **Ekle** ' ye tıklayın.
 
-1. Bir koşul seçin. Bu örnekte **Sistem CPU Kullanım Yüzdesi**kullanır.
+1. Bir koşul seçin. Bu örnek, **SISTEM CPU kullanımı yüzdesini**kullanır.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-1.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-1.png)
 
-1. İzlemek için **Eşik değerini** ayarlamak için **Yapılsinyal mantığı** bölmesini aşağı kaydırın.
+1. **Eşik değerini** izleyici olarak ayarlamak için **sinyal mantığını Yapılandır** bölmesini aşağı kaydırın.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-2.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-2.png)
 
 1. **Bitti**’ye tıklayın.
 
-İzlenecek koşullarla ilgili ayrıntılar için [Kullanıcı portalı ölçüm seçeneklerine](spring-cloud-concept-metrics.md#user-metrics-options)bakın.
+İzlemek için kullanılabilen koşulların ayrıntıları için bkz. [Kullanıcı Portalı ölçümleri seçenekleri](spring-cloud-concept-metrics.md#user-metrics-options).
 
- **EYLEMLER** **altında, eylem grubunu seç'i**tıklatın. **EYLEMLER** bölmesinden daha önce tanımlanan **Eylem Grubu'nu**seçin.
+ **Eylemler**altında **eylem grubu seç**' e tıklayın. **Eylemler** bölmesinden, önceden tanımlanmış **Eylem grubunu**seçin.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-3.png) 
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-3.png) 
 
-1. Aşağı kaydırın ve **ALERT DETAILS**altında uyarı kuralını adlandırın.
+1. Aşağı kaydırın ve **Uyarı ayrıntıları**' nın altında, uyarı kuralını adlandırın.
 
-1. Önem **Derecesini**Ayarlayın.
+1. **Önem derecesini**ayarlayın.
 
-1. **Uyarı kuralı oluştur'u**tıklatın.
+1. **Uyarı kuralı oluştur**' a tıklayın.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-4.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-3-4.png)
 
-Yeni uyarı kuralının etkin olduğunu doğrulayın.
+Yeni uyarı kuralının etkinleştirildiğini doğrulayın.
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-4.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-4.png)
 
-**Ölçümler** sayfası kullanılarak bir kural da oluşturulabilir:
+**Ölçüm** sayfası kullanılarak da bir kural oluşturulabilir:
 
-   ![Ekran Görüntüsü Portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-5.png)
+   ![Ekran görüntüsü portalı yeni uyarı kuralı](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kullanıcı portalı ölçüm seçenekleri](spring-cloud-concept-metrics.md#user-metrics-options)
-* [Azure portalında eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
-* [Eylem Gruplarında SMS Uyarı Davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
-* [Öğretici: Azure Yay Bulutu ile Dağıtılmış İzleme yi kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Kullanıcı Portalı ölçüm seçenekleri](spring-cloud-concept-metrics.md#user-metrics-options)
+* [Azure portal eylem grupları oluşturma ve yönetme](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* [Eylem gruplarında SMS uyarı davranışı](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
+* [Öğretici: Azure Spring Cloud ile dağıtılmış Izleme kullanma](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

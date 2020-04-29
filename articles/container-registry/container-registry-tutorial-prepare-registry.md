@@ -1,14 +1,14 @@
 ---
-title: Öğretici - Coğrafi olarak çoğaltılmış kayıt defteri oluşturma
+title: Öğretici-coğrafi olarak çoğaltılan kayıt defteri oluşturma
 description: Bir Azure Container Registry oluşturun, coğrafi çoğaltma yapılandırın, bir Docker görüntüsü hazırlayın ve bunu kayıt defterine dağıtın. Üç bölümden oluşan bir serinin birinci bölümü.
 ms.topic: tutorial
 ms.date: 04/30/2017
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 70dc664d27fde3b7cf9fe4e5e3a99c041236ac16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238527"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Öğretici: Coğrafi çoğaltmalı Azure Container Registry’yi hazırlama
@@ -37,19 +37,19 @@ Azure Cloud Shell, bu öğreticideki her adımı tamamlamak için gerekli olan D
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-[Azure portalında](https://portal.azure.com)oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
-**Kaynak** > **Kapsayıcıları** > **Azure Kapsayıcı Kayıt Defteri'ni**seçin.
+Azure Container Registry **kaynak** > **kapsayıcıları** > **Azure Container Registry**oluştur ' u seçin.
 
 ![Azure portalında kapsayıcı kayıt defteri oluşturma][tut-portal-01]
 
 Aşağıdaki ayarlarla yeni kayıt defterinizi yapılandırın:
 
 * **Kayıt defteri adı**: Azure’da genel olarak benzersiz olan ve 5-50 alfasayısal karakterden oluşan bir kayıt defteri adı oluşturun
-* **Kaynak Grubu**: **Yeni oluştur** > `myResourceGroup`
-* **Yer**:`West US`
-* **Yönetici**kullanıcı `Enable` : (Kaplar için Web App görüntüleri çekmek için gerekli)
-* **SKU** `Premium` : (coğrafi çoğaltma için gerekli)
+* **Kaynak grubu**: **Yeni oluştur** > `myResourceGroup`
+* **Konum**:`West US`
+* **Yönetici Kullanıcı**: `Enable` (kapsayıcılar için Web App görüntüleri çekmek için gereklidir)
+* **SKU**: `Premium` (coğrafi çoğaltma için gereklidir)
 
 **Oluştur**’u seçerek ACR örneğini dağıtın.
 
@@ -112,7 +112,7 @@ cd acr-helloworld
 
 Örnekte bulunan Dockerfile, kapsayıcının nasıl yapılandırıldığını gösterir. Resmi bir [aspnetcore][dockerhub-aspnetcore] görüntüsünden başlatılır, uygulama dosyalarını kapsayıcıya kopyalar, bağımlılıkları yükler, resmi [aspnetcore-build][dockerhub-aspnetcore-build] görüntüsünü kullanarak çıktıyı derler ve son olarak iyileştirilmiş bir aspnetcore görüntüsü oluşturur.
 
-[Dockerfile][dockerfile] klonlanmış `./AcrHelloworld/Dockerfile` kaynakta yer almaktadır.
+[Dockerfile][dockerfile] , klonlanan kaynakta `./AcrHelloworld/Dockerfile` bulunur.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:2.0 AS base

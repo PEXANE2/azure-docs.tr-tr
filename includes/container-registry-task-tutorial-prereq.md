@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
 ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67133698"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
@@ -23,16 +23,16 @@ Bu öğreticiyi tamamlamak için Azure aboneliğinizde bir Azure kapsayıcı kay
 
 ## <a name="create-a-github-personal-access-token"></a>GitHub kişisel erişim belirteci oluşturma
 
-Bir Git deposuna bağlanma görevinde bir görevi tetiklemek için, ACR Görevleri'nin depoya erişmek için kişisel erişim belirteci (PAT) gerekir. Zaten bir PAT'iniz yoksa, GitHub'da bir tane oluşturmak için aşağıdaki adımları izleyin:
+Bir git deposuna yapılan işlemede bir görevi tetiklemek için ACR görevlerinin depoya erişmek için bir kişisel erişim belirteci (PAT) gerekir. Zaten bir PAT yoksa GitHub 'da bir tane oluşturmak için aşağıdaki adımları izleyin:
 
 1. GitHub üzerinde https://github.com/settings/tokens/new adresindeki PAT oluşturma sayfasında gidin
 1. Belirteç için kısa bir **açıklama** girin; örneğin, "ACR Görevleri Tanıtımı"
-1. ACR'nin repo'ya erişebilmek için kapsamları seçin. Bu öğreticide olduğu gibi genel repoya erişmek için, **repo**altında, **repo etkinleştirin:durum** ve **public_repo**
+1. ACR 'nin depoya erişmesi için kapsamlar ' ı seçin. Bu öğreticide olduğu gibi **genel depoya erişmek için depo altında**depoyu etkinleştirin **: durum** ve **public_repo**
 
    ![GitHub'da Kişisel Erişim Belirteci oluşturma sayfasının ekran görüntüsü][build-task-01-new-token]
 
    > [!NOTE]
-   > *Özel* bir repoya erişmek için BIR PAT oluşturmak için tam **repo** denetimi için kapsamı seçin.
+   > *Özel* depoya erişmek üzere bir pat oluşturmak için tam **Depo** denetimi için kapsamı seçin.
 
 1. **Belirteç Oluştur** düğmesini seçin (parolanızı onaylamanız istenebilir)
 1. Oluşturulan belirteci kopyalayın ve **güvenli bir konuma** kaydedin (bu belirteci sonraki bölümde bir görev tanımlarken kullanacaksınız)

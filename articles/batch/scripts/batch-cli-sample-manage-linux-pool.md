@@ -1,6 +1,6 @@
 ---
-title: Azure CLI Script Örneği - Toplu Olarak Linux Havuzu
-description: Bu komut dosyası, Azure Toplu İş'te Linux bilgi işlem düğümleri havuzu oluşturmak ve yönetmek için Azure CLI'de kullanılabilen komutlardan bazılarını gösterir.
+title: Azure CLı betik örneği-Batch 'te Linux havuzu
+description: Bu betik, Azure Batch ' de bir Linux işlem düğümü havuzu oluşturmak ve yönetmek için Azure CLı 'de mevcut olan komutlardan bazılarını gösterir.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: 7f896f7f6493cff8c25d4ccfd5a15f5edb11258f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77024492"
 ---
 # <a name="cli-example-create-and-manage-a-linux-pool-in-azure-batch"></a>CLI örneği: Azure Batch’te bir Linux havuzu oluşturma ve yönetme
 
-Bu komut dosyası, Azure Toplu İş'te Linux bilgi işlem düğümleri havuzu oluşturmak ve yönetmek için Azure CLI'de kullanılabilen komutlardan bazılarını gösterir.
+Bu betik, Azure Batch ' de bir Linux işlem düğümü havuzu oluşturmak ve yönetmek için Azure CLı 'de mevcut olan komutlardan bazılarını gösterir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

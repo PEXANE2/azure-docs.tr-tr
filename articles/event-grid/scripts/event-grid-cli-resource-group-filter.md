@@ -1,6 +1,6 @@
 ---
-title: Azure CLI - kaynağa göre filtre & kaynak grubuna abone olun
-description: Bu makalede, kaynak için Olay Izgara olaylarına nasıl abone olunur ve kaynak için filtre yi gösteren bir örnek Azure CLI komut dosyası görüntülenir.
+title: Azure CLı-kaynağa göre filtrelemek & kaynak grubuna abone olma
+description: Bu makalede bir kaynak için Event Grid olaylarına nasıl abone olunacağı ve bir kaynağın filtreleneceği bir örnek Azure CLı betiği sunulmaktadır.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 3dfe31a38d1bc1ba8662246a5dec3f10d0d1c948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720835"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Azure CLI ile bir kaynak grubu için olaylara abone olma ve kaynağa göre filtreleme

@@ -1,14 +1,14 @@
 ---
-title: Öğretici - Windows Server'ı Azure'a yedekleme
+title: Öğretici-Windows Server 'ı Azure 'a yedekleme
 description: Bu öğretici, şirket içi Windows Server’ların bir Kurtarma Hizmetleri kasasında yedeklenmesi işlemini açıklar.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238751"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server’ı Azure’da Yedekleme
@@ -19,11 +19,11 @@ Windows Server'ınızı bozulmalara, saldırılara ve olağanüstü durumlara ka
 >
 > * MARS Aracısını indirip ayarlama
 > * Sunucunuzun yedeklemeleri için yedekleme zamanlarını ve bekletme zamanlamasını yapılandırma
-> * İsteğe bağlı yedekleme yapma
+> * İsteğe bağlı yedekleme gerçekleştirin
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure portalında oturum açın.
+<https://portal.azure.com.> adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -37,11 +37,11 @@ Windows Server’ı yedekleyebilmeniz için önce yedeklemelerin veya geri yükl
 
    ![kasa için bilgileri sağlama](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3. Kurtarma **Hizmetleri kasa** menüsünde,
+3. **Kurtarma Hizmetleri Kasası** menüsünde,
 
     * **Ad** alanına *myRecoveryServicesVault* yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir.
-    * **Kaynak grubu için** **varolan ı kullan'ı** seçin ve *myResourceGroup'u*seçin. *MyResourceGroup* yoksa, **Yeni Oluştur'u** seçin ve *myResourceGroup*yazın.
+    * **Kaynak grubu**için **var olanı kullan** ' ı seçin ve *myresourcegroup*öğesini seçin. *Myresourcegroup* yoksa, **Yeni oluştur** ' u seçin ve *myresourcegroup*yazın.
     * **Konum** açılan menüsünden *Batı Avrupa*’yı seçin.
     * Kurtarma Hizmetleri kasanızı oluşturmak için **Oluştur**’a tıklayın.
 
@@ -59,7 +59,7 @@ Microsoft Azure Kurtarma Hizmetleri (MARS) aracısı, Windows Server ile Kurtarm
 
 3. **Yedekleme Hedefi** menüsünde:
 
-   * **iş yükünüz nerede çalışıyor?** **On-premises**
+   * **iş yükünüz nerede çalışıyor?** için **Şirket içi** ' i seçin
    * **Neleri yedeklemek istiyorsunuz?** için **Dosyalar ve klasörler**'i ve **Sistem Durumu**’nu seçin
 
    ![kasa için bilgileri sağlama](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
@@ -106,11 +106,11 @@ Windows Server’da, Azure’daki yedeklemelerin ne zaman gerçekleşeceğini za
 
 4. **Öğeleri Ekle**’ye tıklayın ve açılan iletişim kutusundan **Sistem Durumu**’nu ve yedeklemek istediğiniz dosyaları veya klasörleri seçin. Ardından **Tamam**'a tıklayın.
 
-5. **İleri**'ye tıklayın.
+5. **İleri**’ye tıklayın.
 
-6. Yedekleme **Çizelgesi (Sistem Durumu) belirt** sayfasında, Sistem Durumu için yedeklemelerin tetiklenmeleri gereken günün saatini veya haftayı belirtin ve **İleri'yi**tıklatın.
+6. **Yedekleme zamanlamasını belirtin (sistem durumu)** sayfasında, sistem durumu için yedeklemelerin tetiklenmesi gereken gün veya haftanın saatini belirtin ve **İleri**' ye tıklayın.
 
-7. **Bekletme İlkesi (Sistem Durumu) seç** sayfasında, Sistem Durumu için yedek kopya için Bekletme İlkesi'ni seçin ve **İleri'yi**tıklatın.
+7. **Bekletme Ilkesi Seç (sistem durumu)** sayfasında, sistem durumu için yedekleme kopyası Için bekletme ilkesini seçin ve **İleri**' ye tıklayın.
 
 8. Benzer şekilde, seçilen dosyalar ve klasörler için yedekleme zamanlamasını ve bekletme ilkesini seçin.
 

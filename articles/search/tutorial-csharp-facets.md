@@ -1,7 +1,7 @@
 ---
-title: Gezinmeye yardımcı olmak için yönlerini kullanma konusunda C# öğreticisi
+title: Gezintiye yardımcı olmak için modelleri kullanma hakkında C# öğreticisi
 titleSuffix: Azure Cognitive Search
-description: Bu öğretici, farklı gezinme eklemek için "Arama sonuçları pagination - Azure Bilişsel Arama" projesi üzerine inşa edilmiştir. Bir aramayı kolayca daraltmak için nasıl kullanılan yönleri öğrenin.
+description: Bu öğretici, model gezintisi eklemek için "arama sonuçları sayfalandırma-Azure Bilişsel Arama" projesinde oluşturulur. Bir aramanın kolayca daraltabilmesini sağlamak için modellerinin nasıl kullanılabileceğini öğrenin.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77121574"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# öğreticisi: Gezinmeye yardımcı olmak için yönlerini kullanın - Azure Bilişsel Arama
+# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# öğreticisi: gezintiye yardımcı olması için modelleri kullanma-Azure Bilişsel Arama
 
-Fasetler, kullanıcıya aramalarını odaklamak için kullanılacak bir dizi bağlantı sağlayarak gezinmeye yardımcı olmak için kullanılır. Fasonlar, örnek verilerimizdeki bir otelin kategorisi veya belirli bir özelliği gibi verilerin öznitelikleridir.
+Kullanıcılara, aramasına odaklanmak için kullanılacak bir bağlantı kümesi sağlayarak gezinmeye yardımcı olması için modeller kullanılır. Modeller, verilerin öznitelikleridir (kategori gibi, örnek verilerimizde bulunan bir otelin belirli bir özelliği).
 
-Bu öğretici, [C# Tutorial: Search sonuçları pagination - Azure Bilişsel Arama](tutorial-csharp-paging.md) öğretici oluşturulan sayfalama projesi üzerine inşa edilmiştir.
+Bu öğretici, C# öğreticisinde oluşturulan sayfalama projesi üzerinde oluşturulur [: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) öğreticisi.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
-> * Model özelliklerini _IsFacetable_ olarak ayarlama
-> * Uygulamanıza yönlü gezinme ekleme
+> * Model özelliklerini _ıscetable_ olarak ayarlama
+> * Uygulamanıza model gezintisi ekleyin
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-[C# Tutorial: Arama sonuçları pagination var - Azure Bilişsel Arama](tutorial-csharp-paging.md) projesi up ve çalışıyor. Bu proje ya kendi sürümünüz olabilir ya da GitHub'dan yükleyebilir: [İlk uygulamayı oluşturun.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
+[C# öğreticisine sahip olmak: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) projesi çalışıyor ve çalışıyor. Bu proje kendi sürümünüz olabilir ya da GitHub: [ilk uygulama oluştur](https://github.com/Azure-Samples/azure-search-dotnet-samples)' dan yükleyebilirsiniz.
 
-## <a name="set-model-properties-as-isfacetable"></a>Model özelliklerini IsFacetable olarak ayarlama
+## <a name="set-model-properties-as-isfacetable"></a>Model özelliklerini ıscetable olarak ayarlama
 
-Bir model özelliğinin fason bir aramada bulunabilmesi için **IsFacetable**ile etiketlenmiş olması gerekir.
+Model özelliğinin bir model aramasında bulunması için **ıbıı tablosuyla**etiketlenmesi gerekir.
 
-1. **Otel** dersini inceleyin. **Kategori** ve **Etiketler**, örneğin, **IsFacetable**olarak etiketlenir , ancak **HotelName** ve **Açıklama** değildir. 
+1. **Otel** sınıfını inceleyin. **Kategori** ve **Etiketler**, örneğin, **ıbıı tablosu**olarak etiketlenebilir, ancak **hoteladı** ve **Açıklama** değildir. 
 
     ```cs
     public partial class Hotel
@@ -82,40 +82,40 @@ Bir model özelliğinin fason bir aramada bulunabilmesi için **IsFacetable**ile
     }
     ```
 
-2. Bu öğreticinin bir parçası olarak etiket değiştirilmeyiz, bu nedenle hotel.cs dosyasını değiştirilmeden kapatın.
+2. Bu öğreticinin bir parçası olarak herhangi bir etiket değiştirilmeyecektir, bu nedenle hotel.cs dosyasını değiştirilmemiş olarak kapatın.
 
     > [!Note]
-    > Aramada istenen bir alan uygun şekilde etiketlenmezse, fason bir arama hata sağlar.
+    > Aramada istenen bir alan uygun şekilde etiketlenmemişse, bir model araması bir hata oluşturur.
 
 
-## <a name="add-facet-navigation-to-your-app"></a>Uygulamanıza yönlü gezinme ekleme
+## <a name="add-facet-navigation-to-your-app"></a>Uygulamanıza model gezintisi ekleyin
 
-Bu örnekte, kullanıcının sonuçların solunda gösterilen bağlantı listelerinden bir otel kategorisi veya bir olanak seçmesine olanak sağlayacağız. Kullanıcı bazı arama metni girerek başlar, daha sonra bir kategori seçerek arama sonuçlarını daraltabilir ve bir uygunluk seçerek sonuçları daha da daraltabilir, ya da önce amenity 'yi seçebilir (sipariş önemli değildir).
+Bu örnekte, kullanıcının sonuçların solunda gösterilen bağlantı listelerinden bir otel veya bir değişiklik kategorisi seçmesini etkinleştireceğiz. Kullanıcı bazı arama metinleri girerek başlar, sonra bir kategori seçerek aramanın sonuçlarını daraltabilir ve bir değişiklik seçerek sonuçları daraltabilir, ya da ilk değişikliği seçebilir (Order önemli değildir).
 
-Görüşe fason listelerini geçirmek için denetleyiciye ihtiyacımız var. Arama ilerledikçe kullanıcı seçimlerini korumamız gerekir ve yine verileri korumak için geçici depolama mekanizması olarak kullanırız.
+Görünüme model listelerini geçirmek için denetleyiciye ihtiyacımız var. Arama ilerledikçe kullanıcı seçimlerini sürdürmemiz ve yine de verileri koruma mekanizması olarak geçici depolama kullanıyoruz.
 
-!["Havuz" aramasını daraltmak için fason gezinmeyi kullanma](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
+!["Havuz" aramasını daraltmak için model gezintisi kullanma](./media/tutorial-csharp-create-first-app/azure-search-facet-nav.png)
 
 ### <a name="add-filter-strings-to-the-searchdata-model"></a>SearchData modeline filtre dizeleri ekleme
 
-1. SearchData.cs dosyasını açın ve fason filtre dizelerini tutmak için **SearchData** sınıfına dize özellikleri ekleyin.
+1. SearchData.cs dosyasını açın ve, model filtresi dizelerini tutmak için **Searchdata** sınıfına dize özellikleri ekleyin.
 
     ```cs
         public string categoryFilter { get; set; }
         public string amenityFilter { get; set; }
     ```
 
-### <a name="add-the-facet-action-method"></a>Facet eylem yöntemini ekleme
+### <a name="add-the-facet-action-method"></a>Model eylem yöntemini ekleyin
 
-Ev denetleyicisi yeni bir eylem, **Facet**ve mevcut **Dizin** ve **Sayfa** eylemleri güncellemeleri yanı sıra **RunQueryAsync** yöntemi güncellemeleri gerekir.
+Ana denetleyicinin, yeni bir eylem, **model**ve var olan **Dizin** ve **sayfa** eylemlerine yönelik güncelleştirmelerin yanı sıra **runqueryasync** yöntemine yönelik güncelleştirmeler olması gerekir.
 
-1. **Liste&lt;dizesi&gt; ** yapısını etkinleştirmek için ev denetleyicidosyasını açın ve **kullanılan** ifadeyi ekleyin.
+1. Giriş denetleyicisi dosyasını açın ve **using** ifadesini ekleyerek **liste&lt;dizesi&gt; ** yapısını etkinleştirin.
 
     ```cs
     using System.Collections.Generic;
     ```
 
-2. **Dizin (SearchData modeli)** eylem yöntemini değiştirin.
+2. **Index (SearchData model)** eylem yöntemini değiştirin.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -140,7 +140,7 @@ Ev denetleyicisi yeni bir eylem, **Facet**ve mevcut **Dizin** ve **Sayfa** eylem
         }
     ```
 
-3. **Sayfa(SearchData modeli)** eylem yöntemini değiştirin.
+3. **Sayfa (SearchData model)** eylem yöntemini değiştirin.
 
     ```cs
         public async Task<ActionResult> Page(SearchData model)
@@ -187,7 +187,7 @@ Ev denetleyicisi yeni bir eylem, **Facet**ve mevcut **Dizin** ve **Sayfa** eylem
         }
     ```
 
-4. Kullanıcı bir fason bağlantısını tıklattığında etkinleştirilecek bir **Faf (SearchData modeli)** eylem yöntemi ekleyin. Model, bir kategori arama filtresi veya bir olanaklar arama filtresi içerir. Belki **de Sayfa** eyleminden sonra ekleyin.
+4. Kullanıcı bir model bağlantısına tıkladığında etkinleştirilecek bir **model (SearchData model)** eylem yöntemi ekleyin. Model, bir kategori arama filtresi veya bir düzeltme arama filtresi içerir. Belki de **sayfa** eyleminden sonra ekleyebilirsiniz.
 
     ```cs
         public async Task<ActionResult> Facet(SearchData model)
@@ -230,9 +230,9 @@ Ev denetleyicisi yeni bir eylem, **Facet**ve mevcut **Dizin** ve **Sayfa** eylem
 
 ### <a name="set-up-the-search-filter"></a>Arama filtresini ayarlama
 
-Örneğin, bir kullanıcı belirli bir yönü seçtiğinde, **Resort and Spa** kategorisini tıklatır, ardından sonuçlarda yalnızca bu kategori olarak belirtilen oteller döndürülmelidir. Bu şekilde bir aramayı daraltmak için bir _filtre_ayarlamamız gerekir.
+Bir Kullanıcı belirli bir modeli seçtiğinde, örneğin, **çare ve Spa** kategorisine tıkladığınızda yalnızca bu kategori olarak belirtilen oteller sonuçlarda döndürülmelidir. Bu şekilde bir aramayı daraltmak için bir _filtre_ayarlaması gerekiyor.
 
-1. **RunQueryAsync** yöntemini aşağıdaki kodla değiştirin. Öncelikle, bir kategori filtre dizesi ve bir amenity filtre dizealır ve **SearchParameters** **Filtre** parametresini ayarlar.
+1. **Runqueryasync** yöntemini aşağıdaki kodla değiştirin. Birincil olarak, bir kategori filtre dizesi ve bir düzeltme filtre dizesi alır ve **SearchParameters**'ın **filtre** parametresini ayarlar.
 
     ```cs
         private async Task<ActionResult> RunQueryAsync(SearchData model, int page, int leftMostPage, string catFilter, string ameFilter)
@@ -316,13 +316,13 @@ Ev denetleyicisi yeni bir eylem, **Facet**ve mevcut **Dizin** ve **Sayfa** eylem
         }
     ```
 
-    Döndürülecek **Seç** öğeleri listesine **Kategori** ve **Etiketler** özelliklerini ekledik. Bu ek, fatür gezinmenin çalışması için bir gereklilik değildir, ancak bu bilgileri doğru filtreleme yaptığımızı doğrulamak için kullanırız.
+    Döndürülecek öğe **seçme** listesine **Kategori** ve **Etiketler** özelliklerini ekledik. Bu ek, model gezintisinin çalışması için bir gereklilik değildir ancak doğru filtrelemediğimiz doğrulamak için bu bilgileri kullanırız.
 
-### <a name="add-lists-of-facet-links-to-the-view"></a>Görünüme yönlü bağlantıların listesini ekleme
+### <a name="add-lists-of-facet-links-to-the-view"></a>Görünüme model bağlantıları listesi ekleyin
 
 Görünüm bazı önemli değişiklikler gerektirecektir. 
 
-1. hotels.css dosyasını açarak başlayın (wwwroot/css klasöründe) ve aşağıdaki sınıfları ekleyin.
+1. Oteller. css dosyasını (Wwwroot/CSS klasöründe) açarak başlatın ve aşağıdaki sınıfları ekleyin.
 
     ```html
     .facetlist {
@@ -344,7 +344,7 @@ Görünüm bazı önemli değişiklikler gerektirecektir.
     }
     ```
 
-2. Görünüm için, soldaki yönlü listeleri ve sağdaki sonuçları düzgün bir şekilde hizalamak için çıktıyı bir tablo halinde düzenleriz. index.cshtml dosyasını açın. HTML &lt;gövde&gt; etiketlerinin tüm içeriğini aşağıdaki kodla değiştirin.
+2. Görünüm için çıktıyı, sol taraftaki model listelerini ve sağdaki sonuçları doğru şekilde hizalamak için bir tabloya düzenledik. İndex. cshtml dosyasını açın. HTML &lt;gövde&gt; etiketlerinin tüm içeriğini aşağıdaki kodla değiştirin.
 
     ```cs
     <body>
@@ -524,40 +524,40 @@ Görünüm bazı önemli değişiklikler gerektirecektir.
     </body>
     ```
 
-    **Html.ActionLink** çağrısının kullanımına dikkat edin. Bu çağrı, kullanıcı bir fason bağlantısını tıklattığında, geçerli filtre dizelerini denetleyiciye iletır. 
+    **HTML. ActionLink** çağrısının kullanımına dikkat edin. Bu çağrı, Kullanıcı bir model bağlantısına tıkladığında denetleyiciyi geçerli filtre dizeleriyle iletişim kurar. 
 
-### <a name="run-and-test-the-app"></a>Uygulamayı çalıştırın ve test edin
+### <a name="run-and-test-the-app"></a>Uygulamayı çalıştırma ve test etme
 
-Kullanıcıya fason gezinmenin avantajı, aramaları tek bir tıklamayla daraltabilmektir ve bunu aşağıdaki sırayla gösterebilirsiniz.
+Kullanıcı için model gezinmesinin avantajı, aşağıdaki sırayla gösterebilmemiz için tek tıklamayla aramaları daraltabilecekleri bir üstünlüktür.
 
-1. Uygulamayı çalıştırın, arama metni olarak "havaalanı" yazın. Faset listesinin düzgün bir şekilde solda göründüğünü doğrulayın. Bu yönleriyle metin verilerinde "havaalanı" bulunan oteller için geçerli olan tüm bu bilgiler, ne sıklıkta oluştuklarını saymaktadır.
+1. Uygulamayı çalıştırın, arama metni olarak "Havaalanı" yazın. Model listesinin sola doğru şekilde göründüğünden emin olun. Bu modeller, kendi metin verilerinde "Havaalanı" olan oteller için, ne sıklıkla gerçekleştikleri hakkında bir sayı ile uygulanır.
 
-    !["Havaalanı" aramasını daraltmak için fason navigasyon kullanma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
+    !["Havaalanı" aramasını daraltmak için model gezintisi kullanma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport.png)
 
-2. Resort **ve Spa** kategorisini tıklatın. Tüm sonuçların bu kategoride olduğunu doğrulayın.
+2. **Çare ve Spa** kategorisine tıklayın. Tüm sonuçların bu kategoride olduğunu doğrulayın.
 
-    ![Aramayı "Resort and Spa" olarak daraltma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
+    ![Aramayı "çare ve Spa" olarak daraltma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras.png)
 
-3. **Kontinental kahvaltı** servisini tıklayın. Tüm sonuçların hala "Resort and Spa" kategorisinde olduğunu ve seçilen olanaklarla birlikte doğrulayın.
+3. **Kıtağa hızlı** bir şekilde değişiklik yapmak için tıklatın. Seçili değişiklik için tüm sonuçların hala "çare ve Spa" kategorisinde olduğunu doğrulayın.
 
-    ![Aramayı "kontinental kahvaltı" olarak daraltma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
+    ![Aramayı "kıental Breakfast" olarak daraltma](./media/tutorial-csharp-create-first-app/azure-search-facet-airport-ras-cb.png)
 
-4. Başka bir kategori seçmeyi deneyin, sonra bir olanaklar ve daraltma sonuçlarını görüntüleyin. Sonra başka bir yol deneyin, bir olanaklar, sonra bir kategori.
+4. Başka bir kategori seçip, bir değişiklik yapmayı deneyin ve daraltma sonuçlarını görüntüleyin. Ardından, tek bir değişiklik ve sonra bir kategori olmak üzere başka bir çözüm deneyin.
 
     >[!Note]
-    > Bir facet listesinde (kategori gibi) bir seçim yapıldığında, kategori listesindeki önceki seçimleri geçersiz kılar.
+    > Bir model listesinde (kategori gibi) bir seçim yapıldığında, kategori listesi içinde önceki seçimleri geçersiz kılar.
 
 ## <a name="takeaways"></a>Paketler
 
-Bu projeden aşağıdaki paketleri göz önünde bulundurun:
+Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
 
-* Her özelliği **IsFacetable**olarak işaretlemek zorunludur , eğer fason gezinmeye dahil edileceklerse.
-* Fason gezinme, bir aramayı daraltmanın kolay ve sezgisel bir yolunu sağlar.
-* Faset navigasyon en iyi bölümlere ayrılır (otel kategorileri, bir otel olanakları, fiyat aralıkları, derecelendirme aralıkları, vb), uygun bir başlık ile her bölüm.
+* Her bir özelliğin, model gezintisine dahil olmaları durumunda **ıbıı tablosu**olarak işaretlenmesi zorunludur.
+* Model gezintisi, bir aramayı daraltma yoluyla kolay ve sezgisel bir kullanıcı sağlar.
+* Model gezintisi en iyi bölümlere ayrılır (otel kategorileri, otel, fiyat aralıkları, derecelendirme aralıkları, vb.), her bölüm uygun bir başlığa sahip.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki öğreticide, sıralama sonuçlarına bakacağız. Bu noktaya kadar, sonuçlar yalnızca veritabanında bulunan sırayla sıralanır.
+Sonraki öğreticide sonuçları sıralama konusuna baktık. Bu noktaya kadar, sonuçlar yalnızca veritabanında bulundukları sırada sıralanır.
 
 > [!div class="nextstepaction"]
-> [C# öğretici: Sonuçları sipariş edin- Azure Bilişsel Arama](tutorial-csharp-orders.md)
+> [C# öğreticisi: sonuçları sıralama-Azure Bilişsel Arama](tutorial-csharp-orders.md)
