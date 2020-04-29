@@ -1,6 +1,6 @@
 ---
-title: Citrix Analytics'i (Güvenlik) Azure Sentinel'e bağlayın| Microsoft Dokümanlar
-description: Citrix Analytics'i (Güvenlik) Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
+title: Citrix Analytics 'i (güvenlik) Azure Sentinel 'e bağlama | Microsoft Docs
+description: Citrix Analytics 'i (güvenlik) Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,37 +15,37 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bbc77340375b22f137045d68b7449dd1e8adc4b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588391"
 ---
 # <a name="connect-citrix-analytics-security"></a>Citrix Analytics'i bağlama (Güvenlik) 
 
-Azure Sentinel ile Citrix Analytics (Güvenlik) entegrasyonu, Citrix Analytics'ten (Güvenlik) riskli olaylar için analiz edilen verileri Azure Sentinel'e aktarmanıza yardımcı olur. Özel panolar oluşturabilir, Citrix Analytics 'in (Güvenlik) verileriyle birlikte diğer kaynaklardan gelen verileri analiz edebilir ve güvenlik olaylarını izlemek ve azaltmak için Logic Apps'ı kullanarak özel iş akışları oluşturabilirsiniz. 
+Azure Sentinel ile Citrix Analytics (güvenlik) tümleştirmesi, Citrix Analytics 'ten (güvenlik) riskli olaylar için çözümlenen verileri Azure Sentinel 'e aktarmanıza yardımcı olur. Özel panolar oluşturabilir, Citrix Analytics (güvenlik) ile birlikte diğer kaynaklardaki verileri analiz edebilir ve güvenlik olaylarını izlemek ve azaltmak için Logic Apps kullanarak özel iş akışları oluşturabilirsiniz. 
 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Sentinel çalışma alanı için izinleri okuyun ve yazın.
+- Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
-- Citrix Cloud'da Citrix Security Analytics hakkı.
+- Citrix bulutu 'nda Citrix güvenlik analizinden yetkilendirme.
 
 
-## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Azure Sentinel'i Citrix Analytics'e bağlayın (Güvenlik)
+## <a name="connect-azure-sentinel-to-citrix-analytics-security"></a>Azure Sentinel 'i Citrix Analytics 'e bağlama (güvenlik)
 
-1. Azure portalında Azure **Sentinel** > **Veri bağlayıcılarına** gidin ve ardından **Citrix Analytics (Security)** bağlayıcısını seçin.
+1. Azure Portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve **Citrix Analytics (güvenlik)** bağlayıcısını seçin.
 
-2. **Bağlayıcıyı Aç'ı**seçin.
+2. **Bağlayıcı sayfasını aç**' ı seçin.
 
-3. **Citrix Analytics (Güvenlik)** sayfasındaki talimatları izleyin.
+3. **Citrix Analytics (güvenlik)** sayfasındaki yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Citrix Analytics'i (Güvenlik) Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede, Citrix Analytics (güvenlik) 'i Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Yapılandırması ile yönetilen kimlikleri yapılandırma
-description: Azure Uygulama Yapılandırmasında yönetilen kimliklerin nasıl çalıştığını ve yönetilen bir kimliği nasıl yapılandırılabildiğini öğrenin
+title: Azure Uygulama yapılandırması ile yönetilen kimlikleri yapılandırma
+description: Yönetilen kimliklerin Azure Uygulama yapılandırması 'nda nasıl çalıştığını ve yönetilen bir kimliğin nasıl yapılandırılacağını öğrenin
 author: jpconnock
 ms.topic: article
 ms.date: 02/25/2020
@@ -8,34 +8,34 @@ ms.author: jeconnoc
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: fe66466395a100221e6a3cdebdef870bdf195afc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623039"
 ---
-# <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure Uygulama Yapılandırması için yönetilen kimlikler nasıl kullanılır?
+# <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için Yönetilen kimlikler kullanma
 
-Bu konu, Azure Uygulama Yapılandırması için yönetilen bir kimliğin nasıl oluşturulabildiğini gösterir. Azure Active Directory 'nin (AAD) yönetilen kimliği, Azure Uygulama Yapılandırması'nın Azure Key Vault gibi AAD korumalı diğer kaynaklara kolayca erişmesine olanak tanır. Kimlik, Azure platformu tarafından yönetilir. Herhangi bir sırrı sağlamanızı veya döndürmenizi gerektirmez. AAD'de yönetilen kimlikler hakkında daha fazla şey için [Azure kaynakları için Yönetilen kimlikler'e](../active-directory/managed-identities-azure-resources/overview.md)bakın.
+Bu konu başlığı altında, Azure Uygulama yapılandırması için yönetilen bir kimlik nasıl oluşturacağınız gösterilmektedir. Azure Active Directory (AAD) tarafından yönetilen bir kimlik, Azure uygulama yapılandırmasının, Azure Key Vault gibi diğer AAD korumalı kaynaklara kolayca erişmesini sağlar. Kimlik, Azure platformu tarafından yönetiliyor. Herhangi bir gizli dizi sağlamanızı veya döndürmenizi gerektirmez. AAD 'deki Yönetilen kimlikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md).
 
-Başvurunuza iki tür kimlik verilebilir:
+Uygulamanıza iki tür kimlik verilebilir:
 
-- **Sistem tarafından atanan kimlik,** yapılandırma mağazanıza bağlıdır. Yapılandırma mağazanız silinirse silinir. Bir yapılandırma deposunda yalnızca bir sistem atanmış kimlik olabilir.
-- **Kullanıcı tarafından atanan kimlik,** yapılandırma mağazanıza atanabilecek bağımsız bir Azure kaynağıdır. Yapılandırma deposunda birden çok kullanıcı tarafından atanmış kimlik olabilir.
+- **Sistem tarafından atanan bir kimlik** yapılandırma deponuza bağlıdır. Yapılandırma depolu, silinirse silinir. Yapılandırma deposunda yalnızca bir sistem tarafından atanan kimlik olabilir.
+- **Kullanıcı tarafından atanan bir kimlik** , yapılandırma deponuza atanabilecek tek başına bir Azure kaynağıdır. Bir yapılandırma deposunda birden çok kullanıcı tarafından atanan kimlik olabilir.
 
-## <a name="adding-a-system-assigned-identity"></a>Sisteme atanmış kimlik ekleme
+## <a name="adding-a-system-assigned-identity"></a>Sistem tarafından atanan kimlik ekleme
 
-Sistem tarafından atanmış bir kimliğe sahip bir Uygulama Yapılandırma deposu oluşturmak için mağazada ayarlanacak ek bir özellik gerekir.
+Sistem tarafından atanan kimlik ile uygulama yapılandırma deposu oluşturmak, depoda ek bir özelliğin ayarlanmasını gerektirir.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLI'yi kullanarak yönetilen bir kimlik oluşturmak için, varolan bir yapılandırma deposuna karşı [az appconfig identity atama] komutunu kullanın. Bu bölümdeki örnekleri çalıştırmak için üç seçeneğiniz var:
+Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, var olan bir yapılandırma deposunda [az appconfig Identity Assign] komutunu kullanın. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
-- Azure portalından [Azure Bulut Kabuğu'nu](../cloud-shell/overview.md) kullanın.
-- Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesi aracılığıyla gömülü Azure Bulut Kabuğu'nu kullanın.
-- Yerel bir CLI konsolu kullanmak isterseniz [Azure CLI'nin](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.1 veya sonraki) en son sürümünü yükleyin.
+- Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
+- Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2,1 veya üzeri) yükleyebilirsiniz.
 
-Aşağıdaki adımlar, bir Uygulama Yapılandırma sıcağı oluşturmave CLI'yi kullanarak bir kimlik atamanız için size yol açacaktır:
+Aşağıdaki adımlar, bir uygulama yapılandırma deposu oluşturma ve CLı kullanarak bir kimlik atama işleminde size kılavuzluk eder:
 
 1. Azure CLI'yi yerel bir konsolda kullanıyorsanız, önce [az login] kullanarak Azure'da oturum açın. Azure aboneliğinizle ilişkili bir hesap kullanın:
 
@@ -43,14 +43,14 @@ Aşağıdaki adımlar, bir Uygulama Yapılandırma sıcağı oluşturmave CLI'yi
     az login
     ```
 
-1. CLI'yi kullanarak bir Uygulama Yapılandırma sı oluşturun. Azure Uygulama Yapılandırması ile CLI'nin nasıl kullanılacağına daha fazla örnek için [Bkz. Uygulama Yapılandırması CLI örnekleri:](scripts/cli-create-service.md)
+1. CLı kullanarak bir uygulama yapılandırma deposu oluşturun. CLı 'yı Azure Uygulama yapılandırması ile birlikte kullanmaya ilişkin daha fazla örnek için bkz. [uygulama YAPıLANDıRMASı CLI örnekleri](scripts/cli-create-service.md):
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location eastus
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. Bu yapılandırma deposu için sistem tarafından atanan kimlik oluşturmak için [az appconfig identity atama] komutunu çalıştırın:
+1. Bu yapılandırma deposu için sistem tarafından atanan kimliği oluşturmak için [az appconfig Identity Assign] komutunu çalıştırın:
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup
@@ -58,17 +58,17 @@ Aşağıdaki adımlar, bir Uygulama Yapılandırma sıcağı oluşturmave CLI'yi
 
 ## <a name="adding-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik ekleme
 
-Kullanıcı tarafından atanan bir kimliğe sahip bir Uygulama Yapılandırma sıcağı oluşturmak, kimliği oluşturmanızı ve ardından kaynak tanımlayıcısını mağazanıza atamanızı gerektirir.
+Kullanıcı tarafından atanan bir kimlikle uygulama yapılandırma deposu oluşturmak için kimlik oluşturmanız ve ardından kaynak tanımlayıcısını deponuza atamanız gerekir.
 
 ### <a name="using-the-azure-cli"></a>Azure CLI kullanma
 
-Azure CLI'yi kullanarak yönetilen bir kimlik oluşturmak için, varolan bir yapılandırma deposuna karşı [az appconfig identity atama] komutunu kullanın. Bu bölümdeki örnekleri çalıştırmak için üç seçeneğiniz var:
+Azure CLı kullanarak yönetilen bir kimlik ayarlamak için, var olan bir yapılandırma deposunda [az appconfig Identity Assign] komutunu kullanın. Bu bölümde örnekleri çalıştırmak için üç seçeneğiniz vardır:
 
-- Azure portalından [Azure Bulut Kabuğu'nu](../cloud-shell/overview.md) kullanın.
-- Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesi aracılığıyla gömülü Azure Bulut Kabuğu'nu kullanın.
-- Yerel bir CLI konsolu kullanmak isterseniz [Azure CLI'nin](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya sonraki) en son sürümünü yükleyin.
+- Azure portal [Azure Cloud Shell](../cloud-shell/overview.md) kullanın.
+- Aşağıdaki her kod bloğunun sağ üst köşesinde bulunan "dene" düğmesini kullanarak katıştırılmış Azure Cloud Shell kullanın.
+- Yerel bir CLı konsolu kullanmayı tercih ediyorsanız, [en son Azure CLI sürümünü](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 veya üzeri) yükleyebilirsiniz.
 
-Aşağıdaki adımlar, kullanıcı tarafından atanan bir kimlik ve Bir Uygulama Yapılandırma sıcağı oluşturmada ve ardından cli'yi kullanarak mağazaya kimlik atamanız için size yol açacaktır:
+Aşağıdaki adımlar, Kullanıcı tarafından atanan bir kimlik ve bir uygulama yapılandırma deposu oluşturma ve CLı kullanarak kimliği depoya atama konusunda size kılavuzluk eder:
 
 1. Azure CLI'yi yerel bir konsolda kullanıyorsanız, önce [az login] kullanarak Azure'da oturum açın. Azure aboneliğinizle ilişkili bir hesap kullanın:
 
@@ -76,35 +76,35 @@ Aşağıdaki adımlar, kullanıcı tarafından atanan bir kimlik ve Bir Uygulama
     az login
     ```
 
-1. CLI'yi kullanarak bir Uygulama Yapılandırma sı oluşturun. Azure Uygulama Yapılandırması ile CLI'nin nasıl kullanılacağına daha fazla örnek için [Bkz. Uygulama Yapılandırması CLI örnekleri:](scripts/cli-create-service.md)
+1. CLı kullanarak bir uygulama yapılandırma deposu oluşturun. CLı 'yı Azure Uygulama yapılandırması ile birlikte kullanmaya ilişkin daha fazla örnek için bkz. [uygulama YAPıLANDıRMASı CLI örnekleri](scripts/cli-create-service.md):
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location eastus
     az appconfig create --name myTestAppConfigStore --location eastus --resource-group myResourceGroup --sku Free
     ```
 
-1. CLI kullanarak çağrılan `myUserAssignedIdentity` kullanıcı tarafından atanmış bir kimlik oluşturun.
+1. CLı kullanılarak adlı `myUserAssignedIdentity` Kullanıcı tarafından atanan bir kimlik oluşturun.
 
     ```azurecli-interactive
     az identity create -resource-group myResourceGroup --name myUserAssignedIdentity
     ```
 
-    Bu komutun çıktısında, özelliğin `id` değerini not edin.
+    Bu komutun çıkışında, `id` özelliğinin değerini aklınızda bir değer.
 
-1. Bu yapılandırma deposuna yeni kullanıcı tarafından atanan kimlik atamak için [az appconfig identity atama] komutunu çalıştırın. Önceki adımda `id` belirttiğiniz özelliğin değerini kullanın.
+1. Bu yapılandırma deposuna Kullanıcı tarafından atanan yeni kimliği atamak için [az appconfig Identity Assign] komutunu çalıştırın. Önceki adımda not ettiğiniz `id` özelliğin değerini kullanın.
 
     ```azurecli-interactive
     az appconfig identity assign --name myTestAppConfigStore --resource-group myResourceGroup --identities /subscriptions/[subscription id]/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity
     ```
 
-## <a name="removing-an-identity"></a>Kimliği kaldırma
+## <a name="removing-an-identity"></a>Kimlik kaldırma
 
-Sistem tarafından atanan kimlik, Azure CLI'deki az [appconfig identity remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) komutunu kullanarak özelliği devre dışı bırakarak kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Bu şekilde sistemle atanan bir kimliğin kaldırılması da aad onu siler. Sistem tarafından atanan kimlikler, uygulama kaynağı silindiğinde aad'den otomatik olarak kaldırılır.
+Azure CLı 'de [az appconfig Identity Remove](/cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-remove) komutu kullanılarak özelliği devre dışı bırakarak, sistem tarafından atanan bir kimlik kaldırılabilir. Kullanıcı tarafından atanan kimlikler tek tek kaldırılabilir. Sistem tarafından atanan bir kimliğin bu şekilde kaldırılması, AAD 'den de silinecek. Uygulama kaynağı silindiğinde, sistem tarafından atanan kimlikler de AAD 'den otomatik olarak kaldırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Uygulama Yapılandırması ile ASP.NET Core uygulaması oluşturun](quickstart-aspnet-core-app.md)
+> [Azure Uygulama yapılandırması ile ASP.NET Core uygulaması oluşturma](quickstart-aspnet-core-app.md)
 
-[az appconfig kimlik atamak]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
+[az appconfig Identity Assign]: /cli/azure/appconfig/identity?view=azure-cli-latest#az-appconfig-identity-assign
 [az login]: /cli/azure/reference-index#az-login

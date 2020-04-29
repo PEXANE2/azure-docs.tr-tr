@@ -1,7 +1,7 @@
 ---
-title: "Özel roller: Çevrimiçi SQL Server'dan SQL'e yönetilen örnek geçişleri"
+title: 'Özel roller: SQL yönetilen örnek geçişlere çevrimiçi SQL Server'
 titleSuffix: Azure Database Migration Service
-description: SQL Server ile Azure SQL Veritabanı için özel rolleri kullanmayı öğrenin örnek çevrimiçi geçişler yönetildi.
+description: Azure SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel rolleri kullanmayı öğrenin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,26 +13,26 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
 ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78254937"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL Server'dan SQL Veritabanı'na özel roller yönetilen örnek çevrimiçi geçişler
+# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>SQL veritabanı yönetilen örnek çevrimiçi geçişleri SQL Server için özel roller
 
-Azure Veritabanı Geçiş Hizmeti, Azure Hizmetleri ile etkileşim kurmak için bir APP Kimliği kullanır. APP Kimliği, Abonelik düzeyinde Katılımcı rolünü (birçok Kurumsal güvenlik departmanının izin vermeyeceği) veya Azure veritabanı Geçişleri Hizmeti'nin gerektirdiği belirli izinleri veren özel roller oluşturulmasını gerektirir. Azure Etkin Dizini'nde 2.000 özel rol sınırı olduğundan, APP ID tarafından özel olarak gereken tüm izinleri bir veya iki özel rolde birleştirmek ve ardından APP ID'ye belirli nesneler veya kaynak grupları (diğer yandan abonelik düzeyi). Özel rollerin sayısı önemli değilse, aşağıda açıklandığı gibi toplamda üç özel rol oluşturmak için özel rolleri kaynak türüne göre bölebilirsiniz.
+Azure veritabanı geçiş hizmeti, Azure hizmetleriyle etkileşim kurmak için bir uygulama KIMLIĞI kullanır. UYGULAMA KIMLIĞI, abonelik düzeyinde katılımcı rolü (birçok kurumsal güvenlik departmanının izin vermeyeceği) veya Azure veritabanı geçişleri hizmeti 'nin gerektirdiği belirli izinleri veren özel roller oluşturmayı gerektirir. Azure Active Directory 'de özel rol 2.000 sınırlaması olduğundan, özellikle uygulama KIMLIĞI tarafından gereken tüm izinleri bir veya iki özel rolde birleştirmek ve ardından uygulama KIMLIĞINI belirli nesnelerde veya kaynak gruplarında (abonelik düzeyinde) özel rol olarak vermek isteyebilirsiniz. Özel rol sayısı sorun yaratmıyorsa, aşağıda açıklandığı gibi, toplamda üç özel rol oluşturmak için özel rolleri kaynak türüne göre bölebilirsiniz.
 
-Rol tanımı json dizesinin AtamaScopes bölümü, portaldaki **Rol Atama Arabirimi Ekle'de** izinlerin nerede görünacağını denetlemenize olanak tanır. UI'yi ek rollerle darmadağın etmeyi önlemek için büyük olasılıkla kaynak grubundaki ve hatta kaynak düzeyindeki rolü tanımlamak isteyebilirsiniz. Bunun gerçek rol atamasını gerçekleştirmediğini unutmayın.
+Rol tanımı JSON dizesinin Astifblescopes bölümü, portalda **rol ataması ekleme** Kullanıcı arabiriminde izinlerin nerede göründüğünü denetlemenize olanak tanır. Kullanıcı arabirimine ek roller ile karışıklık vermekten kaçınmak için kaynak grubunda veya hatta kaynak düzeyinde rolü tanımlamak isteyeceksiniz. Bunun gerçek rol atamasını gerçekleştirmediğini unutmayın.
 
-## <a name="minimum-number-of-roles"></a>Minimum rol sayısı
+## <a name="minimum-number-of-roles"></a>En az rol sayısı
 
-Şu anda APP Kimliği için biri kaynak düzeyinde, diğeri abonelik düzeyinde olmak üzere en az iki özel rol oluşturmanızı öneririz.
+Şu anda uygulama KIMLIĞI için, biri kaynak düzeyinde ve diğeri abonelik düzeyinde olmak üzere en az iki özel rol oluşturmanızı öneririz.
 
 > [!NOTE]
-> Yeni SQL Veritabanı yönetilen örnek kodu Azure'a dağıtılırken, son özel rol gereksinimi sonunda kaldırılabilir.
+> Yeni SQL veritabanı yönetilen örnek kodu Azure 'a dağıtıldığı için son özel rol gereksinimi sonunda kaldırılabilir.
 
-**APP ID için Özel Rol**. Bu *rol, kaynak* veya *kaynak grubu* düzeyindeki Azure Veritabanı Geçiş Hizmeti geçişi için gereklidir (APP Kimliği hakkında daha fazla bilgi için, [kaynaklara erişebilen bir Azure REKLAM uygulaması ve hizmet ilkesi oluşturmak için portalı kullan makalesine](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)bakın).
+**Uygulama kimliği Için özel rol**. Bu rol, *kaynak* veya *kaynak grubu* düzeyinde Azure veritabanı geçiş hizmeti GEÇIŞI IÇIN gereklidir (uygulama kimliği hakkında daha fazla bilgi Için, bkz. [Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)makalesine bakın).
 
 ```json
 {
@@ -63,7 +63,7 @@ Rol tanımı json dizesinin AtamaScopes bölümü, portaldaki **Rol Atama Arabir
 }
 ```
 
-**APP ID için özel rol - abonelik**. Bu rol, *abonelik* düzeyinde Azure Veritabanı Geçiş Hizmeti geçişi için gereklidir.
+**Uygulama kimliği aboneliği Için özel rol**. Bu rol, Azure veritabanı geçiş hizmeti geçişi için *abonelik* düzeyinde gereklidir.
 
 ```json
 {
@@ -81,20 +81,20 @@ Rol tanımı json dizesinin AtamaScopes bölümü, portaldaki **Rol Atama Arabir
 }
 ```
 
-Yukarıdaki json üç metin dosyasında depolanmalıdır ve **Yeni-AzureRmRoleDefinition (AzureRM)** veya **New-AzRoleDefinition (AZ)** kullanarak rolleri oluşturmak için AzureRM, AZ PowerShell cmdlets veya Azure CLI kullanabilirsiniz.
+Yukarıdaki JSON üç metin dosyasında depolanmalıdır ve **New-AzureRmRoleDefinition (azurerd)** veya **New-AZROLEDEFINITION (az)** öğesini kullanarak rolleri oluşturmak Için Azurere, az PowerShell CMDLET 'lerini veya Azure CLI 'yi de kullanabilirsiniz.
 
-Daha fazla bilgi için Azure [kaynakları için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)makalesine bakın.
+Daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)makalesi.
 
-Bu özel rolleri oluşturduktan sonra, kullanıcılara rol atamaları ve APP ID(ler) uygun kaynaklara veya kaynak gruplarına eklemeniz gerekir:
+Bu özel rolleri oluşturduktan sonra, kullanıcılara ve uygulama KIMLIĞINE, uygun kaynaklara veya kaynak gruplarına rol atamaları eklemeniz gerekir:
 
-* "DMS Rolü - Uygulama Kimliği" rolü, geçişler için kullanılacak APP Kimliği'ne ve ayrıca Depolama Hesabı, Azure Veritabanı Geçiş Hizmeti örneği ve SQL Veritabanı yönetilen örnek kaynak düzeylerinde verilmelidir.
-* "DMS Rolü - Uygulama Kimliği - Alt" rolü, abonelik düzeyinde APP Id'ye verilmelidir (kaynak veya kaynak grubunda verilen ler başarısız olur). Bu gereksinim, bir kod güncelleştirmesi dağıtılana kadar geçicidir.
+* "DMS rol-uygulama KIMLIĞI" rolü, geçişler için kullanılacak uygulama KIMLIĞINE, Ayrıca depolama hesabında, Azure veritabanı geçiş hizmeti örneğine ve SQL veritabanı yönetilen örnek kaynak düzeylerine verilmelidir.
+* Abonelik düzeyindeki (kaynak veya kaynak grubunda verme başarısız olur) uygulama KIMLIĞINE "DMS rol-uygulama KIMLIĞI-Sub" rolü verilmelidir. Bu gereksinim, bir kod güncelleştirmesi dağıtılana kadar geçicidir.
 
 ## <a name="expanded-number-of-roles"></a>Genişletilmiş rol sayısı
 
-Azure Etkin Dizininizdeki özel rollerin sayısı önemli değilse, toplam üç rol oluşturmanızı öneririz. Yine de "DMS Rolü - App ID - Alt" rolüne ihtiyacınız olacaktır, ancak yukarıdaki "DMS Rolü - Uygulama Kimliği" rolü kaynak türüne göre iki farklı role bölünür.
+Azure Active Directory özel rol sayısı sorun yaratmıyorsa, toplam üç rol oluşturmanız önerilir. Yine de "DMS rol-uygulama KIMLIĞI – Sub" rolüne ihtiyacınız vardır, ancak yukarıdaki "DMS rol-uygulama KIMLIĞI" rolü kaynak türüne göre iki farklı role bölünür.
 
-**SQL Veritabanı yönetilen örnek için APP ID için özel rol**
+**SQL veritabanı yönetilen örneği için uygulama KIMLIĞI için özel rol**
 
 ```json
 {
@@ -117,7 +117,7 @@ Azure Etkin Dizininizdeki özel rollerin sayısı önemli değilse, toplam üç 
 }
 ```
 
-**Depolama için APP Kimliği için özel rol**
+**Depolama için uygulama KIMLIĞI için özel rol**
 
 ```json
 {
@@ -140,14 +140,14 @@ Azure Etkin Dizininizdeki özel rollerin sayısı önemli değilse, toplam üç 
 
 ## <a name="role-assignment"></a>Rol ataması
 
-Kullanıcılara/APP Kimliği'ne rol atamak için Azure portalını açın ve aşağıdaki adımları gerçekleştirin:
+Kullanıcılara/uygulama KIMLIĞINE bir rol atamak için, Azure portal açın ve aşağıdaki adımları gerçekleştirin:
 
-1. Kaynak grubuna veya kaynağa gidin (abonelikte verilmesi gereken rol hariç), **Access Denetimi'ne**gidin ve ardından yeni oluşturduğunuz özel rolleri bulmak için kaydırın.
+1. Kaynak grubuna veya kaynağa (abonelikte verilmesi gereken rol dışında) gidin, **Access Control**' a gidin ve ardından yeni oluşturduğunuz özel rolleri bulmak için kaydırın.
 
-2. Uygun rolü seçin, APP Kimliğini seçin ve değişiklikleri kaydedin.
+2. Uygun rolü seçin, uygulama KIMLIĞI ' ni seçin ve değişiklikleri kaydedin.
 
-  APP ID(lar) artık **Rol atamaları** sekmesinde listelenmiş olarak görünür.
+  Uygulama KIMLIĞINIZ artık **rol atamaları** sekmesinde listelenmiş olarak görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Microsoft [Veritabanı Geçiş Kılavuzu'nda](https://datamigration.microsoft.com/)senaryonuz için geçiş kılavuzunu gözden geçirin.
+* Microsoft [veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/)' nda senaryonuz için geçiş kılavuzunu gözden geçirin.

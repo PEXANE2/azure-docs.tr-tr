@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Bir masaüstü uygulamasından Bir Düğüm.js web API'sine erişim izni"
-description: Bir Düğüm.js web API'sini korumak ve bir .NET masaüstü uygulamasından aramak için Active Directory B2C'nin nasıl kullanılacağı hakkında öğretici.
+title: "Öğretici: bir masaüstü uygulamasından Node. js web API 'sine erişim Izni verme"
+description: Bir Node. js web API 'sini korumak ve bir .NET masaüstü uygulamasından çağırmak için Active Directory B2C kullanma öğreticisi.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,27 +11,27 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183405"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Öğretici - Azure Active Directory B2C kullanarak bir masaüstü uygulamasından Node.js web API'sine erişim izni verme
 
-Bu öğretici, Azure AD B2C tarafından da korunan bir Windows Presentation Foundation (WPF) masaüstü uygulamasından Azure Active Directory B2C (Azure AD B2C) tarafından korunan bir Node.js web API'sini nasıl çağırabileceğinizi gösterir.
+Bu öğreticide, ayrıca Azure AD B2C tarafından korunan bir Windows Presentation Foundation (WPF) masaüstü uygulamasından Azure Active Directory B2C (Azure AD B2C) tarafından korunan bir Node. js web API 'sinin nasıl çağrılacağını gösterir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Web API'si uygulaması ekleme
-> * Web API'si için kapsamları yapılandırma
-> * Web API'sine izin verme
-> * Uygulamayı kullanmak için örneği güncelleştirin
+> * Bir Web API 'SI için Kapsamları yapılandırma
+> * Web API 'sine izin verme
+> * Uygulamayı kullanmak için örneği güncelleştirme
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Tutorial'deki adımları ve ön koşulları [tamamlayın: Kullanıcıları yerel bir masaüstü istemcisinde doğrulayın.](tutorial-desktop-app.md)
+Öğreticideki adımları ve önkoşulları doldurun [: yerel bir masaüstü istemcisinde kullanıcıların kimliğini doğrulama](tutorial-desktop-app.md).
 
 ## <a name="add-a-web-api-application"></a>Web API'si uygulaması ekleme
 
@@ -43,52 +43,52 @@ Kapsamlar korumalı kaynaklara erişimi yönetmenin bir yolunu sunar. Kapsamlar 
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Masaüstü uygulamasını yapılandırırken `demo.read` daha sonraki bir adımda kullanmak üzere **KAPSAMLAR** altındaki değeri kaydedin. Tam kapsam değeri `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Masaüstü uygulamasını yapılandırırken daha **SCOPES** sonraki bir adımda `demo.read` kullanılacak kapsamın kapsamları altındaki değeri kaydedin. Tam kapsam değeri öğesine `https://contosob2c.onmicrosoft.com/api/demo.read`benzerdir.
 
 ## <a name="grant-permissions"></a>İzinleri verme
 
-Yerel istemci uygulamasından korumalı bir web API'sını çağırmak için, kayıtlı yerel istemci uygulama izinlerini Azure AD B2C'de kaydettiğiniz web API'sine vermeniz gerekir.
+Yerel bir istemci uygulamasından korumalı bir Web API 'SI çağırmak için, kayıtlı yerel istemci uygulama izinlerini Azure AD B2C kaydettiğiniz Web API 'sine vermeniz gerekir.
 
-Ön koşul öğreticisinde, *nativeapp1*adlı yerel bir istemci uygulamasını kaydettiniz. Aşağıdaki adımlar, önceki bölümde *webapi1* için maruz aldığınız API kapsamları ile bu yerel uygulama kaydı nı yapılandırır. Bu, masaüstü uygulamasının Azure AD B2C'den web API'sinin kaynaklarını doğrulamak ve kapsamlı erişimi sağlamak için kullanabileceği bir erişim jetonu elde etmesine olanak tanır. Hem masaüstü uygulamasını hem de web API kod örneklerini daha sonra öğreticide yapılandırıp çalıştırAbilirsiniz.
+Önkoşul öğreticisinde, *nativeapp1*adlı bir yerel istemci uygulaması kaydettiniz. Aşağıdaki adımlarda, yerel uygulama kaydı, önceki bölümde *webapi1* için kullanıma sunulacak API kapsamları ile yapılandırılır. Bu, masaüstü uygulamasının, Web API 'sinin kaynakları doğrulamak ve kaynaklarına kapsamlı erişimi sağlamak için kullanabileceği Azure AD B2C bir erişim belirteci almasına olanak tanır. Hem masaüstü uygulamasını hem de Web API kodu örneklerini öğreticide daha sonra yapılandırıp çalıştırırsınız.
 
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
-1. **Uygulamalar'ı**seçin ve ardından *nativeapp1'i*seçin.
-1. **API erişimini**seçin ve sonra **Ekle'yi**seçin.
-1. SELECT **API** açılır sayfasında *webapi1'i*seçin.
-1. **Scopes** açılır günlerini seç'te, daha önce tanımladığınız kapsamları seçin. Örneğin, *demo.read* ve *demo.write*.
-1. **Tamam'ı**seçin.
+1. **Uygulamalar**' ı seçin ve ardından *nativeapp1*' ı seçin.
+1. **API erişimi**' ni seçin ve ardından **Ekle**' yi seçin.
+1. **API Seç** açılan menüsünde *webapi1*' yi seçin.
+1. **Kapsamları Seç** açılan menüsünde, daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
+1. **Tamam**’ı seçin.
 
 #### <a name="app-registrations-preview"></a>[Uygulama kayıtları (Önizleme)](#tab/app-reg-preview/)
 
-1. **Uygulama kayıtlarını (Önizleme)** seçin ve ardından API'ye erişimi olması gereken yerel istemci uygulamasını seçin. Örneğin, *nativeapp1*.
-1. **Yönet**altında, **API izinlerini**seçin.
-1. **Yapılandırılmış izinler**altında, **İzin ekle'yi**seçin.
-1. **API'lerim** sekmesini seçin.
-1. Yerel istemci uygulamasına erişim izni verilmesi gereken API'yi seçin. Örneğin, *webapi1*.
-1. **İzin** **altında, demoyu**genişletin ve daha önce tanımladığınız kapsamları seçin. Örneğin, *demo.read* ve *demo.write*.
-1. **İzin Ekle'yi**seçin. Yönlendirildikçe, bir sonraki adıma geçmeden önce birkaç dakika bekleyin.
-1. **(kiracı adınız) için Grant yönetici onayı**seçin.
-1. Şu anda oturum açmış yönetici hesabınızı seçin veya En azından *Bulut uygulama yöneticisi* rolüne atanmış Olan Azure AD B2C kiracınızda bir hesapla oturum açın.
+1. **Uygulama kayıtları (Önizleme)** öğesini seçin ve ardından API 'ye erişmesi gereken yerel istemci uygulamasını seçin. Örneğin, *nativeapp1*.
+1. **Yönet**altında **API izinleri**' ni seçin.
+1. **Yapılandırılan izinler**altında **izin Ekle**' yi seçin.
+1. **API 'Lerim** sekmesini seçin.
+1. Yerel istemci uygulamasına erişim verilmesi gereken API 'yi seçin. Örneğin, *webapi1*.
+1. **İzin**altında **demo**' i genişletin ve daha önce tanımladığınız kapsamları seçin. Örneğin, *demo. Read* ve *demo. Write*.
+1. **Izin Ekle**' yi seçin. Yönlendirildiğinden, bir sonraki adıma geçmeden önce birkaç dakika bekleyin.
+1. **Yönetici onayı ver ' i (kiracı adınız)** seçin.
+1. Şu anda oturum açmış olan yönetici hesabınızı seçin veya Azure AD B2C kiracınızda, en azından *bulut uygulama Yöneticisi* rolüne atanan bir hesapla oturum açın.
 1. **Kabul Et**’i seçin.
-1. **Yenile'yi**seçin ve ardından "Verilenler..." her iki kapsam için **durum** altında görüntülenir. İzinlerin yayılması birkaç dakika sürebilir.
+1. **Yenile**' yi seçin ve ardından "verilen..." öğesini doğrulayın Her iki kapsam için **durum** altında görünür. İzinlerin yayılması birkaç dakika sürebilir.
 
 * * *
 
 Kullanıcılar WPF masaüstü uygulamasını kullanmak için Azure AD B2C ile kimlik doğrulaması yapar. Masaüstü uygulaması, korumalı web API’sine erişmek için Azure AD B2C’den bir yetkilendirme izni alır.
 
-## <a name="configure-the-samples"></a>Örnekleri yapılandırma
+## <a name="configure-the-samples"></a>Örnekleri yapılandırın
 
-Artık web API'si kayıtlı olduğuna ve kapsamları ve izinleri yapılandırıldığına göre, Azure AD B2C kiracınızı kullanacak şekilde masaüstü uygulamasını ve web API örneklerini yapılandırırsınız.
+Web API 'SI kayıtlı olduğuna ve kapsamlarınızın ve izinlerinizin yapılandırıldığına göre, masaüstü uygulamasını ve Web API örneklerini Azure AD B2C kiracınızı kullanacak şekilde yapılandırırsınız.
 
 ### <a name="update-the-desktop-application"></a>Masaüstü uygulamasını güncelleştirme
 
-Bu makalenin ön koşulunda, Azure AD B2C kiracınızda kullanıcı akışıyla oturum açmayı etkinleştirmek için bir [WPF masaüstü uygulamasını](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) değiştirdiniz. Bu bölümde, daha önce kaydettiğiniz web API'sine başvurmak için aynı uygulamayı güncellersiniz, *webapi1.*
+Bu makalenin bir önkoşulu içinde, Azure AD B2C kiracınızdaki bir Kullanıcı akışı ile oturum açmayı etkinleştirmek için bir [WPF Masaüstü uygulamasını](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) değiştirdiniz. Bu bölümde, *webapi1*daha önce kaydettiğiniz Web API 'sine başvurmak için aynı uygulamayı güncelleşolursunuz.
 
-1. Visual Studio'da **active-directory-b2c-wpf** çözümlerini`active-directory-b2c-wpf.sln`açın.
-1. **Active-directory-b2c-wpf** *projesinde, App.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun.
-    1. **Demo.read** kapsamını `ApiScopes` tanımlarken değişkenin değerini daha önce kaydettiğiniz değerle değiştirin.
-    1. Web API'sını (örneğin, *webapi1)* kiracınıza kaydettiğinizde daha önce kaydettiğiniz **Yeniden Yönlendirme URI** ile değişkenin değerini değiştirin. `ApiEndpoint`
+1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü`active-directory-b2c-wpf.sln`() açın.
+1. **Active-Directory-B2C-WPF** projesinde, *app.xaml.cs* dosyasını açın ve aşağıdaki değişken tanımlarını bulun.
+    1. `ApiScopes` Değişkenin değerini, **demo. Read** kapsamını tanımladığınızda daha önce kaydettiğiniz değerle değiştirin.
+    1. `ApiEndpoint` Değişkenin değerini, kiracınızdaki Web API 'sini (örneğin, *webapi1*) kaydettiğinizde daha önce kaydettiğiniz **yeniden yönlendirme URI** 'siyle değiştirin.
 
     Bir örneği aşağıda verilmiştir:
 
@@ -97,9 +97,9 @@ Bu makalenin ön koşulunda, Azure AD B2C kiracınızda kullanıcı akışıyla 
     public static string ApiEndpoint = "http://localhost:5000";
     ```
 
-### <a name="get-and-update-the-nodejs-api-sample"></a>Node.js API örneğini alın ve güncelleyin
+### <a name="get-and-update-the-nodejs-api-sample"></a>Node. js API örneğini edinme ve güncelleştirme
 
-Ardından, GitHub'dan Düğüm.js web API kodu örneğini alın ve Azure AD B2C kiracınızda kaydettiğiniz web API'sını kullanacak şekilde yapılandırın.
+Daha sonra, GitHub 'dan Node. js web API kodu örneğini alın ve Azure AD B2C kiracınızda kayıtlı olan Web API 'sini kullanmak üzere yapılandırın.
 
 GitHub’dan [zip dosyasını indirin](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip) veya örnek web uygulamasını kopyalayın.
 
@@ -110,7 +110,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 Node.js web API’si örneği API’ye yapılan çağrıları korumak için Azure AD B2C’yi etkinleştirmek üzere Passport.js kitaplığını kullanır.
 
 1. `index.js` dosyasını açın.
-1. Bu değişken tanımlarını aşağıdaki değerlerle güncelleştirin. Daha `<web-API-application-ID>` önce kaydettiğiniz web API'sının **Uygulama (istemci) kimliğinde** değişiklik *(webapi1).* Azure `<your-b2c-tenant>` AD B2C kiracınızın adını değiştirin.
+1. Bu değişken tanımlarını aşağıdaki değerlerle güncelleştirin. `<web-API-application-ID>` Daha önce KAYDETTIĞINIZ Web API 'sinin (*webapi1*) **uygulama (istemci) kimliğine** geçin. `<your-b2c-tenant>` Azure AD B2C kiracınızın adına geçin.
 
     ```nodejs
     var clientID = "<web-API-application-ID>";
@@ -118,7 +118,7 @@ Node.js web API’si örneği API’ye yapılan çağrıları korumak için Azur
     var tenantIdGuid = "<your-b2c-tenant>.onmicrosoft.com";
     var policyName = "B2C_1_signupsignin1";
     ```
-1. API'yi yerel olarak çalıştırdığınıza göre, GET yönteminin güzergahındaki yolu demo uygulamasının konumu `/` yerine `/hello`güncelleştirin:
+1. API 'YI yerel olarak çalıştırdığınız için `/` , yol içindeki yolu, tanıtım uygulamasının konumu yerine Get yöntemine güncelleştirin: `/hello`
 
     ```nodejs
     app.get("/",
@@ -126,7 +126,7 @@ Node.js web API’si örneği API’ye yapılan çağrıları korumak için Azur
 
 ## <a name="run-the-samples"></a>Örnekleri çalıştırma
 
-### <a name="run-the-nodejs-web-api"></a>Düğüm.js web API çalıştırın
+### <a name="run-the-nodejs-web-api"></a>Node. js web API 'sini çalıştırma
 
 1. Bir Node.js komut istemi başlatın.
 2. Node.js örneğini içeren dizine değiştirin. Örneğin `cd c:\active-directory-b2c-javascript-nodejs-webapi`
@@ -140,16 +140,16 @@ Node.js web API’si örneği API’ye yapılan çağrıları korumak için Azur
 
 ### <a name="run-the-desktop-application"></a>Masaüstü uygulamasını çalıştırma
 
-1. Visual Studio'da **active-directory-b2c-wpf** çözümlerini açın.
+1. Visual Studio 'da **Active-Directory-B2C-WPF** çözümünü açın.
 2. Masaüstü uygulamasını çalıştırmak için **F5**'e basın.
 3. [Bir masaüstü uygulamasında Azure Active Directory B2C ile kullanıcılar için kimlik doğrulaması gerçekleştirme öğreticisinde](tutorial-desktop-app.md) kullanılan e-posta adresi ve parolayı kullanarak oturum açın.
-4. Arama **API düğmesini** seçin.
+4. **API çağrısı** düğmesini seçin.
 
-Masaüstü uygulaması, yerel olarak çalışan web API'sine bir istekte bulunmaz ve geçerli bir erişim jetonunun doğrulanması üzerine oturum açmış kullanıcının ekran adını gösterir.
+Masaüstü uygulaması yerel olarak çalışan Web API 'sine bir istek yapar ve geçerli bir erişim belirtecinin doğrulanması sırasında, oturum açan kullanıcının görünen adını gösterir.
 
-![WPF masaüstü uygulamasının üst bölmesinde gösterilen görüntü adı](./media/tutorial-desktop-app-webapi/desktop-app-01-post-api-call.png)
+![WPF Masaüstü uygulamasının üst bölmesinde gösterilen görünen ad](./media/tutorial-desktop-app-webapi/desktop-app-01-post-api-call.png)
 
-Azure AD B2C tarafından korunan masaüstü uygulamanız, Azure AD B2C tarafından da korunan yerel olarak çalışan web API'sini çağırıyor.
+Azure AD B2C tarafından korunan masaüstü uygulamanız, Azure AD B2C tarafından da korunan yerel olarak çalışan Web API 'sini çağırıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -157,9 +157,9 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Web API'si uygulaması ekleme
-> * Web API'si için kapsamları yapılandırma
-> * Web API'sine izin verme
-> * Uygulamayı kullanmak için örneği güncelleştirin
+> * Bir Web API 'SI için Kapsamları yapılandırma
+> * Web API 'sine izin verme
+> * Uygulamayı kullanmak için örneği güncelleştirme
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure Active Directory B2C'de uygulamalarınız için kimlik sağlayıcılar ekleme](tutorial-add-identity-providers.md)
+> [Öğretici: Azure Active Directory B2C ' de uygulamalarınıza kimlik sağlayıcıları ekleme](tutorial-add-identity-providers.md)

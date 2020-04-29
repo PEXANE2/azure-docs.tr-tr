@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: PostgreSQL için Oracle'ı Azure Veritabanı'na çevrimiçi geçirin"
+title: "Öğretici: Oracle Online 'ı PostgreSQL için Azure veritabanı 'na geçirme"
 titleSuffix: Azure Database Migration Service
-description: Azure Veritabanı Geçiş Hizmeti'ni kullanarak Oracle'dan şirket içinde veya sanal makinelerden PostgreSQL için Azure Veritabanı'na çevrimiçi geçiş gerçekleştirmeyi öğrenin.
+description: Azure veritabanı geçiş hizmeti 'ni kullanarak, Oracle şirket içi veya sanal makinelerinizden PostgreSQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirmeyi öğrenin.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -13,67 +13,67 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/24/2020
 ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255576"
 ---
-# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: Oracle'ı DMS kullanarak çevrimiçi PostgreSQL için Azure Veritabanına geçirin (Önizleme)
+# <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Öğretici: DMS kullanarak Azure 'a PostgreSQL için Azure veritabanı 'na geçiş (Önizleme)
 
-Veritabanlarını şirket içinde barındırılan Oracle veritabanlarından veya sanal makinelerden en az kapalı kalma süresiyle [PostgreSQL için Azure Veritabanı'na](https://docs.microsoft.com/azure/postgresql/) geçirmek için Azure Veritabanı Geçiş Hizmeti'ni kullanabilirsiniz. Başka bir deyişle, uygulama için en az kapalı kalma süresi ile geçiş tamamlayabilirsiniz. Bu eğitimde, Azure Veritabanı Geçiş Hizmeti'ndeki çevrimiçi geçiş etkinliğini kullanarak **İk** örnek veritabanını Oracle 11g'nin şirket içi veya sanal makine örneğinden PostgreSQL için Azure Veritabanı'na geçirebilirsiniz.
+Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını şirket içinde veya sanal makinelerde barındırılan Oracle veritabanlarından, en az kapalı kalma süresine sahip [PostgreSQL Için Azure veritabanı](https://docs.microsoft.com/azure/postgresql/) 'na geçirebilirsiniz. Diğer bir deyişle, uygulamayı uygulamanın en az kapalı kalma süresiyle tamamlayabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak, Oracle 11g 'nin şirket içi veya sanal makine örneğinden, PostgreSQL için Azure veritabanı 'na **HR** örnek veritabanını geçireceğiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
-> * Ora2pg aracını kullanarak geçiş çabasını değerlendirin.
-> * Ora2pg aracını kullanarak örnek şema geçirin.
+> * Ora2pg aracını kullanarak geçiş çabalarını değerlendirin.
+> * Ora2pg aracını kullanarak örnek şemayı geçirin.
 > * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
-> * Azure Veritabanı Geçiş Hizmeti'ni kullanarak bir geçiş projesi oluşturun.
+> * Azure veritabanı geçiş hizmeti 'ni kullanarak bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 > * Geçişi izleme.
 
 > [!NOTE]
-> Çevrimiçi geçiş gerçekleştirmek için Azure Veritabanı Geçiş Hizmeti'ni kullanmak, Premium fiyatlandırma katmanını temel alan bir örnek oluşturmayı gerektirir.
+> Çevrimiçi bir geçiş gerçekleştirmek için Azure veritabanı geçiş hizmeti 'nin kullanılması, Premium fiyatlandırma katmanını temel alan bir örnek oluşturulmasını gerektirir.
 
 > [!IMPORTANT]
-> En iyi geçiş deneyimi için Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure Veritabanı Geçiş Hizmeti örneği oluşturmanızı önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
+> En iyi geçiş deneyimi için, Microsoft, hedef veritabanıyla aynı Azure bölgesinde Azure veritabanı geçiş hizmeti örneği oluşturulmasını önerir. Verileri bölgeler veya coğrafyalar arasında taşımak, geçiş sürecini yavaşlatabilir ve hatalara neden olabilir.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Bu makalede, PostgreSQL için Oracle'dan Azure Veritabanı'na çevrimiçi geçişin nasıl gerçekleştirilebildiğini açıklanmaktadır.
+Bu makalede, Oracle 'dan PostgreSQL için Azure veritabanı 'na çevrimiçi geçiş gerçekleştirme işlemi açıklanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* [Oracle 11g Release 2 (Standart Sürüm, Standart Sürüm Bir veya Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)indirin ve yükleyin.
-* Örnek **İk** veritabanını [buradan](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)indirin.
-* Windows veya [Linux'ta ora2pg'yi indirin ve kurutun.](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* [Oracle 11g Release 2 ' yi (Standard Edition, Standard Edition bir veya Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html)indirip yükleyin.
+* Örnek **HR** veritabanını [buradan](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)indirin.
+* [Ora2pg 'ı Windows veya Linux üzerinde](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)indirin ve yükleyin.
 * [PostgreSQL için Azure Veritabanı’nda örnek oluşturma](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
-* Örne bağlanın ve bu [belgedeki](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)yönergeyi kullanarak bir veritabanı oluşturun.
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza site bağlantısı sağlayan Azure Kaynak Yöneticisi dağıtım modelini kullanarak Azure Veritabanı Geçiş Hizmeti için bir Microsoft Azure Sanal Ağı oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [Sanal Ağ Belgeleri'ne](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarıiçeren hızlı başlangıç makalelerini görün.
+* Örneğe bağlanın ve bu [belgedeki](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)yönergeyi kullanarak bir veritabanı oluşturun.
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
   > [!NOTE]
-  > Sanal ağ kurulumu sırasında, Microsoft'a ağ la bakan ExpressRoute kullanıyorsanız, hizmetin sağlandığı alt ağa aşağıdaki hizmet [bitiş noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
+  > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
   >
-  > * Hedef veritabanı bitiş noktası (örneğin, SQL bitiş noktası, Cosmos DB bitiş noktası vb.)
-  > * Depolama bitiş noktası
-  > * Servis veri günü bitiş noktası
+  > * Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası vb.)
+  > * Depolama uç noktası
+  > * Service Bus uç noktası
   >
-  > Azure Veritabanı Geçiş Hizmeti internet bağlantısından yoksun olduğundan bu yapılandırma gereklidir.
+  > Azure veritabanı geçiş hizmeti internet bağlantısı olmadığından bu yapılandırma gereklidir.
 
-* Sanal ağ Ağ Güvenlik Grubu (NSG) kurallarınızın Azure Veritabanı Geçiş Hizmeti'ne aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtreleme hakkında daha fazla ayrıntı için, [ağ güvenlik grupları ile](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)makale Filtre ağ trafiği bakın.
+* Sanal ağ ağ güvenlik grubu (NSG) kurallarınızın Azure veritabanı geçiş hizmeti 'ne yönelik aşağıdaki gelen iletişim bağlantı noktalarını engellemediğinden emin olun: 443, 53, 9354, 445, 12000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)makalesine bakın.
 * [Windows Güvenlik Duvarınızı veritabanı altyapısı erişimi](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) için yapılandırın.
-* Azure Veritabanı Geçiş Hizmeti'nin varsayılan olarak TCP bağlantı noktası 1521 olan kaynak Oracle sunucusuna erişmesine izin vermek için Windows güvenlik duvarınızı açın.
-* Kaynak veritabanınızın (ler) önünde bir güvenlik duvarı cihazı kullanırken, Azure Veritabanı Geçiş Hizmeti'nin geçiş için kaynak veritabanına(ler) erişmesine izin vermek için güvenlik duvarı kuralları eklemeniz gerekebilir.
-* Azure Veritabanı Geçiş Hizmeti'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure Veritabanı için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure Veritabanı Geçiş Hizmeti için kullanılan sanal ağın alt ağ aralığını sağlayın.
+* Azure veritabanı geçiş hizmeti 'nin kaynak Oracle sunucusuna erişmesine izin vermek için Windows Güvenlik duvarınızı açın, varsayılan olarak TCP bağlantı noktası 1521 ' dir.
+* Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
+* Azure veritabanı geçiş hizmeti 'nin hedef veritabanlarına erişmesine izin vermek için PostgreSQL için Azure veritabanı için sunucu düzeyinde bir [güvenlik duvarı kuralı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oluşturun. Azure veritabanı geçiş hizmeti için kullanılan sanal ağın alt ağ aralığını belirtin.
 * Kaynak Oracle veritabanlarına erişimi etkinleştirin.
 
   > [!NOTE]
   > Bir kullanıcının Oracle kaynağına bağlanması için DBA rolü gereklidir.
 
-  * Veri değişikliğini yakalamak için Azure Veritabanı Geçiş Hizmeti'nde artımlı eşitleme için Arşiv Redo Günlükleri gereklidir. Oracle kaynağını yapılandırmak için aşağıdaki adımları izleyin:
+  * Veri değişikliğini yakalamak için Azure veritabanı geçiş hizmeti 'nde artımlı eşitleme için Arşiv yineleme günlükleri gereklidir. Oracle kaynağını yapılandırmak için aşağıdaki adımları izleyin:
     * Aşağıdaki komutu çalıştırarak SYSDBA ayrıcalığını kullanarak oturum açın:
 
       ```
@@ -86,15 +86,15 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       SHUTDOWN IMMEDIATE;
       ```
 
-      Onayı `'ORACLE instance shut down'`bekleyin.
+      Onay `'ORACLE instance shut down'`için bekleyin.
 
-    * Aşağıdaki komutu çalıştıran arşivleme bu'yu etkinleştirmek veya devre dışı kalarak veritabanını başlatın ve veritabanını monte edin (ancak açmayın)
+    * Yeni örneği başlatın ve veritabanını arşivlemeyi etkinleştirmek veya devre dışı bırakmak için şu komutu çalıştırın:
 
       ```
       STARTUP MOUNT;
       ```
 
-      Veritabanı monte edilmelidir; onay için bekleyin 'Oracle örneği başladı'.
+      Veritabanı takılmalıdır; ' Oracle örneğinin başlatıldığı ' onay için bekleyin.
 
     * Aşağıdaki komutu çalıştırarak veritabanı arşivleme modunu değiştirin:
 
@@ -108,41 +108,41 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       ALTER DATABASE OPEN;
       ```
 
-      ARC dosyasının ortaya çıkarolması için yeniden başlatmanız gerekebilir.
+      YAY dosyasının gösterilmesi için yeniden başlatmanız gerekebilir.
 
-    * Doğrulamak için aşağıdaki komutu çalıştırın:
+    * Doğrulamak için şu komutu çalıştırın:
 
       ```
       SELECT log_mode FROM v$database;
       ```
 
-      Bir yanıt `'ARCHIVELOG'`almalısınız. Yanıt `'NOARCHIVELOG'`ise, gereksinim karşılanmaz.
+      Yanıt `'ARCHIVELOG'`almanız gerekir. Yanıt varsa `'NOARCHIVELOG'`, gereksinim karşılanmıyor.
 
-  * Aşağıdaki seçeneklerden birini kullanarak çoğaltma için tamamlayıcı günlüğe kaydetmeyi etkinleştirin.
+  * Aşağıdaki seçeneklerden birini kullanarak, çoğaltma için ek günlüğe kaydetmeyi etkinleştirin.
 
-    * **Seçenek 1**.
-      PK ve benzersiz dizin ile tüm tabloları kapsayacak şekilde veritabanı düzeyi tamamlayıcı günlüğe kaydetmeyi değiştirin. Algılama sorgusu döndürecek. `'IMPLICIT'`
+    * **1. seçenek**.
+      PK ve benzersiz dizin içeren tüm tabloları kapsayacak şekilde veritabanı düzeyinde ek günlüğe kaydetme 'yi değiştirin. Algılama sorgusu döndürülür `'IMPLICIT'`.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY, UNIQUE) COLUMNS;
       ```
 
-      Tablo düzeyi tamamlayıcı günlüğe kaydetmeyi değiştirin. Yalnızca veri işleme si fata'sı veya benzersiz dizinleri olmayan tablolar için çalıştırın.
+      Tablo düzeyinde ek günlüğe kaydetmeyi değiştirin. Yalnızca veri işleme olan ve PKs ya da Unique dizinleri olmayan tablolar için çalıştırın.
 
       ```
       ALTER TABLE [TABLENAME] ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
       ```
 
     * **Seçenek 2**.
-      Tüm tabloları kapsayacak şekilde veritabanı düzeyi tamamlayıcı günlüğe kaydetmeyi değiştirin ve algılama sorgusu döndürür. `'YES'`
+      Veritabanı düzeyinde ek günlüğe kaydetme işlemini tüm tabloları kapsayacak şekilde değiştirin ve algılama sorgusu geri döner `'YES'`.
 
       ```
       ALTER DATABASE ADD SUPPLEMENTAL LOG DATA;
       ```
 
-      Tablo düzeyi tamamlayıcı günlüğe kaydetmeyi değiştirin. Her tablo için yalnızca bir deyim çalıştırmak için aşağıdaki mantığı izleyin.
+      Tablo düzeyinde ek günlüğe kaydetmeyi değiştirin. Her tablo için yalnızca bir ifade çalıştırmak üzere aşağıdaki mantığı izleyin.
 
-      Tabloda birincil anahtar varsa:
+      Tabloda bir birincil anahtar varsa:
 
       ```
       ALTER TABLE xxx ADD SUPPLEMENTAL LOG DATA (PRIMARY KEY) COLUMNS;
@@ -160,96 +160,96 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
       ALTER TABLE xxx ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS;
       ```
 
-    Doğrulamak için aşağıdaki komutu çalıştırın:
+    Doğrulamak için şu komutu çalıştırın:
 
       ```
       SELECT supplemental_log_data_min FROM v$database;
       ```
 
-    Bir yanıt `'YES'`almalısınız.
+    Yanıt `'YES'`almanız gerekir.
 
-## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>PostgreSQL geçişi için Bir Oracle to Azure Veritabanı için çabayı değerlendirin
+## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Bir Oracle ile PostgreSQL için Azure veritabanı geçişi için çabayı değerlendirin
 
-PostgreSQL için Oracle'dan Azure Veritabanı'na geçiş için gereken çabayı değerlendirmek için ora2pg kullanmanızı öneririz. Tüm `ora2pg -t SHOW_REPORT` Oracle nesnelerini, tahmini geçiş maliyetini (geliştirici günlerinde) ve dönüşümün bir parçası olarak özel ilgi gerektirebilecek belirli veritabanı nesnelerini listeleyen bir rapor oluşturmak için yönergeyi kullanın.
+Oracle 'dan PostgreSQL için Azure veritabanı 'na geçiş yapmak için gereken çabayı değerlendirmek için ora2pg kullanmanızı öneririz. Tüm Oracle `ora2pg -t SHOW_REPORT` nesnelerini, tahmini geçiş maliyetini (Geliştirici Günleri) ve dönüştürmenin bir parçası olarak özel dikkat gerektirebilecek belirli veritabanı nesnelerini listelemeyi sağlayan bir rapor oluşturmak için yönergesini kullanın.
 
-Çoğu müşteri, değerlendirme raporunu gözden geçirmek ve otomatik ve manuel dönüştürme çabasını göz önünde bulundurarak önemli miktarda zaman harcar.
+Çoğu müşteri değerlendirme raporunu inceleyerek önemli bir miktar zaman harcayacak ve otomatik ve el ile dönüştürme çabalarının göz önünde bulunduracaktır.
 
-Bir değerlendirme raporu oluşturmak için ora2pg'yi yapılandırmak ve çalıştırmak [için, PostgreSQL Yemek Kitabı için Oracle'ın Azure Veritabanı'na](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) **Ön Geçiş: Değerlendirme** bölümüne bakın. Bir örnek ora2pg değerlendirme raporu [burada](https://ora2pg.darold.net/report.html)referans için kullanılabilir.
+Bir değerlendirme raporu oluşturmak için ora2pg yapılandırmak ve çalıştırmak için, [Oracle 'Dan PostgreSQL Için Azure veritabanı tanımlama kitabı](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)' nın **ön geçiş: değerlendirme** bölümüne bakın. [Burada](https://ora2pg.darold.net/report.html)başvuru için örnek bir ora2pg değerlendirmesi raporuna ulaşabilirsiniz.
 
-## <a name="export-the-oracle-schema"></a>Oracle şeasını dışa aktarma
+## <a name="export-the-oracle-schema"></a>Oracle şemasını dışarı aktarma
 
-Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, vb.) PostgreSQL için Azure Veritabanı ile uyumlu bir şemaya dönüştürmek için ora2pg kullanmanızı öneririz. ora2pg, belirli veri türlerini önceden tanımlamanıza yardımcı olacak birçok yönerge içerir. Örneğin, yönergeyi, `DATA_TYPE` tüm NUMBER(*,0)'ı NUMERIC yerine bigint ile değiştirmek için kullanabilirsiniz(38).
+Oracle şemasını ve diğer Oracle nesnelerini (türler, yordamlar, işlevler, vb.) PostgreSQL için Azure veritabanı ile uyumlu bir şemaya dönüştürmek için ora2pg kullanmanızı öneririz. ora2pg, belirli veri türlerini önceden tanımlamanızı sağlayacak birçok yönergesi içerir. Örneğin, her SAYıYı (*, `DATA_TYPE` 0) sayısal (38) yerine bigint ile değiştirmek için yönergesini kullanabilirsiniz.
 
-.sql dosyalarındaki veritabanı nesnelerinin her birini dışa aktarmak için ora2pg çalıştırabilirsiniz. Daha sonra .sql dosyalarını PostgreSQL için Azure Veritabanı'na aktarmadan önce psql kullanarak gözden geçirebilirsiniz veya . PGAdmin'de SQL komut dosyası.
+. SQL dosyalarındaki veritabanı nesnelerinin her birini dışarı aktarmak için ora2pg çalıştırabilirsiniz. Daha sonra, psql kullanarak PostgreSQL için Azure veritabanı 'na aktarmadan önce. SQL dosyalarını gözden geçirebilir veya çalıştırabilirsiniz. PgAdmin içindeki SQL betiği.
 
 ```
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Örnek:
+Örneğin:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
 ```
 
-Şema dönüştürme için ora2pg'yi yapılandırmak ve çalıştırmak [için, PostgreSQL Yemek Kitabı için Oracle'ın Azure Veritabanına](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) **Geçiş: Şema ve veri** bölümüne bakın.
+Şema dönüştürmesi için ora2pg yapılandırmak ve çalıştırmak için, [Oracle 'Dan PostgreSQL Için Azure veritabanı tanımlama kitabı](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)için **geçiş: şema ve veri** bölümüne bakın.
 
-## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı'nda şema ayarlama
+## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda şemayı ayarlama
 
-Azure Veritabanı Geçiş Hizmeti'nde geçiş ardışık bir geçiş ardışık hattı başlatmadan önce ora2pg kullanarak Bunları Postgres uyumlu hale getirmek için Oracle tablo şemalarını, depolanmış yordamları, paketleri ve diğer veritabanı nesnelerini dönüştürmeyi seçebilirsiniz. Ora2pg ile nasıl çalışabilirsiniz için aşağıdaki bağlantılara bakın:
+Azure veritabanı geçiş hizmeti 'nde bir geçiş işlem hattı başlatmadan önce ora2pg kullanarak bunları uyumlu hale getirmek için Oracle tablo şemalarını, saklı yordamları, paketleri ve diğer veritabanı nesnelerini dönüştürmeyi tercih edebilirsiniz. Ora2pg ile çalışma hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın:
 
-* [Windows'da ora2pg yükleme](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
-* [Oracle'dan Azure PostgreSQL Geçiş Yemek Kitabı'na](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
+* [Ora2pg 'i Windows üzerinde yükler](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
+* [Oracle 'dan Azure 'a PostgreSQL geçişi kılavuz kitabı](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-Azure Veritabanı Geçiş Hizmeti, PostgreSQL tablo şeasını da oluşturabilir. Hizmet, bağlı Oracle kaynağındaki tablo şemasına erişir ve PostgreSQL için Azure Veritabanı'nda uyumlu bir tablo şeması oluşturur. Azure Veritabanı Geçiş Hizmeti şemayı oluşturmayı ve verileri taşımayı bitirdikten sonra PostgreSQL için Azure Veritabanı'ndaki şema biçimini doğruladığınızdan ve denetlediğinden emin olun.
+Azure veritabanı geçiş hizmeti, PostgreSQL tablo şemasını da oluşturabilir. Hizmet, bağlı Oracle kaynağında bulunan tablo şemasına erişir ve PostgreSQL için Azure veritabanı 'nda uyumlu bir tablo şeması oluşturur. Azure veritabanı geçiş hizmeti şemayı oluşturmayı ve verileri taşımayı tamamladıktan sonra PostgreSQL için Azure veritabanı 'nda şema biçimini doğrulayıp denetlediğinizden emin olun.
 
 > [!IMPORTANT]
-> Azure Veritabanı Geçiş Hizmeti yalnızca tablo şema oluşturur; depolanan yordamlar, paketler, dizinler, vb. gibi diğer veritabanı nesneleri oluşturulmaz.
+> Azure veritabanı geçiş hizmeti yalnızca tablo şemasını oluşturur; saklı yordamlar, paketler, dizinler vb. gibi diğer veritabanı nesneleri oluşturulmaz.
 
-Ayrıca, tam yükün çalışması için hedef veritabanındaki yabancı anahtarı da düşürün. Yabancı anahtarı düşürmek [için](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) kullanabileceğiniz bir komut dosyası için **makalenin örnek şema** bölümüne bakın. Tam yükleme ve eşitleme için çalıştırmak için Azure Veritabanı Geçiş Hizmeti'ni kullanın.
+Ayrıca, tam yükün çalıştırılabilmesi için hedef veritabanına yabancı anahtarı bırakmaya de dikkat edin. Yabancı anahtarı bırakmak için kullanabileceğiniz bir betik için [buradaki](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) makalenin **örnek şemasını geçirme** bölümüne bakın. Tam yükleme ve eşitleme için çalıştırmak üzere Azure veritabanı geçiş hizmeti 'ni kullanın.
 
-### <a name="when-the-postgresql-table-schema-already-exists"></a>PostgreSQL tablo şeması zaten var olduğunda
+### <a name="when-the-postgresql-table-schema-already-exists"></a>PostgreSQL tablo şeması zaten mevcut olduğunda
 
-Azure Veritabanı Geçiş Hizmeti ile veri hareketini başlatmadan önce ora2pg gibi araçları kullanarak bir PostgreSQL şeması oluşturursanız, kaynak tabloları Azure Veritabanı Geçiş Hizmeti'ndeki hedef tablolarla eşleyin.
+Azure veritabanı geçiş hizmeti ile veri hareketini başlatmadan önce ora2pg gibi araçları kullanarak bir PostgreSQL şeması oluşturursanız, kaynak tabloları Azure veritabanı geçiş hizmeti 'ndeki hedef tablolarla eşleyin.
 
-1. PostgreSQL geçiş projesi için Azure Veritabanı'na yeni bir Oracle oluşturduğunuzda, şemazları seç adımda hedef veritabanını seçmeniz ve şema hedeflemeniz istenir. Hedef veritabanını doldurun ve şema hedefleyin.
+1. Yeni bir Oracle ile PostgreSQL için Azure veritabanı geçiş projesi oluşturduğunuzda, şemaları Seç adımında hedef veritabanı ve hedef şema ' ı seçmeniz istenir. Hedef veritabanını ve hedef şemayı girin.
 
    ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
-2. **Geçiş ayarları** ekranı Oracle kaynağındaki tabloların bir listesini sunar. Azure Veritabanı Geçiş Hizmeti, tablo adını temel alarak kaynaktaki ve hedef tablolardaki tabloları eşleştirmeye çalışır. Farklı kasaya sahip birden çok eşleşen hedef tablo varsa, hangi hedef tabloyla eşleneceklerini seçebilirsiniz.
+2. **Geçiş ayarları** ekranı, Oracle kaynağında bulunan tabloların bir listesini gösterir. Azure veritabanı geçiş hizmeti, kaynak ve hedef tablolardaki tabloları tablo adına göre eşleştirmeye çalışır. Farklı küçük harflere sahip birden fazla eşleşen hedef tablo varsa, hangi hedef tabloya eşlendiğini seçebilirsiniz.
 
     ![Portal aboneliklerini gösterme](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> Kaynak tablo adlarını farklı adlara, e-postaya [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) sahip tablolarla eşlemeniz gerekiyorsa, işlemi otomatikleştirmek için bir komut dosyası sağlayabiliriz.
+> Kaynak tablo adlarını farklı adlara sahip tablolarla eşlemeniz gerekiyorsa, e-posta [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) ile işlemi otomatik hale getirmek için bir betik sağlayabiliriz.
 
-### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>PostgreSQL tablo şeması olmadığında
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>PostgreSQL tablo şeması mevcut olmadığında
 
-Hedef PostgreSQL veritabanı tablo şeması bilgisi içermiyorsa, Azure Veritabanı Geçiş Hizmeti kaynak şeasını dönüştürür ve hedef veritabanında yeniden oluşturur. Azure Veritabanı Geçiş Hizmeti'nin depolanmış yordamlar, paketler ve dizinler gibi diğer veritabanı nesnelerini değil, yalnızca tablo şemasını oluşturduğunu unutmayın.
-Azure Veritabanı Geçiş Hizmeti'nin sizin için şemayı oluşturması için, hedef ortamınızın varolan tabloları olmayan bir şema içerdiğinden emin olun. Azure Veritabanı Geçiş Hizmeti herhangi bir tablo keşfederse, hizmet şeamın ora2pg gibi harici bir araç tarafından oluşturulduğunu varsayar.
+Hedef PostgreSQL veritabanı hiçbir tablo şeması bilgisi içermiyorsa, Azure veritabanı geçiş hizmeti kaynak şemayı dönüştürür ve hedef veritabanında yeniden oluşturur. Azure veritabanı geçiş hizmeti, saklı yordamlar, paketler ve dizinler gibi diğer veritabanı nesnelerini değil, yalnızca tablo şemasını oluşturduğunu unutmayın.
+Azure veritabanı geçiş hizmeti 'nin sizin için şemayı oluşturması için, hedef ortamınızın, mevcut tablo olmayan bir şema içerdiğinden emin olun. Azure veritabanı geçiş hizmeti herhangi bir tabloyu tespit ederseniz, hizmet şemanın ora2pg gibi bir dış araç tarafından oluşturulduğunu varsayar.
 
 > [!IMPORTANT]
-> Azure Veritabanı Geçiş Hizmeti, Azure Veritabanı Geçiş Hizmeti veya ora2pg gibi bir aracı kullanarak tüm tabloların aynı şekilde oluşturulmasını gerektirir, ancak her ikisini birden oluşturmaz.
+> Azure veritabanı geçiş hizmeti, Azure veritabanı geçiş hizmeti ya da ora2pg gibi bir araç kullanılarak tüm tabloların aynı şekilde oluşturulmasını gerektirir, ancak her ikisi birden değildir.
 
 Başlamak için:
 
-1. Uygulama gereksinimlerinize göre hedef veritabanında bir şema oluşturun. Varsayılan olarak, PostgreSQL tablo şeması ve sütun adları küçük harfle hesaplanır. Diğer taraftan, Oracle tablo şeması ve sütunları varsayılan olarak tüm büyük harflerle olur.
-2. Şema seç adımında hedef veritabanını ve hedef şema'yı belirtin.
-3. PostgreSQL için Azure Veritabanı'nda oluşturduğunuz şema temel alınerek, Azure Veritabanı Geçiş Hizmeti aşağıdaki dönüşüm kurallarını kullanır:
+1. Uygulama gereksinimlerinize bağlı olarak hedef veritabanında bir şema oluşturun. Varsayılan olarak, PostgreSQL tablo şeması ve sütun adları daha düşüktür. Oracle tablo şeması ve sütunları, diğer taraftan, tüm sermaye durumunda varsayılan olarak varsayılandır.
+2. Şemaları seçin adımında hedef veritabanını ve hedef şemayı belirtin.
+3. PostgreSQL için Azure veritabanı 'nda oluşturduğunuz şemaya bağlı olarak, Azure veritabanı geçiş hizmeti aşağıdaki dönüşüm kurallarını kullanır:
 
-    Oracle kaynağındaki şema adı ve PostgreSQL için Azure Veritabanı'ndakiyle eşleşiyorsa, Azure Veritabanı Geçiş Hizmeti *hedeftekiyle aynı örneği kullanarak tablo şeasını oluşturur.*
+    Oracle kaynağında şema adı ve PostgreSQL için Azure veritabanı ile eşleşiyorsa, Azure veritabanı geçiş hizmeti, *Hedefteki ile aynı büyük/küçük harf kullanarak tablo şemasını oluşturur*.
 
-    Örnek:
+    Örneğin:
 
-    | Kaynak Oracle şema | Hedef PostgreSQL Database.Schema | DMS schema.table.column oluşturdu |
+    | Kaynak Oracle şeması | Hedef PostgreSQL database. Schema | DMS tarafından oluşturulan Schema. Table. Column |
     | ------------- | ------------- | ------------- |
-    | HR | targetHR.public | public.countries.country_id |
-    | HR | targetHR.trgthr | trgthr.countries.country_id |
-    | HR | targetHR.TARGETHR | "TARGETHR". ÜLKELER". COUNTRY_ID" |
-    | HR | targetHR.HR | "İnsan KAYNAKLARı"." ÜLKELER". COUNTRY_ID" |
-    | HR | targetHR.Hr | *Karışık servis taleplerini haritalayamadı |
+    | HR | targetHR. public | public. ülkeler. country_id |
+    | HR | targetHR. trgthr | trgthr. ülkeler. country_id |
+    | HR | targetHR. TARGETHR | "TARGETHR". " ÜLKELER "." COUNTRY_ID " |
+    | HR | targetHR.HR | "HR". " ÜLKELER "." COUNTRY_ID " |
+    | HR | targetHR.Hr | * Karışık durumlar eşlenemiyor |
 
-    *Hedef PostgreSQL'de karışık durum şeması ve tablo [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)adları oluşturmak için iletişim kurun. Hedef PostgreSQL veritabanında karışık durum tablosu şeması kurmak için bir komut dosyası sağlayabiliriz.
+    * Hedef PostgreSQL 'te karışık Case şeması ve tablo adları oluşturmak için, iletişim [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)kurun. Hedef PostgreSQL veritabanında karma durum tablosu şeması ayarlamak için bir betik sağlayabiliriz.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
@@ -267,7 +267,7 @@ Başlamak için:
 
 ## <a name="create-a-dms-instance"></a>DMS örneği oluşturma
 
-1. Azure portalında + **Kaynak Oluştur'** seçeneğini belirleyin, Azure Veritabanı Geçiş Hizmeti'ni arayın ve ardından açılan listeden **Azure Veritabanı Geçiş Hizmeti'ni** seçin.
+1. Azure portal + **kaynak oluştur**' u seçin, Azure veritabanı geçiş hizmeti ' ni arayın ve ardından açılan listeden **Azure veritabanı geçiş hizmeti** ' ni seçin.
 
     ![Azure Market](media/tutorial-oracle-azure-postgresql-online/portal-marketplace.png)
 
@@ -277,11 +277,11 @@ Başlamak için:
   
 3. **Geçiş Hizmeti oluşturun** ekranında hizmet için bir ad belirtin, aboneliği ve yeni ya da var olan bir kaynak grubunu seçin.
 
-4. Varolan bir sanal ağ seçin veya yeni bir ağ oluşturun.
+4. Var olan bir sanal ağı seçin veya yeni bir ağ oluşturun.
 
-    Sanal ağ, PostgreSQL örneği için kaynak Oracle'a ve hedef Azure Veritabanı'na erişim sağlayan Azure Veritabanı Geçiş Hizmeti sağlar.
+    Sanal ağ, Azure veritabanı geçiş hizmeti 'ne kaynak Oracle ve PostgreSQL için Azure veritabanı örneğine erişim sağlar.
 
-    Azure portalında sanal ağ oluşturma hakkında daha fazla bilgi için Azure [portalını kullanarak sanal ağ oluşturma makalesine](https://aka.ms/DMSVnet)bakın.
+    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
 5. Fiyatlandırma katmanını seçin.
 
@@ -304,42 +304,42 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
     ![Azure Veritabanı Geçiş Hizmeti örneğinizi bulma](media/tutorial-oracle-azure-postgresql-online/dms-instance-search.png)
 
 3. +**Yeni Geçiş Projesi**'ni seçin.
-4. Yeni **geçiş projesi** ekranında, **Kaynak sunucu türü** metin kutusunda proje için bir ad belirtin, Hedef sunucu **türü** metin kutusunda **Oracle'ı**seçin, **PostgreSQL için Azure Veritabanı'nı**seçin.
-5. Etkinlik **türünü seç** **bölümünde, Çevrimiçi veri geçişi'ni**seçin.
+4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda **Oracle**' ı seçin, **hedef sunucu türü** metin kutusunda, **PostgreSQL için Azure veritabanı**' nı seçin.
+5. **Etkinlik türünü seçin** bölümünde **çevrimiçi veri geçişi**' ni seçin.
 
    ![Veritabanı Geçiş Hizmeti Projesi Oluşturma](media/tutorial-oracle-azure-postgresql-online/dms-create-project5.png)
 
    > [!NOTE]
-   > Alternatif olarak, yalnızca geçiş projesini şimdi oluşturmak ve geçişi daha sonra yürütmek için **proje oluştur'u** seçebilirsiniz.
+   > Alternatif olarak, şimdi **proje oluştur** ' u seçerek geçiş projesini hemen oluşturabilir ve geçişi daha sonra yürütebilirsiniz.
 
-6. **Kaydet'i**seçin, çevrimiçi geçiş gerçekleştirmek için Azure Veritabanı Geçiş Hizmeti'ni başarıyla kullanmak için gereksinimleri not edin ve ardından **Etkinlik Oluştur ve çalıştır'ı**seçin.
+6. **Kaydet**' i seçin, çevrimiçi bir geçiş gerçekleştirmek Için Azure veritabanı geçiş hizmeti 'ni başarıyla kullanma gereksinimleri ' ni ve ardından **etkinlik oluştur ve Çalıştır**' ı seçin.
 
 ## <a name="specify-source-details"></a>Kaynak ayrıntılarını belirtme
 
-* Kaynak **Ayrıntıları Ekle** ekranında, kaynak Oracle örneğinin bağlantı ayrıntılarını belirtin.
+* **Kaynak ayrıntıları Ekle** ekranında, kaynak Oracle örneği için bağlantı ayrıntılarını belirtin.
 
   ![Kaynak Ayrıntıları Ekleyin ekranı](media/tutorial-oracle-azure-postgresql-online/dms-add-source-details.png)
 
-## <a name="upload-oracle-oci-driver"></a>Oracle OCI sürücüsünü yükleyin
+## <a name="upload-oracle-oci-driver"></a>Oracle OCı sürücüsünü karşıya yükle
 
-1. **Kaydet'i**seçin ve sonra **OCI sürücü** ekranında Oracle hesabınızda oturum açın ve sürücü **anında istemci-basiclite-windows.x64-12.2.0.1.0.zip** (37,128.586 Byte(s)) (SHA1 Checksum: 865082268) [buradan](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)indirin .
+1. **Kaydet**' i seçin ve ardından, **OCI Sürücü Yükle** ekranında, Oracle hesabınızda oturum açın ve **instantclient-basiclite-Windows. x64-12.2.0.1.0. zip** (37.128.586 bayt) (SHA1 sağlama toplamı: 865082268) sürücüsünü [buradan](https://www.oracle.com/technetwork/topics/winx64soft-089540.html#ic_winx64_inst)indirin.
 2. Sürücüyü paylaşılan bir klasöre indirin.
 
-   Klasörün yalnızca salt okunur okunur erişimle belirttiğiniz kullanıcı adı ile paylaşıldığınızdan emin olun. Azure Veritabanı Geçiş Hizmeti, belirttiğiniz kullanıcı adını taklit ederek OCI sürücüsünü Azure'a yüklemek için paylaşıma erişir ve okur.
+   Klasörün, en düşük salt okuma erişimiyle belirttiğiniz kullanıcı adıyla paylaşıldığından emin olun. Azure veritabanı geçiş hizmeti, belirttiğiniz kullanıcı adını taklit ederek OCı sürücüsünü Azure 'a yüklemek için paylaşıma erişir ve paylaşımdan okur.
 
-   Belirttiğiniz kullanıcı adı bir Windows kullanıcı hesabı olmalıdır.
+   Belirttiğiniz Kullanıcı adı bir Windows Kullanıcı hesabı olmalıdır.
 
-   ![OCI Sürücü Yükleme](media/tutorial-oracle-azure-postgresql-online/dms-oci-driver-install.png)
+   ![OCı sürücü yüklemesi](media/tutorial-oracle-azure-postgresql-online/dms-oci-driver-install.png)
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
-1. **Kaydet'i**ve ardından **Hedef ayrıntıları** ekranında, **HR** şemasının dağıtıldığı PostgreSQL için Azure Veritabanı'nın önceden sağlanan örneği olan PostgreSQL sunucusu için hedef Azure Veritabanı'nın bağlantı ayrıntılarını belirtin.
+1. **Kaydet**' i seçin ve ardından **hedef ayrıntıları** ekranında, **HR** şemasının dağıtıldığı PostgreSQL için Azure veritabanı 'Nın önceden sağlanmış örneği olan PostgreSQL için hedef Azure veritabanı sunucusu için bağlantı ayrıntılarını belirtin.
 
     ![Hedef ayrıntıları ekranı](media/tutorial-oracle-azure-postgresql-online/dms-add-target-details1.png)
 
 2. **Kaydet**'i seçin ve **Hedef veritabanlarıyla eşleyin** ekranında geçiş yapılacak kaynak ve hedef veritabanlarını eşleyin.
 
-    Hedef veritabanı kaynak veritabanıyla aynı veritabanı adını içeriyorsa, Azure Veritabanı Geçiş Hizmeti varsayılan olarak hedef veritabanını seçer.
+    Hedef veritabanı, kaynak veritabanıyla aynı veritabanı adını içeriyorsa, Azure veritabanı geçiş hizmeti varsayılan olarak hedef veritabanını seçer.
 
     ![Hedef veritabanlarıyla eşleyin](media/tutorial-oracle-azure-postgresql-online/dms-map-target-details.png)
 
@@ -357,9 +357,9 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 1. Geçiş etkinliği ekranında **Yenile**'yi seçerek, gösterilen verileri, geçişin **Durum** bilgisi **Çalıştırılıyor** olana kadar güncelleştirebilirsiniz.
 
-     ![Etkinlik Durumu - çalışan](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
+     ![Etkinlik durumu-çalışıyor](media/tutorial-oracle-azure-postgresql-online/dms-activity-running.png)
 
-2. **Veritabanı Adı**altında, Tam **veri yükü** ve **Artımlı veri eşitleme** işlemleri için geçiş durumuna ulaşmak için belirli bir veritabanı seçin.
+2. **Veritabanı adı**altında, **tam veri yükü** ve **artımlı veri eşitleme** işlemleri için geçiş durumuna ulaşmak üzere belirli bir veritabanını seçin.
 
     Tam veri yüklemesi ilk yük geçiş durumunu, Artımlı veri eşitleme ise değişiklik verilerini yakalama (CDC) durumunu gösterir.
 
@@ -378,13 +378,13 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
    ![Tam geçişi başlat](media/tutorial-oracle-azure-postgresql-online/dms-start-cutover.png)
 
 3. **Onayla**'yı ve ardından, **Uygula**'yı seçin.
-4. Veritabanı geçiş durumu **Tamamlandı'yı**gösterdiğinde, uygulamalarınızı PostgreSQL örneği için yeni hedef Azure Veritabanı'na bağlayın.
+4. Veritabanı geçiş durumu **tamamlandı**olarak görüntülendiğinde, uygulamalarınızı yeni hedef PostgreSQL Için Azure veritabanı örneğine bağlayın.
 
  > [!NOTE]
- > PostgreSQL varsayılan olarak küçük harfolarak schema.table.column olduğundan, bu makalenin başlarında **PostgreSQL için Azure Veritabanı'ndaki şemayı ayarla'daki** komut dosyasını kullanarak büyük harften küçük harfe geri dönebilirsiniz.
+ > PostgreSQL varsayılan olarak Schema. Table. Column ' a sahip olduğundan, bu makalenin önceki kısımlarında yer aldığı **PostgreSQL Için Azure veritabanı** bölümünde bulunan betiği kullanarak büyük küçük harfe daha küçük harfe geri döndürebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * PostgreSQL için Azure Veritabanı'na yönelik çevrimiçi geçiş gerçekleştirirken karşılaşılan bilinen sorunlar ve sınırlamalar hakkında bilgi için [PostgreSQL için Azure Veritabanı geçiş işlemleri ile ilgili bilinen sorunlar ve geçici çözümler](known-issues-azure-postgresql-online.md) başlıklı makaleye bakın.
-* Azure Veritabanı Geçiş Hizmeti hakkında bilgi için, makaleye bakın [Azure Veritabanı Geçiş Hizmeti nedir?](https://docs.microsoft.com/azure/dms/dms-overview)
-* PostgreSQL için Azure Veritabanı hakkında daha fazla bilgi için, [PostgreSQL için Azure Veritabanı nedir makalesine bakın.](https://docs.microsoft.com/azure/postgresql/overview)
+* Azure veritabanı geçiş hizmeti hakkında daha fazla bilgi için [Azure veritabanı geçiş hizmeti nedir?](https://docs.microsoft.com/azure/dms/dms-overview)makalesine bakın.
+* PostgreSQL için Azure veritabanı hakkında daha fazla bilgi için [PostgreSQL Için Azure veritabanı nedir?](https://docs.microsoft.com/azure/postgresql/overview)makalesine bakın.

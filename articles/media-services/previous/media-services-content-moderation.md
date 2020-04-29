@@ -1,6 +1,6 @@
 ---
-title: Olası yetişkinlere uygun ve müstehcen içeriği algılamak için Azure Medya İçerik Moderatörü'ne (Azure Medya İçerik Moderatörü) kullanın | Microsoft Dokümanlar
-description: Azure Media Content Moderator medya işlemcisi, videolardaki olası yetişkinlere uygun ve müstehcen içeriğin algılanmasına yardımcı olur.
+title: Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma | Microsoft Docs
+description: Azure Media Content Moderator medya işlemcisi, videolardaki olası yetişkin ve yoğun içeriğin algılanmasına yardımcı olur.
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -15,74 +15,74 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914341"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkinlere uygun ve müstehcen içeriği algılamak için Azure Medya İçerik Moderatörü'ne kullanın 
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Olası yetişkin ve kcy içeriğini algılamak için Azure Medya Content Moderator kullanma 
 
 > [!NOTE]
-> **Azure Medya İçeriği Moderatör medya** işlemcisi kullanımdan kaldırılacak. Emeklilik tarihi [için, eski bileşenler](legacy-components.md) konusuna bakın.
+> **Azure media Content moderator** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
 
 ## <a name="overview"></a>Genel Bakış
-**Azure Media Content Moderator** medya işlemcisi (MP), videolarınız için makine destekli ılımlılık kullanmanıza olanak tanır. Örneğin videolardaki yetişkinlere yönelik veya müstehcen içerikleri tespit edip belirlenen içeriklerin moderasyon ekibiniz tarafından gözden geçirilmesini isteyebilirsiniz.
+**Azure media Content moderator** medya IŞLEMCISI (MP), videolarınız için makine destekli denetleme kullanmanıza olanak sağlar. Örneğin videolardaki yetişkinlere yönelik veya müstehcen içerikleri tespit edip belirlenen içeriklerin moderasyon ekibiniz tarafından gözden geçirilmesini isteyebilirsiniz.
 
-**Azure Medya İçerik Moderatörü** MP şu anda Önizleme'de.
+**Azure Media Content moderator** MP Şu anda önizleme aşamasındadır.
 
-Bu makalede, **Azure Medya İçerik Moderatörü** hakkında ayrıntılı bilgi verilmiştir ve .NET için Medya Hizmetleri SDK ile nasıl kullanılacağı nı gösterir.
+Bu makale, **Azure medya Content moderator** ilgili ayrıntıları verir ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir.
 
-## <a name="content-moderator-input-files"></a>İçerik Moderatör giriş dosyaları
-Video dosyaları. Şu anda, aşağıdaki biçimleri desteklenir: MP4, MOV ve WMV.
+## <a name="content-moderator-input-files"></a>Content Moderator giriş dosyaları
+Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
 
-## <a name="content-moderator-output-files"></a>İçerik Moderatör çıktı dosyaları
-JSON formatında ılımlı çıkış otomatik olarak algılanan çekim ve anahtar çerçeveleri içerir. Anahtar kareler, olası yetişkinlere uygun veya müstehcen içerik için güven puanlarıyla döndürülür. Ayrıca, incelemenin önerilip önerilmediğini belirten bir boolean bayrağı da içerir. İnceleme önerisi bayrağı, yetişkinlere uygun ve müstehcen puanların iç eşiklerine göre değerler atanır.
+## <a name="content-moderator-output-files"></a>Content Moderator çıktı dosyaları
+JSON biçimindeki aracılı çıkış, otomatik olarak algılanan görüntüleri ve ana kareleri içerir. Ana kareler, olası yetişkin veya kcy içeriği için güven puanları ile döndürülür. Ayrıca, bir gözden geçirmeyi önerip önerilmeyeceğini belirten bir Boole bayrağı da içerir. Öneriyi gözden geçirme işareti, yetişkinlere ve kcy puanlarını iç eşiklere göre atanır.
 
 ## <a name="elements-of-the-output-json-file"></a>Çıktı JSON dosyasının öğeleri
 
-İş, algılanan çekimler ve anahtar kareler ve bunlar yetişkin veya müstehcen içerik içerip içermediği hakkında meta veriler içeren bir JSON çıktı dosyası üretir.
+İş, algılanan görüntüleri ve ana kareleri ve yetişkinlere yönelik içerik içerip içermediğini içeren bir JSON çıkış dosyası oluşturur.
 
 JSON çıktısı aşağıdaki öğeleri içerir:
 
-### <a name="root-json-elements"></a>Kök JSON elemanları
+### <a name="root-json-elements"></a>Kök JSON öğeleri
 
 | Öğe | Açıklama |
 | --- | --- |
-| version |İçerik Moderatör sürümü. |
-| Zaman ölçeği |Videonun saniyesinde "Keneler". |
-| uzaklık |Zaman damgası için saat farkıdır. Video API'lerinin sürüm 1.0'ında bu değer her zaman 0 olacaktır. Bu değer gelecekte değişebilir. |
-| Framerate |Videodaki saniye başına kare hızı. |
-| genişlik |Çıkış video çerçevesinin piksel genişliği.|
-| yükseklik |Çıkış video çerçevesinin piksel yüksekliği.|
-| toplamSüre |Giriş videosunun süresi, "keneler" olarak adlandırılır. |
-| [Parça](#fragments-json-elements) |Meta veriler, parça adı verilen farklı bölümlere ayrılır. Her parça, başlangıç, süre, aralık numarası ve olay(lar) içeren otomatik olarak algılanan bir çekimdir. |
+| version |Content Moderator sürümü. |
+| zaman |Videonun saniye başına "ticks" değeri. |
+| uzaklık |Zaman damgası için saat farkıdır. Video API 'Lerinin 1,0 sürümünde bu değer her zaman 0 olur. Bu değer gelecekte değişebilir. |
+| kare hızı değerini |Videodaki saniye başına kare hızı. |
+| genişlik |Çıkış video çerçevesinin piksel cinsinden genişliği.|
+| yükseklik |Çıkış video çerçevesinin piksel cinsinden yüksekliği.|
+| Toplam süre |Giriş videosunun süresi "ticks" cinsinden. |
+| [Eşleştir](#fragments-json-elements) |Meta veriler parçalar adlı farklı kesimlere bölünmüştür. Her parça, başlatma, süre, Aralık numarası ve olay (ler) içeren otomatik olarak algılanan bir çekidir. |
 
-### <a name="fragments-json-elements"></a>Parçaları JSON elemanları
-
-|Öğe|Açıklama|
-|---|---|
-| start |"Keneler"deki ilk olayın başlangıç saati. |
-| süre |Parçanın uzunluğu, "keneler"de. |
-| interval |Parça içindeki her olay girişinin aralığı , "kene" olarak adlandırılır. |
-| [Olay](#events-json-elements) |Her olay bir klibi temsil eder ve her klip, bu süre içinde algılanan ve izlenen anahtar kareleri içerir. Bu bir dizi olay. Dış dizi bir zaman aralığını temsil eder. İç dizi belirtilen noktada gerçekleşen 0 veya daha fazla olaydan oluşur.|
-
-### <a name="events-json-elements"></a>Olaylar JSON elemanları
+### <a name="fragments-json-elements"></a>Parçacık JSON öğeleri
 
 |Öğe|Açıklama|
 |---|---|
-| yorumTavsiye edilen | `true`veya `false` **adultScore** veya **racyScore'un** iç eşikleri aşıp aşmadığına bağlı olarak. |
-| adultPuan | 0,00 ile 0,99 arasında bir ölçekte olası yetişkinlere uygun içerik için güven puanı. |
-| racyScore | 0,00 ile 0,99 arasında bir ölçekte olası müstehcen içerik için güven puanı. |
-| dizin | ilk kare dizini son kare dizini için bir ölçekte çerçeve dizin. |
-| timestamp | "Keneler"deki çerçevenin konumu. |
-| shotIndex | Üst atışin dizini. |
+| start |"Ticks" içindeki ilk olayın başlangıç saati. |
+| süre |Parçanın uzunluğu, "ticks." |
+| interval |"Ticks" içinde, parça içindeki her bir olay girişinin aralığı. |
+| [olayları](#events-json-elements) |Her olay bir klibi temsil eder ve her klip, algılanan ve bu süre içinde izlenen ana kareleri içerir. Bu, bir dizi olaydır. Dış dizi bir zaman aralığını temsil eder. İç dizi belirtilen noktada gerçekleşen 0 veya daha fazla olaydan oluşur.|
+
+### <a name="events-json-elements"></a>Olaylar JSON öğeleri
+
+|Öğe|Açıklama|
+|---|---|
+| Gözden geçirmeyi öneririz | `true`ya `false` da **AdultScore** veya **oycyscore** 'ın iç eşikleri aşdığına bağlı olarak. |
+| adultScore | 0,00 ile 0,99 arasında bir ölçekte olası yetişkinlere yönelik içerik için güvenirlik puanı. |
+| Oycyscore | 0,00 ile 0,99 arasında bir ölçekte olabilecek olası bir içerik için güvenirlik puanı. |
+| dizin | İlk kare dizininden son kare dizinine kadar bir ölçekte çerçevenin dizini. |
+| timestamp | "Ticks" içindeki çerçevenin konumu. |
+| Shotındex | Üst görüntü dizini. |
 
 
-## <a name="content-moderation-quickstart-and-sample-output"></a>İçerik Moderasyonu hızlı başlatma ve örnek çıktı
+## <a name="content-moderation-quickstart-and-sample-output"></a>İçerik denetleme hızlı başlangıç ve örnek çıkış
 
 ### <a name="task-configuration-preset"></a>Görev yapılandırması (önceden ayarlanmış)
-**Azure Medya İçerik Yöneticisi**ile bir görev oluştururken, yapılandırma ön ayarlarını belirtmeniz gerekir. Aşağıdaki yapılandırma ön kümesi yalnızca içerik moderasyonu içindir.
+**Azure medya Content moderator**bir görev oluştururken, bir yapılandırma ön ayarı belirtmeniz gerekir. Aşağıdaki yapılandırma ön ayarı yalnızca içerik denetlemesi içindir.
 
     {
       "version":"2.0"
@@ -90,8 +90,8 @@ JSON çıktısı aşağıdaki öğeleri içerir:
 
 ### <a name="net-code-sample"></a>.NET kod örneği
 
-Aşağıdaki .NET kod örneği, İçerik Moderatörü işini çalıştırmak için Medya Hizmetleri .NET SDK'yı kullanır. Bir medya hizmetleri Varlık'ı, videoyu içeren giriş olarak denetlenecek şekilde alır.
-Tam kaynak kodu ve Visual Studio projesi için [İçerik Moderatör video hızlı başlatış](../../cognitive-services/Content-Moderator/video-moderation-api.md) bakın.
+Aşağıdaki .NET kod örneği, bir Content Moderator işini çalıştırmak için .NET SDK Media Services kullanır. Bir medya Hizmetleri varlığını, aracılık yapılacak videoyu içeren giriş olarak alır.
+Tam kaynak kodu ve Visual Studio projesi için [Content moderator video hızlı](../../cognitive-services/Content-Moderator/video-moderation-api.md) başlangıcı ' na bakın.
 
 
 ```csharp
@@ -227,16 +227,16 @@ The following example of a Content Moderator JSON output was truncated.
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Medya Hizmetleri Analizine Genel Bakış](media-services-analytics-overview.md)
+[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
 
-[Azure Medya Analizi demoları](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçerik Moderatör'ün [video moderatörü ve inceleme çözümü](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)hakkında daha fazla bilgi edinin.
+Content Moderator [video denetleme ve İnceleme çözümü](../../cognitive-services/Content-Moderator/video-moderation-human-review.md)hakkında daha fazla bilgi edinin.
 
-[Video moderasyon quickstart](../../cognitive-services/Content-Moderator/video-moderation-api.md)tam kaynak kodu ve Visual Studio proje alın. 
+[Video denetleme hızlı](../../cognitive-services/Content-Moderator/video-moderation-api.md)başlangıcı ' ndan tam kaynak kodunu ve Visual Studio projesini alın. 
 
-.NET'teki orta [düzeydeki transkriptleri](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) ve orta düzeydeki çıktınızdan [video incelemelerini](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) nasıl oluşturacağınızı öğrenin.
+Aracılı çıktıınızdan [video İncelemeleri](../../cognitive-services/Content-Moderator/video-reviews-quickstart-dotnet.md) ve .net 'teki [Orta yazı betikleri](../../cognitive-services/Content-Moderator/video-transcript-reviews-quickstart-dotnet.md) oluşturmayı öğrenin.
 
-Ayrıntılı .NET [video moderasyonu ve inceleme öğretici](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md)göz atın. 
+Ayrıntılı .NET [video denetlemesi ve gözden geçirme öğreticisine](../../cognitive-services/Content-Moderator/video-transcript-moderation-review-tutorial-dotnet.md)göz atın. 

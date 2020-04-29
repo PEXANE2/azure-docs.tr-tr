@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Gremlin API'de veri bölümleme
-description: Azure Cosmos DB'de bölümlenmiş bir grafiği nasıl kullanabileceğinizi öğrenin. Bu makalede, bölümlenmiş bir grafik için gereksinimleri ve en iyi uygulamaları açıklar.
+title: Azure Cosmos DB Gremlin API 'sindeki veri bölümleme
+description: Azure Cosmos DB ' de bölümlenmiş bir grafiği nasıl kullanabileceğinizi öğrenin. Bu makalede ayrıca bölümlenmiş bir grafik için gereksinimler ve en iyi uygulamalar açıklanmaktadır.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
@@ -9,62 +9,62 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 44d3b7c2b9e23b90f696162747d9728b18fb7d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623366"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Azure Cosmos DB'de bölümlenmiş graf kullanma
 
-Azure Cosmos DB'deki Gremlin API'sinin temel özelliklerinden biri, büyük ölçekli grafikleri yatay ölçekleme yoluyla işleyebilme özelliğidir. Kapsayıcılar depolama ve iş artışı açısından bağımsız olarak ölçeklendirilebilir. Azure Cosmos DB'de grafik verilerini depolamak için otomatik olarak ölçeklendirilebilen kapsayıcılar oluşturabilirsiniz. Veriler, belirtilen **bölüm tuşuna**göre otomatik olarak dengelenir.
+Azure Cosmos DB Gremlin API 'sinin temel özelliklerinden biri, büyük ölçekli grafikleri yatay ölçeklendirmeyle işleyebilme olanağıdır. Kapsayıcılar depolama ve aktarım hızı bakımından bağımsız olarak ölçeklendirebilir. Azure Cosmos DB, bir grafik verilerini depolamak için otomatik olarak ölçeklenebilen kapsayıcılar oluşturabilirsiniz. Veriler, belirtilen **bölüm anahtarına**göre otomatik olarak dengelenir.
 
-Kapsayıcının 20 GB'tan fazla boyutu nda depolaması bekleniyorsa veya saniyede 10.000'den fazla istek birimi (RUs) ayırmak istiyorsanız **bölümleme gereklidir.** [Azure Cosmos DB bölümleme mekanizmasının](partition-data.md) aynı genel ilkeleri, aşağıda açıklanan birkaç grafiğe özgü optimizasyonla birlikte geçerlidir.
+Kapsayıcının boyutunun 20 GB 'den fazlasını depolaması bekleniyorsa veya saniyede 10.000 ' den fazla istek birimi (ru) ayırmak istiyorsanız **bölümlendirme gerekir** . [Azure Cosmos DB bölümleme mekanizmasından](partition-data.md) aynı genel ilkeler aşağıda açıklanan bazı grafiğe özgü iyileştirmeler ile uygulanır.
 
 ![Grafik bölümleme.](./media/graph-partitioning/graph-partitioning.png)
 
 ## <a name="graph-partitioning-mechanism"></a>Grafik bölümleme mekanizması
 
-Aşağıdaki yönergeler, Azure Cosmos DB'deki bölümleme stratejisinin nasıl çalıştığını açıklar:
+Aşağıdaki kılavuzlar Azure Cosmos DB ' de bölümleme stratejisinin nasıl çalıştığını açıklamaktadır:
 
-- **Hem tepe ler hem de kenarlar JSON belgeleri olarak depolanır.**
+- **Her iki köşe ve kenar da JSON belgeleri olarak depolanır**.
 
-- **Vertices bir bölüm anahtarı gerektirir.** Bu anahtar, tepe noktasının karma algoritması aracılığıyla hangi bölümde depolanacağını belirler. Bölüm anahtarı özellik adı yeni bir kapsayıcı oluştururken tanımlanır `/partitioning-key-name`ve bir biçimi vardır: .
+- Köşeler **bir bölüm anahtarı gerektirir**. Bu anahtar, bir karma algoritma aracılığıyla köşenin depolanacağı bölümü saptacaktır. Bölüm anahtarı özellik adı, yeni bir kapsayıcı oluşturulurken tanımlanır ve şu biçimdedir: `/partitioning-key-name`.
 
-- **Kenarlar kendi kaynak tepe noktası ile depolanır.** Başka bir deyişle, her tepe noktası için bölüm anahtarı, giden kenarlarıyla birlikte nerede depolandıklarını tanımlar. Bu optimizasyon grafik sorgularında `out()` önemli liğini kullanırken çapraz bölüm sorguları önlemek için yapılır.
+- **Kenarlar, kaynak köşelerine sahip olacak**. Diğer bir deyişle, her bir köşe için bölüm anahtarı, giden kenarları ile birlikte nerede depolandığını tanımlar. Bu iyileştirme, `out()` grafik sorgularında kardinalite kullanılırken çapraz bölüm sorgularını önlemek için yapılır.
 
-- **Kenarlar işaret ettikleri tepe noktalarına başvurular içerir.** Tüm kenarlar, işaret ettikleri tepe uçlarının bölüm tuşları ve disleri ile depolanır. Bu hesaplama, tüm `out()` yön sorgularının her zaman bir kapsamlı bölümlenmiş sorgu olmasını sağlar, kör bir çapraz bölümsorgusu değil. 
+- **Kenarlar işaret ettikleri köşelerin başvurularını içerir**. Tüm kenarlar, işaret ettikleri köşelerin bölüm anahtarları ve kimlikleriyle birlikte depolanır. Bu hesaplama, tüm `out()` yön sorgularının her zaman kapsamlı bölümlenmiş bir sorgu olmasını sağlar ve bu durum, geçici bir çapraz bölümlü sorgu değildir. 
 
-- **Grafik sorguları bir bölüm anahtarı belirtmeniz gerekir.** Azure Cosmos DB'deki yatay bölümlemeden tam olarak yararlanmak için, tek bir tepe noktası seçildiğinde ve mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok vertices seçmek için sorgular şunlardır:
+- **Grafik sorgularının bir bölüm anahtarı belirtmesi gerekir**. Azure Cosmos DB yatay bölümlemeden tam olarak yararlanmak için, tek bir köşe seçildiğinde, mümkün olduğunda bölüm anahtarı belirtilmelidir. Bölümlenmiş bir grafikte bir veya birden çok köşe seçmek için sorgular aşağıda verilmiştir:
 
-    - `/id`ve `/label` Gremlin API'deki bir kapsayıcı için bölüm anahtarları olarak desteklenmez.
+    - `/id`ve `/label` GREMLIN API 'deki bir kapsayıcı için bölüm anahtarı olarak desteklenmez.
 
 
-    - Kimlik tarafından bir tepe noktası seçerek, bölüm **anahtar özelliğini belirtmek için `.has()` adımı kullanarak:** 
+    - KIMLIĞE göre bir köşe seçerek ve ardından **bölüm anahtarı `.has()` özelliğini belirtmek için adımını kullanarak**: 
     
         ```java
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
     
-    - Bölüm anahtar değeri **ve kimliği de dahil olmak üzere bir tuple belirterek bir**tepe noktası seçme: 
+    - **Bölüm anahtarı değeri ve kimliği dahil bir tanımlama grubu belirterek**köşe seçme: 
     
         ```java
         g.V(['partitionKey_value', 'vertex_id'])
         ```
         
-    - **Bölüm anahtar değerleri ve d'lerinin bir dizi tuples**belirtilmesi:
+    - **Bölüm anahtarı değerleri ve kimlikleri için bir dizi tanımlama dizisi**belirtme:
     
         ```java
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
         
-    - Kimliklerini içeren bir vertices kümesi ni seçme ve **bölüm anahtar değerlerinin listesini belirtme:** 
+    - Kimlikleri olan bir köşe kümesi seçme ve **bölüm anahtarı değerlerinin bir listesini belirtme**: 
     
         ```java
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-    - Bir sorgunun başında **Bölümleme stratejisini** kullanma ve Gremlin sorgusunun geri kalanının kapsamı için bir bölüm belirtme: 
+    - Bir sorgunun başlangıcında **bölüm stratejisi** kullanma ve Gremlin sorgusunun geri kalanının kapsamı için bir bölüm belirtme: 
     
         ```java
         g.withStrategies(PartitionStrategy.build().partitionKey('partitionKey').readPartitions('partitionKey_value').create()).V()
@@ -72,20 +72,20 @@ Aşağıdaki yönergeler, Azure Cosmos DB'deki bölümleme stratejisinin nasıl 
 
 ## <a name="best-practices-when-using-a-partitioned-graph"></a>Bölümlenmiş grafik kullanırken en iyi uygulamalar
 
-Sınırsız kapsayıcılı bölümlenmiş grafikler kullanırken performans ve ölçeklenebilirlik sağlamak için aşağıdaki yönergeleri kullanın:
+Sınırsız kapsayıcı içeren bölümlenmiş grafikleri kullanırken performans ve ölçeklenebilirlik sağlamak için aşağıdaki yönergeleri kullanın:
 
-- **Bir tepe noktası sorgularken her zaman bölüm anahtar değerini belirtin.** Bilinen bir bölümden tepe noktası elde etmek, performans elde etmenin bir yoludur. Kenarlar hedef tepe tabanlarına referans kimliği ve bölüm anahtarı içerdiğinden, sonraki tüm adjacency işlemleri her zaman bir bölüme yöneliktir.
+- **Bir köşeyi sorgularken bölüm anahtarı değerini her zaman belirtin**. Bilinen bir bölümden köşe alma, performansı elde etmenin bir yoludur. Kenarlar, hedef köşelerine başvuru KIMLIĞI ve bölüm anahtarı içerdiğinden sonraki tüm bitişik Bitişiklik işlemleri her zaman bir bölüm kapsamına alınır.
 
-- **Mümkün olduğunda kenarları sorgularken giden yönü kullanın.** Yukarıda belirtildiği gibi, kenarlar giden yönde kendi kaynak vertices ile saklanır. Böylece, veriler ve sorgular bu desen göz önünde bulundurularak tasarlandığında, bölümler arası sorgulara başvurma şansı en aza indirilir. Aksine, `in()` sorgu her zaman pahalı bir fan-out sorgu olacaktır.
+- **Mümkün olduğunda kenarları sorgularken giden yönü kullanın**. Yukarıda belirtildiği gibi, kenarlar giden yönde kaynak köşelerine göre saklanır. Bu nedenle, veriler ve sorgular bu Düzenle göz önünde bulundurularak tasarlandıysa, çapraz bölümleme sorgularına daha küçük bir şekilde geçiş şansı en aza indirilir. Aksine `in()` sorgu her zaman pahalı bir fan sorgu olacaktır.
 
-- **Verileri bölümler arasında eşit olarak dağıtacak bir bölüm anahtarı seçin.** Bu karar büyük ölçüde çözümün veri modeline bağlıdır. [Azure Cosmos DB'de Bölümleme ve ölçeklendirmede](partition-data.md)uygun bir bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
+- **Verileri bölümler arasında eşit olarak dağıtan bir bölüm anahtarı seçin**. Bu karar, çözümün veri modeline bağlıdır. [Azure Cosmos DB bölümleyip ölçeklendirerek](partition-data.md)uygun bölüm anahtarı oluşturma hakkında daha fazla bilgi edinin.
 
-- **Bir bölümün sınırları içinde veri elde etmek için sorguları en iyi duruma getirin.** En iyi bölümleme stratejisi sorgu desenleri hizalanmış olacaktır. Tek bir bölümden veri alan sorgular mümkün olan en iyi performansı sağlar.
+- **Bir bölümün sınırları içinde veri almak için sorguları iyileştirin**. En iyi bölümleme stratejisi, sorgulama desenlerine hizalanır. Tek bir bölümden veri alan sorgular mümkün olan en iyi performansı sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra aşağıdaki makaleleri okumaya devam edebilirsiniz:
+Ardından, aşağıdaki makaleleri okumak için devam edebilirsiniz:
 
-* Azure [Cosmos DB'de Bölümleme ve ölçeklendirme](partition-data.md)hakkında bilgi edinin.
-* [Gremlin API'deki Gremlin desteği](gremlin-support.md)hakkında bilgi edinin.
-* [Gremlin API'ye Giriş](graph-introduction.md)hakkında bilgi edinin.
+* Azure Cosmos DB bölümünde [bölüm ve ölçek](partition-data.md)hakkında bilgi edinin.
+* [GREMLIN API 'de Gremlin desteği](gremlin-support.md)hakkında bilgi edinin.
+* [Gremlin API 'Sine giriş](graph-introduction.md)hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Azure VM için ayrıntılı SSH sorun giderme | Microsoft Dokümanlar
-description: Azure sanal makinesine bağlanan sorunlar için daha ayrıntılı SSH sorun giderme adımları
-keywords: ssh bağlantısı reddedildi,ssh hatası,azure ssh,SSH bağlantısı başarısız oldu
+title: Azure VM için ayrıntılı SSH sorunlarını giderme | Microsoft Docs
+description: Azure sanal makinesine bağlanma sorunları için daha ayrıntılı SSH sorun giderme adımları
+keywords: SSH bağlantısı reddedildi, SSH hatası, Azure SSH, SSH bağlantısı başarısız oldu
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
@@ -16,121 +16,121 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77920136"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure'da Linux VM'ye bağlanmayla ilgili ayrıntılı SSH sorun giderme adımları
-SSH istemcisinin VM'deki SSH hizmetine ulaşamayabilmesinin birçok nedeni olabilir. Daha [genel SSH sorun giderme adımlarını](troubleshoot-ssh-connection.md)izlediyseniz, bağlantı sorununu daha da gidermeniz gerekir. Bu makalede, SSH bağlantısının nerede başarısız olduğunu ve nasıl çözüleceğini belirlemek için ayrıntılı sorun giderme adımlarında size rehberlik eder.
+SSH istemcisinin VM 'deki SSH hizmetine erişememesinin pek çok nedeni olabilir. Daha [Genel SSH sorun giderme adımlarına](troubleshoot-ssh-connection.md)uyuldıysanız, bağlantı sorununu gidermeye devam etmeniz gerekir. Bu makale, SSH bağlantısının başarısız olduğunu ve nasıl çözümleneceğini belirlemede ayrıntılı sorun giderme adımları boyunca size rehberlik eder.
 
-## <a name="take-preliminary-steps"></a>Ön adımları atın
-Aşağıdaki diyagram, ilgili bileşenleri gösterir.
+## <a name="take-preliminary-steps"></a>Ön adımlar al
+Aşağıdaki diyagramda ilgili bileşenler gösterilmektedir.
 
 ![SSH hizmetinin bileşenlerini gösteren diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
 
-Aşağıdaki adımlar, hatanın kaynağını yalıtmanıza ve çözümleri veya geçici çözümleri bulmanıza yardımcı olur.
+Aşağıdaki adımlar, hatanın kaynağını yalıtmanıza ve çözümlerin veya geçici çözümlerin sağlanmasına yardımcı olur.
 
-1. Portaldaki VM'nin durumunu kontrol edin.
-   Azure [portalında](https://portal.azure.com) **Sanal makineler** > *VM adını*seçin.
+1. Portalda VM 'nin durumunu denetleyin.
+   [Azure Portal](https://portal.azure.com) **sanal makineler** > *VM adı*' nı seçin.
 
-   VM için durum bölmesi **Running**göstermelidir. Bilgi işlem, depolama ve ağ kaynakları için son etkinliği göstermek için aşağı kaydırın.
+   VM 'nin durum bölmesinde **çalışıyor**gösterilmesi gerekir. İşlem, depolama ve ağ kaynaklarına yönelik son etkinlikleri göstermek için aşağı kaydırın.
 
-2. Uç noktaları, IP adreslerini, ağ güvenlik gruplarını ve diğer ayarları incelemek için **Ayarlar'ı** seçin.
+2. Uç noktaları, IP adresleri, ağ güvenlik grupları ve diğer ayarları incelemek için **ayarları** seçin.
 
-   VM'nin **SSH** trafiği için tanımlanan bir bitiş noktası olmalıdır ve Uç Noktalar'da veya **[Ağ güvenlik grubunda](../../virtual-network/security-overview.md)** görüntülenebilir. Kaynak Yöneticisi kullanılarak oluşturulan VM'lerde uç noktalar bir ağ güvenlik grubunda depolanır. Kuralların ağ güvenlik grubuna uygulandığını ve alt ağda başvurulduğunu doğrulayın.
+   VM, **uç noktalar** veya **[ağ güvenlik grubu](../../virtual-network/security-overview.md)** içinde görüntüleyebileceğiniz SSH trafiği için tanımlanmış bir uç noktaya sahip olmalıdır. Kaynak Yöneticisi kullanılarak oluşturulan VM 'lerdeki uç noktalar bir ağ güvenlik grubunda depolanır. Kuralların ağ güvenlik grubuna uygulandığını ve alt ağda başvurulduğunu doğrulayın.
 
-Ağ bağlantısını doğrulamak için, yapılandırılan uç noktaları denetleyin ve HTTP veya başka bir hizmet gibi başka bir protokol aracılığıyla VM'ye bağlanıp bağlanamayacağınızı görün.
+Ağ bağlantısını doğrulamak için, yapılandırılmış uç noktaları denetleyin ve VM 'ye HTTP veya başka bir hizmet gibi başka bir protokol aracılığıyla bağlanıp bağlanamadığınıza bakın.
 
-Bu adımlardan sonra SSH bağlantısını yeniden deneyin.
+Bu adımları tamamladıktan sonra SSH bağlantısını yeniden deneyin.
 
-## <a name="find-the-source-of-the-issue"></a>Sorunun kaynağını bulma
-Bilgisayarınızdaki SSH istemcisi, aşağıdaki alanlardaki sorunlar veya yanlış yapılandırmalar nedeniyle Azure VM'deki SSH hizmetine bağlanamayabilir:
+## <a name="find-the-source-of-the-issue"></a>Sorunun kaynağını bulun
+Bilgisayarınızdaki SSH istemcisi, aşağıdaki alanlardaki sorunlar veya yapılandırma sorunları nedeniyle Azure VM 'deki SSH hizmetine bağlanamamasına neden olabilir:
 
-* [SSH istemci bilgisayar](#source-1-ssh-client-computer)
-* [Kuruluş kenar aygıtı](#source-2-organization-edge-device)
-* [Bulut hizmeti bitiş noktası ve erişim denetim listesi (ACL)](#source-3-cloud-service-endpoint-and-acl)
+* [SSH istemci bilgisayarı](#source-1-ssh-client-computer)
+* [Kuruluş Edge cihazı](#source-2-organization-edge-device)
+* [Bulut hizmeti uç noktası ve erişim denetimi listesi (ACL)](#source-3-cloud-service-endpoint-and-acl)
 * [Ağ güvenlik grupları](#source-4-network-security-groups)
 * [Linux tabanlı Azure VM](#source-5-linux-based-azure-virtual-machine)
 
-## <a name="source-1-ssh-client-computer"></a>Kaynak 1: SSH istemci bilgisayar
-Bilgisayarınızı hatanın kaynağı olarak ortadan kaldırmak için, şirket içinde başka bir Linux tabanlı bilgisayara SSH bağlantıları kurabileceğini doğrulayın.
+## <a name="source-1-ssh-client-computer"></a>Kaynak 1: SSH istemci bilgisayarı
+Bilgisayarınızı hatanın kaynağı olarak ortadan kaldırmak için, diğer şirket içi, Linux tabanlı bir bilgisayara SSH bağlantısı yapabildiğini doğrulayın.
 
 ![SSH istemci bilgisayar bileşenlerini vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-Bağlantı başarısız olursa, bilgisayarınızdaaşağıdaki sorunları denetleyin:
+Bağlantı başarısız olursa, bilgisayarınızda aşağıdaki sorunları kontrol edin:
 
 * Gelen veya giden SSH trafiğini engelleyen yerel bir güvenlik duvarı ayarı (TCP 22)
-* SSH bağlantılarını engelleyen yerel olarak yüklenmiş istemci proxy yazılımı
-* SSH bağlantılarını engelleyen yerel olarak yüklenmiş ağ izleme yazılımı
-* Trafiği izleyen veya belirli trafik türlerine izin veren/izin veren diğer güvenlik yazılımı türleri
+* SSH bağlantılarını engelleyen yerel olarak yüklenen istemci proxy yazılımı
+* SSH bağlantılarını engelleyen yerel olarak yüklenen ağ izleme yazılımı
+* Trafiği izleyen veya belirli trafik türlerine izin veren/izin vermeyen diğer güvenlik yazılımı türleri
 
-Bu koşullardan biri uygulanırsa, yazılımı geçici olarak devre dışı kaldırın ve bağlantının bilgisayarınızda neden engellendiğini öğrenmek için şirket içi bir bilgisayara SSH bağlantısı deneyin. Ardından, SSH bağlantılarına izin vermek için yazılım ayarlarını düzeltmek için ağ yöneticinizle birlikte çalışın.
+Bu koşullardan biri geçerliyse, yazılımı geçici olarak devre dışı bırakın ve şirket içi bir bilgisayara bir SSH bağlantısı deneyerek bağlantının bilgisayarınızda engellenip engellenmediğini öğrenin. Daha sonra, SSH bağlantılarına izin vermek için yazılım ayarlarını düzeltmek üzere ağ yöneticinizle birlikte çalışın.
 
-Sertifika kimlik doğrulamasını kullanıyorsanız, ev dizininizdeki .ssh klasörüne bu izinlere sahip olduğunuzu doğrulayın:
+Sertifika kimlik doğrulaması kullanıyorsanız, giriş dizininizde. SSH klasörü için bu izinlere sahip olduğunuzu doğrulayın:
 
-* Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*.pub
-* Chmod 600 ~/.ssh/id_rsa (veya özel anahtarlarınızın içinde depolanan diğer dosyalar)
-* Chmod 644 ~/.ssh/known_hosts (SSH üzerinden bağlandığınız ana bilgisayarları içerir)
+* Chmod 700 ~/.SSH
+* Chmod 644 ~/.SSH/\*. pub
+* Chmod 600 ~/.ssh/id_rsa (veya özel anahtarlarınızın depolandığı diğer dosyalar)
+* Chmod 644 ~/.SSH/known_hosts (SSH aracılığıyla bağladığınız Konakları içerir)
 
-## <a name="source-2-organization-edge-device"></a>Kaynak 2: Organizasyon kenar aygıtı
-Kuruluşunuzun kenar aygıtını hatanın kaynağı olarak ortadan kaldırmak için, Doğrudan Internet'e bağlı bir bilgisayarın Azure VM'nize SSH bağlantısı kurabileceğini doğrulayın. VM'ye siteden siteye VPN veya Azure ExpressRoute bağlantısı üzerinden erişiyorsanız, [Kaynak 4: Ağ güvenlik gruplarına](#nsg)atlayın.
+## <a name="source-2-organization-edge-device"></a>Kaynak 2: kuruluş Edge cihazı
+Kuruluşunuzun kenar cihazını hatanın kaynağı olarak ortadan kaldırmak için, doğrudan Internet 'e bağlı bir bilgisayarın Azure sanal makinenize SSH bağlantısı yapıp yapabildiğini doğrulayın. VM 'ye siteden siteye VPN veya Azure ExpressRoute bağlantısı üzerinden erişiyorsanız, kaynak 4 ' e atlayın [: ağ güvenlik grupları](#nsg).
 
-![Kuruluş kenar aygıtını vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
+![Kuruluş Edge cihazını vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-Doğrudan Internet'e bağlı bir bilgisayarınız yoksa, kendi kaynak grubunda veya bulut hizmetinde yeni bir Azure VM oluşturun ve bu yeni VM'yi kullanın. Daha fazla bilgi için bkz: [Azure'da Linux çalıştıran sanal bir makine oluştur.](../linux/quick-create-cli.md) Testini bitirdiğinizde kaynak grubunu veya VM ve bulut hizmetini silin.
+Doğrudan Internet 'e bağlı bir bilgisayarınız yoksa, kendi kaynak grubunda veya bulut hizmetinde yeni bir Azure VM oluşturun ve bu yeni VM 'yi kullanın. Daha fazla bilgi için bkz. [Azure 'Da Linux çalıştıran bir sanal makine oluşturma](../linux/quick-create-cli.md). Testinizdeki işiniz bittiğinde kaynak grubunu veya VM 'yi ve bulut hizmetini silin.
 
-Doğrudan Internet'e bağlı bir bilgisayarla SSH bağlantısı oluşturabiliyorsanız, kuruluş kenar aygıtınızı aşağıdakiler için denetleyin:
+Doğrudan Internet 'e bağlı bir bilgisayarla SSH bağlantısı oluşturuyorsanız, kuruluşunuzun uç cihazınızı şu şekilde denetleyin:
 
 * Internet ile SSH trafiğini engelleyen dahili bir güvenlik duvarı
-* SSH bağlantılarını engelleyen bir proxy sunucusu
-* SSH bağlantılarını engelleyen kenar ağınızdaki aygıtlarda çalışan izinsiz giriş algılama veya ağ izleme yazılımı
+* SSH bağlantılarını engelleyen bir ara sunucu
+* Uç ağınızdaki cihazlarda çalışan, SSH bağlantılarını önleyen yetkisiz giriş algılama veya ağ izleme yazılımı
 
-Internet ile SSH trafiğine izin vermek için kuruluş kenar aygıtlarınızın ayarlarını düzeltmek için ağ yöneticinizle birlikte çalışın.
+Internet ile SSH trafiğine izin vermek için kuruluşunuzun uç cihazlarınızın ayarlarını düzeltmek üzere ağ yöneticinizle birlikte çalışın.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Kaynak 3: Bulut hizmeti bitiş noktası ve ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Kaynak 3: bulut hizmeti uç noktası ve ACL
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 > [!NOTE]
-> Bu kaynak yalnızca klasik dağıtım modeli kullanılarak oluşturulan VM'ler için geçerlidir. Kaynak Yöneticisi kullanılarak oluşturulan VM'ler için [kaynak 4'e atlayın: Ağ güvenlik grupları.](#nsg)
+> Bu kaynak yalnızca klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için geçerlidir. Kaynak Yöneticisi kullanılarak oluşturulan VM 'Ler için, kaynak 4 ' e atlayın [: ağ güvenlik grupları](#nsg).
 
-Bulut hizmeti bitiş noktasını ve hatanın kaynağı olarak ACL'yi ortadan kaldırmak için, aynı sanal ağdaki başka bir Azure VM'sinin SSH kullanarak bağlanabildiğinizi doğrulayın.
+Bulut hizmeti uç noktasını ve ACL 'yi hatanın kaynağı olarak ortadan kaldırmak için, aynı sanal ağdaki başka bir Azure sanal makinesinin SSH kullanarak bağlanabildiğini doğrulayın.
 
-![Bulut hizmeti bitiş noktasını ve ACL'yi vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
+![Bulut hizmeti uç noktası ve ACL 'yi vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-Aynı sanal ağda başka bir VM'niz yoksa, kolayca bir VM oluşturabilirsiniz. Daha fazla bilgi için [CLI'yi kullanarak Azure'da Linux VM oluştur'a](../linux/quick-create-cli.md)bakın. Testiniz bittiğinde ekstra VM'yi silin.
+Aynı sanal ağda başka bir VM yoksa kolayca bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [CLI kullanarak Azure 'Da LINUX VM oluşturma](../linux/quick-create-cli.md). Testinizdeki işiniz bittiğinde ek VM 'yi silin.
 
-Aynı sanal ağda bir VM ile SSH bağlantısı oluşturabiliyorsanız, aşağıdaki alanları denetleyin:
+Aynı sanal ağdaki bir VM ile bir SSH bağlantısı oluşturbiliyorsanız, aşağıdaki alanlara bakın:
 
-* **Hedef VM'deki SSH trafiği için uç nokta yapılandırması.** Bitiş noktasının özel TCP bağlantı noktası, VM'deki SSH hizmetinin dinlediği TCP bağlantı noktasıyla eşleşmelidir. (Varsayılan bağlantı noktası 22'dir). **Sanal makineler** > *VM adı* > **Ayarları** > **Bitiş Noktaları'nı**seçerek Azure portalındaki SSH TCP bağlantı noktası numarasını doğrulayın.
-* **Hedef sanal makinedeki SSH trafik bitiş noktası için ACL.** ACL, kaynak IP adresine bağlı olarak Internet'ten gelen veya reddedilen trafiği belirtmenizi sağlar. Yanlış yapılandırılmış ALA'lar, bitiş noktasına gelen SSH trafiğini engelleyebilir. Proxy veya diğer kenar sunucunuzun genel IP adreslerinden gelen trafiğe izin verilebilmesini sağlamak için ALA'larınızı kontrol edin. Daha fazla bilgi için [ağ erişim denetim listeleri (ALA'lar) hakkında](../../virtual-network/virtual-networks-acl.md)bkz.
+* **Hedef VM 'deki SSH trafiğine yönelik uç nokta yapılandırması.** Uç noktanın özel TCP bağlantı noktası, sanal makine üzerindeki SSH hizmetinin dinlediği TCP bağlantı noktasıyla eşleşmelidir. (Varsayılan bağlantı noktası 22 ' dir). **Sanal makineler** > *VM adı* > **ayarları** > **uç noktaları**' nı seçerek Azure Portal SSH TCP bağlantı noktası numarasını doğrulayın.
+* **Hedef sanal makinedeki SSH trafiği uç noktası için ACL.** ACL, kaynak IP adresine bağlı olarak Internet 'ten izin verilen veya reddedilen gelen trafiği belirtmenize olanak sağlar. Yanlış yapılandırılmış ACL 'Ler, gelen SSH trafiğini uç noktaya engelleyebilir. Proxy 'nizin veya diğer uç sunucunuzun genel IP adreslerinden gelen trafiğe izin verildiğinden emin olmak için ACL 'larınızı denetleyin. Daha fazla bilgi için bkz. [ağ erişim denetim listeleri (ACL 'ler) hakkında](../../virtual-network/virtual-networks-acl.md).
 
-Sorunun kaynağı olarak bitiş noktasını ortadan kaldırmak için geçerli bitiş noktasını kaldırın, başka bir bitiş noktası oluşturun ve SSH adını belirtin (ortak ve özel bağlantı noktası numarası için TCP bağlantı noktası 22). Daha fazla bilgi için bkz: [Azure'da sanal bir makinede uç noktaları ayarlama.](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+Uç noktayı sorunun bir kaynağı olarak ortadan kaldırmak için, geçerli uç noktayı kaldırın, başka bir uç nokta oluşturun ve SSH adını (genel ve özel bağlantı noktası numarası için TCP bağlantı noktası 22) belirtin. Daha fazla bilgi için bkz. [Azure 'da bir sanal makinede uç noktaları ayarlama](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>Kaynak 4: Ağ güvenlik grupları
-Ağ güvenlik grupları, izin verilen gelen ve giden trafik üzerinde daha ayrıntılı denetime sahip olduğunuzu sağlar. Bir Azure sanal ağında alt ağları ve bulut hizmetlerini kapsayan kurallar oluşturabilirsiniz. Internet'e giriş ve çıkış trafiğine izin verilebilmek için ağ güvenliği grubu kurallarınızı denetleyin.
-Daha fazla bilgi için [ağ güvenlik grupları hakkında](../../virtual-network/security-overview.md)bkz.
+## <a name="source-4-network-security-groups"></a>Kaynak 4: ağ güvenlik grupları
+Ağ güvenlik grupları izin verilen gelen ve giden trafik üzerinde daha ayrıntılı denetim sahibi olmasını sağlar. Bir Azure sanal ağında alt ağları ve bulut hizmetlerini kapsayan kurallar oluşturabilirsiniz. Internet 'ten gelen ve giden SSH trafiğine izin verildiğinden emin olmak için ağ güvenlik grubu kurallarınızı denetleyin.
+Daha fazla bilgi için bkz. [ağ güvenlik grupları hakkında](../../virtual-network/security-overview.md).
 
-NSG yapılandırmasını doğrulamak için IP Verify'i de kullanabilirsiniz. Daha fazla bilgi için Azure [ağ izleme genel bakışına](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)bakın. 
+NSG yapılandırmasını doğrulamak için IP doğrulamasını da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure ağ izlemeye genel bakış](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="source-5-linux-based-azure-virtual-machine"></a>Kaynak 5: Linux tabanlı Azure sanal makine
-Olası sorunların son kaynağı Azure sanal makinenin kendisidir.
+## <a name="source-5-linux-based-azure-virtual-machine"></a>Kaynak 5: Linux tabanlı Azure sanal makinesi
+Olası sorunların son kaynağı Azure sanal makinesinin kendisidir.
 
 ![Linux tabanlı Azure sanal makinesini vurgulayan diyagram](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Bunu daha önce yapmadıysanız, linux [tabanlı sanal makineleri sıfırlamak için](../linux/reset-password.md)yönergeleri izleyin.
+Daha önce yapmadıysanız, [bir parola Linux tabanlı sanal makine sıfırlama](../linux/reset-password.md)yönergelerini izleyin.
 
-Bilgisayarınızdan yeniden bağlanmayı deneyin. Hala başarısız olursa, olası sorunlardan bazıları şunlardır:
+Bilgisayarınızdan yeniden bağlanmayı deneyin. Yine de başarısız olursa, olası bazı sorunlar aşağıda verilmiştir:
 
 * SSH hizmeti hedef sanal makinede çalışmıyor.
-* SSH hizmeti TCP port 22'yi dinlemiyor. Test etmek için yerel bilgisayarınıza bir telnet istemcisi yükleyin ve "telnet *cloudServiceName*.cloudapp.net 22" çalıştırın. Bu adım, sanal makinenin SSH bitiş noktasına gelen ve giden iletişime izin verilip verilip verilip verilip vermeyini belirler.
-* Hedef sanal makinedeki yerel güvenlik duvarı, gelen veya giden SSH trafiğini engelleyen kurallara sahiptir.
-* Azure sanal makinesinde çalışan izinsiz giriş algılama veya ağ izleme yazılımı SSH bağlantılarını engelliyor.
+* SSH hizmeti TCP bağlantı noktası 22 ' de dinleme yapmıyor. Test etmek için yerel bilgisayarınıza bir Telnet istemcisi yükleyip "Telnet *Cloudservicename*. cloudapp.net 22" öğesini çalıştırın. Bu adım, sanal makinenin SSH uç noktasına gelen ve giden iletişime izin verdiğini belirler.
+* Hedef sanal makinedeki yerel güvenlik duvarının gelen veya giden SSH trafiğini engelleyen kuralları vardır.
+* Azure sanal makinesinde çalışan yetkisiz giriş algılama veya ağ izleme yazılımı SSH bağlantılarını engellemektedir.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-Sorun giderme uygulama erişimi hakkında daha fazla bilgi için Azure [sanal makinesinde çalışan bir uygulamaya Sorun Giderme erişimi](../linux/troubleshoot-app-connection.md)
+Uygulama erişiminin sorunlarını giderme hakkında daha fazla bilgi için bkz. [Azure sanal makinesinde çalışan bir uygulamaya erişim sorunlarını giderme](../linux/troubleshoot-app-connection.md)

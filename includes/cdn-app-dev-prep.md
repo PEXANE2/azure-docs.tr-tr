@@ -5,63 +5,63 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77608729"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
-CDN yönetim kodunu yazmadan önce, kodun Azure Kaynak Yöneticisi ile etkileşimkurmasını sağlamak için bazı hazırlıklar yapmanız gerekir. Bu hazırlığı yapmak için şunları yapmanız gerekir:
+CDN yönetim kodu yazmadan önce kodun Azure Resource Manager etkileşime geçmesini sağlamak için bazı hazırlıklar yapmanız gerekir. Bu hazırlığı yapmak için şunları yapmanız gerekir:
 
-* Bu öğreticide oluşturulan CDN profilini içerecek bir kaynak grubu oluşturma
-* Uygulama için kimlik doğrulaması sağlamak için Azure Active Directory'yi yapılandırın
-* Yalnızca Azure AD kiracınızdan gelen yetkili kullanıcıların CDN profiliyle etkileşim kurabilmesi için kaynak grubuna izinler uygulayın
+* Bu öğreticide oluşturulan CDN profilini içeren bir kaynak grubu oluşturun
+* Uygulama için kimlik doğrulaması sağlamak üzere Azure Active Directory yapılandırma
+* Yalnızca Azure AD kiracınızdaki yetkili kullanıcıların CDN profiliyle etkileşime geçmesini sağlamak için kaynak grubuna izinleri uygulayın
 
 ### <a name="creating-the-resource-group"></a>Kaynak grubunu oluşturma
-1. [Azure Portalı'nda](https://portal.azure.com)oturum açın.
-2. **Kaynak Oluştur'u**tıklatın.
-3. Kaynak **grubu** ve Kaynak grubu bölmesinde arama yapın, **Oluştur'u**tıklatın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+2. **Kaynak oluştur ' a**tıklayın.
+3. **Kaynak grubu** araması yapın ve kaynak grubu bölmesinde **Oluştur**' a tıklayın.
 
     ![Yeni bir kaynak grubu oluşturma](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
-3. Kaynak grubunuzun adını *CdnConsoleTutorial.*  Aboneliğinizi seçin ve size yakın bir konum seçin.  İsterseniz, kaynak grubunu portaldaki **panoya** sabitlemek için pano onay kutusuna Pin'i tıklatabilirsiniz.  Sabitleme daha sonra bulmayı kolaylaştırır.  Seçimlerinizi yaptıktan sonra **Oluştur'u**tıklatın.
+3. Kaynak grubunuzu *Cdnconsoleöğreticisi*olarak adlandırın.  Aboneliğinizi seçin ve yakınınızdaki bir konum seçin.  İsterseniz, kaynak grubunu portalda panoya sabitlemek için **panoya sabitle** onay kutusunu tıklayabilirsiniz.  Sabitleme daha sonra bulmayı kolaylaştırır.  Seçimlerinizi yaptıktan sonra **Oluştur**' a tıklayın.
 
     ![Kaynak grubunu adlandırma](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. Kaynak grubu oluşturulduktan sonra, panonuza sabitlemediyseniz, **Gözat'ı,** ardından Kaynak **Grupları'nı**tıklatarak bulabilirsiniz.  Açmak için kaynak grubunu tıklatın.  **Abonelik Kimliğinizi**not edin. Daha sonra lazım.
+4. Kaynak Grubu oluşturulduktan sonra, bunu panonuza sabitetmediyseniz, bu dosyayı, **Araştır**' a ve ardından **kaynak grupları**' na tıklayarak bulabilirsiniz.  Açmak için kaynak grubuna tıklayın.  **ABONELIK kimliğinizi**bir yere getirin. Daha sonra ihtiyacımız var.
 
     ![Kaynak grubunu adlandırma](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
-### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Azure AD uygulamasını oluşturma ve izinleri uygulama
-Azure Active Directory ile uygulama kimlik doğrulaması için iki yaklaşım vardır: Tek tek kullanıcılar veya bir hizmet yöneticisi. Hizmet sorumlusu, Windows'taki bir hizmet hesabına benzer.  CDN profilleriyle etkileşimde kalmak için belirli bir kullanıcıya izin vermek yerine, izinler hizmet ilkesine verilir.  Hizmet ilkeleri genellikle otomatik, etkileşimli olmayan işlemler için kullanılır.  Bu öğretici etkileşimli bir konsol uygulaması yazıyor olsa da, hizmet temel yaklaşımına odaklanacağız.
+### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Azure AD uygulaması oluşturma ve izinleri uygulama
+Azure Active Directory ile uygulama kimlik doğrulamasında iki yaklaşım vardır: bireysel kullanıcılar veya hizmet sorumlusu. Hizmet sorumlusu, Windows 'daki hizmet hesabına benzer.  CDN profilleriyle etkileşmek üzere belirli bir Kullanıcı izinleri vermek yerine, izinler hizmet sorumlusu için verilir.  Hizmet sorumluları genellikle otomatik, etkileşimli olmayan süreçler için kullanılır.  Bu öğretici etkileşimli bir konsol uygulaması yazıyor olsa da hizmet sorumlusu yaklaşımına odaklanacağız.
 
-Hizmet ilkesi oluşturmak, Azure Etkin Dizin uygulaması oluşturmak da dahil olmak üzere birkaç adımdan oluşur.  Oluşturmak için, bu öğretici [takip](../articles/active-directory/develop/howto-create-service-principal-portal.md)edeceğiz.
+Hizmet sorumlusu oluşturmak, Azure Active Directory bir uygulama oluşturma dahil olmak üzere çeşitli adımlardan oluşur.  Bunu oluşturmak için [Bu öğreticiyi takip](../articles/active-directory/develop/howto-create-service-principal-portal.md)edeceğiz.
 
 > [!IMPORTANT]
-> [Bağlantılı öğreticideki](../articles/active-directory/develop/howto-create-service-principal-portal.md)tüm adımları izlediğinden emin olun.  Tam olarak açıklandığı gibi tamamlamak *önemlidir.*  **Kiracı kimliğinizi,** kiracı **etki alanı adınızı** (özel bir etki alanı belirtmediğiniz sürece genellikle *.onmicrosoft.com* etki alanı), **istemci kimliğinizi**ve **istemci kimlik doğrulama anahtarınızı**not aldığınızdan emin olun, çünkü bu bilgilere daha sonra ihtiyacımız var.  Bu kimlik bilgileri, hizmetleri asıl olarak işlemleri yürütmek için herkes tarafından kullanılabilir **gibi, istemci kimliği** ve **istemci kimlik doğrulama anahtarı**korumak için dikkatli olun.
+> [Bağlantılı öğreticideki](../articles/active-directory/develop/howto-create-service-principal-portal.md)tüm adımları izlediğinizden emin olun.  Bunu tam olarak açıklandığı gibi doldurmanız *önemlidir* .  Bu bilgilere daha sonra ihtiyaç duyduğumuz sürece **KIRACı kimliğinizi**, **kiracı etki alanı adını** (genellikle bir özel etki alanı belirtmediğiniz sürece bir *. onmicrosoft.com* etki alanı), **istemci kimliğini**ve **istemci kimlik doğrulama anahtarını**aklınızda olduğunuzdan emin olun.  **ISTEMCI kimliği** ve **istemci kimlik doğrulama anahtarınızı**koruma konusunda dikkatli olun, çünkü bu kimlik bilgileri, hizmet sorumlusu olarak işlemleri yürütmek üzere herkes tarafından kullanılabilir.
 >
-> Çok kiracılı uygulamayı Yapılandırma adlı adıma girdiğinizde, **Hayır'ı**seçin.
+> Çok kiracılı uygulama yapılandırma adlı adıma geldiğinizde **Hayır**' ı seçin.
 >
-> Adımı aldığınızda [uygulamayı bir role atayın,](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)daha önce oluşturulan kaynak grubunu kullanın, *CdnConsoleTutorial*, ancak **Reader** rolü yerine **CDN Profil Oluşturici** rolünü atayın.  Uygulamayı kaynak grubunuzdaki **CDN Profil Katılımcısı** rolünü atadıktan sonra bu öğreticiye geri dönün. 
+> [Uygulamayı bir role atama](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)adımına geldiğinizde, daha önce oluşturulmuş olan *Cdnconsoleöğretici adlı*kaynak grubunu kullanın, ancak **okuyucu** rolü yerine, **CDN profili katkıda** bulunan rolünü atayın.  Uygulamayı kaynak grubunuza **CDN profili katılımcısı** rolü atadıktan sonra, Bu öğreticiye dönün. 
 >
 >
 
-Hizmet yöneticinizi oluşturduktan ve **CDN Profil Katılımcısı** rolünü atadıktan sonra, kaynak grubunuz için **Kullanıcılar** bıçağı aşağıdaki resme benzer olmalıdır.
+Hizmet sorumlunuzu oluşturduktan ve **CDN profili katılımcısı** rolüne atadıktan sonra, kaynak grubunuz için **Kullanıcılar** dikey penceresi aşağıdaki görüntüye benzer görünmelidir.
 
-![Kullanıcılar bıçak](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
+![Kullanıcılar dikey penceresi](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
 ### <a name="interactive-user-authentication"></a>Etkileşimli kullanıcı kimlik doğrulaması
-Bir hizmet sorumlusu yerine etkileşimli bireysel kullanıcı kimlik doğrulaması yapmak istiyorsanız, işlem bir hizmet sorumlusu için benzerdir.  Aslında, aynı yordamı takip etmek gerekir, ancak birkaç küçük değişiklikler yapmak.
+Bir hizmet sorumlusu yerine, etkileşimli bireysel kullanıcı kimlik doğrulamasına sahip olmanız tercih ediyorsanız, işlem hizmet sorumlusu için buna benzer.  Aslında, aynı yordamı izlemeniz, ancak küçük değişiklikler yapmanız gerekir.
 
 > [!IMPORTANT]
-> Yalnızca bir hizmet ilkesi yerine tek tek kullanıcı kimlik doğrulaması kullanmayı tercih ediyorsanız aşağıdaki sonraki adımları izleyin.
+> Yalnızca bir hizmet sorumlusu yerine bireysel kullanıcı kimlik doğrulaması kullanmayı seçerseniz bu sonraki adımları izleyin.
 >
 >
 
-1. Uygulamanızı oluştururken, **Web Uygulaması**yerine **Yerel uygulamayı**seçin.
+1. Uygulamanızı oluştururken, **Web uygulaması**yerine **yerel uygulama**' yı seçin.
 
     ![Yerel uygulama](./media/cdn-app-dev-prep/cdn-native-application-include.png)
-2. Bir sonraki sayfada, bir yeniden **yönlendirme URI**için istenir.  URI doğrulanmaz, ama ne girdiğinizi unutmayın. Daha sonra ihtiyacın olacak.
+2. Sonraki sayfada, size **yeniden yönlendirme URI 'si**sorulur.  URI doğrulanmaz, ancak girdiğinizi unutmayın. Daha sonra ihtiyacınız olacak.
 3. **İstemci kimlik doğrulama anahtarı**oluşturmaya gerek yoktur.
-4. **CDN Profil Katılımcısı** rolüne bir hizmet müdürü atamak yerine, tek tek kullanıcıları veya grupları atayacağız.  Bu örnekte, *CDN Demo Kullanıcısını CDN* **Profil Katılımcısı** rolüne atadiğimı görebilirsiniz.  
+4. **CDN profili katkıda bulunan** rolüne bir hizmet sorumlusu atamak yerine, bireysel kullanıcılar veya gruplar atayacağız.  Bu örnekte, CDN *tanıtım kullanıcısını* **CDN profili katkıda** bulunan rolüne atadım.  
 
     ![Bireysel kullanıcı erişimi](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

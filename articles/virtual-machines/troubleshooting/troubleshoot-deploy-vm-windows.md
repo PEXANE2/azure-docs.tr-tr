@@ -1,6 +1,6 @@
 ---
-title: Azure'da Windows sanal makine sorunlarını dağıtma sorunu | Microsoft Dokümanlar
-description: Azure Kaynak Yöneticisi dağıtım modelinde Windows sanal makine sorunlarını dağıtma sorunu giderin.
+title: Azure 'da Windows sanal makine sorunlarını dağıtma sorunlarını giderme | Microsoft Docs
+description: Azure Resource Manager dağıtım modelinde Windows sanal makine sorunlarını dağıtma sorunlarını giderin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,112 +15,112 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921420"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure'da Windows sanal makinesi dağıtma sorunlarını giderme
 
-Azure'da sanal makine (VM) dağıtım sorunlarını gidermek için, sık karşılaşılan hatalar ve çözümler için [en önemli sorunları](#top-issues) gözden geçirin.
+Azure 'da sanal makine (VM) dağıtımı sorunlarını gidermek için sık karşılaşılan hataların ve çözümlerin [en önemli sorunlarını](#top-issues) gözden geçirin.
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
 
 ## <a name="top-issues"></a>En önemli sorunlar
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
-## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Küme istenen VM boyutunu destekleyemez
-\<özellikleri destekTopicIds="123456789" kaynakEtiketler="windows" productPesIds="1234, 5678" />
+## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Küme, istenen VM boyutunu desteklemez
+\<Properties Supporttopicıds = "123456789" resourceTags = "Windows" Productpesıd = "1234, 5678"/>
 - Daha küçük bir VM boyutu kullanarak isteği yeniden deneyin.
-- İstenen VM'nin boyutu değiştirilemiyorsa:
-    - Kullanılabilirlik kümesindeki tüm VM'leri durdurun. Kaynak grubunuz > **Kaynak grupları** > **Kaynakları'nı** tıklatın sanal **makineniz** > > sanal makineniz > iniz > **Durdurun.**
-    - Tüm VM'ler durduktan sonra, VM'yi istenilen boyutta oluşturun.
-    - Önce yeni VM'yi başlatın ve ardından durdurulan VM'lerin her birini seçin ve Başlat'ı tıklatın.
+- İstenen VM 'nin boyutu değiştirilenemez:
+    - Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun. Kaynak **grupları** > kaynak grubu ' na tıklayın **> kaynak** grubunuz > sanal **makineleriniz > sanal makineler** > **Durdur**>
+    - Tüm VM 'Ler durduktan sonra, istenen boyutta VM 'yi oluşturun.
+    - Önce yeni VM 'yi başlatın ve sonra durdurulan sanal makinelerin her birini seçip Başlat ' a tıklayın.
 
 
-## <a name="the-cluster-does-not-have-free-resources"></a>Kümenin boş kaynakları yok
-\<özellikleri destekTopicIds="123456789" kaynakEtiketler="windows" productPesIds="1234, 5678" />
+## <a name="the-cluster-does-not-have-free-resources"></a>Kümede boş kaynak yok
+\<Properties Supporttopicıds = "123456789" resourceTags = "Windows" Productpesıd = "1234, 5678"/>
 - İsteği daha sonra yeniden deneyin.
-- Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilirse
+- Yeni VM farklı bir kullanılabilirlik kümesinin parçası olabilir
     - Farklı bir kullanılabilirlik kümesinde (aynı bölgede) bir VM oluşturun.
-    - Yeni VM'yi aynı sanal ağa ekleyin.
+    - Yeni VM 'yi aynı sanal ağa ekleyin.
 
-## <a name="how-can-i-use-and-deploy-a-windows-client-image-into-azure"></a>Windows istemcisi görüntüsünü Azure'da nasıl kullanabilir ve dağıtabilirim?
+## <a name="how-can-i-use-and-deploy-a-windows-client-image-into-azure"></a>Windows istemci görüntüsünü nasıl kullanabilirim ve Azure 'a nasıl dağıtırım?
 
-Uygun bir Visual Studio (eski MSDN) aboneliğiniz varsa, geliştirme/test senaryoları için Azure'da Windows 7, Windows 8 veya Windows 10'u kullanabilirsiniz. Bu [makalede,](../windows/client-images.md) Azure'da Windows istemcisini çalıştırmak için uygunluk gereksinimleri ve Azure Galerisi görüntülerinin kullanımı özetlenmiştir.
+Uygun bir Visual Studio (eski adıyla MSDN) aboneliğiniz varsa geliştirme ve test senaryoları için Windows 7, Windows 8 veya Windows 10 ' u Azure 'da kullanabilirsiniz. Bu [makalede](../windows/client-images.md) , Azure 'da Windows istemcisini çalıştırmaya yönelik uygunluk gereksinimleri ve Azure Galeri görüntülerinin kullanımları özetlenmektedir.
 
-## <a name="how-can-i-deploy-a-virtual-machine-using-the-hybrid-use-benefit-hub"></a>Hibrit Kullanım Avantajı'nı (HUB) kullanarak sanal bir makineyi nasıl dağıtabilirim?
+## <a name="how-can-i-deploy-a-virtual-machine-using-the-hybrid-use-benefit-hub"></a>Hibrit kullanım avantajı 'nı (HUB) kullanarak bir sanal makineyi nasıl dağıtırım?
 
-Azure Karma Kullanım Avantajı ile Windows sanal makinelerini dağıtmanın birkaç farklı yolu vardır.
+Azure hibrit kullanım teklifi ile Windows sanal makinelerini dağıtmanın birkaç farklı yolu vardır.
 
-Kurumsal Sözleşme aboneliği için:
+Kurumsal Anlaşma abonelik için:
 
-• Azure Karma Kullanım Avantajı ile önceden yapılandırılmış belirli Market görüntülerinden VM'leri dağıtın.
+• Azure hibrit kullanım teklifi ile önceden yapılandırılmış belirli Market görüntülerinden VM 'Ler dağıtın.
 
-Kurumsal anlaşma için:
+Kurumsal Anlaşma için:
 
-• Özel bir VM yükleyin ve Kaynak Yöneticisi şablonu veya Azure PowerShell kullanarak dağıtın.
+• Bir Kaynak Yöneticisi şablonu veya Azure PowerShell kullanarak özel bir VM yükleyin ve dağıtın.
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
- - [Azure Karma Kullanım Avantajına genel bakış](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
+ - [Azure hibrit kullanım avantajı genel bakış](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
  - [İndirilebilir SSS](https://download.microsoft.com/download/4/2/1/4211AC94-D607-4A45-B472-4B30EDF437DE/Windows_Server_Azure_Hybrid_Use_FAQ_EN_US.pdf)
 
- - [Windows Server ve Windows İstemci için Azure Karma Kullanım Avantajı.](../windows/hybrid-use-benefit-licensing.md)
+ - [Windows Server ve Windows istemcisi Için Azure hibrit kullanım avantajı](../windows/hybrid-use-benefit-licensing.md).
 
- - [Azure'da Karma Kullanım Avantajını nasıl kullanabilirim?](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
+ - [Azure 'da hibrit kullanım teklifi 'ni nasıl kullanabilirim?](https://blogs.msdn.microsoft.com/azureedu/2016/04/13/how-can-i-use-the-hybrid-use-benefit-in-azure)
 
-## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Visual studio Enterprise (BizSpark) için aylık kredimi nasıl etkinleştirebilirim?
+## <a name="how-do-i-activate-my-monthly-credit-for-visual-studio-enterprise-bizspark"></a>Visual Studio Enterprise (BizSpark) için aylık kredimi etkinleştirmek Nasıl yaparım?
 
 Aylık kredinizi etkinleştirmek için bu [makaleye](https://azure.microsoft.com/offers/ms-azr-0064p/)bakın.
 
-## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Pencere istemci görüntülerine erişmek için Kurumsal Sözleşmeme (EA) Kurumsal Dev/Test nasıl eklenir?
+## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Pencere istemci görüntülerine erişim sağlamak için Kurumsal Anlaşma (EA) Kurumsal Geliştirme ve Test nasıl eklenir?
 
-Kurumsal Geliştirme/Test teklifine dayalı abonelik oluşturma olanağı, bir Kurumsal Yönetici tarafından izin verilen Hesap Sahipleri ile sınırlıdır. Hesap Sahibi, Azure Hesap Portalı üzerinden abonelikler oluşturur ve ardından ortak yönetici olarak etkin Visual Studio aboneleri eklemelidir. Böylece geliştirme ve test için gerekli kaynakları yönetebilir ve kullanabilirler. Daha fazla bilgi için bkz. [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Kurumsal Geliştirme ve Test teklifini temel alan abonelikler oluşturma özelliği, bir kurumsal yönetici tarafından bunu yapma izni verilen hesap sahipleri ile kısıtlıdır. Hesap sahibi Azure hesap portalı aracılığıyla abonelikler oluşturur ve ardından etkin Visual Studio abonelerini ortak yönetici olarak eklememelidir. Geliştirme ve test için gereken kaynakları yönetebilmeleri ve kullanabilmesi için. Daha fazla bilgi için bkz. [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
-## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Sürücülerim Windows N Serisi VM'im için eksik
+## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Windows N serisi VM 'imde sürücüm eksik
 
-Windows tabanlı VM'ler için sürücüler [burada](../windows/n-series-driver-setup.md)bulunur.
+Windows tabanlı VM 'Ler için sürücüler [burada](../windows/n-series-driver-setup.md)bulunur.
 
-## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>N-Serisi VM'imde GPU örneği bulamıyorum
+## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>N serisi VM My içinde bir GPU örneği bulamıyorum
 
-Windows Server 2016 veya Windows Server 2012 R2 çalıştıran Azure N serisi VM'lerin GPU özelliklerinden yararlanmak için dağıtımdan sonra her VM'ye NVIDIA grafik sürücüleri yüklemeniz gerekir. [Windows VM'ler](../windows/n-series-driver-setup.md) ve [Linux VM'leri](../linux/n-series-driver-setup.md)için sürücü kurulum bilgileri mevcuttur.
+Windows Server 2016 veya Windows Server 2012 R2 çalıştıran Azure N serisi VM 'lerinin GPU yetilerinden yararlanmak için, her bir VM 'ye, her bir sanal makinede NVıDıA grafik sürücülerini yüklemelisiniz. [Windows VM](../windows/n-series-driver-setup.md) 'Leri ve [Linux VM 'leri](../linux/n-series-driver-setup.md)için sürücü kurulum bilgileri kullanılabilir.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>N Serisi VM'ler bölgemde kullanılabilir mi?
+## <a name="is-n-series-vms-available-in-my-region"></a>N serisi VM 'Ler bölgemde kullanılabilir mi?
 
-[Bölge tablosuna göre mevcut Ürünler'den](https://azure.microsoft.com/regions/services)kullanılabilirliği ve fiyatlandırmayı [buradan](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)kontrol edebilirsiniz.
+[Bölge tablosuna göre kullanılabilir ürünlerden](https://azure.microsoft.com/regions/services)kullanılabilirliği denetleyebilir ve [burada](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)fiyatlandırma yapabilirsiniz.
 
-## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>Azure'da hangi istemci resimlerini kullanabilir ve dağıtabilirim ve bunları nasıl alabilirim?
+## <a name="what-client-images-can-i-use-and-deploy-in-azure-and-how-to-i-get-them"></a>Azure 'da hangi istemci görüntülerini kullanabilirim ve dağıtırım ve bunları nasıl edinebilirim?
 
-Uygun bir Visual Studio (eski MSDN) aboneliğiniz olması koşuluyla geliştirme/test senaryoları için Azure'da Windows 7, Windows 8 veya Windows 10'u kullanabilirsiniz. 
+Windows 7, Windows 8 veya Windows 10 ' u Azure 'da geliştirme/test senaryoları için uygun bir Visual Studio (eski adıyla MSDN) aboneliğine sahip olursunuz. 
 
-- Windows 10 görüntüleri Azure Galerisi'nden [uygun geliştirme/test teklifleri](../windows/client-images.md#eligible-offers)içinde edinilebilir. 
-- Herhangi bir teklif türü içindeki Visual Studio aboneleri de [yeterli şekilde hazırlayabilir ve](../windows/prepare-for-upload-vhd-image.md) 64 bit Windows 7, Windows 8 veya Windows 10 görüntüsü oluşturabilir ve ardından [Azure'a yükleyebilir.](../windows/upload-generalized-managed.md) Kullanım, aktif Visual Studio aboneleri tarafından yapılan geliştirme/test ile sınırlı kalır.
+- Windows 10 görüntüleri, [uygun geliştirme/test tekliflerindeki](../windows/client-images.md#eligible-offers)Azure galerisinden kullanılabilir. 
+- Herhangi bir teklif türündeki Visual Studio aboneleri, 64 bitlik bir Windows 7, Windows 8 veya Windows 10 görüntüsünü [yeterince hazırlayabilir ve oluşturabilir](../windows/prepare-for-upload-vhd-image.md) , sonra da [Azure 'a yükleyebilir](../windows/upload-generalized-managed.md). Kullanım, etkin Visual Studio aboneleri tarafından geliştirme ve test ile sınırlı kalır.
 
-Bu [makalede,](../windows/client-images.md) Azure'da Windows istemcisini çalıştırmak ve Azure Galerisi görüntülerinin kullanımı için uygunluk gereksinimleri özetlenmiştir.
+Bu [makalede](../windows/client-images.md) , Azure 'da Windows istemcisini çalıştırmaya yönelik uygunluk gereksinimleri ve Azure Galeri görüntülerinin kullanımı özetlenmektedir.
 
-## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>VM'imi yeniden boyutlandırırken istediğim VM Size ailesini göremiyorum.
+## <a name="i-am-not-able-to-see-vm-size-family-that-i-want-when-resizing-my-vm"></a>VM 'imi yeniden boyutlandırırken istediğim VM boyut ailesini göremiyorum.
 
-Bir VM çalışırken, fiziksel bir sunucuya dağıtılır. Azure bölgelerindeki fiziksel sunucular, ortak fiziksel donanım kümeleri halinde gruplandırılır. VM'nin farklı donanım kümelerine taşınmasını gerektiren bir VM'yi yeniden boyutlandırmak, VM'yi dağıtmak için hangi dağıtım modelinin kullanıldığına bağlı olarak farklıdır.
+Bir VM çalışırken bir fiziksel sunucuya dağıtılır. Azure bölgelerindeki fiziksel sunucular, ortak fiziksel donanım kümelerinde gruplandırılır. VM 'nin farklı donanım kümelerine taşınmasını gerektiren bir VM 'nin yeniden boyutlandırılması, VM 'yi dağıtmak için kullanılan dağıtım modeline bağlı olarak farklılık gösteren bir değer.
 
-- Klasik dağıtım modelinde dağıtılan VM'ler, VM'leri başka bir boyut ailesinde bir boyuta değiştirmek için bulut hizmeti dağıtımının kaldırılması ve yeniden dağıtılması gerekir.
+- Klasik dağıtım modelinde dağıtılan sanal makineler, bulut hizmeti dağıtımının kaldırılması ve yeniden dağıtılması gerekir ve bu da VM 'Leri başka bir boyuttaki ailedeki bir boyutla değiştirin.
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-- Kaynak Yöneticisi dağıtım modelinde dağıtılan VM'ler, kullanılabilirlik kümesindeki herhangi bir VM'nin boyutunu değiştirmeden önce kullanılabilirlik kümesindeki tüm VM'leri durdurmanız gerekir.
+- Kaynak Yöneticisi dağıtım modelinde dağıtılan VM 'Ler, kullanılabilirlik kümesindeki herhangi bir sanal makinenin boyutunu değiştirmeden önce kullanılabilirlik kümesindeki tüm VM 'Leri durdurmanız gerekir.
 
-## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Kullanılabilirlik Kümesi'nde dağıtılırken listelenen VM boyutu desteklenmez.
+## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Listelenen VM boyutu, kullanılabilirlik kümesinde dağıtıldığında desteklenmez.
 
-Kullanılabilirlik kümesinin kümesinde desteklenen bir boyut seçin. İhtiyacınız olduğunu düşündüğünüz en büyük VM boyutunu seçmek için bir kullanılabilirlik kümesi oluştururken ve bu durumu kullanılabilirlik kümesine ilk dağıtımınız olması önerilir.
+Kullanılabilirlik kümesinin kümesinde desteklenen bir boyut seçin. İhtiyaç duyduğunuz en büyük VM boyutunu seçmek için bir kullanılabilirlik kümesi oluşturulması ve kullanılabilirlik kümesine ilk dağıtımınız olması önerilir.
 
-## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Kullanılabilirlik kümesine varolan bir Klasik VM ekleyebilir miyim?
+## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Mevcut bir klasik VM 'yi bir kullanılabilirlik kümesine ekleyebilir miyim?
 
-Evet. Yeni veya varolan kullanılabilirlik kümesine varolan bir klasik VM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Varolan sanal makineyi kullanılabilirlik kümesine ekle.](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)
+Evet. Mevcut bir klasik VM 'yi yeni veya var olan bir kullanılabilirlik kümesine ekleyebilirsiniz. Daha fazla bilgi için bkz. [var olan bir sanal makineyi bir kullanılabilirlik kümesine ekleme](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun.
 
-Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
+Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

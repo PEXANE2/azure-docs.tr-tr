@@ -1,6 +1,6 @@
 ---
-title: F5 BIG-IP verilerini Azure Sentinel'e bağlayın| Microsoft Dokümanlar
-description: F5 BIG-IP verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
+title: F5 BIG-IP verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+description: F5 büyük IP verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,45 +16,45 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: ae361c74b261bdd6a5673040f868392282b573ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588289"
 ---
-# <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP cihazınızı bağlayın 
+# <a name="connect-your-f5-big-ip-appliance"></a>F5 BIG-IP gerecinizi bağlama 
 
 > [!IMPORTANT]
-> Azure Sentinel'deki F5 BIG-IP veri bağlayıcısı şu anda genel önizlemededir.
-> Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure Sentinel 'de F5 BIG-IP veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-F5 BIG-IP konektörü, tüm F5 BIG-IP günlüklerinizi Azure Sentinel ile kolayca bağlamanızı, çalışma kitaplarını görüntülemenizi, özel uyarılar oluşturmanızı ve araştırmayı geliştirmenizi sağlar. Bu, kuruluşunuzun ağı hakkında daha fazla bilgi verir ve güvenlik işlem yeteneklerinizi geliştirir. F5 BIG-IP ve Azure Sentinel arasındaki tümleştirme, REST API'den yararlanır.
+F5 BIG-IP Bağlayıcısı, çalışma kitaplarını görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için tüm F5 büyük IP günlüklerinizi Azure Sentinel 'e kolayca bağlamanıza olanak tanır. Bu, kuruluşunuzun ağı hakkında daha ayrıntılı bilgi verir ve güvenlik işlemi yeteneklerini geliştirir. F5 BIG-IP ve Azure Sentinel arasındaki tümleştirme REST API kullanır.
 
 
 > [!NOTE]
 > Veriler, Azure Sentinel çalıştırdığınız çalışma alanının coğrafi konumunda depolanır.
 
-## <a name="configure-and-connect-f5-big-ip"></a>F5 BIG-IP'yi yapılandırma ve bağlama 
+## <a name="configure-and-connect-f5-big-ip"></a>F5 BIG-IP ' i yapılandırma ve bağlama 
 
-F5 BIG-IP günlükleri doğrudan Azure Sentinel'e entegre edebilir ve dışa aktarabilir.
+F5 BIG-IP, günlükleri doğrudan Azure Sentinel 'e tümleştirebilir ve dışarı aktarabilir.
 
-1. Azure Sentinel portalında **Veri bağlayıcılarını** tıklatın ve **F5 BIG-IP'yi** seçin ve ardından **bağlayıcı sayfasını açın.** 
-1. F5 BIG-IP'nizi bağlamak için sistemin API bitiş noktasına bir JSON bildirimi göndermeniz gerekir. Bunun nasıl yapılacağını gösteren talimatlar için [F5 BIG-IP'yi Azure Sentinel ile tümleştirme](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)'ye bakın.
-8. F5 BIG-IP bağlayıcı sısayfasından, Çalışma Alanı Kimliği ve Birincil Anahtarı kopyalayın ve Akış verileri altında belirtildiği gibi [Azure Log Analytics'e](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)yapıştırın.
-1. F5 BIG-IP yönergelerini tamamladıktan sonra Azure Sentinel bağlayıcı sayfasında bağlı veri türlerini görürsünüz.
-1. F5 BIG-IP etkinlikleri için Log Analytics'teki ilgili şemayı kullanmak **için, F5Telemetry_LTM_CL,** **F5Telemetry_system_CL**ve **F5Telemetry_ASM_CL**arama yapın.
+1. Azure Sentinel portalında, **veri bağlayıcıları** ' na tıklayın ve **F5 BIG-IP** ' yi seçin ve ardından **bağlayıcı sayfası**' nı açın. 
+1. F5 BIG-IP 'nizi bağlamak için sistemin API uç noktasına bir JSON bildirimi nakletmeniz gerekir. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [F5 BIG-IP 'Yi Azure Sentinel Ile tümleştirme](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel).
+8. F5 BIG-IP bağlayıcı sayfasında, çalışma alanı KIMLIĞI ve birincil anahtarı kopyalayın ve [akış verileri ' ni Azure Log Analytics 'e](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel#streaming-data-to-azure-log-analytics)göre gösterildiği gibi yapıştırın.
+1. F5 BIG-IP yönergelerini tamamladıktan sonra, Azure Sentinel bağlayıcı sayfasında, bağlı veri türlerini görürsünüz.
+1. F5 BIG-IP olayları için Log Analytics ilgili şemayı kullanmak için **F5Telemetry_LTM_CL**, **F5Telemetry_system_CL**ve **F5Telemetry_ASM_CL**aratın.
 
 
-## <a name="validate-connectivity"></a>Bağlantıyı doğrulama
+## <a name="validate-connectivity"></a>Bağlantıyı doğrula
 
-Günlüklerinizin Log Analytics'te görünmeye başlaması 20 dakikadan fazla sürebilir. 
+Günlüklerinizin Log Analytics görünene kadar 20 dakikadan bu kadar bir zaman çıkabilir. 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, F5 BIG-IP'yi Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede, F5 BIG-IP 'yi Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 
 

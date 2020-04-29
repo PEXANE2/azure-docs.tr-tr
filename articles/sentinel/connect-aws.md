@@ -1,6 +1,6 @@
 ---
-title: AWS CloudTrail'i Azure Sentinel'e bağlayın | Microsoft Dokümanlar
-description: AWS CloudTrail verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
+title: AWS Cloudtraizizi Azure Sentinel 'e bağlayın | Microsoft Docs
+description: AWS Cloudiz verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,55 +15,55 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 5cbef1f31ea7088d4fab4888f5630af1b765a910
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588663"
 ---
-# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel'i AWS CloudTrail'e bağlayın
+# <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
-Tüm AWS CloudTrail etkinliklerinizi Azure Sentinel'e aktarmak için AWS konektörünü kullanın. Bu bağlantı işlemi, AWS CloudTrail ile Azure Sentinel arasında güven ilişkisi oluşturarak Azure Sentinel'e AWS kaynak günlüklerinize erişmesini verir. Bu, Azure Sentinel'in AWS günlüklerinize erişmesi için izin veren bir rol oluşturarak AWS'de gerçekleştirilir.
+AWS Cloudiz olaylarınızın tümünü Azure Sentinel 'e göndermek için AWS bağlayıcısını kullanın. Bu bağlantı işlemi, AWS Cloudtraı ve Azure Sentinel arasında bir güven ilişkisi oluşturarak AWS kaynak günlüklerinizi Azure Sentinel 'e erişimi devreder. Bu, AWS günlüklerinde Azure Sentinel 'e erişim izni veren bir rol oluşturarak AWS 'de gerçekleştirilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Sentinel çalışma alanında yazma izniniz olmalıdır.
+Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 
 > [!NOTE]
-> Azure Sentinel, cloudtrail etkinliklerini tüm bölgelerden toplar. Olayları bir bölgeden diğerine akışı yapmamanız önerilir.
+> Azure Sentinel, tüm bölgelerde Cloudtraizetkinlikleri toplar. Bir bölgeden diğerine olay akışı yapmanız önerilmez.
 
 ## <a name="connect-aws"></a>AWS’ye bağlanma 
 
 
-1. Azure Sentinel'de **Veri bağlayıcılarını** seçin ve ardından tablodaki **Amazon Web Hizmetleri** satırını ve sağdaki AWS bölmesinde Açık bağlayıcı **sayfasını**tıklatın.
+1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından tablodaki **Amazon Web Services** satırı seçin ve sağdaki AW bölmesinde **bağlayıcı sayfasını aç**' a tıklayın.
 
-1. Aşağıdaki adımları kullanarak **Yapılandırma** altındaki yönergeleri izleyin.
+1. Aşağıdaki adımları kullanarak **yapılandırma** bölümündeki yönergeleri izleyin.
  
-1.  Amazon Web Services konsolunuzda, **Güvenlik, Kimlik & Uyumluluk**altında **IAM'yi**seçin.
+1.  Amazon Web Services konsolunuza **güvenlik, kimlik & uyumluluk**altında **IAM**' i seçin.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
-1.  **Roller'i** seçin ve **Rol Oluştur'u**seçin.
+1.  **Roller** ' i seçin ve **rol oluştur**' u seçin.
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-1.  **Başka bir AWS hesabı seçin.** Hesap **Kimliği** alanında, Azure Sentinel portalındaki AWS bağlayıcı sayfasında bulunan **Microsoft Hesap Kimliği'ni** **(12341234)** girin.
+1.  **Başka BIR AWS hesabı seçin.** **Hesap kimliği** alanına, Azure Sentinel portalındaki AWS Bağlayıcısı sayfasında bulunan **Microsoft hesap kimliğini** (**123412341234**) girin.
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-1.  Dış **Kimlik İste'nin** seçildiğinden emin olun ve ardından Azure Sentinel portalındaki AWS bağlayıcı sayfasında bulunan Harici Kimliği'ni (Çalışma Alanı Kimliği) girin.
+1.  **Dış kimlik gerektir** ' in seçildiğinden emin olun ve ardından Azure Sentinel portalındaki AWS Bağlayıcısı sayfasında bulunan dış kimliği (çalışma alanı kimliği) girin.
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
-1.  **İzinekle ilkesi** altında **AWSCloudTrailReadOnlyAccess**seçin.
+1.  **Ekleme izinleri ilkesi** altında **Awscmontrailreadonlyaccess**' ı seçin.
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
-1.  Etiket girin (İsteğe Bağlı).
+1.  Bir etiket girin (Isteğe bağlı).
 
     ![AWS6](./media/connect-aws/aws-6.png)
 
-1.  Ardından, bir **Rol adı** girin ve rol **oluştur** düğmesini seçin.
+1.  Sonra bir **rol adı** girin ve **rol oluştur** düğmesini seçin.
 
     ![AWS7](./media/connect-aws/aws-7.png)
 
@@ -71,17 +71,17 @@ Azure Sentinel çalışma alanında yazma izniniz olmalıdır.
 
     ![AWS8](./media/connect-aws/aws-8.png)
 
-1.  Rol **ARN'yi**kopyalayın. Azure Sentinel portalında, Amazon Web Hizmetleri bağlayıcısı ekranında, alan **eklemek için Rolü'ne** yapıştırın ve **Ekle'yi**tıklatın.
+1.  **Rol ARN**'yi kopyalayın. Azure Sentinel portalında, Amazon Web Services Bağlayıcısı ekranında, alanı **eklemek Için role** yapıştırın ve **Ekle**' ye tıklayın.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
-1. AWS etkinlikleri için Log Analytics'teki ilgili şemayı kullanmak için **AWSCloudTrail'i**arayın.
+1. AWS olayları için Log Analytics ilgili şemayı kullanmak için, **Awscses izi**aratın.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, AWS CloudTrail'i Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede AWS Cloudtraizini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 

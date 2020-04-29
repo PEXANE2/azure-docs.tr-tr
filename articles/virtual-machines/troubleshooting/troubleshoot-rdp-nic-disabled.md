@@ -1,6 +1,6 @@
 ---
-title: NIC devre dışı bırakıldığından Azure Sanal Makineleri'ne uzaktan bağlanamıyor | Microsoft Dokümanlar
-description: NIC Azure VM|'nde devre dışı bırakıldığından RDP'nin başarısız olduğu bir sorunu nasıl gidereceklerini öğrenin| Microsoft Dokümanlar
+title: NIC devre dışı bırakıldığından Azure sanal makinelerine uzaktan bağlanılamıyor | Microsoft Docs
+description: Azure VM 'de NIC devre dışı bırakıldığından, RDP 'nin başarısız olduğu bir sorunu nasıl giderebileceğinizi öğrenin | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,53 +13,53 @@ ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
 ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918249"
 ---
-#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Ağ arabirimi devre dışı bırakıldığından masaüstünü VM'ye uzaklatamam
+#  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Ağ arabirimi devre dışı bırakıldığından bir VM 'ye uzak masaüstü yapılamıyor
 
-Bu makalede, ağ arabirimi devre dışı bırakılırsa Azure Windows Sanal Makinelere (VM) Uzak Masaüstü bağlantısı kuramadığınız bir sorunun nasıl çözüleceği açıklanmaktadır.
+Bu makalede, ağ arabirimi devre dışı bırakılmışsa Azure Windows Sanal Makineleri (VM 'Ler) ile uzak masaüstü bağlantısı yapma konusunda bir sorunu nasıl giderebileceğiniz açıklanır.
 
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM'deki ağ arabirimi devre dışı olduğundan, Azure'daki bir VM'ye RDP bağlantısı veya başka bir bağlantı türü yapamazsınız.
+VM 'deki ağ arabirimi devre dışı bırakıldığından, bir RDP bağlantısı veya diğer bağlantı noktalarından başka bir bağlantı noktası için Azure 'daki bir VM 'ye herhangi bir türde bağlantı yapamazsınız.
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları izlemeden önce, etkilenen VM'nin işletim sistemi diskinin bir anlık görüntüsünü yedek olarak alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](../windows/snapshot-copy-managed-disk.md)bakın.
+Bu adımları izlemeden önce, etkilenen VM 'nin işletim sistemi diskinin bir yedek olarak anlık görüntüsünü alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-VM arabirimini etkinleştirmek için, VM için Seri denetimi veya [sıfırlama ağ arabirimini](#reset-network-interface) kullanın.
+VM 'nin arabirimini etkinleştirmek için, seri denetim veya VM için [ağ arabirimini sıfırlama](#reset-network-interface) ' yı kullanın.
 
-### <a name="use-serial-control"></a>Seri denetimi kullanma
+### <a name="use-serial-control"></a>Seri denetim kullan
 
-1. Seri [Konsola bağlanın ve CMD örneğini açın.](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-) Seri Konsol VM'nizde etkinleştirilemezse, [sıfırlama ağ arabirimine](#reset-network-interface)bakın.
-2. Ağ arabiriminin durumunu denetleyin:
+1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [ağ arabirimini sıfırlama](#reset-network-interface).
+2. Ağ arabiriminin durumunu kontrol edin:
 
         netsh interface show interface
 
-    Devre dışı bırakılmış ağ arabiriminin adını not edin.
+    Devre dışı bırakılan ağ arabiriminin adını aklınızda edin.
 
-3. Ağ arabirimini etkinleştirin:
+3. Ağ arabirimini etkinleştir:
 
         netsh interface set interface name="interface Name" admin=enabled
 
-    Örneğin, ara birim arabirimi "Ethernet 2" olarak adlandırılırsa, aşağıdaki komutu çalıştırın:
+    Örneğin, INTERWORK arabirimi "Ethernet 2" olarak adlandırılmışsa, aşağıdaki komutu çalıştırın:
 
         netsh interface set interface name="Ethernet 2" admin=enabled
 
-4.  Ağ arabiriminin etkin olduğundan emin olmak için ağ arabiriminin durumunu yeniden denetleyin.
+4.  Ağ arabiriminin etkinleştirildiğinden emin olmak için ağ arabiriminin durumunu yeniden kontrol edin.
 
         netsh interface show interface
 
-    Bu noktada VM yeniden başlatmak zorunda değilsiniz. VM'ye tekrar ulaşılabilir olacak.
+    Bu noktada VM 'yi yeniden başlatmanız gerekmez. VM 'ye erişilecektir.
 
-5.  VM'ye bağlanın ve sorunun çözülüp çözülmediğini görün.
+5.  VM 'ye bağlanın ve sorunun giderilmiş olup olmadığını görün.
 
-## <a name="reset-network-interface"></a>Ağ arabirimini sıfırlama
+## <a name="reset-network-interface"></a>Ağ arabirimini Sıfırla
 
-Ağ arabirimini sıfırlamak için IP adresini Subnet'te bulunan başka bir IP adresiyle değiştirin. Bunu yapmak için Azure portalını veya Azure PowerShell'i kullanın. Daha fazla bilgi için [ağ arabirimini sıfırla'](reset-network-interface.md)ya bakın.
+Ağ arabirimini sıfırlamak için IP adresini alt ağda kullanılabilir olan başka bir IP adresi ile değiştirin. Bunu yapmak için Azure portal veya Azure PowerShell kullanın. Daha fazla bilgi için bkz. [ağ arabirimini sıfırlama](reset-network-interface.md).

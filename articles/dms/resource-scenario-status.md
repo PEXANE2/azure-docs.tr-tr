@@ -1,7 +1,7 @@
 ---
 title: Veritabanı geçiş senaryosunun durumu
 titleSuffix: Azure Database Migration Service
-description: Azure Veritabanı Geçiş Hizmeti tarafından desteklenen geçiş senaryolarının durumu hakkında bilgi edinin.
+description: Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu hakkında bilgi edinin.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -13,37 +13,37 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
 ms.openlocfilehash: 9652b78674d6a6b905eb049564d1b17cdc7c17b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78254924"
 ---
-# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Veritabanı Geçiş Hizmeti tarafından desteklenen geçiş senaryolarının durumu
+# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu
 
-Azure Veritabanı Geçiş Hizmeti, hem çevrimdışı (tek seferlik) hem de çevrimiçi (sürekli eşitleme) geçişler için farklı geçiş senaryolarını (kaynak/hedef çiftleri) desteklemek üzere tasarlanmıştır. Azure Veritabanı Geçiş Hizmeti tarafından sağlanan senaryo kapsamı zaman içinde genişletiliyor. Düzenli olarak yeni senaryolar ekleniyor. Bu makalede, şu anda Azure Veritabanı Geçiş Hizmeti tarafından desteklenen geçiş senaryoları ve her senaryo için durum (özel önizleme, genel önizleme veya genel kullanılabilirlik) tanımlanmaktadır.
+Azure veritabanı geçiş hizmeti, çevrimdışı (tek seferlik) ve çevrimiçi (sürekli eşitleme) geçişleri için farklı geçiş senaryolarını (kaynak/hedef çiftleri) destekleyecek şekilde tasarlanmıştır. Azure veritabanı geçiş hizmeti tarafından sunulan senaryo kapsamı zamana göre genişletildi. Yeni senaryolar düzenli olarak eklenmektedir. Bu makalede, Azure veritabanı geçiş hizmeti tarafından şu anda desteklenen geçiş senaryoları ve her senaryo için durum (özel önizleme, genel önizleme veya genel kullanılabilirlik) tanımlanmaktadır.
 
-## <a name="offline-versus-online-migrations"></a>Çevrimiçi geçişlere karşı çevrimdışı
+## <a name="offline-versus-online-migrations"></a>Çevrimdışı ve çevrimiçi geçişlere karşı
 
-Azure Veritabanı Geçiş Hizmeti ile çevrimdışı veya çevrimiçi geçiş yapabilirsiniz. *Çevrimdışı* geçişlerde, uygulama kapalı kalma süresi geçişin başladığı anda başlar. Geçiş tamamlandığında yeni ortama kesinti yapmak için gereken süreyle kapalı kalma süresini sınırlamak için *çevrimiçi* geçiş kullanın. Kapalı kalma süresinin kabul edilebilir olup olmadığını belirlemek için çevrimdışı geçişin sınanması önerilir; değilse, çevrimiçi geçiş yapın.
+Azure veritabanı geçiş hizmeti ile çevrimdışı veya çevrimiçi geçiş yapabilirsiniz. *Çevrimdışı* geçişlerde, uygulama kapalı kalma süresi, geçiş başladığı anda başlar. Geçiş tamamlandığında, kapalı kalma süresini yeni ortama kesmek için gereken süre ile sınırlamak için *çevrimiçi* geçiş kullanın. Kapalı kalma süresinin kabul edilip edilmeyeceğini anlamak için çevrimdışı bir geçişi test etmek önerilir; Aksi takdirde, çevrimiçi geçiş yapın.
 
 ## <a name="migration-scenario-status"></a>Geçiş senaryosu durumu
 
-Azure Veritabanı Geçiş Hizmeti tarafından desteklenen geçiş senaryolarının durumu zamana göre değişir. Genellikle, senaryolar ilk **özel önizleme**yayımlanır. Özel önizlemeye katılmak, müşterilerin [DMS Preview sitesi](https://aka.ms/dms-preview)üzerinden aday göstermelerini gerektirir. Özel önizlemeden sonra, senaryo durumu **genel önizlemeye**dönüşür. Azure Veritabanı Geçiş Hizmeti kullanıcıları, genel önizlemedeki geçiş senaryolarını doğrudan kullanıcı arabiriminden deneyebilir. Kayıt gerekmez.  Ancak, genel önizlemedeki geçiş senaryoları tüm bölgelerde kullanılamayabilir ve son sürümden önce ek değişikliklere uğrayabilir. Genel önizlemeden sonra, senaryo durumu **genel kullanılabilirlik**durumuna dönüşür. Genel kullanılabilirlik (GA) son sürüm durumudur ve işlevsellik tamamlandı ve tüm kullanıcılar tarafından erişilebilir.
+Azure veritabanı geçiş hizmeti tarafından desteklenen geçiş senaryolarının durumu zamana göre değişir. Genellikle senaryolar ilk olarak **özel önizlemede**yayımlanır. Özel önizlemeye katılmak için müşterilerin [DMS önizleme sitesi](https://aka.ms/dms-preview)aracılığıyla bir aday göndermesi gerekir. Özel Önizleme sonrasında, senaryo durumu **genel önizlemeye**göre değişir. Azure veritabanı geçiş hizmeti kullanıcıları doğrudan kullanıcı arabiriminden genel önizlemede geçiş senaryolarını deneyebilir. Kaydolma gerekmez.  Bununla birlikte, genel önizlemede geçiş senaryoları, tüm bölgelerde kullanılamayabilir ve son sürümden önce ek değişikliklere karşı devam edebilir. Genel Önizleme sonrasında, senaryo durumu **genel kullanıma**açık olarak değişir. Genel kullanılabilirlik (GA) son sürüm durumudur ve işlevler tümüyle tüm kullanıcılar tarafından erişilebilir olur.
 
 ## <a name="migration-scenario-support"></a>Geçiş senaryosu desteği
 
-Aşağıdaki tablolar, Azure Veritabanı Geçiş Hizmeti kullanırken hangi geçiş senaryolarının destekleniyi gösterir.
+Aşağıdaki tablolarda, Azure veritabanı geçiş hizmeti kullanılırken hangi geçiş senaryolarının desteklendiği gösterilmektedir.
 
 > [!NOTE]
-> Aşağıda desteklenen bir senaryo kullanıcı arabiriminde görünmüyorsa, ek bilgi için lütfen [Azure Veritabanı Geçişleri Sor](mailto:AskAzureDatabaseMigrations@service.microsoft.com) takma adıyla iletişime geçin.
+> Aşağıda desteklendiği şekilde listelenen bir senaryo, Kullanıcı arabirimi içinde görünmezse, daha fazla bilgi için lütfen [Azure veritabanı geçişleri](mailto:AskAzureDatabaseMigrations@service.microsoft.com) hakkında diğer ad bölümüne başvurun.
 
 > [!IMPORTANT]
-> Azure Veritabanı Geçiş Hizmeti tarafından desteklenen tüm senaryoları Özel Önizleme'de görüntülemek için [DMS Önizleme sitesine](https://aka.ms/dms-preview)bakın.
+> Azure veritabanı geçiş hizmeti tarafından şu anda desteklenen tüm senaryoları özel önizlemede görüntülemek için, [DMS önizleme sitesine](https://aka.ms/dms-preview)bakın.
 
 ### <a name="offline-one-time-migration-support"></a>Çevrimdışı (tek seferlik) geçiş desteği
 
-Aşağıdaki tabloda, çevrimdışı geçişler için Azure Veritabanı Geçiş Hizmeti desteği gösterilmektedir.
+Aşağıdaki tabloda çevrimdışı geçişler için Azure veritabanı geçiş hizmeti desteği gösterilmektedir.
 
 | Hedef  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
@@ -63,7 +63,7 @@ Aşağıdaki tabloda, çevrimdışı geçişler için Azure Veritabanı Geçiş 
 
 ### <a name="online-continuous-sync-migration-support"></a>Çevrimiçi (sürekli eşitleme) geçiş desteği
 
-Aşağıdaki tabloda, çevrimiçi geçişler için Azure Veritabanı Geçiş Hizmeti desteği gösterilmektedir.
+Aşağıdaki tabloda, çevrimiçi geçişler için Azure veritabanı geçiş hizmeti desteği gösterilmektedir.
 
 | Hedef  | Kaynak | Destek | Durum |
 | ------------- | ------------- |:-------------:|:-------------:|
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure Veritabanı Geçiş Hiz
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
-|   | Oracle | ✔ | Özel önizleme |
+|   | Oracle | ✔ | Özel Önizleme |
 | **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | GA |
@@ -80,8 +80,8 @@ Aşağıdaki tabloda, çevrimiçi geçişler için Azure Veritabanı Geçiş Hiz
 |   | RDS MySQL | ✔ | GA |
 | **PostgreSQL için Azure DB** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | Genel önizleme |
+|   | Oracle | ✔ | Genel Önizleme |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Veritabanı Geçiş Hizmeti'ne ve bölgesel kullanılabilirlik bölümüne genel bir bakış için, Azure [Veritabanı Geçiş Hizmeti nedir makalesine](dms-overview.md)bakın.
+Azure veritabanı geçiş hizmeti ve bölgesel kullanılabilirliğine genel bakış için [Azure veritabanı geçiş hizmeti nedir](dms-overview.md)makalesine bakın.

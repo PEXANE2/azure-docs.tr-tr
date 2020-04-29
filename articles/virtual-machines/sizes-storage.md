@@ -1,6 +1,6 @@
 ---
-title: Azure VM boyutları - Depolama | Microsoft Dokümanlar
-description: Azure'daki sanal makineler için kullanılabilen farklı depolama en iyi duruma getirilmiş boyutları listeler. VCPUs, veri diskleri ve NIC'lerin sayısı nın yanı sıra bu serideki boyutlar için depolama verime ve ağ bant genişliği hakkındaki bilgileri listeler.
+title: Azure VM boyutları-depolama | Microsoft Docs
+description: Azure 'daki sanal makineler için kullanılabilen farklı depolama için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines
 documentationcenter: ''
 author: sasha-melamed
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
 ms.openlocfilehash: 5a611dc288fc18a14f6000689f9f9b49d4b3feb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77913345"
 ---
-# <a name="storage-optimized-virtual-machine-sizes"></a>Depolama optimize edilmiş sanal makine boyutları
+# <a name="storage-optimized-virtual-machine-sizes"></a>Depolama için iyileştirilmiş sanal makine boyutları
 
-Depolama optimize vm boyutları yüksek disk veri ve IO sunar ve Büyük Veri, SQL, NoSQL veritabanları, veri ambarı ve büyük işlem veritabanları için idealdir.  Örnekler Cassandra, MongoDB, Cloudera ve Redis içerir. Bu makalede, her optimize edilmiş boyut için vCPUs, veri diskleri ve NIC'lerin sayısının yanı sıra yerel depolama veri metodu ve ağ bant genişliği hakkında bilgi verilmektedir.
+Depolama için iyileştirilmiş VM boyutları, yüksek disk verimlilik ve GÇ sağlar ve büyük veri, SQL, NoSQL veritabanları, veri depolama ve büyük işlem veritabanları için idealdir.  Cassandra, MongoDB, Cloudera ve Redsıs örnekleri sayılabilir. Bu makalede, her iyileştirilmiş boyut için sanal CPU 'lar, veri diskleri ve NIC 'lerin yanı sıra yerel depolama alanı işleme ve ağ bant genişliği hakkında bilgi sağlanır.
 
-[Lsv2 serisi](lsv2-series.md) yüksek iş kolu, düşük gecikme, doğrudan 2.55GHz tüm çekirdek desteği ve 3.0GHz maksimum destek ile [AMD EPYC<sup>TM</sup> 7551 işlemci](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan yerel NVMe depolama eşlenen özellikleri. Lsv2 serisi VM'ler aynı anda çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU arasında boyutlarda gelir.  VCPU başına 8 GiB bellek ve 8 vCPUs başına bir 1.92TB NVMe SSD M.2 cihazı vardır ve L80s v2'de 19.2 TB'ye (10x1.92TB) kadar bellek mevcuttur.
+[Lsv2-Series](lsv2-series.md) , yüksek performans, düşük gecikme süresi ve [AMD Epic<sup>TM</sup> 7551 işlemcisi](https://www.amd.com/en/products/epyc-7000-series) üzerinde çalışan yerel NVMe depolama alanını, 2.55 GHz 'nin tüm çekirdek artışı ve en fazla 3,0 GHz sürümü ile birlikte sunar. Lsv2 serisi VM 'Ler, eşzamanlı bir çoklu iş parçacığı yapılandırmasında 8 ile 80 vCPU boyutunda olacak şekilde gelir.  Her vCPU için 8 GiB bellek ve 8 vCPU başına, L80s v2 'de bulunan 19.2 TB 'a kadar (10 x 1.92 TB) bir 1.92 TB NVMe SSD M. 2 cihaz vardır.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [İşlem için iyileştirilmiş](sizes-compute.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)
@@ -38,6 +38,6 @@ Depolama optimize vm boyutları yüksek disk veri ve IO sunar ve Büyük Veri, S
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
 
-[Windows](windows/storage-performance.md) veya [Linux](linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı nasıl optimize edebilirsiniz öğrenin.
+[Windows](windows/storage-performance.md) veya [Linux](linux/storage-performance.md)için Lsv2 serisi sanal makinelerde performansı en üst düzeye çıkarmak hakkında bilgi edinin.

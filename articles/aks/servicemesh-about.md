@@ -1,113 +1,113 @@
 ---
-title: Servis meshes hakkında
-description: Hizmet meshes, mimari ve yetenekleri ve dağıtmak için birini seçerken göz önünde bulundurmanız gereken ölçütler genel bir bakış elde edin.
+title: Hizmet kafesleri hakkında
+description: Hizmet kafeslerine, mimarisine ve özelliklerine ve dağıtım için bir tane seçerken göz önünde bulundurmanız gereken ölçütlere genel bir bakış elde edin.
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594320"
 ---
-# <a name="about-service-meshes"></a>Servis meshes hakkında
+# <a name="about-service-meshes"></a>Hizmet kafesleri hakkında
 
-Hizmet kafesi, trafik yönetimi, esneklik, ilke, güvenlik, güçlü kimlik ve iş yüklerinize uyulabilirlik gibi özellikler sağlar. Uygulamanız bu operasyonel yeteneklerden ayrılmış ve servis örgüsü bunları uygulama katmanının dışına ve altyapı katmanına taşır.
+Hizmet ağı, iş yüklerinize trafik yönetimi, dayanıklılık, ilke, güvenlik, güçlü kimlik ve Observability gibi yetenekler sağlar. Uygulamanız bu operasyonel yetenekler ' den ayrılır ve hizmet ağı, bunları uygulama katmanının dışına ve altyapı katmanına doğru şekilde taşımıştır.
 
 ## <a name="scenarios"></a>Senaryolar
 
-Bunlar, bir hizmet kafesi kullandığınızda iş yükleri için etkinleştirilen senaryolardan bazılarıdır:
+Hizmet ağı kullandığınızda iş yükleriniz için etkinleştirilemeyen bazı senaryolar şunlardır:
 
-- **Kümedeki tüm trafiği şifreleyin** - Kümede belirtilen hizmetler arasında karşılıklı TLS etkinleştirin. Bu, ağ çevresinde giriş ve çıkış alabilirsiniz. Uygulama kodu ve altyapı için değişiklik gerekmeden varsayılan olarak güvenli bir seçenek sağlar.
+- **Kümedeki tüm trafiği şifreleyin** -kümedeki belirtilen hizmetler arasında karşılıklı TLS 'yi etkinleştirin. Bu, ağ çevre ağındaki giriş ve çıkış için genişletilebilir. Uygulama kodu ve altyapısı için hiçbir değişiklik gerektirmeden, varsayılan olarak güvenli bir seçenek sağlar.
 
-- **Kanarya ve aşamalı rollouts** - Kümedeki yeni hizmetler kümesine yönlendirilecek bir trafik alt kümesi için koşulları belirtin. Kanarya salınımı başarılı test, koşullu yönlendirme ve faz yavaş yavaş yeni hizmet için tüm trafiğin % artan kaldırın. Sonunda tüm trafik yeni hizmete yönlendirilecektir.
+- **Canary ve aşamalı piyasaya çıkarma** -bir trafik alt kümesinin kümedeki yeni hizmetler kümesine yönlendirilme koşullarını belirtin. Kanarya sürümünün başarılı testi sırasında, koşullu yönlendirmeyi ve aşamayı, tüm trafiğin% yavaş bir şekilde yeni hizmete artırdığı şekilde kaldırın. Sonuç olarak tüm trafik yeni hizmete yönlendirilir.
 
-- **Trafik yönetimi ve işleme** - Tüm trafiği belirli bir kaynaktan gelen bir hizmetin sürümüyle sınırlandıracak bir hizmet ilkesi oluşturun. Veya belirtilen hizmetler arasındaki hata sınıflarına yeniden deneme stratejisi uygulayan bir ilke. Geçiş sırasında veya hata ayıklama sorunları sırasında hizmetlerin yeni sürümlerine canlı trafiği yansıtın. Esnekliği test etmek için test ortamındaki hizmetler arasında hatalar enjekte edin.
+- **Trafik yönetimi ve düzenleme** -bir hizmette, belirli bir kaynaktan bir hizmetin sürümüyle olan tüm trafiği sınırlamak için bir ilke oluşturun. Veya belirtilen hizmetler arasındaki başarısızlık sınıfları için yeniden deneme stratejisi uygulayan bir ilke. Geçiş sırasında veya hata ayıklama sırasında yeni hizmet sürümlerine canlı trafik yansıtın. Dayanıklılık testi için bir test ortamındaki hizmetler arasında hata ekleme.
 
-- **Gözlemlenebilirlik** - Hizmetlerinizin aralarında akan trafiği nasıl birbirine bağladığını öğrenin. Kümedeki tüm trafik ve giriş/çıkış için ölçümler, günlükler ve izlemeler edinin. Uygulamalarınız için dağıtılmış izleme yetenekleri ekleyin.
+- **Observability** -hizmetlerinizin aralarında akan trafiği nasıl bağladığınıza ilişkin Öngörüler elde edin. Kümedeki tüm trafiğe yönelik ölçümleri, günlükleri ve izlemeleri ve giriş/çıkış alma. Uygulamalarınıza dağıtılmış izleme becerileri ekleyin.
 
 ## <a name="architecture"></a>Mimari
 
-Servis ağı genellikle bir denetim düzlemi ve veri düzleminden oluşur.
+Hizmet ağı genellikle bir denetim düzlemi ve veri düzleminden oluşur.
 
-**Denetim düzlemi,** hizmet örgüsünün yönetilmesini destekleyen bir dizi bileşene sahiptir. Bu genellikle bir UI veya API olabilir bir yönetim arabirimi içerir. Genellikle, hizmet örgüsünden belirli yetenekleri nasıl uygulayacağını tanımlayan kural ve ilke tanımlarını yöneten bileşenler de olacaktır. Güçlü kimlik ve mTLS sertifikaları gibi güvenlik yönlerini yöneten bileşenler de vardır. Hizmet meshes da genellikle toplar ve iş yüklerinden ölçümleri ve telemetri toplar gözlemlenebilirlik bileşeni vardır.
+**Denetim düzlemi** , hizmet ağı yönetimini destekleyen bir dizi bileşene sahiptir. Bu, genellikle bir kullanıcı arabirimi veya API olabilecek bir yönetim arabirimi içerir. Ayrıca, hizmet ağı 'nın belirli özellikleri nasıl uygulaması gerektiğini tanımlayan kural ve ilke tanımlarını yöneten bileşenler de vardır. Ayrıca, mTLS için güçlü kimlik ve sertifikalar gibi güvenlik yönlerini yöneten bileşenler de vardır. Hizmet kafeslerinin ayrıca iş yüklerinden ölçümleri ve telemetri toplayan ve toplayan bir ölçümleri veya Observability bileşeni de olur.
 
-**Veri düzlemi** genellikle iş yükleri için bir sidecar olarak şeffaf enjekte bir proxy oluşur. Bu proxy, iş yükünüzü içeren bölmeye girip çıkan tüm ağ trafiğini denetlemek üzere yapılandırılır. Bu, proxy'nin mTLS üzerinden trafiği güvenli hale getirmek, trafiği dinamik olarak yönlendirmek, trafiğe ilke uygulamak ve ölçümleri toplamak ve bilgileri izlemek için yapılandırılmasına olanak tanır. 
+**Veri düzlemi** genellikle iş yüklerinize bir sepet olarak eklenen bir ara sunucudan oluşur. Bu proxy, iş yükünüzü içeren Pod 'ın içindeki ve olmayan tüm ağ trafiğini denetlemek üzere yapılandırılmıştır. Bu, proxy 'nin mTLS aracılığıyla trafiği güvenli hale getirmek, trafiği dinamik olarak yönlendirmek, trafiğe ilke uygulamak ve ölçümleri ve izleme bilgilerini toplamak için yapılandırılmasını sağlar. 
 
-![Tipik servis kafes mimarisi](media/servicemesh/typical-architecture.png)
+![Tipik hizmet kafes mimarisi](media/servicemesh/typical-architecture.png)
 
 ## <a name="capabilities"></a>Özellikler
 
-Hizmet meshes her doğal bir uyum var ve belirli senaryoları destekleyen odaklanmak, ancak genellikle çoğu aşağıdaki yetenekleri, hepsi değilse de bir dizi uygulayacak bulacaksınız.
+Hizmet kafeslerinin her biri doğal olarak bir sığdırmaya sahiptir ve belirli senaryoları desteklemeye odaklanmaktadır, ancak genellikle en fazla bir olarak, aşağıdaki yetenekler için bir sayı uygulayacaksınız.
 
 ### <a name="traffic-management"></a>Trafik yönetimi 
 
-- **Protokol** – katman 7 (http, grpc)
-- **Dinamik Yönlendirme** – koşullu, ağırlık, yansıtma
-- **Esneklik** – zaman ekmeleri, yeniden denemeler, devre kesiciler
-- **İlke** – erişim kontrolü, fiyat limitleri, kotalar
-- Test - arıza **enjeksiyonu**
+- **Protokol** – katman 7 (http, GRPC)
+- **Dinamik yönlendirme** – koşullu, ağırlık, yansıtma
+- **Dayanıklılık** – zaman aşımları, yeniden denemeler, devre kesiciler
+- **İlke** – erişim denetimi, oran limitleri, Kotalar
+- **Test** -hata ekleme
 
 ### <a name="security"></a>Güvenlik
 
-- **Şifreleme** – mTLS, sertifika yönetimi, harici CA
-- **Güçlü Kimlik** – SPIFFE veya benzeri
-- **Auth** – kimlik doğrulama, yetkilendirme
+- **Şifreleme** – MTLS, sertifika yönetimi, dış CA
+- **Güçlü kimlik** – spiffe veya benzeri
+- **Kimlik doğrulaması – kimlik** doğrulama, yetkilendirme
 
-### <a name="observability"></a>Gözlemlenebilirlik
+### <a name="observability"></a>Observability
 
-- **Ölçümler** – altın ölçümler, prometheus, grafana
-- **İzleme** - iş yükleri arasında izleme
+- **Ölçümler** : altın ölçümler, Prometheus, grafana
+- **İzleme** -iş yükleri genelinde izlemeler
 - **Trafik** – küme, giriş/çıkış
 
 ### <a name="mesh"></a>Örgü
 
-- **Desteklenen Bilgi İşlem** - Kubernetes, sanal makineler
-- **Çok kümeli** - ağ geçitleri, federasyon
+- **Desteklenen işlem** -Kubernetes, sanal makineler
+- **Çoklu küme** geçitleri, Federasyon
 
-## <a name="selection-criteria"></a>Seçim kriterleri
+## <a name="selection-criteria"></a>Seçim ölçütü
 
-Bir hizmet kafesi seçmeden önce, gereksinimlerinizi ve hizmet ağı yükleme nedenlerini anladığınızdan emin olun. Aşağıdaki soruları sormayı deneyin.
+Bir hizmet ağı seçmeden önce, gereksinimlerinizi ve hizmet ağı yükleme nedenlerini anladığınızdan emin olun. Aşağıdaki soruları sormayı deneyin.
 
-- **Ingress Controller benim ihtiyaçlarım için yeterli mi?** - Bazen a/b testi veya girişte trafik bölme gibi bir yeteneğe sahip olmak, gerekli senaryoyu desteklemek için yeterlidir. Ortamınıza hiçbir ters yol olmadan karmaşıklık eklemeyin.
+- **Bir giriş denetleyicisi, gereksinimlerim için yeterli mi?** -Bazen bir/b testi veya giriş sırasında trafiği bölme gibi bir özellik gerekli senaryoyu desteklemek için yeterlidir. Baş olmadan ortamınıza karmaşıklık eklemeyin.
 
-- **İş yüklerim ve çevrem ek genel giderlere tahammül edebilir mi?** - Hizmet örgüsi desteklemek için gereken tüm ek bileşenler işlemci ve bellek gibi ek kaynaklar gerektirir. Buna ek olarak, tüm eksekler ve ilişkili ilke denetimleri trafiğinize gecikme sonu ekler. Gecikmeye karşı çok hassas iş yüklerin varsa veya hizmet kafesbileşenlerini kapsayacak ek kaynakları sağlayamazsa, yeniden düşünün.
+- **İş yüklerim ve Ortamlarım ek fazla kafaları kabul edebilir mi?** -Hizmet kafesi desteklemek için gereken tüm ek bileşenler, CPU ve bellek gibi ek kaynaklar gerektirir. Ayrıca, tüm proxy 'ler ve ilişkili ilkesi, trafiğinizi gecikme süresi ekler. Gecikme süresine çok duyarlı olan veya hizmet kafesi bileşenlerini kapsayacak ek kaynakları sağlayamayan iş yükleriniz varsa yeniden değerlendirin.
 
-- **Bu gereksiz yere ek karmaşıklık ekliyor mu?** - Bir servis örgüsünün yüklenmesinin nedeni, işletme veya operasyonel ekipler için kritik olmayan bir özellik elde etmekse, yükleme, bakım ve yapılandırmanın ek karmaşıklığının buna değip değmeyeceğini düşünün.
+- **Bu ek karmaşıklık gereksiz yere mi ekleniyor?** -Hizmet kafesi yükleme nedeni, iş veya operasyonel takımlar için kritik olmayan bir özellik kazanmak ise, yükleme, bakım ve yapılandırmanın ek karmaşıklığının buna değer olup olmadığını göz önünde bulundurun.
 
-- **Bu artımlı bir yaklaşımla benimsenebilir mi?** - Birçok yetenek sağlayan hizmet meshes bazıları daha artımlı bir yaklaşım benimsenebilir. Başarınızı sağlamak için gereken bileşenleri yükleyin. Bir kez daha emin ve ek yetenekleri gereklidir, o zaman bu keşfetmek. Başından itibaren *her şeyi* yükleme dürtüsüne karşı koy.
+- **Bu, artımlı bir yaklaşımda mi benimsemelidir?** -Çok sayıda özellik sağlayan bazı hizmet kafesleri daha artımlı bir yaklaşımda benimsemeye devam edebilir. Yalnızca başarınızı sağlamak için ihtiyacınız olan bileşenleri yükleyebilirsiniz. Daha emin olduktan ve ek yetenekler gerekiyorsa, bunları keşfedebilirsiniz. Başlangıçtan itibaren *her şeyi* yüklemek için bağlantısını okumanızı tavsiye 'yı yeniden başlatın.
 
-Dikkatli bir değerlendirmeden sonra, gerekli yetenekleri sağlamak için bir hizmet örgüse ihtiyacınız olduğuna karar verirseniz, bir sonraki kararınız *hangi hizmet örgüsi?*
+Dikkatli olduktan sonra, gereken özellikleri sağlamak için bir hizmet ağı gerekli olduğuna karar verirsiniz, sonra bir sonraki kararınız *hizmet ağı olur mu?*
 
-Aşağıdaki alanları ve bunlardan hangisinin gereksinimlerinize en uygun olduğunu göz önünde bulundurun. Bu, çevrenize ve iş yüklerinize en uygun olduğunuza doğru size rehberlik edecektir. [Sonraki adımlar](#next-steps) bölümünde, belirli hizmet meshes ve nasıl bu alanlarda eşleniniz hakkında daha ayrıntılı bilgi için götürecektir.
+Aşağıdaki alanlarda ve bunların en çok gereksinimlerinize göre hizalandığını göz önünde bulundurun. Bu, ortamınız ve iş yükleriniz için en uygun şekilde size kılavuzluk eder. [Sonraki adımlar](#next-steps) bölümü, belirli hizmet kafesleri ve bu alanlarla nasıl eşlendikleri hakkında daha ayrıntılı bilgi almak için sizi ele alır.
 
-- **Teknik** - trafik yönetimi, politika, güvenlik, gözlemlenebilirlik
+- **Teknik** trafik yönetimi, ilke, güvenlik, Observability
 
-- **İş** - ticari destek, vakıf (CNCF), OSS lisansı, yönetişim
+- **İş** -ticari destek, temel (cncf), OSS lisansı, idare
 
-- **Operasyonel** – kurulum/yükseltmeler, kaynak gereksinimleri, performans gereksinimleri, entegrasyonlar (ölçümler, telemetri, panolar, araçlar, SMI), karma iş yükleri (Linux ve Windows düğüm havuzları), bilgi işlem (Kubernetes, sanal makineler), çoklu küme
+- **İşletimsel** – yükleme/yükseltme, kaynak gereksinimleri, performans gereksinimleri, tümleştirmeler (ölçümler, telemetri, panolar, Araçlar, SMI), karışık iş yükleri (Linux ve Windows düğüm havuzları), Işlem (Kubernetes, sanal makineler), çoklu küme
 
-- **Güvenlik** - auth, kimlik, sertifika yönetimi ve rotasyon, takılabilir harici CA
+- **Güvenlik** -kimlik doğrulama, kimlik, sertifika yönetimi ve döndürme, TAKıLABILIR harici CA
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki belgeler, Azure Kubernetes Hizmeti 'nde (AKS) deneyebileceğiniz hizmet meshes hakkında daha fazla bilgi sağlar:
+Aşağıdaki belgelerde, Azure Kubernetes Service (AKS) üzerinde deneyebileceğiniz hizmet kafesleri hakkında daha fazla bilgi sağlanmaktadır:
 
 > [!div class="nextstepaction"]
-> [Istio hakkında daha fazla bilgi edinin ...][istio-about]
+> [Istio hakkında daha fazla bilgi edinin...][istio-about]
 
 > [!div class="nextstepaction"]
-> [Linkerd hakkında daha fazla bilgi edinin ...][linkerd-about]
+> [Linkerd hakkında daha fazla bilgi edinin...][linkerd-about]
 
 > [!div class="nextstepaction"]
-> [Konsolos hakkında daha fazla bilgi edinin ...][consul-about]
+> [Tüketil hakkında daha fazla bilgi edinin...][consul-about]
 
-Ayrıca, Kubernetes'teki hizmet kafesleri için standart bir arayüz olan Service Mesh Interface'i (SMI) da keşfetmek isteyebilirsiniz:
+Ayrıca, Kubernetes üzerinde hizmet kafesleri için standart arabirim olan hizmet kafesi arabirimini (SMı) araştırmak isteyebilirsiniz:
 
-- [Hizmet Örgü Arabirimi (SMI)][smi]
+- [Hizmet kafesi arabirimi (SMı)][smi]
 
 
 <!-- LINKS - external -->

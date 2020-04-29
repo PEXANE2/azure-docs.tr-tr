@@ -1,6 +1,6 @@
 ---
-title: Statik IP| Microsoft Dokümanlar
-description: Microsoft Azure'daki statik IP'nin neden olduğu RDP sorununu nasıl gidereceklerini öğrenin.| Microsoft Dokümanlar
+title: Statik IP nedeniyle Azure sanal makinelerinde uzak masaüstü yapılamıyor | Microsoft Docs
+description: Microsoft Azure statik IP 'den kaynaklanan RDP sorunuyla ilgili sorunları nasıl giderebileceğinizi öğrenin. | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,62 +13,62 @@ ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
 ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918198"
 ---
-#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Statik IP nedeniyle masaüstünü Azure Sanal Makineleri'ne uzaklamıyor
+#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Statik IP nedeniyle Azure sanal makinelerinde uzak masaüstü yapılamıyor
 
-Bu makalede, statik bir IP VM'de yapılandırıldıktan sonra masaüstünü Azure Windows Sanal Makineleri'ne (VM) uzaklatamayabileceğiniz bir sorun açıklanmaktadır.
+Bu makalede, VM 'de statik bir IP yapılandırıldıktan sonra Azure Windows Sanal Makineleri (VM) ile uzak masaüstü 'nü bir sorunla ilgili bir sorun açıklanmaktadır.
 
 
 ## <a name="symptoms"></a>Belirtiler
 
-Azure'da bir VM'ye RDP bağlantısı yaptığınızda aşağıdaki hata iletisini alırsınız:
+Azure 'da bir VM 'ye RDP bağlantısı yaptığınızda aşağıdaki hata iletisini alırsınız:
 
-**Uzak Masaüstü aşağıdaki nedenlerden dolayı uzak bilgisayara bağlanamaz:**
+**Uzak Masaüstü şu nedenlerden biri için uzak bilgisayara bağlanamıyor:**
 
-1. **Sunucuya uzaktan erişim etkinleştirildi**
+1. **Sunucuya uzaktan erişim etkin değil**
 
-2. **Uzak Bilgisayar kapatıldı**
+2. **Uzak bilgisayar kapalı**
 
 3. **Uzak bilgisayar ağda kullanılamıyor**
 
-**Uzak bilgisayarın açık olduğundan ve ağa bağlı olduğundan ve uzaktan erişimin etkin olduğundan emin olun.**
+**Uzak bilgisayarın açık ve ağa bağlı olduğundan ve uzaktan erişimin etkinleştirildiğinden emin olun.**
 
-Azure portalındaki [Önyükleme tanılama](../troubleshooting/boot-diagnostics.md) bölümündeekran görüntüsünü kontrol ettiğinizde, VM önyüklemelerini normal olarak görürsünüz ve giriş ekranında kimlik bilgilerini beklersiniz.
+Azure portal [önyükleme tanılamasında](../troubleshooting/boot-diagnostics.md) ekran görüntüsünü DENETLEDIĞINIZDE, VM 'nin normal şekilde önyüklenmesini ve oturum açma ekranında kimlik bilgileri beklediğini görürsünüz.
 
 ## <a name="cause"></a>Nedeni
 
-VM, Windows içindeki ağ arabiriminde tanımlanan statik bir IP adresine sahiptir. Bu IP adresi, Azure portalında tanımlanan adresten farklıdır.
+VM, Windows içindeki ağ arabiriminde tanımlı bir statik IP adresine sahiptir. Bu IP adresi, Azure portal tanımlanan adresten farklıdır.
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları izlemeden önce, etkilenen VM'nin işletim sistemi diskinin bir anlık görüntüsünü yedek olarak alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](../windows/snapshot-copy-managed-disk.md)bakın.
+Bu adımları izlemeden önce, etkilenen VM 'nin işletim sistemi diskinin bir yedek olarak anlık görüntüsünü alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-Bu sorunu gidermek için, DHCP'yi etkinleştirmek için Seri denetimini kullanın veya VM için [ağ arabirimini sıfırlayın.](reset-network-interface.md)
+Bu sorunu çözmek için seri denetim 'i kullanarak VM için DHCP 'yi etkinleştirin veya [ağ arabirimini sıfırlayın](reset-network-interface.md) .
 
-### <a name="use-serial-control"></a>Seri denetimi kullanma
+### <a name="use-serial-control"></a>Seri denetim kullan
 
-1. Seri [Konsola bağlanın ve CMD örneğini açın.](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-) Seri Konsol VM'nizde etkinleştirilemiyorsa, [ağ arabirimini sıfırla'ya](reset-network-interface.md)bakın.
-2. DHCP'nin ağ arabiriminde devre dışı bırakıldığını denetleyin:
+1. [Seri konsoluna bağlanın ve cmd örneğini açın](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). VM 'niz üzerinde seri konsol etkinleştirilmemişse, bkz. [ağ arabirimini sıfırlama](reset-network-interface.md).
+2. Ağ arabiriminde DHCP 'nin devre dışı olup olmadığını denetleyin:
 
         netsh interface ip show config
-3. DHCP devre dışı bırakılırsa, DHCP kullanmak için ağ arabiriminizin yapılandırmasını geri çevirin:
+3. DHCP devre dışıysa, ağ arabiriminize ait yapılandırmayı DHCP kullanmak üzere döndürür:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
 
-    Örneğin, ara birim arabirim "Ethernet 2" adlarını adlandırırsa, aşağıdaki komutu çalıştırın:
+    Örneğin, "Ethernet 2"-Work arabirim adları ise aşağıdaki komutu çalıştırın:
 
         netsh interface ip set address name="Ethernet 2" source=dhc
 
-4. Ağ arabiriminin artık doğru şekilde ayarlandığından emin olmak için IP yapılandırmasını yeniden sorgula. Yeni IP adresi, Azure tarafından sağlanan adresle eşleşmelidir.
+4. Ağ arabiriminin artık doğru ayarlandığından emin olmak için IP yapılandırmasını tekrar sorgulayın. Yeni IP adresi, Azure tarafından sağlanmalı bir adresle eşleşmelidir.
 
         netsh interface ip show config
 
-    Bu noktada VM yeniden başlatmak zorunda değilsiniz. VM'ye tekrar ulaşılabilir olacak.
+    Bu noktada VM 'yi yeniden başlatmanız gerekmez. VM 'ye erişilecektir.
 
-Bundan sonra, VM için statik IP yapılandırmak istiyorsanız, [bir VM için statik IP adreslerini yapılandırma](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)kınızda.
+Bundan sonra, VM için statik IP 'yi yapılandırmak istiyorsanız bkz. [BIR VM için STATIK IP adreslerini yapılandırma](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).

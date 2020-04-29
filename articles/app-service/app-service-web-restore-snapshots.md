@@ -1,65 +1,65 @@
 ---
-title: Uygulamayı anlık görüntüden geri yükleme
-description: Uygulamanızı anlık görüntüden nasıl geri yükleyin öğrenin. Otomatik gölge kopyalarıyla Premium katmanında beklenmeyen veri kaybından kurtulun.
+title: Uygulamayı bir anlık görüntüden geri yükleme
+description: Uygulamanızı bir anlık görüntüden nasıl geri yükleyeceğinizi öğrenin. Premium katmandaki beklenmedik veri kaybını otomatik gölge kopyalarla kurtarın.
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
 ms.topic: article
 ms.date: 04/04/2018
 ms.reviewer: nicking
 ms.custom: seodec18
 ms.openlocfilehash: b17a49535541c8f75f65cdbe9986a895427f3877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255145"
 ---
-# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure'daki bir uygulamayı anlık görüntüden geri yükleme
-Bu makalede, [Azure Uygulama Hizmeti'ndeki](../app-service/overview.md) bir uygulamayı anlık görüntüden nasıl geri yükleyebilirsiniz gösterilmektedir. Uygulamanızın anlık görüntülerinden birine dayanarak uygulamanızı önceki duruma geri yükleyebilirsiniz. Anlık görüntü yedekleme etkinleştirmek gerekmez, platform otomatik olarak veri kurtarma amacıyla tüm uygulamaların bir anlık kaydeder.
+# <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure 'da bir uygulamayı bir anlık görüntüden geri yükleme
+Bu makalede bir anlık görüntüden [Azure App Service](../app-service/overview.md) bir uygulamanın nasıl geri yükleneceği gösterilmektedir. Uygulamanızı uygulamanızın anlık görüntülerinden birine göre önceki bir duruma geri yükleyebilirsiniz. Anlık görüntü yedeklemesini etkinleştirmeniz gerekmez, platform veri kurtarma amacıyla tüm uygulamaların anlık görüntüsünü otomatik olarak kaydeder.
 
-Anlık görüntüler artımlı gölge kopyalarıdır ve normal [yedeklemelere](manage-backup.md)göre çeşitli avantajlar sunar:
+Anlık görüntüler artımlı gölge kopyalardır ve düzenli [yedeklemeler](manage-backup.md)üzerinde çeşitli avantajlar sunar:
 - Dosya kilitleri nedeniyle dosya kopyalama hatası yok.
-- Depolama boyutu sınırlaması yok.
-- Yapılandırma gerekmez.
+- Depolama boyutu kısıtlaması yok.
+- Yapılandırma gerekmiyor.
 
-Anlık görüntülerden geri ödeme, **Premium** katmanda veya daha yüksek bir seviyede çalışan uygulamalar için kullanılabilir. Uygulamanızı ölçeklendirme hakkında bilgi için [Azure'da bir uygulamayı ölçeklendir'e](manage-scale-up.md)bakın.
+Anlık görüntülerden geri yükleme, **Premium** katmanda veya üzeri sürümlerde çalışan uygulamalar tarafından kullanılabilir. Uygulamanızı ölçeklendirme hakkında daha fazla bilgi için bkz. [Azure 'da bir uygulamayı](manage-scale-up.md)ölçeklendirme.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Özellik şu anda önizlemede.
+- Bu özellik şu anda önizleme aşamasındadır.
 - Yalnızca aynı uygulamaya veya bu uygulamaya ait bir yuvaya geri yükleyebilirsiniz.
-- Uygulama Hizmeti geri yükleme yaparken hedef uygulamayı veya hedef yuvasını durdurur.
-- Uygulama Hizmeti, platform veri kurtarma amacıyla üç aylık anlık görüntüler tutar.
-- Anlık görüntüleri yalnızca son 30 gün için geri yükleyebilirsiniz.
-- Uygulama Hizmeti Ortamında çalışan Uygulama Hizmetleri anlık görüntüleri desteklemez.
+- App Service, geri yüklemeyi yaparken hedef uygulamayı veya hedef yuvayı durduruyor.
+- App Service platform veri kurtarma amacıyla anlık görüntüleri üç aya tutar.
+- Yalnızca son 30 günün anlık görüntülerini geri yükleyebilirsiniz.
+- App Service Ortamı çalışan uygulama hizmetleri anlık görüntüleri desteklemez.
  
 
-## <a name="restore-an-app-from-a-snapshot"></a>Anlık görüntüden uygulamayı geri yükleme
+## <a name="restore-an-app-from-a-snapshot"></a>Bir uygulamayı anlık görüntüden geri yükleme
 
-1. [Azure portalında](https://portal.azure.com)uygulamanızın **Ayarlar** sayfasında Yedekler sayfasını görüntülemek için **Yedekler'i** tıklatın. **Backups** Ardından **Anlık Görüntü (Önizleme)** bölümünün altında **Geri Yükle'yi** tıklatın.
+1. [Azure Portal](https://portal.azure.com)uygulamanızın **Ayarlar** **sayfasında yedeklemeler sayfasını göstermek** için **yedeklemeler** ' e tıklayın. Ardından **anlık görüntü (Önizleme)** bölümünün altında **geri yükle** ' ye tıklayın.
    
     ![](./media/app-service-web-restore-snapshots/1.png)
 
-2. Geri **Yükleme** sayfasında, geri yüklemek için anlık görüntü seçin.
+2. **Geri yükle** sayfasında geri yüklenecek anlık görüntüyü seçin.
    
     ![](./media/app-service-web-restore-snapshots/2.png)
    
-3. **Geri Yükleme hedefinde**uygulama geri yüklemesi için hedef belirtin.
+3. **Geri yükleme hedefinde**uygulama geri yükleme hedefini belirtin.
    
     ![](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > **Overwrite'ı**seçerseniz, uygulamanızın geçerli dosya sistemindeki tüm varolan veriler silinir ve üzerine yazılır. **Tamam'ı**tıklatmadan önce, yapmak istediğiniz şeyin bu olduğundan emin olun.
+   > **Üzerine yaz**seçeneğini belirlerseniz, uygulamanızın geçerli dosya sistemindeki tüm mevcut veriler silinir ve üzerine yazılır. **Tamam**' a tıklamadan önce, yapmak istediğiniz durum olduğundan emin olun.
    > 
    > 
       
    > [!Note]
-   > Geçerli teknik sınırlamalar nedeniyle, yalnızca aynı ölçek birimindeki uygulamalara geri yükleyebilirsiniz. Bu sınırlama gelecekteki bir sürümde kaldırılır.
+   > Geçerli teknik sınırlamalar nedeniyle, yalnızca aynı ölçek birimindeki uygulamalara geri yükleyebilirsiniz. Bu sınırlama gelecekteki bir sürümde kaldırılacak.
    > 
    > 
    
-    Yuvaya geri yüklemek için **Varolan Uygulamayı** seçebilirsiniz. Bu seçeneği kullanmadan önce, uygulamanızda zaten bir yuva oluşturmuş olmalısınız.
+    Bir yuvaya geri yüklemek için **var olan uygulamayı** seçebilirsiniz. Bu seçeneği kullanmadan önce, uygulamanızda zaten bir yuva oluşturmuş olmanız gerekir.
 
-4. Sitenizin yapılandırmasını geri yüklemeyi seçebilirsiniz.
+4. Site yapılandırmanızı geri yüklemeyi seçebilirsiniz.
    
     ![](./media/app-service-web-restore-snapshots/4.png)
 

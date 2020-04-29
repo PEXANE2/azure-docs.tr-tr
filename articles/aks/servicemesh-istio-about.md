@@ -1,100 +1,100 @@
 ---
-title: Istio'ya Genel Bakış
-description: Istio hakkında genel bilgi edinin
+title: Istio 'ya genel bakış
+description: Istio 'ya genel bakış edinme
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593909"
 ---
-# <a name="istio"></a>Istio
+# <a name="istio"></a>İstio dili
 
 ## <a name="overview"></a>Genel Bakış
 
-[Istio][istio] tam özellikli, özelleştirilebilir ve genişletilebilir hizmet örgü.
+[Istio][istio] , tam özellikli, özelleştirilebilir ve genişletilebilir bir hizmet ağı.
 
 ## <a name="architecture"></a>Mimari
 
-Istio, [Elçi][envoy-proxy]tabanlı sidecars oluşan bir veri düzlemi sağlar. Bu akıllı yakınlıklar, meshed uygulamalarınıza ve iş yüklerinizdeki tüm ağ trafiğini kontrol eder.
+İstio, [Envoy][envoy-proxy]tabanlı parçalardan oluşan bir veri düzlemi sağlar. Bu akıllı proxy 'ler, yerleşik uygulamalarınızın ve iş yüklerinizin içindeki ve içindeki tüm ağ trafiğini denetler.
 
-Kontrol düzlemi yapılandırmayı, ilkeyi ve telemetriyi aşağıdaki [bileşenler][what-is-istio]aracılığıyla yönetir:
+Denetim düzlemi yapılandırma, ilke ve Telemetriyi aşağıdaki [Bileşenler][what-is-istio]aracılığıyla yönetir:
 
-- **Mikser** - Erişim denetimi ve kullanım ilkelerini uygular. [Prometheus][prometheus]içine itilir vekillerden telemetri toplar.
+- **Karıştırıcı** -erişim denetimi ve kullanım ilkelerini uygular. [Prometheus][prometheus]'a gönderilen proxy 'lerden telemetri toplar.
 
-- **Pilot** - Vekiller için servis bulma ve trafik yönetimi politikası/yapılandırması sağlar.
+- **Pilot** -proxy 'ler için hizmet bulma ve trafik yönetimi ilkesi/yapılandırma sağlar.
 
-- **Citadel** - Hizmetler arasında mTLS'ye izin veren kimlik ve güvenlik özellikleri sağlar.
+- **CITADEL** -hizmetler arasında MTLS 'ye izin veren kimlik ve güvenlik özellikleri sağlar.
 
-- **Kadırga** - Özetler ve bileşenlere yapılandırma sağlar.
+- **Gale** -Özet ve bileşenlere yapılandırma sağlar.
 
-Aşağıdaki mimari diyagram, veri düzlemi ve kontrol düzlemindeki çeşitli bileşenlerin nasıl etkileştiğini gösterir.
+Aşağıdaki mimari diyagramda, veri düzlemi ve denetim düzlemi içindeki çeşitli bileşenlerin nasıl etkileşimde bulunduğu gösterilmektedir.
 
 
 ![Istio bileşenlerine ve mimarisine genel bakış.](media/servicemesh/istio/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>Seçim kriterleri
+## <a name="selection-criteria"></a>Seçim ölçütü
 
-İş yükleriniz için Istio'yu değerlendirirken aşağıdaki alanları anlamak ve göz önünde bulundurmak önemlidir:
+İş yükleriniz için bir Istil değerlendirirken aşağıdaki alanların anlaşılması ve dikkate alınması önemlidir:
 
-- [Tasarım Hedefleri](#design-goals)
+- [Tasarım hedefleri](#design-goals)
 - [Özellikler](#capabilities)
 - [Senaryolar](#scenarios)
 
 
 ### <a name="design-goals"></a>Tasarım hedefleri
 
-Aşağıdaki tasarım hedefleri Istio projesine [yol gösterin:][design-goals]
+Aşağıdaki tasarım hedefleri, Istio projesine [kılavuzluk][design-goals] eden:
 
-- **Saydamlığı En Üst Düzeye Çıkarın** - Sistemden gerçek değer elde etmek için minimum çalışma miktarıyla benimsenmesine izin verin.
+- **Saydamlığı en üst düzeye çıkarın** -sistemden gerçek değer almak için minimum iş miktarı ile benimseme olanağı sağlar.
 
-- **Genişletilebilirlik** - Büyümek ve değişen ihtiyaçlarına uyum sağlayabilmeli.
+- **Genişletilebilirlik** -değişen ihtiyaçları büyütmek ve uyarlayabilmelidir.
 
-- **Taşınabilirlik** - Bulut, şirket içi gibi farklı ortamlarda kolayca çalıştırın.
+- **Taşınabilirlik** -bulutta, şirket içinde farklı ortamlarda kolayca çalışır.
 
-- **İlke Tekdüzeliği** - Çeşitli kaynaklar arasında ilke tanımında tutarlılık.
+- **İlke** tutarlılığı-çeşitli kaynaklar arasında ilke tanımında tutarlılık.
 
 
 ### <a name="capabilities"></a>Özellikler
 
-Istio aşağıdaki yetenekleri sağlar:
+İstio, aşağıdaki özellik kümesini sağlar:
 
-- **Mesh** – ağ geçitleri (çoklu küme), sanal makineler (örgü genişletme)
+- **Ağ-ağ** geçitleri (çoklu küme), sanal makineler (kafes genişletmesi)
 
-- **Trafik Yönetimi** – yönlendirme, bölme, zaman aşımları, devre kesiciler, yeniden denemeler, giriş, çıkış
+- **Trafik yönetimi** – yönlendirme, bölme, zaman aşımları, devre kesiciler, yeniden denemeler, giriş, çıkış
 
-- **İlke** – erişim kontrolü, fiyat sınırı, kota, özel ilke bağdaştırıcıları
+- **İlke** – erişim denetimi, hız sınırı, kota, özel ilke bağdaştırıcıları
 
-- **Güvenlik** – kimlik doğrulama (jwt), yetkilendirme, şifreleme (mTLS), harici CA (HashiCorp Vault)
+- **Güvenlik** – kimlik doğrulaması (JWT), yetkilendirme, şifreleme (MTLS), dış CA (HashiCorp Kasası)
 
-- **Gözlemlenebilirlik** – altın ölçümler, ayna, izleme, özel adaptörler, prometheus, grafana
+- **Observability** – altın ölçümler, yansıtma, izleme, özel bağdaştırıcılar, Prometheus, grafana
 
 ### <a name="scenarios"></a>Senaryolar
 
-Istio aşağıdaki senaryolar için uygundur ve önerilmektedir:
+İstio, aşağıdaki senaryolar için uygundur ve önerilir:
 
-- Genişletilebilirlik ve zengin yetenekler kümesi gerektirir
+- Genişletilebilirlik ve zengin özellik kümesi gerektir
 
-- VM tabanlı iş yüklerini içerecek şekilde kafes genişletme
+- VM tabanlı iş yüklerini içerecek şekilde ağ genişletmesi
 
-- Çok kümeli hizmet örgü
+- Çoklu küme hizmeti ağı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki belgeler, Istio'yu Azure Kubernetes Hizmetine (AKS) nasıl yükleyebileceğinizi açıklar:
+Aşağıdaki belgelerde, Azure Kubernetes Service (AKS) üzerine Istio 'u nasıl yükleyebileceğiniz açıklanmaktadır:
 
 > [!div class="nextstepaction"]
-> [Azure Kubernetes Hizmetinde (AKS) Istio'ya Yükleme][istio-install]
+> [Azure Kubernetes Service (AKS) ' de Istio 'yu kurma][istio-install]
 
-Ayrıca Istio kavramlarını ve ek dağıtım modellerini de keşfedebilirsiniz:
+Ayrıca, Istio kavramlarını ve ek dağıtım modellerini de inceleyebilirsiniz:
 
-- [Istio Kavramlar][what-is-istio]
-- [Istio Dağıtım Modelleri][deployment-models]
+- [İstio kavramları][what-is-istio]
+- [İstio dağıtım modelleri][deployment-models]
 
 <!-- LINKS - external -->
 [istio]: https://istio.io

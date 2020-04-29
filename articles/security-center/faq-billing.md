@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi SSS - faturalandırma ile ilgili sorular
-description: Bu SSS, tehditleri önlemenize, algılamanıza ve bunlara yanıt vermenize yardımcı olan bir ürün olan Azure Güvenlik Merkezi hakkındaki faturalandırma sorularını yanıtlar.
+title: Azure Güvenlik Merkezi hakkında SSS-faturalandırma hakkında sorular
+description: Bu SSS, tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olan Azure Güvenlik Merkezi ile ilgili faturalandırma sorularına yanıt verir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,20 +14,20 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77913846"
 ---
 # <a name="billing-questions"></a>Faturalama soruları
 
-## <a name="how-does-billing-work-for-azure-security-center"></a>Azure Güvenlik Merkezi için faturalandırma nasıl çalışır?
+## <a name="how-does-billing-work-for-azure-security-center"></a>Azure Güvenlik Merkezi için Faturalandırma nasıl çalışır?
 Güvenlik Merkezi iki katmanda sunulur:
 
-- **Ücretsiz katman,** Azure kaynaklarınızın güvenlik durumuna, temel güvenlik ilkesine, güvenlik önerilerine ve iş ortaklarından gelen güvenlik ürünleri ve hizmetleriyle tümleştirmede görünürlük sağlar.
+- **Ücretsiz katman** , Azure kaynaklarınızın güvenlik durumu, temel güvenlik ilkesi, güvenlik önerileri ve iş ortaklarının güvenlik ürünleri ve hizmetleriyle tümleştirilmesine ilişkin görünürlük sağlar.
 
-- **Standart katman,** güvenlik uyarıları, tehdit istihbaratı, davranış analizi, anormallik tespiti ve tehdit atıf raporlarını içeren tehdit koruma yetenekleri ekler. Standart bir katman ücretsiz deneme başlatabilirsiniz. Yükseltmek için güvenlik ilkesinde [Fiyatlandırma Katmanı'nı](https://docs.microsoft.com/azure/security-center/security-center-pricing) seçin. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+- **Standart katman** , güvenlik uyarıları, tehdit bilgileri, davranış analizi, anomali algılama ve tehdit attributıon raporları içeren tehdit koruması özellikleri ekler. Standart katman ücretsiz deneme sürümü başlatabilirsiniz. Yükseltmek için güvenlik ilkesinde [fiyatlandırma katmanı](https://docs.microsoft.com/azure/security-center/security-center-pricing) ' nı seçin. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Kuruluşumda kimlertarafından azure güvenlik merkezinde fiyatlandırma katmanı değişiklikleri gerçekleştirilennasıl izleyebilirsiniz?
-Azure Abonelikleri' nde fiyatlandırma katmanını değiştirme iznine sahip birden çok yönetici olabilir. Hangi kullanıcının bir fiyatlandırma katmanı değişikliği gerçekleştirdiğini öğrenmek için Azure Etkinlik Günlüğü'ni kullanın. Daha fazla bilgi için [buraya](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)bakın.
+## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Kuruluşumun Azure Güvenlik Merkezi 'nde fiyatlandırma katmanı değişikliklerini gerçekleştirdiği kişileri nasıl izleyebilirim?
+Azure aboneliklerinde fiyatlandırma katmanını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının fiyatlandırma katmanı değişikliğini gerçekleştirmediğini öğrenmek için Azure etkinlik günlüğünü kullanın. Daha fazla bilgi için [buraya](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)bakın.

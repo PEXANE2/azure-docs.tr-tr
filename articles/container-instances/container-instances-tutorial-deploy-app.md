@@ -1,17 +1,17 @@
 ---
-title: Öğretici - Konteyner örneğine konteyner uygulamasını dağıtma
-description: Azure Kapsayıcı Örnekleri 3'ün bölüm 3'ü öğretici - Kapsayıcı uygulamasını Azure Kapsayıcı Örneklerine dağıtma
+title: Öğretici-kapsayıcı uygulamasını kapsayıcı örneğine dağıtma
+description: Azure Container Instances öğreticisi Bölüm 3/3-kapsayıcı uygulamayı Azure Container Instances dağıtma
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 757b41bd69d69deb901e3b5b9a633dce3b9e133a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78249966"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Kapsayıcı uygulamasını Azure Kapsayıcı Örneklerine dağıtma
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Öğretici: Azure Container Instances bir kapsayıcı uygulaması dağıtma
 
 Bu, üç kısımdan oluşan serinin son öğreticisidir. Serinin önceki kısımlarında [bir kapsayıcı görüntüsü oluşturuldu](container-instances-tutorial-prepare-app.md) ve [Azure Container Registry’ye gönderildi](container-instances-tutorial-prepare-acr.md). Bu makalede, Azure Container Instances’a kapsayıcı dağıtılarak seri tamamlanır.
 
@@ -32,11 +32,11 @@ Bu bölümde, [birinci öğreticide](container-instances-tutorial-prepare-app.md
 
 ### <a name="get-registry-credentials"></a>Kayıt defteri kimlik bilgilerini alma
 
-[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure kapsayıcı kayıt defterinde barındırılan bir görüntüyü dağıttığınızda, kayıt defterine erişmek için kimlik bilgileri sağlamanız gerekir. 
+[İkinci öğreticide](container-instances-tutorial-prepare-acr.md)oluşturulan gibi özel bir Azure Container Registry 'de barındırılan bir görüntüyü dağıtırken, kayıt defterine erişmek için kimlik bilgilerini sağlamanız gerekir. 
 
-Birçok senaryo için en iyi yöntem, kayıt defterinize *çekme* izinleri içeren bir Azure Active Directory hizmet yöneticisi oluşturmak ve yapılandırmaktır. Gerekli izinlere sahip bir hizmet ilkesi oluşturmak için örnek komut dosyaları için [Azure Kapsayıcı Örnekleri'nden Azure Kapsayıcı Kayıt Defteri](../container-registry/container-registry-auth-aci.md) ile Kimlik Doğrulaması'ya bakın. Hizmet ana *kimliği* ve *hizmet temel parolasını*not alın. Kapsayıcıyı dağıtırken kayıt defterine erişmek için bu kimlik bilgilerini kullanırsınız.
+Birçok senaryo için en iyi yöntem, Kayıt defterinize yönelik *çekme* izinleriyle Azure Active Directory hizmet sorumlusu oluşturmak ve yapılandırmak olacaktır. Gerekli izinlere sahip bir hizmet sorumlusu oluşturmak için örnek betikler için [Azure Container Instances Azure Container Registry Ile kimlik doğrulama](../container-registry/container-registry-auth-aci.md) konusuna bakın. *Hizmet sorumlusu kimliği* ve *hizmet sorumlusu parolasını*göz önünde yararlanın. Bu kimlik bilgilerini, kapsayıcıyı dağıtırken kayıt defterine erişmek için kullanırsınız.
 
-Ayrıca konteyner kayıt defteri giriş sunucusunun tam adı `<acrName>` (kayıt defterinin adı ile değiştirin):
+Ayrıca, kapsayıcı kayıt defteri oturum açma sunucusunun tam adına de ihtiyacınız vardır ( `<acrName>` kayıt defterinizin adıyla değiştirin):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
@@ -44,7 +44,7 @@ az acr show --name <acrName> --query loginServer
 
 ### <a name="deploy-container"></a>Kapsayıcıyı dağıtma
 
-Şimdi kapsayıcıyı dağıtmak için [az container create][az-container-create] komutunu kullanın. Önceki `<acrLoginServer>` komuttan elde ettiğiniz değerle değiştirin. Kayıt defterine erişmek için oluşturduğunuz hizmet temel kimliği ve parolasını değiştirin. `<service-principal-ID>` `<service-principal-password>` İstenilen bir DNS adı ile değiştirin. `<aciDnsLabel>`
+Şimdi kapsayıcıyı dağıtmak için [az container create][az-container-create] komutunu kullanın. Önceki `<acrLoginServer>` komuttan elde ettiğiniz değerle değiştirin. Ve `<service-principal-ID>` `<service-principal-password>` kayıt defterine erişmek IÇIN oluşturduğunuz hizmet sorumlusu kimliği ve parolasıyla değiştirin. İstenen `<aciDnsLabel>` bir DNS adıyla değiştirin.
 
 ```azurecli
 az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
@@ -70,7 +70,7 @@ Dağıtım başarılı olduktan sonra, [az container show][az-container-show] ko
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-Örnek:
+Örneğin:
 ```output
 "aci-demo.eastus.azurecontainer.io"
 ```

@@ -1,6 +1,6 @@
 ---
-title: AZURE'da SAP HANA'ya Genel Bakış (Büyük Örnekler) | Microsoft Dokümanlar
-description: SAP HANA'nın Azure'da (Büyük Örnekler) nasıl dağıtılanabildiğini genel olarak öğrenin.
+title: Azure 'daki SAP HANA genel bakış (büyük örnekler) | Microsoft Docs
+description: Azure 'da SAP HANA dağıtmaya genel bakış (büyük örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,48 +14,48 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616961"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
-Azure'daki SAP HANA (Büyük Örnekler) Azure için benzersiz bir çözümdür. Azure, SAP HANA'yı dağıtmak ve çalıştırmak için sanal makineler sağlamanın yanı sıra, size adanmış çıplak metal sunucularda SAP HANA'yı çalıştırma ve dağıtma olanağı sunar. Azure'da SAP HANA (Büyük Örnekler) çözümü, size atanan paylaşılmayan ana bilgisayar/sunucu çıplak metal donanımı üzerine inşa edilir. Sunucu donanımı, bilgi işlem/sunucu, ağ ve depolama altyapısı içeren daha büyük pullara gömülüdür. Bir kombinasyon olarak, HANA özel veri merkezi entegrasyonu (TDI) sertifikalı. Azure'daki SAP HANA (Büyük Örnekler) farklı sunucu SUS'ları veya boyutları sunar. Birimler 36 Intel CPU çekirdeğine ve 768 GB belleğe sahip olabilir ve 480 Intel CPU çekirdeğine ve 24 TB'a kadar belleğe sahip birimlere kadar çıkabilir.
+Azure 'da SAP HANA (büyük örnekler), Azure için benzersiz bir çözümdür. Azure, SAP HANA dağıtmak ve çalıştırmak için sanal makineler sağlamaya ek olarak size adanmış çıplak sunucularda SAP HANA çalıştırma ve dağıtma olanağı sunar. Azure 'da SAP HANA (büyük örnekler) çözüm, size atanan paylaşılmayan konak/sunucu çıplak donanımlarında oluşturulur. Sunucu donanımı, işlem/sunucu, ağ ve depolama altyapısını içeren daha büyük damgalara katıştırılır. Buna bir bileşim olarak, HANA 'ya özel veri merkezi tümleştirmesi (TDı) sertifikalandırilmiştir. Azure 'daki SAP HANA (büyük örnekler) farklı sunucu SKU 'Ları veya boyutları sunar. Birimlerde 36 Intel CPU çekirdeği ve 768 GB bellek bulunabilir ve en fazla 480 Intel CPU çekirdeği ve 24 TB 'a kadar bellek bulunan birimlere gidebilirsiniz.
 
-Altyapı damgası içindeki müşteri yalıtımı kiracılarda gerçekleştirilir ve aşağıdakiler gibi görünür:
+Altyapı damgası içindeki müşteri yalıtımı, kiracılar içinde gerçekleştirilir ve şöyle görünür:
 
-- **Ağ :** Müşterilerin altyapı yığını içindeki yalıtımı, atanan kiracı başına sanal ağlar aracılığıyla. Kiracı tek bir müşteriye atanır. Bir müşterinin birden çok kiracısı olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyinde kiracılar arasında ağ iletişimini yasaklar.
-- **Depolama bileşenleri**: Depolama hacimleri atanmış depolama sanal makineleri aracılığıyla yalıtım. Depolama birimleri yalnızca tek bir depolama sanal makinesine atanabilir. Bir depolama sanal makine sap HANA TDI sertifikalı altyapı yığınında tek bir kiracı ya da yalnızca atanır. Sonuç olarak, bir depolama sanal makineatanan depolama birimleri yalnızca belirli ve ilgili kiracı erişilebilir. Bunlar, dağıtılan farklı kiracılar arasında görünmez.
-- **Sunucu veya ana bilgisayar**: Sunucu veya ana bilgisayar birimi müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan sunucu veya ana bilgisayar, tek bir kiracıya atanan atomik bir çıplak metal bilgi işlem birimidir. Ana bilgisayar veya sunucuyu başka bir müşteriyle paylaşmanıza neden olabilecek *donanım* bölümleme veya yumuşak bölümleme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya monte edilir. Kiracı, yalnızca farklı SK'lerden oluşan bir sunucu birimine sahip olabilir.
-- Azure (Büyük Örnekler) altyapı damgası üzerindeki BIR SAP HANA'da, ağ, depolama ve bilgi işlem düzeyindeki kiracı kavramları aracılığıyla birçok farklı kiracı dağıtılır ve birbirlerine karşı izole edilir. 
+- **Ağ iletişimi**: müşteri tarafından atanan kiracı başına sanal ağlar aracılığıyla altyapı yığını dahilinde müşterilerin yalıtımı. Tek bir müşteriye bir kiracı atanır. Müşterinin birden çok kiracının olması olabilir. Kiracıların ağ yalıtımı, kiracılar aynı müşteriye ait olsa bile, altyapı damgası düzeyindeki kiracılar arasındaki ağ iletişimini yasaklar.
+- **Depolama bileşenleri**: depolama birimleri atanmış depolama sanal makineler aracılığıyla yalıtım. Depolama birimleri, yalnızca bir depolama sanal makinesine atanabilir. Bir depolama sanal makinesi, SAP HANA TDı sertifikalı altyapı yığınında yalnızca tek bir kiracıya atanır. Sonuç olarak, bir depolama sanal makinesine atanan depolama birimlerine yalnızca belirli bir ve ilgili kiracıdan erişilebilir. Bunlar farklı dağıtılan kiracılar arasında görünür değildir.
+- **Sunucu veya konak**: bir sunucu veya konak birimi, müşteriler veya kiracılar arasında paylaşılmaz. Bir müşteriye dağıtılan bir sunucu veya konak, tek bir kiracıya atanan atomik çıplak bir işlem birimidir. Bir konak veya sunucuyu başka bir müşteriyle paylaştırmanıza neden olabilecek *bir donanım bölümlendirme* veya yumuşak bölümlendirme kullanılmaz. Belirli bir kiracının depolama sanal makinesine atanan depolama birimleri böyle bir sunucuya bağlanır. Bir kiracı, özel olarak atanmış farklı SKU 'Lara ait bir veya birden çok sunucu birimine sahip olabilir.
+- Azure 'daki bir SAP HANA (büyük örnekler) altyapı damgasında, ağ, depolama ve işlem düzeyindeki kiracı kavramları aracılığıyla birçok farklı kiracı dağıtılır ve birbirlerine karşı yalıtılır. 
 
 
-Bu çıplak metal sunucu birimleri yalnızca SAP HANA'yı çalıştırmak için desteklenir. SAP uygulama katmanı veya iş yükü orta gereç katmanı sanal makinelerde çalışır. Azure (Büyük Örnekler) birimlerinde SAP HANA'yı çalıştıran altyapı damgaları Azure ağ hizmetleri omurgalarına bağlanır. Bu şekilde, Azure (Büyük Örnekler) ünitelerindeki SAP HANA ile sanal makineler arasında düşük gecikmeli bağlantı sağlanır.
+Bu çıplak sunucu birimleri yalnızca SAP HANA çalıştırmak için desteklenir. SAP uygulama katmanı veya iş yükü orta-Ware katmanı sanal makinelerde çalışır. Azure 'da SAP HANA çalıştıran altyapı damgaları (büyük örnekler), Azure ağ hizmetleri geri kemikleri 'ne bağlıdır. Bu şekilde, Azure 'daki SAP HANA (büyük örnekler) birimler ve sanal makineler arasında düşük gecikmeli bağlantı sağlanır.
 
-Temmuz 2019 itibariyle, HANA Büyük Örnek pullarının iki farklı revizyonu ve dağıtımların yeri arasında ayrım yapıyoruz:
+2019 Temmuz itibariyle, HANA büyük örnek damgalarının ve dağıtımların konumunun iki farklı düzeltmesi arasında ayrım yaptık:
 
-- "Revizyon 3" (Rev 3): Temmuz 2019'dan önce müşterinin dağıtılaması için yapılmış pullar
-- "Revizyon 4" (Rev 4): Azure VM ana bilgisayarlarına yakın bir mesafede dağıtılan ve şu ana kadar Azure bölgelerinde yayımlanan yeni damga tasarımı:
+- "Düzeltme 3" (Rev 3): müşterinin, 2019 Temmuz 'dan önce dağıtılması için kullanılabilir hale getirilen damgalar
+- "Düzeltme 4" (Rev 4): Azure VM konaklarına yakın bir yerde dağıtılan ve şimdiye kadar Azure bölgelerinde yayınlanan yeni damga tasarımı:
     -  Batı ABD 2 
     -  Doğu ABD 
     -  Batı Avrupa
     -  Kuzey Avrupa
 
 
-Bu belge, Azure'daki SAP HANA'yı (Büyük Örnekler) kapsayan birkaç belgeden biridir. Bu belge, çözümün sağladığı temel mimari, sorumluluklar ve hizmetleri tanımaktadır. Çözümün üst düzey yetenekleri de tartışılmıştır. Ağ ve bağlantı gibi diğer birçok alanda, diğer dört belge ayrıntıları ve ayrıntılı bilgileri kapsar. SAP HANA'nın Azure'daki (Büyük Örnekler) dokümantasyonu, SAP NetWeaver yüklemesinin veya SAP NetWeaver'ın VM'lerde dağıtımlarının yönlerini kapsamaz. Azure'daki SAP NetWeaver, aynı Azure belge kapsayıcısında bulunan ayrı belgelerle kaplıdır. 
+Bu belge, Azure 'daki SAP HANA (büyük örnekler) kapsayan çeşitli belgelerden biridir. Bu belgede çözüm tarafından sunulan temel mimari, sorumluluklar ve hizmetler tanıtılmaktadır. Çözümün üst düzey özellikleri de ele alınmıştır. Ağ ve bağlantı gibi diğer birçok alan için, diğer dört belge ayrıntıları ve detaya gitme bilgilerini kapsar. Azure 'daki SAP HANA belgeleri (büyük örnekler), VM 'lerde SAP NetWeaver yüklemesinin veya SAP NetWeaver dağıtımlarının yönlerini kapsamaz. Azure üzerinde SAP NetWeaver, aynı Azure belge kapsayıcısında bulunan ayrı belgelerde ele alınmıştır. 
 
 
-HANA Büyük Örnek kılavuzunun farklı belgeleri aşağıdaki alanları kapsamaktadır:
+HANA büyük örnek kılavuzunun farklı belgeleri aşağıdaki alanlara sahiptir:
 
-- [AZURE'da SAP HANA (Büyük Örnekler) genel bakışı ve mimarisi](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure'da SAP HANA (Büyük Örnekler) altyapısı ve bağlantısı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA'yı (Büyük Örnekler) Azure'a yükleme ve yapılandırma](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure'da SAP HANA (Büyük Örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Azure'da SAP HANA (Büyük Örnekler) sorun giderme ve izleme](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [STONITH kullanılarak SUSE'da yüksek kullanılabilirlik](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Revizyon 3 pulların Tip II SK'leri için IŞLETIM sistemi yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [Azure 'da SAP HANA (büyük örnekler) genel bakış ve mimari](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da SAP HANA (büyük örnekler) altyapı ve bağlantı](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da SAP HANA (büyük örnekler) yükleyip yapılandırma](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da yüksek kullanılabilirlik ve olağanüstü durum kurtarma SAP HANA (büyük örnekler)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 'da sorun giderme ve izleme SAP HANA (büyük örnekler)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kurulumu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Düzeltme 3 damgalarının tür II SKU 'Ları için işletim sistemi yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **Sonraki adımlar**
-- Bkz. [Terimleri Tanıyın](hana-know-terms.md)
+- [Koşulları öğrenin](hana-know-terms.md)

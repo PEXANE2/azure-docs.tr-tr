@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: ee8beaf3368f0efc05f1a1d679398a733002bf17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594040"
 ---
-### <a name="add-grafana-secret"></a>Grafana Secret ekle
+### <a name="add-grafana-secret"></a>Grafana gizli dizisi Ekle
 
-Belirteci parolanızla değiştirin `REPLACE_WITH_YOUR_SECURE_PASSWORD` ve aşağıdaki komutları çalıştırın:
+`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 ```powershell
 $GRAFANA_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("grafana"))
@@ -31,9 +31,9 @@ data:
   passphrase: $GRAFANA_PASSPHRASE" | kubectl apply -f -
 ```
 
-### <a name="add-kiali-secret"></a>Kiali Secret ekle
+### <a name="add-kiali-secret"></a>Kiali gizli dizisi Ekle
 
-Belirteci parolanızla değiştirin `REPLACE_WITH_YOUR_SECURE_PASSWORD` ve aşağıdaki komutları çalıştırın:
+`REPLACE_WITH_YOUR_SECURE_PASSWORD` Belirteci parolanızla değiştirin ve aşağıdaki komutları çalıştırın:
 
 ```powershell
 $KIALI_USERNAME=[Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("kiali"))

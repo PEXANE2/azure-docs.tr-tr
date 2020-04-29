@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver için Azure VM'ler yüksek kullanılabilirlik | Microsoft Dokümanlar
-description: Azure Sanal Makinelerde SAP NetWeaver için yüksek kullanılabilirlik kılavuzu
+title: Azure sanal makineleri SAP NetWeaver için yüksek kullanılabilirlik | Microsoft Docs
+description: Azure sanal makinelerde SAP NetWeaver için yüksek kullanılabilirlik Kılavuzu
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,13 +17,13 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25a0ac9ab349cfe8bef8e33d3f533bc5942e6323
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623822"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure sanal makineler SAP NetWeaver için yüksek kullanılabilirlik
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -91,7 +91,7 @@ ms.locfileid: "77623822"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID yüksek kullanılabilirlik yapılandırması)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP çoklu SID yüksek kullanılabilirlik yapılandırması)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -184,67 +184,67 @@ ms.locfileid: "77623822"
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
 
-Azure Sanal Makineler, bilgi işlem, depolama ve ağ kaynaklarına en az sürede ve uzun satın alma döngüleri olmadan ihtiyaç duyan kuruluşlar için çözümdür. SAP NetWeaver tabanlı ABAP, Java ve ABAP+Java yığını gibi klasik uygulamaları dağıtmak için Azure Sanal Makineleri'ni kullanabilirsiniz. Ek şirket içi kaynaklar olmadan güvenilirliği ve kullanılabilirliği artırın. Azure Sanal Makineler, azure sanal makinelerini kuruluşunuzun şirket içi etki alanına, özel bulutlara ve SAP sistem ortamına entegre edebilirsiniz.
+Azure sanal makineleri, işlem, depolama ve ağ kaynakları, en kısa sürede ve uzun tedarik döngüleri olmadan ihtiyaç duyulan kuruluşların çözümüdür. SAP NetWeaver tabanlı ABAP, Java ve bir ABAP + Java yığını gibi klasik uygulamaları dağıtmak için Azure sanal makinelerini kullanabilirsiniz. Ek şirket içi kaynaklar olmadan güvenilirliği ve kullanılabilirliği genişletin. Azure sanal makineleri, şirket içi etki alanları, özel bulutlar ve SAP sistem yataya Azure sanal makinelerini tümleştirmenize olanak sağlamak için şirketler arası bağlantıyı destekler.
 
-Makalelerbu dizi kapsar:
+Bu makale serisi şunları içerir:
 
 * Mimari ve senaryolar.
 * Altyapı hazırlığı.
-* Azure Kaynak Yöneticisi dağıtım modelini kullanarak Azure'da yüksek kullanılabilirlik sap sistemlerini dağıtmak için SAP yükleme adımları.
+* Azure Resource Manager dağıtım modelini kullanarak Azure 'da yüksek kullanılabilirliğe sahip SAP sistemleri dağıtmaya yönelik SAP yükleme adımları.
 
     > [!IMPORTANT]
-    > SAP yüklemeleriniz için Azure Kaynak Yöneticisi dağıtım modelini kullanmanızı şiddetle öneririz. Klasik dağıtım modelinde bulunmayan birçok avantaj sunar. Azure [dağıtım modelleri][virtual-machines-azure-resource-manager-architecture-benefits-arm] hakkında daha fazla bilgi edinin.   
+    > SAP yüklemelerinizin Azure Resource Manager dağıtım modelini kullanmanızı önemle öneririz. Klasik dağıtım modelinde kullanılamayan birçok avantaj sunar. Azure [dağıtım modelleri][virtual-machines-azure-resource-manager-architecture-benefits-arm] hakkında daha fazla bilgi edinin.   
     >
 * SAP yüksek kullanılabilirlik:
-  * ![Windows][Logo_Windows]**Windows ,** Windows Server **Failover Cluster (WSFC)** kullanarak  
-  * ![Linux][Logo_Linux] **Linux**, Linux **Küme Çerçevesi** kullanarak
+  * ![Windows][Logo_Windows] **Server yük devretme kümesi (wsfc)** kullanan Windows**Windows Windows**  
+  * ![][Logo_Linux] **Linux Linux,** Linux **kümesi çerçevesini** kullanma
 
-Bu makalelerde, SAP Central Services (ASCS/SCS) ve veritabanı yönetim sistemleri (DBMS) gibi tek bir hata noktası (SPOF) bileşeninin korunmasına nasıl yardımcı olduğunuzu öğrenirsiniz. Sap uygulama sunucusu gibi Azure'daki gereksiz bileşenler hakkında da bilgi edinebilirsiniz.
+Bu makalelerde, SAP Merkezi Hizmetleri (yoks/SCS) ve veritabanı yönetim sistemleri (DBMS) gibi tek hata noktası (SPI) bileşenlerini korumaya nasıl yardımcı olabileceğinizi öğreneceksiniz. Ayrıca, Azure 'da SAP uygulama sunucusu gibi yedekli bileşenler hakkında bilgi edinebilirsiniz.
 
-## <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirlik mimarisi ve senaryoları
+## <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver için yüksek kullanılabilirliğe sahip mimari ve senaryolar
 
-**Özet:** Bu makalede, Azure'daki bir SAP sisteminin yüksek kullanılabilirlik mimarisini tartışıyoruz. SAP tek hata noktası (SPOF) ve yedek bileşenlerin yüksek kullanılabilirliğini ve Azure altyapısının yüksek kullanılabilirliğinin özelliklerini nasıl çözebileceğimizi tartışıyoruz. Ayrıca, bu parçaların SAP sistem bileşenleriyle nasıl ilişkili olduğunu da ele alıyoruz. Ayrıca, tartışma Windows ve Linux özellikleri için patlak. Çeşitli SAP yüksek kullanılabilirlik senaryoları da kapsanmaktadır.
+**Özet:** Bu makalede, Azure 'da SAP sisteminin yüksek kullanılabilirlik mimarisini tartıştık. SAP tek hata noktası (SPOF) ve yedekli bileşenlerin yüksek kullanılabilirlik düzeyini ve Azure altyapı yüksek kullanılabilirlik özelliklerini çözmeyi tartıştık. Ayrıca, bu parçaların SAP sistem bileşenleriyle ilişkisini de ele aldık. Ayrıca, tartışma Windows ve Linux özellikleri için kırılır. Çeşitli SAP yüksek kullanılabilirlik senaryoları da ele alınmıştır.
 
-**Güncellendi:** Ekim 2017
+**Güncelleştirilme tarihi:** 2017 Ekim
 
-* [SAP NetWeaver için Azure Virtual Machines yüksek kullanılabilirlik mimarisi ve senaryoları][sap-high-availability-architecture-scenarios]
+* [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
 
-![Makale hem Windows][Logo_Windows] **Windows** ve ![Linux][Logo_Linux] **Linux**kapsar.
+Makalede ![hem Windows][Logo_Windows] **Windows** hem ![de Linux][Logo_Linux] **Linux**ele alınmaktadır.
 
 
-## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>SAP NetWeaver yüksek kullanılabilirlik dağıtımı için azure altyapı hazırlığı
+## <a name="azure-infrastructure-preparation-for-sap-netweaver-high-availability-deployment"></a>SAP NetWeaver yüksek kullanılabilirlik dağıtımı için Azure altyapı hazırlığı
 
-**Özet:** Burada listelenen makalelerde, SAP yüklemesine hazırlık olarak Azure altyapısını dağıtmak için atabileceğiniz adımları kapsamaktayız. Azure altyapı dağıtımını kolaylaştırmak için, tüm işlemi otomatikleştirmek için SAP Azure Kaynak Yöneticisi şablonları kullanılır.
+**Özet:** Burada listelenen makalelerde, SAP yüklemesine hazırlanmaya yönelik Azure altyapısını dağıtmak için gerçekleştirebileceğiniz adımlar ele alınmaktadır. Azure altyapı dağıtımını basitleştirmek için SAP Azure Resource Manager şablonları tüm işlemi otomatikleştirmek için kullanılır.
 
-**Güncellendi:** Mart 2019
+**Güncelleştirilme tarihi:** Mart 2019
 
-* ![][Logo_Windows] [Windows, SAP ASCS/SCS örnekleri için Windows failover kümesi ve paylaşılan **disk** kullanarak Azure altyapılarını SAP yüksek kullanılabilirliği için hazırlayın][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Yük devretme kümesi ve SAP Ass/SCS örnekleri için **paylaşılan disk** kullanarak Azure altyapısını SAP yüksek kullanılabilirliğe hazırlama][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![][Logo_Windows] [Windows, SAP ASCS/SCS örnekleri için Windows failover kümesi ve dosya **paylaşımı** kullanarak Azure altyapılarını SAP yüksek kullanılabilirliği için hazırlayın][sap-high-availability-infrastructure-wsfc-file-share]
+* ![Windows][Logo_Windows] [Yük devretme kümesi ve SAP Ass/SCS örnekleri için **dosya paylaşma** kullanarak Windows Azure altyapısını SAP yüksek kullanılabilirliğe hazırlama][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [SAP ASCS/SCS örnekleri için Bir SUSE Linux Enterprise Server küme çerçevesi kullanarak SAP yüksek kullanılabilirlik için Azure altyapı hazırlayın][sap-suse-ascs-ha-setting-ha-nfs]
+* ![Linux][Logo_Linux] [for SAP ascs/SCS örnekleri için SUSE Linux Enterprise Server kümesi çerçevesi kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama][sap-suse-ascs-ha-setting-ha-nfs]
 
-* ![Linux][Logo_Linux] [Azure'un yüksek kullanılabilirliği için Azure altyapılarını Azure NetApp dosyalarıyla SAP ASCS/SCS örnekleri için Bir SUSE Linux Enterprise Server küme çerçevesi kullanarak hazırlayın][sap-suse-ascs-ha-setting-ha-anf]
+* ![Linux][Logo_Linux] for SAP [ascs/SCS örnekleri için Azure NetApp dosyalarıyla bir SUSE Linux Enterprise Server kümesi çerçevesi kullanarak SAP yüksek kullanılabilirlik için Azure altyapısını hazırlama][sap-suse-ascs-ha-setting-ha-anf]
 
-* ![RHEL][Logo_Linux] [AZURE altyapısını SAP ASCS/SCS yüksek kullanılabilirliği için hazırlayın - RHEL'de GlusterFS'ı ayarlayın][high-availability-guide-rhel-glusterfs]
+* ![RHEL][Logo_Linux] [SAP yoks/SCS yüksek kullanılabilirlik için Azure altyapısını hazırlama-RHEL 'de GlusterFS ayarlama][high-availability-guide-rhel-glusterfs]
 
-* ![RHEL][Logo_Linux] [AZURE altyapısını SAP ASCS/SCS yüksek kullanılabilirliği için hazırlayın - PACEmaker'ı RHEL'de ayarlayın][high-availability-guide-rhel-pacemaker]
+* ![RHEL][Logo_Linux] [for SAP ascs/SCS yüksek kullanılabilirlik için Azure altyapısını hazırlama-RHEL üzerinde paceyapıcısı ayarlama][high-availability-guide-rhel-pacemaker]
 
-## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure'da SAP NetWeaver yüksek kullanılabilirlik sisteminin yüklenmesi
+## <a name="installation-of-an-sap-netweaver-high-availability-system-in-azure"></a>Azure 'da SAP NetWeaver yüksek kullanılabilirlik sistemi yüklemesi
 
-**Özet:** Burada listelenen makaleler, Azure'daki Windows Server Failover Clustering kümesi nde ve Linux küme çerçevesiiçinde yüksek kullanılabilirliksap sisteminin kurulumu ve yapılandırması ile ilgili adım adım örnekler sunar.
+**Özet:** Burada listelenen makaleler, Azure 'da bir Windows Server Yük Devretme Kümelemesi kümesi ve Linux kümesi çerçevesinde yüksek kullanılabilirliğe sahip bir SAP sisteminin yüklenmesi ve yapılandırılmasına ilişkin adım adım örnekler sunar.
 
-**Güncellendi:** Mart 2019
+**Güncelleştirilme tarihi:** Mart 2019
 
-* ![][Logo_Windows] [Windows, SAP ASCS/SCS örnekleri için windows failover kümesi ve paylaşılan **disk** kullanarak SAP NetWeaver yüksek kullanılabilirlik yükleyin][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows] [Yük devretme kümesi ve SAP Ass/SCS örnekleri için **paylaşılan disk** kullanarak SAP NetWeaver yüksek kullanılabilirlik 'i yükler][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![][Logo_Windows] [Windows, SAP ASCS/SCS örnekleri için windows failover kümesi ve dosya **paylaşımı** kullanarak SAP NetWeaver yüksek kullanılabilirlik yükleyin][sap-high-availability-installation-wsfc-file-share]
+* ![Windows][Logo_Windows] [Yük devretme kümesi ve SAP yoks/SCS örnekleri için **dosya paylaşımının** kullanıldığı Windows SAP NetWeaver High AVAILABILITY 'i yükler][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [Install SAP NETWeaver sap ASCS/SCS örnekleri için bir SUSE Linux Enterprise Server küme çerçevesi kullanarak yüksek kullanılabilirlik][sap-suse-ascs-ha-sap-installation]
+* ![Linux][Logo_Linux] [Yük SAP Ass/SCS örnekleri için SUSE Linux Enterprise Server kümesi çerçevesi kullanarak SAP NetWeaver yüksek kullanılabilirliği][sap-suse-ascs-ha-sap-installation]
 
-* ![Linux][Logo_Linux] [Install SAP NetWeaver azure netapp dosyaları ile SAP ASCS/SCS örnekleri için bir SUSE Linux Enterprise Server küme çerçevesi kullanarak yüksek kullanılabilirlik][sap-suse-ascs-ha-sap-installation-anf]
+* ![Linux][Logo_Linux] [, Azure NetApp Files sahip SAP Ass/SCS örnekleri için SUSE Linux Enterprise Server kümesi çerçevesi kullanarak SAP NetWeaver yüksek kullanılabilirliği yükler][sap-suse-ascs-ha-sap-installation-anf]
 
-* ![][Logo_Linux] [RHEL, RHEL'de yüksek kullanılabilirlik yapılandırmasında SAP NetWeaver ASCS/SCS'yi yükleyin][sap-rhel-ascs-ha]
+* ![RHEL][Logo_Linux] [SAP NetWeaver yoks/SCS 'yi yüksek kullanılabilirlik yapılandırmasında RHEL 'de][sap-rhel-ascs-ha] ara
 
-* ![][Logo_Linux] [RHEL, Azure NetApp Dosyaları ile RHEL'de yüksek kullanılabilirlik yapılandırmasında SAP NetWeaver ASCS/SCS'yi yükleyin][sap-rhel-ascs-ha-sap-installation-anf]
+* ![RHEL][Logo_Linux] [Azure NetApp Files ile RHEL üzerinde yüksek kullanılabilirlik yapılandırmasında SAP NetWeaver yoks/SCS yüklemesi][sap-rhel-ascs-ha-sap-installation-anf]
 

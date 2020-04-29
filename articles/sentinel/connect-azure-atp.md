@@ -1,6 +1,6 @@
 ---
-title: Azure ATP verilerini Azure Sentinel'e bağlayın| Microsoft Dokümanlar
-description: Azure ATP verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
+title: Azure ATP verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+description: Azure ATP verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,46 +15,46 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588595"
 ---
-# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Gelişmiş Tehdit Koruması 'ndan (ATP) veri bağlama
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verileri Azure Gelişmiş tehdit koruması (ATP) ile bağlama
 
 > [!IMPORTANT]
-> Azure Sentinel'deki Azure Gelişmiş Tehdit Koruması veri bağlayıcısı şu anda genel önizlemededir.
-> Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure Sentinel 'de Azure Gelişmiş tehdit koruması verileri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Tek bir tıklamayla [Azure Gelişmiş Tehdit Koruması'ndan](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) Azure Sentinel'e günlük akışı yapabilirsiniz.
+[Azure Gelişmiş tehdit koruması](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) 'ndan günlükleri tek bir tıklama Ile Azure Sentinel 'e aktarabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Genel yönetici veya güvenlik yöneticisi izinleri olan kullanıcı
-- Azure ATP'nin önizleme müşterisi olmalısınız ve Azure ATP ile Microsoft Bulut Uygulama Güvenliği arasında tümleştirmeyi etkinleştirmelisiniz. Daha fazla bilgi için Azure [Gelişmiş Koruma Tümleştirmesi'ne](https://docs.microsoft.com/cloud-app-security/aatp-integration)bakın.
+- Genel yönetici veya Güvenlik Yöneticisi izinlerine sahip Kullanıcı
+- Azure ATP 'nin bir önizleme müşterisi olmanız ve Azure ATP ile Microsoft Cloud App Security arasında tümleştirmeyi etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure gelişmiş koruma tümleştirmesi](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
-## <a name="connect-to-azure-atp"></a>Azure ATP'ye bağlanma
+## <a name="connect-to-azure-atp"></a>Azure ATP 'ye bağlanma
 
-Azure ATP önizleme [sürümünün abunuzca etkin](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1)olduğundan emin olun.
-Azure ATP dağıtılıyorsa ve verilerinizi alıyorsa, şüpheli uyarılar kolayca Azure Sentinel'e aktarılabilir. Uyarıların Azure Sentinel'de yayınlanmaya başlaması 24 saat kadar sürebilir.
+Ağınızda Azure ATP önizleme sürümünün [etkinleştirildiğinden](https://docs.microsoft.com/azure-advanced-threat-protection/install-atp-step1)emin olun.
+Azure ATP dağıtılırsa ve verilerinizi geri alıyorsa şüpheli uyarılar Azure Sentinel 'e kolayca akışını sağlayabilir. Uyarıların Azure Sentinel 'e akışını başlatması 24 saate kadar sürebilir.
 
 
-1. Azure ATP'yi Azure Sentinel'e bağlamak için öncelikle Azure ATP ile Microsoft Bulut Uygulama Güvenliği arasında tümleştirmeyi etkinleştirmeniz gerekir. Bunun nasıl yapılacağını öğrenmek için [Azure Gelişmiş Tehdit Koruması tümleştirmesine](https://docs.microsoft.com/cloud-app-security/aatp-integration)bakın.
+1. Azure ATP 'yi Azure Sentinel 'e bağlamak için öncelikle Azure ATP ve Microsoft Cloud App Security arasındaki tümleştirmeyi etkinleştirmeniz gerekir. Bunun nasıl yapılacağı hakkında bilgi için bkz. [Azure Gelişmiş tehdit koruması tümleştirmesi](https://docs.microsoft.com/cloud-app-security/aatp-integration).
 
-1. Azure Sentinel'de **Veri bağlayıcılarını** seçin ve ardından **Azure Gelişmiş Tehdit Koruması (Önizleme)** döşemesini tıklatın.
+1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure Gelişmiş tehdit koruması (Önizleme)** kutucuğuna tıklayın.
 
-1. Azure ATP'deki uyarıların Azure Sentinel'de otomatik olarak olay oluşturmasını isteyip istemediğiniz konusunda seçim yapabilirsiniz. **Olayları Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralını etkinleştir'i **seçin.** Daha sonra bu kuralı **Analytics** ve ardından **Etkin kurallar**altında edinebilirsiniz.
+1. Azure ATP 'deki uyarıların otomatik olarak Azure Sentinel 'de olay oluşturmasını isteyip istemediğinizi seçebilirsiniz. Olayları **Oluştur** altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturan varsayılan analitik kuralı etkinleştirmek için **Etkinleştir** ' i seçin. Daha sonra bu kuralı **analiz** ve ardından **etkin kurallar**altında düzenleyebilirsiniz.
 
 1. **Bağlan**'a tıklayın.
 
-1. Azure ATP uyarıları için Log Analytics'teki ilgili şemayı kullanmak için **SecurityAlert'i**arayın.
+1. Azure ATP uyarıları için Log Analytics ilgili şemayı kullanmak için, **Securityalert**aratın.
 
 > [!NOTE]
-> Uyarılar 30 KB'den büyükse, Azure Sentinel uyarılardaki Varlıklar alanını görüntülemeyi durdurur.
+> Uyarılar 30 KB 'tan büyükse Azure Sentinel, uyarılarda varlıklar alanını görüntülemeyi durduruyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Azure Gelişmiş Tehdit Koruması'nı Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+Bu belgede Azure Gelişmiş tehdit koruması 'nı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 

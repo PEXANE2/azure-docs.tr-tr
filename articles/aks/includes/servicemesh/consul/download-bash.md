@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: a6b915e2735b45ac876ca98d279a15e4a371fbfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594301"
 ---
-Linux, Linux veya MacOS [için Windows Alt Sistemi][install-wsl] üzerinde `curl` bash tabanlı bir kabuk olarak, aşağıdaki gibi Consul Helm grafik sürümü indirmek için kullanın:
+Linux üzerinde Bash tabanlı bir kabukta, Linux veya MacOS [Için Windows alt sistemi][install-wsl] , aşağıdaki `curl` gibi, tüketil Helm grafik sürümünü indirmek için kullanın:
 
 ```bash
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

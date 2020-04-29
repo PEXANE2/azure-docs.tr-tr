@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Izgara teslimi ve yeniden deneme
-description: Azure Olay Idamı'nın olayları nasıl sağladığını ve teslim edilmemiş iletileri nasıl işleyeceğini açıklar.
+title: Azure Event Grid teslimi ve yeniden dene
+description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: spelluru
 ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921071"
 ---
-# <a name="event-grid-message-delivery-and-retry"></a>Olay Grid ileti teslimi ve yeniden deneme
+# <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
-Bu makalede, Azure Olay Idamı teslim onaylanmadığında olayları nasıl işleyebilir açıklanmaktadır.
+Bu makalede, teslimin onaylanmaması durumunda Azure Event Grid olayların nasıl işleyeceği açıklanır.
 
-Olay Izgara dayanıklı teslimat sağlar. Her abonelik için her iletiyi en az bir kez iletin. Olaylar, her aboneliğin kayıtlı bitiş noktasına hemen gönderilir. Bir bitiş noktası bir olayın alındığını kabul etmiyorsa, Olay Ağıt olay teslimini yeniden dener.
+Event Grid dayanıklı teslim sağlar. Her bir abonelik için her iletiyi en az bir kez sunar. Olaylar, her aboneliğin kayıtlı uç noktasına hemen gönderilir. Bir uç nokta bir olayın alındığını kabul etmezse, olayın yeniden denenmesini Event Grid.
 
-## <a name="batched-event-delivery"></a>Toplu etkinlik teslimi
+## <a name="batched-event-delivery"></a>Toplu olay teslimi
 
-Olay Grid, her olayı abonelere ayrı ayrı göndermek için varsayılan dır. Abone, tek bir olayiçeren bir dizi alır. Yüksek işlem senaryolarında geliştirilmiş HTTP performansı için olay ızgarasını teslim için toplu etkinliklere göre yapılandırabilirsiniz.
+Her bir olayı abonelere ayrı olarak göndermek Event Grid varsayılan değer. Abone tek bir olaya sahip bir dizi alır. Yüksek işleme senaryolarında iyileştirilmiş HTTP performansına yönelik teslimin gönderilmesi için Event Grid yapılandırabilirsiniz.
 
-Toplu teslimatın iki ayarı vardır:
+Toplu teslimin iki ayarı vardır:
 
-* **Toplu iş başına maksimum olaylar** - Olay Izgarası toplu iş başına teslim edecek olay sayısı. Bu sayı hiçbir zaman aşılmaz, ancak yayımlama sırasında başka etkinlik yoksa daha az olay teslim edilebilir. Olay Grid, daha az olay varsa toplu iş oluşturmak için olayları geciktirmez. 1 ile 5,000 arasında olmalı.
-* **Kilobaytlarda tercih edilen parti boyutu** - Kilobaytlarda parti boyutu için hedef tavan. En büyük olaylara benzer şekilde, yayımlama sırasında daha fazla olay yoksa toplu iş boyutu daha küçük olabilir. Tek *bir* olay tercih edilen boyuttan daha büyükse, toplu iş bir partinin tercih edilen toplu iş boyutundan daha büyük olması mümkündür. Örneğin, tercih edilen boyut 4 KB ise ve 10 KB'lik bir olay Olay Izgara'ya itilirse, 10-KB olayı düşürülmek yerine kendi toplu iş lerinde teslim edilir.
+* **Toplu işlem başına en fazla olay** sayısı-Event Grid toplu işlem başına teslim edilir. Bu sayı hiçbir zaman aşılmayacak, ancak yayımlama sırasında başka hiçbir olay yoksa daha az olay teslim edilebilir. Daha az etkinlik varsa Batch oluşturmak için olayları gecikmez Event Grid. 1 ile 5.000 arasında olmalıdır.
+* Kilobayt cinsinden toplu iş boyutu için **tercih edilen yığın boyutu** (kilobayt cinsinden). En yüksek olaylara benzer şekilde, yayımlama sırasında daha fazla olay yoksa, toplu iş boyutu daha küçük olabilir. Tek bir olay tercih edilen boyuttan daha büyükse bir toplu iş, tercih edilen toplu *iş boyutundan daha* büyük olabilir. Örneğin, tercih edilen boyut 4 KB ise ve 10 KB 'lik bir olay Event Grid 'e itiliyorsa, 10 KB 'lik olay bırakılması yerine kendi toplu işinde de teslim edilir.
 
-Portal, CLI, PowerShell veya SDK'lar aracılığıyla etkinlik başına abonelik bazında yapılandırılan toplu teslimat.
+Portal, CLı, PowerShell veya SDK 'lar aracılığıyla olay başına abonelik temelinde yapılandırılmış toplu teslim.
 
-### <a name="azure-portal"></a>Azure portalı: 
+### <a name="azure-portal"></a>Azure portal: 
 ![Toplu teslim ayarları](./media/delivery-and-retry/batch-settings.png)
 
 ### <a name="azure-cli"></a>Azure CLI
-Olay aboneliği oluştururken aşağıdaki parametreleri kullanın: 
+Bir olay aboneliği oluştururken aşağıdaki parametreleri kullanın: 
 
-- **toplu iş başına maksimum olay** - Bir toplu işteki maksimum olay sayısı. 1 ile 5000 arasında bir sayı olmalı.
-- **tercih edilen toplu-boy-in-kilobayt - Kilobayt** tercih edilen toplu boyut. 1 ile 1024 arasında bir sayı olmalı.
+- **en fazla etkinlik-toplu** işlem-toplu iş içindeki en fazla olay sayısı. 1 ile 5000 arasında bir sayı olmalıdır.
+- **tercih edilen-kilobayt** olarak tercih edilen toplu işlem boyutu kilobayt olarak tercih edilir. 1 ile 1024 arasında bir sayı olmalıdır.
 
 ```azurecli
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -52,11 +52,11 @@ az eventgrid event-subscription create \
   --preferred-batch-size-in-kilobytes 512
 ```
 
-Olay Ağıla Azure CLI'yi kullanma hakkında daha fazla bilgi için, [Azure CLI ile web bitiş noktasına depolama etkinliklerini yönlendir'e](../storage/blobs/storage-blob-event-quickstart.md)bakın.
+Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure CLI ile Depolama olaylarını Web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md).
 
-## <a name="retry-schedule-and-duration"></a>Zamanlama ve süreyi yeniden deneyin
+## <a name="retry-schedule-and-duration"></a>Zamanlamayı ve süreyi yeniden dene
 
-Olay Grid bir ileti teslim ettikten sonra bir yanıt için 30 saniye bekler. 30 saniye sonra, bitiş noktası yanıt vermediyse, ileti yeniden denemek için sıraya alınır. Olay Grid olay teslimi için üstel geri leme ilkesi kullanır. Olay Grid en iyi çaba temelinde aşağıdaki zamanlamaya teslim yeniden çalışır:
+Event Grid bir ileti teslim ettikten sonra yanıt için 30 saniye bekler. 30 saniye sonra, uç nokta yanıt vermediyse ileti yeniden denenmek üzere sıraya alınır. Event Grid, olay teslimi için bir üstel geri alma yeniden deneme İlkesi kullanır. En iyi çaba temelinde aşağıdaki zamanlamaya göre teslimi yeniden Event Grid:
 
 - 10 saniye
 - 30 saniye
@@ -67,65 +67,65 @@ Olay Grid bir ileti teslim ettikten sonra bir yanıt için 30 saniye bekler. 30 
 - 1 saat
 - 24 saate kadar saatlik
 
-Bitiş noktası 3 dakika içinde yanıt verirse, Olay Izgarası en iyi çaba temelinde olayı yeniden deneme kuyruğundan kaldırmaya çalışır, ancak yine de yinelenebilir.
+Uç nokta 3 dakika içinde yanıt verirse Event Grid, olayı en iyi çaba temelinde yeniden deneme sırasından kaldırmayı dener, ancak yinelemeler yine de alınabilir.
 
-Olay Grid tüm yeniden deneme adımları için küçük bir randomizasyon ekler ve fırsatçı bir bitiş noktası sürekli sağlıksız, aşağı uzun bir süre için, ya da boğulmuş gibi görünüyor bazı yeniden atlar.
+Event Grid, tüm yeniden deneme adımlarına küçük bir rastgele seçim ekler ve bir uç nokta sürekli sağlıksız, uzun bir süre boyunca azaltılamadığında ya da yoğun bir şekilde göründüğünden belirli yeniden denemeleri atlayabilir mümkün olduğunda olabilir.
 
-Deterministik davranış için, [abonelik yeniden deneme ilkelerinde](manage-event-delivery.md)etkinlik saatini yaşamak için ayarlayın ve maksimum teslimat girişimleri.
+Belirleyici davranış için, olay süresini, [abonelik yeniden deneme ilkelerindeki](manage-event-delivery.md)canlı ve en fazla teslimat denemesine ayarlayın.
 
-Varsayılan olarak, Olay Izgara24 saat içinde teslim edilmeyen tüm olayların süresi doluyor. Olay aboneliği oluştururken [yeniden deneme ilkesini özelleştirebilirsiniz.](manage-event-delivery.md) Maksimum teslim denemesi sayısı (varsayılan değer 30'dur) ve etkinlik süresinin canlı olmasını sağlarsınız (varsayılan değer 1440 dakikadır).
+Varsayılan olarak Event Grid, 24 saat içinde teslim edilmeyen tüm olayları sona ermez. Olay aboneliği oluştururken [yeniden deneme ilkesini özelleştirebilirsiniz](manage-event-delivery.md) . Maksimum teslim denemesi sayısı (varsayılan değer 30) ve olay yaşam süresi (varsayılan değer 1440 dakikadır) sağlarsınız.
 
-## <a name="delayed-delivery"></a>Gecikmiş Teslimat
+## <a name="delayed-delivery"></a>Gecikmeli teslim
 
-Bir bitiş noktası teslim hataları deneyimleri gibi, Olay Grid teslim ve bu bitiş noktasına olayların yeniden deneme geciktirmeye başlar. Örneğin, bitiş noktası için yayınlanan ilk 10 olay başarısız olursa, Olay Izgarası bitiş noktasının sorunlar yaşadığını varsayacak ve sonraki tüm yeniden denemeleri *ve yeni* teslimatları bir süre geciktirecek - bazı durumlarda birkaç saate kadar.
+Bir uç nokta teslim hatalarıyla karşılaşıyorsa, Event Grid bu uç noktada olayların teslimini ve yeniden denenmesini geciktirmeyi dener. Örneğin, bir uç noktada yayımlanan ilk 10 olay başarısız olursa Event Grid, uç noktanın sorun yaşadığını varsayar ve sonraki tüm yeniden denemeleri *ve yeni* teslimler için birkaç saate kadar bir süre sonra geciktirecek olur.
 
-Gecikmiş teslimatın işlevsel amacı, sağlıksız uç noktaların yanı sıra Olay Izgara sistemini de korumaktır. Geri tepme ve sağlıksız uç noktalara teslim gecikme olmadan, Olay Grid yeniden deneme ilkesi ve birim yetenekleri kolayca bir sistem ezmek olabilir.
+Gecikmeli teslimin işlevsel amacı, sağlıksız uç noktaların yanı sıra Event Grid sistemini de koruyasağlamaktır. Arka arkaya ve sağlıklı uç noktalara teslim olmadan, Event Grid yeniden deneme ilkesi ve birim özellikleri bir sistemi kolayca açabilir.
 
-## <a name="dead-letter-events"></a>Ölü harfli olaylar
+## <a name="dead-letter-events"></a>Atılacak mektup olayları
 
-Olay Izgarabir olay teslim edemediğinde, teslim edilmeyen olayı bir depolama hesabına gönderebilir. Bu işlem ölü harfler olarak bilinir. Varsayılan olarak, Olay Izgara ölü harfleri açmaz. Etkinleştirmek için, olay aboneliği oluştururken teslim edilmemiş olayları tutmak için bir depolama hesabı belirtmeniz gerekir. Teslimatları çözmek için olayları bu depolama hesabından çekersiniz.
+Event Grid bir olay suntırabilmediği zaman, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, atılacak olarak bilinir. Event Grid, varsayılan olarak, atılacak bir duruma getirin. Bunu etkinleştirmek için, olay aboneliğini oluştururken teslim edilmemiş olayları barındıracak bir depolama hesabı belirtmeniz gerekir. Teslimleri çözümlemek için bu depolama hesabından olay çekebilirsiniz.
 
-Olay Grid, tüm yeniden deneme denemelerini denediğinde ölü harf konumuna bir olay gönderir. Olay Grid 400 (Kötü İstek) veya 413 (İstek Varlık Too Large) yanıt kodu alırsa, olayı hemen çıkmaz adadoğru gönderir. Bu yanıt kodları, olayın tesliminin hiçbir zaman başarılı olameyeceğini gösterir.
+Event Grid, tüm yeniden deneme girişimlerini denediği zaman atılacak harf konumuna bir olay gönderir. Event Grid bir 400 (Hatalı Istek) veya 413 (varlık çok büyük Istek) yanıt kodu alırsa, olayı hemen atılacak ileti uç noktasına gönderir. Bu yanıt kodları olayın teslimini belirtir hiçbir şekilde başarısız olur.
 
-Bir olayı teslim etmek için yapılan son girişim ile ölü harf konumuna teslim edilen son girişim arasında beş dakikalık bir gecikme vardır. Bu gecikme, Blob depolama işlemleri sayısını azaltmak için tasarlanmıştır. Ölü harf konumu dört saat süreyle kullanılamıyorsa, olay bırakılır.
+Son bir olay teslim girişimi ve atılacak ileti konumuna teslim edildiğinde oluşan beş dakikalık bir gecikme vardır. Bu gecikme, BLOB depolama işlemlerinin sayısını azaltmaya yöneliktir. Atılacak ileti konumu dört saat kullanılamaz durumdaysa, olay bırakılır.
 
-Ölü harf konumunu ayarlamadan önce, bir kapsayıcı ile bir depolama hesabınız olmalıdır. Olay aboneliğini oluştururken bu kapsayıcının bitiş noktasını sağlarsınız. Bitiş noktası şu şekildedir:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
+Atılacak mektup konumunu ayarlamadan önce, kapsayıcısı olan bir depolama hesabınız olmalıdır. Olay aboneliği oluştururken bu kapsayıcı için uç noktayı sağlarsınız. Uç nokta şu biçimdedir:`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
 
-Bir olay ölü mektup konumuna gönderildiğinde haberdar olmak isteyebilirsiniz. Teslim edilmeyen olaylara yanıt vermek için Olay Izgarasını kullanmak için, ölü harfli blob depolama alanı için [bir olay aboneliği oluşturun.](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) Ölü harfli blob depolama alanınız her teslim edilmemiş bir olay aldığında, Olay Grid işleyicinizi not alır. İşleyici, teslim edilmeyen olayları uzlaştırmak için yapmak istediğiniz eylemlerle yanıt verir.
+Atılacak mektup konumuna bir olay gönderildiğinde bildirim almak isteyebilirsiniz. Teslim edilmemiş olaylara yanıt vermek için Event Grid kullanmak için, atılacak ileti blobu depolaması için [bir olay aboneliği oluşturun](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) . Atılacak ileti BLOB depolama alanı teslim edilmemiş bir olay aldığında Event Grid işleyicisine bildirir. İşleyici, teslim edilmemiş olayları uzlaştırmak için almak istediğiniz eylemlerle yanıt verir.
 
-Ölü harf konumu ayarlama örneği için, [Ölü harf ve yeniden deneme ilkelerine](manage-event-delivery.md)bakın.
+Geçersiz bir harf konumu ayarlamaya ilişkin bir örnek için, bkz. [atılacak mektup ve yeniden deneme ilkeleri](manage-event-delivery.md).
 
-## <a name="message-delivery-status"></a>İleti teslim durumu
+## <a name="message-delivery-status"></a>İleti teslimi durumu
 
-Olay Izgarası, olayların alındığını kabul etmek için HTTP yanıt kodlarını kullanır. 
+Event Grid, olayların alındığını bildirmek için HTTP yanıt kodlarını kullanır. 
 
 ### <a name="success-codes"></a>Başarı kodları
 
-Olay Grid **yalnızca** aşağıdaki HTTP yanıt kodlarını başarılı teslimatlar olarak kabul eder. Diğer tüm durum kodları başarısız teslimatlar olarak kabul edilir ve uygun olarak yeniden denenecek veya deadlettered olacaktır. Başarılı bir durum kodu aldıktan sonra, Olay Grid teslimin tamamlanmış olduğunu düşünür.
+Event Grid, **yalnızca** aşağıdaki http yanıt kodlarını başarılı teslimatlar olarak değerlendirir. Diğer tüm durum kodları başarısız teslimler olarak değerlendirilir ve uygun şekilde yeniden denenecek veya devredilecek. Başarılı bir durum kodu aldıktan sonra, teslimi tamamlandı olarak kabul eder Event Grid.
 
 - 200 TAMAM
-- 201 Oluşturuldu
-- 202 Kabul Edildi
-- 203 Yetkili Olmayan Bilgiler
-- 204 İçerik Yok
+- 201 oluşturuldu
+- 202 kabul edildi
+- 203 yetkili olmayan bilgiler
+- 204 Içerik yok
 
 ### <a name="failure-codes"></a>Hata kodları
 
-Yukarıdaki kümede (200-204) olmayan diğer tüm kodlar hata olarak kabul edilir ve yeniden denenecektir. Bazı özel yeniden deneme politikaları aşağıda özetlenen bağlı, tüm diğerleri standart üstel back-off modeli izleyin. Olay Izgara mimarisinin son derece paralelleştirilmiş doğası nedeniyle, yeniden deneme davranışının belirleyici olmadığını unutmamak gerekir. 
+Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık olarak kabul edilir ve yeniden denenecek. Bazıları aşağıda özetlenen özel yeniden deneme ilkelerine sahiptir ve tüm diğerleri standart üstel geri ödeme modelini izler. Event Grid mimarisinin mimarisinden kaynaklanan, yeniden deneme davranışının belirleyici olmadığından emin olmak önemlidir. 
 
-| Durum kodu | Davranışı yeniden deneyin |
+| Durum kodu | Yeniden deneme davranışı |
 | ------------|----------------|
-| 400 Kötü İstek | 5 dakika veya daha fazla sonra yeniden deneyin (Deadletter hemen eğer deadletter kurulum) |
-| 401 Yetkisiz | 5 dakika veya daha fazla sonra yeniden deneyin |
-| 403 Yasak | 5 dakika veya daha fazla sonra yeniden deneyin |
-| 404 Bulunamadı | 5 dakika veya daha fazla sonra yeniden deneyin |
-| 408 İstek Zaman Aşımı | 2 dakika veya daha fazla sonra yeniden deneyin |
-| 413 İstek Varlık Çok Büyük | 10 saniye veya daha fazla sonra yeniden deneyin (Deadletter hemen eğer deadletter kurulum) |
-| 503 Hizmet Kullanılamıyor | 30 saniye veya daha fazla bir süre sonra yeniden deneyin |
-| Diğer tüm | 10 saniye veya daha fazla bir süre sonra yeniden deneyin |
+| 400 Hatalı Istek | 5 dakika veya daha uzun bir süre sonra yeniden dene (sahipsiz ayarla ayarı varsa hemen |
+| 401 Yetkisiz | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 403 Yasak | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 404 Bulunamadı | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 408 İstek Zaman Aşımı | 2 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 413 istek varlığı çok büyük | 10 saniye veya daha kısa bir süre sonra yeniden dene (sahipsiz kurulum yoksa hemen |
+| 503 Hizmet Kullanılamıyor | 30 saniye veya daha uzun bir süre sonra yeniden deneyin |
+| Tüm diğerleri | 10 saniye veya daha fazla süre sonra yeniden deneyin |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Olay teslimlerinin durumunu görüntülemek için, [Olay Ağı iletiteslimini izleyin'](monitor-event-delivery.md)e bakın.
-* Olay teslim seçeneklerini özelleştirmek için [Dead harfi ve yeniden deneme ilkelerine](manage-event-delivery.md)bakın.
+* Olay tesliminin durumunu görüntülemek için bkz. [izleyici Event Grid ileti teslimi](monitor-event-delivery.md).
+* Olay teslimi seçeneklerini özelleştirmek için, bkz. [atılacak mektup ve yeniden deneme ilkeleri](manage-event-delivery.md).

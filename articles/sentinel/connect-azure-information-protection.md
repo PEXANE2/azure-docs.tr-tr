@@ -1,6 +1,6 @@
 ---
-title: Azure Bilgi Koruması'nı Azure Sentinel'e bağlayın
-description: Azure Bilgi Koruması verilerini Azure Sentinel'de nasıl bağlayabilirsiniz öğrenin.
+title: Azure Information Protection Azure Sentinel 'e bağlama
+description: Azure Sentinel 'de Azure Information Protection verileri nasıl bağlayacağınızı öğrenin.
 services: sentinel
 author: yelevin
 manager: rkarlin
@@ -11,66 +11,66 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
 ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588561"
 ---
-# <a name="connect-data-from-azure-information-protection"></a>Azure Bilgi Koruması'ndan verileri bağlama
+# <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection verileri bağlama
 
 > [!IMPORTANT]
-> Azure Sentinel'deki Azure Bilgi Koruması veri bağlayıcısı şu anda genel önizlemededir.
-> Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Azure Sentinel 'deki Azure Information Protection veri Bağlayıcısı Şu anda genel önizlemededir.
+> Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Bilgi Koruması veri bağlayıcısını yapılandırarak günlüğe kaydetme bilgilerini [Azure Bilgi Koruması'ndan](https://azure.microsoft.com/services/information-protection/) Azure Sentinel'e aktarabilirsiniz. Azure Bilgi Koruması, ister bulutta ister şirket içinde depolanmış olsun, hassas verilerinizi kontrol etmemenize ve güvenli hale almanıza yardımcı olur.
+Azure Information Protection veri bağlayıcısını yapılandırarak [Azure Information Protection](https://azure.microsoft.com/services/information-protection/) günlük bilgilerini Azure Sentinel 'e akışla aktarabilirsiniz. Azure Information Protection, önemli verilerinizi bulutta veya şirket içinde depolanmış olsun denetlemenize ve güvenli hale getirmeye yardımcı olur.
 
-[Azure Bilgi Koruması için merkezi raporlama,](https://docs.microsoft.com/azure/information-protection/reports-aip) bu hizmetten günlük bilgilerinin Azure Sentinel için seçtiğiniz aynı Log Analytics çalışma alanında depolanması için zaten yapılandırılmışsa, bu veri bağlayıcısının yapılandırmasını atlayabilirsiniz. Azure Bilgi Koruması'ndan günlük bilgileri Azure Sentinel'de zaten kullanılabilir.
+[Azure Information Protection için merkezi raporlama](https://docs.microsoft.com/azure/information-protection/reports-aip) zaten yapılandırılmışsa, bu hizmetten günlüğe kaydetme bilgileri Azure Sentinel için seçtiğiniz aynı Log Analytics çalışma alanında depolanıyorsa, bu veri bağlayıcısının yapılandırmasını atlayabilirsiniz. Azure Information Protection günlük bilgileri Azure Sentinel 'de zaten kullanılabilir.
 
-Ancak, Azure Bilgi Koruması'ndan günlüğe kaydetme bilgileri, Şu anda Azure Sentinel için seçtiğiniz çalışma alanından farklı bir Log Analytics çalışma alanına gidiyorsa, aşağıdakilerden birini yapın:
+Ancak, Azure Information Protection günlük bilgileri Azure Sentinel için seçtiğiniz farklı bir Log Analytics çalışma alanına gitecekse, aşağıdakilerden birini yapın:
 
-- Azure Sentinel'de seçilen çalışma alanını değiştirin.
+- Azure Sentinel 'de seçili çalışma alanını değiştirin.
 
-- Bu veri bağlayıcısını yapılandırarak yapabileceğiniz Azure Bilgi Koruması için çalışma alanını değiştirin.
+- Bu veri bağlayıcısını yapılandırarak yapabileceğiniz Azure Information Protection çalışma alanını değiştirin.
     
-    Çalışma alanını değiştirirseniz, Azure Bilgi Koruması için yeni raporlama verileri artık Azure Sentinel için kullandığınız çalışma alanında depolanır ve geçmiş veriler Azure Sentinel'de kullanılamaz. Ayrıca, önceki çalışma alanı özel sorgular, uyarılar veya REST API'leri için yapılandırıldıysa, bunları Azure Bilgi Koruması için kullanmaya devam etmek istiyorsanız Azure Sentinel çalışma alanı için yeniden yapılandırılmalıdır. Azure Bilgi Koruması kullanan istemciler ve hizmetler için yeniden yapılandırma gerekmez.
+    Çalışma alanını değiştirirseniz, Azure Information Protection için yeni raporlama verileri artık Azure Sentinel için kullandığınız çalışma alanında depolanır ve geçmiş veriler Azure Sentinel 'de kullanılamaz. Ayrıca, önceki çalışma alanı özel sorgular, uyarılar veya REST API 'Ler için yapılandırılmışsa, Azure Information Protection için kullanmaya devam etmek istiyorsanız bunların Azure Sentinel çalışma alanı için yeniden yapılandırılması gerekir. Azure Information Protection kullanan istemciler ve hizmetler için yeniden yapılandırma gerekmez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Kiracınız için aşağıdaki Azure REKLAM yöneticisi rollerinden biri: 
-    - Azure Bilgi Koruma yöneticisi
+- Kiracınız için aşağıdaki Azure AD yönetici rollerinden biri: 
+    - Azure Information Protection Yöneticisi
     - Güvenlik yöneticisi
-    - Uyumluluk yöneticisi
-    - Uyumluluk veri yöneticisi
+    - Uyumluluk Yöneticisi
+    - Uyumluluk verileri Yöneticisi
     - Genel yönetici
     
     > [!NOTE]
-    > Kiracınız [birleşik etiketleme platformundaysa](/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)Azure Bilgi Koruması yöneticisi rolünü kullanamazsınız.
+    > Kiracınız [Birleşik etiketleme platformundan](/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)ise Azure Information Protection yönetici rolünü kullanamazsınız.
     
-    Bu yönetici rolleri yalnızca Azure Bilgi Koruması bağlayıcısını yapılandırmak için gereklidir ve Azure Sentinel Azure Bilgi Koruması'na bağlandığında gerekli değildir.
+    Bu yönetici rolleri yalnızca Azure Information Protection bağlayıcısını yapılandırmak için gereklidir ve Azure Sentinel Azure Information Protection bağlı olduğunda gerekli değildir.
 
-- Azure Sentinel ve Azure Bilgi Koruması için kullandığınız Log Analytics çalışma alanına okuma ve yazma izinleri.
+- Azure Sentinel ve Azure Information Protection için kullanmakta olduğunuz Log Analytics çalışma alanına okuma ve yazma izinleri.
 
-- Azure Bilgi Koruması Azure portalına eklendi. Bu adımda yardıma ihtiyacınız varsa, [Azure portalına Azure Bilgi Koruması Ekle'ye](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)bakın.
+- Azure Information Protection Azure portal eklendi. Bu adımla ilgili yardıma ihtiyacınız varsa, [Azure portal Azure Information Protection ekleme](https://docs.microsoft.com/azure/information-protection/quickstart-viewpolicy#add-azure-information-protection-to-the-azure-portal)bölümüne bakın.
 
-## <a name="connect-to-azure-information-protection"></a>Azure Bilgi Koruması'na bağlanın
+## <a name="connect-to-azure-information-protection"></a>Azure Information Protection Bağlan
 
-Azure Bilgi Koruması için Bir Günlük Analizi çalışma alanı yapılandırmadıysanız veya Azure Bilgi Koruması günlüğe kaydetme bilgilerini depolayan çalışma alanını değiştirmeniz gerekiyorsa aşağıdaki yönergeleri kullanın.
+Azure Information Protection için bir Log Analytics çalışma alanı yapılandırmadıysanız veya Azure Information Protection günlüğe kaydetme bilgilerini depolayan çalışma alanını değiştirmeniz gerekiyorsa aşağıdaki yönergeleri kullanın.
 
-1. Azure Sentinel'de **Veri bağlayıcılarını**ve ardından **Azure Bilgi Koruması'nı (Önizleme)** seçin.
+1. Azure Sentinel 'de **veri bağlayıcıları**' nı ve ardından **Azure Information Protection (Önizleme)**' yi seçin.
 
-2. **Bağlayıcıyı Aç'ı**seçin.
+2. **Bağlayıcı sayfasını aç**' ı seçin.
 
-3. Yapılandırma **analitiği (Önizleme)** bıtır'da, Azure Sentinel için şu anda kullanmakta olduğunuz çalışma alanını seçin. Farklı bir çalışma alanı seçerseniz, Azure Bilgi Koruması'ndan gelen raporlama verileri Azure Sentinel tarafından kullanılamaz.
+3. **Analiz yapılandırma (Önizleme)** dikey penceresinde, şu anda Azure Sentinel için kullanmakta olduğunuz çalışma alanını seçin. Farklı bir çalışma alanı seçerseniz Azure Information Protection raporlama verileri Azure Sentinel tarafından kullanılamaz.
 
-4. Bir çalışma alanı seçtiğinizde, **Tamam'ı** seçin ve bağlayıcı **DURUM** artık **Bağlı**olarak değiştirilmelidir.
+4. Bir çalışma alanı seçtiğinizde **Tamam** ' ı seçin ve bağlayıcı **durumu** şimdi **bağlı**olarak değişir.
 
-5. Azure Bilgi Koruması'ndan gelen raporlama verileri, seçili çalışma alanı içinde **InformationProtectionLogs_CL** tablosunda depolanır. 
+5. Azure Information Protection rapor verileri, seçilen çalışma alanındaki **InformationProtectionLogs_CL** tablosunda depolanır. 
     
-    Bu raporlama verileri için Azure Monitor'daki ilgili şemayı kullanmak için **InformationProtectionEvents'i**arayın. Bu olay işlevleri hakkında bilgi için Azure Bilgi Koruması belgelerinden olay işlevleri için [Dostça şema başvurusuna](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) bakın.
+    Bu raporlama verileri için Azure Izleyici 'de ilgili şemayı kullanmak için, **ınformationprotectionevents**' i arayın. Bu olay işlevleri hakkında daha fazla bilgi için, Azure Information Protection belgelerindeki [olay işlevleri Için kolay şema başvurusu](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, Azure Bilgi Koruması'nı Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+Bu belgede Azure Information Protection Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.

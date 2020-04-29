@@ -1,6 +1,6 @@
 ---
-title: CEF verilerini Azure Sentinel Preview'a bağlamak için güvenlik çözümünüzü yapılandırın| Microsoft Dokümanlar
-description: CEF verilerini Azure Sentinel'e bağlamak için güvenlik çözümünüzü nasıl yapılandıracaklarınızı öğrenin.
+title: CEF verilerini Azure Sentinel önizlemesine bağlamak için Güvenlik çözümünüzü yapılandırın | Microsoft Docs
+description: Güvenlik çözümünüzü, CEF verilerini Azure Sentinel 'e bağlamak üzere nasıl yapılandıracağınızı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,19 +15,19 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: bdb76954b1db8135d8a36d6658bb7fff274ac126
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588459"
 ---
-# <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>ADIM 2: CEF iletileri göndermek için güvenlik çözümünüzü yapılandırın
+# <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. Adım: Güvenlik çözümünüzü CEF iletileri gönderecek şekilde yapılandırma
 
-Bu adımda, CEF aracısına günlük göndermek için güvenlik çözümünüzüzde gerekli yapılandırma değişikliklerini gerçekleştireceksiniz.
+Bu adımda, CEF aracısına Günlükler göndermek için güvenlik çözümünüz üzerinde gerekli yapılandırma değişikliklerini gerçekleştirirsiniz.
 
-## <a name="configure-a-solution-with-a-connector"></a>Bir çözümü konektörle yapılandırma
+## <a name="configure-a-solution-with-a-connector"></a>Bağlayıcı ile çözüm yapılandırma
 
-Güvenlik çözümünüzzaten varolan bir bağlayıcıya sahipse, bağlayıcıya özgü yönergeleri aşağıdaki gibi kullanın:
+Güvenlik çözümünüz zaten mevcut bir bağlayıcınız varsa, bağlayıcıya özgü yönergeleri aşağıdaki gibi kullanın:
 
 - [Denetim Noktası](connect-checkpoint.md)
 - [Cisco](connect-cisco.md)
@@ -39,25 +39,25 @@ Güvenlik çözümünüzzaten varolan bir bağlayıcıya sahipse, bağlayıcıya
 - [Trend Micro Deep Security](connect-trend-micro.md)
 - [Zscaler](connect-zscaler.md)   
 
-## <a name="configure-any-other-solution"></a>Diğer çözümleri yapılandırma
-Özel güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF aracısına iletmek için aşağıdaki genel yönergeleri kullanın.
+## <a name="configure-any-other-solution"></a>Diğer herhangi bir çözümü yapılandırma
+Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF aracısına iletmek için aşağıdaki genel yönergeleri kullanın.
 
-1. CEF iletileri göndermek için çözümünüzü yapılandırma ya da yapılandırma adımlarını almak için belirli yapılandırma makalesine gidin. Çözümünüz listelenmemişse, cihazda bu değerleri ayarlamalısınız, böylece cihaz Gerekli günlükleri Log Analytics aracısını temel alan Azure Sentinel Syslog aracısına gerekli formatta gönderir. Azure Sentinel aracısındaki Syslog daemon'da da değiştirdiğiniz sürece, bu parametreleri cihazınızda değiştirebilirsiniz.
+1. Çözümünüzü CEF iletileri gönderecek şekilde yapılandırma adımları için ilgili yapılandırma makalesine gidin. Çözümünüz listede yoksa, Gereç bu değerleri, Log Analytics aracısına bağlı olarak, gerecin gerekli biçimdeki Azure Sentinel Syslog aracısına göndermesi için ayarlamanız gerekir. Bu parametreleri Azure Sentinel aracısında Syslog arka plan programı 'nda da değiştirdiğiniz sürece, aracısında değiştirebilirsiniz.
     - Protokol = TCP
-    - Bağlantı Noktası = 514
+    - Bağlantı noktası = 514
     - Biçim = CEF
-    - IP adresi - CEF mesajlarını bu amaçla adadığınız sanal makinenin IP adresine gönderdiğinden emin olun.
+    - IP adresi-CEF iletilerini bu amaçla ayrıldığınızdan sanal makinenin IP adresine gönderdiğinizden emin olun.
 
    > [!NOTE]
-   > Bu çözüm Syslog RFC 3164 veya RFC 5424'u destekler.
+   > Bu çözüm Syslog RFC 3164 veya RFC 5424 ' ü destekler.
 
 
-1. CEF etkinlikleri için Log Analytics'teki ilgili şemayı `CommonSecurityLog`kullanmak için .
+1. CEF olayları için Log Analytics ilgili şemayı kullanmak için, araması yapın `CommonSecurityLog`.
 
-1. ADIM 3'e devam [edin: bağlantıyı doğrulayın.](connect-cef-verify.md)
+1. 3. Adım: [bağlantıyı doğrulama](connect-cef-verify.md)adımına geçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, CEF cihazlarını Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
 

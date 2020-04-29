@@ -1,6 +1,6 @@
 ---
-title: Cisco verilerini Azure Sentinel'e bağlayın| Microsoft Dokümanlar
-description: Cisco verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
+title: Cisco verilerini Azure Sentinel 'e bağlama | Microsoft Docs
+description: Cisco verilerini Azure Sentinel 'e bağlamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,39 +16,39 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 264dab4fabc890ffe03d911f8ee3c08ef51375d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588408"
 ---
-# <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA'yı Azure Sentinel'e bağlayın
+# <a name="connect-cisco-asa-to-azure-sentinel"></a>Cisco ASA 'yi Azure Sentinel 'e bağlama
 
 
 
-Bu makalede, Cisco ASA cihazınızı Azure Sentinel'e nasıl bağlayabilirsiniz. Cisco ASA veri konektörü, Cisco ASA günlüklerinizi Azure Sentinel ile kolayca bağlamanızı, panoları görüntülemenizi, özel uyarılar oluşturmanızı ve araştırmayı geliştirmenizi sağlar. Azure Sentinel'de Cisco ASA'yı kullanmak, kuruluşunuzun Internet kullanımı hakkında daha fazla bilgi sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
+Bu makalede Cisco ASA gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Cisco ASA veri Bağlayıcısı, Azure Sentinel ile Cisco ASA günlüklerinizi kolayca bağlamanıza olanak tanır, panoları görüntüleyebilir, özel uyarılar oluşturabilir ve araştırmayı geliştirebilirsiniz. Azure Sentinel 'de Cisco ASA kullanmak, kuruluşunuzun Internet kullanımı hakkında daha fazla öngörü sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
 
 
 
-## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Cisco ASA günlüklerini Syslog temsilcisine iletme
+## <a name="forward-cisco-asa-logs-to-the-syslog-agent"></a>Cisco ASA günlüklerini Syslog aracısına ilet
 
-Cisco ASA CEF'i desteklemez, bu nedenle günlükler Syslog olarak gönderilir ve Azure Sentinel aracısı bunları CEF günlükleri gibi nasıl ayrışdıracaklarını bilir. Syslog aracısı aracılığıyla Syslog iletilerini Azure çalışma alanınıza iletecek şekilde Cisco ASA'yı yapılandırın:
+Cisco ASA, CEF 'yi desteklemez, bu nedenle Günlükler Syslog olarak gönderilir ve Azure Sentinel Aracısı onları CEF günlükleri gibi nasıl ayrıştırarak olduğunu bilir. Syslog Aracısı aracılığıyla syslog iletilerini Azure çalışma alanınıza iletmek için Cisco ASA 'ı yapılandırın:
 
-1. Harici [bir Syslog sunucusuna Syslog iletileri gönder'e](https://aka.ms/asi-syslog-cisco-forwarding)gidin ve bağlantıyı kurmak için yönergeleri izleyin. İstendiğinde bu parametreleri kullanın:
-    - **Bağlantı noktasını** 514 olarak ayarlayın veya aracıda ayarladığınız bağlantı noktası.
-    - **syslog_ip** aracının IP adresine ayarlayın.
+1. [Bir dış Syslog sunucusuna Syslog Iletileri gönder](https://aka.ms/asi-syslog-cisco-forwarding)' e gidin ve bağlantıyı kurmak için yönergeleri izleyin. İstendiğinde bu parametreleri kullanın:
+    - **Bağlantı noktasını** 514 olarak veya aracıda ayarladığınız bağlantı noktasını ayarlayın.
+    - Aracının IP adresine **syslog_ip** ayarlayın.
 
-1. Cisco etkinlikleri için Log Analytics'teki ilgili şemayı `CommonSecurityLog`kullanmak için .
+1. Cisco olayları için Log Analytics ilgili şemayı kullanmak için arama yapın `CommonSecurityLog`.
 
-1. ADIM 3'e devam [et: Bağlantıyı doğrulayın.](connect-cef-verify.md)
+1. 3. [Adım: bağlantıyı doğrulama adımına](connect-cef-verify.md)geçin.
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Cisco ASA cihazlarını Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
-- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
+Bu belgede Cisco ASA gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
+- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure'da paylaşılan diski kullanarak WSFC'de SAP ASCS/SCS örneğini kümele | Microsoft Dokümanlar
-description: Bir SAP ASCS/SCS örneğini bir windows failover kümesinde kümeleme yi, paylaşılan bir disk i kullanarak nasıl kümeleyeceğiz öğrenin.
+title: Azure 'da paylaşılan disk kullanarak WSFC üzerinde küme SAP yoks/SCS örneği | Microsoft Docs
+description: Küme Paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneğini nasıl kümeleyeceğinizi öğrenin.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598485"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -71,7 +71,7 @@ ms.locfileid: "77598485"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID yüksek kullanılabilirlik yapılandırması)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP çoklu SID yüksek kullanılabilirlik yapılandırması)
 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
@@ -182,99 +182,99 @@ ms.locfileid: "77598485"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure'da bir küme paylaşılan disk kullanarak bir Windows failover kümesinde SAP ASCS/SCS örneğini kümeleme
+# <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure 'da küme paylaşılan diski kullanarak bir Windows Yük devretme kümesinde SAP ASCS/SCS örneği oluşturma
 
 > ![Windows][Logo_Windows] Windows
 >
 
-Windows Server failover kümeleme, Windows'da yüksek kullanılabilirlikte SAP ASCS/SCS yüklemesinin ve DBMS'nin temelidir.
+Windows Server Yük Devretme Kümelemesi, Windows 'da yüksek kullanılabilirliğe sahip SAP Ass/SCS yüklemesi ve DBMS 'nin temelidir.
 
-Başarısız küme, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1+n bağımsız sunucular (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server failover kümeleme oluşabilecek hata sayısını hesaplar ve uygulamaları ve hizmetleri sağlamak için yine de sağlıklı bir küme tutar. Kümeleme de başarısız olmak için farklı çoğunluk modları arasından seçim yapabilirsiniz.
+Yük devretme kümesi, uygulamaların ve hizmetlerin kullanılabilirliğini artırmak için birlikte çalışan 1 + n bağımsız sunucu (düğümler) grubudur. Bir düğüm hatası oluşursa, Windows Server Yük Devretme Kümelemesi oluşabilecek hata sayısını hesaplar ve uygulamalar ve hizmetler sağlamak için sağlıklı bir kümeyi sürdürür. Yük Devretme Kümelemesi elde etmek için farklı çekirdek modlarında seçim yapabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu makaledeki görevlere başlamadan önce aşağıdaki makaleyi gözden geçirin:
+Bu makaledeki görevlere başlamadan önce, aşağıdaki makaleyi gözden geçirin:
 
-* [SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik mimarisi ve senaryoları][sap-high-availability-architecture-scenarios]
+* [SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirliğe sahip mimari ve senaryolar][sap-high-availability-architecture-scenarios]
 
 
-## <a name="windows-server-failover-clustering-in-azure"></a>Windows Server Azure'da kümeleme de başarısız
+## <a name="windows-server-failover-clustering-in-azure"></a>Azure 'da Windows Server Yük Devretme Kümelemesi
 
-Azure Sanal Makineler, çıplak metal veya özel bulut dağıtımları ile karşılaştırıldığında, Windows Server'ın kümeleme üzerinde başarısız olmasını yapılandırmak için ek adımlar gerektirir. Bir küme oluşturduğunuzda, SAP ASCS/SCS örneği için birkaç IP adresi ve sanal ana bilgisayar adları ayarlamanız gerekir.
+Çıplak veya özel bulut dağıtımlarıyla karşılaştırıldığında, Azure sanal makineleri, Windows Server Yük Devretme Kümelemesi 'ni yapılandırmak için ek adımlar gerektirir. Bir küme oluşturduğunuzda, SAP ASCS/SCS örneği için birkaç IP adresi ve sanal konak adı ayarlamanız gerekir.
 
-### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure'da ad çözünürlüğü ve küme sanal ana bilgisayar adı
+### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure 'da ad çözümlemesi ve küme sanal ana bilgisayar adı
 
-Azure bulut platformu, kayan IP adresleri gibi sanal IP adreslerini yapılandırma seçeneği sunmaz. Buluttaki küme kaynağına ulaşmak için sanal bir IP adresi ayarlamak için alternatif bir çözüme ihtiyacınız var. 
+Azure bulut platformu, kayan IP adresleri gibi sanal IP adreslerini yapılandırma seçeneği sunmaz. Bulutta küme kaynağına ulaşmak üzere bir sanal IP adresi ayarlamak için alternatif bir çözüme ihtiyacınız vardır. 
 
-Azure Yük Dengeleyici hizmeti, Azure için bir *dahili yük dengeleyicisi* sağlar. Dahili yük dengeleyicisi ile istemciler kümesanal IP adresi üzerinden kümeye ulaşır. 
+Azure Load Balancer hizmeti, Azure için bir *iç yük dengeleyici* sağlar. İç yük dengeleyici ile istemciler küme sanal IP adresi üzerinden kümeye ulaşabilirler. 
 
-Küme düğümlerini içeren kaynak grubunda iç yük dengeleyicisini dağıtın. Ardından, iç yük dengeleyicisinin prob bağlantı noktalarını kullanarak gerekli tüm bağlantı noktası yönlendirme kurallarını yapılandırın. İstemciler sanal ana bilgisayar adı üzerinden bağlanabilir. DNS sunucusu küme IP adresini çözer ve iç yük dengeleyicisi kümenin etkin düğümüne iletme bağlantı noktasını işler.
+İç yük dengeleyiciyi küme düğümlerini içeren kaynak grubuna dağıtın. Ardından, iç yük dengeleyicinin araştırma bağlantı noktalarını kullanarak tüm gerekli bağlantı noktası iletme kurallarını yapılandırın. İstemciler sanal ana bilgisayar adı aracılığıyla bağlanabilir. DNS sunucusu, küme IP adresini çözümler ve iç yük dengeleyici, kümenin etkin düğümüne bağlantı noktası iletmeyi işler.
 
-![Şekil 1: Paylaşılan bir disk olmadan Azure'da Windows failover kümeleme yapılandırması][sap-ha-guide-figure-1001]
+![Şekil 1: Azure 'da paylaşılan disk olmadan Windows Yük Devretme Kümelemesi yapılandırması][sap-ha-guide-figure-1001]
 
-_**Şekil 1:** Paylaşılan bir disk olmadan Azure'da Windows Server failover kümeleme yapılandırması_
+_**Şekil 1:** Azure 'da paylaşılan disk olmadan Windows Server Yük Devretme Kümelemesi yapılandırması_
 
-### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>Küme paylaşılan diskleri ile SAP ASCS/SCS HA
-Windows'da, SAP ASCS/SCS örneği SAP merkezi hizmetlerini, SAP ileti sunucusunu, enqueue sunucu işlemlerini ve SAP global ana bilgisayar dosyalarını içerir. SAP global ana bilgisayar dosyaları tüm SAP sistemi için merkezi dosyaları depolar.
+### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>Küme paylaşılan diskleriyle SAP yoks/SCS HA
+Windows 'da SAP ASCS/SCS örneği SAP Merkezi Hizmetleri, SAP ileti sunucusu, sıraya alma sunucusu süreçler ve SAP Küresel Ana bilgisayar dosyalarını içerir. SAP Küresel Ana bilgisayar dosyaları tüm SAP sistemi için merkezi dosyaları depolar.
 
 SAP ASCS/SCS örneği aşağıdaki bileşenlere sahiptir:
 
-* SAP merkezi hizmetleri:
-    * İki işlem, bir ileti ve enqueue sunucusu ve bu iki işleme erişmek için kullanılan bir \<ASCS/SCS sanal ana bilgisayar adı>.
-    * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<örnek numarası\>
+* SAP Merkezi Hizmetleri:
+    * İki işlem, bir ileti ve sıraya alma sunucusu ve bu \<iki işleme erişmek için kullanılan bir ascs/SCS sanal ana bilgisayar adı>.
+    * Dosya yapısı: s:\usr\sap\\&lt;SID&gt;\ Ass/SCS\<örnek numarası\>
 
 
-* SAP global ana bilgisayar dosyaları:
-  * Dosya yapısı: S:\usr\sap\\&lt;SID&gt;\.\SYS ...
-  * Bu global S:\usr\sap\\&lt;SID&gt;\SYS'ye\.erişim sağlayan sapmnt dosya paylaşımı. aşağıdaki UNC yolunu kullanarak dosyalar:
+* SAP Küresel Ana bilgisayar dosyaları:
+  * Dosya yapısı: s:\usr\sap\\&lt;SID&gt;\sys\...
+  * Bu genel s:\usr\sap\\&lt;SID&gt;\sys\.dosyasına erişim sağlayan sapmnt dosya paylaşma. Aşağıdaki UNC yolunu kullanarak dosyalar:
 
-    \\\\<ASCS/SCS sanal\>ana bilgisayar\\&lt;adı&gt;\sapmnt SID \SYS\...
+    \\\\<ascs/SCS sanal ana bilgisayar\>adı \\\&lt;sapmnt&gt;SID \\.sys..
 
 
-![Şekil 2: SAP ASCS/SCS örneğinin işlemler, dosya yapısı ve global ana bilgisayar sapmnt dosya paylaşımı][sap-ha-guide-figure-8001]
+![Şekil 2: bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma][sap-ha-guide-figure-8001]
 
-_**Şekil 2:** SAP ASCS/SCS örneğinin işlemleri, dosya yapısı ve global ana bilgisayar sapmnt dosya paylaşımı_
+_**Şekil 2:** Bir SAP ASCS/SCS örneği için süreçler, dosya yapısı ve küresel ana bilgisayar sapmnt dosya paylaşma_
 
-Yüksek kullanılabilirlik ayarında SAP ASCS/SCS örneklerini kümelersiniz. SAP ASCS/SCS ve SAP global ana bilgisayar dosyalarını yerleştirmek için *kümelenmiş paylaşılan diskler* (örneğimizde KiS sürücüsü) kullanırız.
+Yüksek kullanılabilirliğe sahip bir ayarda SAP ASCS/SCS örneklerini kümelerinolursunuz. SAP ASCS/SCS ve SAP Küresel Ana bilgisayar dosyalarını yerleştirmek için *Kümelenmiş Paylaşılan diskleri* (örneğimizde sürücü S) kullanıyoruz.
 
-![Şekil 3: Paylaşılan diskli SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8002]
+![Şekil 3: paylaşılan disk ile SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8002]
 
-_**Şekil 3:** Paylaşılan diskli SAP ASCS/SCS HA mimarisi_
+_**Şekil 3:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
 > [!IMPORTANT]
-> Bu iki bileşen aynı SAP ASCS/SCS örneği altında çalışır:
->* Sap \<iletisine ve enqueue sunucu işlemlerine erişmek için aynı ASCS/SCS sanal ana bilgisayar adı> ve SAPmnt dosya paylaşımı üzerinden SAP global ana bilgisayar dosyaları kullanılır.
->* Aynı küme paylaşılan disk sürücüsü S aralarında paylaşılır.
+> Bu iki bileşen aynı SAP yoks/SCS örneği altında çalışır:
+>* Aynı \<yoks/SCS sanal ana bilgisayar adı>, SAP iletisi ve sıraya alma sunucu IŞLEMLERINE ve SAP Küresel Ana bilgisayar dosyalarına sapmnt dosya paylaşımıyla erişmek için kullanılır.
+>* Aynı küme paylaşılan disk sürücüsü öğeleri arasında paylaşılır.
 >
 
 
-![Şekil 4: Paylaşılan diskli SAP ASCS/SCS HA mimarisi][sap-ha-guide-figure-8003]
+![Şekil 4: paylaşılan disk ile SAP yoks/SCS HA mimarisi][sap-ha-guide-figure-8003]
 
-_**Şekil 4:** Paylaşılan diskli SAP ASCS/SCS HA mimarisi_
+_**Şekil 4:** Paylaşılan disk ile SAP ASCS/SCS HA mimarisi_
 
-### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>SIOS DataKeeper ile Azure'da paylaşılan diskler
+### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Azure 'da SIOS Dataman ile paylaşılan diskler
 
-Yüksek kullanılabilirlik sap ASCS/SCS örneği için küme paylaşılan depolama alanına ihtiyacınız vardır.
+Yüksek kullanılabilirliğe sahip SAP yoks/SCS örneği için küme paylaşılan depolama gerekir.
 
-Küme paylaşılan depolama yı taklit eden aynalı bir depolama oluşturmak için üçüncü taraf yazılımı SIOS DataKeeper Cluster Edition'ı kullanabilirsiniz. SIOS çözümü gerçek zamanlı senkron veri çoğaltma sağlar.
+Küme paylaşılan depolama alanını taklit eden yansıtılmış bir depolama alanı oluşturmak için üçüncü taraf yazılım SIOS Dataman kümesi sürümünü kullanabilirsiniz. SIOS çözümü gerçek zamanlı zaman uyumlu veri çoğaltması sağlar.
 
-Küme için paylaşılan bir disk kaynağı oluşturmak için:
+Bir küme için paylaşılan disk kaynağı oluşturmak için:
 
-1. Windows küme yapılandırmasındaki sanal makinelerin her birine ek bir disk takın.
-2. SIOS DataKeeper Cluster Edition'ı her iki sanal makine düğümünde çalıştırın.
-3. SIOS DataKeeper Cluster Edition'ı, kaynak sanal makineden ek disk ekli birimin içeriğini hedef sanal makinenin ek disk ekli birimine yansıtacak şekilde yapılandırın. SIOS DataKeeper, kaynağı özetler ve yerel birimleri hedef alır ve bunları paylaşılan tek bir disk olarak Windows Server failover kümeleme'ye sunar.
+1. Bir Windows küme yapılandırmasındaki her bir sanal makineye ek bir disk ekleyin.
+2. Her iki sanal makine düğümünde de SIOS Dataman küme sürümünü çalıştırın.
+3. Disk bağlantılı ek birimin içeriğini kaynak sanal makineden hedef sanal makinenin ek disk ekli birimine yansıtan şekilde, SIOS Dataman küme sürümünü yapılandırın. SIOS Dataman, kaynak ve hedef yerel birimleri soyutlar ve sonra bunları bir paylaşılan disk olarak Windows Server Yük Devretme Kümelemesi 'ne gösterir.
 
-[SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/)hakkında daha fazla bilgi alın.
+[SIOS Verilerman](https://us.sios.com/products/datakeeper-cluster/)hakkında daha fazla bilgi alın.
 
-![Şekil 5: SIOS DataKeeper ile Azure'da Windows Server, kümeleme yapılandırmasında başarısız oldu][sap-ha-guide-figure-1002]
+![Şekil 5: Azure 'da SIOS Dataman ile Windows Server Yük Devretme Kümelemesi yapılandırması][sap-ha-guide-figure-1002]
 
-_**Şekil 5:** SIOS DataKeeper ile Azure'da Windows başarısız kümeleme yapılandırması_
+_**Şekil 5:** Azure 'da SIOS Dataman ile Windows Yük Devretme Kümelemesi yapılandırması_
 
 > [!NOTE]
-> SQL Server gibi bazı DBMS ürünlerinde yüksek kullanılabilirlik için paylaşılan disklere ihtiyacınız yoktur. SQL Server AlwaysOn, DBMS verilerini ve günlük dosyalarını bir küme düğümünün yerel diskinden başka bir küme düğümünün yerel diskine kopyalar. Bu durumda, Windows küme yapılandırmasının paylaşılan bir diske ihtiyacı yoktur.
+> SQL Server gibi bazı DBMS ürünleriyle yüksek kullanılabilirlik için paylaşılan disklere ihtiyacınız yoktur. SQL Server AlwaysOn, DBMS verilerini ve günlük dosyalarını bir küme düğümünün yerel diskinden başka bir küme düğümünün yerel diskine çoğaltır. Bu durumda, Windows küme yapılandırmasına paylaşılan bir disk gerekmez.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [BIR SAP ASCS/SCS örneği için Windows failover kümesi ve paylaşılan disk kullanarak Azure altyapısını SAP HA için hazırlama][sap-high-availability-infrastructure-wsfc-shared-disk]
+* [SAP Ass/SCS örneği için Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* [SAP NETWeaver HA'yı bir SAP ASCS/SCS örneği için Windows failover kümesine ve paylaşılan diske yükleme][sap-high-availability-installation-wsfc-shared-disk]
+* [SAP NetWeaver HA 'yi bir Windows Yük devretme kümesine ve bir SAP ASCS/SCS örneği için paylaşılan diske yükler][sap-high-availability-installation-wsfc-shared-disk]

@@ -7,82 +7,82 @@ ms.topic: overview
 ms.date: 01/16/2020
 ms.custom: H1Hack27Feb2017, mvc
 ms.openlocfilehash: f0948cb58ba9403a34fbfd61ec43c29bed3440bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77621014"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure İşlevleri'ne giriş
 
-Azure İşlevleri, uygulama altyapısı konusunda endişelenmeden küçük kod parçalarını ("işlevler" olarak adlandırılır) çalıştırmanızı sağlar. Azure İşlevler ile bulut altyapısı, uygulamanızın ölçekte çalışmasını sağlamak için ihtiyacınız olan tüm güncel sunucuları sağlar.
+Azure Işlevleri, uygulama altyapısı hakkında endişelenmeden küçük kod parçalarını ("işlevler" olarak adlandırılır) çalıştırmanıza olanak sağlar. Azure Işlevleri ile bulut altyapısı, uygulamanızı ölçeklendirerek çalışır durumda tutmanız için ihtiyacınız olan tüm güncel sunucuları sağlar.
 
-Bir işlev, belirli bir olay türü tarafından "tetiklenir". [Desteklenen tetikleyiciler](./functions-triggers-bindings.md) arasında verilerdeki değişikliklere yanıt verme, iletilere yanıt verme, zamanlamada çalışma veya bir HTTP isteğinin sonucu olarak yer almak yer alıyor.
+Bir işlev, belirli bir olay türü tarafından "tetiklenir". [Desteklenen Tetikleyiciler](./functions-triggers-bindings.md) , verilerdeki değişikliklere yanıt vermeyi, iletilere yanıt vermeyi, bir zamanlamaya göre çalışmayı veya bir http isteğinin sonucunu içerir.
 
-Her zaman sayısız hizmete karşı doğrudan kodlar ken, diğer hizmetlerle tümleştirme bağlamaları kullanılarak düzene sokulmaktadır. Bağlamalar, [çok çeşitli Azure ve üçüncü taraf hizmetlerine bildirimsel erişim](./functions-triggers-bindings.md)sunar.
+Her zaman doğrudan bir hizmetlere yönelik olarak kodlarken, diğer hizmetlerle tümleştirme, bağlamalar kullanılarak basitleştirilmiştir. Bağlamalar, [çok çeşitli Azure ve üçüncü taraf hizmetlere yönelik bildirime dayalı erişim](./functions-triggers-bindings.md)sağlar.
 
 ## <a name="features"></a>Özellikler
 
-Azure İşlevlerinin bazı temel özellikleri şunlardır:
+Azure Işlevlerinin bazı temel özellikleri şunlardır:
 
-- **Sunucusuz uygulamalar**: İşlevler Microsoft Azure'da [sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar geliştirmenize olanak tanır.
+- **Sunucusuz uygulamalar**: işlevler Microsoft Azure [sunucusuz](https://azure.microsoft.com/solutions/serverless/) uygulamalar geliştirmenize olanak sağlar.
 
-- **Dil seçimi**: [C#, Java, JavaScript, Python ve PowerShell](supported-languages.md)seçiminizi kullanarak fonksiyonlar yazın.
+- **Dil seçimi**: [C#, Java, JavaScript, Python ve PowerShell](supported-languages.md)seçeneklerini kullanarak işlevleri yazın.
 
-- **Kullanım başına ödeme fiyatlandırma modeli**: Yalnızca kodunuzu çalıştırmak için harcanan süre için ödeme. [Fiyatlandırma bölümünde](#pricing) Tüketim barındırma planı seçeneğine bakın.  
+- **Kullanım başına ödeme fiyatlandırma modeli**: yalnızca kodunuzu çalıştırmak için harcanan süre için ödeme yapın. [Fiyatlandırma bölümünde](#pricing) Tüketim barındırma planı seçeneğine bakın.  
 
-- **Kendi bağımlılıklarınızı getirin**: Fonksiyonlar NuGet ve NPM'yi destekler ve en sevdiğiniz kitaplıklara erişmenizi sağlar.
+- **Kendi bağımlılıklarınızı getirin**: işlevler NuGet ve NPM 'yi destekler ve bu sayede en sevdiğiniz kitaplıklara erişebilirsiniz.
 
-- **Tümleşik güvenlik**: AZURE Active Directory, Facebook, Google, Twitter ve Microsoft Hesabı gibi OAuth sağlayıcılarıyla HTTP tarafından tetiklenen işlevleri koruyun.
+- **Tümleşik güvenlik**: Azure Active Directory, Facebook, Google, Twitter ve Microsoft hesabı gibi OAUTH sağlayıcılarıyla http ile tetiklenen işlevleri koruyun.
 
-- **Basitleştirilmiş tümleştirme**: Azure hizmetleri ve hizmet olarak yazılım (SaaS) teklifleri ile kolayca tümleştirin.
+- **Basitleştirilmiş tümleştirme**: Azure hizmetleri ve hizmet olarak yazılım (SaaS) teklifleriyle kolayca tümleştirin.
 
-- **Esnek geliştirme**: Sürekli tümleştirme ayarlayın ve [kodunuzu GitHub,](../app-service/scripts/cli-continuous-deployment-github.md) [Azure DevOps Hizmetleri](../app-service/scripts/cli-continuous-deployment-vsts.md)ve diğer desteklenen geliştirme araçları aracılığıyla [dağıtın.](../app-service/deploy-local-git.md)
+- **Esnek geliştirme**: sürekli tümleştirme ayarlayın ve kodunuzu [GitHub](../app-service/scripts/cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md)ve diğer [desteklenen geliştirme araçları](../app-service/deploy-local-git.md)aracılığıyla dağıtın.
 
-- **Stateful sunucusuz mimari**: [Dayanıklı Fonksiyonlar](durable/durable-functions-overview.md)ile sunucusuz uygulamaları düzenleyin.
+- **Durum bilgisi olan sunucusuz mimari**: [dayanıklı işlevler](durable/durable-functions-overview.md)ile sunucusuz uygulamalar düzenleyin.
 
-- **Açık kaynak**: İşlevler çalışma zamanı açık kaynak kodludur ve [GitHub'da kullanılabilir.](https://github.com/azure/azure-webjobs-sdk-script)
+- **Açık kaynak**: işlevler çalışma zamanı açık kaynaktır ve [GitHub 'da kullanılabilir](https://github.com/azure/azure-webjobs-sdk-script).
 
 ## <a name="what-can-i-do-with-functions"></a>İşlevler ile ne yapabilirim?
 
-Fonksiyonlar, toplu verilerin işlenmesi, sistemlerin entegre edilmesi, nesnelerin interneti (IoT) ile çalışmak ve basit API'ler ve mikro hizmetler oluşturmak için mükemmel bir çözümdür.
+İşlevler, toplu veri işleme, sistemleri tümleştirme, Nesnelerin İnterneti (IoT) ile çalışma ve basit API 'Ler ve mikro hizmetler oluşturma için harika bir çözümdür.
 
-Şu gibi önemli senaryolarla başlamanızı sağlamak için bir dizi şablon kullanılabilir:
+Aşağıdakiler dahil olmak üzere önemli senaryolar kullanmaya başlamanızı sağlamak için bir dizi şablon mevcuttur:
 
-- **HTTP**: HTTP [isteklerine](functions-create-first-azure-function.md) göre kod çalıştırma
+- **Http**: [http isteklerini](functions-create-first-azure-function.md) temel alan kodu çalıştırma
 
-- **Zamanlayıcı**: [Önceden tanımlanmış zamanlarda çalışacak](./functions-create-scheduled-function.md) zamanlama kodu
+- **Süreölçer**: kodu [önceden tanımlanmış saatlerde çalışacak](./functions-create-scheduled-function.md) şekilde zamanlayın
 
-- **Azure Cosmos DB**: [Yeni ve değiştirilmiş Azure Cosmos DB belgelerini](./functions-create-cosmos-db-triggered-function.md) işleme
+- **Azure Cosmos DB**: [yeni ve değiştirilmiş Azure Cosmos DB belgelerini](./functions-create-cosmos-db-triggered-function.md) işleme
 
-- **Blob depolama**: [Yeni ve değiştirilmiş Azure Depolama lekelerini](./functions-create-storage-blob-triggered-function.md) işleme
+- **BLOB depolama**: [yeni ve değiştirilmiş Azure depolama bloblarını](./functions-create-storage-blob-triggered-function.md) işleme
 
-- **Sıra depolama**: [Azure Depolama sıra iletilerine](./functions-create-storage-queue-triggered-function.md) yanıt verme
+- **Kuyruk depolama**: [Azure depolama kuyruğu iletilerine](./functions-create-storage-queue-triggered-function.md) yanıt verme
 
-- **Olay Ağış**: [Azure Olay Ağı etkinliklerine abonelikler ve filtreler aracılığıyla](../event-grid/resize-images-on-storage-blob-upload-event.md) yanıt verme
+- **Event Grid**: [abonelikler ve filtreler aracılığıyla Azure Event Grid olaylarına](../event-grid/resize-images-on-storage-blob-upload-event.md) yanıt verme
 
-- **Etkinlik Hub'ı**: [Yüksek hacimli Azure Event Hub etkinliklerine](./functions-bindings-event-hubs.md) yanıt verme
+- **Olay Hub**'ı: [Azure Olay Hub 'ı olaylarının yüksek hacimlerinde](./functions-bindings-event-hubs.md) yanıt verme
 
-- **Servis Veri Servisi Kuyruğu**: Servis Veri [Gönderi sıra iletilerini yanıtlayarak](./functions-bindings-service-bus.md) diğer Azure veya şirket içi hizmetlere bağlanma
+- **Service Bus kuyruğu**: [Service Bus kuyruğu Iletilerini yanıtlayarak](./functions-bindings-service-bus.md) diğer Azure veya şirket içi hizmetlere bağlanın
 
-- **Hizmet Veri Servisi Konusu**: Servis Veri [Gönderi konu iletilerine yanıt](./functions-bindings-service-bus.md) vererek diğer Azure hizmetlerini veya şirket içi hizmetleri bağlama
+- **Service Bus konu**: [Service Bus konu iletilerine yanıt](./functions-bindings-service-bus.md) vererek diğer Azure hizmetlerini veya şirket içi hizmetleri bağlama
 
 ## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>İşlevlerin maliyeti ne kadardır?
 
-Azure İşlevlerinin üç tür fiyatlandırma planı vardır. Gereksinimlerinize en uygun olanı seçin:
+Azure Işlevleri 'nin üç tür fiyatlandırma planı vardır. Gereksinimlerinize en uygun olanı seçin:
 
-- **Tüketim planı**: Azure gerekli tüm hesaplama kaynaklarını sağlar. Kaynak yönetimi konusunda endişelenmenize gerek yoktur ve yalnızca kodunuzu çalıştırdığınız süre için ödeme yapmak zorunda değilsiniz.
+- **Tüketim planı**: Azure tüm gerekli hesaplama kaynaklarını sağlar. Kaynak yönetimi hakkında endişelenmeniz gerekmez ve yalnızca kodunuzun çalıştığı süre için ödeme yaparsınız.
 
-- **Premium plan**: Her zaman çevrimiçi olan ve hemen yanıt vermeye hazır olan önceden ısıtılmış bir dizi örnek belirtirsiniz. Işleviniz çalıştığında, Azure gereken ek hesaplama kaynakları sağlar. Sürekli olarak çalışan önceden ısıtılmış örnekler ve Azure uygulamanızı girip çıkarırken kullandığınız ek örnekler için ödeme yapın.
+- **Premium plan**: her zaman çevrimiçi olan ve hemen yanıt vermeye yönelik bir dizi önceden çarpımış örnek belirtirsiniz. İşleviniz çalıştığında Azure, gereken ek hesaplama kaynaklarını sağlar. Sürekli olarak çalışan önceden çarpımış örnekler için ödeme yaparsınız ve Azure olarak kullandığınız ek örnekler, uygulamanızı içinde ve dışarı ölçeklendirirken.
 
-- **Uygulama Hizmeti planı**: İşlerinizi tıpkı web uygulamalarınız gibi çalıştırın. Diğer uygulamalarınız için Uygulama Hizmeti kullanıyorsanız, işlevleriniz ek ücret ödemeden aynı planda çalıştırılabilir.
+- **App Service plan**: işlevlerinizi tıpkı Web uygulamalarınız gibi çalıştırın. Diğer uygulamalarınız için App Service kullanıyorsanız, işlevleriniz hiçbir ek ücret ödemeden aynı planda çalışabilir.
 
 Barındırma planları hakkında daha fazla bilgi için bkz. [Azure İşlevleri barındırma planı karşılaştırma](functions-scale.md). Fiyatlandırma ayrıntılarının tümü [İşlevler Fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/functions/) bulunur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [İlk Azure İşlevinizi oluşturma](functions-create-first-function-vs-code.md)  
-  [Komut satırı](functions-create-first-azure-function-azure-cli.md)olan Visual [Studio Code](functions-create-first-function-vs-code.md)ile başlayın veya [Azure portalını](functions-create-first-azure-function.md)kullanın.
+  [Visual Studio Code](functions-create-first-function-vs-code.md), [komut satırını](functions-create-first-azure-function-azure-cli.md)kullanmaya başlayın veya [Azure Portal](functions-create-first-azure-function.md)kullanın.
 
 - [Azure İşlevleri geliştirici başvurusu](functions-reference.md)  
   Azure İşlevleri çalışma zamanı hakkında daha teknik bilgiler ve işlevlerin kodlanması ve tetikleyicilerin ve bağlamaların tanımlanması hakkında bir başvuru sağlar.

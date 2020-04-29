@@ -1,101 +1,101 @@
 ---
-title: Konsolosa Genel Bakış
-description: Konsoloshakkında genel bilgi edinin
+title: Tüketil 'ye Genel Bakış
+description: Tüketil 'ye genel bakış edinme
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594218"
 ---
-# <a name="consul"></a>Konsül
+# <a name="consul"></a>Tüketil
 
 ## <a name="overview"></a>Genel Bakış
 
-[Konsolos,][consul] çalışma zamanı platformlarında hizmetleri bağlamak ve güvence altına almak için çok veri merkezi bilinçli hizmet ağı çözümüdür. [Connect,][consul-features] hizmet kafesi özellikleri sağlayan bileşendir.
+[Tüketil][consul] , çalışma zamanı platformları genelinde Hizmetleri bağlamaya ve güvenli hale getirmeye yönelik çoklu bir veri merkezi hizmet ağı çözümüdür. [Connect][consul-features] , hizmet ağı özellikleri sağlayan bileşendir.
 
 ## <a name="architecture"></a>Mimari
 
-Konsolos varsayılan olarak [Elçi][envoy-proxy]tabanlı [sidecars][consul-sidecar] oluşan bir veri düzlemi sağlar. Konsolosun takılabilir bir proxy mimarisi vardır. Bu akıllı yakınlıklar, meshed uygulamalarınıza ve iş yüklerinizdeki tüm ağ trafiğini kontrol eder.
+Tüketil, [Varsayılan olarak][consul-sidecar] [Envoy][envoy-proxy]tabanlı parçalardan oluşan bir veri düzlemi sağlar. Tüketil 'nin takılabilir bir ara sunucu mimarisi vardır. Bu akıllı proxy 'ler, yerleşik uygulamalarınızın ve iş yüklerinizin içindeki ve içindeki tüm ağ trafiğini denetler.
 
-Denetim düzlemi yapılandırmayı ve ilkeyi aşağıdaki [bileşenler][consul-architecture]aracılığıyla yönetir:
+Denetim düzlemi yapılandırmayı ve ilkeyi aşağıdaki [Bileşenler][consul-architecture]aracılığıyla yönetir:
 
-- **Sunucu** - Consul küme durumunu koruyan Sunucu modunda çalışan bir Konsolos Aracısı.
+- **Sunucu** -tüketil küme durumunu tutan sunucu modunda çalışan bir Tüketil Aracısı.
 
-- **Müşteri** - Hafif Müşteri Modunda Çalışan Bir Konsolos Temsilcisi. Her işlem düğümünde çalışan bir Müşteri aracısı olmalıdır. Bu istemci, iş yükleri ve Konsolos yapılandırması arasında yapılandırma ve ilke aracılık eder. 
+- **İstemci** -hafif istemci modunda çalışan bir Tüketil Aracısı. Her işlem düğümünün çalışan bir Istemci Aracısı olmalıdır. Bu istemci aracıları, iş yükleri ve tüketilen Tüketil yapılandırması arasındaki yapılandırma ve ilkedir. 
 
-Aşağıdaki mimari diyagram, veri düzlemi ve kontrol düzlemindeki çeşitli bileşenlerin nasıl etkileştiğini gösterir.
+Aşağıdaki mimari diyagramda, veri düzlemi ve denetim düzlemi içindeki çeşitli bileşenlerin nasıl etkileşimde bulunduğu gösterilmektedir.
 
-![Konsül bileşenlerine ve mimarisine genel bakış.](media/servicemesh/consul/about-architecture.png)
+![Tüketil bileşenlerine ve mimarisine genel bakış.](media/servicemesh/consul/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>Seçim kriterleri
+## <a name="selection-criteria"></a>Seçim ölçütü
 
-Konsolosu iş yüklerinizle değerlendirirken aşağıdaki alanları anlamak ve göz önünde bulundurmak önemlidir:
+İş yükleriniz için Tüketil değerlendirirken aşağıdaki alanların anlaşılması ve dikkate alınması önemlidir:
 
-- [Konsolos İlkeleri](#consul-principles)
+- [Tüketil Ilkeleri](#consul-principles)
 - [Özellikler](#capabilities)
 - [Senaryolar](#scenarios)
 
 
-### <a name="consul-principles"></a>Konsolos ilkeleri
+### <a name="consul-principles"></a>Tüketil ilkeleri
 
-Aşağıdaki ilkeler Konsolos projesine [rehberlik edin:][consul-principles]
+Aşağıdaki ilkeler, Tüketil projesini [gösterir][consul-principles] :
 
-- **API-Driven** - Tüm yapılandırma ve ilke kodlar.
+- **API-odaklı** -tüm yapılandırma ve ilke ile birlikte.
 
-- **Her Yerde Çalıştır ve Bağlan** - İş yüklerini çalışma zamanı platformlarında (Kubernetes, VM'ler, Serverless) bağlayın.
+- Çalışma zamanı platformları (Kubernetes, VM 'Ler, sunucusuz) arasında her yerden bağlanma iş yüklerini **çalıştırın ve bağlayın** .
 
-- **Genişlet ve Tümleştir** - Altyapı daki iş yüklerini güvenli bir şekilde bağlayın.
+- Altyapı genelinde güvenli şekilde bağlama iş yüklerini **genişletin ve tümleştirin** .
 
 
 ### <a name="capabilities"></a>Özellikler
 
-Konsolos aşağıdaki yetenekler kümesini sağlar:
+Tüketil aşağıdaki özellik kümesini sağlar:
 
-- **Mesh** – ağ geçidi (çoklu veri merkezi), sanal makineler (küme düğümleri dışında), hizmet eşitleme, hata ayıklama seçeneği yerleşik
+- **Kafes** – ağ geçidi (çoklu veri merkezi), sanal makineler (küme düğümleri dışında), hizmet eşitleme, yerleşik hata ayıklama seçeneği
 
-- **Proxy'ler** – Elçi, yerleşik proxy, takılabilir, Windows iş yükleri için kullanılabilir l4 proxy
+- **Proxy 'ler** – Envoy, yerleşik proxy, takılabilir, L4 proxy Windows iş yükleri için kullanılabilir
 
-- **Trafik Yönetimi** – yönlendirme, bölme, çözüm
+- **Trafik yönetimi** – yönlendirme, bölme, çözümleme
 
-- **Politika** – niyetler, ALA'lar
+- **İlke** – amaçları, ACL 'ler
 
-- **Güvenlik** – yetkilendirme, kimlik doğrulama, şifreleme, SPIFFE tabanlı kimlikler, harici CA (Vault), sertifika yönetimi ve döndürme
+- **Güvenlik** – yetkilendirmeyle, kimlik doğrulama, şifreleme, SPIFFE tabanlı kimlikler, dış CA (kasa), sertifika yönetimi ve döndürme
 
-- **Gözlemlenebilirlik** – ölçümler, ui pano, prometheus, grafana
+- **Observability** – ölçümler, UI panosu, Prometheus, grafana
 
 
 ### <a name="scenarios"></a>Senaryolar
 
-Konsolos aşağıdaki senaryolar için uygundur ve önerilmektedir:
+Tüketil, aşağıdaki senaryolar için uygundur ve önerilir:
 
-- Mevcut Konsolos bağlantılı iş yüklerinin genişletilmesi
+- Mevcut Tüketil bağlı iş yüklerini genişletme
 
-- Sertifika yönetimi yle ilgili uyumluluk gereksinimleri
+- Sertifika yönetimi etrafındaki uyumluluk gereksinimleri
 
-- Çok kümeli hizmet örgü
+- Çoklu küme hizmeti ağı
 
-- VM tabanlı iş yükleri hizmet örgüse dahil edilecek
+- Hizmet kafeslerine dahil edilecek VM tabanlı iş yükleri
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki belgeler, Azure Kubernetes Hizmetine (AKS) Konsolos'u nasıl yükleyebileceğinizi açıklar:
+Aşağıdaki belgelerde, Azure Kubernetes Service (AKS) üzerinde Tüketil 'yi nasıl yükleyebileceğiniz açıklanmaktadır:
 
 > [!div class="nextstepaction"]
-> [Azure Kubernetes Hizmetine Konsolos Yükle (AKS)][consul-install]
+> [Azure Kubernetes Service (AKS) ' de Tüketil 'yi kurma][consul-install]
 
-Ayrıca Konsolos özelliklerini ve mimarisini daha fazla keşfedebilirsiniz:
+Ayrıca, Tüketil özelliklerini ve mimarisini de inceleyebilirsiniz:
 
-- [Konsolos Özellikleri][consul-features]
-- [Konsolosluk Mimarisi][consul-architecture]
-- [Konsolos - Connect Nasıl Çalışır?][consul-how-connect-works]
+- [Tüketil özellikleri][consul-features]
+- [Tüketil mimarisi][consul-architecture]
+- [Tüketil-Connect 'in nasıl çalıştığı][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html
