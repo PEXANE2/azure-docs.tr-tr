@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak JSON dosyalarını sorgula (önizleme)
-description: Bu bölümde, Azure Synapse Analytics'te isteğe bağlı SQL kullanarak JSON dosyalarının nasıl okunduğu açıklanmaktadır.
+title: İsteğe bağlı SQL kullanarak JSON dosyalarını sorgulama (Önizleme)
+description: Bu bölümde, Azure SYNAPSE Analytics 'te isteğe bağlı SQL kullanarak JSON dosyalarının nasıl okunacağı açıklanmaktadır.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 645baf9102785d223fd1f23ae52a4609725f795b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770801"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) kullanarak JSON dosyalarını sorgula
+# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SQL isteğe bağlı SQL (Önizleme) kullanarak JSON dosyalarını sorgulama
 
-Bu makalede, Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) kullanarak sorgu yazmayı öğreneceksiniz. Sorgunun amacı JSON dosyalarını okumaktır.
+Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgunun hedefi JSON dosyalarını okumalıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri inceleyin:
+Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri gözden geçirin:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
 - [Ön koşullar](query-data-storage.md#prerequisites)
 
 ## <a name="sample-json-files"></a>Örnek JSON dosyaları
 
-Aşağıdaki bölümde JSON dosyalarını okumak için örnek komut dosyaları içerir. Dosyalar *json* kapsayıcısında, klasör *kitaplarında*depolanır ve aşağıdaki yapıya sahip tek bir kitap girişi içerir:
+Aşağıdaki bölümde JSON dosyalarını okumak için örnek betikler yer almaktadır. Dosyalar bir *JSON* kapsayıcısına, klasör *kitaplarına*depolanır ve aşağıdaki yapıyla tek bir kitap girişi içerir:
 
 ```json
 {
@@ -47,9 +47,9 @@ Aşağıdaki bölümde JSON dosyalarını okumak için örnek komut dosyaları i
 }
 ```
 
-## <a name="read-json-files"></a>JSON dosyalarını okuyun
+## <a name="read-json-files"></a>JSON dosyalarını okuma
 
-JSON dosyalarını JSON_VALUE ve [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak işlemek için, depolamadan JSON dosyasını tek bir sütun olarak okumanız gerekir. Aşağıdaki komut dosyası *book1.json* dosyasını tek bir sütun olarak okur:
+JSON_VALUE ve [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak JSON dosyalarını işlemek IÇIN, JSON dosyasını depolamadan tek bir sütun olarak okumanız gerekir. Aşağıdaki komut, *Book1. JSON* dosyasını tek bir sütun olarak okur:
 
 ```sql
 SELECT
@@ -68,11 +68,11 @@ FROM
 ```
 
 > [!NOTE]
-> Tüm JSON dosyasını tek satır veya sütun olarak okuyorsunuz. Yani, FIELDTERMINATOR, FIELDQUOTE ve ROWTERMINATOR 0x0b olarak ayarlanır.
+> Tüm JSON dosyasını tek satır veya sütun olarak okuyorınız. Bu nedenle, FIELDSONLANDıRıCı, FIELDQUOTE ve ROWSONLANDıRıCı, 0x0B olarak ayarlanmıştır.
 
-## <a name="query-json-files-using-json_value"></a>json dosyalarını JSON_VALUE kullanarak sorgula
+## <a name="query-json-files-using-json_value"></a>JSON_VALUE kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu, *Kriptolojide Olasılıksal ve İstatistiksel Yöntemler, Seçilmiş Makalelere Giriş*başlıklı bir kitaptan skaler değerleri (başlık, yayıncı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nasıl kullanacağınızı gösterir:
+Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler*adlı bir kitapta skalar değerler (başlık, yayımcı) almak için [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nasıl kullanacağınızı gösterir:
 
 ```sql
 SELECT
@@ -94,9 +94,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-json_query"></a>JSON dosyalarını JSON_QUERY kullanarak sorgula
+## <a name="query-json-files-using-json_query"></a>JSON_QUERY kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu, *Kriptolojide Olasılıksal ve İstatistiksel Yöntemler, Seçilmiş Konulara*Göre Giriş adlı kitaptan nesneleri ve dizileri (yazarları) almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nasıl kullanacağınızı gösterir:
+Aşağıdaki sorgu, *Cryptology 'de dayalı ve Istatistiksel Yöntemler*'e sahip olan bir kitaptaki nesneleri ve dizileri (yazarları) almak için [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nasıl kullanacağınızı gösterir:
 
 ```sql
 SELECT
@@ -117,9 +117,9 @@ WHERE
     JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
 ```
 
-## <a name="query-json-files-using-openjson"></a>OPENJSON kullanarak JSON dosyalarını sorgula
+## <a name="query-json-files-using-openjson"></a>OPENJSON kullanarak JSON dosyalarını sorgulama
 
-Aşağıdaki sorgu [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanır. Bu bir kitap içinde nesneleri ve özellikleri alacak *-Kriptolojide Olasılıksal ve İstatistiksel Yöntemler, Seçilmiş Makalelere Giriş:*
+Aşağıdaki sorgu [Openjson](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)kullanır. Bu *, seçilen makalelere bir giriş olan Cryptology 'de dayalı ve Istatistiksel Yöntemler 'e sahip olan*bir kitapta nesneleri ve özellikleri alacaktır:
 
 ```sql
 SELECT
@@ -142,7 +142,7 @@ WHERE
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu serinin sonraki makaleleri nasıl gösterecektir:
+Bu serinin sonraki makalelerinde nasıl yapılacağı gösterilmektedir:
 
 - [Klasörleri ve birden çok dosyayı sorgulama](query-folders-multiple-csv-files.md)
 - [Görünümleri oluşturma ve kullanma](create-use-views.md)

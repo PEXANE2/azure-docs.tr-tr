@@ -1,6 +1,6 @@
 ---
-title: Uygulama IoT Tak ve Çalıştır Önizleme modeli bulma | Microsoft Dokümanlar
-description: Bir çözüm geliştiricisi olarak, ioT tak ve çalıştır model bulmanızı çözümünüzde nasıl uygulayabileceğinizhakkında bilgi edinin.
+title: IoT Tak ve Kullan önizleme modeli bulmayı uygulama | Microsoft Docs
+description: Çözüm geliştiricisi olarak, çözümünüzde IoT Tak ve Kullan modeli bulmayı nasıl uygulayabileceğinizi öğrenin.
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -10,71 +10,71 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770469"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Çalıştır Önizleme modeli keşfini uygulayın
+# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı uygulama
 
-Bu makalede, bir çözüm geliştiricisi olarak, bir IoT çözümünde IoT Tak ve Çalıştır Önizleme modeli keşfini nasıl uygulayabileceğiniz açıklanmaktadır.  IoT Tak ve Çalıştır modeli bulma, IoT Tak ve Çalıştır cihazlarının desteklenen yetenek modellerini ve arabirimlerini nasıl tanımladığı ve bir IoT çözümlü bu özellik modellerini ve arayüzlerini nasıl geri aldığımızdır.
+Bu makalede, bir IoT çözümünde IoT Tak ve Kullan önizleme modeli bulmayı nasıl uygulayabileceğinizi anlatan bir çözüm geliştiricisi olarak açıklanmaktadır.  IoT Tak ve Kullan modeli bulma, IoT Tak ve Kullan cihazlarının desteklenen yetenek modellerini ve arabirimlerini nasıl tanımladığına ve bir IoT çözümünün bu yetenek modellerini ve arabirimlerini nasıl alacağını belirler.
 
-IoT çözümünün iki geniş kategorisi vardır: bilinen bir IoT Tak ve Çalıştır aygıtı yla çalışan amaca yönelik çözümler ve herhangi bir IoT Tak ve Çalıştır aygıtıyla çalışan model odaklı çözümler.
+IoT çözümünün iki geniş kategorisi vardır: bilinen bir IoT Tak ve Kullan cihazları kümesiyle çalışan ve tüm IoT Tak ve Kullan cihazlarıyla çalışan model temelli çözümler.
 
-Bu kavram makalesi, her iki çözüm türünde model bulmanın nasıl uygulanacağını açıklar.
+Bu kavram makalesinde, model bulmanın her iki çözüm türünde nasıl uygulanacağı açıklanır.
 
 ## <a name="model-discovery"></a>Model keşfi
 
-Bir IoT Tak ve Çalıştır aygıtı ilk olarak IoT hub'ınıza bağlandığında, bir model bilgi telemetrisi iletisi gönderir. Bu ileti, aygıtın uyguladığı arabirimlerin adlarını içerir. Çözümünüzün aygıtla çalışması için bu t'leri çözmesi ve her arabirim için tanımları alması gerekir.
+IoT Tak ve Kullan cihazı, IoT Hub 'ınıza ilk kez bağlanırsa, bir model bilgileri telemetri iletisi gönderir. Bu ileti, cihazın uyguladığı arabirimlerin kimliklerini içerir. Çözümünüzün cihazla çalışması için, bu kimlikleri çözmesi ve her arabirim için tanımları alması gerekir.
 
-Bir IoT Tak ve Çalıştır aygıtının bir hub'a bağlanmak için Aygıt Sağlama Hizmetini (DPS) kullandığında attığı adımlar şunlardır:
+Bir IoT Tak ve Kullan cihazının bir hub 'a bağlanmak üzere cihaz sağlama hizmeti 'ni (DPS) kullandığında aldığı adımlar aşağıda verilmiştir:
 
-1. Aygıt açık olduğunda, DPS için genel bitiş noktasına bağlanır ve izin verilen yöntemlerden birini kullanarak kimlik doğrulaması sağlar.
-1. DPS daha sonra aygıtın kimliğini doğrular ve aygıtı hangi IoT hub'ına atamasını söyleyen kuralı arar. DPS daha sonra aygıtı bu hub'a kaydeder.
-1. DPS aygıta bir IoT Hub bağlantı dizesi döndürür.
-1. Aygıt daha sonra IoT Hub'ınıza bir keşif telemetri iletisi gönderir. Bulma telemetri iletisi, aygıtın uyguladığı arabirimlerin dislerini içerir.
-1. IoT Tak ve Çalıştır cihazı artık IoT hub'ınızı kullanan bir çözümle çalışmaya hazır.
+1. Cihaz açıldığında, DPS için genel bitiş noktasına bağlanır ve izin verilen yöntemlerden birini kullanarak kimlik doğrular.
+1. Daha sonra DPS, cihazın kimliğini doğrular ve cihazı hangi IoT Hub 'ına atayacağını söyleyen kurala bakar. DPS daha sonra cihazı bu hub 'a kaydeder.
+1. DPS cihaza bir IoT Hub bağlantı dizesi döndürür.
+1. Cihaz daha sonra IoT Hub bir bulma telemetri iletisi gönderir. Bulma telemetri iletisi, cihazın uyguladığı arabirimlerin kimliklerini içerir.
+1. IoT Tak ve Kullan cihazı artık IoT Hub 'ınızı kullanan bir çözümle çalışmaya hazırdır.
 
-Aygıt doğrudan IoT hub'ınıza bağlanırsa, aygıt koduna gömülü bir bağlantı dizesini kullanarak bağlanır. Aygıt daha sonra IoT Hub'ınıza bir keşif telemetri iletisi gönderir.
+Cihaz doğrudan IoT Hub 'ınıza bağlanıyorsa, cihaz kodunda gömülü bir bağlantı dizesi kullanarak bağlanır. Cihaz daha sonra IoT Hub bir bulma telemetri iletisi gönderir.
 
-Model bilgileri telemetri iletisi hakkında daha fazla bilgi edinmek için [ModelInformation](concepts-common-interfaces.md) arabirimine bakın.
+Model bilgileri telemetri iletisi hakkında daha fazla bilgi için bkz. [ModelInformation](concepts-common-interfaces.md) arabirimi.
 
-### <a name="purpose-built-iot-solutions"></a>Amaca yönelik IoT çözümleri
+### <a name="purpose-built-iot-solutions"></a>Amaç tarafından oluşturulan IoT çözümleri
 
-Amaca yönelik bir IoT çözümü, bilinen bir ioT Tak ve Çalıştır aygıtı özelliği modelleri ve arabirimleriyle çalışır.
+Amaç oluşturulmuş bir IoT çözümü, bilinen bir IoT Tak ve Kullan cihaz yeteneği modelleri ve arabirimleri kümesiyle birlikte çalışarak.
 
-Çözümünüze önceden bağlanacak aygıtlar için yetenek modeline ve arabirimlerine sahip olacaksınız. Çözümünüzü hazırlamak için aşağıdaki adımları kullanın:
+Çözümünüze bir süre önce bağlanacak cihazlar için yetenek modeli ve arabirimler olacaktır. Çözümünüzü hazırlamak için aşağıdaki adımları kullanın:
 
-1. Arabirim JSON dosyalarını, çözümünüzün okuyabileceği bir [model deposunda](./howto-manage-models.md) saklayın.
-1. Beklenen IoT Tak ve Çalıştır özelliği modellerine ve arabirimine göre IoT çözümünüze mantık yazın.
-1. Çözümünüzünüzün kullandığı IoT merkezinden gelen bildirimlere abone olun.
+1. Arabirim JSON dosyalarını, çözümünüzün okuyabildiği bir [model deposunda](./howto-manage-models.md) depolayın.
+1. IoT çözümünüze, beklenen IoT Tak ve Kullan yetenek modellerine ve arabirimine göre mantık yazın.
+1. Çözümünüzün kullandığı IoT Hub 'ından gelen bildirimlere abone olun.
 
-Yeni bir aygıt bağlantısı için bildirim aldığınızda aşağıdaki adımları izleyin:
+Yeni bir cihaz bağlantısı için bildirim aldığınızda, şu adımları izleyin:
 
-1. Aygıt tarafından uygulanan yetenek modelinin ve arabirimlerinin aygıtlarının aygıtlarını ve arabirimlerinin aygıtlarını almak için bulma telemetri iletisini okuyun.
-1. Yetenek modelinin kimliğini, önceden depoladığınız yetenek modellerinin kimlikleri ile karşılaştırın.
-1. Artık ne tür bir aygıtın bağolduğunu biliyorsunuz. Kullanıcıların aygıtla uygun şekilde etkileşimkurmasını sağlamak için daha önce yazdığınız mantığı kullanın.
+1. Cihaz tarafından uygulanan yetenek modeli ve arabirimlerin kimliklerini almak için bulma telemetri iletisini okuyun.
+1. Yetenek modelinin KIMLIĞINI, önceden depoladığınız yetenek modellerinin kimliklerine göre karşılaştırın.
+1. Artık ne tür bir cihaz bağlandığını öğrenmiş olursunuz. Kullanıcıların cihazla uygun şekilde etkileşime geçmesini sağlamak için, daha önce yazdığınız mantığı kullanın.
 
-### <a name="model-driven-solutions"></a>Model odaklı çözümler
+### <a name="model-driven-solutions"></a>Model temelli çözümler
 
-Model odaklı bir IoT çözümü herhangi bir IoT Tak ve Çalıştır aygıtıyla çalışabilir. Model odaklı bir IoT Çözümü oluşturmak daha karmaşıktır, ancak çözümünüz gelecekte eklenen cihazlarla çalışır.
+Model temelli bir IoT çözümü, tüm IoT Tak ve Kullan cihazlarla çalışabilir. Model temelli bir IoT çözümünün oluşturulması daha karmaşıktır, ancak çözümünüz gelecekte eklenen tüm cihazlarla birlikte çalışmıdır.
 
-Model tabanlı bir IoT çözümü oluşturmak için, IoT Tak ve Çalıştır arabirimi ilkellerine karşı mantık oluşturmanız gerekir: telemetri, özellikler ve komutlar. IoT çözümünüzün mantığı, birden çok telemetri, özellik ve komut özelliklerini birleştirerek bir aygıtı temsil eder.
+Model temelli bir IoT çözümü oluşturmak için IoT Tak ve Kullan arabirimi temel elemanlarına karşı mantık oluşturmanız gerekir: telemetri, Özellikler ve komutlar. IoT çözümünüzün mantığı birden çok telemetri, özellik ve komut özelliklerini birleştirerek bir cihazı temsil eder.
 
-Çözümünüz ayrıca kullandığı IoT hub'ından gelen bildirimlere de abone olmalıdır.
+Çözümünüz Ayrıca kullandığı IoT Hub 'ından gelen bildirimlere abone olmalıdır.
 
-Çözümünüz yeni bir aygıt bağlantısı için bir bildirim aldığında aşağıdaki adımları izleyin:
+Çözümünüz yeni bir cihaz bağlantısı için bir bildirim aldığında, şu adımları izleyin:
 
-1. Aygıt tarafından uygulanan yetenek modelinin ve arabirimlerinin aygıtlarının aygıtlarını ve arabirimlerinin aygıtlarını almak için bulma telemetri iletisini okuyun.
-1. Her kimlik için, aygıtın özelliklerini bulmak için tam JSON dosyasını okuyun.
-1. Çözümünüz tarafından daha önce alınan JSON dosyalarını depolamak için oluşturduğun önbelleklerde her arabirimin bulunip bulunmadığını kontrol edin.
-1. Ardından, ortak model deposunda bu kimlikle bir arabirimin bulunip bulunmadığını denetleyin. Daha fazla bilgi için [Genel model deposuna](howto-manage-models.md)bakın.
-1. Arabirim ortak model deposunda yoksa, çözümünüzün bildiği herhangi bir şirket modeli deposunda aramayı deneyin. Şirket modeli deposuna erişmek için bir bağlantı dizesi gerekir. Daha fazla bilgi için [Şirket modeli deposuna](howto-manage-models.md)bakın.
-1. Tüm arabirimleri ortak model deposunda veya şirket modeli deposunda bulamazsanız, aygıtın arabirim tanımını sağlayıp sağlayamadığını kontrol edebilirsiniz. Aygıt, bir komutla arabirim dosyalarının nasıl alınacağı hakkında bilgi yayınlamak için standart [ModelDefinition](concepts-common-interfaces.md) arabirimini uygulayabilir.
-1. Aygıt tarafından uygulanan her arabirim için JSON dosyaları bulduysanız, aygıtın yeteneklerini kaydedebilirsiniz. Kullanıcıların aygıtla etkileşim kurmasını sağlamak için daha önce yazdığınız mantığı kullanın.
-1. İstediğiniz zaman, aygıt için yetenek modeli kimliği ve arayüz kimliklerini almak için dijital ikizler API'sini arayabilirsiniz.
+1. Cihaz tarafından uygulanan yetenek modeli ve arabirimlerin kimliklerini almak için bulma telemetri iletisini okuyun.
+1. Her KIMLIK için, cihazın yeteneklerini bulmak için tam JSON dosyasını okuyun.
+1. Çözümünüz tarafından daha önce alınan JSON dosyalarını depolamak için oluşturduğunuz önbellekte her arabirimin mevcut olup olmadığını denetleyin.
+1. Daha sonra, bu KIMLIĞE sahip bir arabirimin ortak model deposunda mevcut olup olmadığını denetleyin. Daha fazla bilgi için bkz. [ortak model deposu](howto-manage-models.md).
+1. Arabirim ortak model deposunda yoksa, çözümü çözümünüz tarafından bilinen tüm şirket modeli depolarında aramaya çalışın. Bir şirket modeli deposuna erişmek için bir bağlantı dizesine ihtiyacınız vardır. Daha fazla bilgi için bkz. [Şirket modeli deposu](howto-manage-models.md).
+1. Tüm arabirimleri ortak model deposunda veya bir şirket modeli deposunda bulamıyorsanız, cihazın arabirim tanımını sağlayıp sağlayabileceğinizi kontrol edebilirsiniz. Bir cihaz, arabirim dosyalarını komutla alma hakkında bilgi yayımlamak için standart [ModelDefinition](concepts-common-interfaces.md) arabirimini uygulayabilir.
+1. Cihaz tarafından uygulanan her arabirim için JSON dosyaları buldıysanız, cihazın yeteneklerini sıralayabilirsiniz. Kullanıcıların cihazla etkileşime geçmesini sağlamak için daha önce yazdığınız mantığı kullanın.
+1. İstediğiniz zaman, cihazın yetenek modeli KIMLIĞINI ve arabirim kimliklerini almak için dijital TWINS API 'sini çağırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir IoT çözümbulma modelini öğrendiğinize göre, çözümünüz için diğer özelliklerden yararlanmak için [Azure IoT Platformu](overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin.
+Artık bir IoT çözümünü model bulma hakkında öğrendiğinize göre, çözümünüzün diğer özelliklerinden yararlanmak için [Azure IoT Platformu](overview-iot-plug-and-play.md) hakkında daha fazla bilgi edinin.

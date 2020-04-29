@@ -1,6 +1,6 @@
 ---
-title: Sanal makineler için Azure Özel Ana Bilgisayarlarına Genel Bakış
-description: Azure Özel Ana Bilgisayarların sanal makineleri dağıtmak için nasıl kullanılabileceğini öğrenin.
+title: Sanal makineler için Azure ayrılmış konaklarına genel bakış
+description: Azure adanmış ana bilgisayarlarının sanal makineleri dağıtmak için nasıl kullanılabileceği hakkında daha fazla bilgi edinin.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -9,23 +9,23 @@ ms.date: 01/09/2020
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: 9709408f006cbcc5786a4e5a854abcd20affd693
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082841"
 ---
-# <a name="azure-dedicated-hosts"></a>Azure Özel Ana Bilgisayarlar
+# <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
-Azure Özel Ana Bilgisayar, bir veya daha fazla sanal makineyi barındırabilen fiziksel sunucular sağlayan bir hizmettir. Özel ana bilgisayarlar, kaynak olarak sağlanan veri merkezlerimizde kullanılan fiziksel sunucuların aynıdır. Bir bölge, kullanılabilirlik bölgesi ve hata etki alanı içinde özel ana bilgisayarları sağlayabilirsiniz. Ardından, gereksinimlerinizi en iyi karşılayan yapılandırmada VM'leri doğrudan sağlanan ana bilgisayarlarınıza yerleştirebilirsiniz.
+Azure adanmış ana bilgisayar, bir veya daha fazla sanal makineyi bir Azure aboneliğine ayrılmış olarak barındırabilecek fiziksel sunucular sağlayan bir hizmettir. Adanmış konaklar, kaynak olarak sağlanmış olan veri merkezlerimizde kullanılan fiziksel sunuculardır. Bir bölge, kullanılabilirlik alanı ve hata etki alanı içinde adanmış konaklar sağlayabilirsiniz. Daha sonra, gereksinimlerinizi en iyi şekilde karşılayan her yapılandırma için VM 'Leri doğrudan sağlanan konaklarınıza yerleştirebilirsiniz.
 
 
 [!INCLUDE [virtual-machines-common-dedicated-hosts](../../../includes/virtual-machines-common-dedicated-hosts.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure PowerShell,](dedicated-hosts-powershell.md) [portal](dedicated-hosts-portal.md)ve [Azure CLI'yi](../linux/dedicated-hosts-cli.md)kullanarak özel bir ana bilgisayar dağıtabilirsiniz.
+- [Azure PowerShell](dedicated-hosts-powershell.md), [Portal](dedicated-hosts-portal.md)ve [Azure CLI](../linux/dedicated-hosts-cli.md)kullanarak adanmış bir konak dağıtabilirsiniz.
 
-- Bir bölgede maksimum esneklik için hem bölgeleri hem de fay etki alanlarını kullanan örnek şablon [burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)bulunur.
+- [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
 
-- [Ayrıca, Ayrılmış](../prepay-dedicated-hosts-reserved-instances.md)Azure Özel Ana Bilgisayar Ları Örneği ile maliyetlerden de tasarruf edebilirsiniz.
+- Ayrıca, [ayrılmış bir Azure ayrılmış ana bilgisayar örneğiyle](../prepay-dedicated-hosts-reserved-instances.md)maliyetlerle tasarruf edebilirsiniz.

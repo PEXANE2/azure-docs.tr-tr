@@ -10,10 +10,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128029"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure depolama için güvenlik denetimleri
@@ -54,7 +54,7 @@ Bu makale, Azure depolama 'da yerleşik olarak bulunan güvenlik denetimlerini b
 
 | Güvenlik denetimi | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik doğrulaması| Yes | Azure Active Directory, paylaşılan anahtar, paylaşılan erişim belirteci. |
+| Kimlik Doğrulaması| Yes | Azure Active Directory, paylaşılan anahtar, paylaşılan erişim belirteci. |
 | Yetkilendirme| Yes | RBAC, POSIX ACL 'Leri ve SAS belirteçleri aracılığıyla yetkilendirme desteği |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

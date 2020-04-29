@@ -1,6 +1,6 @@
 ---
-title: Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi - Azure için ticari pazar
-description: Hesabınızı CPP'den İş Ortağı Merkezi'ne -Azure için ticari pazar yeri- nasıl geçirebilirsiniz?
+title: Bulut İş Ortağı Portalı 'den Iş Ortağı Merkezi 'ne hesap geçişi-Azure için ticari Market
+description: Hesabınızı CPP 'ten Iş Ortağı Merkezi 'ne geçirme-Azure için ticari Market
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,85 +8,85 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024430"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi
 
-Varolan bir Bulut İş Ortağı Portalınız (CPP) hesabınız varsa, hesap ayarlarınızın İş Ortağı Merkezi'ne geçirilmesi gerekir.
+Mevcut bir Bulut İş Ortağı Portalı (CPP) hesabınız varsa, hesap ayarlarınızın Iş Ortağı Merkezi 'ne geçirilmesi gerekir.
 
-## <a name="account-migration-process"></a>Hesap geçiş süreci
+## <a name="account-migration-process"></a>Hesap geçiş işlemi
 
-Belirli bir hesap için CPP'de Sahip rolü olan bir kullanıcıysanız, Publisher Profile sayfanızda sarı bir başlık gösterilir. Aşağıdaki iki davadan birine ait olabilirsiniz:
+Belirli bir hesap için CPP içinde sahip rolüne sahip bir kullanıcı değilseniz, yayımcı profili sayfanızda sarı bir başlık gösterilir. Aşağıdaki iki durumlardan birine ait olabilirsiniz:
 
-- Hesabınız zaten geçirildi ve Hesap Ayarlarınızı İş Ortağı Merkezi'nde yönetmeye hazırsınız.
-- Hesabınız İş Ortağı Merkezi'ne geçirilemedi ve daha fazla işlem yapmanız gerekir.
+- Hesabınız zaten geçirilmiş ve Iş Ortağı Merkezi 'nde hesap ayarlarınızı yönetmeye hazırsınız.
+- Hesabınız Iş Ortağı Merkezi 'ne geçirilmedi ve daha fazla işlem yapmanız gerekir.
 
-### <a name="your-account-has-been-migrated-to-partner-center"></a>Hesabınız Ortak Merkezi'ne geçirildi
+### <a name="your-account-has-been-migrated-to-partner-center"></a>Hesabınız Iş Ortağı Merkezi 'ne geçirildi
 
-CPP'den İş Ortağı Merkezi'ne geçişi tamamlamış tüm hesaplar için Hesap yönetimi İş Ortağı Merkezi'nde gerçekleşir. Kullanıcı ekleme/silme gibi değişiklikler CPP'ye geri senkronize edilir.
+CPP 'dan Iş Ortağı Merkezi 'ne geçişi tamamlanmış tüm hesaplar için Iş Ortağı Merkezi 'nde hesap yönetimi gerçekleşecektir. Kullanıcı ekleme/silme gibi değişiklikler CPP öğesine geri eşitlenir.
 
-### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Hesabınızı henüz Ortak Merkezi'ne geçirmedin
+### <a name="you-have-not-yet-migrated-your-account-to-partner-center"></a>Hesabınızı henüz Iş Ortağı Merkezi 'ne geçirmemiş olabilirsiniz
 
-Hesap geçiş işlemini başlatmak için banner'a tıklayın. Aşağıdaki öğeleri girmeniz beklenir:
+Hesap geçiş işleminizi başlatmak için başlık üzerine tıklayın. Şu öğeleri girmeniz bekleniyor:
 
-1. İş e-posta adresi: <br> <br> Çoğu durumda, CPP'de oturum açmanız için kullandığınız e-posta adresiyle oturum açın. Bazı durumlarda, farklı bir e-posta adresi kullanılmalıdır:
+1. İş e-posta adresi: <br> <br> Çoğu durumda, CPP oturumu açmak için kullandığınız e-posta adresiyle oturum açın. Belirli durumlarda, farklı bir e-posta adresinin kullanılması gerekir:
 
-    * Microsoft hesabı: CPP hesabı bir Microsoft hesabıysa, Microsoft İş Ortağı Ağı (MPN) Kimliğinin kayıtlı olduğu kiracıyla ilişkili geçerli bir iş e-postası girin. Daha fazla bilgi için Microsoft [İş Ortağı Ağı Programı'na kaydolun.](#sign-up-for-microsoft-partner-network-program)
+    * Microsoft hesabı: CPP hesabı bir Microsoft hesabı ise, Microsoft İş Ortağı Ağı (MPN) KIMLIĞININ kaydedildiği kiracı ile ilişkili geçerli bir iş e-postası girin. Daha fazla bilgi için bkz. [Microsoft iş ortağı ağı programa kaydolma](#sign-up-for-microsoft-partner-network-program).
 
-    * Kiracı uyuşmazlığı: İş e-posta adresiniz CPP hesabınızda bulunan Microsoft İş Ortağı Ağı Kimliği ile ilişkili kiracıya ait değilse, bir hata görürsünüz. Bu hatayı aşmak için kiracıyla ilişkili bir e-posta adresi girin. Bir hata iletisi kiracının adını sağlar.
+    * Kiracı uyumsuzluğu: iş e-posta adresiniz, CPP hesabınızda bulunan Microsoft İş Ortağı Ağı KIMLIĞIYLE ilişkili kiracıya ait değilse bir hata görürsünüz. Bu hatadan ilerlemek için kiracıyla ilişkili bir e-posta adresi girin. Bir hata iletisi, kiracının adını sağlar.
 
-2. Microsoft İş Ortağı Ağı programına kaydolun
+2. Microsoft İş Ortağı Ağı programa kaydolun
 
-    CPP hesabınızda Microsoft İş Ortağı Ağı Kimliği yoksa veya geçersiz sayıldıysa, etkinleştirme işleminin bir parçası olarak Microsoft İş Ortağı Ağı programına kaydolmanız gerekir.
+    CPP hesabınızda Microsoft İş Ortağı Ağı KIMLIĞI yoksa veya geçersiz bir tane varsa, etkinleştirme sürecinin bir parçası olarak Microsoft İş Ortağı Ağı programına kaydolmanız gerekir.
 
-## <a name="publishers-moving-from-cpp"></a>CPP'den taşınan yayıncılar
+## <a name="publishers-moving-from-cpp"></a>CPP 'tan taşınan yayımcılar
 
-Hesabınız [Bulut İş Ortağı Portalı'ndan (CPP)](https://cloudpartner.azure.com)geçirilmişse, yeni bir İş Ortağı Merkezi hesabı oluşturmanız gerekmez. Yeni İş Ortağı Merkezi hesabınıza e-posta ve mevcut CPP hesabınızda oturum açtıktan sonra bir banner bildiriminde özelleştirilmiş bir bağlantı almış olmalısınız.
+Hesabınız [bulut iş ortağı portalı (CPP)](https://cloudpartner.azure.com)' den geçirildiyse, yeni bir Iş Ortağı Merkezi hesabı oluşturmanız gerekmez. Yeni Iş Ortağı Merkezi hesabınıza e-postada ve mevcut CPP hesabınızda oturum açtıktan sonra bir başlık bildiriminde özelleştirilmiş bir bağlantı almış olmanız gerekir.
 
-Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni İş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, İş Ortağı Merkezi'ndeki [ticari pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
+Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni Iş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, Iş Ortağı Merkezi 'nde [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
 
-Yayımlama sözleşmesi ve şirket profil bilgileri, daha önce ayarlanmış hesap ödeme profili bilgileri, kullanıcı hesapları ve izinleri ve CPP hesabınızla ilişkili etkin tekliflerle birlikte yeni İş Ortağı Merkezi hesabınıza taşınır.
+Yayımlama sözleşmesi ve şirket profili bilgileri yeni Iş Ortağı Merkezi hesabınıza geçirilir, daha önce, daha önce ayarlanan bir hesap ödeme profili bilgileri, Kullanıcı hesapları ve izinler ve CPP hesabınızla ilişkili etkin teklifler.
 
-Hesap bilgileriniz CPP'den İş Ortağı Merkezi'ne taşındıktan sonra, hesap güncellemeleri yapmak veya kullanıcıları, izinleri ve faturalandırmayı yönetmek için Artık CPP'yi kullanmazsınız. Sınırlı bir süre için, İş Ortağı Merkezi'nde yaptığınız tüm hesap güncellemeleri, CPP portalı sonunda azalana kadar salt okunur CPP hesabınızda otomatik olarak güncellenir.
+Hesap bilgileriniz CPP Iş Ortağı Merkezi 'ne taşındıktan sonra, hesap güncelleştirmelerini yapmak veya kullanıcıları, izinleri ve faturalandırmayı yönetmek için artık CPP kullanmayacaktır. Sınırlı bir süre için, CPP portalı son kullanım dışı olana kadar Iş Ortağı Merkezi 'nde yaptığınız tüm hesap güncelleştirmeleri otomatik olarak salt okunurdur.
 
-## <a name="sign-up-for-microsoft-partner-network-program"></a>Microsoft İş Ortağı Ağı programına kaydolun
+## <a name="sign-up-for-microsoft-partner-network-program"></a>Microsoft İş Ortağı Ağı programa kaydolun
 
-Microsoft ile ortaklık yapmak isteyen şirketlerin Microsoft İş Ortağı Ağı'na (MPN) katılması ve bir MPN kimliği alması gerekir. Zaten Microsoft İş Ortağı Ağı'nın bir üyesiyseniz ve bir MPN kimliğiniz varsa, hesap etkinleştirme işlemi sırasında ihtiyacınız olduğu için bilgileri elinizin altında tutun.  
+Microsoft ile iş ortağı yapmak isteyen şirketlerin Microsoft İş Ortağı Ağı (MPN) katılması ve bir MPN KIMLIĞI alması gerekir. Zaten Microsoft İş Ortağı Ağı bir üyesiyseniz ve bir MPN KIMLIĞINE sahipseniz, hesap etkinleştirme işlemi sırasında ihtiyaç duyacağınız gibi bilgileri daha kullanışlı tutun.  
 
-Microsoft İş Ortağı Ağı'nın bir üyesi değilseniz, MPN kimliği almak için [buraya katılabilirsiniz.](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) Hesap etkinleştirme işlemi sırasında girmeniz gerektiğinden MPN kimliğinizi not alın.
+Microsoft İş Ortağı Ağı bir üyesi değilseniz, bir MPN KIMLIĞI almak için [buraya katabilirsiniz](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) . Hesap etkinleştirme işlemi sırasında girmeniz gereken için MPN KIMLIĞINIZI bir yere göz önüne alın.
 
-Microsoft İş Ortağı Ağı hakkında daha fazla bilgi edinmek için [bkz.](https://partner.microsoft.com/en-US/membership) Microsoft İş Ortağı Ağı'ndaki ISV avantajları hakkında daha fazla bilgi edinmek için [ISV Kaynak](https://partner.microsoft.com/isv-resource-hub)Hub'ına bakın.  
+Microsoft İş Ortağı Ağı hakkında daha fazla bilgi edinmek için bkz. partner web sitesinde [Microsoft iş ortağı ağı ekleme](https://partner.microsoft.com/en-US/membership) . Microsoft İş Ortağı Ağı ISV avantajları hakkında daha fazla bilgi edinmek için bkz. [ISV kaynak hub](https://partner.microsoft.com/isv-resource-hub)'ı.  
 
-## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Dynamics 365 ve PowerApps'ı İş Ortağı Merkezi'ne taşıyın
+## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>Dynamics 365 ve PowerApps tekliflerini Iş Ortağı Merkezi 'ne taşıma
 
-Dynamics 365 Müşteri Katılımı, PowerApps ve Dynamics 365 Operasyonları için hesap ve teklif yönetimini kolaylaştırmak için teklifler [İş Ortağı Merkezi'ne](https://partner.microsoft.com/)taşındı. Hareket, aynı içeriğin hem genel hem de satıcı katalogları tarafından kullanılabilmesini sağlar.
+Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemlerinde hesap ve teklif yönetimini kolaylaştırmak için, teklifler [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne taşınmıştır. Taşıma, aynı içeriğin hem genel hem de satıcı kataloglarında kullanılabilmesini sağlar.
 
-Dynamics 365 Müşteri Katılımı, PowerApps ve Dynamics 365 Operasyonları teklifleriniz için **15 Ekim 2019** tarihine kadar yapılması gerekenler hakkında ayrıntılı bilgi için aşağıdaki talimatları uygulayın.
+Dynamics 365 müşteri katılımı, PowerApps ve Dynamics 365 Işlemler teklifleriniz için **15 ekim 2019** tarafından yapılması gerekenler hakkında belirli bilgiler için aşağıdaki yönergeleri izleyin.
 
 > [!NOTE]
-> Bu, Dynamics 365 Business Central teklifleri için geçerli değildir.  
+> Bu, Dynamics 365 Iş Merkezi teklifleri için geçerlidir.  
 
-1. MPN üyelik hesabınız ilk olarak Ortak Üyelik Merkezi'nde (PMC) oluşturulduysa, hesabınızın geçirildiğini doğrulamak için [Ortak Merkezi'nde](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) oturum açın. MPN Kimliğinizin yer verdiği bir profil ekranı görürseniz, devam etmeye hazırsınız. Değilse, [Ortak Üyelik Merkezi'ndeki](https://partners.microsoft.com/partnerprogram/Welcome.aspx)istemleri izleyerek hesap geçişinizi başlatmanız gerekir. Yardıma ihtiyacınız varsa, desteği ziyaret [edin.](https://partner.microsoft.com/support?issueid=100-0077)
-2. [İş Ortağı Merkezi'ndeki Commercial Marketplace genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)gidin. Sol gezinti bölmesinde "Ticari Pazar Yeri" görürseniz, kaydolursunuz ve bir sonraki adıma devam etmelisiniz. Değilse, şimdi [ticari pazara kaydolun.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
-3. [Tekliflerinizi arayarak AppSource'ta tekliflerinizi onaylayın.](https://appsource.microsoft.com/) Teklifleriniz zaten AppSource'taysa, bir sonraki adıma devam edin. AppSource'ta olmayan herhangi bir teklif için, yeni bir [Dynamics 365 Müşteri Katılımı teklifi](create-new-customer-engagement-offer.md) veya yeni dynamics [365 Operasyon teklifi](create-new-operations-offer.md)oluşturun.
-4. İş Ortağı Merkezi'nin [Anlaşmaları sayfasında,](https://partner.microsoft.com/dashboard/account/agreements) **İş Uygulamaları ISV Eki'ni**gözden aldığınızdan ve kabul ettiğinizden emin olun.
-5. İş Ortağı Merkezi'nin [Hesap ayarlarında,](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)fatura bilgilerinizin tamamlandığından emin olun.
-6. Teklifleriniz daha önce onaylanmış olsa bile, her yeni ve mevcut teklifi sertifika ve yayın için gönderin.
-    * Uygulamanızı sertifikalandırmanın yanı sıra pazarlama bilgilerini de içeren bilgi ekranlarını tamamlayın. **15 Ekim 2019'a**kadar **Gönder'i** (ekranın sağ üst köşesi) seçin. Bu adımlar, teklifin kullanılabilirliğini etkilemeden kaçınmak için tamamlanmalıdır.
-    * Uygunsa, bu işlem sırasında premium kademeye katılmak isteyebilirsiniz.
-    * Sertifikasyon veya yeniden sertifikalandırma, uygulamanızın İş Uygulamaları Platformu'nun en son sürümünü desteklemesini gerektirir.
-    * Uygulamanız onaylandıktan sonra, teklife geri dönmek için bir e-posta alırsınız ve teklifin Microsoft AppSource'da yayınlanmasını sağlamak için "canlı yayına geçin" seçeneğini belirleyin.
+1. MPN üyelik hesabınız ilk olarak Iş ortağı üyelik Merkezi 'nde (PMC) oluşturulduysa, hesabınızın geçirildiğini onaylamak için [Iş Ortağı Merkezi](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) ' nde oturum açın. MPN KIMLIĞINIZLE bir profil ekranı görürseniz devam etmeye hazırsınız demektir. Aksi takdirde, [Iş ortağı üyeliği merkezindeki](https://partners.microsoft.com/partnerprogram/Welcome.aspx)istemler ' i izleyerek hesap geçişinizi başlatmanız gerekir. Yardıma ihtiyacınız varsa, [destek](https://partner.microsoft.com/support?issueid=100-0077)' i ziyaret edin.
+2. [Iş Ortağı Merkezi ' nde ticari Market genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)gidin. Sol gezinti bölmesinde "ticari Market" görürseniz, kaydolmuş ve sonraki adıma devam etmeniz gerekir. Aksi takdirde, [ticari Market 'e hemen kaydolun](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
+3. Tekliflerinizi [arayarak](https://appsource.microsoft.com/)appsource 'ta tekliflerinizin olduğunu doğrulayın. Tekliflerinizin zaten AppSource 'ta olması durumunda, bir sonraki adımla devam edin. AppSource 'ta olmayan herhangi bir teklif için yeni bir [dynamics 365 müşteri katılımı teklifi](create-new-customer-engagement-offer.md) veya yeni bir [Dynamics 365 işlemler teklifi](create-new-operations-offer.md)oluşturun.
+4. Iş Ortağı Merkezi 'nin [anlaşmalar sayfasında](https://partner.microsoft.com/dashboard/account/agreements), **Business Applications ISV eki**'ni gözden geçirdiğinizden ve kabul ettiğinizden emin olun.
+5. Iş Ortağı Merkezi 'nin [Hesap ayarları](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)' nda, faturalandırma bilgilerinizin tamamlanmış olduğundan emin olun.
+6. Tekliflerinizin daha önce sertifikalı olması durumunda bile, her yeni ve mevcut teklifi sertifika ve yayın için gönderebilirsiniz.
+    * Sertifika için uygulamanızı ve pazarlama bilgilerini sağlamak dahil bilgi ekranlarını doldurun. **15 ekim 2019 ' ye**kadar **Gönder** (ekranın sağ üst köşesi) seçeneğini belirleyin. Teklifin kullanılabilirliğini etkilememek için bu adımların tamamlanması gerekir.
+    * Uygun ise, bu işlem sırasında Premium katmana katılmayı isteyebilirsiniz.
+    * Sertifika veya yeniden sertifika, uygulamanızın Business Applications platformumuz en son sürümünü desteklemesini gerektirir.
+    * Uygulamanız onaylandığında bir e-posta alacaksınız ve teklifin Microsoft AppSource canlı olarak gitmesini sağlamak için "canlı çalış" seçeneğini belirleyin.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-Forumlarda uzmanlardan ve meslektaşlarından yardım alın ve [Microsoft Dynamics CRM'de](https://community.dynamics.com/crm?wa=wsignin1.0)blogları, web seminerlerini, videoları, etkinlikleri ve daha fazlasını keşfedin.
+Forumlarda uzmanlardan ve eşlerden yardım alın ve [Microsoft DYNAMICS CRM](https://community.dynamics.com/crm?wa=wsignin1.0)'de blogları, web seminerlerini, Videoları, olayları ve daha fazlasını bulun.
 
-Pazar yeri tekliflerinizi yayınlamak, onaylamak veya yönetmek için yardıma ihtiyacınız varsa, [bir destek bileti gönderin.](https://partner.microsoft.com/support/v2/?stage=1)
+Market tekliflerinizi yayımlamaya, sertifikaya da yönetmeye yardımcı olması gerekiyorsa, [bir destek bileti gönderebilirsiniz](https://partner.microsoft.com/support/v2/?stage=1).
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [İş Ortağı Merkezi'nde ticari pazar hesabınızı yönetme](./manage-account.md)
+- [Iş Ortağı Merkezi 'nde ticari Market hesabınızı yönetme](./manage-account.md)

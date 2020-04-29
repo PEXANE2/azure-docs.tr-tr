@@ -1,42 +1,42 @@
 ---
-title: AKS'de Helm ile mevcut uygulamaları yükleyin
-description: Bir Azure Kubernetes Hizmeti (AKS) kümesinde kapsayıcıları dağıtmak için Miğfer paketleme aracını nasıl kullanacağınızı öğrenin
+title: AKS 'de Held ile mevcut uygulamaları yükler
+description: Azure Kubernetes Service (AKS) kümesinde kapsayıcılar dağıtmak için Helmpaketleme aracının nasıl kullanılacağını öğrenin
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
 ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870244"
 ---
-# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Helm ile mevcut uygulamaları yükleme
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'te (AKS) Held ile mevcut uygulamaları kurma
 
-[Helm,][helm] Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynak paketleme aracıdır. *APT* ve *Yum*gibi Linux paket yöneticilerine benzer şekilde Helm, önceden yapılandırılmış Kubernetes kaynaklarının paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
+[Helk][helm] , Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. *Apt* ve *yum*gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
 
-Bu makalede, AKS'deki bir Kubernetes kümesinde Helm'i nasıl yapılandırabileceğinizve kullanacağınız gösterilmektedir.
+Bu makalede, AKS 'teki bir Kubernetes kümesinde Held 'yi yapılandırma ve kullanma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız varsa, [Azure CLI'yi veya][aks-quickstart-cli] [Azure portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
+Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Ayrıca, geliştirme sisteminizde çalışan istemci olan Helm CLI'nin yüklü olması gerekir. Helm ile uygulamaları başlatmanızı, durdurmanızı ve yönetmeniz için izin verir. Azure Bulut Kabuğu'nu kullanıyorsanız, Miğfer CLI'si zaten yüklenmiş. Yerel platformunuzdaki yükleme yönergeleri için [Bkz.][helm-install]
+Ayrıca, geliştirme sisteminizde çalışan istemci olan Held CLı 'nin yüklü olması gerekir. Bu sayede, Held ile uygulamaları başlatabilir, durdurabilir ve yönetebilirsiniz. Azure Cloud Shell kullanıyorsanız, HELI CLı zaten yüklüdür. Yerel platformunuzun yükleme yönergeleri için bkz. [Held 'Yi yükleme][helm-install].
 
 > [!IMPORTANT]
-> Helm Linux düğümleri üzerinde çalıştırmak için tasarlanmıştır. Kümenizde Windows Server düğümleri varsa, Helm bölmelerinin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığını sağlamalısınız. Ayrıca, yüklediğiniz tüm Miğfer grafiklerinin de doğru düğümlerde çalışacak şekilde zamanlandığını da sağlamanız gerekir. Bu makaledeki komutlar, bölmelerin doğru düğümlere zamanlanmış olduğundan emin olmak için [düğüm seçiciler][k8s-node-selector] kullanır, ancak tüm Miğfer grafikleri bir düğüm seçiciyi ortaya çıkaramaz. Kümenizde [leke gibi][taints]diğer seçenekleri de kullanmayı düşünebilirsiniz.
+> Held, Linux düğümlerinde çalışmak üzere tasarlanmıştır. Kümenizde Windows Server düğümleri varsa, Held Pod 'nin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığından emin olmanız gerekir. Ayrıca yüklediğiniz herhangi bir Held grafiğinin da doğru düğümlerde çalışacak şekilde zamanlandığından emin olmanız gerekir. Bu makaledeki komutlar, düğümlerin doğru düğümlere zamanlandığından emin olmak için [düğüm seçicileri][k8s-node-selector] kullanır, ancak tüm HELI grafikleri bir düğüm seçici kullanıma sunmayabilir. Ayrıca, kümenizde yer alan diğer seçenekleri de kullanabilirsiniz (örneğin, [litre][taints]).
 
-## <a name="verify-your-version-of-helm"></a>Miğfer sürümünüzü doğrulayın
+## <a name="verify-your-version-of-helm"></a>Held sürümünüzü doğrulayın
 
-Yüklediğiniz `helm version` Helm sürümünü doğrulamak için komutu kullanın:
+Yüklediğiniz Held sürümünü doğrulamak için `helm version` komutunu kullanın:
 
 ```console
 helm version
 ```
 
-Aşağıdaki örnekte Helm sürüm 3.0.0 yüklü gösterir:
+Aşağıdaki örnek, Held sürüm 3.0.0 yüklü olduğunu gösterir:
 
 ```console
 $ helm version
@@ -44,27 +44,27 @@ $ helm version
 version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6e2a28b6", GitTreeState:"clean", GoVersion:"go1.13.4"}
 ```
 
-Helm v3 için [Helm v3 bölümündeki](#install-an-application-with-helm-v3)adımları izleyin. Helm v2 için [Helm v2 bölümündeki](#install-an-application-with-helm-v2) adımları izleyin
+Held v3 için [helmv3 bölümündeki](#install-an-application-with-helm-v3)adımları izleyin. Held v2 için, [HELI v2 bölümündeki](#install-an-application-with-helm-v2) adımları izleyin.
 
-## <a name="install-an-application-with-helm-v3"></a>Helm v3 ile bir uygulama yükleyin
+## <a name="install-an-application-with-helm-v3"></a>Held v3 ile uygulama yükler
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>Resmi Helm kararlı grafik deposunu ekleyin
+### <a name="add-the-official-helm-stable-charts-repository"></a>Resmi Held kararlı grafikler deposunu ekleme
 
-Resmi Helm kararlı grafik deposunu eklemek için [dümen repo][helm-repo-add] komutunu kullanın.
+Resmi Held kararlı grafikler deposunu eklemek için [helmrepo][helm-repo-add] komutunu kullanın.
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-### <a name="find-helm-charts"></a>Miğfer grafiklerini bul
+### <a name="find-helm-charts"></a>Held grafiklerini bulma
 
-Miğfer grafikleri, uygulamaları bir Kubernetes kümesine dağıtmak için kullanılır. Önceden oluşturulmuş Miğfer grafiklerini aramak için [dümen arama][helm-search] komutunu kullanın:
+Hele grafikleri, uygulamaları bir Kubernetes kümesine dağıtmak için kullanılır. Önceden oluşturulmuş Held grafiklerini aramak için [hele Search][helm-search] komutunu kullanın:
 
 ```console
 helm search repo stable
 ```
 
-Aşağıdaki yoğunlaştırılmış örnek çıktı, kullanılabilir Miğfer grafiklerinden bazılarını gösterir:
+Aşağıdaki sıkıştırılmış örnek çıktıda, kullanılabilecek bazı HELI grafikleri gösterilmektedir:
 
 
 ```console
@@ -114,7 +114,7 @@ stable/datadog                          1.38.3          6.14.0                  
 ...
 ```
 
-Grafik listesini güncelleştirmek için [dümen repo güncelleştirme][helm-repo-update] komutunu kullanın. Aşağıdaki örnekte başarılı bir repo güncelleştirmesi gösterilmektedir:
+Grafik listesini güncelleştirmek için [helmrepo Update][helm-repo-update] komutunu kullanın. Aşağıdaki örnekte başarılı bir depo güncelleştirmesi gösterilmektedir:
 
 ```console
 $ helm repo update
@@ -124,9 +124,9 @@ Hang tight while we grab the latest from your chart repositories...
 Update Complete. ⎈ Happy Helming!⎈
 ```
 
-### <a name="run-helm-charts"></a>Miğfer grafiklerini çalıştır
+### <a name="run-helm-charts"></a>Held grafiklerini çalıştırma
 
-Helm ile grafikler yüklemek [için, dümen yükleme][helm-install-command] komutunu kullanın ve bir sürüm adı ve yüklemek için grafiğin adını belirtin. Bir Miğfer grafiğinin iş başında yüklenmesini görmek için, Helm grafiği ni kullanarak temel bir nginx dağıtımı yükleyelim.
+Held ile grafik yüklemek için [HELI install][helm-install-command] komutunu kullanın ve bir sürüm adı ve yüklenecek grafiğin adını belirtin. Bir Helm grafiğinin yükleme işlemini görmek için Helm grafiğini kullanarak temel bir NGINX dağıtımı yükleyelim.
 
 ```console
 helm install my-nginx-ingress stable/nginx-ingress \
@@ -134,7 +134,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Aşağıdaki yoğunlaştırılmış örnek çıktı, Miğfer grafiği tarafından oluşturulan Kubernetes kaynaklarının dağıtım durumunu gösterir:
+Aşağıdaki sıkıştırılmış örnek çıktısı, helk grafiği tarafından oluşturulan Kubernetes kaynaklarının dağıtım durumunu gösterir:
 
 ```console
 $ helm install my-nginx-ingress stable/nginx-ingress \
@@ -154,7 +154,7 @@ You can watch the status by running 'kubectl --namespace default get services -o
 ...
 ```
 
-Hizmetinizin `kubectl get services` *EXTERNAL-IP'sini* almak için komutu kullanın. Örneğin, aşağıdaki komut *my-nginx-ingress-controller* hizmeti için *EXTERNAL-IP* gösterir:
+Hizmetinizin `kubectl get services` *dış IP* 'sini almak için komutunu kullanın. Örneğin, aşağıdaki komut *My-NGINX-ingress-Controller* hizmeti IÇIN *dış IP* 'yi gösterir:
 
 ```console
 $ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
@@ -163,15 +163,15 @@ NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT
 my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
 ```
 
-### <a name="list-releases"></a>Liste bültenleri
+### <a name="list-releases"></a>Sürümleri Listele
 
-Kümenizde yüklü sürümlistesini görmek için komutu `helm list` kullanın.
+Kümenizde yüklü olan sürümlerin listesini görmek için `helm list` komutunu kullanın.
 
 ```console
 helm list
 ```
 
-Aşağıdaki örnek, önceki adımda dağıtılan *my-nginx-ingress* sürümü gösterir:
+Aşağıdaki örnekte, önceki adımda dağıtılan *My-NGINX-ingress* sürümü gösterilmektedir:
 
 ```console
 $ helm list
@@ -182,13 +182,13 @@ my-nginx-ingress    default     1           2019-11-22 10:08:06.048477 -0600 CST
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir Miğfer grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar bölmeleri, dağıtımları ve hizmetleri içerir. Bu kaynakları temizlemek [için, dümen kaldırma][helm-cleanup] komutunu kullanın ve önceki `helm list` komutta bulunduğu gibi sürüm adınızı belirtin.
+Bir helk grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar, pods, dağıtımlar ve hizmetleri içerir. Bu kaynakları temizlemek için [HELI Uninstall][helm-cleanup] komutunu kullanın ve önceki `helm list` komutta bulunan yayın adınızı belirtin.
 
 ```console
 helm uninstall my-nginx-ingress
 ```
 
-Aşağıdaki örnek, *my-nginx-ingress* adlı sürümün kaldırıldığını gösterir:
+Aşağıdaki örnek, *My-NGINX-ingress* adlı sürümü kaldırılmıştır:
 
 ```console
 $ helm uninstall my-nginx-ingress
@@ -196,13 +196,13 @@ $ helm uninstall my-nginx-ingress
 release "my-nginx-ingress" uninstalled
 ```
 
-## <a name="install-an-application-with-helm-v2"></a>Helm v2 ile bir uygulama yükleme
+## <a name="install-an-application-with-helm-v2"></a>Held v2 ile uygulama yükler
 
 ### <a name="create-a-service-account"></a>Hizmet hesabı oluşturma
 
-Helm'i RBAC özellikli bir AKS kümesine dağıtmadan önce, Tiller hizmeti için bir hizmet hesabı ve rol bağlama gerekir. Bir RBAC etkin kümede Helm / Tiller güvenliğini sağlama hakkında daha fazla bilgi için Bkz. [Tiller, Namespaces ve RBAC.][tiller-rbac] AKS kümeniz RBAC etkin değilse, bu adımı atlayın.
+Helm 'yi RBAC özellikli bir AKS kümesinde dağıtabilmeniz için, Tiller hizmeti için bir hizmet hesabı ve rol bağlaması olması gerekir. RBAC etkin bir kümede Held/Tiller güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Tiller, namespaces ve RBAC][tiller-rbac]. AKS kümeniz RBAC etkinleştirilmemişse, bu adımı atlayın.
 
-Adlandırılmış `helm-rbac.yaml` bir dosya oluşturun ve aşağıdaki YAML'de kopyalayın:
+Aşağıdaki YAML 'de `helm-rbac.yaml` adlı bir dosya oluşturun ve kopyalayın:
 
 ```yaml
 apiVersion: v1
@@ -225,29 +225,29 @@ subjects:
     namespace: kube-system
 ```
 
-Hizmet hesabını oluşturun ve komutla rol bağlama: `kubectl apply`
+`kubectl apply` Komutuyla hizmet hesabı ve rol bağlamayı oluşturun:
 
 ```console
 kubectl apply -f helm-rbac.yaml
 ```
 
-### <a name="secure-tiller-and-helm"></a>Güvenli Çapa Makinesi ve Miğfer
+### <a name="secure-tiller-and-helm"></a>Güvenli Tiller ve Held
 
-Helm istemcisi ve Tiller hizmeti TLS/SSL kullanarak birbiriyle iletişim kurar ve kimlik doğrular. Bu kimlik doğrulama yöntemi, Kubernetes kümesinin ve hangi hizmetlerin dağıtılanabileceğinin güvenliğini sağlamaya yardımcı olur. Güvenliği artırmak için kendi imzalı sertifikalarınızı oluşturabilirsiniz. Her Helm kullanıcısı kendi istemci sertifikasını alır ve Tiller kubernetes kümesinde sertifikalar uygulanarak başharfe alınır. Daha fazla bilgi için Helm [ve Tiller arasında TLS/SSL kullanma][helm2-ssl]bilgisine bakın.
+Helk istemcisi ve Tiller hizmeti, TLS/SSL kullanarak birbirleriyle kimlik doğrular ve birbirleriyle iletişim kurar. Bu kimlik doğrulama yöntemi, Kubernetes kümesinin güvenliğini sağlamaya ve hangi hizmetlerin dağıtılabileceklerini kolaylaştırır. Güvenliği artırmak için, kendi imzalı sertifikalarınızı oluşturabilirsiniz. Her helk Kullanıcı kendi istemci sertifikasını alır ve Tiller sertifikalar uygulanmış Kubernetes kümesinde başlatılır. Daha fazla bilgi için bkz. [helk ve Tiller arasında TLS/SSL kullanma][helm2-ssl].
 
-RBAC özellikli Bir Kubernetes kümesi yle, Tiller'ın kümeye sahip olduğu erişim düzeyini denetleyebilirsiniz. Tiller'ın dağıtılan Kubernetes ad alanını tanımlayabilir ve Tiller'ın kaynakları dağıtabileceği ad alanlarını kısıtlayabilirsiniz. Bu yaklaşım, farklı ad alanlarında Tiller örnekleri oluşturmanıza ve dağıtım sınırlarını sınırlamanıza ve Miğfer istemcisinin kullanıcılarını belirli ad boşluklarıyla kapsamanıza olanak tanır. Daha fazla bilgi için [Helm rol tabanlı erişim denetimlerine][helm2-rbac]bakın.
+RBAC özellikli bir Kubernetes kümesi ile, Tiller erişim düzeyini kümeye göre kontrol edebilirsiniz. Tiller ' nin dağıtıldığı Kubernetes ad alanını tanımlayabilir ve Tiller ad alanlarını daha sonra kaynaklarını dağıtabileceğini kısıtlayabilirsiniz. Bu yaklaşım, farklı ad alanlarında Tiller örnekleri oluşturmanıza ve dağıtım sınırlarını sınırlandırmanıza ve hele istemcisi kullanıcılarını belirli ad alanlarına aktarmanıza olanak tanır. Daha fazla bilgi için bkz. [Helm rol tabanlı erişim denetimleri][helm2-rbac].
 
-### <a name="configure-helm"></a>Helm'i Yapılandır
+### <a name="configure-helm"></a>Held 'yi yapılandırma
 
-Temel bir Çapa Makinesi'ni bir AKS kümesine dağıtmak için [dümen init][helm2-init] komutunu kullanın. Kümeniz RBAC etkin değilse, `--service-account` bağımsız değişkeni ve değeri kaldırın. Aşağıdaki örnekler de [200 tarih-max][helm2-history-max] ayarlayın.
+Bir AKS kümesine temel bir Tiller dağıtmak için [helk init][helm2-init] komutunu kullanın. Kümeniz RBAC etkinleştirilmemişse, `--service-account` bağımsız değişkeni ve değeri kaldırın. Aşağıdaki örneklerde Ayrıca [History-Max][helm2-history-max] değeri 200 olarak ayarlanır.
 
-Tiller ve Helm için TLS/SSL yapılandırıldıysanız, bu temel başlatma `--tiller-tls-` adımını atlayın ve bunun yerine bir sonraki örnekte gösterildiği gibi gerekli olanları sağlayın.
+Tiller ve Held için TLS/SSL yapılandırdıysanız, bu temel başlatma adımını atlayın ve bunun yerine, sonraki örnekte gösterildiği `--tiller-tls-` gibi gerekli olan adımları belirtin.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-TlS/SSL'yi Helm ve Tiller arasında `--tiller-tls-*` yapılandırmışsanız, aşağıdaki örnekte gösterildiği gibi kendi sertifikalarınızın parametrelerini ve adlarını sağlar:
+Helk ve Tiller arasında TLS/SSL yapılandırdıysanız, aşağıdaki örnekte gösterildiği `--tiller-tls-*` gibi kendi sertifikalarınızın parametrelerini ve adlarını belirtin:
 
 ```console
 helm init \
@@ -261,15 +261,15 @@ helm init \
     --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-### <a name="find-helm-charts"></a>Miğfer grafiklerini bul
+### <a name="find-helm-charts"></a>Held grafiklerini bulma
 
-Miğfer grafikleri, uygulamaları bir Kubernetes kümesine dağıtmak için kullanılır. Önceden oluşturulmuş Miğfer grafiklerini aramak için [dümen arama][helm2-search] komutunu kullanın:
+Hele grafikleri, uygulamaları bir Kubernetes kümesine dağıtmak için kullanılır. Önceden oluşturulmuş Held grafiklerini aramak için [hele Search][helm2-search] komutunu kullanın:
 
 ```console
 helm search
 ```
 
-Aşağıdaki yoğunlaştırılmış örnek çıktı, kullanılabilir Miğfer grafiklerinden bazılarını gösterir:
+Aşağıdaki sıkıştırılmış örnek çıktıda, kullanılabilecek bazı HELI grafikleri gösterilmektedir:
 
 ```
 $ helm search
@@ -304,7 +304,7 @@ stable/datadog                 0.18.0           6.3.0        DataDog Agent
 ...
 ```
 
-Grafik listesini güncelleştirmek için [dümen repo güncelleştirme][helm2-repo-update] komutunu kullanın. Aşağıdaki örnekte başarılı bir repo güncelleştirmesi gösterilmektedir:
+Grafik listesini güncelleştirmek için [helmrepo Update][helm2-repo-update] komutunu kullanın. Aşağıdaki örnekte başarılı bir depo güncelleştirmesi gösterilmektedir:
 
 ```console
 $ helm repo update
@@ -315,9 +315,9 @@ Hold tight while we grab the latest from your chart repositories...
 Update Complete.
 ```
 
-### <a name="run-helm-charts"></a>Miğfer grafiklerini çalıştır
+### <a name="run-helm-charts"></a>Held grafiklerini çalıştırma
 
-Mik ile grafikler yüklemek [için, dümen yükleme][helm2-install-command] komutunu kullanın ve yüklemek için grafiğin adını belirtin. Bir Miğfer grafiğinin iş başında yüklenmesini görmek için, Helm grafiği ni kullanarak temel bir nginx dağıtımı yükleyelim. TLS/SSL yapılandırıldıysanız, Helm `--tls` istemci sertifikanızı kullanmak için parametreyi ekleyin.
+Held ile grafik yüklemek için [HELI install][helm2-install-command] komutunu kullanın ve yüklenecek grafiğin adını belirtin. Bir Helm grafiğinin yükleme işlemini görmek için Helm grafiğini kullanarak temel bir NGINX dağıtımı yükleyelim. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı `--tls` kullanmak için parametresini ekleyin.
 
 ```console
 helm install stable/nginx-ingress \
@@ -325,7 +325,7 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Aşağıdaki yoğunlaştırılmış örnek çıktı, Miğfer grafiği tarafından oluşturulan Kubernetes kaynaklarının dağıtım durumunu gösterir:
+Aşağıdaki sıkıştırılmış örnek çıktısı, helk grafiği tarafından oluşturulan Kubernetes kaynaklarının dağıtım durumunu gösterir:
 
 ```
 $ helm install stable/nginx-ingress --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -352,11 +352,11 @@ flailing-alpaca-nginx-ingress-default-backend  ClusterIP     10.0.44.97  <none> 
 ...
 ```
 
-Nginx-ingress-controller hizmetinin *external-IP* adresinin doldurulması ve bir web tarayıcısı ile erişmenize olanak sağlaması bir veya iki dakika sürer.
+NGINX-ingress-Controller hizmetinin *dış IP* adresinin doldurulması ve bir Web tarayıcısı ile erişmenize izin vermek için bir dakika veya iki zaman alır.
 
-### <a name="list-helm-releases"></a>Helm bültenlerini listele
+### <a name="list-helm-releases"></a>Held yayınları listeleme
 
-Kümenizde yüklü sürümlistesini görmek için [dümen listesi][helm2-list] komutunu kullanın. Aşağıdaki örnek, önceki adımda dağıtılan nginx-ingress serbest gösterir. TLS/SSL yapılandırıldıysanız, Helm `--tls` istemci sertifikanızı kullanmak için parametreyi ekleyin.
+Kümenizde yüklü olan sürümlerin listesini görmek için [HELI List][helm2-list] komutunu kullanın. Aşağıdaki örnekte, önceki adımda dağıtılan NGINX-ingress sürümü gösterilmektedir. TLS/SSL yapılandırdıysanız, hele İstemci sertifikanızı `--tls` kullanmak için parametresini ekleyin.
 
 ```console
 $ helm list
@@ -367,7 +367,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir Miğfer grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar bölmeleri, dağıtımları ve hizmetleri içerir. Bu kaynakları temizlemek için `helm delete` komutu kullanın ve önceki `helm list` komutta bulunduğu gibi sürüm adınızı belirtin. Aşağıdaki *örnek, sallanan-alpaka*adlı sürümü siler:
+Bir helk grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar, pods, dağıtımlar ve hizmetleri içerir. Bu kaynakları temizlemek için, `helm delete` komutunu kullanın ve önceki `helm list` komutta bulunduğu şekilde sürüm adınızı belirtin. Aşağıdaki örnek, *flamı-Alpaca*adlı yayını siler:
 
 ```console
 $ helm delete flailing-alpaca
@@ -377,10 +377,10 @@ release "flailing-alpaca" deleted
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kubernetes uygulama dağıtımlarını Helm ile yönetme hakkında daha fazla bilgi için Helm belgelerine bakın.
+Held ile Kubernetes uygulama dağıtımlarını yönetme hakkında daha fazla bilgi için helk belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [Miğfer belgeleri][helm-documentation]
+> [Hela belgeleri][helm-documentation]
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/

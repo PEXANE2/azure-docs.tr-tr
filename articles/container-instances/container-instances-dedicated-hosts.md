@@ -1,46 +1,46 @@
 ---
-title: Özel ana bilgisayarda dağıtma
-description: Azure Kapsayıcı Örnekleri iş yükleriniçin gerçek ana bilgisayar düzeyinde yalıtım elde etmek için özel bir ana bilgisayar kullanın
+title: Adanmış konakta dağıt
+description: Azure Container Instances iş yükleriniz için doğru konak düzeyi yalıtımına ulaşmak üzere adanmış bir konak kullanın
 ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
 ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025042"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
 
-"Adanmış", güvenli bir şekilde çalışan kapsayıcılar için yalıtılmış ve özel bir işlem ortamı sağlayan bir Azure Kapsayıcı Örnekleri (ACI) sku'sudur. Özel sku sonuçlarını kullanmak, her kapsayıcı grubunun azure veri merkezinde özel bir fiziksel sunucuya sahip olmasına bağlı olarak, kuruluşunuzun güvenlik ve uyumluluk gereksinimlerini karşılamaya yardımcı olmak için tam iş yükü yalıtımı sağlar. 
+"Adanmış", güvenli bir şekilde çalışan kapsayıcılar için yalıtılmış ve ayrılmış bir işlem ortamı sağlayan bir Azure Container Instances (acı) SKU 'su. Özel iş yükü yalıtımının, kuruluşunuzun güvenlik ve uyumluluk gereksinimlerini karşılamasına yardımcı olması için, her bir kapsayıcı grubunda adanmış bir fiziksel sunucuya sahip olan adanmış SKU sonuçları kullanılması. 
 
-Özel sku fiziksel sunucu açısından iş yükü yalıtımı gerektiren kapsayıcı iş yükleri için uygundur.
+Adanmış SKU, fiziksel sunucu perspektifinden iş yükü yalıtımı gerektiren kapsayıcı iş yükleri için uygundur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Herhangi bir aboneliğin özel sku'yu kullanması için varsayılan sınır 0'dır. Bu sku'yu üretim kapsayıcısı dağıtımlarınız için kullanmak istiyorsanız, sınırı artırmak için bir [Azure Destek isteği][azure-support] oluşturun.
+* Adanmış SKU 'yu kullanmak için abonelik varsayılan sınırı 0 ' dır. Bu SKU 'yu üretim kapsayıcısı dağıtımlarınız için kullanmak isterseniz, sınırı artırmak için bir [Azure destek isteği][azure-support] oluşturun.
 
-## <a name="use-the-dedicated-sku"></a>Özel sku kullanın
+## <a name="use-the-dedicated-sku"></a>Adanmış SKU 'yu kullanma
 
 > [!IMPORTANT]
-> Özel sku kullanarak şu anda yayılıyor en son API sürümü (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin.
+> Adanmış SKU kullanımı, yalnızca şu anda kullanıma sunulan en son API sürümünde (2019-12-01) kullanılabilir. Dağıtım şablonunuzda bu API sürümünü belirtin.
 >
 
-API sürümü 2019-12-01'den başlayarak, bir Dağıtım şablonunun kapsayıcı grubu özellikleri bölümünün altında, ACI dağıtımı için gerekli olan bir `sku` özellik vardır. Şu anda, bu özelliği ACI için bir Azure Kaynak Yöneticisi dağıtım şablonunun bir parçası olarak kullanabilirsiniz. Öğretici'de şablonla ACI kaynaklarını dağıtma hakkında daha fazla bilgi [edinin: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grubu dağıtın.](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group) 
+API sürüm 2019-12-01 ' den başlayarak, bir acı dağıtımı için gerekli olan dağıtım şablonunun kapsayıcı grubu özellikleri bölümünde bir `sku` özellik vardır. Şu anda, bu özelliği ACI için bir Azure Resource Manager dağıtım şablonunun parçası olarak kullanabilirsiniz. Öğreticide bir şablonla acı kaynaklarını dağıtma hakkında daha fazla bilgi edinin [: Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtın](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
 
-Özellik `sku` aşağıdaki değerlerden birine sahip olabilir:
-* `Standard`- hala hipervizör düzeyinde güvenliği garanti eden standart ACI dağıtım seçeneği 
-* `Dedicated`- konteyner grubu için özel fiziksel ana bilgisayarları ile iş yükü düzeyi yalıtımı için kullanılır
+`sku` Özelliği aşağıdaki değerlerden birine sahip olabilir:
+* `Standard`-Hiper yönetici düzeyinde güvenliği güvence altına almaya devam eden standart acı dağıtımı seçeneği 
+* `Dedicated`-kapsayıcı grubu için adanmış fiziksel konaklarla iş yükü düzeyi yalıtımı için kullanılır
 
 ## <a name="modify-your-json-deployment-template"></a>JSON dağıtım şablonunuzu değiştirme
 
-Dağıtım şablonunuzda aşağıdaki özellikleri değiştirin veya ekleyin:
-* Altında `resources`, `apiVersion` `2019-12-01`ayarlayın .
-* Kapsayıcı grup özelliklerinin altında, `sku` değeri `Dedicated`olan bir özellik ekleyin.
+Dağıtım şablonunuzda, aşağıdaki özellikleri değiştirin veya ekleyin:
+* Altında `resources`, olarak `apiVersion` `2019-12-01`ayarlayın.
+* Kapsayıcı grubu özellikleri altında, değerine `sku` `Dedicated`sahip bir özellik ekleyin.
 
-Aşağıda, özel sku'yu kullanan kapsayıcı grubu dağıtım şablonunun kaynaklar bölümüiçin örnek bir bölüm verilmiştir:
+Ayrılmış SKU 'yu kullanan bir kapsayıcı grubu dağıtım şablonunun kaynaklar bölümü için örnek bir kod parçacığı aşağıda verilmiştir:
 
 ```json
 [...]
@@ -60,7 +60,7 @@ Aşağıda, özel sku'yu kullanan kapsayıcı grubu dağıtım şablonunun kayna
 ]
 ```
 
-Aşağıda, tek bir kapsayıcı örneği çalıştıran örnek bir kapsayıcı grubunu dağıtan tam bir şablon verilmiştir:
+Tek bir kapsayıcı örneği çalıştıran örnek bir kapsayıcı grubunu dağıtan bir şablon aşağıda verilmiştir:
 
 ```json
 {
@@ -127,9 +127,9 @@ Aşağıda, tek bir kapsayıcı örneği çalıştıran örnek bir kapsayıcı g
 }
 ```
 
-## <a name="deploy-your-container-group"></a>Konteyner grubunuzu dağıtma
+## <a name="deploy-your-container-group"></a>Kapsayıcı grubunuzu dağıtın
 
-Masaüstünüzde dağıtım şablonu dosyasını oluşturduysanız ve düzenlediyseniz, dosyayı içine sürükleyerek dosyayı Bulut Kabuğu dizininize yükleyebilirsiniz. 
+Masaüstünüzde dağıtım şablonu dosyasını oluşturup düzenlediyseniz, dosyayı içine sürükleyerek Cloud Shell dizininize yükleyebilirsiniz... 
 
 [az group create][az-group-create] komutuyla bir kaynak grubu oluşturun.
 
@@ -137,13 +137,13 @@ Masaüstünüzde dağıtım şablonu dosyasını oluşturduysanız ve düzenledi
 az group create --name myResourceGroup --location eastus
 ```
 
-[Az grubu dağıtım oluşturma][az-group-deployment-create] komutu ile şablonu dağıtın.
+[Az Group Deployment Create][az-group-deployment-create] komutuyla şablonu dağıtın.
 
 ```azurecli-interactive
 az group deployment create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir. Başarılı bir dağıtım özel bir ana bilgisayarda gerçekleşir.
+Birkaç saniye içinde Azure’dan bir ilk yanıt almanız gerekir. Ayrılmış bir konakta başarılı bir dağıtım gerçekleşir.
 
 <!-- LINKS - Internal -->
 [az-group-create]: /cli/azure/group#az-group-create

@@ -1,6 +1,6 @@
 ---
-title: IoT Tak ve Çalıştır Önizleme cihazlarıyla etkileşimde kalmak için Azure CLI için Azure IoT uzantısını kullanın | Microsoft Dokümanlar
-description: Azure CLI için Azure IoT uzantısını yükleyin ve IoT hub'ıma bağlı IoT Tak ve Çalıştır aygıtlarıyla etkileşim kurmak için kullanın.
+title: IoT Tak ve Kullan önizleme cihazlarıyla etkileşimde bulunmak için Azure CLı için Azure IoT uzantısı 'nı kullanın | Microsoft Docs
+description: Azure CLı için Azure IoT uzantısını yükleyip IoT Hub 'ma bağlı IoT Tak ve Kullan cihazlarıyla etkileşim kurmak için kullanın.
 author: Philmea
 ms.author: philmea
 ms.date: 12/26/2019
@@ -9,40 +9,40 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 1ccb32996cd8f15805a810dd5b5985aeb5f87c26
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770453"
 ---
-# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI için Azure IoT uzantısını yükleyin ve kullanın
+# <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükleyip kullanma
 
-[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Hub gibi Azure kaynaklarını yönetmek için açık kaynaklı çapraz platform komut satırı aracıdır. Azure CLI, Windows, Linux ve MacOS'ta kullanılabilir. Azure CLI, [Azure Bulut Kabuğu'nda](https://shell.azure.com)da önceden yüklenir. Azure CLI, Azure IoT Hub kaynaklarını, Aygıt Sağlama Hizmeti örneklerini ve bağlantılı hub'ları herhangi bir uzantı yüklemeden yönetmenize olanak tanır.
+[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Hub gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure CLı, Windows, Linux ve MacOS 'ta kullanılabilir. Azure CLı [Azure Cloud Shell](https://shell.azure.com)de önceden yüklenir. Azure CLı, herhangi bir uzantı yüklemeden Azure IoT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub 'ları yönetmenizi sağlar.
 
-Azure CLI için Azure IoT uzantısı, IoT Tak ve Çalıştır Önizleme aygıtlarıyla etkileşim kurmak ve test etmek için bir komut satırı aracıdır. Uzantıyı şu adreste kullanabilirsiniz:
+Azure CLı için Azure IoT uzantısı IoT Tak ve Kullan önizleme cihazlarını test etmeye ve bunlarla etkileşime yönelik bir komut satırı aracıdır. Uzantıyı şu şekilde kullanabilirsiniz:
 
-- Bir aygıta bağlanın.
-- Aygıtın gönderdiği telemetriyi görüntüleyin.
-- Aygıt özellikleriyle çalışın.
-- Çağrı aygıtı komutları.
+- Bir cihaza bağlanın.
+- Cihazın gönderdiği Telemetriyi görüntüleyin.
+- Cihaz özellikleriyle çalışın.
+- Çağrı cihazı komutları.
 
 Bu makale, şunları nasıl yapacağınızı gösterir:
 
-- Azure CLI için Azure IoT uzantısını yükleyin ve yapılaştırın.
-- Aygıtlarınızla etkileşim kurmak ve test etmek için uzantıyı kullanın.
+- Azure CLı için Azure IoT uzantısını yükleyip yapılandırın.
+- Cihazlarınızı kullanarak cihazlarınızla etkileşim kurun ve test edin.
 - Model deposundaki arabirimleri yönetmek için uzantıyı kullanın.
 
-## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Azure CLI için Azure IoT uzantısını yükleme
+## <a name="install-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını yükler
 
-### <a name="step-1---install-the-azure-cli"></a>Adım 1 - Azure CLI'yi yükleyin
+### <a name="step-1---install-the-azure-cli"></a>1. adım-Azure CLı 'yı yüklemeyi
 
-Ortamınızda Azure CLI'yi ayarlamak için [yükleme yönergelerini](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) izleyin. Aşağıdaki tüm komutları kullanmak için Azure CLI sürümünüz sürüm 2.0.73 veya üzeri olmalıdır. Doğrulamak için `az -–version` kullanın.
+Ortamınızda Azure CLı 'yı ayarlamak için [yükleme yönergelerini](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) izleyin. Aşağıdaki tüm komutları kullanmak için Azure CLı sürümünüz sürüm 2.0.73 veya üzeri olmalıdır. Doğrulamak için `az -–version` kullanın.
 
-### <a name="step-2---install-iot-extension"></a>Adım 2 - IoT uzantısı nı yükleyin
+### <a name="step-2---install-iot-extension"></a>2. adım-IoT uzantısını yüklemeyi
 
 [IoT uzantısı benioku](https://github.com/Azure/azure-iot-cli-extension) dosyası, uzantıyı yüklemenin birkaç yolunu açıklar. En basit yol `az extension add --name azure-iot` komutunu çalıştırmaktır. Yükleme sonrasında `az extension list` kullanarak o anda yüklü uzantıları doğrulayabilir veya `az extension show --name azure-iot` kullanarak IoT uzantısına ilişkin ayrıntıları görebilirsiniz. Uzantıyı kaldırmak için `az extension remove --name azure-iot` kullanabilirsiniz.
 
-## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLI için Azure IoT uzantısını kullanma
+## <a name="use-azure-iot-extension-for-the-azure-cli"></a>Azure CLı için Azure IoT uzantısını kullanma
 
 ### <a name="prerequisites"></a>Ön koşullar
 
@@ -53,33 +53,33 @@ az login
 ```
 
 > [!NOTE]
-> Azure bulut uyşunu kullanıyorsanız, otomatik olarak oturum açmışolursunuz ve önceki komutu çalıştırmanız gerekmez.
+> Azure Cloud Shell kullanıyorsanız, otomatik olarak oturumunuz açık demektir ve önceki komutu çalıştırmanız gerekmez.
 
-Azure CLI için Azure IoT uzantısını kullanmak için şunları yapmanız gerekir:
+Azure CLı için Azure IoT uzantısını kullanmak için şunlar gerekir:
 
-- Azure IoT hub'ı. [Azure CLI'yi kullanarak Bir IoT hub'ı oluşturma](../iot-hub/iot-hub-create-using-cli.md)gibi Azure aboneliğinize Bir IoT hub'ı eklemenin birçok yolu vardır. Azure IoT uzantı komutlarını çalıştırmak için IoT hub'ın bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- Azure IoT Hub 'ı. Azure aboneliğinize IoT Hub 'ı [oluşturma](../iot-hub/iot-hub-create-using-cli.md)gibi bir IoT Hub 'ı eklemenin birçok yolu vardır. Azure IoT uzantı komutlarını çalıştırmak için IoT Hub 'ın bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- IoT hub'ınıza kayıtlı bir aygıt. Bir cihazı kaydettirmek için aşağıdaki Azure CLI komutunu `{YourIoTHubName}` kullanabilirsiniz, yer tutucuları ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
+- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz, `{YourIoTHubName}` ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
 
     ```azurecli
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-- Bazı komutların şirket modeli deposu için bağlantı dizesi gerekir. [IoT](howto-onboard-portal.md)portalı için Azure Sertifikalı portalına ilk bindiğinizde şirketiniz için bir model deposu oluşturulur. Üçüncü bir taraf, arabirimlerine ve modellerine erişim sağlamak için model depo bağlantı dizesini sizinle paylaşabilir.
+- Bazı komutlara bir şirket modeli deposu için bağlantı dizesi gerekir. [IoT Için Azure Sertifikalı bir portala](howto-onboard-portal.md)ilk kez eklediğinizde şirketiniz için bir model deposu oluşturulur. Bir üçüncü taraf, kendi arabirimlerine ve modellerine erişim sağlamak için kendi model deposu bağlantı dizesini sizinle paylaşabilir.
 
-### <a name="interact-with-a-device"></a>Bir aygıtla etkileşim
+### <a name="interact-with-a-device"></a>Cihazla etkileşim kurma
 
-Uzantıyı, bir IoT hub'ına bağlı IoT Tak ve Çalıştır aygıtlarını görüntülemek ve bunlarla etkileşimde kalmak için kullanabilirsiniz. Uzantı, IoT Tak ve Çalıştır aygıtını temsil eden dijital ikizle çalışır.
+Bir IoT Hub 'ına bağlı IoT Tak ve Kullan cihazlarını görüntülemek ve bunlarla etkileşim kurmak için uzantısını kullanabilirsiniz. Uzantı, IoT Tak ve Kullan cihazını temsil eden dijital ikizi ile birlikte kullanılır.
 
-#### <a name="list-devices-and-interfaces"></a>Cihazları ve arabirimleri listele
+#### <a name="list-devices-and-interfaces"></a>Cihazları ve arabirimleri listeleme
 
-Tüm aygıtları bir IoT Hub'ında listele:
+IoT Hub tüm cihazları listeleyin:
 
 ```azurecli
 az iot hub device-identity list --hub-name {YourIoTHubName}
 ```
 
-Bir IoT Tak ve Çalıştır aygıtı tarafından kayıtlı tüm arabirimleri listele:
+IoT Tak ve Kullan cihazı tarafından kaydedilen tüm arabirimleri listeleyin:
 
 ```azurecli
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
@@ -87,19 +87,19 @@ az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 
 #### <a name="properties"></a>Özellikler
 
-Aygıttaki arabirimin tüm özelliklerini ve özellik değerlerini listele:
+Bir cihazdaki bir arabirim için tüm özellikleri ve özellik değerlerini listeleyin:
 
 ```azurecli
 az iot dt list-properties --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login "{YourCompanyModelRepoConnectionString}"
 ```
 
-Okuma yazma özelliğinin değerini ayarlayın:
+Okuma-yazma özelliğinin değerini ayarlayın:
 
 ```azurecli
 az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface-payload {JSONPayload or FilePath}
 ```
 
-Bir aygıtın **sensör** arabirimindeki **ad** özelliğini **Contoso'ya** ayarlamak için örnek bir yük dosyası aşağıdaki gibi görünür:
+Bir cihazın **algılayıcı** arabirimindeki **Name** özelliğini **contoso** olarak ayarlamak için örnek bir yük dosyası aşağıdaki gibi görünür:
 
 ```json
 {
@@ -117,13 +117,13 @@ Bir aygıtın **sensör** arabirimindeki **ad** özelliğini **Contoso'ya** ayar
 
 #### <a name="commands"></a>Komutlar
 
-Aygıttaki arabirim için tüm komutları listele:
+Bir cihazdaki bir arabirim için tüm komutları listeleyin:
 
 ```azurecli
 az iot dt list-commands --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --source private --repo-login {YourCompanyModelRepoConnectionString}
 ```
 
-`--repo-login` Parametre olmadan, bu komut ortak model deposunu kullanır.
+`--repo-login` Parametresi olmadan, bu komut ortak model deposunu kullanır.
 
 Bir komut çağırın:
 
@@ -131,37 +131,37 @@ Bir komut çağırın:
 az iot dt invoke-command --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --cn {CommandName} --command-payload {CommandPayload or FilePath}
 ```
 
-#### <a name="digital-twin-events"></a>Dijital ikiz olaylar
+#### <a name="digital-twin-events"></a>Dijital ikizi olayları
 
-**$Default** etkinlik merkezi tüketici grubuna giderek belirli bir cihaz dan tüm IoT Tak ve Çalıştır dijital ikiz olayları izleyin:
+Belirli bir cihazdan ve **$Default** Olay Hub 'ı tüketici grubuna giden arabirimden tüm IoT Tak ve kullan dijital ikizi olaylarını izleyin:
 
 ```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID}
 ```
 
-Belirli bir tüketici grubuna giden tüm IoT Tak ve Çalıştır dijital ikiz olaylarını belirli bir cihazdan ve arabirimden izleyin:
+Belirli bir cihazdan ve belirli bir tüketici grubuna giden arabirimden tüm IoT Tak ve Kullan dijital ikizi olaylarını izleyin:
 
 ```azurecli
 az iot dt monitor-events --hub-name {YourIoTHubName} --device-id {YourDeviceID} --interface {YourInterfaceID} --consumer-group {YourConsumerGroup}
 ```
 
-### <a name="manage-interfaces-in-a-model-repository"></a>Bir model deposunda arabirimleri yönetme
+### <a name="manage-interfaces-in-a-model-repository"></a>Bir model deposundaki arabirimleri yönetme
 
-Aşağıdaki komutlar ortak IoT Tak ve Çalıştır modeli deposunu kullanır. Şirket modeli deposunu kullanmak için, `--login` bağımsız değişkeni model deposu bağlantı dizeninizle ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
 
-Ortak IoT Tak ve Çalıştır model deposundaki arayüzleri listele:
+Genel IoT Tak ve Kullan modeli deposundaki arabirimleri listeleyin:
 
 ```azurecli
 az iot pnp interface list
 ```
 
-Ortak IoT Tak ve Çalıştır modeli deposunda bir arabirim göster:
+Genel IoT Tak ve Kullan modeli deposunda bir arabirim göster:
 
 ```azurecli
 az iot pnp interface show --interface {YourInterfaceId}
 ```
 
-IoT Tak ve Çalıştır şirket model deponuzda bir arayüz oluşturun:
+IoT Tak ve Kullan şirket modeli deponuzda bir arabirim oluşturun:
 
 ```azurecli
 az iot pnp interface create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
@@ -169,7 +169,7 @@ az iot pnp interface create --definition {JSONPayload or FilePath} --login {Your
 
 Ortak model deposunda doğrudan bir arabirim oluşturamazsınız.
 
-IoT Tak ve Çalıştır şirket model deponuzdaki arabirimi güncelleştirin:
+IoT Tak ve Kullan şirket modeli deponuzdaki bir arabirimi güncelleştirin:
 
 ```azurecli
 az iot pnp interface update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
@@ -177,39 +177,39 @@ az iot pnp interface update --definition {JSONPayload or FilePath} --login {Your
 
 Ortak model deposundaki bir arabirimi doğrudan güncelleştiremezsiniz.
 
-IoT Tak ve Çalıştır şirket model deponuzdan ortak model deposuna bir arayüz yayımlayın. Bu işlem arabirimi değişmez hale getirir:
+IoT Tak ve Kullan şirket modeli deponuzdan ortak model deposuna bir arabirim yayımlayın. Bu işlem, arabirimi sabit yapar:
 
 ```azurecli
 az iot pnp interface publish --interface {YourInterfaceID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Arabirimleri ortak model deposunda yalnızca Microsoft iş ortakları yayımlayabilir.
+Yalnızca Microsoft iş ortakları, genel model deposuna arabirim yayımlayabilir.
 
-### <a name="manage-device-capability-models-in-a-model-repository"></a>Model deposundaki aygıt yetenek modellerini yönetme
+### <a name="manage-device-capability-models-in-a-model-repository"></a>Bir model deposundaki cihaz yetenek modellerini yönetme
 
-Aşağıdaki komutlar ortak IoT Tak ve Çalıştır modeli deposunu kullanır. Şirket modeli deposunu kullanmak için, `--login` bağımsız değişkeni model deposu bağlantı dizeninizle ekleyin.
+Aşağıdaki komutlar, genel IoT Tak ve Kullan modeli havuzunu kullanır. Bir şirket modeli deposu kullanmak için, model deposu `--login` bağlantı dizeniz ile bağımsız değişkeni ekleyin.
 
-IoT Tak ve Ortak model deposundaki aygıt yetenek modellerini listele:
+IoT Tak ve Kullan ortak model deposundaki cihaz yetenek modellerini listeleyin:
 
 ```azurecli
 az iot pnp capability-model list
 ```
 
-IoT Tak ve Ortak model deposunda bir aygıt yetenek modeli göster:
+IoT Tak ve Kullan ortak model deposunda cihaz yetenek modeli gösterme:
 
 ```azurecli
 az iot pnp capability-model show --model {YourModelID}
 ```
 
-IoT Tak ve Çalıştır şirket model deposunda aygıt yeteneği modeli oluşturun:
+IoT Tak ve Kullan şirket modeli deposunda cihaz yetenek modeli oluşturma:
 
 ```azurecli
 az iot pnp capability-model create --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Genel model deposunda doğrudan bir model oluşturamazsınız.
+Ortak model deposunda doğrudan bir model oluşturamazsınız.
 
-IoT Tak ve Çalıştır şirket model deposundaki aygıt yetenek modelini güncelleştirin:
+IoT Tak ve Kullan şirket modeli deposundaki cihaz yetenek modelini güncelleştirin:
 
 ```azurecli
 az iot pnp capability-model update --definition {JSONPayload or FilePath} --login {YourCompanyModelRepoConnectionString}
@@ -217,14 +217,14 @@ az iot pnp capability-model update --definition {JSONPayload or FilePath} --logi
 
 Ortak model deposundaki bir modeli doğrudan güncelleştiremezsiniz.
 
-IoT Tak ve Çalıştır şirket model deponuzdan ortak model deposuna bir aygıt yetenek modeli yayımlayın. Bu işlem modeli değişmez hale getirir:
+IoT Tak ve Kullan şirket modeli deponuzdan ortak model deposuna bir cihaz yetenek modeli yayımlayın. Bu işlem, modeli sabit yapar:
 
 ```azurecli
 az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyModelRepoConnectionString}
 ```
 
-Modelleri ortak model deposunda yalnızca Microsoft iş ortakları yayımlayabilir.
+Yalnızca Microsoft iş ortakları modelleri ortak model deposuna yayımlayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılabilir makalesinde, Tak ve Çalıştır aygıtlarınızla etkileşimde kalmak için Azure CLI için Azure IoT uzantısını nasıl yükleyip kullanacağınızı öğrendiniz. Önerilen bir sonraki [adım, modelleri](./howto-manage-models.md)nasıl yönetinin öğrenmektir.
+Bu nasıl yapılır makalesinde, Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure CLı için Azure IoT uzantısını yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım [modelleri yönetmeyi](./howto-manage-models.md)öğrenirsiniz.

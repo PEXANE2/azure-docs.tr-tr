@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161501"
+ms.locfileid: "82203871"
 ---
 # <a name="security-frame-session-management"></a>Güvenlik çerçevesi: oturum yönetimi
 | Ürün/hizmet | Makale |
@@ -221,7 +221,7 @@ Tanımlama bilgilerini kullanan tüm HTTP tabanlı uygulamalar, Web. config dosy
 | **İlgili teknolojiler** | Web Forms |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [FormsAuthentication. RequireSSL özelliği](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Adımlar** | RequireSSL özelliği değeri, yapılandırma öğesinin requireSSL özniteliği kullanılarak bir ASP.NET uygulamasının yapılandırma dosyasında ayarlanır. ASP.NET uygulamanız için Web. config dosyasında, SSL (Güvenli Yuva Katmanı) ' nin, requireSSL özniteliğini ayarlayarak, Forms-Authentication tanımlama bilgisini sunucuya döndürmesini isteyip istemediğinizi belirtebilirsiniz.|
+| **Adımlar** | RequireSSL özelliği değeri, yapılandırma öğesinin requireSSL özniteliği kullanılarak bir ASP.NET uygulamasının yapılandırma dosyasında ayarlanır. ASP.NET uygulamanızın Web. config dosyasında, daha önce SSL (Güvenli Yuva Katmanı) olarak bilinen Aktarım Katmanı Güvenliği (TLS),, requireSSL özniteliğini ayarlayarak Forms-Authentication tanımlama bilgisini sunucuya döndürmek için gerekli olup olmadığını belirtebilirsiniz.|
 
 ### <a name="example"></a>Örnek 
 Aşağıdaki kod örneği, Web. config dosyasındaki requireSSL özniteliğini ayarlar.
