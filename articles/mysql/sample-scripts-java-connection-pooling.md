@@ -1,21 +1,21 @@
 ---
-title: Bağlantı havuzugöstermek için Java örnekleri
-description: Bu makalede, bağlantı havuzu göstermek için java örnekleri listelenir.
+title: Bağlantı kuyruğunu göstermek için Java örnekleri
+description: Bu makalede, bağlantı havuzunu göstermek için Java örnekleri listelenmektedir.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 78b936b21aeeed1db69ac52b2c21e3c41708f62d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72600374"
 ---
-# <a name="java-sample-to-illustrate-connection-pooling"></a>Bağlantı havuzugöstermek için Java örneği
+# <a name="java-sample-to-illustrate-connection-pooling"></a>Bağlantı kuyruğunu göstermek için Java örneği
 
-Aşağıdaki örnek kod java'da bağlantı havuzunu göstermektedir.
+Aşağıdaki örnek kod, Java 'daki bağlantı havuzunu gösterir.
 
 ```java
 import java.sql.Connection;

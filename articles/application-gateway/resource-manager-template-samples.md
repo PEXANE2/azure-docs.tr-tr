@@ -1,7 +1,7 @@
 ---
 title: Azure Resource Manager şablonları
 titleSuffix: Azure Application Gateway
-description: Bu makalede, çeşitli şekillerde yapılandırılan Azure Uygulama Ağ Geçidi'ni hızla dağıtabilmeniz için Azure Kaynak Yöneticisi şablon örneklerine bağlantılar vardır.
+description: Bu makalede, Azure Application Gateway 'yi çeşitli yollarla hızlı bir şekilde dağıtabilmeniz için Azure Resource Manager şablon örneklerine yönelik bağlantılar bulunur.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,17 +9,17 @@ ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
 ms.openlocfilehash: f2ab25b8514032f134e8c901066dc8f5fcffd13b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74129835"
 ---
-# <a name="azure-resource-manager-templates-for-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi için Azure Kaynak Yöneticisi şablonları
+# <a name="azure-resource-manager-templates-for-azure-application-gateway"></a>Azure Application Gateway için Azure Resource Manager şablonları
 
-Aşağıdaki tabloda Azure Uygulama Ağ Geçidi için Azure Kaynak Yöneticisi şablonlarına bağlantılar yer almaktadır.
+Aşağıdaki tabloda Azure Application Gateway Azure Resource Manager şablonlarının bağlantıları yer almaktadır.
 
 | | |
 |---|---|
-| [Web Uygulama Güvenlik Duvarı ile Uygulama Ağ Geçidi v2](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Web Application Firewall v2 ile bir Uygulama Ağ Geçidi v2 oluşturur.|
+| [Web uygulaması güvenlik duvarı ile Application Gateway v2](https://azure.microsoft.com/resources/templates/ag-docs-wafv2/) | Web uygulaması güvenlik duvarı v2 ile Application Gateway v2 oluşturur.|
 | | |

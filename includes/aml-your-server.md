@@ -10,19 +10,19 @@ ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
 ms.openlocfilehash: ff449626ce528cfe0218a95330a567303c547e5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79486076"
 ---
-1. Python için [Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) yüklemek için Azure Machine Learning SDK'daki yönergeleri kullanın
+1. Python için Azure Machine Learning SDK 'sını yüklemek için [Azure MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) 'daki yönergeleri kullanın
 
-1. Azure [Machine Learning çalışma alanı](../articles/machine-learning/how-to-manage-workspace.md)oluşturun.
+1. [Azure Machine Learning çalışma alanı](../articles/machine-learning/how-to-manage-workspace.md)oluşturun.
 
-1. Yapılandırma [dosyası](../articles/machine-learning/how-to-configure-environment.md#workspace) **(aml_config/config.json)** yazın.
+1. Bir [yapılandırma dosyası](../articles/machine-learning/how-to-configure-environment.md#workspace) dosyası (**aml_config/config.exe**) yazın.
 
-1. [GitHub deposunu](https://aka.ms/aml-notebooks)klonla.
+1. [GitHub deposunu](https://aka.ms/aml-notebooks)kopyalayın.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git

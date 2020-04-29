@@ -1,6 +1,6 @@
 ---
-title: "CLI: GitHub'dan sürekli dağıtım"
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, GitHub'dan CI/CD ile nasıl bir uygulama oluşturulacak larını gösterir.
+title: "CLı: GitHub 'dan sürekli dağıtım"
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, GitHub 'dan CI/CD ile bir uygulamanın nasıl oluşturulacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0205c991-0989-4ca3-bb41-237dcc964460
@@ -10,17 +10,17 @@ ms.date: 09/02/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 0578ea7f677e1abaa5687295fc7bc871e6db2d3f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044778"
 ---
-# <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>CLI'yi kullanarak GitHub'dan sürekli dağıtım içeren bir Uygulama Hizmeti uygulaması oluşturun
+# <a name="create-an-app-service-app-with-continuous-deployment-from-github-using-cli"></a>CLı kullanarak GitHub 'dan sürekli dağıtım ile bir App Service uygulaması oluşturma
 
-Bu örnek komut dosyası, ilgili kaynaklarıyla Birlikte App Service'de bir uygulama oluşturur ve ardından GitHub deposundan sürekli dağıtım ayarlar. Sürekli dağıtım olmadan GitHub dağıtımı için [bkz.](cli-deploy-github.md) Bu örnekte şunlar gereklidir:
+Bu örnek betik, ilgili kaynaklarıyla birlikte App Service bir uygulama oluşturur ve sonra bir GitHub deposundan sürekli dağıtımı ayarlar. Sürekli dağıtım olmadan GitHub dağıtımı için bkz. [bir uygulama oluşturma ve GitHub 'dan kod dağıtma](cli-deploy-github.md). Bu örnekte şunlar gereklidir:
 
-* Yönetme izinlerine sahip olduğunuz uygulama kodu ile bir GitHub deposu. Otomatik yapılar elde etmek için [deponuzu hazırla tablonuza](../deploy-continuous-deployment.md#prepare-your-repository) göre yapılayın.
+* Yönetme izinlerine sahip olduğunuz uygulama kodu ile bir GitHub deposu. Otomatik derlemeler almak için, deponuzu [hazırlama](../deploy-continuous-deployment.md#prepare-your-repository) tablonuza göre yapısını yapın.
 * GitHub hesabınız için bir [Kişisel Erişim Belirteci (PAT)](https://help.github.com/articles/creating-an-access-token-for-command-line-use).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -43,8 +43,8 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Bir Uygulama Hizmeti uygulamasını Git veya Mercurial deposuyla ilişkilendirin. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Bir App Service uygulamasını bir git veya Mercurial deposu ile ilişkilendirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,40 +1,40 @@
 ---
 title: ETL aracı olarak Apache Hive kullanma-Azure HDInsight
 description: Azure HDInsight 'ta verileri ayıklamak, dönüştürmek ve yüklemek (ETL) için Apache Hive kullanın.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623110"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509559"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Ayıklama, dönüştürme ve yükleme (ETL) aracı olarak Apache Hive kullanma
 
-Genellikle gelen verileri analiz için uygun bir hedefe yüklemeden önce temizlemeniz ve dönüştürmeniz gerekir. Ayıklama, dönüştürme ve yükleme (ETL) işlemleri, verileri hazırlamak ve bir veri hedefine yüklemek için kullanılır.  HDInsight üzerinde Apache Hive yapılandırılmamış verileri okuyabilir, verileri gerektiği gibi işleyebilir ve sonra karar destek sistemleri için verileri ilişkisel bir veri ambarına yükleyebilir. Bu yaklaşımda, veriler kaynaktan ayıklanır ve Azure depolama Blobları veya Azure Data Lake Storage gibi ölçeklenebilir depolamada depolanır. Veriler daha sonra Hive sorguları dizisi kullanılarak dönüştürülür ve son olarak hedef veri deposuna toplu yükleme hazırlığı sırasında Hive içinde hazırlanır.
+Genellikle gelen verileri analiz için uygun bir hedefe yüklemeden önce temizlemeniz ve dönüştürmeniz gerekir. Ayıklama, dönüştürme ve yükleme (ETL) işlemleri, verileri hazırlamak ve bir veri hedefine yüklemek için kullanılır.  HDInsight üzerinde Apache Hive yapılandırılmamış verileri okuyabilir, verileri gerektiği gibi işleyebilir ve sonra karar destek sistemleri için verileri ilişkisel bir veri ambarına yükleyebilir. Bu yaklaşımda, veriler kaynaktan ayıklanır. Daha sonra, Azure depolama Blobları veya Azure Data Lake Storage gibi uyarlamalı tablo depolama alanında depolanır. Veriler daha sonra Hive sorguları dizisi kullanılarak dönüştürülür. Ardından, hedef veri deposuna toplu yükleme hazırlığı sırasında Hive içinde hazırlanır.
 
 ## <a name="use-case-and-model-overview"></a>Kullanım örneği ve modele genel bakış
 
-Aşağıdaki şekilde, ETL otomasyonu için kullanım örneğine ve modele ilişkin bir genel bakış gösterilmektedir. Giriş verileri, uygun çıktıyı oluşturmak için dönüştürülür.  Bu dönüştürme sırasında veriler şekil, veri türü ve hatta dili değiştirebilir.  ETL işlemlerinde, kusurdan ölçüm 'e dönüştürülebilir, saat dilimlerini değiştirebilir ve hedefteki mevcut verilerle doğru şekilde uyum sağlamak için duyarlık geliştirebilirsiniz.  ETL süreçler Ayrıca yeni verileri, raporlamayı güncel tutmak veya mevcut veriler hakkında daha fazla öngörü sağlamak için mevcut verilerle birleştirebilir.  Raporlama araçları ve hizmetleri gibi uygulamalar, bu verileri istenen biçimde tüketebilir.
+Aşağıdaki şekilde, ETL otomasyonu için kullanım örneğine ve modele ilişkin bir genel bakış gösterilmektedir. Giriş verileri, uygun çıktıyı oluşturmak için dönüştürülür.  Bu dönüştürme sırasında, veri şekli, veri türü ve hatta dil değişir.  ETL işlemlerinde, kusurdan ölçüm 'e dönüştürülebilir, saat dilimlerini değiştirebilir ve hedefteki mevcut verilerle doğru şekilde uyum sağlamak için duyarlık geliştirebilirsiniz. ETL süreçler Ayrıca yeni verileri, raporlamayı güncel tutmak veya mevcut veriler hakkında daha fazla öngörü sağlamak için mevcut verilerle birleştirebilir. Raporlama araçları ve hizmetleri gibi uygulamalar bu verileri istenen biçimde tüketebilir.
 
 ![ETL mimarisi olarak Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop genellikle çok sayıda metin dosyasını (CSV 'ler gibi) veya daha küçük ancak sık değişen metin dosyası sayısını veya her ikisini birden içe alan ETL işlemlerinde kullanılır.  Hive, verileri veri hedefine yüklemeden önce hazırlamak için kullanılan harika bir araçtır.  Hive, CSV üzerinde bir şema oluşturmanıza ve verilerle etkileşime geçen MapReduce programları oluşturmak için SQL benzeri bir dil kullanmanıza olanak sağlar.
+Hadoop genellikle çok sayıda metin dosyası (CSV gibi) içeri aktarılan ETL işlemlerinde kullanılır. Ya da daha küçük, sık sık değişen metin dosyası sayısı veya her ikisi.  Hive, verileri veri hedefine yüklemeden önce hazırlamak için kullanılan harika bir araçtır.  Hive, CSV üzerinde bir şema oluşturmanıza ve verilerle etkileşime geçen MapReduce programları oluşturmak için SQL benzeri bir dil kullanmanıza olanak sağlar.
 
-ETL gerçekleştirmek için Hive kullanmanın tipik adımları aşağıdaki gibidir:
+Hive 'yi yapmak için kullanılan tipik adımlar aşağıdaki gibidir:
 
 1. Azure Data Lake Storage veya Azure Blob depolama alanına veri yükleme.
 2. Şemalarınızı depolarken Hive tarafından kullanılmak üzere bir meta veri deposu veritabanı (Azure SQL veritabanı kullanarak) oluşturun.
 3. HDInsight kümesi oluşturma ve veri deposunu bağlama.
 4. Veri deposundaki veriler üzerinde okuma zamanında uygulanacak şemayı tanımlayın:
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -66,30 +66,28 @@ Veri kaynakları genellikle veri deponuzdaki mevcut verilerle eşleştirilebilen
 
 ## <a name="output-targets"></a>Çıkış hedefleri
 
-Hive 'yi aşağıdakiler dahil çeşitli hedeflere veri çıktısı için kullanabilirsiniz:
+Hive kullanarak verileri farklı türlerde hedeflere aktarabilirsiniz:
 
 * SQL Server veya Azure SQL veritabanı gibi bir ilişkisel veritabanı.
 * Azure SQL veri ambarı gibi bir veri ambarı.
 * Excel.
 * Azure tablosu ve BLOB depolama.
 * Verilerin belirli biçimlerde işlenmesini gerektiren uygulamalar veya hizmetler veya belirli bilgi yapısı türlerini içeren dosyalar.
-* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)gıbı bir JSON belge deposu.
+* Azure Cosmos DB gibi bir JSON belge deposu.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
 ETL modeli genellikle şunları yapmak istediğinizde kullanılır:
 
-* Dış kaynaklardan mevcut bir veritabanına veya bilgi sistemine akış verileri veya yarı yapılandırılmış veya yapılandırılmamış verilerin büyük hacimlerini yükleyin.
-* Küme üzerinde birden fazla dönüşüm geçişi kullanarak, yüklemeden önce verileri temizleyin, dönüştürün ve doğrulayın.
-* Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun. Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz. Hive sorgusunu otomatik olarak çalıştırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) ve PowerShell 'i kullanabilirsiniz.
+`*`Dış kaynaklardan mevcut bir veritabanına veya bilgi sistemine akış verileri veya yarı yapılandırılmış veya yapılandırılmamış verilerin büyük hacimlerini yükleyin.
+`*`Küme üzerinde birden fazla dönüşüm geçişi kullanarak, yüklemeden önce verileri temizleyin, dönüştürün ve doğrulayın.
+`*`Düzenli olarak güncellenen raporlar ve görselleştirmeler oluşturun. Örneğin, raporun gün içinde oluşturması çok uzun sürüyorsa, raporu gece boyunca çalışacak şekilde zamanlayabilirsiniz. Hive sorgusunu otomatik olarak çalıştırmak için [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) ve PowerShell 'i kullanabilirsiniz.
 
 Verilerin hedefi bir veritabanı değilse sorgu içinde uygun biçimde, örneğin bir CSV dosyası oluşturabilirsiniz. Bu dosya daha sonra Excel veya Power BI içeri aktarılabilir.
 
-ETL işleminin bir parçası olarak veriler üzerinde birkaç işlem yürütmeniz gerekiyorsa, bunları nasıl yöneteceğinizi göz önünde bulundurun. İşlemler, çözüm içindeki bir iş akışı yerine bir dış program tarafından denetleniyorsa, bazı işlemlerin paralel olarak yürütülüp yürütülmeyeceğine karar vermeniz ve her bir işin ne zaman tamamlandığını tespit etmeniz gerekir. Hadoop içinde Oozie gibi bir iş akışı mekanizması kullanmak, dış betikler veya özel programlar kullanarak bir işlem dizisini düzenleme deneenden daha kolay olabilir. Oozie hakkında daha fazla bilgi için bkz. [Iş akışı ve iş düzenlemesi](https://msdn.microsoft.com/library/dn749829.aspx).
+ETL işleminin bir parçası olarak veriler üzerinde birkaç işlem yürütmeniz gerekiyorsa, bunları nasıl yöneteceğinizi göz önünde bulundurun. Bir dış program tarafından denetlenen işlemler, çözüm içinde iş akışı yerine, bazı işlemlerin paralel olarak yürütülüp yürütülmeyeceğine karar verin. Ve her bir işin tamamlandığı tespit. Hadoop içinde Oozie gibi bir iş akışı mekanizması kullanmak, dış betikler veya özel programlar kullanarak bir işlem dizisini düzenleme deneenden daha kolay olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [ETL ölçeği](apache-hadoop-etl-at-scale.md)
-* [Veri işlem hattını işleme](../hdinsight-operationalize-data-pipeline.md)
-
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+* [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

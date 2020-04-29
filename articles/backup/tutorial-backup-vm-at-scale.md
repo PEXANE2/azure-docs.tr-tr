@@ -1,19 +1,19 @@
 ---
-title: Öğretici - Birden çok Azure sanal makinesini yedekleme
-description: Bu öğreticide, Kurtarma Hizmetleri kasası oluşturmayı, yedekleme ilkesini nasıl tanımlarınızı ve aynı anda birden çok sanal makineyi nasıl yedekleyini öğrenin.
+title: Öğretici-birden çok Azure sanal makinesini yedekleme
+description: Bu öğreticide, bir kurtarma hizmetleri Kasası oluşturmayı, bir yedekleme ilkesi tanımlamanızı ve aynı anda birden çok sanal makineyi nasıl yedekleyeceğinizi öğrenin.
 ms.date: 01/31/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: f9306f2ef5c4b2a53dcba17cafca9ea13b8dab43
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80245251"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Birden çok sanal makineyi yedeklemek için Azure portalını kullanma
 
-Azure’da verileri yedeklediğinizde söz konusu veriler Kurtarma Hizmetleri kasası adında bir Azure kaynağında depolanır. Kurtarma Hizmetleri kasası kaynağı, Azure hizmetlerinin birçoğunun Ayarlar menüsünden kullanılabilir. Kurtarma Hizmetleri kasasının çoğu Azure hizmetinin Ayarlar menüsüne entegre etmesinin avantajı, verileri yedeklemeyi kolaylaştırır. Ancak işletmenizde her bir veritabanı veya sanal makine ile tek tek çalışmak yorucu olabilir. Tüm sanal makinelere ait verileri tek bir departmanda veya tek bir konumda yedeklemek istediğinizde ne yapabilirsiniz? Birden çok sanal makineyi yedekleyerek bir yedekleme ilkesi oluşturmak ve bu ilkeyi istenen sanal makinelere uygulamak kolay bir işlemdir. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
+Azure’da verileri yedeklediğinizde söz konusu veriler Kurtarma Hizmetleri kasası adında bir Azure kaynağında depolanır. Kurtarma Hizmetleri kasası kaynağı, Azure hizmetlerinin birçoğunun Ayarlar menüsünden kullanılabilir. Kurtarma Hizmetleri kasasının çoğu Azure hizmetinin ayarlar menüsüyle tümleştirilmesi, verileri yedeklemeyi kolaylaştırır. Ancak işletmenizde her bir veritabanı veya sanal makine ile tek tek çalışmak yorucu olabilir. Tüm sanal makinelere ait verileri tek bir departmanda veya tek bir konumda yedeklemek istediğinizde ne yapabilirsiniz? Birden çok sanal makineyi yedekleyerek bir yedekleme ilkesi oluşturmak ve bu ilkeyi istenen sanal makinelere uygulamak kolay bir işlemdir. Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
 > [!div class="checklist"]
 >
@@ -24,7 +24,7 @@ Azure’da verileri yedeklediğinizde söz konusu veriler Kurtarma Hizmetleri ka
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -42,7 +42,7 @@ Kurtarma Hizmetleri kasası, yedekleme verilerini ve korumalı sanal makinelere 
 
     * **Ad** alanına *myRecoveryServicesVault* yazın.
     * **Abonelik** bölümünde geçerli abonelik kimliği görüntülenir. Ek abonelikleriniz varsa yeni kasa için başka bir abonelik seçebilirsiniz.
-    * **Kaynak grubu için** **varolan ı kullan'ı** seçin ve *myResourceGroup'u*seçin. *myResourceGroup* yoksa **Yeni oluştur**’u seçin ve *myResourceGroup* yazın.
+    * **Kaynak grubu**için **var olanı kullan** ' ı seçin ve *myresourcegroup*öğesini seçin. *myResourceGroup* yoksa **Yeni oluştur**’u seçin ve *myResourceGroup* yazın.
     * **Konum** açılan menüsünden *Batı Avrupa*’yı seçin.
     * Kurtarma Hizmetleri kasanızı oluşturmak için **Oluştur**’a tıklayın.
 
@@ -54,7 +54,7 @@ Kurtarma Hizmetleri kasası oluşturduğunuzda kasa varsayılan olarak coğrafi 
 
 ## <a name="set-backup-policy-to-protect-vms"></a>VM’leri korumak için yedekleme ilkesi ayarlama
 
-Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için kasanın yapılandırılması ve yedekleme ilkesinin ayarlanmasıdır. Yedekleme ilkesi, kurtarma noktalarının ne sıklıkta ve ne zaman alınacağına yönelik zamanlamadır. İlke aynı zamanda kurtarma noktaları için bekletme aralığını içerir. Bu öğretici için, işletmenizin otel, stadyum, restoran ve imtiyazları olan bir spor kompleksi olduğunu ve sanal makinelerdeki verileri koruduğunuzu varsayalım. Aşağıdaki adımlarda, finansal veriler için bir yedekleme ilkesi oluşturulmaktadır.
+Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için kasanın yapılandırılması ve yedekleme ilkesinin ayarlanmasıdır. Yedekleme ilkesi, kurtarma noktalarının ne sıklıkta ve ne zaman alınacağına yönelik zamanlamadır. İlke aynı zamanda kurtarma noktaları için bekletme aralığını içerir. Bu öğreticide, işletmenizin bir otel, Stadium ve restoran ve concessions ile karmaşık bir spor olduğunu ve sanal makinelerdeki verileri korudığınızı varsayalım. Aşağıdaki adımlarda, finansal veriler için bir yedekleme ilkesi oluşturulmaktadır.
 
 1. Kurtarma Hizmetleri kasalarının listesinden, ilgili panoyu seçmek için **myRecoveryServicesVault** seçeneğini belirleyin.
 
@@ -84,7 +84,7 @@ Kurtarma Hizmetleri kasasını oluşturduktan sonraki adım, veri türü için k
 
      Yedekleme ilkesini oluşturduktan sonra ilkeyi sanal makineler ile ilişkilendirin.
 
-6. Sanal **makineleri seç** iletişim kutusunda *myVM'i* seçin ve yedekleme ilkesini sanal makinelere dağıtmak için **Tamam'ı** tıklatın.
+6. **Sanal makineler Seç** iletişim kutusunda, *myvm* ' i seçin ve yedekleme ilkesini sanal makinelere dağıtmak için **Tamam** ' ı tıklatın.
 
     Aynı konumda olan ve bir yedekleme ilkesi ile ilişkili olmayan tüm sanal makineler görünür. *myVMH1* ve *myVMR1* seçilerek *Finans* ilkesiyle ilişkilendirilir.
 
@@ -148,7 +148,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız bu öğretici
 
     ![Ayarlar simgesi](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. Bağlam menüsünde, Yedeklemeyi Durdur menüsünü açmak için **yedeklemeyi durdur'u** seçin.
+4. Bağlam menüsünde yedeklemeyi **Durdur** ' u seçerek Yedeklemeyi Durdur menüsünü açın.
 
     ![Ayarlar simgesi](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
@@ -156,7 +156,7 @@ Sonraki öğreticilerle çalışmaya devam etmeyi planlıyorsanız bu öğretici
 
 6. **Yedekleme öğesinin adını yazın** iletişim kutusuna *myVM* yazın.
 
-7. Yedekleme öğesi doğrulandıktan sonra (onay işareti görüntülenir), **Yedeklemeyi Durdur** düğmesi etkinleştirilir. İlkeyi durdurup geri yükleme noktalarını silmek için **Yedeklemeyi Durdur** seçeneğine tıklayın.
+7. Yedekleme öğesi doğrulandıktan sonra (bir onay işareti görünür), **Yedeklemeyi Durdur** düğmesi etkin olur. İlkeyi durdurup geri yükleme noktalarını silmek için **Yedeklemeyi Durdur** seçeneğine tıklayın.
 
     ![Kasayı silmek için Yedeklemeyi durdur seçeneğine tıklayın](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 

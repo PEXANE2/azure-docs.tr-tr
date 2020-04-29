@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Etki alanı apeks adlarını desteklemek için bir takma ad kaydı oluşturun - Trafik Yöneticisi'
+title: 'Öğretici: etki alanı tepesinde adlarını desteklemek için bir diğer ad kaydı oluşturma-Traffic Manager'
 titleSuffix: Azure DNS
 description: Bu öğreticide Traffic Manager ile etki alanı tepe adının kullanılmasını desteklemek için Azure DNS diğer ad kaydı yapılandırma adımları gösterilmektedir.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77149958"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Öğretici: Traffic Manager ile tepe etki alanı adlarını desteklemek için diğer ad kaydı yapılandırma 
@@ -20,7 +20,7 @@ ms.locfileid: "77149958"
 Bir Azure Traffic Manager profiline başvurmak üzere etki alanı tepe adı için diğer ad kaydı oluşturabilirsiniz. Örneğin: contoso.com. Yönlendirme hizmeti kullanmak yerine Azure DNS yapılandırması ile Traffic Manager profiline doğrudan bölgenizden başvurabilirsiniz. 
 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ana bilgisayar VM'si ve ağ altyapısı oluşturma.
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Diğer ad kaydını test etme.
 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
@@ -40,18 +40,18 @@ Bu öğreticide örnek olarak contoso.com etki alanı kullanılmaktadır ancak s
 
 ## <a name="create-the-network-infrastructure"></a>Ağ altyapısını oluşturma
 İlk olarak, web sunucularınızı içine yerleştirmek için bir sanal ağ ve alt ağ oluşturun.
-1. Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+1. [https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 2. Portalda sol üst köşeden **Kaynak oluştur**'u seçin. Arama kutusuna *kaynak grubu* yazın ve **RG-DNS-Alias-TM** adlı bir kaynak grubu oluşturun.
-3. Kaynak **Oluştur** > **Sanal** > **ağ'ı**seçin.
+3. **Kaynak** > oluştur**ağ** > **sanal ağ**' ı seçin.
 4. **VNet-Servers** adlı bir sanal ağ oluşturun. Bunu **RG-DNS-Alias-TM** kaynak grubunun içine yerleştirin ve alt ağı **SN-Web** olarak adlandırın.
 
 ## <a name="create-two-web-server-virtual-machines"></a>İki web sunucusu sanal makinesi oluşturma
-1. **Kaynak** > Oluştur**Windows Server 2016 VM'yi**seçin.
+1. **Kaynak** > oluştur**Windows Server 2016 VM**' yi seçin.
 2. Ad için **Web-01** girin ve VM’yi **RG-DNS-Alias-TM** kaynak grubuna yerleştirin. Kullanıcı adı ve parola girip **Tamam**'ı seçin.
 3. **Boyut** için 8 GB RAM'e sahip bir SKU seçin.
 4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin.
 5. **Genel IP adresi**'ni seçin. **Atama** bölümünde **Statik**'i ve ardından **Tamam**'ı seçin.
-6. Ortak gelen bağlantı noktaları için **HTTP** > **HTTPS** > **RDP (3389)** seçeneğini ve ardından **Tamam'ı**seçin.
+6. Genel gelen bağlantı noktaları için **http** > **https** > **RDP (3389)** öğesini seçin ve ardından **Tamam**' ı seçin.
 7. **Özet** sayfasında **Oluştur**'u seçin. Bu işlemin tamamlanması birkaç dakika sürer.
 
 Bu yordamı tekrarlayarak **Web-02** adlı başka bir sanal makine oluşturun.
@@ -61,7 +61,7 @@ Genel IP adreslerinin Traffic Manager ile çalışabilmesi için bir DNS etiketi
 1. **RG-DNS-Alias-TM** kaynak grubunda **Web-01-ip** genel IP adresini seçin.
 2. **Ayarlar** altında **Yapılandırma**'yı seçin.
 3. DNS adı metin kutusuna **web01pip** girin.
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 
 Bu yordamı **Web-02-ip** genel IP adresi için tekrarlayın ve DNS ad etiketi için **web02pip** değerini kullanın.
 
@@ -83,12 +83,12 @@ Bu işlemleri tekrarlayarak **Web-02** üzerine de IIS yükleyin.
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 1. **RG-DNS-Alias-TM** kaynak grubunu açın ve **Web-01-ip** Genel IP adresini seçin. Daha sonra kullanmak için IP adresini not edin. Bu adımı **Web-02-ip** genel IP adresi için tekrarlayın.
-1. Kaynak > **Ağı** > **Trafik Yöneticisi profili** **oluştur'u**seçin.
+1. **Kaynak** > **Networking**ağ > **Traffic Manager profili**oluştur ' u seçin.
 2. Ad olarak **TM-alias-test** girin. Bunu **RG-DNS-Alias-TM** kaynak grubunun içine yerleştirin.
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Dağıtım tamamlandıktan sonra **Kaynağa git**'i seçin.
 5. Traffic Manager profili sayfasının **Ayarlar** bölümünde **Uç noktalar**'ı seçin.
-6. **Ekle'yi**seçin.
+6. **Add (Ekle)** seçeneğini belirleyin.
 7. **Tür** olarak **Dış uç nokta**'yı seçin ve **Ad** alanına **EP-Web01** girin.
 8. **Tam etki alanı adı (FQDN) veya IP** metin kutusuna önceden not ettiğiniz **Web-01-ip** IP adresini girin.
 9. Diğer kaynaklarınızla aynı **Konum** değerini seçin ve **Tamam**'ı seçin.

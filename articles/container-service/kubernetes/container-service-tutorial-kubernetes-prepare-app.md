@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - Uygulama Hazırla
+title: Kullanım DıŞı Azure Container Service öğreticisi-uygulama hazırlama
 description: Azure Container Service öğreticisi - Uygulama Hazırlama
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76275422"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(AmortismanA Uğradı) Azure Kapsayıcı Hizmetiile kullanılacak kapsayıcı resimleri oluşturma
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service birlikte kullanılacak kapsayıcı görüntüleri oluşturma
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü [için Bkz. Öğretici: Azure Kubernetes Hizmeti (AKS) için bir uygulama hazırlayın.](../../aks/tutorial-kubernetes-prepare-app.md)
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes hizmeti (AKS) için uygulama hazırlama](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

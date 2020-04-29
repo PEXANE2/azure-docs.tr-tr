@@ -1,6 +1,6 @@
 ---
-title: CLI örnek-failover grubu için tek veritabanı eklemek - Azure SQL Veritabanı
-description: Azure SQL Veritabanı tek bir veritabanı oluşturmak, bir başarısız lık grubuna eklemek ve başarısız olmayı test etmek için Azure CLI örnek komut dosyası.
+title: CLı örneği-yük devretme grubuna tek veritabanı ekleme-Azure SQL veritabanı
+description: Azure CLı örnek betiği Azure SQL veritabanı tek veritabanı oluşturma, bir yük devretme grubuna ekleme ve yük devretme testi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: bc238f08021bb9fb16b8c7319e63acebdfec3948
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061901"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>Bir başarısız gruba Azure SQL Veritabanı eklemek için CLI'yi kullanın
+# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>CLı kullanarak bir yük devretme grubuna Azure SQL veritabanı ekleme
 
-Bu Azure CLI komut dosyası örneği tek bir veritabanı oluşturur, bir başarısız lık grubu oluşturur, veritabanını ona ekler ve başarısız olmayı sınar.
+Bu Azure CLı betik örneği tek bir veritabanı oluşturur, bir yük devretme grubu oluşturur, veritabanını buna ekler ve yük devretmeyi sınar.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -48,14 +48,14 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db](/cli/azure/sql/db) | Veritabanı komutları. |
-| [az sql failover-group](/cli/azure/sql/failover-group) | Failover grup komutları. |
+| [az SQL DB](/cli/azure/sql/db) | Veritabanı komutları. |
+| [az SQL yük devretme-Grup](/cli/azure/sql/failover-group) | Yük devretme grubu komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

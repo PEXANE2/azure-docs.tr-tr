@@ -1,7 +1,7 @@
 ---
-title: Filtre ağ trafiği - öğretici - Azure Portal
+title: Ağ trafiğini filtreleme-öğretici-Azure portalı
 titlesuffix: Azure Virtual Network
-description: Bu eğitimde, Azure portalını kullanarak ağ trafiğini bir ağ güvenlik grubuyla bir alt ağa nasıl filtreuygulayabileceğinizi öğrenirsiniz.
+description: Bu öğreticide, Azure portal kullanarak bir ağ güvenlik grubu ile ağ trafiğini bir alt ağa nasıl filtreleyeceğinizi öğreneceksiniz.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
 ms.openlocfilehash: b5a136ae05b3cd410ca252b6d5a1df443aff6f7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75350132"
 ---
-# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ağ güvenlik grubuyla ağ trafiğini filtreleme
+# <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Öğretici: Azure portal kullanarak ağ trafiğini ağ güvenlik grubuyla filtreleme
 
-Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini, bir ağ güvenlik grubu ile filtreleyebilirsiniz. Ağ güvenlik grupları, ağ trafiğini IP adresi, bağlantı noktası ve protokole göre filtreleyen güvenlik kuralları içerir. Güvenlik kuralları bir alt ağda dağıtılmış kaynaklara uygulanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini, bir ağ güvenlik grubu ile filtreleyebilirsiniz. Ağ güvenlik grupları, ağ trafiğini IP adresi, bağlantı noktası ve protokole göre filtreleyen güvenlik kuralları içerir. Güvenlik kuralları bir alt ağda dağıtılmış kaynaklara uygulanır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ güvenlik grubu ve güvenlik kuralları oluşturma
@@ -33,7 +33,7 @@ Bir sanal ağ alt ağına gelen ve sanal ağ alt ağından giden ağ trafiğini,
 
 Tercih ederseniz, bu öğreticiyi [Azure CLI](tutorial-filter-network-traffic-cli.md) veya [PowerShell](tutorial-filter-network-traffic-powershell.md) kullanarak tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -67,7 +67,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
     | ---            | ---                                                           |
     | Adı           | myAsgWebServers                                               |
     | Abonelik   | Aboneliğinizi seçin.                                     |
-    | Kaynak grubu | **Varolan Kullan'ı** seçin ve ardından **myResourceGroup'u**seçin. |
+    | Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin. |
     | Konum       | Doğu ABD                                                       |
 
 4. 3. adımı yeniden tamamlayın ve aşağıdaki değerleri belirtin:
@@ -76,7 +76,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
     | ---            | ---                                                           |
     | Adı           | myAsgMgmtServers                                              |
     | Abonelik   | Aboneliğinizi seçin.                                     |
-    | Kaynak grubu | **Varolan Kullan'ı** seçin ve ardından **myResourceGroup'u**seçin. |
+    | Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin. |
     | Konum       | Doğu ABD                                                       |
 
 ## <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
@@ -89,7 +89,7 @@ Uygulama güvenlik grubu, web sunucuları gibi benzer işlevlere sahip sunucular
     |---|---|
     |Adı|myNsg|
     |Abonelik| Aboneliğinizi seçin.|
-    |Kaynak grubu | **Varolan Kullan'ı** seçin ve ardından *myResourceGroup'u*seçin.|
+    |Kaynak grubu | **Mevcut olanı kullan** ' ı seçin ve ardından *myresourcegroup*öğesini seçin.|
     |Konum|Doğu ABD|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Ağ güvenlik grubunu alt ağ ile ilişkilendirme
@@ -140,7 +140,7 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
 
 1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. 
 2. **İşlem**'i seçin ve sonra da **Windows Server 2016 Datacenter**'ı seçin.
-3. Aşağıdaki bilgileri girin veya seçin ve kalan ayarlar için varsayılanları kabul edin:
+3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin:
 
     |Ayar|Değer|
     |---|---|
@@ -154,15 +154,15 @@ Sanal ağ üzerinde iki sanal makine oluşturun.
    
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
-5. **Ağ altında,** aşağıdaki değerleri seçin ve kalan varsayılanları kabul edin:
+5. **Ağ**altında, aşağıdaki değerleri seçin ve kalan Varsayılanları kabul edin:
 
     |Ayar|Değer|
     |---|---|
-    |Sanal ağ |**myVirtualNetwork'ünü**seçin.|
+    |Sanal ağ |**MyVirtualNetwork**öğesini seçin.|
     |NIC ağ güvenlik grubu |**Hiçbiri** seçeneğini belirtin.|
   
 
-6. **Alt,** sol köşede Gözden Geçir + Oluştur'u seçin, VM dağıtımını başlatmak için **Oluştur'u** seçin.
+6. Sol köşedeki **gözden geçir + oluştur** seçeneğini BELIRLEYIN, VM dağıtımını başlatmak için **Oluştur** ' u seçin.
 
 ### <a name="create-the-second-vm"></a>İkinci sanal makineyi oluşturma
 
@@ -184,8 +184,8 @@ Portal VM'leri oluştururken, her VM için bir ağ arabirimi oluşturur ve ağ a
 1. *myVmMgmt* VM'sine bağlanın. Portalın üst kısmındaki arama kutusuna *myVmMgmt* yazın. Arama sonuçlarında **myVmMgmt** görüntülendiğinde bunu seçin. **Bağlan** düğmesini seçin.
 2. **RDP dosyasını indir**'i seçin.
 3. İndirilen rdp dosyasını açın ve **Bağlan**'ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir.
-4. **Tamam'ı**seçin.
-5. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** veya **Devam**et'i seçin.
+4. **Tamam**’ı seçin.
+5. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** ' i veya **devam et**' i seçin.
 
     *myVmMgmt* sanal makinesine bağlı ağ arabiriminin içinde bulunduğu *myAsgMgmtServers* uygulama güvenlik grubuna 3389 numaralı bağlantı noktasının internetten gelmesine izin verildiği için bağlantı başarılı olur.
 

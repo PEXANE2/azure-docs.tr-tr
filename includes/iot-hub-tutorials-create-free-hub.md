@@ -9,17 +9,17 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68229336"
 ---
 Azure portalı kullanarak IoT Hub oluşturmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. IoT >  **Hub'ın kaynak** > **Internet'ini**seçin.**IoT Hub**
+1.  > **IoT Hub****nesnelerin interneti** **kaynak** > oluştur ' u seçin.
 
     ![IoT Hub’ı yüklemek için seçin](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
 
@@ -41,7 +41,7 @@ Azure portalı kullanarak IoT Hub oluşturmak için:
 
     ![Hub ayarları 2](media/iot-hub-tutorials-create-free-hub/hubdefinition-2.png)
 
-1. **Oluştur'u**tıklatın. Hub’ın oluşturulması birkaç dakika sürebilir.
+1. **Oluştur**' a tıklayın. Hub’ın oluşturulması birkaç dakika sürebilir.
 
     ![Hub ayarları 3](media/iot-hub-tutorials-create-free-hub/hubdefinition-3.png)
 

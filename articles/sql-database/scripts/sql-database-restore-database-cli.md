@@ -1,6 +1,6 @@
 ---
-title: CLI örnek-geri yükleme-yedekleme-Azure SQL veritabanı
-description: Azure SQL tek veritabanını otomatik yedeklemelerden daha önceki bir noktaya geri yüklemek için Azure CLI örnek komut dosyası
+title: CLı örneği-geri yükleme-yedekleme-Azure SQL veritabanı
+description: Azure SQL tek veritabanını otomatik yedeklemelerden önceki bir zaman noktasına geri yüklemek için Azure CLı örnek betiği
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: 36c565837b95ce2f391d38b9934b7cf19c613897
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067369"
 ---
-# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Azure SQL tek veritabanını daha önceki bir noktaya geri yüklemek için CLI'yi kullanın
+# <a name="use-cli-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>CLı kullanarak bir Azure SQL tek veritabanını daha önceki bir noktaya geri yükleme
 
-Bu Azure CLI örneği, azure SQL veritabanını belirli bir noktaya geri yükler.  
+Bu Azure CLı örneği, bir Azure SQL veritabanını zaman içinde belirli bir noktaya geri yükler.  
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -48,13 +48,13 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db geri yükleme](/cli/azure/sql/db#az-sql-db-restore) | Veritabanı komutunu geri yükleyin. |
+| [az SQL DB restore](/cli/azure/sql/db#az-sql-db-restore) | Restore Database komutu. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

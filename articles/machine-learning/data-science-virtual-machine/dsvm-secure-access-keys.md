@@ -1,8 +1,8 @@
 ---
-title: Erişim kimlik bilgilerini güvenli bir şekilde depolama
+title: Erişim kimlik bilgilerini güvenli bir şekilde depolayın
 titleSuffix: Azure Data Science Virtual Machine
-description: Veri Bilimi Sanal Makinesi'nde erişim kimlik bilgilerini güvenli bir şekilde nasıl depolayarak depolaymayı öğrenin. Erişim kimlik bilgilerini depolamak için yönetilen hizmet kimliklerini ve Azure Anahtar Kasası'nı nasıl kullanacağınızı öğreneceksiniz.
-keywords: derin öğrenme, Yapay Bilgi, veri bilimi araçları, veri bilimi sanal makine, jeouzamsal analitik, ekip veri bilimi süreci
+description: Veri Bilimi Sanal Makinesi erişim kimlik bilgilerini güvenli bir şekilde nasıl depolayacağınızı öğrenin. Yönetilen hizmet kimliklerini nasıl kullanacağınızı ve erişim kimlik bilgilerini depolamak için Azure Key Vault öğreneceksiniz.
+keywords: derin öğrenme, AI, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz, ekip veri bilimi işlemi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,23 +11,23 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 1cb0c5094d49eac5a1c8f63406a28d2927d8fa94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477332"
 ---
-# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Erişim kimlik bilgilerini Azure Veri Bilimi Sanal Makinesi'nde güvenli bir şekilde depolama
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Erişim kimlik bilgilerini Azure Veri Bilimi Sanal Makinesi güvenli bir şekilde depolayın
 
-Bulut uygulamalarındaki kodun bulut hizmetlerine kimlik doğrulama için kimlik bilgileri içermesi yaygındır. Bu kimlik bilgilerinin nasıl yönetilen ve güvenli hale getirmek, bulut uygulamaları oluşturmada iyi bilinen bir sorundur. İdeal olarak, kimlik bilgileri hiçbir zaman geliştirici iş istasyonlarında görünmemeli veya kaynak denetimi için iade edilmeli.
+Bulut uygulamalarındaki kodun, bulut hizmetlerinde kimlik doğrulaması için kimlik bilgilerini içermesi yaygındır. Bu kimlik bilgilerini yönetme ve güvenli hale getirme, bulut uygulamaları oluşturma konusunda iyi bilinen bir zorluk dır. İdeal olarak, kimlik bilgileri geliştirici iş istasyonlarında hiçbir şekilde gösterilmemelidir veya kaynak denetimine iade edilmelidir.
 
-[Azure kaynakları için yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) özelliği, Azure hizmetlerine Azure Etkin Dizin'de (Azure AD) otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeyi kolaylaştırır. Bu kimliği kullanarak, Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz.
+[Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) özelliği, azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu daha kolay bir şekilde çözmenizi sağlar. Bu kimliği kullanarak, Azure AD kimlik doğrulamasını destekleyen tüm hizmetlerde kodunuzda kimlik bilgileri bulunmasına gerek kalmadan kimlik doğrulaması yapabilirsiniz.
 
-Kimlik bilgilerini güvence altına almanın bir yolu, sırları ve şifreleme anahtarlarını güvenli bir şekilde depolamak için yönetilen bir Azure hizmeti olan [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)ile birlikte Windows Installer 'ı (MSI) kullanmaktır. Yönetilen kimliği kullanarak bir anahtar kasasına erişebilir ve ardından yetkili sırları ve şifreleme anahtarlarını anahtar kasasından alabilirsiniz.
+Kimlik bilgilerini güvenli hale getirmenin bir yolu, gizli dizileri ve şifreleme anahtarlarını güvenli bir şekilde depolamak için yönetilen bir Azure hizmeti olan [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/)birlikte Wındows ınstaller (MSI) kullanmaktır. Yönetilen kimliği kullanarak bir anahtar kasasına erişebilir ve sonra anahtar kasasından yetkili gizli dizileri ve şifreleme anahtarlarını alın.
 
-Azure kaynakları ve Key Vault için yönetilen kimliklerle ilgili belgeler, bu hizmetler hakkında ayrıntılı bilgi için kapsamlı bir kaynak içerir. Bu makalenin geri kalanı, Azure kaynaklarına erişmek için Veri Bilimi Sanal Makinesi'ndeki (DSVM) MSI ve Key Vault'un temel kullanımından geçer. 
+Azure kaynakları ve Key Vault için Yönetilen kimlikler hakkındaki belgeler, bu hizmetlerle ilgili ayrıntılı bilgi için kapsamlı bir kaynak içerir. Bu makalenin geri kalanında, Azure kaynaklarına erişmek için MSI ve Veri Bilimi Sanal Makinesi (DSVM) üzerinde Key Vault temel kullanımı gösterilmektedir. 
 
-## <a name="create-a-managed-identity-on-the-dsvm"></a>DSVM'de yönetilen bir kimlik oluşturma
+## <a name="create-a-managed-identity-on-the-dsvm"></a>DSVM 'de yönetilen kimlik oluşturma
 
 ```azurecli-interactive
 # Prerequisite: You have already created a Data Science VM in the usual way.
@@ -38,7 +38,7 @@ az vm assign-identity -g <Resource Group Name> -n <Name of the VM>
 az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
-## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Anahtar Kasa erişim izinlerini bir VM ilkesine atama
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>VM sorumlusuna Key Vault erişim izinleri atama
 
 ```azurecli-interactive
 # Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
@@ -47,7 +47,7 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
-## <a name="access-a-secret-in-the-key-vault-from-the-dsvm"></a>DSVM'den anahtar kasasında ki bir gizliye erişin
+## <a name="access-a-secret-in-the-key-vault-from-the-dsvm"></a>DSVM 'deki anahtar kasasındaki bir gizli anahtara erişme
 
 ```bash
 # Get the access token for the VM.
@@ -58,7 +58,7 @@ token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
-## <a name="access-storage-keys-from-the-dsvm"></a>Depolama anahtarlarına DSVM'den erişin
+## <a name="access-storage-keys-from-the-dsvm"></a>DSVM 'den depolama anahtarlarına erişme
 
 ```bash
 # Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
@@ -70,7 +70,7 @@ curl https://management.azure.com/subscriptions/<SubscriptionID>/resourceGroups/
 # Now you can access the data in the storage account from the retrieved storage account keys.
 ```
 
-## <a name="access-the-key-vault-from-python"></a>Python'dan anahtar kasasına erişin
+## <a name="access-the-key-vault-from-python"></a>Python 'dan anahtar kasasına erişme
 
 ```python
 from azure.keyvault import KeyVaultClient
@@ -99,7 +99,7 @@ secret = key_vault_client.get_secret(
 print("My secret value is {}".format(secret.value))
 ```
 
-## <a name="access-the-key-vault-from-azure-cli"></a>Azure CLI'den anahtar kasasına erişin
+## <a name="access-the-key-vault-from-azure-cli"></a>Azure CLı 'dan anahtar kasasına erişme
 
 ```azurecli-interactive
 # With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.

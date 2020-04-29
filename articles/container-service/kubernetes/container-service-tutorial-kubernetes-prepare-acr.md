@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - ACR Hazırla
+title: Kullanım DıŞı Azure Container Service öğreticisi-ACR hazırlama
 description: Azure Container Service öğreticisi - ACR Hazırlama
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 087530fd3834c4ec4620c087134bee0ed26bb6c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399791"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(AmortismanA Uğradı) Azure Kapsayıcı Kayıt Defteri'ni dağıtma ve kullanma
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>Kullanım DıŞı Azure Container Registry dağıtma ve kullanma
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz. Öğretici: Azure Kapsayıcı Kayıt Defteri'ni dağıtın ve kullanın.](../../aks/tutorial-kubernetes-prepare-acr.md)
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: dağıtma ve kullanma Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -95,7 +95,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Etiketlendikten sonra, işlemi doğrulamak için [docker görüntüleri](https://docs.docker.com/engine/reference/commandline/images/) çalıştırın.
+Etiketledikten sonra, işlemi doğrulamak için [Docker görüntülerini](https://docs.docker.com/engine/reference/commandline/images/) çalıştırın.
 
 ```bash
 docker images

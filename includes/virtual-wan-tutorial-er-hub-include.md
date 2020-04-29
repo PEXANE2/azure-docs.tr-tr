@@ -9,30 +9,30 @@ ms.date: 11/04/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6f910dbe91ed8e1cb65eefa6dfc48c72a689bf25
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73491595"
 ---
-1. Oluşturduğunuz Sanal WAN'ı bulun. Sanal WAN sayfasında, **Bağlantı** bölümü altında **Hub'ları**seçin.
-2. Hub'lar sayfasında, **sanal hub oluştur** sayfasını açmak için **+Yeni Hub'ı** seçin.
-3. Sanal **hub** sayfası Oluştur **Temelleri** sekmesinde aşağıdaki alanları tamamlayın:
+1. Oluşturduğunuz sanal WAN 'ı bulun. Sanal WAN sayfasında, **bağlantı** bölümünde, **hub**' ı seçin.
+2. Hub 'Lar sayfasında **+ yeni hub** ' ı seçerek **sanal hub oluştur** sayfasını açın.
+3. **Sanal hub** sayfası **temel bilgileri** Oluştur sekmesinde aşağıdaki alanları doldurun:
 
    ![Temel Bilgiler](./media/virtual-wan-tutorial-er-hub-include/hub1.png "Temel Bilgiler")
 
     **Proje ayrıntıları**
 
-   * Bölge (daha önce Konum olarak adlandırılır)
+   * Bölge (daha önce konum olarak adlandırılır)
    * Adı
-   * Hub özel adres alanı. Bir hub oluşturmak için minimum adres alanı /24'tür, bu da /25 ile /32 arasında değişen bir şeyin oluşturma sırasında hata oluşturacağını ima eder.
+   * Hub özel adres alanı. En küçük adres alanı bir hub oluşturmak için/24 ' tir. Bu,/25 ile/32 arasında herhangi bir aralığın oluşturulması sırasında bir hata üretecektir.
 4. **ExpressRoute sekmesini**seçin.
 
-5. **ExpressRoute** sekmesinde aşağıdaki alanları tamamlayın:
+5. **ExpressRoute** sekmesinde aşağıdaki alanları doldurun:
 
    ![ExpressRoute](./media/virtual-wan-tutorial-er-hub-include/hub2.png "ExpressRoute")
 
-   * **ExpressRoute** ağ geçidi oluşturmak için **Evet'i** seçin.
-   * Açılır geçitten **Ağ Geçidi ölçeği birimleri** değerini seçin.
-6. Doğrulamak için **Gözden Geçir + Oluştur'u** seçin.
-7. Hub'ı oluşturmak için **Oluştur'u** seçin. 30 dakika sonra **Hub'lar** sayfasındahub'ı görüntülemek için **yenileyin.** Kaynağa gitmek **için kaynağa** git'i seçin.
+   * **ExpressRoute** ağ geçidi oluşturmak için **Evet** ' i seçin.
+   * Açılan menüden **ağ geçidi ölçek birimleri** değerini seçin.
+6. Doğrulamak için **gözden geçir + oluştur** ' u seçin.
+7. Hub 'ı oluşturmak için **Oluştur** ' u seçin. 30 dakika **sonra hub 'ı bir sayfada görüntülemek** için **yenileyin** . Kaynağa gitmek için **Kaynağa Git** ' i seçin.

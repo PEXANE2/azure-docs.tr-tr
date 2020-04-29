@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68360268"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Öğretici: Azure DevTest Labs’de bir laboratuvara erişme
@@ -31,11 +31,11 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 > * VM’ye bağlanma
 > * Sanal makine talebini geri alma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="access-the-lab"></a>Laboratuvara erişme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Soldaki menüden **Tüm kaynaklar**’ı seçin. 
 3. Kaynak türü için **DevTest Labs**’i seçin. 
 4. Laboratuvarı seçin. 
@@ -61,12 +61,12 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
     Bir Linux VM'ye bağlanmak için VM’nin SSH ve/veya RDP erişiminin etkinleştirilmesi gerekir. RDP üzerinden Linux VM’ye bağlanma adımları için bkz. [Azure’da Linux VM’ye bağlanmak için Uzak Masaüstü’nü yükleme ve yapılandırma](../virtual-machines/linux/use-remote-desktop.md). 
 
     > [!NOTE]
-    > VM'iniz için Sanal Makine sayfasına girmenin başka yolları da vardır. Bunlardan bazıları şunlardır: 
+    > VM 'niz için sanal makine sayfasına ulaşmak üzere başka yollar vardır. Bunlardan bazıları şunlardır: 
     > 
-    > 1. Aboneliğinizdeki tüm VM'leri arayın. **Sanal Makine** sayfasına ulaşmak için VM'ler listesinde VM'nizi seçin.
-    > 2. Kaynak grubu için **Kaynak Grubu** sayfasına gidin. Ardından, **Sanal Makine** sayfasına ulaşmak için kaynak grubundaki kaynaklar listesinden VM'nizi seçin. 
+    > 1. Aboneliğinizdeki tüm VM 'Leri arayın. **Sanal makine** sayfasına ulaşmak için VM 'lerin listesinden VM 'nizi seçin.
+    > 2. Kaynak grubunun **kaynak grubu** sayfasına gidin. Sonra, **sanal makine** sayfasına ulaşmak için kaynak grubundaki kaynak listesinden VM 'nizi seçin. 
     >
-    > Bu seçenekleri kullanarak aldığınız **Sanal Makine** sayfasındaki araç çubuğundaki **Bağlan** düğmesini kullanmayın. Bunun yerine, bu makalede gösterildiği gibi **DevTest Labs** sayfasından **Sanal Makine** sayfasına gidin ve ardından araç çubuğundaki **Bağlan** düğmesini kullanın.
+    > Bu seçenekleri kullanarak aldığınız **sanal makine** sayfasındaki araç çubuğunda **Bağlan** düğmesini kullanmayın. Bunun yerine, bu makalede gösterildiği gibi **DevTest Labs** sayfasından **sanal makine** sayfasına gidin ve araç çubuğundaki **Bağlan** düğmesini kullanın.
 
 
 ## <a name="unclaim-the-vm"></a>Sanal makine talebini geri alma
@@ -75,11 +75,11 @@ Sanal makineyi kullandıktan sonra şu adımları izleyerek sanal makine talebin
 1. Sanal makine sayfasında, araç çubuğundan **Talebi Geri Al**’ı seçin. 
 
     ![Sanal makine talebini geri alma](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
-1. Sanal makine talebi geri alınmadan önce sanal makine kapatılır. Bildirimlerde bu işlemin durumunu görebilirsiniz.  
-3. Üstteki ekmek kırıntısı menüsünde laboratuvar adınızı tıklatarak DevTest Lab sayfasına geri gidin. 
+1. Sanal makine talebi geri alınmadan önce sanal makine kapatılır. Bu işlemin durumunu bildirimler ' de görebilirsiniz.  
+3. Üstteki içerik haritası menüsünde laboratuvar adına tıklayarak DevTest Lab sayfasına geri gidin. 
     
-    ![Laboratuvara geri dön](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. VM'yi en alttaki **Talep Edilebilir sanal makineler** listesinde gördüğünüzü doğrulayın.
+    ![Laboratuvara geri git](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. VM 'yi en alttaki **sanal makineler** listesi listesinden görtığınızdan emin olun.
 
     
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI komut dosyası örneği - Uygulama Ağ Geçidi ile Uygulama Hizmetini Tümleştir | Microsoft Dokümanlar
-description: Azure CLI komut dosyası örneği - Uygulama Ağ Geçidi ile Uygulama Hizmetini Tümleştir
+title: Azure CLı betik örneği-App Service Application Gateway ile tümleştirin | Microsoft Docs
+description: Azure CLı betik örneği-App Service Application Gateway ile tümleştirin
 services: appservice
 documentationcenter: appservice
 author: madsd
@@ -17,21 +17,21 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
 ms.openlocfilehash: ee5e50bdba0a798d335641dc8a0c7ae69832d8f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74979857"
 ---
-# <a name="integrate-app-service-with-application-gateway-using-cli"></a>CLI kullanarak Uygulama Hizmetini Uygulama Ağ Geçidi ile Tümleştir
+# <a name="integrate-app-service-with-application-gateway-using-cli"></a>CLı kullanarak Application Gateway App Service tümleştirme
 
-Bu örnek komut dosyası bir Azure App Service web uygulaması, bir Azure Sanal Ağı ve Bir Uygulama Ağ Geçidi oluşturur. Daha sonra web uygulamasının trafiğini yalnızca Uygulama Ağ Geçidi alt sonundan kaynaklanan olarak kısıtlar.
+Bu örnek betik, bir Azure App Service Web uygulaması, bir Azure sanal ağı ve bir Application Gateway oluşturur. Daha sonra, Web uygulaması için trafiği yalnızca Application Gateway alt ağından kaynaklanan şekilde kısıtlar.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, Azure CLI sürüm 2.0.74 veya sonrası gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz, Azure CLı sürüm 2.0.74 veya sonraki bir sürümü gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -41,20 +41,20 @@ CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, Azure CLI sürüm 2.0
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, bir kaynak grubu, App Service uygulaması, Cosmos DB ve ilgili tüm kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik bir kaynak grubu, App Service uygulaması, Cosmos DB ve tüm ilgili kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
 | [`az group create`](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az network vnet create`](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) | Sanal ağ oluşturur. |
 | [`az network public-ip create`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | Genel bir IP adresi oluşturur. |
-| [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Herkese açık bir IP adresinin ayrıntılarını gösterin. |
+| [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Genel bir IP adresinin ayrıntılarını gösterin. |
 | [`az appservice plan create`](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir App Service web uygulaması oluşturur. |
-| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Bir App Service web uygulamasının ayrıntılarını gösterin. |
-| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | App Service web uygulamasına erişim kısıtlaması ekler. |
-| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Bir Uygulama Ağ Geçidi oluşturur. |
-| [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Uygulama Ağ Geçidi HTTP ayarlarını güncelleştirir. |
+| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir App Service Web uygulaması oluşturur. |
+| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | App Service bir Web uygulamasının ayrıntılarını gösterin. |
+| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | App Service Web uygulamasına bir erişim kısıtlaması ekler. |
+| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Bir Application Gateway oluşturur. |
+| [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Application Gateway HTTP ayarlarını güncelleştirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

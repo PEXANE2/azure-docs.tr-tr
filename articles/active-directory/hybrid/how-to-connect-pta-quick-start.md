@@ -1,8 +1,8 @@
 ---
-title: Azure AD Geçiş Kimlik Doğrulaması - Quickstart | Microsoft Dokümanlar
-description: Bu makalede, Azure Etkin Dizin (Azure AD) Geçiş Kimlik Doğrulaması ile nasıl başlatılanın.
+title: Azure AD geçişli kimlik doğrulaması-hızlı başlangıç | Microsoft Docs
+description: Bu makalede Azure Active Directory (Azure AD) geçişli kimlik doğrulaması ile çalışmaya başlama açıklanmaktadır.
 services: active-directory
-keywords: Azure AD Connect Pass-through Authentication, yükleme Active Directory, Azure AD, SSO, Tek Oturum açma için gerekli bileşenler
+keywords: Azure AD Connect geçişli kimlik doğrulaması, Active Directory yüklemesi, Azure AD, SSO, çoklu oturum açma için gerekli bileşenler
 documentationcenter: ''
 author: billmath
 manager: daveba
@@ -16,162 +16,165 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082212"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229825"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory Pass-through Authentication: Quickstart
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
-## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD Geçiş Kimlik Doğrulaması dağıtma
+## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD geçişli kimlik doğrulaması dağıtma
 
-Azure Active Directory (Azure AD) Geçiş Kimlik Doğrulaması, kullanıcılarınızın aynı parolaları kullanarak hem şirket içinde hem de bulut tabanlı uygulamalarda oturum açmalarına olanak tanır. Geçiş Kimlik Doğrulama, parolalarını doğrudan şirket içi Active Directory'ye karşı doğrulayarak kullanıcıları işaretler.
-
->[!IMPORTANT]
->AD FS'den (veya diğer federasyon teknolojilerinden) Geçiş Kimlik Doğrulamasına geçiş yapıyorsunuz, [burada](https://aka.ms/adfstoPTADPDownload)yayınlanan ayrıntılı dağıtım kılavuzumuzu izlemenizi öneririz.
-
-Kiracınıza Geçiş Kimlik Doğrulaması dağıtmak için aşağıdaki yönergeleri izleyin:
-
-## <a name="step-1-check-the-prerequisites"></a>Adım 1: Ön koşulları kontrol edin
-
-Aşağıdaki ön koşulların yerinde olduğundan emin olun.
+Azure Active Directory (Azure AD) geçişli kimlik doğrulaması, kullanıcılarınızın aynı parolaları kullanarak hem şirket içi hem de bulut tabanlı uygulamalarda oturum açmasına olanak tanır. Geçişli kimlik doğrulaması, kullanıcıların parolalarını doğrudan şirket içi Active Directory karşı doğrulayarak imzalamalarını ister.
 
 >[!IMPORTANT]
->Güvenlik açısından bakıldığında, yöneticiler PTA aracısını çalıştıran sunucuya etki alanı denetleyicisi yatmaktadır gibi davranmalıdır.  PTA aracısı sunucuları, Saldırı yla Karşı [Etki Alanı Denetleyicilerini Güvence Altına Alma'da](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) belirtildiği gibi aynı doğrultuda sertleştirilmiş olmalıdır
+>AD FS (veya diğer Federasyon teknolojileri) üzerinden doğrudan kimlik doğrulamaya geçiş yapıyorsanız, [burada](https://aka.ms/adfstoPTADPDownload)yayımlanan ayrıntılı dağıtım kılavuzumuzu izlemenizi kesinlikle öneririz.
 
-### <a name="in-the-azure-active-directory-admin-center"></a>Azure Etkin Dizin yönetici merkezinde
+>[!NOTE]
+>Azure Kamu bulutu ile geçiş kimlik doğrulamasını dağıtıyorsanız, [Azure Kamu Için karma kimlik konularını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)görüntüleyin.
 
-1. Azure AD kiracınızda yalnızca buluta özel bir global yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olursa veya kullanılamıyorsa kiracınızın yapılandırmasını yönetebilirsiniz. Yalnızca [buluta özel genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımı tamamlamak, kiracınızın kilitsiz kaldığınızdan emin olmak için çok önemlidir.
-2. Azure AD kiracınıza bir veya daha fazla [özel alan adı](../active-directory-domains-add-azure-portal.md) ekleyin. Kullanıcılarınız bu alan adlarından biriyle oturum açabilir.
+Kiracınızda geçişli kimlik doğrulaması dağıtmak için aşağıdaki yönergeleri izleyin:
+
+## <a name="step-1-check-the-prerequisites"></a>1. Adım: önkoşulları denetleme
+
+Aşağıdaki önkoşulların yerinde olduğundan emin olun.
+
+>[!IMPORTANT]
+>Bir güvenlik açısından, Yöneticiler, PTA aracısını çalıştıran sunucuyu bir etki alanı denetleyicisi gibi kabul etmelidir.  PTA aracı sunucuları, [etki alanı denetleyicilerinin saldırıya karşı güvenliğini sağlamak](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) için özetlenen aynı satırlar üzerinde sağlamlaştırılmış olmalıdır
+
+### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory Yönetim merkezinde
+
+1. Azure AD kiracınızda yalnızca bulutta yer alan bir genel yönetici hesabı oluşturun. Bu şekilde, şirket içi hizmetleriniz başarısız olması veya kullanılamaz hale gelmesi için kiracınızın yapılandırmasını yönetebilirsiniz. [Yalnızca bulut genel yönetici hesabı ekleme](../active-directory-users-create-azure-portal.md)hakkında bilgi edinin. Bu adımın tamamlanması, kiracınızdan kilitlenmemesini sağlamak açısından önemlidir.
+2. Azure AD kiracınıza bir veya daha fazla [özel etki alanı adı](../active-directory-domains-add-azure-portal.md) ekleyin. Kullanıcılarınız bu etki alanı adlarından biriyle oturum açabilir.
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
-1. Azure AD Connect'i çalıştırmak için Windows Server 2012 R2 veya daha sonra çalışan bir sunucu tanımlayın. Zaten etkinleştirildiyse, [sunucuda TLS 1.2'yi etkinleştirin.](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect) Sunucuyu, parolalarını doğrulamanız gereken kullanıcılarla aynı Etkin Dizin ormanına ekleyin.
-2. Azure [AD Connect'in en son sürümünü](https://www.microsoft.com/download/details.aspx?id=47594) önceki adımda tanımlanan sunucuya yükleyin. Azure AD Connect zaten çalışıyorsa, sürümün 1.1.750.0 veya daha sonra olduğundan emin olun.
+1. Azure AD Connect çalıştırmak için Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu belirler. Henüz etkinleştirilmemişse, [sunucuda TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)' ı etkinleştirin. Parolasını doğrulamanız gereken kullanıcılarla aynı Active Directory ormanına ekleyin.
+2. Önceki adımda tanımlanan sunucuya [Azure AD Connect en son sürümünü](https://www.microsoft.com/download/details.aspx?id=47594) yükler. Zaten Azure AD Connect çalışıyorsa, sürümün 1.1.750.0 veya üzeri olduğundan emin olun.
 
     >[!NOTE]
-    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0 sürümlerinde parola karma eşitlemeyle ilgili bir sorun vardır. Parola _don't_ karma senkronizasyonunu Pass-through Authentication ile birlikte kullanmak istemiyorsanız, [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)okuyun.
+    >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız_ [Azure AD Connect sürüm notlarını](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)okuyun.
 
-3. Bağımsız Kimlik Doğrulama Aracıları çalıştırabileceğiniz bir veya daha fazla ek sunucu (TLS 1.2 etkinken Windows Server 2012 R2 veya daha sonra çalıştırarak) tanımlayın. Bu ek sunucular, oturum açma isteklerinin yüksek kullanılabilirliğini sağlamak için gereklidir. Sunucuları, parolalarını doğrulamanız gereken kullanıcılarla aynı Etkin Dizin ormanına ekleyin.
+3. Tek başına kimlik doğrulama aracılarını çalıştırabileceğiniz bir veya daha fazla ek sunucuyu (TLS 1,2 etkin Windows Server 2012 R2 veya üstünü çalıştıran) belirler. Bu ek sunucular, oturum açma isteklerinin yüksek kullanılabilirliğini sağlamak için gereklidir. Parolaları doğrulamanız gereken kullanıcılarla aynı Active Directory ormanına ekleyin.
 
     >[!IMPORTANT]
-    >Üretim ortamlarında, kiracınızda çalışan en az 3 Kimlik Doğrulama Aracısı'na sahip olduğunuzu öneririz. Kiracı başına 40 Kimlik Doğrulama Aracısı sistem sınırı vardır. Ve en iyi yöntem olarak, Kimlik Doğrulama Aracıları çalıştıran tüm sunucuları Katman 0 sistemleri olarak ele abakın [(bkz. başvuru).](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+    >Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
-4. Sunucularınız ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
-   - Kimlik Doğrulama Aracıları'nın Azure AD'ye aşağıdaki bağlantı noktaları üzerinden *giden* isteklerde bulunabilmesini sağlayın:
+4. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
+   - Kimlik doğrulama aracılarının Azure AD 'ye *giden* istekleri aşağıdaki bağlantı noktaları üzerinden yapabildiğinden emin olun:
 
      | Bağlantı noktası numarası | Nasıl kullanılır? |
      | --- | --- |
-     | **80** | TLS/SSL sertifikasını doğrularken sertifika iptal listelerini (CRLs) karşıdan yükler |
-     | **443** | Hizmetle ilgili tüm giden iletişimi işler |
-     | **8080** (isteğe bağlı) | Kimlik doğrulama aracıları, bağlantı noktası 443 kullanılamıyorsa, 8080 portu üzerinden her on dakikada bir durumlarını bildirir. Bu durum Azure AD portalında görüntülenir. Port 8080 kullanıcı oturum açma için _kullanılmaz._ |
+     | **80** | TLS/SSL sertifikası doğrulanırken sertifika iptal listelerini (CRL 'Ler) indirir |
+     | **443** | Hizmetle tüm giden iletişimi işler |
+     | **8080** (isteğe bağlı) | Bağlantı noktası 443 kullanılamıyorsa, kimlik doğrulama aracıları, 8080 numaralı bağlantı noktası üzerinden her on dakikada bir durum bildirir. Bu durum Azure AD portalında görüntülenir. 8080 numaralı bağlantı noktası Kullanıcı oturum açma işlemleri _için kullanılmaz._ |
      
-     Güvenlik duvarınız kuralları oluşturan kullanıcılara göre zorluyorsa, bu bağlantı noktalarını ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafiğe açın.
-   - Güvenlik duvarınız veya proxy'niz DNS'nin beyaz listeye alınmasına izin veriyorsa, ** \*.msappproxy.net** ve ** \*.servicebus.windows.net**bağlantılarını ekleyin. Değilse, haftalık olarak güncelleştirilen [Azure veri merkezi IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişin.
-   - Kimlik Doğrulama Aracılarınızın ilk kayıt için **login.windows.net** ve **login.microsoftonline.com** erişimi gerekir. Bu URL'ler için de güvenlik duvarınızı açın.
-   - Sertifika doğrulama için aşağıdaki URL'lerin engelini kaldırın: **mscrl.microsoft.com:80,** **crl.microsoft.com:80,** **ocsp.msocsp.com:80**ve **\.www microsoft.com:80.** Bu URL'ler diğer Microsoft ürünleriyle sertifika doğrulama için kullanıldığından, bu URL'lerin engelini kaldırmış olabilirsiniz.
+     Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
+   - Güvenlik duvarınız veya proxy DNS beyaz listeye izin veriyorsa, ** \*. msappproxy.net** ve ** \*. ServiceBus.Windows.net**öğesine bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
+   - Kimlik doğrulama aracılarınızın ilk kayıt için **login.Windows.net** ve **login.microsoftonline.com** 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
+   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: **mscrl.Microsoft.com:80**, **CRL.Microsoft.com:80**, **OCSP.msocsp.com:80**ve **\.www Microsoft.com:80**. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanıldığından, bu URL 'Lerin engeli kaldırılmış olabilir.
 
-### <a name="azure-government-cloud-prerequisite"></a>Azure Kamu bulutön koşulu
-Adım 2 ile Azure AD Connect üzerinden Geçiş Kimlik Doğrulaması etkinleştirmeden önce, Azure portalından PTA aracısının en son sürümünden indirin.  Aracınızın **x.x.xxx.x** veya daha sonraki sürümler olduğundan emin olmanız gerekir.  Aracınızın doğrulama için [yükseltme kimlik doğrulama aracılarına](how-to-connect-pta-upgrade-preview-authentication-agents.md) bakın
+### <a name="azure-government-cloud-prerequisite"></a>Azure Kamu Bulutu önkoşulu
+Adım 2 ile Azure AD Connect aracılığıyla doğrudan kimlik doğrulamayı etkinleştirmeden önce, Azure portal PTA aracısının en son sürümünü indirin.  Aracınızın 1.5.1742.0 sürümleri olduğundan emin olmanız gerekir **.** üzeri için derlenmiş olmalıdır.  Aracınızı doğrulamak için bkz. [yükseltme kimlik doğrulama aracıları](how-to-connect-pta-upgrade-preview-authentication-agents.md)
 
-Aracının en son sürümünden sonra, Azure AD Connect üzerinden Geçiş Kimlik Doğrulaması'nı yapılandırmak için aşağıdaki yönergeleri uygulayın.
+Aracının en son sürümünü indirdikten sonra, Azure AD Connect aracılığıyla doğrudan kimlik doğrulamasını yapılandırmak için aşağıdaki yönergelerle devam edin.
 
-## <a name="step-2-enable-the-feature"></a>Adım 2: Özelliği etkinleştirme
+## <a name="step-2-enable-the-feature"></a>2. Adım: özelliği etkinleştirme
 
-[Azure AD Connect](whatis-hybrid-identity.md)üzerinden Geçiş Kimlik Doğrulaması'nı etkinleştirin.
-
->[!IMPORTANT]
->Azure AD Connect birincil veya evreleme sunucusunda Geçiş Kimlik Doğrulaması'nı etkinleştirebilirsiniz. Birincil sunucudan etkinleştirmeniz önerilir. Gelecekte bir Azure AD Connect evreleme sunucusu kuruyorsanız, oturum açma seçeneği olarak Geçiş Kimlik Doğrulama'yı seçmeye devam **etmelisiniz;** başka bir seçenek seçmek, kiracıdaki Geçiş Kimlik Doğrulaması'nı **devre dışı** bırakırsa ve birincil sunucudaki ayarı geçersiz kılar.
-
-Azure AD Connect'i ilk kez yüklüyorsanız, [özel yükleme yolunu](how-to-connect-install-custom.md)seçin. Kullanıcı **oturum açma** sayfasında, **Oturum Açma yöntemi**olarak Geçiş Kimlik **Doğrulaması'nı** seçin. Başarılı bir şekilde tamamlandığında, Azure AD Connect ile aynı sunucuya bir Geçiş Kimlik Doğrulama Aracısı yüklenir. Ayrıca, kiracınızda Geçiş Kimlik Doğrulaması özelliği etkinleştirilir.
-
-![Azure AD Connect: Kullanıcı oturum açma](./media/how-to-connect-pta-quick-start/sso3.png)
-
-[Ekspres yüklemeyi](how-to-connect-install-express.md) veya [özel yükleme](how-to-connect-install-custom.md) yolunu kullanarak Azure AD Connect'i zaten yüklediyseniz, Azure AD Connect'te kullanıcı **oturum açma** görevini değiştir'i seçin ve **ardından İleri'yi**seçin. Ardından oturum açma yöntemi olarak **Geçiş Kimlik Doğrulaması'nı** seçin. Başarılı bir şekilde tamamlandığında, Azure AD Connect ile aynı sunucuya bir Geçiş Kimlik Doğrulama Aracısı yüklenir ve özellik kiracınızda etkinleştirilir.
-
-![Azure AD Bağlantısı: Kullanıcı oturum açma](./media/how-to-connect-pta-quick-start/changeusersignin.png)
+[Azure AD Connect](whatis-hybrid-identity.md)aracılığıyla doğrudan kimlik doğrulamasını etkinleştirin.
 
 >[!IMPORTANT]
->Geçiş Kimlik Doğrulaması kiracı düzeyinde bir özelliktir. Bunu açmak, kiracınızdaki _tüm_ yönetilen etki alanlarındaki kullanıcılar için oturum açma'yı etkiler. Active Directory Federation Services 'dan (AD FS) Geçiş Kimlik Doğrulaması'na geçiyorsanız, AD FS altyapınızı kapatmadan önce en az 12 saat beklemeniz gerekir. Bu bekleme süresi, kullanıcıların geçiş sırasında Exchange ActiveSync'de oturum açmaya devam edebilmelerini sağlamak içindir. AD FS'den Geçiş Kimlik Doğrulamasına geçiş konusunda daha fazla yardım [için, burada](https://aka.ms/adfstoptadpdownload)yayınlanan ayrıntılı dağıtım planımıza göz atın.
+>Azure AD Connect birincil veya hazırlama sunucusu üzerinde doğrudan kimlik doğrulamasını etkinleştirebilirsiniz. Birincil sunucudan etkinleştirmeniz önemle önerilir. Gelecekte bir Azure AD Connect hazırlama sunucusu ayarlıyorsanız, oturum açma seçeneği olarak geçişli kimlik doğrulaması ' nı seçerek devam etmeniz **gerekir** ; başka bir seçenek belirlendiğinde, Kiracıdaki geçişli kimlik doğrulaması **devre dışı** bırakılır ve birincil sunucudaki ayar geçersiz kılınır.
 
-## <a name="step-3-test-the-feature"></a>Adım 3: Özelliği test edin
+İlk kez Azure AD Connect yüklüyorsanız, [özel yükleme yolunu](how-to-connect-install-custom.md)seçin. **Kullanıcı oturum açma** sayfasında, **oturum açma yöntemi**olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, Azure AD Connect ile aynı sunucuya bir geçişli kimlik doğrulama Aracısı yüklenir. Ek olarak, kiracınızda doğrudan kimlik doğrulama özelliği etkinleştirilmiştir.
 
-Geçiş Kimlik Doğrulaması'nı doğru şekilde etkinleştirdiğinizi doğrulamak için aşağıdaki yönergeleri izleyin:
+![Azure AD Connect: Kullanıcı oturumu açma](./media/how-to-connect-pta-quick-start/sso3.png)
 
-1. Kiracınız için genel yönetici kimlik bilgileriyle [Azure Active Directory yönetici merkezinde](https://aad.portal.azure.com) oturum açın.
-2. Sol bölmede **Azure Etkin Dizini'ni** seçin.
-3. **Azure AD Connect'i**seçin.
-4. **Geçiş kimlik doğrulama** özelliğinin **Etkin**olarak göründüğünü doğrulayın.
-5. **Geçiş kimlik doğrulaması'nı**seçin. **Geçiş kimlik doğrulama** bölmesi, Kimlik Doğrulama Aracılarınızın yüklendiği sunucuları listeler.
+Azure AD Connect, [hızlı yükleme](how-to-connect-install-express.md) veya [özel yükleme](how-to-connect-install-custom.md) yolunu kullanarak zaten yüklediyseniz, Azure AD Connect **Kullanıcı oturum açma görevini Değiştir** ' i seçin ve ardından **İleri**' yi seçin. Ardından oturum açma yöntemi olarak **geçişli kimlik doğrulaması** ' nı seçin. Başarılı bir şekilde tamamlandığında, bir geçişli kimlik doğrulama Aracısı, Azure AD Connect aynı sunucuya yüklenir ve bu özellik kiracınızda etkinleştirilir.
 
-![Azure Active Directory yönetici merkezi: Azure AD Connect bölmesi](./media/how-to-connect-pta-quick-start/pta7.png)
-
-![Azure Active Directory yönetici merkezi: Geçiş Kimlik Doğrulama bölmesi](./media/how-to-connect-pta-quick-start/pta8.png)
-
-Bu aşamada, kiracınızdaki tüm yönetilen etki alanlarından kullanıcılar Geçiş Kimlik Doğrulaması'nı kullanarak oturum açabilir. Ancak, federe etki alanlarından kullanıcılar, daha önce yapılandırdığınız AD FS'yi veya başka bir federasyon sağlayıcısını kullanarak oturum açmaya devam eder. Bir etki alanını federeden yönetilene dönüştürürseniz, bu etki alanından tüm kullanıcılar Geçiş Kimlik Doğrulaması'nı kullanarak otomatik olarak oturum açmaya başlar. Geçiş Kimlik Doğrulama özelliği yalnızca bulut kullanıcıları etkilemez.
-
-## <a name="step-4-ensure-high-availability"></a>Adım 4: Yüksek kullanılabilirlik sağlayın
-
-Geçiş Kimlik Doğrulaması'nı bir üretim ortamında dağıtmayı planlıyorsanız, ek bağımsız Kimlik Doğrulama Aracıları yüklemeniz gerekir. Bu Authentication Agent(lar)'ı, Azure AD Connect çalıştıran sunucu(lar) _dışında_ sunucuya yükleyin. Bu kurulum, kullanıcı oturum açma istekleri için yüksek kullanılabilirlik sağlar.
+![Azure AD Connect: Kullanıcı oturumunu değiştirme](./media/how-to-connect-pta-quick-start/changeusersignin.png)
 
 >[!IMPORTANT]
->Üretim ortamlarında, kiracınızda çalışan en az 3 Kimlik Doğrulama Aracısı'na sahip olduğunuzu öneririz. Kiracı başına 40 Kimlik Doğrulama Aracısı sistem sınırı vardır. Ve en iyi yöntem olarak, Kimlik Doğrulama Aracıları çalıştıran tüm sunucuları Katman 0 sistemleri olarak ele abakın [(bkz. başvuru).](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)
+>Geçişli kimlik doğrulaması, kiracı düzeyinde bir özelliktir. ' In açık olması, kiracınızdaki _Tüm_ yönetilen etki alanlarında bulunan kullanıcılar için oturum açma özelliğini etkiler. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) 'den geçişli kimlik doğrulamaya geçiş yapıyorsanız AD FS altyapınızı kapatmadan önce en az 12 saat beklemeniz gerekir. Bu bekleme süresi, kullanıcıların geçiş sırasında Exchange ActiveSync 'de oturum açabildiğinden emin olmak için kullanılır. AD FS 'ten geçişli kimlik doğrulamaya geçiş hakkında daha fazla yardım için, [burada](https://aka.ms/adfstoptadpdownload)yayımlanan ayrıntılı dağıtım planına göz atın.
 
-Birden çok Geçiş Kimlik Doğrulama Aracısı yüklemek, Kimlik Doğrulama Aracıları arasında yüksek kullanılabilirlik sağlar, ancak belirleyici yük dengelemesini sağlar. Kiracınız için kaç Kimlik Doğrulama Aracısı'na ihtiyacınız olduğunu belirlemek için, kiracınızda görmeyi beklediğiniz en yüksek ve ortalama oturum açma istekleri yükünü göz önünde bulundurun. Bir ölçüt olarak, tek bir Kimlik Doğrulama Aracısı standart 4 çekirdekli işlemci, 16 GB RAM sunucusunda saniyede 300 ila 400 kimlik doğrulaması işleyebilir.
+## <a name="step-3-test-the-feature"></a>3. Adım: özelliği test etme
+
+Doğrudan kimlik doğrulamayı doğru şekilde etkinleştirdiğinizi doğrulamak için aşağıdaki yönergeleri izleyin:
+
+1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) kiracınızın genel yönetici kimlik bilgileriyle oturum açın.
+2. Sol bölmedeki **Azure Active Directory** seçin.
+3. **Azure AD Connect**seçin.
+4. **Geçişli kimlik doğrulaması** özelliğinin **etkin**olarak göründüğünü doğrulayın.
+5. **Doğrudan kimlik doğrulaması**' nı seçin. **Geçişli kimlik doğrulaması** bölmesi, kimlik doğrulama aracılarınızın yüklendiği sunucuları listeler.
+
+![Azure Active Directory Yönetim Merkezi: Azure AD Connect bölmesi](./media/how-to-connect-pta-quick-start/pta7.png)
+
+![Azure Active Directory Yönetim Merkezi: geçişli kimlik doğrulama bölmesi](./media/how-to-connect-pta-quick-start/pta8.png)
+
+Bu aşamada, kiracınızdaki tüm yönetilen etki alanlarından kullanıcılar doğrudan kimlik doğrulaması kullanarak oturum açabilir. Ancak, Federasyon etki alanlarının kullanıcıları daha önce yapılandırdığınız AD FS veya başka bir Federasyon sağlayıcısı kullanarak oturum açmaya devam eder. Bir etki alanını federe 'dan yönetilene dönüştürürseniz, bu etki alanındaki tüm kullanıcılar doğrudan kimlik doğrulaması kullanarak oturum açmaya başlar. Doğrudan kimlik doğrulama özelliği yalnızca bulutta kullanıcıları etkilemez.
+
+## <a name="step-4-ensure-high-availability"></a>4. Adım: yüksek kullanılabilirlik sağlayın
+
+Doğrudan kimlik doğrulamayı bir üretim ortamında dağıtmayı planlıyorsanız, ek bağımsız kimlik doğrulama aracılarını yüklemelisiniz. Bu kimlik doğrulama aracılarını, Azure AD Connect çalıştıran sunucu (ler) i _yerine sunucuya_ yükler. Bu kurulum, Kullanıcı oturum açma istekleri için yüksek kullanılabilirlik sağlar.
+
+>[!IMPORTANT]
+>Üretim ortamlarında, kiracınızda en az 3 kimlik doğrulama aracınız çalışıyor olması önerilir. Kiracı başına 40 kimlik doğrulama aracısından oluşan bir sistem limiti vardır. En iyi yöntem olarak, kimlik doğrulama aracılarını çalıştıran tüm sunucuları katman 0 sistemleri olarak değerlendirin (bkz. [başvuru](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+
+Birden çok geçişli kimlik doğrulama Aracısı yükleme, yüksek kullanılabilirlik sağlar, ancak kimlik doğrulama aracıları arasında belirleyici yük dengeleyiciyi sağlamaz. Kiracınız için kaç kimlik doğrulama Aracısı gerektiğini öğrenmek üzere kiracınızda görmeyi düşündüğünüz oturum açma isteklerinin tepe ve ortalama yükünü göz önünde bulundurun. Bir kıyaslama olarak, tek bir kimlik doğrulama Aracısı standart 4 çekirdekli bir CPU, 16 GB RAM sunucusunda 300 ila 400 kimlik doğrulaması işleyebilir.
 
 Ağ trafiğini tahmin etmek için aşağıdaki boyutlandırma kılavuzunu kullanın:
-- Her isteğin taşıma yükü boyutu (0,5K + 1K * num_of_agents) bayt, yani Azure AD'den Kimlik Doğrulama Aracısı'na veri. Burada "num_of_agents", kiracınızda kayıtlı Kimlik Doğrulama Aracılarının sayısını gösterir.
-- Her yanıtın yük boyutu 1K bayt, yani Kimlik Doğrulama Aracısı'ndan Azure AD'ye kadar olan verilerdir.
+- Her isteğin yük boyutu (0,5 K + 1K * num_of_agents) bayt, diğer bir deyişle, Azure AD 'den kimlik doğrulama aracısına kadar olan veriler vardır. Burada, "num_of_agents" kiracınızda kayıtlı kimlik doğrulama aracılarının sayısını gösterir.
+- Her yanıtın yük boyutu 1K bayt, diğer bir deyişle, kimlik doğrulama aracısından Azure AD 'ye ait veriler vardır.
 
-Çoğu müşteri için, yüksek kullanılabilirlik ve kapasite için toplam üç Kimlik Doğrulama Aracısı yeterlidir. Oturum açma gecikmesini iyileştirmek için etki alanı denetleyicilerinize yakın Kimlik Doğrulama Aracıları yüklemeniz gerekir.
+Çoğu müşteri için toplamda üç kimlik doğrulama Aracısı yüksek kullanılabilirlik ve kapasite için yeterlidir. Oturum açma gecikmesini geliştirmek için, kimlik doğrulama aracılarını etki alanı denetleyicilerinize yakın bir şekilde yüklemelisiniz.
 
-Başlangıç olarak, Kimlik Doğrulama Aracısı yazılımını indirmek için aşağıdaki yönergeleri izleyin:
+Başlamak için, kimlik doğrulama Aracısı yazılımını indirmek için aşağıdaki yönergeleri izleyin:
 
-1. Kimlik Doğrulama Aracısı'nın (sürüm 1.5.193.0 veya sonraki sürüm) en son sürümünü indirmek için, kiracınızın genel yönetici kimlik bilgileriyle [Azure Active Directory yönetici merkezinde](https://aad.portal.azure.com) oturum açın.
-2. Sol bölmede **Azure Etkin Dizini'ni** seçin.
-3. **Azure AD Connect'i**seçin, Geçiş **kimlik doğrulaması'nı**seçin ve ardından **Aracıyı İndir'i**seçin.
-4. İndirme düğmesini **& kabul terimlerini** seçin.
+1. Kimlik doğrulama aracısının en son sürümünü (sürüm 1.5.193.0 veya üzeri) indirmek için, kiracınızın genel yönetici kimlik bilgilerinizle [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
+2. Sol bölmedeki **Azure Active Directory** seçin.
+3. **Azure AD Connect**' yi seçin, **geçişli kimlik doğrulaması**' nı seçin ve ardından **aracıyı indir**' i seçin.
+4. **Koşulları kabul & indir** düğmesini seçin.
 
-![Azure Active Directory yönetici merkezi: Kimlik Doğrulama Aracısı düğmesini indir](./media/how-to-connect-pta-quick-start/pta9.png)
+![Azure Active Directory Yönetim Merkezi: kimlik doğrulama aracısını Indir düğmesi](./media/how-to-connect-pta-quick-start/pta9.png)
 
-![Azure Active Directory yönetici merkezi: Aracı bölmesine indirin](./media/how-to-connect-pta-quick-start/pta10.png)
+![Azure Active Directory Yönetim Merkezi: aracı bölmesini Indir](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->Ayrıca doğrudan [Authentication Agent yazılımı indirebilirsiniz.](https://aka.ms/getauthagent) Kimlik Doğrulama Aracısı'nı yüklemeden _önce_ gözden geçirin ve kabul [edin.](https://aka.ms/authagenteula)
+>Ayrıca [, kimlik doğrulama Aracısı yazılımını doğrudan indirebilirsiniz](https://aka.ms/getauthagent). Yükleme _yapmadan önce_ kimlik doğrulama aracısının [hizmet koşullarını](https://aka.ms/authagenteula) gözden geçirin ve kabul edin.
 
-Bağımsız bir Kimlik Doğrulama Aracısı dağıtmanın iki yolu vardır:
+Tek başına kimlik doğrulama aracısını dağıtmanın iki yolu vardır:
 
-İlk olarak, indirilen Kimlik Doğrulama Aracısını çalıştırarak ve istendiğinde kiracınızın genel yönetici kimlik bilgilerini sağlayarak etkileşimli olarak yapabilirsiniz.
+İlk olarak, yalnızca indirilen kimlik doğrulama Aracısı yürütülebilir dosyasını çalıştırarak ve istendiğinde kiracınızın genel yönetici kimlik bilgilerini sağlayarak bunu etkileşimli olarak yapabilirsiniz.
 
-İkinci olarak, katılımsız bir dağıtım komut dosyası oluşturabilir ve çalıştırabilirsiniz. Bu, aynı anda birden çok Kimlik Doğrulama Aracısı dağıtmak veya kullanıcı arabirimi etkin olmayan Windows sunucularına Kimlik Doğrulama Aracıları yüklemek veya Uzak Masaüstü ile erişemediğiniz zaman kullanışlıdır. Bu yaklaşımın nasıl kullanılacağına ilişkin talimatlar aşağıda veda edilmiştir:
+İkincisi, katılımsız dağıtım betiği oluşturup çalıştırabilirsiniz. Bu, aynı anda birden fazla kimlik doğrulama Aracısı dağıtmak veya Kullanıcı arabirimi etkinleştirilmemiş olan veya uzak masaüstü ile erişemeyen Windows Server 'lar üzerinde kimlik doğrulama aracıları yüklemek istediğinizde yararlıdır. Bu yaklaşımın nasıl kullanılacağına ilişkin yönergeler aşağıda verilmiştir:
 
-1. Kimlik Doğrulama Aracısı yüklemek için `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`aşağıdaki komutu çalıştırın: .
-2. Kimlik Doğrulama Aracısını Windows PowerShell'i kullanarak hizmetimize kaydedebilirsiniz. Kiracınız için genel `$cred` yönetici kullanıcı adı ve parola içeren bir PowerShell Kimlik Bilgileri nesnesi oluşturun. * \<Kullanıcı\> adı* ve * \<parolayerine\>* aşağıdaki komutu çalıştırın:
+1. Kimlik doğrulama Aracısı yüklemek için şu komutu çalıştırın: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
+2. Windows PowerShell 'i kullanarak hizmetimizi kullanarak kimlik doğrulama aracısını kaydedebilirsiniz. Kiracınız için genel yönetici `$cred` Kullanıcı adını ve parolasını Içeren bir PowerShell kimlik bilgileri nesnesi oluşturun. Şu komutu çalıştırarak * \<Kullanıcı adı\> * ve * \<parolayı\>* değiştirin:
 
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $SecurePassword
-3. **C:\Program Files\Microsoft Azure AD Connect Authentication Agent'a** `$cred` gidin ve oluşturduğunuz nesneyi kullanarak aşağıdaki komut dosyasını çalıştırın:
+3. **C:\Program Files\Microsoft Azure AD Connect kimlik doğrulama aracısına** gidin ve oluşturduğunuz `$cred` nesneyi kullanarak aşağıdaki betiği çalıştırın:
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
->Sanal Makine'ye bir Kimlik Doğrulama Aracısı yüklenmişse, sanal makineyi başka bir Kimlik Doğrulama Aracısı kurmak için klonlayamazsınız. Bu yöntem **desteklenmez.**
+>Bir sanal makinede bir kimlik doğrulama Aracısı yüklüyse, başka bir kimlik doğrulama Aracısı kurmak için sanal makineyi klonlamamanız gerekir. Bu yöntem **desteklenmiyor**.
 
-## <a name="step-5-configure-smart-lockout-capability"></a>Adım 5: Akıllı Kilitleme özelliğini yapılandırın
+## <a name="step-5-configure-smart-lockout-capability"></a>5. Adım: akıllı kilitleme özelliğini yapılandırma
 
-Smart Lockout, kullanıcılarınızın parolalarını tahmin etmeye çalışan veya içeri girmek için kaba kuvvet yöntemlerini kullanan kötü aktörleri kilitlemeye yardımcı olur. Azure AD'deki Akıllı Kilitleme ayarlarını ve/veya şirket içi Active Directory'de uygun kilitleme ayarlarını yapılandırarak, saldırılar Active Directory'ye ulaşmadan önce filtrelenebilir. Kullanıcı hesaplarınızı korumak için kiracınızdaki Akıllı Kilit ayarlarının nasıl yapılandırılabildiğini öğrenmek için [bu makaleyi](../authentication/howto-password-smart-lockout.md) okuyun.
+Akıllı kilitleme, kullanıcılarınızın parolalarını tahmin etmeye çalışan kötü aktörlerin kilitlenmeye veya alma için deneme yanılma yöntemlerinin kullanılmasına yardımcı olur. Azure AD 'de akıllı kilitleme ayarlarını ve/veya şirket içi Active Directory uygun kilitleme ayarlarını yapılandırarak saldırıları Active Directory erişmeden önce bu saldırılara karşı filtrelenebilir. Kullanıcı hesaplarınızı korumak üzere kiracınızda akıllı kilitleme ayarlarını yapılandırma hakkında daha fazla bilgi edinmek için [Bu makaleyi](../authentication/howto-password-smart-lockout.md) okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [AD FS'den Geçiş Kimlik Doğrulamasına geçiş](https://aka.ms/adfstoptadp) - AD FS'den (veya diğer federasyon teknolojilerinden) Geçiş Kimlik Doğrulaması'na geçiş için ayrıntılı bir kılavuz.
-- [Akıllı Kilitleme](../authentication/howto-password-smart-lockout.md): Kullanıcı hesaplarını korumak için kiracınızdaki Akıllı Kilitleme özelliğini nasıl yapılandırılabildiğini öğrenin.
-- [Geçerli sınırlamalar](how-to-connect-pta-current-limitations.md): Geçiş Kimlik Doğrulaması ile hangi senaryoların desteklenmediğini ve hangilerinin desteklenmediğini öğrenin.
-- [Teknik derin dalış](how-to-connect-pta-how-it-works.md): Geçiş Kimlik Doğrulama özelliğinin nasıl çalıştığını anlayın.
-- [Sık sorulan sorular](how-to-connect-pta-faq.md): Sık sorulan soruların yanıtlarını bulun.
-- [Sorun Giderme](tshoot-connect-pass-through-authentication.md): Geçiş Kimlik Doğrulama özelliğiyle ilgili sık karşılaşılan sorunları nasıl çözeceğinizi öğrenin.
-- [Güvenlik derin dalış](how-to-connect-pta-security-deep-dive.md): Pass-through Kimlik Doğrulama özelliği hakkında teknik bilgi alın.
-- [Azure AD Sorunsuz SSO](how-to-connect-sso.md): Bu tamamlayıcı özellik hakkında daha fazla bilgi edinin.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Yeni özellik isteklerini dosyalamak için Azure Active Directory Forum'u kullanın.
+- [AD FS 'den geçişli kimlik doğrulamaya geçiş](https://aka.ms/adfstoptadp) -AD FS (veya diğer Federasyon teknolojileri) üzerinden doğrudan kimlik doğrulamaya geçiş yapmak için ayrıntılı kılavuz.
+- [Akıllı kilitleme](../authentication/howto-password-smart-lockout.md): Kullanıcı hesaplarını korumak için kiracınızda akıllı kilitleme özelliğini nasıl yapılandıracağınızı öğrenin.
+- [Geçerli sınırlamalar](how-to-connect-pta-current-limitations.md): doğrudan kimlik doğrulamasıyla hangi senaryoların desteklendiğini ve hangilerinin hangilerinin desteklenmediğini öğrenin.
+- [Teknik derinlemesine](how-to-connect-pta-how-it-works.md)bakış: geçişli kimlik doğrulama özelliğinin nasıl çalıştığını anlayın.
+- [Sık sorulan sorular](how-to-connect-pta-faq.md): sık sorulan soruların yanıtlarını bulun.
+- [Sorun giderme](tshoot-connect-pass-through-authentication.md): doğrudan kimlik doğrulama özelliğiyle yaygın sorunları çözmeyi öğrenin.
+- [Güvenlik derinlemesine](how-to-connect-pta-security-deep-dive.md)bakış: doğrudan kimlik doğrulama özelliği hakkında teknik bilgiler alın.
+- [Azure AD sorunsuz SSO](how-to-connect-sso.md): Bu tamamlayıcı özellik hakkında daha fazla bilgi edinin.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): yeni özellik isteklerini dosya olarak yüklemek Için Azure Active Directory forumunu kullanın.

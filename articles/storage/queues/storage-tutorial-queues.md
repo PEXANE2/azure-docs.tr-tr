@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure depolama kuyruklarıyla çalışın - Azure Depolama
-description: Kuyruk oluşturmak ve ileti eklemek, almak ve silmek için Azure Kuyruk hizmetini nasıl kullanacağınıza ilişkin bir öğretici.
+title: Öğretici-Azure depolama kuyrukları ile çalışma-Azure depolama
+description: Azure Kuyruk hizmeti kullanarak kuyruklar oluşturma ve ileti ekleme, alma ve silme hakkında bir öğretici.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 04/24/2019
@@ -9,51 +9,51 @@ ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
 ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75968207"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Öğretici: Azure depolama kuyruklarıyla çalışın
+# <a name="tutorial-work-with-azure-storage-queues"></a>Öğretici: Azure depolama kuyrukları ile çalışma
 
-Azure Sıra depolama, dağıtılmış bir uygulamanın bileşenleri arasında iletişimi etkinleştirmek için bulut tabanlı kuyruklar uygular. Her kuyruğa, gönderen bileşeni tarafından eklenebilen ve bir alıcı bileşeni tarafından işlenebilen iletilerin bir listesini tutar. Bir sıra yla, uygulamanız talebi karşılamak için hemen ölçeklendirilebilir. Bu makalede, Bir Azure depolama sırası ile çalışmak için temel adımları gösterir.
+Azure kuyruk depolama, dağıtılmış bir uygulamanın bileşenleri arasında iletişimi etkinleştirmek için bulut tabanlı kuyruklar uygular. Her kuyruk, bir gönderen bileşeni tarafından eklenebilen ve bir alıcı bileşeni tarafından işlenen iletilerin bir listesini tutar. Bir kuyruk ile uygulamanız, talebi karşılamak için hemen ölçeklendirebilir. Bu makalede, Azure depolama kuyruğu ile çalışmaya yönelik temel adımlar gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > - Azure Storage hesabı oluşturma
 > - Uygulama oluşturma
-> - Eşzamanlı kod için destek ekleme
+> - Zaman uyumsuz kod desteği ekle
 > - Bir kuyruk oluşturma
-> - İletileri kuyruğa ekleme
-> - İletileri sıradan ayır
-> - Boş bir sırayı silme
-> - Komut satırı bağımsız değişkenlerini denetleme
+> - Bir kuyruğa ileti ekleme
+> - İletileri sıradan çıkarma
+> - Boş bir kuyruğu silme
+> - Komut satırı bağımsız değişkenlerini denetle
 > - Uygulamayı derleme ve çalıştırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Çapraz platform Visual Studio [Code](https://code.visualstudio.com/download) editörü ücretsiz kopyasını alın.
-- [.NET Core SDK'yı](https://dotnet.microsoft.com/download)indirin ve kurun.
-- Geçerli bir Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
+- Platformlar arası [Visual Studio Code](https://code.visualstudio.com/download) düzenleyicisinin ücretsiz kopyasını alın.
+- [.NET Core SDK](https://dotnet.microsoft.com/download)indirin ve yükleyin.
+- Geçerli bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage hesabı oluşturma
 
-İlk olarak, bir Azure depolama hesabı oluşturun. Depolama hesabı oluşturmak için adım adım kılavuz için, [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) hızlı başlat'ına bakın.
+İlk olarak, bir Azure depolama hesabı oluşturun. Depolama hesabı oluşturmaya yönelik adım adım kılavuz için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) hızlı başlangıcı.
 
 ## <a name="create-the-app"></a>Uygulama oluşturma
 
-**QueueApp**adında bir .NET Core uygulaması oluşturun. Basitlik için, bu uygulama hem gönderilecek hem de sıra üzerinden ileti alır.
+**Queueapp**adlı bir .NET Core uygulaması oluşturun. Kolaylık olması için, bu uygulama sıra aracılığıyla ileti gönderir ve alır.
 
-1. Konsol penceresinde (CMD, PowerShell veya Azure CLI gibi), `dotnet new` **QueueApp**adında yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: **Program.cs**.
+1. Konsol penceresinde (CMD, PowerShell veya Azure CLı gibi), **Queueapp**adlı yeni bir konsol `dotnet new` uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp
    ```
 
-2. Yeni oluşturulan **QueueApp** klasörüne geçin ve her şeyin yolunda olduğunu doğrulamak için uygulamayı oluşturun.
+2. Yeni oluşturulan **Queueapp** klasörüne geçin ve bunların tümünün iyi olduğunu doğrulamak için uygulamayı derleyin.
 
    ```console
    cd QueueApp
@@ -93,15 +93,15 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
    C:\Tutorials\QueueApp>_
    ```
 
-## <a name="add-support-for-asynchronous-code"></a>Eşzamanlı kod için destek ekleme
+## <a name="add-support-for-asynchronous-code"></a>Zaman uyumsuz kod desteği ekle
 
-Uygulama bulut kaynaklarını kullandığından, kod eşsenkronize çalışır. Ancak, C#'S **async** ve **await** C # 7.1 kadar **Ana** yöntemlerde geçerli anahtar kelimeler değildi. **Csproj** dosyasındaki bir bayrak aracılığıyla derleyiciye kolayca geçebilirsiniz.
+Uygulama bulut kaynaklarını kullandığından, kod zaman uyumsuz olarak çalışır. Ancak c# 7,1 ' a kadar, c# **zaman uyumsuz** ve **await** **ana** yöntemlerde geçerli anahtar sözcükler. **Csproj** dosyasındaki bir bayrak aracılığıyla kolayca bu derleyiciye geçiş yapabilirsiniz.
 
-1. Proje dizinindeki komut satırından, `code .` geçerli dizindeki Visual Studio Code'u açmak için yazın. Komut satırı penceresini açık tutun. Daha sonra yürütmek için daha fazla komut olacaktır. Oluşturmak ve hata ayıklamak için C# varlıkları eklemeniz istenirse, **Evet** düğmesini tıklatın.
+1. Proje dizinindeki komut satırından, geçerli dizinde Visual Studio Code açmak için `code .` yazın. Komut satırı penceresini açık tutun. Daha sonra yürütülecek daha fazla komut olacaktır. Derleme ve hata ayıklama için gereken C# varlıkları eklemeniz istenirse, **Evet** düğmesine tıklayın.
 
 2. **QueueApp.csproj** dosyasını düzenleyicide açın.
 
-3. Yapı `<LangVersion>7.1</LangVersion>` dosyasındaki ilk **Özellik Grubu'na** ekleyin. **TargetFramework'ünüzün** hangi .NET sürümünü yüklediğinize bağlı olarak farklı olabileceğinden **langversion** etiketini eklediğinizden emin olun.
+3. Derleme `<LangVersion>7.1</LangVersion>` dosyasındaki Ilk **PropertyGroup** 'a ekleyin. **TargetFramework** sizin yüklediğiniz .NET sürümüne bağlı olarak farklı olabileceğinden, yalnızca **langversion** etiketini eklediğinizden emin olun.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -116,9 +116,9 @@ Uygulama bulut kaynaklarını kullandığından, kod eşsenkronize çalışır. 
 
    ```
 
-4. **QueueApp.csproj** dosyasını kaydedin.
+4. **Queueapp. csproj** dosyasını kaydedin.
 
-5. kaynak **dosyayı Program.cs** açın ve eş senkronize çalışması için **Ana** yöntemi güncelleştirin. **Boşluğu** bir **eşitleme Görev** iade değeriyle değiştirin.
+5. **Program.cs** kaynak dosyasını açın ve **ana** yöntemi zaman uyumsuz olarak çalışacak şekilde güncelleştirin. **Void** değerini **zaman uyumsuz bir görev** dönüş değeri ile değiştirin.
 
    ```csharp
    static async Task Main(string[] args)
@@ -128,14 +128,14 @@ Uygulama bulut kaynaklarını kullandığından, kod eşsenkronize çalışır. 
 
 ## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-1. **Microsoft.Azure.Storage.Common** ve **Microsoft.Azure.Storage.Queue** paketlerini komutla `dotnet add package` projeye yükleyin. Konsol penceresindeki proje klasöründen aşağıdaki dotnet komutlarını çalıştırın.
+1. Komutuyla Microsoft **. Azure. Storage. Common** ve **Microsoft. Azure. Storage. Queue** paketlerini projeye yükler. `dotnet add package` Konsol penceresindeki proje klasöründen aşağıdaki DotNet komutlarını yürütün.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
-2. **Program.cs** dosyasının üst kısmında, deyimden hemen sonra `using System;` aşağıdaki ad boşluklarını ekleyin. Bu uygulama, Azure Depolama'ya bağlanmak ve kuyruklarla çalışmak için bu ad alanlarından türler kullanır.
+2. **Program.cs** dosyasının en üstünde, `using System;` deyimden hemen sonra aşağıdaki ad alanlarını ekleyin. Bu uygulama, Azure depolama 'ya bağlanmak ve kuyruklarla çalışmak için bu ad alanlarındaki türleri kullanır.
 
    ```csharp
    using System.Threading.Tasks;
@@ -147,15 +147,15 @@ Uygulama bulut kaynaklarını kullandığından, kod eşsenkronize çalışır. 
 
 ### <a name="get-your-connection-string"></a>Bağlantı dizenizi alma
 
-İstemci kitaplığı, bağlantınızı kurmak için bir bağlantı dizesi kullanır. Bağlantı dizeniz, Azure portalındaki depolama hesabınızın **Ayarlar** bölümünde kullanılabilir.
+İstemci kitaplığı, bağlantınızı kurmak için bir bağlantı dizesi kullanır. Bağlantı dizeniz, Azure portal depolama hesabınızın **Ayarlar** bölümünde bulunur.
 
-1. Web tarayıcınızda [Azure portalında](https://portal.azure.com/)oturum açın.
+1. Web tarayıcınızda [Azure Portal](https://portal.azure.com/)oturum açın.
 
 2. Azure portalda depolama hesabınıza gidin.
 
-3. **Erişim tuşlarını**seçin.
+3. **Erişim tuşları**' nı seçin.
 
-4. **Bağlantı dizesi** alanının sağındaki **Kopyala** düğmesini tıklatın.
+4. **Bağlantı dizesi** alanının sağ tarafındaki **Kopyala** düğmesine tıklayın.
 
 ![Bağlantı dizesi](media/storage-tutorial-queues/get-connection-string.png)
 
@@ -167,15 +167,15 @@ Bağlantı dizesi bu biçimdedir:
 
 ### <a name="add-the-connection-string-to-the-app"></a>Bağlantı dizesini uygulamaya ekleme
 
-Depolama hesabına erişebilmek için bağlantı dizesini uygulamaya ekleyin.
+Depolama hesabına erişebilmeleri için bağlantı dizesini uygulamaya ekleyin.
 
-1. Visual Studio Code'a geri dön.
+1. Visual Studio Code 'e geri dönün.
 
-2. **Program** sınıfında, bağlantı `private const string connectionString =` dizesini tutmak için bir üye ekleyin.
+2. **Program** sınıfında, bağlantı dizesini tutacak bir `private const string connectionString =` üye ekleyin.
 
-3. Eşit işaretten sonra, Azure portalınızda daha önce kopyaladığınız dize değerini yapıştırın. **ConnectionString** değeri hesabınıza özgü olacaktır.
+3. Eşittir işaretinden sonra, Azure portal daha önce kopyaladığınız dize değerini yapıştırın. **ConnectionString** değeri hesabınıza benzersiz olacaktır.
 
-4. **Main'den**"Hello World" kodunu kaldırın. Kodunuz aşağıdakilere benzer ancak benzersiz bağlantı dize değeri ile görünmelidir.
+4. **Ana**bilgisayardan "Merhaba Dünya" kodunu kaldırın. Kodunuzun aşağıdakine benzer, ancak benzersiz bağlantı dizesi değeri ile aynı olması gerekir.
 
    ```csharp
    namespace QueueApp
@@ -191,7 +191,7 @@ Depolama hesabına erişebilmek için bağlantı dizesini uygulamaya ekleyin.
    }
    ```
 
-5. Daha sonra gönderme ve alma yöntemlerine geçirilen bir **CloudQueue** nesnesi oluşturmak için **Main'i** güncelleştirin.
+5. Daha sonra gönderme ve alma yöntemlerine geçirilen bir **Cloudqueue** nesnesi oluşturmak için **Main** 'i güncelleştirin.
 
    ```csharp
         static async Task Main(string[] args)
@@ -204,11 +204,11 @@ Depolama hesabına erişebilmek için bağlantı dizesini uygulamaya ekleyin.
 
 6. Dosyayı kaydedin.
 
-## <a name="insert-messages-into-the-queue"></a>Sıraya ileti ekleme
+## <a name="insert-messages-into-the-queue"></a>Kuyruğa ileti ekleme
 
-Sıraya ileti göndermek için yeni bir yöntem oluşturun. **Program** sınıfınıza aşağıdaki yöntemi ekleyin. Bu yöntem bir sıra başvurusu alır, sonra [createifNotExistsAsync'i](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync)arayarak zaten yoksa yeni bir kuyruk oluşturur. Daha sonra [AddMessageAsync'i](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)arayarak iletiyi kuyruğa ekler.
+Kuyruğa ileti göndermek için yeni bir yöntem oluşturun. **Program** Sınıfınıza aşağıdaki yöntemi ekleyin. Bu yöntem bir kuyruk başvurusu alır, sonra [Createifnotexistsasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.createifnotexistsasync)çağırarak yeni bir kuyruk oluşturur. Ardından, [Addmessageasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)çağırarak iletiyi kuyruğa ekler.
 
-1. **Program** sınıfınıza aşağıdaki **SendMessageAsync** yöntemini ekleyin.
+1. Aşağıdaki **SendMessageAsync** yöntemini **Program** sınıfınıza ekleyin.
 
    ```csharp
    static async Task SendMessageAsync(CloudQueue theQueue, string newMessage)
@@ -227,19 +227,19 @@ Sıraya ileti göndermek için yeni bir yöntem oluşturun. **Program** sınıf�
 
 2. Dosyayı kaydedin.
 
-İleti UTF-8 kodlaması olan bir XML isteğine dahil edilebilecek bir biçimde olmalıdır ve 64 KB boyutuna kadar olabilir. İleti ikili veri içeriyorsa, iletiyi Base64-kodlamanızı öneririz.
+Bir ileti UTF-8 kodlaması ile bir XML isteğine dahil edilebilir bir biçimde olmalıdır ve boyutu 64 KB 'ye kadar olabilir. Bir ileti ikili veriler içeriyorsa iletiyi Base64 kodlamanızı öneririz.
 
-Varsayılan olarak, bir ileti için en fazla canlı süre 7 gün olarak ayarlanır. İleti nin zaman içinde yaşanması için herhangi bir pozitif sayı belirtebilirsiniz. Süresi dolmayan bir ileti eklemek `Timespan.FromSeconds(-1)` için **AddMessageAsync'e**çağrınızda kullanın.
+Varsayılan olarak, bir ileti için en uzun yaşam süresi 7 güne ayarlanır. İletinin yaşam süresi için herhangi bir pozitif sayı belirtebilirsiniz. Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` **addmessageasync**çağrısında kullanın.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
 ```
 
-## <a name="dequeue-messages"></a>İletileri sıradan ayır
+## <a name="dequeue-messages"></a>İletileri sıradan çıkarma
 
-**ReceiveMessageAsync**adlı yeni bir yöntem oluşturun. Bu yöntem [GetMessageAsync'i](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync)arayarak kuyruktan bir ileti alır. İleti başarıyla alındıktan sonra, birden fazla kez işlenmeyecek şekilde sıradan silinmeniz önemlidir. İleti alındıktan sonra [DeleteMessageAsync'i](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync)arayarak sil.
+**Receivemessageasync**adlı yeni bir yöntem oluşturun. Bu yöntem, [Getmessageasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessageasync)çağırarak kuyruktan bir ileti alır. İleti başarıyla alındıktan sonra, bir kereden fazla işlenmemesi için kuyruktan silinmesi önemlidir. İleti alındıktan sonra [Deletemessageasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessageasync)çağırarak kuyruktan silin.
 
-1. **Program** sınıfınıza aşağıdaki **ReceiveMessageAsync** yöntemini ekleyin.
+1. Aşağıdaki **Receivemessageasync** yöntemini **Program** sınıfınıza ekleyin.
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -262,11 +262,11 @@ await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, nu
 
 2. Dosyayı kaydedin.
 
-## <a name="delete-an-empty-queue"></a>Boş bir sırayı silme
+## <a name="delete-an-empty-queue"></a>Boş bir kuyruğu silme
 
-Oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için projenin sonundaki en iyi uygulamadır. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kuyruk varsa ancak boşsa, kullanıcıya silmek isteyip istemediklerini sorun.
+Projenin sonunda oluşturduğunuz kaynaklara ihtiyacınız olup olmadığını belirlemek için en iyi uygulamadır. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Sıra varsa ancak boşsa, kullanıcıyı silmek isteyip istemediğini sorar.
 
-1. Boş sırayı silmek için bir istem içerecek şekilde **ReceiveMessageAsync** yöntemini genişletin.
+1. Boş kuyruğu silmek için bir istem eklemek üzere **Receivemessageasync** yöntemini genişletin.
 
    ```csharp
    static async Task<string> ReceiveMessageAsync(CloudQueue theQueue)
@@ -308,15 +308,15 @@ Oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek i�
 
 2. Dosyayı kaydedin.
 
-## <a name="check-for-command-line-arguments"></a>Komut satırı bağımsız değişkenlerini denetleme
+## <a name="check-for-command-line-arguments"></a>Komut satırı bağımsız değişkenlerini denetle
 
-Uygulamaya geçirilen komut satırı bağımsız değişkenleri varsa, bunların sıraya eklenecek bir ileti olduğunu varsayalım. Bir dize yapmak için bağımsız değişkenleri birleştirin. Daha önce eklediğimiz **SendMessageAsync** yöntemini arayarak bu dizeyi ileti kuyruğuna ekleyin.
+Uygulamaya geçirilen herhangi bir komut satırı bağımsız değişkeni varsa, bu, kuyruğa eklenecek bir ileti olduğunu varsayın. Bir dize oluşturmak için bağımsız değişkenleri birleştirin. Daha önce eklediğimiz **SendMessageAsync** metodunu çağırarak bu dizeyi ileti kuyruğuna ekleyin.
 
-Komut satırı bağımsız değişkenleri yoksa, bir geri alma işlemi yürütün. Kuyruktaki ilk iletiyi almak için **ReceiveMessageAsync** yöntemini arayın.
+Komut satırı bağımsız değişkeni yoksa, bir alma işlemi yürütün. Sıradaki ilk iletiyi almak için **Receivemessageasync** yöntemini çağırın.
 
-Son olarak, **Console.ReadLine'ı**arayarak çıkmadan önce kullanıcı girişi bekleyin.
+Son olarak, **Console. ReadLine**'u çağırarak çıkmadan önce Kullanıcı girişini bekleyin.
 
-1. Komut satırı bağımsız değişkenlerini denetlemek ve kullanıcı girişini beklemek için **Ana** yöntemi genişletin.
+1. Komut satırı bağımsız değişkenlerini denetlemek ve Kullanıcı girişini beklemek için **Main** yöntemini genişletin.
 
    ```csharp
         static async Task Main(string[] args)
@@ -346,7 +346,7 @@ Son olarak, **Console.ReadLine'ı**arayarak çıkmadan önce kullanıcı girişi
 
 ## <a name="complete-code"></a>Kodu tamamla
 
-İşte bu projenin tam kod listesi.
+Bu proje için kod listesinin tamamı aşağıda verilmiştir.
 
    ```csharp
    using System;
@@ -440,13 +440,13 @@ Son olarak, **Console.ReadLine'ı**arayarak çıkmadan önce kullanıcı girişi
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-1. Proje dizinindeki komut satırından, projeyi oluşturmak için aşağıdaki dotnet komutunu çalıştırın.
+1. Proje dizinindeki komut satırından, projeyi derlemek için aşağıdaki DotNet komutunu çalıştırın.
 
    ```console
    dotnet build
    ```
 
-2. Proje başarıyla inşa ettikten sonra, sıraya ilk iletiyi eklemek için aşağıdaki komutu çalıştırın.
+2. Proje başarıyla yapılandırıldıktan sonra, sıraya ilk iletiyi eklemek için aşağıdaki komutu çalıştırın.
 
    ```console
    dotnet run First queue message
@@ -461,13 +461,13 @@ Bu çıkışı görmelisiniz:
    Press Enter..._
    ```
 
-3. Sırada ilk iletiyi almak ve kaldırmak için komut satırı bağımsız değişkeni olmadan uygulamayı çalıştırın.
+3. Kuyruktaki ilk iletiyi almak ve kaldırmak için komut satırı bağımsız değişkeni olmadan uygulamayı çalıştırın.
 
    ```console
    dotnet run
    ```
 
-4. Tüm iletiler kaldırılana kadar uygulamayı çalıştırmaya devam edin. Bir kez daha çalıştıran, sıraboş bir ileti ve sırayı silmek için bir istemi alırsınız.
+4. Tüm iletiler kaldırılana kadar uygulamayı çalıştırmaya devam edin. Daha sonra bir kez çalıştırırsanız, sıranın boş olduğunu belirten bir ileti ve kuyruğu silmek için bir istem alırsınız.
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -508,10 +508,10 @@ Bu çıkışı görmelisiniz:
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 1. Bir kuyruk oluşturma
-2. İletileri kuyruktan ekleme ve kaldırma
-3. Azure depolama sıranı silme
+2. Kuyruktaki iletileri ekleme ve kaldırma
+3. Azure depolama kuyruğunu silme
 
-Daha fazla bilgi için Azure kuyruklarına hızlı bir şekilde başlayın.
+Daha fazla bilgi için Azure Kuyrukları hızlı başlangıç 'a göz atın.
 
 > [!div class="nextstepaction"]
-> [Kuyruklar hızlı başlat](storage-quickstart-queues-portal.md)
+> [Kuyruklar hızlı başlangıcı](storage-quickstart-queues-portal.md)

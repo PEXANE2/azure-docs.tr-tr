@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188075"
 ---
 ## <a name="set-up-the-session"></a>Oturumu ayarlama
 
-Oturumunuzun ortam verilerini işlemesini sağlamak için çağırın. `Start()`
+Oturumunuzun `Start()` ortam verilerini işlemesini sağlamak için öğesini çağırın.
 
-Oturumunuzun yükselttiği olayları işlemek için bir olay işleyicisi takın.
+Oturumunuz tarafından oluşturulan olayları işlemek için bir olay işleyicisi ekleyin.

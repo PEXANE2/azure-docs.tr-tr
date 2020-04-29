@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: CLI kullanarak URL yol tabanlı yeniden yönlendirme'
+title: 'Öğretici: CLı kullanılarak URL yolu tabanlı yönlendirme'
 titleSuffix: Azure Application Gateway
-description: Bu eğitimde, Azure CLI'yi kullanarak URL yol tabanlı yeniden yönlendirilmiş trafiği olan bir uygulama ağ geçidioluşturmayı öğrenirsiniz.
+description: Bu öğreticide, Azure CLı kullanarak URL yol tabanlı yeniden yönlendirilen trafik ile uygulama ağ geçidi oluşturmayı öğreneceksiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,17 +10,17 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 87f6febaf89f82c2c81b397c94d744229b3f4b34
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80239501"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Öğretici: Azure CLI kullanarak URL yolu tabanlı yeniden yönlendirme ile bir uygulama ağ geçidi oluşturma
 
-Azure CLI'yi kullanarak, bir [uygulama ağ geçidi](application-gateway-introduction.md) oluştururken [URL yolu tabanlı yönlendirme kuralları](tutorial-url-route-cli.md) yapılandırabilirsiniz. Bu öğreticide, [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturursunuz. Daha sonra, web trafiğinin uygun arka uç havuzuna yeniden yönlendirildiğinden emin olmak için URL yönlendirme kuralları oluşturacaksınız.
+Azure CLI'yi kullanarak, bir [uygulama ağ geçidi](application-gateway-introduction.md) oluştururken [URL yolu tabanlı yönlendirme kuralları](tutorial-url-route-cli.md) yapılandırabilirsiniz. Bu öğreticide, [sanal makine ölçek kümelerini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturacaksınız. Daha sonra, web trafiğinin uygun arka uç havuzuna yeniden yönlendirildiğinden emin olmak için URL yönlendirme kuralları oluşturacaksınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
@@ -34,7 +34,7 @@ Aşağıdaki örnekte, 8080 ve 8081 numaralı bağlantı noktalarından gelen ve
 
 Tercih ederseniz, bu öğreticiyi [Azure PowerShell](tutorial-url-redirect-powershell.md) kullanarak tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -78,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-myAppGateway adlı uygulama ağ geçidi oluşturmak için [az ağ uygulama ağ geçidi oluşturma](/cli/azure/network/application-gateway) kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, daha önce oluşturduğunuz *myAGSubnet* ve *myPublicIPAddress'e* atanır.
+MyAppGateway adlı uygulama ağ geçidini oluşturmak için [az Network Application-Gateway Create](/cli/azure/network/application-gateway) kullanın. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, daha önce oluşturduğunuz *Myagsubnet* ve *Mypublicıpaddress* öğesine atanır.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -158,7 +158,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>Varsayılan URL yolu eşlemesi ekleme
 
-URL yolu haritaları, belirli URL'lerin belirli arka uç havuzlarına yönlendirildiklerinden emin olun. [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) ve [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) kullanarak *imagePathRule* ve *videoPathRule* adlı URL yol eşlemelerini oluşturabilirsiniz.
+URL yolu eşlemeleri belirli URL 'Lerin belirli arka uç havuzlarına yönlendirildiğinden emin olmanızı sağlar. [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) ve [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule) kullanarak *imagePathRule* ve *videoPathRule* adlı URL yol eşlemelerini oluşturabilirsiniz.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -284,7 +284,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [az ağ public-ip show'u](/cli/azure/network/public-ip#az-network-public-ip-show)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Gibi, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`, `http://40.121.222.19:8081/images/test.htm`, veya .
+Uygulama ağ geçidinin genel IP adresini almak için [az Network public-IP Show](/cli/azure/network/public-ip#az-network-public-ip-show)kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin,,, veya `http://40.121.222.19:8081/images/test.htm` `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm`
 
 ```azurecli-interactive
 az network public-ip show \
@@ -296,15 +296,15 @@ az network public-ip show \
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-IP adresinizyerine&lt;IP&gt;adresinizi &lt;&gt;değiştirerek URL'yi ip adresi :8080/images/test.html http:// olarak değiştirin ve aşağıdaki örnekgibi bir şey görmeniz gerekir:
+URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/images/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-IP adresinizyerine&lt;IP&gt;adresinizi &lt;&gt;değiştirerek URL'yi ip adresi :8080/video/test.html http:// olarak değiştirin ve aşağıdaki örnekgibi bir şey görmeniz gerekir:
+URL 'YI IP adresi için&lt; &lt;&gt;ıp adresinizi http://&gt;IP adresi: 8080/video/test.html olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Şimdi, IP adresi&lt;için IP&gt; &lt;adresinizi&gt;değiştirerek ip adresini http:// :8081/images/test.htm olarak URL'yi değiştirin ve trafiğin http://&lt;ip&gt;adresindeki resimlerarka uç havuzuna yönlendirilen trafiği görmeniz gerekir:8080/images.
+Şimdi,&lt;URL 'yi IP&gt; &lt;&gt;adresi için IP adresinizi http://IP adresi: 8081/images/test.htm olarak değiştirin ve http://&lt;IP adresi&gt;: 8080/Images konumundaki görüntüler arka uç havuzuna yeniden yönlendirilen trafiği görmeniz gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

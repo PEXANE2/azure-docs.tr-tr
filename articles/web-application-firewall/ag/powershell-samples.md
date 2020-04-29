@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi için Azure PowerShell örnekleri
-description: Azure Uygulama Ağ Geçidi için Azure PowerShell örnekleri
+title: Azure Application Gateway Azure PowerShell örnekleri
+description: Azure Application Gateway Azure PowerShell örnekleri
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,17 +8,17 @@ ms.topic: sample
 ms.date: 09/30/2019
 ms.author: victorh
 ms.openlocfilehash: 0077cb8de93416cefbcbfb969f30e4f1ff526f50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73501641"
 ---
-# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi için Azure PowerShell örnekleri
+# <a name="azure-powershell-examples-for-azure-application-gateway"></a>Azure Application Gateway Azure PowerShell örnekleri
 
-Aşağıdaki tablo, Azure Uygulama Ağ Geçidi için Azure PowerShell komut dosyası örneklerine bağlantılar içerir.
+Aşağıdaki tabloda, Azure Application Gateway için Azure PowerShell betik örneklerinin bağlantıları yer almaktadır.
 
 | | |
 |---|---|
-|[WAF v2 özel kuralları](../scripts/waf-custom-rules-powershell.md)|Özel kurallarla bir Uygulama Ağ Geçidi Web Uygulaması Güvenlik Duvarı v2 oluşturur.
+|[WAF v2 özel kuralları](../scripts/waf-custom-rules-powershell.md)|Özel kurallarla Application Gateway Web uygulaması güvenlik duvarı v2 oluşturur.
 | | |

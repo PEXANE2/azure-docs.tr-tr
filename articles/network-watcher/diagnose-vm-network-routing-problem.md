@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: VM ağ yönlendirme sorununu tanıla - Azure portalı'
+title: 'Öğretici: VM ağı yönlendirme sorununu tanılama-Azure portal'
 titleSuffix: Azure Network Watcher
 description: Bu öğreticide, Azure Ağ İzleyicisi’nin IP sonraki atlama özelliği kullanılarak sanal makine ağ yönlendirme sorununu tanılama hakkında bilgi edineceksiniz.
 services: network-watcher
@@ -18,15 +18,15 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76845211"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak bir sanal ağ yönlendirme sorununu tanılama
 
-Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç varsayılan yol oluşturur. Azure’un varsayılan yollarını geçersiz kılmak için özel yollar oluşturabilirsiniz. Bazı durumlarda özel bir yol, bir sanal makinenin diğer kaynaklarla iletişim kuramamasına neden olabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * VM oluşturma
@@ -36,7 +36,7 @@ Bir sanal makine (VM) dağıttığınızda, Azure bu sanal makine için birkaç 
 
 Tercih ederseniz, [Azure CLI](diagnose-vm-network-routing-problem-cli.md) veya [Azure PowerShell](diagnose-vm-network-routing-problem-powershell.md) kullanarak bir sanal makine ağ yönlendirme sorununu tanılayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -55,7 +55,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve **myResourceGroup** değerini girin.|
-    |Konum| **Doğu ABD'yi** seçin|
+    |Konum| **Doğu ABD** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
 5. **Ayarlar** bölümünde tüm varsayılanları kabul edin ve **Tamam**’ı seçin.
@@ -89,7 +89,7 @@ Azure, varsayılan hedeflerin yollarını otomatik olarak oluşturur. Varsayıla
     | Sanal makine         | MyVm öğesini seçin                                            |
     | Ağ arabirimi       | myvm - Ağ arabiriminizin adı farklı olabilir.   |
     | Kaynak IP adresi       | 10.0.0.4                                               |
-    | Hedef IP adresi  | 13.107.21.200 - <www.bing.com> adreslerinden biri. |
+    | Hedef IP adresi  | 13.107.21.200-<www.bing.com> adreslerinden biri. |
 
     ![Sonraki atlama](./media/diagnose-vm-network-routing-problem/next-hop.png)
 

@@ -1,6 +1,6 @@
 ---
-title: "CLI: Yerel Git repo'dan dağıt"
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, yerel bir Git deposundan kodun nasıl dağıtılancaya bildiğini gösterir.
+title: 'CLı: yerel git deposundan dağıtma'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, yerel bir git deposundan kodun nasıl dağıtılacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 048f98aa-f708-44cb-9b9e-953f67dc6da8
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 11cb8bd25f82e480ddbb23151d8a7622fedc828a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044809"
 ---
-# <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Azure CLI'yi kullanarak bir Uygulama Hizmeti uygulaması oluşturun ve yerel bir Git deposundan kod dağıtın
+# <a name="create-an-app-service-app-and-deploy-code-from-a-local-git-repository-using-azure-cli"></a>Azure CLı kullanarak bir App Service uygulaması oluşturma ve yerel git deposundan kod dağıtma
 
-Bu örnek komut dosyası, ilgili kaynaklarıyla birlikte App Service'de bir uygulama oluşturur ve ardından uygulama kodunuzu yerel bir Git deposuna dağıtır.
+Bu örnek betik, App Service içinde ilgili kaynaklarla bir uygulama oluşturur ve ardından uygulama kodunuzu yerel bir git deposunda dağıtır.
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -41,7 +41,7 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
 | [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) | App Service için hesap düzeyinde dağıtım kimlik bilgilerini ayarlar. |
 | [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) | Yerel bir Git deposu için kaynak denetimi yapılandırması oluşturur. |
 

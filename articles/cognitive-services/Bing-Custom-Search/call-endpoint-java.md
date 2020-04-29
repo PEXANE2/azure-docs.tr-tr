@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Java kullanarak Bing Özel Arama bitiş noktasını arayın | Microsoft Dokümanlar'
+title: 'Hızlı başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Java'daki Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
+description: Java 'daki Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,21 +11,21 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
 ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80238886"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Quickstart: Java'yı kullanarak Bing Özel Arama bitiş noktanızı arayın
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Hızlı başlangıç: Java kullanarak Bing Özel Arama uç noktanızı çağırma
 
-Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bu uygulama Java'da yazılmış olsa da, Bing Özel Arama API'si çoğu programlama diliyle uyumlu bir RESTful web hizmetidir. Bu örnek için kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java)kullanılabilir.
+Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hızlı başlangıcı kullanın. Bu uygulama Java 'da yazıldığı sırada, Bing Özel Arama API'si birçok programlama dili ile uyumlu olan bir yeniden yazılmış Web hizmetidir. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bing Özel Arama örneği. Bkz. Hızlı Başlangıç: Daha fazla bilgi için [ilk Bing Özel Arama örneğini oluşturun.](quick-start.md)
+- Bir Bing Özel Arama örneği. Daha fazla bilgi için bkz. [hızlı başlangıç: ilk Bing özel arama örneğinizi oluşturma](quick-start.md) .
 
-- En son [Java Geliştirme Kiti](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- En son [Java geliştirme seti](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
 
 - [Gson kitaplığı](https://github.com/google/gson)
 
@@ -50,7 +50,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     import com.google.gson.JsonParser;
     ```
 
-2. Adlı `CustomSrchJava`bir sınıf oluşturun ve abonelik anahtarınız, özel arama bitiş noktanız ve arama örneğinizin Özel Yapılandırma Kimliği için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+2. Adlı `CustomSrchJava`bir sınıf oluşturun ve abonelik anahtarınız, özel arama uç noktanız ve arama örneğinizin özel yapılandırma kimliği için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     ...
     ```
 
-3. Bing Özel `SearchResults` Arama örneğinden gelen yanıtı içerecek şekilde başka bir sınıf oluşturun.
+3. Bing Özel Arama örneğinden gelen yanıtı `SearchResults` içermesi için adlı başka bir sınıf oluşturun.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     }
     ```
 
-4. Bing Özel `prettify()` Arama API'sinden JSON yanıtını biçimlendirmek için adlı bir işlev oluşturun.
+4. Bing Özel Arama API'si JSON yanıtını biçimlendirmek `prettify()` için adlı bir işlev oluşturun.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -88,7 +88,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
 
 ## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderme ve alma 
 
-1. Bir istek `SearchWeb()` gönderen ve bir nesne `SearchResults` döndüren adlandırılmış bir işlev oluşturun. Özel Yapılandırma Kimliğinizi, sorgunuzu ve bitiş noktası bilgilerinizi birleştirerek istek url'sini oluşturun. Abonelik anahtarınızı üstbilgiye `Ocp-Apim-Subscription-Key` ekleyin.
+1. Bir istek gönderen ve `SearchWeb()` bir `SearchResults` nesne döndüren adlı bir işlev oluşturun. Özel yapılandırma KIMLIĞINIZI, sorgunuzu ve uç nokta bilgilerinizi birleştirerek istek URL 'sini oluşturun. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
     ...
     ```
 
-2. Bir akış oluşturun ve JSON `SearchResults` yanıtını bir nesnede depolayın.
+2. Bir akış oluşturun ve JSON yanıtını bir `SearchResults` nesneye depolayın.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
         }
     ```
 
-3. Uygulamanızın ana yönteminde, `SearchWeb()` arama teriminizle arama, 
+3. Uygulamanızın ana yönteminde, arama teriminizle çağırın `SearchWeb()` , 
 
     ```java
     System.out.println("\nJSON Response:\n");
@@ -132,4 +132,4 @@ Bing Özel Arama örneğinden arama sonuçları istemeye başlamak için bu hız
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel Arama web uygulaması oluşturma](./tutorials/custom-search-web-page.md)
+> [Özel bir arama Web uygulaması oluşturma](./tutorials/custom-search-web-page.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Bir NAT ağ geçidi oluşturma ve test edin - Azure PowerShell'
+title: 'Öğretici: NAT Gateway oluşturma ve test etme-Azure PowerShell'
 titlesuffix: Azure Virtual Network NAT
-description: Bu öğretici, Azure PowerShell'i kullanarak bir NAT ağ geçidioluşturmayı ve NAT hizmetini nasıl test ediletini gösterir
+description: Bu öğreticide, Azure PowerShell kullanarak NAT ağ geçidinin oluşturulması ve NAT hizmetinin test olması gösterilmektedir
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,20 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: 61cda5e61d14c4eeaf2d88483603707598b1c911
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79202251"
 ---
-# <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Öğretici: Azure PowerShell'i kullanarak bir NAT ağ geçidi oluşturun ve NAT hizmetini test edin
+# <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Öğretici: Azure PowerShell kullanarak NAT ağ geçidi oluşturma ve NAT hizmetini test etme
 
-Bu eğitimde, Azure'daki sanal makineler için giden bağlantı sağlamak için bir NAT ağ geçidi oluşturursunuz. NAT ağ geçidini sınamak için bir kaynak ve hedef sanal makine dağıtabilirsiniz. Genel bir IP adresine giden bağlantılar oluşturarak NAT ağ geçidini sınayacaksınız. Bu bağlantılar kaynaktan hedef sanal makineye gelecektir. Bu öğretici, basitlik için aynı kaynak grubunda ki iki farklı sanal ağda kaynak ve hedef dağıtır.
+Bu öğreticide, Azure 'da sanal makineler için giden bağlantı sağlamak üzere bir NAT ağ geçidi oluşturacaksınız. NAT ağ geçidini test etmek için bir kaynak ve hedef sanal makine dağıtırsınız. Genel bir IP adresine giden bağlantılar yaparak NAT ağ geçidini test edersiniz. Bu bağlantılar kaynaktan hedef sanal makineye gönderilir. Bu öğretici, basitlik için aynı kaynak grubundaki iki farklı sanal ağda kaynak ve hedef dağıtır.
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bu öğreticiyi Azure Cloud Shell'i kullanarak tamamlayabilir veya ilgili komutları yerel olarak çalıştırabilirsiniz.  Azure Bulut Su Şurası'nı hiç kullanmadıysanız, [şimdi oturum açmanız](https://shell.azure.com)gerekir.
+Bu öğreticiyi Azure Cloud Shell kullanarak tamamlayabilirsiniz veya ilgili komutları yerel olarak çalıştırabilirsiniz.  Azure Cloud Shell hiç kullanmadıysanız, [Şimdi oturum açmanız](https://shell.azure.com)gerekir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -37,7 +37,7 @@ Bu öğreticiyi Azure Cloud Shell'i kullanarak tamamlayabilir veya ilgili komutl
 
 [az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki **örnekeastus2** konumunda **myResourceGroupNAT** adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek **eastus2** konumunda **Myresourcegroupnat** adlı bir kaynak grubu oluşturur:
 
 
 ```azurepowershell-interactive
@@ -47,11 +47,11 @@ $loc = 'eastus2'
 New-AzResourceGroup -Name $rsg -Location $loc
 ```
 
-## <a name="create-the-nat-gateway"></a>NAT ağ geçidioluşturma
+## <a name="create-the-nat-gateway"></a>NAT ağ geçidini oluşturma
 
 ### <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Internet'e erişmek için NAT ağ geçidi için bir veya daha fazla genel IP adresine ihtiyacınız vardır. **MyResourceGroupNAT'ta** **myPublicIPsource** adlı genel bir IP adresi kaynağı oluşturmak için [Yeni-AzPublicIpAddress'i](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) kullanın. Bu komutun sonucu, daha sonra kullanmak üzere **$publicIPsource** adlı bir değişkende depolanır.
+Internet 'e erişmek için NAT ağ geçidi için bir veya daha fazla genel IP adresi gerekir. **Myresourcegroupnat**Içinde **Mypublicipsource** adlı bir genel IP adresi kaynağı oluşturmak Için [New-azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) komutunu kullanın. Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIPsource** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -66,7 +66,7 @@ New-AzPublicIpAddress -Name $pips -ResourceGroupName $rsg -AllocationMethod $alm
 
 ### <a name="create-a-public-ip-prefix"></a>Genel IP öneki oluşturma
 
- **myResourceGroupNAT'ta** **myPublicIPprefixsource** adlı genel bir IP öneki kaynağı oluşturmak için [Yeni-AzPublicIpPrefix'i](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) kullanın.  Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIPPrefixsource** adlı bir değişkende depolanır.
+ **Myresourcegroupnat**içinde **myPublicIPprefixsource** adlı bir genel IP ön eki kaynağı oluşturmak Için [New-azpublicipprefix](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest) komutunu kullanın.  Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIPPrefixsource** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -79,11 +79,11 @@ New-AzPublicIpPrefix -Name $prips -ResourceGroupName $rsg -Location $loc -Prefix
 
 ### <a name="create-a-nat-gateway-resource"></a>NAT ağ geçidi kaynağı oluşturma
 
-Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz ayrıntılı olarak açıklanmaktadır:
-  - NAT ağ geçidi kaynağı tarafından çevrilen giden akışlar için kullanılacak genel BIR IP havuzu ve genel IP öneki.
-  - Boşta kalma süresini varsayılan 4 dakikadan 10 dakikaya değiştirin.
+Bu bölümde, NAT ağ geçidi kaynağını kullanarak NAT hizmetinin aşağıdaki bileşenlerini oluşturma ve yapılandırma işlemlerinin ayrıntıları verilmiştir:
+  - NAT ağ geçidi kaynağı tarafından çevrilen giden akışlar için kullanılacak genel IP havuzu ve genel IP öneki.
+  - Boşta kalma zaman aşımını varsayılan olarak 4 dakika ile 10 dakika arasında değiştirin.
 
-[New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)ile küresel bir Azure NAT ağ geçidi oluşturun. Bu komutun sonucu, public IP adresi **myPublicIPsource** ve ortak IP öneki **myPublicIPprefixsource**kullanan **myNATgateway** adlı bir ağ geçidi kaynağı oluşturacaktır. Boşta zaman dilimi 10 dakika olarak ayarlanır.  Bu komutun sonucu daha sonra kullanmak üzere **$natGateway** adlı bir değişkende depolanır.
+[New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)ile genel BIR Azure NAT ağ geçidi oluşturun. Bu komutun sonucu, **Mtypublicipsource** genel IP adresini ve **myPublicIPprefixsource**genel IP önekini kullanan **mynatgateway** adlı bir ağ geçidi kaynağı oluşturur. Boşta kalma zaman aşımı 10 dakikaya ayarlanır.  Bu komutun sonucu, daha sonra kullanılmak üzere **$natGateway** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -95,17 +95,17 @@ $natGateway =
 New-AzNatGateway -Name $nnm -ResourceGroupName $rsg -PublicIpAddress $publicIPsource -PublicIpPrefix $publicIPPrefixsource -Location $loc -Sku $sku -IdleTimeoutInMinutes 10      
   ```
 
-Bu noktada, NAT ağ geçidi işlevseldir ve eksik olan tek şey, sanal bir ağın hangi alt ağlarını kullanması gerektiğini yapılandırmaktır.
+Bu noktada, NAT ağ geçidi çalışır ve yok, bir sanal ağın hangi alt ağlarının bunu kullanması gerektiğini yapılandırmaktır.
 
-## <a name="prepare-the-source-for-outbound-traffic"></a>Kaynağı giden trafik için hazırlayın
+## <a name="prepare-the-source-for-outbound-traffic"></a>Kaynağı giden trafik için hazırlama
 
-Tam bir test ortamı nın kurulumu nda size rehberlik edeceğiz. NAT ağ geçidini doğrulamak için açık kaynak araçlarını kullanarak bir test ayarlarsınız. Daha önce oluşturduğumuz NAT ağ geçidini kullanacak kaynakla başlayacağız.
+Tam test ortamının kurulumu boyunca size kılavuzluk edeceğiz. NAT ağ geçidini doğrulamak üzere açık kaynaklı araçları kullanarak bir test ayarlayacaksınız. Daha önce oluşturduğumuz NAT ağ geçidini kullanacak kaynak ile başlayacağız.
 
-### <a name="configure-virtual-network-for-source"></a>Kaynak için sanal ağı yapılandırma
+### <a name="configure-virtual-network-for-source"></a>Kaynak için sanal ağı Yapılandır
 
-Sanal ağı oluşturun ve alt ağı ağ geçidine ilişkilendirin.
+Sanal ağı oluşturun ve alt ağı ağ geçidiyle ilişkilendirin.
 
-**MyResourceGroupNAT'ta** [New-AzVirtualNetwork'ü](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)kullanarak **MySubnetsource** adlı bir alt ağ ile **myVnetsource** adında bir sanal ağ oluşturun. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) Sanal ağ için IP adresi alanı **192.168.0.0/16'dır.** Sanal ağ içindeki alt ağ **192.168.0.0/24'dür.**  Komutların sonucu, daha sonra kullanılmak üzere **$subnetsource** ve **$vnetsource** adlı değişkenlerde depolanır.
+[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)kullanarak **Myresourcegroupnat** ' de [New-Azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) kullanarak **mysubnetsource** adlı bir alt ağ ile **myvnetsource** adlı bir sanal ağ oluşturun. Sanal ağın IP adresi alanı **192.168.0.0/16**' dır. Sanal ağ içindeki alt ağ **192.168.0.0/24**' dir.  Komutların sonucu, daha sonra kullanılmak üzere **$subnetsource** ve **$vnetsource** adlı değişkenlere depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -122,15 +122,15 @@ $vnetsource =
 New-AzVirtualNetwork -Name $vnm -ResourceGroupName $rsg -Location $loc -AddressPrefix $vpfx -Subnet $subnet
 ```
 
-İnternet hedeflerine giden tüm giden trafik artık NAT hizmetini kullanıyor.  Bir UDR yapılandırmak için gerekli değildir.
+Internet hedeflerine giden tüm trafik artık NAT hizmetini kullanıyor.  UDR 'yi yapılandırmak gerekli değildir.
 
-NAT ağ geçidini test etmeden önce bir kaynak VM oluşturmamız gerekiyor.  Bu VM'ye dışarıdan erişmek için örnek düzeyinde bir Genel IP kaynağı olarak genel bir IP adresi kaynağı atayacağız. Bu adres yalnızca test için erişmek için kullanılır.  NAT hizmetinin diğer giden seçeneklerden nasıl öncelikli olduğunu göstereceğiz.
+NAT ağ geçidini test etmeden önce bir kaynak VM 'si oluşturuyoruz.  Bu sanal makineye dışarıdan erişmek için örnek düzeyi genel IP olarak genel bir IP adresi kaynağı atayacağız. Bu adres yalnızca test için erişim için kullanılır.  NAT hizmetinin diğer giden seçeneklere göre nasıl öncelikli olduğunu göstereceğiz.
 
-Ayrıca, bu VM'yi genel bir IP olmadan oluşturabilir ve bir egzersiz olarak genel IP'si olmadan atlama kutusu olarak kullanmak üzere başka bir VM oluşturabilirsiniz.
+Ayrıca, bu VM 'yi ortak IP olmadan oluşturabilir ve bir alıştırma olarak genel IP 'si olmadan bir sıçrama kutusu olarak kullanmak için başka bir VM oluşturabilirsiniz.
 
-### <a name="create-public-ip-for-source-vm"></a>Kaynak VM için ortak IP oluşturma
+### <a name="create-public-ip-for-source-vm"></a>Kaynak VM için genel IP oluşturma
 
-VM'ye erişmek için kullanılacak genel bir IP oluştururuz.  **MyResourceGroupNAT'ta** **myPublicIPVM** adlı genel bir IP adresi kaynağı oluşturmak için [Yeni-AzPublicIpAddress'i](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) kullanın.  Bu komutun sonucu, daha sonra kullanmak üzere **$publicIpsourceVM** adlı bir değişkende depolanır.
+SANAL makineye erişmek için kullanılacak bir genel IP oluşturacağız.  **Myresourcegroupnat**Içinde **Mypublicipvm** adlı bir genel IP adresi kaynağı oluşturmak Için [New-azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) komutunu kullanın.  Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIpsourceVM** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -143,9 +143,9 @@ $publicIpsourceVM =
 New-AzPublicIpAddress -Name $pipvm -ResourceGroupName $rsg -AllocationMethod $alm -Location $loc -sku $sku
 ```
 
-### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Bir NSG oluşturun ve VM için SSH uç noktasını ortaya çıkar
+### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>NSG oluşturma ve sanal makine için SSH uç noktası gösterme
 
-Standart Genel IP adresleri 'varsayılan olarak güvenli' olduğundan, ssh için gelen erişime izin vermek için bir NSG oluştururuz. NAT hizmeti akış yönü farkındadır. NAT ağ geçidi aynı alt ağ üzerinde yapılandırıldığında bu NSG giden için kullanılmaz. **myNSGsource**adlı bir NSG kaynağı oluşturmak için [Yeni-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) kullanın. **MyResourceGroupNAT'ta** **ssh** adı verilen SSH erişimi için Bir NSG kuralı oluşturmak için [Yeni-AzNetworkSecurityRuleConfig'i](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) kullanın. Bu komutun sonucu daha sonra kullanmak üzere **$nsgsource** adlı değişkende depolanır.
+Standart genel IP adresleri ' varsayılan olarak güvenli ' olduğundan, SSH için gelen erişime izin veren bir NSG oluşturacağız. NAT hizmeti akış yönü farkındır. Bu NSG, aynı alt ağda bir NAT ağ geçidi yapılandırıldıktan sonra giden için kullanılmaz. **Mynsgsource**adlı bir NSG kaynağı oluşturmak için [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) komutunu kullanın. [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) kullanarak, **Myresourcegroupnat**içinde **SSH** adlı SSH erişimi için bir NSG kuralı oluşturun. Bu komutun sonucu, daha sonra kullanılmak üzere **$nsgsource** adlı değişkende saklanacaktır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -166,7 +166,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $nsnm -Location $loc -S
 
 ### <a name="create-nic-for-source-vm"></a>Kaynak VM için NIC oluşturma
 
-**MyNicsource**adlı [Yeni-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) ile bir ağ arabirimi oluşturun. Bu komut, Ortak IP adresini ve ağ güvenlik grubunu ilişkilendirecektir. Bu komutun sonucu, daha sonra kullanmak üzere **$nicsource** adlı bir değişkende depolanır.
+**Mynicsource**adlı [New-aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) ile bir ağ arabirimi oluşturun. Bu komut genel IP adresini ve ağ güvenlik grubunu ilişkilendirir. Bu komutun sonucu, daha sonra kullanılmak üzere **$nicsource** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -183,20 +183,20 @@ New-AzNetworkInterface -ResourceGroupName $rsg -Name $nin -NetworkSecurityGroupI
 
 Bu hızlı başlangıcı tamamlamak için bir SSH anahtar çifti gerekir. Bir SSH anahtar çiftiniz varsa bu adımı atlayabilirsiniz.
 
-SSH anahtar çifti oluşturmak için ssh-keygen kullanın.
+SSH anahtar çifti oluşturmak için SSH-keygen kullanın.
 
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 2048
 ```
 PuTTy kullanımı dahil olmak üzere SSH anahtar çiftlerinin oluşturulması konusunda daha ayrıntılı bilgi edinmek için bkz. [Windows ile SSH anahtarları kullanma](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
 
-Bulut Kabuğu'nu kullanarak SSH anahtar çiftini oluşturursanız, anahtar çifti bir kapsayıcı görüntüsünde depolanır. Bu [depolama hesabı otomatik olarak oluşturulur.](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) Anahtarlarınızı alana kadar depolama hesabını veya içindeki dosya paylaşımını silmeyin.
+Cloud Shell kullanarak SSH anahtar çiftini oluşturursanız, anahtar çifti kapsayıcı görüntüde depolanır. Bu [depolama hesabı otomatik olarak oluşturulur](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Anahtarlarınızı aldıktan sonra depolama hesabını veya içindeki dosya paylaşımından silme.
 
-#### <a name="create-vm-configuration"></a>VM Yapılandırması Oluşturma
+#### <a name="create-vm-configuration"></a>VM yapılandırması oluştur
 
 PowerShell’de bir VM oluşturmak için kullanılacak görüntü, boyut ve kimlik doğrulaması seçenekleri gibi ayarların olduğu bir yapılandırma oluşturursunuz. Ardından bu yapılandırma VM’yi derlemek için kullanılır.
 
-SSH kimlik bilgilerini, işletim sistemi bilgilerini ve VM boyutunu tanımlayın. Bu örnekte, SSH anahtarı ~/.ssh/id_rsa.pub'da depolanır.
+SSH kimlik bilgilerini, işletim sistemi bilgilerini ve VM boyutunu tanımlayın. Bu örnekte, SSH anahtarı ~/. ssh/id_rsa. pub ' da depolanır.
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -230,7 +230,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigsource -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-**MyResourceGroupNAT'ta** **MyVMsource** adlı bir VM oluşturmak için yapılandırma tanımlarını [birleştirin.](/powershell/module/az.compute/new-azvm?view=azps-2.8.0)
+**Myresourcegroupnat**içinde [New-Azvm](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) ile **MYVMSOURCE** adlı bir VM oluşturmak için yapılandırma tanımlarını birleştirin.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -239,17 +239,17 @@ $loc = 'eastus2'
 New-AzVM -ResourceGroupName $rsg -Location $loc -VM $vmConfigsource
 ```
 
-Komut hemen geri dönecek olsa da, VM'nin devreye salması birkaç dakika sürebilir.
+Komut hemen geri dönebilirken, VM 'nin dağıtılması birkaç dakika sürebilir.
 
-## <a name="prepare-destination-for-outbound-traffic"></a>Giden trafik için hedef hazırlama
+## <a name="prepare-destination-for-outbound-traffic"></a>Giden trafik için hedefi hazırlama
 
-Şimdi, NAT hizmeti tarafından çevrilen giden trafik için bir hedef oluşturarak bunu test edebilirsiniz.
+Artık, NAT hizmeti tarafından, test yapmanıza olanak tanımak için çevrilmiş giden trafik için bir hedef oluşturacağız.
 
-### <a name="configure-virtual-network-for-destination"></a>Hedef için sanal ağı yapılandırma
+### <a name="configure-virtual-network-for-destination"></a>Sanal ağı hedef için yapılandırma
 
-Hedef sanal makinenin olacağı bir sanal ağ oluşturmamız gerekiyor.  Bu komutlar kaynak VM ile aynı adımlardır. Hedef bitiş noktasını ortaya çıkarmak için küçük değişiklikler eklendi.
+Hedef sanal makinenin nerede olacağı bir sanal ağ oluşturuyoruz.  Bu komutlar, kaynak VM ile aynı adımlardır. Hedef uç noktayı açığa çıkarmak için küçük değişiklikler eklendi.
 
-**MyResourceGroupNAT'ta** [New-AzVirtualNetwork'ü](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)kullanarak **MySubnetdestination** adlı bir alt ağı olan **myVnetdestination** adında bir sanal ağ oluşturun. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) Sanal ağ için IP adresi alanı **192.168.0.0/16'dır.** Sanal ağ içindeki alt ağ **192.168.0.0/24'dür.**  Komutların sonucu, daha sonra kullanılmak üzere **$subnetdestination** ve **$vnetdestination** adlı değişkenlerde depolanır.
+[New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)kullanarak **Myresourcegroupnat** Içinde [New-Azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) kullanarak **mysubnetdestination** adlı bir alt ağ ile **myvnetdestination** adlı bir sanal ağ oluşturun. Sanal ağın IP adresi alanı **192.168.0.0/16**' dır. Sanal ağ içindeki alt ağ **192.168.0.0/24**' dir.  Komutların sonucu, daha sonra kullanılmak üzere **$subnetdestination** ve **$vnetdestination** adlı değişkenlere depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -268,7 +268,7 @@ New-AzVirtualNetwork -Name $vdn -ResourceGroupName $rsg -Location $loc -AddressP
 
 ### <a name="create-public-ip-for-destination-vm"></a>Hedef VM için genel IP oluşturma
 
-Hedef VM'ye erişmek için kullanılmak üzere genel bir IP oluşturuyoruz.  **MyResourceGroupNAT'ta** **myPublicIPdestinationVM** adlı genel bir IP adresi kaynağı oluşturmak için [Yeni-AzPublicIpAddress'i](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) kullanın.  Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIpdestinationVM** adlı bir değişkende depolanır.
+Hedef VM 'ye erişmek için kullanılacak bir genel IP oluşturacağız.  **Myresourcegroupnat**Içinde **Mypublicipdestinationvm** adlı bir genel IP adresi kaynağı oluşturmak Için [New-azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) ' i kullanın.  Bu komutun sonucu, daha sonra kullanılmak üzere **$publicIpdestinationVM** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -281,9 +281,9 @@ $publicIpdestinationVM =
 New-AzPublicIpAddress -Name $pipd -ResourceGroupName $rsg -AllocationMethod $all -Location $loc -Sku $sku
 ```
 
-### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>Bir NSG oluşturun ve VM için SSH ve HTTP uç noktasını ortaya çıkar
+### <a name="create-an-nsg-and-expose-ssh-and-http-endpoint-for-vm"></a>Bir NSG oluşturma ve sanal makine için SSH ve HTTP uç noktasını kullanıma sunma
 
-Standart Genel IP adresleri 'varsayılan olarak güvenli', biz ssh için gelen erişim sağlamak için bir NSG oluşturun. **myNSGdestination**adlı bir NSG kaynağı oluşturmak için [Yeni-AzNetworkSecurityGroup'u](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) kullanın. **SSH**erişimi için bir NSG kuralı oluşturmak için [Yeni-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) kullanın.  **Http erişim**için http adlı bir NSG kuralı oluşturmak için [Yeni-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) kullanın. Her iki kural **da myResourceGroupNAT'ta**oluşturulur. Bu komutun sonucu, daha sonra kullanılmak üzere **$nsgdestination** adlı bir değişkende depolanır.
+Standart genel IP adresleri ' güvenli olarak güvenlidir ', SSH için gelen erişime izin veren bir NSG oluşturacağız. **Mynsgdestination**adlı bir NSG kaynağı oluşturmak için [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) komutunu kullanın. **SSH ADLı SSH**erişimi için bir NSG kuralı oluşturmak için [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) ' i kullanın.  **Http ADLı http**erişimi için bir NSG kuralı oluşturmak için [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) ' i kullanın. Her iki kural de **Myresourcegroupnat**içinde oluşturulacaktır. Bu komutun sonucu, daha sonra kullanılmak üzere **$nsgdestination** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -309,7 +309,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $nsnm -Location $loc -S
 
 ### <a name="create-nic-for-destination-vm"></a>Hedef VM için NIC oluşturma
 
-**MyNicdestination**adlı [Yeni-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) ile bir ağ arabirimi oluşturun. Bu komut, Ortak IP adresi ve ağ güvenlik grubu yla ilişkilendirecektir. Bu komutun sonucu daha sonra kullanmak üzere **$nicdestination** adlı bir değişkende depolanır.
+**Mynicdestination**adlı [New-aznetworkınterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) ile bir ağ arabirimi oluşturun. Bu komut, genel IP adresi ve ağ güvenlik grubuyla ilişkilendirilecektir. Bu komutun sonucu, daha sonra kullanılmak üzere **$nicdestination** adlı bir değişkende depolanır.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -322,11 +322,11 @@ New-AzNetworkInterface -ResourceGroupName $rsg -Name $nnm -NetworkSecurityGroupI
 
 ### <a name="create-a-destination-vm"></a>Hedef VM oluşturma
 
-#### <a name="create-vm-configuration"></a>VM Yapılandırması Oluşturma
+#### <a name="create-vm-configuration"></a>VM yapılandırması oluştur
 
 PowerShell’de bir VM oluşturmak için kullanılacak görüntü, boyut ve kimlik doğrulaması seçenekleri gibi ayarların olduğu bir yapılandırma oluşturursunuz. Ardından bu yapılandırma VM’yi derlemek için kullanılır.
 
-SSH kimlik bilgilerini, işletim sistemi bilgilerini ve VM boyutunu tanımlayın. Bu örnekte, SSH anahtarı ~/.ssh/id_rsa.pub'da depolanır.
+SSH kimlik bilgilerini, işletim sistemi bilgilerini ve VM boyutunu tanımlayın. Bu örnekte, SSH anahtarı ~/. ssh/id_rsa. pub ' da depolanır.
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -362,7 +362,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigdestination -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-**MyResourceGroupNAT'ta** **MyVMdestination** adlı bir VM oluşturmak için yapılandırma tanımlarını [birleştirin.](/powershell/module/az.compute/new-azvm?view=azps-2.8.0)
+**Myresourcegroupnat**içinde [New-Azvm](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) ile **MYVMDESTINATION** adlı bir VM oluşturmak için yapılandırma tanımlarını birleştirin.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -371,11 +371,11 @@ $loc = 'eastus2'
 New-AzVM -ResourceGroupName $rsg -Location $loc -VM $vmConfigdestination
 ```
 
-Komut hemen geri dönecek olsa da, VM'nin devreye salması birkaç dakika sürebilir.
+Komut hemen geri dönebilirken, VM 'nin dağıtılması birkaç dakika sürebilir.
 
-## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>Hedef VM'de bir web sunucusu hazırlayın ve yükü test edin
+## <a name="prepare-a-web-server-and-test-payload-on-destination-vm"></a>Hedef VM 'de bir Web sunucusunu ve test yükünü hazırlama
 
-Öncelikle hedef VM IP adresini keşfetmek gerekir.  VM'nin genel IP adresini almak için [Get-AzPublicIpAddress'i](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)kullanın. 
+İlk olarak hedef sanal makinenin IP adresini bulduk.  VM 'nin genel IP adresini almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)komutunu kullanın. 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -385,11 +385,11 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $pipn | select IpAddress
 ``` 
 
 >[!IMPORTANT]
->Ortak IP adresini kopyalayın ve sonraki adımlarda kullanabilmeniz için not defterine yapıştırın. Bunun hedef sanal makine olduğunu belirtin.
+>Genel IP adresini kopyalayın ve sonra sonraki adımlarda kullanabilmeniz için bir not defteri 'ne yapıştırın. Bu, hedef sanal makine olduğunu gösterir.
 
-### <a name="sign-in-to-destination-vm"></a>Hedef VM'de oturum açın
+### <a name="sign-in-to-destination-vm"></a>Hedef VM 'de oturum açma
 
-SSH kimlik bilgileri, önceki işlemdeki Bulut Kabuğunuzda depolanmalıdır.  Tarayıcınızda bir [Azure Bulut Kabuğu](https://shell.azure.com) açın. Sanal makineye SSH için önceki adımda alınan IP adresini kullanın. 
+SSH kimlik bilgileri, önceki işlemden Cloud Shell depolanmalıdır.  Tarayıcınızda bir [Azure Cloud Shell](https://shell.azure.com) açın. Sanal makineye SSH için önceki adımda alınan IP adresini kullanın. 
 
 ```bash
 ssh azureuser@<ip-address-destination>
@@ -410,13 +410,13 @@ sudo rm /var/www/html/index.nginx-debian.html && \
 sudo dd if=/dev/zero of=/var/www/html/100k bs=1024 count=100
 ```
 
-Bu komutlar sanal makinenizi günceller, nginx yükler ve 100 KBytes dosyası oluşturur. Bu dosya NAT hizmeti kullanılarak kaynak VM'den alınacaktır.
+Bu komutlar, sanal makinenizi güncelleştirir, NGINX 'i yükler ve bir 100 KB dosya oluşturur. Bu dosya, NAT hizmeti kullanılarak kaynak VM 'den alınacaktır.
 
 Hedef VM ile SSH oturumunu kapatın.
 
-## <a name="prepare-test-on-source-vm"></a>Kaynak VM üzerinde test hazırlama
+## <a name="prepare-test-on-source-vm"></a>Kaynak VM 'de testi hazırlama
 
-Öncelikle kaynak VM IP adresini keşfetmek gerekir.  VM'nin genel IP adresini almak için [Get-AzPublicIpAddress'i](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)kullanın. 
+İlk olarak, kaynak VM 'nin IP adresini keşfetmemiz gerekir.  VM 'nin genel IP adresini almak için [Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest)komutunu kullanın. 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -426,17 +426,17 @@ Get-AzPublicIpAddress -ResourceGroupName $rsg -Name $pipn | select IpAddress
 ``` 
 
 >[!IMPORTANT]
->Ortak IP adresini kopyalayın ve sonraki adımlarda kullanabilmeniz için not defterine yapıştırın. Bunun kaynak sanal makine olduğunu belirtin.
+>Genel IP adresini kopyalayın ve sonra sonraki adımlarda kullanabilmeniz için bir not defteri 'ne yapıştırın. Bunun kaynak sanal makine olduğunu gösterir.
 
-### <a name="log-into-source-vm"></a>Kaynak VM'de oturum aç
+### <a name="log-into-source-vm"></a>Kaynak VM 'de oturum açma
 
-Yine, SSH kimlik bilgileri Bulut Kabuğu'nda depolanır. Tarayıcınızda Azure [Bulut Su şutu](https://shell.azure.com) için yeni bir sekme açın.  Sanal makineye SSH için önceki adımda alınan IP adresini kullanın. 
+Yine, SSH kimlik bilgileri Cloud Shell depolanır. Tarayıcınızda [Azure Cloud Shell](https://shell.azure.com) için yeni bir sekme açın.  Sanal makineye SSH için önceki adımda alınan IP adresini kullanın. 
 
 ```bash
 ssh azureuser@<ip-address-source>
 ```
 
-NAT hizmetini sınamaya hazırlanmak için aşağıdaki komutları kopyalayın ve yapıştırın.
+NAT hizmetinin test edilmesine hazırlanmak için aşağıdaki komutları kopyalayıp yapıştırın.
 
 ```bash
 sudo apt-get -y update && \
@@ -452,46 +452,46 @@ go get -u github.com/rakyll/hey
 
 ```
 
-Bu komutlar sanal makinenizi günceller, git'i yükler, GitHub'dan [yüklenir](https://github.com/rakyll/hey) ve kabuk ortamınızı günceller.
+Bu komutlar, sanal makinenizi günceller, git 'i yükler, GitHub 'dan [Hey](https://github.com/rakyll/hey) 'yi yükler ve kabuk ortamınızı güncelleştiracaktır.
 
 Artık NAT hizmetini test etmeye hazırsınız.
 
-## <a name="validate-nat-service"></a>NAT hizmetini doğrulama
+## <a name="validate-nat-service"></a>NAT hizmetini doğrula
 
-Kaynak VM'de oturum açtığınızda, hedef IP adresine istek oluşturmak için **curl** ve **hey'i** kullanabilirsiniz.
+Kaynak VM 'de oturum açarken, hedef IP adresine istek oluşturmak için **kıvrımlı** ve **Hey** kullanabilirsiniz.
 
-100-KBytes dosyasını almak için kıvırma kullanın.  Aşağıdaki örnekte ** \<ip adresi hedef>** daha önce kopyalamış olduğunuz hedef IP adresiyle değiştirin.  **--çıkış** parametresi, alınan dosyanın atılacağını gösterir.
+100-Kbayt dosyasını almak için kıvrımlı kullanın.  Aşağıdaki örnekteki ** \<IP adresi-hedef>** , daha önce kopyaladığınız hedef IP adresiyle değiştirin.  **--Output** parametresi, alınan dosyanın atılacağını gösterir.
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-Ayrıca **hey**kullanarak istekleri bir dizi oluşturabilirsiniz. Yine, ** \<ip adresi hedef>** daha önce kopyalamış olduğunuz hedef IP adresiyle değiştirin.
+Ayrıca, **Hey**kullanarak bir dizi istek da oluşturabilirsiniz. Yeniden, ** \<IP adresi-hedef>** , daha önce kopyaladığınız hedef IP adresiyle değiştirin.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k
 ```
 
-Bu komut, 30 saniyelik bir zaman aşımıyla 10 aynı anda 100 istek oluşturur. TCP bağlantısı yeniden kullanılmaz.  Her istek 100 Kbyte alır.  Çalışma sonunda, **hey** NAT hizmeti ne kadar iyi yaptığı hakkında bazı istatistikleri rapor edecektir.
+Bu komut, 30 saniyelik zaman aşımı süresi ile 10 istek 100 üretir. TCP bağlantısı yeniden kullanılamayacak.  Her istek 100 Kbayt alır.  Çalıştırmanın sonunda **, bu,** NAT hizmetinin ne kadar iyi olduğunu gösteren bir istatistik rapor eder.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu ve içerdiği tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanabilirsiniz.
+Artık gerekli değilse, [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) komutunu kullanarak kaynak grubunu ve içinde yer alan tüm kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu öğreticide, bir NAT ağ geçidi oluşturdunuz, bir kaynak ve hedef VM oluşturdunuz ve sonra NAT ağ geçidini test ettiniz.
+Bu öğreticide, bir NAT ağ geçidi oluşturdunuz, kaynak ve hedef VM oluşturdunuz ve sonra NAT ağ geçidini test ediyor.
 
-NAT hizmetinizin çalıştığını görmek için Azure Monitor'da ölçümleri inceleyin. Kullanılabilir SNAT bağlantı noktalarının kaynak tükenmesi gibi sorunları tanı.  SNAT bağlantı noktalarının kaynak tükenmesi, ek genel IP adresi kaynakları veya genel IP öneki kaynakları veya her ikisi de eklenerek kolayca giderilir.
+NAT hizmeti 'nin çalışıyor olduğunu görmek için Azure Izleyici 'de ölçümleri gözden geçirin. Kullanılabilir SNAT bağlantı noktalarının kaynak tükenmesi gibi sorunları tanılayın.  SNAT bağlantı noktalarının kaynak tükenmesi, ek genel IP adresi kaynakları veya genel IP öneki kaynakları veya her ikisi eklenerek kolayca adreslenir.
 
-- Sanal [Ağ NAT](./nat-overview.md) hakkında bilgi edinin
+- [Sanal ağ NAT](./nat-overview.md) hakkında bilgi edinin
 - [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
-- [Azure CLI'yi kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-cli.md)dağıtmak için hızlı başlatın.
-- [Azure PowerShell'i kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-powershell.md)dağıtmak için hızlı başlatın.
-- [Azure portalını kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-portal.md)dağıtmak için hızlı başlatın.
+- [Azure CLI kullanarak NAT Gateway kaynağını](./quickstart-create-nat-gateway-cli.md)dağıtmaya yönelik hızlı başlangıç.
+- [Azure PowerShell kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-powershell.md)dağıtmaya yönelik hızlı başlangıç.
+- [Azure Portal kullanarak NAT ağ geçidi kaynağını](./quickstart-create-nat-gateway-portal.md)dağıtmaya yönelik hızlı başlangıç.
 
 > [!div class="nextstepaction"]
 

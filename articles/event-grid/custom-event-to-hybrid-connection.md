@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Karma bağlantıya özel etkinlikler gönderin - Olay Izgara'
-description: "Öğretici: Bir konuyu yayımlamak için Azure Olay Ağıt'ı ve Azure CLI'yi kullanın ve bu etkinliğe abone olun. Uç nokta için karma bir bağlantı kullanılır."
+title: 'Öğretici: karma bağlantıya özel olayları gönderme-Event Grid'
+description: 'Öğretici: Azure Event Grid ve Azure CLı kullanarak bir konu yayımlayın ve bu olaya abone olun. Uç nokta için karma bir bağlantı kullanılır.'
 services: event-grid
 keywords: ''
 author: spelluru
@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.service: event-grid
 ms.custom: seodec18
 ms.openlocfilehash: 2773d06fdfc606faaab88340fc2ef9685bba21f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720711"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Öğretici: Azure CLI ve Olay Izgarası ile Azure Röle Karma Bağlantılarına özel olayları yönlendirin
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Öğretici: Azure CLı ve Event Grid ile Azure Relay Karma Bağlantılar özel olayları yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Relay Karma Bağlantılar, desteklenen olay işleyicilerinden biridir. Genel uç noktası olmayan uygulamalardan alınan olayları işlemeniz gerektiğinde olay işleyicisi olarak karma bağlantıları kullanırsınız. Bu uygulamalar kurumsal ağınızın içinde olabilir. Bu makalede Azure CLI ile özel bir konu oluşturacak, bu özel konuya abone olacak ve olayı tetikleyerek sonucu görüntüleyeceksiniz. Olayları karma bağlantıya gönderirsiniz.
 
@@ -27,7 +27,7 @@ Bu makalede zaten bir karma bağlantınız ve dinleyici uygulamanız olduğu var
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!NOTE]
-> Azure CLI'yi yerel makinenizde kullanıyorsanız, Azure CLI sürüm 2.0.56 veya üzeri kullanın. Azure CLI'nin en son sürümünü yükleme yle ilgili talimatlar [için](/cli/azure/install-azure-cli)bkz.
+> Yerel makinenizde Azure CLı kullanıyorsanız, Azure CLı sürüm 2.0.56 veya üstünü kullanın. Azure CLı 'nın en son sürümünü yükleme yönergeleri için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -51,7 +51,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Özel konuya abone olma
 
-Olay Izgarası'na hangi olayları izlemek istediğinizi söylemek için bir olay ızgarası konusuna abone olabilirsiniz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone dir ve bitiş noktası için karma bağlantının kaynak kimliğini geçer. Karma bağlantı kimliği şu biçimdedir:
+İzlemek istediğiniz olayları Event Grid söylemek için bir Event Grid konusuna abone olursunuz. Aşağıdaki örnek, oluşturduğunuz özel konuya abone olur ve uç nokta için karma bağlantının kaynak KIMLIĞINI geçirir. Karma bağlantı kimliği şu biçimdedir:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -80,7 +80,7 @@ Abonelik için bir [sona erme tarihi](concepts.md#event-subscription-expiration)
 
 Karma bağlantıdan olayları alabilecek bir uygulamaya ihtiyacınız vardır. [Microsoft Azure Event Grid Hybrid Connection Consumer sample for C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination), bu işlemi gerçekleştirir. Önkoşul adımlarını tamamladınız.
 
-1. Visual Studio 2019 veya daha sonra olduğundan emin olun.
+1. Visual Studio 2019 veya sonraki bir sürüme sahip olduğunuzdan emin olun.
 
 1. Depoyu yerel makinenize kopyalayın.
 

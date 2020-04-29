@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğretici - Ölçek Uygulaması
+title: Kullanım DıŞı Azure Container Service öğretici-uygulamayı ölçeklendirme
 description: Azure Container Service öğreticisi - Uygulamayı Ölçeklendirme
 author: dlepow
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 2ea8a5428c1fabdfda4f2298c0559792537df481
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273997"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(AmortismanA Uğradı) Ölçek Kubernetes pods ve Kubernetes altyapı
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kullanım DıŞı Kubernetes Pod ve Kubernetes altyapısını ölçeklendirme
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz.](../../aks/tutorial-kubernetes-scale.md)
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service 'te (AKS) uygulamaları ölçeklendirme](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -42,7 +42,7 @@ Bu adımları tamamlamadıysanız ve takip etmek istiyorsanız, [Öğretici 1 �
 
 Şu ana kadar hem Azure Vote ön ucu hem de Redis örneği tek bir çoğaltma dağıtıldı. Doğrulamak için [kubectl get](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu çalıştırın.
 
-Tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Cloud Shell'i açmak için gidin.
+Tarayıcınızda Cloud Shell [https://shell.azure.com](https://shell.azure.com) açmak için bölümüne gidin.
 
 ```console
 kubectl get pods

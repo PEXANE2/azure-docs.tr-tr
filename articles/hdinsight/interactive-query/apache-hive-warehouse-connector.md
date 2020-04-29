@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252416"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509542"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme
 
-Apache Hive ambar Bağlayıcısı (HWC), verileri Spark veri çerçeveleri ve Hive tabloları arasında taşıma ve ayrıca Spark akış verilerini Hive tablolarına yönlendirme gibi görevleri destekleyerek Apache Spark ve Apache Hive ile daha kolay çalışmanıza olanak tanıyan bir kitaplıktır. Hive ambar Bağlayıcısı Spark ve Hive arasında bir köprü gibi çalışmaktadır. Geliştirme için Scala, Java ve Python 'u destekler.
+Apache Hive ambar Bağlayıcısı (HWC), Apache Spark ve Apache Hive ile daha kolay çalışmanıza olanak sağlayan bir kitaplıktır. Spark DataFrames ve Hive tabloları arasında veri taşıma gibi görevleri destekleyerek daha kolay. Ve Spark akış verilerini Hive tablolarına yönlendirme. Hive ambar Bağlayıcısı Spark ve Hive arasında bir köprü gibi çalışmaktadır. Geliştirme için Scala, Java ve Python 'u destekler.
 
-Hive ambarı Bağlayıcısı, güçlü büyük veri uygulamaları oluşturmak için Hive ve Spark 'ın benzersiz özelliklerinden yararlanmanıza olanak tanır. Apache Hive atomik, tutarlı, yalıtılmış ve dayanıklı (ACID) veritabanı işlemleri için destek sunar. Hive içindeki ACID ve işlemler hakkında daha fazla bilgi için bkz. [Hive işlemleri](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive Ayrıca Apache Ranger aracılığıyla ayrıntılı güvenlik denetimleri ve düşük gecikme süreli analitik Işlem Apache Spark kullanılamaz.
+Hive ambarı Bağlayıcısı, Hive ve Spark benzersiz özelliklerinden yararlanmanızı sağlar. Güçlü büyük veri uygulamaları oluşturmak için kullanılan özellikler. Apache Hive atomik, tutarlı, yalıtılmış ve dayanıklı (ACID) veritabanı işlemleri için destek sunar. Hive içindeki ACID ve işlemler hakkında daha fazla bilgi için bkz. [Hive işlemleri](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Hive Ayrıca Apache Ranger aracılığıyla ayrıntılı güvenlik denetimleri ve düşük gecikme süreli analitik Işlem Apache Spark kullanılamaz.
 
-Apache Spark, Apache Hive içinde kullanılamayan akış özellikleri sağlayan yapılandırılmış bir akış API 'SI vardır. HDInsight 4,0 ' den başlayarak, Apache Spark 2.3.1 ve Apache Hive 3.1.0, birlikte çalışabilirliğin zor olmasına yönelik ayrı metastores 'e sahiptir. Hive ambarı Bağlayıcısı Spark ve Hive 'yi birlikte kullanmayı kolaylaştırır. HWC kitaplığı, LLAP Daemon 'ları 'ten Spark yürüticilerine verileri paralel olarak yükler ve Spark 'tan Hive 'e standart bir JDBC bağlantısı kullanmaktan daha verimli ve ölçeklenebilir hale getirir.
+Apache Spark, Apache Hive içinde kullanılamayan akış özellikleri sağlayan yapılandırılmış bir akış API 'SI vardır. HDInsight 4,0 ' den başlayarak, Apache Spark 2.3.1 ve Apache Hive 3.1.0 ayrı bir metastores içermelidir. Bu ayrı metasa, birlikte çalışabilirliğini zorlaştırır. Hive ambarı Bağlayıcısı Spark ve Hive 'yi birlikte kullanmayı kolaylaştırır. HWC kitaplığı, verileri LLAP 'den (düşük gecikme süreli analitik Işleme) Daemon 'ları ' dan Spark yürüticilerine paralel olarak yükler. Bu eylem, Spark 'tan Hive 'e standart bir JDBC bağlantısı kullanmaktan daha verimli ve uyarlanabilir bir tablo sağlar.
 
 ![Hive ambarı bağlayıcı mimarisi](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Spark ambarı Web Kullanıcı arabiriminizden **Spark2** > **configs** > **Custo
 
 ![Apache ambarı Spark2 yapılandırması](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Aşağıdakileri eklemek/güncelleştirmek için gereken **özelliği Ekle...** öğesini seçin:
+Aşağıdaki değeri eklemek/güncelleştirmek için gerektiğinde **Özellik Ekle...** öğesini seçin:
 
 | Anahtar | Değer |
 |----|----|
@@ -122,13 +123,13 @@ Spark-Shell oturumu başlatmak için aşağıdaki adımları uygulayın:
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Kurumsal Güvenlik Paketi (ESP) kümelerinde sorguları bağlama ve çalıştırma
 
-Kurumsal Güvenlik Paketi (ESP), Azure HDInsight 'ta Apache Hadoop kümelerine yönelik Active Directory tabanlı kimlik doğrulaması, çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi gibi kurumsal düzeyde yetenekler sağlar. ESP hakkında daha fazla bilgi için bkz. [HDInsight 'ta kurumsal güvenlik paketi kullanma](../domain-joined/apache-domain-joined-architecture.md).
+Kurumsal Güvenlik Paketi (ESP) Active Directory tabanlı kimlik doğrulaması gibi kurumsal sınıf yetenekler sağlar. Azure HDInsight 'ta Apache Hadoop kümeleri için çoklu Kullanıcı desteği ve rol tabanlı erişim denetimi. ESP hakkında daha fazla bilgi için bkz. [HDInsight 'ta kurumsal güvenlik paketi kullanma](../domain-joined/apache-domain-joined-architecture.md).
 
-1. Apache Spark kümeniz için baş düğümüne 'a SSH. SSH ile kümenize bağlanma hakkında daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Apache Spark kümeniz için baş düğümüne 'a SSH.
 
 1. Bir `kinit` etki alanı kullanıcısı ile yazın ve oturum açın.
 
-1. Spark-Shell ' i aşağıda gösterildiği gibi yapılandırma parametrelerinin tam listesiyle başlatın. Açılı ayraçlar arasındaki tüm büyük harflerde bulunan tüm değerler kümenize göre belirtilmelidir. Aşağıdaki parametrelerden herhangi birine giriş yapmak için değerleri bulmanız gerekiyorsa, [Hive ambarı bağlayıcı kurulumu](#hive-warehouse-connector-setup)'ndaki bölümüne bakın.:
+1. Spark-Shell ' i aşağıda gösterildiği gibi yapılandırma parametrelerinin tam listesiyle başlatın. Açılı ayraçlar arasındaki tüm büyük harflerde bulunan tüm değerler kümenize göre belirtilmelidir. Aşağıdaki parametrelerden herhangi birine giriş yapmak için değerleri bulmanız gerekiyorsa, [Hive ambarı bağlayıcı kurulumu](#hive-warehouse-connector-setup)'ndaki bölümüne bakın.
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ Spark, Hive 'un yönetilen ACID tablolarına yazmayı yerel olarak desteklemez. 
 
 Hive ambarı bağlayıcısını kullanarak, verileri Hive tablolarına yazmak için Spark akışını kullanabilirsiniz.
 
-Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablosuna veri döndüren bir Hive ambarı bağlayıcı örneği oluşturmak için aşağıdaki adımları izleyin.
+Hive ambarı Bağlayıcısı oluşturmak için aşağıdaki adımları izleyin. Bu örnek, localhost bağlantı 9999 noktasındaki Spark akışından bir Hive tablosuna veri girişi.
 
 1. [Sorguları bağlama ve çalıştırma](#connecting-and-running-queries)altındaki adımları izleyin.
 
@@ -193,7 +194,7 @@ Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablo
 
 1. Aşağıdaki adımları uygulayarak oluşturduğunuz Spark akışı için veri oluşturun:
     1. Aynı Spark kümesinde ikinci bir SSH oturumu açın.
-    1. Komut istemine yazın `nc -lk 9999`. Bu komut, komut satırından belirtilen bağlantı noktasına veri göndermek için netcat yardımcı programını kullanır.
+    1. Komut istemine yazın `nc -lk 9999`. Bu komut, `netcat` komut satırından belirtilen bağlantı noktasına veri göndermek için yardımcı programını kullanır.
 
 1. İlk SSH oturumuna dönün ve akış verilerini tutmak için yeni bir Hive tablosu oluşturun. Spark-Shell ' de aşağıdaki komutu girin:
 
@@ -224,7 +225,7 @@ Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablo
     hive.table("stream_table").show()
     ```
 
-İkinci SSH oturumunda netcat 'i durdurmak için **CTRL + C** tuşlarını kullanın. İlk `:q` SSH oturumunda Spark-Shell ' i çıkmak için kullanın.
+İkinci SSH oturumunda durdurmak `netcat` için **CTRL + C** tuşlarını kullanın. İlk `:q` SSH oturumunda Spark-Shell ' i çıkmak için kullanın.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Spark ESP kümelerinde verilerin güvenliğini sağlama
 
@@ -253,7 +254,7 @@ Localhost bağlantı noktası 9999 üzerindeki bir Spark akışından Hive tablo
 
         ![Hive ambar Bağlayıcısı Ranger Hive ilke listesi](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. İstenen bir ilke adı belirtin. Veritabanı seçin: **varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select**ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster. **Ekle**'ye tıklayın.
+    a. Bir ilke adı belirtin. Veritabanı seçin: **varsayılan**, Hive tablosu: **demo**, Hive sütunu: **ad**, Kullanıcı: **Rsadmin2**, erişim türleri: **Select**ve **kısmi maske:** **maskeleme seç seçenek** menüsünden son 4 ' ü göster. **Ekle**'ye tıklayın.
                 ![ilke oluştur](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Tablonun içeriğini yeniden görüntüleyin. Ranger ilkesini uyguladıktan sonra sütunun yalnızca son dört karakterini görebiliriz.
 

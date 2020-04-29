@@ -1,7 +1,7 @@
 ---
-title: Azure CLI Script Örneği - Azure Uygulama Yapılandırma Mağazası Oluşturma
+title: Azure CLı betik örneği-Azure uygulama yapılandırma deposu oluşturma
 titleSuffix: Azure App Configuration
-description: Azure Uygulama Yapılandırma mağazası oluşturmak için Azure CLI Script'i kullanma
+description: Azure uygulama yapılandırma deposu oluşturmak için Azure CLı betiği kullanma
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,15 +9,15 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77623078"
 ---
-# <a name="create-an-azure-app-configuration-store"></a>Azure Uygulama Yapılandırma Mağazası Oluşturma
+# <a name="create-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu oluşturma
 
-Bu örnek komut dosyası, yeni bir kaynak grubunda Azure Uygulama Yapılandırmasının yeni bir örneğini oluşturur.
+Bu örnek betik yeni bir kaynak grubunda yeni bir Azure Uygulama yapılandırması örneği oluşturur.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -64,16 +64,16 @@ Yeni kaynak grubu için oluşturulan gerçek adı not edin. Tüm grup kaynaklar�
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, yeni bir kaynak grubu ve bir Uygulama Yapılandırma deposu oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, yeni bir kaynak grubu ve bir uygulama yapılandırma deposu oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az appconfig oluşturmak](/cli/azure/appconfig#az-appconfig-create) | Bir Uygulama Yapılandırma deposu kaynağı oluşturur. |
-| [az appconfig kimlik listesi](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Bir Uygulama Yapılandırma mağazasının erişim anahtarlarını listeleyin. |
+| [az appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Bir uygulama yapılandırma deposu kaynağı oluşturur. |
+| [az appconfig kimlik bilgileri listesi](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Uygulama yapılandırma deposu için erişim anahtarlarını listeleyin. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek Uygulama Yapılandırması CLI komut dosyası örnekleri [Azure App Configuration CLI örnekleri](../cli-samples.md)bulunabilir.
+Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.

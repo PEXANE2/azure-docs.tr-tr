@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell - kaynak grubuna abone olun
-description: Bu makalede, kaynak grubu için Olay Ağı olaylarına nasıl abone olunur ve kaynak için filtre uygulanır' ı gösteren bir azure PowerShell komut dosyası görüntülenir.
+title: Azure PowerShell-kaynak grubuna abone olma
+description: Bu Azure PowerShell makalede, bir kaynak grubu ve bir kaynak filtresi için Event Grid olaylarına nasıl abone olunacağı gösterilmektedir.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720614"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>PowerShell ile bir kaynak grubu için olaylara abone olma ve kaynağa göre filtreleme
@@ -30,11 +30,11 @@ Bu betik, bir kaynak grubu için olaylara bir Event Grid aboneliği oluşturur. 
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events/filter-events.ps1 "Filter events")]
 
-## <a name="sample-script---preview-module"></a>Örnek komut dosyası - önizleme modülü
+## <a name="sample-script---preview-module"></a>Örnek betik-önizleme modülü
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Önizleme örnek komut dosyası Olay Izgara modülü gerektirir. Yüklemek için, çalıştırmak`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için şunu çalıştırın`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 
@@ -44,7 +44,7 @@ Bu betik, olay aboneliğini oluşturmak için aşağıdaki komutu kullanır. Tab
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
+| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

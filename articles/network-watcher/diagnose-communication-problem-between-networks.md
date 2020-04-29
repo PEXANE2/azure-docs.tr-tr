@@ -1,7 +1,7 @@
 ---
-title: Öğretici - Azure portalını kullanan ağlar arasındaki iletişim sorununu tanıla
+title: Öğretici-Azure portal kullanarak ağlarla iletişim sorununu tanılama
 titleSuffix: Azure Network Watcher
-description: Bu eğitimde, Ağ İzleyicisi'nin VPN tanılama özelliğini kullanarak, bir Azure sanal ağ ağ geçidi aracılığıyla şirket içinde bağlı bir Azure sanal ağı veya diğer sanal ağ arasındaki iletişim sorununu nasıl tanılayacağımı öğrenin.
+description: Bu öğreticide, ağ izleyicisinin VPN Tanılama özelliğini kullanarak bir Azure sanal ağ geçidi aracılığıyla şirket içi veya diğer sanal ağa bağlı bir Azure sanal ağı arasında bir iletişim sorunu tanılamayı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -15,22 +15,22 @@ ms.date: 04/27/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76834697"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ağlar arasında bir iletişim sorununu tanılama
 
-Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Sanal ağ geçidi, bir Azure sanal ağını şirket içine ya da diğer sanal ağa bağlar. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağ İzleyicisi'nin VPN tanılama özelliği ile bir sanal ağ geçidi sorununu tanılama
 > * Bir ağ geçidi bağlantısı sorununu tanılama
 > * Ağ geçidi ile ilgili bir sorunu çözme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -38,14 +38,14 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 ## <a name="prerequisites"></a>Ön koşullar
 
 VPN tanılamayı kullanmak için çalışır durumda bir VPN ağ geçidinizin olması gerekir. Tanılamak için mevcut bir VPN ağ geçidiniz yoksa, bir [PowerShell betiği](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) kullanarak bir tane dağıtabilirsiniz. PowerShell betiğini şuradan çalıştırabilirsiniz:
-- **Yerel PowerShell yüklemesi**: Komut `Az` dosyası azure PowerShell modülgerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+- **Yerel bir PowerShell yüklemesi**: betik Azure PowerShell `Az` modülünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse bkz. [Azure PowerShell yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 - **Azure Cloud Shell**: [Azure Cloud Shell](https://shell.azure.com/powershell)’de PowerShell’in en son sürümü yüklü ve yapılandırılmış durumdadır ve Azure’da oturum açmanızı sağlar.
 
 Betiğin bir VPN ağ geçidi oluşturması yaklaşık bir saat sürer. Kalan adımlarda, tanılamakta olduğunuz ağ geçidinin bu betikle dağıtılan ağ geçidi olduğu varsayılır. Bunun yerine kendi mevcut ağ geçidinizi tanılarsanız sonuçlarınız farklılık gösterir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com)oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-network-watcher"></a>Ağ İzleyicisini etkinleştirme
 

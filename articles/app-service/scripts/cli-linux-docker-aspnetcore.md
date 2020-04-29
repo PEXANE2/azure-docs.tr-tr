@@ -1,6 +1,6 @@
 ---
-title: "CLI: Docker'dan ASP.NET Core uygulaması oluşturun"
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, Docker Hub'dan nasıl bir ASP.NET Core uygulaması oluşturulacak larını gösterir.
+title: "CLı: Docker 'dan ASP.NET Core uygulaması oluşturma"
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, Docker Hub 'dan ASP.NET Core uygulamasının nasıl oluşturulacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 3a2d1983-ff7b-476a-ac44-49ec2aabb31a
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 8eb95644db5b1cb00ef6e245db6197cf2a2f301b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80044763"
 ---
-# <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>Azure CLI'yi kullanarak Docker Hub'ın Docker konteynerinde ASP.NET Core uygulaması oluşturma
+# <a name="create-an-aspnet-core-app-in-a-docker-container-from-docker-hub-using-azure-cli"></a>Azure CLı kullanarak Docker Hub 'ından Docker kapsayıcısında bir ASP.NET Core uygulaması oluşturma
 
-Bu örnek komut dosyası bir kaynak grubu, bir Linux App Service planı ve bir uygulama oluşturur. Daha sonra bir Docker Kapsayıcısı kullanarak ASP.NET Core uygulamasını dağıtır.
+Bu örnek betik bir kaynak grubu, bir Linux App Service planı ve bir uygulama oluşturur. Daha sonra bir Docker Kapsayıcısı kullanarak ASP.NET Core uygulamasını dağıtır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,14 +34,14 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz Azure CLI 2.0 veya so
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, bir kaynak grubu, Uygulama Hizmeti uygulaması ve ilgili tüm kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik bir kaynak grubu, App Service uygulaması ve tüm ilgili kaynakları oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | Uygulama Hizmeti uygulaması için Docker konteynerini ayarlar. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) | App Service uygulaması için Docker kapsayıcısını ayarlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

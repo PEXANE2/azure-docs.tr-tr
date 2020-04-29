@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Dizüstü Bilgisayarlar (Python) kullanarak elektrikli araçları yönlendirin | Microsoft Azure Haritaları'
-description: Microsoft Azure Haritalar yönlendirme API'lerini ve Azure Not Defterlerini kullanarak elektrikli araçları yönlendirin.
+title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik taşıtlar yönlendirme | Microsoft Azure haritaları'
+description: Microsoft Azure haritaları yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik Araçlar yönlendirin.
 author: philmea
 ms.author: philmea
 ms.date: 11/12/2019
@@ -10,92 +10,92 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3118ca39ec0efd42c9f7b622c91f857034ef4b03
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333827"
 ---
-# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Dizüstü Bilgisayarlar (Python) kullanarak elektrikli araçları yönlendirin
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
-Azure Haritalar, azure'a yerel olarak entegre edilmiş bir jeouzamsal hizmet API'leri portföyüdür. Bu API'ler, geliştiricilerin, işletmelerin ve ISV'lerin konum bilincine sahip uygulamalar, IoT, mobilite, lojistik ve varlık izleme çözümleri geliştirmesini sağlar. 
+Azure Maps, Azure ile yerel olarak tümleştirilmiş Jeo-uzamsal hizmet API 'Lerinin bir portföyüdür. Bu API 'Ler, geliştiricilerin, kuruluşların ve ISV 'Lerin konuma duyarlı uygulamalar, IoT, Mobility, lojistik ve varlık izleme çözümleri geliştirmesini sağlar. 
 
-Azure Haritalar REST API'leri, coğrafi veri çözümlemesini ve makine öğrenimi senaryolarını etkinleştirmek için Python ve R gibi dillerden çağrılabilir. Azure Haritalar, kullanıcıların birkaç veri noktası arasındaki yolları hesaplamasına olanak tanıyan sağlam bir [yönlendirme API'leri](https://docs.microsoft.com/rest/api/maps/route) kümesi sunar. Hesaplamalar, araç tipi veya ulaşılabilir alan gibi çeşitli koşullara dayanmaktadır. 
+Azure haritalar REST API 'Leri, Jeo-uzamsal veri analizi ve makine öğrenimi senaryolarını etkinleştirmek için Python ve R gibi dillerden çağrılabilir. Azure Maps, kullanıcıların çeşitli veri noktaları arasında rota hesaplamasını sağlayan sağlam bir [yönlendirme API](https://docs.microsoft.com/rest/api/maps/route) 'si kümesi sunar. Hesaplamalar, araç türü veya ulaşılabilir alan gibi çeşitli koşullara dayanır. 
 
-Bu eğitimde, elektrikli araç aküsü düşük olan bir sürücüye yardım edin. Sürücünün aracın bulunduğu yerden mümkün olan en yakın şarj istasyonunu bulması gerekiyor.
+Bu öğreticide, elektrik araç pili düşük olan bir sürücünün yardımına kılavuzluk edersiniz. Sürücünün, aracın konumundan olası en yakın ücretlendirme istasyonunu bulması gerekir.
 
 Bu öğreticide şunları yapacaksınız:
 
 > [!div class="checklist"]
-> * Bulutta [Azure Not Defterlerinde](https://docs.microsoft.com/azure/notebooks) bir Jupyter dizüstü bilgisayar oluşturun ve çalıştırın.
-> * Python'da Azure Haritalar REST API'lerini arayın.
-> * Elektrikli aracın tüketim modeline göre ulaşılabilir bir aralık arayın.
-> * Ulaşılabilen aralıkta elektrikli araç şarj istasyonları veya izochrone arayın.
-> * Ulaşılabilir menzil sınırını ve şarj istasyonlarını harita üzerinde işle.
-> * Sürücü süresine bağlı olarak en yakın elektrikli araç şarj istasyonuna giden bir rotayı bulun ve görselleştirin.
+> * Bulutta [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) bir Jupyter Not defteri oluşturun ve çalıştırın.
+> * Python 'da Azure haritalar REST API 'Lerini çağırın.
+> * Elektrik araç tüketiminin tüketim modeline göre erişilebilir bir Aralık arayın.
+> * Erişilebilir Aralık veya ısovaone içindeki elektrik araç doldurma istasyonlarını arayın.
+> * Bir haritada erişilebilir Aralık sınırı ve ücretlendirme istasyonlarını işleme.
+> * Sürücü zamanına göre en yakın elektrik araç doldurma istasyonuna bir yol bulun ve görselleştirin.
 
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-Bu öğreticiyi tamamlamak için öncelikle bir Azure Haritalar hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
+Bu öğreticiyi tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. 
 
-Azure Haritalar hesap aboneliği oluşturmak için [hesap oluştur'daki](quick-demo-map-app.md#create-an-account-with-azure-maps)yönergeleri izleyin. S1 fiyat katmanına sahip bir Azure Haritalar hesap aboneliğine ihtiyacınız vardır. 
+Azure haritalar hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps)bölümündeki yönergeleri izleyin. S1 fiyat katmanıyla bir Azure Maps hesap aboneliğine ihtiyacınız vardır. 
 
-Hesabınız için birincil abonelik anahtarını almak için [birincil anahtarı al'daki](quick-demo-map-app.md#get-the-primary-key-for-your-account)yönergeleri izleyin.
+Hesabınız için birincil abonelik anahtarını almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account)' daki yönergeleri izleyin.
 
-Azure Haritalar'da kimlik doğrulama hakkında daha fazla bilgi için Azure [Haritalar'da kimlik doğrulamayı yönet'e](./how-to-manage-authentication.md)bakın.
+Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Azure dizüstü bilgisayar oluşturma
+## <a name="create-an-azure-notebook"></a>Azure Not defteri oluşturma
 
-Bu öğreticiyi takip etmek için bir Azure dizüstü proje oluşturmanız ve Jupyter not defteri dosyasını karşıdan yüklemeniz ve çalıştırmanız gerekir. Not defteri dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure dizüstü bilgisayar projesi oluşturmak ve Jupyter not defteri belgesini ona yüklemek için aşağıdaki adımları yapın:
+Bu öğreticiyle birlikte izlemek için bir Azure Not defteri projesi oluşturmanız ve Jupyter Not defteri dosyasını indirmeniz ve çalıştırmanız gerekir. Not defteri dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Not defteri projesi oluşturmak ve Jupyter Not Defteri belgesini buna yüklemek için aşağıdaki adımları uygulayın:
 
-1. Azure [Not Defterleri'ne](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için [Quickstart: Oturum açın ve bir kullanıcı kimliği ayarlayın.](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks)
-1. Herkese açık profil sayfanızın üst kısmında **Projelerim'i**seçin.
+1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
+1. Ortak profil sayfanızın en üstünde **Projelerim**' nı seçin.
 
     ![Projelerim düğmesi](./media/tutorial-ev-routing/myproject.png)
 
-1. **Projelerim** sayfasında Yeni **Proje'yi**seçin.
+1. **Projelerim** sayfasında **Yeni proje**' yi seçin.
  
-   ![Yeni Proje düğmesi](./media/tutorial-ev-routing/create-project.png)
+   ![Yeni proje düğmesi](./media/tutorial-ev-routing/create-project.png)
 
-1. Yeni **Proje Oluştur** bölmesine bir proje adı ve proje kimliği girin.
+1. **Yeni proje oluştur** bölmesinde bir proje adı ve proje kimliği girin.
  
-    ![Yeni Proje Oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
+    ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
-1. Projeniz oluşturulduktan sonra, bu [Jupyter not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Haritalar Jupyter dizüstü bilgisayar deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
+1. Projeniz oluşturulduktan sonra, bu [Jupyter Not defteri belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
 
-1. **Projelerim** sayfasındaki projeler listesinde projenizi seçin ve ardından Jupyter not defteri belge dosyasını yüklemek için **Yükle'yi** seçin. 
+1. Projeler listesinde, **projem** sayfasında, projenizi seçin ve ardından **karşıya yükle** ' yi seçerek Jupyter Not defteri belge dosyasını karşıya yükleyin. 
 
-    ![yükleme not defteri](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Not defterini karşıya yükle](./media/tutorial-ev-routing/upload-notebook.png)
 
-1. Dosyayı bilgisayarınızdan yükleyin ve **ardından Bitti'yi**seçin.
+1. Dosyayı bilgisayarınızdan karşıya yükleyin ve ardından **bitti**' yi seçin.
 
-1. Yükleme başarıyla tamamlandıktan sonra dosyanız proje sayfanızda görüntülenir. Jupyter dizüstü bilgisayar olarak açmak için dosyaya çift tıklayın.
+1. Karşıya yükleme başarıyla tamamlandıktan sonra, dosyanız proje sayfanızda görüntülenir. Dosyayı Jupyter Not defteri olarak açmak için dosyaya çift tıklayın.
 
-Not defteri dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu, not defteri dosyasında, her seferinde bir hücreçalıştırın. Dizüstü bilgisayar uygulamasının üst kısmındaki **Çalıştır** düğmesini seçerek her hücredeki kodu çalıştırabilirsiniz.
+Not Defteri dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu Not Defteri dosyasında, tek seferde bir hücre olarak çalıştırın. Not defteri uygulamasının en üstündeki **Çalıştır** düğmesini seçerek kodu her hücrede çalıştırabilirsiniz.
 
   ![Çalıştır düğmesi](./media/tutorial-ev-routing/run.png)
 
-## <a name="install-project-level-packages"></a>Proje düzeyi paketlerini yükleme
+## <a name="install-project-level-packages"></a>Proje düzeyi paketleri 'ni yükler
 
-Kodu not defterinde çalıştırmak için aşağıdaki adımları yaparak paketleri proje düzeyinde yükleyin:
+Kodu Not defterinde çalıştırmak için, aşağıdaki adımları uygulayarak paketleri proje düzeyine yüklersiniz:
 
-1. [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını [Azure Maps Jupyter dizüstü bilgisayar deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin ve ardından projenize yükleyin.
-1. Proje panosunda **Proje Ayarları'nı**seçin. 
-1. Proje **Ayarları** bölmesinde **Çevre** sekmesini seçin ve sonra **Ekle'yi**seçin.
-1. **Çevre Kurulum Adımları**altında, aşağıdakileri yapın:   
-    a. İlk açılan listede **Requirements.txt'yi**seçin.  
-    b. İkinci açılan *listede, gereksinimlerinizi seçin.txt* dosyanızı.  
-    c. Üçüncü açılır listede, sürüm olarak **Python Sürüm 3.6'yı** seçin.
-1. **Kaydet'i**seçin.
+1. [Azure Maps Jupyter Not defteri deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [*requirements. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını indirin ve ardından projenize yükleyin.
+1. Proje panosunda **proje ayarları**' nı seçin. 
+1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle**' yi seçin.
+1. **Ortam kurulum adımları**altında aşağıdakileri yapın:   
+    a. İlk açılan listede, **requirements. txt**' yi seçin.  
+    b. İkinci açılan listede, *requirements. txt* dosyanızı seçin.  
+    c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
+1. **Kaydet**’i seçin.
 
-    ![Paketleri yükleme](./media/tutorial-ev-routing/install-packages.png)
+    ![Paketleri yükler](./media/tutorial-ev-routing/install-packages.png)
 
-## <a name="load-the-required-modules-and-frameworks"></a>Gerekli modülleri ve çerçeveleri yükleyin
+## <a name="load-the-required-modules-and-frameworks"></a>Gerekli modülleri ve çerçeveleri yükleme
 
-Gerekli tüm modülleri ve çerçeveleri yüklemek için aşağıdaki komut dosyasını çalıştırın.
+Gerekli tüm modülleri ve çerçeveleri yüklemek için aşağıdaki betiği çalıştırın.
 
 ```Python
 import time
@@ -104,13 +104,13 @@ import urllib.parse
 from IPython.display import Image, display
 ```
 
-## <a name="request-the-reachable-range-boundary"></a>Ulaşılabilir aralık sınırını isteme
+## <a name="request-the-reachable-range-boundary"></a>Erişilebilir Aralık sınırı iste
 
-Bir paket teslimat şirketinin filosunda bazı elektrikli araçlar vardır. Gün boyunca, elektrikli araçların depoya dönmek zorunda kalmadan şarj edilmesi gerekir. Kalan ücret her bir saatten az düştüğünde, ulaşılabilir bir aralıkta bir dizi şarj istasyonu ararsınız. Esasen, pil in şarj ı düşük olduğunda bir şarj istasyonu ararsınız. Ve, şarj istasyonları bu dizi için sınır bilgileri olsun. 
+Bir paket teslim şirketi, Fleet ortamında bazı elektrik taşıtlar içerir. Gün boyunca, elektrik taşıtlarının ambara geri dönmek zorunda kalmadan yeniden ücretlendirilmelidir. Kalan tüm ücretler bir saatten daha az düşdüğünde, erişilebilir bir aralıktaki bir dizi ücretlendirme istasyonu arayın. Esas olarak, pil düşük bir ücret karşılığında bir ücretlendirme İstasyonu arar. Ve, bu ücretlendirme istasyonlarıyla ilgili sınır bilgilerini alırsınız. 
 
-Şirket ekonomi ve hız dengesi gerektiren rotalar kullanmayı tercih ettiği için, istenen routeType *ekodur.* Aşağıdaki komut dosyası, Azure Haritalar yönlendirme hizmetinin [Rota Aralığı Al API'sını](https://docs.microsoft.com/rest/api/maps/route/getrouterange) çağırır. Aracın tüketim modeli için parametreleri kullanır. Komut dosyası daha sonra geojson formatında, otomobilin maksimum ulaşılabilir aralığını temsil eden çokgen bir nesne oluşturmak için yanıtı parses.
+Şirket ekonomisi ve hız dengelemesi gerektiren rotaları kullanmayı tercih ettiğinden, istenen routeType *ekdir*. Aşağıdaki betik, Azure Maps yönlendirme hizmeti 'nin [Rota aralığı al API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) 'sini çağırır. Bu, aracın tüketim modeli için parametreler kullanır. Daha sonra betiği, arabasının en fazla erişilebilir aralığını temsil eden geojson biçimindeki bir çokgen nesnesi oluşturma yanıtını ayrıştırır.
 
-Elektrikli aracın ulaşılabilir aralığının sınırlarını belirlemek için komut dosyasını aşağıdaki hücrede çalıştırın:
+Elektrik Aracı 'nın erişilebilir aralığının sınırlarını öğrenmek için betiği aşağıdaki hücrede çalıştırın:
 
 ```python
 subscriptionKey = "Your Azure Maps key"
@@ -152,13 +152,13 @@ boundsData = {
              }
 ```
 
-## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Ulaşılabilir aralıkta elektrikli araç şarj istasyonları arayın
+## <a name="search-for-electric-vehicle-charging-stations-within-the-reachable-range"></a>Erişilebilir Aralık içinde elektrik araç doldurma istasyonlarını arayın
 
-Elektrikli araç için ulaşılabilir aralığı (izochrone) belirledikten sonra, bu aralıktaki şarj istasyonlarını arayabilirsiniz. 
+Elektrik Aracı için erişilebilir Aralık (ısovaone) belirledikten sonra, bu aralıktaki doldurma istasyonlarında arama yapabilirsiniz. 
 
-Aşağıdaki komut dosyası, Azure Haritalar [Sonrası Arama Geometri API'sini](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)çağırır. Bu elektrikli araç için şarj istasyonları için arar, aracın maksimum ulaşılabilir aralığısınırları içinde. Ardından, komut dosyası erişilebilir konumlar dizisine yanıtı parses.
+Aşağıdaki betik, Azure Maps [arama sonrası bir geometri API 'sine](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)çağrı yapılır. Otomobilin en fazla erişilebilir aralığının sınırları dahilinde elektrik arabasının doldurma istasyonlarını arar. Sonra betik, yanıtı erişilebilir konumlar dizisine ayrıştırır.
 
-Ulaşılabilen aralıktaki elektrikli araç şarj istasyonlarını aramak için aşağıdaki komut dosyasını çalıştırın:
+Erişilebilir Aralık dahilinde elektrik araç doldurma istasyonlarını aramak için aşağıdaki betiği çalıştırın:
 
 ```python
 # Search for electric vehicle stations within reachable range.
@@ -171,11 +171,11 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Kullanılabilir aralığı ve şarj noktalarını Azure Haritalar Veri Hizmeti'ne yükleyin
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Erişilebilir Aralık ve doldurma noktalarını Azure Maps veri hizmetine yükleme
 
-Haritada, şarj istasyonlarını ve elektrikli aracın maksimum ulaşılabilir aralığı için sınırı görselleştirmek isteyeceksiniz. Bunu yapmak için, geojson nesneleri olarak sınır verilerini ve şarj istasyonverilerini Azure Haritalar Veri Hizmeti'ne yükleyin. Veri [Yükleme API'sini](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)kullanın. 
+Bir haritada, elektrik taşısının maksimum erişilebilir aralığının miktarını ve sınırını görselleştirmek isteyeceksiniz. Bunu yapmak için, sınır verilerini karşıya yükleyin ve istasyon verilerini Azure Maps Data Service 'e coğrafi JSON nesneleri olarak ücretlendirme yapın. [Karşıya veri yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)'sini kullanın. 
 
-Sınır ve şarj noktası verilerini Azure Haritalar Veri Hizmeti'ne yüklemek için aşağıdaki iki hücreyi çalıştırın:
+Azure Maps Data Service 'e sınır ve ücretlendirme noktası verilerini yüklemek için aşağıdaki iki hücreyi çalıştırın:
 
 ```python
 rangeData = {
@@ -237,9 +237,9 @@ while True:
 poiUdid = getPoiUdid["udid"]
 ```
 
-## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Şarj istasyonlarını ve ulaşılabilir aralığı nı harita üzerinde işleme
+## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>Bir haritada doldurma istasyonlarını ve erişilebilir aralığı işleme
 
-Verileri veri hizmetine yükledikten sonra Azure Haritalar [Harita Görüntü Al hizmetini](https://docs.microsoft.com/rest/api/maps/render/getmapimage)arayın. Bu hizmet, aşağıdaki komut dosyasını çalıştırarak statik harita görüntüsündeki şarj noktalarını ve maksimum ulaşılabilir sınırı işlemek için kullanılır:
+Verileri veri hizmetine yükledikten sonra, Azure Maps [harita görüntüsü al hizmeti](https://docs.microsoft.com/rest/api/maps/render/getmapimage)' ni çağırın. Bu hizmet, şu betiği çalıştırarak, statik eşleme görüntüsünde doldurma noktalarını ve en fazla erişilebilir sınırı işlemek için kullanılır:
 
 ```python
 # Get boundaries for the bounding box.
@@ -279,13 +279,13 @@ display(Image(poiRangeMap))
 ![Konum aralığını gösteren bir harita](./media/tutorial-ev-routing/location-range.png)
 
 
-## <a name="find-the-optimal-charging-station"></a>En uygun şarj istasyonunu bulun
+## <a name="find-the-optimal-charging-station"></a>En iyi doldurma istasyonunu bulun
 
-İlk olarak, ulaşılabilir aralıktaki tüm olası şarj istasyonlarını belirlemek istiyorsunuz. Daha sonra, en az bir süre içinde hangisine ulaşılabileceğini bilmek istiyorsunuz. 
+İlk olarak, erişilebilir aralıktaki tüm olası ücretlendirme istasyonlarını öğrenmek istersiniz. Daha sonra, en az bir süre içinde bunlardan hangilerinin ulaşılabileceğini bilmeniz gerekir. 
 
-Aşağıdaki komut dosyası, Azure Haritalar [Matris Yönlendirme API'sını](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)çağırır. Belirtilen aracın konumunu, seyahat süresini ve her şarj istasyonuna olan mesafeyi döndürür. Bir sonraki hücredeki komut dosyası, zamana göre en yakın erişilebilen şarj istasyonunu bulmak için yanıtı ayrışır.
+Aşağıdaki betik, Azure Maps [matris YÖNLENDIRME API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)'sini çağırır. Belirtilen araç konumunu, seyahat süresini ve her bir doldurma istasyonunun uzaklığını döndürür. Sonraki hücredeki betik, zaman açısından en yakın erişilebilir doldurma istasyonunu bulma yanıtını ayrıştırır.
 
-En az sürede ulaşılabilen en yakın erişilebilir şarj istasyonunu bulmak için komut dosyasını aşağıdaki hücrede çalıştırın:
+En az sürede erişilebilecek en yakın erişilebilir doldurma istasyonunu bulmak için betiği aşağıdaki hücrede çalıştırın:
 
 ```python
 locationData = {
@@ -312,11 +312,11 @@ minDistLoc.extend([reachableLocations[minDistIndex][1], reachableLocations[minDi
 closestChargeLoc = ",".join(str(i) for i in minDistLoc)
 ```
 
-## <a name="calculate-the-route-to-the-closest-charging-station"></a>En yakın şarj istasyonuna giden rotayı hesaplayın
+## <a name="calculate-the-route-to-the-closest-charging-station"></a>En yakın doldurma istasyonuyla olan rotayı hesapla
 
-Artık en yakın şarj istasyonunu bulduğunuziçin, elektrikli aracın mevcut konumundan şarj istasyonuna giden ayrıntılı rotayı istemek için [Rota Yol Tarifi API'sini](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) arayabilirsiniz.
+En yakın ücretlendirme istasyonunu buldığınıza göre, elektrik ale's geçerli konumundan ücretlendirme istasyonuna ayrıntılı rotayı istemek için [yol yönlerini al API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) 'sini çağırabilirsiniz.
 
-Rotayı şarj istasyonuna almak ve rotayı temsil eden bir geojson nesnesi oluşturmak için yanıtı ayrıştırmak için komut dosyasını aşağıdaki hücrede çalıştırın:
+Doldurma istasyonunun yolunu almak ve yolu temsil eden bir geojson nesnesi oluşturmak için yanıtı ayrıştırmak üzere betiği aşağıdaki hücrede çalıştırın:
 
 ```python
 # Get the route from the electric vehicle's current location to the closest charging station. 
@@ -336,9 +336,9 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Rotayı görselleştirin
 
-Rotayı görselleştirmeye yardımcı olmak için, rota verilerini önce Geojson nesnesi olarak Azure Haritalar Veri Hizmeti'ne yüklersiniz. Bunu yapmak için Azure Haritalar [Veri Yükleme API'sini](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)kullanın. Ardından, görüntüleme hizmetini arayın, [Harita Görüntüsü API'sini alın,](https://docs.microsoft.com/rest/api/maps/render/getmapimage)rotayı haritaüzerinde işlemek ve görselleştirmek için.
+Yolun görselleştirilmesine yardımcı olmak için, önce Azure Maps veri hizmetine bir coğrafi JSON nesnesi olarak rota verilerini karşıya yüklersiniz. Bunu yapmak için Azure Maps [verilerini karşıya yükleme API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)'sini kullanın. Ardından, işleme hizmetini çağırın, [harita görüntüsü API 'Sini alın](https://docs.microsoft.com/rest/api/maps/render/getmapimage), rotayı haritada oluşturup görselleştirin.
 
-Haritada işlenen rota için bir görüntü almak için aşağıdaki komut dosyasını çalıştırın:
+Haritada işlenen yolun bir görüntüsünü almak için aşağıdaki betiği çalıştırın:
 
 ```python
 # Upload the route data to Azure Maps Data Service.
@@ -385,21 +385,21 @@ await session.close()
 display(Image(staticMapImage))
 ```
 
-![Rotayı gösteren bir harita](./media/tutorial-ev-routing/route.png)
+![Yolu gösteren bir harita](./media/tutorial-ev-routing/route.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Azure Haritalar REST API'lerini doğrudan aramayı ve Python'u kullanarak Azure Haritalar verilerini görselleştirmeyi öğrendiniz.
+Bu öğreticide, Azure haritalar REST API 'Lerinin doğrudan nasıl çağrılacağını ve Python kullanarak Azure Maps verilerini görselleştirmeyi öğrendiniz.
 
-Bu eğitimde kullanılan Azure Haritalar API'larını keşfetmek için bkz:
+Bu öğreticide kullanılan Azure Maps API 'Lerini araştırmak için, bkz.:
 
-* [Rota Aralığını Al](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
-* [Geometri İçi Arama Sonrası](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
-* [Veri Yükleme](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
-* [Render - Harita Görüntüsü Al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Rota Sonrası Matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
-* [Rota Yol Tarifleri alın](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
+* [Rota aralığını al](https://docs.microsoft.com/rest/api/maps/route/getrouterange)
+* [Geometri Içinde arama sonrası](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
+* [Karşıya veri yükleme](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
+* [Render-harita görüntüsünü al](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
+* [Rota sonrası matrisi](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
+* [Rota yönlerini al](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Azure Haritalar REST API'lerinin tam listesi için Azure [Haritalar REST API'leri'ne](https://docs.microsoft.com/azure/azure-maps/consumption-model)bakın.
+Azure haritalar REST API 'lerinin tüm listesi için bkz. [Azure Maps REST API 'leri](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
-Azure Not Defterleri hakkında daha fazla bilgi edinmek için [Azure Not Defterleri'ne](https://docs.microsoft.com/azure/notebooks)bakın.
+Azure Notebooks hakkında daha fazla bilgi için bkz. [Azure Notebooks](https://docs.microsoft.com/azure/notebooks).

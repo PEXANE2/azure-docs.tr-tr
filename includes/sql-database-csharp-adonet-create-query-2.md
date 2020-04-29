@@ -5,54 +5,54 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188449"
 ---
 ## <a name="c-program-example"></a>C# program örneği
 
-Bu makalenin sonraki bölümleri, Transact-SQL (T-SQL) deyimlerini SQL veritabanına göndermek için ADO.NET kullanan bir C# programı sunar. C# programı aşağıdaki eylemleri gösterir:
+Bu makalenin sonraki bölümlerinde Transact-SQL (T-SQL) deyimlerini SQL veritabanına göndermek için ADO.NET kullanan bir C# programı bulunmaktadır. C# programı aşağıdaki eylemleri gösterir:
 
-- [ADO.NET kullanarak SQL veritabanına bağlanın](#cs_1_connect)
-- [T-SQL deyimlerini döndüren yöntemler](#cs_2_return)
+- [ADO.NET kullanarak SQL veritabanı 'na bağlanma](#cs_1_connect)
+- [T-SQL deyimleri döndüren yöntemler](#cs_2_return)
     - Tablo oluşturma
     - Tabloları verilerle doldurma
     - Verileri güncelleştirme, silme ve seçme
-- [T-SQL'i veritabanına gönderme](#cs_3_submit)
+- [T-SQL ' i veritabanına gönder](#cs_3_submit)
 
-### <a name="entity-relationship-diagram-erd"></a>Varlık İlişki Diyagramı (ERD)
+### <a name="entity-relationship-diagram-erd"></a>Varlık Ilişkisi diyagramı (ERD)
 
-İfadeler, `CREATE TABLE` iki tablo arasında *yabancı anahtar* (FK) ilişkisi oluşturmak için **REFERENCES** anahtar sözcüklerini içerir. *Tempdb*kullanıyorsanız, önde gelen `--REFERENCES` tireler çiftini kullanarak anahtar kelimeyi yorumla.
+`CREATE TABLE` Deyimler iki tablo arasında *yabancı anahtar* (FK) ilişkisi oluşturmak için **Başvurular** anahtar sözcüğünü içerir. *Tempdb*kullanıyorsanız, bir dizi baştaki tire kullanarak `--REFERENCES` anahtar sözcüğü not edin.
 
-ERD, iki tablo arasındaki ilişkiyi görüntüler. **sekmeEmployee.DepartmentCode** *alt* sütunundaki **değerler, sekmeDepartment.DepartmentCode** *üst* sütunundaki değerlerle sınırlıdır.
+ERD iki tablo arasındaki ilişkiyi görüntüler. **TabEmployee. DepartmentCode** *alt* sütunundaki değerler, **tabdepartment. DepartmentCode** *üst* sütunundaki değerlerle sınırlıdır.
 
 ![Yabancı anahtarı gösteren ERD](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Tablo adlarına bir satır aralığı `#` eklemek için T-SQL'i düzenleme seçeneğiniz vardır ve bu da bunları *tempdb'de*geçici tablo lar olarak oluşturur. Bu, hiçbir test veritabanı olmadığında, gösteri amaçları için yararlıdır. Yabancı anahtarlara yapılan herhangi bir başvuru kullanımları sırasında zorlanmaz ve program çalışmaya başladığında bağlantı kapandığında geçici tablolar otomatik olarak silinir.
+> T-SQL ' i, tablo adlarına bir lider `#` eklemek için, bunları *tempdb*'de geçici tablolar olarak oluşturan bir seçenek olacak şekilde düzenleyebilirsiniz. Bu, kullanılabilir test veritabanı olmadığında tanıtım amacıyla faydalıdır. Yabancı anahtarlara yapılan herhangi bir başvuru, kullanımları sırasında zorlanmaz ve geçici tablolar, programın çalışması bittikten sonra bağlantı kapandığında otomatik olarak silinir.
 
 ### <a name="to-compile-and-run"></a>Derlemek ve çalıştırmak için
 
-C# programı mantıksal olarak bir .cs dosyasıdır ve her bloğun anlaşılmasını kolaylaştırmak için fiziksel olarak birkaç kod bloğuna ayrılmıştır. Programı derlemek ve çalıştırmak için aşağıdaki adımları yapın:
+C# programı mantıksal olarak bir. cs dosyasıdır ve her bir bloğun anlaşılması daha kolay anlamak için fiziksel olarak birçok kod bloğuna bölünmüştür. Programı derlemek ve çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. Visual Studio'da bir C# projesi oluşturun. Proje türü, **Visual** > **C#** > **Windows Masaüstü** > **Konsol Uygulaması (.NET Framework)** altında bulunan bir *Konsol*olmalıdır.
+1. Visual Studio 'da bir C# projesi oluşturun. Proje türü **Şablonlar** > **Visual C#** > **Windows Masaüstü** > **konsol uygulaması (.NET Framework)** altında bulunan bir *konsol*olmalıdır.
 
-1. Dosya *Program.cs,* kod başlangıç satırlarını aşağıdaki adımlarla değiştirin:
+1. *Program.cs*dosyasında, kod başlangıç satırları ' nı aşağıdaki adımlarla değiştirin:
 
-    1. Aşağıdaki kod bloklarını kopyalayıp yapıştırın, sunuldukları sırayla, [veritabanına bağlan,](#cs_1_connect) [T-SQL oluştur](#cs_2_return)ve [veritabanına gönder'e](#cs_3_submit)bakın.
+    1. Aşağıdaki kod bloklarını kopyalayıp, sunulan aynı sırada kopyalayıp yapıştırın, bkz. [veritabanına Bağlan](#cs_1_connect), [T-SQL oluştur](#cs_2_return)ve [veritabanına gönder](#cs_3_submit).
 
-    1. Yöntemde aşağıdaki değerleri `Main` değiştirin:
+    1. `Main` Yönteminde aşağıdaki değerleri değiştirin:
 
-        - *Cb. Datasource*
-        - *Cb. Userıd*
-        - *Cb. Parola*
-        - *Cb. Başlangıç Kataloğu*
+        - *CB. DataSource*
+        - *CB. UserID*
+        - *CB. Parolayı*
+        - *CB. InitialCatalog*
 
-1. Assembly *System.Data.dll'ye* başvurulacağını doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesindeki **Başvuru** düğümlerini genişletin.
+1. Bütünleştirilmiş kod *System. Data. dll* dosyasına başvurulduğunu doğrulayın. Doğrulamak için **Çözüm Gezgini** bölmesinde **Başvurular** düğümünü genişletin.
 
-1. Programı Visual Studio'dan oluşturmak ve çalıştırmak için **Başlat** düğmesini seçin. Guid değerleri test çalıştırmaları arasında farklılık gösterse de rapor çıktısı bir program penceresinde görüntülenir.
+1. Visual Studio 'dan programı derlemek ve çalıştırmak için **Başlat** düğmesini seçin. Rapor çıktısı bir program penceresinde görüntülenir, ancak GUID değerleri test çalıştırmaları arasında farklılık gösterir.
 
     ```Output
     =================================
@@ -82,7 +82,7 @@ C# programı mantıksal olarak bir .cs dosyasıdır ve her bloğun anlaşılmas�
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>ADO.NET kullanarak SQL veritabanına bağlanın
+### <a name="connect-to-sql-database-using-adonet"></a>ADO.NET kullanarak SQL veritabanı 'na bağlanma
 
 ```csharp
 using System;
@@ -132,7 +132,7 @@ namespace csharp_db_test
 
 <a name="cs_2_return"/>
 
-### <a name="methods-that-return-t-sql-statements"></a>T-SQL deyimlerini döndüren yöntemler
+### <a name="methods-that-return-t-sql-statements"></a>T-SQL deyimleri döndüren yöntemler
 
 ```csharp
 static string Build_2_Tsql_CreateTables()
@@ -240,7 +240,7 @@ static string Build_6_Tsql_SelectEmployees()
 
 <a name="cs_3_submit"/>
 
-### <a name="submit-t-sql-to-the-database"></a>T-SQL'i veritabanına gönderme
+### <a name="submit-t-sql-to-the-database"></a>T-SQL ' i veritabanına gönder
 
 ```csharp
 static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)

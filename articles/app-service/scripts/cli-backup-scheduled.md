@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Zamanlanmış bir yedekleme oluşturma'
-description: Uygulama Hizmeti uygulamanızın dağıtımını ve yönetimini otomatikleştirmek için Azure CLI'yi nasıl kullanacağınızı öğrenin. Bu örnek, bir uygulama için zamanlanmış bir yedeklemenin nasıl oluşturulacak olduğunu gösterir.
+title: 'CLı: zamanlanmış yedekleme oluşturma'
+description: Azure CLı kullanarak App Service uygulamanızın dağıtımını ve yönetimini otomatik hale getirmeyi öğrenin. Bu örnek, bir uygulama için zamanlanmış yedeklemenin nasıl oluşturulacağını gösterir.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -10,15 +10,15 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 327b48052e0134ae97f0a97f0a43f36e75f2e003
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058768"
 ---
-# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLI kullanarak bir Uygulama Hizmeti uygulaması için zamanlanmış yedekleme oluşturma
+# <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>CLı kullanarak bir App Service uygulaması için zamanlanmış yedekleme oluşturma
 
-Bu örnek komut dosyası, ilgili kaynakları yla Birlikte App Service'de bir uygulama oluşturur ve sonra bunun için zamanlanmış bir yedekleme oluşturur. 
+Bu örnek betik, App Service içinde ilgili kaynakları içeren bir uygulama oluşturur ve sonra bu için zamanlanmış bir yedekleme oluşturur. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,10 +43,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) | Bir Azure depolama kapsayıcısı oluşturur. |
 | [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-generate-sas) | Azure depolama kapsayıcısı için bir SAS belirteci oluşturur.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service planı oluşturur. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Bir Uygulama Hizmeti uygulaması oluşturur. |
-| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | Bir Uygulama Hizmeti uygulaması için yeni bir yedekleme çizelgesi yapılandırır. |
-| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Bir Uygulama Hizmeti uygulamasının yedekleme zamanlamasını gösterir. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Bir App Service uygulamasının yedek listesini alır. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | App Service uygulaması oluşturur. |
+| [`az webapp config backup update`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-update) | App Service uygulaması için yeni bir yedekleme zamanlaması yapılandırır. |
+| [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Bir App Service uygulamasının Yedekleme zamanlamasını gösterir. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | App Service bir uygulama için yedeklemelerin listesini alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

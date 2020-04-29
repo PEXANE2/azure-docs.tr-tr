@@ -1,6 +1,6 @@
 ---
-title: Azure CLI - Laboratuvardaki sanal makineyi durdurup silme
-description: Bu makale, Azure DevTest Labs'daki bir laboratuvarda sanal bir makineyi durduran ve silen bir Azure CLI komut dosyası sağlar.
+title: Azure CLı-laboratuvardaki bir sanal makineyi durdurma ve silme
+description: Bu makalede, Azure DevTest Labs bir laboratuvardaki bir sanal makineyi durduran ve silen bir Azure CLı betiği sunulmaktadır.
 services: lab-services
 author: spelluru
 manager: ''
@@ -15,10 +15,10 @@ ms.date: 01/24/2020
 ms.author: spelluru
 ms.custom: mvc
 ms.openlocfilehash: c4f315593da270155998c3c5bba8def2778f0d41
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76760465"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs’deki bir sanal makineyi durdurmak ve silmek için Azure CLI’yı kullanma

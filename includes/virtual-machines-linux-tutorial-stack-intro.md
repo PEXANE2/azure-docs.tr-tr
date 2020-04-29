@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 046a4bc9abb936ca6f9fcecd0f660a723edb092b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80117160"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -64,7 +64,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ## <a name="ssh-into-your-vm"></a>VM’ye SSH uygulama
 
 
-VM'nizin genel IP adresini zaten bilmiyorsanız, [az ağı genel-ip listesi](/cli/azure/network/public-ip) komutunu çalıştırın. Bu IP adresine sonraki adımlarda ihtiyacınız olacak.
+VM 'nizin genel IP adresini henüz bilmiyorsanız [az Network public-IP List](/cli/azure/network/public-ip) komutunu çalıştırın. Bu IP adresine sonraki adımlarda ihtiyacınız olacak.
 
 
 ```azurecli-interactive

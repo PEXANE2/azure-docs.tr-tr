@@ -9,10 +9,10 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75970121"
 ---
 Kaynaklara etiket uyguladıktan sonra, bu etiketlerle kaynakların maliyetlerini görüntüleyebilirsiniz. Maliyet analizinin en son kullanımları göstermesi biraz zaman aldığından maliyetleri henüz göremeyebilirsiniz. Maliyetler kullanılabilir olduğunda, aboneliğinizdeki kaynak gruplarında kaynakların maliyetlerini görüntüleyebilirsiniz. Kullanıcıların maliyetleri görmeleri için [fatura bilgilerine abonelik düzeyinde erişimlerinin](../articles/cost-management-billing/manage/manage-billing-access.md) olması gerekir.

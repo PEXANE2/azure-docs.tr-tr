@@ -1,6 +1,6 @@
 ---
-title: Azure İşlevler uygulamasında Azure Uygulama Yapılandırması dinamik yapılandırması kullanma için öğretici | Microsoft Dokümanlar
-description: Bu eğitimde, Azure İşlevleri uygulamalarının yapılandırma verilerini dinamik olarak nasıl güncelleştirdiğinizi öğreneceksiniz
+title: Azure Işlevleri uygulamasında Azure Uygulama yapılandırması dinamik yapılandırmasını kullanma öğreticisi | Microsoft Docs
+description: Bu öğreticide, Azure Işlevleri uygulamaları için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
 author: zhenlan
@@ -16,39 +16,39 @@ ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
 ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74185453"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure İşlevler uygulamasında dinamik yapılandırma kullanın
+# <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Öğretici: Azure Işlevleri uygulamasında dinamik yapılandırma kullanma
 
-App Configuration .NET Standard yapılandırma sağlayıcısı, uygulama etkinliği tarafından dinamik olarak yönlendirilen önbelleğe alma ve yenileme yapılandırmasını destekler. Bu öğretici, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan Azure İşlevler uygulamasına dayanıyor. Devam etmeden önce, [önce Azure Uygulama Yapılandırması ile bir Azure işlevleri oluştur uygulamasını](./quickstart-azure-functions-csharp.md) bitirin.
+Uygulama yapılandırma .NET Standard yapılandırma sağlayıcısı, uygulama etkinliğine göre dinamik olarak yönetilen yapılandırmayı önbelleğe almayı ve yenilemeyi destekler. Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl uygulayabileceğinizi gösterir. Hızlı başlangıçlarda tanıtılan Azure Işlevleri uygulamasında oluşturulur. Devam etmeden önce, önce [Azure Uygulama yapılandırması ile bir Azure işlevleri uygulaması oluşturun](./quickstart-azure-functions-csharp.md) .
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Azure İşlevler uygulamanızı, bir Uygulama Yapılandırma mağazasındaki değişikliklere yanıt olarak yapılandırmasını güncelleştirecek şekilde ayarlayın.
-> * Azure İşlevleri aramalarınıza en son yapılandırmayı enjekte edin.
+> * Bir uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için Azure Işlevleri uygulamanızı ayarlayın.
+> * Azure Işlevleri çağrılarınız için en son yapılandırmayı ekleme.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
-- **Azure geliştirme** iş yüküyle Visual [Studio 2019](https://visualstudio.microsoft.com/vs)
-- [Azure Fonksiyonları araçları](../azure-functions/functions-develop-vs.md#check-your-tools-version)
-- Azure [Uygulama Yapılandırması ile](./quickstart-azure-functions-csharp.md) hızlı bir şekilde Azure işlevleri uygulaması oluşturun
+- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+- **Azure geliştirme** iş yüküyle [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
+- [Azure Işlevleri araçları](../azure-functions/functions-develop-vs.md#check-your-tools-version)
+- Son hızlı başlangıç [Azure Uygulama yapılandırması ile bir Azure işlevleri uygulaması oluşturma](./quickstart-azure-functions-csharp.md)
 
-## <a name="reload-data-from-app-configuration"></a>Uygulama Yapılandırmasından verileri yeniden yükleme
+## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
-1. Açık *Function1.cs*. `static` Özelliğine `Configuration`ek olarak, daha `static` `ConfigurationRefresher` sonra Fonksiyonlar aramaları sırasında `IConfigurationRefresher` yapılandırma güncelleştirmelerini sinyallemek için kullanılacak olan singleton örneğini tutmak için yeni bir özellik ekleyin.
+1. *Function1.cs*'i açın. `static` `Configuration`Özelliğine ek olarak, işlevler daha sonra çağrılar sırasında `static` yapılandırma `ConfigurationRefresher` güncelleştirmelerini işaret etmek için kullanılacak tek `IConfigurationRefresher` bir örneğini tutmak üzere yeni bir özellik ekleyin.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
     private static IConfigurationRefresher ConfigurationRefresher { set; get; }
     ```
 
-2. Oluşturucuyu güncelleştirin `ConfigureRefresh` ve Uygulama Yapılandırma deposundan yenilenecek ayarı belirtmek için yöntemi kullanın. Bir örneği `IConfigurationRefresher` yöntem kullanılarak `GetRefresher` alınır. İsteğe bağlı olarak, yapılandırma önbelleği son kullanma süresini varsayılan 30 saniyeden 1 dakikaya değiştiririz.
+2. Oluşturucuyu güncelleştirin ve uygulama yapılandırma deposundan `ConfigureRefresh` yenilenecek ayarı belirtmek için yöntemini kullanın. Bir örneği `IConfigurationRefresher` yöntemi kullanılarak `GetRefresher` alınır. İsteğe bağlı olarak, yapılandırma önbelleği sona erme zamanı penceresini varsayılan 30 saniyeden 1 dakika olarak değiştiririz.
 
     ```csharp
     static Function1()
@@ -67,7 +67,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
     }
     ```
 
-3. İşlevler çağrısının `Run` başındaki `Refresh` yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin. Önbellek son kullanma süresi penceresine ulaşılmazsa bu işlem yapılmaz. Yapılandırmanın `await` engellenmeden yenilenmesini tercih ediyorsanız operatörü kaldırın.
+3. Işlev çağrısının `Run` başlangıcında `Refresh` yöntemi kullanarak yapılandırmayı yenilemek için yöntemi ve sinyali güncelleştirin. Önbellek sona erme saati penceresine ulaşılırsa bu işlem yapılmaz. Yapılandırmanın engellenmeden yenilenmesini tercih ediyorsanız `await` işleci kaldırın.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -88,41 +88,41 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
-1. ConnectionString adında bir ortam **değişkeni**ayarlayın ve uygulama yapılandırma mağazanızın erişim anahtarına ayarlayın. Windows komut istemini kullanıyorsanız, değişikliğin etkili olmasını sağlamak için aşağıdaki komutu çalıştırın ve komut istemini yeniden başlatın:
+1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Windows PowerShell kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    Windows PowerShell kullanıyorsanız şu komutu çalıştırın:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-    macOS veya Linux kullanıyorsanız, aşağıdaki komutu çalıştırın:
+    MacOS veya Linux kullanıyorsanız şu komutu çalıştırın:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. İşlevinizi test etmek için F5’e basın. İstenirse, Visual Studio'dan **Azure İşlemesi Çekirdeği (CLI)** araçlarını indirme ve yükleme isteğini kabul edin. Araçların HTTP isteklerini işleyebileceği için bir güvenlik duvarı özel durumu etkinleştirmeniz de gerekebilir.
+2. İşlevinizi test etmek için F5’e basın. İstenirse, **Azure Functions Core (CLI)** araçlarını indirmek ve yüklemek Için Visual Studio 'daki isteği kabul edin. Ayrıca, araçların HTTP isteklerini işleyebilmesi için bir güvenlik duvarı özel durumu etkinleştirmeniz gerekebilir.
 
 3. Azure İşlevleri çalışma zamanı çıktısından işlevinizin URL'sini kopyalayın.
 
-    ![VS'de Hızlı Başlatma Fonksiyonu hata ayıklama](./media/quickstarts/function-visual-studio-debugging.png)
+    ![VS 'de hızlı başlangıç Işlevi hata ayıklaması](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. HTTP isteğinin URL’sini tarayıcınızın adres çubuğuna yapıştırın. Aşağıdaki resim, tarayıcıdaki işlevi tarafından döndürülen yerel GET isteğine verilen yanıtı gösterir.
+4. HTTP isteğinin URL’sini tarayıcınızın adres çubuğuna yapıştırın. Aşağıdaki görüntüde, bu işlevin döndürdüğü yerel GET isteğine tarayıcıda yapılan yanıt gösterilmektedir.
 
-    ![Quickstart Fonksiyonu yerel başlatma](./media/quickstarts/dotnet-core-function-launch-local.png)
+    ![Hızlı başlangıç Işlevi yerel başlatma](./media/quickstarts/dotnet-core-function-launch-local.png)
 
-5. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve hızlı başlangıçta oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
+5. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-6. **Configuration Explorer'ı**seçin ve aşağıdaki anahtarın değerlerini güncelleştirin:
+6. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarın değerlerini güncelleştirin:
 
     | Anahtar | Değer |
     |---|---|
-    | TestApp:Ayarlar:Mesaj | Azure Uygulama Yapılandırmasından Veriler - Güncellendi |
+    | TestApp: ayarlar: Ileti | Azure Uygulama yapılandırmasından alınan veriler-güncelleştirildi |
 
-7. Tarayıcıyı birkaç kez yenileyin. Önbelleğe alınmış ayar bir dakika sonra sona erdiğinde, sayfa güncelleştirilmiş değere sahip İşlevler çağrısının yanıtını gösterir.
+7. Tarayıcıyı birkaç kez yenileyin. Önbellek ayarı bir dakika sonra sona erdiğinde, sayfa, güncelleştirilmiş değer ile Işlev çağrısının yanıtını gösterir.
 
-    ![Quickstart Fonksiyonu yerel yenileme](./media/quickstarts/dotnet-core-function-refresh-local.png)
+    ![Hızlı başlangıç Işlevi yerel olarak Yenile](./media/quickstarts/dotnet-core-function-refresh-local.png)
 
-Bu öğreticide kullanılan örnek kod [Uygulama Yapılandırma GitHub repo](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) indirilebilir
+Bu öğreticide kullanılan örnek kod, [uygulama yapılandırması GitHub deposundan](https://github.com/Azure/AppConfiguration/tree/master/examples/DotNetCore/AzureFunction) indirilebilir
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -130,7 +130,7 @@ Bu öğreticide kullanılan örnek kod [Uygulama Yapılandırma GitHub repo](htt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Azure İşlevler uygulamanızın Uygulama Yapılandırması'ndan yapılandırma ayarlarını dinamik olarak yenilemesini sağladınız. Uygulama Yapılandırması'na erişimi kolaylaştırmak için Azure yönetilen bir kimliği nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye devam edin.
+Bu öğreticide, uygulama yapılandırmasından yapılandırma ayarlarını dinamik olarak yenilemek için Azure Işlevleri uygulamanızı etkinleştirdiniz. Azure yönetilen kimliğin uygulama yapılandırmasına erişimi kolaylaştırmak için nasıl kullanılacağını öğrenmek için bir sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Yönetilen kimlik tümleştirmesi](./howto-integrate-azure-managed-service-identity.md)

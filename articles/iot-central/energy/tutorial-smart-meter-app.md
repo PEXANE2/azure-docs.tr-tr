@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: IoT Central ile akıllı sayaç analiz uygulaması oluşturun'
-description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak akıllı sayaç izleme uygulamasını nasıl oluşturabilirsiniz öğrenin.'
+title: 'Öğretici: IoT Central ile akıllı ölçüm analizi uygulaması oluşturma'
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak akıllı ölçüm izleme uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
 ms.date: 11/12/2019
@@ -9,103 +9,103 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77016009"
 ---
-# <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: Akıllı sayaç izleme uygulaması şablonu oluşturun ve gözden geçirin 
+# <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
 
 
 
-Bu öğretici, simüle edilmiş verilere sahip örnek bir aygıt modeli içeren akıllı sayaç izleme uygulamasını oluşturma sürecinde size yol gösteriş sağlar. Bu öğreticide şunları öğreneceksiniz:
+Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı ölçüm izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Akıllı Sayaç Uygulamasını ücretsiz oluşturun
-> * Uygulama walk-through
+> * Akıllı ölçüm uygulamasını ücretsiz oluşturun
+> * Uygulama izlenecek yol
 > * Kaynakları temizleme
 
 
-Aboneliğiniz yoksa, [ücretsiz deneme hesabı oluşturun](https://azure.microsoft.com/free)
+Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Ön koşullar
-- None
+- Hiçbiri
 - Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 ## <a name="create-a-smart-meter-monitoring-app"></a>Akıllı sayaç izleme uygulaması oluşturma 
 
 Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
-1. [Azure IoT Merkezi giriş sayfasını](https://apps.azureiotcentral.com) açın ve yeni bir uygulama oluşturmak için **Oluştur'u** tıklatın. 
+1. [Azure IoT Central giriş sayfasını](https://apps.azureiotcentral.com) açın ve yeni bir uygulama oluşturmak için **Oluştur** ' a tıklayın. 
 
-2. **Enerji** sekmesini seçin ve **Akıllı sayaç izleme** uygulama döşemesi altında Oluştur **uygulamasını** tıklatın.
+2. **Enerji** sekmesini seçin ve **akıllı ölçüm izleme** uygulaması kutucuğunda uygulama **Oluştur** ' a tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![Uygulama Oluştur](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
+    > ![Uygulama oluştur](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. **Create uygulaması** **Yeni başvuru** formunu açacaktır. Aşağıdaki şekilde gösterildiği gibi istenen ayrıntıları doldurun:
-    * **Başvuru adı**: IoT Central uygulamanız için bir ad seçin. 
-    * **URL**: Bir IoT Merkezi URL'si seçin, platform benzersizliğini doğrular.
-    * **7 günlük ücretsiz deneme**: Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa, ücretsiz deneme sürümüyle başlayın.
-    * **Fatura Bilgileri**: Uygulamanın kendisi ücretsizdir. Uygulamanızın kaynaklarını sağlamak için Dizin, Azure aboneliği ve Bölge ayrıntıları gereklidir.
-    * Sayfanın altındaki **Oluştur** düğmesini tıklatın ve uygulamanız bir dakika içinde oluşturulacaktır.
+3. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
+    * **Uygulama adı**: IoT Central uygulamanız için bir ad seçin. 
+    * **URL**: bir IoT Central URL 'si seçin, platform benzersiz olduğunu doğrular.
+    * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
+    * **Faturalandırma bilgisi**: uygulamanın kendisi ücretsizdir. Uygulamanıza yönelik kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
+    * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.
 
-        ![Yeni başvuru formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+        ![Yeni uygulama formu](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
 
-        ![Yeni başvuru formu fatura bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
+        ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
-### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve simüle edilmiş verileri doğrulayın
+### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama
 
-Yeni oluşturulan akıllı sayaç uygulaması sizin uygulamanızdır ve istediğiniz zaman değiştirebilirsiniz. Uygulamayı değiştirmeden önce uygulamanın dağıtılmış olduğundan ve beklendiği gibi çalıştığından emin olalım.
+Yeni oluşturulan akıllı ölçüm uygulaması, uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Bu uygulamayı değiştirmeden önce uygulamanın dağıtıldığından ve beklendiği gibi çalıştığından emin olalım.
 
-Uygulama oluşturma ve veri simülasyonu doğrulamak için **Pano'ya**gidin. Bazı verilerle kutucukları görebiliyorsanız, uygulama dağıtımınız başarılı oldu. Veri simülasyonu veri oluşturmak için birkaç dakika sürebilir, bu yüzden 1-2 dakika verin. 
+Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya**gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
 
-## <a name="application-walk-through"></a>Uygulama walk-through
-Uygulama şablonunu başarıyla dağıttıktan sonra, örnek akıllı sayaç aygıtı, aygıt modeli ve bir pano yla birlikte gelir. 
+## <a name="application-walk-through"></a>Uygulama izlenecek yol
+Uygulama şablonunu başarıyla dağıttıktan sonra, örnek akıllı ölçüm cihazı, cihaz modeli ve bir pano ile birlikte gelir. 
 
-Adatum, akıllı sayaçları izleyen ve yöneten hayali bir enerji şirketidir. Akıllı sayaç izleme panosunda akıllı sayaç özelliklerini, verileri ve örnek komutları görürsünüz. Operatörlerin ve destek ekiplerinin destek olaylarına dönüşmeden önce aşağıdaki etkinlikleri proaktif bir şekilde gerçekleştirmelerine olanak tanır: 
-* Haritadaki en son sayaç bilgilerini ve yüklü konumunu gözden geçirin
-* Sayaç ağını ve bağlantı durumunu proaktif olarak kontrol edin 
-* Ağ sağlığı için Min ve Max voltaj okumalarını izleyin 
-* Herhangi bir anormal desenleri yakalamak için enerji, güç ve voltaj eğilimlerini gözden geçirin 
-* Planlama ve faturalandırma amacıyla toplam enerji tüketimini izleme
-* Yeniden bağlama sayacı ve firmware sürümünü güncelleme gibi komut ve kontrol işlemleri. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermeyin. 
+Adatum, akıllı ölçümleri izleyen ve yöneten kurgusal bir enerji şirketidir. Akıllı ölçüm izleme panosunda akıllı ölçüm özellikleri, veriler ve örnek komutlar görürsünüz. Operatörlerin ve destek ekiplerinin destek olaylarına geçmeden önce aşağıdaki etkinlikleri proaktif olarak gerçekleştirmesini sağlar: 
+* Haritada en son ölçüm bilgilerini ve yüklü konumunu gözden geçirin
+* Ölçüm ağını ve bağlantı durumunu proaktif olarak denetleme 
+* Ağ durumu için min ve Max voltaj ayarlarını izleme 
+* Anormal desenleri yakalamak için enerji, güç ve voltaj eğilimlerini gözden geçirin 
+* Planlama ve faturalandırma amaçlarıyla toplam enerji tüketimini izleyin
+* Yeniden bağlama ölçer ve üretici yazılımı sürümünü güncelleştir gibi komut ve denetim işlemleri. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermez. 
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı sayaç izleme panosu](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
+> ![Akıllı ölçüm izleme panosu](media/tutorial-iot-central-smart-meter/smart-meter-dashboard.png)
 
 ### <a name="devices"></a>Cihazlar
-Uygulama örnek bir akıllı sayaç cihazı ile birlikte gelir. **Aygıtlar** sekmesine tıklayarak cihaz ayrıntılarını görebilirsiniz.
+Uygulama, örnek bir akıllı ölçüm cihazından gelir. **Cihazlar** sekmesine tıklayarak cihaz ayrıntılarını görebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı sayaç cihazları](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
+> ![Akıllı ölçüm cihazları](media/tutorial-iot-central-smart-meter/smart-meter-devices.png)
 
-Cihaz ayrıntılarını görmek için örnek cihaz **SM0123456789** bağlantısına tıklayın. Aygıtın yazılabilir özelliklerini **Özellikleri Güncelleştir** sayfasında güncelleştirebilir ve panoda güncelleştirilen değerleri görselleştirebilirsiniz.
-
-> [!div class="mx-imgBorder"]
-> ![Akıllı sayaç özellikleri](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
-
-### <a name="device-template"></a>Aygıt Şablonu
-Akıllı sayaç aygıtı modelini görmek için **Aygıt şablonları** sekmesine tıklayın. Model, Veri, Özellik, Komutlar ve Görünümler için önceden tanımlı arabirime sahiptir.
+Cihaz ayrıntılarını görmek için örnek cihaz **SM0123456789** bağlantısına tıklayın. Aygıtın yazılabilir özelliklerini **güncelleştirme özellikleri** sayfasında güncelleştirebilir ve panoda güncelleştirilmiş değerleri görselleştirebilirsiniz.
 
 > [!div class="mx-imgBorder"]
-> ![Akıllı sayaç cihaz şablonları](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
+> ![Akıllı Ölçüm özellikleri](media/tutorial-iot-central-smart-meter/smart-meter-device-properties.png)
+
+### <a name="device-template"></a>Cihaz şablonu
+Akıllı ölçüm cihaz modelini görmek için **cihaz şablonları** sekmesine tıklayın. Modelde veriler, özellikler, komutlar ve görünümler için önceden tanımlama arabirimi bulunur.
+
+> [!div class="mx-imgBorder"]
+> ![Akıllı ölçüm cihaz şablonları](media/tutorial-iot-central-smart-meter/smart-meter-device-template.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu uygulamayı kullanmaya devam etmemeye karar verirseniz, aşağıdaki adımları kullanarak uygulamanızı silin:
+Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağıdaki adımları izleyerek uygulamanızı silin:
 
-1. Sol bölmeden, Yönetim sekmesini aç
-2. Uygulama ayarlarını seçin ve sayfanın altındaki Sil düğmesini tıklatın. 
+1. Sol bölmeden Yönetim sekmesini açın
+2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
 
     > [!div class="mx-imgBorder"]
-    > ![Uygulamayı silme](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
+    > ![Uygulamayı Sil](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Akıllı sayaç uygulaması mimarisi hakkında bilgi edinin [konsept makaleye](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app) bakın
-* Akıllı sayaç uygulama şablonlarını ücretsiz oluşturun: [akıllı sayaç uygulaması](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring)
-* IoT Central hakkında daha fazla bilgi edinin, [Bkz. IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/)
+* Akıllı ölçüm uygulama mimarisi hakkında bilgi edinin [kavram makalesine](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-smart-meter-app) bakın
+* Ücretsiz olarak akıllı ölçüm uygulama şablonları oluşturun: [akıllı ölçüm](https://apps.azureiotcentral.com/build/new/smart-meter-monitoring) uygulaması
+* IoT Central hakkında daha fazla bilgi için bkz. [IoT Central genel bakış](https://docs.microsoft.com/azure/iot-central/)

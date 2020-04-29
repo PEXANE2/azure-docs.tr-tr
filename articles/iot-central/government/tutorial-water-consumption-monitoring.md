@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure IoT Central ile bir su tüketimi izleme uygulaması oluşturun'
-description: 'Öğretici: Azure IoT Merkezi uygulama şablonlarını kullanarak bir su tüketimi izleme uygulaması oluşturmayı öğrenin.'
+title: 'Öğretici: Azure IoT Central su tüketim izleme uygulaması oluşturma'
+description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak su tüketim izleme uygulaması oluşturmayı öğrenin.'
 author: miriambrus
 ms.author: miriamb
 ms.date: 11/12/2019
@@ -9,250 +9,250 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 7f00947504e5c6355379ce1e400fd2325016e05a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77122077"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Öğretici: Azure IoT Central ile su tüketimi izleme uygulaması oluşturun
+# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>Öğretici: Azure IoT Central su tüketim izleme uygulaması oluşturma
 
-Bu öğretici, Azure IoT Merkezi su tüketimi izleme uygulama şablonu kullanarak bir Azure IoT Merkezi su tüketimi izleme uygulaması oluşturmanızı gösterir.
+Bu öğreticide, Azure IoT Central su tüketim izleme uygulaması şablonunu kullanarak Azure IoT Central su tüketim izleme uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Su tüketimi izleme uygulamanızı oluşturmak için Azure IoT Merkezi su tüketimi izleme şablonunu kullanın.
-> * Operatör panosunu keşfedin ve özelleştirin.
-> * Aygıt şablonlarını keşfedin.
-> * Simüle edilmiş aygıtları keşfedin.
-> * Kuralları keşfedin ve yapılandırır.
-> * İşleri yapılandırın.
+> * Su tüketim izleme uygulamanızı oluşturmak için Azure IoT Central su tüketimi İzleme şablonunu kullanın.
+> * Operatör panosunu gezin ve özelleştirin.
+> * Cihaz şablonlarını keşfet.
+> * Sanal cihazları keşfet.
+> * Kuralları keşfet ve yapılandırın.
+> * İşleri yapılandırma.
 > * Beyaz etiketleme kullanarak uygulama markanızı özelleştirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
-- Azure aboneliği. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir abonelik oluşturabilirsiniz.
+- Azure aboneliği. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
-## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Azure IoT Central ile bir su tüketimi izleme uygulaması oluşturun
+## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Azure IoT Central su tüketim izleme uygulaması oluşturma
 
-Bu bölümde, Azure IoT Central'da su tüketimi izleme uygulamanızı oluşturmak için Azure IoT Merkezi su tüketimi izleme şablonunu kullanırsınız.
+Bu bölümde, Azure IoT Central 'de su tüketim izleme uygulamanızı oluşturmak için Azure IoT Central su tüketimi İzleme şablonunu kullanırsınız.
 
-Yeni bir Azure IoT Merkezi su tüketimi izleme uygulaması oluşturmak için:
+Yeni bir Azure IoT Central su tüketim izleme uygulaması oluşturmak için:
 
-1. [Azure IoT Merkezi ana sayfası](https://aka.ms/iotcentral) web sitesine gidin.
+1. [Azure IoT Central giriş sayfası](https://aka.ms/iotcentral) Web sitesine gidin.
 
-    Azure aboneliğiniz varsa, bu aboneye erişmek için kullandığınız kimlik bilgileriyle oturum açın. Aksi takdirde, bir Microsoft hesabı kullanarak oturum açın.
+    Azure aboneliğiniz varsa, ona erişmek için kullandığınız kimlik bilgileriyle oturum açın. Aksi takdirde, Microsoft hesabı kullanarak oturum açın.
 
     ![Kuruluş hesabınızı girin](media/tutorial-waterconsumptionmonitoring/sign-in.png)
 
-1. Sol bölmede **Yap'ı** seçin ve **Devlet** sekmesini seçin. **Hükümet** sayfası çeşitli devlet uygulama şablonları görüntüler.
+1. Sol bölmede **Oluştur** ' u seçin ve **kamu** sekmesini seçin. **Kamu** sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
 
-   ![Devlet uygulama şablonları oluşturma](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
+   ![Kamu uygulaması şablonları oluşturun](./media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png)
 
-1. Su **tüketim izleme** uygulama şablonu'nu seçin.
-Bu şablon, örnek bir su tüketim aygıtı şablonu, benzetimli aygıt, operatör panosu ve önceden yapılandırılmış izleme kurallarını içerir.
+1. **Su tüketim izleme** uygulaması şablonunu seçin.
+Bu şablon, örnek bir su tüketim cihaz şablonu, sanal cihaz, bir operatör panosu ve önceden yapılandırılmış izleme kurallarını içerir.
 
-1. **Yeni uygulama** oluşturma formunu aşağıdaki alanlarla açmak için **Oluştur uygulamasını** seçin:
-    * **Uygulama adı**: Varsayılan olarak, uygulama *Su tüketimi izleme* sini ve ardından Azure IoT Central'ın oluşturduğu benzersiz bir kimlik dizesini kullanır. İsteğe bağlı olarak, kolay bir uygulama adı seçin. Uygulama adını daha sonra da değiştirebilirsiniz.
-    * **URL**: Azure IoT Central, uygulama adını temel alan bir URL'yi otomatik olarak oluşturur. URL'yi istediğiniz gibi güncellemeyi seçebilirsiniz. URL'yi daha sonra da değiştirebilirsiniz.
-    * Azure aboneliğiniz varsa, **Dizin,** **Azure aboneliği**ve **Konum** bilgilerinizi girin. Aboneliğiniz yoksa, **7 günlük ücretsiz deneme** seçeneğini seçebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.
+1. **Yeni uygulama** oluşturma formunu aşağıdaki alanlarla açmak Için **uygulama oluştur** ' u seçin:
+    * **Uygulama adı**: varsayılan olarak, uygulama *su tüketim izlemeyi* kullanır ve ardından Azure IoT Central 'nın oluşturduğu benzersiz bir kimlik dizesidir. İsteğe bağlı olarak, kolay bir uygulama adı seçin. Uygulama adını da daha sonra değiştirebilirsiniz.
+    * **URL**: Azure IoT Central, uygulama adına göre bir URL oluşturur. URL 'YI dilediğiniz şekilde güncelleştirmeyi tercih edebilirsiniz. URL 'yi daha sonra da değiştirebilirsiniz.
+    * Azure aboneliğiniz varsa, **dizininizi**, **Azure aboneliğinizi**ve **konum** bilgilerini girin. Aboneliğiniz yoksa, **7 günlük ücretsiz deneme** seçeneğini belirleyip gerekli iletişim bilgilerini tamamlayabilirsiniz.
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için [bkz.](../core/quick-deploy-iot-central.md)
+    Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [uygulama hızlı başlangıcı oluşturma](../core/quick-deploy-iot-central.md).
 
-1. Sayfanın altındaki **Oluştur'u** seçin.
+1. Sayfanın alt kısmında **Oluştur** ' u seçin.
 
-    ![Azure IoT Merkezi Yeni uygulama sayfası](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+    ![Azure IoT Central yeni uygulama sayfası](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
 
-    ![Azure IoT Merkezi Faturalandırma bilgi sayfası](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
+    ![Azure IoT Central faturalandırma bilgileri sayfası](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
-Azure IoT Merkezi su tüketimi izleme şablonu kullanarak bir su tüketimi izleme uygulaması oluşturdunuz.
+Artık Azure IoT Central su tüketim İzleme şablonunu kullanarak bir su tüketim izleme uygulaması oluşturdunuz.
 
-Su tüketimi izleme uygulaması önceden yapılandırılmış ile birlikte gelir:
+Su tüketim izleme uygulaması önceden yapılandırılmış olarak gelir:
 
-* Örnek operatör panoları.
-* Örnek önceden tanımlanmış su akışı ve valf cihazı şablonları.
-* Simüle su akışı ve akıllı valf cihazları.
+* Örnek işleç panoları.
+* Örnek önceden tanımlanmış su akışı ve Vana cihaz şablonları.
+* Sanal su akışı ve akıllı vana cihazları.
 * Kurallar ve işler.
-* Beyaz etiketleme kullanarak markayı örneklendirin.
+* Beyaz etiketleme kullanarak örnek marka.
 
-Bu sizin uygulamanız ve istediğiniz zaman değiştirebilirsiniz. Şimdi uygulamayı inceleyelim ve bazı özelleştirmeler yapalım.
+Bu sizin uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Şimdi uygulamayı araştıralım ve bazı özelleştirmeler yapalim.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Operatör panosunu keşfedin ve özelleştirin
+## <a name="explore-and-customize-the-operator-dashboard"></a>Operatör panosunu keşfet ve özelleştirme
 
-Uygulamayı oluşturduktan sonra, örnek **Geniş Dünya su tüketim panosu** açılır.
+Uygulamayı oluşturduktan sonra örnek **geniş dünya su tüketim panosu** açılır.
 
-   ![Su tüketimi izleme panosu](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
+   ![Su tüketim izleme panosu](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboardfull.png)
 
-Bir oluşturucu olarak, operatörler için panoda görünümler oluşturabilir ve özelleştirebilirsiniz. Özelleştirmeye çalışmadan önce panonu inceleyelim.
+Bir Oluşturucu olarak, işleçler için panoda görünümler oluşturabilir ve özelleştirebilirsiniz. Özelleştirmeyi denemeden önce Panoyu araştıralım.
 
 > [!NOTE]
-> Panoda görüntülenen tüm veriler, bir sonraki bölümde inceleyeceğimiz simüle edilmiş aygıt verilerine dayanmaktadır.
+> Panoda görünen tüm veriler, bir sonraki bölümde araştırılacak olan sanal cihaz verilerini temel alır.
   
-Pano farklı türde döşemelerden oluşur:
+Pano farklı kutucuk türlerinden oluşur:
 
-* **Geniş Dünya Su Utility görüntü karo**: Panodaki ilk karo hayali su programı Wide World Water bir görüntü karo olduğunu. Kendi resminizi ekleyerek veya kaldırarak döşemeyi özelleştirebilirsiniz.
-* **Ortalama su akışı KPI karosu**: KPI karosu *son 30 dakikadaki ortalamayı*örnek olarak gösterecek şekilde yapılandırılır. KPI döşemesini özelleştirebilir ve farklı bir tür ve zaman aralığına ayarlayabilirsiniz.
-* **Cihaz komut karoları**: Bu karolar **Yakın valf,** **Açık valf**ve **Set valf konum** karoları içerir. Komutları seçmek sizi simüle edilen aygıt komut uyruğu sayfasına götürür. Azure IoT Central'da *komut* *aygıt özelliği* türüdür. Bu kavramı daha sonra bu öğreticinin "Aygıt şablonu" bölümünde inceleyeceğiz.
-* **Su dağıtım alanı haritası**: Harita, doğrudan Azure IoT Central'da yapılandırabileceğiniz Azure Haritaları'nı kullanır. Harita döşemesi aygıt konumunu görüntüler. Haritanın üzerine taşırın ve *yakınlaştırma,* *yakınlaştırma*veya *genişletme*gibi harita üzerindeki kontrolleri deneyin.
+* **Geniş dünya su yardımcı programı resim kutucuğu**: panodaki ilk kutucuk, kurgusal su yardımcı programı genelindeki dünya su bir görüntü kutucuğudur. Kutucuğu, kendi resminizi ekleyerek veya kaldırarak özelleştirebilirsiniz.
+* **Ortalama su akışı KPI kutucuğu**: KPI kutucuğu, *son 30 dakika içinde ortalama*bir örnek olarak görüntülenmek üzere yapılandırılmıştır. KPI kutucuğunu özelleştirebilir ve farklı bir tür ve zaman aralığına ayarlayabilirsiniz.
+* **Cihaz komut kutucukları**: Bu kutucuklar **Kapatma vanası**, **Açık Vana**ve **vanasız konum** kutucukları içerir. Komutların seçilmesi sizi sanal cihaz komut sayfasına götürür. Azure IoT Central, bir *komut* bir *cihaz yetenek* türüdür. Bu kavramı daha sonra Bu öğreticinin "cihaz şablonu" bölümünde araştıracağız.
+* **Su dağıtım alanı Haritası**: eşleme, Azure IoT Central 'da doğrudan yapılandırabileceğiniz Azure haritalarını kullanır. Harita kutucuğu cihaz konumunu görüntüler. Haritanın üzerine gelin ve harita üzerinde *Yakınlaştır*, *uzaklaştır*veya *Genişlet*gibi denetimleri deneyin.
 
-    ![Su tüketimi izleme pano haritası](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
+    ![Su tüketim izleme Pano Haritası](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-dashboard-map.png)
 
-* **Ortalama su akış çizgisi grafiği** ve Çevresel durum **çizgisi grafiği**: İstenilen zaman aralığında bir çizgi grafiği olarak çizilmiş bir veya birden çok cihaz telemetrisini görselleştirebilirsiniz.
-* **Ortalama valf basınç ısı haritası grafiği**: Renk indeksi ile bir zaman aralığında dağıtıldığını görmek istediğiniz cihaz telemetri verilerinin ısı haritası görselleştirme türünü seçebilirsiniz.
-* **Uyarı eşiklerini sıfırlama küreme içeriği kutucuğu**: Eylem çağrısı namına içerik kutucuklarını ekleyebilir ve bir eylem sayfasına bağlantı gömebilirsiniz. Bu durumda, sıfırlama uyarısı eşiği, güncelleştirmeleri aygıt özelliklerinde çalıştırabileceğiniz **Uygulama İşleri'ne**götürür. Bu seçeneği daha sonra bu öğreticinin "İşleri Yapılandır" bölümünde inceleyeceğiz.
-* **Özellik kutucukları**: **Pano, Valf çalışma bilgilerini,** **Akış uyarı eşiklerini**ve **Bakım bilgi** kutucuklarını görüntüler.
+* **Ortalama su akış çizgisi grafiği** ve **çevresel koşul çizgisi grafiği**: istenen bir zaman aralığında çizgi grafik olarak çizilen bir veya daha fazla cihaz Telemetriler görselleştirebilirsiniz.
+* **Ortalama Vana basıncı ısı haritasını grafiği**: bir renk diziniyle bir zaman aralığında dağıtılmış görmek istediğiniz cihaz Telemetri verilerinin ısı haritasını görselleştirme türünü seçebilirsiniz.
+* **Uyarı eşiklerini Sıfırla içerik kutucuğu**: eylem çağrısı içerik kutucukları dahil edebilir ve bir eylem sayfasına bağlantı katabilirsiniz. Bu durumda, sıfırlama uyarısı eşiği sizi cihaz özelliklerine yönelik güncelleştirmeleri çalıştırabileceğiniz uygulama **işlerine**götürür. Daha sonra Bu öğreticinin "işleri yapılandırma" bölümünde bu seçeneği keşfedeceğiz.
+* **Özellik kutucukları**: Pano, **Vana işlem bilgilerini**, **akış uyarısı eşiklerini**ve **bakım bilgileri** kutucuklarını görüntüler.
 
 ### <a name="customize-the-dashboard"></a>Panoyu özelleştirme
 
-Bir oluşturucu olarak, operatörler için panodaki görünümleri özelleştirebilirsiniz.
+Bir Oluşturucu olarak, işleçler için panodaki görünümleri özelleştirebilirsiniz.
 
-1. **Geniş Dünya su tüketim panosunu**özelleştirmek için **Edit'i** seçin. **Düzenleme** menüsünü seçerek panoyu özelleştirebilirsiniz. Pano **edit** modunda olduktan sonra, yeni kutucuklar ekleyebilir veya yapılandırabilirsiniz.
+1. **Geniş dünya su tüketim panosunu**özelleştirmek için **Düzenle** ' yi seçin. Panoyu, **Düzenle** menüsünü seçerek özelleştirebilirsiniz. Pano **düzenleme** modundayken, yeni kutucuk ekleyebilir veya onu yapılandırabilirsiniz.
 
      ![Panoyu düzenle](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-edit-dashboard.png)
 
-1. Yeni bir pano oluşturmak ve sıfırdan yapılandırmak için **+ Yeni'yi** seçin. Birden çok panonuz olabilir ve pano menüsündeki panolarınız arasında hareket edebilirsiniz.
+1. Yeni bir pano oluşturmak ve sıfırdan yapılandırmak için **+ Yeni** ' yi seçin. Birden çok panonuz olabilir ve Pano menüsündeki panolarınız arasında geçiş yapabilirsiniz.
 
-## <a name="explore-the-device-template"></a>Aygıt şablonuna göz at
+## <a name="explore-the-device-template"></a>Cihaz şablonunu keşfet
 
-Azure IoT Central'daki aygıt şablonu, telemetri, özellik veya komut olabilecek bir aygıtın yeteneğini tanımlar. Oluşturucu olarak, Azure IoT Central'da bağlanacağınız aygıtların yeteneğini temsil eden bir veya daha fazla aygıt şablonu tanımlayabilirsiniz.
+Azure IoT Central bir cihaz şablonu, telemetri, özellik veya komut olabilecek bir cihazın yeteneklerini tanımlar. Bir Oluşturucu olarak, Azure IoT Central, bağlandığınız cihazların yeteneklerini temsil eden bir veya daha fazla cihaz şablonu tanımlayabilirsiniz.
 
-Su tüketimi izleme uygulaması, *akış ölçeri* ve *akıllı valf* cihazını temsil eden iki referans cihaz şablonuyla birlikte gelir.
+Su tüketim izleme uygulaması, *akış ölçer* ve *akıllı vana* cihazını temsil eden iki başvuru cihaz şablonu ile birlikte gelir.
 
-Aygıt şablonu görüntülemek için:
+Cihaz şablonunu görüntülemek için:
 
-1. Azure IoT Central'da uygulamanızın sol bölmesinde **Aygıt şablonlarını** seçin. Aygıt **şablonları** **listesinde, Akıllı Vana** ve **Akış ölçer**olmak üzere iki aygıt şablonu görürsünüz.
+1. Azure IoT Central 'de uygulamanızın sol bölmesindeki **cihaz şablonları** ' nı seçin. **Cihaz şablonları** listesinde, iki cihaz şablonu, **akıllı vana** ve **akış ölçümü**görürsünüz.
 
-   ![Aygıt şablonu](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
+   ![Cihaz şablonu](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate.png)
 
-1. Akış **ölçer** aygıt şablonu'nu seçin ve aygıt özelliklerini edin.
+1. **Akış ölçer** cihaz şablonunu seçin ve cihaz yeteneklerini öğrenmeye çalışın.
 
-     ![Aygıt şablonu Akış ölçer](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-flowmeter.png)
+     ![Cihaz şablonu akış ölçümü](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-flowmeter.png)
 
-### <a name="customize-the-device-template"></a>Aygıt şablonu özelleştirme
+### <a name="customize-the-device-template"></a>Cihaz şablonunu özelleştirme
 
-Aygıt şablonu özelleştirmek için:
+Cihaz şablonunu özelleştirmek için:
 
-1. **Aygıt şablonları** menüsünde **Özelleştir'e** gidin.
+1. **Cihaz şablonları** menüsünde **Özelleştir** ' e gidin.
 1. `Temperature` Telemetri türünü bulun.
-1. Ekran **Adını** `Temperature` `Reported temperature`güncelleştirin.
-1. Ölçü birimini güncelleştirin veya **Min değerini** ve **Max değerini**ayarlayın.
-1. Değişiklikleri kaydetmek için **Kaydet'i** seçin.
+1. **Görünen adını** `Temperature` olarak `Reported temperature`güncelleştirin.
+1. Ölçüm birimini güncelleştirin veya **en küçük değeri** ve **en büyük değeri**ayarlayın.
+1. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
-### <a name="add-a-cloud-property"></a>Bulut özelliği ekleme
+### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle
 
-1. **Aygıt şablonları** menüsünden **Bulut Özellikleri'ne** gidin.
-1. **+ Bulut Özelliği Ekle'yi**seçerek yeni bir bulut özelliği ekleyin.
-    Azure IoT Central'da aygıtla alakalı bir özellik ekleyebilirsiniz. Örnek olarak, bir bulut özelliği yükleme alanına, varlık bilgilerine veya diğer bakım bilgilerine özgü bir uyarı eşiği olabilir.
-1. Değişiklikleri kaydetmek için **Kaydet'i** seçin.
+1. **Cihaz şablonları** menüsünde **bulut özellikleri** ' ne gidin.
+1. **+ Bulut özelliği Ekle**seçeneğini belirleyerek yeni bir bulut özelliği ekleyin.
+    Azure IoT Central, cihazla ilgili bir özellik ekleyebilirsiniz. Örnek olarak, bir bulut özelliği bir yükleme alanına, varlık bilgilerine veya diğer bakım bilgilerine özgü bir uyarı eşiğine sahip olabilir.
+1. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 
 ### <a name="views"></a>Görünümler
 
-Su tüketim monitörü cihaz şablonu önceden tanımlanmış görünümlerle birlikte gelir. Görünümleri keşfedin ve güncelleştirmeler yapabilirsiniz. Görünümler, işleçlerin aygıt verilerini nasıl gördüğünü ve aynı zamanda bulut özelliklerini nasıl girdirini tanımlar.
+Su tüketim İzleyicisi cihaz şablonu önceden tanımlanmış görünümlerle gelir. Görünümleri keşfedebilir ve güncelleştirme yapabilirsiniz. Görünümler, işleçlerin cihaz verilerini nasıl gördiğine, ayrıca bulut özelliklerini de girdiğine tanımlar.
 
-  ![Aygıt şablonu görünümleri](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
+  ![Cihaz şablonu görünümleri](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
 
 ### <a name="publish"></a>Yayımlama
 
-Herhangi bir değişiklik yaptıysanız, aygıt şablonuna **yayımladığınızdan** emin olun.
+Herhangi bir değişiklik yaptıysanız, cihaz şablonunu **yayımladığınızdan** emin olun.
 
 ### <a name="create-a-new-device-template"></a>Yeni cihaz şablonu oluşturma
 
-Yeni bir aygıt şablonu oluşturmak ve oluşturma işlemini izlemek için **+ Yeni'yi** seçin.
-Sıfırdan özel bir aygıt şablonu oluşturabilir veya Azure Aygıt Kataloğu'ndan bir aygıt şablonu seçebilirsiniz.
+Yeni bir cihaz şablonu oluşturmak ve oluşturma işlemini izlemek için **+ Yeni** ' yi seçin.
+Sıfırdan özel bir cihaz şablonu oluşturabilir veya Azure cihaz kataloğundan bir cihaz şablonu seçebilirsiniz.
 
-## <a name="explore-simulated-devices"></a>Simüle edilmiş cihazları keşfedin
+## <a name="explore-simulated-devices"></a>Sanal cihazları keşfet
 
-Azure IoT Central'da, aygıt şablonunuzu ve uygulamanızı sınamak için benzetimli aygıtlar oluşturabilirsiniz. Su tüketimi izleme uygulaması, **Akış ölçer** ve **Akıllı Vana** cihaz şablonlarına eşlenen iki simüle cihaza sahiptir.
+Azure IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazlar oluşturabilirsiniz. Su tüketim izleme uygulamasının **akış ölçer** ve **akıllı vana** cihaz şablonlarıyla eşleştirilmiş iki sanal cihaz vardır.
 
-### <a name="view-the-devices"></a>Aygıtları görüntüleme
+### <a name="view-the-devices"></a>Cihazları görüntüleme
 
-1. **Aygıtlar'ı** > seçin Sol bölmedeki**tüm aygıtlar.**
+1. Sol bölmedeki **cihazlar** > **tüm cihazlar** ' ı seçin.
 
-   ![Tüm aygıtlar bölmesi](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
+   ![Tüm cihazlar bölmesi](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devices.png)
 
-1. **Akıllı Vana 1'i**seçin.
+1. **Akıllı vana 1**' i seçin.
 
-    ![Akıllı Vana 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
+    ![Akıllı vana 1](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitor-device1.png)
 
-1. **Komutlar** sekmesinde, **Akıllı Vana** cihaz şablonunda tanımlanan yetenekler olan üç cihaz komutunu **(Kapak valfi,** **Açık valf**ve **Set valf konumu)** görebilirsiniz.
+1. **Komutlar** sekmesinde, **akıllı vana** cihaz şablonunda tanımlanan yetenekler olan üç cihaz komutunu **(kapatma vanası**, **Açık Vana**ve **set Vana konumu**) görebilirsiniz.
 
-1. Aygıt **Özellikleri** sekmesini ve **Aygıt Panosu** sekmesini keşfedin.
+1. **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun.
 
 > [!NOTE]
-> Tüm sekmelerin aygıt şablonu görünümlerinden yapılandırıldığına dikkat edin.
+> Tüm sekmelerin cihaz şablonu görünümlerinden yapılandırıldığını unutmayın.
 
-### <a name="add-new-devices"></a>Yeni aygıtlar ekleme
+### <a name="add-new-devices"></a>Yeni cihaz ekle
 
-**Cihazlar** sekmesinde **+ Yeni'yi** seçerek yeni aygıtlar ekleyin.
+**Cihazlar** sekmesinde **+ Yeni** ' ye tıklayarak yeni cihaz ekleyin.
 
-## <a name="explore-and-configure-rules"></a>Kuralları keşfedin ve yapılandırır
+## <a name="explore-and-configure-rules"></a>Kuralları keşfet ve yapılandırma
 
-Azure IoT Central'da, aygıt telemetrisini otomatik olarak izlemek ve bir veya daha fazla koşul yerine getirildiğinde eylemleri tetiklemek için kurallar oluşturabilirsiniz. Eylemler arasında e-posta bildirimleri göndermek veya diğer hizmetlere veri göndermek için bir Microsoft Power Otomatikleştir eylemini veya webhook eylemini tetiklemek de olabilir.
+Azure IoT Central 'de, bir veya daha fazla koşul karşılandığında cihaz telemetrisini otomatik olarak izlemeye yönelik kurallar oluşturabilir ve eylemleri tetikleyebilirsiniz. Eylemler e-posta bildirimleri göndermeyi veya Microsoft Power otomatikleştir eylemini tetiklemeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemini içerebilir.
 
-Oluşturduğunuz su tüketimi izleme uygulamasının önceden yapılandırılmış üç kuralı vardır.
+Oluşturduğunuz su tüketim izleme uygulamasının üç önceden yapılandırılmış kuralı vardır.
 
-### <a name="view-rules"></a>Kuralları görüntüleme
+### <a name="view-rules"></a>Kuralları görüntüle
 
-1. Sol bölmede **Kurallar'ı** seçin.
+1. Sol bölmedeki **kurallar** ' ı seçin.
 
    ![Kurallar bölmesi](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. Uygulamada önceden yapılandırılmış kurallardan biri olan **Yüksek pH uyarısı'nı**seçin.
+1. Uygulamanın önceden yapılandırılmış kurallarından biri olan **yüksek pH uyarısı**' nı seçin.
 
      ![Yüksek pH uyarısı](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    Kural `High flow alert` durumuna `Acidity (pH)` karşı kontrol etmek için `greater than` `Max flow threshold`yapılandırılmıştır . Maksimum akış eşiği, Smart **Valve** aygıt şablonunda tanımlanan bir bulut özelliğidir. `Max flow threshold` Değeri aygıt örneğine göre ayarlanır.
+    `High flow alert` Kural, koşula `Acidity (pH)` `greater than` karşı denetlenecek şekilde yapılandırılır `Max flow threshold`. Maksimum akış eşiği, **akıllı vana** cihaz şablonunda tanımlanan bir bulut özelliğidir. Değeri `Max flow threshold` cihaz örneği başına ayarlanır.
 
 Şimdi bir e-posta eylemi oluşturalım.
 
-Kurala eylem eklemek için:
+Kurala bir eylem eklemek için:
 
-1. Seçin **+ E-posta**.
-1. Eylem için dost Ekran **adı** olarak **Yüksek pH uyarısı** girin.
-1. Azure IoT Central hesabınızla ilişkili e-posta adresini **To'ya**girin.
-1. İsteğe bağlı olarak, e-posta metnine eklemek için bir not girin.
-1. Eylemi tamamlamak için **Bitti'yi** seçin.
-1. Kaydetmek ve yeni kuralı etkinleştirmek için **Kaydet'i** seçin.
+1. **+ E-posta**seçeneğini belirleyin.
+1. Eylem için kolay **görünen ad** olarak **yüksek pH uyarısı** girin.
+1. **' Deki**Azure IoT Central hesabınızla ilişkili e-posta adresini girin.
+1. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
+1. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
+1. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin.
 
-Birkaç dakika içinde, yapılandırılan koşul karşılandıktan sonra bir e-posta almanız gerekir.
+Birkaç dakika içinde, yapılandırılan koşul karşılandıktan sonra bir e-posta almalısınız.
 
 > [!NOTE]
-> Uygulama, bir koşul her karşılaştığında bir e-posta gönderir. Otomatik kuraldan e-posta almayı durdurmak için kuralı devre dışı bırakmak için **Devre Dışı** Bırak'ı seçin.
+> Bir koşul her karşılandığında uygulama bir e-posta gönderir. Otomatik kuraldan e-posta almayı durdur kuralını devre dışı bırakmak için **devre dışı bırak** ' ı seçin.
   
 Yeni bir kural oluşturmak için:
 
-* Sol bölmedeki **Kurallar** sekmesinde **+ Yeni'yi** seçin.
+* Sol bölmedeki **kurallar** sekmesinde **+ Yeni** ' yi seçin.
 
 ## <a name="configure-jobs"></a>İşleri yapılandırma
 
-Azure IoT Central'da işler, birden çok cihazda aygıt veya bulut özelliği güncelleştirmelerini tetiklemenize olanak tanır. Özelliklere ek olarak, birden çok aygıtta aygıt komutlarını tetiklemek için işleri de kullanabilirsiniz. Azure IoT Central sizin için iş akışını otomatikleştirir.
+Azure IoT Central, işler cihaz veya bulut Özellik güncelleştirmelerini birden çok cihazda tetiklemeniz için izin verir. Özelliklere ek olarak, birden çok cihazda cihaz komutlarını tetiklemek için işleri de kullanabilirsiniz. Azure IoT Central, iş akışını sizin için otomatikleştirir.
 
-1. Sol bölmede **İşler'i** seçin.
-1. **+ Yeni'yi**seçin ve bir veya daha fazla işi yapılandırın.
+1. Sol bölmedeki **işler** ' i seçin.
+1. **+ Yeni**' yi seçin ve bir veya daha fazla iş yapılandırın.
 
-## <a name="customize-your-application"></a>Uygulamanızı özelleştirin
+## <a name="customize-your-application"></a>Uygulamanızı özelleştirme
 
-Oluşturucu olarak, uygulamanızdaki kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
+Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
-1. Uygulamanızı**Özelleştir'i** **Administration** > seçin.
-1. **Uygulama logosu**olarak yüklemek için bir resim seçmek için **Değiştir** düğmesini seçin.
-1. Tarayıcı sekmelerinde görünecek bir **Tarayıcı simgesi** resmi seçmek için **Değiştir** düğmesini seçin.
-1. Ayrıca, HTML hexadecimal renk kodları ekleyerek varsayılan **Tarayıcı renklerini** değiştirebilirsiniz.
+1.  > **Uygulamanızı Özelleştir** **' i seçin**.
+1. **Uygulama logosu**olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini seçin.
+1. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini seçin.
+1. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
 
    ![Uygulama logosu, tarayıcı simgesi ve tarayıcı renkleri için seçimler](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-customize-your-application.png)
 
-1. **Ayrıca Yönetim** > **Uygulama ayarlarını**seçerek uygulama görüntülerini değiştirebilirsiniz. Uygulama görüntüsü olarak yüklenebilmek için bir resim seçmek **için, resmi seç** düğmesini seçin.
-1. Son olarak, uygulamanın sağ üst köşesindeki **Ayarlar** simgesini seçerek **Teonu** da değiştirebilirsiniz.
+1. Ayrıca, uygulama görüntülerini **Yönetim** > **uygulama ayarları**' nı seçerek değiştirebilirsiniz. Uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçmek için **Görüntü Seç** düğmesini seçin.
+1. Son olarak, uygulamanın sağ üst köşesindeki **Ayarlar** simgesini seçerek **Temayı** da değiştirebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekseniz, silin.
+Bu uygulamayı kullanmaya devam etmeyecekecekseniz, silin.
 
-1. Azure IoT Central uygulamanızın sol bölmesindeki **Yönetim'i** seçin.
-1. **Uygulama ayarlarını**seçin ve ardından sayfanın altındaki **Sil'i** seçin.
+1. Azure IoT Central uygulamanızın sol bölmesinde **Yönetim** ' i seçin.
+1. **Uygulama ayarları**' nı seçin ve ardından sayfanın alt kısmındaki **Sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

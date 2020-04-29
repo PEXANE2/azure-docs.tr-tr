@@ -1,6 +1,6 @@
 ---
-title: Azure Etkinlik Hub'ları - Gerçek zamanlı etkinliklerde veri anormalliklerini görselleştirin
-description: "Öğretici: Microsoft Azure Etkinlik Hub'larına gönderilen gerçek zamanlı etkinliklerde veri anormalliklerini görselleştirin"
+title: Azure Event Hubs-gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin
+description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin Event Hubs'
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,19 +10,19 @@ ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.openlocfilehash: f71d8e9f88dad32818ed25d4a0719a1528656f96
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77163186"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
-Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetleyebilir, anomalileri ayırabilir ve Power BI'da görselleştirebilirsiniz. Bir olay hub'ına sürekli olarak gerçek zamanlı veriler göndererek saniyede milyonlarca olay ekleyen binlerce cihaza sahip olduğunuzu düşünelim. Bu kadar fazla verideki anomalileri veya hataları nasıl denetleyebilirsiniz? Örneğin, aygıtlar kredi kartı işlemleri gönderiyorsa ve 5 saniyelik bir zaman aralığı içinde birden çok ülkede/bölgede birden fazla işlemin olduğu her yeri yakalamanız gerekiyorsa? Bu durum birisi kredi kartı bilgilerini çalıp dünyanın farklı yerlerinden aynı anda alışveriş yapmak için kullandığında ortaya çıkabilir. 
+Azure Event Hubs ile Azure Stream Analytics'i kullanarak gelen verileri denetleyebilir, anomalileri ayırabilir ve Power BI'da görselleştirebilirsiniz. Bir olay hub'ına sürekli olarak gerçek zamanlı veriler göndererek saniyede milyonlarca olay ekleyen binlerce cihaza sahip olduğunuzu düşünelim. Bu kadar fazla verideki anomalileri veya hataları nasıl denetleyebilirsiniz? Örneğin, cihazlar kredi kartı işlemleri gönderiyor ve 5 saniyelik bir zaman aralığı içinde birden çok ülkede/bölgede birden çok işlem olması gereken her yerde yakalamanız gerekiyorsa ne yapmalı? Bu durum birisi kredi kartı bilgilerini çalıp dünyanın farklı yerlerinden aynı anda alışveriş yapmak için kullandığında ortaya çıkabilir. 
 
-Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlerden ayıran Azure Akış Analizi ile veri akışını gerçek zamanlı olarak okuyun ve geçersiz olarak etiketlenen hareketleri görsel olarak tanımlamak için Power BI'yi kullanırsınız.
+Bu öğreticide bu örneğin simülasyonunu yapacaksınız. Kredi kartı işlemleri oluşturup bunları bir olay hub'ına gönderen bir uygulama çalıştıracaksınız. Ardından, geçerli işlemleri geçersiz işlemlere ayıran Azure Stream Analytics veri akışını gerçek zamanlı olarak okur ve sonra geçersiz olarak etiketlenen işlemleri görsel olarak tanımlamak için Power BI kullanırsınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Olay hub’ı oluşturma
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bu verileri işlemek için bir Stream Analytics işi yapılandırma
 > * Sonuçları göstermek için bir Power BI görselleştirmesi yapılandırma
 
-Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.][]
+Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun][] .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -38,7 +38,7 @@ Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Hesa
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-- [Visual Studio'u](https://www.visualstudio.com/)yükleyin. 
+- [Visual Studio 'yu](https://www.visualstudio.com/)yükler. 
 - Stream Analytics işinin çıktısını analiz edebilmek için bir Power BI hesabınızın olması gerekir. [Power BI'ı ücretsiz deneyebilirsiniz](https://app.powerbi.com/signupredirect?pbi_source=web).
 
 ## <a name="set-up-resources"></a>Kaynakları ayarlama
@@ -47,7 +47,7 @@ Bu öğretici için bir Event Hubs ad alanına ve bir olay hub’ına ihtiyacın
 
 Aşağıdaki bölümlerde bu gerekli adımların nasıl uygulanacağı açıklanır. CLI *veya* the PowerShell yönergelerini uygulayarak aşağıdaki adımları gerçekleştirin:
 
-1. Kaynak [grubu](../azure-resource-manager/management/overview.md)oluşturun. 
+1. Bir [kaynak grubu](../azure-resource-manager/management/overview.md)oluşturun. 
 
 2. Bir Event Hubs ad alanı oluşturun. 
 
@@ -156,13 +156,13 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Test amaçlı olay verilerini üretmek için uygulamayı çalıştırma
 
-[GitHub'daki](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) Olay Hub'ları örnekleri, sizin için test verileri üreten bir Anomaly Detector uygulaması içerir. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
+[GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) , sizin için test verileri üreten bir anomali algılayıcı uygulaması içerir. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
 
 1. GitHub'dan [Azure Event Hubs örneklerini](https://github.com/Azure/azure-event-hubs/archive/master.zip) indirin ve dosyaları ayıklayın.
-2. **\azure-event-hubs-master\samples\DotNet\\ ** klasörüne gidin. 
-3. Visual Studio'da çözümü açmak için **Azure.Messaging.EventHubs\AnomalyDetector\\ ** klasörüne geçin ve **AnomalyDetector.sln'e** çift tıklayın. 
+2. Folder **\azure-Event-Hubs-master\samples\DotNet\\ ** klasörüne gidin. 
+3. **Azure. Messaging. eventhubs\anoyıalgılayıcı\\ ** klasörüne geçin ve Visual Studio 'da çözümü açmak için **anoialgılayıcısı. sln** ' ye çift tıklayın. 
 
-    Eski Microsoft.Azure.EventHubs paketini kullanan örneğin eski sürümünü kullanmak için çözümü **Microsoft.Azure.EventHubs\AnomalyDetector** klasöründen açın. 
+    Eski Microsoft. Azure. EventHubs paketini kullanan örneğin eski sürümünü kullanmak için **Microsoft. Azure. Eventhubs\anoyıalgılayıcı** klasöründen çözümü açın. 
 3. Program.cs dosyasını açın ve **Event Hubs connection string** yerine betiği çalıştırırken kaydettiğiniz bağlantı dizesini yazın. 
 4. **Event Hub name** yerine olay hub'ınızın adını yazın. Uygulamayı çalıştırmak için F5'e basın. Olay hub'ınıza olay göndermeye başlar ve 1000 olaya ulaşana kadar göndermeye devam eder. Veri almak için uygulamanın çalışır durumda olmasını gerektiren birkaç durum vardır. Bu durumlar gerekli noktalarda aşağıdaki yönergelerde belirtilmiştir.
 
@@ -186,7 +186,7 @@ Artık olay hub'ınıza veri akışını başlatabilirsiniz. Bu verileri bir Pow
 
    ![Yeni bir Azure Stream Analytics işi oluşturma işleminin gösterildiği ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-add-job.png)
 
-    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur'u**tıklatın. 
+    Kalan alanlarda varsayılan değerleri kabul edin. **Oluştur**' a tıklayın. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics işine giriş ekleme
 
@@ -217,7 +217,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
    ![Stream Analytics işine giriş akışı ekleme adımlarını gösteren ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/stream-analytics-inputs.png)
 
-5. **Kaydet**'e tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics işine çıkış ekleme
 
@@ -239,7 +239,7 @@ Steam Analytics işinin girişleri, olay hub'ından gelen kredi kartı işlemler
 
 4. Kalan alanlarda varsayılan değerleri kabul edin.
 
-5. **Kaydet**'e tıklayın.
+5. **Kaydet**’e tıklayın.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu yapılandırma
 
@@ -268,7 +268,7 @@ Bu sorgu, Power BI görselleştirmesine gönderilecek verilerin alınması için
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **Kaydet**'e tıklayın.
+4. **Kaydet**’e tıklayın.
 
 ### <a name="test-the-query-for-the-stream-analytics-job"></a>Stream Analytics işinin sorgusunu test etme 
 
@@ -306,7 +306,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    ![Pano adı belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Pano sayfasında, **döşeme ekle'yi**tıklatın, GERÇEK **ZAMANLı VERİler** bölümünde **Özel Akış Verileri'ni** seçin ve ardından **İleri'yi**tıklatın.
+7. Pano sayfasında, **kutucuk Ekle**' ye tıklayın, **gerçek zamanlı veriler** bölümünde **özel akış verileri** ' ni seçin ve ardından **İleri**' ye tıklayın.
 
    ![Kutucuk için kaynak belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 
@@ -318,19 +318,19 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    ![Görselleştirme türü ve alan belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
-   **İleri**'ye tıklayın.
+   **İleri**’ye tıklayın.
 
 10. Başlığı **Sahtekarlık amaçlı kullanımlar**, alt başlığı da **Son birkaç dakikadaki toplam veriler** yapın. **Uygula**’ya tıklayın. Kutucuk, panonuza kaydedilir.
 
     ![Pano kutucuğu için başlık ve alt başlık belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > Örnek uygulamayı çalıştırdığınızda ve verileri olay merkezine aktardığınızda, bu döşemedeki sayı hızla değişir (her saniye). Bunun nedeni, Akış Analizi sorgusunun değeri saniyede güncelleştirmesidir. **every second** Toplamı son birkaç dakika içinde görmek için sorguyu 3 dakikalık bir yuvarlanma penceresine güncelleştirin. 
+    > Örnek uygulamayı ve veri akışını Olay Hub 'ına çalıştırdığınızda, bu kutucukta bulunan sayı hızlı bir şekilde değişir (her saniye). Bunun nedeni, Stream Analytics sorgusunun değeri **her saniye**güncelleyen şeydir. Son birkaç dakika içinde toplamı görmek için sorguyu 3 dakikalık bir pencereye güncelleştirin. 
 11. Başka bir görselleştirme ekleyin. İlk birkaç adımı tekrarlayın:
 
     * **Kutucuk Ekle**'ye tıklayın.
     * **Özel Akış Verileri**'ni seçin. 
-    * **İleri**'ye tıklayın.
+    * **İleri**’ye tıklayın.
     * Veri kümenizi seçin ve **İleri**'ye tıklayın. 
 
 12. **Görselleştirme Türü** olarak **Çizgi grafik** türünü seçin.
@@ -339,7 +339,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
 14. **Değerler** bölümünde **Değer ekle**'ye tıklayıp **fraudulentuses** değerini seçin.
 
-15. **Görüntülenecek zaman penceresi** için son beş dakikayı seçin. **İleri**'ye tıklayın.
+15. **Görüntülenecek zaman penceresi** için son beş dakikayı seçin. **İleri**’ye tıklayın.
 
 16. Başlık olarak **Zaman içindeki sahtekarlık amaçlı kullanımları göster** yazın, alt başlığı boş bırakın ve **Uygula**'ya tıklayın. Panonuz açılır.
 
@@ -365,7 +365,7 @@ az group delete --name $resourceGroup
 
 ### <a name="clean-up-resources-using-powershell"></a>PowerShell kullanarak kaynakları temizleme
 
-Kaynak grubunu kaldırmak için [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın.
+Kaynak grubunu kaldırmak için [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -386,4 +386,4 @@ Azure Event Hubs hakkında daha fazla bilgi edinmek için bir sonraki makaleye g
 > [!div class="nextstepaction"]
 > [.NET Standard'da Azure Event Hubs'a ileti göndermeye başlama](get-started-dotnet-standard-send-v2.md)
 
-[ücretsiz bir hesap oluşturmak]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Ücretsiz hesap oluşturun]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

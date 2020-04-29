@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: Bir bölgedeki kaynak kaydına başvurmak için takma ad kaydı oluşturma'
+title: 'Öğretici: bir bölgedeki kaynak kaydına başvurmak için bir diğer ad kaydı oluşturma'
 titleSuffix: Azure DNS
 description: Bu öğreticide, bölgedeki kaynak kaydına başvurmak için bir Azure DNS diğer ad kaydını yapılandırma işlemi gösterilir.
 services: dns
@@ -9,24 +9,24 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939258"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Öğretici: Bölge kaynak kaydına başvurmak için diğer ad kaydı oluşturma
 
 Diğer ad kayıtları aynı türdeki diğer kayıt kümelerine başvurabilir. Örneğin, bir DNS CNAME kayıt kümesinin aynı türdeki başka bir CNAME kayıt kümesine diğer ad olmasını sağlayabilirsiniz. Bazı kayıt kümelerinin diğer ad gibi davranmasını diğerlerinin diğer ad değilmiş gibi davranmasını istiyorsanız, bu özellik yararlı olacaktır.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bölgedeki kaynak kaydı için diğer ad oluşturma.
 > * Diğer ad kaydını test etme.
 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Birlikte test edilecek Azure DNS içinde barındırabileceğiniz bir etki alanı adınızın olması gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
@@ -44,7 +44,7 @@ Bölgedeki kaynak kaydına işaret eden bir diğer ad kaydı oluşturun.
 3. **Ad** metin kutusuna **server** yazın.
 4. **Tür** olarak **A** seçin.
 5. **IP ADRESİ** metin kutusuna **10.10.10.10** yazın.
-6. **Tamam'ı**seçin.
+6. **Tamam**’ı seçin.
 
 ### <a name="create-the-alias-record"></a>Diğer ad kaydını oluşturma
 1. Azure DNS bölgenizi açmak için bölgeyi seçin.
@@ -53,11 +53,11 @@ Bölgedeki kaynak kaydına işaret eden bir diğer ad kaydı oluşturun.
 4. **Tür** olarak **A** seçin.
 5. **Diğer Ad Kayıt Kümesi** onay kutusunda **Evet**'i seçin. Ardından **Bölge kayıt kümesi**'ni seçin.
 6. **Bölge kayıt kümesi** için **server** kaydını seçin.
-7. **Tamam'ı**seçin.
+7. **Tamam**’ı seçin.
 
 ## <a name="test-the-alias-record"></a>Diğer ad kaydını test etme
 
-1. Sık kullandığınız nslookup aracını başlatın. Bir seçenek göz [https://network-tools.com/nslook](https://network-tools.com/nslook)atmaktır.
+1. Sık kullandığınız nslookup aracını başlatın. Bir seçenek, öğesine [https://network-tools.com/nslook](https://network-tools.com/nslook)gözatmanızı sağlar.
 2. A kayıtları için sorgu türünü ayarlayın ve **test.\<etki alanınızın adı\>** için arama yapın. Yanıt **10.10.10.10** olacaktır.
 3. Azure portalında **server** A kaydını **10.11.11.11** olarak değiştirin.
 4. Birkaç dakika bekleyin ve ardından **test** kaydı için nslookup aracını yeniden kullanın. Yanıt **10.11.11.11** olacaktır.

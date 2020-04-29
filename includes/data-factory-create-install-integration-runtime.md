@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76989102"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
-Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturur ve SQL Server veritabanını içeren bir şirket içi makine ile ilişkilendirirsiniz. Kendi kendine barındırılan tümleştirme çalışma süresi, makinenizdeki SQL Server'daki verileri Azure SQL veritabanına kopyalayan bileşendir. 
+Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturur ve SQL Server veritabanını içeren bir şirket içi makine ile ilişkilendirirsiniz. Şirket içinde barındırılan tümleştirme çalışma zamanı, makinenizdeki SQL Server verileri Azure SQL veritabanı 'na kopyalayan bileşendir. 
 
 1. Tümleştirme çalışma zamanının adı için bir değişken oluşturun. Benzersiz bir ad kullanın ve not edin. Daha sonra bu öğreticide kullanacaksınız. 
 
@@ -83,7 +83,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
 5. Sonraki adımda makinenize yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanını kaydetmek için anahtarların birini (çift tırnak işaretlerini atın) kopyalayın.  
 
-## <a name="install-the-integration-runtime-tool"></a>Tümleştirme çalışma zamanı aracını yükleme
+## <a name="install-the-integration-runtime-tool"></a>Integration Runtime aracını yükler
 
 1. Makinenizde zaten Integration Runtime varsa, **Program Ekle veya Kaldır** seçeneğini kullanarak programı kaldırın. 
 
@@ -103,7 +103,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     ![Tümleştirme çalışma zamanını kaydetme](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
 
-9. Yeni **Tümleştirme Runtime (Self barındırılan) Düğüm** sayfasında **Finish'i**seçin. 
+9. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** sayfasında **son**' u seçin. 
 
 10. Şirket içinde barındırılan tümleştirme çalışma zamanı başarıyla kaydedildiğinde aşağıdaki iletiyi görürsünüz:
 
@@ -131,7 +131,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     f. Kullanıcı adını girin.
 
-    g. Kullanıcı adı için ilişkili parolayı girin.
+    g. Kullanıcı adı için ile ilişkili parolayı girin.
 
     h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Test**’i seçin. Bağlantı başarılı olursa yeşil bir onay işareti görürsünüz. Bağlantı başarılı olmazsa bir hata iletisi görürsünüz. Sorunları giderin ve tümleştirme çalışma zamanının SQL Server’a bağlanabildiğinden emin olun.    
 

@@ -9,15 +9,15 @@ ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67188301"
 ---
 Kaynakları Azure'a dağıtırken, hangi tür kaynakların dağıtılacağına, nerede bulunduklarına ve nasıl ayarlanacaklarına karar vermede inanılmaz bir esnekliğe sahip olursunuz. Ancak bu esneklik, kuruluşunuzda izin vermek istediğinizden daha fazla seçeneğe yol açabilir. Kaynakları Azure'a dağıtmayı düşünürken şunları merak ediyor olabilirsiniz:
 
-* Belirli ülkelerde/bölgelerde veri egemenliği için yasal gereklilikleri nasıl karşılarım?
+* Belirli ülkelerde/bölgelerde veri egemenliği için yasal gereksinimleri karşılayacak Nasıl yaparım? mı?
 * Maliyeti nasıl kontrol edebilirim?
 * Birilerinin istemeden önemli bir sistemi değiştirmemesini nasıl sağlayabilirim?
 * Kaynak maliyetlerini nasıl izleyip doğru bir şekilde faturalarım?

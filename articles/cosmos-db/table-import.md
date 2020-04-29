@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB'deki tablo API hesabına varolan verileri geçirin
-description: Azure Cosmos DB'deki Azure Table API hesabına şirket içi veya bulut verilerini nasıl geçirtme veya içe aktarma öğrenin.
+title: Mevcut verileri Azure Cosmos DB Tablo API'si hesaba geçirin
+description: Şirket içi veya bulut verilerini Azure Cosmos DB Azure Tablo API'si hesabına geçirme veya içeri aktarma hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,15 +9,15 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66242580"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Verilerinizi Azure Cosmos DB Tablo API'si hesabına geçirme
 
-Bu öğretici, Azure Cosmos DB [Tablo API](table-introduction.md)ile kullanılmak üzere veri alma hakkında talimatlar sağlar. Azure Tablo depolama alanında depolanan verileriniz varsa verilerinizi Azure Cosmos DB Tablo API'sine aktarmak için Veri Taşıma Aracı'nı veya AzCopy'yi kullanabilirsiniz. Bir Azure Cosmos DB Tablo API'si (önizleme) hesabında depolanan verileriniz varsa, verilerinizi taşımak için Veri Taşıma Aracı'nı kullanmanız gerekir. 
+Bu öğreticide, Azure Cosmos DB [tablo API'si](table-introduction.md)kullanım için verileri içeri aktarmaya yönelik yönergeler sağlanmaktadır. Azure Tablo depolama alanında depolanan verileriniz varsa verilerinizi Azure Cosmos DB Tablo API'sine aktarmak için Veri Taşıma Aracı'nı veya AzCopy'yi kullanabilirsiniz. Bir Azure Cosmos DB Tablo API'si (önizleme) hesabında depolanan verileriniz varsa, verilerinizi taşımak için Veri Taşıma Aracı'nı kullanmanız gerekir. 
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -66,11 +66,11 @@ Azure Tablo Depolama veya Tablo API önizlemesini geçişin kaynağı olarak tan
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için Azure portalını açın ve **Depolama** > **hesapları Hesabı** > **Erişim anahtarlarını**tıklatın ve ardından **Bağlantı dizesini**kopyalamak için kopyala düğmesini kullanın.
+Azure Tablo depolamadan içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın ve **depolama hesapları** > **Hesap** > **erişim anahtarları**' na tıklayın ve sonra **bağlantı dizesini**kopyalamak için Kopyala düğmesini kullanın.
 
 ![HBase kaynağı seçeneklerinin ekran görüntüsü](./media/table-import/storage-table-access-key.png)
 
-Azure Cosmos DB Table API (önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için Azure portalını açın, **Azure Cosmos DB** > **Hesap** > **Bağlantı Dizesini** tıklatın ve Bağlantı **Dizesini**kopyalamak için kopyalama düğmesini kullanın.
+Azure Cosmos db tablo API'si (Önizleme) hesabından içeri aktarırken kaynak bağlantı dizesini almak için, Azure Portal açın, **Azure Cosmos DB** > **hesabı** > **bağlantı dizesi** ' ne tıklayın ve Kopyala düğmesini kullanarak **bağlantı dizesini**kopyalayın.
 
 ![HBase kaynağı seçeneklerinin ekran görüntüsü](./media/table-import/cosmos-connection-string.png)
 

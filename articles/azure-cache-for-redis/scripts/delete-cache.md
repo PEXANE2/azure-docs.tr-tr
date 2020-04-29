@@ -1,6 +1,6 @@
 ---
-title: Redis için Bir Azure Önbelleği Silme - Azure CLI
-description: Bu Azure CLI kod örneği, az redis silme komutunu kullanarak Redis örneği için bir Azure Önbelleğinin nasıl silineceğini gösterir.
+title: Redsıs için Azure önbelleğini silme-Azure CLı
+description: Bu Azure CLı kod örneği, az redin Delete komutunu kullanarak Redsıs örneği için bir Azure önbelleğinin nasıl silineceğini gösterir.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75411073"
 ---
-# <a name="delete-an-azure-cache-for-redis"></a>Redis için Azure Önbelleğini Silme
+# <a name="delete-an-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini silme
 
-Bu senaryoda, Redis için bir Azure Önbelleği nasıl silineceğinizi öğrenirsiniz.
+Bu senaryoda, redin için bir Azure önbelleğinin nasıl silineceğini öğrenirsiniz.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,15 +29,15 @@ Bu senaryoda, Redis için bir Azure Önbelleği nasıl silineceğinizi öğrenir
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, Redis örneği için bir Azure Önbelleği'ni silmek için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, Redsıs örneği için bir Azure önbelleğini silmek üzere aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [az redis silme](https://docs.microsoft.com/cli/azure/redis) | Redis örneği için Azure Önbelleğini silin. |
+| [az redsıs Delete](https://docs.microsoft.com/cli/azure/redis) | Redsıs örneği için Azure önbelleğini silin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
 
-Redis CLI komut dosyası örnekleri için ek Azure Önbelleği, [Redis belgeleri için Azure Önbelleği'nde](../cli-samples.md)bulunabilir.
+Redsıs CLı betik örnekleri için ek Azure önbelleği, [redin belgeleri Için Azure önbelleğinde](../cli-samples.md)bulunabilir.

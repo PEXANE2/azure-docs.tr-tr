@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure HDInsight kullanarak verileri ayıklayın, dönüştürün ve yükleyin'
-description: Bu eğitimde, ham bir CSV veri setinden veri ayıklamayı, Azure HDInsight'ta Apache Hive kullanarak nasıl dönüştüreceğinizi ve ardından dönüştürülmüş verileri Sqoop kullanarak Azure SQL Veritabanı'na yüklemeyi öğreneceksiniz.
+title: 'Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme'
+description: Bu öğreticide, ham CSV veri kümesinden veri çıkarmayı, Azure HDInsight üzerinde Apache Hive kullanarak dönüştürmeyi ve sonra Sqoop kullanarak dönüştürülmüş verileri Azure SQL veritabanı 'na yüklemeyi öğrenirsiniz.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -9,40 +9,40 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74327569"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklayın, dönüştürün ve yükleyin
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
-Bu öğreticide, bir ETL işlemi gerçekleştirin: verileri ayıklamak, dönüştürmek ve yüklemek. Ham bir CSV veri dosyanı alır, Azure HDInsight kümesine aktarın, Apache Hive ile dönüştürün ve Apache Sqoop ile Azure SQL veritabanına yüklersiniz.
+Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile bir Azure SQL veritabanı 'na yüklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Verileri bir HDInsight kümesine ayıklayın ve yükleyin.
+> * Verileri bir HDInsight kümesine ayıklayın ve karşıya yükleyin.
 > * Apache Hive kullanarak verileri dönüştürün.
-> * Sqoop kullanarak verileri Azure SQL veritabanına yükleyin.
+> * Sqoop kullanarak verileri bir Azure SQL veritabanına yükleyin.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **HDInsight için yapılandırılan bir Azure Veri Gölü Depolama Gen2 depolama hesabı**
+* **HDInsight için yapılandırılmış Azure Data Lake Storage 2. depolama hesabı**
 
-    Bkz. [Azure HDInsight kümeleriyle Azure Veri Gölü Depolama Gen2'yi kullanın.](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
+    Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
 
-* **HDInsight'ta Linux tabanlı Hadoop kümesi**
+* **HDInsight 'ta Linux tabanlı Hadoop kümesi**
 
-    [Hızlı Başlangıç:Azure portalını kullanarak Azure HDInsight'ta Apache Hadoop ve Apache Hive ile başlayın.](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal)
+    Bkz. [hızlı başlangıç: Azure HDInsight 'ta Azure Portal kullanarak Apache Hadoop ve Apache Hive ile çalışmaya başlama](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Veritabanı**: Hedef veri deposu olarak Azure SQL veritabanını kullanıyorsunuz. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
+* **Azure SQL veritabanı**: BIR Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**: Azure CLI'yi yüklemediyseniz, [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)bkz.
+* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **Güvenli Kabuk (SSH) istemcisi**: Daha fazla bilgi [için SSH kullanarak HDInsight'a (Hadoop) bağlan'a](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
+* **Bir Secure Shell (SSH) istemcisi**: daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'a (Hadoop) bağlanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
@@ -54,25 +54,25 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](h
    | --- | --- |
    | Yıl Filtresi |2013 |
    | Dönem Filtresi |Ocak |
-   | Alanlar |Yıl, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, DestAirportID, DestState, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Alanlar |Year, FlightDate, Reporting_Airline, IATA_CODE_Reporting_Airline, Flight_Number_Reporting_Airline, Originairportıd, Origin, OriginCityName, OriginState, Destairportıd, dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, pembe Therdelay, NASDelay, SecurityDelay, Lateaırcraftdelay. |
    
    Diğer tüm alanları temizleyin.
 
 3. **Download** (İndir) seçeneğini belirleyin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
-## <a name="extract-and-upload-the-data"></a>Verileri ayıklayın ve yükleyin
+## <a name="extract-and-upload-the-data"></a>Verileri ayıklama ve karşıya yükleme
 
-Bu bölümde, HDInsight kümenize veri yükler siniz ve ardından bu verileri Veri Gölü Depolama Gen2 hesabınıza kopyalayaceksiniz.
+Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri Data Lake Storage 2. hesabınıza kopyalayacaksınız.
 
-1. Bir komut istemi açın ve .zip dosyasını HDInsight küme başlığı düğümüne yüklemek için aşağıdaki Secure Copy (Scp) komutunu kullanın:
+1. Bir komut istemi açın ve. zip dosyasını HDInsight kümesi baş düğümüne yüklemek için aşağıdaki güvenli kopya (SCP) komutunu kullanın:
 
    ```bash
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * Yer `<file-name>` tutucuyu .zip dosyasının adı ile değiştirin.
-   * YER `<ssh-user-name>` TUTUCUyu HDInsight kümesi için SSH girişi ile değiştirin.
-   * Yer `<cluster-name>` tutucuyu HDInsight kümesinin adı ile değiştirin.
+   * `<file-name>` Yer tutucusunu. zip dosyasının adıyla değiştirin.
+   * `<ssh-user-name>` Yer tutucusunu HDInsight KÜMESI için SSH oturum açma ile değiştirin.
+   * `<cluster-name>` Yer tutucusunu HDInsight kümesinin adıyla değiştirin.
 
    SSH oturum açma bilgilerinizi doğrulamak için bir parola kullanıyorsanız parola girmeniz istenir.
 
@@ -90,17 +90,17 @@ Bu bölümde, HDInsight kümenize veri yükler siniz ve ardından bu verileri Ve
    unzip <file-name>.zip
    ```
 
-   Komut bir **.csv** dosyasını ayıklar.
+   Komut bir **. csv** dosyası ayıklar.
 
-4. Veri Gölü Depolama Gen2 kapsayıcısını oluşturmak için aşağıdaki komutu kullanın.
+4. Data Lake Storage 2. kapsayıcısını oluşturmak için aşağıdaki komutu kullanın.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Yer `<container-name>` tutucuyu kabınıza vermek istediğiniz adla değiştirin.
+   Yer tutucusunu `<container-name>` , kapsayıcınıza vermek istediğiniz adla değiştirin.
 
-   Yer `<storage-account-name>` tutucuyu depolama hesabınızın adı ile değiştirin.
+   `<storage-account-name>` Yer tutucusunu depolama hesabınızın adıyla değiştirin.
 
 5. Bir dizin oluşturmak için aşağıdaki komutu kullanın.
 
@@ -108,27 +108,27 @@ Bu bölümde, HDInsight kümenize veri yükler siniz ve ardından bu verileri Ve
    hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
-6. *.csv* dosyasını dizine kopyalamak için aşağıdaki komutu kullanın:
+6. *. Csv* dosyasını dizine kopyalamak için aşağıdaki komutu kullanın:
 
    ```bash
    hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
-   Dosya adı boşluklar veya özel karakterler içeriyorsa, dosya adının etrafındaki tırnak tırnaklarını kullanın.
+   Dosya adı boşluk veya özel karakterler içeriyorsa dosya adı etrafında tırnak işareti kullanın.
 
 ## <a name="transform-the-data"></a>Verileri dönüştürme
 
-Bu bölümde, bir Apache Hive iş çalıştırmak için Beeline kullanın.
+Bu bölümde, bir Apache Hive işini çalıştırmak için Beeline kullanırsınız.
 
-Apache Hive işinin bir parçası olarak, .csv dosyasındaki verileri **gecikmeler**adlı bir Apache Hive tablosuna aktarın.
+Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir Apache Hive tablosuna aktarırsınız.
 
-1. HDInsight kümesi için zaten sahip olduğunuz SSH komutundan **flightdelays.hql**adlı yeni bir dosya oluşturmak ve bunları güncellemek için aşağıdaki komutu kullanın:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
 
    ```bash
    nano flightdelays.hql
    ```
 
-2. Yer tutucuları konteyner `<container-name>` ve `<storage-account-name>` depolama hesabı adınız ile değiştirerek aşağıdaki metni değiştirin. Ardından, sağ fare tıklama düğmesiyle birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
+2. `<container-name>` Ve `<storage-account-name>` yer tutucuları kapsayıcınıza ve depolama hesabı adınızla değiştirerek aşağıdaki metni değiştirin. Sonra sağ fare tıklama düğmesi ile birlikte SHIFT tuşuna basarak metni nano konsola kopyalayıp yapıştırın.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -192,7 +192,7 @@ Apache Hive işinin bir parçası olarak, .csv dosyasındaki verileri **gecikmel
     FROM delays_raw;
     ```
 
-3. CTRL+X kullanarak dosyayı kaydedin `Y` ve istendiğinde yazın.
+3. Dosyayı CTRL + X kullan ' ı kullanarak kaydedin ve sorulduğunda yazın `Y` .
 
 4. Hive’ı başlatmak ve **flightdelays.hql** dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -224,17 +224,17 @@ Apache Hive işinin bir parçası olarak, .csv dosyasındaki verileri **gecikmel
 
 ## <a name="create-a-sql-database-table"></a>SQL veritabanı tablosu oluşturma
 
-Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı bulmak için bu adımları tamamlayın.
+Bu işlem için SQL veritabanınızda sunucu adına ihtiyacınız vardır. Sunucu adınızı bulmak için bu adımları izleyin.
 
-1. [Azure portalına](https://portal.azure.com)gidin.
+1. [Azure Portal](https://portal.azure.com)gidin.
 
-2. **SQL Veritabanları'nı**seçin.
+2. **SQL veritabanlarını**seçin.
 
-3. Kullanmayı seçtiğiniz veritabanının adına filtre uygulayın. Sunucu adı, **Sunucu adı** sütununda listelenir.
+3. Kullanmayı seçtiğiniz veritabanının adını filtreleyin. Sunucu adı, **Sunucu adı** sütununda listelenir.
 
-4. Kullanmak istediğiniz veritabanının adına filtre uygulayın. Sunucu adı, **Sunucu adı** sütununda listelenir.
+4. Kullanmak istediğiniz veritabanının adını filtreleyin. Sunucu adı, **Sunucu adı** sütununda listelenir.
 
-    ![Azure SQL sunucu ayrıntılarını alın](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL sunucu ayrıntılarını alın")
+    ![Azure SQL Server ayrıntılarını al](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL Server ayrıntılarını al")
 
     SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aşağıdaki adımlarda HDInsight kümesinden [FreeTDS](https://www.freetds.org/) kullanılır.
 
@@ -244,18 +244,18 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Yükleme tamamlandıktan sonra, SQL Veritabanı sunucusuna bağlanmak için aşağıdaki komutu kullanın.
+6. Yükleme tamamlandıktan sonra, SQL veritabanı sunucusuna bağlanmak için aşağıdaki komutu kullanın.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Yer `<server-name>` tutucuyu SQL Veritabanı sunucu adı ile değiştirin.
+   * `<server-name>` Yer tutucusunu SQL veritabanı sunucu adıyla değiştirin.
 
-   * Yer `<admin-login>` tutucuyu SQL Veritabanı için yönetici girişi ile değiştirin.
+   * `<admin-login>` Yer tutucusunu SQL veritabanı için yönetici oturum kimliğiyle değiştirin.
 
-   * Yer `<database-name>` tutucuyu veritabanı adı ile değiştirme
+   * `<database-name>` Yer tutucusunu veritabanı adıyla değiştirin
 
-   Size istendiğinde, SQL Database yönetici girişi için parolayı girin.
+   İstendiğinde, SQL veritabanı yönetici oturumu açma parolasını girin.
 
    Aşağıdakine benzer bir çıktı alırsınız:
 
@@ -267,7 +267,7 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
    1>
    ```
 
-7. İsteyerek, `1>` aşağıdaki ifadeleri girin:
+7. `1>` İsteminde aşağıdaki deyimleri girin:
 
    ```hiveql
    CREATE TABLE [dbo].[delays](
@@ -280,7 +280,7 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
 
 8. `GO` deyimi girildiğinde önceki deyimler değerlendirilir.
 
-   Sorgu, kümelenmiş dizin içeren **gecikmeler**adlı bir tablo oluşturur.
+   Sorgu, kümelenmiş dizine sahip olan **gecikmeler**adlı bir tablo oluşturur.
 
 9. Tablonun oluşturulduğunu doğrulamak için aşağıdaki sorguyu kullanın:
 
@@ -298,9 +298,9 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
 
 10. Tsql yardımcı programından çıkış yapmak için `1>` istemine `exit` girin.
 
-## <a name="export-and-load-the-data"></a>Verileri dışa aktarma ve yükleme
+## <a name="export-and-load-the-data"></a>Verileri dışarı ve yükleme
 
-Önceki bölümlerde, dönüştürülmüş verileri konumdaki `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`verileri kopyaladınız. Bu bölümde, verileri Azure SQL veritabanında oluşturduğunuz `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` tabloya aktarmak için Sqoop'u kullanırsınız.
+Önceki bölümlerde, dönüştürülen verileri konumda `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output`kopyaladınız. Bu bölümde, verileri `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` Azure SQL veritabanında oluşturduğunuz tabloya aktarmak Için Sqoop 'yi kullanırsınız.
 
 1. Sqoop’un SQL veritabanınızı görebildiğini doğrulamak için aşağıdaki komutu kullanın:
 
@@ -308,23 +308,23 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
    sqoop list-databases --connect jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433 --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD>
    ```
 
-   Komut, **gecikmeler** tablosunu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının listesini döndürür.
+   Komut, **gecikmeler** tablosunu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının bir listesini döndürür.
 
-2. **Kovan örnekleme tablosundan** **gecikmeler** tablosuna veri aktarmak için aşağıdaki komutu kullanın:
+2. **Hivesampletable** tablosundan **gecikme** tablosuna veri aktarmak için aşağıdaki komutu kullanın:
 
    ```bash
    sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
-   Sqoop, **gecikmeler** tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizinden **gecikmeler** tablosuna aktarın.
+   Sqoop, **gecikmeler** tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizinden **gecikmeler** tablosuna aktarır.
 
-3. `sqoop` Komut bittikten sonra, veritabanına bağlanmak için tsql yardımcı programını kullanın:
+3. `sqoop` Komut bittikten sonra, veritabanına bağlanmak için TSQL yardımcı programını kullanın:
 
    ```bash
    TDSVER=8.0 tsql -H <SERVER_NAME>.database.windows.net -U <ADMIN_LOGIN> -P <ADMIN_PASSWORD> -p 1433 -D <DATABASE_NAME>
    ```
 
-4. Verilerin **gecikmeler** tablosuna aktarıldığını doğrulamak için aşağıdaki ifadeleri kullanın:
+4. Verilerin **gecikmeler** tablosuna verildiğini doğrulamak için aşağıdaki deyimleri kullanın:
 
    ```sql
    SELECT * FROM delays
@@ -333,15 +333,15 @@ Bu işlem için SQL veritabanınızdaki sunucu adı gerekir. Sunucu adınızı b
 
    Tabloda verilerin listesini görürsünüz. Tablo, şehir adını ve bu şehre ait ortalama uçuş gecikme süresini içerir.
 
-5. Tsql yardımcı programını çıkmak için girin. `exit`
+5. TSQL `exit` yardımcı programından çıkmak için girin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide kullanılan tüm kaynaklar önceden var olandır. Temizlik gerekmez.
+Bu öğreticide kullanılan tüm kaynaklar önceden yüklenir. Temizlik gerekmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HDInsight'ta verilerle çalışmanın daha fazla yolunu öğrenmek için aşağıdaki makaleye bakın:
+HDInsight 'ta verilerle çalışmanın daha fazla yolunu öğrenmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
-> [Azure HDInsight kümeleriyle Azure Veri Gölü Depolama Gen2'yi kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

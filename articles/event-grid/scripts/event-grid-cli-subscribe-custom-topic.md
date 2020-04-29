@@ -1,6 +1,6 @@
 ---
 title: Azure CLI betik örneği - Özel konuya abone olma | Microsoft Docs
-description: Bu makalede, özel bir konu için Olay Ağı olaylarına nasıl abone olunur gösteren bir örnek Azure CLI komut dosyası sağlar.
+description: Bu makalede, özel bir konu için Event Grid olaylarına nasıl abone olunacağı gösteren örnek bir Azure CLı betiği sunulmaktadır.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 9d82a5c3d9723c26d5a98bb2f0c92a6739ffee25
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720138"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Azure CLI ile bir özel konu için olaylara abone olma

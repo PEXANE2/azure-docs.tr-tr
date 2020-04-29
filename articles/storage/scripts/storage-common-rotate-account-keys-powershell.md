@@ -1,7 +1,7 @@
 ---
-title: PowerShell ile depolama hesabı erişim anahtarlarını döndürme
+title: Depolama hesabı erişim anahtarlarını PowerShell ile döndürme
 titleSuffix: Azure Storage
-description: Bir Azure Depolama hesabı oluşturun ve ardından hesap erişim anahtarlarından birini alın ve döndürün.
+description: Bir Azure depolama hesabı oluşturun, ardından hesap erişim anahtarlarından birini alın ve döndürün.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
 ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80060821"
 ---
-# <a name="rotate-storage-account-access-keys-with-powershell"></a>PowerShell ile depolama hesabı erişim anahtarlarını döndürme
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>Depolama hesabı erişim anahtarlarını PowerShell ile döndürme
 
-Bu komut dosyası bir Azure Depolama hesabı oluşturur, yeni depolama hesabının birincil erişim anahtarını görüntüler ve ardından anahtarı yeniler (döndürür).
+Bu betik bir Azure depolama hesabı oluşturur, yeni depolama hesabının birincil erişim anahtarını görüntüler, ardından anahtarı yeniler (döndürür).
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -39,15 +39,15 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, depolama hesabı oluşturmak ve erişim anahtarlarından birini almak ve döndürmek için aşağıdaki komutları kullanır. Tablodaki her öğe, komuta özgü belgelere yönlendirir.
+Bu betik, depolama hesabı oluşturmak için aşağıdaki komutları kullanır ve erişim anahtarlarından birini alır ve döndürür. Tablodaki her öğe, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [Al-Azlocation](/powershell/module/az.resources/get-azlocation) | Her konum için tüm konumları ve desteklenen kaynak sağlayıcılarını alır. |
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Bir Azure kaynak grubu oluşturur. |
+| [Get-AzLocation](/powershell/module/az.resources/get-azlocation) | Her konum için tüm konumları ve desteklenen kaynak sağlayıcılarını alır. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Bir Azure Kaynak grubu oluşturur. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Bir Depolama hesabı oluşturur. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Azure Depolama hesabının erişim anahtarlarını alır. |
-| [Yeni-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Azure Depolama hesabının erişim anahtarını yeniden oluşturur. |
+| [New-AzStorageAccountKey](/powershell/module/az.storage/new-azstorageaccountkey) | Bir Azure depolama hesabı için erişim anahtarını yeniden oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

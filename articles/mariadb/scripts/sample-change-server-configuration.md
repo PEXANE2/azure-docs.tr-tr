@@ -1,5 +1,5 @@
 ---
-title: CLI komut dosyası - Sunucu parametrelerini değiştir - MariaDB için Azure Veritabanı
+title: CLı betiği-sunucu parametrelerini değiştirme-MariaDB için Azure veritabanı
 description: Bu örnek CLI betiği, kullanılabilir tüm sunucu yapılandırmalarını listeler ve innodb_lock_wait_timeout değerini güncelleştirir.
 author: ajlam
 ms.author: andrela
@@ -9,14 +9,14 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.openlocfilehash: 515eb7523c5a08d52ad5eb4f7bd261f3f4e03fc4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74771829"
 ---
-# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI kullanarak MariaDB sunucusu için Azure Veritabanı yapılandırmalarını listeleyin ve güncelleyin
-Bu örnek CLI komut dosyası, Kullanılabilir tüm yapılandırma parametrelerinin yanı sıra MariaDB sunucusu için Azure Veritabanı için izin verilebilen değerleri listeler ve *innodb_lock_wait_timeout* varsayılan değerden başka bir değere ayarlar.
+# <a name="list-and-update-configurations-of-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLı kullanarak MariaDB sunucusu için Azure veritabanı 'nın yapılandırmasını listeleme ve güncelleştirme
+Bu örnek CLı betiği, tüm kullanılabilir yapılandırma parametrelerini ve ayrıca, MariaDB sunucusu için Azure veritabanı için izin verilen değerleri listeler ve *innodb_lock_wait_timeout* varsayılan değer dışında bir değere ayarlar.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,13 +36,13 @@ Bu betik, aşağıdaki tabloda ana hatları verilen komutları kullanır:
 | **Komut** | **Notlar** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Tüm kaynakların depolandığı bir kaynak grubu oluşturur. |
-| [az mariadb sunucu oluşturmak](/cli/azure/mariadb/server#az-mariadb-server-create) | Veritabanlarını barındıran bir MariaDB sunucusu oluşturur. |
-| [az mariadb sunucu yapılandırma listesi](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | MariaDB sunucusu için bir Azure Veritabanı yapılandırmalarını listeleyin. |
-| [az mariadb sunucu yapılandırma seti](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | MariaDB sunucusu için bir Azure Veritabanı yapılandırmasını güncelleştirin. |
-| [az mariadb sunucu yapılandırma gösterisi](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | MariaDB sunucusu için bir Azure Veritabanı yapılandırmasını gösterin. |
+| [az MariaDB sunucu oluştur](/cli/azure/mariadb/server#az-mariadb-server-create) | Veritabanlarını barındıran bir MariaDB sunucusu oluşturur. |
+| [az MariaDB sunucu yapılandırma listesi](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-list) | MariaDB sunucusu için Azure veritabanı 'nın yapılandırmasını listeleyin. |
+| [az MariaDB sunucu yapılandırma kümesi](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-set) | MariaDB sunucusu için Azure veritabanı yapılandırmasını güncelleştirin. |
+| [az MariaDB sunucu yapılandırma Show](/cli/azure/mariadb/server/configuration#az-mariadb-server-configuration-show) | MariaDB sunucusu için Azure veritabanı yapılandırmasını gösterir. |
 | [az group delete](/cli/azure/group#az-group-delete) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Azure CLI hakkında daha fazla bilgi okuyun: [Azure CLI belgeleri](/cli/azure).
-- Ek komut dosyaları deneyin: [MariaDB için Azure Veritabanı için Azure CLI örnekleri](../sample-scripts-azure-cli.md)
-- Sunucu parametreleri hakkında daha fazla bilgi [için, MariaDB için Azure Veritabanında Sunucu Parametrelerini Nasıl YapılandırAbilirsiniz'a](../howto-server-parameters.md)bakın.
+- Ek betikleri deneyin: [MariaDB Için Azure veritabanı Azure CLI örnekleri](../sample-scripts-azure-cli.md)
+- Sunucu parametreleri hakkında daha fazla bilgi için bkz. [MariaDB Için Azure veritabanı 'Nda sunucu parametrelerini yapılandırma](../howto-server-parameters.md).

@@ -7,15 +7,15 @@ ms.topic: include
 ms.author: pmorgan
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 96439479ebb007507efdd577e963532d9cdf90d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67722955"
 ---
-## <a name="putting-everything-together"></a>Her şeyi bir araya getirmek
+## <a name="putting-everything-together"></a>Her şeyi birlikte yerleştirme
 
-Tüm farklı öğeler `AzureSpatialAnchorsScript` bir araya getirildikten sonra tüm sınıf dosyasının nasıl görünmelidir: Kendi dosyanızla karşılaştırmak için başvuru olarak kullanabilirsiniz ve herhangi bir farkınız kalmışsa noktanızı görebilirsiniz.
+Tüm farklı öğeler birlikte yerleştirildikten sonra, tüm `AzureSpatialAnchorsScript` sınıf dosyaları nasıl görünmelidir. Bunu kendi dosyanıza göre karşılaştırmak için bir başvuru olarak kullanabilir ve herhangi bir farklılık varsa, herhangi bir farklılık olabilir.
 
 ```csharp
 using Microsoft.Azure.SpatialAnchors;
@@ -396,7 +396,7 @@ public class AzureSpatialAnchorsScript : MonoBehaviour
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, yeni bir Unity HoloLens uygulamasında Azure Uzamsal Çapaları'nı nasıl kullanacağınız hakkında daha fazla bilgi edinebilirsiniz. Yeni bir Android uygulamasında Azure Uzamsal Çapaları nasıl kullanacağınız hakkında daha fazla bilgi edinmek için bir sonraki eğitime devam edin.
+Bu öğreticide, Azure uzamsal Tutturucuların yeni bir Unity HoloLens uygulamasında nasıl kullanılacağı hakkında daha fazla bilgi edindiniz. Azure uzamsal çıpalarını yeni bir Android uygulamasında kullanma hakkında daha fazla bilgi edinmek için sonraki öğreticiye geçin.
 
 > [!div class="nextstepaction"]
-> [Yeni bir Android uygulaması başlatma](/azure/spatial-anchors/tutorials/tutorial-new-android-app)
+> [Yeni bir Android uygulaması başlatılıyor](/azure/spatial-anchors/tutorials/tutorial-new-android-app)

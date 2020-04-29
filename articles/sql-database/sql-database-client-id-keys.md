@@ -1,6 +1,6 @@
 ---
-title: Uygulama kimlik doğrulaması için değerler alın
-description: KODDAN SQL Veritabanı'na erişmek için bir hizmet ilkesi oluşturun.
+title: Uygulama kimlik doğrulaması için değerleri Al
+description: Koddan SQL veritabanına erişmek için bir hizmet sorumlusu oluşturun.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,24 +12,24 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476975"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Koddan SQL Veritabanına erişmek için bir uygulamanın kimlik doğrulamasını yapmak için gerekli değerleri edinin
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Koddan SQL veritabanına erişmek için bir uygulamanın kimlik doğrulaması için gerekli değerleri alın
 
-Koddan SQL Veritabanı oluşturmak ve yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikteki Azure Etkin Dizin (AAD) etki alanına kaydettirmeniz gerekir.
+Koddan SQL veritabanı oluşturup yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikte Azure Active Directory (AAD) etki alanına kaydetmeniz gerekir.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Bir uygulamadan kaynaklara erişmek için bir hizmet ilkesi oluşturma
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Uygulamadan kaynaklara erişmek için hizmet sorumlusu oluşturma
 
-Aşağıdaki örnekler, C# uygulamamızın kimliğini doğrulamak için Gereken Active Directory (AD) uygulamasını ve hizmet ilkesini oluşturur. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Aşağıdaki örneklerde, C# uygulamamızda kimlik doğrulaması yapmak için gereken Active Directory (AD) uygulaması ve hizmet sorumlusu oluşturulur. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
+> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
 # sign in to Azure
@@ -102,4 +102,4 @@ Write-Output "_applicationSecret:" $secret
 ## <a name="see-also"></a>Ayrıca bkz.
 
 [C ile SQL veritabanı oluşturma #](sql-database-get-started-csharp.md)  
-[Azure Active Directory Authentication kullanarak SQL Veritabanına Bağlanma](sql-database-aad-authentication.md)
+[Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na bağlanma](sql-database-aad-authentication.md)

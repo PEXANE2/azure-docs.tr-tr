@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.openlocfilehash: 345710e1ade459d49602c18820d47826141e6f81
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68721943"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob depolama için Azure CLI örnekleri
@@ -22,6 +22,6 @@ Aşağıdaki tablo, Azure CLI kullanılarak oluşturulan ve Azure Depolama örne
 |---|---|
 |**Depolama hesapları**||
 | [Bir depolama hesabı oluşturma ve erişim anahtarlarını alma/döndürme](../scripts/storage-common-rotate-account-keys-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir Azure depolama hesabı oluşturur, erişim anahtarlarını alır ve döndürür. |
-|**Blob depolama**||
+|**BLOB depolama**||
 | [Blob depolama kapsayıcısının toplam boyutunu hesaplama](../scripts/storage-blobs-container-calculate-size-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Bir kapsayıcı içindeki tüm blobların toplam boyutunu hesaplar. |
 | [Belirli bir ön eke sahip kapsayıcıları silme](../scripts/storage-blobs-container-delete-by-prefix-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Belirtilen dizeyle başlayan kapsayıcıları siler. |

@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Özellik bayraklarını yönetmek için Azure Uygulama Yapılandırmasını kullanın'
+title: "Öğretici: Özellik bayraklarını yönetmek için Azure Uygulama yapılandırması 'Nı kullanma"
 titleSuffix: Azure App Configuration
-description: Bu eğitimde, Azure Uygulama Yapılandırması'nı kullanarak özellik bayraklarını uygulamanızdan ayrı olarak nasıl yöneteceklerinizi öğrenirsiniz.
+description: Bu öğreticide, Azure Uygulama yapılandırması 'nı kullanarak özellik bayraklarını uygulamanızdan ayrı olarak yönetmeyi öğreneceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -16,65 +16,65 @@ ms.date: 04/19/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: ccab8014000f9f684249bf2c1f800f74c92e7369
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76899374"
 ---
-# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Öğretici: Azure Uygulama Yapılandırmasında özellik bayraklarını yönetme
+# <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>Öğretici: Azure Uygulama yapılandırmasındaki Özellik bayraklarını yönetme
 
-Tüm özellik bayraklarını Azure Uygulama Yapılandırmasında saklayabilir ve tek bir yerden yönetebilirsiniz. Uygulama Yapılandırması özellik bayrakları için özel olarak tasarlanmış **Özellik Yöneticisi** adlı bir portal UI'ye sahiptir. Uygulama Yapılandırması da yerel olarak .NET Core özellik bayrak lı veri şemasını destekler.
+Tüm özellik bayraklarını Azure Uygulama Yapılandırması ' nda depolayıp tek bir yerden yönetebilirsiniz. Uygulama yapılandırması, özellikle özellik bayrakları için tasarlanan **Özellik Yöneticisi** adlı bir Portal Kullanıcı arabirimine sahiptir. Uygulama yapılandırması ayrıca .NET Core Özellik bayrağı veri şemasını da yerel olarak destekler.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Uygulama Yapılandırması'nda özellik bayraklarını tanımlayın ve yönetin.
-> * Uygulamanızdan özellik bayraklarına erişin.
+> * Uygulama yapılandırmasında Özellik bayraklarını tanımlayın ve yönetin.
+> * Uygulamanızdan Özellik bayraklarını erişin.
 
 ## <a name="create-feature-flags"></a>Özellik bayrakları oluşturma
 
-Uygulama Yapılandırması için Azure portalındaki Özellik Yöneticisi, uygulamalarınızda kullandığınız özellik bayraklarını oluşturmak ve yönetmek için bir kullanıcı arabirimi sağlar.
+Uygulama yapılandırması için Azure portal Özellik Yöneticisi, uygulamalarınızda kullandığınız özellik bayraklarını oluşturmak ve yönetmek için bir kullanıcı arabirimi sağlar.
 
 Yeni bir özellik bayrağı eklemek için:
 
-1. Özellik bayrağı eklemek için **Özellik Yöneticisi** > **+Ekle'yi** seçin.
+1. Özellik bayrağı eklemek için **Özellik Yöneticisi** > **+ Ekle** ' yi seçin.
 
-    ![Özellik bayrak listesi](./media/azure-app-configuration-feature-flags.png)
+    ![Özellik bayrağı listesi](./media/azure-app-configuration-feature-flags.png)
 
-1. Özellik bayrağı için benzersiz bir anahtar adı girin. Kodunuzdaki bayrağa başvurmak için bu ada ihtiyacınız vardır.
+1. Özellik bayrağı için benzersiz bir anahtar adı girin. Kodunuzda bayrak başvurusunda bulunmak için bu ada ihtiyacınız vardır.
 
-1. İstersen, özellik bayrağına bir açıklama verin.
+1. İsterseniz, özellik bayrağına bir açıklama verin.
 
-1. Özellik bayrağının ilk durumunu ayarlayın. Bu durum genellikle *Kapalı* veya *Açıktır.* Özellik bayrağına bir filtre *eklerseniz, On* durumu *Koşullu* olarak değişir.
+1. Özellik bayrağının başlangıç durumunu ayarlayın. Bu durum genellikle *kapalı* veya *Açık*durumdadır. Özellik bayrağına bir filtre eklerseniz, *on* durumu *koşullu* olarak değişir.
 
     ![Özellik bayrağı oluşturma](./media/azure-app-configuration-feature-flag-create.png)
 
-1. Durum *Açık*olduğunda , durumu nitelemek için ek koşullar belirtmek için **+Ekle filtresi'ni** seçin. Yerleşik veya özel filtre anahtarı girin ve ardından filtreyle bir veya daha fazla parametreyi ilişkilendirmek için **+Ekle parametresini** seçin. Yerleşik filtreler şunlardır:
+1. Durum *Açık*olduğunda, durumu nitelemek üzere ek koşullar belirtmek için **+ Filtre Ekle** ' yi seçin. Yerleşik veya özel bir filtre anahtarı girin ve ardından filtre ile bir veya daha fazla parametreyi ilişkilendirmek için **+ parametre Ekle** ' yi seçin. Yerleşik Filtreler şunları içerir:
 
     | Anahtar | JSON parametreleri |
     |---|---|
-    | Microsoft.Percentage | {"Değer": Yüzde 0-100} |
-    | Microsoft.TimeWindow | {"Başlat": UTC saati, "End": UTC zamanlı} |
+    | Microsoft. Percentage | {"Value":% 0-100} |
+    | Microsoft. TimeWindow | {"Başlangıç": UTC saati, "bitiş": UTC saati} |
 
     ![Özellik bayrağı filtresi](./media/azure-app-configuration-feature-flag-filter.png)
 
-## <a name="update-feature-flag-states"></a>Özellik bayrak durumlarını güncelleştirme
+## <a name="update-feature-flag-states"></a>Özellik bayrağı durumlarını Güncelleştir
 
-Özellik bayrağının durum değerini değiştirmek için:
+Bir özellik bayrağının durum değerini değiştirmek için:
 
-1. **Özellik Yöneticisi'ni**seçin.
+1. **Özellik Yöneticisi**' ni seçin.
 
-1. Değiştirmek istediğiniz özellik bayrağının sağında, elipsis **(...**) seçeneğini seçin ve ardından **Edit'i**seçin.
+1. Değiştirmek istediğiniz bir özellik bayrağının sağında, üç nokta (**...**) simgesini seçin ve ardından **Düzenle**' yi seçin.
 
-1. Özellik bayrağı için yeni bir durum ayarlayın.
+1. Özellik bayrağı için yeni bir durum belirleyin.
 
-## <a name="access-feature-flags"></a>Erişim özelliği bayrakları
+## <a name="access-feature-flags"></a>Özellik bayraklarını erişim
 
-Özellik Yöneticisi tarafından oluşturulan özellik bayrakları depolanır ve normal anahtar değerleri olarak alınır. Özel bir ad alanı öneki `.appconfig.featureflag`altında tutulurlar. Temel anahtar değerlerini görüntülemek için Configuration Explorer'ı kullanın. Uygulamanız, Uygulama Yapılandırma yapılandırma sağlayıcıları, SDK'lar, komut satırı uzantıları ve REST API'lerini kullanarak bu değerleri alabilir.
+Özellik Yöneticisi tarafından oluşturulan özellik bayrakları, normal anahtar değerleri olarak depolanır ve alınır. Bunlar özel bir ad alanı öneki `.appconfig.featureflag`altında tutulur. Temel alınan anahtar değerlerini görüntülemek için yapılandırma Gezgini ' ni kullanın. Uygulamanız, uygulama yapılandırma yapılandırma sağlayıcılarını, SDK 'Ları, komut satırı uzantılarını ve REST API 'Leri kullanarak bu değerleri alabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, App Configuration'ı kullanarak özellik bayraklarını ve durumlarını nasıl yöneteceklerini öğrendiniz. App Configuration ve ASP.NET Core'da özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki makaleye bakın:
+Bu öğreticide, uygulama yapılandırması ' nı kullanarak özellik bayraklarını ve durumlarını yönetmeyi öğrendiniz. Uygulama yapılandırması ve ASP.NET Core özellik yönetimi desteği hakkında daha fazla bilgi için aşağıdaki makaleye bakın:
 
-* [ASP.NET Core uygulamasında özellik bayraklarını kullanma](./use-feature-flags-dotnet-core.md)
+* [ASP.NET Core uygulamasında Özellik bayraklarını kullanma](./use-feature-flags-dotnet-core.md)

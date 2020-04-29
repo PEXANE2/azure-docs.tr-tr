@@ -1,6 +1,6 @@
 ---
-title: CLI örnek-copy-Azure SQL veritabanı-yeni sunucu
-description: SQL veritabanını yeni bir sunucuya kopyalamak için Azure CLI örnek komut dosyası
+title: CLı örneği-Copy-Azure SQL Database-yeni sunucu
+description: Bir SQL veritabanını yeni bir sunucuya kopyalamak için Azure CLı örnek betiği
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: b7e04d7b1ed51a45e132d088b0dd29377312027c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067470"
 ---
-# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>SQL veritabanını yeni bir sunucuya kopyalamak için CLI'yi kullanma
+# <a name="use-cli-to-copy-a-sql-database-to-a-new-server"></a>SQL veritabanını yeni bir sunucuya kopyalamak için CLı kullanma
 
-Bu Azure CLI komut dosyası örneği, yeni bir sunucuda varolan bir veritabanının kopyasını oluşturur.
+Bu Azure CLı betik örneği, var olan bir veritabanının yeni bir sunucuda kopyasını oluşturur.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -49,13 +49,13 @@ az group delete --name $resource
 az group delete --name $targetResource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db kopya](/cli/azure/sql/db#az-sql-db-copy) | Şu anda anlık görüntüyü kullanan bir veritabanının kopyasını oluşturur. |
+| [az SQL DB Copy](/cli/azure/sql/db#az-sql-db-copy) | Şu anda anlık görüntüyü kullanan bir veritabanının kopyasını oluşturur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

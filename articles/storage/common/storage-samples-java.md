@@ -1,6 +1,6 @@
 ---
-title: Java kullanarak Azure Depolama örnekleri | Microsoft Dokümanlar
-description: Azure Depolama için örnek kodu ve uygulamaları görüntüleyin, indirin ve çalıştırın. Java depolama istemci kitaplıklarını kullanarak blobs, kuyruklar, tablolar ve dosyalar için başlangıç örnekleri alma keşfedin.
+title: Java kullanan Azure depolama örnekleri | Microsoft Docs
+description: Azure depolama için örnek kod ve uygulamaları görüntüleyin, indirin ve çalıştırın. Java depolama istemci kitaplıklarını kullanarak Bloblar, kuyruklar, tablolar ve dosyalar için çalışmaya başlama örneklerini bulun.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/13/2020
@@ -8,29 +8,29 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: 46f19748ea56777bd1c23b3cf066fa28787d8882
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77486109"
 ---
-# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>v12 Java istemci kitaplıklarını kullanarak Azure Depolama örnekleri
+# <a name="azure-storage-samples-using-v12-java-client-libraries"></a>V12 Java istemci kitaplıklarını kullanan Azure depolama örnekleri
 
-Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların genel görünümünü sağlar. GitHub'da ilgili örnek kodu görüntülemek için bağlantıları tıklatın.
+Aşağıdaki tabloda, örnek havuzumuza ve her örnekte ele alınan senaryolara bir genel bakış sunulmaktadır. GitHub 'da karşılık gelen örnek kodu görüntülemek için bağlantılara tıklayın.
 
 > [!NOTE]
-> Bu örnekler en son Azure Depolama Java v12 kitaplığını kullanır. Eski v8 kodu için GitHub deposunda [Java'daki Azure Blob Hizmetiyle Başlarken'e](https://github.com/Azure-Samples/storage-blob-java-getting-started) bakın.
+> Bu örnekler en son Azure Storage Java V12 kitaplığını kullanır. Eski V8 kodu için bkz. GitHub deposunda [Java 'Da Azure Blob hizmetini kullanmaya](https://github.com/Azure-Samples/storage-blob-java-getting-started) başlama.
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
-      [Paylaşılan bir anahtar kimlik bilgisi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
+      [Paylaşılan anahtar kimlik bilgisi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L38)
    :::column-end:::
    :::column span="":::
-      [Azure Kimliğini kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
+      [Azure kimliği kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/AzureIdentityExample.java#L10)
    :::column-end:::
 :::row-end:::
 
@@ -38,7 +38,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Blob servis istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
+      [Blob hizmeti istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L49)
    :::column-end:::
    :::column span="":::
       [Kapsayıcıları listeleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/ListContainersExample.java#L10)
@@ -54,15 +54,15 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Blob toplu istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
+      [Blob Batch istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L41)
    :::column-end:::
    :::column span="":::
-      [Toplu silme lekeleri](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
+      [Blob 'ları toplu silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L45)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Bir dizi blob üzerinde erişim katmanı ayarlama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
+      [Blob Batch 'de erişim katmanını ayarlama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob-batch/src/samples/java/com/azure/storage/blob/batch/ReadmeSamples.java#L51)
    :::column-end:::
 :::row-end:::
 
@@ -100,28 +100,28 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [Blob silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/BasicExample.java#L118)
    :::column-end:::
    :::column span="":::
-      [Büyük bir dosyadan bir blob yükleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
+      [Büyük bir dosyadan blob yükleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L95)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Büyük bir blob'u dosyaya indirme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
+      [Büyük bir Blobun bir dosyaya indirilmesi](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/FileTransferExample.java#L100)
    :::column-end:::
 :::row-end:::
 
 ### <a name="troubleshooting"></a>Sorun giderme
 :::row:::
    :::column span="2":::
-      [Kapsayıcı istemcisi kullanarak kurtarılabilir bir hatayı tetikleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
+      [Kapsayıcı istemci kullanarak kurtarılabilir bir hata tetikleyin](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
    :::column-end:::
 :::row-end:::
 
-## <a name="data-lake-storage-gen2-samples"></a>Data Lake Depolama Gen2 örnekleri
+## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage 2. örnekleri
 
-### <a name="data-lake-service"></a>Veri Gölü hizmeti
+### <a name="data-lake-service"></a>Data Lake hizmeti
 :::row:::
    :::column span="":::
-      [Veri Gölü hizmet istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
+      [Data Lake hizmet istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
    :::column-end:::
    :::column span="":::
       [Dosya sistemi istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L57)
@@ -147,7 +147,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosya sistemindeki yolları listele](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
+      [Bir dosya sistemindeki yolları listeleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L131)
    :::column-end:::
    :::column span="":::
       [Dosya sistemini silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L142)
@@ -155,7 +155,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Azure depolama hesabındaki dosya sistemlerini listelama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
+      [Bir Azure depolama hesabındaki dosya sistemlerini listeleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/ListFileSystemsExample.java#L10)
    :::column-end:::
 :::row-end:::
 
@@ -166,12 +166,12 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [Dizin istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L31)
    :::column-end:::
    :::column span="":::
-      [Üst dizini oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
+      [Üst dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L37)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Alt dizini oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
+      [Alt dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L44)
    :::column-end:::
    :::column span="":::
       [Alt dizinde dosya oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L52)
@@ -179,10 +179,10 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dizin özelliklerini alma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
+      [Dizin özelliklerini al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L68)
    :::column-end:::
    :::column span="":::
-      [Alt dizini silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L83)
+      [Bir alt dizini silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/DirectoryExample.java#L83)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -203,18 +203,18 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Dosyadaki erişim denetimlerini ayarlama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
+      [Dosya üzerinde erişim denetimleri ayarlama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L82)
    :::column-end:::
    :::column span="":::
-      [Dosyaüzerinde erişim denetimleri alma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
+      [Dosya üzerinde erişim denetimleri al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Veri Gölü dosya istemcisi kullanarak dosya oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
+      [Data Lake dosya istemcisi kullanarak bir dosya oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L67)
    :::column-end:::
    :::column span="":::
-      [Verileri dosyaya ekle](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
+      [Verileri bir dosyaya ekle](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/UploadDownloadExample.java#L85)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -223,13 +223,13 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-file-samples"></a>Azure Dosya örnekleri
+## <a name="azure-file-samples"></a>Azure dosya örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="2":::
-      [Bağlantı dizesi kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
+      [Bağlantı dizesi kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -240,15 +240,15 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [Dosya paylaşımları oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L31)
    :::column-end:::
    :::column span="":::
-      [Özellikleri alın](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
+      [Özellikleri al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L40)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Hisseleri listele](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+      [Paylaşımları Listele](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
    :::column-end:::
    :::column span="":::
-      [Paylaşımları silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
+      [Paylaşımları Sil](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareServiceSample.java#L49)
    :::column-end:::
 :::row-end:::
 
@@ -256,26 +256,26 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Paylaşım istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
+      [Share Client oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L29)
    :::column-end:::
    :::column span="":::
-      [Paylaşım oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L40)
-   :::column-end:::
-:::row-end:::
-:::row:::
-   :::column span="":::
-      [Paylaşım anlık görüntüsü oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
-   :::column-end:::
-   :::column span="":::
-      [Paylaşım istemcisi kullanarak dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
+      [Bir paylaşma oluşturun](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L40)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Bir payın özelliklerini alma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
+      [Paylaşma anlık görüntüsü oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L55)
    :::column-end:::
    :::column span="":::
-      [Kök dizini ve liste dizinleri alın](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
+      [Share Client kullanarak dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L63)
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="":::
+      [Bir paylaşımın özelliklerini al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L72)
+   :::column-end:::
+   :::column span="":::
+      [Kök dizin ve liste dizinlerini al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/ShareSample.java#L100)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -288,10 +288,10 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Üst dizini oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L35)
+      [Üst dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L35)
    :::column-end:::
    :::column span="":::
-      [Alt dizini oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
+      [Alt dizin oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L42)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -299,7 +299,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [Alt dizinde dosya oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L50)
    :::column-end:::
    :::column span="":::
-      [Liste dizinleri ve dosyaları](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
+      [Dizinleri ve dosyaları listeleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share/DirectorySample.java#L66)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -336,24 +336,24 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 :::row-end:::
 
 
-## <a name="queue-samples"></a>Sıra örnekleri
+## <a name="queue-samples"></a>Kuyruk örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="2":::
-      [SAS belirteci kullanarak kimlik doğrulaması](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
+      [SAS belirteci kullanarak kimlik doğrulama](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L17)
    :::column-end:::
 :::row-end:::
 
-### <a name="queue-service"></a>Sıra hizmeti
+### <a name="queue-service"></a>Kuyruk hizmeti
 
 :::row:::
    :::column span="":::
       [Bir kuyruk oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L20)
    :::column-end:::
    :::column span="":::
-      [Liste kuyrukları](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
+      [Sıraları listeleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/QueueServiceSamples.java#L22)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -366,10 +366,10 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Sıra istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
+      [Kuyruk istemcisi oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L25)
    :::column-end:::
    :::column span="":::
-      [Kuyruğa ileti ekleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
+      [Bir kuyruğa ileti ekleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L27)
    :::column-end:::
 :::row-end:::
 
@@ -377,7 +377,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [İleti sayısını alma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
+      [İleti sayısını Al](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L34)
    :::column-end:::
    :::column span="":::
       [İletilere göz atın](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L37)
@@ -388,7 +388,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [İleti alma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L41)
    :::column-end:::
    :::column span="":::
-      [İletiyi güncelleştirme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L45)
+      [İleti güncelleştirme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L45)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -396,7 +396,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [İlk iletiyi silme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L50)
    :::column-end:::
    :::column span="":::
-      [Tüm iletileri temizleme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
+      [Tüm iletileri temizle](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue/MessageSamples.java#L59)
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -409,15 +409,15 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Tablo oluşturma](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
+      [Tablo oluştur](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L50)
    :::column-end:::
    :::column span="":::
-      [Varlığı/tabloyu silme](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
+      [Varlığı/tabloyu Sil](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L109)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Varlığı ekleme/birleştirme/değiştirme](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
+      [Varlığı Ekle/Birleştir/Değiştir](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L195)
    :::column-end:::
    :::column span="":::
       [Sorgu varlıkları](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L234)
@@ -428,40 +428,40 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
       [Sorgu tabloları](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L262)
    :::column-end:::
    :::column span="":::
-      [Tablo ACL/özellikleri](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
+      [Tablo ACL 'SI/özellikleri](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java#L49)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="2":::
-      [Varlığı güncelleştir](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L76)
+      [Varlığı Güncelleştir](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java#L76)
    :::column-end:::
 :::row-end:::
 
-## <a name="azure-code-sample-libraries"></a>Azure kodu örnek kitaplıkları
+## <a name="azure-code-sample-libraries"></a>Azure Code örnek kitaplıkları
 
-Java örnek kitaplıklarını tam olarak görüntülemek için şu
+Java örnek kitaplıklarının tamamını görüntülemek için şuraya gidin:
 
-* [Azure blob kod örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
-* [Azure Veri Gölü kod örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
-* [Azure Dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
-* [Azure sıra kodu örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+* [Azure Blob kodu örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+* [Azure Data Lake kodu örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+* [Azure dosyaları kod örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+* [Azure kuyruk kodu örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
 
-Her kitaplık için GitHub deposuna göz atabilir ve klonlayabilirsiniz.
+Her kitaplık için GitHub deposuna gözatıp kopyalayabilirsiniz.
 
-## <a name="getting-started-guides"></a>Kılavuzlara başlama
+## <a name="getting-started-guides"></a>Başlarken kılavuzlarını
 
-Azure Depolama İstemci Kitaplıkları'nı nasıl yükleyip başlatacağınız la ilgili yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
+Azure Storage Istemci kitaplıklarını yüklemek ve kullanmaya başlamak için yönergeler arıyorsanız aşağıdaki kılavuzlara göz atın.
 
-* [Java'da Azure Blob Hizmetine Başlarken](../blobs/storage-quickstart-blobs-java.md)
-* [Java'da Azure Kuyruk Hizmetiyle Başlarken](../queues/storage-quickstart-queues-java.md)
+* [Java 'da Azure Blob hizmetini kullanmaya başlama](../blobs/storage-quickstart-blobs-java.md)
+* [Java 'da Azure kuyruk hizmeti ile çalışmaya başlama](../queues/storage-quickstart-queues-java.md)
 * [Java’da Azure Tablo Hizmetini Kullanmaya Başlama](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java'da Azure Dosya Hizmetine Başlarken](../files/storage-java-how-to-use-file-storage.md)
+* [Java 'da Azure dosya hizmeti ile çalışmaya başlama](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer dillere ait örnekler hakkında bilgi için:
+Diğer dillere yönelik örnekler hakkında bilgi için:
 
-* .NET: [.NET kullanarak Azure Depolama örnekleri](storage-samples-dotnet.md)
-* Python: [Python kullanarak Azure Depolama örnekleri](storage-samples-python.md)
-* JavaScript/Node.js: [JavaScript kullanarak Azure Depolama örnekleri](storage-samples-javascript.md)
-* Diğer tüm diller: [Azure Depolama örnekleri](storage-samples.md)
+* .NET: [.NET kullanan Azure depolama örnekleri](storage-samples-dotnet.md)
+* Python: [Python kullanan Azure depolama örnekleri](storage-samples-python.md)
+* JavaScript/Node. js: [JavaScript kullanan Azure depolama örnekleri](storage-samples-javascript.md)
+* Diğer tüm diller: [Azure Storage örnekleri](storage-samples.md)

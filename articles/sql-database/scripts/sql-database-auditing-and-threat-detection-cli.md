@@ -1,6 +1,6 @@
 ---
-title: CLI denetim ve Gelişmiş Tehdit Koruması örneği - Azure SQL Veritabanı
-description: Azure SQL Veritabanında denetimi ve Gelişmiş Tehdit Koruması yapılandırmak için Azure CLI örnek komut dosyası
+title: Denetim ve Gelişmiş tehdit koruması CLı örneği-Azure SQL veritabanı
+description: Azure SQL veritabanında denetim ve Gelişmiş tehdit koruması yapılandırmak için Azure CLı örnek betiği
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,15 +12,15 @@ ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
 ms.openlocfilehash: 9f15c4a8b0410003bccd9fb42aa2c34c42d9b56b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061880"
 ---
-# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>SQL Veritabanı denetimini ve Gelişmiş Tehdit Koruması'nı yapılandırmak için CLI'yi kullanın
+# <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>CLı kullanarak SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırın
 
-Bu Azure CLI komut dosyası örneği, SQL Veritabanı denetimini ve Gelişmiş Tehdit Koruması'nı yapılandırır.
+Bu Azure CLı betik örneği, SQL veritabanı denetimini ve Gelişmiş tehdit korumasını yapılandırır.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu konu başlığı için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli).
 
@@ -48,14 +48,14 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
-| [az sql db denetim-ilke](/cli/azure/sql/db/audit-policy) | Bir veritabanı için denetim ilkesini ayarlar. |
-| [az sql db tehdit-politikası](/cli/azure/sql/db/threat-policy) | Veritabanında Gelişmiş Tehdit Koruması ilkesi ni ayarlar. |
+| [az SQL DB Audit-Policy](/cli/azure/sql/db/audit-policy) | Bir veritabanı için denetim ilkesini ayarlar. |
+| [az SQL DB Threat-Policy](/cli/azure/sql/db/threat-policy) | Veritabanında Gelişmiş tehdit koruması ilkesini ayarlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

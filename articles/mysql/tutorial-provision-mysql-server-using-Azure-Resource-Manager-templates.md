@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: MySQL için Azure Veritabanı Oluşturma - Azure Kaynak Yöneticisi şablonu'
-description: Bu öğretici, Azure Kaynak Yöneticisi şablonu kullanarak MySQL sunucu dağıtımları için Azure Veritabanı'nın nasıl sağlanıp otomatikleştirilebildiğini açıklar.
+title: 'Öğretici: MySQL için Azure veritabanı-Azure Resource Manager şablonu oluşturma'
+description: Bu öğreticide, Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucu dağıtımlarını sağlama ve otomatik hale getirme açıklanmaktadır.
 author: savjani
 ms.author: pariks
 ms.service: mysql
@@ -9,22 +9,22 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.custom: mvc
 ms.openlocfilehash: f4960482c88bf9768be1c1c9dbb3652409a8f1b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74771109"
 ---
-# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Öğretici: Azure Kaynak Yöneticisi şablonu kullanarak MySQL sunucusu için Azure Veritabanı sağlama
+# <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Öğretici: Azure Resource Manager şablonu kullanarak MySQL için Azure veritabanı sunucusu sağlama
 
-[MySQL REST API için Azure Veritabanı,](https://docs.microsoft.com/rest/api/mysql/) DevOps mühendislerinin Azure'da yönetilen MySQL sunucularının ve veritabanlarının sağlama, yapılandırma ve işlemlerini otomatikleştirmesini ve tümleştirmesini sağlar.  API, MySQL hizmeti için Azure Veritabanı'nda MySQL sunucularının ve veritabanlarının oluşturulmasına, numaralandırmasına, yönetimine ve silinmesine olanak tanır.
+[MySQL Için Azure veritabanı REST API](https://docs.microsoft.com/rest/api/mysql/) DevOps mühendislerinin Azure 'Daki yönetilen MySQL sunucularının ve veritabanlarının sağlama, yapılandırma ve işlemlerini otomatikleştirmesini ve tümleştirmesini sağlar.  API, MySQL için Azure veritabanı hizmeti için MySQL sunucularının ve veritabanlarının oluşturulmasına, numaralandırılmasına, yönetimine ve silinmesine izin verir.
 
-Azure Kaynak Yöneticisi, dağıtımlar için gereken Azure kaynaklarını ölçekolarak beyan etmek ve programlamak ve altyapıyla kod kavramı olarak hizalamak için temel REST API'den yararlanır. Şablon, Azure kaynak adını, SKU'yu, ağı, güvenlik duvarı yapılandırmasını ve ayarlarını parametreye vererek bir kez oluşturulmasını ve birden çok kez kullanılmasını sağlar.  Azure Kaynak Yöneticisi şablonları [Azure portalı](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) veya Visual [Studio Kodu](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI)kullanılarak kolayca oluşturulabilir. DevOps CI/CD boru hattına entegre edilebilen uygulama paketleme, standardizasyon ve dağıtım otomasyonuna olanak sağlarlar.  Örneğin, MySQL arka uç için Azure Veritabanı ile bir Web Uygulamasını hızla dağıtmak istiyorsanız, GitHub galerisindeki bu [QuickStart şablonunu](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) kullanarak uçtan uca dağıtımı gerçekleştirebilirsiniz.
+Azure Resource Manager, dağıtım için gereken Azure kaynaklarını bildirmek ve bir kod kavramı olarak altyapıyla hizalamak için temel alınan REST API faydalanır. Şablon, Azure Kaynak adı, SKU, ağ, güvenlik duvarı yapılandırması ve ayarlarını bir kez oluşturup birden çok kez kullanılmasını sağlayacak şekilde parametreleştirir.  Azure Resource Manager şablonlar, [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) veya [Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI)kullanılarak kolayca oluşturulabilir. Bunlar, DevOps CI/CD ardışık düzeninde tümleştirilebilen uygulama paketleme, standartlaştırma ve Dağıtım Otomasyonu 'nu etkinleştirir.  Örneğin, bir Web uygulamasını MySQL için Azure veritabanı arka ucu ile hızlıca dağıtmak istiyorsanız, GitHub galerisinden bu [hızlı başlangıç şablonunu](https://azure.microsoft.com/resources/templates/101-webapp-managed-mysql/) kullanarak uçtan uca dağıtım gerçekleştirebilirsiniz.
 
-Bu öğreticide, şunları öğrenmek için Azure Kaynak Yöneticisi şablonu ve diğer yardımcı programları kullanıyorsunuz:
+Bu öğreticide, aşağıdakileri nasıl yapacağınızı öğrenmek için Azure Resource Manager şablonu ve diğer yardımcı programları kullanacaksınız:
 
 > [!div class="checklist"]
-> * Azure Kaynak Yöneticisi şablonu kullanarak VNet Service Endpoint ile MySQL sunucusu için bir Azure Veritabanı oluşturma
+> * Azure Resource Manager şablonunu kullanarak sanal ağ hizmeti uç noktası ile MySQL için Azure veritabanı sunucusu oluşturma
 > * Veritabanı oluşturmak için [mysql komut satırı aracı](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kullanma
 > * Örnek verileri yükleme
 > * Verileri sorgulama
@@ -32,9 +32,9 @@ Bu öğreticide, şunları öğrenmek için Azure Kaynak Yöneticisi şablonu ve
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak VNet Service Endpoint ile MySQL sunucusu için bir Azure Veritabanı oluşturma
+## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Azure Resource Manager şablonunu kullanarak sanal ağ hizmeti uç noktası ile MySQL için Azure veritabanı sunucusu oluşturma
 
-MySQL sunucusu için bir Azure Veritabanı için JSON şablon umasını almak için [Microsoft.DBforMySQL sunucuları](/azure/templates/microsoft.dbformysql/servers) şablon ubaşvurusu'na gidin. Aşağıda, VNet Service Endpoint ile MySQL için Azure Veritabanı çalıştıran yeni bir sunucu oluşturmak için kullanılabilecek örnek JSON şablonu yer almaktadır.
+Bir MySQL için Azure veritabanı sunucusuna yönelik JSON şablonu başvurusunu almak için [Microsoft. Dbformyısql sunucuları](/azure/templates/microsoft.dbformysql/servers) şablon başvurusu ' na gidin. Aşağıda, VNet hizmeti uç noktası ile MySQL için Azure veritabanı 'nı çalıştıran yeni bir sunucu oluşturmak için kullanılabilecek örnek JSON şablonu verilmiştir.
 ```json
 {
   "apiVersion": "2017-12-01",
@@ -76,28 +76,28 @@ MySQL sunucusu için bir Azure Veritabanı için JSON şablon umasını almak i�
 }
 ```
 Bu istekte, özelleştirilmesi gereken değerler şunlardır:
-+   `name`- MySQL Server'ınızın adını belirtin (etki alanı adı olmadan).
-+   `location`- MySQL Sunucunuz için geçerli bir Azure veri merkezi bölgesi belirtin. Örneğin, westus2.
-+   `properties/version`- Dağıtmak için MySQL sunucu sürümünü belirtin. Örneğin, 5.6 veya 5.7.
-+   `properties/administratorLogin`- Sunucu için MySQL yönetici girişi belirtin. Yönetici oturum açma adı azure_superuser, admin, administrator, root, guest veya public olamaz.
-+   `properties/administratorLoginPassword`- Yukarıda belirtilen MySQL yönetici kullanıcısının parolasını belirtin.
-+   `properties/sslEnforcement`- SslEnforcement'i etkinleştirmek/devre dışı etmek için Etkin/Devre Dışı'yı belirtin.
-+   `storageProfile/storageMB`- Megabaytlarda sunucu için gerekli olan maksimum kullanılabilir depolama boyutunu belirtin. Örneğin, 5120.
-+   `storageProfile/backupRetentionDays`- Gün içinde istenilen yedekleme bekletme süresini belirtin. Örneğin, 7. 
-+   `storageProfile/geoRedundantBackup`- Geo-DR gereksinimlerine bağlı olarak Etkin/Devre Dışı Belirtin.
-+   `sku/tier`- Dağıtım için Temel, Genel Amaç veya MemoryOptimized katmanı belirtin.
-+   `sku/capacity`- vCore kapasitesini belirtin. Olası değerler 2, 4, 8, 16, 32 veya 64 içerir.
-+   `sku/family`- Sunucu dağıtımı için donanım oluşturma yı seçmek için Gen5'i belirtin.
-+   `sku/name`- TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Bölge ve katman başına geçerli değerleri anlamak için [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
-+   `resources/properties/virtualNetworkSubnetId`- Azure MySQL sunucusunun yerleştirilebileceği VNet'te alt netin Azure tanımlayıcısını belirtin. 
-+   `tags(optional)`- İsteğe bağlı etiketlerin, faturalandırma vb. kaynakları kategorilere ayırmak için kullanacağınız anahtar değer çiftleri olduğunu belirtin.
++   `name`-MySQL sunucunuzun adını belirtin (etki alanı adı olmadan).
++   `location`-MySQL sunucunuz için geçerli bir Azure veri merkezi bölgesi belirtin. Örneğin, westus2.
++   `properties/version`-Dağıtılacak MySQL sunucu sürümünü belirtin. Örneğin, 5,6 veya 5,7.
++   `properties/administratorLogin`-Sunucu için MySQL yönetici oturum açma bilgilerini belirtin. Yönetici oturum açma adı azure_superuser, admin, administrator, root, guest veya public olamaz.
++   `properties/administratorLoginPassword`-Yukarıda belirtilen MySQL yönetici kullanıcısının parolasını belirtin.
++   `properties/sslEnforcement`-SslEnforcement etkinleştirmek/devre dışı bırakmak için etkin/devre dışı öğesini belirtin.
++   `storageProfile/storageMB`-Sunucu için gereken en fazla sağlanan depolama boyutunu megabayt cinsinden belirtin. Örneğin, 5120.
++   `storageProfile/backupRetentionDays`-İstenen yedekleme saklama süresini gün olarak belirtin. Örneğin, 7. 
++   `storageProfile/geoRedundantBackup`-Coğrafi DR gereksinimlerine bağlı olarak etkin/devre dışı olarak belirleyin.
++   `sku/tier`-Dağıtım için temel, Generalamacını veya Memoryoptıılanmış katmanı belirtin.
++   `sku/capacity`-VCore kapasitesini belirtin. Olası değerler arasında 2, 4, 8, 16, 32 veya 64 vardır.
++   `sku/family`-Sunucu dağıtımı için donanım oluşturmayı seçmek üzere 5. nesil belirtin.
++   `sku/name`-TierPrefix_family_capacity belirtin. Örneğin B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Her bölge ve katman için geçerli değerleri anlamak üzere [fiyatlandırma katmanları](./concepts-pricing-tiers.md) belgelerine bakın.
++   `resources/properties/virtualNetworkSubnetId`-Azure MySQL sunucusunun yerleştirilmesi gereken VNet 'teki alt ağın Azure tanıtıcısını belirtin. 
++   `tags(optional)`-İsteğe bağlı Etiketler, faturalandırmayla ilgili kaynakları kategorize etmek için kullanacağınız anahtar değer çiftleridir.
 
-Kuruluşunuz için MySQL dağıtımları için Azure Veritabanı'nı otomatikleştirmek için bir Azure Kaynak Yöneticisi şablonu oluşturmak istiyorsanız, öneri önce Azure Quickstart GitHub Galerisi'ndeki örnek [Azure Kaynak Yöneticisi şablonundan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) başlayıp bunun üzerine oluşturmak olacaktır. 
+Kuruluşunuz için Azure veritabanı dağıtımlarını otomatik hale getirmek üzere bir Azure Resource Manager şablonu oluşturmak istiyorsanız, ilk olarak Azure hızlı başlangıç GitHub galerisinde örnek [Azure Resource Manager şablonundan](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) başlayıp üzerine inşa edilecek. 
 
-Azure Kaynak Yöneticisi şablonlarında yeniyseniz ve denemek istiyorsanız, aşağıdaki adımları izleyerek başlayabilirsiniz:
-+   Azure Quickstart galerisinden Örnek [Azure Kaynak Yöneticisi şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) kopyala veya indirin.  
-+   Tercihinize göre parametre değerlerini güncelleştirmek ve dosyayı kaydetmek için azuredeploy.parameters.json'u değiştirin. 
-+   Aşağıdaki komutları kullanarak Azure MySQL sunucusunu oluşturmak için Azure CLI'yi kullanın
+Azure Resource Manager şablonlarına yeni başladıysanız ve denemek istiyorsanız aşağıdaki adımları izleyerek başlayabilirsiniz:
++   Örnek [Azure Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet) Azure hızlı başlangıç galerisinden kopyalayın veya indirin.  
++   Tercihinize göre parametre değerlerini güncelleştirmek için azuredeploy. Parameters. JSON öğesini değiştirin ve dosyayı kaydedin. 
++   Aşağıdaki komutları kullanarak Azure MySQL sunucusunu oluşturmak için Azure CLı 'yi kullanın
 
 Bu öğreticide kod bloklarını çalıştırmak için tarayıcıda Azure Cloud Shell kullanabilir ya da kendi bilgisayarınıza Azure CLI yükleyebilirsiniz.
 
@@ -202,7 +202,7 @@ SELECT * FROM inventory;
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
-> * Azure Kaynak Yöneticisi şablonu kullanarak VNet Service Endpoint ile MySQL sunucusu için bir Azure Veritabanı oluşturma
+> * Azure Resource Manager şablonunu kullanarak sanal ağ hizmeti uç noktası ile MySQL için Azure veritabanı sunucusu oluşturma
 > * Veritabanı oluşturmak için [mysql komut satırı aracı](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) kullanma
 > * Örnek verileri yükleme
 > * Verileri sorgulama

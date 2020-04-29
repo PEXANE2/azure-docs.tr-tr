@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: fce60a10818943a9c6d420044d97c0c5b803de32
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133328"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509746"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notları
 
@@ -25,9 +25,10 @@ Bu makalede, Azure SYNAPSE 'de [SYNAPSE SQL](sql-data-warehouse-overview-what-is
 
 ## <a name="check-your-azure-synapse-version"></a>Azure SYNAPSE sürümünüzü denetleyin
 
-Yeni özellikler tüm bölgelere alındığı için, örneğinize dağıtılan sürümü ve özellik kullanılabilirliği için en son sürüm notlarını kontrol edin. Sürümü denetlemek için SQL Server Management Studio (SSMS) aracılığıyla SQL havuzunuza bağlanın ve geçerli sürümü döndürmek için `SELECT @@VERSION;` komutunu çalıştırın.
+Yeni özellikler tüm bölgelere alındığı için, örneğinize dağıtılan sürümü ve özellik kullanılabilirliği için en son sürüm notlarını kontrol edin. Sürümü denetlemek için SQL Server Management Studio (SSMS) aracılığıyla SQL havuzunuza bağlanın ve geçerli sürümü döndürmek için `SELECT @@VERSION;` komutunu çalıştırın. SQL havuzunuza hangi sürümün uygulandığını onaylamak için bu sürümü kullanın. Çıkışdaki Tarih, SQL havuzunuza uygulanan yayın için ayı belirler. Bu yalnızca hizmet düzeyi iyileştirmeleri için geçerlidir. 
 
-SQL havuzunuza hangi sürümün uygulandığını onaylamak için tanımlanan sürümü kullanın. Çıkışdaki Tarih, SQL havuzunuza uygulanan yayın için ayı belirler.
+Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü olduğundan emin olun. 
+
 
 > [!NOTE]
 > SELECT @@VERSION tarafından döndürülen ürün adı Microsoft Azure SQL veri ambarı 'Den Azure SYNAPSE Analytics 'e değişecektir. Değişiklik yapılmadan önce gelişmiş bildirim göndereceğiz. Bu değişiklik, uygulama kodundaki @@VERSION öğesini seçme sonucundan ürün adını ayrıştırlayan müşteriler için uygundur. Ürün remarkalaması nedeniyle uygulama kodu değişikliklerinden kaçınmak için lütfen şu komutları kullanarak veritabanı ürün adı ve sürümü için SERVERPROPERTY 'yi sorgulayın: XX sürüm numarasını döndürecek şekilde. X. XXXXX. X (ürün adı olmadan) şu komutu kullanın:
@@ -40,13 +41,20 @@ SQL havuzunuza hangi sürümün uygulandığını onaylamak için tanımlanan s�
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>Nisan 2020
 
 | Hizmet geliştirmeleri | Ayrıntılar |
 | --- | --- |
 |**Veritabanı uyumluluk düzeyi (Önizleme)**| Bu sürümde, kullanıcılar artık bir veritabanının uyumluluk düzeyini, SYNAPSE SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için ayarlayabilir. Daha fazla bilgi için bkz. [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [alter database kapsamlıdır Configuration](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| Kullanıcıların bir Transact-SQL toplu işindeki bildirilmemiş parametrelerle ilgili meta verileri görmesine izin verin. Daha fazla bilgi için bkz. [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server veri araçları (SSDT)** | Bu sürüm, SSDT için aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> -Gerçekleştirilmiş bir görünüm (MV) tarafından başvurulan bir tabloyu değiştirmenin, MVs için desteklenmeyen alter View deyimlerinin oluşturulmasına neden olduğu bir sorun çözüldü<br/><br/> -Veritabanı veya projede satır düzeyi güvenlik nesneleri mevcut olduğunda şema karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyi güvenlik nesneleri şu anda SSDT için desteklenmiyor.  <br/><br/> -SQL Server Nesne Gezgini zaman aşımı eşiği, veritabanında çok sayıda nesne listelenirken zaman aşımlarını önlemek için artırıldı<br/><br/> -En iyi duruma getirilmiş SQL Server Nesne Gezgini, kararsızlığı azaltmak ve Nesne Gezgini 'ni doldururken performansı artırmak için veritabanı nesnelerinin listesini alır |
+
+## <a name="march-2020"></a>Mart 2020
+
+| Araç geliştirmeleri                                         | Ayrıntılar                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server veri araçları (SSDT)** | Bu sürüm, SSDT için aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> -Gerçekleştirilmiş bir görünüm (MV) tarafından başvurulan bir tabloyu değiştirmenin, MVs için desteklenmeyen alter View deyimlerinin oluşturulmasına neden olduğu bir sorun çözüldü<br/><br/> -Veritabanı veya projede satır düzeyi güvenlik nesneleri mevcut olduğunda şema karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyi güvenlik nesneleri şu anda SSDT için desteklenmiyor.  <br/><br/> -SQL Server Nesne Gezgini zaman aşımı eşiği, veritabanında çok sayıda nesne listelenirken zaman aşımlarını önlemek için artırıldı<br/><br/> -En iyi duruma getirilmiş SQL Server Nesne Gezgini, kararsızlığı azaltmak ve Nesne Gezgini 'ni doldururken performansı artırmak için veritabanı nesnelerinin listesini alır |
 
 ## <a name="january-2020"></a>Ocak 2020
 

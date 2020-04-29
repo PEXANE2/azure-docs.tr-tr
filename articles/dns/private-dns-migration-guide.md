@@ -1,7 +1,7 @@
 ---
-title: Eski Azure DNS Özel Bölgelerini yeni kaynak modeline geçirme
+title: Eski Azure DNS Özel Bölgeleri yeni kaynak modeline geçiriliyor
 titleSuffix: Azure DNS
-description: Bu kılavuz, eski özel DNS bölgelerinin en son kaynak modeline nasıl geçirilir hakkında adım adım yönerge sağlar
+description: Bu kılavuz, eski özel DNS bölgelerini en son kaynak modeline geçirme hakkında adım adım yönergeler sağlar
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
 ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939360"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Eski Azure DNS özel bölgelerini yeni kaynak modeline geçirme
 
-Genel önizleme sırasında, "zoneType" özelliği "Özel" olarak ayarlanmış "dnszones" kaynağı kullanılarak özel DNS bölgeleri oluşturuldu. Bu tür bölgeler 31 Aralık 2019'dan sonra desteklenmeyen ve "dnszones" yerine "privateDnsZones" kaynak türünü kullanan GA kaynak modeline geçirilmelidir. Geçiş işlemi basittir ve bu işlemi otomatikleştirmek için bir PowerShell komut dosyası sağladık. Bu kılavuz, Azure DNS özel bölgelerinizi yeni kaynak modeline geçirmek için adım adım yönerge sağlar.
+Genel Önizleme sırasında özel DNS bölgeleri "bölge ETYPE" özelliği "özel" olarak ayarlanmış "dnszones" kaynağı kullanılarak oluşturulmuştur. Bu tür bölgeler 31 Aralık 2019 ' den sonra desteklenmeyecektir ve "dnszones" yerine "privateDnsZones" kaynak türünü kullanan GA kaynak modeline geçirilmesi gerekir. Geçiş işlemi basittir ve bu işlemi otomatikleştirmek için bir PowerShell betiği sağladık. Bu kılavuzda, Azure DNS özel bölgelerinizi yeni kaynak modeline geçirmek için adım adım yönergeler sunulmaktadır.
 
-Geçiş gerektiren dnszones kaynaklarını bulmak için; Azure CLI'de aşağıdaki komutu uygulayın.
+Geçiş gerektiren dnszones kaynaklarını bulmak için; Azure CLı 'de aşağıdaki komutu yürütün.
 ```azurecli
 az account set --subscription <SubscriptionId>
 az network dns zone list --query "[?zoneType=='Private']"
@@ -27,103 +27,103 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure PowerShell'in en son sürümünü yüklediğinizden emin olun. Azure PowerShell (Az) hakkında daha fazla bilgi ve nasıl yüklenirhttps://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Azure PowerShell 'ın en son sürümünü yüklediğinizden emin olun. Azure PowerShell (az) ve nasıl yükleneceğine ilişkin daha fazla bilgi için ziyaret edinhttps://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
-Azure PowerShell için Az.PrivateDns modülüne sahip olduğunuzdan emin olun. Bu modülü yüklemek için yükseltilmiş bir PowerShell penceresi (Yönetim modu) açın ve aşağıdaki komutu girin
+Azure PowerShell için az. PrivateDns modülünün yüklü olduğundan emin olun. Bu modülü yüklemek için yükseltilmiş bir PowerShell penceresi (yönetim modu) açın ve aşağıdaki komutu girin
 
 ```powershell
 Install-Module -Name Az.PrivateDns
 ```
 
 >[!IMPORTANT]
->Geçiş işlemi tam otomatiktir ve herhangi bir kapalı kalma süresine neden olması beklenmiyor. Ancak, kritik bir üretim ortamında Azure DNS özel bölgeleri (önizleme) kullanıyorsanız, planlanan bakım süresi penceresinde aşağıdaki geçiş işlemini gerçekleştirmeniz gerekir. Geçiş komut dosyasını çalıştırırken özel bir DNS bölgesinin yapılandırmasını veya kayıt kümelerini değiştirmediğinizden emin olun.
+>Geçiş işlemi tamamen otomatikleştirilmiştir ve herhangi bir kapalı kalma süresine neden olması beklenmez. Ancak, kritik bir üretim ortamında Azure DNS özel bölgeleri (Önizleme) kullanıyorsanız, planlı bakım süresi penceresi sırasında aşağıdaki geçiş işlemini yürütmelisiniz. Geçiş betiğini çalıştırırken özel bir DNS bölgesinin yapılandırma veya kayıt kümelerini değiştirdiğinizden emin olun.
 
-## <a name="installing-the-script"></a>Komut dosyasının yüklenmesi
+## <a name="installing-the-script"></a>Betiği yükleme
 
-Yükseltilmiş bir PowerShell penceresi açın (Yönetim modu) ve aşağıdaki komutu çalıştırın
+Yükseltilmiş bir PowerShell penceresi (yönetim modu) açın ve aşağıdaki komutu çalıştırın
 
 ```powershell
 install-script PrivateDnsMigrationScript
 ```
 
-Komut dosyasını yüklemesi istendiğinde "A" girin
+Komut dosyasını yüklemek isteyip istemediğiniz sorulduğunda "A" yazın
 
-![Komut dosyasının yüklenmesi](./media/private-dns-migration-guide/install-migration-script.png)
+![Betiği yükleme](./media/private-dns-migration-guide/install-migration-script.png)
 
-PowerShell komut dosyasının en son sürümünü dehttps://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+Ayrıca, PowerShell betiğinin en son sürümünü şurada el ile edinebilirsiniz:https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
 >[!IMPORTANT]
->Geçiş komut dosyası Azure bulut kabuğunda çalıştırılmamalı ve Internet'e bağlı bir VM veya yerel makinede çalıştırılmalıdır.
+>Geçiş betiği Azure Cloud Shell 'de çalıştırılmamalıdır ve internet 'e bağlı bir VM veya yerel makinede yürütülmesi gerekir.
 
-## <a name="running-the-script"></a>Komut dosyasını çalıştırma
+## <a name="running-the-script"></a>Betiği çalıştırma
 
-Komut dosyasını çalıştırmak için aşağıdaki komutu yürütme
+Betiği çalıştırmak için aşağıdaki komutu yürütün
 
 ```powershell
 PrivateDnsMigrationScript.ps1
 ```
 
-![Komut dosyasını çalıştırma](./media/private-dns-migration-guide/running-migration-script.png)
+![Betiği çalıştırma](./media/private-dns-migration-guide/running-migration-script.png)
 
-### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Abonelik kimliğini girin ve Azure'da oturum açın
+### <a name="enter-the-subscription-id-and-sign-in-to-azure"></a>Abonelik KIMLIĞINI girin ve Azure 'da oturum açın
 
-Geçirmek istediğiniz özel DNS bölgelerini içeren abonelik kimliğini girmeniz istenir. Azure hesabınızda oturum açmanız istenir. Komut dosyasının abonelikteki özel DNS bölge kaynaklarına erişebilmeleri için oturum açma'yı tamamlayın.
+Geçirmeyi düşündüğünüz özel DNS bölgelerini içeren abonelik KIMLIĞINI girmeniz istenir. Azure hesabınızda oturum açmanız istenir. Komut dosyasının abonelikteki özel DNS bölge kaynaklarına erişebilmesi için oturum açma işleminin tamamını doldurun.
 
 ![Azure'da oturum açma](./media/private-dns-migration-guide/login-migration-script.png)
 
 ### <a name="select-the-dns-zones-you-want-to-migrate"></a>Geçirmek istediğiniz DNS bölgelerini seçin
 
-Abonelikteki tüm özel DNS bölgelerinin listesini alın ve hangilerini geçirmek istediğinizi onaylamanızı ister. Tüm özel DNS bölgelerini geçirmek için "A" girin. Bu adımı çalıştırdıktan sonra, komut dosyası yeni kaynak modelini kullanarak yeni özel DNS bölgeleri oluşturur ve verileri yeni DSN bölgesine kopyalar. Bu adım zaten mevcut özel DNS bölgeleri değiştirmez.
+İle komut dosyası, abonelikteki tüm özel DNS bölgelerinin listesini alır ve hangi hangilerinin geçirmek istediğinizi onaylamanız istenir. Tüm özel DNS bölgelerini geçirmek için "A" yazın. Bu adımı çalıştırdığınızda, komut dosyası yeni kaynak modeli kullanarak yeni özel DNS bölgeleri oluşturacak ve verileri yeni DSN bölgesine kopyalayacaktır. Bu adım, içindeki mevcut özel DNS bölgelerinizi de değiştirmez.
 
 ![DNS bölgelerini seçin](./media/private-dns-migration-guide/migratezone-migration-script.png)
 
-### <a name="switching-dns-resolution-to-the-new-dns-zones"></a>DNS çözünürlüğü yeni DNS bölgelerine geçiş
+### <a name="switching-dns-resolution-to-the-new-dns-zones"></a>DNS çözümlemesini yeni DNS bölgelerine değiştirme
 
-Bölgeler ve kayıtlar yeni kaynak modeline kopyalandıktan sonra, komut dosyası DNS çözünürlüğünü yeni DNS bölgelerine değiştirmenizi ister. Bu adım, eski özel DNS bölgeleri ve sanal ağlarınız arasındaki ilişkiyi kaldırır. Eski bölge sanal ağlardan bağlantısız olduğunda, yukarıdaki adımda oluşturulan yeni DNS bölgeleri bu sanal ağlar için DNS çözünürlüğünü otomatik olarak devralır.
+Bölgeler ve kayıtlar yeni kaynak modeline kopyalandıktan sonra, betik DNS çözümlemesini yeni DNS bölgelerine geçirmek isteyip istemeyecektir. Bu adım eski özel DNS bölgeleri ve sanal ağlarınız arasındaki ilişkilendirmeyi kaldırır. Eski bölge sanal ağlardan bağlantısı kesildiğinde, yukarıdaki adımda oluşturulan yeni DNS bölgeleri bu sanal ağların DNS çözümlemesini otomatik olarak alır.
 
-Tüm sanal ağlar için DNS çözünürlüğünü değiştirmek için 'A' seçeneğini belirleyin.
+Tüm sanal ağların DNS çözünürlüğünü değiştirmek için ' A ' seçeneğini belirleyin.
 
-![Ad Çözümlemesi Arasında Geçiş](./media/private-dns-migration-guide/switchresolution-migration-script.png)
+![Ad çözümlemesini değiştirme](./media/private-dns-migration-guide/switchresolution-migration-script.png)
 
-### <a name="verify-the-dns-resolution"></a>DNS çözünürlüğünü doğrulama
+### <a name="verify-the-dns-resolution"></a>DNS çözümlemesini doğrulama
 
-Daha fazla ilerlemeden önce, DNS bölgelerinizdeki DNS çözünürlüğünün beklendiği gibi çalıştığını doğrulayın. Azure VM'lerinizde oturum açabilir ve DNS çözümlemesi çalıştığını doğrulamak için geçirilen bölgelere karşı nslookup sorgusu düzenleyebilirsiniz.
+Devam etmeden önce DNS bölgelerinizin DNS çözümlemesinin beklendiği gibi çalıştığını doğrulayın. Azure sanal makinelerinize oturum açabilir ve DNS çözümünün çalıştığını doğrulamak üzere geçirilmiş bölgelerde nslookup sorgusu verebilirsiniz.
 
-![Ad Çözümünü Doğrula](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
+![Ad çözümlemesini doğrulama](./media/private-dns-migration-guide/verifyresolution-migration-script.png)
 
-DNS sorgularının çözülmediğini fark ederseniz, birkaç dakika bekleyin ve sorguları yeniden deneyin. DNS sorguları beklendiği gibi çalışıyorsa, komut dosyası sanal ağı özel DNS bölgesinden kaldırmanızı istediğinde 'Y' girin.
+DNS sorgularının çözümlenmiyor olduğunu fark ederseniz, birkaç dakika bekleyip sorguları yeniden deneyin. DNS sorguları beklendiği gibi çalışıyorsa, komut dosyası özel DNS bölgesinden sanal ağı kaldırmanızı isterse, ' Y ' girin.
 
-![Ad Çözümünü Onayla](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
+![Ad çözümlemesini Onayla](./media/private-dns-migration-guide/confirmresolution-migration-script.png)
 
 >[!IMPORTANT]
->Herhangi bir nedenle geçirilen bölgelere karşı DNS çözünürlüğü beklendiği gibi çalışmıyorsa, yukarıdaki adıma 'N' girin ve komut dosyası DNS çözünürlüğünü eski bölgelere geri döndürür. Bir destek bileti oluşturun ve DNS bölgelerinizin geçişinde size yardımcı olabiliriz.
+>Geçirilen bölgelere karşı DNS çözümünden herhangi bir nedenden dolayı, yukarıdaki adımda ' N ' yazın ve betik DNS çözümlemesini eski bölgelere geri girer. Bir destek bileti oluşturun ve DNS bölgelerinizi geçiş konusunda size yardımcı olabilir.
 
 ## <a name="cleanup"></a>Temizleme
 
-Bu adım, eski DNS bölgelerini siler ve yalnızca DNS çözümlüçalışmanın beklendiği gibi çalıştığını doğruladıktan sonra yürütülmelidir. Her özel DNS bölgesini silmeniz istenir. Bu bölgeler için DNS çözünürlüğünün düzgün çalıştığını doğruladıktan sonra her istekte 'Y' girin.
+Bu adım eski DNS bölgelerini silecek ve yalnızca DNS çözümünün beklenen şekilde çalıştığını doğruladıktan sonra yürütülmesi gerekir. Her bir özel DNS bölgesini silmeniz istenecektir. Bu bölgelerin DNS çözümlemesinin düzgün çalıştığını doğruladıktan sonra her sorulduğunda ' Y ' girin.
 
 ![Temizleme](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
-## <a name="update-your-automation"></a>Otomasyonunuzu Güncelleyin
+## <a name="update-your-automation"></a>Otomasyonunuzu güncelleştirme
 
-Şablonlar, PowerShell komut dosyaları veya SDK kullanılarak geliştirilen özel kod gibi otomasyon uyguluyorsanız, özel DNS bölgeleri için yeni kaynak modelini kullanmak için otomasyonunuzu güncelleştirmeniz gerekir. Aşağıda yeni özel DNS CLI/PS/SDK belgelerine bağlantılar verilmiştir.
-* [Azure DNS özel bölgeler REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Azure DNS özel bölgeler CLI](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS özel bölgeler PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS özel bölgeler SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+Şablonlar, PowerShell betikleri veya SDK kullanılarak geliştirilen özel kod dahil Otomasyon kullanıyorsanız, özel DNS bölgeleri için yeni kaynak modelini kullanmak üzere otomasyon hesabınızı güncelleştirmeniz gerekir. Aşağıda, yeni özel DNS CLı/PS/SDK belgelerinin bağlantıları verilmiştir.
+* [Özel bölgeler Azure DNS REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
+* [Özel bölgeler CLı Azure DNS](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Özel bölgeler PowerShell Azure DNS](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Özel bölgeler SDK Azure DNS](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
-## <a name="need-further-help"></a>Daha fazla yardıma ihtiyacınız var
+## <a name="need-further-help"></a>Daha fazla yardım gerekiyor
 
-Geçiş işlemi yle ilgili daha fazla yardıma ihtiyacınız varsa veya yukarıda listelenen adımların sizin için çalışmadığı herhangi bir nedenle bir destek bileti oluşturun. PowerShell komut dosyası tarafından oluşturulan transkript dosyasını destek biletinize ekleyin.
+Geçiş işlemiyle ilgili daha fazla yardıma ihtiyacınız varsa veya yukarıdaki listelenen adımların sizin için çalışmamasının nedeni nedeniyle bir destek bileti oluşturun. PowerShell betiği tarafından oluşturulan döküm dosyası dosyasını destek biletle birlikte ekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI'yi](./private-dns-getstarted-cli.md)kullanarak Azure DNS'de nasıl özel bir bölge oluşturabilirsiniz öğrenin.
+* [Azure PowerShell](./private-dns-getstarted-powershell.md) veya [Azure CLI](./private-dns-getstarted-cli.md)kullanarak Azure DNS bir özel bölge oluşturmayı öğrenin.
 
-* Azure DNS'deki özel bölgelerle gerçekleştirilebilecek bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
+* Azure DNS özel bölgelerle gerçekleştirilen bazı yaygın [özel bölge senaryoları](./private-dns-scenarios.md) hakkında bilgi edinin.
 
-* Belirli işlem türleri için bekleyebileceğiniz belirli davranışlar da dahil olmak üzere Azure DNS'deki özel bölgelerle ilgili sık sorulan sorular ve yanıtlar için [Bkz.](./dns-faq-private.md)
+* Belirli işlemler için bekleneceğiniz belirli davranış dahil olmak üzere Azure DNS özel bölgeler hakkında sık sorulan sorular ve yanıtlar için, bkz. [özel DNS SSS](./dns-faq-private.md).
 
-* DNS bölgeleri ve kayıtları genel bakış ziyaret ederek [DNS bölgeleri ve](dns-zones-records.md)kayıtları hakkında bilgi edinin.
+* DNS bölgelerini ve [kayıtları](dns-zones-records.md)ziyaret ederek DNS bölgeleri ve kayıtları hakkında bilgi edinin.
 
 * Azure'un diğer önemli [ağ özelliklerinden](../networking/networking-overview.md) bazıları hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Azure CLI Script Örneği - Azure Uygulama Yapılandırma Deposundan Dışa Aktarma
+title: Azure CLı betik örneği-Azure uygulama yapılandırma deposundan dışarı aktarma
 titleSuffix: Azure App Configuration
-description: Azure Uygulama Yapılandırmasından yapılandırma yı dışa aktarmak için Azure CLI komut dosyasını kullanma
+description: Azure Uygulama yapılandırmasından yapılandırmayı dışarı aktarmak için Azure CLı betiği kullanma
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 3e014504fc1e94c3b323a49b408fa992de00d14a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523639"
 ---
-# <a name="export-from-an-azure-app-configuration-store"></a>Azure Uygulama Yapılandırma mağazasından dışa aktarma
+# <a name="export-from-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposundan dışarı aktarma
 
-Bu örnek komut dosyası, bir Azure Uygulama Yapılandırma deposundan anahtar değerleri dışa dışa aktarmaz.
+Bu örnek betik, bir Azure uygulama yapılandırma deposundan anahtar değerlerini dışarı aktarır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,14 +39,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Betik açıklaması
 
-Bu komut dosyası, bir Uygulama Yapılandırma deposundan dışa aktarmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu betik, bir uygulama yapılandırma deposundan dışarı aktarmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | Komut | Notlar |
 |---|---|
-| [az appconfig kv ihracat](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Bir Uygulama Yapılandırma deposu kaynağından dışa aktarma. |
+| [az appconfig kV Export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Uygulama yapılandırma deposu kaynağından dışarı aktarır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
-Ek Uygulama Yapılandırması CLI komut dosyası örnekleri [Azure App Configuration CLI örnekleri](../cli-samples.md)bulunabilir.
+Ek uygulama yapılandırması CLı betiği örnekleri, [Azure Uygulama YAPıLANDıRMASı CLI örneklerinde](../cli-samples.md)bulunabilir.

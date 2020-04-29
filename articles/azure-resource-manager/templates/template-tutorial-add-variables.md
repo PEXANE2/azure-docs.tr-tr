@@ -1,60 +1,60 @@
 ---
-title: Öğretici - şablona değişken ekleme
-description: Sözdizimini basitleştirmek için Azure Kaynak Yöneticisi şablonunuza değişkenler ekleyin.
+title: Öğretici-şablona değişken ekleme
+description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza değişken ekleyin.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b1df86e5b593edec784de21e21a4399274d820bb
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80411682"
 ---
-# <a name="tutorial-add-variables-to-your-arm-template"></a>Öğretici: ARM şablonunuza değişken ekleme
+# <a name="tutorial-add-variables-to-your-arm-template"></a>Öğretici: ARM şablonunuza değişkenler ekleme
 
-Bu eğitimde, Azure Kaynak Yöneticisi (ARM) şablonunuza nasıl bir değişken ekleyeceğinizi öğrenirsiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanmanızı sağlayarak şablonlarınızı basitleştirir. Bu eğitimin tamamlanması **7 dakika** sürer.
+Bu öğreticide, Azure Resource Manager (ARM) şablonunuza nasıl değişken ekleneceğini öğreneceksiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[İşlevler hakkında öğreticiyi](template-tutorial-add-functions.md)tamamlamanızı öneririz, ancak gerekli değildir.
+[İşlevlerle ilgili öğreticiyi](template-tutorial-add-functions.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile Visual Studio Kodu'na sahip olmalısınız. Daha fazla bilgi için [şablon araçlarına](template-tutorial-create-first-template.md#get-tools)bakın.
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Önceki öğreticinin sonunda, şablonunuzun aşağıdaki JSON'u vardı:
+Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
-Benzersiz bir ad vermeniz gerekdığından, depolama hesabı adı için parametre kullanımı zordur. Bu serinin önceki öğreticilerini tamamladıysanız, büyük olasılıkla benzersiz bir adı tahmin etmekten yoruldunuz. Depolama hesabı için benzersiz bir ad oluşturan bir değişken ekleyerek bu sorunu çözersiniz.
+Benzersiz bir ad sağlamanız gerektiğinden, depolama hesabı adı için parametre kullanımı zor. Bu serideki önceki öğreticileri tamamladıysanız, büyük olasılıkla benzersiz bir ad tahmin etmeniz çok yorsunuzdur. Depolama hesabı için benzersiz bir ad oluşturan bir değişken ekleyerek bu sorunu çözebilirsiniz.
 
-## <a name="use-variable"></a>Değişkeni kullan
+## <a name="use-variable"></a>Değişken kullan
 
-Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan bir değişken eklemek için yapılan değişiklikleri vurgular. Dosyanın tamamını kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan bir değişken ekleme değişikliklerini vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-**UniqueStorageName**adlı bir değişken içerdiğine dikkat edin. Bu değişken, bir dize değeri oluşturmak için dört işlev kullanır.
+**Unisorgtoraygename**adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
 
-[Parametrelerin](template-functions-deployment.md#parameters) işlevini zaten biliyorsun, bu yüzden incelemeyeyeceğiz.
+[Parameters](template-functions-deployment.md#parameters) işlevini zaten öğreniyoruz, bu yüzden bunu inceleyeceğiz.
 
-[ResourceGroup](template-functions-resource.md#resourcegroup) işlevini de biliyorsundur. Bu durumda, önceki öğreticide gösterildiği gibi **konum** özelliği yerine **kimlik** özelliğini alırsınız. **Kimlik** özelliği, abonelik kimliği ve kaynak grubu adı da dahil olmak üzere kaynak grubunun tam tanımlayıcısını döndürür.
+Ayrıca, [resourceGroup](template-functions-resource.md#resourcegroup) işlevi hakkında bilgi sahibisiniz. Bu durumda, önceki öğreticide gösterildiği gibi **Location** özelliği yerine **ID** özelliğini alırsınız. **ID** özelliği, abonelik kimliği ve kaynak grubu adı dahil olmak üzere kaynak grubunun tam tanımlayıcısını döndürür.
 
-[uniqueString](template-functions-string.md#uniquestring) işlevi 13 karakterlik karma değer oluşturur. Döndürülen değer, geçtiğiniz parametrelere göre belirlenir. Bu öğretici için, karma değer ingirişi olarak kaynak grubu kimliğini kullanırsınız. Bu, bu şablonu farklı kaynak gruplarına dağıtabileceğiniz ve farklı bir benzersiz dize değeri elde edebilirsiniz anlamına gelir. Ancak, aynı kaynak grubuna dağıtırsanız aynı değeri alırsınız.
+[Uniquestring](template-functions-string.md#uniquestring) işlevi bir 13 karakterlik karma değeri oluşturur. Döndürülen değer geçirdiğiniz parametrelere göre belirlenir. Bu öğreticide, karma değer girişi olarak kaynak grubu KIMLIĞINI kullanırsınız. Bu, bu şablonu farklı kaynak gruplarına dağıtabileceğiniz ve farklı bir benzersiz dize değeri alabileceğiniz anlamına gelir. Ancak, aynı kaynak grubuna dağıtırsanız aynı değeri alırsınız.
 
-[Concat](template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, string parametre ve string uniqueString işlevinden alır ve bunları tek bir dize halinde birleştirir.
+[Concat](template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, dizeden ve uniqueString işlevindeki dizeden dize alır ve bunları tek bir dize olarak birleştirir.
 
-**StoragePrefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan bir önek içinde geçmenizi sağlar. Uzun bir kaynak listesinden dağıtımdan sonra depolama hesaplarını belirlemeyi kolaylaştıran kendi adlandırma kuralınızı oluşturabilirsiniz.
+**Storageprefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan bir ön ek geçirmenize olanak sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
 
-Son olarak, depolama adının artık parametre yerine değişkene ayarlı olduğuna dikkat edin.
+Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı olduğuna dikkat edin.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonu dağıtalım. Depolama adı için sadece öneki sağladığınız için bu şablonu dağıtmak önceki şablonlardan daha kolaydır.
+Şablonu dağıtalım. Yalnızca depolama adı için ön ek sağlamanız gerektiğinden, bu şablonu dağıtmak önceki şablonlardan daha kolaydır.
 
-Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -69,7 +69,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için Azure CLI'nin [en son sürümüne](/cli/azure/install-azure-cli) sahip olmalısınız.
+Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -82,31 +82,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
+> Dağıtım başarısız olursa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  **Ayrıntılı** anahtarı, tam hata ayıklama günlüklerini göstermek için de kullanabilirsiniz.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
-Azure portalındaki kaynak grubunu keşfederek dağıtımı doğrulayabilirsiniz.
+Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Sol menüden **Kaynak gruplarını**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
-1. Bir depolama hesabı kaynağının dağıtıldığını görüyorsunuz. Depolama hesabının adı **depo** artı rasgele karakterler dizisidir.
+1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiyorsanız, kaynak grubunu silmeniz gerekmez.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-Şimdi duruyorsanız, kaynak grubunu silerek dağıttığınız kaynakları temizlemek isteyebilirsiniz.
+Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
+1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, depolama hesabı için benzersiz bir ad oluşturan bir değişken eklediniz. Sonraki öğreticide, dağıtılan depolama hesabından bir değer döndürebilirsiniz.
+Bu öğreticide, depolama hesabı için benzersiz bir ad oluşturan bir değişken eklediniz. Sonraki öğreticide, dağıtılan depolama hesabından bir değer döndürürler.
 
 > [!div class="nextstepaction"]
-> [Çıktı ekleme](template-tutorial-add-outputs.md)
+> [Çıkış Ekle](template-tutorial-add-outputs.md)

@@ -11,15 +11,15 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65521422"
 ---
-# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Öğretici: Azure Otomasyonu'nun Olay Izgarası ve Microsoft Ekipleriyle Tümleştirin
+# <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Öğretici: Azure Otomasyonu 'Nu Event Grid ve Microsoft ekipleriyle tümleştirin
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Event Grid örnek runbook'unu içeri aktarma.
@@ -28,7 +28,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Event Grid aboneliği oluşturun.
 > * Runbook'u tetikleyen bir VM oluşturma.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -53,7 +53,7 @@ Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automati
 4. **İçeri Aktar**'ı seçin ve bunu **Watch-VMWrite** olarak adlandırın.
 
 5. İçeri aktarıldıktan sonra, runbook kaynağını görüntülemek için **Düzenle**'yi seçin. 
-6. Komut dosyasındaki 74 satırını `Tag` yerine `Tags`kullanmak üzere güncelleştirin.
+6. Komut dosyasındaki 74 satırını yerine kullanılacak `Tag` şekilde güncelleştirin. `Tags`
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
@@ -70,7 +70,7 @@ Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automati
 
 3. Ad olarak **AzureAutomationIntegration** girin ve **Oluştur**'u seçin.
 
-4. Webhook URL'sini panoya kopyalayın ve kaydedin. Web kancası URL'si, Microsoft Teams'e bilgi göndermek için kullanılır.
+4. Web kancası URL 'sini panoya kopyalayın ve kaydedin. Web kancası URL'si, Microsoft Teams'e bilgi göndermek için kullanılır.
 
 5. **Bitti**'yi seçerek web kancasını kaydedin.
 
@@ -105,7 +105,7 @@ Bu öğreticiyi tamamlamak için, bir [Azure Otomasyonu hesabının](../automati
     4. **Tanımlanan Olay Türleri** açılan menüsünde **Kaynak Yazma Başarısı** dışındaki tüm seçeneklerin işaretini kaldırın.
 
         > [!NOTE] 
-        > Azure Kaynak Yöneticisi şu anda Oluştur ve Güncelleştir arasında ayrım yapmaz, bu nedenle bu öğreticinin Azure Aboneliğinizdeki tüm Microsoft.Resources.ResourceWriteSuccess etkinlikleri için uygulanması yüksek sayıda çağrıya neden olabilir.
+        > Azure Resource Manager, oluşturma ve güncelleştirme arasında ayrım yapmaz, bu nedenle Bu öğreticinin Azure aboneliğinizdeki tüm Microsoft. resources. ResourceWriteSuccess olayları için uygulanması yüksek miktarda çağrıya neden olabilir.
     1. **Uç Noktası Türü** için **Web kancası**'nı seçin.
     2. **Bir uç nokta seçin**'e tıklayın. Açılan **Web Kancası seçin** sayfasına Watch-VMWrite runbook'u için oluşturduğunuz web kancası URL'sini yapıştırın.
     3. **FİLTRELER** bölümünde, oluşturulan yeni VM'leri aramak istediğiniz aboneliği ve kaynak grubunu girin. Şu şekilde görünmelidir: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`

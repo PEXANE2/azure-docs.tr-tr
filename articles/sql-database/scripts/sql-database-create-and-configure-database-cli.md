@@ -1,5 +1,5 @@
 ---
-title: CLI örnek oluşturma Bir Azure SQL veritabanı
+title: CLı örneği-Azure SQL veritabanı oluşturma
 description: Bir SQL veritabanı oluşturmak için bu Azure CLI örnek betiğini kullanın.
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: ecfa61f0680e20dd37a1fedc988664afa6e2a83b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067468"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Tek bir Azure SQL veritabanı oluşturmak ve bir güvenlik duvarı kuralını yapılandırmak için CLI kullanma
@@ -42,15 +42,15 @@ Kaynak grubunu ve onunla ilişkili tüm kaynakları kaldırmak için aşağıdak
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Örnek referans
+## <a name="sample-reference"></a>Örnek başvuru
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 | | |
 |---|---|
 | [az sql server](/cli/azure/sql/server#az-sql-server-create) | Sunucu komutları |
-| [az sql server güvenlik duvarı](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Sunucu güvenlik duvarı komutları. |
-| [az sql db](/cli/azure/sql/db#az-sql-db-create) | Veritabanı komutları. |
+| [az SQL Server güvenlik duvarı](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Sunucu güvenlik duvarı komutları. |
+| [az SQL DB](/cli/azure/sql/db#az-sql-db-create) | Veritabanı komutları. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

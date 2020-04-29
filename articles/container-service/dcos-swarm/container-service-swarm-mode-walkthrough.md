@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Quickstart - Linux için Azure Docker CE kümesi
+title: Kullanım DıŞı Hızlı başlangıç-Linux için Azure Docker CE kümesi
 description: Azure CLI ile Azure Container Service'de Linux kapsayıcıları için Docker CE kümesi oluşturmayı hızlı bir şekilde öğrenin.
 author: iainfoulds
 ms.service: container-service
@@ -8,21 +8,21 @@ ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
 ms.openlocfilehash: d4bbd5560681aa73709019e87c6c22470a64ad78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481747"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(AmortismanA Uğradı) Docker CE kümesini dağıt
+# <a name="deprecated-deploy-docker-ce-cluster"></a>Kullanım DıŞı Docker CE kümesi dağıtma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Bu hızlı başlangıçta, Azure CLI kullanılarak bir Docker CE kümesi dağıtılır. Ardından web ön ucu ve bir Redis örneğinden oluşan çok kapsayıcılı bir uygulama dağıtılıp küme üzerinde çalıştırılır. Tamamlandığında, uygulamaya İnternet üzerinden erişilebilir.
+Bu hızlı başlangıçta, Azure CLı kullanılarak bir Docker CE kümesi dağıtılır. Ardından web ön ucu ve bir Redis örneğinden oluşan çok kapsayıcılı bir uygulama dağıtılıp küme üzerinde çalıştırılır. Tamamlandığında, uygulamaya İnternet üzerinden erişilebilir.
 
 Azure Container Service’teki Docker CE önizlemededir ve **üretim iş yükleri için kullanılmamalıdır**.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
@@ -30,7 +30,7 @@ CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç i�
 
 [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği mantıksal bir gruptur.
 
-Aşağıdaki örnek, *westus2* konumunda *myResourceGroup* adında bir kaynak grubu oluşturur.
+Aşağıdaki örnek *westus2* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location westus2
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm kümesi oluşturma
 
-Azure Container Service'te [az acs create](/cli/azure/acs#az-acs-create) komutuyla bir Docker CE kümesi oluşturun. Docker CE'nin bölge durumu hakkında bilgi için [Docker CE için ACS bölgelerine](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) bakın
+Azure Container Service'te [az acs create](/cli/azure/acs#az-acs-create) komutuyla bir Docker CE kümesi oluşturun. Docker CE 'nin bölge kullanılabilirliği hakkında bilgi için bkz. [Docker CE Için ACS bölgeleri](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 Aşağıdaki örnekte, bir Linux ana düğümü ve üç Linux aracı düğümüyle *mySwarmCluster* adlı bir küme oluşturulur.
 
@@ -67,7 +67,7 @@ Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON tarafından biçi
 
 ## <a name="connect-to-the-cluster"></a>Kümeye bağlanma
 
-Bu hızlı başlangıç boyunca, hem Docker Swarm master hem de Docker ajan havuzunun FQDN'si gerekir. Hem ana şablon hem de aracı FQDN'lerini döndürmek için aşağıdaki komutu çalıştırın.
+Bu hızlı başlangıç boyunca hem Docker Sısınma ana, hem de Docker aracı havuzunun FQDN 'sine ihtiyacınız vardır. Hem ana şablon hem de aracı FQDN'lerini döndürmek için aşağıdaki komutu çalıştırın.
 
 ```azurecli
 az acs list --resource-group myResourceGroup --query '[*].{Master:masterProfile.fqdn,Agent:agentPoolProfiles[0].fqdn}' -o table
@@ -159,15 +159,15 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="get-the-code"></a>Kodu alma
 
-Bu hızlı başlatmada, docker hizmeti oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanılmıştır. İlgili uygulama kodu, Dockerfile ve Compose dosyası GitHub'da bulunur.
+Bu hızlı başlangıçta, bir Docker hizmeti oluşturmak için önceden oluşturulmuş kapsayıcı görüntüleri kullanılmıştır. İlgili uygulama kodu, Dockerfile ve Compose dosyası GitHub'da bulunur.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Docker Swarm kümesi dağıttınız ve ona çok kapsayıcılı bir uygulama dağıttınız.
+Bu hızlı başlangıçta, bir Docker Sısınma kümesi dağıttınız ve bu kümeye çok kapsayıcılı bir uygulama dağıttınız.
 
-Docker sürüsünü Azure DevOps ile entegre etme hakkında bilgi edinmek için Docker Swarm ve Azure DevOps ile CI/CD'ye devam edin.
+Docker sısınma 'u Azure DevOps ile tümleştirme hakkında bilgi edinmek için Docker Sısınma ve Azure DevOps ile CI/CD 'ye devam edin.
 
 > [!div class="nextstepaction"]
 > [Docker Swarm ve Azure DevOps ile CI/CD](./container-service-docker-swarm-setup-ci-cd.md)

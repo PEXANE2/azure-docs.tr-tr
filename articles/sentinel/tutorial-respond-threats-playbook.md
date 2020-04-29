@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Sentinel'de bir oyun kitabı çalıştırma"
-description: "Öğretici: Bu makalede, Azure Sentinel'de bir oyun kitabının nasıl çalıştırılacak olduğu açıklanmaktadır."
+title: "Öğretici: Azure Sentinel 'de PlayBook çalıştırma"
+description: "Öğretici: Bu makalede Azure Sentinel 'de bir PlayBook 'un nasıl çalıştırılacağı açıklanır."
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -17,98 +17,98 @@ ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
 ms.openlocfilehash: f6adcb978dbe540d3bdd352089d4dde407d0fb4c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77585093"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel'de otomatik tehdit yanıtları ayarlama
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Öğretici: Azure Sentinel 'de otomatik tehdit yanıtlarını ayarlama
 
 
 
-Bu öğretici, Azure Sentinel tarafından algılanan güvenlikle ilgili sorunlara otomatik tehdit yanıtları ayarlamak için Azure Sentinel'deki güvenlik oyun kitaplarını kullanmanıza yardımcı olur.
+Bu öğretici, Azure Sentinel tarafından algılanan güvenlikle ilgili sorunlara otomatik tehdit yanıtları ayarlamak için Azure Sentinel 'de güvenlik PlayBook 'ları kullanmanıza yardımcı olur.
 
 
 > [!div class="checklist"]
-> * Oyun kitaplarını anlama
-> * Oyun kitabı oluşturma
-> * Bir oyun kitabı çalıştırın
+> * PlayBook 'ları anlama
+> * PlayBook oluşturma
+> * PlayBook çalıştırma
 > * Tehdit yanıtlarını otomatikleştirin
 
 
-## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel'de güvenlik oyun kitabı nedir?
+## <a name="what-is-a-security-playbook-in-azure-sentinel"></a>Azure Sentinel 'de güvenlik PlayBook nedir?
 
-Güvenlik oyun kitabı, bir uyarıya yanıt olarak Azure Sentinel'den çalıştırılabilen yordamlar topluluğudur. Bir güvenlik oyun kitabı yanıtınızı otomatikleştirmenize ve düzenlemeye yardımcı olabilir ve belirli uyarılar tetiklendiğinde el ile çalıştırılabilir veya otomatik olarak çalışacak şekilde ayarlanabilir. Azure Sentinel'deki güvenlik oyun kitapları [Azure Mantık Uygulamaları'nı](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)temel alır, bu da Logic Apps'ın tüm güç, özelleştirilebilirlik ve yerleşik şablonlarına sahip olduğunuz anlamına gelir. Her oyun kitabı seçtiğiniz belirli abonelik için oluşturulur, ancak Playbook'lar sayfasına baktığınızda, tüm oyun kitaplarını seçili aboneliklerde görürsünüz.
+Bir güvenlik PlayBook, bir uyarıya yanıt olarak Azure Sentinel 'den çalıştırılabilecek bir yordamlar koleksiyonudur. Bir güvenlik PlayBook, yanıtınızı otomatikleştirmeye ve düzenlemeye yardımcı olabilir ve el ile çalıştırılabilir veya belirli uyarılar tetiklendiğinde otomatik olarak çalışacak şekilde ayarlanabilir. Azure Sentinel 'deki güvenlik PlayBook 'ları [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)tabanlıdır, bu da tüm güç, özelleştirme ve yerleşik şablonları Logic Apps alır. Her bir PlayBook, seçtiğiniz belirli bir abonelik için oluşturulur, ancak PlayBook 'ları sayfasına baktığınızda, tüm PlayBook 'ları seçili abonelikler arasında görürsünüz.
 
 > [!NOTE]
-> Oyun kitapları Azure Logic Apps'dan yararlanır, bu nedenle ücretler geçerlidir. Ayrıntılı bilgi için [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) fiyatlandırma sayfasını ziyaret edin.
+> PlayBook 'lar Azure Logic Apps yararlanır, bu nedenle ücretler geçerlidir. Ayrıntılı bilgi için [Azure Logic Apps](https://azure.microsoft.com/pricing/details/logic-apps/) fiyatlandırma sayfasını ziyaret edin.
 
-Örneğin, kötü niyetli saldırganların ağ kaynaklarınıza erişmesinden endişe ediyorsanız, ağınıza erişen kötü amaçlı IP adreslerini arayan bir uyarı ayarlayabilirsiniz. Ardından, aşağıdakileri yapan bir oyun kitabı oluşturabilirsiniz:
-1. Uyarı tetiklendiğinde ServiceNow veya başka bir BT bilet sistemindebir bilet açın.
-2. Güvenlik analistlerinizin olaydan haberdar olduğundan emin olmak için Microsoft Teams veya Slack'teki güvenlik işlemleri kanalınıza bir ileti gönderin.
-3. Uyarıdaki tüm bilgileri üst düzey ağ yöneticinize ve güvenlik yöneticinize gönderin. E-posta iletisi ayrıca iki kullanıcı seçeneği düğmeleri **Blok** veya **Yoksay**içerir.
-4. Oyun kitabı, yöneticilerden bir yanıt alındıktan sonra da devam eder.
-5. Yöneticiler **Engelle'yi**seçerse, IP adresi güvenlik duvarında engellenir ve kullanıcı Azure AD'de devre dışı bırakılır.
-6. Yöneticiler **Yoks'ı**seçerse, uyarı Azure Sentinel'de kapatılır ve olay ServiceNow'da kapatılır.
+Örneğin, ağ kaynaklarınıza erişen kötü amaçlı saldırganlar hakkında endişeli varsa, ağınıza erişen kötü amaçlı IP adreslerini aramak için bir uyarı ayarlayabilirsiniz. Ardından, aşağıdakileri yapan bir PlayBook oluşturabilirsiniz:
+1. Uyarı tetiklendiğinde ServiceNow veya diğer bir It anahtar sistemi sisteminde bir bilet açın.
+2. Güvenlik analistlerinizin olaydan haberdar olduğundan emin olmak için Microsoft ekiplerinde veya bolluk 'de güvenlik işlemleri kanalınıza bir ileti gönderin.
+3. Uyarı içindeki tüm bilgileri, üst düzey ağ yöneticinize ve güvenlik yöneticinize gönderin. E-posta iletisi ayrıca iki Kullanıcı seçeneği düğmesini **engeller** veya **yoksayar**.
+4. Yöneticilerden bir yanıt alındıktan sonra PlayBook çalışmaya devam eder.
+5. Yöneticiler **Engelle**seçeneğini BELIRLERSENIZ, IP adresi güvenlik duvarında engellenir ve Kullanıcı Azure AD 'de devre dışı bırakılır.
+6. Yöneticiler **yoksayma**seçeneğini belirlerseniz, uyarı Azure Sentinel 'de kapatılır ve olay ServiceNow 'da kapatılır.
 
-Güvenlik oyun kitapları el ile veya otomatik olarak çalıştırılabilir. Bunları el ile çalıştırmak, bir uyarı aldığınızda, seçili uyarıya yanıt olarak isteğe bağlı bir oyun kitabı çalıştırmayı seçebileceğiniz anlamına gelir. Bunları otomatik olarak çalıştırmak, korelasyon kuralını yazarken, uyarı tetiklendiğinde bir veya daha fazla oyun kitabını otomatik olarak çalıştıracak şekilde ayarladığınız anlamına gelir.
+Güvenlik PlayBook 'ları el ile ya da otomatik olarak çalıştırılabilir. Bunları el ile çalıştırmak, bir uyarı aldığınızda, seçili uyarıya yanıt olarak isteğe bağlı bir PlayBook çalıştırmayı tercih edebilirsiniz. Otomatik olarak çalıştırmak, bağıntı kuralını yazarken, uyarı tetiklendiğinde otomatik olarak bir veya daha fazla PlayBook çalıştıracak şekilde ayarlamanız anlamına gelir.
 
 
-## <a name="create-a-security-playbook"></a>Güvenlik oyun kitabı oluşturma
+## <a name="create-a-security-playbook"></a>Güvenlik PlayBook oluşturma
 
-Azure Sentinel'de yeni bir güvenlik oyun kitabı oluşturmak için aşağıdaki adımları izleyin:
+Azure Sentinel 'de yeni bir güvenlik PlayBook oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure **Sentinel** panosunu açın.
-2. **Yönetim**altında, **Playbooks**seçin.
+1. **Azure Sentinel** panosunu açın.
+2. **Yönetim**altında **playbooks**' ı seçin.
 
    ![Logic App](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Azure **Sentinel - Playbook** sayfasında **Ekle** düğmesini tıklatın.
+3. **Azure Sentinel-playbooks** sayfasında **Ekle** düğmesine tıklayın.
 
    ![Mantıksal uygulama oluşturma](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
-4. Mantık **Oluştur uygulaması** sayfasında, yeni mantık uygulamanızı oluşturmak için istenen bilgileri yazın ve **Oluştur'u**tıklatın. 
+4. **Mantıksal uygulama oluştur** sayfasında, yeni mantıksal uygulamanızı oluşturmak için istenen bilgileri yazın ve **Oluştur**' a tıklayın. 
 
-5. Mantık [**Uygulama Tasarımcısı'nda**](../logic-apps/logic-apps-overview.md)kullanmak istediğiniz şablonu seçin. Kimlik bilgilerini gerektiren bir şablon seçerseniz, bunları sağlamanız gerekir. Alternatif olarak, sıfırdan yeni bir boş oyun kitabı oluşturabilirsiniz. **Boş Mantık Uygulamasını**seçin. 
+5. [**Mantıksal uygulama Tasarımcısı**](../logic-apps/logic-apps-overview.md)' nda, kullanmak istediğiniz şablonu seçin. Kimlik bilgilerini gerektiren bir şablon seçerseniz, bunları sağlamanız gerekir. Alternatif olarak, sıfırdan yeni bir boş PlayBook oluşturabilirsiniz. **Boş mantıksal uygulama**' yı seçin. 
 
    ![Mantıksal uygulama tasarımcısı](./media/tutorial-respond-threats-playbook/playbook-template.png)
 
-6. Yeni bir yapı oluşturabileceğiniz veya şablonu oluşturabileceğiniz Mantık Uygulama Tasarımcısı'na götürülür. [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)ile bir oyun kitabı oluşturma hakkında daha fazla bilgi için.
+6. Yeni oluşturabileceğiniz veya şablonu düzenleyebileceğiniz Logic App Designer 'a yönlendirilirsiniz. [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md)ile bir PlayBook oluşturma hakkında daha fazla bilgi için.
 
-7. Boş bir oyun kitabı oluşturuyorsanız, **Tüm bağlayıcıları ve tetikleyicileri** alanında Arama'da Azure *Sentinel*yazın ve Azure **Sentinel uyarısıne yanıt tetiklendiğinde**seçin. <br>Oluşturulduktan sonra, yeni oyun kitabı **Playbook'lar** listesinde görünür. Görünmüyorsa, **Yenile'yi**tıklatın.
+7. Boş bir PlayBook oluşturuyorsanız, **tüm bağlayıcılar ve Tetikleyiciler ara** alanında *Azure Sentinel*' i yazın ve bir **Azure Sentinel uyarısı yanıtı tetiklendiğinde**öğesini seçin. <br>Oluşturulduktan sonra, **playbooks** listesinde yeni PlayBook görüntülenir. Görünmüyorsa **Yenile**' ye tıklayın.
 
-1. Hesaplar, IP adresleri ve ana bilgisayarlar gibi ilgili varlıkları **Varlıklar** listesinden almanızı sağlayan **Varlıkları Al** işlevlerini kullanın. Bu, belirli varlıklar üzerinde eylemleri çalıştırmanızı sağlar.
+1. Hesaplar, IP adresleri ve konaklar gibi **varlıklar** listesinin içinden ilgili varlıkları almanızı sağlayan **varlıkları al** işlevlerini kullanın. Bu, belirli varlıklarda eylemleri çalıştırmanızı sağlar.
 
-7. Şimdi playbook'unuz tetiklendiğinde gerçekleştirilecek işlemleri tanımlayabilirsiniz. Eylem, mantıksal durum, servis talebi koşullarını veya döngüleri değiştirebilirsiniz.
+7. Şimdi playbook'unuz tetiklendiğinde gerçekleştirilecek işlemleri tanımlayabilirsiniz. Bir eylem, mantıksal koşul, anahtar durum koşulları veya döngüler ekleyebilirsiniz.
 
    ![Mantıksal uygulama tasarımcısı](./media/tutorial-respond-threats-playbook/logic-app.png)
 
-## <a name="how-to-run-a-security-playbook"></a>Güvenlik oyun kitabı nasıl çalıştırılabilen
+## <a name="how-to-run-a-security-playbook"></a>Güvenlik PlayBook 'u çalıştırma
 
-İsteğe bağlı bir oyun kitabı çalıştırabilirsiniz.
+İsteğe bağlı olarak bir PlayBook çalıştırabilirsiniz.
 
-İsteğe bağlı bir oyun kitabı çalıştırmak için:
+Bir PlayBook 'u isteğe bağlı olarak çalıştırmak için:
 
-1. **Olaylar** sayfasında, bir olay seçin ve **tüm ayrıntıları görüntüle'ye**tıklayın.
+1. **Olaylar** sayfasında bir olay seçin ve **tüm ayrıntıları görüntüle**' ye tıklayın.
 
-2. **Uyarılar** sekmesinde, oyun kitabını çalıştırmak istediğiniz uyarıyı tıklatın ve sağa doğru ilerleyin ve **Playbook'ları Görüntüle'yi** tıklatın ve abonelikteki kullanılabilir oyun kitapları listesinden **çalıştırmak** için bir oyun kitabı seçin. 
+2. **Uyarılar** sekmesinde, PlayBook 'u çalıştırmak istediğiniz uyarıya tıklayın ve sağa doğru bir şekilde ilerleyin ve **PlayBook 'ları görüntüle** ' ye tıklayın ve abonelik üzerindeki kullanılabilir PlayBook 'ları listesinden **çalıştırmak** için bir PlayBook seçin. 
 
 
 
 ## <a name="automate-threat-responses"></a>Tehdit yanıtlarını otomatikleştirin
 
-SIEM/SOC ekipleri düzenli olarak güvenlik uyarıları ile sular altında olabilir. Oluşturulan uyarıların hacmi o kadar büyüktür ki, kullanılabilir güvenlik yöneticileri bunalmış durumdadır. Bu, birçok uyarının soruşturulamayacağı durumlarda çoğu zaman sonuç verir ve bu da organizasyonu fark edilmeyen saldırılara karşı savunmasız bırakır. 
+SıEM/SOC ekipleri, düzenli olarak güvenlik uyarılarını açığa kaldırmamalıdır. Oluşturulan uyarıların hacmi çok büyük olduğundan, kullanılabilir güvenlik yöneticileri bu kadar çok önemlidir. Bu, birçok uyarının araştırılamama durumlarında çok sık sonuçlar elde ederek, kuruluşun fark edilmemiş saldırılara karşı savunmasız bırakılır. 
 
-Çoğu olmasa da, bu uyarıların çoğu, belirli ve tanımlanmış düzeltme eylemleri tarafından ele alınabilen yinelenen desenlere uygundur. Azure Sentinel, düzeltmenizi oyun kitaplarında tanımlamanıza olanak tanır. Belirli güvenlik uyarılarına tanımlı bir yanıtı tam olarak otomatikleştirebilmeniz için oyun kitabı tanımınızın bir parçası olarak gerçek zamanlı otomasyon ayarlamak da mümkündür. Yanıt ekipleri, gerçek zamanlı otomasyon u kullanarak, yinelenen uyarı türlerine yönelik rutin yanıtları tam olarak otomatikleştirerek iş yüklerini önemli ölçüde azaltabilir ve benzersiz uyarılara daha fazla konsantre olabilirsiniz, desenleri analiz eder, tehdit avcılığı ve daha fazlası.
+Çoğu, bu uyarıların çoğu, belirli ve tanımlı düzeltme eylemleri tarafından giderilebildiğiniz yinelenen desenlerle uyumlu değildir. Azure Sentinel, zaten PlayBook 'lar için düzeltmeyi tanımlamanızı sağlar. Ayrıca, belirli güvenlik uyarılarına yönelik olarak tanımlanan yanıtı tamamen otomatikleştirmenizi sağlamak için PlayBook tanımınızın bir parçası olarak gerçek zamanlı Otomasyonu ayarlamak da mümkündür. Gerçek zamanlı Otomasyon kullanarak, yanıt ekipleri yinelenen uyarı türlerine yönelik rutin yanıtları tamamen otomatikleştirerek iş yükünü önemli ölçüde azaltabilir. böylece, benzersiz uyarılarda daha fazla odaklanmanızı, desenleri analiz etmeyi, tehdit arayanı ve daha fazlasını yapabilirsiniz.
 
 Yanıtları otomatikleştirmek için:
 
-1. Yanıtı otomatikleştirmek istediğiniz uyarıyı seçin.
-1. **Gerçek zamanlı otomasyon** **altında, Uyarı Kuralını Edle** sayfasında, bu uyarı kuralı eşleştiğinde çalıştırmak istediğiniz **Tetiklenmiş oyun kitabını** seçin.
-1. **Kaydet'i**seçin.
+1. Yanıtı otomatik hale getirmek istediğiniz uyarıyı seçin.
+1. **Uyarı kuralını Düzenle** sayfasında, **gerçek zamanlı Otomasyon**altında, bu uyarı kuralı eşleştiğinde çalıştırmak istediğiniz **tetiklenen PlayBook** ' u seçin.
+1. **Kaydet**’i seçin.
 
-   ![gerçek zamanlı otomasyon](./media/tutorial-detect-threats/rt-configuration.png)
+   ![gerçek zamanlı Otomasyon](./media/tutorial-detect-threats/rt-configuration.png)
 
 
 
@@ -117,6 +117,6 @@ Yanıtları otomatikleştirmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Azure Sentinel'de bir oyun kitabının nasıl çalıştırılabildiğini öğrendiniz. Azure Sentinel'i kullanarak [tehditleri proaktif olarak nasıl avlayacak](hunting.md) gerektiğini kullanmaya devam edin.
+Bu öğreticide, Azure Sentinel 'de bir PlayBook 'u nasıl çalıştıracağınızı öğrendiniz. Azure Sentinel 'i kullanarak [tehditler için nasıl](hunting.md) proaktif olarak bir çözüm araya geçin.
 
 
