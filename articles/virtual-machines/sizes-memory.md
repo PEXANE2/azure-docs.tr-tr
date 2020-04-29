@@ -1,13 +1,13 @@
 ---
-title: Azure VM boyutları - Bellek | Microsoft Dokümanlar
-description: Azure'daki sanal makineler için kullanılabilen farklı bellek optimize boyutları listeler. VCPUs, veri diskleri ve NIC'lerin sayısı nın yanı sıra bu serideki boyutlar için depolama verime ve ağ bant genişliği hakkındaki bilgileri listeler.
+title: Azure VM boyutları-bellek | Microsoft Docs
+description: Azure 'daki sanal makineler için kullanılabilir olan farklı bellek için iyileştirilmiş boyutları listeler. Bu serideki boyutlarda vCPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines
 documentationcenter: ''
 author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
-keywords: VM izolasyon, izole VM, izolasyon, izole
+keywords: VM yalıtımı, yalıtılmış VM, yalıtım, yalıtılmış
 ms.assetid: ''
 ms.service: virtual-machines
 ms.devlang: na
@@ -16,29 +16,29 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.openlocfilehash: 5a20e9c64b6ef948167333b54b16b34e84dc0e32
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273588"
 ---
-# <a name="memory-optimized-virtual-machine-sizes"></a>Bellek optimize edilmiş sanal makine boyutları
+# <a name="memory-optimized-virtual-machine-sizes"></a>Bellek için iyileştirilmiş sanal makine boyutları
 
-Bellek optimize edilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için mükemmel olan yüksek bellek-CPU oranı sunar. Bu makalede, vCPUs sayısı, veri diskleri ve NIC'ler yanı sıra depolama iş ve ağ bant genişliği bu gruplandırma her boyutu hakkında bilgi sağlar.
+Bellek için iyileştirilmiş VM boyutları, ilişkisel veritabanı sunucuları, orta ve büyük önbellekler ve bellek içi analizler için harika olan yüksek bir bellek-CPU oranı sunar. Bu makalede, bu gruplandırmadaki her bir boyut için sanal CPU sayısı, veri diskleri ve NIC 'lerin yanı sıra depolama aktarım hızı ve ağ bant genişliği hakkında bilgi sağlanır.
 
-- [Dv2 ve DSv2 serisi,](dv2-dsv2-series-memory.md)orijinal D-serisinin devamı, daha güçlü bir Işlemci özellikleri. Dv2 serisi D serisi yaklaşık% 35 daha hızlıdır. Intel Xeon&reg; &reg; 8171M 2.1 GHz (Skylake) veya&reg; Intel&reg; Xeon E5-2673 v4 2.3 GHz&reg; (Broadwell) veya Intel Xeon&reg; E5-2673 v3 2.4 GHz (Haswell) işlemcilerde ve Intel Turbo Boost Technology 2.0 ile çalışır. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- Özgün D serisi için bir takip olan [dv2 ve DSv2 serisi](dv2-dsv2-series-memory.md), daha güçlü bir CPU sunar. Dv2 serisi, D serisinden daha hızlı %35 daha hızlıdır. Intel&reg; Xeon&reg; 8171M 2,1 GHz (ufuk Gölü) veya Intel&reg; Xeon&reg; E5-2673 v4 2,3 GHz (çok iyi) veya Intel&reg; Xeon&reg; E5-2673 v3 2,4 GHz (haswell) işlemcileri üzerinde çalışır ve Intel Turbo Boost Technology 2,0. Dv2 Serisi, D Serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-    Dv2 ve DSv2 serisi, daha hızlı vCPUs, daha iyi geçici depolama performansı veya daha yüksek bellek taleplerine sahip uygulamalar için idealdir. Bu seçenekler birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
+    Dv2 ve DSv2 serisi, daha hızlı vCPU 'Ları, daha iyi geçici depolama performansını talep eden veya daha yüksek bellek taleplerine sahip olan uygulamalar için idealdir. Bu seçenekler birçok kurumsal sınıf uygulama için güçlü bir bileşim sunar.
 
-- [Eav4 ve Easv4 serisi,](eav4-easv4-series.md) AMD'nin 2.35Ghz EPYC<sup>TM</sup> 7452 işlemcisini 256 MB L3 önbelleğe kadar çok iş parçacığı yapılandırmasında kullanarak en çok bellek için optimize edilmiş iş yükünü çalıştırma seçeneklerini artırır. Eav4 serisi ve Easv4 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- [Eav4 ve Easv4 serisi](eav4-easv4-series.md) , en fazla 256 MB boyutlu önbellek kullanan çok iş parçacıklı BIR yapılandırmada AMD 'Nin 2.35 GHz epyıc<sup>TM</sup> 7452 işlemcisini kullanır ve en fazla bellek için iyileştirilmiş iş yüklerini çalıştırmaya yönelik seçenekleri artırır. Eav4-Series ve Easv4 serisi, Ev3 & Esv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
-- [Ev3 ve Esv3](ev3-esv3-series.md) serisi&reg; Intel&reg; Xeon 8171M 2.1 GHz&reg; (Skylake) veya Intel Xeon&reg; E5-2673 v4 2.3 GHz (Broadwell) işlemci, en genel amaçlı iş yükleri için daha iyi bir değer teklifi sağlayan ve diğer birçok bulutun genel amaçlı VM'leri ile uyumlu hale Ev3 getiriyor. Bellek genişletildi (7 GiB/vCPU'dan 8 GiB/vCPU'ya) disk ve ağ sınırları her çekirdek bazında hiper iş parçacığına geçmek üzere ayarlandı. Ev3, D/Dv2 ailelerinin yüksek bellekli VM boyutlarının takibidir.
+- [Ev3 ve Esv3-Series](ev3-esv3-series.md) Intel&reg; &reg; Xeon 8171M 2,1 GHz (ufuk Gölü) veya bir hiper&reg; iş&reg; yükleri için Intel Xeon E5-2673 v4 2,3 GHz (çok iyi) işlemcisi, çoğu genel amaçlı Iş yükleri için daha iyi bir değer teklifi sağlar ve Ev3 diğer birçok bulutun genel amaçlı VM 'leri ile hizalı hale getiriliyor. Bellek ve ağ sınırları, Hyper-Threading ' e geçiş ile hizalamak için, disk ve ağ sınırları her bir çekirdek temelinde ayarlanırken, bellek ve ağ sınırları, her bir çekirdek için bir saniyede ayarlanmışsa (7 GiB/vCPU 'dan 8 GiB Ev3, D/dv2 ailelerinin yüksek bellek sanal makine boyutlarına göre takip edilir.
 
-- [M serisi](m-series.md) yüksek vCPU sayısı (128 vCPUs'a kadar) ve büyük miktarda bellek (3,8 TiB'ye kadar) sunar. Ayrıca, yüksek vCPU sayılarından ve büyük miktarda bellekten yararlanan son derece büyük veritabanları veya diğer uygulamalar için de idealdir.
+- [M serisi](m-series.md) , yüksek bir vCPU sayısı (128 vCPU kadar) ve büyük miktarda bellek (3,8 TİB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için de idealdir.
 
-- [Mv2 serisi,](mv2-series.md) buluttaki herhangi bir VM'nin en yüksek vCPU sayısını (416 vCPUs'a kadar) ve en büyük belleği (11,4 TiB'ye kadar) sunar. Yüksek vCPU sayılarından ve büyük miktarda bellekten yararlanan son derece büyük veritabanları veya diğer uygulamalar için idealdir.
+- [Mv2-Series](mv2-series.md) , buluttaki HERHANGI bir VM 'nin en yüksek vCPU sayısını (416 vCPU 'ya kadar) ve en büyük bellek miktarını (11,4 TİB 'ye kadar) sunar. Son derece büyük veritabanları veya yüksek sanal CPU sayılarından ve büyük miktarda bellekten faydalanabilir diğer uygulamalar için idealdir.
 
-Azure Compute, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Bu sanal makine boyutları, uyumluluk ve mevzuat gereksinimleri gibi öğeleri içeren iş yükleri için diğer müşterilerden yüksek derecede yalıtım gerektiren iş yükleri için en uygundur. Müşteriler ayrıca iç içe sanal makineler için Azure desteğini kullanarak bu Yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölmeyi de [seçebilirler.](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) İzole VM seçenekleriniz için aşağıdaki sanal makine ailelerinin sayfalarına bakın.
+Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Bu sanal makine boyutları, uyumluluk ve mevzuat gereksinimleri gibi öğeleri içeren iş yükleri için diğer müşterilerden yüksek derecede yalıtım gerektiren iş yükleri için idealdir. Müşteriler Ayrıca, [iç içe geçmiş sanal makineler Için Azure desteği](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)'ni kullanarak bu yalıtılmış sanal makinelerin kaynaklarını daha fazla alt bölümlere ayırmak da tercih edebilir. Yalıtılmış VM seçenekleriniz için aşağıdaki sanal makine aileleri sayfalarına bakın.
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
@@ -51,4 +51,4 @@ Azure Compute, belirli bir donanım türüne yalıtılmış ve tek bir müşteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
+Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.

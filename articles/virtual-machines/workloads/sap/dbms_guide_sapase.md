@@ -1,5 +1,5 @@
 ---
-title: SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı | Microsoft Dokümanlar
+title: SAP Ao Azure sanal makineleri SAP iş yükü için DBMS dağıtımı | Microsoft Docs
 description: SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -16,299 +16,299 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273214"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 
-Bu belgede, Azure IaaS'da SAP ASE dağıtılırken göz önünde bulundurulması gereken birkaç farklı alanı kapsamaktadır. Bu belgenin ön koşulu olarak, Azure belgelerinde [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımı](dbms_guide_general.md) için gerekli hususları ve SAP iş [yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzları okumuş olmalısınız. Bu belge, Linux ve Windows İşletim Sistemleri üzerinde çalışan SAP ASE'yi kapsar. Azure'da desteklenen minimum sürüm SAP ASE 16.0.02 'dir (Sürüm 16 Destek Paketi 2). SAP'nin en son sürümünü ve en son Yama Düzeyini dağıtması önerilir.  Minimum SAP ASE 16.0.03.07 (Sürüm 16 Destek Paketi 3 Patch Level 7) önerilir.  SAP'nin en son sürümü [Hedefli ASE 16.0 Yayın Çizelgesi ve CR listesi Bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bulunabilir.
+Bu belgede, Azure IaaS 'de SAP aşırı dağıtıldığında göz önünde bulundurmanız gereken birkaç farklı alanı ele alır. Bu belgeye yönelik bir önkoşul olarak, Azure [sanal makineler Için Azure sanal MAKINELERI DBMS dağıtımı, SAP iş yükü](dbms_guide_general.md) ve diğer kılavuzlar için [Azure belgelerindeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)belge konularını okuduğunuzdan önce göz önünde bulundurmanız gerekir. Bu belgede, Linux ve Windows Işletim sistemlerinde çalışan SAP Ao ele alınmaktadır. Azure 'da desteklenen en düşük sürüm SAP Ade 16.0.02 (sürüm 16 destek paketi 2). En son SAP sürümünü ve en son düzeltme eki düzeyini dağıtmanız önerilir.  En düşük SAP ASE 16.0.03.07 olarak (sürüm 16 destek paketi 3 düzeltme eki düzeyi 7) önerilir.  SAP 'nin en son sürümü [hedeflenen asa 16,0 yayın zamanlaması ve CR liste bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bölümünde bulunabilir.
 
-Sap uygulamaları veya yükleme ortamı konumu ile sürüm desteği hakkında ek bilgiler, bu konumlarda SAP Ürün Kullanılabilirlik Matrisi'nin yanı sıra bulunur:
+SAP uygulamaları veya yükleme medyası konumuyla sürüm desteği hakkında ek bilgiler, bu konumlardaki SAP ürün kullanılabilirliği matrisinin yanı sıra bulunur:
 
-- [SAP destek notu #2134316](https://launchpad.support.sap.com/#/notes/2134316)
-- [SAP destek notu #1941500](https://launchpad.support.sap.com/#/notes/1941500)
-- [SAP destek notu #1590719](https://launchpad.support.sap.com/#/notes/1590719)
-- [SAP destek notu #1973241](https://launchpad.support.sap.com/#/notes/1973241)
+- [SAP destek notunun #2134316](https://launchpad.support.sap.com/#/notes/2134316)
+- [SAP destek notunun #1941500](https://launchpad.support.sap.com/#/notes/1941500)
+- [SAP destek notunun #1590719](https://launchpad.support.sap.com/#/notes/1590719)
+- [SAP destek notunun #1973241](https://launchpad.support.sap.com/#/notes/1973241)
 
-Açıklama: SAP dünyası içinde ve dışında belgeler boyunca, ürünün adı Sybase ASE veya SAP ASE veya bazı durumlarda her ikisi olarak başvurulur. Tutarlı kalmak için bu belgelerde **SAP ASE** adını kullanıyoruz.
+Açıklama: SAP World içindeki ve dışındaki belgelerin tamamında, ürünün adı Sybase Ace veya SAP Ace olarak ya da her ikisinde de başvurulur. Tutarlı kalmak için bu belgelerde **SAP Ace** adını kullanacağız.
 
 ## <a name="operating-system-support"></a>İşletim sistemi desteği
-SAP Ürün Kullanılabilirlik Matrisi, her SAP uygulaması için desteklenen İşletim Sistemi ve SAP Çekirdeği birleşimlerini içerir.  Linux dağıtımları SUSE 12.x, SUSE 15.x, Red Hat 7.x tam olarak desteklenir.  SAP ASE işletim sistemi olarak Oracle Linux desteklenmez.  Mevcut en son Linux sürümlerini kullanmanız önerilir. Windows müşterileri Windows Server 2016 veya Windows Server 2019 sürümlerini kullanmalıdır.  Windows 2012 gibi Windows'un eski sürümleri teknik olarak desteklenir, ancak en son Windows sürümü her zaman önerilir.
+SAP ürün kullanılabilirliği matrisi, her SAP uygulaması için desteklenen Işletim sistemi ve SAP çekirdek birleşimlerini içerir.  Linux dağıtımları SUSE 12. x, SUSE 15. x, Red hat 7. x tam olarak desteklenmektedir.  SAP ATıCı için işletim sistemi olarak Oracle Linux desteklenmez.  Kullanılabilir en son Linux sürümlerinin kullanılması önerilir. Windows müşterileri Windows Server 2016 veya Windows Server 2019 sürümlerini kullanmalıdır.  Windows 2012 gibi eski Windows sürümleri Teknik olarak desteklenmektedir ancak en son Windows sürümü her zaman önerilir.
 
 
-## <a name="specifics-to-sap-ase-on-windows"></a>Windows'da SAP ASE'ye özgü
-Microsoft Azure'dan başlayarak, mevcut SAP ASE uygulamalarınızı Azure Sanal Makineleri'ne geçirebilirsiniz. Azure Sanal Makine'deki SAP ASE, bu uygulamaları Microsoft Azure'a kolayca geçirerek dağıtım, yönetim ve kurumsal genişlik uygulamalarının toplam sahip olma maliyetini azaltmanızı sağlar. Bir Azure Sanal Makinesi'ndeki SAP ASE ile yöneticiler ve geliştiriciler şirket içinde kullanılabilen aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
+## <a name="specifics-to-sap-ase-on-windows"></a>Windows üzerinde SAP Ao 'nun özellikleri
+Microsoft Azure başlayarak, mevcut SAP Ao uygulamalarınızı Azure sanal makinelerine geçirebilirsiniz. Bir Azure sanal makinesinde SAP ASE, bu uygulamaları kolayca Microsoft Azure bir şekilde geçirerek kurumsal ayırt edilen uygulamaların dağıtım, yönetim ve bakımının toplam maliyetini düşürmenizi sağlar. Bir Azure sanal makinesinde SAP Ao ile yöneticiler ve geliştiriciler, şirket içinde bulunan aynı geliştirme ve yönetim araçlarını kullanmaya devam edebilir.
 
-Microsoft Azure, en küçük SAP sistemlerini ve manzaralarını binlerce kullanıcıyla birlikte büyük SAP sistemlerine ve manzaralara kadar çalıştırmanızı sağlayan çok sayıda farklı sanal makine türü sunar. Sap boyutlandırma SAPS numaraları farklı SAP sertifikalı VM SKUs [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533)sağlanır.
+Microsoft Azure, en küçük SAP sistemlerini ve ıdscapes 'yi binlerce kullanıcıyla büyük SAP sistemlerine ve Langes 'ye kadar olan çok sayıda farklı sanal makine türü sunar. SAP, farklı SAP sertifikalı VM SKU 'Larının numaralarını SAP [destek not#1928533](https://launchpad.support.sap.com/#/notes/1928533)olarak sunulmaktadır.
 
-SAP ASE'yi Windows'a yüklemek için belgeler [SAP ASE Yükleme Kılavuzu'nda](https://help.sap.com/viewer/36031975851a4f82b1022a9df877280b/16.0.3.7/en-US/a660d3f1bc2b101487cbdbf10069c3ac.html) bulunabilir
+Windows 'da SAP Ace 'yi yükleme belgeleri [Windows Için SAP Ace yükleme kılavuzunda](https://help.sap.com/viewer/36031975851a4f82b1022a9df877280b/16.0.3.7/en-US/a660d3f1bc2b101487cbdbf10069c3ac.html) bulunabilir.
 
-Sayfaları Bellekte Kilitle, SAP ASE veritabanı arabellesinin çağrı dışı olmasını engelleyecek bir ayardır.  Bu ayar, çok fazla belleğe sahip büyük meşgul sistemler için yararlıdır. Daha fazla bilgi için BC-DB-SYB ile iletişime geçin. 
+Bellek üzerindeki kilit sayfaları, SAP Ao veritabanı arabelleğinin sayfalanmasını engelleyecek bir ayardır.  Bu ayar, çok fazla bellek içeren büyük meşgul sistemler için yararlıdır. Daha fazla bilgi için BC-DB-SYB ile iletişim kurun. 
 
 
-## <a name="linux-operating-system-specific-settings"></a>Linux işletim sistemi belirli ayarları
-Linux VM'lerde, SAP-ASE Linux Huge Pages profiliyle çalıştırılan `saptune` lar varsayılan olarak etkinleştirilmeli ve komutla doğrulanabilir  
+## <a name="linux-operating-system-specific-settings"></a>Linux işletim sistemine özgü ayarlar
+Linux VM 'lerde, profil `saptune` SAP ile ÇALıŞTıRıN-Ao Linux büyük sayfaları varsayılan olarak etkinleştirilmelidir ve komutla doğrulanabilir  
 
 `cat /proc/meminfo` 
 
-Sayfa boyutu genellikle 2048 KB'dir. Ayrıntılar için [Linux'ta](https://help.sap.com/viewer/ecbccd52e7024feaa12f4e780b43bc3b/16.0.3.7/en-US/a703d580bc2b10149695f7d838203fad.html) Büyük Sayfalar makalesine bakın 
+Sayfa boyutu genellikle 2048 KB 'tır. Ayrıntılar için bkz. [Linux 'ta çok büyük sayfalar](https://help.sap.com/viewer/ecbccd52e7024feaa12f4e780b43bc3b/16.0.3.7/en-US/a703d580bc2b10149695f7d838203fad.html) makalesi 
 
 
-## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ASE dağıtımları için VM ve disk yapısı yla ilgili öneriler
+## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ate dağıtımları için VM ve disk yapısına yönelik öneriler
 
-SAP NetWeaver Uygulamaları için SAP ASE, SAP destek [notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir VM türünde desteklenir #1928533 orta ölçekli SAP ASE veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük çok terabaytlı veritabanları M serisi VM türlerinden yararlanabilir. SAP ASE işlem günlüğü disk yazma performansı M serisi Yazma Hızlandırıcısı etkinleştirilerek geliştirilebilir. Yazma Hızlandırıcısı, SAP ASE'nin Log Writes'ı gerçekleştirme şekli nedeniyle SAP ASE ile dikkatle test edilmelidir.  [SAP destek notunu #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) gözden geçirin ve bir performans testi çalıştırmayı düşünün.  
-Yazma Hızlandırıcı yalnızca işlem günlüğü diski için tasarlanmıştır. Disk düzeyi önbelleği NONE olarak ayarlanmalıdır. Azure Yazma Hızlandırıcısı diğer DBMS'lerde olduğu gibi benzer iyileştirmeler göstermiyorsa şaşırmayın. SAP ASE'nin işlem günlüğüne yazdığı şekilden yola çıkarak, Azure Yazma Hızlandırıcısı'nın çok az veya hiç ivmelenmemesi olabilir.
-Veri aygıtları ve Günlük Aygıtları için ayrı diskler önerilir.  Sistem veritabanları sybsecurity `saptools` ve özel diskler gerektirmez ve SAP veritabanı verileri ve günlük aygıtları içeren diskler yerleştirilebilir 
+SAP NetWeaver uygulamaları için SAP Ao, SAP [destek notunda](https://launchpad.support.sap.com/#/notes/1928533) listelenen herhangi bir sanal makine türü için desteklenir #1928533 orta büyüklükte SAP Ao veritabanı sunucuları için kullanılan tipik VM türleri Esv3 içerir.  Büyük multi-terabaytlık veritabanları, d serisi VM türlerinden faydalanabilir. SAP Ao işlem günlüğü diski yazma performansı, M serisi Yazma Hızlandırıcısı etkinleştirilerek artırılabilir. SAP ASE 'nin günlük yazma Işlemlerini gerçekleştirme yöntemi nedeniyle Yazma Hızlandırıcısı, SAP ASE ile dikkatle test edilmelidir.  [Sap destek notuna #2816580](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator) inceleyin ve bir performans testi çalıştırmayı deneyin.  
+Yazma Hızlandırıcısı yalnızca işlem günlüğü diski için tasarlanmıştır. Disk düzeyi önbelleği NONE olarak ayarlanmalıdır. Azure Yazma Hızlandırıcısı diğer DBMS ile benzer iyileştirmeler göstermezse şaşırmayın. SAP ATıCı 'in işlem günlüğüne yazdığı yönteme bağlı olarak, Azure Yazma Hızlandırıcısı tarafından hiçbir hızlandırma olmaması olabilir.
+Veri cihazları ve günlük cihazları için ayrı diskler önerilir.  Sistem veritabanları sybgüvenlik ve `saptools` adanmış diskler gerektırmez ve SAP veritabanı verilerini ve günlük cihazlarını içeren disklere yerleştirilebilecek 
 
-![SAP ASE için depolama yapılandırması](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
+![SAP ATıCı için depolama yapılandırması](./media/dbms-guide-sap-ase/sap-ase-disk-structure.png)
 
-### <a name="file-systems-stripe-size--io-balancing"></a>Dosya sistemleri, şerit boyutu & IO dengeleme 
-SAP ASE, aksi yapılandırılmadığı sürece verileri disk depolama aygıtlarına sırayla yazar. Bu, dört aygıtiçeren boş bir SAP ASE veritabanının yalnızca ilk aygıta veri yazacağı anlamına gelir.  Diğer disk aygıtları yalnızca ilk aygıt dolduğunda yazılır.  Her SAP ASE aygıtına READ ve WRITE IO miktarı nın farklı olması olasıdır. Disk IO'yu kullanılabilir tüm Azure diskleri arasında dengelemek için Windows Depolama Alanları veya Linux LVM2'nin kullanılması gerekir. Linux'ta diskleri biçimlendirmek için XFS dosya sisteminin kullanılması önerilir. LVM şerit boyutu bir performans testi ile test edilmelidir. 128 KB şerit boyutu iyi bir başlangıç noktasıdır. Windows'da NTFS Ayırma Birimi Boyutu (AUS) sınanmalıdır. 64 KB başlangıç değeri olarak kullanılabilir. 
+### <a name="file-systems-stripe-size--io-balancing"></a>Dosya sistemleri, şeritli boyut & GÇ Dengeleme 
+SAP ASE, aksi belirtilmedikçe verileri disk depolama cihazlarına sırayla yazar. Bu, dört cihazdan oluşan boş bir SAP Ao veritabanının yalnızca ilk cihaza veri yazacağı anlamına gelir.  Diğer disk cihazları yalnızca ilk cihaz dolduğunda yazılır.  Her SAP Ao cihazına yönelik okuma ve yazma GÇ miktarı büyük olasılıkla farklı olabilir. Tüm kullanılabilir Azure disklerinde disk GÇ 'yi dengelemek için Windows depolama alanları veya Linux LVM2 kullanılması gerekir. Linux 'ta, diskleri biçimlendirmek için XFS dosya sisteminin kullanılması önerilir. LVM Stripe boyutu bir performans testiyle test edilmelidir. 128 KB şeritli boyut iyi bir başlangıç noktasıdır. Windows 'da, NTFS ayırma birimi boyutu (Avustralya) test edilmelidir. 64 KB, başlangıç değeri olarak kullanılabilir. 
 
-[SAP Adaptive Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) ve SAP destek notu [#1815695](https://launchpad.support.sap.com/#/notes/1815695)Otomatik Veritabanı Alanı Genişletme Yapılandırma makalede açıklandığı gibi Otomatik Veritabanı Genişletme yapılandırmak için önerilir. 
+Otomatik veritabanı genişletmesinin, SAP Uyarlamalı sunucu Enterprise ve [sap desteği not#1815695](https://launchpad.support.sap.com/#/notes/1815695) [otomatik veritabanı alanı genişletmeyi yapılandırma](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) makalesinde açıklandığı şekilde yapılandırılması önerilir. 
 
-### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure sanal makine, disk ve dosya sistemi yapılandırmalarında SAP ASE örneği 
-Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırmaları gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, tek tek VM'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin VM'ye ekilebilen farklı maksimum disk sayısına sahip olduğunu da unutmayın. Örneğin, bir E4s_v3 VM'nin limit48 MB/sn depolama IO iş birliği vardır. Veritabanı yedekleme etkinliği tarafından gerekli depolama iştimi 48 MB/sn'den fazla gerektiriyorsa, daha fazla depolama bant genişliği elde ine sahip daha büyük bir VM türü kaçınılmazdır. Azure depolama alanını yapılandırırken, özellikle [Azure Premium depolama](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) ile GB kapasite başına iş ve IOPS'nin değiştiğini de aklınızdan korumanız gerekir. Makalede bu konuda daha fazla bilgi için [Azure'da hangi disk türleri kullanılabilir?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types) Belirli Azure VM türlerine yönelik kotalar, Bellek tarafından [optimize edilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) ve ona bağlı makaleler makalesinde belgelenmiştir. 
-
-> [!NOTE]
->  Bir DBMS sistemi şirket içinde Azure'a taşınıyorsa, VM'de izleme gerçekleştirmesi ve CPU, bellek, IOPS ve depolama işbretini değerlendirmesi önerilir. Yukarıda belirtilen makalelerde belgelenen VM kota limitleri ile gözlenen tepe değerlerini karşılaştırın
-
-Aşağıda verilen örnekler açıklayıcı amaçlar içindir ve bireysel ihtiyaçlara göre değiştirilebilir. SAP ASE'nin tasarımı nedeniyle, veri aygıtlarının sayısı diğer veritabanları kadar kritik değildir. Bu belgede ayrıntılı veri aygıtlarının sayısı yalnızca bir kılavuzdur. 
-
-50 GB - 250 GB arasında bir veritabanı boyutu ile küçük bir SAP ASE DB Sunucusu için bir yapılandırma örneği, SAP çözüm Yöneticisi gibi görünebilir
-
-| Yapılandırma | Windows | Linux | Yorumlar |
-| --- | --- | --- | --- |
-| VM Tipi | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
-| # veri cihazları | 4 | 4 | ---|
-| # günlük cihazlar | 1 | 1 | --- |
-| # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
-| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 veya RHEL 7.6 | --- |
-| Disk toplama | Depolama Alanları | LVM2 | --- |
-| Dosya sistemi | NTFS | XFS |
-| Blok boyutunu biçimlendirme | iş yükü testi ne ihtiyacı var | iş yükü testi ne ihtiyacı var | --- |
-| # ve veri disklerinin türü | Premium depolama alanı: 2 x P10 (RAID0) | Premium depolama alanı: 2 x P10 (RAID0)| Önbellek = Yalnızca Oku |
-| # ve günlük disklerinin türü | Premium depolama: 1 x P20  | Premium depolama: 1 x P20 | Önbellek = YOK |
-| ASE MaxMemory parametresi | Fiziksel RAM'in %90'ı | Fiziksel RAM'in %90'ı | tek örnek varsayarak |
-| # yedek cihazlar | 4 | 4| --- |
-| # ve yedekleme disklerinin türü | 1 | 1 | --- |
-
-
-Daha küçük bir SAP Business Suite sistemi gibi 250 GB – 750 GB arasında bir veritabanı boyutuna sahip orta bir SAP ASE DB Sunucusu için bir yapılandırma örneği,
-
-| Yapılandırma | Windows | Linux | Yorumlar |
-| --- | --- | --- | --- |
-| VM Tipi | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
-| # veri cihazları | 8 | 8 | ---|
-| # günlük cihazlar | 1 | 1 | --- |
-| # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
-| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 veya RHEL 7.6 | --- |
-| Disk toplama | Depolama Alanları | LVM2 | --- |
-| Dosya sistemi | NTFS | XFS |
-| Blok boyutunu biçimlendirme | iş yükü testi ne ihtiyacı var | iş yükü testi ne ihtiyacı var | --- |
-| # ve veri disklerinin türü | Premium depolama alanı: 4 x P20 (RAID0) | Premium depolama alanı: 4 x P20 (RAID0)| Önbellek = Yalnızca Oku |
-| # ve günlük disklerinin türü | Premium depolama: 1 x P20  | Premium depolama: 1 x P20 | Önbellek = YOK |
-| ASE MaxMemory parametresi | Fiziksel RAM'in %90'ı | Fiziksel RAM'in %90'ı | tek örnek varsayarak |
-| # yedek cihazlar | 4 | 4| --- |
-| # ve yedekleme disklerinin türü | 1 | 1 | --- |
-
-Daha büyük bir SAP Business Suite sistemi gibi 750 GB – 2000 GB arasında bir veritabanı boyutuna sahip küçük bir SAP ASE DB Sunucusu için bir yapılandırma örneği,
-
-| Yapılandırma | Windows | Linux | Yorumlar |
-| --- | --- | --- | --- |
-| VM Tipi | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
-| # veri cihazları | 16 | 16 | ---|
-| # günlük cihazlar | 1 | 1 | --- |
-| # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
-| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 veya RHEL 7.6 | --- |
-| Disk toplama | Depolama Alanları | LVM2 | --- |
-| Dosya sistemi | NTFS | XFS |
-| Blok boyutunu biçimlendirme | iş yükü testi ne ihtiyacı var | iş yükü testi ne ihtiyacı var | --- |
-| # ve veri disklerinin türü | Premium depolama alanı: 4 x P30 (RAID0) | Premium depolama alanı: 4 x P30 (RAID0)| Önbellek = Yalnızca Oku |
-| # ve günlük disklerinin türü | Premium depolama: 1 x P20  | Premium depolama: 1 x P20 | Önbellek = YOK |
-| ASE MaxMemory parametresi | Fiziksel RAM'in %90'ı | Fiziksel RAM'in %90'ı | tek örnek varsayarak |
-| # yedek cihazlar | 4 | 4| --- |
-| # ve yedekleme disklerinin türü | 1 | 1 | --- |
-
-
-Daha büyük bir küresel olarak kullanılan SAP Business Suite sistemi gibi 2 TB+ veritabanı boyutuna sahip küçük bir SAP ASE DB Sunucusu için bir yapılandırma örneği,
-
-| Yapılandırma | Windows | Linux | Yorumlar |
-| --- | --- | --- | --- |
-| VM Tipi | M Serisi (1,0 - 4,0 TB RAM)  | M Serisi (1,0 - 4,0 TB RAM) | --- |
-| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
-| # veri cihazları | 32 | 32 | ---|
-| # günlük cihazlar | 1 | 1 | --- |
-| # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
-| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/ 15 SP1 veya RHEL 7.6 | --- |
-| Disk toplama | Depolama Alanları | LVM2 | --- |
-| Dosya sistemi | NTFS | XFS |
-| Blok boyutunu biçimlendirme | iş yükü testi ne ihtiyacı var | iş yükü testi ne ihtiyacı var | --- |
-| # ve veri disklerinin türü | Premium depolama alanı: 4+ x P30 (RAID0) | Premium depolama alanı: 4+ x P30 (RAID0)| Önbellek = Salt Okunur, Azure Ultra diskini düşünün |
-| # ve günlük disklerinin türü | Premium depolama: 1 x P20  | Premium depolama: 1 x P20 | Önbellek = YOK, Azure Ultra diski düşünün |
-| ASE MaxMemory parametresi | Fiziksel RAM'in %90'ı | Fiziksel RAM'in %90'ı | tek örnek varsayarak |
-| # yedek cihazlar | 16 | 16 | --- |
-| # ve yedekleme disklerinin türü | 4 | 4 | LVM2/Depolama Alanlarını Kullanma |
-
-
-### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Yedekleme & Azure'da SAP ASE için dikkatleri geri yükleme
-Veri ve yedekleme aygıtlarının sayısını artırmak yedekleme ve performansı geri yüklemeyi artırır. SAP ASE yedekleme aygıtını barındıran Azure disklerini daha önce gösterilen tablolarda gösterildiği gibi şeritle göstermenizi önerilir. Yedekleme aygıtları ve disklerinin sayısını dengelemeye ve yedekleme iş kısmının toplam VM iş meseninin %40-50'sini aşmamasını sağlamaya özen denmelidir. Varsayılan olarak SAP Yedekleme Sıkıştırma'nın kullanılması önerilir. Daha fazla bilgi makalelerde bulunabilir:
-
-- [SAP destek notu #1588316](https://launchpad.support.sap.com/#/notes/1588316)
-- [SAP destek notu #1801984](https://launchpad.support.sap.com/#/notes/1801984)
-- [SAP destek notu #1585981](https://launchpad.support.sap.com/#/notes/1585981) 
-
-Sürücü D kullanmayın:\ veya /temp space veritabanı veya günlük dökümü hedef olarak.
-
-### <a name="impact-of-database-compression"></a>Veritabanı sıkıştırma etkisi
-G/Ç bant genişliğinin sınırlayıcı bir faktör haline gelebileceği yapılandırmalarda, IOPS'yi azaltan ölçüler, Azure gibi bir IaaS senaryosunda çalıştırılabilecek iş yükünü n için genişletmeye yardımcı olabilir. Bu nedenle, varolan bir SAP veritabanını Azure'a yüklemeden önce SAP ASE sıkıştırmanın kullanıldığından emin olmak önerilir.
-
-Azure'a yüklemeden önce sıkıştırma uygulama önerisi çeşitli nedenlerden dolayı verilmiştir:
-
-* Azure'a yüklenecek veri miktarı daha düşüktür
-* Sıkıştırma yürütme süresi, daha fazla CPU veya daha yüksek G/Ç bant genişliği veya daha az G/Ç gecikmesi ile daha güçlü donanım kullanabileceğini varsayarsak daha kısadır
-* Daha küçük veritabanı boyutları, disk ayırma için daha az maliyete neden olabilir
-
-Veri ve LOB Sıkıştırma, azure sanal makinelerinde barındırılan bir VM'de şirket içinde olduğu gibi çalışır. Varolan bir SAP ASE veritabanında sıkıştırmanın zaten kullanIlip kullanılmadığını nasıl denetlenebildiğiniz hakkında daha fazla bilgi için [SAP destek notu 1750510'u](https://launchpad.support.sap.com/#/notes/1750510)işaretleyin. SAP ASE veritabanı sıkıştırma denetimi [SAP destek notu #2121797](https://launchpad.support.sap.com/#/notes/2121797) hakkında daha fazla bilgi için
-
-## <a name="high-availability-of-sap-ase-on-azure"></a>Azure'da SAP ASE'nin yüksek kullanılabilirliği 
-HADR Kullanıcıları Kılavuzu, 2 düğüm SAP ASE "Her zaman anına" çözümünün kurulum ve yapılandırmasını ayrıntılarıyla anlatır.  Buna ek olarak, üçüncü bir olağanüstü durum kurtarma düğümü de desteklenir. SAP ASE paylaşılan disk ve yerel işletim sistemi kümeleme (kayan IP) dahil olmak üzere birçok Yüksek Kullanılabilir yapılandırmaları destekler. Azure'da desteklenen tek yapılandırma, Floating IP olmadan Hata Yöneticisi kullanmaktır.  Kayan IP Adresi yöntemi Azure'da çalışmaz.  SAP Çekirdeği bir "HA Aware" uygulamasıdır ve birincil ve ikincil SAP ASE sunucularını bilir. SAP ASE ile Azure arasında yakın tümleştirme yoktur, Azure Dahili yük dengeleyicisi kullanılmaz. Bu nedenle, standart SAP ASE belgeleri [SAP ASE HADR Kullanıcı Kılavuzu](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) ile başlayarak takip edilmelidir 
+### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure sanal makinesi, disk ve dosya sistemi yapılandırmalarında örnek SAP Ao 
+Aşağıdaki şablonlar hem Linux hem de Windows için örnek yapılandırma gösterir. Sanal makine ve disk yapılandırmasını onaylamadan önce, bireysel VM 'nin ağ ve depolama bant genişliği kotalarının iş gereksinimini karşılamak için yeterli olduğundan emin olun. Ayrıca, farklı Azure VM türlerinin, VM 'ye eklenebilecek farklı disk sayısı üst sınırına sahip olduğunu aklınızda bulundurun. Örneğin, bir E4s_v3 VM 48 MB/sn depolama GÇ işleme sınırına sahiptir. Veritabanı yedekleme etkinliği için gereken depolama aktarım hızı 48 MB/sn 'den fazla talep isterse, daha fazla depolama bant genişliği işleme içeren daha büyük bir VM türü kaçınılmaz. Azure depolama 'yı yapılandırırken, özellikle de [Azure Premium Depolama](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance) ile GB 'lık kapasite başına aktarım hızı ve IOPS 'nin değişiklik olduğunu göz önünde bulundurmanız gerekir. Bu konuda daha fazla bilgi için bkz. [Azure 'da disk türleri kullanılabilir](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types). Belirli Azure VM türleri için kotalar, [bellek için iyileştirilmiş sanal makine boyutları](https://docs.microsoft.com/azure/virtual-machines/sizes-memory) ve bu makaleye bağlı makalelerde belgelenmiştir. 
 
 > [!NOTE]
-> Azure'da desteklenen tek yapılandırma, Floating IP olmadan Hata Yöneticisi kullanmaktır.  Kayan IP Adresi yöntemi Azure'da çalışmaz. 
+>  Bir DBMS sistemi Şirket içinden Azure 'a taşınırsa, sanal makine üzerinde izleme yapmanız ve CPU, bellek, ıOPS ve depolama aktarım hızını değerlendirmek önerilir. Yukarıda bahsedilen makalelerde belgelenen VM kota limitleriyle gözlemlenen en yüksek değerleri karşılaştırın
+
+Aşağıda verilen örnekler tanım amaçlıdır ve bireysel gereksinimlere göre değiştirilebilir. SAP Ao 'nun tasarımı nedeniyle, veri cihazlarının sayısı diğer veritabanlarında olduğu kadar kritik değildir. Bu belgede ayrıntılı olarak açıklanan veri cihazlarının sayısı yalnızca bir kılavuzdur. 
+
+SAP Solution Manager gibi 50 GB – 250 GB arasında bir veritabanı boyutu içeren küçük bir SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
+
+| Yapılandırma | Windows | Linux | Açıklamalar |
+| --- | --- | --- | --- |
+| VM türü | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
+| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
+| veri cihazlarının sayısı | 4 | 4 | ---|
+| günlük cihazlarının sayısı | 1 | 1 | --- |
+| geçici cihaz sayısı | 1 | 1 | SAP BW iş yükü için daha fazla |
+| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/15 SP1 veya RHEL 7,6 | --- |
+| Disk toplama | Depolama Alanları | LVM2 | --- |
+| Dosya sistemi | NTFS | XFS |
+| Biçim blok boyutu | iş yükü testi gerekiyor | iş yükü testi gerekiyor | --- |
+| # ve veri disklerinin türü | Premium Depolama: 2 x P10 (RAID0) | Premium Depolama: 2 x P10 (RAID0)| Cache = salt okunurdur |
+| # ve günlük disklerinin türü | Premium Depolama: 1 x P20  | Premium Depolama: 1 x P20 | Önbellek = yok |
+| ATıCı MaxMemory parametresi | Fiziksel RAM %90 | Fiziksel RAM %90 | tek örnek varsayılıyor |
+| Yedekleme cihazlarının sayısı | 4 | 4| --- |
+| Yedekleme disklerinin sayısı ve türü | 1 | 1 | --- |
+
+
+Daha küçük bir SAP Business Suite sistemi gibi 250 GB – 750 GB arasında bir veritabanı boyutu olan orta SAP AAS DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
+
+| Yapılandırma | Windows | Linux | Açıklamalar |
+| --- | --- | --- | --- |
+| VM türü | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
+| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
+| veri cihazlarının sayısı | 8 | 8 | ---|
+| günlük cihazlarının sayısı | 1 | 1 | --- |
+| geçici cihaz sayısı | 1 | 1 | SAP BW iş yükü için daha fazla |
+| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/15 SP1 veya RHEL 7,6 | --- |
+| Disk toplama | Depolama Alanları | LVM2 | --- |
+| Dosya sistemi | NTFS | XFS |
+| Biçim blok boyutu | iş yükü testi gerekiyor | iş yükü testi gerekiyor | --- |
+| # ve veri disklerinin türü | Premium Depolama: 4 x P20 (RAID0) | Premium Depolama: 4 x P20 (RAID0)| Cache = salt okunurdur |
+| # ve günlük disklerinin türü | Premium Depolama: 1 x P20  | Premium Depolama: 1 x P20 | Önbellek = yok |
+| ATıCı MaxMemory parametresi | Fiziksel RAM %90 | Fiziksel RAM %90 | tek örnek varsayılıyor |
+| Yedekleme cihazlarının sayısı | 4 | 4| --- |
+| Yedekleme disklerinin sayısı ve türü | 1 | 1 | --- |
+
+Daha büyük bir SAP Business Suite sistemi gibi 750 GB – 2000 GB arasında bir veritabanı boyutu içeren küçük bir SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
+
+| Yapılandırma | Windows | Linux | Açıklamalar |
+| --- | --- | --- | --- |
+| VM türü | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
+| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
+| veri cihazlarının sayısı | 16 | 16 | ---|
+| günlük cihazlarının sayısı | 1 | 1 | --- |
+| geçici cihaz sayısı | 1 | 1 | SAP BW iş yükü için daha fazla |
+| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/15 SP1 veya RHEL 7,6 | --- |
+| Disk toplama | Depolama Alanları | LVM2 | --- |
+| Dosya sistemi | NTFS | XFS |
+| Biçim blok boyutu | iş yükü testi gerekiyor | iş yükü testi gerekiyor | --- |
+| # ve veri disklerinin türü | Premium Depolama: 4 x P30 (RAID0) | Premium Depolama: 4 x P30 (RAID0)| Cache = salt okunurdur |
+| # ve günlük disklerinin türü | Premium Depolama: 1 x P20  | Premium Depolama: 1 x P20 | Önbellek = yok |
+| ATıCı MaxMemory parametresi | Fiziksel RAM %90 | Fiziksel RAM %90 | tek örnek varsayılıyor |
+| Yedekleme cihazlarının sayısı | 4 | 4| --- |
+| Yedekleme disklerinin sayısı ve türü | 1 | 1 | --- |
+
+
+Daha büyük bir genel olarak kullanılan SAP Business Suite sistemi gibi bir veritabanı boyutu 2 TB + olan küçük SAP Ao DB sunucusu için bir yapılandırmaya örnek olarak benzeyebilir
+
+| Yapılandırma | Windows | Linux | Açıklamalar |
+| --- | --- | --- | --- |
+| VM türü | A serisi (1,0-4,0 TB RAM)  | A serisi (1,0-4,0 TB RAM) | --- |
+| Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
+| SAP ATıCı sürümü | 16.0.03.07 veya üzeri | 16.0.03.07 veya üzeri | --- |
+| veri cihazlarının sayısı | 32 | 32 | ---|
+| günlük cihazlarının sayısı | 1 | 1 | --- |
+| geçici cihaz sayısı | 1 | 1 | SAP BW iş yükü için daha fazla |
+| İşletim sistemi | Windows Server 2019 | SUSE 12 SP4/15 SP1 veya RHEL 7,6 | --- |
+| Disk toplama | Depolama Alanları | LVM2 | --- |
+| Dosya sistemi | NTFS | XFS |
+| Biçim blok boyutu | iş yükü testi gerekiyor | iş yükü testi gerekiyor | --- |
+| # ve veri disklerinin türü | Premium Depolama: 4 + x P30 (RAID0) | Premium Depolama: 4 + x P30 (RAID0)| Önbellek = salt okuma, Azure Ultra disk 'i düşünün |
+| # ve günlük disklerinin türü | Premium Depolama: 1 x P20  | Premium Depolama: 1 x P20 | Önbellek = yok, Azure Ultra disk 'i düşünün |
+| ATıCı MaxMemory parametresi | Fiziksel RAM %90 | Fiziksel RAM %90 | tek örnek varsayılıyor |
+| Yedekleme cihazlarının sayısı | 16 | 16 | --- |
+| Yedekleme disklerinin sayısı ve türü | 4 | 4 | LVM2/Storage alanlarını kullanma |
+
+
+### <a name="backup--restore-considerations-for-sap-ase-on-azure"></a>Azure 'da SAP Ao 'da yedekleme & geri yükleme konuları
+Veri ve yedekleme cihazlarının sayısını artırmak, yedekleme ve geri yükleme performansını artırır. Daha önce gösterilen tablolarda gösterildiği gibi, SAP ASE yedekleme cihazını barındıran Azure disklerinin dizili olması önerilir. Yedekleme cihazlarının ve disklerin sayısını dengelemek ve yedek verimlilik 'in toplam VM üretilen iş kotasının %40 ' ını (%50) aşmadığından emin olmak için dikkatli olunmalıdır. SAP yedekleme sıkıştırması varsayılan olarak kullanılması önerilir. Makalelerde daha fazla ayrıntı bulabilirsiniz:
+
+- [SAP destek notunun #1588316](https://launchpad.support.sap.com/#/notes/1588316)
+- [SAP destek notunun #1801984](https://launchpad.support.sap.com/#/notes/1801984)
+- [SAP destek notunun #1585981](https://launchpad.support.sap.com/#/notes/1585981) 
+
+D:\ sürücüsünü kullanma ya da veritabanı ya da günlük dökümü hedefi olarak/Temp klasörüne yazılır Space.
+
+### <a name="impact-of-database-compression"></a>Veritabanı sıkıştırmasının etkisi
+G/ç bant genişliğinin sınırlama faktörü olabileceği yapılandırmalarda, ıOPS 'yi azaltan ölçümler, Azure gibi bir IaaS senaryosunda çalışan iş yükünü uzatmak için yardımcı olabilir. Bu nedenle, mevcut bir SAP veritabanını Azure 'a yüklemeden önce SAP ASE sıkıştırması 'nın kullanıldığından emin olmanız önerilir.
+
+Azure 'a yüklemeden önce sıkıştırmayı uygulama önerisi çeşitli nedenlerden dolayı verilmiştir:
+
+* Azure 'a yüklenecek veri miktarı düşüktür
+* Sıkıştırma yürütmesinin süresi, bir birinin daha fazla CPU veya daha yüksek g/ç bant genişliği veya şirket içi g/ç gecikme süresiyle daha güçlü donanımlar kullanmasına olanak daha kısadır
+* Daha küçük veritabanı boyutları disk ayırma için daha az maliyete yol açabilir
+
+Veri ve LOB sıkıştırma, şirket içinde çalıştığı gibi Azure sanal makinelerinde barındırılan bir VM 'de çalışır. Sıkıştırmanın mevcut bir SAP Ao veritabanında zaten kullanımda olup olmadığını denetleme hakkında daha fazla bilgi için [sap destek notuna 1750510](https://launchpad.support.sap.com/#/notes/1750510)bakın. SAP Ao veritabanı sıkıştırması hakkında daha fazla ayrıntı için [sap destek notuna bakın #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+
+## <a name="high-availability-of-sap-ase-on-azure"></a>Azure 'da SAP ASE 'nin yüksek kullanılabilirliği 
+HADR kullanıcıları Kılavuzu, 2 düğümlü SAP ASE "her zaman açık" çözümünün kurulumunu ve yapılandırmasını ayrıntılarıyla gösterir.  Ayrıca, üçüncü bir olağanüstü durum kurtarma düğümü de desteklenir. SAP ASE, paylaşılan disk ve yerel işletim sistemi Kümelemesi (kayan IP) dahil olmak üzere çok sayıda kullanılabilir yapılandırmayı destekler. Azure 'daki tek desteklenen yapılandırma, kayan IP olmadan hata Yöneticisi kullanıyor.  Kayan IP adresi yöntemi Azure 'da çalışmayacak.  SAP Kernel, "HA duyarlı" bir uygulamadır ve birincil ve ikincil SAP Ao sunucuları hakkında bilgi sahibi olur. SAP asa ve Azure arasında hiç tümleştirme yoktur, Azure Iç yük dengeleyici kullanılmaz. Bu nedenle, standart SAP Ao belgelerinin ardından [SAP Ao HADR kullanıcıları kılavuzuyla](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) başlaması gerekir 
+
+> [!NOTE]
+> Azure 'daki tek desteklenen yapılandırma, kayan IP olmadan hata Yöneticisi kullanıyor.  Kayan IP adresi yöntemi Azure 'da çalışmayacak. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Olağanüstü durum kurtarma için üçüncü düğüm
-Yerel yüksek kullanılabilirlik için SAP ASE Always-On'u kullanmanın ötesinde, yapılandırmayı başka bir Azure bölgesinde eşzamanlı olarak çoğaltılan bir düğüme genişletmek isteyebilirsiniz. Böyle bir senaryo için dokümantasyon [burada](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)bulabilirsiniz.
+Yerel yüksek kullanılabilirlik için SAP ASE 'yi her zaman açık olarak kullanmanın ötesinde, yapılandırmayı başka bir Azure bölgesindeki zaman uyumsuz olarak çoğaltılan bir düğüme genişletmek isteyebilirsiniz. Böyle bir senaryoya yönelik belgeler [burada](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)bulunabilir.
 
-## <a name="sap-ase-database-encryption--ssl"></a>SAP ASE veritabanı şifreleme & SSL 
-SAP Yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını şifreleme seçeneği sunar.  Şifreleme kullanmak istiyorsanız, SAP Tam Veritabanı Şifrelemesi kullanılması önerilir.  Belgelenen ayrıntılara bakın:
+## <a name="sap-ase-database-encryption--ssl"></a>SAP Ao veritabanı şifreleme & SSL 
+SAP yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını şifrelemek için bir seçenek sunar.  Şifrelemeyi kullanmak istiyorsanız, SAP tam veritabanı şifrelemesini kullanmanız önerilir.  Şu belgelerde belgelenen ayrıntılara bakın:
 
-- [SAP destek notu #2556658](https://launchpad.support.sap.com/#/notes/2556658)
-- [SAP destek notu #2224138](https://launchpad.support.sap.com/#/notes/2224138)
-- [SAP destek notu #2401066](https://launchpad.support.sap.com/#/notes/2401066)
-- [SAP destek notu #2593925](https://launchpad.support.sap.com/#/notes/2593925) 
+- [SAP destek notunun #2556658](https://launchpad.support.sap.com/#/notes/2556658)
+- [SAP destek notunun #2224138](https://launchpad.support.sap.com/#/notes/2224138)
+- [SAP destek notunun #2401066](https://launchpad.support.sap.com/#/notes/2401066)
+- [SAP destek notunun #2593925](https://launchpad.support.sap.com/#/notes/2593925) 
 
 > [!NOTE]
-> SAP ASE veritabanı şifrelenirse Yedek Döküm Sıkıştırma çalışmaz. Ayrıca bakınız [SAP destek notu #2680905](https://launchpad.support.sap.com/#/notes/2680905) 
+> SAP ASE veritabanı şifrelenirse, yedek döküm sıkıştırması çalışmaz. Ayrıca bkz. [sap destek notuna #2680905](https://launchpad.support.sap.com/#/notes/2680905) 
 
-## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure dağıtım denetim listesinde SAP ASE
+## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure dağıtım denetim listesi üzerinde SAP Ade
  
-- SAP ASE 16.0.03.07 veya üzeri dağıtma
-- Hata Yöneticisi ve SAPHostAgent'ın en son sürümü nerelerine ve düzeltme elerine güncelleştirin
-- Windows 2019, Suse 15.1 veya Redhat 7.6 veya üzeri gibi en son sertifikalı işletim sistemi üzerinde dağıtma
-- SAP Sertifikalı VM'leri kullanın – Es_v3 veya x-large sistemler de dahil olmak üzere yüksek bellekli Azure VM SK'ları M Serisi VM SK'ler önerilir
-- VM'nin disk IOPS ve toplam VM toplam iş bölümü kotasını disk tasarımıyla eşleştirin.  Yeterli sayıda disk dağıtma
-- Doğru şerit boyutu ve dosya sistemine sahip Windows Depolama Alanları veya Linux LVM2 kullanan toplu diskler
-- Veri, günlük, geçici ve yedekleme amaçları için yeterli sayıda aygıt oluşturun
-- X-large sistemler için UltraDisk kullanmayı düşünün 
-- LINUX `saptune` OS'de SAP-ASE'yi çalıştırın 
-- DB Şifreleme ile veritabanını güvenli hale getirin – tuşları Azure Key Vault'ta el ile saklayın 
-- Azure [Denetim Listesi'nde SAP'yi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) tamamlayın 
-- Günlük yedeklemeve tam yedekleme yapılandırma 
-- TEST HA/DR, yedekleme ve geri yükleme ve ses & stres testi gerçekleştirmek 
-- Otomatik Veritabanı Uzantısının çalıştığını doğrulayın 
+- SAP Ao 16.0.03.07 veya üstünü dağıtın
+- FaultManager ve SAPHostAgent 'ın en son sürümüne ve düzeltme eklerine güncelleştirme
+- Windows 2019, SUSE 15,1 veya RedHat 7,6 veya üzeri gibi kullanıma sunulan en son sertifikalı IŞLETIM sistemlerinde dağıtın
+- SAP sertifikalı VM 'Leri kullanma – Es_v3 gibi yüksek bellek Azure VM SKU 'Ları veya x-büyük sistemler için d serisi VM SKU 'Ları önerilir
+- Disk ıOPS ve VM 'nin toplam VM toplam verimlilik kotasını, disk tasarımıyla eşleştirin.  Yeterli sayıda diski dağıtma
+- Doğru dizili boyut ve dosya sistemi ile Windows depolama alanları veya Linux LVM2 kullanarak diskleri toplama
+- Veri, günlük, geçici ve yedekleme amacıyla yeterli sayıda cihaz oluşturun
+- X-büyük sistemler için UltraDisk kullanmayı düşünün 
+- Linux `saptune` işletim sisteminde SAP-Ao çalıştırma 
+- Veritabanını DB şifrelemesiyle güvenli hale getirme-anahtarları Azure Key Vault el ile depolayın 
+- [Azure 'Da SAP 'yi doldurun denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) 
+- Günlük yedeklemesini ve tam yedeklemeyi yapılandırma 
+- HA/DR testi, yedekleme ve geri yükleme ve stres & toplu testi gerçekleştirme 
+- Otomatik veritabanı uzantısının çalıştığını Onayla 
 
-## <a name="using-dbacockpit-to-monitor-database-instances"></a>Veritabanı örneklerini izlemek için DBACockpit'i kullanma
-SAP ASE'yi veritabanı platformu olarak kullanan SAP sistemleri için DBACockpit'e işlem DBACockpit'te gömülü tarayıcı pencereleri veya Webdynpro olarak erişilebilir. Ancak, veritabanını izlemek ve yönetmek için tam işlevsellik yalnızca DBACockpit'in Webdynpro uygulamasında kullanılabilir.
+## <a name="using-dbacockpit-to-monitor-database-instances"></a>Veritabanı örneklerini izlemek için Dbakokpit kullanma
+Veritabanı platformu olarak SAP AAS kullanan SAP sistemleri için Dbakokpit, işlem Dbakokpit veya WebDynpro olarak katıştırılmış tarayıcı pencereleri olarak erişilebilir. Ancak, veritabanını izlemeye ve yönetmeye yönelik tüm işlevler yalnızca Dbakokpit 'ın WebDynpro uygulamasında kullanılabilir.
 
-Şirket içi sistemlerde olduğu gibi, DBACockpit'in Webdynpro uygulaması tarafından kullanılan tüm SAP NetWeaver işlevlerini etkinleştirmek için birkaç adım gereklidir. Webdynpros kullanımını etkinleştirmek ve gerekli olanları oluşturmak için [SAP destek notu #1245200](https://launchpad.support.sap.com/#/notes/1245200) izleyin. Yukarıdaki notlarda talimatları izleyerek, internet iletişim yöneticisini`ICM`( ) http ve https bağlantıları için kullanılacak bağlantı noktalarıyla birlikte yapılandırırsınız. http için varsayılan ayar gibi görünüyor:
+Şirket içi sistemlerde olduğu gibi, Dbakokpitinin WebDynpro uygulamasının kullandığı tüm SAP NetWeaver işlevlerini etkinleştirmek için birkaç adım gerekir. Web dynprofesyonelleri kullanımını etkinleştirmek ve gerekli olanları oluşturmak için [sap destek not#1245200](https://launchpad.support.sap.com/#/notes/1245200) izleyin. Yukarıdaki notlardaki yönergeleri izleyerek, Internet Iletişim Yöneticisi 'Ni (`ICM`) http ve HTTPS bağlantıları için kullanılacak bağlantı noktalarıyla birlikte da yapılandırırsınız. Http için varsayılan ayar şöyle görünür:
 
-> icm/server_port_0 = PROT=HTTP,PORT=8000,PROCTIMEOUT=600,TIMEOUT=600
+> ICM/server_port_0 = PROT = HTTP, bağlantı noktası = 8000, PROCTIMEOUT = 600, zaman AŞıMı = 600
 > 
-> icm/server_port_1 = PROT=HTTPS,PORT=443$$,PROCTIMEOUT=600,TIMEOUT=600
-> 
-> 
-
-ve işlem DBACockpit oluşturulan bağlantılar benzer:
-
-> https:\//\<fullqualifiedhostname>:44300/sap/bc/webdynpro/sap/dba_cockpit
-> 
-> http:\//\<tam nitelikli hostname>:8000/sap/bc/webdynpro/sap/dba_cockpit
+> ICM/server_port_1 = PROT = HTTPS, PORT = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > 
 
-SAP sistemini barındıran Azure Sanal Makine'nin AD ve DNS'nize nasıl bağlı olduğuna bağlı olarak, ICM'nin DBACockpit'i açtığınız makinede çözülebilecek tam nitelikli bir ana bilgisayar adı kullandığından emin olmanız gerekir. ICM'nin profil parametrelerine göre tam nitelikli ana bilgisayar adını nasıl belirlediğini anlamak için [SAP destek notu #773830](https://launchpad.support.sap.com/#/notes/773830) bakın ve gerekirse parametre icm/host_name_full açıkça ayarlayın.
+ve işlem Dbakokpit içinde oluşturulan bağlantılar şuna benzer:
 
-VM'yi şirket içi ve Azure arasında şirket içi bağlantı olmadan Yalnızca Bulut senaryosunda dağıttıysanız, ortak `domainlabel`bir IP adresi ve bir . VM'nin genel DNS adının biçimi aşağıdaki gibi görünür:
-
-> `<custom domainlabel`>. `<azure region`>.cloudapp.azure.com
+> https:\//\<fullyqualifiedhostname>:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> 
+> http:\//\<fullyqualifiedhostname>:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 > 
 > 
 
-DNS adı ile ilgili daha fazla ayrıntı [burada][virtual-machines-azurerm-versus-azuresm].
+SAP sistemini barındıran Azure sanal makinesinin AD ve DNS 'nize nasıl bağlı olduğuna bağlı olarak, ICM 'nin Dbakokpit 'yi açtığınız makinede çözümlenebileceğiniz tam bir ana bilgisayar adı kullandığını doğrulayın. ICM 'nin profil parametrelerine bağlı olarak tam ana bilgisayar adını nasıl belirlediğini ve gerekirse ICM/host_name_full parametresini ayarlama hakkında bilgi edinmek için bkz. [sap destek notunun #773830](https://launchpad.support.sap.com/#/notes/773830) .
 
-SAP profil parametresi icm/host_name_full Azure VM'nin DNS adına ayarbağlantısı aşağıdakilere benzer olabilir:
+VM 'yi şirket içi ve Azure arasında şirketler arası bağlantı olmadan yalnızca bulut senaryosunda dağıttıysanız, bir genel IP adresi ve bir `domainlabel`tanımlamanız gerekir. VM 'nin Genel DNS adının biçimi şöyle görünür:
 
-> https:\//mydomainlabel.westeurope.cloudapp.net:44300/sap/bc/webdynpro/sap/dba_cockpit
+> `<custom domainlabel`>. `<azure region`>. cloudapp.Azure.com
 > 
-> http:\//mydomainlabel.westeurope.cloudapp.net:8000/sap/bc/webdynpro/sap/dba_cockpit
+> 
 
-Bu durumda emin olmanız gerekir:
+DNS adıyla ilgili daha fazla ayrıntı [burada] [sanal-makineler-azurerd-ve-azuresd] bulunabilir.
 
-* ICM ile iletişim kurmak için kullanılan TCP/IP bağlantı noktaları için Azure portalındaki Ağ Güvenlik Grubu'na Gelen kurallar ekleme
-* ICM ile iletişim kurmak için kullanılan TCP/IP bağlantı noktaları için Windows Güvenlik Duvarı yapılandırmasına Gelen kurallar ekleme
+SAP profili parametresini ICM/host_name_full olarak ayarlama, bağlantının şuna benzeyebilir:
 
-Kullanılabilir tüm düzeltmelerin otomatik olarak alınması için, SAP sürümünüz için geçerli düzeltme koleksiyonu SAP Notu'nu düzenli olarak uygulamanız önerilir:
+> https:\//mydomainlabel.westeurope.cloudapp.net:44300/SAP/BC/WebDynpro/SAP/dba_cockpit
+> 
+> http:\//mydomainlabel.westeurope.cloudapp.net:8000/SAP/BC/WebDynpro/SAP/dba_cockpit
 
-* [SAP destek notu #1558958](https://launchpad.support.sap.com/#/notes/1558958)
-* [SAP destek notu #1619967](https://launchpad.support.sap.com/#/notes/1619967)
-* [SAP destek notu #1882376](https://launchpad.support.sap.com/#/notes/1882376)
+Bu durumda şunları yapmanız gerekir:
 
-SAP ASE için DBA Kokpit hakkında daha fazla bilgiyi aşağıdaki SAP Notları'nda bulabilirsiniz:
+* ICM ile iletişim kurmak için kullanılan TCP/IP bağlantı noktaları için Azure portal ağ güvenlik grubuna gelen kuralları ekleyin
+* ICM ile iletişim kurmak için kullanılan TCP/IP bağlantı noktaları için Windows Güvenlik Duvarı yapılandırmasına gelen kuralları ekleyin
 
-* [SAP destek notu #1605680](https://launchpad.support.sap.com/#/notes/1605680)
-* [SAP destek notu #1757924](https://launchpad.support.sap.com/#/notes/1757924)
-* [SAP destek notu #1757928](https://launchpad.support.sap.com/#/notes/1757928)
-* [SAP destek notu #1758182](https://launchpad.support.sap.com/#/notes/1758182)
-* [SAP destek notu #1758496](https://launchpad.support.sap.com/#/notes/1758496)    
-* [SAP destek notu #1814258](https://launchpad.support.sap.com/#/notes/1814258)
-* [SAP destek notu #1922555](https://launchpad.support.sap.com/#/notes/1922555)
-* [SAP destek notu #1956005](https://launchpad.support.sap.com/#/notes/1956005)
+Tüm düzeltmelerin otomatik olarak içeri aktarılması için, SAP sürümünüze uygun olan düzeltme toplama SAP notunun düzenli olarak uygulanması önerilir:
+
+* [SAP destek notunun #1558958](https://launchpad.support.sap.com/#/notes/1558958)
+* [SAP destek notunun #1619967](https://launchpad.support.sap.com/#/notes/1619967)
+* [SAP destek notunun #1882376](https://launchpad.support.sap.com/#/notes/1882376)
+
+SAP ATıCı için DBA kokpiti hakkında daha fazla bilgi aşağıdaki SAP notlarında bulunabilir:
+
+* [SAP destek notunun #1605680](https://launchpad.support.sap.com/#/notes/1605680)
+* [SAP destek notunun #1757924](https://launchpad.support.sap.com/#/notes/1757924)
+* [SAP destek notunun #1757928](https://launchpad.support.sap.com/#/notes/1757928)
+* [SAP destek notunun #1758182](https://launchpad.support.sap.com/#/notes/1758182)
+* [SAP destek notunun #1758496](https://launchpad.support.sap.com/#/notes/1758496)    
+* [SAP destek notunun #1814258](https://launchpad.support.sap.com/#/notes/1814258)
+* [SAP destek notunun #1922555](https://launchpad.support.sap.com/#/notes/1922555)
+* [SAP destek notunun #1956005](https://launchpad.support.sap.com/#/notes/1956005)
 
 
-## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>SAP ASE için yararlı bağlantılar, notlar & teknik incelemeler
-[SAP ASE 16.0.03.07 Dokümantasyon](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) için başlangıç sayfası, aşağıdaki belgelerin hangi belgelere ait olduğu çeşitli belgelere bağlantılar verir:
+## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>Faydalı bağlantılar, notlar & SAP asa için teknik incelemeler
+[SAP asa 16.0.03.07 belgelerinin](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) başlangıç sayfası, belgelerinin bulunduğu çeşitli belgelere bağlantılar sağlar:
 
-- SAP ASE Öğrenme Yolculuğu - Yönetim & İzleme
-- SAP ASE Öğrenme Yolculuğu - Yükleme & Yükseltme
+- SAP ATıCı öğrenme yolculuğu-yönetim & Izleme
+- SAP Ade öğrenme yolculuğu-yükleme & yükseltme
 
-yararlıdır. Başka bir yararlı belge [SAP Uygulamaları SAP Adaptive Server Enterprise Geçiş ve Runtime için En İyi Uygulamalar.](https://assets.cdn.sap.com/sapcom/docs/2016/06/26450353-767c-0010-82c7-eda71af511fa.pdf)
+yararlıdır. Başka bir faydalı belge, SAP [Uyarlamalı sunucu 'Nun geçiş ve çalışma zamanı Için En Iyi uygulamalarında SAP uygulamalardır](https://assets.cdn.sap.com/sapcom/docs/2016/06/26450353-767c-0010-82c7-eda71af511fa.pdf).
 
-Diğer yararlı SAP destek notları şunlardır:
+Diğer yardımcı SAP destek notları şunlardır:
 
-- [SAP destek notu #2134316](https://launchpad.support.sap.com/#/notes/2134316) 
-- [SAP destek notu #1748888](https://launchpad.support.sap.com/#/notes/1748888) 
-- [SAP destek notu #2588660](https://launchpad.support.sap.com/#/notes/2588660) 
-- [SAP destek notu #1680803](https://launchpad.support.sap.com/#/notes/1680803) 
-- [SAP destek notu #1724091](https://launchpad.support.sap.com/#/notes/1724091) 
-- [SAP destek notu #1775764](https://launchpad.support.sap.com/#/notes/1775764) 
-- [SAP destek notu #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
-- [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533)
-- [SAP destek notu #2015553](https://launchpad.support.sap.com/#/notes/2015553)
-- [SAP destek notu #1750510](https://launchpad.support.sap.com/#/notes/1750510) 
-- [SAP destek notu #1752266](https://launchpad.support.sap.com/#/notes/1752266) 
-- [SAP destek notu #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
-- [SAP destek notu #1588316](https://launchpad.support.sap.com/#/notes/158831) 
+- [SAP destek notunun #2134316](https://launchpad.support.sap.com/#/notes/2134316) 
+- [SAP destek notunun #1748888](https://launchpad.support.sap.com/#/notes/1748888) 
+- [SAP destek notunun #2588660](https://launchpad.support.sap.com/#/notes/2588660) 
+- [SAP destek notunun #1680803](https://launchpad.support.sap.com/#/notes/1680803) 
+- [SAP destek notunun #1724091](https://launchpad.support.sap.com/#/notes/1724091) 
+- [SAP destek notunun #1775764](https://launchpad.support.sap.com/#/notes/1775764) 
+- [SAP destek notunun #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
+- [SAP destek notunun #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP destek notunun #2015553](https://launchpad.support.sap.com/#/notes/2015553)
+- [SAP destek notunun #1750510](https://launchpad.support.sap.com/#/notes/1750510) 
+- [SAP destek notunun #1752266](https://launchpad.support.sap.com/#/notes/1752266) 
+- [SAP destek notunun #2162183](https://launchpad.support.sap.com/#/notes/2162183) 
+- [SAP destek notunun #1588316](https://launchpad.support.sap.com/#/notes/158831) 
 
-Diğer bilgiler 
+Diğer bilgiler üzerinde yayımlanır 
 
-- [SAP Adaptif Server Enterprise'da SAP Uygulamaları](https://community.sap.com/topics/applications-on-ase)
-- [SAP ASE bilgi merkezi](http://infocenter.sybase.com/help/index.jsp) 
-- [3. DR Düğüm Kurulumu ile SAP ASE Her Zaman](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
+- [SAP Uyarlamalı sunucu Enterprise 'ta SAP uygulamaları](https://community.sap.com/topics/applications-on-ase)
+- [SAP ATıCı bilgi merkezi](http://infocenter.sybase.com/help/index.jsp) 
+- [3. DR düğüm kurulumu ile SAP ASE her zaman açık](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
-Aylık bülten SAP [destek notu #2381575](https://launchpad.support.sap.com/#/notes/2381575) aracılığıyla yayınlanır 
+Aylık bülten, [sap destek notunda yayımlanır #2381575](https://launchpad.support.sap.com/#/notes/2381575) 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure'daki MAKALE SAP iş yüklerini kontrol edin: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
+[Azure 'Da SAP iş yükleri makalesine bakın: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 

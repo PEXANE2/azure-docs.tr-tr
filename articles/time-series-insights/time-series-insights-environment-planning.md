@@ -1,5 +1,5 @@
 ---
-title: GA ortamınızı planlayın - Azure Time Series Öngörüleri | Microsoft Dokümanlar
+title: GA ortamınızı planlayın-Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights GA ortamınızı hazırlamak, yapılandırmak ve dağıtmak için en iyi uygulamalar.
 services: time-series-insights
 ms.service: time-series-insights
@@ -12,119 +12,119 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: seodec18
 ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81272721"
 ---
-# <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Öngörüleri GA ortamınızı planlayın
+# <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA ortamınızı planlayın
 
-Bu makalede, beklenen giriş hızınıza ve veri saklama gereksinimlerinize bağlı olarak Azure Zaman Serisi Öngörüleri (GA) ortamınızı nasıl planlayınız açıklanmaktadır.
+Bu makalede, Azure Time Series Insights genel kullanılabilirlik (GA) ortamınızı beklenen giriş oranına ve veri saklama gereksinimlerinize göre nasıl planlayabileceğiniz açıklanır.
 
 ## <a name="video"></a>Video
 
-**Azure Time Series Insights'ta veri saklama ve nasıl planlaşılabilen ler hakkında daha fazla bilgi edinmek için bu videoyu izleyin:**<br /><br />
+**Azure Time Series Insights veri saklama ve bunun nasıl planlanacağı hakkında daha fazla bilgi edinmek için bu videoyu izleyin**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Azure Zaman Serisi Öngörüleri'ne başlamak için, dakika ya da kaç veri itmenizi beklediğiniz ve verilerinizi ne kadar süreyle depolamanız gerektiğini bilmeniz en iyisidir.  
+Azure Time Series Insights kullanmaya başlamak için, ne kadar veri göndermeyi beklediğinizi ve verilerinizi ne kadar süreyle depolamanız gerektiğini biliyorsanız bu en iyisidir.  
 
-Hem Time Series Insights SKUs'lar için kapasite ve bekletme hakkında daha fazla bilgi için [Time Series Insights fiyatlandırmasını](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.
+Time Series Insights SKU 'Larının kapasitesi ve bekletme hakkında daha fazla bilgi için [Time Series Insights fiyatlandırmayı](https://azure.microsoft.com/pricing/details/time-series-insights/)okuyun.
 
-Zaman Serisi Öngörüleri ortamınızı uzun vadeli başarı için en iyi şekilde planlamak için aşağıdaki özellikleri göz önünde bulundurun:
+Time Series Insights ortamınızı uzun süreli başarıyı en iyi şekilde planlamak için aşağıdaki öznitelikleri göz önünde bulundurun:
 
 - [Depolama kapasitesi](#storage-capacity)
 - [Veri saklama süresi](#data-retention)
 - [Giriş kapasitesi](#ingress-capacity)
-- [Etkinliklerinizi şekillendirme](#shape-your-events)
-- [Referans verilerinin yerinde olmasını sağlama](#ensure-that-you-have-reference-data)
+- [Olaylarınızı şekillendirme](#shape-your-events)
+- [Başvuru verilerinin yerinde olduğundan emin olma](#ensure-that-you-have-reference-data)
 
 ## <a name="storage-capacity"></a>Depolama kapasitesi
 
-Varsayılan olarak, Time Series Insights, sağlama yaptığınız depolama miktarına (birim başına depolama miktarı &#215; birimler) ve girişe bağlı olarak verileri saklar.
+Varsayılan olarak, Time Series Insights sağladığınız depolama miktarına (birim başına depolama miktarı &#215;) ve giriş verilerine göre verileri korur.
 
 ## <a name="data-retention"></a>Veri saklama
 
-Azure Zaman Serisi Öngörüleri ortamınızda **Veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme olanağı sağlayabilirsiniz. 
+Azure Time Series Insights ortamınızda **veri saklama süresi** ayarını değiştirebilirsiniz. 400 güne kadar bekletme sağlayabilirsiniz. 
 
-Azure Zaman Serisi Öngörüleri'nin iki modu vardır:
+Azure Time Series Insights iki mod vardır:
 
-* Bir mod en güncel veriler için en iyi duruma getirir. Eski **verileri temizlemek** için bir ilke uygular ve son verileri örnekle birlikte kullanılabilir hale getirmek. Bu mod varsayılan olarak açıktır. 
-* Diğeri, verileri yapılandırılan bekletme sınırlarının altında kalacak şekilde en iyi duruma getirir. **Duraklatma,** **Depolama sınırı davranış aşıldığında**seçildiğinde yeni verilerin girilmesini önler.
+* En güncel veriler için bir mod en iyi duruma getirir. Örnek ile kullanılabilir son verileri bırakarak **eski verileri temizlemeye** yönelik bir ilke uygular. Bu mod, varsayılan olarak açık olur. 
+* Diğer, yapılandırılan bekletme sınırlarının altında kalacak şekilde verileri iyileştirir. Giriş **duraklatma** , **depolama sınırı aşıldı davranışı**olarak seçildiğinde yeni verilerin görüntülenmesini önler.
 
-Azure portalında ortamın yapılandırma sayfasındaki iki mod arasında bekletme ve geçiş ayarlama yı ayarlayabilirsiniz.
+Tutma durumunu ayarlayabilir ve Azure portal ortamın yapılandırma sayfasındaki iki mod arasında geçiş yapabilirsiniz.
 
 > [!IMPORTANT]
-> Azure Zaman Serisi Öngörüleri GA ortamınızda en fazla 400 günlük veri saklama yı yapılandırabilirsiniz.
+> Azure Time Series Insights GA ortamınızda en fazla 400 günlük veri saklama yapılandırabilirsiniz.
 
 ### <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
-1. Azure [portalında](https://portal.azure.com)Time Series Öngörüleri ortamınızı seçin.
+1. [Azure Portal](https://portal.azure.com), Time Series Insights ortamınızı seçin.
 
-1. Zaman **Serisi Öngörüler ortamı** bölmesinde, **Ayarlar**altında, **Depolama yapılandırmasını**seçin.
+1. **Time Series Insights ortamı** bölmesinde, **Ayarlar**altında **depolama yapılandırması**' nı seçin.
 
-1. Veri **saklama süresine (gün içinde)** kutusuna 1 ile 400 arasında bir değer girin.
+1. **Veri saklama süresi (gün cinsinden)** kutusuna 1 ile 400 arasında bir değer girin.
 
-   [![Bekletme yapılandırma](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
+   [![Bekletmeyi yapılandırma](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Uygun bir veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek [için bekletme yapılandırmayı nasıl okuyabilirsiniz.](./time-series-insights-how-to-configure-retention.md)
+> Uygun bir veri saklama ilkesinin nasıl uygulanacağı hakkında daha fazla bilgi edinmek için, [bekletmeyi yapılandırma](./time-series-insights-how-to-configure-retention.md)makalesini okuyun.
 
 ## <a name="ingress-capacity"></a>Giriş kapasitesi
 
 [!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
-### <a name="environment-planning"></a>Çevre planlama
+### <a name="environment-planning"></a>Ortam planlama
 
-Time Series Insights ortamınızı planlamak için odaklanılabilmeniz gereken ikinci alan giriş kapasitesidir. Günlük giriş depolama ve etkinlik kapasitesi dakikada 1-KB bloklarda ölçülür. İzin verilen maksimum paket boyutu 32 KB'dir. 32 KB'den büyük veri paketleri kesilir.
+Time Series Insights ortamınızın planlanmasına odaklanmanız için ikinci alan, giriş kapasitesidir. Günlük giriş depolama ve olay kapasitesi, 1 KB 'lik bloklar halinde dakika başına ölçülür. İzin verilen en büyük paket boyutu 32 KB 'tır. 32 KB 'den büyük veri paketleri kesilir.
 
-Bir S1 veya S2 SKU'nun kapasitesini tek bir ortamda 10 üniteye yükseltebilirsiniz. S1 ortamından S2'ye geçiş yapamazsınız. Bir S2 ortamından S1'e geçiş yapamazsınız.
+S1 veya S2 SKU 'sunun kapasitesini tek bir ortamda 10 birim olarak artırabilirsiniz. S1 ortamından S2 'e geçiş yapamazsınız. S2 ortamından S1 'e geçiş yapamazsınız.
 
-Giriş kapasitesi için, öncelikle aylık olarak ihtiyacınız olan toplam girişi belirleyin. Ardından, dakika başına ihtiyaçlarınızın ne olduğunu belirleyin. 
+Giriş kapasitesi için, önce gereksinim duyduğunuz toplam girişi ayda bir esasına göre saptayın. Sonra, dakika başına ihtiyaçlarınızı belirlemek için. 
 
-Azaltma ve gecikme dakika başına kapasitede rol oynar. Veri girişinizde 24 saatten az süren bir artış varsa, Time Series Insights önceki tabloda listelenen oranların iki katı bir giriş hızında "yetişebilir".
+Kısıtlama ve gecikme süresi, dakika başına kapasite içinde bir rol oynar. Veri giriş ortamınızda 24 saatten daha az bir zaman kazandıysanız, yukarıdaki tabloda listelenen hızların giriş oranından "yakalayabilmeniz" Time Series Insights.
 
-Örneğin, tek bir S1 SKU'nuz varsa, verileri dakikada 720 olay hızında girersiniz ve veri hızı 1.440 veya daha az bir oranda bir saatten daha kısa bir süre için yükselir, ortamınızda belirgin bir gecikme yoktur. Ancak, bir saatten fazla dakika başına 1.440 olayı aşarsanız, büyük olasılıkla görüntülenmiş ve ortamınızda sorgu için kullanılabilir verilerde gecikme deneyimi yaşarsınız.
+Örneğin, tek bir S1 SKU 'SU varsa, verileri dakikada 720 olay hızında ve veri hızının 1.440 olay veya daha kısa bir süre içinde bir saatten kısa bir süre boyunca artışlar durumunda ortamınızda belirgin bir gecikme yoktur. Ancak, bir saatten uzun bir süre boyunca 1.440 olayı aşarsanız, görselde görselleştirilen ve sorgu için kullanılabilen verilerdeki gecikme süresi büyük olasılıkla yaşanacaktır.
 
-Ne kadar veri itmeyi beklediğiniz önceden bilmiyor olabilirsiniz. Bu durumda, Azure portal aboneliğinizde [Azure IoT Hub'ı](../iot-hub/iot-hub-metrics.md) ve [Azure Etkinlik Hub'ları](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) için veri telemetrisini bulabilirsiniz. Telemetri, ortamınızı nasıl sağlayabileceğinizi belirlemenize yardımcı olabilir. İlgili etkinlik kaynağının telemetrisini görüntülemesi için Azure portalındaki **Ölçümler** bölmesini kullanın. Etkinlik kaynağı ölçümlerinizi anlıyorsanız, Zaman Serisi Öngörüleri ortamınızı daha etkili bir şekilde planlayabilir ve sağlayabilirsiniz.
+Ne kadar veri göndermeyi beklediğinizi önceden bilmiyor olabilirsiniz. Bu durumda, [azure IoT Hub](../iot-hub/iot-hub-metrics.md) ve [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) için veri telemetrisini Azure Portal aboneliğinizde bulabilirsiniz. Telemetri, ortamınızı nasıl sağlayacağınızı belirlemenize yardımcı olabilir. Telemetrisini görüntülemek için ilgili olay kaynağı için Azure portal **ölçümler** bölmesini kullanın. Olay kaynak ölçümlerinizi anladıysanız, Time Series Insights ortamınızı daha verimli bir şekilde planlamak ve temin edebilirsiniz.
 
-### <a name="calculate-ingress-requirements"></a>Giriş gereksinimlerini hesaplama
+### <a name="calculate-ingress-requirements"></a>Giriş gereksinimlerini hesapla
 
 Giriş gereksinimlerinizi hesaplamak için:
 
-- Giriş kapasitenizin dakika başına ortalama hızınızın üzerinde olduğunu ve ortamınızın bir saatten daha kısa bir süre için kapasitenizin iki katına eşdeğer olan girişi kaldıracak kadar büyük olduğunu doğrulayın.
+- Giriş kapasitenizin, ortalama dakikalık oranınızdan yüksek olduğunu ve ortamınızın, bir saatten kısa bir süre boyunca en fazla iki kata kadar olan tahmini giriş değerinizi işleyecek kadar büyük olduğunu doğrulayın.
 
-- 1 saatten uzun süren giriş ani artışları meydana gelirse, ortalama olarak başak hızını kullanın. Ani oranı işlemek için kapasiteye sahip bir ortam sağlama.
+- En son 1 saatten uzun süre boyunca giriş ani artışlar gerçekleşirse, ortalama olarak ani artış oranını kullanın. Depo oranını işlemek için kapasiteye sahip bir ortam sağlayın.
 
-### <a name="mitigate-throttling-and-latency"></a>Azaltma azaltma ve gecikme
+### <a name="mitigate-throttling-and-latency"></a>Azaltma ve gecikme süresini azaltma
 
-Azaltma ve gecikmeyi nasıl önleyeceğiniz hakkında bilgi için, [Azaltma gecikmesi ve azaltmayı](time-series-insights-environment-mitigate-latency.md)okuyun.
+Azaltma ve gecikme süresinin nasıl önleneceği hakkında daha fazla bilgi için, azaltma [gecikmesini ve azaltmayı](time-series-insights-environment-mitigate-latency.md)okuyun.
 
-## <a name="shape-your-events"></a>Etkinliklerinizi şekillendirin
+## <a name="shape-your-events"></a>Olaylarınızı şekillendirin
 
-Olayları Time Series Insights'a gönderme şeklinizin, sağladığınız ortamın boyutunu desteklediğinden emin olmak önemlidir. (Tersine, zaman serisi öngörüleri kaç etkinlik okur ve her olayın boyutu için ortamın boyutunu eşleyebilirsiniz.) Verilerinizi sorgularken dilimlemek ve filtrelemek için kullanmak isteyebileceğiniz öznitelikleri de düşünmek önemlidir.
+Time Series Insights olayları yollamanın, sağladığınız ortamın boyutunu desteklediğinden emin olmak önemlidir. (Buna karşılık, ortamın boyutunu, kaç olay Time Series Insights okuduğunu ve her olayın boyutunu) eşleyebilirsiniz.) Verilerinizi sorguladığınızda dilimlemek ve filtrelemek için kullanmak isteyebileceğiniz öznitelikleri düşünmek de önemlidir.
 
 > [!TIP]
-> Etkinlik Gönderme'de JSON şekillendirme belgelerini gözden [geçirin.](time-series-insights-send-events.md)
+> [Olayları GÖNDERMEDE](time-series-insights-send-events.md)JSON şekillendirme belgelerini gözden geçirin.
 
-## <a name="ensure-that-you-have-reference-data"></a>Referans verilerine sahip olduğundan emin olun
+## <a name="ensure-that-you-have-reference-data"></a>Başvuru verilerine sahip olduğunuzdan emin olun
 
-*Başvuru veri kümesi,* olay kaynağınızdan olayları artıran öğeler topluluğudur. Zaman Serisi Öngörüler giriş motoru, etkinlik kaynağınızdan gelen her olayı referans veri setinizdeki ilgili veri satırıyla birleştirir. Artırılmış olay daha sonra sorgu için kullanılabilir. Birleştirme, başvuru veri setinizde tanımlanan **Birincil Anahtar** sütunlarını temel almaktadır.
+*Başvuru veri kümesi* , olay kaynağınızdan olayları geliştiren öğelerin bir koleksiyonudur. Time Series Insights giriş altyapısı, olay kaynağınızdaki her bir olayı, başvuru veri kümenizdeki karşılık gelen veri satırıyla birleştirir. Genişletilmiş olay daha sonra sorgu için kullanılabilir. JOIN, başvuru veri kümenizde tanımlanan **birincil anahtar** sütunlarını temel alır.
 
 > [!NOTE]
-> Başvuru verileri geriye dönük olarak birleştirilemez. Yalnızca geçerli ve gelecekteki giriş verileri, yapılandırıldıktan ve yüklendikten sonra eşleştirilir ve başvuru veri kümesine katılır. Time Series Insights'a büyük miktarda geçmiş veri göndermeyi planlıyorsanız ve önce Time Series Insights'a referans verileri yüklemez veya oluşturmazsanız, çalışmanızı yeniden yapmanız gerekebilir (ipucu: eğlenceli değil).  
+> Başvuru verileri geriye dönük olarak katılmadı. Yapılandırma ve karşıya yükleme sonrasında yalnızca geçerli ve gelecekteki giriş verileri eşleştirilir ve başvuru veri kümesine birleştirilir. Time Series Insights için büyük miktarda geçmiş verisi gönderilmesini ve Time Series Insights önce karşıya yüklemeden veya başvuru verilerini oluşturmazsanız, çalışmanızı yinelemek zorunda kalabilirsiniz (İpucu: eğlenceli değil).  
 
-Zaman Serisi Öngörüleri'nde referans verilerinizi nasıl oluşturup yükleyip yönetecekleriniz hakkında daha fazla bilgi edinmek için [Referans veri seti belgelerimizi](time-series-insights-add-reference-data-set.md)okuyun.
+Time Series Insights ' de başvuru verilerinizi oluşturma, karşıya yükleme ve yönetme hakkında daha fazla bilgi edinmek için, [başvuru veri kümesi belgelerimizi](time-series-insights-add-reference-data-set.md)okuyun.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portalında yeni bir Time Series Öngörüleri ortamı oluşturarak](time-series-insights-get-started.md)başlayın.
+- [Azure Portal yeni bir Time Series Insights ortamı](time-series-insights-get-started.md)oluşturarak başlayın.
 
-- Zaman Serisi [Öngörüleri'ne Etkinlik Hub'ları etkinlik kaynağını nasıl ekleyeceğinizi](time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin.
+- Time Series Insights [bir Event Hubs olay kaynağı eklemeyi](time-series-insights-how-to-add-an-event-source-eventhub.md) öğrenin.
 
-- [Bir IoT Hub olay kaynağını nasıl yapılandırılabildiğini](time-series-insights-how-to-add-an-event-source-iothub.md)okuyun.
+- [IoT Hub olay kaynağını yapılandırma](time-series-insights-how-to-add-an-event-source-iothub.md)hakkında bilgi edinin.
