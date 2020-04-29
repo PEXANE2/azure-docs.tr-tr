@@ -1,7 +1,7 @@
 ---
 title: Canlı iş transkripsiyonu
 titleSuffix: Azure Media Services
-description: Azure Medya Hizmetleri hakkında canlı transkripsiyon hakkında bilgi edinin.
+description: Azure Media Services canlı dökümü hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: b364b6e70e3b5723c483bc3435f0c3a152c03aa9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79499864"
 ---
-# <a name="live-transcription-preview"></a>Canlı transkripsiyon (önizleme)
+# <a name="live-transcription-preview"></a>Canlı döküm (Önizleme)
 
-Azure Media Service farklı protokollerde video, ses ve metin sunar. Canlı yayınınızı MPEG-DASH veya HLS/CMAF kullanarak yayımladığınızda, ardından video ve ses ile birlikte, hizmetimiz imsc1.1 uyumlu TTML'de transkripsiyonu yapılan metni sunar. Teslimat MPEG-4 Bölüm 30 (ISO/IEC 14496-30) parçaları halinde paketlenir. HLS/TS üzerinden teslimat kullanıyorsanız, metin parçalanmış VTT olarak teslim edilir.
+Azure Medya hizmeti, farklı protokollerde video, ses ve metin sağlar. MPEG-DASH veya HLS/CMAF kullanarak canlı akışınızı yayımladığınızda ve video ve sesle birlikte hizmetimiz, IMSC 1.1 uyumlu TTML 'de el ile metin sağlar. Teslim, MPEG-4 Bölüm 30 (ISO/ıEC 14496-30) parçalarında paketlenmiştir. HLS/TS aracılığıyla teslim kullanılıyorsa, metin öbekli VTT olarak dağıtılır.
 
-Bu makalede, Azure Medya Hizmetleri v3 ile Canlı Etkinlik akışı yaparken canlı transkripsiyon etkinleştirin. Devam etmeden önce, Medya Hizmetleri v3 REST API'lerinin kullanımına aşina olduğunuzdan emin olun (ayrıntılar için [bu öğreticiye](stream-files-tutorial-with-rest.md) bakın). Ayrıca [canlı akış](live-streaming-overview.md) kavramı aşina olmalıdır. [Medya Hizmetleri öğreticisiyle Stream'i canlı](stream-live-tutorial-with-api.md) olarak tamamlaman önerilir.
+Bu makalede, Azure Media Services v3 ile canlı bir olay akışı yapılırken canlı bir olay nasıl etkinleştirileceği açıklanır. Devam etmeden önce Media Services v3 REST API 'lerinin kullanımına alışkın olduğunuzdan emin olun (Ayrıntılar için [Bu öğreticiye](stream-files-tutorial-with-rest.md) bakın). Ayrıca, [canlı akış](live-streaming-overview.md) kavramı hakkında bilgi sahibi olmanız gerekir. [Media Services öğreticisiyle canlı akışı](stream-live-tutorial-with-api.md) doldurmanız önerilir.
 
 > [!NOTE]
-> Şu anda, canlı transkripsiyon yalnızca Batı ABD 2 bölgesinde önizleme özelliği olarak kullanılabilir. İngilizce konuşulan kelimelerin metne transkripsiyonu destekler. Bu özelliğin API başvurusu aşağıda yer almaktadır— becasuse önizlemede, ayrıntılar REST belgelerimizle birlikte kullanılamaz.
+> Şu anda, canlı döküm yalnızca Batı ABD 2 bölgesinde önizleme özelliği olarak kullanılabilir. Okunan sözcüklerin Ingilizce olarak metne dökümünü destekler. Bu özellik için API başvurusu aşağıda bulunur: becasin önizleme aşamasındadır ve ayrıntılar, REST belgelerimizde kullanılamaz.
 
-## <a name="creating-the-live-event"></a>Canlı Etkinliği Oluşturma
+## <a name="creating-the-live-event"></a>Canlı etkinlik oluşturma
 
-Canlı Etkinlik oluşturmak için PUT işlemini örneğin 2019-05-01 önizleme sürümüne gönderirsiniz:
+Canlı etkinliği oluşturmak için, PUT işlemini 2019-05-01-Preview sürümüne gönderirsiniz, örneğin:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-İşlem aşağıdaki gövdeye sahiptir (bir geçiş Live Event'in rtmp ile oluşturulduğu en iyi protokol olarak). Bir transkripsiyon özelliğinin eklenmesine dikkat edin. Dil için izin verilen tek değer en-US'dur.
+İşlem aşağıdaki gövdeye sahiptir (burada, bir geçiş canlı olayı, alma protokolü olarak RTMP ile oluşturulur). Döküm özelliğinin eklenmesini aklınızda edin. Dil için yalnızca izin verilen değer en-US ' dir.
 
 ```
 { 
@@ -88,24 +88,24 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 } 
 ```
 
-Canlı Etkinliğin durumunu "Çalışan" durumuna girene kadar yokleyin, bu da artık bir katkı RTMP akışı gönderebileceğinizi gösterir. Artık önizleme akışını denetlemek ve Canlı çıktılar oluşturma gibi bu öğreticideki yle aynı adımları izleyebilirsiniz.
+Canlı etkinliğin durumunu yoklayın "çalışıyor" durumuna gelene kadar, şimdi bir RTMP akışı gönderebilirsiniz. Artık, önizleme akışını denetleme ve canlı çıktılar oluşturma gibi bu öğreticideki adımların aynısını izleyebilirsiniz.
 
-## <a name="transcription-delivery-and-playback"></a>Transkripsiyon teslimi ve oynatma
+## <a name="transcription-delivery-and-playback"></a>Dağıtım ve kayıttan yürütme
 
-Hizmetimizin farklı protokollerde video, ses ve metin sunmak için dinamik ambalajı nasıl kullandığına ilişkin [Dinamik ambalaja genel bakış](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) makalesini inceleyin. Canlı yayınınızı MPEG-DASH veya HLS/CMAF kullanarak yayımladığınızda, ardından video ve ses ile birlikte, hizmetimiz imsc1.1 uyumlu TTML'de transkripsiyonu yapılan metni sunar. Bu teslimat MPEG-4 Bölüm 30 (ISO/IEC 14496-30) parçaları na paketlenir. HLS/TS üzerinden teslimat kullanıyorsanız, metin parçalanmış VTT olarak teslim edilir. Akışı oynamak için [Azure Media Player](use-azure-media-player.md) gibi bir web oynatıcık kullanabilirsiniz.  
+Hizmetimizin, farklı protokollerde video, ses ve metin sunmak için dinamik paketleme nasıl kullandığını gösteren [dinamik paketlemeye genel bakış](dynamic-packaging-overview.md#to-prepare-your-source-files-for-delivery) makalesini gözden geçirin. MPEG-DASH veya HLS/CMAF kullanarak canlı akışınızı yayımladığınızda ve video ve sesle birlikte hizmetimiz, IMSC 1.1 uyumlu TTML 'de el ile metin sağlar. Bu teslim, MPEG-4 Bölüm 30 (ISO/ıEC 14496-30) parçalarında paketlenmiştir. HLS/TS aracılığıyla teslim kullanılıyorsa, metin öbekli VTT olarak dağıtılır. Akışı oynatmak için [Azure Media Player](use-azure-media-player.md) gibi bir Web oynatıcı kullanabilirsiniz.  
 
 > [!NOTE]
-> Azure Media Player kullanıyorsanız, sürüm 2.3.3 veya sonraki sürümlerini kullanın.
+> Azure Media Player kullanıyorsanız, sürüm 2.3.3 veya üstünü kullanın.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Önizleme için, canlı transkripsiyon ile bilinen sorunlar şunlardır:
+Önizleme için, canlı dökümle ilgili bilinen sorunlar aşağıda verilmiştir:
 
-* Özellik yalnızca West US 2'de kullanılabilir.
-* Uygulamaların [Medya Hizmetleri v3 OpenAPI Belirtiminde](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)açıklanan önizleme API'lerini kullanması gerekir.
-* Desteklenen tek dil İngilizcedir (en-us).
-* İçerik koruması yla yalnızca AES zarf şifrelemesi desteklenir.
+* Özelliği yalnızca Batı ABD 2 kullanılabilir.
+* Uygulamaların [Media Services v3 Openapı belirtiminde](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json)açıklanan önizleme API 'lerini kullanması gerekir.
+* Desteklenen tek dil Ingilizce 'dir (en-US).
+* İçerik koruma ile yalnızca AES zarf şifrelemesi desteklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Medya Hizmetlerine genel bakış](media-services-overview.md)
+* [Media Services genel bakış](media-services-overview.md)

@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
 ms.openlocfilehash: 5102e8f75da14c58e948e81aaa418539dd18869a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159429"
 ---
-`inferenceconfig.json` [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametrelerine belge haritasındaki girişler. Aşağıdaki tabloda JSON belgesindeki varlıklar ile yöntemparametreleri arasındaki eşleme açıklanmaktadır:
+`inferenceconfig.json` Belgedeki girişler, [ınenceconfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) sınıfının parametreleriyle eşlenir. Aşağıdaki tabloda, JSON belgesindeki varlıklar ve yöntemin parametreleri arasındaki eşleme açıklanmaktadır:
 
 | JSON varlığı | Yöntem parametresi | Açıklama |
 | ----- | ----- | ----- |
-| `entryScript` | `entry_script` | Görüntü için çalışacak kodu içeren yerel bir dosyaya giden yol. |
-| `sourceDirectory` | `source_directory` | İsteğe bağlı. Görüntüyü oluşturmak için tüm dosyaları içeren klasörlere giden yol, bu klasör veya alt klasördeki dosyalara erişmemi kolaylaştırır. Web hizmetine bağımlılık olarak yerel makinenizden bir klasörün tamamını yükleyebilirsiniz. Not: entry_script, conda_file ve extra_docker_file_steps yollarınız source_directory yoluna giden göreceli yollardır. |
-| `environment` | `environment` | İsteğe bağlı.  Azure Machine Learning [ortamı.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)|
+| `entryScript` | `entry_script` | Görüntüde çalıştırılacak kodu içeren yerel bir dosyanın yolu. |
+| `sourceDirectory` | `source_directory` | İsteğe bağlı. Görüntüyü oluşturmak için tüm dosyaları içeren klasörlerin yolu. Bu, bu klasör veya alt klasör içindeki tüm dosyalara erişmeyi kolaylaştırır. Yerel makinenizden bir klasörün tamamını Web hizmeti bağımlılıkları olarak yükleyebilirsiniz. Note: entry_script, conda_file ve extra_docker_file_steps yollarınız source_directory yolun göreli yollarıdır. |
+| `environment` | `environment` | İsteğe bağlı.  Azure Machine Learning [ortamı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py).|
 
-Çıkarım yapılandırma dosyasına bir Azure Machine Learning [ortamının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) tam özelliklerini ekleyebilirsiniz. Bu ortam çalışma alanınızda yoksa, Azure Machine Learning bu ortamı oluşturur. Aksi takdirde, Azure Machine Learning gerekirse ortamı güncelleştirecektir. Aşağıdaki JSON bir örnektir:
+Çıkarım yapılandırma dosyasına bir Azure Machine Learning [ortamının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) tam belirtimlerini dahil edebilirsiniz. Bu ortam çalışma alanınızda yoksa Azure Machine Learning oluşturacaktır. Aksi takdirde, Azure Machine Learning ortamı gerekirse güncelleştirir. Aşağıdaki JSON bir örnektir:
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "80159429"
 }
 ```
 
-Ayrıca, ayrılmış CLI parametrelerinde varolan bir Azure Machine Learning [ortamını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) kullanabilir ve çıkarım yapılandırma dosyasından "ortam" anahtarını kaldırabilirsiniz. Ortam adı için -e'yi ve ortam sürümü için -ev'i kullanın. --ev' i belirtmezseniz, en son sürüm kullanılır. Çıkarım yapılandırma dosyasının bir örneği aşağıda verilmiştir:
+Ayrıca, ayrılmış CLı parametrelerinde mevcut bir Azure Machine Learning [ortamını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) kullanabilir ve "ortam" anahtarını çıkarım yapılandırma dosyasından kaldırabilirsiniz. Ortam adı için-e ve ortam sürümü için--KD kullanın. --KD belirtmezseniz, en son sürüm kullanılacaktır. Bir çıkarım yapılandırma dosyasına bir örnek aşağıda verilmiştir:
 
 ```json
 {
@@ -74,9 +74,9 @@ Ayrıca, ayrılmış CLI parametrelerinde varolan bir Azure Machine Learning [or
 }
 ```
 
-Aşağıdaki komut, önceki çıkarım yapılandırma dosyasını kullanarak bir modelin nasıl dağıtılangerektiğini gösterir (myInferenceConfig.json olarak adlandırılır). 
+Aşağıdaki komut, önceki çıkarım yapılandırma dosyasını (Myınenceconfig. JSON adlı) kullanarak bir modelin nasıl dağıtılacağını göstermektedir. 
 
-Ayrıca, varolan bir Azure Machine Learning [ortamının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) (AzureML-Minimal olarak adlandırılır) en son sürümünü de kullanır.
+Ayrıca, var olan bir Azure Machine Learning [ortamının](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) en son sürümünü kullanır (yalnızca AzureML-minimal olarak adlandırılır).
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 --ic myInferenceConfig.json -e AzureML-Minimal --dc deploymentconfig.json

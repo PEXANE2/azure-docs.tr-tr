@@ -1,7 +1,7 @@
 ---
-title: Azure HDInsight'ı kullanarak Sorun Giderme Fırtınası
-description: Azure HDInsight ile Apache Storm'u kullanma yla ilgili sık sorulan soruların yanıtlarını alın.
-keywords: Azure HDInsight, Fırtına, SSS, sorun giderme kılavuzu, sık karşılaşılan sorunlar
+title: Azure HDInsight kullanarak fırtınası sorunlarını giderme
+description: Azure HDInsight ile Apache Storm kullanma hakkında sık sorulan sorulara yanıtlar alın.
+keywords: Azure HDInsight, fırtınası, SSS, sorun giderme kılavuzu, yaygın sorunlar
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,180 +10,180 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: b51b2c21fd9256c93f6947386a48336af2b75d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271934"
 ---
-# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight'ı kullanarak Apache Storm sorun giderme
+# <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Storm sorunlarını giderme
 
-[Apache Ambari'de](https://ambari.apache.org/) [Apache Storm](https://storm.apache.org/) yükleri ile çalışmak için en önemli konular ve onların kararları hakkında bilgi edinin.
+[Apache ambarı](https://ambari.apache.org/)'nda [Apache Storm](https://storm.apache.org/) yükleri ile çalışmaya yönelik en popüler sorunlar ve çözümleri hakkında bilgi edinin.
 
-## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Bir kümedeki Fırtına UI'ına nasıl erişebilirim?
+## <a name="how-do-i-access-the-storm-ui-on-a-cluster"></a>Bir kümedeki fırtınası Kullanıcı arabirimine erişmek Nasıl yaparım? mı?
 
-Bir tarayıcıdan Storm UI'ye erişmek için iki seçeneğiniz var:
+Bir tarayıcıdan fırtınası Kullanıcı arabirimine erişmek için iki seçeneğiniz vardır:
 
-### <a name="apache-ambari-ui"></a>Apache Ambari UI
+### <a name="apache-ambari-ui"></a>Apache ambarı Kullanıcı arabirimi
 
-1. Ambari panosuna git.
-2. Hizmetler listesinde **Fırtına'yı**seçin.
-3. Hızlı **Bağlantılar** menüsünde **Fırtına UI'yi**seçin.
+1. Ambarı panosuna gidin.
+2. Hizmetler listesinde, **fırtınası**' yi seçin.
+3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi**' ni seçin.
 
 ### <a name="direct-link"></a>Doğrudan bağlantı
 
-Fırtına UI'ye aşağıdaki URL'den erişebilirsiniz:
+Aşağıdaki URL 'de, fırtınası Kullanıcı arabirimine erişebilirsiniz:
 
 `https://<cluster DNS name>/stormui`
 
 Örnek: `https://stormcluster.azurehdinsight.net/stormui`
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Storm olay merkezi spout denetim noktası bilgilerini bir topolojiden diğerine nasıl aktarabilirim?
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Nasıl yaparım?, bir topolojiden diğerine fırtınası olay merkezi Spout denetim noktası bilgilerini aktarmaya mi?
 
-HDInsight Storm olay hub'ı spout .jar dosyasını kullanarak Azure Etkinlik Hub'larından okunan topolojiler geliştirdiğinizde, yeni bir kümede aynı ada sahip bir topoloji dağıtmanız gerekir. Ancak, eski kümeüzerinde [Apache ZooKeeper'a](https://zookeeper.apache.org/) adanmış denetim noktası verilerini saklamanız gerekir.
+HDInsight fırtınası Olay Hub Spout. jar dosyasını kullanarak Azure Event Hubs okuyan topolojiler geliştirirken, yeni bir kümede aynı ada sahip bir topoloji dağıtmanız gerekir. Ancak, eski kümede [Apache ZooKeeper](https://zookeeper.apache.org/) için kaydedilmiş denetim noktası verilerini saklamanız gerekir.
 
 ### <a name="where-checkpoint-data-is-stored"></a>Denetim noktası verilerinin depolandığı yer
 
-Uzaklıklar için denetim noktası verileri ZooKeeper'daki olay merkezi tarafından iki kök yoliçinde depolanır:
+Uzaklıklara yönelik denetim noktası verileri, ZooKeeper 'de Olay Hub 'ı tarafından iki kök yolda saklanır:
 
-- İşlem dışı spout denetim noktaları `/eventhubspout`' nda depolanır.
+- İşlem dışı Spout kontrol noktaları içinde `/eventhubspout`depolanır.
 
-- İşlemsel spout denetim noktası `/transactional`verileri .
+- İşlemsel Spout denetim noktası verileri ' de `/transactional`depolanır.
 
-### <a name="how-to-restore"></a>Nasıl geri yüklenir
+### <a name="how-to-restore"></a>Geri yükleme
 
-ZooKeeper'tan veri aktarmak ve verileri yeni bir adla ZooKeeper'a geri aktarmak için kullandığınız komut dosyalarını ve kitaplıkları almak için [HDInsight Storm örneklerine](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0)bakın.
+ZooKeeper 'dan verileri dışarı aktarmak için kullandığınız betikleri ve kitaplıkları almak ve sonra verileri yeni bir adla ZooKeeper 'e geri aktarmak için bkz. [HDInsight fırtınası örnekleri](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/tools/zkdatatool-1.0).
 
-Lib klasöründe dışa aktarma/alma işlemi için uygulama içeren .jar dosyaları vardır. Bash klasöründe, eski kümedeki ZooKeeper sunucusundan veri nasıl dışa aktarılabildiğini ve ardından yeni kümedeki ZooKeeper sunucusuna nasıl aktarılabildiğini gösteren bir örnek komut dosyası vardır.
+LIB klasörü, dışarı aktarma/içeri aktarma işlemi için uygulamayı içeren. jar dosyalarına sahiptir. Bash klasörü, Eski kümedeki ZooKeeper sunucusundan verileri nasıl dışarı aktarabileceğinizi gösteren örnek bir betiğe sahiptir ve sonra bunu yeni kümedeki ZooKeeper sunucusuna geri aktarabilirsiniz.
 
-Veri aktarmak ve sonra veri almak için ZooKeeper düğümlerinden [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) komut dosyası çalıştırın. Komut dosyasını doğru Hortonworks Veri Platformu (HDP) sürümünde güncelleştirin. (Bu komut dosyalarını HDInsight'ta genel hale getirmek için çalışıyoruz. Genel komut dosyaları, kullanıcı tarafından değişiklik yapılmadan kümedeki herhangi bir düğümden çalıştırılabilir.)
+Dışarı aktarmak ve ardından verileri içeri aktarmak için ZooKeeper düğümlerinden [stormmeta.sh](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/tools/zkdatatool-1.0/bash/stormmeta.sh) betiğini çalıştırın. Betiği doğru Hortonçalışmalar veri platformu (HDP) sürümüne güncelleştirin. (Bu betikleri HDInsight 'ta genel hale getirmek için çalışıyoruz. Genel betikler, Kullanıcı tarafından değişiklik yapılmadan kümedeki herhangi bir düğümden çalıştırılabilir.)
 
-Dışa aktarma komutu meta verileri ayarladığınız bir konumda (Azure Blob Depolama veya Azure Veri Gölü Depolaması'nda) Bir Apache Hadoop Dağıtılmış Dosya Sistemi (HDFS) yoluna yazar.
+Dışarı aktar komutu, ayarladığınız bir konuma (Azure Blob Storage veya Azure Data Lake Storage) meta verileri bir Apache Hadoop Dağıtılmış Dosya Sistemi (bir) yoluna yazar.
 
 ### <a name="examples"></a>Örnekler
 
-#### <a name="export-offset-metadata"></a>Dışa aktarma meta verilerini dışa aktarma
+#### <a name="export-offset-metadata"></a>Dışarı aktarma boşluğu meta verileri
 
-1. Denetim noktası ofsetinin dışa aktarılması gereken kümedeki ZooKeeper kümesine gitmek için SSH'yi kullanın.
-2. ZooKeeper ofset verilerini HDFS yoluna aktarmak için aşağıdaki komutu (HDP sürüm dizesini güncelleştirdikten sonra) çalıştırın: `/stormmetadta/zkdata`
+1. Denetim noktası kaydırması gereken kümedeki ZooKeeper kümesine gitmek için SSH kullanın.
+2. ZooKeeper fark verilerini, `/stormmetadta/zkdata` "& lt; 1 & lt; 1} aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter export /eventhubspout /stormmetadata/zkdata
     ```
 
-#### <a name="import-offset-metadata"></a>İçme ofset meta verileri
+#### <a name="import-offset-metadata"></a>İçeri aktarma meta verileri
 
-1. Denetim noktası ofsetinin alınması gereken kümedeki ZooKeeper kümesine gitmek için SSH'yi kullanın.
-2. ZooKeeper ofset verilerini HDFS yolundan `/stormmetadata/zkdata` hedef kümedeki ZooKeeper sunucusuna almak için aşağıdaki komutu (HDP sürüm dizesini güncelledikten sonra) çalıştırın:
+1. Denetim noktası sapmasını içeri aktarılması gereken kümedeki ZooKeeper kümesine gitmek için SSH kullanın.
+2. ZooKeeper x 1 & gt; 1 & lt; 1} ' dan `/stormmetadata/zkdata` hedef kümedeki ZooKeeper sunucusuna veri aktarmak için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter import /eventhubspout /home/sshadmin/zkdata
     ```
 
-#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Topolojilerin verileri en başından veya kullanıcının seçtiği bir zaman damgasından işlemeye başlayabilmesi için uzaklık meta verilerini silme
+#### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>Topolojilerinin başlangıçtan itibaren veya kullanıcının seçtiği bir zaman damgasından veri işlemeye başlayabilmesi için konum meta verilerini silin
 
-1. Denetim noktası ofsetinin silinmesi gereken kümedeki ZooKeeper kümesine gitmek için SSH'yi kullanın.
-2. Geçerli kümedeki tüm ZooKeeper ofset verilerini silmek için aşağıdaki komutu (HDP sürüm dizesini güncelleştirdikten sonra) çalıştırın:
+1. Denetim noktası kaydırması gereken kümedeki ZooKeeper kümesine gitmek için SSH kullanın.
+2. Geçerli kümedeki tüm ZooKeeper sapmayı verilerini silmek için aşağıdaki komutu çalıştırın (HDP sürüm dizesini güncelleştirdikten sonra):
 
     ```apache
     java -cp ./*:/etc/hadoop/conf/*:/usr/hdp/2.5.1.0-56/hadoop/*:/usr/hdp/2.5.1.0-56/hadoop/lib/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/*:/usr/hdp/2.5.1.0-56/hadoop-hdfs/lib/*:/etc/failover-controller/conf/*:/etc/hadoop/* com.microsoft.storm.zkdatatool.ZkdataImporter delete /eventhubspout
     ```
 
-## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Bir kümedeki Fırtına ikililerini nasıl bulurum?
+## <a name="how-do-i-locate-storm-binaries-on-a-cluster"></a>Nasıl yaparım? bir kümedeki fırtınası ikililerini bulun mi?
 
-Mevcut HDP destesi için `/usr/hdp/current/storm-client`fırtına ikilileri bulunmaktadır. Konum hem baş düğümleri hem de işçi düğümleri için aynıdır.
+Geçerli HDP yığınının fırtınası ikilileri `/usr/hdp/current/storm-client`. Konum, hem baş düğümleri hem de çalışan düğümleri için aynıdır.
 
-/usr/hdp'deki belirli HDP sürümleri için birden fazla `/usr/hdp/2.5.0.1233/storm`ikili olabilir (örneğin, ). Klasör, `/usr/hdp/current/storm-client` kümede çalışan en son sürüme bağlı.
+/Usr/HDP içindeki belirli HDP sürümleri için birden çok ikili olabilir (örneğin, `/usr/hdp/2.5.0.1233/storm`). `/usr/hdp/current/storm-client` Klasör, küme üzerinde çalışan en son sürüme bağlı değildir.
 
-Daha fazla bilgi için, SSH ve [Apache](https://storm.apache.org/) [Storm'u kullanarak BIR HDInsight kümesine bağlan'a](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) bakın.
+Daha fazla bilgi için bkz. SSH ve [Apache Storm](https://storm.apache.org/) [kullanarak HDInsight kümesine bağlanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) .
 
-## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Bir Fırtına kümesinin dağıtım topolojisini nasıl belirleyebilirim?
+## <a name="how-do-i-determine-the-deployment-topology-of-a-storm-cluster"></a>Bir fırtınası kümesinin dağıtım topolojisini belirleme Nasıl yaparım? mı?
 
-İlk olarak, HDInsight Storm ile yüklenen tüm bileşenleri tanımlayın. Fırtına kümesi dört düğüm kategorisinden oluşur:
+İlk olarak, HDInsight fırtınası ile yüklenen tüm bileşenleri belirlersiniz. Bir fırtınası kümesi dört düğüm kategorisinden oluşur:
 
-* Ağ geçidi düğümleri
-* Kafa düğümleri
+* Ağ Geçidi düğümleri
+* Baş düğümler
 * ZooKeeper düğümleri
-* İşçi düğümleri
+* Çalışan düğümleri
 
-### <a name="gateway-nodes"></a>Ağ geçidi düğümleri
+### <a name="gateway-nodes"></a>Ağ Geçidi düğümleri
 
-Ağ geçidi düğümü, etkin bir Ambari yönetim hizmetine genel erişim sağlayan bir ağ geçidi ve ters proxy hizmetidir. Parti, Ambari lider seçimlerini de ele alıyor.
+Bir ağ geçidi düğümü, etkin bir ambarı yönetim hizmetine genel erişim sağlayan bir ağ geçidi ve ters proxy hizmetidir. Ayrıca, ambarı öncü seçimi de işler.
 
-### <a name="head-nodes"></a>Kafa düğümleri
+### <a name="head-nodes"></a>Baş düğümler
 
-Fırtına kafa düğümleri aşağıdaki hizmetleri çalıştırın:
+Fırtınası başlığı düğümleri aşağıdaki hizmetleri çalıştırır:
 * Nimbus
-* Ambari sunucusu
-* Ambari Metrics sunucusu
-* Ambari Ölçüleri Toplayıcı
+* Ambarı sunucusu
+* Ambarı ölçüm sunucusu
+* Ambarı ölçüm toplayıcısı
  
 ### <a name="zookeeper-nodes"></a>ZooKeeper düğümleri
 
-HDInsight üç düğümlü ZooKeeper çoğunluğu ile birlikte gelir. Çoğunluk boyutu sabittir ve yeniden yapılandırılamaz.
+HDInsight üç düğümlü bir ZooKeeper çekirdekle gelir. Çekirdek boyutu sabittir ve yeniden yapılandırılamaz.
 
-Kümedeki fırtına hizmetleri, ZooKeeper çoğunluklarını otomatik olarak kullanacak şekilde yapılandırılır.
+Kümedeki fırtınası Hizmetleri, ZooKeeper çekirdeğini otomatik olarak kullanacak şekilde yapılandırılır.
 
-### <a name="worker-nodes"></a>İşçi düğümleri
+### <a name="worker-nodes"></a>Çalışan düğümleri
 
-Fırtına işçi düğümleri aşağıdaki hizmetleri çalıştırın:
+Fırtınası çalışan düğümleri aşağıdaki hizmetleri çalıştırın:
 * Gözetmen
-* İşçi Java sanal makineleri (JVMs), topolojileri çalıştırmak için
-* Ambari ajanı
+* Çalışan topolojiler için çalışan Java sanal makineleri (JVM 'Ler)
+* Ambarı Aracısı
 
-## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Geliştirme için Storm olay merkezi nin ikililerini nasıl bulurum?
+## <a name="how-do-i-locate-storm-event-hub-spout-binaries-for-development"></a>Geliştirme için fırtınası Event hub Spout ikililerini bulun Nasıl yaparım?.
 
-Topolojinizle Birlikte Storm olay hub'ı spout .jar dosyalarını kullanma hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın.
+Topolojiniz ile fırtınası Olay Hub Spout. jar dosyalarını kullanma hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın.
 
 ### <a name="java-based-topology"></a>Java tabanlı topoloji
 
-[HDInsight'ta (Java) Apache Storm ile Azure Etkinlik Hub'larından etkinlikleri işleme](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
+[HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (Java)](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub)
 
-### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# tabanlı topoloji (Mono HDInsight 3.4+ Linux Storm kümeleri üzerine)
+### <a name="c-based-topology-mono-on-hdinsight-34-linux-storm-clusters"></a>C# tabanlı topoloji (mono on HDInsight 3.4 + Linux fırtınası kümeleri)
 
-[HDInsight'ta Apache Storm ile Azure Etkinlik Hub'larından etkinlikleri işleme (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
+[HDInsight üzerinde Apache Storm ile Azure Event Hubs olayları işleme (C#)](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-develop-csharp-event-hub-topology)
 
-### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5+ Linux Storm kümeleri için en son Apache Storm etkinlik merkezi spout ikilileri
+### <a name="latest-apache-storm-event-hub-spout-binaries-for-hdinsight-35-linux-storm-clusters"></a>HDInsight 3.5 + Linux fırtınası kümeleri için en son Apache Storm Event hub Spout ikilileri
 
-HDInsight 3.5+ Linux Storm kümeleriyle çalışan en son Storm etkinlik merkezini nasıl kullanacağınızı öğrenmek için [mvn-repo readme dosyasına](https://github.com/hdinsight/mvn-repo/blob/master/README.md)bakın.
+HDInsight 3.5 + Linux fırtınası kümeleriyle birlikte çalışarak en son fırtınası Olay Hub 'ı nasıl kullanacağınızı öğrenmek için bkz. [MVN-repo Benioku dosyası](https://github.com/hdinsight/mvn-repo/blob/master/README.md).
 
 ### <a name="source-code-examples"></a>Kaynak kodu örnekleri
 
-Azure HDInsight kümesinde Apache Storm topolojisi (Java dilinde yazılmış) kullanarak Azure Event Hub'dan nasıl okunup yazacağınız la ilgili [örneklere](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bakın.
+Azure HDInsight kümesinde Apache Storm topolojisi (Java 'da yazılmış) kullanarak Azure Event hub 'dan okuma ve yazma [örneklerine](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub) bakın.
 
-## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Kümeler üzerindeki Storm Log4J 2 yapılandırma dosyalarını nasıl bulabiliyorum?
+## <a name="how-do-i-locate-storm-log4j-2-configuration-files-on-clusters"></a>Nasıl yaparım?, Log4J 2 yapılandırma dosyalarını kümeler üzerinde bulamıyor musunuz?
 
-Fırtına hizmetleri için [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) yapılandırma dosyalarını tanımlamak için.
+Fırtınası Hizmetleri için [Apache Log4J 2](https://logging.apache.org/log4j/2.x/) yapılandırma dosyalarını belirlemek için.
 
-### <a name="on-head-nodes"></a>Baş düğümleri üzerinde
+### <a name="on-head-nodes"></a>Baş düğümlerde
 
-Nimbus Log4J yapılandırması `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`buradan okunur.
+Nimbus Log4J yapılandırması öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`okundu.
 
-### <a name="on-worker-nodes"></a>İşçi düğümleri üzerinde
+### <a name="on-worker-nodes"></a>Çalışan düğümlerinde
 
-Denetçi Log4J yapılandırması `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`.
+Gözetmen Log4J yapılandırması öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml`okundu.
 
-İşçi Log4J yapılandırma dosyası `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`okunur.
+Worker Log4J yapılandırma dosyası öğesinden `/usr/hdp/\<HDP version>/storm/log4j2/worker.xml`okundu.
 
-Örnekler:`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
+Örnekler`/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
 
 ---
 
-## <a name="not-a-leader-exception"></a>Lider istisnası değil
+## <a name="not-a-leader-exception"></a>Öncü özel durum değil
 
-Bir topoloji gönderirken, kullanıcı benzer bir hata `Topology submission exception, cause not a leader, the current leader is NimbusInfo`iletisi alabilir: .
+Bir topoloji gönderirken Kullanıcı şuna benzer bir hata iletisi alabilir: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
 
-Çözmek için, kullanıcıdüğümleri yeniden başlatmak/yeniden başlatmak için bir bilet dosyalamak gerekebilir. Daha fazla bilgi [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)için bkz.
+Bu sorunu çözmek için, kullanıcıların düğümlerin yeniden başlatılması/yeniden başlatılması için bir bilet dosyası erişmesi gerekebilir. Daha fazla bilgi için bkz [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html)..
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-- [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
+- Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
 
-- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+- [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabına bağlanın. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-- Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.
+- Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.

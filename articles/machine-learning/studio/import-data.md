@@ -1,7 +1,7 @@
 ---
 title: Eğitim verilerini içeri aktarma
 titleSuffix: ML Studio (classic) - Azure
-description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio'ya (klasik) nasıl aktarabilirsiniz? Hangi veri türlerinin ve veri biçimlerinin desteklenedildiğini öğrenin.
+description: Verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarma. Hangi veri türlerinin ve veri biçimlerinin desteklendiğini öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,60 +11,60 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
 ms.openlocfilehash: cee49124a7547399889e425008a8580b9b25945a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79217989"
 ---
-# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio'ya (klasik) aktarın
+# <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Tahmine dayalı bir analitik çözümü geliştirmek ve eğitmek için Machine Learning Studio'da (klasik) kendi verilerinizi kullanmak için şu verilerden veri kullanabilirsiniz: 
+Bir tahmine dayalı analiz çözümü geliştirmek ve eğitebilmek için Machine Learning Studio (klasik) içinde kendi verilerinizi kullanmak için şu verileri kullanabilirsiniz: 
 
-* **Yerel dosya** - Çalışma alanınızda bir veri kümesi modülü oluşturmak için yerel verileri sabit sürücünüzden önceden yükleyin
-* **Çevrimiçi veri kaynakları** - Denemeniz çalışırken birkaç çevrimiçi kaynaktan birinden gelen verilere erişmek için [Veri Alma][import-data] modüllerini kullanın
-* **Machine Learning Studio (klasik) deneyi** - Machine Learning Studio'da veri seti olarak kaydedilen verileri kullanın (klasik)
-* [**Şirket içi SQL Server veritabanı**](use-data-from-an-on-premises-sql-server.md) - Verileri el ile kopyalamak zorunda kalmadan şirket içi SQL Server veritabanındaki verileri kullanın
+* **Yerel dosya** -çalışma alanınızda bir veri kümesi modülü oluşturmak için sabit sürücünüzden yerel verileri zamandan önce yükleyin
+* **Çevrimiçi veri kaynakları** -denemenizin çalıştığı sırada birkaç çevrimiçi kaynaktan birindeki verilere erişmek Için [veri alma][import-data] modülünü kullanın
+* **Machine Learning Studio (klasik) deneme** -Machine Learning Studio (klasik) bir veri kümesi olarak kaydedilmiş verileri kullanma
+* Şirket [**içi SQL Server veritabanı**](use-data-from-an-on-premises-sql-server.md) -verileri el ile kopyalamak zorunda kalmadan şirket içi SQL Server veritabanından veri kullanma
 
 > [!NOTE]
-> Machine Learning Studio'da (klasik) eğitim verileri için kullanabileceğiniz bir dizi örnek veri kümesi vardır. Bunlar hakkında daha fazla bilgi için [bkz.](use-sample-datasets.md)
+> Eğitim verileri için kullanabileceğiniz Machine Learning Studio (klasik) birçok örnek veri kümesi bulunur. Bunlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning Studio (klasik) örnek veri kümelerini kullanma](use-sample-datasets.md).
 
 ## <a name="prepare-data"></a>Verileri hazırlama
 
-Machine Learning Studio (klasik), bazı durumlarda dikdörtgen olmayan veriler kullanılsa da, veritabanından sınırlı veya yapılandırılmış veri içeren metin verileri gibi dikdörtgen veya düz verilerle çalışmak üzere tasarlanmıştır.
+Machine Learning Studio (klasik), bir veritabanından ayrılmış veya yapılandırılmış veriler gibi dikdörtgen veya tablo verileriyle çalışmak üzere tasarlanmıştır, ancak bazı durumlarda dikdörtgen olmayan veriler kullanılabilir.
 
-Studio (klasik) içine almadan önce veri nispeten temiz olması en iyisidir. Örneğin, tırnak içinde olmayan dizeleri gibi sorunları halletmek isteyeceksiniz.
+Verileriniz, Studio 'ya (klasik) içeri aktarmadan önce nispeten daha temiz olursa en iyisidir. Örneğin, tırnak işaretleri olmayan dizeler gibi sorunları ele almak isteyeceksiniz.
 
-Ancak, Studio'da (klasik) verilerinizi aldıktan sonra denemenizdeki verilerin bazı şekilde manipüle edilmesini sağlayan modüller vardır. Kullanacağınız makine öğrenimi algoritmalarına bağlı olarak, eksik değerler ve seyrek veriler gibi veri yapısal sorunlarını nasıl işleyeceğinizkonusunda karar vermeniz gerekebilir ve bu konuda yardımcı olabilecek modüller vardır. Bu işlevleri gerçekleştiren modüller için modül paletinin **Veri Dönüşümü** bölümüne bakın.
+Ancak, Studio 'da (klasik), verilerinizi içeri aktardıktan sonra denemenizin bazı verileri işlemesini sağlayan modüller mevcuttur. Kullanacağınız makine öğrenimi algoritmalarına bağlı olarak, eksik değerler ve seyrek veriler gibi veri yapısal sorunlarını nasıl işleyeceğinize ve bu konuda yardımcı olabilecek modüller vardır. Bu işlevleri gerçekleştiren modüller için modül paleti ' nin **veri dönüştürme** bölümüne bakın.
 
-Denemenizin herhangi bir noktasında, çıkış bağlantı noktasını tıklatarak bir modül tarafından üretilen verileri görüntüleyebilir veya indirebilirsiniz. Modüle bağlı olarak, farklı indirme seçenekleri olabilir veya Studio'da (klasik) web tarayıcınızdaki verileri görselleştirebilirsiniz.
+Denemenizin herhangi bir noktasında, çıkış bağlantı noktasına tıklayarak bir modül tarafından üretilen verileri görüntüleyebilir veya indirebilirsiniz. Modüle bağlı olarak, farklı indirme seçenekleri olabilir veya verileri Studio 'daki (klasik) Web tarayıcınızda görselleştirmeniz mümkün olabilir.
 
 ## <a name="supported-data-formats-and-data-types"></a>Desteklenen veri biçimleri ve veri türleri
 
-Verileri almak için hangi mekanizmayı kullandığınıza ve nereden geldiğine bağlı olarak denemenize bir dizi veri türü aktarabilirsiniz:
+Verileri içeri aktarmak için kullandığınız mekanizmaya ve nereden geldiğini bağlı olarak denemenize bir dizi veri türü aktarabilirsiniz:
 
-* Düz metin (.txt)
-* Virgülle ayrılmış değerler (CSV) üstbilgi (.csv) veya olmadan (.nh.csv)
-* Üstbilgi (.tsv) veya (.nh.tsv) olmayan sekme ayrılmış değerler (TSV)
+* Düz metin (. txt)
+* Üst bilgiyle (. csv) veya (. NH. csv) olmayan virgülle ayrılmış değerler (CSV)
+* Üst bilgi (. TSV) veya (. NH. TSV) içermeyen sekmeyle ayrılmış değerler (TSV)
 * Excel dosyası
 * Azure tablosu
-* Kovan masası
+* Hive tablosu
 * SQL veritabanı tablosu
 * OData değerleri
-* SVMLight verileri (.svmlight) (biçim bilgileri için [SVMLight tanımına](http://svmlight.joachims.org/) bakın)
-* Öznitelik İlişkisi Dosya Biçimi (ARFF) verileri (.arff) (biçim bilgileri için [ARFF tanımına](https://weka.wikispaces.com/ARFF) bakın)
-* Zip dosyası (.zip)
-* R nesnesi veya çalışma alanı dosyası (. RData)
+* SVMLight verileri (. svmlight) (biçim bilgileri için [svmlight tanımına](http://svmlight.joachims.org/) bakın)
+* Öznitelik Ilişki dosyası biçimi (ARFF) verileri (. arff) (biçim bilgileri için [arff tanımına](https://weka.wikispaces.com/ARFF) bakın)
+* ZIP dosyası (. zip)
+* R nesnesi veya çalışma alanı dosyası (. RDATA
 
-Meta verileri içeren ARFF gibi bir biçimde veri alıyorsanız, Studio (klasik) her sütunun başlık ve veri türünü tanımlamak için bu meta verileri kullanır.
+Verileri de içeren ARFF gibi bir biçimde içeri aktarırsanız, Studio (klasik), her bir sütunun başlığını ve veri türünü tanımlamak için bu meta verileri kullanır.
 
-Bu meta verileri içermeyen TSV veya CSV biçimi gibi verileri içe aktarıyorsanız, Studio (klasik) verileri örnekleyerek her sütun için veri türünü çıkartır. Verilerde sütun başlıkları da yoksa, Studio (klasik) varsayılan adlar sağlar.
+Bu meta verileri içermeyen TSV veya CSV biçimi gibi verileri içeri aktarırsanız, Studio (klasik), verileri örnekleyerek her bir sütunun veri türünü alır. Veride de sütun başlıkları yoksa, Studio (klasik) varsayılan adlar sağlar.
 
-[Meta verileri edit][edit-metadata] modülünü kullanarak sütunların başlıklarını ve veri türlerini açıkça belirtebilir veya değiştirebilirsiniz.
+[Meta verileri Düzenle][edit-metadata] modülünü kullanarak sütunlar için başlıkları ve veri türlerini açıkça belirtebilir veya değiştirebilirsiniz.
 
-Aşağıdaki veri türleri Studio (klasik) tarafından tanınır:
+Aşağıdaki veri türleri Studio tarafından tanınır (klasik):
 
 * Dize
 * Tamsayı
@@ -73,16 +73,16 @@ Aşağıdaki veri türleri Studio (klasik) tarafından tanınır:
 * DateTime
 * TimeSpan
 
-Studio, modüller arasında veri aktarmak için ***veri tablosu*** adı verilen bir dahili veri türü kullanır. [Dataset'e Dönüştür][convert-to-dataset] modüllerini kullanarak verilerinizi açıkça veri tablosu biçimine dönüştürebilirsiniz.
+Studio, modüller arasında veri geçirmek için ***veri tablosu*** adlı bir iç veri türü kullanır. Veri [kümesine Dönüştür][convert-to-dataset] modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz.
 
 Veri tablosu dışındaki biçimleri kabul eden herhangi bir modül, verileri bir sonraki modüle geçirmeden önce sessizce veri tablosuna dönüştürür.
 
-Gerekirse, diğer dönüşüm modüllerini kullanarak veri tablosu biçimini CSV, TSV, ARFF veya SVMLight biçimine dönüştürebilirsiniz.
-Bu işlevleri gerçekleştiren modüller için modül paletinin **Veri Biçimi Dönüşümleri** bölümüne bakın.
+Gerekirse, diğer dönüştürme modüllerini kullanarak veri tablosu biçimini CSV, TSV, ARFF veya SVMLight biçimine dönüştürebilirsiniz.
+Bu işlevleri gerçekleştiren modüller için modül paleti ' nin **veri biçimi dönüştürmeleri** bölümüne bakın.
 
 ## <a name="data-capacities"></a>Veri kapasiteleri
 
-Machine Learning Studio'daki (klasik) modüller, yaygın kullanım durumları için 10 GB'a kadar yoğun sayısal veri veri kümelerini destekler. Bir modülün birden fazla giriş aldığı durumlarda 10 GB değeri tüm giriş boyutlarının toplamıdır. Hive veya Azure SQL Veritabanı'ndaki sorguları kullanarak daha büyük veri kümelerini örnekleyebilir veya verileri almadan önce Öğrenme yi Saymalar adedine göre önceden işleme yi kullanabilirsiniz.  
+Machine Learning Studio (klasik) içindeki modüller, yaygın kullanım örnekleri için en fazla 10 GB 'lık veri kümesini destekler. Bir modülün birden fazla giriş aldığı durumlarda 10 GB değeri tüm giriş boyutlarının toplamıdır. Hive veya Azure SQL veritabanı sorgularını kullanarak daha büyük veri kümeleri örnekleyebilirsiniz ya da verileri içeri aktarmadan önce, öğrenimini, ön işleme sayısını kullanarak kullanabilirsiniz.  
 
 Aşağıdaki veri türleri, özellik normalleştirme sırasında daha büyük veri kümelerine genişleyebilir ve boyutu 10 GB’den az olacak şekilde sınırlıdır:
 
@@ -99,89 +99,89 @@ Aşağıdaki modüller, boyutu 10 GB'den az veri kümeleriyle sınırlıdır:
 * Katılma veya Özellik Karma gibi çıkış veri boyutunun giriş veri boyutundan büyük olabileceği modüller
 * Yineleme sayısının çok büyük olduğu durumlarda Çapraz doğrulama, Model Ayarlama Hiperparametreleri, Sıralı Regresyon ve Tek veya Tüm Çoklu Sınıflar
 
-Birkaç GB'den daha büyük veri kümeleri için verileri Azure Depolama veya Azure SQL Veritabanı'na yükleyin veya doğrudan yerel bir dosyadan yüklemek yerine Azure HDInsight'ı kullanın.
+Birkaç GB 'den daha büyük olan veri kümelerinde, verileri Azure Storage veya Azure SQL veritabanı 'na yükleyin ya da doğrudan yerel bir dosyadan yüklemek yerine Azure HDInsight kullanın.
 
-Görüntü verileri hakkında bilgileri [Alma Görüntüleri](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) modülü referansında bulabilirsiniz.
+Görüntü verileri hakkında, [görüntüleri Içeri aktarma](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) modül başvurusunda bilgi edinebilirsiniz.
 
-## <a name="import-from-a-local-file"></a>Yerel bir dosyadan alma
+## <a name="import-from-a-local-file"></a>Yerel bir dosyadan içeri aktar
 
-Studio'da (klasik) eğitim verisi olarak kullanmak için sabit diskinizden bir veri dosyası yükleyebilirsiniz. Bir veri dosyası içe aktarırken, çalışma alanınızdaki denemelerde kullanıma hazır bir veri kümesi modülü oluşturursunuz.
+Sabit sürücünüzden, Studio 'da eğitim verileri olarak kullanılacak bir veri dosyası yükleyebilirsiniz (klasik). Bir veri dosyasını içeri aktardığınızda, çalışma alanınızda denemeleri içinde kullanıma yönelik bir veri kümesi modülü oluşturursunuz.
 
-Yerel bir sabit diskten veri almak için aşağıdakileri yapın:
+Yerel bir sabit sürücüden verileri içeri aktarmak için aşağıdakileri yapın:
 
-1. Studio (klasik) penceresinin altındaki **+Yenİ'yi** tıklatın.
-2. **DATASET** ve **YEREL DOSYADAN'ı**seçin.
-3. Yeni **bir veri seti yükle** iletişim kutusunda, yüklemek istediğiniz dosyaya göz atın.
-4. Bir ad girin, veri türünü tanımlayın ve isteğe bağlı olarak bir açıklama girin. Bir açıklama önerilir - gelecekte verileri kullanırken hatırlamak istediğiniz verilerle ilgili tüm özellikleri kaydetmenize olanak tanır.
-5. Onay kutusu **Varolan bir veri kümesinin yeni sürümüdür,** varolan bir veri kümesini yeni verilerle güncelleştirmenize olanak tanır. Bunu yapmak için bu onay kutusunu tıklatın ve ardından varolan bir veri kümesinin adını girin.
+1. Studio (klasik) penceresinin alt kısmındaki **+ Yeni** seçeneğine tıklayın.
+2. **Veri kümesi** ve **yerel dosya**' yı seçin.
+3. **Yeni bir veri kümesini karşıya yükle** iletişim kutusunda, karşıya yüklemek istediğiniz dosyaya gidin.
+4. Bir ad girin, veri türünü belirtin ve isteğe bağlı olarak bir açıklama girin. Bir açıklama önerilir; gelecekte verileri kullanırken hatırlamak istediğiniz veriler hakkında herhangi bir özelliği kaydetmenize olanak tanır.
+5. Bu onay kutusu, **mevcut bir veri kümesinin yeni sürümüdür** ve mevcut bir veri kümesini yeni verilerle güncelleştirmenize olanak tanır. Bunu yapmak için, bu onay kutusuna tıklayın ve ardından mevcut bir veri kümesinin adını girin.
 
-![Yeni bir veri kümesi yükleme](./media/import-data/upload-dataset-from-local-file.png)
+![Yeni bir veri kümesini karşıya yükle](./media/import-data/upload-dataset-from-local-file.png)
 
-Yükleme süresi, verilerinizin boyutuna ve hizmete olan bağlantınızın hızına bağlıdır. Dosyanın uzun zaman alacağını biliyorsanız, beklerken Studio (klasik) içinde başka şeyler yapabilirsiniz. Ancak, veri yüklemesi tamamlanmadan tarayıcıyı kapatmak yüklemenin başarısız olmasının nedenidir.
+Karşıya yükleme süresi verilerinizin boyutuna ve hizmetle olan bağlantınızın hızına bağlıdır. Dosyanın uzun sürdüğüne sahipseniz, beklerken Studio (klasik) içinde başka şeyler yapabilirsiniz. Ancak, verilerin karşıya yüklenmesi tamamlanmadan önce tarayıcının kapatılması, yükleme işleminin başarısız olmasına neden olur.
 
-Verileriniz yüklendikten sonra, bir veri kümesi modülünde depolanır ve çalışma alanınızdaki tüm denemeler için kullanılabilir.
+Verileriniz karşıya yüklendikten sonra, veri kümesi modülünde depolanır ve çalışma alanınızdaki her türlü deneme için kullanılabilir.
 
-Bir denemeyi düzenlerken, yüklediğiniz veri kümelerini modül paletinde Kayıtlı Veri **Kümeleri** listesinin altında **Veri Kümelerim** listesinde bulabilirsiniz. Daha fazla analitik ve makine öğrenimi için veri kümesini kullanmak istediğinizde veri kümesini sürükleyip deneme tuvaline bırakabilirsiniz.
+Bir deneme düzenlenirken, modül paletindeki **kayıtlı veri** kümeleri listesinin altındaki **veri kümelerinde** karşıya yüklediğiniz veri kümelerini bulabilirsiniz. Daha fazla analiz ve makine öğrenimi için veri kümesini kullanmak istediğinizde veri kümesini deneme tuvaline sürükleyip bırakabilirsiniz.
 
-## <a name="import-from-online-data-sources"></a>Çevrimiçi veri kaynaklarından alma
+## <a name="import-from-online-data-sources"></a>Çevrimiçi veri kaynaklarından içeri aktar
 
-[Denemeniz Veri Alma][import-data] modüllerini kullanarak, deneme çalışırken çeşitli çevrimiçi veri kaynaklarından veri aktarabilir.
+[Veri alma][import-data] modülünü kullanarak, denemenizin çalışması sırasında çeşitli çevrimiçi veri kaynaklarından verileri içeri aktarabiliyor.
 
 > [!NOTE]
-> Bu [makalede, Alma Verileri][import-data] modülü hakkında genel bilgiler verilmektedir. Erişebileceğiniz veri türleri, biçimler, parametreler ve sık sorulan soruların yanıtları hakkında daha ayrıntılı bilgi [için, İçe İşlem Verileri][import-data] modülü için modül başvuru konusuna bakın.
+> Bu makalede, [verileri Içeri aktarma][import-data] modülü hakkında genel bilgiler sağlanmaktadır. Erişebileceğiniz veri türleri hakkında daha ayrıntılı bilgi için, bkz. [veri alma][import-data] modülü için modül başvurusu konusu.
 
-[Veri Alma][import-data] modüllerini kullanarak, denemeniz çalışırken birkaç çevrimiçi veri kaynağından verilere erişebilirsiniz:
+[Veri alma][import-data] modülünü kullanarak, denemenizin çalıştığı sırada çeşitli çevrimiçi veri kaynaklarından birindeki verilere erişebilirsiniz:
 
-* HTTP'yi kullanan bir Web URL'si
+* HTTP kullanan bir Web URL 'SI
 * HiveQL kullanarak Hadoop
 * Azure blob depolama
 * Azure tablosu
-* Azure VM'de Azure SQL veritabanı veya SQL Server
+* Azure VM 'de Azure SQL veritabanı veya SQL Server
 * Şirket içi SQL Server veritabanı
-* Bir veri akışı sağlayıcısı, OData şu anda
+* Bir veri akışı sağlayıcısı, OData Şu anda
 * Azure Cosmos DB
 
-Bu eğitim verilerine denemeniz çalışırken erişilenbu değer olduğundan, yalnızca bu denemede kullanılabilir. Buna karşılık, bir veri kümesi modülünde depolanan veriler çalışma alanınızdaki tüm denemeler için kullanılabilir.
+Denemeniz çalışırken bu eğitim verilerine erişildiği için, bu deneme sürümünde yalnızca kullanılabilir. Karşılaştırma ile, bir veri kümesi modülünde depolanan veriler, çalışma alanınızdaki her türlü deneme tarafından kullanılabilir.
 
-Studio (klasik) denemenizde çevrimiçi veri kaynaklarına erişmek için denemenize [Veri Aktar][import-data] modüllerini ekleyin. Ardından, veri kaynağını seçmek ve yapılandırmak için adım adım kılavuzlu yönergeler için **Özellikler** altında **Veri Al'ı Başlat'ı** seçin. Alternatif olarak, **Özellikler** altında **Veri kaynağını** el ile seçebilir ve verilere erişmek için gereken parametreleri sağlayabilirsiniz.
+Studio (klasik) denemenizin çevrimiçi veri kaynaklarına erişmek için [veri Içeri aktarma][import-data] modülünü denemenize ekleyin. Ardından, veri kaynağını seçmek ve yapılandırmak için adım adım kılavuzlu yönergeler için **Özellikler** altında, **Verileri İçeri Aktarma Sihirbazı** ' nı seçin. Alternatif olarak, **Özellikler** altında **veri kaynağını** el ile seçebilir ve verilere erişmek için gereken parametreleri sağlayabilirsiniz.
 
-Desteklenen çevrimiçi veri kaynakları aşağıdaki tabloda açıklanmıştır. Bu tablo, desteklenen dosya biçimlerini ve verilere erişmek için kullanılan parametreleri de özetler.
+Desteklenen çevrimiçi veri kaynakları aşağıdaki tabloda listelenir. Bu tablo ayrıca desteklenen dosya biçimlerini ve verilere erişmek için kullanılan parametreleri özetler.
 
 > [!IMPORTANT]
-> Şu anda, [Veri Ve][import-data] [Dışa Aktarma Verileri][export-data] modülleri verileri yalnızca Klasik dağıtım modeli kullanılarak oluşturulan Azure depolamasından okuyabilir ve yazabilir. Başka bir deyişle, sıcak depolama erişim katmanı veya havalı depolama erişim katmanı sunan yeni Azure Blob Depolama hesabı türü henüz desteklenmedi.
+> Şu anda, verileri [Içeri aktarma][import-data] ve [dışarı aktarma][export-data] modülleri yalnızca klasik dağıtım modeli kullanılarak oluşturulan Azure Storage 'dan verileri okuyabilir ve yazabilir. Diğer bir deyişle, sık erişimli depolama erişim katmanı veya seyrek erişimli depolama erişim katmanı sunan yeni Azure Blob depolama hesabı türü henüz desteklenmiyor.
 >
-> Genellikle, bu hizmet seçeneği kullanıma sunulmadan önce oluşturmuş olabileceğiniz Azure depolama hesapları etkilenmemelidir.
-> Yeni bir hesap oluşturmanız gerekiyorsa, Dağıtım modeli için **Klasik'i** seçin veya Kaynak yöneticisini kullanın ve **Hesap türü**için **Blob depolama alanı** yerine Genel **amaçlı'yı** seçin.
+> Genellikle, bu hizmet seçeneği sunulmadan önce oluşturmuş olabileceğiniz tüm Azure depolama hesapları etkilenmemelidir.
+> Yeni bir hesap oluşturmanız gerekiyorsa, dağıtım modeli için **Klasik** ' i seçin veya Resource Manager ' ı kullanın ve **Hesap türü**Için **BLOB depolama** yerine **genel amaçlı** ' i seçin.
 >
-> Daha fazla bilgi için Azure [Blob Depolama: Sıcak ve Serin Depolama Katmanları'na](../../storage/blobs/storage-blob-storage-tiers.md)bakın.
+> Daha fazla bilgi için bkz. [Azure Blob depolama: sık ve seyrek erişimli depolama katmanları](../../storage/blobs/storage-blob-storage-tiers.md).
 
 ### <a name="supported-online-data-sources"></a>Desteklenen çevrimiçi veri kaynakları
-Azure Machine Learning Studio (klasik) **Alma Verimodülü** aşağıdaki veri kaynaklarını destekler:
+Azure Machine Learning Studio (klasik) **veri alma** modülü aşağıdaki veri kaynaklarını destekler:
 
 | veri kaynağı | Açıklama | Parametreler |
 | --- | --- | --- |
-| HTTP üzerinden Web URL |Virgülle ayrılmış değerler (CSV), sekme ayrılmış değerler (TSV), öznitelik ilişkisi dosya biçimi (ARFF) ve Destek Vektör Makineleri (SVM-ışık) biçimlerindeki verileri HTTP kullanan herhangi bir web URL'sinden okur |<b>URL</b>: Site URL'si ve dosya adı da dahil olmak üzere dosyanın tam adını herhangi bir uzantıyla belirtir. <br/><br/><b>Veri biçimi</b>: Desteklenen veri biçimlerinden birini belirtir: CSV, TSV, ARFF veya SVM-light. Verilerin üstbilgi satırı varsa, sütun adlarını atamak için kullanılır. |
-| Hadoop/HDFS |Hadoop'taki dağıtılmış depolamadan gelen verileri okur. SQL benzeri bir sorgu dili olan HiveQL kullanarak istediğiniz verileri belirtirsiniz. HiveQL, verileri Studio'ya (klasik) eklemeden önce verileri toplamak ve veri filtreleme gerçekleştirmek için de kullanılabilir. |<b>Hive veritabanı sorgusu</b>: Verileri oluşturmak için kullanılan Hive sorgusunu belirtir.<br/><br/><b>HCatalog server URI</b> : * &lt;Küme&gt;adınızı .azurehdinsight.net biçimini kullanarak kümenizin adını belirtir.*<br/><br/><b>Hadoop kullanıcı hesabı adı</b>: Kümeyi sağlamak için kullanılan Hadoop kullanıcı hesap adını belirtir.<br/><br/><b>Hadoop kullanıcı hesabı parolası</b> : Kümeyi sağlarken kullanılan kimlik bilgilerini belirtir. Daha fazla bilgi için [HDInsight'ta Hadoop kümeleri oluştur'a](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)bakın.<br/><br/><b>Çıktı verilerinin konumu</b>: Verilerin Hadoop dağıtılmış dosya sisteminde (HDFS) mi yoksa Azure'da mı depolandığını belirtir. <br/><ul>Çıktı verilerini HDFS'de depolarsanız, HDFS sunucusu URI'yi belirtin. (HTTPS:// öneki olmadan HDInsight küme adını kullandığınızdan emin olun). <br/><br/>Çıktı verilerinizi Azure'da depolarsanız, Azure depolama hesabı adını, Depolama erişim anahtarını ve Depolama kapsayıcı adını belirtmeniz gerekir.</ul> |
-| SQL veritabanı |Azure SQL veritabanında veya Azure sanal makinesinde çalışan bir SQL Server veritabanında depolanan verileri okur. |<b>Veritabanı sunucu adı</b>: Veritabanının çalıştırıldığı sunucunun adını belirtir.<br/><ul>Azure SQL Veritabanı durumunda oluşturulan sunucu adını girin. Genellikle * &lt;&gt;generated_identifier .database.windows.net biçimine sahiptir.* <br/><br/>Azure Sanal makinede barındırılan bir SQL sunucusu durumunda *tcp&lt;&gt;girin: Virtual Machine DNS Adı , 1433*</ul><br/><b>Veritabanı adı </b>: Sunucudaki veritabanının adını belirtir. <br/><br/><b>Sunucu kullanıcı hesabı adı</b>: Veritabanı için erişim izinleri olan bir hesap için kullanıcı adı belirtir. <br/><br/><b>Sunucu kullanıcı hesabı parolası</b>: Kullanıcı hesabının parolasını belirtir.<br/><br/><b>Veritabanı sorgusu</b>:Okumak istediğiniz verileri açıklayan bir SQL deyimi girin. |
-| Şirket içi SQL veritabanı |Şirket içi BIR SQL veritabanında depolanan verileri okur. |<b>Veri ağ geçidi</b>: SQL Server veritabanınıza erişebileceği bir bilgisayarda yüklü olan Veri Yönetimi Ağ Geçidi'nin adını belirtir. Ağ geçidini ayarlama hakkında daha fazla bilgi için, [şirket içi bir SQL sunucusundan gelen verileri kullanarak Azure Machine Learning Studio (klasik) ile gelişmiş analizler gerçekleştirin'e](use-data-from-an-on-premises-sql-server.md)bakın.<br/><br/><b>Veritabanı sunucu adı</b>: Veritabanının çalıştırıldığı sunucunun adını belirtir.<br/><br/><b>Veritabanı adı </b>: Sunucudaki veritabanının adını belirtir. <br/><br/><b>Sunucu kullanıcı hesabı adı</b>: Veritabanı için erişim izinleri olan bir hesap için kullanıcı adı belirtir. <br/><br/><b>Kullanıcı adı ve şifre</b>: Veritabanı kimlik bilgilerinizi girmek için <b>değerleri girin'i</b> tıklatın. Şirket içi SQL Server'ınızın nasıl yapılandırıldığına bağlı olarak Windows Tümleşik Kimlik Doğrulama veya SQL Server Kimlik Doğrulaması'nı kullanabilirsiniz.<br/><br/><b>Veritabanı sorgusu</b>:Okumak istediğiniz verileri açıklayan bir SQL deyimi girin. |
-| Azure Tablosu |Azure Depolama'daki Tablo hizmetinden gelen verileri okur.<br/><br/>Büyük miktarda veriyi seyrek okuyorsanız, Azure Tablo Hizmeti'ni kullanın. Esnek, ilişkisel olmayan (NoSQL), büyük ölçüde ölçeklenebilir, ucuz ve yüksek kullanılabilir depolama çözümü sağlar. |**İçe Aktar** Verisi'ndeki seçenekler, herkese açık bilgilere mi yoksa giriş kimlik bilgilerini gerektiren özel bir depolama hesabına mı erişiyor olduğunuza bağlı olarak değişir. Bu, her biri kendi parametre kümesine sahip olan "PublicOrSAS" veya "Account" değerine sahip olan <b>Kimlik Doğrulama Türü</b> tarafından belirlenir. <br/><br/><b>Ortak veya Paylaşılan Erişim İmzası (SAS) URI</b>: Parametreler şunlardır:<br/><br/><ul><b>Tablo URI</b>: Tablo için Genel veya SAS URL'sini belirtir.<br/><br/><b>Özellik adlarını tarayan satırları belirtir:</b>Belirtilen satır sayısını tarayan <i>topn</i> veya tablodaki tüm satırları almak için <i>ScanAll</i> değerleridir. <br/><br/>Veriler homojen ve öngörülebilirse, *TopN'u* seçmeniz ve N için bir sayı girmeniz önerilir. Büyük tablolar için bu, daha hızlı okuma sürelerine neden olabilir.<br/><br/>Veriler, tablonun derinliğine ve konumuna bağlı olarak değişen özellik kümeleriyle yapılandırılmışsa, tüm satırları tarayıp *ScanAll* seçeneğini belirleyin. Bu, ortaya çıkan özelliğinizin ve meta veri dönüştürmenizin bütünlüğünü sağlar.<br/><br/></ul><b>Özel Depolama Hesabı</b>: Parametreler şunlardır: <br/><br/><ul><b>Hesap adı</b>: Okunacak tabloyu içeren hesabın adını belirtir.<br/><br/><b>Hesap anahtarı</b>: Hesapla ilişkili depolama anahtarını belirtir.<br/><br/><b>Tablo adı</b> : Okunacak verileri içeren tablonun adını belirtir.<br/><br/><b>Özellik adlarını tarayan satırlar</b>: Belirtilen satır sayısını tarayan <i>TopN</i> veya tablodaki tüm satırları almak için <i>ScanAll'dır.</i><br/><br/>Veriler homojen ve öngörülebilirse, *TopN'u* seçmenizi ve N için bir sayı girmenizi öneririz. Büyük tablolar için bu, daha hızlı okuma sürelerine neden olabilir.<br/><br/>Veriler, tablonun derinliğine ve konumuna bağlı olarak değişen özellik kümeleriyle yapılandırılmışsa, tüm satırları tarayıp *ScanAll* seçeneğini belirleyin. Bu, ortaya çıkan özelliğinizin ve meta veri dönüştürmenizin bütünlüğünü sağlar.<br/><br/> |
-| Azure Blob Depolama |Görüntüler, yapılandırılmamış metin veya ikili veriler de dahil olmak üzere Azure Depolama'daki Blob hizmetinde depolanan verileri okur.<br/><br/>Verileri herkese açık olarak ortaya çıkarmak veya uygulama verilerini özel olarak depolamak için Blob hizmetini kullanabilirsiniz. HTTP veya HTTPS bağlantılarını kullanarak verilerinize her yerden erişebilirsiniz. |**Veri Alma** modülündeki seçenekler, herkese açık bilgilere mi yoksa giriş kimlik bilgilerini gerektiren özel bir depolama hesabına mı erişiyor olduğunuza bağlı olarak değişir. Bu, "PublicOrSAS" veya "Account" değerine sahip olabilecek <b>Kimlik Doğrulama Türü</b> tarafından belirlenir.<br/><br/><b>Ortak veya Paylaşılan Erişim İmzası (SAS) URI</b>: Parametreler şunlardır:<br/><br/><ul><b>URI</b>: Depolama blob için Genel veya SAS URL'sini belirtir.<br/><br/><b>Dosya Biçimi</b>: Blob hizmetindeki verilerin biçimini belirtir. Desteklenen biçimler CSV, TSV ve ARFF'dir.<br/><br/></ul><b>Özel Depolama Hesabı</b>: Parametreler şunlardır: <br/><br/><ul><b>Hesap adı</b>: Okumak istediğiniz blob içeren hesabın adını belirtir.<br/><br/><b>Hesap anahtarı</b>: Hesapla ilişkili depolama anahtarını belirtir.<br/><br/><b>Kapsayıcıya, dizin veya blob yolu</b> : Okunacak verileri içeren blob'un adını belirtir.<br/><br/><b>Blob dosya biçimi</b>: Blob hizmetindeki verilerin biçimini belirtir. Desteklenen veri biçimleri CSV, TSV, ARFF, CSV ve Excel'dir. <br/><br/><ul>Biçim CSV veya TSV ise, dosyanın üstbilgi satırı bulunup içermediğini belirttiğinden emin olun.<br/><br/>Excel çalışma kitaplarındaki verileri okumak için Excel seçeneğini kullanabilirsiniz. Excel <i>veri biçimi</i> seçeneğinde, verilerin Excel çalışma sayfası aralığında mı yoksa Excel tablosunda mı olduğunu belirtin. Excel <i>sayfası veya katıştırılmış tablo </i>seçeneğinde, okumak istediğiniz sayfanın veya tablonun adını belirtin.</ul><br/> |
-| Veri Akışı Sağlayıcısı |Desteklenen bir akış sağlayıcısından gelen verileri okur. Şu anda yalnızca Açık Veri Protokolü (OData) biçimi desteklenmektedir. |<b>Veri içeriği türü</b>: OData biçimini belirtir.<br/><br/><b>Kaynak URL</b>: Veri akışı için tam URL'yi belirtir. <br/>Örneğin, Northwind örnek veritabanından aşağıdaki URL okur:https://services.odata.org/northwind/northwind.svc/ |
+| HTTP aracılığıyla Web URL 'SI |HTTP kullanan herhangi bir Web URL 'sinden, virgülle ayrılmış değerler (CSV), sekmeyle ayrılmış değerler (TSV), öznitelik ilişkisi dosya biçimi (ARFF) ve destek vektör makineleri (SVM-Light) biçimleri içindeki verileri okur |<b>URL</b>: herhangi bir uzantıya sahip site URL 'si ve dosya adı da dahil olmak üzere dosyanın tam adını belirtir. <br/><br/><b>Veri biçimi</b>: desteklenen veri biçimlerinden birini BELIRTIR: CSV, TSV, arff veya SVM-Light. Verilerin bir başlık satırı varsa, sütun adlarını atamak için kullanılır. |
+| Hadoop/bir |Hadoop 'daki dağıtılmış depolama alanından verileri okur. SQL benzeri bir sorgu dili olan HiveQL kullanarak istediğiniz verileri belirtirsiniz. HiveQL, verileri toplamak ve verileri Studio 'ya (klasik) eklemeden önce veri filtrelemeyi gerçekleştirmek için de kullanılabilir. |<b>Hive veritabanı sorgusu</b>: verileri oluşturmak Için kullanılan Hive sorgusunu belirtir.<br/><br/><b>Hcatalog sunucusu URI 'si</b> : Kümenizin adı, * &lt;Kümenizin adı&gt;. azurehdinsight.net biçimi kullanılarak belirtildi.*<br/><br/><b>Hadoop Kullanıcı hesabı adı</b>: kümeyi sağlamak Için kullanılan Hadoop Kullanıcı hesabının adını belirtir.<br/><br/><b>Hadoop Kullanıcı hesabı parolası</b> : küme sağlanırken kullanılan kimlik bilgilerini belirtir. Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop kümeleri oluşturma](/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).<br/><br/><b>Çıkış verilerinin konumu</b>: verilerin bir Hadoop Dağıtılmış dosya sistemi 'nde mi yoksa Azure 'da mı depolandığını belirtir. <br/><ul>Çıktı verilerini bir olarak depoladığınızda,,,,, bir sunucu URI 'sini belirtin. (HDInsight kümesi adını HTTPS://ön eki olmadan kullandığınızdan emin olun). <br/><br/>Çıktı verilerinizi Azure 'da depolarsanız, Azure depolama hesabı adı, depolama erişim anahtarı ve depolama kapsayıcısı adı ' nı belirtmeniz gerekir.</ul> |
+| SQL veritabanı |Bir Azure SQL veritabanında veya Azure sanal makinesinde çalışan bir SQL Server veritabanında depolanan verileri okur. |<b>Veritabanı sunucusu adı</b>: veritabanının çalıştığı sunucunun adını belirtir.<br/><ul>Azure SQL veritabanı durumunda oluşturulan sunucu adını girin. Genellikle * &lt;&gt;generated_identifier. Database.Windows.net biçiminde olur.* <br/><br/>Azure sanal makinesinde barındırılan bir SQL Server söz konusu olduğunda *TCP:&lt;sanal makine DNS adı&gt;, 1433* yazın</ul><br/><b>Veritabanı adı </b>: sunucudaki veritabanının adını belirtir. <br/><br/><b>Sunucu Kullanıcı hesabı adı</b>: veritabanı için erişim izinlerine sahip olan bir hesabın kullanıcı adını belirtir. <br/><br/><b>Sunucu Kullanıcı hesabı parolası</b>: Kullanıcı hesabının parolasını belirtir.<br/><br/><b>Veritabanı sorgusu</b>: okumak istediğiniz verileri açıklayan bir SQL açıklaması girin. |
+| Şirket içi SQL veritabanı |Şirket içi SQL veritabanında depolanan verileri okur. |<b>Veri ağ geçidi</b>: SQL Server veritabanınıza erişebileceği bir bilgisayarda yüklü veri yönetimi ağ geçidinin adını belirtir. Ağ geçidini ayarlama hakkında daha fazla bilgi için bkz. Şirket [ıçı SQL Server 'dan verileri kullanarak Azure Machine Learning Studio (klasik) ile gelişmiş analiz gerçekleştirme](use-data-from-an-on-premises-sql-server.md).<br/><br/><b>Veritabanı sunucusu adı</b>: veritabanının çalıştığı sunucunun adını belirtir.<br/><br/><b>Veritabanı adı </b>: sunucudaki veritabanının adını belirtir. <br/><br/><b>Sunucu Kullanıcı hesabı adı</b>: veritabanı için erişim izinlerine sahip olan bir hesabın kullanıcı adını belirtir. <br/><br/><b>Kullanıcı adı ve parola</b>: veritabanı kimlik bilgilerinizi girmek Için <b>değer girin</b> ' e tıklayın. Şirket içi SQL Server nasıl yapılandırıldığına bağlı olarak Windows tümleşik kimlik doğrulaması veya SQL Server kimlik doğrulaması kullanabilirsiniz.<br/><br/><b>Veritabanı sorgusu</b>: okumak istediğiniz verileri açıklayan bir SQL açıklaması girin. |
+| Azure Tablosu |Azure depolama 'daki tablo hizmetinden verileri okur.<br/><br/>Büyük miktarlarda veriyi seyrek olarak okuduğunuzda Azure Tablo hizmetini kullanın. Esnek, ilişkisel olmayan (NoSQL), yüksek düzeyde ölçeklenebilir, pahalı ve yüksek oranda kullanılabilir depolama çözümü sağlar. |**Içeri aktarma verileri** , genel bilgilere erişip eriştiğinize veya oturum açma kimlik bilgileri gerektiren bir özel depolama hesabına bağlı olarak değişir. Bu, her biri kendi parametre kümesine sahip olan "PublicOrSAS" veya "Account" değerine sahip olabilen <b>kimlik doğrulama türü</b> tarafından belirlenir. <br/><br/><b>Ortak veya paylaşılan erişim imzası (SAS) URI 'si</b>: parametreler şunlardır:<br/><br/><ul><b>Tablo URI 'si</b>: tablo için genel veya SAS URL 'sini belirtir.<br/><br/><b>Özellik adları için taranacak satırları belirtir</b>: değerler, belirtilen sayıda satırı taramak Için <i>TOPN</i> , tablodaki tüm satırları almak için <i>scanall</i> ' tır. <br/><br/>Veriler homojen ve öngörülebilir ise, *TOPN* ' ı seçmeniz ve N için bir sayı girmeniz önerilir. Büyük tablolar için bu, daha hızlı okuma süreleriyle sonuçlanabilir.<br/><br/>Veriler, tablonun derinliğine ve konumuna göre değişiklik gösteren özellikler kümesiyle yapılandırılmış ise, tüm satırları taramak için *Scanall* seçeneğini seçin. Bu, elde edilen özellik ve meta veri dönüştürmesinin bütünlüğünü sağlar.<br/><br/></ul><b>Özel depolama hesabı</b>: parametreler şunlardır: <br/><br/><ul><b>Hesap adı</b>: okunacak tabloyu içeren hesabın adını belirtir.<br/><br/><b>Hesap anahtarı</b>: hesapla ilişkili depolama anahtarını belirtir.<br/><br/><b>Tablo adı</b> : okunacak verileri içeren tablonun adını belirtir.<br/><br/><b>Özellik adları için taranacak satırlar</b>: değerler, tablodaki tüm satırları almak Için <i>TOPN</i> , belirtilen sayıda satırı tarar veya <i>scanall</i> ' tır.<br/><br/>Veriler homojen ve öngörülebilir ise, *TOPN* 'yi seçmenizi ve N için bir sayı girmenizi öneririz. Büyük tablolar için bu, daha hızlı okuma süreleriyle sonuçlanabilir.<br/><br/>Veriler, tablonun derinliğine ve konumuna göre değişiklik gösteren özellikler kümesiyle yapılandırılmış ise, tüm satırları taramak için *Scanall* seçeneğini seçin. Bu, elde edilen özellik ve meta veri dönüştürmesinin bütünlüğünü sağlar.<br/><br/> |
+| Azure Blob Depolama |Azure depolama 'da bulunan, görüntü, yapılandırılmamış metin veya ikili veri gibi BLOB hizmetinde depolanan verileri okur.<br/><br/>Blob hizmetini kullanarak verileri herkese açık bir şekilde sunabilir veya uygulama verilerini özel olarak depolayabilirsiniz. HTTP veya HTTPS bağlantılarını kullanarak verilerinize dilediğiniz yerden erişebilirsiniz. |**Veri alma** modülündeki seçenekler, ortak bilgilere erişip eriştiğinize veya oturum açma kimlik bilgileri gerektiren bir özel depolama hesabına bağlı olarak değişir. Bu, "PublicOrSAS" veya "Account" değerinden birine sahip olabilen <b>kimlik doğrulama türü</b> tarafından belirlenir.<br/><br/><b>Ortak veya paylaşılan erişim imzası (SAS) URI 'si</b>: parametreler şunlardır:<br/><br/><ul><b>URI</b>: Depolama Blobu için genel veya SAS URL 'sini belirtir.<br/><br/><b>Dosya biçimi</b>: blob hizmetindeki verilerin biçimini belirtir. Desteklenen biçimler CSV, TSV ve ARFF.<br/><br/></ul><b>Özel depolama hesabı</b>: parametreler şunlardır: <br/><br/><ul><b>Hesap adı</b>: okumak istediğiniz blobu içeren hesabın adını belirtir.<br/><br/><b>Hesap anahtarı</b>: hesapla ilişkili depolama anahtarını belirtir.<br/><br/><b>Kapsayıcı, dizin veya blob yolu</b> : okunacak verileri içeren Blobun adını belirtir.<br/><br/><b>BLOB dosyası biçimi</b>: blob hizmetindeki verilerin biçimini belirtir. Desteklenen veri biçimleri CSV, TSV, ARFF, CSV, belirtilen kodlamalı ve Excel. <br/><br/><ul>Biçim CSV veya TSV ise, dosyanın bir başlık satırı içerip içermediğini belirtdiğinizden emin olun.<br/><br/>Excel çalışma kitaplarından veri okumak için Excel seçeneğini kullanabilirsiniz. <i>Excel veri biçimi</i> seçeneğinde, verilerin bir Excel çalışma sayfası aralığında veya bir Excel tablosunda olup olmadığını belirtin. <i>Excel sayfası veya katıştırılmış tablo </i>seçeneğinde, okumak istediğiniz sayfanın veya tablonun adını belirtin.</ul><br/> |
+| Veri akışı sağlayıcısı |Desteklenen bir akış sağlayıcısından verileri okur. Şu anda yalnızca açık veri Protokolü (OData) biçimi destekleniyor. |<b>Veri içeriği türü</b>: OData biçimini belirtir.<br/><br/><b>Kaynak URL 'si</b>: veri akışı için tam URL 'yi belirtir. <br/>Örneğin, aşağıdaki URL Northwind örnek veritabanından okur:https://services.odata.org/northwind/northwind.svc/ |
 
-## <a name="import-from-another-experiment"></a>Başka bir denemeden alma
+## <a name="import-from-another-experiment"></a>Başka bir deneyden içeri aktar
 
-Bir denemeden ara sonuç alıp başka bir denemenin parçası olarak kullanmak isteyeceğiniz zamanlar olacaktır. Bunu yapmak için modülü veri kümesi olarak kaydedebilirsiniz:
+Bir deneyden bir ara sonuç almak ve bunu başka bir deneyin parçası olarak kullanmak isteyeceğiniz durumlar olacaktır. Bunu yapmak için, modülü bir veri kümesi olarak kaydedersiniz:
 
-1. Veri kümesi olarak kaydetmek istediğiniz modülün çıktısını tıklatın.
-2. **Veri Kümesi Olarak Kaydet'i**tıklatın.
+1. Veri kümesi olarak kaydetmek istediğiniz modülün çıktısına tıklayın.
+2. **Veri kümesi olarak kaydet**' e tıklayın.
 3. İstendiğinde, veri kümesini kolayca tanımlamanızı sağlayacak bir ad ve açıklama girin.
-4. **Tamam** onay işaretini tıklatın.
+4. **Tamam** onay işaretine tıklayın.
 
-Kaydetme bittiğinde, veri kümesi çalışma alanınızdaki herhangi bir denemede kullanılabilir. **Kaydedilmiş Veri Setleri** listesinde modül paletinde bulabilirsiniz.
+Kaydetme tamamlandığında, veri kümesi, çalışma alanınızdaki herhangi bir deneyde kullanılabilir olacaktır. Bunu, modül paletindeki **kayıtlı veri kümeleri** listesinde bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Veri Alma ve Veri Verme modüllerini kullanan Azure Machine Learning Studio web hizmetlerini dağıtma](web-services-that-use-import-export-modules.md)
+[Veri Içeri aktarma ve veri dışa aktarma modülleri kullanan Azure Machine Learning Studio Web hizmetlerini dağıtma](web-services-that-use-import-export-modules.md)
 
 
 <!-- Module References -->

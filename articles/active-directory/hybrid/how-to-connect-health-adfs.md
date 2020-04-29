@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261573"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>AD FS'yi Azure AD Connect Health'i kullanarak izleme
-Aşağıdaki belgeler, AD FS altyapınızın Azure AD Connect Health ile izlenmesine ilişkin belgelerdir. Azure AD Connect Ile Azure AD Connect 'i (Eşitleme) izleme hakkında daha fazla bilgi için, [Eşitleme için Azure AD Bağlantı Durumunu Kullanma](how-to-connect-health-sync.md)'ya bakın. Ayrıca, Azure AD Connect Health ile Active Directory Etki Alanı Hizmetlerini izleme hakkında bilgi için [Bkz.](how-to-connect-health-adds.md)
+Aşağıdaki belgeler, AD FS altyapınızın Azure AD Connect Health ile izlenmesine ilişkin belgelerdir. Azure AD Connect Health ile Azure AD Connect (eşitleme) izleme hakkında daha fazla bilgi için bkz [Azure AD Connect Health eşitleme Için kullanma](how-to-connect-health-sync.md). Ayrıca, Azure AD Connect Health Active Directory Domain Services izleme hakkında bilgi için, bkz. [Azure AD Connect Health AD DS Ile kullanma](how-to-connect-health-adds.md).
 
 ## <a name="alerts-for-ad-fs"></a>AD FS uyarıları
 Azure AD Connect Health Uyarıları bölümünde etkin uyarıların listesi mevcuttur. Her uyarı için ilgili bilgiler, çözüm adımları ve ilgili belgelere yönelik bağlantılar verilmiştir.
@@ -120,6 +120,6 @@ Raporda şu bilgiler yer alır:
 
 ## <a name="related-links"></a>İlgili bağlantılar
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD Connect Sağlık Aracısı Yükleme](how-to-connect-health-agent-install.md)
+* [Aracı yüklemesini Azure AD Connect Health](how-to-connect-health-agent-install.md)
 * [Riskli IP raporu](how-to-connect-health-adfs-risky-ip.md)
 

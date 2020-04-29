@@ -1,6 +1,6 @@
 ---
-title: Bulut Hizmetleri için yaygın başlangıç görevleri | Microsoft Dokümanlar
-description: Bulut hizmetleri web rolünüzde veya çalışan rolünüzde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerine bazı örnekler sağlar.
+title: Cloud Services için genel başlangıç görevleri | Microsoft Docs
+description: ', Bulut Hizmetleri Web rolünüzde veya çalışan rolünde gerçekleştirmek isteyebileceğiniz ortak başlangıç görevlerinin bazı örneklerini sağlar.'
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,23 +9,23 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273065"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Ortak Bulut Hizmeti başlatma görevleri
-Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerine bazı örnekler verilmektedir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevlerini kullanabilirsiniz. Gerçekleştirmek isteyebileceğin işlemler arasında bir bileşen yükleme, COM bileşenlerini kaydetme, kayıt defteri anahtarlarını ayarlama veya uzun süren bir işlem başlatma yer almaktadır. 
+# <a name="common-cloud-service-startup-tasks"></a>Ortak bulut hizmeti başlangıç görevleri
+Bu makalede, bulut hizmetinizde gerçekleştirmek isteyebileceğiniz yaygın başlangıç görevlerinin bazı örnekleri verilmiştir. Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir. 
 
-Başlangıç görevlerinin nasıl çalıştığını ve özellikle başlangıç görevini tanımlayan girişlerin nasıl oluşturulabildiğini anlamak için [bu makaleye](cloud-services-startup-tasks.md) bakın.
+Başlangıç görevlerinin nasıl çalıştığını ve özellikle de bir başlangıç görevini tanımlayan girişlerin nasıl oluşturulacağını anlamak için [Bu makaleye](cloud-services-startup-tasks.md) bakın.
 
 > [!NOTE]
-> Başlangıç görevleri Sanal Makineler için geçerli değildir, yalnızca Bulut Hizmeti Web ve Çalışan rolleri için geçerlidir.
+> Başlangıç görevleri, sanal makinelere yalnızca bulut hizmeti Web ve çalışan rolleri için geçerli değildir.
 > 
 
-## <a name="define-environment-variables-before-a-role-starts"></a>Rol başlamadan önce ortam değişkenlerini tanımlama
-Belirli bir görev için tanımlanan ortam değişkenlerine ihtiyacınız varsa, [Görev] öğesiiçindeki [Çevre] öğesini kullanın.
+## <a name="define-environment-variables-before-a-role-starts"></a>Bir rol başlamadan önce ortam değişkenlerini tanımlayın
+Belirli bir görev için tanımlanmış ortam değişkenlerine ihtiyacınız varsa, [görev] öğesi içindeki [Environment] öğesini kullanın.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -42,7 +42,7 @@ Belirli bir görev için tanımlanan ortam değişkenlerine ihtiyacınız varsa,
 </ServiceDefinition>
 ```
 
-Değişkenler, dağıtımla ilgili bir şeye başvurmak için geçerli bir [Azure XPath değeri](cloud-services-role-config-xpath.md) de kullanabilir. Özniteliği kullanmak `value` yerine [RoleInstanceValue] alt öğesini tanımlayın.
+Değişkenler, dağıtım hakkındaki bir şeye başvurmak için [geçerli bir Azure XPath değeri](cloud-services-role-config-xpath.md) de kullanabilir. `value` Özniteliğini kullanmak yerine bir [roleınstancevalue] alt öğesi tanımlayın.
 
 ```xml
 <Variable name="PathToStartupStorage">
@@ -51,23 +51,23 @@ Değişkenler, dağıtımla ilgili bir şeye başvurmak için geçerli bir [Azur
 ```
 
 
-## <a name="configure-iis-startup-with-appcmdexe"></a>AppCmd.exe ile IIS başlangıç yapılandırma
-[AppCmd.exe](https://technet.microsoft.com/library/jj635852.aspx) komut satırı aracı, Azure'da başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *AppCmd.exe,* Azure'daki başlangıç görevlerinde kullanılmak üzere yapılandırma ayarlarına kullanışlı komut satırı erişimi sağlar. *AppCmd.exe*kullanılarak, uygulamalar ve siteler için web sitesi ayarları eklenebilir, değiştirilebilir veya kaldırılabilir.
+## <a name="configure-iis-startup-with-appcmdexe"></a>IIS başlangıcını AppCmd. exe ile yapılandırma
+[Appcmd. exe](https://technet.microsoft.com/library/jj635852.aspx) komut satırı aracı, Azure 'DA başlangıçta IIS ayarlarını yönetmek için kullanılabilir. *Appcmd. exe* , Azure 'da başlangıç görevlerinde kullanmak için yapılandırma ayarlarına uygun, komut satırı erişimi sağlar. Web sitesi ayarları, *Appcmd. exe*' yi kullanarak, uygulamalar ve siteler için eklenebilir, değiştirilebilir veya kaldırılabilir.
 
-Ancak, başlangıç görevi olarak *AppCmd.exe* kullanımında dikkat etmek için birkaç şey vardır:
+Bununla birlikte, bir başlangıç görevi olarak *Appcmd. exe* ' nin kullanımı için birkaç şey izlemeniz gerekir:
 
-* Başlangıç görevleri yeniden başlatmalar arasında birden fazla kez çalıştırılabilir. Örneğin, bir rol geri dönüşüm yaptığında.
-* *AppCmd.exe* eylemi birden fazla kez gerçekleştirilirse, hata oluşturabilir. Örneğin, *Web.config'e* iki kez bir bölüm eklemeye çalışmak hata oluşturabilir.
-* Başlatma görevleri sıfır olmayan bir çıkış kodu veya **hata düzeyi**döndürürlerse başarısız olur. Örneğin, *AppCmd.exe* bir hata oluşturduğunda.
+* Başlangıç görevleri, yeniden başlatmalar arasında birden çok kez çalıştırılabilir. Örneğin, bir rol geri dönüştürüldüğünde.
+* *Appcmd. exe* eylemi birden çok kez gerçekleştirilirse bir hata oluşturabilir. Örneğin, bir bölümü *Web. config* 'e iki kez eklemeye çalışmak bir hata oluşturabilir.
+* Başlangıç görevleri sıfır olmayan bir çıkış kodu veya **ERRORLEVEL**döndürmeleri durumunda başarısız olur. Örneğin, *Appcmd. exe* bir hata oluşturduğunda.
 
-*AppCmd.exe'yi*aradıktan sonra **hata düzeyini** kontrol etmek iyi bir uygulamadır, bu da *.cmd* dosyası ile *AppCmd.exe'ye* çağrıyı sararsanız kolayca yapılır. Bilinen bir **hata düzeyi** yanıtı algılarsanız, bunu yoksayabilir veya geri geçirebilirsiniz.
+*Appcmd. exe ' ye* *yapılan çağrıyı* bir *. cmd* dosyasıyla sarıyorsanız, bu **sayede, bu** işlemi kolay bir şekilde kontrol etmeniz iyi bir uygulamadır. Bilinen bir **ERRORLEVEL** yanıtı tespit ederseniz, bunu yoksayabilirsiniz veya geri geçirebilirsiniz.
 
-*AppCmd.exe* tarafından döndürülen hata düzeyi winerror.h dosyasında listelenir ve [MSDN'de](/windows/desktop/Debug/system-error-codes--0-499-)de görülebilir.
+*Appcmd. exe* tarafından döndürülen ERRORLEVEL, Winerror. h dosyasında listelenir ve [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)'de de görülebilir.
 
 ### <a name="example-of-managing-the-error-level"></a>Hata düzeyini yönetme örneği
-Bu örnek, hata işleme ve günlüğe kaydetme ile *Web.config* dosyasına JSON için bir sıkıştırma bölümü ve sıkıştırma girişi ekler.
+Bu örnek, hata işleme ve günlüğe kaydetme ile JSON için bir sıkıştırma bölümü ve *Web. config* dosyasına bir sıkıştırma girişi ekler.
 
-[ServiceDefinition.csdef] dosyasının ilgili bölümleri burada gösterilmiştir, *AppCmd.exe* *Web.config* dosyasındaki ayarları değiştirmek için yeterli izinleri vermek için `elevated` [yürütmeBağlam](/previous-versions/azure/reference/gg557552(v=azure.100)#task) özniteliği ayarı içerir:
+[Service Definition. csdef] dosyasının ilgili bölümleri burada gösterilmektedir. Bu, *Web. config* dosyasındaki ayarları değiştirmek [için,](/previous-versions/azure/reference/gg557552(v=azure.100)#task) Appcmd `elevated` özniteliği için, *Appcmd. exe* ' nin yeterli izinleri vermesini içerir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -80,7 +80,7 @@ Bu örnek, hata işleme ve günlüğe kaydetme ile *Web.config* dosyasına JSON 
 </ServiceDefinition>
 ```
 
-*Startup.cmd* toplu dosyası, *Web.config* dosyasına bir sıkıştırma bölümü ve JSON için sıkıştırma girişi eklemek için *AppCmd.exe* kullanır. 183 beklenen **hata düzeyi** VERIFY kullanılarak sıfıra ayarlanır. EXE komut satırı programı. Beklenmeyen hata düzeyleri StartupErrorLog.txt'ye kaydedilir.
+*Startup. cmd* toplu iş dosyası, *Web. config* dosyasına BIR sıkıştırma bölümü ve JSON için bir sıkıştırma girdisi eklemek için *Appcmd. exe* ' yi kullanır. VERIFY 183 için beklenen **ERRORLEVEL** , VERIFY kullanılarak sıfır olarak ayarlanmıştır. EXE komut satırı programı. Beklenmeyen errorlevels, StartupErrorLog. txt dosyasına kaydedilir.
 
 ```cmd
 REM   *** Add a compression section to the Web.config file. ***
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Güvenlik duvarı kuralları ekleme
-Azure'da etkili olarak iki güvenlik duvarı vardır. İlk güvenlik duvarı sanal makine ile dış dünya arasındaki bağlantıları denetler. Bu güvenlik duvarı [ServiceDefinition.csdef] dosyasındaki [EndPoints] öğesi tarafından denetlenir.
+Azure 'da, etkin olarak iki güvenlik duvarı vardır. İlk güvenlik duvarı, sanal makine ve dış dünya arasındaki bağlantıları denetler. Bu güvenlik duvarı, [ServiceDefinition. csdef] dosyasındaki [EndPoints] öğesi tarafından denetlenir.
 
-İkinci güvenlik duvarı, sanal makine ile bu sanal makinedeki işlemler arasındaki bağlantıları denetler. Bu güvenlik duvarı `netsh advfirewall firewall` komut satırı aracı tarafından denetlenebilir.
+İkinci güvenlik duvarı, sanal makine ile bu sanal makine içindeki süreçler arasındaki bağlantıları denetler. Bu güvenlik duvarı `netsh advfirewall firewall` komut satırı aracı tarafından denetlenebilir.
 
-Azure, rolleriniz içinde başlatılan işlemler için güvenlik duvarı kuralları oluşturur. Örneğin, bir hizmeti veya programı başlattığınızda, Azure otomatik olarak bu hizmetin Internet ile iletişim kurabilmesi için gerekli güvenlik duvarı kurallarını oluşturur. Ancak, rolünüz dışındaki bir işlem (COM+ hizmeti veya Windows Zamanlanmış Görev gibi) tarafından başlatılan bir hizmet oluşturursanız, bu hizmete erişime izin vermek için el ile bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu güvenlik duvarı kuralları, başlangıç görevi kullanılarak oluşturulabilir.
+Azure, rollerinizde başlatılan işlemlere yönelik güvenlik duvarı kuralları oluşturur. Örneğin, bir hizmet veya program başlattığınızda, Azure bu hizmetin Internet ile iletişim kurmasına izin vermek için gerekli güvenlik duvarı kurallarını otomatik olarak oluşturur. Ancak, rolünüzün dışındaki bir işlem (COM+ hizmeti veya Windows zamanlanmış görevi gibi) tarafından başlatılan bir hizmet oluşturursanız, bu hizmete erişime izin vermek için el ile bir güvenlik duvarı kuralı oluşturmanız gerekir. Bu güvenlik duvarı kuralları, bir başlangıç görevi kullanılarak oluşturulabilir.
 
-Güvenlik duvarı kuralı oluşturan bir başlangıç görevi, **yükseltilmiş**bir [yürütmeBağlam][Görevi] olmalıdır. [ServiceDefinition.csdef] dosyasına aşağıdaki başlangıç görevini ekleyin.
+Bir güvenlik duvarı kuralı oluşturan bir başlangıç görevinin bir [ExecutionContext][görevi] **yükseltilmiş**olmalıdır. Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -138,7 +138,7 @@ Güvenlik duvarı kuralı oluşturan bir başlangıç görevi, **yükseltilmiş*
 </ServiceDefinition>
 ```
 
-Güvenlik duvarı kuralını eklemek için, `netsh advfirewall firewall` başlangıç toplu iş dosyanızdaki uygun komutları kullanmanız gerekir. Bu örnekte, başlangıç görevi TCP bağlantı noktası 80 için güvenlik ve şifreleme gerektirir.
+Güvenlik duvarı kuralını eklemek için, başlangıç toplu iş dosyanızda uygun `netsh advfirewall firewall` komutları kullanmanız gerekir. Bu örnekte, başlangıç görevi TCP bağlantı noktası 80 için güvenlik ve şifreleme gerektirir.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -150,12 +150,12 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="block-a-specific-ip-address"></a>Belirli bir IP adresini engelleme
-IIS **web.config** dosyanızı değiştirerek azure web rolü erişimini belirtilen IP adresleri kümesine sınırlandırabilirsiniz. Ayrıca **ApplicationHost.config** dosyasının **ipSecurity** bölümünün kilidini açan bir komut dosyası kullanmanız gerekir.
+## <a name="block-a-specific-ip-address"></a>Belirli bir IP adresini engelle
+IIS **Web. config** dosyanızı değiştirerek, belırlı bir IP adresi kümesine yönelik bir Azure Web rolü erişimini kısıtlayabilirsiniz. Ayrıca **ApplicationHost. config** dosyasının **ipsecurity** bölümünün kilidini açarak bir komut dosyası kullanmanız gerekir.
 
-**ApplicationHost.config** dosyasının **ipSecurity** bölümünün kilidini açmak için, rol başında çalışan bir komut dosyası oluşturun. **Başlangıç** adı verilen web rolünüzün kök düzeyinde bir klasör oluşturun ve bu klasör içinde **startup.cmd**adlı bir toplu iş dosyası oluşturun. Bu dosyayı Visual Studio projenize ekleyin ve paketinize dahil olduğundan emin olmak için özellikleri **Her Zaman Kopyala'ya** ayarlayın.
+**ApplicationHost. config** dosyasının **ipsecurity** bölümünün kilidini açmak için, rol başlangıcında çalışan bir komut dosyası oluşturun. **Başlangıç** olarak adlandırılan Web rolünüzün kök düzeyinde bir klasör oluşturun ve bu klasör içinde, **Startup. cmd**adlı bir toplu iş dosyası oluşturun. Bu dosyayı Visual Studio projenize ekleyin ve paketinize eklendiğinden emin olmak için özellikleri **her zaman Kopyala** olarak ayarlayın.
 
-[ServiceDefinition.csdef] dosyasına aşağıdaki başlangıç görevini ekleyin.
+Aşağıdaki başlangıç görevini [ServiceDefinition. csdef] dosyasına ekleyin.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -168,7 +168,7 @@ IIS **web.config** dosyanızı değiştirerek azure web rolü erişimini belirti
 </ServiceDefinition>
 ```
 
-Bu **komutu startup.cmd** dosyasına ekleyin:
+Bu komutu **Startup. cmd** dosyasına ekleyin:
 
 ```cmd
 @echo off
@@ -178,11 +178,11 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 %windir%\system32\inetsrv\AppCmd.exe unlock config -section:system.webServer/security/ipSecurity
 ```
 
-Bu görev, web rolü her başlatılan her zaman **başlatılması.cmd** toplu dosyaçalıştırılmasına neden olur, gerekli **ipSecurity** bölümü kilidi olmasını sağlamak.
+Bu görev, Web rolü her başlatıldığında **Startup. cmd** toplu iş dosyasının çalıştırılmasını sağlar ve gerekli **IPI** bölümünün kilidinin açık olmasını sağlar.
 
-Son olarak, [system.webServer bölümünü](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) değiştirerek web rolünüzün **web.config** dosyasını değiştirerek aşağıdaki örnekte gösterildiği gibi erişim verilen IP adreslerinin bir listesini ekleyin:
+Son olarak, aşağıdaki örnekte gösterildiği gibi, erişim verilen IP adreslerinin bir listesini eklemek için Web rolünüzün **Web. config** dosyasındaki [System. webserver bölümünü](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) değiştirin:
 
-Bu örnek config, tanımlanan iki ip dışında tüm IP'lerin sunucuya erişmesine **izin verir**
+Bu örnek yapılandırma, her bir IP 'nin sunucuya her iki tanımlı dışında erişmesine **izin verir**
 
 ```xml
 <system.webServer>
@@ -197,7 +197,7 @@ Bu örnek config, tanımlanan iki ip dışında tüm IP'lerin sunucuya erişmesi
 </system.webServer>
 ```
 
-Bu örnek config tanımlanan iki dışında sunucuya erişen tüm **IP'ler reddediyor.**
+Bu örnek yapılandırma, tüm IP 'Lerin sunucuya erişimini **engeller** , ikisi de tanımlanır.
 
 ```xml
 <system.webServer>
@@ -213,9 +213,9 @@ Bu örnek config tanımlanan iki dışında sunucuya erişen tüm **IP'ler redde
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>PowerShell başlangıç görevi oluşturma
-Windows PowerShell komut dosyaları doğrudan [ServiceDefinition.csdef] dosyasından çağrılabilir, ancak başlangıç toplu dosyası nın içinden çağrılabilir.
+Windows PowerShell betikleri doğrudan [ServiceDefinition. csdef] dosyasından çağrılamaz, ancak bir başlangıç toplu iş dosyası içinden çağrılabilir.
 
-PowerShell (varsayılan olarak) imzasız komut dosyaları çalıştırmaz. Komut dosyanızı imzalamadığınız sürece, PowerShell'i imzasız komut dosyalarını çalıştıracak şekilde yapılandırmanız gerekir. İmzasız komut dosyalarını çalıştırmak **için, Yürütme Politikası** **Sınırsız**olarak ayarlanmalıdır. Kullandığınız **ExecutionPolicy** ayarı Windows PowerShell sürümüne dayanır.
+PowerShell (varsayılan olarak) imzasız betikleri çalıştırmaz. Komut dosyanızı imzalayamadığınız takdirde, PowerShell 'i imzasız betikleri çalıştıracak şekilde yapılandırmanız gerekir. İmzasız betikleri çalıştırmak için, **ExecutionPolicy** **Kısıtlamasız**olarak ayarlanmalıdır. Kullandığınız **ExecutionPolicy** ayarı Windows PowerShell sürümünü temel alır.
 
 ```cmd
 REM   Run an unsigned PowerShell script and log the output
@@ -225,7 +225,7 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-PowerShell 2.0 veya 1.0 çalıştıran bir Konuk İşletim Sistemi kullanıyorsanız, sürüm 2'yi çalıştırmaya zorlayabilir ve kullanılamıyorsa sürüm 1'i kullanabilirsiniz.
+PowerShell 2,0 veya 1,0 çalıştıran bir konuk işletim sistemi kullanıyorsanız, sürüm 2 ' yi çalıştırmaya zorlayabilir ve kullanılamıyorsa sürüm 1 ' i kullanın.
 
 ```cmd
 REM   Attempt to set the execution policy by using PowerShell version 2.0 syntax.
@@ -241,14 +241,14 @@ REM   If an error occurred, return the errorlevel.
 EXIT /B %errorlevel%
 ```
 
-## <a name="create-files-in-local-storage-from-a-startup-task"></a>Başlangıç görevinden yerel depolama alanında dosya oluşturma
-Başlangıç göreviniz tarafından oluşturulan ve daha sonra uygulamanız tarafından erişilen dosyaları depolamak için yerel bir depolama kaynağı kullanabilirsiniz.
+## <a name="create-files-in-local-storage-from-a-startup-task"></a>Yerel depolamada bir başlangıç görevinden dosyalar oluşturma
+Uygulamanız tarafından daha sonra erişilen başlangıç göreviniz tarafından oluşturulan dosyaları depolamak için yerel bir depolama kaynağı kullanabilirsiniz.
 
-Yerel depolama kaynağı oluşturmak için [ServiceDefinition.csdef] dosyasına [LocalResources] bölümü ekleyin ve ardından [LocalStorage] alt öğesini ekleyin. Yerel depolama kaynağına özgün bir ad ve başlangıç göreviniz için uygun bir boyut verin.
+Yerel depolama kaynağını oluşturmak için, [ServiceDefinition. csdef] dosyasına bir [localresources] bölümü ekleyin ve ardından [localStorage] alt öğesini ekleyin. Yerel depolama kaynağına, başlangıç göreviniz için benzersiz bir ad ve uygun bir boyut verin.
 
-Başlangıç görevinizde yerel depolama kaynağı kullanmak için, yerel depolama kaynağı konumuna başvurmak için bir ortam değişkeni oluşturmanız gerekir. Daha sonra başlangıç görevi ve uygulama yerel depolama kaynağına dosya okuyup yazabilir.
+Başlangıç görevinde yerel bir depolama kaynağı kullanmak için, yerel depolama kaynağı konumuna başvurmak üzere bir ortam değişkeni oluşturmanız gerekir. Ardından, başlangıç görevi ve uygulama dosyaları yerel depolama kaynağına okuyabilir ve yazabilir.
 
-**ServiceDefinition.csdef** dosyasının ilgili bölümleri burada gösterilmiştir:
+**ServiceDefinition. csdef** dosyasının ilgili bölümleri burada gösterilmektedir:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -272,7 +272,7 @@ Başlangıç görevinizde yerel depolama kaynağı kullanmak için, yerel depola
 </ServiceDefinition>
 ```
 
-Örnek olarak, bu **Başlangıç.cmd** toplu dosyası, yerel depolama konumundaki **MyTest.txt** dosyasını oluşturmak için **PathToStartupStorage** ortam değişkenini kullanır.
+Örnek olarak, bu **Başlangıç. cmd** toplu iş dosyası yerel depolama konumunda **MyTest. txt** dosyasını oluşturmak için **pathtostartupstorage** ortam değişkenini kullanır.
 
 ```cmd
 REM   Create a simple text file.
@@ -287,7 +287,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-[Yerel](/previous-versions/azure/reference/ee772845(v=azure.100)) Kaynak Yöntemini kullanarak Azure SDK'dan yerel depolama klasörüne erişebilirsiniz.
+[Getlocalresource](/previous-versions/azure/reference/ee772845(v=azure.100)) yöntemini kullanarak Azure SDK 'dan yerel depolama klasörüne erişebilirsiniz.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -295,12 +295,12 @@ string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.
 string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStoragePath, "MyTestFile.txt"));
 ```
 
-## <a name="run-in-the-emulator-or-cloud"></a>Emülatör veya bulutta çalıştırın
-Başlangıç görevinizin bulutta çalışırken, işlem emülatöründe olduğu zamana kıyasla farklı adımlar gerçekleştirmesini sağlayabilirsiniz. Örneğin, sql verilerinizin yeni bir kopyasını yalnızca emülatörde çalışırken kullanmak isteyebilirsiniz. Veya emülatörde çalışırken yapmanız gerekmeyen bulut için bazı performans optimizasyonları yapmak isteyebilirsiniz.
+## <a name="run-in-the-emulator-or-cloud"></a>Öykünücü veya bulutta Çalıştır
+Başlangıç göreviniz, bulut üzerinde çalışırken, işlem öykünücüsünde olduğu zaman ile karşılaştırıldığında farklı adımlar gerçekleştirmenizi sağlayabilir. Örneğin, SQL verilerinizin yeni bir kopyasını yalnızca öykünücüsünde çalışırken kullanmak isteyebilirsiniz. Ya da bulut için, öykünücüsünde çalışırken yapmanız gerekmeyen bazı performans iyileştirmeleri yapmak isteyebilirsiniz.
 
-İşlem emülatörü ve bulut üzerinde farklı eylemler gerçekleştirme becerisi [ServiceDefinition.csdef] dosyasında bir ortam değişkeni oluşturarak gerçekleştirilebilir. Daha sonra bu ortam değişkenini başlangıç görevinizdeki bir değer için sınarsınız.
+Bu işlem öykünücüsü ve bulutu üzerinde farklı eylemler gerçekleştirebilme özelliği, [ServiceDefinition. csdef] dosyasında bir ortam değişkeni oluşturularak gerçekleştirilebilir. Daha sonra bu ortam değişkenini başlangıç görevinizdeki bir değer için test edersiniz.
 
-Ortam değişkenini oluşturmak [için, Değişken]/[RoleInstanceValue] öğesini `/RoleEnvironment/Deployment/@emulated`ekleyin ve xpath değerini . **%ComputeEmulatorRunning%** ortam değişkeninin `true` değeri, bilgi işlem emülatörüzerinde `false` çalışırken ve bulutta çalışırken.
+Ortam değişkenini oluşturmak için,[roleınstancevalue] öğesi [değişkenini]/ekleyin ve bir XPath değeri oluşturun `/RoleEnvironment/Deployment/@emulated`. **% ComputeEmulatorRunning%** ortam değişkeninin `true` değeri, işlem öykünücüsünde ve `false` bulutta çalışırken çalışır.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -322,7 +322,7 @@ Ortam değişkenini oluşturmak [için, Değişken]/[RoleInstanceValue] öğesin
 </ServiceDefinition>
 ```
 
-Görev artık rolün bulutta mı yoksa emülatörde mi çalıştığını temel alan farklı eylemler gerçekleştirmek için **%ComputeEmulatorRunning%** ortam değişkenini denetleyebilir. Burada, bu ortam değişkenini denetleyen bir .cmd kabuk komut dosyası verem.
+Görev artık **% ComputeEmulatorRunning%** ortam değişkenini, rolün bulutta mı yoksa öykünücü üzerinde mi çalıştığını temel alarak farklı eylemler gerçekleştirecek şekilde denetleyebilir. İşte bu ortam değişkenini denetleyen bir. cmd kabuk betiği.
 
 ```cmd
 REM   Check if this task is running on the compute emulator.
@@ -335,10 +335,10 @@ IF "%ComputeEmulatorRunning%" == "true" (
 ```
 
 
-## <a name="detect-that-your-task-has-already-run"></a>Görevinizin zaten çalıştırıldığını algılama
-Rol, başlangıç görevlerinizin yeniden çalışmasına neden olan yeniden başlatma olmadan geri dönüşüm yapabilir. Barındıran VM'de bir görevin zaten çalıştırıldığını gösteren bayrak yoktur. Birden çok kez çalışmasının önemli olmadığı bazı görevleriniz olabilir. Ancak, bir görevin birden fazla kez çalışmasını engellemeniz gereken bir durumla karşılaşabilirsiniz.
+## <a name="detect-that-your-task-has-already-run"></a>Görevin zaten çalıştırıldığını Algıla
+Bir yeniden başlatma olmadan, başlangıç görevlerinizin yeniden çalışmasına neden olan rol geri dönüşüm edebilir. Barındırma VM 'sinde bir görevin zaten çalıştırıldığını belirten bir bayrak yoktur. Birden çok kez çalıştırıldıklarından bağımsız olarak bazı görevleriniz olabilir. Ancak, bir görevin birden çok kez çalışmasını engellemeniz gereken bir durumla karşılaşabilirsiniz.
 
-Bir görevin zaten çalıştırıldığını algılamanın en basit yolu, görev başarılı olduğunda **%TEMP%** klasöründe bir dosya oluşturmak ve görevin başında aramaktır. Burada sizin için bunu yapan bir örnek cmd kabuk komut dosyasıdır.
+Bir görevin zaten çalıştırılmış olduğunu algılamamanın en kolay yolu, görev başarılı olduğunda **% Temp%** klasöründe bir dosya oluşturmak ve görevin başlangıcında bunu aramak için kullanılır. İşte bunu yapan örnek bir CMD Shell betiği.
 
 ```cmd
 REM   If Task1_Success.txt exists, then Application 1 is already installed.
@@ -373,21 +373,21 @@ REM   Exit normally.
 EXIT /B 0
 ```
 
-## <a name="task-best-practices"></a>Görev en iyi uygulamaları
-Web veya çalışan rolünüz için görevi yapılandırırken izlemeniz gereken en iyi uygulamalar şunlardır.
+## <a name="task-best-practices"></a>En iyi görev uygulamaları
+Web veya çalışan rolünüzün görevini yapılandırırken izlemeniz gereken bazı en iyi uygulamalar aşağıda verilmiştir.
 
-### <a name="always-log-startup-activities"></a>Her zaman başlangıç etkinliklerini günlüğe kaydedin
-Visual Studio toplu dosyaları üzerinden adım için bir hata ayıklama sağlamaz, bu yüzden toplu dosyaların çalışması hakkında mümkün olduğunca çok veri almak için iyidir. Toplu iş dosyalarının çıktısını günlüğe kaydetme, hem **stdout** hem de **stderr,** toplu iş hata ayıklama ve düzeltmeye çalışırken size önemli bilgiler verebilir. **%TEMP%** ortam değişkeninin işaret ettiği dizindeki StartupLog.txt dosyasına hem **stdout** hem de `>>  "%TEMP%\\StartupLog.txt" 2>&1` **stderr'ı** kaydetmek için, metni günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **%PathToApp1Install%** dizininde setup.exe'yi yürütmek için:
+### <a name="always-log-startup-activities"></a>Başlangıç etkinliklerini her zaman günlüğe kaydet
+Visual Studio, toplu iş dosyaları arasında adım adım bir hata ayıklayıcı sağlamaz, bu yüzden toplu iş dosyaları işleminde mümkün olduğunca çok veri almanız iyi bir işlemdir. **Stdout** ve **stderr**toplu iş dosyalarının çıkışını günlüğe kaydetmek, toplu iş dosyalarını ayıklamaya ve gidermeye çalışırken önemli bilgiler verebilir. **Stdout** ve **stderr** ' i **% Temp%** ortam değişkeni tarafından işaret edilen dizindeki startuplog. txt dosyasına kaydetmek için, metni `>>  "%TEMP%\\StartupLog.txt" 2>&1` günlüğe kaydetmek istediğiniz belirli satırların sonuna ekleyin. Örneğin, **% PathToApp1Install%** dizininde Setup. exe dosyasını yürütmek için:
 
     "%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1
 
-Xml'inizi basitleştirmek için, tüm başlangıç görevlerinizi günlüğe kaydetmeyle birlikte çağıran ve her alt görevin aynı ortam değişkenlerini paylaşmasını sağlayan bir sarmalayıcı *cmd* dosyası oluşturabilirsiniz.
+XML 'nizi basitleştirmek için, tüm başlangıç görevlerinizi günlük kaydıyla birlikte çağıran bir sarmalayıcı *cmd* dosyası oluşturabilir ve her bir alt görevin aynı ortam değişkenlerini paylarını sağlayabilirsiniz.
 
-Her başlangıç görevinin sonunda `>> "%TEMP%\StartupLog.txt" 2>&1` kullanmak olsa da rahatsız edici bulabilirsiniz. Sizin için günlük işlemesi işleyen bir sarıcı oluşturarak görev günlüğe kaydetmeyi zorlayabilirsiniz. Bu sarıcı çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki çıktılar *Başlangıç günlüğü.txt* dosyasına yönlendirilir.
+Her bir başlangıç görevinin sonunda kullanımı `>> "%TEMP%\StartupLog.txt" 2>&1` sinir bozucu olabilir. Günlüğe kaydetmeyi işleyen bir sarmalayıcı oluşturarak görev günlüğünü uygulayabilirsiniz. Bu sarmalayıcı, çalıştırmak istediğiniz gerçek toplu iş dosyasını çağırır. Hedef toplu iş dosyasındaki tüm çıktılar *Startuplog. txt* dosyasına yönlendirilir.
 
-Aşağıdaki örnek, başlangıç toplu iş dosyasından tüm çıktıların nasıl yeniden yönlendirilengösteriyi gösterir. Bu örnekte, ServerDefinition.csdef dosyası *logwrap.cmd*çağıran bir başlangıç görevi oluşturur. *logwrap.cmd* *Startup2.cmd*çağırır, tüm çıktıyı **%TEMP%\\StartupLog.txt'ye**yönlendirerek .
+Aşağıdaki örnekte, tüm çıktının bir başlangıç toplu iş dosyasından nasıl yeniden yönlendirileceği gösterilmektedir. Bu örnekte, ServerDefinition. csdef dosyası *logwrap. cmd*' yi çağıran bir başlangıç görevi oluşturur. *logwrap. cmd* , tüm çıktıyı **% Temp%\\startuplog. txt**dosyasına yönlendirerek *Startup2. cmd*' yi çağırır.
 
-ServiceDefinition.cmd:
+ServiceDefinition. cmd:
 
 ```xml
 <Startup>
@@ -395,7 +395,7 @@ ServiceDefinition.cmd:
 </Startup>
 ```
 
-**logwrap.cmd:**
+**logwrap. cmd:**
 
 ```cmd
 @ECHO OFF
@@ -429,7 +429,7 @@ IF %ERRORLEVEL% EQU 0 (
 )
 ```
 
-**Başlangıç2.cmd:**
+**Startup2. cmd:**
 
 ```cmd
 @ECHO OFF
@@ -447,7 +447,7 @@ ECHO [%date% %time%] Some more log information about this task
 EXIT %ERRORLEVEL%
 ```
 
-**StartupLog.txt** dosyasındaki örnek çıktı:
+**Startuplog. txt** dosyasındaki örnek çıktı:
 
 ```txt
 [Mon 10/17/2016 20:24:46.75] == START logwrap.cmd ============================================== 
@@ -459,59 +459,59 @@ EXIT %ERRORLEVEL%
 ```
 
 > [!TIP]
-> **StartupLog.txt** dosyası *C:\Resources\temp\\{role identifier}\RoleTemp* klasöründe bulunur.
+> **Startuplog. txt** dosyası *c:\resources\temp\\{rol tanımlayıcısı} \roletemp* klasöründe bulunur.
 > 
 > 
 
-### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Yürütme Bağlamını başlangıç görevleri için uygun şekilde ayarlama
-Başlangıç görevi için ayrıcalıkları uygun şekilde ayarlayın. Bazen başlangıç görevleri, rol normal ayrıcalıklarla çalışıyor olsa bile yükseltilmiş ayrıcalıklarla çalıştırılmalıdır.
+### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>ExecutionContext 'i başlangıç görevleri için uygun şekilde ayarlama
+Başlangıç göreviyle ilgili ayrıcalıkları uygun şekilde ayarlayın. Bazen, rol normal ayrıcalıklarla çalıştırılsa bile başlangıç görevlerinin yükseltilmiş ayrıcalıklarla çalışması gerekir.
 
-[YürütmeBağlam][Görev] özniteliği başlangıç görevinin ayrıcalık düzeyini ayarlar. Başlangıç `executionContext="limited"` görevinin kullanılması, rol ile aynı ayrıcalık düzeyine sahip olduğu anlamına gelir. Başlangıç `executionContext="elevated"` görevinin kullanılması, başlangıç görevinin yönetici görevlerini rolünüze yönetici ayrıcalıkları vermeden yönetici görevlerini gerçekleştirmesine olanak tanıyan yönetici ayrıcalıklarına sahip olduğu anlamına gelir.
+[ExecutionContext][görev] özniteliği başlangıç görevinin ayrıcalık düzeyini ayarlar. Kullanımı `executionContext="limited"` , başlangıç görevinin rolle aynı ayrıcalık düzeyine sahip olduğu anlamına gelir. Kullanımı `executionContext="elevated"` , başlangıç görevinin yönetici ayrıcalıklarına sahip olduğu anlamına gelir ve bu, başlangıç görevinin rolünüze yönetici ayrıcalıkları vermeden yönetici görevleri gerçekleştirmesini sağlar.
 
-Yüksek ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS'yi yapılandırmak için **AppCmd.exe** kullanan bir başlangıç görevidir. **AppCmd.exe** `executionContext="elevated"`gerektirir .
+Yükseltilmiş ayrıcalıklar gerektiren bir başlangıç görevi örneği, IIS 'yi yapılandırmak için **Appcmd. exe** ' yi kullanan bir başlangıç görevidir. **Appcmd. exe** gerekli `executionContext="elevated"`.
 
-### <a name="use-the-appropriate-tasktype"></a>Uygun görev Türünü kullanma
-[Görev Türü][Görev] özniteliği, başlangıç görevinin yürütülme şeklini belirler. Üç değer vardır: **basit**, **arka plan**, ve **ön planda**. Arka plan ve ön plan görevleri eşit olarak başlatılır ve ardından basit görevler eşzamanlı olarak birer birer yürütülür.
+### <a name="use-the-appropriate-tasktype"></a>Uygun taskType 'ı kullanın
+[TaskType][görev] özniteliği başlangıç görevinin yürütülme şeklini belirler. Üç değer vardır: **basit**, **arka plan**ve **ön plan**. Arka plan ve ön plan görevleri zaman uyumsuz olarak başlatılır ve basit görevler tek seferde bir kez yürütülür.
 
-**Basit** başlangıç görevleriyle, görevlerin ServiceDefinition.csdef dosyasında listelenme sırasına göre çalışma sırasını ayarlayabilirsiniz. **Basit** bir görev sıfır olmayan bir çıkış koduyla biterse, başlatma yordamı durur ve rol başlamaz.
+**Basit** başlangıç görevlerinde, görevlerin ServiceDefinition. csdef dosyasında listelenme sırasına göre çalıştırılacağı sırayı ayarlayabilirsiniz. **Basit** bir görev sıfır dışında bir çıkış kodu ile bitiyorsa, başlangıç yordamı duraklar ve rol başlatılmaz.
 
-**Arka plan** başlangıç görevleri ile **ön plan** başlangıç görevleri arasındaki fark, ön **plan** görevlerinin **ön plan** görevi sona erene kadar rolü çalışır durumda tutmasıdır. Bu aynı **zamanda, ön plan** görevi askıda kalırsa veya çökerse, **ön plan** görevi kapatılıcaya kadar rolün geri dönüşüm ekişmeyeceğini de ifade eder. Bu nedenle, **ön plan** görevinin bu özelliğine ihtiyacınız yoksa, arka **plan** görevleri eşakılsız başlangıç görevleri için önerilir.
+**Arka plan** başlangıç görevleri ve **ön plan** başlangıç görevleri arasındaki fark, **ön plan görevlerinin,** **ön plan** görevi sona erene kadar rolün çalışır durumda tutulması gerektiğidir. Bu Ayrıca, **ön** plan görevi askıda kalırsa veya kilitlenirse, **ön plan** görevi zorlayarak kapanana kadar rolün geri dönüştürülmeyeceği anlamına gelir. Bu nedenle, **ön** plan görevinin özelliğinin gerekli olmadığı durumlar dışında, zaman uyumsuz başlangıç görevleri için **arka plan** görevleri önerilir.
 
-### <a name="end-batch-files-with-exit-b-0"></a>EXIT /B 0 ile toplu iş dosyalarını sonla
-Rol yalnızca basit başlangıç görevinizin her birinden **hata düzeyi** sıfırsa başlar. Tüm programlar **hata düzeyini** (çıkış kodu) doğru ayarlamaz, bu `EXIT /B 0` nedenle toplu iş dosyası her şey doğru çalıştırılırsa bir dosyayla sona ermelidir.
+### <a name="end-batch-files-with-exit-b-0"></a>Batch dosyalarını şu çıkış ile sonlandır/B 0
+Rol yalnızca basit başlangıç görevinizden gelen **ERRORLEVEL** sıfır ise başlatılır. Tüm Programlar **ERRORLEVEL** (çıkış kodu) doğru olarak ayarlanmadı, bu nedenle toplu iş dosyası her şey doğru şekilde `EXIT /B 0` çalıştırıldıysa bir ile bitmelidir.
 
-Başlangıç `EXIT /B 0` toplu iş dosyasının sonunda eksik bir başlangıç olmayan rollerin yaygın bir nedenidir.
+Başlatma toplu `EXIT /B 0` iş dosyasının sonunda eksik olan bir rol, yaygın olarak kullanılan bir nedendir.
 
 > [!NOTE]
-> Ben iç içe toplu iş dosyaları bazen `/B` parametre kullanırken asmak fark ettik. Başka bir toplu iş dosyası geçerli toplu dosyanızı ararsa, günlük [sarıcıyı](#always-log-startup-activities)kullanıyorsanız gibi bu askı sorununun gerçekleşmediğinden emin olmak isteyebilirsiniz. Bu durumda parametreyi `/B` atlayabilirsiniz.
+> İç içe geçmiş toplu iş dosyalarının, `/B` parametresini kullanırken bazen askıda olduğunu fark ettim. [Günlük sarmalayıcı](#always-log-startup-activities)kullandığınızda olduğu gibi, başka bir Batch dosyası geçerli toplu iş dosyanızı çağırırsa, bu askıda kalma sorununun gerçekleşmediğinden emin olmak isteyebilirsiniz. Bu durumda `/B` parametreyi atlayabilirsiniz.
 > 
 > 
 
-### <a name="expect-startup-tasks-to-run-more-than-once"></a>Başlangıç görevlerinin birden fazla kez çalışmasını bekleme
-Tüm rol geri dönüşümleri yeniden başlatmayı içermez, ancak tüm rol geri dönüşümleri tüm başlangıç görevlerini çalıştırmayı içerir. Bu, başlangıç görevlerinin yeniden başlatmalar arasında herhangi bir sorun olmadan birden çok kez çalıştırılabildiği anlamına gelir. Bu [önceki bölümde](#detect-that-your-task-has-already-run)ele alınmıştır.
+### <a name="expect-startup-tasks-to-run-more-than-once"></a>Başlangıç görevlerinin birden çok kez çalışmasını bekliyor
+Tüm rol geri dönüştürme işlemi yeniden önyükleme içermez, ancak tüm rol geri dönüştürme işlemleri tüm başlangıç görevlerini çalıştırmayı içerir. Bu, başlangıç görevlerinin herhangi bir sorun olmadan yeniden başlatmalar arasında birden çok kez çalıştırabilmesi gerektiği anlamına gelir. Bu, [önceki bölümde](#detect-that-your-task-has-already-run)ele alınmıştır.
 
-### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Rolde erişilmesi gereken dosyaları depolamak için yerel depolama alanını kullanma
-Başlangıç göreviniz sırasında rolünüz tarafından erişilebilen bir dosyayı kopyalamak veya oluşturmak istiyorsanız, bu dosyanın yerel depolama alanına yerleştirilmesi gerekir. Önceki [bölüme](#create-files-in-local-storage-from-a-startup-task)bakın.
+### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>Rolde erişilmesi gereken dosyaları depolamak için yerel depolamayı kullanın
+Başlangıç göreviniz sırasında rolünüz tarafından erişilebilen bir dosya kopyalamak veya oluşturmak istiyorsanız bu dosyanın yerel depolama alanına yerleştirilmesi gerekir. [Yukarıdaki bölüme](#create-files-in-local-storage-from-a-startup-task)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bulut [hizmeti modelini ve paketini](cloud-services-model-and-package.md) gözden geçirin
+Bulut [Hizmeti modelini ve paketini](cloud-services-model-and-package.md) gözden geçirin
 
 [Görevlerin](cloud-services-startup-tasks.md) nasıl çalıştığı hakkında daha fazla bilgi edinin.
 
-Bulut hizmet paketinizi [oluşturun ve dağıtın.](cloud-services-how-to-create-deploy-portal.md)
+Bulut hizmeti paketinizi [oluşturun ve dağıtın](cloud-services-how-to-create-deploy-portal.md) .
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Görev]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Ortam]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Değişken]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [Uç Noktalar]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[Localstorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
-[Yerel Kaynaklar]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
+[LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
+[Roleınstancevalue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
 
 

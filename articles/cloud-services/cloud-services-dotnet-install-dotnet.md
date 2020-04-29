@@ -1,6 +1,6 @@
 ---
-title: Azure Bulut Hizmetleri rollerine .NET'i yükleme | Microsoft Dokümanlar
-description: Bu makalede, .NET Framework'ün bulut hizmeti web'inize ve çalışan rollerinize el ile nasıl yüklenir
+title: Azure Cloud Services rollerine .NET 'i yükler | Microsoft Docs
+description: Bu makalede, bulut hizmeti Web ve çalışan rollerinizin .NET Framework el ile nasıl yükleneceği açıklanır.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -11,49 +11,49 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
 ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214718"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Azure Bulut Hizmetleri rollerine .NET'i yükleme
-Bu makalede, .NET Framework'ün Azure Konuk İşletim Sistemi ile birlikte gelmeyen sürümlerinin nasıl yüklenir. Bulut hizmeti web ve çalışan rollerinizi yapılandırmak için Konuk İşletim Sistemi'nde .NET'i kullanabilirsiniz.
+# <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services rollerine .NET 'i yükler
+Bu makalede, Azure Konuk IŞLETIM sistemiyle birlikte gelmeyen .NET Framework sürümlerinin nasıl yükleneceği açıklanır. Bulut hizmeti Web ve çalışan rollerinizi yapılandırmak için konuk işletim sisteminde .NET kullanabilirsiniz.
 
-Örneğin, .NET Framework 4.6'nın herhangi bir sürümüyle birlikte gelmeyen Guest OS ailesi 4'e .NET Framework 4.6.2'yi yükleyebilirsiniz. (Konuk OS ailesi 5 .NET Framework 4.6 ile birlikte gelir.) Azure Konuk İşletim Sistemi sürümleriyle ilgili en son bilgiler için [Azure Konuk İşletim Sistemi yayın haberlerine](cloud-services-guestos-update-matrix.md)bakın. 
+Örneğin, Konuk işletim sistemi aile 4 ' te .NET Framework 4.6.2 yükleyebilirsiniz ve bu, .NET Framework 4,6 ' un herhangi bir sürümüyle birlikte gelmeyecektir. (Konuk işletim sistemi ailesi 5, .NET Framework 4,6 ile gelir.) Azure Konuk işletim sistemi sürümleri hakkında en son bilgiler için bkz. [Azure Konuk işletim sistemi sürüm haberleri](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Azure SDK 2.9, Konuk İşletim Sistemi ailesi 4 veya daha önce .NET Framework 4.6'yı dağıtma kısıtlaması içerir. Kısıtlama için bir düzeltme [Microsoft Dokümanlar](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) sitesinde kullanılabilir.
+>Azure SDK 2,9, Konuk işletim sistemi ailesi 4 veya önceki sürümlerde .NET Framework 4,6 ' i dağıtmaya yönelik bir kısıtlama içerir. [Microsoft docs](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9) sitesinde kısıtlama için bir çözüm bulunur.
 
-Web ve çalışan rollerinize .NET yüklemek için bulut hizmeti projenizin bir parçası olarak .NET web yükleyicisini ekleyin. Yüklemeciyi rolün başlangıç görevlerinin bir parçası olarak başlatın. 
+Web ve çalışan rolleriniz üzerinde .NET yüklemek için, bulut hizmeti projenizin bir parçası olarak .NET web yükleyicisini dahil edin. Rolün başlangıç görevlerinin bir parçası olarak Yükleyiciyi başlatın. 
 
-## <a name="add-the-net-installer-to-your-project"></a>Projenize .NET yükleyicisini ekleyin
-.NET Framework web yükleyicisini indirmek için yüklemek istediğiniz sürümü seçin:
+## <a name="add-the-net-installer-to-your-project"></a>Projenize .NET yükleyicisi ekleyin
+.NET Framework web yükleyicisini indirmek için, yüklemek istediğiniz sürümü seçin:
 
-* [.NET Framework 4.8 web yükleyici](https://dotnet.microsoft.com/download/thank-you/net48)
-* [.NET Framework 4.7.2 web yükleyici](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [.NET Framework 4.6.2 web yükleyici](https://www.microsoft.com/download/details.aspx?id=53345)
+* [.NET Framework 4,8 Web Yükleyicisi](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.7.2 Web Yükleyicisi](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [.NET Framework 4.6.2 Web Yükleyicisi](https://www.microsoft.com/download/details.aspx?id=53345)
 
-Bir *web* rolü için yükleyici eklemek için:
-  1. **Solution Explorer'da,** bulut hizmeti projenizdeki **Roller** altında, *web* rolünüze sağ tıklayın ve Yeni**Klasör** **Ekle'yi** > seçin. **Bin**adlı bir klasör oluşturun.
-  2. Depo gözü klasörüne sağ tıklayın ve**Varolan Öğeyi** **Ekle'yi** > seçin. .NET yükleyicisini seçin ve çöp kutusu klasörüne ekleyin.
+Bir *Web* rolü için yükleyiciyi eklemek için:
+  1. **Çözüm Gezgini**, bulut hizmeti **projenizdeki roller** ' in altında *Web* rolünüze sağ tıklayıp**Yeni klasör** **Ekle** > ' yi seçin. **Bin**adlı bir klasör oluşturun.
+  2. Bin klasörüne sağ tıklayın ve**Varolan öğe** **Ekle** > ' yi seçin. .NET yükleyicisini seçin ve bin klasörüne ekleyin.
   
-*Bir alt* rol için yükleyici eklemek için:
-* *Çalışan* rolünüzü sağ tıklatın ve**Varolan Öğeyi** **Ekle'yi** > seçin. .NET yükleyicisini seçin ve role ekleyin. 
+Bir *çalışan* rolü için yükleyiciyi eklemek için:
+* *Çalışan* rolünüze sağ tıklayın ve**Varolan öğe** **Ekle** > ' yi seçin. .NET yükleyicisini seçin ve role ekleyin. 
 
-Dosyalar rol içeriği klasörüne bu şekilde eklendiğinde, bulut hizmet paketinize otomatik olarak eklenir. Dosyalar daha sonra sanal makinede tutarlı bir konuma dağıtılır. Bulut hizmetinizdeki her web ve çalışan rolü için bu işlemi yineleyin, böylece tüm roller yükleyicinin bir kopyasına sahip olabilir.
+Bu şekilde, rol içerik klasörüne dosyalar eklendiğinde, bulut hizmeti paketinize otomatik olarak eklenir. Dosyalar daha sonra sanal makinede tutarlı bir konuma dağıtılır. Tüm rollerin yükleyicinin bir kopyasına sahip olması için bulut hizmetinizdeki her bir Web ve çalışan rolü için bu işlemi tekrarlayın.
 
 > [!NOTE]
-> .NET Framework 4.6'yı, uygulamanız .NET Framework 4.6'yı hedefalse bile bulut hizmeti rolünüze yüklemeniz gerekir. Konuk İşletim Sistemi Bilgi Bankası [güncelleme 3098779](https://support.microsoft.com/kb/3098779) ve [güncelleme 3097997](https://support.microsoft.com/kb/3097997)içerir. .NET Framework 4.6 Bilgi Bankası güncelleştirmelerinin üstüne yüklendiğinde .NET uygulamalarınızı çalıştırdığınızda sorunlar oluşabilir. Bu sorunları önlemek için sürüm 4.6 yerine .NET Framework 4.6.2'yi yükleyin. Daha fazla bilgi için bilgi [bankası makale 3118750](https://support.microsoft.com/kb/3118750) ve [4340191](https://support.microsoft.com/kb/4340191)bakın.
+> Uygulamanız 4,6 .NET Framework hedefliyorsa bile bulut hizmeti rolünüze .NET Framework 4.6.2 yüklemelisiniz. Konuk işletim sistemi, Bilgi Bankası [güncelleştirme 3098779](https://support.microsoft.com/kb/3098779) ve [güncelleştirme 3097997](https://support.microsoft.com/kb/3097997)' i içerir. Bilgi Bankası güncelleştirmelerinin üzerine 4,6 .NET Framework yüklüyse, .NET uygulamalarınızı çalıştırdığınızda sorunlar oluşabilir. Bu sorunlardan kaçınmak için sürüm 4,6 yerine .NET Framework 4.6.2 ' yi yüklemelisiniz. Daha fazla bilgi için bkz. [Bilgi Bankası makalesi 3118750](https://support.microsoft.com/kb/3118750) ve [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
-![Yükleyici dosyalarıyla rol içeriği][1]
+![Yükleyici dosyaları ile rol içerikleri][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>Rolleriniz için başlangıç görevlerini tanımlama
-Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevlerini kullanabilirsiniz. .NET Framework'ün başlangıç görevinin bir parçası olarak yüklenmesi, herhangi bir uygulama kodu çalıştırılmadan önce çerçevenin yüklenmesini sağlar. Başlangıç görevleri hakkında daha fazla bilgi için [bkz.](cloud-services-startup-tasks.md) 
+Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. .NET Framework, başlangıç görevinin bir parçası olarak yüklenmesi, herhangi bir uygulama kodu çalıştırılmadan önce çerçevenin yüklenmesini sağlar. Başlangıç görevleri hakkında daha fazla bilgi için bkz. [Azure 'da başlangıç görevlerini çalıştırma](cloud-services-startup-tasks.md). 
 
-1. Tüm roller için **WebRole** veya **WorkerRole** düğümü altında ServiceDefinition.csdef dosyasına aşağıdaki içeriği ekleyin:
+1. Aşağıdaki içeriği, tüm roller için **WebRole** veya **workerrole** düğümünün altındaki ServiceDefinition. csdef dosyasına ekleyin:
    
     ```xml
     <LocalResources>
@@ -73,19 +73,19 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
     </Startup>
     ```
    
-    Önceki yapılandırma,.NET Framework'ünü yüklemek için yönetici ayrıcalıklarıyla konsol komutunu `install.cmd` çalıştırın. Yapılandırma ayrıca **NETFXInstall**adlı bir **LocalStorage** öğesi oluşturur. Başlangıç komut dosyası, bu yerel depolama kaynağını kullanmak için geçici klasörü ayarlar. 
+    Önceki yapılandırma, .NET Framework yüklemek için konsol `install.cmd` komutunu yönetici ayrıcalıklarıyla çalıştırır. Yapılandırma ayrıca **Netfxınstall**adlı bir **localStorage** öğesi oluşturur. Başlangıç betiği, bu yerel depolama kaynağını kullanmak için Temp klasörünü ayarlar. 
     
     > [!IMPORTANT]
-    > Çerçevenin doğru yüklenmesini sağlamak için, bu kaynağın boyutunu en az 1.024 MB olarak ayarlayın.
+    > Framework 'ün doğru yüklemesini sağlamak için bu kaynağın boyutunu en az 1.024 MB olarak ayarlayın.
     
-    Başlangıç görevleri hakkında daha fazla bilgi için [Ortak Azure Bulut Hizmetleri başlangıç görevlerine](cloud-services-startup-tasks-common.md)bakın.
+    Başlangıç görevleri hakkında daha fazla bilgi için bkz. [Genel Azure Cloud Services başlangıç görevleri](cloud-services-startup-tasks-common.md).
 
-2. **install.cmd** adlı bir dosya oluşturun ve dosyaya aşağıdaki yükleme komut dosyasını ekleyin.
+2. **Install. cmd** adlı bir dosya oluşturun ve aşağıdaki Install betiğini dosyaya ekleyin.
 
-   Komut dosyası, .NET Framework'ün belirtilen sürümünün kayıt defterini sorgulayarak makineye zaten yüklenip yüklenmediğini denetler. .NET Framework sürümü yüklenmezse,.NET Framework web yükleyicisi açılır. Komut dosyası, sorunları gidermeye yardımcı olmak için tüm etkinlikleri **InstallLogs** yerel depolama alanında depolanan dosya başlangıçtasklog-(geçerli tarih ve saat).txt'ye kaydeder.
+   Betik, kayıt defterini sorgulayarak .NET Framework belirtilen sürümünün makinede zaten yüklü olup olmadığını denetler. .NET Framework sürümü yüklü değilse, .NET Framework Web Yükleyicisi açılır. Herhangi bir sorunu gidermeye yardımcı olmak için, betik tüm etkinlikleri, **ınstalllogs** yerel depolama alanında depolanan startuptasklog (geçerli tarih ve saat). txt dosyasına kaydeder.
    
    > [!IMPORTANT]
-   > install.cmd dosyasını oluşturmak için Windows Notepad gibi temel bir metin düzenleyicisini kullanın. Visual Studio'yu bir metin dosyası oluşturmak ve uzantıyı .cmd olarak değiştirmek için kullanırsanız, dosya yine de UTF-8 bayt sipariş işareti içerebilir. Bu işaret, komut dosyasının ilk satırı çalıştırıldığında bir hataya neden olabilir. Bu hatayı önlemek için, komut dosyasının ilk satırını bayt sipariş işleme tarafından atlanabilecek bir REM deyimi yapın. 
+   > Install. cmd dosyasını oluşturmak için Windows Notepad gibi temel bir metin düzenleyicisi kullanın. Bir metin dosyası oluşturmak ve uzantıyı. cmd olarak değiştirmek için Visual Studio kullanıyorsanız, dosya yine de bir UTF-8 bayt sırası işareti içeriyor olabilir. Bu işaret, betiğin ilk satırı çalıştırıldığında hata oluşmasına neden olabilir. Bu hatayı önlemek için betiğin ilk satırını, bayt sırası işleme tarafından atlanacak bir REM ifadesinin önüne alın. 
    > 
    >
    
@@ -197,17 +197,17 @@ Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görev
    EXIT /B 0
    ```
 
-3. Bu konuda daha önce açıklandığı gibi **Çözüm Gezgini'nde** **Varolan Öğeyi** **Ekle'yi** > kullanarak install.cmd dosyasını her role ekleyin. 
+3. Bu konunun önceki kısımlarında açıklandığı gibi **Çözüm Gezgini** ' de**var olan öğe** **Ekle** > ' 'yi kullanarak her role Install. cmd dosyasını ekleyin. 
 
-    Bu adım tamamlandıktan sonra tüm rollerde .NET yükleyici dosyası ve install.cmd dosyası olmalıdır.
+    Bu adım tamamlandıktan sonra, tüm rollerin .NET yükleyici dosyası ve Install. cmd dosyası olması gerekir.
 
-   ![Tüm dosyalarla rol içeriği][2]
+   ![Tüm dosyaları içeren rol içerikleri][2]
 
-## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Başlangıç günlüklerini Blob depolamaalanına aktarmak için Tanılama'yı yapılandır
-Sorun giderme yükleme sorunlarını basitleştirmek için, başlangıç komut dosyası veya .NET yükleyicitarafından oluşturulan günlük dosyalarını Azure Blob depolama alanına aktarmak için Azure Diagnostics'i yapılandırabilirsiniz. Bu yaklaşımı kullanarak, günlük dosyalarını rol için uzak masaüstüne gitmek yerine Blob depolamadan indirerek görüntüleyebilirsiniz.
+## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>Başlangıç günlüklerini blob depolamaya aktarmak için tanılamayı yapılandırın
+Yükleme sorunlarını giderme işlemini basitleştirmek için, başlangıç betiği veya .NET yükleyicisi tarafından oluşturulan günlük dosyalarını Azure Blob depolama alanına aktarmak üzere Azure Tanılama yapılandırabilirsiniz. Bu yaklaşımı kullanarak, rol üzerinde Uzak Masaüstü yerine, blob depolamadan günlük dosyalarını indirerek günlükleri görüntüleyebilirsiniz.
 
 
-Tanılama'yı yapılandırmak için diagnostics.wadcfgx dosyasını açın ve **Dizindüğümün** altına aşağıdaki içeriği ekleyin: 
+Tanılamayı yapılandırmak için, Diagnostics. wadcfgx dosyasını açın ve **dizinler** düğümüne aşağıdaki içeriği ekleyin: 
 
 ```xml 
 <DataSources>
@@ -217,15 +217,15 @@ Tanılama'yı yapılandırmak için diagnostics.wadcfgx dosyasını açın ve **
 </DataSources>
 ```
 
-Bu XML, **NETFXInstall** kaynağındaki günlük dizinindeki dosyaları **netfx-install** blob kapsayıcısındaki Tanılama depolama hesabına aktarmak için Tanılama'yı yapılandırır.
+Bu XML, **Netfxinstall** kaynağındaki günlük dizinindeki dosyaları **Netfx-Install** blob kapsayıcısındaki tanılama depolama hesabına aktarmak üzere tanılamayı yapılandırır.
 
-## <a name="deploy-your-cloud-service"></a>Bulut hizmetinizi dağıtma
-Bulut hizmetinizi dağıttığınızda, başlangıç görevleri .NET Framework'e yüklenmemişse yüklenir. Çerçeve yüklenirken bulut hizmeti rolleriniz *meşgul* durumdadır. Çerçeve yüklemesi yeniden başlatma gerektiriyorsa, hizmet rolleri de yeniden başlatılabilirsiniz. 
+## <a name="deploy-your-cloud-service"></a>Bulut hizmetinizi dağıtın
+Bulut hizmetinizi dağıtırken, önceden yüklenmemişse, başlangıç görevleri .NET Framework yükler. Çerçeve yüklenirken bulut hizmeti rolleriniz *meşgul* durumunda. Çerçeve yüklemesi için yeniden başlatma gerekiyorsa, hizmet rolleri de yeniden başlatılabilir. 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 * [.NET Framework2ü yükleme][Installing the .NET Framework]
-* [Hangi .NET Framework sürümlerinin yüklü olduğunu belirleme][How to: Determine Which .NET Framework Versions Are Installed]
-* [Sorun Giderme .NET Framework yüklemeleri][Troubleshooting .NET Framework Installations]
+* [Hangi .NET Framework sürümlerinin yüklendiğini belirleme][How to: Determine Which .NET Framework Versions Are Installed]
+* [.NET Framework yüklemeleri sorunlarını giderme][Troubleshooting .NET Framework Installations]
 
 [How to: Determine Which .NET Framework Versions Are Installed]: /dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
 [Installing the .NET Framework]: /dotnet/framework/install/guide-for-developers

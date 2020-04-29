@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Özel bir ses asistanı oluşturma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: özel bir ses Yardımcısı oluşturma-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: trrwilson
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 03/20/2020
 ms.author: travisw
 ms.openlocfilehash: bb88ef7f048b2454f05ef33286e59277070c3ea0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241146"
 ---
-Bu hızlı başlatmada, daha önce yazdığınız ve yapılandırdığınız bir bota bağlanan özel bir ses asistanı uygulaması oluşturmak için [Konuşma SDK'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Bir bot oluşturmanız gerekiyorsa, daha kapsamlı bir kılavuz için [ilgili öğreticiye](~/articles/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk.md) bakın.
+Bu hızlı başlangıçta, zaten yazdığınız ve yapılandırdığınız bir bot 'a bağlanan özel bir ses Yardımcısı uygulaması oluşturmak için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Bir bot oluşturmanız gerekiyorsa, daha kapsamlı bir kılavuz için [ilgili öğreticiye](~/articles/cognitive-services/speech-service/tutorial-voice-enable-your-bot-speech-sdk.md) bakın.
 
-Birkaç ön koşulu yerine getirerek, özel sesli yardımcınızı bağlamak yalnızca birkaç adımdan oluşur:
+Birkaç önkoşulu karşıladıktan sonra, özel sesli yardımcınızı bağlamak yalnızca birkaç adım sürer:
 > [!div class="checklist"]
-> * Abonelik `BotFrameworkConfig` anahtarınızdan ve bölgenizden bir nesne oluşturun.
-> * Nesneyi `DialogServiceConnector` yukarıdan `BotFrameworkConfig` kullanarak bir nesne oluşturun.
-> * Nesneyi `DialogServiceConnector` kullanarak, tek bir söyleyiş için dinleme işlemini başlatın.
-> * İade `ActivityReceivedEventArgs` edilenleri inceleyin.
+> * Abonelik anahtarınızdan ve bölgenizde bir `BotFrameworkConfig` nesne oluşturun.
+> * Yukarıdaki `BotFrameworkConfig` nesneyi `DialogServiceConnector` kullanarak bir nesne oluşturun.
+> * `DialogServiceConnector` Nesnesini kullanarak tek bir söyme için dinleme sürecini başlatın.
+> * `ActivityReceivedEventArgs` Döndürülen ' i inceleyin.

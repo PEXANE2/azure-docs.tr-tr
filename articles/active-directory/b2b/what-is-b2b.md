@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory'de B2B işbirliği nedir?
+title: Azure Active Directory B2B işbirliği nedir?
 description: Azure Active Directory B2B işbirliği, kaynakları güvenli bir şekilde paylaşmak ve şirket dışındaki ortaklarla işbirliği yapmak için konuk kullanıcı erişimini destekler.
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80050734"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?
@@ -30,7 +30,7 @@ Aşağıdaki video, kullanışlı bir genel bakış sağlar.
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
    > [!IMPORTANT]
-   > **31 Mart 2021'den itibaren Microsoft,** B2B işbirliği senaryoları için yönetilmeyen Azure AD hesapları ve kiracılar oluşturarak artık davetlerin itfasını desteklemez. Hazırlık olarak, müşterilerin tek [seferlik parola kimlik doğrulaması e-postasını](one-time-passcode.md)seçmelerini öneririz. Bu genel önizleme özelliği hakkındaki görüşlerinizi memnuniyetle karşılıyoruz ve işbirliği yapmak için daha fazla yol oluşturmaktan heyecan duyuyoruz.
+   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Kimliklerini kullanarak herhangi bir ortak ile işbirliği yapma
 
@@ -50,17 +50,17 @@ Konuk kullanıcılar, kendi iş, okul veya sosyal kimlikleriyle uygulama ve hizm
 - Bir uygulamaya doğrudan bağlantı gönderin veya konuk kullanıcının kendi Erişim Paneline bir davet gönderin.
 - Konuk kullanıcılar, oturum açmak için birkaç basit kullanım adımını izler.
 
-![İnceleme izinleri sayfasını gösteren ekran görüntüsü](media/what-is-b2b/consentscreen.png)
+![İzinleri gözden geçir sayfasını gösteren ekran görüntüsü](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Uygulama ve hizmetlerinizi güvenli bir şekilde paylaşmak için ilkeleri kullanma
 
-Şirket içeriğinizi korumak için yetkilendirme ilkelerini kullanabilirsiniz. Çok faktörlü kimlik doğrulama gibi Koşullu Erişim ilkeleri zorlanabilir:
+Şirket içeriğinizi korumak için yetkilendirme ilkeleri kullanabilirsiniz. Multi-Factor Authentication gibi koşullu erişim ilkeleri zorlanabilir:
 
 - Kiracı düzeyinde.
 - Uygulama düzeyinde.
 - Belirli konuk kullanıcıların kurumsal uygulamalarını ve verilerini koruması için.
 
-![Koşullu Erişim seçeneğini gösteren ekran görüntüsü](media/what-is-b2b/tutorial-mfa-policy-2.png)
+![Koşullu erişim seçeneğini gösteren ekran görüntüsü](media/what-is-b2b/tutorial-mfa-policy-2.png)
 
 
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Azure AD portalda kolayca konuk kullanıcılar ekleme
@@ -71,7 +71,7 @@ Yönetici olarak, Azure portalda kuruluşunuza kolayca konuk kullanıcılar ekle
 - Konuk kullanıcı hemen Erişim Panelinde oturum açmalarını sağlayan özelleştirilebilir bir davet alır.
 - Dizindeki konuk kullanıcılar, uygulamalara veya gruplara atanabilir.  
 
-![Yeni Konuk Kullanıcı davet giriş sayfasını gösteren ekran görüntüsü](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
+![Yeni Konuk Kullanıcı daveti giriş sayfasını gösteren ekran görüntüsü](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Uygulama ve grup sahiplerinin kendi konuk kullanıcılarını yönetmesine izin verme
 
@@ -80,14 +80,14 @@ Uygulama sahiplerinin, Microsoft uygulaması olsun olmasın, paylaşmak istedikl
 - Yöneticiler, self servis uygulama ve grup yönetimini ayarlar.
 - Yönetici olmayan kullanıcılar, uygulamalara veya gruplara konuk kullanıcılar eklemek için [Erişim Paneli](https://myapps.microsoft.com)’ni kullanır.
 
-![Konuk kullanıcı için Access panelini gösteren ekran görüntüsü](media/what-is-b2b/access-panel-manage-app.png)
+![Konuk Kullanıcı için erişim panelini gösteren ekran görüntüsü](media/what-is-b2b/access-panel-manage-app.png)
 
-## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>B2B konuk kullanıcıları için biniş deneyimini özelleştirin
+## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>B2B Konuk kullanıcıları için ekleme deneyimini özelleştirme
 
 Kuruluşunuzun gereksinimlerine göre özelleştirilmiş şekilde şirket dışındaki ortaklar ekleyin.
 
-- [Dış kullanıcıların erişimini yöneten](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)ilkeleri yapılandırmak için Azure AD yetkilendirme [yönetimini](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) kullanın.
-- Biniş deneyimlerinizi özelleştirmek için [B2B işbirliği daveti API'lerini](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) kullanın.
+- [Dış kullanıcılara erişimi yöneten](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) 'ni kullanın.
+- Ekleme deneyimlerinizi özelleştirmek için [B2B işbirliği davetiyesi API 'lerini](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

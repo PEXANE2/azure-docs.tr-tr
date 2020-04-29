@@ -9,15 +9,15 @@ ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c61378510fbfc8bdc13f35ba1063a0d9316d88e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066202"
 ---
-## <a name="1-download-the-file"></a>1. Dosyayı indirin
+## <a name="1-download-the-file"></a>1. dosyayı indirin
 
-Aşağıdaki komutları çalıştırın. Profil zip dosyasını indirmek için sonuç URL'sini tarayıcınıza kopyalayın.
+Aşağıdaki komutları çalıştırın. Profil ZIP dosyasını indirmek için sonuç URL 'sini tarayıcınıza kopyalayın.
 
 ```azurepowershell-interactive
 $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
@@ -25,17 +25,17 @@ $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauth
 $PROFILE.VpnProfileSASUrl
 ```
 
-## <a name="2-extract-the-zip-file"></a>2. Zip dosyasını ayıklayın
+## <a name="2-extract-the-zip-file"></a>2. zip dosyasını Ayıkla
 
 Zip dosyasını ayıklayın. Dosya aşağıdaki klasörleri içerir:
 
 * AzureVPN
 * Genel
-* OpenVPN (Ağ geçidindeki OpenVPN ve Azure AD kimlik doğrulama ayarlarını etkinleştirdiyseniz. VPN Ağ Geçidi için [bkz.](../articles/vpn-gateway/openvpn-azure-ad-tenant.md) Sanal WAN için bkz: [Kiracı oluştur - VWAN.](../articles/virtual-wan/openvpn-azure-ad-tenant.md)
+* OpenVPN (ağ geçidinde OpenVPN ve Azure AD kimlik doğrulaması ayarlarını etkinleştirdiyseniz). VPN Gateway için bkz. [kiracı oluşturma](../articles/vpn-gateway/openvpn-azure-ad-tenant.md). Sanal WAN için bkz. [kiracı oluşturma-VWAN](../articles/virtual-wan/openvpn-azure-ad-tenant.md).
 
-## <a name="3-retrieve-information"></a>3. Bilgi alma
+## <a name="3-retrieve-information"></a>3. bilgileri alma
 
-**AzureVPN** klasöründe ***azurevpnconfig.xml*** dosyasına gidin ve Notepad ile açın. Aşağıdaki etiketler arasındaki metnin notunu yapın.
+**AzureVPN** klasöründe, ***azurevpnconfig. xml*** dosyasına gidin ve Not defteri ile açın. Aşağıdaki Etiketler arasındaki metni bir yere unutmayın.
 
 ```
 <audience>          </audience>
@@ -45,18 +45,18 @@ Zip dosyasını ayıklayın. Dosya aşağıdaki klasörleri içerir:
 <serversecret>      </serversecret>
 ```
 
-## <a name="profile-details"></a>Profil detayları
+## <a name="profile-details"></a>Profil ayrıntıları
 
-Bağlantı eklediğinizde, profil ayrıntıları sayfası için önceki adımda topladığınız bilgileri kullanın. Alanlar aşağıdaki bilgilere karşılık gelir:
+Bir bağlantı eklediğinizde, profil ayrıntıları sayfası için önceki adımda topladığınız bilgileri kullanın. Alanlar aşağıdaki bilgilere karşılık gelir:
 
-   * **Hedef Kitle:** Belirteç için tasarlanan alıcı kaynağı tanımlar
-   * **İhraççı:** Belirteci ve Azure AD kiracısını yayan Güvenlik Belirteci Hizmetini (STS) tanımlar
-   * **Kiracı:** Belirteci veren dizin kiracısının değişmez, benzersiz tanımlayıcısını içerir
-   * **FQDN:** Azure VPN ağ geçidindeki tam nitelikli alan adı (FQDN)
-   * **ServerSecret:** VPN ağ geçidi önceden paylaşılan anahtar
+   * **Hedef kitle:** Belirtecin hedeflenen alıcı kaynağını tanımlar
+   * **Veren:** Belirteci oluşturan güvenlik belirteci hizmetini (STS) ve Azure AD kiracısını tanımlar
+   * **Kiracı:** Belirteci veren dizin kiracının sabit, benzersiz bir tanımlayıcısını içerir
+   * **FQDN:** Azure VPN Gateway 'de tam etki alanı adı (FQDN)
+   * **Sunucusecret:** VPN Gateway önceden paylaşılan anahtarı
 
 ## <a name="folder-contents"></a>Klasör içeriği
 
-* **Genel klasör,** ortak sunucu sertifikasını ve VpnSettings.xml dosyasını içerir. VpnSettings.xml dosyası, genel bir istemciyi yapılandırmak için gereken bilgileri içerir.
+* **Genel klasör** , ortak sunucu sertifikasını ve vpnsettings. xml dosyasını içerir. VpnSettings. xml dosyası, genel bir istemciyi yapılandırmak için gereken bilgileri içerir.
 
-* İndirilen zip dosyası **windowsamd64** ve **WindowsX86** klasörleri de içerebilir. Bu klasörler Windows istemcileri için SSTP ve IKEv2 için yükleyici içerir. Bunları yüklemek için istemci üzerinde yönetici hakları gerekir.
+* İndirilen ZIP dosyası, **WindowsAmd64** ve **WindowsX86** klasörlerini de içerebilir. Bu klasörler, Windows istemcileri için SSTP ve Ikev2 için yükleyiciyi içerir. İstemci üzerinde yönetici haklarına sahip olmanız gerekir.

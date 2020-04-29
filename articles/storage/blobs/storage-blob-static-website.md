@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama'da statik web sitesi barındırma
-description: Azure Depolama statik web sitesi barındırma, modern web uygulamaları barındırma için uygun maliyetli, ölçeklenebilir bir çözüm sağlar.
+description: Modern Web uygulamalarını barındırmak için uygun maliyetli ve ölçeklenebilir bir çözüm sunan Azure Storage statik Web sitesi barındırma.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,112 +9,112 @@ ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
 ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79370500"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Depolama'da statik web sitesi barındırma
 
-Statik içeriği (HTML, CSS, JavaScript ve resim dosyaları) doğrudan *$web*adlı bir depolama kapsayıcısından servis edebilirsiniz. İçeriğinizi Azure Depolama'da barındırmak, [Azure İşlevlerini](/azure/azure-functions/functions-overview) ve diğer Platform'u hizmet (PaaS) hizmetleri olarak içeren sunucusuz mimarileri kullanmanıza olanak tanır.
+*$Web*adlı bir depolama kapsayıcısından doğrudan statik IÇERIK (HTML, CSS, JavaScript ve resim dosyaları) hizmeti sağlayabilirsiniz. İçeriğinizi Azure Storage 'da barındırmak, [Azure işlevleri](/azure/azure-functions/functions-overview) ve diğer hizmet olarak platform (PaaS) hizmetlerini içeren sunucusuz mimariler kullanmanıza olanak sağlar.
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE]
-> Siteniz sunucu tarafındaki koda bağlıysa, bunun yerine [Azure Uygulama Hizmeti'ni](/azure/app-service/overview) kullanın.
+> Siteniz sunucu tarafı koduna bağımlıysa bunun yerine [Azure App Service](/azure/app-service/overview) kullanın.
 
-## <a name="setting-up-a-static-website"></a>Statik bir web sitesi kurma
+## <a name="setting-up-a-static-website"></a>Statik Web sitesi ayarlama
 
-Statik web sitesi barındırma depolama hesabında etkinleştirmek zorunda bir özelliktir.
+Statik Web sitesi barındırma, depolama hesabında etkinleştirmeniz gereken bir özelliktir.
 
-Statik web sitesi barındırmayı etkinleştirmek için varsayılan dosyanızın adını seçin ve ardından isteğe bağlı olarak özel bir 404 sayfasına giden bir yol sağlayın. hesapta **$web** adında bir blob depolama kapsayıcısı yoksa, sizin için bir tane oluşturulur. Sitenizin dosyalarını bu kapsayıcıya ekleyin.
+Statik Web sitesi barındırmayı etkinleştirmek için, varsayılan dosyanızın adını seçin ve isteğe bağlı olarak özel bir 404 sayfasının yolunu belirtin. **$Web** adlı bir BLOB depolama kapsayıcısı hesapta zaten yoksa, sizin için bir tane oluşturulur. Sitenizin dosyalarını bu kapsayıcıya ekleyin.
 
-Adım adım kılavuzluk için Azure [Depolama'da statik bir web sitesi barındırma 'na](storage-blob-static-website-how-to.md)bakın.
+Adım adım yönergeler için bkz. [Azure depolama 'da statik bir Web sitesi barındırma](storage-blob-static-website-how-to.md).
 
-![Azure Depolama statik web siteleri ölçümleri metrik](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
+![Azure depolama statik Web siteleri ölçümleri ölçümü](./media/storage-blob-static-website/storage-blob-static-website-blob-container.png)
 
-**$web** kapsayıcıdaki dosyalar büyük/küçük harf duyarlıdır, anonim erişim istekleri yle sunulur ve yalnızca okuma işlemleri yoluyla kullanılabilir.
+**$Web** kapsayıcısındaki dosyalar, anonim erişim istekleri aracılığıyla sunulan ve yalnızca okuma işlemleri aracılığıyla erişilebilen büyük/küçük harfe duyarlıdır.
 
-## <a name="uploading-content"></a>İçerik yükleme
+## <a name="uploading-content"></a>İçerik karşıya yükleniyor
 
-$web **kapsayıcısına** içerik yüklemek için aşağıdaki araçlardan herhangi birini kullanabilirsiniz:
+**$Web** kapsayıcısına içerik yüklemek için bu araçlardan herhangi birini kullanabilirsiniz:
 
 > [!div class="checklist"]
 > * [Azure CLI](storage-blob-static-website-how-to.md#cli)
 > * [Azure PowerShell modülü](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Gezgini](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Ardışık Hatları](https://azure.microsoft.com/services/devops/pipelines/)
+> * [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code uzantısı](/azure/javascript/tutorial-vscode-static-website-node-01)
 
 ## <a name="viewing-content"></a>İçeriği görüntüleme
 
-Kullanıcılar, web sitesinin genel URL'sini kullanarak site içeriğini bir tarayıcıdan görüntüleyebilir. URL'yi Azure portalını, Azure CLI'yi veya PowerShell'i kullanarak bulabilirsiniz. Bu tabloyu kılavuz olarak kullanın.
+Kullanıcılar Web sitesinin genel URL 'sini kullanarak bir tarayıcıdan site içeriğini görüntüleyebilir. Azure portal, Azure CLı veya PowerShell kullanarak URL 'YI bulabilirsiniz. Bu tabloyu kılavuz olarak kullanın.
 
 |Araç| Rehber |
 |----|----|
-|**Azure portalında** | [Azure portalını kullanarak web sitesinin URL'sini bulun](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [Azure CLI'yi kullanarak web sitesinin URL'sini bulun](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell modülü** | [PowerShell'i kullanarak web sitesinin URL'sini bulun](storage-blob-static-website-how-to.md#powershell-find-url) |
+|**Azure portal** | [Azure portal kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure CLI** | [Azure CLı kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure PowerShell modülü** | [PowerShell kullanarak Web sitesi URL 'sini bulma](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-Sitenizin URL'si bölgesel bir kod içerir. Örneğin URL `https://contosoblobaccount.z22.web.core.windows.net/` bölgesel kod `z22`içerir.
+Sitenizin URL 'SI bölgesel bir kod içerir. Örneğin, URL `https://contosoblobaccount.z22.web.core.windows.net/` bölgesel kod `z22`içerir.
 
-Bu kodun URL'de kalması gerekirken, yalnızca dahili kullanım içindir ve bu kodu başka bir şekilde kullanmanız gerekmez.
+Bu kodun URL 'de kalması gerekir, ancak yalnızca iç kullanım içindir ve bu kodu başka bir şekilde kullanmak zorunda kalmazsınız.
 
-Statik web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtığında görünür ve belirli `https://contosoblobaccount.z22.web.core.windows.net`bir dosya belirtmez (Örneğin: ).  
+Statik Web sitesi barındırmayı etkinleştirdiğinizde belirttiğiniz dizin belgesi, kullanıcılar siteyi açtıklarında ve belirli bir dosya belirtmezseniz görüntülenir (örneğin: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
-Sunucu bir 404 hatası döndürürve web sitesini etkinleştirdiğinizde bir hata belgesi belirtmediyseniz, varsayılan 404 sayfası kullanıcıya döndürülür.
+Sunucu bir 404 hatası döndürürse ve Web sitesini etkinleştirdiğinizde bir hata belgesi belirtmediğinde, kullanıcıya varsayılan bir 404 sayfası döndürülür.
 
 > [!NOTE]
-> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) statik web sitesi ile desteklenmez.
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) , statik Web sitesinde desteklenmez.
 
-## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web kapsayıcısının genel erişim düzeyinin ayarlanmasının etkisi
+## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Web kapsayıcısının genel erişim düzeyini ayarlamanın etkisi
 
-**$web** kapsayıcının genel erişim düzeyini değiştirebilirsiniz, ancak bu dosyaların anonim erişim istekleri yoluyla sunulduğundan, birincil statik web sitesi bitiş noktası üzerinde hiçbir etkisi yoktur. Bu, tüm dosyalara herkese açık (salt okunur) erişim anlamına gelir.
+**$Web** kapsayıcısının genel erişim düzeyini değiştirebilirsiniz, ancak bu dosyalar Anonim erişim istekleri aracılığıyla sunulduğundan birincil statik Web sitesi uç noktası üzerinde hiçbir etkisi yoktur. Bu, tüm dosyalara genel (salt okuma) erişimi anlamına gelir.
 
-Aşağıdaki ekran görüntüsü, Azure portalındaki genel erişim düzeyi ayarını gösterir:
+Aşağıdaki ekran görüntüsünde Azure portal ortak erişim düzeyi ayarı gösterilmektedir:
 
-![Portalda genel erişim düzeyinin nasıl ayarlanını gösteren ekran görüntüsü](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
+![Portalda genel erişim düzeyinin nasıl ayarlanacağını gösteren ekran görüntüsü](./media/storage-manage-access-to-resources/storage-manage-access-to-resources-0.png)
 
-Birincil statik web sitesi bitiş noktası etkilenmezken, genel erişim düzeyinde yapılan bir değişiklik birincil blob hizmeti bitiş noktasını etkiler.
+Birincil statik Web sitesi uç noktası etkilenmediğinden, genel erişim düzeyinde yapılan bir değişiklik birincil blob hizmeti uç noktasını etkiler.
 
-Örneğin, **$web** kapsayıcısının genel erişim düzeyini **Özel'den (anonim erişim yok)** **Blob'a (yalnızca bloblar için anonim okuma erişimi)** değiştirirseniz, birincil statik web sitesi bitiş noktasına `https://contosoblobaccount.z22.web.core.windows.net/index.html` genel erişim düzeyi değişmez.
+Örneğin, **$Web** kapsayıcısının genel erişim düzeyini ( **Anonim erişim olmadan)** **BLOB 'a (yalnızca blob 'lar için anonim okuma erişimi**) değiştirirseniz, birincil statik Web sitesi uç noktasına `https://contosoblobaccount.z22.web.core.windows.net/index.html` genel erişim düzeyi değişmez.
 
-Ancak, birincil blob hizmeti bitiş noktasına `https://contosoblobaccount.blob.core.windows.net/$web/index.html` genel erişim özelden genele değişir. Artık kullanıcılar bu iki uç noktadan birini kullanarak bu dosyayı açabilir.
+Bununla birlikte, birincil blob hizmeti uç noktasına `https://contosoblobaccount.blob.core.windows.net/$web/index.html` genel erişim, Private iken public olarak değişir. Artık kullanıcılar bu iki uç noktanın birini kullanarak bu dosyayı açabilir.
 
-## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Statik bir web sitesi URL'sine özel bir etki alanı eşleme
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Özel bir etki alanını statik bir Web sitesi URL 'siyle eşleme
 
-Statik web sitenizi özel bir etki alanı üzerinden kullanılabilir hale getirebilirsiniz. 
+Statik Web sitenizi özel bir etki alanı aracılığıyla kullanılabilir hale getirebilirsiniz. 
 
-Azure Depolama yerel olarak desteklediğinden, özel etki alanınız için HTTP erişimini etkinleştirmek daha kolaydır. HTTPS'yi etkinleştirmek için Azure CDN kullanmanız gerekir, çünkü Azure Depolama henüz özel etki alanlarıyla HTTPS'yi yerel olarak desteklemez. Bkz. Adım adım kılavuzluk için [özel bir etki alanını Azure Blob Depolama bitiş noktasına eşleyin.](storage-custom-domain-name.md)
+Azure Storage tarafından yerel olarak desteklendiğinden, özel etki alanınız için HTTP erişimini etkinleştirmek daha kolay olur. HTTPS 'yi etkinleştirmek için, Azure Storage özel etki alanları ile HTTPS 'yi henüz yerel olarak desteklemediğinden Azure CDN kullanmanız gerekir. adım adım yönergeler için bkz. [özel bir etki alanını Azure Blob depolama uç noktasına eşleme](storage-custom-domain-name.md) .
 
-Depolama hesabı HTTPS üzerinden [güvenli aktarım gerektirecek](../common/storage-require-secure-transfer.md) şekilde yapılandırılırsa, kullanıcıların HTTPS bitiş noktasını kullanması gerekir. 
+Depolama hesabı HTTPS üzerinden [Güvenli aktarım gerektirecek](../common/storage-require-secure-transfer.md) şekilde yapılandırıldıysa, kullanıcıların HTTPS uç noktasını kullanması gerekir. 
 
 > [!TIP]
-> Etki alanınızı Azure'da barındırmayı düşünün. Daha fazla bilgi için Azure [DNS'de etki alanınızı barındır'a](../../dns/dns-delegate-domain-azure-dns.md)bakın.
+> Etki alanınızı Azure 'da barındırmayı düşünün. Daha fazla bilgi için bkz. [Azure DNS etki alanınızı barındırma](../../dns/dns-delegate-domain-azure-dns.md).
 
-## <a name="adding-http-headers"></a>HTTP üstbilgi ekleme
+## <a name="adding-http-headers"></a>HTTP üstbilgileri ekleme
 
-Statik web sitesi özelliğinin bir parçası olarak üstleri yapılandırmanın bir yolu yoktur. Ancak, üstbilgi eklemek ve üstbilgi değerlerini eklemek (veya üzerine yazmak) için Azure CDN'yi kullanabilirsiniz. [Azure CDN için Standart kurallar motoru başvurusuna](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)bakın.
+Üstbilgileri statik Web sitesi özelliğinin bir parçası olarak yapılandırmanın bir yolu yoktur. Ancak üst bilgileri eklemek ve başlık değerlerini eklemek (veya üzerine yazmak) için Azure CDN kullanabilirsiniz. [Azure CDN Için standart kurallar altyapısı başvurusuna](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference)bakın.
 
-Önbelleğe alma denetimi için üstbilgi kullanmak istiyorsanız, [önbelleğe alma kurallarıyla Azure CDN önbelleğe alma davranışını](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)denetle'ye bakın.
+Önbelleğe almayı denetlemek için üst bilgileri kullanmak istiyorsanız, bkz. önbelleğe alma [kurallarıyla denetim Azure CDN önbelleğe alma davranışı](https://docs.microsoft.com/azure/cdn/cdn-caching-rules).
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Statik web sitesi barındırma ücretsiz etkinleştirebilirsiniz. Yalnızca sitenizin kullandığı blob depolama alanı ve işletme maliyetleri için faturalandırılırsınız. Azure Blob Depolama fiyatları hakkında daha fazla bilgi için [Azure Blob Depolama Fiyatlandırma Sayfasına](https://azure.microsoft.com/pricing/details/storage/blobs/)göz atın.
+Statik Web sitesi barındırmayı ücretsiz olarak etkinleştirebilirsiniz. Yalnızca sitenizin kullandığı BLOB depolama alanı ve operasyon maliyetlerine göre faturalandırılırsınız. Azure Blob depolama fiyatları hakkında daha fazla bilgi için [Azure Blob depolama fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/blobs/)göz atın.
 
 ## <a name="metrics"></a>Ölçümler
 
-Statik web sitesi sayfalarında ölçümleri etkinleştirebilirsiniz. Ölçümleri etkinleştirdikten sonra, **$web** kapsayıcıdaki dosyalara ilişkin trafik istatistikleri ölçümler panosunda bildirilir.
+Statik Web sitesi sayfalarında ölçümleri etkinleştirebilirsiniz. Ölçümleri etkinleştirdikten sonra, **$Web** kapsayıcısındaki dosyalardaki trafik istatistikleri ölçüm panosunda raporlanır.
 
-Statik web sitesi sayfalarınızdaki ölçümleri etkinleştirmek için statik [web sitesi sayfalarındaki ölçümleri etkinleştir metotları etkinleştirme'ye](storage-blob-static-website-how-to.md#metrics)bakın.
+Statik Web sitesi sayfalarınızda ölçümleri etkinleştirmek için bkz. [statik Web sitesi sayfalarında ölçümleri etkinleştirme](storage-blob-static-website-how-to.md#metrics).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Depolama'da statik bir web sitesi barındırma](storage-blob-static-website-how-to.md)
-* [Azure Blob Depolama bitiş noktasıyla özel bir etki alanı haritası](storage-custom-domain-name.md)
+* [Azure depolama 'da statik bir Web sitesi barındırma](storage-blob-static-website-how-to.md)
+* [Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme](storage-custom-domain-name.md)
 * [Azure İşlevleri](/azure/azure-functions/functions-overview)
-* [Azure Uygulama Hizmeti](/azure/app-service/overview)
-* [İlk sunucusuz web uygulamanızı oluşturun](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Azure App Service](/azure/app-service/overview)
+* [İlk sunucusuz Web uygulamanızı oluşturma](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Öğretici: Azure DNS’te etki alanınızı barındırma](../../dns/dns-delegate-domain-azure-dns.md)

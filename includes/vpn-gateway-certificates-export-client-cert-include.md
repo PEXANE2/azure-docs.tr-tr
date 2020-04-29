@@ -9,32 +9,32 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d16412e4e35714c840516670f520f77daed1676d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059952"
 ---
-İstemci sertifikası oluşturduğunuzda, bu sertifikayı oluşturmak için kullandığınız bilgisayara otomatik olarak yüklenir. İstemci sertifikasını başka bir istemci bilgisayara yüklemek istiyorsanız, oluşturduğunuz istemci sertifikasını dışa aktarmanız gerekir.
+Bir istemci sertifikası oluşturduğunuzda, bu, oluşturmak için kullandığınız bilgisayara otomatik olarak yüklenir. İstemci sertifikasını başka bir istemci bilgisayara yüklemek istiyorsanız, oluşturduğunuz istemci sertifikasını dışarı aktarmanız gerekir.
 
-1. Bir istemci sertifikasını dışarı aktarmak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Oluşturduğunuz istemci sertifikaları varsayılan olarak 'Sertifikalar - Geçerli Kullanıcı\Kişisel\Sertifikalar'da bulunur. Dışa aktarmak istediğiniz istemci sertifikasını sağ tıklatın, **tüm görevleri**tıklatın ve sonra **Sertifika Dışa Aktarma Sihirbazı'nı**açmak için **Dışa Aktar'ı** tıklatın.
+1. Bir istemci sertifikasını dışarı aktarmak için **Kullanıcı sertifikalarını yönet** menüsünü açın. Oluşturduğunuz istemci sertifikaları varsayılan olarak ' sertifikalar-geçerli kullanıcı \ kişisel \ Sertifikalar ' ' da bulunur. Dışarı aktarmak istediğiniz istemci sertifikasına sağ tıklayın, **Tüm görevler**' e tıklayın ve ardından **dışarı aktar** ' a tıklayarak **Sertifika Verme Sihirbazı**' nı açın.
 
    ![Dışarı Aktarma](./media/vpn-gateway-certificates-export-client-cert-include/export.png)
-2. Sertifika Dışa Aktarma Sihirbazı'nda devam etmek için **İleri'yi** tıklatın.
+2. Sertifika dışarı aktarma sihirbazında, devam etmek için **İleri** ' ye tıklayın.
 
    ![Sonraki](./media/vpn-gateway-certificates-export-client-cert-include/next.png)
-3. **Evet'i seçin, özel anahtarı dışa aktarın**ve sonra **İleri'yi**tıklatın.
+3. **Evet, özel anahtarı dışarı aktar**' ı seçin ve ardından **İleri**' ye tıklayın.
 
-   ![özel anahtarı dışa aktarma](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
-4. **Dışarı Aktarma Dosyası Biçimi** sayfasında, varsayılan ayarları seçili bırakın. **Mümkünse sertifika yolundaki tüm sertifikaları ekle** seçeneğinin işaretli olduğundan emin olun. Bu ayar ayrıca başarılı istemci kimlik doğrulaması için gereken kök sertifika bilgilerini de dışa dışa dışa dışa dışa aktarmaz. İstemci güvenilir kök sertifikasına sahip olmadığından istemci kimlik doğrulaması başarısız olur. Ardından **İleri'yi**tıklatın.
+   ![özel anahtarı dışarı aktar](./media/vpn-gateway-certificates-export-client-cert-include/privatekeyexport.png)
+4. **Dışarı Aktarma Dosyası Biçimi** sayfasında, varsayılan ayarları seçili bırakın. **Mümkünse sertifika yolundaki tüm sertifikaları ekle** seçeneğinin işaretli olduğundan emin olun. Bu ayar ayrıca, başarılı istemci kimlik doğrulaması için gerekli olan kök sertifika bilgilerini dışarı aktarır. Bu olmadan istemci, güvenilen kök sertifikaya sahip olmadığından istemci kimlik doğrulaması başarısız olur. Ardından **İleri**' ye tıklayın.
 
-   ![dosya biçimini dışa aktarma](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
-5. **Güvenlik** sayfasında, özel anahtarı korumanız gerekir. Bir parola kullanmayı seçerseniz, bu sertifika için ayarladığınız parolayı kaydettiğinizden ya da unutmayacağınızdan emin olun. Ardından **İleri'yi**tıklatın.
+   ![dışarı aktarma dosyası biçimi](./media/vpn-gateway-certificates-export-client-cert-include/includeallcerts.png)
+5. **Güvenlik** sayfasında, özel anahtarı korumanız gerekir. Bir parola kullanmayı seçerseniz, bu sertifika için ayarladığınız parolayı kaydettiğinizden ya da unutmayacağınızdan emin olun. Ardından **İleri**' ye tıklayın.
 
    ![güvenlik](./media/vpn-gateway-certificates-export-client-cert-include/security.png)
-6. **Dışarı Aktarılan Dosya** sayfasında **Gözat**'a tıklayarak sertifika için dışarı aktarma konumunu seçin. **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri'yi**tıklatın.
+6. **Dışarı Aktarılan Dosya** sayfasında **Gözat**'a tıklayarak sertifika için dışarı aktarma konumunu seçin. **Dosya adı** alanına, sertifika dosyası için bir ad girin. Ardından **İleri**' ye tıklayın.
 
-   ![dosya dışa aktarmak için](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
+   ![dışarı aktarılacak dosya](./media/vpn-gateway-certificates-export-client-cert-include/filetoexport.png)
 7. Sertifikayı dışarı aktarmak için **Son**'a tıklayın.
 
    ![bitirme](./media/vpn-gateway-certificates-export-client-cert-include/finish.png)

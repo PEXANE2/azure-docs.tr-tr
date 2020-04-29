@@ -1,6 +1,6 @@
 ---
-title: Azure API Yönetimi şablon kaynakları | Microsoft Dokümanlar
-description: Azure API Yönetimi'nde geliştirici portal şablonlarında kullanılmak üzere kullanılabilen kaynak türleri hakkında bilgi edinin.
+title: Azure API Management şablonu kaynakları | Microsoft Docs
+description: Azure API Management 'de geliştirici portalı şablonlarında kullanılabilecek kaynak türleri hakkında bilgi edinin.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,32 +14,32 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: c3b6123c63bf530463379a175745ef86baf2c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249509"
 ---
-# <a name="azure-api-management-template-resources"></a>Azure API Yönetimi şablon kaynakları
-Azure API Yönetimi, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki kaynak türlerini sağlar.  
+# <a name="azure-api-management-template-resources"></a>Azure API Management şablonu kaynakları
+Azure API Management, geliştirici portalı şablonlarında kullanılmak üzere aşağıdaki kaynak türlerini sağlar.  
   
--   [Yaylı çalgılar](#strings)  
+-   [Dize kaynakları](#strings)  
   
--   [Glyph kaynakları](#glyphs)  
+-   [Glif kaynakları](#glyphs)  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="string-resources"></a><a name="strings"></a>Yaylı çalgılar  
- API Yönetimi, geliştirici portalında kullanılmak üzere kapsamlı bir dize kaynakları kümesi sağlar. Bu kaynaklar API Yönetimi tarafından desteklenen tüm dillerde yerelleştirilmiştir. Varsayılan şablon kümesi, bu kaynakları sayfa üstbilgileri, etiketler ve geliştirici portalında görüntülenen sabit dizeleri için kullanır. Şablonlarınızda bir dize kaynağı kullanmak için, aşağıdaki örnekte gösterildiği gibi, kaynak dize önekisini ve ardından dize adını sağlayın.  
+##  <a name="string-resources"></a><a name="strings"></a>Dize kaynakları  
+ API Management, Geliştirici Portalında kullanılmak üzere kapsamlı bir dize kaynakları kümesi sağlar. Bu kaynaklar API Management tarafından desteklenen tüm dillerde yerelleştirilir. Varsayılan şablon kümesi, bu kaynakları sayfa üstbilgileri, Etiketler ve Geliştirici Portalında görüntülenen sabit dizeler için kullanır. Şablonlarınızın bir dize kaynağını kullanmak için aşağıdaki örnekte gösterildiği gibi, kaynak dize önekini ve ardından dize adını belirtin.  
   
 ```  
 {% localized "Prefix|Name" %}  
   
 ```  
   
- Aşağıdaki örnek Ürün listesi şablonundan gelir ve **Ürünleri** sayfanın üst kısmında görüntüler.  
+ Aşağıdaki örnek, ürün listesi şablonundan verilmiştir ve sayfanın üst kısmındaki **ürünleri** görüntüler.  
   
 ```  
 <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>  
@@ -50,62 +50,62 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 
 | Yerel Ayar    | Dil               |
 |-----------|------------------------|
-| "tr"      | "İngilizce"              |
-| "cs"      | "Čeština"              |
-| "de"      | "Deutsch"              |
-| "es"      | "Español"              |
-| "fr"      | "Français"             |
-| "hu"      | "Magyar"               |
-| "o"      | "Italiano"             |
-| "ja-JP"   | "Japonca"                |
-| "ko"      | "2010"                |
-| "nl"      | "Nederlands"           |
-| "pl"      | "Polski"               |
-| "pt-br"   | "Português (Brezilya)"   |
-| "pt-pt"   | "Português (Portekiz)" |
-| "ru"      | "Русский"              |
-| "sv"      | "Svenska"              |
-| "tr"      | "Türkçe"               |
-| "zh-hans" | "Japonca(japonca)"           |
-| "zh-hant" | "Japonca(Japonca)"           |
+| "tr"      | Ingilizce              |
+| 'ye      | "Čeština"              |
+| seçimini      | Deutsch              |
+| es      | "Espabir ol"              |
+| kesir      | Français             |
+| Hu      | Magyar               |
+| içerdiği      | Italiano             |
+| "ja-JP"   | "日本語"                |
+| dili      | "한국어"                |
+| nl      | Nederlands           |
+| pl      | Polski               |
+| "pt-br"   | "Português (BRASIL)"   |
+| "PT-PT"   | "Português (Portekiz)" |
+| ru      | "Русский"              |
+| v      | Svenska              |
+| tr      | Türkçe               |
+| "zh-Hans" | "中文(简体)"           |
+| "zh-Hant" | "中文(繁體)"           |
 
- Geliştirici portalı şablonlarınızda kullanılabilecek dize kaynakları için aşağıdaki tablolara bakın. Tablo adını, bu tablodaki dize kaynakları için önek olarak kullanın.  
+ Geliştirici portalı şablonlarınızda kullanılabilecek dize kaynakları için aşağıdaki tablolara bakın. Tablo adını bu tablodaki dize kaynaklarının ön eki olarak kullanın.  
   
 -   [ApisStrings](#ApisStrings)  
   
--   [UygulamaListStrings](#ApplicationListStrings)  
+-   [ApplicationListStrings](#ApplicationListStrings)  
   
--   [AppDetailsStrings](#AppDetailsStrings)  
+-   [Appayrıntılar dizeleri](#AppDetailsStrings)  
   
 -   [AppStrings](#AppStrings)  
   
--   [Ortak Kaynaklar](#CommonResources)  
+-   [Ortak kaynaklar](#CommonResources)  
   
--   [CommonStrings](#CommonStrings)  
+-   [Ortak dizeler](#CommonStrings)  
   
 -   [Belgeler](#Documentation)  
   
 -   [ErrorPageStrings](#ErrorPageStrings)  
   
--   [IssuesStrings](#IssuesStrings)  
+-   [Issuesstrings](#IssuesStrings)  
   
--   [NotFoundStrings](#NotFoundStrings)  
+-   [Notfounddizeleri](#NotFoundStrings)  
   
--   [ÜrünDetailsStrings](#ProductDetailsStrings)  
+-   [Productayrıntılar dizeleri](#ProductDetailsStrings)  
   
--   [ÜrünlerStrings](#ProductsStrings)  
+-   [ProductsStrings](#ProductsStrings)  
   
--   [SağlayıcıInfoStrings](#ProviderInfoStrings)  
+-   [ProviderInfoStrings](#ProviderInfoStrings)  
   
--   [SigninResources](#SigninResources)  
+-   [Signınresources](#SigninResources)  
   
--   [SigninStrings](#SigninStrings)  
+-   [Signınsthalkalar](#SigninStrings)  
   
--   [Kayıt KatıRlar](#SignupStrings)  
+-   [SignupStrings](#SignupStrings)  
   
--   [AbonelikListStrings](#SubscriptionListStrings)  
+-   [SubscriptionListStrings](#SubscriptionListStrings)  
   
--   [AbonelikStrings](#SubscriptionStrings)  
+-   [SubscriptionStrings](#SubscriptionStrings)  
   
 -   [UpdateProfileStrings](#UpdateProfileStrings)  
   
@@ -115,25 +115,25 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
   
 |Adı|Metin|  
 |----------|----------|  
-|SayfaBaşlığıApis|API'ler|  
+|Pagetitleapı 'Leri|API'ler|  
   
-###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a>AppDetailsStrings  
+###  <a name="appdetailsstrings"></a><a name="AppDetailsStrings"></a>Appayrıntılar dizeleri  
   
 |Adı|Metin|  
 |----------|----------|  
-|WebApplicationsDetailsBaşlık|Uygulama önizlemesi|  
-|WebApplicationsRequirementsHeader|Gereksinimler|  
+|Webapplicationsdetaillistle|Uygulama önizlemesi|  
+|Webapplicationsgereksinimsheader|Gereksinimler|  
 |WebApplicationsScreenshotAlt|Ekran görüntüsü|  
 |WebApplicationsScreenshotsHeader|Ekran görüntüleri|  
   
-###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a>UygulamaListStrings  
+###  <a name="applicationliststrings"></a><a name="ApplicationListStrings"></a>ApplicationListStrings  
   
 |Adı|Metin|  
 |----------|----------|  
 |WebDevelopersAppDeleteConfirmation|Uygulamayı kaldırmak istediğinizden emin misiniz?|  
-|WebDevelopersAppNotPublished|Yayınlanmadı|  
-|WebDevelopersAppNotSubmitted|Gönderilmez|  
-|WebDevelopersAppTableKategoriHeader|Kategori|  
+|WebDevelopersAppNotPublished|Yayımlanmadı|  
+|WebDevelopersAppNotSubmitted|Gönderilmedi|  
+|WebDevelopersAppTableCategoryHeader|Kategori|  
 |WebDevelopersAppTableNameHeader|Adı|  
 |WebDevelopersAppTableStateHeader|Durum|  
 |WebDevelopersEditLink|Düzenle|  
@@ -148,460 +148,460 @@ Aşağıdaki yerelleştirme seçenekleri desteklenir:
 |----------|----------|  
 |WebApplicationsHeader|Uygulamalar|  
   
-###  <a name="commonresources"></a><a name="CommonResources"></a>Ortak Kaynaklar  
+###  <a name="commonresources"></a><a name="CommonResources"></a>Ortak kaynaklar  
   
 |Adı|Metin|  
 |----------|----------|  
-|NoItemsToDisplay|Sonuç bulunamadı.|  
-|GenelÖzel Mesaj|Yolunda olmayan bir şeyler var. Geçici bir aksaklık ya da böcek olabilir. Lütfen, tekrar dene.|  
-|GeneralJsonExceptionMessage|Yolunda olmayan bir şeyler var. Geçici bir aksaklık ya da böcek olabilir. Lütfen, sayfayı yeniden yükleyin ve yeniden deneyin.|  
-|ConfirmationMessageUnsavedChanges|Bazı kaydedilmemiş değişiklikler vardır. Değişiklikleri iptal edip atmak istediğinizden emin misiniz?|  
+|Noıtemstodisplay|Sonuç bulunamadı.|  
+|GeneralExceptionMessage|Bir şey doğru değil. Geçici bir hata veya hata olabilir. Lütfen yeniden deneyin.|  
+|GeneralJsonExceptionMessage|Bir şey doğru değil. Geçici bir hata veya hata olabilir. Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.|  
+|ConfirmationMessageUnsavedChanges|Kaydedilmemiş değişiklikler var. İptal etmek ve değişiklikleri atmak istediğinizden emin misiniz?|  
 |AzureActiveDirectory|Azure Active Directory|  
-|httplargeRequestMessage|Http İstek Vücut çok büyük.|  
+|HttpLargeRequestMessage|Http Istek gövdesi çok büyük.|  
   
-###  <a name="commonstrings"></a><a name="CommonStrings"></a>CommonStrings  
+###  <a name="commonstrings"></a><a name="CommonStrings"></a>Ortak dizeler  
   
 |Adı|Metin|  
 |----------|----------|  
-|ButtonLabelİptal|İptal|  
-|ButtonLabelKaydet|Kaydet|  
-|GenelÖzel Mesaj|Yolunda olmayan bir şeyler var. Geçici bir aksaklık ya da böcek olabilir. Lütfen, tekrar dene.|  
-|NoItemsToDisplay|Görüntülenecek öğe yok.|  
-|PagerButtonLabelİlk|İlk|  
-|PagerButtonLabelSon|Son|  
-|PagerButtonLabelSonraki|Sonraki|  
-|PagerButtonLabelÖnceki|Önceki|  
-|PagerLabelPageNOfM|Sayfa {0}/{1}|  
-|ŞifreTooShort|Şifre çok kısa|  
+|ButtonLabelCancel|İptal|  
+|ButtonLabelSave|Kaydet|  
+|GeneralExceptionMessage|Bir şey doğru değil. Geçici bir hata veya hata olabilir. Lütfen yeniden deneyin.|  
+|Noıtemstodisplay|Görüntülenecek öğe yok.|  
+|PagerButtonLabelFirst|İlk|  
+|PagerButtonLabelLast|Son|  
+|PagerButtonLabelNext|Sonraki|  
+|PagerButtonLabelPrevious|Önceki|  
+|Pagerlabelpagenofa|Sayfa {0}/{1}|  
+|PasswordTooShort|Parola çok kısa|  
 |EmailAsPassword|E-postanızı parolanız olarak kullanmayın|  
-|PasswordsameasUserName|Parolanız kullanıcı adınızı içeremez|  
-|PasswordTwoCharacterClasses|Farklı karakter sınıfları kullanma|  
-|PasswordTooManyTekrarlar|Çok fazla tekrar|  
-|Şifre Dizileri Bulundu|Parolanız diziler içerir|  
+|PasswordSameAsUserName|Parolanız Kullanıcı adınızı içeremez|  
+|Passwordtwokaraktersınıfları|Farklı karakter sınıfları kullanın|  
+|Passwordtoomanytekrarları|Çok fazla sayıda tekrarlanıyor|  
+|PasswordSequenceFound|Parolanız diziler içeriyor|  
 |PagerLabelPageSize|Sayfa boyutu|  
-|PerdeEtiket Yükleme|Yükleniyor...|  
+|Curcontainer Labelyükleniyor|Yükleniyor...|  
 |TablePlaceholderNothingToDisplay|Seçili dönem ve kapsam için veri yok|  
 |ButtonLabelClose|Kapat|  
   
-###  <a name="documentation"></a><a name="Documentation"></a>Belge  
+###  <a name="documentation"></a><a name="Documentation"></a>Belgelerle  
   
 |Adı|Metin|  
 |----------|----------|  
-|WebDokümantasyonGeçersizHeaderErrorMessage|Geçersiz üstbilgi{0}' '|  
-|WebDokümantasyonGeçersizİstekErrorMessage|Geçersiz İstek URL'si|  
+|Webbelgetationınvalidheadererrormessage|Geçersiz üst bilgi{0}' '|  
+|Webbelgetationınvalidrequesterrormessage|Geçersiz Istek URL 'SI|  
 |TextboxLabelAccessToken|Erişim belirteci *|  
-|DropdownOptionPrimaryKeyFormat|İlköğretim-{0}|  
-|DropdownOptionSecondaryKeyFormat|İkincil-{0}|  
-|WebDocumentationSubscriptionKeyText|Abonelik anahtarınız|  
-|WebDocumentationTemplatesAddHeaders|Gerekli HTTP üstbilgilerini ekleme|  
-|WebDocumentationTemplatesBasicAuthSample|Temel Yetkilendirme Örneği|  
-|WebDocumentationTemplatesCurlForBasicAuth|Temel Yetkilendirme kullanımı için: --user {username}:{password}|  
-|WebDocumentationTemplatesCurlValuesForPath|Yol parametreleri ({...}olarak gösterilir), abonelik anahtarınız ve sorgu parametreleri için değerler için değerleri belirtin|  
+|DropdownOptionPrimaryKeyFormat|Birinc{0}|  
+|DropdownOptionSecondaryKeyFormat|İK{0}|  
+|Webbelgetationsubscriptionkeytext|Abonelik anahtarınız|  
+|Webbelgetationtemplatesaddheaders|Gerekli HTTP üstbilgilerini ekleyin|  
+|Webbelgetationtemplates Basicauthsample|Temel yetkilendirme örneği|  
+|Webbelgetationtemplates Curlforbasicauth|Temel yetkilendirme kullanımı için:--Kullanıcı {username}: {Password}|  
+|Webbelgetationtemplates Curlvaluesforpath|Yol parametreleri ({...} olarak gösterilir), abonelik anahtarınız ve sorgu parametreleri için değerler belirtin|  
 |WebDocumentationTemplatesDeveloperKey|Abonelik anahtarınızı belirtin|  
-|WebDocumentationTemplatesJavaApache|Bu örnek, HTTP Bileşenleri'nden Apache HTTP istemcisini kullanır (http://hc.apache.org/httpcomponents-client-ga/)|  
-|WebDocumentationTemplatesİsteğe BağlıParams|Gerektiğinde isteğe bağlı parametreler için değerleri belirtin|  
-|WebDocumentationTemplatesPhpPackage|Bu örnek, HTTP_Request2 paketini kullanır. (daha fazla bilgi için:https://pear.php.net/package/HTTP_Request2)|  
-|WebDocumentationTemplatesPythonValuesForPath|Yol parametreleri için değerleri belirtin ({...}olarak gösterilir) ve gerekirse istek gövdesi|  
-|WebDocumentationTemplatesRequestBody|İstek gövdesini belirtin|  
-|WebDocumentationTemplatesGerekliParams|Aşağıdaki gerekli parametreler için değerleri belirtin|  
-|WebDocumentationTemplatesValuesForPath|Yol parametreleri için değerleri belirtin ({...}olarak gösterilmiştir)|  
-|OAuth2AuthorizationEndpointDescription|Yetkilendirme bitiş noktası, kaynak sahibiyle etkileşim kurmak ve yetkilendirme hibesi almak için kullanılır.|  
-|OAuth2AuthorizationEndpointName|Yetkilendirme bitiş noktası|  
-|OAuth2TokenEndpointAçıklama|Belirteç bitiş noktası, yetkilendirme hibesini sunarak veya belirteç lerini yenileyerek bir erişim belirteci elde etmek için istemci tarafından kullanılır.|  
-|OAuth2TokenEndpointName|Belirteç bitiş noktası|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<\> p İstemci, kaynak sahibinin kullanıcı aracısını yetkilendirme bitiş noktasına yönlendirerek akışı başlatır.  İstemci, istemci tanımlayıcısını, istenen kapsamı, yerel durumu ve yetkilendirme sunucusunun erişim verildikten (veya reddedildikten) sonra kullanıcı aracısını geri göndereceği bir yeniden yönlendirme URI'sini içerir.     </p\> <\> p Yetkilendirme sunucusu kaynak sahibinin kimliğini (kullanıcı aracısı aracılığıyla) doğrular ve kaynak sahibinin istemcinin erişim isteğini hibe edip etmediğini veya reddettiğini belirler.     </p\> <\> p Kaynak sahibinin erişim sağladığını varsayarsak, yetkilendirme sunucusu kullanıcı aracısını daha önce sağlanan yeniden yönlendirme URI'yi kullanarak istemciye yönlendirir (istekte veya istemci kaydı sırasında).  Yeniden yönlendirme URI bir yetkilendirme kodu ve istemci tarafından daha önce sağlanan herhangi bir yerel durum içerir.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<\> p Kullanıcı isteğin geçersiz olup olmadığını niçin erişim isteğini reddederse, istemci yönlendirmeye eklenen aşağıdaki parametreleri kullanarak bilgilendirilir: </p\>|  
+|Webbelgetationtemplates Javaapache|Bu örnek, HTTP bileşenlerinden Apache HTTP istemcisini kullanır (http://hc.apache.org/httpcomponents-client-ga/)|  
+|Webbelgetationtemplates Optionalparams|İsteğe bağlı parametrelerin değerlerini gerektiği gibi belirtin|  
+|Webbelgetationtemplatesphppackage|Bu örnek HTTP_Request2 paketini kullanır. (daha fazla bilgi için:https://pear.php.net/package/HTTP_Request2)|  
+|WebDocumentationTemplatesPythonValuesForPath|Yol parametreleri ({...} olarak gösterilir) ve gerekirse istek gövdesi değerlerini belirtin|  
+|Webbelgetationtemplates Requestbody|İstek gövdesini belirtin|  
+|Webbelgetationtemplates Requiredparams|Aşağıdaki gerekli parametreler için değerleri belirtin|  
+|Webbelgetationtemplates Valuesforpath|Yol parametreleri ({...} olarak gösterilir) için değerler belirtin|  
+|OAuth2AuthorizationEndpointDescription|Yetkilendirme uç noktası, kaynak sahibiyle etkileşim kurmak ve yetkilendirme izni almak için kullanılır.|  
+|OAuth2AuthorizationEndpointName|Yetkilendirme uç noktası|  
+|OAuth2TokenEndpointDescription|Belirteç uç noktası, istemci tarafından, yetkilendirme verme veya yenileme belirtecini sunarak bir erişim belirteci almak için kullanılır.|  
+|OAuth2TokenEndpointName|Belirteç uç noktası|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Description|<p\> istemci, kaynak sahibinin Kullanıcı aracısını yetkilendirme uç noktasına yönlendirerek akışı başlatır.  İstemci, istemci tanımlayıcısını, istenen kapsamı, yerel durumu ve erişim izni verildiğinde (veya reddedildikten) yetkilendirme sunucusunun Kullanıcı aracısını geri göndereceği bir yeniden yönlendirme URI 'sini içerir.     </p\> <p\> yetkilendirme sunucusu, kaynak sahibinin kimliğini doğrular (Kullanıcı Aracısı aracılığıyla) ve kaynak sahibinin istemcinin erişim isteğine izin verip vermeip reddetmediğini belirler.     </p\> <p\> kaynak sahibinin erişim verdiğini varsayarsak, yetkilendirme sunucusu daha önce SAĞLANMıŞ olan yeniden yönlendirme URI 'sini kullanarak (istekte veya istemci kaydı sırasında) Kullanıcı aracısını istemciye geri yönlendirir.  Yeniden yönlendirme URI 'SI, bir yetkilendirme kodu ve istemci tarafından daha önce sunulan herhangi bir yerel durum içerir.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ErrorDescription|<p\> istek geçersiz ise Kullanıcı erişim isteğini reddederse, yeniden yönlendirmeye eklenen aşağıdaki parametreler kullanılarak istemci bilgilendirilir: </p\>|  
 |OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_Name|Yetkilendirme isteği|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<\> p İstemci uygulaması, OAuth işlemini başlatmak için kullanıcıyı yetkilendirme bitiş noktasına göndermelidir.          Yetkilendirme bitiş noktasında, kullanıcı kimlik doğrulaması verir ve ardından uygulamaya erişimi verir veya reddeder.     </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|<\> p Kaynak sahibinin erişim sağladığını varsayarsak, yetkilendirme sunucusu kullanıcı aracısını daha önce sağlanan yeniden yönlendirme URI'yi kullanarak istemciye geri yönlendirir (istekte veya istemci kaydı sırasında).  Yeniden yönlendirme URI bir yetkilendirme kodu ve istemci tarafından daha önce sağlanan herhangi bir yerel durum içerir. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<\> p İstemci, önceki adımda alınan yetkilendirme kodunu ekleyerek yetkilendirme sunucusunun belirteç bitiş noktasından bir erişim belirteci ister.  İstek tevekkül ederken, istemci yetkilendirme sunucusuyla kimlik doğrulaması sağlar.  İstemci, doğrulama için yetkilendirme kodunu elde etmek için kullanılan yeniden yönlendirme URI'yi içerir. </p\> <\> p Yetkilendirme sunucusu istemcinin kimliğini doğrular, yetkilendirme kodunu doğrular ve URI'nin aldığı yeniden yönlendirmenin istemciyi adım (C) olarak yönlendirmek için kullanılan URI ile eşleşmesini sağlar.  Geçerliyse, yetkilendirme sunucusu erişim belirteci ve isteğe bağlı olarak yenileme belirteci ile yanıt verir. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<\> p İstek istemcikimlik doğrulaması başarısız olduysa veya geçersizse, yetkilendirme sunucusu http 400 (Kötü İstek) durum koduyla yanıt verir (aksi belirtilmedikçe) ve yanıtla birlikte aşağıdaki parametreleri içerir. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|<\> p İstemci, http istek varlık gövdesinde UTF-8 karakter kodlaması ile "application/x-www-form-urlencoded" biçimini kullanarak aşağıdaki parametreleri göndererek belirteç bitiş noktasına bir istekte bulunuyor. </p\>|  
-|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|<\> p Yetkilendirme sunucusu erişim belirteci ve isteğe bağlı yenileme belirteci sorunları ve 200 (Tamam) durum kodu ile HTTP yanıtının varlık gövdesine aşağıdaki parametreleri ekleyerek yanıtı oluşturuyor. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|<\> p İstemci yetkilendirme sunucusuyla kimlik doğrular ve belirteç bitiş noktasından bir erişim belirteci ister. </p\> <\> p yetkilendirme sunucusu istemcinin kimliğini doğrular ve geçerliyse erişim belirteci sağlar. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|<\> p İstek istemci kimlik doğrulaması başarısız olursa veya geçersiz ise yetkilendirme sunucusu http 400 (Kötü İstek) durum kodu yla yanıt verir (aksi belirtilmedikçe) ve yanıtla birlikte aşağıdaki parametreleri içerir. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|<\> p İstemci, HTTP istek varlık gövdesinde UTF-8 karakter kodlaması ile "application/x-www-form-urlencoded" biçimini kullanarak aşağıdaki parametreleri ekleyerek belirteç bitiş noktasına bir istekte bulunuyor. </p\>|  
-|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|<\> p Erişim belirteci isteği geçerli ve yetkiliyse, yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı yenileme belirteci yayınlar ve 200 (Tamam) durum koduyla HTTP yanıtının varlık gövdesine aşağıdaki parametreleri ekleyerek yanıtı sağlar. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|<\> p İstemci, kaynak sahibinin kullanıcı aracısını yetkilendirme bitiş noktasına yönlendirerek akışı başlatır.  İstemci, istemci tanımlayıcısını, istenen kapsamı, yerel durumu ve yetkilendirme sunucusunun erişim verildikten (veya reddedildikten) sonra kullanıcı aracısını geri göndereceği bir yeniden yönlendirme URI'sini içerir. </p\> <\> p Yetkilendirme sunucusu kaynak sahibinin kimliğini doğrular (kullanıcı aracısı aracılığıyla) ve kaynak sahibinin istemcinin erişim isteğini hibe edip etmediğini veya reddedip etmediğini belirler. </p\> <\> p Kaynak sahibinin erişim sağladığını varsayarsak, yetkilendirme sunucusu daha önce sağlanan yeniden yönlendirme URI'yi kullanarak kullanıcı aracısını istemciye yönlendirir.  Yeniden yönlendirme URI URI parçasında erişim belirteci içerir. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|<\> p Kaynak sahibi erişim isteğini reddederse veya istek eksik veya geçersiz yeniden yönlendirme URI dışında nedenlerle başarısız olursa, yetkilendirme sunucusu "application/x-www-form-urlencoded" biçimini kullanarak yeniden yönlendirme URI'nin parça bileşenine aşağıdaki parametreleri ekleyerek istemciyi bilgilendirir. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<\> p İstemci uygulaması, OAuth işlemini başlatmak için kullanıcıyı yetkilendirme bitiş noktasına göndermelidir.      Yetkilendirme bitiş noktasında, kullanıcı kimlik doğrulaması verir ve ardından uygulamaya erişimi verir veya reddeder. </p\>|  
-|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|<\> p Kaynak sahibi erişim isteğini verirse, yetkilendirme sunucusu erişim belirteci verir ve "application/x-www-form-urlencoded" biçimini kullanarak yeniden yönlendirme URI'nin parça bileşenine aşağıdaki parametreleri ekleyerek istemciye teslim eder. </p\>|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Yetkilendirme kodu akışı, kimlik bilgilerinin gizliliğini koruyabilen istemciler için optimize edilmiştir (örneğin, PHP, Java, Python, Ruby, ASP.NET, vb. kullanılarak uygulanan web sunucusu uygulamaları.|  
-|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Yetkilendirme Kodu hibe|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|İstemci kimlik bilgileri akışı, istemcinin (uygulamanızın) denetimi altındaki korumalı kaynaklara erişim talep ettiği durumlarda uygundur. İstemci bir kaynak sahibi olarak kabul edilir, bu nedenle son kullanıcı etkileşimi gerekmez.|  
-|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|İstemci Kimlik Bilgileri hibesi|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Örtük akış, belirli bir yeniden yönlendirme URI'yi çalıştırtığı bilinen kimlik bilgilerinin gizliliğini koruyamayan istemciler için optimize edilebiyi optimize eder. Bu istemciler genellikle JavaScript gibi bir komut dosyası dili kullanılarak bir tarayıcıda uygulanır.|  
-|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Örtülü hibe|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Kaynak sahibi parola kimlik bilgileri akışı, kaynak sahibinin istemciyle (uygulamanızla) aygıt işletim sistemi veya yüksek ayrıcalıklı bir uygulama gibi güven ilişkisi olduğu durumlarda uygundur. Bu akış, kaynak sahibinin kimlik bilgilerini (genellikle etkileşimli bir form kullanarak kullanıcı adı ve parola) alabilen istemciler için uygundur.|  
-|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Kaynak Sahibi Şifre Kimlik Bilgileri hibesi|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|<\> p Kaynak sahibi istemciye kullanıcı adı ve parolasını sağlar. </p\> <\> p İstemci, kaynak sahibinden alınan kimlik bilgilerini ekleyerek yetkilendirme sunucusunun belirteç bitiş noktasından bir erişim belirteci ister.  İstek tevekkül ederken, istemci yetkilendirme sunucusuyla kimlik doğrulaması sağlar. </p\> <\> p Yetkilendirme sunucusu istemcinin kimliğini doğrular ve kaynak sahibikimlik bilgilerini doğrular ve geçerliyse, bir erişim belirteci verir. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|<\> p İstek istemci kimlik doğrulaması başarısız olursa veya geçersiz ise yetkilendirme sunucusu http 400 (Kötü İstek) durum kodu yla yanıt verir (aksi belirtilmedikçe) ve yanıtla birlikte aşağıdaki parametreleri içerir. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|<\> p İstemci, HTTP istek varlık gövdesinde UTF-8 karakter kodlaması ile "application/x-www-form-urlencoded" biçimini kullanarak aşağıdaki parametreleri ekleyerek belirteç bitiş noktasına bir istekte bulunuyor. </p\>|  
-|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|<\> p Erişim belirteci isteği geçerli ve yetkiliyse, yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı yenileme belirteci yayınlar ve 200 (Tamam) durum koduyla HTTP yanıtının varlık gövdesine aşağıdaki parametreleri ekleyerek yanıtı sağlar. </p\>|  
-|OAuth2Step_AccessTokenRequest_Name|Erişim belirteç isteği|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_RequestDescription|<p\> istemci uygulamanın, OAuth işlemini başlatmak için kullanıcıyı yetkilendirme uç noktasına aktarması gerekir.          Yetkilendirme uç noktasında Kullanıcı kimliğini doğrular ve ardından uygulamaya erişim izni verir veya reddeder.     </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_AuthorizationRequest_ResponseDescription|<p\> kaynak sahibinin erişim verdiğini varsayarak, yetkilendirme sunucusu daha önce sağlanmış olan YENIDEN yönlendirme URI 'sini kullanarak Kullanıcı aracısını istemciye geri yönlendirir (istekte veya istemci kaydı sırasında).  Yeniden yönlendirme URI 'SI, bir yetkilendirme kodu ve istemci tarafından daha önce sunulan herhangi bir yerel durum içerir. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_Description|<p\> istemci, önceki adımda alınan yetkilendirme kodunu ekleyerek yetkilendirme sunucusu 'nun belirteç uç noktasından bir erişim belirteci ister.  İstek yapıldığında, istemci yetkilendirme sunucusuyla kimliğini doğrular.  İstemci, doğrulama için yetkilendirme kodunu elde etmek üzere kullanılan yeniden yönlendirme URI 'sini içerir. </p\> <p\> yetkilendirme sunucusu istemcinin kimliğini doğrular, yetkilendirme kodunu doğrular ve alınan yeniden yönlendirme URI 'sinin, adımdaki istemciyi YENIDEN yönlendirmek için kullanılan URI ile eşleştiğinden emin olur (C).  Geçerliyse, yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı olarak bir yenileme belirteci ile geri yanıt verir. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ErrorDescription|<p\> istek istemci kimlik doğrulaması başarısız olduysa veya geçersizse, yetkilendirme sunucusu bir HTTP 400 (hatalı istek) durum kodu ile yanıt verir (aksi belirtilmedikçe) ve aşağıdaki parametreleri yanıtla birlikte içerir. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_RequestDescription|<p\> istemci, "application/x-www-form-urlencoded" biçimini kullanarak, http isteği VARLıK gövdesinde UTF-8 ' i n bir karakter kodlamasıyla, belirteç uç noktasına bir istek yapar. </p\>|  
+|OAuth2Flow_AuthorizationCodeGrant_Step_TokenRequest_ResponseDescription|<p\> yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı yenileme belirteci YAYıNLAR ve HTTP yanıtının varlık gövdesine 200 (Tamam) durum kodu ile aşağıdaki parametreleri ekleyerek yanıtı oluşturur. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_Description|<p\> istemci yetkilendirme sunucusuyla kimliğini doğrular ve belirteç uç noktasından bir erişim belirteci ister. </p\> <p\> yetkilendirme sunucusu istemcinin kimliğini doğrular ve geçerliyse, bir erişim belirteci yayınlar. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ErrorDescription|<p\> istek istemci kimlik doğrulaması başarısız olursa veya geçersizse, yetkilendirme sunucusu bir HTTP 400 (hatalı istek) durum kodu ile yanıt verir (aksi belirtilmedikçe) ve aşağıdaki parametreleri yanıtla birlikte içerir. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_RequestDescription|<p\> istemci, "application/x-www-form-urlencoded" biçimini kullanarak, http isteği VARLıK gövdesinde UTF-8 ' i n bir karakter kodlamasıyla, belirteç uç noktasına bir istek yapar. </p\>|  
+|OAuth2Flow_ClientCredentialsGrant_Step_TokenRequest_ResponseDescription|<p\> erişim belirteci isteği geçerliyse ve yetkilendirilirse, yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı yenileme belirteci YAYıNLAR ve HTTP yanıtının varlık gövdesine 200 (Tamam) durum kodu ile aşağıdaki parametreleri ekleyerek yanıtı oluşturur. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_Description|<p\> istemci, kaynak sahibinin Kullanıcı aracısını yetkilendirme uç noktasına yönlendirerek akışı başlatır.  İstemci, istemci tanımlayıcısını, istenen kapsamı, yerel durumu ve erişim izni verildiğinde (veya reddedildikten) yetkilendirme sunucusunun Kullanıcı aracısını geri göndereceği bir yeniden yönlendirme URI 'sini içerir. </p\> <p\> yetkilendirme sunucusu kaynak sahibinin kimliğini doğrular (Kullanıcı Aracısı aracılığıyla) ve kaynak sahibinin istemci erişim isteği verip vermediği veya reddetmediğini belirler. </p\> <p\> kaynak sahibinin erişim verdiğini varsayarsak, yetkilendirme sunucusu daha önce SAĞLANMıŞ olan yeniden yönlendirme URI 'sini kullanarak Kullanıcı aracısını istemciye geri yönlendirir.  Yeniden yönlendirme URI 'SI, URI parçasındaki erişim belirtecini içerir. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ErrorDescription|<p\> kaynak sahibi erişim isteğini reddederse veya istek eksik ya da geçersiz bir yeniden yönlendirme URI 'si dışında nedenlerle başarısız olursa, yetkilendirme sunucusu, "application/x-www-form-urlencoded" biçimini kullanarak YENIDEN yönlendirme URI 'sinin parça bileşenine aşağıdaki parametreleri ekleyerek istemciye bildirir. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_RequestDescription|<p\> istemci uygulamanın, OAuth işlemini başlatmak için kullanıcıyı yetkilendirme uç noktasına aktarması gerekir.      Yetkilendirme uç noktasında Kullanıcı kimliğini doğrular ve ardından uygulamaya erişim izni verir veya reddeder. </p\>|  
+|OAuth2Flow_ImplicitGrant_Step_AuthorizationRequest_ResponseDescription|<p\> kaynak sahibi erişim isteğine izin verirse, yetkilendirme sunucusu bir erişim belirteci yayınlar ve "application/x-www-form-urlencoded" biçimini kullanarak YENIDEN yönlendirme URI 'sinin parça bileşenine aşağıdaki parametreleri ekleyerek istemciye gönderir. </p\>|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Description|Yetkilendirme kodu akışı, kimlik bilgilerinin gizliliğini (örneğin, PHP, Java, Python, Ruby, ASP.NET vb. kullanarak uygulanan Web sunucusu uygulamaları) korumak özellikli istemciler için iyileştirilmiştir.|  
+|OAuth2Flow_ObtainAuthorization_AuthorizationCodeGrant_Name|Yetkilendirme kodu verme|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Description|İstemci kimlik bilgileri akışı, istemcisinin (uygulamanızın) denetimi altındaki korumalı kaynaklara erişim istediği durumlarda uygundur. İstemci, kaynak sahibi olarak kabul edilir, bu yüzden son kullanıcı etkileşimi gerekli değildir.|  
+|OAuth2Flow_ObtainAuthorization_ClientCredentialsGrant_Name|İstemci kimlik bilgileri verme|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Description|Örtük akış, belirli bir yeniden yönlendirme URI 'SI çalıştırmak için bilinen kimlik bilgilerinin gizliliğini korumak zorunda olmayan istemciler için iyileştirilmiştir. Bu istemciler genellikle JavaScript gibi bir komut dosyası dili kullanılarak bir tarayıcıda uygulanır.|  
+|OAuth2Flow_ObtainAuthorization_ImplicitGrant_Name|Örtük izin|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Description|Kaynak sahibi parola kimlik bilgileri akışı, kaynak sahibinin istemci ile (uygulamanızın), cihaz işletim sistemi veya yüksek ayrıcalıklı bir uygulama gibi bir güven ilişkisine sahip olduğu durumlarda uygundur. Bu akış, kaynak sahibinin kimlik bilgilerini (genellikle etkileşimli bir form kullanarak Kullanıcı adı ve parola) elde eden istemciler için uygundur.|  
+|OAuth2Flow_ObtainAuthorization_ResourceOwnerPasswordCredentialsGrant_Name|Kaynak sahibi parola kimlik bilgileri verme|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_Description|<p\> kaynak sahibi istemciye Kullanıcı adını ve parolasını sağlar. </p\> <p\> istemci, kaynak sahibinden alınan kimlik bilgilerini ekleyerek yetkilendirme sunucusu 'nun belirteç uç noktasından bir erişim belirteci ister.  İstek yapıldığında, istemci yetkilendirme sunucusuyla kimliğini doğrular. </p\> <p\> yetkilendirme sunucusu istemcinin kimliğini doğrular ve kaynak sahibi kimlik bilgilerini doğrular ve geçerliyse, bir erişim belirteci yayınlar. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ErrorDescription|<p\> istek istemci kimlik doğrulaması başarısız olursa veya geçersizse, yetkilendirme sunucusu bir HTTP 400 (hatalı istek) durum kodu ile yanıt verir (aksi belirtilmedikçe) ve aşağıdaki parametreleri yanıtla birlikte içerir. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_RequestDescription|<p\> istemci, "application/x-www-form-urlencoded" biçimini kullanarak, http isteği VARLıK gövdesinde UTF-8 ' i n bir karakter kodlamasıyla, belirteç uç noktasına bir istek yapar. </p\>|  
+|OAuth2Flow_ResourceOwnerPasswordCredentialsGrant_Step_TokenRequest_ResponseDescription|<p\> erişim belirteci isteği geçerliyse ve yetkilendirilirse, yetkilendirme sunucusu bir erişim belirteci ve isteğe bağlı yenileme belirteci YAYıNLAR ve HTTP yanıtının varlık gövdesine 200 (Tamam) durum kodu ile aşağıdaki parametreleri ekleyerek yanıtı oluşturur. </p\>|  
+|OAuth2Step_AccessTokenRequest_Name|Erişim belirteci isteği|  
 |OAuth2Step_AuthorizationRequest_Name|Yetkilendirme isteği|  
 |OAuth2AccessToken_AuthorizationCodeGrant_TokenResponse|Gerekli. Yetkilendirme sunucusu tarafından verilen erişim belirteci.|  
 |OAuth2AccessToken_ClientCredentialsGrant_TokenResponse|Gerekli. Yetkilendirme sunucusu tarafından verilen erişim belirteci.|  
 |OAuth2AccessToken_ImplicitGrant_AuthorizationResponse|Gerekli. Yetkilendirme sunucusu tarafından verilen erişim belirteci.|  
 |OAuth2AccessToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Gerekli. Yetkilendirme sunucusu tarafından verilen erişim belirteci.|  
 |OAuth2ClientId_AuthorizationCodeGrant_AuthorizationRequest|Gerekli. İstemci tanımlayıcısı.|  
-|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|İstemci yetkilendirme sunucusu ile kimlik doğrulaması değilse GEREKLI.|  
+|OAuth2ClientId_AuthorizationCodeGrant_TokenRequest|İstemci, yetkilendirme sunucusunda kimlik doğrulaması yapmıyorsa GEREKLIDIR.|  
 |OAuth2ClientId_ImplicitGrant_AuthorizationRequest|Gerekli. İstemci tanımlayıcısı.|  
 |OAuth2Code_AuthorizationCodeGrant_AuthorizationResponse|Gerekli. Yetkilendirme sunucusu tarafından oluşturulan yetkilendirme kodu.|  
 |OAuth2Code_AuthorizationCodeGrant_TokenRequest|Gerekli. Yetkilendirme sunucusundan alınan yetkilendirme kodu.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|Isteğe bağlı. Ek bilgi sağlayan insan tarafından okunabilir ASCII metni.|  
-|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|Isteğe bağlı. Ek bilgi sağlayan insan tarafından okunabilir ASCII metni.|  
-|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|Isteğe bağlı. Ek bilgi sağlayan insan tarafından okunabilir ASCII metni.|  
-|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|Isteğe bağlı. Ek bilgi sağlayan insan tarafından okunabilir ASCII metni.|  
-|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Isteğe bağlı. Ek bilgi sağlayan insan tarafından okunabilir ASCII metni.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|Isteğe bağlı. Bir URI hata hakkında bilgi ile insan tarafından okunabilir bir web sayfası tanımlayan.|  
-|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|Isteğe bağlı. Bir URI hata hakkında bilgi ile insan tarafından okunabilir bir web sayfası tanımlayan.|  
-|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|Isteğe bağlı. Bir URI hata hakkında bilgi ile insan tarafından okunabilir bir web sayfası tanımlayan.|  
-|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|Isteğe bağlı. Bir URI hata hakkında bilgi ile insan tarafından okunabilir bir web sayfası tanımlayan.|  
-|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Isteğe bağlı. Bir URI hata hakkında bilgi ile insan tarafından okunabilir bir web sayfası tanımlayan.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_AuthorizationErrorResponse|Seçim. Daha fazla bilgi sağlayan insan tarafından okunabilen ASCII metni.|  
+|OAuth2ErrorDescription_AuthorizationCodeGrant_TokenErrorResponse|Seçim. Daha fazla bilgi sağlayan insan tarafından okunabilen ASCII metni.|  
+|OAuth2ErrorDescription_ClientCredentialsGrant_TokenErrorResponse|Seçim. Daha fazla bilgi sağlayan insan tarafından okunabilen ASCII metni.|  
+|OAuth2ErrorDescription_ImplicitGrant_AuthorizationErrorResponse|Seçim. Daha fazla bilgi sağlayan insan tarafından okunabilen ASCII metni.|  
+|OAuth2ErrorDescription_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Seçim. Daha fazla bilgi sağlayan insan tarafından okunabilen ASCII metni.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_AuthorizationErrorResponse|Seçim. Hatayla ilgili bilgiler içeren, insan tarafından okunabilen bir Web sayfasını tanımlayan bir URI.|  
+|OAuth2ErrorUri_AuthorizationCodeGrant_TokenErrorResponse|Seçim. Hatayla ilgili bilgiler içeren, insan tarafından okunabilen bir Web sayfasını tanımlayan bir URI.|  
+|OAuth2ErrorUri_ClientCredentialsGrant_TokenErrorResponse|Seçim. Hatayla ilgili bilgiler içeren, insan tarafından okunabilen bir Web sayfasını tanımlayan bir URI.|  
+|OAuth2ErrorUri_ImplicitGrant_AuthorizationErrorResponse|Seçim. Hatayla ilgili bilgiler içeren, insan tarafından okunabilen bir Web sayfasını tanımlayan bir URI.|  
+|OAuth2ErrorUri_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Seçim. Hatayla ilgili bilgiler içeren, insan tarafından okunabilen bir Web sayfasını tanımlayan bir URI.|  
 |OAuth2Error_AuthorizationCodeGrant_AuthorizationErrorResponse|Gerekli. Aşağıdakilerden tek bir ASCII hata kodu: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
 |OAuth2Error_AuthorizationCodeGrant_TokenErrorResponse|Gerekli. Aşağıdakilerden tek bir ASCII hata kodu: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
 |OAuth2Error_ClientCredentialsGrant_TokenErrorResponse|Gerekli. Aşağıdakilerden tek bir ASCII hata kodu: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
 |OAuth2Error_ImplicitGrant_AuthorizationErrorResponse|Gerekli. Aşağıdakilerden tek bir ASCII hata kodu: invalid_request, unauthorized_client, access_denied, unsupported_response_type, invalid_scope, server_error, temporarily_unavailable.|  
 |OAuth2Error_ResourceOwnerPasswordCredentialsGrant_TokenErrorResponse|Gerekli. Aşağıdakilerden tek bir ASCII hata kodu: invalid_request, invalid_client, invalid_grant, unauthorized_client, unsupported_grant_type, invalid_scope.|  
-|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|Önerilen. Erişim jetonunun saniyecinsinden ömrü.|  
-|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|Önerilen. Erişim jetonunun saniyecinsinden ömrü.|  
-|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|Önerilen. Erişim jetonunun saniyecinsinden ömrü.|  
-|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Önerilen. Erişim jetonunun saniyecinsinden ömrü.|  
+|OAuth2ExpiresIn_AuthorizationCodeGrant_TokenResponse|Önerilen. Erişim belirtecinin saniye cinsinden yaşam süresi.|  
+|OAuth2ExpiresIn_ClientCredentialsGrant_TokenResponse|Önerilen. Erişim belirtecinin saniye cinsinden yaşam süresi.|  
+|OAuth2ExpiresIn_ImplicitGrant_AuthorizationResponse|Önerilen. Erişim belirtecinin saniye cinsinden yaşam süresi.|  
+|OAuth2ExpiresIn_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Önerilen. Erişim belirtecinin saniye cinsinden yaşam süresi.|  
 |OAuth2GrantType_AuthorizationCodeGrant_TokenRequest|Gerekli. Değer "authorization_code" olarak ayarlanmalıdır.|  
 |OAuth2GrantType_ClientCredentialsGrant_TokenRequest|Gerekli. Değer "client_credentials" olarak ayarlanmalıdır.|  
-|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Gerekli. Değer "parola" olarak ayarlanmalıdır.|  
+|OAuth2GrantType_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Gerekli. Değer "Password" olarak ayarlanmalıdır.|  
 |OAuth2Password_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Gerekli. Kaynak sahibi parolası.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|Isteğe bağlı. Yeniden yönlendirme bitiş noktası URI mutlak bir URI olmalıdır.|  
-|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|"redirect_uri" parametresi yetkilendirme isteğine dahil edildiyse ve değerleri aynı ysa gerekli.|  
-|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|Isteğe bağlı. Yeniden yönlendirme bitiş noktası URI mutlak bir URI olmalıdır.|  
-|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|Isteğe bağlı. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
-|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|Isteğe bağlı. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
-|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Isteğe bağlı. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
-|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|Gerekli. Değer "kod" olarak ayarlanmalıdır.|  
-|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|Gerekli. Değer "belirteç" olarak ayarlanmalıdır.|  
-|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|Isteğe bağlı. Erişim isteğinin kapsamı.|  
-|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|İstemci tarafından talep edilen kapsamla aynıysa, İstEĞE BAĞLI; aksi takdirde, GEREKLİDİr.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenRequest|Isteğe bağlı. Erişim isteğinin kapsamı.|  
-|OAuth2Scope_ClientCredentialsGrant_TokenResponse|İsteğE BAĞLı, istemci tarafından talep edilen kapsam ile aynı ise; aksi takdirde, GEREKLİDİr.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationRequest|Isteğe bağlı. Erişim isteğinin kapsamı.|  
-|OAuth2Scope_ImplicitGrant_AuthorizationResponse|İstemci tarafından talep edilen kapsamla aynıysa, İstEĞE BAĞLI; aksi takdirde, GEREKLİDİr.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Isteğe bağlı. Erişim isteğinin kapsamı.|  
-|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|İsteğE BAĞLı, istemci tarafından talep edilen kapsam ile aynı ise; aksi takdirde, GEREKLİDİr.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|İstemci yetkilendirme isteğinde "durum" parametresi varsa GEREKLI.  İstemciden alınan tam değer.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|Önerilen. İstem ve geri çağırma arasındaki durumu korumak için istemci tarafından kullanılan opak bir değer.  Yetkilendirme sunucusu, kullanıcı aracısını istemciye geri yönlendirirken bu değeri içerir.  Parametre, yer ler arası istek sahteciliğini önlemek için kullanılmalıdır.|  
-|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|İstemci yetkilendirme isteğinde "durum" parametresi varsa GEREKLI.  İstemciden alınan tam değer.|  
-|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|İstemci yetkilendirme isteğinde "durum" parametresi varsa GEREKLI.  İstemciden alınan tam değer.|  
-|OAuth2State_ImplicitGrant_AuthorizationRequest|Önerilen. İstem ve geri çağırma arasındaki durumu korumak için istemci tarafından kullanılan opak bir değer.  Yetkilendirme sunucusu, kullanıcı aracısını istemciye geri yönlendirirken bu değeri içerir.  Parametre, yer ler arası istek sahteciliğini önlemek için kullanılmalıdır.|  
-|OAuth2State_ImplicitGrant_AuthorizationResponse|İstemci yetkilendirme isteğinde "durum" parametresi varsa GEREKLI.  İstemciden alınan tam değer.|  
-|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|Gerekli. Verilen belirteç türü.|  
-|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|Gerekli. Verilen belirteç türü.|  
-|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|Gerekli. Verilen belirteç türü.|  
-|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Gerekli. Verilen belirteç türü.|  
-|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Gerekli. Kaynak sahibi kullanıcı adı.|  
-|OAuth2DesteksizTokenType|Belirteç{0}türü ' ' ' desteklenmez.|  
-|OAuth2Geçersiz Durum|Yetkilendirme sunucusundan geçersiz yanıt|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_AuthorizationRequest|Seçim. Yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır.|  
+|OAuth2RedirectUri_AuthorizationCodeGrant_TokenRequest|Yetkilendirme isteğine "redirect_uri" parametresi dahil edilse ve değerleri özdeş OLMALıDıR.|  
+|OAuth2RedirectUri_ImplicitGrant_AuthorizationRequest|Seçim. Yeniden yönlendirme uç noktası URI 'si mutlak bir URI olmalıdır.|  
+|OAuth2RefreshToken_AuthorizationCodeGrant_TokenResponse|Seçim. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
+|OAuth2RefreshToken_ClientCredentialsGrant_TokenResponse|Seçim. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
+|OAuth2RefreshToken_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Seçim. Yeni erişim belirteçleri elde etmek için kullanılabilecek yenileme belirteci.|  
+|OAuth2ResponseType_AuthorizationCodeGrant_AuthorizationRequest|Gerekli. Değer "Code" olarak ayarlanmalıdır.|  
+|OAuth2ResponseType_ImplicitGrant_AuthorizationRequest|Gerekli. Değer "token" olarak ayarlanmalıdır.|  
+|OAuth2Scope_AuthorizationCodeGrant_AuthorizationRequest|Seçim. Erişim isteğinin kapsamı.|  
+|OAuth2Scope_AuthorizationCodeGrant_TokenResponse|İstemci tarafından istenen kapsam ile aynıysa Isteğe bağlı; Aksi takdirde, gereklı.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenRequest|Seçim. Erişim isteğinin kapsamı.|  
+|OAuth2Scope_ClientCredentialsGrant_TokenResponse|İstemci tarafından istenen kapsam ile aynıysa Isteğe bağlı; Aksi takdirde, gereklı.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationRequest|Seçim. Erişim isteğinin kapsamı.|  
+|OAuth2Scope_ImplicitGrant_AuthorizationResponse|İstemci tarafından istenen kapsam ile aynıysa Isteğe bağlı; Aksi takdirde, gereklı.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Seçim. Erişim isteğinin kapsamı.|  
+|OAuth2Scope_ResourceOwnerPasswordCredentialsGrant_TokenResponse|İstemci tarafından istenen kapsam ile aynıysa Isteğe bağlı; Aksi takdirde, gereklı.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationErrorResponse|İstemci yetkilendirme isteğinde "durum" parametresi mevcutsa GEREKLIDIR.  İstemciden alınan tam değer.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationRequest|Önerilen. İstek ve geri çağırma arasındaki durumu korumak için istemci tarafından kullanılan donuk bir değer.  Yetkilendirme sunucusu, Kullanıcı aracısını istemciye yeniden yönlendirirken bu değeri içerir.  Bu parametre, siteler arası istek sahteciliği önlemek için kullanılmalıdır.|  
+|OAuth2State_AuthorizationCodeGrant_AuthorizationResponse|İstemci yetkilendirme isteğinde "durum" parametresi mevcutsa GEREKLIDIR.  İstemciden alınan tam değer.|  
+|OAuth2State_ImplicitGrant_AuthorizationErrorResponse|İstemci yetkilendirme isteğinde "durum" parametresi mevcutsa GEREKLIDIR.  İstemciden alınan tam değer.|  
+|OAuth2State_ImplicitGrant_AuthorizationRequest|Önerilen. İstek ve geri çağırma arasındaki durumu korumak için istemci tarafından kullanılan donuk bir değer.  Yetkilendirme sunucusu, Kullanıcı aracısını istemciye yeniden yönlendirirken bu değeri içerir.  Bu parametre, siteler arası istek sahteciliği önlemek için kullanılmalıdır.|  
+|OAuth2State_ImplicitGrant_AuthorizationResponse|İstemci yetkilendirme isteğinde "durum" parametresi mevcutsa GEREKLIDIR.  İstemciden alınan tam değer.|  
+|OAuth2TokenType_AuthorizationCodeGrant_TokenResponse|Gerekli. Verilen belirtecin türü.|  
+|OAuth2TokenType_ClientCredentialsGrant_TokenResponse|Gerekli. Verilen belirtecin türü.|  
+|OAuth2TokenType_ImplicitGrant_AuthorizationResponse|Gerekli. Verilen belirtecin türü.|  
+|OAuth2TokenType_ResourceOwnerPasswordCredentialsGrant_TokenResponse|Gerekli. Verilen belirtecin türü.|  
+|OAuth2UserName_ResourceOwnerPasswordCredentialsGrant_TokenRequest|Gerekli. Kaynak sahibinin Kullanıcı adı.|  
+|OAuth2UnsupportedTokenType|'{0}' Belirteç türü desteklenmiyor.|  
+|OAuth2InvalidState|Yetkilendirme sunucusundan geçersiz yanıt|  
 |OAuth2GrantType_AuthorizationCode|Yetkilendirme kodu|  
-|OAuth2GrantType_Implicit|Örtülü|  
+|OAuth2GrantType_Implicit|İndirgen|  
 |OAuth2GrantType_ClientCredentials|İstemci kimlik bilgileri|  
 |OAuth2GrantType_ResourceOwnerPassword|Kaynak sahibi parolası|  
-|WebDocumentation302Kod|302 Bulundu|  
-|WebDocumentation400Code|400 (Kötü istek)|  
-|OAuth2SendingMethod_AuthHeader|Yetkilendirme üstbilgi|  
+|WebDocumentation302Code|302 bulundu|  
+|WebDocumentation400Code|400 (hatalı istek)|  
+|OAuth2SendingMethod_AuthHeader|Yetkilendirme üst bilgisi|  
 |OAuth2SendingMethod_QueryParam|Sorgu parametresi|  
-|OAuth2AuthorizationServerGeneralException|Erişime izin verirken bir hata oluştu{0}|  
-|OAuth2AuthorizationServerCommunicationException|Yetkilendirme sunucusuna bir HTTP bağlantısı kurulamadı veya beklenmedik bir şekilde kapatıldı.|  
-|WebDocumentationOAuth2GenelHataMesajı|Beklenmeyen hata oluştu.|  
-|YetkilendirmeServerCommunicationException|Yetkilendirme sunucusu iletişimi özel durumu oluştu. Lütfen yöneticiye başvurun.|  
-|TextblockAbonelikKeyHeaderAçıklama|Bu API'ye erişim sağlayan abonelik anahtarı. <bulunan bir href ='/developer'\>Profil\></a .|  
-|TextblockOAuthHeaderAçıklama|OAuth 2.0 erişim belirteci\> {0} <\>i< elde edilen . Desteklenen hibe türleri:\> {1} <i\></i .|  
-|TextblockContentTypeHeaderDescription|API'ye gönderilen gövdenin ortam türü.|  
-|ErrorMessageApiAncak'a Ulaşılamıyor|Aramaya çalıştığınız API'ye şu anda erişilemez. Lütfen burada</a\>\><API yayımcısına başvurun.|  
-|ErrorMessageApiTimedout|Aramaya çalıştığınız API'nin yanıtı geri alması normalden daha uzun sürüyor. Lütfen burada</a\>\><API yayımcısına başvurun.|  
-|BadRequestParameterBeklenen|"'{0}' parametresi bekleniyor"|  
-|TooltipTextDoubleClickToSelectAll|Tümünü seçmek için çift tıklatın.|  
-|TooltipTextHideRevealSecret|Göster/Gizle|  
+|OAuth2AuthorizationServerGeneralException|Erişim yetkilendirirken bir hata oluştu{0}|  
+|OAuth2AuthorizationServerCommunicationException|Yetkilendirme sunucusuna HTTP bağlantısı kurulamadı veya beklenmedik şekilde kapatıldı.|  
+|WebDocumentationOAuth2GeneralErrorMessage|Beklenmeyen bir hata oluştu.|  
+|AuthorizationServerCommunicationException|Yetkilendirme sunucusu iletişim özel durumu oluştu. Lütfen yöneticiye başvurun.|  
+|TextblockSubscriptionKeyHeaderDescription|Bu API 'ye erişim sağlayan abonelik anahtarı. <a href = '/Developer '\>profilinde bulunur</a.\>|  
+|TextblockOAuthHeaderDescription|<i\> {0}</i\>'tan alınan OAuth 2,0 erişim belirteci. Desteklenen izin türleri: <ı\> {1}</ı\>.|  
+|TextblockContentTypeHeaderDescription|API 'ye gönderilen gövdenin medya türü.|  
+|Errormessageapinotaccesrilabilen|Çağırmayı denediğiniz API Şu anda erişilebilir değil. Lütfen "/a\>\>< a href ="/sorunlar "<API yayımcısına başvurun.|  
+|Errormessageapimeınali|Çağırmayı denediğiniz API, yanıt almak için normalden daha uzun sürüyor. Lütfen "/a\>\>< a href ="/sorunlar "<API yayımcısına başvurun.|  
+|Badrequestparameterbekleniyordu|"'{0}' parametresi bekleniyor"|  
+|TooltipTextDoubleClickToSelectAll|Tümünü seçmek için çift tıklayın.|  
+|TooltipTextHideRevealSecret|Göster/gizle|  
 |ButtonLinkOpenConsole|Deneyin|  
-|BölümBaşlığıİstek Gövdesi|İstek gövdesi|  
-|BölümBaşlığıİstek Parametreleri|İstek parametreleri|  
-|BölümBaşlığıRequestUrl|İstek URL'si|  
-|BölümBaşlığıYanıtı|Yanıt|  
-|BölümBaşlığıİstek Headers|İstek üst bilgileri|  
-|FormLabelAltmetinİsteğe Bağlı|isteğe bağlı|  
-|BölümBaşlığıKod Örnekleri|Kod örnekleri|  
-|TextblockOpenidConnectHeaderAçıklama|OpenID Connect kimlik belirteci\> {0} <\>i</i elde . Desteklenen hibe türleri:\> {1} <i\></i .|  
+|SectionHeadingRequestBody|İstek gövdesi|  
+|SectionHeadingRequestParameters|İstek parametreleri|  
+|SectionHeadingRequestUrl 'Si|İstek URL'si|  
+|SectionHeadingResponse|Yanıt|  
+|SectionHeadingRequestHeaders|İstek üst bilgileri|  
+|Formlabelsubtextopyapısal|isteğe bağlı|  
+|SectionHeadingCodeSamples|Kod örnekleri|  
+|Textblockopenıdconnectheaderdescription|OpenID Connect ID belirteci <i\> {0}</i\>'tan alındı. Desteklenen izin türleri: <ı\> {1}</ı\>.|  
   
 ###  <a name="errorpagestrings"></a><a name="ErrorPageStrings"></a>ErrorPageStrings  
   
 |Adı|Metin|  
 |----------|----------|  
 |LinkLabelBack|seçin|  
-|LinkLabelAna Sayfa|ana sayfa|  
-|LinkLabelSendUsEmail|Bize bir e-posta gönderin|  
-|Sayfa BaşlığıHatası|Üzgünüz, istenen sayfaya hizmet veren bir sorun vardı|  
-|TextblockPotentialCauseIntermittentIssue|Bu, zaten gitmiş bir aralıklı veri erişim sorunu olabilir.|  
-|TextblockPotentialCauseOldLink|Tıkladığınız bağlantı eski olabilir ve artık doğru konumu işaret etmeyebilir.|  
-|TextblockPotentialCauseTeknikProblem|Bizim tarafımızda teknik bir sorun olabilir.|  
+|LinkLabelHomePage|giriş sayfası|  
+|LinkLabelSendUsEmail|Bize e-posta gönderin|  
+|Pagetitlehatası|Ne yazık ki istenen sayfaya hizmet verirken bir sorun oluştu|  
+|TextblockPotentialCauseIntermittentIssue|Bu, zaten geçmiş bir aralıklı veri erişim sorunu olabilir.|  
+|TextblockPotentialCauseOldLink|Tıkladığınız bağlantı eski olabilir ve artık doğru konuma işaret etmez.|  
+|TextblockPotentialCauseTechnicalProblem|Bizim uçta teknik bir sorun olabilir.|  
 |TextblockPotentialSolutionRefresh|Sayfayı yenilemeyi deneyin.|  
-|TextblockPotentialSolutionStartOver|Baştan {0}başlayalım.|  
-|TextblockPotentialSolutionTryAgain|Gidin {0} ve gerçekleştirdiğiniz eylemi yeniden deneyin.|  
-|TextReportProblem|{0}neyin yanlış gittiğini tarif ediyor ve en kısa zamanda bakacağız.|  
-|BaşlıkPotansiyel Neden|Olası neden|  
-|TitlePotentialSolution|Muhtemelen sadece geçici bir sorun, denemek için birkaç şey|  
+|TextblockPotentialSolutionStartOver|Adresinden baştan başlayın {0}.|  
+|TextblockPotentialSolutionTryAgain|Gidin {0} ve yaptığınız eylemi yeniden deneyin.|  
+|TextReportProblem|{0}Neyin yanlış olduğunu ve mümkün olan en kısa sürede bakacağız.|  
+|TitlePotentialCause|Olası neden|  
+|TitlePotentialSolution|Yalnızca geçici bir sorun olabilir, deneyebileceğiniz birkaç şey|  
   
-###  <a name="issuesstrings"></a><a name="IssuesStrings"></a>IssuesStrings  
-  
-|Adı|Metin|  
-|----------|----------|  
-|WebIssuesIndexTitle|Sorunlar|  
-|WebIssuesNoActiveSubscriptions|Etkin aboneliğiniz yok. Bir sorunu bildirmek için bir ürün için abone olmanız gerekir.|  
-|WebIssuesNotSignin|Sen oturum etmedin. Lütfen {0} bir sorunu bildirmek veya yorum göndermek için.|  
-|WebIssuesReportIssueButton|Rapor Sorunu|  
-|WebIssuesSignin|oturum aç|  
-|WebIssuesStatusReportedby|Durum: {0} &#124; Tarafından Bildirilen{1}|  
-  
-###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a>NotFoundStrings  
+###  <a name="issuesstrings"></a><a name="IssuesStrings"></a>Issuesstrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|LinkLabelAna Sayfa|ana sayfa|  
-|LinkLabelSendUsEmail|bize bir e-posta göndermek|  
+|Webıssuesındextitle|Sorunlar|  
+|WebIssuesNoActiveSubscriptions|Etkin aboneliğiniz yok. Bir sorunu bildirmek için bir ürüne abone olmanız gerekir.|  
+|Webıssuesnotsignın|Oturumunuz açık değil. Lütfen {0} bir sorunu raporlamak veya yorum göndermek için.|  
+|Webıssuesreportısuebutton|Sorun bildir|  
+|Webıssuessignın|oturum aç|  
+|Webıssuesstatusreportedby|Durum: {0} &#124; bildirdiği{1}|  
+  
+###  <a name="notfoundstrings"></a><a name="NotFoundStrings"></a>Notfounddizeleri  
+  
+|Adı|Metin|  
+|----------|----------|  
+|LinkLabelHomePage|giriş sayfası|  
+|LinkLabelSendUsEmail|bize e-posta gönderin|  
 |PageTitleNotFound|Üzgünüz, aradığınız sayfayı bulamıyoruz|  
-|TextblockPotentialCauseMisspelledUrl|Url'yi yazdıysanız yanlış yazmış olabilirsiniz.|  
-|TextblockPotentialCauseOldLink|Tıkladığınız bağlantı eski olabilir ve artık doğru konumu işaret etmeyebilir.|  
-|TextblockPotentialSolutionRetype|URL'yi yeniden yazmayı deneyin.|  
-|TextblockPotentialSolutionStartOver|Baştan {0}başlayalım.|  
-|TextReportProblem|{0}neyin yanlış gittiğini tarif ediyor ve en kısa zamanda bakacağız.|  
-|BaşlıkPotansiyel Neden|Olası neden|  
-|TitlePotentialSolution|Potansiyel çözüm|  
+|TextblockPotentialCauseMisspelledUrl|Yazdığınız URL 'YI yanlış yazmış olabilirsiniz.|  
+|TextblockPotentialCauseOldLink|Tıkladığınız bağlantı eski olabilir ve artık doğru konuma işaret etmez.|  
+|TextblockPotentialSolutionRetype|URL 'YI yeniden yazmayı deneyin.|  
+|TextblockPotentialSolutionStartOver|Adresinden baştan başlayın {0}.|  
+|TextReportProblem|{0}Neyin yanlış olduğunu ve mümkün olan en kısa sürede bakacağız.|  
+|TitlePotentialCause|Olası neden|  
+|TitlePotentialSolution|Olası çözüm|  
   
-###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a>ÜrünDetailsStrings  
+###  <a name="productdetailsstrings"></a><a name="ProductDetailsStrings"></a>Productayrıntılar dizeleri  
   
 |Adı|Metin|  
 |----------|----------|  
-|WebProductsAgreement|Ürün'e {0} abone olarak, ben kabul `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`ediyorum .|  
+|WebProductsAgreement|{0} Ürününe abone olarak, kabul ediyorum `<a data-toggle='modal' href='#legal-terms'\>Terms of Use</a\>`.|  
 |WebProductsLegalTermsLink|Kullanım Koşulları|  
-|WebProductsAbone Düğmesi|Abone Ol|  
+|WebProductsSubscribeButton|Abone Ol|  
 |WebProductsUsageLimitsHeader|Kullanım sınırları|  
-|WebProductsYouAreNotAbone|Bu ürüne abonesiniz.|  
-|WebProductsYouRequestedAbonelik|Bu ürüne abonelik istediniz.|  
-|ErrorYouneedtoagreeLegalTerms|Devam etmeden önce Kullanım Koşullarını kabul etmelisiniz.|  
+|Webproductsyouarenotabone|Bu ürüne abone oldunuz.|  
+|WebProductsYouRequestedSubscription|Bu ürüne abonelik istediniz.|  
+|ErrorYouNeedToAgreeWithLegalTerms|Devam edebilmeniz için kullanım koşullarını kabul etmeniz gerekir.|  
 |ButtonLabelAddSubscription|Abonelik ekleme|  
 |LinkLabelChangeSubscriptionName|Değiştir|  
-|ButtonLabelOnay|Confirm|  
-|TextblockMultipleSubscriptionsSayısı|Bu {0} ürüne abonelikleri var:|  
-|TextblockTekAboneliksayısı|Bu {0} ürüne abonesiniz:|  
-|TextblockSingleApisSayısı|Bu ürün {0} API içerir:|  
-|TextblockMultipleApisSayısı|Bu ürün {0} API'ler içerir:|  
-|TextblockHeaderAbone|Ürüne abone ol|  
-|TextblockAbonelikAçıklama|Yeni bir abonelik aşağıdaki gibi oluşturulur:|  
-|TextblockSubscriptionLimitReached|Aboneliksınırına ulaşıldı.|  
+|Buttonlabelonayla|Confirm|  
+|TextblockMultipleSubscriptionsCount|Bu ürüne {0} yönelik abonelikleriniz var:|  
+|TextblockSingleSubscriptionsCount|Bu ürüne {0} aboneliğiniz var:|  
+|TextblockSingleApisCount|Bu ürün API {0} içerir:|  
+|TextblockMultipleApisCount|Bu ürün API {0} 'leri içerir:|  
+|TextblockHeaderSubscribe|Ürüne abone ol|  
+|TextblockSubscriptionDescription|Yeni bir abonelik şu şekilde oluşturulur:|  
+|Textblocksubscriptionlimitulaşıldı|Abonelik sınırına ulaşıldı.|  
   
-###  <a name="productsstrings"></a><a name="ProductsStrings"></a>ÜrünlerStrings  
-  
-|Adı|Metin|  
-|----------|----------|  
-|Sayfa Başlığı Ürünler|Ürünler|  
-  
-###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a>SağlayıcıInfoStrings  
+###  <a name="productsstrings"></a><a name="ProductsStrings"></a>ProductsStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|TextboxExternalIdentitiesDevre Dışı|Oturum açma şu anda yöneticiler tarafından devre dışı bırakılır.|  
-|TextboxExternalIdentitiesSigninInvitation|Alternatif olarak, oturum|  
-|TextboxExternalIdentitiesSigninInvitationPrimary|Oturum şu şekilde oturum açın:|  
+|PageTitleProducts|Ürünler|  
   
-###  <a name="signinresources"></a><a name="SigninResources"></a>SigninResources  
+###  <a name="providerinfostrings"></a><a name="ProviderInfoStrings"></a>ProviderInfoStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|PrincipalNotFound|Asıl sorumlu bulunamadı veya imza geçersiz|  
+|TextboxExternalIdentitiesDisabled|Oturum açma, şu anda Yöneticiler tarafından devre dışı bırakıldı.|  
+|TextboxExternalIdentitiesSigninInvitation|Alternatif olarak, ile oturum açın|  
+|TextboxExternalIdentitiesSigninInvitationPrimary|İle oturum açın:|  
+  
+###  <a name="signinresources"></a><a name="SigninResources"></a>Signınresources  
+  
+|Adı|Metin|  
+|----------|----------|  
+|PrincipalNotFound|Asıl bulunamadı veya imza geçersiz|  
 |ErrorSsoAuthenticationFailed|SSO kimlik doğrulaması başarısız oldu|  
-|ErrorSsoAuthenticationFailedDetailed|Verilen geçersiz belirteç veya imza doğrulanamaz.|  
-|HataSsoTokenGeçersiz|SSO belirteci geçersizdir|  
-|DoğrulamaHatasıSpecificEmailZaten Var|E-posta ' '{0}' zaten kayıtlı|  
-|DoğrulamaHatasıSpecificEmailGeçersiz|E-posta ' '{0}' ' geçersizdir|  
-|DoğrulamaHatasıParolaGeçersiz|Parola geçersizdir. Lütfen hataları düzeltin ve yeniden deneyin.|  
+|ErrorSsoAuthenticationFailedDetailed|Geçersiz belirteç belirtildi veya imza doğrulanamıyor.|  
+|Errorssotokengeçersiz|SSO belirteci geçersiz|  
+|Validationerrorbelirtimi Icemaılalreadyexists|'{0}' E-postası zaten kayıtlı|  
+|Validationerrorbelirtimi Icemailgeçersiz|'{0}' E-postası geçersiz|  
+|Validationerrorpasswordgeçersizdir|Parola geçersiz. Lütfen hataları düzeltip yeniden deneyin.|  
 |PropertyTooShort|{0}çok kısa|  
 |WebAuthenticationAddresserEmailInvalidErrorMessage|Geçersiz e-posta adresi.|  
-|DoğrulamaMessageNewPasswordConfirmationGerekli|Yeni parolayı onaylama|  
-|DoğrulamaHatasıParolaOnayı Gerekli|Parolanın boş olduğunu onaylayın|  
-|WebAuthenticationEmailChangeNotice|Onay e-postasını değiştir {0}in' e doğru yolda. Yeni e-posta adresinizi onaylamak için lütfen içindeki talimatları uygulayın. E-posta önümüzdeki birkaç dakika içinde gelen kutunuza ulaşmazsa, lütfen önemsiz e-posta klasörünüzü kontrol edin.|  
-|WebAuthenticationEmailChangeNoticeHeader|E-posta değiştirme isteğiniz başarıyla işlendi|  
-|WebAuthenticationEmailChangeNoticeTitle|İstenilen e-posta değişikliği|  
-|WebAuthenticationEmailHasBeenRevertedNotice|E-posta zaten var. İstek geri alındı|  
-|DoğrulamaErrorEmailAlreadyExists|E-posta zaten var|  
-|DoğrulamaHatasıEmailGeçersiz|Geçersiz e-posta adresi|  
-|TextboxLabelEmail|Email|  
-|DoğrulamaHatasıEmailGerekli|E-posta gereklidir.|  
+|ValidationMessageNewPasswordConfirmationRequired|Yeni Parolayı Onayla|  
+|ValidationErrorPasswordConfirmationRequired|Parolanın boş olduğunu onaylayın|  
+|WebAuthenticationEmailChangeNotice|Değişiklik onay e-postası şu şekilde yapılır {0}. Yeni e-posta adresinizi doğrulamak için lütfen içindeki yönergeleri izleyin. E-posta, sonraki birkaç dakika içinde gelen kutunuza ulaşmazsa lütfen gereksiz e-posta klasörünüzü kontrol edin.|  
+|WebAuthenticationEmailChangeNoticeHeader|E-posta değişim isteğiniz başarıyla işlendi|  
+|WebAuthenticationEmailChangeNoticeTitle|E-posta değişikliği istendi|  
+|WebAuthenticationEmailHasBeenRevertedNotice|E-posta zaten var. İstek geri döndürüldü|  
+|ValidationErrorEmailAlreadyExists|E-posta zaten var|  
+|ValidationErrorEmailInvalid|Geçersiz e-posta adresi|  
+|TextboxLabelEmail|E-posta|  
+|ValidationErrorEmailRequired|E-posta gereklidir.|  
 |WebAuthenticationErrorNoticeHeader|Hata|  
-|WebAuthenticationFieldLengthErrorMessage|{0}maksimum uzunluk olmalıdır{1}|  
-|TextboxLabelEmailİlkName|Ad|  
-|DoğrulamaHatasıİlkNameGerekli|Ad gereklidir.|  
-|DoğrulamaHatasıFirstNameGeçersiz|Geçersiz ad|  
-|BildirimGeçersizDavetiyeToken|Onay bağlantılarının sadece 48 saat boyunca geçerli olduğunu lütfen unutmayın. Bu zaman dilimi içindeyseniz, lütfen bağlantınızın doğru olduğundan emin olun. Bağlantınızın süresi dolduysa, lütfen onaylamaya çalıştığınız eylemi tekrarlayın.|  
-|NoticeHeaderGeçersiz DavetiyeToken|Geçersiz davet belirteci|  
-|BildirimBaşlığıGeçersiz DavetiyeToken|Onay hatası|  
-|WebAuthenticationLastNameInvalidErrorMessage|Geçersiz soyadı|  
+|WebAuthenticationFieldLengthErrorMessage|{0}en fazla bir uzunluk olmalıdır{1}|  
+|TextboxLabelEmailFirstName|Ad|  
+|ValidationErrorFirstNameRequired|Ad gereklidir.|  
+|Validationerrorfirstnamename geçersiz|Geçersiz ad|  
+|NoticeInvalidInvitationToken|Lütfen onay bağlantılarının yalnızca 48 saat için geçerli olduğunu unutmayın. Hala bu zaman diliminde çalışıyorsanız, lütfen bağlantının doğru olduğundan emin olun. Bağlantınız süresi dolmuşsa lütfen onaylamaya çalıştığınız eylemi tekrarlayın.|  
+|NoticeHeaderInvalidInvitationToken|Geçersiz davet belirteci|  
+|NoticeTitleInvalidInvitationToken|Onay hatası|  
+|WebAuthenticationLastNameInvalidErrorMessage|Geçersiz Soyadı|  
 |TextboxLabelEmailLastName|Soyadı|  
-|DoğrulamaErrorLastNameGerekli|Soyadı gereklidir.|  
-|WebAuthenticationLinkExpiredNotice|Size gönderilen onay bağlantısının süresi doldu. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
-|BildirimPasswordResetLinkGeçersiz OrExpired|Parola sıfırlama bağlantınız geçersiz veya süresi doldu.|  
-|WebAuthenticationLinkExpiredNoticeTitle|Gönderilen bağlantı|  
+|ValidationErrorLastNameRequired|Soyadı gereklidir.|  
+|WebAuthenticationLinkExpiredNotice|Size gönderilen onay bağlantısı süresi doldu. `<a href={0}?token={1}>Resend confirmation email.</a\>`|  
+|NoticePasswordResetLinkInvalidOrExpired|Parola sıfırlama bağlantınız geçersiz veya zaman aşımına uğradı.|  
+|WebAuthenticationLinkExpiredNoticeTitle|Bağlantı gönderildi|  
 |WebAuthenticationNewPasswordLabel|Yeni parola|  
-|DoğrulamaMessageNewPasswordGerekli|Yeni parola gereklidir.|  
-|TextboxLabelBildirimlerSenderEmail|Bildirim gönderen e-posta|  
-|TextboxLabelOrganizasyonAdı|Kuruluş adı|  
-|WebAuthenticationOrganizationGerekliErrorMessage|Kuruluş adı boş|  
-|WebAuthenticationPasswordChangedNotice|Parolanız başarıyla güncellendi|  
-|WebAuthenticationPasswordChangedNoticeTitle|Parola güncellendi|  
+|ValidationMessageNewPasswordRequired|Yeni parola gereklidir.|  
+|TextboxLabelNotificationsSenderEmail|Bildirim gönderen e-postası|  
+|Textboxlabelorganizasyonadi|Kuruluş adı|  
+|WebAuthenticationOrganizationRequiredErrorMessage|Kuruluş adı boş|  
+|WebAuthenticationPasswordChangedNotice|Parolanız başarıyla güncelleştirildi|  
+|WebAuthenticationPasswordChangedNoticeTitle|Parola güncelleştirildi|  
 |WebAuthenticationPasswordCompareErrorMessage|Parolalar eşleşmiyor|  
 |WebAuthenticationPasswordConfirmLabel|Parolayı onayla|  
-|DoğrulamaHatasıParolaGeçersiz Ayrıntılı|Parola çok zayıf.|  
+|Validationerrorpassworınvaliddetailed|Parola çok zayıf.|  
 |WebAuthenticationPasswordLabel|Parola|  
-|DoğrulamaHatasıŞifre Gerekli|Parola gereklidir.|  
-|WebAuthenticationPasswordResetSendNotice|Parola onay e-postasını {0}değiştirin. Şifre değiştirme işlemine devam etmek için lütfen e-postadaki talimatları uygulayın.|  
+|ValidationErrorPasswordRequired|Parola gereklidir.|  
+|WebAuthenticationPasswordResetSendNotice|Parola onay e-postası şu şekilde değişir {0}. Parola değiştirme işlemine devam etmek için lütfen e-postadaki yönergeleri izleyin.|  
 |WebAuthenticationPasswordResetSendNoticeHeader|Parola sıfırlama isteğiniz başarıyla işlendi|  
-|WebAuthenticationPasswordResetSendNoticeTitle|İstenilen parola sıfırlama|  
+|WebAuthenticationPasswordResetSendNoticeTitle|Parola sıfırlama istendi|  
 |WebAuthenticationRequestNotFoundNotice|İstek bulunamadı|  
-|WebAuthenticationSenderEmailRequiredErrorMessage|Bildirim gönderen e-posta boş|  
+|WebAuthenticationSenderEmailRequiredErrorMessage|Bildirim gönderen e-postası boş|  
 |WebAuthenticationSigninPasswordLabel|Lütfen bir parola girerek değişikliği onaylayın|  
-|WebAuthenticationSignupConfirmNotice|Kayıt onay e-postası {0}.<\> br / Hesabınızı etkinleştirmek için e-posta\> içindeki talimatları izleyin.<br / E-posta önümüzdeki birkaç dakika içinde gelen kutunuzda gelmezse, lütfen önemsiz e-posta klasörünüzü kontrol edin.|  
+|WebAuthenticationSignupConfirmNotice|Kayıt onay e-postası, ' a {0}ait. <br\> /hesabınızı etkinleştirmek için lütfen e-postadaki yönergeleri izleyin. <br/\> e-posta, sonraki birkaç dakika içinde gelen kutunuza ulaşmazsa, lütfen önemsiz e-posta klasörünüzü denetleyin.|  
 |WebAuthenticationSignupConfirmNoticeHeader|Hesabınız başarıyla oluşturuldu|  
-|WebAuthenticationSignupConfirmNoticeRepeatHeader|Kayıt onay e-postası tekrar gönderildi|  
-|WebAuthenticationSignupConfirmNoticeTitle|Oluşturulan hesap|  
+|WebAuthenticationSignupConfirmNoticeRepeatHeader|Kayıt onay e-postası yeniden gönderildi|  
+|WebAuthenticationSignupConfirmNoticeTitle|Hesap oluşturuldu|  
 |WebAuthenticationTokenRequiredErrorMessage|Belirteç boş|  
-|WebAuthenticationUserAlreadyRegisteredNotice|Bu e-posta ile bir kullanıcı zaten sistemde kayıtlı gibi görünüyor. Parolanızı unuttuysanız, lütfen geri yüklemeyi deneyin veya destek ekibimizle iletişime geçin.|  
+|WebAuthenticationUserAlreadyRegisteredNotice|Bu e-postanın sistemde zaten kayıtlı olduğu bir Kullanıcı görünüyor. Parolanızı unuttuysanız, lütfen geri yüklemeyi deneyin veya destek ekibimize başvurun.|  
 |WebAuthenticationUserAlreadyRegisteredNoticeHeader|Kullanıcı zaten kayıtlı|  
 |WebAuthenticationUserAlreadyRegisteredNoticeTitle|Zaten kayıtlı|  
 |ButtonLabelChangePassword|Parolayı değiştir|  
-|ButtonLabelChangeAccountInfo|Hesap bilgilerini değiştirme|  
+|Buttonlabelchangeaccountınfo|Hesap bilgilerini değiştirme|  
 |ButtonLabelCloseAccount|Hesabı kapat|  
 |WebAuthenticationInvalidCaptchaErrorMessage|Girilen metin resimdeki metinle eşleşmiyor. Lütfen tekrar deneyin.|  
-|DoğrulamaHatasıcredentialsGeçersiz|E-posta veya parola geçersizdir. Lütfen hataları düzeltin ve yeniden deneyin.|  
-|WebAuthenticationRequestIsValid|İstek geçerli değil|  
-|WebAuthenticationUserIsNotConfirm|Lütfen oturum açmadan önce kaydınızı onaylayın.|  
-|WebAuthenticationGeçersizEmailBiçimli|E-posta geçersizdir:{0}|  
+|Validationerrorcredentialsgeçersiz|E-posta veya parola geçersiz. Lütfen hataları düzeltip yeniden deneyin.|  
+|WebAuthenticationRequestIsNotValid|İstek geçerli değil|  
+|WebAuthenticationUserIsNotConfirm|Oturum açmayı denemeden önce lütfen kaydınızı onaylayın.|  
+|WebAuthenticationInvalidEmailFormated|E-posta geçersiz:{0}|  
 |WebAuthenticationUserNotFound|Kullanıcı bulunamadı|  
-|WebAuthenticationTenantNotRegistered|Hesabınız, bu portala erişme yetkisi olmayan bir Azure Etkin Dizin kiracısına aittir.|  
-|WebAuthenticationAuthenticationFailed|Kimlik doğrulama başarısız oldu.|  
-|WebAuthenticationGooglePlusNotEnabled|Kimlik doğrulama başarısız oldu. Uygulamayı yetkilendirdiyseniz, Google kimlik doğrulamasının doğru şekilde yapılandırıldığından emin olmak için lütfen yöneticiyle iletişime geçin.|  
-|DoğrulamaErrorAllowedTenantIsGerekli|İzin Verilen Kiracı gereklidir|  
-|DoğrulamaHatasıKiracıDeğilGeçerli|Azure Etkin Dizin{0}kiracı ' ' ' geçerli değildir.|  
+|WebAuthenticationTenantNotRegistered|Hesabınız, bu portala erişim yetkisine sahip olmayan bir Azure Active Directory kiracıya aittir.|  
+|WebAuthenticationAuthenticationFailed|Kimlik doğrulaması başarısız oldu.|  
+|WebAuthenticationGooglePlusNotEnabled|Kimlik doğrulaması başarısız oldu. Uygulamayı yetkilendirdiğiniz takdirde, Google Authentication 'ın doğru yapılandırıldığından emin olmak için lütfen yöneticiye başvurun.|  
+|ValidationErrorAllowedTenantIsRequired|İzin verilen kiracı gerekli|  
+|ValidationErrorTenantIsNotValid|Azure Active Directory kiracısı '{0}' geçerli değil.|  
 |WebAuthenticationActiveDirectoryTitle|Azure Active Directory|  
-|WebAuthenticationLoginUsingYourProvider|{0} Hesabınızı kullanarak giriş yapın|  
-|WebAuthenticationUserLimitNotice|Bu hizmet, izin verilen maksimum kullanıcı sayısına ulaşmıştır. Lütfen `<a href="mailto:{0}"\>contact the administrator</a\>` hizmetlerini yükseltmek ve kullanıcı kaydını yeniden etkinleştirmek için.|  
+|WebAuthenticationLoginUsingYourProvider|{0} Hesabınızı kullanarak oturum açın|  
+|WebAuthenticationUserLimitNotice|Bu hizmet izin verilen en fazla kullanıcı sayısına ulaştı. Lütfen `<a href="mailto:{0}"\>contact the administrator</a\>` hizmetini yükseltmek ve Kullanıcı kaydını yeniden etkinleştirmek için.|  
 |WebAuthenticationUserLimitNoticeHeader|Kullanıcı kaydı devre dışı|  
 |WebAuthenticationUserLimitNoticeTitle|Kullanıcı kaydı devre dışı|  
-|WebAuthenticationKullanıcıRegistrationDisabledNotice|Kullanıcıların kaydı yönetici tarafından devre dışı bırakıldı. Lütfen harici kimlik sağlayıcıile giriş yapın.|  
+|WebAuthenticationUserRegistrationDisabledNotice|Kullanıcıların kaydı yönetici tarafından devre dışı bırakıldı. Lütfen dış kimlik sağlayıcısıyla oturum açın.|  
 |WebAuthenticationUserRegistrationDisabledNoticeHeader|Kullanıcı kaydı devre dışı|  
 |WebAuthenticationUserRegistrationDisabledNoticeTitle|Kullanıcı kaydı devre dışı|  
-|WebAuthenticationSignupPendingConfirmationNotice|Hesabınızın oluşturulmasını tamamlamadan önce e-posta adresinizi doğrulamamız gerekir. E-posta {0}gönderdik. Hesabınızı etkinleştirmek için lütfen e-postanın içindeki talimatları uygulayın. E-posta önümüzdeki birkaç dakika içinde gelmezse, lütfen önemsiz e-posta klasörünüzü kontrol edin.|  
-|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|E-posta adresi {0}için doğrulanmamış bir hesap bulduk. Hesabınızın oluşturulmasını tamamlamak için e-posta adresinizi doğrulamamız gerekir. E-posta {0}gönderdik. Hesabınızı etkinleştirmek için lütfen e-postanın içindeki talimatları uygulayın. E-posta önümüzdeki birkaç dakika içinde gelmezse, lütfen önemsiz e-posta klasörünüzü kontrol edin|  
-|WebAuthenticationSignupConfirmationAlmostDone|Neredeyse Bitti|  
-|WebAuthenticationSignupConfirmationEmailSent|E-posta {0}gönderdik. Hesabınızı etkinleştirmek için lütfen e-postanın içindeki talimatları uygulayın. E-posta önümüzdeki birkaç dakika içinde gelmezse, lütfen önemsiz e-posta klasörünüzü kontrol edin.|  
-|WebAuthenticationEmailSentNotificationMessage|Başarıyla gönderilen e-posta{0}|  
-|WebAuthenticationNoAadTenantYapılı|Hizmet için yapılandırılan Azure Etkin Dizin kiracısı yok.|  
-|CheckboxLabelKullanıcıRegistrationŞartlarGerekli|Ben katılıyorum `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
-|TextblockUserRegistrationTermsProvided|Lütfen gözden geçirin`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
+|WebAuthenticationSignupPendingConfirmationNotice|Hesabınızın oluşturulmasını tamamlayabilmemiz için önce e-posta adresinizi doğrulamamız gerekir. Adresine {0}bir e-posta gönderdik. Hesabınızı etkinleştirmek için lütfen e-posta içindeki yönergeleri izleyin. E-posta önümüzdeki birkaç dakika içinde gelmezse lütfen gereksiz e-posta klasörünüzü kontrol edin.|  
+|WebAuthenticationSignupPendingConfirmationAccountFoundNotice|E-posta adresi {0}için onaylanmamış bir hesap bulduk. Hesabınızın oluşturulmasını tamamlaması için e-posta adresinizi doğrulamanız gerekiyor. Adresine {0}bir e-posta gönderdik. Hesabınızı etkinleştirmek için lütfen e-posta içindeki yönergeleri izleyin. E-posta önümüzdeki birkaç dakika içinde gelmezse lütfen gereksiz e-posta klasörünüzü kontrol edin|  
+|WebAuthenticationSignupConfirmationAlmostDone|Neredeyse bitti|  
+|WebAuthenticationSignupConfirmationEmailSent|Adresine {0}bir e-posta gönderdik. Hesabınızı etkinleştirmek için lütfen e-posta içindeki yönergeleri izleyin. E-posta önümüzdeki birkaç dakika içinde gelmezse lütfen gereksiz e-posta klasörünüzü kontrol edin.|  
+|WebAuthenticationEmailSentNotificationMessage|E-posta başarıyla gönderildi{0}|  
+|WebAuthenticationNoAadTenantConfigured|Hizmet için Azure Active Directory kiracı yapılandırılmadı.|  
+|CheckboxLabelUserRegistrationTermsConsentRequired|Kabul ediyorum `<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use</a\>`.|  
+|Textblockuserregistrationtermssaðlanan|Lütfen gözden geçirin`<a data-toggle="modal" href="#" data-target="#terms"\>Terms of Use.</a\>`|  
 |DialogHeadingTermsOfUse|Kullanım Koşulları|  
-|DoğrulamaMessageConsentNotAccepted|Devam etmeden önce Kullanım Koşullarını kabul etmelisiniz.|  
+|ValidationMessageConsentNotAccepted|Devam edebilmeniz için kullanım koşullarını kabul etmeniz gerekir.|  
   
-###  <a name="signinstrings"></a><a name="SigninStrings"></a>SigninStrings  
+###  <a name="signinstrings"></a><a name="SigninStrings"></a>Signınsthalkalar  
   
 |Adı|Metin|  
 |----------|----------|  
 |WebAuthenticationForgotPassword|Parolanızı mı unuttunuz?|  
-|WebAuthenticationIfAdministrator|Yöneticiyseniz oturum `<a href="{0}"\>here</a\>`açmanız gerekir.|  
+|WebAuthenticationIfAdministrator|Yöneticiyseniz oturum açmanız gerekir `<a href="{0}"\>here</a\>`.|  
 |WebAuthenticationNotAMember|Henüz üye değil misiniz? `<a href="/signup"\>Sign up now</a\>`|  
-|WebAuthenticationRemember|Beni bu bilgisayarda hatırla.|  
-|WebAuthenticationSigininWithPassword|Kullanıcı adınız ve şifrenizle oturum açın|  
-|WebAuthenticationSigninTitle|Oturum aç|  
+|WebAuthenticationRemember|Bu bilgisayarda beni anımsa|  
+|WebAuthenticationSigininWithPassword|Kullanıcı adınızla ve parolanızla oturum açın|  
+|WebAuthenticationSigninTitle|Oturum açma|  
 |WebAuthenticationSignUpNow|Hemen kaydolun|  
   
-###  <a name="signupstrings"></a><a name="SignupStrings"></a>Kayıt KatıRlar  
+###  <a name="signupstrings"></a><a name="SignupStrings"></a>SignupStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|SayfaBaşlığıSignup|Kaydolma|  
+|Pagetitlekaydolma|Kaydolma|  
 |WebAuthenticationAlreadyAMember|Zaten üye misiniz?|  
-|WebAuthenticationCreateNewAccount|Yeni bir API Yönetimi hesabı oluşturma|  
+|WebAuthenticationCreateNewAccount|Yeni bir API Management hesabı oluşturun|  
 |WebAuthenticationSigninNow|Şimdi oturum açın|  
 |ButtonLabelSignup|Kaydolma|  
   
-###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a>AbonelikListStrings  
+###  <a name="subscriptionliststrings"></a><a name="SubscriptionListStrings"></a>SubscriptionListStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|Abonelikİptal Onayı|Bu aboneliği iptal etmek istediğinizden emin misiniz?|  
-|AbonelikYenileme Onayı|Bu aboneliği yenilemek istediğinizden emin misiniz?|  
+|SubscriptionCancelConfirmation|Bu aboneliği iptal etmek istediğinizden emin misiniz?|  
+|SubscriptionRenewConfirmation|Bu aboneliği yenilemek istediğinizden emin misiniz?|  
 |WebDevelopersManageSubscriptions|Abonelikleri yönetme|  
 |WebDevelopersPrimaryKey|Birincil anahtar|  
 |WebDevelopersRegenerateLink|Yeniden Oluştur|  
 |WebDevelopersSecondaryKey|İkincil anahtar|  
 |ButtonLabelShowKey|Göster|  
 |ButtonLabelRenewSubscription|Yenile|  
-|WebDevelopersSubscriptionRequested|İstenilen{0}|  
+|WebDevelopersSubscriptionRequested|İstek açık{0}|  
 |WebDevelopersSubscriptionRequestedState|İstekte bulunan|  
 |WebDevelopersSubscriptionTableNameHeader|Adı|  
 |WebDevelopersSubscriptionTableStateHeader|Durum|  
-|WebDevelopersUsageStatisticsLink|Analitik raporları|  
+|WebDevelopersUsageStatisticsLink|Analiz raporları|  
 |WebDevelopersYourSubscriptions|Abonelikleriniz|  
-|AbonelikEmlakEtiketİsteTarihi|İstenilen|  
-|AbonelikPropertyLabelBaşlangıç Tarihi|Başladı|  
-|SayfaBaşlığıRenameAbonelik|Aboneliği yeniden adlandır|  
-|AbonelikPropertyLabelName|Abonelik adı|  
+|SubscriptionPropertyLabelRequestedDate|İstek açık|  
+|SubscriptionPropertyLabelStartedDate|Başlangıç tarihi|  
+|PageTitleRenameSubscription|Aboneliği yeniden adlandır|  
+|SubscriptionPropertyLabelName|Abonelik adı|  
   
-###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a>AbonelikStrings  
+###  <a name="subscriptionstrings"></a><a name="SubscriptionStrings"></a>SubscriptionStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|BölümBaşlığıCloseAccount|Hesabınızı kapatmak mı arıyorsunuz?|  
+|SectionHeadingCloseAccount|Hesabınız kapatılsın mı?|  
 |PageTitleDeveloperProfile|Profil|  
 |ButtonLabelHideKey|Gizle|  
 |ButtonLabelRegenerateKey|Yeniden Oluştur|  
-|InformationMessageKeyWasRegenerated|Bu anahtarı yenilemek istediğinizden emin misiniz?|  
+|InformationMessageKeyWasRegenerated|Bu anahtarı yeniden oluşturmak istediğinizden emin misiniz?|  
 |ButtonLabelShowKey|Göster|  
   
 ###  <a name="updateprofilestrings"></a><a name="UpdateProfileStrings"></a>UpdateProfileStrings  
   
 |Adı|Metin|  
 |----------|----------|  
-|ButtonLabelUpdateProfile|Profili güncelleştir|  
+|ButtonLabelUpdateProfile|Profili Güncelleştir|  
 |PageTitleUpdateProfile|Hesap bilgilerini güncelleştir|  
   
-###  <a name="userprofile"></a><a name="UserProfile"></a>Kullanıcı Profili  
+###  <a name="userprofile"></a><a name="UserProfile"></a>UserProfile  
   
 |Adı|Metin|  
 |----------|----------|  
-|ButtonLabelChangeAccountInfo|Hesap bilgilerini değiştirme|  
+|Buttonlabelchangeaccountınfo|Hesap bilgilerini değiştirme|  
 |ButtonLabelChangePassword|Parolayı değiştir|  
 |ButtonLabelCloseAccount|Hesabı kapat|  
-|TextboxLabelEmail|Email|  
-|TextboxLabelEmailİlkName|Ad|  
+|TextboxLabelEmail|E-posta|  
+|TextboxLabelEmailFirstName|Ad|  
 |TextboxLabelEmailLastName|Soyadı|  
-|TextboxLabelBildirimlerSenderEmail|Bildirim gönderen e-posta|  
-|TextboxLabelOrganizasyonAdı|Kuruluş adı|  
-|AbonelikStateActive|Etkin|  
-|AbonelikStateCancelled|İptal Edildi|  
-|AbonelikSüresi Doldu|Süresi doldu|  
-|AbonelikStateReddedildi|Reddedilen|  
-|AbonelikStateRequested|İstekte bulunan|  
-|AbonelikStateAskıya|Askıya alındı|  
-|Varsayılan Abonelik Adı Şablonu|{0}(varsayılan)|  
-|AbonelikAdı Şablonu|Geliştirici erişimi #{0}|  
-|TextboxLabelAbonelikName|Abonelik adı|  
-|DoğrulamaMessageSubscriptionNameGerekli|Abonelik adı boş olamaz.|  
-|ApiManagementUserLimitReached|Bu hizmet, izin verilen maksimum kullanıcı sayısına ulaşmıştır. Lütfen daha yüksek bir fiyatlandırma katmanına yükseltin.|  
+|TextboxLabelNotificationsSenderEmail|Bildirim gönderen e-postası|  
+|Textboxlabelorganizasyonadi|Kuruluş adı|  
+|Subscriptionstateactıve|Etkin|  
+|Subscriptionstateiptal edildi|İptal Edildi|  
+|Subscriptionstatevadesi geçildi|Süresi doldu|  
+|SubscriptionStateRejected|Reddedilen|  
+|Subscriptionstatereşitlenmiş|İstekte bulunan|  
+|Subscriptionstateaskıya alındı|Askıya alındı|  
+|DefaultSubscriptionNameTemplate|{0}varsayılanını|  
+|SubscriptionNameTemplate|Geliştirici erişimi #{0}|  
+|TextboxLabelSubscriptionName|Abonelik adı|  
+|ValidationMessageSubscriptionNameRequired|Abonelik adı boş olamaz.|  
+|Apimanagementuserlimitulaşıldı|Bu hizmet izin verilen en fazla kullanıcı sayısına ulaştı. Lütfen daha yüksek bir fiyatlandırma katmanına yükseltin.|  
   
-##  <a name="glyph-resources"></a><a name="glyphs"></a>Glyph kaynakları  
- API Yönetimi geliştirici portalı şablonları [Bootstrap gelen Glyphicons gelen glifleri](https://getbootstrap.com/components/#glyphicons)kullanabilirsiniz. Bu glifler kümesi, [Glyphicon](https://glyphicons.com/) Halflings kümesinden yazı tipi biçiminde 250'den fazla glifler içerir. Bu kümeden bir glifler kullanmak için aşağıdaki sözdizimini kullanın.  
+##  <a name="glyph-resources"></a><a name="glyphs"></a>Glif kaynakları  
+ API Management geliştirici portalı şablonları, [önyüklemeden Glyphsimgelerindeki](https://getbootstrap.com/components/#glyphicons)glifleri kullanabilir. Bu glif kümesi, [Glyphıcon](https://glyphicons.com/) halfller kümesinden yazı tipi biçiminde 250 karakter üzerinde yer alır. Bu kümeden bir karakter kullanmak için aşağıdaki sözdizimini kullanın.  
   
 ```html  
 <span class="glyphicon glyphicon-user">  
 ```  
   
- Gliflerin tam listesi için [Bootstrap'daki Glyphicons](https://getbootstrap.com/components/#glyphicons)bölümüne bakın.
+ Karakterlerin tüm listesi için bkz. önyükleme için [Glyphsimgeler](https://getbootstrap.com/components/#glyphicons).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şablonlarla çalışma hakkında daha fazla bilgi için, [şablonları kullanarak API Yönetimi geliştirici portalını nasıl özelleştireceğime](api-management-developer-portal-templates.md)bakın.
+Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [şablonları kullanarak API Management Geliştirici Portalını Özelleştirme](api-management-developer-portal-templates.md).

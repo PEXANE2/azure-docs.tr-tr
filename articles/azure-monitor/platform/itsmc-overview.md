@@ -1,71 +1,71 @@
 ---
-title: Azure Günlük Analizinde BT Hizmet Yönetimi Bağlayıcısı | Microsoft Dokümanlar
-description: Bu makalede, BT Hizmet Yönetimi Bağlayıcısı'na (ITSMC) genel bir bakış ve Azure Log Analytics'teki ITSM iş öğelerini merkezi olarak izlemek ve yönetmek ve sorunları hızla çözmek için bu çözümün nasıl kullanılacağı hakkında bilgiler sunulmaktadır.
+title: Azure Log Analytics BT Hizmet Yönetimi Bağlayıcısı | Microsoft Docs
+description: Bu makalede, Azure Log Analytics 'deki ITSM iş öğelerini merkezi olarak izlemek ve yönetmek ve sorunları hızlı bir şekilde çözümlemek ve yönetmek için bu çözümün nasıl kullanılacağına dair bir genel bakış sunulmaktadır BT Hizmet Yönetimi Bağlayıcısı (ıSMC)
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274547"
 ---
-# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı'nı kullanarak Azure'u ITSM araçlarına bağlayın
+# <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure 'ı BT Hizmet Yönetimi Bağlayıcısı kullanarak ıTSSM araçlarına bağlama
 
 ![BT Hizmet Yönetimi Bağlayıcısı simgesi](media/itsmc-overview/itsmc-symbol.png)
 
-BT Hizmet Yönetimi Bağlayıcısı (ITSMC), Azure'u ve desteklenen bir BT Hizmet Yönetimi (ITSM) ürün/hizmetini bağlamanızı sağlar.
+BT Hizmet Yönetimi Bağlayıcısı (ıSMC), Azure ve desteklenen bir BT hizmet yönetimi (ıTSM) ürünü/hizmeti 'ne bağlanmanızı sağlar.
 
-Log Analytics ve Azure Monitor gibi Azure hizmetleri, Azure ve Azure olmayan kaynaklarınızla ilgili sorunları algılamak, analiz etmek ve sorun giderme araçları sağlar. Ancak, bir sorunla ilgili iş öğeleri genellikle bir ITSM ürün/hizmetinde bulunmaktadır. ITSM bağlayıcısı, sorunları daha hızlı çözmenize yardımcı olmak için Azure ve ITSM araçları arasında çift yönlü bir bağlantı sağlar.
+Log Analytics ve Azure Izleyici gibi Azure Hizmetleri, Azure ve Azure dışı kaynaklarla ilgili sorunları tespit etmek, çözümlemek ve sorunlarını gidermek için araçlar sağlar. Ancak, bir sorunla ilgili iş öğeleri genellikle ıTSM ürünü/hizmetinde bulunur. ITSM Bağlayıcısı, sorunları daha hızlı çözmenize yardımcı olmak için Azure ile ıTSM araçları arasında çift yönlü bir bağlantı sağlar.
 
-ITSMC aşağıdaki ITSM araçlarıyla bağlantıları destekler:
+ISMC aşağıdaki ıTSM araçlarıyla bağlantıları destekler:
 
 -   ServiceNow
--   Sistem Merkezi Servis Müdürü
+-   System Center Service Manager
 -   Provance
 -   Cherwell
 
-ITSMC ile şunları yapabilirsiniz:
+ISMC ile şunları yapabilirsiniz:
 
--  Azure uyarılarınızı (metrik uyarılar, Etkinlik Günlüğü uyarıları ve Log Analytics uyarıları) temel alan ITSM aracında iş öğeleri oluşturun.
--  İsteğe bağlı olarak, olaylarınızı senkronize edebilir ve istek verilerinizi ITSM aracınızdan bir Azure Log Analytics çalışma alanıyla değiştirebilirsiniz.
+-  ITSM aracında Azure uyarılarınıza (ölçüm uyarıları, etkinlik günlüğü uyarıları ve Log Analytics Uyarıları) göre iş öğeleri oluşturun.
+-  İsteğe bağlı olarak, ıTSM aracınızdan olay ve değişiklik isteği verilerini Azure Log Analytics çalışma alanına eşitleyebilirsiniz.
 
-Yasal koşullar [ve gizlilik politikası](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)hakkında daha fazla bilgi edinin.
+[Yasal koşullar ve Gizlilik ilkesi](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)hakkında daha fazla bilgi edinin.
 
-ITSM Konektörünü aşağıdaki adımları kullanarak kullanmaya başlayabilirsiniz:
+Aşağıdaki adımları kullanarak ITSM Bağlayıcısı kullanmaya başlayabilirsiniz:
 
-1.  [ITSM Konektör Çözümünü Ekleyin](#adding-the-it-service-management-connector-solution)
+1.  [ITSM Bağlayıcısı çözümünü ekleyin](#adding-the-it-service-management-connector-solution)
 2.  ITSM bağlantısı oluşturma
 3.  [Bağlantıyı kullanma](#using-the-solution)
 
 
-##  <a name="adding-the-it-service-management-connector-solution"></a>BT Hizmet Yönetimi Konektör Çözümü Ekleme
+##  <a name="adding-the-it-service-management-connector-solution"></a>BT Hizmet Yönetimi Bağlayıcısı çözümü ekleme
 
-Bağlantı oluşturabilmeniz için ITSM Bağlayıcı Çözümü eklemeniz gerekir.
+Bir bağlantı oluşturabilmeniz için önce ITSM Bağlayıcısı çözümünü eklemeniz gerekir.
 
-1. Azure portalında **+ Yeni** simgesini tıklatın.
+1. Azure portal ' de **+ Yeni** simgesi ' ne tıklayın.
 
    ![Azure yeni kaynak](media/itsmc-overview/azure-add-new-resource.png)
 
-2. Markette **BT Hizmet Yönetimi Bağlayıcısı'nı** arayın ve **Oluştur'u**tıklatın.
+2. Market 'te **BT hizmet yönetimi Bağlayıcısı** arayın ve **Oluştur**' a tıklayın.
 
-   ![ITSMC çözümü ekleyin](media/itsmc-overview/add-itsmc-solution.png)
+   ![ISMC çözümü Ekle](media/itsmc-overview/add-itsmc-solution.png)
 
-3. **OMS Çalışma Alanı** bölümünde, çözümü yüklemek istediğiniz Azure Günlük Analizi çalışma alanını seçin.
+3. **OMS çalışma alanı** bölümünde, çözümü yüklemek istediğiniz Azure Log Analytics çalışma alanını seçin.
    >[!NOTE]
-   > * Microsoft Operations Management Suite'ten (OMS) Azure Monitor'a devam eden geçişin bir parçası olarak, OMS Çalışma Alanları artık Log Analytics çalışma alanları olarak adlandırılır.
-   > * ITSM Konektörü yalnızca aşağıdaki bölgelerdeki Log Analytics çalışma alanlarına kurulabilir: Doğu ABD, Batı US2, Güney Orta ABD, Batı Orta ABD, Orta Kanada, Batı Avrupa, Güney İngiltere, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
+   > * Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
+   > * ITSM Bağlayıcısı, yalnızca şu bölgelerde Log Analytics çalışma alanlarına yüklenebilir: Doğu ABD, Batı ABD2, Orta Güney ABD, Orta Batı ABD, Orta Kanada, Batı Avrupa, Güney UK, Güneydoğu Asya, Doğu Japonya, Orta Hindistan, Güneydoğu Avustralya.
 
-4. **OMS Çalışma Alanı Ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz Kaynak Grubu'nu seçin.
+4. **OMS çalışma alanı ayarları** bölümünde, çözüm kaynağını oluşturmak istediğiniz ResourceGroup öğesini seçin.
 
-   ![ITSMC çalışma alanı](media/itsmc-overview/itsmc-solution-workspace.png)
+   ![ISMC çalışma alanı](media/itsmc-overview/itsmc-solution-workspace.png)
    >[!NOTE]
-   >Microsoft Operations Management Suite'ten (OMS) Azure Monitor'a devam eden geçişin bir parçası olarak, OMS Çalışma Alanları artık Log Analytics çalışma alanları olarak adlandırılır.
+   >Microsoft Operations Management Suite (OMS) ile Azure Izleyici arasında devam eden geçişin bir parçası olarak, OMS çalışma alanları artık Log Analytics çalışma alanları olarak adlandırılır.
 
-5. **Oluştur'u**tıklatın.
+5. **Oluştur**' a tıklayın.
 
 Çözüm kaynağı dağıtıldığında, pencerenin sağ üst kısmında bir bildirim görüntülenir.
 
@@ -74,118 +74,118 @@ Bağlantı oluşturabilmeniz için ITSM Bağlayıcı Çözümü eklemeniz gereki
 
 Çözümü yükledikten sonra bir bağlantı oluşturabilirsiniz.
 
-Bağlantı oluşturmak için ITSM aracınızı ITSM Bağlayıcı sı'ndan bağlantıya izin verecek şekilde hazırlamanız gerekir.  
+Bağlantı oluşturmak için, ITSM Bağlayıcısı çözümüyle bağlantı sağlamak üzere ıTSM aracınızdan Prep yapmanız gerekir.  
 
-Bağlandığınız ITSM ürününe bağlı olarak aşağıdaki adımları kullanın:
+Bağlanmakta olduğunuz ıSM ürününe bağlı olarak, aşağıdaki adımları kullanın:
 
-- [Sistem Merkezi Servis Yöneticisi (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
+- [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
 - [Provance](../../azure-monitor/platform/itsmc-connections.md#connect-provance-to-it-service-management-connector-in-azure)  
 - [Cherwell](../../azure-monitor/platform/itsmc-connections.md#connect-cherwell-to-it-service-management-connector-in-azure)
 
-ITSM araçlarınızı hazırladıktan sonra bağlantı oluşturmak için aşağıdaki adımları izleyin:
+ITSM araçlarınızı önceden doldurduktan sonra bağlantı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Tüm **Kaynaklara**gidin, **ServiceDesk(YourWorkspaceName)** arayın.
-2. Sol bölmedeki **WORKSPACE DATA SOURCES** altında **ITSM Bağlantıları'nı**tıklatın.
+1. **Tüm kaynaklara**gidin, **ServiceDesk (yourçalışmaalanıadı)** öğesini arayın.
+2. Sol bölmedeki **çalışma alanı VERI kaynakları** altında **ITSM bağlantıları**' na tıklayın.
    ![ITSM bağlantıları](media/itsmc-overview/itsm-connections.png)
 
-   Bu sayfa bağlantıların listesini görüntüler.
+   Bu sayfada bağlantıların listesi görüntülenir.
 3. **Bağlantı Ekle**'ye tıklayın.
 
    ![ITSM bağlantısı ekle](media/itsmc-overview/add-new-itsm-connection.png)
 
-4. [ITSMC bağlantısını ITSM ürün/hizmet makalenizle yapılandırmada](../../azure-monitor/platform/itsmc-connections.md)açıklandığı gibi bağlantı ayarlarını belirtin.
+4. ITSM [ürünleri/hizmetleri makalelerinizle ısmc bağlantısını yapılandırma](../../azure-monitor/platform/itsmc-connections.md)bölümünde açıklandığı gibi bağlantı ayarlarını belirtin.
 
    > [!NOTE]
    >
-   > Varsayılan olarak ITSMC, bağlantının yapılandırma verilerini her 24 saatte bir yeniler. Yaptığınız tüm güncellemeler veya şablon güncellemeleri için bağlantınızın verilerini anında yenilemek için bağlantınızın bıçağındaki **Eşitle** düğmesini tıklatın.
+   > Varsayılan olarak, ıSMC her 24 saatte bir bağlantının yapılandırma verilerini yeniler. Yaptığınız herhangi bir düzenleme veya şablon güncelleştirmesi için bağlantınızın verilerini anında yenilemek üzere bağlantınızın dikey penceresindeki **Eşitle** düğmesine tıklayın.
 
    ![Bağlantı yenileme](media/itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>Çözümü kullanma
-   ITSM Bağlayıcısı çözümünü kullanarak Azure uyarılarından, Log Analytics uyarılarından ve Log Analytics günlük kayıtlarından iş öğeleri oluşturabilirsiniz.
+   ITSM Bağlayıcısı çözümünü kullanarak Azure uyarılarından iş öğeleri oluşturabilir, Log Analytics uyarılar ve Log Analytics günlük kayıtları oluşturabilirsiniz.
 
-## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure uyarılarından ITSM iş öğeleri oluşturma
+## <a name="create-itsm-work-items-from-azure-alerts"></a>Azure uyarılarından ıTSM iş öğeleri oluşturma
 
-ITSM bağlantınızı oluşturduktan sonra, **Eylem Gruplarında** **ITSM Eylemi'ni** kullanarak Azure uyarılarına dayalı ITSM aracınızda iş öğesi(ler) oluşturabilirsiniz.
+ITSM bağlantınız oluşturulduktan sonra, **Işlem gruplarındaki** **ıtssm eylemini** kullanarak ITSM aracınız üzerinde Azure uyarılarını temel alan iş öğeleri oluşturabilirsiniz.
 
-Eylem Grupları, Azure Uyarılarınız için eylemleri tetiklemenin modüler ve yeniden kullanılabilir bir yolunu sağlar. Azure portalında metrik uyarılara, Etkinlik Günlüğü uyarılarına ve Azure Günlüğü Analizi uyarılarına sahip Eylem Grupları'nı kullanabilirsiniz.
+Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve yeniden kullanılabilir bir yolunu sağlar. Işlem gruplarını, ölçüm uyarıları, etkinlik günlüğü uyarıları ve Azure portal Azure Log Analytics uyarıları ile birlikte kullanabilirsiniz.
 
 Aşağıdaki yordamı kullanın:
 
-1. Azure **portalında, Monitör'ü**tıklatın.
-2. Sol **bölmede, Eylem gruplarını**tıklatın. **Eylem grubu ekle** penceresi görüntülenir.
+1. Azure portal, **İzle**' ye tıklayın.
+2. Sol bölmede **eylem grupları**' na tıklayın. **Eylem grubu Ekle** penceresi görüntülenir.
 
     ![Eylem Grupları](media/itsmc-overview/action-groups.png)
 
-3. Eylem grubunuz için **Ad** ve **Kısa Ad** sağlayın. Eylem **grubunuzu** oluşturmak istediğiniz Kaynak Grubu ve **Abonelik'i** seçin.
+3. Eylem grubunuz için **Name** ve **ShortName** sağlayın. Eylem grubunuzu oluşturmak istediğiniz **kaynak grubunu** ve **aboneliği** seçin.
 
-    ![Eylem Grupları detayı](media/itsmc-overview/action-groups-details.png)
+    ![Eylem grupları ayrıntısı](media/itsmc-overview/action-groups-details.png)
 
-4. Eylemler listesinde, **Eylem Türü**için açılan menüden **ITSM'yi** seçin. Eylem için bir **Ad** sağlayın ve **ayrıntıları edit'i**tıklatın.
-5. Log Analytics çalışma alanınızın bulunduğu **Abonelik'i** seçin. **Bağlantı** adını (ITSM Bağlayıcı adınız) ve ardından Çalışma Alanı adınızı seçin. Örneğin, "MyITSMMConnector(MyWorkspace)."
+4. Eylemler listesinde, **eylem türü**için açılan menüden **ıtssm** ' ı seçin. Eylem için bir **ad** girin ve **Ayrıntıları Düzenle**' ye tıklayın.
+5. Log Analytics çalışma alanınızın bulunduğu **aboneliği** seçin. **Bağlantı** adını (ITSM Bağlayıcısı adınız) ve ardından çalışma alanınızın adını seçin. Örneğin, "MyITSMMConnector (MyWorkspace)."
 
-    ![ITSM Eylem ayrıntıları](media/itsmc-overview/itsm-action-details.png)
+    ![ITSM eylemi ayrıntıları](media/itsmc-overview/itsm-action-details.png)
 
-6. Açılan menüden **İş Öğesi** türünü seçin.
-   Varolan bir şablonkullanmayı veya ITSM ürününüzün gerektirdiği alanları doldurmayı seçin.
+6. Açılır menüden **Iş öğesi** türünü seçin.
+   Mevcut bir şablonu kullanmayı veya ıTSM ürününüzün gerektirdiği Alanları doldurmayı seçin.
 7. **Tamam**'a tıklayın.
 
-Azure uyarı kuralı oluştururken/düzenlerken, ITSM Eylemi olan bir Eylem grubu kullanın. Uyarı tetiklendiğinde, ITSM aracında iş öğesi oluşturulur/güncelleştirilir.
+Bir Azure uyarı kuralı oluştururken/düzenlenirken, bir ıTSM eylemi olan bir eylem grubu kullanın. Uyarı tetiklendiğinde, çalışma öğesi ıTSM aracında oluşturulur/güncelleştirilir.
 
 > [!NOTE]
 >
-> ITSM Action fiyatlandırması hakkında daha fazla bilgi için Eylem Grupları için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/monitor/) bakın.
+> ITSM eyleminin fiyatlandırması hakkında bilgi için bkz. eylem grupları için [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/) .
 
 
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Olayı görselleştirin ve analiz edin ve istek verilerini değiştirin
+## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Olay ve değişiklik isteği verilerini görselleştirin ve çözümleyin
 
-Bir bağlantı kurarken yapılandırmanıza bağlı olarak, ITSM konektörü 120 güne kadar Olay ve Değişiklik isteği verilerini eşitleyebilir. Bu verilerin günlük kayıt şeması [sonraki bölümde](#additional-information)sağlanmıştır.
+ITSM Bağlayıcısı bir bağlantı kurarken yapılandırmanıza bağlı olarak, 120 güne kadar olay ve değişiklik isteği verilerini eşitleyebilir. Bu veriler için günlük kaydı şeması, [sonraki bölümde](#additional-information)verilmiştir.
 
-Olay ve değişiklik isteği verileri çözümdeki ITSM Bağlayıcı panosu kullanılarak görüntülenebilir.
+Olay ve değişiklik isteği verileri, çözümdeki ITSM Bağlayıcısı Panosu kullanılarak görselleştirilebilir.
 
-![Günlük Analizi ekranı](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
+![Log Analytics ekranı](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-Pano ayrıca, bağlantılarla ilgili sorunları çözümlemek için başlangıç noktası olarak kullanılabilecek bağlayıcı durumu hakkında da bilgi sağlar.
+Pano, bağlantılarla ilgili sorunları çözümlemek için bir başlangıç noktası olarak kullanılabilecek bağlayıcı durumu hakkında bilgi de sağlar.
 
-Ayrıca, etkilenen bilgisayarlara karşı senkronize edilen olayları Hizmet Haritası çözümünde de görselleştirebilirsiniz.
+Ayrıca, Hizmet Eşlemesi çözümü içinde etkilenen bilgisayarlara karşı eşitlenen olayları da görselleştirebilirsiniz.
 
-Service Map, Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak keşfeder ve hizmetler arasındaki iletişimi eşler. Sunucularınızı düşündüğünüz şekilde (kritik hizmetler sunan birbirine bağlı sistemler halinde) görüntülemenize olanak tanır. Hizmet Eşlemesi, bir aracının yüklenmesi dışında yapılandırma gerektirmeyen TCP bağlantılı bir mimari üzerinde bulunan sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
+Hizmet Eşlemesi Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Sunucularınızı düşündüğünüz şekilde (kritik hizmetler sunan birbirine bağlı sistemler halinde) görüntülemenize olanak tanır. Hizmet Eşlemesi, bir aracının yüklenmesi dışında yapılandırma gerektirmeyen TCP bağlantılı bir mimari üzerinde bulunan sunucular, süreçler ve bağlantı noktaları arasındaki bağlantıları gösterir. [Daha fazla bilgi edinin](../../azure-monitor/insights/service-map.md).
 
-Hizmet Haritası çözümünü kullanıyorsanız, ITSM çözümlerinde oluşturulan servis masası öğelerini aşağıdaki örnekte gösterildiği gibi görüntüleyebilirsiniz:
+Hizmet Eşlemesi çözümünü kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Masası öğelerini aşağıdaki örnekte gösterildiği gibi görüntüleyebilirsiniz:
 
-![Günlük Analizi ekranı](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
+![Log Analytics ekranı](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-Daha fazla bilgi: [Hizmet Haritası](../../azure-monitor/insights/service-map.md)
+Daha fazla bilgi: [hizmet eşlemesi](../../azure-monitor/insights/service-map.md)
 
 
 ## <a name="additional-information"></a>Ek bilgiler
 
-### <a name="data-synced-from-itsm-product"></a>ITSM ürününden senkronize edilen veriler
-Olaylar ve değişiklik istekleri, bağlantının yapılandırmasına bağlı olarak ITSM ürününden Log Analytics çalışma alanınızla senkronize edilir.
+### <a name="data-synced-from-itsm-product"></a>ITSM ürününden eşitlenen veriler
+Olaylar ve değişiklik istekleri, bağlantı yapılandırmasına bağlı olarak ıTSM ürününüzle Log Analytics çalışma alanınıza eşitlenir.
 
-Aşağıdaki bilgiler ITSMC tarafından toplanan veri örneklerini gösterir:
+Aşağıdaki bilgiler, ıSMC tarafından toplanan veri örneklerini gösterir:
 
 > [!NOTE]
 >
-> Log Analytics'e aktarılan iş öğesi türüne bağlı **olarak, ServiceDesk_CL** aşağıdaki alanları içerir:
+> Log Analytics içeri aktarılan iş öğesi türüne bağlı olarak, **ServiceDesk_CL** aşağıdaki alanları içerir:
 
 **İş öğesi:** **Olaylar**  
-ServiceDeskWorkItemType_s="Olay"
+ServiceDeskWorkItemType_s = "olay"
 
 **Alanlar**
 
 - ServiceDeskConnectionName
-- Servis Masası Kimliği
+- Hizmet Masası KIMLIĞI
 - Durum
 - Aciliyet
 - Etki
 - Öncelik
 - Önem Yükseltme
 - Oluşturan
-- Tarafından Çözüldü
-- Tarafından Kapatıldı
+- Çözümleyen
+- Kapatan
 - Kaynak
 - Atanan
 - Kategori
@@ -198,15 +198,15 @@ ServiceDeskWorkItemType_s="Olay"
 - Bilgisayar
 
 
-**Çalışma öğesi:** **İstekleri değiştir**
+**İş öğesi:** **değişiklik istekleri**
 
-ServiceDeskWorkItemType_s="ChangeRequest"
+ServiceDeskWorkItemType_s = "ChangeRequest"
 
 **Alanlar**
 - ServiceDeskConnectionName
-- Servis Masası Kimliği
+- Hizmet Masası KIMLIĞI
 - Oluşturan
-- Tarafından Kapatıldı
+- Kapatan
 - Kaynak
 - Atanan
 - Başlık
@@ -214,7 +214,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Kategori
 - Durum
 - Önem Yükseltme
-- Çakışma Durumu
+- Çakışma durumu
 - Aciliyet
 - Öncelik
 - Risk
@@ -224,14 +224,14 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Kapatılma Tarihi
 - Son Değişiklik Tarihi
 - İstenen Tarih
-- Planlanan Başlangıç Tarihi
-- Planlanan Bitiş Tarihi
-- İş Başlangıç Tarihi
-- İş Bitiş Tarihi
+- Planlanan başlangıç tarihi
+- Planlanan bitiş tarihi
+- Çalışma başlangıç tarihi
+- Çalışma bitiş tarihi
 - Açıklama
 - Bilgisayar
 
-## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıktı verileri
+## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
 
 | Log Analytics alanı | ServiceNow alanı |
 |:--- |:--- |
@@ -240,26 +240,26 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Urgency_s |Aciliyet |
 | Impact_s |Etki|
 | Priority_s | Öncelik |
-| CreatedBy_s | Tarafından açılan |
-| ResolvedBy_s | Tarafından çözüldü|
-| ClosedBy_s  | Tarafından kapatıldı |
-| Source_s| İlgili kişi türü |
+| CreatedBy_s | Açan |
+| ResolvedBy_s | Çözümleyen|
+| ClosedBy_s  | Kapatan |
+| Source_s| Kişi türü |
 | AssignedTo_s | Atanan  |
 | Category_s | Kategori |
 | Title_s|  Kısa açıklama |
 | Description_s|  Notlar |
-| CreatedDate_t|  Açıldı |
+| CreatedDate_t|  Makta |
 | ClosedDate_t| kapalı|
 | ResolvedDate_t|Çözümlendi|
 | Bilgisayar  | Yapılandırma öğesi |
 
-## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıktı verileri
+## <a name="output-data-for-a-servicenow-change-request"></a>ServiceNow değişiklik isteği için çıkış verileri
 
 | Log Analytics | ServiceNow alanı |
 |:--- |:--- |
 | ServiceDeskId_s| Sayı |
-| CreatedBy_s | Tarafından talep edilen |
-| ClosedBy_s | Tarafından kapatıldı |
+| CreatedBy_s | İsteyen |
+| ClosedBy_s | Kapatan |
 | AssignedTo_s | Atanan  |
 | Title_s|  Kısa açıklama |
 | Type_s|  Tür |
@@ -269,38 +269,38 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Priority_s| Öncelik|
 | Risk_s| Risk|
 | Impact_s| Etki|
-| RequestedDate_t  | Tarihe göre istenilen |
-| ClosedDate_t | Kapalı tarih |
+| RequestedDate_t  | İstek tarihine göre |
+| ClosedDate_t | Kapatma tarihi |
 | PlannedStartDate_t  |     Planlanan başlangıç tarihi |
 | PlannedEndDate_t  |   Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
 | Description_s | Açıklama |
-| Bilgisayar  | Yapılandırma Öğesi |
+| Bilgisayar  | Yapılandırma öğesi |
 
 
-## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarını giderme
-1. Bağlantı bağlantı iletisini **kaydetme hatası** yla bağlı kaynağın UI'sinden başarısız olursa, aşağıdaki adımları izleyin:
-   - ServiceNow, Cherwell ve Provance bağlantıları için,  
-   - bağlantıların her biri için kullanıcı adını, parolayı, istemci kimliğini ve istemci sırrını doğru girdiğinizi garanti edin.  
-   - bağlantıyı yapmak için ilgili ITSM ürününde yeterli ayrıcalıklara sahip olup olmadığını kontrol edin.  
-   - Servis Yöneticisi bağlantıları için,  
-   - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantı oluşturulduğundan emin olun. Bağlantının şirket içi Servis Yöneticisi makinesiyle başarıyla kurulduğunu doğrulamak için, [karma bağlantı](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)yapmak için belgelerde ayrıntılı olarak belirtildiği gibi Web uygulaması URL'sini ziyaret edin.  
+## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
+1. Bağlantı bağlanılan kaynağın kullanıcı arabiriminden bağlantı başarısız olursa, bağlantı iletisini **kaydetme hatası** ile aşağıdaki adımları uygulayın:
+   - ServiceNow, Cherwell ve Provance bağlantıları için  
+   - bağlantıların her biri için Kullanıcı adını, parolayı, istemci KIMLIĞINI ve istemci gizli anahtarını doğru girdiğinizden emin olun.  
+   - bağlantıyı kurmak için karşılık gelen ıTSM ürününde yeterli ayrıcalıklara sahip olup olmadığınızı denetleyin.  
+   - Service Manager bağlantıları için  
+   - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager makinesiyle başarıyla yapıldığını doğrulamak için, [karma bağlantı](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection)oluşturma belgelerinde ayrıntılı olarak Web uygulaması URL 'sini ziyaret edin.  
 
-2. ServiceNow'daki veriler Log Analytics ile senkronize edilmiyorsa, ServiceNow örneğinin uyumadığını sağlayın. ServiceNow Dev Örnekleri bazen uzun bir süre boşta yken uykuya dalıyor. Aksi takdirde, sorunu bildirin.
-3. Log Analytics yangın uyarısı veriyorsa ancak ITSM ürünveya yapılandırma öğeleri oluşturulmuyorsa veya iş öğelerine veya diğer genel bilgilere bağlı değilse, aşağıdaki yerlere bakın:
-   -  ITSMC: Çözüm bağlantıların/iş öğelerinin/bilgisayarların vb. bir özetini gösterir. İlgili sorguyla **Arama'da Oturum Açma'ya** götüren **Bağlayıcı Durumunu**gösteren döşemeyi tıklatın. Daha fazla bilgi için HATA olarak LogType_S ile günlük kayıtları bak.
-   - **Günlük Arama** sayfası: sorgu `*`ServiceDeskLog_CL`*`kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin.
+2. ServiceNow 'daki veriler Log Analytics ile eşitlenmediği için ServiceNow örneğinin uyku modunda olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Aksi takdirde, sorunu bildirin.
+3. Log Analytics uyarılar harekete geçse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa veya yapılandırma öğeleri, iş öğelerine ya da diğer genel bilgiler için oluşturulmadıysa veya bağlanmadıysa, aşağıdaki yerlere bakın:
+   -  ISMC: çözüm, bağlantıların/iş öğelerinin/bilgisayarların, vb. bir özetini gösterir. **Bağlayıcı durumunu**gösteren kutucuğa tıklayın ve bu, arama ile Ilgili sorgu **günlüğü** için sizi yönlendirir. Daha fazla bilgi için LogType_S hata ile günlük kayıtlarına bakın.
+   - **Günlük arama** sayfası: sorgu `*`ServiceDeskLog_CL`*`kullanarak doğrudan hataları/ilgili bilgileri görüntüleyin.
 
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Sorun Giderme Servis Yöneticisi Web Uygulaması dağıtımı
-1.  Web uygulaması dağıtımıyla ilgili herhangi bir sorun olması durumunda, kaynak oluşturmak/dağıtmak için belirtilen abonelikte yeterli izine sahip olduğunuzu sağlayın.
-2.  [Komut dosyasını](itsmc-service-manager-script.md)çalıştırdığınızda **"Nesne başvurusu nesnesi örneği olarak ayarlanmaz"** hatası alırsanız, **Kullanıcı Yapılandırması** bölümü altında geçerli değerler girdiğinizi sağlayın.
-3.  Servis veri günü rölesi ad alanı oluşturamazsanız, gerekli kaynak sağlayıcısının aboneye kaydolduğundan emin olun. Kaydedilmemişse, Azure portalından servis veri günü rölesi ad alanı oluşturun. Azure [portalından karma bağlantı oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) de oluşturabilirsiniz.
+## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
+1.  Web uygulaması dağıtımıyla ilgili herhangi bir sorun olması durumunda, kaynak oluşturmak/dağıtmak için belirtilen abonelikte yeterli izinlere sahip olduğunuzdan emin olun.
+2.  [Komut dosyasını](itsmc-service-manager-script.md)çalıştırdığınızda bir **"nesne başvurusu bir nesnenin örneğine ayarlanmadı"** hatası alırsanız, **Kullanıcı Yapılandırması** bölümünde geçerli değerler girdiğinizden emin olun.
+3.  Service Bus geçişi ad alanı oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı Azure Portal oluştururken](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection) da oluşturabilirsiniz.
 
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun
 
-BT Hizmet Yönetimi Konektörü ile ilgili herhangi [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)bir sorunuz veya geri bildirim için bize ulaşın.
+BT Hizmet Yönetimi Bağlayıcısı herhangi bir sorgu veya geri bildirimde bulunmak için, adresinden [omsitsmfeedback@microsoft.com](mailto:omsitsmfeedback@microsoft.com)bizimle iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[ITSM ürünlerini/hizmetlerini BT Hizmet Yönetimi Konektörüne ekleyin.](../../azure-monitor/platform/itsmc-connections.md)
+[BT hizmet yönetimi Bağlayıcısı IÇIN ITSM ürünleri/hizmetleri ekleyin](../../azure-monitor/platform/itsmc-connections.md).

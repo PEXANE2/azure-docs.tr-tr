@@ -1,64 +1,64 @@
 ---
-title: Azure Hizmet Kumaş Kafesi CLI'yi ayarlama
-description: Hizmet Kumaş Kafesi Komut Hattı Arabirimi (CLI), kaynakları yerel olarak ve Azure Service Fabric Mesh'te dağıtmak ve yönetmek için gereklidir. Bunu şu şekilde ayarlayabilirsiniz.
+title: Azure Service Fabric ağı CLı 'sını ayarlama
+description: Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. Nasıl ayarlanacağı aşağıda verilmiştir.
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259194"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI’yi ayarlama
-Hizmet Kumaş Kafesi Komut Hattı Arabirimi (CLI), kaynakları yerel olarak ve Azure Service Fabric Mesh'te dağıtmak ve yönetmek için gereklidir. Bunu şu şekilde ayarlayabilirsiniz.
+Service Fabric ağ komut satırı arabirimi (CLı), kaynakları yerel olarak ve Azure Service Fabric ağı 'nda dağıtmak ve yönetmek için gereklidir. Nasıl ayarlanacağı aşağıda verilmiştir.
 
-Kullanılabilecek üç tip CLI vardır ve bunlar aşağıdaki tabloda özetlenmiştir.
+Kullanılabilecek üç tür CLı bulunur ve bunlar aşağıdaki tabloda özetlenmiştir.
 
-| CLI Modülü | Hedef Ortam |  Açıklama | 
+| CLı modülü | Hedef Ortam |  Açıklama | 
 |---|---|---|
-| az örgü | Azure Servis Kumaş Örgü | Uygulamalarınızı dağıtmanızı ve kaynaklarıNızı Azure Hizmet Kumaş Kafesi ortamına göre yönetmeniziçin birincil CLI. 
-| sfctl | Yerel kümeler | Service Fabric kaynaklarının yerel kümelere karşı dağıtımına ve test edilmesine olanak tanıyan Hizmet Kumaşı CLI.  
-| Maven CLI | Azure Hizmet Kumaş Kafesi & yerel kümeler | Java `az mesh` geliştiricilerinin `sfctl` yerel ve Azure geliştirme deneyimi için tanıdık bir komut satırı deneyimi kullanmasına olanak tanıyan bir sarmalayıcı.  
+| az ağ | Azure Service Fabric ağı | Azure Service Fabric kafes ortamında uygulamalarınızı dağıtmanıza ve kaynakları yönetmenize olanak tanıyan birincil CLı. 
+| sfctl | Yerel kümeler | Yerel kümelerdeki Service Fabric kaynaklarının dağıtımına ve test edilmesine izin veren Service Fabric CLı.  
+| Maven CLı | Azure Service Fabric ağ & yerel kümeler | Ve çevresindeki `az mesh` bir sarmalayıcı `sfctl` , Java geliştiricilerinin yerel ve Azure geliştirme deneyimi için tanıdık bir komut satırı deneyimi kullanmasına olanak sağlar.  
 
 Önizleme için, Azure Fabric Mesh CLI Azure CLI’nin uzantısı olarak yazılır. Azure Cloud Shell’de veya Azure CLI’nin yerel kurulumunda bunu yükleyebilirsiniz. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Hizmet Kumaş Kafesi CLI'yi yükleyin
-1. Azure CLI sürümünü 2.0.67 veya sonraki sürümyüklemeniz gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’nin en son sürümünü yüklemek veya en son sürümüne yükseltmek için bkz. [Azure CLI yükleme][azure-cli-install].
+## <a name="install-the-azure-service-fabric-mesh-cli"></a>Azure Service Fabric Kafesclı 'yi yükler
+1. Azure CLı sürüm 2.0.67 veya üstünü yüklemelisiniz. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’nin en son sürümünü yüklemek veya en son sürümüne yükseltmek için bkz. [Azure CLI yükleme][azure-cli-install].
 
-2. Aşağıdaki komutu kullanarak Azure Hizmet Kumaş ıslımı CLI uzantı modüllerini yükleyin. 
+2. Aşağıdaki komutu kullanarak Azure Service Fabric kafes CLı uzantısı modülünü yükler. 
 
     ```azurecli-interactive
     az extension add --name mesh
     ```
 
-3. Aşağıdaki komutu kullanarak varolan azure hizmet kumaş örgü cli modüllerini güncelleştirin.
+3. Aşağıdaki komutu kullanarak mevcut bir Azure Service Fabric kafesi CLı modülünü güncelleştirin.
 
     ```azurecli-interactive
     az extension update --name mesh
     ```
 
-## <a name="install-the-service-fabric-cli-sfctl"></a>Servis Kumaşı CLI (sfctl) yükleyin 
+## <a name="install-the-service-fabric-cli-sfctl"></a>Service Fabric CLı 'yi (sfctl) yükler 
 
-[Servis Kumaş CLI kurulum](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)yönergeleri izleyin. **Sfctl** modülü, yerel makinenizde Servis Kumaşı kümelerine karşı kaynak modeline dayalı uygulamaların dağıtımı için kullanılabilir. 
+[SERVICE fabrıc CLI 'Yi ayarlama](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)yönergelerini izleyin. **Sfctl** modülü, kaynak modeline bağlı olarak, yerel makinenizde Service Fabric kümelerine göre uygulama dağıtımı için kullanılabilir. 
 
-## <a name="install-the-maven-cli"></a>Maven CLI'yi yükleyin 
+## <a name="install-the-maven-cli"></a>Maven CLı 'yı yükler 
 
-Maven CLI'yi kullanabilmek için makinenize aşağıdakilerin yüklenmesi gerekir: 
+Maven CLı 'yı kullanabilmeniz için, makinenizde aşağıdakiler yüklü olmalıdır: 
 
 * [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* Azure Mesh CLI (az mesh) - Azure Hizmet Kumaş Örgü hedeflemek için 
-* SFCTL (sfctl) - Yerel kümeleri hedeflemek için 
+* Azure ağ CLı (az ağ)-Azure Service Fabric ağı hedeflemek Için 
+* SFCTL (sfctl)-yerel kümeleri hedeflemek Için 
 
-Hizmet Kumaşı için Maven CLI hala önizlemede. 
+Service Fabric için Maven CLı hala önizlemededir. 
 
-Maven Java uygulamanızdaki Maven eklentisini kullanmak için pom.xml dosyanıza aşağıdaki parçacıkları ekleyin:
+Maven Java uygulamanızda Maven eklentisini kullanmak için, potm. xml dosyanıza aşağıdaki kod parçacığını ekleyin:
 
 ```XML
 <project>
@@ -80,7 +80,7 @@ Maven Java uygulamanızdaki Maven eklentisini kullanmak için pom.xml dosyanıza
 </project>
 ```
 
-Ayrıntılı kullanım hakkında bilgi edinmek için [Maven CLI başvuru](service-fabric-mesh-reference-maven.md) bölümünü okuyun.
+Ayrıntılı kullanım hakkında bilgi edinmek için [Maven CLI başvurusu](service-fabric-mesh-reference-maven.md) bölümünü okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

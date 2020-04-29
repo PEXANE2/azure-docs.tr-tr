@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Computer Vision istemci kitaplığı | Microsoft Dokümanlar'
+title: 'Hızlı başlangıç: Görüntü İşleme istemci kitaplığı | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: Uygulamalarınızı Azure Bilişsel Hizmetler'den Computer Vision API'ye bağlamak için bu hızlı başlangıcı kullanın.
+description: Uygulamalarınızı Azure bilişsel hizmetler 'den Görüntü İşleme API'si bağlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,20 +12,20 @@ ms.date: 03/12/2020
 ms.author: pafarley
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 4ac9f4bcaed5400846bf94f7db6ea6c143c101d6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80136031"
 ---
-# <a name="quickstart-use-the-computer-vision-client-library"></a>Quickstart: Computer Vision istemci kitaplığını kullanma
+# <a name="quickstart-use-the-computer-vision-client-library"></a>Hızlı başlangıç: Görüntü İşleme istemci kitaplığını kullanma
 
-Computer Vision istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin. Computer Vision, görüntüleri işlemek ve bilgileri döndürmek için gelişmiş algoritmalara erişmenizi sağlar
+Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Görüntü İşleme, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar
 
-Aşağıdakileri yapmak için Computer Vision istemci kitaplığını kullanın:
+Görüntü İşleme istemci kitaplığını kullanarak şunları yapın:
 
-* Etiketler, metin açıklaması, yüzler, yetişkinlere uygun içerik ve daha fazlası için resmi analiz edin.
-* Toplu Okuma API'si ile basılı ve el yazısıyla yazılmış metni tanıyın.
+* Etiketler, metin açıklaması, yüzeyler, yetişkinlere yönelik içerik ve daha fazlası için bir görüntüyü çözümleyin.
+* Toplu okuma API 'SI ile yazdırılmış ve el yazısı metinleri tanıyın.
 
 ::: zone pivot="programming-language-csharp"
 

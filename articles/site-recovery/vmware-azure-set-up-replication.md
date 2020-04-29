@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile VMware olağanüstü durum kurtarma için çoğaltma ilkeleri ayarlama| Microsoft Dokümanlar
-description: Azure Site Kurtarma ile VMware olağanüstü durum kurtarma için çoğaltma ayarlarını Azure'a nasıl yapılandırıştırılabildiğini açıklar.
+title: VMware olağanüstü durum kurtarma için Azure Site Recovery ile çoğaltma ilkelerini ayarlama | Microsoft Docs
+description: Azure Site Recovery ile Azure 'a VMware olağanüstü durum kurtarma için çoğaltma ayarlarının nasıl yapılandırılacağını açıklar.
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
@@ -8,58 +8,58 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257127"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>VMware olağanüstü durum kurtarma için çoğaltma ilkelerini yapılandırma ve yönetme
 
-Bu makalede, [Azure Site Kurtarma](site-recovery-overview.md)kullanarak VMware VM'leri Azure'a kopyalarken çoğaltma ilkesinin nasıl yapılandırılabildiğini açıklanmaktadır.
+Bu makalede, [Azure Site Recovery](site-recovery-overview.md)kullanarak VMware VM 'lerini Azure 'a çoğaltırken bir çoğaltma ilkesinin nasıl yapılandırılacağı açıklanır.
 
 ## <a name="create-a-policy"></a>İlke oluşturma
 
-1. **Site Kurtarma Altyapılarını** **Yönet'i** > seçin.
-2. **VMware ve Fiziksel makineler için**Çoğaltma **ilkelerini**seçin.
-3. **+Çoğaltma ilkesini**tıklatın ve ilke adını belirtin.
-4. **RPO eşiğinde,** RPO sınırını belirtin. Sürekli çoğaltma bu sınırı aştığında uyarılar oluşturulur.
-5. **Kurtarma noktası bekletme** kısmında, her kurtarma noktası için bekletme süresini saat cinsinden belirtin. Korumalı makineler, bekletme penceresi içindeki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate kadar bekletme desteklenir. Standart depolama için 72 saate kadar desteklenir.
-6. **Uygulama tutarlı anlık sıklıktan,** uygulama tutarlı anlık görüntüler içeren kurtarma noktalarının ne sıklıkta (saatlerde) oluşturulması gerektiğini açılır noktadan seçin. Uygulama tutarlılık noktalarının oluşturmasını kapatmak istiyorsanız, açılır açılır durumda "Kapalı" değerini seçin.
+1. **Site Recovery altyapıyı** **Yönet** > ' i seçin.
+2. **VMware ve fiziksel makineler için**, **çoğaltma ilkeleri**' ni seçin.
+3. **+ Çoğaltma İlkesi**' ne tıklayın ve ilke adını belirtin.
+4. **RPO eşiğine**göre RPO sınırını belirtin. Sürekli çoğaltma bu sınırı aştığında uyarılar oluşturulur.
+5. **Kurtarma noktası bekletme** kısmında, her kurtarma noktası için bekletme süresini saat cinsinden belirtin. Korumalı makineler, bekletme penceresi içindeki herhangi bir noktaya kurtarılabilir. Premium depolama alanına çoğaltılan makineler için 24 saate kadar bekletme desteklenir. Standart depolama için en fazla 72 saat desteklenir.
+6. **Uygulamayla tutarlı anlık görüntü sıklığı**' nda, uygulama ile tutarlı anlık görüntüleri içeren kurtarma noktalarının ne sıklıkta (saat cinsinden) oluşturulması gerektiğini açılan listeden seçin. Uygulama tutarlılığı noktalarını oluşturmayı devre dışı bırakmak istiyorsanız, açılan listeden "kapalı" değerini seçin.
 7. **Tamam**'a tıklayın. İlke, 30 ila 60 saniye içinde oluşturulur.
 
-Bir çoğaltma ilkesi oluşturduğunuzda, eşleşen bir geri dönüş çoğaltma ilkesi otomatik olarak oluşturulur ve "failback" soneki yle birlikte. İlkeyi oluşturduktan sonra, **ayarları**düzenleme > seçerek bu politikayı değiştirebilirsiniz.
+Bir çoğaltma ilkesi oluşturduğunuzda, eşleşen bir yeniden çalışma çoğaltma ilkesi otomatik olarak "yeniden çalışma" sonekiyle birlikte oluşturulur. İlkeyi oluşturduktan sonra, > **Ayarları Düzenle**' yi seçerek düzenleyebilirsiniz.
 
-## <a name="associate-a-configuration-server"></a>Yapılandırma sunucusuilişkilendirme
+## <a name="associate-a-configuration-server"></a>Yapılandırma sunucusunu ilişkilendir
 
-Çoğaltma ilkesini şirket içi yapılandırma sunucunuzla ilişkilendirin.
+Çoğaltma ilkesini şirket içi yapılandırma sunucusu ile ilişkilendirin.
 
-1. **Ilişkilendir'i**tıklatın ve yapılandırma sunucusunu seçin.
+1. **İlişkilendir**' e tıklayın ve yapılandırma sunucusunu seçin.
 
     ![Yapılandırma sunucusunu ilişkilendirme](./media/vmware-azure-set-up-replication/associate1.png)
 2. **Tamam**'a tıklayın. Yapılandırma sunucusu, bir ila iki dakika içinde ilişkilendirilir.
 
     ![Yapılandırma sunucusu ilişkilendirme](./media/vmware-azure-set-up-replication/associate2.png)
 
-## <a name="edit-a-policy"></a>İlkeyi edin
+## <a name="edit-a-policy"></a>Bir ilkeyi düzenleme
 
 Bir çoğaltma ilkesini oluşturduktan sonra değiştirebilirsiniz.
 
-- İlkedeki değişiklikler, ilkeyi kullanan tüm makinelere uygulanır.
-- Çoğaltılan makineleri farklı bir çoğaltma ilkesiyle ilişkilendirmek istiyorsanız, ilgili makineler için korumayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
+- İlkedeki değişiklikler, ilke kullanılarak tüm makinelere uygulanır.
+- Çoğaltılan makineleri farklı bir çoğaltma ilkesiyle ilişkilendirmek istiyorsanız ilgili makineler için korumayı devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
-Bir ilkeyi aşağıdaki gibi edin:
-1. **Site Kurtarma Altyapısı** > **Çoğaltma İlkelerini** **Yönet'i** > seçin.
+İlkeyi aşağıdaki gibi düzenleyin:
+1. **Manage** > **Site Recovery**altyapı > **çoğaltma ilkelerini**Yönet ' i seçin.
 2. Değiştirmek istediğiniz çoğaltma ilkesini seçin.
-3. **Ayarları Edit'i**tıklatın ve RPO eşiğini/kurtarma noktası bekletme saatlerini/uygulama tutarlı anlık görüntü sıklığı alanlarını gerektiği gibi güncelleştirin.
-4. Uygulama tutarlılık noktalarının oluşturmasını kapatmak istiyorsanız, alan App tutarlı anlık görüntü **frekansının**açılır damlasında "Kapalı" değerini seçin.
-5. **Kaydet**'e tıklayın. İlke 30 ila 60 saniye içinde güncelleştirilmelidir.
+3. **Ayarları Düzenle**' ye tıklayın ve RPO eşiği/kurtarma noktası bekletme saatleri/uygulamayla tutarlı anlık görüntü sıklığı alanlarını gerektiği şekilde güncelleştirin.
+4. Uygulama tutarlılığı noktalarını oluşturmayı devre dışı bırakmak istiyorsanız, **uygulamayla tutarlı anlık görüntü sıklığı**alanının açılan menüsünde "kapalı" değerini seçin.
+5. **Kaydet**’e tıklayın. İlke, 30 ila 60 saniye içinde güncelleştirilmeleri gerekir.
 
 
 
-## <a name="disassociate-or-delete-a-replication-policy"></a>Çoğaltma ilkesini ilişkilendirme veya silme
+## <a name="disassociate-or-delete-a-replication-policy"></a>Çoğaltma ilkesinin ilişkisini kaldır veya Sil
 
 1. Çoğaltma ilkesini seçin.
-    a. İlkeyi yapılandırma sunucusundan ayrıştırmak için, çoğaltılan makinelerin ilkeyi kullanmadığından emin olun. Ardından, **Dissociate'yi**tıklatın.
-    b. İlkeyi silmek için, bir yapılandırma sunucusuyla ilişkili olmadığından emin olun. Ardından **Sil'i**tıklatın. Silmek 30-60 saniye sürer.
+    a. İlkenin yapılandırma sunucusundan ilişkilendirmesini kaldırmak için, ilkeyi hiçbir çoğaltılan makinede kullanmadığından emin olun. Ardından ilişkiyi **Kaldır**' a tıklayın.
+    b. İlkeyi silmek için bir yapılandırma sunucusuyla ilişkili olmadığından emin olun. Ardından **Sil**' e tıklayın. Silmek için 30-60 saniye sürer.
 2. **Tamam**'a tıklayın.
