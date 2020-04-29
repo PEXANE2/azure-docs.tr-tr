@@ -1,6 +1,6 @@
 ---
 title: Yapılandırma ve yönetme
-description: Azure SQL Veritabanı'nı nasıl yapılandırıp yöneteceklerinizi öğrenin.
+description: Azure SQL veritabanı 'nı yapılandırmayı ve yönetmeyi öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,19 +12,19 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209411"
 ---
-# <a name="how-to-use-azure-sql-database"></a>Azure SQL Veritabanı nasıl kullanılır?
+# <a name="how-to-use-azure-sql-database"></a>Azure SQL veritabanı 'nı kullanma
 
-Bu bölümde, Azure SQL Veritabanınızı yönetmenize ve yapılandırmanıza yardımcı olabilecek çeşitli kılavuzlar, komut dosyaları ve açıklamalar bulabilirsiniz. Ayrıca, [tek bir veritabanı](sql-database-howto-single-database.md) ve Yönetilen [Örnek](sql-database-howto-managed-instance.md)için belirli nasıl yapılacağını kılavuzları bulabilirsiniz.
+Bu bölümde, Azure SQL veritabanınızı yönetmenize ve yapılandırmanıza yardımcı olabilecek çeşitli kılavuzlar, betikler ve açıklamalar bulabilirsiniz. Ayrıca, [tek veritabanı](sql-database-howto-single-database.md) ve [yönetilen örnek](sql-database-howto-managed-instance.md)için özel nasıl yapılır kılavuzlarını bulabilirsiniz.
 
 ## <a name="load-data"></a>Veri yükleme
 
-- [Azure içinde tek bir veritabanı nı veya havuza veritabanını kopyalama](sql-database-copy.md)
+- [Azure 'da tek bir veritabanını veya havuza alınmış bir veritabanını kopyalama](sql-database-copy.md)
 - [BACPAC’ten veritabanını içeri aktarma](sql-database-import.md)
 - [Veritabanını BACPAC’e dışarı aktarma](sql-database-export.md)
 - [BCP ile veri yükleme](sql-database-load-from-csv-with-bcp.md)
@@ -51,13 +51,13 @@ Bu bölümde, Azure SQL Veritabanınızı yönetmenize ve yapılandırmanıza ya
 ### <a name="extended-events"></a>Genişletilmiş olaylar
 
 - [Genişletilmiş olaylar](sql-database-xevent-db-diff-from-svr.md)
-- [Genişletilmiş olayları etkinlik dosyasına depola](sql-database-xevent-code-event-file.md)
-- [Mağaza Genişletilmiş olayları halka arabelleği içine](sql-database-xevent-code-ring-buffer.md)
+- [Genişletilmiş olayları olay dosyasına depola](sql-database-xevent-code-event-file.md)
+- [Genişletilmiş olayları halka arabelleğine depola](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>Yapılandırma özellikleri
 
 - [Azure AD kimlik doğrulamasını yapılandırma](sql-database-aad-authentication-configure.md)
-- [Koşullu Erişimi Yapılandırma](sql-database-conditional-access.md)
+- [Koşullu erişimi yapılandırma](sql-database-conditional-access.md)
 - [Çok faktörlü AAD kimlik doğrulaması](sql-database-ssms-mfa-authentication.md)
 - [Çok faktörlü kimlik doğrulamasını yapılandırma](sql-database-ssms-mfa-authentication-configure.md)
 - [Zamana bağlı saklama ilkesini yapılandırma](sql-database-temporal-tables-retention-policy.md)
@@ -65,17 +65,17 @@ Bu bölümde, Azure SQL Veritabanınızı yönetmenize ve yapılandırmanıza ya
 - [TDE KAG anahtarlarını döndürme](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [TDE koruyucusunu kaldırma](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
 - [Bellek içi OLTP’yi yapılandırma](sql-database-in-memory-oltp-migration.md)
-- [Azure Otomasyonu Yapılandırma](sql-database-manage-automation.md)
+- [Azure Otomasyonu 'Nu yapılandırma](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Uygulama geliştirme
 
 - [Bağlantı](sql-database-libraries.md)
 - [Spark Bağlayıcısı kullanma](sql-database-spark-connector.md)
-- [Uygulamayı kimlik doğrulaması](sql-database-client-id-keys.md)
-- [Daha iyi performans için toplu işlemeyi kullanma](sql-database-use-batching-to-improve-performance.md)
+- [Uygulamanın kimliğini doğrulama](sql-database-client-id-keys.md)
+- [Daha iyi performans için toplu işlem kullanma](sql-database-use-batching-to-improve-performance.md)
 - [Bağlantı kılavuzu](sql-database-connectivity-issues.md)
-- [DNS diğer adlar](dns-alias-overview.md)
-- [Kurulum DNS takma powershell](dns-alias-powershell.md)
+- [DNS diğer adları](dns-alias-overview.md)
+- [DNS diğer ad PowerShell 'i ayarla](dns-alias-powershell.md)
 - [Bağlantı noktaları - ADO.NET](sql-database-develop-direct-route-ports-adonet-v12.md)
 - [C ve C++](sql-database-develop-cplusplus-simple.md)
 - [Excel](sql-database-connect-excel.md)
@@ -86,7 +86,7 @@ Bu bölümde, Azure SQL Veritabanınızı yönetmenize ve yapılandırmanıza ya
 - [Elastik havuzlara yönelik tasarım](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Uygulama yükseltmelerine yönelik tasarım](sql-database-manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Çok kiracılı SaaS uygulamaları tasarla
+### <a name="design-multi-tenant-saas-applications"></a>Çok kiracılı SaaS uygulamaları tasarlama
 
 - [SaaS tasarım desenleri](saas-tenancy-app-design-patterns.md)
 - [SaaS video dizinleyicisi](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
@@ -94,5 +94,5 @@ Bu bölümde, Azure SQL Veritabanınızı yönetmenize ve yapılandırmanıza ya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Yönetilen örnekler için Nasıl Yap'ın yap'ı kılavuzları](sql-database-howto-managed-instance.md)hakkında daha fazla bilgi edinin.
-- [Tek veritabanları için Nasıl YapIlenLer kılavuzları](sql-database-howto-single-database.md)hakkında daha fazla bilgi edinin.
+- [Yönetilen örnekler Için nasıl yapılır kılavuzlarından](sql-database-howto-managed-instance.md)daha fazla bilgi edinin.
+- [Tek veritabanları Için nasıl yapılır kılavuzlarından](sql-database-howto-single-database.md)daha fazla bilgi edinin.

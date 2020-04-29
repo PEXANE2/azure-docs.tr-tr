@@ -1,6 +1,6 @@
 ---
-title: DRM lisansları veya AES anahtarları sunmak için Azure Medya Hizmetlerini kullanın | Microsoft Dokümanlar
-description: Bu makalede, PlayReady ve/veya Widevine lisansları ve AES anahtarlarını sunmak için Azure Medya Hizmetlerini nasıl kullanabileceğiniz, ancak geri kalanını şirket içi sunucularınızı kullanarak nasıl yapabileceğiniz (kodlama, şifreleme, akış) açıklanmaktadır.
+title: DRM lisansları veya AES anahtarları sunmak için Azure Media Services kullanın | Microsoft Docs
+description: Bu makalede, şirket içi sunucularınızı kullanarak PlayReady ve/veya Widevine lisansları ve AES anahtarları sağlamak, ancak Rest (kodlama, şifreleme, akış) yapmak için Azure Media Services nasıl kullanabileceğiniz açıklanır.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,36 +15,36 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: b1f8b158c511919a72e72629d72b0e5ff73ff7db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78268124"
 ---
-# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM lisansları veya AES anahtarları sunmak için Medya Hizmetlerini kullanın 
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>DRM lisansları veya AES anahtarları sunmak için Media Services kullanın 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Azure Medya Hizmetleri, içeriğinizi yutmanızı, kodlamanızı, eklemenizi ve akış yapmanızı sağlar. Daha fazla bilgi için [PlayReady ve/veya Widevine dinamik ortak şifrelemeyi kullan'a](media-services-protect-with-playready-widevine.md)bakın. Bazı müşteriler Medya Hizmetlerini yalnızca lisans ve/veya anahtar teslim etmek ve şirket içi sunucularını kullanarak kodlamak, şifrelemek ve akış yapmak için kullanmak ister. Bu makalede, PlayReady ve/veya Widevine lisanslarını sunmak için Medya Hizmetlerini nasıl kullanabileceğiniz, ancak geri kalanını şirket içi sunucularınızla nasıl yapabileceğiniz açıklanmaktadır. 
+Azure Media Services, içerik koruma ve içeriğinizi akışa alma, kodlama, ekleme ve içerik akışı yapmanızı sağlar. Daha fazla bilgi için bkz. [PlayReady ve/veya Widevine dinamik ortak şifrelemeyi kullanma](media-services-protect-with-playready-widevine.md). Bazı müşteriler yalnızca lisans ve/veya anahtar sunmak ve şirket içi sunucularını kullanarak kodlama, şifreleme ve akış yapmak için Media Services kullanmak ister. Bu makalede, PlayReady ve/veya Widevine lisanslarını teslim etmek için Media Services nasıl kullanabileceğinizi ve REST 'i şirket içi sunucularınızla nasıl yapabileceğinizi açıklar. 
 
 Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="overview"></a>Genel Bakış
-Medya Hizmetleri, PlayReady ve Widevine dijital haklar yönetimi (DRM) lisansları ve AES-128 tuşları sunmak için bir hizmet sunmaktadır. Medya Hizmetleri ayrıca, bir kullanıcı DRM korumalı içeriği oynattığında, DRM çalışma zamanının uygulanması için istediğiniz hakları ve kısıtlamaları yapılandırmanıza izin veren API'ler de sağlar. Bir kullanıcı korumalı içeriği istediğinde, oynatıcı uygulama Medya Hizmetleri lisans hizmetinden lisans ister. Lisans onaylanırsa, Medya Hizmetleri lisans hizmeti lisansı oynatıcıya verir. PlayReady ve Widevine lisansları, istemci oynatıcı tarafından içeriğin şifresini çözmek ve akışı için kullanılabilecek şifre çözme anahtarını içerir.
+Media Services PlayReady ve Widevine Digital Rights Management (DRM) lisanslarını ve AES-128 anahtarlarını sunmaya yönelik bir hizmet sağlar. Media Services Ayrıca, bir Kullanıcı DRM korumalı içeriği kayıttan yürüttüğünde, DRM çalışma zamanının uygulanmasını istediğiniz hakları ve kısıtlamaları yapılandırmanıza olanak tanıyan API 'Ler de sağlar. Bir kullanıcı korumalı içeriği istediğinde, oynatıcı uygulaması Media Services lisans hizmetinden bir lisans ister. Lisans yetkilendirilirse, Media Services lisans hizmeti Player lisansını yayınlar. PlayReady ve Widevine lisansları, istemci yürütücüsü tarafından içeriğin şifresini çözmek ve akışı yapmak için kullanılabilecek şifre çözme anahtarını içerir.
 
-Medya Hizmetleri, lisans veya anahtar isteklerinde bulunan kullanıcılara yetki vermenin birden çok yolunu destekler. İçerik anahtarının yetkilendirme ilkesini yapılandırırsınız. İlkenin bir veya daha fazla kısıtlaması olabilir. Seçenekler açık veya belirteç kısıtlamasI dır. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Medya Hizmetleri, basit web belirteci (SWT) biçimindeve JSON Web Belirteci (JWT) biçimindeki belirteçleri destekler.
+Media Services, lisans veya anahtar istekleri yapan kullanıcıları yetkilendirmenin birden çok yöntemini destekler. İçerik anahtarının yetkilendirme ilkesini yapılandırırsınız. İlkede bir veya daha fazla kısıtlama olabilir. Seçenekler açık veya belirteç kısıtlamasıdır. Belirteç kısıtlamalı ilkenin beraberinde bir güvenlik belirteci hizmeti (STS) tarafından verilmiş bir belirteç bulunmalıdır. Media Services basit Web belirteci (SWT) biçimindeki belirteçleri ve JSON Web Token (JWT) biçimini destekler.
 
-Aşağıdaki diyagram, PlayReady ve/veya Widevine lisanslarını sunmak için Medya Hizmetlerini kullanmak için atmanız gereken temel adımları gösterir, ancak geri kalanını şirket içi sunucularınızla yapar:
+Aşağıdaki diyagramda, PlayReady ve/veya Widevine lisanslarını teslim etmek için Media Services kullanmanız gereken ana adımlar gösterilmektedir, ancak Rest şirket içi sunucularınız ile yapılır:
 
 ![PlayReady ile koruma](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
 
 ## <a name="download-sample"></a>Örnek indirme
-Bu makalede açıklanan örneği indirmek [için PlayReady ve/veya Widevine lisanslarını .NET ile sunmak için Azure Medya Hizmetlerini Kullan'a](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)bakın.
+Bu makalede açıklanan örneği indirmek için bkz. [.net Ile PlayReady ve/veya Widevine lisanslarını teslim etmek için Azure Media Services kullanma](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses).
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio projesi oluşturup yapılandırma
 
-1. Geliştirme ortamınızı ayarlayın ve [.NET ile Medya Hizmetleri geliştirmede](media-services-dotnet-how-to-use.md)açıklandığı gibi app.config dosyasını bağlantı bilgileriyle doldurun.
+1. Geliştirme ortamınızı ayarlayın ve App. config dosyasını, [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md)bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun.
 
 2. App.config dosyanızda tanımlanan **appSettings**’e aşağıdaki öğeleri ekleyin:
 
@@ -53,8 +53,8 @@ Bu makalede açıklanan örneği indirmek [için PlayReady ve/veya Widevine lisa
     <add key="Audience" value="urn:test"/>
     ```
  
-## <a name="net-code-example"></a>.NET kodu örneği
-Aşağıdaki kod örneği, ortak bir içerik anahtarının nasıl oluşturulup PlayReady veya Widevine lisans edinme URL'lerini nasıl alacağımı gösterir. Şirket içi sunucunuzu yapılandırmak için bir içerik anahtarına, anahtar kimliğine ve lisans edinme URL'sine ihtiyacınız vardır. Şirket içi sunucunuzu yapılandırdıktan sonra, kendi akış sunucunuzdan akış yapabilirsiniz. Şifreli akış Bir Medya Hizmetleri lisans sunucusuna işaret ettiği için, oynatıcınız Medya Hizmetleri'nden lisans ister. Belirteç kimlik doğrulaması seçerseniz, Medya Hizmetleri lisans sunucusu HTTPS üzerinden gönderdiğiniz belirteci doğrular. Belirteç geçerliyse, lisans sunucusu lisansı çalısanız geri teslim eder. Aşağıdaki kod örneği yalnızca ortak bir içerik anahtarının nasıl oluşturulup PlayReady veya Widevine lisans edinme URL'lerini nasıl alacağımı gösterir. AES-128 tuşlarını teslim etmek istiyorsanız, bir zarf içerik anahtarı oluşturmanız ve önemli bir edinme URL'si almanız gerekir. Daha fazla bilgi için [AES-128 dinamik şifreleme ve anahtar teslim hizmetini kullanın'](media-services-protect-with-aes128.md)a bakın.
+## <a name="net-code-example"></a>.NET kod örneği
+Aşağıdaki kod örneği, ortak bir içerik anahtarının nasıl oluşturulduğunu ve PlayReady veya Widevine lisans alma URL 'Lerini nasıl alınacağını gösterir. Şirket içi sunucunuzu yapılandırmak için bir içerik anahtarı, anahtar KIMLIĞI ve lisans alımı URL 'SI gerekir. Şirket içi sunucunuzu yapılandırdıktan sonra, kendi akış sunucusundan akış yapabilirsiniz. Şifrelenmiş akış bir Media Services lisans sunucusuna işaret ettiğinden, oyuncusu Media Services bir lisans ister. Belirteç kimlik doğrulaması ' nı seçerseniz, Media Services lisans sunucusu HTTPS üzerinden gönderdiğiniz belirteci doğrular. Belirteç geçerliyse, lisans sunucusu lisansı Player 'a geri gönderir. Aşağıdaki kod örneği yalnızca ortak bir içerik anahtarı oluşturmayı ve PlayReady veya Widevine lisans alma URL 'Lerini almayı gösterir. AES-128 anahtarları sunmak istiyorsanız, bir zarf içerik anahtarı oluşturmanız ve anahtar alma URL 'SI almanız gerekir. Daha fazla bilgi için bkz. [AES-128 dinamik şifrelemesini ve anahtar teslim hizmetini kullanma](media-services-protect-with-aes128.md).
 
 ```csharp
 using System;
@@ -347,7 +347,7 @@ namespace DeliverDRMLicenses
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+* Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

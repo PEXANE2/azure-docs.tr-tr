@@ -1,7 +1,7 @@
 ---
-title: "Öğretici: MongoDB'yi MongoDB için Azure Cosmos DB API'ye çevrimdışı olarak geçirin"
+title: "Öğretici: MongoDB 'yi MongoDB için Azure Cosmos DB API 'sine çevrimdışına geçirme"
 titleSuffix: Azure Database Migration Service
-description: Azure Veritabanı Geçiş Hizmeti'ni kullanarak MongoDB'den mongodb için çevrimdışı Olarak Azure Cosmos DB API'sine şirket içi geçiş yapmayı öğrenin.
+description: Azure veritabanı geçiş hizmeti 'ni kullanarak şirket içi MongoDB 'den MongoDB için Azure Cosmos DB API 'sine geçiş yapmayı öğrenin.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -13,46 +13,46 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255584"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Öğretici: MongoDB'yi DMS kullanarak MongoDB'nin MongoDB'u çevrimdışı olarak Azure Cosmos DB'nin API'sine geçirin
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Öğretici: DMS kullanarak MongoDB 'yi Azure Cosmos DB, MongoDB 'ye çevrimdışı geçirme
 
-MongoDB'nin şirket içi veya bulut örneğinden Azure Cosmos DB'nin MongoDB için API'sine çevrimdışı (tek seferlik) veritabanları geçişini gerçekleştirmek için Azure Veritabanı Geçiş Hizmeti'ni kullanabilirsiniz.
+Azure veritabanı geçiş hizmeti 'ni, MongoDB 'nin şirket içi veya bulut örneğinden MongoDB 'nin API 'sine Azure Cosmos DB bir çevrimdışı (tek seferlik) geçişi gerçekleştirmek için kullanabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
-> * Azure Veritabanı Geçiş Hizmeti'ni kullanarak bir geçiş projesi oluşturun.
+> * Azure veritabanı geçiş hizmeti 'ni kullanarak bir geçiş projesi oluşturun.
 > * Geçişi çalıştırma.
 > * Geçişi izleme.
 
-Bu öğreticide, Azure Sanal Makinesi'nde barındırılan MongoDB'deki bir veri kümesini Azure Veritabanı Geçiş Hizmeti'ni kullanarak Azure Cosmos DB'nin MongoDB apisine geçirebilirsiniz. Zaten ayarlanmış bir MongoDB kaynağınız yoksa, [Azure'da bir Windows VM'de MongoDB yükle makalesine bakın ve mongodb'u yapılandırın.](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)
+Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak bir Azure sanal makinesinde barındırılan MongoDB 'deki bir veri kümesini Azure Cosmos DB MongoDB için API 'sine geçireceğiniz. Zaten bir MongoDB kaynağınız yoksa, [Azure 'Da WINDOWS VM 'de MongoDB 'Yi kurma ve yapılandırma](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb)makalesine bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-* İş ortasını tahmin etme, bölüm anahtarı seçme ve dizin oluşturma ilkesi gibi geçiş öncesi adımları [tamamlayın.](../cosmos-db/mongodb-pre-migration.md)
-* [MongoDB hesabı için Azure Cosmos DB API'si oluşturun.](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)
-* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza site bağlantısı sağlayan Azure Kaynak Yöneticisi dağıtım modelini kullanarak Azure Veritabanı Geçiş Hizmeti için bir Microsoft Azure Sanal Ağı oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [Sanal Ağ Belgeleri'ne](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarıiçeren hızlı başlangıç makalelerini görün.
+* Aktarım hızını tahmin etme, bölüm anahtarı seçme ve dizin oluşturma ilkesi gibi [geçiş öncesi adımları doldurun](../cosmos-db/mongodb-pre-migration.md) .
+* [MongoDB hesabı için bir Azure Cosmos DB API 'Si oluşturun](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
+* [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza siteden siteye bağlantı sağlayan Azure Resource Manager dağıtım modelini kullanarak Azure veritabanı geçiş hizmeti için bir Microsoft Azure sanal ağ oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [sanal ağ belgelerine](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarla birlikte hızlı başlangıç makalelerine bakın.
 
     > [!NOTE]
-    > Sanal ağ kurulumu sırasında, Microsoft'a ağ la bakan ExpressRoute kullanıyorsanız, hizmetin sağlandığı alt ağa aşağıdaki hizmet [bitiş noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
+    > Sanal ağ kurulumu sırasında, Microsoft 'a ağ eşlemesi ile ExpressRoute kullanırsanız, hizmetin sağlanacağı alt ağa aşağıdaki hizmet [uç noktalarını](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ekleyin:
     >
-    > * Hedef veritabanı bitiş noktası (örneğin, SQL bitiş noktası, Cosmos DB bitiş noktası vb.)
-    > * Depolama bitiş noktası
-    > * Servis veri günü bitiş noktası
+    > * Hedef veritabanı uç noktası (örneğin, SQL uç noktası, Cosmos DB uç noktası vb.)
+    > * Depolama uç noktası
+    > * Service Bus uç noktası
     >
-    > Azure Veritabanı Geçiş Hizmeti internet bağlantısından yoksun olduğundan bu yapılandırma gereklidir.
+    > Azure veritabanı geçiş hizmeti internet bağlantısı olmadığından bu yapılandırma gereklidir.
 
-* Sanal ağ Ağ Güvenlik Grubu (NSG) kurallarınızın aşağıdaki iletişim bağlantı noktalarını engellemediğinden emin olun: 53, 443, 445, 9354 ve 10000-20000. Sanal ağ NSG trafik filtreleme hakkında daha fazla ayrıntı için, [ağ güvenlik grupları ile](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makale Filtre ağ trafiği bakın.
-* Azure Veritabanı Geçiş Hizmeti'nin varsayılan olarak TCP bağlantı noktası 27017 olan kaynak MongoDB sunucusuna erişmesine izin vermek için Windows güvenlik duvarınızı açın.
-* Kaynak veritabanınızın (ler) önünde bir güvenlik duvarı cihazı kullanırken, Azure Veritabanı Geçiş Hizmeti'nin geçiş için kaynak veritabanına(ler) erişmesine izin vermek için güvenlik duvarı kuralları eklemeniz gerekebilir.
+* Sanal ağ ağ güvenlik grubu (NSG) kurallarınızın şu iletişim bağlantı noktalarını engellemediğinden emin olun: 53, 443, 445, 9354 ve 10000-20000. Sanal ağ NSG trafik filtrelemesi hakkında daha fazla bilgi için ağ [güvenlik grupları ile ağ trafiğini filtreleme](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)makalesine bakın.
+* Azure veritabanı geçiş hizmeti 'nin kaynak MongoDB sunucusuna erişmesine izin vermek için Windows Güvenlik duvarınızı açın, varsayılan olarak TCP bağlantı noktası 27017 ' dir.
+* Kaynak veritabanınızın önünde bir güvenlik duvarı gereci kullanırken, Azure veritabanı geçiş hizmeti 'nin geçiş için kaynak veritabanına erişmesine izin vermek üzere güvenlik duvarı kuralları eklemeniz gerekebilir.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration kaynak sağlayıcısını kaydetme
 
@@ -70,7 +70,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 ## <a name="create-an-instance"></a>Örnek oluşturma
 
-1. Azure portalında + **Kaynak Oluştur'** seçeneğini belirleyin, Azure Veritabanı Geçiş Hizmeti'ni arayın ve ardından açılan listeden **Azure Veritabanı Geçiş Hizmeti'ni** seçin.
+1. Azure portal + **kaynak oluştur**' u seçin, Azure veritabanı geçiş hizmeti ' ni arayın ve ardından açılan listeden **Azure veritabanı geçiş hizmeti** ' ni seçin.
 
     ![Azure Market](media/tutorial-mongodb-to-cosmosdb/portal-marketplace.png)
 
@@ -80,13 +80,13 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
   
 3. **Geçiş Hizmeti oluşturun** ekranında hizmet için bir ad belirtin, aboneliği ve yeni ya da var olan bir kaynak grubunu seçin.
 
-4. Azure Veritabanı Geçiş Hizmeti örneğini oluşturmak istediğiniz konumu seçin. 
+4. Azure veritabanı geçiş hizmeti örneğini oluşturmak istediğiniz konumu seçin. 
 
-5. Varolan bir sanal ağ seçin veya yeni bir ağ oluşturun.
+5. Var olan bir sanal ağı seçin veya yeni bir ağ oluşturun.
 
-    Sanal ağ, Kaynak MongoDB örneğine ve hedef Azure Cosmos DB hesabına erişim sağlayan Azure Veritabanı Geçiş Hizmeti sağlar.
+    Sanal ağ, kaynak MongoDB örneğine ve hedef Azure Cosmos DB hesabına erişimi olan Azure veritabanı geçiş hizmeti sağlar.
 
-    Azure portalında sanal ağ oluşturma hakkında daha fazla bilgi için Azure [portalını kullanarak sanal ağ oluşturma makalesine](https://aka.ms/DMSVnet)bakın.
+    Azure portal sanal ağ oluşturma hakkında daha fazla bilgi için [Azure Portal kullanarak sanal ağ oluşturma](https://aka.ms/DMSVnet)makalesine bakın.
 
 6. Fiyatlandırma katmanını seçin.
 
@@ -102,46 +102,46 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
 1. Azure portalda **Tüm hizmetler**'i seçin, Azure Veritabanı Geçiş Hizmeti araması yapın ve **Azure Veritabanı Geçiş Hizmeti**'ni seçin.
 
-      ![Azure Veritabanı Geçiş Hizmeti'nin tüm örneklerini bulma](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
+      ![Azure veritabanı geçiş hizmeti 'nin tüm örneklerini bulun](media/tutorial-mongodb-to-cosmosdb/dms-search.png)
 
-2. Azure **Veritabanı Geçiş Hizmetleri** ekranında, oluşturduğunuz Azure Veritabanı Geçiş Hizmeti örneğinin adını arayın ve ardından örneği seçin.
+2. **Azure veritabanı geçiş Hizmetleri** ekranında, oluşturduğunuz Azure veritabanı geçiş hizmeti örneğinin adını arayın ve ardından örneği seçin.
 
 3. +**Yeni Geçiş Projesi**'ni seçin.
 
-4. Yeni **geçiş proje** ekranında, **Kaynak sunucu türü** metin kutusunda proje için bir ad belirtin, Hedef **sunucu türü** metin kutusunda **MongoDB'yi**seçin, **CosmosDB 'yi (MongoDB API)** seçin ve ardından **etkinlik türünü seçin**, Çevrimdışı veri **geçişini**seçin. 
+4. **Yeni geçiş projesi** ekranında, proje için bir ad belirtin, **kaynak sunucu türü** metin kutusunda **MongoDB**' yi seçin, **hedef sunucu türü** metın kutusunda **cosmosdb (MongoDB API)** öğesini seçin ve ardından **etkinlik türü seç**' i seçin, **çevrimdışı veri geçişi**' ni seçin. 
 
-    ![Veritabanı Geçiş Hizmeti projesi oluşturma](media/tutorial-mongodb-to-cosmosdb/dms-create-project.png)
+    ![Veritabanı geçiş hizmeti projesi oluştur](media/tutorial-mongodb-to-cosmosdb/dms-create-project.png)
 
 5. Projeyi oluşturmak ve geçiş etkinliğini çalıştırmak için **Etkinlik oluştur ve çalıştır**'ı seçin.
 
 ## <a name="specify-source-details"></a>Kaynak ayrıntılarını belirtme
 
-1. Kaynak **ayrıntıları** ekranında, kaynak MongoDB sunucusunun bağlantı ayrıntılarını belirtin.
+1. **Kaynak ayrıntıları** ekranında, kaynak MongoDB sunucusu için bağlantı ayrıntılarını belirtin.
 
    > [!IMPORTANT]
-   > Azure Veritabanı Geçiş Hizmeti kaynak olarak Azure Cosmos DB'yi desteklemez.
+   > Azure veritabanı geçiş hizmeti kaynak olarak Azure Cosmos DB desteklemez.
 
     Bir kaynağa bağlanmak için üç mod vardır:
-   * Tam nitelikli bir etki alanı adı veya IP adresi, Bağlantı noktası numarası ve bağlantı kimlik bilgilerini kabul eden **standart mod.**
-   * **Bağlantı dize modu,** makalede açıklandığı gibi bir MongoDB Bağlantı dizesi kabul eder [Bağlantı String URI Biçimi](https://docs.mongodb.com/manual/reference/connection-string/).
-   * Blob kapsayıcı SAS URL'sini kabul eden **Azure depolamasından gelen veriler.** Blob'un MongoDB [bsondump aracı](https://docs.mongodb.com/manual/reference/program/bsondump/)tarafından üretilen BSON dökümleri varsa **Blob'un BSON dökümleri içerdiğini** seçin ve kapsayıcı JSON dosyaları içeriyorsa seçin.
+   * Tam etki alanı adı veya IP adresi, bağlantı noktası numarası ve bağlantı kimlik bilgilerini kabul eden **Standart mod**.
+   * Makale [bağlantı DIZESI URI biçimi](https://docs.mongodb.com/manual/reference/connection-string/)bölümünde açıklandığı gibi MongoDB bağlantı dizesini kabul eden **bağlantı dizesi modu**.
+   * Blob kapsayıcı SAS URL 'sini kabul eden **Azure Storage verileri**. Blob kapsayıcısının MongoDB [bsondump aracı](https://docs.mongodb.com/manual/reference/program/bsondump/)tarafından üretilen bSon dökümlerini içermesi ve kapsayıcıda JSON dosyaları varsa onu yeniden seçmesini istiyorsanız **BLOB** ' u seçin.
 
-     Bu seçeneği seçerseniz, depolama hesabı bağlantı dizesinin biçimde göründüğünden emin olun:
+     Bu seçeneği belirlerseniz, depolama hesabı bağlantı dizesinin şu biçimde göründüğünden emin olun:
 
      ```
      https://blobnameurl/container?SASKEY
      ```
 
-     Bu blob kapsayıcı SAS bağlantı dizesi Azure Depolama gezgininde bulunabilir. İlgili kapsayıcı için SAS oluşturmak, size istenen yukarıda istenen biçimde URL sağlayacaktır.
+     Bu blob kapsayıcısı SAS bağlantı dizesi, Azure Depolama Gezgini 'nde bulunabilir. İlgili kapsayıcı için SAS oluşturmak, size istenen biçimdeki URL 'YI sağlar.
      
-     Ayrıca, Azure Depolama'daki tür dökümü bilgilerine bağlı olarak, aşağıdaki ayrıntıları göz önünde bulundurun.
+     Ayrıca, Azure Storage 'daki tür dökümü bilgilerine göre aşağıdaki ayrıntıyı göz önünde bulundurun.
 
-     * BSON dökümleri için, blob kapsayıcısı içindeki veriler bsondump biçiminde olmalıdır, bu nedenle veri dosyaları biçim koleksiyonu.bson'daki veritabanlarının adını taşıyan klasörlere yerleştirilir. Meta veri dosyaları (varsa) biçim *koleksiyonu*.metadata.json kullanılarak adlandırılmalıdır.
+     * BSON dökümler için, blob kapsayıcısı içindeki verilerin bsondump biçiminde olması gerekir, bu nedenle veri dosyaları koleksiyon. bSon biçiminde kapsayan veritabanlarının ardından adlandırılan klasörlere yerleştirilir. Meta veri dosyaları (varsa), *koleksiyon*. Metadata. JSON biçimi kullanılarak adlandırılmalıdır.
 
-     * JSON dökümleri için, blob kapsayıcısındaki dosyaların içeren veritabanlarından sonra adlandırılmış klasörlere yerleştirilmesi gerekir. Her veritabanı klasöründe, veri dosyaları "veri" adlı bir alt klasöre yerleştirilmeli ve biçim *koleksiyonu*.json kullanılarak adlandırılmalıdır. Meta veri dosyaları (varsa) "meta data" adlı bir alt klasöre yerleştirilmeli ve aynı biçim, *collection*.json kullanılarak adlandırılmalıdır. Meta veri dosyaları MongoDB bsondump aracı tarafından üretilen aynı biçimde olmalıdır.
+     * JSON dökümlerinde, blob kapsayıcısındaki dosyaların, kapsayan veritabanlarının ardından adlandırılan klasörlere yerleştirilmesi gerekir. Her veritabanı klasörü içinde, veri dosyalarının "Data" adlı bir alt klasöre yerleştirilmesi ve *Collection*. JSON biçimi kullanılarak adlandırılması gerekir. Meta veri dosyaları (varsa), "metadata" adlı bir alt klasöre yerleştirilmelidir ve aynı biçim olan *Collection*. JSON kullanılarak adlandırılmalıdır. Meta veri dosyaları MongoDB bsondump aracı tarafından oluşturulan biçimde olmalıdır.
 
     > [!IMPORTANT]
-    > Mongo sunucusunda kendi imzalı bir sertifika kullanmak önerilmez. Ancak, biri kullanılırsa, lütfen **bağlantı dize modunu** kullanarak sunucuya bağlanın ve bağlantı dizenizin ""
+    > Mongo sunucusunda kendinden imzalı bir sertifika kullanılması önerilmez. Ancak, bir tane kullanılmışsa **bağlantı dizesi modunu** kullanarak sunucuya bağlanın ve bağlantı dizeniz "" olduğundan emin olun
     >
     >```
     >&sslVerifyCertificate=false
@@ -151,53 +151,53 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 
    ![Kaynak ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. **Kaydet'i**seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
-1. Geçiş **hedef ayrıntıları** ekranında, MongoDB verilerinizi aktardığınız MongoDB hesabı için önceden sağlanmış Azure Cosmos DB API'si olan hedef Azure Cosmos DB hesabının bağlantı ayrıntılarını belirtin.
+1. **Geçiş hedefi ayrıntıları** ekranında, MongoDB verilerinizi geçirdiğiniz MongoDB hesabı için önceden sağlanmış Azure Cosmos DB API 'si olan hedef Azure Cosmos DB hesabının bağlantı ayrıntılarını belirtin.
 
     ![Hedef ayrıntılarını belirtme](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
-2. **Kaydet'i**seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="map-to-target-databases"></a>Hedef veritabanlarıyla eşleyin
 
-1. **Haritada hedef veritabanları** ekranı, geçiş için kaynak ve hedef veritabanı eş.
+1. **Hedef veritabanlarına eşle** ekranında, geçiş için kaynağı ve hedef veritabanını eşleyin.
 
-    Hedef veritabanı kaynak veritabanıyla aynı veritabanı adını içeriyorsa, Azure Veritabanı Geçiş Hizmeti varsayılan olarak hedef veritabanını seçer.
+    Hedef veritabanı, kaynak veritabanıyla aynı veritabanı adını içeriyorsa, Azure veritabanı geçiş hizmeti varsayılan olarak hedef veritabanını seçer.
 
-    **Create** dizesi veritabanı adının yanında görünüyorsa, Azure Veritabanı Geçiş Hizmeti'nin hedef veritabanını bulmadığını ve hizmetin veritabanını sizin için oluşturacağını gösterir.
+    Dize **oluşturma** veritabanı adının yanında görünürse, Azure veritabanı geçiş hizmeti 'nin hedef veritabanını bulmadığını ve hizmetin sizin için veritabanını oluşturacağını belirtir.
 
-    Geçişin bu [noktasında, iş elde etmek](https://docs.microsoft.com/azure/cosmos-db/set-throughput)için bir iş. Cosmos DB'de, her koleksiyon için veri tabanı düzeyinde veya ayrı ayrı iş ortası sağlayabilirsiniz. Elde etme birimi [İstek Birimleri](https://docs.microsoft.com/azure/cosmos-db/request-units) (RUs) cinsinden ölçülür. [Azure Cosmos DB fiyatlandırması](https://azure.microsoft.com/pricing/details/cosmos-db/)hakkında daha fazla bilgi edinin.
+    Geçişin bu noktasında [üretilen iş sağlama](https://docs.microsoft.com/azure/cosmos-db/set-throughput)sağlayabilirsiniz. Cosmos DB ' de, her koleksiyon için veritabanı düzeyinde veya ayrı ayrı üretilen iş sağlama sağlayabilirsiniz. Aktarım hızı, [Istek birimleri](https://docs.microsoft.com/azure/cosmos-db/request-units) (ru) cinsinden ölçülür. [Azure Cosmos DB fiyatlandırması](https://azure.microsoft.com/pricing/details/cosmos-db/)hakkında daha fazla bilgi edinin.
 
     ![Hedef veritabanlarıyla eşleyin](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
-2. **Kaydet'i**seçin.
-3. Koleksiyon **ayarı** ekranında, koleksiyonlar listesini genişletin ve ardından geçirilecek koleksiyonlistesini gözden geçirin.
+2. **Kaydet**’i seçin.
+3. **Koleksiyon ayarı** ekranında koleksiyonlar listesini genişletin ve geçirilecek koleksiyonların listesini gözden geçirin.
 
-    Azure Veritabanı Geçiş Hizmeti, hedef Azure Cosmos DB hesabında bulunmayan kaynak MongoDB örneğinde bulunan tüm koleksiyonları otomatik olarak seçer. Zaten veri içeren koleksiyonları yeniden geçirmek istiyorsanız, bu bıçaktaki koleksiyonları açıkça seçmeniz gerekir.
+    Azure veritabanı geçiş hizmeti, hedef Azure Cosmos DB hesabında mevcut olmayan kaynak MongoDB örneğinde mevcut olan tüm koleksiyonları otomatik olarak seçer. Zaten veri içeren koleksiyonları yeniden geçirmek istiyorsanız, bu dikey penceredeki koleksiyonları açıkça seçmeniz gerekir.
 
-    Koleksiyonların kullanmasını istediğiniz RUS miktarını belirtebilirsiniz. Azure Veritabanı Geçiş Hizmeti, koleksiyon boyutuna bağlı olarak akıllı varsayılanlar önerir.
+    Koleksiyonların kullanmasını istediğiniz RUs miktarını belirtebilirsiniz. Azure veritabanı geçiş hizmeti, koleksiyon boyutuna bağlı olarak akıllı varsayılanlar önerir.
 
     > [!NOTE]
-    > Çalıştırmayı hızlandırmak için gerekirse Azure Veritabanı Geçiş Hizmeti'nin birden çok örneğini kullanarak veritabanı geçişini ve koleksiyonunu paralel olarak gerçekleştirin.
+    > Gerekirse, çalışmayı hızlandırmak için Azure veritabanı geçiş hizmeti 'nin birden çok örneğini kullanarak veritabanı geçişini ve toplamayı paralel olarak gerçekleştirin.
 
-    En iyi ölçeklenebilirlik için Azure [Cosmos DB'de bölümleme](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) avantajından yararlanmak için basılı bir anahtar da belirtebilirsiniz. [Bir parça/bölme anahtarı seçmek için en iyi uygulamaları](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)gözden geçirmek için emin olun.
+    Ayrıca, en iyi ölçeklenebilirlik için [Azure Cosmos DB bölümlemeden](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview) yararlanmak üzere bir parça anahtarı belirtebilirsiniz. Parça [/bölüm anahtarı seçmek için en iyi uygulamaları](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey)gözden geçirdiğinizden emin olun.
 
-    ![Koleksiyon tablolarını seçin](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
+    ![Koleksiyon tablolarını Seç](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
 
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 
 5. **Geçiş özeti** ekranının **Etkinlik adı** metin kutusunda geçiş etkinliği için bir ad belirtin.
 
-    ![Geçiş özeti](media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png)
+    ![Geçiş Özeti](media/tutorial-mongodb-to-cosmosdb/dms-migration-summary.png)
 
 ## <a name="run-the-migration"></a>Geçişi çalıştırma
 
 * **Geçişi çalıştır**'ı seçin.
 
-    Geçiş etkinliği penceresi görüntülenir ve etkinliğin **Durumu** **başlatılamadı.**
+    Geçiş etkinliği penceresi görüntülenir ve etkinliğin **durumu** **başlatılmaz**.
 
     ![Etkinlik durumu](media/tutorial-mongodb-to-cosmosdb/dms-activity-status.png)
 
@@ -206,24 +206,24 @@ Hizmet oluşturulduktan sonra Azure portaldan bulun, açın ve yeni bir geçiş 
 * Geçiş etkinliği ekranında **Yenile**'yi seçerek geçişin **Durum** bilgisi **Tamamlandı** olana kadar gösterilen verileri güncelleştirebilirsiniz.
 
    > [!NOTE]
-   > Veritabanı ve koleksiyon düzeyinde geçiş ölçümlerinin ayrıntılarını almak için Etkinlik'i seçebilirsiniz.
+   > Veritabanı ve koleksiyon düzeyinde geçiş ölçümlerinin ayrıntılarını almak için etkinliğini seçebilirsiniz.
 
     ![Etkinlik durumu tamamlandı](media/tutorial-mongodb-to-cosmosdb/dms-activity-completed.png)
 
-## <a name="verify-data-in-cosmos-db"></a>Cosmos DB'deki verileri doğrulama
+## <a name="verify-data-in-cosmos-db"></a>Cosmos DB verileri doğrulama
 
-* Geçiş tamamlandıktan sonra, tüm koleksiyonların başarıyla geçirilmiş olduğunu doğrulamak için Azure Cosmos DB hesabınızı denetleyebilirsiniz.
+* Geçiş tamamlandıktan sonra, tüm koleksiyonların başarıyla geçirildiğini doğrulamak için Azure Cosmos DB hesabınızı kontrol edebilirsiniz.
 
     ![Etkinlik durumu tamamlandı](media/tutorial-mongodb-to-cosmosdb/dms-cosmosdb-data-explorer.png)
 
-## <a name="post-migration-optimization"></a>Geçiş sonrası optimizasyon
+## <a name="post-migration-optimization"></a>Geçiş sonrası iyileştirmesi
 
-MongoDB veritabanında depolanan verileri Azure Cosmos DB'nin MongoDB api'sine geçirttikten sonra Azure Cosmos DB'ye bağlanabilir ve verileri yönetebilirsiniz. Dizin oluşturma ilkesini en iyi duruma getirme, varsayılan tutarlılık düzeyini güncelleştirme veya Azure Cosmos DB hesabınız için genel dağıtımı yapılandırma gibi diğer geçiş sonrası eniyim adımlarını da gerçekleştirebilirsiniz. Daha fazla bilgi için [geçiş sonrası optimizasyon](../cosmos-db/mongodb-post-migration.md) makalesine bakın.
+MongoDB veritabanında depolanan verileri MongoDB için Azure Cosmos DB API 'sine geçirdikten sonra, Azure Cosmos DB bağlanabilir ve verileri yönetebilirsiniz. Ayrıca, dizin oluşturma ilkesini iyileştirmek, varsayılan tutarlılık düzeyini güncelleştirmek veya Azure Cosmos DB hesabınız için genel dağıtımı yapılandırmak gibi geçiş sonrası en iyi duruma getirme adımlarını da gerçekleştirebilirsiniz. Daha fazla bilgi için, [geçiş sonrası iyileştirme](../cosmos-db/mongodb-post-migration.md) makalesine bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Cosmos DB hizmet bilgileri](https://azure.microsoft.com/services/cosmos-db/)
+* [Cosmos DB hizmeti bilgileri](https://azure.microsoft.com/services/cosmos-db/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Microsoft [Veritabanı Geçiş Kılavuzu'ndaki](https://datamigration.microsoft.com/)ek senaryolar için geçiş kılavuzunu gözden geçirin.
+* Microsoft [veritabanı geçiş kılavuzu](https://datamigration.microsoft.com/)'ndaki ek senaryolar için geçiş kılavuzunu gözden geçirin.

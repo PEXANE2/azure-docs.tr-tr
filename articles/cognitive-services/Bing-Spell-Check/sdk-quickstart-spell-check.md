@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: C için Bing Yazım Denetimi SDK ile yazım denetimi #'
+title: 'Hızlı başlangıç: C için Bing Yazım Denetimi SDK ile yazım denetimi #'
 titleSuffix: Azure Cognitive Services
-description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API'sini kullanmaya başlayın.
+description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 1cda7032d5bfe58e9f8bcbdb8b18dd597a691441
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273524"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Quickstart: C için Bing Yazım Denetimi SDK ile yazım denetimi #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Hızlı başlangıç: C için Bing Yazım Denetimi SDK ile yazım denetimi #
 
-C# için Bing Yazım Denetimi SDK ile yazım denetimine başlamak için bu hızlı başlangıcı kullanın. Bing Yazım Denetimi çoğu programlama diliyle uyumlu bir REST API'sine sahip olsa da, SDK hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)bulunabilir.
+C# için Bing Yazım Denetimi SDK ile yazım denetimi başlatmak için bu hızlı başlangıcı kullanın. Bing Yazım Denetimi birçok programlama dili ile uyumlu bir REST API sahip olsa da SDK, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sunar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/samples/SpellCheck)' da bulunabilir.
 
 ## <a name="application-dependencies"></a>Uygulama bağımlılıkları
 
-* [Visual Studio 2017 veya sonrası](https://visualstudio.microsoft.com/downloads/)herhangi bir baskı .
-* Bing Yazım Denetimi [NuGet Paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
+* Herhangi bir [Visual Studio 2017 veya üzeri](https://visualstudio.microsoft.com/downloads/)sürümü.
+* Bing Yazım Denetimi [NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **Solution Explorer'dan** **NuGet Paketlerini Yönet'i** seçin. `Microsoft.Azure.CognitiveServices.Language.SpellCheck` paketini ekleyin. Paket ayrıca aşağıdaki bağımlılıkları yükler:
+Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gezgini **NuGet Paketlerini Yönet** ' **Solution Explorer** i seçin. `Microsoft.Azure.CognitiveServices.Language.SpellCheck` paketini ekleyin. Paket de aşağıdaki bağımlılıkları da yüklüyor:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -36,7 +36,7 @@ Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Visual Studio'da yeni bir C# konsol çözümü oluşturun. Ardından aşağıdaki `using` ifadeyi ekleyin.
+1. Visual Studio 'da yeni bir C# konsol çözümü oluşturun. Ardından aşağıdaki `using` ifadeyi ekleyin.
     
     ```csharp
     using System;
@@ -46,9 +46,9 @@ Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **
     using Microsoft.Azure.CognitiveServices.Language.SpellCheck.Models;
     ```
 
-2. Yeni bir sınıf oluşturun. Ardından, abonelik anahtarı nı `SpellCheckCorrection()` alan ve yazım denetimi isteğini gönderen bir eşzamanlı işlev oluşturun.
+2. Yeni bir sınıf oluşturun. Ardından, bir abonelik anahtarı alan `SpellCheckCorrection()` ve yazım denetimi isteğini gönderen adlı bir zaman uyumsuz işlev oluşturun.
 
-3. Yeni `ApiKeyServiceClientCredentials` bir nesne oluşturarak istemciyi anında anons edin. 
+3. Yeni `ApiKeyServiceClientCredentials` bir nesne oluşturarak istemciyi örneğini oluşturun. 
 
     ```csharp
     public static class SpellCheckSample{
@@ -59,15 +59,15 @@ Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **
     }
     ```
 
-## <a name="send-the-request-and-read-the-response"></a>İsteği gönderin ve yanıtı okuyun
+## <a name="send-the-request-and-read-the-response"></a>İsteği gönder ve yanıtı oku
 
-1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemciye gönderin. `text` Denetlenecek metni parametreye ekleyin ve modu `proof`'da ayarlayın  
+1. Yukarıda oluşturulan işlevde aşağıdaki adımları gerçekleştirin. Yazım denetimi isteğini istemcisiyle gönderin. `text` Parametreye denetlenecek metni ekleyin ve modunu olarak `proof`ayarlayın.  
     
     ```csharp
     var result = await client.SpellCheckerWithHttpMessagesAsync(text: "Bill Gatas", mode: "proof");
     ```
 
-2. Varsa, ilk yazım denetimi sonucunu alın. Döndürülen ilk yanlış yazılmış sözcüğü (belirteç), belirteç türünü ve öneri sayısını yazdırın.
+2. Varsa, ilk yazım denetimi sonucunu alın. Döndürülen ilk yanlış sözcüğü (belirteci), belirteç türünü ve öneri sayısını yazdır.
 
     ```csharp
     var firstspellCheckResult = result.Body.FlaggedTokens.FirstOrDefault();
@@ -81,7 +81,7 @@ Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **
     }
     ```
 
-3. Varsa, önerilen ilk düzeltmeyi alın. Öneri puanını ve önerilen sözcüğü yazdırın. 
+3. Bir varsa, önerilen ilk düzeltmeyi alın. Öneri Puanını ve önerilen sözcüğü yazdırın. 
 
     ```csharp
     var suggestions = firstspellCheckResult.Suggestions;
@@ -96,7 +96,7 @@ Projenize Bing Büyüsü Denetimi SDK'sını eklemek için Visual Studio'daki **
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Projenizi oluşturun ve çalıştırın. Visual Studio kullanıyorsanız, dosyayı hata ayıklamak için **F5** tuşuna basın.
+Projenizi derleyin ve çalıştırın. Visual Studio kullanıyorsanız, dosyada hata ayıklamak için **F5** ' e basın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

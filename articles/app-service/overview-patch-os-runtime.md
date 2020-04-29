@@ -1,61 +1,61 @@
 ---
-title: İşletim sistemi ve çalışma zamanı yama cadence
-description: Azure Uygulama Hizmeti'nin işletim sistemi ve çalışma saatlerini nasıl güncelleştirdiğini, uygulamalarınızın çalışma saatleri ve yama düzeyine sahip olduğunu ve güncelleme duyurularını nasıl alabileceğinizi öğrenin.
+title: İşletim sistemi ve çalışma zamanı düzeltme temposunda
+description: Azure App Service işletim sistemi ve çalışma zamanlarını, uygulamalarınızın hangi çalışma zamanlarını ve düzeltme eki düzeyini ve güncelleştirme duyurularını nasıl alabileceğinizi öğrenin.
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273632"
 ---
-# <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde işletim sistemi ve çalışma zamanı düzeltme
+# <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
-Bu makalede, [Uygulama Hizmeti'ndeki](overview.md)işletim sistemi veya yazılımla ilgili belirli sürüm bilgilerini nasıl elde edebilirsiniz gösterilmektedir. 
+Bu makalede, [App Service](overview.md)işletim sistemi veya yazılımla ilgili belirli sürüm bilgilerini nasıl alacağınız gösterilmektedir. 
 
-Uygulama Hizmeti, işletim sistemi ve uygulama yığınının sizin için Azure tarafından yönetildiği anlamına gelen bir Hizmet Olarak Platform'dur; yalnızca uygulamanızı ve verilerini yönetirsiniz. Os ve uygulama yığını üzerinde daha fazla denetim [Azure Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/)mevcuttur. Bunu göz önünde bulundurarak, yine de bir App Service kullanıcısı olarak aşağıdakiler gibi daha fazla bilgi edinmeniz yararlı olacaktır:
+App Service, işletim sistemi ve uygulama yığınının Azure tarafından yönetilebilmesi anlamına gelen bir hizmet olarak platform; yalnızca uygulamanızı ve verilerini yönetirsiniz. [Azure sanal makinelerde](https://docs.microsoft.com/azure/virtual-machines/)işletim sistemi ve uygulama yığını üzerinde daha fazla denetim bulabilirsiniz. Göz önünde bulundurularak, bunun gibi daha fazla bilgi edinmek için App Service bir kullanıcı olarak yararlı olur.
 
 -   İşletim sistemi güncelleştirmeleri nasıl ve ne zaman uygulanır?
--   Uygulama Hizmeti önemli güvenlik açıklarına (sıfır gün gibi) karşı nasıl yamalı?
--   Uygulamalarınızı hangi işletim sistemi ve çalışma zamanı sürümleri çalıştırıyor?
+-   App Service önemli güvenlik açıklarına karşı Düzeltme Eki (sıfır gün gibi) nedir?
+-   Uygulamalarınızı hangi işletim sistemi ve çalışma zamanı sürümlerini çalıştırıyor?
 
-Güvenlik nedenleriyle, güvenlik bilgilerinin belirli özellikleri yayımlanmamaktadır. Ancak makale, işlemdeki saydamlığı en üst düzeye çıkararak ve güvenlikle ilgili duyurular veya çalışma zamanı güncelleştirmeleri hakkında nasıl güncel kalabileceğinizi ortadan kaldırarak endişeleri hafifletmeyi amaçlamaktadır.
+Güvenlik nedenleriyle, güvenlik bilgilerinin belirli özellikleri yayımlanmaz. Bununla birlikte, bu makale, süreçte saydamlığı en üst düzeye çıkarmakla ve güvenlikle ilgili duyurular veya çalışma zamanı güncelleştirmelerinde güncel kalabilmeniz için amaçlar makalesine sahiptir.
 
 ## <a name="how-and-when-are-os-updates-applied"></a>İşletim sistemi güncelleştirmeleri nasıl ve ne zaman uygulanır?
 
-Azure, işletim sistemi yamalarını iki düzeyde yönetir: fiziksel sunucular ve Uygulama Hizmeti kaynaklarını çalıştıran konuk sanal makineler (VM'ler). Her ikisi de aylık olarak güncellenir ve bu da aylık [Patch Salı](https://technet.microsoft.com/security/bulletins.aspx) zamanlamasına göre hizalanır. Bu güncelleştirmeler, Azure hizmetlerinin yüksek kullanılabilirlik sla'sını garanti eden bir şekilde otomatik olarak uygulanır. 
+Azure, App Service kaynaklarını çalıştıran fiziksel sunucular ve konuk sanal makineler (VM) olmak üzere iki düzeyde işletim sistemi düzeltme eki uygulamayı yönetir. Her ikisi de aylık olarak güncelleştirilir. Bu, aylık [Düzeltme Eki Salı](https://technet.microsoft.com/security/bulletins.aspx) zamanlamaya göre hizalanır. Bu güncelleştirmeler, Azure hizmetlerinin yüksek kullanılabilirlik SLA 'sını garanti eden bir şekilde otomatik olarak uygulanır. 
 
-Güncellemelerin nasıl uygulandığı hakkında ayrıntılı bilgi için, [App Service OS güncellemelerinin arkasındaki sihri demystifying](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html)bölümüne bakın.
+Güncelleştirmelerin nasıl uygulandığı hakkında ayrıntılı bilgi için bkz. [Demystifying The Magic in app SERVICE OS Updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html).
 
-## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure önemli güvenlik açıklarıyla nasıl başa çıkıyor?
+## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Azure önemli güvenlik açıklarına nasıl yöneliktir?
 
-Ciddi güvenlik [açıkları, sıfır gün güvenlik açıkları](https://wikipedia.org/wiki/Zero-day_(computing))gibi anında yama gerektirdiğinde, yüksek öncelikli güncelleştirmeler duruma göre işlenir.
+Önemli güvenlik açıkları, [sıfır günlük güvenlik açıkları](https://wikipedia.org/wiki/Zero-day_(computing))gibi anında düzeltme eki gerektirdiğinde, yüksek öncelikli güncelleştirmeler bir servis talebine göre işlenir.
 
-[Azure Güvenlik Blog'unu](https://azure.microsoft.com/blog/topics/security/)ziyaret ederek Azure'daki kritik güvenlik duyurularını güncel kalın. 
+[Azure Güvenlik blogu](https://azure.microsoft.com/blog/topics/security/)'nı ziyaret ederek Azure 'daki kritik güvenlik duyuruları ile güncel kalın. 
 
-## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Desteklenen dil çalışma süreleri ne zaman güncellenir, eklenir veya küçümsenmez?
+## <a name="when-are-supported-language-runtimes-updated-added-or-deprecated"></a>Desteklenen dil çalışma zamanları ne zaman güncellenir, eklendi veya kullanım dışı?
 
-Desteklenen dil çalışma saatlerinin (büyük, küçük veya yama) yeni kararlı sürümleri, Uygulama Hizmeti örneklerine düzenli olarak eklenir. Bazı güncelleştirmeler varolan yüklemenin üzerine yazarken, diğerleri varolan sürümlerle yan yana yüklenir. Üzerine yazma yüklemesi, uygulamanızın güncelleştirilmiş çalışma zamanında otomatik olarak çalıştığı anlamına gelir. Yan yana yükleme, yeni bir çalışma zamanı sürümünden yararlanmak için uygulamanızı el ile geçirmeniz gerektiği anlamına gelir. Daha fazla bilgi için alt bölümlerden birine bakın.
+Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) yeni kararlı sürümleri düzenli aralıklarla App Service örneklerine eklenir. Bazı güncelleştirmeler var olan yüklemenin üzerine yazılır, diğerleri de mevcut sürümlere göre yan yana yüklenir. Üzerine yazma yüklemesi, uygulamanızın güncelleştirilmiş çalışma zamanında otomatik olarak çalışacağı anlamına gelir. Yan yana yükleme, yeni bir çalışma zamanı sürümünden yararlanmak için uygulamanızı el ile geçirmeniz gereken anlamına gelir. Daha fazla bilgi için alt bölümleri inceleyin.
 
-Çalışma zamanı güncellemeleri ve amortismanlar burada duyurulur:
+Çalışma zamanı güncelleştirmeleri ve kullanım dışı bırakılıklar buradan duyurulur:
 
 - https://azure.microsoft.com/updates/?product=app-service 
 - https://github.com/Azure/app-service-announcements/issues
 
 > [!NOTE] 
-> Buradaki bilgiler, bir Uygulama Hizmeti uygulamasında yerleşik olan dil çalışma saatleri için geçerlidir. Örneğin, Uygulama Hizmeti'ne yüklediğiniz özel çalışma süresi, el ile yükseltmediğiniz sürece değişmeden kalır.
+> Buradaki bilgiler App Service bir uygulamada yerleşik olarak bulunan dil çalışma zamanları için geçerlidir. App Service için karşıya yüklediğiniz özel bir çalışma zamanı, örneğin, el ile yükseltmediğiniz sürece değişmeden kalır.
 >
 >
 
-### <a name="new-patch-updates"></a>Yeni yama güncellemeleri
+### <a name="new-patch-updates"></a>Yeni düzeltme eki güncelleştirmeleri
 
-.NET, PHP, Java SDK veya Tomcat/İskele sürümündeki yama güncelleştirmeleri, yeni sürümle birlikte varolan yüklemenin üzerine yazılarak otomatik olarak uygulanır. Node.js yama güncelleştirmeleri varolan sürümlerle yan yana yüklenir (sonraki bölümdeki ana ve küçük sürümlere benzer). Yeni Python yama sürümleri site [uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)aracılığıyla el ile yüklenebilir, dahili Python yüklemeleri ile yan yana.
+.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node. js düzeltme eki güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
 
-### <a name="new-major-and-minor-versions"></a>Yeni büyük ve küçük versiyonlar
+### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 
-Yeni bir ana veya küçük sürüm eklendiğinde, varolan sürümlerle yan yana yüklenir. Uygulamanızı el ile yeni sürüme yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında yapılandırdıysanız (örneğin, `web.config` `package.json`aynı yöntemle yükseltmeniz gerekir). Çalışma zamanı sürümünüzü yapılandırmak için bir Uygulama Hizmeti ayarını kullandıysanız, azure [portalında](https://portal.azure.com) veya [Bulut Kabuğu'nda](../cloud-shell/overview.md)aşağıdaki örneklerde gösterildiği gibi bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
+Yeni bir ana veya ikincil sürüm eklendiğinde, mevcut sürümlere göre yan yana yüklenir. Uygulamanızı yeni sürüme el ile yükseltebilirsiniz. Çalışma zamanı sürümünü bir yapılandırma dosyasında ( `web.config` ve `package.json`gibi) yapılandırdıysanız, aynı yöntemle yükseltmeniz gerekir. Çalışma zamanı sürümünüzü yapılandırmak için bir App Service ayarı kullandıysanız, aşağıdaki örneklerde gösterildiği gibi, bunu [Azure Portal](https://portal.azure.com) veya [Cloud Shell](../cloud-shell/overview.md)bir [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) komutu çalıştırarak değiştirebilirsiniz:
 
 ```azurecli-interactive
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
@@ -65,32 +65,32 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Amortismana kılmış sürümler  
+### <a name="deprecated-versions"></a>Kullanım dışı sürümler  
 
-Eski bir sürüm amortismana girdiğinde, çalışma zamanı sürüm yükseltmenizi buna göre planlamak için kaldırma tarihi duyurulur. 
+Eski bir sürüm kullanım dışı olduğunda, çalışma zamanı sürüm yükseltmenizi uygun şekilde planlayabilmeniz için kaldırma tarihi duyurulur. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Örneklerimde işletim sistemi ve çalışma zamanı güncelleştirme durumunu nasıl sorgulayabilirim?  
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Örneklerim üzerinde işletim sistemi ve çalışma zamanı güncelleştirme durumunu nasıl sorgularım?  
 
-Kritik işletim sistemi bilgileri erişimden kilitlenirken [(Azure Uygulama Hizmeti'ndeki İşletim sistemi işlevine](operating-system-functionality.md)bakın), [Kudu konsolu,](https://github.com/projectkudu/kudu/wiki/Kudu-console) Işletim Sistemi sürümü ve çalışma zamanı sürümleriyle ilgili Uygulama Hizmeti örneğini sorgulamanızı sağlar. 
+Kritik IŞLETIM sistemi bilgileri Access 'ten kilitlenirken (bkz. [Azure App Service işletim sistemi işlevselliği](operating-system-functionality.md)), [kudu konsolu](https://github.com/projectkudu/kudu/wiki/Kudu-console) , işletim sistemi sürümü ve çalışma zamanı sürümleriyle ilgili App Service örneğinizi sorgulamanızı sağlar. 
 
-Aşağıdaki tablo, Windows sürümlerinin ve uygulamalarınızı çalıştıran dil çalışma zamanının nasıl yapılacağını gösterir:
+Aşağıdaki tabloda, uygulamalarınızı çalıştıran Windows ve dil çalışma zamanının sürümlerinin nasıl yapılacağı gösterilmektedir:
 
-| Bilgi | Nerede bulabilirim | 
+| Bilgi | Nerede bulunacak | 
 |-|-|
-| Windows sürümü | Bkz. `https://<appname>.scm.azurewebsites.net/Env.cshtml` (Sistem bilgisi altında) |
-| .NET sürümü | At `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut istemi aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
-| .NET Core sürümü | At `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut istemi aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
-| PHP sürümü | At `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut istemi aşağıdaki komutu çalıştırın: <br> `php --version` |
-| Varsayılan Düğüm.js sürümü | Bulut [Kabuğu'nda](../cloud-shell/overview.md)aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python sürümü | At `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut istemi aşağıdaki komutu çalıştırın: <br> `python --version` |  
-| Java sürümü | At `https://<appname>.scm.azurewebsites.net/DebugConsole`, komut istemi aşağıdaki komutu çalıştırın: <br> `java -version` |  
+| Windows sürümü | Bkz `https://<appname>.scm.azurewebsites.net/Env.cshtml` . (sistem bilgisi altında) |
+| .NET sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET Core sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `dotnet --version` |
+| PHP sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `php --version` |
+| Varsayılan Node. js sürümü | [Cloud Shell](../cloud-shell/overview.md), aşağıdaki komutu çalıştırın: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| Python sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `python --version` |  
+| Java sürümü | `https://<appname>.scm.azurewebsites.net/DebugConsole`' De, komut isteminde aşağıdaki komutu çalıştırın: <br> `java -version` |  
 
 > [!NOTE]  
-> `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` ["KB" yamaları](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna erişim kilitlenir.
+> `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages` ["KB" yamaları](https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins) üzerindeki bilgilerin depolandığı kayıt defteri konumuna erişim, kilitlenir.
 >
 >
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-[Güven Merkezi: Güvenlik](https://www.microsoft.com/en-us/trustcenter/security)  
-[Azure Uygulama Hizmetinde 64 bit ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)
+[Güven Merkezi: güvenlik](https://www.microsoft.com/en-us/trustcenter/security)  
+[Azure App Service üzerinde 64 bit ASP.NET Core](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

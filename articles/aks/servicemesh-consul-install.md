@@ -1,47 +1,47 @@
 ---
-title: Azure Kubernetes Hizmetine Konsolos Yükle (AKS)
-description: Azure Kubernetes Hizmeti (AKS) kümesinde hizmet ağı oluşturmak için Konsolos'u nasıl yükleyip kullanacağınızı öğrenin
+title: Azure Kubernetes Service (AKS) ' de Tüketil 'yi kurma
+description: Azure Kubernetes Service (AKS) kümesinde hizmet ağı oluşturmak için Tüketil 'yi yüklemeyi ve kullanmayı öğrenin
 author: dstrebel
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273731"
 ---
-# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Konsolos'u yükleyin ve kullanın
+# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ' de Tüketil 'ı yükleyip kullanma
 
-[Konsolos,][consul-github] Bir Kubernetes kümesindeki mikro hizmetler de önemli bir işlevsellik kümesi sağlayan açık kaynak kodlu bir hizmet kafesidir. Bu özellikler arasında hizmet bulma, sistem durumu denetimi, hizmet bölümleme ve gözlemlenebilirlik yer almaktadır. Konsolos hakkında daha fazla bilgi için resmi [Konsolos nedir?][consul-docs-concepts]
+[Tüketil][consul-github] , bir Kubernetes kümesindeki mikro hizmetlerde anahtar bir işlevsellik kümesi sağlayan açık kaynaklı bir hizmet kafesidir. Bu özellikler hizmet bulma, sistem durumu denetimi, hizmet segmentleme ve Observability içerir. Tüketil hakkında daha fazla bilgi için resmi [nedir?][consul-docs-concepts] belgelerine bakın.
 
-Bu makalede, Konsolos'u nasıl yükleyebilirsiniz gösterilmektedir. Konsolos bileşenleri AKS'deki bir Kubernetes kümesine yüklenir.
+Bu makalede, Tüketil 'nin nasıl yükleneceği gösterilmektedir. Tüketil bileşenleri AKS 'teki bir Kubernetes kümesine yüklenir.
 
 > [!NOTE]
-> Bu talimatlar referans `1.6.0`Konsolos sürümü , `2.14.2`ve en az Helm sürümü kullanın .
+> Bu yönergeler, Tüketil sürümüne `1.6.0`başvurur ve en az Helm sürümünü `2.14.2`kullanır.
 >
-> Konsolos `1.6.x` bültenleri Kubernetes sürümleri `1.13+`karşı çalıştırılabilir. [GitHub][consul-github-releases] ek Konsolos sürümleri bulabilirsiniz - Konsolos Bültenleri ve [Konsolos-Yayın Notları][consul-release-notes]de bültenleri her biri hakkında bilgi .
+> Tüketil `1.6.x` sürümleri Kubernetes sürümleriyle `1.13+`çalıştırılabilir. [GitHub-Tüketil yayınlarına][consul-github-releases] ek tüketil sürümleri ve her bir yayın hakkında bilgi edinmek için, her zaman [Tüketim l-sürüm notları][consul-release-notes]bulabilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Konsolos bileşenlerini AKS'ye yükleyin
-> * Konsolos yüklemesini doğrulayın
-> * AKS'den Konsolosu Kaldır
+> * AKS 'e Tüketil bileşenlerini yükler
+> * Tüketil yüklemesini doğrulama
+> * AKS 'ten Tüketil 'yi kaldırma
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede ayrıntılı adımlar, bir AKS kümesi (Kubernetes `1.13` ve yukarıda, RBAC etkin) oluşturduğunuzve küme ile bir `kubectl` bağlantı kurduk varsayalım. Bu öğelerden herhangi biriyle ilgili yardıma ihtiyacınız varsa, [AKS quickstart'ına][aks-quickstart]bakın. Kümenizin Linux düğümü havuzunda en az 3 düğüm olduğundan emin olun.
+Bu makalede açıklanan adımlarda bir AKS kümesi (RBAC etkinleştirilmiş Kubernetes `1.13` ve üzeri) oluşturduğunuz ve kümeyle bir `kubectl` bağlantı oluşturmuş olduğunuz varsayılır. Bu öğelerin herhangi biriyle ilgili yardıma ihtiyacınız varsa, [aks hızlı başlangıç][aks-quickstart]bölümüne bakın. Kümenizin Linux düğüm havuzunda en az 3 düğüm olduğundan emin olun.
 
-[Helm'in][helm] bu talimatları izlemesi ve Konsolos'u kurması gerekecek. Kümenizde en son kararlı sürümün doğru şekilde yüklenmesi ve yapılandırılması önerilir. Helm'i yükleme konusunda yardıma ihtiyacınız varsa, [AKS Helm kurulum kılavuzuna][helm-install]bakın. Tüm Konsolos bölmeleri de Linux düğümleri üzerinde çalışacak şekilde zamanlanmalıdır.
+Bu yönergeleri izlemek ve Tüketil 'yi yüklemek için [Helm][helm] gerekir. En son kararlı sürümü kümenize doğru yüklenip yapılandırılmış olmalıdır. Held 'yi yüklemeyle ilgili yardıma ihtiyacınız varsa bkz. [aks helk Yükleme Kılavuzu][helm-install]. Tüm Tüketil 'lerin da Linux düğümlerinde çalışacak şekilde zamanlanması gerekir.
 
-Bu makale, Konsolos yükleme kılavuzunu birkaç ayrı adıma ayırır. Sonuçta resmi Konsolos kurulum [kılavuzu][consul-install-k8]olarak yapı olarak aynıdır.
+Bu makale, Tüketil yükleme kılavuzunu çeşitli ayrı adımlara ayırır. Nihai sonuç, resmi sarf l yükleme [kılavuzundaki][consul-install-k8]yapıda aynıdır.
 
-### <a name="install-the-consul-components-on-aks"></a>Konsolos bileşenlerini AKS'ye yükleyin
+### <a name="install-the-consul-components-on-aks"></a>AKS 'e Tüketil bileşenlerini yükler
 
-Konsolos Helm'in sürümünü `v0.10.0` indirerek başlayacağız. Grafiğin bu sürümü Konsolos `1.6.0`sürümü içerir.
+Tüketil Helm grafiğinin sürümünü `v0.10.0` indirerek başlayacağız. Grafiğin bu sürümü, Tüketil sürümünü `1.6.0`içerir.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,20 +61,20 @@ Konsolos Helm'in sürümünü `v0.10.0` indirerek başlayacağız. Grafiğin bu 
 
 ::: zone-end
 
-Konsül bileşenlerini `consul-helm` AKS kümenizdeki `consul` ad alanına yüklemek için Helm ve indirilen grafiği kullanın. 
+AKS kümenizdeki `consul` ad alanına tüketim `consul-helm` l bileşenlerini yüklemek için Helm ve indirilen grafiği kullanın. 
 
 > [!NOTE]
 > **Yükleme seçenekleri**
 > 
-> Kurulumuzun bir parçası olarak aşağıdaki seçenekleri kullanıyoruz:
-> - `connectInject.enabled=true`- vekillerin bölmelere enjekte edilmesini sağlar
-> - `client.enabled=true`- Konsolos müşterilerinin her düğümüzerinde çalışmasını sağlamak
-> - `client.grpc=true`- connectInject için gRPC dinleyicisini etkinleştirin
-> - `syncCatalog.enabled=true`- senkronize Kubernetes ve Konsolos hizmetleri
+> Yüklememizin kapsamında aşağıdaki seçenekleri kullanıyoruz:
+> - `connectInject.enabled=true`-ara sunucu 'ların Pod 'ye eklenmesi için
+> - `client.enabled=true`-Tüketil istemcilerini her düğümde çalışacak şekilde etkinleştirin
+> - `client.grpc=true`-Connectınject için gRPC dinleyicisini etkinleştirin
+> - `syncCatalog.enabled=true`-Kubernetes ve Tüketil hizmetlerini eşitleme
 >
 > **Düğüm seçicileri**
 >
-> Konsolos şu anda Linux düğümleri üzerinde çalışacak şekilde zamanlanmış olmalıdır. Kümenizde Windows Server düğümleri varsa, Konsolos bölmelerinin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığını sağlamalısınız. Bölmelerin doğru düğümlere zamanlanmış olduğundan emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanırız.
+> Tüketil 'nin şu anda Linux düğümlerinde çalışacak şekilde zamanlanması gerekir. Kümenizde Windows Server düğümleri varsa, Tüketil 'lerin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığından emin olmanız gerekir. Düğümlerin doğru düğümlere zamanlandığından emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanacağız.
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -94,20 +94,20 @@ Konsül bileşenlerini `consul-helm` AKS kümenizdeki `consul` ad alanına yükl
 
 ::: zone-end
 
-`Consul` Miğfer grafiği bir dizi nesne dağıtıyor. Listeyi yukarıdaki komutunuzun `helm install` çıktısından görebilirsiniz. Konsül bileşenlerinin dağıtımının tamamlanması, küme ortamınıza bağlı olarak yaklaşık 3 dakika sürebilir.
+`Consul` Helb grafiği bir dizi nesne dağıtır. Yukarıdaki `helm install` komutun çıktısından listesini görebilirsiniz. Tüketil bileşenlerinin dağıtımı, küme ortamınıza bağlı olarak 3 dakika kadar sürebilir.
 
-Bu noktada, AKS kümenize Konsolos'u görevlendirdiniz. Konsolosu başarılı bir şekilde konuşlandırmamız için Konsolos kurulumunu doğrulamak için bir sonraki bölüme geçelim.
+Bu noktada, AKS kümenize Tüketil 'yi dağıttık. Tüketil 'nin başarılı bir şekilde dağıtımına sahip olduğunuzdan emin olmak için, tüketim l yüklemesini doğrulamak üzere bir sonraki bölüme geçeceğiz.
 
-## <a name="validate-the-consul-installation"></a>Konsolos yüklemesini doğrulayın
+## <a name="validate-the-consul-installation"></a>Tüketil yüklemesini doğrulama
 
-Kaynakların başarıyla oluşturulduğunu doğrulayın. [Kubectl get svc][kubectl-get] ve [kubectl get pod][kubectl-get] `consul` komutlarını kullanarak Konsül bileşenlerinin `helm install` komut tarafından yüklendiği ad alanını sorgulayabilirsiniz:
+Kaynakların başarıyla oluşturulduğunu doğrulayın. [Kubectl Get svc][kubectl-get] ve `helm install` [kubectl Get Pod][kubectl-get] komutunu kullanarak, tüketim l bileşenlerinin `consul` komut tarafından yüklendiği ad alanını sorgulayın:
 
 ```console
 kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-Aşağıdaki örnek çıktı, şu anda çalışıyor olması gereken hizmetleri ve bölmeleri (Linux düğümlerinde zamanlanmış) gösterir:
+Aşağıdaki örnek çıktı, şu anda çalışıyor olması gereken hizmetleri ve (Linux düğümlerinde zamanlanan) Hizmetleri gösterir:
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -128,28 +128,28 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-Tüm bölmeler bir durum `Running`göstermelidir. Kapsüllerinizde bu durum yoksa, bunu öğrenene kadar bir iki dakika bekleyin. Herhangi bir bölme bir sorun bildiriyorsa, çıktılarını ve durumlarını gözden geçirmek için [kubectl describe pod][kubectl-describe] komutunu kullanın.
+Tüm FID 'ler durumunu göstermelidir `Running`. Ayırımlarınızın bu durumları yoksa, tamamlanana kadar bir dakika veya iki tane bekleyin. Herhangi bir pod bir sorun bildirirse, çıktısını ve durumlarını gözden geçirmek için [kubectl 'yi bir pod betimleyen][kubectl-describe] komutunu kullanın.
 
-## <a name="accessing-the-consul-ui"></a>Konsolos UI'ye erişim
+## <a name="accessing-the-consul-ui"></a>Tüketil Kullanıcı arabirimine erişme
 
-Konsolos UI yukarıdaki kurulumda yüklü ve Konsolos için UI tabanlı yapılandırma sağlar. Konsolos için UI harici bir ip adresi üzerinden kamuya açık değildir. Konsolos kullanıcı arabirimine erişmek için [kubectl port-forward][kubectl-port-forward] komutunu kullanın. Bu komut, istemci makineniz ile AKS kümenizdeki ilgili bölme arasında güvenli bir bağlantı oluşturur.
+Tüketimizdeki Kullanıcı arabirimi, yukarıdaki kurulumla yüklendi ve Tüketil için Kullanıcı arabirimi tabanlı yapılandırma sağlar. Tüketil için Kullanıcı arabirimi, bir dış IP adresi aracılığıyla herkese açık bir şekilde gösterilmez. Tüketil Kullanıcı arabirimine erişmek için [kubectl Port-Forward][kubectl-port-forward] komutunu kullanın. Bu komut, istemci makineniz ile AKS kümenizdeki ilgili Pod arasında güvenli bir bağlantı oluşturur.
 
 ```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-Artık bir tarayıcı yı açıp `http://localhost:8080/ui` Konsolos UI'yi açmaya yönlendirebilirsiniz. UI'yi açtığınızda aşağıdakileri görmeniz gerekir:
+Artık bir tarayıcı açabilir ve bunu, Tüketil Kullanıcı `http://localhost:8080/ui` arabirimini açmak için üzerine yazabilirsiniz. Kullanıcı arabirimini açtığınızda şunları görmeniz gerekir:
 
-![Konsolos UI](./media/servicemesh/consul/consul-ui.png)
+![Tüketil Kullanıcı arabirimi](./media/servicemesh/consul/consul-ui.png)
 
-## <a name="uninstall-consul-from-aks"></a>AKS'den Konsolosu Kaldır
+## <a name="uninstall-consul-from-aks"></a>AKS 'ten Tüketil 'yi kaldırma
 
 > [!WARNING]
-> Konsolos'u çalışan bir sistemden silmesi, hizmetleriniz arasında trafikle ilgili sorunlara neden olabilir. Devam etmeden önce Konsolos olmadan sisteminizin hala doğru çalışması için hükümler yaptığınızdan emin olun.
+> Çalışan bir sistemden Tüketil 'nin silinmesi, hizmetleriniz arasında trafik ile ilgili sorunlar oluşmasına neden olabilir. Devam etmeden önce sisteminizin Tüketil olmadan doğru şekilde çalışmaya yönelik bir sağlama gerçekleştirdiğinizden emin olun.
 
-### <a name="remove-consul-components-and-namespace"></a>Konsolos bileşenlerini ve ad alanını kaldırma
+### <a name="remove-consul-components-and-namespace"></a>Tüketil bileşenlerini ve ad alanını kaldır
 
-Konsolos'u AKS kümenizden kaldırmak için aşağıdaki komutları kullanın. Komutlar `helm delete` `consul` grafiği kaldırır ve `kubectl delete namespace` komut `consul` ad alanını kaldırır.
+AKS kümenizdeki Tüketil 'yi kaldırmak için aşağıdaki komutları kullanın. `helm delete` Komutlar `consul` grafiği kaldırır ve `kubectl delete namespace` komut `consul` ad alanını kaldırır.
 
 ```console
 helm delete --purge consul
@@ -158,14 +158,14 @@ kubectl delete namespace consul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Konsolos için daha fazla kurulum ve yapılandırma seçeneğini keşfetmek için aşağıdaki resmi Konsolos makalelerine bakın:
+Tüketil için daha fazla yükleme ve yapılandırma seçeneği araştırmak için aşağıdaki resmi tüketim ve makaleleri inceleyin:
 
-- [Konsolos - Miğfer kurulum kılavuzu][consul-install-k8]
-- [Konsolos - Dümen kurulum seçenekleri][consul-install-helm-options]
+- [Tüketil-Helm Yükleme Kılavuzu][consul-install-k8]
+- [Tüketil-Helm yükleme seçenekleri][consul-install-helm-options]
 
-Ayrıca aşağıdakileri kullanarak ek senaryolar da izleyebilirsiniz:
+Ayrıca şunları kullanarak ek senaryolar izleyebilirsiniz:
 
-- [Konsolos Örnek Uygulaması][consul-app-example]
+- [Tüketil örnek uygulaması][consul-app-example]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com
