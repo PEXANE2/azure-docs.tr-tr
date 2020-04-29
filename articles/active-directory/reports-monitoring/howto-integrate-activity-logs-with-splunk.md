@@ -1,6 +1,6 @@
 ---
-title: Azure Monitörü kullanarak Splunk'u tümleştirin | Microsoft Dokümanlar
-description: Azure Monitörünü kullanarak Azure Active Directory günlüklerini SumoLogic ile nasıl entegre edebilirsiniz öğrenin
+title: Azure Izleyici 'yi kullanarak splunk 'ı tümleştirme | Microsoft Docs
+description: Azure Izleyici kullanarak Azure Active Directory günlüklerini SumoLogic ile tümleştirmeyi öğrenin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,44 +18,44 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2eda3643a7b1a341c7ed664dbfea933145f1f927
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968705"
 ---
-# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Nasıl yapilir: Azure Monitörünü kullanarak Azure Active Directory günlüklerini Splunk ile tümleştirin
+# <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>Nasıl yapılır: Azure Izleyici kullanarak splunk ile Azure Active Directory günlüklerini tümleştirme
 
-Bu makalede, Azure Monitor'u kullanarak Azure Active Directory (Azure AD) günlüklerini Splunk ile nasıl entegre acağınızı öğreneceksiniz. Günlükleri önce bir Azure etkinlik merkezine yönlendirin ve ardından etkinlik merkezini Splunk ile tümleştirirsiniz.
+Bu makalede, Azure Izleyici 'yi kullanarak Azure Active Directory (Azure AD) günlüklerini splunk ile tümleştirmeyi öğreneceksiniz. Önce günlükleri bir Azure Olay Hub 'ına yönlendirdiğinizde Olay Hub 'ını splunk ile tümleştirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
-- Azure AD etkinlik günlükleri içeren bir Azure etkinlik merkezi. [Etkinlik günlüklerinizi bir etkinlik hub'ına nasıl aktartığın](quickstart-azure-monitor-stream-logs-to-event-hub.md)öğren. 
+- Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
 
--  [Splunk için Microsoft Azure Eklentisi.](https://splunkbase.splunk.com/app/3757/) 
+-  [Microsoft Azure splunk Için ekleme](https://splunkbase.splunk.com/app/3757/). 
 
-## <a name="integrate-azure-active-directory-logs"></a>Azure Etkin Dizin günlüklerini tümleştir 
+## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory günlüklerini tümleştirme 
 
-1. Splunk örneğini açın ve **Veri Özeti'ni**seçin.
+1. Splunk örneğinizi açın ve **veri özeti**' ni seçin.
 
-    !["Veri Özeti" düğmesi](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
+    !["Veri özeti" düğmesi](./media/howto-integrate-activity-logs-with-splunk/DataSummary.png)
 
-2. Kaynak **Türleri** sekmesini seçin ve ardından **amal: aadal:audit**
+2. **Sourcetypes** sekmesini seçin ve ardından **Amal: aadal: Audit** ' i seçin
 
-    ![Veri Özeti Kaynak Türleri sekmesi](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
+    ![Veri özeti Sourcetypes sekmesi](./media/howto-integrate-activity-logs-with-splunk/sourcetypeaadal.png)
 
-    Azure REKLAM etkinlik günlükleri aşağıdaki şekilde gösterilir:
+    Azure AD etkinlik günlükleri aşağıdaki şekilde gösterilmiştir:
 
     ![Etkinlik günlükleri](./media/howto-integrate-activity-logs-with-splunk/activitylogs.png)
 
 > [!NOTE]
-> Splunk örneğinize bir eklenti yükleyemiyorsanız (örneğin, proxy kullanıyorsanız veya Splunk Cloud'da çalışıyorsanız), bu olayları Splunk HTTP Event Collector'a iletebilirsiniz. Bunu yapmak için, olay merkezindeki yeni iletiler tarafından tetiklenen bu [Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanın. 
+> Splunk örneğiniz için bir eklenti yükleyemezseniz (örneğin, bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız), bu olayları splunk HTTP olay toplayıcısına iletebilirsiniz. Bunu yapmak için, Olay Hub 'ında yeni iletiler tarafından tetiklenen bu [Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanın. 
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure Monitor'da oturum açma günlüklerini şema yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
+* [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

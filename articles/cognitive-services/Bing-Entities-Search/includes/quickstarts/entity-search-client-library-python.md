@@ -1,5 +1,5 @@
 ---
-title: Bing Entity Search Python istemci kitaplığı hızlı başlat
+title: Bing Varlık Arama Python istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,27 +9,27 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 0c0a124773eab8166806312dc47ded24e1cd841f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136763"
 ---
-Python için Bing Entity Search istemci kitaplığı olan varlıkları aramaya başlamak için bu hızlı başlatı kullanın. Bing Entity Search çoğu programlama diliyle uyumlu bir REST API'sine sahip olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)bulunabilir.
+Python için Bing Varlık Arama istemci kitaplığıyla varlıkları aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Varlık Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Python [2.x veya 3.x](https://www.python.org/)
+* Python [2. x veya 3. x](https://www.python.org/)
 
-* [Python için Bing Varlık Arama SDK](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
+* [Python için Bing varlık arama SDK 'sı](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-Python sanal ortamı kullanmanız önerilir. Venv modülü ile sanal ortamı yükleyebilir ve açabilirsiniz. Virtualenv ile yükleyebilirsiniz:
+Python sanal ortamı kullanmanız önerilir. Venv modülü ile sanal bir ortam yükleyebilir ve başlatabilirsiniz. Virtualenv 'yi şu ile yükleyebilirsiniz:
 
 ```Console
 python -m venv mytestenv
 ```
 
-Bing Entity Search istemci kitaplığını aşağıdakilerle yükleyin:
+Bing Varlık Arama istemci kitaplığı:
 
 ```Console
 cd mytestenv
@@ -40,7 +40,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Favori IDE veya düzenleyicinizde yeni bir Python dosyası oluşturun ve aşağıdaki alma deyimlerini ekleyin. 
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Python dosyası oluşturun ve aşağıdaki içeri aktarma deyimlerini ekleyin. 
 
     ```python
     from azure.cognitiveservices.search.entitysearch import EntitySearchClient
@@ -48,7 +48,7 @@ python -m pip install azure-cognitiveservices-search-entitysearch
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Abonelik anahtarınız ve bitiş noktanız için bir değişken oluşturun. Anahtarınızla yeni `CognitiveServicesCredentials` bir nesne oluşturarak istemciyi anında anons edin.
+2. Abonelik anahtarınız ve uç noktanız için bir değişken oluşturun. Anahtarınızla yeni `CognitiveServicesCredentials` bir nesne oluşturarak istemciyi örneğini oluşturun.
     
     ```python
     subscription_key = "YOUR-SUBSCRIPTION-KEY"
@@ -58,13 +58,13 @@ python -m pip install azure-cognitiveservices-search-entitysearch
 
 ## <a name="send-a-search-request-and-receive-a-response"></a>Arama isteği gönderme ve yanıt alma
 
-1. Bing Entity Search'e ve `client.entities.search()` arama sorgusuna bir arama isteği gönderin. 
+1. `client.entities.search()` Ve bir arama sorgusuyla Bing varlık arama için bir arama isteği gönderin. 
     
     ```python
     entity_data = client.entities.search(query="Gibralter")
     ```
 
-2. Varlıklar döndürüldüyse, `entity_data.entities.value` listeye dönüştürün ve ilk sonucu yazdırın.
+2. Varlıklar döndürülürse, bir listeye dönüştürün `entity_data.entities.value` ve ilk sonucu yazdırın.
     ```python
     if entity_data.entities.value:
     

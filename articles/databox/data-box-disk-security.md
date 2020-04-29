@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Veri Kutusu Disk güvenlik özellikleri | Verilerde Microsoft Dokümanlar
-description: Azure Veri Kutusu Diski için uygulanan güvenlik özelliklerini açıklar, bu da büyük miktarda veriyi Azure'a aktarmanızı sağlayan bir bulut çözümüdür
+title: Microsoft Azure Data Box Disk güvenlik özellikleri | Verilerdeki Microsoft Docs
+description: Büyük miktarlardaki verileri Azure 'a aktarmanızı sağlayan bir bulut çözümü olan Azure Data Box Disk için uygulanan güvenlik özelliklerini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117288"
 ---
-# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Veri Kutusu Disk güvenliği ve veri koruması
+# <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk güvenlik ve veri koruması
 
 Bu makalede, Data Box çözümü bileşenlerinden her birini ve buralarda depolanan verileri korumaya yardımcı olan Azure Data Box Disk güvenliği açıklanır. 
 
@@ -72,7 +72,7 @@ Azure Data Box Disk, hizmette şu anahtar örneklerde kişisel bilgileri toplar 
 
   - Kişi adı
   - Telefon numarası
-  - Email
+  - E-posta
   - Açık adres
   - Şehir
   - Posta kodu

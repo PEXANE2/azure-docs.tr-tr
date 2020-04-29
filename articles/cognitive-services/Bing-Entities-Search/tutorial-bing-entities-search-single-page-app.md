@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Bing Varlık Arama tek sayfalı web uygulaması'
 titleSuffix: Azure Cognitive Services
-description: Bu öğretici, Bing Varlık Arama API'sinin tek sayfalık bir Web uygulamasında nasıl kullanılacağını gösterir.
+description: Bu öğreticide, Bing Varlık Arama API'si tek sayfalı bir Web uygulamasında nasıl kullanılacağı gösterilmektedir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: d45b9a153b770dd10da9dd61e8a7b3d138345b8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943129"
 ---
 # <a name="tutorial-single-page-web-app"></a>Öğretici: Tek sayfalı web uygulaması
@@ -58,7 +58,7 @@ Bu öğreticide, kaynak kodun yalnızca seçilen bölümlerini açıklıyoruz. T
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Öğreticiyi takip etmek için Bing Arama API'si ve Bing Haritalar API'sı için abonelik anahtarlarına ihtiyacınız var. Bunlara sahip değilseniz, [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve temel Bing [Haritalar anahtarı](https://www.microsoft.com/maps/create-a-bing-maps-key)nı kullanabilirsiniz.
+Öğreticiyle birlikte izlemek için Bing Arama API 'si ve Bing Haritalar API 'SI için abonelik anahtarlarına ihtiyacınız vardır. Bunlar yoksa, [deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ve [temel Bing Haritalar anahtarını](https://www.microsoft.com/maps/create-a-bing-maps-key)kullanabilirsiniz.
 
 ## <a name="app-components"></a>Uygulama bileşenleri
 
@@ -90,7 +90,7 @@ HTML, arama sonuçlarının gösterildiği bölümleri de (HTML `<div>` etiketle
 
 Bing Arama ve Bing Haritalar API'si abonelik anahtarlarını koda eklemek zorunda kalmamak için, bunları tarayıcının kalıcı depolamasını kullanarak depolarız. Anahtarların biri depolanmazsa bunu isteriz ve daha sonra kullanmak üzere depolarız. Anahtar daha sonra API tarafından reddedilirse, depolanan anahtarı geçersiz kılarız ve böylelikle kullanıcıdan sonraki aramasında anahtar istenir.
 
-`localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+`localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisi kullanan `storeValue` ve `retrieveValue` işlevlerini tanımlarız. `getSubscriptionKey()` işlevimiz, bu işlevleri kullanarak kullanıcının anahtarını depolar ve alır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```javascript
 // cookie names for data we store
@@ -167,7 +167,7 @@ function bingSearchOptions(form) {
 
 ## <a name="obtaining-a-location"></a>Konum alma
 
-Bing Maps API, [ `locationQuery` ](//msdn.microsoft.com/library/ff701711.aspx)kullanıcının girdiği yerin enlem ve boylamını bulmak için kullandığımız bir yöntem sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
+Bing Haritalar API 'si, kullanıcının girdiği konumun enlem ve boylamı bulmak için kullandığımız bir [ `locationQuery` Yöntem](//msdn.microsoft.com/library/ff701711.aspx)sunar. Bu koordinatlar daha sonra kullanıcının isteğiyle Bing Varlık Arama API’sine iletilir. Arama sonuçları, belirtilen konuma yakın olan varlıkları ve yerleri önceliklendirir.
 
 Hizmet çıkış noktaları arası sorguları desteklemediğinden Web uygulamasında sıradan bir `XMLHttpRequest` kullanarak Bing Haritalar API’sine erişemeyiz. Neyse ki JSONP ("P" harfi "doldurulmuş" anlamı taşır) desteği sağlıyor. JSONP yanıtı, bir işlev çağrısına sarmalanmış sıradan bir JSON yanıtıdır. İstek, belgeye bir `<script>` etiketi eklenerek yapılır. (Betiklerin yüklenmesi tarayıcı güvenlik ilkelerine tabi değildir.)
 

@@ -1,6 +1,6 @@
 ---
-title: Linux ana bilgisayarları oluşturmak için Docker Machine'i kullanın
-description: Azure'da Docker hosts oluşturmak için Docker Machine'in nasıl kullanılacağını açıklar.
+title: Linux Konakları oluşturmak için Docker makinesi kullanma
+description: Docker makinesinin Azure 'da Docker konakları oluşturmak için nasıl kullanılacağını açıklar.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.devlang: multiple
@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968813"
 ---
-# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Azure'da ana bilgisayar oluşturmak için Docker Machine nasıl kullanılır?
-Bu makalede, Azure'da ana bilgisayarlar oluşturmak için [Docker Machine'in](https://docs.docker.com/machine/) nasıl kullanılacağı ayrıntılı olarak açıklanmaktadır. Komut, Azure'da `docker-machine` bir Linux sanal makinesi (VM) oluşturur ve docker'ı yükler. Daha sonra Docker ev sahiplerinizi Azure'da aynı yerel araçları ve iş akışlarını kullanarak yönetebilirsiniz. Windows 10'da docker-machine kullanmak için Linux bash kullanmanız gerekir.
+# <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Azure 'da ana bilgisayar oluşturmak için Docker makinesi kullanma
+Bu makalede, Azure 'da ana bilgisayar oluşturmak için [Docker makinesi](https://docs.docker.com/machine/) 'nin nasıl kullanılacağı açıklanır. Komut `docker-machine` Azure 'Da bir Linux sanal MAKINESI (VM) oluşturur ve Docker 'ı kurar. Daha sonra, aynı yerel araçları ve iş akışlarını kullanarak Docker konaklarınızı Azure 'da yönetebilirsiniz. Windows 10 ' da Docker-Machine ' i kullanmak için Linux Bash kullanmanız gerekir.
 
-## <a name="create-vms-with-docker-machine"></a>Docker Machine ile VM'ler Oluşturun
-İlk olarak, [az hesap gösteriyi](/cli/azure/account) aşağıdaki gibi göstererek Azure abonelik kimliğinizi edinin:
+## <a name="create-vms-with-docker-machine"></a>Docker makinesiyle VM oluşturma
+İlk olarak, [az Account](/cli/azure/account) komutuyla Azure abonelik kimliğinizi aşağıda gösterildiği gibi edinin:
 
 ```azurecli
 sub=$(az account show --query "id" -o tsv)
 ```
 
-Azure'da sürücü olarak `docker-machine create` *azure'u* belirterek Docker ana bilgisayar VM'leri oluşturursunuz. Daha fazla bilgi için [Docker Azure Sürücüsü belgelerine](https://docs.docker.com/machine/drivers/azure/) bakın
+Azure 'da `docker-machine create` , sürücü olarak *Azure* belirterek Docker Konağı VM 'leri oluşturabilirsiniz. Daha fazla bilgi için bkz. [Docker Azure sürücüsü belgeleri](https://docs.docker.com/machine/drivers/azure/)
 
-Aşağıdaki örnek, "Standart D2 v2" planına dayalı *myVM*adında bir VM oluşturur, *azureuser*adında bir kullanıcı hesabı oluşturur ve ana bilgisayar VM'de bağlantı noktası *80'i* açar. Azure hesabınızda oturum açmak ve Docker Machine'e kaynak oluşturma ve yönetme izni vermek için tüm istemleri izleyin.
+Aşağıdaki örnek, "standart D2 v2" planına bağlı olarak *Myvm*ADLı bir VM oluşturur, *azureuser*adlı bir kullanıcı hesabı oluşturur ve ana makine sanal makinesinde *80* numaralı bağlantı noktasını açar. Azure hesabınızda oturum açmak ve kaynak oluşturmak ve yönetmek için Docker makinesi izinleri vermek için tüm istemleri izleyin.
 
 ```bash
 docker-machine create -d azure \
@@ -37,7 +37,7 @@ docker-machine create -d azure \
     myvm
 ```
 
-Çıktı aşağıdaki örneğe benzer:
+Çıktı aşağıdaki örneğe benzer şekilde görünür:
 
 ```bash
 Creating CA: /Users/user/.docker/machine/certs/ca.pem
@@ -70,8 +70,8 @@ Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env myvm
 ```
 
-## <a name="configure-your-docker-shell"></a>Docker kabuğunuzu yapılandırın
-Azure'daki Docker ana bilgisayarınıza bağlanmak için uygun bağlantı ayarlarını tanımlayın. Çıktının sonunda belirtildiği gibi, Docker ana cinizin bağlantı bilgilerini aşağıdaki gibi görüntüleyin: 
+## <a name="configure-your-docker-shell"></a>Docker kabuğu 'nu yapılandırma
+Azure 'da Docker ana bilgisayarınıza bağlanmak için uygun bağlantı ayarlarını tanımlayın. Çıktının sonunda belirtildiği gibi, Docker konağınız için bağlantı bilgilerini aşağıdaki gibi görüntüleyin: 
 
 ```bash
 docker-machine env myvm
@@ -88,10 +88,10 @@ export DOCKER_MACHINE_NAME="machine"
 # eval $(docker-machine env myvm)
 ```
 
-Bağlantı ayarlarını tanımlamak için, önerilen yapılandırma komutunu (),`eval $(docker-machine env myvm)`çalıştırabilir veya ortam değişkenlerini el ile ayarlayabilirsiniz. 
+Bağlantı ayarlarını tanımlamak için, önerilen yapılandırma komutunu (`eval $(docker-machine env myvm)`) çalıştırabilir ya da ortam değişkenlerini el ile ayarlayabilirsiniz. 
 
 ## <a name="run-a-container"></a>Kapsayıcı çalıştırma
-Bir kapsayıcıyı iş başında görmek için temel bir NGINX web sunucusu çalıştırmayı sağlar. Aşağıdaki gibi `docker run` web trafiği için bağlantı noktası 80 ile bir kapsayıcı oluşturun ve ortaya çıkarmak:
+Bir kapsayıcıyı eylemde görmek için temel NGıNX Web sunucusu çalışmasına izin verir. İle `docker run` bir kapsayıcı oluşturun ve web trafiği için 80 numaralı bağlantı noktasını aşağıdaki gibi kullanıma sunun:
 
 ```bash
 docker run -d -p 80:80 --restart=always nginx
@@ -110,24 +110,24 @@ Status: Downloaded newer image for nginx:latest
 675e6056cb81167fe38ab98bf397164b01b998346d24e567f9eb7a7e94fba14a
 ```
 
-Çalışan kapsayıcıları `docker ps`' ile görüntüleyin. Aşağıdaki örnek çıktı, 80 portu açıkta çalışan NGINX kapsayıcısını gösterir:
+İle `docker ps`çalışan kapsayıcıları görüntüleyin. Aşağıdaki örnek çıktı, 80 numaralı bağlantı noktası ile çalışan NGıNX kapsayıcısını göstermektedir:
 
 ```bash
 CONTAINER ID    IMAGE    COMMAND                   CREATED          STATUS          PORTS                          NAMES
 d5b78f27b335    nginx    "nginx -g 'daemon off"    5 minutes ago    Up 5 minutes    0.0.0.0:80->80/tcp, 443/tcp    festive_mirzakhani
 ```
 
-## <a name="test-the-container"></a>Kabı test edin
-Docker ana bilgisayar ının genel IP adresini aşağıdaki gibi edinin:
+## <a name="test-the-container"></a>Kapsayıcıyı test etme
+Docker konağının genel IP adresini şu şekilde edinin:
 
 
 ```bash
 docker-machine ip myvm
 ```
 
-Kapsayıcıyı iş başında görmek için bir web tarayıcısı açın ve önceki komutun çıktısında belirtilen genel IP adresini girin:
+Kapsayıcıyı eylemde görmek için bir Web tarayıcısı açın ve önceki komutun çıktısında belirtilen genel IP adresini girin:
 
-![Ngnix konteyner çalıştırma](./media/docker-machine/nginx.png)
+![Ngnx kapsayıcısını çalıştırma](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Docker Compose'u kullanma yla ilgili örnekler [için](docker-compose-quickstart.md)bkz.
+Docker Compose kullanma örnekleri için bkz. [Azure 'Da Docker ile çalışmaya başlama ve oluşturma](docker-compose-quickstart.md).

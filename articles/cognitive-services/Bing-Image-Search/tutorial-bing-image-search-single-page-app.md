@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 9227417d28eb09a322dd4757033ee62fee97d91c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943900"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
@@ -34,13 +34,13 @@ Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cogn
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Node.js](https://nodejs.org/)'in en son sürümü.
-* Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak kodu için yükleme yönergeleri GitHub örnek readme dosyasında mevcuttur.
+* Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Kullanıcı abonelik anahtarlarını yönetme ve depolama
 
-Bu uygulama, API abonelik anahtarlarını depolamak için web tarayıcılarının kalıcı depolama alanını kullanır. Herhangi bir anahtar depolanmıyorsa web sayfası, kullanıcıdan anahtarını belirtmesini ve daha sonra kullanmak üzere anahtarını depolamasını ister. Anahtar daha sonra API tarafından reddedilirse uygulama bunu depolama alanından kaldırır. Bu örnek, genel bitiş noktasını kullanır. Kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını da kullanabilirsiniz.
+Bu uygulama, API abonelik anahtarlarını depolamak için web tarayıcılarının kalıcı depolama alanını kullanır. Herhangi bir anahtar depolanmıyorsa web sayfası, kullanıcıdan anahtarını belirtmesini ve daha sonra kullanmak üzere anahtarını depolamasını ister. Anahtar daha sonra API tarafından reddedilirse uygulama bunu depolama alanından kaldırır. Bu örnek, genel uç noktasını kullanır. Ayrıca, kaynağınız için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını da kullanabilirsiniz.
 
 
 `localStorage` nesnesini (tarayıcı destekliyorsa) veya bir tanımlama bilgisini kullanmak için `storeValue` ve `retrieveValue` işlevlerini tanımlayın.
@@ -386,7 +386,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir proxy'den `Access-Control-Expose-Headers` gelen yanıt, yanıt üstbilgilerine izin veren ve bunları JavaScript'te kullanılabilir kılan bir üstbilgiye sahiptir.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

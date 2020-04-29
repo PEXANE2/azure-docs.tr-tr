@@ -1,50 +1,50 @@
 ---
-title: CLI'yi kullanarak linux vm'lerini özel ana bilgisayarlara dağıtın
-description: Azure CLI'yi kullanarak özel ana bilgisayarlara VM dağıtın.
+title: CLı kullanarak Linux VM 'lerini adanmış konaklara dağıtma
+description: Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtın.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.openlocfilehash: ba40e610e31a1215ac90baf63a04b435b636d68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127688"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLI'yi kullanarak özel ana bilgisayarlara VM dağıtma
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak VM 'Leri adanmış konaklara dağıtma
  
 
-Bu makalede, sanal makinelerinizi (VM) barındırmak için [Azure'a adanmış](dedicated-hosts.md) bir ana bilgisayar oluşturma konusunda size rehberlik eder. 
+Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure CLI sürümünü 2.0.70 veya sonrası olarak yüklediğinizden ve bir `az login`Azure hesabında oturum açtığınızdan emin olun. 
+Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak `az login`bir Azure hesabında oturum açtığınızdan emin olun. 
 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Sanal makine ölçek kümeleri şu anda özel ana bilgisayarlarda desteklenmez.
-- Özel ana bilgisayarlar için kullanılabilen boyutlar ve donanım türleri bölgeye göre değişir. Daha fazla bilgi edinmek için ana bilgisayar [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
+- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
+- Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
  
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma 
-Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. az grubu oluşturma ile kaynak grubu oluşturun. Aşağıdaki örnek, *Doğu ABD* konumunda *myDHResourceGroup* adında bir kaynak grubu oluşturur.
+Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Az Group Create ile kaynak grubu oluşturun. Aşağıdaki örnek, *Doğu ABD* konumunda *mydhresourcegroup* adlı bir kaynak grubu oluşturur.
 
 ```bash
 az group create --name myDHResourceGroup --location eastus 
 ```
  
-## <a name="create-a-host-group"></a>Ana bilgisayar grubu oluşturma 
+## <a name="create-a-host-group"></a>Konak grubu oluştur 
 
-**Ana bilgisayar grubu,** özel ana bilgisayarkoleksiyonunu temsil eden bir kaynaktır. Bir bölgede ve kullanılabilirlik bölgesinde bir ana bilgisayar grubu oluşturur ve ona ana bilgisayarlar eklersiniz. Yüksek kullanılabilirlik için planlama yaparken, ek seçenekler vardır. İlgili ana bilgisayarlarınızla aşağıdaki seçeneklerden birini veya her ikisini de kullanabilirsiniz: 
-- Birden çok kullanılabilirlik bölgesine yayılma. Bu durumda, kullanmak istediğiniz bölgelerin her birinde bir ana bilgisayar grubuna sahip olması gerekir.
-- Fiziksel raflara eşlenen birden çok hata etki alanına yayılma alanı. 
+**Konak grubu** , adanmış Konakları koleksiyonunu temsil eden bir kaynaktır. Bir bölge ve kullanılabilirlik bölgesinde bir konak grubu oluşturur ve bu gruba ana bilgisayar ekleyebilirsiniz. Yüksek kullanılabilirlik için planlama yaparken ek seçenekler vardır. Aşağıdaki seçeneklerden birini veya her ikisini de adanmış konaklarınız ile kullanabilirsiniz: 
+- Birden çok kullanılabilirlik alanı arasında yayılır. Bu durumda, kullanmak istediğiniz her bölgede bir konak grubunuz olması gerekir.
+- Fiziksel raflarla eşlenen birden çok hata etki alanı arasında yayılma. 
  
-Her iki durumda da, ana bilgisayar grubunuz için hata etki alanı sayısını sağlamanız gerekir. Grubunuzdaki hata etki alanlarını yayılımını istemiyorsanız, 1 hata etki alanı sayısı kullanın. 
+Her iki durumda da, konak grubunuz için hata etki alanı sayısını sağlamanız gerekir. Grubunuzdaki hata etki alanlarına yayılması istemiyorsanız, hata etki alanı sayısı 1 ' i kullanın. 
 
-Ayrıca, hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. 
+Hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. 
 
-Bu örnekte, hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanan bir ana bilgisayar grubu oluşturmak için [az vm ana bilgisayar grubu oluşturmayı](/cli/azure/vm/host/group#az-vm-host-group-create) kullanacağız. 
+Bu örnekte, kullanılabilirlik bölgelerini ve hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanacağız. 
 
 ```bash
 az vm host group create \
@@ -56,7 +56,7 @@ az vm host group create \
 
 ### <a name="other-examples"></a>Diğer örnekler
 
-Ayrıca, kullanılabilirlik bölgesi 1'de (ve hata etki alanı olmayan) bir ana bilgisayar grubu oluşturmak için [az vm ana bilgisayar grubu oluşturabilirsiniz.](/cli/azure/vm/host/group#az-vm-host-group-create)
+Kullanılabilirlik bölge 1 ' de (hata etki alanları olmadan) bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u de kullanabilirsiniz.
 
 ```bash
 az vm host group create \
@@ -66,7 +66,7 @@ az vm host group create \
    --platform-fault-domain-count 1 
 ```
  
-Aşağıdaki az [vm ana bilgisayar grubu yalnızca](/cli/azure/vm/host/group#az-vm-host-group-create) hata etki alanlarını kullanarak bir ana bilgisayar grubu oluşturmak için oluşturur (kullanılabilirlik bölgeleri desteklenmeyen bölgelerde kullanılacak). 
+Aşağıdaki, yalnızca hata etki alanlarını kullanarak bir konak grubu oluşturmak için [az VM konak grubu oluştur](/cli/azure/vm/host/group#az-vm-host-group-create) ' u kullanır (kullanılabilirlik bölgelerinin desteklenmediği bölgelerde kullanılmak üzere). 
 
 ```bash
 az vm host group create \
@@ -75,13 +75,13 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ```
  
-## <a name="create-a-host"></a>Ana bilgisayar oluşturma 
+## <a name="create-a-host"></a>Konak Oluşturma 
 
-Şimdi ev sahibi grubunda özel bir ana bilgisayar oluşturalım. Ev sahibi nin adına ek olarak, ev sahibi için SKU sağlamanız gerekir. Ana bilgisayar SKU, desteklenen VM serisinin yanı sıra özel ana bilgisayarınız için donanım üretimini de yakalar.  
+Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  
 
-Ana bilgisayar SK'leri ve fiyatlandırması hakkında daha fazla bilgi için [Azure Özel Ana Bilgisayar fiyatlandırması'na](https://aka.ms/ADHPricing)bakın.
+Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
 
-Bir ana bilgisayar oluşturmak için [az vm ana bilgisayar oluşturma](/cli/azure/vm/host#az-vm-host-create) kullanın. Ana bilgisayar grubunuz için bir hata etki alanı sayısı ayarlarsanız, ev sahibiniz için hata etki alanını belirtmeniz istenir.  
+Konak oluşturmak için [az VM Host Create](/cli/azure/vm/host#az-vm-host-create) kullanın. Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayarınız için hata etki alanını belirtmeniz istenir.  
 
 ```bash
 az vm host create \
@@ -95,7 +95,7 @@ az vm host create \
 
  
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma 
-[Az vm oluştur](/cli/azure/vm#az-vm-create)kullanarak özel bir ana bilgisayar içinde sanal bir makine oluşturun. Ana bilgisayar grubunuzu oluştururken bir kullanılabilirlik bölgesi belirttiyseniz, sanal makineoluştururken aynı bölgeyi kullanmanız gerekir.
+[Az VM Create](/cli/azure/vm#az-vm-create)kullanarak adanmış bir ana bilgisayar içinde bir sanal makine oluşturun. Konak grubunuzu oluştururken bir kullanılabilirlik alanı belirttiyseniz, sanal makineyi oluştururken aynı bölgeyi kullanmanız gerekir.
 
 ```bash
 az vm create \
@@ -111,12 +111,12 @@ az vm create \
 ```
  
 > [!WARNING]
-> Yeterli kaynağa sahip olmayan bir ana bilgisayarda sanal bir makine oluşturursanız, sanal makine BAŞARıSıZ durumda oluşturulur. 
+> Yeterli kaynağı olmayan bir konakta sanal makine oluşturursanız, sanal makine başarısız durumda oluşturulur. 
 
 
-## <a name="check-the-status-of-the-host"></a>Ev sahibinin durumunu denetleme
+## <a name="check-the-status-of-the-host"></a>Konağın durumunu denetleme
 
-Az [vm ana bilgisayar get-instance-view](/cli/azure/vm/host#az-vm-host-get-instance-view)kullanarak ana bilgisayar durumu durumunu ve kaç sanal makineyi hala ana bilgisayara dağıtabileceğinizi kontrol edebilirsiniz.
+Ana bilgisayar sistem durumunu ve [az VM Host Get-Instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view)kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
 
 ```bash
 az vm host get-instance-view \
@@ -124,7 +124,7 @@ az vm host get-instance-view \
    --host-group myHostGroup \
    --name myHost
 ```
- Çıktı şuna benzer:
+ Çıktı şuna benzer olacaktır:
  
 ```json
 {
@@ -222,16 +222,16 @@ az vm host get-instance-view \
 
 ```
  
-## <a name="export-as-a-template"></a>Şablon olarak dışa aktarma 
-Şimdi aynı parametrelere sahip ek bir geliştirme ortamı veya onunla eşleşen bir üretim ortamı oluşturmak istiyorsanız, şablon dışa aktarabilirsiniz. Kaynak Yöneticisi, ortamınız için tüm parametreleri tanımlayan JSON şablonlarını kullanır. Bu JSON şablonuna başvurarak tüm ortamları oluşturursunuz. Sizin için JSON şablonu oluşturmak için JSON şablonlarını el ile oluşturabilir veya varolan bir ortamı dışa aktarabilirsiniz. Kaynak grubunuzu dışa aktarmak için [az grubu dışa aktarmayı](/cli/azure/group#az-group-export) kullanın.
+## <a name="export-as-a-template"></a>Şablon olarak dışarı aktar 
+Artık aynı parametrelerle veya bununla eşleşen bir üretim ortamıyla ek bir geliştirme ortamı oluşturmak istiyorsanız bir şablonu dışarı aktarabilirsiniz. Kaynak Yöneticisi, ortamınız için tüm parametreleri tanımlayan JSON şablonları kullanır. Bu JSON şablonuna başvurarak tüm ortamları oluşturursunuz. JSON şablonlarını el ile oluşturabilir veya var olan bir ortamı, sizin için JSON şablonu oluşturmak üzere dışarı aktarabilirsiniz. Kaynak grubunuzu dışarı aktarmak için [az Group Export](/cli/azure/group#az-group-export) kullanın.
 
 ```bash
 az group export --name myDHResourceGroup > myDHResourceGroup.json 
 ```
 
-Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizdeki dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, tüm kaynak adları için istenir. Bu adları `--include-parameter-default-value` `az group export` komuta parametre ekleyerek şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu edin veya kaynak adlarını belirten bir parameters.json dosyası oluşturun.
+Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. `az group export` Komutuna `--include-parameter-default-value` parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz. Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten Parameters. JSON dosyası oluşturun.
  
-Şablonunuzdan bir ortam oluşturmak için [az grup dağıtımı oluşturma'yı](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
+Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
 
 ```bash
 az group deployment create \ 
@@ -242,27 +242,27 @@ az group deployment create \
 
 ## <a name="clean-up"></a>Temizleme 
 
-Sanal makineler dağıtılmasa bile, özel ana bilgisayarlarınız için ücretlendirilirsiniz. Maliyetleri kaydetmek için şu anda kullanmadığınız ana bilgisayarları silmeniz gerekir.  
+Hiçbir sanal makine dağıtılmamışsa bile adanmış ana bilgisayarlar için ücret ödersiniz. Maliyetleri kaydetmek için şu anda kullanmadığınız tüm Konakları silmelisiniz.  
 
-Bir ana bilgisayarı yalnızca artık sanal makineler olmadığında silebilirsiniz. [Az vm sil](/cli/azure/vm#az-vm-delete)kullanarak VM'leri silin.
+Bir konağı yalnızca, onu kullanan daha fazla sanal makine olmadığında silebilirsiniz. [Az VM Delete](/cli/azure/vm#az-vm-delete)kullanarak VM 'leri silin.
 
 ```bash
 az vm delete -n myVM -g myDHResourceGroup
 ```
 
-VM'leri sildikten sonra [az vm ana bilgisayar silme'yi](/cli/azure/vm/host#az-vm-host-delete)kullanarak ana bilgisayarını silebilirsiniz.
+VM 'Leri sildikten sonra [az VM Host Delete](/cli/azure/vm/host#az-vm-host-delete)kullanarak Konağı silebilirsiniz.
 
 ```bash
 az vm host delete -g myDHResourceGroup --host-group myHostGroup --name myHost 
 ```
  
-Tüm ana bilgisayarlarınızı sildikten sonra, [az vm ana bilgisayar grubu silmeyi](/cli/azure/vm/host/group#az-vm-host-group-delete)kullanarak ana bilgisayar grubunu silebilirsiniz.  
+Tüm konaklarınızı sildikten sonra [az VM konak grubu Sil](/cli/azure/vm/host/group#az-vm-host-group-delete)' i kullanarak konak grubunu silebilirsiniz.  
  
 ```bash
 az vm host group delete -g myDHResourceGroup --host-group myHostGroup  
 ```
  
-Ayrıca, tek bir komuttaki tüm kaynak grubunu da silebilirsiniz. Bu, tüm VM'ler, ana bilgisayarlar ve ana bilgisayar grupları da dahil olmak üzere grupta oluşturulan tüm kaynakları siler.
+Tüm kaynak grubunu tek bir komutta de silebilirsiniz. Bu işlem, tüm VM 'Ler, konaklar ve konak grupları dahil olmak üzere grupta oluşturulan tüm kaynakları siler.
  
 ```bash
 az group delete -n myDHResourceGroup 
@@ -270,8 +270,8 @@ az group delete -n myDHResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Daha fazla bilgi [için, Özel ana bilgisayarlarına](dedicated-hosts.md) genel bakış alabakın.
+- Daha fazla bilgi için bkz. [adanmış ana bilgisayarlara](dedicated-hosts.md) genel bakış.
 
-- [Azure portalını](dedicated-hosts-portal.md)kullanarak özel ana bilgisayarlar da oluşturabilirsiniz.
+- Ayrıca, [Azure Portal](dedicated-hosts-portal.md)kullanarak adanmış konaklar da oluşturabilirsiniz.
 
-- Bir bölgede maksimum esneklik için hem bölgeleri hem de fay etki alanlarını kullanan örnek şablon [burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)bulunur.
+- [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.

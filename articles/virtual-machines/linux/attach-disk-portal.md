@@ -1,6 +1,6 @@
 ---
-title: Linux VM'ye veri diski ekleme
-description: Linux VM'ye yeni veya varolan veri diski eklemek için portalı kullanın.
+title: Linux VM 'ye veri diski iliştirme
+description: Bir Linux sanal makinesine yeni veya mevcut veri diski eklemek için portalını kullanın.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -8,69 +8,69 @@ ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
 ms.openlocfilehash: 746cef8dfe026c731a677cbf77f729d36342f007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969346"
 ---
-# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Linux VM'ye veri diski eklemek için portalı kullanma 
-Bu makalede, Azure portalı aracılığıyla bir Linux sanal makinesine hem yeni hem de varolan disklerin nasıl eklediğinizi gösterilmektedir. Ayrıca [Azure portalındaki bir Windows VM'ye bir veri diski ekleyebilirsiniz.](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 
+# <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
+Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-VM'nize disk eklemeden önce şu ipuçlarını inceleyin:
+VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
-* Sanal makinenin boyutu, kaç veri diski ekebileceğinizi denetler. Ayrıntılar için [sanal makineler için Boyutlar'a](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın.
-* Sanal makinelere bağlı diskler aslında Azure'da depolanan .vhd dosyalarıdır. Ayrıntılar için [yönetilen disklere Giriş'e](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın.
-* Diski taktıktan sonra, [yeni diski takmak için Linux VM'ye bağlanmanız](#connect-to-the-linux-vm-to-mount-the-new-disk)gerekir.
+* Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Sanal makinelere eklenen diskler aslında. vhd dosyaları Azure 'da depolanır. Ayrıntılar için bkz. [yönetilen disklere giriş](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Diski iliştirdikten sonra, [Yeni diski bağlamak Için LINUX VM 'ye bağlanmanız](#connect-to-the-linux-vm-to-mount-the-new-disk)gerekir.
 
 
-## <a name="find-the-virtual-machine"></a>Sanal makineyi bulun
-1. VM'yi bulmak için [Azure portalına](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
-2. Listeden VM'yi seçin.
-3. Sanal **makineler** sayfa kenar çubuğunda, **Ayarlar** **altında, Diskler'i**seçin.
+## <a name="find-the-virtual-machine"></a>Sanal makineyi bul
+1. VM 'yi bulmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
+2. Listeden VM 'yi seçin.
+3. **Sanal makineler** sayfası kenar çubuğunda, **Ayarlar**altında **diskler**' i seçin.
    
-    ![Disk ayarlarını açma](./media/attach-disk-portal/find-disk-settings.png)
+    ![Disk ayarlarını aç](./media/attach-disk-portal/find-disk-settings.png)
 
 
-## <a name="attach-a-new-disk"></a>Yeni bir disk ekleme
+## <a name="attach-a-new-disk"></a>Yeni Disk Ekle
 
-1. **Diskler** bölmesine + **Veri diski ekle'yi**tıklatın.
-2. **Ad** için açılan menüyü tıklatın ve **disk oluştur'u**seçin:
+1. **Diskler** bölmesinde **+ veri diski Ekle**' ye tıklayın.
+2. **Ad** ' ın açılan menüsüne tıklayın ve **disk oluştur**' u seçin:
 
-    ![Azure yönetilen disk oluşturma](./media/attach-disk-portal/create-new-md.png)
+    ![Azure yönetilen diski oluştur](./media/attach-disk-portal/create-new-md.png)
 
-3. Yönetilen diskinizin adını girin. Varsayılan ayarları gözden geçirin, gerektiği gibi güncelleştirin ve sonra **Oluştur'u**tıklatın.
+3. Yönetilen diskiniz için bir ad girin. Varsayılan ayarları gözden geçirin, gerekirse güncelleştirin ve ardından **Oluştur**' a tıklayın.
    
    ![Disk ayarlarını gözden geçirme](./media/attach-disk-portal/create-new-md-settings.png)
 
-4. Yönetilen diski oluşturmak ve VM yapılandırmasını güncelleştirmek için **Kaydet'i** tıklatın:
+4. Yönetilen diski oluşturmak ve VM yapılandırmasını güncelleştirmek için **Kaydet** ' e tıklayın:
 
-   ![Yeni Azure Yönetilen Diski Kaydet](./media/attach-disk-portal/confirm-create-new-md.png)
+   ![Yeni Azure yönetilen diskini Kaydet](./media/attach-disk-portal/confirm-create-new-md.png)
 
-5. Azure diski oluşturup sanal makineye taktıktan sonra, yeni disk Sanal Makine'nin disk ayarlarında **Veri Diskleri**altında listelenir. Yönetilen diskler üst düzey bir kaynak olduğundan, disk kaynak grubunun kökünde görünür:
+5. Azure diski oluşturduktan ve sanal makineye iliştirdikten sonra, yeni disk, **veri diskleri**altındaki sanal makinenin disk ayarlarında listelenir. Yönetilen diskler üst düzey bir kaynak olduğundan, disk kaynak grubunun kökünde görünür:
 
-   ![Kaynak grubunda Azure Yönetilen Disk](./media/attach-disk-portal/view-md-resource-group.png)
+   ![Kaynak grubunda Azure yönetilen disk](./media/attach-disk-portal/view-md-resource-group.png)
 
 ## <a name="attach-an-existing-disk"></a>Var olan bir diski ekleme
-1. **Diskler** bölmesine + **Veri diski ekle'yi**tıklatın.
-2. Azure aboneliğiniz için erişilebilen mevcut yönetilen disklerin listesini görüntülemek için **Ad** için açılan menüyü tıklatın. Eklemek için yönetilen diski seçin:
+1. **Diskler** bölmesinde **+ veri diski Ekle**' ye tıklayın.
+2. Azure aboneliğiniz tarafından erişilebilen mevcut yönetilen disklerin bir listesini görüntülemek için **ad** ' ın açılan menüsüne tıklayın. İliştirilecek yönetilen diski seçin:
 
-   ![Varolan Azure Yönetilen Diski ekleme](./media/attach-disk-portal/select-existing-md.png)
+   ![Mevcut Azure yönetilen diski Ekle](./media/attach-disk-portal/select-existing-md.png)
 
-3. Varolan yönetilen diski eklemek ve VM yapılandırmasını güncelleştirmek için **Kaydet'i** tıklatın:
+3. Mevcut yönetilen diski eklemek ve VM yapılandırmasını güncelleştirmek için **Kaydet** ' e tıklayın:
    
-   ![Azure Yönetilen Disk güncelleştirmelerini kaydedin](./media/attach-disk-portal/confirm-attach-existing-md.png)
+   ![Azure yönetilen disk güncelleştirmelerini Kaydet](./media/attach-disk-portal/confirm-attach-existing-md.png)
 
-4. Azure diski sanal makineye taktıktan sonra, Sanal makinenin disk ayarlarında **Veri Diskleri**altında listelenir.
+4. Azure, diski sanal makineye iliştirdikten sonra, sanal makinenin disk ayarlarında **veri diskleri**altında listelenir.
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Yeni diski takmak için Linux VM'ye bağlanın
-Linux VM'nizin kullanabilmesi için yeni diskinizi bölmek, biçimlendirmek ve takmak için SSH'i VM'nize dönüştürün. Daha fazla bilgi için bkz. [Azure’da Linux ile SSH kullanma](mac-create-ssh-keys.md). Aşağıdaki örnek, *azureuser*kullanıcı adı ile *mypublicdns.westus.cloudapp.azure.com* ortak DNS girişi ile bir VM bağlanır: 
+## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Yeni diski bağlamak için Linux VM 'ye bağlanma
+Linux sanal makinenizin kullanabilmesi için yeni diskinizi bölümlemek, biçimlendirmek ve bağlamak üzere sanal makinenize SSH. Daha fazla bilgi için bkz. [Azure’da Linux ile SSH kullanma](mac-create-ssh-keys.md). Aşağıdaki örnek, *mypublicdns.westus.cloudapp.Azure.com* Kullanıcı adı Ile genel DNS girişi olan bir VM 'ye bağlanır *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
 ```
 
-VM'nize bağlandıktan sonra bir disk takmaya hazırsınız. İlk olarak, diski kullanarak `dmesg` bulun (yeni diskinizi keşfetmek için kullandığınız yöntem değişebilir). Aşağıdaki örnek, *SCSI* disklerine filtre sağlamak için dmesg kullanır:
+Sanal makinenize bağlandıktan sonra bir disk eklemeye hazırsınız demektir. İlk olarak, kullanarak `dmesg` diski bulun (yeni diskinizi bulmak için kullandığınız yöntem farklılık gösterebilir). Aşağıdaki örnek, *SCSI* disklerinde filtrelemek için dmesg kullanır:
 
 ```bash
 dmesg | grep SCSI
@@ -86,21 +86,21 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-Burada, *SDC* istediğimiz disktir. 
+Burada, *SDC* , istediğimiz disktir. 
 
-### <a name="partition-a-new-disk"></a>Yeni bir diski bölme
-Veri içeren varolan bir disk kullanıyorsanız, diski monte etmek için atlayın. Yeni bir disk ekiyorsanız, diski bölmeniz gerekir.
+### <a name="partition-a-new-disk"></a>Yeni bir disk bölümleme
+Veri içeren mevcut bir disk kullanıyorsanız, diski bağlamak için atlayın. Yeni bir disk iliştirmeye çalışıyorsanız, diski bölümlemek gerekir.
 
 > [!NOTE]
-> Fdisk'in veya dağıtımIçin kullanılabilen ayrılmış en son sürümlerini kullanmanız önerilir.
+> Kendi oluşturduğunuz en son Fdisk sürümlerini kullanmanız veya uygulamanız için uygun olması önerilir.
 
-`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (TiB) veya daha büyükse GPT bölümleme `parted` kullanmanız gerekir, GPT bölümleme gerçekleştirmek için kullanabilirsiniz. Disk boyutu 2TiB'nin altındaysa, MBR veya GPT bölümleme yi kullanabilirsiniz. Bölüm 1'de birincil disk yapın ve diğer varsayılanları kabul edin. Aşağıdaki örnek `fdisk` */dev/sdc*üzerinde süreci başlatır:
+`fdisk` ile diski bölümlendirin. Disk boyutu 2 tebibayt (Tib) veya daha büyükse GPT bölümlendirme kullanmanız gerekir, bu durumda GPT bölümlendirme gerçekleştirmek için kullanabilirsiniz `parted` . Disk boyutu 2TiB altındaysa, MBR veya GPT bölümlemesini kullanabilirsiniz. Bölüm 1 ' de bir birincil disk oluşturun ve diğer varsayılanları kabul edin. Aşağıdaki örnek, */dev/SDC*üzerinde `fdisk` işlemi başlatır:
 
 ```bash
 sudo fdisk /dev/sdc
 ```
 
-Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil `p` bölüm için de seçim ve varsayılan değerlerin geri kalanını kabul. Çıkış aşağıdaki örneğe benzeyecektir:
+Yeni bölüm eklemek için `n` komutunu kullanın. Bu örnekte, birincil bölüm için de `p` seçim yaptık ve varsayılan değerlerin geri kalanını kabul ediyoruz. Çıkış aşağıdaki örneğe benzeyecektir:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -122,7 +122,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Bölüm tablosunu yazarak `p` yazdırın ve ardından tabloyu diske ve çıkışa yazmak için kullanın. `w` Çıktı aşağıdaki örneğe benzer olmalıdır:
+Bölüm tablosunu yazarak `p` ve ardından tabloyu diske yazmak ve `w` çıkmak için kullanarak yazdırın. Çıktı aşağıdaki örneğe benzer şekilde görünmelidir:
 
 ```bash
 Command (m for help): p
@@ -144,7 +144,7 @@ Calling ioctl() to re-read partition table.
 Syncing disks.
 ```
 
-Şimdi, `mkfs` komutu ile bölüme bir dosya sistemi yazın. Dosya sistem türünü ve aygıt adını belirtin. Aşağıdaki örnek, */dev/sdc1* bölümü üzerinde önceki adımlarda oluşturulan bir *ext4* dosya sistemi oluşturur:
+Şimdi, `mkfs` komutunu kullanarak bölüme bir dosya sistemi yazın. Dosya sistemi türünü ve cihaz adını belirtin. Aşağıdaki örnek, önceki adımlarda oluşturulan */dev/sdc1* bölümünde bir *ext4* FileSystem oluşturur:
 
 ```bash
 sudo mkfs -t ext4 /dev/sdc1
@@ -175,34 +175,34 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-#### <a name="alternate-method-using-parted"></a>Parçalı kullanarak alternatif yöntem
-Fdisk yardımcı programı interaktif girişe ihtiyaç duyar ve bu nedenle otomasyon komut dosyaları içinde kullanım için ideal değildir. Ancak, [ayrılmış](https://www.gnu.org/software/parted/) yardımcı program komut dosyası olabilir ve bu nedenle otomasyon senaryolarında kendini daha iyi ödünç verir. Bölünmüş yardımcı program, bir veri diskini bölmek ve biçimlendirmek için kullanılabilir. Aşağıdaki iz için yeni bir veri diski /dev/sdc kullanıyoruz ve [XFS](https://xfs.wiki.kernel.org/) dosya sistemini kullanarak biçimlendiriyoruz.
+#### <a name="alternate-method-using-parted"></a>Ayrıştırmuş kullanılan alternatif Yöntem
+Fdisk yardımcı programı etkileşimli girişe ihtiyaç duyuyor ve bu nedenle Otomasyon betikleri içinde kullanılmak üzere ideal değildir. Ancak, [genişletilmiş](https://www.gnu.org/software/parted/) yardımcı program komut dosyası oluşturabilir ve bu nedenle Otomasyon senaryolarında daha iyi bir şekilde olabilir. Genişletilmiş yardımcı program, bir veri diskinin bölümlenmesi ve formatlanmaya yönelik olarak kullanılabilir. Aşağıdaki izlenecek yol için, yeni bir veri diski/dev/SDC ve [XFS](https://xfs.wiki.kernel.org/) FileSystem kullanarak biçimlendirin.
 ```bash
 sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 partprobe /dev/sdc1
 ```
-Yukarıda görüldüğü gibi, çekirdeğin yeni bölüm ve dosya sisteminden hemen haberdar olduğundan emin olmak için [partprobe](https://linux.die.net/man/8/partprobe) yardımcı programını kullanırız. Partprobe'un kullanılmaması, blkid veya lslbk komutlarının yeni dosya sistemi için UUID'yi hemen döndürmemesine neden olabilir.
+Yukarıda görüldüğü gibi, çekirdeğin yeni bölüm ve FileSystem 'ın hemen farkında olduğundan emin olmak için [partaraştırma](https://linux.die.net/man/8/partprobe) yardımcı programını kullanırız. Partaraştırması kullanma hatası, blkıd veya lslbk komutlarının, yeni FileSystem için UUID 'yi hemen döndürmemesine neden olabilir.
 
-### <a name="mount-the-disk"></a>Diski monte et
-Dosya sistemini kullanarak `mkdir`monte etmek için bir dizin oluşturun. Aşağıdaki örnek */datadrive'da*bir dizin oluşturur:
+### <a name="mount-the-disk"></a>Diski bağlama
+Kullanarak `mkdir`dosya sistemini bağlamak için bir dizin oluşturun. Aşağıdaki örnek, */datadrive*dizininde bir dizin oluşturur:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-Daha `mount` sonra dosya sistemini takmak için kullanın. Aşağıdaki örnek / *dev/sdc1* bölümü */ datadrive* montaj noktasına bağlar:
+Daha `mount` sonra dosya sistemini bağlamak için kullanın. Aşağıdaki örnek */dev/sdc1* bölümünü */datadrive* bağlama noktasına bağlar:
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
 
-Sürücünün yeniden başlatıldıktan sonra otomatik olarak yeniden monte edilmesini sağlamak için */etc/fstab* dosyasına eklenmelidir. UUID 'nin (Evrensel Olarak Benzersiz Tanımlayıcı) sürücüye başvurmak için */etc/fstab'da* kullanılması da tavsiye edilir (örneğin, */dev/sdc1).* Önyükleme sırasında işletim sistemi bir disk hatası algılarsa, UUID'nin kullanılması belirlenen konuma yanlış diskin bağlanmasını önler. Bundan sonra kalan veri diskleri aynı cihaz kimliklerine atanabilir. Yeni sürücünün UUID'sini bulmak için `blkid` yardımcı programını kullanın:
+Sürücünün yeniden başlatma işleminden sonra otomatik olarak yeniden takıldığından emin olmak için, */etc/fstab* dosyasına eklenmesi gerekir. Ayrıca, */etc/fstab* içinde, yalnızca cihaz adı (örneğin, */dev/sdc1*) yerine, sürücüye başvurmak Için UUID 'Nin (evrensel olarak benzersiz tanımlayıcı) kullanılması önemle tavsiye edilir. Önyükleme sırasında işletim sistemi bir disk hatası algılarsa, UUID'nin kullanılması belirlenen konuma yanlış diskin bağlanmasını önler. Bundan sonra kalan veri diskleri aynı cihaz kimliklerine atanabilir. Yeni sürücünün UUID'sini bulmak için `blkid` yardımcı programını kullanın:
 
 ```bash
 sudo -i blkid
 ```
 
-Çıktı aşağıdaki örneğe benzer:
+Çıktı aşağıdaki örneğe benzer şekilde görünür:
 
 ```bash
 /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -211,36 +211,36 @@ sudo -i blkid
 ```
 
 > [!NOTE]
-> **/etc/fstab** dosyasının yanlış düzenlenmesi başlatılamaz bir sisteme neden olabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Düzenlemeden önce /etc/fstab dosyasının bir yedeklemesinin oluşturulması da önerilir.
+> **/Etc/fstab** dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
 
-Ardından, bir metin düzenleyicisi */etc/fstab* dosyasını aşağıdaki gibi açın:
+Sonra, */etc/fstab* dosyasını bir metin düzenleyicisinde şu şekilde açın:
 
 ```bash
 sudo vi /etc/fstab
 ```
 
-Bu örnekte, önceki adımlarda oluşturulan */dev/sdc1* aygıtı nın UUID değerini ve */datadrive'ın*montaj noktasını kullanın. */etc/fstab* dosyasının sonuna aşağıdaki satırı ekleyin:
+Bu örnekte, önceki adımlarda oluşturulan */dev/sdc1* cihazının UUID değerini ve */datadrive*bağlama noktasını kullanın. */Etc/fstab* dosyasının sonuna aşağıdaki satırı ekleyin:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
 ```
-Bittiğinde, */etc/fstab* dosyasını kaydedin ve sistemi yeniden başlatın.
+İşiniz bittiğinde, */etc/fstab* dosyasını kaydedin ve sistemi yeniden başlatın.
 > [!NOTE]
-> Daha sonra fstab düzenleme olmadan bir veri diski kaldırma VM önyükleme başarısız neden olabilir. Çoğu dağıtım *nofail* ve/veya *nobootwait* fstab seçeneklerini sağlar. Bu seçenekler, disk önyükleme zamanında monte başarısız olsa bile bir sistemin önyükleme sağlar. Bu parametreler hakkında daha fazla bilgi için dağıtımınızın belgelerine başvurun.
+> Daha sonra fstab düzenlemeden bir veri diskinin kaldırılması, sanal makinenin önyüklenememesine neden olabilir. Çoğu dağıtım, *nofail* ve/veya *nobootwaıt* fstab seçeneklerini sağlar. Bu seçenekler, disk önyükleme zamanında takılamazsa bile sistemin önyüklenmesine izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
 > 
-> *Nofail* seçeneği, dosya sistemi bozuk olsa veya önyükleme zamanında disk yok olsa bile VM'nin başlatılmasını sağlar. Bu seçenek olmadan, [FSTAB hataları nedeniyle Can SSH'den Linux VM'ye](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) açıklanan davranışlarla karşılaşabilirsiniz
+> *NOFAIL* seçeneği, dosya sistemi bozuk olsa da veya önyükleme zamanında disk mevcut olmasa bile VM 'nin başlamasını sağlar. Bu seçenek olmadan, [FSTAB hataları nedeniyle LINUX sanal MAKINESINE SSH yapılamıyor](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/) bölümünde açıklandığı gibi davranışla karşılaşabilirsiniz
 
-### <a name="trimunmap-support-for-linux-in-azure"></a>Azure'da Linux için TRIM/UNMAP desteği
-Bazı Linux çekirdekleri, diskteki kullanılmayan blokları atmak için TRIM/UNMAP işlemlerini destekler. Bu özellik, azure'a silinen sayfaların artık geçerli olmadığını ve atılabildiği konusunda azure'a bilgi vermek için öncelikle standart depolama alanında kullanışlıdır ve büyük dosyalar oluşturup silerseniz paradan tasarruf edebilirsiniz.
+### <a name="trimunmap-support-for-linux-in-azure"></a>Azure 'da Linux için KıRPMA/eşlemeyi kaldır
+Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/eşlemeyi Kaldır işlemlerini destekler. Bu özellik, Azure 'un silinen sayfaların artık geçerli olmadığını ve atılamayacağını, daha sonra da büyük dosyalar oluşturup bunları silerek paradan tasarruf etmesini bildirmek için standart depolamada yararlıdır.
 
-Linux VM'nizde TRIM desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtımınıza danışın:
+Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* `discard` */etc/fstab'daki*montaj seçeneğini kullanın, örneğin:
+* /Etc/fstab içindeki `discard` bağlama seçeneğini kullanın */etc/fstab*, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* Bazı durumlarda, `discard` seçeneğin performans etkileri olabilir. Alternatif olarak, komutu `fstrim` komut satırından el ile çalıştırabilir veya düzenli olarak çalıştırmak için crontab'ınıza ekleyebilirsiniz:
+* Bazı durumlarda, `discard` seçeneğinde performans olumsuz etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
   
     **Ubuntu**
   
@@ -257,4 +257,4 @@ Linux VM'nizde TRIM desteğini etkinleştirmenin iki yolu vardır. Her zamanki g
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure CLI'yi kullanarak [bir veri diski](add-disk.md) de ekleyebilirsiniz.
+Ayrıca, Azure CLı kullanarak [bir veri diski](add-disk.md) ekleyebilirsiniz.

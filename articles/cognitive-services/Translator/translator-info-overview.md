@@ -1,5 +1,5 @@
 ---
-title: Translator Metin Çevirisi API’si nedir? - Çevirmen Metin API
+title: Translator Metin Çevirisi API’si nedir? -Translator Metin Çevirisi API'si
 titlesuffix: Azure Cognitive Services
 description: Çok dilli kullanıcı deneyimleri sağlamak için Translator Metin Çevirisi API’si ile uygulamalarınızı, web sitelerinizi, araçlarınızı ve diğer çözümlerinizi tümleştirin.
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78331051"
 ---
 # <a name="what-is-the-translator-text-api"></a>Translator Metin Çevirisi API’si nedir?
@@ -28,7 +28,7 @@ Translator Metin Çevirisi API’si, buluttaki Azure [Bilişsel Hizmetler API’
 
 Microsoft Translator, bulut tabanlı bir makine çevirisi hizmetidir. Bu hizmetin temelinde, çeşitli Microsoft ürünlerini ve hizmetlerini desteklemenin yanı sıra dünya çapında binlerce işletmenin uygulamalarında ve iş akışlarında kullanılıp bu işletmelerin içeriklerini tüm dünyadaki hedef kitleye ulaştırmasını sağlayan Translator Metin Çevirisi API'si yer alır.
 
-Translator Metin Çevirisi API'si ile desteklenen konuşma çevirisi de [Microsoft Konuşma Tanıma Hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/) üzerinden kullanıma açıktır. Çevirmen Konuşma API'si ve Özel Konuşma Hizmeti'ndeki işlevselliği birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir.Konuşma Tanıma API'si, 15 Ekim 2019 tarihinde kullanımdan kaldırılacak Translator Konuşma Çevirisi API'sinin yerini alacaktır.
+Translator Metin Çevirisi API'si ile desteklenen konuşma çevirisi de [Microsoft Konuşma Tanıma Hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/) üzerinden kullanıma açıktır. Translator Konuşma Çevirisi API'si ve Özel Konuşma Tanıma hizmetten işlevselliği Birleşik ve tamamen özelleştirilebilir bir hizmette birleştirir.Konuşma Tanıma API'si, 15 Ekim 2019 tarihinde kullanımdan kaldırılacak Translator Konuşma Çevirisi API'sinin yerini alacaktır.
 
 ## <a name="language-support"></a>Dil desteği
 
@@ -55,5 +55,5 @@ Custom Translator sayesinde, kendi işletmenizde veya sektörünüzde kullanıla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Erişim anahtarı için [kaydolun](translator-text-how-to-signup.md).
-- [API başvurusu, API'ler](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) için teknik belgeleri sağlar.
+- [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) , API 'ler için teknik belgeler sağlar.
 - [Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

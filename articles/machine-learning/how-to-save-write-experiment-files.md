@@ -1,7 +1,7 @@
 ---
-title: Deneme dosyalarını yazmak & kaydedilen yer
+title: '& yazma deneme dosyalarının kaydedileceği yer'
 titleSuffix: Azure Machine Learning
-description: Deneme giriş dosyalarınızı nereye kaydacağınızı ve depolama sınırlaması hatalarını ve deneme gecikmesini önlemek için çıktı dosyalarını nereye yazacağınızı öğrenin.
+description: Deneme girdi dosyalarınızın nereye kaydedileceğini ve depolama sınırlaması hatalarını ve deneme gecikmesini engellemek için çıkış dosyalarının nereye yazılacağını öğrenin.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -13,68 +13,68 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79078458"
 ---
-# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya ların kaydedildiği ve yazılması gereken yerler
+# <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning denemeleri için dosya kaydetme ve yazma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, depolama sınırı hatalarını ve deneme gecikmesini önlemek için giriş dosyalarını nereye kaydacağınızı ve denemelerinizden çıktı dosyalarının nerede yazacağınızı öğrenirsiniz.
+Bu makalede, giriş dosyalarının nereye kaydedileceğini ve depolama sınırı hatalarını ve deneme gecikmesini engellemek için denemeleri 'dan çıktı dosyalarının nereye yazılacağını öğrenirsiniz.
 
-Bir [hesaplama hedefi](how-to-set-up-training-targets.md)üzerinde eğitim çalıştırırken, dış ortamlardan izole edilir. Bu tasarımın amacı, deneyin tekrarlanabilirliğini ve taşınabilirliğini sağlamaktır. Aynı komut dosyasını aynı veya başka bir bilgi işlem hedefinde iki kez çalıştırın, aynı sonuçları alırsınız. Bu tasarımla, işlem hedeflerini, her biri tamamlandıktan sonra çalışan işlere hiçbir yakınlığı olmayan, devletsiz hesaplama kaynakları olarak değerlendirebilirsiniz.
+Bir [işlem hedefi](how-to-set-up-training-targets.md)üzerinde eğitim çalıştırmaları başlatıldığında, bunlar dış ortamlardan yalıtılmıştır. Bu tasarımın amacı, denemenin reproducibility ve taşınabilirliği sağlamaktır. Aynı betiği iki kez çalıştırırsanız aynı veya başka bir işlem hedefinde aynı sonuçları alırsınız. Bu tasarımla, işlem hedeflerini durum bilgisiz hesaplama kaynakları olarak, her biri tamamlandıktan sonra çalışmakta olan işlere benzeşim olmadan kabul edebilirsiniz.
 
-## <a name="where-to-save-input-files"></a>Giriş dosyalarının kaydedildiği yer
+## <a name="where-to-save-input-files"></a>Giriş dosyalarının kaydedileceği yer
 
-Bir bilgi işlem hedefi veya yerel makineüzerinde deneme başlatamadan önce, bağımlılık dosyaları ve kodunuzu çalıştırmak için gereken veri dosyaları gibi gerekli dosyaların bu bilgi işlem hedefi için kullanılabilir olduğundan emin olmalısınız.
+Bir işlem hedefi veya yerel makinenizde bir deneme başlamadan önce, kodunuzun çalışması gereken bağımlılık dosyaları ve veri dosyaları gibi gerekli dosyaların bu işlem hedefi için kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure Machine Learning, tüm komut dosyası klasörünü hedef bilgi işlem bağlamına kopyalayarak eğitim komut dosyalarını çalıştırır ve ardından anlık görüntü alır. Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
+Azure Machine Learning, tüm betik klasörünü hedef işlem bağlamına kopyalayarak ve ardından bir anlık görüntü alan eğitim betikleri çalıştırır. Deneme anlık görüntülerinin depolama sınırı 300 MB ve/veya 2000 dosyadır.
 
-Bu nedenle, şunları öneririz:
+Bu nedenle şunları öneririz:
 
-* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)depolama.** Bu, deneme gecikmesi sorunlarını önler ve kimlik doğrulama ve montajın Azure Machine Learning tarafından yönetildiği anlamına gelen uzak bir bilgi işlem hedefinden verilere erişme avantajlarına sahiptir. Kaynak dizininiz olarak bir veri deposu belirtme ve [veri depoları makalenizden Access verilerine](how-to-access-data.md) dosya yükleme hakkında daha fazla bilgi edinin.
+* **Dosyalarınızı Azure Machine Learning [veri deposunda](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)depolama.** Bu, deneme süresi sorunlarını önler ve uzaktan bir işlem hedefinden verilere erişmenin avantajlarından yararlanır, bu da kimlik doğrulama ve bağlama Azure Machine Learning tarafından yönetilir. Kaynak dizininiz olarak bir veri deposu belirtme ve [verileri veri depoları makalesindeki erişim verilerine](how-to-access-data.md) yükleme hakkında daha fazla bilgi edinin.
 
-* **Yalnızca birkaç veri dosyasına ve bağımlılık komut dosyasına ihtiyacınız varsa ve veri deposu kullanamıyorsanız,** dosyaları eğitim komut dosyanızla aynı klasör dizinine yerleştirin. Bu klasörü `source_directory` doğrudan eğitim komut dosyanızda veya eğitim komut dosyanızı çağıran kodda belirtiniz.
+* **Yalnızca birkaç veri dosyası ve bağımlılık betiklerine Ihtiyacınız varsa ve bir veri deposu kullanamaz,** dosyaları eğitim betiğinizle aynı klasör dizinine yerleştirin. Bu klasörü `source_directory` doğrudan eğitim betiğinizdeki veya eğitim betiğinizi çağıran kodda belirtin.
 
 <a name="limits"></a>
 
 ### <a name="storage-limits-of-experiment-snapshots"></a>Deneme anlık görüntülerinin depolama sınırları
 
-Azure Machine Learning, denemeler için, çalıştırmayı yapılandırırken önerdiğiniz dizine göre kodunuzu otomatik olarak deneme anlık görüntüsünü yapar. Bu 300 MB ve / veya 2000 dosyaları toplam sınırı vardır. Bu sınırı aşarsanız, aşağıdaki hatayı görürsünüz:
+Denemeleri için Azure Machine Learning, çalıştırmayı yapılandırırken önerdiğiniz dizine göre kodunuzun deneme anlık görüntüsünü otomatik olarak yapar. Bunun toplam 300 MB ve/veya 2000 dosya sınırı vardır. Bu sınırı aşarsanız aşağıdaki hatayı görürsünüz:
 
 ```Python
 While attempting to take snapshot of .
 Your total snapshot size exceeds the limit of 300.0 MB
 ```
 
-Bu hatayı gidermek için deneme dosyalarınızı bir veri deposunda depolayın. Bir veri deposu kullanamıyorsanız, aşağıdaki tablo olası alternatif çözümler sunar.
+Bu hatayı çözmek için, denemenizin dosyalarını bir veri deposunda depolayın. Bir veri deposu kullanamıyoruz, aşağıdaki tabloda olası alternatif çözümler sunulmaktadır.
 
-Deney&nbsp;açıklaması|Depolama limiti çözümü
+Deneme&nbsp;açıklaması|Depolama sınırı çözümü
 ---|---
-2000'den az dosya & veri deposu kullanamaz| Anlık görüntü boyut sınırını geçersiz kılma <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Bu, dosyaların sayısına ve boyutuna bağlı olarak birkaç dakika sürebilir.
-Belirli komut dosyası dizini kullanmalı| Kaynak `.amlignore` kodun parçası olmayan dosyaları deneme anlık görüntüsünden hariç tutmak için bir dosya yapın. Dosya adlarını dosyaya `.amlignore` ekleyin ve eğitim komut dosyanızla aynı dizine yerleştirin. Dosya, `.amlignore` dosyayla `.gitignore` aynı [sözdizimini ve desenleri](https://git-scm.com/docs/gitignore) kullanır.
+2000 'den az dosya & veri deposu kullanamaz| Anlık görüntü boyutu sınırını geçersiz kıl <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Bu işlem, dosyaların sayısına ve boyutuna bağlı olarak birkaç dakika sürebilir.
+Belirli komut dosyası dizini kullanılmalıdır| Kaynak kodun `.amlignore` parçası olmayan denemenizin anlık görüntüsünden dosyaları dışlamak için bir dosya oluşturun. `.amlignore` Dosya adlarını dosyaya ekleyin ve eğitim betiğinizle aynı dizine yerleştirin. Dosya, bir `.gitignore` dosya ile aynı [söz dizimini ve desenleri](https://git-scm.com/docs/gitignore) kullanır. `.amlignore`
 İşlem hattı|Her adım için farklı bir alt dizin kullanın
-Jupyter notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş, alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
+Jupyter notebooks| Bir `.amlignore` dosya oluşturun veya not defterinizi yeni, boş bir alt dizine taşıyın ve kodunuzu yeniden çalıştırın.
 
-## <a name="where-to-write-files"></a>Dosya yazma nın yeri
+## <a name="where-to-write-files"></a>Dosyaların yazılacağı yer
 
-Eğitim denemelerinin yalıtımı nedeniyle, çalıştırmalar sırasında meydana gelen dosyalarda yapılan değişikliklerin ortamınızın dışında kalıcı olması gerekmez. Komut dosyanız dosyaları yerel olarak hesaplatmak üzere değiştirirse, değişiklikler bir sonraki deneme niz için kalıcı değildir ve istemci makinesine otomatik olarak geri yayılmaz. Bu nedenle, ilk deneme çalışması sırasında yapılan değişiklikler ikinci denemedekileri etkilemez ve etkilememelidir.
+Eğitim denemeleri yalıtımı nedeniyle, çalışma sırasında oluşan dosyalardaki değişiklikler ortamınızın dışında kalıcı hale gelmez. Betiğinizin yerel olarak işlem yapmasını değiştirirse, değişiklikler sonraki denemenizin çalıştırılması için kalıcı olmaz ve istemci makinesine otomatik olarak geri yayılmaz. Bu nedenle, ilk deneme sırasında yapılan değişiklikler çalışmaz ve ikinciden etkilenmemelidir.
 
-Değişiklikleri yazarken, bir Azure Machine Learning veri deposuna dosya yazmanızı öneririz. Bkz. [Veri depolarınızdaki verilere erişin.](how-to-access-data.md)
+Değişiklikleri yazarken, bir Azure Machine Learning veri deposuna dosya yazılmasını öneririz. Bkz. [veri mağazalarınızın verilerine erişme](how-to-access-data.md).
 
-Bir veri deposuna ihtiyacınız yoksa, dosyayı `./outputs` ve/veya `./logs` klasöre yazın.
+Bir veri deposu gerekmiyorsa, dosyaları `./outputs` ve/veya `./logs` klasörüne yazın.
 
 >[!Important]
-> İki klasör, *çıktı* ve *günlük,* Azure Machine Learning tarafından özel muamele alır. Eğitim sırasında, dosya`./outputs` ve`./logs` klasörlere dosya yazdığınızda, dosyalar otomatik olarak çalışma geçmişinize yüklenir, böylece çalışmanız tamamlandıktan sonra bunlara erişebilirsiniz.
+> İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, dosyaları`./outputs` ve`./logs` klasörlere yazdığınızda, dosyalar çalışma geçmişinize otomatik olarak yüklenir, böylece çalıştırma tamamlandıktan sonra bunlara erişebilirsiniz.
 
-* **Durum iletileri veya puanlama sonuçları gibi çıktılar için,** dosyayı `./outputs` klasöre yazın, böylece çalışma geçmişinde yapı olarak kalıcıdırlar. İçeriği niçin geçmişi çalıştırmak için yüklendiğinde gecikme meydana gelebileceğinden, bu klasöre yazılan dosyaların sayısına ve boyutuna dikkat edin. Gecikme bir sorunsa, bir veri deposuna dosya yazma önerilir.
+* **Durum iletileri veya Puanlama sonuçları gibi bir çıktı için,** dosyaları `./outputs` klasöre yazın ve bu nedenle çalışma geçmişinde yapıtlar olarak kalıcı hale getirilir. İçerik çalıştırma geçmişine yüklendiğinde gecikme sürebileceği için, bu klasöre yazılan dosyaların sayısı ve boyutu hakkında mindazın. Gecikme bir sorun oluşturacaksa, dosyaları bir veri deposuna yazmak önerilir.
 
-* **Yazılı dosyayı çalışma geçmişinde günlük olarak** `./logs` kaydetmek için dosyaları klasöre yazın. Günlükler gerçek zamanlı olarak yüklendiğinden, bu yöntem uzaktan çalıştırmadan canlı güncelleştirmeler akışı için uygundur.
+* **Yazılan dosyayı çalıştırma geçmişinde Günlükler olarak kaydetmek için** dosyaları `./logs` klasöre yazın. Günlükler gerçek zamanlı olarak karşıya yüklenir, bu nedenle bu yöntem uzak bir çalıştırmada canlı güncelleştirmeleri akışa uygundur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veri depolarınızdan verilere erişim](how-to-access-data.md)hakkında daha fazla bilgi edinin.
+* [Veri mağazalarınızın verilerine erişme](how-to-access-data.md)hakkında daha fazla bilgi edinin.
 
-* [Eğitim Hedeflerini Ayarlama](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.
+* [Eğitim hedeflerini ayarlama](how-to-set-up-training-targets.md)hakkında daha fazla bilgi edinin.

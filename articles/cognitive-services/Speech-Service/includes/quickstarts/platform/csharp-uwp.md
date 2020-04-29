@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: C# Universal Windows Platform (UWP) platformu kurulumu için Konuşma SDK - Konuşma hizmeti'
+title: 'Hızlı başlangıç: C# için konuşma SDK Evrensel Windows Platformu (UWP) Platform Kurulumu-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti SDK ile Evrensel Windows Platformu (UWP) altında C# platformunuzu kurmak için bu kılavuzu kullanın.
+description: Konuşma hizmeti SDK 'Sı ile Evrensel Windows Platformu (UWP) altında C# platformunu ayarlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
 ms.openlocfilehash: f95fd8aa66e83e6be8f4b0eef9635750d83ce55e
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925489"
 ---
-Bu kılavuz, C# Evrensel Windows Platformu (UWP) için [Konuşma SDK'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yüklenir olduğunu gösterir. Paket adının kendi başınızın başlamasını istiyorsanız, `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda çalıştırın.
+Bu kılavuzda C# Evrensel Windows platformu (UWP) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız NuGet konsolunda öğesini çalıştırın `Install-Package Microsoft.CognitiveServices.Speech` .
 
 > [!NOTE]
 > Evrensel Windows Platformu; PC, Xbox, Surface Hub ve diğer cihazlar dahil olmak üzere Windows 10 destekleyen tüm cihazlarda çalışan uygulamalar geliştirmenize olanak tanır.
@@ -28,13 +28,13 @@ Bu kılavuz, C# Evrensel Windows Platformu (UWP) için [Konuşma SDK'sının](~/
 
 Bu hızlı başlangıç şunları gerektirir:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir baskı)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (herhangi bir sürüm)
 
-## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Görsel Stüdyo projesi oluşturun ve Konuşma SDK'yı kurun
+## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Visual Studio projesi oluşturma ve konuşma SDK 'sını yüklemeye
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-Artık aşağıdaki Sonraki [adımlara](#next-steps) geçebilirsiniz.
+Şimdi aşağıdaki [adımlara](#next-steps) geçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

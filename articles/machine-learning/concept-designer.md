@@ -1,7 +1,7 @@
 ---
-title: Tasarımcı ile ML modelleri oluşturun
+title: Tasarımcı ile ML modelleri derleme
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısını oluşturan terimler, kavramlar ve iş akışı hakkında bilgi edinin.
+description: Azure Machine Learning için tasarımcıyı oluşturan hüküm, kavramlar ve iş akışı hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,130 +10,130 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79037622"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) nedir? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Azure Machine Learning tasarımcısı, makine öğrenimi modelleri oluşturmak için [veri kümelerini](#datasets) ve [modülleri](#module) etkileşimli bir tuvale görsel olarak bağlamanızı sağlar. Tasarımcıyla nasıl başlayın, [bkz.](tutorial-designer-automobile-price-train-score.md)
+Azure Machine Learning tasarımcı, makine öğrenimi modelleri oluşturmak için etkileşimli bir tuvalde [veri kümelerini](#datasets) ve [modülleri](#module) görsel olarak bağlamanıza olanak tanır. Tasarımcı ile çalışmaya başlama hakkında bilgi edinmek için bkz [. Öğretici: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md) etme
 
 ![Azure Machine Learning tasarımcı örneği](./media/concept-designer/designer-drag-and-drop.gif)
 
-Tasarımcı, Azure Machine Learning [çalışma alanınızı](concept-workspace.md) aşağıdakiler gibi paylaşılan kaynakları düzenlemek için kullanır:
+Tasarımcı, şu gibi paylaşılan kaynakları düzenlemek için Azure Machine Learning [çalışma alanınızı](concept-workspace.md) kullanır:
 
 + [İşlem hatları](#pipeline)
 + [Veri kümeleri](#datasets)
-+ [Kaynak hesaplama](#compute)
++ [İşlem kaynakları](#compute)
 + [Kayıtlı modeller](concept-azure-machine-learning-architecture.md#models)
-+ [Yayınlanan boru hatları](#publish)
++ [Yayınlanan işlem hatları](#publish)
 + [Gerçek zamanlı uç noktalar](#deploy)
 
-## <a name="model-training-and-deployment"></a>Model eğitimi ve dağıtım
+## <a name="model-training-and-deployment"></a>Model eğitimi ve dağıtımı
 
-Tasarımcı, makine öğrenimi modellerini oluşturmanız, test etmek ve dağıtmak için size görsel bir tuval sağlar. Tasarımcı ile şunları yapabilirsiniz:
+Tasarımcı, makine öğrenimi modellerini derlemek, test etmek ve dağıtmak için size görsel bir tuval sağlar. Tasarımcı ile şunları yapabilirsiniz:
 
-+ [Veri kümelerini](#datasets) ve [modülleri](#module) tuvale sürükleyip bırakın.
-+ Bir [boru hattı taslağı](#pipeline-draft)oluşturmak için modülleri birbirine bağlayın.
-+ Azure Machine Learning çalışma alanınızdaki bilgi işlem kaynaklarını kullanarak bir [ardışık işlem çalışması](#pipeline-run) gönderin.
-+ Eğitim **ardışık hatlarınızı** **çıkarım boru hatlarına**dönüştürün.
-+ Farklı parametreler ve veri kümeleri içeren yeni ardışık hatlar çalışır' göndermek için ardışık hatlarınızı bir REST **ardışık nokta** yla [yayımlayın.](#publish)
-    + Parametreleri ve veri kümelerini değiştirirken birden çok modeli eğitmek için tek bir ardışık hattı yeniden kullanmak için bir **eğitim ardışık hattı** yayımlayın.
-    + Önceden eğitilmiş bir model kullanarak yeni veriler üzerinde öngörülerde bulunmak için toplu **çıkarım ardışık bir** işlem yayımlayın.
-+ Yeni veriler le ilgili öngörülerde bulunmak için **gerçek zamanlı çıkarım ardışık hattını** gerçek zamanlı bir bitiş noktasına [dağıtın.](#deploy)
++ [Veri kümelerini](#datasets) ve [modülleri](#module) tuval üzerine sürükleyip bırakın.
++ Bir işlem [hattı taslağı](#pipeline-draft)oluşturmak için modülleri birbirine bağlayın.
++ Azure Machine Learning çalışma alanınızdaki işlem kaynaklarını kullanarak bir işlem [hattı çalıştırması](#pipeline-run) gönderebilirsiniz.
++ **Eğitim** işlem hatlarınızı **çıkarım**işlem hatlarına dönüştürün.
++ Farklı parametrelerle ve veri kümeleriyle yeni işlem hattı çalıştırmaları göndermek için işlem hatlarınızı bir REST **ardışık düzen uç noktasına** [yayımlayın](#publish) .
+    + Parametreleri ve veri kümelerini değiştirirken birden çok modeli eğitmek için tek bir işlem hattını yeniden kullanmak üzere bir **eğitim işlem hattı** yayımlayın.
+    + Daha önce eğitilen bir modeli kullanarak yeni verilerde tahmine dayalı hale getirmek için bir **toplu çıkarım işlem hattı** yayımlayın.
++ Gerçek zamanlı bir zaman noktasına gerçek zamanlı bir **çıkarım işlem hattı** [dağıtın](#deploy) ve yeni verilerde gerçek zamanlı olarak tahmine dayalı hale getirin.
 
 ![Tasarımcıda eğitim, toplu çıkarım ve gerçek zamanlı çıkarım için iş akışı diyagramı](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>İşlem hattı
 
-[Bir ardışık işlem,](concept-azure-machine-learning-architecture.md#ml-pipelines) birbirine bağlandığınız veri kümeleri ve analitik modüllerden oluşur. Boru hatlarının birçok faydası vardır: tek bir modeli veya birden çok modeli eğiten bir boru hattı yapabilirsiniz. Öngörüleri gerçek zamanlı veya toplu olarak yapan bir ardışık hatlar oluşturabilir veya yalnızca verileri temizleyen bir ardışık hatlar oluşturabilirsiniz. Boru hatları, çalışmanızı yeniden kullanmanıza ve projelerinizi düzenlemenize izin sağlar.
+İşlem [hattı](concept-azure-machine-learning-architecture.md#ml-pipelines) , birlikte bağlandığınız veri kümeleri ve analitik modüllerden oluşur. İşlem hatları birçok kullanımı vardır: tek bir modeli gösteren bir işlem hattını veya birden çok modeli gösteren bir işlem hattı yapabilirsiniz. Gerçek zamanlı veya toplu olarak tahmin yapan bir işlem hattı oluşturabilir veya yalnızca verileri temizlemeleri için bir işlem hattı oluşturabilirsiniz. İşlem hatları, işinizi yeniden kullanmanıza ve projelerinizi düzenlemenize olanak tanır.
 
-### <a name="pipeline-draft"></a>Boru hattı taslağı
+### <a name="pipeline-draft"></a>Ardışık düzen taslağı
 
-Tasarımcıda bir ardışık hattı nı olarak, ilerlemeniz bir **boru hattı taslağı**olarak kaydedilir. Modülleri ekleyerek veya kaldırarak, bilgi işlem hedeflerini yapılandırarak, parametreler oluşturarak ve benzeri nedenlerle istediğiniz noktada bir boru hattı taslağını düzenleme yapabilirsiniz.
+Tasarımcıda bir işlem hattını düzenlerken, ilerleme durumu bir **ardışık düzen taslağı**olarak kaydedilir. Bir işlem hattı taslağını, modüller ekleyerek veya kaldırarak, işlem hedeflerini yapılandırarak, parametreler oluşturarak ve benzeri bir noktada düzenleyebilirsiniz.
 
-Geçerli bir ardışık hat:
+Geçerli bir işlem hattı şu özelliklere sahiptir:
 
 * Veri kümeleri yalnızca modüllere bağlanabilir.
-* Modüller yalnızca veri kümelerine veya diğer modüllere bağlanabilir.
-* Modüller için tüm giriş bağlantı noktaları nın veri akışına bir bağlantısı olmalıdır.
-* Her modül için gerekli tüm parametreler ayarlanmalıdır.
+* Modüller yalnızca veri kümelerine ya da diğer modüllere bağlanabilir.
+* Modüller için tüm giriş bağlantı noktalarında veri akışına bir bağlantı bulunmalıdır.
+* Her modül için gerekli tüm parametrelerin ayarlanması gerekir.
 
-Boru hattı taslağınızı çalıştırmaya hazır olduğunuzda, bir boru hattı çalıştırın.
+İşlem hattı taslağı çalıştırmaya hazırsanız bir işlem hattı çalıştırması gönderilir.
 
-### <a name="pipeline-run"></a>Boru hattı çalıştır
+### <a name="pipeline-run"></a>İşlem hattı çalıştırması
 
-Bir ardışık ardışık yapıyı her çalıştırdığınızda, ardışık yapının yapılandırması ve sonuçları çalışma alanınızda **bir ardışık iş bölümü olarak**depolanır. Sorun giderme veya denetim amacıyla denetlemek için herhangi bir ardışık hat lar çalışmasına geri dönebilirsiniz. Yeni **bir** boru hattı taslağı oluşturmak için bir boru hattı çalıştırın.
+İşlem hattını her çalıştırdığınızda işlem hattının yapılandırması ve sonuçları, çalışma alanınızda işlem **hattı çalıştırması**olarak depolanır. Sorun giderme veya denetim amaçlarıyla incelemek için herhangi bir işlem hattı çalıştırmasına geri dönebilirsiniz. Düzenlemeniz için yeni bir işlem hattı taslağı oluşturmak üzere bir işlem hattı çalıştırmasını **klonlayın** .
 
-Ardışık hatlar çalışır, çalışma geçmişini düzenlemek için [denemeler](concept-azure-machine-learning-architecture.md#experiments) halinde gruplanır. Denemeyi her ardışık hat lar için ayarlayabilirsiniz. 
+İşlem hattı çalıştırmaları, çalıştırma geçmişini düzenlemek için [denemeleri](concept-azure-machine-learning-architecture.md#experiments) olarak gruplandırılır. Her işlem hattı çalıştırması için denemeyi ayarlayabilirsiniz. 
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Makine öğrenimi veri seti, verilerinize erişmenizi ve verilerinizle çalışmayı kolaylaştırır. Denemeniz için tasarımcıya çok sayıda örnek veri kümesi dahildir. İhtiyacınız [register](how-to-create-register-datasets.md) olduğu anda daha fazla veri kümesi kaydedebilirsiniz.
+Machine Learning veri kümesi, verilerinize erişmeyi ve bunlarla çalışmayı kolaylaştırır. Bir dizi örnek veri kümesi, tasarımcı ile denemeler yapmak için eklenmiştir. Gerektiğinde daha [fazla veri kümesi kaydedebilirsiniz.](how-to-create-register-datasets.md)
 
 ## <a name="module"></a>Modül
 
-Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarımcının veri giriş işlevlerinden eğitim, puanlama ve doğrulama işlemlerine kadar çeşitli modülleri vardır.
+Bir modül, verilerinizde gerçekleştirebileceğiniz bir algoritmadır. Tasarımcı, veri giriş işlevlerinden eğitim, Puanlama ve doğrulama işlemlerine kadar birçok modül içerir.
 
-Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıdaki tek tek modüller için bilgi işlem kaynaklarını ayarlayabilirsiniz. 
+Bir modül, modülün iç algoritmalarını yapılandırmak için kullanabileceğiniz parametreler kümesine sahip olabilir. Tuvalde bir modül seçtiğinizde, modülün parametreleri tuvalin sağındaki Özellikler bölmesinde görüntülenir  Modelinizi ayarlamak için, bu bölmedeki parametreleri değiştirebilirsiniz. Tasarımcıda bireysel modüller için işlem kaynaklarını ayarlayabilirsiniz. 
 
 ![Modül özellikleri](./media/concept-designer/properties.png)
 
-Mevcut makine öğrenimi algoritmaları kitaplığında gezinmek için [algoritma & modül referans özetine](algorithm-module-reference/module-reference.md) bakın
+Kullanılabilir makine öğrenimi algoritmalarının kitaplığı ile ilgili bazı yardım için bkz. [algoritma & modül başvurusuna genel bakış](algorithm-module-reference/module-reference.md)
 
-## <a name="compute-resources"></a><a name="compute"></a>Kaynak hesaplama
+## <a name="compute-resources"></a><a name="compute"></a>İşlem kaynakları
 
-Ardışık hattınızı çalıştırmak ve dağıtılmış modellerinizi gerçek zamanlı uç noktalar veya boru hattı uç noktaları (toplu iş çıkarımı için) olarak barındırmak için çalışma alanınızdaki bilgi işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
+İş hattınızı çalıştırmak ve dağıtılan modellerinizi gerçek zamanlı uç noktalar veya ardışık düzen uç noktaları olarak barındırmak (Batch çıkarımı için) için çalışma alanınızdan işlem kaynaklarını kullanın. Desteklenen işlem hedefleri şunlardır:
 
 | İşlem hedefi | Eğitim | Dağıtım |
 | ---- |:----:|:----:|
-| Azure Machine Learning bilgi işlem | ✓ | |
+| Azure Machine Learning işlem | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)eklenir. Azure [Machine Learning Studio'da (klasik)](https://ml.azure.com)iş alanınızda bilgi işlem hedeflerinizi yönetirsiniz.
+İşlem hedefleri [Azure Machine Learning çalışma alanınıza](concept-workspace.md)iliştirilir. İşlem hedeflerinizi [Azure Machine Learning Studio (klasik)](https://ml.azure.com)içinde çalışma alanınızda yönetirsiniz.
 
 ## <a name="deploy"></a>Dağıtma
 
-Gerçek zamanlı çıkarsama gerçekleştirmek için, bir ardışık ardışık hattı **gerçek zamanlı bitiş noktası**olarak dağıtmanız gerekir. Gerçek zamanlı bitiş noktası, harici bir uygulama ile puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bitiş noktasına yapılan arama, tahmin sonuçlarını uygulamaya gerçek zamanlı olarak döndürür. Gerçek zamanlı bitiş noktasına çağrı yapmak için, bitiş noktasını dağıttığınızda oluşturulan API anahtarını geçersiniz. Bitiş noktası REST, web programlama projeleri için popüler bir mimari seçim dayanmaktadır.
+Gerçek zamanlı bir işlem hattı gerçekleştirmek için, bir işlem hattını **gerçek zamanlı uç nokta**olarak dağıtmanız gerekir. Gerçek zamanlı uç nokta, bir dış uygulama ve Puanlama modeliniz arasında bir arabirim oluşturur. Gerçek zamanlı bir uç noktaya yapılan çağrı, uygulamaya gerçek zamanlı olarak tahmin sonuçları döndürür. Gerçek zamanlı bir uç noktaya çağrı yapmak için, uç noktasını dağıtırken oluşturulan API anahtarını geçirirsiniz. Uç nokta, Web programlama projeleri için popüler bir mimari seçimi olan REST 'i temel alır.
 
-Gerçek zamanlı uç noktaların bir Azure Kubernetes Hizmet kümesine dağıtılması gerekir.
+Gerçek zamanlı uç noktaların bir Azure Kubernetes hizmet kümesine dağıtılması gerekir.
 
-Modelinizi nasıl dağıtacağımıöğrenmek için [Bkz. Öğretici: Tasarımcıyla bir makine öğrenme modeli dağıtın.](tutorial-designer-automobile-price-deploy.md)
+Modelinizi dağıtmayı öğrenmek için bkz. [öğretici: tasarımcı ile makine öğrenimi modeli dağıtma](tutorial-designer-automobile-price-deploy.md).
 
 ## <a name="publish"></a>Yayımlama
 
-Bir **ardışık ardışık nokta bitiş noktasına bir ardışık hatlar**yayımlayabilirsiniz. Gerçek zamanlı bitiş noktasına benzer şekilde, bir ardışık nokta bitiş noktası, REST çağrılarını kullanarak harici uygulamalardan yeni ardışık ardışık ardışık çalışır göndermenize olanak tanır. Ancak, bir ardışık nokta bitiş noktasını kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
+Ardışık Düzen **uç noktasına**bir işlem hattı da yayımlayabilirsiniz. Gerçek zamanlı bir uç noktaya benzer şekilde, bir ardışık düzen uç noktası, REST çağrılarını kullanarak dış uygulamalardan yeni işlem hattı çalıştırmaları göndermenize olanak tanır. Ancak, bir ardışık düzen uç noktası kullanarak gerçek zamanlı olarak veri gönderemez veya alamazsınız.
 
-Yayınlanan boru hatları esnektir, modelleri eğitmek veya yeniden eğitmek, [toplu çıkarTma yapmak,](how-to-run-batch-predictions-designer.md)yeni verileri işlemek ve çok daha fazlası için kullanılabilir. Birden çok ardışık ardışık ardışık ardışık noktayı tek bir ardışık nokta için yayımlayabilir ve hangi ardışık nokta sürümünün çalıştırılacak olduğunu belirtebilirsiniz.
+Yayınlanan işlem hatları esnektir, modelleri eğitme veya yeniden eğitme, [toplu iş](how-to-run-batch-predictions-designer.md)için bilgi işlem gerçekleştirme, yeni verileri işleme ve çok daha fazlasını yapmak için kullanılabilirler. Çoklu işlem hatlarını tek bir ardışık düzen uç noktasına yayımlayabilir ve hangi ardışık düzen sürümünün çalıştırılacağını belirtebilirsiniz.
 
-Yayımlanmış bir ardışık işlem hattı, her modül için boru hattı taslağında tanımladığınız bilgi işlem kaynaklarında çalışır.
+Yayımlanan bir işlem hattı, her modülün ardışık düzen taslağı içinde tanımladığınız işlem kaynakları üzerinde çalışır.
 
-Tasarımcı, SDK ile aynı [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) nesnesini oluşturur.
+Tasarımcı, SDK ile aynı [Publishedpipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) nesnesini oluşturur.
 
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Görsel arabirimden tasarımcıya geçme
 
-Görsel arabirim (önizleme) güncellendi ve artık Azure Machine Learning tasarımcısı (önizleme). Tasarımcı, Azure Machine Learning'in diğer özellikleriyle tam olarak bütünleşen boru hattı tabanlı bir arka uç kullanmak üzere yeniden yeniden tasarlandı. 
+Görsel Arabirim (Önizleme) güncelleştirildi ve artık Azure Machine Learning tasarımcı (Önizleme). Tasarımcı, Azure Machine Learning diğer özellikleriyle tamamen tümleştirilen bir ardışık düzen tabanlı arka uç kullanmak üzere tasarlanmıştır. 
 
-Bu güncelleştirmelerin bir sonucu olarak, görsel arabirimin bazı kavramları ve terimleri değiştirildi veya yeniden adlandırıldı. En önemli kavramsal değişiklikler için aşağıdaki tabloya bakın. 
+Bu güncelleştirmelerin sonucunda, görsel arabirim için bazı kavramlar ve terimler değiştirilmiştir veya yeniden adlandırılacaktır. En önemli kavramsal değişiklikler için aşağıdaki tabloya bakın. 
 
-| Tasarımcıda konsept | Görsel arabirimde daha önce |
+| Tasarımcıda kavram | Daha önce görsel arabirimde |
 | ---- |:----:|
-| Boru hattı taslağı | Deneme |
-| Gerçek zamanlı bitiş noktası | Web hizmeti |
+| Ardışık düzen taslağı | Deneme |
+| Gerçek zamanlı uç nokta | Web hizmeti |
 
-### <a name="migrating-to-the-designer"></a>Tasarımcıya geçiş
+### <a name="migrating-to-the-designer"></a>Tasarımcıya geçme
 
-Varolan görsel arabirim denemelerini ve web hizmetlerini tasarımcıdaki ardışık hatlara ve gerçek zamanlı uç noktalara dönüştürebilirsiniz. Görsel arabirim varlıklarınızı geçirmek için aşağıdaki adımları kullanın:
+Varolan Visual Interface denemeleri ve Web hizmetlerini, tasarımcıda işlem hatlarına ve gerçek zamanlı uç noktalara dönüştürebilirsiniz. Visual Interface varlıklarınızı geçirmek için aşağıdaki adımları kullanın:
 
 [!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğretici ile tahmine dayalı analitik ve makine öğreniminin temellerini [öğrenin: Tasarımcıyla otomobil fiyatını tahmin edin](tutorial-designer-automobile-price-train-score.md)
-* Varolan tasarımcı [örneklerini](samples-designer.md) gereksinimlerinize uyarlamak için nasıl değiştirip değiştirebilirsiniz.
+* Öğretici ile tahmine dayalı analiz ve makine öğrenimi hakkında temel bilgileri öğrenin [: tasarımcı ile otomobil fiyatlarını tahmin](tutorial-designer-automobile-price-train-score.md) etme
+* Mevcut [Tasarımcı örneklerini](samples-designer.md) gereksinimlerinize uyarlayacak şekilde nasıl değiştireceğinizi öğrenin.
 

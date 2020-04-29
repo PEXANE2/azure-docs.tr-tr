@@ -1,6 +1,6 @@
 ---
-title: Azure CLI kullanarak dosya yüklemeyi IoT Hub'a yapılandırma | Microsoft Dokümanlar
-description: Platformlar arası Azure CLI'yi kullanarak dosya yüklemelerini Azure IoT Hub'a yapılandırma.
+title: Azure CLı kullanarak IoT Hub dosya yüklemeyi yapılandırma | Microsoft Docs
+description: Platformlar arası Azure CLı kullanarak Azure IoT Hub dosya karşıya yüklemeleri yapılandırma.
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302534"
 ---
-# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLI kullanarak IoT Hub dosya yüklemelerini yapılandırma
+# <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Azure CLı kullanarak IoT Hub dosya yüklemelerini yapılandırma
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-[Bir aygıttan dosya yüklemek](iot-hub-devguide-file-upload.md)için öncelikle bir Azure Depolama hesabını IoT hub'ınızla ilişkilendirmeniz gerekir. Varolan bir depolama hesabı kullanabilir veya yeni bir depo oluşturabilirsiniz.
+[Bir cihazdan dosya yüklemek](iot-hub-devguide-file-upload.md)Için öncelikle IoT Hub 'ınız Ile bir Azure depolama hesabı ilişkilendirmeniz gerekir. Var olan bir depolama hesabını kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -27,9 +27,9 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* Azure IoT hub'ı. Bir IoT hub'ıniz yoksa, bir tane oluşturmak için [ `az iot hub create` komutu](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) kullanabilir veya [portalı kullanarak bir IoT hub'ı oluşturabilirsiniz.](iot-hub-create-through-portal.md)
+* Azure IoT Hub 'ı. IoT Hub 'ınız yoksa, [portalı kullanarak bir IoT Hub](iot-hub-create-through-portal.md)'ı oluşturmak veya oluşturmak için [ `az iot hub create` komutunu](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) kullanabilirsiniz.
 
-* Azure Depolama hesabı. Azure Depolama hesabınız yoksa, bir Azure Depolama hesabınız oluşturmak için Azure CLI'yi kullanabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
+* Azure Depolama hesabı. Azure depolama hesabınız yoksa, Azure CLı kullanarak bir tane oluşturabilirsiniz. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Oturum açın ve Azure hesabınızı ayarlayın
 
@@ -49,28 +49,28 @@ Azure hesabınızda oturum açın ve aboneliğinizi seçin.
     az account list
     ```
 
-    IoT hub'ınızı oluşturmak için komutları çalıştırmak için kullanmak istediğiniz aboneliği seçmek için aşağıdaki komutu kullanın. Önceki komutun çıkışında yer alan abonelik adını veya kimliği kullanabilirsiniz:
+    IoT Hub 'ınızı oluşturmak için komutları çalıştırmak üzere kullanmak istediğiniz aboneliği seçmek için aşağıdaki komutu kullanın. Önceki komutun çıkışında yer alan abonelik adını veya kimliği kullanabilirsiniz:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
     ```
 
-## <a name="retrieve-your-storage-account-details"></a>Depolama hesabı bilgilerinizi alma
+## <a name="retrieve-your-storage-account-details"></a>Depolama hesabı ayrıntılarınızı alın
 
-Aşağıdaki adımlar, Depolama hesabınızı **Klasik** dağıtım modelini değil, **Kaynak Yöneticisi** dağıtım modelini kullanarak oluşturduğunuzu varsayar.
+Aşağıdaki adımlarda, **Klasik** dağıtım modelini değil **Kaynak Yöneticisi** dağıtım modelini kullanarak depolama hesabınızı oluşturduğunuzu varsayalım.
 
-Aygıtlarınızdan dosya yüklemelerini yapılandırmak için bir Azure depolama hesabının bağlantı dizesine ihtiyacınız vardır. Depolama hesabı, IoT hub'ınızla aynı abonelikte olmalıdır. Ayrıca depolama hesabında bir blob konteyner adı gerekir. Depolama hesabı anahtarlarınızı almak için aşağıdaki komutu kullanın:
+Cihazlarınızdan dosya karşıya yüklemelerini yapılandırmak için bir Azure depolama hesabı için bağlantı dizesine ihtiyacınız vardır. Depolama hesabı, IoT Hub 'ınız ile aynı abonelikte olmalıdır. Ayrıca, depolama hesabındaki bir blob kapsayıcısının adına de ihtiyacınız vardır. Depolama hesabı anahtarlarınızı almak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az storage account show-connection-string --name {your storage account name} \
   --resource-group {your storage account resource group}
 ```
 
-**ConnectionString** değerine dikkat edin. Aşağıdaki adımlarda ihtiyacınız var.
+**ConnectionString** değerini bir yere getirin. Aşağıdaki adımlarda bu yapmanız gerekir.
 
-Dosya yüklemeleriniz için varolan bir blob kapsayıcısı kullanabilir veya yeni bir tane oluşturabilirsiniz:
+Dosya karşıya yüklemelerinizin mevcut bir blob kapsayıcısını kullanabilir veya yeni bir tane oluşturabilirsiniz:
 
-* Depolama hesabınızdaki varolan blob kaplarını listelemek için aşağıdaki komutu kullanın:
+* Depolama hesabınızdaki mevcut blob kapsayıcılarını listelemek için aşağıdaki komutu kullanın:
 
     ```azurecli
     az storage container list --connection-string "{your storage account connection string}"
@@ -83,27 +83,27 @@ Dosya yüklemeleriniz için varolan bir blob kapsayıcısı kullanabilir veya ye
       --connection-string "{your storage account connection string}"
     ```
 
-## <a name="file-upload"></a>Dosya yükleme
+## <a name="file-upload"></a>Karşıya dosya yükleme
 
-Artık IoT hub'ınızı, depolama hesabı bilgilerinizi kullanarak [IoT](iot-hub-devguide-file-upload.md) hub'ına dosya yükleme olanağı nı etkinleştirecek şekilde yapılandırabilirsiniz.
+Artık IoT Hub 'ınızı, depolama hesabı ayrıntılarınızı kullanarak [IoT Hub 'ına dosya yükleme](iot-hub-devguide-file-upload.md) özelliğini etkinleştirmek için yapılandırabilirsiniz.
 
-Yapılandırma aşağıdaki değerleri gerektirir:
+Yapılandırma için aşağıdaki değerler gereklidir:
 
-* **Depolama kapsayıcısı**: IoT hub'ınızla ilişkilendirmek için geçerli Azure aboneliğinizdeki bir Azure depolama hesabındaki blob kapsayıcısı. Önceki bölümde gerekli depolama hesabı bilgilerini aldınız. IoT Hub, aygıtların dosya yüklerken kullanmaları için bu blob kapsayıcısına yazma izinleri ile otomatik olarak SAS URI'leri oluşturur.
+* **Depolama kapsayıcısı**: IoT Hub 'ınız ile Ilişkilendirilecek geçerli Azure aboneliğinizdeki bir Azure depolama hesabındaki blob kapsayıcısı. Önceki bölümde gerekli depolama hesabı bilgilerini almıştır. IoT Hub, dosyaları karşıya yüklerken kullanılacak cihazlar için bu blob kapsayıcısına yazma izinleri olan SAS URI 'Leri otomatik olarak oluşturur.
 
-* **Yüklenen dosyalar için bildirimler alın**: Dosya yükleme bildirimlerini etkinleştirin veya devre dışı.
+* **Karşıya yüklenen dosyalar için bildirim al**: dosya yükleme bildirimlerini etkinleştirin veya devre dışı bırakın.
 
-* **SAS TTL**: Bu ayar, IoT Hub tarafından cihaza döndürülen SAS URI'lerinin canlı olarak zaman dilimidir. Varsayılan olarak bir saatolarak ayarlayın.
+* **SAS TTL**: Bu ayar, cihaza IoT Hub tarafından döndürülen sas URI 'lerinin yaşam süresi olarak belirlenir. Varsayılan olarak bir saat olarak ayarlanır.
 
-* **Dosya bildirim ayarları varsayılan TTL**: Süresi dolmadan önce dosya yükleme bildiriminin zaman aşımısüresi. Varsayılan olarak bir güne ayarlayın.
+* **Dosya bildirim ayarları varsayılan TTL**: süresi dolmadan önce karşıya dosya yükleme bildiriminin yaşam süresi. Varsayılan olarak bir güne ayarlanır.
 
-* **Dosya bildirimi maksimum teslimat sayısı**: IoT Hub'ının dosya yükleme bildirimini kaç kez sunmaya çalıştığı. Varsayılan olarak 10 olarak ayarlayın.
+* **Dosya bildirimi en fazla teslimat sayısı**: IoT Hub dosya yükleme bildirimi sunmaya kaç kez girişimde bulunulmasını sağlar. Varsayılan olarak 10 olarak ayarlanır.
 
-IoT hub'ınızdaki dosya yükleme ayarlarını yapılandırmak için aşağıdaki Azure CLI komutlarını kullanın:
+IoT Hub 'ınızdaki karşıya dosya yükleme ayarlarını yapılandırmak için aşağıdaki Azure CLı komutlarını kullanın:
 
 <!--Robinsh this is out of date, add cloud powershell -->
 
-Bir bash kabuk olarak, kullanın:
+Bash kabuğu 'nda şunu kullanın:
 
 ```azurecli
 az iot hub update --name {your iot hub name} \
@@ -125,7 +125,7 @@ az iot hub update --name {your iot hub name} \
   --set properties.messagingEndpoints.fileNotifications.ttlAsIso8601=PT1H0M0S
 ```
 
-Aşağıdaki komutu kullanarak IoT hub'ınızdaki dosya yükleme yapılandırmasını gözden geçirebilirsiniz:
+Aşağıdaki komutu kullanarak IoT Hub 'ınızdaki karşıya dosya yükleme yapılandırmasını gözden geçirebilirsiniz:
 
 ```azurecli
 az iot hub show --name {your iot hub name}
@@ -133,16 +133,16 @@ az iot hub show --name {your iot hub name}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub'ın dosya yükleme özellikleri hakkında daha fazla bilgi için bir [aygıttan dosya yükleme](iot-hub-devguide-file-upload.md)bölümüne bakın.
+IoT Hub dosya yükleme özellikleri hakkında daha fazla bilgi için bkz. [bir cihazdan dosya yükleme](iot-hub-devguide-file-upload.md).
 
-Azure IoT Hub'ı yönetme hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları izleyin:
+Azure IoT Hub 'yi yönetme hakkında daha fazla bilgi edinmek için bu bağlantıları izleyin:
 
 * [IoT cihazlarını toplu yönetme](iot-hub-bulk-identity-mgmt.md)
 * [IoT Hub ölçümleri](iot-hub-metrics.md)
 * [İşlemleri izleme](iot-hub-operations-monitoring.md)
 
-IoT Hub'ın yeteneklerini daha fazla keşfetmek için bkz:
+IoT Hub yeteneklerini daha fazla incelemek için bkz.:
 
-* [IoT Hub geliştirici kılavuzu](iot-hub-devguide.md)
+* [IoT Hub Geliştirici Kılavuzu](iot-hub-devguide.md)
 * [Azure IOT Edge ile sınır cihazlarına Al dağıtma](../iot-edge/tutorial-simulate-device-linux.md)
-* [IoT çözümünüzü sıfırdan emniyete](../iot-fundamentals/iot-security-ground-up.md)
+* [IoT çözümünüzü baştan sona güvenli hale getirin](../iot-fundamentals/iot-security-ground-up.md)

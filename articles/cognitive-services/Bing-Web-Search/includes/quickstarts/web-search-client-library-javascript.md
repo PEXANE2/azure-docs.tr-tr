@@ -1,5 +1,5 @@
 ---
-title: Bing Web Arama JavaScript istemci kitaplığı hızlı başlat
+title: Bing Web Araması JavaScript istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 0380dc8d2ff34cf9eecaad063a305491a357ca29
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78924704"
 ---
-Bing Web Arama istemci kitaplığı, Bing Web Arama'yı Node.js uygulamanıza entegre etmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
+Bing Web Araması istemci kitaplığı, Node. js uygulamanıza Bing Web Araması tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 
-Kodu hemen görmek istiyor musunuz? [JavaScript için Bing Arama istemci kitaplıkları için](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) örnekler GitHub'da mevcuttur.
+Kodu hemen görmek istiyor musunuz? [JavaScript için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/tree/master/Samples) örnekleri GitHub ' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
@@ -102,7 +102,7 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı program kodundan kaldı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilişsel Hizmetler Düğüm.js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [Bilişsel hizmetler Node. js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

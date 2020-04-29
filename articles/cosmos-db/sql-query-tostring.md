@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ToString
-description: Azure Cosmos DB'de SQL sistem fonksiyonu ToString hakkında bilgi edinin.
+description: Azure Cosmos DB 'de SQL sistem işlevi ToString hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/04/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 293449b1616e7124245d91c647177b958006009e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304268"
 ---
 # <a name="tostring-azure-cosmos-db"></a>ToString (Azure Cosmos DB)
- Skaler ifadenin dize temsilini döndürür. 
+ Skaler ifadenin dize gösterimini döndürür. 
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -25,16 +25,16 @@ ToString(<expr>)
   
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
-*expr*  
-   Herhangi bir skaler ifade midir.  
+*ifadeyi*  
+   Herhangi bir skaler ifadedir.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Dize ifadesini döndürür.  
+  Bir dize ifadesi döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `ToString` farklı türlerde nasıl nasıl bir şekilde nasıl hissettiğini gösterir.   
+  Aşağıdaki örnek, farklı türlerde `ToString` nasıl davrandığını gösterir.   
   
 ```sql
 SELECT 
@@ -53,11 +53,11 @@ SELECT
 ```json
 [{"str1": "1", "str2": "Hello World", "str3": "NaN", "str4": "Infinity", "str5": "false", "str6": "0.1234", "str7": "false"}]  
 ```  
- Aşağıdaki giriş göz önüne alındığında:
+ Aşağıdaki giriş verildi:
 ```json
 {"Products":[{"ProductID":1,"Weight":4,"WeightUnits":"lb"},{"ProductID":2,"Weight":32,"WeightUnits":"kg"},{"ProductID":3,"Weight":400,"WeightUnits":"g"},{"ProductID":4,"Weight":8999,"WeightUnits":"mg"}]}
 ```    
- Aşağıdaki örnekte, `ToString` `CONCAT`diğer dize işlevleri ile nasıl kullanılabilir.   
+ Aşağıdaki örnek, gibi `ToString` `CONCAT`diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir.   
  
 ```sql
 SELECT 
@@ -74,11 +74,11 @@ Sonuç kümesini burada bulabilirsiniz.
 {"$1":"8999mg" }]
 
 ```  
-Aşağıdaki giriş göz önüne alındığında.
+Aşağıdaki girdi verildi.
 ```json
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
-Aşağıdaki örnekte, `ToString` `REPLACE`diğer dize işlevleri ile nasıl kullanılabilir.   
+Aşağıdaki örnek, gibi `ToString` `REPLACE`diğer dize işlevleriyle nasıl kullanılakullanabileceğinizi gösterir.   
 ```sql
 SELECT 
     n.id AS nutrientID,
@@ -97,10 +97,10 @@ Sonuç kümesini burada bulabilirsiniz.
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

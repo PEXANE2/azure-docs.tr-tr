@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü FSLogix profil kapsayıcıları dosyaları - Azure
-description: Bu makalede, Windows Sanal Masaüstü ve Azure dosyaları içindeki FSLogix profil kapsayıcıları açıklanmaktadır.
+title: Windows sanal masaüstü FSLogix profil kapsayıcıları dosyaları-Azure
+description: Bu makalede, Windows sanal masaüstü ve Azure dosyaları içindeki FSLogix profil kapsayıcıları açıklanmaktadır.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,98 +9,98 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127885"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
-Windows Sanal Masaüstü hizmeti, FSLogix profil kaplarını kullanıcı profili çözümü olarak önerir. FSLogix, Windows Sanal Masaüstü gibi uzak bilgi işlem ortamlarında profillerde gezinmek üzere tasarlanmıştır. Tüm kullanıcı profilini tek bir kapta saklar. Oturum açma sırasında, bu kapsayıcı yerel olarak desteklenen Sanal Sabit Disk (VHD) ve Hyper-V Virtual Hard disk (VHDX) kullanılarak bilgisayar ortamına dinamik olarak bağlanır. Kullanıcı profili hemen kullanılabilir ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür. Bu makalede, Windows Sanal Masaüstü'nde Azure Dosyaları ile kullanılan FSLogix profil kapsayıcılarının nasıl çalıştığı açıklanmaktadır.
+Windows sanal masaüstü hizmeti, FSLogix profil kapsayıcılarını bir kullanıcı profili çözümü olarak önerir. FSLogix, Windows sanal masaüstü gibi uzak bilgi işlem ortamlarında profil dolaşımını yapmak için tasarlanmıştır. Tüm kullanıcı profilini tek bir kapsayıcıda depolar. Bu kapsayıcı, oturum açma sırasında, yerel olarak desteklenen sanal sabit disk (VHD) ve Hyper-V sanal sabit diski (VHDX) kullanılarak bilgi işlem ortamına dinamik olarak eklenir. Kullanıcı profili hemen kullanılabilir olur ve sistemde tam olarak yerel bir kullanıcı profili gibi görünür. Bu makalede, FSLogix profil kapsayıcılarının Windows sanal masaüstündeki Azure dosyaları işleviyle nasıl kullanıldığı açıklanmaktadır.
 
 >[!NOTE]
->Azure'daki farklı FSLogix Profil Kapsayıcısı depolama seçenekleri yle ilgili karşılaştırma malzemesi arıyorsanız, [FSLogix profil kapsayıcıları için Depolama seçeneklerine](store-fslogix-profile.md)bakın.
+>Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
 ## <a name="user-profiles"></a>Kullanıcı profilleri
 
-Kullanıcı profili, masaüstü ayarları, kalıcı ağ bağlantıları ve uygulama ayarları gibi yapılandırma bilgileri de dahil olmak üzere bir kişi hakkında veri öğeleri içerir. Varsayılan olarak, Windows işletim sistemiyle sıkı bir şekilde tümleşik yerel bir kullanıcı profili oluşturur.
+Kullanıcı profili, masaüstü ayarları, kalıcı ağ bağlantıları ve uygulama ayarları gibi yapılandırma bilgileri de dahil olmak üzere bir bireyin hakkındaki veri öğelerini içerir. Varsayılan olarak, Windows işletim sistemiyle sıkı bir şekilde tümleştirilmiş bir yerel kullanıcı profili oluşturur.
 
-Uzak kullanıcı profili, kullanıcı verileri ve işletim sistemi arasında bir bölüm sağlar. Kullanıcı verilerini etkilemeden işletim sisteminin değiştirilmesini veya değiştirilmesine olanak tanır. Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) ve Sanal Masaüstü Altyapılarında (VDI) işletim sistemi aşağıdaki nedenlerle değiştirilebilir:
+Uzak Kullanıcı profili, Kullanıcı verileri ile işletim sistemi arasında bir bölüm sağlar. İşletim sisteminin, Kullanıcı verilerini etkilemeden değiştirilmesini veya değiştirilmesini sağlar. Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) ve sanal masaüstü altyapılarında (VDı), işletim sistemi aşağıdaki nedenlerle değiştirilebilir:
 
 - İşletim sisteminin yükseltilmesi
-- Varolan bir Sanal Makinenin (VM) değiştirilmesi
-- Bir havuz (kalıcı olmayan) RDSH veya VDI ortamının parçası olan bir kullanıcı
+- Var olan bir sanal makinenin (VM) yerini değiştirme
+- Bir Kullanıcı havuza alınmış (kalıcı olmayan) bir RDSH veya VDı ortamının parçası.
 
-Microsoft ürünleri, bu teknolojiler de dahil olmak üzere uzak kullanıcı profilleri için çeşitli teknolojilerle çalışır:
-- Dolaşım kullanıcı profilleri (RUP)
-- Kullanıcı profil diskleri (UPD)
+Microsoft ürünleri, bu teknolojiler dahil olmak üzere uzak kullanıcı profilleri için birkaç teknolojiyle çalışır:
+- Gezici Kullanıcı profilleri (RUP)
+- Kullanıcı profili diskleri (UPD)
 - Kurumsal durum dolaşımı (ESR)
 
-UPD ve RUP Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) ve Sanal Sabit Disk (VHD) ortamlarında kullanıcı profilleri için en yaygın olarak kullanılan teknolojilerdir.
+UPD ve RUP, Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) ve sanal sabit disk (VHD) ortamlarındaki kullanıcı profilleri için en yaygın olarak kullanılan teknolojilerdir.
 
-### <a name="challenges-with-previous-user-profile-technologies"></a>Önceki kullanıcı profili teknolojileri ile ilgili zorluklar
+### <a name="challenges-with-previous-user-profile-technologies"></a>Önceki Kullanıcı profili teknolojileriyle ilgili sorunlar
 
-Kullanıcı profilleri için mevcut ve eski Microsoft çözümleri çeşitli zorluklarla birlikte geldi. RDSH veya VDI ortamıyla birlikte gelen tüm kullanıcı profili gereksinimlerini önceki çözüm de kullanmaz. Örneğin, UPD büyük OST dosyalarını işleyemez ve RUP modern ayarları devam etmez.
+Kullanıcı profilleri için mevcut ve eski Microsoft çözümleri çeşitli güçlüklerle birlikte geldi. Bir RDSH veya VDı ortamıyla gelen tüm Kullanıcı profili gereksinimlerini işlenmemiş bir önceki çözüm yoktur. Örneğin, UPD büyük OST dosyalarını işleyemez ve RUP modern ayarları kalıcı yapmaz.
 
 #### <a name="functionality"></a>İşlev
 
-Aşağıdaki tablo, önceki kullanıcı profili teknolojilerinin avantajlarını ve sınırlamalarını gösterir.
+Aşağıdaki tabloda önceki Kullanıcı profili teknolojilerinin avantajları ve sınırlamaları gösterilmektedir.
 
-| Teknoloji | Modern ayarlar | Win32 ayarları | İşletim sistemi ayarları | Kullanıcı verileri | Sunucu SKU'da desteklendi | Azure'da arka uç depolama | Şirket içinde arka uç depolama | Sürüm desteği | Sonraki oturum açma süresi |Notlar|
+| Teknoloji | Modern ayarlar | Win32 ayarları | İşletim sistemi ayarları | Kullanıcı verileri | Sunucu SKU 'sunda destekleniyor | Azure 'da arka uç depolama | Şirket içinde arka uç depolama | Sürüm desteği | Sonraki oturum açma zamanı |Notlar|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Kullanıcı Profil Diskleri (UPD)** | Evet | Evet | Evet | Evet | Evet | Hayır | Evet | Win 7+ | Evet | |
-| **Dolaşım Kullanıcı Profili (RUP), bakım modu** | Hayır | Evet | Evet | Evet | Evet| Hayır | Evet | Win 7+ | Hayır | |
-| **Kurumsal Devlet Dolaşımı (ESR)** | Evet | Hayır | Evet | Hayır | Notlara bakın | Evet | Hayır | 10 kazan | Hayır | Sunucu SKU'daki işlevler ancak destekleyici kullanıcı arabirimi yok |
-| **Kullanıcı Deneyimi Sanallaştırma (UE-V)** | Evet | Evet | Evet | Hayır | Evet | Hayır | Evet | Win 7+ | Hayır |  |
-| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Evet | Notlara bakın | Notlara bakın  | Notlara Bakın | 10 RS3 kazanın | Hayır | Sunucu SKU üzerinde test edilmemiş. Azure'da arka uç depolama, eşitleme istemcisi'ne bağlıdır. Prem'de arka uç depolamanın bir eşitleme istemcisi gerekir. |
+| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | Hayır | Yes | Win 7 + | Yes | |
+| **Gezici Kullanıcı profili (RUP), bakım modu** | Hayır | Yes | Yes | Yes | Yes| Hayır | Yes | Win 7 + | Hayır | |
+| **Enterprise State Roaming (ESR)** | Yes | Hayır | Yes | Hayır | Notlara bakın | Yes | Hayır | Win 10 | Hayır | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
+| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | Hayır | Yes | Hayır | Yes | Win 7 + | Hayır |  |
+| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Yes | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | Hayır | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
 
 #### <a name="performance"></a>Performans
 
-UPD, performans gereksinimlerini karşılamak için [Depolama Alanları Doğrudan (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gerektirir. UPD, Sunucu İleti Bloğu (SMB) protokolünü kullanır. Profili, kullanıcının günlüğe kaydedildiği VM'ye kopyalar. S2D ile UPD, Windows Sanal Masaüstü için önerdiğimiz çözümdür.  
+UPD, performans gereksinimlerini karşılamak için [depolama alanları doğrudan (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gerektirir. UPD, sunucu Ileti bloğu (SMB) protokolünü kullanır. Profili, kullanıcının günlüğe kaydedildiği VM 'ye kopyalar. S2D ile UPD, Windows sanal masaüstü için önerdiğimiz çözümdür.  
 
 #### <a name="cost"></a>Maliyet
 
-S2D kümeleri gerekli performansı elde ederken, maliyet kurumsal müşteriler için pahalıdır, ancak özellikle küçük ve orta ölçekli işletmeler (Kobİ) müşterileri için pahalıdır. Bu çözüm için işletmeler, diskleri pay için kullanan VM'lerin maliyetiyle birlikte depolama diskleri için ödeme de bulunur.
+S2D kümeleri gerekli performansa ulaşsa da, kurumsal müşterilere yönelik maliyet pahalıdır, ancak küçük ve orta ölçekli iş (SMB) müşterileri için özellikle pahalıdır. Bu çözüm için, işletmeler depolama diskleri için, bir paylaşımın disklerini kullanan VM 'Lerin maliyetiyle birlikte ödeme yapar.
 
 #### <a name="administrative-overhead"></a>Yönetim yükü
 
-S2D kümeleri, yamalı, güncelleştirilen ve güvenli bir durumda tutulan bir işletim sistemi gerektirir. Bu süreçler ve S2D olağanüstü durum kurtarma kurma karmaşıklığı S2D'yi yalnızca özel bt personeli olan işletmeler için uygulanabilir hale getirmektedir.
+S2D kümeleri, güvenli bir durumda düzeltme eki uygulanmış, güncelleştirilmiş ve korunan bir işletim sistemi gerektirir. Bu süreçler ve S2D olağanüstü durum kurtarmayı ayarlamanın karmaşıklığı, S2D yalnızca adanmış BT personeli olan kuruluşlar için uygulanabilir hale gelir.
 
-## <a name="fslogix-profile-containers"></a>FSLogix profil kapları
+## <a name="fslogix-profile-containers"></a>FSLogix profil kapsayıcıları
 
-19 Kasım 2018'de [Microsoft FSLogix'i satın aldı.](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/) FSLogix birçok profil konteyner zorlukları giderme. Bunların anahtarı şunlardır:
+19 Kasım 2018 ' de, [Microsoft FSLogix aldı](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix, birçok profil kapsayıcısı sorunlarını giderir. Aralarında anahtar şunlardır:
 
-- **Performans:** [FSLogix profil kapsayıcıları](/fslogix/configure-profile-container-tutorial/) yüksek performansve geçmiş olarak önbelleğe alınmış exchange modunu engelleyen performans sorunlarını giderir.
-- **OneDrive:** FSLogix profil kapsayıcıları olmadan, OneDrive for Business kalıcı olmayan RDSH veya VDI ortamlarında desteklenmez. [OneDrive for Business ve FSLogix en iyi uygulamaları](/fslogix/overview/) nasıl etkileşimde olduklarını açıklar. Daha fazla bilgi için bkz. [Sanal masaüstü bilgisayarlarda eşitleme istemcisini kullanın.](/deployoffice/rds-onedrive-business-vdi/)
-- **Ek klasörler:** FSLogix, kullanıcı profillerini ek klasörler içerecek şekilde genişletme olanağı sağlar.
+- **Performans:** [Fslogix profil kapsayıcıları](/fslogix/configure-profile-container-tutorial/) yüksek performansdadır ve geçmişte engellenmiş önbelleğe alınmış Exchange moduna sahip performans sorunlarını çözer.
+- **OneDrive:** FSLogix profil kapsayıcıları olmadan, OneDrive Iş kalıcı olmayan RDSH veya VDı ortamlarında desteklenmez. [OneDrive iş ve FSLogix en iyi uygulamaları,](/fslogix/overview/) nasıl etkileşime gireceğini açıklar. Daha fazla bilgi için bkz. [sanal masaüstlerinde eşitleme Istemcisini kullanma](/deployoffice/rds-onedrive-business-vdi/).
+- **Ek klasörler:** FSLogix, Kullanıcı profillerini ek klasörler içerecek şekilde genişletebilme olanağı sağlar.
 
-Satın alma dan bu yana, Microsoft FSLogix profil kapsayıcıları ile UPD gibi mevcut kullanıcı profili çözümleri değiştirmeye başladı.
+Alma işlemi, Microsoft, FSLogix profil kapsayıcılarıyla UPD gibi mevcut kullanıcı profili çözümlerini değiştirmeye başladı.
 
-## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Active Directory Etki Alanı Hizmeti ile Azure Dosyaları entegrasyonu
+## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure Active Directory etki alanı hizmeti ile Azure dosyaları tümleştirmesi
 
-FSLogix profil konteynerlerinin performansı ve özellikleri buluttan yararlanır. 7 Ağustos 2019'da Microsoft Azure [Dosyaları, Azure Etkin Dizin Etki Alanı Hizmeti (AD DS) ile Azure Dosyaları kimlik doğrulamasının](../storage/files/storage-files-active-directory-overview.md)genel kullanılabilirliğini duyurdu. Azure AD DS Kimlik Doğrulamalı Azure Dosyaları, hem maliyet hem de yönetim ek yüküne değinerek, Windows Sanal Masaüstü hizmetindeki kullanıcı profilleri için birinci sınıf bir çözümdür.
+FSLogix profil kapsayıcılarının performansı ve özellikleri buluttan faydalanır. 7 Ağustos 2019 ' de Microsoft Azure dosyalar [Azure Active Directory etki alanı hizmeti (AD DS) Ile Azure dosyaları kimlik doğrulamasının](../storage/files/storage-files-active-directory-overview.md)genel kullanıma sunulduğunu duyurmuştur. Hem maliyet hem de yönetim yükünü ele alarak Azure AD DS kimlik doğrulaması ile Azure dosyaları, Windows sanal masaüstü hizmetindeki Kullanıcı profillerine yönelik bir Premium çözümdür.
 
-## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için en iyi uygulamalar
+## <a name="best-practices-for-windows-virtual-desktop"></a>Windows sanal masaüstü için en iyi yöntemler
 
-Windows Sanal Masaüstü, müşteriler tarafından kullanılan VM'lerin boyutu, türü ve sayısı üzerinde tam denetim sağlar. Daha fazla bilgi için [Windows Sanal Masaüstü nedir?](overview.md)
+Windows sanal masaüstü, müşteriler tarafından kullanılmakta olan VM 'lerin boyutu, türü ve sayısı üzerinde tam denetim sağlar. Daha fazla bilgi için bkz. [Windows sanal masaüstü nedir?](overview.md).
 
-Windows Sanal Masaüstü ortamınızın aşağıdakileri takip etmesini sağlamak için:
+Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
-- Azure Files depolama hesabı, oturum ana bilgisayar VM'ler ile aynı bölgede olmalıdır.
-- Azure Dosyaları [izinleri, Gereksinimler - Profil](/fslogix/fslogix-storage-config-ht)Kapsayıcıları'nda açıklanan izinlerle eşleşmelidir.
-- Her ana bilgisayar havuzu, aynı ana görüntüye dayalı olarak aynı tip ve boyutta VM'den oluşturulmalıdır.
-- Her ana bilgisayar havuzu VM, yönetime, ölçekleme ve güncelleştirmeye yardımcı olmak için aynı kaynak grubunda olmalıdır.
-- En iyi performans için depolama çözümü ve FSLogix profil kapsayıcısı aynı veri merkezi konumunda olmalıdır.
-- Ana görüntüyü içeren depolama hesabı, VM'lerin sağlandığı aynı bölgede ve abonelikte olmalıdır.
+- Azure dosyaları depolama hesabı, oturum ana bilgisayar VM 'Leri ile aynı bölgede olmalıdır.
+- Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](/fslogix/fslogix-storage-config-ht)açıklanan izinlerle eşleşmelidir.
+- Her konak havuzunun aynı ana görüntüye göre aynı tür ve boyut VM 'si oluşturulması gerekir.
+- Yönetim, ölçeklendirme ve güncelleştirme yardımcı olması için her bir konak havuzu sanal makinesi aynı kaynak grubunda olmalıdır.
+- En iyi performans için, depolama çözümü ve FSLogix profili kapsayıcısı aynı veri merkezi konumunda olmalıdır.
+- Ana görüntünün bulunduğu depolama hesabı, VM 'Lerin sağlandığı aynı bölgede ve abonelikte olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Windows Sanal Masaüstü ortamı nı ayarlamak için aşağıdaki kılavuzları kullanın.
+Windows sanal masaüstü ortamı ayarlamak için aşağıdaki kılavuzlardan yararlanabilirsiniz.
 
-- Masaüstü sanallaştırma çözümünüzü oluşturmaya başlamak için windows [sanal masaüstünde kiracı oluşturma](tenant-setup-azure-active-directory.md)'ya bakın.
-- Windows Sanal Masaüstü kiracınızda ana bilgisayar havuzu oluşturmak için [bkz.](create-host-pools-azure-marketplace.md)
-- Bulutta tam olarak yönetilen dosya paylaşımlarını ayarlamak için Azure [Dosyalarını paylaş'ı ayarlama'ya](/azure/storage/files/storage-files-active-directory-enable/)bakın.
-- FSLogix profil kapsayıcılarını yapılandırmak [için](create-host-pools-user-profile.md)bkz.
-- Kullanıcıları ana bilgisayar havuzuna atamak [için Windows Sanal Masaüstü için uygulama gruplarını yönet'e](manage-app-groups.md)bakın.
-- Windows Sanal Masaüstü kaynaklarınıza bir web tarayıcısından erişmek [için](connect-web.md)bkz.
+- Masaüstü Sanallaştırma çözümünüzü oluşturmaya başlamak için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](tenant-setup-azure-active-directory.md).
+- Windows sanal masaüstü kiracınızda bir konak havuzu oluşturmak için bkz. [Azure Marketi ile konak havuzu oluşturma](create-host-pools-azure-marketplace.md).
+- Bulutta tam olarak yönetilen dosya paylaşımları ayarlamak için bkz. [Azure dosyaları paylaşımını ayarlama](/azure/storage/files/storage-files-active-directory-enable/).
+- FSLogix profil kapsayıcılarını yapılandırmak için, bkz. bir [dosya paylaşımının kullanıldığı konak havuzu için profil kapsayıcısı oluşturma](create-host-pools-user-profile.md).
+- Kullanıcıları bir konak havuzuna atamak için bkz. [Windows sanal masaüstü için uygulama gruplarını yönetme](manage-app-groups.md).
+- Windows sanal masaüstü kaynaklarınıza bir Web tarayıcısından erişmek için bkz. [Windows sanal masaüstüne bağlanma](connect-web.md).

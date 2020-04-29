@@ -1,6 +1,6 @@
 ---
-title: Office'i ana VHD görüntüsüne yükleme - Azure
-description: Office'i Windows Sanal Masaüstü ana resmine Azure'a yükleme ve özelleştirme.
+title: Office 'i ana VHD görüntüsüne yükler-Azure
+description: Windows sanal masaüstü ana görüntüsünde Office 'i Azure 'a yüklemek ve özelleştirmek.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,59 +9,59 @@ ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127843"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Ana VHD görüntüsü üzerinde Office yükleme
 
-Bu makalede, Azure'a yüklemek için office 365 ProPlus, OneDrive ve diğer yaygın uygulamaları ana sanal sabit disk (VHD) görüntüsüne nasıl yükleyebilirsiniz. Kullanıcılarınızın belirli iş alanı (LOB) uygulamalarına erişmeleri gerekiyorsa, bu makaledeki yönergeleri tamamladıktan sonra bunları yüklemenizi öneririz.
+Bu makalede, Azure 'a yüklemek üzere Office 365 ProPlus, OneDrive ve diğer yaygın uygulamaların bir ana sanal sabit disk (VHD) görüntüsüne nasıl yükleneceği açıklanır. Kullanıcılarınızın belirli iş kolu (LOB) uygulamalarına erişmesi gerekiyorsa, bu makaledeki yönergeleri tamamladıktan sonra bunları yüklemenizi öneririz.
 
-Bu makalede, zaten bir sanal makine (VM) oluşturduğunuz varsayar. Değilse, [bkz.](set-up-customize-master-image.md#create-a-vm)
+Bu makalede, zaten bir sanal makine (VM) oluşturmuş olduğunuz varsayılmaktadır. Aksi takdirde, bkz. [ana VHD görüntüsünü hazırlama ve özelleştirme](set-up-customize-master-image.md#create-a-vm)
 
-Bu makalede, Azure veya Hyper-V Manager'da sağlanan vm erişiminin yüksek olduğu da varsayar. Değilse, bkz. [Tüm Azure abonelik ve yönetim gruplarını yönetmek için erişimi yükselt.](../role-based-access-control/elevate-access-global-admin.md)
+Bu makalede ayrıca, Azure 'da veya Hyper-V Yöneticisi 'nde sağlanmasından bağımsız olarak, VM 'de yükseltilmiş erişiminizin olduğunu varsaymaktadır. Aksi takdirde, [tüm Azure aboneliklerini ve Yönetim gruplarını yönetmek için erişimi yükseltme](../role-based-access-control/elevate-access-global-admin.md)bölümüne bakın.
 
 >[!NOTE]
->Bu yönergeler, kuruluşunuzun varolan işlemleriyle kullanılabilecek Windows Sanal Masaüstüne özgü bir yapılandırma içindir.
+>Bu yönergeler, kuruluşunuzun mevcut işlemleriyle kullanılabilecek Windows sanal masaüstüne özgü bir yapılandırma içindir.
 
-## <a name="install-office-in-shared-computer-activation-mode"></a>Paylaşılan bilgisayar etkinleştirme modunda Office'i yükleme
+## <a name="install-office-in-shared-computer-activation-mode"></a>Office 'i paylaşılan bilgisayar etkinleştirme moduna yüklerken
 
-Paylaşılan bilgisayar etkinleştirmesi, Office 365 ProPlus'ı kuruluşunuzdaki birden çok kullanıcı tarafından erişilen bir bilgisayara dağıtmanıza olanak tanır. Paylaşılan bilgisayar etkinleştirme hakkında daha fazla bilgi için Office [365 ProPlus için paylaşılan bilgisayar etkinleştirme genel görünümüne](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/)bakın.
+Paylaşılan bilgisayar etkinleştirmesi, kuruluşunuzda birden çok kullanıcı tarafından erişilen bir bilgisayara Office 365 ProPlus dağıtmanızı sağlar. Paylaşılan bilgisayar etkinleştirmesi hakkında daha fazla bilgi için bkz. [Office 365 ProPlus için paylaşılan bilgisayar etkinleştirmeye genel bakış](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
 
-Office'i yüklemek için [Office Dağıtım Aracı'nı](https://www.microsoft.com/download/details.aspx?id=49117) kullanın. Windows 10 Enterprise çoklu oturumyalnızca Office'in aşağıdaki sürümlerini destekler:
+Office 'i yüklemek için [Office dağıtım aracı](https://www.microsoft.com/download/details.aspx?id=49117) 'nı kullanın. Windows 10 Enterprise çoklu oturum yalnızca aşağıdaki Office sürümlerini destekler:
 - Office 365 ProPlus
-- Microsoft 365 Business aboneliğiyle birlikte gelen Office 365 İşletme
+- Microsoft 365 İş abonelikle birlikte sunulan Office 365 Business
 
-Office Dağıtım Aracı yapılandırma XML dosyası gerektirir. Aşağıdaki örneği özelleştirmek için [Office Dağıtım Aracı için Yapılandırma Seçenekleri'ne](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)bakın.
+Office dağıtım aracı bir yapılandırma XML dosyası gerektirir. Aşağıdaki örneği özelleştirmek için, [Office dağıtım aracı yapılandırma seçeneklerine](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/)bakın.
 
-Sağladığımız bu örnek yapılandırma XML aşağıdaki leri yapacaktır:
+Sağladığımız Bu örnek yapılandırma XML 'i şu işlemleri yapar:
 
-- Office'i aylık kanaldan yükleyin ve yürütüldüğünde aylık kanaldan güncelleştirmeler teslim edin.
-- x64 mimarisini kullanın.
-- Otomatik güncelleştirmeleri devre dışı.
-- Office'in varolan tüm yüklemelerini kaldırın ve ayarlarını geçirin.
+- Office 'i aylık kanaldan yükleyip, yürütüldüğü sırada aylık kanaldan güncelleştirmeleri sunun.
+- X64 mimarisini kullanın.
+- Otomatik güncelleştirmeleri devre dışı bırakın.
+- Mevcut Office yüklemelerini kaldırın ve ayarlarını geçirin.
 - Paylaşılan bilgisayar etkinleştirmesini etkinleştirin.
 
 >[!NOTE]
->Visio'nun şablon arama özelliği Windows Sanal Masaüstü'nde beklendiği gibi çalışmayabilir.
+>Visio 'nun şablon arama özelliği, Windows sanal masaüstü 'nde beklendiği gibi çalışmayabilir.
 
-XML'in bu örnek yapılandırması şunları yapmaz:
+Bu örnek yapılandırma XML 'i şunları yapamayacaklarınız:
 
-- İşletmeler için Skype'ı yükleyin
-- OneDrive'ı kullanıcı başına modda yükleyin. Daha fazla bilgi [için, makine başına yükleme modunda OneDrive'ı yükleyin'](#install-onedrive-in-per-machine-mode)e bakın.
+- Skype Kurumsal 'ı yükler
+- OneDrive 'ı Kullanıcı başına moda yükleyin. Daha fazla bilgi için bkz. [OneDrive 'ı makine başına moda yükleyin](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Paylaşılan Bilgisayar Etkinleştirme Grup İlkesi Nesneleri (GPO) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **Bilgisayar Yapılandırma\\İlkeleri\\Yönetim Şablonları\\Microsoft Office 2016 (Makine)\\LisansLama Ayarları'nda** bulunur
+>Paylaşılan bilgisayar etkinleştirme, grup ilkesi nesneleri (GPO 'Lar) veya kayıt defteri ayarları aracılığıyla ayarlanabilir. GPO, **Yönetim Şablonları\\Microsoft Office 2016 (makine\\)\\\\lisanslama ayarlarındaki bilgisayar yapılandırma ilkeleri** ' nde bulunur
 
-Office Dağıtım Aracı setup.exe içerir. Office'i yüklemek için aşağıdaki komutu bir komut satırında çalıştırın:
+Office dağıtım aracı Setup. exe dosyasını içerir. Office 'i yüklemek için komut satırında aşağıdaki komutu çalıştırın:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Örnek configuration.xml
+#### <a name="sample-configurationxml"></a>Örnek Configuration. xml
 
 Aşağıdaki XML örneği aylık sürümü yükler.
 
@@ -87,9 +87,9 @@ Aşağıdaki XML örneği aylık sürümü yükler.
 ```
 
 >[!NOTE]
->Office ekibi, **OfficeClientEdition** parametresi için 64 bit yükleme kullanmanızı önerir.
+>Office ekibi **OfficeClientEdition** parametresi için 64 bitlik yüklemeyi kullanmayı önerir.
 
-Office'i yükledikten sonra varsayılan Office davranışını güncelleştirebilirsiniz. Davranışı güncelleştirmek için aşağıdaki komutları tek tek veya toplu iş dosyasında çalıştırın.
+Office 'i yükledikten sonra varsayılan Office davranışını güncelleştirebilirsiniz. Davranışı güncelleştirmek için aşağıdaki komutları tek tek veya bir toplu iş dosyasında çalıştırın.
 
 ```batch
 rem Mount the default user registry hive
@@ -110,47 +110,47 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-## <a name="install-onedrive-in-per-machine-mode"></a>OneDrive'ı makine başına modda yükleme
+## <a name="install-onedrive-in-per-machine-mode"></a>OneDrive 'ı makine başına moduna yükleyin
 
-OneDrive normalde kullanıcı başına yüklenir. Bu ortamda, makine başına kurulmalıdır.
+OneDrive, normalde Kullanıcı başına yüklenir. Bu ortamda makine başına yüklenmelidir.
 
-OneDrive'ı makine başına modda şu şekilde yükleyebilirsiniz:
+OneDrive 'ı makine başına modunda yüklemek için şu adımları uygulayın:
 
-1. İlk olarak, OneDrive yükleyicisini sahnelemek için bir konum oluşturun. Yerel bir disk\\\\klasörü veya [ unc] (file://unc) konumu iyi.
+1. İlk olarak, OneDrive yükleyicisinin aşamasına kadar bir konum oluşturun. Yerel disk klasörü veya [\\\\UNC] (File://UNC) konumu iyidir.
 
-2. OneDriveSetup.exe'yi bu bağlantı ile sahnelenen konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
+2. OneDriveSetup. exe dosyasını bu bağlantıyla hazırlanan konumunuza indirin:<https://aka.ms/OneDriveWVD-Installer>
 
-3. OneDrive ile ofis kurduysanız, **Dışlanan App\>ID="OneDrive" / , aşağıdaki komutu çalıştırarak kullanıcı başına mevcut OneDrive yüklemelerini yükseltilmiş bir komut isteminden kaldırın: \<**
+3. Office 'i, ** \<excludeapp ID = "OneDrive"\>** seçeneğini atlayarak OneDrive 'a yüklediyseniz, aşağıdaki komutu çalıştırarak yükseltilmiş bir komut isteminden mevcut OneDrive Kullanıcı başına yüklemelerini kaldırın:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall
     ```
 
-4. **AllUsersInstall** kayıt defteri değerini ayarlamak için bu komutu yükseltilmiş bir komut isteminden çalıştırın:
+4. **Allusersınstall** kayıt defteri değerini ayarlamak için bu komutu yükseltilmiş bir komut isteminden çalıştırın:
 
     ```batch
     REG ADD "HKLM\Software\Microsoft\OneDrive" /v "AllUsersInstall" /t REG_DWORD /d 1 /reg:64
     ```
 
-5. OneDrive'ı makine başına modda yüklemek için bu komutu çalıştırın:
+5. OneDrive 'ı makine başına modunda yüklemek için şu komutu çalıştırın:
 
     ```batch
     Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
-6. OneDrive'ı tüm kullanıcılar için oturum açmabaşlatmak üzere yapılandırmak için bu komutu çalıştırın:
+6. OneDrive 'ı tüm kullanıcılar için oturum açma sırasında başlatılacak şekilde yapılandırmak için bu komutu çalıştırın:
 
     ```batch
     REG ADD "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" /v OneDrive /t REG_SZ /d "C:\Program Files (x86)\Microsoft OneDrive\OneDrive.exe /background" /f
     ```
 
-7. Aşağıdaki komutu çalıştırarak **kullanıcı hesabını sessizce yapılandırmayı** etkinleştirin.
+7. Aşağıdaki komutu çalıştırarak **sessizce Kullanıcı hesabını Yapılandır** özelliğini etkinleştirin.
 
     ```batch
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "SilentAccountConfig" /t REG_DWORD /d 1 /f
     ```
 
-8. Aşağıdaki komutu çalıştırarak Windows bilinen klasörleri OneDrive'a yönlendirin ve taşıyın.
+8. Aşağıdaki komutu çalıştırarak Windows bilinen klasörlerini yeniden yönlendirin ve OneDrive 'a taşıyın.
 
     ```batch
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
@@ -158,8 +158,8 @@ OneDrive'ı makine başına modda şu şekilde yükleyebilirsiniz:
 
 ## <a name="teams-and-skype"></a>Takımlar ve Skype
 
-Windows Sanal Masaüstü, Skype kurumsal ve takımlar için desteklemiyor.
+Windows sanal masaüstü, Skype Kurumsal ve ekiplerini desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntüye Office eklediğinize göre, ana VHD görüntünüzü özelleştirmeye devam edebilirsiniz. Bkz. [Bir ana VHD görüntü hazırlayın ve özelleştirin.](set-up-customize-master-image.md)
+Artık Office 'i görüntüye eklemişseniz, ana VHD görüntünüzü özelleştirmeye devam edebilirsiniz. Bkz. [ana VHD görüntüsünü hazırlama ve özelleştirme](set-up-customize-master-image.md).

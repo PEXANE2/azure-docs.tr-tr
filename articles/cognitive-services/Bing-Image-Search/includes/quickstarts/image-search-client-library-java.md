@@ -1,5 +1,5 @@
 ---
-title: Bing Resim Arama Java istemci kitaplığı hızlı başlat
+title: Bing Resim Arama Java istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
 ms.openlocfilehash: 4656d8116ddd2e618adad97aeea576e88bc8785f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899583"
 ---
-API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Image Search istemci kitaplığını kullanarak ilk resim aramanızı yapmak için bu hızlı başlatmayı kullanın. Bu basit Java uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
+API için bir sarmalayıcı olan ve aynı özellikleri içeren Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. Bu basit Java uygulaması bir görüntü arama sorgusu gönderir, JSON yanıtını ayrıştırır ve döndürülen ilk görüntünün URL’sini görüntüler.
 
-Bu örnek için kaynak kodu, ek hata işleme ve ek açıklamalar ile [GitHub kullanılabilir.](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart)
+Bu örneğe ilişkin kaynak kodu, ek hata işleme ve ek açıklama ile [GitHub 'da](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingImageSearch/Quickstart) kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [Java Geliştirme Seti](https://aka.ms/azure-jdks)’nin (JDK) en son sürümü
 
-Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing Image Search istemci kitaplığı bağımlılıklarını yükleyin. Maven POM dosyası şu bildirimi gerektirir:
+Maven, Gradle veya başka bir bağımlılık yönetim sistemini kullanarak Bing Resim Arama istemci kitaplığı bağımlılıklarını yükler. Maven POM dosyası şu bildirimi gerektirir:
 
 ```xml
  <dependencies>
@@ -39,7 +39,7 @@ Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing Im
 
 ## <a name="create-and-initialize-the-application"></a>Uygulamayı oluşturma ve başlatma
 
-1. Favori IDE veya düzenleyicinizde yeni bir Java projesi oluşturun ve sınıf uygulamanıza aşağıdaki içeri aktarımları ekleyin:
+1. En sevdiğiniz IDE veya düzenleyicide yeni bir Java projesi oluşturun ve sınıf uygulamanıza aşağıdaki içeri aktarmaları ekleyin:
 
     ```java
     import com.microsoft.azure.cognitiveservices.search.imagesearch.BingImageSearchAPI;
@@ -57,7 +57,7 @@ Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing Im
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-api"></a>API'ye arama isteği gönderme
+## <a name="send-a-search-request-to-the-api"></a>API 'ye bir arama isteği gönder
 
 1. `bingImages().search()` kullanarak, arama sorgusunu içeren HTTP isteğini gönderin. Yanıtı `ImagesModel` olarak kaydedin.
 
@@ -71,7 +71,7 @@ Maven, Gradle veya başka bir bağımlılık yönetim sistemi kullanarak Bing Im
 ## <a name="parse-and-view-the-result"></a>Sonucu ayrıştırma ve görüntüleme
 
 Yanıtta döndürülen resim sonuçlarını ayrıştırın.
-Yanıt arama sonuçları içeriyorsa, ilk sonucu depolayın ve küçük resim URL'si, orijinal URL gibi ayrıntılarını ve döndürülen toplam görüntü sayısının çıktısını alın.  
+Yanıt, arama sonuçları içeriyorsa, ilk sonucu depolayın ve küçük resim URL 'SI, özgün URL gibi ayrıntılarını, döndürülen görüntülerin toplam sayısıyla birlikte yazdırın.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {
@@ -99,5 +99,5 @@ else {
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Ücretsiz bir Bilişsel Hizmetler erişim anahtarı alın](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Azure Bilişsel Hizmetler SDK’sı için Java örnekleri](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [Azure Bilişsel Hizmetler Belgeleri](https://docs.microsoft.com/azure/cognitive-services)
+* [Azure bilişsel hizmetler belgeleri](https://docs.microsoft.com/azure/cognitive-services)
 * [Bing Resim Arama API’si başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

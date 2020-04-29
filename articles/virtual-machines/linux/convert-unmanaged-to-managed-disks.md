@@ -1,6 +1,6 @@
 ---
-title: Yönetilen disklerden yönetilen disklere Linux VM dönüştürme
-description: Azure CLI kullanarak yönetilen disklerden yönetilen disklere Linux VM dönüştürme.
+title: Bir Linux VM 'yi yönetilmeyen disklerden yönetilen disklere dönüştürme
+description: Azure CLı kullanarak bir Linux VM 'yi yönetilmeyen disklerden yönetilen disklere dönüştürme.
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: conceptual
@@ -8,53 +8,53 @@ ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 2774dcbd5fc5b01627b965c2c02d870412c8bf77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969686"
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Yönetilen disklerden yönetilen disklere Linux sanal makinesini dönüştürme
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Bir Linux sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
-Yönetilmeyen diskler kullanan mevcut Linux sanal makineleriniz (VM'ler) varsa, Sanal Kullanımlı [Diskleri](../linux/managed-disks-overview.md)kullanmak için Sanal M'leri dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de ekteki tüm veri disklerini dönüştürür.
+Yönetilmeyen diskler kullanan mevcut Linux sanal makineleriniz (VM) varsa, VM 'Leri [Azure yönetilen diskleri](../linux/managed-disks-overview.md)kullanacak şekilde dönüştürebilirsiniz. Bu işlem hem işletim sistemi diskini hem de bağlı veri disklerini dönüştürür.
 
-Bu makalede, Azure CLI'yi kullanarak VM'leri nasıl dönüştürersiniz gösterilmektedir. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye](/cli/azure/install-azure-cli)bakın. 
+Bu makalede, Azure CLı kullanarak VM 'Leri nasıl dönüştürebileceğiniz gösterilmektedir. Yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* [Yönetilen Disklere geçiş le ilgili SSS'yi gözden geçirin.](faq-for-disks.md#migrate-to-managed-disks)
+* [Yönetilen disklere geçiş hakkında SSS 'yi](faq-for-disks.md#migrate-to-managed-disks)gözden geçirin.
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* Özgün VHD’ler ve dönüştürme öncesinde VM tarafından kullanılan depolama hesabı silinmez. Ücretler uygulanmaya devam eder. Bunlar için ücret alınmasını önlemek istiyorsanız, dönüştürmenin tamamlandığını doğruladıktan sonra özgün VHD bloblarını silin. Bu eklenmemiş diskleri silmek için bulmanız gerekiyorsa, makalemize bakın [Eklenmemiş Azure yönetilen ve yönetilmeyen diskleri bulun ve silin.](find-unattached-disks.md)
+* Özgün VHD’ler ve dönüştürme öncesinde VM tarafından kullanılan depolama hesabı silinmez. Ücretler uygulanmaya devam eder. Bunlar için ücret alınmasını önlemek istiyorsanız, dönüştürmenin tamamlandığını doğruladıktan sonra özgün VHD bloblarını silin. Bunları silmek için eklenmemiş olan diskleri bulmanız gerekiyorsa, [eklenmemiş Azure yönetilen ve yönetilmeyen disklerini bulma ve silme](find-unattached-disks.md)makalemize bakın.
 
-## <a name="convert-single-instance-vms"></a>Tek örnekli VM'leri dönüştürme
-Bu bölümde, tek örnekli Azure VM'lerin yönetilen disklerden yönetilen disklere nasıl dönüştürülileceği ele alilmektedir. (VM'leriniz kullanılabilirlik kümesindeyse, bir sonraki bölüme bakın.) Bu işlemi, VM'leri premium (SSD) yönetilmeyen disklerden premium yönetilen disklere veya standart (HDD) yönetilmeyen disklerden standart yönetilen disklere dönüştürmek için kullanabilirsiniz.
+## <a name="convert-single-instance-vms"></a>Tek örnekli VM 'Leri dönüştürme
+Bu bölümde, tek örnekli Azure VM 'lerinin yönetilmeyen disklerden yönetilen disklere nasıl dönüştürüleceği ele alınmaktadır. (Sanal makinelerleriniz bir kullanılabilirlik kümesinde ise, sonraki bölüme bakın.) Bu işlemi, Premium (SSD) yönetilmeyen disklerden Premium yönetilen disklere veya standart (HDD) yönetilmeyen disklerden Standart yönetilen disklere sanal makineler dönüştürmek için kullanabilirsiniz.
 
-1. Deallocate [az vm deallocate](/cli/azure/vm)kullanarak VM buluntun. Aşağıdaki örnek, kaynak grubunda adı `myVM` geçen VM'yi yerle `myResourceGroup`bir eder:
+1. [Az VM serbest bırakma](/cli/azure/vm)kullanarak VM 'yi serbest bırakın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi kaldırır:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Az vm convert kullanarak VM'yi yönetilen disklere [dönüştürün.](/cli/azure/vm) Aşağıdaki işlem, işletim sistemi `myVM`diski ve tüm veri diskleri de dahil olmak üzere VM adlı dönüştürür:
+2. [Az VM Convert](/cli/azure/vm)kullanarak VM 'yi yönetilen disklere dönüştürün. Aşağıdaki işlem, işletim sistemi diski ve `myVM`veri diskleri dahil olmak üzere adlı sanal makineyi dönüştürür:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Az vm başlat'ı kullanarak yönetilen disklere dönüştürmeden sonra [VM'yi başlatın.](/cli/azure/vm) Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adı geçen VM'yi başlatır.
+3. [Az VM start](/cli/azure/vm)kullanarak yönetilen disklere dönüştürmeden sonra VM 'yi başlatın. Aşağıdaki örnek adlı `myVM` `myResourceGroup`kaynak grubunda adlı sanal makineyi başlatır.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-## <a name="convert-vms-in-an-availability-set"></a>Kullanılabilirlik kümesinde VM'leri dönüştürme
+## <a name="convert-vms-in-an-availability-set"></a>Kullanılabilirlik kümesindeki VM 'Leri dönüştürme
 
-Yönetilen disklere dönüştürmek istediğiniz VM'ler kullanılabilirlik kümesindeyse, öncelikle kullanılabilirlik kümesini yönetilen kullanılabilirlik kümesine dönüştürmeniz gerekir.
+Yönetilen disklere dönüştürmek istediğiniz VM 'Ler bir kullanılabilirlik kümesinde ise, önce kullanılabilirlik kümesini yönetilen bir kullanılabilirlik kümesine dönüştürmeniz gerekir.
 
-Kullanılabilirlik kümesindeki tüm VM'ler, kullanılabilirlik kümesini dönüştürmeden önce devre denilmelidir. Kullanılabilirlik kümesi nin kendisi yönetilen kullanılabilirlik kümesine dönüştürüldükten sonra tüm VM'leri yönetilen disklere dönüştürmeyi planlayın. Ardından, tüm VM'leri başlatın ve normal şekilde çalışmaya devam edin.
+Kullanılabilirlik kümesini dönüştürmeden önce kullanılabilirlik kümesindeki tüm VM 'Lerin serbest bırakılmalıdır. Kullanılabilirlik kümesinin kendisi yönetilen bir kullanılabilirlik kümesine dönüştürüldükten sonra tüm VM 'Leri yönetilen disklere dönüştürmeyi planlayın. Ardından, tüm VM 'Leri başlatın ve normal şekilde çalışmaya devam edin.
 
-1. [Az vm kullanılabilirlik ayar listesini](/cli/azure/vm/availability-set)kullanarak bir kullanılabilirlik kümesindeki tüm VM'leri listele. Aşağıdaki örnekte, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adı geçen kullanılabilirlik kümesindeki tüm VM'ler listelenir:
+1. Bir kullanılabilirlik kümesindeki tüm VM 'Leri [az VM AVAILABILITY-Set List](/cli/azure/vm/availability-set)kullanarak listeleyin. Aşağıdaki örnek, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adlı kullanılabilirlik kümesindeki tüm VM 'leri listeler:
 
     ```azurecli
     az vm availability-set show \
@@ -64,13 +64,13 @@ Kullanılabilirlik kümesindeki tüm VM'ler, kullanılabilirlik kümesini dönü
         --output table
     ```
 
-2. Deallocate [az vm deallocate](/cli/azure/vm)kullanarak tüm VM'ler. Aşağıdaki örnek, kaynak grubunda adı `myVM` geçen VM'yi yerle `myResourceGroup`bir eder:
+2. [Az VM serbest bırakma](/cli/azure/vm)kullanarak tüm VM 'leri serbest bırakın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi kaldırır:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. [Az vm kullanılabilirlik kümesi ni](/cli/azure/vm/availability-set)kullanarak ayarlanan kullanılabilirliği dönüştürün. Aşağıdaki örnek, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adı geçen kullanılabilirlik kümesini dönüştürür:
+3. [Az VM kullanılabilirliği-set Convert](/cli/azure/vm/availability-set)kullanarak kullanılabilirlik kümesini dönüştürün. Aşağıdaki örnek, adlı `myAvailabilitySet` `myResourceGroup`kaynak grubunda adlı kullanılabilirlik kümesini dönüştürür:
 
     ```azurecli
     az vm availability-set convert \
@@ -78,30 +78,30 @@ Kullanılabilirlik kümesindeki tüm VM'ler, kullanılabilirlik kümesini dönü
         --name myAvailabilitySet
     ```
 
-4. Az vm convert kullanarak tüm VM'leri yönetilen disklere [dönüştürün.](/cli/azure/vm) Aşağıdaki işlem, işletim sistemi `myVM`diski ve tüm veri diskleri de dahil olmak üzere VM adlı dönüştürür:
+4. [Az VM Convert](/cli/azure/vm)kullanarak tüm VM 'leri yönetilen disklere dönüştürün. Aşağıdaki işlem, işletim sistemi diski ve `myVM`veri diskleri dahil olmak üzere adlı sanal makineyi dönüştürür:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. [Az vm başlat'ı](/cli/azure/vm)kullanarak yönetilen disklere dönüştürmeden sonra tüm VM'leri başlatın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adı geçen VM'yi başlatır:
+5. [Az VM start](/cli/azure/vm)kullanarak yönetilen disklere dönüştürmeden sonra tüm VM 'leri başlatın. Aşağıdaki örnek, adlı `myVM` `myResourceGroup`kaynak grubunda adlı sanal makineyi başlatır:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
-## <a name="convert-using-the-azure-portal"></a>Azure portalını kullanarak dönüştürme
+## <a name="convert-using-the-azure-portal"></a>Azure portal kullanarak Dönüştür
 
-Ayrıca, Azure portalını kullanarak yönetilmeyen diskleri yönetilen disklere dönüştürebilirsiniz.
+Azure portal kullanarak, yönetilmeyen diskleri yönetilen disklere de dönüştürebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Portaldaki VM listesinden VM'yi seçin.
-3. VM için bıçakta menüden **Diskler'i** seçin.
-4. **Diskler** bıçağının üst kısmında, **yönetilen disklere Geçir'i**seçin.
-5. VM'niz bir kullanılabilirlik kümesindeyse, yönetilen **disklere Geçir** bilgili bıçak ta önce kullanılabilirlik kümesini dönüştürmeniz gerektiğine dair bir uyarı olacaktır. Uyarı, kullanılabilirlik kümesini dönüştürmek için tıklatabileceğiniz bir bağlantıya sahip olmalıdır. Kullanılabilirlik kümesi dönüştürüldükten veya VM'niz kullanılabilirlik kümesinde değilse, disklerinizi yönetilen disklere geçirme işlemini başlatmak için **Geçir'i** tıklatın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Portaldaki VM 'Ler listesinden VM 'yi seçin.
+3. VM 'nin dikey penceresinde, menüden **diskler** ' i seçin.
+4. **Diskler** dikey penceresinin üst kısmında, **yönetilen disklere geçir**' i seçin.
+5. VM 'niz bir kullanılabilirlik kümesi içinde ise, önce kullanılabilirlik kümesini dönüştürmeniz gereken **yönetilen disklere geçiş** dikey penceresinde bir uyarı olacaktır. Uyarı, kullanılabilirlik kümesini dönüştürmek için tıklabileceğiniz bir bağlantıya sahip olmalıdır. Kullanılabilirlik kümesi dönüştürüldükten veya VM 'niz bir kullanılabilirlik kümesinde değilse, disklerinizi yönetilen disklere geçirme işlemini başlatmak için **Taşı** ' ya tıklayın.
 
 Geçiş tamamlandıktan sonra VM durdurulur ve yeniden başlatılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Depolama seçenekleri hakkında daha fazla bilgi için [Azure Yönetilen Diskler'e genel bakış](../windows/managed-disks-overview.md)bilgisi ne bürünmüştür.
+Depolama seçenekleri hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../windows/managed-disks-overview.md).

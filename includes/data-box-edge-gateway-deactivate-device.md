@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
 ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79128568"
 ---
-Cihazınızı sıfırlamak için, veri diskindeki ve cihazınızın önyükleme diskindeki tüm verileri güvenli bir şekilde silmeniz gerekir. 
+Cihazınızı sıfırlamak için, veri diskine ve cihazınızın önyükleme diskine ait tüm verileri güvenli bir şekilde silmek gerekir. 
 
-Hem `Reset-HcsAppliance` veri disklerini hem de önyükleme diskini veya yalnızca veri disklerini silmek için cmdlet'i kullanın. Ve `ClearData` `BootDisk` anahtarları sırasıyla veri diskleri ve önyükleme diski silmenize olanak sağlar.
+`Reset-HcsAppliance` Cmdlet 'ini kullanarak hem veri disklerini hem de önyükleme diskini veya yalnızca veri disklerini silebilirsiniz. `ClearData` Ve `BootDisk` anahtarları, veri disklerini ve önyükleme diskini sırasıyla temizlemenize olanak tanır.
 
-Anahtar `BootDisk` önyükleme diskini siler ve aygıtı kullanılamaz hale getirir. Yalnızca aygıtın Microsoft'a döndürülmesi gerektiğinde kullanılmalıdır. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device)
+`BootDisk` Anahtar, önyükleme diskini temizler ve cihazın kullanılamamasına neden olur. Yalnızca cihazın Microsoft 'a döndürülmesi gerektiğinde kullanılmalıdır. Daha fazla bilgi için bkz. [cihazı Microsoft 'A döndürme](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
 
-Aygıtı yerel web arama sürümünde sıfırlarsanız, yalnızca veri diskleri güvenli bir şekilde silinir, ancak önyükleme diski bozulmadan tutulur. Önyükleme diski aygıt yapılandırmasını içerir.
+Yerel Web Kullanıcı arabiriminde cihaz sıfırlamayı kullanırsanız, yalnızca veri diskleri güvenli bir şekilde temizlenir ancak önyükleme diski bozulmadan tutulur. Önyükleme diski, cihaz yapılandırmasını içerir.
 
-1. [PowerShell arabirimine bağlanın.](#connect-to-the-powershell-interface)
+1. [PowerShell arabirimine bağlanın](#connect-to-the-powershell-interface).
 2. Komut istemine şunları yazın:
 
     `Reset-HcsAppliance -ClearData -BootDisk`
 
-    Aşağıdaki örnek, bu cmdlet'in nasıl kullanılacağını gösterir:
+    Aşağıdaki örnek, bu cmdlet 'in nasıl kullanılacağını gösterir:
 
     ```powershell
     [10.128.24.33]: PS>Reset-HcsAppliance -ClearData -BootDisk

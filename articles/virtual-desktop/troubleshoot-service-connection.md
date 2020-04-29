@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme hizmeti bağlantısı Windows Sanal Masaüstü - Azure
-description: Windows Sanal Masaüstü kiracı ortamında istemci bağlantıları ayarlarken sorunları nasıl giderebilirsiniz.
+title: Hizmet bağlantısı Windows sanal masaüstü-Azure sorunlarını giderme
+description: Windows sanal masaüstü kiracı ortamında istemci bağlantılarını ayarlarken oluşan sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,45 +9,45 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127454"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows Sanal Masaüstü hizmet bağlantıları
+# <a name="windows-virtual-desktop-service-connections"></a>Windows sanal masaüstü hizmeti bağlantıları
 
-Windows Sanal Masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
+Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bu makaleyi kullanın.
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
-Bize geribildirim verebilir ve [Windows Sanal Masaüstü Teknik Topluluğu'nda](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)ürün ekibi ve diğer aktif topluluk üyeleri ile Windows Sanal Masaüstü Hizmeti tartışmak.
+Windows sanal masaüstü [Teknik topluluğu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)'nda ürün ekibi ve diğer etkin topluluk üyeleriyle geri bildirimde bulunun ve Windows Sanal Masaüstü hizmetini tartışabilirsiniz.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Kullanıcı bağlanır ancak hiçbir şey görüntülenmez (özet akışı yok)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Kullanıcı bağlanıyor, ancak hiçbir şey görüntülenmiyor (akış yok)
 
-Bir kullanıcı Uzak Masaüstü istemcilerini başlatabilir ve kimlik doğrulaması yapabilir, ancak kullanıcı web bulma akışında herhangi bir simge görmez.
+Kullanıcı, uzak masaüstü istemcileri başlatabilir ve kimlik doğrulaması yapabilir, ancak kullanıcı Web bulma akışında herhangi bir simge görmez.
 
-Sorunları bildiren kullanıcının bu komut satırını kullanarak uygulama gruplarına atandığını doğrulayın:
+Bu komut satırını kullanarak, sorunları raporlayan kullanıcının uygulama gruplarına atandığını doğrulayın:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Kullanıcının doğru kimlik bilgileriyle oturum açarak oturum açadığını doğrulayın.
+Kullanıcının doğru kimlik bilgileriyle oturum açmasını onaylayın.
 
-Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olmadığını doğrulayın.
+Web istemcisi kullanılıyorsa, önbelleğe alınmış kimlik bilgileri sorunları olduğunu doğrulayın.
 
-## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enterprise çok oturumlu sanal makineler yanıt vermiyor
+## <a name="windows-10-enterprise-multi-session-virtual-machines-dont-respond"></a>Windows 10 Enterprise çoklu oturum sanal makineleri yanıt vermez
 
-Sanal bir makine yanıt vermiyorsa ve RDP üzerinden erişemiyorsanız, ana bilgisayar durumunu kontrol ederek tanılama özelliğiyle sorun gidermeniz gerekir.
+Bir sanal makine yanıt vermiyor ve RDP üzerinden erişemiyorsanız, konak durumunu denetleyerek tanılama özelliğiyle sorun gidermeniz gerekir.
 
-Ana bilgisayar durumunu kontrol etmek için şu cmdlet'i çalıştırın:
+Konak durumunu denetlemek için şu cmdlet 'i çalıştırın:
 
 ```powershell
 Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
 ```
 
-Ana bilgisayar durumu, `NoHeartBeat`VM'nin yanıt vermediği ve aracının Windows Sanal Masaüstü hizmetiyle iletişim kuramayacağı anlamına gelir.
+Ana bilgisayar durumu ise `NoHeartBeat`, bu, VM 'nin yanıt vermediği ve aracının Windows sanal masaüstü hizmetiyle iletişim kurmayacağı anlamına gelir.
 
 ```powershell
 SessionHostName          LastHeartBeat     AllowNewSession    Status 
@@ -59,18 +59,18 @@ WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat
 WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
 ```
 
-NoHeartBeat durumunu düzeltmek için yapabileceğiniz birkaç şey vardır.
+Nosinyal durumunu onarmak için yapabileceğiniz birkaç nokta vardır.
 
-### <a name="update-fslogix"></a>FSLogix'i güncelleştir
+### <a name="update-fslogix"></a>FSLogix 'i Güncelleştir
 
-FSLogix güncel değilse, özellikle frxdrvvt.sys sürümü 2.9.7205.27375 ise, bir kilitlenme neden olabilir. [FSLogix'i en son sürüme güncellediğinden](https://go.microsoft.com/fwlink/?linkid=2084562)emin olun.
+FSLogix 'niz güncel değilse, özellikle frxdrvvt. sys ' nin 2.9.7205.27375 sürümü varsa, kilitlenme olabilir. [FSLogix ' i en son sürüme güncelleştirdiğinizden](https://go.microsoft.com/fwlink/?linkid=2084562)emin olun.
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>Devre dışı kalan bgtaskregistrationMaintenanceTask
+### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask devre dışı bırak
 
-FSLogix'i güncelleştirmek işe yaramazsa, sorun bir BiSrv bileşeninin haftalık bakım görevi sırasında sistem kaynaklarını tüketiyor olması olabilir. BgTaskRegistrationMaintenanceTask'ı şu iki yöntemden biriyle devre dışı bırakarak bakım görevini geçici olarak devre dışı bırak:
+FSLogix ' i güncelleştirmek işe yaramazsa, bir haftalık bakım görevi sırasında bir Bırv bileşeninin sistem kaynaklarını tüketme sorunu olabilir. Aşağıdaki iki yöntemden biriyle BgTaskRegistrationMaintenanceTask 'yi devre dışı bırakarak bakım görevini geçici olarak devre dışı bırakın:
 
-- Başlat menüsüne gidin ve **Görev Zamanlayıcısı'nı**arayın. Görev **Zamanlayıcısı Kitaplığı** > **Microsoft** > **Windows** > **BrokerInfrastructure**gidin. **BgTaskRegistrationMaintenanceTask**adlı bir görev arayın. Bulduğunuzda, sağ tıklatın ve açılan menüden **Devre Dışı** bırak'ı seçin.
-- Yönetici olarak komut satırı menüsünü açın ve aşağıdaki komutu çalıştırın:
+- Başlat menüsüne gidin ve **Görev Zamanlayıcı**arayın. **Görev Zamanlayıcı Kitaplığı** > **Microsoft** > **Windows**Windows > **brokerınfrastructure**' a gidin. **BgTaskRegistrationMaintenanceTask**adlı bir görev arayın. Bunu bulduğunuzda, sağ tıklayın ve açılan menüden **devre dışı bırak** ' ı seçin.
+- Yönetici olarak bir komut satırı menüsünü açın ve şu komutu çalıştırın:
     
     ```cmd
     schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
@@ -78,8 +78,8 @@ FSLogix'i güncelleştirmek işe yaramazsa, sorun bir BiSrv bileşeninin haftal�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows Sanal Masaüstü sorun giderme ve yükseltme parçalarına genel bakış için [Sorun Giderme genel bakışı, geri bildirim ve desteğe](troubleshoot-set-up-overview.md)bakın.
-- Windows Sanal Masaüstü ortamında kiracı ve ana bilgisayar havuzu oluştururken sorunları gidermek için [Bkz. Kiracı ve ana bilgisayar havuzu oluşturma.](troubleshoot-set-up-issues.md)
-- Windows Sanal Masaüstü'nde sanal makine (VM) yapılandırırken sorunları gidermek için [Oturum ana bilgisayar sanal makine yapılandırmasına](troubleshoot-vm-configuration.md)bakın.
-- Windows Virtual Desktop ile PowerShell kullanırken sorunları gidermek için [Windows Virtual Desktop PowerShell'e](troubleshoot-powershell.md)bakın.
-- Bir sorun giderme öğreticisine geçmek için [Bkz. Öğretici: Kaynak Yöneticisi şablonu dağıtımları.](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+- Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
+- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
+- Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
+- Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
+- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

@@ -9,17 +9,17 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5190804180612e885b226f9b00d82b8d2f528a8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78668600"
 ---
 >[!NOTE]
->Ek bölgeler eklemek için çok çalışıyoruz. Bir bölge eklendiğinde, bu listeye ekleyeceğiz.
+>Ek bölgeler eklemek için çok çalıştık. Bir bölge eklendiğinde, bu listeye eklenecektir.
 >
 
-**Amerika**
+**Kuzey**
 * Güney Brezilya
 * Orta Kanada
 * Orta ABD
@@ -53,9 +53,9 @@ ms.locfileid: "78668600"
 
 **Orta Doğu ve Afrika**
 * Güney Afrika Kuzey
-* BAE Merkez
+* BAE Orta
 
-**Azure Kamu**
+**Azure Devlet Kurumları**
 * Orta US DoD
 * Doğu US DoD
 * US Gov Arizona

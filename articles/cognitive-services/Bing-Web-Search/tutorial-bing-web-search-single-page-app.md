@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: f692367ad431dc8f1623e1b3d5109c313e351934
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78943888"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
@@ -37,7 +37,7 @@ Bu uygulamayı kullanmak için Bing Arama API'lerine sahip bir [Azure Bilişsel 
 Uygulamayı çalıştırmak için ihtiyacınız olacak birkaç şey:
 
 * Node.js 8 veya üstü
-* Bing Arama API'si için bir abonelik anahtarı. Yoksa Bing [Search v7 kaynağı oluşturun.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7) Deneme [anahtarı](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)da kullanabilirsiniz.
+* Bing Arama API 'SI için bir abonelik anahtarı. Yoksa, [bir Bing arama v7 kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). [Deneme anahtarını](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)da kullanabilirsiniz.
 ## <a name="get-the-source-code-and-install-dependencies"></a>Kaynak kodu alma ve bağımlılıkları yükleme
 
 İlk adım, örnek uygulamanın kaynak koduyla depoyu kopyalamaktır.
@@ -127,7 +127,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum vardır bir `strict` `moderate`onay kutusu kullanır: veya .
+`SafeSearch``strict`, `moderate` veya `off` olarak ayarlanabilir; Bing Web Araması'nın varsayılan ayarı `moderate` ayarıdır. Bu form, iki durum içeren bir onay kutusu kullanır: `strict` veya `moderate`.
 
 **Yükselt** onay kutularından herhangi bir seçildiyse, sorguya `answerCount` parametresi eklenir. `promote` parametresi kullanıldığında `answerCount` gereklidir. Bu kod parçacığında, tüm kullanılabilir sonuç türlerinin döndürülmesi için değer `9` olarak ayarlanmıştır.
 > [!NOTE]

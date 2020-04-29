@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Konuşma SDK C++ (Linux) platformu kurulumu - Konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşma SDK C++ (Linux) Platform Kurulumu-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti SDK ile Linux'ta C++ platformunuzu kurmak için bu kılavuzu kullanın.
+description: Linux üzerinde C++ için platformunuzu konuşma hizmeti SDK 'Sı ile ayarlamak için bu kılavuzu kullanın.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
 ms.openlocfilehash: 4f211e4b90dcc8bffa2fbba6fa4783caf846f50c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78384016"
 ---
-Bu kılavuz, Linux için [Konuşma SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yüklenir gösterir
+Bu kılavuzda, Linux için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
 ## <a name="system-requirements"></a>Sistem gereksinimleri
 
-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8)
+Linux (Ubuntu 16,04, Ubuntu 18,04, de, 9, RHEL 8, CentOS 8)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için şunları yapmanız gerekir:
+Bu hızlı başlangıcı tamamlayabilmeniz için şunlar gerekir:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
-* Desteklenen Linux platformları belirli kitaplıkların (güvenli soket `libasound2` katmanı desteği ve ses desteği`libssl` için) yüklenmesini gerektirir. Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
+* Desteklenen Linux platformları, belirli kitaplıkların yüklü olmasını gerektirir`libssl` (Güvenli Yuva Katmanı desteği ve `libasound2` ses desteği için). Bu kitaplıkların doğru sürümlerini yüklemek için gereken komutlar için aşağıdaki dağıtıma bakın.
 
-   * Ubuntu üzerinde:
+   * Ubuntu 'da:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.0 libasound2 wget
      ```
 
-   * Debian 9'da:
+   * On yıl 9 ' da:
 
      ```sh
      sudo apt-get update
      sudo apt-get install build-essential libssl1.0.2 libasound2 wget
      ```
 
-   * RHEL/CentOS 8'de:
+   * RHEL/CentOS 8 ' de:
 
      ```sh
      sudo yum update
@@ -56,11 +56,11 @@ Bu hızlı başlangıcı tamamlamak için şunları yapmanız gerekir:
      ```
 
 > [!NOTE]
-> RHEL/CentOS 8'de [OpenSSL'in Linux için nasıl yapılandırılacağı](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yla ilgili talimatları uygulayın.
+> RHEL/CentOS 8 ' de, [Linux Için OpenSSL 'yi yapılandırma](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yönergelerini izleyin.
 
 ## <a name="install-speech-sdk"></a>Konuşma SDK'sını yükleme
 
-Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üstbilgi dosyaları tar dosyası https://aka.ms/csspeech/linuxbinaryolarak indirilebilir.
+Linux için Konuşma SDK'sı, gerek 64 bit gerekse 32 bit uygulamalar derlemek için kullanılabilir. Gerekli kitaplıklar ve üst bilgi dosyaları, öğesinden https://aka.ms/csspeech/linuxbinarybir bataklık dosyası olarak indirilebilir.
 
 SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
@@ -93,7 +93,7 @@ SDK'yı aşağıda gösterildiği gibi indirin ve yükleyin:
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-Artık aşağıdaki Sonraki [adımlara](#next-steps) geçebilirsiniz.
+Şimdi aşağıdaki [adımlara](#next-steps) geçebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

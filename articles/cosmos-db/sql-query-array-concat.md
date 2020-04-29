@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ARRAY_CONCAT
-description: Azure Cosmos DB'deki Array Concat SQL sisteminin iki veya daha fazla dizi değerini biraraya getirmesisonucu bir diziyi nasıl döndürdettiğini öğrenin
+description: Azure Cosmos DB içindeki array Concat SQL sistem işlevinin, iki veya daha fazla dizi değerini birleştirme sonucu olan bir dizi döndürdüğünü öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8f2b37181e5d743809bb1f60be4056cb4442a8d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78295887"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
- İki veya daha fazla dizi değeri birliş sonucu bir dizi döndürür.  
+ İki veya daha fazla dizi değerini bitiştirme sonucu olan bir dizi döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,15 +26,15 @@ ARRAY_CONCAT (<arr_expr1>, <arr_expr2> [, <arr_exprN>])
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *arr_expr*  
-   Diğer değerlere eşleşecek bir dizi ifadesidir. İşlev `ARRAY_CONCAT` en az iki *arr_expr* bağımsız değişken gerektirir.  
+   , Diğer değerleri birleştirmek için bir dizi ifadesidir. İşlev `ARRAY_CONCAT` , en az iki *arr_expr* bağımsız değişken gerektiriyor.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Dizi ifadesini döndürür.  
+  Bir dizi ifadesi döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, iki dizinin nasıl biraraya getirmek için.  
+  Aşağıdaki örnek iki diziyi birleştirme.  
   
 ```sql
 SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat 
@@ -48,10 +48,10 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
   
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Dizi işlevleri Azure Cosmos DB](sql-query-array-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

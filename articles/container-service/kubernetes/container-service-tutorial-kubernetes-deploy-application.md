@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - Uygulamayı Dağıt
+title: Kullanım DıŞı Azure Container Service öğreticisi-uygulama dağıtma
 description: Azure Container Service öğreticisi - Uygulama Dağıtma
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 2c2d50da4328ff07c3d2fda4a8721839aa3aa6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274064"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>(AmortismanA Uğradı) Kubernetes'teki uygulamaları çalıştırın
+# <a name="deprecated-run-applications-in-kubernetes"></a>Kullanım DıŞı Kubernetes 'te uygulama çalıştırma
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz. Öğretici: Uygulamaları Azure Kubernetes Hizmetinde (AKS) çalıştırın.](../../aks/tutorial-kubernetes-deploy-application.md)
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service 'te (AKS) uygulamaları çalıştırma](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -87,7 +87,7 @@ service "azure-vote-front" created
 
 Uygulamayı İnternet'te kullanıma sunan [Kubernetes hizmeti](https://kubernetes.io/docs/concepts/services-networking/service/) oluşturulur. Bu işlem birkaç dakika sürebilir. 
 
-İlerlemeyi izlemek için, bağımsız değişkenle birlikte `--watch` [kubectl get service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu kullanın.
+İlerlemeyi izlemek için, [kubectl Get Service](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) komutunu `--watch` bağımsız değişkeniyle birlikte kullanın.
 
 ```console
 kubectl get service azure-vote-front --watch

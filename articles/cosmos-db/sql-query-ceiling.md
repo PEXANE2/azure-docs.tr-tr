@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde TAVAN
-description: Azure Cosmos DB'deki CEILING SQL sisteminin işlevi, belirtilen sayısal ifadeden daha büyük veya eşit olan en küçük tümseci değerini nasıl döndürdüğüne ilişkin bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde tavan
+description: Azure Cosmos DB ' deki tavan SQL sistem işlevinin, belirtilen sayısal ifadeye eşit veya ondan büyük en küçük tamsayı değerini nasıl döndürdüğünü öğrenin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 81f113aa51a7f739b506ec7e3eb5bf2cb9f49a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302653"
 ---
 # <a name="ceiling-azure-cosmos-db"></a>TAVAN (Azure Cosmos DB)
- Belirtilen sayısal ifadeden daha büyük veya eşit olan en küçük tümseci değerini verir.  
+ Belirtilen sayısal ifadeye eşit veya ondan büyük en küçük tamsayı değerini döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ CEILING (<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Sayısal bir ifade verir.  
+  Sayısal bir ifade döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `CEILING` işleve sahip pozitif sayısal, negatif ve sıfır değerlerini gösterir.  
+  Aşağıdaki örnek, `CEILING` işlevi ile pozitif sayısal, negatif ve sıfır değerlerini gösterir.  
   
 ```sql
 SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3  
@@ -48,10 +48,10 @@ SELECT CEILING(123.45) AS c1, CEILING(-123.45) AS c2, CEILING(0.0) AS c3
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi bir [aralık dizini](index-policy.md#includeexclude-strategy)yararlanacaktır.
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

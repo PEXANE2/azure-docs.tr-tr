@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde LEFT
-description: Azure Cosmos DB'de LEFT SQL sistem işlevi hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde kaldı
+description: Azure Cosmos DB 'de SOLDAKI SQL sistem işlevi hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 0eac35a91e4d5158335d6797d49a09f8f6f391e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303758"
 ---
-# <a name="left-azure-cosmos-db"></a>SOL (Azure Cosmos DB)
- Belirtilen karakter sayısıyla bir dize sol bölümünü döndürür.  
+# <a name="left-azure-cosmos-db"></a>Sol (Azure Cosmos DB)
+ Belirtilen sayıda karakter içeren bir dizenin sol kısmını döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,18 +26,18 @@ LEFT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   Karakterleri ayıklamak için dize ifadesidir.  
+   , Öğesinden karakter Ayıklanacak dize ifadesidir.  
   
 *num_expr*  
-   Karakter sayısını belirten sayısal bir ifadedir.  
+   , Karakter sayısını belirten sayısal bir ifadedir.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Dize ifadesini döndürür.  
+  Bir dize ifadesi döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, çeşitli uzunluk değerleri için "abc"nin sol kısmını döndürür.  
+  Aşağıdaki örnek, çeşitli uzunluk değerleri için "abc" öğesinin sol kısmını döndürür.  
   
 ```sql
 SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2 
@@ -51,10 +51,10 @@ SELECT LEFT("abc", 1) AS l1, LEFT("abc", 2) AS l2
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi bir [aralık dizini](index-policy.md#includeexclude-strategy)yararlanacaktır.
+Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

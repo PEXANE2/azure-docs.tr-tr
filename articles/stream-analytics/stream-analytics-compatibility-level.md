@@ -1,154 +1,154 @@
 ---
-title: Azure Akışı Analizi uyumluluk düzeyleri
-description: Azure Akış Analizi işi ve en son uyumluluk düzeyindeki önemli değişiklikler için uyumluluk düzeyi ayarlamayı öğrenin
+title: Uyumluluk düzeylerini Azure Stream Analytics
+description: Azure Stream Analytics işi için bir uyumluluk düzeyi ayarlamayı ve en son uyumluluk düzeyindeki önemli değişiklikleri nasıl ayarlayacağınızı öğrenin
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087864"
 ---
-# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Akış Analizi işleri için uyumluluk düzeyi
+# <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyumluluk düzeyi
 
-Bu makalede, Azure Akış Analizi'nde uyumluluk düzeyi seçeneği açıklanmaktadır. Stream Analytics, düzenli özellik güncelleştirmeleri ve performans iyileştirmeleri ile yönetilen bir hizmettir. Hizmetin çalışma saatleri güncelleştirmelerinin çoğu son kullanıcılar tarafından otomatik olarak kullanıma sunulmuştur. 
+Bu makalede, Azure Stream Analytics uyumluluk düzeyi seçeneği açıklanmaktadır. Stream Analytics, düzenli özellik güncelleştirmeleri ve performans iyileştirmeleri içeren bir yönetilen hizmettir. Hizmetin çalışma zamanları güncelleştirmelerinin çoğu, son kullanıcılar için otomatik olarak kullanılabilir hale getirilir. 
 
-Ancak, hizmetteki bazı yeni işlevler, varolan bir işin davranışında değişiklik veya çalışan işlerde verilerin tüketilme şeklindedeğişiklik gibi önemli bir değişikliğe neden olabilir. Uyumluluk düzeyi ayarını düşürerek, mevcut Akış Analizi işlerinizi büyük değişiklikler olmadan çalışır durumda tutabilirsiniz. En son çalışma zamanı davranışlarına hazır olduğunuzda, uyumluluk düzeyini yükselterek kabul edebilirsiniz. 
+Ancak, hizmette bulunan bazı yeni işlevler, var olan bir işin davranışında değişiklik veya çalışan işlerde verilerin tüketilme biçiminde bir değişiklik gibi önemli bir değişikliğe neden olabilir. Uyumluluk düzeyi ayarını düşürülemez ve bu durumda, büyük değişiklikler olmadan çalışan mevcut Stream Analytics işlerinizi koruyabilirsiniz. En son çalışma zamanı davranışları için hazırsanız, uyumluluk düzeyini yükselterek kabul edebilirsiniz. 
 
 ## <a name="choose-a-compatibility-level"></a>Uyumluluk düzeyi seçin
 
-Uyumluluk düzeyi, akış analizi işinin çalışma zamanı davranışını denetler. 
+Uyumluluk düzeyi bir Stream Analytics işinin çalışma zamanı davranışını denetler. 
 
-Azure Akış Analizi şu anda üç uyumluluk düzeyi destekler:
+Azure Stream Analytics Şu anda üç uyumluluk düzeyini desteklemektedir:
 
-* 1.0 - Azure Akış Analizi'nin birkaç yıl önce genel kullanılabilirliği sırasında tanıtılan orijinal uyumluluk düzeyi.
-* 1.1 - Önceki davranış
-* 1.2 - En son iyileştirmeler ile yeni davranış
+* 1,0-birkaç yıl önce Azure Stream Analytics genel kullanıma sunulmasıyla tanıtılan orijinal uyumluluk düzeyi.
+* 1,1-önceki davranış
+* 1,2-en son iyileştirmeler ile en yeni davranış
 
-Yeni bir Akış Analizi işi oluşturduğunuzda, en son uyumluluk düzeyini kullanarak bu işi oluşturmak en iyi yöntemdir. Daha sonra ek değişiklik ve karmaşıklığı önlemek için, en son davranışlara güvenerek iş tasarımınızı başlatın.
+Yeni bir Stream Analytics iş oluşturduğunuzda, en son uyumluluk düzeyini kullanarak oluşturmak en iyi uygulamadır. Daha sonra eklenmiş değişiklik ve karmaşıklığın önüne geçmek için en son davranışlardan sonra iş tasarımınızı başlatın.
 
 ## <a name="set-the-compatibility-level"></a>Uyumluluk düzeyini ayarlama
 
-Azure portalındaki bir Akış Analizi işinin uyumluluk düzeyini veya [create job REST API çağrısını](/rest/api/streamanalytics/stream-analytics-job)kullanarak ayarlayabilirsiniz.
+Stream Analytics işi için uyumluluk düzeyini Azure portal veya [iş oluştur REST API çağrısını](/rest/api/streamanalytics/stream-analytics-job)kullanarak ayarlayabilirsiniz.
 
-Azure portalındaki işin uyumluluk düzeyini güncelleştirmek için:
+Azure portal işin uyumluluk düzeyini güncelleştirmek için:
 
-1. Akış Analizi işinizi bulmak için [Azure portalını](https://portal.azure.com) kullanın.
-2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun.** İşiniz çalışıyorsa uyumluluk düzeyini güncelleştiremezsiniz.
-3. **Yapılandırma** başlığı altında **Uyumluluk düzeyini**seçin.
+1. Stream Analytics işinizi bulmak için [Azure Portal](https://portal.azure.com) kullanın.
+2. Uyumluluk düzeyini güncelleştirmeden önce işi **durdurun** . İşiniz çalışır durumdaysa uyumluluk düzeyini güncelleştiremezsiniz.
+3. **Yapılandır** başlığı altında, **Uyumluluk düzeyi**' ni seçin.
 4. İstediğiniz uyumluluk düzeyi değerini seçin.
-5. Sayfanın altındaki **Kaydet'i** seçin.
+5. Sayfanın alt kısmındaki **Kaydet** ' i seçin.
 
-![Azure portalında Akış Analizi uyumluluk düzeyi](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Azure portal Stream Analytics uyumluluk düzeyi](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
 
-Uyumluluk düzeyini güncelleştirdiğinizde, T-derleyici silecek dizini seçili uyumluluk düzeyine karşılık gelen işi doğrular.
+Uyumluluk düzeyini güncelleştirdiğinizde T-derleyicisi, seçili uyumluluk düzeyine karşılık gelen söz dizimi ile işi doğrular.
 
-## <a name="compatibility-level-12"></a>Uyumluluk düzeyi 1.2
+## <a name="compatibility-level-12"></a>Uyumluluk düzeyi 1,2
 
-Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1.2 tanıtıldı:
+Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,2 ' de kullanıma sunulmuştur:
 
-###  <a name="amqp-messaging-protocol"></a>AMQP mesajlaşma protokolü
+###  <a name="amqp-messaging-protocol"></a>AMQP mesajlaşma Protokolü
 
-**1.2 düzeyi**: Azure Akışı Analytics, Servis Veri Hizmetleri Kuyrukları ve Konuları'na yazmak için [Gelişmiş İleti Kuyruk Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) ileti protokolünü kullanır. AMQP, açık standart bir protokol kullanarak çapraz platform, karma uygulamalar oluşturmanıza olanak tanır.
+**1,2 düzeyi**: Azure Stream Analytics Service Bus kuyruklara ve konulara yazmak Için [Gelişmiş ileti sırası Protokolü (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md) mesajlaşma protokolünü kullanır. AMQP, açık bir standart protokol kullanarak platformlar arası karma uygulamalar oluşturmanıza olanak sağlar.
 
 ### <a name="geospatial-functions"></a>Jeo-uzamsal işlevler
 
-**Önceki düzeyler:** Azure Akış Analizi, Coğrafya hesaplamalarını kullandı.
+**Önceki düzeyler:** Azure Stream Analytics Coğrafya hesaplamaları kullanıldı.
 
-**1.2 seviyesi:** Azure Akış Analizi, Geometrik öngörülen coğrafi koordinatları hesaplamanızı sağlar. Jeouzamsal fonksiyonların imzasında bir değişiklik yok. Ancak, onların semantik biraz farklı, eskisinden daha kesin hesaplama sağlayan.
+**1,2 düzeyi:** Azure Stream Analytics, geometrik olarak tasarlanan coğrafi koordinatları hesaplamanıza olanak sağlar. Jeo-uzamsal işlevlerin imzasında değişiklik yoktur. Ancak semantiklerinden biraz farklıdır, daha önce daha kesin hesaplama yapılmasına izin verir.
 
-Azure Akış Analizi, coğrafi başvuru veri dizini oluşturmayı destekler. Daha hızlı bir birleştirme hesaplaması için jeouzamsal öğeleri içeren Başvuru Verileri dizinlenebilir.
+Azure Stream Analytics Jeo-uzamsal başvuru verileri dizinlemeyi destekler. Jeo-uzamsal öğeleri içeren başvuru verileri daha hızlı bir JOIN hesaplaması için dizinlenebilir.
 
-Güncellenen jeouzamsal işlevler, Bilinen Metin (WKT) jeouzamsal biçiminin tam ifade sini getirir. GeoJson ile daha önce desteklenmeyen diğer coğrafi bileşenleri belirtebilirsiniz.
+Güncelleştirilmiş Jeo-uzamsal işlevleri, tanınmış metin (WKT) Jeo-uzamsal biçiminin tam ifade düzeyini getirir. Daha önce GeoJson ile desteklenmeyen diğer Jeo-uzamsal bileşenleri belirtebilirsiniz.
 
-Daha fazla bilgi için Azure [Akış Analizi – Bulut ve IoT Edge'deki coğrafi özelliklergüncelleştirmeleri](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)bölümüne bakın.
+Daha fazla bilgi için bkz. [bulut ve IoT Edge Azure Stream Analytics Jeo-uzamsal özelliklerine güncelleştirmeler](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/).
 
 ### <a name="parallel-query-execution-for-input-sources-with-multiple-partitions"></a>Birden çok bölümlü giriş kaynakları için paralel sorgu yürütme
 
-**Önceki düzeyler:** Azure Akış Analizi sorguları, sorgu işlemini giriş kaynağı bölümleri arasında paralelleştirmek için PARTITION BY yan tümcesinin kullanılmasını gerektiriyor.
+**Önceki düzeyler:** Azure Stream Analytics sorguları, giriş kaynak bölümleri arasında sorgu işleme paralel hale getirmek için bölüm BY yan tümcesinin kullanımını gerektirdi.
 
-**1.2 seviyesi:** Sorgu mantığı giriş kaynağı bölümleri arasında paralelleştirilebiliyorsa, Azure Akış Analizi ayrı sorgu örnekleri oluşturur ve hesaplamaları paralel olarak çalıştırAr.
+**1,2 düzeyi:** Sorgu mantığı giriş kaynak bölümleri arasında paralelleştirilmesine Azure Stream Analytics, ayrı sorgu örnekleri oluşturur ve hesaplamaları paralel olarak çalıştırır.
 
-### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB çıkışı ile Yerel Toplu API entegrasyonu
+### <a name="native-bulk-api-integration-with-cosmosdb-output"></a>CosmosDB çıkışıyla yerel toplu API Tümleştirmesi
 
-**Önceki düzeyler:** Yükseltme davranışı *ekleme veya birleştirme*oldu.
+**Önceki düzeyler:** Upsert davranış *INSERT veya Merge*.
 
-**1.2 seviyesi:** CosmosDB çıkışıyla yerel Toplu API tümleştirmesi verimi en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB sayfasına Azure Akış Analizi çıktısı bölümüne](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)bakın.
+**1,2 düzeyi:** CosmosDB çıkışıyla yerel toplu API Tümleştirmesi aktarım hızını en üst düzeye çıkarır ve azaltma isteklerini verimli bir şekilde işler. Daha fazla bilgi için [Azure Cosmos DB çıktıyı Azure Stream Analytics sayfasına](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)bakın.
 
-Yükseltme davranışı *ekle veya değiştir.*
+Upsert davranış *INSERT veya Replace*.
 
 ### <a name="datetimeoffset-when-writing-to-sql-output"></a>SQL çıktısına yazarken DateTimeOffset
 
-**Önceki düzeyler:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) türleri UTC'ye ayarlandı.
+**Önceki düzeyler:** [DateTimeOffset](https://docs.microsoft.com/sql/t-sql/data-types/datetimeoffset-transact-sql?view=sql-server-2017) türleri UTC olarak ayarlandı.
 
-**1.2 seviyesi:** DateTimeOffset artık ayarlanmaz.
+**1,2 düzeyi:** DateTimeOffset artık ayarlanmamış.
 
 ### <a name="long-when-writing-to-sql-output"></a>SQL çıktısına yazarken uzun
 
 **Önceki düzeyler:** Değerler hedef türüne göre kesildi.
 
-**1.2 seviyesi:** Hedef türüne sığmayan değerler çıktı hata ilkesine göre işlenir.
+**1,2 düzeyi:** Hedef türüne sığmayan değerler, çıkış hata ilkesine göre işlenir.
 
 ### <a name="record-and-array-serialization-when-writing-to-sql-output"></a>SQL çıktısına yazarken kayıt ve dizi serileştirme
 
-**Önceki düzeyler:** Kayıtlar "Kayıt" olarak, diziler ise "Dizi" olarak yazılmıştır.
+**Önceki düzeyler:** Kayıtlar "kayıt" olarak yazıldı ve diziler "dizi" olarak yazılmıştır.
 
-**1.2 seviyesi:** Kayıtlar ve diziler JSON biçiminde seri hale getirilir.
+**1,2 düzeyi:** Kayıtlar ve diziler JSON biçiminde serileştirilir.
 
-### <a name="strict-validation-of-prefix-of-functions"></a>Fonksiyonların önekinin kesin doğrulanması
+### <a name="strict-validation-of-prefix-of-functions"></a>İşlevlerin ön ekinin katı doğrulaması
 
-**Önceki düzeyler:** İşlev öneklerinin kesin bir doğrulaması yoktu.
+**Önceki düzeyler:** İşlev ön eklerinin kesin doğrulaması yoktu.
 
-**1.2 seviyesi:** Azure Akış Analizi, işlev öneklerinin sıkı bir doğrulaması vardır. Yerleşik bir işleve önek eklemek hataya neden olur. Örneğin,`myprefix.ABS(…)` desteklenmez.
+**1,2 düzeyi:** Azure Stream Analytics, işlev öneklerinden oluşan katı bir doğrulamaya sahiptir. Yerleşik bir işleve ön ek eklemek hataya neden olur. Örneğin,`myprefix.ABS(…)` desteklenmez.
 
-Yerleşik toplamlara bir önek eklemek de hatayla sonuçlanır. Örneğin, `myprefix.SUM(…)` desteklenmez.
+Yerleşik toplamalar için bir ön ek eklemek de hataya neden olur. Örneğin, `myprefix.SUM(…)` desteklenmez.
 
-Kullanıcı tarafından tanımlanan işlevler için "sistem" önekinin kullanılması hatayla sonuçlanır.
+Kullanıcı tanımlı herhangi bir işlev için "sistem" önekini kullanmak hataya neden olur.
 
-### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Cosmos DB çıkış bağdaştırıcısında anahtar özellikler olarak Dizi ve Nesneyi İzin Vermeme
+### <a name="disallow-array-and-object-as-key-properties-in-cosmos-db-output-adapter"></a>Cosmos DB çıkış bağdaştırıcısında anahtar özellikler olarak dizi ve nesneye izin verme
 
-**Önceki düzeyler:** Dizi ve Nesne türleri önemli bir özellik olarak desteklendi.
+**Önceki düzeyler:** Dizi ve nesne türleri anahtar özelliği olarak desteklendi.
 
-**1.2 seviyesi:** Dizi ve Nesne türleri artık önemli bir özellik olarak desteklenmez.
+**1,2 düzeyi:** Dizi ve nesne türleri artık anahtar özelliği olarak desteklenmiyor.
 
-## <a name="compatibility-level-11"></a>Uyumluluk düzeyi 1.1
+## <a name="compatibility-level-11"></a>Uyumluluk düzeyi 1,1
 
-Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1.1 tanıtıldı:
+Aşağıdaki büyük değişiklikler uyumluluk düzeyi 1,1 ' de kullanıma sunulmuştur:
 
-### <a name="service-bus-xml-format"></a>Servis Veri Servisi XML formatı
+### <a name="service-bus-xml-format"></a>Service Bus XML biçimi
 
-**1.0 seviyesi:** Azure Stream Analytics DataContractSerializer'ı kullandığından, ileti içeriği nde XML etiketleri yer aldı. Örnek:
+**1,0 düzeyi:** İleti içeriği XML etiketleri dahil olmak üzere Azure Stream Analytics DataContractSerializer kullanılır. Örneğin:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 seviye:** İleti içeriği, akışı doğrudan ek etiket içermeyen içerir. Örneğin, `{ "SensorId":"1", "Temperature":64}`
+**1,1 düzeyi:** İleti içeriği doğrudan ek etiket olmadan akışı içerir. Örneğin, `{ "SensorId":"1", "Temperature":64}`
 
-### <a name="persisting-case-sensitivity-for-field-names"></a>Alan adları için kalıcı durum duyarlılığı
+### <a name="persisting-case-sensitivity-for-field-names"></a>Alan adları için büyük/küçük harf duyarlılığı
 
-**1.0 seviyesi:** Alan adları, Azure Akışı Analytics altyapısı tarafından işlendiğinde küçük harf olarak değiştirildi.
+**1,0 düzeyi:** Alan adları, Azure Stream Analytics altyapısı tarafından işlendiğinde küçük harf olarak değiştirilmiştir.
 
-**1.1 düzeyi:** Azure Akışı Analytics motoru tarafından işlendiğinde alan adları için büyük/küçük harf duyarlılığı kalıcıdır.
+**1,1 düzeyi:** büyük/küçük harf duyarlılığı, Azure Stream Analytics altyapısı tarafından işlendiğinde alan adları için kalıcıdır.
 
 > [!NOTE]
-> Edge ortamı kullanılarak barındırılan Stream Analytic işleri için kalıcı servis talebi duyarlılığı henüz mevcut değildir. Sonuç olarak, işiniz Edge'de barındırılıyorsa, tüm alan adları küçük harfe dönüştürülür.
+> Edge ortamı kullanılarak barındırılan akış analitik işleri için kalıcı büyük/küçük harf duyarlılığı henüz kullanılamaz. Sonuç olarak, işiniz Edge üzerinde barındırılıyorsa tüm alan adları küçük harfe dönüştürülür.
 
-### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDevre Dışı
+### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1.0 seviyesi:** CREATE TABLE komutu NaN (Not-a-Number) ile olayları filtrelemedi. Örneğin, Sonsuzluk, -Infinity) float sütun türünde, çünkü bu sayılar için belgelenmiş aralık dışındadır.
+**1,0 düzeyi:** CREATE TABLE komut, olayları NaN (a-number değil) ile filtremedi. Örneğin, sonsuz,-sonsuzluk bir sütun türünde, bu sayılar için belgelenmiş aralığın dışında.
 
-**1.1 seviye:** CREATE TABLE güçlü bir şema belirtmenizi sağlar. Akış Analizi motoru, verilerin bu şemaya uygun olduğunu doğrular. Bu modelle, komut NaN değerleri ile olayları filtreleyebilir.
+**1,1 düzeyi:** CREATE TABLE güçlü bir şema belirtmenize olanak tanır. Stream Analytics altyapısı, verilerin bu şemaya uygun olduğunu doğrular. Bu modelde, komut, olayları NaN değerleriyle filtreleyebilir.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>JSON'daki datetime dizeleri için otomatik veyazamanı devre dışı devre dışı
+### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>JSON 'da DateTime dizeleri için otomatik yukarı dönüştürmeyi devre dışı bırak
 
-**1.0 seviyesi:** JSON parser otomatik olarak DateTime türüne tarih/ saat/ bölge bilgileri ile dize değerleri upcast ve sonra UTC dönüştürecek. Bu davranış, saat dilimi bilgilerinin kaybedilesonuçlandı.
+**1,0 düzeyi:** JSON ayrıştırıcısı tarih/saat/bölge bilgileri ile dize değerlerini otomatik olarak tarih/saat/bölge bilgileriyle yukarı aktarır ve UTC 'ye dönüştürür. Bu davranış, saat dilimi bilgilerini kaybetme ile sonuçlandı.
 
-**1.1 seviye:** DateTime türüne tarih/saat/bölge bilgileri yle dize değerlerinin otomatik olarak yer değiştirmesi yoktur. Sonuç olarak, saat dilimi bilgileri tutulur.
+**1,1 düzeyi:** Tarih/saat/bölge bilgileriyle DateTime türüne sahip dize değerleri için otomatik olarak başka bir dönüştürme yoktur. Sonuç olarak, saat dilimi bilgileri tutulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Akış Analizi girişlerini giderme](stream-analytics-troubleshoot-input.md)
-* [Akış Analizi Kaynak durumu](stream-analytics-resource-health.md)
+* [Azure Stream Analytics giriş sorunlarını giderme](stream-analytics-troubleshoot-input.md)
+* [Stream Analytics kaynak durumu](stream-analytics-resource-health.md)

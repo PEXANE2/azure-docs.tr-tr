@@ -1,6 +1,6 @@
 ---
 title: Linux için Azure N serisi GPU sürücü kurulumu
-description: Azure'da Linux çalıştıran N serisi VM'ler için NVIDIA GPU sürücüleri nasıl ayarlanır?
+description: Azure 'da Linux çalıştıran N serisi VM 'Ler için NVıDıA GPU sürücülerini ayarlama
 services: virtual-machines-linux
 author: cynthn
 ms.assetid: d91695d0-64b9-4e6b-84bd-18401eaecdde
@@ -10,43 +10,43 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.openlocfilehash: b424361f318504f96a57ee67722e725fbafc6561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944566"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM'lere NVIDIA GPU sürücülerini yükleyin
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux çalıştıran N serisi VM 'Lere NVıDıA GPU sürücülerini yükler
 
-Linux çalıştıran Azure N serisi VM'lerin GPU özelliklerinden yararlanmak için NVIDIA GPU sürücülerinin yüklenmesi gerekir. [NVIDIA GPU Sürücü Uzantısı,](../extensions/hpccompute-gpu-linux.md) n serisi VM'ye uygun NVIDIA CUDA veya GRID sürücülerini yükler. Azure portalını veya Azure CLI veya Azure Kaynak Yöneticisi şablonları gibi araçları kullanarak uzantıyı yükleyin veya yönetin. Desteklenen dağıtımlar ve dağıtım adımları için [NVIDIA GPU Sürücü Uzantısı belgelerine](../extensions/hpccompute-gpu-linux.md) bakın.
+Linux çalıştıran Azure N serisi VM 'lerinin GPU Özellikleri avantajlarından yararlanmak için NVıDıA GPU sürücüleri yüklenmelidir. [NVıDıA GPU sürücü uzantısı](../extensions/hpccompute-gpu-linux.md) , bir N serisi VM 'ye uygun NVIDIA CUDA veya kılavuz sürücülerini yükleme. Azure CLı veya Azure Resource Manager şablonları gibi Azure portal veya araçları kullanarak uzantıyı yükler veya yönetir. Desteklenen dağıtımlar ve dağıtım adımları için [NVıDıA GPU sürücü uzantısı belgelerine](../extensions/hpccompute-gpu-linux.md) bakın.
 
-GPU sürücülerini el ile yüklemeyi seçerseniz, bu makalede desteklenen dağıtımlar, sürücüler ve yükleme ve doğrulama adımları sağlanır. Windows [Sanal Ayarları](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için manuel sürücü kurulum bilgileri de mevcuttur.
+GPU sürücülerini el ile yüklemeyi seçerseniz, bu makale desteklenen dağıtımlar, sürücüler ve yükleme ve doğrulama adımları sağlar. [Windows VM 'leri](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)için el ile sürücü kurulum bilgileri de mevcuttur.
 
-N serisi VM özellikleri, depolama kapasiteleri ve disk ayrıntıları için [GPU Linux VM boyutlarına](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın. 
+N serisi VM özellikleri, depolama kapasiteleri ve disk ayrıntıları için bkz. [GPU LINUX VM boyutları](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-on-n-series-vms"></a>N serisi VM'lere CUDA sürücülerini yükleme
+## <a name="install-cuda-drivers-on-n-series-vms"></a>N serisi VM 'Lere CUDA sürücülerini yükler
 
-NVIDIA CUDA Toolkit'in CUDA sürücülerini N serisi VM'lere yüklemek için atılacak adımlar aşağıda veda edebilirsiniz. 
+Burada, N serisi VM 'lerde NVıDıA CUDA araç setinden CUDA sürücülerini yüklemek için gereken adımlar verilmiştir. 
 
 
-C ve C++ geliştiricileri isteğe bağlı olarak GPU hızlandırılmış uygulamalar oluşturmak için tam Toolkit yükleyebilirsiniz. Daha fazla bilgi için [CUDA Yükleme Kılavuzu'na](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)bakın.
+C ve C++ geliştiricileri, GPU hızlandırmalı uygulamalar oluşturmak için isteğe bağlı olarak tam araç setini yükleyebilir. Daha fazla bilgi için bkz. [CUDA Yükleme Kılavuzu](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html).
 
-CUDA sürücülerini yüklemek için her VM'ye Bir SSH bağlantısı kurun. Sistemin CUDA özellikli bir GPU'ya sahip olduğunu doğrulamak için aşağıdaki komutu çalıştırın:
+CUDA sürücülerini yüklemek için her VM 'ye bir SSH bağlantısı oluşturun. Sistemde CUDA özellikli bir GPU olduğunu doğrulamak için şu komutu çalıştırın:
 
 ```bash
 lspci | grep -i NVIDIA
 ```
-Aşağıdaki örneğe benzer çıktı göreceksiniz (NVIDIA Tesla K80 kartı gösteriliyor):
+Aşağıdaki örneğe benzer bir çıktı görürsünüz (NVıDıA Tesla K80 kartını gösterme):
 
-![lspci komut çıkışı](./media/n-series-driver-setup/lspci.png)
+![lspcı komut çıktısı](./media/n-series-driver-setup/lspci.png)
 
-Ardından, dağıtımınıza özel yükleme komutlarını çalıştırın.
+Ardından, dağıtıma özgü yükleme komutlarını çalıştırın.
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. NVIDIA web sitesinden CUDA sürücülerini indirin ve kurun. Örneğin, Ubuntu 16.04 LTS için:
+1. NVıDıA Web sitesinden CUDA Sürücülerini İndirin ve yükleyin. Örneğin, Ubuntu 16,04 LTS için:
    ```bash
    CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
@@ -66,17 +66,17 @@ Ardından, dağıtımınıza özel yükleme komutlarını çalıştırın.
 
    Yükleme birkaç dakika sürebilir.
 
-2. İsteğe bağlı olarak tam CUDA araç kitini yüklemek için şunları yazın:
+2. Tam CUDA araç setini isteğe bağlı olarak yüklemek için şunu yazın:
 
    ```bash
    sudo apt-get install cuda
    ```
 
-3. VM'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
+3. VM 'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
 
-#### <a name="cuda-driver-updates"></a>CUDA sürücü güncellemeleri
+#### <a name="cuda-driver-updates"></a>CUDA sürücü güncelleştirmeleri
 
-Dağıtımdan sonra CUDA sürücülerini düzenli aralıklarla güncelleştirmenizi öneririz.
+Dağıtımdan sonra CUDA sürücülerini düzenli olarak güncelleştirmenizi öneririz.
 
 ```bash
 sudo apt-get update
@@ -92,7 +92,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux
 
-1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmemeyi seçerseniz, çekirdek sürümlerinin `kernel-devel` `dkms` ve çekirdeğiniz için uygun olduğundan emin olun.
+1. Çekirdeği güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
 
    ```
    sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -113,7 +113,7 @@ sudo reboot
    sudo reboot
    ```
  
-3. VM'ye yeniden bağlanın ve yüklemeye aşağıdaki komutlarla devam edin:
+3. SANAL makineye yeniden bağlanın ve aşağıdaki komutlarla yüklemeye devam edin:
 
    ```bash
    sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -133,45 +133,45 @@ sudo reboot
 
    Yükleme birkaç dakika sürebilir. 
 
-4. İsteğe bağlı olarak tam CUDA araç kitini yüklemek için şunları yazın:
+4. Tam CUDA araç setini isteğe bağlı olarak yüklemek için şunu yazın:
 
    ```bash
    sudo yum install cuda
    ```
 
-5. VM'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
+5. VM 'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
 
 ### <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 
-GPU aygıt durumunu sorgulamak için, SSH VM ve sürücü ile yüklü [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programı çalıştırın. 
+GPU cihaz durumunu sorgulamak için VM 'ye SSH yapın ve sürücüyle birlikte yüklenen [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın. 
 
-Sürücü yüklüyse, aşağıdakine benzer çıktı görürsünüz. VM'de şu anda bir GPU iş yükü çalıştırıyorsanız **GPU-Util'in** %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
-![NVIDIA cihaz durumu](./media/n-series-driver-setup/smi.png)
+![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi.png)
 
 ## <a name="rdma-network-connectivity"></a>RDMA ağ bağlantısı
 
-RDMA ağ bağlantısı, aynı kullanılabilirlik kümesinde dağıtılan NC24r gibi RDMA özellikli N serisi VM'lerde veya VM ölçeğinde tek bir yerleşim grubunda etkinleştirilebilir. RDMA ağı, Intel MPI 5.x veya daha sonraki bir sürümle çalışan uygulamalar için İleti Geçme Arabirimi (MPI) trafiğini destekler. Ek gereksinimler aşağıdaki gibidir:
+RDMA ağ bağlantısı, aynı Kullanılabilirlik kümesinde veya bir VM Ölçek kümesindeki tek bir yerleştirme grubunda dağıtılan NC24r gibi, RDMA özellikli N serisi VM 'lerde etkinleştirilebilir. RDMA ağı, Intel MPı 5. x veya sonraki bir sürümde çalışan uygulamalar için Ileti geçirme arabirimi (MPı) trafiğini destekler. Ek gereksinimler şunları izler:
 
-### <a name="distributions"></a>Dağıtım
+### <a name="distributions"></a>Dağıtımları
 
-N serisi VM'lerde RDMA bağlantısını destekleyen Azure Marketi'ndeki resimlerden birinden RDMA özellikli N serisi VM'leri dağıtın:
+N serisi VM 'lerde RDMA bağlantısını destekleyen Azure Marketi 'ndeki görüntülerden birinde RDMA özellikli N serisi VM 'Leri dağıtın:
   
-* **Ubuntu 16.04 LTS** - RdMA sürücülerini VM'de yapılandırın ve Intel MPI'yi indirmek için Intel'e kaydolun:
+* **Ubuntu 16,04 LTS** -sanal makinede RDMA sürücülerini yapılandırma ve Intel MPI Indirmek için Intel ile kaydolma:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **CentOS tabanlı 7.4 HPC** - RDMA sürücüleri ve Intel MPI 5.1 VM'ye yüklenir.
+* **CentOS tabanlı 7,4 HPC** -RDMA sürücüleri ve Intel mpı 5,1, VM 'ye yüklenir.
 
-## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV veya NVv3 serisi VM'lere GRID sürücülerini yükleyin
+## <a name="install-grid-drivers-on-nv-or-nvv3-series-vms"></a>NV veya NVv3 serisi VM 'Lere KıLAVUZ sürücüleri yükler
 
-NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye bir SSH bağlantısı yapın ve Linux dağıtımınız için adımları izleyin. 
+NV veya NVv3 serisi VM 'Lere NVıDıA GRID sürücüleri yüklemek için, her VM 'ye bir SSH bağlantısı oluşturun ve Linux dağıtımına yönelik adımları izleyin. 
 
 ### <a name="ubuntu"></a>Ubuntu 
 
-1. `lspci` komutunu çalıştırın. NVIDIA M60 kartının veya kartının PCI aygıtları olarak görülebildiğinden doğrulayın.
+1. `lspci` komutunu çalıştırın. NVıDıA M60 kartının veya kartlarının PCI cihazlar olarak görünür olduğunu doğrulayın.
 
-2. Güncelleştirmeleri yükleyin.
+2. Güncelleştirmeleri yükler.
 
    ```bash
    sudo apt-get update
@@ -184,7 +184,7 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
    
    sudo apt-get install linux-azure -y
    ```
-3. NVIDIA sürücüsüile uyumsuz olan Nouveau çekirdek sürücüsünü devre dışı kılabilir. (NV veya NVv2 VM'lerde NVIDIA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki `/etc/modprobe.d` `nouveau.conf` içerikleri içeren bir dosya oluşturun:
+3. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NVv2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlandırılmış `nouveau.conf` bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -193,13 +193,13 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
    ```
 
 
-4. VM'yi yeniden başlatın ve yeniden bağlayın. Çıkış X sunucusu:
+4. VM 'yi yeniden başlatın ve yeniden bağlanın. Çıkış X Server:
 
    ```bash
    sudo systemctl stop lightdm.service
    ```
 
-5. GRID sürücüsünü indirin ve kurun:
+5. KıLAVUZ sürücüsünü indirip yükleyin:
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
@@ -209,32 +209,32 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
 
-6. X yapılandırma dosyanızı güncelleştirmek için nvidia-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet'i**seçin.
+6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet**' i seçin.
 
-7. Kurulum tamamlandıktan sonra, kopya / vb /nvidia/gridd.conf.template yeni bir dosya gridd.conf at location /etc/nvidia/
+7. Yükleme tamamlandıktan sonra,/etc/Nvidia/gridd.conf.Template konumundaki yeni bir gridd. conf dosyasına kopyalayın/etc/Nvidia/
 
    ```bash
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
 
-8. Aşağıdakileri `/etc/nvidia/gridd.conf`ekleyin:
+8. Aşağıdakileri öğesine `/etc/nvidia/gridd.conf`ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE
    ```
    
-9. Varsa aşağıdakileri `/etc/nvidia/gridd.conf` kaldırın:
+9. Varsa şunları `/etc/nvidia/gridd.conf` kaldırın:
  
    ```
    FeatureType=0
    ```
-10. VM'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
+10. VM 'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
 
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS veya Red Hat Enterprise Linux 
 
-1. Çekirdeği ve DKMS'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmemeyi seçerseniz, çekirdek sürümlerinin `kernel-devel` `dkms` ve çekirdeğiniz için uygun olduğundan emin olun.
+1. Kernel ve DKMS 'yi güncelleştirin (önerilir). Çekirdeği güncelleştirmeme seçeneğini belirlerseniz, `kernel-devel` ve `dkms` sürümlerinin çekirdeğe uygun olduğundan emin olun.
  
    ```bash  
    sudo yum update
@@ -248,7 +248,7 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
    sudo yum install hyperv-daemons
    ```
 
-2. NVIDIA sürücüsüile uyumsuz olan Nouveau çekirdek sürücüsünü devre dışı kılabilir. (NV veya NV2 VM'lerde NVIDIA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki `/etc/modprobe.d` `nouveau.conf` içerikleri içeren bir dosya oluşturun:
+2. NVıDıA sürücüsüyle uyumsuz olan Nouveau Çekirdek sürücüsünü devre dışı bırakın. (Yalnızca NV veya NV2 VM 'lerinde NVıDıA sürücüsünü kullanın.) Bunu yapmak için, aşağıdaki içeriklerle `/etc/modprobe.d` adlandırılmış `nouveau.conf` bir dosya oluşturun:
 
    ```
    blacklist nouveau
@@ -256,7 +256,7 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
    blacklist lbm-nouveau
    ```
  
-3. VM'yi yeniden başlatın, [Hyper-V ve Azure için](https://www.microsoft.com/download/details.aspx?id=55106)en son Linux Tümleştirme Hizmetlerini yeniden bağlayın ve yükleyin.
+3. [Hyper-V ve Azure IÇIN](https://www.microsoft.com/download/details.aspx?id=55106)VM 'yi yeniden başlatın, yeniden bağlanın ve en son Linux Tümleştirme hizmetlerini kurun.
  
    ```bash
    wget https://aka.ms/lis
@@ -271,9 +271,9 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
 
    ```
  
-4. VM'ye yeniden bağlanın `lspci` ve komutu çalıştırın. NVIDIA M60 kartının veya kartının PCI aygıtları olarak görülebildiğinden doğrulayın.
+4. SANAL makineye yeniden bağlanın ve `lspci` komutu çalıştırın. NVıDıA M60 kartının veya kartlarının PCI cihazlar olarak görünür olduğunu doğrulayın.
  
-5. GRID sürücüsünü indirin ve kurun:
+5. KıLAVUZ sürücüsünü indirip yükleyin:
 
    ```bash
    wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
@@ -282,40 +282,40 @@ NV veya NVv3 serisi VM'lere NVIDIA GRID sürücüleri yüklemek için, her VM'ye
 
    sudo ./NVIDIA-Linux-x86_64-grid.run
    ``` 
-6. X yapılandırma dosyanızı güncelleştirmek için nvidia-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet'i**seçin.
+6. X yapılandırma dosyanızı güncelleştirmek için NVIDIA-xconfig yardımcı programını çalıştırmak isteyip istemediğiniz sorulduğunda **Evet**' i seçin.
 
-7. Kurulum tamamlandıktan sonra, kopya / vb /nvidia/gridd.conf.template yeni bir dosya gridd.conf at location /etc/nvidia/
+7. Yükleme tamamlandıktan sonra,/etc/Nvidia/gridd.conf.Template konumundaki yeni bir gridd. conf dosyasına kopyalayın/etc/Nvidia/
   
    ```bash
    sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
    ```
   
-8. Aşağıdakileri `/etc/nvidia/gridd.conf`ekleyin:
+8. Aşağıdakileri öğesine `/etc/nvidia/gridd.conf`ekleyin:
  
    ```
    IgnoreSP=FALSE
    EnableUI=FALSE 
    ```
-9. Varsa aşağıdakileri `/etc/nvidia/gridd.conf` kaldırın:
+9. Varsa şunları `/etc/nvidia/gridd.conf` kaldırın:
  
    ```
    FeatureType=0
    ```
-10. VM'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
+10. VM 'yi yeniden başlatın ve yüklemeyi doğrulamaya devam edin.
 
 
 ### <a name="verify-driver-installation"></a>Sürücü yüklemeyi doğrulama
 
 
-GPU aygıt durumunu sorgulamak için, SSH VM ve sürücü ile yüklü [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programı çalıştırın. 
+GPU cihaz durumunu sorgulamak için VM 'ye SSH yapın ve sürücüyle birlikte yüklenen [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) komut satırı yardımcı programını çalıştırın. 
 
-Sürücü yüklüyse, aşağıdakine benzer çıktı görürsünüz. VM'de şu anda bir GPU iş yükü çalıştırıyorsanız **GPU-Util'in** %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
+Sürücü yüklüyse aşağıdakine benzer bir çıktı görürsünüz. Şu anda VM 'de bir GPU iş yükü çalıştırmadığınız takdirde **GPU-Util** 'in %0 gösterdiğini unutmayın. Sürücü sürümünüz ve GPU ayrıntılarınız gösterilenlerden farklı olabilir.
 
-![NVIDIA cihaz durumu](./media/n-series-driver-setup/smi-nv.png)
+![NVıDıA cihaz durumu](./media/n-series-driver-setup/smi-nv.png)
  
 
 ### <a name="x11-server"></a>X11 sunucusu
-Bir NV veya NVv2 VM'ye uzaktan bağlantılar için bir X11 sunucusuna ihtiyacınız varsa, [x11vnc](http://www.karlrunge.com/x11vnc/) grafik donanım hızlandırmasağlar çünkü önerilir. M60 aygıtının BusID'si X11 yapılandırma dosyasına el `etc/X11/xorg.conf`ile eklenmelidir (genellikle. Aşağıdakilere `"Device"` benzer bir bölüm ekleyin:
+NV veya NVv2 VM 'sine yönelik uzak bağlantılar için X11 sunucusuna ihtiyacınız varsa, grafiklerin donanım hızlandırılmasını sağladığından [x11vnc](http://www.karlrunge.com/x11vnc/) önerilir. M60 cihazının Busıd 'Si, X11 yapılandırma dosyasına (genellikle, `etc/X11/xorg.conf`) el ile eklenmelidir. Aşağıdakine benzer `"Device"` bir bölüm ekleyin:
  
 ```
 Section "Device"
@@ -327,15 +327,15 @@ Section "Device"
 EndSection
 ```
  
-Ayrıca, bu `"Screen"` aygıtı kullanmak için bölümünüzü güncelleştirin.
+Ayrıca, bu cihazı `"Screen"` kullanmak için bölümünü güncelleştirin.
  
-Ondalık BusID çalıştırarak bulunabilir
+Ondalık Busıd, şu şekilde çalıştırılarak bulunabilir
 
 ```bash
 nvidia-xconfig --query-gpu-info | awk '/PCI BusID/{print $4}'
 ```
  
-BusID, bir VM yeniden tahsis edildiğinde veya yeniden başlatıldığında değişebilir. Bu nedenle, bir VM yeniden başlatıldığında X11 yapılandırmasında BusID'yi güncelleştirmek için bir komut dosyası oluşturmak isteyebilirsiniz. Örneğin, aşağıdakilere benzer `busidupdate.sh` içeriklere sahip bir komut dosyası (veya seçtiğiniz başka bir ad) oluşturun:
+Bir VM yeniden ayrıldığında veya yeniden başlatıldığında Busıd değişebilir. Bu nedenle, bir VM yeniden başlatıldığında X11 yapılandırmasındaki Busıd 'yi güncelleştirmek için bir komut dosyası oluşturmak isteyebilirsiniz. Örneğin, aşağıdakine benzer içeriğe sahip ( `busidupdate.sh` veya seçtiğiniz başka bir ad) adlı bir komut dosyası oluşturun:
 
 ```bash 
 #!/bin/bash
@@ -351,13 +351,13 @@ else
 fi
 ```
 
-Ardından, komut dosyası önyükleme `/etc/rc.d/rc3.d` üzerinde kök olarak çağrılır, böylece güncelleştirme komut dosyası için bir giriş oluşturun.
+Ardından, içinde `/etc/rc.d/rc3.d` güncelleştirme betiğinizin bir girdisini oluşturun, böylece betik önyüklemede kök olarak çağrılır.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-* Kartları sorgulamanız gerektiğinde `nvidia-smi` komutun çıktısının daha hızlı olması için kalıcılık modunu ayarlayabilirsiniz. Kalıcılık modunu ayarlamak `nvidia-smi -pm 1`için çalıştırın. VM yeniden başlatılırsa, mod ayarı ortadan kalkar. Başlangıç ta çalıştırılabilmek için mod ayarını her zaman komut dosyası na yazabilirsiniz.
-* NVIDIA CUDA sürücülerini en son sürüme güncellediyseniz ve RDMA bağlantısının artık çalışmadığını fark ederseniz, bu bağlantıyı yeniden algılamak için [RDMA sürücülerini yeniden yükleyin.](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) 
+* ' I kullanarak `nvidia-smi` Kalıcılık modunu ayarlayabilirsiniz. böylece, kartları sorgulamak için komutun çıktısının daha hızlı olması gerekir. Kalıcılık modunu ayarlamak için yürütün `nvidia-smi -pm 1`. VM yeniden başlatılırsa mod ayarının dışarıda olacağını unutmayın. Başlatma sırasında her zaman Mod ayarını çalıştırmak için komut dosyası oluşturabilirsiniz.
+* NVıDıA CUDA sürücülerini en son sürüme güncelleştirdiyseniz ve RDMA connectivcity bulma işlemi artık çalışmıyorsa, bu bağlantıyı yeniden kurmak için [RDMA sürücülerini yeniden yükleyin](https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup#rdma-network-connectivity) . 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Yüklü NVIDIA sürücülerinizle bir Linux VM görüntüsü yakalamak [için, bir Linux sanal makinesini nasıl genelleştirip yakalayacaklarınıza](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bakın.
+* Yüklü NVıDıA sürücülerinizin bulunduğu bir Linux VM görüntüsünü yakalamak için bkz. [Linux sanal makinesi Genelleştirme ve yakalama](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

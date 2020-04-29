@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri v2'den v3'e geçirin
-description: Bu makalede, Azure Media Services v3'te tanıtılan değişiklikler açıklanır ve iki sürüm arasındaki farkları gösterir.
+title: Azure Media Services V2 'den v3 'e geçiş
+description: Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm arasındaki farklılıklar gösteren değişiklikler açıklanmaktadır.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -16,37 +16,37 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087824"
 ---
-# <a name="media-services-v2-vs-v3"></a>Medya Hizmetleri v2 vs v3
+# <a name="media-services-v2-vs-v3"></a>Media Services V2 ve v3 karşılaştırması
 
-Bu makalede, Azure Media Services v3'te tanıtılan değişiklikler açıklanır ve iki sürüm arasındaki farkları gösterir.
+Bu makalede, Azure Media Services v3 sürümünde tanıtılan ve iki sürüm arasındaki farklılıklar gösteren değişiklikler açıklanmaktadır.
 
-## <a name="general-changes-from-v2"></a>v2'den genel değişiklikler
+## <a name="general-changes-from-v2"></a>V2 'den genel değişiklikler
 
-* V3 ile oluşturulan varlıklar için Medya Hizmetleri yalnızca [Azure Depolama sunucu tarafındaki depolama şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)destekler.
-    * Medya Hizmetleri tarafından sağlanan [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) ile oluşturulan V2 API'leri ile oluşturulan Varlıklar ile v3 API'lerini kullanabilirsiniz.
-    * V3 API'lerini kullanarak eski AES 256 [depolama şifrelemesiyle](../previous/media-services-rest-storage-encryption.md) yeni Varlıklar oluşturamazsınız.
-* [Varlık'ın](assets-concept.md)v3'teki özellikleri v2'den farklıdır, [özelliklerin nasıl eşlenebildiğini](#map-v3-asset-properties-to-v2)görün.
-* V3 SDK'lar artık Depolama SDK'sından ayrılmış, bu da size kullanmak istediğiniz Storage SDK sürümü üzerinde daha fazla denetim sağlar ve sürüm sorunlarını önler. 
-* v3 API'lerinde, tüm kodlama bit hızları saniyede bit şeklindedir. Bu, v2 Media Encoder Standart ön ayarlardan farklıdır. Örneğin, v2'deki bit hızı 128 (kbps) olarak belirtilir, v3'te ise 128000 (bit/saniye) olur. 
-* Varlıklar Varlık Dosyaları, AccessPolicies ve IngestManifests v3 yok.
-* IAsset.ParentAssets özelliği v3'te yok.
-* ContentKeys artık bir varlık değil, artık Akış Bulucu'nun bir özelliğidir.
-* Olay Grid desteği BildirimSon Noktaları'nın yerini alır.
+* V3 ile oluşturulan varlıklar için Media Services yalnızca [Azure Storage sunucu tarafı depolama şifrelemesini](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)destekler.
+    * V3 API 'Leri, Media Services tarafından sağlanmış [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) (AES 256) olan v2 API 'Leriyle oluşturulmuş varlıklarla birlikte kullanabilirsiniz.
+    * V3 API 'Leri kullanarak eski AES 256 [depolama şifrelemesi](../previous/media-services-rest-storage-encryption.md) Ile yeni varlıklar oluşturamazsınız.
+* [Varlıkların](assets-concept.md)v3 'deki özellikleri v2 'den farklıdır, bkz. [Özellikler nasıl eşlenir](#map-v3-asset-properties-to-v2).
+* V3 SDK 'Ları artık, kullanmak istediğiniz depolama SDK 'Sı üzerinde daha fazla denetim sağlayan ve sürüm oluşturma sorunlarını önleyip depolama SDK 'sının içine ayrılır. 
+* V3 API 'Lerinde, tüm kodlama bit hızları saniyede bit/saniye cinsinden. Bu, v2 Media Encoder Standard önayarlarından farklıdır. Örneğin, v2 'deki bit hızı 128 (Kbps) olarak belirtilir, ancak v3 'de 128000 (bit/saniye) olur. 
+* AssetFiles, AccessPolicies ve IngestManifests varlıkları v3 'te bulunmamaktadır.
+* Ivarlık. ParentAssets özelliği v3 içinde yok.
+* ContentKeys artık bir varlık değil, artık akış bulucunun bir özelliğidir.
+* Event Grid desteği, NotificationEndpoints yerini alır.
 * Aşağıdaki varlıklar yeniden adlandırıldı
-    * İş Çıktısı Görevin yerini alır ve artık bir İş'in bir parçasıdır.
-    * Akış Lı Bulucatör, Konumbelirleyici'nin yerini alır.
-    * Live Event, Kanal'ın yerini alır.<br/>Canlı Etkinlikler faturalandırması Canlı Kanal sayaçlarını temel alınarak yapılır. Daha fazla bilgi için faturalandırma ve fiyatlandırma ya da [faturalandırma](live-event-states-billing.md) ya da fiyatlandırma ya da [faturalandırma](https://azure.microsoft.com/pricing/details/media-services/)ya da fiyatlandırma ya da
-    * Canlı Çıktı Programı değiştirir.
-* Canlı Çıktılar oluşturmayla başlar ve silindiğinde durur. Programlar v2 API'lerinde farklı çalıştı, oluşturulduktan sonra başlatılması gerekiyordu.
-* Bir iş hakkında bilgi almak için, işin oluşturulduğu Dönüşüm adını bilmeniz gerekir. 
-* V2'de, XML [giriş](../previous/media-services-input-metadata-schema.md) ve [çıktı](../previous/media-services-output-metadata-schema.md) meta veri dosyaları bir kodlama işi sonucunda oluşturulur. V3'te meta veri biçimi XML'den JSON'a değiştirildi. 
-* Medya Hizmetleri v2'de, başlatma vektörü (IV) belirtilebilir. Medya Hizmetleri v3'te FairPlay IV belirtilemez. Hem paketleme hem de lisans teslimatı için Medya Hizmetlerini kullanan müşterileri etkilemese de, FairPlay lisanslarını (karma mod) sunmak için üçüncü taraf bir DRM sistemini kullanırken sorun olabilir. Bu durumda, FairPlay IV'ün cbcs anahtar kimliğinden türetilmiş olduğunu ve bu formül kullanılarak alınabileceğini bilmek önemlidir:
+    * İş çıkışı görevin yerini alır ve artık bir Işin parçasıdır.
+    * Akış Bulucu Konumlandırıcı 'nın yerini alır.
+    * Canlı olay kanal yerini alır.<br/>Canlı olaylar, canlı kanal ölçümlerine göre faturalandırılır. Daha fazla bilgi için bkz. [faturalandırma](live-event-states-billing.md) ve [fiyatlandırma](https://azure.microsoft.com/pricing/details/media-services/).
+    * Canlı çıkış programın yerini alır.
+* Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Programlar v2 API 'Lerinde farklı çalıştık, oluşturulduktan sonra başlatılmaları gerekiyordu.
+* Bir iş hakkında bilgi almak için işin altında oluşturulduğu dönüştürme adını bilmeniz gerekir. 
+* V2 'de XML [giriş](../previous/media-services-input-metadata-schema.md) ve [Çıkış](../previous/media-services-output-metadata-schema.md) meta verileri dosyaları, bir kodlama işinin sonucu olarak üretilir. V3 'de meta veri biçimi XML olarak JSON olarak değiştirilmiştir. 
+* Media Services V2 'de, başlatma vektörü (IV) belirtilebilir. Media Services v3 'de, FairPlay IV belirtilemez. Hem paketleme hem de lisans teslimi için Media Services kullanan müşterileri etkilemediğinden, FairPlay lisanslarını (karma mod) sunmak için üçüncü taraf DRM sistemi kullanılırken bir sorun olabilir. Bu durumda, FairPlay IV 'nin cibh anahtar KIMLIĞINDEN türetildiğinden ve şu formül kullanılarak alınabileceğinizi bilmemiz önemlidir:
 
     ```
     string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
@@ -64,38 +64,38 @@ Bu makalede, Azure Media Services v3'te tanıtılan değişiklikler açıklanır
     }
     ```
 
-    Daha fazla bilgi [için, Hem Canlı hem de VOD işlemleri için karma modda Medya Hizmetleri v3 için Azure İşlevleri C# koduna](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3)bakın.
+    Daha fazla bilgi için bkz. [hem canlı hem de VOD işlemleri için karma modda Media Services v3 Için Azure Işlevleri C# kodu](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
  
 > [!NOTE]
-> [Medya Hizmetleri v3 kaynaklarına](media-services-apis-overview.md#naming-conventions)uygulanan adlandırma kurallarını gözden geçirin. Ayrıca [arama lekeleri gözden geçirin.](assets-concept.md#naming)
+> [Media Services v3 kaynaklarına](media-services-apis-overview.md#naming-conventions)uygulanan adlandırma kurallarını gözden geçirin. Ayrıca [adlandırma bloblarını](assets-concept.md#naming)gözden geçirin.
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API'leri ile özellik farkları
 
-V3 API v2 API ile ilgili olarak aşağıdaki özellik boşlukları vardır. Boşlukları kapatma çalışmaları devam ediyor.
+V3 API 'si, v2 API 'sine göre aşağıdaki özellik boşluklarını içerir. Boşlukların kapatılması devam ediyor.
 
-* [Premium Kodlayıcı](../previous/media-services-premium-workflow-encoder-formats.md) ve eski [medya analiz işlemcilerine](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview, Face Redactor, vb.) v3 üzerinden erişilemez.<br/>Media Indexer 1 veya 2 önizlemesinden geçiş yapmak isteyen müşteriler, v3 API'deki AudioAnalyzer ön ayarını hemen kullanabilir.  Bu yeni ön ayar, eski Media Indexer 1 veya 2'den daha fazla özellik içerir. 
-* [V2 API'lerinde Media Encoder Standard'ın gelişmiş özelliklerinin](../previous/media-services-advanced-encoding-with-mes.md) çoğu şu anda v3'te mevcut değildir:
+* [Premium kodlayıcı](../previous/media-services-premium-workflow-encoder-formats.md) ve eski [Medya analizi Işlemcileri](../previous/media-services-analytics-overview.md) (Azure Media Services Dizin Oluşturucu 2 Preview, yüz Redactor vb.) v3 aracılığıyla erişilemez.<br/>Media Indexer 1 veya 2 Preview 'dan geçiş yapmak isteyen müşteriler, v3 API 'sindeki AudioAnalyzer ön ayarını hemen kullanabilir.  Bu yeni önayar, eski Media Indexer 1 veya 2 ' den daha fazla özellik içeriyor. 
+* V2 API 'lerinde [Media Encoder Standard gelişmiş özelliklerin](../previous/media-services-advanced-encoding-with-mes.md) birçoğu şu anda v3 'de bulunmamaktadır:
   
-    * Varlıkların Dikişi
-    * Bindirmeler
-    * Kırpma
-    * Küçük Resim Sprites
-    * Girişte ses yokken sessiz bir ses parçası ekleme
-    * Girişte video yokken video parçası ekleme
-* Şu anda transcoding içeren Canlı Etkinlikler, API çağrısı yla Slate eklemenin orta akışı ve reklam işaretçisi eklemeyi desteklemez. 
+    * Kıymetlerin dikiş
+    * Kaplayan
+    * Manın
+    * Küçük resim Sprites
+    * Girişte ses olmadığında sessiz ses izi ekleme
+    * Girişte video yoksa video izlemesi ekleme
+* Transkodlamaya sahip canlı olaylar şu anda kurşun ekleme orta akış ve ad işaretçisi ekleme işlemini API çağrısı aracılığıyla desteklemez. 
  
 ## <a name="asset-specific-changes"></a>Varlığa özgü değişiklikler
 
-### <a name="map-v3-asset-properties-to-v2"></a>V3 varlık özelliklerini v2'ye göre harita
+### <a name="map-v3-asset-properties-to-v2"></a>V3 varlık özelliklerini v2 'ye eşleyin
 
-Aşağıdaki tablo, [Varlığın](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)v3 haritasındaki özelliklerinin V2'deki Varlıkların özelliklerine nasıl olduğunu gösterir.
+Aşağıdaki tabloda, [varlıkların](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)sürüm 2 ' deki varlık özelliklerinin v2 'de nasıl eşlenme şekli gösterilmektedir.
 
-|v3 özellikleri|v2 özellikleri|
+|V3 Özellikleri|v2 özellikleri|
 |---|---|
-|`id`- (benzersiz) tam Azure Kaynak Yöneticisi yolu, [Varlık](https://docs.microsoft.com/rest/api/media/assets/createorupdate) örneklerine bakın||
-|`name`- (benzersiz) [bkz.](media-services-apis-overview.md#naming-conventions) ||
+|`id`-(benzersiz) tam Azure Resource Manager yolu, bkz. [varlık](https://docs.microsoft.com/rest/api/media/assets/createorupdate) içindeki örnekler||
+|`name`-(benzersiz) bkz. [adlandırma kuralları](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
-|`assetId`|`Id`- (benzersiz) değer `nb:cid:UUID:` önek ile başlar.|
+|`assetId`|`Id`-(unique) değeri `nb:cid:UUID:` önekiyle başlar.|
 |`created`|`Created`|
 |`description`|`Name`|
 |`lastModified`|`LastModified`|
@@ -103,38 +103,38 @@ Aşağıdaki tablo, [Varlığın](https://docs.microsoft.com/rest/api/media/asse
 |`storageEncryptionFormat`| `Options`(oluşturma seçenekleri)|
 |`type`||
 
-### <a name="storage-side-encryption"></a>Depolama tarafı şifreleme
+### <a name="storage-side-encryption"></a>Depolama tarafı şifrelemesi
 
-Varlıklarınızı istirahatte korumak için, varlıkların depolama tarafındaki şifreleme tarafından şifrelenmeleri gerekir. Aşağıdaki tablo, Depolama tarafı şifrelemesinin Medya Hizmetleri'nde nasıl çalıştığını gösterir:
+Varlıkları bekleyen bir şekilde korumak için, varlıkların depolama tarafı şifrelemesi tarafından şifrelenmesi gerekir. Aşağıdaki tabloda, depolama tarafı şifrelemesinin Media Services ' de nasıl çalıştığı gösterilmektedir:
 
 |Şifreleme seçeneği|Açıklama|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Medya Hizmetleri Depolama Şifrelemesi|AES-256 şifreleme, Medya Hizmetleri tarafından yönetilen anahtar.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
-|[Veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure Depolama tarafından sunulan sunucu tarafı şifrelemesi, anahtar Azure veya müşteri tarafından yönetilir.|Destekleniyor|Destekleniyor|
-|[Depolama İstemci Tarafı Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Anahtar Vault'ta müşteri tarafından yönetilen Azure depolama tarafından sunulan istemci tarafı şifrelemesi.|Desteklenmiyor|Desteklenmiyor|
+|Media Services depolama şifrelemesi|AES-256 şifrelemesi, anahtar Media Services tarafından yönetiliyor.|Desteklenen<sup>(1)</sup>|Desteklenmiyor<sup>(2)</sup>|
+|[Bekleyen veriler için Depolama Hizmeti Şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Azure depolama tarafından sunulan ve Azure tarafından yönetilen veya müşteri tarafından yönetilen sunucu tarafı şifrelemesi.|Destekleniyor|Destekleniyor|
+|[Depolama Istemci tarafı şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure depolama tarafından sunulan ve Key Vault ' de müşteri tarafından yönetilen anahtar olan istemci tarafı şifreleme.|Desteklenmiyor|Desteklenmiyor|
 
-<sup>1</sup> Medya Hizmetleri içeriğin açık/net bir şekilde işlenmesini desteklerken, bunu yapmak önerilmez.
+<sup>1</sup> Media Services hiçbir şifreleme formu olmadan açık/olmayan içerik işlemeyi desteklese de, bunu yapmanız önerilmez.
 
-<sup>2</sup> Medya Hizmetleri v3'te depolama şifrelemesi (AES-256 şifrelemesi), yalnızca Varlıklarınız Medya Hizmetleri v2 ile oluşturulduğunda geriye dönük uyumluluk için desteklenir. Yani v3 varolan depolama şifreli varlıklarla çalışır, ancak yenilerinin oluşturulmasına izin vermez.
+<sup>2</sup> Media Services v3 'de, depolama ŞIFRELEMESI (AES-256 şifrelemesi) yalnızca varlıklarınız Media Services V2 ile oluşturulduysa geriye dönük uyumluluk için desteklenir. V3, mevcut depolama şifrelenmiş varlıklarla birlikte çalışarak, yenilerini oluşturulmasına izin vermez.
 
 ## <a name="code-differences"></a>Kod farklılıkları
 
-Aşağıdaki tablo, sık karşılaşılan senaryolar için v2 ve v3 arasındaki kod farklarını gösterir.
+Aşağıdaki tabloda yaygın senaryolar için v2 ve v3 arasındaki kod farklılıkları gösterilmektedir.
 
-|Senaryo|V2 API|V3 API|
+|Senaryo|V2 APı 'SI|V3 APı 'SI|
 |---|---|---|
-|Varlık oluşturma ve dosya yükleme |[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|İş gönderme|[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Önce Dönüşüm'ün nasıl oluşturulup sonra bir İş gönderilen şekli gösterir.|
-|AES şifrelemeli bir varlık yayımlama |1. ContentKeyAuthorizationPolicyOption oluştur<br/>2. ContentKeyAuthorizationPolicy oluşturma<br/>3. Varlık Teslim Politikası Oluşturma<br/>4. Varlık oluşturma ve içerik yükleme VEYA iş gönderme ve çıktı varlığını kullanma<br/>5. Varlık Teslim Politikası'nı Varlıkla Ilişkilendirme<br/>6. ContentKey oluştur<br/>7. İçeriği Kıymete EkleKey<br/>8. AccessPolicy Oluştur<br/>9. Bulucu Oluştur<br/><br/>[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. İçerik Anahtar İlkesi Oluştur<br/>2. Varlık Oluşturma<br/>3. İçeriği yükleme veya Varlığı İş Çıktısı olarak kullanma<br/>4. Akış Bulucu oluştur<br/><br/>[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
-|İş ayrıntılarını alın ve işleri yönetin |[v2 ile işleri yönetme](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[v3 ile işleri yönetme](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
+|Bir varlık oluşturun ve bir dosyayı karşıya yükleyin |[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|İş gönder|[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>İlk olarak bir dönüştürme oluşturmayı ve sonra bir Işi göndermeyi gösterir.|
+|AES şifrelemesi ile varlık yayımlama |1. ContentKeyAuthorizationPolicyOption oluşturun<br/>2. ContentKeyAuthorizationPolicy oluşturma<br/>3. AssetDeliveryPolicy oluşturma<br/>4. varlık oluşturma ve içerik yükleme veya işi gönderme ve çıkış varlığını kullanma<br/>5. AssetDeliveryPolicy 'i varlıkla ilişkilendir<br/>6. ContentKey oluştur<br/>7. varlığa ContentKey iliştirme<br/>8. AccessPolicy oluşturma<br/>9. Bulucu oluştur<br/><br/>[v2 .NET örneği](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Içerik anahtar Ilkesi oluştur<br/>2. varlık oluştur<br/>3. içeriği karşıya yükleyin veya varlığı Joi put olarak kullanın<br/>4. akış Bulucu oluşturma<br/><br/>[v3 .NET örneği](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|İş ayrıntılarını alma ve işleri yönetme |[V2 ile işleri yönetme](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[V3 ile işleri yönetme](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 > [!NOTE]
-> Lütfen bu makaleyi yer imi ve güncellemeleri kontrol etmeye devam edin.
+> Lütfen bu makaleye yer işareti ekleyin ve güncelleştirmeleri kontrol edin.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Medya Hizmetleri v2'den v3'e geçiş için geçiş kılavuzu](migrate-from-v2-to-v3.md)
+[Media Services V2 'den v3 'e geçmek için geçiş kılavuzu](migrate-from-v2-to-v3.md)

@@ -1,6 +1,6 @@
 ---
-title: Sorun Giderme Windows Sanal Masaüstü oturum ana bilgisayar - Azure
-description: Windows Sanal Masaüstü oturumunu sanal makineleri yapılandırırken sorunları nasıl gidereceğiniz.
+title: Windows sanal masaüstü oturumu ana bilgisayarı sorunlarını giderme-Azure
+description: Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini yapılandırırken sorunları çözme.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,154 +9,154 @@ ms.date: 12/03/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127594"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Oturum ana bilgisayarı sanal makine yapılandırması
 
-Windows Sanal Masaüstü oturumunu yapılandırırken yaşadığınız sorunları gidermek için bu makaleyi kullanın sanal makineler (VM'ler).
+Windows sanal masaüstü oturumu ana bilgisayarı sanal makinelerini (VM 'Ler) yapılandırırken karşılaştığınız sorunları gidermek için bu makaleyi kullanın.
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 
-Windows Sanal Masaüstü Hizmeti'ni ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows Sanal Masaüstü Teknik Topluluğu'nu](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) ziyaret edin.
+Windows Sanal Masaüstü hizmetini ürün ekibi ve etkin topluluk üyeleriyle tartışmak için [Windows sanal masaüstü teknoloji Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) 'yi ziyaret edin.
 
-## <a name="vms-are-not-joined-to-the-domain"></a>VM'ler etki alanına katılmaz
+## <a name="vms-are-not-joined-to-the-domain"></a>VM 'Ler etki alanına katılmamış
 
-VM'leri etki alanına birleştirme sorunları yaşıyorsanız, bu yönergeleri izleyin.
+VM 'Leri etki alanına eklerken sorun yaşıyorsanız bu yönergeleri izleyin.
 
-- [Windows Server sanal makinesini yönetilen bir etki alanına katılma](../active-directory-domain-services/join-windows-vm.md) işlemini veya etki alanına katılma [şablonunu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)kullanarak VM'ye el ile katılın.
-- VM'deki komut satırından alan adını pingle'ı deneyin.
-- [Sorun giderme Etki Alanı Birleştirme Hata İletileri'nde](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)etki alanına katılma hata iletilerinin listesini gözden geçirin.
+- [Windows Server sanal makinesini yönetilen bir etki alanına ekleme](../active-directory-domain-services/join-windows-vm.md) veya [etki alanına ekleme şablonunu](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)kullanma içindeki işlemi kullanarak VM 'yi el ile birleştirin.
+- VM 'de komut satırından etki alanı adının ping komutunu deneyin.
+- Etki alanına ekleme [hata Iletileriyle Ilgili sorunları gidermek](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx)için etki alanına katılması hata iletileri listesini gözden geçirin.
 
-### <a name="error-incorrect-credentials"></a>Hata: Yanlış kimlik bilgileri
+### <a name="error-incorrect-credentials"></a>Hata: yanlış kimlik bilgileri
 
-**Sebep:** Kimlik bilgileri Azure Kaynak Yöneticisi şablon arabirimi düzeltmeleri girildiğinde bir yazım hatası yapıldı.
+**Neden:** Azure Resource Manager şablon arabirimi düzeltmeleriyle kimlik bilgileri girildiğinde oluşturulan bir yazım hatası vardı.
 
-**Düzeltme:** Çözmek için aşağıdaki eylemlerden birini alın.
+**Çözüm:** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
-- VM'leri bir etki alanına el ile ekleyin.
-- Kimlik bilgileri onaylandıktan sonra şablonu yeniden dağıtın. Bkz. [PowerShell ile ana bilgisayar havuzu oluşturun.](create-host-pools-powershell.md)
-- [Varolan windows vm'den AD Etki Alanına Katılma'ya](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)sahip bir şablonkullanarak bir etki alanına VM'lere katılın.
+- VM 'Leri bir etki alanına el ile ekleyin.
+- Kimlik bilgileri onaylandıktan sonra şablonu yeniden dağıtın. Bkz. [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md).
+- [Mevcut bir WINDOWS sanal MAKINESINI ad etki alanına birleştiren](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)bir şablon kullanarak VM 'leri etki alanına katın.
 
-### <a name="error-timeout-waiting-for-user-input"></a>Hata: Kullanıcı girişi için zaman ekini bekliyor
+### <a name="error-timeout-waiting-for-user-input"></a>Hata: Kullanıcı girişi beklenirken zaman aşımı oluştu
 
-**Sebep:** Etki alanı birleştirmesini tamamlamak için kullanılan hesabın çok faktörlü kimlik doğrulaması (MFA) olabilir.
+**Neden:** Etki alanı katılımı tamamlamaya yönelik hesap Multi-Factor Authentication 'a (MFA) sahip olabilir.
 
-**Düzeltme:** Çözmek için aşağıdaki eylemlerden birini alın.
+**Çözüm:** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
-- Hesap için Geçici Olarak MFA'yı kaldırın.
+- Hesap için MFA 'yı geçici olarak kaldırın.
 - Bir hizmet hesabı kullanın.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hata: Sağlama sırasında kullanılan hesabın işlemi tamamlama izni yok
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Hata: sağlama sırasında kullanılan hesabın işlemi tamamlamaya yönelik izinleri yok
 
-**Sebep:** Kullanılan hesabın, uyumluluk ve düzenlemeler nedeniyle etki alanına VM'lere katılma izni yoktur.
+**Neden:** Kullanılmakta olan hesabın, uyumluluk ve yönetmelikler nedeniyle VM 'Leri etki alanına katma izni yok.
 
-**Düzeltme:** Çözmek için aşağıdaki eylemlerden birini alın.
+**Çözüm:** Çözümlemek için aşağıdaki eylemlerden birini gerçekleştirin.
 
 - Yönetici grubunun üyesi olan bir hesap kullanın.
-- Kullanılan hesaba gerekli izinleri ver.
+- Kullanılan hesaba gerekli izinleri verin.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Hata: Etki alanı adı çözülmüyor
+### <a name="error-domain-name-doesnt-resolve"></a>Hata: etki alanı adı çözümlenmiyor
 
-**Neden 1:** Sanal M'ler, etki alanının bulunduğu sanal ağla (VNET) ilişkili olmayan bir sanal ağda dır.
+**Neden 1:** VM 'Ler, etki alanının bulunduğu sanal ağ (VNET) ile ilişkilendirilmemiş bir sanal ağ üzerinde bulunuyor.
 
-**Düzeltme 1:** VM'lerin sağlandığı VNET ile etki alanı denetleyicisinin (DC) çalıştığı VNET arasında VNET eşlemi oluşturun. Bkz. [Sanal ağ eşleme oluşturma - Kaynak Yöneticisi, farklı abonelikler.](../virtual-network/create-peering-different-subscriptions.md)
+**1. Çözüm:** VM 'Lerin sağlandığı VNET ile etki alanı denetleyicisinin (DC) çalıştığı VNET arasında VNET eşlemesi oluşturun. Bkz. [sanal ağ eşlemesi oluşturma-kaynak yöneticisi, farklı abonelikler](../virtual-network/create-peering-different-subscriptions.md).
 
-**Neden 2:** Azure Active Directory Domain Services (Azure AD DS) kullanırken, sanal ağ dns sunucu ayarlarını yönetilen etki alanı denetleyicilerini işaret etmek üzere güncelleştirmiyor.
+**Neden 2:** Azure Active Directory Domain Services (Azure AD DS) kullanırken, sanal ağın DNS sunucusu ayarları, yönetilen etki alanı denetleyicilerini işaret etmek üzere güncellenir.
 
-**Düzeltme 2:** Azure AD DS içeren sanal ağın DNS ayarlarını güncelleştirmek [için Azure sanal ağı için DNS ayarlarını güncelleştir'e](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)bakın.
+**2. Çözüm:** Azure AD DS içeren sanal ağın DNS ayarlarını güncelleştirmek için bkz. [Azure sanal ağı IÇIN DNS ayarlarını güncelleştirme](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
 
-**Neden 3:** Ağ arabiriminin DNS sunucu ayarları, sanal ağdaki uygun DNS sunucusuna işaret etmez.
+**Neden 3:** Ağ arabiriminin DNS sunucusu ayarları, sanal ağda uygun DNS sunucusunu göstermiyor.
 
-**Düzeltme 3:** [DNS sunucularını değiştir]'deki adımları izleyerek çözmek için aşağıdaki eylemlerden birini alın.
-- [DNS sunucularını değiştir](../virtual-network/virtual-network-network-interface.md#change-dns-servers) adımları ile ağ arabiriminin DNS sunucu ayarlarını **Özel** olarak değiştirin ve sanal ağdaki DNS sunucularının özel IP adreslerini belirtin.
-- Ağ arabiriminin DNS sunucu [ayarlarını, DNS sunucularını değiştir](../virtual-network/virtual-network-network-interface.md#change-dns-servers)adımlarla **sanal ağdan devralmak** için değiştirin, ardından [DNS sunucularını değiştir'in](../virtual-network/manage-virtual-network.md#change-dns-servers)adımları ile sanal ağın DNS sunucu ayarlarını değiştirin.
+**3. Çözüm:** Çözümlemek için, [DNS sunucularını değiştirme] bölümündeki adımları izleyerek aşağıdaki eylemlerden birini gerçekleştirin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](../virtual-network/virtual-network-network-interface.md#change-dns-servers) adımları ile **özel** olarak DEĞIŞTIRIN ve sanal ağda DNS sunucularının özel IP adreslerini belirtin.
+- Ağ arabiriminin DNS sunucusu ayarlarını, [DNS sunucularını değiştirme](../virtual-network/virtual-network-network-interface.md#change-dns-servers)adımları ile **sanal ağdan devralacak** şekilde değiştirin, ardından sanal ağın DNS sunucusu ayarlarını [değiştirme DNS sunucuları](../virtual-network/manage-virtual-network.md#change-dns-servers)adımlarından adımları değiştirin.
 
-## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows Sanal Masaüstü Aracısı ve Windows Sanal Masaüstü Önyükleme Yükleyici yüklü değil
+## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows sanal masaüstü Aracısı ve Windows sanal masaüstü önyükleme yükleyicisi yüklü değil
 
-VM'leri sağlamanın önerilen yolu, Azure Kaynak Yöneticisi **Oluştur ve Windows Sanal Masaüstü ana bilgisayar havuzu** şablonu sağlamaktır. Şablon otomatik olarak Windows Sanal Masaüstü Aracısı ve Windows Sanal Masaüstü Aracısı Boot Loader yükler.
+VM 'Leri sağlamak için önerilen yol, **Windows sanal masaüstü konak havuzu şablonu oluşturma ve sağlama** Azure Resource Manager kullanmaktır. Şablon, Windows sanal masaüstü Aracısı ve Windows sanal masaüstü Aracısı önyükleme yükleyicisini otomatik olarak yükler.
 
-Bileşenlerin yüklü olduğunu onaylamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
+Bileşenlerin yüklendiğini doğrulamak ve hata iletilerini denetlemek için bu yönergeleri izleyin.
 
-1. **Kontrol Paneli** > **Programları Programları** > **ve Özellikleri'ni**denetleyerek iki bileşenin yüklü olduğunu doğrulayın. **Windows Sanal Masaüstü Aracısı** ve Windows Sanal Masaüstü **Aracısı Boot Loader** görünmezse, VM'de yüklü değildir.
-2. **Dosya Gezgini'ni** açın ve **C:\Windows\Temp\ScriptLog.log'a**gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC'nin sağlanan güvenlik bağlamında çalışmadığını gösterir.
-3. **C:\Windows\Temp\ScriptLog.log** dosyası varsa, açın ve hata iletilerini denetleyin.
+1. **Denetim Masası** > **Programlar** > **Programlar ve Özellikler ' i**denetleyerek iki bileşenin yüklendiğini onaylayın. **Windows sanal masaüstü Aracısı** ve **Windows sanal masaüstü Aracısı önyükleme yükleyicisi** görünür değilse, VM 'de yüklü değildir.
+2. **Dosya Gezgini** 'ni açın ve **C:\windows\temp\scriptlog.log**konumuna gidin. Dosya eksikse, iki bileşeni yükleyen PowerShell DSC 'nin belirtilen güvenlik bağlamında çalıştırılmadığını gösterir.
+3. **C:\windows\temp\scriptlog.log** dosyası varsa, açın ve hata iletilerini denetleyin.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Hata: Windows Sanal Masaüstü Aracısı ve Windows Sanal Masaüstü Aracısı Boot Loader eksik. C:\Windows\Temp\ScriptLog.log da eksik
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Hata: Windows sanal masaüstü Aracısı ve Windows sanal masaüstü Aracısı önyükleme yükleyicisi eksik. C:\Windows\Temp\ScriptLog.log de eksik
 
-**Neden 1:** Azure Kaynak Yöneticisi şablonu için giriş sırasında sağlanan kimlik bilgileri yanlış veya izinler yetersizdi.
+**Neden 1:** Azure Resource Manager şablonu için giriş sırasında belirtilen kimlik bilgileri yanlış veya izinler yetersiz.
 
-**Düzeltme 1:** PowerShell ile ana bilgisayar havuzu [oluştur'u](create-host-pools-powershell.md)kullanarak eksik bileşenleri VM'lere el ile ekleyin.
+**1. Çözüm:** [PowerShell ile konak havuzu oluşturma](create-host-pools-powershell.md)' yı kullanarak eksik bileşenleri VM 'lere el ile ekleyin.
 
-**Neden 2:** PowerShell DSC başlatıp yürütebildi ancak Windows Sanal Masaüstü'nde oturum açamadığı ve gerekli bilgileri elde edemediği için tamamlayamadı.
+**Neden 2:** PowerShell DSC, Windows sanal masaüstü 'nde oturum açıp gerekli bilgileri alabilmesi için başlatma ve yürütme işlemi başarısız oldu, ancak tamamlanamayacak.
 
-**Düzeltme 2:** Aşağıdaki listedeki öğeleri onaylayın.
+**2. Çözüm:** Aşağıdaki listedeki öğeleri onaylayın.
 
-- Hesabın MFA olmadığından emin olun.
-- Kiracı adının doğru olduğunu ve kiracının Windows Sanal Masaüstü'nde olduğunu doğrulayın.
-- Hesabın en az RDS Katılımcısı izni olduğunu onaylayın.
+- Hesabın MFA içermediğinden emin olun.
+- Kiracı adının doğru olduğunu ve kiracının Windows sanal masaüstü 'nde mevcut olduğunu doğrulayın.
+- Hesabın en az RDS katkıda bulunan izinleri olduğunu onaylayın.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Hata: Kimlik doğrulama başarısız oldu, C:\Windows\Temp\ScriptLog.log hatası
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Hata: kimlik doğrulaması başarısız oldu, hata: C:\Windows\Temp\ScriptLog.log
 
-**Sebep:** PowerShell DSC yürütmeyi başardı ancak Windows Sanal Masaüstü'ne bağlanamadı.
+**Neden:** PowerShell DSC 'nin yürütülmesi, ancak Windows sanal masaüstüne bağlanamadık.
 
-**Düzeltme:** Aşağıdaki listedeki öğeleri onaylayın.
+**Çözüm:** Aşağıdaki listedeki öğeleri onaylayın.
 
-- VM'leri Windows Sanal Masaüstü hizmetine el ile kaydedin.
-- Windows Sanal Masaüstüne bağlanmak için kullanılan hesabı onaylayın, ana bilgisayar havuzları oluşturmak için kiracıda izinler vardır.
-- HesapMFA'sı olmadığını onaylayın.
+- VM 'Leri Windows sanal masaüstü hizmeti ile el ile kaydedin.
+- Windows sanal masaüstüne bağlanmak için kullanılan hesabın, kiracı üzerinde konak havuzları oluşturma izinlerine sahip olduğunu doğrulayın.
+- Onaylama hesabında MFA yok.
 
-## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows Sanal Masaüstü Aracısı Windows Sanal Masaüstü hizmetine kaydetmiyor
+## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows sanal masaüstü Aracısı Windows sanal masaüstü hizmeti 'ne kaydolmadı
 
-Windows Sanal Masaüstü Aracısı ilk oturum ana bilgisayar VM'lerine (el ile veya Azure Kaynak Yöneticisi şablonu ve PowerShell DSC aracılığıyla) yüklendiğinde, bir kayıt belirteci sağlar. Aşağıdaki bölümde, Windows Sanal Masaüstü Aracısı ve belirteç için geçerli olan sorun giderme sorunları ele aluyulmaktadır.
+Windows sanal masaüstü Aracısı, oturum ana bilgisayar VM 'lerine ilk kez yüklendiğinde (el ile veya Azure Resource Manager şablonu ve PowerShell DSC aracılığıyla), bir kayıt belirteci sağlar. Aşağıdaki bölümde, Windows sanal masaüstü Aracısı ve belirteci için geçerli olan sorun giderme sorunları ele alınmaktadır.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-RdsSessionHost cmdlet dosyasında dosyalanan durum kullanılamayan olarak durumu gösterir
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hata: Get-RdsSessionHost cmdlet 'inde dosyalanmış durum durumu kullanım dışı olarak gösteriyor
 
-![Get-RdsSessionHost cmdlet kullanılamayan olarak durumunu gösterir.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Get-RdsSessionHost cmdlet 'i, durumu kullanım dışı olarak gösterir.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Sebep:** Aracı kendisini yeni bir sürüme güncelleştiremez.
+**Neden:** Aracı kendisini yeni bir sürüme güncelleştiremeyebilir.
 
-**Düzeltme:** Aracıyı el ile güncelleştirmek için bu yönergeleri izleyin.
+**Çözüm:** Aracıyı el ile güncelleştirmek için bu yönergeleri izleyin.
 
-1. Oturum ana bilgisayar VM'deki aracının yeni bir sürümünü indirin.
-2. Görev Yöneticisi'ni başlatın ve Hizmet Sekmesinde RDAgentBootLoader hizmetini durdurun.
-3. Windows Sanal Masaüstü Aracısı'nın yeni sürümü için yükleyiciyi çalıştırın.
-4. Kayıt belirteci için istendiğinde, giriş INVALID_TOKEN kaldırın ve sonrakine basın (yeni bir belirteç gerekmez).
-5. Yükleme Sihirbazı'nı tamamlayın.
-6. Görev Yöneticisi'ni açın ve RDAgentBootLoader hizmetini başlatın.
+1. Oturum Ana bilgisayar VM 'sinde aracının yeni bir sürümünü indirin.
+2. Görev Yöneticisi 'Ni başlatın ve hizmet sekmesinde Rdadgentönyükleme Yükleyicisi hizmetini durdurun.
+3. Windows sanal masaüstü aracısının yeni sürümü için yükleyiciyi çalıştırın.
+4. Kayıt belirteci sorulduğunda INVALID_TOKEN girişi kaldırın ve ileri ' ye basın (yeni bir belirteç gerekli değildir).
+5. Yükleme sihirbazını doldurun.
+6. Görev Yöneticisi 'Ni açın ve Rdadgentönyükleme Yükleyicisi hizmetini başlatın.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hata: Windows Virtual Desktop Agent kayıt defteri giriş Kayıtlı 0 değerini gösterir
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hata: Windows sanal masaüstü Aracısı kayıt defteri girdisi IsRegistered değeri 0 değerini gösteriyor
 
-**Sebep:** Kayıt belirteci süresi doldu veya 999999 son kullanma değeri ile oluşturuldu.
+**Neden:** Kayıt belirtecinin süresi doldu veya süre sonu 999999 ile üretildi.
 
-**Düzeltme:** Aracı kayıt defteri hatasını düzeltmek için aşağıdaki yönergeleri izleyin.
+**Çözüm:** Aracı kayıt defteri hatasını onarmak için bu yönergeleri izleyin.
 
-1. Zaten bir kayıt belirteci varsa, remove-RDSRegistrationInfo ile kaldırın.
-2. Rds-NewRegistrationInfo ile yeni belirteç oluşturun.
-3. -ExpriationHours parametresinin 72 olarak ayarlendiğini doğrulayın (maksimum değer 99999'dur).
+1. Zaten bir kayıt belirteci varsa Remove-RDSRegistrationInfo ile kaldırın.
+2. RDS-Newregistrationınfo ile yeni belirteç oluştur.
+3. -ExpriationHours parametresinin 72 olarak ayarlandığını onaylayın (en büyük değer 99999 ' dir).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Hata: Windows Sanal Masaüstü aracısı Get-RdsSessionHost çalıştırırken bir sinyal bildiriyor değil
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Hata: Windows sanal masaüstü Aracısı Get-RdsSessionHost çalıştırılırken bir sinyal bildirmiyor
 
-**Neden 1:** RDAgentBootLoader hizmeti durduruldu.
+**Neden 1:** Rdavgentönyükleme Yükleyicisi hizmeti durduruldu.
 
-**Düzeltme 1:** Görev Yöneticisi başlatın ve Hizmet Sekmesi RDAgentBootLoader hizmeti için durdurulan bir durum bildiriyorsa, hizmeti başlatın.
+**1. Çözüm:** Görev Yöneticisi 'Ni başlatın ve hizmet sekmesi Rdadgentönyükleme Yükleyicisi hizmeti için durdurulmuş bir durum bildirirse hizmeti başlatın.
 
-**Neden 2:** Port 443 kapalı olabilir.
+**Neden 2:** 443 numaralı bağlantı noktası kapatılabilir.
 
-**Düzeltme 2:** Bağlantı noktası 443'ün açmak için bu yönergeleri izleyin.
+**2. Çözüm:** 443 numaralı bağlantı noktasını açmak için bu yönergeleri izleyin.
 
-1. Onay bağlantı noktası 443 [Sysinternal araçlardan](/sysinternals/downloads/psping/)PSPing aracı indirerek açık.
-2. Aracının çalıştığı oturum ana bilgisayarı VM'ye PSPing'i yükleyin.
-3. Komut istemini yönetici olarak açın ve aşağıdaki komutu sorun:
+1. PSPing aracını [SysInternal araçlarından](/sysinternals/downloads/psping/)indirerek bağlantı noktası 443 ' nin açık olduğunu doğrulayın.
+2. Aracının çalıştığı oturum ana bilgisayar VM 'sine PSPing 'yi yükler.
+3. Komut istemi 'ni yönetici olarak açın ve aşağıdaki komutu verin:
 
     ```cmd
     psping rdbroker.wvdselfhost.microsoft.com:443
     ```
 
-4. PSPing'in RDBroker'dan bilgi aldığını doğrulayın:
+4. Rdsping 'nin bilgileri RDBroker 'dan geri aldığını onaylayın:
 
     ```
     PsPing v2.10 - PsPing - ping, latency, bandwidth measurement utility
@@ -174,23 +174,23 @@ Windows Sanal Masaüstü Aracısı ilk oturum ana bilgisayar VM'lerine (el ile v
     Minimum = 2.12ms, Maximum = 3.83ms, Average = 2.58ms
     ```
 
-## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows Sanal Masaüstü yan yana yığınla ilgili sorun giderme sorunları
+## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Windows sanal masaüstü yan yana yığınıyla ilgili sorunları giderme
 
-Windows Virtual Desktop yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2'ye yan yana yığını yüklemek için Microsoft Installer'ı (MSI) kullanın. Microsoft Windows 10 için, Windows Sanal Masaüstü yan yana yığını **enablesxstackrs.ps1**ile etkinleştirilir.
+Windows sanal masaüstü yan yana yığın Windows Server 2019 ile otomatik olarak yüklenir. Microsoft Windows Server 2016 veya Windows Server 2012 R2 'ye yan yana yığın yüklemek için Microsoft yükleyicisi 'ni (MSI) kullanın. Microsoft Windows 10 ' da, Windows sanal masaüstü yan yana yığın, **enablesxstackrons. ps1**ile etkinleştirilir.
 
-Oturum ana bilgisayar havuzu VM'lerde yan yana yığının yüklenmesi veya etkinleştirilmesinin üç ana yolu vardır:
+Yan yana yığının, oturum ana bilgisayar havuzu VM 'lerinde yüklü veya etkin olduğu başlıca üç yol vardır:
 
-- Azure Kaynak Yöneticisi **Oluşturma ve yeni Windows Sanal Masaüstü ana bilgisayar havuzu** şablonu sağlama ile
-- Ana görüntüye dahil edilip etkinleştirilerek
-- Her VM'ye el ile yüklenmiş veya etkinleştirilmiş (veya uzantılar/PowerShell ile)
+- Azure Resource Manager **Yeni Windows sanal masaüstü konak havuzu şablonu oluşturma ve sağlama**
+- Ana görüntüde dahil edilip etkin olarak
+- Her VM 'de el ile yüklenmiş veya etkinleştirilmiş (veya uzantılar/PowerShell ile)
 
-Windows Sanal Masaüstü yan yana yığınla ilgili sorunlar yaşıyorsanız, yan yana yığının yüklü veya etkin olduğunu doğrulamak için komut isteminden **qwinsta** komutunu yazın.
+Windows sanal masaüstü 'Nün yan yana Stack ile ilgili sorun yaşıyorsanız, yan yana yığının yüklendiğini veya etkinleştirildiğini doğrulamak için komut isteminden **qwinsta** komutunu yazın.
 
-Yan yana yığın kurulup etkinleştirilmişse **qwinsta** çıktısı çıkışta **rdp-sx'leri** listeler.
+Yan yana yığın yüklenip etkinleştirilirse, **qwinsta** çıktısı çıktıda **RDP-sxs** ' i listeler.
 
-![Çıkışta rdp-sxs olarak listelenen qwinsta ile yan yana yığın yüklenir veya etkinleştirilmiş.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Yan yana yığın, çıktıda RDP-sxs olarak listelenen qwinsta yüklü veya etkin.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleşip eşleşmediğini onaylayın. Kayıt defteri anahtarları eksikse veya değerler uyumsuzsa, [PowerShell'e sahip ana bilgisayar havuzu oluştur'da](create-host-pools-powershell.md) yan yana yığının nasıl yeniden yüklenacağına ilişkin yönergeleri izleyin.
+Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eşleştiğini doğrulayın. Kayıt defteri anahtarları eksikse veya değerler uyuştubulunursa, yan yana yığının nasıl yeniden yükleneceğini öğrenmek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) ' daki yönergeleri izleyin.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -204,67 +204,67 @@ Aşağıda listelenen kayıt defteri girişlerini inceleyin ve değerlerinin eş
 
 ![O_REVERSE_CONNECT_STACK_FAILURE hata kodu.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-**Sebep:** Oturum ana bilgisayar VM'de yan yana yığın yüklenmiyor.
+**Neden:** Yan yana yığın, oturum ana bilgisayar VM 'sinde yüklü değil.
 
-**Düzeltme:** Oturum ana bilgisayar VM'ye yan yana yığın yüklemek için aşağıdaki yönergeleri izleyin.
+**Çözüm:** Oturum Ana bilgisayar VM 'sine yan yana yığın yüklemek için bu yönergeleri izleyin.
 
-1. Yerel yönetici olarak oturum ana bilgisayar VM doğrudan almak için Uzak Masaüstü Protokolü (RDP) kullanın.
-2. PowerShell oturumunuzda kullanmak üzere [Windows Virtual Desktop PowerShell modülünü](/powershell/windows-virtual-desktop/overview/) indirin ve alın, ardından hesabınızda oturum açmanız için bu cmdlet'i çalıştırın:
+1. Doğrudan oturum ana bilgisayar VM 'sine yerel yönetici olarak almak için Uzak Masaüstü Protokolü (RDP) kullanın.
+2. PowerShell oturumunuzda kullanmak için [Windows sanal masaüstü PowerShell modülünü](/powershell/windows-virtual-desktop/overview/) indirip içeri aktarın ve ardından hesabınızda oturum açmak için bu cmdlet 'i çalıştırın:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. PowerShell ile ana bilgisayar havuzu oluştur'u kullanarak yan yana yığını [yükleyin.](create-host-pools-powershell.md)
+3. [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md)' yı kullanarak yan yana yığını yükler.
 
-## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Windows Sanal Masaüstü arızaları yan yana yığın nasıl düzeltilir?
+## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Düzgün bir şekilde bir Windows sanal masaüstü yan yana yığınını çözme
 
-Yan yana yığının arızaya neden olabilecek bilinen durumlar vardır:
+Yan yana yığının hatalı çalışmasına neden olabilecek bilinen koşullar vardır:
 
-- Yan yana yığını etkinleştirmek için adımların doğru sırasını takip etme
-- Windows 10 Gelişmiş Çok Yönlü Disk (EVD) için otomatik güncelleme
-- Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) rolünü eksik
-- Çalışan enablesxsstackrc.ps1 birden çok kez
-- Yerel yönetici ayrıcalıkları olmayan bir hesapta enablesxsstackrc.ps1 çalıştırma
+- Yan yana yığını etkinleştirmek için adımların doğru sırasını takip etmez
+- Windows 10 geliştirilmiş çok yönlü disk (EVD) için otomatik güncelleştirme
+- Uzak Masaüstü Oturumu Ana Bilgisayarı (RDSH) rolü eksik
+- Enablesxsstackrc. ps1 birden çok kez çalıştırılıyor
+- Yerel yönetici ayrıcalıklarına sahip olmayan bir hesapta enablesxsstackronc. ps1 çalıştırma
 
-Bu bölümdeki yönergeler, Windows Sanal Masaüstü'nü yan yana kaldırmanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra, yan yana yığını yeniden yüklemek için [PowerShell ile ana bilgisayar havuzu oluştur'da](create-host-pools-powershell.md) "VM'yi Windows Sanal Masaüstü ana bilgisayar havuzuyla kaydet" adlı ana bilgisayara gidin.
+Bu bölümdeki yönergeler, Windows sanal masaüstü 'Nün yan yana yığınını kaldırmanızı sağlamanıza yardımcı olabilir. Yan yana yığını kaldırdıktan sonra yan yana yığını yeniden yüklemek için [PowerShell ile bir konak havuzu oluşturma](create-host-pools-powershell.md) bölümünde "VM 'Yi Windows sanal masaüstü ana bilgisayar havuzuna Kaydet" bölümüne gidin.
 
-Düzeltmeyi çalıştırmak için kullanılan VM, arızalı yan yana yığınla VM ile aynı alt ağ ve etki alanında olmalıdır.
+Düzeltmeyi çalıştırmak için kullanılan VM 'nin, hatalı çalışan yan yana Stack ile aynı alt ağda ve etki alanında olması gerekir.
 
-Aynı alt ağ ve etki alanından düzeltme çalıştırmak için aşağıdaki yönergeleri izleyin:
+Aynı alt ağ ve etki alanından düzeltmeyi çalıştırmak için aşağıdaki yönergeleri izleyin:
 
-1. Düzeltmenin uygulanacağı yerden VM'ye standart Uzak Masaüstü Protokolü (RDP) ile bağlanın.
-2. PsExec'i https://docs.microsoft.com/sysinternals/downloads/psexecburadan indirin.
-3. İndirilen dosyanın zip'ini açın.
-4. Yerel yönetici olarak komut istemini başlatın.
-5. PsExec'in fermuarını açtığı klasöre gidin.
-6. Komut istemi'nden aşağıdaki komutu kullanın:
+1. Standart Uzak Masaüstü Protokolü (RDP) ile, bu, düzeltmesinin uygulanacağı VM 'ye bağlanın.
+2. PsExec 'yi şuradan https://docs.microsoft.com/sysinternals/downloads/psexecindirin.
+3. İndirilen dosyayı sıkıştırmayı açın.
+4. Komut istemi 'ni yerel yönetici olarak başlatın.
+5. PsExec 'nin sıkıştırısaklandığı klasöre gidin.
+6. Komut isteminden aşağıdaki komutu kullanın:
 
     ```cmd
             psexec.exe \\<VMname> cmd
     ```
 
     >[!Note]
-    >VMname, arızalı yan yana yığına sahip VM'nin makine adıdır.
+    >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
-7. Kabul et'i tıklayarak PsExec Lisans Sözleşmesini kabul edin.
+7. Kabul et 'e tıklayarak PsExec lisans sözleşmesini kabul edin.
 
-    ![Yazılım lisans sözleşmesi ekran görüntüsü.](media/SoftwareLicenseTerms.png)
+    ![Yazılım Lisans Sözleşmesi ekran görüntüsü.](media/SoftwareLicenseTerms.png)
 
     >[!Note]
-    >Bu iletişim yalnızca PsExec ilk kez çalıştırılında gösterecektir.
+    >Bu iletişim kutusu yalnızca PsExec ilk kez çalıştırıldığında görünür.
 
-8. VM'de arızalı yan yana yığınla komut istemi oturumu açıldıktan sonra qwinsta çalıştırın ve rdp-sxs adlı bir girişin kullanılabilir olduğunu onaylayın. Değilse, vm'de yan yana yığın bulunmadığından, sorun yan yana yığına bağlı değildir.
+8. Komut istemi oturumu, hatalı çalışan yan yana Stack ile sanal makinede açıldıktan sonra qwinsta komutunu çalıştırın ve RDP-sxs adlı bir girdinin kullanılabilir olduğunu onaylayın. Aksi halde, sorun yan yana yığına bağlı olmadığından, sanal makinede yan yana bir yığın yok.
 
     ![Yönetici komut istemi](media/AdministratorCommandPrompt.png)
 
-9. VM'de yüklü Olan Microsoft bileşenlerini yan yana yığınla listeleyen aşağıdaki komutu çalıştırın.
+9. Aşağıdaki komutu çalıştırarak, sanal makinede yüklü olan Microsoft bileşenlerini hatalı yan yana yığın ile listeleyin.
 
     ```cmd
         wmic product get name
     ```
 
-10. Yukarıdaki adımdan ürün adlarıyla aşağıdaki komutu çalıştırın.
+10. Yukarıdaki adımdaki ürün adlarıyla aşağıdaki komutu çalıştırın.
 
     ```cmd
         wmic product where name="<Remote Desktop Services Infrastructure Agent>" call uninstall
@@ -272,22 +272,22 @@ Aynı alt ağ ve etki alanından düzeltme çalıştırmak için aşağıdaki y�
 
 11. "Uzak Masaüstü" ile başlayan tüm ürünleri kaldırın.
 
-12. Tüm Windows Sanal Masaüstü bileşenleri kaldırıldıktan sonra, işletim sisteminizin yönergelerini izleyin:
+12. Tüm Windows Sanal Masaüstü bileşenleri kaldırıldıktan sonra, işletim sisteminiz için yönergeleri izleyin:
 
-13. İşletim sisteminiz Windows Server ise, arızalı yan yana yığına sahip VM'yi yeniden başlatın (Azure portalı yla veya PsExec aracından).
+13. İşletim sisteminiz Windows Server ise, hatalı çalışan yan yana yığına sahip olan VM 'yi (Azure portal veya PsExec aracından) yeniden başlatın.
 
-İşletim sisteminiz Microsoft Windows 10 ise, aşağıdaki yönergeleri uygulayın:
+İşletim sisteminiz Microsoft Windows 10 ise aşağıdaki yönergelerle devam edin:
 
-14. PsExec çalıştıran VM'den Dosya Gezgini'ni açın ve arızalı yan yana yığınla VM'nin sistem sürücüsüne disablesxsstackrc.ps1 kopyalayın.
+14. PsExec çalıştıran VM 'den, dosya Gezgini 'ni açın ve disablesxsstackronc. ps1 dosyasını VM 'nin sistem sürücüsüne kopyalayın ve bu arada bir yan yana yığın.
 
     ```cmd
         \\<VMname>\c$\
     ```
 
     >[!NOTE]
-    >VMname, arızalı yan yana yığına sahip VM'nin makine adıdır.
+    >VMname, hatalı çalışan yan yana yığın ile VM 'nin makine adıdır.
 
-15. Önerilen işlem: PsExec aracından PowerShell'i başlatın ve önceki adımdan klasöre gidin ve devre dışı bırakıp devre dışı bırakıp devre dışı bırakıp devre dışı bırakıp.ps1 çalıştırın. Alternatif olarak, aşağıdaki cmdlets çalıştırabilirsiniz:
+15. Önerilen işlem: PsExec aracından PowerShell 'i başlatın ve önceki adımda bulunan klasöre gidin ve disablesxsstackronc. ps1 ' yi çalıştırın. Alternatif olarak, aşağıdaki cmdlet 'leri çalıştırabilirsiniz:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force
@@ -295,56 +295,56 @@ Aynı alt ağ ve etki alanından düzeltme çalıştırmak için aşağıdaki y�
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations" -Name "ReverseConnectionListener" -Force
     ```
 
-16. Cmdlets çalışan bittiğinde, arızalı yan yana yığını ile VM yeniden başlatın.
+16. Cmdlet 'ler çalışmayı tamamladıktan sonra, arızalı yan yana yığın ile sanal makineyi yeniden başlatın.
 
-## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Uzak Masaüstü lisans modu yapılandırılmamıştır
+## <a name="remote-desktop-licensing-mode-isnt-configured"></a>Uzak Masaüstü lisans modu yapılandırılmadı
 
-Windows 10 Enterprise'da bir yönetim hesabı kullanarak oturum açtığınızda, "Uzak Masaüstü lisanslama modu yapılandırılmamış, Uzak Masaüstü Hizmetleri X gün içinde çalışmayı durdurur. Connection Broker sunucusunda, Uzak Masaüstü lisanslama modunu belirtmek için Server Manager'ı kullanın."
+Bir yönetici hesabı kullanarak Windows 10 Enterprise çoklu oturumunda oturum açarsanız, "Uzak Masaüstü lisans modu yapılandırılmadı, Uzak Masaüstü Hizmetleri X gün içinde çalışmayı durduracaktır. Bağlantı Aracısı sunucusunda, Uzak Masaüstü lisans modunu belirtmek için Sunucu Yöneticisi kullanın. "
 
-Zaman sınırı nın süresi dolduğunda, "Bu bilgisayar için kullanılabilir Uzak Masaüstü istemci erişim lisansları olmadığı için uzak oturum kesildi" yazan bir hata iletisi görüntülenir.
+Zaman sınırının süresi dolarsa, "Bu bilgisayar için kullanılabilir uzak masaüstü istemci erişim lisansı olmadığından uzak oturumun bağlantısı kesildi." ifadesini içeren bir hata iletisi görüntülenir.
 
-Bu iletilerden birini görürseniz, bu, görüntünün en son Windows güncelleştirmelerinin yüklü olmadığı veya grup ilkesi aracılığıyla Uzak Masaüstü lisanslama modunu ayarladığınız anlamına gelir. Grup ilkesi ayarını denetlemek, Windows 10 Enterprise çok oturumlu sürümünü tanımlamak ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
-
->[!NOTE]
->Windows Sanal Masaüstü yalnızca ana bilgisayar havuzunuz Windows Server oturum ana bilgisayarları içeriyorsa RDS istemci erişim lisansı (CAL) gerektirir. RDS CAL'ı nasıl yapılandırıştırılamayı öğrenmek için [RDS dağıtımınızı istemci erişim lisanslarıyla lisansla](/windows-server/remote/remote-desktop-services/rds-client-access-license/)license'a bakın.
-
-### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisanslama modu grup ilkesi ayarını devre dışı bırakın
-
-VM'de Grup İlkesi Düzenleyicisi'ni açarak ve **Yönetim Şablonları** > **Windows Components** > **Remote Desktop Services** > **Remote Desktop Session Host** > **Licensing** > **Set Remote Desktop licensing moduna**geçerek grup ilkesi ayarını kontrol edin. Grup ilkesi ayarı **Enabled**Etkinse, **devre dışı bırakılmış**olarak değiştirin. Zaten devre dışı bırakılmışsa, olduğu gibi bırakın.
+Bu iletilerden birini görürseniz bu, görüntüde en son Windows güncelleştirmelerinin yüklü olmadığı veya Uzak Masaüstü lisans modunu Grup İlkesi aracılığıyla ayarladığınız anlamına gelir. Grup İlkesi ayarını denetlemek, Windows 10 Enterprise çoklu oturum sürümünü belirlemek ve ilgili güncelleştirmeyi yüklemek için sonraki bölümlerdeki adımları izleyin.  
 
 >[!NOTE]
->Etki alanınız aracılığıyla grup ilkesi ayarlarsanız, bu Windows 10 Enterprise çok oturumlu VM'leri hedefleyen ilkeler deki bu ayarı devre dışı bırakın.
+>Windows sanal masaüstü, ana bilgisayar havuzunuz Windows Server oturum Konakları içerdiğinde yalnızca bir RDS istemci erişim lisansı (CAL) gerektirir. Bir RDS CAL yapılandırma hakkında bilgi edinmek için bkz. [istemci erişim lisanslarıyla RDS dağıtımınıza lisans](/windows-server/remote/remote-desktop-services/rds-client-access-license/).
 
-### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Windows 10 Enterprise çoklu oturumunun hangi sürümünü kullandığınızı belirleyin
+### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Uzak Masaüstü lisans modu Grup İlkesi ayarını devre dışı bırak
 
-Windows 10 Enterprise çoklu oturumunun hangi sürümüne sahip olduğunuzu denetlemek için:
+VM 'de Grup İlkesi düzenleyicisini açıp **Yönetim Şablonları** > **Windows bileşenlerine** > giderek**Uzak Masaüstü Hizmetleri** > **Uzak Masaüstü oturumu ana bilgisayarı** > **lisanslama** > **Uzak Masaüstü lisans modunu ayarlayarak**Grup İlkesi ayarını kontrol edin. Grup İlkesi ayarı **etkinse**, **devre dışı**olarak değiştirin. Zaten devre dışıysa, olduğu gibi bırakın.
+
+>[!NOTE]
+>Etki alanınız aracılığıyla Grup İlkesi ayarlarsanız, bu Windows 10 Kurumsal Çoklu oturum VM 'lerini hedefleyen ilkelerde bu ayarı devre dışı bırakın.
+
+### <a name="identify-which-version-of-windows-10-enterprise-multi-session-youre-using"></a>Hangi Windows 10 Kurumsal Çoklu oturum sürümünü kullandığınızı tanımla
+
+Hangi Windows 10 Kurumsal Çoklu oturum sürümünü olduğunu denetlemek için:
 
 1. Yönetici hesabınızla oturum açın.
-2. Başlat menüsünün yanındaki arama çubuğuna "Hakkında" girin.
-3. **Pc'niz Hakkında'yı**seçin.
-4. "Sürüm"un yanındaki numarayı kontrol edin. Sayı aşağıdaki resimde gösterildiği gibi "1809" veya "1903" olmalıdır.
+2. Başlangıç menüsünün yanındaki arama çubuğuna "About" yazın.
+3. **PC 'Niz hakkında**' yı seçin.
+4. "Sürüm" nın yanındaki numarayı denetleyin. Aşağıdaki görüntüde gösterildiği gibi, sayı "1809" ya da "1903" olmalıdır.
 
-    ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi ile vurgulanır.](media/windows-specifications.png)
+    ![Windows belirtimleri penceresinin ekran görüntüsü. Sürüm numarası mavi renkle vurgulanır.](media/windows-specifications.png)
 
-Artık sürüm numaranızı bildiğinize göre, ilgili bölüme geçin.
+Artık sürüm numaranızı bildiğinize göre ilgili bölüme atlayın.
 
 ### <a name="version-1809"></a>Sürüm 1809
 
-Sürüm numaranızda "1809" yazıyorsa, [KB4516077 güncelleştirmesini yükleyin.](https://support.microsoft.com/help/4516077)
+Sürüm numaranız "1809" ifadesini görürseniz, [KB4516077 güncelleştirmesini](https://support.microsoft.com/help/4516077)yükler.
 
 ### <a name="version-1903"></a>Sürüm 1903
 
-Ana bilgisayar işletim sistemini, Azure Galerisi'nden Windows 10'un en son sürümü olan sürüm 1903 görüntüsüyle yeniden dağıtın.
+Azure galerisinden Windows 10, sürüm 1903 görüntüsünün en son sürümüyle konak işletim sistemini yeniden dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Windows Sanal Masaüstü sorun giderme ve yükseltme parçalarına genel bakış için [Sorun Giderme genel bakışı, geri bildirim ve desteğe](troubleshoot-set-up-overview.md)bakın.
-- Windows Sanal Masaüstü ortamında kiracı ve ana bilgisayar havuzu oluştururken sorunları gidermek için [Bkz. Kiracı ve ana bilgisayar havuzu oluşturma.](troubleshoot-set-up-issues.md)
-- Windows Sanal Masaüstü'nde sanal makine (VM) yapılandırırken sorunları gidermek için [Oturum ana bilgisayar sanal makine yapılandırmasına](troubleshoot-vm-configuration.md)bakın.
-- Windows Sanal Masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için [Windows Sanal Masaüstü hizmet bağlantılarına](troubleshoot-service-connection.md)bakın.
-- Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için Bkz. [Uzak Masaüstü istemcisi sorun giderme](troubleshoot-client.md)
-- Windows Virtual Desktop ile PowerShell kullanırken sorunları gidermek için [Windows Virtual Desktop PowerShell'e](troubleshoot-powershell.md)bakın.
-- Hizmet hakkında daha fazla bilgi edinmek için [Windows Sanal Masaüstü ortamına](environment-setup.md)bakın.
-- Bir sorun giderme öğreticisine geçmek için [Bkz. Öğretici: Kaynak Yöneticisi şablonu dağıtımları.](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
-- Denetim eylemleri hakkında bilgi edinmek için [Kaynak Yöneticisi ile Denetim işlemlerine](../azure-resource-manager/management/view-activity-logs.md)bakın.
-- Dağıtım sırasında hataları belirlemek için eylemler hakkında bilgi edinmek için [bkz.](../azure-resource-manager/templates/deployment-history.md)
+- Windows sanal masaüstü ve yükseltme izlemelerinin sorunlarını giderme hakkında genel bilgi için bkz. [sorun giderme genel bakış, geri bildirim ve destek](troubleshoot-set-up-overview.md).
+- Bir Windows sanal masaüstü ortamında kiracı ve konak havuzu oluştururken oluşan sorunları gidermek için bkz. [kiracı ve konak havuzu oluşturma](troubleshoot-set-up-issues.md).
+- Windows sanal masaüstündeki bir sanal makineyi (VM) yapılandırırken oluşan sorunları gidermek için bkz. [oturum ana bilgisayarı sanal makine yapılandırması](troubleshoot-vm-configuration.md).
+- Windows sanal masaüstü istemci bağlantılarıyla ilgili sorunları gidermek için bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md).
+- Uzak Masaüstü istemcileriyle ilgili sorunları gidermek için bkz [. uzak masaüstü Istemcisinde sorun giderme](troubleshoot-client.md)
+- Windows sanal masaüstü ile PowerShell kullanırken karşılaşılan sorunları gidermek için bkz. [Windows sanal masaüstü PowerShell](troubleshoot-powershell.md).
+- Hizmet hakkında daha fazla bilgi edinmek için bkz. [Windows sanal masaüstü ortamı](environment-setup.md).
+- Sorun giderme öğreticisini öğrenmek için bkz. [öğretici: Kaynak Yöneticisi şablonu dağıtımlarının sorunlarını giderme](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- Denetim eylemleri hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi Ile denetim işlemleri](../azure-resource-manager/management/view-activity-logs.md).
+- Dağıtım sırasında hataları belirleme eylemleri hakkında bilgi edinmek için bkz. [dağıtım Işlemlerini görüntüleme](../azure-resource-manager/templates/deployment-history.md).

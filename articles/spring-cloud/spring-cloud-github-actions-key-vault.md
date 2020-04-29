@@ -1,27 +1,27 @@
 ---
-title: GitHub Eylemlerinde Anahtar Kasası ile Azure Bahar Bulutu'nun kimliğini doğrula
-description: GitHub Eylemleri ile Azure Bahar Bulutu için CI/CD iş akışı ile anahtar kasası nasıl kullanılır?
+title: GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
+description: GitHub eylemleriyle Azure Spring Cloud için CI/CD iş akışıyla Anahtar Kasası kullanma
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
 ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945478"
 ---
-# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub Eylemlerinde Anahtar Kasası ile Azure Bahar Bulutu'nun kimliğini doğrula
-Anahtar kasası anahtarları saklamak için güvenli bir yerdir. Kurumsal kullanıcıların, DENETLEDIKLERI kapsamda CI/CD ortamları için kimlik bilgilerini depolamaları gerekir. Anahtar kasasında kimlik bilgileri almak için anahtar kaynak kapsamı ile sınırlı olmalıdır.  Azure kapsamının tamamına değil, yalnızca önemli kasa kapsamına erişebilir. Bu sadece güçlü bir kutuyu açabilen bir anahtar gibi, bir binadaki tüm kapıları açabilen bir ana anahtar değil. CicD iş akışında yararlı olan başka bir anahtarla anahtar elde etmenin bir yoludur. 
+# <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub eylemlerinde Key Vault Azure Spring Cloud kimlik doğrulaması yapma
+Anahtar Kasası, anahtarları depolamak için güvenli bir yerdir. Kurumsal kullanıcıların, denetdukları kapsamdaki CI/CD ortamları için kimlik bilgilerini depolaması gerekir. Anahtar kasasındaki kimlik bilgilerini almak için gereken anahtar, kaynak kapsamıyla sınırlı olmalıdır.  Azure kapsamının tamamına değil yalnızca Anahtar Kasası kapsamına erişebilir. Yalnızca bir binadaki tüm kapıları açan bir ana anahtar olmayan güçlü bir kutuyu açan bir anahtar gibidir. Bir CICD iş akışında yararlı olan başka bir anahtarla anahtar almanın bir yoludur. 
 
-## <a name="generate-credential"></a>Kimlik Bilgisi Oluştur
-Anahtar kasasına erişmek için bir anahtar oluşturmak için, yerel makinenizde aşağıdaki komutu uygulayın:
+## <a name="generate-credential"></a>Kimlik bilgisi oluştur
+Anahtar kasasına erişmek için bir anahtar oluşturmak üzere yerel makinenizde aşağıdaki komutu yürütün:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
-`--scopes` Parametre tarafından belirtilen kapsam, kaynağa anahtar erişimini sınırlar.  Sadece güçlü kutuya erişebilir.
+`--scopes` Parametresi tarafından belirtilen kapsam, kaynağa yönelik anahtar erişimini sınırlandırır.  Yalnızca güçlü kutuya erişebilir.
 
 Sonuçlarla:
 ```
@@ -37,23 +37,23 @@ Sonuçlarla:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Ardından sonuçları [GitHub deponuzu ayarlayın ve Azure ile kimlik doğrulaması'nda](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)açıklandığı şekilde GitHub **sırlarına** kaydedin.
+Ardından, [GitHub deponuzu ayarlama ve Azure ile kimlik doğrulama](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)konularında açıklandığı şekilde sonuçları GitHub **gizli** dizileri ' ne kaydedin.
 
-## <a name="add-access-policies-for-the-credential"></a>Kimlik Bilgileri için Erişim İlkeleri Ekleme
-Yukarıda oluşturduğunuz kimlik bilgileri, depoladığı içerikle değil, yalnızca Key Vault hakkında genel bilgi alabilir.  Anahtar Kasası'nda saklanan sırları almak için kimlik bilgisi için erişim ilkeleri belirlemeniz gerekir.
+## <a name="add-access-policies-for-the-credential"></a>Kimlik bilgileri için erişim Ilkeleri ekleme
+Yukarıda oluşturduğunuz kimlik bilgileri, depoladığı içeriklerle değil Key Vault hakkında yalnızca genel bilgileri alabilir.  Key Vault depolanan gizli dizileri almak için kimlik bilgisi için erişim ilkeleri ayarlamanız gerekir.
 
-Azure portalındaki **Anahtar Kasa** panosuna gidin, **Access denetim** menüsünü tıklatın ve ardından Rol `This resource` **atamaları** sekmesini açın. **Tür** ve **kapsam**için **Uygulamalar** seçin.  Önceki adımda oluşturduğunuz kimlik belgesini görmeniz gerekir:
+Azure portal **Key Vault** panosuna gidin, **erişim denetim** menüsüne tıklayın ve ardından **rol atamaları** sekmesini açın. **tür** için `This resource` **uygulamalar** ve **kapsam**için seçin.  Önceki adımda oluşturduğunuz kimlik bilgisini görmeniz gerekir:
 
- ![Erişim ilkesini ayarlama](./media/github-actions/key-vault1.png)
+ ![Erişim ilkesini ayarla](./media/github-actions/key-vault1.png)
 
-Kimlik bilgisi adını kopyalama, örneğin. `azure-cli-2020-01-19-04-39-02` Access **ilkeleri** menüsünü açın, **+Ekle İlkesi** bağlantısını tıklatın.  Şablon `Secret Management` **Template**için seçin, ardından **Müdür'u**seçin. **Müdür**/**Seç** giriş kutusuna kimlik bilgisi adını yapıştır:
+Kimlik bilgisi adını (örneğin, `azure-cli-2020-01-19-04-39-02`) kopyalayın. **Erişim ilkeleri** menüsünü açın, **+ erişim ilkesi Ekle** bağlantısı ' na tıklayın.  Şablon `Secret Management` için **Template**' i seçin ve ardından **sorumlu**' ı seçin. Kimlik bilgisi adını **asıl öğe**/**Seç** giriş kutusuna yapıştırın:
 
  ![Şunu seçin:](./media/github-actions/key-vault2.png)
 
- **Erişim ilkesi ekle** iletişim kutusunda **Ekle** düğmesini tıklatın ve sonra **Kaydet'i**tıklatın.
+ **Erişim Ilkesi Ekle** Iletişim kutusunda **Ekle** düğmesine tıklayın ve ardından **Kaydet**' e tıklayın.
 
-## <a name="generate-full-scope-azure-credential"></a>Tam kapsamlı Azure Kimlik Bilgileri oluşturma
-Bu binadaki tüm kapıları açmak için ana anahtardır. Yordam önceki adıma benzer, ancak burada ana anahtarı oluşturmak için kapsamı değiştiriyoruz:
+## <a name="generate-full-scope-azure-credential"></a>Tam kapsam Azure kimlik bilgisi oluştur
+Bu, binadaki tüm kapıların açılacağı ana anahtardır. Yordam, önceki adıma benzerdir, ancak burada ana anahtarı oluşturmak için kapsamı değiştirdik:
 
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
@@ -73,12 +73,12 @@ Yine, sonuçlar:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Tüm JSON dizesini kopyalayın.  Bo, **Key Vault** panosuna geri dön. **Sırlar** menüsünü açın ve **ardından Oluştur/İçe Aktar** düğmesini tıklatın. Gizli adı, örneğin. `AZURE-CRENDENTIALS-FOR-SPRING` JSON kimlik belgesi dizesini **Değer** giriş kutusuna yapıştırın. Değer giriş kutusunun çok satırlı metin alanı yerine tek satırlık bir metin alanı olduğunu fark edebilirsiniz.  Orada tam JSON dize yapıştırabilirsiniz.
+Tüm JSON dizesini kopyalayın.  Kutuyu **Key Vault** panoya geri dönün. **Gizli** diziler menüsünü açın ve ardından **Oluştur/al** düğmesine tıklayın. Gizli adı girin, örneğin `AZURE-CRENDENTIALS-FOR-SPRING`. JSON kimlik bilgisi dizesini **değer** giriş kutusuna yapıştırın. Değer giriş kutusunun çok satırlı bir metin alanı yerine tek satırlık bir metin alanı olduğunu fark edebilirsiniz.  Tüm JSON dizesini buraya yapıştırabilirsiniz.
 
  ![Tam kapsam kimlik bilgisi](./media/github-actions/key-vault3.png)
 
-## <a name="combine-credentials-in-github-actions"></a>GitHub Eylemleri'nde kimlik bilgilerini birleştirme
-CICD ardışık hattı yürütüldüğünde kullanılan kimlik bilgilerini ayarlayın:
+## <a name="combine-credentials-in-github-actions"></a>GitHub eylemlerinde kimlik bilgilerini birleştirme
+CICD ardışık düzeni yürütüldüğünde kullanılan kimlik bilgilerini ayarlayın:
 
 ```
 on: [push]
@@ -109,4 +109,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Bahar Bulut github eylemler](./spring-cloud-howto-github-actions.md)
+* [Yay bulutu GitHub eylemleri](./spring-cloud-howto-github-actions.md)

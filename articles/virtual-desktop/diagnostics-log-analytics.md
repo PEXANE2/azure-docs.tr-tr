@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü tanılama günlüğü analitiği - Azure
-description: Windows Sanal Masaüstü tanılama özelliği ile günlük analitiği nasıl kullanılır.
+title: Windows sanal masaüstü tanılama günlüğü Analizi-Azure
+description: Windows sanal masaüstü tanılama özelliği ile Log Analytics 'i kullanma.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,67 +9,67 @@ ms.date: 12/18/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 355acb081afef8c78cdf971c7a82acdb91ab5593
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127945"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Günlük Analizi'ni kullanın
+# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Tanılama özelliği için Log Analytics kullanma
 
-Windows Sanal Masaüstü, yöneticinin sorunları tek bir arabirim üzerinden tanımlamasına olanak tanıyan bir tanılama özelliği sunar. Bu özellik, windows sanal masaüstü rolü atanan biri hizmeti kullandığında tanılama bilgilerini günlüğe kaydeder. Her günlük, etkinlikte hangi Windows Sanal Masaüstü rolünün yer aldığı, oturum sırasında görünen hata iletileri, kiracı bilgileri ve kullanıcı bilgileri hakkında bilgiler içerir. Tanılama özelliği, hem kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü üç ana kategoriye girer: 
+Windows sanal masaüstü, yöneticinin sorunları tek bir arabirim üzerinden belirlemesine izin veren bir tanılama özelliği sunar. Bu özellik, her biri Windows sanal masaüstü rolü atanan hizmeti kullandığında tanılama bilgilerini günlüğe kaydeder. Her günlük, etkinlikte hangi Windows sanal masaüstü rolünün söz konusu olduğunu, oturum sırasında görünen tüm hata iletilerini, kiracı bilgilerini ve Kullanıcı bilgilerini içerir. Tanılama özelliği, hem Kullanıcı hem de yönetim eylemleri için etkinlik günlükleri oluşturur. Her etkinlik günlüğü üç ana kategoride yer düşer: 
 
-- Abonelik tenebe: Kullanıcı, Microsoft Remote Desktop uygulamaları aracılığıyla özet akışına bağlanmaya çalıştığında.
-- Bağlantı etkinlikleri: Bir kullanıcı Microsoft Remote Desktop uygulamaları aracılığıyla bir masaüstüne veya RemoteApp'a bağlanmaya çalıştığında.
-- Yönetim etkinlikleri: Yönetici, ana bilgisayar havuzları oluşturma, kullanıcıları uygulama gruplarına atama ve rol atamaları oluşturma gibi sistemde yönetim işlemleri gerçekleştirdiğinde.
+- Akış aboneliği etkinlikleri: bir Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla akışına bağlanmayı denediğinde.
+- Bağlantı etkinlikleri: bir Kullanıcı, Microsoft Uzak Masaüstü uygulamalar aracılığıyla masaüstüne veya RemoteApp 'e bağlanmayı denediğinde.
+- Yönetim etkinlikleri: bir yönetici, sistemde konak havuzları oluşturma, kullanıcıları uygulama gruplarına atama ve rol atamaları oluşturma gibi yönetim işlemlerini gerçekleştirdiğinde.
 
-Tanılama rol hizmetiwindows sanal masaüstünün bir parçası olduğundan, Windows Sanal Masaüstü'ne ulaşmayan bağlantılar tanılama sonuçlarında görünmez. Windows Sanal Masaüstü bağlantı sorunları, kullanıcı ağ bağlantısı sorunları yaşıyorsa meydana gelebilir.
+Tanılama rolü hizmeti Windows sanal masaüstü 'nün bir parçası olduğundan, Windows sanal masaüstüne ulaşmayacak bağlantılar tanılama sonuçlarında gösterilmez. Kullanıcı ağ bağlantısı sorunları yaşanıyorsa Windows sanal masaüstü bağlantısı sorunları oluşabilir.
 
-## <a name="why-you-should-use-log-analytics"></a>Log Analytics'i neden kullanmalısınız?
+## <a name="why-you-should-use-log-analytics"></a>Neden Log Analytics kullanmalısınız?
 
-Azure istemcisinde tek kullanıcılı sorun giderme nin ötesine geçen tanılama verilerini analiz etmek için Log Analytics'i kullanmanızı öneririz. VM performans sayaçlarını Log Analytics'e çekebildiğiniz için dağıtımınız için bilgi toplamak için tek bir aracınız vardır.
+Azure istemcisinde, tek kullanıcılı sorun gidermeyi aşan tanılama verilerini çözümlemek için Log Analytics kullanmanızı öneririz. VM performans sayaçlarını Log Analytics içine çekebilmeniz için, dağıtımınız için bilgi toplamak üzere bir aracınız vardır.
 
 ## <a name="before-you-get-started"></a>Başlamadan önce
 
-Tanılama özelliğiyle Log Analytics'i kullanabilmeniz için [önce bir çalışma alanı oluşturmanız](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)gerekir.
+Tanılama özelliğiyle Log Analytics kullanabilmeniz için önce [bir çalışma alanı oluşturmanız](../azure-monitor/learn/quick-collect-windows-computer.md#create-a-workspace)gerekir.
 
-Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak [için Windows bilgisayarlarını Azure Monitor'a bağlayın](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) yönergeleri izleyin: 
+Çalışma alanınızı oluşturduktan sonra, aşağıdaki bilgileri almak için [Windows bilgisayarları Azure 'A bağlama](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key) bölümündeki yönergeleri izleyin: 
 
-- Çalışma alanı kimliği
+- Çalışma alanı KIMLIĞI
 - Çalışma alanınızın birincil anahtarı
 
-Bu bilgilere daha sonra kurulum işleminde ihtiyacınız olacak.
+Bu bilgilere kurulum sürecinde daha sonra ihtiyacınız olacak.
 
-## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza itin 
+## <a name="push-diagnostics-data-to-your-workspace"></a>Tanılama verilerini çalışma alanınıza gönderin 
 
-Windows Sanal Masaüstü kiracınızdaki tanılama verilerini çalışma alanınız için Günlük Analizi'ne itebilirsiniz. Çalışma alanınızı kiracınıza bağlayarak kiracınızı ilk oluşturduğunuzda bu özelliği hemen ayarlayabilir veya daha sonra varolan bir kiracıyla ayarlayabilirsiniz.
+Windows sanal masaüstü kiracınızdan tanılama verilerini, çalışma alanınız için Log Analytics gönderebilirsiniz. Bu özelliği, çalışma alanınızı kiracınıza bağlayarak kiracınızı ilk kez oluşturduğunuzda veya daha sonra mevcut bir kiracı ile ayarlarsanız ayarlayabilirsiniz.
 
-Yeni kiracınızı ayarlarken kiracınızı Log Analytics çalışma alanınıza bağlamak için, TenantCreator kullanıcı hesabınızla Windows Sanal Masaüstünde oturum açmak için aşağıdaki cmdlet'i çalıştırın: 
+Yeni kiracınızı ayarlarken kiracınızı Log Analytics çalışma alanınıza bağlamak için aşağıdaki cmdlet 'i çalıştırarak Windows sanal masaüstü 'nde TenantCreator Kullanıcı hesabınızla oturum açın: 
 
 ```powershell
 Add-RdsAccount -DeploymentUrl https://rdbroker.wvd.microsoft.com 
 ```
 
-Yeni bir kiracı yerine varolan bir kiracıyı bağlayacaksanız, bunun yerine şu cmdlet'i çalıştırın: 
+Yeni bir kiracı yerine var olan bir kiracıyı bağlayacaksanız bunun yerine bu cmdlet 'i çalıştırın: 
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-Log Analytics'e bağlamak istediğiniz her kiracı için bu cmdletleri çalıştırmanız gerekir. 
+Log Analytics bağlamak istediğiniz her kiracı için bu cmdlet 'leri çalıştırmanız gerekir. 
 
 >[!NOTE]
->Kiracı oluştururken Log Analytics çalışma alanını bağlamak istemiyorsanız, bunun `New-RdsTenant` yerine cmdlet'i çalıştırın. 
+>Kiracı oluştururken Log Analytics çalışma alanını bağlamak istemiyorsanız `New-RdsTenant` cmdlet 'ini çalıştırın. 
 
-## <a name="cadence-for-sending-diagnostic-events"></a>Tanılama olaylarını göndermek için cadence
+## <a name="cadence-for-sending-diagnostic-events"></a>Tanılama olaylarını göndermek için temposunda
 
-Tanılama olayları tamamlandığında Log Analytics'e gönderilir.  
+Tanılama olayları tamamlandığında Log Analytics gönderilir.  
 
 ## <a name="example-queries"></a>Örnek sorgular
 
-Aşağıdaki örnek sorgular, tanılama özelliğinin sisteminizdeki en sık kullanılan etkinlikler için nasıl bir rapor oluşturduğunu gösterir:
+Aşağıdaki örnek sorgularda, tanılama özelliğinin sisteminizdeki en sık etkinlikler için nasıl rapor oluşturduğu gösterilmektedir:
 
-Bu ilk örnek, desteklenen uzak masaüstü istemcileri olan kullanıcılar tarafından başlatılan bağlantı etkinliklerini gösterir:
+Bu ilk örnek, desteklenen uzak masaüstü istemcilerine sahip kullanıcılar tarafından başlatılan bağlantı etkinliklerini gösterir:
 
 ```powershell
 WVDActivityV1_CL 
@@ -95,7 +95,7 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
 
-Bu sonraki örnek sorgu, yöneticilerin kiracılar üzerindeki yönetim etkinliklerini gösterir:
+Bu sonraki örnek sorgu, kiracılardaki yöneticilere göre yönetim etkinliklerini gösterir:
 
 ```powershell
 WVDActivityV1_CL 
@@ -121,16 +121,16 @@ WVDActivityV1_CL
 |project-away ActivityId_g, ActivityId_g1 
 ```
  
-## <a name="stop-sending-data-to-log-analytics"></a>Günlük Analitiği'ne veri göndermeyi durdurun 
+## <a name="stop-sending-data-to-log-analytics"></a>Log Analytics veri göndermeyi durdur 
 
-Varolan bir kiracıdan Log Analytics'e veri göndermeyi durdurmak için aşağıdaki cmdlet'i çalıştırın ve boş dizeleri ayarlayın:
+Mevcut bir kiracıdan Log Analytics veri göndermeyi durdurmak için aşağıdaki cmdlet 'i çalıştırın ve boş dizeleri ayarlayın:
 
 ```powershell
 Set-RdsTenant -Name <TenantName> -AzureSubscriptionId <SubscriptionID> -LogAnalyticsWorkspaceId <String> -LogAnalyticsPrimaryKey <String> 
 ```
 
-Veri göndermeyi durdurmak istediğiniz her kiracı için bu cmdlet çalıştırmak gerekir. 
+Verilerin gönderilmesini durdurmak istediğiniz her kiracı için bu cmdlet 'i çalıştırmanız gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-Tanılama özelliğinin sizin için tanımlayabileceği yaygın hata senaryolarını gözden geçirmek için [bkz.](diagnostics-role-service.md#common-error-scenarios)
+Tanılama özelliğinin sizin için tanımlayabilen yaygın hata senaryolarını gözden geçirmek için bkz. [sorunları tanımlama ve tanılama](diagnostics-role-service.md#common-error-scenarios).

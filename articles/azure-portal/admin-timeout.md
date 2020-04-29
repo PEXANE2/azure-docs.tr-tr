@@ -1,8 +1,8 @@
 ---
-title: Azure portalı kullanıcıları için dizin düzeyinde etkinlik zaman larını ayarlama | Microsoft Dokümanlar
-description: Yöneticiler, oturum oturumu niskene gitmeden önce en fazla boşta kalma süresini zorlayabilir. Hareketsizlik zaman adabı dizini dizin düzeyinde ayarlanır.
+title: Azure portal kullanıcıları için dizin düzeyinde eylemsizlik zaman aşımını ayarla | Microsoft Docs
+description: Yöneticiler, oturum kapatmadan önce en fazla boşta kalma süresini uygulayabilir. Etkin olmama zaman aşımı ilkesi dizin düzeyinde ayarlanır.
 services: azure-portal
-keywords: ayarlar, zaman sonu
+keywords: ayarlar, zaman aşımı
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096617"
 ---
-# <a name="set-directory-level-inactivity-timeout"></a>Dizin düzeyinde etkinlik zaman ayarı ayarlama
+# <a name="set-directory-level-inactivity-timeout"></a>Dizin düzeyinde eylemsizlik zaman aşımını ayarla
 
-Etkinlik dışı zaman ayarı, kullanıcılar iş istasyonlarını güvenli hale almayı unutursa kaynaklarınızı yetkisiz erişimden korumaya yardımcı olur. Bir kullanıcı bir süre boşta kaldığında, Azure portal oturumu otomatik olarak oturumu tamamlar. Genel Yönetici [rolündeki](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) yöneticiler, oturum oturumun oturumun oturumunun imzalanmasından önce en fazla boşta kalma süresini zorlayabilir. Hareketsizlik zaman ayarı dizin düzeyinde geçerlidir. Dizinler hakkında daha fazla bilgi için [Active Directory Domain Services Genel Bakış'a](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)bakın.
+Eylemsizlik zaman aşımı ayarı, kullanıcılar iş istasyonlarını güvenli hale getirmeye unutur durumunda kaynaklarınızın yetkisiz erişimden korunmasına yardımcı olur. Bir Kullanıcı bir süredir boşta kaldığında Azure portal oturumu otomatik olarak imzalanır. [Genel yönetici rolündeki](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) Yöneticiler, oturum kapatmadan önce en fazla boş süreyi uygulayabilir. Etkin olmama zaman aşımı ayarı dizin düzeyinde geçerlidir. Dizinler hakkında daha fazla bilgi için bkz. [Active Directory Domain Services genel bakış](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
-## <a name="configure-the-inactive-timeout-setting"></a>Etkin olmayan zaman aşım ayarını yapılandırma
+## <a name="configure-the-inactive-timeout-setting"></a>Etkin olmayan zaman aşımı ayarını yapılandırın
 
-Global Administrator iseniz ve Azure portalının tüm kullanıcıları için boşta zaman ayarı uygulamak istiyorsanız aşağıdaki adımları izleyin:
+Genel yöneticiyseniz ve Azure portal tüm kullanıcıları için boşta kalma zaman aşımı ayarını zorlamak istiyorsanız aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Genel sayfa üstbilgisinden **Ayarlar'ı** seçin.
-3. Bağlantı **metnini seçin Dizin düzeyi zaman aşıntını yapılandırın.**
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Genel sayfa üstbilgisindeki **ayarları** seçin.
+3. **Dizin düzeyindeki zaman aşımını yapılandır**bağlantı metnini seçin.
 
-    ![Bağlantı metni vurgulanmış portal ayarlarını gösteren ekran görüntüsü](./media/admin-timeout/settings.png)
+    ![Bağlantı metni vurgulanmış şekilde Portal ayarlarını gösteren ekran görüntüsü](./media/admin-timeout/settings.png)
 
-4. Yeni bir sayfa açılır. Yapı **dizin düzeyi etkinlik zaman aşım** sayfasında, Azure portalının ayarı açmak **için dizin düzeyinde boşta kalma süresini etkinleştir'i** seçin.
-5. Ardından, oturum otomatik olarak oturumu oturumu nisbeten oturumu niçin bir kullanıcının boşta kabileceği maksimum süre için **Saat** ve **Dakika'yı** girin.
+4. Yeni bir sayfa açılır. **Dizin düzeyi eylemsizlik zaman aşımını yapılandır** sayfasında, ayarı açmak için **Azure Portal için Dizin düzeyi boşta kalma zaman aşımını etkinleştir** ' i seçin.
+5. Sonra, oturumu otomatik olarak kapatmadan önce bir kullanıcının boşta kalabileceği en uzun süreyi **saat** ve **dakika** cinsinden girin.
 6. **Uygula**’yı seçin.
 
-    ![Dizin düzeyinde etkinlik zaman ayarı ayarlamak için sayfayı gösteren ekran görüntüsü](./media/admin-timeout/configure.png)
+    ![Dizin düzeyinde eylemsizlik zaman aşımını ayarlamak için sayfayı gösteren ekran görüntüsü](./media/admin-timeout/configure.png)
 
-Hareketsizlik zaman dilimi ilkesinin doğru ayarlandığını doğrulamak için, genel sayfa üstbilgisinden **Bildirimler'i** seçin. Başarı bildiriminin listeli olduğunu doğrulayın.
+Etkin olmayan zaman aşımı ilkesinin doğru ayarlandığını onaylamak için genel sayfa başlığından **Bildirimler** ' i seçin. Bir başarı bildiriminin listelendiğini doğrulayın.
 
-  ![Dizin düzeyinde etkinlik zaman ayarı için başarılı bildirim iletisi gösteren ekran görüntüsü](./media/admin-timeout/confirmation.png)
+  ![Dizin düzeyinde eylemsizlik zaman aşımı için başarılı bildirim iletisini gösteren ekran görüntüsü](./media/admin-timeout/confirmation.png)
 
-Ayar, yeni oturumlar için etkindir. Oturum açmış olan kullanıcılar için hemen geçerli olmayacaktır.
+Bu ayar yeni oturumlar için geçerli olur. Zaten oturum açmış olan kullanıcılar için hemen uygulanmaz.
 
 > [!NOTE]
-> Bir Global Administrator dizin düzeyinde bir zaman ayarı yapılandıysa, kullanıcılar ilkeyi geçersiz kılabilir ve kendi etkin olmayan oturum açma sürelerini ayarlayabilir. Ancak, kullanıcı nın Genel Yönetici tarafından dizin düzeyinde ayarlanandan daha az bir zaman aralığı seçmesi gerekir.
+> Genel yönetici dizin düzeyinde bir zaman aşımı ayarı yapılandırmışsa, kullanıcılar ilkeyi geçersiz kılabilir ve kendi etkin olmayan oturum açma süresini ayarlayabilir. Ancak Kullanıcı, genel yönetici tarafından dizin düzeyinde ayarlandıklardan daha az bir zaman aralığı seçmesi gerekir.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -1,44 +1,44 @@
 ---
-title: Operatör en iyi uygulamaları - Azure Kubernetes Hizmetleri'ndeki (AKS) temel zamanlayıcı özellikleri
-description: Azure Kubernetes Hizmeti'nde (AKS) kaynak kotaları ve bölme kesintisi bütçeleri gibi temel zamanlayıcı özelliklerini kullanmak için küme operatörünün en iyi uygulamalarını öğrenin
+title: Operatör en iyi uygulamaları-Azure Kubernetes hizmetlerindeki temel Zamanlayıcı özellikleri (AKS)
+description: Azure Kubernetes Service (AKS) içindeki kaynak kotaları ve pod kesinti bütçeleri gibi temel Zamanlayıcı özelliklerini kullanmaya yönelik küme işletmeni en iyi yöntemlerini öğrenin
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79126588"
 ---
-# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) temel zamanlayıcı özellikleri için en iyi uygulamalar
+# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki temel Zamanlayıcı özellikleri için en iyi yöntemler
 
-Azure Kubernetes Hizmeti'nde (AKS) kümeleri yönetirken, genellikle ekipleri ve iş yüklerini yalıtmanız gerekir. Kubernetes zamanlayıcısı, bilgi işlem kaynaklarının dağıtımını denetlemenize veya bakım olaylarının etkisini sınırlamanıza izin veren özellikler sağlar.
+Azure Kubernetes Service (AKS) içindeki kümeleri yönetirken, genellikle takımları ve iş yüklerini yalıtmanız gerekir. Kubernetes Zamanlayıcı, işlem kaynaklarının dağıtımını denetlemenize veya bakım olaylarının etkisini sınırlamanıza olanak sağlayan özellikler sağlar.
 
-Bu en iyi uygulamalar makalesi küme operatörleri için temel Kubernetes zamanlama özelliklerine odaklanır. Bu makalede şunları öğreneceksiniz:
+Bu en iyi yöntemler makalesi, küme işleçleri için temel Kubernetes zamanlama özelliklerine odaklanır. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Takımlara veya iş yüklerine sabit miktarda kaynak sağlamak için kaynak kotalarını kullanma
-> * Bölme kesintisi bütçelerini kullanarak zamanlanmış bakımın etkisini sınırlama
-> * Aracı kullanarak eksik bölme kaynak `kube-advisor` isteklerini ve sınırlarını denetleme
+> * Takımlara veya iş yüklerine sabit miktarda kaynak sağlamak için kaynak kotalarını kullanın
+> * Pod kesinti bütçelerini kullanarak zamanlanan bakımın etkisini sınırlayın
+> * `kube-advisor` Aracı kullanarak eksik Pod kaynak isteklerini ve sınırlarını denetleyin
 
-## <a name="enforce-resource-quotas"></a>Kaynak kotalarını zorlama
+## <a name="enforce-resource-quotas"></a>Kaynak kotalarını zorla
 
-**En iyi uygulama kılavuzu** - Ad alanı düzeyinde kaynak kotaları planlayın ve uygulayın. Bölmeler kaynak isteklerini ve sınırlarını tanımlayamazsa, dağıtımı reddedin. Kaynak kullanımını izleyin ve kotaları gerektiği gibi ayarlayın.
+**En iyi Yöntem Kılavuzu** -ad alanı düzeyinde kaynak kotalarını planlayın ve uygulayın. Pod kaynak isteklerini ve sınırlarını tanımlamaz, dağıtımı reddedin. Kaynak kullanımını izleyin ve kotaları gerektiği şekilde ayarlayın.
 
-Kaynak istekleri ve limitleri pod belirtimine yerleştirilir. Bu sınırlar, kümede kullanılabilir bir düğüm bulmak için dağıtım zamanında Kubernetes zamanlayıcısı tarafından kullanılır. Bu sınırlar ve istekler tek tek pod düzeyinde çalışır. Bu değerlerin nasıl tanımlanacak hakkında daha fazla bilgi için [bkz.][resource-limits]
+Kaynak istekleri ve limitleri Pod belirtimine yerleştirilir. Bu sınırlar, küme içinde kullanılabilir bir düğüm bulmak için dağıtım zamanında Kubernetes Zamanlayıcı tarafından kullanılır. Bu sınırlar ve istekler bireysel Pod düzeyinde çalışır. Bu değerlerin nasıl tanımlanacağı hakkında daha fazla bilgi için bkz. [Pod kaynak isteklerini ve sınırlarını tanımlama][resource-limits]
 
-Bir geliştirme ekibi veya proje genelinde kaynakları ayırmanın ve sınırlamanın bir yolunu sağlamak için *kaynak kotalarını*kullanmanız gerekir. Bu kotalar bir ad alanında tanımlanır ve kotaları aşağıdaki temellere göre ayarlamak için kullanılabilir:
+Bir geliştirme takımı veya projesindeki kaynakları ayırabilmeniz ve sınırlandırmaya yönelik bir yol sağlamak için *kaynak kotalarını*kullanmanız gerekir. Bu kotalar bir ad alanında tanımlanmıştır ve kotaları aşağıdaki şekilde ayarlamak için kullanılabilir:
 
-* CPU ve bellek veya GPU gibi **hesaplama kaynakları.**
-* **Depolama kaynakları,** belirli bir depolama sınıfı için toplam birim sayısını veya disk alanı miktarını içerir.
-* **Nesne sayısı**, en fazla sayıda sırlar, hizmetler veya iş sayısı gibi oluşturulabilir.
+* CPU ve bellek veya GPU 'Lar gibi **işlem kaynakları**.
+* **Depolama kaynakları**, belirli bir depolama sınıfı için toplam birim sayısını veya disk alanı miktarını içerir.
+* En fazla sayıda gizli dizi, hizmet veya iş için **nesne sayısı**.
 
-Kubernetes kaynakları fazla işlemez. Kaynak isteklerinin veya sınırların toplam toplamı atanan kotayı geçtikten sonra, başka dağıtım başarılı olmaz.
+Kubernetes kaynakları fazla yürütmez. Kaynak isteklerinin veya limitlerin birikimli toplamı atanan kotayı geçtiğinde, başka dağıtımlar başarılı olmaz.
 
-Kaynak kotaları tanımladığınızda, ad alanında oluşturulan tüm bölmeler, bölme belirtimlerinde sınırlar veya istekler sağlamalıdır. Bu değerleri sağlamazlarsa, dağıtımı reddedebilirsiniz. Bunun yerine, [bir ad alanı için varsayılan istekleri ve sınırları yapılandırabilirsiniz.][configure-default-quotas]
+Kaynak kotalarını tanımlarken, ad alanında oluşturulan tüm yığınların Pod belirtimlerinde sınır veya istek sağlaması gerekir. Bu değerleri sağlamıyorsa dağıtımı reddedebilirsiniz. Bunun yerine, [bir ad alanı için varsayılan istekleri ve sınırları yapılandırabilirsiniz][configure-default-quotas].
 
-Aşağıdaki örnek YAML *manifestosunda dev-app-team-quotas.yaml* adlı *toplam 10* CPU, *20Gi* bellek ve *10* bölme sabit bir sınır belirler:
+*Dev-App-Team-Quotas. YAML* adlı aşağıdaki örnek YAML bildirimi toplam *10* CPU, *20gi* bellek ve *10* kat için sabit bir sınır belirler:
 
 ```yaml
 apiVersion: v1
@@ -52,32 +52,32 @@ spec:
     pods: "10"
 ```
 
-Bu kaynak *kotası, dev uygulamalar*gibi ad alanı belirtilerek uygulanabilir:
+Bu kaynak kotası, *geliştirme uygulamaları*gibi ad alanı belirtilerek uygulanabilir:
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 ```
 
-İhtiyaçlarını anlamak ve uygun kaynak kotalarını uygulamak için uygulama geliştiricilerinizle ve sahipleriyle birlikte çalışın.
+Uygulama geliştiricileriniz ve sahipleriyle çalışarak, ihtiyaçlarını anlayın ve uygun kaynak kotalarını uygular.
 
-Kullanılabilir kaynak nesneleri, kapsamlar ve öncelikler hakkında daha fazla bilgi için [Kubernetes'teki Kaynak kotalarına][k8s-resource-quotas]bakın.
+Kullanılabilir kaynak nesneleri, kapsamlar ve öncelikler hakkında daha fazla bilgi için bkz. [Kubernetes 'Te kaynak kotaları][k8s-resource-quotas].
 
-## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Bölme kesintisi bütçelerini kullanarak kullanılabilirlik planı
+## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Pod kesintisi bütçeleri kullanarak kullanılabilirlik planlaması
 
-**En iyi uygulama kılavuzu** - Uygulamaların kullanılabilirliğini korumak için, kümede en az sayıda bakla bulunduğundan emin olmak için Pod Kesinti Bütçeleri (PDBs) tanımlayın.
+**En iyi Yöntem Kılavuzu** -uygulama kullanılabilirliğini sürdürmek için, küme içinde en az sayıda parça kullanılabilir olduğundan emin olmak için pod kesinti bütçeleri (pdb 'leri) tanımlayın.
 
-Bölmelerin kaldırılmasına neden olan iki yıkıcı olay vardır:
+Pod 'nin kaldırılmasına neden olan iki kesintiye neden olan olay vardır:
 
-* *İstemsiz kesintiler* küme işlecinin veya uygulama sahibinin tipik denetiminin ötesindeki olaylardır.
-  * Bu istemsiz kesintiler fiziksel makinede bir donanım hatası, çekirdek paniği veya bir düğüm VM'nin silinmesini içerir
-* *Gönüllü kesintiler* küme işleci veya uygulama sahibi tarafından istenen olaylardır.
-  * Bu gönüllü kesintiler küme yükseltmeleri, güncelleştirilmiş dağıtım şablonu veya yanlışlıkla bir bölme silme içerir.
+* *Involuntary kesintiler* , küme işlecinin veya uygulama sahibinin tipik denetiminden daha fazla olaylardır.
+  * Bu involuntary kesintiler, fiziksel makinede bir donanım hatası, bir çekirdek Panic veya bir düğüm VM 'si silme işlemini içerir
+* *Gönüllü kesintiler* , küme operatörü veya uygulama sahibi tarafından istenen olaylardır.
+  * Bu gönüllü kesintiler, küme yükseltmeleri, güncelleştirilmiş bir dağıtım şablonu veya yanlışlıkla Pod silme işlemlerini içerir.
 
-İstemeden oluşan aksaklıklar, dağıtımda bölmelerinizin birden çok kopyasını kullanarak azaltılabilir. AKS kümesinde birden çok düğüm çalıştırmak da bu istemsiz kesintiler ile yardımcı olur. Gönüllü kesintiler için Kubernetes, küme işlecinin kullanılabilir en az veya en fazla kullanılamayan kaynak sayımı tanımlamasına izin veren *bölme kesintisi bütçeleri* sağlar. Bu bölme kesintisi bütçeleri, gönüllü bir kesinti olayı meydana geldiğinde dağıtımların veya yineleme kümelerinin nasıl yanıt veriş olduğunu planlamanıza sağlar.
+İnvoluntary kesintiler, bir dağıtımda birden fazla çoğaltma kullanılarak azaltılan bir şekilde azaltılabilir. AKS kümesinde birden çok düğüm çalıştırmak bu involuntary kesintiler ile de yardımcı olur. İsteyerek kesintiler için Kubernetes, küme işlecinin kullanılabilir en düşük veya en fazla kullanılamayan kaynak sayısını tanımlamasına izin veren *Pod kesinti bütçeleri* sağlar. Bu Pod kesinti bütçeleri, gönüllü bir kesinti olayı gerçekleştiğinde dağıtımların veya çoğaltma kümelerinin nasıl yanıt vereceğini planlamanız için plan yapmanızı sağlar.
 
-Bir küme yükseltilecekse veya dağıtım şablonu güncellenecekse, Kubernetes zamanlayıcısı, gönüllü kesinti olayları devam etmeden önce ek bölmelerin diğer düğümlerde zamanlanmasından emin olur. Zamanlayıcı, kümedeki diğer düğümlerde tanımlı bölme sayısı başarıyla zamanlanana kadar bir düğüm yeniden başlatılmadan önce bekler.
+Bir küme yükseltilmek veya bir dağıtım şablonu güncelleştiriliyorsa, Kubernetes Zamanlayıcı, isteğe bağlı kesinti olaylarının devam edebilmesi için diğer düğümlerde ek yığınların zamanlanmasını sağlar. Zamanlayıcı, tanımlanan düğüm sayısı kümedeki diğer düğümlerde başarıyla zamanlanana kadar bir düğüm yeniden başlatılmadan önce bekler.
 
-NGINX çalıştıran beş podlu bir çoğaltma kümesi örneğine bakalım. Yineleme kümesindeki bölmelere etiket `app: nginx-frontend`atanır. Küme yükseltmesi gibi isteğe bağlı bir kesinti olayı sırasında, en az üç bölmenin çalışmaya devam etmesini istersiniz. *PodDisruptionBudget* nesnesi için aşağıdaki YAML bildirimi şu gereksinimleri tanımlar:
+NGıNX çalıştıran beş Pod içeren bir çoğaltma kümesi örneğine göz atalım. Çoğaltma kümesindeki Dizin, etikete `app: nginx-frontend`atanır. Küme yükseltmesi gibi gönüllü bir kesinti olayı sırasında, en az üç Pod çalışmaya devam etmesini sağlamak istersiniz. *Pod kesintiler* için aşağıdaki YAML bildirimi, bu gereksinimleri tanımlar:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -91,9 +91,9 @@ spec:
       app: nginx-frontend
 ```
 
-Ayrıca, bölme sayısını ölçeklendirerek çoğaltma kümesini otomatik olarak telafi etmenizi sağlayan *%60*gibi bir yüzde tanımlayabilirsiniz.
+Ayrıca, küme sayısının ölçeğini ölçeklendirerek çoğaltma kümesini otomatik olarak telafi etmenizi sağlayan *%60*gibi bir yüzde de tanımlayabilirsiniz.
 
-Yineleme kümesinde en fazla kullanılabilir olmayan örnek sayısını tanımlayabilirsiniz. Yine, en fazla kullanılamayan bölmeler için bir yüzde de tanımlanabilir. Aşağıdaki bölme kesintisi bütçesi YAML bildirimi, yineleme kümesindeki en fazla iki bölmenin kullanılamayan olduğunu tanımlar:
+Bir çoğaltma kümesinde kullanılamayan en fazla örnek sayısını tanımlayabilirsiniz. Ayrıca, kullanılamayan en fazla sayıda pod için bir yüzde de tanımlanabilir. Aşağıdaki Pod kesintisi bütçesi YAML bildirimi, çoğaltma kümesinde ikiden fazla sayıda Pod olmadığını tanımlar:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -107,33 +107,33 @@ spec:
       app: nginx-frontend
 ```
 
-Pod kesintisi bütçeniz tanımlandıktan sonra, diğer Kubernetes nesnesinde olduğu gibi AKS kümenizde de oluşturursunuz:
+Pod kesinti bütçeniz tanımlandıktan sonra, AKS kümenizde diğer Kubernetes nesnesiyle birlikte oluşturursunuz:
 
 ```console
 kubectl apply -f nginx-pdb.yaml
 ```
 
-İhtiyaçlarını anlamak ve uygun bölme kesintisi bütçelerini uygulamak için uygulama geliştiricilerinizle ve sahipleriyle birlikte çalışın.
+Uygulama geliştiricileriniz ve sahipleriyle birlikte çalışarak ihtiyaçlarını anlayın ve uygun Pod kesintisi bütçelerini uygulayın.
 
-Bölme kesintisi bütçelerini kullanma hakkında daha fazla bilgi için [bkz.][k8s-pdbs]
+Pod kesinti bütçelerini kullanma hakkında daha fazla bilgi için bkz. [uygulamanız için bir kesinti bütçesi belirtme][k8s-pdbs].
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Kube-advisor ile küme sorunlarını düzenli olarak denetleyin
+## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Kuin-Advisor ile küme sorunlarını düzenli olarak denetleme
 
-**En iyi uygulama kılavuzu** - Kümenizdeki sorunları algılamak için açık kaynak aracının `kube-advisor` en son sürümünü düzenli olarak çalıştırın. Varolan bir AKS kümesine kaynak kotaları uygularsanız, kaynak istekleri ve sınırları tanımlı olmayan bölmeleri bulmak için önce çalıştırın. `kube-advisor`
+**En iyi Yöntem Kılavuzu** -kümenizdeki sorunları algılamak için `kube-advisor` açık kaynak aracının en son sürümünü düzenli olarak çalıştırın. Mevcut bir aks kümesinde kaynak kotaları uygularsanız, kaynak istekleri ve sınırları `kube-advisor` tanımlı olmayan bir pod bulmak için ilk olarak ' i çalıştırın.
 
-[Kube-danışman][kube-advisor] aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunları raporlayan ilişkili bir AKS açık kaynak projesidir. Yararlı denetimlerden biri, kaynak istekleri ve sınırları olmayan bölmeleri tanımlamaktır.
+[Kuin-Advisor][kube-advisor] Aracı, bir Kubernetes kümesini tarayan ve bulduğu sorunlar hakkında rapor veren ilişkili bir aks açık kaynak projesidir. Tek bir faydalı denetim, kaynak istekleri ve sınırları olmayan Pod 'yi belirlemektir.
 
-Kube-advisor aracı kaynak isteği ve Windows uygulamaları için PodSpecs yanı sıra Linux uygulamaları eksik sınırları rapor edebilirsiniz, ancak kube-danışman aracı kendisi bir Linux pod üzerinde zamanlanmış olmalıdır. Pod yapılandırmasında bir [düğüm seçici][k8s-node-selector] kullanarak belirli bir işletim sistemi ile bir düğüm havuzunda çalışacak bir bölme zamanlayabilirsiniz.
+Kumak-Advisor Aracı, Windows Uygulamaları ve Linux uygulamaları için pod özelliklerinin yanı sıra kaynak isteği ve limitleri rapor edebilir, ancak Kuto-Advisor aracının kendisi bir Linux pod üzerinde zamanlanmalıdır. Pod 'un yapılandırmasındaki [düğüm seçicisini][k8s-node-selector] kullanarak belirli bir işletim sistemine sahip bir düğüm havuzunda çalışacak bir pod zamanlayabilirsiniz.
 
-Birden çok geliştirme ekibi ve uygulaması barındıran bir AKS kümesinde, bu kaynak istekleri ve sınırları ayarlı olmadan bölmeleri izlemek zor olabilir. En iyi yöntem olarak, `kube-advisor` özellikle ad alanlarına kaynak kotaları atamıyorsanız, AKS kümelerinizde düzenli olarak çalıştırın.
+Birden çok geliştirme ekiplerini ve uygulamayı barındıran bir aks kümesinde, bu kaynak istekleri ve limitler kümesi olmadan Pod 'yi izlemek zor olabilir. En iyi uygulama olarak, özellikle de `kube-advisor` ad alanlarına kaynak kotaları atamadıysanız, aks kümelerinizde düzenli olarak çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede temel Kubernetes zamanlayıcı özellikleri üzerinde duruldu. AKS'deki küme işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi uygulamalara bakın:
+Bu makalede temel Kubernetes Zamanlayıcı özelliklerine odaklanılmıştır. AKS 'deki küme işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi yöntemlere bakın:
 
 * [Çok kiracılılık ve küme yalıtımı][aks-best-practices-cluster-isolation]
-* [Gelişmiş Kubernetes zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
-* [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
+* [Gelişmiş Kubernetes Zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
+* [Kimlik doğrulaması ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/

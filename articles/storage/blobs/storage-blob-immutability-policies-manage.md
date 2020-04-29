@@ -1,6 +1,6 @@
 ---
-title: Blob depolama için uygun olmayan ilkeler belirleyin ve yönetin - Azure Depolama
-description: Belirli bir aralık için verileri eritilemez, değiştirilemez bir durumda depolamak için Blob (nesne) depolamaiçin WORM (Write Once, Read Many) desteğini nasıl kullanacağınızı öğrenin.
+title: BLOB depolama-Azure depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
+description: Verileri, belirli bir Aralık için silinebilir olmayan, değiştirilemeyen bir durumda depolamak üzere blob (nesne) depolama için PARAZITI (bir kez yaz, çok oku) desteğini nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,73 +9,73 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 05a155584f0cb69191883cb82b3db0af435ccc12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970109"
 ---
-# <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Blob depolama için uygun olmayan ilkeler belirleyin ve yönetin
+# <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme
 
-Azure Blob depolama için değişmez depolama, kullanıcıların işle ilgili kritik veri nesnelerini WORM (Bir Kez Yaz, Çok Oku) durumunda depolamasına olanak tanır. Bu durum, verileri kullanıcı tarafından belirtilen bir aralık için eritilemez ve değiştirilemez hale getirir. Bekletme aralığı süresince, lekeler oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Değişmez depolama, tüm Azure bölgelerindeki genel amaçlı v2 ve Blob depolama hesapları için kullanılabilir.
+Azure Blob depolama için sabit depolama, kullanıcıların iş açısından kritik veri nesnelerini bir solucan içinde depolamasına olanak sağlar (bir kez yaz, çok oku) durumu. Bu durum, verileri silinebilir olmayan ve Kullanıcı tarafından belirtilen bir Aralık için değiştirilemez hale getirir. Saklama aralığı süresince, Bloblar oluşturulup okunabilir, ancak değiştirilemez veya silinemez. Tüm Azure bölgelerindeki genel amaçlı v2 ve BLOB depolama hesapları için sabit depolama kullanılabilir.
 
-Bu makalede, Azure portalı, PowerShell veya Azure CLI kullanarak Blob depolamadaki veriler için uygun olmayan ilkeler ve yasal tutarlar nasıl ayarlanır ve yönetilir. Değişmez depolama hakkında daha fazla bilgi için, [değişmez depolama ile mağaza iş açısından kritik blob verileri](storage-blob-immutable-storage.md)bakın.
+Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak blob depolamada bulunan veriler için imlik kullanılabilirliği ilkelerinin ve yasal tutmalar ayarlama ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Sabit depolama hakkında daha fazla bilgi için bkz. [Sabit depolama ile iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md).
 
-## <a name="set-retention-policies-and-legal-holds"></a>Bekletme politikalarını ve yasal dayanakları ayarlama
+## <a name="set-retention-policies-and-legal-holds"></a>Bekletme ilkelerini ve yasal tutmaları ayarlama
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Sabit durumda tutulması gereken blobların depolanması için yeni bir kapsayıcı oluşturun veya mevcut bir kapsayıcıyı seçin. Kapsayıcı genel amaçlı v2 veya Blob depolama hesabında olmalıdır.
+1. Sabit durumda tutulması gereken blobların depolanması için yeni bir kapsayıcı oluşturun veya mevcut bir kapsayıcıyı seçin. Kapsayıcı, genel amaçlı bir v2 veya blob depolama hesabında olmalıdır.
 
-2. Kapsayıcı ayarlarında **Access ilkesini** seçin. Daha sonra **Değişmez blob depolama**altında **ilke ekle'yi** seçin.
+2. Kapsayıcı ayarları ' nda **erişim ilkesi** ' ni seçin. Ardından, **sabit blob depolaması**altında **ilke Ekle** ' yi seçin.
 
-    ![Portaldaki konteyner ayarları](media/storage-blob-immutability-policies-manage/portal-image-1.png)
+    ![Portalda kapsayıcı ayarları](media/storage-blob-immutability-policies-manage/portal-image-1.png)
 
-3. Zaman tabanlı bekletmeyi etkinleştirmek için açılır menüden **Zaman tabanlı bekletme'yi** seçin.
+3. Zamana dayalı saklama süresini etkinleştirmek için, açılan menüden **zamana dayalı saklama** ' yı seçin.
 
-    !["İlke türü" altında seçilen "Zaman tabanlı bekletme"](media/storage-blob-immutability-policies-manage/portal-image-2.png)
+    !["Ilke türü" altında "zaman tabanlı bekletme" seçildi](media/storage-blob-immutability-policies-manage/portal-image-2.png)
 
-4. Gün içinde bekletme aralığıgirin (kabul edilebilir değerler 1 ila 146000 gün arasındadır).
+4. Bekletme aralığını gün cinsinden girin (kabul edilebilir değerler 1-146000 gündür).
 
-    !["Bekletme süresini güncelleştirme" kutusu](media/storage-blob-immutability-policies-manage/portal-image-5-retention-interval.png)
+    !["Saklama süresini güncelleştirme" kutusu](media/storage-blob-immutability-policies-manage/portal-image-5-retention-interval.png)
 
-    İlkenin ilk durumu, özelliği sınamanızı ve kilitlemeden önce ilkede değişiklik yapmanızı sağlayan bir kilitlenir. Sec 17a-4 gibi düzenlemelere uygunluk için politikanın kilitlenmesi esastır.
+    İlkenin ilk durumu kilidi açmadan önce özelliği test etmeniz ve ilkede değişiklikler yapmanız sağlanır. İlkeyi kilitlemek, SEC 17A-4 gibi yönetmeliklerle uyumluluk açısından önemlidir.
 
-5. İlkeyi kilitleyin. Elipsis 'e **(...**) sağ tıklanır ve aşağıdaki menü ek eylemlerle birlikte görünür:
+5. İlkeyi kilitleyin. Üç nokta (**...**) simgesine sağ tıklayın ve aşağıdaki menü ek eylemlerle görüntülenir:
 
-    ![Menüde "Kilit lek", ilke](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
+    ![Menüdeki "ilkeyi kilitle"](media/storage-blob-immutability-policies-manage/portal-image-4-lock-policy.png)
 
-6. **Kilit Lek.** seçeneğini belirleyin ve kilidi onaylayın. İlke artık kilitli ve silinemez, yalnızca bekletme aralığının uzantılarına izin verilir. Blob siler ve geçersiz kılara izin verilmez. 
+6. **Kilit ilkesini** seçin ve kilidi onaylayın. İlke artık kilitli ve silinemez, yalnızca bekletme aralığının uzantılarına izin verilir. Blob silme ve geçersiz kılmalara izin verilmez. 
 
-    ![Menüdeki "Kilitleme ilkesini" onaylama](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
+    ![Menüde "kilit ilkesini" onaylayın](media/storage-blob-immutability-policies-manage/portal-image-5-lock-policy.png)
 
-7. Yasal dayanakları etkinleştirmek için **İlke Ekle'yi**seçin. Açılan menüden **Yasal tutun'u** seçin.
+7. Yasal tutmaları etkinleştirmek için **Ilke Ekle**' yi seçin. Açılan menüden **yasal tut** ' u seçin.
 
-    ![Menüde "İlke türü" altında "Yasal tutma"](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
+    !["Ilke türü" altındaki menüdeki "Legal Hold"](media/storage-blob-immutability-policies-manage/portal-image-legal-hold-selection-7.png)
 
-8. Bir veya daha fazla etiketle yasal bir tutun oluşturun.
+8. Bir veya daha fazla etiketle geçerli bir saklama alanı oluşturun.
 
-    ![İlke türü altında "etiket adı" kutusu](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
+    ![İlke türü altındaki "etiket adı" kutusu](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Yasal bir beklemeyi temizlemek için, uygulanan yasal tutma tanımlayıcıetiketini kaldırın.
+9. Yasal bir tutmayı temizlemek için uygulanan geçerli saklama tanımlayıcı etiketini kaldırın.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Özellik aşağıdaki komut gruplarında yer `az storage container immutability-policy` aldı: ve `az storage container legal-hold`. Komutları görmek için üzerlerine koşun. `-h`
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve. `az storage container legal-hold` Komutları `-h` görmek için üzerinde çalıştırın.
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Az.Storage modülü değişmez depolamayı destekler.  Özelliği etkinleştirmek için aşağıdaki adımları izleyin:
+Az. Storage modülü, sabit depolamayı destekler.  Özelliği etkinleştirmek için şu adımları izleyin:
 
-1. PowerShellGet'in en son sürümünün yüklü `Install-Module PowerShellGet –Repository PSGallery –Force`olduğundan emin olun: .
-2. Azure PowerShell'in önceki yüklemelerini kaldırın.
-3. Azure PowerShell'i yükleyin: `Install-Module Az –Repository PSGallery –AllowClobber`.
+1. PowerShellGet 'in en son sürümünün yüklü olduğundan emin olun: `Install-Module PowerShellGet –Repository PSGallery –Force`.
+2. Önceki Azure PowerShell yüklemesini kaldırın.
+3. Azure PowerShell yüklensin: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Aşağıdaki örnek PowerShell komut dosyası başvuru içindir. Bu komut dosyası yeni bir depolama hesabı ve kapsayıcı oluşturur. Daha sonra, yasal tutmaları nasıl ayarlayıp temize atabileceğinizi, zaman tabanlı bekletme ilkesini (immutability ilkesi olarak da bilinir) nasıl oluşturup kilitleyip kilitleyip bekletme aralığını nasıl uzatabileceğinizi gösterir.
+Aşağıdaki örnek PowerShell betiği başvuru içindir. Bu betik yeni bir depolama hesabı ve kapsayıcısı oluşturur. Daha sonra yasal tutmaları ayarlama ve Temizleme, zaman tabanlı bir bekletme ilkesi oluşturma ve kilitleme (aynı zamanda, imlebilirlik ilkesi olarak da bilinir) ve bekletme aralığını genişletme işlemlerinin nasıl yapılacağını gösterir.
 
-İlk olarak, bir Azure Depolama hesabı oluşturun:
+İlk olarak, bir Azure depolama hesabı oluşturun:
 
 ```powershell
 $resourceGroup = "<Enter your resource group>"
@@ -104,7 +104,7 @@ Get-AzStorageContainer -Context $account.Context
 Remove-AzStorageContainer -Name $container -Context $account.Context
 ```
 
-Set ve net yasal tutarlar:
+Yasal tutmaları ayarla ve temizle:
 
 ```powershell
 # Set a legal hold
@@ -116,7 +116,7 @@ Remove-AzRmStorageContainerLegalHold -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -Name $container -Tag <tag3>
 ```
 
-Zaman adayalı zamana dayalı geçirimlilik ilkeleri oluşturun veya güncelleştirin:
+Zamana dayalı ve kullanılabilirlik ilkeleri oluşturun veya güncelleştirin:
 
 ```powershell
 # Create a time-based immutablity policy
@@ -124,7 +124,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container -ImmutabilityPeriod 10
 ```
 
-Geri alınamazlık ilkelerini alın:
+İmlebilirlik kuralları alma:
 
 ```powershell
 # Get an immutability policy
@@ -132,7 +132,7 @@ Get-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
     -StorageAccountName $storageAccount -ContainerName $container
 ```
 
-Değişmezlik ilkelerini kilitleyin `-Force` (komut istemini kapatmak için ekleyin):
+Dengesizin kullanılabilirliği ilkelerini kilitle (istemi `-Force` kapatmak için Ekle):
 
 ```powershell
 # Lock immutability policies
@@ -143,7 +143,7 @@ Lock-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     -Etag $policy.Etag
 ```
 
-İşgöremezlik ilkelerini genişletin:
+Dengesde kullanılabilirlik ilkelerini uzat:
 
 ```powershell
 # Extend immutability policies
@@ -154,7 +154,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 ```
 
-Kilitsiz bir değişmezlik ilkesini `-Force` kaldırın (istemi kapatmak için ekleyin):
+Kilitsiz bir imlebilirlik ilkesini kaldırma (istemi `-Force` kapatmak için Ekle):
 
 ```powershell
 # Remove an unlocked immutability policy
@@ -166,17 +166,17 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
 ---
 
-## <a name="enabling-allow-protected-append-blobs-writes"></a>Etkinleştirme korumalı ek blobs yazmaizin
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Korumalı ekleme bloblarına izin vermeyi etkinleştirme
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-![Ek ek yazmalar izin ver](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
+![Ek ekleme yazmaları sağlar](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Özellik aşağıdaki komut gruplarında yer `az storage container immutability-policy` aldı: ve `az storage container legal-hold`. Komutları görmek için üzerlerine koşun. `-h`
+Bu özellik aşağıdaki komut gruplarına dahildir: `az storage container immutability-policy` ve. `az storage container legal-hold` Komutları `-h` görmek için üzerinde çalıştırın.
 
-### <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```powershell
 # Create an immutablity policy with appends allowed
@@ -188,4 +188,4 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $resourceGroup `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İş açısından kritik blob verilerini değişmez depolama yla depolama](storage-blob-immutable-storage.md)
+[Sabit depolamayla iş açısından kritik blob verilerini depolayın](storage-blob-immutable-storage.md)

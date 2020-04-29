@@ -1,31 +1,31 @@
 ---
-title: Azure'dan Linux VHD indirin
-description: Azure CLI ve Azure portalını kullanarak bir Linux VHD indirin.
+title: Azure 'dan bir Linux VHD indirin
+description: Azure CLı ve Azure portal kullanarak bir Linux VHD 'YI indirin.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: cynthn
 ms.openlocfilehash: 02c3ee483e6a31960fd5123070a49f568ac4c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968792"
 ---
-# <a name="download-a-linux-vhd-from-azure"></a>Azure'dan Linux VHD indirin
+# <a name="download-a-linux-vhd-from-azure"></a>Azure 'dan bir Linux VHD indirin
 
-Bu makalede, Azure CLI ve Azure portalını kullanarak Azure'dan bir Linux sanal sabit disk (VHD) dosyasını nasıl indirdiğinizi öğrenirsiniz. 
+Bu makalede, Azure CLı ve Azure portal kullanarak Azure 'dan bir Linux sanal sabit disk (VHD) dosyası indirmeyi öğreneceksiniz. 
 
-Bunu daha önce yapmadıysanız, [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-az-cli2)
+Daha önce yapmadıysanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)'yı yükleyebilirsiniz.
 
 ## <a name="stop-the-vm"></a>VM’yi durdurma
 
-Bir VHD, çalışan bir VM'ye bağlıysa Azure'dan indirilenemez. Bir VHD indirmek için VM durdurmak gerekir. Yeni disklere sahip diğer VM'ler oluşturmak için [görüntü](tutorial-custom-images.md) olarak VHD kullanmak istiyorsanız, dosyada bulunan işletim sistemini deprovision ve genelleme ve VM durdurmak gerekir. VHD'yi varolan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak için, VM'yi durdurmanız ve anlaşma yapmanız gerekir.
+Bir VHD, çalışan bir VM 'ye eklenmişse Azure 'dan indirilemiyor. Bir VHD 'YI indirmek için VM 'yi durdurmanız gerekir. Yeni disklerle diğer VM 'Ler oluşturmak için bir VHD 'YI [görüntü](tutorial-custom-images.md) olarak kullanmak istiyorsanız, dosyada bulunan işletim sistemini önceden hazırlamanız ve genelleştirietmeniz ve VM 'yi durdurmanız gerekir. VHD 'yi, var olan bir VM 'nin veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere yalnızca VM 'yi durdurup serbest bırakma yeterlidir.
 
-VHD'yi görüntü olarak kullanarak diğer VM'ler oluşturmak için aşağıdaki adımları tamamlayın:
+VHD 'YI başka VM 'Ler oluşturmak üzere bir görüntü olarak kullanmak için şu adımları izleyin:
 
-1. SSH'yi, hesap adını ve VM'nin genel IP adresini kullanarak ona bağlanın ve bu adresi yok edin. [Az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show)ile genel IP adresini bulabilirsiniz. +kullanıcı parametresi de son sağlanan kullanıcı hesabını kaldırır. Hesap kimlik bilgilerini VM'de pişiriyorsanız, bu +kullanıcı parametresini dışarıda bırakın. Aşağıdaki örnek, son sağlanan kullanıcı hesabını kaldırır:
+1. Bağlanılacak sanal makinenin SSH, hesap adı ve genel IP adresini kullanın ve uygulamayı yeniden sağlayın. Genel IP adresini [az Network public-IP Show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show)komutuyla bulabilirsiniz. + User parametresi, sağlanan son kullanıcı hesabını da kaldırır. VM 'de hesap kimlik bilgilerini fıryorsanız, bu + kullanıcı parametresini bırakın. Aşağıdaki örnek, sağlanan son kullanıcı hesabını kaldırır:
 
     ```bash
     ssh azureuser@<publicIpAddress>
@@ -33,50 +33,50 @@ VHD'yi görüntü olarak kullanarak diğer VM'ler oluşturmak için aşağıdaki
     exit 
     ```
 
-2. Az giriş ile Azure hesabınızda oturum [açın.](https://docs.microsoft.com/cli/azure/reference-index)
-3. VM'yi durdurun ve anlaşma yada.
+2. [Az Login](https://docs.microsoft.com/cli/azure/reference-index)komutuyla Azure hesabınızda oturum açın.
+3. VM 'yi durdurun ve serbest bırakın.
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-4. VM'yi genelleştirin. 
+4. VM 'yi genelleştirin. 
 
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-VHD'yi varolan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak için aşağıdaki adımları tamamlayın:
+VHD 'YI, var olan bir VM veya veri diskinin yeni bir örneği için disk olarak kullanmak üzere aşağıdaki adımları izleyin:
 
-1.  [Azure portalında](https://portal.azure.com/)oturum açın.
-2.  Sol menüde **Sanal Makineler'i**seçin.
-3.  Listeden VM'yi seçin.
-4.  VM için sayfada **Durdur'u**seçin.
+1.  [Azure Portal](https://portal.azure.com/) oturum açın.
+2.  Sol taraftaki menüden **sanal makineler**' i seçin.
+3.  Listeden VM 'yi seçin.
+4.  VM 'nin sayfasında **Durdur**' u seçin.
 
     ![VM’yi Durdurma](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a>SAS URL'si oluşturma
+## <a name="generate-sas-url"></a>SAS URL 'SI oluştur
 
-VHD dosyasını indirmek için paylaşılan bir [erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL'si oluşturmanız gerekir. URL oluşturulduğunda, URL'ye bir son kullanma süresi atanır.
+VHD dosyasını indirmek için, [paylaşılan erişim imzası (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL 'si oluşturmanız gerekir. URL oluşturulduğunda, URL 'ye bir sona erme saati atanır.
 
-1.  VM için sayfanın menüsünde **Diskler'i**seçin.
-2.  VM için işletim sistemi diskini seçin ve ardından **Disk Dışa Aktarma'yı**seçin.
-3.  **URL Oluştur'u**seçin.
+1.  VM 'nin sayfasının menüsünde **diskler**' i seçin.
+2.  VM 'nin işletim sistemi diskini seçin ve ardından **disk dışarı aktar**' ı seçin.
+3.  **URL Oluştur**' u seçin.
 
-    ![URL oluştur](./media/download-vhd/export-generate.png)
+    ![URL Oluştur](./media/download-vhd/export-generate.png)
 
-## <a name="download-vhd"></a>VHD'yi İndir
+## <a name="download-vhd"></a>VHD 'YI indir
 
-1.  Oluşturulan URL'nin altında **VHD dosyasını indir'i**seçin.
+1.  Oluşturulan URL altında **VHD dosyasını indir**' i seçin.
 **
-    ![VHD'yi İndir](./media/download-vhd/export-download.png)
+    ![VHD 'YI indir](./media/download-vhd/export-download.png)
 
-2.  İndirmeye başlamak için tarayıcıda **Kaydet'i** seçmeniz gerekebilir. VHD dosyasının varsayılan adı *abcd'dir.*
+2.  İndirmeyi başlatmak için tarayıcıda **Kaydet** ' i seçmeniz gerekebilir. VHD dosyasının varsayılan adı *abcd*' dir.
 
-    ![Tarayıcıda Kaydet'i seçin](./media/download-vhd/export-save.png)
+    ![Tarayıcıda Kaydet ' i seçin](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure CLI ile özel diskten nasıl linux VM yükleyip oluşturabilirsiniz](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)öğrenin. 
-- [Azure disklerini Azure CLI'yi yönetin.](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure CLI ile özel diskten bir LINUX VM 'yi karşıya yükleme ve oluşturma](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)hakkında bilgi edinin. 
+- Azure [disklerini Azure CLI Ile yönetin](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

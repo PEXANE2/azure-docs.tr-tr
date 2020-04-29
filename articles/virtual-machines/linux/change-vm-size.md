@@ -1,40 +1,40 @@
 ---
-title: Azure CLI ile Bir Linux VM yeniden boyutlandırma
-description: VM boyutunu değiştirerek bir Linux sanal makineyi nasıl ölçeklendirecek veya küçültün.
+title: Azure CLı ile Linux VM 'yi yeniden boyutlandırma
+description: VM boyutunu değiştirerek bir Linux sanal makinesini büyütme veya azaltma.
 author: mikewasson
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.openlocfilehash: 20e7db80b55347c4a4a76b7c95d4d8bec368abda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969271"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Azure CLI kullanarak Linux Sanal Makinesini yeniden boyutlandırma 
 
-Sanal bir makine (VM) temin ettikten sonra, [VM boyutunu][vm-sizes]değiştirerek VM'yi yukarı veya aşağı ölçeklendirebilirsiniz. Bazı durumlarda, önce VM'nin yerini tespit etmelidir. VM'yi barındıran donanım kümesinde istenilen boyut yoksa VM'yi bulmanız gerekir. Bu makalede, Azure CLI ile bir Linux VM yeniden boyutlandırma küçlük. 
+Bir sanal makine (VM) sağlamadıktan sonra [VM boyutunu][vm-sizes]değiştirerek VM 'yi yukarı veya aşağı ölçeklendirdirebilirsiniz. Bazı durumlarda, önce VM 'yi serbest bırakın. İstenen boyut, VM 'yi barındıran donanım kümesinde yoksa VM 'yi serbest getirmeniz gerekir. Bu makalede, Azure CLı ile Linux VM 'nin nasıl yeniden boyutlandırılması ayrıntılı olarak açıklanır. 
 
 ## <a name="resize-a-vm"></a>VM’yi yeniden boyutlandırma
-Bir VM'yi yeniden boyutlandırmak için, [az giriş](/cli/azure/reference-index)kullanarak en son [Azure CLI'nin](/cli/azure/install-az-cli2) yüklü ve azure hesabına giriş yapmanız gerekir.
+Bir VM 'yi yeniden boyutlandırmak için, [az Login](/cli/azure/reference-index)kullanarak en son [Azure CLI](/cli/azure/install-az-cli2) 'Nın yüklü ve bir Azure hesabında oturum açmış olmanız gerekir.
 
-1. VM az [vm list-vm-resize-seçenekleri](/cli/azure/vm)ile barındırılan donanım kümesinde kullanılabilir VM boyutlarının listesini görüntüleyin. Aşağıdaki örnekte, kaynak grubu `myVM` `myResourceGroup` bölgesinde adı geçen VM için VM boyutları listelenebilmiştir:
+1. VM 'nin [az VM List-VM-Resize-Options](/cli/azure/vm)ile barındırıldığı donanım KÜMESINDEKI kullanılabilir VM boyutlarının listesini görüntüleyin. Aşağıdaki örnek, kaynak grubu `myVM` `myResourceGroup` BÖLGESINDE adlı sanal makinenin VM boyutlarını listeler:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. İstenilen VM boyutu listelenirse, [VM'yi az vm yeniden boyutlandırarak yeniden boyutlandırın.](/cli/azure/vm) Aşağıdaki örnek, adı verilen `myVM` VM'yi `Standard_DS3_v2` boyuta yeniden boyutlandırıyor:
+2. İstenen VM boyutu listeleniyorsa, [az VM Resize](/cli/azure/vm)ile VM 'yi yeniden boyutlandırın. Aşağıdaki örnek, adlı `myVM` sanal makineyi `Standard_DS3_v2` boyutuna göre yeniden boyutlandırır:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
-    Bu işlem sırasında VM yeniden başlatılır. Yeniden başlatmadan sonra, varolan işletim sistemi ve veri diskleriniz yeniden eşlenir. Geçici diskteki her şey kaybolur.
+    Bu işlem sırasında VM yeniden başlatılır. Yeniden başlatıldıktan sonra, var olan işletim sistemi ve veri diskleriniz yeniden eşlenir. Geçici disk üzerinde herhangi bir şey kaybedilir.
 
-3. İstenilen VM boyutu listelenmemişse, öncelikle Az [vm deallocate](/cli/azure/vm)ile VM'yi bulmanız gerekir. Bu işlem, VM'nin daha sonra bölgenin desteklediği ve daha sonra başlatıldıdığı herhangi bir boyuta yeniden boyutlandırılmasına olanak tanır. Aşağıdaki adımlar, aşağıdaki leri yeniden boyutlandırmayı ve `myVM` ardından kaynak `myResourceGroup`grubunda adı geçen VM'yi başlatın:
+3. İstenen VM boyutu listelenmiyorsa, öncelikle VM 'yi [serbest bırakma](/cli/azure/vm)' yı kullanarak VM 'yi serbest bırakın. Bu işlem, sanal makinenin daha sonra bölge tarafından desteklenen ve başlatılan kullanılabilir boyuta yeniden boyutlandırılabilmesini sağlar. Aşağıdaki adımlar, adlı `myVM` `myResourceGroup`kaynak grubunda adlı VM 'yi serbest bırakın, yeniden boyutlandırın ve sonra başlatın:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -43,10 +43,10 @@ Bir VM'yi yeniden boyutlandırmak için, [az giriş](/cli/azure/reference-index)
     ```
    
    > [!WARNING]
-   > VM'nin ayrılması, VM'ye atanan dinamik IP adreslerini de serbest bırakır. İşletim sistemi ve veri diskleri etkilenmez.
+   > VM 'nin serbest çıkarılması VM 'ye atanan dinamik IP adreslerini de serbest bırakır. İşletim sistemi ve veri diskleri etkilenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ek ölçeklenebilirlik için birden çok VM örneği çalıştırın ve ölçeklendirin. Daha fazla bilgi için bkz. [Sanal Makine Ölçeği Kümesi'ndeki Linux makinelerini otomatik olarak ölçeklendirin.][scale-set] 
+Ek ölçeklenebilirlik için birden fazla sanal makine örneği çalıştırın ve ölçeği ölçeklendirin. Daha fazla bilgi için bkz. [sanal makine ölçek kümesindeki Linux makinelerini otomatik olarak ölçeklendirme][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

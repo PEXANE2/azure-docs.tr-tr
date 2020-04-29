@@ -1,5 +1,5 @@
 ---
-title: Bing Web Arama C# istemci kitaplığı hızlı başlat
+title: Bing Web Araması C# istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: 32a31892317cadb37f16e48df80bef7d6d8a99ef
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925850"
 ---
-Bing Web Arama istemci kitaplığı, Bing Web Arama'yı C# uygulamanıza entegre etmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
+Bing Web Araması istemci kitaplığı, Bing Web Araması C# uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istemci başlatmayı, istek göndermeyi ve yanıtı yazdırmayı öğreneceksiniz.
 
-Kodu hemen görmek istiyor musunuz? [.NET için Bing Arama istemci kitaplıkları için](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) örnekler GitHub'da mevcuttur.
+Kodu hemen görmek istiyor musunuz? [.NET için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) örnekleri GitHub ' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
@@ -26,16 +26,16 @@ Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız ol
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [Visual Studio Code için C#](https://visualstudio.microsoft.com/downloads/)
   * [NuGet Paket Yöneticisi](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.NET Çekirdek SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://www.microsoft.com/net/download)
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Proje oluşturma ve bağımlılıkları yükleme
 
 > [!TIP]
-> [GitHub'dan](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)Visual Studio çözümü olarak en son kodu alın.
+> [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)'Dan bir Visual Studio çözümü olarak en son kodu alın.
 
-İlk adım yeni bir konsol projesi oluşturmaktır. Bir konsol projesi kurma konusunda yardıma ihtiyacınız varsa, [Bkz. Hello World -- İlk Programınız (C# Programlama Kılavuzu)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Bing Web Araması SDK'sını uygulamanızda kullanmak için NuGet Paket Yöneticisi'ni kullanarak `Microsoft.Azure.CognitiveServices.Search.WebSearch` paketini yüklemeniz gerekir.
+İlk adım yeni bir konsol projesi oluşturmaktır. Bir konsol projesi ayarlamayla ilgili yardıma ihtiyacınız varsa, bkz. [Merhaba Dünya--Ilk programınız (C# Programlama Kılavuzu)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Bing Web Araması SDK'sını uygulamanızda kullanmak için NuGet Paket Yöneticisi'ni kullanarak `Microsoft.Azure.CognitiveServices.Search.WebSearch` paketini yüklemeniz gerekir.
 
 [Web Arama SDK'sı paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) şunları da yükler:
 
@@ -57,7 +57,7 @@ using System.Linq;
 
 ## <a name="create-project-scaffolding"></a>Proje yapı iskelesini oluşturma
 
-Yeni konsol projenizi oluşturduğunuzda uygulamanız için bir ad alanı ve sınıf da oluşturulmuş olmalıdır. Programınız şu örnekgibi görünmelidir:
+Yeni konsol projenizi oluşturduğunuzda uygulamanız için bir ad alanı ve sınıf da oluşturulmuş olmalıdır. Programınız şu örnekteki gibi görünmelidir:
 
 ```csharp
 namespace WebSearchSDK
@@ -421,5 +421,5 @@ Bu projeyi tamamladıktan sonra abonelik anahtarınızı uygulama kodundan kald�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilişsel Hizmetler Düğüm.js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
+> [Bilişsel hizmetler Node. js SDK örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)
                                     

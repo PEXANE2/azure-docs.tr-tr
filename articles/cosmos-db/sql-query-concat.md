@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde CONCAT
-description: Azure Cosmos DB'deki CONCAT SQL sisteminin iki veya daha fazla dize değerini biraraya getirmesisonucu bir dizeyi nasıl döndürdekleri hakkında bilgi edinin
+description: Azure Cosmos DB içindeki CONCAT SQL sistem işlevinin iki veya daha fazla dize değerini birleştirme sonucu olan bir dizeyi nasıl döndürdüğünü öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c8a0941376ed74d7f8cb819d78df43eb9f0b7bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302619"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
- İki veya daha fazla dize değeri birlikiyor sonucu bir dize döndürür.  
+ İki veya daha fazla dize değerinin bitişinin sonucu olan bir dize döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,11 +26,11 @@ CONCAT(<str_expr1>, <str_expr2> [, <str_exprN>])
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   Diğer değerlere oluk için bir dize ifadesidir. İşlev `CONCAT` en az iki *str_expr* bağımsız değişken gerektirir.  
+   , Diğer değerleri birleştirmek için bir dize ifadesidir. İşlev `CONCAT` , en az iki *str_expr* bağımsız değişken gerektiriyor.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Dize ifadesini döndürür.  
+  Bir dize ifadesi döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
@@ -48,10 +48,10 @@ SELECT CONCAT("abc", "def") AS concat
   
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

@@ -1,6 +1,6 @@
 ---
 title: DTU'dan Sanal Çekirdeğe geçiş
-description: DTU modelinden vCore modeline geçirin. vCore'a geçiş, standart ve premium katmanlar arasında yükseltme veya düşürmeye benzer.
+description: DTU modelinden vCore modeline geçiş yapın. VCore 'a geçiş, standart ve Premium katmanları arasında yükseltme veya eski sürüme düşürme ile benzerdir.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,58 +10,58 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 03/09/2020
 ms.openlocfilehash: 693065046f92e0e9eade14c43e9942772440937d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945412"
 ---
-# <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden vCore tabanlı modele geçiş
+# <a name="migrate-from-the-dtu-based-model-to-the-vcore-based-model"></a>DTU tabanlı modelden sanal çekirdek tabanlı modele geçiş
 
 ## <a name="migrate-a-database"></a>Veritabanını geçirme
 
-Bir veritabanını DTU tabanlı satın alma modeline geçirmek, DTU tabanlı satın alma modelindeki standart ve premium hizmet katmanları arasında yükseltme veya düşürmeye benzer.
+DTU tabanlı satın alma modelinden bir veritabanını sanal çekirdek tabanlı satın alma modeline geçirmek, DTU tabanlı satın alma modelindeki standart ve Premium hizmet katmanları arasında yükseltme veya eski sürüme düşürme ile benzerdir.
 
-## <a name="migrate-databases-that-use-geo-replication"></a>Coğrafi çoğaltma kullanan veritabanlarını geçirin
+## <a name="migrate-databases-that-use-geo-replication"></a>Coğrafi çoğaltma kullanan veritabanlarını geçirme
 
-DTU tabanlı modelden vCore tabanlı satın alma modeline geçiş yapmak, standart ve premium hizmet katmanlarındaki veritabanları arasındaki coğrafi çoğaltma ilişkilerini yükseltmeye veya düşürmeye benzer. Geçiş sırasında, coğrafi çoğaltmayı durdurmanız gerekmese de aşağıdaki sıralama kurallarına uymanız gerekir:
+DTU tabanlı modelden sanal çekirdek tabanlı satın alma modeline geçiş yapmak, standart ve Premium hizmet katmanlarındaki veritabanları arasında coğrafi çoğaltma ilişkilerini yükseltmekle veya eski sürüme düşürmeye benzer. Geçiş sırasında Coğrafi çoğaltmayı durdurmanız gerekmez, ancak şu sıralama kurallarını izlemeniz gerekir:
 
-- Yükseltme yaparken, önce ikincil veritabanını yükseltmeniz ve ardından birincil veritabanını yükseltmeniz gerekir.
-- Düşürme yaparken, sırayı tersine çevirin: önce birincil veritabanını düşürmeniz, sonra ikincil veritabanını düşürmeniz gerekir.
+- Yükseltme sırasında öncelikle ikincil veritabanını yükseltmeniz ve ardından birincili yükseltmeniz gerekir.
+- Eski sürüme düşürme sırasında sırayı tersine çevirin: önce birincil veritabanını indirgemeniz ve sonra ikincili indirgemeniz gerekir.
 
-İki elastik havuz arasında coğrafi çoğaltma kullanırken, bir havuzu birincil, diğerini ikincil havuz olarak belirlemenizi öneririz. Bu durumda, elastik havuzları geçirdiğinizde aynı sıralama kılavuzunu kullanmalısınız. Ancak, hem birincil hem de ikincil veritabanları içeren elastik havuzları varsa, birincil olarak daha yüksek kullanım ile havuz tedavi ve buna göre sıralama kurallarına uyun.  
+İki elastik havuz arasında coğrafi çoğaltma kullanırken, bir havuzu birincil ve diğeri, ikincil olarak atamanız önerilir. Bu durumda, elastik havuzları geçirirken aynı sıralama kılavuzunu kullanmanız gerekir. Ancak, hem birincil hem de ikincil veritabanları içeren elastik havuzlarınız varsa, havuzu birincil olarak daha yüksek kullanım ile değerlendirin ve sıralama kurallarını uygun şekilde izleyin.  
 
-Aşağıdaki tablo, belirli geçiş senaryoları için kılavuz sağlar:
+Aşağıdaki tablo, belirli geçiş senaryoları için rehberlik sağlar:
 
-|Geçerli hizmet katmanı|Hedef servis katmanı|Geçiş türü|Kullanıcı eylemleri|
+|Geçerli hizmet katmanı|Hedef hizmet katmanı|Geçiş türü|Kullanıcı eylemleri|
 |---|---|---|---|
-|Standart|Genel amaçlı|Lateral|Herhangi bir sırada göç edebilir, ancak uygun vCore boyutlandırma* sağlamanız gerekir|
-|Premium|İş kritik|Lateral|Herhangi bir sırada göç edebilir, ancak uygun vCore boyutlandırma* sağlamanız gerekir|
-|Standart|İş kritik|Yükseltme|Önce ikincil geçiş yapmalı|
-|İş kritik|Standart|Eski sürüme düşür|Önce birincil geçiş gerekir|
-|Premium|Genel amaçlı|Eski sürüme düşür|Önce birincil geçiş gerekir|
-|Genel amaçlı|Premium|Yükseltme|Önce ikincil geçiş yapmalı|
-|İş kritik|Genel amaçlı|Eski sürüme düşür|Önce birincil geçiş gerekir|
-|Genel amaçlı|İş kritik|Yükseltme|Önce ikincil geçiş yapmalı|
+|Standart|Genel amaçlı|Geni|Herhangi bir sırada geçirebilir, ancak uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir *|
+|Premium|İş açısından kritik|Geni|Herhangi bir sırada geçirebilir, ancak uygun sanal çekirdek boyutlandırmayı sağlamak için gerekir *|
+|Standart|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
+|İş açısından kritik|Standart|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Premium|Genel amaçlı|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Genel amaçlı|Premium|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
+|İş açısından kritik|Genel amaçlı|Eski sürüme düşür|Önce birincil önce geçirilmesi gerekir|
+|Genel amaçlı|İş açısından kritik|Yükseltme|Önce ikinciye geçirilmesi gerekiyor|
 ||||
 
-\*Kural olarak, standart katmandaki her 100 DTÜ en az 1 vCore gerektirir ve premium katmandaki her 125 DTÜ en az 1 vCore gerektirir. Daha fazla bilgi için [vCore tabanlı satın alma modeline](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model)bakın.
+\*Thumb kuralı olarak standart katmandaki her 100 DTU en az 1 sanal çekirdek gerektirir ve Premium katmandaki her 125 DTU en az 1 sanal çekirdek gerektirir. Daha fazla bilgi için bkz. [sanal çekirdek tabanlı satın alma modeli](https://docs.microsoft.com/azure/sql-database/sql-database-purchase-models#vcore-based-purchasing-model).
 
-## <a name="migrate-failover-groups"></a>Başarısız grupları geçir
+## <a name="migrate-failover-groups"></a>Yük devretme gruplarını geçirme
 
-Birden çok veritabanı olan failover gruplarının geçişi, birincil ve ikincil veritabanlarının tek tek geçişini gerektirir. Bu işlem sırasında, aynı hususlar ve sıralama kuralları geçerlidir. Veritabanları vCore tabanlı satın alma modeline dönüştürüldükten sonra, başarısız grup aynı ilke ayarlarıyla etkin kalır.
+Birden çok veritabanına sahip yük devretme gruplarının geçirilmesi, birincil ve ikincil veritabanlarının tek tek geçirilmesini gerektirir. Bu işlem sırasında, aynı noktalar ve sıralama kuralları da geçerlidir. Veritabanları sanal çekirdek tabanlı satın alma modeline dönüştürüldükten sonra, yük devretme grubu aynı ilke ayarları ile geçerli olmaya devam edecektir.
 
 ### <a name="create-a-geo-replication-secondary-database"></a>Coğrafi çoğaltma ikincil veritabanı oluşturma
 
-Yalnızca birincil veritabanı için kullandığınız aynı hizmet katmanını kullanarak bir coğrafi çoğaltma ikincil veritabanı (bir jeo-ikincil) oluşturabilirsiniz. Yüksek günlük oluşturma oranına sahip veritabanları için, birincil işlem boyutuyla aynı işlem boyutuna sahip jeo-ikincil veritabanı oluşturmanızı öneririz.
+Yalnızca birincil veritabanı için kullandığınız hizmet katmanını kullanarak coğrafi çoğaltma ikincil veritabanı (coğrafi-ikincil) oluşturabilirsiniz. Yüksek günlük oluşturma hızına sahip veritabanları için, birincil ile aynı işlem boyutuyla coğrafi ikincil oluşturmanız önerilir.
 
-Tek bir birincil veritabanı için elastik havuzda bir jeo-ikincil `maxVCore` oluşturuyorsanız, havuz ayarının birincil veritabanının bilgi işlem boyutuyla eşleştiğinden emin olun. Başka bir elastik havuzdaki birincil bir birincil için bir jeo-ikincil oluşturuyorsanız, havuzların aynı `maxVCore` ayarlara sahip olması önerilir.
+Tek bir birincil veritabanı için elastik havuzda bir coğrafi ikincil oluşturuyorsanız, havuz `maxVCore` ayarının birincil veritabanının işlem boyutuyla eşleştiğinden emin olun. Başka bir elastik havuzda birincil için bir coğrafi bölge oluşturuyorsanız, havuzların aynı `maxVCore` ayarlara sahip olması önerilir.
 
-## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>DTU tabanlı bir veritabanını vCore tabanlı veritabanına dönüştürmek için veritabanı kopyasını kullanma
+## <a name="use-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>DTU tabanlı bir veritabanını sanal çekirdek tabanlı veritabanına dönüştürmek için veritabanı kopyasını kullanma
 
-DTU tabanlı işlem boyutuna sahip herhangi bir veritabanını, hedef işlem boyutu kaynak veritabanının maksimum veritabanı boyutunu desteklediği sürece kısıtlamalar veya özel sıralama olmaksızın vCore tabanlı işlem boyutuna sahip bir veritabanına kopyalayabilirsiniz. Veritabanı kopyası, kopyalama işleminin başlangıç saati itibariyle verilerin anlık görüntüsünü oluşturur ve kaynak ve hedef arasındaki verileri eşitlemez.
+Hedef işlem boyutu, kaynak veritabanının en büyük veritabanı boyutunu desteklediği sürece, DTU tabanlı işlem boyutu olan bir veritabanını, kısıtlama olmadan veya özel sıralamaya sahip bir veritabanı olarak bir veritabanına kopyalayabilirsiniz. Veritabanı kopyalama işlemi, kopyalama işleminin başlangıç saatinden itibaren verilerin bir anlık görüntüsünü oluşturur ve kaynak ile hedef arasında veri eşitlenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Tek veritabanları için kullanılabilen belirli bilgi işlem boyutları ve depolama boyutu seçenekleri [için, tek veritabanları için SQL Database vCore tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md)bakın.
-- Elastik havuzlar için kullanılabilen belirli bilgi işlem boyutları ve depolama boyutu seçenekleri [için, elastik havuzlar için SQL Database vCore tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-elastic-pools.md)bakın.
+- Tek veritabanları için kullanılabilen belirli işlem boyutları ve depolama boyutu seçimleri için bkz. [tek veritabanları Için SQL veritabanı sanal çekirdek tabanlı kaynak sınırları](sql-database-vcore-resource-limits-single-databases.md).
+- Elastik havuzlara yönelik belirli işlem boyutları ve depolama boyutu seçimleri için bkz. [elastik havuzlar Için SQL veritabanı sanal çekirdek tabanlı kaynak sınırları](sql-database-vcore-resource-limits-elastic-pools.md).

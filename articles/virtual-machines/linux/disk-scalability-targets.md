@@ -1,6 +1,6 @@
 ---
 title: Linux VM diskleri için ölçeklenebilirlik ve performans hedefleri
-description: Linux çalıştıran Sanal Makinelere bağlı sanal makine diskleri için ölçeklenebilirlik ve performans hedefleri hakkında bilgi edinin.
+description: Linux çalıştıran VM 'lere bağlı sanal makine diskleri için ölçeklenebilirlik ve performans hedefleri hakkında bilgi edinin.
 author: roygara
 ms.author: rogarana
 ms.date: 11/15/2017
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.openlocfilehash: 7298b54d94effaa5bd7e600ec2d8d1045aa263ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970443"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux VM diskleri için ölçeklenebilirlik ve performans hedefleri
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Ek ayrıntılar için [Linux VM boyutlarına](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bakın.
+Daha fazla bilgi için bkz. [LINUX VM boyutları](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ## <a name="managed-virtual-machine-disks"></a>Yönetilen sanal makine diskleri
 
-Yıldız işaretiyle gösterilen boyutlar şu anda önizlemededir. Hangi bölgelerde kullanılabilir olduklarını öğrenmek için [SSS'mize](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) bakın.
+Yıldız işaretiyle belirtilen boyutlar Şu anda önizlemededir. Hangi bölgelere kullanılabildiğini öğrenmek için bkz. [SSS](faq-for-disks.md#new-disk-sizes-managed-and-unmanaged) .
 
 [!INCLUDE [azure-storage-limits-vm-disks-managed](../../../includes/azure-storage-limits-vm-disks-managed.md)]
 

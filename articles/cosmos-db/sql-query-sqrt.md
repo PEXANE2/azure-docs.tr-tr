@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde SQRT
-description: Azure Cosmos DB'de SQL sistem fonksiyonu SQRT hakkında bilgi edinin.
+description: Azure Cosmos DB 'de SQL sistem işlevi SQRT hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3d5452e5ba650b487acff03f622cdbb170275dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303469"
 ---
 # <a name="sqrt-azure-cosmos-db"></a>SQRT (Azure Cosmos DB)
- Belirtilen sayısal değerin kare kökünü verir.  
+ Belirtilen sayısal değerin kare kökünü döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ SQRT(<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Sayısal bir ifade verir.  
+  Sayısal bir ifade döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, 1-3 sayıların kare köklerini döndürür.  
+  Aşağıdaki örnek 1-3 sayılarının kare köklerinin sayısını döndürür.  
   
 ```sql
 SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3  
@@ -48,10 +48,10 @@ SELECT SQRT(1) AS s1, SQRT(2.0) AS s2, SQRT(3) AS s3
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

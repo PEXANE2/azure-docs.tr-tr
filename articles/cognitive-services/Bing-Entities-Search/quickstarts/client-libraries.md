@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlatma: Bing Entity Search istemci kitaplığını kullanma'
+title: 'Hızlı başlangıç: Bing Varlık Arama istemci kitaplığını kullanma'
 titleSuffix: Azure Cognitive Services
-description: Varlık Arama API' si, arama yeteneklerini uygulamalarınız için entegre etmeyi kolaylaştıran istemci kitaplıkları sunar. Arama istekleri göndermeye başlamak ve sonuçları geri almak için bu hızlı başlangıcı kullanın.
+description: Varlık Arama API 'SI, arama yeteneklerini uygulamalarınızın tümleştirmesini kolaylaştıran istemci kitaplıkları sunar. Arama istekleri göndermeye başlamak için bu hızlı başlangıcı kullanın ve sonuçları geri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/06/2020
 ms.author: aahi
 ms.openlocfilehash: 206d3514e231fdedc6c13592da0c51d2f93bbe84
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79136756"
 ---
-# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Hızlı başlatma: Bing Entity Search istemci kitaplığını kullanma
+# <a name="quickstart-use-the-bing-entity-search-client-library"></a>Hızlı başlangıç: Bing Varlık Arama istemci kitaplığını kullanma
 
 ::: zone pivot="programming-language-csharp"
 

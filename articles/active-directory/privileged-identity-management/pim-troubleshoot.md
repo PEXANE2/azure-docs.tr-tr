@@ -1,6 +1,6 @@
 ---
-title: Ayrıcalıklı Kimlik Yönetimi ile ilgili bir sorunu giderme - Azure Active Directory | Microsoft Dokümanlar
-description: Azure AD Ayrıcalıklı Kimlik Yönetimi (PIM) 'deki rollerle sistem hatalarını nasıl giderdiğinizi öğrenin.
+title: Privileged Identity Management ile ilgili sorun giderme-Azure Active Directory | Microsoft Docs
+description: Azure AD Privileged Identity Management (PıM) içindeki rollerle sistem hatalarını nasıl giderebileceğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,32 +14,32 @@ ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299695"
 ---
-# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi ile ilgili bir sorunu giderme
+# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>Privileged Identity Management sorun giderme
 
-Azure Etkin Dizin (Azure AD)'de Ayrıcalıklı Kimlik Yönetimi (PIM) ile ilgili bir sorun mu yaşıyorsunuz? Aşağıdaki bilgiler, işleri yeniden çalıştırmanıza yardımcı olabilir.
+Azure Active Directory (Azure AD) içinde Privileged Identity Management (PıM) ile ilgili bir sorun var mı? Aşağıdaki bilgiler, yeniden çalışan işlemleri almanıza yardımcı olabilir.
 
 ## <a name="access-to-azure-resources-denied"></a>Azure kaynaklarına erişim reddedildi
 
 ### <a name="problem"></a>Sorun
 
-Azure kaynağının etkin sahibi veya kullanıcı erişim yöneticisi olarak, kaynağınızı Ayrıcalıklı Kimlik Yönetimi içinde görebilirsiniz, ancak uygun bir atama yapmak veya kaynaktan rol atamaları listesini görüntülemek gibi herhangi bir eylem gerçekleştiremezsiniz genel bakış sayfası. Bu eylemlerden herhangi biri yetkilendirme hatasıyla sonuçlanır.
+Bir Azure kaynağı için etkin bir sahip veya Kullanıcı erişimi Yöneticisi olarak, kaynağınızı Privileged Identity Management içinde görebilir, ancak uygun bir atama yapma veya kaynağa genel bakış sayfasından rol atamalarının bir listesini görüntüleme gibi işlemleri gerçekleştiremeyebilirsiniz. Bu eylemlerin herhangi biri bir yetkilendirme hatasına neden olur.
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, PIM hizmet sorumlusunun Kullanıcı Erişim Yöneticisi rolü yanlışlıkla abonelikten kaldırıldığında olabilir. Ayrıcalıklı Kimlik Yönetimi hizmetinin Azure kaynaklarına erişebilmesi için, MS-PIM hizmet sorumlusunun Azure aboneliği yerine Her zaman [Kullanıcı Erişim Yöneticisi rolüne](../../role-based-access-control/built-in-roles.md#user-access-administrator) atanmış olması gerekir.
+Bu sorun, PıM hizmeti sorumlusu için Kullanıcı erişimi yönetici rolü yanlışlıkla aboneliğinden kaldırıldığında meydana gelebilir. Privileged Identity Management hizmetinin Azure kaynaklarına erişebilmesi için, MS-PıM hizmet sorumlusuna her zaman Azure aboneliği üzerinden [Kullanıcı erişimi yönetici rolü](../../role-based-access-control/built-in-roles.md#user-access-administrator) atanmalıdır.
 
 ### <a name="resolution"></a>Çözüm
 
-Kullanıcı Erişim Yöneticisi rolünü abonelik düzeyinde Ayrıcalıklı kimlik yönetimi hizmeti ana adına (MS-PIM) atayın. Bu atama, Ayrıcalıklı kimlik yönetimi hizmetinin Azure kaynaklarına erişmesine izin vermelidir. Rol, gereksinimlerinize bağlı olarak yönetim grubu düzeyinde veya abonelik düzeyinde atanabilir. Daha fazla bilgi hizmeti ilkeleri için bir [role uygulama atama'ya](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)bakın.
+Kullanıcı erişimi Yöneticisi rolünü, abonelik düzeyinde ayrıcalıklı kimlik yönetimi hizmet asıl adına (MS – PıM) atayın. Bu atama, ayrıcalıklı kimlik yönetimi hizmetinin Azure kaynaklarına erişmesine izin verilmelidir. Rol, gereksinimlerinize bağlı olarak bir yönetim grubu düzeyinde veya abonelik düzeyinde atanabilir. Daha fazla bilgi hizmet sorumlusu için bkz. [bir role uygulama atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ayrıcalıklı Kimlik Yönetimi'ni kullanmak için lisans gereksinimleri](subscription-requirements.md)
+- [Privileged Identity Management kullanılacak lisans gereksinimleri](subscription-requirements.md)
 - [Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 - [Privileged Identity Management'ı dağıtma](pim-deployment-plan.md)

@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Pilot Azure AD Varolan bir eşitlenmiş AD ormanı için bulut sağlama
-description: Öğretici.
+title: Öğretici-mevcut eşitlenmiş bir AD Ormanı için pilot Azure AD Connect bulut sağlama
+description: öğreticide.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,214 +12,214 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aba42e6bd9b11e47d793219c0ff06b9177d609f5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78298828"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Mevcut bir eşitlenmiş AD ormanı için pilot bulut sağlama 
 
-Bu öğretici, Azure Active Directory (Azure AD) Connect eşitlemeyi kullanarak zaten senkronize edilmiş bir test Active Directory ormanı için bulut sağlama da size yardımcı olur.
+Bu öğreticide, zaten Azure Active Directory (Azure AD) Connect Sync kullanılarak eşitlenmiş bir test Active Directory ormanı için bulut sağlamasının nasıl ele aldığı anlatılmaktadır.
 
-![Oluşturma](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Oluştur](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 Bu öğreticiyi denemeden önce aşağıdaki öğeleri göz önünde bulundurun:
-1. Bulut sağlamanın temellerini bildiğinizden emin olun. 
-2. Azure AD Connect eşitleme sürümünü 1.4.32.0 veya daha sonra çalıştırdığınızdan ve eşitleme kurallarını belgelenmiş şekilde yapılandırdığınızdan emin olun. Pilot uygulama yaparken, Azure AD Connect eşitleme kapsamından bir test OU veya grubu kaldırıyor olursunuz. Nesneleri kapsam dışına taşımak, Azure AD'de bu nesnelerin silinmesine neden olabilir. Kullanıcı nesneleri söz konusu olduğunda, Azure AD'deki nesneler yumuşak silinir ve geri yüklenebilir. Grup nesneleri söz konusu olduğunda, Azure AD'deki nesneler zor silinir ve geri yüklenemez. Azure AD Connect eşitlemesinde, pilot uygulama senaryosu durumunda silinmesini önleyecek yeni bir bağlantı türü tanıtıldı. 
-3. Pilot kapsamındaki nesnelerin ms-ds-tutarlılıkGUID'in doldurulmasını, böylece bulut sağlamanın nesnelerle sert eşleştiğinden emin olun. 
+1. Bulut sağlama temelleri hakkında bilgi sahibi olduğunuzdan emin olun. 
+2. Azure AD Connect Sync sürüm 1.4.32.0 veya üstünü kullandığınızdan ve eşitleme kurallarını belgelenen şekilde yapılandırdığınızdan emin olun. Ne zaman bir test OU 'su veya grubu Azure AD Connect eşitleme kapsamından kaldıracaksınız. Nesneleri kapsam dışına taşımak, Azure AD 'de bu nesnelerin silinmesine yol açar. Kullanıcı nesneleri söz konusu olduğunda, Azure AD 'deki nesneler geçici olarak silinir ve geri yüklenebilir. Grup nesneleri söz konusu olduğunda, Azure AD 'deki nesneler sabit olarak silinir ve geri yüklenemez. Azure AD Connect eşitlemede yeni bir bağlantı türü tanıtılmıştır, bu, bir pilot senaryo durumunda silmeyi engeller. 
+3. Pilot kapsamdaki nesnelerin, bulut sağlama ile nesnelerle eşleştiğinden emin olmak için ms-DS-ımıbu GUID doldurulmuş olduğundan emin olun. 
 
    > [!NOTE]
-   > Azure AD Connect eşitleme, grup nesneleri için varsayılan olarak *ms-ds tutarlılığıGUID'i* doldurmaz.
+   > Azure AD Connect eşitleme, Grup nesneleri için varsayılan olarak *MS-DS-ımuz GUID 'yi* doldurmaz.
 
-4. Bu gelişmiş bir senaryo. Bu öğreticide belgelenen adımları tam olarak izlediğinizi emin olun.
+4. Bu gelişmiş bir senaryodur. Bu öğreticide açıklanan adımları tam olarak izlediğinizden emin olun.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu öğreticinin tamamlanması için gerekli ön koşullar aşağıda dır.
-- Azure AD Connect eşitleme sürümü 1.4.32.0 veya sonraki sürümiçeren bir test ortamı
-- Eşitleme kapsamında olan ve pilot tarafından kullanılabilen bir OU veya grup. Küçük bir nesne kümesiyle başlamanızı öneririz.
-- Windows Server 2012 R2 veya daha sonra çalışan ve sağlama aracısını barındıran bir sunucu.  Bu, Azure AD Connect sunucusuyla aynı sunucu olamaz.
-- AAD Connect eşitleme için kaynak çapa ya *objectGuid* veya *ms-ds-consistencyGUID* olmalıdır
+Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
+- Azure AD Connect Sync sürüm 1.4.32.0 veya üzeri bir test ortamı
+- Eşitleme kapsamındaki bir OU veya grup ve pilot kullanılabilir. Küçük bir nesne kümesiyle başlamasını öneririz.
+- Sağlama aracısını barındıracak Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu.  Bu, Azure AD Connect sunucusuyla aynı sunucu olamaz.
+- AAD Connect eşitlemesine ait kaynak bağlantısı, *Objectguıd* veya *MS-DS-ımdsguıd* olmalıdır
 
-## <a name="update-azure-ad-connect"></a>Azure AD Bağlantısını Güncelleştir
+## <a name="update-azure-ad-connect"></a>Güncelleştirme Azure AD Connect
 
-En az olarak, Azure AD 1.4.32.0 [bağlamanız](https://www.microsoft.com/download/details.aspx?id=47594) gerekir. Azure AD Connect eşitlemeyi güncelleştirmek [için Azure AD Connect'teki adımları tamamlayın: En son sürüme yükseltin.](../hybrid/how-to-upgrade-previous-version.md)  
+Minimum olarak, [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0 sahip olmanız gerekir. Azure AD Connect eşitlemesini güncelleştirmek için Azure AD Connect şu adımları uygulayın [: en son sürüme yükseltme](../hybrid/how-to-upgrade-previous-version.md).  
 
-## <a name="stop-the-scheduler"></a>Zamanlayıcıyı durdurun
-Azure AD Connect eşitleme, şirket içi dizininizde bir zamanlayıcı kullanarak meydana gelen değişiklikleri eşitler. Özel kuralları değiştirmek ve eklemek için, siz üzerinde çalışırken eşitlemelerin çalışmaması için zamanlayıcıyı devre dışı katmak istiyorsunuz.  Aşağıdaki adımları kullanın:
+## <a name="stop-the-scheduler"></a>Zamanlayıcıyı durdur
+Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizde gerçekleşen değişiklikleri eşitler. Özel kuralları değiştirmek ve eklemek için, bu Zamanlayıcı 'yı devre dışı bırakmak istiyorsunuz. bu sayede, bu işlem üzerinde çalışırken eşitlemeler çalışmaz.  Aşağıdaki adımları kullanın:
 
-1.  Azure AD Connect'i çalıştıran sunucuda PowerShell'i Yönetim Ayrıcalıklarıyla eşitleyin.
-2.  `Stop-ADSyncSyncCycle` öğesini çalıştırın.  Enter tuşuna basın.
+1.  Azure AD Connect çalıştıran sunucuda, açık PowerShell 'i yönetici ayrıcalıklarıyla eşitleyin.
+2.  `Stop-ADSyncSyncCycle` öğesini çalıştırın.  ENTER tuşuna basın.
 3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` öğesini çalıştırın.
 
 >[!NOTE] 
->AAD Connect eşitlemi için kendi özel zamanlayıcınızı çalıştırıyorsanız, lütfen zamanlayıcıyı devre dışı edin. 
+>AAD Connect eşitleme için kendi özel zamanlayıcıyı çalıştırıyorsanız lütfen Zamanlayıcıyı devre dışı bırakın. 
 
-## <a name="create-custom-user-inbound-rule"></a>Özel kullanıcı gelen kuralı oluşturma
+## <a name="create-custom-user-inbound-rule"></a>Özel Kullanıcı gelen kuralı oluştur
 
- 1. Masaüstündeki uygulama menüsünden senkronizasyon düzenleyicisini aşağıda gösterildiği gibi başlatın:</br>
- ![Senkronizasyon Kural Düzenleyicisi Menüsü](media/how-to-cloud-custom-user-rule/user8.png)</br>
+ 1. Aşağıda gösterildiği gibi, masaüstündeki uygulama menüsünden eşitleme düzenleyicisini başlatın:</br>
+ ![Eşitleme kuralı Düzenleyicisi menüsü](media/how-to-cloud-custom-user-rule/user8.png)</br>
  
- 2. Yön için açılan listeden **Gelen'i** seçin ve **yeni kural ekle'ye**tıklayın.
+ 2. Yön için açılan listeden **gelen** ' ı seçin ve **Yeni kural ekle**' ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user1.png)</br>
  
- 3. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri'yi**tıklatın :
+ 3. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
-    **Adı:** Kurala anlamlı bir ad verin<br>
-    **Açıklama:** Anlamlı bir açıklama ekleme<br>
-    **Bağlı Sistem:** Özel eşitleme kuralını yazdığınız AD bağlayıcısını seçin<br>
-    **Bağlı Sistem Nesne Türü:** Kullanıcı<br>
-    **Metaverse Nesne Türü:** Kişi<br>
-    **Bağlantı Türü:** Katılın<br>
-    **Öncelik:** Sistemde benzersiz bir değer sağlama<br>
-    **Etiket:** Bunu boş bırak.<br>
+    **Ad:** Kurala anlamlı bir ad verin<br>
+    **Açıklama:** Anlamlı bir açıklama ekleyin<br>
+    **Bağlı sistem:** Özel eşitleme kuralı yazarken AD bağlayıcısını seçin<br>
+    **Bağlı sistem nesne türü:** Kullanıcısını<br>
+    **Meta veri deposu nesne türü:** Kişiler<br>
+    **Bağlantı türü:** Ayrılma<br>
+    **Öncelik:** Sistemde benzersiz bir değer sağlayın<br>
+    **Etiket:** Bunu boş bırakın<br>
     ![Özel kural](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. Kapsam **filtresi** sayfasında, pilotun kapalı olmasını istediğiniz OU veya güvenlik grubunu girin.  OU'yu filtrelemek için, ayırt edilen adın OU bölümünü ekleyin. Bu kural, bu OU'da bulunan tüm kullanıcılariçin geçerliolacaktır.  Yani, DN "OU=CPUsers,DC=contoso,DC=com ile biterse, bu filtreyi eklersiniz.  Ardından **İleri**’ye tıklayın. 
+ 4. **Kapsam filtresi** sayfasında, pilot uygulamayı açmak istediğiniz OU veya güvenlik grubunu girin.  OU 'ya filtre uygulamak için, ayırt edici adın OU kısmını ekleyin. Bu kural, o OU 'da bulunan tüm kullanıcılara uygulanır.  Yani, DN "OU = CPUsers, DC = contoso, DC = com" ile sonlanıyorsa, bu filtreyi eklersiniz.  Ardından **İleri**’ye tıklayın. 
 
     |Kural|Öznitelik|İşleç|Değer|
     |-----|----|----|-----|
-    |Kapsam OU|Dn|ENDSWITH|OU'nun seçkin adı.|
-    |Kapsam grubu||İsÜYE|Güvenlik grubunun seçkin adı.|
+    |Kapsamı bulunan OU|DEĞERI|ENDSWITH|OU 'nun ayırt edici adı.|
+    |Kapsam grubu||ISMEMBEROF|Güvenlik grubunun ayırt edici adı.|
 
     ![Özel kural](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
- 5. **Birleştirme** kuralları sayfasında **İleri'yi**tıklatın.
- 6. **Dönüşümler** sayfasında, Sabit dönüşüm ekleyin: cloudNoFlow özniteliğine doğru akış. **Ekle**’ye tıklayın.
+ 5. Kural **Birleştir** sayfasında, **İleri**' ye tıklayın.
+ 6. **Dönüşümler** sayfasında, sabit bir dönüşüm ekleyin: cloudNoFlow özniteliğine akış doğru. **Ekle**'ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
-Tüm nesne türleri (kullanıcı, grup ve ilgili kişi) için aynı adımların izlenmesi gerekir. Yapılandırılan AD Bağlayıcısı / AD ormanı başına adımları yineleyin. 
+Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup ve kişi). Yapılandırılmış AD Bağlayıcısı/AD Ormanı başına adımları yineleyin. 
 
-## <a name="create-custom-user-outbound-rule"></a>Özel kullanıcı giden kuralı oluşturma
+## <a name="create-custom-user-outbound-rule"></a>Özel Kullanıcı giden kuralı oluştur
 
- 1. Yön için açılan listeden **Giden'i** seçin ve **Ekle kuralına**tıklayın.
+ 1. Yön için açılan listeden **giden** ' ı seçin ve **Kural Ekle**' ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user5.png)</br>
  
- 2. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri'yi**tıklatın :
+ 2. **Açıklama** sayfasında, aşağıdakileri girin ve **İleri**' ye tıklayın:
 
-    **Adı:** Kurala anlamlı bir ad verin<br>
-    **Açıklama:** Anlamlı bir açıklama ekleme<br>
-    **Bağlı Sistem:** Özel eşitleme kuralını yazdığınız AAD bağlayıcısını seçin<br>
-    **Bağlı Sistem Nesne Türü:** Kullanıcı<br>
-    **Metaverse Nesne Türü:** Kişi<br>
-    **Bağlantı Türü:** JoinNoFlow<br>
-    **Öncelik:** Sistemde benzersiz bir değer sağlama<br>
-    **Etiket:** Bunu boş bırak.<br>
+    **Ad:** Kurala anlamlı bir ad verin<br>
+    **Açıklama:** Anlamlı bir açıklama ekleyin<br>
+    **Bağlı sistem:** Özel eşitleme kuralını yazmakta olduğunuz AAD bağlayıcısını seçin<br>
+    **Bağlı sistem nesne türü:** Kullanıcısını<br>
+    **Meta veri deposu nesne türü:** Kişiler<br>
+    **Bağlantı türü:** JoinNoFlow<br>
+    **Öncelik:** Sistemde benzersiz bir değer sağlayın<br>
+    **Etiket:** Bunu boş bırakın<br>
     
     ![Özel kural](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. Kapsam **filtresi** sayfasında **cloudNoFlow** eşit **True'yu**seçin. Ardından **İleri**’ye tıklayın.
+ 3. **Kapsam filtresi** sayfasında **cloudnoflow** eşittir **true**' ı seçin. Ardından **İleri**’ye tıklayın.
  ![Özel kural](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
- 4. **Birleştirme** kuralları sayfasında **İleri'yi**tıklatın.
- 5. **Dönüşümler** sayfasında **Ekle'yi**tıklatın.
+ 4. Kural **Birleştir** sayfasında, **İleri**' ye tıklayın.
+ 5. **Dönüşümler** sayfasında, **Ekle**' ye tıklayın.
 
-Tüm nesne türleri (kullanıcı, grup ve ilgili kişi) için aynı adımların izlenmesi gerekir.
+Tüm nesne türleri için aynı adımların izlenmesi gerekir (Kullanıcı, Grup ve kişi).
 
-## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect sağlama aracısını yükleme
-1. Kurumsal yönetici izinleri ile kullanacağınız sunucuda oturum açın.  [Temel AD ve Azure ortamı](tutorial-basic-ad-azure.md) öğreticisini kullanıyorsanız, bu CP1 olacaktır.
-2. Azure AD Connect bulut sağlama aracısını [burada](how-to-install.md#install-the-agent)belirtilen adımları kullanarak indirin.
-3. Azure AD Connect bulut sağlama (AADConnectProvisioningAgent.Installer) çalıştırın
-3. Sıçrama ekranında, lisans koşullarını **kabul edin** ve **Yükle'yi**tıklatın.</br>
+## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect sağlama aracısını yükler
+1. Kurumsal Yönetici izinleriyle kullanacağınız sunucuda oturum açın.  [Temel ad ve Azure ortamı](tutorial-basic-ad-azure.md) öğreticisini KULLANıYORSANıZ, CP1 olacaktır.
+2. [Burada](how-to-install.md#install-the-agent)özetlenen adımları kullanarak Azure AD Connect bulutu sağlama aracısını indirin.
+3. Azure AD Connect bulut sağlamasını çalıştırın (AADConnectProvisioningAgent. Installer)
+3. Giriş ekranında, lisans koşullarını **kabul edin** ve **yükler**' e tıklayın.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install1.png)</br>
 
-4. Bu işlem tamamlandığında yapılandırma sihirbazı başlatılacaktır.  Azure AD global yönetici hesabınızla oturum açın.
-5. Etkin **Dizin Ekle** ekranında **Dizini Ekle'yi** tıklatın ve ardından Active Directory yönetici hesabınızla oturum açın.  Bu işlem şirket içi dizininizi de ekleyecektir.  **İleri**'ye tıklayın.</br>
+4. Bu işlem tamamlandıktan sonra Yapılandırma Sihirbazı başlatılır.  Azure AD Genel Yönetici hesabınızla oturum açın.
+5. **Bağlan Active Directory** ekranında, **Dizin Ekle** ' ye tıklayın ve Active Directory Yönetici hesabınızla oturum açın.  Bu işlem, şirket içi dizininizi ekleyecek.  **İleri**’ye tıklayın.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install3.png)</br>
 
-6. Yapılandırma **tam** ekranında, **Onayla'yı**tıklatın.  Bu işlem aracıyı kaydeder ve yeniden başlatacaktır.</br>
+6. **Yapılandırma Tamam** ekranında **Onayla**' ya tıklayın.  Bu işlem aracıyı kaydedip yeniden başlatacak.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install4.png)</br>
 
-7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulanmış** bir bildirim görmeniz gerekir.  **Çıkış'ı**tıklatabilirsiniz.</br>
+7. Bu işlem tamamlandıktan sonra, **başarıyla doğrulandığına** ilişkin bir uyarı görmeniz gerekir.  **Çıkış**' a tıklayabilirsiniz.</br>
 ![Hoş Geldiniz ekranı](media/how-to-install/install5.png)</br>
-8. İlk sıçrama ekranını hala **görüyorsanız, Kapat'ı**tıklatın.
+8. İlk giriş ekranını hala görüyorsanız **Kapat**' a tıklayın.
 
-## <a name="verify-agent-installation"></a>Aracı yüklemeyi doğrula
-Aracı doğrulaması Azure portalında ve aracıyı çalıştıran yerel sunucuda gerçekleşir.
+## <a name="verify-agent-installation"></a>Aracı yüklemesini doğrulama
+Aracı doğrulaması Azure portal ve aracıyı çalıştıran yerel sunucu üzerinde oluşur.
 
-### <a name="azure-portal-agent-verification"></a>Azure portal aracısı doğrulaması
-Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki adımları izleyin:
+### <a name="azure-portal-agent-verification"></a>Aracı doğrulama Azure portal
+Aracının Azure tarafından görüldüğünü doğrulamak için şu adımları izleyin:
 
 1. Azure Portal’da oturum açın.
-2. Solda Azure **Etkin Dizin'i**seçin, **Azure AD Bağlantısı'nı** tıklatın ve merkezde **sağlamayı yönet 'i (önizleme)** seçin.</br>
+2. Sol tarafta **Azure Active Directory**' ı seçin, **Azure AD Connect** ' a tıklayın ve ardından **yönetimi sağlama (Önizleme)** seçeneğini belirleyin.</br>
 ![Azure portalda](media/how-to-install/install6.png)</br>
 
-3.  Azure **AD Sağlama (önizleme)** ekranında **tüm aracıları gözden geçir'i**tıklatın.
-![Azure REKLAM Sağlama](media/how-to-install/install7.png)</br>
+3.  **Azure AD sağlama (Önizleme)** ekranında **tüm aracıları gözden geçir**' e tıklayın.
+![Azure AD sağlama](media/how-to-install/install7.png)</br>
  
-4. Şirket **içi sağlama aracıları ekranında** yüklediğiniz aracıları göreceksiniz.  Söz konusu aracının orada olduğunu ve **Devre Dışı**bırakıldığını doğrulayın.  Aracı, varsayılan ![Sağlama aracıları tarafından devre dışı bırakılır](media/how-to-install/verify1.png)</br>
+4. **Şirket içi sağlama aracıları ekranında** , yüklediğiniz aracıları görürsünüz.  Söz konusu aracının orada olduğunu ve **devre dışı**olarak işaretlendiğinden emin olun.  Aracı varsayılan ![sağlama aracıları tarafından devre dışı bırakıldı](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>Yerel sunucuda
-Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin:
+Aracının çalıştığını doğrulamak için şu adımları izleyin:
 
 1.  Yönetici hesabıyla sunucuda oturum açma
-2.  **Hizmetleri** başlatarak veya Başlat/Çalıştır/Services.msc'ye giderek açın.
-3.  **Hizmetler** altında **Microsoft Azure AD Connect Agent Updater** ve **Microsoft Azure AD Connect Provisioning Agent'ın** orada olduğundan ve durumun **çalışmadığından**emin olun.
+2.  Hizmetlere giderek veya Start/Run/Services. msc ' ye giderek **Hizmetleri** açın.
+3.  **Hizmetler** ' in altında **Microsoft Azure AD aracı Güncelleştirici** ' ı bağlama ve **Microsoft Azure AD Connect sağlama aracısının** aynı ve **çalışır**durumda olduğundan emin olun.
 ![Hizmetler](media/how-to-troubleshoot/troubleshoot1.png)
 
-## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama yı yapılandırma
-Sağlamayapılandırmak için aşağıdaki adımları kullanın:
+## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlamasını yapılandırma
+Sağlamayı yapılandırmak için aşağıdaki adımları kullanın:
 
  1. Azure AD portalında oturum açın.
- 2. **Azure Etkin Dizini'ni** tıklatın
- 3. **Azure AD Bağlantısı'nı** tıklatın
- 4. **Hükmü Yönet'i seçin (Önizleme)**
+ 2. **Azure Active Directory** tıklayın
+ 3. **Azure AD Connect** tıklayın
+ 4. **Sağlamayı Yönet (Önizleme)** seçeneğini belirleyin
  ![](media/how-to-configure/manage1.png)</br>
- 5.  **Yeni Yapılandırma'yı** tıklatın
+ 5.  **Yeni yapılandırma** ' ya tıklayın
  ![](media/tutorial-single-forest/configure1.png)</br>
- 6.  Yapılandırma ekranında, bir **Bildirim e-postası**girin, seçiciyi **Etkinleştir'e** taşıyın ve **Kaydet'e**tıklayın.
+ 6.  Yapılandırma ekranında bir **bildirim e-postası**girin, seçiciyi **etkinleştirmek** için taşıyın ve **Kaydet**' e tıklayın.
  ![](media/tutorial-single-forest/configure2.png)</br>
- 7. **Yapılandırma**altında, yapılandırma kuralının kapsamını değiştirmek için **Tüm kullanıcıları** seçin.
+ 7. **Yapılandır**' ın altında, yapılandırma kuralının kapsamını değiştirmek için **tüm kullanıcılar** ' ı seçin.
  ![](media/how-to-configure/scope2.png)</br>
- 8. Sağda, "OU=CPUsers,DC=contoso,DC=com" oluşturduğunuz belirli OU'yu içerecek şekilde kapsamı değiştirin.
+ 8. Sağ tarafta, yeni oluşturduğunuz kuruluş birimini (OU = CPUsers, DC = contoso, DC = com ") içerecek şekilde kapsamını değiştirin.
  ![](media/tutorial-existing-forest/scope2.png)</br>
- 9.  **Bitti** ve **Kaydet'i**tıklatın.
- 10. Kapsam artık tek bir kuruluş birimi olarak ayarlanmalıdır. 
+ 9.  **Bitti** ve **Kaydet**' e tıklayın.
+ 10. Kapsam artık tek bir kuruluş birimine ayarlanmalıdır. 
  ![](media/tutorial-existing-forest/scope3.png)</br>
  
 
-## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Kullanıcıların bulut sağlama tarafından sağlanmış olduğunu doğrulayın
-Artık şirket içi dizinimizde bulunan kullanıcıların senkronize edildiğini ve artık Azure AD kiracıdışında bulunduğunu doğrulayaceksiniz.  Bunun tamamlanmasının birkaç saat sürebileceğini unutmayın.  Kullanıcıların bulut sağlama ile sağlama da olduğunu doğrulamak için aşağıdaki adımları izleyin:
+## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>Kullanıcıların bulut sağlaması tarafından sağlandığını doğrulayın
+Artık şirket içi dizinimizde bulunan kullanıcıların eşitlenmiş olduğunu ve artık Azure AD kiracısında bulunduğunu doğrulayacaksınız.  Bu işlem işleminin tamamlanması birkaç saat sürebilir.  Kullanıcıların bulut sağlamaya göre sağlamasını doğrulamak için şu adımları izleyin:
 
 1. [Azure portalına](https://portal.azure.com) gidip Azure aboneliği olan bir hesapla oturum açın.
-2. Solda Azure **Etkin Dizini'ni** seçin
-3. Azure **AD Bağlantısı'na** tıklayın
-4. **Provizyon'u Yönet 'e tıklayın (önizleme)**
+2. Sol tarafta **Azure Active Directory** ' yi seçin.
+3. **Azure AD Connect** tıklayın
+4. **Sağlamayı yönetme (Önizleme)** seçeneğine tıklayın
 5. **Günlükler** düğmesine tıklayın
-6. Kullanıcının bulut sağlama tarafından sağlanmış olduğunu doğrulamak için bir kullanıcı adı arama
+6. Kullanıcının bulut sağlaması tarafından sağlandığını doğrulamak için bir Kullanıcı adı arayın
 
-Ayrıca, kullanıcının ve grubun Azure AD'de olduğunu da doğrulayabilirsiniz.
+Ayrıca, Azure AD 'de Kullanıcı ve grubun mevcut olduğunu doğrulayabilirsiniz.
 
-## <a name="start-the-scheduler"></a>Zamanlayıcıyı başlatın
-Azure AD Connect eşitleme, şirket içi dizininizde bir zamanlayıcı kullanarak meydana gelen değişiklikleri eşitler. Artık kuralları değiştirdiğinize göre, zamanlayıcıyı yeniden başlatabilirsiniz.  Aşağıdaki adımları kullanın:
+## <a name="start-the-scheduler"></a>Zamanlayıcıyı başlatma
+Azure AD Connect eşitleme, bir Zamanlayıcı kullanarak şirket içi dizininizde gerçekleşen değişiklikleri eşitler. Artık kuralları değiştirdiğimize göre, Scheduler 'ı yeniden başlatabilirsiniz.  Aşağıdaki adımları kullanın:
 
-1.  Azure AD Connect çalıştıran sunucuda PowerShell'i Yönetim Ayrıcalıklarıyla eşitle
+1.  Azure AD Connect çalıştıran sunucuda, açık PowerShell 'i yönetici ayrıcalıklarıyla eşitleyin
 2.  `Set-ADSyncScheduler -SyncCycleEnabled $true` öğesini çalıştırın.
-3.  `Start-ADSyncSyncCycle` öğesini çalıştırın.  Enter tuşuna basın.  
+3.  `Start-ADSyncSyncCycle` öğesini çalıştırın.  ENTER tuşuna basın.  
 
 >[!NOTE] 
->AAD Connect eşitlemi için kendi özel zamanlayıcınızı çalıştırıyorsanız, lütfen zamanlayıcıyı etkinleştirin. 
+>AAD Connect eşitleme için kendi özel zamanlayıcıyı çalıştırıyorsanız lütfen zamanlayıcıyı etkinleştirin. 
 
 ## <a name="something-went-wrong"></a>Bir sorun oluştu
-Pilotun beklendiği gibi çalışmaması durumunda, aşağıdaki adımları izleyerek Azure AD Connect eşitleme kurulumuna geri dönebilirsiniz:
-1.  Azure portalında sağlama yapılandırmasını devre dışı kılabilir. 
-2.  Eşitleme Kuralı Düzenleyicisi aracını kullanarak Bulut Sağlama için oluşturulan tüm özel eşitleme kurallarını devre dışı kınla. Devre dışı bırakma, tüm bağlayıcılar üzerinde tam eşitleme neden olmalıdır.
+Pilot 'ın beklendiği gibi çalışmayolmaması durumunda aşağıdaki adımları izleyerek Azure AD Connect eşitleme kurulumuna geri dönebilirsiniz:
+1.  Azure portal sağlama yapılandırmasını devre dışı bırakın. 
+2.  Eşitleme kuralı Düzenleyicisi aracını kullanarak bulut sağlaması için oluşturulan tüm özel eşitleme kurallarını devre dışı bırakın. Devre dışı bırakma, tüm bağlayıcılarda tam eşitlemeye neden olmalıdır.
 
-## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Pilot OU'yu hariç tutmak için Azure AD Connect eşitlemesini yapılandırın
-Pilot OU kullanıcılarının bulut sağlama tarafından başarıyla yönetildiğini doğruladıktan sonra, yukarıda oluşturulan pilot OU'yu hariç tutmak için Azure AD Connect'i yeniden yapılandırabilirsiniz.  Bulut sağlama aracısı, bu kullanıcılar için eşitleme işlemlerini ileriye doğru işleyecek.  Azure AD Connect'i kapsamak için aşağıdaki adımları kullanın.
+## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Pilot OU 'yu dışlamak için Azure AD Connect eşitlemesini yapılandırın
+Pilot OU 'dan gelen kullanıcıların bulut sağlama tarafından başarıyla yönetildiğini doğrulandıktan sonra, yukarıda oluşturulan pilot OU 'yu dışlamak için Azure AD Connect yeniden yapılandırabilirsiniz.  Bulut sağlama Aracısı, ileri giderek bu kullanıcıların eşitlemesini işleyecek.  Azure AD Connect kapsam için aşağıdaki adımları kullanın.
 
- 1. Azure AD Connect çalıştıran sunucuda, Azure AD Connect simgesine çift tıklayın.
- 2. **Yapıla'yı** tıklatın
- 3. **Eşitleme seçeneklerini özelleştir'i** seçin ve sonrakini tıklatın.
- 4. Azure AD'de oturum açın ve **İleri'yi**tıklatın.
- 5. **Dizinlerinizi Bağla** ekranında **İleri'yi**tıklatın.
- 6. Etki **Alanı ve OU filtreleme** ekranında, **seçili etki alanlarını ve OU'ları eşitle'yi**seçin.
- 7. Etki alanınızı genişletin ve **CPUsers** OU'yu **seçin.**  **İleri**'ye tıklayın.
-![Kapsam](media/tutorial-existing-forest/scope1.png)</br>
- 9. **İsteğe Bağlı özellikler** ekranında **İleri'yi**tıklatın.
- 10. **Yapılandırmaya Hazır** ekranında **Yapılandırma'yı**tıklatın.
- 11. Bu tamamlandıktan **sonra, Çıkış'ı**tıklatın. 
+ 1. Azure AD Connect çalıştıran sunucuda Azure AD Connect simgesine çift tıklayın.
+ 2. **Yapılandır** ' a tıklayın
+ 3. **Eşitleme seçeneklerini Özelleştir** ' i seçin ve ileri ' ye tıklayın.
+ 4. Azure AD 'de oturum açın ve **İleri**' ye tıklayın.
+ 5. **Dizinlerinizi bağlama** ekranında **İleri**' ye tıklayın.
+ 6. **Etki alanı ve OU filtreleme** ekranında **Seçili etki alanlarını ve OU 'ları Eşitle**' yi seçin.
+ 7. Etki alanınızı genişletin ve **Cpusers** OU 'sunu devre dışı olarak **seçin** .  **İleri**’ye tıklayın.
+![kapsam](media/tutorial-existing-forest/scope1.png)</br>
+ 9. **Isteğe bağlı özellikler** ekranında **İleri**' ye tıklayın.
+ 10. **Yapılandırmaya hazırlanma** ekranında **Yapılandır**' a tıklayın.
+ 11. Tamamlandıktan sonra **Çıkış**' a tıklayın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 

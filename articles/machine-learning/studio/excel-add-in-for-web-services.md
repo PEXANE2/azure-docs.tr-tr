@@ -1,7 +1,7 @@
 ---
-title: Web hizmetleri için Excel eklentisi
+title: Web Hizmetleri için Excel eklentisi
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Web hizmetlerini herhangi bir kod yazmadan doğrudan Excel'de kullanma.
+description: Herhangi bir kod yazmadan Azure Machine Learning Web hizmetlerini doğrudan Excel 'de kullanma.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,77 +11,77 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204384"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) web hizmetleri için Excel Eklentisi
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure Machine Learning Studio (klasik) Web Hizmetleri için Excel eklentisi
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
-Excel, herhangi bir kod yazmaya gerek kalmadan web hizmetlerini doğrudan aramayı kolaylaştırır.
+Excel, herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan çağırmayı kolaylaştırır.
 
-## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Çalışma Kitabında Varolan Bir Web Hizmetini Kullanma Adımları
+## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Çalışma kitabında var olan bir Web hizmetini kullanma adımları
 
-1. Excel eklentisi ve Titanik'teki yolcularla ilgili verileri içeren [örnek Excel dosyasını](https://aka.ms/amlexcel-sample-2)açın. 
+1. Excel eklentisini ve Titanic üzerindeki pastıcılar hakkındaki verileri içeren [örnek Excel dosyasını](https://aka.ms/amlexcel-sample-2)açın. 
  
     > [!NOTE]
-    > Web Hizmetleri'nin dosyayla ilgili listesini ve en altta "Otomatik tahmin" için bir onay kutusunu görürsünüz. **Tüm** hizmetlerinizin tahminlerini otomatik olarak tahmin etmenizi etkinleştiriseniz, girişlerde her değişiklik olduğunda güncellenir. İşaretlenmemişse, yenilemek için "Tümlerini Tahmin Et"e tıklamanız gerekir. Servis düzeyinde otomatik tahminde bulunmaktadır etkinleştirmek için adım 6'ya gidin.
+    > Dosya ile ilgili Web hizmetlerinin listesini ve "otomatik tahmin" için en altta bir onay kutusunu görürsünüz. Otomatik tahmin ' i etkinleştirirseniz, **Tüm** hizmetlerinizin tahminleri, girişte her değişiklik olduğunda güncelleştirilir. İşaretlenmezse, yenileme için "tümünü tahmin etme" seçeneğine tıklamanız gerekir. Hizmet düzeyinde otomatik ön tahmin sağlamak için 6. adıma gidin.
 
-2. Bu örnekte " Titanic Survivor Predictor (Excel Add-in Sample) [Score]" seçeneğini tıklayarak web hizmetini seçin.
+2. Bu örnekte, "Titanic acil vor Predictor (Excel Eklentisi örneği) [Score]" öğesine tıklayarak Web hizmetini seçin.
    
-    ![Web hizmetini seçin](./media/excel-add-in-for-web-services/image1.png)
-3. Bu sizi **Tahmin** bölümüne götürür.  Bu çalışma kitabı zaten örnek veriler içerir, ancak boş bir çalışma kitabı için Excel'de bir hücre seçebilir ve **örnek verileri kullan'ı**tıklatabilirsiniz.
-4. Üstbilgi içeren verileri seçin ve giriş veri aralığı simgesini tıklatın.  "Verilerimin üstbilgileri var" kutusunun işaretli olduğundan emin olun.
-5. **Output**altında, örneğin burada "H1" gibi çıktının olmasını istediğiniz hücre numarasını girin.
-6. **Tahmin Et'i**tıklatın. "Otomatik tahmin" onay kutusunu seçerseniz, seçili alanlardaki herhangi bir değişiklik (giriş olarak belirtilenler) bir isteği ve tahmin düğmesine basmanıza gerek kalmadan çıktı hücrelerinin güncelliğini tetikler.
+    ![Web hizmeti seçin](./media/excel-add-in-for-web-services/image1.png)
+3. Bu sizi **tahmin** etme bölümüne götürür.  Bu çalışma kitabı zaten örnek veriler içeriyor, ancak boş bir çalışma kitabı için Excel 'de bir hücre seçip **örnek verileri kullan**' a tıklayabilirsiniz.
+4. Üst bilgileri olan verileri seçin ve giriş veri aralığı simgesine tıklayın.  "My Data Headers" kutusunun işaretli olduğundan emin olun.
+5. **Çıkış**' ın altında çıktının olmasını istediğiniz hücre numarasını girin, örneğin burada "H1" yazın.
+6. **Tahmin**' e tıklayın. "Otomatik tahmin" onay kutusunu seçerseniz seçili alanlardaki tüm değişiklikler (giriş olarak belirtilenler), tahmin düğmesine basmanız gerekmeden bir istek ve çıkış hücrelerinin güncelleştirilmesini tetikler.
    
-    ![Bölümü tahmin et](./media/excel-add-in-for-web-services/image1.png)
+    ![Tahmin bölümü](./media/excel-add-in-for-web-services/image1.png)
 
-Bir web hizmeti dağıtın veya varolan bir Web hizmetini kullanın. Bir web hizmetini dağıtma hakkında daha fazla bilgi için [Bkz. Öğretici 3: Kredi risk modelini dağıtın.](tutorial-part3-credit-risk-deploy.md)
+Bir Web hizmeti dağıtın veya mevcut bir Web hizmetini kullanın. Web hizmeti dağıtma hakkında daha fazla bilgi için bkz. [öğretici 3: Kredi risk modeli dağıtma](tutorial-part3-credit-risk-deploy.md).
 
-Web hizmetiniz için API anahtarını alın. Bu eylemi nerede gerçekleştirdiğiniz, Yeni Makine Öğrenimi web hizmetinin Klasik Machine Learning web hizmetini yayınlayıp yayınlamadığınıza bağlıdır.
+Web hizmetiniz için API anahtarını alın. Bu eylemi gerçekleştirdiğiniz durumlarda, yeni bir Machine Learning Web hizmetinin klasik Machine Learning Web hizmeti yayımladığınıza bağlıdır.
 
-**Klasik web hizmeti kullanma** 
+**Klasik Web hizmeti kullanma** 
 
-1. Machine Learning Studio'da (klasik), sol bölmedeki **WEB HİzMETLerİ** bölümünü tıklatın ve ardından web hizmetini seçin.
+1. Machine Learning Studio (klasik) bölümünde, sol bölmedeki **Web Hizmetleri** bölümüne tıklayın ve sonra Web hizmeti ' ni seçin.
    
-    ![Stüdyo bir Web hizmeti seçin](./media/excel-add-in-for-web-services/image4.png)
+    ![Studio bir Web hizmeti seçin](./media/excel-add-in-for-web-services/image4.png)
 2. Web hizmeti için API anahtarını kopyalayın.
    
-    ![Stüdyo API anahtarı](./media/excel-add-in-for-web-services/image5.png)
-3. Web hizmeti için **PANO** sekmesinde, **İsteM/YANıT** bağlantısını tıklatın.
-4. **İstek URI** bölümüne bakın.  URL'yi kopyalayın ve kaydedin.
+    ![Studio API anahtarı](./media/excel-add-in-for-web-services/image5.png)
+3. Web hizmetinin **Pano** sekmesinde **istek/yanıt** bağlantısına tıklayın.
+4. **İstek URI 'si** bölümünü arayın.  URL 'YI kopyalayın ve kaydedin.
 
 > [!NOTE]
-> Klasik Machine Learning web hizmetinin API anahtarını almak için [Azure Machine Learning Web Services](https://services.azureml.net) portalında oturum açabilirsiniz.
+> Artık, klasik bir Machine Learning Web hizmeti için API anahtarını almak üzere [Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalında oturum açmak mümkündür.
 > 
 > 
 
-**Yeni web hizmeti kullanma**
+**Yeni bir Web hizmeti kullan**
 
-1. Azure [Machine Learning Web Services](https://services.azureml.net) portalında **Web Hizmetleri'ni**tıklatın ve ardından web hizmetinizi seçin. 
-2. **Tüket'i**tıklatın.
-3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil Anahtarı** ve **İstek-Yanıt** URL'sini kopyalayın ve kaydedin.
+1. [Azure Machine Learning Web Hizmetleri](https://services.azureml.net) portalında **Web Hizmetleri**' ne ve ardından Web hizmetinizi seçin. 
+2. **Tüketme**' ye tıklayın.
+3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil anahtarı** ve **istek-yanıt** URL 'sini kopyalayıp kaydedin.
 
-## <a name="steps-to-add-a-new-web-service"></a>Yeni web hizmeti ekleme adımları
+## <a name="steps-to-add-a-new-web-service"></a>Yeni bir Web hizmeti ekleme adımları
 
-1. Bir web hizmeti dağıtın veya varolan bir Web hizmetini kullanın. Bir web hizmetini dağıtma hakkında daha fazla bilgi için [Bkz. Öğretici 3: Kredi risk modelini dağıtın.](tutorial-part3-credit-risk-deploy.md)
-2. **Tüket'i**tıklatın.
-3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil Anahtarı** ve **İstek-Yanıt** URL'sini kopyalayın ve kaydedin.
-4. Excel'de Web **Hizmetleri** bölümüne gidin **(Tahmin** et bölümündeyseniz, web hizmetleri listesine gitmek için arka ok'u tıklatın).
+1. Bir Web hizmeti dağıtın veya mevcut bir Web hizmetini kullanın. Web hizmeti dağıtma hakkında daha fazla bilgi için bkz. [öğretici 3: Kredi risk modeli dağıtma](tutorial-part3-credit-risk-deploy.md).
+2. **Tüketme**' ye tıklayın.
+3. **Temel tüketim bilgileri** bölümüne bakın. **Birincil anahtarı** ve **istek-yanıt** URL 'sini kopyalayıp kaydedin.
+4. Excel 'de **Web Hizmetleri** bölümüne gidin ( **tahmin** bölümünde yer alıyorsa, Web hizmetleri listesine gitmek için geri okuna tıklayın).
    
-    ![Web hizmeti seçimine gitme](./media/excel-add-in-for-web-services/image3.png)
-5. **Web Hizmeti Ekle'yi**tıklatın.
-6. URL etiketli Excel eklentimetin kutusuna **URL'yi**yapıştırın.
-7. API/Birincil anahtarı **API tuşu**etiketli metin kutusuna yapıştırın.
-8. **Ekle**’ye tıklayın.
+    ![Web hizmeti seçimine git](./media/excel-add-in-for-web-services/image3.png)
+5. **Web hizmeti Ekle**' ye tıklayın.
+6. URL 'yi, **URL**etiketli Excel eklenti metin kutusuna yapıştırın.
+7. API/birincil anahtarını **API anahtarı**etiketli metin kutusuna yapıştırın.
+8. **Ekle**'ye tıklayın.
    
-    ![Klasik bir Web hizmeti için URL ve API anahtarı.](./media/excel-add-in-for-web-services/image6.png)
-9. Web hizmetini kullanmak için, "Varolan bir web Hizmetini Kullanma Adımları" başlıklı önceki yönergeleri izleyin.
+    ![Klasik Web hizmeti için URL ve API anahtarı.](./media/excel-add-in-for-web-services/image6.png)
+9. Web hizmetini kullanmak için, "var olan bir Web hizmetini kullanma adımları" bölümündeki yönergeleri izleyin.
 
-## <a name="sharing-your-workbook"></a>Çalışma Kitabınızı Paylaşma
-Çalışma kitabınızı kaydederseniz, eklediğiniz web hizmetleri için API/Birincil anahtar da kaydedilir. Bu, çalışma kitabını yalnızca güvendiğiniz kişilerle paylaşmanız gerektiği anlamına gelir.
+## <a name="sharing-your-workbook"></a>Çalışma kitabınızı paylaşma
+Çalışma kitabınızı kaydederseniz, eklediğiniz Web hizmetlerinin API/birincil anahtarı da kaydedilir. Bu, çalışma kitabını yalnızca güvendiğiniz kişilerle paylaşmanız gerektiği anlamına gelir.
 
-Aşağıdaki yorum bölümünde veya [forumumuzda](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)herhangi bir soru sorun.
+Aşağıdaki yorum bölümünde veya [forumumuzda](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409)soru sorun.

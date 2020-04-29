@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Kapsayıcı Hizmeti Quickstart - DC/OS Cluster dağıt
+title: Kullanım DıŞı Azure Container Service hızlı başlangıç-DC/OS kümesi dağıtma
 description: Azure Container Service Hızlı Başlangıç - DC/OS Kümesi Dağıtma
 author: iainfoulds
 ms.service: container-service
@@ -8,19 +8,19 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 6274e24bae2e2a6eade0122fe244652eb29cacf9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399218"
 ---
-# <a name="deprecated-deploy-a-dcos-cluster"></a>(AmortismanA Uğradı) DC/İşletim Sistemi kümesini dağıtma
+# <a name="deprecated-deploy-a-dcos-cluster"></a>Kullanım DıŞı DC/OS kümesi dağıtma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıç, bir DC/İŞ Let's kümesidağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımları ayrıntılarıyla anlatır.
+DC/OS, modern ve kapsayıcılı uygulamalar çalıştırmak için dağıtılmış bir platform sunar. Azure Container Service ile üretime hazır bir DC/OS kümesinin dağıtımı basit ve hızlıdır. Bu hızlı başlangıçta, DC/OS kümesi dağıtmak ve temel iş yükünü çalıştırmak için gereken temel adımlar ayrıntılı olarak vardır.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 Bu öğretici, Azure CLI 2.0.4 veya sonraki bir sürümü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükseltme gerekiyorsa, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
 
@@ -165,7 +165,7 @@ az group delete --name myResourceGroup --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir DC/OS kümesi dağıttınız ve küme üzerinde basit bir Docker kapsayıcısı çalıştırdın. Azure Container Service hakkında daha fazla bilgi edinmek için ACS öğreticilerine geçin.
+Bu hızlı başlangıçta, bir DC/OS kümesi dağıttık ve kümede basit bir Docker kapsayıcısı çalıştırdık. Azure Container Service hakkında daha fazla bilgi edinmek için ACS öğreticilerine geçin.
 
 > [!div class="nextstepaction"]
 > [Bir ACS DC/OS Kümesini Yönetme](container-service-dcos-manage-tutorial.md)

@@ -1,6 +1,6 @@
 ---
-title: Akış bulucu oluşturun ve URL'ler oluşturun - Azure Medya Hizmetleri
-description: Bu makalede, bir akış bulucu oluşturmak ve URL'ler oluşturmak nasıl gösterin.
+title: Akış bulucu ve derleme URL 'Leri oluşturma-Azure Media Services
+description: Bu makalede, akış bulucu ve derleme URL 'Lerinin nasıl oluşturulduğu gösterilir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304569"
 ---
-# <a name="create-a-streaming-locator-and-build-urls"></a>Akış bulucu oluşturma ve URL'ler oluşturma
+# <a name="create-a-streaming-locator-and-build-urls"></a>Akış bulucusu ve derleme URL’leri oluşturma
 
-Akışurl'si oluşturmak için azure medya hizmetlerinde, önce bir [Akış Lı Bulucu](streaming-locators-concept.md)oluşturmanız gerekir. Daha sonra Akış [Uç Nokta](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **Akış Bulucu** yolunu birleştirirsiniz. Bu örnekte, *varsayılan* **Akış Bitiş Noktası** kullanılır. Bir Medya Hizmeti hesabı ilk oluşturduğunuzda, bu *varsayılan* **Akış Bitiş Noktası** durdurulmuş durumda olacaktır, bu nedenle akışı başlatmak için **Başlat'ı** aramanız gerekir.
+Azure Media Services, akış URL 'SI oluşturmak için önce bir [akış Bulucu](streaming-locators-concept.md)oluşturmanız gerekir. Daha sonra [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirebilirsiniz. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir Media Service hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olur, bu nedenle akışı başlatmak için **Start** 'ı çağırmanız gerekir.
 
-Bu makalede, java ve .NET SDK'ları kullanarak akış lı bir url oluşturma ve akış URL'si oluşturma nın nasıl yapılacağını gösterin.
+Bu makalede, bir akış Bulucu oluşturma ve Java ve .NET SDK 'Ları kullanarak akış URL 'SI oluşturma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="prerequisite"></a>Önkoşul 
 
-[Dinamik ambalajı](dynamic-packaging-overview.md) önizleme
+[Dinamik paketleme](dynamic-packaging-overview.md) önizlemesi
 
 ## <a name="java"></a>Java
 
@@ -164,8 +164,8 @@ Tam kod örneğine bakın: [EncodingWithMESPredefinedPreset](https://github.com/
 
 * [.NET ile filtre oluşturma](filters-dynamic-manifest-dotnet-howto.md)
 * [REST ile filtre oluşturma](filters-dynamic-manifest-rest-howto.md)
-* [CLI ile filtre oluşturma](filters-dynamic-manifest-cli-howto.md)
+* [CLı ile filtre oluşturma](filters-dynamic-manifest-cli-howto.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[DRM ile içeriğinizi koruyun.](protect-with-drm.md)
+[DRM ile Içeriğinizi koruyun](protect-with-drm.md).

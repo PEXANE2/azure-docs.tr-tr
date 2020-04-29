@@ -1,7 +1,7 @@
 ---
-title: "Quickstart: Web'de İçerik Moderatör deneyin - İçerik Moderatör"
+title: 'Hızlı başlangıç: Web üzerinde Content Moderator deneyin Content Moderator'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan İçerik Moderatörünün temel işlevselliğini test etmek için çevrimiçi İçerik Moderatör İnceleme aracını kullanacaksınız.
+description: Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,77 +11,77 @@ ms.topic: quickstart
 ms.date: 03/13/2020
 ms.author: pafarley
 ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79203599"
 ---
-# <a name="quickstart-try-content-moderator-on-the-web"></a>Quickstart: Web'de İçerik Moderatör deneyin
+# <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
-Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan İçerik Moderatörünün temel işlevselliğini test etmek için çevrimiçi İçerik Moderatör İnceleme aracını kullanırsınız. Bu hizmeti uygulamanıza daha hızlı entegre etmek istiyorsanız, [Sonraki adımlar](#next-steps) bölümündeki diğer hızlı başlangıçlara bakın.
+Bu hızlı başlangıçta, herhangi bir kod yazmak zorunda kalmadan Content Moderator temel işlevselliğini test etmek için çevrimiçi Content Moderator gözden geçirme aracını kullanacaksınız. Bu hizmeti uygulamanıza daha hızlı bir şekilde bütünleştirmek istiyorsanız [sonraki adımlar](#next-steps) bölümündeki diğer hızlı başlangıçlara bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bir web tarayıcısı
+- Bir Web tarayıcısı
 
 ## <a name="set-up-the-review-tool"></a>İnceleme aracını ayarlama
-İçerik Moderatör İnceleme aracı, insan gözden geçirenlerin karar verirken bilişsel hizmete yardımcı olmasını sağlayan web tabanlı bir araçtır. Bu kılavuzda, İçerik Moderatör hizmetinin nasıl çalıştığını görebilmeniz için inceleme aracını ayarlama nın kısa sürecinden geçeceksiniz. [İçerik Moderatör İnceleme araç](https://contentmoderator.cognitive.microsoft.com/) sitesine gidin ve kaydolun.
+Content Moderator Inceleme Aracı, insan gözden geçirenlerin kararlar verirken bilişsel hizmete yardımcı olmasını sağlayan Web tabanlı bir araçtır. Bu kılavuzda, Content Moderator hizmetinin nasıl çalıştığını görebilmeniz için, gözden geçirme aracını ayarlama işleminin kısa bir sürecine gidecaksınız. [Content moderator gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesine gidin ve kaydolun.
 
-![İçerik Moderatör Ana Sayfası](images/homepage.PNG)
+![Content Moderator giriş sayfası](images/homepage.PNG)
 
-## <a name="create-a-review-team"></a>İnceleme ekibi oluşturma
+## <a name="create-a-review-team"></a>Bir gözden geçirme ekibi oluşturun
 
-Ardından, bir inceleme ekibi oluşturun. Çalışma senaryosunda, bu, hizmetin ılımlılık kararlarını el ile gözden geçiren kişi grubu olacaktır. Bir takım oluşturmak için bir **Bölge**seçmeniz ve **bir Takım Adı** ve **Takım Kimliği**sağlamanız gerekir. İş arkadaşlarınızı ekibe davet etmek isterseniz, bunu e-posta adreslerini buraya girerek yapabilirsiniz.
+Sonra, bir gözden geçirme ekibi oluşturun. Çalışan bir senaryoda bu, hizmetin denetleme kararlarını el ile gözden geçirebilen kişi grubu olacaktır. Bir ekip oluşturmak için bir **bölge**seçmeniz ve bir **Takım adı** ve **Takım Kimliği**sağlamanız gerekir. İş arkadaşlarınızı takıma davet etmek isterseniz, e-posta adreslerini buraya girerek yapabilirsiniz.
 
 > [!NOTE]
-> **Takım Adı,** inceleme ekibiniz için dostça bir isimdir. Bu, Azure portalında görüntülenen addır. **Ekip Kimliği,** inceleme ekibinizi programlı olarak tanımlamak için kullanılan şeydir.
+> **Ekip adı** , gözden geçirme ekibiniz için kolay bir addır. Bu ad Azure portal görüntülenir. **EKIP kimliği** , gözden geçirme takımınızın program aracılığıyla tanımlamak için kullanılan şeydir.
 
 > [!div class="mx-imgBorder"]
-> ![Ekip üyesini davet et](images/create-team.png)
+> ![Takım üyesini davet et](images/create-team.png)
 
-Verileri müşteri tarafından yönetilen bir anahtar (CMK) kullanarak şifrelemeyi seçerseniz, E0 fiyatlandırma katmanındaki İçerik Moderatör kaynağınız için **Kaynak Kimliği** istenir. Sağladığınız kaynak yeni olmalıdır. 
+Verileri müşteri tarafından yönetilen bir anahtarla (CMK) şifrelemeyi seçerseniz, E0 fiyatlandırma katmanında Content Moderator kaynağınız için **kaynak kimliği** istenir. Sağladığınız kaynak yeni olmalıdır. 
 
 > [!div class="mx-imgBorder"]
-> ![CMK ile ekip üyesini davet edin](images/create-team-cmk.png)
+> ![Takım üyesini CMK ile davet et](images/create-team-cmk.png)
 
-İçerik Moderatörü kaynağını yeniden kullanmaya çalışırsanız, şu uyarıyı görürsünüz: 
+Bir Content Moderator kaynağını yeniden kullanmaya çalışırsanız şu uyarıyı görürsünüz: 
 
 > [!div class="mx-imgBorder"]
 > ![CMK hatası](images/create-team-cmk-fail.png)
 
-## <a name="upload-sample-content"></a>Örnek içerik yükleme
+## <a name="upload-sample-content"></a>Örnek içeriği karşıya yükle
 
-Artık örnek içerik yüklemeye hazırsınız. **> Görüntü'>** seçin, **> Metni deneyin**veya > Video **deneyin.**
+Şimdi örnek içerik yüklemeye hazırsınız. **> görüntüsünü dene**' yi seçin, **metni > deneyin**veya **> video kullanmayı deneyin**.
 
-![Resim veya Metin Moderasyonunu Deneyin](images/tryimagesortext.png)
+![Görüntüyü veya metin yönetimini deneyin](images/tryimagesortext.png)
 
-İçeriğinizi ılımlılık için gönderin. Dahili olarak, inceleme aracı içeriğinizi taramak için ılımlılık API'lerini çağırır. Tarama tamamlandıktan sonra, incelemenizi bekleyen sonuçlar olduğunu bildiren bir ileti görürsünüz.
+İçeriğinizi denetleme için gönderme. Dahili olarak, gözden geçirme aracı içeriğinizi taramak için denetleme API 'Lerini çağırır. Tarama tamamlandıktan sonra, incelemenizi bekleyen sonuçlar olduğunu bildiren bir ileti görürsünüz.
 
-![Dosyaları orta dereceli](images/submitted.png)
+![Orta dosyalar](images/submitted.png)
 
-## <a name="review-moderation-tags"></a>Denetleme denetleme etiketleri
+## <a name="review-moderation-tags"></a>Denetleme etiketlerini gözden geçirme
 
-Uygulanan ılımlılık etiketlerini gözden geçirin. İçeriğinize hangi etiketlerin uygulandığını ve her kategoride hangi puanın ne olduğunu görebilirsiniz. Farklı içerik etiketlerinin ne gösterdiği hakkında daha fazla bilgi edinmek için [Resim,](image-moderation-api.md) [Metin](text-moderation-api.md)ve [Video](video-moderation-api.md) Denetleme konularını görün.
+Uygulanan denetleme etiketlerini gözden geçirin. İçeriğinize hangi etiketlerin uygulandığını ve her bir kategoride skor olduğunu görebilirsiniz. Farklı içerik etiketlerinin neleri belirtdikleriniz hakkında daha fazla bilgi edinmek için [görüntü](image-moderation-api.md), [metin](text-moderation-api.md)ve [video](video-moderation-api.md) Denetleme konularına bakın.
 
 ![Sonuçları gözden geçirme](images/reviewresults_text.png)
 
-Bir projede, siz veya inceleme ekibiniz bu etiketleri değiştirebilir veya gerektiğinde daha fazla etiket ekleyebilirsiniz. Bu değişiklikleri **İleri** düğmesiyle gönderirsiniz. İş uygulamanız Moderatör API'lerini aradığında, etiketlenen içerik insan inceleme ekipleri tarafından incelenmeye hazır olarak burada sıraya girecektir. Bu yaklaşımı kullanarak büyük içerik hacimlerini hızla inceleyebilirsiniz.
+Bir projede, sizin veya gözden geçirme ekibiniz bu etiketleri değiştirebilir veya gerektiğinde daha fazla etiket ekleyebilir. Bu değişiklikleri **İleri** düğmesiyle gönderebilirsiniz. İş uygulamanız yönetici API 'Lerini çağırdığında, etiketli içerik burada sıraya alınır ve insan gözden geçirme ekipleri tarafından incelenmeye hazırdır. Bu yaklaşımı kullanarak büyük hacimlerde içerik hızla gözden geçirebilirsiniz.
 
-Bu noktada, İçerik Moderatör hizmetinin neler yapabileceğine örnek lerini görmek için İçerik Moderatör İnceleme aracını kullandınız. Ardından, inceleme aracı hakkında daha fazla bilgi edinebilir ve Gözden Geçirme API'lerini kullanarak bir yazılım projesine nasıl entegre edilebilirsiniz ya da Uygulamanızda Moderasyon API'lerini nasıl kullanacağınızı öğrenmek için [Sonraki adımlar](#next-steps) bölümüne atlayabilirsiniz.
+Bu noktada, Content Moderator hizmetinin yapabilecekleri örnekleri görmek için Content Moderator gözden geçirme aracını kullandınız. Daha sonra, gözden geçirme aracı hakkında daha fazla bilgi alabilir ve bunu Inceleme API 'Lerini kullanarak bir yazılım projesiyle tümleştirin ya da bir [sonraki adımlar](#next-steps) bölümüne atlayabilir ve bu da denetim API 'lerini uygulamanızda nasıl kullanacağınızı öğrenebilirsiniz.
 
 ## <a name="learn-more-about-the-review-tool"></a>İnceleme aracı hakkında daha fazla bilgi edinin
 
-İçerik Moderatör İnceleme aracını nasıl kullanacağınız hakkında daha fazla bilgi edinmek için Gözden [Geçirme araç](Review-Tool-User-Guide/human-in-the-loop.md) kılavuzuna bir göz atın ve insan inceleme deneyiminde nasıl ince ayar yapılacağını öğrenmek için İnceleme aracı API'lerine bakın:
-- [İş](try-review-api-job.md) API'si, ılımlılık API'lerini kullanarak içeriğinizi tarar ve inceleme aracında incelemeler oluşturur. 
-- [İnceleme API'si,](try-review-api-review.md) içeriği tarmadan insan moderatörler için doğrudan görüntü, metin veya video incelemeleri oluşturur. 
-- [İş Akışı API'si,](try-review-api-workflow.md) ekibinizin oluşturduğu özel iş akışları hakkında ayrıntılar oluşturur, güncelleştirir ve alır.
+Content Moderator gözden geçirme aracının nasıl kullanılacağı hakkında daha fazla bilgi edinmek için, [Gözden geçirme aracı](Review-Tool-User-Guide/human-in-the-loop.md) kılavuzuna göz atın ve insan gözden geçirme deneyiminin nasıl ince ayarlamalar yapılacağını öğrenmek için Inceleme aracı API 'lerine bakın:
+- [Iş API 'si](try-review-api-job.md) , denetleme API 'lerini kullanarak içeriğinizi tarar ve İnceleme aracında incelemeler oluşturur. 
+- [Gözden geçirme API 'si](try-review-api-review.md) , içeriği önce taramadan insan moderatörleri için doğrudan görüntü, metin veya video İncelemeleri oluşturur. 
+- [Iş akışı API 'si](try-review-api-workflow.md) , takımınızın oluşturduğu özel iş akışlarıyla ilgili ayrıntıları oluşturur, güncelleştirir ve alır.
 
-Veya, kodunuzda Moderasyon API'lerini kullanmaya başlamak için sonraki adımlarla devam edin.
+Veya kodunuzda denetleme API 'Lerini kullanmaya başlamak için sonraki adımlarla devam edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanızda Moderasyon API'lerini nasıl kullanacağınızı öğrenin.
-- Görüntü ılımlılığı uygulayın. [API konsolunu](try-image-api.md) kullanın veya etiketleri, güven puanlarını ve diğer çıkarılan bilgileri kullanarak görüntüleri tarayıp olası yetişkinlere uygun ve müstehcen içeriği algılamak için [.NET SDK hızlı başlatımını](dotnet-sdk-quickstart.md) izleyin.
-- Metin moderasyonu uygulayın. [API](try-text-api.md) konsolu'nu kullanın veya metin içeriğini olası küfür, makine destekli istenmeyen metin sınıflandırması (önizleme) ve kişisel veriler için taramaya [.NET SDK hızlı başlat'ı](dotnet-sdk-quickstart.md) kullanın.
-- Video ılımlılığı uygulayın. Videoları tarayıp olası yetişkinlere uygun ve müstehcen içeriği algılamak [için C# için Video Moderasyon nasıl yapılsın kılavuzunu](video-moderation-api.md) izleyin. 
+Kendi uygulamanızda denetleme API 'Lerinin nasıl kullanılacağını öğrenin.
+- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güven puanlarını ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [API konsolunu](try-image-api.md) kullanın veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını izleyin.
+- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya [.NET SDK hızlı](dotnet-sdk-quickstart.md) başlangıcını kullanın.
+- Video denetlemeyi uygulayın. Videoları taramak ve olası yetişkinlere ve kcy içeriğini algılamak için [C# için video denetleme nasıl yapılır kılavuzunu](video-moderation-api.md) izleyin. 

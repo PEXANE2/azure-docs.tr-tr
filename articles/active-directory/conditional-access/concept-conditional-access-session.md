@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim ilkesinde oturum denetimleri - Azure Etkin Dizini
-description: Azure AD Koşullu Erişim ilkesinde oturum denetimleri nedir
+title: Koşullu erişim ilkesindeki oturum denetimleri-Azure Active Directory
+description: Azure AD koşullu erişim ilkesinde oturum denetimleri nelerdir?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,68 +12,68 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e99b9b87f939d614679fdecf24c9d36d99bf2938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78671905"
 ---
-# <a name="conditional-access-session"></a>Koşullu Erişim: Oturum
+# <a name="conditional-access-session"></a>Koşullu erişim: oturum
 
-Koşullu Erişim ilkesi içinde, yönetici belirli bulut uygulamaları içinde sınırlı deneyimleri etkinleştirmek için oturum denetimlerinden yararlanabilir.
+Bir yönetici, koşullu erişim ilkesinde, belirli bulut uygulamalarında sınırlı deneyimleri etkinleştirmek için oturum denetimlerini kullanabilir.
 
-![Çok faktörlü kimlik doğrulaması gerektiren hibe denetimine sahip Koşullu Erişim ilkesi](./media/concept-conditional-access-session/conditional-access-session.png)
+![Multi-Factor Authentication gerektiren bir izin denetimi olan koşullu erişim ilkesi](./media/concept-conditional-access-session/conditional-access-session.png)
 
-## <a name="application-enforced-restrictions"></a>Uygulama zorunlu kısıtlamalar
+## <a name="application-enforced-restrictions"></a>Uygulama tarafından zorlanan kısıtlamalar
 
-Kuruluşlar bu denetimi, Azure AD'nin aygıt bilgilerini seçili bulut uygulamalarına aktarmasını istemek için kullanabilir. Cihaz bilgileri, bulut uygulamalarının uyumlu veya etki alanı yla birleştirilmiş bir aygıttan bağlantı başlatılıp başlatılmadığını bilmesini sağlar. Bu denetim yalnızca SharePoint Online ve Exchange Online'ı seçili bulut uygulamaları olarak destekler. Bulut uygulaması seçildiğinde, kullanıcılara cihaz durumuna bağlı olarak sınırlı veya tam bir deneyim sağlamak için cihaz bilgilerini kullanır.
+Kuruluşlar, Azure AD 'nin seçili bulut uygulamalarına cihaz bilgilerini geçmesini gerektirmek için bu denetimi kullanabilir. Cihaz bilgileri, bulut uygulamalarının bir bağlantının uyumlu veya etki alanına katılmış bir cihazdan başlatılıp başlatılmayacağını bilmesini sağlar. Bu denetim yalnızca seçili bulut uygulamaları olarak SharePoint Online ve Exchange Online 'ı destekler. Seçildiğinde, bulut uygulaması, cihaz durumuna bağlı olarak, sınırlı veya tam bir deneyimle, cihaz bilgilerini Kullanıcı sağlamak için kullanır.
 
-Uygulama zorunlu kısıtlamalarının kullanımı ve yapılandırması hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Uygulama tarafından zorlanan kısıtlamaların kullanımı ve yapılandırılması hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [SharePoint Online ile sınırlı erişim sağlama](/sharepoint/control-access-from-unmanaged-devices)
-- [Exchange Online ile sınırlı erişim sağlama](https://aka.ms/owalimitedaccess)
+- [SharePoint Online ile sınırlı erişimi etkinleştirme](/sharepoint/control-access-from-unmanaged-devices)
+- [Exchange Online ile sınırlı erişimi etkinleştirme](https://aka.ms/owalimitedaccess)
 
-## <a name="conditional-access-application-control"></a>Koşullu Erişim uygulama kontrolü
+## <a name="conditional-access-application-control"></a>Koşullu erişim uygulama denetimi
 
-Koşullu Erişim Uygulama Denetimi ters proxy mimarisi kullanır ve Azure AD Koşullu Erişim ile benzersiz bir şekilde tümleştirilir. Azure AD Koşullu Erişim, kuruluşunuzun uygulamalarında belirli koşullara bağlı olarak erişim denetimleri uygulamanıza olanak tanır. Koşullar, koşullu Erişim ilkesinin kime (kullanıcı veya kullanıcı grubu) ve hangi (hangi bulut uygulamaları) ve nerede (hangi konumlar ve ağlar) uygulandığını tanımlar. Koşulları belirledikten sonra, kullanıcıları, erişim ve oturum denetimleri uygulayarak Koşullu Erişim Uygulaması Denetimi ile verileri koruyabileceğiniz [Microsoft Bulut Uygulaması Güvenliği'ne](/cloud-app-security/what-is-cloud-app-security) yönlendirebilirsiniz.
+Koşullu Erişim Uygulama Denetimi, ters bir ara sunucu mimarisi kullanır ve Azure AD koşullu erişim ile benzersiz şekilde tümleşiktir. Azure AD koşullu erişimi, kuruluşunuzun uygulamalarında belirli koşullara göre erişim denetimleri zorlamanıza olanak sağlar. Koşullar, kimlerin (Kullanıcı veya Kullanıcı grubu) ve ne (bulut uygulamaları) ve koşullu erişim ilkesinin hangi konuma uygulanacağını tanımlar. Koşulları belirledikten sonra, erişim ve oturum denetimleri uygulayarak Koşullu Erişim Uygulama Denetimi verileri koruyabileceğiniz [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) kullanıcıları yönlendirebilirsiniz.
 
-Koşullu Erişim Uygulaması Denetimi, kullanıcı uygulaması erişiminin ve oturumlarının erişim ve oturum ilkelerine bağlı olarak gerçek zamanlı olarak izlenmesini ve denetlenmesini sağlar. Erişim ve oturum ilkeleri, filtreleri daha da hassaslaştırmak ve kullanıcı üzerinde yapılacak eylemleri ayarlamak için Bulut Uygulaması Güvenliği portalında kullanılır. Erişim ve oturum ilkeleriyle şunları yapabilirsiniz:
+Koşullu Erişim Uygulama Denetimi, erişim ve oturum ilkelerine bağlı olarak, Kullanıcı uygulaması erişiminin ve oturumlarının gerçek zamanlı olarak izlenmesini ve denetlenmesini sağlar. Erişim ve oturum ilkeleri, filtreleri daha fazla iyileştirmek ve bir kullanıcıya alınacak eylemleri ayarlamak için Cloud App Security portalında kullanılır. Erişim ve oturum ilkeleriyle şunları yapabilirsiniz:
 
-- Veri sızmasını önleyin: Hassas belgelerin karşıdan yüklenmemesini, kesilmesini, kopyalanmasını ve yazdırmasını engelleyebilirsiniz, örneğin yönetilmeyen aygıtlarda.
-- İndirmede koruyun: Hassas belgelerin karşıdan yüklendiğini engellemek yerine, belgelerin Azure Bilgi Koruması ile etiketlenmesini ve korunmasını talep edebilirsiniz. Bu eylem, belgenin korunmasını ve kullanıcı erişiminin riskli olabilecek bir oturumda kısıtlanmasını sağlar.
-- Etiketlenmemiş dosyaların yüklenmesini engelleyin: Hassas bir dosya başkaları tarafından yüklenmeden, dağıtılmadan ve kullanılmadan önce, dosyanın doğru etiket e ve korumaya sahip olduğundan emin olmak önemlidir. Kullanıcı içeriği sınıflandırana kadar hassas içeriğe sahip etiketlenmemiş dosyaların yüklenmesini engelleyebilirsiniz.
-- Uyumluluk için kullanıcı oturumlarını izleyin: Riskli kullanıcılar uygulamalarda oturum açtıklarında izlenir ve eylemleri oturum içinden kaydedilir. Gelecekte oturum ilkelerinin nerede ve hangi koşullar altında uygulanması gerektiğini anlamak için kullanıcı davranışını araştırabilir ve çözümleyebilirsiniz.
-- Engelleme erişimi: Çeşitli risk faktörlerine bağlı olarak belirli uygulamalar ve kullanıcılar için erişimi ayrıntılı olarak engelleyebilirsiniz. Örneğin, istemci sertifikalarını aygıt yönetimi biçimi olarak kullanıyorlarsa bunları engelleyebilirsiniz.
-- Özel etkinlikleri engelleyin: Bazı uygulamaların risk taşıyan benzersiz senaryoları vardır, örneğin Microsoft Teams veya Slack gibi uygulamalarda hassas içeriğe sahip iletiler gönderir. Bu tür senaryolarda, hassas içerik için iletileri tarayabiliyor ve bunları gerçek zamanlı olarak engelleyebilirsiniz.
+- Veri engellemeyi önleyin: Örneğin yönetilmeyen cihazlarda hassas belgeleri indirme, kesme, kopyalama ve yazdırma işlemi yapabilirsiniz.
+- İndirme sırasında koru: hassas belgelerin indirilmesini engellemek yerine, belgelerin etiketlenmesi ve Azure Information Protection korumalı olmasını zorunlu kılabilirsiniz. Bu eylem, belgenin korunmasını ve Kullanıcı erişiminin potansiyel riskli bir oturumda kısıtlanmasını sağlar.
+- Etiketsiz dosyaları karşıya yüklemeyi engelle: hassas bir dosya karşıya yüklenmeden, dağıtılmadan ve diğer kullanıcılar tarafından kullanılmadan önce, dosyanın doğru etikete ve korumaya sahip olduğundan emin olmak önemlidir. Gizli içeriğe sahip Etiketlenmemiş dosyaların, Kullanıcı içeriği sınıflandırana kadar karşıya yüklenmesi engellenmiş olduğundan emin olabilirsiniz.
+- Uyumluluk için kullanıcı oturumlarını izleme: riskli kullanıcılar, uygulamalarda oturum açtıklarında izlenir ve bu işlemler oturum içinden günlüğe kaydedilir. Nerede olduğunu anlamak için Kullanıcı davranışını araştırıp çözümleyebilir ve hangi koşullarda oturum ilkelerinin gelecekte uygulanacağını anlayabiliriz.
+- Erişimi engelle: birkaç risk etmenlerine bağlı olarak belirli uygulamalar ve kullanıcılar için erişimi çok fazla engelleyebilirsiniz. Örneğin, istemci sertifikalarını cihaz yönetiminin bir formu olarak kullanıyorsa bunları engelleyebilirsiniz.
+- Özel etkinlikleri engelle: bazı uygulamalarda risk taşıyan benzersiz senaryolar vardır. Örneğin, Microsoft ekipleri veya bolluk gibi uygulamalarda hassas içeriğe sahip iletiler gönderme. Bu tür senaryolarda, hassas içerik için iletileri tarayabilir ve gerçek zamanlı olarak engelleyebilirsiniz.
 
-Daha fazla bilgi için, [özellikli uygulamalar için Koşullu Erişim Uygulama Denetimini Dağıt makalesine](/cloud-app-security/proxy-deployment-aad)bakın.
+Daha fazla bilgi için bkz. [öne çıkan uygulamalar için koşullu erişim uygulama denetimi dağıtma](/cloud-app-security/proxy-deployment-aad)makalesi.
 
 ## <a name="sign-in-frequency-preview"></a>Oturum açma sıklığı (Önizleme)
 
-Oturum açma sıklığı, bir kaynağa erişmeye çalışırken kullanıcıdan yeniden oturum açmasının istenmesinden önceki süreyi tanımlar.
+Oturum açma sıklığı, bir kullanıcıdan bir kaynağa erişmeye çalışırken yeniden oturum açması istenmeden önce geçen süreyi tanımlar.
 
-Oturum açma sıklığı ayarı, standartlara uygun OAUTH2 veya OIDC protokollerini uygulayan uygulamalarla çalışır. Aşağıdaki web uygulamaları da dahil olmak üzere Windows, Mac ve Mobile için Microsoft'un yerel uygulamalarının çoğu ayarı uygun.
+Oturum açma sıklığı ayarı, standartlara göre OAUTH2 veya OıDC protokollerini uygulamış olan uygulamalarla birlikte çalışarak. Aşağıdaki Web uygulamaları dahil olmak üzere Windows, Mac ve mobil için Microsoft Native uygulamaların çoğu ayarla uyumlu değil.
 
-- Word, Excel, PowerPoint Online
+- Word, Excel, PowerPoint online
 - OneNote Online
 - Office.com
-- O365 Yönetici portalı
+- O365 yönetim portalı
 - Exchange Online
 - SharePoint ve OneDrive
-- Takımlar web istemcisi
+- Takımlar Web istemcisi
 - Dynamics CRM Online
-- Azure portalında
+- Azure portal
 
-Daha fazla bilgi için, [Koşullu Erişim ile kimlik doğrulama oturumu yönetimini yapılandırın](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)makalesine bakın.
+Daha fazla bilgi için, [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](howto-conditional-access-session-lifetime.md#user-sign-in-frequency)makalesine bakın.
 
 ## <a name="persistent-browser-session-preview"></a>Kalıcı tarayıcı oturumu (Önizleme)
 
-Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturumda kalmalarını sağlar.
+Kalıcı bir tarayıcı oturumu, kullanıcıların tarayıcı pencerelerini kapatıp yeniden açtıktan sonra oturum açmasına olanak tanır.
 
-Daha fazla bilgi için, [Koşullu Erişim ile kimlik doğrulama oturumu yönetimini yapılandırın](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions)makalesine bakın.
+Daha fazla bilgi için, [koşullu erişimle kimlik doğrulama oturumu yönetimini yapılandırma](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions)makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
 - [Yalnızca rapor modu](concept-conditional-access-report-only.md)

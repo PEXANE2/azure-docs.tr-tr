@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde StringToArray
-description: Azure Cosmos DB'de SQL sistem fonksiyonu StringToArray hakkında bilgi edinin.
+description: Azure Cosmos DB 'de SQL sistem işlevi StringToArray hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 18acbd94fa3d717fc20b9e1020b9bf7c6db7744d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302925"
 ---
 # <a name="stringtoarray-azure-cosmos-db"></a>StringToArray (Azure Cosmos DB)
- Diziye çevrilmiş ifadeyi döndürür. İfade çevrilemiyorsa, tanımsız döndürür.  
+ Bir diziye çevrilmiş bir ifade döndürür. İfade çevrilemez, tanımsız döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,20 +26,20 @@ StringToArray(<str_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *str_expr*  
-   JSON Dizilimi ifadesi olarak ayrıştırılması gereken bir dize ifadesidir. 
+   , JSON dizi ifadesi olarak ayrıştırılacak bir dize ifadesidir. 
   
-## <a name="return-types"></a>İade türleri
+## <a name="return-types"></a>Dönüş türleri
   
-  Dizi ifadesini veya tanımsız ifadesini döndürür. 
+  Dizi ifadesi veya tanımsız döndürür. 
   
 ## <a name="remarks"></a>Açıklamalar
-  İç içe dize değerleri json geçerli olması için çift tırnak ile yazılmalıdır. JSON formatı hakkında ayrıntılı bilgi için [json.org](https://json.org/)
+  İç içe geçmiş dize değerleri, geçerli JSON olması için çift tırnaklarla yazılmalıdır. JSON biçimi hakkında daha fazla bilgi için bkz. [JSON.org](https://json.org/)
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `StringToArray` farklı türlerde nasıl nasıl bir şekilde nasıl hissettiğini gösterir. 
+  Aşağıdaki örnek, farklı türlerde `StringToArray` nasıl davrandığını gösterir. 
   
- Aşağıda geçerli girişli örnekler verilmiştir.
+ Aşağıda, geçerli girişi olan örnekler verilmiştir.
 
 ```sql
 SELECT 
@@ -56,10 +56,10 @@ Sonuç kümesini burada bulabilirsiniz.
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
-Aşağıda geçersiz giriş örneği verilmiştir. 
+Aşağıda, geçersiz giriş örneği verilmiştir. 
    
- Dizi içindeki tek tırnak geçerli JSON değildir.
-Bir sorgu içinde geçerli olsalar da, geçerli dizileri ayrıştırmayazlar. Dizi dizesi içindeki dizeler in\\\\"[ " "]" veya çevresindeki alıntı tek "[""]" olmalıdır.
+ Dizideki tek tırnak işaretleri geçerli bir JSON değil.
+Bir sorgu içinde geçerli olsalar bile, geçerli dizilere ayrıştırmazlar. Dizi dizesi içindeki dizeler "[\\"\\"]" ya da çevreleyen teklifin tek bir ' [""] ' olması gerekir.
 
 ```sql
 SELECT
@@ -72,9 +72,9 @@ Sonuç kümesini burada bulabilirsiniz.
 [{}]
 ```
 
-Aşağıda geçersiz giriş örnekleri verilmiştir.
+Aşağıda, geçersiz giriş örnekleri verilmiştir.
    
- Geçirilen ifade bir JSON dizisi olarak ayrıştırılır; aşağıdakileri dizi yi değerlendirmek ve böylece tanımsız dönmek için değerlendirmeyin.
+ Geçirilen ifade bir JSON dizisi olarak ayrıştırılacak; aşağıdaki dizi tür dizisini değerlendirmez ve tanımsız döndürür.
    
 ```sql
 SELECT
@@ -93,10 +93,10 @@ Sonuç kümesini burada bulabilirsiniz.
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizini kullanmaz.
+Bu sistem işlevi dizinden yararlanmayacak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB giriş](introduction.md)

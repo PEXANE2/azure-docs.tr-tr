@@ -1,6 +1,6 @@
 ---
-title: Azure Akışı Analizi işi Azure Kaynak Yöneticisi şablonu dışa aktarma
-description: Bu makalede, Azure Akış Analizi işiniz için Azure Kaynak Yöneticisi şablonu nasıl dışa aktarılacak açıklanmaktadır.
+title: Azure Stream Analytics işi Azure Resource Manager şablonu dışarı aktarma
+description: Bu makalede Azure Stream Analytics işiniz için Azure Resource Manager şablonunun nasıl dışarı aktarılacağı açıklanır.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,59 +8,59 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 52ea7b45d0dcdb3ae16b8212557ba6ab3344ff15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968926"
 ---
-# <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Akışı Analizi işi Azure Kaynak Yöneticisi şablonu dışa aktarma
+# <a name="export-an-azure-stream-analytics-job-azure-resource-manager-template"></a>Azure Stream Analytics işi Azure Resource Manager şablonu dışarı aktarma
 
-[Azure Kaynak Yöneticisi şablonları,](../azure-resource-manager/templates/overview.md) altyapıyı kod olarak uygulamanıza olanak tanır. Şablon, kaynaklarınız için altyapıyı ve yapılandırmayı tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
+[Azure Resource Manager şablonları](../azure-resource-manager/templates/overview.md) kod olarak altyapı uygulamanıza olanak tanır. Şablon, kaynaklarınızın altyapısını ve yapılandırmasını tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyasıdır. Dağıtılacak kaynakları ve bu kaynakların özelliklerini belirtirsiniz.
 
-Azure Kaynak Yöneticisi şablonu dışa aktararak bir Azure Akış Analizi işini yeniden dağıtabilirsiniz.
+Azure Resource Manager şablonunu dışarı aktararak Azure Stream Analytics işini yeniden dağıtabilirsiniz.
 
-## <a name="open-a-job-in-vs-code"></a>VS Code'da iş açma
+## <a name="open-a-job-in-vs-code"></a>VS Code bir işi açın
 
-Bir şablon dışa aktarmadan önce, visual studio code'da varolan bir Akış Analizi işini açmanız gerekir. 
+Bir şablonu dışarı aktarmak için önce Visual Studio Code içinde mevcut bir Stream Analytics işini açmanız gerekir. 
 
-Yerel bir projeye iş aktarmak için, azure portalındaki **Akış Analizi** Gezgini'nde dışa aktarmak istediğiniz işi bulun. **Sorgu** sayfasından **Visual Studio'da Aç'ı**seçin. Sonra **Visual Studio Kodu**seçin.
+Bir işi yerel bir projeye aktarmak için, Azure portal **Stream Analytics Gezgininde** dışarı aktarmak istediğiniz işi bulun. **Sorgu** sayfasından, **Visual Studio 'da aç**' ı seçin. **Visual Studio Code**öğesini seçin.
 
-![Visual Studio Code'da Açık Akış Analizi işi](./media/resource-manager-export/open-job-vs-code.png)
+![Visual Studio Code Stream Analytics işi aç](./media/resource-manager-export/open-job-vs-code.png)
 
-Akış Analizi işlerini yönetmek için Visual Studio Code'u kullanma hakkında daha fazla bilgi için [Visual Studio Code quickstart](quick-create-vs-code.md)bölümüne bakın.
+Stream Analytics işleri yönetmek için Visual Studio Code kullanma hakkında daha fazla bilgi için [Visual Studio Code hızlı başlangıç](quick-create-vs-code.md)başlığına bakın.
 
-## <a name="compile-the-script"></a>Komut dosyasını derleme 
+## <a name="compile-the-script"></a>Betiği derle 
 
-Bir sonraki adım, iş komut dosyasını bir Azure Kaynak Yöneticisi şablonuna derlemektir. Komut dosyasını derlemeden önce, işinizin en az bir giriş ve bir çıktıyapılandırılmış olduğundan emin olun. Hiçbir giriş veya çıktı yapılandırılmamışsa, önce giriş ve çıktıyı yapılandırmanız gerekir.
+Bir sonraki adım, iş betiğini bir Azure Resource Manager şablonuna derlemedir. Betiği derlemeden önce, işinizin en az bir giriş ve yapılandırılmış bir çıktı içerdiğinden emin olun. Giriş veya çıkış yapılandırılmamışsa, önce girişi ve çıktıyı yapılandırmanız gerekir.
 
-1. Visual Studio Code'da, işinizin *Transformation.asaql* dosyasına gidin.
+1. Visual Studio Code ' de, işinizin *dönüştürme. aşama QL* dosyasına gidin.
 
-   ![Visual Studio Code'da Transformation.asaql dosyası](./media/resource-manager-export/transformation-asaql.png)
+   ![Visual Studio Code dönüştürme. aşama QL dosyası](./media/resource-manager-export/transformation-asaql.png)
 
-1. *Transformation.asaql* dosyasına sağ tıklayın ve MENÜden **ASA: Derleme Komut Dosyası'nı** seçin.
+1. *Transformation. aşama QL* dosyasına sağ tıklayıp **asa: menüden betiği derle** öğesini seçin.
 
-1. Akış Analizi iş çalışma alanınızda bir **Dağıtım** klasörü görünür dikkat edin.
+1. Stream Analytics iş çalışma alanınızda bir **dağıtım** klasörü göründüğünü unutmayın.
 
-1. Dağıtmak için kullanılan Azure Kaynak Yönetimi şablonu olan *JobTemplate.json* dosyasını keşfedin.
+1. Dağıtım için kullanılan Azure Kaynak Yönetimi şablonu olan *Jobtemplate. JSON* dosyasını gezin.
 
-## <a name="complete-the-parameters-file"></a>Parametreler dosyasını tamamla
+## <a name="complete-the-parameters-file"></a>Parametreler dosyasını doldurun
 
-Ardından, Azure Kaynak Yönetimi şablon parametreleri dosyasını tamamlayın.
+Ardından, Azure Kaynak Yönetimi şablon parametreleri dosyasını doldurun.
 
-1. Visual Studio Code'da Stream Analytics iş çalışma alanınızın **Dağıtım** klasöründe bulunan *JobTemplate.parameters.json* dosyasını açın.
+1. Visual Studio Code Stream Analytics iş çalışma alanınızın **dağıtım** klasöründe bulunan *jobtemplate. Parameters. JSON* dosyasını açın.
 
-1. Giriş ve çıkış anahtarlarının null olduğuna dikkat edin. Null değerlerini giriş ve çıktı kaynaklarınız için gerçek erişim anahtarlarıyla değiştirin.
+1. Giriş ve çıkış anahtarlarının NULL olduğuna dikkat edin. Null değerleri, giriş ve çıkış kaynaklarınızın gerçek erişim anahtarlarıyla değiştirin.
 
 1. Parametreler dosyasını kaydedin.
 
 ## <a name="deploy-using-templates"></a>Şablonları kullanarak dağıtma
 
-Önceki bölümde oluşturduğunuz Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Akış Analizi işinizi dağıtmaya hazırsınız.
+Önceki bölümde oluşturduğunuz Azure Resource Manager şablonları kullanarak Azure Stream Analytics işinizi dağıtmaya hazırsınız.
 
-PowerShell penceresinde aşağıdaki komutu çalıştırın. Gerçek kaynak grup adınız ve İş Çalışma alanınızın **Dağıtım Klasöründe** *WorkTemplate.json* ve *JobTemplate.parameters.json* dosyalarına giden tam dosya yollarını *içeren ResourceGroupName*, *TemplateFile*ve *TemplateParameterFile'ı* yeniden e-iş olarak yeniden uyguladığınızdan emin olun.
+Bir PowerShell penceresinde aşağıdaki komutu çalıştırın. *Resourcegroupname*, *TemplateFile*ve *templateparameterfile* dosyalarını gerçek kaynak grubu adınızla ve tüm dosya yollarını Iş çalışma alanınızın **Deploy klasöründe** bulunan *jobtemplate. JSON* ve *jobtemplate. Parameters. JSON* dosyaları ile yeniden etkinleştirdiğinizden emin olun.
 
-Azure PowerShell yapılandırıldıysanız, [Azure PowerShell modüllerini yükle'deki](https://docs.microsoft.com/powershell/azure/install-Az-ps)adımları izleyin.
+Azure PowerShell yapılandırılmamışsa, [ınstall Azure PowerShell Module](https://docs.microsoft.com/powershell/azure/install-Az-ps)' daki adımları izleyin.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -TemplateFile "<path to JobTemplate.json>" -TemplateParameterFile "<path to JobTemplate.parameters.json>"
@@ -68,6 +68,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "<your resource group>" -Templa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Visual Studio Code kullanarak azure akış analizi işlerini canlı girişle yerel olarak test edin](visual-studio-code-local-run-live-input.md)
+* [Visual Studio Code kullanarak canlı giriş ile Azure Stream Analytics işleri yerel olarak test etme](visual-studio-code-local-run-live-input.md)
 
-* [Visual Studio Code (Önizleme) ile Azure Akış Analizi işlerini keşfedin](visual-studio-code-explore-jobs.md)
+* [Visual Studio Code Azure Stream Analytics işleri keşfet (Önizleme)](visual-studio-code-explore-jobs.md)

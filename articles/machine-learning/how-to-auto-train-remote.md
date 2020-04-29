@@ -1,7 +1,7 @@
 ---
 title: Otomatik ML uzaktan işlem hedefleri
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning ile Azure Machine Learning uzaktan bilgi işlem hedefinde otomatik makine öğrenimini kullanarak nasıl model oluşturabilirsiniz öğrenin
+description: Azure Machine Learning ile Azure Machine Learning uzaktan işlem hedefi üzerinde otomatik makine öğrenimi kullanarak modeller oluşturmayı öğrenin
 services: machine-learning
 author: cartacioS
 ms.author: sacartac
@@ -12,27 +12,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79080420"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Otomatik makine öğrenmesi ile modelleri bulutta eğitin
 
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning'de, modelinizi yönettiğiniz farklı türde bilgi işlem kaynakları üzerinde eğitebilirsiniz. Bilgi işlem hedefi yerel bir bilgisayar veya buluttaki bir kaynak olabilir.
+Azure Machine Learning, modelinizi yönettiğiniz farklı türlerde işlem kaynakları üzerinde eğitebilirsiniz. İşlem hedefi, bulutta yerel bir bilgisayar veya bir kaynak olabilir.
 
-Azure Machine Learning Compute (AmlCompute) gibi ek bilgi işlem hedefleri ekleyerek makine öğrenimi denemenizi kolayca büyütebilir veya ölçeklendirebilirsiniz. AmlCompute, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak tanıyan, yönetilen bir işlem altyapısıdır.
+Azure Machine Learning Işlem (AmlCompute) gibi ek bilgi işlem hedefleri ekleyerek makine öğrenimi denemenizin kolayca ölçeğini değiştirebilir veya ölçeklendirebilirsiniz. AmlCompute, kolayca tek veya çok düğümlü bir işlem oluşturmanıza olanak tanıyan, yönetilen bir işlem altyapısıdır.
 
-Bu makalede, Nasıl AmlCompute ile otomatik ML kullanarak bir model oluşturmak için öğrenirler.
+Bu makalede, AmlCompute ile otomatikleştirilmiş ML kullanarak bir model oluşturmayı öğreneceksiniz.
 
-## <a name="how-does-remote-differ-from-local"></a>Uzaktan kumandanın yerelden farkı nedir?
+## <a name="how-does-remote-differ-from-local"></a>Uzaktan yerel nasıl farklıdır?
 
-Öğretici "[Otomatik makine öğrenme ile bir sınıflandırma modeli tren](tutorial-auto-train-models.md)" otomatik ML ile bir model eğitmek için yerel bir bilgisayar nasıl kullanılacağını öğretir. Yerel olarak eğitim verirken yapılan iş akışı uzak hedefler için de geçerlidir. Ancak, uzaktan hesaplama ile, otomatik ML deneme yinelemeler eşit olarak yürütülür. Bu işlev, belirli bir yinelemeyi iptal etmenizi, yürütmedurumunu izlemenizi veya Jupyter not defterindeki diğer hücreler üzerinde çalışmaya devam etmenizi sağlar. Uzaktan eğitim almak için önce AmlCompute gibi bir uzaktan işlem hedefi oluşturursunuz. Sonra uzak kaynağı yapılandırın ve kodunuzu oraya gönderirsiniz.
+"[Otomatik makine öğrenimi ile sınıflandırma modelini eğitme](tutorial-auto-train-models.md)" öğreticisi, bir MODELI otomatik ml ile eğitme konusunda yerel bir bilgisayar kullanmayı öğretir. Eğitim yerel olarak uzak hedefler de için de geçerli olduğunda iş akışı. Ancak, uzaktan işlem ile otomatikleştirilmiş ML denemesi yinelemeleri zaman uyumsuz olarak yürütülür. Bu işlevsellik, belirli bir yinelemeyi iptal etmenizi, yürütmenin durumunu izlemenize veya Jupyter not defterindeki diğer hücrelerde çalışmaya devam etmenize olanak tanır. Uzaktan eğitebilmeniz için öncelikle AmlCompute gibi bir uzak işlem hedefi oluşturursunuz. Ardından, uzak kaynağı yapılandırıp kodunuzu buraya gönderebilirsiniz.
 
-Bu makalede, uzak bir AmlCompute hedef üzerinde otomatik bir ML deneme çalıştırmak için gerekli ekstra adımları gösterir. Çalışma alanı nesnesi, `ws`öğretici burada kod boyunca kullanılır.
+Bu makalede, uzak bir AmlCompute hedefinde otomatik ML denemesi çalıştırmak için gereken ek adımlar gösterilmektedir. Öğreticiden alınan çalışma `ws`alanı nesnesi buradaki kod boyunca kullanılır.
 
 ```python
 ws = Workspace.from_config()
@@ -40,9 +40,9 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Kaynak oluşturma
 
-Zaten [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) yoksa, çalışma alanınızda hedef oluşturun .`ws`
+[`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) Hedefi zaten yoksa çalışma alanınızda (`ws`) oluşturun.
 
-**Zaman tahmini**: AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
+**Tahmin süresi**: AmlCompute hedefinin oluşturulması yaklaşık 5 dakika sürer.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -79,17 +79,17 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Artık nesneyi `compute_target` uzaktan bilgi işlem hedefi olarak kullanabilirsiniz.
+Artık `compute_target` nesneyi uzak işlem hedefi olarak kullanabilirsiniz.
 
-Küme adı kısıtlamaları şunlardır:
-+ 64 karakterden daha kısa olmalıdır.
-+ Aşağıdaki karakterlerden herhangi birini `\` içeremez: ~ ! @ # $ % ^ & * ( \\ \\ ) = + _ [ ] { } | : \' \\" , < > / ?. `
+Küme adı kısıtlamaları şunları içerir:
++ 64 karakterden kısa olmalıdır.
++ Şu karakterlerden herhangi birini içeremez: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |; : \' \\",  < > /?. `
 
-## <a name="access-data-using-tabulardataset-function"></a>TabularDataset işlevini kullanarak verilere erişin
+## <a name="access-data-using-tabulardataset-function"></a>TabularDataset işlevini kullanarak verilere erişme
 
-Tanımlanan training_data [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) olarak ve etiket, otomatik ML [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)geçirilir. Yöntem `TabularDataset` `from_delimited_files`, varsayılan olarak, `infer_column_types` sütunlar türü otomatik olarak çıkaracaktır true ayarlar. 
+Ve içinde otomatik [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) ml 'ye geçirilen etiketi olarak tanımlanmış training_data [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). Yöntemi, varsayılan olarak, sütun türünü otomatik olarak çıkardığı true olarak ayarlar `infer_column_types` `TabularDataset` `from_delimited_files` 
 
-Sütun türlerini el ile ayarlamak isterseniz, bağımsız `set_column_types` değişkeni her sütunun türünü el ile ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sklearn paketinden gelir.
+Sütun türlerini el ile ayarlamak isterseniz, her sütunun türünü el ile ayarlamak için `set_column_types` bağımsız değişkenini ayarlayabilirsiniz. Aşağıdaki kod örneğinde, veriler sköğren paketinden gelir.
 
 ```python
 from sklearn import datasets
@@ -122,8 +122,8 @@ ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progr
 training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
-## <a name="configure-experiment"></a>Denemeyi yapılandırma
-`AutoMLConfig`' nin ayarlarını belirtin.  [(Parametrelerin tam listesine](how-to-configure-auto-train.md#configure-experiment) ve olası değerlerine bakın.)
+## <a name="configure-experiment"></a>Deneme yapılandırma
+İçin `AutoMLConfig`ayarları belirtin.  ( [Parametrelerin tam listesini](how-to-configure-auto-train.md#configure-experiment) ve olası değerlerini görün.)
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -150,9 +150,9 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-## <a name="submit-training-experiment"></a>Eğitim denemesi gönder
+## <a name="submit-training-experiment"></a>Eğitim deneme deneyimini gönder
 
-Şimdi algoritmayı, hiper parametreleri otomatik olarak seçmek ve modeli eğitmek için yapılandırmayı gönderin.
+Şimdi, algoritmayı otomatik olarak seçmek için yapılandırmayı, hiper parametreleri ve modeli eğiteye gönderebilirsiniz.
 
 ```python
 from azureml.core.experiment import Experiment
@@ -160,7 +160,7 @@ experiment = Experiment(ws, 'automl_remote')
 remote_run = experiment.submit(automl_config, show_output=True)
 ```
 
-Aşağıdaki örneğe benzer çıktı görürsünüz:
+Aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
     Running on remote compute: mydsvmParent Run ID: AutoML_015ffe76-c331-406d-9bfd-0fd42d8ab7f6
     ***********************************************************************************************
@@ -194,37 +194,37 @@ Aşağıdaki örneğe benzer çıktı görürsünüz:
             19      Robust Scaler kNN                     0:02:32                  0.983     0.989
 
 
-## <a name="explore-results"></a>Sonuçları keşfedin
+## <a name="explore-results"></a>Sonuçları keşfet
 
-Bir grafik ve sonuç tablosunu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [Jupyter widget'ını](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) kullanabilirsiniz.
+Bir grafik ve sonuç tablosu görmek için [eğitim öğreticisinde](tutorial-auto-train-models.md#explore-the-results) gösterildiği gibi aynı [jupi pencere öğesini](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) kullanabilirsiniz.
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
 
-Burada pencere öğesinin statik bir görüntüsü yer alır.  Not defterinde, bu çalıştırmaiçin çalışma özelliklerini ve çıktı günlüklerini görmek için tablodaki herhangi bir satırı tıklatabilirsiniz.   Ayrıca, her yineleme için kullanılabilir her metnin grafiğini görüntülemek için grafiğin üzerindeki açılır bırakmayı da kullanabilirsiniz.
+Burada pencere öğesinin statik bir görüntüsü yer alır.  Not defterinde, söz konusu çalıştırmaya yönelik çalıştırma özelliklerini ve çıkış günlüklerini görmek için tablodaki herhangi bir satıra tıklayabilirsiniz.   Her yineleme için kullanılabilir her ölçümün grafiğini görüntülemek için grafiğin üzerindeki açılan menüyü de kullanabilirsiniz.
 
 ![pencere öğesi tablosu](./media/how-to-auto-train-remote/table.png)
 ![pencere öğesi çizimi](./media/how-to-auto-train-remote/plot.png)
 
-Widget, tek tek çalışan ayrıntılarını görmek ve keşfetmek için kullanabileceğiniz bir URL görüntüler.  
+Pencere öğesi, bireysel çalıştırma ayrıntılarını görmek ve araştırmak için kullanabileceğiniz bir URL görüntüler.  
 
-Jupyter dizüstü bilgisayarda değilseniz, çalıştırın kendisinden URL görüntüleyebilirsiniz:
+Jupyter not defterinde değilseniz, bu URL 'YI çalıştırmanın içinden görüntüleyebilirsiniz:
 
 ```
 remote_run.get_portal_url()
 ```
 
-Aynı bilgiler çalışma alanınızda da kullanılabilir.  Bu sonuçlar hakkında daha fazla bilgi edinmek için [bkz.](how-to-understand-automated-ml.md)
+Çalışma alanınızda aynı bilgiler bulunur.  Bu sonuçlar hakkında daha fazla bilgi edinmek için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md).
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki [not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) bu makalede kavramları gösterir.
+Aşağıdaki [Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) , bu makaledeki kavramları göstermektedir.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Otomatik eğitim için ayarları nasıl yapılandırıştırılayarıştırılayarıştırmayı](how-to-configure-auto-train.md)öğrenin.
-* Otomatik ML denemelerinde model yorumlanabilirlik özelliklerini etkinleştirme [nasıl yapılacağını](how-to-machine-learning-interpretability-automl.md) görün.
+* [Otomatik eğitime yönelik ayarları yapılandırmayı](how-to-configure-auto-train.md)öğrenin.
+* Otomatik ML denemeleri ' de model yorumlu özelliklerinin [nasıl](how-to-machine-learning-interpretability-automl.md) etkinleştirilebilirliği bölümüne bakın.

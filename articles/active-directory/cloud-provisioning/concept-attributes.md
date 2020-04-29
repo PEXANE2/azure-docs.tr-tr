@@ -1,6 +1,6 @@
 ---
-title: Azure AD şemasını ve özel ifadeleri anlama
-description: Bu makalede, Azure AD şeması, madde sağlayan aracının aktığı öznitelikler ve özel ifadeler açıklanmaktadır.
+title: Azure AD şemasını ve özel ifadeleri anlayın
+description: Bu makalede, Azure AD şeması, sağlama aracısının akan öznitelikleri ve özel ifadeler açıklanmaktadır.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,67 +16,67 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299338"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD şemasını anlama
-Azure Etkin Dizini'ndeki (Azure AD) bir nesne, herhangi bir dizin gibi, kullanıcılar, gruplar ve kişiler gibi şeyleri temsil eden programatik bir üst düzey veri yapısıdır. Azure AD'de yeni bir kullanıcı veya kişi oluşturduğunuzda, bu nesnenin yeni bir örneğini oluşturursunuz. Bu örnekler özelliklerine göre ayırt edilebilir.
+Tüm Dizin gibi Azure Active Directory (Azure AD) bir nesne, kullanıcılar, gruplar ve kişiler gibi şeyleri temsil eden bir programlama üst düzey veri yapısıdır. Azure AD 'de yeni bir kullanıcı veya ilgili kişi oluşturduğunuzda, bu nesnenin yeni bir örneğini oluşturuyorsunuz. Bu örnekler özelliklerine göre farklılaştırılabilir.
 
-Azure AD'deki özellikler, Azure AD'deki bir nesnenin örneği hakkında bilgi depolamaktan sorumlu öğelerdir.
+Azure AD 'deki özellikler, Azure AD 'de bir nesnenin örneğiyle ilgili bilgileri saklamaktan sorumlu olan öğelerdir.
 
-Azure AD şeması, bir girişte hangi özelliklerin kullanılabileceğini, bu özelliklerin sahip olabileceği değer türlerini ve kullanıcıların bu değerlerle nasıl etkileşimde bulunabilirlerini tanımlar. 
+Azure AD şeması, bir girişte özelliklerin kullanılabileceği kuralları, bu özelliklerin sahip olabileceği değer türlerini ve kullanıcıların bu değerlerle nasıl etkileşime girebileceğini tanımlar. 
 
-Azure AD'nin iki tür özelliği vardır:
-- Yerleşik özellikler : Azure AD şeması tarafından önceden tanımlanmış **özellikler.** Bu özellikler farklı kullanımlar sağlar ve erişilebilir olabilir veya olmayabilir.
-- **Dizin uzantıları**: Azure AD'yi kendi kullanımınız için özelleştirebilmeniz için sağlanan özellikler. Örneğin, şirket içi Active Directory'nizi belirli bir öznitelikle genişlettiyseniz ve bu öznitelikten akış yapmak istiyorsanız, sağlanan özel özelliklerden birini kullanabilirsiniz. 
+Azure AD 'nin iki tür özelliği vardır:
+- **Yerleşik özellikler**: Azure AD şeması tarafından önceden tanımlanan özellikler. Bu özellikler farklı kullanımlar sağlar ve erişilebilir olmayabilir veya olmayabilir.
+- **Dizin uzantıları**: Azure AD 'yi kendi kullanım için özelleştirebilmeniz için sunulan özellikler. Örneğin, şirket içi Active Directory belirli bir öznitelikle genişlettiyseniz ve bu özniteliği Flow istiyorsanız, belirtilen özel özelliklerden birini kullanabilirsiniz. 
 
 ## <a name="attributes-and-expressions"></a>Öznitelikler ve ifadeler
-Kullanıcı gibi bir nesne Azure AD'ye sağlandığında, kullanıcı nesnesinin yeni bir örneği oluşturulur. Bu oluşturma, öznitelikler olarak da bilinen bu nesnenin özelliklerini içerir. Başlangıçta, yeni oluşturulan nesnenin öznitelikleri eşitleme kuralları tarafından belirlenen değerlere ayarlanmıştır. Bu öznitelikler daha sonra bulut sağlama aracısı aracılığıyla güncel tutulur.
+Kullanıcı gibi bir nesne Azure AD 'ye sağlandığında, Kullanıcı nesnesinin yeni bir örneği oluşturulur. Bu oluşturma, bu nesnenin öznitelikleri olarak da bilinen özelliklerini içerir. Başlangıçta, yeni oluşturulan nesnenin öznitelikleri, eşitleme kuralları tarafından belirlenen değerler olarak ayarlanır. Bu öznitelikler daha sonra bulut sağlama Aracısı aracılığıyla güncel tutulur.
 
 ![Nesne sağlama](media/concept-attributes/attribute1.png)
 
-Örneğin, bir kullanıcı Pazarlama bölümünün bir parçası olabilir. Azure AD departman özniteliği başlangıçta sağlandığında oluşturulur ve değer Pazarlama olarak ayarlanır. Altı ay sonra, Satış'a geçiş yaparlarsa, şirket içi Active Directory departman özniteliği Satış olarak değiştirilir. Bu değişiklik Azure AD ile eşitlenir ve Azure AD kullanıcı nesnelerine yansıtılır.
+Örneğin, bir Kullanıcı bir pazarlama bölümünün parçası olabilir. Azure AD departmanı özniteliği, başlangıçta sağlandığında oluşturulur ve değer pazarlama olarak ayarlanır. Altı ay sonra satışa değiştirildiklerinde şirket içi Active Directory departmanı özniteliği Sales olarak değiştirilir. Bu değişiklik Azure AD 'ye eşitlenir ve Azure AD kullanıcı nesnesine yansıtılır.
 
-Öznitelik eşitlemesi, Azure AD'deki değerin doğrudan şirket içi öznitelik değerine ayarlandığı doğrudan olabilir. Veya, programatik bir ifade eşitleme işleyebilir. Bazı mantık veya bir belirleme değeri doldurmak için yapılması gereken durumlarda programlı bir ifade gereklidir.
+Öznitelik eşitlemesi doğrudan, Azure AD 'deki değerin şirket içi özniteliğinin değerine doğrudan ayarlandığı bir biçimde olabilir. Ya da bir programlama ifadesi eşitlemeyi işleyebilir. Bir programlı ifade, değeri doldurmak için bazı Logic veya bir belirleme yapılması gereken durumlarda gereklidir.
 
-Örneğin, posta özniteliği " "john.smith@contoso.comolsaydı ve " "@contoso.comkısmını ve yalnızca "john.smith" değerini sökmek için gerekli yse, şöyle bir şey kullanırdın:
+Örneğin, "john.smith@contoso.com" posta özniteliğine sahip olsaydıysanız ve "@contoso.comJohn. Smith" yalnızca "John. Smith" değerini bırakmak için gerekliyse, şöyle bir şey kullanırsınız:
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Örnek giriş/çıktı:** <br>
+**Örnek giriş/çıkış:** <br>
 
-* **GIRIŞ** (posta):john.smith@contoso.com" "
-* **ÇIKIŞ**: "john.smith"
+* **Giriş** (posta): "john.smith@contoso.com"
+* **Çıkış**: "John. Smith"
 
-Özel ifadeler ve sözdizimi nasıl yazılabilenler hakkında daha fazla bilgi için Azure [Etkin Dizini'nde öznitelik eşlemeleri için ifadeler yazma'ya](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)bakın.
+Özel ifadeler ve söz dizimi yazma hakkında daha fazla bilgi için, bkz. [Azure Active Directory öznitelik eşlemeleri için Ifadeler yazma](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
 
-Aşağıdaki tabloda ortak öznitelikler ve Azure AD ile nasıl senkronize edildikleri listelenir.
+Aşağıdaki tabloda, ortak öznitelikler ve bunların Azure AD ile nasıl eşitlendikleri listelenmektedir.
 
 
-|Şirket içi Active Directory|Haritalama türü|Azure AD|
+|Şirket içi Active Directory|Eşleme türü|Azure AD|
 |-----|-----|-----|
-|Cn|Direct|commonName
-|ülkeKodu|Direct|ülkeKodu|
+|,|Direct|commonName
+|countryCode|Direct|countryCode|
 |displayName|Direct|displayName|
 |givenName|İfadeler|givenName|
-|Objectguıd|Direct|kaynakAnchorBinary|  
-|Userprincipalname|Direct|userPrincipalName|
-|ProxyAdress|Direct|ProxyAdresi|
+|Objectguıd 'dir|Direct|sourceAnchorBinary|  
+|userprincipalName|Direct|userPrincipalName|
+|ProxyAdress|Direct|ProxyAddress|
 
-## <a name="view-the-schema"></a>Şeayı görüntüle
+## <a name="view-the-schema"></a>Şemayı görüntüleme
 > [!WARNING]
-> Bulut sağlama yapılandırması bir hizmet ilkesi oluşturur. Hizmet ilkesi Azure portalında görülebilir. Azure portalındaki hizmet temel deneyimini kullanarak öznitelik eşlemelerini değiştirmemelisiniz.  Bu özellik desteklenmez.
+> Bulut sağlama yapılandırması bir hizmet sorumlusu oluşturur. Hizmet sorumlusu Azure portal görünür. Azure portal hizmet sorumlusu deneyimini kullanarak öznitelik eşlemelerini değiştirmemelisiniz.  Bu özellik desteklenmez.
 
 Şemayı görüntülemek ve doğrulamak için aşağıdaki adımları izleyin.
 
-1.  Grafik [Explorer'a](https://developer.microsoft.com/graph/graph-explorer)gidin.
-1.  Genel yönetici hesabınızla oturum açın.
-1.  Solda, **izinleri değiştir'i** seçin ve **Directory.ReadWrite.All'ın** *Onay Olduğundan*Emin Olun.
-1.  Sorguyu `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`çalıştırın. Bu sorgu, filtre uygulanmış hizmet ilkelerinin listesini döndürür.
-1.  Değeri `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` bulun ve `"id"`not edin.
+1.  [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)'a gidin.
+1.  Genel Yönetici hesabınızla oturum açın.
+1.  Sol tarafta **izinleri değiştir** ' i seçin ve **Directory. ReadWrite. All** *' ın onaylı olduğundan emin*olun.
+1.  Sorguyu `https://graph.microsoft.com/beta/serviceprincipals/?$filter=startswith(Displayname,'Active')`çalıştırın. Bu sorgu, hizmet sorumlularının filtrelenmiş bir listesini döndürür.
+1.  Değerini `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` bulup aklınızda bulun `"id"`.
     ```
     "value": [
             {
@@ -149,8 +149,8 @@ Aşağıdaki tabloda ortak öznitelikler ve Azure AD ile nasıl senkronize edild
                 "passwordCredentials": []
             },
     ```
-1. Değerinizle değiştirin `{Service Principal id}` ve sorguyu `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`çalıştırın.
-1. Değeri `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` bulun ve `"id"`not edin.
+1. Değerini `{Service Principal id}` ile değiştirin ve sorguyu `https://graph.microsoft.com/beta/serviceprincipals/{Service Principal id}/synchronization/jobs/`çalıştırın.
+1. Değerini `"id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976"` bulup aklınızda bulun `"id"`.
     ```
     {
                 "id": "AD2AADProvisioning.fd1c9b9e8077402c8bc03a7186c8f976",
@@ -245,11 +245,11 @@ Aşağıdaki tabloda ortak öznitelikler ve Azure AD ile nasıl senkronize edild
  
     Örnek: https://graph.microsoft.com/beta/serviceprincipals/653c0018-51f4-4736-a3a3-94da5dcb6862/synchronization/jobs/AD2AADProvisioning.e9287a7367e444c88dc67a531c36d8ec/schema
 
-   `{Service Principal Id}` Değiştirin `{AD2ADD Provisioning Id}` ve değerlerinizle.
+   Ve `{Service Principal Id}` `{AD2ADD Provisioning Id}` değerlerini değerlerinizle değiştirin.
 
-1. Bu sorgu şema döndürür.
+1. Bu sorgu şemayı döndürür.
 
-   ![İade şema](media/concept-attributes/schema1.png)
+   ![Döndürülen şema](media/concept-attributes/schema1.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

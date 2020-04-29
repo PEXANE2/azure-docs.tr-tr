@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure DC/İşletim Sistemi kümesiyle ACR kullanma
+title: Kullanım DıŞı Azure DC/OS kümesiyle ACR kullanma
 description: Azure Container Service’te DC/OS kümesi ile Azure Container Registry kullanma
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 03/23/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: 9e69b66c7cee5a6e012ad7ed2477556fa840bfb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78402076"
 ---
-# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>(AmortismanA Uğradı) Uygulamanızı dağıtmak için DC/OS kümeli ACR'yi kullanma
+# <a name="deprecated-use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>Kullanım DıŞı Uygulamanızı dağıtmak için bir DC/OS kümesiyle ACR kullanma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -127,7 +127,7 @@ Ubuntu görüntüsünden bir kapsayıcı oluşturun.
 docker run ubuntu --name base-image
 ```
 
-Şimdi kapsayıcıyı yeni bir görüntüye yakalayın. Görüntü adı bir biçimi `loginServer` ile kapsayıcı kayıt defterinin `loginServer/imageName`adını içermelidir.
+Şimdi kapsayıcıyı yeni bir görüntüye yakalayın. Görüntü adının, kapsayıcı kayıt defterinin `loginServer` adını bir biçimiyle içermesi gerekir. `loginServer/imageName`
 
 ```console
 docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo

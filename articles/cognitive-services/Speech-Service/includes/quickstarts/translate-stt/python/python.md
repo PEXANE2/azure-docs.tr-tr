@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Konuşma-konuşma, Python - Konuşma hizmeti çevirin'
+title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, Python-konuşma hizmeti'
 description: TBD
 services: cognitive-services
 author: chlandsi
@@ -10,19 +10,19 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
 ms.openlocfilehash: e869a6581ac29ac234c075d258b59dbd45045ee2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78925585"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=python)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=python)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
@@ -78,17 +78,17 @@ Başlamadan önce şunları unutmayın:
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](../../../../regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Yaptığınız değişiklikleri `quickstart.py`kaydedin.
+1. Yaptığınız değişiklikleri kaydedin `quickstart.py`.
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-1. Örneği konsoldan veya IDE'nizden çalıştırın:
+1. Örneği konsolundan veya IDE 'ınızdan çalıştırın:
 
    ```
    python quickstart.py
    ```
 
-2. İngilizce bir deyim ya da cümle söyleyin. Uygulama konuşmanızı konuşma hizmetine iletir ve metne (bu durumda Almanca'ya) çevirir ve aktarır. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
+2. İngilizce bir deyim ya da cümle söyleyin. Uygulama, konuşmanızı konuşma hizmetine iletir. Bu, metne (Bu durumda Almanca 'ya) ve metni dönüştürür. Konuşma hizmeti daha sonra metni görüntülenmek üzere uygulamaya geri gönderir.
 
    ````
    Say something...

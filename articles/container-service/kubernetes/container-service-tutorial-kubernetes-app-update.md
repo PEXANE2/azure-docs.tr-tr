@@ -1,5 +1,5 @@
 ---
-title: (AmortismanA Uğradı) Azure Konteyner Hizmeti öğreticisi - Uygulamayı güncelleştir
+title: Kullanım DıŞı Azure Container Service öğreticisi-uygulamayı güncelleştirme
 description: Azure Container Service öğreticisi - Uygulamayı güncelleştirme
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: e65ca30e4f15b6f69f39160c67813047c40ce8ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78274120"
 ---
-# <a name="deprecated-update-an-application-in-kubernetes"></a>(AmortismanA Uğradı) Kubernetes'teki bir uygulamayı güncelleştirin
+# <a name="deprecated-update-an-application-in-kubernetes"></a>Kullanım DıŞı Kubernetes 'te uygulama güncelleştirme
 
 > [!TIP]
-> Azure Kubernetes Hizmetini kullanan bu öğreticinin güncelleştirilmiş sürümü için [Bkz. Öğretici: Azure Kubernetes Hizmetinde (AKS) bir uygulamayı güncelleştirin.](../../aks/tutorial-kubernetes-app-update.md)
+> Azure Kubernetes hizmetini kullanan Bu öğreticinin güncelleştirilmiş sürümü için bkz. [öğretici: Azure Kubernetes Service 'te (AKS) bir uygulamayı güncelleştirme](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
