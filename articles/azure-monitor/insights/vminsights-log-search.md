@@ -1,334 +1,334 @@
 ---
-title: VM'ler için Azure Monitöründen Günlükler Nasıl Sorgulanır?
-description: Sanal Aygıtlar için Azure Monitor çözümü ölçümler toplar ve verileri kaydeder ve bu makalede kayıtlar açıklanır ve örnek sorgular içerir.
+title: VM'ler için Azure İzleyici günlüklerini sorgulama
+description: VM'ler için Azure İzleyici çözümü ölçümleri ve günlük verilerini toplar ve bu makalede kayıtları açıklanmakta ve örnek sorgular yer almaktadır.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396918"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure Monitor'dan günlükleri sorgulama
+# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
-Sanal Taşıtlar için Azure Monitor performans ve bağlantı ölçümleri, bilgisayar ve süreç envanteri verileri ve sistem durumu bilgilerini toplar ve Azure Monitor'daki Log Analytics çalışma alanına iletir.  Bu [veriler, Azure](../../azure-monitor/log-query/log-query-overview.md) Monitor'da sorgu için kullanılabilir. Bu verileri geçiş planlaması, kapasite çözümlemesi, bulma ve isteğe bağlı performans sorun giderme gibi senaryolara uygulayabilirsiniz.
+VM'ler için Azure İzleyici performans ve bağlantı ölçümlerini, bilgisayar ve işlem envanter verilerini ve sistem durumu bilgilerini toplayıp Azure Izleyici 'de Log Analytics çalışma alanına iletir.  Bu veriler Azure Izleyici 'de [sorgu](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
 
 ## <a name="map-records"></a>Kayıtları eşleme
 
-Bir işlem veya bilgisayar başlatıldığında veya VMs Map özelliği için Azure Monitor'a binildiğinde oluşturulan kayıtlara ek olarak, her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tablolarda özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Kaynak Yöneticisi API'deki Makine kaynağının alanlarıyla eşlenin. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Kaynak Yöneticisi API'deki İşlem kaynağının alanlarına eşlenir. ResourceName_s alanı, ilgili Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
+Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; bir işlem veya bilgisayar başladığında oluşturulan kayıtlara ek olarak, VM'ler için Azure İzleyici eşleme özelliği de eklenmediyse. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
 
-Benzersiz işlemleri ve bilgisayarları tanımlamak için kullanabileceğiniz dahili olarak oluşturulmuş özellikler vardır:
+Benzersiz işlem ve bilgisayarları tanımlamak için kullanabileceğiniz, dahili olarak oluşturulan özellikler vardır:
 
-- Bilgisayar: Log Analytics çalışma alanı içindeki bir bilgisayarı benzersiz olarak tanımlamak için *ResourceId* veya *ResourceName_s* kullanın.
-- İşlem: Log Analytics çalışma alanındaki bir işlemi benzersiz olarak tanımlamak için *ResourceId'yi* kullanın. *ResourceName_s,* işlemin yürütüldettiği makine bağlamında benzersizdir (MachineResourceName_s) 
+- Bilgisayar: bir Log Analytics çalışma alanındaki bilgisayarı benzersiz şekilde tanımlamak için *RESOURCEID* veya *ResourceName_s* kullanın.
+- İşlem: Log Analytics çalışma alanındaki bir işlemi benzersiz şekilde tanımlamak için *RESOURCEID* kullanın. *ResourceName_s* , işlemin üzerinde çalıştığı makinenin bağlamı içinde benzersizdir (MachineResourceName_s) 
 
-Belirli bir işlem ve belirli bir zaman aralığındaki bilgisayar için birden çok kayıt bulunabildiği için, sorgular aynı bilgisayar veya işlem için birden fazla kayıt döndürebilir. Yalnızca en son kaydı eklemek `| summarize arg_max(TimeGenerated, *) by ResourceId` için sorguya ekleyin.
+Belirli bir zaman aralığında belirtilen bir işlem ve bilgisayar için birden çok kayıt olabileceğinden, sorgular aynı bilgisayar veya işlem için birden fazla kayıt döndürebilir. Yalnızca en son kaydı dahil etmek için sorguya ekleyin `| summarize arg_max(TimeGenerated, *) by ResourceId` .
 
 ### <a name="connections-and-ports"></a>Bağlantılar ve bağlantı noktaları
 
-Bağlantı Ölçümleri özelliği, Azure Monitor günlüklerinde iki yeni tablo sunar : VMConnection ve VMBoundPort. Bu tablolar, bir makinenin (gelen ve giden) bağlantılarının yanı sıra açık/etkin sunucu bağlantı noktaları hakkında bilgi sağlar. ConnectionMetrics, bir zaman penceresi boyunca belirli bir metrik elde etmek için araçlar sağlayan API'ler aracılığıyla da ortaya çıkarır. Dinleme soketinde *kabul* etmekten kaynaklanan TCP bağlantıları gelen, belirli bir IP ve bağlantı noktasına *bağlanarak* oluşturulanlar ise giden. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Yön özelliği yle temsil edilir. 
+Bağlantı ölçümleri özelliği, Azure Izleyici günlükleri-VMConnection ve VMBoundPort 'ta iki yeni tablo tanıtır. Bu tablolar bir makineye yönelik bağlantılar (gelen ve giden) ve bunlar üzerinde açık/etkin olan sunucu bağlantı noktaları hakkında bilgi sağlar. Connectionmetric Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler aracılığıyla da sunulur. Bir dinleme yuvasında *kabul edilmeden* kaynaklanan TCP bağlantıları gelen, belırlı bir IP ve bağlantı noktasına *bağlanarak* oluşturulanlar gidendir. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Direction özelliği ile temsil edilir. 
 
-Bu tablolardaki kayıtlar Bağımlılık Aracısı tarafından bildirilen verilerden oluşturulur. Her kayıt 1 dakikalık bir zaman aralığında bir gözlem temsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığı, yani bağlantı veya bağlantı noktasını tanımlamak için bilgiler ve bu varlıkla ilişkili ölçümleri içerir. Şu anda, yalnızca IPv4 üzerinden TCP kullanılarak oluşan ağ etkinliği bildirilir. 
+Bu tablolardaki kayıtlar, Dependency Agent tarafından bildirilen verilerden oluşturulur. Her kayıt, 1 dakikalık bir zaman aralığı üzerindeki bir gözlemi temsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığın, yani bağlantının veya bağlantı noktasının yanı sıra söz konusu varlıkla ilişkili ölçümleri belirlemek için bilgiler içerir. Şu anda yalnızca IPv4 üzerinden TCP kullanılarak gerçekleşen ağ etkinliği raporlanır. 
 
-#### <a name="common-fields-and-conventions"></a>Ortak alanlar ve sözleşmeler 
+#### <a name="common-fields-and-conventions"></a>Ortak alanlar ve kurallar 
 
-Aşağıdaki alanlar ve konvansiyonlar hem VMConnection hem de VMBoundPort için geçerlidir: 
+Aşağıdaki alanlar ve kurallar hem VMConnection hem de VMBoundPort için geçerlidir: 
 
-- Bilgisayar: Raporlama makinesinin tam nitelikli alan adı 
-- AgentId: Log Analytics temsilcisine sahip bir makineiçin benzersiz tanımlayıcı  
-- Makine: ServiceMap tarafından açığa çıkarılan makine için Azure Kaynak Yöneticisi kaynağının adı. *M-{GUID}* formundadır, *GUID* AgentId ile aynı GUID  
-- İşlem: ServiceMap tarafından ortaya çıkarılan işlem için Azure Kaynak Yöneticisi kaynağının adı. *P-{hex string}* şeklindedir. İşlem bir makine kapsamı içinde benzersizdir ve makineler arasında benzersiz bir işlem kimliği oluşturmak, Makine ve İşlem alanlarını birleştirmek için. 
-- ProcessName: Raporlama işleminin yürütülebilir adı.
-- Tüm IP adresleri IPv4 kanonik formatında dizeleri, örneğin *13.107.3.160* 
+- Bilgisayar: Raporlama makinesinin tam etki alanı adı 
+- Bilgisayar kimliği: Log Analytics aracısına sahip bir makine için benzersiz tanımlayıcı  
+- Makine: ServiceMap tarafından sunulan makinenin Azure Resource Manager kaynak adı. Bu, *Guid* ,, It TID Ile aynı GUID olan *z-{GUID}* biçimindedir  
+- İşlem: ServiceMap tarafından sunulan işlemin Azure Resource Manager kaynak adı. Bu, *p-{hex dize}* biçimindedir. İşlem bir makine kapsamı içinde benzersizdir ve makineler arasında benzersiz bir işlem KIMLIĞI oluşturmak, makine ve Işlem alanlarını birleştirmek. 
+- ProcessName: raporlama işleminin yürütülebilir adı.
+- Tüm IP adresleri, IPv4 kurallı biçimindeki dizelerdir, örneğin, *13.107.3.160* 
 
-Maliyet ve karmaşıklığı yönetmek için bağlantı kayıtları tek tek fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı, daha sonra ilgili tabloya yansıtılan mantıksal bir bağlantı halinde gruplandırılır.  Anlamı, *VMConnection* tablosundaki kayıtlar, gözlemlenen tek tek fiziksel bağlantıları değil, mantıksal bir gruplamayı temsil eder. Belirli bir dakika aralığında aşağıdaki öznitelikler için aynı değeri paylaşan fiziksel ağ bağlantısı, *VMConnection'da*tek bir mantıksal kayda toplanır. 
+Maliyet ve karmaşıklığı yönetmek için, bağlantı kayıtları tek tek fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı, daha sonra ilgili tabloya yansıtılmış bir mantıksal bağlantı halinde gruplandırılır.  Yani, *Vmconnection* tablosundaki kayıtlar, gözlemlenen ayrı fiziksel bağlantıları değil, mantıksal gruplandırmayı temsil eder. Belirli bir dakikalık Aralık sırasında aşağıdaki öznitelikler için aynı değeri paylaşan fiziksel ağ bağlantısı, *Vmconnection*'daki tek bir mantıksal kayıtta toplanır. 
 
 | Özellik | Açıklama |
 |:--|:--|
 |Yön |Bağlantının yönü, değer *gelen* veya *giden* |
-|Makine |Bilgisayar FQDN |
-|İşleme |Sürecin veya süreç gruplarının kimliği, bağlantıyı başlatma/kabul etme |
-|KaynakIp |Kaynağın IP adresi |
-|HedefIp |Hedefin IP adresi |
-|Hedef Port |Hedefin bağlantı noktası numarası |
-|Protokol |Bağlantı için kullanılan protokol.  Değerler *tcp'dir.* |
+|Makine |Bilgisayar FQDN 'SI |
+|İşleme |İşlemin veya işlem gruplarının kimliği, bağlantıyı başlatma/kabul etme |
+|SourceIP |Kaynağın IP adresi |
+|Hedef IP |Hedefin IP adresi |
+|DestinationPort |Hedefin bağlantı noktası numarası |
+|Protokol |Bağlantı için kullanılan protokol.  Değerler *TCP*'dir. |
 
-Gruplandırmanın etkisini hesaba katmak için, gruplanmış fiziksel bağlantı sayısı hakkında bilgiler kaydın aşağıdaki özelliklerinde sağlanır:
+Gruplandırmanın etkisini hesaba eklemek için, kaydın aşağıdaki özelliklerinde gruplanmış fiziksel bağlantı sayısıyla ilgili bilgiler verilmiştir:
 
 | Özellik | Açıklama |
 |:--|:--|
-|LinklerKurulan |Raporlama süresi penceresi sırasında kurulan fiziksel ağ bağlantısı sayısı |
-|LinklerSonlandırıldı |Raporlama süresi sırasında sonlandırılan fiziksel ağ bağlantısı sayısı |
-|LinklerBaşarısız |Raporlama süresi penceresinde başarısız olan fiziksel ağ bağlantısı sayısı. Bu bilgiler şu anda yalnızca giden bağlantılar için kullanılabilir. |
-|LinklerCanlı |Raporlama süresi penceresinin sonunda açık olan fiziksel ağ bağlantısı sayısı|
+|LinksEstablished |Raporlama süresi penceresi sırasında kurulan fiziksel ağ bağlantısı sayısı |
+|Bağlantı stermi |Raporlama süresi penceresi sırasında sonlandırılan fiziksel ağ bağlantısı sayısı |
+|LinksFailed |Raporlama zaman penceresi sırasında başarısız olan fiziksel ağ bağlantısı sayısı. Bu bilgiler şu anda yalnızca giden bağlantılar için kullanılabilir. |
+|LinksLive |Raporlama zamanı penceresinin sonunda açık olan fiziksel ağ bağlantısı sayısı|
 
 #### <a name="metrics"></a>Ölçümler
 
-Bağlantı sayısı ölçümlerine ek olarak, belirli bir mantıksal bağlantı veya ağ bağlantı noktasına gönderilen ve alınan verilerin hacmi hakkındaki bilgiler de kaydın aşağıdaki özelliklerine dahil edilir:
+Bağlantı sayısı ölçümlerine ek olarak, belirli bir mantıksal bağlantı veya ağ bağlantı noktası üzerinde gönderilen ve alınan veri hacmi hakkındaki bilgiler, kaydın aşağıdaki özelliklerine de dahildir:
 
 | Özellik | Açıklama |
 |:--|:--|
-|Baytgönderildi |Raporlama süresi sırasında gönderilen toplam bayt sayısı |
-|BaytAlınan |Raporlama süresi sırasında alınan toplam bayt sayısı |
-|Yanıtlar |Raporlama süresi penceresinde gözlenen yanıt ların sayısı. 
-|ResponseTimeMax |Raporlama süresi sırasında gözlenen en büyük yanıt süresi (milisaniye). Değer yoksa, özellik boştur.|
-|ResponseTimeMin |Raporlama süresi sırasında gözlenen en küçük yanıt süresi (milisaniye). Değer yoksa, özellik boştur.|
-|ResponseTimeSum |Raporlama süresi penceresinde gözlenen tüm yanıt sürelerinin (milisaniye) toplamı. Değer yoksa, özellik boştur.|
+|BytesSent |Raporlama süresi penceresi sırasında gönderilen toplam bayt sayısı |
+|BytesReceived |Raporlama süresi penceresi sırasında alınan toplam bayt sayısı |
+|Yanıtlar |Raporlama zaman penceresi sırasında gözlemlenen yanıt sayısı. 
+|ResponseTimeMax |Raporlama zaman penceresi sırasında gözlenen en büyük yanıt süresi (milisaniye). Değer yoksa, özellik boştur.|
+|ResponseTimeMin |Raporlama zamanı penceresi sırasında gözlenen en küçük yanıt süresi (milisaniye). Değer yoksa, özellik boştur.|
+|ResponseTimeSum |Raporlama zamanı penceresi sırasında gözlenen tüm yanıt sürelerinin (milisaniye) toplamı. Değer yoksa, özellik boştur.|
 
-Bildirilen üçüncü veri türü yanıt süresidir - bir arayanın bir bağlantı üzerinden gönderilen bir isteği bekleyerek ne kadar zaman harcadığı ve uzak bitiş noktası tarafından yanıtlandığıdır. Bildirilen yanıt süresi, temel uygulama protokolünün gerçek yanıt süresinin tahminidir. Fiziksel ağ bağlantısının kaynak ve hedef sonu arasındaki veri akışının gözlemine dayalı sezgisel kullanılarak hesaplanır. Kavramsal olarak, bir isteğin son baytının gönderenden ayrıldığı saat ile yanıtın son baytının ona geri geldiği saat arasındaki farktır. Bu iki zaman damgası, belirli bir fiziksel bağlantıdaki istek ve yanıt olaylarını ifade etmek için kullanılır. Aralarındaki fark, tek bir isteğin yanıt süresini temsil eder. 
+Bildirilen üçüncü veri türü yanıt süresi-bir çağıran bir bağlantı üzerinden gönderilen bir isteğin, uzak uç nokta tarafından işlenmek ve yanıt vermek için ne kadar süre harcadığını bekliyor. Raporlanan yanıt süresi, temel uygulama protokolünün doğru yanıt süresinin bir tahmindir. Fiziksel bir ağ bağlantısının kaynak ve hedef sonu arasındaki veri akışının gözlemine bağlı olarak buluşsal yöntemler kullanılarak hesaplanır. Kavramsal olarak, bir isteğin son baytındaki zaman arasındaki fark, yanıtın son baytının geri ulaştığı zaman arasındaki farktır. Bu iki zaman damgası, belirli bir fiziksel bağlantıda istek ve yanıt olaylarını belirtmek için kullanılır. Aralarındaki fark, tek bir isteğin yanıt süresini temsil eder. 
 
-Bu özelliğin bu ilk sürümünde, algoritmamız, belirli bir ağ bağlantısı için kullanılan gerçek uygulama protokolüne bağlı olarak değişen başarı dereceleriyle çalışabilecek bir yaklaşımdır. Örneğin, geçerli yaklaşım HTTP(S) gibi istek yanıtı tabanlı protokoller için iyi çalışır, ancak tek yönlü veya ileti sıra tabanlı iletişim ile çalışmaz.
+Bu özelliğin ilk sürümünde, algoritmız, belirli bir ağ bağlantısı için kullanılan gerçek uygulama protokolüne bağlı olarak değişen başarı derecesine sahip olabilecek bir yaklaşık dır. Örneğin, geçerli yaklaşım HTTP (S) gibi istek yanıt tabanlı protokoller için iyi çalışır, ancak tek yönlü veya ileti kuyruğu tabanlı protokollerle çalışmaz.
 
-Göz önünde bulundurulması gereken bazı önemli noktalar şunlardır:
+Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabilirsiniz:
 
-1. Bir işlem aynı IP adresindeki ancak birden çok ağ arabirimi üzerindeki bağlantıları kabul ederse, her arabirim için ayrı bir kayıt bildirilir. 
-2. Joker karakter IP'si içeren kayıtlar etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğu gerçeğini temsil etmek için dahildir.
-3. Ayrıntılı bilgi ve veri hacmini azaltmak için, belirli bir IP adresiyle eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol için) olduğunda joker KARAKTER IP'li kayıtlar atlanır. Bir joker IP kaydı atlandığında, belirli IP adresine sahip IsWildcardBind kayıt özelliği, bağlantı noktasının raporlama makinesinin her arabirimi üzerinde açıkta olduğunu belirtmek için "True" olarak ayarlanır.
-4. Yalnızca belirli bir arabirimde bağlı olan bağlantı noktaları False *olarak*ayarlanmış IsWildcardBind'e sahiptir.
+1. Bir işlem aynı IP adresinde ancak birden çok ağ arabiriminden bağlantı kabul ederse, her arabirim için ayrı bir kayıt raporlanır. 
+2. Joker IP içeren kayıtlar hiçbir etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğunu göstermek için dahil edilmiştir.
+3. Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter bir IP kaydı atlandığında, belirli IP adresine sahip ıyaya Cardbind kaydı özelliği, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını göstermek için "true" olarak ayarlanır.
+4. Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false*olarak ayarlanmıştır.
 
-#### <a name="naming-and-classification"></a>Adlandırma ve Sınıflandırma
+#### <a name="naming-and-classification"></a>Adlandırma ve sınıflandırma
 
-Kolaylık sağlamak için, bir bağlantının uzak ucunun IP adresi RemoteIp özelliğine dahildir. Gelen bağlantılar için RemoteIp SourceIp ile aynıdır, giden bağlantılar için ise DestinationIp ile aynıdır. RemoteDnsCanonicalNames özelliği, RemoteIp için makine tarafından bildirilen DNS kanonik adlarını temsil eder. RemoteDnsQuestions ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
+Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssorular ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
 
 #### <a name="geolocation"></a>Coğrafi Konum
 
-*VMConnection* ayrıca, her bağlantı kaydının uzak ucuiçin aşağıdaki kayıtlardaki coğrafi konum bilgilerini de içerir: 
+*Vmconnection* Ayrıca, kaydın aşağıdaki özelliklerindeki her bir bağlantı kaydının uzak ucuna ait coğrafi konum bilgilerini de içerir: 
 
 | Özellik | Açıklama |
 |:--|:--|
-|Uzak Ülke |RemoteIp'e ev sahipliği yapan ülke/bölgenin adı.  Örneğin, *Amerika Birleşik Devletleri* |
-|Uzaktan Latitude |Coğrafi konum enlemi. Örneğin, *47,68* |
-|Uzaktan Boy |Coğrafi konum boylam. Örneğin, *-122,12* |
+|RemoteCountry |Remoteıp 'yi barındıran ülkenin/bölgenin adı.  Örneğin, *Birleşik Devletler* |
+|Remoteenlem |Coğrafi konum enlem. Örneğin, *47,68* |
+|Remoteboylam |Coğrafi konum boylam. Örneğin, *-122,12* |
 
-#### <a name="malicious-ip"></a>Kötü niyetli IP
+#### <a name="malicious-ip"></a>Kötü amaçlı IP
 
-*VMConnection* tablosundaki her RemoteIp özelliği, bilinen kötü amaçlı etkinlik le ilgili bir ip kümesiyle karşılaştırılır. RemoteIp kötü niyetli olarak tanımlanırsa, aşağıdaki özellikler kaydın aşağıdaki özelliklerinde doldurulur (IP kötü amaçlı olarak kabul edilmezse boşturlar)
-
-| Özellik | Açıklama |
-|:--|:--|
-|Kötü Niyetli Ip |RemoteIp adresi |
-|GöstergeThreadType |Tespit edilen tehdit göstergesi aşağıdaki değerlerden biridir, *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MalwareUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *İzleme Listesi*.   |
-|Açıklama |Gözlenen tehdidin tanımı. |
-|TLPLevel |Trafik Işık Protokolü (TLP) Düzeyi tanımlanan değerlerden biridir, *Beyaz,* *Yeşil,* *Kehribar,* *Kırmızı*. |
-|Güvenilirlik |Değerler *0 - 100 arasındadır.* |
-|Severity |Değerler *0 - 5,* *5* en şiddetli ve *0* hiç şiddetli değildir. Varsayılan değer *3*3'dür.  |
-|İlk RaporTarihi |Sağlayıcı göstergeyi ilk kez rapor etti. |
-|LastReportedDateTime |Gösterge interflow tarafından en son görüldüğünde. |
-|ısactive |Göstergelerin *True* veya *False* değeriyle devre dışı bırakıldığını gösterir. |
-|ReportReferenceLink |Belirli bir gözlemlenebilir ile ilgili raporlara bağlantılar. |
-|Ek Bilgi |Varsa, gözlenen tehdit hakkında ek bilgi sağlar. |
-
-### <a name="ports"></a>Bağlantı Noktaları 
-
-Gelen trafiği etkin olarak kabul eden veya trafiği kabul edebilecek, ancak raporlama süresi penceresi sırasında boşta olan bir makinedeki bağlantı noktaları VMBoundPort tablosuna yazılır.  
-
-VMBoundPort'taki her kayıt aşağıdaki alanlar tarafından tanımlanır: 
+*Vmconnection* tablosundaki her remoteıp özelliği, bilinen kötü amaçlı etkinliklerle bir IP kümesine karşı denetlenir. Remoteıp kötü amaçlı olarak tanımlanmışsa, kaydın aşağıdaki özelliklerinde aşağıdaki özellikler doldurulur (boş olan, IP kötü amaçlı olarak kabul edilmez).
 
 | Özellik | Açıklama |
 |:--|:--|
-|İşleme | Bağlantı noktasının ilişkili olduğu işlemin (veya işlem gruplarının) kimliği.|
-|ıp | Bağlantı noktası IP adresi (joker karakter IP, *0.0.0.0*olabilir) |
+|MaliciousIp |Remoteıp adresi |
+|Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem*değerlerinden biridir.   |
+|Açıklama |Gözlemlenen tehdit açıklaması. |
+|TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
+|Güvenilirlik |Değerler *0 – 100*' dir. |
+|Severity |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
+|FirstReportedDateTime |Sağlayıcı göstergeyi ilk kez raporladı. |
+|LastReportedDateTime |Göstergenin Interflow tarafından en son görüldüğü zaman. |
+|IsActive |Göstergelerin *true* veya *false* değeriyle devre dışı bırakıldığını gösterir. |
+|ReportReferenceLink |Verilen bir observable ile ilgili raporların bağlantıları. |
+|AdditionalInformation |, Gözlemlenen tehdit hakkında, varsa ek bilgiler sağlar. |
+
+### <a name="ports"></a>Bağlantı noktaları 
+
+Gelen trafiği etkin bir şekilde kabul eden veya trafiği kabul edebilen, ancak raporlama zaman penceresi sırasında boşta olan bir makinedeki bağlantı noktaları VMBoundPort tablosuna yazılır.  
+
+VMBoundPort içindeki her kayıt aşağıdaki alanlar tarafından tanımlanır: 
+
+| Özellik | Açıklama |
+|:--|:--|
+|İşleme | Bağlantı noktasının ilişkilendirildiği işlemin kimliği (veya işlem grupları).|
+|IP | Bağlantı noktası IP adresi (joker IP, *0.0.0.0*olabilir) |
 |Bağlantı noktası |Bağlantı noktası numarası |
-|Protokol | Protokol.  Örneğin, *tcp* veya *udp* (şu anda yalnızca *tcp* desteklenir).|
+|Protokol | Protokol.  Örnek, *TCP* veya *UDP* (yalnızca *TCP* Şu anda desteklenmektedir).|
  
-Bir bağlantı noktasının kimliği yukarıdaki beş alandan türetilmiştir ve PortId özelliğinde depolanır. Bu özellik, zaman içinde belirli bir bağlantı noktasının kayıtlarını hızla bulmak için kullanılabilir. 
+Bir bağlantı noktasının kimliği, yukarıdaki beş alandan türetilir ve PortID özelliğinde saklanır. Bu özellik, belirli bir bağlantı noktası için zaman içinde kayıtları hızlı bir şekilde bulmak için kullanılabilir. 
 
 #### <a name="metrics"></a>Ölçümler 
 
-Bağlantı noktası kayıtları, kendileriyle ilişkili bağlantıları temsil eden ölçümleri içerir. Şu anda, aşağıdaki ölçümler rapor edilir (her metrik için ayrıntılar önceki bölümde açıklanmıştır): 
+Bağlantı noktası kayıtları, bunlarla ilişkili bağlantıları temsil eden ölçümleri içerir. Şu anda, aşağıdaki ölçümler raporlanır (her ölçüm için Ayrıntılar önceki bölümde açıklanmıştır): 
 
-- BaytlarGönderilen ve BaytAlınan 
-- LinksKurulan, LinklerSon, LinksLive 
+- BytesSent ve BytesReceived 
+- LinksEstablished, Linksterayırt edici, LinksLive 
 - ResposeTime, ResponseTimeMin, ResponseTimeMax, ResponseTimeSum 
 
-Göz önünde bulundurulması gereken bazı önemli noktalar şunlardır:
+Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabilirsiniz:
 
-- Bir işlem aynı IP adresindeki ancak birden çok ağ arabirimi üzerindeki bağlantıları kabul ederse, her arabirim için ayrı bir kayıt bildirilir.  
-- Joker karakter IP'si içeren kayıtlar etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğu gerçeğini temsil etmek için dahildir. 
-- Ayrıntılı bilgi ve veri hacmini azaltmak için, belirli bir IP adresiyle eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol için) olduğunda joker KARAKTER IP'li kayıtlar atlanır. Bir joker IP kaydı atlandığında, belirli IP adresine sahip kayıt için *IsWildcardBind* özelliği *True*olarak ayarlanır.  Bu, bağlantı noktasının raporlama makinesinin her arabirimi üzerinde açıkta olduğunu gösterir. 
-- Yalnızca belirli bir arabirimde bağlı olan bağlantı noktaları False *olarak*ayarlanmış IsWildcardBind'e sahiptir. 
+- Bir işlem aynı IP adresinde ancak birden çok ağ arabiriminden bağlantı kabul ederse, her arabirim için ayrı bir kayıt raporlanır.  
+- Joker IP içeren kayıtlar hiçbir etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğunu göstermek için dahil edilmiştir. 
+- Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter IP kaydı atlandığında, belirli IP adresine sahip kayıt için *ıyaya Cardbind* özelliği *true*olarak ayarlanır.  Bu, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını gösterir. 
+- Yalnızca belirli bir arabirime bağlı olan bağlantı noktalarında ıyalar Cardbind *değeri false*olarak ayarlanmıştır. 
 
 ### <a name="vmcomputer-records"></a>VMComputer kayıtları
 
-*VMComputer* türüne sahip kayıtlar, Bağımlılık aracısı olan sunucular için envanter verilerine sahiptir. Bu kayıtların özellikleri aşağıdaki tabloda dır:
+Bir *Vmcomputer* türü olan kayıtlar, bağımlılık aracısına sahip sunucular için envanter verileri vardır. Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *İçgörüler* | 
+|SourceSystem | *Insights* | 
 |TimeGenerated | Kaydın zaman damgası (UTC) |
-|Bilgisayar | Bilgisayar FQDN | 
-|AgentId | Log Analytics aracısının benzersiz kimliği |
-|Makine | ServiceMap tarafından açığa çıkarılan makine için Azure Kaynak Yöneticisi kaynağının adı. *GUID'in* AgentId ile aynı GUID olduğu *m-{GUID}* biçimindedir. | 
+|Bilgisayar | Bilgisayar FQDN 'SI | 
+|AgentId | Log Analytics aracısının benzersiz KIMLIĞI |
+|Makine | ServiceMap tarafından sunulan makinenin Azure Resource Manager kaynağının adı. Bu, *Guid* ,, It TID Ile aynı GUID olan *z-{GUID}* biçimindedir. | 
 |DisplayName | Görünen ad | 
 |FullDisplayName | Tam ekran adı | 
 |Ana bilgisayar adı | Etki alanı adı olmayan makinenin adı |
-|Önyükleme Süresi | Makine önyükleme süresi (UTC) |
-|TimeZone | Normalleştirilmiş saat dilimi |
-|SanallaştırmaDevlet | *sanal*, *hipervizör*, *fiziksel* |
-|Ipv4Adresler | IPv4 adresleri dizisi | 
-|Ipv4SubnetMaskeler | IPv4 alt ağ maskeleri dizisi (Ipv4Addresses ile aynı sırada). |
-|Ipv4DefaultAğ Geçidi | IPv4 ağ geçitleri dizisi | 
-|Ipv6Adresler | IPv6 adresleri dizisi | 
-|MacAdresleri | MAC adresleri dizisi | 
+|BootTime | Makinenin önyükleme saati (UTC) |
+|TimeZone | Normalleştirilmiş Saat dilimi |
+|VirtualizationState | *sanal*, *hiper yönetici*, *fiziksel* |
+|Ipv4Addresses | IPv4 adresleri dizisi | 
+|Ipv4SubnetMasks | IPv4 alt ağ maskelerinden oluşan dizi (Ipv4Addresses ile aynı sırada). |
+|Ipv4DefaultGateways | IPv4 ağ geçitleri dizisi | 
+|Ipv6Addresses | IPv6 adresleri dizisi | 
+|MacAddresses | MAC adresleri dizisi | 
 |DnsNames | Makineyle ilişkili DNS adları dizisi. |
-|BağımlılıkAgentVersion | Makinede çalışan Bağımlılık aracısının sürümü. | 
-|İşletim SistemiAile | *Linux*, *Windows* |
-|İşletim SistemiFullName | İşletim sisteminin tam adı | 
-|FizikselBellekMB | Megabaytfiziksel bellek | 
-|Cpu | İşlemci sayısı | 
-|CpuSpeed | MHz'de CPU hızı | 
-|VirtualMachineType | *hyperv*, *vmware*, *xen* |
-|VirtualMachineNativeid | Hypervisor tarafından atanan VM Kimliği | 
-|VirtualMachineNativeName | VM adı |
-|VirtualMachineHypervisorId | VM'ye ev sahipliği yapan hipervizörün benzersiz tanımlayıcısı |
-|Hipervizör Tipi | *hyperv* |
-|HipervisorId | Hipervizörün benzersiz kimliği | 
-|Hosting Sağlayıcısı | *Azure* |
-|_ResourceId | Azure kaynağı için benzersiz tanımlayıcı |
-|AzureSubscriptionId | Aboneliğinizi tanımlayan genel olarak benzersiz bir tanımlayıcı | 
-|AzureResourceGroup | Makinenin üyesi olduğu Azure kaynak grubunun adı. |
+|DependencyAgentVersion | Makinede çalışan bağımlılık aracısının sürümü. | 
+|OperatingSystemFamily | *Linux*, *Windows* |
+|OperatingSystemFullName | İşletim sisteminin tam adı | 
+|PhysicalMemoryMB | Megabayt cinsinden fiziksel bellek | 
+|'Lar | İşlemci sayısı | 
+|CpuSpeed | MHz cinsinden CPU hızı | 
+|VirtualMachineType | *hyperv*, *VMware*, *Xen* |
+|VirtualMachineNativeId | Hiper Yöneticisi tarafından atanan VM KIMLIĞI | 
+|VirtualMachineNativeName | VM 'nin adı |
+|Virtualmachinehypervisorıd | VM 'yi barındıran hiper yöneticinin benzersiz tanımlayıcısı |
+|Hipervizör türüne | *hyperv* |
+|Hipervizorıd | Hiper yöneticinin benzersiz KIMLIĞI | 
+|HostingProvider | *mavisi* |
+|_ResourceId | Bir Azure kaynağı için benzersiz tanımlayıcı |
+|Azuresubscriptionıd | Aboneliğinizi tanımlayan bir genel benzersiz tanımlayıcı | 
+|AzureResourceGroup | Makinenin üyesi olduğu Azure Kaynak grubunun adı. |
 |AzureResourceName | Azure kaynağının adı |
-|AzureKonum | Azure kaynağının konumu |
-|AzureUpdateDomain | Azure güncelleştirme etki alanının adı |
+|AzureLocation | Azure kaynağının konumu |
+|AzureUpdateDomain | Azure Update etki alanının adı |
 |AzureFaultDomain | Azure hata etki alanının adı |
-|AzureVmId | Azure sanal makinesinin benzersiz tanımlayıcısı |
-|AzureBoyut | Azure VM'nin boyutu |
+|Azurevmıd | Azure sanal makinesinin benzersiz tanımlayıcısı |
+|AzureSize | Azure VM 'nin boyutu |
 |AzureImagePublisher | Azure VM yayımcısının adı |
 |AzureImageOffering | Azure VM teklif türünün adı | 
-|AzureImageSku | Azure VM görüntüsünün SKU'su | 
-|AzureImageSürüm | Azure VM görüntüsünün sürümü | 
-|AzureCloudServiceName | Azure bulut hizmetinin adı |
-|AzureCloudServiceDeployment | Bulut Hizmeti için Dağıtım Kimliği |
-|AzureCloudServiceRoleName | Bulut Hizmeti rol adı |
-|AzureCloudServiceRoleType | Bulut Hizmeti rol türü: *işçi* veya *web* |
-|AzureCloudServiceInstanceId | Bulut Hizmeti rol örneği kimliği |
+|AzureImageSku | Azure VM görüntüsünün SKU 'SU | 
+|AzureImageVersion | Azure VM görüntüsünün sürümü | 
+|Azurecses ServiceName | Azure bulut hizmeti 'nin adı |
+|Azurecses hizmeti dağıtımı | Bulut hizmeti için dağıtım KIMLIĞI |
+|Azurechoparlör Servicerolename | Bulut hizmeti rol adı |
+|Azurecses Serviceroletype | Bulut hizmeti rol türü: *çalışan* veya *Web* |
+|Azurecses hizmeti InstanceId | Bulut hizmeti rol örneği KIMLIĞI |
 |AzureVmScaleSetName | Sanal makine ölçek kümesinin adı |
-|AzureVmScaleSetDeployment | Sanal makine ölçeği ayarlama dağıtım kimliği |
-|AzureVmScaleSetResourceId | Sanal makine ölçeğinin benzersiz tanımlayıcısı kaynak kümesi.|
+|AzureVmScaleSetDeployment | Sanal makine ölçek kümesi dağıtım KIMLIĞI |
+|AzureVmScaleSetResourceId | Sanal makine ölçek kümesi kaynağının benzersiz tanımlayıcısı.|
 |AzureVmScaleSetInstanceId | Sanal makine ölçek kümesinin benzersiz tanımlayıcısı |
-|AzureServiceFabricClusterId | Azure Hizmet Kumaşı kümesinin benzersiz identiferi | 
-|AzureServiceFabricClusterName | Azure Hizmet Kumaşı kümesinin adı |
+|AzureServiceFabricClusterId | Azure Service Fabric kümesinin benzersiz tanıtıcısı | 
+|AzureServiceFabricClusterName | Azure Service Fabric kümesinin adı |
 
 ### <a name="vmprocess-records"></a>VMProcess kayıtları
 
-*VMProcess* türüne sahip kayıtlar, Bağımlılık aracısı ile sunucularda TCP'ye bağlı işlemler için envanter verilerine sahiptir. Bu kayıtların özellikleri aşağıdaki tabloda dır:
+Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunuculardaki TCP bağlantılı işlemler için envanter verileri vardır. Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:
 
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *İçgörüler* | 
+|SourceSystem | *Insights* | 
 |TimeGenerated | Kaydın zaman damgası (UTC) |
-|Bilgisayar | Bilgisayar FQDN | 
-|AgentId | Log Analytics aracısının benzersiz kimliği |
-|Makine | ServiceMap tarafından açığa çıkarılan makine için Azure Kaynak Yöneticisi kaynağının adı. *GUID'in* AgentId ile aynı GUID olduğu *m-{GUID}* biçimindedir. | 
-|İşleme | Hizmet Haritası işleminin benzersiz tanımlayıcısı. *P-{GUID}* şeklindedir. 
-|ExecutableName | Çalıştırılabilen işlemin adı | 
-|DisplayName | İşlem ekran adı |
-|Rol | İşlem rolü: *webserver*, *appServer*, *databaseServer*, *ldapServer*, *smbServer* |
-|Grup | İşlem grubu adı. Aynı gruptaki işlemler mantıksal olarak ilişkilidir, örneğin, aynı ürün veya sistem bileşeninin bir parçası. |
-|StartTime | İşlem havuzu başlangıç saati |
+|Bilgisayar | Bilgisayar FQDN 'SI | 
+|AgentId | Log Analytics aracısının benzersiz KIMLIĞI |
+|Makine | ServiceMap tarafından sunulan makinenin Azure Resource Manager kaynağının adı. Bu, *Guid* ,, It TID Ile aynı GUID olan *z-{GUID}* biçimindedir. | 
+|İşleme | Hizmet Eşlemesi işleminin benzersiz tanımlayıcısı. *P-{GUID}* biçimindedir. 
+|ExecutableName | İşlemin yürütülebilir dosyasının adı | 
+|DisplayName | İşlem görünen adı |
+|Rol | İşlem rolü: *WebSunucusu*, *appserver*, *DatabaseServer*, *ldapserver*, *SMBSERVER* |
+|Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
+|StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
 |Açıklama | İşlem açıklaması |
 |CompanyName | Şirketin adı |
-|InternalName | Dahili ad |
+|InternalName | İç ad |
 |ProductName | Ürünün adı |
 |ProductVersion | Ürünün sürümü |
-|Fileversion | Dosyanın sürümü |
-|Çalıştırılabilir Yol |Yürütülebilir yolun |
-|Commandline | Komut satırı |
+|FileVersion | Dosyanın sürümü |
+|ExecutablePath |Yürütülebilir dosyanın yolu |
+|Komut satırı | Komut satırı |
 |Başlangıç | Çalışma dizini |
-|Hizmetler | İşlemin yürütüldettiği bir dizi hizmet |
-|UserName | İşlemin yürütüldettiği hesap |
-|UserDomain | İşlemin yürütüldettiği etki alanı |
-|_ResourceId | Çalışma alanı içindeki bir işlem için benzersiz tanımlayıcı |
+|Hizmetler | İşlemin üzerinde yürütüldüğü hizmet dizisi |
+|UserName | İşlemin üzerinde yürütüldüğü hesap |
+|USERDOMAIN | İşlemin üzerinde yürütüldüğü etki alanı |
+|_ResourceId | Çalışma alanı içindeki bir işlemin benzersiz tanımlayıcısı |
 
 
-## <a name="sample-map-queries"></a>Örnek harita sorguları
+## <a name="sample-map-queries"></a>Örnek eşleme sorguları
 
-### <a name="list-all-known-machines"></a>Bilinen tüm makineleri listele
+### <a name="list-all-known-machines"></a>Tüm bilinen makineleri Listele
 
 ```kusto
 VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
-### <a name="when-was-the-vm-last-rebooted"></a>VM en son ne zaman yeniden başlatıldı?
+### <a name="when-was-the-vm-last-rebooted"></a>VM son kez yeniden başlatıldı
 
 ```kusto
 let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summarize by Computer, DaysSinceBoot, BootTime | sort by BootTime asc
 ```
 
-### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Azure VM'lerinin görüntü, konum ve SKU'ya göre özeti
+### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Görüntü, konum ve SKU 'ya göre Azure VM 'lerinin Özeti
 
 ```kusto
 VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Yönetilen tüm bilgisayarların fiziksel bellek kapasitesini listele
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Tüm yönetilen bilgisayarların fiziksel bellek kapasitesini listeleyin
 
 ```kusto
 VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project PhysicalMemoryMB, Computer
 ```
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Bilgisayar adı, DNS, IP ve Işletim Sistemi'ni listele
+### <a name="list-computer-name-dns-ip-and-os"></a>Bilgisayar adını, DNS, IP ve işletim sistemini Listele
 
 ```kusto
 VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Computer, OperatingSystemFullName, DnsNames, Ipv4Addresses
 ```
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>Komut satırında "sql" olan tüm işlemleri bulun
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Komut satırında "SQL" ile tüm süreçler bul
 
 ```kusto
 VMProcess | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Kaynak adına göre bir makine (en son kayıt) bulma
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Kaynak adına göre bir makine (en son kayıt) bulun
 
 ```kusto
 search in (VMComputer) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP adresine göre bir makine (en son kayıt) bulma
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP adresine göre bir makine (en son kayıt) bulun
 
 ```kusto
 search in (VMComputer) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Bilinen tüm işlemleri belirli bir makinede listele
+### <a name="list-all-known-processes-on-a-specified-machine"></a>Belirtilen makinedeki tüm bilinen işlemlerin listesini Listele
 
 ```kusto
 VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
-### <a name="list-all-computers-running-sql-server"></a>SQL Server çalıştıran tüm bilgisayarları listele
+### <a name="list-all-computers-running-sql-server"></a>SQL Server çalıştıran tüm bilgisayarları listeleme
 
 ```kusto
 VMComputer | where AzureResourceName in ((search in (VMProcess) "*sql*" | distinct Machine)) | distinct Computer
 ```
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Curl'ün tüm benzersiz ürün sürümlerini veri merkezimde listele
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Veri merkezindeki tüm benzersiz ürün sürümlerini listeleyin
 
 ```kusto
 VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ```
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS çalıştıran tüm bilgisayarlardan oluşan bir bilgisayar grubu oluşturma
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS çalıştıran tüm bilgisayarların bilgisayar grubunu oluşturma
 
 ```kusto
 VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct Computer
 ```
 
-### <a name="bytes-sent-and-received-trends"></a>Bayt lar gönderildi ve trendleri aldı
+### <a name="bytes-sent-and-received-trends"></a>Gönderilen ve alınan bayt eğilimleri
 
 ```kusto
 VMConnection | summarize sum(BytesSent), sum(BytesReceived) by bin(TimeGenerated,1hr), Computer | order by Computer desc | render timechart
 ```
 
-### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>Hangi Azure VM'ler en çok bayt iletiyor
+### <a name="which-azure-vms-are-transmitting-the-most-bytes"></a>En fazla bayt ileten Azure VM 'Leri
 
 ```kusto
 VMConnection | join kind=fullouter(VMComputer) on $left.Computer == $right.Computer | summarize count(BytesSent) by Computer, AzureVMSize | sort by count_BytesSent desc
@@ -340,13 +340,13 @@ VMConnection | join kind=fullouter(VMComputer) on $left.Computer == $right.Compu
 VMConnection | where TimeGenerated >= ago(24hr) | where Computer == "acme-demo" | summarize dcount(LinksEstablished), dcount(LinksLive), dcount(LinksFailed), dcount(LinksTerminated) by bin(TimeGenerated, 1h) | render timechart
 ```
 
-### <a name="connection-failures-trend"></a>Bağlantı hataları eğilimi
+### <a name="connection-failures-trend"></a>Bağlantı hatalarının eğilimi
 
 ```kusto
 VMConnection | where Computer == "acme-demo" | extend bythehour = datetime_part("hour", TimeGenerated) | project bythehour, LinksFailed | summarize failCount = count() by bythehour | sort by bythehour asc | render timechart
 ```
 
-### <a name="bound-ports"></a>Bağlı Bağlantı Noktaları
+### <a name="bound-ports"></a>Bağlantılı bağlantı noktaları
 
 ```kusto
 VMBoundPort
@@ -355,7 +355,7 @@ VMBoundPort
 | distinct Port, ProcessName
 ```
 
-### <a name="number-of-open-ports-across-machines"></a>Makineler arasında açık bağlantı noktası sayısı
+### <a name="number-of-open-ports-across-machines"></a>Makinelerde açık bağlantı noktası sayısı
 
 ```kusto
 VMBoundPort
@@ -365,7 +365,7 @@ VMBoundPort
 | order by OpenPorts desc
 ```
 
-### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Çalışma alanınızdaki süreçleri açtıkları bağlantı noktası sayısına göre puan
+### <a name="score-processes-in-your-workspace-by-the-number-of-ports-they-have-open"></a>Çalışma alanınızdaki işlem, açık olan bağlantı noktası sayısıyla puan
 
 ```kusto
 VMBoundPort
@@ -375,9 +375,9 @@ VMBoundPort
 | order by OpenPorts desc
 ```
 
-### <a name="aggregate-behavior-for-each-port"></a>Her bağlantı noktası için toplu davranış
+### <a name="aggregate-behavior-for-each-port"></a>Her bağlantı noktası için Birleşik davranış
 
-Bu sorgu daha sonra, en çok gelen/giden trafiğin olduğu bağlantı noktaları, en çok bağlantıya sahip bağlantı noktaları gibi, etkinliklere göre bağlantı noktalarını puanlamak için kullanılabilir
+Bu sorgu daha sonra etkinliğe göre bağlantı noktalarına puan vermek için kullanılabilir, örneğin, en çok gelen/giden trafiğe sahip bağlantı noktaları, en çok bağlantı noktası bağlantı noktaları
 ```kusto
 // 
 VMBoundPort
@@ -387,7 +387,7 @@ VMBoundPort
 | order by Machine, Computer, Port, Ip, ProcessName
 ```
 
-### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Bir grup makineden giden bağlantıları özetle
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Bir makine grubundan giden bağlantıları özetleme
 
 ```kusto
 // the machines of interest
@@ -431,48 +431,48 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="performance-records"></a>Performans kayıtları
-Bir tür *InsightsMetrics'e* sahip kayıtlar, sanal makinenin konuk işletim sisteminden performans verilerine sahiptir. Bu kayıtların özellikleri aşağıdaki tabloda dır:
+Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sisteminden performans verilerine sahiptir. Bu kayıtlar aşağıdaki tablodaki özelliklere sahiptir:
 
 
 | Özellik | Açıklama |
 |:--|:--|
 |TenantId | Çalışma alanı için benzersiz tanımlayıcı |
-|SourceSystem | *İçgörüler* | 
-|TimeGenerated | Değerin toplanma zamanı (UTC) |
-|Bilgisayar | Bilgisayar FQDN | 
+|SourceSystem | *Insights* | 
+|TimeGenerated | Değerin toplandığı saat (UTC) |
+|Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
 |Adı | Performans sayacının adı |
-|Val | Toplanan değer | 
-|Etiketler | Kayıt la ilgili ayrıntılar. Farklı kayıt türleri ile kullanılan etiketler için aşağıdaki tabloya bakın.  |
-|AgentId | Her bilgisayarın aracısı için benzersiz tanımlayıcı |
-|Tür | *ÖngörülerÖlçümler* |
-|_ResourceId_ | Sanal makinenin kaynak kimliği |
+|Acil | Toplanan değer | 
+|Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
+|AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
+|Tür | *Insightsölçümlerini* |
+|_ResourceId_ | Sanal makinenin kaynak KIMLIĞI |
 
-Şu anda *InsightsMetrics* tablosunda toplanan performans sayaçları aşağıdaki tabloda listelenmiştir:
+Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
 | Ad Alanı | Adı | Açıklama | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
-| Bilgisayar    | Sinyal             | Bilgisayar Kalp Atışı                        | | |
-| Bellek      | Kullanılabilir MB           | Bellek Kullanılabilir Baytlar                    | Bayt          | memorySizeMB - Toplam bellek boyutu|
-| Ağ     | YazmaBytesPerSecond   | Ağ Saniyede Bayt Yaz            | BaytPerİkinci | NetworkDeviceId - Cihazın kimliği<br>bayt - Toplam gönderilen baytlar |
-| Ağ     | OkumaBytesPerSecond    | Ağ Saniyede Bayt Okuma             | BaytPerİkinci | networkDeviceId - Cihazın kimliği<br>bayt - Toplam alınan baytlar |
-| İşlemci   | Kullanım Yüzdesi | İşlemci Kullanım Yüzdesi          | Yüzde        | totalCpus - Toplam CPU |
-| Logicaldisk | Yazma PerSecond       | Mantıksal Disk Saniyede Yazar            | CountPerSecond | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | WriteLatencyMs        | Mantıksal Disk Yazma Gecikme Milisaniye    | Milisaniye   | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | YazmaBytesPerSecond   | Mantıksal Disk Saniyede Bayt Yazma       | BaytPerİkinci | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | TransfersPerSecond    | Saniyede Mantıksal Disk Aktarımları         | CountPerSecond | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | TransferLatencyMs     | Mantıksal Disk Aktarım Gecikme Milisaniye | Milisaniye   | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | OkumaPersaniye        | Mantıksal Disk Saniyede Okur             | CountPerSecond | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | ReadLatencyMs         | Mantıksal Disk Okuma Gecikme Milisaniye     | Milisaniye   | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | OkumaBytesPerSecond    | Mantıksal Disk Saniyede Bayt Okuma        | BaytPerİkinci | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | Boş Alan Yüzdesi   | Mantıksal Disk Boş Alan Yüzdesi        | Yüzde        | mountId - Cihazın Montaj Kimliği |
-| Logicaldisk | Ücretsiz SpaceMB           | Mantıksal Disk Boş Alan Baytları             | Bayt          | mountId - Cihazın Montaj Kimliği<br>diskSizeMB - Toplam disk boyutu |
-| Logicaldisk | BaytPerİkinci        | Saniyede Mantıksal Disk Baytları             | BaytPerİkinci | mountId - Cihazın Montaj Kimliği |
+| Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
+| Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | Bayt          | memorySizeMB-toplam bellek boyutu|
+| Ağ     | WriteBytesPerSecond   | Ağ yazma bayt/saniye            | BytesPerSecond | Networkdeviceıd-cihazın kimliği<br>bayt-gönderilen toplam bayt sayısı |
+| Ağ     | ReadBytesPerSecond    | Ağ okuma bayt/saniye             | BytesPerSecond | Networkdeviceıd-cihazın kimliği<br>bayt-alınan toplam bayt |
+| İşlemci   | Kullanımı Zalationpercentage | İşlemci kullanım yüzdesi          | Yüzde        | Totalcpu 'Lar-toplam CPU sayısı |
+| MantıksalDisk | WritesPerSecond       | Saniye başına mantıksal disk yazma sayısı            | Sayaçpersaniye | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | Writelati MS        | Mantıksal disk yazma gecikme süresi milisaniyelik    | Mayacak   | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | WriteBytesPerSecond   | Mantıksal disk yazma bayt/saniye       | BytesPerSecond | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | TransfersPerSecond    | Saniye başına mantıksal disk aktarımı         | Sayaçpersaniye | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | Transferlati MS     | Mantıksal disk aktarım gecikmesi milisaniyelik | Mayacak   | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | ReadsPerSecond        | Saniye başına mantıksal disk okuma sayısı             | Sayaçpersaniye | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | Readlatsms         | Mantıksal disk okuma gecikme süresi milisaniyelik     | Mayacak   | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | ReadBytesPerSecond    | Mantıksal disk okuma bayt/saniye        | BytesPerSecond | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | FreeSpacePercentage   | Mantıksal disk boş alan yüzdesi        | Yüzde        | Mountıd-cihazın bağlama KIMLIĞI |
+| MantıksalDisk | FreeSpaceMB           | Mantıksal disk boş alan baytları             | Bayt          | Mountıd-cihazın bağlama KIMLIĞI<br>diskSizeMB-toplam disk boyutu |
+| MantıksalDisk | BytesPerSecond        | Mantıksal disk bayt/saniye             | BytesPerSecond | Mountıd-cihazın bağlama KIMLIĞI |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Monitor'da günlük sorguları yazmada yeniyseniz, günlük sorguları yazmak için Azure portalında [Log Analytics'in nasıl kullanılacağını](../../azure-monitor/log-query/get-started-portal.md) gözden geçirin.
+* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../../azure-monitor/log-query/get-started-portal.md) inceleyin.
 
-* Arama [sorguları yazma](../../azure-monitor/log-query/search-queries.md)hakkında bilgi edinin.
+* [Arama sorguları yazma](../../azure-monitor/log-query/search-queries.md)hakkında bilgi edinin.

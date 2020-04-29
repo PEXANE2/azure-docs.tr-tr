@@ -1,6 +1,6 @@
 ---
-title: IoT Edge'de Azure Akış Analizi için CI/CD yapmak için REST API'lerini kullanın
-description: REST API'lerini kullanarak Azure Akışı Analitiği için sürekli bir tümleştirme ve dağıtım ardışık akışını nasıl uygulayacağınızı öğrenin.
+title: IoT Edge üzerinde Azure Stream Analytics için CI/CD 'yi yapmak için REST API 'Lerini kullanma
+description: REST API 'Leri kullanarak Azure Stream Analytics için sürekli tümleştirme ve dağıtım işlem hattı uygulamayı öğrenin.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -8,23 +8,23 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80291996"
 ---
-# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API'leri kullanarak IoT Edge'de Stream Analytics için CI/CD'yi uygulayın
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>API 'Leri kullanarak IoT Edge Stream Analytics için CI/CD uygulayın
 
-REST API'lerini kullanarak Azure Akışı Analizi işleri için sürekli tümleştirme ve dağıtım sağlayabilirsiniz. Bu makalede, hangi API'ların kullanılacağı ve nasıl kullanılacağı nasıI örnekler verilmektedir. REST API'leri Azure Bulut BulutU'da desteklenmez.
+REST API 'Leri kullanarak Azure Stream Analytics işleri için sürekli tümleştirmeyi ve dağıtımı etkinleştirebilirsiniz. Bu makalede, hangi API 'Lerin kullanılacağı ve bunların nasıl kullanılacağı örnekleri sunulmaktadır. REST API 'Leri Azure Cloud Shell desteklenmez.
 
-## <a name="call-apis-from-different-environments"></a>Farklı ortamlardan API'leri arayın
+## <a name="call-apis-from-different-environments"></a>Farklı ortamlardan API 'Leri çağırma
 
-REST API'leri hem Linux hem de Windows'tan çağrılabilir. Aşağıdaki komutlar, API çağrısı için uygun sözdizimini gösterir. Belirli API kullanımı bu makalenin sonraki bölümlerinde özetlenecektir.
+REST API 'Ler hem Linux hem de Windows 'dan çağrılabilir. Aşağıdaki komutlar API çağrısı için uygun söz dizimini gösterir. Belirli API kullanımı, bu makalenin sonraki bölümlerinde özetlenmiştir.
 
 ### <a name="linux"></a>Linux
 
-Linux için şunları `Curl` kullanabilir `Wget` veya komutlar alabilirsiniz:
+Linux için, veya `Curl` `Wget` komutlarını kullanabilirsiniz:
 
 ```bash
 curl -u { <username:password> }  -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" { <url> }   
@@ -36,7 +36,7 @@ wget -q -O- --{ <method> } -data="<request body>" --header=Content-Type:applicat
  
 ### <a name="windows"></a>Windows
 
-Windows için Powershell'i kullanın: 
+Windows için PowerShell 'i kullanın: 
 
 ```powershell 
 $user = "<username>" 
@@ -51,21 +51,21 @@ $response = Invoke-RestMethod <url> -Method <method> -Body $content -Headers $He
 echo $response 
 ```
  
-## <a name="create-an-asa-job-on-edge"></a>Edge'de ASA işi oluşturma 
+## <a name="create-an-asa-job-on-edge"></a>Kenarda bir ASA işi oluşturma 
  
-Akış Analizi işi oluşturmak için, Stream Analytics API'sini kullanarak PUT yöntemini arayın.
+Stream Analytics işi oluşturmak için, Stream Analytics API 'sini kullanarak PUT metodunu çağırın.
 
 |Yöntem|İstek URL'si|
 |------|-----------|
 |PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
-**Curl**kullanarak komut örneği :
+**Kıvrımlı**kullanılarak komut örneği:
 
 ```curl
 curl -u { <username:password> } -H "Content-Type: application/json" -X { <method> } -d "{ <request body> }" https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}?api-version=2017-04-01-preview  
 ``` 
  
-JSON'daki istek gövdesi örneği:
+JSON 'da istek gövdesi örneği:
 
 ```json
 { 
@@ -138,40 +138,40 @@ JSON'daki istek gövdesi örneği:
  
 Daha fazla bilgi için [API belgelerine](/rest/api/streamanalytics/stream-analytics-job)bakın.  
  
-## <a name="publish-edge-package"></a>Kenar paketini yayımla 
+## <a name="publish-edge-package"></a>Edge paketini Yayımla 
  
-IoT Edge'de bir Stream Analytics işi yayınlamak için Edge Package Publish API'sini kullanarak POST yöntemini arayın.
+IoT Edge üzerinde Stream Analytics işi yayımlamak için, Edge paketi yayımlama API 'sini kullanarak POST yöntemini çağırın.
 
 |Yöntem|İstek URL'si|
 |------|-----------|
 |POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
-Bu eşzamanlı işlem, iş başarıyla yayınlanana kadar 202 durumunu döndürür. Konum yanıt üstbilgisi, işlemin durumunu almak için kullanılan URI'yi içerir. İşlem çalışırken, konum üstbilgisinde URI'ye yapılan bir çağrı 202 durumunu döndürür. İşlem bittiğinde, konum üstbilgisindeki URI 200 durumu döndürür. 
+Bu zaman uyumsuz işlem, iş başarıyla yayımlanana kadar 202 durumunu döndürür. Konum yanıt üst bilgisi işlemin durumunu almak için kullanılan URI 'yi içerir. İşlem çalışırken, konum üstbilgisindeki URI 'ye yapılan bir çağrı 202 durumunu döndürür. İşlem tamamlandığında, konum üstbilgisindeki URI 200 durumunu döndürür. 
 
-Bir Edge paketi **kıvırma**kullanarak arama yayımlama örneği: 
+Bir Edge paketi örneği, **kıvrımlı**kullanarak çağrı yayınlama: 
 
 ```bash
 curl -d -X POST https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{jobname}/publishedgepackage?api-version=2017-04-01-preview
 ```
  
-POST arama yaptıktan sonra, boş bir vücut ile bir yanıt beklemelisiniz. Yanıtın BAŞKANı'nda bulunan URL'ye bakın ve daha fazla kullanım için kaydedin.
+POST çağrısını yaptıktan sonra boş bir gövdeye sahip bir yanıt beklemeniz gerekir. Yanıtın başında bulunan URL 'YI bulun ve daha fazla kullanmak üzere kaydedin.
  
-Yanıt Başkanı'ndan URL örneği:
+Yanıt beden URL örneği:
 
 ```
 https://management.azure.com/subscriptions/{**subscriptionid**}/resourcegroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/StreamingJobs/{**resourcename**}/OperationResults/023a4d68-ffaf-4e16-8414-cb6f2e14fe23?api-version=2017-04-01-preview 
 ```
-Yanıtın başında bulduğunuz URL ile api araması yapmak için aşağıdaki komutu çalıştırmadan önce bir ila iki dakika bekleyin. 200 yanıt alamazsanız komutu yeniden deneyin.
+Yanıtın baş bölümünde bulduğunuz URL ile bir API çağrısı yapmak için aşağıdaki komutu çalıştırmadan önce bir ila iki dakika bekleyin. 200 yanıtını alamazsanız komutu yeniden deneyin.
  
-**Kıvrılmış**iade URL'si ile API araması yapma örneği:
+**Kıvrmadan**döndürülen URL ile API çağrısı yapma örneği:
 
 ```bash
 curl -d –X GET https://management.azure.com/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/Microsoft.StreamAnalytics/streamingjobs/{resourcename}/publishedgepackage?api-version=2017-04-01-preview 
 ```
 
-Yanıt, Kenar dağıtım komut dosyasına eklemeniz gereken bilgileri içerir. Aşağıdaki örnekler, hangi bilgileri toplamanız gerektiğini ve dağıtım bildirimine nereye eklemeniz gerektiğini gösterir.
+Yanıt, kenar dağıtım betiğine eklemek için gereken bilgileri içerir. Aşağıdaki örneklerde, hangi bilgilerin toplanması gerektiğini ve dağıtım bildiriminde nereye ekleneceğini gösterilmektedir.
  
-Başarılı bir şekilde yayımladıktan sonra örnek yanıt gövdesi:
+Başarıyla yayımlandıktan sonra örnek yanıt gövdesi:
 
 ```json
 { 
@@ -182,7 +182,7 @@ Başarılı bir şekilde yayımladıktan sonra örnek yanıt gövdesi:
 } 
 ```
 
-Dağıtım Bildirimi Örneği: 
+Dağıtım bildiriminin örneği: 
 
 ```json
 { 
@@ -252,11 +252,11 @@ Dağıtım Bildirimi Örneği:
 } 
 ```
 
-Dağıtım bildiriminin yapılandırması ndan sonra, dağıtım için [Azure CLI ile Azure IoT Edge modüllerini dağıt'a](../iot-edge/how-to-deploy-modules-cli.md) bakın.
+Dağıtım bildiriminin yapılandırmasından sonra dağıtım için [Azure CLI ile Azure IoT Edge modüllerini dağıtma](../iot-edge/how-to-deploy-modules-cli.md) bölümüne bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 
  
 * [IoT Edge üzerinde Azure Stream Analytics](stream-analytics-edge.md)
-* [ASA Üzerinde IoT Edge öğretici](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Visual Studio araçlarını kullanarak Stream Analytics Edge işlerini geliştirin](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [IoT Edge öğreticide ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Visual Studio araçlarını kullanarak Stream Analytics Edge işleri geliştirme](stream-analytics-tools-for-visual-studio-edge-jobs.md)

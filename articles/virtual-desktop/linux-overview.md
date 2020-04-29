@@ -1,6 +1,6 @@
 ---
-title: Windows Sanal Masaüstü Linux Desteği - Azure
-description: Windows Sanal Masaüstü için kısa bir genel bakış Linux desteği.
+title: Windows sanal masaüstü Linux desteği-Azure
+description: Windows sanal masaüstü için kısa bir genel bakış Linux desteği.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,65 +9,65 @@ ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422425"
 ---
 # <a name="linux-support"></a>Linux desteği
 
-İş ortakları, bağımsız bir Windows Sanal Masaüstü istemcisi oluşturmak için Windows Sanal Masaüstü için Linux SDK'yı kullanabilir. İstemci uygulamanızda Windows Sanal Masaüstü desteğini etkinleştirmek için de kullanabilirsiniz. Bu hızlı kılavuz, Linux SDK'nın ne olduğunu ve nasıl kullanmaya başlayacağımı açıklayacaktır.
+İş ortakları Windows sanal masaüstü için Linux SDK 'Yı kullanarak tek başına bir Windows sanal masaüstü istemcisi oluşturabilir. Ayrıca, istemci uygulamanızda Windows sanal masaüstü desteğini etkinleştirmek için de kullanabilirsiniz. Bu hızlı kılavuz, Linux SDK 'sının ne olduğunu ve nasıl kullanılacağını açıklar.
 
-## <a name="connect-with-your-linux-device"></a>Linux cihazınızla bağlantı kurun
+## <a name="connect-with-your-linux-device"></a>Linux aygıtınızla bağlantı kurmak
 
-Aşağıdaki iş ortakları Linux aygıtları için Windows Sanal Masaüstü istemcilerini onaylamiştir.
+Aşağıdaki iş ortakları Linux cihazları için Windows sanal masaüstü istemcileri 'ni onayladı.
 
 |İş Ortağı|İş ortağı belgeleri|İş ortağı desteği|
 |:------|:--------------------|:--------------|
-|![IGEL logosu](./media/partners/igel.png)|[IGEL müşteri belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL desteği](https://www.igel.com/support/)|
+|![IGEL logosu](./media/partners/igel.png)|[IGEL istemci belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[ILEK desteği](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK nedir?
 
-Kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve birinci taraf istemcilerimizin desteklediği yönlendirmelerin çoğunu kullanmak için SDK API'lerini kullanabilirsiniz.
+Kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve ilk taraf istemcilerimizin desteklediği birçok yeniden yönlendirmeleri kullanmak için SDK API 'Lerini kullanabilirsiniz.
 
 > [!NOTE]
-> SDK şu anda geliştirilmekte. Bu belgeyi, genel kullanıma sunulduğunda SDK'ya erişim yönergeleriyle güncelleştireceğiz.
+> SDK Şu anda geliştirme aşamasındadır. Bu belgeyi, genel kullanıma sunulduğunda SDK 'ya erişme yönergeleriyle birlikte güncelleştireceğiz.
 
 ### <a name="supported-linux-distributions"></a>Desteklenen Linux dağıtımları
 
-SDK, Ubuntu 18.04 veya sonraki işletim sistemlerinin çoğu ile uyumludur. Farklı bir Linux dağıtımınız varsa, ihtiyaçlarınızı en iyi nasıl destekleyeceğinizi bulmak için sizinle birlikte çalışabiliriz.
+SDK, Ubuntu 18,04 veya üzerini temel alan çoğu işletim sistemiyle uyumludur. Farklı bir Linux dağıtımına sahipseniz, gereksinimlerinizi en iyi şekilde desteklemeyi öğrenmek için sizinle birlikte çalışabiliriz.
 
 ### <a name="feature-support"></a>Özellik desteği
 
-SDK, masaüstü ve uzak uygulama oturumlarına birden çok bağlantıyı destekler. Aşağıdaki yönlendirmeler desteklenir:
+SDK, masaüstü ve uzak uygulama oturumlarına yönelik birden çok bağlantıyı destekler. Aşağıdaki yeniden yönlendirmeler desteklenir:
 
 | Yönlendirme       | Destekleniyor |
 | :---------------- | :-------: |
 | Klavye          | &#10004;  |
 | Fare             | &#10004;  |
-| Ses içinde          | &#10004;  |
-| Ses çıkış         | &#10004;  |
+| İçindeki ses          | &#10004;  |
+| Ses çıkışı         | &#10004;  |
 | Pano (metin)  | &#10004;  |
-| Pano (resim) | &#10004;  |
+| Pano (görüntü) | &#10004;  |
 | Pano (dosya)  | &#10004;  |
-| Smartcard         | &#10004;  |
+| Kart         | &#10004;  |
 | Sürücü/klasör      | &#10004;  |
 
-SDK, oturumunuz için seçtiğiniz monitörler bitişik olduğu sürece birden çok monitör ekran yapılandırmasını da destekler.
+Ayrıca, oturumunuz için seçtiğiniz izleyiciler bitişik olduğu sürece SDK birden fazla izleyici görüntüleme yapılandırmasını da destekler.
 
-Yeni özellikler ve yönlendirmeler için destek ekledikçe bu belgeyi güncelleştireceğiz. Yeni özellikler ve diğer geliştirmeler önermek istiyorsanız, [UserVoice sayfamızı](https://go.microsoft.com/fwlink/?linkid=2116523)ziyaret edin.
+Yeni özellikler ve yeniden yönlendirmeler için destek eklediğimiz için bu belgeyi güncelleştireceğiz. Yeni özellikler ve diğer iyileştirmeler önermek istiyorsanız [UserVoice](https://go.microsoft.com/fwlink/?linkid=2116523)sayfamızı ziyaret edin.
 
-## <a name="get-started-with-the-linux-sdk"></a>Linux SDK ile başlayın
+## <a name="get-started-with-the-linux-sdk"></a>Linux SDK 'Yı kullanmaya başlama
 
-Windows Sanal Masaüstü için bir Linux istemcisi geliştirebilmeniz için önce aşağıdaki leri yapmanız gerekir:
+Windows sanal masaüstü için bir Linux istemcisi geliştirebilmeniz için aşağıdaki işlemleri yapmanız gerekir:
 
-1. Sınama veya üretim kullanımı için bir Windows Sanal Masaüstü ortamı oluşturun ve dağıtın.
-2. Windows Sanal Masaüstü kullanıcı deneyimini tanımak için kullanılabilir birinci taraf istemcileri test edin.
+1. Test veya üretim kullanımı için bir Windows sanal masaüstü ortamı oluşturun ve dağıtın.
+2. Windows sanal masaüstü Kullanıcı deneyimini tanımak için kullanılabilir birinci taraf istemcileri test edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki müşteriler için belgelerimize göz atın:
+Aşağıdaki istemciler için belgelerimize göz atın:
 
 - [Windows Masaüstü istemcisi](connect-windows-7-and-10.md)
 - [Web istemcisi](connect-web.md)

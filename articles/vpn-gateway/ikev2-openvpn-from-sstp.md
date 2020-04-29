@@ -1,6 +1,6 @@
 ---
-title: SSTP'den OpenVPN veya IKEv2'ye geçiş | Azure VPN Ağ Geçidi
-description: Bu makale, SSTP'nin 128 eşzamanlı bağlantı sınırını aşmanın yollarını anlamanıza yardımcı olur.
+title: SSTP 'den OpenVPN veya Ikev2 'e geçiş | Azure VPN Gateway
+description: Bu makale, SSTP 'nin 128 eşzamanlı bağlantı sınırını aşmanın yollarını anlamanıza yardımcı olur.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
@@ -8,95 +8,95 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: alzam
 ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398374"
 ---
-# <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş
+# <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP 'den OpenVPN protokolüne veya Ikev2 'e geçiş
 
-Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisayardan sanal ağınıza güvenli bir bağlantı oluşturmanıza olanak sağlar. P2S bağlantısı, istemci bilgisayardan başlatılarak oluşturulur. Bu makale, Kaynak Yöneticisi dağıtım modeli için geçerlidir ve OpenVPN protokolüne veya IKEv2'ye geçerek SSTP'nin 128 eşzamanlı bağlantı sınırını aşmanın yolları hakkında görüşmeler yapmaktadır.
+Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisayardan sanal ağınıza güvenli bir bağlantı oluşturmanıza olanak sağlar. P2S bağlantısı, istemci bilgisayardan başlatılarak oluşturulur. Bu makale, Kaynak Yöneticisi dağıtım modeli için geçerlidir ve OpenVPN protokolüne veya Ikev2 'e geçiş yaparak SSTP 'nin 128 eşzamanlı bağlantı sınırını aşmanın yollarını ele alınmaktadır.
 
-## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S hangi protokolü kullanır?
+## <a name="what-protocol-does-p2s-use"></a><a name="protocol"></a>P2S hangi protokol kullanır?
 
 Noktadan siteye VPN aşağıdaki protokollerden birini kullanabilir:
 
-* **OpenVPN&reg; Protokolü**, SSL/TLS tabanlı VPN protokolü. Çoğu güvenlik duvarı TCP bağlantı noktası 443 giden açık olduğundan, Bir SSL VPN çözümü güvenlik duvarları nüfuz edebilir, Hangi SSL kullanır. OpenVPN, Android, iOS (11.0 ve üzeri sürümler), Windows, Linux ve Mac aygıtlarından (OSX sürümleri 10.13 ve üzeri) bağlanmak için kullanılabilir.
+* Bir SSL/TLS tabanlı VPN protokolü olan **OpenVPN&reg; Protokolü**. Çoğu güvenlik duvarı, SSL tarafından kullanılan TCP bağlantı noktası 443 giden ' ü açık olduğundan, bir SSL VPN çözümü, güvenlik duvarlarını sızma edebilir. OpenVPN, Android, iOS (sürüm 11,0 ve üzeri), Windows, Linux ve Mac cihazları (OSX sürümleri 10,13 ve üzeri) ile bağlantı kurmak için kullanılabilir.
 
-* **Güvenli Soket Tünel Protokolü (SSTP),** özel bir SSL tabanlı VPN protokolü. Çoğu güvenlik duvarı TCP bağlantı noktası 443 giden açık olduğundan, Bir SSL VPN çözümü güvenlik duvarları nüfuz edebilir, Hangi SSL kullanır. SSTP yalnızca Windows aygıtlarında desteklenir. Azure, Windows'un SSTP (Windows 7 ve sonrası) tüm sürümlerini destekler. **SSTP, ağ geçidi SKU'dan bağımsız olarak yalnızca 128'e kadar eşzamanlı bağlantıyı destekler.**
+* Özel bir SSL tabanlı VPN protokolü olan **Güvenli Yuva Tünel Protokolü (SSTP)**. Çoğu güvenlik duvarı, SSL tarafından kullanılan TCP bağlantı noktası 443 giden ' ü açık olduğundan, bir SSL VPN çözümü, güvenlik duvarlarını sızma edebilir. SSTP yalnızca Windows cihazlarında desteklenir. Azure, SSTP (Windows 7 ve üzeri) olan tüm Windows sürümlerini destekler. **SSTP, yalnızca ağ geçidi SKU 'su ne olursa olsun, en fazla 128 eşzamanlı bağlantıyı destekler**.
 
 * IKEv2 VPN, standart tabanlı bir IPsec VPN çözümüdür. IKEv2 VPN, Mac cihazlardan (OSX sürüm 10.11 ve üzeri) bağlantı kurmak için kullanılabilir.
 
 
 >[!NOTE]
->IkEv2 ve P2S için OpenVPN yalnızca Kaynak Yöneticisi dağıtım modeli için kullanılabilir. Bunlar klasik dağıtım modeli için kullanılamaz. Temel ağ geçidi SKU IKEv2 veya OpenVPN protokollerini desteklemez. Temel SKU kullanıyorsanız, bir üretim SKU Sanal Ağ Ağ Ağ Geçidi'ni silmek ve yeniden oluşturmak zorunda kaldığınız zaman.
+>P2S için Ikev2 ve OpenVPN yalnızca Kaynak Yöneticisi dağıtım modelinde kullanılabilir. Klasik dağıtım modeli için kullanılamaz. Temel ağ geçidi SKU 'SU Ikev2 veya OpenVPN protokollerini desteklemez. Temel SKU kullanıyorsanız, bir üretim SKU 'SU sanal ağ geçidini silip yeniden oluşturmanız gerekir.
 >
 
-## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>SSTP'den IKEv2 veya OpenVPN'e geçiş
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>SSTP 'den Ikev2 'e veya OpenVPN 'e geçiş
 
-VPN ağ geçidine 128'den fazla eşzamanlı P2S bağlantısını desteklemek istediğiniz, ancak SSTP kullandığınız durumlar olabilir. Böyle bir durumda IKEv2 veya OpenVPN protokolüne geçmeniz gerekir.
+VPN Gateway 'e 128 'den fazla eşzamanlı P2S bağlantısı desteklemek istediğinizde, ancak SSTP kullanılıyorsa, bu durumlar olabilir. Böyle bir durumda, Ikev2 veya OpenVPN protokolüne taşımanız gerekir.
 
-### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>Seçenek 1 - Ağ Geçidi'ndeki SSTP'ye ek olarak IKEv2 ekle
+### <a name="option-1---add-ikev2-in-addition-to-sstp-on-the-gateway"></a>Seçenek 1-ağ geçidinde SSTP 'ye ek olarak Ikev2 ekleme
 
-Bu en basit seçenektir. SSTP ve IKEv2 aynı ağ geçidinde bir arada bulunabilir ve size daha fazla sayıda eşzamanlı bağlantı verebilir. Mevcut ağ geçidinde IKEv2'yi etkinleştirebilir ve istemciyi yeniden indirebilirsiniz.
+Bu en basit seçenektir. SSTP ve IKEv2 aynı ağ geçidinde bulunabilir ve size daha fazla sayıda eş zamanlı bağlantı sağlar. Mevcut ağ geçidinde Ikev2 'yi etkinleştirebilir ve istemciyi yeniden indirebilirsiniz.
 
-Mevcut bir SSTP VPN ağ geçidine IKEv2 eklemek varolan istemcileri etkilemez ve bunları IKEv2'yi küçük gruplar halinde kullanacak veya ikev2 kullanacak şekilde yapılandırabilirsiniz. Bir Windows istemcisi hem SSTP hem de IKEv2 için yapılandırılırsa, önce IKEV2 kullanarak bağlanmayı deneyecek ve bu başarısız olursa, SSTP'ye geri döner.
+Ikev2 'yi var olan SSTP VPN ağ geçidine eklemek mevcut istemcileri etkilemez ve bunları küçük toplu işlerle Ikev2 kullanacak şekilde yapılandırabilir veya yeni istemcileri Ikev2 kullanacak şekilde yapılandırabilirsiniz. Bir Windows istemcisi hem SSTP hem de IKEv2 için yapılandırılmışsa, önce ıKEV2 kullanarak bağlanmaya çalışır ve bu başarısız olursa SSTP 'ye geri döner.
 
-**IKEv2 standart olmayan UDP bağlantı noktalarını kullanır, bu nedenle bu bağlantı noktalarının kullanıcının güvenlik duvarında engellenmediğinden emin olmanız gerekir. Kullanılan bağlantı noktaları UDP 500 ve 4500'dir.**
+**Ikev2 standart olmayan UDP bağlantı noktalarını kullanır, bu nedenle bu bağlantı noktalarının kullanıcının güvenlik duvarında engellenmediğinden emin olmanız gerekir. Kullanımdaki bağlantı noktaları UDP 500 ve 4500 ' dir.**
 
-IKEv2'yi varolan bir ağ geçidine eklemek için portaldaki Sanal Ağ Ağ Geçidi'nin altındaki "noktaya noktaya yapılandırma" sekmesine gidin ve açılan kutudan **IKEv2 ve SSTP'yi (SSL)** seçin.
+Mevcut bir ağ geçidine Ikev2 eklemek için, portalda sanal ağ geçidinin altındaki "Noktadan siteye yapılandırma" sekmesine gidin ve açılan kutudan **Ikev2 ve SSTP (SSL)** öğesini seçin.
 
-![noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
+![Noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoikev2.png "IKEv2")
 
 
-### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>Seçenek 2 - SSTP'yi kaldırın ve Ağ Geçidi'nde OpenVPN'i etkinleştirin
+### <a name="option-2---remove-sstp-and-enable-openvpn-on-the-gateway"></a>Seçenek 2-SSTP 'yi kaldırın ve ağ geçidinde OpenVPN 'i etkinleştirin
 
-SSTP ve OpenVPN her ikisi de TLS tabanlı protokol olduğundan, aynı ağ geçidinde bir arada bulunamazlar. SSTP'den OpenVPN'e geçmeye karar verirseniz, SSTP'yi devre dışı bırakıp ağ geçidinde OpenVPN'i etkinleştirmeniz gerekir. Bu işlem, istemciüzerinde yeni profil yapılandırılına kadar varolan istemcilerin VPN ağ geçidine bağlantı kaybetmesine neden olur.
+SSTP ve OpenVPN her ikisi de TLS tabanlı protokol olduğundan, aynı ağ geçidinde birlikte bulunamaz. SSTP 'den OpenVPN 'e taşımaya karar verirseniz, SSTP 'yi devre dışı bırakmanız ve ağ geçidinde OpenVPN 'i etkinleştirmeniz gerekir. Bu işlem, yeni profil istemcide yapılandırılana kadar mevcut istemcilerin VPN ağ geçidiyle bağlantı kaybetmesine neden olur.
 
-İsterseniz IKEv2 ile birlikte OpenVPN'i etkinleştirebilirsiniz. OpenVPN TLS tabanlıdır ve standart TCP 443 bağlantı noktasını kullanır. OpenVPN'e geçmek için portaldaki Sanal Ağ Ağ Ağ Geçidi'nin altındaki "noktaya yapılandırma" sekmesine gidin ve açılan kutudan **OpenVPN (SSL)** veya **IKEv2 ve OpenVPN'i (SSL) seçin.**
+İsterseniz, Ikev2 ile birlikte OpenVPN 'i etkinleştirebilirsiniz. OpenVPN, TLS tabanlıdır ve standart TCP 443 bağlantı noktasını kullanır. OpenVPN 'e geçiş yapmak için, portalda sanal ağ geçidi altındaki "Noktadan siteye yapılandırma" sekmesine gidin ve açılan kutudan **OpenVPN (SSL)** veya **Ikev2 ve OpenVPN (SSL)** öğesini seçin.
 
-![noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
+![Noktadan siteye](./media/ikev2-openvpn-from-sstp/sstptoopenvpn.png "OpenVPN")
 
-Ağ geçidi yapılandırıldıktan sonra, [openvpn istemcilerini dağıtıp yapılandırana](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients)kadar varolan istemciler bağlanamayacaktır.
+Ağ Geçidi yapılandırıldıktan sonra, [OpenVPN istemcilerini dağıtana ve yapılandırmadan](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients), mevcut istemciler bağlanamayacak.
 
-Windows 10 kullanıyorsanız, Windows için [Azure VPN İstemcisini](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) de kullanabilirsiniz
+Windows 10 kullanıyorsanız, [Windows Için Azure VPN istemcisini](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-client#to-download-the-azure-vpn-client) de kullanabilirsiniz.
 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 ### <a name="what-are-the-client-configuration-requirements"></a>İstemci yapılandırma gereksinimleri nelerdir?
 
 >[!NOTE]
->Windows istemcileri için, istemci aygıtından Azure'a VPN bağlantısını başlatmak için istemci aygıtında yönetici haklarına sahip olmalısınız.
+>Windows istemcileri için istemci cihazından Azure 'a VPN bağlantısını başlatmak üzere istemci cihazda yönetici haklarına sahip olmanız gerekir.
 >
 
-Kullanıcılar P2S için Windows ve Mac aygıtlarında yerel VPN istemcilerini kullanır. Azure, bu yerel istemcilerin Azure'a bağlanmak için gerekli ayarlarını içeren bir VPN istemcisi yapılandırma zip dosyası sağlar.
+Kullanıcılar, P2S için Windows ve Mac cihazlarda yerel VPN istemcilerini kullanır. Azure, bu yerel istemciler tarafından Azure 'a bağlanmak için gereken ayarları içeren bir VPN istemcisi yapılandırma zip dosyası sağlar.
 
-* Windows aygıtları için VPN istemcisi yapılandırması, kullanıcıların cihazlarına yükledikleri bir yükleyici paketinden oluşur.
-* Mac aygıtları için, kullanıcıların cihazlarına yükledikleri mobileconfig dosyasından oluşur.
+* Windows cihazlarında, VPN istemci yapılandırması kullanıcıların cihazlarına yükleyen bir yükleyici paketinden oluşur.
+* Mac cihazlar için, kullanıcıların cihazlarına yükleyen mobileconfig dosyasından oluşur.
 
-Zip dosyası ayrıca, Azure tarafındaki bazı önemli ayarların değerlerini bu aygıtlar için kendi profilinizi oluşturmak için kullanabilirsiniz. Değerlerden bazıları VPN ağ geçidi adresi, yapılandırılmış tünel türleri, rotalar ve ağ geçidi doğrulaması için kök sertifikaiçerir.
+ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluşturmak için kullanabileceğiniz bazı önemli ayarların değerlerini de sağlar. Bazı değerler arasında VPN ağ geçidi adresi, yapılandırılmış tünel türleri, rotalar ve ağ geçidi doğrulaması için kök sertifika bulunur.
 
 >[!NOTE]
 >[!INCLUDE [TLS version changes](../../includes/vpn-gateway-tls-change.md)]
 >
 
-### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Hangi ağ geçidi SUS desteği P2S VPN?
+### <a name="which-gateway-skus-support-p2s-vpn"></a><a name="gwsku"></a>Hangi ağ geçidi SKU 'Ları P2S VPN 'yi destekliyor?
 
 [!INCLUDE [aggregate throughput sku](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-* Ağ Geçidi SKU önerileri için [VPN Ağ Geçidi ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md#gwsku)bkz.
+* Ağ Geçidi SKU önerileri için bkz. [VPN Gateway ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 >[!NOTE]
 >Temel SKU, IKEv2 veya RADIUS kimlik doğrulamasını desteklemez.
 >
 
-### <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>Hangi IKE/IPsec ilkeleri P2S için VPN ağ geçitlerinde yapılandırılır?
+### <a name="what-ikeipsec-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="IKE/IPsec policies"></a>P2S için VPN ağ geçitlerinde hangi ıKE/IPSec ilkeleri yapılandırılır?
 
 
 **IKEv2**
 
-|**Şifre** | **Bütünlük** | **Prf** | **DH Grubu** |
+|**Şifre** | **Bütünlük** | **PRF** | **DH Grubu** |
 |---        | ---            | ---        | ---     |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_24 |
 |GCM_AES256 |    GCM_AES256    | SHA384    | GROUP_14 |
@@ -132,8 +132,8 @@ Zip dosyası ayrıca, Azure tarafındaki bazı önemli ayarların değerlerini b
 | AES256    | SHA256 | GROUP_ECP256 |
 | AES256    | SHA1 | GROUP_NONE |
 
-### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S için VPN ağ geçitlerinde hangi TLS ilkeleri yapılandırılır?
-**Tls**
+### <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S için VPN ağ geçitlerinde hangi TLS ilkeleri yapılandırıldı?
+**IOCTL**
 
 |**İlkeler** |
 |---| 
@@ -150,20 +150,20 @@ Zip dosyası ayrıca, Azure tarafındaki bazı önemli ayarların değerlerini b
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-### <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>P2S bağlantısını nasıl yapılandırıyorum?
+### <a name="how-do-i-configure-a-p2s-connection"></a><a name="configure"></a>P2S bağlantısı Nasıl yaparım? mı?
 
-Bir P2S yapılandırması oldukça birkaç özel adım gerektirir. Aşağıdaki makaleler, P2S yapılandırması ile size yol için adımlar ve VPN istemci aygıtları yapılandırmak için bağlantılar içerir:
+Bir P2S yapılandırması, çok sayıda belirli adım gerektirir. Aşağıdaki makalelerde P2S yapılandırmasına kılavuzluk eden adımlar ve VPN istemci cihazlarını yapılandırma bağlantıları bulunur:
 
-* [Bir P2S bağlantısını yapılandırma - RADIUS kimlik doğrulaması](point-to-site-how-to-radius-ps.md)
+* [P2S bağlantısı yapılandırma-RADIUS kimlik doğrulaması](point-to-site-how-to-radius-ps.md)
 
-* [Bir P2S bağlantısını yapılandırma - Azure yerel sertifika kimlik doğrulaması](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S Bağlantısı Yapılandırma-Azure yerel sertifikası kimlik doğrulaması](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 * [OpenVPN yapılandırması](vpn-gateway-howto-openvpn.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir P2S bağlantısını yapılandırma - RADIUS kimlik doğrulaması](point-to-site-how-to-radius-ps.md)
+* [P2S bağlantısı yapılandırma-RADIUS kimlik doğrulaması](point-to-site-how-to-radius-ps.md)
 
-* [Bir P2S bağlantısını yapılandırma - Azure yerel sertifika kimlik doğrulaması](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S Bağlantısı Yapılandırma-Azure yerel sertifikası kimlik doğrulaması](vpn-gateway-howto-point-to-site-rm-ps.md)
 
-**"OpenVPN", OpenVPN Inc. şirketinin ticari markasıdır.**
+**"OpenVPN", OpenVPN Inc 'nin ticari markasıdır.**

@@ -1,90 +1,90 @@
 ---
 title: Redis için Azure Cache'in en iyi yöntemleri
-description: Bu en iyi uygulamaları izleyerek Azure Önbelleğinizi Redis için nasıl kullanacağınızı öğrenin.
+description: Bu en iyi yöntemleri izleyerek, redin için Azure önbelleğinizi etkin bir şekilde nasıl kullanacağınızı öğrenin.
 author: joncole
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
 ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478616"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
-Bu en iyi uygulamaları izleyerek, Redis örneğinde Azure Önbelleğinizin performansını ve uygun maliyetli kullanımını en üst düzeye çıkarmaya yardımcı olabilirsiniz.
+Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
 
 ## <a name="configuration-and-concepts"></a>Yapılandırma ve kavramlar
- * **Üretim sistemleri için Standart veya Premium katmanı kullanın.**  Temel katman, veri çoğaltma ve SLA olmayan tek bir düğüm sistemidir. Ayrıca en az C1 önbelleği kullanın.  C0 önbellekleri, paylaşılan bir CPU çekirdeğine, az belleğe sahip oldukları ndan ve "gürültülü komşu" sorunlarına eğilimli olduklarından basit geliştirme/test senaryoları içindir.
+ * **Üretim sistemleri için standart veya Premium katmanını kullanın.**  Temel katman, veri çoğaltması olmayan ve SLA olmayan tek düğümlü bir sistemdir. Ayrıca en az C1 önbelleği kullanın.  C0 önbellekleri, paylaşılan bir CPU çekirdeği, küçük belleğe sahip olduklarından ve "gürültülü komşu" sorunları nedeniyle basit geliştirme ve test senaryolarına yöneliktir.
 
- * **Redis'in bir bellek içi veri deposu olduğunu unutmayın.**  [Bu makalede,](cache-troubleshoot-data-loss.md) veri kaybı oluşabilir bazı senaryolar özetliyor.
+ * **Redthe 'ın bellek içi veri deposu olduğunu unutmayın.**  [Bu makalede](cache-troubleshoot-data-loss.md) , veri kaybının gerçekleşebileceği bazı senaryolar özetlenmektedir.
 
- * [Yama ve arıza nedeniyle](cache-failover.md) **bağlantı blips işleyebilir şekilde sisteminizi geliştirin.**
+ * [Yazılım, düzeltme eki uygulama ve yük devretme nedeniyle](cache-failover.md) **bağlantı bliıt 'leri Işleyebileceğinden, sisteminizi geliştirin** .
 
- * Bellek basıncı koşullarında **sistem yanıt verme durumunu iyileştirmek için maksimum bellek [rezerve edilmiş ayarınızı](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırın.**  Yazma ağır iş yükleri için veya Redis'te daha büyük değerleri (100 KB veya daha fazla) depolıyorsanız, yeterli rezervasyon ayarı özellikle önemlidir. Önbelleğinizin boyutunun %10'uyla başlamalı ve yazma ağırlıklı yüklerin varsa bu yüzdeyi artırmalısınız.
+ * Bellek baskısı koşullarına göre **sistem yanıt hızını artırmak için [MaxMemory ile ayrılmış ayarınızı](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) yapılandırın** .  Önemli bir ayırma ayarı, yazma ağır iş yükleri için özellikle önemlidir veya daha büyük değerler (100 KB veya daha fazla) redin içinde depoluyorsanız. Önbelleğinizin boyutunun %10 ' ü ile başlamalı ve yazma ağır yüklerinizin olması durumunda bu yüzdeyi artırmanız gerekir.
 
- * **Redis daha küçük değerlerle en iyi şekilde çalışır,** bu nedenle daha büyük verileri birden çok tuşa doğramayı düşünün.  [Bu Redis tartışma,](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)bazı hususlar dikkatle dikkate almalısınız listelenir.  Büyük değerlerin neden olabileceği örnek bir sorun için [bu makaleyi](cache-troubleshoot-client.md#large-request-or-response-size) okuyun.
+ * **Red, daha küçük değerlerle çalışır**, bu nedenle daha büyük verileri birden fazla anahtara chopping değerlendirin.  [Bu redin tartışmasında](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/), dikkatlice göz önünde bulundurmanız gereken bazı noktalar listelenmiştir.  Büyük değerlerden kaynaklanmış olabilecek örnek bir sorun için [Bu makaleyi](cache-troubleshoot-client.md#large-request-or-response-size) okuyun.
 
- * **Önbellek örneğini ve uygulamanızı aynı bölgede bulun.**  Farklı bir bölgedeki önbelleğe bağlanmak gecikme süresini önemli ölçüde artırabilir ve güvenilirliği azaltabilir.  Azure dışından bağlanabiliyor ken, *özellikle Redis'i önbellek olarak kullanırken*önerilmez.  Redis'i yalnızca bir anahtar/değer deposu olarak kullanıyorsanız, gecikme birincil sorun olmayabilir. 
+ * **Aynı bölgedeki önbellek örneğinizi ve uygulamanızı bulun.**  Farklı bir bölgedeki önbelleğe bağlanmak gecikme süresini önemli ölçüde artırabilir ve güvenilirliği azaltabilir.  Azure dışından bağlantı kurmak için, *özellikle redsıs 'in önbellek olarak kullanılması*önerilmez.  Redsıs 'i yalnızca anahtar/değer deposu olarak kullanıyorsanız, gecikme süresi birincil sorun olmayabilir. 
 
- * **Bağlantıları yeniden kullanın.**  Yeni bağlantılar oluşturmak pahalıdır ve gecikme yi artırır, bu nedenle bağlantıları mümkün olduğunca yeniden kullanın. Yeni bağlantılar oluşturmayı seçerseniz, eski bağlantıları yayınlamadan önce kapattığınızdan emin olun (.NET veya Java gibi yönetilen bellek dillerinde bile).
+ * **Bağlantıları yeniden kullanın.**  Yeni bağlantılar oluşturmak pahalıdır ve gecikme süresini arttığı için, bağlantıları mümkün olduğunca yeniden kullanın. Yeni bağlantılar oluşturmayı seçerseniz, eski bağlantıları bırakmadan önce (.NET veya Java gibi yönetilen bellek dillerinde bile) kapatmayı unutmayın.
 
- * **İstemci kitaplığınızı en az 15 *saniyelik bir bağlantı zaman aşını* kullanacak şekilde yapılandırArak**sisteme daha yüksek CPU koşullarında bile bağlanmak için zaman tanıyın.  Küçük bir bağlantı zaman aşımı değeri, bağlantının bu zaman diliminde kurulduğunu garanti etmez.  Bir şey yanlış giderse (yüksek istemci CPU, yüksek sunucu CPU, vb) sonra kısa bir bağlantı zaman dışarı değeri bağlantı girişimi başarısız neden olur. Bu davranış genellikle kötü bir durum daha kötü hale getirir.  Daha kısa zaman aşımları, yardımcı olmak yerine, sistemi yeniden bağlanmaya çalışma işlemini yeniden başlatmaya zorlayarak sorunu daha da kötüleştirebilir ve bu da *bir bağlantı -> başarısız -> yeniden deneme* döngüsüne yol açabilir. Genellikle bağlantı zaman dışından 15 saniye veya daha yüksek bir hızda ayrılmanızı öneririz. Bağlantı girişiminizin 15 veya 20 saniye sonra başarılı olmasına izin vermek, bağlantı girişiminizin hızlı bir şekilde yeniden denemede başarısız olmasından daha iyidir. Böyle bir yeniden deneme döngüsü, kesintinizin başlangıçta sistemin daha uzun sürmesine izin vermenizden daha uzun sürmesine neden olabilir.  
+ * **İstemci kitaplığınızı en az 15 saniyelik bir *bağlantı zaman aşımı süresi* kullanacak şekilde yapılandırın**, böylece daha yüksek CPU koşullarında bile sunucuya bağlanma süresi vermiş olursunuz.  Küçük bir bağlantı zaman aşımı değeri, bağlantının bu zaman çerçevesinde kurulu olduğunu garanti etmez.  Bir sorun yanlış olursa (yüksek istemci CPU, yüksek sunucu CPU 'SU vb.), kısa bir bağlantı zaman aşımı değeri bağlantı girişiminin başarısız olmasına neden olur. Bu davranış genellikle kötü bir durumun daha kötüleşmesini sağlar.  Yardımcı olmak yerine, daha kısa zaman aşımları, sistemi yeniden bağlanmaya çalışmak için yeniden başlamaya zorlayarak, *Connect-> Fail-> yeniden deneme* döngüsüne neden olabilecek sorunu ortadan kaldırır. Genellikle bağlantı zaman aşımını 15 saniye veya daha yüksek bir düzeye bırakmamanız önerilir. Bağlantı denemesinin 15 veya 20 saniye sonra, yalnızca yeniden denemek için hızlı bir şekilde başarısız olmasına izin vermek daha iyidir. Bu tür bir yeniden deneme döngüsü, sistemin başlangıçta yalnızca daha uzun sürmesine izin verenden daha uzun sürmesine neden olabilir.  
      > [!NOTE]
-     > Bu *kılavuz, bağlantı girişimine* özgüdür ve GET veya SET gibi bir *işlemin* tamamlanmasını beklemek istediğiniz saatle ilgili değildir.
+     > Bu kılavuz, *bağlantı girişimine* ÖZELDIR ve Al veya Tamam gibi bir *işlemin* tamamlanmasını beklemek istediğiniz zamanla ilgili değildir.
  
- * **Pahalı işlemlerden kaçının** - [KEYS](https://redis.io/commands/keys) komutu gibi bazı Redis işlemleri *çok* pahalıdır ve kaçınılmalıdır.  Daha fazla bilgi için, [uzun süren komutlar](cache-troubleshoot-server.md#long-running-commands) etrafında bazı hususlara bakın
+ * **Pahalı Işlemlerden kaçının** - [anahtarlar](https://redis.io/commands/keys) komutu gibi bazı redin işlemleri *çok* pahalıdır ve kaçınılmalıdır.  Daha fazla bilgi için bkz. uzun süreli [komutlarla](cache-troubleshoot-server.md#long-running-commands) ilgili bazı konular
 
- * **TLS şifrelemesi kullanın** - Redis için Azure Önbelleği varsayılan olarak TLS şifreli iletişim gerektirir.  TLS sürümleri 1.0, 1.1 ve 1.2 şu anda desteklenmiştir.  Ancak, TLS 1.0 ve 1.1 endüstri çapında amortismana giden bir yoldadır, bu nedenle mümkünse TLS 1.2'yi kullanın.  İstemci kitaplığınız veya aracınız TLS'yi desteklemiyorsa, şifrelenmemiş bağlantıları etkinleştirme Azure portalı veya [yönetim API'leri](https://docs.microsoft.com/rest/api/redis/redis/update) [aracılığıyla](cache-configure.md#access-ports) yapılabilir.  Şifreli bağlantıların mümkün olmadığı durumlarda, önbelleğinizi ve istemci uygulamanızı sanal bir ağa yerleştirmeniz önerilir.  Sanal ağ önbelleği senaryosunda hangi bağlantı noktalarının kullanıldığı hakkında daha fazla bilgi için bu [tabloya](cache-how-to-premium-vnet.md#outbound-port-requirements)bakın.
+ * **TLS şifrelemesini kullanma** -redsıs Için Azure önbelleği varsayılan olarak TLS şifreli iletişim gerektirir.  TLS sürümleri 1,0, 1,1 ve 1,2 Şu anda desteklenmektedir.  Ancak, bu durumda TLS 1,0 ve 1,1, sektör genelinde kullanımdan kalkmaya yönelik bir yoldur. bu nedenle, tüm mümkünse TLS 1,2 kullanın.  İstemci kitaplığınız veya aracınız TLS desteklemiyorsa, şifrelenmemiş bağlantıları etkinleştirmek Azure portal veya [Yönetim API 'leri](https://docs.microsoft.com/rest/api/redis/redis/update) [aracılığıyla](cache-configure.md#access-ports) yapılabilir.  Şifrelenmiş bağlantıların mümkün olmadığı durumlarda, önbelleğinizi ve istemci uygulamanızı bir sanal ağa yerleştirmek önerilir.  Sanal ağ önbelleği senaryosunda hangi bağlantı noktalarının kullanıldığı hakkında daha fazla bilgi için bu [tabloya](cache-how-to-premium-vnet.md#outbound-port-requirements)bakın.
  
 ## <a name="memory-management"></a>Bellek yönetimi
-Redis sunucu örneğinde dikkate almak isteyebileceğin bellek kullanımıyla ilgili birkaç şey vardır.  İşte birkaçı:
+Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahilinde bellek kullanımıyla ilgili birkaç şey vardır.  İşte birkaç:
 
- * **Uygulamanız için çalışan bir [tahliye ilkesi](https://redis.io/topics/lru-cache) seçin.**  Azure Redis için varsayılan ilke *geçici-lru'dur,* bu da yalnızca TTL değeri kümesi olan anahtarların tahliye için uygun olacağı anlamına gelir.  Hiçbir anahtarın TTL değeri yoksa, sistem hiçbir anahtarı çıkarmaz.  Eğer sistem bellek baskısı altında herhangi bir anahtar tahliye edilmesine izin istiyorsanız, o zaman *allkeys-lru* ilkesini dikkate almak isteyebilirsiniz.
+ * **Uygulamanız için uygun bir [çıkarma ilkesi](https://redis.io/topics/lru-cache) seçin.**  Azure Redl için varsayılan ilke *geçici LRU*' dır. Bu, yalnızca TTL değeri ayarlanmış olan anahtarların çıkarma için uygun olacağı anlamına gelir.  Anahtarın TTL değeri yoksa, sistem hiçbir anahtarı çıkaramaz.  Sistemin bellek baskısı altında herhangi bir anahtarın çıkarılmayı izin vermek istiyorsanız, *AllKeys-LRU* ilkesini göz önünde bulundurmanız gerekebilir.
 
- * **Anahtarlarınızın son kullanma değerini ayarlayın.**  Son kullanma süresi, bellek basıncı olana kadar beklemek yerine anahtarları proaktif olarak kaldırır.  Bellek basıncı nedeniyle tahliye devreye girdiğinde, sunucunuza ek yük neden olabilir.  Daha fazla bilgi için [EXPIRE](https://redis.io/commands/expire) ve [EXPIREAT](https://redis.io/commands/expireat) komutları için belgelere bakın.
+ * **Anahtarlarınız üzerinde bir süre sonu değeri ayarlayın.**  Süre sonu, bellek baskısı kadar beklemek yerine anahtarları etkin bir şekilde kaldırır.  Çıkarma, bellek baskısı nedeniyle başlatıldığında sunucunuzda ek yüke neden olabilir.  Daha fazla bilgi için, [süre sonu](https://redis.io/commands/expire) ve [expireat](https://redis.io/commands/expireat) komutlarına yönelik belgelere bakın.
  
-## <a name="client-library-specific-guidance"></a>İstemci kitaplığı özel rehberlik
- * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
- * [Java - Hangi istemciyi kullanmalıyım?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [Marul (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
- * [Jedi'lar (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
+## <a name="client-library-specific-guidance"></a>İstemci kitaplığına özgü kılavuz
+ * [StackExchange. Reddir (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [Java-hangi istemciyi kullanmalıyım?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
+ * [Lettuce (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Jedsıs (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net Oturum Devlet Sağlayıcısı](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [Asp.Net oturum durumu sağlayıcısı](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
-## <a name="when-is-it-safe-to-retry"></a>Yeniden denemek ne zaman güvenli?
-Ne yazık ki, kolay bir cevap yok.  Her uygulamanın hangi işlemlerin yeniden denenip hangilerini yeniden deneyeceğine karar vermesi gerekir.  Her işlemin farklı gereksinimleri ve anahtarlar arası bağımlılıkları vardır.  Göz önünde bulundurmanız gereken bazı şeyler şunlardır:
+## <a name="when-is-it-safe-to-retry"></a>Yeniden denenme ne zaman güvenlidir?
+Ne yazık ki kolay bir yanıt yok.  Her uygulamanın hangi işlemlerin yeniden deneneceği ve ne yapabileceğine karar sağlaması gerekir.  Her işlem, farklı gereksinimlere ve anahtar arası bağımlılıklara sahiptir.  Göz önünde bulundurmanız gereken bazı şeyler şunlardır:
 
- * Redis çalışmasını istediğiniz komutu başarıyla çalıştırmış olsa bile istemci tarafı hataları alabilirsiniz.  Örnek:
-     - Zaman zaman ları istemci tarafı bir kavramdır.  İşlem sunucuya ulaştıysa, istemci beklemeyi vazgeçse bile sunucu komutu çalıştıracaktır.  
-     - Soket bağlantısında bir hata oluştuğunda, işlemin gerçekten sunucuda olup olmadığını bilmek mümkün değildir.  Örneğin, bağlantı hatası sunucu isteği işledikten sonra ancak istemci yanıtı almadan önce gerçekleşebilir.
- *  Yanlışlıkla aynı işlemi iki kez çalıştırarsam uygulamam nasıl tepki verir?  Örneğin, bir kere yerine iki kez bir kisa daarttırırsam ne olur?  Başvurum birden fazla yerden aynı anahtara mı yazıyor?  Yeniden deneme mantığım, uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazarsa ne olur?
+ * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örneğin:
+     - Zaman aşımları, istemci tarafı kavramıdır.  İşlem sunucuya ulaştıysa, istemci beklemeye alsa bile sunucu komutu çalıştırır.  
+     - Yuva bağlantısında bir hata oluştuğunda, işlemin sunucuda gerçekten çalışır durumda olup olmadığını bilmeleri mümkün değildir.  Örneğin, sunucu isteği işledikten sonra ancak istemci yanıtı almadan önce bağlantı hatası oluşabilir.
+ *  Yanlışlıkla aynı işlemi iki kez çalıştırdığımda Uygulamam nasıl tepki veriyor?  Örneğin, bir tamsayıyı bir kez yerine iki kez artırdım.  Uygulamam birden çok konumdan aynı anahtara yazıyor mu?  Yeniden deneme mantığı uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazıyor mu?
 
-Kodunuzu hata koşullarında nasıl çalıştığını test etmek istiyorsanız, [Yeniden Başlat özelliğini](cache-administration.md#reboot)kullanmayı düşünün. Yeniden başlatma, bağlantı blips'inin uygulamanızı nasıl etkilediğini görmenizi sağlar.
+Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterseniz, [yeniden başlatma özelliğini](cache-administration.md#reboot)kullanmayı düşünün. Yeniden başlatma, bağlantı sinyalleri 'nin uygulamanızı nasıl etkilediğini görmenizi sağlar.
 
 ## <a name="performance-testing"></a>Performansı test etme
- * Kendi perf testlerinizi yazmadan önce olası bir iş sonu/gecikme sebebleri için bir his almak için ** `redis-benchmark.exe` kullanmaya başlayın.**  Redis-benchmark belgeleri [burada bulabilirsiniz.](https://redis.io/topics/benchmarks)  Redis-benchmark'ın TLS'yi desteklemediğini unutmayın, bu nedenle testi çalıştırmadan önce [Portal üzerinden TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir.  [redis-benchmark.exe bir windows uyumlu sürümü burada bulabilirsiniz](https://github.com/MSOpenTech/redis/releases)
- * Sınama için kullanılan VM istemcisi Redis önbellek örneğinizle **aynı bölgede** olmalıdır.
- * Onlar daha iyi donanım alabildikleri ve en iyi sonuçları verecektir gibi biz müşteri için **Dv2 VM Serisi kullanmanızı öneririz.**
- * Kullandığınız istemci VM *en*az* önbellek test edilen kadar işlem ve bant genişliği ne kadar olduğundan emin olun. 
- * Windows'daysanız istemci makinesinde **VRSS'yi etkinleştirin.**  [Ayrıntılar için buraya bakın.](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)  Örnek powershell komut dosyası:
-     >PowerShell -ExecutionPolicy Sınırsız Enable-NetAdapterRSS -Adı ( Get-NetAdapter). Adı 
+ * Kendi performans testlerinizi yazmadan önce olası üretilen iş/gecikme süresi hakkında fikir almak için **kullanarak `redis-benchmark.exe` başlayın** .  Redin-kıyaslama belgeleri [burada bulunabilir](https://redis.io/topics/benchmarks).  Redin-kıyaslama TLS ' i desteklemediğine, bu nedenle testi çalıştırmadan önce [Portal ÜZERINDEN TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir.  [Redis-benchmark. exe ' nin Windows uyumlu bir sürümü burada bulunabilir](https://github.com/MSOpenTech/redis/releases)
+ * Test için kullanılan istemci sanal makinesi, Redsıs Cache örneğiniz ile **aynı bölgede** olmalıdır.
+ * Daha iyi donanımlar olduğundan ve en iyi sonuçları sunduklarında, istemciniz için **dv2 VM serisini kullanmanızı öneririz** .
+ * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin*en az işlem ve bant genişliğine* sahip olduğundan emin olun. 
+ * Windows kullanıyorsanız, istemci makinesinde **vRSS 'ı etkinleştirin** .  [Ayrıntılar için buraya bakın](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx).  Örnek PowerShell betiği:
+     >PowerShell-ExecutionPolicy Kısıtlanmamış Enable-NetAdapterRSS-Name (Get-NetAdapter). Ada 
      
- * **Premium katman Redis örneklerini kullanmayı düşünün.**  Hem CPU hem de Ağ için daha iyi donanımüzerinde çalıştıklarından, bu önbellek boyutları daha iyi ağ gecikmesi ve iş ortalığına sahip olur.
+ * **Premium katman redsıs örnekleri kullanmayı düşünün**.  Bu önbellek boyutları, hem CPU hem de ağ için daha iyi donanımlar üzerinde çalıştıkları için daha iyi ağ gecikme süresi ve aktarım hızı olacaktır.
  
      > [!NOTE]
-     > Gözlenen performans sonuçlarımız referansınız için [burada yayınlanmaktadır.](cache-faq.md#azure-cache-for-redis-performance)   Ayrıca, SSL/TLS'nin bazı ek ek yükü eklediğiiçin aktarım şifrelemesi kullanıyorsanız farklı gecikmeler ve/veya iş metotları alabilirsiniz.
+     > Gözlemlenen performans sonuçlarımız, başvurunuz için [burada yayımlanır](cache-faq.md#azure-cache-for-redis-performance) .   Ayrıca, SSL/TLS 'nin bazı ek yük eklediğinden emin olun. bu nedenle, aktarım şifrelemesini kullanıyorsanız farklı gecikme süreleri ve/veya aktarım hızı sağlayabilirsiniz.
  
-### <a name="redis-benchmark-examples"></a>Redis-Benchmark örnekleri
-**Ön test kurulumu**: Önbellek örneğini, aşağıda listelenen gecikme ve iş sonu test komutları için gerekli verilerle hazırlayın.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t SET -n 10 -d 1024 
+### <a name="redis-benchmark-examples"></a>Redsıs-kıyaslama örnekleri
+**Ön test kurulumu**: önbellek örneğini aşağıda listelenen gecikme süresi ve işleme testi komutları için gereken verilerle hazırlayın.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 
 
-**Gecikmeyi test etmek için**: 1k yük kullanarak GET isteklerini test edin.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -d 1024 -P 50 -c 4
+**Test gecikmesi**: 1 k yük kullanarak test get istekleri.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-d 1024-P 50-c 4
 
-**Iş ın test etmek için:** 1k yükü ile pipelined GET istekleri.
-> redis-benchmark.exe -h yourcache.redis.cache.windows.net -a yourAccesskey -t GET -n 1000000 -d 1024 -P 50 -c 50
+**Aktarım hızını test etmek için:** Ardışık düzen, 1000 yükü ile istekleri al.
+> Redis-benchmark. exe-h yourcache.redis.cache.windows.net-a yourAccesskey-t GET-n 1000000-d 1024-P 50-c 50

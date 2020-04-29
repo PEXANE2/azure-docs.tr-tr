@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Dosyalarına bir alt ağ atama | Microsoft Dokümanlar
-description: Bir alt ağı Azure NetApp Dosyalarına nasıl atanın açıklar.
+title: Azure NetApp Files için bir alt ağ devretmek | Microsoft Docs
+description: Azure NetApp Files için bir alt ağın nasıl temsilciliğini açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,37 +15,37 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: b-juche
 ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054459"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Azure NetApp Files için bir alt ağı temsilci olarak belirleme 
 
-Azure NetApp Files'a bir alt ağ aktarmanız gerekir.   Bir birim oluşturduğunuzda, devredilen alt ağı belirtmeniz gerekir.
+Azure NetApp Files için bir alt ağ temsilciliğini almalısınız.   Bir birim oluşturduğunuzda, temsilci alt ağını belirtmeniz gerekir.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
-* Yeni bir alt ağ oluşturma sihirbazı, 251 kullanılabilir IP adresi sağlayan /24 ağ maskesine varsayılan olarak verilir. 16 kullanılabilir IP adresi sağlayan bir /28 ağ maskesi kullanmak hizmet için yeterlidir.
-* Her Azure Sanal Ağında (VNet), Azure NetApp Dosyalarına yalnızca bir alt ağ devredilebilir.   
-   Azure, bir VNet'te birden çok devralınan alt ağ oluşturmanıza olanak tanır.  Ancak, birden fazla temsilci alt ağ kullanırsanız, yeni bir birim oluşturma girişimleri başarısız olur.
-* Devredilen alt ağda bir ağ güvenlik grubu veya hizmet bitiş noktası atayamazsınız. Bunu yapmak subnet delegasyonunun başarısız olmasını neden olur.
-* Genel olarak bakan bir sanal ağdan bir birisesine erişim şu anda desteklenmez.
-* Azure NetApp Files'a devredilen bir alt ağa adres öneki (hedef) ile VM alt ağlarında [kullanıcı tanımlı özel rotalar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) oluşturmak desteklenmez. Bunu yapmak VM bağlantısını etkileyecektir.
+* Yeni bir alt ağ oluşturmak için sihirbaz, 251 kullanılabilir IP adresi sağlayan bir/24 ağ maskesini varsayılan olarak belirler. 16 kullanılabilir IP adresi sağlayan/28 ağ maskesini kullanma hizmeti için yeterlidir.
+* Her bir Azure sanal ağında (VNet), Azure NetApp Files için yalnızca bir alt ağ atanabilir.   
+   Azure, bir sanal ağda birden fazla Temsilcili alt ağ oluşturmanızı sağlar.  Ancak, birden fazla Temsilcili alt ağ kullanırsanız, yeni bir birim oluşturma girişimleri başarısız olur.
+* Temsilci alt ağında bir ağ güvenlik grubu veya hizmet uç noktası belirtemezsiniz. Bunun yapılması alt ağ temsilcisinin başarısız olmasına neden olur.
+* Genel olarak eşlenmiş bir sanal ağdan bir birime erişim şu anda desteklenmiyor.
+* Azure NetApp Files için temsilci atanmış bir alt ağa adres ön eki (hedef) ile VM alt ağları üzerinde [Kullanıcı tanımlı özel yollar](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) oluşturma desteklenmiyor. Bunun yapılması, VM bağlantısını etkiler.
 
 ## <a name="steps"></a>Adımlar 
-1.  Azure portalından **Sanal ağlar** blade'ine gidin ve Azure NetApp Dosyaları için kullanmak istediğiniz sanal ağı seçin.    
+1.  Azure portal **sanal ağlar** dikey penceresine gidin ve Azure NetApp Files için kullanmak istediğiniz sanal ağı seçin.    
 
-1. Sanal ağ bıçağından **Alt Ağlar'ı** seçin ve **+Subnet** düğmesini tıklatın. 
+1. Sanal ağ dikey penceresinde **alt ağlar** ' ı seçin ve **+ alt ağ** düğmesine tıklayın. 
 
-1. Alt Net Ekle sayfasında aşağıdaki gerekli alanları tamamlayarak Azure NetApp Dosyaları için kullanılacak yeni bir alt ağ oluşturun:
-    * **Adı**: Alt net adını belirtin.
-    * **Adres aralığı**: IP adres aralığını belirtin.
-    * **Subnet delegasyonu**: **Microsoft.NetApp/volumes'u**seçin. 
+1. Alt ağ Ekle sayfasında aşağıdaki gerekli alanları tamamlayarak Azure NetApp Files için kullanılacak yeni bir alt ağ oluşturun:
+    * **Ad**: alt ağ adını belirtin.
+    * **Adres aralığı**: IP adresi aralığını belirtin.
+    * **Alt ağ temsili**: **Microsoft. NetApp/birimler**' i seçin. 
 
       ![Alt ağ temsilcisi](../media/azure-netapp-files/azure-netapp-files-subnet-delegation.png)
     
-[Azure NetApp Dosyaları için bir birim oluşturduğunuzda](azure-netapp-files-create-volumes.md)bir alt ağ oluşturabilir ve temsilci lik de atayabilirsiniz. 
+Ayrıca, [Azure NetApp Files için bir birim oluşturduğunuzda](azure-netapp-files-create-volumes.md)bir alt ağ oluşturup atayabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 * [Azure NetApp Files için birim oluşturma](azure-netapp-files-create-volumes.md)

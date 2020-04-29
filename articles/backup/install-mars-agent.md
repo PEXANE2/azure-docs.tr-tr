@@ -1,71 +1,71 @@
 ---
-title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükleme
-description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl yükleyin öğrenin.
+title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükler
+description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yüklemeyi öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422929"
 ---
-# <a name="install-the-azure-backup-mars-agent"></a>Azure Yedekleme MARS aracısını yükleme
+# <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS aracısını yükler
 
-Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının nasıl yüklenir. MARS, Azure Yedekleme aracısı olarak da bilinir.
+Bu makalede Microsoft Azure Kurtarma Hizmetleri (MARS) aracısının nasıl yükleneceği açıklanır. MARS, Azure Backup Aracısı olarak da bilinir.
 
-## <a name="about-the-mars-agent"></a>MARS ajanı hakkında
+## <a name="about-the-mars-agent"></a>MARS Aracısı hakkında
 
-Azure Yedekleme, dosyaları, klasörleri ve sistem durumunu şirket içi makinelerden ve Azure VM'lerden yedeklemek için MARS aracısını kullanır. Bu yedeklemeler Azure'daki Kurtarma Hizmetleri kasasında depolanır. Aracıyı çalıştırabilirsiniz:
+Azure Backup, şirket içi makinelerden ve Azure VM 'lerinden dosya, klasör ve sistem durumunu yedeklemek için MARS Aracısı 'nı kullanır. Bu yedeklemeler Azure 'da bir kurtarma hizmetleri kasasında depolanır. Aracıyı çalıştırabilirsiniz:
 
-* Doğrudan şirket içi Windows makinelerinde. Bu makineler doğrudan Azure'daki Kurtarma Hizmetleri kasasına yedeklenebilir.
-* Windows'u Azure VM yedekleme uzantısı ile yan yana çalıştıran Azure VM'lerde. Aracı, VM'deki belirli dosya ve klasörleri yedekler.
-* Microsoft Azure Yedekleme Sunucusu (MABS) örneğinde veya System Center Data Protection Manager (DPM) sunucusunda. Bu senaryoda, makineler ve iş yükleri MABS veya Veri Koruma Yöneticisi'ne geri döner. Ardından MABS veya Veri Koruma Yöneticisi, Azure'daki bir kasaya yedeklemek için MARS aracısını kullanır.
+* Doğrudan şirket içi Windows makineler üzerinde. Bu makineler, doğrudan Azure 'daki bir kurtarma hizmetleri kasasına yedekleyebilir.
+* Azure VM yedekleme uzantısıyla Windows 'u yan yana çalıştıran Azure VM 'lerinde. Aracı, sanal makinede belirli dosya ve klasörleri yedekler.
+* Microsoft Azure Backup Server (MABS) örneği veya bir System Center Data Protection Manager (DPM) sunucusu. Bu senaryoda, makineler ve iş yükleri MABS veya Data Protection Manager yedekler. Daha sonra MABS veya Data Protection Manager, Azure 'daki bir kasaya yedeklemek için MARS Aracısı 'nı kullanır.
 
-Yedekleme için kullanılabilen veriler aracının nerede yüklü olduğuna bağlıdır.
+Yedekleme için kullanılabilen veriler, aracının yüklü olduğu yere bağlıdır.
 
 > [!NOTE]
-> Genellikle, VM'de bir Azure Yedekleme uzantısı kullanarak bir Azure VM'yi yedeklersiniz. Bu yöntem tüm VM'yi yedekler. VM'deki belirli dosya ve klasörleri yedeklemek istiyorsanız, uzantAyın yanında MARS aracısını yükleyin ve kullanın. Daha fazla bilgi için yerleşik [Azure VM yedeklemesinin Mimarisi'ne](backup-architecture.md#architecture-built-in-azure-vm-backup)bakın.
+> Genellikle, VM 'de bir Azure Backup uzantısı kullanarak bir Azure VM 'yi yedeklemeniz gerekir. Bu yöntem tüm VM 'yi yedekler. SANAL makinede belirli dosya ve klasörleri yedeklemek istiyorsanız, bu uzantıyı uzantısıyla birlikte MARS aracısını yükleyip kullanın. Daha fazla bilgi için bkz. [yerleşik bir Azure VM yedeklemesi mimarisi](backup-architecture.md#architecture-built-in-azure-vm-backup).
 
 ![Yedekleme işlemi adımları](./media/backup-configure-vault/initial-backup-process.png)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-* Azure [Yedekleme'nin Windows makinelerini yedeklemek için MARS aracısını](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)nasıl kullandığını öğrenin.
-* Mars aracısını ikincil bir MABS veya Veri Koruma Yöneticisi sunucusunda çalıştıran [yedekleme mimarisi](backup-architecture.md#architecture-back-up-to-dpmmabs) hakkında bilgi edinin.
-* Mars ajanı tarafından [desteklenenleri ve destekleyebildiklerinizi](backup-support-matrix-mars-agent.md) gözden geçirin.
-* Bir sunucuveya istemciyi Azure'a yedeklemeniz gerekiyorsa bir Azure hesabınız olduğundan emin olun. Hesabınız yoksa, birkaç dakika içinde [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturabilirsiniz.
-* Yedeklemek istediğiniz makinelerdeki internet erişimini doğrulayın.
-* MARS aracısının yükleme ve yapılandırmasını gerçekleştiren kullanıcının sunucuda korunması gereken yerel yönetici ayrıcalıklarına sahip olduğundan emin olun.
+* [Azure Backup Windows makinelerini yedeklemek IÇIN Mars aracısını nasıl kullandığını](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)öğrenin.
+* Bir ikincil MABS veya Data Protection Manager sunucusu üzerinde MARS aracısını çalıştıran [yedekleme mimarisi](backup-architecture.md#architecture-back-up-to-dpmmabs) hakkında bilgi edinin.
+* [Desteklenen öğeleri ve Mars Aracısı tarafından neleri yedekleyebileceğinize](backup-support-matrix-mars-agent.md) bakın.
+* Bir sunucu veya istemcisini Azure 'a yedeklemeniz gerekiyorsa Azure hesabınız olduğundan emin olun. Hesabınız yoksa yalnızca birkaç dakika içinde [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturabilirsiniz.
+* Yedeklemek istediğiniz makinelerde internet erişimini doğrulayın.
+* MARS aracısının yüklemesini ve yapılandırmasını gerçekleştiren kullanıcının korunabilecek sunucuda yerel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="modify-storage-replication"></a>Depolama çoğaltma değiştirme
+## <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
 
-Varsayılan olarak, kasalar [coğrafi yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
+Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
 
-* Kasa birincil yedekleme mekanizmanızsa, GRS kullanmanızı öneririz.
+* Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
 * Azure depolama maliyetlerini azaltmak için [yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kullanabilirsiniz.
 
 Depolama çoğaltma türünü değiştirmek için:
 
-1. Yeni kasada **Ayarlar** bölümünün altındaki **Özellikler'i** seçin.
+1. Yeni kasada, **Ayarlar** bölümünün altındaki **Özellikler** ' i seçin.
 
-1. **Özellikler** sayfasında, **Yedekleme Yapılandırması** **altında, Güncelleştir'i**seçin.
+1. **Özellikler** sayfasında, **yedekleme yapılandırması**altında **Güncelleştir**' i seçin.
 
-1. Depolama çoğaltma türünü seçin ve **Kaydet'i**seçin.
+1. Depolama çoğaltma türünü seçin ve **Kaydet**' i seçin.
 
-    ![Yedekleme Yapılandırması'nı güncelleştir](./media/backup-afs/backup-configuration.png)
+    ![Yedekleme yapılandırmasını Güncelleştir](./media/backup-afs/backup-configuration.png)
 
 > [!NOTE]
-> Kasa ayarlandıktan ve yedek öğeler içeren depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsan, kasayı yeniden oluşturman gerekiyor.
+> Kasa ayarlandıktan ve yedekleme öğeleri içerdiğinde depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsanız, kasayı yeniden oluşturmanız gerekir.
 >
 
 ### <a name="verify-internet-access"></a>İnternet erişimini doğrulama
 
-Makinenizin internet erişimi sınırlıysa, makine veya proxy'deki güvenlik duvarı ayarlarının aşağıdaki URL'lere ve IP adreslerine izin verdiğinden emin olun:
+Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının aşağıdaki URL 'Lere ve IP adreslerine izin verildiğinden emin olun:
 
-* URL'ler
+* URL’ler
   * `www\.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
@@ -75,11 +75,11 @@ Makinenizin internet erişimi sınırlıysa, makine veya proxy'deki güvenlik du
   * 20.190.128.0/18
   * 40.126.0.0/18
 
-### <a name="use-azure-expressroute"></a>Azure ExpressRoute'u kullanma
+### <a name="use-azure-expressroute"></a>Azure ExpressRoute kullanma
 
-Herkese açık bakış (eski devreler için kullanılabilir) ve Microsoft'u kullanarak verilerinizi Azure ExpressRoute üzerinden yedekleyebilirsiniz. Özel bakışlar üzerinden yedekleme desteklenmez.
+Azure ExpressRoute üzerinden verilerinizi, genel eşlemeyi (eski devreler için kullanılabilir) ve Microsoft eşlemesi 'ni kullanarak yedekleyebilirsiniz. Özel eşleme üzerinde yedekleme desteklenmez.
 
-Genel bakışları kullanmak için öncelikle aşağıdaki etki alanları ve adreslere erişimi sağlayın:
+Ortak eşlemeyi kullanmak için önce aşağıdaki etki alanlarına ve adreslere erişim sağlayın:
 
 * `http://www.msftncsi.com/ncsi.txt`
 * `microsoft.com`
@@ -87,79 +87,79 @@ Genel bakışları kullanmak için öncelikle aşağıdaki etki alanları ve adr
 * `.microsoftonline.com`
 * `.windows.net`
 
-Microsoft'un bakışını kullanmak için aşağıdaki hizmetleri, bölgeleri ve ilgili topluluk değerlerini seçin:
+Microsoft eşlemesini kullanmak için aşağıdaki hizmetleri, bölgeleri ve ilgili topluluk değerlerini seçin:
 
-* Azure Etkin Dizin (12076:5060)
+* Azure Active Directory (12076:5060)
 * Kurtarma Hizmetleri kasanızın konumuna göre Azure bölgesi
-* Kurtarma Hizmetleri kasanızın konumuna göre Azure Depolama
+* Azure depolama, kurtarma hizmetleri kasanızın konumuna göre
 
-Daha fazla bilgi için [ExpressRoute yönlendirme gereksinimlerine](https://docs.microsoft.com/azure/expressroute/expressroute-routing)bakın.
+Daha fazla bilgi için bkz. [ExpressRoute yönlendirme gereksinimleri](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 > [!NOTE]
-> Kamu bakışları yeni devreler için amortismana uyrtu.
+> Ortak eşleme, yeni devreler için kullanım dışıdır.
 
-Önceki URL'lerin ve IP adreslerinin tümü, 443 bağlantı noktasındaki HTTPS protokolünü kullanır.
+Önceki URL 'Ler ve IP adresleri, 443 numaralı bağlantı noktasında HTTPS protokolünü kullanır.
 
-### <a name="private-endpoints"></a>Özel Uç Noktalar
+### <a name="private-endpoints"></a>Özel uç noktalar
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="download-the-mars-agent"></a>MARS aracısını indirin
 
-Yedeklemek istediğiniz makinelere yükleyebilmeniz için MARS aracısını indirin.
+Yedeklemek istediğiniz makinelere yükleyebilmek için MARS aracısını indirin.
 
-Aracıyı herhangi bir makineye zaten yüklediyseniz, aracının en son sürümünü çalıştırdığınızdan emin olun. Portaldaki en son sürümü bulun veya doğrudan [indirmeye](https://aka.ms/azurebackup_agent)gidin.
+Aracıyı herhangi bir makineye zaten yüklediyseniz aracının en son sürümünü çalıştırdığınızdan emin olun. Portalda en son sürümü bulun veya doğrudan [indirmeye](https://aka.ms/azurebackup_agent)gidin.
 
-1. Kasada, **Başlarken**altında **Yedek'i**seçin.
+1. Kasadaki **Başlarken**' ın altında **Yedekle**' yi seçin.
 
-    ![Yedekleme hedefini açma](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Yedekleme hedefini açın](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-1. **İş yükünüz nerede çalışıyor?** **On-premises** MARS aracısını Azure VM'ye yüklemek isteseniz bile bu seçeneği belirleyin.
-1. **Ne yedeklemek istiyorsunuz altında?** **Files and folders** **Sistem Durumu'nun**durumunu da seçebilirsiniz. Başka birçok seçenek kullanılabilir, ancak bu seçenekler yalnızca ikincil bir yedekleme sunucusu çalıştırıyorsanız desteklenir. **Altyapı Hazırla'yı**seçin.
+1. **İş yükünüz nerede çalışıyor?** altında **Şirket içi**' ı seçin. MARS aracısını bir Azure VM 'ye yüklemek istiyor olsanız bile bu seçeneği belirleyin.
+1. **Neleri yedeklemek istiyorsunuz?** altında **Dosyalar ve klasörler**' i seçin. Ayrıca **sistem durumu**' nu da seçebilirsiniz. Birçok diğer seçenek mevcuttur, ancak bu seçenekler yalnızca ikincil bir yedekleme sunucusu çalıştırıyorsanız desteklenir. **Altyapıyı hazırla**' yı seçin.
 
-    ![Dosya ve klasörleri yapılandırma](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
+    ![Dosyaları ve klasörleri yapılandırma](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-1. **Altyapı yı hazırlamak**için, Install Recovery Services **aracısı**altında, MARS aracısını indirin.
+1. **Altyapıyı hazırlama**bölümünde, **Kurtarma Hizmetleri ARACıSı yükleme**altında Mars aracısını indirin.
 
     ![Altyapıyı hazırlama](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-1. İndirme menüsünde **Kaydet'i**seçin. Varsayılan olarak, *MARSagentinstaller.exe* dosyası İndirilenler klasörünüze kaydedilir.
+1. İndir menüsünde **Kaydet**' i seçin. Varsayılan olarak, *MARSagentinstaller.exe* dosyası İndirilenler klasörünüze kaydedilir.
 
-1. **Zaten'yi indirin veya en son Kurtarma Hizmetleri Aracısını kullanarak**seçin ve ardından kasa kimlik bilgilerini indirin.
+1. **Zaten indirmeyi seçin veya en son kurtarma hizmetleri aracısını**kullanın ve ardından kasa kimlik bilgilerini indirin.
 
     ![Kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. **Kaydet'i**seçin. Dosya İndirilenler klasörünüze indirilir. Kasa kimlik bilgilerini açamazsın.
+1. **Kaydet**’i seçin. Dosya, Indirmeler klasörünüze indirilir. Kasa kimlik bilgileri dosyasını açamazsınız.
 
 ## <a name="install-and-register-the-agent"></a>Aracıyı yükleme ve kaydetme
 
-1. Yedeklemek istediğiniz makinelerde *MARSagentinstaller.exe* dosyasını çalıştırın.
-1. MARS Aracıkurulum Sihirbazı'nda **Kurulum Ayarları'nı**seçin. Burada, aracıyı nerede yükleyeceğinizi seçin ve önbellek için bir konum seçin. Ardından **İleri'yi**seçin.
-   * Azure Yedekleme, veri anlık görüntülerini Azure'a göndermeden önce depolamak için önbelleği kullanır.
-   * Önbellek konumu, yedeklediğiniz verilerin boyutunun en az yüzde 5'ine eşit boş alana sahip olmalıdır.
+1. Yedeklemek istediğiniz makinelerde *Marsagentınstaller. exe* dosyasını çalıştırın.
+1. MARS Aracısı kurulum sihirbazında, **yükleme ayarları**' nı seçin. Burada, aracının yükleneceği yeri seçin ve önbellek için bir konum seçin. Ardından **İleri**' yi seçin.
+   * Azure Backup, veri anlık görüntülerini Azure 'a göndermeden önce depolamak için önbelleği kullanır.
+   * Önbellek konumunda, yedeklediğiniz verilerin boyutunun en az %5 ' i kadar boş alan olmalıdır.
 
-    ![MARS Aracıkurulum Sihirbazı'nda yükleme ayarlarını seçin](./media/backup-configure-vault/mars1.png)
+    ![MARS Aracısı kurulum sihirbazında yükleme ayarlarını seçin](./media/backup-configure-vault/mars1.png)
 
-1. **Proxy Yapılandırması**için, Windows makinesinde çalışan aracının internete nasıl bağlanacağını belirtin. Ardından **İleri'yi**seçin.
+1. **Ara sunucu yapılandırması**Için, Windows makinesinde çalışan aracının internet 'e nasıl bağlanacağını belirtin. Ardından **İleri**' yi seçin.
 
-   * Özel bir proxy kullanıyorsanız, gerekli proxy ayarlarını ve kimlik bilgilerini belirtin.
-   * Aracının [belirli URL'lere](#before-you-start)erişmesi gerektiğini unutmayın.
+   * Özel bir proxy kullanıyorsanız, gerekli tüm proxy ayarlarını ve kimlik bilgilerini belirtin.
+   * Aracının [belirli URL 'lere](#before-you-start)erişmesi gerektiğini unutmayın.
 
-    ![MARS sihirbazında internet erişimi ayarlama](./media/backup-configure-vault/mars2.png)
+    ![MARS sihirbazında Internet erişimini ayarlama](./media/backup-configure-vault/mars2.png)
 
-1. **Yükleme**için ön koşulları gözden geçirin ve **Yükle'yi**seçin.
-1. Aracı yüklendikten sonra **Kayda Geç'i**seçin.
-1. **Register Server Wizard** > **Vault Identification'da,** indirdiğiniz kimlik bilgileri dosyasına göz atın ve seçin. Ardından **İleri'yi**seçin.
+1. **Yükleme**için önkoşulları gözden geçirin ve **yükleme**' yi seçin.
+1. Aracı yüklendikten sonra, **kayda devam et**' i seçin.
+1. **Sunucu kaydetme Sihirbazı** > **kasa kimliği**' nde, indirdiğiniz kimlik bilgileri dosyasına gidin ve seçin. Ardından **İleri**' yi seçin.
 
-    ![Register Server Sihirbazı'nı kullanarak kasa kimlik bilgilerini ekleme](./media/backup-configure-vault/register1.png)
+    ![Sunucu kaydetme Sihirbazı 'Nı kullanarak kasa kimlik bilgileri ekleme](./media/backup-configure-vault/register1.png)
 
-1. Şifreleme **Ayarı** sayfasında, makinenin yedeklemelerini şifrelemek ve çözmek için kullanılacak bir parola tümceciği belirtin.
+1. **Şifreleme ayarı** sayfasında, makinenin yedeklemelerini şifrelemek ve şifresini çözmek için kullanılacak bir parola belirtin.
 
-    * Parolayı güvenli bir yere kaydedin. Bir yedekleme geri yüklemek için ihtiyacınız var.
-    * Parolayı kaybeder veya unutursanız, Microsoft yedekleme verilerini kurtarmanıza yardımcı olamaz.
+    * Parolayı güvenli bir konuma kaydedin. Bir yedeklemeyi geri yüklemeniz gerekir.
+    * Parolayı kaybeder veya unutursanız, Microsoft, yedekleme verilerini kurtarmanıza yardımcı olamaz.
 
-1. **Bitiş'i**seçin. Aracı şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
+1. **Son**' u seçin. Aracı Şimdi yüklendi ve makineniz kasaya kayıtlı. Yedeklemenizi yapılandırıp zamanlamak için hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Yedekleme MARS aracısını kullanarak Windows makinelerini nasıl yedekleyin](backup-windows-with-mars-agent.md)
+[Azure Backup Mars Aracısı 'nı kullanarak Windows makinelerini nasıl yedekleyeceğinizi](backup-windows-with-mars-agent.md) öğrenin

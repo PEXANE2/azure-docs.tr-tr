@@ -1,35 +1,35 @@
 ---
-title: İş ortaklarından sensör verileri alma
-description: Bu makalede, ortaklardan sensör verilerinin nasıl alınılabildiğini açıklanmaktadır.
+title: İş ortaklarından algılayıcı verileri al
+description: Bu makalede, iş ortaklarından algılayıcı verilerinin nasıl alınacağı açıklanır.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398228"
 ---
-# <a name="get-sensor-data-from-sensor-partners"></a>Sensör ortaklarından sensör verileri alma
+# <a name="get-sensor-data-from-sensor-partners"></a>Algılayıcı iş ortaklarından algılayıcı verileri al
 
-Azure FarmBeats, IoT aygıtlarınızdan ve sensörlerinizden gelen akış verilerini Datahub'a getirmenize yardımcı olur. Şu anda, aşağıdaki sensör cihaz ortakları desteklenir.
+Azure Farm, IoT cihazlarınızdan ve sensörlerden veri hub 'ına akış verileri almanıza yardımcı olur. Şu anda, aşağıdaki algılayıcı cihaz iş ortakları desteklenir.
 
-  ![FarmBeats ortakları](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
+  ![Farmtempts iş ortakları](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Aygıt verilerini Azure FarmBeats ile tümleştirmek, çiftliğinizde dağıtılan IoT sensörlerinden yer verilerini veri merkezine ulaştırmanıza yardımcı olur. Veriler, kullanılabilir hale geldikten sonra FarmBeats hızlandırıcısı aracılığıyla görselleştirilebilir. Veriler FarmBeats kullanılarak veri füzyonu ve makine öğrenimi/yapay zeka (ML/AI) modeli yapımında kullanılabilir.
+Cihaz verilerinin Azure Farmile tümleştirilmesi, grubunuzda veri hub 'ına dağıtılan IoT sensörlerinden veri almanıza yardımcı olur. Veriler, kullanılabilir olduğunda, Farmtts Hızlandırıcısı aracılığıyla görselleştirilebilir. Veriler, veri Fusion ve makine öğrenimi/yapay zekası (ML/AI) modeli için, Farmtts kullanılarak kullanılabilir.
 
-Sensör veri akışını başlatmak için aşağıdakileri sağlayın:
+Algılayıcı veri akışını başlatmak için aşağıdakilerden emin olun:
 
--  FarmBeat'leri Azure Marketi'nde yükledin.
--  Çiftliğinize yüklemek istediğiniz sensörlere ve cihazlara karar verdiniz.
--  Toprak nem sensörleri kullanarak planlıyorsanız, sensörlerin sayısı ve tam olarak nereye yerleştirmelisiniz bir tavsiye almak için FarmBeats Toprak Nem Sensörü Yerleştirme haritasıkullanın. Daha fazla bilgi için [bkz.](generate-maps-in-azure-farmbeats.md)
-- Çiftliğinizdeki cihaz ortağınızdan aygıtlar veya sensörler satın alır ve dağıtAbilirsiniz. Sensör verilerine aygıt ortaklarınızın çözümü yle erişebildiğinizden emin olun.
+-  Azure Market 'te Farmtts yüklediniz.
+-  Grubunuza yüklemek istediğiniz sensörlerden ve cihazlara karar verdiniz.
+-  Soil nemi sensörlerinden birini kullanmayı planlıyorsanız, algılayıcı sayısına ve tam olarak yerleştirmeniz gereken yere yönelik bir öneri almak için farmtts SOIL nemi algılayıcı yerleştirme haritasını kullanın. Daha fazla bilgi için bkz. [haritalar oluşturma](generate-maps-in-azure-farmbeats.md).
+- Cihaz veya Sensörlerinizi grubunuzdaki iş ortağınızdan satın alıp dağıtırsınız. Algılayıcı verilerine cihaz iş ortaklarınızın çözümü aracılığıyla erişebildiğinizden emin olun.
 
-## <a name="enable-device-integration-with-farmbeats"></a>FarmBeats ile cihaz tümleştirmesini etkinleştirme
+## <a name="enable-device-integration-with-farmbeats"></a>Cihaz tümleştirmesini Farmtempts ile etkinleştirme
 
-Sensör verilerinin akışını başlattıktan sonra, farmbeats sisteminize veri alma işlemine başlayabilirsiniz. FarmBeats'e tümleştirmeyi etkinleştirmek için aygıt sağlayıcınıza aşağıdaki bilgileri sağlayın:
+Algılayıcı verilerinin akışını başlattıktan sonra, verileri Farmtts sisteminize alma sürecini başlatabilirsiniz. Farmto 'Lar ile tümleştirmeyi sağlamak için cihaz sağlayıcınıza aşağıdaki bilgileri sağlayın:
 
  - API uç noktası
  - Kiracı Kimliği
@@ -40,19 +40,19 @@ Sensör verilerinin akışını başlattıktan sonra, farmbeats sisteminize veri
 Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
 > [!NOTE]
-> FarmBeats'in dağıtıldığı Azure aboneliğine erişmek için bu adımların Azure'da tamamlanması gerekir.
+> Bu adımların, Farmtts 'nin dağıtıldığı Azure aboneliğine erişmesi için Azure 'da tamamlanması gerekir.
 
 1. https://portal.azure.com/ adresinde oturum açın.
 
-2. **FarmBeats sürüm 1.2.7 veya sonraki sürümdeyseniz, a, b ve c adımlarını atlayın ve adım 3'e gidin.** FarmBeats UI'nin sağ üst köşesindeki **Ayarlar** simgesini seçerek FarmBeats sürümünü kontrol edebilirsiniz.
+2. **Bu sürüm 1.2.7 veya sonraki bir sürümü kullanıyorsanız a, b ve c adımlarını atlayın ve adım 3 ' e gidin.** Farmtts Kullanıcı arabiriminin sağ üst köşesindeki **Ayarlar** simgesini seçerek farmtts sürümünü denetleyebilirsiniz.
 
-      a.  Azure **Active Directory** > **Uygulama Kayıtları'na** gidin
+      a.  **Azure Active Directory** > **uygulama kayıtlarına** git
 
-      b. FarmBeats dağıtımınızın bir parçası olarak oluşturulan **Uygulama Kaydı'nı** seçin. FarmBeats datahub'ınızla aynı ada sahip olacaktır.
+      b. Farmtts dağıtımınızın bir parçası olarak oluşturulan **uygulama kaydını** seçin. Bu, Farmtts veri hub 'ınızla aynı ada sahip olacaktır.
 
-      c. **Bir API'yi ortaya >** seçin bir istemci uygulaması **ekleyin** ve **04b07795-8ddb-461a-bbee-02f9e1bf7b46** girin ve Yetki Kapsamı'nı kontrol **edin.** Bu, aşağıdaki adımları gerçekleştirmek için Azure CLI'ye (Bulut Kabuğu) erişim sağlayacaktır:
+      c. Bir **API 'Yi kullanıma** sunma ' yı seçin > **istemci uygulaması Ekle** ' yi seçin ve **04b07795-8ddb-461A-bbee-02f9e1bf7b46** girin ve **Yetkilendirme kapsamını**denetleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLı 'ye (Cloud Shell) erişim sağlar:
 
-3. Cloud Shell'i açın. Bu seçenek, Azure portalının sağ üst köşesindeki araç çubuğunda kullanılabilir.
+3. Cloud Shell'i açın. Bu seçenek, Azure portal sağ üst köşesindeki araç çubuğunda bulunur.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -60,13 +60,13 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-5. Ev dizine git.
+5. Giriş dizininize gidin.
 
     ```azurepowershell-interactive 
     cd  
     ```
 
-6. Şu komutu çalıştırın. Bu, ev dizininize bir komut dosyası indirir.
+6. Şu komutu çalıştırın. Bu işlem, Giriş dizininize bir komut dosyası indirir.
 
     ```azurepowershell-interactive 
 
@@ -74,7 +74,7 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ```
 
-7. Aşağıdaki komut dosyasını çalıştırın. Komut dosyası, **Azure Etkin Dizin** > **Genel Bakış** sayfasından elde edilebilen Kiracı Kimliğini sorar.
+7. Aşağıdaki komut dosyasını çalıştırın. Betik, **Azure Active Directory** > **genel bakış** sayfasından elde edilen Kiracı kimliğini ister.
 
     ```azurepowershell-interactive 
 
@@ -82,105 +82,105 @@ Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
 
     ```
 
-8. **API Endpoint,** **Kiracı Kimliği,** **İstemci Kimliği, İstemci** **Gizli**ve **EventHub Bağlantı Dizesi**değerlerini yakalamak için ekrandaki yönergeleri izleyin.
+8. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı**ve **EventHub bağlantı dizesi**için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
-### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak aygıt verilerini tümleştirme
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak cihaz verilerini tümleştirme
 
-Şimdi önceki bölümden oluşturulan aşağıdaki bilgilere sahipsiniz.
+Şimdi aşağıdaki bilgiler önceki bölümden oluşturulmuştur.
  - API uç noktası
  - EventHub bağlantı dizesi
  - İstemci Kimliği
  - Gizli anahtar
  - Kiracı Kimliği
 
-FarmBeats'i bağlamak için bunu cihaz ortağınıza sağlamanız gerekir. Aynı şeyi yapmak için aygıt ortağı portalına gidin. Örneğin, Davis Instruments, Teralytic veya Pessl Instruments (Metos.at) cihazları kullanıyorsanız, aşağıda belirtildiği gibi ilgili sayfalara gidin:
+Bunu, Farmtts 'leri bağlamak için cihaz iş ortağınıza sağlamanız gerekir. Aynı işlemi gerçekleştirmek için cihaz iş ortağı portalına gidin. Örneğin, Davis araçları, Teralytic veya peşinatlı araçlar (Metos.at) aracılığıyla cihazları kullanıyorsanız, aşağıda belirtildiği gibi ilgili sayfalara gidin:
 
-1. [Davis Enstrümanlar](https://weatherlink.github.io/azure-farmbeats/setup)
+1. [Davis gereçleri](https://weatherlink.github.io/azure-farmbeats/setup)
 
-2. [Teralitik](https://app.teralytic.com/)
+2. [Teralytic](https://app.teralytic.com/)
 
-3. [Pessl Aletleri](https://ng.fieldclimate.com/user-api-services)
+3. [Peşinatlı gereçler](https://ng.fieldclimate.com/user-api-services)
 
-Aygıt sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay aldıktan sonra Azure FarmBeats'teki tüm aygıtları ve sensörleri görüntüleyebilirsiniz.
+Cihaz sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay sonrasında, tüm cihazları ve algılayıcıları Azure Farmtts üzerinde görüntüleyebilirsiniz.
 
-## <a name="view-devices-and-sensors"></a>Cihazları ve sensörleri görüntüleme
+## <a name="view-devices-and-sensors"></a>Cihazları ve algılayıcıları görüntüleme
 
-Çiftliğinizin cihazlarını ve sensörlerini görüntülemek için aşağıdaki bölümü kullanın.
+Grubunuza yönelik cihazları ve algılayıcıları görüntülemek için aşağıdaki bölümü kullanın.
 
 ### <a name="view-devices"></a>Cihazları görüntüleme
 
-Şu anda FarmBeats aşağıdaki cihazları destekler:
+Şu anda, Farmtempts aşağıdaki cihazları destekler:
 
-- **Düğüm**: Bir veya daha fazla sensörün bağlı olduğu cihaz.
-- **Ağ Geçidi**: Bir veya daha fazla düğümün bağlı olduğu aygıt.
+- **Düğüm**: bir veya daha fazla sensörün eklendiği cihaz.
+- **Ağ geçidi**: bir veya daha fazla düğümün eklendiği cihaz.
 
 Şu adımları uygulayın:
 
-1. Giriş sayfasında, menüden **Cihazlar'ı** seçin.
-  **Aygıtlar** sayfası aygıt türünü, modelini, durumunu, yerleştirildiği çiftliği ve meta veriler için son güncelleştirilen tarihi görüntüler. Varsayılan olarak, çiftlik *sütunu NULL*olarak ayarlanır. Bir çiftliğe aygıt atamayı seçebilirsiniz. Daha fazla bilgi için [aygıtları atay'a](#assign-devices)bakın.
-2. Aygıta bağlı aygıt özelliklerini, telemetriyi ve alt aygıtları görüntülemek için aygıtı seçin.
+1. Giriş sayfasında, menüden **cihazlar** ' ı seçin.
+  **Cihazlar** sayfası cihaz türünü, modeli, durumu, yerleştirildiği grubu ve meta verilerin son güncelleştirilme tarihini görüntüler. Varsayılan olarak, Grup sütunu *null*olarak ayarlanır. Bir gruba bir cihaz atamayı seçebilirsiniz. Daha fazla bilgi için bkz. [cihaz atama](#assign-devices).
+2. Cihaza bağlı cihaz özelliklerini, telemetri ve alt cihazları görüntülemek için cihazı seçin.
 
     ![Cihazlar sayfası](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
-### <a name="view-sensors"></a>Sensörleri görüntüleme
+### <a name="view-sensors"></a>Algılayıcıları görüntüle
 
 Şu adımları uygulayın:
 
-1. Ana sayfada menüden **Sensörler'i** seçin.
-  **Sensörler** sayfası, sensörün türü, bağlı olduğu çiftlik, ana aygıt, bağlantı noktası adı, bağlantı noktası türü ve güncellenen son durum hakkında ayrıntıları görüntüler.
-2. Sensör özelliklerini, aktif uyarıları ve sensörün telemetrisini görüntülemek için sensörü seçin.
+1. Giriş sayfasında, menüden **Algılayıcılar** ' ı seçin.
+  **Algılayıcılar** sayfasında, algılayıcı türü, bağlandığı grup, ana cihaz, bağlantı noktası adı, bağlantı noktası türü ve son güncel durum hakkındaki ayrıntılar gösterilir.
+2. Sensörden algılayıcı özelliklerini, etkin uyarıları ve telemetrisini görüntülemek için sensör seçin.
 
-    ![Sensörler sayfası](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Algılayıcılar sayfası](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>Aygıtları atama  
+## <a name="assign-devices"></a>Cihazları ata  
 
-Sensör verileri aktıktan sonra, sensörleri dağıttığınız çiftliğe atayabilirsiniz.
+Algılayıcı verileri akışını gerçekleştirdikten sonra, algılayıcıyı dağıttığınız gruba atayabilirsiniz.
 
-1. Ana sayfada, menüden **Çiftlikler'i** seçin. **Çiftlikler** listesi sayfası görüntülenir.
-2. Aygıtı atamak istediğiniz çiftliği seçin ve Aygıt **Ekle'yi**seçin.
-3. **Aygıt Ekle** penceresi görüntülenir. Çiftliğe atamak istediğiniz aygıtı seçin.
+1. Giriş sayfasında, menüden **gruplar** ' ı seçin. **Gruplar** listesi sayfası görüntülenir.
+2. Cihazı atamak istediğiniz grubu seçin ve cihaz **Ekle**' yi seçin.
+3. **Cihaz Ekle** penceresi görüntülenir. Gruba atamak istediğiniz cihazı seçin.
 
-    ![Aygıt ekle penceresi](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Cihaz Ekle penceresi](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. **Aygıt Ekle'yi**seçin. Alternatif olarak, **Aygıtlar** menüsüne gidin, bir çiftliğe atamak istediğiniz aygıtları seçin ve **Aygıtları Ilişkilendir'i**seçin.
-5. Ortak **Aygıtlar** penceresinde, açılan listeden çiftliği seçin ve seçili tüm aygıtlara çiftlik ilişkilendirmek **için Herkese Uygula'yı** seçin.
+4. **Cihaz Ekle**' yi seçin. Alternatif olarak, **cihazlar** menüsüne gidin, bir gruba atamak istediğiniz cihazları seçin ve **cihazları ilişkilendir**' i seçin.
+5. **Cihazları ilişkilendir** penceresinde, açılan listeden grubu seçin ve grubu seçili tüm cihazlarla Ilişkilendirmek Için **Tümüne Uygula** ' yı seçin.
 
-    ![Ilişkilendirme Aygıtları penceresi](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Cihazları ilişkilendir penceresi](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Her aygıtı farklı bir çiftliğe ilişkilendirmek **için, Farm** sütununa atay sütunundaki açılır ok'u seçin ve her aygıt satırı için bir çiftlik seçin.
+6. Her bir cihazı farklı bir grupla ilişkilendirmek için **gruba ata** sütunundaki açılan oku seçin ve her bir cihaz satırı için bir grup seçin.
 
-7. Aygıt atamasını tamamlamak için **Atla'yı** seçin.
+7. Cihaz atamasını tamamlamaya yönelik **ata** ' yı seçin.
 
 ### <a name="visualize-sensor-data"></a>Algılayıcı verilerini görselleştirme
 
 Şu adımları uygulayın:
 
-1. Ana sayfada, **Çiftlikler** sayfasını görüntülemek için menüden **Çiftlikler'i** seçin.
-2. Sensör verilerini görmek istediğiniz **Çiftlik'i** seçin.
-3. **Farm** panosunda, telemetri verilerini görüntüleyebilirsiniz. Canlı telemetrigörüntüleyebilir veya belirli bir tarih aralığını görmek için **Özel Aralık'ı** kullanabilirsiniz.
+1. Giriş sayfasında, **gruplar** sayfasını görüntülemek Için menüden **gruplar** ' ı seçin.
+2. Algılayıcı verilerini görmek istediğiniz **grubu** seçin.
+3. **Grup** panosunda telemetri verilerini görüntüleyebilirsiniz. Belirli bir tarih aralığını görmek için canlı Telemetriyi görüntüleyebilir veya **özel Aralık** kullanabilirsiniz.
 
-    ![Çiftlik panosu](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Grup panosu](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-a-sensor"></a>Sensörü silme
+## <a name="delete-a-sensor"></a>Algılayıcıyı silme
 
 Şu adımları uygulayın:
 
-1. Ana sayfada, **Sensörler** sayfasını görüntülemek için menüden **Sensörler'i** seçin.
-2. Silmek istediğiniz aygıtı seçin ve onay penceresinde **Sil'i** seçin.
+1. Giriş sayfasında, **sensör** sayfasını görüntülemek Için menüden **Algılayıcılar** ' ı seçin.
+2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.
 
     ![Sil düğmesi](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Onay iletisi sensörün başarıyla silindiğini gösterir.
+Bir onay iletisi, sensör başarıyla silindiğini gösterir.
 
-## <a name="delete-devices"></a>Aygıtları silme
+## <a name="delete-devices"></a>Cihazları Sil
 
 Şu adımları uygulayın:
 
-1. Ana sayfada, **Cihazlar** sayfasını görüntülemek için menüden **Cihazlar'ı** seçin.
-2. Silmek istediğiniz aygıtı seçin ve onay penceresinde **Sil'i** seçin.
+1. Giriş sayfasında, **cihazlar** sayfasını görüntülemek Için menüdeki **cihazlar** ' ı seçin.
+2. Silmek istediğiniz cihazı seçin ve onay penceresinde **Sil** ' i seçin.
 
     ![Sil düğmesi](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Azure FarmBeats örneğinize akan sensör verilerine sahipsiniz. Şimdi, çiftlikleriniz için haritaları nasıl [oluşturacağınızı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.
+Artık Azure Farmtts örneğiniz için sensör verileri akar. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.

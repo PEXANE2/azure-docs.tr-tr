@@ -1,67 +1,67 @@
 ---
 title: Algılayıcı iş ortağı tümleştirmesi
-description: Bu makalede, sensör ortağı entegrasyonu açıklanmaktadır.
+description: Bu makalede algılayıcı iş ortağı tümleştirmesi açıklanmaktadır.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437475"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
-Bu makalede, sensör ortağı tümleştirmesini sağlayan Azure FarmBeats **Translator** bileşeni hakkında bilgi verilmektedir.
+Bu makalede, algılayıcı iş ortağı tümleştirmesini sağlayan Azure Farmtts **Translator** bileşeni hakkında bilgi sağlanır.
 
-Bu bileşeni kullanarak, iş ortakları FarmBeats Datahub API'lerini kullanarak FarmBeats ile tümleşebilir ve farmbeats Datahub'a müşteri cihazı verileri ve telemetri gönderebilir. Veriler FarmBeats'te kullanılabilir hale geldikten sonra FarmBeats Hızlandırıcı kullanılarak görselleştirilmiştir ve veri füzyonu ve makine öğrenimi/yapay zeka modelleri oluşturmak için kullanılabilir.
+Bu bileşeni kullanarak, iş ortakları Farmrets veri hub 'ı API 'Leri kullanarak ve müşteri cihaz verilerini ve telemetri ' i veri hub 'ına gönderebilirler. Veriler Farmtörler 'de kullanılabilir olduktan sonra, Farmtts Hızlandırıcısı kullanılarak görselleştirilebilen ve veri Fusion ve makine öğrenimi/yapay zeka modelleri oluşturmak için kullanılabilir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Çevirmen bileşenini geliştirmek için FarmBeats API'lerine erişimi sağlayacak aşağıdaki kimlik bilgilerine ihtiyacınız olacaktır.
+Çevirmen bileşenini geliştirmek için, Farmtts API 'Lerine erişimi etkinleştirecek aşağıdaki kimlik bilgilerine ihtiyacınız olacaktır.
 
 - API Uç Noktası
 - Kiracı Kimliği
 - İstemci Kimliği
 - İstemci Gizli Anahtarı
-- EventHub Bağlantı Dizesi
+- EventHub bağlantı dizesi
 
-Yukarıdaki kimlik bilgilerini almak için şu bölüme bakın: [Aygıt Tümleştirmesini Etkinleştir](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
+Yukarıdaki kimlik bilgilerini almak için bu bölüme bakın: [cihaz Tümleştirmesini Etkinleştirme](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)
 
 ## <a name="translator-development"></a>Çevirmen geliştirme
 
 **REST API tabanlı tümleştirme**
 
-FarmBeats'in sensör veri tümleştirme yetenekleri REST API ile açığa alınır. Yetenekler arasında meta veri tanımı, cihaz ve sensör sağlama, aygıt ve sensör yönetimi yer alır.
+Farmtts 'nin algılayıcı verileri tümleştirme özellikleri REST API aracılığıyla sunulur. Yetenekler, meta veri tanımı, cihaz ve algılayıcı sağlama, cihaz ve algılayıcı yönetimi içerir.
 
-**Telemetri yenmesi**
+**Telemetri alımı**
 
-Telemetri verileri, işlenmek üzere Azure Etkinlik Hub'larında yayınlanan bir kanonik iletiyle eşlenir. Azure Etkinlik Hub'ları, bağlı aygıtlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alınmasını sağlayan bir hizmettir.
+Telemetri verileri, işlenmek üzere Azure Event Hubs yayımlanmış olan kurallı bir iletiyle eşleştirilir. Azure Event Hubs, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir.
 
-**API geliştirme**
+**API Geliştirme**
 
-API'ler Swagger teknik dokümantasyon içerir. API'ler ve ilgili istekler veya yanıtları hakkında daha fazla bilgi [için](https://aka.ms/FarmBeatsSwagger)Bkz.
+API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve bunlara karşılık gelen istekler ya da yanıtları hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsSwagger).
 
 **Kimlik Doğrulaması**
 
-FarmBeats, Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure Uygulama Hizmeti yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
+Farmtler Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
 
-Daha fazla bilgi için [Azure Etkin Dizini'ne](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)bakın.
+Daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-FarmBeats Datahub, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
+Farmrets veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
    - İstemci Kimliği
    - Gizli anahtar
    - Kiracı Kimliği
 
-Arayan bu kimlik bilgilerini kullanarak bir erişim belirteci isteyebilir. Belirteç aşağıdaki gibi, üstbilgi bölümünde, sonraki API isteklerinde gönderilmesi gerekir:
+Bu kimlik bilgilerini kullanarak, çağıran bir erişim belirteci isteyebilir. Belirtecin sonraki API isteklerinde gönderilmesi gerekir, üst bilgi bölümünde aşağıdaki gibi:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-Aşağıdaki örnek Python kodu FarmBeats sonraki API aramaları için kullanılabilecek erişim belirteci verir.
+Aşağıdaki örnek Python kodu, Farmtts 'e yönelik sonraki API çağrıları için kullanılabilen erişim belirtecini verir.
 
 ```python
 import azure 
@@ -83,31 +83,31 @@ access_token = token_response.get('accessToken') 
 ```
 
 
-**HTTP istek üstbilgi**
+**HTTP istek üstbilgileri**
 
-FarmBeats Datahub'a API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri aşağıda veda eder.
+Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri aşağıda verilmiştir.
 
 
 **Üst bilgi** | **Açıklama ve örnek**
 --- | ---
-İçerik Türü | İstek biçimi (İçerik Türü:<format>uygulama/ ). FarmBeats Datahub API'leri için biçim JSON'dur. İçerik Türü: uygulama/json
-Yetkilendirme | API araması yapmak için gereken erişim belirteci belirtir. Yetkilendirme: Taşıyıcı <Erişim-Belirteç>
-Kabul Et | Yanıt biçimi. FarmBeats Datahub API'leri için biçim JSON'dur. Kabul Et: uygulama/json
+İçerik Türü | İstek biçimi (Content-Type: Application/<format>). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
+Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı <erişim-belirteç>
+Kabul Et | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
 
 **API istekleri**
 
-REST API isteği nde bulunmak için HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL'sini, Tek düzen Kaynak Tanımlayıcısını (URI) sorgulanacak bir kaynağa, verileri göndermek, güncelleştirmek veya silmek ve bir veya daha fazla HTTP istek üstbilgisini birleştirirsiniz. API hizmetinin URL'si, sağladığınız API bitiş noktasıdır. İşte bir örnek:\<https:// yourdatahub-web sitesi-adı>.azurewebsites.net
+REST API bir istek yapmak için, HTTP (GET, POST veya PUT) yöntemini, API hizmetinin URL 'sini, bir kaynağa, veri göndermek, güncelleştirmek veya silmek için bir veya daha fazla HTTP istek üst bilgisi gönderebilirsiniz. API hizmetinin URL 'SI, sağladığınız API uç noktasıdır. Örnek: https://\<yourdatahub-website-Name>. azurewebsites.net
 
-İsteğe bağlı olarak, yanıtlarda verileri filtrelemek, boyutunu sınırlamak ve sıralamak için GET çağrılarına sorgu parametrelerini ekleyebilirsiniz.
+İsteğe bağlı olarak, filtrelemeye yönelik çağrıları al, boyut sınırını sınırla ve yanıtlarındaki verileri sıralamak için sorgu parametreleri ekleyebilirsiniz.
 
-Aşağıdaki örnek istek, aygıtların listesini almaktır.
+Aşağıdaki örnek istek, cihazların listesini almak için kullanılır.
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
-Çoğu GET, POST ve PUT aramaları bir JSON istek gövdesi gerektirir.
+Çoğu GET, POST ve PUT çağrısı, bir JSON istek gövdesi gerektirir.
 
-Aşağıdaki örnek istek bir aygıt oluşturmaktır. (Bu örnek istek gövdesi ile bir giriş JSON vardır.)
+Aşağıdaki örnek istek bir cihaz oluşturmaktır. (Bu örnek, istek gövdesine sahip bir JSON girişi içerir.)
 
 ```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
@@ -115,90 +115,90 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept:
 
 ## <a name="data-format"></a>Veri biçimi
 
-JSON, rasgele veri yapılarının basit bir metin gösterimi sağlayan ortak bir dilden bağımsız veri biçimidir. Daha fazla bilgi için [json.org.](http://json.org)
+JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilden bağımsız ortak bir veri biçimidir. Daha fazla bilgi için bkz. [JSON.org](http://json.org).
 
-## <a name="metadata-specifications"></a>Meta veri özellikleri
+## <a name="metadata-specifications"></a>Meta veri belirtimleri
 
-FarmBeats Datahub, aygıt ortaklarının aygıt veya sensör meta verilerini oluşturmasını ve yönetmesini sağlayan aşağıdaki API'lere sahiptir.
+Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta verilerini oluşturmalarına ve yönetmesine olanak tanıyan aşağıdaki API 'Lere sahiptir.
 
-- /**DeviceModel : DeviceModel,** ağ geçidi veya düğüm olan üretici ve aygıt türü gibi aygıtın meta verilerine karşılık gelir.
-- /**Cihaz**: Cihaz çiftlikte bulunan fiziksel bir cihaza karşılık gelir.
-- /**SensorModel : SensorModel,** üretici, analog veya dijital sensör tipi ve ortam sıcaklığı ve basınç gibi sensör ölçüsü gibi sensörün meta verilerine karşılık gelir.
-- /**Sensör**: Sensör, değerleri kaydeden fiziksel bir sensöre karşılık gelir. Sensör genellikle aygıt kimliğine sahip bir aygıta bağlanır.
+- /**Devicemodel**: devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- /**Cihaz**: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
+- /**Sensormodel**: sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
+- /**Algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 
   **DeviceModel** |  |
   --- | ---
-  Türü (düğüm, ağ geçidi)  | Cihazın türü - Düğüm veya Ağ Geçidi |
+  Tür (düğüm, ağ geçidi)  | Cihaz düğümü veya ağ geçidi türü |
   Üretici  | Üreticinin adı |
-  Productcode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor#6800. |
-  Bağlantı Noktaları  | Dijital veya analog olan bağlantı noktası adı ve türü.  |
+  ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
+  Bağlantı noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
   Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Cihaz** |  |
-  DeviceModelId  |İlişkili aygıt modelinin kimliği. |
-  Hırdavat   |Mac adresi gibi aygıt için benzersiz kimlik.  |
-  RaporlamaInterval |Saniye cinsinden raporlama aralığı. |
-  Konum    |Cihaz enlemi (-90 ila +90), boylam (-180-180) ve yükseklik (metre olarak). |
-  ParentDeviceId | Bu aygıtın bağlı olduğu ana aygıtın kimliği. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğüm ağ geçidi olarak parentDeviceID'ye sahiptir. |
-  Adı  | Kaynağı tanımlamak için ad. Aygıt ortaklarının aygıt ortağı tarafındaki aygıt adıyla tutarlı bir ad göndermesi gerekir. Aygıt adı aygıt ortağı tarafında kullanıcı tarafından tanımlanmışsa, aynı kullanıcı tanımlı ad FarmBeats'e yayılmalıdır.  |
+  Devicemodelıd  |İlişkili cihaz modelinin KIMLIĞI. |
+  Donanım kimliği   |Cihazın MAC adresi gibi benzersiz KIMLIĞI.  |
+  Reportingınterval |Saniye cinsinden raporlama aralığı. |
+  Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
+  Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
+  Adı  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
   Açıklama  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
-  **Sensör Modeli** |  |
-  Türü (analog, dijital)  |Analog veya dijital sensörden bahsedin.|
-  Üretici  | Üreticinin adı. |
-  Productcode  | Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01.  |
-  SensorMeasures> Adı  | Sensör ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinliklerden ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır. |
-  SensorMeasures > DataType  | Telemetri veri türü. Şu anda, çift desteklenir. |
-  SensorMeasures > Tipi  | Sensör telemetri verilerinin ölçüm türü. Sistem tanımlı türleri şunlardır: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrate, O2, PH, Fosfat, PointInTime, Potasyum, Basınç, RainGauge, RelativeMoisturey, Tuzluluk, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun WindSpeed, Evapotranspiration, PARPAR. Daha fazla eklemek için /ExtendedType API'sine bakın.
-  SensorMeasures > Ünitesi | Sensör telemetri veri birimi. Sistem tanımlı birimler şunlardır: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milimetre, Santimetre, Metre, Inç, Feet, Mile, KilometreMetre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetrikWaterContent, Yüzde, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMetreMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricionContent, MiliLitre, Saniye, UnixTimestamp, MicroMolPerMeterSquareDPerSecond, ve InçPerHour. Daha fazla eklemek için /ExtendedType API'sine bakın.
-  SensorMeasures> Agregasyon Tipi  | Ya yok, ortalama, maksimum, minimum veya StandardDeviation.
-  SensorMeasures> Derinlik  | Sensörün derinliği santimetre. Örneğin, nem ölçümü 10 cm zemin altında.
-  SensorMeasures > Açıklama  | Ölçümün anlamlı bir açıklamasını sağlayın.
+  **SensorModel** |  |
+  Tür (analog, dijital)  |Analog veya dijital sensörden bahsedin.|
+  Üretici  | Üretici adı. |
+  ProductCode  | Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01.  |
+  Sensorölçüleri > adı  | Algılayıcı ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinlikleri olan ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır. |
+  Sensorölçüleri > veri türü  | Telemetri veri türü. Şu anda, Double destekleniyor. |
+  Sensorölçüleri > türü  | Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler şunlardır: AmbientTemperature, CO2, Depth, Elektriicaliletkenctivity, Leafwetlik, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salinity, Soılmoisture, Soalıngıl, Soalınş Daha fazla eklemek için/ExtendedType API 'sine bakın.
+  Sensorölçüleri > birimi | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler şunlardır: NoUnit, santigrat, Fahrenhayvan, Kelvin, Rankine, Pascal, CIO, Ukrayna, mil ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond ve InchesPerHour. Daha fazla eklemek için/ExtendedType API 'sine bakın.
+  Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
+  Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
+  Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
   Adı  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
   Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
-  **Sensör**  |  |
-  Hırdavat  | Üretici tarafından ayarlanan sensör için benzersiz kimlik.
-  SensorModelId  | İlişkili sensör modelinin kimliği.
-  Konum  | Sensör enlemi (-90 ila +90), boylam (-180-180) ve yükseklik (metre olarak).
-  Port > Adı  |Sensörün cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, aygıt modelinde tanımlanan adla aynı olmalıdır.
-  DeviceId  | Sensörün bağlı olduğu cihazın kimliği.
-  Adı  | Kaynağı tanımlamak için ad. Örneğin, sensör adı veya ürün adı ve model numarası veya ürün kodu.
+  **Algılayıcısı**  |  |
+  Donanım kimliği  | Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK.
+  Sensormodelıd  | İlişkili algılayıcı modelinin KIMLIĞI.
+  Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
+  Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
+  DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
+  Adı  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
   Açıklama  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 
- Nesnelerin her biri ve özellikleri hakkında bilgi [için](https://aka.ms/FarmBeatsDatahubSwagger)Bkz.
+ Nesnelerin ve özelliklerinin her biri hakkında bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
  > [!NOTE]
- > API'ler oluşturulan her örnek için benzersiz adlar döndürer. Bu kimliğin aygıt yönetimi ve meta veri eşitlemesi için Çevirmen tarafından saklanması gerekir.
+ > API 'Ler oluşturulan her örnek için benzersiz kimlikler döndürür. Bu KIMLIğIN cihaz yönetimi ve meta veri eşitleme çevirmeni tarafından korunması gerekir.
 
 
-**Meta veri eşitlemi**
+**Meta veri eşitleme**
 
-Çevirmen meta verilerle ilgili güncelleştirmeler göndermelidir. Örneğin, güncelleştirme senaryoları aygıt veya sensör adı ve aygıt veya sensör konumu değişikliğidir.
+Çevirmen, güncelleştirmeleri meta veriler üzerinde göndermelidir. Örneğin, güncelleştirme senaryolarında cihaz veya algılayıcı adı ve cihaz ya da algılayıcı konumu değişikliği bulunur.
 
-Çevirmen FarmBeats kullanıcı sonrası bağlantı tarafından yüklenen yeni cihazlar veya sensörler eklemek için yeteneğine sahip olmalıdır. Benzer şekilde, bir aygıt veya sensör kullanıcı tarafından güncelleştirilmişse, aynı durum ilgili aygıt veya sensör için FarmBeats'te de güncellenmelidir. Aygıt veya sensörün güncelleştirilmesini gerektiren tipik senaryolar, aygıt konumundaki bir değişiklik veya düğümdeki sensörlerin eklenmesidir.
+Çevirmen, Kullanıcı tarafından Farmby bağlantısı sonrası tarafından yüklenen yeni cihaz veya sensörler ekleyebilmelidir. Benzer şekilde, bir cihaz veya algılayıcı Kullanıcı tarafından güncellendiyse, buna karşılık gelen cihaz veya algılayıcı için aynı şekilde de aynı şekilde güncelleştirilmeleri gerekir. Bir cihazın veya algılayıcının güncelleştirilmesi gereken tipik senaryolar, bir cihaz konumunda veya bir düğümdeki sensörların eklenmesiyle bir değişiklik niteliğindedir.
 
 
 > [!NOTE]
-> Silme, aygıt veya sensör meta verileri için desteklenmez.
+> Cihaz veya algılayıcı meta verileri için silme desteklenmiyor.
 >
-> Meta verileri güncelleştirmek için cihazveya sensörden /Get/{id} aramak, değiştirilen özellikleri güncelleştirmek ve kullanıcı tarafından ayarlanan özelliklerin kaybolmaması için bir /Put/{id} yapmak zorunludur.
+> Meta verileri güncelleştirmek için, cihaz veya algılayıcı üzerinde/Get/{id} çağrısı yapmanız, değiştirilen özellikleri güncelleştirmeniz ve ardından bir/put/{ID} oluşturarak Kullanıcı tarafından ayarlanan tüm özellikler kaybedilmez.
 
-### <a name="add-new-types-and-units"></a>Yeni türler ve birimler ekleme
+### <a name="add-new-types-and-units"></a>Yeni türler ve birimler Ekle
 
-FarmBeats yeni sensör ölçüm türleri ve birimleri eklemeyi destekler. /ExtendedType API hakkında daha fazla bilgi için [Bkz.](https://aka.ms/FarmBeatsSwagger)
+Farmtts, yeni algılayıcı ölçü türleri ve birimleri eklemeyi destekler. /ExtendedType API 'SI hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsSwagger).
 
-## <a name="telemetry-specifications"></a>Telemetri özellikleri
+## <a name="telemetry-specifications"></a>Telemetri belirtimleri
 
-Telemetri verileri, işlenmek üzere Azure Etkinlik Hub'larında yayınlanan bir kanonik iletiyle eşlenir. Azure Etkinlik Hub'ları, bağlı aygıtlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alınmasını sağlayan bir hizmettir.
+Telemetri verileri, işlenmek üzere Azure Event Hubs yayımlanmış olan kurallı bir iletiyle eşleştirilir. Azure Event Hubs, bağlı cihazlardan ve uygulamalardan gerçek zamanlı veri (telemetri) alımı sağlayan bir hizmettir.
 
-## <a name="send-telemetry-data-to-farmbeats"></a>FarmBeats'e telemetri verileri gönder
+## <a name="send-telemetry-data-to-farmbeats"></a>Telemetri verilerini Farmolar 'a gönderme
 
-FarmBeats'e telemetri verileri göndermek için FarmBeats'teki bir etkinlik merkezine ileti gönderen bir istemci oluşturun. Telemetri verileri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+Telemetriye telemetri verileri göndermek için, Farmtts 'deki bir olay hub 'ına ileti gönderen bir istemci oluşturun. Telemetri verileri hakkında daha fazla bilgi için bkz. [bir olay hub 'ına telemetri gönderme](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send).
 
-Burada, belirli bir olay hub'ına istemci olarak telemetri gönderen örnek bir Python kodu vermiştir.
+Aşağıda, belirtilen bir olay hub 'ına bir istemci olarak telemetri gönderen örnek bir Python kodu verilmiştir.
 
 ```python
 import azure
@@ -217,7 +217,7 @@ write_client.stop()
 
 ```
 
-Kanonik ileti biçimi aşağıdaki gibidir:
+Kurallı ileti biçimi aşağıdaki gibidir:
 
 ```json
 {
@@ -241,9 +241,9 @@ Kanonik ileti biçimi aşağıdaki gibidir:
  ]
 }
 ```
-Telemetri JSON tüm anahtar isimleri küçük olmalıdır. Örnekler deviceid ve sensordata vardır.
+Telemetri JSON 'daki tüm anahtar adları küçük harfle yazılmalıdır. Örnek olarak DeviceID ve sensordata verilebilir.
 
-Örneğin, bir telemetri iletisi aşağıda verilmiştir:
+Örneğin, aşağıda bir telemetri iletisi verilmiştir:
 
 
 ```json
@@ -284,14 +284,14 @@ Telemetri JSON tüm anahtar isimleri küçük olmalıdır. Örnekler deviceid ve
 ```
 
 > [!NOTE]
-> Aşağıdaki bölümler diğer değişikliklerle ilgilidir (örneğin. UI, hata yönetimi vb.) sensör ortağının Çevirmen bileşeninin geliştirilmesinde başvurabileceği anlamına gelebilir.
+> Aşağıdaki bölümler diğer değişikliklerle ilgilidir (örn. Kullanıcı arabirimi, hata yönetimi vb.) algılayıcı iş ortağının çevirici bileşenini geliştirme bölümünde başvurabileceği.
 
 
-## <a name="link-a-farmbeats-account"></a>FarmBeats hesabını bağla
+## <a name="link-a-farmbeats-account"></a>Bir Farmtts hesabını bağlama
 
-Müşteriler cihaz veya sensör satın aldıktan ve dağıttıktan sonra, aygıt ortaklarının yazılımlarına hizmet (SaaS) portalı olarak erişebilirler. Aygıt ortakları, aşağıdaki kimlik bilgilerini girdi etmenin bir yolunu sağlayarak müşterilerin hesaplarını Azure'daki FarmBeats örneğine bağlamalarını sağlayabilir:
+Müşteriler cihazları veya sensörleri satın aldıktan ve dağıttıktan sonra cihaz verilerine ve telemetri ' e hizmet olarak yazılım (SaaS) Portalı ' na erişebilir. Cihaz iş ortakları, müşterilerin hesabını Azure 'daki Farmtts örneğine, aşağıdaki kimlik bilgilerini girişi için bir yol sağlayarak bağlantı kurmasını sağlayabilir:
 
-   - Görüntü adı (kullanıcıların bu tümleştirme için bir ad tanımlaması için isteğe bağlı bir alan)
+   - Görünen ad (kullanıcıların bu tümleştirme için bir ad tanımlayabilmeniz için isteğe bağlı bir alan)
    - API uç noktası
    - Kiracı Kimliği
    - İstemci Kimliği
@@ -300,49 +300,49 @@ Müşteriler cihaz veya sensör satın aldıktan ve dağıttıktan sonra, aygıt
    - Başlangıç tarihi
 
    > [!NOTE]
-   > Başlangıç tarihi, geçmiş veri akışını, yani kullanıcı tarafından belirtilen tarihten gelen verileri sağlar.
+   > Başlangıç tarihi geçmiş veri akışını, diğer bir deyişle Kullanıcı tarafından belirtilen tarihten itibaren verileri sunar.
 
-## <a name="unlink-farmbeats"></a>Unlink FarmBeats
+## <a name="unlink-farmbeats"></a>Farmtörler bağlantısını kaldır
 
-Aygıt ortakları, müşterilerin varolan farmbeats tümleştirmebağlantısını niçin ayrıştırmasını sağlayabilir. FarmBeats bağlantısı nın bağlantısı, FarmBeats Datahub'da oluşturulan herhangi bir aygıt veya sensör meta verilerini silmemelidir. Unlinking aşağıdakileri yapar:
+Cihaz iş ortakları, müşterilerin mevcut bir Farmtts tümleştirmesinin bağlantısını kaldırmak için izin verebilir. Farmrekelerin bağlantısını kaldırmak, Farmtts veri hub 'ında oluşturulan herhangi bir cihaz veya algılayıcı meta verilerini silmemelidir. Bağlantıyı kaldırma şunları yapar:
 
-   - Telemetri akışını durdurur.
-   - Aygıt ortağındaki tümleştirme kimlik bilgilerini siler ve siler.
+   - Telemetri akışını durduruyor.
+   - Cihaz ortağındaki tümleştirme kimlik bilgilerini siler ve siler.
 
-## <a name="edit-farmbeats-integration"></a>FarmBeats entegrasyonunu edin
+## <a name="edit-farmbeats-integration"></a>Farmtts tümleştirmesini Düzenle
 
-Aygıt ortakları, istemci gizli veya bağlantı dizesi değişirse müşterilerin FarmBeats tümleştirme ayarlarını değiştirmesini sağlayabilir. Bu durumda, yalnızca aşağıdaki alanlar değiştirilebilir:
+İstemci parolası veya bağlantı dizesi değişirse, cihaz iş ortakları müşterilerin Farmtts tümleştirme ayarlarını düzenlemesini sağlayabilir. Bu durumda, yalnızca aşağıdaki alanlar düzenlenebilir:
 
-   - Görüntü adı (varsa)
-   - İstemci sırrı (açık metin yerine "2x8************* biçiminde veya Göster/Gizle özelliğinde görüntülenmelidir)
-   - Bağlantı dizesi (açık metin yerine "2x8************* biçiminde" biçiminde görüntülenmelidir veya Göster/Gizle özelliği)
+   - Görünen ad (varsa)
+   - İstemci parolası ("2x8 * * * * * * * * * * *" biçiminde veya şifresiz metin yerine göster/gizle özelliğinde görüntülenmelidir)
+   - Bağlantı dizesi ("2x8 * * * * * * * * * * *" biçiminde veya şifresiz metin yerine gösterme/gizleme özelliğinde görüntülenmelidir)
 
-## <a name="view-the-last-telemetry-sent"></a>Gönderilen son telemetriyi görüntüle
+## <a name="view-the-last-telemetry-sent"></a>Gönderilen son Telemetriyi görüntüleme
 
-Cihaz ortakları, müşterilerin gönderilen son telemetrinin zaman damgasını görüntülemesini sağlayabilir, bu da **Telemetri Gönderildi**altında bulunur. Bu, en son telemetrinin FarmBeats'e başarıyla gönderildiği zamandır.
+Cihaz iş ortakları, müşterilerin gönderilen **telemetri**altında bulunan son Telemetriyi görüntülemesini sağlayabilir. Bu, en son telemetrinin Farmtts 'ye başarıyla gönderildiği süredir.
 
 ## <a name="troubleshooting-and-error-management"></a>Sorun giderme ve hata yönetimi
 
-**Sorun giderme seçeneği veya desteği**
+**Sorun giderme seçeneği veya destek**
 
-Müşteri belirtilen FarmBeats örneğinde aygıt verisi veya telemetri alamıyorsa, aygıt ortağı destek ve sorun giderme mekanizması sağlamalıdır.
+Müşteri, belirtilen Farmtts örneğinde cihaz verilerini veya telemetri alamadıysanız, cihaz ortağı sorun giderme için destek ve bir mekanizma sağlamalıdır.
 
-**Telemetri veri saklama**
+**Telemetri verilerini bekletme**
 
-Bir hata veya veri kaybı oluşursa telemetri hata ayıklama veya yeniden gönderme yararlı olabilir, böylece telemetri verileri de önceden tanımlanmış bir süre için tutulmalıdır.
+Telemetri verileri de önceden tanımlanmış bir süre için tutulmalıdır, böylece bir hata veya veri kaybı oluşursa Telemetriyi yeniden gönderebilirsiniz.
 
 **Hata yönetimi veya hata bildirimi**
 
-Aygıt veya sensör meta verilerini veya aygıt ortağı sistemindeki veri tümleştirmeveya telemetri veri akışını bir hata etkiliyorsa, müşteri bir bildirim almalıdır. Hataları gidermek için bir mekanizma da tasarlanıp uygulanmalıdır.
+Bir hata cihaz veya algılayıcı meta verilerini veya cihaz iş ortağı sistemindeki veri tümleştirmesini veya telemetri veri akışını etkiliyorsa, müşteri bir bildirim almalıdır. Hataları çözmeye yönelik bir mekanizma Ayrıca tasarlanmalı ve uygulanmalıdır.
 
-**Bağlantı kontrol listesi**
+**Bağlantı denetim listesi**
 
-Aygıt üreticileri veya iş ortakları, müşteri tarafından sağlanan kimlik bilgilerinin doğru olduğundan emin olmak için aşağıdaki denetim listesini kullanabilir:
+Cihaz üreticileri veya iş ortakları, müşteri tarafından sunulan kimlik bilgilerinin doğru olduğundan emin olmak için aşağıdaki denetim listesini kullanabilir:
 
-   - Sağlanan kimlik bilgileriyle birlikte bir erişim belirteci alınıp alınmadığını denetleyin.
-   - Alınan erişim belirteciyle bir API çağrısının başarılı olup olmadığını denetleyin.
-   - EventHub istemci bağlantısının kurulup kurulmadığını denetleyin.
+   - Girilen kimlik bilgileriyle bir erişim belirtecinin alınıp alınmadığını denetleyin.
+   - Bir API çağrısının alınan erişim belirteciyle başarılı olup olmadığını denetleyin.
+   - EventHub istemci bağlantısının oluşturulup yüklenmediğini denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API hakkında daha fazla bilgi için [REST API'ye](rest-api-in-azure-farmbeats.md)bakın.
+REST API hakkında daha fazla bilgi için bkz. [REST API](rest-api-in-azure-farmbeats.md).

@@ -1,7 +1,7 @@
 ---
-title: Azure sanal ağında Bir IPv6 çift yığın uygulaması dağıtma - Kaynak Yöneticisi şablonu
+title: Azure Virtual Network-Resource Manager şablonunda IPv6 ikili yığın uygulaması dağıtma
 titlesuffix: Azure Virtual Network
-description: Bu makalede, Azure Kaynak Yöneticisi VM şablonlarını kullanarak Azure sanal ağında Standart Yük Dengeleyicisi ile bir IPv6 çift yığın uygulamasının nasıl dağıtılancaya kadar dağıtılanınca gösterilmektedir.
+description: Bu makalede, Azure Resource Manager VM şablonlarını kullanarak Azure sanal ağı 'nda Standart Load Balancer IPv6 ikili yığın uygulamasının nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420639"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Azure sanal ağında Bir IPv6 çift yığın uygulaması dağıtma - Şablon
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Azure sanal ağ 'da IPv6 ikili yığın uygulaması dağıtma-şablon
 
-Bu makalede, Azure Kaynak Yöneticisi VM şablonunun geçerli olan bölümüyle birlikte IPv6 yapılandırma görevlerinin bir listesi sağlanmaktadır. IPv4 ve IPv6 alt ağlarına sahip bir çift yığın sanal ağı, çift (IPv4 + IPv6) ön uç yapılandırmasına sahip bir Standart Yük Dengeleyicisi, çift IP yapılandırmasına sahip NIC'lere sahip Sanal Bilgisayar'ları, çift IP yapılandırmasına sahip VM'leri ve genel IP'leri içeren Azure'da Standart Yük Dengeleyicisini kullanarak bu makalede açıklanan şablonu kullanın. 
+Bu makale, için geçerli Azure Resource Manager VM şablonunun parçası olan IPv6 yapılandırma görevlerinin bir listesini sağlar. IPv4 ve IPv6 alt ağları içeren çift yığın sanal ağını, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir Standart Load Balancer, çift IP yapılandırması, ağ güvenlik grubu ve genel IP 'Ler olan NIC 'Ler içeren VM 'Ler içeren bir çift yığın (IPv4 + IPv6) Standart Load Balancer uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın. 
 
-## <a name="required-configurations"></a>Gerekli yapılandırmalar
+## <a name="required-configurations"></a>Gerekli yapılandırma
 
-Nerede oluşacaklarını görmek için şablondaki şablon bölümlerini arayın.
+Şablonun nerede gerçekleşeceğini görmek için şablonda şablon bölümlerini arayın.
 
-### <a name="ipv6-addressspace-for-the-virtual-network"></a>Sanal ağ için IPv6 adresiSpace
+### <a name="ipv6-addressspace-for-the-virtual-network"></a>Sanal ağ için IPv6 addressSpace
 
 Eklenecek şablon bölümü:
 
@@ -38,7 +38,7 @@ Eklenecek şablon bölümü:
             "[variables('vnetv6AddressRange')]"    
 ```
 
-### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6 sanal ağ adresiSpace içinde IPv6 alt
+### <a name="ipv6-subnet-within-the-ipv6-virtual-network-addressspace"></a>IPv6 sanal ağ adresi alanı içindeki IPv6 alt ağı
 
 Eklenecek şablon bölümü:
 ```JSON
@@ -88,7 +88,7 @@ Eklenecek şablon bölümü:
 
 ## <a name="conditional-configuration"></a>Koşullu yapılandırma
 
-Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyin. Aksi takdirde, bu yapılandırma isteğe bağlıdır.
+Bir ağ sanal gereci kullanıyorsanız, yönlendirme tablosuna IPv6 yolları ekleyin. Aksi takdirde, bu yapılandırma isteğe bağlıdır.
 
 ```JSON
     {
@@ -120,7 +120,7 @@ Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyi
               }
 ```
 
-### <a name="ipv6-public-ip-addresses"></a>IPv6 Genel IP adresleri
+### <a name="ipv6-public-ip-addresses"></a>IPv6 genel IP adresleri
 
 ```JSON
     {
@@ -137,7 +137,7 @@ Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyi
       }
 ```
 
-### <a name="ipv6-front-end-for-load-balancer"></a>Yük Dengeleyicisi için IPv6 Ön uç
+### <a name="ipv6-front-end-for-load-balancer"></a>Load Balancer için IPv6 ön ucu
 
 ```JSON
           {
@@ -148,7 +148,7 @@ Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyi
               }
 ```
 
-### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Yük Dengeleyicisi için IPv6 Arka uç adres havuzu
+### <a name="ipv6-back-end-address-pool-for-load-balancer"></a>Load Balancer için IPv6 arka uç adres havuzu
 
 ```JSON
               "backendAddressPool": {
@@ -161,7 +161,7 @@ Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyi
             "name": "lbrule-v6"
 ```
 
-### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Gelen ve giden bağlantı noktalarını ilişkilendirmek için IPv6 yük dengeleyici kuralları
+### <a name="ipv6-load-balancer-rules-to-associate-incoming-and-outgoing-ports"></a>Gelen ve giden bağlantı noktalarını ilişkilendireceğiniz IPv6 yük dengeleyici kuralları
 
 ```JSON
           {
@@ -179,8 +179,8 @@ Bir ağ sanal cihazı kullanıyorsanız, Rota Tablosuna IPv6 rotalarını ekleyi
 ```
 
 ## <a name="sample-vm-template-json"></a>Örnek VM şablonu JSON
-Azure Kaynak Yöneticisi şablonu kullanarak Azure sanal ağında bir IPv6 çift yığın uygulaması dağıtmak için örnek [şablonu buradan](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)görüntüleyin.
+Azure sanal ağı 'nda Azure Resource Manager şablonu kullanarak bir IPv6 çift yığın uygulaması dağıtmak için, [burada](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/)örnek şablonu görüntüleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Genel IP adresleri,](https://azure.microsoft.com/pricing/details/ip-addresses/) [ağ bant genişliği](https://azure.microsoft.com/pricing/details/bandwidth/)veya Yük [Dengeleyicisi](https://azure.microsoft.com/pricing/details/load-balancer/)fiyatlandırması hakkında ayrıntılı bilgi bulabilirsiniz.
+[Genel IP adresleri](https://azure.microsoft.com/pricing/details/ip-addresses/), [ağ bant genişliği](https://azure.microsoft.com/pricing/details/bandwidth/)veya [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)fiyatlandırmasıyla ilgili ayrıntıları bulabilirsiniz.

@@ -1,42 +1,42 @@
 ---
-title: Azure Kubernetes Hizmetinde (AKS) GPU'ları Kullanma
-description: Azure Kubernetes Hizmetinde (AKS) yüksek performanslı bilgi işlem veya grafik yoğun iş yükleri için GPU'ları nasıl kullanacağınızı öğrenin
+title: Azure Kubernetes Service (AKS) üzerinde GPU 'ları kullanma
+description: Azure Kubernetes Service (AKS) üzerinde yüksek performanslı işlem veya grafik kullanımı yoğun iş yükleri için GPU 'ları nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
 ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80383999"
 ---
-# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) işlem yoğun iş yükleri için GPU'ları kullanın
+# <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) üzerinde işlem yoğunluğu yoğun iş yükleri için GPU 'ları kullanma
 
-Grafik işleme birimleri (GPU'lar) genellikle grafik ve görselleştirme iş yükleri gibi bilgi işlem yoğun iş yükleri için kullanılır. AKS, Kubernetes'teki bu işlem yoğun iş yüklerini çalıştırmak için GPU özellikli düğüm havuzlarıoluşturulmasını destekler. Kullanılabilir GPU özellikli VM'ler hakkında daha fazla bilgi için [Azure'da GPU en iyi duruma getirilmiş VM boyutlarına][gpu-skus]bakın. AKS düğümleri için, en az *Standard_NC6*boyutunu öneririz.
+Grafik işleme birimleri (GPU 'Lar) genellikle grafik ve görselleştirme iş yükleri gibi işlem yoğunluğu yoğun iş yükleri için kullanılır. AKS, bu yoğun işlem yoğunluğu olan iş yüklerini Kubernetes 'de çalıştırmak için GPU etkin düğüm havuzlarının oluşturulmasını destekler. Kullanılabilir GPU etkin VM 'Ler hakkında daha fazla bilgi için bkz. [Azure 'Da GPU IYILEŞTIRILMIŞ VM boyutları][gpu-skus]. AKS düğümlerinde, en az bir *Standard_NC6*boyutu öneririz.
 
 > [!NOTE]
-> GPU özellikli VM'ler, daha yüksek fiyatlandırmaya ve bölge kullanılabilirliğine tabi olan özel donanım içerir. Daha fazla bilgi için [fiyatlandırma][azure-pricing] aracına ve [bölge kullanılabilirliğine][azure-availability]bakın.
+> GPU özellikli VM 'Ler, daha yüksek fiyatlandırma ve bölge kullanılabilirliğine tabi olan özel donanımlar içerir. Daha fazla bilgi için bkz. [fiyatlandırma][azure-pricing] aracı ve [bölge kullanılabilirliği][azure-availability].
 
-Şu anda, GPU özellikli düğüm havuzları yalnızca Linux düğüm havuzları için kullanılabilir.
+Şu anda, GPU etkin düğüm havuzlarının kullanılması yalnızca Linux düğüm havuzları için kullanılabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, GPU'ları destekleyen düğümleri olan varolan bir AKS kümeniz olduğunu varsayar. AKS kümeniz Kubernetes 1.10 veya daha sonra çalıştırmalısınız. Bu gereksinimleri karşılayan bir AKS kümesine ihtiyacınız varsa, [bir AKS kümesi oluşturmak](#create-an-aks-cluster)için bu makalenin ilk bölümüne bakın.
+Bu makalede, GPU 'ları destekleyen düğümlere sahip mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümeniz Kubernetes 1,10 veya sonraki bir sürümü çalıştırmalıdır. Bu gereksinimleri karşılayan bir AKS kümesine ihtiyacınız varsa, [BIR aks kümesi oluşturmak](#create-an-aks-cluster)için bu makalenin ilk bölümüne bakın.
 
-Ayrıca Azure CLI sürümü 2.0.64 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
+Ayrıca Azure CLı sürüm 2.0.64 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Minimum gereksinimleri (GPU etkin düğüm ve Kubernetes sürüm 1.10 veya sonraki sürüm) karşılayan bir AKS kümesine ihtiyacınız varsa, aşağıdaki adımları tamamlayın. Bu gereksinimleri karşılayan bir AKS kümeniz varsa, [bir sonraki bölüme atlayın.](#confirm-that-gpus-are-schedulable)
+Minimum gereksinimleri (GPU etkin düğüm ve Kubernetes sürüm 1,10 veya üzeri) karşılayan bir AKS kümesine ihtiyacınız varsa, aşağıdaki adımları izleyin. Bu gereksinimleri karşılayan bir AKS kümeniz zaten varsa, [sonraki bölüme atlayın](#confirm-that-gpus-are-schedulable).
 
-İlk olarak, az grubu oluşturma komutunu kullanarak küme için bir kaynak grubu [oluşturun.][az-group-create] Aşağıdaki örnek, *eastus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturur:
+İlk olarak, [az Group Create][az-group-create] komutunu kullanarak küme için bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu adı oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az aks oluşturma][az-aks-create] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, tek bir boyut `Standard_NC6`düğümüne sahip bir küme oluşturur:
+Şimdi [az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturun. Aşağıdaki örnek tek bir düğümü olan bir küme oluşturur `Standard_NC6`:
 
 ```azurecli-interactive
 az aks create \
@@ -46,23 +46,23 @@ az aks create \
     --node-count 1
 ```
 
-[Az aks get-credentials][az-aks-get-credentials] komutunu kullanarak AKS kümenizin kimlik bilgilerini alın:
+[Az aks Get-Credentials][az-aks-get-credentials] komutunu kullanarak aks kümeniz için kimlik bilgilerini alın:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVIDIA sürücülerini yükleyin
+## <a name="install-nvidia-drivers"></a>NVıDıA sürücülerini yükler
 
-Düğümlerde GPU'lar kullanılmadan önce, NVIDIA aygıt eklentisi için bir DaemonSet dağıtmanız gerekir. Bu DaemonSet GPU'lar için gerekli sürücüleri sağlamak için her düğümüzerinde bir bölme çalışır.
+Düğümlerdeki GPU 'Ların kullanılabilmesi için, NVıDıA cihaz eklentisi için bir DaemonSet dağıtmanız gerekir. Bu DaemonSet, GPU 'Lar için gerekli sürücüleri sağlamak üzere her düğümde bir pod çalıştırır.
 
-İlk olarak, [kubectl oluşturmak namespace][kubectl-create] komutu kullanarak bir ad alanı oluşturmak, *gpu kaynakları*gibi:
+İlk olarak, *GPU kaynakları*gibi [kubectl Create Namespace][kubectl-create] komutunu kullanarak bir ad alanı oluşturun:
 
 ```console
 kubectl create namespace gpu-resources
 ```
 
-*Nvidia-device-plugin-ds.yaml* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu manifesto [Kubernetes projesi için NVIDIA cihaz eklentisinin][nvidia-github]bir parçası olarak sağlanmaktadır.
+*NVIDIA-Device-Plugin-DS. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Bu bildirim, [Kubernetes projesi Için NVIDIA cihaz eklentisinin][nvidia-github]bir parçası olarak sağlanır.
 
 ```yaml
 apiVersion: apps/v1
@@ -110,7 +110,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Şimdi DaemonSet oluşturmak ve NVIDIA cihaz eklentisi başarıyla oluşturulur onaylamak için [kubectl apply][kubectl-apply] komutunu kullanın, aşağıdaki örnek çıktı gösterildiği gibi:
+Şimdi, DaemonSet oluşturmak için [kubectl Apply][kubectl-apply] komutunu kullanın ve aşağıdaki örnek çıktıda GÖSTERILDIĞI gibi NVIDIA cihaz eklentisinin başarıyla oluşturulduğunu onaylayın:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -118,9 +118,9 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 daemonset "nvidia-device-plugin" created
 ```
 
-## <a name="confirm-that-gpus-are-schedulable"></a>GPU'ların zamanlanabilir olduğunu doğrulayın
+## <a name="confirm-that-gpus-are-schedulable"></a>GPU 'Ların zamanlanabilen olduğunu onaylayın
 
-OLUŞTURULAN AKS kümenizle, GPU'ların Kubernetes'te programlanabilir olduğunu doğrulayın. İlk olarak, [kubectl get düğümleri][kubectl-get] komutunu kullanarak kümenizdeki düğümleri listele:
+AKS kümeniz oluşturulduktan sonra, GPU 'Ların Kubernetes 'te zamanlanabilen olduğunu doğrulayın. İlk olarak, [kubectl Get Nodes][kubectl-get] komutunu kullanarak kümenizdeki düğümleri listeleyin:
 
 ```console
 $ kubectl get nodes
@@ -129,9 +129,9 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Şimdi GPU'ların zamanlanabilir olduğunu doğrulamak için [kubectl describe düğümü][kubectl-describe] komutunu kullanın. *Kapasite* bölümü altında, GPU olarak `nvidia.com/gpu:  1`listelenmelidir.
+Artık GPU 'Ların zamanlanabilen olduğunu onaylamak için [kubectl açıkla node][kubectl-describe] komutunu kullanın. *Kapasite* bölümünün altında, GPU olarak `nvidia.com/gpu:  1`listelemelidir.
 
-Aşağıdaki yoğunlaştırılmış örnek, *aks-nodepool1-18821093-0*adlı düğümde Bir GPU'nun mevcut olduğunu gösterir:
+Aşağıdaki sıkıştırılmış örnek, *aks-nodepool1-18821093-0*adlı düğümde bir GPU 'nun kullanılabildiğini göstermektedir:
 
 ```console
 $ kubectl describe node aks-nodepool1-28993262-0
@@ -181,14 +181,14 @@ Non-terminated Pods:         (9 in total)
 [...]
 ```
 
-## <a name="run-a-gpu-enabled-workload"></a>GPU özellikli iş yükü çalıştırma
+## <a name="run-a-gpu-enabled-workload"></a>GPU etkin iş yükünü çalıştırma
 
-GPU'yu iş başında görmek için, uygun kaynak isteğiyle GPU özellikli bir iş yükü zamanlayın. Bu örnekte, [MNIST veri kümesine](http://yann.lecun.com/exdb/mnist/)karşı bir [Tensorflow](https://www.tensorflow.org/) işi çalıştıralım.
+GPU 'YU eylemde görmek için uygun kaynak isteğiyle GPU özellikli bir iş yükü zamanlayın. Bu örnekte, [Mnist veri kümesine](http://yann.lecun.com/exdb/mnist/)karşı bir [TensorFlow](https://www.tensorflow.org/) işi çalıştıralim.
 
-*Samples-tf-mnist-demo.yaml* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Aşağıdaki iş bildirimi bir kaynak `nvidia.com/gpu: 1`sınırı içerir:
+*Samples-TF-mnist-demo. YAML* adlı bir dosya oluşturun ve aşağıdaki YAML bildirimini yapıştırın. Aşağıdaki iş bildirimi bir kaynak sınırı içerir `nvidia.com/gpu: 1`:
 
 > [!NOTE]
-> Cuda sürücü sürümü CUDA çalışma zamanı sürümü için yetersiz olduğu gibi sürücüleri ararken bir sürüm uyuşmazlığı hatası alırsanız, NVIDIA sürücü matris uyumluluk grafiğini gözden geçirin -[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Sürücülere çağrı yaparken bir sürüm uyumsuzluğu hatası alırsanız (örneğin, CUDA sürücü sürümü CUDA çalışma zamanı sürümü için yetersizse), NVıDıA sürücü matrisi uyumluluk grafiğini gözden geçirin.[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -214,15 +214,15 @@ spec:
       restartPolicy: OnFailure
 ```
 
-İşi çalıştırmak için [kubectl uygula][kubectl-apply] komutunu kullanın. Bu komut, bildirim dosyasını ayrıştırır ve tanımlanan Kubernetes nesnelerini oluşturur:
+İşi çalıştırmak için [kubectl Apply][kubectl-apply] komutunu kullanın. Bu komut, bildirim dosyasını ayrıştırır ve tanımlanmış Kubernetes nesnelerini oluşturur:
 
 ```console
 kubectl apply -f samples-tf-mnist-demo.yaml
 ```
 
-## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>GPU özellikli iş yükünün durumunu ve çıktısını görüntüleme
+## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>GPU etkin iş yükünün durumunu ve çıkışını görüntüleme
 
-[Kubectl][kubectl-get] get jobs komutunu `--watch` kullanarak işin ilerlemesini izleyin. Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *TAMAMLAMALAR* *sütunu 1/1*gösterdiğinde, iş başarıyla tamamlanmıştır. `kubetctl --watch` *Ctrl-C*ile komutu çıkar:
+`--watch` Bağımsız değişkenle [kubectl Get Jobs][kubectl-get] komutunu kullanarak işin ilerlemesini izleyin. Önce görüntüyü çekmek ve veri kümesini işlemek birkaç dakika sürebilir. *Tamamlamalar* sütununda *1/1*' ı gösteriyorsa, iş başarıyla tamamlanmıştır. `kubetctl --watch` *CTRL-C*ile komuttan çıkın:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -233,7 +233,7 @@ samples-tf-mnist-demo   0/1           3m29s      3m29s
 samples-tf-mnist-demo   1/1   3m10s   3m36s
 ```
 
-GPU özellikli iş yükünün çıktısına bakmak için, önce [kubectl get pods][kubectl-get] komutu ile bölmenin adını alın:
+GPU etkin iş yükünün çıktısına bakmak için ilk olarak [kubectl Get Pod][kubectl-get] komutunu kullanarak Pod 'un adını alın:
 
 ```console
 $ kubectl get pods --selector app=samples-tf-mnist-demo
@@ -242,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Şimdi pod günlükleri görüntülemek için [kubectl günlükleri][kubectl-logs] komutunu kullanın. Aşağıdaki örnek pod günlükleri, uygun GPU aygıtının `Tesla K80`bulunduğunu onaylar. Kendi bölmenizin adını sağlayın:
+Şimdi Pod günlüklerini görüntülemek için [kubectl logs][kubectl-logs] komutunu kullanın. Aşağıdaki örnek Pod günlükleri uygun GPU cihazının bulunduğunu onaylayın `Tesla K80`. Kendi Pod 'niz için ad belirtin:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6
@@ -321,7 +321,7 @@ Adding run metadata for 499
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede oluşturulan ilişkili Kubernetes nesnelerini kaldırmak için [kubectl delete iş][kubectl delete] komutunu aşağıdaki gibi kullanın:
+Bu makalede oluşturulan ilişkili Kubernetes nesnelerini kaldırmak için [kubectl Delete Job][kubectl delete] komutunu aşağıdaki gibi kullanın:
 
 ```console
 kubectl delete jobs samples-tf-mnist-demo
@@ -329,9 +329,9 @@ kubectl delete jobs samples-tf-mnist-demo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Apache Spark işlerini çalıştırmak için [AKS'deki Apache Spark işlerini çalıştırın.][aks-spark]
+Apache Spark işleri çalıştırmak için bkz. [AKS üzerinde Apache Spark Işleri çalıştırma][aks-spark].
 
-Kubernetes'te makine öğrenimi (ML) iş yüklerini çalıştırma hakkında daha fazla bilgi için [Kubeflow Labs'a][kubeflow-labs]bakın.
+Kubernetes üzerinde makine öğrenimi (ML) iş yüklerini çalıştırma hakkında daha fazla bilgi için bkz. [Kubeflow Labs][kubeflow-labs].
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply

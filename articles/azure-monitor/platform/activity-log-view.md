@@ -1,6 +1,6 @@
 ---
-title: Azure Etkinliği günlük olaylarını Azure Monitörü'nde görüntüleme
-description: Azure Etkinliği günlüğünü Azure Monitörü'nde görüntüleyin ve PowerShell, CLI ve REST API ile alın.
+title: Azure Izleyici 'de Azure etkinlik günlüğü olaylarını görüntüleme
+description: Azure Izleyici 'de Azure etkinlik günlüğünü görüntüleyin ve PowerShell, CLı ve REST API alın.
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,59 +8,59 @@ ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397316"
 ---
-# <a name="view-and-retrieve-azure-activity-log-events"></a>Azure Etkinliği günlük olaylarını görüntüleme ve alma
+# <a name="view-and-retrieve-azure-activity-log-events"></a>Azure etkinlik günlüğü olaylarını görüntüleme ve alma
 
-[Azure Etkinlik Günlüğü,](platform-logs-overview.md) Azure'da gerçekleşen abonelik düzeyi olaylarına ilişkin öngörüler sağlar. Bu makalede, Etkinlik Günlüğü olaylarını görüntülemek ve almak için farklı yöntemler hakkında ayrıntılı bilgi verilmektedir.
+[Azure etkinlik günlüğü](platform-logs-overview.md) , Azure 'da oluşan abonelik düzeyi olaylar hakkında öngörüler sağlar. Bu makalede, etkinlik günlüğü olaylarını görüntülemek ve almak için farklı yöntemlerle ilgili ayrıntılar sağlanmaktadır.
 
 ## <a name="azure-portal"></a>Azure portal
-Azure portalındaki **Monitör** menüsünden tüm kaynaklar için Etkinlik Günlüğü'nü görüntüleyin. Söz konusu kaynağın menüsündeki **Etkinlik Günlüğü** seçeneğinden belirli bir kaynağın Etkinlik Günlüğü'nü görüntüleyin.
+Tüm kaynaklar için etkinlik günlüğünü Azure portal **izleme** menüsünden görüntüleyin. Söz konusu kaynak menüsündeki **etkinlik günlüğü** seçeneğinden belirli bir kaynağın etkinlik günlüğünü görüntüleyin.
 
-![Etkinlik Günlüğünü Görüntüle](./media/activity-logs-overview/view-activity-log.png)
+![Etkinlik günlüğünü görüntüle](./media/activity-logs-overview/view-activity-log.png)
 
-Etkinlik Günlüğü olaylarını aşağıdaki alanlara göre filtreleyebilirsiniz:
+Etkinlik günlüğü olaylarını aşağıdaki alanlara göre filtreleyebilirsiniz:
 
-* **Zaman sonu**: Olayların başlangıç ve bitiş saati.
-* **Kategori**: [Etkinlik Günlüğündeki Kategorilerde](activity-log-view.md#categories-in-the-activity-log)açıklandığı gibi etkinlik kategorisi .
-* **Abonelik**: Bir veya daha fazla Azure abonelik adı.
-* **Kaynak grubu**: Seçili abonelikler içinde bir veya daha fazla kaynak grubu.
-* **Kaynak (ad)**: - Belirli bir kaynağın adı.
-* **Kaynak türü**: Kaynak türü, örneğin _Microsoft.Compute/virtualmachines._
-* **İşlem adı** - _Microsoft.SQL/servers/Write_gibi bir Azure Kaynak Yöneticisi işleminin adı.
-* **Önem derecesi**: Olayın önem düzeyi. Kullanılabilir değerler _Informational_, _Warning_, _Error_, _Critical_.
-* **Başlatan Olay**: İşlemi gerçekleştiren kullanıcı.
-* **Açık arama**: Tüm olaylardaki tüm alanlarda bu dizeyi arayan metin arama kutusunu açın.
+* **TimeSpan**: olaylar için başlangıç ve bitiş zamanı.
+* **Kategori**: [etkinlik günlüğündeki kategorilerde](activity-log-view.md#categories-in-the-activity-log)açıklandığı şekilde olay kategorisi.
+* **Abonelik**: bir veya daha fazla Azure abonelik adı.
+* **Kaynak grubu**: seçili abonelikler içindeki bir veya daha fazla kaynak grubu.
+* **Kaynak (ad)**:-belirli bir kaynağın adı.
+* **Kaynak türü**: kaynak türü, örneğin _Microsoft. COMPUTE/virtualmachines_.
+* **İşlem adı** -Azure Resource Manager bir işlemin adı, örneğin _Microsoft. SQL/Servers/Write_.
+* **Önem derecesi**: etkinliğin önem düzeyi. Kullanılabilir değerler _bilgilendirme_, _Uyarı_, _hata_, _kritik_.
+* **Olay tarafından başlatılan olay**: işlemi gerçekleştiren kullanıcı.
+* **Arama aç**: tüm olaylardaki tüm alanlarda bu dizeyi arayan metin arama kutusunu açın.
 
-## <a name="categories-in-the-activity-log"></a>Etkinlik günlüğündeki kategoriler
-Etkinlik Günlüğü'ndeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Bu kategorilerin şema hakkında tüm ayrıntılar için [Azure Etkinlik Günlüğü etkinlik şemasına](activity-log-schema.md)bakın. 
+## <a name="categories-in-the-activity-log"></a>Etkinlik günlüğündeki Kategoriler
+Etkinlik günlüğündeki her olayın, aşağıdaki tabloda açıklanan belirli bir kategorisi vardır. Bu kategorilerin şemaların serileştirilmesi hakkında tam Ayrıntılar için bkz. [Azure etkinlik günlüğü olay şeması](activity-log-schema.md). 
 
 | Kategori | Açıklama |
 |:---|:---|
-| Yönetim | Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. İdari olaylara örnek olarak _sanal makine oluşturma_ ve ağ güvenlik grubunu _silme_verilebilir.<br><br>Kaynak Yöneticisi'ni kullanan bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türünde bir işlem olarak modellenir. İşlem türü _Yazma,_ _Sil_veya _Eylem_ise, bu işlemin hem başlangıç hem de başarı veya başarısız kayıtları Yönetim kategorisinde kaydedilir. Yönetim olayları, abonelikteki rol tabanlı erişim denetiminde yapılan değişiklikleri de içerir. |
-| Hizmet Durumu | Azure'da meydana gelen hizmet durumu olaylarının kaydını içerir. _Doğu ABD'de_bir Hizmet Durumu olay SQL Azure bir örnek kapalı kalma yaşıyor. <br><br>Hizmet Sağlık olayları altı çeşit gelir: _Eylem Gerekli_, _Yardımlı Kurtarma_, _Olay_, _Bakım_, _Bilgi_, veya _Güvenlik_. Bu olaylar yalnızca abonelikte olaydan etkilenecek bir kaynağınız varsa oluşturulur.
-| Kaynak Durumu | Azure kaynaklarınızda meydana gelen kaynak durumu olaylarının kaydını içerir. Kaynak Durumu olayına örnek olarak _Sanal Makine sistem durumu kullanılamaz olarak değiştirilmiştir._<br><br>Kaynak Durumu olayları dört sağlık durumundan birini temsil edebilir: _Kullanılabilir_, _Kullanılamıyor,_ _Bozulmuş_ve _Bilinmeyen_. Ayrıca, Kaynak Durumu olayları _Platform Başlatılan_ veya _Kullanıcı Başlatılan_olarak kategorize edilebilir. |
-| Uyarı | Azure uyarıları için etkinleştirme kaydını içerir. Bir Uyarı olayına örnek olarak _myVM'deki CPU % son 5 dakika boyunca 80'in üzerinde olmuştur._|
-| Otomatik Ölçeklendirme | Aboneliğinizde tanımladığınız otomatik ölçek ayarlarını temel alan otomatik ölçeklendirme motorunun çalışmasıyla ilgili tüm olayların kaydını içerir. Otomatik Ölçekolayının bir örneği, _otomatik ölçeklendirme ölçeğinde başarısız olan eylemi_ölçeklendirmedir. |
-| Öneri | Azure Danışmanı'ndan tavsiye etkinlikleri içerir. |
-| Güvenlik | Azure Güvenlik Merkezi tarafından oluşturulan tüm uyarıların kaydını içerir. Bir Güvenlik olayı nın bir _örneği, yürütülen Şüpheli çift uzatma dosyasıdır._ |
-| İlke | Azure İlkesi tarafından gerçekleştirilen tüm efekt eylem işlemlerinin kayıtlarını içerir. İlke olaylarına örnek olarak _Denetim_ ve _Reddet_verilebilir. İlke tarafından gerçekleştirilen her eylem, bir kaynak üzerinde bir işlem olarak modellenir. |
+| Yönetim | Kaynak Yöneticisi aracılığıyla gerçekleştirilen tüm oluşturma, güncelleştirme, silme ve eylem işlemlerinin kaydını içerir. Yönetim olayları örnekleri arasında _sanal makine oluşturma_ ve _ağ güvenlik grubu silme_sayılabilir.<br><br>Kaynak Yöneticisi kullanarak bir kullanıcı veya uygulama tarafından gerçekleştirilen her eylem, belirli bir kaynak türündeki işlem olarak modellenir. İşlem türü _yazma_, _silme_veya _eylem_ise, bu işlemin hem başlangıç hem de başarı veya başarısızlık kayıtları yönetim kategorisine kaydedilir. Yönetim olayları, bir abonelikte rol tabanlı erişim denetimine yapılan tüm değişiklikleri de içerir. |
+| Hizmet Durumu | Azure 'da oluşan hizmet durumu olaylarının kaydını içerir. Doğu ABD bir hizmet sistem durumu olay SQL Azure bir örnek _kapalı kalma süresi yaşıyor_. <br><br>Hizmet durumu olayları altı değişen elikler halinde gelir: _eylem gereklidir_, _yardımlı kurtarma_, _olay_, _bakım_, _bilgi_veya _güvenlik_. Bu olaylar yalnızca abonelikte olaydan etkilenecek bir kaynağınız varsa oluşturulur.
+| Kaynak Durumu | Azure kaynaklarınızda oluşan herhangi bir kaynak sistem durumu olayının kaydını içerir. Kaynak Durumu olayına bir örnek, _sanal makine sistem durumu kullanılamaz olarak değişir_.<br><br>Kaynak Durumu olaylar şu dört sistem durumunu temsil edebilir: _kullanılabilir_, _kullanılamaz_, _düşürülmüş_ve _bilinmiyor_. Ayrıca, Kaynak Durumu olaylar _platform tarafından başlatılmış_ veya _Kullanıcı tarafından başlatılmış_olarak kategorize edilebilir. |
+| Uyarı | Azure uyarıları için etkinleştirme kaydını içerir. _Son 5 dakika boyunca, myVM 'deki% CPU 'su %80_üzerinde bir uyarı olayına bir örnektir.|
+| Otomatik Ölçeklendirme | Aboneliğinizde tanımladığınız otomatik ölçeklendirme ayarlarına bağlı olarak, otomatik ölçeklendirme altyapısının işlemiyle ilgili olayların kaydını içerir. Otomatik ölçeklendirme olayına bir örnek, _Otomatik ölçeklendirme ölçeği artırma eylemi başarısız oldu_. |
+| Öneri | Azure Advisor 'ın öneri olaylarını içerir. |
+| Güvenlik | Azure Güvenlik Merkezi tarafından oluşturulan uyarıların kaydını içerir. Bir güvenlik olayına örnek olarak, _şüpheli çift uzantı dosyası yürütülür_. |
+| İlke | Azure Ilkesi tarafından gerçekleştirilen tüm etki eylemi işlemlerinin kayıtlarını içerir. Ilke olayları örnekleri _Denetim_ ve _reddetme_içerir. Ilke tarafından gerçekleştirilen her eylem, bir kaynaktaki işlem olarak modellenir. |
 
-## <a name="view-change-history"></a>Değişiklik geçmişini görüntüleme
+## <a name="view-change-history"></a>Değişiklik geçmişini görüntüle
 
-Etkinlik Günlüğü'nün gözden geçirilmesisırasında, bu olay sırasında ne gibi değişikliklerin gerçekleştiğini görmenize yardımcı olabilir. Bu bilgileri Değiştir **geçmişiyle**görüntüleyebilirsiniz. Daha derine bakmak istediğiniz Etkinlik Günlüğü'nden bir olay seçin. Bu olayla ilişkili değişiklikleri görüntülemek için **Geçmişi Değiştir (Önizleme)** sekmesini seçin.
+Etkinlik günlüğü 'Nü gözden geçirirken, bu olay saati sırasında hangi değişikliklerin meydana geldiğini görmek için yardımcı olabilir. **Değişiklik geçmişiyle**bu bilgileri görüntüleyebilirsiniz. Daha ayrıntılı olarak görmek istediğiniz etkinlik günlüğünden bir olay seçin. Söz konusu olayla ilişkili tüm değişiklikleri görüntülemek için **değişiklik geçmişi (Önizleme)** sekmesini seçin.
 
-![Bir olayın geçmiş listesini değiştirme](media/activity-logs-overview/change-history-event.png)
+![Olay için değişiklik geçmişi listesi](media/activity-logs-overview/change-history-event.png)
 
-Olayla ilişkili değişiklikler varsa, seçebileceğiniz değişikliklerin listesini görürsünüz. Bu, **Geçmiş Değiştir (Önizleme)** sayfasını açar. Bu sayfada kaynak değişiklikleri bakın. Aşağıdaki örnekten de görebileceğiniz gibi, sadece VM'nin boyutlarını değiştirdiğini değil, önceki VM boyutunun değişiklikten önce ne olduğunu ve ne olarak değiştirildiğini de görebiliriz.
+Olayla ilişkili herhangi bir değişiklik varsa, seçebileceğiniz değişikliklerin bir listesini görürsünüz. Bu, **değişiklik geçmişi (Önizleme)** sayfasını açar. Bu sayfada, kaynakta yapılan değişiklikleri görürsünüz. Aşağıdaki örnekte görebileceğiniz gibi, yalnızca VM 'nin boyutlarının değiştiğini, ancak önceki VM boyutunun değişiklikten önce ne olduğunu ve ne değiştiğini görebileceksiniz.
 
-![Farklılıkları gösteren geçmiş sayfasını değiştirme](media/activity-logs-overview/change-history-event-details.png)
+![Farkları gösteren değişiklik geçmişi sayfası](media/activity-logs-overview/change-history-event-details.png)
 
-Değişiklik geçmişi hakkında daha fazla bilgi edinmek için [kaynak değişikliklerini al'a](../../governance/resource-graph/how-to/get-resource-changes.md)bakın.
+Değişiklik geçmişi hakkında daha fazla bilgi edinmek için bkz. [kaynak değişikliklerini alma](../../governance/resource-graph/how-to/get-resource-changes.md).
 
 
 
@@ -68,43 +68,43 @@ Değişiklik geçmişi hakkında daha fazla bilgi edinmek için [kaynak değişi
 
 
 ## <a name="powershell"></a>PowerShell
-PowerShell'den Etkinlik Günlüğü'ne ulaşmak için [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet'ini kullanın. Aşağıda bazı yaygın örnekler verilmiştir.
+PowerShell 'den etkinlik günlüğünü almak için [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın. Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir.
 
 > [!NOTE]
-> `Get-AzLog`sadece 15 günlük bir tarih sağlar. 15 gün sonraki son N olaylarını sorgulamak için **-MaxEvents** parametresini kullanın. 15 günden eski olaylara erişmek için REST API veya SDK'yı kullanın. **StartTime'ı**dahil etmiyorsanız, varsayılan değer **Bitiş Saati** eksi bir saattir. **EndTime'ı**içermiyorsanız, varsayılan değer geçerli saattir. Her zaman UTC bulunmaktadır.
+> `Get-AzLog`yalnızca 15 günlük geçmişi sağlar. Son N olayı 15 günden daha fazla sorgulamak için **-maxevents** parametresini kullanın. 15 günden eski olaylara erişmek için REST API veya SDK 'Yı kullanın. **StartTime**'i eklemezseniz, varsayılan değer **bitişsaati** eksi bir saattir. **Bitişsaati**eklemezseniz, varsayılan değer geçerli süredir. Her zaman UTC 'de.
 
 
-Belirli bir tarih saatinden sonra oluşturulan günlük girişlerini alın:
+Belirli bir tarih zamanından sonra oluşturulan günlük girişlerini al:
 
 ```powershell
 Get-AzLog -StartTime 2016-03-01T10:30
 ```
 
-Tarih aralığı arasında günlük girişleri alın:
+Tarih Saat aralığı arasında günlük girişlerini al:
 
 ```powershell
 Get-AzLog -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Belirli bir kaynak grubundan günlük girişleri alın:
+Belirli bir kaynak grubundaki günlük girdilerini al:
 
 ```powershell
 Get-AzLog -ResourceGroup 'myrg1'
 ```
 
-Tarih aralığı arasında belirli bir kaynak sağlayıcıdan günlük girişleri alın:
+Belirli bir kaynak sağlayıcısından tarih saat aralığı arasında günlük girişleri al:
 
 ```powershell
 Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime 2015-01-01T11:30
 ```
 
-Belirli bir arayanla günlük girişleri alın:
+Belirli bir çağıran günlük girdilerini al:
 
 ```powershell
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-Son 1000 etkinliği alın:
+Son 1000 olayını alın:
 
 ```powershell
 Get-AzLog -MaxEvents 1000
@@ -112,28 +112,28 @@ Get-AzLog -MaxEvents 1000
 
 
 ## <a name="cli"></a>CLI
-CLI'den Etkinlik Günlüğü'ne almak için [az monitör etkinlik günlüğü](cli-samples.md#view-activity-log-for-a-subscription) kullanın. Aşağıda bazı yaygın örnekler verilmiştir.
+CLı 'dan etkinlik günlüğünü almak için [az Monitor Activity-Log](cli-samples.md#view-activity-log-for-a-subscription) kullanın. Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir.
 
 
-Kullanılabilir tüm seçenekleri görüntüleyin.
+Tüm kullanılabilir seçenekleri görüntüleyin.
 
 ```azurecli
 az monitor activity-log list -h
 ```
 
-Belirli bir kaynak grubundan günlük girişleri alın:
+Belirli bir kaynak grubundaki günlük girdilerini al:
 
 ```azurecli
 az monitor activity-log list --resource-group <group name>
 ```
 
-Belirli bir arayanla günlük girişleri alın:
+Belirli bir çağıran günlük girdilerini al:
 
 ```azurecli
 az monitor activity-log list --caller myname@company.com
 ```
 
-Bir tarih aralığında, kaynak türünde arayanın günlüklerini alın:
+Bir tarih aralığı içinde bir kaynak türü üzerinde arayana göre Günlükler alın:
 
 ```azurecli
 az monitor activity-log list --resource-provider Microsoft.Web \
@@ -143,27 +143,27 @@ az monitor activity-log list --resource-provider Microsoft.Web \
 ```
 
 ## <a name="rest-api"></a>REST API
-Etkinlik Günlüğünü bir REST istemcisinden almak için [Azure Monitor REST API'sını](https://docs.microsoft.com/rest/api/monitor/) kullanın. Aşağıda bazı yaygın örnekler verilmiştir.
+REST istemcisinden etkinlik günlüğünü almak için [Azure izleyici REST API](https://docs.microsoft.com/rest/api/monitor/) kullanın. Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir.
 
-Filtreile Etkinlik Günlükleri alın:
+Filtre ile etkinlik günlüklerini al:
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2018-01-21T20:00:00Z' and eventTimestamp le '2018-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'
 ```
 
-Filtreile Etkinlik Günlükleri alın ve seçin:
+Filtreli etkinlik günlüklerini alın ve şunları seçin:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '2015-01-21T20:00:00Z' and eventTimestamp le '2015-01-23T20:00:00Z' and resourceGroupName eq 'MSSupportGroup'&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Select ile Etkinlik Günlükleri alın:
+Select ile etkinlik günlüklerini al:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01&$select=eventName,id,resourceGroupName,resourceProviderName,operationName,status,eventTimestamp,correlationId,submissionTimestamp,level
 ```
 
-Filtre olmadan Etkinlik Günlükleri alın veya seçin:
+Filtre olmadan etkinlik günlüklerini Al veya Seç:
 
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
@@ -172,5 +172,5 @@ GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Platform günlüklerine genel bakış](platform-logs-overview.md)
-* [Etkinlik günlüklerini diğer hedeflere göndermek için tanılama ayarı oluşturma](diagnostic-settings.md)
+* [Platform günlüklerine Genel Bakış bölümünü okuyun](platform-logs-overview.md)
+* [Diğer hedeflere etkinlik günlükleri göndermek için tanılama ayarı oluştur](diagnostic-settings.md)

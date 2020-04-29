@@ -1,7 +1,7 @@
 ---
-title: Modelleri Azure Kapsayıcı Örneklerine dağıtma
+title: Azure Container Instances modelleri dağıtma
 titleSuffix: Azure Machine Learning
-description: Azure Kapsayıcı Örnekleri'ni kullanarak Azure Machine Learning modellerinizi bir web hizmeti olarak nasıl dağıtılayarak dağıtılamayı öğrenin.
+description: Azure Container Instances kullanarak Azure Machine Learning modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,43 +11,43 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475464"
 ---
-# <a name="deploy-a-model-to-azure-container-instances"></a>Azure Kapsayıcı Örneklerine bir model dağıtma
+# <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Kapsayıcı Örnekleri'nde (ACI) bir modeli web hizmeti olarak dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğruysa Azure Kapsayıcı Örnekleri'ni kullanın:
+Azure Container Instances (ACI) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğru ise Azure Container Instances kullanın:
 
-- Modelinizi hızla dağıtmanız ve doğrulamanız gerekir. ACI kapsayıcılarını önceden oluşturmanız gerekmez. Dağıtım işleminin bir parçası olarak oluşturulurlar.
-- Geliştirilmekte olan bir modeli test emlıyorsun. 
+- Modelinizi hızlıca dağıtmanız ve doğrulamanız gerekir. Zaman içinde acı kapsayıcıları oluşturmanız gerekmez. Dağıtım sürecinin bir parçası olarak oluşturulur.
+- Geliştirme aşamasındaki bir modeli test edersiniz. 
 
-ACI için kota ve bölge kullanılabilirliği hakkında bilgi için Azure Kapsayıcı Örnekleri makalesi [için Kotalar ve bölge kullanılabilirliği](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) makalesine bakın.
+ACI 'nin kota ve bölge kullanılabilirliği hakkında daha fazla bilgi için bkz. [Azure Container Instances Için kotalar ve bölge kullanılabilirliği](https://docs.microsoft.com/azure/container-instances/container-instances-quotas) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Machine Learning çalışma alanı. Daha fazla bilgi için [bkz.](how-to-manage-workspace.md)
+- Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
-- Çalışma alanınızda kayıtlı bir makine öğrenme modeli. Kayıtlı bir modeliniz yoksa, [modelleri nasıl ve nerede dağıtacağınızı](how-to-deploy-and-where.md)öğrenin.
+- Bir Machine Learning modeli, çalışma alanınıza kaydedildi. Kayıtlı bir modeliniz yoksa, bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
-- [Machine Learning hizmeti için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), Azure Machine Learning Python [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
+- [Machine Learning hizmeti Için Azure CLI uzantısı](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)veya [Azure Machine Learning Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md).
 
-- Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlı olduğunu varsayar:
+- Bu makaledeki __Python__ kod parçacıkları aşağıdaki değişkenlerin ayarlandığı varsayılır:
 
-    * `ws`- Çalışma alanınıza ayarlayın.
-    * `model`- Kayıtlı modelinize ayarlayın.
-    * `inference_config`- Modelin çıkarım yapılandırmasına ayarlayın.
+    * `ws`-Çalışma alanınıza ayarlayın.
+    * `model`-Kayıtlı modelinize ayarlanır.
+    * `inference_config`-Modelin çıkarım yapılandırmasına ayarlayın.
 
-    Bu değişkenleri ayarlama hakkında daha fazla bilgi [için, modelleri nasıl ve nerede dağıtacağınız](how-to-deploy-and-where.md)hakkında bilgi alabiliyorum.
+    Bu değişkenleri ayarlama hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
-- Bu makaledeki __CLI__ parçacıkları bir `inferenceconfig.json` belge oluşturduğunuzu varsayar. Bu belgeyi oluşturma hakkında daha fazla bilgi [için, modelleri nasıl ve nerede dağıtacağınız](how-to-deploy-and-where.md)hakkında bilgi alabiliyorum.
+- Bu makaledeki __CLI__ kod parçacıkları bir `inferenceconfig.json` belge oluşturduğunuzu varsayar. Bu belgeyi oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve nereye dağıtılacağı](how-to-deploy-and-where.md).
 
 ## <a name="deploy-to-aci"></a>ACI'ye dağıtma
 
-Bir modeli Azure Kapsayıcı Örneklerine dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__da ihtiyacınız vardır. Çıkarım yapılandırması oluşturma hakkında daha fazla bilgi [için, modelleri nasıl ve nerede dağıtacağınız](how-to-deploy-and-where.md)konusunda bakın.
+Azure Container Instances bir modeli dağıtmak için, gereken işlem kaynaklarını açıklayan bir __dağıtım yapılandırması__ oluşturun. Örneğin, çekirdek ve bellek sayısı. Ayrıca, modeli ve Web hizmetini barındırmak için gereken ortamı açıklayan bir __çıkarım yapılandırmasına__ihtiyacınız vardır. Çıkarım yapılandırmasını oluşturma hakkında daha fazla bilgi için bkz. [modellerin nasıl ve ne şekilde dağıtılacağı](how-to-deploy-and-where.md).
 
 ### <a name="using-the-sdk"></a>SDK’yı kullanarak
 
@@ -61,15 +61,15 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-Bu örnekte kullanılan sınıflar, yöntemler ve parametreler hakkında daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
+Bu örnekte kullanılan sınıflar, Yöntemler ve parametreler hakkında daha fazla bilgi için, aşağıdaki başvuru belgelerine bakın:
 
-* [AciWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
-* [Model.deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
-* [Webservice.wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
+* [AciWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)
+* [Model. deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
+* [WebService. wait_for_deployment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#wait-for-deployment-show-output-false-)
 
-### <a name="using-the-cli"></a>CLI'yi kullanma
+### <a name="using-the-cli"></a>CLı 'yi kullanma
 
-CLI kullanarak dağıtmak için aşağıdaki komutu kullanın. Kayıtlı `mymodel:1` modelin adı ve sürümüyle değiştirin. Bu `myservice` hizmeti vermek için adla değiştirin:
+CLı kullanarak dağıtmak için aşağıdaki komutu kullanın. Kayıt `mymodel:1` , kayıtlı modelin adı ve sürümü ile değiştirin. Bu `myservice` hizmete verilecek adla değiştirin:
 
 ```azurecli-interactive
 az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploymentconfig.json
@@ -77,14 +77,14 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-Daha fazla bilgi için [az ml modeli dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) referansına bakın. 
+Daha fazla bilgi için, [az ml model dağıtım](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) başvurusuna bakın. 
 
 ## <a name="using-vs-code"></a>VS Code'u kullanma
 
-[Vs Kodu ile modellerinizi dağıtın](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model)bakın.
+Bkz. [vs Code modellerinizi dağıtma](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model).
 
 > [!IMPORTANT]
-> Önceden test etmek için bir ACI kapsayıcı oluşturmanız gerekmez. ACI kapsayıcıları gerektiği gibi oluşturulur.
+> Önceden test etmek için bir ACI kapsayıcısı oluşturmanız gerekmez. ACI kapsayıcıları gerektiğinde oluşturulur.
 
 ## <a name="update-the-web-service"></a>Web hizmetini güncelleştirme
 
@@ -92,9 +92,9 @@ Daha fazla bilgi için [az ml modeli dağıtım](https://docs.microsoft.com/cli/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Docker görüntüsünü kullanarak bir model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Dağıtım sorun giderme](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın](how-to-secure-web-service.md)
-* [Web hizmeti olarak dağıtılan bir ML Modelini tüketin](how-to-consume-web-service.md)
-* [Azure Machine Learning modellerinizi Uygulama Öngörüleri ile izleyin](how-to-enable-app-insights.md)
-* [Üretimdeki modeller için veri toplama](how-to-enable-data-collection.md)
+* [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
+* [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
+* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
+* [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
+* [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

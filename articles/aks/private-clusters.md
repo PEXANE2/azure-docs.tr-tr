@@ -1,31 +1,31 @@
 ---
-title: Özel bir Azure Kubernetes Hizmet kümesi oluşturma
-description: Özel bir Azure Kubernetes Hizmeti (AKS) kümesini nasıl oluşturabilirsiniz öğrenin
+title: Özel bir Azure Kubernetes hizmet kümesi oluşturma
+description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğrenin
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
 ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398066"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes Hizmet kümesi oluşturma
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
-Özel bir kümede, denetim düzlemi veya API sunucusu, [RFC1918 - Özel Internetler için Adres Ayırma](https://tools.ietf.org/html/rfc1918) belgesinde tanımlanan dahili IP adreslerine sahiptir. Özel bir küme kullanarak, API sunucunuz la düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağda kalmasını sağlayabilirsiniz.
+Özel bir kümede, denetim düzlemi veya API sunucusu, [Özel Internetler belgesi Için RFC1918-Address ayırması](https://tools.ietf.org/html/rfc1918) içinde tanımlanan iç IP adreslerine sahiptir. Özel bir küme kullanarak, API sunucunuz ve düğüm havuzlarınız arasındaki ağ trafiğinin yalnızca özel ağ üzerinde kalmasını sağlayabilirsiniz.
 
-Denetim düzlemi veya API sunucusu, Azure Kubernetes Hizmeti (AKS) tarafından yönetilen bir Azure aboneliğindedir. Müşterinin küme veya düğüm havuzu müşterinin aboneliğindedir. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure Özel Bağlantı hizmeti][private-link-service] ve müşterinin AKS kümesinin alt ağında açıkta kalan özel bir bitiş noktası aracılığıyla birbirleriyle iletişim kurabilir.
+Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından yönetilen bir Azure aboneliğinde bulunur. Müşterinin kümesi veya düğüm havuzu müşterinin aboneliğine ait. Sunucu ve küme veya düğüm havuzu, API sunucusu sanal ağındaki [Azure özel bağlantı hizmeti][private-link-service] ve müşterinin aks kümesinin alt ağında kullanıma sunulan özel bir uç nokta aracılığıyla birbirleriyle iletişim kurabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure CLI sürüm 2.2.0 veya sonrası
+* Azure CLı sürüm 2.2.0 veya üzeri
 
-## <a name="create-a-private-aks-cluster"></a>Özel BIR AKS kümesi oluşturma
+## <a name="create-a-private-aks-cluster"></a>Özel AKS kümesi oluşturma
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Bir kaynak grubu oluşturun veya AKS kümeniz için varolan bir kaynak grubu kullanın.
+AKS kümeniz için bir kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın.
 
 ```azurecli-interactive
 az group create -l westus -n MyResourceGroup
@@ -36,7 +36,7 @@ az group create -l westus -n MyResourceGroup
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-Nerede *--enable-private-cluster* özel bir küme için zorunlu bir bayraktır. 
+Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak. 
 
 ### <a name="advanced-networking"></a>Gelişmiş ağ  
 
@@ -52,63 +52,63 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-Nerede *--enable-private-cluster* özel bir küme için zorunlu bir bayraktır. 
+Burada *--Enable-Private-Cluster* , özel bir küme için zorunlu bir bayrak. 
 
 > [!NOTE]
-> Docker köprüsü adresi CIDR (172.17.0.1/16) alt ağı CIDR ile çakışıyorsa, Docker köprü adresini uygun şekilde değiştirin.
+> Docker Köprüsü CıDR (172.17.0.1/16) alt ağ CıDR ile çakışıyor, Docker köprü adresini uygun şekilde değiştirin.
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Özel kümeye bağlanma seçenekleri
 
-API sunucu bitiş noktasının ortak IP adresi yoktur. API sunucusunu yönetmek için AKS kümesinin Azure Sanal Ağı'na (VNet) erişimi olan bir VM kullanmanız gerekir. Özel kümeye ağ bağlantısı oluşturmak için çeşitli seçenekler vardır.
+API sunucusu uç noktasının genel IP adresi yok. API sunucusunu yönetmek için, AKS kümesinin Azure sanal ağına (VNet) erişimi olan bir VM kullanmanız gerekir. Özel kümeye Ağ bağlantısı kurmak için çeşitli seçenekler vardır.
 
-* AKS kümesiyle aynı Azure Sanal Ağ'da (VNet) bir VM oluşturun.
-* Ayrı bir ağda VM kullanın ve [Sanal ağ eşlemi][virtual-network-peering]ayarlayın.  Bu seçenek hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
-* Ekspres [Rota veya VPN][express-route-or-VPN] bağlantısı kullanın.
+* AKS kümesiyle aynı Azure sanal ağında (VNet) bir VM oluşturun.
+* Ayrı bir ağda bir VM kullanın ve [sanal ağ eşlemesi][virtual-network-peering]ayarlayın.  Bu seçenek hakkında daha fazla bilgi için aşağıdaki bölüme bakın.
+* Bir [Express Route veya VPN][express-route-or-VPN] bağlantısı kullanın.
 
-AKS kümesiyle aynı VNET'te VM oluşturmak en kolay seçenektir.  Express Route ve VPN'ler maliyet ekler ve ek ağ karmaşıklığı gerektirir.  Sanal ağ eşleme, çakışan aralıklar olmadığından emin olmak için ağ CIDR aralıklarınızı planlamanızı gerektirir.
+AKS kümesiyle aynı VNET 'te VM oluşturma en kolay seçenektir.  Express Route ve VPN 'Ler maliyet ekler ve ek ağ karmaşıklığı gerektirir.  Sanal ağ eşlemesi, çakışan aralıklar bulunmadığından emin olmak için ağ CıDR aralıklarını planlamanız gerekir.
 
 ## <a name="virtual-network-peering"></a>Sanal ağ eşleme
 
-Belirtildiği gibi, VNet eşleme özel kümenize erişmek için bir yoldur. VNet eşlemi kullanmak için sanal ağ ve özel DNS bölgesi arasında bir bağlantı kurmanız gerekir.
+Belirtildiği gibi, VNet eşlemesi özel kümenize erişmenin bir yoludur. VNet eşlemesini kullanmak için sanal ağ ile özel DNS bölgesi arasında bir bağlantı ayarlamanız gerekir.
     
-1. Azure portalındaki MC_* kaynak grubuna gidin.  
+1. Azure portal MC_ * kaynak grubuna gidin.  
 2. Özel DNS bölgesini seçin.   
-3. Sol bölmede **Sanal ağ** bağlantısını seçin.  
-4. Özel DNS bölgesine VM'nin sanal ağını eklemek için yeni bir bağlantı oluşturun. DNS bölge bağlantısının kullanılabilir olması birkaç dakika sürer.  
-5. Azure portalındaki MC_* kaynak grubuna geri dön.  
-6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-vnet şeklindedir.\**  
-7. Sol **bölmede, Eşler'i**seçin.  
-8. **Ekle,** VM'nin sanal ağını ekleyin ve ardından eşlemi oluşturun'u seçin.  
-9. VM'nin bulunduğu sanal ağa gidin, **Peerings'i**seçin, AKS sanal ağını seçin ve ardından eşlemeoluşturun. Adres AKS sanal ağında ve VM'nin sanal ağ çakışmasında aralıkları varsa, bakan başarısız olur. Daha fazla bilgi için [Sanal ağ eşleme'ye][virtual-network-peering]bakın.
+3. Sol bölmede **sanal ağ** bağlantısını seçin.  
+4. VM 'nin sanal ağını özel DNS bölgesine eklemek için yeni bir bağlantı oluşturun. DNS bölgesi bağlantısının kullanılabilir olması birkaç dakika sürer.  
+5. Azure portal MC_ * kaynak grubuna geri dönün.  
+6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET-\** biçimindedir.  
+7. Sol bölmede, eşlemeler ' i **seçin.**  
+8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
+9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz. [sanal ağ eşlemesi][virtual-network-peering].
 
-## <a name="hub-and-spoke-with-custom-dns"></a>Hub ve özel DNS ile konuştu
+## <a name="hub-and-spoke-with-custom-dns"></a>Özel DNS ile hub ve bağlı bileşen
 
-[Hub ve kollu mimariler](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) genellikle Azure'daki ağları dağıtmak için kullanılır. Bu dağıtımların çoğunda, konuşan VNet'teki DNS ayarları, şirket içi ve Azure tabanlı DNS çözünürlüğüne izin verecek şekilde merkezi bir DNS iletmesine başvurmak üzere yapılandırılmıştır. Böyle bir ağ ortamına bir AKS kümesi dağıtılırken, dikkate alınması gereken bazı özel hususlar vardır.
+[Hub ve bağlı bileşen mimarileri](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) genellikle Azure 'da ağları dağıtmak için kullanılır. Bu dağıtımların çoğunda, bağlı olan sanal ağlarda DNS ayarları, şirket içi ve Azure tabanlı DNS çözümüne izin vermek üzere merkezi bir DNS ileticisine başvuracak şekilde yapılandırılmıştır. Bir AKS kümesini böyle bir ağ ortamına dağıttığınızda, hesaba alınması gereken bazı özel noktalar vardır.
 
-![Özel küme hub'ı ve spoke](media/private-clusters/aks-private-hub-spoke.png)
+![Özel küme merkezi ve bağlı bileşen](media/private-clusters/aks-private-hub-spoke.png)
 
-1. Varsayılan olarak, özel bir küme sağlandığında, küme yönetilen kaynak grubunda özel bir bitiş noktası (1) ve özel bir DNS bölgesi (2) oluşturulur. Küme, API sunucusuna iletişim için özel bitiş noktasının IP'sini çözmek için özel bölgede bir A kaydı kullanır.
+1. Varsayılan olarak, özel bir küme sağlandığında, küme yönetilen kaynak grubunda özel bir uç nokta (1) ve özel bir DNS bölgesi (2) oluşturulur. Küme, API sunucusuyla iletişim kurmak üzere özel uç noktasının IP 'sini çözümlemek için özel bölgedeki bir kayıt kullanır.
 
-2. Özel DNS bölgesi yalnızca küme düğümlerinin bağlı olduğu VNet'e bağlıdır (3). Bu, özel bitiş noktasının yalnızca bağlı VNet'teki ana bilgisayarlar tarafından çözülebileceği anlamına gelir. VNet'te özel DNS'nin yapılandırılmadığını (varsayılan), bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözebilen DNS için 168.63.129.16 numaralı ana bilgisayar noktası olarak sorunsuz çalışır.
+2. Özel DNS bölgesi yalnızca küme düğümlerinin eklendiği sanal ağa bağlanır (3). Bu, Özel uç noktanın yalnızca bağlı VNet 'teki konaklarla çözümlenebileceği anlamına gelir. VNet üzerinde özel DNS yapılandırılmadığından (varsayılan) senaryolarda, bu, bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözümleyebilen DNS için 168.63.129.16 adresinde ana bilgisayar olarak sorun olmadan çalışmaktadır.
 
-3. Kümenizi içeren VNet'in özel DNS ayarlarına (4) sahip olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerini içeren VNet'e bağlı olmadığı sürece küme dağıtımı başarısız olur (5). Bu bağlantı, özel bölge küme sağlama sırasında oluşturulduktan sonra veya Azure İlkesi veya diğer olay tabanlı dağıtım mekanizmaları (örneğin, Azure Olay Ağıtve Azure İşlevleri) kullanılarak bölgenin oluşturulduğunun algılanması üzerine otomasyon yoluyla el ile oluşturulabilir.
+3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya Azure Ilkesi veya diğer olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölgenin oluşturulması algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
 
 ## <a name="dependencies"></a>Bağımlılıklar  
 
-* Özel Bağlantı hizmeti yalnızca Standart Azure Yük Dengeleyicisi'nde desteklenir. Temel Azure Yük Dengeleyicisi desteklenmez.  
-* Özel bir DNS sunucusu kullanmak için Azure DNS IP 168.63.129.16'yı özel DNS sunucusundaki yukarı Akım DNS sunucusu olarak ekleyin.
+* Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
+* Özel bir DNS sunucusu kullanmak için IP 168.63.129.16 Azure DNS özel DNS sunucusuna yukarı akış DNS sunucusu olarak ekleyin.
 
 ## <a name="limitations"></a>Sınırlamalar 
-* IP yetkili aralıkları özel api sunucu bitiş noktasına uygulanamaz, bunlar yalnızca genel API sunucusuna uygulanır
-* Kullanılabilirlik Bölgeleri şu anda belirli bölgeler için desteklenir, bu belgenin başlangıcına bakın 
-* [Azure Özel Bağlantı hizmeti sınırlamaları,][private-link-service] şu anda aynı sanal ağda desteklenmeyen özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti bitiş noktaları için geçerlidir.
-* Özel bir Azure sanal ağında özel Azure Kapsayıcı Örnekleri (ACI) döndürmek için özel kümedeki sanal düğümdesteği yok
-* Azure DevOps tümleştirmesi için özel kümelerle kutudan destek yok
-* Azure Kapsayıcı Kayıt Defteri'nin özel AKS ile çalışmasını sağlaması gereken müşteriler için, Konteyner Kayıt Defteri sanal ağının aracı kümesi sanal ağıyla birlikte bakılması gerekir.
+* IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
+* Kullanılabilirlik Alanları Şu anda belirli bölgelerde destekleniyor, bu belgenin başlangıcına bakın 
+* [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] , özel kümeler, Azure özel uç noktaları ve sanal ağ hizmeti uç noktaları için geçerlidir; bu, şu anda aynı sanal ağda desteklenmemektedir.
+* Özel bir kümede özel bir Azure sanal ağında özel Azure Container Instances (ACI) döndürme için sanal düğümler desteklenmez
+* Özel kümeler ile kutudan Azure DevOps tümleştirmesi desteği yok
+* Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
 * Azure Dev Spaces için geçerli destek yok
-* Varolan AKS kümelerini özel kümelere dönüştürmek için destek yok
-* Müşteri alt netindeki özel bitiş noktasının silmesi veya değiştirilmesi kümenin çalışmasını durdurur. 
-* Kapsayıcılar için Azure Monitor Canlı Veriler şu anda desteklenmez.
+* Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
+* Müşteri alt ağındaki özel uç noktasını silmek veya değiştirmek kümenin çalışmayı durdurmasına neden olur. 
+* Kapsayıcılar için Azure Izleyici canlı veriler şu anda desteklenmiyor.
 
 
 <!-- LINKS - internal -->

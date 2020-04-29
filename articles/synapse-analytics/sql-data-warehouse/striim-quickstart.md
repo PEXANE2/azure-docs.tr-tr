@@ -1,6 +1,6 @@
 ---
-title: Striim hızlı başlangıç
-description: Striim ve Azure SQL Veri Ambarı ile hızlı bir şekilde başlayın.
+title: Anlık ileti hızlı başlangıç
+description: Sorunsuz ve Azure SQL veri ambarı ile hızlı bir şekilde çalışmaya başlayın.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,57 +12,57 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e963d62df8d2c416726852ee3d46daf1cd22936e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349936"
 ---
-# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Striim Azure SQL DW Marketplace Teklif Yükleme Kılavuzu
+# <a name="striim-azure-sql-dw-marketplace-offering-install-guide"></a>Anlık ileti Azure SQL DW marketi teklif yüklemesi Kılavuzu
 
-Bu hızlı başlatma, zaten SQL Veri Ambarı'nın önceden varolan bir örneğine sahip olduğunuzu varsayar.
+Bu hızlı başlangıçta zaten SQL veri ambarı 'nın önceden var olan bir örneğine sahip olduğunuz varsayılır.
 
-Azure Marketi'nde Striim'i arayın ve SQL Veri Ambarına Veri Tümleştirmesi (Aşamalı) seçeneğini seçin 
+Azure Marketi 'nde çarpıcı anlık Ileti arayın ve SQL Data Warehouse 'a veri tümleştirme (hazırlandı) seçeneği için anlık ileti al seçeneğini belirleyin 
 
-![Striim'i yükle][install]
+![Anlık ileti al][install]
 
-Striim VM'yi belirtilen özelliklerle yapılandırArak Striim küme adını, parolasını ve yönetici parolasını belirtin
+Her şeye, bir anlık ileti kümesi adı, parola ve yönetici parolasını gösteren belirtilen özelliklerle çarpıcı anlık VM 'yi yapılandırın
 
-![Striim'i yapılandır][configure]
+![Çarpıcı anlık ileti yapılandırma][configure]
 
-Dağıtıldıktan sonra Azure \<portalındaki VM Adı> masternode'una tıklayın, Bağlan'ı tıklatın ve VM yerel hesabını kullanarak Giriş'i kopyalayın 
+Dağıtıldıktan sonra, Azure portal \<vm adı>-masternode öğesine tıklayın, Bağlan ' a tıklayın ve VM yerel hesabı 'Nı kullanarak oturum açma 'yı kopyalayın 
 
-![Striim'i SQL Veri Ambarına Bağla][connect]
+![SQL Data Warehouse 'a anlık ileti bağlama][connect]
 
-Sqljdbc42.jar'ı <https://www.microsoft.com/en-us/download/details.aspx?id=54671> yerel makinenize indirin. 
+Sqljdbc42. jar dosyasını <https://www.microsoft.com/en-us/download/details.aspx?id=54671> yerel makinenize indirin. 
 
-Komut satırı penceresini açın ve dizinleri JDBC jarını karşıdan yüklediğiniz yerle değiştirin. SCP jar dosyasını Striim VM'nize, adresi ve parolayı Azure portalından alın
+Bir komut satırı penceresi açın ve dizinleri, JDBC jar dosyasını indirdiğiniz yere değiştirin. SCP dosyasını, Azure portal adresini ve parolayı alarak, e-mesajlaşma sanal makinenize kaya
 
-![Jar dosyasını VM'nize kopyalayın][copy-jar]
+![Jar dosyasını sanal makinenize kopyalayın][copy-jar]
 
-Başka bir komut satırı penceresi açın veya Striim kümesine ssh için bir ssh yardımcı programı kullanın
+Başka bir komut satırı penceresi açın veya çarpıcı anlık ileti kümesine SSH için SSH yardımcı programını kullanın
 
 ![Kümeye SSH][ssh]
 
-JDBC jar dosyasını Striim'in lib dizinine taşımak ve sunucuyu başlatmak ve durdurmak için aşağıdaki komutları uygulayın.
+JDBC jar dosyasını İlerim 'in lib dizinine taşımak ve sunucuyu başlatıp durdurmak için aşağıdaki komutları yürütün.
 
    1. sudo su
-   2. cd /tmp
-   3. mv sqljdbc42.jar /opt/striim/lib
-   4. systemctl stop striim-düğüm
-   5. systemctl durdurmak striim-dbms
-   6. systemctl başlangıç striim-dbms
-   7. systemctl başlangıç striim-düğüm
+   2. CD/tmp
+   3. MV sqljdbc42. jar/seçenek/gün ım/lib
+   4. systemctl durdur ım-Node
+   5. systemctl durdur anlık ileti-DBMS
+   6. systemctl Başlat anlık ileti-DBMS
+   7. systemctl başlangıç anlık ileti-düğüm
 
-![Striim kümesini başlatın][start-striim]
+![Çarpıcı anlık ileti kümesini başlatma][start-striim]
 
-Şimdi, en sevdiğiniz tarayıcıyı \<açın ve DNS Adı>:9080 gidin
+Şimdi, en sevdiğiniz tarayıcıyı açın ve \<DNS adı> şuraya gidin: 9080
 
-![Giriş ekranına gidin][navigate]
+![Oturum açma ekranına git][navigate]
 
-Azure portalında ayarladığınız kullanıcı adı ve parolayla oturum açın ve başlamak için tercih ettiğiniz sihirbazı seçin veya sürükle ve bırakma Kullanıcı Arasını kullanmaya başlamak için Uygulamalar sayfasına gidin
+Azure portal, Kullanıcı adı ve parola ile oturum açın ve kullanmaya başlamak için tercih ettiğiniz Sihirbazı seçin ya da sürükle ve bırak Kullanıcı arabirimini kullanmaya başlamak için uygulamalar sayfasına gidin
 
-![Sunucu kimlik bilgileriyle giriş yapın][login]
+![Sunucu kimlik bilgileriyle oturum açma][login]
 
 
 

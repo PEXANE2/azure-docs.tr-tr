@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi SSS - veri toplama ve aracılar
-description: Tehditleri önlemenize, algılamanıza ve yanıt vermeye yardımcı olan Azure Güvenlik Merkezi için veri toplama, aracılar ve çalışma alanları hakkında sık sorulan sorular
+title: Azure Güvenlik Merkezi SSS-veri toplama ve aracılar
+description: Azure Güvenlik Merkezi için veri toplama, aracılar ve çalışma alanları hakkında sık sorulan sorular ve tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olan bir ürün
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,212 +14,212 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 0dbad1a94479430426dae47df7ca3a3ecd9dc980
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436191"
 ---
-# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS - Veri toplama, aracılar ve çalışma alanları ile ilgili sorular
+# <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>SSS-veri toplama, aracılar ve çalışma alanları hakkında sorular
 
-Güvenlik Merkezi, güvenlik açıklarını ve tehditlerini izlemek için Azure sanal makinelerinizden (VM'ler), Sanal makine ölçek kümeleri, IaaS kapsayıcıları ve Azure olmayan bilgisayarlardan (şirket içi makineler dahil) veri toplar. Veriler, makineden çeşitli güvenlikle ilgili yapılandırmaları ve olay günlüklerini okuyan ve verileri analiz için çalışma alanınıza kopyalayan Log Analytics aracısı kullanılarak toplanır.
+Güvenlik Merkezi, güvenlik açıklarını ve tehditleri izlemek için Azure sanal makinelerinizden (VM), sanal makine ölçek kümelerinden, IaaS kapsayıcılarından ve Azure olmayan bilgisayarlardan (Şirket içi makineler dahil) veri toplar. Veriler, makineden güvenlikle ilgili çeşitli yapılandırma ve olay günlüklerini okuyan ve analiz için verileri çalışma alanınıza kopyalayan Log Analytics Aracı kullanılarak toplanır.
 
 
-## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan çalışma alanlarındaki Azure Monitör günlükleri için faturalandırıldım mı?
+## <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan çalışma alanlarında Azure Izleyici günlükleri için faturalandırılırım mı?
 
-Hayır. Güvenlik Merkezi tarafından oluşturulan çalışma alanları, düğüm faturalama başına Azure Monitor günlükleri için yapılandırılırken, Azure Monitor günlük ücretlerine tabi değildir. Güvenlik Merkezi faturalandırması her zaman Güvenlik Merkezi güvenlik politikanıza ve bir çalışma alanına yüklenen çözümleri temel adatır:
+Hayır. Güvenlik Merkezi tarafından oluşturulan ve düğüm başına Azure Izleyici günlükleri için yapılandırılmış çalışma alanları Azure Izleyici günlükleri ücretlerine tabi değildir. Güvenlik Merkezi 'nin faturalandırması her zaman Güvenlik Merkezi güvenlik ilkenize ve bir çalışma alanına yüklenmiş çözümlere göre belirlenir:
 
-- **Ücretsiz katman** – Security Center varsayılan çalışma alanında 'SecurityCenterFree' çözümsağlar. Ücretsiz katman için faturalandırılmazsınız.
+- **Ücretsiz katman** : Güvenlik Merkezi, varsayılan çalışma alanındaki ' SecurityCenterFree ' çözümünü sunar. Ücretsiz katman için faturalandırılmaz.
 
-- **Standart katman** – Güvenlik Merkezi varsayılan çalışma alanında 'Güvenlik' çözüme sahiptir.
+- **Standart katman** : Güvenlik Merkezi, varsayılan çalışma alanındaki ' Güvenlik ' çözümüne izin vermez.
 
-Fiyatlandırma hakkında daha fazla bilgi için [Güvenlik Merkezi fiyatlandırması'na](https://azure.microsoft.com/pricing/details/security-center/)bakın.
+Fiyatlandırma hakkında daha fazla bilgi için bkz. [Güvenlik Merkezi fiyatlandırması](https://azure.microsoft.com/pricing/details/security-center/).
 
 > [!NOTE]
-> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının günlük analizi fiyatlandırma katmanı Güvenlik Merkezi faturalandırmasını etkilemez.
+> Güvenlik Merkezi tarafından oluşturulan çalışma alanlarının Log Analytics fiyatlandırma katmanı, güvenlik merkezi faturalandırmasını etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Log Analytics aracısı yüklemesinin otomatik olarak sağlanması için VM'yi nitelendiren nedir?
+## <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-log-analytics-agent-installation"></a>Log Analytics Aracısı yüklemesinin otomatik olarak sağlanması için bir VM nitelendirir mi?
 
-Windows veya Linux IaaS VM'ler şunları göz etmek durumunda geçerli
+Windows veya Linux IaaS VM 'Leri şu durumlarda niteler:
 
-- Log Analytics aracı uzantısı şu anda VM'de yüklü değil.
-- VM çalışıyor.
-- Windows veya Linux [Azure Sanal Makine Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) yüklenir.
-- VM, web uygulama güvenlik duvarı veya yeni nesil güvenlik duvarı gibi bir cihaz olarak kullanılmaz.
+- Log Analytics Aracısı uzantısı Şu anda VM 'de yüklü değil.
+- VM çalışıyor durumunda.
+- Windows veya Linux [Azure sanal makine Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) yüklendi.
+- VM, Web uygulaması güvenlik duvarı veya yeni nesil güvenlik duvarı gibi bir gereç olarak kullanılmaz.
 
 
 ## <a name="can-i-delete-the-default-workspaces-created-by-security-center"></a>Güvenlik Merkezi tarafından oluşturulan varsayılan çalışma alanlarını silebilir miyim?
 
-**Varsayılan çalışma alanının silmesi önerilmez.** Güvenlik Merkezi, Sanal M'lerinizdeki güvenlik verilerini depolamak için varsayılan çalışma alanlarını kullanır. Bir çalışma alanını silerseniz, Güvenlik Merkezi bu verileri toplayamaz ve bazı güvenlik önerileri ve uyarıları kullanılamaz.
+**Varsayılan çalışma alanını silme önerilmez.** Güvenlik Merkezi, sanal makinelerinizden güvenlik verilerini depolamak için varsayılan çalışma alanlarını kullanır. Bir çalışma alanını silerseniz, güvenlik merkezi bu verileri toplayamıyor ve bazı güvenlik önerileri ve uyarılar kullanılamıyor.
 
-Kurtarmak için, silinen çalışma alanına bağlı VM'lerde Log Analytics aracısını kaldırın. Güvenlik Merkezi aracıyı yeniden yükler ve yeni varsayılan çalışma alanları oluşturur.
+Kurtarmak için, silinen çalışma alanına bağlı olan VM 'lerde Log Analytics aracısını kaldırın. Güvenlik Merkezi aracıyı yeniden yükler ve yeni varsayılan çalışma alanları oluşturur.
 
-## <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>Varolan Log Analytics çalışma alanımı nasıl kullanabilirim?
+## <a name="how-can-i-use-my-existing-log-analytics-workspace"></a>Mevcut Log Analytics çalışma alanım 'ı nasıl kullanabilirim?
 
-Security Center tarafından toplanan verileri depolamak için varolan bir Log Analytics çalışma alanını seçebilirsiniz. Mevcut Log Analytics çalışma alanınızı kullanmak için:
+Güvenlik Merkezi tarafından toplanan verileri depolamak için mevcut bir Log Analytics çalışma alanı seçebilirsiniz. Mevcut Log Analytics çalışma alanınızı kullanmak için:
 
-- Çalışma alanı, seçtiğiniz Azure aboneliğiyle ilişkilendirilmelidir.
-- En azından çalışma alanına erişmek için izinleri okumuş olmalısınız.
+- Çalışma alanının seçtiğiniz Azure aboneliğiniz ile ilişkilendirilmesi gerekir.
+- En azından, çalışma alanına erişmek için okuma izninizin olması gerekir.
 
-Varolan bir Log Analytics çalışma alanını seçmek için:
+Mevcut bir Log Analytics çalışma alanını seçmek için:
 
-1. **Güvenlik ilkesi altında – Veri Toplama**, başka bir çalışma alanı **kullan'ı**seçin.
+1. **Güvenlik ilkesi – veri koleksiyonu**altında **başka bir çalışma alanı kullan**' ı seçin.
 
-    ![Başka bir çalışma alanı kullanma][4]
+    ![Başka bir çalışma alanı kullan][4]
 
 1. Açılan menüden, toplanan verileri depolamak için bir çalışma alanı seçin.
 
     > [!NOTE]
-    > Aşağı çekme menüsünde yalnızca Azure aboneliğinize erişebildiğiniz ve bu abonelikte bulunan çalışma alanları gösterilir.
+    > Aşağı açılan menüde, yalnızca erişiminiz olan ve Azure aboneliğinizde bulunan çalışma alanları gösterilir.
 
-1. **Kaydet'i**seçin. İzlenen VM'leri yeniden yapılandırmak isteyip istineceğiniz sorulur.
+1. **Kaydet**’i seçin. İzlenen VM 'Leri yeniden yapılandırmak isteyip istemediğiniz sorulur.
 
-    - Yeni çalışma alanı ayarlarının yalnızca **yeni VM'lere uygulanmasını**istiyorsanız **Hayır'ı** seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics aracısını yüklememiş yeni keşfedilen VM'ler.
-    - Yeni çalışma alanı ayarlarının tüm **VM'lere uygulanmasını**istiyorsanız **Evet'i** seçin. Ayrıca, güvenlik merkezi oluşturulan çalışma alanına bağlı her VM, yeni hedef çalışma alanına yeniden bağlanır.
+    - Yeni çalışma alanı ayarlarının **yalnızca yeni VM 'lere uygulanmasını**istiyorsanız **Hayır** ' ı seçin. Yeni çalışma alanı ayarları yalnızca yeni aracı yüklemeleri için geçerlidir; Log Analytics Aracısı yüklü olmayan yeni bulunan VM 'Ler.
+    - Yeni çalışma alanı ayarlarının **Tüm VM 'lere uygulanmasını**istiyorsanız **Evet** ' i seçin. Ayrıca, bir güvenlik merkezi tarafından oluşturulan çalışma alanına bağlı her VM yeni hedef çalışma alanına yeniden bağlanır.
 
     > [!NOTE]
-    > **Evet'i**seçerseniz, tüm VM'ler yeni hedef çalışma alanına yeniden bağlanana kadar Güvenlik Merkezi tarafından oluşturulan çalışma alanlarını silmeyin. Çalışma alanı çok erken silinirse bu işlem başarısız olur.
+    > **Evet**' i seçerseniz, tüm VM 'ler yeni hedef çalışma alanına yeniden bağlanana kadar Güvenlik Merkezi tarafından oluşturulan çalışma alanlarını silmeyin. Çalışma alanı çok erken silinirse bu işlem başarısız olur.
 
-    - İşlemi iptal etmek için **İptal**et'i seçin.
+    - İşlemi iptal etmek için **Iptal 'i**seçin.
 
-## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Log Analytics aracısı VM'de uzantı olarak zaten yüklüyse ne olur?<a name="mmaextensioninstalled"></a>
+## <a name="what-if-the-log-analytics-agent-was-already-installed-as-an-extension-on-the-vm"></a>Log Analytics Aracısı VM üzerinde zaten bir uzantı olarak yüklendiyse ne olacak?<a name="mmaextensioninstalled"></a>
 
-İzleme Aracısı uzantı olarak yüklendiğinde, uzantı yapılandırması raporlamanın yalnızca tek bir çalışma alanına yapılmasına olanak tanır. Güvenlik Merkezi, kullanıcı çalışma alanlarına varolan bağlantıları geçersiz kılmaz. Güvenlik Merkezi, "Security" veya "SecurityCenterFree" çözümyüklemesi koşuluyla, zaten bağlı olan bir çalışma alanında bir VM'den gelen güvenlik verilerini depolar. Güvenlik Merkezi, bu işlemde uzantı sürümünü en son sürüme yükseltebilir.
+Izleme Aracısı bir uzantı olarak yüklendiğinde, uzantı yapılandırması raporlamaya yalnızca tek bir çalışma alanına izin verir. Güvenlik Merkezi, mevcut kullanıcı çalışma alanları bağlantılarını geçersiz kılmaz. Güvenlik Merkezi, "güvenlik" veya "SecurityCenterFree" çözümünün yüklenmiş olması şartıyla, zaten bağlı olan bir çalışma alanındaki bir VM 'den güvenlik verilerini depolar. Güvenlik Merkezi bu işlemdeki en son sürüme uzantı sürümünü yükseltebilir.
 
-Daha fazla bilgi için, [önceden varolan bir aracı yükleme durumlarında Otomatik sağlama](security-center-enable-data-collection.md#preexisting)bölümüne bakın.
+Daha fazla bilgi için bkz. [önceden var olan aracı yüklemesi durumlarında otomatik sağlama](security-center-enable-data-collection.md#preexisting).
 
 
 
-## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>Log Analytics aracısı doğrudan makineye yüklenirken uzantı (Direct Agent) olarak yüklenmezse ne olur?<a name="directagentinstalled"></a>
+## <a name="what-if-a-log-analytics-agent-is-directly-installed-on-the-machine-but-not-as-an-extension-direct-agent"></a>Bir Log Analytics Aracısı makineye doğrudan yüklenmişse ancak uzantı olarak (doğrudan aracı) yoksa ne olur?<a name="directagentinstalled"></a>
 
-Log Analytics aracısı doğrudan VM'ye yüklenirse (Azure uzantısı olarak değil), Güvenlik Merkezi Log Analytics aracısı uzantısını yükler ve Log Analytics aracısını en son sürüme yükseltebilir.
+Log Analytics Aracısı doğrudan VM 'ye (Azure uzantısı olarak değil) yüklenirse, güvenlik merkezi Log Analytics aracı uzantısını yükler ve Log Analytics aracısını en son sürüme yükseltecektir.
 
-Yüklü aracı, zaten yapılandırılmış çalışma alanına(lar) rapor vermeye devam eder ve ek olarak Güvenlik Merkezi'nde yapılandırılan çalışma alanına rapor verecektir (Çoklu homing Windows makinelerinde desteklenir).
+Yüklü aracı zaten yapılandırılmış çalışma alanına (ler) raporlama yapmaya devam edecektir ve ayrıca, güvenlik merkezi 'nde yapılandırılan çalışma alanına rapor eder (Windows makinelerde çoklu barındırma desteklenir).
 
-Yapılandırılan çalışma alanı bir kullanıcı çalışma alanıysa (Güvenlik Merkezi'nin varsayılan çalışma alanı değilse), Güvenlik Merkezi'nin bu çalışma alanına rapor veren VM'lerden ve bilgisayarlardan olayları işlemeye başlaması için "Security/"SecurityCenterFree" çözümlerini yüklemeniz gerekir.
+Yapılandırılmış çalışma alanı bir kullanıcı çalışma alanı ise (Güvenlik Merkezi 'nin varsayılan çalışma alanı değil), bu çalışma alanına raporlama yapan VM 'Ler ve bilgisayarlardan gelen olayları işlemeye başlamak için Güvenlik Merkezi 'nin "Security/" SecurityCenterFree "çözümünü yüklemeniz gerekir.
 
-Linux makineleri için, Agent multi-homing henüz desteklenmez - dolayısıyla, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama oluşmaz ve makinenin yapılandırması değiştirilmez.
+Linux makineler için, aracı çoklu barındırma henüz desteklenmiyor. bu nedenle, mevcut bir aracı yüklemesi algılanırsa, otomatik sağlama gerçekleşmez ve makinenin yapılandırması değiştirilmez.
 
-Mevcut bir aracının algılanacağı 17 Mart 2019'dan önce Güvenlik Merkezi'ne giden aboneliklerde mevcut makineler için Log Analytics aracı sıyüklenmez ve makine etkilenmez. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını çözmek için "Makinelerinizdeki izleme aracısı sağlık sorunlarını çöz" önerisine bakın
+Aboneliklerdeki mevcut makineler için eklendi Mart 17 2019 ' den önce güvenlik merkezi 'ne, mevcut bir aracı algılandığında, Log Analytics Aracısı uzantısı yüklenmez ve makine etkilenmeyecektir. Bu makineler için, bu makinelerdeki aracı yükleme sorunlarını gidermek için "makinelerinizdeki izleme Aracısı sistem durumu sorunlarını çözme" önerisine bakın
 
-Daha fazla bilgi için, bir sonraki bölüme bakın [Bir Sistem Merkezi Operasyon Yöneticisi veya OMS doğrudan aracısı zaten VM](#scomomsinstalled) yüklü yse ne olur?
+Daha fazla bilgi için, [VM 'imde System Center Operations Manager veya OMS doğrudan Aracısı zaten yüklüyse](#scomomsinstalled) , sonraki bölüme bakın.
 
-## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>VM'me zaten bir Sistem Merkezi Operasyon Yöneticisi aracısı yüklenmişse ne olur?<a name="scomomsinstalled"></a>
+## <a name="what-if-a-system-center-operations-manager-agent-is-already-installed-on-my-vm"></a>System Center Operations Manager Aracısı VM 'imde zaten yüklüyse ne olur?<a name="scomomsinstalled"></a>
 
-Güvenlik merkezi, Log Analytics aracıuzantısını mevcut System Center Operations Manager aracısına yan yana yükler. Varolan aracı, Sistem Merkezi Operasyon Yöneticisi sunucusuna normal olarak rapor vermeye devam eder. Operations Manager aracısı ve Log Analytics aracısının, bu işlem sırasında en son sürüme güncellenecek olan ortak çalışma zamanı kitaplıklarını paylaştığını unutmayın. Not - Operations Manager aracısının 2012 sürümü yüklenirse, otomatik sağlamayı açmayın (Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik yetenekleri kaybedilebilir).
+Güvenlik Merkezi, Log Analytics aracı uzantısını mevcut System Center Operations Manager aracısına yan yana yükleyecek. Mevcut Aracı, System Center Operations Manager sunucusuna normal olarak rapor etmeye devam edecektir. Operations Manager Aracısı ve Log Analytics aracısının, bu işlem sırasında en son sürüme güncellenecek ortak çalışma zamanı kitaplıklarını paylaştığından emin olun. Not-Operations Manager aracısının 2012 sürümü yüklüyse otomatik sağlamayı etkinleştirmeyin (Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik özellikleri kaybolabilir).
 
 
 ## <a name="what-is-the-impact-of-removing-these-extensions"></a>Bu uzantıları kaldırmanın etkisi nedir?
 
-Microsoft İzleme Uzantısı'nı kaldırırsanız, Güvenlik Merkezi VM'den güvenlik verileri toplamıyor ve bazı güvenlik önerileri ve uyarıları kullanılamıyor. 24 saat içinde, Güvenlik Merkezi VM uzantısı eksik olduğunu belirler ve uzantısı yeniden yükler.
+Microsoft Monitoring uzantısını kaldırırsanız, güvenlik merkezi VM 'den güvenlik verileri toplayamaz ve bazı güvenlik önerileri ve uyarılar kullanılamaz. Güvenlik Merkezi, 24 saat içinde, VM 'nin uzantının eksik olduğunu belirler ve uzantıyı yeniden yükler.
 
 
-## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Otomatik aracı yüklemesini ve çalışma alanı oluşturmayı nasıl durduracağım?
+## <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>Nasıl yaparım? otomatik aracı yüklemesi ve çalışma alanı oluşturma durdurulsun mu?
 
-Güvenlik ilkesinde abonelikleriniz için otomatik sağlamayı kapatabilirsiniz, ancak bu önerilmez. Otomatik sağlamanın kapatılıyor, Güvenlik Merkezi önerilerini ve uyarılarını sınırlar. Otomatik sağlamayı devre dışı kalmak için:
+Güvenlik ilkesinde abonelikleriniz için otomatik sağlamayı devre dışı bırakabilirsiniz, ancak bu önerilmez. Otomatik sağlama devre dışı bırakmak, güvenlik merkezi önerilerini ve uyarılarını kısıtlar. Otomatik sağlamayı devre dışı bırakmak için:
 
-1. Aboneliğiniz Standart katman için yapılandırıldıysa, bu aboneliğin güvenlik ilkesini açın ve **Ücretsiz** katmanı seçin.
+1. Aboneliğiniz standart katman için yapılandırılmışsa, bu abonelik için güvenlik ilkesini açın ve **ücretsiz** katmanı seçin.
 
    ![Fiyatlandırma katmanı][1]
 
-1. Ardından, **Güvenlik ilkesini** - Veri toplama sayfasında **Kapat'ı** seçerek otomatik sağlamayı kapatın.
+1. Sonra, **güvenlik ilkesi – veri toplama** sayfasında **kapalı** ' yı seçerek otomatik sağlamayı devre dışı bırakın.
    ![Veri toplama][2]
 
 
-## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Otomatik aracı yüklemesini ve çalışma alanı oluşturmayı devre dışı bırakmalı mıyım?
+## <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>Otomatik aracı yüklemesi ve çalışma alanı oluşturmayı kabul etmem gerekir mi?
 
 > [!NOTE]
-> Bölümleri gözden geçirdiğinizden emin olun Devre dışı [recommended steps when opting out](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning) [bırakmanın etkileri nelerdir?](#what-are-the-implications-of-opting-out-of-automatic-provisioning)
+> Bölümleri yeniden [kullanıma alma etkileri nelerdir?](#what-are-the-implications-of-opting-out-of-automatic-provisioning) ve otomatik sağlamayı devre dışı bırakmak isterseniz, [Önerilen adımları](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning) gözden geçirdiğinizden emin olun.
 
-Aşağıdakiler sizin için geçerliyse, otomatik sağlamayı devre dışı bırakmak isteyebilirsiniz:
+Aşağıdakiler geçerliyse otomatik sağlamayı devre dışı bırakmak isteyebilirsiniz:
 
-- Güvenlik Merkezi tarafından otomatik aracı yükleme tüm abonelik için geçerlidir. VM'lerin bir alt kümesine otomatik yükleme uygulayamazsınız. Log Analytics aracısıyla yüklenemeyen kritik VM'ler varsa, otomatik sağlamayı devre dışı bırakmanız gerekir.
-- Log Analytics aracısının yüklenmesi aracının sürümünü güncelleştirir. Bu, doğrudan bir aracı ve Sistem Merkezi Operasyon Yöneticisi aracısı için geçerlidir (ikincisinde, Operasyon Yöneticisi ve Log Analytics aracısı işlemsırasında güncellenecek olan ortak çalışma zamanı kitaplıklarını paylaşır). Yüklü Operations Manager aracısı sürüm 2012 ise ve yükseltilirse, Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik yetenekleri kaybedilebilir. Yüklü Operations Manager aracısı sürüm 2012 ise otomatik sağlama yı devre dışı bırakmayı düşünün.
-- Aboneliğin dışında özel bir çalışma alanınız (merkezi leştirilmiş bir çalışma alanı) varsa, otomatik sağlamayı devre dışı bırakmanız gerekir. Log Analytics aracısı uzantısını el ile yükleyebilir ve Güvenlik Merkezi bağlantıyı geçersiz kılmadan çalışma alanınızı bağlayabilirsiniz.
-- Abonelik başına birden çok çalışma alanı oluşturulmasını önlemek istiyorsanız ve abonelik içinde kendi özel çalışma alanınız varsa, iki seçeneğiniz vardır:
+- Güvenlik Merkezi tarafından otomatik aracı yüklemesi tüm abonelik için geçerlidir. Otomatik yüklemeyi VM 'lerin bir alt kümesine uygulayamazsınız. Log Analytics aracısıyla yüklenemeden kritik VM 'Ler varsa, otomatik sağlamayı devre dışı geçirmeniz gerekir.
+- Log Analytics Agent uzantısının yüklenmesi aracının sürümünü güncelleştirir. Bu, doğrudan aracı ve bir System Center Operations Manager Aracısı için geçerlidir (ikinci olarak, Operations Manager ve Log Analytics Aracısı, işlem içinde güncelleştirilecektir ortak çalışma zamanı kitaplıklarını paylaşır). Yüklü Operations Manager Aracısı sürüm 2012 ise ve yükseltildiyse, Operations Manager sunucusu da sürüm 2012 olduğunda yönetilebilirlik özellikleri kaybolabilir. Yüklü Operations Manager Aracısı sürüm 2012 ise otomatik sağlamayı tercih edin.
+- Abonelik dışında (Merkezi çalışma alanı) özel bir çalışma alanınız varsa, otomatik sağlamayı devre dışı geçirmeniz gerekir. Log Analytics Aracısı uzantısını el ile yükleyebilir ve bağlantıyı geçersiz kılarak Güvenlik Merkezi 'Ni kullanmadan çalışma alanınıza bağlayabilirsiniz.
+- Abonelik başına birden çok çalışma alanı oluşturulmasını önlemek istiyorsanız ve abonelik içinde kendi özel çalışma alanınız varsa iki seçeneğiniz vardır:
 
-   1. Otomatik sağlamayı devre dışı kullanabilirsiniz. Geçişten sonra, varsayılan çalışma alanı ayarlarını mevcut [Log Analytics çalışma alanımı nasıl kullanabilirim?'da](#how-can-i-use-my-existing-log-analytics-workspace) açıklandığı şekilde ayarlayın?
+   1. Otomatik sağlamayı devre dışı bırakabilirsiniz. Geçişten sonra, [var olan Log Analytics çalışma alanım 'ı nasıl kullanabilirim](#how-can-i-use-my-existing-log-analytics-workspace) bölümünde açıklandığı gibi varsayılan çalışma alanı ayarlarını ayarlayın.
 
-   1. Veya geçişin tamamlanmasına, Log Analytics aracısının VM'lere ve oluşturulan çalışma alanına bağlı VM'lere yüklenmesine izin verebilirsiniz. Ardından, varsayılan çalışma alanı ayarını, zaten yüklü olan aracıları yeniden yapılandırmayı seçerek kendi özel çalışma alanınızı seçin. Daha fazla bilgi için [bkz.](#how-can-i-use-my-existing-log-analytics-workspace)
-
-
-## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Otomatik sağlamadan vazgeçmenin sonuçları nelerdir?
-
-Geçiş tamamlandığında, Güvenlik Merkezi VM'den güvenlik verileri toplamıyor ve bazı güvenlik önerileri ve uyarıları kullanılamıyor. Devre dışı kalırsanız, Log Analytics aracısını el ile yükleyin. [Devre dışı kalırken önerilen adımlara](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)bakın.
+   1. Ya da geçişin tamamlanmasına, VM 'Lere yüklenecek Log Analytics aracısına ve oluşturulan çalışma alanına bağlı VM 'Lere izin verebilirsiniz. Daha sonra, zaten yüklü olan aracıları yeniden yapılandırmak için, varsayılan çalışma alanınızı ' de kabul edilmesiyle olarak ayarlayarak kendi özel çalışma alanınızı seçin. Daha fazla bilgi için bkz. [var olan Log Analytics çalışma alanım 'ı nasıl kullanabilirim?](#how-can-i-use-my-existing-log-analytics-workspace)
 
 
-## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Otomatik sağlamayı devre dışı bırakmak için önerilen adımlar nelerdir?
+## <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>Otomatik sağlamayı geri alma etkileri nelerdir?
 
-Güvenlik Merkezi'nin Sanal M'lerinizden güvenlik verileri toplayabilmesi ve öneriler ve uyarılar sunabilmesi için Log Analytics aracısı uzantısını el ile yükleyin. Yükleme kılavuzu için Windows VM veya [Linux VM için aracı yüklemesi](../virtual-machines/extensions/oms-linux.md) için aracı yüklemesi'ne bakın. [agent installation for Windows VM](../virtual-machines/extensions/oms-windows.md)
+Geçiş tamamlandığında, güvenlik merkezi VM 'den güvenlik verileri toplayabilir ve bazı güvenlik önerileri ve uyarılar kullanılamaz. Devre dışı bırakırsanız Log Analytics aracısını el ile yükleyebilirsiniz. [Çalışırken önerilen adımlara](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)bakın.
 
-Aracıyı varolan herhangi bir özel çalışma alanına veya Güvenlik Merkezi oluşturulan çalışma alanına bağlayabilirsiniz. Özel bir çalışma alanında 'Güvenlik' veya 'SecurityCenterFree' çözümleri etkin değilse, bir çözüm uygulamanız gerekir. Başvurmak için özel çalışma alanını veya aboneliği seçin ve **Güvenlik ilkesi – Fiyatlandırma katmanı** sayfası üzerinden bir fiyatlandırma katmanı uygulayın.
+
+## <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>Otomatik sağlamayı geri yüklerken önerilen adımlar nelerdir?
+
+Güvenlik Merkezi 'nin sanal makinelerinizden güvenlik verilerini toplayabilmesi ve öneriler ve uyarılar sağlaması için Log Analytics Aracısı uzantısını el ile yükleyebilirsiniz. Yükleme ile ilgili yönergeler için bkz. [WINDOWS VM için aracı yükleme](../virtual-machines/extensions/oms-windows.md) veya [Linux sanal makinesi için aracı yükleme](../virtual-machines/extensions/oms-linux.md) .
+
+Aracıyı var olan herhangi bir özel çalışma alanına veya Güvenlik Merkezi tarafından oluşturulan çalışma alanına bağlayabilirsiniz. Özel bir çalışma alanında ' Security ' veya ' SecurityCenterFree ' çözümleri etkinleştirilmemişse, bir çözüm uygulamanız gerekir. Uygulamak için, özel çalışma alanı veya aboneliği seçin ve **güvenlik ilkesi – fiyatlandırma katmanı** sayfası aracılığıyla bir fiyatlandırma katmanı uygulayın.
 
    ![Fiyatlandırma katmanı][1]
 
-Güvenlik Merkezi, seçili fiyatlandırma katmanını temel alan çalışma alanında doğru çözümü etkinleştirecektir.
+Güvenlik Merkezi, seçili fiyatlandırma katmanına göre çalışma alanında doğru çözümü etkinleştirir.
 
 
-## <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>Güvenlik Merkezi tarafından yüklenen OMS uzantılarını nasıl kaldırırım?<a name="remove-oms"></a>
+## <a name="how-do-i-remove-oms-extensions-installed-by-security-center"></a>Güvenlik Merkezi tarafından yüklenen OMS uzantıları Nasıl yaparım? kaldırılsın mı?<a name="remove-oms"></a>
 
-Log Analytics aracısını el ile kaldırabilirsiniz. Güvenlik Merkezi önerilerini ve uyarılarını sınırlamadıkça bu önerilmez.
+Log Analytics aracısını el ile kaldırabilirsiniz. Bu, güvenlik merkezi önerilerini ve uyarılarını sınırlandırdığından önerilmez.
 
 > [!NOTE]
-> Veri toplama etkinleştirilmişse, Güvenlik Merkezi aracıyı kaldırdıktan sonra yeniden yükler.  Aracıyı el ile kaldırmadan önce veri toplamayı devre dışı kaldırmanız gerekir. Bkz. Otomatik aracı yüklemesini ve çalışma alanı oluşturmayı nasıl durduracağım? veri toplama devre dışı bırakma talimatları için.
+> Veri toplama etkinleştirilirse Güvenlik Merkezi, aracıyı kaldırdıktan sonra yeniden yükler.  Aracıyı el ile kaldırmadan önce veri toplamayı devre dışı bırakmanız gerekir. Otomatik aracı yüklemesini ve çalışma alanı oluşturmayı durdurmak Nasıl yaparım? bakın. veri toplamayı devre dışı bırakma yönergeleri için.
 
 Aracıyı el ile kaldırmak için:
 
-1.    **Portalda, Log Analytics'i**açın.
+1.    Portalda **Log Analytics**açın.
 
-1.    Günlük Analitiği sayfasında bir çalışma alanı seçin:
+1.    Log Analytics sayfasında bir çalışma alanı seçin:
 
-1.    İzlemek istemediğiniz VM'leri seçin ve **Bağlantıyı Kesme'yi**seçin.
+1.    İzlemek istemediğiniz VM 'Leri seçin ve **bağlantıyı kes**' i seçin.
 
-   ![Aracıyı kaldırma][3]
+   ![Aracıyı Kaldırma][3]
 
 > [!NOTE]
-> Bir Linux VM'de zaten uzantılı olmayan bir OMS aracısı varsa, uzantıyı kaldırmak aracıyı da kaldırır ve yeniden yüklemeniz gerekir.
+> Bir Linux VM 'sinde zaten uzantı olmayan OMS Aracısı varsa, uzantının kaldırılması aracıyı de kaldırır ve yeniden yüklemeniz gerekir.
 
 
-## <a name="how-do-i-disable-data-collection"></a>Veri toplamayı nasıl devre dışı atarım?
+## <a name="how-do-i-disable-data-collection"></a>Veri toplamayı devre dışı Nasıl yaparım?.
 
-Otomatik sağlama varsayılan olarak kapalıdır. Güvenlik ilkesindeki bu ayarı kapatarak istediğiniz zaman kaynaklardan otomatik sağlamayı devre dışı bırakabilirsiniz. Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruması hakkında güvenlik uyarıları ve öneriler almak için otomatik sağlama önerilir.
+Otomatik sağlama varsayılan olarak kapalıdır. Bu ayarı güvenlik ilkesinde devre dışı bırakarak, her zaman kaynaklardan otomatik sağlamayı devre dışı bırakabilirsiniz. Sistem güncelleştirmeleri, işletim sistemi güvenlik açıkları ve uç nokta koruması hakkında güvenlik uyarıları ve öneriler almak için otomatik sağlama kesinlikle önerilir.
 
-Veri toplamayı devre dışı katmak için [Azure portalında oturum açın](https://portal.azure.com), **Gözat' ı**seçin, Güvenlik **Merkezi'ni**seçin ve **politikayı seçin.** Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin. Bir abonelik Güvenlik ilkesi seçtiğinizde **- Veri toplama** açılır. **Otomatik sağlama**altında, **Kapalı**seçin.
+Veri toplamayı devre dışı bırakmak için [Azure Portal oturum açın](https://portal.azure.com), **Araştır**' ı seçin, **Güvenlik Merkezi**' ni seçin ve **ilke Seç**' i seçin. Otomatik sağlamayı hangi abonelik için devre dışı bırakmak istediğinizi belirtin. Bir abonelik **güvenlik ilkesi seçtiğinizde, veri toplama** açılır. **Otomatik sağlama**altında **kapalı**' yı seçin.
 
 
-## <a name="how-do-i-enable-data-collection"></a>Veri toplamayı nasıl etkinleştirebilirim?
+## <a name="how-do-i-enable-data-collection"></a>Veri toplamayı etkinleştirmek Nasıl yaparım? mı?
 
-Güvenlik ilkesinde Azure aboneliğiniz için veri toplamayı etkinleştirebilirsiniz. Veri toplamayı etkinleştirmek için. [Azure portalında oturum açın,](https://portal.azure.com) **Gözat'ı**seçin, **Güvenlik Merkezi'ni**seçin ve **Güvenlik ilkesini**seçin. Otomatik sağlamayı etkinleştirmek istediğiniz aboneliği seçin. Bir abonelik Güvenlik ilkesi seçtiğinizde **- Veri toplama** açılır. **Otomatik sağlama**altında, **On'u**seçin.
+Azure aboneliğiniz için veri toplamayı güvenlik ilkesinde etkinleştirebilirsiniz. Veri toplamayı etkinleştirmek için. [Azure Portal oturum açın](https://portal.azure.com), **Araştır**' ı seçin, **Güvenlik Merkezi**' ni seçin ve **güvenlik ilkesi**' ni seçin. Otomatik sağlamayı etkinleştirmek istediğiniz aboneliği seçin. Bir abonelik **güvenlik ilkesi seçtiğinizde, veri toplama** açılır. **Otomatik sağlama**altında **Açık**' ı seçin.
 
 
 ## <a name="what-happens-when-data-collection-is-enabled"></a>Veri toplama etkinleştirildiğinde ne olur?
 
-Otomatik sağlama etkinleştirildiğinde, Güvenlik Merkezi Log Analytics aracısını desteklenen tüm Azure VM'lerinde ve oluşturulan yeni leri etkinleştirirken. Otomatik sağlama önerilir, ancak manuel aracı yükleme de mevcuttur. [Log Analytics aracı uzantısını nasıl yükleyin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)öğrenin. 
+Otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi, desteklenen tüm Azure VM 'lerde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar. Otomatik sağlama önerilir, ancak el ile aracı yüklemesi de kullanılabilir. [Log Analytics Aracısı uzantısını yüklemeyi öğrenin](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension). 
 
-Aracı, işlem oluşturma olayı 4688'i ve 4688 olayının içindeki *CommandLine* alanını etkinleştiriyor. VM'de oluşturulan yeni süreçler EventLog tarafından kaydedilir ve Güvenlik Merkezi'nin algılama hizmetleri tarafından izlenir. Her yeni işlem için kaydedilen ayrıntılar hakkında daha fazla bilgi [için, 4688'deki açıklama alanlarına](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields)bakın. Aracı ayrıca VM'de oluşturulan 4688 olayı toplar ve bunları arama da saklar.
+Aracı, işlem oluşturma olayı 4688 ve olay 4688 ' nin içindeki *commandLine* alanı ' na izin vermez. VM üzerinde oluşturulan yeni süreçler, olay günlüğü tarafından kaydedilir ve Güvenlik Merkezi 'nin algılama hizmetleri tarafından izlenir. Her yeni işlem için kaydedilen ayrıntılar hakkında daha fazla bilgi için bkz. [4688 içindeki açıklama alanları](https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventID=4688#fields). Aracı Ayrıca, VM 'de oluşturulan 4688 olayını toplar ve bunları arama halinde depolar.
 
-Aracı ayrıca [Uyarlanabilir Uygulama Denetimleri](security-center-adaptive-application.md)için veri toplama sağlar, Güvenlik Merkezi tüm uygulamalara izin vermek için Denetim modunda yerel bir AppLocker ilkesi yapılandırır. Bu ilke, AppLocker'ın daha sonra Güvenlik Merkezi tarafından toplanan ve yararlanılan olaylar oluşturmasına neden olur. Bu ilkenin, zaten yapılandırılmış bir AppLocker ilkesi nin bulunduğu makinelerde yapılandırılmadığını unutmayın. 
+Aracı, [Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md)için veri toplamayı da sağlar, Güvenlik Merkezi, tüm uygulamalara izin vermek için denetim modunda yerel bir AppLocker ilkesi yapılandırır. Bu ilke, AppLocker 'ın Güvenlik Merkezi tarafından toplanan ve yararlanılabilir olayları oluşturmasına neden olur. Bu ilkenin zaten yapılandırılmış bir AppLocker ilkesinin bulunduğu makinelerde yapılandırılmaması gerektiğini unutmayın. 
 
-Güvenlik Merkezi VM'de şüpheli bir etkinlik algıladığında, [güvenlik iletişim bilgileri](security-center-provide-security-contact-details.md) sağlanmışsa müşterie e-posta ile bildirilir. Güvenlik Merkezi'nin güvenlik uyarıları panosunda da bir uyarı görülebilir.
-
-
-## <a name="will-security-center-work-using-an-oms-gateway"></a>Güvenlik Merkezi Bir OMS ağ geçidi kullanarak çalışır mı?
-
-Evet. Azure Güvenlik Merkezi, Log Analytics aracısını kullanarak Azure VM'lerden ve sunuculardan veri toplamak için Azure Monitor'dan yararlanır.
-Verileri toplamak için her VM ve sunucunun HTTPS kullanarak Internet'e bağlanması gerekir. Bağlantı, proxy kullanarak veya [OMS Ağ Geçidi](../azure-monitor/platform/gateway.md)üzerinden doğrudan olabilir.
+Güvenlik Merkezi, VM 'de şüpheli etkinlik algıladığında, [güvenlik iletişim bilgileri](security-center-provide-security-contact-details.md) sağlanmışsa müşteri e-posta ile bildirilir. Güvenlik Merkezi 'nin güvenlik uyarıları panosunda bir uyarı da görünür.
 
 
-## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>İzleme Aracısı sunucularımın performansını etkiler mi?
+## <a name="will-security-center-work-using-an-oms-gateway"></a>Güvenlik Merkezi, bir OMS ağ geçidi kullanarak çalışacak mı?
 
-Aracı, nominal miktarda sistem kaynağı tüketir ve performans üzerinde çok az etkisi olmalıdır. Performans etkisi ve aracı ve uzantı hakkında daha fazla bilgi için [planlama ve operasyon kılavuzuna](security-center-planning-and-operations-guide.md#data-collection-and-storage)bakın.
+Evet. Azure Güvenlik Merkezi, Azure sanal makinelerinden ve sunuculardan veri toplamak için Log Analytics aracısını kullanarak Azure Izleyicisi 'ni kullanır.
+Verileri toplamak için, her VM ve sunucunun HTTPS kullanarak Internet 'e bağlanması gerekir. Bağlantı, bir proxy kullanılarak veya [OMS ağ geçidi](../azure-monitor/platform/gateway.md)aracılığıyla doğrudan olabilir.
+
+
+## <a name="does-the-monitoring-agent-impact-the-performance-of-my-servers"></a>Izleme Aracısı sunucularım performansını etkiler mi?
+
+Aracı nominal miktarda sistem kaynağı tüketir ve performansı çok az etkiler. Performans etkisi ve aracı ve uzantı hakkında daha fazla bilgi için bkz. [planlama ve işlemler Kılavuzu](security-center-planning-and-operations-guide.md#data-collection-and-storage).
 
 
 ## <a name="where-is-my-data-stored"></a>Verilerim nerede depolanır?
 
-Bu aracıdan toplanan veriler, aboneliğinizle ilişkili varolan bir Log Analytics çalışma alanında veya yeni bir çalışma alanında depolanır. Daha fazla bilgi için [Bkz. Veri Güvenliği.](security-center-data-security.md)
+Bu aracıdan toplanan veriler, aboneliğiniz veya yeni bir çalışma alanıyla ilişkili mevcut bir Log Analytics çalışma alanında depolanır. Daha fazla bilgi için bkz. [veri güvenliği](security-center-data-security.md).
 
 
 <!--Image references-->

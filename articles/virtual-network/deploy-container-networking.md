@@ -17,10 +17,10 @@ ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 704f08bc4a41eb52789f8f28675332892d72a500
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80475149"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Sanal Ağ kapsayıcı ağı arabirimi eklentisini dağıtma
@@ -92,13 +92,13 @@ Aşağıdaki JSON örneği, şu özelliklere sahip bir kümeye aittir:
 
 Eklentiyi bir Kubernetes kümesindeki tüm Azure sanal makinelerine yüklemek için aşağıdaki adımları izleyin:
 
-1. [Eklentiyi indirin ve kurun.](#download-and-install-the-plug-in)
+1. [Eklentiyi indirin ve yükleyin](#download-and-install-the-plug-in).
 2. Her sanal makinede pod IP adreslerinin atanacağı sanal ağ IP adresi havuzunu önceden ayırın. Her Azure sanal makinesinin ağ arabirimlerinde birincil sanal ağ özel IP adresi bulunur. Podlar için IP adresi havuzu aşağıdaki seçeneklerden biri kullanılarak sanal makina ağ arabirimine ikincil adresler (*ipconfigs*) olarak eklenir:
 
-   - **CLI**: [Azure CLI'yi kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [PowerShell kullanarak birden fazla IP adresi atama](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [Azure portalını kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Kaynak Yöneticisi şablonu**: [Şablonları kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI**: [Azure CLI kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell**: [PowerShell kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal**: [Azure Portal kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager şablonu**: [şablonları kullanarak birden çok IP adresi atama](virtual-network-multiple-ip-addresses-template.md)
 
    Sanal makinede kullanmayı beklediğiniz tüm podlar için yeterli IP adresi eklediğinizden emin olun.
 
@@ -118,7 +118,7 @@ Yukarıdaki adımları tamamladıktan sonra Kubernetes Aracı sanal makinelerind
 
 ## <a name="deploy-plug-in-for-docker-containers"></a>Eklentiyi Docker kapsayıcıları için dağıtma
 
-1. [Eklentiyi indirin ve kurun.](#download-and-install-the-plug-in)
+1. [Eklentiyi indirin ve yükleyin](#download-and-install-the-plug-in).
 2. Şu komutu kullanarak Docker kapsayıcılarını oluşturun:
 
    ```
@@ -157,10 +157,10 @@ CLI ağ yapılandırma dosyası, JSON biçiminde ifade edilir. Varsayılan konum
 
 #### <a name="settings-explanation"></a>Ayarların açıklaması
 
-- **cniVersion**: Azure Sanal Ağ CNI eklentileri [CNI spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)0.3.0 ve 0.3.1 sürümlerini destekler.
+- **Cniversion**: Azure sanal ağ CNI eklentileri, [CNI belirtiminin](https://github.com/containernetworking/cni/blob/master/SPEC.md)0.3.0 ve 0.3.1 sürümlerini destekler.
 - **name**: Ağın adıdır. Bu özellik herhangi bir benzersiz değer olarak ayarlanabilir.
 - **type**: Ağ eklentisinin adıdır. *azure-vnet* olarak ayarlanmıştır.
-- **mode**: Çalıştırma modudur. Bu alan isteğe bağlıdır. Yalnızca "bridge" modu desteklenir. Daha fazla bilgi için [operasyonel modlara](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md)bakın.
+- **mode**: Çalıştırma modudur. Bu alan isteğe bağlıdır. Yalnızca "bridge" modu desteklenir. Daha fazla bilgi için bkz. [işletimsel modlar](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md).
 - **bridge**: Kapsayıcıları sanal ağa bağlamak için kullanılacak köprünün adıdır. Bu alan isteğe bağlıdır. Belirtilmezse eklenti otomatik olarak ana arabirim dizinine göre benzersiz bir ad belirler.
 - **ipam type**: IPAM eklentisinin adıdır. Her zaman *azure-vnet-ipam* olarak ayarlanır.
 

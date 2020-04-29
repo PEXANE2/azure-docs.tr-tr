@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi ve Azure Kubernetes Hizmeti
-description: Azure Güvenlik Merkezi'nin Azure Kubernetes Hizmetleri yle tümleştirmesi hakkında bilgi edinin
+title: Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti
+description: Azure Güvenlik Merkezi 'nin Azure Kubernetes hizmetleriyle tümleştirmesi hakkında bilgi edinin
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,41 +13,41 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436171"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Hizmetleri güvenlik merkezi ile tümleştirme
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Güvenlik Merkezi ile Azure Kubernetes Hizmetleri Tümleştirmesi
 
-Azure Kubernetes Service (AKS), Microsoft'un kapsayıcı laştırılmış uygulamaları geliştirmek, dağıtmak ve yönetmek için yönetilen hizmetidir. 
+Azure Kubernetes Service (AKS), Kapsayıcılı uygulamalar geliştirmeye, dağıtmaya ve yönetmeye yönelik Microsoft tarafından yönetilen bir hizmettir. 
 
-AKS düğümleriniz, bulut trafiğiniz ve güvenlik denetimlerinizde daha fazla görünürlük elde etmek için AKS'yi Azure Güvenlik Merkezi'nin standart katmanıyla birlikte [(fiyatlandırmaya](security-center-pricing.md)bakın) kullanın.
+AKS düğümleriniz, bulut trafiğiniz ve güvenlik denetimlerine daha derin bir görünürlük elde etmek için Azure Güvenlik Merkezi 'nin standart katmanı (bkz. [fiyatlandırma](security-center-pricing.md)) ile birlikte aks kullanın.
 
-Güvenlik Merkezi, AKS ana düğümü tarafından toplanan verileri kullanarak AKS kümelerinize güvenlik avantajları sağlar. 
+Güvenlik Merkezi, aks ana düğümü tarafından zaten toplanan verileri kullanarak AKS kümelerinize yönelik güvenlik avantajları sunar. 
 
-![Azure Güvenlik Merkezi ve Azure Kubernetes Hizmeti (AKS) üst düzey genel bakış](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+![Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti (AKS) üst düzey genel bakış](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
 
-Bu iki araç birlikte en iyi bulut yerlisi Kubernetes güvenlik teklifini oluşturur. 
+Bu iki araç birlikte, en iyi bulut Yerel Kubernetes güvenlik sunumunu oluşturur. 
 
-## <a name="benefits-of-integration"></a>Entegrasyonun faydaları
+## <a name="benefits-of-integration"></a>Tümleştirmenin avantajları
 
-İki hizmeti birlikte kullanmak şunları sağlar:
+İki hizmetin birlikte kullanılması aşağıdakileri sağlar:
 
-* **Güvenlik önerileri** - Güvenlik Merkezi AKS kaynaklarınızı tanımlar ve kategorilere ayırAr: kümelerden tek tek sanal makinelere kadar. Daha sonra kaynak başına güvenlik önerilerini görüntüleyebilirsiniz. Daha fazla bilgi için, [önerilerin başvuru listesinde](recommendations-reference.md#recs-containers)kapsayıcı önerilerine bakın. 
+* **Güvenlik önerileri** : Güvenlik Merkezi, aks kaynaklarınızı tanımlar ve bunları kümeler halinde tek tek sanal makinelere kategorilere ayırır. Ardından, kaynak başına güvenlik önerilerini görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [önerilerin başvuru listesindeki](recommendations-reference.md#recs-containers)kapsayıcı önerileri. 
 
-* **Çevre sertleştirme** - Güvenlik Merkezi, Kubernetes kümelerinizin ve Docker yapılandırmalarınızın yapılandırmasını sürekli olarak izler. Daha sonra endüstri standartlarını yansıtan güvenlik önerileri oluşturur.
+* **Ortam sağlamlaştırma** -Güvenlik Merkezi, Kubernetes kümelerinizin ve Docker yapılandırmalarının yapılandırmasını sürekli izler. Daha sonra sektör standartlarını yansıtan güvenlik önerileri oluşturur.
 
-* **Çalışma süresi koruması** - Aşağıdaki AKS kaynaklarının sürekli analizi yle, Güvenlik Merkezi sizi ana bilgisayar ve AKS küme düzeyinde algılanan *tehditlere* ve kötü amaçlı faaliyetlere karşı uyarır:
+* **Çalışma zamanı koruması** -aşağıdaki aks kaynaklarının sürekli analizine sahip Güvenlik Merkezi, ana bilgisayar *ve* aks kümesi düzeyinde algılanan tehditler ve kötü amaçlı etkinlikler hakkında sizi uyarır:
     * Ağ verileri ve işlem oluşturma gibi ham güvenlik olayları
     * Kubernetes denetim günlüğü
 
-    Daha fazla bilgi için [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers)
+    Daha fazla bilgi için bkz. [Azure kapsayıcıları için tehdit koruması](threat-protection.md#azure-containers)
 
-    Olası uyarıların listesi için, uyarılar başvuru tablosunda şu bölümlere bakın: [AKS küme düzeyi uyarıları](alerts-reference.md#alerts-akscluster) ve [Kapsayıcı ana bilgisayar düzeyi uyarıları.](alerts-reference.md#alerts-containerhost)  
+    Olası uyarıların listesi için, uyarılar başvuru tablosundaki şu bölümlere bakın: [aks küme düzeyi uyarıları](alerts-reference.md#alerts-akscluster) ve [kapsayıcı ana bilgisayar düzeyi uyarıları](alerts-reference.md#alerts-containerhost).  
 
-![Azure Güvenlik Merkezi ve Azure Kubernetes Hizmeti (AKS) daha ayrıntılı olarak](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
+![Azure Güvenlik Merkezi ve Azure Kubernetes hizmeti (AKS) daha ayrıntılı](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
 > Azure Güvenlik Merkezi tarafından Kubernetes ortamınızdan taranan bazı veriler hassas bilgiler içerebilir.
@@ -55,10 +55,10 @@ Bu iki araç birlikte en iyi bulut yerlisi Kubernetes güvenlik teklifini oluşt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenlik Merkezi'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz:
+Güvenlik Merkezi 'nin kapsayıcı güvenlik özellikleri hakkında daha fazla bilgi edinmek için bkz.:
 
 * [Azure Güvenlik Merkezi ve kapsayıcı güvenliği](container-security.md)
 
 * [Azure Container Registry ile tümleştirme](azure-container-registry-integration.md)
 
-* [Microsoft'ta veri yönetimi](https://www.microsoft.com/trust-center/privacy/data-management) - Microsoft hizmetlerinin veri ilkelerini (Azure, Intune ve Office 365 dahil) açıklar, Microsoft'un veri yönetiminin ayrıntılarını ve verilerinizi etkileyen bekletme ilkelerini açıklar
+* [Microsoft 'Ta veri yönetimi](https://www.microsoft.com/trust-center/privacy/data-management) -Microsoft hizmetlerinin (Azure, Intune ve Office 365 dahil) veri Ilkelerini, Microsoft 'un veri yönetiminin ayrıntılarını ve verilerinizi etkileyen bekletme ilkelerini açıklar

@@ -1,6 +1,6 @@
 ---
-title: Kaba Relocalization
-description: Size yakın çapabulmak için Kaba yeniden yerelleştirme kullanma hakkında bilgi edinin.
+title: Kaba yeniden yerelleştirme
+description: Size yakın olan bağlantıları bulmak için kaba yeniden yerelleştirme kullanma hakkında bilgi edinin.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,35 +9,35 @@ ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844403"
 ---
 # <a name="coarse-relocalization"></a>Kaba yeniden yerelleştirme
 
-Kaba relocalization soruya ilk cevap sağlayan bir *özelliktir: Nerede benim cihaz şimdi / Hangi içeriği gözlemleme olmalıdır?* Yanıt kesin değildir, ancak bunun yerine şeklindedir: *Bu çapalara yakınsınız; bunlardan birini bulmaya çalışın.*
+Kaba yeniden yerelleştirme, soruya bir başlangıç yanıtı sağlayan bir özelliktir: *cihazım Şu anda nerede, ne kadar hangi içerikleri gözlemliyim?* Yanıt kesin değil, ancak bunun yerine şu biçimdedir: *Bu Tutturucuların yakınına yakınız; bunlardan birini konumlandırmayı deneyin*.
 
-Kaba yeniden yerelleştirme, çeşitli cihaz algılayıcı okumalarını hem bağlantı noktası oluşturma hem de sorgulama ile ilişkilendirerek çalışır. Dış ortam senaryoları için sensör verileri genellikle cihazın GPS (Küresel Konumlandırma Sistemi) konumudur. GPS kullanılamadığında veya (iç mekanlar gibi) algılayıcı verileri WiFi erişim noktalarından ve aralıktaki Bluetooth işaretlerinden oluşur. Toplanan tüm sensör verileri, Azure Uzamsal Çapaları tarafından cihazınızın yaklaşık 100 metre içindeki çapalarını hızlı bir şekilde belirlemek için kullanılan uzamsal dizinin korunmasına katkıda bulunur.
+Farklı cihaz algılayıcı okumaları, hem oluşturma hem de Tutturucuların sorgulanması ile ilişkilendirerek etkili bir şekilde yeniden yerelleştirme çalışmaktadır. Açık Hava senaryolarında, algılayıcı verileri genellikle cihazın GPS (Global Konumlandırma Sistemi) konumudur. GPS kullanılabilir olmadığında veya güvenilir olmadığında (ınkapılar gibi), algılayıcı verileri WiFi erişim noktalarından ve aralıktaki Bluetooth işaretleriyle oluşur. Tüm toplanan algılayıcı verileri, bir uzamsal dizinin sürdürülmesi için katkıda bulunur bu, cihazınızın yaklaşık 100 ölçümlerinde bulunan bağlantıları hızlı bir şekilde tespit etmek için Azure uzamsal bağlantıları tarafından kullanılır.
 
-Kaba yeniden yerelleştirme nin sağladığı çapaların hızlı bir şekilde görünmesi, dünya ölçeğinde milyonlarca çapa (örneğin, milyonlarca coğrafi dağıtılmış) çapa koleksiyonu yla desteklenen uygulamaların geliştirilmesini kolaylaştırır. Çapa yönetiminin karmaşıklığı, harika uygulama mantığınıza daha fazla odaklanmanızı sağlayarak gizlenmiştir. Tüm çapa ağır kaldırma azure uzamsal çapalar tarafından sahne arkasında sizin için yapılır.
+Kaba reyerelleştirme tarafından etkinleştirilen bağlantıları hızlı bir şekilde aramak, dünya ölçeğinde (yani milyonlarca coğrafi olarak dağıtılmış) Tutturucuların desteklenen uygulamalarının geliştirilmesini basitleştirir. Bağlantı yönetiminin karmaşıklığı tamamen gizlenir ve bu da başar uygulama mantığınıza daha fazla odaklanmanızı sağlar. Tüm çapa noktası ağır kaldırma işlemi, arka planda Azure uzamsal bağlantılarına göre yapılır.
 
-## <a name="collected-sensor-data"></a>Toplanan sensör verileri
+## <a name="collected-sensor-data"></a>Toplanan algılayıcı verileri
 
-Bağlantı hizmetine gönderebileceğiniz sensör verileri aşağıdakilerden biridir:
+Bağlantı hizmetine gönderebilmeniz için sensör verileri aşağıdakilerden biridir:
 
-* GPS konumu: enlem, boylam, yükseklik.
-* WiFi erişim noktalarının sinyal gücü aralıkta.
-* Bluetooth işaretlerinin menzildeki sinyal gücü.
+* GPS konumu: enlem, Boylam, yükseklik.
+* Aralıktaki WiFi erişim noktalarının sinyal gücü.
+* Aralıktaki Bluetooth işaretlerinin sinyal gücü.
 
-Genel olarak, uygulamanızın GPS, WiFi veya BLE verilerine erişmek için cihaza özel izinler alması gerekir. Ayrıca, yukarıdaki sensör verilerinin bazıları belirli platformlarda tasarım tarafından kullanılamaz. Bu durumları hesaba katmak için, sensör verilerinin toplanması isteğe bağlıdır ve varsayılan olarak kapatılır.
+Genel olarak, uygulamanızın GPS, WiFi veya BLE verilerine erişmek için cihaza özgü izinleri edinmeniz gerekir. Ayrıca, yukarıdaki bazı algılayıcı verileri belirli platformlarda tasarlanarak kullanılamaz. Bu durumları hesaba eklemek için, algılayıcı verisi koleksiyonu isteğe bağlıdır ve varsayılan olarak kapalıdır.
 
-## <a name="set-up-the-sensor-data-collection"></a>Sensör veri toplamayı ayarlama
+## <a name="set-up-the-sensor-data-collection"></a>Algılayıcı veri toplamayı ayarlama
 
-Bir sensör parmak izi sağlayıcısı oluşturarak ve oturumun bundan haberdar olmasını sağlayarak başlayalım:
+Bir algılayıcı parmak izi sağlayıcısı oluşturup oturum bunu fark ederek başlayalım:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 // Create the sensor fingerprint provider
@@ -118,21 +118,21 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Ardından, kaba yeniden yerelleştirme için hangi sensörleri kullanmak istediğinize karar vermeniz gerekir. Bu karar, geliştirmekte olduğunuz uygulamaya özgüdür, ancak aşağıdaki tablodaki öneriler size iyi bir başlangıç noktası vermelidir:
+Daha sonra, ne kadar kaba yeniden yerelleştirme için kullanmak istediğiniz sensöre karar vermeniz gerekir. Bu karar, geliştirmekte olduğunuz uygulamaya özeldir, ancak aşağıdaki tablodaki önerilerin size iyi bir başlangıç noktası vermesi gerekir:
 
 
-|             | Kapalı | Açık havada |
+|             | Inkapıların | Dış kapılar |
 |-------------|---------|----------|
-| Gps         | Kapalı | Açık |
-| Wifi        | Açık | A)'ye göre |
-| BLE işaretleri | On (uyarılar ile isteğe bağlı, aşağıya bakın) | Kapalı |
+| YUVASı         | Kapalı | Açık |
+| WiFi        | Açık | Açık (isteğe bağlı) |
+| BLO işaretleri | Açık (uyarılar ile isteğe bağlı olarak aşağıya bakın) | Kapalı |
 
 
-### <a name="enabling-gps"></a>GPS'i etkinleştirme
+### <a name="enabling-gps"></a>GPS etkinleştiriliyor
 
-Uygulamanızın aygıtın GPS konumuna erişmek için zaten izni olduğunu varsayarsak, Azure Uzamsal Bağlantı Larını kullanmak üzere yapılandırabilirsiniz:
+Uygulamanızın cihazın GPS konumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.GeoLocationEnabled = true;
@@ -175,20 +175,20 @@ sensors.GeoLocationEnabled(true);
 
 ---
 
-Uygulamanızda GPS kullanırken, donanım tarafından sağlanan okumaların genellikle şunlardır:
+Uygulamanızda GPS kullanırken, donanım tarafından sunulan okumalar tipik olarak şunları göz önünde bulundurun:
 
-* asenkron ve düşük frekans (1 Hz'den az).
-* güvenilmez / gürültülü (ortalama 7-m standart sapma).
+* zaman uyumsuz ve düşük sıklık (1 Hz 'den az).
+* güvenilir olmayan/gürültülü (ortalama 7-b standart sapması).
 
-Genel olarak, hem aygıt işletim sistemi hem de Azure Uzamsal Çapaları, bu sorunları azaltmak amacıyla ham GPS sinyaliüzerinde bazı filtreleme ve ekstrapolasyon lar yapar. Bu ekstra işleme yakınsama için ek zaman gerektirir, bu nedenle en iyi sonuçlar için denemelisiniz:
+Genel olarak, hem cihaz işletim sistemi hem de Azure uzamsal bağlantıları, bu sorunları azaltmak için ham GPS sinyalinde bazı filtreleme ve tahmin işlemi yapar. Bu ek işleme yakınsama için ek zaman gerektirir, bu nedenle en iyi sonuçlar için şunu deneyin:
 
-* uygulamanızda mümkün olduğunca erken bir sensör parmak izi sağlayıcısı oluşturun
-* birden fazla oturum arasında sensör parmak izi sağlayıcısını canlı tutmak
-* sensör parmak izi sağlayıcısını birden çok oturum arasında paylaşma
+* uygulamanızda olabildiğince erken bir algılayıcı parmak izi sağlayıcısı oluşturun
+* algılayıcı parmak izi sağlayıcısını birden çok oturum arasında canlı tutun
+* algılayıcı parmak izi sağlayıcısını birden çok oturum arasında paylaşma
 
-Sensör parmak izi sağlayıcısını bir bağlantı oturumu dışında kullanmayı planlıyorsanız, sensör tahminleri istemeden önce başlatdığınızdan emin olun. Örneğin, aşağıdaki kod cihazınızın haritadaki konumunu gerçek zamanlı olarak güncelleştirmeyi sağlar:
+Algılayıcı parmak izi sağlayıcısını bir bağlantı oturumu dışında kullanmayı planlıyorsanız, algılayıcı tahminleri yapmadan önce bu hizmeti başlattığınızdan emin olun. Örneğin, aşağıdaki kod, cihazınızın haritadaki konumunu gerçek zamanlı olarak güncelleştirmekte olacaktır:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 // Game about to start, start tracking the sensors
@@ -314,11 +314,11 @@ sensorProvider.Stop();
 
 ---
 
-### <a name="enabling-wifi"></a>WiFi'ı etkinleştirme
+### <a name="enabling-wifi"></a>WiFi etkinleştiriliyor
 
-Uygulamanızın aygıtın Wi-Fi durumuna erişmek için zaten izni olduğunu varsayarsak, Azure Uzamsal Bağlantı Larını kullanmak üzere yapılandırabilirsiniz:
+Uygulamanızın cihazın WiFi durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.WifiEnabled = true;
@@ -361,22 +361,22 @@ sensors.WifiEnabled(true);
 
 ---
 
-Uygulamanızda WiFi kullanırken, donanım tarafından sağlanan okumaların genellikle şunlardır:
+Uygulamanızda WiFi kullanırken, donanım tarafından sunulan okumalar genellikle şunları göz önünde bulundurun:
 
-* asenkron ve düşük frekans (0.1 Hz'den az).
-* potansiyel olarak işletim sistemi düzeyinde daraltılır.
-* güvenilmez / gürültülü (ortalama 3-dBm standart sapma).
+* zaman uyumsuz ve düşük sıklık (0,1 Hz 'den az).
+* işletim sistemi düzeyinde kısıtlanmış olabilir.
+* güvenilmez/gürültülü (ortalama 3 dBm standart sapma üzerinde).
 
-Azure Uzamsal Çapalar, bu sorunları azaltmak amacıyla oturum sırasında filtreuygulanmış bir Wi-Fi sinyal gücü eşlemi oluşturmaya çalışır. En iyi sonuçlar için şunları denemelisiniz:
+Azure uzamsal bağlantıları, bu sorunları azaltmak için bir oturum sırasında filtrelenmiş bir WiFi sinyali gücü eşlemesi oluşturmayı dener. En iyi sonuçlar için şunu denemeniz gerekir:
 
-* ilk çapa yerleştirmeden önce oturumu iyi oluşturun.
-* oturumu mümkün olduğunca uzun süre canlı tutun (diğer bir deyişle, tüm çapaları ve sorguyu tek bir oturumda oluşturun).
+* ilk tutturucu yerleştirmekten önce oturum iyi oluşturun.
+* oturumu mümkün olduğunca uzun tutun (yani, tüm tutturucuları ve tek bir oturumda sorgu oluşturun).
 
-### <a name="enabling-bluetooth-beacons"></a>Bluetooth işaretçilerini etkinleştirme
+### <a name="enabling-bluetooth-beacons"></a>Bluetooth işaretlerini etkinleştirme
 
-Uygulamanızın aygıtın Bluetooth durumuna erişmek için zaten izni olduğunu varsayarsak, Azure Uzamsal Bağlantı Larını kullanmak üzere yapılandırabilirsiniz:
+Uygulamanızın cihazın Bluetooth durumuna erişim izni olduğu varsayılırsa, Azure uzamsal bağlayıcılarını kullanmak için yapılandırabilirsiniz:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.BluetoothEnabled = true;
@@ -419,13 +419,13 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-İşaretçiler, UUID'ler ve MAC adresleri de dahil olmak üzere her şeyin yapılandırılabildiği çok yönlü aygıtlardır. Bu esneklik, işaretçilerin UUID'leri tarafından benzersiz bir şekilde tanımlanacağını düşündüğü için Azure Uzamsal Çapaları için sorunlu olabilir. Bu eşsizliği sağlayamamak büyük olasılıkla uzaysal solucan deliklerine neden olacaktır. En iyi sonuçlar için şunları göstermelisiniz:
+İşaretlerin genellikle, UUID 'ler ve MAC adresleri gibi her şeyin yapılandırılabileceği çok yönlü cihazlardır. Bu esneklik, UUID 'ler tarafından benzersiz şekilde tanımlanması için işaretleri dikkate alarak Azure uzamsal bağlayıcılarına yönelik sorunlu olabilir. Bu benzersizlik, büyük olasılıkla uzamsal solucan delikleri oluşmasına neden olabilir. En iyi sonuçlar için şunları yapmanız gerekir:
 
-* işaretçilerinize benzersiz UUID'ler atayın.
-* genellikle ızgara gibi normal bir desende dağıtın.
-* benzersiz işaret UUIDs listesini sensör parmak izi sağlayıcısına iletin:
+* işaretlerine benzersiz UUID 'ler atayın.
+* Bunları, genellikle kılavuz gibi normal bir düzende dağıtın.
+* benzersiz işaret UUID 'ler listesini algılayıcı parmak izi sağlayıcısına geçirin:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 sensorProvider.Sensors.KnownBeaconProximityUuids = new[]
@@ -491,15 +491,15 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure Uzamsal Bağlantı çapaları yalnızca bilinen işaret yakını UUID'ler listesinde bulunan Bluetooth işaretçilerini izler. İzin veren UUID'lere sahip olmak üzere programlanmış kötü amaçlı işaretçiler yine de hizmetkalitesini olumsuz etkileyebilir. Bu nedenle, işaretçileri yalnızca dağıtımlarını kontrol edebilirsiniz küratörlük alanlarda kullanmalısınız.
+Azure uzamsal bağlantıları yalnızca bilinen işaret yakınlık UUID 'ler listesindeki Bluetooth işaretlerini izler. Allow-listelenmiş UUID 'ler olarak programlanmış kötü amaçlı işaretleri hizmetin kalitesini de olumsuz yönde etkileyebilir. Bu nedenle, işaretlerini yalnızca, dağıtımını denetleyebileceğiniz, yalnızca seçkin alanlarda kullanmanız gerekir.
 
-## <a name="querying-with-sensor-data"></a>Sensör verileriyle sorgulama
+## <a name="querying-with-sensor-data"></a>Algılayıcı verileriyle sorgulama
 
-İlişkili sensör verileriyle bağlantı oluşturduktan sonra, cihazınız tarafından bildirilen sensör okumalarını kullanarak bunları almaya başlayabilirsiniz. Artık hizmeti bulmayı beklediğiniz bilinen çapaların bir listesini sağlamanız gerekmez , bunun yerine servise cihazınızın yerleşik sensörleri tarafından bildirilen konumunu bildirmeniz gerekir. Azure Uzamsal Çapalar daha sonra cihazınıza yakın olan çapa kümesini çözer ve bunları görsel olarak eşleştirmeye çalışır.
+İlişkili algılayıcı verileriyle bağlayıcı oluşturduktan sonra, cihazınızın bildirdiği algılayıcı ayarlarını kullanarak bunları almaya başlayabilirsiniz. Artık, bulmayı beklediğiniz bilinen Tutturucuların bir listesini sağlamanız gerekmez. bunun yerine, yalnızca hizmetin, kendi ekleme algılayıcılarının bildirdiği şekilde cihazınızın konumunu bilmesini sağlayabilirsiniz. Daha sonra Azure uzamsal bağlantıları, cihazınıza yakın olan bağlayıcı kümesini anlayabilir ve bunlarla görsel olarak eşleştirmeye çalışır.
 
-Sorguların sensör verilerini kullanmasını sağlamak için "cihaza yakın" ölçütleri oluşturarak başlayın:
+Sorguların algılayıcı verilerini kullanması için, "neredeyse cihaz" ölçütlerini oluşturarak başlayın:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 NearDeviceCriteria nearDeviceCriteria = new NearDeviceCriteria();
@@ -592,13 +592,13 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 ---
 
-Parametre, `DistanceInMeters` içeriği almak için bağlantı grafiğini ne kadar araştırabileceğimizi denetler. Örneğin, her metrede sabit yoğunlukta çapalarla bir miktar boşluk doldurmuş olduğunuzu varsayalım. Ayrıca, cihazınızdaki kamera tek bir çapayı gözlemliyor ve hizmet bunu başarıyla tespit etti. Büyük olasılıkla, şu anda gözlemlediğiniz tek çapa yerine yakına yerleştirdiğiniz tüm çapaları almakla ilgileniyorsunuz. Yerleştirdiğiniz çapaların bir grafiğe bağlı olduğunu varsayarsak, hizmet grafikteki kenarları izleyerek yakındaki tüm çapaları sizin için alabilir. Yapılan grafik traversi miktarı; `DistanceInMeters` bulunduğunuz çapaya bağlı tüm çapalar size `DistanceInMeters`verilecektir.
+`DistanceInMeters` Parametresi, içerik almak için tutturucu grafiği ne kadar keşfetmeye yönelik olduğunu denetler. Her ölçünün 2. sabitinde yer alan bağlayıcılarla bir boşluk doldurmuş olduğunuz örneği varsayalım. Ayrıca, cihazınızdaki kamera tek bir tutturucu gözlemleyerek hizmet tarafından başarıyla bulunur. En büyük olasılıkla, şu anda gözlemlediğiniz tek yer yerine, yerleştirdiğiniz tüm Tutturucuların alınması çok büyük olabilir. Yerleştirdiğiniz Tutturucuların bir grafiğe bağlı olduğu varsayıldığında, hizmet grafikteki kenarları izleyerek sizin için tüm yakın bağlantıları alabilir. Gerçekleştirilen grafik geçişinin miktarı tarafından `DistanceInMeters`denetlenir; sahip olduğunuz birine bağlı olan tüm Tutturucuların, daha yakın olduğunu size vermiş olacaksınız `DistanceInMeters`.
 
-Büyük değerlerin performansı olumsuz `MaxResultCount` etkileyebileceğini unutmayın. Uygulamanız için mantıklı bir değere ayarlayın.
+İçin `MaxResultCount` büyük değerlerin performansı olumsuz yönde etkileyebileceğini aklınızda bulundurun. Uygulamanız için bir senable değere ayarlayın.
 
-Son olarak, sensör tabanlı görünümü kullanmak için oturuma şunları söylemeniz gerekir:
+Son olarak, oturuma algılayıcı tabanlı arama 'yı kullanmayı söylemeniz gerekir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -638,32 +638,32 @@ cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
 
 ## <a name="expected-results"></a>Beklenen sonuçlar
 
-Tüketici sınıfı GPS cihazları genellikle oldukça kesin değildir. [Zandenbergen ve Barbeau tarafından bir çalışma (2011)][6] destekli GPS ile cep telefonlarının ortanca doğruluğu raporları (A-GPS) etrafında 7 metre - göz ardı edilecek oldukça büyük bir değer! Bu ölçüm hatalarını hesaba katmak için, hizmet çapaları GPS alanında olasılık dağılımları olarak ele verir. Bu nedenle, bir çapa şimdi uzayın en olası (yani% 95'ten fazla güven ile) gerçek, bilinmeyen GPS konumunu içeren bölgedir.
+Tüketici sınıfı GPS cihazları genellikle oldukça kesin. [Zandenbergen ve Barbeau][6] tarafından yapılan bir inceleme (2011), destekli cep telefonlarını (A-GPS) 7 ölçümle (oldukça büyük bir değer yok sayılır) bir şekilde raporlar. Bu ölçüm hatalarına yönelik hesaba geçmek için hizmet, bağlantıları GPS alanında olasılık dağıtımları olarak değerlendirir. Bu nedenle, bir tutturucu, büyük olasılıkla en olası alan bölgesidir (yani %95 ' ten fazla güven), gerçek, bilinmeyen GPS konumunu içerir.
 
-GPS ile sorgulanırken de aynı mantık uygulanır. Cihaz, gerçek, bilinmeyen GPS konumu etrafında başka bir mekansal güven bölgesi olarak temsil edilir. Yakındaki çapaları keşfetmek, aşağıdaki resimde gösterildiği gibi, cihazın güven bölgesine *yeterince yakın* güven bölgeleri olan çapaları bulmak anlamına gelir:
+GPS ile sorgulama yapılırken aynı düşünme uygulanır. Cihaz, doğru, bilinmeyen GPS konumu etrafında başka bir uzamsal güven bölgesi olarak temsil edilir. Yakın olan Tutturucuların bulunması, aşağıdaki görüntüde gösterildiği gibi, güvenilir bölgelere sahip olan bağlantıları cihazın güven bölgesine *yeterince yakın* bir şekilde bulmak için çeviri yapar:
 
-![GPS ile çapa adaylarının seçimi](media/coarse-reloc-gps-separation-distance.png)
+![GPS ile bağlayıcı adayları seçimi](media/coarse-reloc-gps-separation-distance.png)
 
-GPS sinyalinin doğruluğu, hem çapa oluşturma hem de sorgular sırasında, döndürülen çapa kümesi üzerinde büyük bir etkiye sahiptir. Buna karşılık, WiFi / işaretçileri dayalı sorgular sorgu ile ortak en az bir erişim noktası / işaretçi tüm çapa dikkate alacaktır. Bu anlamda, WiFi / işaretleri dayalı bir sorgu sonucu çoğunlukla erişim noktaları / işaretleri fiziksel aralığı ve çevresel engeller tarafından belirlenir.
+Her ikisi de, hem bağlayıcı oluşturma hem de sorgular sırasında, döndürülen bağlantı kümesi üzerinde büyük bir etkisi olan GPS sinyalinin doğruluğu. Buna karşılık, WiFi/işaret tabanlı sorgular, sorguyla ortak olarak en az bir erişim noktası/işaret olan tüm bağlantıları kabul eder. Bu anlamda, WiFi/işaretlerine dayalı bir sorgunun sonucu genellikle erişim noktalarının/işaretlerinin ve çevre engellerin fiziksel aralığına göre belirlenir.
 
-Aşağıdaki tabloda her sensör türü için beklenen arama alanı tahmin edilmektedir:
+Aşağıdaki tabloda her algılayıcı türü için beklenen arama alanı tahmin edilecek:
 
-| Sensör      | Arama alanı yarıçapı (yaklaşık) | Ayrıntılar |
+| Algılayıcısı      | Arama alanı yarıçapı (yaklaşık) | Ayrıntılar |
 |-------------|:-------:|---------|
-| Gps         | 20 m - 30 m | Diğer faktörler arasında GPS belirsizlik tarafından belirlenir. Bildirilen numaraları A-GPS ile cep telefonlarının medyan GPS doğruluğu için tahmin edilmektedir, yani 7 metre. |
-| Wifi        | 50 m - 100 m | Kablosuz erişim noktalarının aralığına göre belirlenir. Frekansına, verici gücüne, fiziksel engellere, parazite ve benzeri ne rekata bağlı. |
-| BLE işaretleri |  70 m | İşaretin menziline göre belirlenir. Frekans, iletim gücü, fiziksel engeller, girişim, ve benzeri bağlıdır. |
+| YUVASı         | 20 milyon-30 milyon | Diğer faktörler arasındaki GPS tarafından belirlenir. Raporlanan sayılar, bu 7 ölçüm olan,-GPS ile cep telefonlarına ait ortanca GPS doğruluğu için tahmin edilir. |
+| WiFi        | 50 milyon-100 milyon | Kablosuz erişim noktalarının aralığına göre belirlenir. Sıklık, verici kuvveti, fiziksel engelleri, girişim vb. bağlıdır. |
+| BLO işaretleri |  70 milyon | İşaret aralığına göre belirlenir. Sıklık, iletim gücüne, fiziksel engelleri, girişim vb. bağlıdır. |
 
 ## <a name="per-platform-support"></a>Platform başına destek
 
-Aşağıdaki tablo, desteklenen platformların her birinde toplanan sensör verilerini ve platforma özgü uyarıları özetler:
+Aşağıdaki tabloda, desteklenen her platformda toplanan algılayıcı verileri, platforma özel uyarılarla birlikte özetlenmektedir:
 
 
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
-| Gps         | Yok | [LocationManager][3] API'leri (hem GPS hem de NETWORK) aracılığıyla desteklenir | [CLLocationManager][4] API'leri ile desteklenir |
-| Wifi        | Her 3 saniyede bir yaklaşık bir tazyik hızında desteklenir | Destekleniyor. API düzeyi 28 ile başlayarak, WiFi taramaları her 2 dakikada 4 arama ile daraltılır. Android 10'dan itibaren, azaltma Geliştirici ayarları menüsünden devre dışı bilebilir. Daha fazla bilgi için [Android belgelerine][5]bakın. | N/A - genel API yok |
-| BLE işaretleri | [Eddystone][1] ve [iBeacon][2] ile sınırlıdır | [Eddystone][1] ve [iBeacon][2] ile sınırlıdır | [Eddystone][1] ve [iBeacon][2] ile sınırlıdır |
+| YUVASı         | Yok | [LocationManager][3] API 'LERI (GPS ve ağ) aracılığıyla desteklenir | [Cllocationmanager][4] API 'leri aracılığıyla desteklenir |
+| WiFi        | Her 3 saniyede bir taramanın yaklaşık bir hızda desteklenir | Destekleniyor. WiFi taramaları, API düzeyi 28 ile başlayarak 2 dakikada bir 4 çağrı ile kısıtlanır. Android 10 ' dan azaltma, Geliştirici ayarları menüsünden devre dışı bırakılabilir. Daha fazla bilgi için bkz. [Android belgeleri][5]. | Yok-ortak API yok |
+| BLO işaretleri | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı | [Eddystone][1] ve [ıişaret][2] ile sınırlı |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

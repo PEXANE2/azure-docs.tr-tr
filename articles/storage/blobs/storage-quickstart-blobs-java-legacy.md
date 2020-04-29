@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Java için Azure Blob depolama istemcisi kitaplığı v8'
-description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure Depolama'ya bir blob yüklemek, bir blob indirmek ve lekeleri bir kapsayıcıda listelemek için Java için Azure Depolama istemcisi v8'i kullanın.
+title: 'Hızlı başlangıç: Java için Azure Blob depolama istemci kitaplığı V8'
+description: Nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturun. Ardından, Azure depolama 'ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Azure depolama istemci kitaplığı v8 ' nı kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/24/2020
@@ -8,25 +8,25 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.openlocfilehash: e7986add466bc42b092763acfeceebc8a6523bbe
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80473993"
 ---
-# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Quickstart: Java v8 SDK ile blobs yönetin
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Hızlı başlangıç: Java V8 SDK ile Blobları yönetme
 
-Bu hızlı başlangıçta, Java kullanarak lekeleri yönetmeyi öğrenirsiniz. Blobs, resimler, belgeler, akışlı ortam ve arşiv verileri de dahil olmak üzere büyük miktarda metin veya ikili veri tutabilen nesnelerdir. Blob'ları yükler, indirir ve listelersiniz. Ayrıca kapsayıcılar oluşturur, izinleri ayarlar ve silersiniz.
+Bu hızlı başlangıçta, Java kullanarak blob 'ları yönetmeyi öğreneceksiniz. Blob 'lar, görüntüler, belgeler, akış ortamları ve arşiv verileri gibi büyük miktarlarda metin veya ikili veri içerebilen nesnelerdir. Blobları karşıya yükleyebilir, indirebilir ve listeleyebilir. Ayrıca kapsayıcıları oluşturur, izinleri ayarlar ve siler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Azure Depolama hesabı. [Bir depolama hesabı oluşturun.](../common/storage-account-create.md)
-- Maven entegrasyonu olan bir IDE. Bu kılavuzda [Eclipse](https://www.eclipse.org/downloads/) "Eclipse IDE Java Geliştiricileri için" yapılandırması kullanır.
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Depolama hesabı. [Depolama hesabı oluşturun](../common/storage-account-create.md).
+- Maven tümleştirmesi olan bir IDE. Bu kılavuz, "Java geliştiricileri için tutulma IDE" yapılandırması ile [Çakışan Küreler](https://www.eclipse.org/downloads/) kullanır.
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 
-[Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-java-quickstart) temel bir konsol uygulamasıdır.
+[Örnek uygulama](https://github.com/Azure-Samples/storage-blobs-java-quickstart) , temel bir konsol uygulamasıdır.
 
 Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın.
 
@@ -34,9 +34,9 @@ Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https
 git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. Dosya Sisteminden **Dosya'yı** seçin ve **Ardından Projeleri Aç'ı seçin.** **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
+Bu komut, depoyu yerel Git klasörünüze kopyalar. Projeyi açmak için, Eclipse’ı başlatın ve Karşılama ekranını kapatın. Dosya sistemi ' nden **Dosya** ' yı seçin ve ardından **projeleri açın**. **Proje niteliklerini algıla ve yapılandır** seçeneğinin belirlenmiş olduğundan emin olun. **Dizin**’i seçin ve ardından kopyalanan dizini depoladığınız konuma gidin. Kopyalanan deponun içinde **blobAzureApp** klasörünü seçin. **blobAzureApp** projesinin Eclipse projesi olarak göründüğünden emin olun ve ardından **Son**’u seçin.
 
-Proje içe aktarmayı tamamladıktan sonra **AzureApp.java'yı** açın **(src/main/java**içinde `accountname` **blobQuickstart.blobAzureApp'ta** bulunur) ve dizenin `accountkey` ve ipin içindekini değiştirin. `storageConnectionString` Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
+Proje içeri aktarmayı tamamladıktan sonra, **AzureApp. Java** ' yı açın ( **src/Main/Java**Içinde **blobquickstart. blobAzureApp** içinde bulunur) ve `storageConnectionString` dizenin içindeki `accountname` ve `accountkey` içindeki öğesini değiştirin. Sonra, uygulamayı çalıştırın. Aşağıdaki bölümlerde bu görevleri tamamlamak için gereken özel yönergeler açıklanmıştır.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -77,7 +77,7 @@ Devam etmeden önce, varsayılan dizininizi (Windows kullanıcıları için *C:\
   >[!NOTE]
   >Ayrıca, Blob depolamadaki dosyaları görüntülemek için, [Azure Depolama Gezgini](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) gibi bir araç da kullanabilirsiniz. Azure Depolama Gezgini, depolama hesabı bilgilerinize erişmenize olanak tanıyan ücretsiz ve platformlar arası bir araçtır.
 
-Dosyaları doğruladıktan sonra demoyu tamamlamak ve test dosyalarını silmek için **Enter** tuşuna basın. Artık örnek dosyanın ne yaptığını gördüğünüze göre, koda göz atmak için **AzureApp.java** dosyasını açabilirsiniz.
+Dosyaları doğruladıktan sonra, tanıtımı tamamlayıp test dosyalarını silmek için **ENTER** tuşuna basın. Artık örnek dosyanın ne yaptığını gördüğünüze göre, koda göz atmak için **AzureApp.java** dosyasını açabilirsiniz.
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 
@@ -91,13 +91,13 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 
     **CloudStorageAccount** nesnesi, depolama hesabınızın bir gösterimidir ve programlamayla depolama hesabı özelliklerini ayarlayabilmenizi ve bu özelliklere erişebilmenizi sağlar. **CloudStorageAccount** nesnesini kullanarak, blob hizmetine erişmek için kullanılan **CloudBlobClient**’in bir örneğini oluşturabilirsiniz.
 
-* Depolama hesabınızdaki [Blob hizmetini](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) gösteren **CloudBlobClient** nesnesinin bir örneğini oluşturun.
+* **Cloudblobclient** nesnesinin, Depolama hesabınızdaki [BLOB hizmetine](/java/api/com.microsoft.azure.storage.blob.cloudblobclient) işaret eden bir örneğini oluşturun.
 
-    **CloudBlobClient,** Blob depolama özelliklerini programlı olarak ayarlamanızı ve erişmenizi sağlayan blob hizmetine bir erişim noktası sağlar. **CloudBlobClient** nesnesini kullanarak, kapsayıcı oluşturmak için kullanılan **CloudBlobContainer**ıin bir örneğini oluşturabilirsiniz.
+    **Cloudblobclient** , blob hizmetine bir erişim noktası sağlar ve bu sayede BLOB depolama özelliklerini program aracılığıyla ayarlamanıza ve erişmenize olanak tanır. **CloudBlobClient** nesnesini kullanarak, kapsayıcı oluşturmak için kullanılan **CloudBlobContainer**ıin bir örneğini oluşturabilirsiniz.
 
 * [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer) nesnesinin, eriştiğiniz kapsayıcıyı temsil eden bir örneğini oluşturun. Tıpkı bilgisayarınızdaki dosyaları düzenlemek için klasörleri kullandığınız gibi blobları düzenlemek için de kapsayıcıları kullanın.
 
-    **CloudBlobContainer'a**sahip olduğunuzda, [cloudblockblob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) nesnesinin ilgilendiğiniz belirli blob'a işaret eden bir örneğini oluşturabilir ve yükleme, indirme, kopyalama veya başka bir işlem gerçekleştirebilirsiniz.
+    **Cloudblobcontainer**' ı oluşturduktan sonra, ilgilendiğiniz belirli bir Blobun işaret eden bir [Cloudblockblob](/java/api/com.microsoft.azure.storage.blob.cloudblockblob) nesnesi örneği oluşturabilir ve karşıya yükleme, indirme, kopyalama veya başka bir işlem gerçekleştirebilirsiniz.
 
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
@@ -106,7 +106,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 
 Bu bölümde, nesnelerin örneğini oluşturuyor, yeni kapsayıcı oluşturuyor ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak ve bloblara yalnızca bir URL ile erişilebilecek şekilde ayarlıyorsunuz. Bu kapsayıcının adı **quickstartcontainer**'dır.
 
-Örnek her çalıştırıldığında yeni bir kapsayıcı oluşturmak istediğimizden, bu örnekte [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists) komutu kullanılır. Bir uygulama boyunca aynı kapsayıcıyı kullandığınız üretim ortamında **CreateIfNotExists'ı** yalnızca bir kez aramak daha iyi bir uygulamadır. Alternatif olarak, kapsayıcıyı önceden oluşturabilirsiniz. Böylece kapsayıcıyı kodda oluşturmanıza gerek kalmaz.
+Örnek her çalıştırıldığında yeni bir kapsayıcı oluşturmak istediğimizden, bu örnekte [CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists) komutu kullanılır. Bir uygulamanın tamamında aynı kapsayıcıyı kullandığınız bir üretim ortamında, **Createıfnotexists** ' i yalnızca bir kez çağırmak daha iyi bir uygulamadır. Alternatif olarak, kapsayıcıyı önceden oluşturabilirsiniz. Böylece kapsayıcıyı kodda oluşturmanıza gerek kalmaz.
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -121,7 +121,7 @@ container.createIfNotExists(BlobContainerPublicAccessType.CONTAINER, new BlobReq
 
 ### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
 
-Bir dosyayı blok blob'una yüklemek için hedef kapsayıcıdaki blob'a başvuru alın. Blob başvurusunu aldıktan sonra, [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload) kullanarak verileri karşıya yükleyebilirsiniz. Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, blob zaten varsa blobun üzerine yazılır.
+Bir blok blobuna bir dosya yüklemek için hedef kapsayıcıda blob 'a bir başvuru alın. Blob başvurusunu aldıktan sonra, [CloudBlockBlob.Upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblockblob.upload) kullanarak verileri karşıya yükleyebilirsiniz. Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, blob zaten varsa blobun üzerine yazılır.
 
 Örnek kod, karşıya yükleme ve indirme için kullanılacak yerel bir dosya oluşturur, karşıya yüklenecek dosyayı **kaynak** olarak ve blob adını **blob** olarak depolar. Aşağıdaki örnek, dosyayı **quickstartcontainer** adlı kapsayıcınıza yükler.
 
@@ -173,7 +173,7 @@ blob.downloadToFile(downloadedFile.getAbsolutePath());
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Yüklediğiniz lekelere artık ihtiyacınız yoksa [CloudBlobContainer.DeleteIfExists'i](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)kullanarak tüm kapsayıcıyı silebilirsiniz. Bu yöntem, kapsayıcıdaki dosyaları da siler.
+Karşıya yüklediğiniz bloblara artık ihtiyacınız yoksa [Cloudblobcontainer. Deleteıfexists](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)kullanarak kapsayıcının tamamını silebilirsiniz. Bu yöntem, kapsayıcıdaki dosyaları da siler.
 
 ```java
 try {
@@ -194,8 +194,8 @@ sourceFile.deleteOnExit();
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Java kullanarak yerel bir disk ve Azure Blob depolama arasında dosya aktarmayı öğrendiniz. Java ile çalışma hakkında daha fazla bilgi edinmek için GitHub kaynak kod depomuza devam edin.
+Bu makalede, Java kullanarak dosyaları yerel bir disk ve Azure Blob depolama arasında aktarmayı öğrendiniz. Java ile çalışma hakkında daha fazla bilgi edinmek için GitHub kaynak kod depomuza devam edin.
 
 > [!div class="nextstepaction"]
-> [Java](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
-> için Java API Referans[Kodu Örnekleri](../common/storage-samples-java.md)
+> [Java için Java API başvuru](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
+> [kodu örnekleri](../common/storage-samples-java.md)

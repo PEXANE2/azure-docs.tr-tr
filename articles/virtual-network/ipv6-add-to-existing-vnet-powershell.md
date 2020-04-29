@@ -1,7 +1,7 @@
 ---
-title: Azure Sanal Ağ'da IPv6'ya bir IPv4 uygulamasını yükseltme - PowerShell
+title: Azure sanal ağ 'da IPv4 uygulamasını IPv6 'ya yükseltme-PowerShell
 titlesuffix: Azure Virtual Network
-description: Bu makalede, IPv6 adreslerinin Azure Powershell kullanarak Azure sanal ağındaki varolan bir uygulamaya nasıl dağıtılanıncaya kadar dağıtılanın.
+description: Bu makalede, Azure PowerShell kullanarak Azure sanal ağı 'nda var olan bir uygulamaya IPv6 adreslerinin nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,33 +14,33 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420771"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure sanal ağında IPv6'ya bir IPv4 uygulamasını yükseltme - PowerShell
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure sanal ağ 'da IPv4 uygulamasını IPv6 'ya yükseltme-PowerShell
 
-Bu makalede, Standart Yük Dengeleyicisi ve Genel IP'si olan bir Azure sanal ağındaki mevcut bir IPv4 uygulamasına IPv6 bağlantısının nasıl eklendirilebildiğini gösterilmektedir. Yerinde yükseltme şunları içerir:
+Bu makalede, bir Azure sanal ağında Standart Load Balancer ve genel IP 'ye sahip mevcut bir IPv4 uygulamasına IPv6 bağlantısı ekleme gösterilmektedir. Yerinde yükseltme şunları içerir:
 - Sanal ağ ve alt ağ için IPv6 adres alanı
-- Hem IPv4 hem de IPV6 ön uç konfigürasyonlarına sahip standart yük dengeleyicisi
-- Hem IPv4 + IPv6 yapılandırması olan NIC'li VM'ler
-- IPv6 Genel IP böylece yük dengeleyici Internet'e bakan IPv6 bağlantısı vardır
+- hem IPv4 hem de ıPV6 ön uç yapılandırmalarına sahip bir Standart Load Balancer
+- IPv4 + IPv6 yapılandırmasına sahip NIC 'leri olan VM 'Ler
+- Yük dengeleyicinin Internet 'e yönelik IPv6 bağlantısı olması için IPv6 genel IP 'si
 
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 6.9.0 veya sonrası gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell modülü sürümü 6.9.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, [Quickstart: Create a Standard Load Balancer - Azure PowerShell'de](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)açıklandığı gibi bir Standart Yük Dengeleyicisi dağıtıldığınızı varsayar.
+Bu makalede [hızlı başlangıç: Standart Load Balancer Azure PowerShell oluşturma](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)bölümünde açıklandığı gibi standart Load Balancer dağıttığınız varsayılmaktadır.
 
 ## <a name="retrieve-the-resource-group"></a>Kaynak grubunu alma
 
-Çift yığınlı sanal ağınızı oluşturmadan önce [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup)ile kaynak grubunu almanız gerekir.
+Çift yığın Sanal ağınızı oluşturabilmeniz için önce [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup)ile kaynak grubunu almalısınız.
 
 ```azurepowershell
  $rg = Get-AzResourceGroup  -ResourceGroupName "myResourceGroupSLB"
@@ -48,7 +48,7 @@ Bu makalede, [Quickstart: Create a Standard Load Balancer - Azure PowerShell'de]
 
 ## <a name="create-an-ipv6-ip-addresses"></a>IPv6 IP adresleri oluşturma
 
-Standart Yük Dengeleyiciniz için [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) ile ortak bir IPv6 adresi oluşturun. Aşağıdaki örnek, *myResourceGroupSLB* kaynak grubunda *PublicIP_v6* adlı bir IPv6 genel IP adresi oluşturur:
+Standart Load Balancer için [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) ile genel bir IPv6 adresi oluşturun. Aşağıdaki örnek, *Myresourcegroupslb* kaynak grubunda *PublicIP_v6* ADLı bir IPv6 genel IP adresi oluşturur:
 
 ```azurepowershell
   
@@ -61,9 +61,9 @@ Standart Yük Dengeleyiciniz için [New-AzPublicIpAddress](/powershell/module/az
   -IpAddressVersion IPv6
 ```
 
-## <a name="configure-load-balancer-frontend"></a>Yük dengeleyici ön ucunu yapılandır
+## <a name="configure-load-balancer-frontend"></a>Yük dengeleyici ön uç 'yi yapılandırma
 
-Varolan yük dengeleyici yapılandırmasını alın ve [Add-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) kullanarak yeni IPv6 IP adresini aşağıdaki gibi ekleyin:
+Mevcut yük dengeleyici yapılandırmasını alın ve ardından [Add-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/Add-AzLoadBalancerFrontendIpConfig) kullanarak yenı IPv6 IP adresini aşağıdaki şekilde ekleyin:
 
 ```azurepowershell
 # Retrieve the load balancer configuration
@@ -76,9 +76,9 @@ $lb | Add-AzLoadBalancerFrontendIpConfig `
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzuyapıla
+## <a name="configure-load-balancer-backend-pool"></a>Yük dengeleyici arka uç havuzunu Yapılandır
 
-Yük dengeleyici yapılandırmasının yerel kopyasında arka uç havuzunu oluşturun ve çalışan yük dengeleyicisini yeni arka uç havuzu yapılandırmasıyla aşağıdaki gibi güncelleştirin:
+Yük dengeleyici yapılandırmasının yerel kopyasında arka uç havuzunu oluşturun ve çalışan yük dengeleyiciyi yeni arka uç havuzu yapılandırmasıyla aşağıdaki şekilde güncelleştirin:
 
 ```azurepowershell
 $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
@@ -87,7 +87,7 @@ $lb | Set-AzLoadBalancer
 ```
 
 ## <a name="configure-load-balancer-rules"></a>Yük dengeleyici kurallarını yapılandırma
-Varolan yük dengeleyici ön uç ve arka uç havuzu yapılandırmasını alın ve [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig)kullanarak yeni yük dengeleme kuralları ekleyin.
+Mevcut yük dengeleyici ön uç ve arka uç havuzu yapılandırmasını alın ve ardından [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig)kullanarak yeni yük dengeleme kuralları ekleyin.
 
 ```azurepowershell
 # Retrieve the updated (live) versions of the frontend and backend pool
@@ -104,9 +104,9 @@ $lb | Add-AzLoadBalancerRuleConfig `
 #Finalize all the load balancer updates on the running load balancer
 $lb | Set-AzLoadBalancer
 ```
-## <a name="add-ipv6-address-ranges"></a>IPv6 adres aralıkları ekleme
+## <a name="add-ipv6-address-ranges"></a>IPv6 adres aralıklarını Ekle
 
-Sanal ağa ve VM'leri barındıran alt ağa IPv6 adres aralıklarını aşağıdaki gibi ekleyin:
+Sanal ağa ve VM 'Leri barındıran alt ağa IPv6 adres aralıklarını aşağıdaki şekilde ekleyin:
 
 ```azurepowershell
 #Add IPv6 ranges to the VNET and subnet
@@ -125,9 +125,9 @@ $subnet.addressprefix.add("ace:cab:deca::/64")
 $vnet |  Set-AzVirtualNetwork
 
 ```
-## <a name="add-ipv6-configuration-to-nic"></a>NIC'ye IPv6 yapılandırması ekleme
+## <a name="add-ipv6-configuration-to-nic"></a>IPv6 yapılandırmasını NIC 'e Ekle
 
-[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) kullanarak tüm VM NIC'lerini IPv6 adresiyle yapılandırın:
+[Add-Aznetworkınterfaceipconfig](/powershell/module/az.network/Add-AzNetworkInterfaceIpConfig) komutunu kullanarak tüm VM NIC 'Leri bir IPv6 adresi ile aşağıdaki şekilde yapılandırın:
 
 ```azurepowershell
 
@@ -147,18 +147,18 @@ $NIC_3 | Set-AzNetworkInterface
 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portalında IPv6 çift yığın sanal ağı görüntüleyin
-Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görüntüleyebilirsiniz:
-1. Portalın arama çubuğuna *myVnet*girin.
-2. **myVnet** arama sonuçlarında göründüğünde, onu seçin. Bu *myVNet*adlı çift yığını sanal ağın **Genel Bakış** sayfası başlattı. Çift yığın sanal ağ *mySubnet*adlı çift yığın alt ağında bulunan hem IPv4 ve IPv6 yapılandırmaları ile üç NIC gösterir.
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal 'de IPv6 çift yığın sanal ağını görüntüleme
+IPv6 çift yığın sanal ağını Azure portal içinde aşağıdaki gibi görüntüleyebilirsiniz:
+1. Portalın arama çubuğunda *Myvnet*' i girin.
+2. Arama sonuçlarında **Myvnet** göründüğünde seçin. Bu, *Myvnet*adlı çift yığın sanal ağının **genel bakış** sayfasını başlatır. Çift yığın sanal ağı, *Mysubnet*adlı çift yığın alt ağında bulunan IPv4 ve IPv6 yapılandırmalarına sahip üç NIC 'yi gösterir.
 
-  ![Azure'da IPv6 çift yığın sanal ağ](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
+  ![Azure 'da IPv6 çift yığın sanal ağı](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu, VM'i ve ilgili tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanabilirsiniz.
+Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
@@ -166,4 +166,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, iPv4 frontend IP yapılandırması ile varolan bir Standart Yük Dengeleyicisini çift yığın (IPv4 ve IPv6) yapılandırmasına güncelleştirmişsiniz. Ayrıca, arka uç havuzundaki VM'lerin NIC'lerine ve bunları barındıran Sanal Ağa IPv6 yapılandırmaları eklediniz. Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için Azure [Sanal Ağı için IPv6 nedir'](ipv6-overview.md) e bakın?
+Bu makalede, bir IPv4 ön uç IP yapılandırması olan mevcut bir Standart Load Balancer ikili yığın (IPv4 ve IPv6) yapılandırmasına güncelleştirmiş olursunuz. Ayrıca, arka uç havuzundaki VM 'lerin NIC 'lerine ve bunları barındıran sanal ağa IPv6 yapılandırması eklediniz. Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için bkz. [Azure sanal ağ Için IPv6 nedir?](ipv6-overview.md)

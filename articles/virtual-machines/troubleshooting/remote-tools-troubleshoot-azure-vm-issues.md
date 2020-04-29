@@ -1,6 +1,6 @@
 ---
-title: Azure VM sorunlarını gidermek için uzak araçları kullanın | Microsoft Dokümanlar
-description: PSExec, PowerShell komut dosyaları ve RDP kullanmadan uzak Azure VM sorunlarını gidermek için kullanabileceğiniz diğer uzak araçlar hakkında bilgi edinin.
+title: Azure VM sorunlarını gidermek için uzak araçları kullanma | Microsoft Docs
+description: RDP kullanmadan uzak Azure VM sorunlarını gidermek için kullanabileceğiniz PsExec, PowerShell betikleri ve diğer uzak Araçlar hakkında bilgi edinin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,51 +15,51 @@ ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
 ms.openlocfilehash: d29b2b7c2b9194f20afe4c74d117847f0e343b12
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422598"
 ---
-# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanın
+# <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>Azure VM sorunlarını gidermek için uzak araçları kullanma
 
-Bir Azure sanal makinesindeki (VM) sorunları giderdiğinizde, Uzak Masaüstü Protokolü 'nü (RDP) kullanmak yerine bu makalede tartışılan uzak araçları kullanarak VM'ye bağlanabilirsiniz.
+Bir Azure sanal makinesinde (VM) sorunları giderirken, Uzak Masaüstü Protokolü (RDP) kullanmak yerine bu makalede ele alınan uzak araçları kullanarak VM 'ye bağlanabilirsiniz.
 
 ## <a name="serial-console"></a>Seri konsol
 
-Uzak [Azure](serial-console-windows.md) VM'de komutları çalıştırmak için Azure Sanal Makineler için bir seri konsol kullanın.
+[Azure sanal makineleri için](serial-console-windows.md) , uzak Azure VM 'de komutları çalıştırmak üzere bir seri konsol kullanın.
 
 ## <a name="remote-cmd"></a>Uzak CMD
 
-[PsExec'i](https://docs.microsoft.com/sysinternals/downloads/psexec)indirin. Aşağıdaki komutu çalıştırarak VM'ye bağlanın:
+[PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec)'yi indirin. Aşağıdaki komutu çalıştırarak VM 'ye bağlanın:
 
 ```cmd
 psexec \\<computer>-u user -s cmd
 ```
 
 >[!NOTE]
->* Komut, aynı sanal ağda bulunan bir bilgisayarda çalıştırılmalıdır.
->* DGerek veya HostName, \<bilgisayar> değiştirmek için kullanılabilir.
->* -s parametresi, Sistem Hesabı (yönetici izni) kullanılarak komutun çağrılmasını sağlar.
->* PsExec TCP portları 135 ve 445 kullanır. Sonuç olarak, iki bağlantı noktasının güvenlik duvarında açık olması gerekir.
+>* Komutun aynı sanal ağdaki bir bilgisayarda çalıştırılması gerekir.
+>* DIP veya HostName, bilgisayar> değiştirmek \<için kullanılabilir.
+>* -S parametresi, komutun sistem hesabı (yönetici izni) kullanılarak çağrıldığından emin olur.
+>* PsExec 135 ve 445 TCP bağlantı noktalarını kullanır. Sonuç olarak, iki bağlantı noktasının güvenlik duvarında açık olması gerekir.
 
-## <a name="run-command"></a>Çalıştır komutu
+## <a name="run-command"></a>Komutu Çalıştır
 
-VM'de komut dosyalarını çalıştırmak için run komutu özelliğinin nasıl kullanılacağı hakkında daha fazla bilgi için, [çalıştır komutuyla Windows VM'nizde PowerShell komut dosyalarını çalıştır'a](../windows/run-command.md)bakın.
+VM 'de betikleri çalıştırmak için komutu Çalıştır özelliğinin nasıl kullanılacağı hakkında daha fazla bilgi için, bkz. [Run komutuyla WINDOWS sanal makinenizde PowerShell betikleri çalıştırma](../windows/run-command.md).
 
 ## <a name="custom-script-extension"></a>Özel Betik Uzantısı
 
-Hedef VM'de özel bir komut dosyası çalıştırmak için Özel Komut Dosyası Uzantısı özelliğini kullanabilirsiniz. Bu özelliği kullanmak için aşağıdaki koşulların karşılanması gerekir:
+Özel Betik uzantısı özelliğini kullanarak hedef VM 'de özel bir komut dosyası çalıştırabilirsiniz. Bu özelliği kullanmak için aşağıdaki koşulların karşılanması gerekir:
 
-* VM bağlantısı vardır.
-* Azure Sanal Makine Aracısı yüklüdür ve VM'de beklendiği gibi çalışır.
-* Uzantı daha önce VM yüklü değildi.
+* VM 'nin bağlantısı vardır.
+* Azure sanal makine Aracısı yüklü ve sanal makinede beklendiği şekilde çalışıyor.
+* Uzantı daha önce VM 'de yüklü değildi.
  
-  Uzantı, komut dosyasını yalnızca ilk kez kullanıldığında enjekte eder. Bu özelliği daha sonra kullanırsanız, uzantı zaten kullanıldığını algılar ve yeni komut dosyasını yüklemez.
+  Uzantı, betiği yalnızca ilk kullanıldığı zaman çıkartır. Bu özelliği daha sonra kullanırsanız, uzantı zaten kullanıldığını algılar ve yeni betiği karşıya yüklememez.
 
-Komut dosyanızı bir depolama hesabına yükleyin ve kendi kapsayıcısını oluşturun. Ardından, Azure PowerShell'de aşağıdaki komut dosyasını VM bağlantısı olan bir bilgisayarda çalıştırın.
+Komut dosyanızı bir depolama hesabına yükleyin ve kendi kapsayıcısını oluşturun. Ardından, VM bağlantısı olan bir bilgisayarda Azure PowerShell aşağıdaki betiği çalıştırın.
 
-### <a name="for-classic-deployment-model-vms"></a>Klasik dağıtım modeli VM'ler için
+### <a name="for-classic-deployment-model-vms"></a>Klasik dağıtım modeli VM 'Leri için
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -90,7 +90,7 @@ $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-azure-resource-manager-vms"></a>Azure Kaynak Yöneticisi VM'leri için
+### <a name="for-azure-resource-manager-vms"></a>Azure Resource Manager VM 'Ler için
 
  
 
@@ -120,40 +120,40 @@ Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blob
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
-## <a name="remote-powershell"></a>Uzaktan PowerShell
+## <a name="remote-powershell"></a>Uzak PowerShell
 
 >[!NOTE]
->Bu seçeneği kullanabilmeniz için TCP Bağlantı Noktası 5986 (HTTPS) açık olmalıdır.
+>Bu seçeneği kullanabilmeniz için TCP bağlantı noktası 5986 (HTTPS) açık olmalıdır.
 >
->Azure Kaynak Yöneticisi VM'leri için ağ güvenlik grubunda (NSG) bağlantı noktası 5986'yı açmanız gerekir. Daha fazla bilgi için Güvenlik gruplarına bakın. 
+>Azure Resource Manager VM 'Ler için, ağ güvenlik grubu (NSG) üzerinde 5986 numaralı bağlantı noktasını açmanız gerekir. Daha fazla bilgi için bkz. güvenlik grupları. 
 >
->RDFE VM'leri için, özel bağlantı noktası (5986) ve ortak bağlantı noktası olan bir bitiş noktanız olmalıdır. O zaman NSG'deki halka açık limanı da açmanız gerekiyor.
+>RDFE VM 'Leri için özel bağlantı noktası (5986) ve genel bağlantı noktası olan bir uç noktaya sahip olmanız gerekir. Daha sonra, NSG 'de genel kullanıma yönelik bağlantı noktasını da açmanız gerekir.
 
-### <a name="set-up-the-client-computer"></a>İstemci bilgisayarını ayarlama
+### <a name="set-up-the-client-computer"></a>İstemci bilgisayarı ayarlama
 
-VM'ye uzaktan bağlanmak için PowerShell'i kullanmak için öncelikle bağlantıya izin verecek şekilde istemci bilgisayarı kurmanız gerekir. Bunu yapmak için, uygun şekilde aşağıdaki komutu çalıştırarak PowerShell güvenilen ana bilgisayarlar listesine VM'yi ekleyin.
+VM 'yi uzaktan bağlamak üzere PowerShell 'i kullanmak için önce istemci bilgisayarı bağlantıya izin verecek şekilde ayarlamanız gerekir. Bunu yapmak için, aşağıdaki komutu uygun şekilde çalıştırarak VM 'yi PowerShell güvenilir ana bilgisayarlar listesine ekleyin.
 
-Güvenilen ana bilgisayarlar listesine bir VM eklemek için:
+Güvenilen konaklar listesine bir VM eklemek için:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName>
 ```
 
-Güvenilen ana bilgisayarlar listesine birden çok VM eklemek için:
+Güvenilir konaklar listesine birden çok VM eklemek için:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value <ComputerName1>,<ComputerName2>
 ```
 
-Tüm bilgisayarları güvenilen ana bilgisayarlar listesine eklemek için:
+Tüm bilgisayarları güvenilir konaklar listesine eklemek için:
 
 ```powershell
 Set-Item wsman:\localhost\Client\TrustedHosts -value *
 ```
 
-### <a name="enable-remoteps-on-the-vm"></a>VM'de RemotePS'yi etkinleştir
+### <a name="enable-remoteps-on-the-vm"></a>VM 'de RemotePS 'yi etkinleştirme
 
-Klasik dağıtım modeli kullanılarak oluşturulan VM'ler için, aşağıdaki komut dosyasını çalıştırmak için Özel Komut Dosyası Uzantısı'nı kullanın:
+Klasik dağıtım modeli kullanılarak oluşturulan VM 'Ler için, aşağıdaki betiği çalıştırmak üzere özel Betik uzantısı ' nı kullanın:
 
 ```powershell
 Enable-PSRemoting -Force
@@ -163,13 +163,13 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-Azure Kaynak Yöneticisi VM'leri için, EnableRemotePS komut dosyasını çalıştırmak için portaldaki çalıştır komutlarını kullanın:
+Azure Resource Manager VM 'Ler için, EnableRemotePS betiğini çalıştırmak için portaldan Çalıştır komutlarını kullanın:
 
-![Çalıştır komutu](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
+![Komutu Çalıştır](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
 ### <a name="connect-to-the-vm"></a>VM’ye bağlanma
 
-İstemci bilgisayar konumuna göre aşağıdaki komutu çalıştırın:
+İstemci bilgisayar konumuna bağlı olarak aşağıdaki komutu çalıştırın:
 
 * Sanal ağ veya dağıtım dışında
 
@@ -180,7 +180,7 @@ Azure Kaynak Yöneticisi VM'leri için, EnableRemotePS komut dosyasını çalı�
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * Azure Kaynak Yöneticisi VM için önce ortak IP adresine bir DNS adı ekleyin. Ayrıntılı adımlar için bkz. Windows [VM için Azure portalında tam nitelikli bir etki alanı adı oluşturun.](../windows/portal-create-fqdn.md) Ardından şu komutu çalıştırın:
+  * Azure Resource Manager VM için, önce genel IP adresine bir DNS adı ekleyin. Ayrıntılı adımlar için bkz. [WINDOWS VM için Azure Portal tam etki alanı adı oluşturma](../windows/portal-create-fqdn.md). Ardından şu komutu çalıştırın:
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
@@ -195,9 +195,9 @@ Azure Kaynak Yöneticisi VM'leri için, EnableRemotePS komut dosyasını çalı�
   ```
 
 >[!NOTE] 
->SkipCaCheck bayrağını ayarlamak, oturumu başlattığınızda VM'ye sertifika alma gereksinimini atlar.
+>SkipCaCheck bayrağını ayarlamak, oturumu başlattığınızda VM 'ye bir sertifikayı aktarma gereksinimini atlar.
 
-VM'de komut dosyasını uzaktan çalıştırmak için Invoke Komutu cmdlet'ini de kullanabilirsiniz.
+Ayrıca, VM 'de bir betiği uzaktan çalıştırmak için Invoke-Command cmdlet 'ini de kullanabilirsiniz.
 
 ```powershell
 Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
@@ -206,44 +206,44 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 ## <a name="remote-registry"></a>Uzak Kayıt Defteri
 
 >[!NOTE]
->Bu seçeneği kullanabilmek için TCP bağlantı noktası 135 veya 445'in açık olması gerekir.
+>Bu seçeneği kullanabilmek için TCP bağlantı noktası 135 veya 445 açık olmalıdır.
 >
->Azure Kaynak Yöneticisi VM'leri için NSG'de 5986 bağlantı noktasını açmanız gerekir. Daha fazla bilgi için Güvenlik gruplarına bakın. 
+>Azure Resource Manager VM 'Ler için NSG 'de 5986 numaralı bağlantı noktasını açmanız gerekir. Daha fazla bilgi için bkz. güvenlik grupları. 
 >
->RDFE VM'leri için, özel bağlantı noktası 5986 ve ortak bağlantı noktası olan bir bitiş noktanız olmalıdır. Ayrıca NSG'deki halka açık limanı da açmalısın.
+>RDFE VM 'Leri için, özel bağlantı noktası 5986 ve genel bağlantı noktası olan bir uç noktaya sahip olmanız gerekir. Ayrıca, NSG 'de genel kullanıma yönelik bağlantı noktasını açmanız gerekir.
 
-1. Aynı sanal ağdaki başka bir VM'den kayıt defteri düzenleyicisini (regedit.exe) açın.
+1. Aynı sanal ağdaki başka bir VM 'den, kayıt defteri Düzenleyicisi 'ni (Regedit. exe) açın.
 
-2. **Dosya** > **Bağlan Ağ Kayıt Defteri'ni**seçin.
+2. **Dosya** > **Connect ağ kayıt defteri**' ni seçin.
 
-   ![Kayıt defteri düzenleyicisi](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![Kayıt Defteri Düzenleyicisi](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. Hedef **VM'yi ana bilgisayar adına** veya **dinamik IP'ye** (tercih edilen) göre, **kutuyu seçmek için nesne adını girin'e** girerek bulun.
+3. Hedef VM 'yi **konak adına** veya **dinamik IP** 'ye (tercih edilen) ekleyerek **Seçilecek nesne adını girin** kutusunu girerek bulun.
 
-   ![Kutuyu seçmek için nesne adını girin](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![Seçilecek nesne adını girin kutusu](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
-4. Hedef VM için kimlik bilgilerini girin.
+4. Hedef VM 'nin kimlik bilgilerini girin.
 
-5. Gerekli kayıt defteri değişikliklerini yapın.
+5. Tüm gerekli kayıt defteri değişikliklerini yapın.
 
 ## <a name="remote-services-console"></a>Uzak hizmetler konsolu
 
 >[!NOTE]
->Bu seçeneği kullanabilmek için TCP bağlantı noktaları 135 veya 445'in açık olması gerekir.
+>Bu seçeneği kullanabilmek için 135 veya 445 TCP bağlantı noktaları açık olmalıdır.
 >
->Azure Kaynak Yöneticisi VM'leri için NSG'de 5986 bağlantı noktasını açmanız gerekir. Daha fazla bilgi için Güvenlik gruplarına bakın. 
+>Azure Resource Manager VM 'Ler için NSG 'de 5986 numaralı bağlantı noktasını açmanız gerekir. Daha fazla bilgi için bkz. güvenlik grupları. 
 >
->RDFE VM'leri için, özel bağlantı noktası 5986 ve ortak bağlantı noktası olan bir bitiş noktanız olmalıdır. Ayrıca NSG'deki halka açık limanı da açmalısın.
+>RDFE VM 'Leri için, özel bağlantı noktası 5986 ve genel bağlantı noktası olan bir uç noktaya sahip olmanız gerekir. Ayrıca, NSG 'de genel kullanıma yönelik bağlantı noktasını açmanız gerekir.
 
-1. Aynı sanal ağdaki başka bir VM'den **Services.msc'nin**bir örneğini açın.
+1. Aynı sanal ağdaki başka bir VM 'den **Services. msc**' nin bir örneğini açın.
 
-2. Sağ tıkla **Hizmetler (Yerel)**.
+2. **Hizmetler (yerel)** öğesine sağ tıklayın.
 
-3. **Başka bir bilgisayara bağlan'ı**seçin.
+3. **Başka bir bilgisayara bağlan**' ı seçin.
 
-   ![Uzaktan hizmet](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
+   ![Uzak hizmet](./media/remote-tools-troubleshoot-azure-vm-issues/remote-services.png)
 
-4. Hedef VM'nin dinamik IP'sini girin.
+4. Hedef VM 'nin dinamik IP 'sini girin.
 
    ![Giriş dinamik IP](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
@@ -251,9 +251,9 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Enter-PSSession cmdlet hakkında daha fazla bilgi için [bkz.](https://technet.microsoft.com/library/hh849707.aspx)
-- Klasik dağıtım modelini kullanarak Windows için Özel Komut Dosyası Uzantısı hakkında daha fazla bilgi için [Windows için Özel Komut Dosyası Uzantısı'na](../extensions/custom-script-classic.md)bakın.
-- PsExec, [PSTools Suite'in](https://download.sysinternals.com/files/PSTools.zip)bir parçasıdır.
-- PSTools Suite hakkında daha fazla bilgi için [PSTools'a](https://docs.microsoft.com/sysinternals/downloads/pstools)bakın.
+- ENTER-PSSession cmdlet 'i hakkında daha fazla bilgi için bkz. [-PSSession](https://technet.microsoft.com/library/hh849707.aspx).
+- Klasik dağıtım modelini kullanarak Windows için özel Betik uzantısı hakkında daha fazla bilgi için bkz. [Windows Için özel Betik uzantısı](../extensions/custom-script-classic.md).
+- PsExec, [Padstools paketinin](https://download.sysinternals.com/files/PSTools.zip)bir parçasıdır.
+- Padstools Suite hakkında daha fazla bilgi için bkz. [padstools](https://docs.microsoft.com/sysinternals/downloads/pstools).
 
 

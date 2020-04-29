@@ -1,6 +1,6 @@
 ---
 title: Ağ özellikleri
-description: Azure Uygulama Hizmeti'ndeki ağ özellikleri ve güvenlik veya işlevsellik için ağ gereksinimleriniz için ihtiyacınız olan özellikler hakkında bilgi edinin.
+description: Azure App Service ağ özellikleri hakkında bilgi edinin ve ağınızın güvenlik veya işlevsellik için ihtiyaç duyduğu özellikleri öğrenin.
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
@@ -8,219 +8,219 @@ ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474914"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
-Azure Uygulama Hizmeti'ndeki uygulamalar birden çok şekilde dağıtılabilir. Varsayılan olarak, App Service barındırılan uygulamalar doğrudan internet erişimine açıktır ve yalnızca internet barındırılan uç noktalara ulaşabilir. Ancak birçok müşteri uygulamasının gelen ve giden ağ trafiğini denetlemesi gerekir. Bu gereksinimleri karşılamak için Uygulama Hizmeti'nde çeşitli özellikler mevcuttur. Sorun, belirli bir sorunu çözmek için hangi özelliğin kullanılması gerektiğini bilmektir. Bu belge, müşterilerin bazı örnek kullanım örneklerine göre hangi özelliğin kullanılması gerektiğini belirlemelerine yardımcı olmak için tasarlanmıştır.
+Azure App Service uygulamalar, birden çok şekilde dağıtılabilir. Varsayılan olarak, App Service barındırılan uygulamalar doğrudan internet erişimine açık ve yalnızca İnternet 'te barındırılan uç noktalara erişebilir. Bununla birlikte, birçok müşteri uygulamasının gelen ve giden ağ trafiğini kontrol etmeniz gerekir. Bu ihtiyaçları karşılamak için App Service çeşitli özellikler mevcuttur. Bu zorluk, belirli bir sorunu çözmek için hangi özelliğin kullanılması gerektiğini öğrenmektir. Bu belge, müşterilerin bazı örnek kullanım örneklerine göre hangi özelliğin kullanılması gerektiğini belirlemesine yardımcı olmaya yöneliktir.
 
-Azure Uygulama Hizmeti için iki birincil dağıtım türü vardır. Ücretsiz, Paylaşılan, Temel, Standart, Premium ve Premiumv2 fiyatlandırma SK'lerinde Uygulama Hizmeti planlarını barındıran çok kiracılı kamu hizmeti vardır. Ardından, Doğrudan Azure Sanal Ağınızda (VNet) İzole SKU Uygulama Hizmeti planlarını barındıran tek kiracı Lı App Service Environment (ASE) bulunur. Kullandığınız özellikler, çok kiracılı hizmette veya BIR ASE'de yseniz, değişiklik gösterir. 
+Azure App Service için iki birincil dağıtım türü vardır. Ücretsiz, paylaşılan, temel, standart, Premium ve Premiumv2 fiyatlandırma SKU 'Larında App Service planlarını barındıran çok kiracılı ortak hizmet vardır. Ardından, yalıtılmış SKU App Service planlarının doğrudan Azure sanal ağınızda (VNet) barındırdığı tek kiracı App Service Ortamı (ASE) vardır. Kullandığınız özellikler, çok kiracılı bir hizmettir veya bir AO 'da olduğunuzda farklılık gösterecektir. 
 
-## <a name="multi-tenant-app-service-networking-features"></a>Çok kiracılı Uygulama Hizmeti ağ özellikleri 
+## <a name="multi-tenant-app-service-networking-features"></a>Çok kiracılı App Service ağ özellikleri 
 
-Azure Uygulama Hizmeti dağıtılmış bir sistemdir. Gelen HTTP/HTTPS isteklerini işleyen rollere ön uç denir. Müşteri iş yükünü barındıran rollere işçiler denir. Bir Uygulama Hizmeti dağıtımındaki tüm roller çok kiracılı bir ağda bulunur. Aynı Uygulama Hizmeti ölçeği biriminde çok sayıda farklı müşteri olduğundan, App Service ağını doğrudan ağınıza bağlayamazsınız. Ağları bağlamak yerine, uygulama iletişiminin farklı yönlerini ele alacak özelliklere ihtiyacımız vardır. Uygulamanızdan gelen istekleri işleyen özellikler, uygulamanızdan arama yaparken sorunları çözmek için kullanılamaz. Aynı şekilde, uygulamanızdan gelen aramaların sorunlarını çözen özellikler de uygulamanızın sorunlarını çözmek için kullanılamaz.  
+Azure App Service dağıtılmış bir sistemdir. Gelen HTTP/HTTPS isteklerini işleyen rollere ön uçlar denir. Müşteri iş yükünü barındıran rollere çalışanlar adı verilir. App Service dağıtımındaki tüm roller çok kiracılı bir ağda bulunur. Aynı App Service ölçek biriminde birçok farklı müşteri olduğundan, App Service ağını doğrudan ağınıza bağlanamazsınız. Ağları bağlamak yerine, uygulama iletişiminin farklı yönlerini işlemek için özelliklere ihtiyacımız var. Uygulamanızdaki istekleri işleyen özellikler, uygulamanızdan çağrı yaparken sorunları çözümlemek için kullanılamaz. Benzer şekilde, uygulamanızdaki çağrılara yönelik sorunları çözebilecek özellikler, uygulamanızdaki sorunları çözümlemek için kullanılamaz.  
 
-| Gelen özellikler | Giden özellikler |
+| Gelen özellikler | Giden Özellikler |
 |---------------------|-------------------|
-| Uygulama atanan adres | Karma Bağlantılar |
-| Erişim Kısıtlamaları | Ağ Geçidi gerekli VNet Entegrasyonu |
+| Uygulama tarafından atanan adres | Karma Bağlantılar |
+| Erişim kısıtlamaları | Ağ Geçidi gerekli VNet tümleştirmesi |
 | Hizmet Uç Noktaları | Sanal Ağ Tümleştirmesi |
 
-Aksi belirtilmedikçe, tüm özellikler birlikte kullanılabilir. Çeşitli sorunları çözmek için özellikleri karıştırabilirsiniz.
+Aksi belirtilmedikçe tüm özellikler birlikte kullanılabilir. Çeşitli sorunlarınızı çözümlemek için özellikleri karıştırabilirsiniz.
 
-## <a name="use-case-and-features"></a>Büyük/küçük harf ve özellikleri kullanma
+## <a name="use-case-and-features"></a>Kullanım örneği ve Özellikler
 
-Herhangi bir kullanım örneği için, sorunu çözmek için birkaç yol olabilir.  Kullanılacak doğru özellik bazen yalnızca kullanım örneğinin dışındaki nedenlerden kaynaklanmaktadır. Aşağıdaki gelen kullanım durumları, uygulamanıza giden trafiği kontrol etme yle ilgili sorunları çözmek için App Service ağ özelliklerinin nasıl kullanılacağını önerir. 
+Belirli bir kullanım durumu için, sorunu çözmenin birkaç yolu olabilir.  Kullanılacak doğru özellik bazen yalnızca kullanım durumunun kendisinden kaynaklanan nedenlerden kaynaklanır. Aşağıdaki gelen kullanım örnekleri, uygulamanıza giden trafiği denetleme sorunlarını çözmek için App Service ağ özelliklerini kullanmayı önerir. 
  
 | Gelen kullanım örnekleri | Özellik |
 |---------------------|-------------------|
-| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleyin | uygulama atanan adres |
-| Uygulamanız için paylaşılmayan, özel gelen adres | uygulama atanan adres |
-| İyi tanımlanmış bir dizi adresten uygulamanıza erişimi kısıtlama | Erişim Kısıtlamaları |
-| Bir VNet'teki kaynaklardan uygulamama erişimi kısıtlama | Hizmet Uç Noktaları </br> ILB ASE </br> Özel bitiş noktası (Önizleme) |
-| Uygulamamı VNet'imde özel bir IP'de pozlama | ILB ASE </br> hizmet bitiş noktaları olan bir Uygulama Ağ Geçidi'nde gelen ler için özel IP </br> Hizmet Bitiş Noktası (Önizleme) |
-| Uygulamamı bir WAF ile koruyun | Uygulama Ağ Geçidi + ILB ASE </br> Hizmet uç noktalarıyla Application Gateway </br> Erişim Kısıtlamaları olan Azure Ön Kapı |
-| Farklı bölgelerdeki uygulamalarıma bakiye trafiği yükleme | Erişim Kısıtlamaları olan Azure Ön Kapı | 
-| Aynı bölgedeki yük dengesi trafiği | [Hizmet uç noktalarıyla Application Gateway][appgwserviceendpoints] | 
+| Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme | uygulama tarafından atanan adres |
+| Paylaştırılmamış, uygulamanız için adanmış gelen adres | uygulama tarafından atanan adres |
+| Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın | Erişim kısıtlamaları |
+| VNet 'teki kaynaklardan uygulamama erişimi kısıtla | Hizmet Uç Noktaları </br> ıLB ATıCı </br> Özel uç nokta (Önizleme) |
+| Uygulamamın sanal ağı 'nda özel bir IP 'de kullanıma sunulması | ıLB ATıCı </br> hizmet uç noktalarına sahip bir Application Gateway gelen için özel IP </br> Hizmet uç noktası (Önizleme) |
+| Bir WAF ile uygulamamı koruyun | Application Gateway + ıLB Ao </br> Hizmet uç noktalarıyla Application Gateway </br> Erişim kısıtlamalarına sahip Azure ön kapısı |
+| Farklı bölgelerde uygulamalarıma trafik yükünü dengelemek | Erişim kısıtlamalarına sahip Azure ön kapısı | 
+| Aynı bölgedeki Yük Dengeleme trafiği | [Hizmet uç noktalarıyla Application Gateway][appgwserviceendpoints] | 
 
-Aşağıdaki giden kullanım durumları, uygulamanızın giden erişim gereksinimlerini çözmek için App Service ağ özelliklerinin nasıl kullanılacağını önerir. 
+Aşağıdaki giden kullanım örnekleri, uygulamanız için giden erişim ihtiyaçlarını çözümlemek üzere App Service ağ özelliklerini kullanmayı önerir. 
 
 | Giden kullanım örnekleri | Özellik |
 |---------------------|-------------------|
-| Aynı bölgedeki bir Azure Sanal Ağındaki kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> Ase |
-| Farklı bir bölgedeki Azure Sanal Ağı'ndaki kaynaklara erişin | Ağ Geçidi gerekli VNet Entegrasyonu </br> ASE ve VNet eşleme |
-| Hizmet bitiş noktalarıyla güvence altına alınmıştır kaynaklara erişim | Sanal Ağ Tümleştirmesi </br> Ase |
-| Azure'a bağlı olmayan özel bir ağdaki kaynaklara erişin | Karma Bağlantılar |
-| ExpressRoute devreleri arasında kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> Ase | 
-| Web uygulamanızdan güvenli giden trafik | VNet Tümleştirme ve Ağ Güvenlik Grupları </br> Ase | 
-| Web uygulamanızdan giden trafiği yönlendirme | VNet Tümleştirme ve Rota Tabloları </br> Ase | 
+| Aynı bölgedeki bir Azure Sanal Ağa gelen kaynaklara erişim | Sanal Ağ Tümleştirmesi </br> ASE |
+| Azure sanal içindeki kaynaklara farklı bir bölge Ağa gelen erişme | Ağ Geçidi gerekli VNet tümleştirmesi </br> ASE ve VNet eşlemesi |
+| Hizmet uç noktaları ile korunan kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> ASE |
+| Azure 'a bağlı olmayan özel bir ağdaki kaynaklara erişme | Karma Bağlantılar |
+| ExpressRoute devrelerine göre kaynaklara erişin | Sanal Ağ Tümleştirmesi </br> ASE | 
+| Web uygulamanızdan giden trafiği güvenli hale getirme | VNet tümleştirmesi ve ağ güvenlik grupları </br> ASE | 
+| Web uygulamanızdan giden trafiği yönlendirme | VNet tümleştirmesi ve rota tabloları </br> ASE | 
 
 
 ### <a name="default-networking-behavior"></a>Varsayılan ağ davranışı
 
-Azure Uygulama Hizmeti ölçek birimleri, her dağıtımda birçok müşteriyi destekler. Ücretsiz ve Paylaşılan SKU, çok kiracılı çalışanlarda müşteri iş yüklerini barındırmayı planlar. Temel ve yukarıdaki planlar, yalnızca bir Uygulama Hizmeti planına (ASP) adanmış müşteri iş yüklerini barındırMaktadır. Standart Uygulama Hizmeti planınız varsa, bu plandaki tüm uygulamalar aynı çalışan üzerinde çalışır. İşçiyi ölçeklendirirseniz, bu ASP'deki tüm uygulamalar ASP'nizdeki her örnek için yeni bir çalışanda çoğaltılır. Premiumv2 için kullanılan işçiler, diğer planlariçin kullanılan işçilerden farklıdır. Her Uygulama Hizmeti dağıtımının, bu Uygulama Hizmeti dağıtımındaki uygulamalara gelen tüm trafik için kullanılan bir IP adresi vardır. Ancak her yerde 4 ila 11 adresleri giden aramalar yapmak için kullanılır. Bu adresler, bu Uygulama Hizmeti dağıtımındaki tüm uygulamalar tarafından paylaşılır. Giden adresler farklı alt türlerine göre farklıdır. Bu, Ücretsiz, Paylaşılan, Temel, Standart ve Premium ADP'ler tarafından kullanılan adreslerin Premiumv2 ASP'lerinden gelen giden aramalarda kullanılan adreslerden farklı olduğu anlamına gelir. Uygulamanızın özelliklerine bakarsanız, uygulamanız tarafından kullanılan gelen ve giden adresleri görebilirsiniz. BIR IP ACL ile bir bağımlılığı kilitlemeniz gerekiyorsa, olası Giden Adresler'i kullanın. 
+Azure App Service ölçek birimleri her dağıtımda çok sayıda müşteriyi destekler. Ücretsiz ve paylaşılan SKU planları, çok kiracılı çalışanlar üzerinde müşteri iş yüklerini barındırır. Temel ve yukarıdaki planlar, yalnızca bir App Service planına (ASP) ayrılmış müşteri iş yüklerini barındırır. Standart bir App Service planınız varsa, Bu plandaki tüm uygulamalar aynı çalışan üzerinde çalışır. Çalışanı ölçeklendirirseniz, ASP 'deki tüm uygulamalar, ASP 'inizdeki her bir örnek için yeni bir çalışan üzerinde çoğaltılır. Premiumv2 için kullanılan çalışanlar, diğer planlar için kullanılan çalışanlardan farklıdır. Her App Service dağıtımı, bu App Service dağıtımında bulunan uygulamalara yönelik tüm gelen trafik için kullanılan bir IP adresine sahiptir. Ancak, giden çağrıları yapmak için 4 ile 11 arasında adreslerin herhangi bir yerinde kullanılır. Bu adresler, bu App Service dağıtımındaki tüm uygulamalar tarafından paylaşılır. Giden adresler farklı çalışan türlerine göre farklılık açmış. Bu, ücretsiz, paylaşılan, temel, standart ve Premium ASPs tarafından kullanılan adreslerin, Premiumv2 ASPs 'den giden çağrılar için kullanılan adreslerden farklı olduğu anlamına gelir. Uygulamanızın özelliklerine bakarsanız, uygulamanız tarafından kullanılan gelen ve giden adresleri görebilirsiniz. Bir IP ACL 'SI ile bir bağımlılığı kilitlemeniz gerekiyorsa, possibleOutboundAddresses kullanın. 
 
 ![Uygulama özellikleri](media/networking-features/app-properties.png)
 
-Uygulama Hizmeti,hizmeti yönetmek için kullanılan bir dizi uç noktaya sahiptir.  Bu adresler ayrı bir belgede yayınlanır ve AppServiceManagement IP servis etiketinde de yer alan adreslerdir. AppServiceManagement etiketi yalnızca bu tür trafiğe izin vermeniz gereken bir Uygulama Hizmet Ortamı (ASE) ile kullanılır. App Service gelen adresleri AppService IP servis etiketinde izlenir. App Service tarafından kullanılan giden adresleri içeren bir IP hizmet etiketi yoktur. 
+App Service, hizmeti yönetmek için kullanılan birkaç uç nokta içerir.  Bu adresler ayrı bir belgede yayımlanır ve AppServiceManagement IP hizmeti etiketinde de bulunur. AppServiceManagement etiketi yalnızca bu tür trafiğe izin vermeniz gereken bir App Service Ortamı (Ao) ile kullanılır. App Service gelen adresler AppService IP hizmeti etiketinde izlenir. App Service tarafından kullanılan giden adresleri içeren bir IP hizmeti etiketi yok. 
 
-![Uygulama Hizmeti gelen ve giden diyagram](media/networking-features/default-behavior.png)
+![Gelen ve giden diyagramı App Service](media/networking-features/default-behavior.png)
 
-### <a name="app-assigned-address"></a>Uygulama atanan adres 
+### <a name="app-assigned-address"></a>Uygulama tarafından atanan adres 
 
-Uygulama atanan adres özelliği IP tabanlı SSL özelliğinin bir dalıdır ve uygulamanızla Birlikte SSL ayarlayarak erişilir. Bu özellik IP tabanlı SSL aramaları için kullanılabilir, ancak uygulamanıza yalnızca sahip olduğu bir adresi vermek için de kullanılabilir. 
+Uygulama tarafından atanan adres özelliği, IP tabanlı SSL 'nin bir listesini temizleyerek uygulamanız ile SSL ayarlanarak erişilir. Bu özellik IP tabanlı SSL çağrıları için kullanılabilir, ancak uygulamanıza yalnızca sahip olduğu bir adres vermek için de kullanılabilir. 
 
-![Uygulama atanan adres diyagramı](media/networking-features/app-assigned-address.png)
+![Uygulama tarafından atanan adres diyagramı](media/networking-features/app-assigned-address.png)
 
-Atanmış bir adres kullandığınızda, trafiğiniz yine de App Service ölçeği birimine gelen tüm trafiği işleyen aynı ön uç rollerinden geçer. Ancak uygulamanız için atanan adres yalnızca uygulamanız tarafından kullanılır. Bu özelliğin kullanım örnekleri şunlardır:
+Uygulama tarafından atanan bir adres kullandığınızda, trafiğiniz hala App Service ölçek birimine gelen tüm trafiği işleyen ön uç rollerinden geçer. Ancak uygulamanıza atanan adres yalnızca uygulamanız tarafından kullanılır. Bu özellik için kullanım örnekleri şunlardır:
 
-* Uygulamanız için IP tabanlı SSL gereksinimlerini destekleyin
-* Uygulamanız için başka hiçbir şeyle paylaşılmayan özel bir adres ayarlama
+* Uygulamanız için IP tabanlı SSL gereksinimlerini destekleme
+* Uygulamanız için, başka bir şeyle paylaşılmayan özel bir adres ayarlayın
 
-[Azure Uygulama Hizmeti'nde TLS/SSL sertifikası ekle'deki][appassignedaddress]öğretici yle uygulamanızda nasıl bir adres ayarlayabileceğinizi öğrenebilirsiniz. 
+[Azure App Service 'de TLS/SSL sertifikası ekleme][appassignedaddress]öğreticisiyle uygulamanızda bir adresin nasıl ayarlanacağını öğrenebilirsiniz. 
 
-### <a name="access-restrictions"></a>Erişim Kısıtlamaları 
+### <a name="access-restrictions"></a>Erişim kısıtlamaları 
 
-Erişim Kısıtlamaları **özelliği, gelen** istekleri kaynak IP adresine göre filtrelemenize olanak tanır. Filtreleme eylemi, uygulamalarınızın çalıştığı alt rollerden yukarı doğru olan ön uç rolleri üzerinde gerçekleşir. Ön uç rolleri işçilerden akış yukarı olduğundan, Erişim Kısıtlamaları özelliği uygulamalarınız için ağ düzeyi koruması olarak kabul edilebilir. Bu özellik, öncelik sırasına göre değerlendirilen adres bloklarının listesini oluşturmanıza ve reddetmenize olanak tanır. Azure Ağ'da bulunan Ağ Güvenlik Grubu (NSG) özelliğine benzer.  Bu özelliği bir ASE'de veya çok kiracılı hizmette kullanabilirsiniz. ILB ASE ile kullanıldığında, özel adres bloklarından erişimi kısıtlayabilirsiniz.
+Erişim kısıtlamaları özelliği, **gelen** istekleri, özgün IP adresine göre filtrelemenize olanak sağlar. Filtreleme eylemi, uygulamalarınızın çalıştığı çalışan rollerden yukarı akış olan ön uç rollerde gerçekleşir. Ön uç rolleri çalışanlardan yukarı akış olduğundan, erişim kısıtlamaları özelliği uygulamalarınız için ağ düzeyinde koruma olarak kabul edilebilir. Özelliği, öncelik sırasına göre değerlendirilen izin verme ve reddetme adres bloklarının bir listesini oluşturmanızı sağlar. Azure ağı 'nda bulunan ağ güvenlik grubu (NSG) özelliğine benzer.  Bu özelliği bir ate veya çok kiracılı hizmette kullanabilirsiniz. ILB Ao ile birlikte kullanıldığında, erişimi özel adres bloklarından kısıtlayabilirsiniz.
 
-![Erişim Kısıtlamaları](media/networking-features/access-restrictions.png)
+![Erişim kısıtlamaları](media/networking-features/access-restrictions.png)
 
-Erişim Kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğiniz senaryolarda yardımcı olur. Bu özelliğin kullanım örnekleri arasında:
+Erişim kısıtlamaları özelliği, uygulamanıza ulaşmak için kullanılabilecek IP adreslerini kısıtlamak istediğiniz senaryolarda yardımcı olur. Bu özellik için kullanım örnekleri arasında:
 
-* İyi tanımlanmış bir dizi adresten uygulamanıza erişimi kısıtlama 
-* Azure Ön Kapı gibi bir yük dengeleme hizmeti aracılığıyla erişimi kısıtlama. Gelen trafiğinizi Azure Ön Kapı'ya kilitlemek istiyorsanız, 147.243.0.0/16 ve 2a01:111:2050:/44'ten gelen trafiğe izin verecek kurallar oluşturun. 
+* Uygulamanıza erişimi iyi tanımlanmış bir adres kümesinden sınırlayın 
+* Azure ön kapısı gibi bir yük dengeleme hizmetinden gelen erişimi kısıtlayın. Gelen trafiğinizi Azure ön kapısına kilitlemek isterseniz, 147.243.0.0/16 ' dan trafiğe izin veren kurallar oluşturun ve 2a01:111:2050::/44. 
 
-![Ön Kapı ile Erişim Kısıtlamaları](media/networking-features/access-restrictions-afd.png)
+![Ön kapılı erişim kısıtlamaları](media/networking-features/access-restrictions-afd.png)
 
-Uygulamanıza erişimi yalnızca Azure Sanal Ağınızdaki (VNet) kaynaklardan ulaşılabilmesi için kilitlemek istiyorsanız, kaynağınız VNet'inizde ne olursa olsun statik bir genel adrese ihtiyacınız vardır. Kaynakların ortak adresi yoksa, bunun yerine Hizmet Bitiş Noktaları özelliğini kullanmanız gerekir. [Erişim Kısıtlamalarını Yapılandırma][iprestrictions]öğreticisiyle bu özelliği nasıl etkinleştireceklerinizi öğrenin.
+Uygulamanıza erişimi yalnızca Azure sanal ağınızdaki (VNet) kaynaklardan ulaşılabilen şekilde kilitlemek istiyorsanız, kaynağınızın VNet 'iniz üzerinde olduğu her şey için statik bir genel adrese ihtiyacınız vardır. Kaynakların ortak bir adresi yoksa, bunun yerine hizmet uç noktaları özelliğini kullanmanız gerekir. [Erişim kısıtlamalarını yapılandırma][iprestrictions]hakkında öğreticiyle bu özelliği etkinleştirmeyi öğrenin.
 
 ### <a name="service-endpoints"></a>Hizmet uç noktaları
 
-Hizmet bitiş noktaları, uygulamanıza **gelen** erişimi kilitlemenize olanak tanır, böylelikle kaynak adres seçtiğiniz bir alt ağ kümesinden gelmelidir. Bu özellik IP Erişim Kısıtlamaları ile birlikte çalışır. Hizmet bitiş noktaları, IP Erişim Kısıtlamaları ile aynı kullanıcı deneyiminde ayarlanır. VNet'lerinizde ortak adreslerin yanı sıra alt ağları da içeren erişim kurallarının izin ver/reddet listesini oluşturabilirsiniz. Bu özellik, şu senaryoları destekler:
+Hizmet uç noktaları, kaynak adresin seçtiğiniz bir alt ağ kümesinden gelmesi için uygulamanıza **gelen** erişimi kilitlemenize olanak tanır. Bu özellik IP erişim kısıtlamalarıyla birlikte çalışmaktadır. Hizmet uç noktaları, IP erişim kısıtlamalarıyla aynı kullanıcı deneyiminde ayarlanır. Sanal ağlarınızdaki alt ağların yanı sıra ortak adresleri de içeren erişim kuralları için izin verme/reddetme listesi oluşturabilirsiniz. Bu özellik gibi senaryoları destekler:
 
-![hizmet bitiş noktaları](media/networking-features/service-endpoints.png)
+![hizmet uç noktaları](media/networking-features/service-endpoints.png)
 
-* Uygulamanıza gelen trafiği kilitlemek için uygulamanızla bir Uygulama Ağ Geçidi ayarlama
-* Uygulamanıza erişimi VNet'inizdeki kaynaklarla kısıtlamak. Bu, VM'leri, AS'leri ve hatta VNet Tümleştirmesi kullanan diğer uygulamaları içerebilir 
+* Uygulamanıza gelen trafiği kilitlemek için uygulamanızla bir Application Gateway ayarlama
+* Sanal ağınızdaki kaynaklarla uygulamanıza erişimi kısıtlama. Bu, sanal makineler, ASE veya VNet tümleştirmesi kullanan diğer uygulamalar içerebilir 
 
-![uygulama ağ geçidi ile hizmet bitiş noktaları](media/networking-features/service-endpoints-appgw.png)
+![uygulama ağ geçidi ile hizmet uç noktaları](media/networking-features/service-endpoints-appgw.png)
 
-[Hizmet Bitiş Noktası Erişim Kısıtlamalarını Yapılandırma][serviceendpoints] öğreticisinde uygulamanızla hizmet bitiş noktalarını yapılandırma hakkında daha fazla bilgi edinebilirsiniz
+Hizmet [uç noktası erişim kısıtlamalarını yapılandırma][serviceendpoints] konusundaki öğreticide uygulamanızla hizmet uç noktalarını yapılandırma hakkında daha fazla bilgi edinebilirsiniz
 
-### <a name="private-endpoint-preview"></a>Özel Bitiş Noktası (Önizleme)
+### <a name="private-endpoint-preview"></a>Özel uç nokta (Önizleme)
 
-Private Endpoint, Azure Private Link ile sizi Web Uygulamanıza özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Private Endpoint, VNet'inizden gelen özel bir IP adresini kullanır ve Web Uygulamasını VNet'inize etkin bir şekilde getirir. Bu özellik yalnızca Web Uygulamanıza **gelen** akışlar içindir.
-[Azure Web Uygulaması için Özel Uç Noktaları Kullanma (Önizleme)][privateendpoints]
+Özel uç nokta, Web uygulamanıza Azure özel bağlantısı tarafından özel olarak ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan özel bir IP adresi kullanarak Web uygulamasını sanal ağınıza etkin bir şekilde getiriyor. Bu özellik yalnızca Web uygulamanıza **gelen** akışlara yöneliktir.
+[Azure Web App için özel uç noktaları kullanma (Önizleme)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>Karma Bağlantılar
 
-Uygulama Hizmeti Karma Bağlantıları, uygulamalarınızın belirtilen TCP uç noktalarına **giden** aramalar yapmalarını sağlar. Bitiş noktası şirket içinde, bir VNet'te veya 443 bağlantı noktasından Azure'a giden trafiğin izin verdiği herhangi bir yerde olabilir. Özellik, Bir Windows Server 2012 veya daha yeni ana bilgisayara Karma Bağlantı Yöneticisi (HCM) adlı bir geçiş aracısı yüklemesini gerektirir. HCM'nin 443 portundan Azure Relay'e ulaşabilmesi gerekir. HCM portaldaki App Service Hybrid Connections UI'den indirilebilir. 
+App Service Karma Bağlantılar, uygulamalarınızın belirtilen TCP uç noktalarına **giden** çağrılar yapmasına olanak sağlar. Uç nokta, bağlantı noktası 443 ' da Azure 'a giden trafiğe izin veren bir sanal ağda veya herhangi bir yerde olabilir. Bu özellik, Windows Server 2012 veya daha yeni bir konakta Karma Bağlantı Yöneticisi (HCM) adlı bir geçiş aracısının yüklenmesini gerektirir. HCM 'nin 443 numaralı bağlantı noktasında Azure Relay erişebiliyor olması gerekir. HCM, portalda App Service Karma Bağlantılar kullanıcı arabiriminden indirilebilir. 
 
 ![Karma Bağlantılar ağ akışı](media/networking-features/hybrid-connections.png)
 
-App Service Karma Bağlantılar özelliği, Azure Röle Karma Bağlantılar özelliği ne eklenir. Uygulama Hizmeti, yalnızca uygulamanızdan bir TCP ana bilgisayara ve bağlantı noktasına giden aramaları destekleyen özel bir özellik biçimini kullanır. Bu ana bilgisayar ve bağlantı noktasının yalnızca HCM'nin yüklü olduğu ana bilgisayarda çözülmesi gerekir. Uygulama, App Service'de, Karma Bağlantınızda tanımlanan ana bilgisayar ve bağlantı noktası üzerinde bir DNS araması yaptığında, trafik otomatik olarak Hibrit Bağlantı'dan geçmek ve Karma Bağlantı Yöneticisi'nden çıkmak için yönlendirilir. Karma Bağlantılar hakkında daha fazla bilgi edinmek [için, Uygulama Hizmeti Karma Bağlantıları][hybridconn] hakkındaki belgeleri okuyun
+App Service Karma Bağlantılar özelliği Azure Relay Karma Bağlantılar özelliği üzerine kurulmuştur. App Service, yalnızca uygulamanızdan bir TCP ana bilgisayarına ve bağlantı noktasına giden çağrılar yapmayı destekleyen özelliğin özelleşmiş bir biçimini kullanır. Bu konak ve bağlantı noktasının yalnızca HCM 'nin yüklendiği konakta çözümlenmesi gerekir. App Service ' deki uygulama, karma bağlantınızda tanımlanan ana bilgisayar ve bağlantı noktası üzerinde bir DNS araması yaparken, karma bağlantı üzerinden ve Karma Bağlantı Yöneticisi dışarı geçmek için trafik otomatik olarak yönlendirilir. Karma Bağlantılar hakkında daha fazla bilgi edinmek için App Service belgeleri okuyun [karma bağlantılar][hybridconn]
 
-Bu özellik genellikle şu şekilde kullanılır:
+Bu özellik yaygın olarak şu şekilde kullanılır:
 
-* Vpn veya ExpressRoute ile Azure'a bağlı olmayan özel ağlardaki kaynaklara erişin
-* Destekleyici veritabanlarını taşımaya gerek kalmadan şirket içi uygulamaların kaldırılmasını ve Uygulama Hizmetine kaydırMalarını destekleyin  
-* Karma Bağlantı başına tek bir ana bilgisayara ve bağlantı noktasına güvenli bir şekilde erişim sağlayın. Ağ özelliklerinin çoğu ağa açık erişime sahiptir ve Karma Bağlantılar ile yalnızca erişebileceğiniz tek ana bilgisayar ve bağlantı noktasına sahipsiniz.
-* Diğer giden bağlantı yöntemleri kapsamında olmayan senaryoları kapsamaktadır
-* Uygulamaların şirket içi kaynaklardan kolayca yararlanabileceği Uygulama Hizmeti'nde geliştirme gerçekleştirin 
+* Azure 'a bir VPN veya ExpressRoute ile bağlı olmayan özel ağlardaki kaynaklara erişin
+* Destek veritabanlarını da taşımaya gerek kalmadan şirket içi uygulamaların App Service ve kaydırma desteğini destekleme  
+* Karma bağlantı başına tek bir konağa ve bağlantı noktasına güvenli bir şekilde erişim sağlama. Birçok ağ özelliği, bir ağa ve yalnızca Karma Bağlantılar ile erişebileceğiniz tek bir ana bilgisayar ve bağlantı noktasına sahip olan erişim için açık erişime sahiptir.
+* Diğer giden bağlantı yöntemleri kapsamında bulunmayan kapak senaryoları
+* Uygulamaların şirket içi kaynaklardan kolayca yararlanabilen App Service geliştirme yapın 
 
-Özellik, gelen güvenlik duvarı deliği olmadan şirket içi kaynaklara erişim sağladığından, geliştiriciler arasında popülerdir. Diğer giden App Service ağ özellikleri çok Azure Sanal Ağ ile ilgilidir. Karma Bağlantılar vnet üzerinden gidiyor bir bağımlılık yoktur ve ağ ihtiyaçlarını daha geniş bir yelpazede için kullanılabilir. App Service Hibrit Bağlantılar özelliğinin bunun üzerinde ne yaptığınızı umursamadığını veya bilmediğini unutmayın. Diğer bir veritabanı, bir web hizmeti veya bir ana bilgisayar üzerinde rasgele bir TCP soketi erişmek için kullanabilirsiniz demek. Özellik aslında TCP paketlerini tüneller. 
+Özelliği, gelen güvenlik duvarı deliği olmadan şirket içi kaynaklara erişim sağladığından, geliştiriciler ile popüler olur. Diğer giden App Service ağ özellikleri, çok fazla Azure sanal ağ ile ilgilidir. Karma Bağlantılar, VNet üzerinden geçiş yapmak için bir bağımlılığa sahip değildir ve çok çeşitli ağ ihtiyaçları için kullanılabilir. App Service Karma Bağlantılar özelliğinin üzerinde yaptığınız işlemleri ilgilenmediğini veya bilmediğini unutmayın. Diğer bir deyişle, bir ana bilgisayar üzerinde bir veritabanına, Web hizmetine veya rastgele bir TCP yuvasına erişmek için bunu kullanabilirsiniz. Özelliği temel olarak TCP paketlerini tünellerden oluşturur. 
 
-Hibrid Bağlantılar geliştirme için popüler olsa da, aynı zamanda çok sayıda üretim uygulamalarında da kullanılır. Bir web hizmetine veya veritabanına erişmek için harikadır, ancak birçok bağlantı oluşturmayla ilgili durumlar için uygun değildir. 
+Karma Bağlantılar, geliştirme için popüler olsa da çok sayıda üretim uygulamasında da kullanılır. Bir Web hizmetine veya veritabanına erişmek için idealdir, ancak birçok bağlantı oluşturma ile ilgili durumlar için uygun değildir. 
 
-### <a name="gateway-required-vnet-integration"></a>Ağ Geçidi gerekli VNet Entegrasyonu 
+### <a name="gateway-required-vnet-integration"></a>Ağ Geçidi gerekli VNet tümleştirmesi 
 
-Gereken uygulama hizmeti VNet Tümleştirme özelliği, uygulamanızın bir Azure Sanal Ağına **giden** isteklerde bulunmasını sağlar. Bu özellik, uygulamanızın üzerinde çalıştığı ana bilgisayarı, vnet'inizde bir sanal ağ ağ geçidine, siteye noktalı bir VPN ile bağlayarak çalışır. Özelliği yapılandırdığınızda, uygulamanız her örneğe atanan noktadan siteye adreslerden birini alır. Bu özellik, herhangi bir bölgedeki Klasik veya Kaynak Yöneticisi VNet'teki kaynaklara erişmenizi sağlar. 
+Ağ Geçidi gerekli App Service VNet tümleştirme özelliği, uygulamanızın Azure sanal ağına **giden** istek yapmasına olanak sağlar. Özelliği, uygulamanızın üzerinde çalıştığı konak sanal ağ geçidine, Noktadan siteye VPN ile bağlanarak çalışır. Özelliği yapılandırdığınızda, uygulamanız her örneğe atanan Noktadan siteye adreslerinden birini alır. Bu özellik, herhangi bir bölgedeki klasik veya Kaynak Yöneticisi sanal ağlarda bulunan kaynaklara erişmenizi sağlar. 
 
-![Ağ Geçidi gerekli VNet Entegrasyonu](media/networking-features/gw-vnet-integration.png)
+![Ağ Geçidi gerekli VNet tümleştirmesi](media/networking-features/gw-vnet-integration.png)
 
-Bu özellik, diğer VNet'lerde kaynaklara erişim sorununu çözer ve hatta vnet üzerinden diğer VNet'lere veya şirket içi kaynaklara bağlanmak için kullanılabilir. ExpressRoute'a bağlı VNets ile çalışmaz, ancak Siteden siteye VPN'e bağlı ağlarla çalışır. ASE zaten VNet'inizde olduğundan, bu özelliği bir Uygulama Hizmet Ortamında (ASE) kullanmak normalde uygun değildir. Bu özelliğin çözdüğünden kullanım örnekleri şunlardır:
+Bu özellik, diğer sanal ağlarda bulunan kaynaklara erişme sorununu çözer ve sanal ağdan diğer sanal ağlara veya hatta şirket içine bağlanmak için de kullanılabilir. ExpressRoute bağlantılı VNET 'ler ile çalışmaz, ancak siteden siteye VPN 'ye bağlı ağlarla çalışır. ASE zaten VNet 'iniz içinde olduğundan, bu özelliği bir App Service Ortamı (ASE) içindeki bir uygulamadan kullanmak genellikle uygun değildir. Bu özelliğin çözdüğü kullanım örnekleri şunlardır:
 
-* Azure sanal ağlarınızda özel IP'lerin kaynaklarına erişim 
-* Siteden siteye VPN varsa, kaynaklara şirket içinde erişim 
-* Eşlenen VNet'lerde kaynaklara erişim 
+* Azure sanal ağlarınızdaki özel IP 'lerde kaynaklara erişme 
+* Siteden siteye VPN varsa şirket içi kaynaklara erişme 
+* Eşlenen VNET 'lerdeki kaynaklara erişme 
 
-Bu özellik etkinleştirildiğinde, uygulamanız hedef VNet'in ile yapılandırıldığı DNS sunucusunu kullanır. Bu özellik hakkında daha fazla bilgi için [App Service VNet Integration][vnetintegrationp2s]ile ilgili belgelerde yer alabilirsiniz. 
+Bu özellik etkinleştirildiğinde, uygulamanız hedef VNet 'in yapılandırıldığı DNS sunucusunu kullanır. [App Service VNET tümleştirmesi][vnetintegrationp2s]hakkındaki belgelerde bu özellikten daha fazla bilgi edinebilirsiniz. 
 
 ### <a name="vnet-integration"></a>Sanal Ağ Tümleştirmesi
 
-Gerekli ağ geçidi VNet Tümleştirme özelliği çok yararlıdır, ancak expressroute genelinde kaynaklara erişimi çözmez. ExpressRoute bağlantılarına ulaşma gereksiniminin yanı üstüne, uygulamaların hizmet bitiş noktası güvenli hizmetlere çağrı yapabilmesi için ihtiyaç vardır. Bu ek gereksinimlerin her ikisini de çözmek için başka bir VNet Tümleştirme özelliği eklendi. Yeni VNet Tümleştirme özelliği, uygulamanızın arka ucunu aynı bölgedeki bir Kaynak Yöneticisi VNet'teki bir alt ağa yerleştirmenizi sağlar. Bu özellik, zaten bir VNet'te bulunan bir Uygulama Hizmet Ortamından kullanılamaz. Bu özellik şunları sağlar:
+Ağ Geçidi gereken VNet tümleştirme özelliği çok faydalı ancak ExpressRoute genelindeki kaynaklara erişimi hala çözmüyor. ExpressRoute bağlantılarına ulaşmaya gerek duyan en üstte, uygulamaların hizmet uç noktası güvenliği olan hizmetlere çağrı yapabilmeleri için bir gereksinim vardır. Bu ek gereksinimlerinizin her ikisini de çözümlemek için başka bir VNet tümleştirme özelliği eklenmiştir. Yeni VNet tümleştirme özelliği, uygulamanızın arka ucunu aynı bölgedeki bir Kaynak Yöneticisi VNet içindeki bir alt ağa yerleştirmenizi sağlar. Bu özellik, zaten VNet içinde olan bir App Service Ortamı kullanılamıyor. Bu özellik şunları sunar:
 
-* Aynı bölgedeki Kaynak Yöneticisi VNet'lerde kaynaklara erişim
-* Hizmet bitiş noktalarıyla güvence altına alan kaynaklara erişim 
-* ExpressRoute veya VPN bağlantıları üzerinden erişilebilen kaynaklara erişim
+* Aynı bölgedeki Kaynak Yöneticisi sanal ağlarda bulunan kaynaklara erişme
+* Hizmet uç noktaları ile güvenliği sağlanmış kaynaklara erişme 
+* ExpressRoute veya VPN bağlantıları üzerinden erişilebilen kaynaklara erişme
 * Tüm giden trafiğin güvenliğini sağlama 
-* Tüm giden trafiği tünele sokmaya zorluyor. 
+* Tüm giden trafiğe tünel oluşturmayı zorla. 
 
 ![Sanal Ağ Tümleştirmesi](media/networking-features/vnet-integration.png)
 
-Bu özellik hakkında daha fazla bilgi edinmek için [App Service VNet Entegrasyonu][vnetintegration]ile ilgili dokümanları okuyun.
+Bu özellik hakkında daha fazla bilgi edinmek için [App Service VNET tümleştirmesinde][vnetintegration]belgeleri okuyun.
 
 ## <a name="app-service-environment"></a>App Service Ortamı 
 
-Uygulama Hizmet Ortamı (ASE), Azure Uygulama Hizmeti'nin VNet'inizde çalışan tek bir kiracı dağıtımıdır. ASE aşağıdaki gibi kullanım örnekleri sağlar:
+App Service Ortamı (ASE), VNet 'iniz içinde çalışan Azure App Service tek bir kiracı dağıtımsıdır. ATıCı, şöyle bir kullanım durumu sunar:
 
-* VNet'inizdeki kaynaklara erişin
-* ExpressRoute'daki kaynaklara erişin
-* Uygulamalarınızı VNet'inizde özel bir adresle ortaya çıkarma 
-* Hizmet bitiş noktaları arasında kaynaklara erişin 
+* VNet 'iniz içindeki kaynaklara erişin
+* ExpressRoute genelindeki kaynaklara erişin
+* Uygulamalarınızı VNet 'iniz içindeki özel bir adresle kullanıma sunma 
+* Hizmet uç noktaları genelinde kaynaklara erişin 
 
-ASE ile VNet Tümleştirmesi veya hizmet bitiş noktaları gibi özellikleri kullanmanız gerekmez, çünkü ASE zaten VNet'inizdedir. Hizmet uç noktaları üzerinden SQL veya Storage gibi kaynaklara erişmek istiyorsanız, ASE alt netindeki hizmet uç noktalarını etkinleştirin. VNet'teki kaynaklara erişmek istiyorsanız, ek yapılandırma gerekmez.  ExpressRoute'daki kaynaklara erişmek istiyorsanız, zaten VNet'tesiniz ve ASE veya içindeki uygulamalarda herhangi bir şeyi yapılandırmanız gerekmez. 
+ASE ile, ASE zaten VNet 'iniz içinde olduğundan, VNet tümleştirme veya hizmet uç noktaları gibi özellikleri kullanmanız gerekmez. Hizmet uç noktaları üzerinden SQL veya depolama gibi kaynaklara erişmek istiyorsanız Ao alt ağında hizmet uç noktalarını etkinleştirin. VNet 'teki kaynaklara erişmek istiyorsanız ek yapılandırma gerekmez.  ExpressRoute genelindeki kaynaklara erişmek istiyorsanız, zaten VNet 'te bulunur ve ASE veya içindeki uygulamalar üzerinde herhangi bir şeyi yapılandırmanız gerekmez. 
 
-ILB ASE'deki uygulamalar özel bir IP adresinde açıklanabildiği için, waf cihazlarını kolayca ekleyerek yalnızca istediğiniz uygulamaları internete maruz bırakabilir ve geri kalanını güvende tutabilirsiniz. Çok katmanlı uygulamaların kolay geliştirilmesine katkıda dır. 
+Bir ıLB Ao 'daki uygulamalar özel bir IP adresi üzerinde sunulebildiğinden, yalnızca İnternet 'e istediğiniz uygulamaları kullanıma sunmak için WAF cihazlarını kolayca ekleyebilirsiniz ve REST güvenliğini koruyun. Çok katmanlı uygulamaların kolayca geliştirilmesi için kendisini katlayın. 
 
-Bir ASE'den gelen çok kiracılı hizmetten henüz mümkün olmayan bazı şeyler vardır. Bunlar arasında şunlar yer alıyor:
+Bir Ao 'dan gelen çok kiracılı hizmetten henüz mümkün olmayan bazı şeyler vardır. Bunlar gibi şeyler şunlardır:
 
-* Uygulamalarınızı özel bir IP adresinde ortaya çıkarma
-* Uygulamanızın bir parçası olmayan ağ denetimleriyle tüm giden trafiği güvenli hale 
+* Uygulamalarınızı özel bir IP adresi üzerinde kullanıma sunma
+* Uygulamanızın bir parçası olmayan ağ denetimleriyle tüm giden trafiği güvenli hale getirin 
 * Uygulamalarınızı tek bir kiracı hizmetinde barındırın 
 * Çok kiracılı hizmette mümkün olandan çok daha fazla örneğe kadar ölçeklendirin 
-* Uygulamalarınız tarafından kullanılmak üzere özel CA istemci sertifikalarını özel CA güvenli uç noktalarıyla yükleyin 
-* TLS 1.1'i, sistemde barındırılan tüm uygulamalarda uygulama düzeyinde devre dışı bırakma olanağı olmadan zorlayın 
-* ASE'nizdeki tüm uygulamalar için müşterilerle paylaşılmayan özel bir giden adres sağlayın 
+* Özel CA güvenliği uç noktaları ile uygulamalarınız tarafından kullanılmak üzere özel CA istemci sertifikaları yükleyin 
+* Uygulama düzeyinde devre dışı bırakabilme özelliği olmadan sistemde barındırılan tüm uygulamalarda TLS 1,1 ' i zorla 
+* Ao 'da herhangi bir müşteriyle paylaşılmayan tüm uygulamalar için ayrılmış bir giden adres sağlayın 
 
-![VNet'te ASE](media/networking-features/app-service-environment.png)
+![VNet 'te ASE](media/networking-features/app-service-environment.png)
 
-ASE izole ve özel uygulama barındırma etrafında en iyi hikaye sağlar ama bazı yönetim zorlukları ile birlikte geliyor. Operasyonel bir ASE kullanmadan önce göz önünde bulundurulması gereken bazı şeyler şunlardır:
+Ao, yalıtılmış ve adanmış uygulama barındırma konusunda en iyi hikayeyi sağlar ancak bazı yönetim zorlukları ile birlikte gelir. İşlemsel AI 'yi kullanmadan önce göz önünde bulundurmanız gereken bazı noktalar şunlardır:
  
- * Bir ASE VNet içinde çalışır, ancak VNet dışında bağımlılıkları vardır. Bu bağımlılıklara izin verilmeli. [Uygulama Hizmeti Ortamı için Ağ][networkinfo] la ilgili daha fazla bilgi edinin
- * AsE, çok kiracılı hizmet gibi hemen ölçeklendirmez. Reaktif ölçekleme yerine ölçekleme gereksinimlerini tahmin etmeniz gerekir. 
- * Bir ASE ile ilişkili daha yüksek bir ön maliyet var. ASE'nizden en iyi şekilde yararlanmak için, küçük çabalar için kullanılmak yerine birçok iş yükünü tek bir ASE'ye koymayı planlamanız gerekir.
- * ASE'deki uygulamalar, diğerlerinde değil, ASE'deki bazı uygulamalara erişimi kısıtlayamaz.
- * ASE bir alt ağ da bulunur ve herhangi bir ağ kuralları bu ASE'ye gelen ve bu ASE'den gelen tüm trafik için geçerlidir. Gelen trafik kurallarını tek bir uygulama için atamak istiyorsanız, Erişim Kısıtlamaları'nı kullanın. 
+ * ASE, VNet 'iniz içinde çalışır, ancak sanal ağın dışında bağımlılıklara sahip olabilir. Bu bağımlılıklara izin verilmelidir. [App Service ortamı Için ağ ile ilgili dikkat edilmesi gerekenler][networkinfo] hakkında daha fazla bilgi
+ * ATıCı, çok kiracılı hizmet gibi hemen ölçeklenmez. Yeniden etkin ölçekleme yerine ölçekleme ihtiyaçlarını önyüklemeniz gerekir. 
+ * ATıCı, kendisiyle ilişkili daha yüksek maliyetli bir ön maliyete sahiptir. Ao 'dan en iyi şekilde yararlanmak için, çok sayıda iş yükünü küçük bir çaba için kullanılması yerine bir asa 'ya yerleştirmeyi planlamanız gerekir
+ * Bir Ao 'daki uygulamalar, bazı uygulamalara erişimi başka bir şekilde kısıtlayamaz.
+ * Ao, bir alt ağ içinde ve tüm ağ kuralları o Ao 'dan gelen ve giden tüm trafiğe uygulanır. Yalnızca bir uygulama için gelen trafik kuralları atamak istiyorsanız, erişim kısıtlamalarını kullanın. 
 
 ## <a name="combining-features"></a>Özellikleri birleştirme 
 
-Çok kiracılı hizmet için belirtilen özellikler, daha ayrıntılı kullanım durumlarını çözmek için birlikte kullanılabilir. İki daha yaygın kullanım durumlarda burada açıklanmıştır ama bunlar sadece örnektir. Çeşitli özelliklerin ne yaptığını anlayarak, sistem mimarisi nin neredeyse tüm ihtiyaçlarını çözebilirsiniz.
+Çok kiracılı hizmet için belirtilen özellikler, daha ayrıntılı kullanım durumlarını çözümlemek için birlikte kullanılabilir. Daha yaygın kullanım örneklerinin ikisi burada açıklanmıştır, ancak bunlar yalnızca örnektir. Çeşitli özelliklerin ne yaptığını anlayarak, neredeyse tüm sistem mimarisi ihtiyaçlarınızı çözebilirsiniz.
 
-### <a name="inject-app-into-a-vnet"></a>Uygulamayı VNet'e enjekte edin
+### <a name="inject-app-into-a-vnet"></a>Uygulamayı VNet 'e ekleme
 
-Yaygın bir istek, uygulamanızın vnet'e nasıl yerleştirilen le ilgili olmasıdır. Uygulamanızı bir VNet'e yerleştirmek, bir uygulamanın gelen ve giden uç noktalarının bir VNet içinde olduğu anlamına gelir. ASE bu sorunu çözmek için en iyi çözümü sağlar, ancak özellikleri birleştirerek çok kiracı hizmetinde gerekenlerin çoğunu alabilirsiniz. Örneğin, intranet yalnızca özel gelen ve giden adresleri olan uygulamaları aşağıdakilere göre barındırabilirsiniz:
+Genel bir istek, uygulamanızı VNet 'e yerleştirme hakkında bir uygulamadır. Uygulamanızı VNet 'e koymak, bir uygulamanın gelen ve giden uç noktalarının VNet içinde olduğu anlamına gelir. ATıCı, bu sorunu çözmek için en iyi çözümü sağlar, ancak özellikleri birleştirerek çok kiracılı hizmette nelerin gerekli olduğunu de elde edebilirsiniz. Örneğin, yalnızca intranet uygulamalarını özel gelen ve giden adresleriyle barındırabilmeniz gerekir:
 
-* Özel gelen ve giden adresle Uygulama Ağ Geçidi Oluşturma
-* Servis bitiş noktalarıyla uygulamanız için gelen trafiği güvence altına alma 
-* Uygulamanızın arka ucu VNet'inizde olacak şekilde yeni VNet Tümleştirmesini kullanın 
+* Özel gelen ve giden adresiyle Application Gateway oluşturma
+* Hizmet uç noktaları ile uygulamanıza gelen trafiğin güvenliğini sağlama 
+* Uygulamanızın arka ucu VNet 'iniz içinde olduğundan, yeni VNet tümleştirmesini kullanın 
 
-Bu dağıtım stili, internete giden trafik için size özel bir adres vermez veya uygulamanızdan gelen tüm giden trafiği kilitleme olanağı vermez.  Bu dağıtım stili, yalnızca aksi takdirde bir ASE ile elde edeceğiniçok bir şey verecektir. 
+Bu dağıtım stili size internet 'e giden trafik için özel bir adres vermeyebilir veya sizin uygulamanızdaki tüm giden trafiği kilitleme olanağı sağlar.  Bu dağıtım stili size yalnızca bir ASE ile alacağınız kadar çok şey sağlar. 
 
-### <a name="create-multi-tier-applications"></a>Çok katmanlı uygulamalar oluşturun
+### <a name="create-multi-tier-applications"></a>Çok katmanlı uygulamalar oluşturma
 
-Çok katmanlı bir uygulama, API arka uç uygulamalarına yalnızca ön uç katmanından erişilebilen bir uygulamadır. Çok katmanlı bir uygulama oluşturmak için şunları yapabilirsiniz:
+Çok katmanlı bir uygulama, API arka uç uygulamalarına yalnızca ön uç katmanından erişilebilecekleri bir uygulamadır. Çok katmanlı bir uygulama oluşturmak için şunları yapabilirsiniz:
 
-* Ön uç web uygulamanızın arka ucunu Bir VNet'teki bir alt ağa bağlamak için VNet Tümleştirmesini kullanın
-* API uygulamanıza gelen trafiği yalnızca ön uç web uygulamanız tarafından kullanılan alt ağdan gelmek için güvenli hale getirmek için hizmet uç noktalarını kullanın
+* Ön uç Web uygulamanızın arka ucunu VNet 'teki bir alt ağla bağlamak için VNet tümleştirmesini kullanın
+* Yalnızca ön uç Web uygulamanız tarafından kullanılan alt ağdan gelen trafiği API uygulamanıza güvenli hale getirmek için hizmet uç noktalarını kullanın
 
 ![çok katmanlı uygulama](media/networking-features/multi-tier-app.png)
 
-Birden çok ön uç uygulamasının, api uygulamasındaki diğer ön uç uygulamalarından vnet tümleştirmesini ve alt ağlarıyla API uygulamasındaki hizmet bitiş noktalarını kullanarak aynı API uygulamasını kullanmasını sağlayabilirsiniz.  
+Birden çok ön uç uygulamanız, API uygulamasındaki diğer ön uç uygulamalardan ve hizmet uç noktalarından, alt ağları ile aynı API uygulamasını kullanarak aynı API uygulamasını kullanabilir.  
 
 <!--Links-->
 [appassignedaddress]: https://docs.microsoft.com/azure/app-service/configure-ssl-certificate

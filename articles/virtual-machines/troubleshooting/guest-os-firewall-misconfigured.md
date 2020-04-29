@@ -1,6 +1,6 @@
 ---
-title: Azure VM Guest OS güvenlik duvarı yanlış yapılandırılmıştır | Microsoft Dokümanlar
-description: Uzak bir Azure VM'de yanlış yapılandırılmış konuk işletim sistemi güvenlik duvarını tanılamak ve düzeltmek için Seri Konsol veya çevrimdışı yöntemi nasıl kullanacağınızı öğrenin.
+title: Azure VM Konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmış | Microsoft Docs
+description: Uzak bir Azure VM 'de yanlış yapılandırılmış bir konuk işletim sistemi güvenlik duvarını tanılamak ve onarmak için seri konsol veya çevrimdışı yöntemi nasıl kullanacağınızı öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,92 +15,92 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e6f42bdf462ac5261f77bc05c62e50500345fe37
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422545"
 ---
-# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM konuk işletim sistemi güvenlik duvarı yanlış yapılandırılmıştır
+# <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM Konuk işletim sistemi güvenlik duvarı hatalı yapılandırılmış
 
-Bu makalede, Azure VM'de yanlış yapılandırılmış konuk işletim sistemi güvenlik duvarının nasıl düzeltilene açıklanmıştır.
+Bu makalede, Azure VM 'de yanlış yapılandırılmış Konuk işletim sistemi güvenlik duvarını nasıl gidereceğiniz açıklanır.
 
 ## <a name="symptoms"></a>Belirtiler
 
-1.  Sanal makine (VM) Karşılama ekranı VM'nin tamamen yüklendiğini gösterir.
+1.  Sanal makine (VM) hoş geldiniz ekranı, VM 'nin tam olarak yüklendiğini gösterir.
 
-2.  Konuk işletim sisteminin nasıl yapılandırıldığına bağlı olarak, VM'ye ulaşan ağ trafiğinin bir kısmı veya hiç olmaması olabilir.
+2.  Konuk işletim sisteminin nasıl yapılandırıldığına bağlı olarak, VM 'ye ulaşan bir ağ trafiği veya hiçbiri olabilir.
 
 ## <a name="cause"></a>Nedeni
 
-Konuk sistem güvenlik duvarının yanlış yapılandırılması VM'ye olan ağ trafiğinin bir kısmını veya her türlüsini engelleyebilir.
+Konuk sistem güvenlik duvarının bir yanlış yapılandırılması, VM 'ye yönelik bazı veya tüm ağ trafiği türlerini engelleyebilir.
 
 ## <a name="solution"></a>Çözüm
 
-Bu adımları izlemeden önce, yedek olarak etkilenen VM'nin sistem diskinin anlık görüntüsünü alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](../windows/snapshot-copy-managed-disk.md)bakın.
+Bu adımları izlemeden önce, etkilenen VM 'nin sistem diskinin bir anlık görüntüsünü yedek olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
 
-Bu sorunu gidermek için Seri Konsolu'nu kullanın veya [VM'nin](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) sistem diskini kurtarma VM'ine takarak VM çevrimdışı onarımını tamamlayın.
+Bu sorunu gidermek için, sanal makinenin sistem diskini bir kurtarma VM 'sine ekleyerek seri konsolu 'Nu kullanın veya [VM 'yi çevrimdışı onarın](troubleshoot-rdp-internal-error.md#repair-the-vm-offline) .
 
-## <a name="online-mitigations"></a>Çevrimiçi azaltıcı etkenler
+## <a name="online-mitigations"></a>Çevrimiçi azaltmaları
 
-[Seri Konsol'a bağlanın ve ardından bir PowerShell örneğini açın.](serial-console-windows.md#use-cmd-or-powershell-in-serial-console) Seri Konsol VM'de etkinleştirilmezse, aşağıdaki Azure makalesinin "VM Çevrimdışı Onar" bölümüne gidin:
+[Seri konsoluna bağlanın ve ardından bir PowerShell örneği açın](serial-console-windows.md#use-cmd-or-powershell-in-serial-console). Seri konsol VM 'de etkin değilse, aşağıdaki Azure makalesinin "sanal makineyi çevrimdışı olarak Onar" bölümüne gidin:
 
  [Azure VM'ye Uzak Masaüstü ile bağlanmaya çalıştığınızda dahili hata oluşuyor](troubleshoot-rdp-internal-error.md#repair-the-vm-offline)
 
-VM'ye erişimi etkinleştirmek (RDP aracılığıyla) veya daha kolay bir sorun giderme deneyimi sağlamak için aşağıdaki kurallar düzenlenebilir:
+Aşağıdaki kurallar, VM 'ye erişimi etkinleştirmek için (RDP aracılığıyla) veya daha kolay bir sorun giderme deneyimi sağlamak için düzenlenebilir:
 
-*   Uzak Masaüstü (TCP-In): Azure'da RDP'ye izin vererek VM'ye birincil erişim sağlayan standart kuraldır.
+*   Uzak Masaüstü (TCP-ın): Bu, Azure 'da RDP 'ye izin vererek VM 'ye birincil erişim sağlayan standart kuraldır.
 
-*   Windows Uzaktan Yönetim (HTTP-In): Bu kural, PowerShell., Azure'da bu tür bir erişim kullanarak VM'ye bağlanmanızı sağlar ve bu tür bir erişim, uzaktan komut dosyası kullanma ve sorun giderme özelliğini kullanmanızı sağlar.
+*   Windows Uzaktan Yönetimi (HTTP-ın): Bu kural, PowerShell 'i kullanarak VM 'ye bağlanmanızı sağlar. Azure 'Da bu tür bir erişim, uzaktan betik oluşturma ve sorun giderme için komut dosyası kullanımını kullanmanıza imkan sağlar.
 
-*   Dosya ve Yazıcı Paylaşımı (SMB-In): Bu kural, sorun giderme seçeneği olarak ağ paylaşımı erişimine olanak tanır.
+*   Dosya ve yazıcı paylaşımı (SMB-ın): Bu kural, sorun giderme seçeneği olarak ağ paylaşımı erişimine izin vermez.
 
-*   Dosya ve Yazıcı Paylaşımı (Yankı İsteği - ICMPv4-In): Bu kural VM ping yapmanızı sağlar.
+*   Dosya ve yazıcı paylaşımı (yankı Isteği-Icmpv4-ın): Bu kural VM 'ye ping yapmanızı sağlar.
 
-Seri Konsol Erişimi örneğinde, güvenlik duvarı kuralının geçerli durumunu sorgulayabilirsiniz.
+Seri konsol erişimi örneğinde, güvenlik duvarı kuralının geçerli durumunu sorgulayabilirsiniz.
 
-*   Görüntü Adı'nı parametre olarak kullanarak sorgula:
+*   Görünen adı parametre olarak kullanarak sorgulayın:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(DisplayName.*<FIREWALL RULE NAME>)" -context 9,4 | more
     ```
 
-*   Uygulamanın kullandığı Yerel Bağlantı Noktası'nı kullanarak sorgula:
+*   Uygulamanın kullandığı yerel bağlantı noktasını kullanarak sorgulama:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalPort.*<APPLICATION PORT>)" -context 9,4 | more
     ```
 
-*   Uygulamanın kullandığı Yerel IP adresini kullanarak sorgula:
+*   Uygulamanın kullandığı yerel IP adresini kullanarak sorgulayın:
 
     ```cmd
     netsh advfirewall firewall show rule dir=in name=all | select-string -pattern "(LocalIP.*<CUSTOM IP>)" -context 9,4 | more
     ```
 
-*   Kuralın devre dışı bırakıldığını görürseniz, aşağıdaki komutu çalıştırarak kuralı etkinleştirebilirsiniz:
+*   Kuralın devre dışı olduğunu görürseniz, aşağıdaki komutu çalıştırarak etkinleştirebilirsiniz:
 
     ```cmd
     netsh advfirewall firewall set rule name="<RULE NAME>" new enable=yes
     ```
 
-*   Sorun giderme için güvenlik duvarı profillerini KAPAT'a çevirebilirsiniz:
+*   Sorun giderme için, Güvenlik Duvarı profillerini devre dışı bırakabilirsiniz:
 
     ```cmd
     netsh advfirewall set allprofiles state off
     ```
 
-    Güvenlik duvarını doğru ayarlamak için bunu yaparsanız, sorun giderme işleminizi tamamladıktan sonra güvenlik duvarını yeniden etkinleştirin.
+    Bunu, güvenlik duvarını doğru şekilde ayarlamak için yaparsanız, sorun gidermeyi tamamladıktan sonra güvenlik duvarını yeniden etkinleştirin.
 
     > [!Note]
-    > Bu değişikliği uygulamak için VM'yi yeniden başlatmanız gerekmez.
+    > Bu değişikliği uygulamak için VM 'yi yeniden başlatmanız gerekmez.
 
-*   RDP aracılığıyla VM'ye bağlanmak için yeniden deneyin.
+*   VM 'ye RDP aracılığıyla bağlanmayı yeniden deneyin.
 
-### <a name="offline-mitigations"></a>Çevrimdışı Azaltıcı Etazaltmalar
+### <a name="offline-mitigations"></a>Çevrimdışı azaltmaları
 
-1.  Güvenlik duvarı kurallarını etkinleştirmek veya devre dışı kalmak için [Azure VM Konuk İşletim Sistemi'nde güvenlik duvarı kuralını etkinleştirmeye veya devre dışı etme](enable-disable-firewall-rule-guest-os.md)kuralına bakın.
+1.  Güvenlik duvarı kurallarını etkinleştirmek veya devre dışı bırakmak için [bir Azure VM Konuk işletim sistemindeki güvenlik duvarı kuralını etkinleştirme veya devre dışı bırakma](enable-disable-firewall-rule-guest-os.md)bölümüne bakın.
 
-2.  [Gelen trafik senaryosunu engelleyen Konuk İşletim Sistemi güvenlik duvarında](guest-os-firewall-blocking-inbound-traffic.md)olup olmadığınızı denetleyin.
+2.  [Konuk işletim sistemi güvenlik duvarı gelen trafiği engelleme senaryosunda](guest-os-firewall-blocking-inbound-traffic.md)olup olmadığınızı kontrol edin.
 
-3.  Güvenlik duvarının erişiminizi engelleyip engellemediği konusunda hala şüpheniz varsa, [Azure VM'deki konuk Işletim Sistemi Güvenlik Duvarını Devre Dışı](disable-guest-os-firewall-windows.md)Bırak'a bakın ve ardından doğru kuralları kullanarak konuk sistem güvenlik duvarını yeniden etkinleştirin.
+3.  Güvenlik duvarının erişiminizi engelleyip engellemediğini hala düşünüyorsanız, [Azure VM 'de Konuk işletim sistemi güvenlik duvarını devre dışı bırakma](disable-guest-os-firewall-windows.md)bölümüne bakın ve ardından doğru kuralları kullanarak Konuk sistem güvenlik duvarını yeniden etkinleştirin.
 

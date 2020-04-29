@@ -1,38 +1,38 @@
 ---
-title: Azure Lab Hizmetleri - destek bilgilerini görüntüleyin (laboratuvar oluşturucusu)
-description: Bu makalede, laboratuvar oluşturucuları yardım almak için kullanabilecekleri destek bilgilerini nasıl görüntüleyebilirler.
+title: Azure Lab Services-destek bilgilerini görüntüleme (Laboratuvar Oluşturucu)
+description: Bu makalede, laboratuvar oluşturucularının yardım almak için kullanabilecekleri destek bilgilerini nasıl görüntüleyebileceği açıklanmaktadır.
 author: spelluru
 ms.author: spelluru
 ms.date: 02/14/2020
 ms.topic: how-to
 ms.service: lab-services
 ms.openlocfilehash: 87ecfed1defcd261528123227002bdc49e3ef5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80109322"
 ---
-# <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Destek bilgilerini görüntüleyin (Azure Lab Hizmetleri'nde laboratuvar oluşturucusu)
-Bu makalede, (bir laboratuvar oluşturucuolarak) aşağıdaki destek bilgilerini nasıl görüntüleyebileceğiniz açıklanmaktadır:
+# <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Destek bilgilerini görüntüleme (Azure Lab Services 'da laboratuvar Oluşturucu)
+Bu makalede, sizin (Laboratuvar Oluşturucu olarak) aşağıdaki destek bilgilerini nasıl görüntüleyebileceği açıklanmaktadır:
 
 - URL'si
-- Email
+- E-posta
 - Telefon
-- Ek talimatlar
+- Ek yönergeler
 
-Bir laboratuvar hesabında bir laboratuvar oluştururken herhangi bir teknik sorunla karşılaştığınızda yardım almak için bu bilgileri kullanabilirsiniz.
+Laboratuvar hesabında laboratuvar oluştururken herhangi bir teknik sorunla çalışırken yardım almak için bu bilgileri kullanabilirsiniz.
 
  
-## <a name="view-support-information"></a>Destek bilgilerini görüntüleme
-1. [Azure Laboratuvar Hizmetleri portalında](https://labs.azure.com)oturum açın.
-2. Sayfanın sağ üst köşesindeki soru işaretini (**?**) seçin. 
-3. **Görünüm destek web sitesine,** **e-posta desteğine**ve **destek telefon numarasına**bağlantılar gördüğünüzden onaylayın.
+## <a name="view-support-information"></a>Destek bilgilerini görüntüle
+1. [Azure Lab Services portalında](https://labs.azure.com)oturum açın.
+2. Sayfanın sağ üst köşesindeki soru işareti (**?**) seçeneğini belirleyin. 
+3. **Destek Web sitesi**, **e-posta desteği**ve **destek telefon numarasını**görüntüle bağlantısını görtığınızdan emin olun.
 
-    ![Destek bilgilerini görüntüleme](../media/lab-creator-support-information/support-information.png)
+    ![Destek bilgilerini görüntüle](../media/lab-creator-support-information/support-information.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir laboratuvar kullanıcısının destek iletişim bilgilerini nasıl görüntülenebildiğini öğrenmek için aşağıdaki makaleye bakın:
+Laboratuvar kullanıcısının destek iletişim bilgilerini nasıl görüntülemelerini öğrenmek için aşağıdaki makaleye bakın:
 
-- [İletişim bilgilerini görüntüleyin (laboratuvar kullanıcısı)](lab-user-support-information.md)
-- [İletişim bilgilerini belirtin (laboratuvar hesabı sahibi)](lab-account-owner-support-information.md)
+- [Kişi bilgilerini görüntüle (Laboratuvar kullanıcısı)](lab-user-support-information.md)
+- [İletişim bilgilerini belirtin (Laboratuvar hesabı sahibi)](lab-account-owner-support-information.md)

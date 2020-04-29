@@ -1,6 +1,6 @@
 ---
-title: Yerleşik edgeAgent doğrudan yöntemler - Azure IoT Edge
-description: IoT Edge aracısı çalışma zamanı modülünde yerleşik doğrudan yöntemleri kullanarak bir IoT Edge dağıtımını izleyin ve yönetin
+title: Yerleşik edgeAgent doğrudan yöntemleri-Azure IoT Edge
+description: IoT Edge Aracısı çalışma zamanı modülündeki yerleşik doğrudan yöntemleri kullanarak IoT Edge dağıtımını izleme ve yönetme
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,43 +10,43 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240354"
 ---
-# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Yerleşik doğrudan yöntemleri kullanarak edgeAgent ile iletişim kurun
+# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>Yerleşik doğrudan yöntemler kullanarak edgeAgent ile iletişim kurma
 
-IoT Edge aracı modülünde yer alan doğrudan yöntemleri kullanarak IoT Edge dağıtımlarını izleyin ve yönetin. Aygıtta doğrudan yöntemler uygulanır ve buluttan çağrılabilir. IoT Edge aracısı, IoT Edge aygıtlarınızı uzaktan izlemenize ve yönetmenize yardımcı olan doğrudan yöntemler içerir.
+IoT Edge aracı modülüne dahil olan doğrudan yöntemleri kullanarak IoT Edge dağıtımlarını izleyin ve yönetin. Doğrudan yöntemler cihaza uygulanır ve sonra buluttan çağrılabilir. IoT Edge Aracısı, IoT Edge cihazlarınızı uzaktan izlemenize ve yönetmenize yardımcı olan doğrudan yöntemler içerir.
 
-Doğrudan yöntemler, bunları nasıl kullanacağınız ve bunları kendi modüllerinizde nasıl uygulayacağınız hakkında daha fazla bilgi için [Bkz.](../iot-hub/iot-hub-devguide-direct-methods.md)
+Doğrudan yöntemler hakkında daha fazla bilgi için, bunları kullanma ve kendi modüllerinize uygulama hakkında daha fazla bilgi için, bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](../iot-hub/iot-hub-devguide-direct-methods.md).
 
-Bu doğrudan yöntemlerin adları büyük/küçük harf duyarsız ele alınır.
+Bu doğrudan yöntemlerin adları, büyük/küçük harfe duyarsız işlenir.
 
 ## <a name="ping"></a>Ping
 
-**Ping** yöntemi, IoT Edge'in bir aygıtta çalışıp çalışmadığını veya aygıtın IoT Hub'a açık bağlantısı olup olmadığını denetlemek için yararlıdır. IoT Edge aracısını pinglemek ve durumunu almak için bu doğrudan yöntemi kullanın. Başarılı bir ping boş bir yük ve **"durum" döndürür: 200**.
+**Ping** yöntemi, bir cihazda IoT Edge çalışıp çalışmadığını veya cihazın IoT Hub açık bağlantısı olup olmadığını denetlemek için faydalıdır. IoT Edge aracısına ping getirmek ve durumunu almak için bu doğrudan yöntemi kullanın. Başarılı bir ping boş bir yük ve **"durum" döndürür: 200**.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-Azure portalında, yöntem adı `ping` ve boş bir JSON `{}`yüküyle yöntemi çağırın.
+Azure portal Yöntem adı `ping` ve boş bir JSON yükünün `{}`bulunduğu yöntemi çağırın.
 
-![Azure portalında doğrudan 'ping' yöntemini çağırma](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
+![Azure portal ' ping ' doğrudan metodunu çağır](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
-## <a name="restart-module"></a>Modülü yeniden başlatın
+## <a name="restart-module"></a>Modülü yeniden Başlat
 
-**Yeniden Başlatma Modülü** yöntemi, bir IoT Edge aygıtında çalışan modüllerin uzaktan yönetilmesini sağlar. Bir modül başarısız bir durum veya diğer sağlıksız davranışı bildiriyorsa, IoT Edge aracısını yeniden başlatmak için tetikleyebilirsiniz. Başarılı bir yeniden başlatma komutu boş bir yük ve **"durum" döndürür: 200**.
+**RestartModule** yöntemi, IoT Edge cihazda çalışan modüllerin uzaktan yönetilmesine olanak tanır. Bir modül hatalı durumu veya sağlıksız bir davranışı raporladığında, IoT Edge aracısını yeniden başlatmak için tetikleyebilirsiniz. Başarılı yeniden başlatma komutu boş bir yük ve **"durum" döndürür: 200**.
 
-Yeniden Başlatma Modülü yöntemi IoT Edge sürüm 1.0.9 ve sonraki sürümlerde mevcuttur. 
+RestartModule yöntemi IoT Edge sürüm 1.0.9 ve üzeri sürümlerde kullanılabilir. 
 
-EdgeAgent modülü nün kendisi de dahil olmak üzere, IoT Edge aygıtında çalışan herhangi bir modülde Yeniden Başlatma Modülü doğrudan yöntemini kullanabilirsiniz. Ancak, edgeAgent'ı kapatmak için bu doğrudan yöntemi kullanırsanız, modül yeniden başlatılırken bağlantı kesintiye geldiğinden başarı sonucu almazsınız.
+RestartModule Direct yöntemini, edgeAgent modülünün kendisi de dahil olmak üzere IoT Edge cihazında çalışan herhangi bir modülde kullanabilirsiniz. Ancak, edgeAgent 'ı kapatmak için bu doğrudan yöntemini kullanırsanız, modül yeniden başlatılırken bağlantının kesintiye uğramasından dolayı başarılı bir sonuç almazsınız.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <device name> -m '$edgeAgent' --method-payload \
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-Azure portalında, yöntem adı `RestartModule` ve aşağıdaki JSON yüküyle yöntemi çağırın:
+Azure portal Yöntem adı `RestartModule` ve aşağıdaki JSON yüküyle yöntemi çağırın:
 
 ```json
 {
@@ -67,16 +67,16 @@ Azure portalında, yöntem adı `RestartModule` ve aşağıdaki JSON yüküyle y
 }
 ```
 
-![Azure portalında doğrudan 'Yeniden Başlatma Modülü' yöntemini çağırın](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
+![Azure portal ' RestartModule ' doğrudan metodunu çağır](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>Deneysel yöntemler
+## <a name="experimental-methods"></a>Deneysel Yöntemler
 
-Yeni doğrudan yöntem seçenekleri, test etmek için deneysel özellikler olarak kullanılabilir:
+Yeni doğrudan Yöntem seçenekleri, test edilecek Deneysel özellikler olarak kullanılabilir:
 
-* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): Modül günlüklerini alın ve Azure Blob Depolama'ya yükleyin.
-* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): Yükleme günlükleri isteğinin durumunu kontrol edin.
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): Doğrudan yöntemin yanıtında modül günlüklerini satır satıralın.
+* [Uploadlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md): modül günlüklerini alın ve Azure Blob depolamaya yükleyin.
+* [Gettaskstatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus): karşıya yükleme günlüğü isteğinin durumunu denetleyin.
+* [Getlogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs): doğrudan yöntemin yanıtında modül günlüklerini satır içinde alın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Edge aracısının ve IoT Edge hub modülü ikizlerinin özellikleri](module-edgeagent-edgehub.md)
+[IoT Edge Aracısı ve IoT Edge hub modülünün özellikleri TWINS](module-edgeagent-edgehub.md)

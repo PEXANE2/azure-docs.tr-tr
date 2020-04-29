@@ -1,6 +1,6 @@
 ---
 title: Windows için Azure Key Vault VM Uzantısı
-description: Sanal makine uzantısı nı kullanarak sanal makinelerde Key Vault sırlarını otomatik olarak yenileyen bir aracıyı dağıtın.
+description: Sanal makine uzantısı kullanarak sanal makinelerde Key Vault gizliliklerin otomatik olarak yenilenmesini gerçekleştirerek bir aracı dağıtın.
 services: virtual-machines-windows
 author: msmbaldwin
 tags: keyvault
@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 8e014e7a1c564377582e4503218c4129619daa91
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410728"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
-Key Vault VM uzantısı, Azure anahtar kasasında depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle, uzantı, anahtar kasalarında depolanan gözlenen sertifikaların listesini izler ve bir değişiklik algılandıktan sonra ilgili sertifikaları alır ve yükler. Bu belge, Windows için Key Vault VM uzantısı için desteklenen platformları, yapılandırmaları ve dağıtım seçeneklerini ayrıntılarıyla açıklar. 
+Key Vault VM uzantısı, Azure Anahtar Kasası 'nda depolanan sertifikaların otomatik olarak yenilenmesini sağlar. Özellikle uzantı, anahtar kasalarında depolanan gözlemlenen sertifikaların listesini izler ve bir değişikliği tespit etmek için ilgili sertifikaları alır ve kurar. Bu belgede, Windows için Key Vault VM uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır. 
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Key Vault VM uzantısı Aşağıdaki Windows sürümlerini destekler:
+Key Vault VM uzantısı, Windows 'un aşağıdaki sürümlerini destekler:
 
 - Windows Server 2019
 - Windows Server 2016
@@ -30,11 +30,11 @@ Key Vault VM uzantısı Aşağıdaki Windows sürümlerini destekler:
 ### <a name="supported-certificate-content-types"></a>Desteklenen sertifika içerik türleri
 
 - PKCS #12
-- Pem
+- PEM
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON Key Vault VM uzantısı için şema gösterir. Uzantı korumalı ayarlar gerektirmez - tüm ayarları genel bilgi olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Daha ayrıntılı şekilde belirtmek gerekirse:  
+Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, korumalı ayarlar gerektirmez. tüm ayarları ortak bilgiler olarak kabul edilir. Uzantı, izlenen sertifikaların, yoklama sıklığının ve hedef sertifika deposunun bir listesini gerektirir. Daha ayrıntılı şekilde belirtmek gerekirse:  
 
 ```json
     {
@@ -65,31 +65,31 @@ Aşağıdaki JSON Key Vault VM uzantısı için şema gösterir. Uzantı korumal
 ```
 
 > [!NOTE]
-> Gözlenen sertifikalarınız URL'ler formdan `https://myVaultName.vault.azure.net/secrets/myCertName`olmalıdır.
+> Gözlemlenen sertifikalarınızın URL 'Leri form `https://myVaultName.vault.azure.net/secrets/myCertName`olmalıdır.
 > 
-> Bunun nedeni, `/secrets` yolun özel anahtar da dahil olmak üzere `/certificates` tam sertifikayı döndürmesi, yolun ise dönmez olmasıdır. Sertifikalar hakkında daha fazla bilgiyi burada bulabilirsiniz: [Anahtar Kasa Sertifikaları](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
+> Bunun nedeni, `/secrets` yol değil, özel anahtar `/certificates` dahil olmak üzere tam sertifikayı döndürmektedir. Sertifikalar hakkında daha fazla bilgi için şurada bulunabilir: [Key Vault sertifikaları](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer / Örnek | Veri Türü |
+| Adı | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| yoklamaIntervalInS | 3600 | string |
-| sertifikaStoreName | MY | string |
-| linkOnRenewal | yanlış | boole |
-| sertifikaStoreLocation  | LocalMachine | string |
-| gerekliInitialSync | true | boole |
-| gözlenen Sertifikalar  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
+| Pollingınterinterval bileşenleri | 3600 | string |
+| certificateStoreName | MY | string |
+| Linkonyenilemeye | yanlış | boole |
+| certificateStoreLocation  | LocalMachine | string |
+| requiredInitialSync | true | boole |
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | dize dizisi
 
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure VM uzantıları Azure Kaynak Yöneticisi şablonlarıyla dağıtılabilir. Şablonlar, dağıtım sonrası sertifikaların yenilenmesini gerektiren bir veya daha fazla sanal makine dağıtılırken idealdir. Uzantı, tek tek VM'lere veya sanal makine ölçek kümelerine dağıtılabilir. Şema ve yapılandırma her iki şablon türü için de ortaktir. 
+Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Sertifikaların dağıtım sonrası yenilenmesini gerektiren bir veya daha fazla sanal makine dağıtıldığında şablonlar idealdir. Uzantı ayrı VM 'lere veya sanal makine ölçek kümelerine dağıtılabilir. Şema ve yapılandırma her iki şablon türü için ortaktır. 
 
-Sanal makine uzantısı için JSON yapılandırması şablonun sanal makine kaynak parçasının içine, özellikle `"resources": []` sanal makine şablonu için `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` nesnenin içine ve nesnenin altında ayarlanan sanal makine ölçeği durumunda iç içe olmalıdır.
+Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine kaynak parçasının içinde, özellikle de `"resources": []` sanal makine şablonu için nesne ve nesne altında `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` sanal makine ölçek kümesi olması halinde iç içe olmalıdır.
 
 ```json
     {
@@ -120,9 +120,9 @@ Sanal makine uzantısı için JSON yapılandırması şablonun sanal makine kayn
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell dağıtımı
 
-Azure PowerShell, Key Vault VM uzantısını varolan bir sanal makineye veya sanal makine ölçeği kümesine dağıtmak için kullanılabilir. 
+Azure PowerShell, Key Vault VM uzantısını var olan bir sanal makineye veya sanal makine ölçek kümesine dağıtmak için kullanılabilir. 
 
-* Uzantıyı VM'de dağıtmak için:
+* Uzantıyı bir sanal makineye dağıtmak için:
     
     ```powershell
         # Build settings
@@ -141,7 +141,7 @@ Azure PowerShell, Key Vault VM uzantısını varolan bir sanal makineye veya san
     
     ```
 
-* Uzantıyı sanal makine ölçeği kümesine dağıtmak için:
+* Uzantıyı bir sanal makine ölçek kümesine dağıtmak için:
 
     ```powershell
     
@@ -164,11 +164,11 @@ Azure PowerShell, Key Vault VM uzantısını varolan bir sanal makineye veya san
     
     ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
-Azure CLI, Key Vault VM uzantısını varolan bir sanal makineye veya sanal makine ölçeği kümesine dağıtmak için kullanılabilir. 
+Azure CLı, Key Vault VM uzantısını var olan bir sanal makineye veya sanal makine ölçek kümesine dağıtmak için kullanılabilir. 
  
-* Uzantıyı VM'de dağıtmak için:
+* Uzantıyı bir sanal makineye dağıtmak için:
     
     ```azurecli
        # Start the deployment
@@ -179,7 +179,7 @@ Azure CLI, Key Vault VM uzantısını varolan bir sanal makineye veya sanal maki
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 
-* Uzantıyı sanal makine ölçeği kümesine dağıtmak için:
+* Uzantıyı bir sanal makine ölçek kümesine dağıtmak için:
 
    ```azurecli
         # Start the deployment
@@ -191,16 +191,16 @@ Azure CLI, Key Vault VM uzantısını varolan bir sanal makineye veya sanal maki
     ```
 
 Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
-- Anahtar Vault kısıtlamaları:
+- Key Vault kısıtlamaları:
   - Dağıtım sırasında var olmalıdır 
-  - Key Vault Erişim İlkesi, MSI kullanılarak VM/VMSS Kimliği için ayarlanır
+  - Key Vault erişim Ilkesi, MSI kullanılarak VM/VMSS kimliği için ayarlandı
 
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantılı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure PowerShell kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure PowerShell'i kullanarak aşağıdaki komutu çalıştırın.
+Uzantı dağıtımlarının durumuyla ilgili veriler, Azure portal alabilir ve Azure PowerShell kullanılarak elde edilebilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure PowerShell kullanarak aşağıdaki komutu çalıştırın.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 ```powershell
@@ -212,7 +212,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
 
-Uzantı yürütme çıktısı aşağıdaki dosyaya kaydedilir:
+Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 
 ```
 %windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
@@ -221,4 +221,4 @@ Uzantı yürütme çıktısı aşağıdaki dosyaya kaydedilir:
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek al'ı seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

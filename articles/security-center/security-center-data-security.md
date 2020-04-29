@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: 987cdd76ba533fa0ae4b37c2755fe84a00d14de5
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80435856"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi Veri Güvenliği
@@ -47,7 +47,7 @@ Azure Güvenlik Merkezi, güvenlik durumunuzu görüntüleme, güvenlik açıkla
 
 | VM'nin Bulunduğu Coğrafi Bölge                              | Çalışma Alanının Bulunduğu Coğrafi Bölge |
 |-------------------------------------|---------------|
-| Amerika Birleşik Devletleri, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
+| Birleşik Devletler, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
 | Kanada                              | Kanada        |
 | Avrupa (Birleşik Krallık hariç)   | Avrupa        |
 | Birleşik Krallık                      | Birleşik Krallık |
@@ -71,8 +71,8 @@ Makine yapıları VM ile aynı bölgede merkezi olarak depolanır.
 
 ## <a name="managing-data-collection-from-virtual-machines"></a>Sanal makinelerden veri toplamayı yönetme
 
-Azure'da Güvenlik Merkezi'ni etkinleştirdiğinizde her Azure aboneliğiniz için veri toplama etkinleştirilir. Abonelikleriniz için veri toplamayı Azure Güvenlik Merkezi'nin Güvenlik İlkesi bölümünden de etkinleştirebilirsiniz. Veri toplama açık olduğunda, Azure Güvenlik Merkezi Log Analytics aracısını mevcut tüm desteklenen Azure sanal makinelerinde ve oluşturulan yeni makinelerde karşılar.
-Log Analytics aracısı, güvenlikle ilgili çeşitli yapılandırmaları tarar ve olayları [Windows için Olay İzleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) izlemelerine dönüştürür. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics aracısı olay günlüğü girişlerini ve ETW izlerini okur ve analiz için çalışma alanı(lar)a kopyalar. Log Analytics aracısı ayrıca kilitlenme döküm dosyalarını çalışma alanınız(lar)'a kopyalar, işlem oluşturma olaylarını etkinleştirin ve komut satırı denetimine olanak tanır.
+Azure'da Güvenlik Merkezi'ni etkinleştirdiğinizde her Azure aboneliğiniz için veri toplama etkinleştirilir. Abonelikleriniz için veri toplamayı Azure Güvenlik Merkezi'nin Güvenlik İlkesi bölümünden de etkinleştirebilirsiniz. Veri toplama açık olduğunda Azure Güvenlik Merkezi, desteklenen tüm Azure sanal makinelerinde ve oluşturulan tüm yeni makinelerde Log Analytics aracısını sağlar.
+Log Analytics Aracısı, güvenlikle ilgili çeşitli yapılandırma ve olayları [Windows Için olay izleme](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) izlemeleri halinde tarar. Ayrıca, işletim sistemi, makinenin çalışması sırasında olay günlüğü olaylarını ortaya koyar. Bu tür verilerin örnekleri şunlardır: işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri, oturum açmış kullanıcı ve kiracı kimliği. Log Analytics Aracısı olay günlüğü girişlerini ve ETW izlemelerini okur ve bunları analiz için çalışma alanınıza kopyalar. Log Analytics Aracısı Ayrıca kilitlenme bilgi dökümü dosyalarını çalışma alanınıza kopyalar, işlem oluşturma olaylarını etkinleştirir ve komut satırı denetimini etkinleştirir.
 
 Azure Güvenlik Merkezi Ücretsiz sürümünü kullanıyorsanız Güvenlik İlkesi'nde sanal makinelerden veri toplamayı devre dışı bırakabilirsiniz. Veri Toplama, Standart katmandaki abonelikler için gereklidir. Veri toplama devre dışı bırakılsa bile, VM diski anlık görüntüleri ve yapıt toplama işlemi etkin olmaya devam eder.
 
@@ -80,8 +80,8 @@ Azure Güvenlik Merkezi Ücretsiz sürümünü kullanıyorsanız Güvenlik İlke
 
 Müşteriler, farklı veri akışlarındaki Güvenlik Merkezi ile ilişkili verileri aşağıda gösterildiği gibi kullanabilir:
 
-* **Azure Etkinliği**: tüm güvenlik uyarıları, onaylı Güvenlik Merkezi [Tam zamanında](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) istek istekleri ve [uyarlanabilir uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)tarafından oluşturulan tüm uyarılar.
-* **Azure Monitor günlükleri:** tüm güvenlik uyarıları.
+* **Azure etkinliği**: tüm güvenlik uyarıları, onaylanan [Güvenlik Merkezi istekleri](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ve [Uyarlamalı uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)tarafından oluşturulan tüm uyarılar.
+* **Azure izleyici günlükleri**: tüm güvenlik uyarıları.
 
 
 > [!NOTE]
@@ -94,4 +94,4 @@ Bu belgede Azure Güvenlik Merkezi'nde verilerin yönetilmesi ve korunması hakk
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) - Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/) — Azure güvenliği ve uyumluluğu yla ilgili blog gönderilerini bulun
+* [Azure Güvenlik blogu](https://blogs.msdn.com/b/azuresecurity/) — Azure güvenliği ve uyumluluğu ile ilgili blog gönderilerini bulun

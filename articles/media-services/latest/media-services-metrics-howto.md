@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor ile ölçümleri görüntüleme
-description: Bu makalede, Azure portal grafikleri ve Azure CLI ile ölçümlernasıl izlenir gösterilmektedir.
+title: Azure Izleyici ile ölçümleri görüntüleme
+description: Bu makalede Azure portal grafikleri ve Azure CLı ile ölçümlerin nasıl izleneceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382945"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services ölçümlerini izleme
 
-[Azure Monitor,](../../azure-monitor/overview.md) uygulamalarınızın nasıl performans gösterdiğini anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak tanır. Bu özelliğin ayrıntılı açıklaması ve Azure Medya Hizmetleri ölçümlerini ve tanılama günlüklerini neden kullanmak istediğinizi görmek için [Bkz.](media-services-metrics-diagnostic-logs.md)
+[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Bu özelliğin ayrıntılı açıklaması ve Azure Media Services ölçümleri ve tanılama günlüklerini nasıl kullanmak istediğinizi görmek için bkz. [izleme Media Services ölçümleri ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md).
 
-Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'si aracılığıyla bunlara erişmek veya Azure CLI kullanarak sorgulamak gibi ölçümlerle etkileşim kurmanın çeşitli yollarını sağlar. Bu makalede, Azure portal grafikleri ve Azure CLI ile ölçümlernasıl izlenir gösterilmektedir.
+Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluşturma, REST API aracılığıyla erişme veya Azure CLı kullanarak sorgulama gibi çeşitli yollar sağlar. Bu makalede Azure portal grafikleri ve Azure CLı ile ölçümlerin nasıl izleneceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [Media Services hesabı oluşturma](create-account-cli-how-to.md)
-- [Monitör Medya Hizmetleri ölçümlerini ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md) gözden geçirin
+- [İzleme Media Services ölçümleri ve tanılama günlüklerini](media-services-metrics-diagnostic-logs.md) gözden geçirin
 
-## <a name="view-metrics-in-azure-portal"></a>Azure portalında ölçümleri görüntüleme
+## <a name="view-metrics-in-azure-portal"></a>Azure portal ölçümleri görüntüleme
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. Azure Medya Hizmetleri hesabınıza gidin ve **Ölçümler'i**seçin.
-1. **KAYNAK** kutusunu tıklatın ve ölçümleri izlemek istediğiniz kaynağı seçin.
+1. Azure Media Services hesabınıza gidin ve **ölçümler**' i seçin.
+1. **Kaynak** kutusuna tıklayın ve ölçümlerini izlemek istediğiniz kaynağı seçin.
 
-    **Kaynak Seç** penceresi sağda, kullanabileceğiniz kaynakların listesiyle birlikte görünür. Bu durumda bkz:
+    **Kaynak Seç** penceresi, sağda kullanabileceğiniz kaynakların listesiyle birlikte görünür. Bu durumda şunları görürsünüz:
 
-    * &lt;Medya Hizmetleri hesap adı&gt;
-    * &lt;Medya Hizmetleri&gt;/&lt;hesap adı akışı uç nokta adı&gt;
+    * &lt;Media Services hesap adı&gt;
+    * &lt;Media Services hesap adı&gt;/&lt;akış uç noktası adı&gt;
     * &lt;depolama hesabı adı&gt;
 
-    Kaynağı seçin ve **Uygula'ya**basın. Desteklenen kaynaklar ve ölçümler hakkında ayrıntılı bilgi [için](media-services-metrics-diagnostic-logs.md)bkz.
+    Kaynağı seçin ve **Uygula**' ya basın. Desteklenen kaynaklar ve ölçümler hakkında daha fazla bilgi için bkz. [izleme Media Services ölçümleri](media-services-metrics-diagnostic-logs.md).
 
     ![Ölçümler](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
-    > Ölçümleri izlemek istediğiniz kaynaklar arasında geçiş yapmak için **KAYNAK** kutusunu yeniden tıklatın ve bu adımı yineleyin.
-1. (İsteğe bağlı olarak) grafiğinize bir ad verin (üstteki kaleme basarak adı edin).
+    > Ölçümleri izlemek istediğiniz kaynaklar arasında geçiş yapmak için **kaynak** kutusuna yeniden tıklayın ve bu adımı tekrarlayın.
+1. (İsteğe bağlı olarak) grafiğinize bir ad verin (üstteki kurşun kaleme basarak adı düzenleyin).
 1. Görüntülemek istediğiniz ölçümleri ekleyin.
 
     ![Ölçümler](media/media-services-metrics/metrics03.png)
-1. Grafiğinizi panonuza sabitleyebilirsiniz.
+1. Grafiğinizi panonuza sabitleyebilir.
 
-## <a name="view-metrics-with-azure-cli"></a>Azure CLI ile ölçümleri görüntüleme
+## <a name="view-metrics-with-azure-cli"></a>Azure CLı ile ölçümleri görüntüleme
 
-Azure CLI ile "Çıkış" ölçümlerini almak için aşağıdaki `az monitor metrics` komutu çalıştırırdınız:
+Azure CLı ile "çıkış" ölçümleri almak için aşağıdaki `az monitor metrics` komutu çalıştırın:
 
 ```azurecli-interactive
 az monitor metrics list --resource \
@@ -65,12 +65,12 @@ az monitor metrics list --resource \
    --metric "Egress"
 ```
 
-Diğer ölçümleri almak için, ilgilendiğiniz metrik ad için "Çıkış" yerine geçin.
+Diğer ölçümleri almak için ilgilendiğiniz ölçüm adına "çıkış" koyun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Monitör Ölçümleri](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor'u kullanarak metrik uyarıları oluşturun, görüntüleyin ve yönetin.](../../azure-monitor/platform/alerts-metric.md)
+* [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md)
+* [Azure izleyici 'yi kullanarak ölçüm uyarıları oluşturun, görüntüleyin ve yönetin](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,7 +1,7 @@
 ---
-title: Azure'da IPv6 ile sanal makine ölçek kümelerini dağıtma
+title: Azure 'da IPv6 ile sanal makine ölçek kümeleri dağıtma
 titlesuffix: Azure Virtual Network
-description: Bu makalede, Bir Azure sanal ağında IPv6 ile sanal makine ölçeği kümelerinin nasıl dağıtılanılabilen gösterilmektedir.
+description: Bu makalede, bir Azure sanal ağında IPv6 ile sanal makine ölçek kümelerinin nasıl dağıtılacağı gösterilmektedir.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,20 +14,20 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420455"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Azure'da IPv6 ile sanal makine ölçek kümelerini dağıtma
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Azure 'da IPv6 ile sanal makine ölçek kümeleri dağıtma
 
-Bu makalede, bir Azure sanal ağında çift yığın harici yük dengeleyicisi ile bir çift yığın (IPv4 + IPv6) Sanal Makine Ölçeği Seti nasıl dağıtılanın gösterilmektedir. IPv6 özellikli bir sanal makine ölçeği kümesi oluşturma [işlemi, burada](ipv6-configure-standard-load-balancer-template-json.md)açıklanan tek tek VM'ler oluşturma işlemiyle hemen hemen aynıdır. Tek tek VM'ler için açıklananadımlara benzer adımlarla başlarsınız:
-1.    IPv4 ve IPv6 Genel IP'leri oluşturun.
-2.    Çift yığın yük dengeleyicioluşturun.  
+Bu makalede, bir Azure sanal ağında çift yığın dış yük dengeleyiciye sahip bir çift yığın (IPv4 + IPv6) sanal makine ölçek kümesinin nasıl dağıtılacağı gösterilir. IPv6 özellikli bir sanal makine ölçek kümesi oluşturma işlemi, [burada](ipv6-configure-standard-load-balancer-template-json.md)açıklanan tek VM 'leri oluşturma işlemiyle neredeyse aynıdır. Tek tek VM 'Lerde açıklananlara benzer adımlar ile başlayacaksınız:
+1.    IPv4 ve IPv6 genel IP 'Leri oluşturun.
+2.    Çift yığın yük dengeleyici oluşturun.  
 3.    Ağ güvenlik grubu (NSG) kuralları oluşturun.  
 
-Tek tek VM'lerden farklı olan tek adım, sanal makine ölçeği kümesi kaynağını kullanan ağ arabirimi (NIC) yapılandırması oluşturmaktır: networkProfile/networkInterfaceConfigurations. JSON yapısı, NIC ve IPv4 IpConfiguration'ı birincil arabirim olarak **"birincil"** olarak ayarlamanın eklenmesiyle tek tek VM'ler için kullanılan Microsoft.Network/networkInterfaces nesnesine benzer: aşağıdaki örnekte görüldüğü gibi gerçek öznitelik:
+Tek tek VM 'lerden farklı olan tek adım, sanal makine ölçek kümesi kaynağını kullanan ağ arabirimi (NIC) yapılandırmasını oluşturuyor: networkProfile/Networkınterfaceconfigurations. JSON yapısı, tek tek VM 'Ler için kullanılan Microsoft. Network/NetworkInterfaces nesnesine benzer ve aşağıdaki örnekte görüldüğü gibi, **"birincil": true** ÖZNITELIĞINI kullanarak NIC ve IPv4 IP 'lerinin birincil arabirim olarak ayarlanmasına ek olarak kullanılır:
 
 ```json
           "networkProfile": {
@@ -89,9 +89,9 @@ Tek tek VM'lerden farklı olan tek adım, sanal makine ölçeği kümesi kaynağ
 ```
 
 
-## <a name="sample-virtual-machine-scale-set-template-json"></a>Örnek sanal makine ölçek seti şablon USON
+## <a name="sample-virtual-machine-scale-set-template-json"></a>Örnek sanal makine ölçek kümesi şablonu JSON
 
-Çift yığın (IPv4 + IPv6) Sanal Makine Ölçeği seti ile çift yığın harici Yük Dengeleyici ve sanal ağ görünümü örnek [şablonu burada](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)dağıtmak için.
+Çift yığın dış Load Balancer ve sanal ağ görünümü [örnek şablonuyla bir](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-vmss/)çift yığın (IPv4 + IPv6) sanal makine ölçek kümesi dağıtmak için.
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için Azure [Sanal Ağı için IPv6 nedir'](ipv6-overview.md)e bakın.
+Azure sanal ağlarında IPv6 desteği hakkında daha fazla bilgi edinmek için bkz. [Azure sanal ağ Için IPv6 nedir?](ipv6-overview.md).

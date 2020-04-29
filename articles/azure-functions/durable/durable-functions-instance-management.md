@@ -1,45 +1,45 @@
 ---
-title: Dayanıklı İşlevlerde örnekleri yönetme - Azure
-description: Azure İşlevler için Dayanıklı İşlevler uzantısındaörnekleri nasıl yönetiştireceklerini öğrenin.
+title: Dayanıklı İşlevler örnekleri yönetme-Azure
+description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki örnekleri yönetmeyi öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 1837d342c4476633ee33a8579abe7389ac9bbddf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476821"
 ---
-# <a name="manage-instances-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'deki örnekleri yönetme
+# <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
-Azure [İşlevler için Dayanıklı İşlevler](durable-functions-overview.md) uzantısını kullanıyorsanız veya bunu yapmaya başlamak istiyorsanız, en iyi şekilde kullandığınızdan emin olun. Dayanıklı Fonksiyonlar düzenleme örneklerinizi nasıl yönetebileceğiniz hakkında daha fazla bilgi edinerek optimize edebilirsiniz. Bu makale, her örnek yönetim işleminin ayrıntılarına gider.
+Azure Işlevleri için [dayanıklı işlevler](durable-functions-overview.md) uzantısını kullanıyorsanız veya bunu yapmaya başlamak istiyorsanız, en iyi kullanım düzeyini kullandığınızdan emin olun. Nasıl yönetileceği hakkında daha fazla bilgi edinmek için Dayanıklı İşlevler düzenleme örneklerinizi iyileştirebilirsiniz. Bu makale her örnek yönetimi işleminin ayrıntılarına gider.
 
-Örneğin, örnekleri başlatıp sonlandırabilirsiniz ve tüm örnekleri sorgulayabilme ve örnekleri filtrelerle sorgulayabilme olanağı da dahil olmak üzere örnekleri sorgulayabilirsiniz. Ayrıca, olayları örneklere gönderebilir, orkestrasyon tamamlamayı bekleyebilir ve HTTP yönetimi webhook URL'lerini alabilirsiniz. Bu makalede, örnekleri geri sarma, örnek geçmişi temizleme ve görev hub'ı silme dahil olmak üzere diğer yönetim işlemleri de kapsar.
+Örneğin, örnekleri başlatabilir ve sonlandırabilirsiniz, ancak tüm örnekleri ve sorgu örneklerini filtre ile sorgulama özelliği de dahil olmak üzere örnekleri sorgulayabilirsiniz. Ayrıca, örneklere olay gönderebilir, düzenleme tamamlanmasını bekleyebilir ve HTTP yönetimi Web kancası URL 'Lerini alabilirsiniz. Bu makalede, örnekleri geri sarma, örnek geçmişini temizleme ve bir görev merkezini silme dahil olmak üzere diğer yönetim işlemleri de ele alınmaktadır.
 
-Dayanıklı İşlevler'de, bu yönetim işlemlerinin her birini nasıl uygulamak istediğinize yönelik seçenekleriniz vardır. Bu makalede, hem .NET (C#) hem de JavaScript için [Azure İşlevler Çekirdek Araçları'nı](../functions-run-local.md) kullanan örnekler verilmektedir.
+Dayanıklı İşlevler, bu yönetim işlemlerinin her birini nasıl uygulamak istediğinize ilişkin seçenekleriniz vardır. Bu makalede hem .NET (C#) hem de JavaScript için [Azure Functions Core Tools](../functions-run-local.md) kullanan örnekler sağlanmaktadır.
 
 ## <a name="start-instances"></a>Başlangıç örnekleri
 
-Bir orkestrasyon örneğini başlatabilmek önemlidir. Bu genellikle başka bir işlevin tetikleyicibir Dayanıklı Fonksiyonlar bağlama kullanırken yapılır.
+Bir düzenleme örneğini başlamamak önemlidir. Bu, başka bir işlevin tetikleyicisinde Dayanıklı İşlevler bağlama kullandığınızda genellikle yapılır.
 
-`StartNewAsync` [Orkestrasyon istemcisi bağlama](durable-functions-bindings.md#orchestration-client) (.NET) veya `startNew` (JavaScript) yöntemi yeni bir örnek başlatır. Dahili olarak, bu yöntem denetim kuyruğuna bir ileti sıralar, daha sonra düzenleme tetikleyici [bağlama](durable-functions-bindings.md#orchestration-trigger)kullanan belirtilen adı ile bir işlevin başlangıcını tetikler.
+`StartNewAsync` [Orchestration istemcisi bağlamasındaki](durable-functions-bindings.md#orchestration-client) ( `startNew` .net) veya (JavaScript) yöntemi yeni bir örnek başlatır. Bu yöntem, dahili olarak bir iletiyi denetim kuyruğuna sıraya alır, daha sonra [düzenleme tetikleyicisi bağlamasını](durable-functions-bindings.md#orchestration-trigger)kullanan belirtilen ada sahip bir işlevin başlangıcını tetikler.
 
-Bu async işlemi, orkestrasyon işlemi başarıyla zamanlandığında tamamlanır.
+Bu zaman uyumsuz işlem, Orchestration işlemi başarıyla zamanlandığında tamamlanır.
 
-Yeni bir orkestrasyon örneği başlatmak için parametreler şunlardır:
+Yeni bir Orchestration örneği başlatmak için parametreler aşağıdaki gibidir:
 
-* **Adı**: Programa orchestrator işlevinin adı.
-* **Giriş**: Orkestratör işlevine giriş olarak geçirilmesi gereken JSON serileştirilebilir veriler.
-* **InstanceId**: (İsteğe Bağlı) Örneğin benzersiz kimliği. Bu parametreyi belirtmezseniz, yöntem rasgele bir kimlik kullanır.
+* **Ad**: zamanlanacak Orchestrator işlevinin adı.
+* **Giriş**: Orchestrator işlevine giriş olarak geçirilmesi gereken tüm JSON seri hale getirilebilir verileri.
+* **InstanceId**: (isteğe bağlı) ÖRNEĞIN benzersiz kimliği. Bu parametreyi belirtmezseniz, yöntemi rastgele bir KIMLIK kullanır.
 
 > [!TIP]
-> Örnek kimliği için rasgele bir tanımlayıcı kullanın. Rasgele örnek işletmeler, birden fazla VM' de orchestrator fonksiyonlarını ölçekleştirirken eşit bir yük dağıtımı sağlamanıza yardımcı olur. Rasgele olmayan örnek kimliklerini kullanmak için uygun zaman, kimliğin harici bir kaynaktan gelmesi gerektiği veya [singleton orkestratör](durable-functions-singletons.md) deseni uyguladığınız zamandır.
+> Örnek KIMLIĞI için rastgele bir tanımlayıcı kullanın. Rastgele örnek kimlikleri, Orchestrator işlevlerini birden çok VM genelinde ölçeklendirirken eşit yük dağıtımına yardımcı olur. Rastgele olmayan örnek kimlikleri kullanmak için uygun zaman, KIMLIğIN bir dış kaynaktan gelmesi veya [Singleton Orchestrator](durable-functions-singletons.md) deseninin ne zaman uygulanacağı olur.
 
-Aşağıdaki kod, yeni bir orkestrasyon örneği başlatan bir örnek işlevdir:
+Aşağıdaki kod, yeni bir Orchestration örneği başlatan örnek bir işlevdir:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldQueueTrigger")]
@@ -54,13 +54,13 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-<a name="javascript-function-json"></a>Aksi belirtilmedikçe, bu sayfadaki örnekler aşağıdaki function.json ile HTTP tetikleyicisini kullanır.
+<a name="javascript-function-json"></a>Aksi belirtilmediği takdirde, bu sayfadaki örnekler HTTP tetikleyicisini Aşağıdaki Function. JSON ile kullanır.
 
-**fonksiyon.json**
+**function. JSON**
 
 ```json
 {
@@ -87,9 +87,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Bu örnek, Dayanıklı Fonksiyonlar sürüm 2.x'i hedefler. Sürüm 1.x'te `orchestrationClient` , `durableClient`.
+> Bu örnek, sürüm 2. x Dayanıklı İşlevler hedefler. Sürüm 1. x içinde yerine kullanın `orchestrationClient` `durableClient`.
 
-**index.js**
+**index. js**
 
 ```javascript
 const df = require("durable-functions");
@@ -104,20 +104,20 @@ module.exports = async function(context, input) {
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Azure [İşlevler Çekirdek Araçları](../functions-run-local.md) `durable start-new` komutunu kullanarak doğrudan bir örnek başlatabilirsiniz. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable start-new` komutunu kullanarak doğrudan bir örnek başlatabilirsiniz. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Başlayacak fonksiyonun adı. ** `function-name` **
-* (isteğe bağlı) : İşlevin satır veya JSON dosyası aracılığıyla girilen. ** `input` ** Dosyalar için, dosyaya giden yola `@`bir önek `@path/to/file.json`ekleyin, ' gibi .
-* (isteğe bağlı) : Orkestrasyon örneğinin kimliği. ** `id` ** Bu parametreyi belirtmezseniz, komut rasgele bir GUID kullanır.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer AzureWebJobsStorage'dır.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan durableFunctionsHub olduğunu. Bunu, dayanıklı Task:HubName'yi kullanarak [host.json](durable-functions-bindings.md#host-json) olarak da ayarlayabilirsiniz.
+* (gerekli): başlatılacak işlevin adı. ** `function-name` **
+* (isteğe bağlı): işleve satır içi veya bir JSON dosyası aracılığıyla giriş. ** `input` ** Dosyalar için, dosyasının yolunu içeren `@`bir ön eki ekleyin. `@path/to/file.json`
+* (isteğe bağlı): Orchestration örneğinin kimliği. ** `id` ** Bu parametreyi belirtmezseniz, komut rastgele bir GUID kullanır.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer AzureWebJobsStorage ' dir.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer DurableFunctionsHub ' dır. Bunu, durableTask: HubName kullanarak [Host. JSON](durable-functions-bindings.md#host-json) içinde de ayarlayabilirsiniz.
 
 > [!NOTE]
-> Core Tools komutları, bunları bir işlev uygulamasının kök dizininden çalıştırdığınızı varsayar. Parametreleri `connection-string-setting` `task-hub-name` açıkça sağlarsanız, komutları herhangi bir dizinden çalıştırabilirsiniz. Bu komutları işlev uygulaması ana bilgisayarı çalıştırmadan çalıştırabiliyor olsanız da, ana bilgisayar çalışmadığı sürece bazı efektleri gözlemleyemezsiniz. Örneğin, `start-new` komut hedef görev hub'ına bir başlangıç iletisi ekler, ancak iletiyi işleyebilir çalışan bir işlev uygulaması ana bilgisayar işlemi olmadığı sürece orkestrasyon aslında çalışmaz.
+> Temel araçlar komutları, bunları bir işlev uygulamasının kök dizininden kullandığınızı varsayar. `connection-string-setting` Ve `task-hub-name` parametrelerini açık bir şekilde sağlarsanız, komutları herhangi bir dizinden çalıştırabilirsiniz. Bu komutları çalışan bir işlev uygulama konağı olmadan çalıştırabilmenize karşın, ana bilgisayar çalışmadığı takdirde bazı etkileri gözlemleyemiyorum olabilirsiniz. Örneğin, `start-new` komut bir başlangıç iletisini hedef görev merkezine sıralar, ancak iletiyi işleyemeyen bir işlev uygulama ana bilgisayarı işlemi olmadıkça düzenleme aslında çalışmaz.
 
-Aşağıdaki komut HelloWorld adlı işlevi başlatır ve dosyanın `counter-data.json` içeriğini ona iletir:
+Aşağıdaki komut HelloWorld adlı işlevi başlatır ve dosyanın `counter-data.json` içeriğini buna geçirir:
 
 ```bash
 func durable start-new --function-name HelloWorld --input @counter-data.json --task-hub-name TestTaskHub
@@ -125,37 +125,37 @@ func durable start-new --function-name HelloWorld --input @counter-data.json --t
 
 ## <a name="query-instances"></a>Sorgu örnekleri
 
-Orkestrasyonlarınızı yönetme çabanızın bir parçası olarak, büyük olasılıkla bir orkestrasyon örneğinin durumu hakkında (örneğin, normal olarak tamamlanmış veya başarısız olsa da) hakkında bilgi toplamanız gerekir.
+Düzenlemeleri yönetme çabalarınızın bir parçası olarak, büyük olasılıkla bir düzenleme örneğinin durumu hakkında bilgi toplamanız gerekir (örneğin, normal veya başarısız olup olmadığını).
 
-`GetStatusAsync` (.NET) veya `getStatus` (JavaScript) yöntem [orkestrasyon istemcisi bağlama](durable-functions-bindings.md#orchestration-client) bir orkestrasyon örneği durumunu sorgular.
+`GetStatusAsync` [Orchestration istemcisi bağlamasındaki](durable-functions-bindings.md#orchestration-client) (.net `getStatus` ) veya (JavaScript) yöntemi bir Orchestration örneğinin durumunu sorgular.
 
-Parametre `instanceId` olarak (gerekli), `showHistory` `showHistoryOutput` (isteğe `showInput` bağlı), (isteğe bağlı) ve (isteğe bağlı) alır.
+`instanceId` (Gerekli) `showHistory` (isteğe bağlı), `showHistoryOutput` (isteğe bağlı) ve `showInput` (isteğe bağlı) parametreleri parametre olarak alır.
 
-* **`showHistory`**: `true`Ayarlanırsa, yanıt yürütme geçmişini içerir.
-* **`showHistoryOutput`**: Olarak `true`ayarlanırsa, yürütme geçmişi etkinlik çıktıları içerir.
-* **`showInput`**: `false`Ayarlanırsa, yanıt işlevin girişini içermez. Varsayılan değer: `true`.
+* **`showHistory`**: Olarak `true`ayarlanırsa, yanıt yürütme geçmişini içerir.
+* **`showHistoryOutput`**: Olarak `true`ayarlanırsa, yürütme geçmişi etkinlik çıkışları içerir.
+* **`showInput`**: Olarak `false`ayarlanırsa, yanıt işlevin girişini içermez. Varsayılan değer: `true`.
 
-Yöntem aşağıdaki özelliklere sahip bir nesne döndürür:
+Yöntemi aşağıdaki özelliklerle bir nesne döndürür:
 
-* **Adı**: Orkestratör işlevinin adı.
-* **InstanceId**: Orkestrasyonun örnek kimliği `instanceId` (girişle aynı olmalıdır).
-* **CreatedTime**: Orkestratör işlevinin çalışmaya başladığı saat.
-* **LastUpdatedTime**: Orkestrasyonun son kontrol noktası olduğu saat.
-* **Giriş**: Fonksiyonun JSON değeri olarak girişi. Yanlışsa `showInput` bu alan doldurulmaz.
-* **CustomStatus**: JSON formatında özel orkestrasyon durumu.
-* **Çıktı**: Fonksiyonun JSON değeri olarak çıktısı (işlev tamamlanmışsa). Orkestratör işlevi başarısız olduysa, bu özellik hata ayrıntılarını içerir. Orkestratör işlevi sonlandırıldıysa, bu özellik sonlandırma nedenini (varsa) içerir.
-* **RuntimeStatus**: Aşağıdaki değerlerden biri:
-  * **Bekleme :** Örnek zamanlandı ancak henüz çalışmaya başlamadı.
-  * **Çalışan**: Örnek çalışmaya başladı.
-  * **Tamamlandı**: Örnek normal olarak tamamlandı.
-  * **ContinuedAsNew**: Örnek kendini yeni bir geçmişle yeniden başlatmıştır. Bu durum geçici bir durumdur.
-  * **Başarısız**: Örnek bir hata ile başarısız oldu.
-  * **Sonlandırı :** Örnek aniden durduruldu.
-* **Tarihçe**: Orkestrasyonun yürütme tarihi. Bu alan yalnızca ' `showHistory` olarak `true`ayarlanırsa doldurulur.
+* **Ad**: Orchestrator işlevinin adı.
+* **InstanceId**: Orchestration 'un örnek kimliği ( `instanceId` girişle aynı olmalıdır).
+* **CreatedTime**: Orchestrator işlevinin çalışmaya başladığı zaman.
+* **LastUpdatedTime**: Orchestration son denetim noktası zaman.
+* **Giriş**: işlevin JSON değeri olarak girişi. Bu alan `showInput` , yanlışsa doldurulur.
+* **Customstatus**: JSON biçiminde özel düzenleme durumu.
+* **Çıktı**: işlevin JSON değeri olarak çıktısı (işlev tamamlandıysa). Orchestrator işlevi başarısız olduysa, bu özellik hata ayrıntılarını içerir. Orchestrator işlevi sonlandırıldıysa, bu özellik sonlandırma sebebini (varsa) içerir.
+* **RuntimeStatus**: aşağıdaki değerlerden biri:
+  * **Bekliyor**: örnek zamanlandı ancak henüz çalışmaya başlamadı.
+  * **Çalışıyor**: örnek çalışmaya başladı.
+  * **Tamamlandı**: örnek normal şekilde tamamlandı.
+  * **Devam dasnew**: örnek, kendisini yeni bir geçmiş ile yeniden başlattı. Bu durum, geçici bir durumdur.
+  * **Başarısız**: örnek bir hata vererek başarısız oldu.
+  * **Sonlandırıldı**: örnek aniden durduruldu.
+* **Geçmiş**: Orchestration yürütme geçmişi. Bu alan yalnızca, olarak `showHistory` `true`ayarlanmışsa doldurulur.
 
-Örnek yoksa, bu yöntem `undefined` (.NET) veya (JavaScript) döndürür. `null`
+Örnek yoksa, `null` bu Yöntem (.net `undefined` ) veya (JavaScript) döndürür.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -169,7 +169,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -184,31 +184,31 @@ module.exports = async function(context, instanceId) {
 }
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure İşlevler Temel Araçları](../functions-run-local.md) `durable get-runtime-status` komutunu kullanarak doğrudan bir düzenleme örneği durumunu almak da mümkündür. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable get-runtime-status` komutunu kullanarak bir düzenleme örneğinin durumunu doğrudan almak mümkündür. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Orkestrasyon örneğinin kimliği. ** `id` **
-* (isteğe bağlı) : `true`Ayarlanırsa, yanıt işlevin girişini içerir. ** `show-input` ** Varsayılan değer: `false`.
-* (isteğe bağlı) : `true`Ayarlanırsa, yanıt işlevin çıktısını içerir. ** `show-output` ** Varsayılan değer: `false`.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca [host.json](durable-functions-bindings.md#host-json)ayarlanabilir , dayanıklıTask:HubName kullanılarak.
+* (gerekli): Orchestration örneğinin kimliği. ** `id` **
+* (isteğe bağlı): olarak `true`ayarlanırsa, yanıt işlevin girdisini içerir. ** `show-input` ** Varsayılan değer: `false`.
+* (isteğe bağlı): olarak `true`ayarlanırsa, yanıt işlevin çıktısını içerir. ** `show-output` ** Varsayılan değer: `false`.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [Host. JSON](durable-functions-bindings.md#host-json)içinde de ayarlanabilir.
 
-Aşağıdaki komut 0ab8c55a66644d68a3a8b20b12d209c bir orkestrasyon örneği kimliği ile bir örneğin durumunu (giriş ve çıkış dahil) alır. Komutu işlev uygulamasının `func` kök dizininden çalıştırdığınızı varsayar:
+Aşağıdaki komut, 0ab8c55a66644d68a3a8b220b12d209c düzenleme örneği KIMLIĞINE sahip bir örnek için durumu (giriş ve çıkış dahil) alır. İşlev uygulamasının kök dizininden `func` komutunu çalıştırdığınız varsayılır:
 
 ```bash
 func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-input true --show-output true
 ```
 
-Bir orkestrasyon örneğinin geçmişini almak için `durable get-history` komutu kullanabilirsiniz. Aşağıdaki parametreleri alır:
+Bir Orchestration örneğinin geçmişini `durable get-history` almak için komutunu kullanabilirsiniz. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Orkestrasyon örneğinin kimliği. ** `id` **
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, dayanıklıTask:HubName kullanılarak host.json olarak da ayarlanabilir.
+* (gerekli): Orchestration örneğinin kimliği. ** `id` **
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak Host. JSON içinde de ayarlanabilir.
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -216,11 +216,11 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 ## <a name="query-all-instances"></a>Tüm örnekleri sorgula
 
-Bir defada orkestrasyonunuzda bir örneği sorgulamak yerine, hepsini aynı anda sorgulamayı daha verimli bulabilirsiniz.
+Tek seferde düzenleme yaptığınız bir örneği sorgulamak yerine, bunların tümünü aynı anda sorgulamak daha verimli olabilir.
 
-Tüm düzenleme `GetStatusAsync` örneklerinin durumlarını `getStatusAll` sorgulamak için (.NET) veya (JavaScript) yöntemini kullanabilirsiniz. .NET'te, iptal `CancellationToken` etmek istediğiniz de bir nesneyi geçirebilirsiniz. Yöntem, parametrelerle `GetStatusAsync` yöntemle aynı özelliklere sahip nesneleri döndürür.
+Tüm düzenleme örneklerinin durumlarını `GetStatusAsync` sorgulamak için (.net `getStatusAll` ) veya (JavaScript) yöntemini kullanabilirsiniz. .NET ' te, bir `CancellationToken` nesneyi iptal etmek istediğiniz durumda geçirebilirsiniz. Yöntemi, parametreleriyle aynı özelliklere `GetStatusAsync` sahip nesneleri döndürür.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -238,7 +238,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -255,30 +255,30 @@ module.exports = async function(context, req) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Azure [İşlevler Temel Araçları](../functions-run-local.md) `durable get-instances` komutunu kullanarak örnekleri doğrudan sorgulamak da mümkündür. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable get-instances` komutu kullanılarak örnekleri doğrudan sorgulamak de mümkündür. Aşağıdaki parametreleri alır:
 
-* (isteğe bağlı) : Bu komut sayfalamayı destekler. ** `top` ** Bu parametre, istek başına alınan örnek sayısına karşılık gelir. Varsayılan değer 10'dur.
-* (isteğe bağlı) : Örneklerin hangi sayfaveya bölümünün alınıp alınamasını belirtmek için bir belirteçtir. ** `continuation-token` ** Her `get-instances` yürütme, bir sonraki örnek kümesine bir belirteç döndürür.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca [host.json](durable-functions-bindings.md#host-json)ayarlanabilir , dayanıklıTask:HubName kullanılarak.
+* (isteğe bağlı): Bu komut sayfalamayı destekler. ** `top` ** Bu parametre, istek başına alınan örnek sayısına karşılık gelir. Varsayılan değer 10 ' dur.
+* (isteğe bağlı): hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. ** `continuation-token` ** Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [Host. JSON](durable-functions-bindings.md#host-json)içinde de ayarlanabilir.
 
 ```bash
 func durable get-instances
 ```
 
-## <a name="query-instances-with-filters"></a>Örnekleri filtrelerle sorgulama
+## <a name="query-instances-with-filters"></a>Filtreleri olan sorgu örnekleri
 
-Standart bir örnek sorgusunun sağlayabileceği tüm bilgilere gerçekten ihtiyacınız yoksa ne olur? Örneğin, sadece orkestrasyon oluşturma süresini veya orkestrasyon çalışma zamanı durumunu arıyorsanız ne olur? Filtreler uygulayarak sorgunuzu daraltabilirsiniz.
+Standart örnek sorgusunun sağlayabilecekleri tüm bilgilere gerçekten ihtiyaç duymuyorsanız ne yapabilirsiniz? Örneğin, düzenleme oluşturma zamanını veya Orchestration çalışma zamanı durumunu yalnızca siz arıyorsanız ne olacak? Filtre uygulayarak sorgunuzu daraltabilirsiniz.
 
-Önceden `GetStatusAsync` tanımlanmış filtreler kümesiyle eşleşen düzenleme örneklerinin listesini almak için (.NET) veya `getStatusBy` (JavaScript) yöntemini kullanın.
+Önceden tanımlanmış `GetStatusAsync` bir filtre kümesiyle eşleşen `getStatusBy` düzenleme örneklerinin listesini almak için (.net) veya (JavaScript) metodunu kullanın.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -304,7 +304,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -329,35 +329,35 @@ module.exports = async function(context, req) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Azure İşlevler Çekirdek Araçları'nda, `durable get-instances` filtreli komutu da kullanabilirsiniz. `top`Yukarıda belirtilen , , `continuation-token`, `connection-string-setting`, ve `task-hub-name` parametrelere ek olarak,`created-after`üç `created-before`filtre `runtime-status`parametresini (, ve ) kullanabilirsiniz.
+Azure Functions Core Tools, `durable get-instances` komutu filtreler ile de kullanabilirsiniz. `top`Belirtilen, `continuation-token`, `connection-string-setting`, ve `task-hub-name` parametrelerine ek olarak, üç filtre parametresi (`created-after`, `created-before`ve `runtime-status`) kullanabilirsiniz.
 
-* (isteğe bağlı) : Bu tarihten/saatten (UTC) sonra oluşturulan örnekleri alın. ** `created-after` ** ISO 8601 biçimlendirilmiş tarih saatleri kabul edilmiştir.
-* (isteğe bağlı) : Bu tarihten/tarihten (UTC) önce oluşturulan örnekleri alın. ** `created-before` ** ISO 8601 biçimlendirilmiş tarih saatleri kabul edilmiştir.
-* (isteğe bağlı) : Belirli bir statüye sahip örnekleri alın (örneğin, çalışan veya tamamlanmış). ** `runtime-status` ** Birden çok (ayrılmış alan) durum sağlayabilir.
-* (isteğe bağlı) : İstek başına alınan örnek sayısı. ** `top` ** Varsayılan değer 10'dur.
-* (isteğe bağlı) : Örneklerin hangi sayfaveya bölümünün alınıp alınamasını belirtmek için bir belirteçtir. ** `continuation-token` ** Her `get-instances` yürütme, bir sonraki örnek kümesine bir belirteç döndürür.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca [host.json](durable-functions-bindings.md#host-json)ayarlanabilir , dayanıklıTask:HubName kullanılarak.
+* (isteğe bağlı): Bu tarih/saat (UTC) sonrasında oluşturulan örnekleri alın. ** `created-after` ** ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* (isteğe bağlı): Bu tarih/saat (UTC) öncesinde oluşturulan örnekleri alın. ** `created-before` ** ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* (isteğe bağlı): belirli bir durumdaki örnekleri alın (örneğin, çalışıyor veya tamamlandı). ** `runtime-status` ** Birden çok (boşlukla ayrılmış) durum sağlayabilir.
+* (isteğe bağlı): istek başına alınan örnek sayısı. ** `top` ** Varsayılan değer 10 ' dur.
+* (isteğe bağlı): hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. ** `continuation-token` ** Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [Host. JSON](durable-functions-bindings.md#host-json)içinde de ayarlanabilir.
 
-Herhangi bir filtre sağlamazsanız`created-after`(, `created-before` `runtime-status`, veya , `top` komut, çalışma süresi durumu veya oluşturma süresi ne olursa olsun, yalnızca örnekleri alır.
+Herhangi bir filtre`created-after`(, `created-before`, veya `runtime-status`) sağlamazsanız, komut çalışma zamanı durumu veya oluşturulma `top` zamanına göre yalnızca örnekleri alır.
 
 ```bash
 func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before  2018-03-10T23:59Z --top 15
 ```
 
-## <a name="terminate-instances"></a>Örnekleri sonlandırma
+## <a name="terminate-instances"></a>Örnekleri Sonlandır
 
-Çalıştırmak için çok uzun süren bir orkestrasyon örneğinvarsa veya herhangi bir nedenle tamamlanmadan önce durdurmanız gerekiyorsa, onu sonlandırma seçeneğiniz vardır.
+Çalışması çok uzun süren bir düzenleme örneğiniz varsa veya herhangi bir nedenle tamamlanmadan önce bunu durdurmanız gerekiyorsa, bunu sonlandırma seçeneğine sahipsiniz.
 
-Örnekleri sonlandırmak için düzenleme `terminate` [istemcisi bağlama](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.NET) veya (JavaScript) yöntemini kullanabilirsiniz. İki parametre, `instanceId` günlüklere ve örnek durumuna yazılmış bir ve bir `reason` dizedir.
+Örnekleri sonlandırmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.net) `terminate` veya (JavaScript) yöntemini kullanabilirsiniz. İki parametre, günlüklere ve `instanceId` örnek durumuna `reason` yazılan bir ve bir dizedir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -371,7 +371,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -386,43 +386,43 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-Sona erdirilen bir `Terminated` örnek eninde sonunda devlete geçecek. Ancak, bu geçiş hemen gerçekleşmez. Bunun yerine, sonlandırma işlemi, bu örnekteki diğer işlemlerle birlikte görev hub'ında sıralanacaktır. Sonlandırılan bir [instance query](#query-instances) örneğin gerçekten `Terminated` duruma ne zaman ulaştığını bilmek için örnek sorgu API'lerini kullanabilirsiniz.
+Sonlandırılan bir örnek sonunda `Terminated` durumuna geçer. Ancak, bu geçiş hemen gerçekleşmeyecektir. Bunun yerine, sonlandırma işlemi görev hub 'ında bu örneğe ilişkin diğer işlemlerle birlikte sıraya alınır. [Örnek sorgu](#query-instances) API 'lerini kullanarak, sonlandırılmış bir örnek `Terminated` duruma gerçekten ulaştığında emin olabilirsiniz.
 
 > [!NOTE]
-> Örnek sonlandırma şu anda yayılmıyor. Etkinlik işlevleri ve alt orkestrasyonlar, onları çağıran orkestrasyon örneğini sonlandırıp sonlandırmadığınıza bakılmaksızın tamamlanmak üzere çalışır.
+> Örnek sonlandırma Şu anda yaymıyor. Etkinlik işlevleri ve alt düzenlemeler, onları çağıran düzenleme örneğini sonlandırıp sonlandırmadığına bakılmaksızın tamamlama için çalışır.
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure İşlevler Çekirdek Araçları](../functions-run-local.md) `durable terminate` komutunu kullanarak bir düzenleme örneğini doğrudan sonlandırabilirsiniz. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable terminate` komutunu kullanarak bir düzenleme örneğini doğrudan sonlandırabilirsiniz. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Sonlandırmak için orkestrasyon örneğinin kimliği. ** `id` **
-* (isteğe bağlı) : Fesih nedeni. ** `reason` **
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca [host.json](durable-functions-bindings.md#host-json)ayarlanabilir , dayanıklıTask:HubName kullanılarak.
+* (gerekli): sonlandırılacak düzenleme örneğinin kimliği. ** `id` **
+* (isteğe bağlı): sonlandırma nedeni. ** `reason` **
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [Host. JSON](durable-functions-bindings.md#host-json)içinde de ayarlanabilir.
 
-Aşağıdaki komut 0ab8c55a66644d68a3a8b220b12d209c kimliği ile bir düzenleme örneği sona erdirir:
+Aşağıdaki komut, 0ab8c55a66644d68a3a8b220b12d209c KIMLIKLI bir Orchestration örneğini sonlandırır:
 
 ```bash
 func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was time to be done."
 ```
 
-## <a name="send-events-to-instances"></a>Olayları örneklere gönderme
+## <a name="send-events-to-instances"></a>Olayları örneklere gönder
 
-Bazı senaryolarda, orkestratör işlevlerinizin harici olayları bekleyebilmesi ve dinleyebilmesi önemlidir. Bu [insan etkileşimi](durable-functions-overview.md#monitoring) için bekleyen [human interaction](durable-functions-overview.md#human)monitör işlevleri ve işlevleri içerir.
+Bazı senaryolarda, Orchestrator işlevlerinin dış olayları bekleyip dinleyebilmesi önemlidir. Bu, [insan etkileşimi](durable-functions-overview.md#human)için bekleyen [izleme işlevlerini](durable-functions-overview.md#monitoring) ve işlevlerini içerir.
 
-`RaiseEventAsync` (.NET) yöntemini veya `raiseEvent` (JavaScript) düzenleme [istemcisi bağlama](durable-functions-bindings.md#orchestration-client)yöntemini kullanarak çalışan örneklere olay bildirimleri gönderin. Bu olayları işleyebilir örnekleri `WaitForExternalEvent` (.NET) veya bir `waitForExternalEvent` (JavaScript) arama verim bekleyen durumlardır.
+`RaiseEventAsync` `raiseEvent` [Düzenleme istemci bağlamasının](durable-functions-bindings.md#orchestration-client)(.net) yöntemini veya (JavaScript) yöntemini kullanarak çalışan örneklere olay bildirimleri gönderin. Bu olayları işleyebilen örnekler `WaitForExternalEvent` (.net) veya `waitForExternalEvent` (JavaScript) çağrısına bir çağrı bekleyen olanlardır.
 
-`RaiseEventAsync` (.NET) ve `raiseEvent` (JavaScript) parametreleri aşağıdaki gibidir:
+`RaiseEventAsync` (.Net) ve `raiseEvent` (JavaScript) parametreleri aşağıdaki gibidir:
 
-* **InstanceId**: Örneğin benzersiz kimliği.
-* **EventName**: Gönderilecek etkinliğin adı.
-* **EventData**: Örneğine göndermek için JSON-serializable yük.
+* **InstanceId**: ÖRNEĞIN benzersiz kimliği.
+* **EventName**: gönderileceği etkinliğin adı.
+* **Eventdata**: örneğe gönderilmek üzere bir JSON seri hale getirilebilir yük.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -436,7 +436,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -451,22 +451,22 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
 > [!NOTE]
-> Belirtilen örnek kimliğiyle bir düzenleme örneği yoksa, olay iletisi atılır. Bir örnek varsa ancak henüz olayı beklemiyorsa, olay alınmaya ve işlenmeye hazır olana kadar örnek durumda depolanır.
+> Belirtilen örnek KIMLIĞINE sahip bir düzenleme örneği yoksa, olay iletisi atılır. Bir örnek varsa ancak henüz olay bekliyorsa, olay alınana ve işlenmek üzere hazırlanana kadar örnek durumunda depolanır.
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure İşlevler Temel Araçları](../functions-run-local.md) `durable raise-event` komutunu kullanarak bir olayı doğrudan bir orkestrasyon örneğine yükseltebilirsiniz. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable raise-event` komutunu kullanarak bir düzenleme örneğine doğrudan bir olay da yükseltebilirsiniz. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Orkestrasyon örneğinin kimliği. ** `id` **
-* **`event-name`**: Yükseltecek olayın adı.
-* (isteğe bağlı) : Orkestrasyon örneğine gönderilecek veriler. ** `event-data` ** Bu, bir JSON dosyasına giden yol olabilir veya verileri doğrudan komut satırında sağlayabilirsiniz.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca [host.json](durable-functions-bindings.md#host-json)ayarlanabilir , dayanıklıTask:HubName kullanılarak.
+* (gerekli): Orchestration örneğinin kimliği. ** `id` **
+* **`event-name`**: Tetikedilecek etkinliğin adı.
+* (isteğe bağlı): Orchestration örneğine gönderilen veriler. ** `event-data` ** Bu bir JSON dosyasının yolu olabilir veya verileri doğrudan komut satırına sağlayabilirsiniz.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [Host. JSON](durable-functions-bindings.md#host-json)içinde de ayarlanabilir.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -476,15 +476,15 @@ func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEv
 func durable raise-event --id 1234567 --event-name MyOtherEvent --event-data 3
 ```
 
-## <a name="wait-for-orchestration-completion"></a>Orkestrasyonun tamamlanmasını bekleyin
+## <a name="wait-for-orchestration-completion"></a>Düzenleme tamamlanmasını bekle
 
-Uzun soluklu orkestrasyonlarda, beklemek ve bir orkestrasyon sonuçlarını almak isteyebilirsiniz. Bu gibi durumlarda, orkestrasyon üzerinde bir zaman önceliği tanımlayabilmek de yararlıdır. Zaman aşımı aşılırsa, sonuçlar yerine orkestrasyonun durumu döndürülmelidir.
+Uzun süre çalışan düzenlemeler içinde, bir düzenleme işleminin sonuçlarını beklemek ve almak isteyebilirsiniz. Bu gibi durumlarda, Orchestration üzerinde bir zaman aşımı süresi tanımlayabilmek de yararlı olur. Zaman aşımı aşılırsa, sonuçlar yerine Orchestration 'un durumu döndürülmelidir.
 
-`WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) veya `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) yöntemi, bir orkestrasyon örneğinden eşzamanlı olarak gerçek çıktıyı almak için kullanılabilir. Varsayılan olarak, bu yöntemler için `timeout`10 saniye ve `retryInterval`için 1 saniye varsayılan değer kullanır.  
+`WaitForCompletionOrCreateCheckStatusResponseAsync` (.Net) veya `waitForCompletionOrCreateCheckStatusResponse` (JavaScript) yöntemi bir Orchestration örneğinden zaman uyumlu olarak gerçek çıktıyı almak için kullanılabilir. Varsayılan olarak, bu yöntemler için `timeout`varsayılan değer olan 10 saniye ve için `retryInterval`1 saniye kullanır.  
 
-Aşağıda, bu API'nin nasıl kullanılacağını gösteren bir örnek HTTP tetikleyici işlevi verilmiştir:
+Bu API 'nin nasıl kullanılacağını gösteren örnek bir HTTP tetikleyici işlevi aşağıda verilmiştir:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
@@ -492,19 +492,19 @@ Aşağıda, bu API'nin nasıl kullanılacağını gösteren bir örnek HTTP teti
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-İşlevi aşağıdaki satırla çağırın. Zaman aralığı için 2 saniye ve yeniden deneme aralığı için 0,5 saniye kullanın:
+Aşağıdaki satırı kullanarak işlevi çağırın. Zaman aşımı için 2 saniye ve yeniden deneme aralığı için 0,5 saniye kullanın:
 
 ```bash
     http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
 ```
 
-Düzenleme örneğinden yanıt almak için gereken süreye bağlı olarak, iki durum vardır:
+Orchestration örneğinden yanıt almak için gereken zamana bağlı olarak iki durum vardır:
 
-* Orkestrasyon örnekleri tanımlanan zaman anında (bu durumda 2 saniye) tamamlanır ve yanıt eşzamanlı olarak teslim edilen gerçek orkestrasyon örneği çıkışıdır:
+* Düzenleme örnekleri tanımlı zaman aşımı (Bu durumda 2 saniye) içinde tamamlanır ve yanıt, zaman uyumlu olarak teslim edilen gerçek düzenleme örneği çıktıdır:
 
     ```http
         HTTP/1.1 200 OK
@@ -519,7 +519,7 @@ Düzenleme örneğinden yanıt almak için gereken süreye bağlı olarak, iki d
         ]
     ```
 
-* Düzenleme örnekleri tanımlanan zaman anına tamamlanamaz ve yanıt [HTTP API URL keşfinde](durable-functions-http-api.md)açıklanan varsayılan örnektir:
+* Düzenleme örnekleri tanımlı zaman aşımı içinde tamamlanamaz ve yanıt, [http API URL 'si bulma](durable-functions-http-api.md)bölümünde açıklanan varsayılan bir değer değildir:
 
     ```http
         HTTP/1.1 202 Accepted
@@ -538,27 +538,27 @@ Düzenleme örneğinden yanıt almak için gereken süreye bağlı olarak, iki d
     ```
 
 > [!NOTE]
-> Webhook URL'lerinin biçimi, çalıştırdığınız Azure İşlemeleri ana bilgisayarının hangi sürümüne bağlı olarak farklı olabilir. Önceki örnek, Azure İşlevleri 2.0 ana bilgisayarı içindir.
+> Web kancası URL 'Lerinin biçimi, çalıştırdığınız Azure Işlevleri ana bilgisayarı sürümüne bağlı olarak farklılık gösterebilir. Yukarıdaki örnek, Azure Işlevleri 2,0 konağına yöneliktir.
 
-## <a name="retrieve-http-management-webhook-urls"></a>HTTP yönetimi webhook URL'lerini alın
+## <a name="retrieve-http-management-webhook-urls"></a>HTTP yönetimi Web kancası URL 'Lerini alma
 
-Olayları izlemek veya orkestrasyon'a yükseltmek için harici bir sistem kullanabilirsiniz. Dış [sistemler, HTTP API URL keşfinde](durable-functions-http-features.md#http-api-url-discovery)açıklanan varsayılan yanıtın bir parçası olan webhook URL'leri aracılığıyla Dayanıklı Fonksiyonlar ile iletişim kurabilir. Webhook URL'lerine alternatif olarak [orkestrasyon istemcisi bağlama](durable-functions-bindings.md#orchestration-client)kullanılarak programlanabilir. `CreateHttpManagementPayload` (.NET) veya `createHttpManagementPayload` (JavaScript) yöntemleri, bu webhook URL'lerini içeren serileştirilebilir bir nesne almak için kullanılabilir.
+Bir düzenleme için olayları izlemek veya izlemek üzere bir dış sistem kullanabilirsiniz. Dış sistemler, [http API URL 'si bulma](durable-functions-http-features.md#http-api-url-discovery)bölümünde açıklanan varsayılan yanıtın parçası olan Web kancası URL 'leri aracılığıyla dayanıklı işlevler ile iletişim kurabilir. Web kancası URL 'Lerine alternatif olarak [Orchestration istemci bağlaması](durable-functions-bindings.md#orchestration-client)kullanılarak programlı bir şekilde erişilebilir. ( `CreateHttpManagementPayload` .Net) veya `createHttpManagementPayload` (JavaScript) yöntemleri, bu Web kancası URL 'lerini içeren bir seri hale getirilebilir nesne almak için kullanılabilir.
 
-`CreateHttpManagementPayload` (.NET) ve `createHttpManagementPayload` (JavaScript) yöntemlerinin bir parametresi vardır:
+`CreateHttpManagementPayload` (.Net) ve `createHttpManagementPayload` (JavaScript) yöntemlerinde bir parametre vardır:
 
-* **instanceId**: Örneğin benzersiz kimliği.
+* **InstanceId**: ÖRNEĞIN benzersiz kimliği.
 
-Yöntemler aşağıdaki dize özellikleri ile bir nesne döndürer:
+Yöntemler aşağıdaki dize özelliklerine sahip bir nesne döndürür:
 
-* **Id**: Orkestrasyonun örnek kimliği `InstanceId` (girişle aynı olmalıdır).
-* **StatusQueryGetUri**: Orkestrasyon örneğinin durum URL'si.
-* **SendEventPostUri**: Orkestrasyon örneğinin "yükseltme etkinliği" URL'si.
-* **TerminatePostUri**: Orkestrasyon örneğinin "sonlandırma" URL'si.
-* **PurgeHistoryDeleteUri**: Orkestrasyon örneğinin "tasfiye geçmişi" URL'si.
+* **ID**: Orchestration 'un örnek kimliği ( `InstanceId` girişle aynı olmalıdır).
+* **Statusquerygeturi**: Orchestration örneğinin durum URL 'si.
+* **SendEventPostUri**: Orchestration örneğinin "olay oluştur" URL 'si.
+* **Terminateposturi**: Orchestration örneğinin "Terminate" URL 'si.
+* **PurgeHistoryDeleteUri**: Orchestration örneğinin "Temizleme geçmişi" URL 'si.
 
-İşlevler, aşağıdaki örneklerde gösterildiği gibi, ilgili orkestrasyonlarla ilgili olayları izlemek veya yükseltmek için bu nesnelerin örneklerini dış sistemlere gönderebilir:
+İşlevler, aşağıdaki örneklerde gösterildiği gibi, ilgili düzenleyiclerdeki olayları izlemek veya yükseltmek için bu nesnelerin örneklerini Harici sistemlere gönderebilir:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -578,7 +578,7 @@ public static void SendInstanceInfo(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar `DurableActivityContext` 1.x `IDurableActivityContext`için, `OrchestrationClient` `DurableClient` öznitelik yerine öznitelik kullanmanız gerekir ve `DurableOrchestrationClient` `IDurableOrchestrationClient`parametre türünü yerine kullanmanız gerekir. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `DurableActivityContext` Dayanıklı işlevler 1. x için yerine kullanmanız gerekir `IDurableActivityContext`, özniteliği yerine `OrchestrationClient` `DurableClient` özniteliğini kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -598,25 +598,25 @@ modules.exports = async function(context, ctx) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-## <a name="rewind-instances-preview"></a>Örnekleri geri sarma (önizleme)
+## <a name="rewind-instances-preview"></a>Örnekleri geri sar (Önizleme)
 
-Beklenmeyen bir nedenle bir düzenleme hatanız varsa, bu amaç için oluşturulmuş bir API kullanarak örneği daha önce sağlıklı bir duruma *geri sarabilirsiniz.*
-
-> [!NOTE]
-> Bu API, uygun hata işleme ve yeniden deneme ilkelerinin yerine geçecek şekilde tasarlanmamıştır. Bunun yerine, yalnızca orkestrasyon örneklerinin beklenmeyen nedenlerle başarısız olduğu durumlarda kullanılması amaçlanmıştır. Hata işleme ve yeniden deneme ilkeleri hakkında daha fazla bilgi için [Hata işleme](durable-functions-error-handling.md) makalesine bakın.
-
-Orkestrasyonu *Çalıştırma* `rewind` durumuna geri koymak için düzenleme [istemcisinin](durable-functions-bindings.md#orchestration-client) `RewindAsync` (.NET) veya (JavaScript) yöntemini kullanın. Bu yöntem, yürütme hatasına neden olan etkinliği veya alt yürütme hatalarını da yeniden çalıştıracaktır.
-
-Örneğin, bir dizi [insan onayını](durable-functions-overview.md#human)içeren bir iş akışınız olduğunu varsayalım. Birisine onayının gerekli olduğunu bildiren bir dizi etkinlik işlevi olduğunu varsayalım ve gerçek zamanlı yanıtı bekleyin. Tüm onay etkinlikleri yanıtları aldıktan veya zaman dolduktan sonra, geçersiz bir veritabanı bağlantı dizesi gibi bir uygulama yanlış yapılandırması nedeniyle başka bir etkinliğin başarısız olduğunu varsayalım. Sonuç, iş akışının derinliklerinde bir düzenleme hatasıdır. `RewindAsync` (.NET) veya `rewind` (JavaScript) API ile, bir uygulama yöneticisi yapılandırma hatasını düzeltebilir ve başarısız olan düzenlemeyi hatadan hemen önce duruma geri sarabilir. İnsan etkileşimi adımlarının hiçbirinin yeniden onaylanması gerekmez ve orkestrasyon artık başarıyla tamamlanabilir.
+Beklenmeyen bir nedenden dolayı düzenleme hatası varsa, bu amaçla derlenen bir API kullanarak örneği daha önceden sağlıklı bir duruma *geri sarmaya* dönüştürebilirsiniz.
 
 > [!NOTE]
-> *Geri sarma* özelliği, dayanıklı zamanlayıcılar kullanan geri sarma düzenleme örneklerini desteklemez.
+> Bu API, doğru hata işleme ve yeniden deneme ilkelerine yönelik bir değişiklik yapmak üzere tasarlanmamıştır. Bunun yerine, yalnızca düzenleme örneklerinin beklenmeyen nedenlerle başarısız olduğu durumlarda kullanılmak üzere tasarlanmıştır. Hata işleme ve yeniden deneme ilkeleri hakkında daha fazla bilgi için bkz. [hata işleme](durable-functions-error-handling.md) makalesi.
 
-# <a name="c"></a>[C#](#tab/csharp)
+Orchestration `RewindAsync` [istemci bağlamasının](durable-functions-bindings.md#orchestration-client) (.net) `rewind` veya (JavaScript) yöntemini kullanarak düzenlemeyi *çalışır* duruma geri yerleştirebilirsiniz. Bu yöntem, düzenleme hatasına neden olan etkinliği veya alt düzenleme yürütme hatalarını da yeniden çalıştırır.
+
+Örneğin, bir dizi [insan onaylarını](durable-functions-overview.md#human)içeren bir iş akışınız olduğunu varsayalım. Birinin onayını gerekli olduğunu bildiren ve gerçek zamanlı yanıtı bekleyen bir dizi etkinlik işlevi olduğunu varsayalım. Tüm onay etkinlikleri yanıt aldıktan veya zaman aşımına uğradıktan sonra, geçersiz bir veritabanı bağlantı dizesi gibi uygulamanın yanlış yapılandırılması nedeniyle başka bir etkinliğin başarısız olduğunu varsayalım. Sonuç, iş akışının derinlemesine bir düzenleme hatasıdır. `RewindAsync` (.Net) veya `rewind` (JavaScript) API 'si ile, bir uygulama Yöneticisi yapılandırma hatasını giderebilir ve başarısız düzenlemeyi hatadan hemen önce geri Sara geri sarabilirler. İnsan etkileşimi adımlarının hiçbirinin yeniden onaylanması gerekmez ve düzenleme artık başarıyla tamamlanabilir.
+
+> [!NOTE]
+> *Geri sarma* özelliği, dayanıklı zamanlayıcılar kullanan düzenleme örneklerinin yeniden sarlarını desteklemez.
+
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -630,7 +630,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -645,30 +645,30 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-Ayrıca, [Azure İşlevler Temel Araçları](../functions-run-local.md) `durable rewind` komutunu kullanarak doğrudan bir düzenleme örneğini geri sarabilirsiniz. Aşağıdaki parametreleri alır:
+Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) `durable rewind` komutunu kullanarak bir düzenleme örneğini doğrudan geri sarın. Aşağıdaki parametreleri alır:
 
-* (gerekli) : Orkestrasyon örneğinin kimliği. ** `id` **
-* (isteğe bağlı) : Orkestrasyon örneğini geri sarma nedeni. ** `reason` **
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan olarak, [ana bilgisayar.json](durable-functions-bindings.md#host-json) dosyasındaki görev merkezi adı kullanılır.
+* (gerekli): Orchestration örneğinin kimliği. ** `id` **
+* (isteğe bağlı): Orchestration örneğini yeniden sargı nedeni. ** `reason` **
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan olarak, [Host. JSON](durable-functions-bindings.md#host-json) dosyasındaki görev hub 'ı adı kullanılır.
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
 ```
 
-## <a name="purge-instance-history"></a>Temizleme örneği geçmişi
+## <a name="purge-instance-history"></a>Örnek geçmişini temizle
 
-Bir düzenlemeyle ilişkili tüm verileri kaldırmak için örnek geçmişini temizleyebilirsiniz. Örneğin, tamamlanmış bir örnekle ilişkili azure tablo satırlarını ve büyük ileti lekelerini silmek isteyebilirsiniz. Bunu yapmak için, `PurgeInstanceHistoryAsync` [düzenleme istemcisi bağlama](durable-functions-bindings.md#orchestration-client)(.NET) veya `purgeInstanceHistory` (JavaScript) yöntemini kullanın.
+Bir düzenleme ile ilişkili tüm verileri kaldırmak için örnek geçmişini temizleyebilirsiniz. Örneğin, tamamlanmış bir örnekle ilişkili tüm Azure Tablo satırlarını ve büyük ileti bloblarını silmek isteyebilirsiniz. Bunu yapmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) `PurgeInstanceHistoryAsync` (.net) veya `purgeInstanceHistory` (JavaScript) metodunu kullanın.
 
-Bu yöntemde iki aşırı yükleme vardır. Orkestrasyon örneğinin kimliğine göre ilk aşırı yükleme geçmişi tasfiye:
+Bu yöntemin iki aşırı yüklemesi vardır. İlk aşırı yükleme, düzenleme örneğinin KIMLIĞINE göre geçmişi temizler:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -691,13 +691,13 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Bkz. function.json yapılandırması için [Başlangıç örnekleri.](#javascript-function-json)
+Bkz. Function. JSON yapılandırması için [Başlangıç örnekleri](#javascript-function-json) .
 
 ---
 
-Sonraki örnek, belirtilen zaman aralığından sonra tamamlanan tüm düzenleme örneklerinin geçmişini temizleyen zamanlayıcı tetiklenen bir işlev gösterir. Bu durumda, 30 veya daha fazla gün önce tamamlanan tüm örnekler için verileri kaldırır. Günde bir kez saat 12:00'de yayınlanması planlanıyor:
+Sonraki örnek, belirtilen zaman aralığından sonra tamamlanan tüm düzenleme örneklerinin geçmişini temizler bir Zamanlayıcı tarafından tetiklenen bir işlev gösterir. Bu durumda, 30 veya daha fazla gün önce tamamlanan tüm örnekler için verileri kaldırır. Her gün bir kez çalışmak üzere zamanlandı, 12:
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -716,13 +716,13 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# kodu Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# kodu Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Yöntem, `purgeInstanceHistoryBy` örnek geçmişini birden çok örnek için koşullu olarak temizlemek için kullanılabilir.
+Yöntemi `purgeInstanceHistoryBy` , birden çok örnek için örnek geçmişini koşullu olarak temizlemek üzere kullanılabilir.
 
-**fonksiyon.json**
+**function. JSON**
 
 ```json
 {
@@ -744,9 +744,9 @@ Yöntem, `purgeInstanceHistoryBy` örnek geçmişini birden çok örnek için ko
 ```
 
 > [!NOTE]
-> Bu örnek, Dayanıklı Fonksiyonlar sürüm 2.x'i hedefler. Sürüm 1.x'te `orchestrationClient` , `durableClient`.
+> Bu örnek, sürüm 2. x Dayanıklı İşlevler hedefler. Sürüm 1. x içinde yerine kullanın `orchestrationClient` `durableClient`.
 
-**index.js**
+**index. js**
 
 ```javascript
 const df = require("durable-functions");
@@ -763,32 +763,32 @@ module.exports = async function (context, myTimer) {
 ---
 
 > [!NOTE]
-> Temizleme geçmişi işleminin başarılı olabilmesi için, hedef örneğin çalışma zamanı durumunun **Tamamlanması,** **Sonlandırılması**veya **Başarısız Olması**Gerekir.
+> Temizleme geçmişi işleminin başarılı olması için, hedef örneğin çalışma zamanı durumu **tamamlanmalıdır**, **sonlandırılmış**veya **başarısız**olmalıdır.
 
-### <a name="azure-functions-core-tools"></a>Azure İşlevler Temel Araçları
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-[Azure İşlevler Çekirdek Araçları](../functions-run-local.md) `durable purge-history` komutunu kullanarak bir düzenleme örneğinin geçmişini temizleyebilirsiniz. Önceki bölümdeki ikinci C# örneğine benzer şekilde, belirli bir zaman aralığında oluşturulan tüm düzenleme örneklerinin geçmişini temizler. Temizlenmemiş örnekleri çalışma süresi durumuna göre daha fazla filtreleyebilirsiniz. Komutun birkaç parametresi vardır:
+[Azure Functions Core Tools](../functions-run-local.md) `durable purge-history` komutunu kullanarak bir düzenleme örneğinin geçmişini temizleyebilirsiniz. Önceki bölümdeki ikinci C# örneğine benzer şekilde, belirtilen bir zaman aralığı boyunca oluşturulan tüm düzenleme örneklerinin geçmişini temizler. Temizlenen örnekleri çalışma zamanı durumuna göre daha fazla filtrelemek için. Komutun çeşitli parametreleri vardır:
 
-* (isteğe bağlı) : Bu tarihten/saatten (UTC) sonra oluşturulan örneklerin geçmişini temizle. ** `created-after` ** ISO 8601 biçimlendirilmiş tarih saatleri kabul edilmiştir.
-* (isteğe bağlı) : Bu tarihten/tarihten (UTC) önce oluşturulan örneklerin geçmişini temizle. ** `created-before` ** ISO 8601 biçimlendirilmiş tarih saatleri kabul edilmiştir.
-* (isteğe bağlı) : Belirli bir statüye sahip örneklerin geçmişini (örneğin, çalışan veya tamamlanmış) temizle. ** `runtime-status` ** Birden çok (ayrılmış alan) durum sağlayabilir.
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan olarak, [ana bilgisayar.json](durable-functions-bindings.md#host-json) dosyasındaki görev merkezi adı kullanılır.
+* (isteğe bağlı): Bu tarih/saat sonra oluşturulan örneklerin geçmişini temizle (UTC). ** `created-after` ** ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* (isteğe bağlı): Bu tarih/saat (UTC) öncesinde oluşturulan örneklerin geçmişini temizle. ** `created-before` ** ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* (isteğe bağlı): belirli bir duruma sahip örnek geçmişini (örneğin, çalışıyor veya tamamlandı) temizleyin. ** `runtime-status` ** Birden çok (boşlukla ayrılmış) durum sağlayabilir.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan olarak, [Host. JSON](durable-functions-bindings.md#host-json) dosyasındaki görev hub 'ı adı kullanılır.
 
-Aşağıdaki komut, 14 Kasım 2018 tarihinden önce 19:35'te (UTC) oluşturulan tüm başarısız örneklerin geçmişini siler.
+Aşağıdaki komut 14 Kasım 2018, 7:35 PM (UTC) tarihinden önce oluşturulan tüm başarısız örneklerin geçmişini siler.
 
 ```bash
 func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runtime-status failed
 ```
 
-## <a name="delete-a-task-hub"></a>Görev merkezini silme
+## <a name="delete-a-task-hub"></a>Bir görev hub 'ını silme
 
-Azure [İşlevler Temel Araçları](../functions-run-local.md) `durable delete-task-hub` komutunu kullanarak, Azure depolama tabloları, kuyruklar ve kalıplar da dahil olmak üzere belirli bir görev merkeziyle ilişkili tüm depolama yapılarını silebilirsiniz. Komutun iki parametresi vardır:
+[Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` komutunu kullanarak, Azure depolama tabloları, kuyrukları ve Blobları dahil olmak üzere belirli bir görev hub 'ı ile ilişkili tüm depolama yapılarını silebilirsiniz. Komutun iki parametresi vardır:
 
-* (isteğe bağlı) : Kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
-* (isteğe bağlı) : Kullanılacak Dayanıklı Fonksiyonlar görev merkezinin adı. ** `task-hub-name` ** Varsayılan olarak, [ana bilgisayar.json](durable-functions-bindings.md#host-json) dosyasındaki görev merkezi adı kullanılır.
+* (isteğe bağlı): kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. ** `connection-string-setting` ** Varsayılan değer: `AzureWebJobsStorage`.
+* (isteğe bağlı): kullanılacak dayanıklı işlevler görev hub 'ının adı. ** `task-hub-name` ** Varsayılan olarak, [Host. JSON](durable-functions-bindings.md#host-json) dosyasındaki görev hub 'ı adı kullanılır.
 
-Aşağıdaki komut, `UserTest` görev merkeziyle ilişkili tüm Azure depolama verilerini siler.
+Aşağıdaki komut, `UserTest` görev hub 'ı ile Ilişkili tüm Azure depolama verilerini siler.
 
 ```bash
 func durable delete-task-hub --task-hub-name UserTest
@@ -797,7 +797,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Sürüm le nasıl işleyeceğinizi öğrenin](durable-functions-versioning.md)
+> [Sürüm oluşturmayı nasıl ele alabileceğinizi öğrenin](durable-functions-versioning.md)
 
 > [!div class="nextstepaction"]
 > [Örnek yönetimi için yerleşik HTTP API başvurusu](durable-functions-http-api.md)

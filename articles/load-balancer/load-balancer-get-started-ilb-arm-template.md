@@ -1,5 +1,5 @@
 ---
-title: Dahili Yük Dengeleyicisi Oluşturma - Azure şablonu
+title: Dahili Load Balancer oluşturma-Azure şablonu
 titleSuffix: Azure Load Balancer
 description: Resource Manager’da şablon kullanarak iç yük dengeleyici oluşturmayı öğrenin
 services: load-balancer
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 0d7cc4d571ddeb0b57fd4f025b8cbf7b204f61e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79456973"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Şablon kullanarak iç yük dengeleyici oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure Portalı](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
-> * [Powershell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
+> * [Azure portalı](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Şablon](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
@@ -45,7 +45,7 @@ PowerShell kullanarak yüklediğiniz şablonu dağıtmak için aşağıdaki adı
 1. Daha önce Azure PowerShell kullanmadıysanız, [Azure PowerShell’i Yükleme ve Yapılandırma](/powershell/azure/overview) sayfasına gidin ve Azure’da oturum açıp aboneliğinizi seçmek için talimatları sonuna kadar uygulayın.
 2. Parametre dosyasını yerel diskinize indirin.
 3. Dosyayı düzenleyin ve kaydedin.
-4. Şablonu kullanarak bir kaynak grubu oluşturmak için **Yeni Kaynak GrubuDağıtım** cmdlet'ini çalıştırın.
+4. Şablonu kullanarak bir kaynak grubu oluşturmak için **New-AzResourceGroupDeployment** cmdlet 'ini çalıştırın.
 
     ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
@@ -58,7 +58,7 @@ PowerShell kullanarak yüklediğiniz şablonu dağıtmak için aşağıdaki adı
 Azure CLI’yi kullanarak şablonu dağıtmak için aşağıdaki adımları uygulayın.
 
 1. Hiç Azure CLI kullanmadıysanız bkz. [Azure CLI’yi Yükleme ve Yapılandırma](../cli-install-nodejs.md); sonra da, Azure hesabınızı ve aboneliğinizi seçtiğiniz noktaya kadar yönergeleri uygulayın.
-2. Tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Cloud Shell'i açmak için gidin. Resource Manager moduna geçmek için **azure config mode** komutunu aşağıda gösterildiği gibi çalıştırın.
+2. Tarayıcınızda Cloud Shell [https://shell.azure.com](https://shell.azure.com) açmak için bölümüne gidin. Resource Manager moduna geçmek için **azure config mode** komutunu aşağıda gösterildiği gibi çalıştırın.
 
     ```console
     azure config mode arm
@@ -81,4 +81,4 @@ Azure CLI’yi kullanarak şablonu dağıtmak için aşağıdaki adımları uygu
 
 [Yük dengeleyiciniz için boşta TCP zaman aşımı ayarlarını yapılandırma](load-balancer-tcp-idle-timeout.md)
 
-Şablondaki bir yük dengeleyicisinin JSON sözdizimi ve özellikleri için [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)bölümüne bakın.
+Bir şablondaki yük dengeleyicinin JSON sözdizimi ve özellikleri için bkz. [Microsoft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

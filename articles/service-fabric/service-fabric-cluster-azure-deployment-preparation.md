@@ -1,57 +1,57 @@
 ---
-title: Azure Hizmet Kumaşı küme dağıtımı planlama
-description: Azure'da bir üretim Hizmeti Kumaş küme dağıtımı planlama ve hazırlama hakkında bilgi edinin.
+title: Azure Service Fabric küme dağıtımını planlayın
+description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422276"
 ---
-# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımı planlama ve hazırlama
+# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
-Planlama ve bir üretim kümesi dağıtım için hazırlanması çok önemlidir.  Göz önünde bulundurulması gereken birçok faktör vardır.  Bu makalede, küme dağıtım hazırlama adımları size yol.
+Üretim kümesi dağıtımı için planlama ve hazırlanma çok önemlidir.  Göz önünde bulundurulması gereken birçok etken vardır.  Bu makale, küme dağıtımınızı hazırlama adımlarında size yol gösterir.
 
-## <a name="read-the-best-practices-information"></a>En iyi uygulamalarla ilgili bilgileri okuyun
-Azure Hizmet Kumaşı uygulamalarını ve kümelerini başarıyla yönetmek için, üretim ortamınızın güvenilirliğini optimize etmek için gerçekleştirmenizi şiddetle tavsiye ettiğimiz işlemler vardır.  Daha fazla bilgi için [Service Fabric uygulamasını okuyun ve küme en iyi uygulamaları.](service-fabric-best-practices-overview.md)
+## <a name="read-the-best-practices-information"></a>En iyi yöntemler bilgilerini okuyun
+Azure Service Fabric uygulamalarını ve kümelerini başarıyla yönetmek için, üretim ortamınızın güvenilirliğini iyileştirmek üzere yapmanız gereken işlemler oldukça önerilir.  Daha fazla bilgi için [Service Fabric uygulama ve küme en iyi uygulamalarını](service-fabric-best-practices-overview.md)okuyun.
 
-## <a name="select-the-os-for-the-cluster"></a>Küme için işletim sistemi'ni seçin
-Service Fabric, Windows Server veya Linux çalıştıran herhangi bir VM veya bilgisayarda Service Fabric kümelerinin oluşturulmasına olanak tanır.  Kümenizi dağıtmadan önce işletim sistemi: Windows veya Linux'u seçmeniz gerekir.  Kümedeki her düğüm (sanal makine) aynı işletim sistemi çalışır, Windows ve Linux VM'leri aynı kümede karıştıramazsınız.
+## <a name="select-the-os-for-the-cluster"></a>Küme için işletim sistemini seçin
+Service Fabric, Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümelerinin oluşturulmasına izin verir.  Kümenizi dağıtılmadan önce, işletim sistemi: Windows veya Linux ' u seçmeniz gerekir.  Kümedeki her düğüm (sanal makine) aynı işletim sistemini çalıştırır, aynı kümede Windows ve Linux VM 'Leri karıştıramazsınız.
 
 ## <a name="capacity-planning"></a>Kapasite planlaması
 Herhangi bir üretim dağıtımı için kapsite planlaması önemli bir adımdır. Bu süreç kapsamında dikkat etmeniz gerekenler şunlardır:
 
 * Kümeniz için ilk düğüm türü sayısı 
-* Düğüm türünün her birinin özellikleri (boyut, örnek sayısı, birincil, internete dönük, VM sayısı, vb.)
+* Her düğüm türünün özellikleri (boyut, örnek sayısı, birincil, internet 'e yönelik ve VM sayısı vb.)
 * Kümenin güvenilirlik ve dayanıklılık özellikleri
 
 ### <a name="select-the-initial-number-of-node-types"></a>Düğüm türlerinin başlangıç sayısını seçin
-İlk olarak, oluşturduğunuz kümenin ne için kullanılacağını bulmanız gerekir. Bu kümeye ne tür uygulamalar dağıtmayı planlıyorsunuz? Uygulamanızın birden çok hizmeti var mı ve bunlardan herhangi birinin herkese açık veya internetle karşı karşıya olması gerekiyor mu? Hizmetleriniz (uygulamanızı oluşturan) daha fazla RAM veya daha yüksek CPU döngüleri gibi farklı altyapı gereksinimlerine sahip mi? Hizmet Kumaşı kümesi birden fazla düğüm türünden oluşabilir: birincil düğüm türü ve bir veya daha fazla birincil olmayan düğüm türü. Her düğüm türü sanal makine ölçeği kümesine eşlenir. Daha sonra, her düğüm türünün ölçeği birbirinden bağımsız olarak artırılabilir veya azaltılabilir, her düğüm türünde farklı bağlantı noktası kümeleri açık olabilir ve farklı kapasite ölçümleri yapılabilir. [Düğüm özellikleri ve yerleşim kısıtlamaları,][placementconstraints] belirli hizmetleri belirli düğüm türlerine kısıtlamak için ayarlanabilir.  Daha fazla bilgi için, [kümenizin başlangıç](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)yapması gereken düğüm türlerinin sayısını okuyun.
+İlk olarak, oluşturduğunuz kümenin ne için kullanılacağını belirlemeniz gerekir. Bu kümeye dağıtmayı planladığınız uygulama türleri nelerdir? Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu? Hizmetlerinizin (uygulamanızı oluşturan) daha büyük RAM veya daha yüksek CPU döngüleri gibi farklı altyapı gereksinimlerine sahip olması gerekir mi? Service Fabric kümesi birden fazla düğüm türünden oluşabilir: birincil düğüm türü ve bir veya daha fazla birincil düğüm türü. Her düğüm türü bir sanal makine ölçek kümesi ile eşleştirilir. Daha sonra, her düğüm türünün ölçeği birbirinden bağımsız olarak artırılabilir veya azaltılabilir, her düğüm türünde farklı bağlantı noktası kümeleri açık olabilir ve farklı kapasite ölçümleri yapılabilir. Belirli hizmetleri belirli düğüm türlerine kısıtlamak için [düğüm özellikleri ve yerleştirme kısıtlamaları][placementconstraints] ayarlanabilir.  Daha fazla bilgi için, [kümenizin başlamak için gereken düğüm türlerinin sayısını](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)okuyun.
 
 ### <a name="select-node-properties-for-each-node-type"></a>Her düğüm türü için düğüm özelliklerini seçin
-Düğüm türleri, vm'lerin vm sku'yu, sayısını ve özelliklerini ilişkili ölçek kümesinde tanımlar.
+Düğüm türleri, ilişkili ölçek kümesindeki VM 'lerin SKU 'sunu, numarasını ve özelliklerini tanımlar.
 
-Her düğüm türü için minimum VM boyutu, düğüm türü için seçtiğiniz [dayanıklılık katmanına][durability] göre belirlenir.
+Her düğüm türü için en az sanal makine boyutu, düğüm türü için seçtiğiniz [dayanıklılık katmanına][durability] göre belirlenir.
 
-Birincil düğüm türü için minimum VM sayısı seçtiğiniz [güvenilirlik katmanına][reliability] göre belirlenir.
+Birincil düğüm türü için en az sanal makine sayısı, seçtiğiniz [güvenilirlik katmanına][reliability] göre belirlenir.
 
-[Birincil düğüm türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en az önerileri, birincil olmayan düğüm [türlerinde durum lu iş yüklerini](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum dışı iş yüklerini](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)görün.
+Birincil düğüm [türleri](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)için en düşük önerilere, [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)ve [birincil olmayan düğüm türlerinde durum bilgisiz iş yüklerine](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads)bakın.
 
-En az düğüm sayısından daha fazla sayıda düğüm, bu düğüm türünde çalıştırmak istediğiniz uygulama/hizmet yinelemelerinin sayısına dayanmalıdır.  [Service Fabric uygulamaları için kapasite planlaması,](service-fabric-capacity-planning.md) uygulamalarınızı çalıştırmak için ihtiyacınız olan kaynakları tahmin etmenize yardımcı olur. Uygulama iş yükünü değiştirmek için kümeyi her zaman yukarı veya aşağı ölçeklendirebilirsiniz. 
+Düğüm sayısının alt sınırı, bu düğüm türünde çalıştırmak istediğiniz uygulama/hizmetlerin çoğaltmaları sayısını temel almalıdır.  [Service Fabric uygulamalar Için kapasite planlaması](service-fabric-capacity-planning.md) , uygulamalarınızı çalıştırmak için ihtiyacınız olan kaynakları tahmin etmenize yardımcı olur. Daha sonra değişen uygulama iş yükünü ayarlamak için kümenin ölçeğini değiştirebilir veya azaltabilirsiniz. 
 
-#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri için kısa ömürlü işletim sistemi diskleri kullanma
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleri için kısa ömürlü işletim sistemi diskleri kullanın
 
-*Kısa ömürlü işletim sistemi diskleri,* yerel sanal makinede (VM) oluşturulan ve uzak Azure Depolama'ya kaydedilmez depolama alanıdır. Geleneksel kalıcı işletim sistemi diskleri, kısa ömürlü işletim sistemi diskleri ile karşılaştırıldığında tüm Service Fabric düğüm türleri (Birincil ve İkincil) için önerilir:
+*Kısa ömürlü işletim sistemi diskleri* , yerel sanal MAKINEDE (VM) oluşturulmuş ve uzak Azure depolama 'ya kaydedilmemiş depolardır. Geleneksel kalıcı işletim sistemi disklerine kıyasla, kısa ömürlü işletim sistemi disklerine kıyasla tüm Service Fabric düğüm türleri (birincil ve Ikincil) için önerilir:
 
-* Os diskine okuma/yazma gecikmesüresini azaltın
-* Daha hızlı sıfırlama/yeniden görüntüle bilme mesuliyet yönetimi işlemlerini etkinleştirme
-* Genel maliyetleri azaltın (diskler ücretsizdir ve ek depolama maliyeti içermez)
+* İşletim sistemi diskine okuma/yazma gecikmesini azaltma
+* Daha hızlı sıfırlama/yeniden görüntü düğümü yönetim işlemlerini etkinleştirme
+* Genel maliyetleri düşürün (diskler ücretsizdir ve ek depolama maliyeti yoktur)
 
-Kısa ömürlü işletim sistemi diskleri belirli bir Hizmet Kumaşı özelliği değil, Hizmet Kumaşı düğüm türlerine eşlenen Azure *sanal makine ölçek kümelerinin* bir özelliğidir. Bunları Hizmet Dokusu ile kullanmak, küme Azure Kaynak Yöneticisi şablonunuzda aşağıdakileri gerektirir:
+Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği değildir, ancak Azure *sanal makine ölçek kümelerinin* Service Fabric düğüm türleriyle eşlenmiş bir özelliği değildir. Service Fabric ile birlikte kullanmak, küme Azure Resource Manager şablonunuzda şunları gerektirir:
 
-1. Düğüm tiplerinizin Kısa ömürlü işletim sistemi diskleri için [desteklenen Azure VM boyutlarını](../virtual-machines/windows/ephemeral-os-disks.md) belirttiğinden ve VM boyutunun işletim sistemi disk boyutunu desteklemek için yeterli önbellek boyutuna sahip olduğundan emin olun (aşağıdaki *Nota* bakın.) Örneğin:
+1. Düğüm türlerinizin, kısa ömürlü işletim sistemi diskleri için [desteklenen Azure VM boyutlarını](../virtual-machines/windows/ephemeral-os-disks.md) BELIRTTIĞINDEN ve VM boyutunun işletim sistemi disk boyutunu desteklemeye yetecek kadar önbellek boyutuna sahip olduğundan emin olun (aşağıdaki *nota* bakın.) Örneğin:
 
     ```xml
     "vmNodeType1Size": {
@@ -60,16 +60,16 @@ Kısa ömürlü işletim sistemi diskleri belirli bir Hizmet Kumaşı özelliği
     ```
 
     > [!NOTE]
-    > Önbellek boyutu VM'nin işletim sistemi boyutuna eşit veya daha büyük bir VM boyutu seçtiğinizden emin olun, aksi takdirde Azure dağıtımınız hataya neden olabilir (başlangıçta kabul edilmiş olsa bile).
+    > Bir sanal makine boyutunu, sanal makinenin işletim sistemi disk boyutundan büyük veya buna eşit bir önbellek boyutu seçtiğinizden emin olun, aksi takdirde Azure dağıtımınız hataya neden olabilir (başlangıçta kabul edilse bile).
 
-2. Sanal makine ölçeği kümesi`vmssApiVersion`sürümünü `2018-06-01` ( ) veya daha sonra belirtin:
+2. Veya üzeri bir sanal makine ölçek kümesi sürümü`vmssApiVersion`() belirtin: `2018-06-01`
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. Dağıtım şablonunuzun sanal makine ölçeği kümesi `Local` bölümünde `diffDiskSettings`aşağıdakiler için seçeneğini belirtiniz:
+3. Dağıtım şablonunuzun sanal makine ölçek kümesi bölümünde, şu seçeneği belirtin `Local` `diffDiskSettings`:
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -88,35 +88,35 @@ Kısa ömürlü işletim sistemi diskleri belirli bir Hizmet Kumaşı özelliği
     ```
 
 > [!NOTE]
-> Os diski işletim sistemi yükseltmesi durumunda kaybolacağından, kullanıcı uygulamalarının işletim sistemi diskinde herhangi bir bağımlılık/dosya/yapı olmamalıdır.
-> Bu nedenle, geçici diskler ile [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) kullanılması tavsiye edilmez.
+> İşletim sistemi yükseltmesi durumunda işletim sistemi diski kaybolacağından, kullanıcı uygulamalarının IŞLETIM sistemi diskinde hiçbir bağımlılığı/dosya/yapıtı olmaması gerekir.
+> Bu nedenle, geçici disklerle birlikte [Patchorchestrationapplication](https://github.com/microsoft/Service-Fabric-POA) kullanılması önerilmez.
 >
 
 > [!NOTE]
-> Varolan geçici olmayan VMSS, geçici diskleri kullanmak üzere yerinde yükseltilemez.
-> Geçiş yapmak için, kullanıcıların geçici disklere sahip yeni bir düğüm Type [eklemeleri,](./virtual-machine-scale-set-scale-node-type-scale-out.md) iş yüklerini yeni düğümTürüne taşımaları & varolan düğüm Türünü [kaldırmaları](./service-fabric-how-to-remove-node-type.md) gerekir.
+> Mevcut kısa ömürlü VMSS 'ler, kısa ömürlü diskler kullanmak için yerinde yükseltilemez.
+> Geçiş yapmak için, kullanıcıların kısa ömürlü disklerle yeni bir nodeType [eklemesi](./virtual-machine-scale-set-scale-node-type-scale-out.md) gerekir, iş yüklerini yeni NodeType ile taşıyın & var olan NodeType 'yi [kaldırın](./service-fabric-how-to-remove-node-type.md) .
 >
 
-Daha fazla bilgi ve daha fazla yapılandırma seçeneği için [Azure VM'leri için Geçici İşletim Sistemi diskleri'ne](../virtual-machines/windows/ephemeral-os-disks.md) bakın 
+Daha fazla bilgi ve diğer yapılandırma seçenekleri için bkz. [Azure VM 'ler Için kısa ömürlü işletim sistemi diskleri](../virtual-machines/windows/ephemeral-os-disks.md) 
 
 
-### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Kümeiçin dayanıklılık ve güvenilirlik düzeylerini seçin
-Dayanıklılık katmanı, vm'lerinizin temel Azure altyapısıyla sahip olduğu ayrıcalıkları sisteme göstermek için kullanılır. Birincil düğüm türünde, bu ayrıcalık Service Fabric'in sistem hizmetleri ve devlet hizmetleri için yeterli çoğunluk gereksinimlerini etkileyen vm düzeyindeki altyapı isteğini (VM yeniden başlatma, VM yeniden başlatma veya VM geçişi gibi) duraklatmasına olanak tanır. Birincil olmayan düğüm türlerinde bu ayrıcalık, Service Fabric'in, devlet hizmetlerinizin yeterli liğini etkileyen VM düzeyindeki altyapı isteklerini (VM yeniden başlatma, VM yeniden görüntü ve VM geçişi gibi) duraklatmasına olanak tanır.  Hangi düzeyde ve ne zaman kullanılacağı konusunda farklı düzeyve önerilerin avantajları için [kümenin dayanıklılık özelliklerine][durability]bakın.
+### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Küme için dayanıklılık ve güvenilirlik düzeylerini seçin
+Dayanıklılık katmanı, sistem sanal makinelerinizin temel alınan Azure altyapısıyla sahip olduğu ayrıcalıkları göstermek için kullanılır. Bu ayrıcalık, birincil düğüm türünde, sistem hizmetleri ve durum bilgisi olan hizmetleriniz için çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (VM yeniden başlatma, VM yeniden görüntüsü veya VM geçişi gibi) duraklatmaya olanak Service Fabric tanır. Birincil olmayan düğüm türlerinde, bu ayrıcalık, durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (VM yeniden başlatma, VM yeniden görüntüsü ve VM geçişi gibi) duraklatmaya Service Fabric olanak tanır.  Hangi düzeyin kullanılacağı ve ne zaman kullanılacağı ile ilgili farklı düzeylerin ve önerilerin avantajları için, [kümenin dayanıklılık özelliklerine][durability]bakın.
 
-Güvenilirlik katmanı, bu kümede çalıştırmak istediğiniz sistem hizmetlerinin yineleme sayısını birincil düğüm türünde ayarlamak için kullanılır. Çoğaltma sayısı ne kadar çoksa, sistem hizmetleri kümenizde o kadar güvenilir dir.  Hangi düzeyde ve ne zaman kullanılacağı konusunda farklı düzey ve önerilerin avantajları için [kümenin güvenilirlik özelliklerine][reliability]bakın. 
+Güvenilirlik katmanı, birincil düğüm türünde bu kümede çalıştırmak istediğiniz sistem hizmetlerinin çoğaltmaları sayısını ayarlamak için kullanılır. Kopyaların ne kadar fazla olması durumunda, sistem hizmetleri kümenizde daha güvenilir.  Hangi düzeyin kullanılacağı ve ne zaman kullanılacağı ile ilgili farklı düzeylerin ve önerilerin avantajları için, [kümenin güvenilirlik özelliklerine][reliability]bakın. 
 
-## <a name="enable-reverse-proxy-andor-dns"></a>Ters proxy ve/veya DNS'yi etkinleştirme
-Kümedeki düğümler aynı yerel ağda olduğundan, küme içinde birbirine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına doğrudan erişebilir. Hizmetler arasında bağlantı kurmayı kolaylaştırmak için Service Fabric ek hizmetler sunar: [Bir DNS hizmeti](service-fabric-dnsservice.md) ve [ters proxy hizmeti.](service-fabric-reverseproxy.md)  Bir küme dağıtılırken her iki hizmet de etkinleştirilebilir.
+## <a name="enable-reverse-proxy-andor-dns"></a>Ters proxy ve/veya DNS 'yi etkinleştir
+Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Hizmetler arasında bağlanmayı kolaylaştırmak için Service Fabric ek hizmetler sağlar: bir [DNS hizmeti](service-fabric-dnsservice.md) ve [ters proxy hizmeti](service-fabric-reverseproxy.md).  Bir küme dağıtıldığında her iki hizmet de etkinleştirilebilir.
 
-Birçok hizmet, özellikle kapsayıcı hizmetler, varolan bir URL adı olabilir, standart DNS protokolü (Adlandırma Hizmeti protokolü yerine) kullanarak bunları çözmek için, özellikle uygulama "asansör ve kaydırma" senaryoları uygundur. DNS hizmeti nin yaptığı tam olarak budur. DNS adlarını bir hizmet adı ile eşlenebilmenizi ve dolayısıyla uç nokta IP adreslerini çözmenizi sağlar.
+Birçok hizmet, özellikle Kapsayıcılı hizmetler, mevcut bir URL adına sahip olduğundan, bu işlemi standart DNS Protokolü (Adlandırma Hizmeti protokolü yerine) kullanarak çözebiliyor ve özellikle uygulamanın "yükselt ve Shift" senaryolarında kullanışlıdır. Bu, tam olarak DNS hizmetinin yaptığı şeydir. DNS adlarını bir hizmet adıyla eşlemenizi sağlar ve bu nedenle uç nokta IP adreslerini çözümleyebilir.
 
-Ters proxy, kümedeki HTTP uç noktalarını (HTTPS dahil) ortaya çıkaran hizmetleri ele adamaktadır. Ters proxy, belirli bir URI biçimi sağlayarak diğer hizmetleri aramayı büyük ölçüde kolaylaştırır.  Ters proxy, bir hizmetin başka bir servisle iletişim kurması için gereken çözüm, bağlanma ve yeniden deneme adımlarını da işler.
+Ters proxy, HTTP uç noktalarını (HTTPS dahil) sunan kümedeki hizmetleri ele alınmaktadır. Ters proxy, belirli bir URI biçimi sağlayarak diğer hizmetlerin çağrılmasını büyük ölçüde basitleştirir.  Ters proxy, bir hizmetin birbirleriyle iletişim kurması için gerekli olan Resolve, Connect ve retry adımlarını da işler.
 
 ## <a name="prepare-for-disaster-recovery"></a>Olağanüstü durum kurtarmaya hazırlanma
-Yüksek kullanılabilirlik sağlamanın önemli bir parçası, hizmetlerin her türlü hatadan sağ çıkabilmesini sağlamaktır. Bu, özellikle planlanmamış ve denetiminiz dışında olan hatalar için önemlidir. [Olağanüstü durum kurtarma için hazırlanın,](service-fabric-disaster-recovery.md) doğru şekilde modellenip yönetilmezse felaket olabilecek bazı yaygın hata modları açıklanır. Ayrıca, bir felaket zaten oldu eğer almak için hafifletme ve eylemleri tartışır.
+Yüksek kullanılabilirlik sunmaya yönelik kritik bir bölüm, hizmetlerin tüm farklı türdeki hataların varlığını sürdürmesini sağlamaktır. Bu özellikle, denetim için planlanmamış ve dışındaki hatalarda önemlidir. [Olağanüstü durum kurtarma Için hazırlanma](service-fabric-disaster-recovery.md) , Modellenmemiş ve doğru yönetilmiyorsa olağanüstü durumlar olabilecek bazı yaygın hata modlarını açıklar. Ayrıca, olağanüstü bir durum oluşması durumunda yapılacak azaltmaları ve eylemler de anlatılmaktadır.
 
 ## <a name="production-readiness-checklist"></a>Üretim hazırlığı denetim listesi
-Uygulamanız ve kümeniz üretim trafiğine hazır mı? Kümenizi üretime dağıtmadan önce [Üretime hazırlık denetim listesini](service-fabric-production-readiness-checklist.md)çalıştırın. Bu denetim listesindeki öğeler üzerinde çalışarak uygulamanızın ve kümelemenin sorunsuz çalışmasını tutun. Üretime geçmeden önce tüm bu öğelerin kontrol edilmesine şiddetle tavsiye ediyoruz.
+Uygulamanız ve kümeniz üretim trafiği almaya hazırlanıyor mi? Kümenizin üretime dağıtılmasından önce [Üretim hazırlığı denetim listesini](service-fabric-production-readiness-checklist.md)çalıştırın. Bu denetim listesindeki öğeler aracılığıyla çalışarak uygulamanızın ve kümenizin sorunsuz çalışmasını sağlayın. Üretime geçmeden önce bu öğelerin tümünün kullanıma alınmasını önemle öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Windows çalıştıran bir Service Fabric kümesi oluşturma](service-fabric-best-practices-overview.md)

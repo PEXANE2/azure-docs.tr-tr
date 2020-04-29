@@ -1,6 +1,6 @@
 ---
-title: Azure Etkinlik Hub'ları için ağ güvenliği
-description: Bu makalede, özel uç noktalardan erişim yapılandırmak için nasıl açıklanır
+title: Azure Event Hubs için ağ güvenliği
+description: Bu makalede özel uç noktalardan erişimin nasıl yapılandırılacağı açıklanmaktadır
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
 ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422777"
 ---
-# <a name="network-security-for-azure-event-hubs"></a>Azure Etkinlik Hub'ları için ağ güvenliği 
-Bu makalede, Azure Olay Hub'ları ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
+# <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs için ağ güvenliği 
+Bu makalede, Azure Event Hubs ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanır: 
 
 - Hizmet etiketleri
-- IP Güvenlik Duvarı kuralları
-- Ağ hizmeti uç noktaları
-- Özel uç noktalar (önizleme)
+- IP güvenlik duvarı kuralları
+- Ağ Hizmeti uç noktaları
+- Özel uç noktalar (Önizleme)
 
 
 ## <a name="service-tags"></a>Hizmet etiketleri
-Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketinin kapsadığı adres önekleri yönetir ve adresler değiştikçe servis etiketini otomatik olarak günceller ve sık sık ağ güvenliği kurallarına yönelik güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için [Hizmet etiketleriyle ilgili genel bakış](../virtual-network/service-tags-overview.md)adabakın.
+Hizmet etiketi, belirli bir Azure hizmetinden bir IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir ve ağ güvenlik kuralları için sık sık güncelleştirmelerin karmaşıklığını en aza indirir. Hizmet etiketleri hakkında daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](../virtual-network/service-tags-overview.md).
 
-[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik Duvarı'nda](../firewall/service-tags.md)ağ erişim denetimlerini tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adresleri yerine hizmet etiketlerini kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanında hizmet etiketi adını (örneğin **EventHub)** belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz.
+[Ağ güvenlik gruplarında](../virtual-network/security-overview.md#security-rules) veya [Azure Güvenlik duvarında](../firewall/service-tags.md)ağ erişim denetimleri tanımlamak için hizmet etiketlerini kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun *kaynak* veya *hedef* alanındaki hizmet etiketi adını (örneğin, **EventHub**) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.
 
-| Hizmet etiketi | Amaç | Gelen veya giden kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir misiniz? |
+| Hizmet etiketi | Amaç | Gelen veya giden trafiği kullanabilir miyim? | Bölgesel olabilir mi? | Azure Güvenlik Duvarı ile kullanılabilir mi? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **EventHub** | Azure Etkinlik Hub'ları. | Giden | Evet | Evet |
+| **EventHub** | Azure Event Hubs. | Giden | Yes | Yes |
 
 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
-Varsayılan olarak, İstek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece, Olay Hub'ları ad alanlarına internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
+Varsayılan olarak, istek geçerli kimlik doğrulaması ve yetkilendirmeyle geldiği sürece, Event Hubs ad alanlarına internet 'ten erişilebilir. IP güvenlik duvarı ile, [CIDR (sınıfsız etki alanları arası yönlendirme)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir dizi IPv4 adresi veya IPv4 adres aralığı ile sınırlayabilirsiniz.
 
-Bu özellik, Azure Etkinlik Hub'larına yalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Ekspres Rotası](/azure/expressroute/expressroute-faqs#supported-services)ile Etkinlik Hub'ları kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden gelen trafiğe izin vermek için bir güvenlik duvarı **kuralı** oluşturabilirsiniz. 
+Bu özellik, Azure Event Hubs yalnızca belirli bilinen sitelerden erişilebilir olması gereken senaryolarda yardımcı olur. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services)ile Event Hubs kullanıyorsanız, yalnızca şirket ıçı altyapı IP adreslerinden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
 
-IP güvenlik duvarı kuralları Olay Hub'ları ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Olay Hub'ları ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
+IP güvenlik duvarı kuralları Event Hubs ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokolü kullanarak istemcilerden gelen tüm bağlantılara uygulanır. Event Hubs ad alanındaki izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimleri yetkisiz olarak reddedilir. Yanıt, IP kuralından bahsetmiyor. IP filtresi kuralları sırasıyla uygulanır ve IP adresiyle eşleşen ilk kural kabul etme veya reddetme eylemini belirler.
 
-Daha fazla bilgi için, [bir olay hub'ı için IP güvenlik duvarını nasıl yapılandırabilirsiniz](event-hubs-ip-filtering.md)
+Daha fazla bilgi için bkz. [bir olay hub 'ı IÇIN IP güvenlik duvarını yapılandırma](event-hubs-ip-filtering.md)
 
-## <a name="network-service-endpoints"></a>Ağ hizmeti uç noktaları
-Olay Hub'larının [Sanal Ağ (VNet) Hizmet Bitiş Noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) ile tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafik yolu her iki uçta da güvenli hale gelir.
+## <a name="network-service-endpoints"></a>Ağ Hizmeti uç noktaları
+[Sanal ağ (VNet) hizmet uç noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) ile Event Hubs tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
 
-En az bir sanal ağ alt ağ hizmeti bitiş noktasına bağlı olarak yapılandırıldıktan sonra, ilgili Olay Hub'ları ad alanı artık sanal ağlarda her yerden gelen trafiği kabul etmez. Sanal ağ açısından bakıldığında, Olay Hub'larının ad alanını hizmet bitiş noktasına bağlama, sanal ağ alt ağından ileti hizmetine yalıtılmış bir ağ tünelini yapılandırır. 
+En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Event Hubs ad alanı artık sanal ağlardaki her yerden trafiği kabul etmez. Sanal ağ perspektifinden bir Event Hubs ad alanını bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır. 
 
-Sonuç, ileti hizmeti bitiş noktasının genel BIR IP aralığında olmasına rağmen, alt ağa ve ilgili Olay Hub'larına bağlı iş yükleri arasındaki özel ve yalıtılmış bir ilişkidir. Bu davranışın bir istisnası vardır. Varsayılan olarak bir hizmet bitiş noktasıetkinleştirmek, sanal ağile ilişkili [IP güvenlik duvarındaki](event-hubs-ip-filtering.md) `denyall` kuralı etkinleştirir. Olay Hub ortak bitiş noktasına erişimi etkinleştirmek için IP güvenlik duvarına belirli IP adresleri ekleyebilirsiniz. 
+Sonuç olarak, alt ağa ve ilgili Event Hubs ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma. Bu davranış için bir özel durum vardır. Hizmet uç noktasının etkinleştirilmesi, varsayılan olarak sanal ağla ilişkili `denyall` [IP güvenlik duvarında](event-hubs-ip-filtering.md) kuralı etkinleştirir. Olay Hub 'ı genel uç noktasına erişimi etkinleştirmek için IP güvenlik duvarında belirli IP adresleri ekleyebilirsiniz. 
 
 > [!IMPORTANT]
-> Sanal ağlar, Etkinlik Hub'larının **standart** ve **özel** katmanlarında desteklenir. **Temel** katmanda desteklenmiyor.
+> Sanal ağlar, Event Hubs **Standart** ve **adanmış** katmanlarında desteklenir. **Temel** katmanda desteklenmez.
 
 ### <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
 
-Sıkı ve bölümlere ayrılmış güvenlik gerektiren ve sanal ağ alt ağlarının bölümlere ayrılmış hizmetler arasındaki segmentasyonu sağladığı çözümler, yine de bu bölmelerde bulunan hizmetler arasında iletişim yolları gerektirir.
+Sıkı ve compartmenbir güvenlik gerektiren ve sanal ağ alt ağlarının, compartmençalıştıran hizmetler arasında segmentleme sağladığı çözümler, yine de bu bölmeleri bulunan hizmetler arasında iletişim yollarına gerek duyar.
 
-TCP/IP üzerinden HTTPS taşıyanlar da dahil olmak üzere bölmeler arasındaki herhangi bir anlık IP rotası, ağ katmanındaki güvenlik açıklarından yararlanma riski taşır. Mesajlaşma hizmetleri, iletilerin taraflar arasında geçiş sırasında diske bile yazıldığı yalıtımlı iletişim yolları sağlar. Her ikisi de aynı Olay Hub'ları örneğine bağlı olan iki farklı sanal ağdaki iş yükleri, iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir ve ilgili ağ yalıtım sınır bütünlüğü korunur.
+TCP/IP üzerinden HTTPS 'yi yürüten bu dahil olmak üzere, bölmeleri arasındaki tüm anında IP rotası, üzerindeki ağ katmanından güvenlik açıklarına karşı yararlanma riskini taşır. Mesajlaşma Hizmetleri, iletilerin taraflar arasında geçiş yaparken bile diske yazıldığı, yalıtılmış iletişim yolları sağlar. Aynı Event Hubs örneğine bağlanan iki ayrı sanal ağdaki iş yükleri iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir, ancak ilgili ağ yalıtımı sınır bütünlüğü korunur.
  
-Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmekle birlikte, artık https ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim modlarında ulaşılabileceklerden daha güvenli güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşmayı kullanabileceği anlamına gelir.
+Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri güvenilir ve ölçeklenebilir zaman uyumsuz mesajlaşma özelliklerine erişim elde edemeyeceği anlamına gelir, ancak artık HTTPS ve diğer TLS güvenlikli yuva protokolleri de dahil olmak üzere herhangi bir eşler arası iletişim moduyla ulaşılabilir 'dan daha güvenli olan güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşma kullanabilir.
 
-### <a name="bind-event-hubs-to-virtual-networks"></a>Olay hub'larını sanal ağlara bağlama
+### <a name="bind-event-hubs-to-virtual-networks"></a>Olay Hub 'larını sanal ağlara bağlama
 
-**Sanal ağ kuralları,** Azure Etkinlik Hub'larınızın belirli bir sanal ağ alt ağındaki bağlantıları kabul edip etmediğini kontrol eden güvenlik duvarı güvenlik özelliğidir.
+**Sanal ağ kuralları** , Azure Event Hubs ad uzayının belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmediğini denetleyen güvenlik duvarı güvenlik özelliğidir.
 
-Olay Hub'larının ad alanını sanal ağa bağlamaiki adımlı bir işlemdir. Öncelikle bir sanal ağın alt ağında sanal bir **Ağ hizmeti bitiş noktası** oluşturmanız ve hizmet bitiş noktasına genel [bakış](../virtual-network/virtual-network-service-endpoints-overview.md) makalesinde açıklandığı gibi **Microsoft.EventHub** için etkinleştirmeniz gerekir. Hizmet bitiş noktasını ekledikten sonra, Olay Hub'ları ad alanını **sanal ağ kuralıyla**ona bağlarsınız.
+Bir Event Hubs ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağın alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktası genel bakış](../virtual-network/virtual-network-service-endpoints-overview.md) makalesinde açıklandığı gibi **Microsoft. EventHub** için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Event Hubs ad alanını bir **sanal ağ kuralıyla**bağlayın.
 
-Sanal ağ kuralı, Olay Hub'larının ad alanının sanal ağ alt ağıyla ilişkisidir. Kural mevcut olsa da, alt ağa bağlı tüm iş yüklerine Olay Hub'ları ad alanına erişim hakkı verilir. Olay Hub'larının kendisi hiçbir zaman giden bağlantılar kurmaz, erişim sağlaması gerekmez ve bu nedenle bu kuralı etkinleştirerek alt ağınıza erişim izni verilmez.
+Sanal ağ kuralı, bir sanal ağ alt ağıyla Event Hubs ad alanının bir ilişkidir. Kural var olsa da, alt ağa erişen tüm iş yükleri Event Hubs ad alanına erişim izni verilir. Event Hubs kendisi hiçbir şekilde giden bağlantı oluşturmaz, erişim elde etmek zorunda kalmaz ve bu nedenle bu kuralı etkinleştirerek alt ağınız için hiçbir şekilde erişim izni verilmemiş olur.
 
-Daha fazla bilgi için, [bir olay hub'ı için sanal ağ hizmeti uç noktalarını nasıl yapılandırabilirsiniz](event-hubs-service-endpoints.md)
+Daha fazla bilgi için bkz. [bir olay hub 'ı için sanal ağ hizmet uç noktalarını yapılandırma](event-hubs-service-endpoints.md)
 
 ## <a name="private-endpoints"></a>Özel uç noktalar
 
-[Azure Özel Bağlantı hizmeti,](../private-link/private-link-overview.md) Azure Hizmetlerine (örneğin, Azure Etkinlik Hub'ları, Azure Azure Depolama ve Azure Cosmos DB) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir **bitiş noktası** üzerinden erişmenizi sağlar.
+[Azure özel bağlantı hizmeti](../private-link/private-link-overview.md) , Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
-Özel bitiş noktası, sizi Azure Özel Bağlantısı ile çalışan bir hizmete özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağıörneğine bağlanarak erişim denetiminde en yüksek parçalılık düzeyini sağlayabilirsiniz.
+Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
 > [!NOTE]
-> Bu özellik yalnızca **özel** katmanla desteklenir. İlgili katman hakkında daha fazla bilgi için, [Özel Etkinlik Hub'larına Genel Bakış'a](event-hubs-dedicated-overview.md)bakın. 
+> Bu özellik yalnızca **adanmış** katmanla desteklenir. Adanmış katman hakkında daha fazla bilgi için bkz. [Event Hubs ayrılmış genel bakış](event-hubs-dedicated-overview.md). 
 >
-> Bu özellik şu anda **önizlemede.** 
+> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 
-Daha fazla bilgi için, [bir olay hub'ı için özel uç noktaları nasıl yapılandırılabilirsiniz](private-link-service.md)
+Daha fazla bilgi için bkz. [bir olay hub 'ı için özel uç noktaları yapılandırma](private-link-service.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- [Bir olay hub'ı için IP güvenlik duvarı nasıl yapılandırılabilen](event-hubs-ip-filtering.md)
-- [Bir olay hub'ı için sanal ağ hizmeti uç noktaları nasıl yapılandırılabilen](event-hubs-service-endpoints.md)
-- [Olay hub'ı için özel uç noktaları yapılandırma](private-link-service.md)
+- [Bir olay hub 'ı için IP güvenlik duvarını yapılandırma](event-hubs-ip-filtering.md)
+- [Bir olay hub 'ı için sanal ağ hizmet uç noktalarını yapılandırma](event-hubs-service-endpoints.md)
+- [Bir olay hub 'ı için özel uç noktaları yapılandırma](private-link-service.md)

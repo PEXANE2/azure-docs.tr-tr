@@ -1,7 +1,7 @@
 ---
-title: Video Dizinleyici ile animasyonlu karakter algılama
+title: Video Indexer ile animasyonlu karakter algılama
 titleSuffix: Azure Media Services
-description: Bu konu, Video Indexer ile animasyonlu karakter algılamanın nasıl kullanılacağını gösterir.
+description: Bu konu, Video Indexer ile animasyonlu karakter algılamayı nasıl kullanacağınızı gösterir.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,171 +11,171 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: af608dcfbb5d98cf3116de4e14dc12bf6facb97b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76989918"
 ---
-# <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (önizleme)
+# <a name="animated-character-detection-preview"></a>Animasyonlu karakter algılama (Önizleme)
 
-Azure Medya Hizmetleri Video Dizinleyici, [Bilişsel Hizmetler özel vizyonuyla](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)tümleştirme yoluyla animasyonlu içerikteki karakterlerin algılanmasını, gruplanmasını ve tanınmasını destekler. Bu işlevsellik hem portal hem de API aracılığıyla kullanılabilir.
+Azure Media Services Video Indexer, bilişsel [Hizmetler özel vizyonu](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/)ile tümleştirme yoluyla animasyonlu içerikte karakterlerin algılanmasını, gruplanmasını ve tanınmasını destekler. Bu işlev hem Portal hem de API aracılığıyla kullanılabilir.
 
-Belirli bir animasyon modeliyle animasyonlu bir video yükledikten sonra, Video Indexer anahtar kareleri ayıklar, bu karelerde animasyonlu karakterleri algılar, benzer karakteri gruplandırZ ve en iyi örneği seçer. Daha sonra, gruplandırılmış karakterleri, eğitildiği modellere göre karakterleri tanımlayan Özel Vizyon'a gönderir. 
+Belirli bir animasyon modeliyle animasyonlu bir videoyu karşıya yükledikten sonra Video Indexer ana kareleri ayıklar, bu çerçevelerdeki animasyonlu karakterleri algılar, benzer bir karakter gruplandırır ve en iyi örneği seçer. Daha sonra, gruplandırılmış karakterleri, üzerinde eğitilen modellere göre tanımlayan Özel Görüntü İşleme olarak gönderir. 
 
-Modelinizi eğitmeye başlamadan önce, karakterler adsız olarak algılanır. Adları eklediğinizde ve modeli eğitirken Video Dizinleyici karakterleri tanır ve buna göre adlandıracaktır.
+Modelinize eğitime başlamadan önce, karakterler ad gereksiz olarak algılanır. Ad ekler ve modeli eğiten Video Indexer karakterleri tanıyacak ve bunlara göre isimlendirilecektir.
 
 ## <a name="flow-diagram"></a>Akış diyagramı
 
-Aşağıdaki diyagram animasyonlu karakter algılama işleminin akışını gösterir.
+Aşağıdaki diyagramda, animasyonlu karakter algılama işleminin akışı gösterilmektedir.
 
 ![Akış diyagramı](./media/animated-characters-recognition/flow.png)
 
 ## <a name="accounts"></a>Hesaplar
 
-Video Indexer hesabınızın türüne bağlı olarak farklı özellik kümeleri kullanılabilir. Hesabınızı Azure'a nasıl bağlayacaklarınız hakkında bilgi [için](connect-to-azure.md)bkz.
+Video Indexer hesabınızın türüne bağlı olarak, farklı özellik kümeleri kullanılabilir. Hesabınızı Azure 'a bağlama hakkında daha fazla bilgi için bkz. [Azure 'a bağlı video Indexer hesabı oluşturma](connect-to-azure.md).
 
-* Deneme hesabı: Video Indexer modeli oluşturmak ve Video Indexer hesabınıza bağlamak için dahili bir Custom Vision hesabı kullanır. 
-* Ücretli hesap: Özel Vizyon hesabınızı Video Indexer hesabınıza bağlarsınız (zaten hesabınız yoksa, önce bir hesap oluşturmanız gerekir).
+* Deneme hesabı: Video Indexer model oluşturmak ve Video Indexer hesabınıza bağlamak için bir iç Özel Görüntü İşleme hesabı kullanır. 
+* Ücretli hesap: Özel Görüntü İşleme hesabınızı Video Indexer hesabınıza bağlayın (henüz bir hesabınız yoksa önce bir hesap oluşturmanız gerekir).
 
-### <a name="trial-vs-paid"></a>Deneme vs ödenen
+### <a name="trial-vs-paid"></a>Deneme ve ücretli
 
-|İşlev|Deneme|Ödenen|
+|İşlev|Deneme|Ödenmemiş|
 |---|---|---|
-|Özel Vizyon hesabı|Video Indexer tarafından sahne arkasında yönetildi. |Özel Vizyon hesabınız Video Dizinleyici'ye bağlıdır.|
-|Animasyon modelleri sayısı|Bir|Hesap başına en fazla 100 model (Özel Vizyon sınırlaması).|
-|Modeli eğitme|Video Indexer, yeni karakterler için modeli varolan karakterlerin ek örneklerini eğitir.|Hesap sahibi, değişiklik yapmaya hazır olduklarında modeli eğitir.|
-|Custom Vision'da gelişmiş seçenekler|Özel Vizyon portalına erişim yok.|Modelleri Custom Vision portalında kendiniz ayarlayabilirsiniz.|
+|Özel Görüntü İşleme hesabı|Video Indexer tarafından arka planda yönetilir. |Özel Görüntü İşleme hesabınız Video Indexer bağlı.|
+|Animasyon modeli sayısı|Bir|Hesap başına en fazla 100 model (Özel Görüntü İşleme sınırlaması).|
+|Modeli eğitme|Video Indexer yeni karakterler için mevcut karakterlerin ek örnekleri için model TRAIN.|Hesap sahibi, değişiklik yapmaya hazırlarsa modeli geçirir.|
+|Özel Görüntü İşleme Gelişmiş Seçenekler|Özel Görüntü İşleme portalına erişim yok.|Modelleri Özel Görüntü İşleme portalında kendiniz yapabilirsiniz.|
 
-## <a name="use-the-animated-character-detection-with-portal"></a>Portal ile animasyonlu karakter algılamasını kullanma 
+## <a name="use-the-animated-character-detection-with-portal"></a>Portal ile animasyonlu karakter algılamayı kullanma 
 
-Bu bölümde, animasyonlu karakter algılama modelini kullanmaya başlamak için atmanız gereken adımlar açıklanmaktadır. 
+Bu bölümde, animasyonlu karakter algılama modelini kullanmaya başlamak için gerçekleştirmeniz gereken adımlar açıklanmaktadır. 
 
-Deneme hesaplarında Özel Vizyon tümleştirmesi Video Indexer tarafından yönetildiği için, animasyonlu karakterler modelini oluşturmaya ve kullanmaya başlayabilir ve aşağıdaki bölümü atlayabilirsiniz ("Özel Vizyon hesabınızı bağlayın").
+Özel Görüntü İşleme tümleştirme, deneme hesaplarında Video Indexer tarafından yönetildiğinden, animasyonlu karakterler modelini oluşturmaya ve kullanmaya başlayabilir ve aşağıdaki bölümü atlayabilirsiniz ("Özel Görüntü İşleme hesabınızı bağlama").
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Özel Vizyon hesabınızı bağlayın (yalnızca ücretli hesaplar)
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Özel Görüntü İşleme hesabınızı bağlama (yalnızca ücretli hesaplar)
 
-Video Indexer ücretli hesabınız varsa, önce bir Özel Vizyon hesabı bağlamanız gerekir. Zaten bir Özel Vizyon hesabınız yoksa, lütfen bir tane oluşturun. Daha fazla bilgi için [Bkz. Özel Vizyon.](../../cognitive-services/custom-vision-service/home.md)
+Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](../../cognitive-services/custom-vision-service/home.md).
 
 > [!NOTE]
-> Her iki hesabın da aynı bölgede olması gerekir. Custom Vision tümleştirmesi şu anda Japonya bölgesinde desteklenmez.
+> Her iki hesabın de aynı bölgede olması gerekir. Özel Görüntü İşleme tümleştirme Şu anda Japonya bölgesinde desteklenmiyor.
 
-#### <a name="connect-a-custom-vision-account-with-api"></a>ÖZEL Görme hesabını API ile bağlama 
+#### <a name="connect-a-custom-vision-account-with-api"></a>Özel Görüntü İşleme bir hesabı API ile bağlama 
 
-Özel Vizyon hesabınızı Video Indexer'a bağlamak veya şu anda Video Dizinleyici'ye bağlı olan Özel Vizyon hesabını değiştirmek için aşağıdaki adımları izleyin:
+Özel Görüntü İşleme hesabınızı Video Indexer bağlamak veya şu anda Video Indexer 'e bağlı olan Özel Görüntü İşleme hesabı değiştirmek için aşağıdaki adımları izleyin:
 
-1. [www.customvision.ai](https://www.customvision.ai) ve giriş için göz atın.
-1. Aşağıdaki tuşları kopyalayın: 
+1. [Www.customvision.ai](https://www.customvision.ai) ve oturum açma bilgilerine gidin.
+1. Aşağıdaki anahtarları kopyalayın: 
 
     * Eğitim anahtarı (eğitim kaynağı için)
     * Tahmin anahtarı (tahmin kaynağı için)
     * Uç Nokta 
-    * Tahmin kaynağı kimliği
+    * Tahmin kaynak KIMLIĞI
     
     > [!NOTE]
-    > Tüm anahtarları sağlamak için Özel Vizyon'da biri eğitim, diğeri tahmin için olmak üzere iki ayrı kaynağa sahip olmanız gerekir.
-1. [Video Dizinleyici'ye](https://vi.microsoft.com/)göz atın ve oturum açın.
-1. Sayfanın sağ üst köşesindeki soru işaretine tıklayın ve **API Başvurusu'nu**seçin.
-1. **Ürünler** sekmesini tıklatarak API Yönetimi'ne abone olduğunuzdan emin olun. Bağlı bir API'niz varsa, bir sonraki adıma devam edebilirsiniz, aksi takdirde abone olabilirsiniz. 
-1. Geliştirici portalında, **Tam API Başvurusu'nu** tıklatın ve **İşlemler'e**göz atın.  
-1. **Özel Vizyon Hesabı Bağla'yı (PREVIEW)** seçin ve **Ted'i**tıklatın.
-1. Gerekli alanları ve erişim belirteci doldurun ve **Gönder'i**tıklatın. 
+    > Tek bir eğitim ve diğeri tahmin için Özel Görüntü İşleme iki ayrı kaynağa sahip olmanız için ihtiyacınız olan tüm anahtarları sağlamak için.
+1. [Video Indexer](https://vi.microsoft.com/)gidin ve oturum açın.
+1. Sayfanın sağ üst köşesindeki soru işaretine tıklayın ve **API başvurusu**' nu seçin.
+1. **Ürünler** sekmesi ' ne tıklayarak API Management abone olduğunuzdan emin olun. Bir API bağlantısı varsa, bir sonraki adıma devam edebilir, aksi takdirde abone olabilirsiniz. 
+1. Geliştirici portalında, **tüm API başvurusuna** tıklayın ve **işlemlere**gidin.  
+1. **Özel görüntü işleme hesabı Bağlan ' ı (Önizleme)** seçin ve **dene**' ye tıklayın.
+1. Gerekli alanların yanı sıra erişim belirtecini de girin ve **Gönder**' e tıklayın. 
 
-    Video Indexer erişim jetonunun nasıl alınılabildiğini öğrenmek için [geliştirici portalına](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)gidin ve [ilgili belgeleri](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)görün.  
-1. Arama 200 Tamam yanıtını döndüründen hesabınız bağlanır.
-1. [Video Dizinleyici](https://vi.microsoft.com/)) portalına göz atarak bağlantınızı doğrulamak için:
-1. Sağ üst köşedeki **İçerik modeli özelleştirme** düğmesine tıklayın.
-1. **Animasyonkarakterleri** sekmesine gidin.
-1. Custom Vision'da Modelleri Yönet'e tıkladığınızda"**, yeni bağladığınız Özel Vizyon hesabına aktarılırsınız.
+    Video Indexer erişim belirtecini alma hakkında daha fazla bilgi için [Geliştirici portalına](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token?)gidin ve [ilgili belgelere](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)bakın.  
+1. Çağrı 200 Tamam yanıtı döndürtikten sonra hesabınız bağlanır.
+1. Bağlantınızı doğrulamak için [video Indexer](https://vi.microsoft.com/)) portalına gidin:
+1. Sağ üst köşedeki **içerik modeli özelleştirmesi** düğmesine tıklayın.
+1. **Animasyonlu karakterler** sekmesine gidin.
+1. "* * Özel Görüntü İşleme modelleri Yönet ' e tıkladığınızda, yeni bağladığınız Özel Görüntü İşleme hesabına aktarılacaktır.
 
 > [!NOTE]
-> Şu anda yalnızca Video Indexer aracılığıyla oluşturulan modeller desteklenir. Özel Vizyon aracılığıyla oluşturulan modeller kullanılamaz. Buna ek olarak, en iyi uygulama, Özel Vizyon aracılığıyla yapılan değişiklikler istenmeyen sonuçlara neden olabileceğinden, Video Dizinleyici aracılığıyla oluşturulan modelleri yalnızca Video Dizinleyici platformu üzerinden yeniden düzenlendirmektir.
+> Şu anda yalnızca Video Indexer aracılığıyla oluşturulan modeller desteklenir. Özel Görüntü İşleme üzerinden oluşturulan modeller kullanılamayacak. Ayrıca, Özel Görüntü İşleme aracılığıyla yapılan değişiklikler istenmeden sonuçlara neden olabileceğinden, Video Indexer aracılığıyla oluşturulan modelleri yalnızca Video Indexer platformu aracılığıyla düzenlemek en iyi uygulamadır.
 
 ### <a name="create-an-animated-characters-model"></a>Animasyonlu karakterler modeli oluşturma
 
 1. [Video Indexer](https://vi.microsoft.com/) web sitesine gidip oturum açın.
-1. Sayfanın sağ üst köşesindeki içerik modeli özelleştirme düğmesine tıklayın.
+1. Sayfanın sağ üst köşesindeki içerik modeli özelleştirmesi düğmesine tıklayın.
 
-    ![İçerik modeli özelleştirme](./media/animated-characters-recognition/content-model-customization.png)
-1. Model özelleştirme bölümündeki **Animasyonkarakterleri** sekmesine gidin.
-1. Model **Ekle'ye**tıklayın.
-1. Model adınızı girin ve adı kaydetmek için enter'u tıklatın.
+    ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization.png)
+1. Model özelleştirme bölümündeki **animasyonlu karakterler** sekmesine gidin.
+1. **Model Ekle**' ye tıklayın.
+1. Modelleyin ve adı kaydetmek için ENTER 'a tıklayın.
 
 > [!NOTE]
-> En iyi uygulama her animasyon serisi için bir özel vizyon modeli olmasıdır. 
+> En iyi uygulama, her bir animasyon serisi için bir özel görüntü işleme modelidir. 
 
-### <a name="index-a-video-with-an-animated-model"></a>Animasyonlu bir modelle videoyu dizine dizine
+### <a name="index-a-video-with-an-animated-model"></a>Animasyonlu modelle video dizini oluşturma
 
-1. Üst menüden **Yükle** düğmesine tıklayın.
-1. Yüklemek için bir video seçin (bir dosyadan veya URL'den).
-1. Gelişmiş **seçeneklere**tıklayın.
-1. **Altında Kişi / Animasyon karakterleri** Animasyon **modelleri**seçin.
-1. Bir modeliniz varsa otomatik olarak seçilir ve birden çok modeliniz varsa açılır menüden ilgili modeli seçebilirsiniz.
-1. Yükleme üzerine tıklayın.
-1. Video dizine alındıktan sonra, Algılanan karakterleri **Insights** bölmesinde **Animasyon karakterleri** bölümünde görürsünüz.
+1. Üstteki menüden **karşıya yükle** düğmesine tıklayın.
+1. Karşıya yüklenecek bir video seçin (bir dosyadan veya URL 'den).
+1. **Gelişmiş Seçenekler**' e tıklayın.
+1. **Kişiler/animasyonlu karakterler** altında **animasyon modeller**' ı seçin.
+1. Tek bir modeliniz varsa, otomatik olarak seçilir ve birden çok modelleriniz varsa, açılan menüden ilgili olanı seçebilirsiniz.
+1. Karşıya yükle ' ye tıklayın.
+1. Videonun dizini oluşturulduktan sonra, **Öngörüler** bölmesindeki **animasyonlu karakterler** bölümünde Algılanan karakterleri görürsünüz.
 
 > [!NOTE] 
-> Modeli etiketlemeden ve iliştirmeden önce, tüm animasyon karakterleri "Bilinmeyen #X" olarak adlandırılır. Modeli eğittmeniz inden sonra onlar da tanınacaktır.
+> Modeli etiketleyerek ve eğitimi yapmadan önce tüm animasyonlu karakterler "bilinmeyen #X" olarak adlandırılır. Modeli eğdikten sonra da tanınacaktır.
 
-### <a name="customize-the-animated-characters-models"></a>Animasyonkarakterleri modellerini özelleştirme
+### <a name="customize-the-animated-characters-models"></a>Animasyonlu karakterler modellerini özelleştirme
 
-1. Modeli etiketle ve eğit.
+1. Modeli etiketleyin ve eğitme.
 
-    1. Algılanan karakteri adını düzenleyerek etiketle. Bir karakter modele eğitildikten sonra, bu modelle birlikte dizine eklenmiş bir sonraki video olarak kabul edilecektir. 
-    1. Videonuzdaki animasyonlu karakteri etiketlemek için **Öngörüler** sekmesine gidin ve pencerenin sağ üst köşesindeki **Edit** düğmesine tıklayın.
-    1. **Öngörüler** bölmesinde, algılanan animasyonkarakterlerin herhangi birini tıklatın ve adlarını "Bilinmeyen #X" (veya daha önce karaktere atanmış ad) olarak değiştirin.
-    1. Yeni adı yazdıktan sonra, yeni adın yanındaki denetim simgesine tıklayın. Bu, Video Dizinleyici'deki modeldeki yeni adı kaydeder.
-    1. İstediğiniz tüm adları düzenlemeyi bitirdikten sonra, modeli eğitmenniz gerekir.
+    1. Algılanan karakteri, adını düzenleyerek etiketleyin. Bir karakter modele eğitilirken, bu modelle birlikte dizine alınmış bir sonraki video tanınacaktır. 
+    1. Videonuzdaki bir animasyonlu karakteri etiketlemek için **Öngörüler** sekmesine gidin ve pencerenin sağ üst köşesindeki **Düzenle** düğmesine tıklayın.
+    1. **Öngörüler** bölmesinde, algılanan animasyonlu karakterlerden herhangi birine tıklayın ve adlarını "bilinmeyen #X" (veya daha önce karaktere atanmış olan ad) olarak değiştirin.
+    1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı modelde Video Indexer kaydeder.
+    1. İstediğiniz tüm adları düzenledikten sonra modeli eğmeniz gerekir.
 
-        Özelleştirme sayfasını açın ve **Animasyonlu karakterler** sekmesine tıklayın ve ardından modelinizi eğitmek için **Tren** düğmesine tıklayın.
+        Özelleştirme sayfasını açın ve **animasyon karakterleri** sekmesine tıklayın ve ardından modelinizi eğitebilmeniz Için **eğitme** düğmesine tıklayın.
          
-        Ücretli bir hesabınız varsa, Müşteri **Görüşü bağlantısındaki Modelleri Yönet'i** tıklatabilirsiniz (aşağıda gösterildiği gibi). Daha sonra **Özel Vizyon**modelinin sayfasına iletilir.
+        Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra **özel görüntü işleme**modelin sayfasına iletilecektir.
  
-        ![İçerik modeli özelleştirme](./media/animated-characters-recognition/content-model-customization-tab.png)
+        ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization-tab.png)
 
-     1. Eğitildikten sonra, bu modelle dizinlenecek veya yeniden dizine dizinlenecek herhangi bir video, eğitilen karakterleri tanıyacaktır. 
-    Özel Vizyon hesaplarına erişimi olan ücretli hesaplar, modelleri ve etiketli resimleri görebilir. [Özel Vizyon'da sınıflandırıcınızı geliştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin.
+     1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
+    Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin.
 
-1. Animasyonlu karakteri silin.
+1. Animasyonlu bir karakteri silin.
 
-    1. Video istatistiklerinizdeki animasyonlu karakteri silmek **için, İstatistikler** sekmesine gidin ve pencerenin sağ üst köşesindeki **Düzenle** düğmesine tıklayın.
-    1. Animasyonlu karakteri seçin ve ardından adlarının altındaki **Sil** düğmesine tıklayın.
+    1. Video öngörülerinizi animasyonlu bir karakter silmek için **Öngörüler** sekmesine gidin ve pencerenin sağ üst köşesindeki **Düzenle** düğmesine tıklayın.
+    1. Animasyonlu karakteri seçin ve ardından ad altındaki **Sil** düğmesine tıklayın.
 
     > [!NOTE]
-    > Bu, bu videodaki içgörüyü siler, ancak modeli etkilemez.
+    > Bu, bu videodan öngörüyü siler, ancak modeli etkilemez.
 
 1. Bir modeli silin.
 
-    1. Üst menüdeki **İçerik modeli özelleştirme** düğmesine tıklayın ve **Animasyonkarakterleri** sekmesine gidin.
-    1. Silmek istediğiniz modelin sağındaki elips simgesine ve ardından sil düğmesine tıklayın.
+    1. Üstteki menüdeki **içerik modeli özelleştirmesi** düğmesine tıklayın ve **animasyonlu karakterler** sekmesine gidin.
+    1. Silmek istediğiniz modelin sağ tarafındaki üç nokta simgesine ve ardından Sil düğmesine tıklayın.
     
-    * Ücretli hesap: modelvideo indexer bağlantısı kesilir ve yeniden bağlamak mümkün olmayacaktır.
-    * Deneme hesabı: model gümrük vizyonundan da silinecektir. 
+    * Ücretli hesap: modelin bağlantısı Video Indexer kesilecek ve yeniden bağlanamayacaksınız.
+    * Deneme hesabı: model gümrük Vision 'dan da silinecek. 
     
         > [!NOTE]
-        > Deneme hesabında kullanabileceğiniz yalnızca bir model var. Sildikten sonra, diğer modelleri eğitemezsiniz.
+        > Deneme hesabında yalnızca bir modelleyebilirsiniz. Sildikten sonra, diğer modelleri eğitebilirsiniz.
 
-## <a name="use-the-animated-character-detection-with-api"></a>API ile animasyonlu karakter algılamasını kullanma 
+## <a name="use-the-animated-character-detection-with-api"></a>API ile animasyonlu karakter algılamayı kullanma 
 
-1. Özel Vizyon hesabı bağlayın.
+1. Özel Görüntü İşleme bir hesabı bağlayın.
 
-    Video Indexer ücretli hesabınız varsa, önce bir Özel Vizyon hesabı bağlamanız gerekir. <br/>
-    Zaten bir Özel Vizyon hesabınız yoksa, lütfen bir tane oluşturun. Daha fazla bilgi için [Bkz. Özel Vizyon.](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home)
+    Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşleme hesabı bağlamanız gerekir. <br/>
+    Zaten bir Özel Görüntü İşleme hesabınız yoksa lütfen bir tane oluşturun. Daha fazla bilgi için bkz. [özel görüntü işleme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home).
 
-    [ÖZEL Görme hesabınızı API'yi kullanarak bağlayın.](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag)
-1. Animasyonlu karakterler modeli oluşturun.
+    [API kullanarak özel görüntü işleme hesabınızı bağlayın](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Connect-Custom-Vision-Account?tags=&pattern=&groupBy=tag).
+1. Bir animasyonlu karakter modeli oluşturun.
 
-    Create [animasyon modeli](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API'yi kullanın.
-1. Bir videoyu dizine dizine dizin veya yeniden dizine dizin.
+    [Animasyon modeli oluşturma](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Animation-Model?&groupBy=tag) API 'sini kullanın.
+1. Videoyu dizine koyun veya yeniden dizine koyun.
 
-    Yeniden [dizine ekleyen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API'yi kullanın. 
-1. Animasyonkarakterleri modellerini özelleştirin.
+    [Yeniden dizin oluşturma](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-Index-Video?) API 'sini kullanın. 
+1. Animasyonlu karakterler modellerini özelleştirin.
 
-    Tren [animasyon modeli](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API'yi kullanın.
+    [Eğitme animasyon modeli](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Train-Animation-Model?&groupBy=tag) API 'sini kullanın.
 
 ### <a name="view-the-output"></a>Çıktıyı görüntüleme
 
-Oluşturulan JSON dosyasındaki animasyonkarakterleri görün.
+Oluşturulan JSON dosyasındaki animasyonlu karakterleri görüntüleyin.
 
 ```json
 "animatedCharacters": [
@@ -208,9 +208,9 @@ Oluşturulan JSON dosyasındaki animasyonkarakterleri görün.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Şu anda, "animasyon tanımlama" özelliği Doğu Asya bölgesinde desteklenmemektedir.
-* Videonun kalitesi düşükse, videoda küçük veya uzak görünen karakterler düzgün tanımlanamayabilir.
-* Öneri, animasyonlu karakter kümesi başına bir model kullanmaktır (örneğin animasyonlu seri başına).
+* Şu anda, "animasyon kimliği" özelliği Doğu Asya bölgesinde desteklenmez.
+* Videonun kalitesi zayıflarsa videoda küçük veya uzak görünen karakterler düzgün şekilde tanımlanmayabilir.
+* Öneri, her bir animasyon karakter kümesi için (örneğin, bir animasyon serisi) bir model kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

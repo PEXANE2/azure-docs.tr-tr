@@ -1,6 +1,6 @@
 ---
-title: Media Services v3 Azure CLI kullanarak özel dönüşümü kodlayın | Microsoft Dokümanlar
-description: Bu konu, Azure CLI kullanarak özel bir dönüşümü kodlamak için Azure Media Services v3'ün nasıl kullanılacağını gösterir.
+title: Media Services v3 Azure CLı kullanarak özel dönüştürmeyi kodla | Microsoft Docs
+description: Bu konu, Azure CLı kullanarak özel bir dönüşüm kodlamak için Azure Media Services v3 'in nasıl kullanılacağını gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,38 +13,38 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 7c1b446ccf04199449f012e738f6a03660735f50
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382962"
 ---
-# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama - Azure CLI
+# <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>Özel bir dönüşümle kodlama-Azure CLı
 
-Azure Medya Hizmetleri ile kodlama yaparken, [Akış dosyaları](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) hızlı başlatıldığında gösterildiği gibi, endüstrinin en iyi uygulamalarını temel alan önerilen yerleşik hazır ayarlardan biriyle hızlı bir şekilde başlayabilirsiniz. Ayrıca, belirli senaryo veya aygıt gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
+Azure Media Services ile kodlarken, [akış dosyaları](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) hızlı başlangıç bölümünde gösterildiği gibi, sektörde en iyi uygulamaları temel alan önerilen yerleşik ön ayarlardan biriyle hızlı bir başlangıç yapabilirsiniz. Ayrıca, belirli bir senaryoyu veya cihaz gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Özel ön ayarlar oluşturulurken aşağıdaki hususlar geçerlidir:
+Özel ön ayarlar oluşturulurken aşağıdaki noktalar geçerlidir:
 
-* AVC içeriğindeki yükseklik ve genişlik için tüm değerler 4'ün katı olmalıdır.
-* Azure Media Services v3'te, tüm kodlama bit hızları saniyede bit şeklindedir. Bu birim olarak kilobit /saniye kullanılan bizim v2 API'lar ile ön ayarlar farklıdır. Örneğin, v2'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3'te 128000 (bit/saniye) olarak ayarlanır.
+* AVC içeriğinde yükseklik ve genişlik değerlerinin tümü 4 ' ün katı olmalıdır.
+* Azure Media Services v3 'de, tüm kodlama bit fiyatları bit/saniye cinsinden. Bu, birim olarak kilobit/saniye kullanan v2 API 'lerimiz olan ön ayarlardan farklıdır. Örneğin, v2 'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3 'de 128000 (bit/saniye) olarak ayarlanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
+[Media Services hesabı oluşturun](create-account-cli-how-to.md).
 
-Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun.
+Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun.
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
-## <a name="define-a-custom-preset"></a>Özel bir ön ayar tanımlama
+## <a name="define-a-custom-preset"></a>Özel bir önayar tanımlama
 
-Aşağıdaki örnek, yeni bir Dönüşümün istek gövdesini tanımlar. Bu Dönüşüm kullanıldığında oluşturulmasını istediğimiz bir çıktı kümesi tanımlıyoruz.
+Aşağıdaki örnek, yeni bir dönüşümün istek gövdesini tanımlar. Bu dönüşüm kullanıldığında oluşturulmasını istediğimiz bir çıktı kümesi tanımladık.
 
-Bu örnekte, önce ses kodlaması için bir AacAudio katmanı ve video kodlaması için iki H264Video katmanı ekliyoruz. Video katmanlarında, çıktı dosyası adlarında kullanılabilen etiketler atıyoruz. Ardından, çıktının küçük resimler de içermesini istiyoruz. Aşağıdaki örnekte, giriş videosunun çözünürlüğünün %50'si oranında ve üç zaman damgasında - giriş videosunun uzunluğunun {%25, %50, 75} olarak oluşturulan PNG formatında görüntüleri belirtiriz. Son olarak, çıktı dosyalarının biçimini belirtiriz - biri video + ses için, diğeri de küçük resimler için. Birden fazla H264Layer'a sahip olduğumuzdan, katman başına benzersiz adlar üreten makrolar kullanmalıyız. Biz ya bir `{Label}` `{Bitrate}` veya makro kullanabilirsiniz, örnek eski gösterir.
+Bu örnekte, önce ses kodlaması ve video kodlaması için iki H264Video katmanı için bir AacAudio katmanı ekleyeceğiz. Video katmanlarında, çıkış dosyası adlarında kullanılabilmesi için Etiketler atacağız. Ardından, çıktının küçük resimleri de içermesini istiyoruz. Aşağıdaki örnekte, resimleri, giriş videonun çözümlenme %50 ' de ve üç zaman 75 50 damgalarına (örneğin, giriş videosunun uzunluğuna) göre, PNG biçiminde belirttik. Son olarak, çıkış dosyalarının biçimini, video + ses için, diğeri ise küçük resimler için belirttik. Birden çok H264Layers olduğundan, her katman için benzersiz adlar üreten makrolar kullandık. Bir `{Label}` veya `{Bitrate}` makrosunu kullanabilir, örnek eski ' yi gösterir.
 
-Bu dönüşümü bir dosyaya kaydedeceğiz. Bu örnekte, dosyayı `customPreset.json`adlandırıyoruz.
+Bu dönüşümü bir dosyaya kaydedecekiz. Bu örnekte, dosyayı `customPreset.json`adı veririz.
 
 ```json
 {
@@ -124,21 +124,21 @@ Bu dönüşümü bir dosyaya kaydedeceğiz. Bu örnekte, dosyayı `customPreset.
 }
 ```
 
-## <a name="create-a-new-transform"></a>Yeni bir dönüşüm oluşturun  
+## <a name="create-a-new-transform"></a>Yeni dönüşüm oluştur  
 
-Bu örnekte, daha önce tanımladığımız özel ön aseti temel alan bir **Dönüşüm** oluştururuz. Dönüşüm oluştururken, önce bir dönüşüm olup olmadığını denetlemeniz gerekir. Dönüşüm varsa, yeniden kullanın. Aşağıdaki `show` komut varsa `customTransformName` dönüşümü döndürür:
+Bu örnekte, daha önce tanımladığımız özel hazır ayarı temel alan bir **dönüşüm** oluşturacağız. Bir dönüşüm oluştururken, önce bir tane olup olmadığını denetlemeniz gerekir. Dönüşüm varsa, yeniden kullanın. Aşağıdaki `show` komut, varsa `customTransformName` dönüşümü döndürür:
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName
 ```
 
-Aşağıdaki Azure CLI komutu, özel ön aset'i (daha önce tanımlanmış) temel alan Dönüşüm'ü oluşturur.
+Aşağıdaki Azure CLı komutu özel önayar (daha önce tanımlanan) temel alarak dönüşümü oluşturur.
 
 ```azurecli-interactive
 az ams transform create -a amsaccount -g amsResourceGroup -n customTransformName --description "Basic Transform using a custom encoding preset" --preset customPreset.json
 ```
 
-Medya Hizmetleri'nin Transform'u belirtilen video veya sese uygulayabilmek için bu Dönüşüm'ün altında bir İş göndermeniz gerekir. Dönüşüm altında bir işin nasıl gönderilebildiğini gösteren tam bir örnek için Bkz. [Hızlı Başlangıç: Video dosyalarını akış - Azure CLI](stream-files-cli-quickstart.md).
+Media Services belirtilen videoya veya sese dönüştürmeyi uygulamak için, o dönüşüm altında bir Iş göndermeniz gerekir. Bir dönüştürme altında iş göndermeyi gösteren tam bir örnek için bkz. [hızlı başlangıç: Stream video Files-Azure CLI](stream-files-cli-quickstart.md).
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

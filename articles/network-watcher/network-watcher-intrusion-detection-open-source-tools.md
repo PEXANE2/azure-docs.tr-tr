@@ -1,7 +1,7 @@
 ---
-title: Açık kaynak araçlarıyla ağ izinsiz giriş algılama gerçekleştirin
+title: Açık kaynak araçları ile ağ üzerinden izinsiz giriş algılama gerçekleştirme
 titleSuffix: Azure Network Watcher
-description: Bu makalede, ağ izinsiz giriş algılama gerçekleştirmek için Azure Ağ İzleyicisi ve açık kaynak araçlarının nasıl kullanılacağı açıklanmaktadır
+description: Bu makalede, Azure ağ Izleyicisi 'ni ve açık kaynak araçları 'nı kullanarak ağ izinsiz giriş algılama işlemini gerçekleştirme açıklanmaktadır
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -14,33 +14,33 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474917"
 ---
-# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ İzleyicisi ve açık kaynak araçlarıyla ağ izinsiz giriş algılama gerçekleştirin
+# <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ Izleyicisi ve açık kaynak araçları ile ağ üzerinden izinsiz bir algılama gerçekleştirme
 
-Paket yakalamalar, ağ izinsiz giriş algılama sistemlerinin (IDS) uygulanması ve Ağ Güvenliği İzleme (NSM) gerçekleştirmesi için önemli bir bileşendir. Paket yakalamaişlemlerini işleyen ve olası ağ ihlalleri nin ve kötü amaçlı etkinliklerin imzalarını arayan birkaç açık kaynak IDS aracı vardır. Ağ İzleyicisi tarafından sağlanan paket yakalamaları kullanarak, ağınızı zararlı saldırılara veya güvenlik açıklarına karşı analiz edebilirsiniz.
+Paket yakalamaları, ağ izinsiz giriş algılama sistemleri (KIMLIKLER) uygulamak ve ağ güvenliği Izleme (NSM) gerçekleştirmek için önemli bir bileşendir. Paket yakalamalarını işleyen ve olası ağ yetkisiz ve kötü amaçlı etkinliklerin imzalarını gösteren çeşitli açık kaynak KIMLIĞI araçları vardır. Ağ Izleyicisi tarafından sunulan paket yakalamalarını kullanarak ağınızı herhangi bir zararlı yetkisiz kullanım veya güvenlik açığına karşı çözümleyebilirsiniz.
 
-Bu tür açık kaynak araçlardan biri, ağ trafiğini izlemek için kural kümelerini kullanan ve şüpheli olaylar olduğunda uyarıları tetikleyen bir IDS motoru olan Suricata'dır. Suricata çok dişli bir motor sunar, bu da ağ trafiği analizini artan hız ve verimlilikle gerçekleştirebileceği anlamına gelir. Suricata ve yetenekleri hakkında daha fazla bilgi https://suricata-ids.org/için, kendi web sitesini ziyaret edin.
+Bu tür açık kaynaklı bir araç, ağ trafiğini izlemek için RuleSets kullanan ve şüpheli olaylar gerçekleştiğinde uyarıları tetikleyen bir KIMLIK altyapısı olan Suricata ' dır. Suricata, çok iş parçacıklı bir altyapı sunar, yani ağ trafiği analizini daha yüksek hız ve verimlilik ile gerçekleştirebiliyor. Suricata ve özellikleri hakkında daha fazla ayrıntı için, adresindeki https://suricata-ids.org/Web sitesini ziyaret edin.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu makalede, Ağ İzleyicisi, Suricata ve Elastik Yığın kullanarak ağ izinsiz giriş algılama gerçekleştirmek için ortamınızı nasıl ayarlayınız açıklanmaktadır. Ağ İzleyicisi, ağ izinsiz giriş algılama gerçekleştirmek için kullanılan paket yakalamalarını sağlar. Suricata, paket yakalamaişlemlerini işler ve verilen tehdit kuralına uyan paketlere dayalı uyarıları tetikler. Bu uyarılar yerel makinenizdeki bir günlük dosyasında depolanır. Elastik Yığın'ı kullanarak, Suricata tarafından oluşturulan günlükler dizine eklenebilir ve bir Kibana panosu oluşturmak için kullanılabilir, bu da size günlüklerin görsel bir temsilini ve olası ağ güvenlik açıklarına hızlı bir şekilde bilgi edinmenizi sağlar.  
+Bu makalede ağ Izleyicisi, Suricata ve elastik yığın kullanarak ağ izinsiz giriş algılaması gerçekleştirmek için ortamınızın nasıl ayarlanacağı açıklanır. Ağ Izleyicisi, ağ izinsiz giriş algılaması gerçekleştirmek için kullanılan paket yakalamalarını sağlar. Suricata, belirtilen ruletehditler kümesiyle eşleşen paketlere dayanarak, paket yakalar ve uyarıları tetikler. Bu uyarılar yerel makinenizde bir günlük dosyasında depolanır. Esnek yığını kullanarak, Suricata tarafından oluşturulan günlüklerin dizini oluşturulabilir ve bir kibana panosu oluşturmak için kullanılabilir. böylece, size günlüklerin görsel bir temsilini ve olası ağ güvenlik açıklarına ilişkin öngörüleri hızlıca elde edebilirsiniz.  
 
-![basit web uygulama senaryosu][1]
+![basit Web uygulaması senaryosu][1]
 
-Her iki açık kaynak aracı da azure vm'de ayarlanabilir ve bu çözümlemesi kendi Azure ağ ortamınızda gerçekleştirmenize olanak tanır.
+Açık kaynaklı araçların her ikisi de bir Azure sanal makinesinde ayarlanabilir ve bu analizi kendi Azure ağ ortamınızda gerçekleştirmenize olanak tanır.
 
 ## <a name="steps"></a>Adımlar
 
-### <a name="install-suricata"></a>Suricata'yı Yükleyin
+### <a name="install-suricata"></a>Suricata yüklemesi
 
-Diğer tüm kurulum yöntemleri için,https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
+Tüm diğer yükleme yöntemleri için bkz.https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
-1. VM'nizin komut satırı terminalinde aşağıdaki komutları çalıştırın:
+1. SANAL makinenizin komut satırı terminalinde aşağıdaki komutları çalıştırın:
 
     ```
     sudo add-apt-repository ppa:oisf/suricata-stable
@@ -48,11 +48,11 @@ Diğer tüm kurulum yöntemleri için,https://suricata.readthedocs.io/en/suricat
     sudo sudo apt-get install suricata
     ```
 
-1. Yüklemenizi doğrulamak için komutların tam listesini görmek için komutu `suricata -h` çalıştırın.
+1. Yüklemenizi doğrulamak için komutunu `suricata -h` çalıştırarak komutların tam listesini görüntüleyin.
 
-### <a name="download-the-emerging-threats-ruleset"></a>Ortaya Çıkan Tehditler kural kümesini indirin
+### <a name="download-the-emerging-threats-ruleset"></a>Gelişen tehditler kural kümesini indirin
 
-Bu aşamada, Suricata'nın çalışması için herhangi bir kuralımız yok. Ağınıza yönelik algılamak istediğiniz belirli tehditler varsa kendi kurallarınızı oluşturabilir veya Ortaya Çıkan Tehditler veya Snort'un VRT kuralları gibi bir dizi sağlayıcıdan gelişmiş kural kümelerini de kullanabilirsiniz. Burada serbestçe erişilebilen Emerging Threats kuralını kullanıyoruz:
+Bu aşamada, Suricata 'nın çalıştırması için herhangi bir kural yoktur. Ağınızda algılamak istediğiniz belirli tehditler varsa kendi kurallarınızı oluşturabilir veya Ayrıca, gelişmekte olan tehditler veya snort 'den VRT kuralları gibi bir dizi sağlayıcıdan geliştirilmiş kural kümeleri de kullanabilirsiniz. Serbestçe erişilebilen, daha önce erişilebilir tehditler kuralı kümesi kullanırız:
 
 Kural kümesini indirin ve dizine kopyalayın:
 
@@ -62,25 +62,25 @@ tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```
 
-### <a name="process-packet-captures-with-suricata"></a>Suricata ile işlem paketi yakalama
+### <a name="process-packet-captures-with-suricata"></a>Suricata ile işlem paketi yakalamaları
 
-Ek-lefkoşa kullanarak paket yakalamaişlemlerini işlemek için aşağıdaki komutu çalıştırın:
+Suricata kullanarak paket yakalamalarını işlemek için aşağıdaki komutu çalıştırın:
 
 ```
 sudo suricata -c /etc/suricata/suricata.yaml -r <location_of_pcapfile>
 ```
-Ortaya çıkan uyarıları kontrol etmek için fast.log dosyasını okuyun:
+Ortaya çıkan uyarıları denetlemek için hızlı. log dosyasını okuyun:
 ```
 tail -f /var/log/suricata/fast.log
 ```
 
-### <a name="set-up-the-elastic-stack"></a>Elastik Yığını Ayarlama
+### <a name="set-up-the-elastic-stack"></a>Elastik yığını ayarlama
 
-Suricata'nın ürettiği günlükler amızmızda olup bitenler hakkında değerli bilgiler içerse de, bu günlük dosyalarının okunması ve anlaşılması kolay değildir. Suricata'yı Elastik Yığın'a bağlayarak, günlüklerimizden arama yapmamıza, grafik oluşturmamıza, analiz etmemize ve öngörüler elde etmemize olanak tanıyan bir Kibana panosu oluşturabiliriz.
+Surıata 'nın ürettiği Günlükler, ağımızda neler olduğu hakkında değerli bilgiler içerirken bu günlük dosyaları, okunması ve anlaşılması en kolay yoldur. Suricata 'yı elastik Stack ile bağlayarak, günlüklerimize ilişkin neleri araymamızı, grafiklemenizi, analiz etmenizi ve türetmemizi sağlayan bir kibana panosu oluşturalım.
 
-#### <a name="install-elasticsearch"></a>Elasticsearch'u Yükleyin
+#### <a name="install-elasticsearch"></a>Elaa aramasını yükleme
 
-1. Sürüm 5.0 ve üzeri Elastik Stack Java 8 gerektirir. Sürümünüzü `java -version` kontrol etmek için komutu çalıştırın. Java yüklü değilseniz, [Azure'un desteklenmiş JDK'leri](https://aka.ms/azure-jdks)üzerindeki belgelere bakın.
+1. 5,0 ve üzeri sürümler için esnek yığın Java 8 gerektirir. Sürümünüzü denetlemek için `java -version` komutunu çalıştırın. Java yüklü değilse, [Azure-suppored JDKs](https://aka.ms/azure-jdks)ile ilgili belgelere başvurun.
 
 1. Sisteminiz için doğru ikili paketi indirin:
 
@@ -90,15 +90,15 @@ Suricata'nın ürettiği günlükler amızmızda olup bitenler hakkında değerl
     sudo /etc/init.d/elasticsearch start
     ```
 
-    Diğer kurulum yöntemleri [Elasticsearch Kurulum](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) bulunabilir
+    Diğer yükleme yöntemleri, [Elaun Search yüklemesinde](https://www.elastic.co/guide/en/beats/libbeat/5.2/elasticsearch-installation.html) bulunabilir
 
-1. Elasticsearch'un komutla çalıştığını doğrulayın:
+1. Şu komutla, Elaun aramasının çalıştığını doğrulayın:
 
     ```
     curl http://127.0.0.1:9200
     ```
 
-    Buna benzer bir yanıt görmeniz gerekir:
+    Aşağıdakine benzer bir yanıt görmeniz gerekir:
 
     ```
     {
@@ -115,23 +115,23 @@ Suricata'nın ürettiği günlükler amızmızda olup bitenler hakkında değerl
     }
     ```
 
-Elastik arama yükleme hakkında daha fazla bilgi için [Yükleme](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html) sayfasına bakın
+Elastik arama yükleme hakkında daha fazla yönerge için, sayfa [yüklemeye](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/_installation.html) bakın
 
-### <a name="install-logstash"></a>Logstash yükle
+### <a name="install-logstash"></a>Logstash 'i yükler
 
-1. Logstash'ı yüklemek için aşağıdaki komutları çalıştırın:
+1. Logstash 'i yüklemek için aşağıdaki komutları çalıştırın:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
-1. Sonra eve.json dosyasının çıktısını okumak için Logstash yapılandırmak gerekir. Kullanarak bir logstash.conf dosyası oluşturun:
+1. Sıradaki. json dosyasının çıktısından okumak için Logstash yapılandırması gerekir. Şunu kullanarak bir logstash. conf dosyası oluşturun:
 
     ```
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
-1. Aşağıdaki içeriği dosyaya ekleyin (eve.json dosyasına giden yolun doğru olduğundan emin olun):
+1. Dosyasına aşağıdaki içeriği ekleyin (arif. json dosyasının yolunun doğru olduğundan emin olun):
 
     ```ruby
     input {
@@ -203,88 +203,88 @@ Elastik arama yükleme hakkında daha fazla bilgi için [Yükleme](https://www.e
     }
     ```
 
-1. Logstash'ın dosyayı yutabilmesi için eve.json dosyasına doğru izinleri verdiğinizden emin olun.
+1. Logstash 'in dosyayı alabilmesi için, bu JSON dosyasına doğru izinleri verdiğinizden emin olun.
     
     ```
     sudo chmod 775 /var/log/suricata/eve.json
     ```
 
-1. Logstash başlatmak için komutu çalıştırın:
+1. Logstash 'i başlatmak için şu komutu çalıştırın:
 
     ```
     sudo /etc/init.d/logstash start
     ```
 
-Logstash'ın kurulumu hakkında daha fazla talimat [için, resmi belgelere](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) bakın
+Logstash 'i yükleme hakkında daha fazla bilgi için [resmi belgelere](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html) bakın
 
-### <a name="install-kibana"></a>Kibana'yı Yükle
+### <a name="install-kibana"></a>Kibana 'i yükler
 
-1. Kibana'yı yüklemek için aşağıdaki komutları çalıştırın:
+1. Kibana yüklemek için aşağıdaki komutları çalıştırın:
 
     ```
     curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
     tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
 
     ```
-1. Kibana çalıştırmak için komutları kullanın:
+1. Kibana çalıştırmak için şu komutları kullanın:
 
     ```
     cd kibana-5.2.0-linux-x86_64/
     ./bin/kibana
     ```
 
-1. Kibana web arabiriminizi görüntülemek için`http://localhost:5601`
-1. Bu senaryo için, Suricata günlükleri için kullanılan dizin deseni "logstash-*"
+1. Kibana Web arabiriminizi görüntülemek için şuraya gidin`http://localhost:5601`
+1. Bu senaryo için, Suricata günlükleri için kullanılan dizin deseninin "logstash-*" olması gerekir
 
-1. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 portuna**erişime izin veren gelen bir NSG kuralı oluşturun.
+1. Kibana panosunu uzaktan görüntülemek istiyorsanız, **5601 numaralı bağlantı noktasına**erişime izin veren bir gelen NSG kuralı oluşturun.
 
 ### <a name="create-a-kibana-dashboard"></a>Kibana panosu oluşturma
 
-Bu makale için, uyarılarınızdaki eğilimleri ve ayrıntıları görüntülemeniz için örnek bir pano sağladık.
+Bu makalede, uyarılarınızın eğilimlerini ve ayrıntılarını görüntülemeniz için bir örnek Pano sunuyoruz.
 
-1. [Burada](https://aka.ms/networkwatchersuricatadashboard)pano dosyasını indirin , visualization dosyası [burada](https://aka.ms/networkwatchersuricatavisualization), ve burada kayıtlı arama [dosyası](https://aka.ms/networkwatchersuricatasavedsearch).
+1. Pano dosyasını buraya [, görselleştirme dosyasına ve](https://aka.ms/networkwatchersuricatavisualization)kayıtlı arama [dosyasına buradan indirebilirsiniz](https://aka.ms/networkwatchersuricatadashboard) [.](https://aka.ms/networkwatchersuricatasavedsearch)
 
-1. Kibana'nın **Yönetim** sekmesi altında, **Kaydedilmiş Nesneler'e** gidin ve üç dosyayı da aktarın. Ardından **Pano** sekmesinden örnek panoyu açıp yükleyebilirsiniz.
+1. Kibana 'ın **Yönetim** sekmesi altında, **kayıtlı nesneler** ' e gidin ve üç dosyayı içeri aktarın. Sonra **Pano** sekmesinden örnek panoyu açabilir ve yükleyebilirsiniz.
 
-Ayrıca, kendi ilgi alanınıza uygun görselleştirmelerinizi ve panolarınızı oluşturabilirsiniz. Kibana'nın [resmi belgelerinden](https://www.elastic.co/guide/en/kibana/current/visualize.html)Kibana görselleştirmeleri oluşturma hakkında daha fazla bilgi edinin.
+Kendi görselleştirmelerinizle ilgili ölçümleriniz doğrultusunda kendi görselleştirmelerinizi ve panolarınızı da oluşturabilirsiniz. Kibana 'ın [resmi belgelerinden](https://www.elastic.co/guide/en/kibana/current/visualize.html)kibana görselleştirmeler oluşturma hakkında daha fazla bilgi edinin.
 
-![kibana pano][2]
+![kibana panosu][2]
 
-### <a name="visualize-ids-alert-logs"></a>IDS uyarı günlüklerini görselleştirin
+### <a name="visualize-ids-alert-logs"></a>KIMLIKLERI görselleştirme uyarı günlükleri
 
-Örnek pano, Suricata uyarı günlüklerinin çeşitli görselleştirmelerini sağlar:
+Örnek Pano, Suricata uyarı günlüklerinin çeşitli görselleştirmelerini sağlar:
 
-1. GeoIP tarafından uyarılar - coğrafi konuma göre (IP tarafından belirlenir) kendi ülke / bölge tarafından uyarıların dağılımını gösteren bir harita
+1. Coğrafi konuma göre (IP tarafından belirlenir) uyarı ülkelerinin/kaynak bölgelerine göre uyarı dağılımını gösteren bir harita.
 
-    ![coğrafi ip][3]
+    ![Coğrafi IP][3]
 
-1. En Sık 10 Uyarılar - 10 en sık tetiklenen uyarıları ve açıklamaları bir özeti. Tek bir uyarıyı tıklatmak, panoyu bu belirli uyarıyla ilgili bilgilere filtreler.
+1. İlk 10 uyarı: en sık tetiklenen 10 uyarının ve bunların açıklamasının Özeti. Tek bir uyarıya tıkladığınızda panonun, söz konusu uyarıya ilişkin bilgilere göre filtresi yapılır.
 
     ![resim 4][4]
 
-1. Uyarı Sayısı – kural kümesi tarafından tetiklenen uyarıların toplam sayısı
+1. Uyarı sayısı: RuleSet tarafından tetiklenen toplam uyarı sayısı
 
     ![resim 5][5]
 
-1. En iyi 20 Kaynak/Hedef IP/Bağlantı Noktası - uyarıların tetiklenen en iyi 20 IP'yi ve bağlantı noktasını gösteren pasta grafikleri. Kaç tane ve ne tür uyarıların tetiklendiğini görmek için belirli IP'lere/bağlantı noktalarına filtre uygulayabilirsiniz.
+1. İlk 20 kaynak/hedef IP/bağlantı noktası-uyarıların üzerinde tetiklenen en iyi 20 IP ve bağlantı noktasını gösteren pasta grafikler. Belirli IP 'Lerde/bağlantı noktalarında filtreleyerek, kaç tür uyarı tetikleneceğini görebilirsiniz.
 
     ![resim 6][6]
 
-1. Uyarı Özeti – her bir uyarının belirli ayrıntılarını özetleyen bir tablo. Her uyarı için diğer ilgi çekici parametreleri göstermek için bu tabloyu özelleştirebilirsiniz.
+1. Uyarı Özeti: her bir uyarının belirli ayrıntılarını özetleyen bir tablo. Bu tabloyu, her uyarı için diğer ilgilendiğiniz diğer parametreleri gösterecek şekilde özelleştirebilirsiniz.
 
-    ![resim 7][7]
+    ![Görüntü 7][7]
 
-Özel görselleştirmeler ve panolar oluşturma yla ilgili daha fazla belge [için, Kibana'nın resmi belgelerine](https://www.elastic.co/guide/en/kibana/current/introduction.html)bakın.
+Özel görselleştirmeler ve panolar oluşturma hakkında daha fazla bilgi için bkz. [kibana 'in resmi belgeleri](https://www.elastic.co/guide/en/kibana/current/introduction.html).
 
 ## <a name="conclusion"></a>Sonuç
 
-Network Watcher ve Suricata gibi açık kaynak ids araçları tarafından sağlanan paket yakalamaları birleştirerek, çok çeşitli tehditler için ağ izinsiz giriş algılama gerçekleştirebilirsiniz. Bu panolar, ağınızdaki eğilimleri ve anormallikleri hızlı bir şekilde belirlemenize ve kötü amaçlı kullanıcı aracıları veya savunmasız bağlantı noktaları gibi uyarıların kök nedenlerini bulmak için verileri araştırmanıza olanak tanır. Bu çıkarılan verilerle, ağınıza nasıl tepki vereceğiniz ve ağınızı zararlı saldırı girişimlerinden nasıl koruyacağınız konusunda bilinçli kararlar alabilir ve ağınıza gelecekteki izinsiz girişleri önlemek için kurallar oluşturabilirsiniz.
+Ağ Izleyicisi tarafından sunulan paket yakalamaları ve Suricata gibi açık kaynak KIMLIKLERI araçları birleştirilerek, çok çeşitli tehditler için ağ üzerinden izinsiz giriş algılama gerçekleştirebilirsiniz. Bu panolar ağınız içindeki eğilimleri ve anormallikleri hızlıca belirlemenize ve kötü amaçlı kullanıcı aracıları veya güvenlik açığı bulunan bağlantı noktaları gibi uyarıların kök nedenlerini bulmaya yönelik verileri de belirlemenize olanak sağlar. Bu ayıklanan veriler sayesinde ağınıza herhangi bir zararlı yetkisiz giriş denemesinden yanıt verme ve koruma konusunda bilinçli kararlar verebilir ve ağınıza daha sonra yetkisiz erişimi engellemek için kurallar oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure İşlevleriyle proaktif ağ izleme yapmak için Paket yakalamayı kullan'ı](network-watcher-alert-triggered-packet-capture.md) ziyaret ederek uyarılara dayalı paket yakalamaları nasıl tetiklediğinizi öğrenin
+[Azure işlevleri ile öngörülü ağ izleme yapmak için paket yakalamayı kullanma](network-watcher-alert-triggered-packet-capture.md) ' yı ziyaret ederek uyarı temelinde paket yakalamaları tetiklemeyi öğrenin
 
-Power BI ile [Visualize NSG akışları günlüklerini](network-watcher-visualize-nsg-flow-logs-power-bi.md) ziyaret ederek NSG akış günlüklerinizi Power BI ile nasıl görselleştirebilirsiniz öğrenin
+Power BI ile NSG akış günlüklerinizi görselleştirmeyi öğrenin [Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
 
 

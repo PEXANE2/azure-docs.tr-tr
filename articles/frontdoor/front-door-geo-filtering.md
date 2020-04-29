@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı için bir etki alanında coğrafi filtreleme | Microsoft Dokümanlar
-description: Bu makalede, Azure Ön Kapı için coğrafi filtreleme ilkesi hakkında bilgi edinin
+title: Azure ön kapısı için bir etki alanında coğrafi filtreleme | Microsoft Docs
+description: Bu makalede, Azure ön kapısının coğrafi filtreleme ilkesi hakkında bilgi edinirsiniz
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -14,19 +14,19 @@ ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
 ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411174"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Azure Front Door için bir etki alanında coğrafi filtreleme nedir?
 
-Varsayılan olarak, Azure Ön Kapı, isteği yapan kullanıcının konumuna bakılmaksızın kullanıcı isteklerine yanıt verir. Ancak, bazı durumlarda, web uygulamalarınıza erişimi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. Front Door'daki Web uygulaması güvenlik duvarı (WAF) hizmeti, belirli ülkelerden/bölgelerden erişime izin vermek veya engellemek için bitiş noktanızdaki belirli bir yol için özel erişim kurallarını kullanarak bir ilke tanımlamanıza olanak tanır. 
+Varsayılan olarak, Azure ön kapısı isteği yapan kullanıcının konumundan bağımsız olarak Kullanıcı isteklerine yanıt verir. Ancak bazı durumlarda, Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlamak isteyebilirsiniz. Ön kapıda Web uygulaması güvenlik duvarı (WAF) hizmeti, belirli ülkelerde/bölgelerde erişime izin vermek veya erişimi engellemek için uç noktanıza özel erişim kuralları kullanarak bir ilke tanımlamanızı sağlar. 
 
 WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşullarından, bir eylemden ve bir öncelikten oluşur. Eşleşme koşulunda bir eşleşme değişkeni, işleç ve eşleşme değeri tanımlarsınız.  Coğrafi filtreleme kuralı için eşleşme değişkeni REMOTE_ADDR, işleç GeoMatch, değer ise söz konusu ülkenin iki harfli kodudur. Yola göre bir coğrafi filtreleme kuralı oluşturmak için bir GeoMatch koşulunu ve bir REQUEST_URI dizesi eşleşme koşulunu birleştirebilirsiniz.
 
-[Azure PowerShell'i](front-door-tutorial-geo-filtering.md) kullanarak veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak Ön Kapınız için bir coğrafi filtreleme ilkesi ni yapılandırabilirsiniz.
+[Azure PowerShell](front-door-tutorial-geo-filtering.md) kullanarak veya [hızlı başlangıç şablonumuzu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)kullanarak, ön kapıya yönelik bir coğrafi filtreleme ilkesi yapılandırabilirsiniz.
 
 ## <a name="country-code-reference"></a>Ülke kodu başvurusu
 
@@ -53,7 +53,7 @@ WAF ilkesi genellikle bir dizi özel kural içerir. Bir kural eşleşme koşulla
 | BH | Bahreyn|
 | BI | Burundi|
 | BJ | Benin|
-| BL | Aziz Barthélemy|
+| BL | Saint Barthélimy|
 | BN | Barış Yurdu Brunei Devleti|
 | BO | Bolivya|
 | BR | Brezilya|

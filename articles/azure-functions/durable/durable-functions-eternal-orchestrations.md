@@ -1,39 +1,39 @@
 ---
-title: Dayanıklı İşlevlerde Sonsuz Orkestrasyon - Azure
-description: Azure İşlevler için Dayanıklı İşlevler uzantısını kullanarak sonsuz işlevleri nasıl uygulayacağınızı öğrenin.
+title: Dayanıklı İşlevler-Azure 'da Eternal düzenlemeleri
+description: Azure işlevleri için dayanıklı işlevler uzantısını kullanarak dış düzenlemeleri uygulamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d55e08fecbd1338284607ac59fe354c6fa8cb1ea
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478808"
 ---
-# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevlerde Sonsuz Orkestrasyon (Azure Fonksiyonları)
+# <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de Eternal düzenlemeleri (Azure Işlevleri)
 
-*Ebedi orkestrasyonlar* hiç bitmeyen orkestrasyon işlevleridir. Toplayıcılar ve sonsuz döngü gerektiren herhangi bir senaryo için [Dayanıklı İşlevler](durable-functions-overview.md) kullanmak istediğinizde yararlıdır.
+*Eternal düzenlemeleri* , hiçbir şekilde bitmeyeceğinden Orchestrator işlevleridir. Bu, toplayıcısını değiştirme için [dayanıklı işlevler](durable-functions-overview.md) kullanmak istediğinizde ve sonsuz bir döngü gerektiren herhangi bir senaryoda yararlıdır.
 
-## <a name="orchestration-history"></a>Orkestrasyon tarihi
+## <a name="orchestration-history"></a>Düzenleme geçmişi
 
-[Orkestrasyon geçmişi](durable-functions-orchestrations.md#orchestration-history) konusunda açıklandığı gibi, Dayanıklı Görev Çerçevesi her işlev intarihini izler. Orkestratör işlevi yeni çalışma zamanlamak için devam ettikçe bu tarih sürekli olarak büyür. Orkestratör işlevi sonsuz bir döngüye girerse ve sürekli olarak çalışmayı planlarsa, bu geçmiş kritik derecede büyüyebilir ve önemli performans sorunlarına neden olabilir. *Ebedi orkestrasyon* kavramı sonsuz döngüler gerektiren uygulamalar için bu tür sorunları azaltmak için tasarlanmıştır.
+[Orchestration geçmişi](durable-functions-orchestrations.md#orchestration-history) konusunda açıklandığı gibi, dayanıklı görev çerçevesi her bir işlev düzenlemesi geçmişini izler. Orchestrator işlevi yeni çalışma zamanlamaya devam ettiği sürece bu geçmiş sürekli olarak artar. Orchestrator işlevi sonsuz bir döngüye geçtiğinde ve sürekli olarak iş zamanlıyor ise, bu geçmiş kritik ölçüde büyüyerek önemli performans sorunlarına neden olabilir. *Dış düzenleme* kavramı, sonsuz döngüler gerektiren uygulamalar için bu tür sorunları azaltmak üzere tasarlanmıştır.
 
 ## <a name="resetting-and-restarting"></a>Sıfırlama ve yeniden başlatma
 
-Sonsuz döngüler kullanmak yerine, orkestratör işlevleri (.NET) veya `ContinueAsNew` `continueAsNew` (JavaScript) yöntemini [çağırarak](durable-functions-bindings.md#orchestration-trigger)durumlarını sıfırlar. Bu yöntem, bir sonraki orchestrator işlev oluşturma için yeni girdi olur tek bir JSON-serializable parametre alır.
+Sonsuz döngüler kullanmak yerine, düzenleyici işlevleri [düzenleme tetikleyicisi bağlamasının](durable-functions-bindings.md#orchestration-trigger) `ContinueAsNew` (.net) veya `continueAsNew` (JavaScript) yöntemini çağırarak durumlarını sıfırlar. Bu yöntem, bir sonraki Orchestrator işlevi oluşturma için yeni giriş haline gelen tek bir JSON-Serializable parametresi alır.
 
-Çağrıldığında, `ContinueAsNew` örnek çıkmadan önce bir iletiyi kendisine sıralar. İleti, yeni giriş değeriyle örneği yeniden başlatır. Aynı örnek kimliği tutulur, ancak orkestratör işlevinin geçmişi etkin bir şekilde kesilir.
+`ContinueAsNew` Çağrıldığında, örnek çıkış yapmadan önce bir iletiyi kendisine sıraya alır. İleti, örneği yeni giriş değeri ile yeniden başlatır. Aynı örnek KIMLIĞI tutulur, ancak Orchestrator işlevinin geçmişi etkin bir şekilde kesilir.
 
 > [!NOTE]
-> Dayanıklı Görev Çerçevesi aynı örnek kimliği korur, ancak dahili olarak tarafından sıfırlanan orchestrator `ContinueAsNew`işlevi için yeni bir yürütme *kimliği* oluşturur. Bu yürütme kimliği genellikle dışarıdan açıklanmaz, ancak yürütme hata ayıklama ne zaman bilmek yararlı olabilir.
+> Dayanıklı görev çerçevesi aynı örnek KIMLIĞINI tutar, ancak tarafından `ContinueAsNew`sıfırlanan Orchestrator işlevi için dahili olarak yeni BIR *yürütme kimliği* oluşturur. Bu yürütme KIMLIĞI genellikle dışarıdan gösterilmez, ancak düzenleme yürütmesinin hata ayıklaması sırasında öğrenmek faydalı olabilir.
 
-## <a name="periodic-work-example"></a>Periyodik çalışma örneği
+## <a name="periodic-work-example"></a>Düzenli iş örneği
 
-Ebedi orkestrasyonlar için bir kullanım örneği süresiz olarak periyodik çalışma yapmak için gereken koddur.
+Dış düzenlemeleri için bir kullanım örneği, düzenli olarak sürekli çalışması gereken koddur.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -51,7 +51,7 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Önceki C# örneği Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı İşlevler 2. x içindir. Dayanıklı İşlevler 1. x için yerine kullanmanız `DurableOrchestrationContext` gerekir. `IDurableOrchestrationContext` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -72,16 +72,16 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Bu örnek le zamanlayıcı tarafından tetiklenen işlev arasındaki fark, buradaki temizleme tetikleyici saatlerinin zamanlamaya dayanmamasıdır. Örneğin, bir işlevi her saat çalıştıran bir CRON zamanlaması işlevi 1:00, 2:00, 3:00 vb. olarak yürütecek ve çakışma sorunlarıyla karşılaşabilir. Bu örnekte, ancak, temizleme 30 dakika sürerse, o zaman 1:00, 2:30, 4:00, vb zamanlanmış olacak ve çakışma şansı yoktur.
+Bu örnek ve Zamanlayıcı tarafından tetiklenen bir işlev arasındaki fark, temizleme tetikleme sürelerinin bir zamanlamaya göre değil, burada yer alır. Örneğin, bir işlevi her saat yürüten bir CRON zamanlaması, bunu 1:00, 2:00, 3:00 vb. ve büyük olasılıkla çakışma sorunları halinde çalıştıracaktır. Bu örnekte, temizleme işlemi 30 dakika sürüyorsa, 1:00, 2:30, 4:00, vb. olarak zamanlanır.
 
-## <a name="starting-an-eternal-orchestration"></a>Ebedi bir orkestrasyon başlatma
+## <a name="starting-an-eternal-orchestration"></a>Dış düzenleme başlatılıyor
 
-Ebedi `StartNewAsync` bir orkestrasyon `startNew` başlatmak için (.NET) veya (JavaScript) yöntemini kullanın, tıpkı diğer orkestrasyon işlevinde olduğu gibi.  
+Diğer düzenleme `StartNewAsync` işlevlerine benzer şekilde, `startNew` dış bir düzenleme başlatmak için (.net) veya (JavaScript) yöntemini kullanın.  
 
 > [!NOTE]
-> Eğer tek ton ebedi orkestrasyon çalışıyor emin olmak gerekiyorsa, orkestrasyon başlatırken aynı örneği `id` korumak önemlidir. Daha fazla bilgi için [Bkz. Örnek Yönetimi.](durable-functions-instance-management.md)
+> Tek bir dış Orchestration 'un çalıştığından emin olmanız gerekiyorsa, düzenleme başlatılırken aynı örneği `id` korumak önemlidir. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 ```csharp
 [FunctionName("Trigger_Eternal_Orchestration")]
@@ -97,7 +97,7 @@ public static async Task<HttpResponseMessage> OrchestrationTrigger(
 ```
 
 > [!NOTE]
-> Önceki kod Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x için `OrchestrationClient` öznitelik yerine `DurableClient` öznitelik kullanmanız gerekir `DurableOrchestrationClient` ve `IDurableOrchestrationClient`parametre türünü yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
+> Önceki kod Dayanıklı İşlevler 2. x içindir. `OrchestrationClient` Dayanıklı işlevler 1. x için `DurableClient` özniteliği yerine özniteliği kullanmanız gerekir ve yerine `DurableOrchestrationClient` parametre türünü kullanmanız gerekir. `IDurableOrchestrationClient` Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -118,13 +118,13 @@ module.exports = async function (context, req) {
 
 ---
 
-## <a name="exit-from-an-eternal-orchestration"></a>Ebedi bir orkestrasyondan çıkın
+## <a name="exit-from-an-eternal-orchestration"></a>Bir dış Orchestration 'tan çıkma
 
-Bir orkestratör işlevinin sonunda tamamlanması gerekiyorsa, yapmanız gereken tek `ContinueAsNew` şey arama ve işlevin çıkmasına izin *vermemektir.*
+Bir Orchestrator işlevinin sonunda tamamlanması gerekiyorsa, tüm yapmanız gereken çağrı `ContinueAsNew` *yapmamalıdır* ve işlevin çıkmasına izin vermez.
 
-Bir orkestratör işlevi sonsuz bir döngüdeyse ve durdurulması `TerminateAsync` gerekiyorsa, onu `terminate` durdurmak için [orkestrasyon istemcisinin](durable-functions-bindings.md#orchestration-client) (.NET) veya (JavaScript) yöntemini kullanın. Daha fazla bilgi için [Bkz. Örnek Yönetimi.](durable-functions-instance-management.md)
+Orchestrator işlevi sonsuz bir döngüde ve durdurulması gerekiyorsa, bunu durdurmak için [Orchestration istemci bağlamasının](durable-functions-bindings.md#orchestration-client) `TerminateAsync` (.net) veya `terminate` (JavaScript) metodunu kullanın. Daha fazla bilgi için bkz. [örnek yönetimi](durable-functions-instance-management.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Singleton orkestrasyonlarını nasıl uygulayacağınızı öğrenin](durable-functions-singletons.md)
+> [Tek tek düzenlemeleri nasıl uygulayacağınızı öğrenin](durable-functions-singletons.md)

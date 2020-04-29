@@ -1,6 +1,6 @@
 ---
-title: IBM MQ sunucusuna bağlanın
-description: Azure veya şirket içi IBM MQ sunucusu ve Azure Mantık Uygulamaları ile ileti gönderme ve alma
+title: IBM MQ sunucusuna bağlan
+description: Azure veya şirket içi IBM MQ Server ve Azure Logic Apps ileti gönderin ve alın
 services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
@@ -10,65 +10,65 @@ ms.topic: article
 ms.date: 03/31/2020
 tags: connectors
 ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410190"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps'tan ibm MQ sunucusuna bağlanma
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Azure Logic Apps bir IBM MQ sunucusuna bağlanma
 
-IBM MQ konektörü, bir IBM MQ sunucusunda veya Azure'da depolanan iletileri gönderir ve alır. Bu bağlayıcı, bir TCP/IP ağında ki uzak bir IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makalede, MQ konektörü kullanmak için bir başlangıç kılavuzu sağlar. Kuyrukta tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
+IBM MQ Bağlayıcısı, şirket içinde veya Azure 'da bir IBM MQ sunucusunda depolanan iletileri gönderir ve alır. Bu bağlayıcı bir TCP/IP ağı üzerinde uzak IBM MQ sunucusuyla iletişim kuran bir Microsoft MQ istemcisi içerir. Bu makale, MQ bağlayıcısını kullanmak için bir başlangıç kılavuzu sağlar. Bir kuyruktaki tek bir iletiye göz atarak başlayabilir ve ardından diğer eylemleri deneyebilirsiniz.
 
-IBM MQ bağlayıcısı bu eylemleri içerir, ancak tetikleyici sağlamaz:
+IBM MQ Bağlayıcısı bu eylemleri içerir, ancak hiçbir tetikleyici sağlamaz:
 
-- IBM MQ sunucusundan gelen iletiyi silmeden tek bir iletiye göz atın.
-- IBM MQ sunucusundaki iletileri silmeden bir dizi iletiye göz atın.
-- Tek bir ileti alın ve iletiyi IBM MQ sunucusundan silin.
-- Bir dizi ileti alın ve iletileri IBM MQ sunucusundan silin.
+- IBM MQ sunucusundan iletiyi silmeden tek bir iletiye gözatın.
+- IBM MQ sunucusundan iletileri silmeden bir toplu işe gözatamazsınız.
+- Tek bir ileti alın ve IBM MQ sunucusundan iletiyi silin.
+- Bir toplu ileti alın ve IBM MQ sunucusundan iletileri silin.
 - IBM MQ sunucusuna tek bir ileti gönderin.
 
-Burada resmen desteklenen IBM WebSphere MQ sürümleri şunlardır:
+Resmi olarak desteklenen IBM WebSphere MQ sürümleri aşağıda verilmiştir:
 
-  * MQ 7.5
-  * M² 8.0
-  * M² 9.0
+  * MQ 7,5
+  * MQ 8,0
+  * MQ 9,0
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Şirket içi bir MQ sunucusu kullanıyorsanız, şirket içi veri ağ geçidini ağınızdaki bir sunucuya [yükleyin.](../logic-apps/logic-apps-gateway-install.md) Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ konektörü için .NET Framework 4.6 yüklü olmalıdır.
+* Şirket içi MQ sunucusu kullanıyorsanız, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) ağınız içindeki bir sunucuya yükleyebilirsiniz. Şirket içi veri ağ geçidinin yüklü olduğu sunucuda, MQ bağlayıcısının çalışması için .NET Framework 4,6 yüklü olmalıdır.
 
-  Ağ geçidini yüklemeyi bitirdikten sonra, şirket içi veri ağ geçidi için Azure'da bir kaynak da oluşturmanız gerekir. Daha fazla bilgi için [bkz.](../logic-apps/logic-apps-gateway-connection.md)
+  Ağ geçidini yüklemeyi bitirdikten sonra, Azure 'da şirket içi veri ağ geçidi için de bir kaynak oluşturmanız gerekir. Daha fazla bilgi için bkz. [Data Gateway bağlantısını ayarlama](../logic-apps/logic-apps-gateway-connection.md).
 
-  MQ sunucunuz herkese açıksa veya Azure'da kullanılabilmişse, veri ağ geçidini kullanmanız gerekir.
+  MQ sunucunuz herkese açık veya Azure 'da kullanılabiliyorsa, veri ağ geçidini kullanmanız gerekmez.
 
-* MQ eylemini eklemek istediğiniz mantık uygulaması. Bu mantık uygulaması, şirket içi veri ağ geçidi bağlantınızla aynı konumu kullanmalı ve iş akışınızı başlatan bir tetikleyiciye sahip olmalıdır.
+* MQ eylemini eklemek istediğiniz mantıksal uygulama. Bu mantıksal uygulama, şirket içi veri ağ geçidi bağlantınızla aynı konumu kullanmalıdır ve iş akışınızı Başlatan bir tetikleyicisine sahip olmalıdır.
 
-  MQ konektörüherhangi bir tetikleyicisi yoktur, bu nedenle önce mantık uygulamanıza bir tetikleyici eklemeniz gerekir. Örneğin, Yineleme tetikleyicisini kullanabilirsiniz. Mantık uygulamalarında yeniyseniz, ilk [mantık uygulamanızı oluşturmak için](../logic-apps/quickstart-create-first-logic-app-workflow.md)bu hızlı başlatmayı deneyin.
+  MQ bağlayıcısının hiçbir tetikleyicisi yoktur, bu nedenle önce mantıksal uygulamanıza bir tetikleyici eklemeniz gerekir. Örneğin, yinelenme tetikleyicisini kullanabilirsiniz. Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturmak için bu hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin.
 
 <a name="create-connection"></a>
 
-## <a name="create-mq-connection"></a>MQ bağlantısı oluşturma
+## <a name="create-mq-connection"></a>MQ bağlantısı oluştur
 
-Bir MQ eylemi eklediğinizde zaten bir MQ bağlantınız yoksa, örneğin bağlantıyı oluşturmanız istenir:
+Bir MQ eylemi eklediğinizde henüz MQ bağlantınız yoksa, bağlantıyı oluşturmanız istenir, örneğin:
 
-![Bağlantı bilgileri sağlama](media/connectors-create-api-mq/connection-properties.png)
+![Bağlantı bilgilerini girin](media/connectors-create-api-mq/connection-properties.png)
 
-1. Şirket içi bir MQ sunucusuna bağlanıyorsanız, **şirket içi veri ağ geçidi üzerinden Bağlan'ı**seçin.
+1. Şirket içi MQ sunucusuna bağlanıyorsanız Şirket **içi veri ağ geçidi üzerinden Bağlan**' ı seçin.
 
 1. MQ sunucunuz için bağlantı bilgilerini sağlayın.
 
-   * **Sunucu**için, MQ sunucu adını girebilir veya ip adresini ve ardından bir üst nokta ve bağlantı noktası numarasını girebilirsiniz.
+   * **Sunucu**için MQ sunucu adını gırebılır veya IP adresini, ardından iki nokta üst üste ve bağlantı noktası numarası ile girebilirsiniz.
 
-   * Güvenli Soket katmanı (SSL) kullanmak için **SSL'yi etkinleştir'i**seçin.
+   * Güvenli Yuva Katmanı (SSL) kullanmak için SSL 'yi **Etkinleştir**' i seçin.
 
-     MQ bağlayıcısı şu anda istemci kimlik doğrulamasını değil, yalnızca sunucu kimlik doğrulamasını destekler. Daha fazla bilgi için [bağlantı ve kimlik doğrulama sorunlarına](#connection-problems)bakın.
+     MQ Bağlayıcısı Şu anda yalnızca sunucu kimlik doğrulamasını destekler, istemci kimlik doğrulamasını desteklememektedir. Daha fazla bilgi için bkz. [bağlantı ve kimlik doğrulama sorunları](#connection-problems).
 
-1. Ağ **geçidi** bölümünde aşağıdaki adımları izleyin:
+1. **Ağ geçidi** bölümünde şu adımları izleyin:
 
-   1. **Abonelik** listesinden, Azure ağ geçidi kaynağınızla ilişkili Azure aboneliğini seçin.
+   1. **Abonelik** listesinden Azure Gateway kaynağınız Ile ilişkili Azure aboneliğini seçin.
 
-   1. Bağlantı **Ağ Geçidi** listesinden, kullanmak istediğiniz Azure ağ geçidi kaynağını seçin.
+   1. **Bağlantı ağ geçidi** listesinden, kullanmak istediğiniz Azure ağ geçidi kaynağını seçin.
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
 
@@ -76,115 +76,115 @@ Bir MQ eylemi eklediğinizde zaten bir MQ bağlantınız yoksa, örneğin bağla
 
 ### <a name="connection-and-authentication-problems"></a>Bağlantı ve kimlik doğrulama sorunları
 
-Mantık uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu hatayı alabilirsiniz:
+Mantıksal uygulamanız şirket içi MQ sunucunuza bağlanmayı denediğinde şu hatayı alabilirsiniz:
 
 `"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
 
-* MQ bağlayıcısını doğrudan Azure'da kullanıyorsanız, MQ sunucusunun güvenilir bir [sertifika yetkilisi](https://www.ssl.com/faqs/what-is-a-certificate-authority/)tarafından verilmiş bir sertifika kullanması gerekir.
+* MQ bağlayıcısını doğrudan Azure 'da kullanıyorsanız, MQ sunucusunun Güvenilen bir [sertifika yetkilisi](https://www.ssl.com/faqs/what-is-a-certificate-authority/)tarafından verilen bir sertifika kullanması gerekir.
 
-* Şirket içi veri ağ geçidini kullanıyorsanız, güvenilir bir sertifika yetkilisi tarafından verilen bir [sertifikayı](https://www.ssl.com/faqs/what-is-a-certificate-authority/) mümkün olduğunda kullanmayı deneyin. Ancak, bu seçenek mümkün değilse, güvenilir bir [sertifika yetkilisi](https://www.ssl.com/faqs/what-is-a-certificate-authority/) tarafından düzenlenmeyen ve daha az güvenli olarak kabul edilen kendi imzalı bir sertifika kullanabilirsiniz.
+* Şirket içi veri ağ geçidini kullanıyorsanız, mümkün olduğunda güvenilir bir [sertifika yetkilisi](https://www.ssl.com/faqs/what-is-a-certificate-authority/) tarafından verilen bir sertifika kullanmayı deneyin. Ancak, bu seçenek mümkün değilse, güvenilir bir [sertifika yetkilisi](https://www.ssl.com/faqs/what-is-a-certificate-authority/) tarafından verilmemiş ve daha az güvenli olarak kabul edilen otomatik olarak imzalanan bir sertifika kullanabilirsiniz.
 
-  Sunucunun kendi imzalı sertifikasını yüklemek için **Windows Sertifika Yöneticisi** (certmgr.msc) aracını kullanabilirsiniz. Bu senaryo için, şirket içi veri ağ geçidi hizmetinin çalıştığı yerel bilgisayarınızda, sertifikayı Güvenilir Kök **Sertifika Yetkilileri** düzeyinde **Yerel Bilgisayar** sertifikaları mağazanıza yüklemeniz gerekir.
+  Sunucunun otomatik olarak imzalanan sertifikasını yüklemek için, **Windows Sertifika Yöneticisi** (certmgr. msc) aracını kullanabilirsiniz. Bu senaryo için, şirket içi veri ağ geçidi hizmetinin çalıştığı yerel bilgisayarınızda sertifikayı, **Güvenilen kök sertifika yetkilileri** düzeyinde **Yerel bilgisayar** sertifikaları deponuza yüklemeniz gerekir.
 
-  1. Şirket içi veri ağ geçidi hizmetinin çalıştığı bilgisayarda başlat menüsünü açın, **kullanıcı sertifikalarını bul**ve yönet'i seçin.
+  1. Şirket içi veri ağ geçidi hizmetinin çalıştığı bilgisayarda, Başlat menüsünü açın, **Kullanıcı sertifikalarını Yönet**' i bulun ve seçin.
 
-  1. Windows Sertifika Yöneticisi aracı açıldıktan **sonra, Sertifikalar - Yerel Bilgisayar** >  **Güvenilen Kök Sertifika Yetkilileri** klasörüne gidin ve sertifikayı yükleyin.
+  1. Windows Sertifika Yöneticisi aracı açıldıktan sonra, **Sertifikalar-Yerel bilgisayar** >  **Güvenilen kök sertifika yetkilileri** klasörüne gidin ve sertifikayı yükler.
 
      > [!IMPORTANT]
-     > **Sertifikalar** > - Yerel Bilgisayar**Güvenilen Kök Sertifika Yetkilileri** deposuna sertifika yüklediğinizden emin olun.
+     > Sertifikayı **Sertifikalar-Yerel bilgisayar** > **Güvenilen kök sertifika yetkilileri** deposuna yüklediğinizden emin olun.
 
-* MQ sunucusu, SSL bağlantıları için kullanmak istediğiniz şifreleme belirtimini tanımlamanızı gerektirir. Ancak, .NET'teki SsLStream, şifreleme belirtimleri için siparişi belirtmenize izin vermez. Bu sınırlamayı çözmek için, MQ sunucu yapılandırmanızı bağlayıcının SSL anlaşmasında gönderdiği paketteki ilk şifreleme belirtimiyle eşleşecek şekilde değiştirebilirsiniz.
+* MQ sunucusu, SSL bağlantıları için kullanmak istediğiniz şifre belirtimini tanımlamanızı gerektirir. Ancak, .NET 'teki SsLStream, şifre belirtimlerinin sırasını belirtmenize izin vermez. Bu sınırlamaya geçici bir çözüm için, MQ sunucu yapılandırmanızı, bağlayıcının SSL anlaşmasıyla gönderdiği paketteki ilk şifre belirtimiyle eşleşecek şekilde değiştirebilirsiniz.
 
-  Bağlantıyı denediğinizde, MQ sunucusu, diğer uç yanlış şifreleme belirtimini kullandığından bağlantının başarısız olduğunu belirten bir olay iletisi kaydeder. Olay iletisi, listede ilk görünen şifreleme belirtimini içerir. Olay iletisindeki şifreleme belirtimine uyacak şekilde kanal yapılandırmasındaki şifreleme belirtimini güncelleştirin.
+  Bağlantıyı denediğinizde, MQ sunucusu, bağlantının başarısız olduğunu belirten bir olay iletisini günlüğe kaydeder çünkü diğer bitiş yanlış şifre belirtimini kullandı. Olay iletisi, listede ilk görüntülenen şifre belirtimini içerir. Kanal yapılandırmasındaki şifre belirtimini, olay iletisindeki şifre belirtimine uyacak şekilde güncelleştirin.
 
-## <a name="browse-single-message"></a>Tek mesaja göz atma
+## <a name="browse-single-message"></a>Tek iletiye gözatamıyorum
 
-1. Mantık uygulamanızda, tetikleyici veya başka bir eylem altında **Yeni adım'ı**seçin.
+1. Mantıksal uygulamanızda, tetikleyici veya başka bir eylem altında **yeni adım**' ı seçin.
 
-1. Arama kutusuna, `mq` **İletiye Gözat** eylemini girin ve seçin.
+1. Arama kutusuna girin `mq`ve **iletiyi görüntüle** eylemini seçin.
 
-   !["İletiye göz at" eylemini seçin](media/connectors-create-api-mq/browse-message.png)
+   !["İletiye gözatıp" eylemini seçin](media/connectors-create-api-mq/browse-message.png)
 
-1. Daha önce bir MQ bağlantısı oluşturmadıysanız, bu [bağlantıyı oluşturmanız](#create-connection)istenir.
+1. Henüz bir MQ bağlantısı oluşturmadıysanız [Bu bağlantıyı oluşturmanız](#create-connection)istenir.
 
-1. Bağlantıyı oluşturduktan sonra, **Gözat iletisi** eyleminin özelliklerini ayarlayın:
+1. Bağlantıyı oluşturduktan sonra, **Iletiye gözatatıon** eyleminin özelliklerini ayarlayın:
 
    | Özellik | Açıklama |
    |----------|-------------|
-   | **Sıra** | Bağlantıda belirtilen sıradan farklıysa, bu sırayı belirtin. |
-   | **MessageId**, **CorrelationId**, **GroupId**, ve diğer özellikleri | Farklı MQ ileti özelliklerini temel alan bir iletiiçin göz atın |
-   | **IncludeInfo** | Çıktıya ek ileti bilgileri eklemek için **true'yu**seçin. Çıktıdaki ek ileti bilgilerini atlamak için **yanlış'ı**seçin. |
-   | **Zaman aşımı** | İletinin boş bir sıraya gelmesini ne kadar bekleyeceğimi belirlemek için bir değer girin. Hiçbir şey girilmezse, kuyruktaki ilk ileti alınır ve bir iletinin görünmesini beklemek için harcanan zaman yoktur. |
+   | **Sıradaki** | Bağlantıda belirtilen kuyruktan farklıysa, bu kuyruğu belirtin. |
+   | **MessageID**, **bağıntıkimliği**, **GroupID**ve diğer özellikler | Farklı MQ İleti özelliklerine dayalı bir iletiye gözatın |
+   | **Includeınfo** | Çıkışa ek ileti bilgilerini eklemek için **doğru**öğesini seçin. Çıktıda ek ileti bilgisini atlamak için, **false**' ı seçin. |
+   | **Aş** | Bir iletinin boş bir sıraya gelmesi için ne kadar bekleneceğini öğrenmek için bir değer girin. Hiçbir şey girilmişse, sıradaki ilk ileti alınır ve bir iletinin görünmesini beklerken zaman harcanması beklenmez. |
    |||
 
-   Örnek:
+   Örneğin:
 
-   !["İletiye göz at" eylemi için özellikler](media/connectors-create-api-mq/browse-message-properties.png)
+   !["İletiye gözatamıyorum" eylemi için Özellikler](media/connectors-create-api-mq/browse-message-properties.png)
 
-1. Bittiğinde, tasarımcı araç çubuğunda **Kaydet'i**seçin. Uygulamanızı test etmek için **Çalıştır'ı**seçin.
+1. İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin. Uygulamanızı test etmek için **Çalıştır**' ı seçin.
 
-   Çalıştırma bittikten sonra, tasarımcı çıktıyı gözden geçirebilmeniz için iş akışı adımlarını ve durumlarını gösterir.
+   Çalıştırma bittikten sonra, tasarımcı, çıktıyı gözden geçirebilmeniz için iş akışı adımlarını ve bunların durumlarını gösterir.
 
-1. Her adımla ilgili ayrıntıları görüntülemek için adımın başlık çubuğunu tıklatın. Bir adımın çıktısı hakkında daha fazla bilgi gözden geçirmek için **ham çıktıları göster'i**seçin.
+1. Her adımın ayrıntılarını görüntülemek için adımın başlık çubuğuna tıklayın. Bir adımın çıktısı hakkında daha fazla bilgi için **Ham çıkışları göster**' i seçin.
 
-   ![İleti çıktısını gözatın](media/connectors-create-api-mq/browse-message-output.png)
+   ![İleti çıktısına gözatıp](media/connectors-create-api-mq/browse-message-output.png)
 
-   Burada bazı örnek ham çıktı:
+   Örnek ham çıktı aşağıda verilmiştir:
 
-   ![İleti ham çıktıya göz atın](media/connectors-create-api-mq/browse-message-raw-output.png)
+   ![İletiye yönelik ham çıkışa gözatıp](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. **IncludeInfo'nun** **doğru**olmasını ayarlarsanız, ek çıktı gösterilir:
+1. **Includeınfo** **değerini true**olarak ayarlarsanız ek çıktı gösterilir:
 
-   ![İletiye göz at: bilgi ekle](media/connectors-create-api-mq/browse-message-include-info.png)
+   ![İleti ekleme bilgisini görüntüle](media/connectors-create-api-mq/browse-message-include-info.png)
 
-## <a name="browse-multiple-messages"></a>Birden çok iletiye göz atma
+## <a name="browse-multiple-messages"></a>Birden çok iletiye gözatın
 
-**Gözat iletileri** eylemi, kuyruktan kaç iletinin döneceğini belirtmek için Toplu **Boyut** seçeneğini içerir. **BatchSize'ın** değeri yoksa, tüm iletiler döndürülür. Döndürülen çıktı bir dizi iletidir.
+**Iletileri gözden** geçirme eylemi, kuyruktan kaç tane ileti dönemeyeceğini göstermek Için bir **BatchSize** seçeneği içerir. **BatchSize** değeri yoksa, tüm iletiler döndürülür. Döndürülen çıktı bir ileti dizisidir.
 
-1. Önceki adımları izleyin, ancak bunun yerine **Gözat iletileri** eylemini ekleyin.
+1. Önceki adımları izleyin, ancak bunun yerine **Iletileri görüntüle** eylemini ekleyin.
 
-1. Daha önce bir MQ bağlantısı oluşturmadıysanız, bu [bağlantıyı oluşturmanız](#create-connection)istenir. Aksi takdirde, varsayılan olarak, önceden yapılandırılmış ilk bağlantı kullanılır. Yeni bir bağlantı oluşturmak için **bağlantıyı değiştir'i**seçin. Veya farklı bir bağlantı seçin.
+1. Henüz bir MQ bağlantısı oluşturmadıysanız [Bu bağlantıyı oluşturmanız](#create-connection)istenir. Aksi takdirde, varsayılan olarak, önceden yapılandırılmış ilk bağlantı kullanılır. Yeni bir bağlantı oluşturmak için **Bağlantıyı Değiştir**' i seçin. Ya da farklı bir bağlantı seçin.
 
-1. Eylem için bilgi sağlayın.
+1. Eyleme ilişkin bilgileri belirtin.
 
-1. Mantık uygulamasını kaydedin ve çalıştırın.
+1. Mantıksal uygulamayı kaydedin ve çalıştırın.
 
-   Mantık uygulaması çalışma bittikten sonra, **Gözat iletileri** eyleminden bazı örnek çıktı aşağıda veremiştir:
+   Mantıksal uygulama çalışmayı bitirdikten sonra, **Iletilere gözatamıyorum** eyleminin bazı örnek çıktıları aşağıda verilmiştir:
 
-   ![Örnek "İletilere göz atma" çıktısı](media/connectors-create-api-mq/browse-messages-output.png)
+   ![Örnek "iletilere gözatamıyorum" çıkışı](media/connectors-create-api-mq/browse-messages-output.png)
 
-## <a name="receive-single-message"></a>Tek ileti alma
+## <a name="receive-single-message"></a>Tek ileti al
 
-**İletiyi Al** eylemi, **Gözat iletisi** eylemiyle aynı giriş ve çıktılara sahiptir. **İleti al'ı**kullandığınızda, ileti kuyruktan silinir.
+**Ileti al** eylemi, **ileti görüntüle** eylemiyle aynı girişlere ve çıkışlara sahiptir. **Iletiyi al**' ı kullandığınızda ileti kuyruktan silinir.
 
 ## <a name="receive-multiple-messages"></a>Birden çok ileti alma
 
-**İletileri Al** eylemi, **Gözat iletileri** eylemiyle aynı giriş ve çıktılara sahiptir. **İletileri Al'ı**kullandığınızda, iletiler kuyruktan silinir.
+**Iletileri al** eylemi, **iletileri görüntüle** eylemiyle aynı giriş ve çıkışlara sahiptir. **Iletileri al**' ı kullandığınızda iletiler kuyruktan silinir.
 
 > [!NOTE]
-> Herhangi bir ileti soramayan bir kuyruğa göz atma veya alma eylemi çalıştırırken, eylem bu çıktıyla başarısız olur:
+> Herhangi bir ileti içermeyen bir kuyrukta bir tarama veya alma eylemi çalıştırırken, eylem bu çıktıda başarısız olur:
 >
 > ![MQ "ileti yok" hatası](media/connectors-create-api-mq/mq-no-message-error.png)
 
 ## <a name="send-message"></a>İleti gönder
 
-1. Önceki adımları izleyin, ancak bunun yerine **ileti gönder** eylemini ekleyin.
+1. Önceki adımları izleyin, ancak bunun yerine **Ileti gönder** eylemini ekleyin.
 
-1. Daha önce bir MQ bağlantısı oluşturmadıysanız, bu [bağlantıyı oluşturmanız](#create-connection)istenir. Aksi takdirde, varsayılan olarak, önceden yapılandırılmış ilk bağlantı kullanılır. Yeni bir bağlantı oluşturmak için **bağlantıyı değiştir'i**seçin. Veya farklı bir bağlantı seçin.
+1. Henüz bir MQ bağlantısı oluşturmadıysanız [Bu bağlantıyı oluşturmanız](#create-connection)istenir. Aksi takdirde, varsayılan olarak, önceden yapılandırılmış ilk bağlantı kullanılır. Yeni bir bağlantı oluşturmak için **Bağlantıyı Değiştir**' i seçin. Ya da farklı bir bağlantı seçin.
 
-1. Eylem için bilgi sağlayın. **MessageType**için geçerli bir ileti türü seçin: **Datagram**, **Yanıtla**veya **İstek**
+1. Eyleme ilişkin bilgileri belirtin. **MessageType**için geçerli bir ileti türü seçin: **veri birimi**, **Yanıt**veya **istek**
 
-   !["İleti eylemi gönder" için özellikler](media/connectors-create-api-mq/send-message-properties.png)
+   !["İleti gönder eylemi" özellikleri](media/connectors-create-api-mq/send-message-properties.png)
 
-1. Mantık uygulamasını kaydedin ve çalıştırın.
+1. Mantıksal uygulamayı kaydedin ve çalıştırın.
 
-   Mantık uygulaması çalışma bittikten sonra, **ileti gönder** eyleminden bazı örnek çıktıaşağıda veremiştir:
+   Mantıksal uygulama çalışmayı bitirdikten sonra **Ileti gönder** eyleminden alınan bazı örnek çıktıları aşağıda verilmiştir:
 
-   ![Örnek "İleti gönder" çıktısı](media/connectors-create-api-mq/send-message-output.png)
+   ![Örnek "ileti gönder" çıkışı](media/connectors-create-api-mq/send-message-output.png)
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Konektörün Swagger açıklamasıyla açıklanan eylemler ve sınırlar hakkında teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/mq/)inceleyin.
+Bağlayıcının Swagger açıklaması tarafından tanımlanan eylemler ve sınırlar hakkında teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/mq/)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

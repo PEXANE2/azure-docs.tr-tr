@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi cihaz için servis özet bıçağını kullanma
-description: StorSimple hizmet özet bıçağını açıklar ve StorSimple çözümünüzün durumunu izlemek için nasıl kullanılacağını açıklar.
+title: StorSimple 8000 serisi cihaz için hizmet Özeti dikey penceresini kullanma
+description: StorSimple hizmet Özeti dikey penceresini açıklar ve StorSimple çözümünüzün sistem durumunu izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -15,77 +15,77 @@ ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 14c37227a7e8598ee6f8f3adc62acd69dd274475
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396503"
 ---
-# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihaz için servis özet bıçağını kullanın
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihaz için hizmet Özeti dikey penceresini kullanın
 
 ## <a name="overview"></a>Genel Bakış
 
-StorSimple Device Manager hizmet özeti bıçak, bir sistem yöneticisinin dikkatine ihtiyaç duyan aygıtları vurgulayarak StorSimple Device Manager hizmetine bağlı tüm aygıtların özet görünümünü sağlar. Bu öğretici, hizmet özeti bıçak tanıttı, pano içeriği ve işlevi açıklar ve bu sayfadan gerçekleştirebileceğiniz görevleri açıklar.
+StorSimple Aygıt Yöneticisi hizmeti Özeti dikey penceresi, StorSimple Aygıt Yöneticisi hizmetine bağlı tüm cihazların bir Özet görünümünü sağlar ve bu da bir sistem yöneticisinin dikkatini çekmesi gereken cihazları vurgular. Bu öğretici, hizmet Özeti dikey penceresini tanıtır, Pano içeriğini ve işlevini açıklar ve bu sayfadan gerçekleştirebileceğiniz görevleri açıklar.
 
-![Hizmet özeti](./media/storsimple-8000-service-dashboard/service-summary1.png)
+![Hizmet Özeti](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Yönetim komutları
 
-StorSimple servis özeti bıçaklarında, StorSimple Device Manager hizmetinizi ve bu hizmete kayıtlı StorSimple 8000 serisi cihazları yönetme seçeneklerini görürsünüz. Yönetimin komutlarını bıçağın üstündeve sol tarafında görüyorsunuz.
+StorSimple hizmeti Özeti dikey penceresinde, StorSimple Aygıt Yöneticisi hizmetinizi ve bu hizmete kayıtlı StorSimple 8000 serisi cihazlarını yönetme seçeneklerini görürsünüz. Yönetim komutlarını dikey pencerenin üst kısmında ve sol tarafta görürsünüz.
 
 ![Komut çubuğu](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
-Hisse veya birim eklemek veya StorSimple aygıtlarında çalışan çeşitli işleri izlemek gibi çeşitli işlemleri gerçekleştirmek için bu seçenekleri kullanın.
+Paylaşım veya birim ekleme gibi çeşitli işlemleri gerçekleştirmek veya StorSimple cihazlarında çalışan çeşitli işleri izlemek için bu seçenekleri kullanın.
 
 
 ## <a name="essentials"></a>Temel Bileşenler
 
-Temel alan, StorSimple Aygıt Yöneticinizin oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özellikleri yakalar.
+Essentials alanı, StorSimple Aygıt Yöneticisi oluşturulduğu kaynak grubu, konum ve abonelik gibi bazı önemli özelliklerden bazılarını yakalar.
 
 ![Temel Bileşenler](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## <a name="storsimple-device-manager-service-summary"></a>StorSimple Device Manager hizmet özeti
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple Aygıt Yöneticisi hizmeti Özeti
 
-* **Uyarılar** döşemesi, uyarı şiddetine göre gruplanmış tüm aygıtlar daki tüm etkin uyarıların anlık görüntüsünü sağlar.
+* **Uyarılar** kutucuğu, uyarı önem derecesine göre gruplandırılan tüm cihazlarda etkin uyarıların tümünün anlık görüntüsünü sağlar.
 
-    ![Uyarıları döşeme](./media/storsimple-8000-service-dashboard/service-summary4.png)
+    ![Uyarılar kutucuğu](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    Döşemeyi tıklattığınızda, önerilen eylemler de dahil olmak üzere bu uyarıyla ilgili ek ayrıntıları görüntülemek için tek bir uyarıyı tıklatabileceğiniz **Uyarılar** bıçağı açılır. Sorun çözülmüşse uyarıyı da temizleyebilirsiniz.
+    Kutucuğa tıkladığınızda, önerilen eylemler de dahil olmak üzere uyarı hakkında ek ayrıntıları görüntülemek için tek bir uyarıya tıklabileceğiniz **Uyarılar** dikey penceresi açılır. Sorun çözümlenirse uyarıyı da temizleyebilirsiniz.
 
-    ![Uyarıları niçin tıklatın](./media/storsimple-8000-service-dashboard/service-summary8.png)
+    ![Uyarılar kutucuğuna tıklayın](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* **Kapasite** döşemesi ekranları, tüm aygıtlar arasında kullanılabilen toplam depolama alanına göre tüm aygıtlar arasında sağlanan ve tüm aygıtlar arasında kalan birincil depolamayı gösterir. **Sağlanan,** kullanılmak üzere hazırlanan ve ayrılan depolama miktarını ifade eder, **Kalan** tüm aygıtlar arasında sağlanabilir kalan kapasiteyi ifade eder.
+* **Kapasite** kutucuğu, tüm cihazlarda bulunan toplam depolamaya göre tüm cihazlarda sağlanan ve kalan birincil depolamayı gösterir. **Sağlanan** , kullanıma hazır ve kullanım için ayrılan depolama miktarına başvuruyorsa, **kalan** , tüm cihazlarda sağlanabilen kalan kapasiteyi ifade eder.
 
-    ![Kapasite döşemesi](./media/storsimple-8000-service-dashboard/service-summary6.png)
+    ![Kapasite kutucuğu](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
-    **Kalan Katmanlı** kapasite bulut da dahil olmak üzere sağlanabilir kullanılabilir kapasitedir, **Kalan Yerel** ise StorSimple 8000 serisi aygıtlara bağlı disklerde kalan kapasitedir.
+    **Kalan katmanlı** kapasite, bulut dahil olmak üzere sağlanabilen kullanılabilir kapasitedir, **kalan yerel** , StorSimple 8000 serisi cihazlara eklenen diskler üzerinde kalan kapasiteye sahip olur.
 
 
-* **Kullanım** grafiğinde, aygıtlarınız için ilgili ölçümleri görebilirsiniz. Tüm aygıtlarda kullanılan birincil depolama alanını ve son 7 gün içinde aygıtlar tarafından tüketilen bulut depolama alanını, varsayılan süreyi görüntüleyebilirsiniz. 
+* **Kullanım** grafiğinde, cihazlarınızla ilgili ölçümleri görebilirsiniz. Tüm cihazlarda kullanılan birincil depolama alanını ve son 7 gün boyunca cihazlar tarafından tüketilen bulut depolama alanını, varsayılan zaman aralığını görüntüleyebilirsiniz. 
 
-    ![Kullanım döşemesi](./media/storsimple-8000-service-dashboard/service-summary7.png) 
+    ![Kullanım kutucuğu](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
-    Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Edit** seçeneğini kullanın.
+    Farklı bir zaman ölçeği seçmek için grafiğin sağ üst köşesindeki **Düzenle** seçeneğini kullanın.
 
-     ![Kullanım döşemesi'ni tıklatın](./media/storsimple-8000-service-dashboard/service-summary10.png)
+     ![Kullanım Kutucuğu ' na tıklayın](./media/storsimple-8000-service-dashboard/service-summary10.png)
 
-     ![Dışa aktarma grafiği verileri](./media/storsimple-8000-service-dashboard/service-summary11.png)
+     ![Grafik verilerini dışarı aktar](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* **Aygıt** döşemesi, cihaz durumuna göre gruplanan StorSimple Aygıt Yöneticisi'nizdeki StorSimple 8000 serisi aygıt sayısının bir özetini sağlar. 
+* **Cihazlar** kutucuğu, storsimple Aygıt Yöneticisi cihaz durumuna göre gruplanan storsimple 8000 serisi cihazların bir özetini sağlar. 
 
-    ![Aygıtlar döşemesi](./media/storsimple-8000-service-dashboard/service-summary5.png)
+    ![Cihazlar kutucuğu](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    **Cihazlar** listesi bıçağını açmak için bu döşemeyi tıklatın ve ardından cihaza özgü aygıt özetini delmek için tek bir aygıtı tıklatın. Belirli bir aygıt özet bıçağından aygıta özel eylemler de gerçekleştirebilirsiniz. Cihaz özet bıçağı hakkında daha fazla bilgi için [Aygıt özet bıçağına](storsimple-8000-device-dashboard.md)gidin.
+    Bu kutucuğa tıklayarak **cihazlar** listesi dikey penceresini açın ve cihaza özgü cihaz özetine gitmek için tek bir cihaza tıklayın. Ayrıca, belirli bir cihaz Özeti dikey penceresinden cihaza özgü eylemler gerçekleştirebilirsiniz. Cihaz Özeti dikey penceresi hakkında daha fazla bilgi için [cihaz Özeti dikey penceresine](storsimple-8000-device-dashboard.md)gidin.
 
-    ![Aygıtlar döşemesi'ni tıklatın](./media/storsimple-8000-service-dashboard/service-summary9.png)
+    ![Cihazlar kutucuğuna tıklayın](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
 ## <a name="view-the-activity-logs"></a>Etkinlik günlüklerini görüntüleme
 
-StorSimple Device Manager'ınızda gerçekleştirilen çeşitli işlemleri görüntülemek için StorSimple servis özet bıçağınızın sol tarafındaki **Etkinlik günlükleri** bağlantısını tıklatın. Bu, gerçekleştirilen son işlemlerin bir özetini görebileceğiniz **Etkinlik günlükleri** bıçağına götürür.
+StorSimple Aygıt Yöneticisi içinde yürütülen çeşitli işlemleri görüntülemek için, StorSimple hizmet Özeti dikey pencerenizin sol tarafındaki **etkinlik günlükleri** bağlantısına tıklayın. Bu, sizi gerçekleştirilen son işlemlerin özetini görebileceğiniz **etkinlik günlükleri** dikey penceresine götürür.
 
 ![Etkinlik Günlükleri](./media/storsimple-8000-service-dashboard/activity-logs1.png)
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini](storsimple-8000-manager-service-administration.md)nasıl kullanacağınız hakkında daha fazla bilgi edinin.
+* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manager-service-administration.md)hakkında daha fazla bilgi edinin.
 

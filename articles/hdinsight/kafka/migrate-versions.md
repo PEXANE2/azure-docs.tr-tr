@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka iş yüklerini Azure HDInsight 4.0'a geçirin
-description: HDInsight 3.6'daki Apache Kafka iş yüklerini HDInsight 4.0'a nasıl geçireceğinizi öğrenin.
+title: Apache Kafka iş yüklerini Azure HDInsight 'a geçirme 4,0
+description: HDInsight 3,6 ' de Apache Kafka iş yüklerini HDInsight 4,0 ' ye geçirmeyi öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,81 +8,81 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437009"
 ---
-# <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka iş yüklerini Azure HDInsight 4.0'a geçirin
+# <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Apache Kafka iş yüklerini Azure HDInsight 'a geçirme 4,0
 
-Azure HDInsight 4.0, performans, bağlantı ve güvenlik açısından önemli geliştirmelerle en son açık kaynak bileşenlerini sunar. Bu belge, HdInsight 3.6'daki Apache Kafka iş yüklerinin NASıL HDInsight 4.0'a geçirilen yollarla açıklanmaktadır. İş yüklerinizi HDInsight 4.0'a geçtikten sonra, HDInsight 3.6'da bulunmayan birçok yeni özelliği kullanabilirsiniz.
+Azure HDInsight 4,0, en son açık kaynaklı bileşenleri performans, bağlantı ve güvenlik açısından önemli geliştirmelerle sunmaktadır. Bu belgede HDInsight 3,6 ' de HDInsight 4,0 ' de Apache Kafka iş yüklerinin nasıl geçirileceği açıklanmaktadır. İş yüklerinizi HDInsight 4,0 ' e geçirdikten sonra, HDInsight 3,6 ' de kullanılamayan yeni özelliklerden birçoğunu kullanabilirsiniz.
 
-## <a name="hdinsight-36-kafka-migration-paths"></a>HDInsight 3.6 Kafka göç yolları
+## <a name="hdinsight-36-kafka-migration-paths"></a>HDInsight 3,6 Kafka geçiş yolları
 
-HDInsight 3.6 Kafka'nın iki versiyonunu destekler: 1.0.0 ve 1.1.0. HDInsight 4.0 1.1.0 ve 2.1.0 sürümlerini destekler. Kafka'nın hangi sürümünü ve HDInsight'ın hangi sürümünü çalıştırmak istediğinize bağlı olarak, birden çok desteklenen geçiş yolu vardır. Bu yollar aşağıda açıklanmıştır ve aşağıdaki diyagramda gösterilmiştir.
+HDInsight 3,6 iki Kafka sürümü destekler: 1.0.0 ve 1.1.0. HDInsight 4,0, 1.1.0 ve 2.1.0 sürümlerini destekler. Hangi Kafka sürümüne ve hangi HDInsight sürümünü çalıştırmak istediğinize bağlı olarak, birden çok desteklenen geçiş yolu vardır. Bu yollar aşağıda açıklanmıştır ve aşağıdaki diyagramda gösterilmiştir.
 
-* **En son sürümler de Kafka ve HDInsight çalıştırın (önerilen)**: Kafka 2.1.0 (aşağıdaki yollar D ve E) ile HDInsight 4.0'a HDInsight 3.6 ve Kafka 1.0.0 veya 1.1.0 uygulamasını geçirin.
-* **HDInsight'ı en son sürümde çalıştırın, ancak Kafka'yı yalnızca daha yeni bir sürümde**çalıştırın : HDInsight 3.6 ve Kafka 1.0.0 uygulamasını Kafka 1.1.0 (aşağıdaki B yolu) ile HDInsight 4.0'a geçirin.
-* **HDInsight'ı en son sürümde çalıştırın, Kafka sürümünü koruyun**: HDInsight 3.6 ve Kafka 1.1.0 uygulamasını Kafka 1.1.0 (aşağıdaki C yolu) ile HDInsight 4.0'a geçirin.
-* **Kafka'yı daha yeni bir sürümde çalıştırın, HDInsight sürümünü koruyun:** Kafka 1.0.0 uygulamasını 1.1.0'a geçirin ve HDInsight 3.6'da kalın (aşağıdaki A yolu). Bu seçeneğin yine de yeni bir küme dağıtmayı gerektireceğini unutmayın. Varolan bir kümedeki Kafka sürümünün yükseltilmesi desteklenmez. İstediğiniz sürümü içeren bir küme oluşturduktan sonra, kafka istemcilerinizi yeni kümeyi kullanmak üzere geçirin.
+* **Kafka ve HDInsight 'ı en son sürümlerde Çalıştır (önerilir)**: HDInsight 3,6 ve Kafka 1.0.0 ya da 1.1.0 uygulamasını HDInsight 4,0 ile Kafka 2.1.0 (yollar D ve aşağıdaki E) ile geçirin.
+* **HDInsight 'ı en son sürümde çalıştırın, ancak yalnızca daha yeni bir sürümde Kafka**: bir HDInsight 3,6 ve Kafka 1.0.0 uygulamasını Kafka 1.1.0 ile HDInsight 4,0 'e geçirin (aşağıdaki yol B).
+* **HDInsight 'ı en son sürümde çalıştırın, Kafka sürümünü koruyun**: HDInsight 3,6 ve Kafka 1.1.0 uygulamasını Kafka 1.1.0 ile HDInsight 4,0 'e geçirin (aşağıdaki yol C).
+* **Daha yeni bir sürümde Kafka çalıştırın, HDInsight sürümünü koruyun**: bir Kafka 1.0.0 uygulamasını 1.1.0 'e geçirin ve HDInsight 3,6 (yol aşağıda) kalın. Bu seçeneğin hala yeni bir küme dağıtımına gerek olacağını unutmayın. Kafka sürümünün mevcut bir kümede yükseltilmesi desteklenmez. İstediğiniz sürümle bir küme oluşturduktan sonra, Kafka istemcilerinizi yeni kümeyi kullanacak şekilde geçirin.
 
-![3.6'da Apache Kafka için yükseltme yolları](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
+![3,6 üzerindeki Apache Kafka için yükseltme yolları](./media/upgrade-threesix-to-four/apache-kafka-upgrade-path.png)
 
-## <a name="apache-kafka-versions"></a>Apache Kafka versiyonları
+## <a name="apache-kafka-versions"></a>Apache Kafka sürümleri
 
 ### <a name="kafka-110"></a>Kafka 1.1.0
   
-Kafka 1.0.0'dan 1.1.0'a geçiş yapacaksanız aşağıdaki yeni özelliklerden yararlanabilirsiniz:
+Kafka 1.0.0 'den 1.1.0 'e geçiş yaparsanız aşağıdaki yeni özelliklerden yararlanabilirsiniz:
 
-* Kafka denetleyicisindeki geliştirmeler kontrollü kapatmayı hızlandırabilir, böylece brokerları yeniden başlatabilir ve sorunlardan daha hızlı kurtulabilirsiniz. 
-* Kümede daha fazla bölüm (ve dolayısıyla daha fazla konu) olmasını sağlayan [FetchRequests mantığındaki](https://issues.apache.org/jira/browse/KAFKA-6254) geliştirmeler. 
-* Kafka Connect, [kayıt üstbilgileri](https://issues.apache.org/jira/browse/KAFKA-5142) ve konular için [düzenli ifadeleri](https://issues.apache.org/jira/browse/KAFKA-3073) destekler. 
+* Kafka denetleyicisinde yapılan iyileştirmeler, denetimli kapatmadan sonra aracıları yeniden başlatabilir ve sorunlardan daha hızlı kurtulabilir. 
+* [Fetchrequests mantığındaki](https://issues.apache.org/jira/browse/KAFKA-6254) geliştirmeler, kümede daha fazla bölüm (ve bu nedenle daha fazla konu) olmasını sağlar. 
+* Kafka Connect, Konular için [kayıt üst bilgilerini](https://issues.apache.org/jira/browse/KAFKA-5142) ve [Normal ifadeleri](https://issues.apache.org/jira/browse/KAFKA-3073) destekler. 
 
-Güncellemelerin tam listesi için [Apache Kafka 1.1 sürüm notlarına](https://archive.apache.org/dist/kafka/1.1.0/RELEASE_NOTES.html)bakın.
+Güncelleştirmelerin tüm listesi için, bkz. [Apache Kafka 1,1 sürüm notları](https://archive.apache.org/dist/kafka/1.1.0/RELEASE_NOTES.html).
 
-### <a name="apache-kafka-210"></a>Apaçi Kafka 2.1.0
+### <a name="apache-kafka-210"></a>Apache Kafka 2.1.0
 
-Kafka 2.1'e göç ederseniz, aşağıdaki özelliklerden yararlanabilirsiniz:
+Kafka 2,1 ' ye geçiş yaparsanız, aşağıdaki özelliklerden faydalanabilirsiniz:
 
-* Geliştirilmiş çoğaltma protokolü sayesinde daha iyi broker esnekliği.
-* KafkaAdminClient API'de yeni işlevsellik.
-* Yapılandırılabilir kota yönetimi.
-* Zstandard sıkıştırma desteği.
+* İyileştirilmiş bir çoğaltma Protokolü nedeniyle daha iyi aracı dayanıklılığı.
+* KafkaAdminClient API 'sindeki yeni işlevsellik.
+* Yapılandırılabilir Kota yönetimi.
+* Zstandart sıkıştırma desteği.
 
-Güncellemelerin tam listesi için [Apache Kafka 2.0 sürüm notlarına](https://archive.apache.org/dist/kafka/2.0.0/RELEASE_NOTES.html) ve [Apache Kafka 2.1 sürüm notlarına](https://archive.apache.org/dist/kafka/2.1.0/RELEASE_NOTES.html)bakın.
+Güncelleştirmelerin tüm listesi için, bkz. [Apache Kafka 2,0 sürüm notları](https://archive.apache.org/dist/kafka/2.0.0/RELEASE_NOTES.html) ve [Apache Kafka 2,1 sürüm notları](https://archive.apache.org/dist/kafka/2.1.0/RELEASE_NOTES.html).
 
 ## <a name="kafka-client-compatibility"></a>Kafka istemci uyumluluğu
 
-Yeni Kafka brokerları eski müşterileri destekler. [KIP-35 - Alma protokolü sürümü,](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) Kafka broker ve [KIP-97'nin](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) işlevselliğini dinamik olarak belirleyen bir mekanizma getirmiştir: Geliştirilmiş Kafka Client RPC Uyumluluk Politikası, Java istemcisi için yeni bir uyumluluk politikası ve garantiler getirmiştir. Daha önce, bir Kafka istemcisi aynı sürümü veya daha yeni bir sürümü bir komisyoncu ile etkileşim vardı. Şimdi, Java istemcileri ve KIP-35 gibi `librdkafka` destekleyen diğer istemcilerin yeni sürümleri eski istek türlerine geri düşebilir veya işlevsellik yoksa uygun hataları atabilir.
+Yeni Kafka aracıları eski istemcileri destekler. [TLA-35-alma Protokolü sürümü](https://cwiki.apache.org/confluence/display/KAFKA/KIP-35+-+Retrieving+protocol+version) , bir Kafka aracısının işlevlerini dinamik olarak belirlemek için bir mekanizma sunmuştur ve [TLA-97: IYILEŞTIRILMIŞ Kafka Istemci RPC uyumluluk ilkesi](https://cwiki.apache.org/confluence/display/KAFKA/KIP-97%3A+Improved+Kafka+Client+RPC+Compatibility+Policy) , Java istemcisi için yeni bir uyumluluk ilkesi ve garantisi getirmiştir. Daha önce, bir Kafka istemcisinin aynı sürümün veya daha yeni bir sürümün aracısıyla etkileşim kurması gerekiyordu. Artık, Java istemcilerinin ve gibi `librdkafka` tla-35 ' i destekleyen diğer istemcilerin daha yeni sürümleri, daha eski istek türlerine geri dönebilir veya işlevler kullanılamıyorsa uygun hatalar oluşturabilir.
 
-![Kafka istemci uyumluluğunu yükseltme](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
+![Yükseltme Kafka istemci uyumluluğu](./media/upgrade-threesix-to-four/apache-kafka-client-compatibility.png)
 
-Bu, istemcinin eski brokerları desteklediği anlamına gelmediğini unutmayın.  Daha fazla bilgi için Uyumluluk [Matrisi'ne](https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix)bakın.
+İstemcinin eski aracıları desteklediğine yönelik olduğunu unutmayın.  Daha fazla bilgi için bkz. [uyumluluk matrisi](https://cwiki.apache.org/confluence/display/KAFKA/Compatibility+Matrix).
 
-## <a name="general-migration-process"></a>Genel geçiş süreci
+## <a name="general-migration-process"></a>Genel geçiş işlemi
 
-Aşağıdaki geçiş kılavuzu, HDInsight 3.6'da tek bir sanal ağda dağıtılan bir Apache Kafka 1.0.0 veya 1.1.0 kümesini varsayar. Mevcut broker bazı konular vardır ve aktif üreticiler ve tüketiciler tarafından kullanılmaktadır.
+Aşağıdaki geçiş kılavuzunda, tek bir sanal ağda HDInsight 3,6 ' de dağıtılan bir Apache Kafka 1.0.0 veya 1.1.0 kümesi varsayılmaktadır. Mevcut aracıda bazı konuları vardır ve üreticileri ve tüketiciler tarafından etkin bir şekilde kullanılır.
 
-![Mevcut Kafka tahmin ortamı](./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png)
+![Geçerli Kafka mış ortam](./media/upgrade-threesix-to-four/apache-kafka-presumed-environment.png)
 
-Geçişi tamamlamak için aşağıdaki adımları yapın:
+Geçişi gerçekleştirmek için aşağıdaki adımları uygulayın:
 
-1. **Test için yeni bir HDInsight 4.0 kümesi ve istemciler dağıtın.** Yeni bir HDInsight 4.0 Kafka kümesi dağıtın. Birden çok Kafka küme sürümü seçilebilirse, en son sürümü seçmeniz önerilir. Dağıtımdan sonra, gerektiğinde bazı parametrelerayarlayın ve varolan ortamınızla aynı ada sahip bir konu oluşturun. Ayrıca, TLS'yi ayarlayın ve gerektiğinde kendi anahtarınızı getirin (BYOK) şifrelemesi ayarlayın. Ardından, yeni kümeyle doğru çalışıp çalışmayolmadığını kontrol edin.
+1. **Test için yeni bir HDInsight 4,0 kümesi ve istemcileri dağıtın.** Yeni bir HDInsight 4,0 Kafka kümesi dağıtın. Birden çok Kafka küme sürümü seçilebiliyorsanız, en son sürümü seçmeniz önerilir. Dağıtımdan sonra bazı parametreleri gerektiği şekilde ayarlayın ve var olan ortamınızla aynı ada sahip bir konu oluşturun. Ayrıca, TLS ayarlayın ve kendi anahtarını getir (BYOK) şifrelemesini gerektiği gibi yapın. Ardından, yeni kümeyle düzgün çalışıp çalışmadığını denetleyin.
 
-    ![Yeni HDInsight 4.0 kümelerini dağıtın](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
+    ![Yeni HDInsight 4,0 kümelerini dağıtma](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 
-1. **Üretici uygulaması için kümeyi değiştirin ve tüm sıra verilerinin geçerli tüketiciler tarafından tüketilmesini bekleyin.** Yeni HDInsight 4.0 Kafka kümesi hazır olduğunda, mevcut üretici hedefini yeni kümeye geçirin. Mevcut Tüketici uygulaması varolan kümedeki tüm verileri tüketene kadar olduğu gibi bırakın.
+1. **Üretici uygulaması için kümeyi değiştirin ve tüm kuyruk verileri geçerli tüketicilerle tüketilene kadar bekleyin.** Yeni HDInsight 4,0 Kafka kümesi hazırsanız, mevcut üretici hedefini yeni kümeye geçirin. Mevcut tüketici uygulaması var olan kümeden tüm verileri tüketene kadar bunu olduğu gibi bırakın.
 
-    ![Üretici uygulaması için anahtar kümesi](./media/upgrade-threesix-to-four/switch-cluster-producer-app.png)
+    ![Üretici uygulaması için küme değiştirme](./media/upgrade-threesix-to-four/switch-cluster-producer-app.png)
 
-1. **Tüketici uygulamasında ki kümeyi değiştirin.** Varolan tüketici uygulamasının varolan kümedeki tüm verileri tüketme yi bitirdiğini doğruladıktan sonra, bağlantıyı yeni kümeye geçin.
+1. **Tüketici uygulamasındaki kümeyi değiştirin.** Mevcut tüketici uygulamasının var olan kümeden tüm verileri tükettiğini doğruladıktan sonra, bağlantıyı yeni kümeye geçirin.
 
-    ![Tüketici uygulamasında anahtar kümesi](./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png)
+    ![Tüketici uygulamasında kümeyi değiştirme](./media/upgrade-threesix-to-four/switch-cluster-consumer-app.png)
 
-1. **Eski kümeyi kaldırın ve gerektiğinde uygulamaları test edin.** Anahtar tamamlandıktan ve düzgün çalıştığında, eski HDInsight 3.6 Kafka kümesini ve testte kullanılan üretici ve tüketicileri gerektiği gibi kaldırın.
+1. **Eski kümeyi ve test uygulamalarını gerektiği şekilde kaldırın.** Anahtar tamamlandıktan ve düzgün şekilde çalışmaya başladıktan sonra, sınamada kullanılan eski HDInsight 3,6 Kafka kümesini ve üreticileri ve tüketicilerini gerektiği şekilde kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Apache Kafka HDInsight kümeleri için performans iyileştirme](apache-kafka-performance-tuning.md)
-* [Hızlı başlangıç: Azure portalını kullanarak Azure HDInsight'ta Apache Kafka kümesi oluşturma](apache-kafka-get-started.md)
+* [Hızlı başlangıç: Azure portal kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma](apache-kafka-get-started.md)

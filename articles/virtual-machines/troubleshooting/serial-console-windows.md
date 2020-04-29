@@ -1,6 +1,6 @@
 ---
-title: Windows için Azure Seri Konsolu | Microsoft Dokümanlar
-description: Azure Sanal Makineler ve Sanal Makine Ölçek Setleri için Çift Yönlü Seri Konsol.
+title: Windows için Azure seri konsol | Microsoft Docs
+description: Azure sanal makineleri ve sanal makine ölçek kümeleri için iki yönlü seri konsol.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -14,77 +14,77 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410127"
 ---
-# <a name="azure-serial-console-for-windows"></a>Windows için Azure Seri Konsolu
+# <a name="azure-serial-console-for-windows"></a>Windows için Azure seri konsol
 
-Azure portalındaki Seri Konsol, Windows sanal makineleri (VM' ler) ve sanal makine ölçeği seti örnekleri için metin tabanlı bir konsola erişim sağlar. Bu seri bağlantısı, VM'nin VEYA sanal makine ölçeği kümesi örneğinin COM1 seri bağlantı noktasına bağlanarak ağa veya işletim sistemi durumundan bağımsız olarak bu bağlantıya erişim sağlar. Seri konsola yalnızca Azure portalı kullanılarak erişilebilir ve yalnızca Katılımcı veya VM veya sanal makine ölçeği kümesine erişim rolü olan veya daha yüksek olan kullanıcılar için izin verilir.
+Azure portal seri konsol, Windows sanal makineleri (VM 'Ler) ve sanal makine ölçek kümesi örnekleri için metin tabanlı bir konsola erişim sağlar. Bu seri bağlantı, ağ veya işletim sistemi durumundan bağımsız olarak erişim sağlayan VM veya sanal makine ölçek kümesi örneğinin COM1 seri bağlantı noktasına bağlanır. Seri konsoluna yalnızca Azure portal kullanılarak erişilebilir ve yalnızca VM veya sanal makine ölçek kümesine katkıda bulunan veya daha yüksek bir erişim rolüne sahip olan kullanıcılar için izin verilir.
 
-Seri Konsol, VM'ler ve sanal makine ölçeği seti örnekleri için aynı şekilde çalışır. Bu dokümanda, aksi belirtilmedikçe, VM'lere yapılan tüm sözlerle sanal makine ölçeği seti örnekleri dolaylı olarak yer alacaktır.
+Seri konsol, VM 'Ler ve sanal makine ölçek kümesi örnekleri için aynı şekilde çalışmaktadır. Bu belgede, aksi belirtilmediği takdirde VM 'lerdeki tüm bahsetmeler, sanal makine ölçek kümesi örneklerini örtülü olarak içerir.
 
-Linux için seri konsol belgeleri [için Linux için Azure Seri Konsolu'na](serial-console-linux.md)bakın.
+Linux için seri konsol belgeleri için bkz. [Linux Için Azure seri konsolu](serial-console-linux.md).
 
 > [!NOTE]
-> Seri Konsol genellikle genel Azure bölgelerinde ve Azure Resmi'nde genel önizlemede kullanılabilir. Azure Çin bulutunda henüz kullanıma sunulmadı.
+> Seri konsol Genel Azure bölgelerinde ve Azure Kamu 'da genel önizlemede kullanılabilir. Henüz Azure Çin bulutu 'nda mevcut değildir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* VM veya sanal makine ölçeği set örneğiniz kaynak yönetimi dağıtım modelini kullanmalıdır. Klasik dağıtımlar desteklenmez.
+* VM 'niz veya sanal makine ölçek kümesi örneğinizin kaynak yönetimi dağıtım modelini kullanması gerekir. Klasik dağıtımlar desteklenmez.
 
-- Seri konsol kullanan hesabınız, VM ve [önyükleme tanılama](boot-diagnostics.md) depolama hesabı için [Sanal Makine Katılımcısı rolüne](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) sahip olmalıdır
+- Seri konsol kullanan hesabınızda VM ve [önyükleme tanılama](boot-diagnostics.md) depolama hesabı Için [sanal makine katılımcısı rolü](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) olmalıdır
 
-- VM veya sanal makine ölçeği set örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişim uzantısı sıfırlama [parola](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işlevi ile bir oluşturabilirsiniz. Destek + sorun **giderme** bölümünden **parolayı sıfırla'yı** seçin.
+- VM 'niz veya sanal makine ölçek kümesi örneğinizin parola tabanlı bir kullanıcısı olmalıdır. VM erişimi uzantısının [parola sıfırlama](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) işleviyle bir tane oluşturabilirsiniz. **Destek + sorun giderme** bölümünde **Parolayı Sıfırla** ' yı seçin.
 
-* Sanal makine ölçeği kümesi örneği için VM [önyükleme tanılama](boot-diagnostics.md) etkin olmalıdır.
+* Sanal makine ölçek kümesi örneği için VM 'nin [önyükleme tanılaması](boot-diagnostics.md) etkinleştirilmiş olması gerekir.
 
-    ![Önyükleme tanılama ayarları](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    ![Önyükleme Tanılama ayarları](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 
-## <a name="enable-serial-console-functionality-for-windows-server"></a>Windows Server için Seri Konsol işlevini etkinleştirme
+## <a name="enable-serial-console-functionality-for-windows-server"></a>Windows Server için seri konsol işlevselliğini etkinleştir
 
 > [!NOTE]
-> Seri konsolda bir şey görmüyorsanız, VM veya sanal makine ölçek kümenizde önyükleme tanılamanın etkin olduğundan emin olun.
+> Seri konsolda hiçbir şey görmüyorsanız, VM 'niz veya sanal makine ölçek kümesinde önyükleme tanılaması 'nın etkinleştirildiğinden emin olun.
 
-### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Seri konsolu özel veya eski görüntülerde etkinleştirme
-Azure'daki yeni Windows Server görüntülerinde varsayılan olarak [Özel Yönetim Konsolu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) etkinleştirilir. SAC, Windows'un sunucu sürümlerinde desteklenir, ancak istemci sürümlerinde (örneğin, Windows 10, Windows 8 veya Windows 7) kullanılamaz.
+### <a name="enable-the-serial-console-in-custom-or-older-images"></a>Özel veya eski görüntülerde seri konsolunu etkinleştirme
+Azure 'da daha yeni Windows Server görüntülerinin varsayılan olarak etkin olan [Özel Yönetim Konsolu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (sac) vardır. SAC, Windows 'un sunucu sürümlerinde desteklenir, ancak istemci sürümlerinde (örneğin, Windows 10, Windows 8 veya Windows 7) kullanılamaz.
 
-Eski Windows Server görüntüleri (Şubat 2018'den önce oluşturulmuş) için, Azure portalının çalıştır komut uyruğu özelliği aracılığıyla seri konsolu otomatik olarak etkinleştirebilirsiniz. Azure portalında **Çalıştır komutunu**seçin ve listeden **EnableEMS** adlı komutu seçin.
+Eski Windows Server yansımaları için (2018 Şubat 'tan önce oluşturulan), seri konsolu Azure portal Çalıştır komutu özelliği aracılığıyla otomatik olarak etkinleştirebilirsiniz. Azure portal, **Çalıştır komutunu**seçin ve ardından listeden **enableems** adlı komutu seçin.
 
-![Komut listesini çalıştır](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+![Komut listesini Çalıştır](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
 
-Alternatif olarak, Şubat 2018'den önce oluşturulan Windows VM'ler/sanal makine ölçeği kümesi için seri konsolu el ile etkinleştirmek için aşağıdaki adımları izleyin:
+Alternatif olarak, 2018 Şubat 'tan önce oluşturulan Windows VM 'Leri/sanal makine ölçek kümesinin seri konsolunu el ile etkinleştirmek için şu adımları izleyin:
 
-1. Uzak Masaüstü'nü kullanarak Windows sanal makinenize bağlanın
-1. İdari komut isteminden aşağıdaki komutları çalıştırın:
-    - `bcdedit /ems {current} on`powershell `bcdedit /ems '{current}' on` kullanıyorsanız
+1. Uzak Masaüstü kullanarak Windows sanal makinenize bağlanma
+1. Bir yönetim komut isteminden aşağıdaki komutları çalıştırın:
+    - `bcdedit /ems {current} on`veya `bcdedit /ems '{current}' on` PowerShell kullanıyorsanız
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-1. Etkinleştirilecek SAC konsolu için sistemi yeniden başlatın.
+1. SAC konsolunun etkinleştirilmesi için sistemi yeniden başlatın.
 
     ![SAC konsolu](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Gerekirse, SAC çevrimdışı da etkinleştirilebilir:
+Gerekirse, SAC çevrimdışı olarak da etkinleştirilebilir:
 
-1. SAC'Nin veri diski olarak yapılandırılmasını istediğiniz windows diskini varolan VM'ye takın.
+1. Mevcut VM 'ye veri diski olarak hangi SAC 'nin yapılandırılacağını istediğiniz Windows diskini ekleyin.
 
-1. İdari komut isteminden aşağıdaki komutları çalıştırın:
+1. Bir yönetim komut isteminden aşağıdaki komutları çalıştırın:
    - `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
    - `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-#### <a name="how-do-i-know-if-sac-is-enabled"></a>SAC etkin olup olmadığını nasıl anlarım?
+#### <a name="how-do-i-know-if-sac-is-enabled"></a>Nasıl yaparım? SAC 'nin etkinleştirilip etkinleştirilmediğini bilir mi?
 
-[SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) etkin değilse, seri konsol SAC komut istemini görüntülemez. Bazı durumlarda, VM sistem durumu bilgileri gösterilir ve diğer durumlarda boştur. Şubat 2018'den önce oluşturulmuş bir Windows Server görüntüsü kullanıyorsanız, SAC büyük olasılıkla etkinleştirilmez.
+[Sac](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) etkinleştirilmemişse, SERI konsol sac istemi 'ni görüntülemez. Bazı durumlarda, VM sistem durumu bilgileri gösterilir ve diğer durumlarda boş olur. 2018 Şubat 'tan önce oluşturulmuş bir Windows Server görüntüsü kullanıyorsanız, SAC büyük olasılıkla etkinleştirilmez.
 
-### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Seri konsolunda Windows önyükleme menüsünü etkinleştirme
+### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>Seri konsolundaki Windows önyükleme menüsünü etkinleştirin
 
-Windows önyükleme yükleyici istemlerinin seri konsolunda görüntülenmesini etkinleştirmeniz gerekiyorsa, önyükleme yapılandırma verilerinize aşağıdaki ek seçenekleri ekleyebilirsiniz. Daha fazla bilgi için [bcdedit'e](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set)bakın.
+Windows önyükleme yükleyicisi komut istemlerini seri konsolunda görüntülemesi gerekirse, önyükleme yapılandırma verilerinize aşağıdaki ek seçenekleri ekleyebilirsiniz. Daha fazla bilgi için bkz. [bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set).
 
-1. Uzak Masaüstü'nü kullanarak Windows VM'nize veya sanal makine ölçeğinize bağlayın.
+1. Uzak Masaüstü 'Nü kullanarak Windows sanal makinmenize veya sanal makine ölçek kümesi örneğine bağlanın.
 
-1. İdari komut isteminden aşağıdaki komutları çalıştırın:
+1. Bir yönetim komut isteminden aşağıdaki komutları çalıştırın:
    - `bcdedit /set {bootmgr} displaybootmenu yes`
    - `bcdedit /set {bootmgr} timeout 10`
    - `bcdedit /set {bootmgr} bootems yes`
@@ -92,132 +92,132 @@ Windows önyükleme yükleyici istemlerinin seri konsolunda görüntülenmesini 
 1. Önyükleme menüsünün etkinleştirilmesi için sistemi yeniden başlatın
 
 > [!NOTE]
-> Önyükleme yöneticisi menüsünün görüntülenmesi için ayarladığınız zaman alacaktır, işletim sistemi önyükleme sürenizi etkiler. 10 saniyelik zaman dilimi değerinin çok kısa veya çok uzun olduğunu düşünüyorsanız, farklı bir değere ayarlayın.
+> Önyükleme Yöneticisi menüsünün görüntülemesi için ayarladığınız zaman aşımı, işletim sistemi önyükleme süresini etkiler. 10 saniyelik zaman aşımı değerinin çok kısa veya çok uzun olduğunu düşünüyorsanız, bunu farklı bir değere ayarlayın.
 
-## <a name="use-serial-console"></a>Seri Konsol kullan
+## <a name="use-serial-console"></a>Seri konsol kullan
 
-### <a name="use-cmd-or-powershell-in-serial-console"></a>Seri Konsolda CMD veya PowerShell kullanın
+### <a name="use-cmd-or-powershell-in-serial-console"></a>Seri konsolunda CMD veya PowerShell kullanma
 
-1. Seri konsoluna bağlanın. Başarılı bir şekilde bağlanırsanız, komut istemi **SAC>: **
+1. Seri konsoluna bağlanın. Başarıyla bağlanıyorsanız, istem **SAC>**:
 
-    ![SAC'a bağlan](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+    ![SAC 'ye bağlanma](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.    CMD örneği olan bir kanal oluşturmak için girin. `cmd`
+1.    CMD `cmd` örneği olan bir kanal oluşturmak için girin.
 
-1.    CMD örneğini çalıştıran kanala geçmek için kısayol tuşlarına girin `ch -si 1` veya basın. `<esc>+<tab>`
+1.    CMD `ch -si 1` örneğini çalıştıran `<esc>+<tab>` kanala geçiş yapmak için kısayol tuşlarını girin veya basın.
 
-1.    **Enter**tuşuna basın ve ardından yönetim izinleriyle oturum açma kimlik bilgilerini girin.
+1.    **ENTER**tuşuna basın ve ardından Yönetici izinleriyle oturum açma kimlik bilgilerini girin.
 
 1.    Geçerli kimlik bilgilerini girdikten sonra CMD örneği açılır.
 
-1.    PowerShell örneğini başlatmak `PowerShell` için CMD örneğine girin ve sonra **Enter**tuşuna basın.
+1.    Bir PowerShell örneği başlatmak için CMD örneğine `PowerShell` girin ve ardından **ENTER**tuşuna basın.
 
     ![PowerShell örneğini aç](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 
-### <a name="use-the-serial-console-for-nmi-calls"></a>NMI aramaları için seri konsolu kullanma
-Maskelenmeyen bir kesme (NMI), sanal makinedeki yazılımın göz ardı edilmeyeceği bir sinyal oluşturmak üzere tasarlanmıştır. Tarihsel olarak, NMI'ler belirli yanıt süreleri gerektiren sistemlerdeki donanım sorunlarını izlemek için kullanılmıştır. Bugün, programcılar ve sistem yöneticileri genellikle yanıt vermeyen sistemleri hata ayıklamak veya sorun giderme mekanizması olarak NMI kullanır.
+### <a name="use-the-serial-console-for-nmi-calls"></a>NMI çağrıları için seri konsolunu kullanma
+Maskelenemeyen bir kesme (NMI), bir sanal makinede yazılımın yok sayılamayan bir sinyal oluşturmak için tasarlanmıştır. Tarihsel olarak, belirli yanıt süreleri gerektiren sistemlerdeki donanım sorunlarını izlemek için, NMIs kullanıldı. Günümüzde programcılar ve sistem yöneticileri, yanıt vermeyen sistemlerde hata ayıklamak veya sorunları gidermek için genellikle NMI 'yi bir mekanizma olarak kullanır.
 
-Seri konsol, komut çubuğundaki klavye simgesini kullanarak Bir Azure sanal makinesine NMI göndermek için kullanılabilir. NMI teslim edildikten sonra, sanal makine yapılandırması sistemin nasıl yanıt vereceğini denetler. Windows, NMI alırken kilitlenecek ve bellek dökümü dosyası oluşturacak şekilde yapılandırılabilir.
+Seri konsol, Komut çubuğundaki klavye simgesini kullanarak bir Azure sanal makinesine NMI göndermek için kullanılabilir. NMI teslim edildikten sonra, sanal makine yapılandırması sistemin nasıl yanıt verdiğini denetler. Windows, bir NMI alırken kilitlenme ve bellek döküm dosyası oluşturmak için yapılandırılabilir.
 
 ![NMI gönder](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
-Windows'u bir NMI aldığında kilitlenme dökümü dosyası oluşturacak şekilde yapılandırmak için, [NMI kullanarak kilitlenme döküm dosyasının nasıl oluşturulacağı](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)bilgisini görün.
+Windows 'u bir NMI aldığında kilitlenme döküm dosyası oluşturmak üzere yapılandırma hakkında bilgi için, bkz. [BIR NMI kullanarak kilitlenme döküm dosyası](https://support.microsoft.com/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)oluşturma.
 
-### <a name="use-function-keys-in-serial-console"></a>Seri konsolda işlev tuşlarını kullanma
-Windows VM'lerde seri konsol kullanımı için işlev tuşları etkinleştirilir. Seri konsol açılır menüsündeki F8, Gelişmiş Önyükleme Ayarları menüsüne kolayca girme kolaylığı sağlar, ancak seri konsol diğer tüm işlev tuşları ile uyumludur. Seri konsol kullandığınız bilgisayara bağlı olarak klavyenizdeki **Fn** + **F1** (veya F2, F3, vb.) tuşuna basmanız gerekebilir.
+### <a name="use-function-keys-in-serial-console"></a>Seri konsolundaki işlev anahtarlarını kullanma
+İşlev anahtarları Windows VM 'lerinde seri konsol kullanımı için etkinleştirilmiştir. Seri konsol açılan menüsünde F8, gelişmiş önyükleme ayarları menüsünü kolayca girmeye kolaylık sağlar, ancak seri konsol diğer tüm işlev anahtarlarıyla uyumludur. Seri konsol kullanmakta olduğunuz bilgisayara bağlı olarak, klavyenizde **FN** + **F1** (veya F2, F3, vb.) tuşlarına basmanız gerekebilir.
 
-### <a name="use-wsl-in-serial-console"></a>SERI konsolda WSL kullanın
-Linux için Windows Alt Sistemi (WSL) Windows Server 2019 veya sonraki sürümleri için etkinleştirildiğinden, Windows Server 2019 veya daha sonra çalıştırıyorsanız, seri konsolda kullanılmak üzere WSL'yi etkinleştirmek de mümkündür. Bu, Linux komutlarına aşina olan kullanıcılar için de yararlı olabilir. Windows Server için WSL'yi etkinleştirmek için yükleme [kılavuzuna](https://docs.microsoft.com/windows/wsl/install-on-server)bakın.
+### <a name="use-wsl-in-serial-console"></a>Seri konsolda WSL kullanma
+Linux için Windows alt sistemi (WSL) Windows Server 2019 veya üzeri için etkinleştirilmiştir, bu nedenle Windows Server 2019 veya sonraki bir sürümünü çalıştırıyorsanız, seri konsol içinde kullanmak üzere WSL 'yi etkinleştirmek de mümkündür. Bu, Linux komutlarına alışkın olan kullanıcılar için yararlı olabilir. Windows Server için WSL 'yi etkinleştirme yönergeleri için bkz. [Yükleme Kılavuzu](https://docs.microsoft.com/windows/wsl/install-on-server).
 
-### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Windows VM/sanal makine ölçeği ayar örneğini Seri Konsol'da yeniden başlatın
-Güç düğmesine gidip "VM'yi Yeniden Başlat"ı tıklatarak seri konsoliçinde yeniden başlatma başlatabilirsiniz. Bu, bir VM yeniden başlatma başlatacak ve Azure portalında yeniden başlatmayla ilgili bir bildirim görürsünüz.
+### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>Windows VM/sanal makine ölçek kümesi örneğinizi seri konsol içinde yeniden başlatın
+Güç düğmesine gidip "VM 'yi yeniden Başlat" seçeneğine tıklayarak seri konsol içinde yeniden başlatma başlatabilirsiniz. Bu işlem bir VM yeniden başlatması başlatır ve Azure portal içinde yeniden başlatma ile ilgili bir bildirim görürsünüz.
 
-Bu, seri konsol deneyiminden ayrılmadan önyükleme menüsüne erişmek isteyebileceğiniz durumlarda yararlıdır.
+Bu, seri konsol deneyiminden çıkmadan önyükleme menüsüne erişmek isteyebileceğiniz durumlarda faydalıdır.
 
-![Windows Seri Konsol yeniden başlat](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
+![Windows seri konsol yeniden başlatması](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-windows.gif)
 
-## <a name="disable-the-serial-console"></a>Seri Konsolu devre dışı
-Varsayılan olarak, tüm aboneliklerin seri konsol erişimi etkindir. Seri konsolu abonelik düzeyinde veya VM/sanal makine ölçeği ayar düzeyinde devre dışı bırakabilirsiniz. Ayrıntılı talimatlar için [Azure Seri Konsolu Etkinleştir'i](./serial-console-enable-disable.md)ve devre dışı kaltın'ı ziyaret edin.
+## <a name="disable-the-serial-console"></a>Seri konsolunu devre dışı bırakma
+Varsayılan olarak, tüm aboneliklerde seri konsol erişimi etkindir. Seri konsolunu abonelik düzeyinde ya da VM/sanal makine ölçek kümesi düzeyinde devre dışı bırakabilirsiniz. Ayrıntılı yönergeler için [Azure seri konsolunu etkinleştir ve devre dışı bırak](./serial-console-enable-disable.md)' ı ziyaret edin.
 
 ## <a name="serial-console-security"></a>Seri konsol güvenliği
 
 ### <a name="access-security"></a>Erişim güvenliği
-Seri konsola erişim, [Sanal Makine Katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) veya sanal makineye daha yüksek erişim rolü ne sahip kullanıcılarla sınırlıdır. Azure Etkin Dizin kiracınız çok faktörlü kimlik doğrulaması (MFA) gerektiriyorsa, seri konsolunuzun erişimi [Azure portalı](https://portal.azure.com)üzerinden olduğu için seri konsola erişim de MFA'ya ihtiyaç duyar.
+Seri konsol erişimi, sanal makine [katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) veya daha yüksek bir erişim rolüne sahip kullanıcılarla sınırlıdır. Azure Active Directory kiracınız Multi-Factor Authentication (MFA) gerektiriyorsa, seri konsolunun erişimi [Azure Portal](https://portal.azure.com)üzerinden olduğu için seri konsoluna ERIŞIME de MFA gerekir.
 
 ### <a name="channel-security"></a>Kanal güvenliği
-İleri geri gönderilen tüm veriler tel üzerinde şifrelenir.
+İleri ve geri gönderilen tüm veriler kabloda şifrelenir.
 
 ### <a name="audit-logs"></a>Denetim günlükleri
-Seri konsola tüm erişim şu anda sanal makinenin [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) günlüklerinde günlüğe kaydedilir. Bu günlüklere erişim Azure sanal makine yöneticisine aittir ve denetlenir.
+Seri konsoluna tüm erişim şu anda sanal makinenin [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) günlüklerinde oturum açtı. Bu günlüklere erişim, Azure sanal makine yöneticisi tarafından sahiplenilir ve denetlenir.
 
 > [!CAUTION]
-> Konsol için erişim parolası günlüğe kaydedilmez. Ancak, konsol içinde çalıştırılan komutlar parolalar, sırlar, kullanıcı adları veya kişisel olarak tanımlanabilir bilgilerin (PII) başka bir biçimini içeriyorsa veya çıktıalıyorsa, bunlar VM önyükleme tanılama günlüklerine yazılır. Seri konsolun kaydırma geri kaydırma işlevinin uygulanmasının bir parçası olarak diğer tüm görünür metinle birlikte yazılır. Bu günlükler daireseldir ve yalnızca tanılama depolama hesabına okuma izni olan kişiler bunlara erişebilir. Ancak, sırlar ve/veya kişisel bilgiler içerebilecek herhangi bir şey için Uzak Masaüstünü kullanmanın en iyi uygulamasını izlemenizi öneririz.
+> Konsolun hiçbir erişim parolası günlüğe kaydedilmez. Ancak, konsolda çalıştırılan komutlar, parola, gizli dizileri, Kullanıcı adlarını veya herhangi bir kişisel olarak tanımlanabilir bilgi (PII) gibi bir diğer biçimi içeriyorsa, bunlar VM önyüklemesi tanılama günlüklerine yazılır. Seri konsolunun geri Kaydır işlevi uygulamasının bir parçası olarak, diğer tüm görünür metinle birlikte yazılır. Bu Günlükler dairesel ve yalnızca tanılama depolama hesabı için okuma iznine sahip olan bireyler bunlara erişebilir. Ancak, gizli dizi ve/veya PII içerebilen herhangi bir şey için Uzak Masaüstü kullanmanın en iyi yöntemini takip etmenizi öneririz.
 
-### <a name="concurrent-usage"></a>Eşzamanlı kullanım
-Bir kullanıcı seri konsoluna bağlıysa ve başka bir kullanıcı aynı sanal makineye başarıyla erişim isterse, ilk kullanıcının bağlantısı kesilir ve ikinci kullanıcı aynı oturuma bağlanır.
+### <a name="concurrent-usage"></a>Eşzamanlı Kullanım
+Bir Kullanıcı seri konsoluna bağlandıysa ve başka bir kullanıcı aynı sanal makineye erişim isteğinde bulunursa, ilk kullanıcının bağlantısı kesilir ve ikinci Kullanıcı aynı oturuma bağlanır.
 
 > [!CAUTION]
-> Bu, bağlantısı kesilen bir kullanıcının oturumukapatılamayacağı anlamına gelir. Bağlantıyı kesme üzerine bir oturum açma yı (SIGHUP veya benzeri mekanizmayı kullanarak) uygulama özelliği hala yol haritasındadır. Windows için, SAC'da otomatik bir zaman ayarı etkinleştirilir; Linux için, terminal zaman aşım ayarını yapılandırabilirsiniz.
+> Bu, bağlantısı kesilen bir kullanıcının oturum açmayacağı anlamına gelir. Bağlantı kesildikten sonra (SıGHUP veya benzer mekanizmayı kullanarak) bir oturumu kapatma özelliği hala yol haritasında bulunur. Windows için, SAC 'de etkin bir otomatik zaman aşımı vardır. Linux için, Terminal zaman aşımı ayarını yapılandırabilirsiniz.
 
 ## <a name="accessibility"></a>Erişilebilirlik
-Erişilebilirlik, Azure seri konsolu için önemli bir odak noktasıdır. Bu amaçla, seri konsolun görme ve işitme engellilerin yanı sıra fare kullanamayan kişiler için erişilebilir olmasını sağladık.
+Erişilebilirlik, Azure seri konsolu için önemli bir odadır. Bu uçta, seri konsolunun görsel için erişilebilir olduğunu ve sorunsuz bir şekilde bir fare kullanamayacak kişileri duyduk.
 
 ### <a name="keyboard-navigation"></a>Klavye ile gezinme
-Azure portalından seri konsol arabiriminde gezinmek için klavyenizdeki **Sekme** tuşunu kullanın. Konumunuz ekranda vurgulanır. Seri konsol penceresinin odağında bırakmak için klavyenizdeki **Ctrl**+**F6** tuşuna basın.
+Azure portal seri konsol arabiriminde gezinmek için klavyenizde **Tab** tuşunu kullanın. Konumunuz ekranda vurgulanacaktır. Seri konsol penceresinin odağını bırakmak için klavyenizde **CTRL**+**F6** tuşuna basın.
 
-### <a name="use-the-serial-console-with-a-screen-reader"></a>Seri konsolu ekran okuyucuyla kullanma
-Seri konsolyerleşik ekran okuyucu desteğine sahiptir. Ekran okuyucu açıkken gezinmek, şu anda seçili olan düğmenin alt metninin ekran okuyucu tarafından yüksek sesle okunmasını sağlar.
+### <a name="use-the-serial-console-with-a-screen-reader"></a>Seri konsolu 'nu ekran okuyucu ile kullanma
+Seri konsolunda yerleşik ekran okuyucusu desteği vardır. Bir ekran okuyucusu açıkken dolaşma, ekran okuyucu tarafından şu anda seçili olan düğme için alternatif metnin yüksek sesle okunmasıyla izin verir.
 
-## <a name="common-scenarios-for-accessing-the-serial-console"></a>Seri konsoluna erişmek için sık karşılaşılan senaryolar
+## <a name="common-scenarios-for-accessing-the-serial-console"></a>Seri konsoluna erişmek için yaygın senaryolar
 
-Senaryo          | Seri konsoldaki eylemler
+Senaryo          | Seri konsolundaki eylemler
 :------------------|:-----------------------------------------
-Yanlış güvenlik duvarı kuralları | Seri konsola erişin ve Windows güvenlik duvarı kurallarını düzeltin.
-Dosya sistemi bozulması/denetimi | Seri konsoluna erişin ve dosya sistemini kurtarın.
-RDP yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Daha fazla bilgi için [RDP belgelerine](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)bakın.
-Ağ kilitleme sistemi | Sistemi yönetmek için Azure portalından seri konsola erişin. Bazı ağ komutları [Windows komutlarında listelenir: CMD ve PowerShell.](serial-console-cmd-ps-commands.md)
-Bootloader ile etkileşim | BCD'ye seri konsoldan erişin. Daha fazla bilgi için seri [konsolundaki Windows önyükleme menüsünü etkinleştir](#enable-the-windows-boot-menu-in-the-serial-console)meslebine bakın.
+Yanlış güvenlik duvarı kuralları | Seri konsoluna erişin ve Windows güvenlik duvarı kurallarını onarın.
+Dosya sistemi Bozulması/denetimi | Seri konsoluna erişin ve dosya sistemini kurtarın.
+RDP yapılandırma sorunları | Seri konsoluna erişin ve ayarları değiştirin. Daha fazla bilgi için bkz. [RDP belgeleri](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access).
+Ağ kilitleme sistemi | Sistemi yönetmek için Azure portal seri konsoluna erişin. Bazı ağ komutları [Windows komutları: cmd ve PowerShell](serial-console-cmd-ps-commands.md)içinde listelenmiştir.
+Önyükleme yükleyicisine etkileşim | Seri konsol aracılığıyla BCD 'ye erişin. Bilgi için, bkz. [seri konsolundaki Windows önyükleme menüsünü etkinleştirme](#enable-the-windows-boot-menu-in-the-serial-console).
 
 ## <a name="known-issues"></a>Bilinen sorunlar
-Seri konsol ve VM'nin işletim sistemiyle ilgili bazı sorunların farkındayız. Windows VM'leri için bu sorunların ve azaltma adımlarının bir listesi aşağıda veda edebilirsiniz. Bu sorunlar ve azaltıcı etkenler hem VM'ler hem de sanal makine ölçeği kümesi örnekleri için geçerlidir. Bunlar gördüğünüz hatayla eşleşmiyorsa, [Ortak Seri Konsol hatalarında](./serial-console-errors.md)sık karşılaşılan seri konsol hizmet hatalarını görün.
+Seri konsol ve VM 'nin işletim sistemi ile ilgili bazı sorunları fark ediyoruz. Bu sorunların ve Windows VM 'Leri hafifletme adımlarının bir listesi aşağıda verilmiştir. Bu sorunlar ve azaltmaları, hem VM 'Ler hem de sanal makine ölçek kümesi örnekleri için geçerlidir. Bunlar gördüğünüz hatayla eşleşmiyorsa, yaygın [seri konsol hatalarıyla](./serial-console-errors.md)ortak seri konsol hizmeti hatalarına bakın.
 
 Sorun                             |   Risk azaltma
 :---------------------------------|:--------------------------------------------|
-Bağlantı başlığından sonra **Enter** tuşuna bastığınızda oturum açma istemi görüntülenmez. | Daha fazla bilgi için [bkz.](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) Bu hata, Windows'un seri bağlantı noktasına düzgün bir şekilde bağlanmamasına neden olan özel bir VM, sertleştirilmiş bir cihaz veya önyükleme config çalıştırıyorsanız oluşabilir. Yalnızca Windows Server VM'leri EMS'yi etkin olacak şekilde yapılandırıldığından, windows 10 VM çalıştırıyorsanız bu hata da oluşur.
-Yalnızca windows vm'ye bağlanırken sistem durumu bilgileri gösterilir| Bu hata, Windows görüntünüz için Özel Yönetim Konsolu etkinleştirilmediyse oluşur. Bkz. Windows VM'nizde SAC'yi el ile nasıl etkinleştireceğimize ilişkin talimatlar için [seri konsolu özel veya eski görüntülerde etkinleştirin.](#enable-the-serial-console-in-custom-or-older-images) Daha fazla bilgi için [Windows sistem durumu sinyallerine](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md)bakın.
-SAC tarayıcıdaki tüm Seri Konsol alanını kaplamıyor | Bu, Windows ve terminal emülatörü yle ilgili bilinen bir sorundur. Bu sorunu her iki takımla da takip ediyoruz ama şimdilik bir hafifletme yok.
-Çekirdek hata ayıklama etkinse SAC komut isteminde yazamaz. | RDP'den VM'ye ve yükseltilmiş komut isteminden çalıştırın. `bcdedit /debug {current} off` RDP'yi yapamıyorsanız, bunun yerine işletim sistemi diskini başka bir Azure VM'sine `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`ekleyebilir ve çalıştırarak veri diski olarak eklenmiş ken değiştirebilir ve diski geri değiştirebilirsiniz.
-PowerShell'e SAC'da yapıştırma, orijinal içeriğin yinelenen bir karakteri varsa üçüncü bir karakterle sonuçlanır. | Geçici çözüm için, `Remove-Module PSReadLine` PSReadLine modüllerini geçerli oturumdan boşaltmak için çalıştırın. Bu eylem modülü silmez veya kaldırmaz.
-Bazı klavye girişleri garip SAC çıkışı üretir (örneğin, **[A**, **[3~**). | [VT100](https://aka.ms/vtsequences) kaçış sekansları SAC komut istemi tarafından desteklenmez.
-Uzun dizeleri yapıştırma işe yaramaz. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini önlemek için terminale yapıştırılan dizelerin uzunluğunu 2048 karakterle sınırlar.
+Bağlantı başlığından sonra **ENTER** tuşuna basmak, oturum açma isteminin görüntülenmesine neden olmaz. | Daha fazla bilgi için bkz. ENTER tuşuna basarak [hiçbir şey yapılmıyor](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Bu hata, Windows 'un seri bağlantı noktasına düzgün şekilde bağlanamamasına neden olan özel bir VM, sağlamlaştırılmış gereç veya önyükleme yapılandırması çalıştırıyorsanız oluşabilir. Yalnızca Windows Server VM 'Leri EMS 'nin etkin olacak şekilde yapılandırıldığı için, bu hata bir Windows 10 VM çalıştırıyorsanız da meydana gelir.
+Bir Windows VM 'sine bağlanılırken yalnızca sistem durumu bilgileri gösterilir| Bu hata, Özel Yönetim Konsolu Windows görüntünüz için etkinleştirilmemişse oluşur. Windows sanal makinenizde SAC 'yi el ile etkinleştirme hakkında yönergeler için bkz. [özel veya eski görüntülerde seri konsolunu etkinleştirme](#enable-the-serial-console-in-custom-or-older-images) . Daha fazla bilgi için bkz. [Windows sistem durumu sinyalleri](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
+SAC, tarayıcıda tüm seri konsol alanını gerçekleştirmez | Bu, Windows ve Terminal Öykünücüde bilinen bir sorundur. Bu sorunu her iki ekiple izliyoruz, ancak şimdilik bir azaltma yoktur.
+Çekirdek hata ayıklaması etkinse, SAC istemine yazılamıyor. | RDP 'den VM 'ye ve `bcdedit /debug {current} off` yükseltilmiş bir komut isteminden çalıştırın. RDP 'yi görmüyorsanız, işletim sistemi diskini başka bir Azure VM 'ye iliştirebilir ve çalıştırarak `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`bir veri diski olarak bağlı durumdayken değiştirebilir ve sonra diski geri takas edebilirsiniz.
+İlk içerik yinelenen bir karakter içeriyorsa, SAC 'de PowerShell 'e yapıştırma üçüncü bir karakterle sonuçlanır. | Geçici bir çözüm için, `Remove-Module PSReadLine` psreadline modülünü geçerli oturumdan kaldırmak için öğesini çalıştırın. Bu eylem modülü silmez veya kaldırmaz.
+Bazı klavye girdileri, alışılmadık SAC çıkışı oluşturur (örneğin, **[A**, **[3 ~**). | [VT100](https://aka.ms/vtsequences) KAÇıŞ dizileri sac istemi tarafından desteklenmez.
+Uzun dizeleri yapıştırma işe yaramıyor. | Seri konsol, seri bağlantı noktası bant genişliğinin aşırı yüklenmesini engellemek için, terminale yapıştırılan dizelerin uzunluğunu 2048 karakter olarak sınırlandırır.
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S. Nasıl geribildirim gönderebilirim?**
+**S. nasıl geri bildirim gönderebilirim?**
 
-A. Bir GitHub sorunu oluşturarak https://aka.ms/serialconsolefeedbackgeri bildirim sağlayın. Alternatif olarak (daha az tercih azserialhelp@microsoft.com edilen), geribildirim gönderebilirsiniz üzerinden veya sanal makine kategorisinde https://feedback.azure.com.
+A. Üzerinde https://aka.ms/serialconsolefeedbackbir GitHub sorunu oluşturarak geri bildirim sağlayın. Alternatif olarak (daha az tercih edilen), uygulamasının azserialhelp@microsoft.com https://feedback.azure.comsanal makine kategorisinde veya aracılığıyla geri bildirim gönderebilirsiniz.
 
-**S. Seri konsol kopyalama/yapıştır'ı destekliyor mu?**
+**S. seri konsol kopyalamayı/yapıştırmayı destekliyor mu?**
 
-A. Evet. Terminale kopyalamak ve yapıştırmak için **Ctrl**+**Shift**+**C** ve **Ctrl**+**Shift**+**V'yi** kullanın.
+A. Evet. Terminale kopyalayıp yapıştırmak için **CTRL**+**SHIFT**+**C** ve **CTRL**+**SHIFT**+**V** kullanın.
 
-**S. Aboneliğim için seri konsolu kimetkinleştirebilir veya devre dışı bırakabilir?**
+**S. Aboneliğimin seri konsolunu kimler etkinleştirebilir veya devre dışı bırakabilirim?**
 
-A. Seri konsolu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı kardık yapmak için, abonelığa yazma izinleriniz olması gerekir. Yazma izni olan roller yönetici veya sahip rollerini içerir. Özel rollerde yazma izinleri de olabilir.
+A. Seri konsolunu abonelik genelinde bir düzeyde etkinleştirmek veya devre dışı bırakmak için abonelik için yazma izinleriniz olmalıdır. Yazma izni olan roller yönetici veya sahip rolleri içerir. Özel rollerin de yazma izinleri olabilir.
 
-**S. VM'imin seri konsoluna kimler erişebilir?**
+**S. sanal sunucum için seri konsoluna kimler erişebilir?**
 
-A. Bir VM'nin VM'nin seri konsoluna erişmesi için Sanal Makine Katılımcısı rolüne veya daha yüksek olması gerekir.
+A. VM 'nin seri konsoluna erişmesi için sanal makine katılımcısı rolüne veya daha üstüne sahip olmanız gerekir.
 
-**S. Benim seri konsol bir şey görüntülemiyor, ne yapmalıyım?**
+**S. seri konsolum hiçbir şeyi görüntülüyor, ne yapmam gerekir?**
 
-A. Resminiz büyük olasılıkla seri konsol erişimi için yanlış yapılandırılmıştır. Seri konsolunu etkinleştirmek için resminizi yapılandırma hakkında daha fazla bilgi [için](#enable-the-serial-console-in-custom-or-older-images)bkz.
+A. Resminiz, seri konsol erişimi için hatalı yapılandırılmış olabilir. Görüntünüzü seri konsolunu etkinleştirecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [özel veya eski görüntülerde seri konsolunu etkinleştirme](#enable-the-serial-console-in-custom-or-older-images).
 
-**S. Seri konsol sanal makine ölçek kümeleri için kullanılabilir mi?**
+**S. sanal makine ölçek kümeleri için seri konsol kullanılabilir mi?**
 
-A. Evet öyle! [Sanal Makine Ölçek Setleri için Seri Konsol'a](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets) bakın
+A. Evet öyle! Bkz. [Sanal Makine Ölçek Kümeleri Için seri konsol](./serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Windows SAC'da kullanabileceğiniz CMD ve PowerShell komutları için ayrıntılı bir kılavuz için [Windows komutlarına bakın: CMD ve PowerShell.](serial-console-cmd-ps-commands.md)
-* Seri konsol [Linux](serial-console-linux.md) VM'ler için de kullanılabilir.
-* [Önyükleme tanılama](boot-diagnostics.md)hakkında daha fazla bilgi edinin.
+* Windows SAC 'de kullanabileceğiniz, CMD ve PowerShell komutlarına yönelik ayrıntılı yönergeler için bkz. [Windows komutları: cmd ve PowerShell](serial-console-cmd-ps-commands.md).
+* Seri konsol, [Linux](serial-console-linux.md) sanal makineleri için de kullanılabilir.
+* [Önyükleme tanılaması](boot-diagnostics.md)hakkında daha fazla bilgi edinin.

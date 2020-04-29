@@ -1,121 +1,121 @@
 ---
-title: Azure Yedekleme aracısını sorun giderme
-description: Bu makalede, Azure Yedekleme aracısının yüklenmesini ve kaydedilmesinde nasıl sorun giderilen öğrenin.
+title: Azure Backup aracısında sorun giderme
+description: Bu makalede Azure Backup aracısının yüklenmesi ve kaydettirilmesinde nasıl sorun giderileceği hakkında bilgi edinebilirsiniz.
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
 ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80421269"
 ---
-# <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını sorun giderme
+# <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı sorunlarını giderme
 
-Bu makalede, yapılandırma, kayıt, yedekleme ve geri yükleme sırasında görebileceğiniz hataların nasıl çözüleceği açıklanmaktadır.
+Bu makalede yapılandırma, kayıt, yedekleme ve geri yükleme sırasında görebileceğiniz hataların nasıl çözümleneceği açıklanır.
 
 ## <a name="basic-troubleshooting"></a>Temel sorun giderme
 
-Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını sorun gidermeye başlamadan önce aşağıdakileri kontrol etmenizi öneririz:
+Microsoft Azure kurtarma hizmetleri (MARS) Aracısı ile ilgili sorun gidermeye başlamadan önce aşağıdakileri kontrol etmenizi öneririz:
 
-- [MARS ajanının güncel olduğundan emin olun.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [MARS aracısı ile Azure arasında ağ bağlantısı olduğundan emin olun.](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
-- MARS'ın (Servis konsolunda) çalışırken olduğundan emin olun. Gerekirse işlemi yeniden başlatın ve yeniden deneyin.
-- [Scratch klasörü konumunda %5 ila %10 serbest hacim alanı olduğundan emin olun.](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Başka bir işlemin veya virüsten koruma yazılımının Azure Yedekleme'yi mi engellediğini kontrol edin.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
-- Zamanlanmış yedekleme başarısız olursa, ancak el ile yedekleme [çalışıyorsa,](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)bkz.
-- İşletim sisteminizin en son güncelleştirmeleri olduğundan emin olun.
-- [Desteklenmeyen sürücülerin ve desteklenmeyen özniteliklere sahip dosyaların yedek dışında olduğundan emin olun.](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
-- Korunan sistemdeki saatin doğru saat dilimine yapılandırıldığından emin olun.
-- [.NET Framework 4.5.2 veya sonraki sunucuya yüklendiğinden emin olun.](https://www.microsoft.com/download/details.aspx?id=30653)
-- Sunucunuzu kasaya yeniden kaydetmeye çalışıyorsanız:
-  - Aracının sunucuda kaldırdığından ve portaldan silindiğinden emin olun.
-  - Sunucuyu kaydetmek için başlangıçta kullanılan parolayı kullanın.
-- Çevrimdışı yedeklemeler için, yedeklemeyi başlatmadan önce Azure PowerShell 3.7.0'ın hem kaynağa hem de kopya bilgisayara yüklendiğinden emin olun.
-- Yedekleme aracısı Bir Azure sanal makinesinde çalışıyorsa, [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)bakın.
+- [Mars aracısının güncel olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).
+- [Mars Aracısı ve Azure arasında ağ bağlantısına sahip olduğunuzdan emin olun](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup).
+- MARS 'ın çalıştığından emin olun (hizmet konsolunda). Gerekirse, yeniden başlatın ve işlemi yeniden deneyin.
+- [Karalama klasörü konumunda %5 ila %10 boş birim alanı kullanılabilir olduğundan emin olun](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder).
+- [Azure Backup başka bir işlem veya virüsten koruma yazılımı](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)olup olmadığını denetleyin.
+- Zamanlanan yedekleme başarısız olursa, ancak el ile yedekleme çalışırsa, bkz. [yedeklemeler zamanlamaya göre Çalıştırılmadı](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule).
+- İşletim sisteminin en son güncelleştirmelere sahip olduğundan emin olun.
+- Desteklenmeyen [özniteliklerin ve desteklenmeyen özniteliklere sahip dosyaların yedeklemeden dışlandığından emin olun](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup).
+- Korunan sistemdeki saatin doğru saat dilimine göre yapılandırıldığından emin olun.
+- [Sunucuda .NET Framework 4.5.2 veya üzeri sürümünün yüklü olduğundan emin olun](https://www.microsoft.com/download/details.aspx?id=30653).
+- Sunucunuzu bir kasaya yeniden kaydetmeye çalışıyorsanız:
+  - Aracının sunucuda kaldırıldığından ve portaldan silindiğinden emin olun.
+  - Başlangıçta sunucuyu kaydetmek için kullanılan parolayı kullanın.
+- Çevrimdışı yedeklemeler için, yedeklemeye başlamadan önce Azure PowerShell 3.7.0 hem kaynak hem de kopya bilgisayarda yüklü olduğundan emin olun.
+- Yedekleme aracısı bir Azure sanal makinesinde çalışıyorsa, [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)bakın.
 
 ## <a name="invalid-vault-credentials-provided"></a>Sağlanan kasa kimlik bilgileri geçersiz
 
-**Hata iletisi**: Geçersiz kasa kimlik bilgileri sağlanmıştır. Dosya bozuk veya kurtarma hizmeti ile ilişkili en son kimlik bilgilerine sahip değil. (Kimlik numarası: 34513)
+**Hata iletisi**: geçersiz kasa kimlik bilgileri belirtildi. Dosya bozuk veya kurtarma hizmeti ile ilişkili en son kimlik bilgilerine sahip değil. (KIMLIK: 34513)
 
-| Nedeni | Önerilen eylemler |
+| Nedeni | Önerilen Eylemler |
 | ---     | ---    |
-| **Kasa kimlik bilgileri geçerli değil** <br/> <br/> Vault kimlik bilgileri dosyaları bozuk olabilir veya süresi dolmuş olabilir. (Örneğin, kayıt saatinden 48 saatten daha önce indirilmiş olabilirler.)| Azure portalındaki Kurtarma Hizmetleri kasasından yeni kimlik bilgilerini indirin. (Mars [aracısını indir](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) bölümündeki adım 6'ya bakın.) Ardından, uygun şekilde şu adımları atın: <ul><li> MARS'ı zaten yüklediyseniz ve kaydettiyseniz, Microsoft Azure Yedekleme Aracısı MMC konsolunu açın ve ardından yeni kimlik bilgileriyle kaydı tamamlamak için **Eylemler** bölmesinde **Register Server'ı** seçin. <br/> <li> Yeni yükleme başarısız olursa, yeni kimlik bilgileriyle yeniden yüklemeyi deneyin.</ul> **Not**: Birden çok kasa kimlik dosyası indirilmişse, yalnızca en son dosya sonraki 48 saat için geçerlidir. Yeni bir kasa kimlik dosyası indirmenizi öneririz.
-| **Proxy sunucusu/güvenlik duvarı kaydı engelliyor** <br/>or <br/>**İnternet bağlantısı yok** <br/><br/> Makinenizin veya proxy sunucunuzun internet bağlantısı sınırlıysa ve gerekli URL'lere erişim sağlamazsanız, kayıt başarısız olur.| Şu adımları atın:<br/> <ul><li> Sistemin internet bağlantısıolduğundan emin olmak için BT ekibinizle birlikte çalışın.<li> Proxy sunucunuz yoksa, aracıyı kaydettirirken proxy seçeneğinin seçilmediğinden emin olun. [Proxy ayarlarınızı kontrol edin.](#verifying-proxy-settings-for-windows)<li> Bir güvenlik duvarınız/proxy sunucunuz varsa, bu URL'lerin ve IP adreslerinin erişebilmesini sağlamak için ağ ekibinizle birlikte çalışın:<br/> <br> **URL'ler**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresleri**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Önceki sorun giderme adımlarını tamamladıktan sonra yeniden kaydetmeyi deneyin.<br></br> Bağlantınız Azure ExpressRoute üzerinden gerçekse, ayarların [Azure ExpressRoute desteğinde](backup-support-matrix-mars-agent.md#azure-expressroute-support)açıklandığı şekilde yapılandırıldığından emin olun.
-| **Virüsten koruma yazılımı kaydı engelliyor** | Sunucuda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler için virüsten koruma sına gerekli dışlama kuralları ekleyin: <br/><ul> <li> CBengine.exe <li> Csc.exe<li> Scratch klasörü. Varsayılan konumu C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Scratch'dir. <li> C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Bin'deki çöp kutusu klasörü.
+| **Kasa kimlik bilgileri geçerli değil** <br/> <br/> Kasa kimlik bilgileri dosyaları bozulmuş olabilir veya zaman aşımına uğradı. (Örneğin, kayıt zamanından önce 48 saatten daha fazla indirilmiş olabilir.)| Azure portal kurtarma hizmetleri kasasından yeni kimlik bilgilerini indirin. ( [Mars aracısını indirme](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) bölümünde 6. adıma bakın.) Ardından aşağıdaki adımları uygulayın: <ul><li> MARS 'ı zaten yüklediyseniz ve daha önce kaydolduysanız, yeni kimlik bilgileriyle kaydı gerçekleştirmek için Microsoft Azure Backup Aracısı MMC konsolunu açın ve **Eylemler** bölmesinde **sunucuyu kaydet** ' i seçin. <br/> <li> Yeni yükleme başarısız olursa yeni kimlik bilgileriyle yeniden yüklemeyi deneyin.</ul> **Note**: birden fazla kasa kimlik bilgileri dosyası indirildiyse, sonraki 48 saat için yalnızca en son dosya geçerlidir. Yeni bir kasa kimlik bilgileri dosyası indirmenizi öneririz.
+| **Proxy sunucusu/güvenlik duvarı kaydı engelliyor** <br/>or <br/>**İnternet bağlantısı yok** <br/><br/> Makinenizin veya proxy sunucunuzun sınırlı internet bağlantısı varsa ve gerekli URL 'Ler için erişim sağlanmıyorsanız, kayıt başarısız olur.| Şu adımları uygulayın:<br/> <ul><li> Sistemin internet bağlantısı olduğundan emin olmak için BT ekibinizle birlikte çalışın.<li> Proxy sunucunuz yoksa, aracıyı kaydettiğinizde ara sunucu seçeneğinin seçili olmadığından emin olun. [Proxy ayarlarınızı denetleyin](#verifying-proxy-settings-for-windows).<li> Bir güvenlik duvarı/proxy sunucunuz varsa, bu URL 'Lerin ve IP adreslerinin erişime sahip olduğundan emin olmak için ağ ekibinizle birlikte çalışın:<br/> <br> **URL’ler**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP adresleri**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>Yukarıdaki sorun giderme adımlarını tamamladıktan sonra kaydetmeyi yeniden deneyin.<br></br> Bağlantınız Azure ExpressRoute ile kullanılıyorsa, ayarların [Azure ExpressRoute desteği](backup-support-matrix-mars-agent.md#azure-expressroute-support)bölümünde açıklandığı şekilde yapılandırıldığından emin olun.
+| **Virüsten koruma yazılımı kaydı engelliyor** | Sunucusunda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler için virüsten koruma taramasına gereken dışlama kurallarını ekleyin: <br/><ul> <li> CBengine. exe <li> CSC. exe<li> Karalama klasörü. Varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri ' dir. <li> C:\Program Files\Microsoft Azure kurtarma hizmetleri \ bin klasöründe bin klasörü.
 
 ### <a name="additional-recommendations"></a>Ek öneriler
 
-- C:/Windows/Temp'a gidin ve .tmp uzantılı 60.000'den fazla veya 65.000'den fazla dosya olup olmadığını kontrol edin. Varsa, bu dosyaları silin.
-- Makinenin tarih ve saatinin yerel saat dilimiyle eşleştirdiğinden emin olun.
-- [Bu sitelerin](install-mars-agent.md#verify-internet-access) Internet Explorer'daki güvenilir sitelerinize eklenmediğinden emin olun.
+- C:/Windows/Temp adresine gidin ve. tmp uzantısıyla 60.000 ' den fazla veya 65.000 dosya olup olmadığını denetleyin. Varsa, bu dosyaları silin.
+- Makinenin tarih ve saatinin yerel saat dilimiyle eşleştiğinden emin olun.
+- Internet Explorer 'da [Bu sitelerin](install-mars-agent.md#verify-internet-access) güvenilen sitelerinize eklendiğinden emin olun.
 
-### <a name="verifying-proxy-settings-for-windows"></a>Windows için proxy ayarlarını doğrulama
+### <a name="verifying-proxy-settings-for-windows"></a>Windows için proxy ayarları doğrulanıyor
 
-1. [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) sayfasından PsExec'i indirin.
+1. [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) sayfasından PsExec 'yi indirin.
 1. Yükseltilmiş `psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"` bir komut isteminden çalıştırın.
 
-   Bu komut Internet Explorer'ı açar.
-1. **Araçlar** > **Internet seçenekleri** > **Bağlantılar** > LAN**ayarları**gidin.
-1. Sistem hesabının proxy ayarlarını kontrol edin.
-1. Proxy yapılandırılmamışsa ve proxy ayrıntıları sağlanmışsa, ayrıntıları kaldırın.
-1. Proxy yapılandırılırsa ve proxy ayrıntıları yanlışsa, **Proxy IP** ve **Bağlantı Noktası** ayrıntılarının doğru olduğundan emin olun.
+   Bu komut, Internet Explorer 'ı açar.
+1. **Araçlar** > **Internet seçenekleri** > **Connections**bağlantılar > **LAN ayarları**' na gidin.
+1. Sistem hesabının ara sunucu ayarlarını kontrol edin.
+1. Yapılandırılmış bir proxy yoksa ve proxy ayrıntıları sağlanmışsa, ayrıntıları kaldırın.
+1. Bir ara sunucu yapılandırıldıysa ve proxy ayrıntıları yanlışsa, **Proxy IP** ve **bağlantı noktası** ayrıntılarının doğru olduğundan emin olun.
 1. Internet Explorer'ı kapatın.
 
-## <a name="unable-to-download-vault-credential-file"></a>Kasa kimlik bilgileri dosyasını karşıdan yükleyemiyor
+## <a name="unable-to-download-vault-credential-file"></a>Kasa kimlik bilgileri dosyası karşıdan yüklenemiyor
 
-| Hata   | Önerilen eylemler |
+| Hata   | Önerilen Eylemler |
 | ---     | ---    |
-|Kasa kimlik dosyasını indiremedi. (Id: 403) | <ul><li> Farklı bir tarayıcı kullanarak kasa kimlik bilgilerini indirmeyi deneyin veya aşağıdaki adımları izleyin: <ul><li> Internet Explorer'ı başlatın. F12'yi seçin. </li><li> **Ağ** sekmesine gidin ve önbelleği ve tanımlama bilgilerini temizleyin. </li> <li> Sayfayı yenileyin.<br></li></ul> <li> Aboneliğin devre dışı bırakıldığını/süresinin dolup dolmadığını kontrol edin.<br></li> <li> Herhangi bir güvenlik duvarı kuralının karşıdan yüklemeyi engelleyip engellemedığını kontrol edin. <br></li> <li> Kasadaki sınırı (kasa başına 50 makine) tüketmediğinden emin olun.<br></li>  <li> Kullanıcının kasa kimlik bilgilerini indirmek ve bir sunucuyu kasaya kaydettirmek için gereken Azure Yedekleme izinlerine sahip olduğundan emin olun. Bkz. [Azure Yedekleme kurtarma noktalarını yönetmek için Rol Tabanlı Erişim Denetimini Kullan.](backup-rbac-rs-vault.md)</li></ul> |
+|Kasa kimlik bilgileri dosyası indirilemedi. (KIMLIK: 403) | <ul><li> Farklı bir tarayıcı kullanarak kasa kimlik bilgilerini indirmeyi deneyin veya şu adımları uygulayın: <ul><li> Internet Explorer 'ı başlatın. F12 ' i seçin. </li><li> **Ağ** sekmesine gidin ve önbelleği ve tanımlama bilgilerini temizleyin. </li> <li> Sayfayı yenileyin.<br></li></ul> <li> Aboneliğin devre dışı bırakılıp bırakılmadığını kontrol edin.<br></li> <li> Bir güvenlik duvarı kuralının indirmeyi engelleyip engellemediğini denetleyin. <br></li> <li> Kasadaki limiti tüketmemiş olduğunuzdan emin olun (kasa başına 50 makine).<br></li>  <li> Kullanıcının kasa kimlik bilgilerini indirmek ve kasaya bir sunucu kaydetmek için gereken Azure Backup izinlere sahip olduğundan emin olun. Bkz. [Azure Backup kurtarma noktalarını yönetmek Için rol tabanlı Access Control kullanma](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure Kurtarma Hizmeti Aracısı, Microsoft Azure Backup'a bağlanamadı
 
-| Hata  | Olası nedeni | Önerilen eylemler |
+| Hata  | Olası nedeni | Önerilen Eylemler |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure Kurtarma Hizmeti Aracısı Microsoft Azure Yedekleme'ye bağlanamadı. (Kimlik numarası: 100050) Ağ ayarlarınızı kontrol edin ve internete bağlanabildiğinizden emin olun.<li>(407) Proxy Kimlik Doğrulama Gerekli. |Proxy bağlantıyı engelliyor. |  <ul><li>Internet Explorer'da, **Araçlar** > **Internet seçenekleri** > **Güvenlik** > **İnternet'e**gidin. **Özel Düzey'i** seçin ve **Dosya indirme** bölümüne gidin. **Etkinleştir**’i seçin.<p>Ayrıca, Internet Explorer'daki güvenilir sitelerinize [URL ve IP adresleri](install-mars-agent.md#verify-internet-access) eklemeniz gerekebilir.<li>Proxy sunucusu kullanmak için ayarları değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<li> Makinenizin internet erişimi sınırlıysa, makine veya proxy'deki güvenlik duvarı ayarlarının bu [URL'lere ve IP adreslerine](install-mars-agent.md#verify-internet-access)izin verdiğinden emin olun. <li>Sunucuda virüsten koruma yazılımı yüklüyse, bu dosyaları virüsten koruma tayından hariç tut: <ul><li>CBEngine.exe (dpmra.exe yerine).<li>CSC.exe (.NET Framework ile ilgili). Sunucuda yüklü her .NET Framework sürümü için bir CSC.exe vardır. CSC.exe dosyalarını etkilenen sunucudaki .NET Framework'ün tüm sürümleri için hariçleyin. <li>Scratch klasörü veya önbellek konumu. <br>Kazıyışı klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Scratch'dir.<li>C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Bin'deki çöp kutusu klasörü.
+| <br /><ul><li>Microsoft Azure kurtarma hizmeti Aracısı Microsoft Azure Backup bağlantı kuramadı. (KIMLIK: 100050) Ağ ayarlarınızı denetleyin ve internet 'e bağlanabildiğinizden emin olun.<li>(407) proxy kimlik doğrulaması gerekiyor. |Ara sunucu bağlantıyı engelliyor. |  <ul><li>Internet Explorer 'da **Araçlar** > **Internet seçenekleri** > **güvenlik** > **İnternet**'e gidin. **Özel düzey** ' i seçin ve **dosya indirme** bölümüne gidin. **Etkinleştir**’i seçin.<p>Ayrıca, Internet Explorer 'daki güvenilen sitelerinize [URL 'ler ve IP adresleri](install-mars-agent.md#verify-internet-access) eklemeniz gerekebilir.<li>Ayarları bir proxy sunucu kullanacak şekilde değiştirin. Ardından proxy sunucusu ayrıntılarını sağlayın.<li> Makinenizin internet erişimi sınırlı ise, makinedeki veya proxy 'deki güvenlik duvarı ayarlarının bu [URL 'lere ve IP adreslerine](install-mars-agent.md#verify-internet-access)izin verildiğinden emin olun. <li>Sunucuda yüklü bir virüsten koruma yazılımınız varsa, bu dosyaları virüsten koruma taramasından çıkarın: <ul><li>CBEngine. exe (DPMRA. exe yerine).<li>CSC. exe (.NET Framework ile ilgili). Sunucuda yüklü her .NET Framework sürümü için bir CSC. exe vardır. Etkilenen sunucuda .NET Framework tüm sürümleri için CSC. exe dosyalarını hariç tutun. <li>Karalama klasörü veya önbellek konumu. <br>Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Recovery Services.<li>C:\Program Files\Microsoft Azure kurtarma hizmetleri \ bin klasöründe bin klasörü.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Güvenli yedekleme işlemleri için şifreleme anahtarı ayarlanamadı
 
-| Hata | Olası nedenler | Önerilen eylemler |
+| Hata | Olası nedenler | Önerilen Eylemler |
 | ---     | ---     | ---    |
-| <br />Güvenli yedeklemeler için şifreleme anahtarıayarlayamadı. Etkinleştirme tam olarak başarılı olamadı, ancak şifreleme parolası aşağıdaki dosyaya kaydedildi. |<li>Sunucu zaten başka bir kasaya kayıtlı.<li>Yapılandırma sırasında parola bozuktu.| Sunucuyu kasadan kaldırın ve yeni bir parolayla yeniden kaydedin.
+| <br />Güvenli yedeklemeler için şifreleme anahtarı ayarlanamadı. Etkinleştirme tamamen başarılı olmadı, ancak şifreleme parolası aşağıdaki dosyaya kaydedildi. |<li>Sunucu zaten başka bir kasaya kayıtlı.<li>Yapılandırma sırasında parola bozulmuş.| Sunucunun kasasından kaydını kaldırın ve yeni bir parola ile yeniden kaydedin.
 
 ## <a name="the-activation-did-not-complete-successfully"></a>Etkinleştirme başarıyla tamamlanmadı
 
-| Hata  | Olası nedenler | Önerilen eylemler |
+| Hata  | Olası nedenler | Önerilen Eylemler |
 |---------|---------|---------|
-|<br />Etkinleştirme başarıyla tamamlanmadı. Geçerli işlem bir iç hizmet hatası nedeniyle başarısız oldu [0x1FC07]. Bir süre sonra işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun.     | <li> Scratch klasörü yeterli alana sahip olmayan bir birim üzerinde yer alır. <li> Scratch klasörü yanlış taşınmış. <li> OnlineBackup.KEK dosyası eksik.         | <li>MARS aracısının [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Scratch klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun %5 ila %10'u arasında boş alana sahip bir ses birimine taşıyın. Önbellek konumunu doğru taşımak [için, dosya ve klasörleri yedekleme yle ilgili sık sorulan sorulara](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)bakın.<li> OnlineBackup.KEK dosyasının bulunduğundan emin olun. <br>*Scratch klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Scratch' dir.*        |
+|<br />Etkinleştirme başarıyla tamamlanmadı. Geçerli işlem, [0x1FC07] iç hizmet hatası nedeniyle başarısız oldu. Bir süre sonra işlemi yeniden deneyin. Sorun devam ederse, lütfen Microsoft Desteği'ne başvurun.     | <li> Karalama klasörü, yeterli alana sahip olmayan bir birimde bulunur. <li> Karalama klasörü yanlış bir şekilde taşındı. <li> OnlineBackup. KEK dosyası eksik.         | <li>MARS aracısının [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Karalama klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun %5 ' i ile %10 ' a kadar boş alana sahip bir birime taşıyın. Önbellek konumunu doğru bir şekilde taşımak için, [dosya ve klasörleri yedekleme hakkında sık sorulan soruların](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)adımlarına bakın.<li> OnlineBackup. KEK dosyasının mevcut olduğundan emin olun. <br>*Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri hizmeti \ çalışma klasörüdür*.        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Şifreleme parolası düzgün yapılandırılmadı
 
-| Hata  | Olası nedenler | Önerilen eylemler |
+| Hata  | Olası nedenler | Önerilen Eylemler |
 |---------|---------|---------|
-| <br />Hata 34506. Bu bilgisayarda depolanan şifreleme parolası doğru şekilde yapılandırılmamıştır.    | <li> Scratch klasörü yeterli alana sahip olmayan bir birim üzerinde yer alır. <li> Scratch klasörü yanlış taşınmış. <li> OnlineBackup.KEK dosyası eksik.        | <li>MARS Aracısı'nın [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Scratch klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun %5 ila %10'u arasında boş alana sahip bir ses birimine taşıyın. Önbellek konumunu doğru taşımak [için, dosya ve klasörleri yedekleme yle ilgili sık sorulan sorulara](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)bakın.<li> OnlineBackup.KEK dosyasının bulunduğundan emin olun. <br>*Scratch klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Scratch' dir.*         |
+| <br />Hata 34506. Bu bilgisayarda depolanan şifreleme parolası düzgün yapılandırılmamış.    | <li> Karalama klasörü, yeterli alana sahip olmayan bir birimde bulunur. <li> Karalama klasörü yanlış bir şekilde taşındı. <li> OnlineBackup. KEK dosyası eksik.        | <li>MARS aracısının [en son sürümüne](https://aka.ms/azurebackup_agent) yükseltin.<li>Karalama klasörünü veya önbellek konumunu, yedekleme verilerinin toplam boyutunun %5 ' i ile %10 ' a kadar boş alana sahip bir birime taşıyın. Önbellek konumunu doğru bir şekilde taşımak için, [dosya ve klasörleri yedekleme hakkında sık sorulan soruların](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder)adımlarına bakın.<li> OnlineBackup. KEK dosyasının mevcut olduğundan emin olun. <br>*Karalama klasörü veya önbellek yolu için varsayılan konum C:\Program Files\Microsoft Azure Kurtarma Hizmetleri hizmeti \ çalışma klasörüdür*.         |
 
-## <a name="backups-dont-run-according-to-schedule"></a>Yedeklemeler zamanlamaya göre çalışmaz
+## <a name="backups-dont-run-according-to-schedule"></a>Yedeklemeler zamanlamaya göre Çalıştırılmadı
 
-Zamanlanmış yedeklemeler otomatik olarak tetiklenmiyorsa ancak el ile yedeklemeler doğru çalışıyorsa, aşağıdaki eylemleri deneyin:
+Zamanlanmış yedeklemeler otomatik olarak tetiklenmez ancak el ile yedeklemeler doğru şekilde çalışmamışsa, aşağıdaki eylemleri deneyin:
 
-- Windows Server yedekleme zamanlamasının Azure dosyaları ve klasörleri yedekleme zamanlamasıyla çakışmadığından emin olun.
+- Windows Server yedekleme zamanlamasının Azure dosyaları ve klasörleri yedekleme zamanlaması ile çakışmadığından emin olun.
 
-- Çevrimiçi yedekleme durumunun **Etkinleştir'e**ayarlandığından emin olun. Durumu doğrulamak için aşağıdaki adımları izleyin:
+- Çevrimiçi yedekleme durumunun **Etkinleştir**olarak ayarlandığından emin olun. Durumu doğrulamak için şu adımları uygulayın:
 
-  1. Görev Zamanlayıcısı'nda **Microsoft'u** genişletin ve **Çevrimiçi Yedekleme'yi**seçin.
-  1. **Microsoft-OnlineBackup'ı** çift tıklatın ve **Tetikleyiciler** sekmesine gidin.
-  1. Durumun **Etkin**olarak ayarlıp ayarlamamasını denetleyin. Değilse, **Edit'i**, **Etkin'i**seçin ve ardından **Tamam'ı**seçin.
+  1. Görev Zamanlayıcı, **Microsoft** ' u genişletin ve **çevrimiçi yedekleme**' yi seçin.
+  1. **Microsoft-OnlineBackup** ' a çift tıklayın ve **Tetikleyiciler** sekmesine gidin.
+  1. Durumun **etkin**olarak ayarlandığından emin olun. Değilse, **Düzenle**' yi seçin, **etkin**' i seçin ve ardından **Tamam**' ı seçin.
 
-- Görevi çalıştırmak için seçilen kullanıcı hesabının sunucudaki **System** veya **Local Administrators grubu** olduğundan emin olun. Kullanıcı hesabını doğrulamak için **Genel** sekmesine gidin ve **Güvenlik** seçeneklerini kontrol edin.
+- Görevi çalıştırmak için seçilen kullanıcı hesabının, sunucuda **sistem** veya **yerel Yöneticiler ' grubu** olduğundan emin olun. Kullanıcı hesabını doğrulamak için **genel** sekmesine gidin ve **güvenlik** seçeneklerini kontrol edin.
 
-- PowerShell 3.0 veya sonraki sunucuda yüklü olduğundan emin olun. PowerShell sürümünü denetlemek için bu komutu `Major` çalıştırın ve sürüm numarasının 3 veya daha sonra olduğunu doğrulayın:
+- PowerShell 3,0 veya sonraki bir sürümünün sunucuda yüklü olduğundan emin olun. PowerShell sürümünü denetlemek için, bu komutu çalıştırın ve `Major` sürüm numarasının 3 veya üzeri olduğunu doğrulayın:
 
   `$PSVersionTable.PSVersion`
 
-- Bu yolun ortam değişkeninin `PSMODULEPATH` bir parçası olduğundan emin olun:
+- Bu yolun `PSMODULEPATH` ortam değişkeninin bir parçası olduğundan emin olun:
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- PowerShell yürütme ilkesi `LocalMachine` için ayarlanmışsa `restricted`, yedekleme görevi tetikleyen PowerShell cmdlet başarısız olabilir. Yürütme ilkesini denetlemek ve ayarlamak için bu komutları `Unrestricted` `RemoteSigned`yükseltilmiş modda çalıştırın:
+- İçin `LocalMachine` PowerShell yürütme ilkesi olarak `restricted`ayarlandıysa, yedekleme görevini tetikleyen PowerShell cmdlet 'i başarısız olabilir. Yürütme ilkesini `Unrestricted` denetlemek ve ayarlamak için bu komutları yükseltilmiş modda çalıştırın `RemoteSigned`:
 
  ```PowerShell
  Get-ExecutionPolicy -List
@@ -123,112 +123,112 @@ Zamanlanmış yedeklemeler otomatik olarak tetiklenmiyorsa ancak el ile yedeklem
 Set-ExecutionPolicy Unrestricted
 ```
 
-- Eksik veya bozuk PowerShell modülü MSOnlineBackup dosyaları olmadığından emin olun. Eksik veya bozuk dosyalar varsa, şu adımları izleyin:
+- Eksik veya bozuk PowerShell modülünün MSOnlineBackup dosyalarını bulunmadığından emin olun. Eksik veya bozuk dosyalar varsa, şu adımları uygulayın:
 
-  1. Düzgün çalışan bir MARS aracısı olan herhangi bir makineden, MSOnlineBackup klasörünü C:\Program Files\Microsoft Azure Recovery Services Agent\bin\Modules'den kopyalayın.
-  1. Sorunlu makinede, kopyalanan dosyaları aynı klasör konumuna yapıştırın (C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\bin\Modules).
+  1. Doğru şekilde çalışan bir MARS aracısına sahip olan herhangi bir makineden MSOnlineBackup klasörünü C:\Program Files\Microsoft Azure Recovery Services 'dan kopyalayın Agent\bin\Modules.
+  1. Sorunlu makinede, kopyalanmış dosyaları aynı klasör konumuna (C:\Program Files\Microsoft Azure Recovery Services \Bin\modules) yapıştırın.
 
-     Makinede zaten bir MSOnlineBackup klasörü varsa, dosyaları içine yapıştırın veya varolan dosyaları değiştirin.
+     Makinede zaten bir MSOnlineBackup klasörü varsa, dosyaları bu klasöre yapıştırın veya var olan dosyaları değiştirin.
 
 > [!TIP]
-> Değişikliklerin tutarlı bir şekilde uygulandığından emin olmak için, önceki adımları uyguladıktan sonra sunucuyu yeniden başlatın.
+> Değişikliklerin tutarlı bir şekilde uygulandığından emin olmak için, önceki adımları gerçekleştirdikten sonra sunucuyu yeniden başlatın.
 
-## <a name="resource-not-provisioned-in-service-stamp"></a>Hizmet damgasında verilmeyecek kaynak
+## <a name="resource-not-provisioned-in-service-stamp"></a>Kaynak hizmet damgasında sağlanmadı
 
-Hata | Olası nedenler | Önerilen eylemler
+Hata | Olası nedenler | Önerilen Eylemler
 --- | --- | ---
-Geçerli işlem, "Hizmet damgasında kaynak sağlanmaz" bir iç hizmet hatası nedeniyle başarısız oldu. Lütfen bir süre sonra operasyonu yeniden deneyin. (Kimlik numarası: 230006) | Korumalı sunucunun adı değiştirildi. | <li> Sunucuyu kasaya kayıtlı olarak orijinal ada yeniden adlandırın. <br> <li> Sunucuyu yeni adla kasaya yeniden kaydedin.
+Geçerli işlem, bir iç hizmet hatası nedeniyle başarısız oldu "kaynak hizmet damgasında sağlanmadı". Lütfen bir süre sonra işlemi yeniden deneyin. (KIMLIK: 230006) | Korunan sunucu yeniden adlandırıldı. | <li> Sunucuyu kasayla birlikte kaydedilen özgün adla yeniden adlandırın. <br> <li> Sunucuyu yeni adla kasaya yeniden kaydedin.
 
 
-## <a name="troubleshoot-restore-problems"></a>Sorun giderme sorunları geri yükleme
+## <a name="troubleshoot-restore-problems"></a>Geri yükleme sorunlarını giderme
 
-Azure Yedekleme, birkaç dakika sonra bile kurtarma hacmini başarıyla monte edemeyebilir. Ve işlem sırasında hata iletileri alabilirsiniz. Normal şekilde kurtarma ya da kurtarma ya da kurtarma başlatmaya başlamak için şu adımları izleyin:
+Azure Backup, birkaç dakika sonra bile kurtarma birimini başarıyla bağlayamayabilir. Ve işlem sırasında hata iletileri alabilirsiniz. Normal olarak kurtarmaya başlamak için şu adımları uygulayın:
 
-1. Birkaç dakikadır çalışıyorsa montaj işlemini iptal edin.
+1. Birkaç dakika boyunca çalışıyorsa bağlama işlemini iptal edin.
 
-2. Yedekleme aracısının en son sürümüne sahip olup olmadığını kontrol edin. Mars konsolunun **Eylemler** bölmesindeki sürümü denetlemek için **Microsoft Azure Kurtarma Hizmetleri Aracısı Hakkında'yı**seçin. **Sürüm** numarasının [bu makalede](https://go.microsoft.com/fwlink/?linkid=229525)belirtilen sürüme eşit veya daha yüksek olduğunu onaylayın. En son [sürümü indirmek](https://go.microsoft.com/fwLink/?LinkID=288905)için bu bağlantıyı seçin.
+2. Yedekleme aracısının en son sürümüne sahip olup olmadığınızı denetleyin. Sürümü denetlemek için MARS konsolunun **Eylemler** bölmesinde **Microsoft Azure kurtarma hizmetleri Aracısı**' nı seçin. **Sürüm** numarasının [Bu makalede](https://go.microsoft.com/fwlink/?linkid=229525)bahsedilen sürümden veya daha yüksek olduğunu doğrulayın. [En son sürümü indirmek](https://go.microsoft.com/fwLink/?LinkID=288905)için bu bağlantıyı seçin.
 
-3. Aygıt **Yöneticisi** > **Depolama denetleyicilerine** gidin ve **Microsoft iSCSI Başlatıcısı'nı**bulun. Yerini tespit ederseniz, doğrudan adım 7'ye gidin.
+3. **Aygıt Yöneticisi** > **depolama denetleyicileri** ' ne gidin ve **Microsoft iSCSI başlatıcısı**' nı bulun. Bunu buldıysanız, doğrudan 7. adıma gidin.
 
-4. Microsoft iSCSI Başlatıcı hizmetini bulamıyorsanız, Donanım Kimliği **ROOT\ISCSIPRT**ile **Bilinmeyen Aygıt** adlı **Aygıt Yöneticisi** > **Depolama denetleyicileri** altında bir giriş bulmaya çalışın.
+4. Microsoft iSCSI başlatıcısı hizmetini bulamıyorsanız, **Aygıt Yöneticisi** > **depolama denetleyicileri** altında, donanım kimliği **root\ıscsı**olan **bilinmeyen cihaz** adlı bir giriş bulmayı deneyin.
 
-5. **Bilinmeyen Aygıt'ı** sağ tıklatın ve **Sürücü YazılımLarını Güncelleştir'i**seçin.
+5. **Bilinmeyen cihaza** sağ tıklayıp **sürücü yazılımını Güncelleştir**' i seçin.
 
-6. **Güncelleştirilmiş sürücü yazılımı için otomatik olarak Arama**seçeneğini seçerek sürücüyü güncelleştirin. Bu güncelleştirme, **Bilinmeyen Aygıtı** Microsoft **iSCSI Başlatıcısı**olarak değiştirmeli:
+6. **Güncelleştirilmiş sürücü yazılımını otomatik olarak ara**seçeneğini belirleyerek sürücüyü güncelleştirin. Bu güncelleştirme **Bilinmeyen cihazı** **Microsoft iSCSI başlatıcısı**'na değiştirmeli:
 
-    ![Depolama denetleyicileri vurgulanmış Azure Yedekleme Aygıt Yöneticisi'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
+    ![Depolama denetleyicileri vurgulanmış şekilde Azure Backup Aygıt Yöneticisi ekran görüntüsü](./media/backup-azure-restore-windows-server/UnknowniSCSIDevice.png)
 
-7. Görev **Yöneticisi** > **Hizmetleri (Yerel)** > **Microsoft iSCSI Başlatıcı Hizmetine**gidin:
+7. **Görev Yöneticisi** > **Hizmetleri (yerel)** > **Microsoft iSCSI Başlatıcısı hizmeti**'ne gidin:
 
-    ![Hizmetler (Yerel) vurgulanmış Azure Yedekleme Görev Yöneticisi'nin ekran görüntüsü](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
+    ![Hizmetler (yerel) vurgulanmış Azure Backup Görev Yöneticisi ekran görüntüsü](./media/backup-azure-restore-windows-server/MicrosoftInitiatorServiceRunning.png)
 
-8. Microsoft iSCSI Başlatıcı hizmetini yeniden başlatın. Bunu yapmak için, hizmeti sağ tıklatın ve **Durdur'u**seçin. Sonra tekrar sağ tıklatın ve **Başlat'ı**seçin.
+8. Microsoft Iscsı Başlatıcısı hizmetini yeniden başlatın. Bunu yapmak için hizmete sağ tıklayın ve **Durdur**' u seçin. Sonra tekrar sağ tıklayıp **Başlat**' ı seçin.
 
-9. [Anında Geri Yükleme'yi](backup-instant-restore-capability.md)kullanarak kurtarmayı yeniden deneyin.
+9. Kurtarmayı [anında geri yükleme](backup-instant-restore-capability.md)kullanarak yeniden deneyin.
 
-Kurtarma hala başarısız olursa, sunucunuzu veya istemcinizi yeniden başlatın. Yeniden başlatmak istemiyorsanız veya sunucuyu yeniden başlattıktan sonra bile kurtarma hala başarısız oluyorsa, [başka bir makineden kurtarmayı](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)deneyin.
+Kurtarma hala başarısız olursa, sunucunuzu veya istemcinizi yeniden başlatın. Yeniden başlatmak istemiyorsanız veya sunucu yeniden başlatıldıktan sonra bile kurtarma hala başarısız olursa, [başka bir makineden kurtarmayı](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)deneyin.
 
-## <a name="troubleshoot-cache-problems"></a>Sorun giderme Önbellek sorunları
+## <a name="troubleshoot-cache-problems"></a>Önbellek sorunlarını giderme
 
-Önbellek klasörü (scratch klasörü olarak da adlandırılır) yanlış yapılandırılmışsa, ön koşulları kaçırMışsa veya erişimi kısıtlanmışsa yedekleme işlemi başarısız olabilir.
+Önbellek klasörü (karalama klasörü olarak da bilinir) yanlış yapılandırılmışsa, eksik Önkoşullar veya kısıtlı erişim varsa yedekleme işlemi başarısız olabilir.
 
 ### <a name="prerequisites"></a>Ön koşullar
 
-ÖNbellek klasöründe başarılı olmak için MARS aracı işlemlerinin aşağıdaki gereksinimlere uyması gerekir:
+MARS Aracısı işlemlerinin başarılı olabilmesi için önbellek klasörünün aşağıdaki gereksinimlere uyması gerekir:
 
-- [Scratch klasörü konumunda %5 ila %10 serbest ses alanı olduğundan emin olun](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- [Scratch klasörü konumunun geçerli ve erişilebilir olduğundan emin olun](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
-- [Önbellek klasöründeki dosya özniteliklerinin desteklenmesini sağlamak](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported)
-- [Ayrılan gölge kopyalama depolama alanının yedekleme işlemi için yeterli olduğundan emin olun](#increase-shadow-copy-storage)
-- [Önbellek klasörüne erişimi kısıtlayan başka işlemlerin (ör. anti-virüs yazılımı) olmadığından emin olun](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
+- [Karalama klasörü konumunda %5 ila %10 boş birim alanı kullanılabildiğinden emin olun](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Karalama klasörü konumunun geçerli ve erişilebilir olduğundan emin olun](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+- [Önbellek klasöründeki dosya özniteliklerinin desteklendiğinden emin olun](backup-azure-file-folder-backup-faq.md#are-there-any-attributes-of-the-cache-folder-that-arent-supported)
+- [Ayrılan gölge kopya depolama alanının yedekleme işlemi için yeterli olduğundan emin olun](#increase-shadow-copy-storage)
+- [Önbellek klasörüne erişimi kısıtlayan başka işlem olmadığından emin olun (örn. virüsten koruma yazılımı)](#another-process-or-antivirus-software-blocking-access-to-cache-folder)
 
-### <a name="increase-shadow-copy-storage"></a>Gölge kopya depolamasını artırma
+### <a name="increase-shadow-copy-storage"></a>Gölge kopya depolama alanını artırma
 
-Veri kaynağını korumak için gereken yetersiz gölge kopyalama depolama alanı varsa yedekleme işlemleri başarısız olabilir. Bu sorunu gidermek için, aşağıda gösterildiği gibi vssadmin kullanarak korunan birimüzerinde gölge kopya depolama alanı artırın:
+Veri kaynağını korumak için yeterli gölge kopya depolama alanı yoksa yedekleme işlemleri başarısız olabilir. Bu sorunu çözmek için, aşağıda gösterildiği gibi, aşağıdaki gibi, Korumalı birimdeki gölge kopya depolama alanını yükseltin:
 
-- Yükseltilmiş komut isteminden geçerli gölge depolama alanını denetleyin:<br/>
+- Yükseltilmiş komut isteminden geçerli gölge depolama alanını kontrol edin:<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- Aşağıdaki komutu kullanarak gölge depolama alanını artırın:<br/>
+- Aşağıdaki komutu kullanarak gölge depolama alanını yükseltin:<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>Önbellek klasörüne erişimi engelleyen başka bir işlem veya virüsten koruma yazılımı
 
-Sunucuda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler için virüsten koruma sına gerekli dışlama kuralları ekleyin:  
+Sunucusunda virüsten koruma yazılımı yüklüyse, bu dosya ve klasörler için virüsten koruma taramasına gereken dışlama kurallarını ekleyin:  
 
-- Scratch klasörü. Varsayılan konumu C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Scratch
-- C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\Bin'deki çöp kutusu klasörü
-- CBengine.exe
-- Csc.exe
+- Karalama klasörü. Varsayılan konum C:\Program Files\Microsoft Azure Recovery Services Hizmet\boş
+- C:\Program Files\Microsoft Azure Kurtarma Hizmetleri hizmeti \ bin konumundaki bin klasörü
+- CBengine. exe
+- CSC. exe
 
 ## <a name="common-issues"></a>Genel sorunlar
 
-Bu bölüm, MARS aracısını kullanırken karşılaştığınız sık karşılaşılan hataları kapsar.
+Bu bölümde, MARS Aracısı kullanılırken karşılaştığınız yaygın hatalar ele alınmaktadır.
 
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
 Hata iletisi | Önerilen eylem |
 -- | --
-Microsoft Azure Kurtarma Hizmetleri Aracısı, karalama konumunda depolanmış yedekleme sağlama toplamına erişemedi | Bu sorunu gidermek için aşağıdakileri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Çizilme konumu dosyalarını kilitleyen bir virüsten koruma veya başka işlemler olup olmadığını denetleme](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Çizik konumunun geçerli olup olmadığını ve mars ajanı tarafından erişilebilir olup olmadığını kontrol edin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Kurtarma Hizmetleri Aracısı, karalama konumunda depolanmış yedekleme sağlama toplamına erişemedi | Bu sorunu çözmek için, aşağıdaki işlemleri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Karalama konumu dosyalarını kilitleyen bir virüsten koruma veya başka bir işlem olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve Mars Aracısı için erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 Hata iletisi | Önerilen eylem |
 -- | --
-Microsoft Azure Kurtarma Hizmetleri Aracısı, VHD’yi başlatmak için karalama konumuna erişemedi | Bu sorunu gidermek için aşağıdakileri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Çizilme konumu dosyalarını kilitleyen bir virüsten koruma veya başka işlemler olup olmadığını denetleme](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Çizik konumunun geçerli olup olmadığını ve mars ajanı tarafından erişilebilir olup olmadığını kontrol edin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure Kurtarma Hizmetleri Aracısı, VHD’yi başlatmak için karalama konumuna erişemedi | Bu sorunu çözmek için, aşağıdaki işlemleri gerçekleştirin ve sunucuyu yeniden başlatın <br/> - [Karalama konumu dosyalarını kilitleyen bir virüsten koruma veya başka bir işlem olup olmadığını denetleyin](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [Karalama konumunun geçerli ve Mars Aracısı için erişilebilir olup olmadığını denetleyin.](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
-### <a name="sallowdiskspace"></a>SallowDiskSpace
+### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 Hata iletisi | Önerilen eylem |
 -- | --
-Yedekleme, karalama klasöründe bulunan birimde yetersiz depolama nedeniyle başarısız oldu | Bu sorunu gidermek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/>- [MARS ajanının en son olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Yedekleme çizilme alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
+Karalama klasörünün bulunduğu birimde yetersiz depolama nedeniyle yedekleme başarısız oldu | Bu sorunu çözmek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/>- [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Hata iletisi | Önerilen eylem |
 -- | --
-Dosyadaki değişiklikler bulunamadı. Bunun çeşitli nedenleri olabilir. Lütfen işlemi yeniden deneyin | Bu sorunu gidermek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/> - [MARS ajanının en son olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Yedekleme çizilme alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
+Dosyadaki değişiklikler bulunamadı. Bunun çeşitli nedenleri olabilir. Lütfen işlemi yeniden deneyin | Bu sorunu çözmek için aşağıdaki adımları doğrulayın ve işlemi yeniden deneyin:<br/> - [MARS aracısının en son sürümü olduğundan emin olun](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [Yedekleme karalama alanını etkileyen depolama sorunlarını doğrulama ve çözme](#prerequisites)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Yedekleme [aracısıyla Windows Server'ı yedekleme hakkında](tutorial-backup-windows-server-to-azure.md)daha fazla bilgi alın.
-- Yedeklemegeri yüklemeniz gerekiyorsa, [windows makinesine dosyaları geri yükleme'ye](backup-azure-restore-windows-server.md)bakın.
+- [Windows Server 'ı Azure Backup aracısıyla nasıl yedekleyeceğiniz](tutorial-backup-windows-server-to-azure.md)hakkında daha fazla bilgi alın.
+- Bir yedeklemeyi geri yüklemeniz gerekiyorsa bkz. [dosyaları bir Windows makinesine geri yükleme](backup-azure-restore-windows-server.md).

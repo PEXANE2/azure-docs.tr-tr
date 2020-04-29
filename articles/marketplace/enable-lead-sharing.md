@@ -1,6 +1,6 @@
 ---
-title: Azure Marketi'nde müşteri adayı paylaşımını etkinleştirin | Azure
-description: Uygulama ve hizmet yayıncıları için Azure Marketi ve AppSource için müşteri adayı paylaşımını nasıl etkinleştireceklerini öğrenin.
+title: Azure Marketi 'nde lider paylaşımını etkinleştirme | Mavisi
+description: Uygulama ve hizmet yayımcıları için Azure Marketi ve AppSource için lider paylaşımını nasıl etkinleştireceğinizi öğrenin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
 ms.openlocfilehash: b41a29fb3548937e9071cfb9f065dd46f63df83e
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387628"
 ---
 # <a name="enable-lead-sharing"></a>Müşteri adayı paylaşımını etkinleştirme
-[Azure Marketi](https://azuremarketplace.microsoft.com) veya [Microsoft AppSource'daki](https://appsource.microsoft.com) girişiniz için müşteri adayı yönetiminin etkin olduğundan emin olmak, aşağıdaki kitleler için kişi bilgilerini almanıza yardımcı olabilir:
+[Azure Marketi](https://azuremarketplace.microsoft.com) 'nde listelemesi için müşteri adayı yönetiminin etkinleştirildiğinden emin olun veya [Microsoft AppSource](https://appsource.microsoft.com) aşağıdaki izleyiciler için iletişim bilgilerini almanıza yardımcı olabilir:
 
-| Mağazası | Hedef kitle |
+| Storefront | Hedef kitle |
 |:--- |:--- |
-| AppSource | Kurumsal müşteriler |
+| AppSource | İş müşterileri |
 | Azure Market | Tüm müşteriler |
 
-Müşteri adaylarınız, aşağıdaki tabloda listelenen kampanyalar, alan satış personeliniz tarafından yapılan ilgili satış hareketleri ve uygulamanızın veya teklifinizin nasıl performans gösterdiği hakkında bilgi için sosyal yardım temelini sağlar:
+Müşteri adaylarınız, aşağıdaki tabloda listelenen kampanyalara yönelik olarak, alan satış personelinizin ilgili satışları ve uygulamanızın ya da teklifinizin nasıl çalıştığı hakkında bilgi edinmek için önemli bir erişim sağlar:
 
-| Mağazası | Kampanya |
+| Storefront | Kampanya |
 |:--- |:--- |
 | AppSource | Eğitim |
-| Azure Market | Talep içi üretim |
+| Azure Market | İsteğe bağlı oluşturma |
 
-Müşteri adaylarınız için aşağıdaki uygulamaları kullanın:
-*   Müşteri adaylarınızı hak edin ve müşteri adaylarını satış fırsatları olarak puanla.
-*   Bir satış boru hattı girmek için müşteri yollarınızı besler.
-*   Çabalarınızı genel pazarlama kampanyası stratejinizle uyumlu hale edin.
+Müşteri adaylarınız için aşağıdaki yöntemleri kullanın:
+*   Müşteri adaylarını uygun hale getirin ve müşteri adaylarını satış fırsatları olarak puanlandırın.
+*   Müşteri adaylarınızı bir satış işlem hattı girmeye yönlendirir.
+*   Çabalarınızı genel pazarlama kampanyası stratejinizle hizalayın.
 
-Müşteri adaylarınız aşağıdaki listelerde müşteri ilgisini gösterir:
+Müşteri adayları, müşterinin ilgisini aşağıdaki listelerde gösterir:
 
-| Mağazası | Liste |
+| Storefront | Döküm |
 |:--- |:--- |
 | AppSource | <table> <tr><td>Uygulama</td></tr> <tr><td>Danışmanlık Hizmetleri</td></tr> </table> |
 | Azure Market | <table> <tr><td>Sunduğu</td></tr> <tr><td>Teknoloji</td></tr> </table> |
 
-Aşağıdaki tabloda açıklandığı gibi müşteri adaylarınızı takip etmek için bir işlem yapmalısınız:
+Aşağıdaki tabloda açıklandığı gibi müşteri adaylarınızı izlemek için bir işlem yapmanız gerekir:
 
-| Mağazası | Leads |
+| Storefront | Leads |
 |:--- |:--- |
-| AppSource | <table> <tr><td>Sizin CRM</td></tr> <tr><td>Microsoft alan satıcısı CRM</td></tr> </table> |
-| Azure Market | <table> <tr><td>Azure Market</td></tr> <tr><td>Microsoft alan satıcısı CRM</td></tr> </table> |
+| AppSource | <table> <tr><td>CRM 'niz</td></tr> <tr><td>Microsoft alanı satıcı CRM</td></tr> </table> |
+| Azure Market | <table> <tr><td>Azure Market</td></tr> <tr><td>Microsoft alanı satıcı CRM</td></tr> </table> |
 
-Market'teki vitrinlerde bulunan müşteri adaylarınız, Ortak Satış programının bir özelliği olan Microsoft'un satıcı nitelikli müşteri adaylarından farklıdır.
+Market 'teki storeronts 'teki müşteri adaylarınız, ortak satış programının bir özelliği olan Microsoft satıcı nitelikli müşteri adaylarından farklıdır.
 
-Ortak Satış programına nasıl erişici [görünebilirsiniz](./promote-your-business-with-microsoft.md)hakkında daha fazla bilgi için bkz.
+Ortak satış programına erişme hakkında daha fazla bilgi için bkz. [Microsoft ile Işinizi yükseltme](./promote-your-business-with-microsoft.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure [Marketi ve AppSource yayımlama kılavuzunu](./marketplace-publishers-guide.md)inceleyin.
+[Azure Marketi ve AppSource yayımlama kılavuzunu](./marketplace-publishers-guide.md)gözden geçirin.

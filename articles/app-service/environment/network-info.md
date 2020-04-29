@@ -1,6 +1,6 @@
 ---
 title: Ağ konusunda dikkat edilmesi gerekenler
-description: ASE ağ trafiği ve ASE'nizle ağ güvenlik gruplarını ve kullanıcı tanımlı rotaları nasıl ayarlayabildiğiniz hakkında bilgi edinin.
+description: Ao ağ trafiği ve ağ güvenlik grupları ve Kullanıcı tanımlı yolların AP 'niz ile nasıl ayarlanacağı hakkında bilgi edinin.
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
@@ -8,105 +8,105 @@ ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477677"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
 ## <a name="overview"></a>Genel Bakış ##
 
- Azure [Uygulama Hizmet Ortamı,][Intro] Azure Uygulama Hizmeti'nin Azure sanal ağınızdaki (VNet) bir alt ağa dağıtımıdır. Bir Uygulama Hizmeti ortamı (ASE) için iki dağıtım türü vardır:
+ Azure [App Service ortamı][Intro] , Azure sanal ağınızdaki (VNet) bir alt ağa Azure App Service bir dağıtımdır. App Service ortamı için iki dağıtım türü vardır (Ao):
 
-- **Harici ASE**: ASE tarafından barındırılan uygulamaları internet erişimine dayalı bir IP adresinde ortaya çıkarır. Daha fazla bilgi için [bkz.][MakeExternalASE]
-- **ILB ASE**: ASE tarafından barındırılan uygulamaları VNet'inizin içindeki bir IP adresinde ortaya çıkarır. Dahili uç nokta bir iç yük dengeleyicisi (ILB), bu yüzden bir ILB ASE denir. Daha fazla bilgi için [bkz.][MakeILBASE]
+- **Dış asa**: internet ERIŞIMLI bir IP adresinde asa barındırılan uygulamaları gösterir. Daha fazla bilgi için bkz. [dış Ao oluşturma][MakeExternalASE].
+- **ILB ASE**: ASE tarafından barındırılan uygulamaları VNET 'iniz IÇINDEKI bir IP adresi üzerinde gösterir. İç uç nokta, bir iç yük dengeleyiciye (ıLB) ve bu nedenle ıLB Ao 'nun çağrılmasının neden olduğu anlamına gelir. Daha fazla bilgi için bkz. [ILB Ai oluşturma ve kullanma][MakeILBASE].
 
-Tüm ASE'ler, Harici ve ILB, gelen yönetim trafiği için kullanılan ve ASE'den internete arama yaparken adres olarak kullanılan bir genel VIP'ye sahiptir. İnternete giden bir ASE'den gelen aramalar, ASE için atanan VIP aracılığıyla VNet'ten ayrılır. Bu VIP kamu IP internete gitmek ASE tüm aramalar için kaynak IP' dir. ASE'nizdeki uygulamalar VNet'inizdeki veya VPN üzerinden kaynaklara arama yaparsa, kaynak IP, ASE'niz tarafından kullanılan alt ağdaki IP'lerden biridir. ASE VNet içinde olduğundan, ek yapılandırma olmadan VNet içindeki kaynaklara da erişebilir. VNet şirket içi ağınıza bağlıysa, ASE'nizdeki uygulamalar ek yapılandırma olmadan buradaki kaynaklara da erişebilir.
+Tüm ASE, dış ve ıLB 'ler, gelen yönetim trafiği için kullanılan genel bir VIP ve ASE 'den internet 'e çağrılar yaparken kimden adresidir. İnternet 'e gidecek bir ASE 'den yapılan çağrılar, VNet 'i ASE için atanan VIP aracılığıyla bırakır. Bu VIP 'nin genel IP 'si, Ao 'dan internet 'e gidecek tüm çağrılar için kaynak IP 'dir. ASE 'deki uygulamalar, sanal ağınızdaki veya bir VPN genelindeki kaynaklara çağrılar yapıyorsa kaynak IP, ASE 'niz tarafından kullanılan alt ağdaki IP 'lerden biridir. ASE, VNet içinde olduğundan, ek bir yapılandırma gerektirmeden VNet içindeki kaynaklara da erişebilir. VNet şirket içi ağınıza bağlıysa, ASE 'deki uygulamalar da ek yapılandırma olmadan kaynaklara erişebilir.
 
-![Dış ASE][1] 
+![Dış Ao][1] 
 
-Harici BIR ASE'niz varsa, genel VIP aynı zamanda ASE uygulamalarınızın çözümlediğiniz son noktadır:
+Bir dış Ao 'niz varsa, genel VIP de Ao uygulamalarınızın şu şekilde çözümli uç noktasıdır:
 
 * HTTP/S 
 * FTP/S
 * Web dağıtımı
 * Uzaktan hata ayıklama
 
-![ILB ASE][2]
+![ıLB ATıCı][2]
 
-ILB ASE'niz varsa, ILB adresihttp/S, FTP/S, web dağıtımı ve uzaktan hata ayıklama için son noktadır.
+ILB ASE varsa, ıLB adresinin adresi HTTP/S, FTP/S, Web dağıtımı ve uzaktan hata ayıklama için uç noktadır.
 
-## <a name="ase-subnet-size"></a>ASE alt ağ boyutu ##
+## <a name="ase-subnet-size"></a>ATıCı alt ağ boyutu ##
 
-ASE'yi barındırmak için kullanılan alt ağın boyutu, ASE dağıtıldıktan sonra değiştirilemez.  ASE, her altyapı rolü için ve her Yalıtılmış Uygulama Hizmeti planı örneği için bir adres kullanır.  Ayrıca, oluşturulan her alt ağ için Azure Ağı tarafından kullanılan beş adres vardır.  Uygulama Hizmeti planı olmayan bir ASE, bir uygulama oluşturmadan önce 12 adres kullanır.  Bir ILB ASE ise, o ASE bir uygulama oluşturmadan önce 13 adresleri kullanır. ASE'nizi ölçeklendirirken, Uygulama Hizmeti planı örneklerinizin 15 ve 20'sinin her katı nda altyapı rolleri eklenir.
+Atıcı 'yi barındırmak için kullanılan alt ağın boyutu Ao dağıtıldıktan sonra değiştirilemez.  ATıCı, her bir altyapı rolü için ve her yalıtılmış App Service plan örneği için bir adres kullanır.  Ayrıca, Azure ağ tarafından oluşturulan her alt ağ için beş adres kullanılır.  App Service planı olmayan bir Ao, uygulama oluşturmadan önce 12 adres kullanır.  Bu bir ıLB Ao ise, bu Ao 'da bir uygulama oluşturmadan önce 13 adres kullanacaktır. Ao uygulamanızı ölçeklendirirseniz, altyapı rolleri, 15 ' in her katı ve App Service planı örneklerinizin 20 ' si eklenir.
 
    > [!NOTE]
-   > Ase'den başka hiçbir şey alt ağda olamaz. Gelecekteki büyümeiçin izin veren bir adres alanı seçtiğinizden emin olun. Bu ayarı daha sonra değiştiremezsiniz. Biz 256 `/24` adresleri ile bir boyut öneririz.
+   > Alt ağda başka hiçbir şey olamaz, ancak Ao. Gelecekteki büyüme için izin veren bir adres alanı seçtiğinizden emin olun. Bu ayarı daha sonra değiştiremezsiniz. 256 adres `/24` içeren bir boyut önerilir.
 
-Yukarı veya aşağı ölçeklendirildiğinde, uygun boyutta yeni roller eklenir ve ardından iş yüklerin izlenir, geçerli boyuttan hedef boyutuna geçirilir. Özgün VM'ler yalnızca iş yükleri geçtikten sonra kaldırıldı. 100 ASP örneği içeren bir ASE'niz varsa, VM sayısının iki katına ihtiyacınız olan bir dönem olurdu.  Bu nedenle, gerektirebilecek değişiklikleri karşılamak için bir '/24' kullanılmasını öneririz.  
+Ölçeği artırma veya azaltma yaptığınızda, uygun boyutun yeni rolleri eklenir ve sonra iş yükleriniz geçerli boyuttan hedef boyuta geçirilir. Özgün VM 'Ler yalnızca iş yükleri geçirildikten sonra kaldırılır. 100 ASP örneklerine sahip bir AŞIRINIZ varsa, sanal makine sayısının iki katı olması gereken bir nokta olabilir.  Bu nedenle, gerek duyduğunuz değişiklikleri karşılamak için bir '/24 ' kullanılması önerilir.  
 
-## <a name="ase-dependencies"></a>ASE bağımlılıkları ##
+## <a name="ase-dependencies"></a>ATıCı bağımlılıkları ##
 
-### <a name="ase-inbound-dependencies"></a>ASE gelen bağımlılıklar ###
+### <a name="ase-inbound-dependencies"></a>ATıCı gelen bağımlılıkları ###
 
-ASE'nin çalışması için ASE'nin aşağıdaki bağlantı noktalarının açık olmasını gerektirir:
+ASE 'nin çalışması için, ASE 'nin şu bağlantı noktalarının açık olması gerekir:
 
 | Kullanım | Başlangıç | Alıcı |
 |-----|------|----|
-| Yönetim | Uygulama Hizmeti yönetim adresleri | ASE alt ağı: 454, 455 |
-|  ASE iç iletişim | ASE subnet: Tüm bağlantı noktaları | ASE subnet: Tüm bağlantı noktaları
-|  Azure yük bakiyesi gelen izin ver | Azure yük dengeleyici | ASE alt ağı: 16001
+| Yönetim | Yönetim adreslerini App Service | Ao alt ağı: 454, 455 |
+|  ATıCı iç iletişimi | Ao alt ağı: tüm bağlantı noktaları | Ao alt ağı: tüm bağlantı noktaları
+|  Azure yük dengeleyiciye izin ver | Azure yük dengeleyici | Ao alt ağı: 16001
 
-7654 ve 1221 porttazi üzerinde açık olarak gösterilebilen 2 bağlantı noktası daha vardır. Onlar bir IP adresi ve başka bir şey ile cevap. İstenirlerse engellenebilirler. 
+Bir bağlantı noktası taraması, 7654 ve 1221 üzerinde açık olarak gösterebilme diğer 2 bağlantı noktası vardır. Bunlar bir IP adresiyle ve başka hiçbir şey ile yanıt vermez. İstenirse engellenebilir. 
 
-Gelen yönetim trafiği, sistem izlemenin yanı sıra ASE'nin komuta ve denetimini de sağlar. Bu trafiğin kaynak adresleri [ASE Yönetimi adresleri][ASEManagement] belgesinde listelenir. Ağ güvenliği yapılandırmasının 454 ve 455 bağlantı noktalarındaki ASE yönetim adreslerinden erişime izin sağlaması gerekir. Bu adreslerden erişimi engellerseniz, ASE'niz sağlıksız hale gelir ve askıya alınır. 454 ve 455 bağlantı noktalarına gelen TCP trafiği aynı VIP'den geri dönmelidir veya asimetrik yönlendirme sorunu olur. 
+Gelen yönetim trafiği, sistem izlemeye ek olarak ATıCı 'in komut ve denetimini sağlar. Bu trafiğin kaynak adresleri [atıcı yönetim adresleri][ASEManagement] belgesinde listelenir. Ağ güvenlik yapılandırmasının, 454 ve 455 bağlantı noktalarında ATıCı yönetim adreslerinden erişime izin verilmesi gerekir. Bu adreslerden erişimi engellerseniz Ao, sağlıksız olur ve askıya alınır. 454 ve 455 bağlantı noktalarında gelen TCP trafiği aynı VIP 'den geri dönmeli veya asimetrik bir yönlendirme sorununa sahip olursunuz. 
 
-ASE alt ağı içinde, dahili bileşen iletişimi için kullanılan birçok bağlantı noktası vardır ve bunlar değişebilir. Bu, ASE alt netindeki tüm bağlantı noktalarının ASE alt netinden erişilebilmelidir. 
+ADIR alt ağında, iç bileşen iletişimi için kullanılan birçok bağlantı noktası bulunur ve bunlar değişebilir. Bu, ALSUBNET alt ağındaki tüm bağlantı noktalarının Ao alt ağından erişilebilir olmasını gerektirir. 
 
-Azure yük dengeleyicisi ile ASE alt ağı arasındaki iletişim için açık olması gereken minimum bağlantı noktaları 454, 455 ve 16001'dir. 16001 bağlantı noktası, yük dengeleyicisi ve ASE arasındaki trafiği canlı tutmak için kullanılır. ILB ASE kullanıyorsanız, trafiği sadece 454, 455, 16001 bağlantı noktalarına kadar kilitleyebilirsiniz.  Harici ASE kullanıyorsanız, normal uygulama erişim bağlantı noktalarını dikkate almanız gerekir.  
+Azure Yük Dengeleyici ile Ao alt ağı arasındaki iletişim için, açılması gereken en düşük bağlantı noktaları 454, 455 ve 16001. 16001 bağlantı noktası, yük dengeleyici ve Ao arasında canlı trafiği tutmak için kullanılır. ILB Ao kullanıyorsanız, trafiği yalnızca 454, 455, 16001 bağlantı noktalarıyla kilitleyebilir.  Bir dış Ace kullanıyorsanız, normal uygulama erişimi bağlantı noktalarını hesaba getirmeniz gerekir.  
 
-Kendinizi ilgilendiren diğer bağlantı noktaları uygulama bağlantı noktalarıdır:
+Kendi kendinize sorun için ihtiyacınız olan diğer bağlantı noktaları uygulama bağlantı noktalardır:
 
-| Kullanım | Bağlantı Noktaları |
+| Kullanım | Bağlantı noktaları |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Visual Studio uzaktan hata ayıklama  |  4020, 4022, 4024 |
-|  Web Dağıtım hizmeti | 8172 |
+|  Web Dağıtımı hizmeti | 8172 |
 
-Uygulama bağlantı noktalarını engellerseniz, ASE'niz çalışmaya devam edebilir, ancak uygulamanız çalışmayabilir.  Harici ASE ile atanan uygulama IP adreslerini kullanıyorsanız, uygulamalarınıza atanan IP'lerden, ASE portalı > IP Adresleri sayfasında gösterilen bağlantı noktalarındaASE alt ağına trafik izni vermeniz gerekir.
+Uygulama bağlantı noktalarını engellerseniz ATıCı 'niz çalışmaya devam edebilir ancak uygulamanız çalışmayabilir.  Uygulama tarafından atanan IP adreslerini bir dış Ao ile kullanıyorsanız, uygulamalarınıza atanan IP 'lerden, Ao portalı > IP adresleri sayfasında gösterilen bağlantı noktalarında Ao alt ağına giden trafiğe izin vermeniz gerekir.
 
-### <a name="ase-outbound-dependencies"></a>ASE giden bağımlılıklar ###
+### <a name="ase-outbound-dependencies"></a>ATıCı giden bağımlılıklar ###
 
-Giden erişim için, bir ASE birden çok dış sisteme bağlıdır. Bu sistem bağımlılıklarının çoğu DNS adlarıyla tanımlanır ve sabit bir IP adresi kümesiyle eşleşmez. Bu nedenle, ASE, ASE alt netinden çeşitli bağlantı noktalarındaki tüm harici IP'lere giden erişim gerektirir. 
+Giden erişim için bir ATıCı birden çok dış sisteme bağlıdır. Bu sistem bağımlılıklarının birçoğu DNS adlarıyla tanımlanır ve sabit bir IP adresleri kümesiyle eşlememelidir. Bu nedenle, Ao alt ağından çok sayıda bağlantı noktasındaki tüm dış IP 'lere giden erişim gerekir. 
 
-ASE, aşağıdaki bağlantı noktalarında internet erişimine açık adreslere iletişim kurar:
+ATıCı, aşağıdaki bağlantı noktalarında internet 'e erişilebilen adreslere iletişim kurar:
 
-| Kullanımlar | Bağlantı Noktaları |
+| Kullanımlar | Bağlantı noktaları |
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| CRL, Windows güncellemeleri, Linux bağımlılıkları, Azure hizmetleri | 80/443 |
+| CRL, Windows güncelleştirmeleri, Linux bağımlılıkları, Azure hizmetleri | 80/443 |
 | Azure SQL | 1433 | 
 | İzleme | 12000 |
 
-Giden bağımlılıklar, Uygulama Hizmeti Ortamı [giden trafiği kilitlemeyi](./firewall-integration.md)açıklayan belgede listelenir. ASE bağımlılıklarına erişimini kaybederse, çalışmayı durdurur. Bu yeterince uzun olduğunda, ASE askıya alınır. 
+Giden bağımlılıklar, [giden trafik App Service ortamı kilitlemeyi](./firewall-integration.md)açıklayan belgede listelenir. ASE, bağımlılıklarına erişimi kaybederse çalışmayı durduruyor. Bu yeterince uzun olduğunda Ao, askıya alınır. 
 
 ### <a name="customer-dns"></a>Müşteri DNS ###
 
-VNet müşteri tanımlı bir DNS sunucusuyla yapılandırılırsa, kiracı iş yükleri bunu kullanır. ASE, yönetim amacıyla Azure DNS kullanır. VNet müşteri tarafından seçilen bir DNS sunucusuyla yapılandırılırsa, DNS sunucusuna ASE'yi içeren alt ağdan ulaşılabilir olmalıdır.
+VNet, müşteri tarafından tanımlanan bir DNS sunucusu ile yapılandırıldıysa, kiracı iş yükleri onu kullanır. ATıCı, yönetim amacıyla Azure DNS kullanır. VNet, müşterinin seçtiği bir DNS sunucusu ile yapılandırıldıysa, DNS sunucusuna ASE 'yi içeren alt ağdan erişilebilir olması gerekir.
 
-Web uygulamanızdan DNS çözünürlüğünü test etmek için konsol *komutu ad çözücüsünü*kullanabilirsiniz. Uygulamanız için scm sitenizdeki hata ayıklama penceresine gidin veya portaldaki uygulamaya gidin ve konsolu seçin. Kabuk isteminden, yukarı bakmak istediğiniz DNS adı ile birlikte komut *ad çözümleyicisini* düzenleyebilirsiniz. Geri aldığınız sonuç, uygulamanızın aynı aramayı yaparken elde edeceği sonuçla aynıdır. NSLookup kullanıyorsanız, bunun yerine Azure DNS kullanarak bir arama yaparsınız.
+Web uygulamanızdan DNS çözümlemesini test etmek için, *nameresolver*konsol komutunu kullanabilirsiniz. Uygulamanız için SCM sitenizdeki hata ayıklama penceresine gidin veya portalda uygulamaya gidin ve konsol ' ı seçin. Kabuk isteminde, arama yapmak istediğiniz DNS adıyla birlikte *nameresolver* komutunu verebilirsiniz. Geri alacağınız sonuç, uygulamanızın aynı aramayı yaparken elde edilmesine benzer. Nslookup kullanırsanız, bunun yerine Azure DNS kullanarak bir arama yapılır.
 
-ASE'nizin bulunduğu VNet'in DNS ayarını değiştirirseniz, ASE'nizi yeniden başlatmanız gerekir. ASE'nizi yeniden başlatmayı önlemek için, ASE'nizi oluşturmadan önce DNS ayarlarınızı VNet'iniz için yapılandırmanız önerilir.  
+ASE 'nizin bulunduğu VNet 'in DNS ayarını değiştirirseniz ASE 'nizi yeniden başlatmanız gerekir. ASE 'nizi yeniden başlatmayı önlemek için, ASE 'nizi oluşturmadan önce sanal ağınız için DNS ayarlarınızı yapılandırmanız önemle tavsiye edilir.  
 
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>Portal bağımlılıkları ##
 
-ASE fonksiyonel bağımlılıklarına ek olarak, portal deneyimiyle ilgili birkaç ekstra öğe vardır. Azure portalındaki bazı özellikler _SCM sitesine_doğrudan erişime bağlıdır. Azure Uygulama Hizmeti'ndeki her uygulama için iki URL vardır. İlk URL, uygulamanıza erişmektir. İkinci URL, _Kudu konsolu_olarak da adlandırılan SCM sitesine erişmektir. SCM sitesini kullanan özellikler şunlardır:
+Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek öğe vardır. Azure portal bazı yetenekler, _SCM sitesine_doğrudan erişime bağlıdır. Azure App Service içindeki her uygulama için iki URL bulunur. İlk URL, uygulamanıza erişdir. İkinci URL, _kudu konsolu_olarak da adlandırılan SCM sitesine erişilir. SCM sitesini kullanan özellikler şunlardır:
 
 -   Web işleri
 -   İşlevler
@@ -116,107 +116,107 @@ ASE fonksiyonel bağımlılıklarına ek olarak, portal deneyimiyle ilgili birka
 -   İşlem Gezgini
 -   Konsol
 
-ILB ASE kullandığınızda, SCM sitesine VNet dışından erişilemez. Bir uygulamanın SCM sitesine erişim gerektirdiğinden, bazı özellikler uygulama portalından çalışmaz. Portalı kullanmak yerine doğrudan SCM sitesine bağlanabilirsiniz. 
+ILB ASE kullandığınızda, SCM sitesinin VNet dışından erişilebilir olmaması gerekir. Bazı yetenekler, uygulamanın SCM sitesine erişmesi gerektiğinden uygulama portalından çalışmayacaktır. Portalı kullanmak yerine doğrudan SCM sitesine bağlanabilirsiniz. 
 
-ILB ASE'niz *contoso.appserviceenvironment.net* alan adıysa ve uygulama adınız *testapp*ise, uygulamaya *testapp.contoso.appserviceenvironment.net*ulaşılır. Onunla gider SCM sitesi *testapp.scm.contoso.appserviceenvironment.net*ulaşılır.
+ILB Ao, *contoso.appserviceenvironment.net* etki alanı adıdır ve uygulamanızın adı *TestApp*ise, uygulamaya *TestApp.contoso.appserviceenvironment.net*adresinden ulaşılırsa. *TestApp.scm.contoso.appserviceenvironment.net*adresinde yer alan SCM sitesine ulaşıldı.
 
-## <a name="ase-ip-addresses"></a>ASE IP adresleri ##
+## <a name="ase-ip-addresses"></a>ATıCı IP adresleri ##
 
-Bir ASE'nin dikkat etmesi gereken birkaç IP adresi vardır. Bunlar:
+ATıCı 'nin farkında olması için birkaç IP adresi vardır. Bunlar:
 
-- **Genel gelen IP adresi**: Harici ASE'deki uygulama trafiği ve hem Harici ASE hem de ILB ASE'deki yönetim trafiği için kullanılır.
-- **Giden genel IP**: VPN'den aşağı yönlendirilen VNet'ten ayrılan ASE'den giden bağlantılar için "kimden" IP olarak kullanılır.
-- **ILB IP adresi**: ILB IP adresi yalnızca Bir ILB ASE'de bulunur.
-- **Uygulamaya atanan IP tabanlı SSL adresleri**: Yalnızca Harici BIR ASE ile ve IP tabanlı SSL yapılandırıldığında mümkündür.
+- **Genel gelen IP adresi**: BIR dış Ao 'da uygulama trafiği ve hem dış ate hem de ıLB Ao 'daki yönetim trafiği için kullanılır.
+- **Giden genel IP**: sanal ağı bir VPN 'ye YÖNLENDIRMEYEN ASE 'den giden bağlantılar için "Kimden" IP 'si olarak kullanılır.
+- **ILB IP adresi**: ıLB IP adresi yalnızca bir ıLB Ao 'da bulunur.
+- **Uygulama tarafından atanan IP tabanlı SSL adresleri**: yalnızca BIR dış Ale ve IP tabanlı SSL yapılandırıldığında mümkündür.
 
-Tüm bu IP adresleri ASE UI'den Azure portalında görülebilir. ILB ASE'niz varsa, ILB'nin IP'si listelenir.
+Tüm bu IP adresleri ABI kullanıcı arabiriminden Azure portal görünür. ILB Ao 'a sahipseniz ıLB 'nin IP 'si listelenir.
 
    > [!NOTE]
-   > Bu IP adresleri, ASE'niz çalışır durumda ve çalışmaya devam ettikçe değişmez.  ASE'niz askıya alınır ve geri yüklenirse, ASE'niz tarafından kullanılan adresler değişir. Bir ASE'nin askıya alınmasının normal nedeni, gelen yönetim erişimini engellemeniz veya BIR ASE bağımlılığına erişimi engellemenizdir. 
+   > Bu IP adresleri, asa 'niz çalışmaya devam eder ve çalışır durumda kalır.  ATıCı 'niz askıya alınırsa ve geri yüklenirse, Ao 'niz tarafından kullanılan adresler değişecektir. Ace 'nin askıya alınması için normal nedeni, gelen yönetim erişimini engellemeniz veya bir ACE bağımlılığı erişimi engellemeniz olabilir. 
 
 ![IP adresleri][3]
 
-### <a name="app-assigned-ip-addresses"></a>Uygulamaya atanan IP adresleri ###
+### <a name="app-assigned-ip-addresses"></a>Uygulama tarafından atanan IP adresleri ###
 
-Harici ASE ile tek tek uygulamalara IP adresleri atayabilirsiniz. Bunu Bir ILB ASE ile yapamazsınız. Uygulamanızın kendi IP adresine sahip olacak şekilde nasıl yapılandırılabildiğiniz hakkında daha fazla bilgi için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını Güvenli'ye](../configure-ssl-bindings.md)bakın.
+Dış bir AO ile, tek tek uygulamalara IP adresleri atayabilirsiniz. Bunu bir ıLB Ao ile yapamazsınız. Uygulamanızı kendi IP adresine sahip olacak şekilde yapılandırma hakkında daha fazla bilgi için, bkz. [Azure App Service BIR TLS/SSL bağlaması ile özel BIR DNS adını güvenli hale getirme](../configure-ssl-bindings.md).
 
-Bir uygulamanın kendi IP tabanlı SSL adresi olduğunda, ASE bu IP adresine eşlenmek için iki bağlantı noktası ayırır. Bir bağlantı noktası HTTP trafiği için, diğer bağlantı noktası ise HTTPS içindir. Bu bağlantı noktaları IP adresleri bölümünde ASE UI'de listelenir. Trafik, VIP'den bu bağlantı noktalarına ulaşabilmeli veya uygulamalara erişilememelidir. Bu gereksinim, Ağ Güvenlik Grupları (NSGs) yapılandırDığınızda hatırlamak önemlidir.
+Bir uygulamanın kendi IP tabanlı SSL adresi varsa, ATıCı bu IP adresiyle eşlemek için iki bağlantı noktası ayırır. Bir bağlantı noktası HTTP trafiğine yöneliktir ve diğer bağlantı noktası HTTPS içindir. Bu bağlantı noktaları, IP adresleri bölümündeki Ao Kullanıcı arabiriminde listelenir. Trafik, VIP 'lerden Bu bağlantı noktalarına erişebilmelidir veya uygulamalara erişilemez. Bu gereksinim, ağ güvenlik gruplarını (NSG 'ler) yapılandırırken dikkat etmeniz açısından önemlidir.
 
 ## <a name="network-security-groups"></a>Ağ Güvenlik Grupları ##
 
-[Ağ Güvenlik Grupları,][NSGs] Bir VNet içinde ağ erişimini denetleme olanağı sağlar. Portalı kullandığınızda, her şeyi inkar etmek için en düşük önceliğe sahip üstü kapalı bir inkar kuralı vardır. İnşa ettiğiniz şey izin kurallarınızdır.
+[Ağ güvenlik grupları][NSGs] , bir sanal ağ içindeki ağ erişimini denetleme olanağı sağlar. Portalı kullandığınızda, her şeyi reddetmek için en düşük öncelikte bir örtük reddetme kuralı vardır. Sizin oluşturduğunuz özellikler, izin verme kurallarıdır.
 
-BIR ASE'de, ASE'nin kendisini barındırmak için kullanılan VM'lere erişiminiz yoktur. Microsoft tarafından yönetilen bir abonelikteler. ASE'deki uygulamalara erişimi kısıtlamak istiyorsanız, NSG'leri ASE alt ağına ayarlayın. Bunu yaparken, ASE bağımlılıklarına dikkat edin. Herhangi bir bağımlılık ları engellerseniz, ASE çalışmayı durdurur.
+Ao 'da Ao 'nun kendisini barındırmak için kullanılan VM 'lere erişiminiz yok. Bunlar, Microsoft tarafından yönetilen bir abonelikte yer alırlar. Ao 'daki uygulamalara erişimi kısıtlamak istiyorsanız Ao alt ağında NSG 'leri ayarlayın. Bunu yaparken, AKEN bağımlılıklarıyla dikkatli bir dikkat edin. Herhangi bir bağımlılığı engellerseniz ATıCı çalışmayı durduruyor.
 
-NSG'ler Azure portalı veya PowerShell üzerinden yapılandırılabilir. Buradaki bilgiler Azure portalını gösterir. **Portaldaki**NSG'leri Ağ altında üst düzey bir kaynak olarak oluşturur ve yönetirsiniz.
+NSG 'ler Azure portal veya PowerShell aracılığıyla yapılandırılabilir. Buradaki bilgiler Azure portal gösterir. Portaldaki NSG 'leri, **ağ**altında en üst düzey kaynak olarak oluşturup yönetirsiniz.
 
-Bir ASE'nin çalışması için NSG'deki gerekli girişler trafiğe izin vermek içindir:
+Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 
 **Gelen**
-* bağlantı noktalarındaki AppServiceManagement IP servis etiketinden 454.455
-* bağlantı noktası 16001 üzerindeki yük dengeleyicisinden
-* tüm bağlantı noktalarında ASE alt ağına KADAR
+* 454.455 bağlantı noktalarında AppServiceManagement IP hizmet etiketinden
+* 16001 numaralı bağlantı noktasındaki yük dengeleyiciden
+* Ao alt ağından tüm bağlantı noktalarında as alt ağına
 
 **Giden**
-* bağlantı noktası 123'teki tüm IP'lere
-* bağlantı noktalarındaki tüm IP'lere 80, 443
-* bağlantı noktalarındaki AzureSQL IP servis etiketine 1433
-* bağlantı noktası 12000 tüm IP'ler için
-* tüm bağlantı noktalarındaASE alt ağına
+* 123 numaralı bağlantı noktasındaki tüm IP 'lere
+* 80, 443 bağlantı noktasındaki tüm IP 'lere
+* 1433 bağlantı noktalarında AzureSQL IP hizmet etiketine
+* 12000 numaralı bağlantı noktasındaki tüm IP 'lere
+* Tüm bağlantı noktalarında as alt ağına
 
-DNS'ye trafik NSG kurallarından etkilenmediği için DNS bağlantı noktasının eklenmesi gerekmez. Bu bağlantı noktaları, uygulamalarınızın başarılı kullanım için ihtiyaç duyduğu bağlantı noktalarını içermez. Normal uygulama erişim bağlantı noktaları şunlardır:
+DNS 'ye trafik, NSG kurallarından etkilenmediğinden DNS bağlantı noktasının eklenmesi gerekmez. Bu bağlantı noktaları, uygulamalarınızın başarılı bir şekilde kullanılması için gereken bağlantı noktalarını içermez. Normal uygulama erişimi bağlantı noktaları şunlardır:
 
-| Kullanım | Bağlantı Noktaları |
+| Kullanım | Bağlantı noktaları |
 |----------|-------------|
 |  HTTP/HTTPS  | 80, 443 |
 |  FTP/FTPS    | 21, 990, 10001-10020 |
 |  Visual Studio uzaktan hata ayıklama  |  4020, 4022, 4024 |
-|  Web Dağıtım hizmeti | 8172 |
+|  Web Dağıtımı hizmeti | 8172 |
 
-Gelen ve giden gereksinimler dikkate alındığında, NSG'ler bu örnekte gösterilen NSG'lere benzer görünmelidir. 
+Gelen ve giden gereksinimler hesaba alındığı zaman, NSG 'ler Bu örnekte gösterilen NSG 'lere benzer olmalıdır. 
 
 ![Gelen güvenlik kuralları][4]
 
-Varsayılan kural, VNet'teki IP'lerin ASE alt ağıyla konuşmasını sağlar. Başka bir varsayılan kural, ortak VIP olarak da bilinen yük bakiyecinin ASE ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **Varsayılan kuralları** seçin. Varsayılan kurallardan önce diğer her şeyi reddet kuralı koyarsanız, VIP ve ASE arasındaki trafiği önlersiniz. VNet'in içinden gelen trafiği önlemek için, gelene izin vermek için kendi kuralınızı ekleyin. AzureLoadBalancer'a eşit bir kaynak kullanın ve **hedef** **\*** alanı Any ve bir bağlantı noktası aralığı. NSG kuralı ASE alt ağına uygulandığından, hedefte belirli olmanız gerekmez.
+Varsayılan bir kural, VNet 'teki IP 'Lerin ASE alt ağıyla iletişim kurmasını sağlar. Diğer bir varsayılan kural, genel VIP olarak da bilinen yük dengeleyicinin Ao ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **varsayılan kurallar** ' ı seçin. Varsayılan kuralların önüne başka her şeyi Reddet kuralını yerleştirirseniz, VIP ve Ao arasındaki trafiği engelleyebilirsiniz. VNet 'in içinden gelen trafiği engellemek için, gelen trafiğe izin vermek üzere kendi kuralınızı ekleyin. **Herhangi** bir ve bir bağlantı noktası aralığının hedefi olan AzureLoadBalancer değerine eşit bir kaynak kullanın **\***. NSG kuralı Ao alt ağına uygulandığından, hedefte özel olması gerekmez.
 
-Uygulamanız için bir IP adresi atadıysanız, bağlantı noktalarını açık tuttuğunızdan emin olun. Bağlantı noktalarını görmek için **App Service Environment** > **IP adreslerini**seçin.  
+Uygulamanıza bir IP adresi atadıysanız, bağlantı noktalarının açık kalmasını sağlayın. Bağlantı noktalarını görmek için **App Service ortamı** > **IP adresleri**' ni seçin.  
 
-Son öğe hariç, aşağıdaki giden kurallarda gösterilen tüm öğeler gereklidir. Bu makalede daha önce belirtildiği ASE bağımlılıklarına ağ erişimini sağlarlar. Bunlardan herhangi birini engellerseniz, ASE'niz çalışmayı durdurur. Listedeki son öğe, ASE'nizin VNet'inizdeki diğer kaynaklarla iletişim kurmasını sağlar.
+Aşağıdaki giden kurallarında gösterilen tüm öğeler, son öğe hariç olmak üzere gereklidir. Bunlar, bu makalenin önceki kısımlarında belirtilen Ao bağımlılıklarına ağ erişimi sağlar. Bunlardan herhangi birini engellerseniz ATıCı çalışmayı durduruyor. Listedeki son öğe, ASE 'nizin sanal ağınızdaki diğer kaynaklarla iletişim kurmasını sağlar.
 
 ![Giden güvenlik kuralları][5]
 
-NSG'leriniz tanımlandıktan sonra, bunları ASE'nizin üzerinde olduğu alt ağa atayın. ASE VNet veya subnet'i hatırlamıyorsanız, ASE portal sayfasından görebilirsiniz. NSG'yi alt ağınıza atamak için alt ağı nın ui'sine gidin ve NSG'yi seçin.
+NSG 'larınız tanımlandıktan sonra, bunları ATıCı 'nizin bulunduğu alt ağa atayın. ASE VNet veya alt ağını hatırlamıyorsanız, bunu ASE portalı sayfasından görebilirsiniz. NSG 'yi alt ağa atamak için alt ağ kullanıcı arabirimine gidin ve NSG 'yi seçin.
 
 ## <a name="routes"></a>Yollar ##
 
-Zorunlu tünelleme, Giden trafiğin doğrudan internete değil, ExpressRoute ağ geçidi veya sanal cihaz gibi başka bir yere gitmesi için VNet'inizde rotalar belirlediğinizde olur.  ASE'nizi bu şekilde yapılandırmanız gerekiyorsa, Uygulama Hizmet [Ortamınızı Zorunlu Tünelleme ile Yapılandırma][forcedtunnel]ile ilgili belgeyi okuyun.  Bu belge, ExpressRoute ve zorunlu tünel ile çalışmak için kullanılabilir seçenekleri söyleyecektir.
+Zorlamalı tünel, VNet 'iniz içindeki yolları ayarladığınızda giden trafik doğrudan internet 'e, ancak başka bir deyişle, bir ExpressRoute ağ geçidi veya Sanal Gereç gibi bir yere gidemez.  ATıCı 'nizi böyle bir şekilde yapılandırmanız gerekiyorsa, [App Service ortamı zorlamalı tünelle yapılandırma][forcedtunnel]hakkında belgeyi okuyun.  Bu belge, ExpressRoute ve zorlamalı tünelle birlikte çalışmak için kullanılabilen seçenekleri size bildirir.
 
-Portalda bir ASE oluşturduğunuzda, alt ağüzerinde ASE ile oluşturulan bir rota tabloları kümesi de oluştururuz.  Bu güzergahlar sadece doğrudan internete giden trafik göndermek için söylüyorlar.  
-Aynı yolları el ile oluşturmak için aşağıdaki adımları izleyin:
+Portalda bir AO oluşturduğunuzda, Ao ile oluşturulan alt ağda bir rota tabloları kümesi de oluşturur.  Bu yollar yalnızca giden trafiği doğrudan internet 'e göndermek için de kullanılır.  
+Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalına gidin. Ağ**Rotası Tabloları'nı** **Networking** > seçin.
+1. Azure portalına gidin. **Ağ** > **yolu tabloları**' nı seçin.
 
-2. VNet'inizle aynı bölgede yeni bir rota tablosu oluşturun.
+2. Sanal ağınız ile aynı bölgede yeni bir rota tablosu oluşturun.
 
-3. Rota tablonuz içinden Ara Birimi' ni seçin **Rotalar** > **Ekle'yi**seçin.
+3. Yol tablosu Kullanıcı arabiriminizden, **rotalar** > **Ekle**' yi seçin.
 
-4. Sonraki **atlama türünü** **Internet'e** ve **Adres önekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet'i**seçin.
+4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet**’i seçin.
 
-    Daha sonra aşağıdaki gibi bir şey görmek:
+    Ardından aşağıdakine benzer bir şey görürsünüz:
 
-    ![Fonksiyonel rotalar][6]
+    ![İşlevsel yollar][6]
 
-5. Yeni rota tablosunu oluşturduktan sonra, ASE'nizi içeren alt ağa gidin. Portaldaki listeden rota tablonuzu seçin. Değişikliği kaydettikten sonra, alt ağınızla birlikte belirtilen NSG'leri ve rotaları görmeniz gerekir.
+5. Yeni yol tablosunu oluşturduktan sonra, ATıCı 'nizi içeren alt ağa gidin. Portaldaki listeden yol tablonuzu seçin. Değişikliği kaydettikten sonra, alt ağlarınız ile belirtilen NSG 'leri ve yolları görmeniz gerekir.
 
-    ![NSG'ler ve rotalar][7]
+    ![NSG 'ler ve rotalar][7]
 
 ## <a name="service-endpoints"></a>Hizmet Uç Noktaları ##
 
 Hizmet Uç Noktaları, çok kiracılı hizmetlere erişimi bir dizi Azure sanal ağı ve alt ağı ile kısıtlamanızı sağlar. [Sanal Ağ Hizmet Uç Noktaları][serviceendpoints] belgelerinde Hizmet Uç Noktaları hakkında daha fazla bilgi edinebilirsiniz. 
 
-Bir kaynakta Hizmet Uç Noktalarını etkinleştirdiğinizde, diğer tüm yönlendiricilerden daha yüksek öncelikle oluşturulmuş rotalar vardır. Zorla tünellenmiş BIR ASE ile herhangi bir Azure hizmetinde Hizmet Bitiş Noktaları kullanırsanız, bu hizmetlere giden trafik tünele atılmaz. 
+Bir kaynakta Hizmet Uç Noktalarını etkinleştirdiğinizde, diğer tüm yönlendiricilerden daha yüksek öncelikle oluşturulmuş rotalar vardır. Hizmet uç noktalarını herhangi bir Azure hizmetinde kullanırsanız, zorlamalı bir tünel ile, bu hizmetlere giden trafiğe Zorlamalı tünel uygulanmaz. 
 
-Azure SQL örneği içeren bir alt ağda Hizmet Uç Noktaları etkinleştirilirse, o alt ağa veya alt ağdan bağlanan tüm Azure SQL örnekleri için Hizmet Uç Noktaları etkinleştirilmiş olmalıdır. Aynı alt ağdan birden fazla Azure SQL örneğine erişmek istiyorsanız, tek bir Azure SQL örneğinde Hizmet Uç Noktalarını etkinleştirebilir, başka bir örnekte etkinleştiremezsiniz. Başka hiçbir Azure hizmeti, Hizmet Bitiş Noktaları'na göre Azure SQL gibi şekilde hizmet etmez. Azure Depolama ile Hizmet Uç Noktalarını etkinleştirdiğinizde, alt ağınızdan o kaynağa erişimi kilitlersiniz, ancak Hizmet Uç Noktaları etkinleştirilmiş olmasa da diğer Azure Depolama hesaplarından erişmeye devam edebilirsiniz.  
+Azure SQL örneği içeren bir alt ağda Hizmet Uç Noktaları etkinleştirilirse, o alt ağa veya alt ağdan bağlanan tüm Azure SQL örnekleri için Hizmet Uç Noktaları etkinleştirilmiş olmalıdır. Aynı alt ağdan birden fazla Azure SQL örneğine erişmek istiyorsanız, tek bir Azure SQL örneğinde Hizmet Uç Noktalarını etkinleştirebilir, başka bir örnekte etkinleştiremezsiniz. Hizmet uç noktalarına yönelik olarak Azure SQL gibi başka hiçbir Azure hizmeti söz konusu değildir. Azure Depolama ile Hizmet Uç Noktalarını etkinleştirdiğinizde, alt ağınızdan o kaynağa erişimi kilitlersiniz, ancak Hizmet Uç Noktaları etkinleştirilmiş olmasa da diğer Azure Depolama hesaplarından erişmeye devam edebilirsiniz.  
 
 ![Hizmet Uç Noktaları][8]
 

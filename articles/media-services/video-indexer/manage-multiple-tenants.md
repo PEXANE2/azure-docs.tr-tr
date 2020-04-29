@@ -1,6 +1,6 @@
 ---
-title: Video Dizinleyici ile birden çok kiracıyı yönetme - Azure
-description: Bu makalede, Video Indexer ile birden çok kiracı yönetmek için farklı tümleştirme seçenekleri önerir.
+title: Birden çok kiracıyı Video Indexer-Azure ile yönetme
+description: Bu makalede, Video Indexer ile birden çok kiracıyı yönetmek için farklı tümleştirme seçenekleri önerilir.
 services: media-services
 documentationcenter: ''
 author: ika-microsoft
@@ -14,68 +14,68 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76990513"
 ---
 # <a name="manage-multiple-tenants"></a>Birden çok kiracıyı yönetme
 
-Bu makalede, Video Indexer ile birden çok kiracı yönetmek için farklı seçenekler anlatılmaktadır. Senaryonuz için en uygun yöntemi seçin:
+Bu makalede, Video Indexer ile birden çok kiracının yönetilmesine yönelik farklı seçenekler açıklanmaktadır. Senaryonuz için en uygun yöntemi seçin:
 
 * Kiracı başına Video Indexer hesabı
-* Tüm kiracılar için tek video indexer hesabı
+* Tüm kiracılar için tek Video Indexer hesabı
 * Kiracı başına Azure aboneliği
 
 ## <a name="video-indexer-account-per-tenant"></a>Kiracı başına Video Indexer hesabı
 
-Bu mimari kullanırken, her kiracı için bir Video Indexer hesabı oluşturulur. Kiracılar kalıcı ve işlem katmanında tam yalıtıma sahiptir.  
+Bu mimariyi kullanırken her kiracı için bir Video Indexer hesabı oluşturulur. Kiracılar kalıcı ve işlem katmanında tam yalıtımına sahiptir.  
 
 ![Kiracı başına Video Indexer hesabı](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Müşteriler depolama hesaplarını paylaşmaz (müşteri tarafından el ile yapılandırılmadığı sürece).
-* Müşteriler bilgi işlem işlemini (ayrılmış birimleri) paylaşmaz ve birbirlerinin iş yapma sürelerini etkilemez.
-* Video Dizinleyici hesabını silerek kiracıyı sistemden kolayca kaldırabilirsiniz.
-* Kiracılar arasında özel modelleri paylaşma olanağı yoktur.
+* Müşteriler, depolama hesaplarını paylaşmazlar (müşteri tarafından el ile yapılandırılmadığı müddetçe).
+* Müşteriler, işlem (ayrılmış birimleri) paylaşmazlar ve bir diğerinin iş sürelerini işlemeyi etkilemez.
+* Video Indexer hesabını silerek bir kiracıyı sistemden kolayca kaldırabilirsiniz.
+* Kiracılar arasında özel modeller paylaşma yeteneği yoktur.
 
-    Özel modelleri paylaşmak için iş gereksinimi olmadığından emin olun.
-* Kiracı başına birden çok Video Dizinleyici (ve ilişkili Medya Hizmetleri) hesabı nedeniyle yönetilmesi daha zordur.
+    Özel modelleri paylaşmak için bir iş gereksinimi olmadığından emin olun.
+* Kiracı başına birden çok Video Indexer (ve ilişkili Media Services) hesabı nedeniyle yönetimi daha zordur.
 
 > [!TIP]
-> [Video Indexer Geliştirici Portalı'nda](https://api-portal.videoindexer.ai/) sisteminiz için bir yönetici kullanıcısı oluşturun ve kiracılarınıza ilgili [hesap erişim jetonunu](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)sağlamak için Yetkilendirme API'sini kullanın.
+> [Video Indexer Geliştirici Portalında](https://api-portal.videoindexer.ai/) sisteminiz için yönetici kullanıcı oluşturun ve kiracılar ilgili [hesap erişim belirtecini](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Account-Access-Token)sağlamak için yetkilendirme API 'sini kullanın.
 
-## <a name="single-video-indexer-account-for-all-users"></a>Tüm kullanıcılar için Tek Video Indexer hesabı
+## <a name="single-video-indexer-account-for-all-users"></a>Tüm kullanıcılar için tek Video Indexer hesabı
 
-Bu mimari kullanırken, müşteri kiracı yalıtımsorumludur. Tüm kiracıların tek bir Azure Medya Hizmeti hesabı yla tek bir Video Indexer hesabı kullanması gerekir. İçerik yüklerken, ararken veya silerken, müşterinin kiracı için uygun sonuçları filtrelemesi gerekir.
+Bu mimari kullanılırken, müşteri kiracılar yalıtımıyla sorumludur. Tüm kiracıların tek bir Azure Media Service hesabıyla tek bir Video Indexer hesabı kullanması gerekir. İçeriği karşıya yüklerken, ararken veya silerken, müşterinin bu kiracıya yönelik doğru sonuçları filtrelemeniz gerekir.
 
-![Tüm kullanıcılar için Tek Video Indexer hesabı](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
+![Tüm kullanıcılar için tek Video Indexer hesabı](./media/manage-multiple-tenants/single-video-indexer-account-for-all-users.png)
 
-Bu seçenekle, özelleştirme modelleri (Kişi, Dil ve Markalar) modelleri kiracıya göre filtreleyerek kiracılar arasında paylaşılabilir veya yalıtılabilir.
+Bu seçenekle, modelleri kiracıya göre filtreleyerek, özelleştirme modelleri (kişi, dil ve markalar) kiracılar arasında paylaşılabilir veya yalıtılabilir.
 
-[Video yüklerken,](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)kiracı başına farklı bir bölüm özniteliği belirtebilirsiniz. Bu, [arama API'sinde](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)yalıtıma izin verir. Arama API'sinde bölüm özniteliğini belirterek yalnızca belirtilen bölümün sonuçlarını alırsınız. 
+[Videoları karşıya yüklerken](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), her kiracı için farklı bir bölüm özniteliği belirtebilirsiniz. Bu, [Arama API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?)'sinde yalıtımına izin verir. Arama API 'sindeki bölüm özniteliğini belirterek yalnızca belirtilen bölümün sonuçlarını elde edersiniz. 
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* İçerik ve özelleştirme modellerini kiracılar arasında paylaşma becerisi.
-* Bir kiracı diğer kiracıların performansını etkiler.
-* Müşterinin Video Indexer'ın üzerine karmaşık bir yönetim katmanı oluşturması gerekir.
+* Kiracılar arasında içerik ve özelleştirme modelleri paylaşma özelliği.
+* Bir kiracı, diğer kiracıların performansını etkiler.
+* Müşterinin Video Indexer en üstünde karmaşık bir yönetim katmanı oluşturması gerekir.
 
 > [!TIP]
-> Kiracı işlerine [öncelik](upload-index-videos.md) vermek için öncelik özniteliğini kullanabilirsiniz.
+> Kiracılar işlerinin önceliklerini belirlemek için [Priority](upload-index-videos.md) özniteliğini kullanabilirsiniz.
 
 ## <a name="azure-subscription-per-tenant"></a>Kiracı başına Azure aboneliği 
 
-Bu mimari kullanırken, her kiracının kendi Azure aboneliği olur. Her kullanıcı için, kiracı aboneliğinde yeni bir Video Indexer hesabı oluşturursunuz.
+Bu mimariyi kullanırken, her kiracının kendi Azure aboneliği olur. Her Kullanıcı için kiracı aboneliğinde yeni bir Video Indexer hesabı oluşturacaksınız.
 
 ![Kiracı başına Azure aboneliği](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-* Bu, fatura ayırma yı etkinleştiren tek seçenektir.
-* Bu tümleştirme, kiracı başına Video Indexer hesabından daha fazla yönetim yüküne sahiptir. Faturalandırma bir gereklilik değilse, bu makalede açıklanan diğer seçeneklerden birini kullanmanız önerilir.
+* Bu, fatura ayırmayı sağlayan tek seçenektir.
+* Bu tümleştirmenin, kiracı başına Video Indexer hesabından daha fazla yönetim yükü vardır. Faturalandırma bir gereksinim değilse, bu makalede açıklanan diğer seçeneklerden birini kullanmanız önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

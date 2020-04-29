@@ -1,7 +1,7 @@
 ---
-title: Dataset sürüm
+title: Veri kümesi sürümü oluşturma
 titleSuffix: Azure Machine Learning
-description: Veri kümelerinizi en iyi şekilde nasıl sürümedize edin ve makine öğrenimi boru hatlarıyla sürüm nasıl çalışır öğrenin.
+description: Veri kümelerinizi en iyi şekilde nasıl yükleyeceğinizi ve makine öğrenimi ardışık düzenleri ile sürüm oluşturmanın nasıl çalıştığını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,29 +12,29 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
 ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80476861"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>Denemelerdeki veri kümelerini sürüm ve izleme
+# <a name="version-and-track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini sürüm ve izleme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, yeniden çoğaltılabilmek için Azure Machine Learning veri kümelerini nasıl sürümleyip izleyeceğinizi öğreneceksiniz. Dataset sürüm, gelecekteki denemeler için veri kümesinin belirli bir sürümünü uygulayabilmeniz için verilerinizin durumunu yer imi belirlemenin bir yoludur.
+Bu makalede, reproducibility için Azure Machine Learning veri kümelerini nasıl kullanacağınızı ve izleyeceğinizi öğreneceksiniz. Veri kümesi sürümü oluşturma, gelecekteki denemeleri için veri kümesinin belirli bir sürümünü uygulayabilmeniz için verilerinizin durumuna yer işaretinin bir yoludur.
 
-Tipik sürüm senaryoları:
+Tipik sürüm oluşturma senaryoları:
 
 * Yeniden eğitim için yeni veriler kullanılabilir olduğunda
-* Farklı veri hazırlama veya özellik mühendisliği yaklaşımları uygularken
+* Farklı veri hazırlama veya özellik Mühendisliği yaklaşımları uygularken
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici için şunları yapmanız gerekir:
+Bu öğretici için şunlar gerekir:
 
-- [Python için Azure Machine Learning SDK yüklendi.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) Bu SDK [azureml-datasets](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) paketini içerir.
+- [Python için Azure Machine Learning SDK 'sı yüklendi](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py). Bu SDK, [azureml veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset?view=azure-ml-py) paketini içerir.
     
-- [Azure Makine Öğrenimi çalışma alanı.](concept-workspace.md) Aşağıdaki kodu çalıştırarak varolan bir tane alın veya [yeni bir çalışma alanı oluşturun.](how-to-manage-workspace.md)
+- [Azure Machine Learning çalışma alanı](concept-workspace.md). Aşağıdaki kodu çalıştırarak mevcut bir tane alın veya [Yeni bir çalışma alanı oluşturun](how-to-manage-workspace.md).
 
     ```Python
     import azureml.core
@@ -42,17 +42,17 @@ Bu öğretici için şunları yapmanız gerekir:
     
     ws = Workspace.from_config()
     ```
-- [Azure Machine Learning veri kümesi.](how-to-create-register-datasets.md)
+- [Azure Machine Learning veri kümesi](how-to-create-register-datasets.md).
 
 <a name="register"></a>
 
 ## <a name="register-and-retrieve-dataset-versions"></a>Veri kümesi sürümlerini kaydetme ve alma
 
-Bir veri kümesini kaydederek, bunları denemeler arasında ve iş arkadaşlarınızla sürümleyebilir, yeniden kullanabilir ve paylaşabilirsiniz. Aynı ad altında birden çok veri kümesi kaydedebilir ve belirli bir sürümü ada ve sürüm numarasına göre alabilirsiniz.
+Bir veri kümesini kaydederek denemeleri ve iş arkadaşlarınızla paylaşabilir, yeniden kullanabilir ve paylaşabilirsiniz. Aynı ada sahip birden çok veri kümesini kaydedebilir ve adı ve sürüm numarasına göre belirli bir sürümü alabilirsiniz.
 
 ### <a name="register-a-dataset-version"></a>Veri kümesi sürümünü kaydetme
 
-Aşağıdaki kod, parametreyi `titanic_ds` `create_new_version` . `True` Çalışma alanına kayıtlı `titanic_ds` varolan bir veri kümesi yoksa, kod adında `titanic_ds` yeni bir veri kümesi oluşturur ve sürümünü 1 olarak ayarlar.
+Aşağıdaki kod, `titanic_ds` `create_new_version` parametresini olarak `True`ayarlayarak veri kümesinin yeni bir sürümünü kaydeder. Çalışma alanına kayıtlı mevcut `titanic_ds` bir veri kümesi yoksa, kod adıyla `titanic_ds` yeni bir veri kümesi oluşturur ve sürümünü 1 olarak ayarlar.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -61,11 +61,11 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  create_new_version = True)
 ```
 
-### <a name="retrieve-a-dataset-by-name"></a>Ada göre bir veri kümesi alma
+### <a name="retrieve-a-dataset-by-name"></a>Bir veri kümesini ada göre al
 
-Varsayılan olarak, sınıftaki `Dataset` [get_by_name()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) yöntemi, çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
+Varsayılan olarak, `Dataset` sınıfındaki [get_by_name ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) yöntemi, çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür. 
 
-Aşağıdaki kod, veri kümesinin sürüm 1'ini `titanic_ds` alır.
+Aşağıdaki kod, `titanic_ds` veri kümesinin 1. sürümünü alır.
 
 ```Python
 from azureml.core import Dataset
@@ -77,16 +77,16 @@ titanic_ds = Dataset.get_by_name(workspace = workspace,
 
 <a name="best-practice"></a>
 
-## <a name="versioning-best-practice"></a>En iyi uygulama sürüm
+## <a name="versioning-best-practice"></a>Sürüm oluşturma en iyi uygulaması
 
-Bir veri kümesi sürümü oluşturduğunuzda, çalışma alanıyla birlikte fazladan bir veri kopyası *oluşturmuyorsunuz.* Veri kümeleri depolama hizmetinizdeki verilere yapılan başvurular olduğundan, depolama hizmetiniz tarafından yönetilen tek bir doğruluk kaynağınız vardır.
+Bir veri kümesi sürümü oluşturduğunuzda, çalışma alanıyla birlikte verilerin ek bir kopyasını *oluşturuyoruz.* Veri kümeleri depolama hizmetinizdeki verilere başvurduğundan, depolama hizmetiniz tarafından yönetilen tek bir Truth kaynağı vardır.
 
 >[!IMPORTANT]
-> Veri kümeniz tarafından başvurulan veriler üzerine yazılmış veya silinmişse, veri kümesinin belirli bir sürümünü aramak değişikliği *geri* almaz.
+> Veri kümeniz tarafından başvurulan verilerin üzerine yazılır veya silinirse, veri kümesinin belirli bir sürümünü çağırmak *değişikliği döndürmez.*
 
-Bir veri kümesinden veri yüklediğinizde, veri kümesi tarafından başvurulan geçerli veri içeriği her zaman yüklenir. Her veri kümesi sürümünün tekrarlanabilir olduğundan emin olmak istiyorsanız, veri kümesi sürümütarafından başvurulan veri içeriğini değiştirmemenizi öneririz. Yeni veriler geldiğinde, yeni veri dosyalarını ayrı bir veri klasörüne kaydedin ve ardından bu yeni klasörden veri eklemek için yeni bir veri kümesi sürümü oluşturun.
+Verileri bir veri kümesinden yüklediğinizde, veri kümesi tarafından başvurulan geçerli veri içeriği her zaman yüklenir. Her veri kümesi sürümünün tekrarlanabilir olduğundan emin olmak istiyorsanız, veri kümesi sürümü tarafından başvurulan veri içeriğini değiştirmenizi öneririz. Yeni veriler geldiğinde, yeni veri dosyalarını ayrı bir veri klasörüne kaydedin ve sonra bu yeni klasörden verileri dahil etmek için yeni bir veri kümesi sürümü oluşturun.
 
-Aşağıdaki resim ve örnek kod, veri klasörlerinizi yapılandırmanın ve bu klasörlere başvuran veri kümesi sürümleri oluşturmanın önerilen yolunu gösterir:
+Aşağıdaki görüntü ve örnek kod, veri klasörlerinizi yapılandırmak ve bu klasörlere başvuran veri kümesi sürümleri oluşturmak için önerilen yöntemi gösterir:
 
 ![Klasör yapısı](./media/how-to-version-track-datasets/folder-image.png)
 
@@ -116,11 +116,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>Sürüm bir boru hattı çıktı veri kümesi
+## <a name="version-a-pipeline-output-dataset"></a>İşlem hattı çıkış veri kümesi sürümü
 
-Her Machine Learning boru hattı adımının giriş ve çıktısı olarak bir veri kümesi kullanabilirsiniz. Ardışık hatları yeniden çalıştırdığınızda, her ardışık iş adımın çıktısı yeni bir veri kümesi sürümü olarak kaydedilir.
+Bir veri kümesini her bir Machine Learning ardışık düzen adımının girişi ve çıktısı olarak kullanabilirsiniz. İşlem hatlarını yeniden çalıştırdığınızda, her bir ardışık düzen adımının çıktısı yeni bir veri kümesi sürümü olarak kaydedilir.
 
-Machine Learning ardışık hatları, her adımın çıktısını her ardışık ardışık çalışma sürümü yeniden çalıştığında yeni bir klasöre doldurduğundan, sürümlenmiş çıktı veri kümeleri yeniden üretilebilir. [Ardışık hatlar'daki veri kümeleri](how-to-create-your-first-pipeline.md#steps)hakkında daha fazla bilgi edinin.
+Machine Learning işlem hatları, işlem hattı her yeniden çalıştırıldığında her adımın çıkışını yeni bir klasöre doldurduğundan, sürümlü çıkış veri kümeleri tekrarlanabilir. İşlem hatlarında [veri kümeleri](how-to-create-your-first-pipeline.md#steps)hakkında daha fazla bilgi edinin.
 
 ```Python
 from azureml.core import Dataset
@@ -154,11 +154,11 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Denemelerdeki veri kümelerini izleme
+## <a name="track-datasets-in-experiments"></a>Denemeleri içinde veri kümelerini izleme
 
-Her Machine Learning denemesi için, deneme `Run` nesnesi aracılığıyla giriş olarak kullanılan veri kümelerini kolayca izleyebilirsiniz.
+Her Machine Learning denemesi için, giriş olarak kullanılan veri kümelerini deneme `Run` nesnesi aracılığıyla kolayca izleyebilirsiniz.
 
-Aşağıdaki kod, [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) deneme çalışmasında hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemi kullanır:
+Aşağıdaki kod, deneme çalıştırması [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) ile hangi giriş veri kümelerinin kullanıldığını izlemek için yöntemini kullanır:
 
 ```Python
 # get input datasets
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Ayrıca kullanarak `input_datasets` https://ml.azure.com/deneylerden bulabilirsiniz. 
+Ayrıca, `input_datasets` kullanarak https://ml.azure.com/denemeleri adresinden bulabilirsiniz. 
 
-Aşağıdaki resim, Azure Machine Learning stüdyosundaki bir denemenin giriş veri kümesinin nerede bulunacağını gösterir. Bu örnekiçin, **Denemeler** bölmenize gidin ve denemenizin belirli bir `keras-mnist`çalışması için **Özellikler** sekmesini açın.
+Aşağıdaki görüntüde Azure Machine Learning Studio 'da bir deneyin giriş veri kümesinin nerede bulunacağı gösterilmektedir. Bu örnekte, **denemeleri** bölmenize gidin ve denemenizin belirli bir çalışması için **Özellikler** sekmesini açın `keras-mnist`.
 
 ![Giriş veri kümeleri](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,13 +183,13 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Kayıt tan sonra Python'u kullanarak veri kümesine kayıtlı modellerin https://ml.azure.com/listesini görebilir veya .'ye gidebilirsiniz.
+Kayıt sonrasında, Python veya şuraya git kullanılarak veri kümesiyle kaydedilen modellerin listesini görebilirsiniz https://ml.azure.com/.
 
-Aşağıdaki görünüm **Varlıklar**altındaki **Veri Kümeleri** bölmesinden dir. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **Modeller** sekmesini seçin. 
+Aşağıdaki görünüm, **varlıklar**altındaki **veri kümeleri** bölmesinden yapılır. Veri kümesini seçin ve ardından veri kümesine kayıtlı modellerin listesi için **modeller** sekmesini seçin. 
 
-![Giriş veri setleri modelleri](./media/how-to-version-track-datasets/dataset-models.png)
+![Giriş veri kümesi modelleri](./media/how-to-version-track-datasets/dataset-models.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Veri kümeleriyle eğitme](how-to-train-with-datasets.md)
-* [Daha fazla örnek veri seti dizüstü bilgisayarlar](https://aka.ms/dataset-tutorial)
+* [Daha fazla örnek veri kümesi Not defteri](https://aka.ms/dataset-tutorial)
