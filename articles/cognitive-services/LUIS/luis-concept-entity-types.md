@@ -1,7 +1,7 @@
 ---
-title: Varlık türleri - LUIS
+title: Varlık türleri-LUSıS
 titleSuffix: Azure Cognitive Services
-description: 'Varlıklar söyleyişten veri ayıklar. Varlık türleri, verilerin öngörülebilir ayıklama sağlar. İki tür varlık vardır: makinede öğrenilen ve makineden öğrenilmemiş. Hangi varlık türüyle birlikte çalıştığınızı bilmek önemlidir.'
+description: "Varlıklar, utterance 'ten veri ayıklar. Varlık türleri, verilerin tahmin edilebilir bir şekilde ayıklanmasını sağlar. İki tür varlık vardır: makine tarafından öğrenilen ve makine tarafından öğrenilmemiş. Ne tür bir varlık ile birlikte çalıştığınızı bilmeniz önemlidir."
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,72 +12,72 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221034"
 ---
-# <a name="entities-and-their-purpose-in-luis"></a>LUIS'teki varlıklar ve amaçları
+# <a name="entities-and-their-purpose-in-luis"></a>ISIS 'de varlıklar ve amaçları
 
-Varlıkların birincil amacı, istemci uygulamasına öngörülebilir veri ayıklama vermektir. _İsteğe bağlı,_ ikincil amaç, tanımlayıcıları olan amacın veya diğer varlıkların tahminini artırmaktır.
+Varlıkların birincil amacı, istemci uygulamaya tahmin edilebilir veri ayıklama hakkı vermektir. _İsteğe bağlı_, ikincil amaç, tanımlayıcı içeren amaç veya diğer varlıkların tahminini artırmak için kullanılır.
 
 İki tür varlık vardır:
 
-* makine öğrenilen - bağlamdan
-* makinede öğrenilmemiş - tam metin eşleşmeleri, desen eşleşmeleri veya önceden oluşturulmuş varlıklar tarafından algılama için
+* makine tarafından öğrenilen-bağlam
+* makine tarafından öğrenilmeyen-tam metin eşleşmeleri, model eşleşmeleri veya önceden oluşturulmuş varlıklar tarafından algılama için
 
-Makinede öğrenilen varlıklar en geniş veri ayıklama seçeneklerini sağlar. Makinede öğrenilen olmayan varlıklar metin eşleştirerek çalışır ve makinede öğrenilen bir varlık üzerinde bağımsız olarak veya [kısıtlama](#design-entities-for-decomposition) olarak kullanılabilir.
+Makine tarafından öğrenilen varlıklar, en geniş veri ayıklama seçeneği yelpazesi sağlar. Makine tarafından öğrenilen varlıklar, metin eşleştirme ile çalışır ve makine tarafından öğrenilen bir varlıkta bağımsız olarak veya [kısıtlama](#design-entities-for-decomposition) olarak kullanılabilir.
 
-## <a name="entities-represent-data"></a>Varlıklar verileri temsil ediyor
+## <a name="entities-represent-data"></a>Varlıklar verileri temsil eder
 
-Varlıklar, adlar, tarihler, ürün adları veya herhangi bir önemli sözcük grubu gibi sözcük ten ibareden çıkarmak istediğiniz verilerdir. Bir söyleyiş birçok varlığı içerebilir veya hiç bir şey içermez. İstemci uygulaması, görevini gerçekleştirmek için verilere ihtiyaç _duyabilir._
+Varlıklar, adlar, tarihler, ürün adları veya herhangi bir önemli sözcük grubu gibi, utterklerden çekmek istediğiniz verilerden oluşur. Bir söylenişi birçok varlık içerebilir veya hiç yok. İstemci uygulaması, görevini gerçekleştirmek için verilere gereksinim duyuyor _olabilir_ .
 
-Varlıkların bir modeldeki her amaç için tüm eğitim sözcüklerinde tutarlı bir şekilde etiketlenmeleri gerekir.
+Varlıkların, bir modeldeki her amaç için tüm eğitimlere sürekli olarak etiketlenmesi gerekir.
 
- Kendi varlıklarınızı tanımlayabilir veya [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal,](luis-reference-prebuilt-ordinal.md) [e-posta](luis-reference-prebuilt-email.md)ve [telefon numarası](luis-reference-prebuilt-phonenumber.md)gibi yaygın kavramlar için zaman kazanmak için önceden oluşturulmuş varlıkları kullanabilirsiniz.
+ [DatetimeV2](luis-reference-prebuilt-datetimev2.md), [Ordinal](luis-reference-prebuilt-ordinal.md), [e-posta](luis-reference-prebuilt-email.md)ve [telefon numarası](luis-reference-prebuilt-phonenumber.md)gibi yaygın kavramlara zaman kazanmak için kendi varlıklarınızı tanımlayabilir veya önceden oluşturulmuş varlıkları kullanabilirsiniz.
 
-|İfade|Varlık|Veri|
+|İfade|Varlık|Veriler|
 |--|--|--|
-|New York'a 3 bilet satın alın|Önceden oluşturulmuş sayı<br>Yer.Hedef|3<br>New York|
-|5 Mart'ta New York'tan Londra'ya bilet alın|Yer.Origin<br>Yer.Hedef<br>Önceden oluşturulmuş datetimeV2|New York<br>Londra<br>5 Mart 2018|
+|New York 'a 3 bilet satın alın|Önceden oluşturulmuş sayı<br>Location. Destination|3<br>New York|
+|Yeni York 'tan Istanbul 'a 5 Mart 'ta bir bilet satın alın|Location. Origin<br>Location. Destination<br>Önceden oluşturulmuş datetimeV2|New York<br>Londra<br>5 Mart 2018|
 
 ### <a name="entities-are-optional"></a>Varlıklar isteğe bağlıdır
 
-Niyetler gerekli olmakla birlikte, varlıklar isteğe bağlıdır. Uygulamanızdaki her kavram için varlıklar oluşturmanız gerekmez, ancak yalnızca istemci uygulamasının harekete geçmesi için gerekli olan varlıklar için.
+Amaçlar gerekir, varlıklar isteğe bağlıdır. Uygulamanızdaki her kavram için varlık oluşturmanız gerekmez, ancak yalnızca istemci uygulamasının işlem yapması için gerekli olanlar için.
 
-Söyleyişleriniz istemci uygulamasının gerektirdiği verilere sahip değilse, varlık eklemeniz gerekmez. Uygulamanız geliştikçe ve yeni bir veri gereksinimi tanımlandıkça, luis modelinize daha sonra uygun varlıklar ekleyebilirsiniz.
+Utterklerinizin istemci uygulaması için gereken verileri yoksa, varlık eklemeniz gerekmez. Uygulamanız geliştirdiğinden ve veriler için yeni bir gereksinim belirlendiğinde, daha sonra LUO modelinize uygun varlıkları ekleyebilirsiniz.
 
-## <a name="entity-compared-to-intent"></a>Niyete göre varlık
+## <a name="entity-compared-to-intent"></a>Amaca kıyasla varlık
 
-Varlık, ayıklanması istediğiniz söyleyincin içindeki bir veri kavramını temsil eder.
+Varlık, ayıklanarak ayıklanmasını istediğiniz bir veri kavramını temsil eder.
 
-Bir söyleyiş isteğe bağlı olarak varlıkları içerebilir. Buna karşılık, bir söyleyiş için niyet tahmini _gereklidir_ ve tüm söyleyerek temsil eder. LUIS örnek söyleyişbir niyet içinde yer alan gerektirir.
+Bir söylenişi, isteğe bağlı olarak varlıklar içerebilir. Karşılaştırmayla, bir söylenişi için amaç tahmini _gereklidir_ ve tüm söylik 'i temsil eder. LU, örnek söyleyeni bir amaç içinde bulundurmaktır.
 
-Aşağıdaki 4 söyleyiş göz önünde bulundurun:
+Aşağıdaki 4 göz önünde bulundurun:
 
-|İfade|Öngörülen niyet|Çıkarılan varlıklar|Açıklama|
+|İfade|Amaç tahmin edildi|Ayıklanan varlıklar|Açıklama|
 |--|--|--|--|
-|Yardım|Yardım|-|Çıkarılacak bir şey yok.|
-|Bir şey gönder|sendSomething|-|Çıkarılacak bir şey yok. Model bu bağlamda ayıklamak `something` için eğitilmedi ve alıcı da yok.|
-|Bob'a hediye gönder|sendSomething|`Bob`, `present`|Model, adını `Bob`ayıklayan [personName](luis-reference-prebuilt-person.md) önceden oluşturulmuş varlık ile eğitilmiştir. Ayıklamak `present`için makineden öğrenilen bir varlık kullanılmıştır.|
-|Bob'a bir kutu çikolata gönder.|sendSomething|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve `box of chocolates`varlıklar tarafından ayıklanmıştır.|
+|Yardım|Yardım|-|Ayıklanacak bir şey yok.|
+|Bir şey gönder|Sendbir şey|-|Ayıklanacak bir şey yok. Model bu bağlamda Ayıklanacak `something` şekilde eğitilmedi ve herhangi bir alıcı yok.|
+|Emre 'yi mevcut gönder|Sendbir şey|`Bob`, `present`|Model, adı `Bob`ayıklanmış olan [PersonName](luis-reference-prebuilt-person.md) önceden oluşturulmuş varlıkla eğitildi. Ayıklamak `present`için makine tarafından öğrenilen bir varlık kullanıldı.|
+|Emre 'nin bir çikolata kutusunu Gönder|Sendbir şey|`Bob`, `box of chocolates`|İki önemli veri parçası `Bob` ve `box of chocolates`, varlıklar tarafından ayıklandı.|
 
-## <a name="design-entities-for-decomposition"></a>Ayrıştırma için tasarım varlıkları
+## <a name="design-entities-for-decomposition"></a>Ayrıştırma için varlıkları tasarlama
 
-Üst düzey varlığınızı makineden öğrenilen bir varlık yapmak iyi bir varlık tasarımıdır. Bu, zaman içinde varlık tasarımınızda ve **alt bileşenlerin** (alt varlıklar) kullanımına, isteğe bağlı olarak **kısıtlamalar** ve **tanımlayıcılarla,** üst düzey varlığı istemci uygulamasının gerektirdiği parçalara ayrıştırmaya olanak tanır.
+En üst düzey varlığınızı makine tarafından öğrenilen bir varlık haline getirmek için iyi bir varlık tasarımdır. Bu, en üst düzey varlığı istemci uygulaması için gereken parçalara ayırmak için zaman **subcomponents** içinde varlık tasarımınızda, isteğe bağlı olarak **kısıtlamalar** ve **tanımlayıcılarla**yapılan değişikliklere izin verir.
 
-Ayrıştırma için tasarım, LUIS'in istemci uygulamanıza derin bir varlık çözünürlüğü geri dönmesini sağlar. Bu, istemci uygulamanızın iş kurallarına odaklanmasına ve veri çözünürlüğünü LUIS'e bırakmasına olanak tanır.
+Ayrıştırma için tasarlamak, LUSıS 'nin istemci uygulamanıza derin bir varlık çözümlemesi döndürmesini sağlar. Bu, istemci uygulamanızın iş kurallarına odaklanılmasını ve veri çözünürlüğünü LUO 'ya bırakmasını sağlar.
 
-### <a name="machine-learned-entities-are-primary-data-collections"></a>Makinede öğrenilen varlıklar birincil veri koleksiyonlarıdır
+### <a name="machine-learned-entities-are-primary-data-collections"></a>Makine tarafından öğrenilen varlıklar birincil veri koleksiyonlarıdır
 
-[**Makinede öğrenilen varlıklar**](tutorial-machine-learned-entity.md) üst düzey veri birimidir. Alt bileşenler, makinede öğrenilen varlıkların alt varlıklarıdır.
+[**Makine tarafından öğrenilen varlıklar**](tutorial-machine-learned-entity.md) , en üst düzey veri birimidir. Alt bileşenler, makine tarafından öğrenilen varlıkların alt varlıklarıdır.
 
-Makinede öğrenilen bir varlık, eğitim sözlemeleri yoluyla öğrenilen bağlamı temel alan tetikleyiciler. **Kısıtlamalar,** [liste](reference-entity-list.md) veya [Regex](reference-entity-regular-expression.md)gibi makinede öğrenilmemiş bir varlığın tam metin eşleştirme tanımına dayalı olarak tetiklenen daha fazla kısıtlamanın yanı sıra makine tarafından öğrenilen bir varlığa uygulanan isteğe bağlı kurallardır. Örneğin, makinede `size` öğrenilen bir varlık, `sizeList` `size` varlığı yalnızca varlık içinde bulunan değerlerle karşılaşıldığında tetiklemeye zorlayan bir liste varlığı kısıtlamasına `sizeList` sahip olabilir.
+Makine tarafından öğrenilen bir varlık, eğitim dıkları aracılığıyla öğrenilmiş içeriğe göre tetiklenir. **Kısıtlamalar** , bir [liste](reference-entity-list.md) veya [Regex](reference-entity-regular-expression.md)gibi makine tarafından öğrenilen bir varlığın tam metin eşleştirme tanımına bağlı olarak, tetiklemenin daha fazla kısıtlanacak makine tarafından öğrenilen bir varlığa uygulanan isteğe bağlı kurallardır. Örneğin, `size` makine tarafından öğrenilen bir varlık, varlığı yalnızca `sizeList` `size` `sizeList` varlık içinde yer alan değerler ile karşılaşıldığında tetiklemek üzere kısıtlayan bir liste varlığının kısıtlamasına sahip olabilir.
 
-[**Tanımlayıcılar,**](luis-concept-feature.md) tahmin için sözcüklerin veya tümceciklerin alaka düzeyini artırmak için uygulanan özelliklerdir. Bir niyeti veya varlığı *tanımlamak* için kullanıldıkları için *tanımlayıcı* olarak adlandırılırlar. Tanımlayıcılar, LUIS'in gözlemlediği ve öğrendiği önemli sözcükler veya tümcecikler gibi verilerin ayırt edici özelliklerini veya özniteliklerini tanımlar.
+[**Tanımlayıcılar**](luis-concept-feature.md) , tahmine yönelik sözcüklerin veya tümceciklerin uygunluğunu artırmak için uygulanan özelliklerdir. Bu değerler, amacı veya varlığı *tanımlamakta* kullanıldıklarından *tanımlayıcı* olarak adlandırılırlar. Tanımlayıcılar, önemli kelimeler veya veri özniteliklerini (örneğin, LUVE öğrendiği önemli sözcükler veya ifadeler) ayırt eder.
 
-LUIS uygulamanızda bir ifade listesi özelliği oluşturduğunuzda, varsayılan olarak genel olarak etkinleştirilir ve tüm niyet ve kuruluşlararasında eşit olarak uygulanır. Ancak, tümcecik listesini makinede öğrenilen bir varlığın (veya *modelin)* tanımlayıcısı (özelliği) olarak uygularsanız, kapsamı yalnızca bu modele uygulanacak şekilde azalır ve artık diğer tüm modellerde kullanılmaz. Bir modeliçin tanımlayıcı olarak bir ifade listesi kullanmak, uygulandığı modelin doğruluğuna yardımcı olarak ayrışmaya yardımcı olur.
+LUSıS uygulamanızda bir ifade listesi özelliği oluşturduğunuzda, varsayılan olarak genel olarak etkinleştirilir ve tüm amaçlar ve varlıklar arasında eşit olarak uygulanır. Ancak, tümcecik listesini makine tarafından öğrenilen bir varlığın (veya *modelinin*) tanımlayıcı (özellik) olarak uygularsanız, kapsamı yalnızca o modele uygulanabilir ve artık diğer tüm modellerle kullanılmaz. Bir model için tanımlayıcı olarak bir ifade listesi kullanmak, uygulandığı modelin doğruluğunu ele alarak ayrışmaya yardımcı olur.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -88,57 +88,57 @@ LUIS uygulamanızda bir ifade listesi özelliği oluşturduğunuzda, varsayılan
 
 ## <a name="types-of-entities"></a>Varlık türleri
 
-Varlığı, verilerin nasıl ayıklanması gerektiğine ve çıkarıldıktan sonra nasıl temsil edilmesi gerektiğine göre seçin.
+Verilerin ayıklanabilmesi ve ayıklandıktan sonra nasıl temsil edilebilmesi gerektiğine bağlı olarak varlığı seçin.
 
 |Varlık türü|Amaç|
 |--|--|
-|[**Makineden öğrenilen**](tutorial-machine-learned-entity.md)|Makinede öğrenilen varlıklar, söyleyiş bağlamından öğrenirler. Varlık türüne bakılmaksızın varlıkların üst gruplandırması. Bu, örnek sözlemelerde yerleşim varyasyonu önemli hale getirir. |
-|[**Liste**](reference-entity-list.md)|**Tam metin eşleşmi**ile ayıklanan öğelerin ve eşanlamlılarının listesi.|
-|[**Desen.herhangi bir**](reference-entity-pattern-any.md)|Varlığın sonunun belirlenmesinin zor olduğu varlık. |
-|[**Önceden oluşturulmuş**](luis-reference-prebuilt-entities.md)|URL veya e-posta gibi belirli türde verileri ayıklamak için zaten eğitilmiş. Bu önceden oluşturulmuş varlıkların bazıları açık kaynak [Tanırlar-Metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanır. Belirli kültürünüz veya varlığınız şu anda desteklenmiyorsa, projeye katkıda bulunun.|
-|[**Normal ifade**](reference-entity-regular-expression.md)|Tam metin **eşleşmesi**için düzenli ifade kullanır.|
+|[**Makine tarafından öğrenilen**](tutorial-machine-learned-entity.md)|Makine tarafından öğrenilen varlıklar, utterde bağlamdaki içerikten öğrenilir. Varlık türünden bağımsız olarak varlıkların üst gruplandırması. Bu, yerleştirme Çeşitlemelerinde önemli bir değer sağlar. |
+|[**Listele**](reference-entity-list.md)|Öğelerin listesi ve **tam metin eşleşmesi**ile ayıklanan eş anlamlılar.|
+|[**Model. any**](reference-entity-pattern-any.md)|Varlık sonunun belirlenmesi zor olan varlık. |
+|[**Önceden oluşturulmuş**](luis-reference-prebuilt-entities.md)|URL veya e-posta gibi belirli tür verileri ayıklamak zaten eğitildi. Bu önceden oluşturulmuş varlıkların bazıları açık kaynaklı [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text) projesinde tanımlanmıştır. Belirli bir kültür veya varlığınız Şu anda desteklenmiyorsa, projeye katkıda bulunun.|
+|[**Normal ifade**](reference-entity-regular-expression.md)|**Tam metin eşleşmesi**için normal ifade kullanır.|
 
-## <a name="extracting-contextually-related-data"></a>Bağlamsal olarak ilişkili verileri ayıklama
+## <a name="extracting-contextually-related-data"></a>Bağlamsal olarak ile ilgili veriler ayıklanıyor
 
-Bir söyleyiş, verilerin anlamının söyleyiş içindeki içeriğe dayandığı bir varlığın iki veya daha fazla olayını içerebilir. Bir örnek, menşei ve varış noktası olmak üzere iki konumu olan bir uçuş rezervasyonu için bir sözdür.
+Söylenişi, verilerin anlamı, söylenişi içindeki bağlamı temel alan bir varlığın iki veya daha fazla örneğini içerebilir. İki konum, kaynak ve hedef olan bir uçuşmanın bir örneği olan bir örnek bir örnektir.
 
 `Book a flight from Seattle to Cairo`
 
-Bir `location` varlığın iki örneğinin ayıklanması gerekir. İstemci başvurusunun bilet satın alımını tamamlamak için her birinin konum türünü bilmesi gerekir.
+Bir `location` varlığa ait iki örnek ayıklanmalıdır. Bilet satın alma işleminin tamamlanabilmesi için istemci uygulamanın konumun türünü bilmesi gerekir.
 
-Bağlamsal olarak ilişkili verileri ayıklamak için iki teknik vardır:
+Bağlamsal olarak ile ilgili verileri ayıklamak için iki teknik vardır:
 
- * Varlık `location` makineden öğrenilen bir varlıktır ve iki alt `origin` bileşen `destination` varlığı kullanır ve (tercih edilen)
- * Varlık `location` iki **rol** `origin` kullanır ve`destination`
+ * `location` Varlık, makine tarafından öğrenilen bir varlıktır ve `origin` ' ı ve `destination` (tercih edilen) yakalamak için iki alt bileşen varlığı kullanır
+ * Varlık, ve ' nin `origin` iki **rolünü kullanır** `location``destination`
 
-Birden çok varlık bir sözcükte bulunabilir ve kullanıldıkları bağlamın bir önemi yoksa ayrışma veya roller kullanılmadan ayıklanabilir. Örneğin, söyleyiş konumların bir listesini `I want to travel to Seattle, Cairo, and London.`içeriyorsa, bu liste her öğenin ek bir anlamı olmadığı bir listedir.
+Birden çok varlık bir söylenişi içinde bulunabilir ve kullanıldıkları bağlamın hiç önemi yoksa, ayrıştırma veya roller kullanılmadan ayıklanabilir. Örneğin, söylenişi bir konum `I want to travel to Seattle, Cairo, and London.`listesi içeriyorsa, bu, her öğenin ek anlamı olmadığı bir listesidir.
 
-### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Bağlamı tanımlamak için makinede öğrenilen bir varlığın alt bileşen varlıklarını kullanma
+### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Bağlam tanımlamak için makine tarafından öğrenilen bir varlığın alt bileşen varlıklarını kullanma
 
-Bir uçuş rezervasyonu eylemini açıklayan verileri ayıklamak ve ardından üst düzey varlığı istemci uygulamasının gerektirdiği ayrı parçalara ayırmak için [**makineden öğrenilen**](tutorial-machine-learned-entity.md) bir varlık kullanabilirsiniz.
+Bir uçuşın kayıt işlemini açıklayan verileri ayıklamak ve ardından üst düzey varlığı istemci uygulaması için gereken ayrı parçalara çıkarmak için [**makine tarafından öğrenilen bir varlık**](tutorial-machine-learned-entity.md) kullanabilirsiniz.
 
-Bu örnekte, `Book a flight from Seattle to Cairo`üst düzey varlık `travelAction` ayıklamak `flight from Seattle to Cairo`için etiketlenmiş ve olabilir. Sonra iki alt bileşen varlıkları `origin` oluşturulur, denir ve `destination`, her `geographyV2` ikisi de önceden oluşturulmuş varlığın bir kısıtlama uygulanmıştır. Eğitim de, `origin` ve `destination` uygun olarak etiketlenir.
+Bu örnekte `Book a flight from Seattle to Cairo`, üst düzey varlık ve ayıklanacak `travelAction` `flight from Seattle to Cairo`şekilde etiketlenebilir. Ardından, ve `origin` `destination`olarak adlandırılan iki alt bileşen varlığı, önceden oluşturulmuş `geographyV2` varlığın bir kısıtlaması uygulanmış şekilde oluşturulur. Eğitim arasları, `origin` ve `destination` uygun şekilde etiketlidir.
 
-### <a name="using-entity-role-to-define-context"></a>Bağlamı tanımlamak için Varlık rolünü kullanma
+### <a name="using-entity-role-to-define-context"></a>Bağlamı tanımlamak için varlık rolü kullanma
 
-Rol, bir varlığın söyleyiş içindeki içeriğe dayalı diğer adıdır. Bir rol önceden oluşturulmuş veya özel varlık türüyle kullanılabilir ve hem örnek söz hem de desenlerde kullanılabilir. Bu örnekte, `location` varlığın iki `origin` `destination` rolüne ve her ikisinin de örnek söyleyişlerinde işaretlemesi gerekir.
+Rol, bir varlık için, utterance içindeki bağlamı temel alan adlandırılmış diğer addır. Bir rol, önceden oluşturulmuş veya özel varlık türü ile kullanılabilir ve her iki örnek de ve desenlerinde kullanılabilir. Bu örnekte, `location` varlığın iki rolü `origin` ve `destination` her ikisinin de örnek söylerde işaretlenmesi gerekir.
 
-LUIS rolü `location` bulur ancak belirleyemezse, konum varlığı yine de döndürülür. İstemci uygulaması, kullanıcının hangi konum türünü kastettiğini belirlemek için bir soruyla birlikte takip etmek gerekir.
+LUBU, `location` rolünü tespit ediyorsa, ancak, konum varlığı döndürülür. Kullanıcının ne tür bir konum olduğunu belirleyebilmek için istemci uygulamanın bir soru ile izlenmesi gerekir.
 
 
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Maksimum varlık sayısından daha fazlasına ihtiyacınız varsa
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>En fazla varlık sayısından daha fazlasına ihtiyacınız varsa
 
-Sınırdan daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için, sisteminiz hakkında ayrıntılı bilgi toplamak, [LUIS](luis-reference-regions.md#luis-website) web sitesine gidin ve sonra **Destek**seçin. Azure aboneliğinizde destek hizmetleri varsa, [Azure teknik desteğine](https://azure.microsoft.com/support/options/)başvurun.
+Sınırdan daha fazlasına ihtiyacınız varsa desteğe başvurun. Bunu yapmak için sisteminizle ilgili ayrıntılı bilgiler toplayın, [Luo](luis-reference-regions.md#luis-website) Web sitesine gidin ve ardından **destek**' i seçin. Azure aboneliğiniz destek hizmetleri içeriyorsa, [Azure teknik desteği](https://azure.microsoft.com/support/options/)'ne başvurun.
 
 ## <a name="entity-prediction-status"></a>Varlık tahmin durumu
 
-LUIS portalı, bir örnek söyleyişde varlığın seçtiğiniz varlıktan farklı bir varlık tahminine sahip olduğunu gösterir. Bu farklı puan, geçerli eğitilmiş modele dayanır.
+LUU portalı, bir örnekte varlığın seçtiğiniz varlıktan farklı bir varlık tahminiyle ne zaman olduğunu gösterir. Bu farklı puan, geçerli eğitilen modele dayalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İyi [söyleyişlerle](luis-concept-utterance.md)ilgili kavramları öğrenin.
+[Tebrikler ilgili](luis-concept-utterance.md)kavramları öğrenin.
 
-Bkz. LUIS uygulamanıza nasıl varlık ekleyeceğiniz hakkında daha fazla bilgi edinmek için [taraf ekle'](luis-how-to-add-entities.md) ye bakın.
+LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .
 
-Bkz. Öğretici: Makinede öğrenilen varlığı kullanarak bir söyleyişten yapılandırılmış veri çıkarmayı öğrenmek için [Dil Anlama (LUIS)'deki makine öğrenilen varlıklarla kullanıcı dilinden yapılandırılmış verileri ayıklayın.](tutorial-machine-learned-entity.md)
+Bkz. Öğretici: makine tarafından öğrenilen varlığı kullanarak bir noktadan yapılandırılmış verilerin nasıl ayıklanacağını öğrenmek için [Language Understanding (LUA) içindeki makine tarafından öğrenilen varlıklara sahip kullanıcı aracılığıyla yapılandırılmış verileri ayıklama](tutorial-machine-learned-entity.md) .
  

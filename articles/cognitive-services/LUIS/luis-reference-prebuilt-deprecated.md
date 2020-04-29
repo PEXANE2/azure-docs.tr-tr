@@ -1,7 +1,7 @@
 ---
-title: Amortismana Hazır Varlıklar - LUIS
+title: Kullanımdan kaldırılan önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Dil Anlama (LUIS) önceden oluşturulmuş varlık bilgilerini içerir.
+description: Bu makale Language Understanding (LUSıS) ' de kullanımdan kaldırılan önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
@@ -12,21 +12,21 @@ ms.topic: reference
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: 46da828b7553fdf9cdded817febd3bb95cd4cbb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270670"
 ---
-# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUIS uygulamasında önceden oluşturulmuş varlıklar
-Aşağıdaki önceden oluşturulmuş varlıklar amortismana alınır ve yeni LUIS uygulamalarına eklenemez.
+# <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>Bir LUSıS uygulamasında kullanımdan kaldırılan önceden oluşturulmuş varlıklar
+Aşağıdaki önceden oluşturulmuş varlıklar kullanımdan kaldırılmıştır ve yeni LUSıS uygulamalarına eklenemez.
 
-* **Datetime**: **Datetime** kullanan varolan LUIS uygulamaları **datetimeV2'ye**geçirilmelidir, ancak datetime varlığı onu kullanan önceden varolan uygulamalarda çalışmaya devam eder.
-* **Coğrafya**: **Coğrafya** kullanan mevcut LUIS uygulamaları Aralık 2018'e kadar desteklenir.
-* **Ansiklopedi**: Ansiklopedi **kullanan** mevcut LUIS uygulamaları Aralık 2018'e kadar desteklenir.
+* **Tarih saat**: TarihSaat kullanan var olan lusıs uygulamaları **datetimeV2**'e geçirilmelidir, **ancak DateTime varlığı** onu kullanan önceden var olan uygulamalarda çalışmaya devam eder.
+* **Coğrafya**: **Coğrafya** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
+* **Ansiklopedi**: **ansıklopedı** kullanan mevcut Lua uygulamaları, Aralık 2018 ' ye kadar desteklenir.
 
 ## <a name="geography-culture"></a>Coğrafya kültürü
-**Coğrafya** yalnızca `en-us` yerel olarak kullanılabilir.
+**Coğrafya** yalnızca `en-us` yerel ayarda kullanılabilir.
 
 #### <a name="3-geography-subtypes"></a>3 Coğrafya alt türleri
 
@@ -40,10 +40,10 @@ Aşağıdaki önceden oluşturulmuş varlıklar amortismana alınır ve yeni LUI
 `builtin.geography.pointOfInterest`   |   `sahara desert`|`{ "type": "builtin.geography.pointOfInterest", "entity": "sahara desert" }`|
 
 ## <a name="encyclopedia-culture"></a>Ansiklopedi kültürü
-**Ansiklopedi** yalnızca `en-US` yerel olarak kullanılabilir.
+**Ansiklopedi** yalnızca `en-US` yerel ayarda kullanılabilir.
 
-#### <a name="encyclopedia-subtypes"></a>Ansiklopedi alt tipleri
-Ansiklopedi yerleşik varlık aşağıdaki tabloda 100'den fazla alt türü içerir: Ayrıca, ansiklopedi varlıkları genellikle birden çok türle eşler. Örneğin, Ronald Reagan'ın verir sorgusu:
+#### <a name="encyclopedia-subtypes"></a>Ansiklopedi alt türleri
+Ansiklopedi yerleşik varlığı, aşağıdaki tablodaki 100 alt türü içerir: Ayrıca, ansiklopedi varlıkları genellikle birden çok türe eşlenir. Örneğin, Ronald Reagan sorgusu şunları verir:
 
 ```json
 {
@@ -163,5 +163,5 @@ Ansiklopedi yerleşik varlık aşağıdaki tabloda 100'den fazla alt türü içe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Boyut,](luis-reference-prebuilt-dimension.md) [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
+[Boyut](luis-reference-prebuilt-dimension.md), [e-posta](luis-reference-prebuilt-email.md) varlıkları ve [sayı](luis-reference-prebuilt-number.md)hakkında bilgi edinin.
 

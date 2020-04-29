@@ -1,7 +1,7 @@
 ---
-title: Etki alanına özel içerik - Computer Vision
+title: Etki alanına özgü içerik-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bir resim hakkında daha ayrıntılı bilgi vermek için görüntü kategorizasyonu etki alanını nasıl belirtin öğrenin.
+description: Görüntü hakkında daha ayrıntılı bilgi döndürmek için bir görüntü kategorisi etki alanı belirtmeyi öğrenin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68946333"
 ---
 # <a name="detect-domain-specific-content"></a>Etki alanına özgü içeriği algılama
 
-Etiketleme ve üst düzey kategorilere ayırmaya ek olarak, Computer Vision özel veriler üzerinde eğitilmiş modelleri kullanarak daha fazla etki alanına özgü analizi de destekler.
+Etiketleme ve üst düzey kategoriye ek olarak, Görüntü İşleme özelleştirilmiş veriler üzerinde eğitilen modelleri kullanarak etki alanına özgü daha fazla analiz da destekler.
 
-Etki alanına özgü modelleri kullanmanın iki yolu vardır: kendileri tarafından (kapsamlı çözümleme) veya kategorizasyon özelliğini geliştirme olarak.
+Etki alanına özgü modelleri kullanmanın iki yolu vardır: kendilerine (kapsamlı analiz) veya kategori özelliği için bir geliştirme olarak.
 
 ### <a name="scoped-analysis"></a>Kapsamlı analiz
 
-[Modelleri/\<modeli\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API'yi arayarak yalnızca seçilen etki alanına özgü modeli kullanarak görüntüyü çözümleyebilirsiniz.
+[Modeller/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API 'sini çağırarak bir görüntüyü yalnızca seçilen alana özgü modeli kullanarak çözümleyebilirsiniz.
 
-Aşağıda, verilen görüntü için **modeller/ünlüler/analiz** API'si tarafından döndürülen örnek bir JSON yanıtı verilmiştir:
+Aşağıda, belirtilen görüntü için **Modeller/Ünlüler/çözümle** API 'si tarafından döndürülen örnek bir JSON yanıtı verilmiştir:
 
-![Satya Nadella ayakta, gülümseyerek](./images/satya.jpeg)
+![Satya Nadella duran, gülümseyen](./images/satya.jpeg)
 
 ```json
 {
@@ -55,13 +55,13 @@ Aşağıda, verilen görüntü için **modeller/ünlüler/analiz** API'si taraf�
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Gelişmiş kategorizasyon analizi
+### <a name="enhanced-categorization-analysis"></a>Gelişmiş kategori Analizi
 
-Genel görüntü çözümlemesi için etki alanına özel modelleri de kullanabilirsiniz. Bunu, [Çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API çağrısının *ayrıntı* parametresinde etki alanına özgü modelleri belirterek [üst düzey kategorilere ayırmanın](concept-categorizing-images.md) bir parçası olarak yaparsınız.
+Genel görüntü analizine ek olarak, etki alanına özgü modeller de kullanabilirsiniz. Bunu, [Çözümle](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API çağrısının *Ayrıntılar* parametresinde alana özgü modeller belirterek, [üst düzey kategori](concept-categorizing-images.md) parçası olarak yapabilirsiniz.
 
-Bu durumda, 86 kategorili taksonomi sınıflandırıcı ilk denir. Algılanan kategorilerden herhangi biri eşleşen etki alanına özgü bir modele sahipse, görüntü bu modelden de geçirilir ve sonuçlar eklenir.
+Bu durumda, ilk olarak 86 kategori taksonomi Sınıflandırıcısı çağırılır. Algılanan kategorilerden herhangi birinde eşleşen bir etki alanına özgü model varsa, görüntü bu modelden de geçirilir ve sonuçlar eklenir.
 
-Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin `detail` daha geniş bir kategorizasyon analizine düğüm olarak nasıl dahil edilebildiğini gösterir.
+Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin daha geniş bir kategori analizinde `detail` düğüm olarak nasıl dahil edileceğini gösterir.
 
 ```json
 "categories":[
@@ -96,16 +96,16 @@ Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin `detail` daha g
 ]
 ```
 
-## <a name="list-the-domain-specific-models"></a>Etki alanına özgü modelleri listele
+## <a name="list-the-domain-specific-models"></a>Etki alanına özgü modelleri listeleme
 
-Şu anda, Computer Vision aşağıdaki etki alanına özgü modelleri destekler:
+Şu anda Görüntü İşleme, etki alanına özgü aşağıdaki modelleri destekler:
 
 | Adı | Açıklama |
 |------|-------------|
-| Ünlü | Ünlü tanıma, `people_` kategorisinde sınıflandırılan görüntüler için desteklenen |
-| Simge | Yer işareti tanıma, `outdoor_` veya `building_` kategorilerde sınıflandırılan görüntüler için desteklenen |
+| ünlüleri | Bu şekilde, `people_` kategoride sınıflandırılan görüntüler için desteklenen ünlülik tanıma |
+| sakal | Yer işareti tanıma, `outdoor_` veya `building_` kategorilerinde sınıflandırılan görüntüler için desteklenir |
 
-[Modeller](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API'yi çağırmak, bu bilgileri her modelin uygulayabileceği kategorilerle birlikte döndürecektir:
+[Modeller](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API 'sini çağırmak, bu bilgileri her modelin uygulayabileceği kategorilerle birlikte döndürür:
 
 ```json
 {
@@ -139,4 +139,4 @@ Aşağıdaki JSON yanıtı, etki alanına özgü çözümlemenin `detail` daha g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görüntüleri kategorilere ayırma](concept-categorizing-images.md)yla ilgili kavramları öğrenin.
+[Görüntüleri kategorilere ayırma](concept-categorizing-images.md)hakkında kavramlar öğrenin.

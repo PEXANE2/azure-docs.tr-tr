@@ -5,24 +5,24 @@ ms.date: 11/15/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: c414bfed40385c2bad6eaaff6b391f57c8d898cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74125631"
 ---
 ## <a name="blog-posts"></a>Blog yazıları
 
-* [Bilişsel Hizmetler Konteynerler Çalışan](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
+* [Bilişsel hizmetler kapsayıcılarını çalıştırma](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
 * [Azure Bilişsel Hizmetler](https://azure.microsoft.com/blog/topics/cognitive-services/)
 
 ## <a name="developer-samples"></a>Geliştirici örnekleri
 
-Geliştirici örnekleri [GitHub depomuzda](https://github.com/Azure-Samples/cognitive-services-containers-samples)mevcuttur.
+Geliştirici örnekleri, [GitHub deponuzda](https://github.com/Azure-Samples/cognitive-services-containers-samples)bulunabilir.
 
-## <a name="view-webinar"></a>web seminerini görüntüle
+## <a name="view-webinar"></a>Web semineri görüntüle
 
-Web [seminerine](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) katılerek aşağıdakiler hakkında bilgi edinin:
+Hakkında bilgi edinmek için Web [seminerine](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) katılın:
 
-* Docker kullanarak herhangi bir makineye Bilişsel Hizmetler dağıtma
-* Aks'a Bilişsel Hizmetler nasıl dağıtılır?
+* Bilişsel hizmetler 'i Docker kullanarak herhangi bir makineye dağıtma
+* Bilişsel hizmetler 'i AKS 'e dağıtma

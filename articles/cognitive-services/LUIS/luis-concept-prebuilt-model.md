@@ -1,7 +1,7 @@
 ---
-title: Önceden yapılmış modeller - LUIS
+title: Önceden oluşturulmuş modeller-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Önceden oluşturulmuş modeller etki alanları, niyetler, söyleyişler ve varlıklar sağlar. Uygulamanızı önceden oluşturulmuş bir etki alanıyla başlatabilir veya daha sonra uygulamanıza alakalı bir etki alanı ekleyebilirsiniz.
+description: Önceden oluşturulmuş modeller, etki alanları, amaçlar, utbotslar ve varlıklar sağlar. Uygulamanızı önceden oluşturulmuş bir etki alanıyla başlatabilir veya uygulamanıza daha sonra ilgili bir etki alanı ekleyebilirsiniz.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,55 +12,55 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74280833"
 ---
 # <a name="prebuilt-models"></a>Önceden oluşturulmuş modeller
 
-Önceden oluşturulmuş modeller etki alanları, niyetler, söyleyişler ve varlıklar sağlar. Uygulamanızı önceden oluşturulmuş bir modelle başlatabilir veya daha sonra uygulamanıza alakalı bir model ekleyebilirsiniz. 
+Önceden oluşturulmuş modeller, etki alanları, amaçlar, utbotslar ve varlıklar sağlar. Uygulamanızı önceden oluşturulmuş bir modelle başlatabilir veya uygulamanıza daha sonra ilgili bir model ekleyebilirsiniz. 
 
-## <a name="types-of-prebuilt-models"></a>Önceden oluşturulmuş model türleri
+## <a name="types-of-prebuilt-models"></a>Önceden oluşturulmuş modellerin türleri
 
-LUIS önceden oluşturulmuş üç model sunar. Her model herhangi bir zamanda uygulamanız için eklenebilir. 
+LUSıS, üç tür önceden oluşturulmuş model sağlar. Her bir model uygulamanıza dilediğiniz zaman eklenebilir. 
 
 |Model türü|Dahil Eder|
 |--|--|
-|[Domain](luis-reference-prebuilt-domains.md)|Niyetler, söyleyişler, varlıklar|
-|Hedefler|Niyetler, söyleyişler|
+|[Domain](luis-reference-prebuilt-domains.md)|Amaçlar, utterslar, varlıklar|
+|Hedefler|Amaçlar, utbotslar|
 |[Varlıklar](luis-reference-prebuilt-entities.md)|Yalnızca varlıklar| 
 
 ## <a name="prebuilt-domains"></a>Önceden oluşturulmuş etki alanları
 
-Dil Anlama (LUIS), etki alanları veya ortak istemci uygulamaları kategorileri için birlikte çalışan [niyet](luis-how-to-add-intents.md) ve [varlıkların](luis-concept-entity-types.md) önceden eğitilmiş modelleri olan *önceden oluşturulmuş etki alanlarını*sağlar. 
+Language Understanding (LUU), etki alanları ya da istemci uygulamalarının ortak kategorileri için birlikte çalışan, önceden eğitilen [amaçlar](luis-how-to-add-intents.md) ve [varlık](luis-concept-entity-types.md) modelleri olan önceden *oluşturulmuş etki alanları*sağlar. 
 
-Önceden oluşturulmuş etki alanları eğitimlidir ve LUIS uygulamanıza eklemeye hazırdır. Önceden oluşturulmuş bir etki alanının amaçları ve varlıkları, bunları uygulamanız için ekledikten sonra tamamen özelleştirilebilir. 
+Önceden oluşturulmuş etki alanları, LUSıS Uygulamanıza eklenmeye hazır hale gelir. Önceden oluşturulmuş bir etki alanının amaçları ve varlıkları uygulamanıza eklendikten sonra tamamen özelleştirilebilir. 
 
 > [!TIP]
-> Önceden oluşturulmuş bir etki alanında bulunan niyet ler ve varlıklar en iyi şekilde birlikte çalışır. Mümkün olduğunda aynı etki alanından gelen amaçları ve varlıkları birleştirmek daha iyidir.
-> Yardımcı Programlar önceden oluşturulmuş etki alanı, herhangi bir etki alanında kullanılmak üzere özelleştirebileceğiniz amaçları vardır. Örneğin, uygulamanıza `Utilities.Repeat` ekleyebilir ve kullanıcının uygulamanızda yinelemek isteyebileceği eylemleri tanımasını sağlayabilirsiniz. 
+> Önceden oluşturulmuş bir etki alanındaki amaçlar ve varlıklar en iyi şekilde çalışır. Mümkün olduğunda aynı etki alanındaki amaçları ve varlıkları birleştirmek daha iyidir.
+> Yardımcı programlar önceden oluşturulmuş etki alanı, herhangi bir etki alanında kullanım için özelleştirebileceğiniz amaçlar içerir. Örneğin, uygulamanıza ekleyebilir `Utilities.Repeat` ve Kullanıcı uygulamanızda yinelemek isteyebileceğiniz herhangi bir eylemi tanımasını sağlayabilirsiniz. 
 
-### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Önceden oluşturulmuş etki alanı amacının davranışını değiştirme
+### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Önceden oluşturulmuş bir etki alanı hedefinin davranışını değiştirme
 
-Önceden oluşturulmuş bir etki alanının, LUIS uygulamanızda olmasını istediğiniz ama farklı davranmasını istediğiniz bir amaca benzer bir niyet içerdiğini görebilirsiniz. Örneğin, Önceden oluşturulmuş **Yerler** etki `MakeReservation` alanı bir restoran rezervasyonu yapmak için bir niyet sağlar, ancak uygulamanızın bu amacı otel rezervasyonu yapmak için kullanmasını istersiniz. Bu durumda, otel rezervasyonları yapma niyetine örnek sözler ekleyerek bu niyetin davranışını değiştirebilir ve uygulamayı yeniden eğitebilirsiniz. 
+Önceden oluşturulmuş bir etki alanının, LUIN uygulamanızda olmasını istediğiniz bir amaca benzer bir amaç içerdiğini, ancak farklı davranması gerektiğini fark edebilirsiniz. Örneğin, önceden oluşturulmuş olan etki **alanı, Restoran** rezervasyonu `MakeReservation` yapmak için bir amaç sağlar, ancak uygulamanızın otel rezervasyonları yapmak için bu amacı kullanmasını istersiniz. Bu durumda, otel ayırmaları yapma ve sonra uygulamayı yeniden eğitme hakkında amaç ekleyerek bu amaca ilişkin davranışı değiştirebilirsiniz. 
 
-[Önceden oluşturulmuş etki alanlarının](./luis-reference-prebuilt-domains.md)tam listesini önceden oluşturulmuş etki alanları referansında bulabilirsiniz.
+Önceden [oluşturulmuş etki alanları başvurusunda](./luis-reference-prebuilt-domains.md)önceden oluşturulmuş etki alanlarının tam listesini bulabilirsiniz.
 
-## <a name="prebuilt-intents"></a>Önceden yapılmış niyetler
+## <a name="prebuilt-intents"></a>Önceden oluşturulmuş amaçlar
 
-LUIS, önceden oluşturulmuş etki alanlarının her biri için önceden oluşturulmuş niyetler ve onların söyleyişlerini sağlar. Tüm etki alanı eklenmeden niyetler eklenebilir. Bir niyet eklemek, uygulamanıza bir niyet ve onun söyleyişlerini ekleme işlemidir. Hem niyet adı hem de söyleyiş listesi değiştirilebilir.  
+LUO, önceden oluşturulmuş amaçlar ve bunların kendilerine ait yerleşik etki alanlarının her biri için onlara yönelik bir işlem sağlar. Tüm etki alanı eklenmeksizin amaçlar eklenebilir. Amaç eklemek, uygulamanıza amaç ve bu nesnelerin bir hedefini ekleme işlemidir. Amaç adı ve söylenişi listesinin her ikisi de değiştirilebilir.  
 
 ## <a name="prebuilt-entities"></a>Önceden oluşturulmuş varlıklar
 
-LUIS, tarihler, saatler, sayılar, ölçümler ve para birimi gibi yaygın bilgi türlerini tanımak için önceden oluşturulmuş varlıklar kümesi içerir. Önceden oluşturulmuş varlık desteği, LUIS uygulamanızın kültürüne göre değişir. Luis'in desteklediği, kültür desteği de dahil olmak üzere önceden oluşturulmuş varlıkların tam listesi için [önceden oluşturulmuş varlık başvurusuna](./luis-reference-prebuilt-entities.md)bakın.
+LUO, tarihler, saatler, sayılar, ölçümler ve para birimi gibi ortak bilgi türlerini tanınması için önceden oluşturulmuş varlıklar kümesi içerir. Önceden oluşturulmuş varlık desteği, LUSıS uygulamanızın kültürüne göre farklılık gösterir. LUID 'nin desteklediği önceden oluşturulmuş varlıkların tam listesi için, kültüre göre destek dahil olmak üzere, [önceden oluşturulmuş varlık başvurusuna](./luis-reference-prebuilt-entities.md)bakın.
 
-Önceden oluşturulmuş bir varlık uygulamanıza dahil edildiğinde, tahminleri yayınlanmış uygulamanıza dahil edilir. Önceden oluşturulmuş varlıkların davranışı önceden eğitilmişve **değiştirilemez.** 
+Uygulamanıza önceden oluşturulmuş bir varlık dahil edildiğinde, tahminleri yayımlanmış uygulamanıza dahil edilir. Önceden oluşturulmuş varlıkların davranışı önceden eğitilmiş **ve değiştirilemez** . 
 
 > [!NOTE]
-> **builtin.datetime** amortismana hazırdır. Bu, tarih ve saat aralıklarının tanınmasını ve belirsiz tarih ve saatlerin daha iyi tanınmasını sağlayan [**builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md)ile değiştirilir.
+> **Builtin. DateTime** kullanım dışıdır. Tarih ve saat aralıklarının tanınabilmesi ve belirsiz tarih ve saatlerin daha iyi tanınmasını sağlayan [**Builtin. datetimeV2**](luis-reference-prebuilt-datetimev2.md)ile değiştirilmiştir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamanıza [önceden oluşturulmuş varlıkları](luis-prebuilt-entities.md) nasıl ekleyeceğinizi öğrenin.
+Uygulamanıza [önceden oluşturulmuş varlıklar eklemeyi](luis-prebuilt-entities.md) öğrenin.

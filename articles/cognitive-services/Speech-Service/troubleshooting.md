@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK sorun giderme - Konuşma hizmeti
+title: Konuşma SDK-konuşma hizmeti sorunlarını giderme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Konuşma SDK'sını kullandığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak bilgiler sağlanıyor.
+description: Bu makalede, konuşma SDK 'sını kullandığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak bilgiler sağlanmaktadır.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,42 +11,42 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.openlocfilehash: 421b9adf4ae5d2c641484e646bea096716d46cca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74815422"
 ---
 # <a name="troubleshoot-the-speech-sdk"></a>Konuşma SDK’sı sorunlarını giderme
 
-Bu makalede, Konuşma SDK'sını kullandığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak bilgiler sağlanıyor.
+Bu makalede, konuşma SDK 'sını kullandığınızda karşılaşabileceğiniz sorunları çözmenize yardımcı olacak bilgiler sağlanmaktadır.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hata: WebSocket Yükseltme kimlik doğrulama hatası (403) ile başarısız oldu
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hata: WebSocket yükseltmesi bir kimlik doğrulama hatasıyla başarısız oldu (403)
 
-Bölgeniz veya hizmetiniz için yanlış bitiş noktasına sahip olabilirsiniz. Doğru olduğundan emin olmak için URI'yi kontrol edin.
+Bölgeniz veya hizmetiniz için yanlış uç noktaya sahip olabilirsiniz. Doğru olduğundan emin olmak için URI 'yi denetleyin.
 
-Ayrıca, abonelik anahtarınız veya yetkilendirme belirtecinizde bir sorun olabilir. Daha fazla bilgi için sonraki bölüme bakın.
+Ayrıca, abonelik anahtarınız veya yetkilendirme belirtecinizle ilgili bir sorun olabilir. Daha fazla bilgi için sonraki bölüme bakın.
 
-## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hata: HTTP 403 Yasak veya HTTP 401 Yetkisiz
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hata: HTTP 403 yasaklanmış veya HTTP 401 Yetkisiz
 
-Bu hata genellikle kimlik doğrulama sorunları neden olur. Geçerli `Ocp-Apim-Subscription-Key` veya `Authorization` üstbilgisiz bağlantı istekleri 403 veya 401 durumuyla reddedilir.
+Bu hata genellikle kimlik doğrulama sorunlarından kaynaklanır. Geçerli `Ocp-Apim-Subscription-Key` veya `Authorization` üst bilgi içermeyen bağlantı istekleri, 403 veya 401 durumuyla reddedilir.
 
-* Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız, aşağıdakiler için hatayı görebilirsiniz:
+* Kimlik doğrulaması için bir abonelik anahtarı kullanıyorsanız şu hata nedeniyle hatayı görebilirsiniz:
 
     - Abonelik anahtarı eksik veya geçersiz
-    - Aboneliğinizin kullanım kotası aştınız
+    - Aboneliğinizin kullanım kotasını aştınız
 
-* Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız, aşağıdakiler için hatayı görebilirsiniz:
+* Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız şu hata nedeniyle hatayı görebilirsiniz:
 
-    - Yetkilendirme belirteci geçersizdir
-    - Yetkilendirme belirteci süresi doldu
+    - Yetkilendirme belirteci geçersiz
+    - Yetkilendirme belirtecinin geçerliliği zaman aşımına uğradı
 
 ### <a name="validate-your-subscription-key"></a>Abonelik anahtarınızı doğrulayın
 
 Aşağıdaki komutlardan birini çalıştırarak geçerli bir abonelik anahtarınız olduğunu doğrulayabilirsiniz.
 
 > [!NOTE]
-> `YOUR_SUBSCRIPTION_KEY` Değiştirin `YOUR_REGION` ve kendi abonelik anahtarınızı ve ilişkili bölgenizi değiştirin.
+> Ve `YOUR_SUBSCRIPTION_KEY` ' `YOUR_REGION` i kendi abonelik anahtarınızı ve ilişkili bölge ile değiştirin.
 
 * PowerShell
 
@@ -66,14 +66,14 @@ Aşağıdaki komutlardan birini çalıştırarak geçerli bir abonelik anahtarı
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
-Geçerli bir abonelik anahtarı girdiyseniz, komut bir yetkilendirme jetonu döndürür, aksi takdirde bir hata döndürülür.
+Geçerli bir abonelik anahtarı girdiyseniz, komut bir yetkilendirme belirteci döndürür, aksi takdirde bir hata döndürülür.
 
-### <a name="validate-an-authorization-token"></a>Yetkilendirme belirteci doğrulama
+### <a name="validate-an-authorization-token"></a>Yetkilendirme belirtecini doğrulama
 
-Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız, yetkilendirme belirteci hala geçerli olduğunu doğrulamak için aşağıdaki komutlardan birini çalıştırın. Jetonlar 10 dakika geçerlidir.
+Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız, yetkilendirme belirtecinin hala geçerli olduğunu doğrulamak için aşağıdaki komutlardan birini çalıştırın. Belirteçler 10 dakika için geçerlidir.
 
 > [!NOTE]
-> Önceden `YOUR_AUDIO_FILE` kaydedilmiş ses dosyanıza giden yol ile değiştirin. Önceki `YOUR_ACCESS_TOKEN` adımda döndürülen yetkilendirme belirteciile değiştirin. Doğru `YOUR_REGION` bölgeyle değiştirin.
+> Önceden `YOUR_AUDIO_FILE` kaydedilmiş ses dosyasının yoluyla değiştirin. Önceki `YOUR_ACCESS_TOKEN` adımda döndürülen yetkilendirme belirteciyle değiştirin. Doğru `YOUR_REGION` bölge ile değiştirin.
 
 * PowerShell
 
@@ -103,26 +103,26 @@ Kimlik doğrulaması için bir yetkilendirme belirteci kullanıyorsanız, yetkil
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
 
-Geçerli bir yetkilendirme belirteci girdiyseniz, komut ses dosyanızın transkripsiyonunu döndürür, aksi takdirde bir hata döndürülür.
+Geçerli bir yetkilendirme belirteci girdiyseniz, komut ses dosyanız için dökümü döndürür, aksi takdirde bir hata döndürülür.
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Hata: HTTP 400 Kötü İstek
+## <a name="error-http-400-bad-request"></a>Hata: HTTP 400 Hatalı Istek
 
-Bu hata genellikle istek gövdesi geçersiz ses verileri içerdiğinde oluşur. Yalnızca WAV biçimi desteklenir. Ayrıca, için uygun değerleri belirttiğinden emin olmak için `Content-Type` `Content-Length`isteğin üstbilgilerini kontrol edin ve .
+Bu hata genellikle istek gövdesi geçersiz ses verileri içerdiğinde oluşur. Yalnızca WAV biçimi desteklenir. Ayrıca, ve `Content-Type` `Content-Length`için uygun değerleri belirttiğinizden emin olmak için isteğin üst bilgilerini denetleyin.
 
-## <a name="error-http-408-request-timeout"></a>Hata: HTTP 408 İstek Zaman Dilimi
+## <a name="error-http-408-request-timeout"></a>Hata: HTTP 408 Istek zaman aşımı
 
-Hizmete ses verisi gönderilmediği için hata büyük olasılıkla oluşur. Bu hata, ağ sorunları ndan da kaynaklanabilir.
+Büyük olasılıkla hata, hizmete hiçbir ses verisi gönderilmediğinden meydana gelir. Bu hataya ağ sorunları da neden olmuş olabilir.
 
-## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>Yanıtta "RecognitionStatus" "InitialSilenceTimeout"
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>Yanıtta "Recognıtionstatus" değeri "InitialSilenceTimeout"
 
-Bu sorun genellikle ses verilerinden kaynaklanır. Bu hatayı görebilirsiniz, çünkü:
+Bu sorun genellikle ses verilerinden kaynaklanır. Şu hata nedeniyle karşılaşabilirsiniz:
 
-* Sesin başında uzun bir sessizlik var. Bu durumda, hizmet tanımayı birkaç saniye sonra `InitialSilenceTimeout`durdurur ve döndürür.
+* Sesin başlangıcında sessizlik uzun bir şekilde uzatılacağınızdır. Bu durumda, hizmet birkaç saniye sonra tanımayı sonlandırır ve döndürür `InitialSilenceTimeout`.
 
-* Ses, ses verilerinin sessizlik olarak ele alınmasına neden olan desteklenmeyen bir codec biçimi kullanır.
+* Ses, ses verilerinin sessizlik olarak işlenmesine neden olan desteklenmeyen bir codec biçimi kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sürüm notlarını gözden geçirme](releasenotes.md)
+* [Sürüm notlarını gözden geçirin](releasenotes.md)

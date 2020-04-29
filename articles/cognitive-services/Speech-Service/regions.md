@@ -1,7 +1,7 @@
 ---
-title: Bölgeler - Konuşma hizmeti
+title: Bölgeler-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmeti için konuşma-metin, metinden konuşmaya ve konuşma çevirisi de dahil olmak üzere kullanılabilir bölgelerin ve uç noktaların listesi.
+description: Konuşmadan metne, metinden konuşmaya ve konuşma çevirisi de dahil olmak üzere konuşma hizmeti için kullanılabilir bölgelerin ve uç noktaların listesi.
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -12,39 +12,39 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220473"
 ---
-# <a name="speech-service-supported-regions"></a>Konuşma hizmeti desteklenen bölgeler
+# <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
-Konuşma hizmeti, uygulamanızın sesi metne dönüştürmesine, konuşma çevirisi yapmasına ve gizli metni konuşmaya dönüştürmesine olanak tanır. Hizmet, Konuşma SDK ve REST API'leri için benzersiz uç noktaları olan birden çok bölgede kullanılabilir.
+Konuşma hizmeti, uygulamanızın sesi metne dönüştürmesini, konuşma çevirisi gerçekleştirmesini ve metni konuşmaya dönüştürmeyi sağlar. Hizmet, konuşma SDK 'Sı ve REST API 'Leri için benzersiz uç noktalara sahip birden çok bölgede kullanılabilir.
 
-Tüm bölgeler için konuşma deneyiminize özel yapılandırmalar gerçekleştirmek için Konuşma portalına buradan ulaşabilirsiniz:https://speech.microsoft.com
+Tüm bölgeler için konuşma deneyiminize özel yapılandırma gerçekleştirmeye yönelik konuşma portalı buradan edinilebilir:https://speech.microsoft.com
 
-Konuşma hizmetinizin çağrıları için, aramanın aboneliğiniz için bölgeyle eşleştiğinden emin olun.
+Konuşma hizmetinizin etkinleştirmeleri için, çağrının aboneliğinizin bölgesiyle eşleştiğinden emin olun.
 
 ## <a name="speech-sdk"></a>Konuşma SDK'sı
 
-Konuşma [SDK'](speech-sdk.md)da bölgeler bir dize olarak belirtilir (örneğin, C#için Konuşma `SpeechConfig.FromSubscription` SDK'sında bir parametre olarak).
+[Konuşma SDK 'sında](speech-sdk.md), bölgeler bir dize olarak belirtilir (örneğin, C# için konuşma SDK 'sında öğesine `SpeechConfig.FromSubscription` bir parametre olarak).
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>Konuşmadan metne, metinden konuşmaya ve çeviriye
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Konuşmadan metne, metinden konuşmaya ve çeviri
 
-Konuşma özelleştirme portalına buradan ulaşabilirsiniz:https://speech.microsoft.com
+Konuşma özelleştirme portalı şurada bulunabilir:https://speech.microsoft.com
 
-Konuşma hizmeti konuşma **tanıma,** **metin-konuşma**ve **çeviri**için bu bölgelerde mevcuttur:
+Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya**ve **çeviri**için şu bölgelerde kullanılabilir:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-[Konuşma SDK](speech-sdk.md)kullanıyorsanız , bölgeler **Bölge tanımlayıcısı** tarafından belirtilir (örneğin, bir parametre `SpeechConfig.FromSubscription`olarak). Bölgenin aboneliğinizin bölgesiyle eşleştidiğinden emin olun.
+[Konuşma SDK 'sını](speech-sdk.md)kullanıyorsanız, bölgeler **bölge tanımlayıcısı** tarafından belirtilir (örneğin, öğesine `SpeechConfig.FromSubscription`parametresi olarak). Bölgenin aboneliğinizin bölgesiyle aynı olduğundan emin olun.
 
 ### <a name="intent-recognition"></a>Amaç tanıma
 
-Konuşma SDK üzerinden **niyet tanıma** için kullanılabilir bölgeler şunlardır:
+Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Küresel bölge | Bölge           | Bölge tanımlayıcısı |
+| Genel bölge | Bölge           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
@@ -59,11 +59,11 @@ Konuşma SDK üzerinden **niyet tanıma** için kullanılabilir bölgeler şunla
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
 | Güney Amerika | Güney Brezilya     | `brazilsouth`        |
 
-Bu, [Dil Anlama hizmeti (LUIS)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
+Bu, [Language Understanding hizmeti (Luo)](/azure/cognitive-services/luis/luis-reference-regions)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
-[Konuşma SDK](speech-sdk.md) bu bölgelerde **ses asistanı** yeteneklerini destekler:
+[Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
 
 | Bölge         | Bölge tanımlayıcısı |
 | -------------- | -------------------- |
@@ -77,27 +77,27 @@ Bu, [Dil Anlama hizmeti (LUIS)](/azure/cognitive-services/luis/luis-reference-re
 
 ## <a name="rest-apis"></a>REST API'leri
 
-Konuşma hizmeti ayrıca konuşma-metin ve metin-konuşma istekleri için REST uç noktaları ortaya çıkarır.
+Konuşma hizmeti, konuşmadan metne ve metinden konuşmaya istekleri için REST uç noktalarını da kullanıma sunar.
 
 ### <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
-Konuşmadan metne başvuru belgeleri için, [konuşmadan metne REST API'ye](rest-speech-to-text.md)bakın.
+Konuşmadan metne başvuru belgeleri için bkz. [konuşmayı metne dönüştürme REST API](rest-speech-to-text.md).
 
-REST API için bitiş noktası şu biçime sahiptir:
+REST API uç noktası şu biçimdedir:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-Aboneliğinizin bulunduğu bölgeye uyan tanımlayıcıyı bu tablodan değiştirin: `<REGION_IDENTIFIER>`
+Bu `<REGION_IDENTIFIER>` tablodaki aboneliğinizin bölgesiyle eşleşen tanımlayıcıyla değiştirin:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> 4xx HTTP hatası almamak için dil parametresi URL'ye eklenmelidir. Örneğin, Batı ABD bitiş noktasını kullanarak ABD İngilizcesi olarak ayarlanan dil: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Bir 4xx HTTP hatası almamak için dil parametresi URL 'ye eklenmelidir. Örneğin, Batı ABD uç noktası kullanılarak dil ABD Ingilizcesi olarak ayarlanmıştır: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Metin okuma
 
-Metinden konuşmaya başvuru belgeleri için [metinden konuşmaya REST API'ye](rest-text-to-speech.md)bakın.
+Metinden konuşmaya başvuru belgeleri için bkz. [metin okuma REST API](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

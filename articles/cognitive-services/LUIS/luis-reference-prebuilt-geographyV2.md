@@ -1,7 +1,7 @@
 ---
-title: Coğrafya V2 önceden inşa edilmiş varlık - LUIS
+title: Coğrafya v2 önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Dil Anlama (LUIS) coğrafyaV2 önceden oluşturulmuş varlık bilgileri içerir.
+description: Bu makale Language Understanding (LUSıS) içindeki geographyV2 önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,36 +12,36 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: b2b2b0781abce59628660b669f43110bf91b15e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273502"
 ---
-# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için GeographyV2 önceden oluşturulmuş varlık
-Önceden oluşturulmuş coğrafyaV2 varlık yerleri algılar. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına GeographyV2 içeren örnek beyanlar eklemeniz gerekmez. GeographyV2 varlığı İngiliz [kültüründe](luis-reference-prebuilt-entities.md)desteklenir.
+# <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için GeographyV2 önceden oluşturulmuş varlık
+Önceden oluşturulmuş geographyV2 varlığı yerleri algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını GeographyV2 içeren örnek bir değer eklemeniz gerekmez. GeographyV2 varlığı Ingilizce [kültür](luis-reference-prebuilt-entities.md)' de desteklenir.
 
-## <a name="subtypes"></a>Alt
+## <a name="subtypes"></a>Alt türleri
 Coğrafi konumların alt türleri vardır:
 
-|Alt|Amaç|
+|SubType|Amaç|
 |--|--|
 |`poi`|ilgi noktası|
-|`city`|şehrin adı|
-|`countryRegion`|ülke veya bölgenin adı|
-|`continent`|kıtanın adı|
-|`state`|eyaletin veya ilin adı|
+|`city`|Şehir adı|
+|`countryRegion`|ülke veya bölge adı|
+|`continent`|kıta adı|
+|`state`|Eyalet veya il adı|
 
 
-## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlığı için çözünürlük
+## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 varlık için çözüm
 
-Aşağıdaki varlık nesneleri sorgu için döndürülür:
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `Carol is visiting the sphinx in gizah egypt in africa before heading to texas.`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -70,11 +70,11 @@ Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
 }
 ```
 
-Önceki JSON yılında, `poi` **Point of Interest**için bir kısaltmadır.
+Önceki JSON 'da, `poi` **ilgilendiğiniz noktaya**yönelik bir kısaltmadır.
 
-#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
 
-Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -163,7 +163,7 @@ Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **builtin.geographyV2** varlığının çözümünü gösterir.
+Aşağıdaki örnek, **yerleşik. geographyV2** varlığının çözünürlüğünü gösterir.
 
 ```json
 "entities": [
@@ -209,6 +209,6 @@ Aşağıdaki örnek, **builtin.geographyV2** varlığının çözümünü göste
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[E-posta,](luis-reference-prebuilt-email.md) [numara](luis-reference-prebuilt-number.md)ve [ordinal](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.
+[E-posta](luis-reference-prebuilt-email.md), [sayı](luis-reference-prebuilt-number.md)ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.

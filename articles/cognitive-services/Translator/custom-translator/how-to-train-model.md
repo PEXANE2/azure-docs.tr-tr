@@ -1,7 +1,7 @@
 ---
-title: Bir model eğitin - Özel Çevirmen
+title: Model-özel bir çevirici eğitme
 titleSuffix: Azure Cognitive Services
-description: Bir modeli eğitmek, çeviri modeli oluşturmak önemli bir adımdır. Eğitim, bu eğitimler için seçtiğiniz belgelere göre gerçekleşir.
+description: Model eğitimi, bir çeviri modeli oluştururken önemli bir adımdır. Eğitim, söz konusu insanlar için seçtiğiniz belgelere göre yapılır.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,69 +10,69 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595690"
 ---
 # <a name="train-a-model"></a>Modeli eğitme
 
-Bir modeli eğitmek bir çeviri modeli oluşturmak için önemli bir adımdır, çünkü eğitim olmadan, model inşa edilemez. Eğitim, eğitimler için seçtiğiniz belgelere göre gerçekleşir.
+Model eğitimi, bir eğitim olmadan bir çeviri modeli oluşturmak için önemli bir adımdır. Eğitim, seyahat için seçtiğiniz belgelere göre yapılır.
 
-Bir modeli eğitmek için:
+Bir modeli eğitme:
 
 1.  Bir model oluşturmak istediğiniz projeyi seçin.
 
-2.  Projenin Veri sekmesi, proje dil çifti için ilgili tüm belgeleri gösterir. Modelinizi eğitmek için kullanmak istediğiniz belgeleri el ile seçin. Bu ekrandan eğitim, atoalma ve test belgelerini seçebilirsiniz. Ayrıca sadece eğitim kümesini seçin ve Özel Çevirmen sizin için ayar ve test setleri oluşturmak var.
+2.  Proje için veri sekmesi, proje dili çiftinin tüm ilgili belgelerini gösterir. Modelinize eğitebilmeniz için kullanmak istediğiniz belgeleri el ile seçin. Bu ekrandan eğitim, ayarlama ve test belgelerini seçebilirsiniz. Ayrıca, yalnızca eğitim kümesini seçersiniz ve özel çevirmenleriniz sizin için ayarlama ve test kümelerini oluşturur.
 
-    -  Belge adı: Belgenin adı.
+    -  Belge adı: belgenin adı.
 
-    -  Eşleştirme: Bu belge paralel veya tek dilli bir belgeyse. Tek dilli belgeler şu anda eğitim için desteklenmez.
+    -  Eşleştirme: Bu belge bir Parallel veya monolingual belgesidir. Monolingual belgeler şu anda eğitim için desteklenmiyor.
 
-    -  Belge türü: Eğitim, atoalma, test veya sözlük olabilir.
+    -  Belge türü: eğitim, ayarlama, test veya sözlük olabilir.
 
-    -  Dil çifti: Bu, projenin kaynağını ve hedef dilini gösterir.
+    -  Dil çifti: Bu, projenin kaynak ve hedef dilini gösterir.
 
-    -  Kaynak cümleler: Kaynak dosyadan çıkarılan cümle sayısını gösterir.
+    -  Kaynak cümleler: kaynak dosyadan ayıklanan Tümcelerin sayısını gösterir.
 
-    -  Hedef cümleler: Hedef dosyadan çıkarılan cümle sayısını gösterir.
+    -  Hedef cümleler: hedef dosyadan ayıklanan Tümcelerin sayısını gösterir.
 
     ![Modeli eğitme](media/how-to/how-to-train-model.png)
 
-3.  Tren düğmesini tıklatın.
+3.  Eğitme düğmesine tıklayın.
 
-4.  İletişim kutusunda, modeliniz için bir ad belirtin.
+4.  İletişim kutusunda modelinize bir ad belirtin.
 
-5.  Tren modeli'ni tıklatın.
+5.  Modeli eğitme ' ye tıklayın.
 
-    ![Model iletişim kutusunu eğit](media/how-to/how-to-train-model-2.png)
+    ![Model eğitimi iletişim kutusu](media/how-to/how-to-train-model-2.png)
 
-6.  Özel Çevirmen eğitimi gönderir ve modeller sekmesinde eğitimin durumunu gösterir.
+6.  Özel çevirici, eğitimi gönderir ve modeller sekmesinde eğitimin durumunu gösterir.
 
-    ![Tren modeli sayfası](media/how-to/how-to-train-model-3.png)
+    ![Modeli eğitme sayfası](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->Custom Translator, herhangi bir zamanda bir çalışma alanı içinde 10 eşzamanlı eğitimi destekler.
+>Özel çevirmen, zaman içinde herhangi bir zamanda bir çalışma alanı içinde 10 eş zamanlı izleme destekler.
 
 
-## <a name="edit-a-model"></a>Bir modeli düzenleme
+## <a name="edit-a-model"></a>Model düzenleme
 
-Model Ayrıntıları sayfasındaki Düzenleme bağlantısını kullanarak bir modeli düzenleme yapabilirsiniz.
+Model Ayrıntıları sayfasındaki Düzenle bağlantısını kullanarak bir modeli düzenleyebilirsiniz.
 
 1.  Kalem simgesine tıklayın.
 
     ![Modeli düzenle](media/how-to/how-to-edit-model.png)
 
-2.  İletişim değişikliğinde,
+2.  İletişim kutusu değiştiğinde,
 
-    1.  Model Adı (gerekli): Modelinize anlamlı bir ad verin.
+    1.  Model adı (gerekli): modelinize anlamlı bir ad verin.
 
-        ![Daha fazla iletişim kutusunu edin](media/how-to/how-to-edit-model-dialog.png)
+        ![Daha fazla Düzenle iletişim kutusu](media/how-to/how-to-edit-model-dialog.png)
 
 3.  Kaydet’e tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Model ayrıntılarını nasıl görüntüleyin](how-to-view-model-details.md)öğrenin.
+- [Model ayrıntılarının nasıl görüntüleneceğini](how-to-view-model-details.md)öğrenin.

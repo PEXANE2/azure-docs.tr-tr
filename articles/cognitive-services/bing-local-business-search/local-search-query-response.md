@@ -1,7 +1,7 @@
 ---
-title: API sorguları ve yanıtları gönderme ve kullanma - Bing Yerel İş Arama
+title: API sorguları ve yanıtları gönderme ve kullanma-Bing yerel Iş arama
 titleSuffix: Azure Cognitive Services
-description: Bing Yerel İşletme Arama API'si ile arama sorgularının nasıl gönderilip kullanılacağını öğrenmek için bu makaleyi kullanın.
+description: Bing yerel Iş Arama API 'siyle arama sorguları gönderme ve kullanma hakkında bilgi edinmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74326735"
 ---
-# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Yerel İşletme Arama API sorgularını ve yanıtlarını gönderme ve kullanma
+# <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing yerel Iş Arama API 'SI sorguları ve yanıtları gönderme ve kullanma
 
-Bing Yerel İşletme Arama API'sinden, bir arama sorgusunu bitiş noktasına göndererek ve gerekli üstbilgiyi `Ocp-Apim-Subscription-Key` de ekleyerek yerel sonuçlar alabilirsiniz. Kullanılabilir [üstbilgi](local-search-reference.md#headers) ve [parametrelerin](local-search-reference.md#query-parameters)yanı sıra, Aramalar aranacak alan için [coğrafi sınırlar](specify-geographic-search.md) ve döndürülecek yerlerin [kategorileri](local-search-query-response.md) belirterek özelleştirilebilir.
+Yerel sonuçları, uç noktasına bir arama sorgusu göndererek ve gerekli olan `Ocp-Apim-Subscription-Key` üstbilgiyi de ekleyerek, Bing yerel Iş Arama API 'sinden elde edebilirsiniz. Kullanılabilir [üstbilgiler](local-search-reference.md#headers) ve [parametrelerle](local-search-reference.md#query-parameters)birlikte, aramalar, aranacak alanın [coğrafi sınırları](specify-geographic-search.md) belirtilerek ve döndürülen konum [kategorileri](local-search-query-response.md) belirtilerek özelleştirilebilir.
 
 ## <a name="creating-a-request"></a>İstek oluşturma
 
-Bing Yerel İş Arama API'sine bir istek göndermek için, bir arama terimini API bitiş noktasına eklemeden önce `q=` ve `Ocp-Apim-Subscription-Key` üstbilgi de dahil olmak üzere parametreye ekleyerek ekleyin. Örnek:
+Bing yerel Iş Arama API 'sine bir istek göndermek için, API uç noktasına eklemeden önce `q=` parametreye bir arama terimi ekleyin ve `Ocp-Apim-Subscription-Key` üst bilgi dahil edin. Örneğin:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
-Tam istek URL sözdizimi aşağıda gösterilmiştir. Bing Yerel İş Arama [API'si hızlı başlangıçlar](quickstarts/local-quickstart.md)ve istek gönderme hakkında daha fazla bilgi için [üstbilgiler](local-search-reference.md#headers) ve [parametreler](local-search-reference.md#query-parameters) için başvuru içeriğine bakın. 
+Tam istek URL 'SI sözdizimi aşağıda gösterilmiştir. İstek gönderme hakkında daha fazla bilgi için bkz. Bing yerel Iş Arama API 'SI [hızlı başlangıç](quickstarts/local-quickstart.md)bilgileri ve [üstbilgiler](local-search-reference.md#headers) ve [Parametreler](local-search-reference.md#query-parameters) için başvuru içeriği. 
 
-Yerel arama kategorileri hakkında bilgi için [Bing Yerel İş Arama API'si için Arama kategorilerini](local-categories.md)görün.
+Yerel Arama kategorileri hakkında daha fazla bilgi için bkz. [Bing yerel Iş Arama API 'si Için Arama kategorileri](local-categories.md).
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localCategories][&cc][&mkt][&safesearch][&setlang][&count][&first][&localCircularView][&localMapView]
@@ -37,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 ## <a name="using-responses"></a>Yanıtları kullanma
 
-Bing Yerel İş Arama API'sindeki JSON yanıtları bir `SearchResponse` nesne içerir. `places` API, alandaki ilgili arama sonuçlarını döndürecektir. sonuç bulunmazsa, `places` alan yanıta dahil edilmez.
+Bing yerel Iş Arama API 'sindeki JSON yanıtları bir `SearchResponse` nesne içerir. API, `places` alana ilgili arama sonuçlarını döndürür. hiçbir sonuç bulunamazsa, bu `places` alan yanıta eklenmez.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -58,18 +58,18 @@ API tarafından döndürülen JSON sonuçları aşağıdaki öznitelikleri içer
 
 * _type
 * adres
-* entityPresentationInfo
-* coğrafi
+* Entitypresentationınfo
+* Co
 * id
 * ad
 * routeablePoint
 * Telefon
 * url
 
-Üstbilgiler, parametreler, pazar kodları, yanıt nesneleri, hatalar, vb. hakkında genel bilgi için [Bing Yerel Arama API v7](local-search-reference.md) referansına bakın.
+Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar vb. hakkında genel bilgi için bkz. [Bing yerel arama API 'si v7](local-search-reference.md) başvurusu.
 
 > [!NOTE]
-> Siz veya sizin adınıza üçüncü bir taraf, Microsoft'a ait olmayan herhangi bir hizmeti veya özelliği sınama, geliştirmek, eğitmek, dağıtmak veya kullanıma sunmak amacıyla Yerel Arama API'sinden herhangi bir veriyi kullanamaz, saklayabilir, saklayabilir, depolayabilir, paylaşamaz veya dağıtamaz. 
+> Siz veya sizin adınıza üçüncü bir taraf, Microsoft dışı bir hizmet veya özelliği test etmek, geliştirmek, eğitmek, dağıtmak veya kullanıma açmak amacıyla yerel arama API 'sindeki herhangi bir veriyi kullanamaz, koruyabilir, saklayabilir, önbelleğe alabilir veya dağıtamazsınız. 
 
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
@@ -147,7 +147,7 @@ Expires: Tue, 16 Oct 2018 16:25:15 GMT
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yerel İş Arama sıcağınızda](quickstarts/local-quickstart.md)
-- [Yerel İş Arama Java quickstart](quickstarts/local-search-java-quickstart.md)
-- [Yerel İş Arama Düğümü hızlı başlat](quickstarts/local-search-node-quickstart.md)
-- [Yerel İş Arama Python quickstart](quickstarts/local-search-python-quickstart.md)
+- [Yerel Iş araması hızlı başlangıç](quickstarts/local-quickstart.md)
+- [Yerel Iş arama Java hızlı başlangıç](quickstarts/local-search-java-quickstart.md)
+- [Yerel Iş arama düğümü hızlı başlangıç](quickstarts/local-search-node-quickstart.md)
+- [Yerel Iş arama Python hızlı başlangıç](quickstarts/local-search-python-quickstart.md)

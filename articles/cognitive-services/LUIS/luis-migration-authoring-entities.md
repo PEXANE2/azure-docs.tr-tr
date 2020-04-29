@@ -1,7 +1,7 @@
 ---
-title: V3 makine öğrenilen varlığa geçirin
+title: V3 makine tarafından öğrenilen varlığa geçiş
 titleSuffix: Azure Cognitive Services
-description: V3 yazarlığı, makinede öğrenilen varlık ve uygulamanın diğer varlıklarına veya özelliklerine ilişki ekleme olanağının yanı sıra yeni bir varlık türü, makineden öğrenilen varlık sağlar.
+description: V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan bir yeni varlık türü (makine tarafından öğrenilen varlık) sağlar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,136 +11,136 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: diberry
 ms.openlocfilehash: b5dbcd9033d9a41e43ea907d043e0c0486b236db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75563839"
 ---
-# <a name="migrate-to-v3-authoring-entity"></a>V3 Yazarlık varlığına geçirin
+# <a name="migrate-to-v3-authoring-entity"></a>V3 yazma varlığına geçiş
 
-V3 yazarlığı, makinede öğrenilen varlık ve uygulamanın diğer varlıklarına veya özelliklerine ilişki ekleme olanağının yanı sıra yeni bir varlık türü, makineden öğrenilen varlık sağlar.
+V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan bir yeni varlık türü (makine tarafından öğrenilen varlık) sağlar.
 
-## <a name="entities-are-decomposable-in-v3"></a>Varlıklar V3'te decomposable
+## <a name="entities-are-decomposable-in-v3"></a>Varlıklar v3 'de parçalançıkarıldı
 
-[ApI'ler](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) kullanarak veya [önizleme portalı](https://preview.luis.ai/)yla V3 yazma API'leri ile oluşturulan varlıklar, üst ve alt öğeiçeren katmanlı bir varlık modeli oluşturmanıza olanak sağlar. Üst makine **öğrenilen varlık** olarak bilinir ve çocuklar makine öğrenilen varlığın **alt bileşenleri** olarak bilinir.
+[API 'leri](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) ya da [önizleme portalını](https://preview.luis.ai/)kullanarak v3 yazma API 'leri ile oluşturulan varlıklar, üst ve alt öğeleri olan katmanlı bir varlık modeli oluşturmanıza olanak sağlar. Üst öğe, **makine tarafından öğrenilen varlık** olarak bilinir ve alt öğeler makine tarafından öğrenilen varlığın alt **bileşenleri** olarak bilinir.
 
-Her alt bileşen aynı zamanda makineden öğrenilen bir varlıktır, ancak kısıtlamalar ve tanımlayıcıların ek yapılandırma seçenekleriyle birliktedir.
+Her alt bileşen ayrıca makine tarafından öğrenilen bir varlıktır, ancak kısıtlamaların ve tanımlayıcılarının yapılandırma seçenekleri eklenmiştir.
 
-* **Kısıtlamalar,** bir varlığın bir kuralla eşleştiğinde ayıklanmasına engel olan tam metin eşleştirme kurallarıdır. Kural, şu anda tam bir metin eşleşen varlık tarafından tanımlanır: önceden oluşturulmuş bir [varlık,](luis-reference-prebuilt-entities.md)normal bir [ifade varlığı](reference-entity-regular-expression.md)veya [liste varlık](reference-entity-list.md).
-* **Tanımlayıcılar,** varlığı güçlü bir şekilde belirtmek için kullanılan ifade listeleri veya varlıklar gibi [özelliklerdir.](luis-concept-feature.md)
+* **Kısıtlamalar** , bir varlığın bir kuralla eşleştiğinde ayıklandığını garanti eden tam metin eşleştirme kurallarıdır. Kural, bir tam metin ile eşleşen varlık, şu anda [önceden oluşturulmuş bir varlık](luis-reference-prebuilt-entities.md), bir [normal ifade varlığı](reference-entity-regular-expression.md)veya [liste varlığı](reference-entity-list.md)tarafından tanımlanır.
+* **Tanımlayıcılar** , varlığı kesin olarak belirtmek için kullanılan tümcecik listeleri veya varlıklar gibi [özelliklerdir](luis-concept-feature.md).
 
-V3 yazarlığı, makinede öğrenilen varlık ve uygulamanın diğer varlıklarına veya özelliklerine ilişki ekleme olanağının yanı sıra yeni bir varlık türü, makineden öğrenilen varlık sağlar.
+V3 yazma, makine tarafından öğrenilen varlık ve uygulamanın diğer varlıklarına ya da özelliklerine ilişki ekleyebilme olanağı sunan bir yeni varlık türü (makine tarafından öğrenilen varlık) sağlar.
 
-## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>Bu yeni ilişkiler V2 yazarlıkla karşılaştırıldığında nasıl
+## <a name="how-do-these-new-relationships-compare-to-v2-authoring"></a>Bu yeni ilişkiler v2 yazma ile nasıl karşılaştırılır
 
-V2 yazarlık, aynı görevi gerçekleştirmek için rolleri ve özellikleri ile birlikte hiyerarşik ve bileşik varlıklar sağladı. Varlıklar, özellikler ve roller açıkça birbiriyle ilişkili olmadığından, LUIS'in tahmin sırasında ilişkileri nasıl ima ettiği anlamak zordu.
+V2 yazma, hiyerarşik ve bileşik varlıkların yanı sıra bu aynı görevi yerine getirmek için roller ve özelliklerle birlikte verilmiştir. Varlıklar, Özellikler ve roller birbirleriyle açık bir şekilde ilişkili olmadığından, YAĞMANıN tahmin sırasında ilişkilerin nasıl ima olduğunu anlamak zordur.
 
-V3 ile ilişki açık ve uygulama yazarları tarafından tasarlanmıştır. Bu, uygulama yazarı olarak şunları yapmanızı sağlar:
+V3 ile, ilişki uygulama yazarları tarafından açık ve tasarlanmıştır. Bu, uygulama yazarı olarak şunları yapmanıza olanak sağlar:
 
-* Luis'in bu ilişkileri nasıl öngördüğünü görsel olarak görün, örnek sözlerle
-* [Etkileşimli test bölmesiyle](luis-interactive-test.md) veya bitiş noktasında bu ilişkiler için test
-* Bu ilişkileri istemci uygulamasında, iyi yapılandırılmış, adlandırılmış, iç içe geçen [bir .json nesnesi](reference-entity-machine-learned-entity.md) aracılığıyla kullanın
+* Bu ilişkilerin bu ilişkileri nasıl tahmin ediyor olduğunu görsel olarak görme
+* [Etkileşimli test bölmesi](luis-interactive-test.md) veya uç noktada bu ilişkiler için test yapın
+* İstemci uygulamasında, iyi yapılandırılmış, adlandırılmış, iç içe geçmiş bir [. JSON nesnesi](reference-entity-machine-learned-entity.md) aracılığıyla bu ilişkileri kullanın
 
 ## <a name="planning"></a>Planlama
 
-Geçiş yaparken, geçiş planınızda aşağıdakileri göz önünde bulundurun:
+' Yi geçirdiğinizde, geçiş planınızda aşağıdakileri göz önünde bulundurun:
 
-* LUIS uygulamanızı yedekleve geçişi ayrı bir uygulamada gerçekleştirin. V2 ve V3 uygulamasının aynı anda kullanılabilmesi, gerekli değişiklikleri ve tahmin sonuçları üzerindeki etkisini doğrulamanızı sağlar.
-* Geçerli tahmin başarı ölçümlerini yakalama
-* Geçerli pano bilgilerini uygulama durumunun anlık görüntüsü olarak yakalayın
-* Varolan amaçları, varlıkları, ifade listelerini, desenleri ve toplu iş testlerini gözden geçirin
-* Aşağıdaki öğeler **değişiklik olmadan**geçirilebilir:
+* LUSıS uygulamanızı yedekleyin ve geçişi ayrı bir uygulamada gerçekleştirin. Bir v2 ve v3 uygulamasının aynı anda kullanılabilir olması, gerekli değişiklikleri ve tahmin sonuçları üzerindeki etkiyi doğrulamanızı sağlar.
+* Geçerli tahmini başarı ölçümlerini yakala
+* Geçerli Pano bilgilerini uygulama durumunun bir anlık görüntüsü olarak yakala
+* Mevcut hedefleri, varlıkları, tümcecik listelerini, desenleri ve toplu testleri gözden geçirin
+* Aşağıdaki öğeler **değişiklik yapılmadan**geçirilebilir:
     * Hedefler
     * Varlıklar
         * Normal ifade varlığı
         * Liste varlığı
     * Özellikler
         * Tümcecik listesi
-* Aşağıdaki öğelerin **değişikliklerle**geçirilmeleri gerekir:
+* Aşağıdaki öğelerin **değişikliklerle**geçirilmesi gerekir:
     * Varlıklar
         * Hiyerarşik varlık
         * Bileşik varlık
-    * Roller - roller yalnızca makinede öğrenilen (üst) bir varlığa uygulanabilir. Roller alt bileşenlere uygulanamaz
+    * Roller-roller yalnızca, makine tarafından öğrenilen (üst) varlığa uygulanabilir. Roller alt bileşenlere uygulanamıyor
     * Hiyerarşik ve bileşik varlıkları kullanan toplu testler ve desenler
 
-Geçiş planınızı tasarlarken, tüm hiyerarşik ve bileşik varlıklar geçirildikten sonra, makinede öğrenilen son varlıkları gözden geçirmek için zaman bırakın. Düz bir geçiş işe yarayacak olsa da, değişikliği yaptıktan ve toplu test sonuçlarınızı gözden geçirdikten ve JSON'u tahmin ettikten sonra, istemci tarafındaki uygulamaya teslim edilen son bilgilerin farklı şekilde düzenlenmesi için daha birleşik JSON değişiklikler yapmanıza yol açabilir. Bu, kod yeniden düzenlemeye benzer ve kuruluşunuzun yerinde olan gözden geçirme işlemiyle birlikte ele alınmalıdır.
+Geçiş planınızı tasarlarken, tüm hiyerarşik ve bileşik varlıklar geçirildikten sonra, son makineye öğrenilen varlıkları gözden geçirmek için zaman bırakın. Düz bir geçiş çalışmaya başladıktan sonra, değişikliği yaptıktan ve Batch test sonuçlarınızı ve tahmin JSON 'larınızı gözden geçirdikten sonra, daha fazla birleştirilmiş JSON, istemci tarafı uygulamasına teslim edilen son bilgilerin farklı şekilde organize edilmesi için sizi değişiklik yapmaya yol açabilir. Bu kod yeniden düzenlemesi ile benzerdir ve kuruluşunuzun yerinde olduğu gözden geçirme işlemiyle birlikte değerlendirilmelidir.
 
-V2 modeliniz için toplu testler insanız ve toplu iş testlerini geçişin bir parçası olarak V3 modeline geçirin, geçişin uç nokta tahmin sonuçlarını nasıl etkileyeceğini doğrulayamazsınız.
+V2 modelinize yönelik Batch testleriniz yoksa ve geçişin bir parçası olarak Batch testlerini v3 modeline geçirirseniz, geçişin Endpoint tahmin sonuçlarını nasıl etkileyeceğini doğrulayamazsınız.
 
 ## <a name="migrating-from-v2-entities"></a>V2 varlıklarından geçiş
 
-V3 yazma modeline geçmeye başladığınızda, makinede öğrenilen varlığa ve kısıtlamalar ve tanımlayıcılar da dahil olmak üzere alt bileşenlerine nasıl geçeceğinizi düşünmelisiniz.
+V3 yazma modeline taşımaya başladığınızda, makine tarafından öğrenilen varlığa ve bunların alt bileşenlerinden kısıtlamalar ve tanımlayıcılar dahil olmak üzere nasıl taşınacağını göz önünde bulundurmanız gerekir.
 
-Aşağıdaki tablo, hangi varlıkların V2'den V3 varlık tasarımına geçiş ilerler.
+Aşağıdaki tabloda, hangi varlıkların bir v2 'den v3 varlık tasarımına geçirilmesi gerektiğini not edin.
 
-|V2 yazarlık varlık türü|V3 yazarlık varlık türü|Örnek|
+|V2 yazma varlık türü|V3 yazarlık varlık türü|Örnek|
 |--|--|--|
-|Bileşik varlık|Makine öğrenilen varlık|[Daha fazla bilgi edinin](#migrate-v2-composite-entity)|
-|Hiyerarşik varlık|Makinede öğrenilen varlığın rolü|[Daha fazla bilgi edinin](#migrate-v2-hierarchical-entity)|
+|Bileşik varlık|Makine tarafından öğrenilen varlık|[Daha fazla bilgi edinin](#migrate-v2-composite-entity)|
+|Hiyerarşik varlık|Makine tarafından öğrenilen varlığın rolü|[Daha fazla bilgi edinin](#migrate-v2-hierarchical-entity)|
 
-## <a name="migrate-v2-composite-entity"></a>V2 Bileşik varlığı geçir
+## <a name="migrate-v2-composite-entity"></a>V2 bileşik varlığını geçirme
 
-V2 kompozitinin her bir alt çocuğu V3 makine den öğrenilen varlığın bir alt bileşeniile temsil edilmelidir. Bileşik alt önceden oluşturulmuş, düzenli bir ifade veya bir liste varlığı ise, bu alt bileşeni alt bileşeni alt bileşeni üzerinde bir **kısıtlama** olarak uygulanmalıdır.
+V2 Composite 'un her bir alt öğesi v3 makine tarafından öğrenilen varlığın bir alt bileşeni ile temsil edilmelidir. Bileşik alt öğe önceden oluşturulmuş bir, normal ifade veya bir liste varlığı ise, bu, alt bileşeni temsil eden alt bileşen üzerinde bir **kısıtlama** olarak uygulanmalıdır.
 
-Bileşik bir varlığı makineden öğrenilen bir varlığa geçirmeyi planlarken göz önünde bulundurulması gerekenler:
-* Alt varlıklar desenlerde kullanılamaz
-* Alt varlıklar artık paylaşılmaz
-* Çocuk varlıklar, eskiden makineden öğrenilmemiş sayılsalar etiketlenmeli
+Bileşik bir varlığı makineye öğrenilen bir varlığa geçirmeyi planlarken dikkat edilecek noktalar:
+* Alt varlıklar desenlerinde kullanılamaz
+* Alt varlıklar artık paylaşılmıyor
+* Makine öğrenildikleri takdirde alt varlıkların etiketlenmesi gerekir
 
-### <a name="existing-descriptors"></a>Varolan tanımlayıcılar
+### <a name="existing-descriptors"></a>Mevcut tanımlayıcılar
 
-Bileşik varlıktaki sözcükleri artırmak için kullanılan tüm ifadeler listesi, makinede öğrenilen (üst) varlık, alt bileşen (alt) varlık veya niyete (ifade listesi yalnızca bir amaç için geçerliyse) tanımlayıcı olarak uygulanmalıdır. Tanımlayıcıyı en önemli şekilde artırması gereken varlığa eklemeyi planlayın. Bir alt bileşenin (alt) tahminini en önemli şekilde artıracaksa, tanımlayıcıyı genel olarak makinede öğrenilen (üst) varlığa eklemeyin.
+Bileşik varlıktaki kelimeleri artırmak için kullanılan tümcecik listesi, makine tarafından öğrenilen (üst) varlığa, alt bileşen (alt) varlığına veya amaca (tümcecik listesi yalnızca bir amaca geçerliyse) bir tanımlayıcı olarak uygulanmalıdır. Tanımlayıcıyı, en önemli düzeyde iyileştirmeli varlığa eklemeyi planlayın. Bir alt bileşen (alt) tahminini en önemli ölçüde iyileştirdiği takdirde, tanımlayıcıyı makine öğrenmiş (üst) varlığına eklemeyin.
 
 ### <a name="new-descriptors"></a>Yeni tanımlayıcılar
 
-V3 yazarken, varlıkları tüm varlıklar ve niyetler için olası tanımlayıcılar olarak değerlendirmek için bir planlama adımı ekleyin.
+V3 yazma bölümünde varlıkları tüm varlıklar ve amaçlar için olası tanımlayıcılar olarak değerlendirmek üzere bir planlama adımı ekleyin.
 
 ### <a name="example-entity"></a>Örnek varlık
 
-Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz başka hususlar gerektirebilir.
+Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz, başka hususlar gerektirebilir.
 
-Kullanan bir pizzayı `order` değiştirmek için bir V2 kompoziti düşünün:
-* teslimat süresi için önceden oluşturulmuş datetimeV2
-* pizza, pasta, kabuk ve tepesi gibi belirli kelimeleri artırmak için ifade listesi
-* mantar, zeytin, pepperoni gibi topingleri tespit etmek için varlık listeleyin.
+Şunu kullanan bir pizza `order` 'yi değiştirmek Için bir v2 bileşimini düşünün:
+* teslim süresi için önceden oluşturulmuş datetimeV2
+* Pizza, pasta, Crust ve tografik gibi belirli kelimeleri artırmak için tümcecik listesi
+* mushodalar, zeytin, pepperoni gibi toppings algılamak için varlık listeleyin.
 
-Bu varlık için örnek bir söz:
+Bu varlık için bir örnek söylenişi şunlardır:
 
 `Change the toppings on my pie to mushrooms and delivery it 30 minutes later`
 
-Aşağıdaki tablo geçişi gösterir:
+Aşağıdaki tabloda geçiş gösterilmektedir:
 
 |V2 modelleri|V3 modelleri|
 |--|--|
-|Üst - Bileşen varlık adlı`Order`|Üst - Makine öğrenilen varlık adlı`Order`|
-|Çocuk - Önceden oluşturulmuş datetimeV2|* Önceden oluşturulmuş varlığı yeni uygulamaya geçirin.<br>* Önceden oluşturulmuş datetimeV2 için üst kısıtlama ekleyin.|
-|Alt - topingler için varlık liste|* Liste varlığını yeni uygulamaya geçirin.<br>* Sonra liste varlığı için üst bir kısıtlama ekleyin.|
+|Adlı üst bileşen varlık`Order`|Ana makine tarafından öğrenilen adlı varlık`Order`|
+|Alt-önceden oluşturulmuş datetimeV2|* Önceden oluşturulmuş varlığı yeni uygulamaya geçirin.<br>* Önceden oluşturulmuş datetimeV2 için üst öğede kısıtlama ekleyin.|
+|Toppings için alt liste varlığı|* Liste varlığını yeni uygulamaya geçirin.<br>* Ardından liste varlığı için üst öğeye bir kısıtlama ekleyin.|
 
 
-## <a name="migrate-v2-hierarchical-entity"></a>V2 Hiyerarşik varlığı geçir
+## <a name="migrate-v2-hierarchical-entity"></a>V2 hiyerarşik varlığını geçirme
 
-V2 yazarlıkta, LUIS'te var olan rollerden önce hiyerarşik bir varlık sağlanmıştır. Her ikisi de bağlam kullanımına dayalı varlıkları ayıklamak için aynı amaca hizmet etti. Hiyerarşik varlıklarınız varsa, bunları rolleri olan basit varlıklar olarak düşünebilirsiniz.
+V2 yazma sürümünde, LUSıS 'de mevcut rollerden önce hiyerarşik bir varlık sağlandı. Her ikisi de bağlam kullanımına göre varlıkların ayıklanması için de aynı amaca hizmet. Hiyerarşik varlıklarınız varsa, bunları rollerle basit varlıklar olarak düşünebilirsiniz.
 
-V3 yazarlık olarak:
-* Bir rol, makinede öğrenilen (üst) varlık ta uygulanabilir.
-* Bir rol hiçbir alt bileşene uygulanamaz.
+V3 yazma:
+* Makine öğrenilmiş (üst) varlığa bir rol uygulanabilir.
+* Bir rol, herhangi bir alt bileşenlere uygulanamaz.
 
-Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz başka hususlar gerektirebilir.
+Bu varlık yalnızca bir örnektir. Kendi varlık geçişiniz, başka hususlar gerektirebilir.
 
-Bir pizza `order`değiştirmek için bir V2 hiyerarşik varlık düşünün:
-* her çocuğun ya orijinal bir tepesi ya da son tepesi belirler
+Bir pizza `order`değiştirmek Için bir v2 hiyerarşik varlığı düşünün:
+* Her çocuğun orijinal veya son oluşturma
 
-Bu varlık için örnek bir söz:
+Bu varlık için bir örnek söylenişi şunlardır:
 
 `Change the topping from mushrooms to olives`
 
-Aşağıdaki tablo geçişi gösterir:
+Aşağıdaki tabloda geçiş gösterilmektedir:
 
 |V2 modelleri|V3 modelleri|
 |--|--|
-|Üst - Bileşen varlık adlı`Order`|Üst - Makine öğrenilen varlık adlı`Order`|
-|Çocuk - Orijinal ve son pizza tepesi ile hiyerarşik varlık|* Her `Order` tepesi için rol ekleyin.|
+|Adlı üst bileşen varlık`Order`|Ana makine tarafından öğrenilen adlı varlık`Order`|
+|Orijinal ve son pizza ile alt hiyerarşik varlık|* Her bir `Order` for için rol ekleyin.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

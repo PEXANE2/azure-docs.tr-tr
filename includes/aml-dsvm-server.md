@@ -10,27 +10,27 @@ ms.custom: include file
 ms.topic: include
 ms.date: 03/05/2020
 ms.openlocfilehash: 2504245a14eee5308e046148f8073cf34ffa8143
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79485943"
 ---
-1. [Azure Machine Learning çalışma alanı oluşturun.](../articles/machine-learning/how-to-manage-workspace.md)
+1. [Azure Machine Learning çalışma alanı oluşturun](../articles/machine-learning/how-to-manage-workspace.md).
 
-1. [GitHub deposunu](https://aka.ms/aml-notebooks)klonla.
+1. [GitHub deposunu](https://aka.ms/aml-notebooks)kopyalayın.
 
     ```bash
     git clone https://github.com/Azure/MachineLearningNotebooks.git
     ```
 
-1. Bu yöntemlerden birini kullanarak klonlanmış dizine bir çalışma alanı yapılandırma dosyası ekleyin:
+1. Aşağıdaki yöntemlerden birini kullanarak kopyalanmış dizine bir çalışma alanı yapılandırma dosyası ekleyin:
 
-    * Azure [portalında,](https://ms.portal.azure.com)çalışma alanınızın **Genel Bakış** bölümünden **config.json indir'i** seçin. 
+    * [Azure Portal](https://ms.portal.azure.com), çalışma alanınızın **genel bakış** bölümünden **config. json dosyasını indir** ' i seçin. 
 
-    ![Config.json karşıdan yükleme](./media/aml-dsvm-server/download-config.png)
+    ![Config. json dosyasını indir](./media/aml-dsvm-server/download-config.png)
 
-    * Klonlanmış dizininizdeki [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) not defterinde kodu kullanarak yeni bir çalışma alanı oluşturun.
+    * Klonlanan dizindeki [Configuration. ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) not defterindeki kodu kullanarak yeni bir çalışma alanı oluşturun.
 
 1. Kopyaladığınız dizinden notebook sunucusunu başlatın.
 

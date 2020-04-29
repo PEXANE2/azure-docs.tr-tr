@@ -1,7 +1,7 @@
 ---
 title: Azure yazma kaynağına geçiş
 titleSuffix: Azure Cognitive Services
-description: Azure yazma kaynağına geçirin.
+description: Bir Azure yazma kaynağına geçiş yapın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,47 +12,47 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78194656"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure yazma kaynağına geçiş adımları
 
-Dil Anlama (LUIS) portalından, Azure yazma kaynağını kullanmak için sahip olduğunuz tüm uygulamaları geçirin.
+Language Understanding (LUSıS) portalından, Azure yazma kaynağını kullanmak için sahip olduğunuz tüm uygulamaları geçirin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **İsteğe bağlı olarak,** her uygulamayı dışa aktararak veya dışa aktarma [API'sini](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)kullanarak luis portalının uygulamalar listesindeki uygulamaları yedekleyin.
-* **İsteğe bağlı olarak,** her uygulamanın ortak çalışan listesini kaydedin. Tüm ortak çalışanlara geçiş sürecinin bir parçası olarak bir e-posta gönderilebilir.
-* **Gerekli**, bir [Azure aboneliği](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir bölümü fatura bilgilerini gerektirir. Ancak, LUIS kullandığınızda Ücretsiz (F0) fiyatlandırma katmanlarını kullanabilirsiniz. Kullanımınız arttıkça, sonunda ücretli bir katmana ihtiyacınız olduğunu görebilirsiniz.
+* **Isteğe bağlı**olarak, her uygulamayı dışarı aktararak ve dışarı aktarma [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)'sini kullanarak, bu uygulamaları lusıs portalının uygulamalar listesinden yedekleyin.
+* **Isteğe bağlı**olarak, her bir uygulamanın ortak kayıt listesini kaydedin. Tüm ortak çalışanlarla geçiş sürecinin bir parçası olarak bir e-posta gönderilebilir.
+* **Gerekli**, bir [Azure aboneliğinizin](https://azure.microsoft.com/free/)olması gerekir. Abonelik işleminin bir parçası faturalandırma bilgileri gerektirir. Ancak, LUSıS kullandığınızda ücretsiz (F0) fiyatlandırma katmanlarını kullanabilirsiniz. Kullanımınız arttıkça ücretli bir katmana ihtiyacınız olduğunu fark edebilirsiniz.
 
-Azure aboneliğiniz yoksa [kaydolun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa [kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="access-the-migration-process"></a>Geçiş işlemine erişin
 
-Haftalık olarak, uygulamalarınızı geçirmeniz istenir. Bu pencereyi geçiş yapmadan iptal edebilirsiniz. Bir sonraki zamanlanan dönemden önce geçiş yapmak istiyorsanız, geçiş işlemini LUIS portalının üst araç çubuğundaki **Azure** simgesinden başlatabilirsiniz.
+Haftalık olarak, uygulamalarınızı geçirmeniz istenir. Bu pencereyi geçirmeden iptal edebilirsiniz. Bir sonraki zamanlanan dönemden önce geçiş yapmak istiyorsanız, HALU portalının üst araç çubuğundaki **Azure** simgesinden geçiş işlemini başlatabilirsiniz.
 
 > [!div class="mx-imgBorder"]
 > ![Geçiş simgesi](./media/migrate-authoring-key/migration-button.png)
 
-## <a name="app-owner-begins-the-migration-process"></a>Uygulama sahibi geçiş işlemini başlatın
+## <a name="app-owner-begins-the-migration-process"></a>Uygulama sahibi geçiş işlemini başlatır
 
-Herhangi bir LUIS uygulamasının sahibiyseniz geçiş işlemi kullanılabilir.
+Herhangi bir LUO uygulama sahibiyseniz, geçiş işlemi kullanılabilir.
 
-1. [LUIS portalında](https://www.luis.ai) oturum açın ve kullanım koşullarını kabul edin.
-1. Geçiş açılır penceresi geçişe devam etmenizi veya daha sonra geçiş yapmanızı sağlar. **Şimdi Geçir'i**seçin. Daha sonra geçiş yapmayı seçerseniz, Azure'daki yeni yazma anahtarına geçiş yapmak için 9 ayınız var.
+1. [Luo portalında](https://www.luis.ai) oturum açın ve kullanım koşullarını kabul edin.
+1. Geçiş açılır penceresi geçişe devam etmenize veya daha sonra geçiş yapmanıza olanak sağlar. **Şimdi geçir**' i seçin. Daha sonra geçirmeyi seçerseniz, Azure 'daki yeni yazma anahtarına geçiş yapmak için 9 ay daha vardır.
 
-    ![Geçiş işlemindeki ilk açılır pencere, şimdi geçir'i seçin.](./media/migrate-authoring-key/migrate-now.png)
+    ![Geçiş işlemindeki ilk açılan pencere, şimdi geçir ' i seçin.](./media/migrate-authoring-key/migrate-now.png)
 
-1. İsteğe bağlı olarak, uygulamalarınızın ortak çalışanları varsa, onlara geçiş hakkında bildiren **bir e-posta göndermeniz** istenir. Bu isteğe bağlı bir adımdır.
+1. İsteğe bağlı olarak, uygulamalarınızdan birinde ortak çalışanlar varsa, geçiş hakkında bilgi veren **bir e-posta göndermeniz** istenir. Bu, isteğe bağlı bir adımdır.
 
-    Hesabınızı Azure'a geçtikten sonra, uygulamalarınız artık ortak çalışanlar tarafından kullanılamaz.
+    Hesabınızı Azure 'a geçirdikten sonra uygulamalarınız artık ortak olmayan uygulamalar tarafından kullanılamaz.
 
-    Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması hafif biçimlendirilmiş bir e-postayla açılır. E-postayı göndermeden önce edinebilirsiniz.
+    Her ortak çalışan ve uygulama için varsayılan e-posta uygulaması, hafif biçimli bir e-posta ile açılır. Göndermeden önce e-postayı düzenleyebilirsiniz.
 
-    E-posta şablonu tam uygulama kimliği ve uygulama adını içerir.
+    E-posta şablonu, tam uygulama KIMLIĞI ve uygulama adını içerir.
 
     ```html
     Dear Sir/Madam,
@@ -65,59 +65,59 @@ Herhangi bir LUIS uygulamasının sahibiyseniz geçiş işlemi kullanılabilir.
     Thank you
     ```
 
-1. Varolan bir yazarlık kaynağını kullanmayı veya yeni bir yazarlık kaynağı oluşturmayı seçerek bir LUIS yazma kaynağı oluşturmayı seçin.
+1. Var olan bir yazma kaynağı kullanmayı veya yeni bir yazma kaynağı oluşturmayı seçerek bir LUSıS yazma kaynağı oluşturmayı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Yazarlık kaynağı oluşturma](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
+    > ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
 
-1. Sonraki pencerede kaynak anahtar bilgilerinizi girin. Bilgileri girdikten sonra **kaynak oluştur'u**seçin. Bölge başına abonelik başına 10 ücretsiz yazma kaynağınız olabilir.
+1. Sonraki pencerede, kaynak anahtarı bilgilerinizi girin. Bilgileri girdikten sonra **kaynak oluştur**' u seçin. Her bir abonelik için bölge başına 10 ücretsiz yazma kaynağına sahip olabilirsiniz.
 
-    ![Yazarlık kaynağı oluşturma](./media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    **Yeni bir yazarlık kaynağı oluştururken**aşağıdaki bilgileri sağlayın:
+    **Yeni bir yazma kaynağı oluştururken**aşağıdaki bilgileri sağlayın:
 
-    * **Kaynak adı** - seçtiğiniz özel bir ad, yazma ve tahmin bitiş noktası sorguları için URL'nin bir parçası olarak kullanılır.
-    * **Kiracı** - Azure aboneliğinizin ilişkili olduğu kiracı.
-    * **Abonelik adı** - kaynak için faturalandırılacak abonelik.
-    * **Kaynak grubu** - seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, Azure kaynaklarını erişim ve yönetim için gruplandırmanıza olanak tanır.
-    * **Konum** - konum seçimi **kaynak grubu** seçimini temel alır.
-    * **Fiyatlandırma katmanı** - fiyatlandırma katmanı saniye ve ay başına maksimum işlemi belirler.
+    * **Kaynak adı** -seçtiğiniz özel bir ad, yazma ve tahmin uç noktası sorgularınız için URL 'nin bir parçası olarak kullanılır.
+    * **Kiracı** -Azure aboneliğinizin ilişkilendirildiği kiracı.
+    * **Abonelik adı** -kaynak için faturalandırılacak abonelik.
+    * **Kaynak grubu** -seçtiğiniz veya oluşturduğunuz özel bir kaynak grubu adı. Kaynak grupları, erişim ve yönetim için Azure kaynaklarını gruplandıreklemenize olanak tanır.
+    * **Konum** -konum seçimi, **kaynak grubu** seçimini temel alır.
+    * **Fiyatlandırma katmanı** -fiyatlandırma katmanı, saniye başına en fazla işlemi ve ayı belirler.
 
-1. Yazarlık kaynağınızı doğrulayın ve **şimdi geçirin.**
+1. Authoring Resource dosyanızı doğrulayıp **Şimdi geçirin**.
 
-    ![Yazarlık kaynağı oluşturma](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
+    ![Yazma kaynağı oluşturma](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
 
-1. Yazarlık kaynağı oluşturulduğunda, başarı iletisi gösterilir. Açılan pencereyi kapatmak için **Kapat'ı** seçin.
+1. Yazma kaynağı oluşturulduğunda, başarı iletisi gösterilir. Açılır pencereyi kapatmak için **Kapat** ' ı seçin.
 
-    ![Yazarlık kaynağınız başarıyla oluşturuldu.](./media/migrate-authoring-key/migration-success.png)
+    ![Yazma kaynağınız başarıyla oluşturuldu.](./media/migrate-authoring-key/migration-success.png)
 
-    **Uygulamalarım** listesi, yeni yazma kaynağına geçirilen uygulamaları gösterir.
+    **Uygulamalarım** listesinde, yeni yazma kaynağına geçirilen uygulamalar gösterilir.
 
-    LUIS portalında uygulamalarınızı düzenlemeye devam etmek için yazar kaynağın anahtarını bilmeniz gerekmez. Uygulamalarınızı programlı bir şekilde yeniden yapmayı planlıyorsanız, yazma anahtar değerlerine ihtiyacınız var. Bu değerler, LUIS portalındaki **> Azure kaynaklarını yönet** sayfasında görüntülenir ve kaynağın **Keys** sayfasındaki Azure portalında da kullanılabilir.
+    Uygulamalarınızı LUE portalında düzenlemeyle çalışmaya devam etmek için yazma kaynağının anahtarını bilmeniz gerekmez. Uygulamalarınızı programlama yoluyla düzenlemeyi planlıyorsanız, yazma anahtarı değerleri gerekir. Bu değerler, Lua portalındaki **Manage-> Azure kaynakları** sayfasında görüntülenir ve ayrıca kaynağın **anahtarlar** sayfasındaki Azure Portal de mevcuttur.
 
-1. Uygulamalarınıza erişmeden önce, yazabileceğiniz uygulamaları görmek için abonelik ve LUIS yazma kaynağını seçin.
+1. Uygulamalarınıza erişmeden önce, yazarlarınızın bulunduğu uygulamaları görmek için abonelik ve LUSıS yazma kaynağını seçin.
 
-    ![Yazabileceğiniz uygulamaları görmek için abonelik ve LUIS yazma kaynağını seçin.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+    ![Yazanların yazarındaki uygulamaları görmek için abonelik ve LUSıS yazma kaynağı ' nı seçin.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
-## <a name="app-contributor-begins-the-migration-process"></a>Uygulama katılımcısı geçiş işlemini başlatın
+## <a name="app-contributor-begins-the-migration-process"></a>Uygulama katılımcısı geçiş işlemini başlatır
 
-Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem, tür `LUIS.Authoring`yeni bir yazma kaynağı oluşturur.
+Geçiş için uygulama sahibiyle aynı adımları izleyin. İşlem, türü `LUIS.Authoring`yeni bir yazma kaynağı oluşturur.
 
-Başkaları tarafından sahip olunan geçiş uygulamalarına katkıda bulunan kişi olarak eklenebilir şekilde hesabınızı geçirmeniz gerekir.
+Başkalarının sahip olduğu geçirilmiş uygulamalara katkıda bulunan olarak eklenmek üzere hesabınızı geçirmeniz gerekir.
 
-## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Geçiş işleminden sonra, yazar kaynağınıza katkıda bulunanları ekleyin
+## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Geçiş işleminden sonra, yazma kaynağına katkıda bulunanlar ekleyin
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
-[Katkıda bulunanları nasıl ekleyeceğinizi](luis-how-to-collaborate.md)öğrenin.
+[Katkıda bulunanlar eklemeyi](luis-how-to-collaborate.md)öğrenin.
 
-## <a name="troubleshooting-errors-with-the-migration-process"></a>Geçiş işlemiyle ilgili hataları giderme
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Geçiş işlemiyle ilgili sorun giderme hataları
 
-Geçiş işlemi `MissingSubscriptionRegistration` sırasında luis portalında kırmızı bildirim çubuğu içeren bir hata alırsanız, [Azure portalında](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI'de](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)bir Bilişsel Hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)hakkında daha fazla bilgi edinin.
+Geçiş işlemi sırasında bir `MissingSubscriptionRegistration` Red bildirim çubuğu ile LUI portalında bir hata alırsanız, [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli)'de bir bilişsel hizmet kaynağı oluşturun. [Bu hatanın nedenleri](../../azure-resource-manager/templates/error-register-resource-provider.md#cause)hakkında daha fazla bilgi edinin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 
-* Yazma ve çalışma zamanı tuşları hakkındaki [kavramları](luis-concept-keys.md) gözden geçirme
-* [Anahtarları nasıl ataysüreceğini](luis-how-to-azure-subscription.md) ve [katkıda bulunanları](luis-how-to-collaborate.md) eklemeyi gözden geçirin
+* Yazma ve çalışma zamanı anahtarları hakkındaki [kavramları](luis-concept-keys.md) gözden geçirin
+* [Anahtar atamayı](luis-how-to-azure-subscription.md) ve [katkıda bulunanlar](luis-how-to-collaborate.md) eklemeyi inceleyin

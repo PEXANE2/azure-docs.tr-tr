@@ -1,7 +1,7 @@
 ---
-title: Sürümleri yönetme - LUIS
+title: Sürümleri yönetme-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. İyi bir uygulama, modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir sürümüne klonlamaktır.
+description: Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. Modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir sürümüne kopyalamak iyi bir uygulamadır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220902"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Hazırlama veya üretim uygulamalarını etkilemeden düzenlemek ve test etmek için sürümleri kullanın
 
-Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. İyi bir uygulama, modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir [sürümüne](luis-concept-version.md) klonlamaktır. 
+Sürümler, farklı modeller oluşturmanıza ve yayımlamanıza olanak sağlar. Modelde değişiklik yapmadan önce geçerli etkin modeli uygulamanın farklı bir [sürümüne](luis-concept-version.md) kopyalamak iyi bir uygulamadır. 
 
-Sürümlerle çalışmak **için, Uygulamalarım** sayfasında adını seçerek uygulamanızı açın ve ardından üst çubukta **Yönet'i** seçin ve ardından sol daki **Sürümler'i** seçin. 
+Sürümlerle çalışmak için, **uygulamalarım** sayfasında adını seçerek uygulamanızı açın ve sonra üstteki çubukta **Yönet** ' i seçin ve ardından sol gezinti bölmesinde **sürümler** ' i seçin. 
 
-Sürümler listesi, hangi sürümlerin yayımlanacağını, nerede yayımlandıklarını ve hangi sürümün şu anda etkin olduğunu gösterir. 
+Sürüm listesi hangi sürümlerin yayımlandığını, nerede yayımlandığını ve şu anda etkin olduğunu gösterir. 
 
 > [!div class="mx-imgBorder"]
-> [![Bölümü, sürümler sayfasını yönetme](./media/luis-how-to-manage-versions/versions-import.png "Bölümü, sürümler sayfasını yönetme")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+> [![Yönetme bölümü, sürümler sayfası](./media/luis-how-to-manage-versions/versions-import.png "Yönetme bölümü, sürümler sayfası")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
-## <a name="clone-a-version"></a>Sürümü klonlama
+## <a name="clone-a-version"></a>Bir sürümü Kopyala
 
-1. Klonlamak istediğiniz sürümü seçin ve araç çubuğundan **Klon'u** seçin. 
+1. Kopyalamak istediğiniz sürümü seçin ve ardından araç çubuğundan **Kopyala** ' yı seçin. 
 
-2. Klon **sürümü** iletişim kutusunda, "0.2" gibi yeni sürüm için bir ad yazın.
+2. **Sürümü Kopyala** iletişim kutusunda, yeni sürüm için "0,2" gibi bir ad yazın.
 
-   ![Klon Sürümü iletişim kutusu](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
+   ![Sürümü Kopyala iletişim kutusu](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
      > [!NOTE]
-     > Sürüm Kimliği yalnızca karakterlerden, basamaklardan veya '.' dan oluşabilir ve 10 karakterden uzun olamaz.
+     > Sürüm KIMLIĞI yalnızca karakter, rakam veya '. ' karakterlerini içerebilir ve 10 karakterden uzun olamaz.
  
    Belirtilen ada sahip yeni bir sürüm oluşturulur ve etkin sürüm olarak ayarlanır.
 
-## <a name="set-active-version"></a>Etkin sürümü ayarlama
+## <a name="set-active-version"></a>Etkin sürümü ayarla
 
-Listeden bir sürüm seçin ve araç çubuğundan **Etkinleştir'i** seçin. 
+Listeden bir sürüm seçin ve ardından araç çubuğundan **Etkinleştir** ' i seçin. 
 
 > [!div class="mx-imgBorder"]
-> [![Bölümü, sürümsayfasını yönetme, sürüm eylemi yapma](./media/luis-how-to-manage-versions/versions-other.png "Bölümü, sürümsayfasını yönetme, sürüm eylemi yapma")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+> [![Bölümü, sürümleri yönetme sayfasını yönetin, sürüm eylemi yapın](./media/luis-how-to-manage-versions/versions-other.png "Bölümü, sürümleri yönetme sayfasını yönetin, sürüm eylemi yapın")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
-## <a name="import-version"></a>Sürüm alma
+## <a name="import-version"></a>İçeri aktarma sürümü
 
-Uygulamanızın bir `.json` sürümünü `.lu` veya bir sürümünü içe aktarabilirsiniz.
+Uygulamanızın bir `.json` veya bir `.lu` sürümünü içeri aktarabilirsiniz.
 
-1. Araç çubuğundan **İçe Aktar'ı** seçin ve ardından biçimi seçin. 
+1. Araç çubuğundan **Içeri aktar** ' ı seçin ve ardından biçimi seçin. 
 
-2. Yeni **sürüm** açılır penceresine yeni on karakterli sürüm adını girin. Yalnızca dosyadaki sürüm uygulamada zaten varsa bir sürüm kimliği ayarlamanız gerekir.
+2. **Yeni sürüm al** açılır penceresinde, yeni on karakter sürümü adını girin. Yalnızca dosyadaki sürüm uygulamada zaten varsa, bir sürüm KIMLIĞI ayarlamanız gerekir.
 
-    ![Bölümü, sürümler sayfasını yönetme, yeni sürümü alma](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
+    ![Bölümü yönetin, sürümler sayfası, yeni sürümü içeri aktarma](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-    Bir sürümü içe aktardıktan sonra, yeni sürüm etkin sürüm olur.
+    Bir sürümü içeri aktardıktan sonra, yeni sürüm etkin sürüm olur.
 
-### <a name="import-errors"></a>Alma hataları
+### <a name="import-errors"></a>İçeri aktarma hataları
 
-* Belirteç hataları: İçe aktarırken bir **belirteç hatası** alırsanız, uygulamanın şu anda kullandığından farklı bir [belirteç](luis-language-support.md#custom-tokenizer-versions) kullanan bir sürümü almaya çalışıyorsunuz. Bunu düzeltmek için, [tokenizer sürümleri arasında geçiş](luis-language-support.md#migrating-between-tokenizer-versions)bkz.
+* Belirteç Oluşturucu hataları: içeri aktarırken **Simgeleştirici hatası** alırsanız, uygulamanın Şu anda kullandığı farklı bir [Simgeleştirici](luis-language-support.md#custom-tokenizer-versions) kullanan bir sürümü içeri aktarmaya çalışıyorsunuz. Bu hatayı onarmak için bkz. [belirteç Oluşturucu sürümler arasında geçiş](luis-language-support.md#migrating-between-tokenizer-versions).
 
 <a name = "export-version"></a>
 
 ## <a name="other-actions"></a>Diğer eylemler
 
-* Bir sürümü **silmek** için listeden bir sürüm seçin ve ardından araç çubuğundan **Sil'i** seçin. **Tamam**’ı seçin. 
-* Bir sürümü **yeniden adlandırmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **Yeniden Adlandır'ı** seçin. Yeni ad girin ve **Bitti'yi**seçin. 
-* Bir sürümü **dışa aktarmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **uygulamayı dışa** aktar'ı seçin. Yedekleme için dışa aktarmak için JSON'u seçin, [bu uygulamayı LUIS kapsayıcısında kullanmak](luis-container-howto.md)için kapsayıcı için **Dışa Aktar'ı** seçin.  
+* Bir sürümü **silmek** için listeden bir sürüm seçin ve ardından araç çubuğundan **Sil** ' i seçin. **Tamam ' ı**seçin. 
+* Bir sürümü **yeniden adlandırmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **Yeniden Adlandır** ' ı seçin. Yeni ad girin ve **bitti**' yi seçin. 
+* Bir sürümü **dışarı aktarmak** için listeden bir sürüm seçin ve ardından araç çubuğundan **uygulamayı dışarı aktar** ' ı seçin. Yedekleme için dışarı aktarılacak JSON öğesini seçin, [BIR lusıs kapsayıcısında bu uygulamayı kullanmak](luis-container-howto.md)için **kapsayıcı için dışarı aktar** ' ı seçin.  
 

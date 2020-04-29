@@ -1,7 +1,7 @@
 ---
-title: Konuşma Cihazları SDK mikrofon dizi önerileri
+title: Konuşma cihazları SDK 'Sı dizi önerileri
 titleSuffix: Azure Cognitive Services
-description: Konuşma Cihazları SDK mikrofon dizisi önerileri. Bu dizi geometrileri Microsoft Ses Yığını ile kullanım için önerilir.
+description: Konuşma cihazları SDK 'Sı dizi önerileri. Bu dizi geometrileri, Microsoft ses yığını ile kullanım için önerilir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77168133"
 ---
-# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma Cihazları SDK Mikrofon dizi önerileri
+# <a name="speech-devices-sdk-microphone-array-recommendations"></a>Konuşma cihazları SDK 'Sı dizi önerileri
 
-Bu makalede, Konuşma Aygıtları SDK için bir mikrofon dizisi tasarlamayı öğrenirsiniz.
+Bu makalede, konuşma cihazları SDK 'Sı için bir mikrofon dizisi tasarlamayı öğreneceksiniz.
 
-Konuşma Aygıtları SDK, mikrofon geometrisi ve bileşen seçimi de dahil olmak üzere aşağıdaki yönergelere göre tasarlanmış bir mikrofon dizisiyle en iyi şekilde çalışır. Rehberlik de entegrasyon ve elektrik hususlar ı verilir.
+Konuşma cihazları SDK 'Sı, mikrofon geometrisi ve bileşen seçimi dahil olmak üzere aşağıdaki yönergelere göre tasarlanan bir mikrofon dizisi ile en iyi şekilde çalışmaktadır. Ayrıca, tümleştirme ve elektrik konuları hakkında rehberlik sağlanır.
 
 ## <a name="microphone-geometry"></a>Mikrofon geometrisi
 
-Aşağıdaki dizi geometrileri Microsoft Ses Yığını ile kullanmak için önerilir. Ses kaynaklarının konumu ve ortam gürültüsünün reddi, belirli uygulamalara, kullanıcı senaryolarına ve aygıt formu faktörüne bağımlı olan daha fazla sayıda mikrofonla geliştirilir.
+Aşağıdaki dizi geometrileri, Microsoft ses yığını ile kullanım için önerilir. Belirli uygulamalara, Kullanıcı senaryolarına ve cihaz formu faktörüne sahip daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan daha fazla sayıda mikrofondan
 
-|     | Dairesel Dizi |     | Doğrusal Dizi |     |
+|     | Dairesel dizi |     | Doğrusal dizi |     |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \#Mikrofon | 7 | 4 | 4 | 2 |
-| Geometri | 6 Dış, 1 Merkez, Yarıçap = 42,5 mm, Eşit Aralıklı | 3 Dış, 1 Merkez, Yarıçap = 42,5 mm, Eşit Aralıklı | Uzunluk = 120 mm, Aralık = 40 mm | Aralık = 40 mm |
+| \#Akademik | 7 | 4 | 4 | 2 |
+| Geometrisi | 6 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | 3 dış, 1 orta, yarıçap = 42,5 mm, eşit aralıklı | Uzunluk = 120 mm, Aralık = 40 mm | Aralık = 40 mm |
 
-Mikrofon kanalları, yukarıdaki her dizi için gösterilen numaralandırmaya göre, 0'dan artan şekilde sıralanmalıdır. Microsoft Ses Yığını, yankı iptali gerçekleştirmek için ek bir ses oynatma akışı gerektirir.
+Mikrofon kanalları, yukarıdaki her dizi için gösterilen numaralandırmaya göre sıralanmalıdır, 0 ' dan artış yapılır. Microsoft ses yığını, yankı iptali gerçekleştirmek için ek bir ses kayıttan yürütme akışı gerektirir.
 
 ## <a name="component-selection"></a>Bileşen seçimi
 
-Mikrofon bileşenleri, gürültü ve bozulma içermeyen bir sinyali doğru bir şekilde çoğaltmak için seçilmelidir.
+Mikrofon bileşenleri, gürültü ve deformasyon dışında bir sinyali sorunsuz bir şekilde yeniden üretmek için seçilmelidir.
 
-Mikrofon seçerken önerilen özellikler şunlardır:
+Mikrofonlar seçerken önerilen özellikler şunlardır:
 
 | Parametre | Önerilen |
 | --------- | ----------- |
-| Snr | \>= 65 dB (1 kHz sinyal 94 dBSPL, A ağırlıklı gürültü) |
-| Genlik Eşleştirme | ± 1 dB @ 1 kHz |
-| Faz Eşleştirme | ± 2° @ 1 kHz |
-| Akustik Aşırı Yük Noktası (AOP) | \>= 120 dBSPL (THD = %10) |
-| Bit Hızı | En az 24 bit |
-| Örnekleme Oranı | En az 16 kHz\* |
-| Frekans Yanıtı | ± 3 dB, 200-8000 Hz Yüzer Maske\* |
-| Güvenilirlik | Depolama Sıcaklık Aralığı -40°C - 70°C<br />Çalışma Sıcaklığı Aralığı -20°C ile 55°C arası |
+| SNR | \>= 65 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
+| Genlik eşleştirme | ± 1 dB @ 1 kHz |
+| Aşama eşleştirme | ± 2 ° @ 1 kHz |
+| Akustik aşırı yükleme noktası (AOP) | \>= 120 dBSPL (THD = %10) |
+| Bit hızı | En az 24 bit |
+| Örnekleme Oranı | En düşük 16 kHz\* |
+| Sıklık yanıtı | ± 3 dB, 200-8000 Hz kayan maske\* |
+| Güvenilirlik | Depolama sıcaklığı aralığı-40 °C ila 70 °C<br />İşletim sıcaklığı aralığı-20 °C ila 55 °C |
 
-\*_Yüksek kaliteli iletişim (VoIP) uygulamaları için daha yüksek örnekleme oranları veya "daha geniş" frekans aralıkları gerekebilir_
+\*_Yüksek kaliteli iletişimler (VoIP) uygulamaları için daha yüksek örnekleme oranları veya "daha geniş" Sıklık aralıkları gerekebilir_
 
-Kullanılan bileşenlerin performansını bozmamak için iyi bileşen seçimi iyi elektroakustik entegrasyon ile eşleştirilmiş olmalıdır. Benzersiz kullanım örnekleri de ek gereksinimler (örneğin: çalışma sıcaklığı aralıkları) gerektirebilir.
+Kullanılan bileşenlerin performansını impairing önlemek için iyi bir bileşen seçimi, iyi bir elektroakustik tümleştirmeyle eşleştirilmelidir. Benzersiz kullanım örnekleri ek gereksinimleri de gerektirebilir (örneğin, işletim sıcaklığı aralıkları).
 
-## <a name="microphone-array-integration"></a>Mikrofon dizi entegrasyonu
+## <a name="microphone-array-integration"></a>Mikrofon dizisi tümleştirmesi
 
-Bir aygıta entegre edildiğinde mikrofon dizisinin performansı bileşen belirtiminden farklıdır. Mikrofonların entegrasyondan sonra iyi bir şekilde eşleştirilmesini sağlamak önemlidir. Bu nedenle, herhangi bir sabit kazanç veya EQ'dan sonra ölçülen cihaz performansı aşağıdaki önerileri karşılamalıdır:
+Bir cihazla tümleşik hale geldiğinde Microphone dizisinin performansı, bileşen belirtiminden farklı olacaktır. Mikrofonların tümleştirmeden iyi eşleştiğinden emin olmak önemlidir. Bu nedenle, herhangi bir sabit kazanç veya EQ öğesinden sonra ölçülen cihaz performansı aşağıdaki önerileri karşılamalıdır:
 
 | Parametre          | Önerilen                                        |
 | ------------------ | -------------------------------------------------- |
-| Snr                | \>63 dB (1 kHz sinyal 94 dBSPL, A ağırlıklı gürültü) |
-| Çıkış Hassasiyeti | -26 dBFS/Pa @ 1 kHz (tavsiye edilir)                  |
-| Genlik Eşleştirme | ± 2 dB, 200-8000 Hz                                |
-| THD%\*             | ≤ %1, 200-8000 Hz, 94 dBSPL, 5.             |
-| Frekans Yanıtı | ± 6 dB, 200-8000 Hz Yüzer Maske\*\*              |
+| SNR                | \>63 dB (1 kHz sinyal 94 dBSPL, A-ağırlıklı gürültü) |
+| Çıkış duyarlılığı | -26 dBFS/PA @ 1 kHz (önerilir)                  |
+| Genlik eşleştirme | ± 2 dB, 200-8000 Hz                                |
+| % D\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5 sipariş             |
+| Sıklık yanıtı | ± 6 dB, 200-8000 Hz kayan maske\*\*              |
 
-\*\*_THD'yi ölçmek için düşük distorsiyon hoparlörü gereklidir (örn. Neumann KH120)_
+\*\*_(Ör. Neumann KH120) ölçmek için düşük bir deformasyon hoparlörü gerekir_
 
-\*\*_Yüksek kaliteli iletişim (VoIP) uygulamaları için "daha geniş" frekans aralıkları gerekli olabilir_
+\*\*_Yüksek kaliteli iletişimler (VoIP) uygulamaları için "daha geniş" Sıklık aralıkları gerekebilir_
 
-## <a name="speaker-integration-recommendations"></a>Hoparlör tümleştirme önerileri
+## <a name="speaker-integration-recommendations"></a>Konuşmacı tümleştirme önerileri
 
-Hoparlör içeren konuşma tanıma cihazları için yankı iptali gerekli olduğundan, hoparlör seçimi ve entegrasyonu için ek öneriler sağlanır.
+Hoparlör içeren konuşma tanıma cihazları için yankı iptali gerekli olduğundan, konuşmacı seçimi ve tümleştirmesi için ek öneriler sağlanır.
 
 | Parametre | Önerilen |
 | --------- | ----------- |
-| Doğrusallık Hususlar | Hoparlör referansı sonrası doğrusal olmayan işlem yapılmaz, aksi takdirde donanım tabanlı bir geri dönüş başvuru akışı gereklidir |
-| Hoparlör Loopback | WASAPI, özel API'ler, özel ALSA eklentisi (Linux) veya firmware kanalı üzerinden sağlanan |
-| THD% | 3. Oktav Bantlar minimum 5 Sipariş, 70 dBA Oynatma @ 0.8 m ≤ 6.3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| Mikrofonlara Yankı Bağlama | \>-10 dB TCLw kullanarak ITU-T G.122 Ek B.4 yöntemi, mikrofon seviyesine normalleştirilmiş<br />TCLw = TCLwmeasured \+ (Ölçülen Seviye - Hedef Çıkış Hassasiyeti)<br />TCLw = TCLwmeasured \+ (Ölçülen Seviye - (-26)) |
+| Doğrus konuları | Konuşmacı başvurusundan sonra doğrusal olmayan işlem yapılmaz, aksi takdirde donanım tabanlı geri döngü başvuru akışı gerekir |
+| Konuşmacı geri döngüsü | WASAPı, özel API 'Ler, özel ALSA eklentisi (Linux) veya bellenim kanalı aracılığıyla temin edilmiştir |
+| % D | 3. Octave bantları minimum 5 sipariş, 70 dBA kayıttan yürütme @ 0,8 5 ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
+| Yankı bağlantısı-mikrofonlar | \>-10 dB TCLw, ITU-T G. 122.368 ek B. 4 metodunu kullanarak, MIC düzeyinde normalleştirilmiş<br />TCLw = Tclwölçülen \+ (ölçülen düzey-hedef çıkış duyarlılığı)<br />TCLw = Tclwölçülen \+ (ölçülen düzey-(-26)) |
 
-## <a name="integration-design-architecture"></a>Entegrasyon tasarım mimarisi
+## <a name="integration-design-architecture"></a>Tümleştirme tasarım mimarisi
 
-Mikrofonları bir aygıta tümleştirirken mimari için aşağıdaki yönergeler gereklidir:
+Mikrofonlar bir cihazla tümleştirilirken mimari için aşağıdaki yönergeler gereklidir:
 
 | Parametre | Öneri |
 | --------- | -------------- |
-| Mikrofon Bağlantı Noktası Benzerliği | Tüm mikrofon bağlantı noktaları dizi içinde aynı uzunluktadır |
-| Mikrofon Bağlantı Noktası Boyutları | Bağlantı noktası boyutu Ø0.8-1.0 mm. Bağlantı Noktası Uzunluğu \< / Bağlantı Noktası Çapı 2 |
-| Mikrofon Sızdırmazlık         | Contalar düzgün bir şekilde yığın halinde uygulanmaktadır. Köpük \> contalar için %70 sıkıştırma oranı öner |
-| Mic Güvenilirlik     | Hasır toz ve girişi önlemek için kullanılmalıdır (alt taşımalı mikrofonlar için PCB ile conta/üst kapak sızdırmazlık arasında) |
-| Mikrofon İzolasyon       | Kauçuk contalar ve titreşim ayrıştırma yapısı, özellikle entegre hoparlörler nedeniyle herhangi bir titreşim yolları izole etmek için |
-| Örnekleme Saati      | Cihaz sesi, düşük sürüklenme ile gerginlik ve bırakma ücretsiz olmalıdır |
-| Kayıt Yeteneği   | Cihaz, tek tek kanal ham akışlarını aynı anda kaydedebilmelidir |
-| USB                 | Tüm USB ses giriş [aygıtları, USB Ses Aygıtları Rev3 Spec'e](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) göre tanımlayıcılar ayarlamalıdır |
-| Mikrofon Geometrisi | Sürücüler [Mikrofon Dizisi Geometri Tanımlayıcılarını](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) doğru uygulamalı |
-| Keşfedilebilirlik     | Aygıtlarda keşfedilemeyen veya denetlenebilen donanım, firmware veya üçüncü taraf yazılım tabanlı doğrusal olmayan ses işleme algoritmaları veya cihazdan |
-| Yakalama Biçimi      | Yakalama biçimleri en az 16 kHz örnekleme hızı kullanmalı ve önerilen 24 bit derinlik |
+| MIC bağlantı noktası benzerliği | Tüm mikrofon bağlantı noktaları dizideki aynı uzunluktadır |
+| MIC bağlantı noktası boyutları | Bağlantı noktası boyutu Ø 0.8-1,0 mm. Bağlantı noktası uzunluğu/bağlantı \< noktası çapı 2 |
+| Mik mühürleme         | Stack gaskets bir arada uygulandı. Fohar gaskets için %70 sıkıştırma oranı öner \> |
+| MIC güvenilirliği     | Ara, toz ve giriş yapılmasını engellemek için kullanılmalıdır (altı bağlantı noktalı mikrofonlar ve mühürleme/en üst kapak için PCB arasında) |
+| MIC yalıtımı       | Lastik gaskets ve titreşim, özellikle Tümleşik hoparlörler nedeniyle titreşim yollarını yalıtmak için yapı aracılığıyla ayrılır |
+| Örnekleme saati      | Cihaz sesinin azalmaları ve düşük bir düşüş olması gerekir |
+| Kayıt özelliği   | Cihazın tek tek kanal ham akışlarını aynı anda kaydedebilmesi gerekir |
+| USB                 | Tüm USB ses girişi cihazlarının, [Rev3 spec](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) 'e göre tanımlayıcıları ayarlaması gerekir |
+| Mikrofon geometrisi | Sürücüler, [mikrofon dizisi geometrisi tanımlayıcılarını](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) doğru uygulamalıdır |
+| Edile     | Cihazlarda bulunmayan veya denetlenebilir olmayan donanım, bellenim veya üçüncü taraf yazılım tabanlı, cihaza/cihazdan, üçüncü taraf yazılım tabanlı olmayan ses işleme algoritmaları olmamalıdır |
+| Yakalama biçimi      | Yakalama biçimleri, 16 kHz minimum örnekleme hızını ve önerilen 24 bit derinliği kullanmalıdır |
 
-## <a name="electrical-architecture-considerations"></a>Elektrik mimarisi ile ilgili hususlar
+## <a name="electrical-architecture-considerations"></a>Elektrik mimarisi konuları
 
-Uygun olduğu durumlarda, diziler bir USB ana bilgisayara (Microsoft Ses Yığınını çalıştıran Bir SoC gibi) ve Konuşma hizmetlerine veya diğer uygulamalara arabirimlere bağlanabilir.
+Uygun olduğunda, diziler bir USB ana bilgisayarına (Microsoft ses yığınını çalıştıran bir SoC gibi) ve konuşma Hizmetleri ya da diğer uygulamalara arabirimler bağlı olabilir.
 
-PDM'den TDM dönüştürmeye gibi donanım bileşenleri, mikrofonların dinamik aralığının ve SNR'sinin yeniden örnekleyiciler içinde korunmasını sağlamalıdır.
+PDM-TDM dönüşümü gibi donanım bileşenleri, mikrofonların dinamik aralığının ve SNR 'nin yeniden örnekleyiciler içinde korunduğundan emin olmalıdır.
 
-Yüksek hızlı USB Audio Class 2.0, daha yüksek numune hızlarında ve bit derinliklerinde yedi kanala kadar gerekli bant genişliğini sağlamak için herhangi bir ses McUs'u içinde desteklenmelidir.
+Yüksek hızlı USB ses sınıfı 2,0, daha yüksek örnek ücretler ve bit derinlikleri üzerinde yedi kanala kadar gerekli bant genişliğini sağlamak için herhangi bir ses MCUs içinde desteklenmelidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Konuşma cihazları SDK hakkında daha fazla bilgi edinin](speech-devices-sdk.md)
+> [Konuşma cihazları SDK 'Sı hakkında daha fazla bilgi edinin](speech-devices-sdk.md)

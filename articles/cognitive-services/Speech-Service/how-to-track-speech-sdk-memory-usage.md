@@ -1,7 +1,7 @@
 ---
-title: Konuşma SDK bellek kullanımı nasıl izler - Konuşma hizmeti
+title: Konuşma SDK 'sını izleme bellek kullanımı-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma Hizmeti SDK, konuşma-metin ve metin-konuşma dönüştürme için çok sayıda programlama dilini destekler, konuşma çevirisi ile birlikte. Bu makalede, SDK yerleşik bellek yönetimi aracı anlatılmaktadır.
+description: Konuşma hizmeti SDK 'Sı, konuşmadan metne ve metinden konuşmaya dönüştürmeye kadar birçok programlama dilini destekler ve konuşma çevirisi de sağlar. Bu makalede, SDK 'da yerleşik olarak bulunan bellek yönetimi araçları ele alınmaktadır.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75456437"
 ---
-# <a name="how-to-track-speech-sdk-memory-usage"></a>Konuşma SDK bellek kullanımı nasıl izler
+# <a name="how-to-track-speech-sdk-memory-usage"></a>Konuşma SDK 'Sı bellek kullanımını izleme
 
-Speech SDK, bir dizi birlikte çalışabilirlik katmanı aracılığıyla birden çok programlama diline yansıtılan yerel bir kod tabanını temel almaktadır. Dile özgü her projeksiyon, nesne yaşam döngüsünü yönetmek için deyimolarak doğru özelliklere sahiptir. Ayrıca, Konuşma SDK nesne günlüğü ve nesne sınırları ile kaynak kullanımını izlemek için bellek yönetimi aracı içerir. 
+Konuşma SDK 'Sı, bir dizi birlikte çalışabilirlik katmanı aracılığıyla birden çok programlama dilinde tasarlanan yerel bir kod tabanına dayalıdır. Dile özgü her projeksiyon, nesne yaşam döngüsünü yönetmek için doğru şekilde doğru özelliklere sahiptir. Ayrıca, konuşma SDK 'Sı, nesne günlüğü ve nesne limitleriyle kaynak kullanımını izlemek için bellek yönetimi araçları 'nı içerir. 
 
-## <a name="how-to-read-object-logs"></a>Nesne günlükleri nasıl okunur
+## <a name="how-to-read-object-logs"></a>Nesne günlüklerini okuma
 
-[Konuşma SDK günlüğü etkinse,](how-to-use-logging.md)geçmiş nesne gözlemini etkinleştirmek için izleme etiketleri yayılır. Bu etiketler şunlardır: 
+[Konuşma SDK günlüğü etkinse](how-to-use-logging.md), geçmiş nesne gözlemlemeyi etkinleştirmek için izleme etiketleri dağıtılır. Bu Etiketler şunları içerir: 
 
 * `TrackHandle` veya `StopTracking` 
 * Nesne türü
-* Nesnenin türünü izlenen nesnelerin geçerli sayısı ve izlenen geçerli sayı.
+* Nesnenin türünü ve izlenmekte olan geçerli sayıyı izleyen geçerli nesne sayısı.
 
-İşte örnek bir günlük: 
+Örnek bir günlük aşağıda verilmiştir: 
 
 ```terminal
 (284): 8604ms SPX_DBG_TRACE_VERBOSE:  handle_table.h:90 TrackHandle type=Microsoft::CognitiveServices::Speech::Impl::ISpxRecognitionResult handle=0x0x7f688401e1a0, ptr=0x0x7f688401e1a0, total=19
@@ -38,9 +38,9 @@ Speech SDK, bir dizi birlikte çalışabilirlik katmanı aracılığıyla birden
 
 ## <a name="set-a-warning-threshold"></a>Uyarı eşiği ayarlama
 
-Bir uyarı eşiği oluşturma seçeneğiniz vardır ve bu eşik aşılırsa (günlüğe kaydetmenin etkin olduğunu varsayarsak), bir uyarı iletisi günlüğe kaydedilir. Uyarı iletisi, varolan tüm nesnelerin sayısıyla birlikte bir dökümeiçerir. Bu bilgiler sorunları daha iyi anlamak için kullanılabilir. 
+Uyarı eşiği oluşturma seçeneğiniz vardır ve bu eşik aşılırsa (günlüğe kaydetmenin etkin olduğu varsayılarak) bir uyarı iletisi kaydedilir. Uyarı iletisi, var olan tüm nesnelerin, sayılarıyla birlikte bir dökümünü içerir. Bu bilgiler, sorunları daha iyi anlamak için kullanılabilir. 
 
-Bir uyarı eşiğini etkinleştirmek için, `SpeechConfig` bir nesne üzerinde belirtilmelidir. Yeni bir tanıyıcı oluşturulduğunda bu nesne denetlenir. Aşağıdaki örneklerde, `SpeechConfig` aşağıdakiler adlı `config`bir örnek oluşturduğunuzu varsayalım:
+Bir uyarı eşiğini etkinleştirmek için, bir `SpeechConfig` nesne üzerinde belirtilmesi gerekir. Bu nesne, yeni bir tanıyıcı oluşturulduğunda denetlenir. Aşağıdaki örneklerde, `SpeechConfig` adlı `config`bir örneği oluşturduğunuzu varsayalım:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -83,13 +83,13 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")
 ::: zone-end
 
 > [!TIP]
-> Bu özellik için varsayılan değer 10.000'dir.
+> Bu özellik için varsayılan değer 10.000 ' dir.
 
 ## <a name="set-an-error-threshold"></a>Hata eşiği ayarlama 
 
-Konuşma SDK'sını kullanarak, belirli bir zamanda izin verilen en fazla nesne sayısını ayarlayabilirsiniz. Bu ayar etkinleştirilirse, en büyük sayı vurulduğunda, yeni tanıyan nesneler oluşturma girişimleri başarısız olur. Varolan nesneler çalışmaya devam eder.
+Konuşma SDK 'sını kullanarak, belirli bir zamanda izin verilen en fazla nesne sayısını ayarlayabilirsiniz. Bu ayar etkinleştirilirse, en fazla sayı isabet edildiğinde, yeni tanıyıcı nesneleri oluşturma girişimleri başarısız olur. Varolan nesneler çalışmaya devam edecektir.
 
-Aşağıda bir örnek hatası ve bir hata ver:
+Örnek bir hata aşağıda verilmiştir:
 
 ```terminal
 Runtime error: The maximum object count of 500 has been exceeded.
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-Bir hata eşiğini etkinleştirmek için, `SpeechConfig` bir nesne üzerinde belirtilmelidir. Yeni bir tanıyıcı oluşturulduğunda bu nesne denetlenir. Aşağıdaki örneklerde, `SpeechConfig` aşağıdakiler adlı `config`bir örnek oluşturduğunuzu varsayalım:
+Bir hata eşiğini etkinleştirmek için, bir `SpeechConfig` nesne üzerinde belirtilmelidir. Bu nesne, yeni bir tanıyıcı oluşturulduğunda denetlenir. Aşağıdaki örneklerde, `SpeechConfig` adlı `config`bir örneği oluşturduğunuzu varsayalım:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -145,9 +145,9 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 ::: zone-end
 
 > [!TIP]
-> Bu özellik için varsayılan değer, bir `size_t` veri türü için platforma özgü maksimum değerdir. Tipik bir tanıma 7 ve 10 iç nesneleri arasında tüketir.
+> Bu özellik için varsayılan değer, bir `size_t` veri türü için platforma özgü en büyük değerdir. Tipik bir tanıma, 7 ila 10 iç nesne arasında tüketir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma hizmeti deneme aboneliğinizi alın](get-started.md)
-* [Mikrofon kullanarak konuşmayı nasıl tanıyacağınızı öğrenin](quickstarts/speech-to-text-from-microphone.md)
+* [Mikrofon kullanarak konuşmayı tanımayı öğrenin](quickstarts/speech-to-text-from-microphone.md)

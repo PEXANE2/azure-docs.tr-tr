@@ -1,7 +1,7 @@
 ---
-title: Adlandırılmış Varlık Tanıma için Desteklenen Türleri
+title: Adlandırılmış varlık tanıma için desteklenen türler
 titleSuffix: Azure Cognitive Services
-description: Metin Analizi API'sinde desteklenen varlık türleri hakkında bilgi edinin.
+description: Metin Analizi API'si desteklenen varlık türleri hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086894"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Adlandırılmış Varlık Tanıma Sürüm 3 için Desteklenen Türleri (Önizleme)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Adlandırılmış varlık tanıma sürüm 3 için desteklenen türler (Önizleme)
 
-Text Analytics API, metinde bulunan varlıkları tanımlama ve ayrıştırmak için bir yetenek sağlar. [Varlık Tanıma](how-tos/text-analytics-how-to-entity-linking.md) (NER) adlı kişi, metindeki farklı varlıkları tanımlama ve bunları önceden tanımlanmış sınıflara kategorilere ayırma yeteneğidir.
+Metin Analizi API'si, metinde bulunan varlıkların belirlenmesini ve ayırt etme özelliğini sağlar. [Adlandırılmış varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md) (ner), metinde farklı varlıkları belirleme ve bunları önceden tanımlanmış sınıflar halinde kategorilere ayırma olanağıdır.
 
 ## <a name="entity-types"></a>Varlık türleri
 
@@ -37,4 +37,4 @@ Desteklenen varlık türleri ve alt türleri (varsa) aşağıda listelenmiştir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Metin Analizinde Adlandırılmış Varlık Tanıma nasıl kullanılır?](how-tos/text-analytics-how-to-entity-linking.md)
+* [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](how-tos/text-analytics-how-to-entity-linking.md)

@@ -1,7 +1,7 @@
 ---
-title: Bing Özel Arama için barındırılan kullanıcı arabirimi yapılandırma | Microsoft Dokümanlar
+title: Bing Özel Arama için barındırılan bir kullanıcı arabirimi yapılandırma | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Bing Özel Arama için barındırılan bir kullanıcı arabirimi yapılandırmak ve tümleştirmek için bu makaleyi kullanın.
+description: Bing Özel Arama için barındırılan bir kullanıcı arabirimini yapılandırmak ve bütünleştirmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68854078"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma
 
-Bing Özel Arama, web sayfalarınıza ve web uygulamalarınıza JavaScript kodu snippet'i olarak kolayca entegre edilebilen barındırılan bir kullanıcı arabirimi sağlar. Bing Özel Arama portalını kullanarak Kullanıcı Arabirimi'nin düzen, renk ve arama seçeneklerini yapılandırabilirsiniz.
+Bing Özel Arama, Web sayfalarınızı ve Web uygulamalarınızı JavaScript kod parçacığı olarak kolayca tümleştirebileceğinizi barındırılan bir kullanıcı arabirimi sağlar. Bing Özel Arama portalını kullanarak, Kullanıcı arabiriminin düzen, renk ve arama seçeneklerini yapılandırabilirsiniz.
 
 
 
-## <a name="configure-the-custom-hosted-ui"></a>Özel barındırılan kullanıcı ayını yapılandırma
+## <a name="configure-the-custom-hosted-ui"></a>Özel barındırılan Kullanıcı arabirimini yapılandırma
 
-Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapılandırmak için aşağıdaki adımları izleyin. Değişiklik yaptığınızda, sağdaki bölme size uI'nizin önizlemesini verecektir. Görüntülenen arama sonuçları, örneğiniz için gerçek sonuçlar değildir.
+Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapılandırmak için aşağıdaki adımları izleyin. Değişiklik yaparken, sağdaki bölme size, Kullanıcı arabiriminizi önizlemede bir önizleme sağlayacak. Görüntülenen arama sonuçları, örneğiniz için gerçek sonuçlar değildir.
 
 1. Bing Özel Arama [portalında](https://customsearch.ai)oturum açın.  
   
-2. Bing Özel Arama örneğini seçin.
+2. Bing Özel Arama örneğinizi seçin.
 
 3. **Barındırılan kullanıcı arabirimi** sekmesine tıklayın.  
   
@@ -37,30 +37,30 @@ Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapıland�
 
     |  |  |
     |---------|---------|
-    |Arama çubuğu ve sonuçları (varsayılan)    | Altında arama sonuçları olan bir arama kutusu görüntüler.         |
-    |Yalnızca sonuçlar     | Arama kutusu olmadan yalnızca arama sonuçlarını görüntüler. Bu düzeni kullanırken, arama sorgusu`&q=<query string>`( ) sağlamanız gerekir. Sorgu parametresini JavaScript snippet'indeki istek URL'sine veya HTML bitiş noktası bağlantısına ekleyin.        |
-    |Pop-over     | Bir arama kutusu sağlar ve arama sonuçlarını kayan bir bindirmede görüntüler.        |
+    |Arama çubuğu ve sonuçları (varsayılan)    | Aşağıdaki arama sonuçlarıyla birlikte bir arama kutusu görüntüler.         |
+    |Yalnızca sonuçlar     | Arama kutusu olmadan yalnızca arama sonuçlarını görüntüler. Bu düzeni kullanırken, arama sorgusu (`&q=<query string>`) sağlamanız gerekir. Sorgu parametresini JavaScript kod parçacığındaki istek URL 'sine veya HTML uç nokta bağlantısını ekleyin.        |
+    |Açılır pencere     | Bir arama kutusu sağlar ve arama sonuçlarını bir kayan kaplamasıyla görüntüler.        |
     
-5. Bir renk teması seçin. Özelleştir **temasını**tıklatarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Rengi değiştirmek için rengin RGB HEX değerini girin (örneğin), `#366eb8`veya renk önizlemesini tıklatın.
+5. Bir renk teması seçin. **Temayı Özelleştir**' e tıklayarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Bir rengi değiştirmek için, rengin RGB ONALTıLıK değerini girin (örneğin, `#366eb8`) veya renk önizlemeye tıklayın.
 
-   Değişikliklerinizi portalın sağ tarafında önizleyebilirsiniz. Varsayılan **olarak Sıfırla'yı** tıklatmak, değişikliklerinizi seçili tema için varsayılan renklere geri ayarlar.
+   Portalın sağ tarafında yaptığınız değişikliklerin önizlemesini yapabilirsiniz. **Varsayılana sıfırla** ' ya tıkladığınızda seçili temanın varsayılan renkleriyle yaptığınız değişiklikler geri alınır.
 
    > [!NOTE]
-   > Renkleri seçerken erişilebilirliği göz önünde bulundurun.
+   > Renk seçerken erişilebilirliği göz önünde bulundurun.
 
-6. **Ek Yapılandırmalar**altında, uygulamanız için uygun değerleri sağlayın. Bu ayarlar isteğe bağlıdır. Bunları uygulama nın veya kaldırmanın etkisini görmek için sağdaki önizleme bölmesine bakın. Kullanılabilir yapılandırma seçenekleri şunlardır:  
+6. **Ek konfigürasyonlar**' ın altında, uygulamanız için uygun değerleri sağlayın. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. Kullanılabilir yapılandırma seçenekleri şunlardır:  
 
-7. Arama abonelik anahtarını girin veya açılır listeden birini seçin. Açılır bırakma listesi, Azure hesabınızın aboneliklerinden gelen anahtarlarla doldurulur. [Bkz. Bilişsel Hizmetler API hesabı.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)  
+7. Arama aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Bilişsel [HIZMETLER API hesabı](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)' na bakın.  
 
-8. Otomatik önermeyi etkinleştirdseniz, abonelik anahtarını otomatik olarak girin veya açılır listeden birini seçin. Açılır bırakma listesi, Azure hesabınızın aboneliklerinden gelen anahtarlarla doldurulur. Özel Otomatik Öner belirli bir abonelik katmanı gerektirir, [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)bakın.
+8. Otomatik öner 'i etkinleştirdiyseniz, otomatik öneri aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Özel otomatik öneri için belirli bir abonelik katmanı gerekir, bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
 [!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
-## <a name="consume-custom-ui"></a>Özel Kullanıcı Bira Sıtkı tüket
+## <a name="consume-custom-ui"></a>Özel Kullanıcı arabirimini tüketme
 
-Barındırılan UI'yi veya 
+Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın: 
 
-- Komut dosyasını web sayfanıza ekleme  
+- Web sayfanıza betiği ekleyin  
   
   ```html
   <html>
@@ -73,72 +73,72 @@ Barındırılan UI'yi veya
   </html>
   ```
 
-- Veya bir Web tarayıcısında aşağıdaki URL'yi kullanın.   
+- Veya bir Web tarayıcısında aşağıdaki URL 'YI kullanın.   
   
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Url'ye gerektiğinde aşağıdaki sorgu parametrelerini ekleyin. Bu parametreler hakkında bilgi için [Özel Arama API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) başvurusuna bakın.
+  > Aşağıdaki sorgu parametrelerini URL 'ye gerektiği şekilde ekleyin. Bu parametreler hakkında daha fazla bilgi için bkz. [özel arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) Reference.
   >
   > - q
   > - mkt
-  > - güvenli arama
+  > - Güvenli Arama
   > - setlang
 
   > [!IMPORTANT]
-  > Sayfa gizlilik bildiriminizi veya diğer bildirimleri ve koşulları görüntüleyemez. Kullanımınıza uygunluğu değişebilir.  
+  > Sayfa Gizlilik Bildirimimizi veya diğer bildirimleri ve koşulları görüntüleyemiyor. Kullanım için uygunluk farklılık gösterebilir.  
 
-Özel Yapılandırma Kimliğiniz de dahil olmak üzere ek bilgi için **Üretim** sekmesi altındaki **Uç Noktaları'na** gidin.
+Özel yapılandırma KIMLIĞINIZ dahil olmak üzere ek bilgiler için **Üretim** sekmesinin altındaki **uç noktalar** ' a gidin.
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-Barındırdığınız Kişi Sayısı'nın davranışını Ek **Yapılandırmalar'ı**tıklatarak ve değerler sağlayarak yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır. Bunları uygulama nın veya kaldırmanın etkisini görmek için sağdaki önizleme bölmesine bakın. 
+**Ek konfigürasyonlar**' a tıklayarak ve değer sağlayarak barındırılan Kullanıcı arabiriminin davranışını yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. 
 
-### <a name="web-search-configurations"></a>Web arama yapılandırmaları
+### <a name="web-search-configurations"></a>Web araması yapılandırması
 
 |  |  |
 |---------|---------|
-|Web sonuçları etkin    | Web aramasının etkin olup olmadığını belirler (sayfanın üst kısmında bir Web sekmesi görürsünüz)        |
-|Otomatik önermeyi etkinleştirme     | Özel otomatik önermenin etkin olup olmadığını belirler (ek maliyet için [fiyatlandırmaya](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) bakın).        |
-|Sayfa başına web sonuçları    | Aynı anda görüntülenecek web arama sonuçlarının sayısı (sayfa başına en fazla 50 sonuç).        |
-|Resim yazısı   | Görüntülerin arama sonuçlarıyla görüntülenip görüntülenmeyecektir belirler.|
+|Web sonuçları etkin    | Web aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir Web sekmesi görürsünüz)        |
+|Otomatik öneri etkinleştir     | Özel otomatik öner'nin etkinleştirilip etkinleştirilmediğini belirler (ek maliyet için [fiyatlandırmayı](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/) görüntüleyin).        |
+|Sayfa başına Web sonucu    | Tek seferde görüntülenecek web araması sonuçlarının sayısı (sayfa başına en fazla 50 sonuç).        |
+|Resim yazısı   | Görüntülerin arama sonuçlarıyla görüntülenip görüntülenmediğini belirler.|
 
 
-**Gelişmiş yapılandırmaları göster'i**tıklattığınızda aşağıdaki yapılandırmalar gösterilir:
+**Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir:
 
 
 |  | |
 |---------|---------|
-|Sözcükleri vurgulama     | Sonuçların arama terimleriyle kalın olarak görüntülenip görüntülenmeyi belirler.         |
-|Bağlantı hedefi    |  Kullanıcı bir arama sonucunu tıklattığında web sayfasının yeni bir tarayıcı sekmesinde (Boş) veya aynı tarayıcı sekmesinde (kendi kendine) açılıp açılmayanlarını belirler.        |
+|Sözcükleri Vurgula     | Sonuçların arama terimleriyle kalın olarak görüntülenip görüntülenmeyeceğini belirler.         |
+|Bağlantı hedefi    |  Kullanıcı bir arama sonucuna tıkladığında web sayfasının yeni bir tarayıcı sekmesinde (boş) veya aynı tarayıcı sekmesinde (kendi) açılıp açılamayacağını belirler.        |
 
-### <a name="image-search-configurations"></a>Resim arama yapılandırmaları
+### <a name="image-search-configurations"></a>Görüntü arama yapılandırması
 
 | | |
 |---------|---------|
-|Görüntü sonuçları etkin     | Resim aramasının etkin olup olmadığını belirler (sayfanın üst kısmında bir Resimler sekmesi görürsünüz).            |
-|Sayfa başına resim sonuçları     | Bir seferde görüntülenecek resim arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).          |
+|Görüntü sonuçları etkin     | Görüntü aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir görüntüler sekmesi görürsünüz).            |
+|Sayfa başına görüntü sonucu     | Tek seferde görüntülenecek görüntü arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).          |
 
-**Gelişmiş yapılandırmaları göster'i**tıklattığınızda aşağıdaki yapılandırma gösterilir.  
+**Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
 | | |
 |---------|---------|
-| Filtreleri etkinleştirme     | Kullanıcının Bing'in döndürdettiği görüntüleri filtrelemek için kullanabileceği filtreler ekler. Örneğin, kullanıcı sonuçları yalnızca animasyonlu GIF'ler için filtreleyebilir.|
+| Filtreleri Etkinleştir     | Kullanıcının Bing 'nin döndürdüğü görüntüleri filtrelemek için kullanabileceği filtreler ekler. Örneğin, Kullanıcı yalnızca animasyonlu GIF 'Ler için sonuçlara filtre uygulayabilir.|
 
-### <a name="video-search-configurations"></a>Video arama yapılandırmaları
+### <a name="video-search-configurations"></a>Video arama yapılandırması
 
 |  | |
 |---------|---------|
-|Video sonuçları etkin     | Video aramasının etkin olup olmadığını belirler (sayfanın üst kısmında videolar sekmesi görürsünüz).           |
-|Sayfa başına video sonuçları   | Aynı anda görüntülenecek video arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).        |
+|Video sonuçları etkin     | Video aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir videolar sekmesi görürsünüz).           |
+|Sayfa başına video sonucu   | Tek seferde görüntülenecek video arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).        |
 
-**Gelişmiş yapılandırmaları göster'i**tıklattığınızda aşağıdaki yapılandırma gösterilir.  
+**Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
 |  | |
 |---------|---------|
-|Filtreleri etkinleştirme    | Kullanıcının Bing'in döndürdettiği videoları filtrelemek için kullanabileceği filtreler ekler. Örneğin, kullanıcı son 24 saat içinde keşfedilen belirli bir çözünürlük veya videolar ile videoların sonuçlarını filtreleyebilir.          |
+|Filtreleri Etkinleştir    | Kullanıcının Bing 'nin döndürdüğü videoları filtrelemek için kullanabileceği filtreler ekler. Örneğin Kullanıcı, son 24 saat içinde bulunan belirli bir çözünürlük veya videoların bulunduğu videoların sonuçlarını filtreleyebilir.          |
 
-### <a name="miscellaneous-configurations"></a>Çeşitli yapılandırmalar
+### <a name="miscellaneous-configurations"></a>Çeşitli yapılandırma
 
 
 | |  |
@@ -146,22 +146,22 @@ Barındırdığınız Kişi Sayısı'nın davranışını Ek **Yapılandırmalar
 |Sayfa başlığı   | Arama sonuçları sayfasının başlık alanında görüntülenen metin (açılır düzen için değil).        |
 |Araç çubuğu teması    | Arama sonuçları sayfasının başlık alanının arka plan rengini belirler. |
 
-**Gelişmiş yapılandırmaları göster'i**tıklattığınızda aşağıdaki yapılandırmalar gösterilir.  
+**Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir.  
 
 |Sütun1  |Sütun2  |
 |---------|---------|
-|Kutu metin yer tutucusunda arama   | Girişten önce arama kutusunda görüntülenen metin.        |
-|Başlık bağlantı url    |Başlık bağlantısı için hedef.         |
-|Logo URL'si     | Başlığın yanında görüntülenen resim.         |
-|Favicon    | Simge tarayıcının başlık çubuğunda görüntülenir.          |
+|Arama kutusu metin yer tutucusu   | Girişten önce arama kutusunda görüntülenecek metin.        |
+|Başlık bağlantısı URL 'si    |Başlık bağlantısı için hedef.         |
+|Logo URL 'SI     | Başlığın yanında görüntülenecek resim.         |
+|Öncelik simgesi    | Tarayıcının başlık çubuğunda görünen simge.          |
 
-Aşağıdaki yapılandırmalar yalnızca Barındırılan UI'yi HTML bitiş noktası üzerinden tüketirseniz uygulanır (JavaScript snippet'ini kullanıyorsanız geçerli değildir).
+Aşağıdaki yapılandırma yalnızca, HTML uç noktası aracılığıyla barındırılan Kullanıcı arabirimini kullanacaksanız geçerlidir (JavaScript kod parçacığını kullanırsanız uygulanmaz).
 
 - Sayfa başlığı
 - Araç çubuğu teması
-- Başlık bağlantısı URL
-- Logo URL'si
-- Faviicon URL  
+- Başlık bağlantısı URL 'SI
+- Logo URL 'SI
+- Faviıcon URL 'SI  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

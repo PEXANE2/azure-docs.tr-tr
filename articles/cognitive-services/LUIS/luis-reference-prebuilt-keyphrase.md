@@ -1,7 +1,7 @@
 ---
-title: Anahtar kelime önceden oluşturulmuş varlık - LUIS
+title: Keyphrase önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Dil Anlama (LUIS) anahtar tümcecik önceden oluşturulmuş varlık bilgileri içerir.
+description: Bu makale Language Understanding (LUSıS) içindeki keyphrase önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270522"
 ---
-# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>bir LUIS uygulaması için keyPhrase önceden oluşturulmuş varlık
-Anahtar Cümlesi varlığı, bir sözcükten çeşitli anahtar tümcecikleri ayıklar. Uygulamaya keyPhrase içeren örnek ifadeler eklemeniz gerekmez. Anahtar Cümlesi varlığı, [metin analizi](../text-analytics/overview.md) özelliklerinin bir parçası olarak [birçok kültürde](luis-language-support.md#languages-supported) desteklenir.
+# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için keyPhrase önceden oluşturulmuş varlık
+KeyPhrase varlığı, çeşitli anahtar tümceciklerini utterance 'ten ayıklar. Uygulamaya keyPhrase içeren örnek eklemelerine ihtiyacınız yoktur. KeyPhrase varlığı, [metin analizi](../text-analytics/overview.md) özelliklerinin bir parçası olarak [birçok kültürde](luis-language-support.md#languages-supported) desteklenir.
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Önceden oluşturulmuş anahtar Cümlesi varlığı için çözünürlük
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Önceden oluşturulmuş keyPhrase varlığı için çözüm
 
-Aşağıdaki varlık nesneleri sorgu için döndürülür:
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `where is the educational requirements form for the development and engineering group`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -39,8 +39,8 @@ Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
-Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -78,7 +78,7 @@ Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **builtin.keyPhrase** varlığının çözümünü gösterir.
+Aşağıdaki örnek, **yerleşik. keyPhrase** varlığının çözünürlüğünü gösterir.
 
 ```json
 "entities": [
@@ -100,6 +100,6 @@ Aşağıdaki örnek, **builtin.keyPhrase** varlığının çözümünü gösteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Yüzde,](luis-reference-prebuilt-percentage.md) [sayı](luis-reference-prebuilt-number.md)ve [yaş](luis-reference-prebuilt-age.md) varlıkları hakkında bilgi edinin.
+[Yüzde](luis-reference-prebuilt-percentage.md), [sayı](luis-reference-prebuilt-number.md)ve [yaş](luis-reference-prebuilt-age.md) varlıkları hakkında bilgi edinin.

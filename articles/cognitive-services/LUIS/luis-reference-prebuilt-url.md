@@ -1,7 +1,7 @@
 ---
-title: URL Önceden oluşturulmuş varlıklar - LUIS
+title: URL önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Dil Anlama (LUIS) url önceden oluşturulmuş varlık bilgilerini içerir.
+description: Bu makale, Language Understanding (LUSıS) içindeki URL önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270359"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için URL önceden oluşturulmuş varlık
-URL varlığı etki alanı adları veya IP adresleri ile URL'leri ayıklar. Bu varlık zaten eğitilmiş olduğundan, uygulamaya URL içeren örnek sözcükler eklemeniz gerekmez. URL varlığı yalnızca `en-us` kültürde desteklenir.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için URL önceden oluşturulmuş varlık
+URL varlığı, etki alanı adlarıyla veya IP adresleriyle URL 'Leri ayıklar. Bu varlık zaten eğitiltiğinden, uygulamaya URL 'Leri içeren örnek bir parametre eklemeniz gerekmez. URL varlığı yalnızca kültür ' `en-us` de desteklenir.
 
-## <a name="types-of-urls"></a>URL Türleri
-Url, [Tanıyanlar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub deposundan yönetilir
+## <a name="types-of-urls"></a>URL türleri
+URL, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) GitHub deposundan yönetiliyor
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Önceden oluşturulmuş URL varlığı için çözünürlük
+## <a name="resolution-for-prebuilt-url-entity"></a>Önceden oluşturulmuş URL varlığı için çözüm
 
-Aşağıdaki varlık nesneleri sorgu için döndürülür:
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -41,9 +41,9 @@ Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
 
-Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -69,7 +69,7 @@ Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, yapay zekanın büyük bir bilişsel hizmetler örneği https://www.luis.ai çözünürlüğünü gösterir
+Aşağıdaki örnek, yapay zeka 'nın harika https://www.luis.ai bir bilişsel hizmetler örneği olduğunu göstermektedir.
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ Aşağıdaki örnek, yapay zekanın büyük bir bilişsel hizmetler örneği htt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Ordinal,](luis-reference-prebuilt-ordinal.md) [sayı](luis-reference-prebuilt-number.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.
+[Sıra](luis-reference-prebuilt-ordinal.md), [sayı](luis-reference-prebuilt-number.md)ve [sıcaklık](luis-reference-prebuilt-temperature.md) varlıkları hakkında bilgi edinin.

@@ -1,7 +1,7 @@
 ---
-title: Akıllı kırpılmış küçük resimler - BilgisayarLı Vizyon
+title: Akıllı kırpılan küçük resimler-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bilgisayarlı Görme API'sini kullanarak görüntüler için küçük resimler oluşturmayla ilgili kavramlar.
+description: Görüntü İşleme API'si kullanarak görüntülerin küçük resimlerini oluşturma ile ilgili kavramlar.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -12,42 +12,42 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68945227"
 ---
-# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Computer Vision ile akıllı kırpılmış küçük resimler oluşturma
+# <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Görüntü İşleme ile akıllı kırpılmış küçük resimler oluşturma
 
-Küçük resim, görüntünün azaltılmış boyutlu bir temsilidir. Küçük resimler, görüntüleri ve diğer verileri daha ekonomik ve düzen dostu bir şekilde temsil etmek için kullanılır. Computer Vision API, belirli bir görüntü için sezgisel küçük resimler oluşturmak için görüntüyü yeniden boyutlandırmayla birlikte akıllı kırpma kullanır.
+Küçük resim, bir görüntünün azaltılmış boyutlu bir gösterimidir. Küçük resimler, daha ekonomik, düzen kullanımı kolay bir şekilde görüntüleri ve diğer verileri temsil etmek için kullanılır. Görüntü İşleme API'si, belirli bir görüntü için sezgisel küçük resimler oluşturmak üzere görüntüyü yeniden boyutlandırmayla birlikte akıllı kırpma kullanır.
 
-Computer Vision küçük resim oluşturma algoritması aşağıdaki gibi çalışır:
+Görüntü İşleme küçük resim oluşturma algoritması aşağıdaki gibi çalışmaktadır:
 
-1. Dikkat dağıtıcı öğeleri görüntüden çıkarın ve ana nesnenin(ler) göründüğü görüntünün ilgi _alanını_&mdash;tanımlayın.
-1. Görüntüyü tanımlanan _ilgi alanına_göre kırpma.
+1. Görüntüdeki dikkat _çekici_&mdash;öğeleri kaldırın ve görüntü alanının ana nesne (ler) göründüğü alanını tanımlayan alanı belirler.
+1. Görüntüyü, _ilgilendiğiniz tanımlı alana_göre kırpın.
 1. En boy oranını hedef küçük resim boyutlarına uyacak şekilde değiştirin.
 
-## <a name="area-of-interest"></a>İlgi alanı
+## <a name="area-of-interest"></a>İlgilendiğiniz alan
 
-Bir görüntü yüklediğinizde, Computer Vision API ilgi *alanını*belirlemek için görüntü analiz eder. Daha sonra görüntü kırpma nasıl belirlemek için bu bölgeyi kullanabilirsiniz. Kırpma işlemi, ancak, her zaman bir belirtilmişse istenen en boy oranı eşleşir.
+Bir görüntüyü karşıya yüklediğinizde, Görüntü İşleme API'si *ilgilendiğiniz alanı*belirleyecek şekilde analiz eder. Daha sonra bu bölgeyi, görüntünün nasıl kırpılacağını anlamak için kullanabilir. Ancak, kırpma işlemi, belirtilmişse her zaman istenen en boy oranıyla eşleşir.
 
-Ayrıca, bu aynı *ilgi alanının* ham sınırlayıcı kutu koordinatlarını, bunun yerine **alanOfInterest** API'yi arayarak alabilirsiniz. Daha sonra bu bilgileri, orijinal görüntüyü istediğiniz gibi değiştirmek için kullanabilirsiniz.
+Bunun **yerine, aynı** *ilgi alanına* ait ham sınırlayıcı kutu koordinatlarını de alabilir. Böylece, bu bilgileri özgün görüntüyü değiştirmek için kullanabilirsiniz.
 
 ## <a name="examples"></a>Örnekler
 
-Oluşturulan küçük resim, aşağıdaki resimde gösterildiği gibi yükseklik, genişlik ve akıllı kırpma için belirttiğiniz şeye bağlı olarak büyük ölçüde değişebilir.
+Oluşturulan küçük resim, aşağıdaki görüntüde gösterildiği gibi yükseklik, genişlik ve akıllı kırpma için belirlediğiniz değere göre farklılık gösterir.
 
-![Çeşitli kırpma yapılandırmalarının yanında bir dağ görüntüsü](./Images/thumbnail-demo.png)
+![Çeşitli kırpma yapılandırmalarının yanında bir Sıradağlar resmi](./Images/thumbnail-demo.png)
 
-Aşağıdaki tablo, örnek görüntüler için Computer Vision tarafından oluşturulan tipik küçük resimleri göstermektedir. Küçük resimler, akıllı kırpma özelliği etkinleştirilmiş, 50 piksellik belirli bir hedef yükseklik ve genişlik için oluşturulmuştur.
+Aşağıdaki tabloda örnek görüntüler için Görüntü İşleme tarafından oluşturulan tipik küçük resimler gösterilmektedir. Küçük resimler, akıllı kırpma etkinken, belirtilen hedef yüksekliği ve 50 piksellik genişlik için oluşturulmuştur.
 
-| Görüntü | Küçük |
+| Görüntü | Resimler |
 |-------|-----------|
-|![Gün batımında Açık Dağ, bir kişinin silueti ile](./Images/mountain_vista.png) | ![Gün batımında Açık Dağ Küçük Resim, bir kişinin silueti ile](./Images/mountain_vista_thumbnail.png) |
-|![Yeşil arka planlı beyaz bir çiçek](./Images/flower.png) | ![Vizyon Analiz Çiçek küçük resim](./Images/flower_thumbnail.png) |
-|![Bir apartmanın çatısında bir kadın](./Images/woman_roof.png) | ![bir apartmanın çatısında bir kadının küçük resmi](./Images/woman_roof_thumbnail.png) |
+|![Bir kişinin silueti ile gün içinde Sıradağlar](./Images/mountain_vista.png) | ![Bir kişinin silueti ile gün içinde Sıradağlar ın küçük resmi](./Images/mountain_vista_thumbnail.png) |
+|![Yeşil arka plana sahip beyaz çiçek](./Images/flower.png) | ![Vizyon çiçek küçük resmini analiz etme](./Images/flower_thumbnail.png) |
+|![Apartman binasının çatı üzerindeki kadın](./Images/woman_roof.png) | ![apartman binasının çatı üzerindeki kadın küçük resmi](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntüleri [etiketleme](concept-tagging-images.md) ve [görüntüleri kategorilere ayırma](concept-categorizing-images.md)hakkında bilgi edinin.
+[Görüntüleri etiketleme](concept-tagging-images.md) ve [görüntüleri kategorilere ayırma](concept-categorizing-images.md)hakkında bilgi edinin.

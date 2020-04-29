@@ -1,7 +1,7 @@
 ---
 title: Tam Ekran Okuyucu Kaynağı oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, özel bir alt etki alanına sahip yeni bir Sürükleyici Okuyucu kaynağının nasıl oluşturulacağı ve azure kiracınızda Azure AD'yi nasıl yapılandıracağı gösterilmektedir.
+description: Bu makalede, özel bir alt etki alanı ile yeni bir tam ekran okuyucu kaynağı oluşturma ve ardından Azure kiracınızda Azure AD 'yi yapılandırma gösterilmektedir.
 services: cognitive-services
 author: rwaller
 manager: guillasi
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
 ms.openlocfilehash: 41efe4592c65ae3cdd85ce1b212554e50691905a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78330728"
 ---
-# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Sürükleyici Bir Reader kaynağı oluşturun ve Azure Etkin Dizin kimlik doğrulaması yapılandırın
+# <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Bir tam ekran okuyucu kaynağı oluşturma ve Azure Active Directory kimlik doğrulamasını yapılandırma
 
-Bu makalede, Sürükleyici Bir Okuyucu kaynağı oluşturacak ve Azure Etkin Dizin (Azure AD) kimlik doğrulaması yapılandıracak bir komut dosyası salıyoruz. İster bu komut dosyasında ister portalda olsun, Her Sürükleyici Okuyucu kaynağı oluşturulduğunda, azure AD izinleriyle de yapılandırılmalıdır. Bu senaryo bu nda sana yardımcı olacak.
+Bu makalede, bir tam ekran okuyucu kaynağı oluşturacak ve Azure Active Directory (Azure AD) kimlik doğrulamasını yapılandıracağız bir betik sağlıyoruz. Bu komut dosyası veya portalda her bir modern okuyucu kaynağı oluşturulduğunda, Azure AD izinleriyle de yapılandırılmalıdır. Bu betik size yardımcı olur.
 
-Komut dosyası, sizin için gerekli tüm Sürükleyici Okuyucu ve Azure AD kaynaklarını tek adımda oluşturmak ve yapılandırmak için tasarlanmıştır. Ancak, örneğin Azure portalında zaten bir tane oluşturmuşsanız, azure AD kimlik doğrulamasını varolan bir Sürükleyici Okuyucu kaynağı için de yapılandırabilirsiniz.
+Betik, tüm gerekli tam ekran okuyucuyu ve Azure AD kaynaklarını tek bir adımda oluşturmak ve yapılandırmak için tasarlanmıştır. Bununla birlikte, mevcut bir tam ekran okuyucu kaynağı için Azure AD kimlik doğrulamasını da yapılandırabilirsiniz, örneğin, zaten Azure portal bir tane oluşturmuş olmanız gerekir.
 
-Bazı müşteriler için, geliştirme ve üretim e karşı olmak üzere birden çok Sürükleyici Okuyucu kaynağı oluşturmak veya hizmetinizin dağıtılan birden çok farklı bölge için gerekebilir. Bu gibi durumlarda, farklı Sürükleyici Okuyucu kaynakları oluşturmak ve bunları Azure AD izinleriyle yapılandırmak için komut dosyasını birden çok kez kullanabilirsiniz.
+Bazı müşteriler için, geliştirme ve üretim için veya belki hizmetinizin dağıtıldığı birden çok farklı bölgede birden çok modern okuyucu kaynağı oluşturmak gerekebilir. Bu gibi durumlarda, farklı derinlikli okuyucu kaynakları oluşturmak ve bunları Azure AD izinleriyle yapılandırmak için geri dönüp betiği birden çok kez kullanabilirsiniz.
 
-Komut dosyası esnek olacak şekilde tasarlanmıştır. Önce aboneliğinizde varolan Immersive Reader ve Azure AD kaynaklarını arar ve bunları yalnızca zaten yoksa gerektiği gibi oluşturur. İlk kez bir Sürükleyici Reader kaynağı oluşturuyorsanız, komut dosyası ihtiyacınız olan her şeyi yapar. Azure AD'yi yalnızca portalda oluşturulan varolan bir Sürükleyici Okuyucu kaynağı için yapılandırmak için kullanmak istiyorsanız, bunu da yapar. Ayrıca, birden çok Sürükleyici Okuyucu kaynağı oluşturmak ve yapılandırmak için de kullanılabilir.
+Komut dosyası esnek olacak şekilde tasarlanmıştır. Bu, öncelikle aboneliğinizde var olan tam ekran okuyucuyu ve Azure AD kaynaklarını arayacaktır ve yalnızca mevcut değilse bunları oluşturur. İlk kez bir derinlikli okuyucu kaynağı oluşturuyorsanız, komut dosyası ihtiyacınız olan her şeyi oluşturur. Bunu kullanmak istiyorsanız, Portal 'da oluşturulan mevcut bir tam ekran okuyucusu kaynağı için Azure AD 'yi yapılandırmak üzere bu işlemi de yapabilirsiniz. Ayrıca, birden çok modern okuyucu kaynağı oluşturmak ve yapılandırmak için de kullanılabilir.
 
 ## <a name="set-up-powershell-environment"></a>PowerShell ortamını ayarlama
 
-1. Azure Bulut [Kabuğu'nu](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Bulut kabuğunun sol üstteki açılır da powershell olarak ayarlandığından `pwsh`veya yazarak ayarlandığından emin olun.
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açarak başlayın. Cloud Shell 'in sol üst taraftaki açılan menüde veya yazarak `pwsh`PowerShell olarak ayarlandığından emin olun.
 
-1. Aşağıdaki kod parçacıklarını kopyalayıp kabuk üzerine yapıştırın.
+1. Aşağıdaki kod parçacığını kopyalayıp kabuğa yapıştırın.
 
     ```azurepowershell-interactive
     function Create-ImmersiveReaderResource(
@@ -141,7 +141,7 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Önce aboneliğinizde va
     }
     ```
 
-1. Parametreleri `Create-ImmersiveReaderResource`uygun şekilde sağlayarak işlevi çalıştırın.
+1. Uygun şekilde parametreleri `Create-ImmersiveReaderResource`sağlayarak işlevi çalıştırın.
 
     ```azurepowershell-interactive
     Create-ImmersiveReaderResource
@@ -157,20 +157,20 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Önce aboneliğinizde va
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
     ```
 
-    | Parametre | Yorumlar |
+    | Parametre | Açıklamalar |
     | --- | --- |
-    | SubscriptionName |Sürükleyici Okuyucu kaynağınız için kullanılacak Azure aboneliğinin adı. Kaynak oluşturmak için aboneliğiniz olması gerekir. |
-    | ResourceName |  Alfasayısal olmalıdır ve '-' ilk veya son karakter olmadığı sürece '-'içerebilir. Uzunluk 63 karakteri geçemez.|
-    | ResourceSubdomain |Sürükleyici Reader kaynağınız için özel bir alt etki alanı gereklidir. Alt etki alanı, Reader'ı başlatmak için Sürükleyici Okuyucu hizmetini ararken SDK tarafından kullanılır. Alt etki alanı genel olarak benzersiz olmalıdır. Alt etki alanı alfasayısal olmalıdır ve '-' ilk veya son karakter olmadığı sürece '-'içerebilir. Uzunluk 63 karakteri geçemez. Kaynak zaten varsa, bu parametre isteğe bağlıdır. |
-    | KaynakSKU |Seçenekler: `S0`. Mevcut her SKU hakkında daha fazla bilgi edinmek için [Bilişsel Hizmetler fiyatlandırma sayfamızı](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) ziyaret edin. Kaynak zaten varsa, bu parametre isteğe bağlıdır. |
-    | ResourceLocation |Seçenekler: `eastus` `eastus2`, `southcentralus` `westus`, `westus2` `australiaeast`, `southeastasia` `centralindia`, `japaneast` `northeurope`, `uksouth` `westeurope`, , , , , , . Kaynak zaten varsa, bu parametre isteğe bağlıdır. |
-    | ResourceGroupName |Kaynaklar, abonelikler içindeki kaynak gruplarında oluşturulur. Varolan bir kaynak grubunun adını sağlama. Kaynak grubu zaten yoksa, bu ada sahip yeni bir grup oluşturulur. |
-    | Kaynak GrubuKonum |Kaynak grubunuz yoksa, grubu oluşturmak için bir konum sağlamanız gerekir. Konumların listesini bulmak için `az account list-locations`çalıştırın. Döndürülen sonucun *ad* özelliğini (boşluk suz) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |
-    | AADAppDisplayName |Azure Active Directory uygulama görüntü adı. Varolan bir Azure AD uygulaması bulunmazsa, bu ada sahip yeni bir uygulama oluşturulur. Azure AD uygulaması zaten varsa, bu parametre isteğe bağlıdır. |
-    | AADAppIdentifierUri |Azure AD uygulaması için URI. Varolan bir Azure AD uygulaması bulunmazsa, bu URI ile yeni bir uygulama oluşturulur. Örneğin, `https://immersivereaderaad-mycompany`. |
-    | AADAppClientSecret |Immersive Reader başlatmak için bir belirteç alırken daha sonra kimlik doğrulaması için kullanılacak oluşturduğunuz bir parola. Parola en az 16 karakter uzunluğunda, en az 1 özel karakter içermeli ve en az 1 sayısal karakter içermelidir. |
+    | SubscriptionName |Tam ekran okuyucu kaynağınız için kullanılacak Azure aboneliğinin adı. Kaynak oluşturmak için bir aboneliğinizin olması gerekir. |
+    | ResourceName |  '-' Karakteri ilk veya son karakter olmadığı sürece alfasayısal olmalı ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz.|
+    | ResourceSubdomain |Tam ekran okuyucu kaynağınız için özel bir alt etki alanı gereklidir. Bu alt etki alanı, okuyucuyu başlatmak için derinlikli okuyucu hizmeti çağrılırken SDK tarafından kullanılır. Alt etki alanı, genel olarak benzersiz olmalıdır. '-' İlk veya son karakter olmadığı sürece alt etki alanı alfasayısal olmalıdır ve '-' karakterlerini içerebilir. Uzunluk 63 karakterden uzun olamaz. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceSKU |Seçenekler: `S0`. Kullanılabilir her SKU hakkında daha fazla bilgi edinmek için bilişsel [Hizmetler fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) sayfamızı ziyaret edin. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceLocation |Seçenekler: `eastus`, `eastus2`, `southcentralus` `westus`,, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Kaynak zaten mevcutsa, bu parametre isteğe bağlıdır. |
+    | ResourceGroupName |Kaynaklar, abonelikler içindeki kaynak gruplarında oluşturulur. Mevcut bir kaynak grubunun adını sağlayın. Kaynak grubu henüz yoksa, bu adı taşıyan yeni bir tane oluşturulur. |
+    | ResourceGroupLocation |Kaynak grubunuz yoksa, grubun oluşturulacağı bir konum sağlamanız gerekir. Konumların bir listesini bulmak için öğesini çalıştırın `az account list-locations`. Döndürülen sonucun *Name* özelliğini (boşluk olmadan) kullanın. Kaynak grubunuz zaten varsa, bu parametre isteğe bağlıdır. |
+    | AADAppDisplayName |Azure Active Directory Uygulama görünen adı. Mevcut bir Azure AD uygulaması bulunamazsa, bu adı taşıyan yeni bir tane oluşturulur. Azure AD uygulaması zaten mevcutsa bu parametre isteğe bağlıdır. |
+    | Aadappıdentifieruri |Azure AD uygulaması için URI. Mevcut bir Azure AD uygulaması bulunamazsa, bu URI 'ye sahip yeni bir tane oluşturulur. Örneğin, `https://immersivereaderaad-mycompany`. |
+    | AADAppClientSecret |Daha sonra, derinlikli okuyucuyu başlatmak üzere bir belirteç alırken kimlik doğrulaması için kullanılacak bir parola. Parola en az 16 karakter uzunluğunda olmalı, en az 1 özel karakter içermeli ve en az 1 sayısal karakter içermelidir. |
 
-1. JSON çıktısını daha sonra kullanmak üzere bir metin dosyasına kopyalayın. Çıktı aşağıdaki gibi görünmelidir.
+1. JSON çıkışını daha sonra kullanmak üzere bir metin dosyasına kopyalayın. Çıktı aşağıdaki gibi görünmelidir.
 
     ```json
     {
@@ -183,10 +183,10 @@ Komut dosyası esnek olacak şekilde tasarlanmıştır. Önce aboneliğinizde va
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node.js kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Düğüm.js quickstart'ı](./quickstart-nodejs.md) görüntüleyin
-* Python kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
-* Swift'i kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Swift öğreticisini](./tutorial-ios-picture-immersive-reader.md) görüntüleyin
-* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](./reference.md) keşfedin
+* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](./quickstart-nodejs.md) başlangıcını görüntüleyin
+* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
+* Swift [öğreticisini](./tutorial-ios-picture-immersive-reader.md) kullanarak tam ekran okuyucu SDK 'sı ile neler yapabileceğinizi görün.
+* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet
 
 
 

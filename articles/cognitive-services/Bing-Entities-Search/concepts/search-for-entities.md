@@ -1,7 +1,7 @@
 ---
-title: Bing Entity Search API'si olan varlıkları arama
+title: Bing Varlık Arama API'si varlıkları arayın
 titleSuffix: Azure Cognitive Services
-description: Arama sorgularından varlıkları ve yerleri ayıklamak ve aramak için Bing Varlık Arama API'sini kullanın.
+description: Arama sorgularından varlıkları ve yerleri ayıklamak ve aramak için Bing Varlık Arama API'si kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220319"
 ---
-# <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing Entity API'si olan varlıklar aranıyor
+# <a name="searching-for-entities-with-the-bing-entity-api"></a>Bing varlık API 'SI ile varlıkları arama
 
-## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Bing Autosuggest API ile arama terimleri öner
+## <a name="suggest-search-terms-with-the-bing-autosuggest-api"></a>Bing Otomatik Öneri API'si ile arama terimleri önerin
 
 Kullanıcıların arama terimlerini gireceği bir arama kutusu sağlıyorsanız deneyimi geliştirmek için [Bing Otomatik Öneri API'sini](../../bing-autosuggest/get-suggested-search-terms.md) kullanın. API, kullanıcı yazarken kısmi arama terimlerine dayalı önerilen sorgu dizelerini yönetin.
 
@@ -36,15 +36,15 @@ Arama teriminde yazım hatası varsa arama yanıtında [QueryContext](https://do
 }
 ```
 
-## <a name="the-bing-entity-search-api-response"></a>Bing Entity Search API yanıtı
+## <a name="the-bing-entity-search-api-response"></a>Bing Varlık Arama API'si yanıtı
 
-API yanıtı bir [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) nesnesi içerir. Bing ilgili bir varlık veya yer bulduğunda nesne `entities` alanını, `places` alanını veya ikisini birden içerir. Aksi takdirde yanıt nesnesi iki alanı da içermez.
+API yanıtı bir [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse) nesnesi içeriyor. Bing ilgili bir varlık veya yer bulduğunda nesne `entities` alanını, `places` alanını veya ikisini birden içerir. Aksi takdirde yanıt nesnesi iki alanı da içermez.
 > [!NOTE]
 > Varlık yanıtları birden fazla pazarı destekler ancak Places yanıtı yalnızca ABD'deki İşletme konumlarını destekler. 
 
 `entities` alanı bir [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) nesnesidir ve [Entity](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity) nesnelerinin listesini içerir (`value` alanına bakın). Listede tek bir baskın varlık, birden fazla kesinleştirme varlığı veya ikisi birden bulunabilir. 
 
-Bing, isteği karşılayan tek varlık olduğuna inandığında baskın bir varlık döndürülür (hangi varlığın isteği karşıladığı nadair bir belirsizlik yoktur). İsteği birden fazla varlık karşılıyorsa listede birden fazla kesinleştirme varlığı bulunur. Örneğin istekte bir film serisinin genel adı kullanılıyorsa listede muhtemelen kesinleştirme varlıkları bulunacaktır. Ancak istekte serideki filmlerden birinin adı belirtiliyorsa listede muhtemelen tek bir baskın varlık olacaktır.
+Bing bir varlık, isteği karşılayan tek varlık olduğunu düşündüğü zaman döndürülür (hangi varlığın isteği karşılayan bir belirsizlik yoktur). İsteği birden fazla varlık karşılıyorsa listede birden fazla kesinleştirme varlığı bulunur. Örneğin istekte bir film serisinin genel adı kullanılıyorsa listede muhtemelen kesinleştirme varlıkları bulunacaktır. Ancak istekte serideki filmlerden birinin adı belirtiliyorsa listede muhtemelen tek bir baskın varlık olacaktır.
 
 Varlıklar şarkıcılar, oyuncular, atletler, modeller gibi tanınmış kişileri, Mount Rainier veya Lincoln Memorial gibi önemli yerleri ve muz, goldendoodle, kitap veya film adı gibi nesneleri içerir. [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) alanı, varlık türünü tanımlayan ipuçları içerir. Örneğin varlığın kişi, film, hayvan veya önemli nokta olduğunu gösterebilir. Olası türlerin listesi için bkz. [Varlık Türleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
@@ -172,9 +172,9 @@ Varlıkta `name`, `description` ve `image` alanı vardır. Bu alanları kullanı
 
 Varlık bilgilerini (ad, açıklama ve görüntü) görüntülediğinizde `webSearchUrl` alanındaki URL'yi kullanarak varlığı içeren Bing arama sonuçları sayfasına da bağlantı vermeniz gerekir.
 
-## <a name="find-places"></a>Yerleri bulma
+## <a name="find-places"></a>Yerleri bul
 
-Alan, `places` [Yer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) nesnelerinin listesini içeren bir [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) nesnesidir (daha fazla bilgi için [Varlık Türleri'ne](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) bakın). Listede isteği karşılayan bir veya daha fazla yerel varlık bulunur.
+Alan, [yer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#place) nesnelerinin bir listesini Içeren bir [Localentityanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) nesnesidir (daha fazla bilgi için [varlık türlerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types) bakın). `places` Listede isteği karşılayan bir veya daha fazla yerel varlık bulunur.
 
 Yerler restoranlar, oteller veya yerel işletmeler olabilir. [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entitypresentationinfo) alanı, yerel varlık türünü tanımlayan ipuçları içerir. Listede Place, LocalBusiness, Restaurant gibi ipuçları bulunur. Dizideki ardışık ipuçları varlık türünü daraltır. Olası türlerin listesi için bkz. [Varlık Türleri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#entity-types)
 
@@ -333,4 +333,4 @@ Deneyiminizin arama benzeri deneyim sınıfına girip girmediğinden emin değil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bing Entity Search API'si olan varlıkları aramaya başlamak için bir [Quickstart](../quickstarts/csharp.md) deneyin.
+* Bing Varlık Arama API'si olan varlıkları aramaya başlamak için [hızlı başlangıç](../quickstarts/csharp.md) yapmayı deneyin.

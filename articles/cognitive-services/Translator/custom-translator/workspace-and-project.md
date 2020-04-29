@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanı ve proje nedir? - Özel Çevirmen
+title: Çalışma alanı ve proje nedir? -Özel çevirici
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, bir çalışma alanı ve proje arasındaki farkların yanı sıra Özel Çevirmen hizmeti için proje kategorileri ve etiketleri açıklanacaktır.
+description: Bu makalede, bir çalışma alanı ile proje arasındaki farklar ile özel çevirmen hizmeti için Proje kategorileri ve Etiketler açıklanmaktadır.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,40 +11,40 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: d2f7903fa85c645357e46a753d1cb043e0893254
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219439"
 ---
-# <a name="what-is-a-custom-translator-workspace"></a>Özel Çevirmen çalışma alanı nedir?
+# <a name="what-is-a-custom-translator-workspace"></a>Özel çevirmen çalışma alanı nedir?
 
-Çalışma alanı, özel çeviri sisteminizi oluşturmak ve oluşturmak için bir çalışma alanıdır. Çalışma alanı birden çok proje, model ve belge içerebilir. Custom Translator'da yaptığınız tüm işler belirli bir çalışma alanının içindedir.
+Çalışma alanı, özel çeviri sisteminizi oluşturmaya ve oluşturmaya yönelik bir çalışma alanıdır. Bir çalışma alanı birden fazla proje, model ve belge içerebilir. Özel çeviricisinde yaptığınız tüm işler belirli bir çalışma alanının içindedir.
 
-Çalışma alanı sizin ve çalışma alanınıza davet ettiğiniz kişiler için özeldir. Davetsiz kişilerin çalışma alanınızın içeriğine erişimi yoktur. İstediğiniz kadar kişiyi çalışma alanınıza davet edebilir ve istediğiniz zaman bu kişileri değiştirebilir veya kaldırabilirsiniz. Ayrıca yeni bir çalışma alanı da oluşturabilirsiniz. Varsayılan olarak, bir çalışma alanı diğer çalışma alanlarınızın içinde bulunan herhangi bir proje veya belge içermez.
+Çalışma alanı sizin ve çalışma alanınıza davet ettiğiniz kişiler için özeldir. Davet edilmemiş kişilerin çalışma alanınızın içeriğine erişimi yok. Çalışma alanınıza istediğiniz kadar kişiyi davet edebilir ve bunların her zaman erişimini değiştirebilir veya kaldırabilirsiniz. Ayrıca, yeni bir çalışma alanı da oluşturabilirsiniz. Varsayılan olarak, bir çalışma alanı diğer çalışma alanlarınızın içindeki herhangi bir proje veya belge içermez.
 
-## <a name="what-is-a-custom-translator-project"></a>Özel Çevirmen projesi nedir?
+## <a name="what-is-a-custom-translator-project"></a>Özel çevirmen Projesi nedir?
 
-Proje, bir model, belge ve testler için bir paketleyicidir. Her proje, doğru dil çiftine sahip olan çalışma alanına yüklenen tüm belgeleri otomatik olarak içerir. Örneğin, hem İngilizce'den İspanyolca'ya hem de İspanyolca'dan İngilizce'ye bir projeniz varsa, her iki projeye de aynı belgeler eklenecektir. Her projenin, çeviriler için [V3 API'sini](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) sorgularken kullanılan bir CategoryID'si vardır. CategoryID, Özel Çevirmen ile oluşturulmuş özelleştirilmiş bir sistemden çeviri almak için kullanılan parametredir.
+Proje, bir model, belge ve test için bir sarmalayıcıdır. Her proje, doğru dil çiftine sahip olan bu çalışma alanına yüklenen tüm belgeleri otomatik olarak içerir. Örneğin, hem bir Ingilizce-Ispanyolca projesi hem de Ispanyolca ile Ingilizce proje varsa, aynı belgeler her iki projeye de dahil edilir. Her projenin, çevirileri için [v3 API 'si](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) sorgulanırken kullanılan bir KategoriNo vardır. CategoryID, özel çevirmenle oluşturulmuş özelleştirilmiş bir sistemden Çeviriler almak için kullanılır.
 
 ## <a name="project-categories"></a>Proje kategorileri
 
-Kategori, projeniz için etki alanını (terminoloji alanı ve kullanmak istediğiniz stil) tanımlar. Belgelerinizle en alakalı kategoriyi seçin. Bazı durumlarda, kategori seçiminiz Özel Çevirmenin davranışını doğrudan etkiler.
+Kategori, projeniz için, kullanmak istediğiniz terminolojinin ve stilin alanı olan etki alanını tanımlar. Belgeleriniz için en uygun kategoriyi seçin. Bazı durumlarda, kategori seçiminiz özel çeviricisinin davranışını doğrudan etkiler.
 
-İki ana çizgi modelimiz var. Onlar Genel ve Teknoloji vardır. **Teknoloji** kategorisi seçilirse, Teknoloji temel modelleri kullanılır. Diğer kategori seçimleri için Genel taban çizgisi modelleri kullanılır. Teknoloji temel modeli teknoloji etki alanında iyi yapar, ancak çeviri için kullanılan cümleler teknoloji etki alanına girmiyorsa, daha düşük kalite gösterir. Müşterilerin yalnızca cümleler yalnızca teknoloji etki alanı içinde tamamen yer alırsa, kategori Teknolojisi'ni seçmelerini öneririz.
+İki temel model kümesi vardır. Bunlar genel ve teknolojisidir. Kategori **teknolojisi** seçilirse teknoloji temel modelleri kullanılacaktır. Diğer tüm kategori seçimleri için genel taban çizgisi modelleri kullanılır. Teknoloji temel modeli teknoloji etki alanında iyi bir şekilde görünür, ancak çeviri için kullanılan cümleler teknoloji etki alanında yoksa daha düşük kalite gösterir. Müşterilerin kategori teknolojisini seçmesini, yalnızca cümleler teknoloji etki alanının içinde tamamen düşeceğini öneririz.
 
-Aynı çalışma alanında, farklı kategorilerde aynı dil çifti için projeler oluşturabilirsiniz. Custom Translator, aynı dil çifti ve kategorisine sahip yinelenen bir projenin oluşturulmasını engeller. Projenize etiket uygulamak, bu kısıtlamayı önlemenize olanak tanır. Projenize benzersiz bir etiket eklenmesi projectCATEGORYID'e yansıyacağı için, birden çok istemci için çeviri sistemleri oluşturmadığınız sürece etiketleri kullanmayın.
+Aynı çalışma alanında, farklı kategorilerde aynı dil çifti için projeler oluşturabilirsiniz. Özel çevirmen, aynı dil çifti ve kategorisiyle yinelenen bir proje oluşturulmasını engeller. Projenize bir etiket uygulamak, bu kısıtlamayı önlemenize olanak sağlar. Birden çok istemci için çeviri sistemleri oluşturmadığınız sürece etiketleri kullanmayın; projenize benzersiz bir etiket eklemek, KategoriNo projeleriniz içinde yansıtılcaktır.
 
 ## <a name="project-labels"></a>Proje etiketleri
 
-Özel Çevirmen, projenize bir proje etiketi atamanızı sağlar. Proje etiketi, aynı dil çifti ve kategorisine sahip birden çok projeyi birbirinden ayırır. En iyi uygulama olarak, gerekli olmadıkça proje etiketlerini kullanmaktan kaçının.
+Özel çevirici, projenize bir proje etiketi atamanıza izin verir. Proje etiketi, aynı dil çiftine ve kategoriye sahip birden fazla proje arasında ayrım yapar. En iyi uygulama olarak, gerekli olmadığı sürece proje etiketlerini kullanmaktan kaçının.
 
-Proje etiketi CategoryID'nin bir parçası olarak kullanılır. Proje etiketi ayarlanmamış sayılsa veya projeler arasında aynı şekilde ayarlanırsa, aynı kategoriye ve *farklı* dil çiftlerine sahip projeler aynı CategoryID'yi paylaşır. Bu yaklaşım avantajlıdır, çünkü sizin veya müşterinizin Metin Çevirmeni API'sini kullanırken her projeye özgü bir CategoryID endişesi duymadan diller arasında geçiş yapmasına olanak tanır.
+Proje etiketi CategoryID 'nin bir parçası olarak kullanılır. Proje etiketi bırakılır veya projeler genelinde aynı şekilde ayarlanırsa, aynı kategoriye ve *farklı* dil çiftlerine sahip projeler aynı kategorili olur. Bu yaklaşım, sizin veya müşterinizin, her proje için benzersiz olan bir KategoriNo hakkında endişelenmeden metin Çeviricisi API 'sini kullanırken diller arasında geçiş yapmasına olanak sağladığından avantajlıdır.
 
-Örneğin, Teknoloji alanında İngilizce'den Fransızca'ya ve Fransızca'dan İngilizce'ye çevirileri etkinleştirmek isteseydim,\> biri İngilizce -\> Fransızca, diğeri Fransızca - İngilizce olmak üzere iki proje oluştururdum. Her ikisi için de aynı kategoriyi (Teknoloji) belirtir ve proje etiketini boş bırakırım. Her iki proje için CategoryID eşleşir, bu nedenle CategoryID'mi değiştirmek zorunda kalmadan hem İngilizce hem de Fransızca çeviriler için API sorgulayabilirim.
+Örneğin, teknoloji etki alanındaki çevirileri Ingilizce 'den Fransızca 'ya ve Fransızca 'dan Ingilizce 'ye etkinleştirmek istiyorsam, iki proje oluştururdum: biri Ingilizce-\> Fransızca, diğeri de Fransızca-\> İngilizce içindir. Her ikisi için de aynı kategoriyi (teknoloji) belirtir ve proje etiketini boş bırakın. Her iki projenin CategoryID 'si de eşleşir, bu nedenle, CategoryID 'umu değiştirmek zorunda kalmadan hem Ingilizce hem de Fransızca çevirileri için API 'yi sorgulayabilir.
 
-Bir dil hizmeti sağlayıcısıysanız ve aynı kategoriyi ve dil çiftini koruyan farklı modellerle birden fazla müşteriye hizmet vermek istiyorsanız, müşteriler arasında ayrım yapmak için bir proje etiketi kullanmak akıllıca bir karar olacaktır.
+Bir dil hizmet sağlayıcısıysanız ve aynı kategori ve Dil çiftini koruyan farklı modellerle birden çok müşteriye hizmet vermek istiyorsanız, müşteriler arasında ayrım yapmak için bir proje etiketi kullanılması, bir karar veren bir karardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir çeviri modelinin verimli bir şekilde nasıl oluşturacağını bilmek için [Eğitim ve model](training-and-model.md) hakkında bilgi edinin.
+- [Eğitim ve model](training-and-model.md) hakkında bilgi edinmek için bkz. bir çeviri modelini verimli bir şekilde oluşturma.

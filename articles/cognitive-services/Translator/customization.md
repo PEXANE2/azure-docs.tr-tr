@@ -1,7 +1,7 @@
 ---
-title: Çeviri Özelleştirme - Çevirmen Metin API
+title: Çeviri özelleştirmesi-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: Tercih ettiğiniz terminoloji ve stili kullanarak kendi makine çeviri sisteminizi oluşturmak için Microsoft Translator Hub'ını kullanın.
+description: Tercih ettiğiniz terminolojiyi ve stili kullanarak kendi makine çevirisi sisteminizi oluşturmak için Microsoft Translator hub 'ını kullanın.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71257615"
 ---
-# <a name="customize-your-text-translations"></a>Metin çevirilerinizi özelleştirme
+# <a name="customize-your-text-translations"></a>Metin çevirilerinizi özelleştirin
 
-Microsoft Özel Çevirmen, kullanıcıların Çevirmen Metin API'sini (yalnızca sürüm 3) kullanarak metni çevirirken Microsoft Translator'ın gelişmiş sinir makinesi çevirisini özelleştirmelerine olanak tanıyan Microsoft Translator hizmetinin özelliğidir.
+Microsoft özel çevirmeni, Microsoft Translator hizmetinin, kullanıcıların Translator Metin Çevirisi API'si (yalnızca sürüm 3) kullanarak metin çevirirken Microsoft Translator 'ın gelişmiş sinir makine çevirisini özelleştirmesini sağlayan bir özelliktir.
 
-Bu özellik, [Bilişsel Hizmetler Konuşması](https://docs.microsoft.com/azure/cognitive-services/speech-service/)ile kullanıldığında konuşma çevirisini özelleştirmek için de kullanılabilir.
+Özelliği, bilişsel [Hizmetler konuşmayla](https://docs.microsoft.com/azure/cognitive-services/speech-service/)kullanıldığında konuşma çevirisini özelleştirmek için de kullanılabilir.
 
 ## <a name="custom-translator"></a>Özel Çevirmen
 
-Custom Translator ile, kendi işinizde ve endüstrinizde kullanılan terminolojiyi anlayan nöral çeviri sistemleri oluşturabilirsiniz. Özelleştirilmiş çeviri sistemi daha sonra varolan uygulamalara, iş akışlarına ve web sitelerine entegre olur.
+Özel çevirmenle, kendi iş ve sektöründe kullanılan terminolojiyi anlayan sinir çeviri sistemleri oluşturabilirsiniz. Özelleştirilmiş çeviri sistemi daha sonra mevcut uygulamalar, iş akışları ve Web siteleri ile tümleşir.
 
 ### <a name="how-does-it-work"></a>Nasıl çalışır?
 
-Etki alanına özel terminolojinizi ve stilinizi standart bir çeviri sisteminden daha iyi yansıtan bir çeviri sistemi oluşturmak için önceden çevrilmiş belgelerinizi (broşürler, web sayfaları, belgeler, vb.) kullanın. Kullanıcılar TMX, XLIFF, TXT, DOCX ve XLSX belgelerini yükleyebilir.  
+Daha önce çevrilmiş belgelerinizi (sızıntı, Web sayfaları, belgeler vb.) kullanarak, bir standart çeviri sisteminden daha iyi bir şekilde, etki alanına özgü terminolojiyi ve stilinizi yansıtan bir çeviri sistemi oluşturun. Kullanıcılar TMX, XLıFF, TXT, DOCX ve XLSX belgelerini karşıya yükleyebilir.  
 
-Sistem ayrıca belge düzeyinde paralel olan ancak henüz cümle düzeyinde hizalanmış olmayan verileri de kabul eder. Kullanıcılar birden çok dilde ancak ayrı belgelerde aynı içeriğin sürümlerine erişebiliyorsa, Özel Çevirmen cümleleri belgeler arasında otomatik olarak eşleştirebilir.  Sistem, çevirileri geliştirmek için paralel eğitim verilerini tamamlamak için her iki dilde veya her iki dilde de tek dilli verileri kullanabilir.
+Sistem ayrıca belge düzeyinde paralel olan ancak tümce düzeyinde henüz hizalanmayan verileri de kabul eder. Kullanıcılar birden çok dilde aynı içeriğin sürümlerine erişebiliyorsa, ancak ayrı belgeler özel çeviricisinde, belgelerde otomatik olarak tümceler eşleştirebilir.  Sistem Ayrıca, çevirileri geliştirmek üzere paralel eğitim verilerini tamamlamak için her iki dilde de monolingual verileri kullanabilir.
 
-Özelleştirilmiş sistem daha sonra kategori parametresini kullanarak Microsoft Translator Text API'ye düzenli bir çağrı ile kullanılabilir.
+Özelleştirilmiş sistem daha sonra Kategori parametresi kullanılarak Microsoft Translator Metin Çevirisi API'si düzenli bir çağrısıyla kullanılabilir.
 
-Uygun eğitim veritürü ve miktarı göz önüne alındığında, Özel Çevirmen kullanarak çeviri kalitesinde 5 ile 10 arasında kazanç veya daha fazla BLEU noktası beklemek nadir değildir.
+Uygun tür ve eğitim verisi miktarı verildiğinde, 5 ile 10 arasında kazanç beklenmez veya özel çevirici kullanarak çeviri kalitesine daha fazla BLEU noktası gelir.
 
-Mevcut verilere dayalı çeşitli özelleştirme düzeyleri hakkında daha fazla ayrıntı [Özel Çevirmen Kullanım Kılavuzu'nda](https://aka.ms/CustomTranslatorDocs)bulunabilir.
+Kullanılabilir verilere göre çeşitli özelleştirme düzeyleri hakkında daha fazla ayrıntı için [özel çevirmen kullanıcı kılavuzunda](https://aka.ms/CustomTranslatorDocs)bulabilirsiniz.
 
 
-## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
+## <a name="microsoft-translator-hub"></a>Microsoft Translator hub 'ı
 
 > [!NOTE]
-> Microsoft Translator Hub,17 Mayıs 2019'da kullanımdan kaldırılacaktır. [Önemli geçiş bilgilerini ve tarihlerini görüntüleyin.](https://www.microsoft.com/translator/business/hub/)  
+> Eski Microsoft Translator hub 'ı 17 Mayıs 2019 tarihinde kullanımdan kaldırılacaktır. [Önemli geçiş bilgilerini ve tarihlerini görüntüleyin](https://www.microsoft.com/translator/business/hub/).  
 
-## <a name="custom-translator-versus-hub"></a>Özel Çevirmen ve Hub
+## <a name="custom-translator-versus-hub"></a>Özel Translator ile hub karşılaştırması
 
 |   | **Hub** | **Özel Çevirmen**|
 |:-----|:----:|:----:|
-|Özelleştirme Özelliği Durumu   | Genel Kullanılabilirlik  | Genel Kullanılabilirlik |
-| Metin API sürümü  | Yalnızca V2   | Yalnızca V3 |
-| SMT özelleştirme | Evet   | Hayır |
-| NMT özelleştirme | Hayır    | Evet |
-| Yeni birleştirilmiş Konuşma hizmetleri özelleştirme | Hayır    | Evet |
-| [İz Yok](https://www.aka.ms/notrace) | Evet  | Evet |
+|Özelleştirme özelliği durumu   | Genel kullanılabilirlik  | Genel kullanılabilirlik |
+| Metin API 'SI sürümü  | Yalnızca v2   | Yalnızca v3 |
+| SMT özelleştirmesi | Yes   | Hayır |
+| NMT özelleştirmesi | Hayır    | Yes |
+| Yeni Birleşik konuşma Hizmetleri özelleştirmesi | Hayır    | Yes |
+| [Izleme yok](https://www.aka.ms/notrace) | Yes  | Yes |
 
-## <a name="collaborative-translations-framework"></a>İşbirlikçi Çeviriler Çerçevesi
+## <a name="collaborative-translations-framework"></a>İşbirliğine dayalı Çeviriler çerçevesi
 
 > [!NOTE]
-> 1 Şubat 2018 itibariyle, AddTranslation() ve AddTranslationArray() artık Translator Text API V2.0 ile kullanılamaz. Bu yöntemler başarısız olacak ve hiçbir şey yazılacaktır. Çevirmen Metin API V3.0 bu yöntemleri desteklemez.
+> 1 Şubat 2018 itibariyle, AddTranslation () ve AddTranslationArray () artık Translator Metin Çevirisi API'si V 2.0 ile kullanılamaz. Bu yöntemler başarısız olur ve hiçbir şey yazılmaz. Translator Metin Çevirisi API'si V 3.0 bu yöntemleri desteklemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel Çevirmen kullanarak özelleştirilmiş bir dil sistemi ayarlama](https://aka.ms/CustomTranslatorDocs)
+> [Özelleştirilmiş bir dil sistemini özel çevirici kullanarak ayarlama](https://aka.ms/CustomTranslatorDocs)

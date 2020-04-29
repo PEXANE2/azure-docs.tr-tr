@@ -1,7 +1,7 @@
 ---
-title: Bing Web Arama API'sine analitik ekleme
+title: Bing Web Araması API'si analiz ekleyin
 titleSuffix: Azure Cognitive Services
-description: Bing İstatistikleri, Bing Resim Arama API'sine analitik sağlar. Analitik, çağrı hacmini, üst sorgu dizelerini, coğrafi dağılımı ve daha fazlasını içerir.
+description: Bing Istatistikleri Bing Resim Arama API'si analiz sağlar. Analiz, çağrı hacmi, en çok sorgu dizeleri, coğrafi dağıtım ve daha fazlasını içerir.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,93 +12,93 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 5d1b0b19523eb37aa83aa59b24114be9f76ffa55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68882758"
 ---
-# <a name="add-analytics-to-the-bing-search-apis"></a>Bing Arama API'lerine analitik ekleme
+# <a name="add-analytics-to-the-bing-search-apis"></a>Bing Arama API'leri analiz ekleyin
 
-Bing İstatistikleri, Bing Arama API'leri için analiz sağlar. Bu analizler çağrı hacmini, üst sorgu dizelerini, coğrafi dağılımı ve daha fazlasını içerir. Azure kaynağınızda gezinerek ve Bing İstatistiklerini Etkinleştir'i tıklatarak [Azure portalında](https://ms.portal.azure.com) Bing **İstatistikleri'ni**etkinleştirebilirsiniz.
+Bing Istatistikleri Bing Arama API'leri için analiz sağlar. Bu analizler çağrı hacmi, en çok sorgu dizeleri, coğrafi dağıtım ve daha fazlasını içerir. [Azure Portal](https://ms.portal.azure.com) Bing istatistiklerini Azure kaynağına giderek ve **Bing istatistiklerini etkinleştir**' e tıklayarak etkinleştirebilirsiniz.
 
 > [!IMPORTANT]
-> * Bing İstatistikleri ücretsiz deneme abonelikleri veya ücretsiz `F0` fiyatlandırma katmanındaki kaynaklarla kullanılamaz.
-> * Bing İstatistikleri panosu nda bulunan hiçbir veriyi üçüncü taraflara dağıtım uygulamaları oluşturmak için kullanamazsınız.
-> * Bing İstatistiklerini etkinleştirmek abonelik oranınızı biraz artırır. Ayrıntılar için [fiyatlandırmaya](https://aka.ms/bingstatisticspricing) bakın.
+> * Bing Istatistikleri ücretsiz deneme abonelikleri veya ücretsiz `F0` fiyatlandırma katmanındaki kaynaklar ile kullanılamaz.
+> * Üçüncü taraflara dağıtmak üzere uygulamalar oluşturmak için Bing Istatistik panosu aracılığıyla mevcut herhangi bir veriyi kullanamazsınız.
+> * Bing Istatistiklerini etkinleştirmek, aboneliğinizin hızını biraz artırır. Ayrıntılar için bkz. [fiyatlandırma](https://aka.ms/bingstatisticspricing) .
 
 
-Aşağıdaki resim, her Bing Arama API bitiş noktası için kullanılabilir analizi gösterir.
+Aşağıdaki görüntüde Bing Arama her bir API uç noktası için kullanılabilir analiz gösterilmektedir.
 
-![Uç nokta destek matrisine göre dağılım](./media/bing-statistics/bing-statistics-matrix.png)
+![Uç nokta desteği matrisine göre dağıtım](./media/bing-statistics/bing-statistics-matrix.png)
 
-## <a name="access-your-analytics"></a>Analitiğinize erişin
+## <a name="access-your-analytics"></a>Analizize erişin
 
-Bing, analiz verilerini her 24 saatte bir günceller ve [analiz panosundan](https://bingapistatistics.com)erişebileceğiniz 13 aya kadar geçmişi korur. Bing İstatistikleri'ne kaydolmak için kullandığınız Microsoft hesabını (MSA) kullandığınızdan emin olun.
+Bing verileri her 24 saatte bir analiz eder ve [analiz panosundan](https://bingapistatistics.com)erişebileceğiniz en fazla 13 aya kadar geçmiş tutar. Bing STATISTICS 'e kaydolmak için kullandığınız Microsoft hesabı (MSA) ile oturum açtığınızdan emin olun.
 
 > [!NOTE]  
-> * Ölçümlerin gösterge panelinde yüzeye çıkması 24 saat kadar sürebilir. Pano, verilerin en son güncelleştirilen tarih ve saati gösterir.  
-> * Ölçümler, Bing İstatistikleri Eklentisini etkinleştirdiğiniz andan itibaren kullanılabilir.
+> * Ölçümlerin panoda yüzeyi 24 saate kadar sürebilir. Panoda verilerin son güncelleştirilme tarihi ve saati gösterilir.  
+> * Ölçümler, Bing Istatistik eklentisini etkinleştirdiğiniz zamandan itibaren kullanılabilir.
 
 ## <a name="filter-the-data"></a>Verileri filtreleme
 
-Varsayılan olarak, grafikler ve grafikler erişebildiğiniz tüm ölçümleri ve verileri görüntüler. İlgilendiğiniz kaynakları, pazarları, uç noktaları ve raporlama dönemini seçerek grafiklerde ve grafiklerde gösterilen verileri filtreleyebilirsiniz. Aşağıdaki filtreleri değiştirebilirsiniz:
+Varsayılan olarak, grafikler ve grafikler, erişiminiz olan tüm ölçümleri ve verileri görüntüler. İlgilendiğiniz kaynakları, pazarlar, uç noktaları ve raporlama dönemini seçerek grafiklerde ve grafiklerde gösterilen verilere filtre uygulayabilirsiniz. Aşağıdaki filtreleri değiştirebilirsiniz:
 
-- **Kaynak Kimliği**: Azure aboneliğinizi tanımlayan benzersiz kaynak kimliği. Birden fazla Bing Arama API katmanına abone yseniz, liste birden çok kişi içerir. Varsayılan olarak, tüm kaynaklar seçilir.  
+- **Kaynak kimliği**: Azure aboneliğinizi tanımlayan BENZERSIZ kaynak kimliği. Birden fazla Bing Arama API katmanına abone olduğunuzda liste birden fazla kimlik içerir. Varsayılan olarak tüm kaynaklar seçilidir.  
   
-- **Piyasalar**: Sonuçların geldiği piyasalardır. Örneğin, en-us (İngilizce, Amerika Birleşik Devletleri). Varsayılan olarak, tüm pazarlar seçilir. Aramada bir pazar belirtmiyorsa ve Bing kullanıcının pazarını belirleyemiyorsa Bing'in `en-WW` kullandığı pazardır.  
+- **Pazarlar**: sonuçların geldiği pazarlar. Örneğin, en-US (Ingilizce, Birleşik Devletler). Varsayılan olarak tüm pazarlar seçilidir. Bu `en-WW` Pazar, çağrı bir pazar belirlememe ve Bing kullanıcının pazarını belirleyemezse Bing 'in kullandığı pazardır.  
   
-- **Uç Noktalar**: Bing Arama API uç noktaları. Liste, ücretli aboneliğiniz olan tüm uç noktaları içerir. Varsayılan olarak, tüm uç noktalar seçilir.  
+- **Uç noktalar**: Bing arama API uç noktaları. Liste, ücretli aboneliğinizin bulunduğu tüm uç noktaları içerir. Varsayılan olarak, tüm uç noktalar seçilidir.  
 
-- **Zaman Dilimi**: Raporlama dönemi. Şunları belirtebilirsiniz:
-  - **Tümü**: 13 aya kadar veri içerir  
-  - **Son 24 saat**: Son 24 saate ait analizleri içerir  
-  - **Önceki hafta**: Önceki yedi güne ait analizleri içerir  
-  - **Önceki ay**: Önceki 30 güne ait analizleri içerir  
-  - **Özel tarih aralığı**: Varsa, belirtilen tarih aralığından analiziçerir  
+- **Zaman dilimi**: raporlama dönemi. Şunları belirtebilirsiniz:
+  - **Tümü**: en fazla 13 ay veri içerir  
+  - Son **24 saat**: son 24 saat içindeki analizi içerir  
+  - **Son hafta**: önceki yedi gündeki analizi içerir  
+  - **Geçen ay**: önceki 30 günden analizler içerir  
+  - **Özel bir tarih aralığı**: varsa, belirtilen tarih aralığından analiz içerir  
 
 ## <a name="charts-and-graphs"></a>Grafikler ve grafikler
 
-Pano, seçili bitiş noktası için kullanılabilir ölçümlerin grafiklerini ve grafiklerini gösterir. Tüm ölçümler tüm uç noktalar için kullanılamaz. Her uç noktaiçin grafikler ve grafikler statiktir (gösterilecek grafikleri ve grafikleri seçemeyebilirsiniz). Pano, yalnızca veri bulunan grafikleri ve grafikleri gösterir.
+Panoda seçili uç nokta için kullanılabilir ölçümlerin grafikleri ve grafikleri gösterilmektedir. Tüm ölçümler tüm uç noktalar için kullanılamaz. Her uç noktanın grafikleri ve grafikleri statiktir (görüntülenecek grafikleri ve grafikleri seçemezsiniz). Pano yalnızca verilerin bulunduğu grafikleri ve grafikleri gösterir.
 
 <!--
 For example, if you don't include the User-Agent header in your calls, the dashboard will not include device-related graphs.
 -->
 
-Aşağıda olası ölçümler ve bitiş noktası kısıtlamaları yer alıyor.
+Aşağıdakiler olası ölçümler ve uç nokta kısıtlamalardır.
 
-- **Çağrı Hacmi**: Raporlama döneminde yapılan arama ların sayısını gösterir. Raporlama dönemi bir gün içinse, grafik saat başına yapılan arama sayısını gösterir. Aksi takdirde, grafik raporlama döneminin günlük yapılan arama sayısını gösterir.  
+- **Arama birimi**: raporlama döneminde yapılan çağrıların sayısını gösterir. Raporlama dönemi bir gün için ise grafik, saat başına yapılan çağrı sayısını gösterir. Aksi halde grafik, raporlama döneminin günlük yaptığı çağrı sayısını gösterir.  
   
   > [!NOTE]
-  > Arama hacmi, genellikle yalnızca başarılı çağrıları içeren faturalama raporlarından farklı olabilir.
+  > Çağrı hacmi, genellikle yalnızca başarılı çağrıları içeren faturalandırma raporlarından farklı olabilir.
 
-- **En İyi Sorgular**: Raporlama döneminde ki en üst sorguları ve her sorgunun oluşum sayısını gösterir. Gösterilen sorgu sayısını yapılandırabilirsiniz. Örneğin, en iyi 25, 50 veya 75 sorguyu gösterebilirsiniz. En İyi Sorgular aşağıdaki uç noktalar için kullanılamaz:  
+- **Popüler sorgular**: raporlama dönemi boyunca her bir sorgunun en iyi sorgularını ve oluşum sayısını gösterir. Gösterilen sorguların sayısını yapılandırabilirsiniz. Örneğin, en üstteki 25, 50 veya 75 sorgularını gösterebilirsiniz. Üst sorgular aşağıdaki uç noktalar için kullanılamaz:  
 
-  - /images/trending
-  - /görüntüler/ayrıntılar
-  - /images/visualsearch
-  - /videolar/trendler
-  - /videolar/ayrıntılar
-  - /haberler
-  - /haberler/trendkonular
+  - /images/trbitiriliyor
+  - /images/details
+  - /images/VisualSearch
+  - /Videos/trbitiriliyor
+  - /Videos/details
+  - /News
+  - /News/trendingkonular
   - /öneriler  
   
   > [!NOTE]  
-  > E-postalar, telefon numaraları, SSN gibi gizli bilgileri kaldırmak için bazı sorgu terimleri bastırılabilir.
+  > E-posta, telefon numarası, SSN vb. gibi gizli bilgileri kaldırmak için bazı sorgu terimleri bastırılabilir.
 
-- **Coğrafi Dağılım**: Arama sonuçlarının kaynağı olan pazarlar. Örneğin, `en-us` (İngilizce, Amerika Birleşik Devletleri). Bing, `mkt` belirtilmişse piyasayı belirlemek için sorgu parametresini kullanır. Aksi takdirde Bing, piyasayı belirlemek için arayanın IP adresi gibi sinyalleri kullanır.
+- **Coğrafi dağıtım**: arama sonuçlarının gerçekleştiği pazarlar. Örneğin, `en-us` (ingilizce, Birleşik Devletler). Bing, belirtilmişse `mkt` pazaryı belirlemede sorgu parametresini kullanır. Aksi halde, Bing, pazarı belirlemede arayanın IP adresi gibi sinyalleri kullanır.
 
-- **Yanıt Kodu Dağılımı**: Raporlama dönemindeki tüm çağrıların HTTP durum kodları.
+- **Yanıt kodu dağıtımı**: raporlama dönemi boyunca tüm çağrıların http durum kodları.
 
-- **Arama Kaynağı Dağılımı**: Kullanıcılar tarafından kullanılan tarayıcı türleri. Örneğin, Microsoft Edge, Chrome, Safari ve FireFox. Tarayıcı dışından yapılan aramalar (botlar, Postacı veya konsol uygulamasından kıvrılma gibi) Kitaplıklar altında gruplandırılır. Kaynağı, isteğin Kullanıcı Temsilcisi üstbilgi değeri kullanılarak belirlenir. İstek Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing kaynağı diğer sinyallerden elde etmeye çalışır.  
+- **Çağrı kaynağı dağıtımı**: kullanıcılar tarafından kullanılan tarayıcı türleri. Örneğin, Microsoft Edge, Chrome, Safari ve FireFox. Tarayıcı dışından yapılan çağrılar (botlar, Postman veya bir konsol uygulamasından kıvrımlı kullanılması) Kitaplıklar altında gruplandırılır. Kaynak, isteğin Kullanıcı Aracısı üstbilgi değeri kullanılarak belirlenir. İstek, Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing kaynağı diğer sinyallerden türemeye çalışır.  
 
-- **Güvenli Arama Dağılımı**: Güvenli arama değerlerinin dağılımı. Örneğin, kapalı, orta veya katı. Sorgu `safeSearch` parametresi belirtilmişse değeri içerir. Aksi takdirde, Bing değeri orta ya da orta varsayılan olarak alır.  
+- **Güvenli arama dağıtımı**: Güvenli Arama değerlerinin dağılımı. Örneğin kapalı, orta veya katı. Belirtilmişse `safeSearch` , sorgu parametresi değerini içerir. Aksi halde, Bing değeri orta olarak belirler.  
 
-- **İstenen DağıtımA Verilen Yanıtlar**: `responseFilter` Sorgu parametresinde istediğiniz Web Arama API yanıtları.  
+- **Istenen dağıtım yanıtları**: `responseFilter` sorgu parametresinde istediğiniz Web araması API yanıtı.  
 
-- **İade Edilen Yanıtlar Dağıtım**: Web Arama API'sinin yanıtta döndürüldettiği yanıtlar.
+- **Döndürülen yanıt dağıtımı**: YANıTTA Web araması API 'nin döndürdüğü yanıtlar.
 
-- **Yanıt Sunucu Dağılımı**: API isteklerinize hizmet veren uygulama sunucusu. Olası değerler Bing.com (masaüstü ve dizüstü bilgisayar aygıtlarından sunulan trafik için) ve Bing.com mobil (mobil cihazlardan sunulan trafik için) vardır. Sunucu, isteğin Kullanıcı Temsilcisi üstbilgi değeri kullanılarak belirlenir. İstek Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing sunucuyu diğer sinyallerden türetmeye çalışır.
+- **Yanıt sunucusu dağıtımı**: API isteklerinizi sunan uygulama sunucusu. Olası değerler Bing.com (masaüstü ve dizüstü cihazlarından sunulan trafik için) ve Bing.com-Mobile (mobil cihazlardan sunulan trafik için). Sunucu, isteğin Kullanıcı Aracısı üstbilgi değeri kullanılarak belirlenir. İstek, Kullanıcı Aracısı üstbilgisini içermiyorsa, Bing sunucuyu diğer sinyallerden türemeye çalışır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

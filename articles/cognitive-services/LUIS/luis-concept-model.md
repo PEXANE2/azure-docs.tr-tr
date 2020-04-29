@@ -1,7 +1,7 @@
 ---
-title: Modellerle tasarım - LUIS
+title: Modellerle tasarım-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Dil anlama modelleri çeşitli sağlar. Bazı modeller birden fazla şekilde kullanılabilir.
+description: Dil anlama çeşitli model türleri sağlar. Bazı modeller birden fazla şekilde kullanılabilir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,149 +12,149 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220000"
 ---
-# <a name="design-with-intent-and-entity-models"></a>Amaç ve varlık modelleri ile tasarım 
+# <a name="design-with-intent-and-entity-models"></a>Amaç ve varlık modelleriyle tasarım 
 
-Dil anlama modelleri çeşitli sağlar. Bazı modeller birden fazla şekilde kullanılabilir. 
+Dil anlama çeşitli model türleri sağlar. Bazı modeller birden fazla şekilde kullanılabilir. 
 
-## <a name="v3-authoring-uses-machine-teaching"></a>V3 Yazma makine öğretimkullanır
+## <a name="v3-authoring-uses-machine-teaching"></a>V3 yazma, makine öğretimi kullanıyor
 
-LUIS insanların kolayca bir makineye kavramları öğretmek için izin verir. Makine daha sonra akıllı uygulamalara güç sağlamak için kullanılabilecek modeller (sınıflandırıcılar ve çıkarıcılar gibi kavramların işlevsel yaklaşımları) oluşturabilir. LUIS makine öğrenimi ile desteklenirken, makine öğrenimini anlamak için gerekli değildir. Bunun yerine, makine öğretmenleri kavramın olumlu ve olumsuz örneklerini göstererek ve bir kavramın diğer ilgili kavramlar kullanılarak nasıl modelleneceğini açıklayarak kavramları LUIS'e iletirler. Öğretmenler ayrıca öngörü hatalarını belirleyerek ve düzelterek LUIS'in modelini etkileşimli olarak geliştirebilirler. 
+LUO, kişilerin bir makine için kavramları kolayca öğretebilmesini sağlar. Makine daha sonra, akıllı uygulamaları desteklemek için kullanılabilecek modeller (sınıflandırıcılar ve ayıklayıcıları gibi işlevsel farklılıklar) oluşturabilir. Bu, makine öğrenimi tarafından desteklenmektedir, makine öğrenimini anlamak için gerekli değildir. Bunun yerine, makine öğretmenler kavramların olumlu ve olumsuz örneklerini göstererek ve bir kavramın diğer ilgili kavramları kullanarak nasıl modellenmesi gerektiğini açıklayarak, kavramları halde ile iletişim kurar. Öğretmenler Ayrıca, tahmin hatalarını tanımlayarak ve düzelterek LUSıS 'nin modelini etkileşimli bir şekilde geliştirir. 
 
-## <a name="v3-authoring-model-decomposition"></a>V3 Yazma modeli ayrıştırma
+## <a name="v3-authoring-model-decomposition"></a>V3 yazma modeli ayrıştırma
 
-LUIS, V3 yazma API'leri ile _model ayrışmasını_ destekler ve modeli daha küçük parçalara ayırılır. Bu, çeşitli parçaların nasıl oluşturulduklarına ve tahmin edildiğine güvenle modellerinizi oluşturmanıza olanak tanır.
+LUıS, v3 yazma API 'Leri ile model _ayrıştırma_ 'yı destekler ve modeli daha küçük parçalara ayırır. Bu, çeşitli parçaların oluşturulması ve tahmin edilebileceği şekilde modellerinizi güvenle oluşturmanıza olanak sağlar.
 
-Model ayrıştırma aşağıdaki parçalara sahiptir:
+Model ayrıştırma aşağıdaki bölümlere sahiptir:
 
-* [Niyet](#intents-classify-utterances)
-    * özellikleri tarafından sağlanan [tanımlayıcılar](#descriptors-are-features)
-* [makine de öğrenilen varlıklar](#machine-learned-entities)
-    * [alt bileşenler](#entity-subcomponents-help-extract-data) (ayrıca makineden öğrenilen varlıklar)
-        * özellikleri tarafından sağlanan [tanımlayıcılar](#descriptors-are-features) 
-        * düzenli ifadeler ve listeler gibi makine de öğrenilmemiş varlıklar tarafından sağlanan [kısıtlamalar](#constraints-are-text-rules)
+* [hedefleri](#intents-classify-utterances)
+    * Özellikler tarafından sunulan [tanımlayıcılar](#descriptors-are-features)
+* [makine tarafından öğrenilen varlıklar](#machine-learned-entities)
+    * alt [Bileşenler](#entity-subcomponents-help-extract-data) (ayrıca makine tarafından öğrenilen varlıklar)
+        * Özellikler tarafından sunulan [tanımlayıcılar](#descriptors-are-features) 
+        * normal ifadeler ve listeler gibi makine tarafından öğrenilen varlıklar tarafından sağlanmış [kısıtlamalar](#constraints-are-text-rules)
 
-## <a name="v2-authoring-models"></a>V2 Yazma modelleri
+## <a name="v2-authoring-models"></a>V2 yazma modelleri
 
-LUIS, V2 yazma API'leri ile bileşik varlıkları destekler. Bu benzer model ayrıştırma sağlar, ancak V3 modeli ayrışması ile aynı değildir. Önerilen model mimarisi, V3 yazma API'lerinde ayrışmayı modellemektir. 
+LUıS, v2 yazma API 'Leri ile bileşik varlıkları destekler. Bu, benzer model ayrıştırma sağlar ancak v3 model ayrıştırma ile aynı değildir. Önerilen model mimarisi, v3 yazma API 'Lerinde model ayrıştırma 'ye taşınmadır. 
 
-## <a name="intents-classify-utterances"></a>Niyetler, söyleyiyi sınıflandırmak
+## <a name="intents-classify-utterances"></a>Amaç sınıflandır
 
-Bir niyet, luis'e niyeti öğretmek için örnek söyleyişleri sınıfa eder. Bir niyet içindeki örnek söz, söyleyiş olumlu örnekleri olarak kullanılır. Bu aynı söyleyiş diğer tüm niyetlerde olumsuz örnek olarak kullanılır.
+Amaç hakkında daha fazla bilgi almak için bir amaç sınıflandırmalar örnek olarak KULLANıLıR. Bir amaç içindeki örnek söyleyler, utterance 'in pozitif örnekleri olarak kullanılır. Bu aynı söyleyler, diğer tüm amaçlar için negatif örnekler olarak da kullanılır.
 
-Bir kullanıcının kitap sipariş etme niyetini belirlemesi gereken bir uygulamayı ve müşterinin gönderim adresine ihtiyaç duyduğu bir uygulamayı düşünün. Bu uygulamanın iki `OrderBook` amacı `ShippingLocation`vardır: ve .
+Bir kullanıcının, bir kitabı ve müşterinin sevkiyat adresine ihtiyacı olan bir uygulamayı sıralamasını belirlemesi gereken bir uygulamayı düşünün. Bu uygulamanın iki amacı vardır: `OrderBook` ve `ShippingLocation`.
 
-Aşağıdaki söyleyiş `OrderBook` niyet için olumlu bir **örnek** ve ve `ShippingLocation` `None` niyetler için olumsuz bir **örnektir:** 
+Aşağıdaki söylenişi, `OrderBook` amaç için **olumlu bir örnektir** ve `ShippingLocation` ve `None` amaçları için **negatif bir örnektir** : 
 
 `Buy the top-rated book on bot architecture.`
 
-İyi tasarlanmış niyetlerin sonucu, onların örnek söyleyişleriyle, yüksek niyet tahminidir. 
+İyi tasarlanmış amaçlarda, örnek dıklarıyla birlikte yüksek bir amaç tahmininin sonucu. 
 
 ## <a name="entities-extract-data"></a>Varlıklar veri ayıklama
 
-Bir varlık, sözcükten ayıklanması istediğiniz bir veri birimini temsil eder. 
+Bir varlık, söyleyden ayıklanmasını istediğiniz bir veri birimini temsil eder. 
 
-### <a name="machine-learned-entities"></a>Makine de öğrenilen varlıklar
+### <a name="machine-learned-entities"></a>Makine tarafından öğrenilen varlıklar
 
-Makineden öğrenilen varlık, makineden öğrenilen varlıklar olan alt bileşenler içeren üst düzey bir varlıktır. 
+Makine tarafından öğrenilen bir varlık, alt bileşenleri içeren ve makine tarafından öğrenilen varlıklar olan üst düzey bir varlıktır. 
 
-**Makinede öğrenilen bir varlık kullanın:**
+**Makine tarafından öğrenilen bir varlık kullanın**:
 
-* alt bileşenler istemci uygulaması tarafından gerekli olduğunda
-* makine öğrenme algoritmasının varlıkları ayrıştırması
+* istemci uygulaması için alt bileşenler gerektiğinde
+* makine öğrenimi algoritmasının varlıkları parçalara ayırma konusunda yardımcı olmak için
 
-Her alt bileşen şunları yapabilir:
+Her alt bileşen şunları içerebilir:
 
-* alt bileşenler
+* alt bileşeni
 * kısıtlamalar (normal ifade varlığı veya liste varlığı)
-* tanımlayıcılar (ifade listesi gibi özellikler) 
+* tanımlayıcılar (tümcecik listesi gibi özellikler) 
 
-Makinede öğrenilen bir varlık örneği, uçak bileti siparişidir. Kavramsal olarak bu tarih, saat, koltuk miktarı, birinci sınıf veya koç, menşe konumu, hedef konumu ve yemek seçimi gibi koltuk türü gibi birçok küçük veri birimleri ile tek bir işlemdir.
+Makine tarafından öğrenilen varlık bir örnek, düzlem bileti için bir sıradır. Kavramsal olarak, tarih, saat, bilgisayar lisansı sayısı, ilk sınıf veya Coach, kaynak konumu, hedef konumu ve yemek seçimi gibi çok daha küçük veri birimlerine sahip tek bir işlemdir.
 
 
-### <a name="entity-subcomponents-help-extract-data"></a>Varlık alt bileşenleri veri ayıklama yardımcı olur
+### <a name="entity-subcomponents-help-extract-data"></a>Varlık alt bileşenleri veri ayıklamasına yardımcı olur
 
-Alt bileşen, makineden öğrenilen bir üst varlık içinde makinede öğrenilen bir alt varlıktır. 
+Alt bileşen, makine tarafından öğrenilen üst varlık içinde makine tarafından öğrenilen bir alt varlıktır. 
 
-**Alt bileşeni şu şekilde kullanın:**
+Alt **bileşeni kullanarak**şunları yapın:
 
-* makinede öğrenilen varlığın (ana varlık) parçalarını ayrıştırın.
+* makine tarafından öğrenilen varlığın (üst varlık) parçalarını parçalara ayırın.
 
-Aşağıdaki, tüm bu ayrı veri parçalarıyla makineden öğrenilen bir varlığı temsil eder:
+Aşağıda, her farklı veri parçasına sahip makine tarafından öğrenilen bir varlık temsil etmektedir:
 
-* TravelOrder (makineden öğrenilen varlık)
+* Seyahat sıralaması (makine tarafından öğrenilen varlık)
     * DateTime (önceden oluşturulmuş datetimeV2)
-    * Konum (makinede öğrenilen varlık)
-        * Origin (rol gibi `from`bağlam içinde bulundu)
-        * Hedef (rol gibi `to`bağlam içinde bulunan)
-    * Oturma (makine de öğrenilen varlık)
+    * Konum (makine tarafından öğrenilen varlık)
+        * Kaynak (rol, gibi bağlamla bulunur `from`)
+        * Hedef (rol, gibi bağlamla bulunur `to`)
+    * Sepat (makine tarafından öğrenilen varlık)
         * Miktar (önceden oluşturulmuş sayı)
-        * Kalite (ifade listesinin tanımlayıcısı ile makine öğrenilen varlık)
-    * Yemekler (gıda seçenekleri olarak liste varlık kısıtlaması ile makine öğrenilen varlık)
+        * Kalite (tümcecik listesi tanımlayıcısı ile makine tarafından öğrenilen varlık)
+    * Meals (makine tarafından öğrenilen varlık, liste varlığının kısıtlaması, yiyecek seçenekleri olarak)
 
-Bu verilerin bazıları, örneğin kaynak konumu ve hedef konumu, belki de bu tür ifadeler `from` ile, `to`söyleyiş bağlamında öğrenilmelidir. Verilerin diğer bölümleri tam dize eşleşmeleri`Vegan`( ) veya önceden oluşturulmuş `Seattle` varlıklar `Cairo`(geographyV2 ve) ile ayıklanabilir. 
+Kaynak konumu ve hedef konum gibi bu verilerden bazılarının, büyük olasılıkla `from` ve `to`gibi bir ifade ile öğrenilmesi gerekir. Verilerin diğer bölümleri, tam dize eşleşmeleri (`Vegan`) veya önceden oluşturulmuş varlıklar (geographyV2/ `Seattle` ve `Cairo`) ile ayıklanamaz. 
 
-Verilerin hangi modelleri seçtiğinize göre nasıl eşleştirilip ayıklandığınızı ve bunları nasıl yapılandırdığınızı tasarlarsınız.
+Seçtiğiniz modeller ve bunları nasıl yapılandırdığınız ile verilerin nasıl eşleştiğini ve ayıklanacağını tasarlayacaksınız.
 
 ### <a name="constraints-are-text-rules"></a>Kısıtlamalar metin kurallarıdır
 
-Kısıtlama, normal ifade varlığı veya liste varlığı gibi makinede öğrenilmemiş bir varlık tarafından sağlanan metin eşleştirme kuralıdır. Kısıtlama, öngörüyü sınırlamak ve istemci uygulaması tarafından gereken varlık çözümlünü sağlamak için tahmin zamanında uygulanır. Alt bileşeni yazarken bu kuralları tanımlarsınız. 
+Kısıtlama, normal ifade varlığı veya bir liste varlığı gibi makine tarafından öğrenilen bir varlık tarafından sunulan metin eşleştirme kuralıdır. Kısıtlama, tahmine göre sınırlamak ve istemci uygulaması için gereken varlık çözümünü sağlamak için tahmin sırasında uygulanır. Alt bileşeni yazarken bu kuralları tanımlarsınız. 
 
-**Bir kısıtlama kullanın:**
-* ayıklamak için tam metin bildiğinizde.
+**Kısıtlama kullanın**:
+* Ayıklanacak metnin tam olarak bilindiğinizde.
 
 Kısıtlamalar şunlardır:
 
-* [düzenli ifade](reference-entity-regular-expression.md) varlıkları
-* [liste](reference-entity-list.md) varlıkları 
+* [normal ifade](reference-entity-regular-expression.md) varlıkları
+* varlıkları [Listele](reference-entity-list.md) 
 * [önceden oluşturulmuş](luis-reference-prebuilt-entities.md) varlıklar
 
-Uçak bileti örneğine devam eden havaalanı kodları, tam metin eşleşmeleri için liste varlığında olabilir. 
+Uçak Bileti örneğine devam ettiğinizde, Havaalanı kodları tam metin eşleşmeleri için bir liste varlığı içinde olabilir. 
 
-Bir havaalanı listesi için, Seattle için liste `Seattle` girişi şehir adıdır ve Seattle ile eşanlamlı olan çevre kasaba ve şehirlerle birlikte Seattle havaalanı kodunu içerir:
+Havaalanı listesi için, Seattle için liste girişi, şehir adı `Seattle` ve Seattle için eş anlamlılar, kapsayan kasaların ve şehirlerin yanı sıra Seattle için Havaalanı kodu içerir:
 
-|`Seattle`Varlık eşanlamlılarını listele|
+|`Seattle`Varlık eşanlamlılarını Listele|
 |--|
 |`Sea`|
 |`seatac`|
 |`Bellevue`|
 
-Havaalanı kodları için yalnızca 3 harf kodlarını tanımak istiyorsanız, kısıtlama olarak normal bir ifade kullanın. 
+Havaalanı kodları için yalnızca 3 harfli kodları tanımak istiyorsanız, kısıtlama olarak bir normal ifade kullanın. 
 
 `/^[A-Z]{3}$/`
 
-## <a name="intents-versus-entities"></a>Varlıklara karşı niyetler
+## <a name="intents-versus-entities"></a>Amaçlar ve varlıklar
 
-Varlıklar, söyleyişten çıkarılan veri parçaları iken, niyet _tüm_ söyleyişin istenen sonucudur. Genellikle niyetler istemci uygulamasının gerçekleştirmesi gereken eylemlere bağlıdır ve varlıklar bu eylemi gerçekleştirmek için gereken bilgilerdir. Programlama açısından bakıldığında, bir amaç bir yöntem çağrısını tetikler ve varlıklar bu yöntem çağrısıiçin parametre olarak kullanılır.
+Bir amaç, varlıkların, utterden çıkarılan veri parçaları olduğu sürece _tam_ olarak istenen sonucu elde edilir. Genellikle amaçları, istemci uygulamanın gerçekleştirmesi gereken eylemlere ve varlıkların bu eylemi gerçekleştirmek için gereken bilgilere bağlıdır. Bir programlama perspektifinden bir amaç bir yöntem çağrısını tetikleyecektir ve varlıklar bu yöntem çağrısında parametreler olarak kullanılır.
 
-Bu söyleyiş bir amacı _olmalıdır_ ve varlıklar _olabilir:_
+Bu söylenişi _bir amaç içermeli ve_ varlıkları _olabilir:_
 
 `Buy an airline ticket from Seattle to Cairo`
 
-Bu söyleyiş tek bir amacı vardır:
+Bu söylenişi tek bir amaç içerir:
 
-* Uçak bileti satın alma
+* Düzlem bileti satın alma
 
-Bu _söyleyiş_ birkaç tüzel kişilikolabilir:
+Bu söylenişi birçok varlık _içerebilir_ :
 
-* Seattle (menşeli) ve Kahire'nin konumları (hedef)
-* Tek bir biletin miktarı
+* Seattle (Origin) ve Cairo (hedef) konumları
+* Tek bir bilet miktarı
 
 ## <a name="descriptors-are-features"></a>Tanımlayıcılar özelliklerdir
 
-Tanımlayıcı, ifade listeleri ve varlıkları da dahil olmak üzere, eğitim zamanında bir modele uygulanan bir özelliktir. 
+Bir tanımlayıcı, bir modele, tümce listeleri ve varlıklar dahil olmak üzere eğitim zamanında uygulanan bir özelliktir. 
 
-**İstediğince bir tanımlayıcı kullanın:**
+**Şunları yapmak istediğinizde bir tanımlayıcı kullanın**:
 
-* tanımlayıcı tarafından tanımlanan sözcük ve tümceciklerin önemini artırmak
-* LUIS tanımlayıcı için tavsiye etmek için yeni metin veya ifadeler tavsiye var
-* eğitim verilerindeki bir hatayı düzeltme
+* tanımlayıcı tarafından tanımlanan sözcüklerin ve tümceciklerin önemini artırın
+* LUSıS 'in tanımlayıcı için önermeye yönelik yeni metin veya tümcecikleri olması önerilir
+* Eğitim verilerinde bir hatayı çözme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Niyetleri](luis-concept-intent.md) ve [varlıkları](luis-concept-entity-types.md)anlayın. 
+* [Amaçları](luis-concept-intent.md) ve [varlıkları](luis-concept-entity-types.md)anlayın. 

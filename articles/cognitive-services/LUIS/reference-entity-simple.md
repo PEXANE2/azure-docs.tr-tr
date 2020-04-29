@@ -1,7 +1,7 @@
 ---
-title: Basit varlık türü - LUIS
+title: Basit varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Basit bir varlık, makinetarafından öğrenilen bağlamdan tek bir kavramı açıklar. Sonuçları iyileştirmek için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
+description: Basit bir varlık, makine tarafından öğrenilen bağlamdaki tek bir kavramı açıklar. Sonuçları geliştirmek için basit bir varlık kullanırken bir tümcecik listesi ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74894754"
 ---
 # <a name="simple-entity"></a>Basit varlık
 
-Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilen genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken [bir ifade listesi](luis-concept-feature.md) ekleyin.
+Basit bir varlık, tek bir kavramı açıklayan ve makine tarafından öğrenilen bağlamdan öğrenilmiş genel bir varlıktır. Basit varlıklar genellikle şirket adları, ürün adları veya diğer ad kategorileri gibi adlar olduğundan, kullanılan adların sinyalini artırmak için basit bir varlık kullanırken bir [tümcecik listesi](luis-concept-feature.md) ekleyin.
 
-**Varlık iyi bir uyum zaman:**
+**Varlık, şu durumlarda iyi bir uyum:**
 
-* Veriler sürekli biçimlendirilmemiş, ancak aynı şeyi gösterir.
+* Veriler sürekli olarak biçimlendirilmemiştir ancak aynı şeyi gösterir.
 
-![basit varlık](./media/luis-concept-entities/simple-entity.png)
+![Basit varlık](./media/luis-concept-entities/simple-entity.png)
 
 ## <a name="example-json"></a>Örnek JSON
 
 `Bob Jones wants 3 meatball pho`
 
-Önceki söyleyiş, `Bob Jones` basit `Customer` bir varlık olarak etiketlenir.
+Önceki deymede `Bob Jones` basit `Customer` bir varlık olarak etiketlendi.
 
-Bitiş noktasından döndürülen veriler varlık adını, söyleyişten keşfedilen metni, keşfedilen metnin konumunu ve skoru içerir:
+Uç noktadan döndürülen veriler varlık adını, utterance 'teki bulunan metni, bulunan metnin konumunu ve puanı içerir:
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmini uç nokta yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
 ```JSON
 "entities": [
@@ -49,9 +49,9 @@ Bitiş noktasından döndürülen veriler varlık adını, söyleyişten keşfed
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmini uç nokta yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Bu JSON sorgu `verbose=false` dizesinde ayarlanırsa:
+Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 
 ```json
 "entities": {
@@ -90,9 +90,9 @@ This is the JSON if `verbose=true` is set in the query string:
 
 |Veri nesnesi|Varlık adı|Değer|
 |--|--|--|
-|Basit Varlık|`Customer`|`bob jones`|
+|Basit varlık|`Customer`|`bob jones`|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Desen sözdizimini öğrenin](reference-pattern-syntax.md)
+> [Model sözdizimini öğrenin](reference-pattern-syntax.md)

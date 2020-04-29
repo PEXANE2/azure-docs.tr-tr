@@ -1,7 +1,7 @@
 ---
-title: Yinelemeli uygulama tasarımı - LUIS
+title: Yinelemeli uygulama tasarımı-LUSıS
 titleSuffix: Azure Cognitive Services
-description: LUIS, model değişiklikleri, sözcük örnekleri, yayımlama ve bitiş noktası sorgularından veri toplama yinelemeli bir döngüde en iyi yitirmeyle öğrenir.
+description: Lu, bir model değişikliği, söylenişi örnekleri, yayımlama ve uç nokta sorgularından veri toplamayı en iyi şekilde öğreniyor.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,142 +12,142 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: diberry
 ms.openlocfilehash: c1c1b2df301634a435b610c395a1a58aa5573da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74422595"
 ---
-# <a name="iterative-app-design-for-luis"></a>LUIS için yinelemeli uygulama tasarımı
+# <a name="iterative-app-design-for-luis"></a>LUSıS için yinelemeli uygulama tasarımı
 
-Bir Dil Anlama (LUIS) uygulaması öğrenir ve yineleme ile en verimli şekilde gerçekleştirir. Tipik bir yineleme döngüsü aşağıda veda edebilirsiniz:
+Language Understanding (LUSıS) uygulaması, yineleme ile en verimli şekilde öğrenir ve çalışır. İşte tipik bir yineleme çevrimi:
 
-* Yeni sürüm oluşturma
-* LUIS uygulama şemasını edin. Buna aşağıdakiler dahildir:
-    * Örnek sözlerle niyet
+* Yeni sürüm oluştur
+* LUSıS uygulama şemasını düzenleyin. Buna aşağıdakiler dahildir:
+    * Örnek söyleyle amaçları
     * Varlıklar
     * Özellikler
-* Tren, test ve yayımlama
-    * Aktif öğrenme için tahmin bitiş noktasında test
+* Eğitme, test ve yayımlama
+    * Etkin öğrenme için tahmin uç noktasında test edin
 * Uç nokta sorgularından veri toplama
 
 ![Yazma döngüsü](./media/luis-concept-app-iteration/iteration.png)
 
-## <a name="building-a-luis-schema"></a>Luis şema oluşturma
+## <a name="building-a-luis-schema"></a>LUSıS şeması oluşturma
 
-Bir uygulamanın şeması, kullanıcının ne istediğini _(niyet_ veya _niyet)_ ve niyetin hangi bölümlerinin yanıtı belirlemeye yardımcı olmak için kullanılan ayrıntıları _(varlıklar_olarak adlandırılır) sağladığını tanımlar. 
+Bir uygulamanın şeması, kullanıcının ne sorabileceğini ( _Amaç_ veya _Amaç_ ) ve amacının hangi bölümlerinin yanıt belirlemek için kullanılan ayrıntıları ( _varlıklar_olarak adlandırılır) sağlar. 
 
-Uygulama şeması, ilgili sözcük ve tümcecikleri belirlemek ve tipik sözcük sıralamasını belirlemek için uygulama etki adlarına özgü olmalıdır. 
+Uygulama şemasının, ilgili kelimeleri ve tümcecikleri ve tipik sözcük sıralamasını belirlemesi için uygulama etki alanlarına özel olması gerekir. 
 
-Örnek konuşmalar, uygulamanın çalışma zamanında beklediği tanınan konuşma veya metin gibi kullanıcı girişlerini temsil eder. 
+Örnek söyleyme, uygulamanın çalışma zamanında beklediği tanınan konuşma veya metin gibi kullanıcı girişlerini temsil eder. 
 
-Şema niyet gerektirir ve varlıklar _olmalıdır._ 
+Şema için _Amaç gerekir ve varlıklar olmalıdır_ . 
 
-### <a name="example-schema-of-intents"></a>Niyet örneği şeması
+### <a name="example-schema-of-intents"></a>Örnek bir amaç şeması
 
-En yaygın şema, niyetle düzenlenmiş bir entrikadır. Bu tür şema, kullanıcının niyetini belirlemek için LUIS'i kullanır. 
+En yaygın şema, amaçlar ile düzenlenmiş bir amaç şemadır. Bu tür bir şema, bir kullanıcının amaç olduğunu belirlemede HALSıS kullanır. 
 
-LUIS kullanıcının niyetini belirlemesine yardımcı olacaksa, niyet şema türünde varlıklar olabilir. Örneğin, bir sevkiyat varlığı (bir niyetin tanımlayıcısı olarak) LUIS'in bir sevkiyat niyetini belirlemesine yardımcı olur. 
+Amaç şeması türü, LUSıS 'in kullanıcının amacını belirlemesine yardımcı olması halinde varlıklara sahip olabilir. Örneğin, bir gönderim varlığı (bir amaca yönelik bir tanımlayıcı olarak), LUıN bir nakliye amacını belirlemesine yardımcı olur. 
 
 ### <a name="example-schema-of-entities"></a>Varlıkların örnek şeması
 
-Bir varlık şeması, kullanıcı sözcüklerinden elde edilen veriler olan varlıklara odaklanır. Örneğin, bir kullanıcı "Üç pizza sipariş etmek istiyorum" derse. Çıkarılacak iki varlık vardır: _üç_ ve _pizza._ Bunlar, bir emir vermek olan niyeti yerine getirmek için kullanılır. 
+Bir varlık şeması, Kullanıcı utslarından ayıklanan veriler olan varlıklara odaklanır. Örneğin, bir Kullanıcı söyledim, "üç Pizzas sıralamak istiyorum." Ayıklanacak iki varlık vardır: _üç_ ve _Pizzas_. Bunlar, bir sipariş oluşturmak için kullanılan amaç yerine getirmek için kullanılır. 
 
-Bir varlık şeması için, söyleyiş niyeti istemci uygulaması için daha az önemlidir. 
+Bir varlık şeması için, söylenişi 'in amacı, istemci uygulaması için daha az önemlidir. 
 
-Bir varlık şemasını düzenlemenin yaygın bir yöntemi, tüm örnek sözcüklerini **Yok** amacına eklemektir. 
+Bir varlık şemasının düzenlenmesinin yaygın bir yöntemi, tüm örnek söyleylerini **none** amacına eklemektir. 
 
 ### <a name="example-of-a-mixed-schema"></a>Karışık şema örneği
 
-En güçlü ve olgun şema, çok çeşitli varlıklara ve özelliklere sahip bir niyet şemasıdır. Bu şema bir niyet veya varlık şeması olarak başlayabilir ve istemci uygulaması bu bilgi parçaları na ihtiyaç duyduğundan, her ikisinin de kavramlarını içerecek şekilde büyüyebilir. 
+En güçlü ve olgun şeması, eksiksiz bir varlık ve özellik aralığına sahip bir amaç şemadır. Bu şema, bir amaç veya varlık şeması olarak başlayabilir ve istemci uygulaması bu bilgi parçasına ihtiyaç duydukça her ikisinin kavramlarını dahil etmek için büyüyebilir. 
 
-## <a name="add-example-utterances-to-intents"></a>Niyetlere örnek söz ekleme
+## <a name="add-example-utterances-to-intents"></a>Amaçlar için örnek ekleme
 
-LUIS her **niyet**birkaç örnek deyişler ihtiyacı var. Örnek, sözcüğün hangi amaç için olduğunu belirleyebilmek için kelime seçimi ve sözcük sırasının yeterli varyasyonuna ihtiyaç duyar. 
+LUO 'NUN her bir **Amaç**için birkaç örnek elde etmek gerekir. Örnek söyleyler, hangi Amaçın hangi amaca yönelik olduğunu belirleyebilmek için yeterli sözcük seçimi ve sözcük sırası çeşitlemesine gerek duyar. 
 
 > [!CAUTION]
-> Örnek sözlerini toplu olarak eklemeyin. 15 ila 30 özel ve değişen örneklerle başlayın. 
+> Toplu olarak örnek eklemeyin. 15 ila 30 ' a ve değişen örneklerle başlayın. 
 
-Her örnek söyleyiş, tasarlanmış ve **varlıklar**ile etiketlenmiş **ayıklamak için gerekli veri** olması gerekir. 
+Her örnek söylenişi 'in, **varlıklar**ile tasarlanıp etiketlenmesi **için gerekli verilerin** olması gerekir. 
 
 |Anahtar öğesi|Amaç|
 |--|--|
-|Amaç|Kullanıcı sözcüklerini tek bir niyet veya eylem olarak **sınıflandırın.** Örnekler `BookFlight` şunlardır ve `GetWeather`.|
-|Varlık|Niyeti tamamlamak için gerekli olan söyleyiş verilerini **ayıklayın.** Örnekler arasında seyahat tarihi ve saati ve konumu yer almaktadır.|
+|Amaç|Kullanıcı araslarını tek bir amaç veya eylem halinde **sınıflandırın** . Örnekler ve `BookFlight` `GetWeather`içerir.|
+|Varlık|Bir amaç için gereken materance 'tan veri **ayıklayın** . Örneğin, seyahat tarihi ve saati ve konumunu içerir.|
 
-Bir LUIS uygulaması, bir uygulamanın etki alanıyla alakalı olmayan sözcükleri yok saymak için, söyleyişi **Yok** amacına atayarak tasarlanabilir.
+Bir LUSıS uygulaması, bir uygulamanın etki alanıyla ilgili olmayan, **yok** etme amacına atanarak, bir uygulamanın etki alanıyla ilgisi olmayan utbotları yok sayacak şekilde tasarlanabilir.
 
-## <a name="test-and-train-your-app"></a>Uygulamanızı test edin ve eğitin
+## <a name="test-and-train-your-app"></a>Uygulamanızı test edin ve eğitme
 
-Her bir amaç için 15 ila 30 farklı örnek söz verdikten sonra, gerekli varlıklar etiketlendikten sonra, LUIS uygulamanızı test edip [eğitmeniz](luis-how-to-train.md) gerekir. 
+Her bir amaca göre 15 ila 30 farklı örneğe sahip olduktan sonra, etiketli gerekli varlıklar sayesinde LUSıS uygulamanızı test etmeniz ve [eğmeniz](luis-how-to-train.md) gerekir. 
 
-## <a name="publish-to-a-prediction-endpoint"></a>Tahmin bitiş noktasına yayımlama
+## <a name="publish-to-a-prediction-endpoint"></a>Tahmin uç noktasında Yayımlama
 
-LUIS uygulaması, liste [tahmini bitiş noktası bölgelerinde](luis-reference-regions.md)sizin için kullanılabilir olacak şekilde yayımlanmalıdır.
+LUO uygulamasının, liste [Tahmini uç nokta bölgelerinde](luis-reference-regions.md)kullanılabilir olması için yayımlanması gerekir.
 
-## <a name="test-your-published-app"></a>Yayınlanan uygulamanızı test edin
+## <a name="test-your-published-app"></a>Yayınlanan uygulamanızı test etme
 
-Yayınlanan LUIS uygulamanızı HTTPS tahmin bitiş noktasından test edebilirsiniz. Tahmin bitiş noktasından test LUIS [gözden geçirilmesi](luis-how-to-review-endpoint-utterances.md)için düşük güven ile herhangi bir söyleyiş seçmenize olanak sağlar.  
+Yayınlanan LUSıS uygulamanızı HTTPS tahmin uç noktasından test edebilirsiniz. Tahmin uç noktasından test etmek, LUSıS 'nin [Gözden geçirme](luis-how-to-review-endpoint-utterances.md)için düşük güvenilirliğe sahip herhangi bir noktayı seçmesine olanak sağlar.  
 
-## <a name="create-a-new-version-for-each-cycle"></a>Her döngü için yeni bir sürüm oluşturma
+## <a name="create-a-new-version-for-each-cycle"></a>Her bir döngüyle ilgili yeni bir sürüm oluşturun
 
-Her sürüm, LUIS uygulamasızamanında bir anlık görüntüdür. Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Eski bir sürüme geri dönmek, önceki bir duruma olan niyet ve söyleyişlerini kaldırmaya çalışmaktan daha kolaydır.
+Her sürüm, LUSıS uygulamasının zaman içindeki bir anlık görüntüdür. Uygulamada değişiklik yapmadan önce yeni bir sürüm oluşturun. Daha eski bir sürüme geri dönmek daha kolaydır. Bu, önceki bir duruma göre amaçları ve kullanımları kaldırmaya çalışır.
 
-Sürüm kimliği karakterlerden, basamaklardan veya '.' dan oluşur ve 10 karakterden uzun olamaz.
+Sürüm KIMLIĞI, karakterler, rakamlar veya '. ' karakterlerinden oluşur ve 10 karakterden uzun olamaz.
 
-İlk sürüm (0.1) varsayılan etkin sürümüdür. 
+İlk sürüm (0,1) varsayılan etkin sürümdür. 
 
-### <a name="begin-by-cloning-an-existing-version"></a>Varolan bir sürümü klonlayarak başlayın
+### <a name="begin-by-cloning-an-existing-version"></a>Mevcut bir sürümü klonlayarak başlayın
 
-Her yeni sürüm için başlangıç noktası olarak kullanmak üzere varolan bir sürümü klonla. Bir sürümü klonladıktan sonra, yeni sürüm **etkin** sürüm olur. 
+Her yeni sürüm için başlangıç noktası olarak kullanmak üzere var olan bir sürümü kopyalayın. Bir sürümü klonladıktan sonra, yeni sürüm **etkin** sürüm olur. 
 
-### <a name="publishing-slots"></a>Yayın yuvaları
+### <a name="publishing-slots"></a>Yayımlama Yuvaları
 
-Sahne ve/veya üretim yuvalarında yayınlayabilirsiniz. Her yuvanın farklı bir sürümü veya aynı sürümü olabilir. Bu, botlar veya diğer LUIS arama uygulamaları için kullanılabilen üretime yayımlanmadan önce değişiklikleri doğrulamak için yararlıdır. 
+Aşama ve/veya üretim yuvalarında yayımlayabilirsiniz. Her yuva farklı bir sürüme veya aynı sürüme sahip olabilir. Bu, robotların veya başka bir LUıN uygulama çağıran uygulamalar tarafından kullanılabilen üretime yayımlamadan önce değişiklikleri doğrulamak için yararlıdır. 
 
-Eğitimli sürümler LUIS uygulamanızın [bitiş noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. Luis uygulama bitiş noktanızda kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Aşamaaşama** ve **Üretim'de**yayınlayabilir ve size uygulamanın bitiş noktasında bulunan iki versiyonunu verebilirsiniz. Uygulamanın daha fazla sürümünün bir bitiş noktasında kullanılabilir olması gerekiyorsa, sürümü dışa aktarmalı ve yeni bir uygulamaya yeniden aktarmalısınız. Yeni uygulamanın farklı bir uygulama kimliği var.
+Eğitilen sürümler, LUSıS uygulamanızın [uç noktasında](luis-glossary.md#endpoint)otomatik olarak kullanılamaz. LUSıS uygulama uç noktanıza kullanılabilmesi için bir sürümü [yayımlamanız](luis-how-to-publish-app.md) veya yeniden yayımlamanız gerekir. **Hazırlama** ve **üretime**yayınlayabilirsiniz ve bu sayede, uç noktada uygulamanın iki sürümünü kullanabilirsiniz. Bir uç noktada uygulamanın daha fazla sürümünün kullanılabilir olması gerekiyorsa, sürümü dışarı aktarıp yeni bir uygulamaya yeniden içeri aktarmanız gerekir. Yeni uygulamanın farklı bir uygulama KIMLIĞI vardır.
 
-### <a name="import-and-export-a-version"></a>Bir sürümü alma ve dışa aktarma
+### <a name="import-and-export-a-version"></a>Bir sürümü içeri ve dışarı aktarma
 
-Bir sürüm uygulama düzeyinde içe aktarılabilir. Bu sürüm etkin sürüm olur ve uygulama `versionId` dosyasının özelliğinde sürüm kimliğini kullanır. Sürüm düzeyinde varolan bir uygulamaya da içe aktarabilirsiniz. Yeni sürüm etkin sürüm olur. 
+Bir sürüm, uygulama düzeyinde içeri aktarılabilir. Bu sürüm etkin sürüm olur ve uygulama dosyasının `versionId` ÖZELLIĞINDEKI sürüm kimliğini kullanır. Ayrıca, sürüm düzeyinde mevcut bir uygulamaya de aktarabilirsiniz. Yeni sürüm etkin sürüm olur. 
 
-Bir sürüm uygulama veya sürüm düzeyinde de dışa aktarılabilir. Tek fark, uygulama düzeyinde dışa aktarılan sürümün şu anda etkin sürüm olduğu, sürüm düzeyinde ise **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışa aktarmak için herhangi bir sürümü seçebiliyor olmasıdır. 
+Bir sürüm, uygulama veya sürüm düzeyinde de aktarılabilir. Tek fark, uygulama düzeyinde dışarı aktarılmış sürümün sürüm düzeyinde şu anda etkin olan sürümüdür, **[Ayarlar](luis-how-to-manage-versions.md)** sayfasında dışarı aktarılacak herhangi bir sürümü seçebilirsiniz. 
 
-Dışa aktarılan dosya **şunları** içermez:
+İçe **aktarılmış dosya şunları** içermez:
 
-* Makineden öğrenilen bilgiler, çünkü uygulama alındıktan sonra yeniden eğitilir
-* Katılımcı bilgileri
+* Makine öğrenilmiş bilgiler, çünkü uygulama alındıktan sonra geri alınır
+* Katkıda bulunan bilgileri
 
-LUIS uygulama şemanızı yedeklemek için [LUIS portalından](https://www.luis.ai/applications)bir sürüm dışa aktarın.
+LUSıS uygulama şemanızı yedeklemek için, bir sürümü [lusıs portalından](https://www.luis.ai/applications)dışarı aktarın.
 
-## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Katılımcı değişikliklerini sürümler ve katkıda bulunanlarla yönetme
+## <a name="manage-contributor-changes-with-versions-and-contributors"></a>Sürümler ve katkıda bulunanlar ile katkıda bulunan değişiklikleri yönetin
 
-LUIS, Azure kaynak düzeyinde izinler sağlayarak bir uygulamaya katkıda bulunanlar kavramını kullanır. Hedeflenen işbirliği sağlamak için bu kavramı sürümle birleştirin. 
+LUSıS, Azure Kaynak düzeyi izinleri sunarak bir uygulamaya katkıda bulunanlar kavramını kullanır. Hedeflenen işbirliği sağlamak için bu kavramı sürümü oluşturma ile birleştirin. 
 
-Uygulamanızdaki katılımcı değişikliklerini yönetmek için aşağıdaki teknikleri kullanın.
+Uygulamanıza katkıda bulunan değişiklikleri yönetmek için aşağıdaki teknikleri kullanın.
 
 ### <a name="manage-multiple-versions-inside-the-same-app"></a>Aynı uygulama içinde birden çok sürümü yönetme
 
-Her yazar için bir temel sürümden [klonlama](luis-how-to-manage-versions.md#clone-a-version) ile başlayın. 
+Her yazar için bir temel sürümden [kopyalamaya](luis-how-to-manage-versions.md#clone-a-version) başlayın. 
 
-Her yazar uygulamanın kendi sürümünde değişiklik yapar. Yazar modelden memnun kaldığında, yeni sürümleri JSON dosyalarına dışa aktarın.  
+Her yazar uygulamanın kendi sürümünde değişiklik yapar. Yazar modelle karşılanmıyorsa, yeni sürümleri JSON dosyalarına dışarı aktarın.  
 
-Dışa aktarılan uygulamalar, .json veya .lu dosyaları, değişikliklerle karşılaştırılabilir. Yeni sürümün tek bir dosyasını oluşturmak için dosyaları birleştirin. Yeni `versionId` birleştirilmiş sürümü belirtmek için özelliği değiştirin. Bu sürümü orijinal uygulamaya aktarın. 
+Aktarılmış uygulamalar,. JSON veya. lu dosyaları, değişiklikler için karşılaştırılabilir. Yeni sürümden tek bir dosya oluşturmak için dosyaları birleştirin. `versionId` Özelliği yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürümü özgün uygulamaya aktarın. 
 
-Bu yöntem, bir etkin sürümü, bir aşama sürümü ve bir yayımlanmış sürümü sağlar. Etkin sürümün sonuçlarını [etkileşimli test bölmesinde](luis-interactive-test.md)yayımlanmış bir sürümle (aşama veya üretim) karşılaştırabilirsiniz.
+Bu yöntem, bir etkin sürüme, bir aşama sürümüne ve bir yayımlanmış sürüme sahip etmenize olanak tanır. Etkin sürüm ile ilgili sonuçları, [etkileşimli test bölmesindeki](luis-interactive-test.md)yayımlanmış bir sürümle (aşama veya üretim) karşılaştırabilirsiniz.
 
-### <a name="manage-multiple-versions-as-apps"></a>Uygulama olarak birden çok sürümü yönetme
+### <a name="manage-multiple-versions-as-apps"></a>Birden çok sürümü uygulama olarak yönetme
 
-Temel sürümü [dışa](luis-how-to-manage-versions.md#export-version) aktarın. Her yazar sürümü içeri yedirir. Uygulamayı içeri yediren kişi sürümün sahibidir. Uygulamayı değiştirmeleri bittiğinde, sürümü dışa aktarın. 
+Temel sürümü [dışarı aktarın](luis-how-to-manage-versions.md#export-version) . Her yazar sürümü içeri aktarır. Uygulamayı içeri aktaran kişi, sürümün sahibidir. Uygulamayı değiştirme bittiğinde sürümü dışarı aktarın. 
 
-Dışa aktarılan uygulamalar, değişiklikler için temel dışa aktarma yla karşılaştırılabilen JSON biçimli dosyalardır. Yeni sürümün tek bir JSON dosyası oluşturmak için dosyaları birleştirin. Yeni birleştirilmiş sürümü belirtmek için JSON'daki **versionId** özelliğini değiştirin. Bu sürümü orijinal uygulamaya aktarın.
+Dışarı aktarılmış uygulamalar, değişiklikler için temel dışarı aktarmaya kıyasla JSON biçimli dosyalardır. Yeni sürümden tek bir JSON dosyası oluşturmak için dosyaları birleştirin. JSON içindeki **VersionId** özelliğini yeni birleştirilmiş sürümü işaret etmek üzere değiştirin. Bu sürümü özgün uygulamaya aktarın.
 
-[Ortak çalışanlardan](luis-how-to-collaborate.md)katkı yazma hakkında daha fazla bilgi edinin.
+[Ortak çalışanlarla](luis-how-to-collaborate.md)ilgili katkıları yazma hakkında daha fazla bilgi edinin.
 
-## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Yeni yinelemeli döngüye başlamak için uç nokta söyleyişlerini gözden geçirin
+## <a name="review-endpoint-utterances-to-begin-the-new-iterative-cycle"></a>Yeni yinelemeli döngüyü başlatmak için uç nokta utslerini gözden geçirin
 
-Bir yineleme döngüsü ile bitirdiğinizde, işlemi yineleyebilirsiniz. Luis düşük güven ile işaretlenmiş [tahmin uç nokta söyleyerek gözden geçirerek](luis-how-to-review-endpoint-utterances.md) başlayın. Hem doğru öngörülen niyet ve doğru ve tam varlık ayıklanmış için bu söyleyiyi kontrol edin. Değişiklikleri gözden geçirip kabul ettikten sonra, inceleme listesi boş olmalıdır.  
+Bir yineleme döngüsüyle işiniz bittiğinde, işlemi tekrarlayabilirsiniz. [İnceleme tahmini uç noktası utterations](luis-how-to-review-endpoint-utterances.md) lu, düşük güvenilirlikle işaretlendi. Bu söyleyeni, hem doğru tahmini amaç hem de doğru ve tamamen ayıklanan varlık için denetleyin. Değişiklikleri gözden geçirdikten ve kabul ettikten sonra, gözden geçirme listesinin boş olması gerekir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İşbirliği](luis-concept-keys.md)yle ilgili kavramları öğrenin.
+[İşbirliği](luis-concept-keys.md)hakkında kavramları öğrenin.

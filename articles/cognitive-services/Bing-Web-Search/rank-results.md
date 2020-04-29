@@ -1,7 +1,7 @@
 ---
-title: Arama sonuçlarını görüntülemek için sıralamaları kullanma - Bing Web Arama API
+title: Arama sonuçlarını göstermek için randama kullanma-Bing Web Araması API'si
 titleSuffix: Azure Cognitive Services
-description: Bing Web Arama API'sinden arama sonuçlarını görüntülemek için sıralamayı nasıl kullanacağınızı öğrenin.
+description: Bing Web Araması API'si arama sonuçlarını göstermek için derecelendirmenin nasıl kullanılacağını öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,29 +12,29 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390130"
 ---
-# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Bing Web Arama API sonuçlarını görüntülemek için sıralama nasıl kullanılır?  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Bing Web Araması API'si sonuçlarını göstermek için derecelendirme kullanma  
 
-Her arama yanıtı, arama sonuçlarını nasıl görüntülemeniz gerektiğini belirten bir [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Sıralama yanıt grupları, geleneksel bir arama sonuçları sayfası için ana satır içeriğine ve kenar çubuğu içeriğine göre sonuçlar doğurur. Sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemezseniz, ana hat içeriğinin kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir.  
+Her arama yanıtı, arama sonuçlarının nasıl görüntüleneceğini belirten bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) yanıtı içerir. Sıralama yanıtı, geleneksel bir arama sonuçları sayfası için ana hat içeriğine ve kenar çubuğu içeriğine göre sonuçları gruplandırır. Sonuçları geleneksel bir ana çizgi ve kenar çubuğu biçiminde görüntülemedikçe, ana hat içeriğini kenar çubuğu içeriğinden daha yüksek görünürlük sağlamanız gerekir.  
 
-Her grup içinde (ana hat veya kenar çubuğu), [Öğeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin görünmesi gereken sırayı tanımlar. Her öğe, bir yanıt içinde sonucu tanımlamak için aşağıdaki iki yolu sağlar.  
+Her grup içinde (ana hat veya kenar çubuğu), [öğeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) dizisi içeriğin gösterilmesi gereken sırayı tanımlar. Her öğe, yanıt içindeki sonucu belirlemek için aşağıdaki iki yöntemi sağlar.  
 
--   `answerType`ve `resultIndex` — `answerType` Alan yanıtı (örneğin, Web sayfası veya `resultIndex` Haberler) tanımlar ve yanıt içinde bir sonucu tanımlar (örneğin, bir haber makalesi). Dizin sıfır tabanlıdır.  
+-   `answerType`ve `resultIndex` — `answerType` alan, yanıtı (örneğin, Web sayfası veya haberleri) tanımlar ve `resultIndex` yanıt içinde bir sonuç tanımlar (örneğin, bir haber makalesi). Dizin sıfır tabanlıdır.  
 
--   `value`— `value` Alan, yanıt içinde bir yanıtın veya sonucun kimliğiyle eşleşen bir kimlik içerir. Yanıt veya sonuçlar kimliği içerir, ancak her ikisini birden içermez.  
+-   `value`— `value` Alan, yanıtın kimliği veya Yanıt içindeki BIR sonuç kimliğiyle eşleşen bir kimlik içerir. Yanıt ya da sonuçlar KIMLIĞI içeriyor ancak her ikisini de içermemelidir.  
 
-Sıralama kimliğini yalnızca bir yanıtın kimliğiyle veya sonuçlarından biriyle eşleştirmeniz gerektiğinden, kimliği kullanmak daha kolaydır. Yanıt nesnesi `id` bir alan içeriyorsa, tüm yanıt sonuçlarını birlikte görüntüleyin. Örneğin, nesne `News` alanı içeriyorsa, `id` tüm haber makalelerini birlikte görüntüleyin. `News` Nesne alanı içermiyorsa, `id` her haber makalesi `id` bir alan içerir ve sıralama yanıtı haber makalelerini diğer yanıtların sonuçlarıyla karıştırır.  
+Yalnızca bir yanıtın KIMLIĞI veya sonuçlarından biri ile derecelendirme KIMLIĞINI eşleştirmek gerektiğinden, KIMLIĞI kullanmak daha basittir. Bir yanıt nesnesi bir `id` alan içeriyorsa, tüm yanıtın sonuçlarını birlikte görüntüleyin. Örneğin, `News` nesnesi `id` alanı içeriyorsa, tüm haber makalelerini birlikte görüntüleyin. Nesne alanını içermiyorsa, her haber makalesi bir `id` alan içerir ve derecelendirme yanıtı, haber makalelerini diğer yanıtların sonuçlarıyla karıştırır. `id` `News`  
 
-Kullanarak `answerType` ve `resultIndex` biraz daha karmaşıktır. Görüntülenecek `answerType` sonuçları içeren yanıtı tanımlamak için kullanırsınız. Ardından, sonucu `resultIndex` görüntülemek için yanıtın sonuçlarını dizine dizine ekleyebilirsiniz. (Değer `answerType` [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıt sonuçlarını birlikte görüntülemeniz gerekiyorsa, sıralama yanıt öğesi `resultIndex` alanı içermez.  
+`answerType` Ve `resultIndex` kullanımı biraz daha karmaşıktır. Görüntülenecek sonuçları `answerType` içeren yanıtı tanımlamak için kullanırsınız. Bundan sonra, görüntülenecek `resultIndex` sonucu elde etmek için yanıtın sonuçlarını kullanarak dizin oluşturabilirsiniz. ( `answerType` Değer, [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) nesnesindeki alanın adıdır.) Tüm yanıtın sonuçlarını birlikte görüntülemesi gerekiyorsa, derecelendirme yanıtı öğesi `resultIndex` alanı içermez.  
 
-## <a name="ranking-response-example"></a>Sıralama yanıtı örneği
+## <a name="ranking-response-example"></a>Derecelendirme yanıtı örneği
 
-Aşağıdaki bir örnek [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)gösterir. Web yanıtı bir `id` alan içermedığından, sıralamaya göre tüm web sayfalarını ayrı ayrı `id` görüntülersiniz (her web sayfası bir alan içerir). Görüntüler, videolar ve ilgili aramalar yanıtları alanı `id` içerdiğinden, bu yanıtların her birinin sonuçlarını sıralamaya göre birlikte görüntülersiniz.
+Aşağıda bir [Rankingresponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)örneği gösterilmektedir. Web yanıtı bir `id` alan içermediğinden, tüm Web sayfalarını derecelendirmeden (her Web sayfasında bir `id` alan içerir) ayrı ayrı görüntülerdiniz. Ve görüntüler, videolar ve ilgili arama cevapları `id` alanı içereceğinden, Bu yanıtların her birinin sonucunu derecelendirmeden başlayarak birlikte görüntüleyebilirsiniz.
 
 ```json
 {  
@@ -205,23 +205,23 @@ Aşağıdaki bir örnek [RankingResponse](https://docs.microsoft.com/rest/api/co
 }  
 ```  
 
-Bu sıralama yanıtına göre, ana satır aşağıdaki arama sonuçlarını görüntüler:  
+Bu sıralama yanıtına göre, ana hat aşağıdaki arama sonuçlarını görüntüler:  
 
--   İlk web sayfası sonucu
+-   İlk Web sayfası sonucu
 -   Tüm görüntüler  
--   İkinci ve üçüncü web sayfası sonuçları  
+-   İkinci ve üçüncü Web sayfası sonuçları  
 -   Tüm videolar  
--   4, 5 ve 6 web sayfası sonuçları  
+-   4, 5 ve 6 Web sayfası sonuçları  
 
-Kenar çubuğu aşağıdaki arama sonuçlarını görüntüler:  
+Ve kenar çubuğu aşağıdaki arama sonuçlarını görüntüler:  
 
 -   İlgili tüm aramalar  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Derecelendirilmemiş sonuçların tanıtımı hakkında bilgi için, [sıralamada olmayan yanıtları teşvik etme'ye](./filter-answers.md#promoting-answers-that-are-not-ranked)bakın.
+Derecelendirildi sonuçları yükseltme hakkında daha fazla bilgi için bkz. [derecelendirildi yanıtları yükseltme](./filter-answers.md#promoting-answers-that-are-not-ranked).
 
-Yanıttaki sıralanan yanıt sayısını sınırlama hakkında bilgi için [bkz.](./filter-answers.md#limiting-the-number-of-answers-in-the-response)
+Yanıttaki derecelendirilen yanıtların sayısını sınırlama hakkında bilgi için bkz. [yanıttaki yanıt sayısını sınırlandırma](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
 
-Sonuçları görüntülemek için sıralamayı kullanan bir C# örneği için [C# sıralama öğreticisine](./csharp-ranking-tutorial.md)bakın.
+Sonuçları görüntülemek için derecelendirme kullanan bir C# örneği için bkz. [C# derecelendirme öğreticisi](./csharp-ranking-tutorial.md).

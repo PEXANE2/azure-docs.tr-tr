@@ -1,7 +1,7 @@
 ---
-title: Bing Yerel İş Arama API'si için arama kategorileri
+title: Bing yerel Iş Arama API 'SI için kategorileri ara
 titleSuffix: Azure Cognitive Services
-description: Bing Yerel İşletme arama API bitiş noktası için arama kategorilerini nasıl belirteceklerini öğrenmek için bu makaleyi kullanın.
+description: Bing yerel Iş Arama API uç noktası için arama kategorilerini belirtme hakkında bilgi edinmek için bu makaleyi kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,79 +11,79 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "69906389"
 ---
-# <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Yerel İş Arama API'si için arama kategorileri
+# <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing yerel Iş Arama API 'SI için kategorileri ara
 
-Bing Yerel İş Arama API'si, bir kullanıcının konumunu kapatan sonuçlara öncelik vererek, çeşitli kategorilerdeki yerel işletme varlıklarını aramanızı sağlar. Bu aramaları aramalara ve `localCircularView` `localMapView` [parametrelerle](specify-geographic-search.md)birlikte ekleyebilirsiniz.
+Bing yerel Iş Arama API 'SI, bir kullanıcının konumunu kapatan sonuçlara göre çok sayıda kategoride yerel iş varlıkları aramanızı sağlar. Bu aramaları, `localCircularView` ve `localMapView` [parametreleriyle](specify-geographic-search.md)birlikte aramalara dahil edebilirsiniz.
 
 
-## <a name="toplevel-categories"></a>Üst Düzey Kategoriler 
+## <a name="toplevel-categories"></a>TopLevel kategorileri 
 
-Aşağıdaki türler, ana arama kategorilerini tanımlar.  `localCategories` Parametreye atanan virgülle sınırlandırılmış bir liste kullanılarak birden fazla kategori belirtilebilir.  
+Aşağıdaki türler, aramanın ana kategorilerini tanımlar.  `localCategories` Parametreye atanan virgülle ayrılmış bir liste kullanılarak birden fazla kategori belirtilebilir.  
 - EatDrink 
 - SeeDo 
-- Dükkanı 
-- OtellerAndMotels 
-- Bankalar ve Kredi Birlikleri 
-- Otopark 
-- Hastane 
+- Ba 
+- HotelsAndMotels 
+- Banksandalacaklı tunları 
+- Park 
+- Hastaneler 
 
 ## <a name="sub-categories"></a>Alt Kategoriler
-Alt kategoriler . `localCategories` Alt kategoriler daha spesifik kategorilerdir. Aynı virgülle sınırlandırılmış listede bir C kategorisi ve onun alt kategorilerinden Biri S belirtirseniz, yalnızca C'yi belirtdiğiniz gibi aynı sonuçları alırsınız anlamında alt tantiflerdir.
+Alt kategoriler ile `localCategories`aynı şekilde geçirilir. Alt Kategoriler daha belirgin kategorileridir. Bu, bir kategori C ve alt kategorilerinden birini, aynı virgülle ayrılmış listede belirtirseniz, yalnızca C 'yi belirttiklerinde aynı sonuçları elde edersiniz.
 
-### <a name="eat-drink"></a>İçki Yiyin 
+### <a name="eat-drink"></a>Kurutink yiyecek 
 |  |  |  |  |
 | - | - | - | - |
-| Bira FabrikalarıAndBrewPubs | Kokteyl Salonları | Afrika Restoranları |
-| Amerikan Restoranları | Simit | Barbekü Restoranları |
-| Taverna | Spor Barlar | Bar |
-| BarlarGrillsAndPubs | Büfe Restoranlar| Belçika Restoranları | 
-| İngiliz Restoranları | CafeRestoranlar | Karayip Restoranları |
-| Çin Restoranları | KahveAndTea | Şarküteri | 
-| Teslimat Hizmeti | Diners | İndirimli Mağazalar | 
-| Donuts | Fastfood | Fransız Restoranları | 
-| Dondurulmuş Yoğurt | GermanRestaurants | Süpermarket | 
-| Yunan Restoranları | Bakkal | Hawaii Restoranları | 
-| Macar Restoranları | IceCreamAndFrozenDesserts | IndianRestaurants | 
-| İtalyan Restoranları | Japon Restoranları | Meyve suyu | 
-| Kore Restoranları | Likör Mağazaları | Meksika Restoranları |
-| OrtaDoğu Restoranları | Pizza | Lehçe Restoranlar | 
-| Portekiz Restoranları | Simit | Restoran | 
-| RusandUkrayna Restoranları | Sandviç | Deniz Ürünleri Restoranları | 
-| İspanyol Restoranları | SteakhouseRestoranlar | Suşi Restoranları | 
-| Paket | ThaiRestoranlar | Türk Restoranları | 
-| VejetaryenAndVeganRestoranlar | VietnamRestoranları|  |
+| BreweriesAndBrewPubs | Coctasillounges | AfricanRestaurants |
+| AmericanRestaurants | Bagels | BarbecueRestaurants |
+| Taverns | Sportsçubuklar | Bu |
+| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
+| Britişlolar | Caferestaurlar | Caribbeanrestoranlar |
+| Çineserestalar | CoffeeAndTea | Delicatessens | 
+| DeliveryService | Diners | Discountmağazaları | 
+| Donutlar | Fastyiyecek | Frenchrestoranlar | 
+| FrozenYogurt | Geri Restoran | Süper pazarlar | 
+| Greekrestoranlar | Grocers | Hawaii dili | 
+| HungarianRestaurants | Iecreatofrozendesserts | Indianlotlar | 
+| Ialianrestoranlar | JapaneseRestaurants | Juıces | 
+| KoreanRestaurants | LiquorStores | Mexicanrestoranlar |
+| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
+| PortugueseRestaurants | Pretzya | Restoranlar | 
+| Russianandukraınrestoranlar | Sandwiches | Deniz ve restoran 'Lar | 
+| Spanrestoranlar | Steakhouserestalarurlar | Sushilotlar | 
+| Ders | Thairestoranlar | Türki Restoranlar | 
+| Vegetarianandveganrestoranlar | VietnameseRestaurants|  |
  
-### <a name="see-do"></a>Bkz. Yap 
+### <a name="see-do"></a>Bkz. do 
 |  |  |  |
 | -- | -- | -- |
-| Lunaparklar | Turistik yer | Karnaval |
-| Kumarhane | YerlerAndHistoricalSites | MinyatürGolf Sahaları |
-| Sinema Salonları | Müze | Park |
-| GeziTurları | Turist Bilgileri | Hayvanat bahçe |
+| Amusementpark | Atlamalar | Carniler |
+| Casinos | LandmarksAndHistoricalSites | Mini Aturegolfkurslar |
+| Moviemetreler | Museums | Lular |
+| Sı, Seeingturları | Touristınformation | Buros |
  
-### <a name="shop"></a>Dükkanı 
+### <a name="shop"></a>Ba 
 |  |  |  |
 | -- | -- | -- |
-| Antika Mağazaları | Kitapçılarda | CDAndRecordMağazaları |
-| Çocuk GiyimMağazaları | Puro ve Tütün Dükkanları | Çizgi Roman Mağazaları |
-| Büyük Mağazalar | İndirimli Mağazalar | Bit PazarlarıAndBazaars |
-| Mobilya Mağazaları | AnasayfaImprovementStores | TakıAndWatchesMağazaları |
-| Mutfak Mağazaları | Likör Mağazaları | Alışveriş MerkezleriAndShoppingCenters |
-| MensClothingStores | Müzik Mağazaları | OutletMağazaları |
-| PetShops | PetsupplyMağazaları | OkulandofficeSupplyStores |
-| Ayakkabı Mağazaları | SportingGoodsMağazaları | ToyAndGameMağazaları |
-| VitaminandSupplementMağazaları | Kadın GiyimMağazaları |  |
+| Antisorgtores | Kitap depoları | Cdandrecordmağazaları |
+| Childrensclothingmağazaları | CigarAndTobaccoShops | Comicbookmağazaları |
+| DepartmentStores | Discountmağazaları | FleaMarketsAndBazaars |
+| Mobilyanitugeri Yüklemeler | HomeImprovementStores | JewelryAndWatchesStores |
+| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
+| Mensclothingmağazaları | Müzik depoları | Outletmağazaları |
+| Petterlar | Petsupplymağazaların | SchoolAndOfficeSupplyStores |
+| ShoeStores | SportingGoodsStores | ToyAndGameStores |
+| Inserminandtakıma Tmağazaları | Womensclothingmağazaları |  |
 
 
-## <a name="examples-of-local-categories-search"></a>Yerel Kategoriler arama örnekleri
+## <a name="examples-of-local-categories-search"></a>Yerel Kategori arama örnekleri
 
-Aşağıdaki örnekler `localCategories` parametreye göre sonuçları Al:
+Aşağıdaki örnekler, `localCategories` parametresine göre sonuçları alır:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 
@@ -93,11 +93,11 @@ Aşağıdaki örnekler `localCategories` parametreye göre sonuçları Al:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=Hospitals`
 
-Aşağıdaki sorgu, 'hastane' sonuçlarının sayısını Bing Yerel İş Arama API'sinden döndürülen ilk üç le sınırlar:
+Aşağıdaki sorgu, Bing yerel Iş Arama API 'sinden ilk üç ' hospte ' sonuç sayısını kısıtlar:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localCategories=Hospitals&count=3&offset=0`
 
-Aşağıdaki örnek JSON yanıtı büyük Seattle bölgesinde üç hastane içerir:
+Aşağıdaki örnek JSON yanıtı, daha büyük Seattle alanında üç hastaneler içerir:
 
 ```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
@@ -219,4 +219,4 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Coğrafi arama sınırları](specify-geographic-search.md)
 - [Sorgu ve yanıt](local-search-query-response.md)
-- [C'de Hızlı Başlangıç #](quickstarts/local-quickstart.md)
+- [C 'de hızlı başlangıç #](quickstarts/local-quickstart.md)

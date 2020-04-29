@@ -5,23 +5,23 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b9d0d2b97472eb3264f5e4600fddbfc7d3250918
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67704272"
 ---
-## <a name="use-the-docker-cli-to-authenticate-the-private-container-registry"></a>Özel konteyner kayıt defterinin kimliğini doğrulamak için Docker CLI'yi kullanın
+## <a name="use-the-docker-cli-to-authenticate-the-private-container-registry"></a>Özel kapsayıcı kayıt defterinin kimliğini doğrulamak için Docker CLı 'yi kullanma
 
-Bilişsel Hizmetler Kapsayıcıları için özel konteyner kayıt defteriile çeşitli şekillerde kimlik doğrulayabilirsiniz, ancak komut satırından önerilen yöntem [Docker CLI'yi](https://docs.docker.com/engine/reference/commandline/cli/)kullanmaktır.
+Çeşitli yollarla bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt defteriyle kimlik doğrulaması yapabilirsiniz, ancak komut satırından önerilen yöntem [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)'yı kullanmaktır.
 
-Aşağıdaki örnekte gösterildiği gibi, Bilişsel Hizmetler Kapsayıcıları için özel kapsayıcı kayıt defterine `containerpreview.azurecr.io`giriş yapmak için [ `docker login` komutu](https://docs.docker.com/engine/reference/commandline/login/)kullanın. * \<Kullanıcı\> adını,* Azure Bilişsel Hizmetler ekibinden aldığınız kimlik bilgilerinde sağlanan parolayla kullanıcı adı ve * \<\> parolayla* değiştirin.
+Aşağıdaki örnekte gösterildiği gibi [ `docker login` komutunu](https://docs.docker.com/engine/reference/commandline/login/), bilişsel hizmetler kapsayıcıları için özel kapsayıcı kayıt `containerpreview.azurecr.io`defteri ' nde oturum açmak için kullanın. Kullanıcı adını, Azure bilişsel hizmetler takımınızdan aldığınız kimlik bilgilerinde belirtilen parola ile Kullanıcı adı ve * \<parola\> * *ile değiştirin \<\> *
 
 ```
 docker login containerpreview.azurecr.io -u <username> -p <password>
 ```
 
-Kimlik bilgilerinizi bir metin dosyasında güvence altına almışsanız, aşağıdaki örnekte gösterildiği gibi `cat` komutu `docker login` kullanarak bu metin dosyasının içeriğini biraraya bulabilirsiniz. * \<passwordFile'ı,\> * kimlik bilgilerinizde sağlanan kullanıcı adı ile parola ve * \<kullanıcı adını\> * içeren metin dosyasının yolu ve adı ile değiştirin.
+Kimlik bilgilerinizi bir metin dosyasında güvenli hale yaptıysanız, `cat` komutunu kullanarak, aşağıdaki örnekte gösterildiği gibi, bu metin dosyasının içeriğini `docker login` komut ile birleştirebilirsiniz. * \<PasswordFile\> * değerini, kimlik bilgilerinizle belirtilen kullanıcı adıyla * \<parolayı ve\> Kullanıcı adını içeren* metin dosyasının yolu ve adıyla değiştirin.
 
 ```
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin

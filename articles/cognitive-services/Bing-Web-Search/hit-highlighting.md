@@ -1,7 +1,7 @@
 ---
-title: Metni vurgulamak için dekorasyon işaretçileri nasıl kullanılır - Bing Web Arama API
+title: Metni vurgulamak için düzenleme işaretçileri kullanma-Bing Web Araması API'si
 titleSuffix: Azure Cognitive Services
-description: Bing Web Arama API'sini kullanarak metin süslemelerini ve arama sonuçlarınızda vurgulamayı nasıl kullanacağınızı öğrenin.
+description: Bing Web Araması API'si kullanarak arama sonuçlarınızda metin süslemelerini nasıl kullanacağınızı ve vurgulamaya nasıl ulaşılacağınızı öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,71 +12,71 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68854048"
 ---
-# <a name="using-decoration-markers-to-highlight-text"></a>Metni vurgulamak için süsleme işaretçilerini kullanma
+# <a name="using-decoration-markers-to-highlight-text"></a>Metin vurgulamak için düzenleme işaretçileri kullanma
 
-Bing, bazı yanıtların görüntü dizelerinde sorgu terimlerini (veya Bing'in alakalı bulduğu diğer terimleri) işaretleyen isabet vurgulamayı destekler. Örneğin, bir web sayfası `name`sonucunun `displayUrl` `snippet` , ve alanlar işaretli sorgu terimleri içerebilir. 
+Bing, bazı yanıtların görüntüleme dizelerinde sorgu terimlerini (veya Bing 'in ilgili bulduğu diğer terimleri) işaretleyen isabet vurgulamasını destekler. Örneğin, bir Web sayfası sonucunun `name`, `displayUrl`ve `snippet` alanları işaretli sorgu terimleri içerebilir. 
 
-Varsayılan olarak Bing, görüntü dizelerinde vurgulama işaretçilerini içermez. İşaretçileri etkinleştirmek için, isteğinize sorgu `textDecorations` parametresini `true`ekleyin ve '' olarak ayarlayın.
+Varsayılan olarak, Bing, görüntüleme dizelerindeki vurgulama işaretçilerini içermez. İşaretleyicileri etkinleştirmek için, isteğinize `textDecorations` sorgu parametresini ekleyin ve olarak `true`ayarlayın.
 
-## <a name="hit-highlighting-example"></a>Hit vurgulama örneği
+## <a name="hit-highlighting-example"></a>İsabet vurgulama örneği
 
-Aşağıdaki örnekte `Sailing Dinghy`bir web sonucu nu gösterir. Bing, E000 ve E001 Unicode karakterlerini kullanarak sorgu döneminin başlangıcını ve sonunu işaretledi.
+Aşağıdaki örnek için `Sailing Dinghy`bir Web sonucu gösterir. Bing, E000 ve E001 Unicode karakterlerini kullanarak sorgu teriminin başlangıcını ve bitişini işaretledi.
   
-![Hit Vurgulama](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
+![İsabet vurgulama](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
 
-Sonucu kullanıcı arabiriminizde görüntülemeden önce, Unicode karakterlerini ekran biçiminize uygun olanlarla değiştirin.
+Sonucu Kullanıcı arabiriminizdeki görüntülemeden önce, Unicode karakterleri, görüntüleme biçiminize uygun olanlarla değiştirin.
 
-## <a name="marker-formatting"></a>İşaretleyici biçimlendirme
+## <a name="marker-formatting"></a>İşaret biçimlendirme
 
-Bing, Unicode karakterlerini veya HTML etiketlerini işaretleyici olarak kullanma seçeneği sunar. Hangi işaretçilerin kullanılacağını belirtmek için [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) sorgu parametresini ekleyin: 
+Bing, Unicode karakterler veya HTML etiketlerini işaretçiler olarak kullanma seçeneği sunar. Hangi işaretçilerin kullanılacağını belirtmek için [TextFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) sorgu parametresini de ekleyin: 
 
-| Değer             | Işaretleyici                       |
+| Değer             | İm                       |
 |-------------------|------------------------------|
-| `textFormat=Raw`  | Unicode karakterleri (varsayılan) |
+| `textFormat=Raw`  | Unicode karakterler (varsayılan) |
 | `textFormat=HTML` | HTML karakterleri              |
 
 ## <a name="additional-text-decorations"></a>Ek metin süslemeleri
 
-Bing birkaç farklı metin süslemeleri döndürebilir. Örneğin, bir `Computation` yanıt `log(2)` `expression` alandaki sorgu terimi için alt komut işaretleri içerebilir.
+Bing birkaç farklı metin süslede döndürebilir. Örneğin, bir `Computation` yanıt `log(2)` `expression` alandaki sorgu teriminin alt simge işaretçilerini içerebilir.
 
-![hesaplama işaretleri](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
+![hesaplama işaretçileri](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
-İstek süslemeleri belirtmediyse, `expression` alan . `log10(2)` 
+İstek süslemeleri belirtmediyseniz, `expression` alanı içerir. `log10(2)` 
 
-`textDecorations` Varsa, `true`Bing yanıtların görüntü dizelerinde aşağıdaki işaretçileri içerebilir. Eşdeğer HTML etiketi yoksa, tablo hücresi boştur.
+`textDecorations` İse `true`, Bing yanıtların görüntüleme dizelerinde aşağıdaki işaretçileri içerebilir. Eşdeğer HTML etiketi yoksa tablo hücresi boştur.
 
 |Unicode|HTML|Açıklama
 |-|-|-
-|U+E000|\<b>|Sorgu teriminin başlangıcını işaretler (isabet vurgulama)
-|U+E001|\</b>|Sorgu döneminin sonunu işaretler
-|U+E002|\<i>|Italik leştirilmiş içeriğin başlangıcını işaretler 
-|U+E003|\</i>|Italikleştirilmiş içeriğin sonunu işaretler
-|U+E004|\<br/>|Satır sonu işaretler
-|U+E005||Telefon numarasının başlangıcını işaretler
-|U+E006||Telefon numarasının sonunu işaretler
-|U+E007||Adresin başlangıcını işaretler
-|U+E008||Adresin sonunu işaretler
-|U+E009|\&nbsp;|Kırılmayan bir alanı işaretler
-|U+E00C|\<güçlü>|Kalın içeriğin başlangıcını işaretler
-|U+E00D|\</güçlü>|Kalın içeriğin sonunu işaretler
-|U+E00E||Arka planı çevresindeki arka plandan daha hafif olması gereken içeriğin başlangıcını işaretler
-|U+E00F||Arka planı çevresindeki arka plandan daha hafif olması gereken içeriğin sonunu işaretler
-|U+E010||Arka planı çevresindeki arka plandan daha koyu olması gereken içeriğin başlangıcını işaretler
-|U+E011||Arka planı çevresindeki arka plandan daha koyu olması gereken içeriğin sonunu işaretler
-|U+E012|\<del>|Üzerinden vurulması gereken içeriğin başlangıcını işaretler
-|U+E013|\</del>|Üzerinden alınması gereken içeriğin sonunu işaretler
-|U+E016|\<alt>|Alt yazı içeriğinin başlangıcını işaretler
-|U+E017|\</alt>|Alt yazı içeriğinin sonunu işaretler
-|U+E018|\<sup>|Üst yazı içeriğinin başlangıcını işaretler
-|U+E019|\</sup>|Üst yazı içeriğinin sonunu işaretler
+|U + E000|\<b>|Sorgu teriminin başlangıcını (isabet vurgulama) işaretler
+|U + E001|\</b>|Sorgu teriminin sonunu işaretler
+|U + E002|\<i>|İtalik içeriğin başlangıcını işaretler 
+|U + E003|\</i>|İtalik içeriğin sonunu işaretler
+|U + E004|\<br/>|Satır kesmeyi işaretler
+|U + E005||Telefon numarasının başlangıcını işaretler
+|U + E006||Telefon numarasının sonunu işaretler
+|U + E007||Bir adresin başlangıcını işaretler
+|U + E008||Bir adresin sonunu işaretler
+|U + E009|\&nbsp;|Bölünmez bir boşluk işaretler
+|U + E00C|\<güçlü>|Kalın içeriğin başlangıcını işaretler
+|U + E00D|\</Strong>|Kalın içeriğin sonunu işaretler
+|U + E00E||Arka planının çevreleyen arka planıyla daha açık olması gereken içeriğin başlangıcını işaretler
+|U + E00F||Arka planının çevreleyen arka planıyla daha açık olması gereken içeriğin sonunu işaretler
+|U + E010||Arka planı çevreleyen arka planıyla daha koyu olması gereken içeriğin başlangıcını işaretler
+|U + e011||Arka planı çevreleyen arka planıyla daha koyu olması gereken içeriğin sonunu işaretler
+|U + E012|\<del>|Çizili olması gereken içeriğin başlangıcını işaretler
+|U + E013|\</del&lt>|Çizili olması gereken içeriğin sonunu işaretler
+|U + E016|\<Sub>|Alt simge içeriğinin başlangıcını işaretler
+|U + E017|\</Sub seçeneklerini>|Alt indis içeriğinin sonunu işaretler
+|U + E018|\<SUP>|Üst simge içeriğinin başlangıcını işaretler
+|U + E019|\</SUP>|Üst simge içeriğinin sonunu işaretler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bing Web Arama API'si nedir?](overview.md) 
+* [Bing Web Araması API'si nedir?](overview.md) 
 * [Küçük resimleri yeniden boyutlandırma ve kırpma](resize-and-crop-thumbnails.md)

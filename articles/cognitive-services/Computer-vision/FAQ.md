@@ -1,7 +1,7 @@
 ---
-title: Sık sorulan sorular - BilgisayarLı Vizyon
+title: Sık sorulan sorular-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Azure Bilişsel Hizmetler'de BilgisayarLı Vizyon API'si hakkında sık sorulan soruların yanıtlarını alın.
+description: Azure bilişsel hizmetler 'deki Görüntü İşleme API'si hakkında sık sorulan soruların yanıtlarını alın.
 services: cognitive-services
 author: KellyDF
 manager: nitinme
@@ -12,63 +12,63 @@ ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
 ms.openlocfilehash: e8ab205a43e5cb1e8e2b96dbd9600e1fceb29403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68564595"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Bilgisayarlı Vizyon API Sık Sorulan Sorular
+# <a name="computer-vision-api-frequently-asked-questions"></a>Görüntü İşleme API'si sık sorulan sorular
 
 > [!TIP]
-> Bu SSS'de sorularınıza yanıt bulamıyorsanız, [StackOverflow'daki](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) Computer Vision API topluluğuna sormayı deneyin veya [UserVoice'ta Yardım ve Destek'e](https://cognitive.uservoice.com/) başvurun
+> Bu SSS 'de sorularınıza yanıt bulamazsanız, [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) 'de görüntü işleme API'si Community 'yi sormayı deneyin veya [UserVoice üzerinde yardım ve desteğe](https://cognitive.uservoice.com/) başvurun
 
 ---
 
-**Soru**: *Computer Vision API'yi özel etiketleri kullanmak üzere eğitebilir miyim?  Örneğin, AI'yi 'eğitmek' için kedi ırklarının resimleriyle beslenmek, sonra bir AI isteği üzerine cins değerini almak istiyorum.*
+**Soru**: *görüntü işleme API'si özel etiketleri kullanmak için eğitebilir miyim?  Örneğin, kedi breeds resimlerinde AI ' eğitme ' ' i ' eğitmek ' ve ardından bir AI isteğinde iyisi değerini almak istiyorum.*
 
-**Cevap**: Bu işlev şu anda kullanılamıyor. Ancak mühendislerimiz bu işlevselliği Computer Vision'a getirmek için çalışmaktadır.
+**Cevap**: Bu işlev şu anda kullanılamıyor. Ancak, mühendislerimiz bu işlevselliği Görüntü İşleme getirmek için çalışmaktadır.
 
 ---
 
-**Soru**: *Bilgisayar Lıgdato internet bağlantısı olmadan yerel olarak kullanılabilir mi?*
+**Soru**: *İnternet bağlantısı olmadan yerel olarak görüntü işleme kullanılabilir mi?*
 
 **Cevap**: Şu anda şirket içi veya yerel bir çözüm sunmuyoruz.
 
 ---
 
-**Soru**: *Bilgisayarlı Görme plakaları okumak için kullanılabilir mi?*
+**Soru**: *Lisans levhalarını okumak için görüntü işleme kullanılabilir mi?*
 
-**Cevap**: Vision API, OCR ile iyi metin algılama sunar, ancak şu anda plakalar için optimize edilmedi. Hizmetlerimizi sürekli olarak geliştirmeye çalışıyoruz ve otomatik plaka tanıma için OCR'yi özellik istekleri listemize ekledik.
-
----
-
-**Soru**: *El yazısı tanıma için ne tür yazı yüzeyleri desteklenir?*
-
-**Cevap**: Teknoloji, beyaz tahtalar, beyaz kağıt ve sarı yapışkan notlar da dahil olmak üzere farklı yüzeylerle çalışır.
+**Cevap**: Vision API 'SI, OCR ile iyi metin algılama olanağı sunar, ancak şu anda lisans levhaları için iyileştirilmez. Hizmetlerimizi sürekli olarak iyileştirmeye çalışıyoruz ve özellik istekleri listemize otomatik lisans levha tanıma için OCR ekledik.
 
 ---
 
-**Soru**: *El yazısı tanıma işlemi ne kadar sürer?*
+**Soru**: *el yazısı tanıma için hangi tür yazma yüzeyleri desteklenir?*
 
-**Cevap**: Aldığı süre metnin uzunluğuna bağlıdır. Daha uzun metinler için birkaç saniye kadar sürebilir. Bu nedenle, El Yazısı Metni Tanı işlemi tamamlandıktan sonra, El YazısıYla Metin İşlemi Sonucu Al işlemini kullanarak sonuçları alabilmeniz için beklemeniz gerekebilir.
-
----
-
-**Soru**: *El yazısı tanıma teknolojisi, satırın ortasına bir basamak kullanılarak eklenen metni nasıl işler?*
-
-**Cevap**: Bu tür metin el yazısı tanıma işlemi ile ayrı bir satır olarak döndürülür.
+**Cevap**: teknoloji, beyaz tahta, Teknik İnceleme ve sarı yapışkan notlar gibi farklı türlerde yüzeyler ile birlikte kullanılır.
 
 ---
 
-**Soru**: *El yazısı tanıma teknolojisi, çapraz lanmış kelimeleri veya çizgileri nasıl işler?*
+**Soru**: *el yazısı tanıma işlemi ne kadar sürer?*
 
-**Cevap**: Sözcüklertanınmaz hale getirmek için birden fazla satırla çizilirse, el yazısı tanıma işlemi onları almaz. Ancak, sözcükler tek bir satır kullanılarak çizilirse, bu geçiş gürültü olarak kabul edilir ve sözcükler yine de el yazısı tanıma işlemi tarafından alınır.
+**Cevap**: aldığı sürenin miktarı metnin uzunluğuna bağlıdır. Uzun metinler için birkaç saniye sürebilir. Bu nedenle, El Ile yazılmış metin işlemi tamamlandıktan sonra, el yazısı metin Işlem sonucunu Al işlemini kullanarak sonuçları alabilmek için beklemeniz gerekebilir.
 
 ---
 
-**Soru**: *El yazısı tanıma teknolojisi için hangi metin oryantasyonları desteklenir?*
+**Soru**: *el yazısı tanıma teknolojisi, bir satır ortasında bir giriş işareti kullanılarak eklenen metni nasıl işler?*
 
-**Cevap**: El yazısı tanıma işlemi ile yaklaşık 30 derece ile 40 dereceye kadar açılarla yönlendirilen metin alınabilir.
+**Cevap**: Bu tür metinler, el yazısı tanıma işlemi tarafından ayrı bir satır olarak döndürülür.
+
+---
+
+**Soru**: *el yazısı tanıma teknolojisi, çapraz veya satırları nasıl işler?*
+
+**Cevap**: sözcüklerin tanınabilmesi için birden çok satır varsa, el yazısı tanıma işlemi bunları kullanıma almaz. Ancak, sözcükler tek bir çizgi kullanılarak ele alınalıyorsa, bu geçiş gürültü olarak kabul edilir ve kelimeler yine de el yazısı tanıma işlemi tarafından alınır.
+
+---
+
+**Soru**: *el yazısı tanıma teknolojisi için hangi metin yönleri desteklenir?*
+
+**Cevap**: en fazla 30 derece 40 dereceye kadar olan metin yönelimli metinler, el yazısı tanıma işlemi tarafından alınmayabilir.
 
 ---

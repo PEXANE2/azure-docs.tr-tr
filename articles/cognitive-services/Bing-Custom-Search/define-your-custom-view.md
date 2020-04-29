@@ -1,7 +1,7 @@
 ---
-title: Bing Özel Arama deneyiminizi yapılandırın | Microsoft Dokümanlar
+title: Bing Özel Arama deneyiminizi yapılandırma | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: Portal, web dilimlerini belirten bir arama örneği oluşturmanıza olanak tanır; etki alanları, alt sayfalar ve web sayfaları.
+description: Portal, Web 'in dilimlerini belirten bir arama örneği oluşturmanızı sağlar; etki alanları, alt sayfalar ve Web sayfaları.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,149 +11,149 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220220"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Özel Arama deneyiminizi yapılandırın
 
-Özel Arama örneği, arama deneyimini yalnızca kullanıcılarınızın önemsediği web sitelerinden gelen içeriği içerecek şekilde uyarlamanıza olanak tanır. Bing, web genelinde arama yapmak yerine yalnızca web'in ilginizi çeken dilimlerini arar. Size özel web görünümünü oluşturmak için Bing Özel Arama [portalını](https://customsearch.ai) kullanın.
+Özel bir arama örneği, arama deneyimini yalnızca kullanıcılarınızın ilgilenme Web sitelerinden içerik içerecek şekilde uyarlamanızı sağlar. Bing, web genelinde bir arama gerçekleştirmek yerine yalnızca sizi ilgilendiren Web Slice 'ları arar. Size özel web görünümünü oluşturmak için Bing Özel Arama [portalını](https://customsearch.ai) kullanın.
 
-Portal, web'in dilimlerini belirten bir arama örneği oluşturmanıza olanak tanır: etki alanları, alt sayfalar ve web sayfaları, Bing'in aramasını istediğiniz ve aramasını istemediğiniz alanlar. Portal ayrıca eklemek isteyebileceğiniz içerikönerebilir.
+Portal, Web 'in (etki alanları, alt sayfalar ve Web sayfaları), Bing 'in aramasını ve aramasını istemediğiniz olanları belirten bir arama örneği oluşturmanızı sağlar. Portal, dahil etmek isteyebileceğiniz içerikleri de önerebilir.
 
-Web dilimlerinizi tanımlarken aşağıdakileri kullanın:
+Web 'in dilimlerinizi tanımlarken aşağıdakileri kullanın:
 
 | Dilim adı | Açıklama                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain     | Etki alanı dilimi, internet etki alanında bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Atlayış `www.` Bing'in etki alanının alt etki alanlarında da arama sına neden olur. Örneğin, belirtirseniz, `microsoft.com`Bing de sonuçları `support.microsoft.com` `technet.microsoft.com`döndürür veya . |
-| Alt Sayfa    | Alt sayfa dilimi, alt sayfada bulunan tüm içeriği ve altındaki yolları içerir. Yolda en fazla iki alt sayfa belirtebilirsiniz. Örneğin, `www.microsoft.com/en-us/windows/`                                                                                                                       |
-| Web sayfasının    | Bir web sayfası dilimi, özel bir aramada yalnızca bu web sayfasını içerebilir. Alt sayfaların eklenip eklenmeyeceğini isteğe bağlı olarak belirtebilirsiniz.                                                                                                                                                                                  |
+| Domain     | Bir etki alanı dilimi, bir İnternet etki alanı içinde bulunan tüm içeriği içerir. Örneğin, `www.microsoft.com`. Yok `www.` etmek, Bing 'in etki alanının alt etki alanlarını da aramasına neden olur. Örneğin, öğesini belirtirseniz `microsoft.com`, Bing Ayrıca veya `support.microsoft.com` `technet.microsoft.com`içindeki sonuçları da döndürür. |
+| Sayfaya    | Alt sayfa dilimi, alt sayfa ve altındaki yollarda bulunan tüm içeriği içerir. Yolda en fazla iki alt sayfaların sayısını belirtebilirsiniz. Örneğin, `www.microsoft.com/en-us/windows/`                                                                                                                       |
+| Web    | Bir Web sayfası dilimi yalnızca özel bir aramada bu Web sayfasını içerebilir. İsteğe bağlı olarak, alt sayfaların eklenip eklenmeyeceğini belirtebilirsiniz.                                                                                                                                                                                  |
 
 > [!IMPORTANT]
-> Belirttiğiniz tüm etki alanları, alt sayfalar ve web sayfaları genel olarak açık olmalı ve Bing tarafından dizine eklenmelidir. Aramaya eklemek istediğiniz ortak bir siteniz varsa ve Bing bu siteyi dizine eklemediyse, Bing'in dizine eklemesini sağlamakla ilgili ayrıntılar için Bing [web yöneticisi belgelerine](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) bakın. Ayrıca, dizin güncel değilse, Bing'in taranmış sitenizi güncelleştirmesini sağlamakla ilgili ayrıntılar için web yöneticisi belgelerine bakın.
+> Belirttiğiniz tüm etki alanları, alt sayfalar ve Web sayfaları, kamu ve Bing tarafından dizinlenmelidir. Aramaya dahil etmek istediğiniz bir ortak siteniz varsa ve Bing onu dizinlenmediyse, dizin oluşturma hakkında ayrıntılı bilgi edinmek için Bing [Web uzmanı belgelerine](https://www.bing.com/webmaster/help/webmaster-guidelines-30fba23a) bakın. Ayrıca, Dizin güncel değilse, Gezilen sitenizi güncelleştirme hakkında daha fazla bilgi edinmek için Web uzmanı belgelerine bakın.
 
-## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Özel arama örneğinize web dilimleri ekleme
+## <a name="add-slices-of-the-web-to-your-custom-search-instance"></a>Web 'in dilimlerini özel arama örneğinize ekleyin
 
-Özel arama örneğinizi oluşturduğunuzda, web'in dilimlerini belirtebilirsiniz: arama sonuçlarınızdan dahil etmek veya engellemek istediğiniz etki alanları, alt sayfalar ve web sayfaları. 
+Özel arama örneğinizi oluştururken, arama sonuçlarınızdan dahil edilmesini veya engellenmesini istediğiniz Web, etki alanları, alt sayfalar ve Web sayfaları için Web Slice 'ları belirtebilirsiniz. 
 
-Özel arama örneğinize eklemek istediğiniz dilimleri biliyorsanız, bunları örneğinizin **Etkin** listesine ekleyin. 
+Özel arama örneğinize dahil etmek istediğiniz dilimleri biliyorsanız, bunları örneğinizin **etkin** listesine ekleyin. 
 
-Hangi dilimlerin ekleneceğinden emin değilseniz, **Önizleme** bölmesinde Bing'e arama sorguları gönderebilir ve istediğiniz dilimleri seçebilirsiniz. Bunu yapmak için: 
+Hangi dilimlerin dahil edileceğini bilmiyorsanız, **Önizleme** bölmesinde Bing 'e arama sorguları gönderebilir ve istediğiniz dilimleri seçebilirsiniz. Bunu yapmak için: 
 
-1. Önizleme bölmesindeki açılır listeden "Bing"i seçin ve bir arama sorgusu girin
+1. Önizleme bölmesindeki açılan listeden "Bing" i seçin ve bir arama sorgusu girin
 
-2. Eklemek istediğiniz sonucun yanındaki **site ekle'yi** tıklatın. Daha sonra Tamam'a tıklayın.
+2. Dahil etmek istediğiniz sonucun yanına **Site Ekle** ' ye tıklayın. Daha sonra Tamam'a tıklayın.
 
 >[!NOTE]
 > [!INCLUDE[publish or revert](./includes/publish-revert.md)]
 
 <a name="active-and-blocked-lists"></a>
 
-### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Etkin ve Engellenen listelerle arama deneyiminizi özelleştirin 
+### <a name="customize-your-search-experience-with-active-and-blocked-lists"></a>Etkin ve engellenen listelerle arama deneyiminizi özelleştirin 
 
-Özel arama örneğinizdeki **Etkin** ve **Engellenen** sekmeleri tıklatarak etkin ve engellenen dilimler listesine erişebilirsiniz. Etkin listeye eklenen dilimler özel aramanıza dahil edilir. Engellenen dilimler aranmaz ve arama sonuçlarınızda görünmez.
+Özel arama örneğinizin **etkin** ve **Engellenen** sekmelerine tıklayarak etkin ve engellenen dilimlerin listesine erişebilirsiniz. Etkin listeye eklenen dilimler özel aramanıza dahil edilir. Engellenen dilimler aranmaz ve arama sonuçlarınızda görünmez.
 
-Bing'in aramasını istediğiniz web dilimlerini belirtmek için **Etkin** sekmesini tıklatın ve bir veya daha fazla URL ekleyin. URL'leri düzenlemek veya silmek için **Denetimler** sütununaltındaki seçenekleri kullanın. 
+Bing 'in aramasını istediğiniz Web Slice 'ları belirtmek için **etkin** sekmesine tıklayın ve bir veya daha fazla URL ekleyin. URL 'Leri düzenlemek veya silmek için, **denetimler** sütununun altındaki seçenekleri kullanın. 
 
-**Etkin** listeye URL eklerken, yükleme simgesini kullanarak bir metin dosyası yükleyerek aynı anda tek URL veya birden fazla URL ekleyebilirsiniz.
+**Etkin** listeye URL eklerken, karşıya yükle simgesini kullanarak bir metin dosyasını karşıya yükleyerek tek URL 'ler veya birden çok URL ekleyebilirsiniz.
 
-![Bing Özel Arama Etkin sekmesi](media/file-upload-icon.png)
+![Bing Özel Arama etkin sekmesi](media/file-upload-icon.png)
 
-Dosya yüklemek için bir metin dosyası oluşturun ve satır başına tek bir etki alanı, alt sayfa veya web sayfası belirtin. Doğru biçimlendirilmemişse dosyanız reddedilir.
+Bir dosyayı karşıya yüklemek için bir metin dosyası oluşturun ve her satırda tek bir etki alanı, alt sayfa veya Web sayfası belirtin. Dosyanız, doğru biçimlendirilmediyse reddedilir.
 
 > [!NOTE]
-> * Bir dosyayı yalnızca **Etkin** listesine yükleyebilirsiniz. **Engellenenler** listesine dilim eklemek için kullanamazsınız.  
-> * **Engellenenler** listesinde yükleme dosyasında belirttiğiniz bir etki alanı, alt sayfa veya web sayfası varsa, **engellenenler** listesinden kaldırılır ve **Etkin** listesine eklenir.
-> * Yükleme dosyanızdaki yinelenen girişler Bing Özel Arama tarafından yoksayılır. 
+> * **Etkin** listeye yalnızca bir dosya yükleyebilirsiniz. Bunu, **Engellenen** listeye dilimler eklemek için kullanamazsınız.  
+> * **Engellenen** listede karşıya yükleme dosyasında belirttiğiniz bir etki alanı, alt sayfa veya Web sayfası varsa, bu, **Engellenen** listeden kaldırılır ve **etkin** listesine eklenir.
+> * Karşıya yükleme dosyanızdaki yinelenen girişler, Bing Özel Arama tarafından yok sayılacak. 
 
-### <a name="get-website-suggestions-for-your-search-experience"></a>Arama deneyiminiz için web sitesi önerileri alın
+### <a name="get-website-suggestions-for-your-search-experience"></a>Arama deneyiminiz için Web sitesi önerileri alın
 
-**Etkin** listeye web dilimleri ekledikten sonra, Bing Özel Arama portalı sekmenin alt kısmında web sitesi ve alt sayfa önerileri oluşturur. Bunlar, Bing Özel Arama'nın eklemek isteyebileceğini düşündüğü dilimlerdir. Özel arama örneğinizin ayarlarını güncelleştirdikten sonra güncelleştirilmiş öneriler almak için **Yenile'yi** tıklatın. Bu bölüm yalnızca öneriler varsa görünür.
+**Etkin** listeye Web Slices eklendikten sonra, Bing özel arama portalı sekmenin en altında Web sitesi ve alt sayfa önerilerini oluşturacaktır. Bunlar, dahil etmek isteyebileceğiniz Bing Özel Arama dilimlerdir. Özel arama örneğinizin ayarlarını güncelleştirdikten sonra güncelleştirilmiş öneriler almak için **Yenile** ' ye tıklayın. Bu bölüm yalnızca öneriler varsa görünür.
 
-## <a name="search-for-images-and-videos"></a>Resim ve video ara
+## <a name="search-for-images-and-videos"></a>Görüntü ve video arayın
 
-Bing Özel Resim Arama API'sini veya Bing Özel Video Arama [API'sini](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)kullanarak web içeriğine benzer resim ve videoları arayabilirsiniz. [Bing Custom Image Search API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) Bu sonuçları [barındırılan ui](hosted-ui.md)veya API'lerle görüntüleyebilirsiniz. 
+[Bing özel resım arama API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) 'Sini veya [BING özel video arama API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference)'sini kullanarak Web içeriğiyle benzer görüntü ve video arayabilirsiniz. Bu sonuçları [barındırılan Kullanıcı arabirimi](hosted-ui.md)veya API 'ler ile görüntüleyebilirsiniz. 
 
-Bu API'ler özel olmayan [Bing Resim Arama](../Bing-Image-Search/overview.md) ve Bing Video [Arama](../Bing-Video-Search/search-the-web.md) API'lerine benzer, ancak tüm web'de arama yapar ve sorgu parametresini `customConfig` gerektirmez. Resimler ve videolar ile çalışma hakkında daha fazla bilgi için bu dokümantasyon kümelerini görün. 
+Bu API 'Ler, özel olmayan [Bing resim arama](../Bing-Image-Search/overview.md) ve [Bing video arama](../Bing-Video-Search/search-the-web.md) API 'lerine benzerdir, ancak tüm Web 'de arama yapın ve `customConfig` sorgu parametresi gerektirmez. Görüntüler ve videolar ile çalışma hakkında daha fazla bilgi için bu belge kümelerine bakın. 
 
-## <a name="test-your-search-instance-with-the-preview-pane"></a>Arama örneğini Önizleme bölmesiyle test edin
+## <a name="test-your-search-instance-with-the-preview-pane"></a>Önizleme bölmesiyle arama örneğinizi test etme
 
-Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ tarafındaki önizleme bölmesini kullanarak arama örneğini test edebilirsiniz. 
+Arama sorguları göndermek ve sonuçları görüntülemek için portalın sağ tarafındaki önizleme bölmesini kullanarak arama örneğinizi test edebilirsiniz. 
 
-1. Arama kutusunun altında **Örneğim'i**seçin. **Bing'i**seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
-2. Güvenli bir arama filtresi seçin ve hangi pazarda arama yapacaklarını seçin [(Bkz. Sorgu Parametreleri).](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
-3. Geçerli yapılandırmadan sonuçları görüntülemek için bir sorgu girin ve gir'e basın veya arama simgesine tıklayın. Karşılık gelen sonuçları almak için **Web,** **Resim**veya **Video'ya** tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
+1. Arama kutusunun altında **örneğim**' ı seçin. **Bing**' i seçerek arama deneyiminizdeki sonuçları Bing ile karşılaştırabilirsiniz. 
+2. Güvenli bir arama filtresi seçin ve hangi pazarın aranmasına (bkz. [Sorgu parametrelerine](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)bakın).
+3. Geçerli yapılandırmanın sonuçlarını görüntülemek için bir sorgu girin ve ENTER tuşuna basın veya arama simgesine tıklayın. İlgili sonuçları almak için **Web**, **resim**veya **video** ' ya tıklayarak gerçekleştirdiğiniz arama türünü değiştirebilirsiniz. 
 
 <a name="adjustrank"></a>
 
-## <a name="adjust-the-rank-of-specific-search-results"></a>Belirli arama sonuçlarının sıralamasını ayarlama
+## <a name="adjust-the-rank-of-specific-search-results"></a>Belirli arama sonuçlarının derecesini ayarla
 
-Portal, belirli etki alanlarından, alt sayfalardan ve web sayfalarından gelen içeriğin arama sıralamasını ayarlamanızı sağlar. Önizleme bölmesine bir arama sorgusu gönderdikten sonra, her arama sonucu bunun için yapabileceğiniz ayarlamaların bir listesini içerir:  
+Portal, belirli etki alanları, alt sayfalar ve Web sayfalarından içerik arama sıralamasını ayarlamanıza olanak sağlar. Önizleme bölmesinde bir arama sorgusu gönderdikten sonra, her arama sonucu, sizin için yapabileceğiniz ayarlamaların bir listesini içerir:  
 
 |            |                                                                                                                                                                      |
 |------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Blok      | Etki alanını, alt sayfayı veya web sayfasını Engellenenler listesine taşır. Bing, seçilen sitedeki içeriğin arama sonuçlarında görünmesini hariç tutar.                    |
-| Artırmak      | Arama sonuçlarında daha yüksek olması için etki alanından veya alt sayfadan gelen içeriği artırır.                                                                                        |
-| İndirgeme     | Arama sonuçlarında etki alanından veya alt sayfadan içeriği düşürür. Web sayfasının ait olduğu etki alanından veya alt sayfasından içeriği düşürüp düşürmeyeceğinizi seçersiniz. |
-| En üste sabitleme | Etki alanını, alt sayfayı veya web sayfasını **Sabitlenmiş** listeye taşır. Bu, web sayfasını belirli bir arama sorgusunun en üst arama sonucu olarak görünmeye zorlar.                   |
+| Blok      | Etki alanı, alt sayfa veya Web sayfasını engellenen listeye gider. Bing, seçili sitenin içeriğini arama sonuçlarında görünecek şekilde dışarıda bırakır.                    |
+| Artırmak      | Etki alanı veya alt sayfa içeriğini arama sonuçlarında daha yüksek olacak şekilde.                                                                                        |
+| İndirgeme     | Arama sonuçlarındaki etki alanı veya alt sayfa içeriğini indirger. İçeriğin, Web sayfasının ait olduğu etki alanı veya alt sayfa arasında mi indirgeneceğini seçersiniz. |
+| En üste sabitle | Etki alanı, alt sayfa veya Web sayfasını **sabitlenmiş** listeye taşıın. Bu, Web sayfasını belirli bir arama sorgusunun en üst arama sonucu olarak görünmesini zorlar.                   |
 
-Resim veya video aramaları için sıralamayı ayarlama kullanılamıyor.
+Görüntü veya video aramalarında derece ayarlama kullanılamaz.
 
-### <a name="boosting-and-demoting-search-results"></a>Arama sonuçlarını artırma ve düşürme
+### <a name="boosting-and-demoting-search-results"></a>Arama sonuçlarını artırma ve indirgeme
 
-**Etkin** listesindeki herhangi bir etki alanını veya alt sayfasını süper olarak artırabilir, öne çıkarabilir veya düşürebilirsiniz. Varsayılan olarak, tüm dilimler sıralama ayarlamaları yapılmadan eklenir. Süper öne çıkan veya Öne Çıkan web dilimleri arama sonuçlarında daha yüksek sıralanır (süper artış sıralaması öne sürülmeden daha yüksektir). İndirilen öğeler arama sonuçlarında daha düşük sıralanır.
+**Etkin** listedeki herhangi bir etki alanını veya alt sayfayı süper artırabilir, artırabilir veya alçaltabilirsiniz. Varsayılan olarak, tüm dilimler sıralama ayarlamaları olmadan eklenir. Web 'in süper veya daha fazla maliyetli olan dilimleri, arama sonuçlarında daha üst dereceye sahiptir (yükseği daha yüksek olan süper arttırma derecelendirmesiyle). İndirgenen öğeler, arama sonuçlarında daha düşük sıralanır.
 
-**Etkin** listedeki **Sıralama Ayarlama** denetimlerini kullanarak veya Önizleme bölmesindeki Öne Çıkarma ve Düşür denetimlerini kullanarak öğeleri süper olarak artırabilir, artırabilir veya düşürebilirsiniz. Hizmet, dilimi Etkin listenize ekler ve sıralamayı buna göre ayarlar.
+**Etkin** listedeki denetimleri **ayarlama** denetimlerini kullanarak veya Önizleme bölmesindeki artırma ve indirgeme denetimlerini kullanarak öğeleri süper artırma, artırma veya alçaltabilirsiniz. Hizmet, dilimi etkin listenize ekler ve derecelendirmeyi buna göre ayarlar.
 
 > [!NOTE] 
-> Etki alanlarını ve alt sayfaları artırma ve düşürme, Bing Özel Arama'nın arama sonuçlarının sırasını belirlemek için kullandığı birçok yöntemden biridir. Farklı web içeriğinin sıralamasını etkileyen diğer faktörler nedeniyle, sıralamayı ayarlamanın etkileri değişebilir. Arama sonuçlarınızın sıralamasını ayarlamanın etkilerini test etmek için Önizleme bölmesini kullanın. 
+> Etki alanlarını ve alt sayfalarını artırma ve indirgeme, Bing Özel Arama arama sonuçlarının sırasını belirlemede kullanılan birçok yöntemden biridir. Farklı Web içeriğinin sıralamasını etkileyen diğer faktörler nedeniyle, ayarlama sırasının etkileri farklılık gösterebilir. Arama sonuçlarınızın sırasını ayarlamaya yönelik etkileri test etmek için Önizleme bölmesini kullanın. 
 
-Görüntü ve video aramaları için süper destek, artırma ve düşürme kullanılamıyor.
+Görüntü ve video aramalarında süper artırma, artırma ve indirgeme kullanılamaz.
 
-## <a name="pin-slices-to-the-top-of-search-results"></a>Dilimleri arama sonuçlarının en üstüne sabitleme
+## <a name="pin-slices-to-the-top-of-search-results"></a>Dilimleri arama sonuçlarının en üstüne sabitle
 
-Portal ayrıca, **Pinned** sekmesini kullanarak belirli arama terimleri için URL'leri arama sonuçlarının en üstüne sabitlemenizi sağlar. Arama sorgusu başına en fazla bir web sayfasını sabitleyebileceğinizi ve aramalarda yalnızca dizine eklenmiş web sayfalarının görüntüleneceğini unutmayın. Sabitleme sonuçları görüntü veya video aramaları için kullanılamaz.
+Portal Ayrıca, **sabitlenmiş** sekmeyi kullanarak belirli arama koşullarına ait URL 'leri arama sonuçlarının üst kısmına sabitlemenizi sağlar. en üstteki sonuç olarak görünecek Web sayfasını belirtmek IÇIN bir URL ve sorgu girin. Arama sorgusu başına en fazla bir Web sayfası sabitleyebilir ve aramalarda yalnızca dizinli Web sayfaları görüntülenecektir. Görüntü veya video aramaları için, sabitleme sonuçları kullanılamaz.
 
-Bir web sayfasını en üste iki şekilde sabitleyebilirsiniz:
+Bir Web sayfasını en üste iki şekilde sabitleyebilir:
 
-* **Sabitlenmiş** sekmesine, web sayfasının URL'sini girin ve ilgili sorgusunu en üste sabitleyin.
+* Sabitlenmiş sekmesine, en üste **sabitlediğiniz** Web sayfasının URL 'sini ve ilgili sorguyu girin.
 
-* **Önizleme** bölmesinde, bir arama sorgusu girin ve arama'yı tıklatın. Sorgunuz için sabitlemek istediğiniz web sayfasını bulun ve **en üste Sabitle'yi**tıklatın. web sayfası ve sorgu **Sabitlenmiş** listeye eklenir.
+* **Önizleme** bölmesinde bir arama sorgusu girin ve ara ' ya tıklayın. Sorgunuz için sabitlemek istediğiniz Web sayfasını bulun ve **en üste sabitle**' ye tıklayın. Web sayfası ve sorgu **sabitlenmiş** listeye eklenecektir.
 
-### <a name="specify-the-pins-match-condition"></a>Pinin eşleşme durumunu belirtin
+### <a name="specify-the-pins-match-condition"></a>PIN 'in eşleşme koşulunu belirtin
 
-Varsayılan olarak, web sayfaları yalnızca bir kullanıcının sorgu dizesi Sabitlenmiş ler listesinde listelenen bir diziyle eşleştiğinde arama sonuçlarının en üstüne **sabitlenir.** Aşağıdaki eşleşme koşullarından birini belirterek bu davranışı değiştirebilirsiniz:
+Varsayılan olarak, Web sayfaları yalnızca bir kullanıcının sorgu dizesi **sabitlenmiş** listede listelenen biriyle tam olarak eşleştiğinde arama sonuçlarının üstüne sabitlenir. Aşağıdaki eşleşme koşullarından birini belirterek, bu davranışı değiştirebilirsiniz:
 
 > [!NOTE]
-> Kullanıcının arama sorgusu ile pinin arama sorgusu arasındaki tüm karşılaştırmalar büyük/küçük harf duyarsızdır.
+> Kullanıcının arama sorgusu ve PIN 'in arama sorgusu arasındaki tüm karşılaştırmalar büyük/küçük harfe duyarlıdır.
 
 | Değer | Açıklama                                                                          |
 |---------------|----------------------------------------------------------------------------------|
-| İle başlar | Kullanıcının sorgu dizesi pinin sorgu dizesiyle başlarsa pin eşleşir |
-| Ile biter   | Kullanıcının sorgu dizesi pinin sorgu dizesiyle biterse pin eşleşir.  |
-| Contains    | Kullanıcının sorgu dizesi pinin sorgu dizesini içeriyorsa, pin eşleşir.   |
+| İle başlar | Kullanıcının sorgu dizesi, PIN 'in sorgu dizesiyle başlıyorsa, PIN bir eşleşmedir |
+| Şununla biter   | Kullanıcının sorgu dizesi, PIN 'in sorgu dizesiyle biterse PIN bir eşleşmedir.  |
+| Contains    | Kullanıcının sorgu dizesi, PIN 'in sorgu dizesini içeriyorsa, PIN bir eşleşmedir.   |
 
 
-Pinin eşleşme durumunu değiştirmek için, pinin edit simgesini tıklatın. Sorgu **maç durumu** sütununda açılır listeyi tıklatın ve kullanılacak yeni koşulu seçin. Ardından, değişikliği kaydetmek için kaydet simgesini tıklatın.
+PIN 'in eşleşme koşulunu değiştirmek için, PIN 'in düzenleme simgesine tıklayın. **Sorgu eşleştirme koşulu** sütununda, açılan listeye tıklayın ve kullanılacak yeni koşulu seçin. Sonra, değişikliği kaydetmek için kaydet simgesine tıklayın.
 
 ### <a name="change-the-order-of-your-pinned-sites"></a>Sabitlenmiş sitelerinizin sırasını değiştirme
 
-Pinlerinizin sırasını değiştirmek için, **pinned** listesinin **Denetimler** Sütunu'ndaki "düzenle" simgesine tıklayarak bunları sürükleyip bırakabilirsiniz veya sipariş numarasını düzenleyebilirsiniz.
+PIN 'larınızın sırasını değiştirmek için, **sabitlenmiş** listenin **denetimler** sütunundaki "Düzenle" simgesine tıklayarak bunları sürükleyip bırakabilir veya sıra numaralarını düzenleyebilirsiniz.
 
-Birden çok pin bir eşleşme koşulunu karşılarsa, Bing Özel Arama listedeki en yüksek pini kullanır.
+Birden fazla PIN eşleşme koşulunu karşılamadığı takdirde Bing Özel Arama listedeki en üst olanı kullanır.
 
-## <a name="view-statistics"></a>İstatistikleri görüntüleme
+## <a name="view-statistics"></a>İstatistikleri görüntüle
 
-Uygun düzeyde Özel Arama'ya abone olduysanız [(fiyatlandırma sayfalarına](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)bakın), üretim örneklerinize bir **İstatistik** sekmesi eklenir. İstatistikler sekmesi, arama hacmi, üst sorgular, coğrafi dağılım, yanıt kodları ve güvenli arama dahil olmak üzere Özel Arama uç noktalarınızın nasıl kullanıldığıyla ilgili ayrıntıları gösterir. Sağlanan denetimleri kullanarak ayrıntıları filtreleyebilirsiniz.
+Özel aramaya uygun düzeyde abone oldıysanız ( [fiyatlandırma sayfalarına](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)bakın), üretim örneklerinizde bir **istatistik** sekmesi eklenir. İstatistikler sekmesinde, çağrı hacmi, popüler sorgular, coğrafi dağıtım, yanıt kodları ve güvenli arama dahil olmak üzere özel arama uç noktalarınızın nasıl kullanıldığı hakkında ayrıntılar gösterilir. Ayrıntıları, belirtilen denetimleri kullanarak filtreleyebilirsiniz.
 
 ## <a name="usage-guidelines"></a>Kullanım yönergeleri
 
-- Her özel arama örneği **için, Etkin** ve **Engellenen** dilimlerde yapabileceğiniz maksimum sıralama ayarlamasayısı 400 ile sınırlıdır.
-- Etkin veya Engellenen sekmelere bir dilim eklemek tek bir sıralama ayarlaması olarak sayılır.
-- Artırma ve düşürme sayısı iki sıralama ayarlaması olarak sayılır.
-- Her özel arama örneği için, yapacağınız maksimum pin sayısı 200 ile sınırlıdır.
+- Her bir özel arama örneği için, **etkin** ve **Engellenen** dilimlerde yapabileceğiniz maksimum derecelendirme ayarlaması sayısı 400 ile sınırlıdır.
+- Etkin veya engellenen sekmelere bir dilim eklemek, tek bir derecelendirme ayarlaması olarak sayılır.
+- Sayıyı iki derecelendirme ayarlaması olarak arttırma ve indirgeme.
+- Her bir özel arama örneği için, yapabileceğiniz en fazla PIN sayısı 200 ile sınırlıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

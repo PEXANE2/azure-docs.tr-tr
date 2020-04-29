@@ -1,7 +1,7 @@
 ---
-title: Metin Analizi ve Güç Otomatikleştirme'yi kullanarak Excel'de bilgi ayıklama
+title: Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla
 titleSuffix: Azure Cognitive Services
-description: Metin Analizi ve Power Automate'i kullanarak kod yazmak zorunda kalmadan Excel metnini nasıl ayıklayın öğrenin.
+description: Metin Analizi ve güç otomatikleştirme kullanarak Excel metnini kod yazmak zorunda kalmadan nasıl ayıklayacağınızı öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,221 +11,221 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: aahi
 ms.openlocfilehash: fd70fe14d3765fb7c21b92f62b4d73564176baa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78201193"
 ---
-# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Metin Analizi ve Güç Otomatikleştirme'yi kullanarak Excel'de bilgi ayıklama 
+# <a name="extract-information-in-excel-using-text-analytics-and-power-automate"></a>Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla 
 
-Bu öğreticide, kod yazmak zorunda kalmadan Excel elektronik tablosundaki metni ayıklamak için bir Güç Otomatikleştir akışı oluşturursunuz. 
+Bu öğreticide, kod yazmak zorunda kalmadan bir Excel elektronik tablosunda metin ayıklamak için Power otomatikleştiren bir akış oluşturacaksınız. 
 
-Bu akış, bir apartman kompleksi hakkında bildirilen sorunların bir elektronik tablosu nu alır ve bunları iki kategoriye ayırır: tesisat ve diğer. Ayrıca onları gönderen kiracıların adlarını ve telefon numaralarını ayıklayacak. Son olarak, akış bu bilgileri Excel sayfasına ekler. 
+Bu akış, bir grup karmaşık hakkında raporlanan sorunların bir elektronik tablosunu alır ve bunları iki kategoride sınıflandırır: sıhhi tesisat ve diğer. Ayrıca, onları gönderen kiracıların adlarını ve telefon numaralarını da ayıklar. Son olarak, akış bu bilgileri Excel sayfasına ekler. 
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Akış oluşturmak için Güç Otomatikleştir'i kullanın
-> * OneDrive for Business'tan Excel verilerini yükleyin
-> * Excel'den metin ayıklayın ve Metin Analizi API'sine gönderin 
-> * Excel sayfasını güncelleştirmek için API'deki bilgileri kullanın.
+> * Akış oluşturmak için güç otomatikleştirmesini kullanma
+> * OneDrive Iş 'ten Excel verilerini karşıya yükleme
+> * Excel 'den metin Ayıkla ve Metin Analizi API'si gönderin 
+> * Bir Excel sayfasını güncelleştirmek için API 'deki bilgileri kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Microsoft Azure hesabı. [Ücretsiz bir deneme başlatın](https://azure.microsoft.com/free/) veya [oturum açın](https://portal.azure.com/).
-- Bir Metin Analizi kaynağı. Yoksa, [Azure portalında bir tane oluşturabilir](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) ve bu öğreticiyi tamamlamak için ücretsiz katmanı kullanabilirsiniz.
-- Kayıt sırasında sizin için oluşturulan [anahtar ve bitiş noktası.](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)
-- Kiracı sorunlarını içeren bir elektronik tablo. Örnek veriler GitHub'da sağlanır
-- Office 365, OneDrive for Business ile birlikte.
+- Bir Metin Analizi kaynağı. Bir tane yoksa, [Azure Portal bir tane oluşturabilir](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) ve ücretsiz katmanı kullanarak bu öğreticiyi tamamlayabilirsiniz.
+- Kaydolma sırasında sizin için oluşturulan [anahtar ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+- Kiracı sorunlarını içeren bir elektronik tablo. GitHub 'da örnek veriler verilmiştir
+- Office 365, OneDrive Iş ile.
 
-## <a name="add-the-excel-file-to-onedrive-for-business"></a>İş Için OneDrive'a Excel dosyasını ekleme
+## <a name="add-the-excel-file-to-onedrive-for-business"></a>Excel dosyasını OneDrive Iş 'e ekleyin
 
-Örnek Excel dosyasını [GitHub'dan indirin.](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/TextAnalytics/sample-data/ReportedIssues.xlsx) Bu dosya, OneDrive for Business hesabınızda depolanmalıdır.
+Örnek Excel dosyasını [GitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/TextAnalytics/sample-data/ReportedIssues.xlsx)'dan indirin. Bu dosya OneDrive Iş hesabınızda depolanmalıdır.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/example-data.png" alt-text="Excel dosyasından örnekler.":::
 
-Sorunlar ham metinde bildirilir. Kişi adını ve telefon numarasını ayıklamak için Text Analytics API'nin Adlandırılmış Varlık Tanıma sını kullanacağız. Sonra akış sorunları kategorize etmek için açıklamasında kelime "sıhhi tesisat" arayacaktır. 
+Sorunlar ham metinde raporlanır. Kişinin adını ve telefon numarasını ayıklamak için Metin Analizi API'si adlı varlık tanımayı kullanacağız. Ardından akışta, sorunları kategorilere ayırmak için açıklamada "sıhhi tesisat" sözcüğü görünür. 
 
-## <a name="create-a-new-power-automate-workflow"></a>Yeni bir Power Otomatikleştirme iş akışı oluşturun
+## <a name="create-a-new-power-automate-workflow"></a>Yeni bir Power Otomasyonu iş akışı oluşturma
 
-[Power Automate sitesine](https://preview.flow.microsoft.com/)gidin ve oturum açın. Ardından **Oluştur** ve **Zamanlama akışını**tıklatın.
+[Power otomatikleştir sitesine](https://preview.flow.microsoft.com/)gidin ve oturum açın. Ardından **Oluştur** ve **zamanlanan akış**öğesine tıklayın.
 
 > [!div class="mx-imgBorder"] 
 > :::image type="content" source="../media/tutorials/excel/flow-creation.png" alt-text="Akış oluşturma ekranı.":::
 
 
-**Zamanlanmış akış** sayfası oluştur'da, akışınızı aşağıdaki alanları içeren başlatma:
+**Zamanlanan akış oluştur** sayfasında, akışınızı aşağıdaki alanlarla başlatın:
 
 |Alan |Değer  |
 |---------|---------|
-|**Akış adı**     | **Zamanlanmış İnceleme** veya başka bir ad.         |
+|**Akış adı**     | **Zamanlanan gözden geçirme** veya başka bir ad.         |
 |**Başlatılıyor**     |  Geçerli tarih ve saati girin.       |
-|**Her tekrarlayın**     | **1 saat**        |
+|**Yineleme sıklığı**     | **1 saat**        |
 
 ## <a name="add-variables-to-the-flow"></a>Akışa değişken ekleme
 
 > [!NOTE]
-> Tamamlanan akışın bir görüntüsünü görmek istiyorsanız, [GitHub'dan](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/TextAnalytics/flow-diagrams)indirebilirsiniz. 
+> Tamamlanan akışın bir görüntüsünü görmek isterseniz, bunu [GitHub](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/TextAnalytics/flow-diagrams)' dan indirebilirsiniz. 
 
-Excel dosyasına eklenecek bilgileri temsil eden değişkenler oluşturun. **Yeni Adım'ı** tıklatın ve **Değişkeni Başlatma'yı**arayın. Dört değişken oluşturmak için bunu dört kez yapın.
+Excel dosyasına eklenecek bilgileri temsil eden değişkenler oluşturun. **Yeni adım** ' a tıklayıp **başlatma değişkeni**için arama yapın. Dört değişken oluşturmak için bunu dört kez yapın.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Değişkenleri başlangıç.":::
+> :::image type="content" source="../media/tutorials/excel/initialize-variables.png" alt-text="Değişkenleri başlatın.":::
 
-Oluşturduğunuz değişkenlere aşağıdaki bilgileri ekleyin. Excel dosyasının sütunlarını temsil ederler. Herhangi bir değişken daraltılırsa, bunları genişletmek için bunları tıklatabilirsiniz.
+Aşağıdaki bilgileri oluşturduğunuz değişkenlere ekleyin. Excel dosyasının sütunlarını temsil eder. Herhangi bir değişken daraltılamışsa, bunları genişletmek için bunlara tıklayabilirsiniz.
 
 | Eylem |Adı   | Tür | Değer |
 |---------|---------|---|---|
-| Değişkeni başlatma | var_person | Dize | Kişi |
-| Değişken 2'yi başlatma | var_phone | Dize | Phone_Number |
-| Değişken 3'e başharf | var_plumbing | Dize | Sıhhi tesisat |
-| Değişken 4'e başharf | var_other | Dize | diğer | 
+| Değişkeni Başlat | var_person | Dize | Kişi |
+| Değişken 2 ' i Başlat | var_phone | Dize | Phone_Number |
+| Değişkeni Başlat 3 | var_plumbing | Dize | Sıhhi |
+| Başlangıç değişkeni 4 | var_other | Dize | diğer | 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="akış değişkenlerinde yer alan bilgiler":::
+> :::image type="content" source="../media/tutorials/excel/flow-variables.png" alt-text="akış değişkenlerinde bulunan bilgiler":::
 
 ## <a name="read-the-excel-file"></a>Excel dosyasını okuyun
 
-**Yeni Adım'ı** tıklatın ve **Excel**yazın, ardından eylemler listesinden **tabloda bulunan liste satırlarını** seçin.
+**Yeni adım** ' a tıklayın ve **Excel**yazıp Eylemler listesinden **bir tabloda bulunan liste satırları** ' nı seçin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="excel satırları ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows.png" alt-text="Excel satırları ekleyin.":::
 
-Bu eylemdeki alanları doldurarak Excel dosyasını akışa ekleyin. Bu öğretici, dosyanın OneDrive for Business'a yüklenmesini gerektirir.
-
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="excel satırları ekleyin.":::
-
-**Yeni Adım'ı** tıklatın ve **her eyleme bir Uygula** ekleyin.
+Bu eylemde bulunan alanları doldurarak Excel dosyasını akışa ekleyin. Bu öğreticide, dosyanın OneDrive Iş 'e yüklenmiş olması gerekir.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="bir uygula komutu ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/list-excel-rows-options.png" alt-text="Excel satırları ekleyin.":::
 
-Önceki **adımdan çıktı seç'e**tıklayın. Görünen Dinamik içerik kutusunda **değeri**seçin.
+**Yeni adım** ' a tıklayın ve **her** eyleme bir Uygula ekleyin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Excel dosyasından çıktıseçin.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action.png" alt-text="Uygula komutu ekleyin.":::
 
-## <a name="send-a-request-to-the-text-analytics-api"></a>Metin Analizi API'sine istek gönderme
+**Önceki adımdan bir çıktı Seç**' e tıklayın. Görüntülenen dinamik içerik kutusunda **değer**' i seçin.
 
-Henüz yapmadıysanız, Azure portalında bir [Metin Analizi kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) oluşturmanız gerekir.
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/select-output.png" alt-text="Excel dosyasından çıkış ' ı seçin.":::
+
+## <a name="send-a-request-to-the-text-analytics-api"></a>Metin Analizi API'si istek gönder
+
+Henüz yapmadıysanız, Azure portal bir [metin analizi kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) oluşturmanız gerekir.
 
 ### <a name="create-a-text-analytics-connection"></a>Metin Analizi bağlantısı oluşturma
 
-Her **birine Uygula'da** **eylem ekle'yi**tıklatın. Azure portalındaki Metin Analizi kaynağınızın **anahtar ve bitiş noktası** sayfasına gidin ve Metin Analizi kaynağınızın anahtar ve bitiş noktasını alın.
+**Her birine Uygula**' da **Eylem Ekle**' ye tıklayın. Azure portal Metin Analizi kaynağınızın **anahtar ve uç nokta** sayfasına gidin ve metin analizi kaynağınızın anahtarını ve uç noktasını alın.
 
-Akışınızda, yeni bir Metin Analizi bağlantısı oluşturmak için aşağıdaki bilgileri girin.
+Flow 'da yeni bir Metin Analizi bağlantısı oluşturmak için aşağıdaki bilgileri girin.
 
 > [!NOTE]
-> Zaten bir Metin Analizi bağlantısı oluşturduysanız ve bağlantı bilgilerinizi değiştirmek istiyorsanız, sağ üst köşedeki elipsleri tıklatın ve **+ Yeni bağlantı ekle'yi**tıklatın.
+> Zaten bir Metin Analizi bağlantısı oluşturduysanız ve bağlantı ayrıntılarınızı değiştirmek istiyorsanız sağ üst köşedeki üç noktaya tıklayın ve **+ Yeni bağlantı ekle**' ye tıklayın.
 
 | Alan           | Değer                                                                                                             |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| Bağlantı Adı | Text Analytics kaynağınıza bağlantıiçin bir ad. Örneğin, `TAforPowerAutomate`. |
-| Hesap anahtarı     | Text Analytics kaynağınızın anahtarı.                                                                                   |
-| Site URL'si        | Text Analytics kaynağınızın bitiş noktası.                                                       |
+| Bağlantı Adı | Metin Analizi kaynağınızın bağlantısı için bir ad. Örneğin, `TAforPowerAutomate`. |
+| Hesap anahtarı     | Metin Analizi kaynağınız için anahtar.                                                                                   |
+| Site URL 'SI        | Metin Analizi kaynağınız için uç nokta.                                                       |
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/add-credentials.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-## <a name="extract-the-excel-content"></a>Excel içeriğini ayıklama 
+## <a name="extract-the-excel-content"></a>Excel içeriğini Ayıkla 
 
-Bağlantı oluşturulduktan sonra **Metin Analizi'ni** arayın ve **Varlıkları**seçin. Bu, sorunun açıklama sütunundan bilgi ayıklar.
-
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
-
-**Metin** alanına tıklayın ve görünen Dinamik içerik pencerelerinden **Açıklama'yı** seçin. Dil `en` için girin. (Dil görmüyorsanız gelişmiş seçenekleri göster'i tıklatın)
+Bağlantı oluşturulduktan sonra, **metin analizi** arayın ve **varlıklar**' ı seçin. Bu, sorunun açıklama sütunundan bilgi ayıklar.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/extract-info.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-
-## <a name="extract-the-person-name"></a>Kişi adını ayıklama
-
-Ardından, Text Analytics çıktısında kişi varlık türünü bulacağız. Her **birine Uygula'da** **eylem ekle'yi**tıklatın ve her eylem için başka bir **Uygula** oluşturun. Metin kutusunun içini tıklatın ve görünen Dinamik İçerik penceresinde **Varlıkları** seçin.
+**Metin** alanına tıklayın ve görüntülenen dinamik Içerik penceresinden **Açıklama** ' yı seçin. Dil `en` için girin. (Dil görmüyorsanız Gelişmiş seçenekleri göster ' e tıklayın)
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/description-from-dynamic-content.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-Yeni oluşturulan **her 2 eyleme uygula'da** **eylem ekle'yi**tıklatın ve **Durum** denetimi ekleyin.
 
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+## <a name="extract-the-person-name"></a>Kişi adını Ayıkla
 
-Durum penceresinde, ilk metin kutusunu tıklatın. Dinamik içerik penceresinde, **Varlıklar Türünü** arayın ve seçin.
+Sonra, Metin Analizi çıktısında kişi varlık türünü bulacağız. **Her birine Uygula**içinde, **Eylem Ekle**' ye tıklayın ve **her eylem için** başka bir uygulama oluşturun. Metin kutusunun içine tıklayın ve görüntülenen dinamik Içerik penceresinde **varlıklar** ' ı seçin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-2.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-İkinci kutunun **''ye eşit olarak**ayarlandıklarına emin olun Ardından üçüncü kutuyu seçin `var_person` ve Dinamik içerik penceresinde arama yapın. 
-
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
-
-Evet **çıkarsa** koşulunda, Excel'de yazın ve **ardından Satır ı Güncelleştir'i**seçin.
+Yeni oluşturulan **her 2 eylemi için** , **Eylem Ekle**' ye tıklayın ve bir **koşul** denetimi ekleyin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/create-condition.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-Excel bilgilerini girin ve **Anahtar Sütun,** **Anahtar Değeri** ve **Kişi Adı** alanlarını güncelleştirin. Bu, API tarafından algılanan adı Excel sayfasına ekler. 
-
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
-
-## <a name="get-the-phone-number"></a>Telefon numarasını alın
-
-Adı tıklayarak her 2 eylem **için Uygula** en aza indirin. Ardından, **her eyleme** daha önce olduğu gibi başka bir Uygula ekleyin. her 3 **için Uygula**olarak adlandırılacaktır. Metin kutusunu seçin ve bu eylem için çıktı olarak **varlıklar** ekleyin. 
+Koşul penceresinde, ilk metin kutusuna tıklayın. Dinamik içerik penceresinde **varlık türü** araması yapın ve seçin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/choose-entities-value.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-Her **3'e Uygula**içinde, bir **Durum** denetimi ekleyin. Bu Durum **2**olarak adlandırılacaktır. İlk metin kutusunda Dinamik içerik penceresinden **Varlıklar Türünü** arayın ve ekleyin. Orta kutunun 'a **eşit olarak**ayarlandıklarına emin olun Daha sonra, sağ metin `var_phone`kutusuna, girin. 
-
-> [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
-
-Evet **çıkarsa** koşulunda, bir satır eylemini **güncelleştir'** ekleyin. Daha sonra excel sayfasının telefon numaraları sütununa yukarıda yaptığımız gibi bilgileri girin. Bu, API tarafından algılanan telefon numarasını Excel sayfasına ekler. 
+İkinci kutunun **değerine eşit**olduğundan emin olun. Ardından üçüncü kutuyu seçin ve dinamik içerik penceresinde arama `var_person` yapın. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/choose-variable-value.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-
-## <a name="get-the-plumbing-issues"></a>Tesisat sorunlarını alın
-
-En aza indirin Her **3'e** adı tıklayarak uygulayın. Ardından, üst eylemdeki **her biri için** başka bir Uygula oluşturun. Metin kutusunu seçin ve Dinamik içerik penceresinden bu eylem için çıktı olarak **Varlıklar** ekleyin. 
+**Evet ise** , Excel 'de yazın ve ardından **satırı Güncelleştir**' i seçin.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
-
-Ardından, akış Excel tablo satırındaki sorun açıklamasının "tesisat" sözcüğünden olup olmadığını denetler. Evet ise, IssueType sütununa "sıhhi tesisat" ekler. Yoksa, "diğer" gireriz.
-
-Her **4 eylemiçin Uygula** içinde, bir **Koşul** Denetimi ekleyin. Bu Durum **3**olarak adlandırılacaktır. İlk metin kutusunda Dinamik içerik penceresini kullanarak Excel dosyasından **Açıklama'yı** arayın ve ekleyin. Orta daki kutunun **.** Daha sonra, sağ metin kutusunda, `var_plumbing`bul ve seçin. 
+Excel bilgilerini girin ve **anahtar sütununu**, **anahtar değerini** ve **PersonName** alanlarını güncelleştirin. Bu, API tarafından algılanan adı Excel sayfasına ekler. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/yes-column-action-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
+## <a name="get-the-phone-number"></a>Telefon numarasını al
 
-Evet **çıkarsa** koşulunda, **eylem ekle'yi**tıklatın ve **satırı güncelleştir'i**seçin. Sonra eskisi gibi bilgileri girin. IssueType sütununda `var_plumbing`. Bu satıra bir "sıhhi tesisat" etiketi uygular.
-
-If **koşulunda,** **eylem ekle'yi**tıklatın ve **satırı Güncelleştir'i**seçin. Sonra eskisi gibi bilgileri girin. IssueType sütununda `var_other`. Bu satıra bir "diğer" etiketi uygular.
+Ada tıklayarak **her 2 Için Uygula** eylemini en aza indirin. Ardından, daha önce olduğu gibi her eyleme başka bir **uygulama** ekleyin. Bu, **her 3 Için uygulanacak**olarak adlandırılır. Metin kutusunu seçin ve bu eylem için çıkış olarak **varlık** ekleyin. 
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Akışınıza Metin Analizi kimlik bilgilerini ekleyin.":::
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-3.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
+
+**Her 3 Için geçerlidir**Içinde bir **koşul** denetimi ekleyin. **Koşul 2**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresinden **varlık türünü** arayın ve ekleyin. Center kutusunun **değerine eşit**olduğundan emin olun. Ardından, doğru metin kutusuna girin `var_phone`. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/condition-2-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
+
+**Evet ise** , **satır Güncelleştir** eylemini ekleyin. Daha sonra, Excel sayfasının telefon numaraları sütunu için yukarıda yaptığımız gibi bilgileri girin. Bu, API tarafından algılanan telefon numarasını Excel sayfasına ekler. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/condition-2-yes-column.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
+
+
+## <a name="get-the-plumbing-issues"></a>Sıhhi tesisat sorunlarını alın
+
+Ada tıklayarak **her 3 Için uygulanan uygulamayı** en aza indirin. Ardından, üst eylemde **her biri için** başka bir uygulama oluşturun. Metin kutusunu seçin ve dinamik içerik penceresinden bu eyleme çıkış olarak **varlık** ekleyin. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/add-apply-action-4.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
+
+
+Daha sonra Flow, Excel tablo satırındaki sorun açıklamasının "sıhhi tesisat" sözcüğünü içerip içermesinin olup olmadığını kontrol eder. Yanıt Evet ise, IssueType sütununa "sıhhi tesisat" ekler. Aksi takdirde "Other" olarak girilecek.
+
+**Her 4 Için Uygula** eyleminin Içinde bir **koşul** denetimi ekleyin. **Koşul 3**olarak adlandırılır. İlk metin kutusunda, dinamik içerik penceresini kullanarak Excel dosyasından açıklama ekleyin ve **Açıklama** ekleyin. Ortadaki kutunun **içerdiğinden**emin olun. Sonra sağ metin kutusunda bulun ve seçin `var_plumbing`. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/condition-3-options.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
+
+
+**Evet ise** , **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_plumbing`. Bu, satıra bir "sıhhi tesisat" etiketi uygular.
+
+**Koşul yoksa,** **Eylem Ekle**' ye tıklayın ve **bir satırı Güncelleştir**' i seçin. Daha sonra gibi bilgileri girin. IssueType sütununda, öğesini seçin `var_other`. Bu, satıra "diğer" etiketini uygular.
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="../media/tutorials/excel/plumbing-issue-condition.png" alt-text="Akışlarınızın Metin Analizi kimlik bilgilerini ekleyin.":::
 
 ## <a name="test-the-workflow"></a>İş akışını test etme
 
-Ekranın sağ üst köşesinde **Kaydet'i**tıklatın, ardından **Test edin.** **Tetikleyici eylemini gerçekleştireceğimi**seçin. **& Test kaydet,** **akışı çalıştır'** ı, ardından **Bitti'yi**tıklatın.
+Ekranın sağ üst köşesinde **Kaydet**' e ve ardından **Sına**' ya tıklayın. **Tetikleme eylemini yapacağım ' ı**seçin. **& testi kaydet**' e tıklayın, **akışı çalıştırın**, sonra **bitti**.
 
-Excel dosyası OneDrive hesabınızda güncellenir. Aşağıdaki gibi görünecektir.
+Excel dosyası OneDrive hesabınızda güncelleştirilir. Aşağıdaki gibi görünür.
 
 > [!div class="mx-imgBorder"] 
-> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="Güncelleştirilmiş excel elektronik tablosu.":::
+> :::image type="content" source="../media/tutorials/excel/updated-excel-sheet.png" alt-text="Güncelleştirilmiş Excel elektronik tablosu.":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Daha fazla çözüm keşfedin](../text-analytics-user-scenarios.md)
+> [Diğer çözümleri keşfet](../text-analytics-user-scenarios.md)

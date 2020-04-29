@@ -1,7 +1,7 @@
 ---
-title: İşbirlikçi Çeviri Çerçevesi (CTF) Raporlama - Çevirmen Metin API
+title: İşbirliğine dayalı Çeviri Çerçevesi (CTF) raporlama-Translator Metin Çevirisi API'si
 titleSuffix: Azure Cognitive Services
-description: İşbirlikçi Çeviri Çerçevesi (CTF) raporlaması nasıl kullanılır?
+description: Işbirliğine dayalı Çeviri Çerçevesi (CTF) raporlamasını kullanma.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595930"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>Collaborative Translation Framework (CTF) raporlamasını kullanma
 
 > [!NOTE]
-> Bu yöntem amortismana hazırdır. Çevirmen Metin API'sinin V3.0'ında kullanılamaz.
+> Bu yöntem kullanım dışıdır. Translator Metin Çevirisi API'si V 3.0 sürümünde kullanılamaz.
 > 
-> Daha önce Çevirmen Metin API'sinin V2.0 için kullanıma sunulduğu İşbirlikçi Çeviriler Çerçevesi (CTF), 1 Şubat 2018 itibariyle amortismana kaldırıldı. AddTranslation ve AddTranslationArray işlevleri, kullanıcıların Ortak Çeviri Çerçevesi üzerinden düzeltmelere olanak sağlamasına olanak tanır. 31 Ocak 2018'den sonra, bu iki işlev yeni cümle gönderimlerini kabul etmedi ve kullanıcılar bir hata iletisi aldı. Bu işlevler kullanımdan kaldırıldı ve değiştirilmeyecek.
+> Daha önce Translator Metin Çevirisi API'si V 2.0 için kullanılabilen Işbirliğine dayalı Çeviri Çerçevesi (CTF), 1 Şubat 2018 itibariyle kullanımdan kaldırılmıştır. AddTranslation ve AddTranslationArray işlevleri, kullanıcıların Işbirliğine dayalı çeviri çerçevesi aracılığıyla düzeltmeleri etkinleştirmesine olanak tanır. 31 Ocak 2018 ' den sonra bu iki işlev yeni tümce gönderilerini kabul etmedi ve kullanıcılar bir hata iletisi alır. Bu işlevler kullanımdan kalkmıştı ve değiştirilmeyecektir.
 
-İşbirliğine Dayalı Çeviri Çerçevesi (CTF) Raporlama API'si istatistikleri ve CTF deposundaki gerçek içeriği döndürür. Bu API GetTranslations() yöntemifarklıdır, çünkü:
-* Çevrilen içeriği ve toplam sayısını yalnızca hesabınızdan (appId veya Azure Marketi hesabı) döndürür.
-* Çevrilen içeriği ve toplam sayısını kaynak cümlenin eşleşmesine gerek kalmadan döndürür.
-* Otomatik çeviri (makine çevirisi) döndürmez.
+Işbirlikçi Çeviri Çerçevesi (CTF) Raporlama API 'SI, CTF deposundaki istatistikleri ve gerçek içeriği döndürür. Bu API, Getçeviriler () yönteminden farklıdır, çünkü:
+* Çevrilen içeriği ve toplam sayısını yalnızca hesabınızdan (AppID veya Azure Market hesabı) döndürür.
+* Kaynak cümle eşleşmesi gerekmeden çevrilmiş içeriği ve toplam sayısını döndürür.
+* Otomatik çeviriyi döndürmez (makine çevirisi).
 
 ## <a name="endpoint"></a>Uç Nokta
-CTF Raporlama API'sinin bitiş noktasıhttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+CTF Raporlama API 'sinin uç noktasıhttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Yöntemler
 | Adı |    Açıklama|
 |:---|:---|
-| GetUserTranslationCounts Yöntemi | Kullanıcı tarafından oluşturulan çevirilerin sayımlarını alın. |
-| GetUserTranslations Yöntemi | Kullanıcı tarafından oluşturulan çevirileri alır. |
+| GetUserTranslationCounts yöntemi | Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. |
+| Getuserçeviriler yöntemi | Kullanıcı tarafından oluşturulan çevirileri alır. |
 
-Bu yöntemler şunları yapmanızı sağlar:
-* İndirilmek için hesap kimliğinizin altındaki tüm kullanıcı çevirileri ve düzeltmeleri setini alın.
-* Sık katkıda bulunanların listesini alın. AddTranslation() 'de doğru kullanıcı adının sağlandığından emin olun.
-* Uri önekine göre, güvenilir kullanıcılarınızın gerektiğinde sitenizin bir bölümüyle sınırlı olması durumunda tüm kullanılabilir adayları görmesini sağlayan bir kullanıcı arabirimi (UI) oluşturun.
+Bu yöntemler şunları sağlar:
+* Kullanıcı çevirileri ve yükleme için hesap KIMLIĞINIZ altında düzeltmeler alın.
+* Sık katkıda bulunanlar listesini alın. AddTranslation () içinde doğru Kullanıcı adının sağlandığından emin olun.
+* Bir kullanıcı arabirimi (UI) oluşturun ve bu sayede, gerekli olan tüm adayları, URI ön ekine bağlı olarak sitenizin bir bölümüyle sınırlı olup olmadığını görebilirsiniz.
 
 > [!NOTE]
-> Her iki yöntem de nispeten yavaş ve pahalıdır. Dikkatli kullanılması tavsiye edilir.
+> Her iki yöntem de nispeten yavaş ve pahalıdır. Bunların gelişigüzel kullanılması önerilir.
 
 ## <a name="getusertranslationcounts-method"></a>GetUserTranslationCounts yöntemi
 
-Bu yöntem, kullanıcı tarafından oluşturulan çevirilerin sayısını alır. UriPrefix'e göre gruplanan çeviri sayımlarının listesini sağlar, dan, kullanıcıya, minRating'e ve maxRating istek parametrelerine.
+Bu yöntem, Kullanıcı tarafından oluşturulan çevirilerin sayısını alır. Bu, uriPrefix, from, to, User, Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çeviri sayısı listesini sağlar.
 
 **Sözdizimi**
 
@@ -74,53 +74,53 @@ Bu yöntem, kullanıcı tarafından oluşturulan çevirilerin sayısını alır.
 
 | Parametre | Açıklama |
 |:---|:---|
-| appId | **Gerekli** Yetkilendirme üstbilgisi kullanılırsa, appid alanını boş bırakın, "Taşıyıcı" + " + erişim belirteci içeren bir dize belirtin.|
-| uriPrefix | **İsteğe bağlı** Çevirinin URI önekisini içeren bir dize.|
-| Kaynak | **İsteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize. |
-| - | **İsteğe bağlı** Metni çevirmek için dil kodunu temsil eden bir dize.|
-| minRating| **İsteğe bağlı** Çevrilen metnin minimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer -10 ile 10 arasındadır. Varsayılan değer 1’dir.|
-| maxRating| **İsteğe bağlı** Çevrilen metnin en yüksek kalite derecesini temsil eden bir tamsayı değeri. Geçerli değer -10 ile 10 arasındadır. Varsayılan değer 1’dir.|
-| kullanıcı | **İsteğe bağlı** Gönderinin kaynağına göre sonucu filtrelemek için kullanılan bir dize. |
-| category| **İsteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca varsayılan seçeneği genel destekler.|
-| minDateUtc| **İsteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC formatında olmalıdır. |
-| maxDateUtc| **İsteğe bağlı** Çevirileri almak istediğiniz tarihe kadar olan tarih. Tarih UTC formatında olmalıdır. |
-| Atla| **İsteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, sonuçların ilk 20 satırını atlamak ve 21. Bu parametrenin varsayılan değeri 0'dır.|
-| almak | **İsteğe bağlı** Almak istediğiniz sonuç sayısı. Her isteğin maksimum sayısı 100'dür. Varsayılan değer 100'dür.|
+| appId | **Gerekli** Yetkilendirme üst bilgisi kullanılırsa, AppID alanını boş bırakın başka bir "taşıyıcı" + "" + erişim belirteci içeren bir dize belirtin.|
+| Uriön Eki | **Isteğe bağlı** Çeviri URI 'sinin önekini içeren bir dize.|
+| Kaynak | **Isteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize. |
+| - | **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
+| Minderecelendirme| **Isteğe bağlı** Çevrilmiş metin için en düşük kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
+| Maxderecelendirme| **Isteğe bağlı** Çevrilmiş metin için maksimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
+| kullanıcı | **Isteğe bağlı** Gönderimi oluşturana göre sonucu filtrelemek için kullanılan bir dize. |
+| category| **Isteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca genel varsayılan seçeneğini destekler.|
+| minDateUtc| **Isteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC biçiminde olmalıdır. |
+| maxDateUtc| **Isteğe bağlı** Çevirileri almak istediğinize kadar olan tarih. Tarih UTC biçiminde olmalıdır. |
+| Atla| **Isteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, bu parametre için sonuçların ilk 20 satırını atla ve 21. sonuç kaydından göster ' i istiyorsanız, bu parametre için 20 belirtin. Bu parametre için varsayılan değer 0 ' dır.|
+| almanız | **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 100'dür.|
 
 > [!NOTE]
-> Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için pagination sağlar.
+> Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için sayfalandırmayı etkinleştirir.
 
-**İade değeri**
+**Dönüş değeri**
 
-Sonuç kümesi **UserTranslationCount**dizi içerir. Her UserTranslationCount aşağıdaki öğelere sahiptir:
+Sonuç kümesi **Usertranslationcount**dizisini içeriyor. Her UserTranslationCount aşağıdaki öğelere sahiptir:
 
 | Alan | Açıklama |
 |:---|:---|
-| Sayı| Alınan sonuç sayısı|
-| Başlangıç | Kaynak dil|
-| Derecelendirme| AddTranslation() yöntemi çağrısında gönderen tarafından uygulanan derecelendirme|
+| Sayı| Alınan sonuçların sayısı|
+| Başlangıç | Kaynak dili|
+| Derecelendirme| AddTranslation () yöntem çağrısında gönderenin tarafından uygulanan derecelendirme|
 | Alıcı| Hedef dil|
-| Urı| AddTranslation() yöntemi çağrısında uygulanan URI|
+| Kullanılmamışsa| AddTranslation () yöntem çağrısında uygulanan URI|
 | Kullanıcı| Kullanıcı adı|
 
 **Özel durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|
-| Argumentoutofrangeexception | '**maxDateUtc**' parametresi '**minDateUtc**' dan büyük veya eşit olmalıdır.| **MaxDateUtc** parametresinin değeri **minDateUtc**parametresinin değerinden daha azdır.|
-| TranslateApiException | IP kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşılır.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota, Microsoft Translator API'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
-| TranslateApiException | AppId kotanın üzerinde.| Başvuru kimliği saatlik veya günlük kotayı aştı.|
+| ArgumentOutOfRangeException | '**Maxdateutc**' parametresi '**mindateutc**' değerinden büyük veya buna eşit olmalıdır.| **Maxdateutc** parametresinin değeri **mindateutc**parametresinin değerinden daha küçük.|
+| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı Microsoft Translator API 'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
+| TranslateApiException | AppID, kotanın üzerinde.| Uygulama KIMLIĞI saatlik veya günlük kotayı aştı.|
 
 > [!NOTE]
-> Kota, hizmetin tüm kullanıcıları arasında adaleti sağlamak için ayarlanır.
+> Kota, hizmetin tüm kullanıcıları arasında eşitliği sağlamak için ayarlanacak.
 
-**GitHib'deki kod örneklerini görüntüleyin**
-* [C #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
+**Githıb 'teki kod örneklerini görüntüle**
+* [, #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
-## <a name="getusertranslations-method"></a>GetUserTranslations yöntemi
+## <a name="getusertranslations-method"></a>Getuserçeviriler yöntemi
 
-Bu yöntem, kullanıcı tarafından oluşturulan çevirileri alır. UriPrefix tarafından gruplanan çevirileri, from, to, user ve minRating ve maxRating istek parametrelerini sağlar.
+Bu yöntem, Kullanıcı tarafından oluşturulan çevirileri alır. Bu, uriPrefix, from, to, User ve Minderecelendirme ve Maxderecelendirme istek parametrelerine göre gruplanmış çevirileri sağlar.
 
 **Sözdizimi**
 
@@ -145,48 +145,48 @@ Bu yöntem, kullanıcı tarafından oluşturulan çevirileri alır. UriPrefix ta
 
 | Parametre | Açıklama |
 |:---|:---|
-| appId | **Gerekli** Yetkilendirme üstbilgisi kullanılırsa, appid alanını boş bırakın, "Taşıyıcı" + " + erişim belirteci içeren bir dize belirtin.|
-| uriPrefix| **İsteğe bağlı** Çevirinin URI önekisini içeren bir dize.|
-| Kaynak| **İsteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize.|
-| -| **İsteğe bağlı** Metni çevirmek için dil kodunu temsil eden bir dize.|
-| minRating| **İsteğe bağlı** Çevrilen metnin minimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer -10 ile 10 arasındadır. Varsayılan değer 1’dir.|
-| maxRating| **İsteğe bağlı** Çevrilen metnin en yüksek kalite derecesini temsil eden bir tamsayı değeri. Geçerli değer -10 ile 10 arasındadır. Varsayılan değer 1’dir.|
-| kullanıcı| **Isteğe bağlı. Gönderinin kaynağına göre sonucu filtrelemek için kullanılan bir dize**|
-| category| **İsteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca varsayılan seçeneği genel destekler.|
-| minDateUtc| **İsteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC formatında olmalıdır.|
-| maxDateUtc| **İsteğe bağlı** Çevirileri almak istediğiniz tarihe kadar olan tarih. Tarih UTC formatında olmalıdır.|
-| Atla| **İsteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, sonuçların ilk 20 satırını atlamak ve 21. Bu parametrenin varsayılan değeri 0'dır.|
-| almak| **İsteğe bağlı** Almak istediğiniz sonuç sayısı. Her isteğin maksimum sayısı 100'dür. Varsayılan değer 50'dir.|
+| appId | **Gerekli** Yetkilendirme üst bilgisi kullanılırsa, AppID alanını boş bırakın başka bir "taşıyıcı" + "" + erişim belirteci içeren bir dize belirtin.|
+| Uriön Eki| **Isteğe bağlı** Çeviri URI 'sinin önekini içeren bir dize.|
+| Kaynak| **Isteğe bağlı** Çeviri metninin dil kodunu temsil eden bir dize.|
+| -| **Isteğe bağlı** Metnin çevrilmesi için dil kodunu temsil eden bir dize.|
+| Minderecelendirme| **Isteğe bağlı** Çevrilmiş metin için en düşük kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
+| Maxderecelendirme| **Isteğe bağlı** Çevrilmiş metin için maksimum kalite derecelendirmesini temsil eden bir tamsayı değeri. Geçerli değer-10 ile 10 arasındadır. Varsayılan değer 1’dir.|
+| kullanıcı| **Seçim. Gönderimi oluşturana göre sonucu filtrelemek için kullanılan bir dize**|
+| category| **Isteğe bağlı** Çevirinin kategorisini veya etki alanını içeren bir dize. Bu parametre yalnızca genel varsayılan seçeneğini destekler.|
+| minDateUtc| **Isteğe bağlı** Çevirileri almak istediğiniz tarih. Tarih UTC biçiminde olmalıdır.|
+| maxDateUtc| **Isteğe bağlı** Çevirileri almak istediğinize kadar olan tarih. Tarih UTC biçiminde olmalıdır.|
+| Atla| **Isteğe bağlı** Bir sayfada atlamak istediğiniz sonuç sayısı. Örneğin, bu parametre için sonuçların ilk 20 satırını atla ve 21. sonuç kaydından göster ' i istiyorsanız, bu parametre için 20 belirtin. Bu parametre için varsayılan değer 0 ' dır.|
+| almanız| **Isteğe bağlı** Almak istediğiniz sonuç sayısı. Her istek için maksimum sayı 100 ' dir. Varsayılan değer 50 ' dir.|
 
 > [!NOTE]
-> Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için pagination sağlar.
+> Atlama ve alma isteği parametreleri çok sayıda sonuç kaydı için sayfalandırmayı etkinleştirir.
 
-**İade değeri**
+**Dönüş değeri**
 
-Sonuç kümesi **UserTranslation**diziiçerir. Her UserTranslation aşağıdaki öğelere sahiptir:
+Sonuç kümesi **Usertranslation**dizisini içerir. Her UserTranslation aşağıdaki öğelere sahiptir:
 
 | Alan | Açıklama |
 |:---|:---|
-| CreatedDateUtc| AddTranslation() kullanarak girişin oluşturulma tarihi|
-| Başlangıç| Kaynak dil|
-| Orijinal Metin| İstek gönderirken kullanılan kaynak dil metni|
-|Derecelendirme |AddTranslation() yöntemi çağrısında gönderen tarafından uygulanan derecelendirme|
+| CreatedDateUtc| AddTranslation () kullanılarak girişin oluşturulma tarihi|
+| Başlangıç| Kaynak dili|
+| OriginalText| İstek gönderilirken kullanılan kaynak dili metni|
+|Derecelendirme |AddTranslation () yöntem çağrısında gönderenin tarafından uygulanan derecelendirme|
 |Alıcı|    Hedef dil|
-|Çevrilmiş Metin|    AddTranslation() yöntemi çağrısında gönderilen çeviri|
-|Urı|   AddTranslation() yöntemi çağrısında uygulanan URI|
+|TranslatedText|    AddTranslation () yöntem çağrısında gönderildiği şekilde çeviri|
+|Kullanılmamışsa|   AddTranslation () yöntem çağrısında uygulanan URI|
 |Kullanıcı   |Kullanıcı adı|
 
 **Özel durumlar**
 
 | Özel durum | İleti | Koşullar |
 |:---|:---|:---|
-| Argumentoutofrangeexception | '**maxDateUtc**' parametresi '**minDateUtc**' dan büyük veya eşit olmalıdır.| **MaxDateUtc** parametresinin değeri **minDateUtc**parametresinin değerinden daha azdır.|
-| TranslateApiException | IP kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşılır.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota, Microsoft Translator API'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
-| TranslateApiException | AppId kotanın üzerinde.| Başvuru kimliği saatlik veya günlük kotayı aştı.|
+| ArgumentOutOfRangeException | '**Maxdateutc**' parametresi '**mindateutc**' değerinden büyük veya buna eşit olmalıdır.| **Maxdateutc** parametresinin değeri **mindateutc**parametresinin değerinden daha küçük.|
+| TranslateApiException | IP, kotanın üzerinde.| <ul><li>Dakika başına istek sayısı sınırına ulaşıldı.</li><li>İstek boyutu 10000 karakterle sınırlı kalır.</li><li>Saatlik ve günlük kota sınırı Microsoft Translator API 'sinin kabul edeceği karakter sayısını sınırlar.</li></ul>|
+| TranslateApiException | AppID, kotanın üzerinde.| Uygulama KIMLIĞI saatlik veya günlük kotayı aştı.|
 
 > [!NOTE]
-> Kota, hizmetin tüm kullanıcıları arasında adaleti sağlamak için ayarlanır.
+> Kota, hizmetin tüm kullanıcıları arasında eşitliği sağlamak için ayarlanacak.
 
-**GitHib'deki kod örneklerini görüntüleyin**
-* [C #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
+**Githıb 'teki kod örneklerini görüntüle**
+* [, #](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)

@@ -1,7 +1,7 @@
 ---
-title: Açıklama Tasarım Yönergeleri
+title: Açıklama tasarımı yönergeleri
 titleSuffix: Azure Cognitive Services
-description: Açıklama tasarım yönergelerine giriş ve açıklama düzeyinin değerlendirilmesi.
+description: Açıklama tasarımı yönergelerine ve açıklama düzeyini değerlendirmeye giriş.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,74 +11,74 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74776394"
 ---
 # <a name="disclosure-design-guidelines"></a>Tasarım yönergelerini açıklama
-Ses deneyiminizin sentetik doğası hakkında şeffaf olarak müşterilerle nasıl güven oluşturup güveninizi sürdüreceklerinizi öğrenin.
+Sesli deneyiminizin yapay doğası hakkında saydam olacak şekilde müşterilerle nasıl güven oluşturacağınızı ve bakımının nasıl yapılacağını öğrenin.
 
-## <a name="what-is-disclosure"></a>İfşaat nedir?
+## <a name="what-is-disclosure"></a>Nelerin açıklanması gerekiyor?
 
-İfşaat, insanlara sentetik olarak oluşturulan bir sesle etkileşimde&#39;veya onları dinlemeye&#39;vermenin bir yoludur.
+Bunun anlamı, insanların&#39;bir şekilde yeniden etkileşimde bulunduğunu veya bir sesli olarak üretilen bir sesi dinlediğini bilmesini sağlayan bir araçtır.
 
-## <a name="why-is-disclosure-necessary"></a>İfşaat neden gereklidir?
+## <a name="why-is-disclosure-necessary"></a>Neden açıklanması gerekir?
 
-Bilgisayar tarafından oluşturulan bir sesin sentetik kökenlerini açıklama ihtiyacı nispeten yenidir. Geçmişte, bilgisayar tarafından oluşturulan sesler açıkça vardı-hiç kimse gerçek bir kişi için onları yanlış olur. Ancak her geçen gün sentetik seslerin gerçekçiliği gelişir ve insan seslerinden giderek daha ayırt edilemez hale gelir.
+Bilgisayar tarafından oluşturulan bir sesin yapay kaynakları hakkında daha fazla yeni bir ses elde etmeniz gerekir. Geçmişte, bilgisayar tarafından oluşturulan seslerine, gerçek bir kişi için hiç kimse neden olmadığı açıktır. Ancak, yapay seslerin Reali artmaları artar ve insan seslerden daha fazla ayırt edilemez hale gelir.
 
 ## <a name="goals"></a>Hedefler
-Sentetik ses deneyimleri tasarlarken akılda tutulması gereken ilkeler şunlardır:
+Yapay sesli deneyimler tasarlarken göz önünde bulundurmanız gereken ilkeler şunlardır:
 
-**Güveni pekiştirin**
-<br>Deneyimi bozmadan Turing Testi'nde başarısız olmak amacıyla tasarla. Kullanıcıların sentetik bir ses ile etkileşimde bulunmalarına izin verirken, deneyimle sorunsuz bir şekilde etkileşime girmelerine izin verin.
+**Güveni zorla**
+<br>Deneyimi düşürmeden, her geçen testi devretmek için tasarlayın. Kullanıcıların, deneyimle sorunsuz bir şekilde etkileşimde bulunmasına izin verirken yapay bir sesle etkileşime geçebilecekleri konusunda kullanıcılara izin verin.
 
-**Kullanım bağlamına uyum sağlama**
-<br>Doğru zamanda doğru açıklamayı sağlamak için kullanıcılarınızın sentetik ses ile ne zaman, nerede ve nasıl etkileşimde bulunacağını anlayın.
+**Kullanım bağlamına uyarlayın**
+<br>Kullanıcılarınızın doğru zamanda doğru bir açıklama eklemek için yapay sesle ne zaman, nerede ve nasıl etkileşimde bulunduklarını anlayın.
 
-**Net beklentiler belirleyin**
-<br>Kullanıcıların aracının yeteneklerini kolayca keşfetmesine ve anlamasını bekleyin. İstek üzerine sentetik ses teknolojisi hakkında daha fazla bilgi edinmek için fırsatlar sunun.
+**Açık beklentileri ayarla**
+<br>Kullanıcıların aracının yeteneklerini kolayca bulmasına ve anlamasına izin verin. İstek üzerine yapay ses teknolojisi hakkında daha fazla bilgi edinmek için fırsatlar sunun.
 
-**Başarısızlığı kucaklama**
-<br>Aracının yeteneklerini güçlendirmek için başarısız anları kullanın.
+**Emayracı hatası**
+<br>Aracının yeteneklerini zorlamak için başarısızlık süreyi kullanın.
 
 ## <a name="how-to-use-this-guide"></a>Bu kılavuz nasıl kullanılır?
 
-Bu kılavuz, sentetik ses deneyiminiz için hangi açıklama kalıplarının en uygun olduğunu belirlemenize yardımcı olur. Daha sonra bunları nasıl ve ne zaman kullanacağımıza örnekler sunuyoruz. Bu desenlerin her biri, sentetik konuşma konusunda kullanıcılarla şeffaflığı en üst düzeye çıkarmak ve insan merkezli tasarıma sadık kalmak üzere tasarlanmıştır.
+Bu kılavuz, yapay ses deneyiminize en uygun açıklama desenleri belirlemenizi sağlar. Daha sonra bunları nasıl ve ne zaman kullanacağınızı örnekler sunuyoruz. Bu desenlerin her biri, yapay konuşma hakkında kullanıcılarla saydamlığı en üst düzeye çıkarmak için tasarlanmıştır ve insan merkezli tasarıma doğru kalmakta.
 
-Ses deneyimleri tasarım rehberlik geniş vücut göz önüne alındığında, burada özellikle odaklanmak:
+Tasarım kılavuzunun ses deneyimleriyle ilgili büyük bölümünü göz önünde bulundurarak, burada özellikle şunlara odaklanıyoruz:
 
-1. [**Açıklama değerlendirmesi**](#disclosure-assessment): Sentetik ses deneyiminiz için önerilen açıklama türünü belirleme süreci
+1. [**Açıklama değerlendirmesi**](#disclosure-assessment): yapay sesli deneyiminizin önerdiği açıklama türünü belirleme işlemi
 
-2. [**Nasıl ifşa edilir**](concepts-disclosure-patterns.md): Sentetik ses deneyiminize uygulanabilecek ifşaat kalıplarına örnekler
+2. [**Nasıl açığa çıkabiliriz**](concepts-disclosure-patterns.md): yapay sesli deneyiminize uygulanabilecek açıklama desenleri örnekleri
 
-3. [**Ne zaman ifşa edilir**](concepts-disclosure-patterns.md#when-to-disclose): Kullanıcı yolculuğu boyunca ifşa edilecek en uygun anlar
+3. [**Ne zaman açığa çıkarmayı**](concepts-disclosure-patterns.md#when-to-disclose): Kullanıcı yolculuğu boyunca açığa çıkarmakta en iyi süre
 
 ## <a name="disclosure-assessment"></a>Açıklama değerlendirmesi
-Kullanıcılarınızı bir etkileşim ve sesi deneyimleyecekleri bağlam la ilgili beklentileri&#39; düşünün. Bağlam, sentetik bir sesin &quot;konuştuğunu açıkça&quot; ortaya koyuyorsa, ifşaat en az, anlık ve hatta gereksiz olabilir. Açıklamayı etkileyen ana bağlam türleri kişi türü, senaryo türü ve maruz kalma düzeyini içerir. Ayrıca kimin dinlediğini de göz önünde bulundurmaya yardımcı olur.
+Kullanıcılarınızın bir etkileşim ve sesle karşılaştıkları bağlam hakkındaki beklentilerini&#39; değerlendirin. Bağlam yapay bir sesin &quot;konuşmasını temizlediğinde,&quot; açıklama en az, kopan, hatta gereksiz olabilir. Açıklaması etkileyen ana bağlam türleri, kişi türü, senaryo türü ve pozlama düzeyi içerir. Ayrıca kimin dinlebileceğini göz önünde bulundurmanıza de yardımcı olur.
 
-### <a name="understand-context"></a>Bağlamı anlama
+### <a name="understand-context"></a>Bağlam anlayın
 
-Sentetik ses deneyiminizin bağlamını belirlemek için bu çalışma sayfasını kullanın. Bunu, açıklama düzeyinizi belirleyeceğiniz bir sonraki adımda uygulayacaksınız.
+Yapay ses deneyiminizin bağlamını öğrenmek için bu çalışma sayfasını kullanın. Bunu, açıklama düzeyinizi belirlediğiniz bir sonraki adımda uygularsınız.
 
-|                                    | Kullanım bağlamı                                                                                                                                                                                                                                                                                                                                                       | Potansiyel Riskler & Zorluklar                                                                                                                                                                                                                                                                                                                                                                       |
+|                                    | Kullanım bağlamı                                                                                                                                                                                                                                                                                                                                                       | Olası riskler & zorlukları                                                                                                                                                                                                                                                                                                                                                                       |
 |------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **1. Persona türü**               | **Aşağıdakilerden herhangi biri geçerliyse, kişiliğiniz 'İnsana benzer Kişilik' kategorisine uyar:**<br><br><ul><li> Persona, hayali bir temsil olsun ya da olmasın, gerçek bir insanı temsil eder. (örn. fotoğraf veya gerçek bir kişinin bilgisayar tarafından oluşturulmuş bir şekilde işlenmesi)<br><br><li> Sentetik ses, yaygın olarak tanınan gerçek bir kişinin sesine dayanır (örn. ünlü, politik figür) | Kişiliğinize ne kadar çok insana benzer temsiller verirseniz, bir kullanıcı bunu gerçek bir kişiyle ilişkilendirecek veya içeriğin bilgisayar tarafından oluşturulmak yerine gerçek bir kişi tarafından konuşulduğuna inanmalarına neden olur. </ul>                                                                                                                                                                      |
-| **2. Senaryo türü**            | **Aşağıdakilerden herhangi biri geçerliyse, ses deneyiminiz 'Hassas' kategorisine uyar:**<br><br><ul><li> Kullanıcıdan kişisel bilgiler alır veya görüntüler <br><br> <li> Zamana duyarlı haber/bilgileri yayınlar (örn. acil durum uyarısı)<br><br><li> Gerçek kişilerin birbirleriyle iletişim kurmasına yardımcı olmayı amaçlar (örn. kişisel e-postaları/metinleri okur)<br><br> <li> Tıbbi/sağlık yardımı sağlar </ul>            | Sentetik ses kullanımı, konular hassas, kişisel veya acil konularla ilgili olduğunda, bu sesi kullanan kişilere uygun veya güvenilir gelmeyebilir. Onlar da gerçek bir insan olarak empati ve bağlamsal farkındalık aynı düzeyde bekleyebilirsiniz. |
-| **3. Maruz kalma düzeyi** |**Ses deneyiminiz büyük olasılıkla aşağıdaki ler için 'Yüksek' kategorisine sığar:** <br><br><ul><li>Kullanıcı sentetik sesi sık sık veya uzun bir süre boyunca duyacak veya etkileşimde bulunacaktır. </ul>                                                                                                                                                                             | Uzun vadeli ilişkiler kurarken şeffaf olmanın ve kullanıcılarla güven oluşturmanın önemi daha da yüksektir.                                                                                                                                                                                                                                                                      |
+| **1. kişi türü**               | **Aşağıdakilerden biri uygulanıyorsa, kişi ' Insan benzeri kişi ' kategorisinin altına sığar:**<br><br><ul><li> Gerçek bir insan, hayali bir gösterim olup olmadığını belirtir. (örn., fotoğraf veya gerçek bir kişinin bilgisayar tarafından üretilmiş bir işlemesi)<br><br><li> Yapay ses, yaygın olarak tanınabilir bir gerçek kişinin sesine dayalıdır (ör., Ünlüler, siyatik şekil) | Daha fazla insan benzeri temsiller, kişilerinize verdiğiniz daha büyük olasılıkla Kullanıcı onu gerçek bir kişiyle ilişkilendirir ya da içeriğin bilgisayar tarafından üretilen gerçek bir kişi tarafından konuşulmasına neden olur. </ul>                                                                                                                                                                      |
+| **2. senaryo türü**            | **Aşağıdakilerden biri uygunsa, ses deneyiminiz ' hassas ' kategorisine uyar:**<br><br><ul><li> Kullanıcının kişisel bilgilerini alır veya görüntüler <br><br> <li> Yayınlar zamana duyarlı Haberler/bilgiler (örneğin, acil durum uyarısı)<br><br><li> Gerçek kişilerin birbirleriyle iletişim kurmasına yardımcı olmaya yönelik aims (örn. kişisel e-postaları/metinleri okur)<br><br> <li> Tıp/Sağlık yardımı sağlar </ul>            | Yapay seslendirme kullanımı, önemli, kişisel veya acil konularda konular ile ilgili kişileri kullanan kişilere uygun veya güvenilir olmayabilir. Ayrıca, gerçek bir insan olarak aynı düzeyde empade ve bağlamsal tanıma da bekleyebilir. |
+| **3. pozlama düzeyi** |**Şu durumlarda ses deneyiminizin büyük olasılıkla ' yüksek ' kategorisine sığar:** <br><br><ul><li>Kullanıcı, yapay sesle sık veya uzun bir süre boyunca iletişim kurar veya etkileşime geçerek </ul>                                                                                                                                                                             | Uzun vadeli ilişkiler kurulurken, saydamlığa ve kullanıcılarla güven oluşturmaya yönelik önem derecesi de daha yüksektir.                                                                                                                                                                                                                                                                      |
 
 ### <a name="determine-disclosure-level"></a>Açıklama düzeyini belirleme
 
-Sentetik ses deneyiminizin kullanım bağlamınıza bağlı olarak yüksek veya düşük açıklama gerekip gerekmediğini belirlemek için aşağıdaki diyagramı kullanın.
+Yapay sesli deneyiminizin kullanım bağlamına göre yüksek veya düşük bir açıklama gerektirip gerektirmediğini öğrenmek için aşağıdaki diyagramı kullanın.
 
-  ![Açıklama değerlendirme diyagramı](media/responsible-ai/disclosure-guidelines/flowchart.png)
+  ![Açıklama değerlendirmesi diyagramı](media/responsible-ai/disclosure-guidelines/flowchart.png)
 
-## <a name="reference-docs"></a>Referans dokümanları
+## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Ses Yetenek için Açıklama](https://aka.ms/disclosure-voice-talent)
-* [Sentetik Ses Teknolojisinin Sorumlu Dağıtımına İlişkin Yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Gating genel bakış](concepts-gating-overview.md)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
+* [Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Geçişi genel bakış](concepts-gating-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

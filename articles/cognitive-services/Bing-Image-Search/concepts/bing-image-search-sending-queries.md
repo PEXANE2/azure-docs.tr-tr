@@ -1,7 +1,7 @@
 ---
-title: Resim arama sorgularını özelleştirin ve önerin - Bing Resim Arama API
+title: Görüntü arama sorguları özelleştirme ve önerme-Bing Resim Arama API'si
 titleSuffix: Azure Cognitive Services
-description: Bing Resim Arama API'sine gönderdiğiniz arama sorgularını özelleştirme hakkında bilgi edinin.
+description: Bing Resim Arama API'si göndereceğiniz arama sorgularını özelleştirme hakkında bilgi edinin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67542750"
 ---
-# <a name="customize-and-suggest-image-search-queries"></a>Resim arama sorgularını özelleştirme ve önerme
+# <a name="customize-and-suggest-image-search-queries"></a>Görüntü arama sorguları özelleştirme ve önerme
 
-Sorguları özelleştirmeyi ve Bing Resim Arama API'sine göndermek için arama terimleri önermeyi öğrenmek için bu makaleyi kullanın.
+Sorguları özelleştirmeyi ve Bing Resim Arama API'si göndermek için arama terimleri önereceğinizi öğrenmek için bu makaleyi kullanın.
 
 ## <a name="suggest-search-terms"></a>Arama terimleri öner
 
-Uygulamanızda arama terimlerinin girildiği bir arama kutusu varsa, deneyimi geliştirmek için [Bing Autosuggest API'sini](../../bing-autosuggest/get-suggested-search-terms.md) kullanabilirsiniz. API önerilen arama terimlerini gerçek zamanlı olarak görüntüleyebilir. API, kısmi arama terimlerini ve Bilişsel Hizmetleri temel alan önerilen sorgu dizelerini döndürür.
+Uygulamanızın arama koşullarının girildiği bir arama kutusu varsa, deneyimi geliştirmek için [Bing otomatik öneri API'si](../../bing-autosuggest/get-suggested-search-terms.md) kullanabilirsiniz. API, önerilen arama terimlerini gerçek zamanlı olarak gösterebilir. API, kısmi arama terimleri ve bilişsel hizmetler temelinde önerilen Sorgu dizelerini döndürür.
 
-## <a name="pivot-the-query"></a>Sorguyu döndür
+## <a name="pivot-the-query"></a>Sorguyu özetleyin
 
-Bing özgün arama sorgusunu segmente edebilirse, döndürülen [Görüntüler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) nesnesi . `pivotSuggestions` Pivot önerileri kullanıcıya isteğe bağlı arama terimleri olarak görüntülenebilir. Örneğin, özgün sorgu *Microsoft Surface*ise Bing sorguyu *Microsoft* ve *Surface* olarak bölümlere ayırabilir ve her biri için önerilen pivotlar sağlayabilir. Bu öneriler kullanıcıya isteğe bağlı sorgu terimleri olarak görüntülenebilir.
+Bing özgün arama sorgusunu segmentlebiliyorsanız döndürülen [görüntüler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) nesnesi içerir `pivotSuggestions`. Özet öneriler, Kullanıcı için isteğe bağlı arama terimi olarak görüntülenebilir. Örneğin, özgün sorgu *Microsoft Surface*ise, Bing sorguyu *Microsoft* ve *Surface* 'a segmentedebilir ve her biri için önerilen özetleri sağlayabilir. Bu öneriler Kullanıcı için isteğe bağlı sorgu koşulları olarak görüntülenebilir.
 
-Aşağıdaki örnek, *Microsoft Surface*için pivot önerilerini gösterir:  
+Aşağıdaki örnek, *Microsoft yüzeyi*için pivot önerilerini göstermektedir:  
 
 ```json
 {
@@ -89,9 +89,9 @@ Aşağıdaki örnek, *Microsoft Surface*için pivot önerilerini gösterir:
 }
 ```
 
-`pivotSuggestions` alanında özgün sorgunun ayrıldığı parçaların (özetler) listesi bulunur. Her bir özet terim için gelen yanıtta önerilen sorguları içeren [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) nesnelerinin listesi yer alır. Alan `text` önerilen sorguyu içerir. Alan, `displayText` özgün sorgudaki pivotun yerini alan terimi içerir. Bir örnek Yüzeyin Çıkış Tarihidir.
+`pivotSuggestions` alanında özgün sorgunun ayrıldığı parçaların (özetler) listesi bulunur. Her bir özet terim için gelen yanıtta önerilen sorguları içeren [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) nesnelerinin listesi yer alır. `text` Alan önerilen sorguyu içerir. `displayText` Alan, özgün sorgudaki özetin yerini alan terimi içerir. Surface 'ın Yayın tarihi bir örnektir.
 
-Pivot sorgu dizesi kullanıcının aradığı şeyse, pivot sorgu dizelerini görüntülemek için alanları ve alanları `text` `thumbnail` kullanın. URL'yi veya URL'yi kullanarak `webSearchUrl` küçük `searchLink` resmi ve metni tıklanabilir hale getirin. Kullanıcıyı Bing arama sonuçlarına göndermek için kullanın. `webSearchUrl` Kendi sonuç sayfanızı sağlıyorsanız, 'yi kullanın. `searchLink`
+Özet sorgu dizesi kullanıcının aradıkı ise, Özet sorgu dizelerini göstermek için `text` ve `thumbnail` alanlarını kullanın. `webSearchUrl` URL 'yi veya `searchLink` URL 'yi kullanarak küçük resmi ve metni tıklatılabilir yapın. Kullanıcıyı `webSearchUrl` Bing arama sonuçlarına göndermek için kullanın. Kendi sonuç sayfanızı sağlarsanız, kullanın `searchLink`.
 
 <!-- Need a sanitized version of the image
 The following shows an example of the pivot queries.
@@ -99,13 +99,13 @@ The following shows an example of the pivot queries.
 ![Pivot suggestions](./media/cognitive-services-bing-images-api/bing-image-pivotsuggestion.GIF)
 -->
 
-## <a name="expand-the-query"></a>Sorguyu genişletme
+## <a name="expand-the-query"></a>Sorguyu Genişlet
 
-Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu Microsoft *Surface*ise, genişletilmiş sorgular olabilir:
+Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Microsoft yüzeyiydi*, genişletilmiş sorgular şu şekilde olabilir:
 - Microsoft Surface **Pro 3**.
-- Microsoft Yüzey **RT**.
+- Microsoft Surface **RT**.
 - Microsoft Surface **Phone**.
-- Microsoft Surface **Hub**.
+- Microsoft Surface **hub**.
 
 Aşağıdaki örnekte *Microsoft Surface* için genişletilmiş sorgular gösterilmektedir.
 
@@ -147,7 +147,7 @@ Aşağıdaki örnekte *Microsoft Surface* için genişletilmiş sorgular göster
 }
 ```
 
-`queryExpansions` alanı [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) nesnelerinin listesini içerir. Alan `text` genişletilmiş sorgu içerir. Alan `displayText` genişletme terimini içerir. Genişletilmiş sorgu dizesi kullanıcının aradığı şeyse, genişletilmiş sorgu dizelerini görüntülemek için alanları ve alanları `text` `thumbnail` kullanın. URL'yi veya URL'yi kullanarak `webSearchUrl` küçük `searchLink` resmi ve metni tıklanabilir hale getirin. Kullanıcıyı Bing arama sonuçlarına göndermek için kullanın. `webSearchUrl` kendi sonuç sayfanızı sağlarsanız, kullanın. `searchLink`
+`queryExpansions` alanı [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query_obj) nesnelerinin listesini içerir. `text` Alan, genişletilmiş sorguyu içerir. `displayText` Alan, genişletme terimini içerir. Genişletilmiş sorgu dizesi kullanıcının arama yaptığı şeydir, genişletilmiş sorgu dizelerini göstermek için `text` ve `thumbnail` alanlarını kullanın. `webSearchUrl` URL 'yi veya `searchLink` URL 'yi kullanarak küçük resmi ve metni tıklatılabilir yapın. Kullanıcıyı `webSearchUrl` Bing arama sonuçlarına göndermek için kullanın. kendi sonuç sayfanızı sağlarsanız, kullanın `searchLink`.
 
 <!-- Removing until we can replace with a sanitized image.
 The following shows an example Bing implementation that uses expanded queries. If the user clicks the Microsoft Surface Pro 3 link, they're taken to the Bing search results page, which shows them images of the Pro 3.
@@ -162,4 +162,4 @@ The following shows an example Bing implementation that uses expanded queries. I
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bing Resim Arama API'sini daha önce denemediyseniz, hızlı bir [başlangıç](../quickstarts/csharp.md)deneyin. Daha karmaşık bir şey arıyorsanız, [tek sayfalık](../tutorial-bing-image-search-single-page-app.md)bir web uygulaması oluşturmak için öğreticiyi deneyin.
+Daha önce Bing Resim Arama API'si denemediyseniz [hızlı](../quickstarts/csharp.md)başlangıcı deneyin. Daha karmaşık bir şeyler arıyorsanız, [tek sayfalı bir Web uygulaması](../tutorial-bing-image-search-single-page-app.md)Oluşturma öğreticisini deneyin.

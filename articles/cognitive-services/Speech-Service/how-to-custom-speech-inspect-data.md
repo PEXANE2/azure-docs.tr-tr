@@ -1,7 +1,7 @@
 ---
-title: Özel Konuşma için veri kalitesini inceleyin - Konuşma hizmeti
+title: Özel Konuşma Tanıma konuşma hizmeti için veri kalitesini İnceleme
 titleSuffix: Azure Cognitive Services
-description: Özel Konuşma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanıma kalitesini görsel olarak incelemenize olanak tanıyan araçlar sağlar. Yüklenen sesi geri çalabilir ve sağlanan tanıma sonucunun doğru olup olmadığını belirleyebilirsiniz.
+description: Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. Karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanıma sonucunun doğru olup olmadığını belirleyebilirsiniz.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74806088"
 ---
-# <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleyin
+# <a name="inspect-custom-speech-data"></a>Özel Konuşma verilerini inceleme
 
 > [!NOTE]
-> Bu sayfa, [Özel Konuşma için test verilerini hazırla'yı](how-to-custom-speech-test-data.md) okuduğunuz ve denetim için bir veri kümesi yüklediğinizi varsayar.
+> Bu sayfa, [özel konuşma tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md) okuduğunuzu ve İnceleme için bir veri kümesi yüklediğinizi varsayar.
 
-Özel Konuşma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanıma kalitesini görsel olarak incelemenize olanak tanıyan araçlar sağlar. Özel [Konuşma portalından](https://speech.microsoft.com/customspeech)yüklenen sesi oynatabilir ve sağlanan tanıma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, herhangi bir ses verisini aktarmaya gerek kalmadan Microsoft'un temel konuşma-metin modelinin veya eğitimli özel modelin kalitesini hızlı bir şekilde incelemenize olanak tanır.
+Özel Konuşma Tanıma, ses verilerini karşılık gelen tanıma sonucuyla karşılaştırarak bir modelin tanınma kalitesini görsel olarak incelemenize olanak sağlayan araçlar sağlar. [Özel konuşma tanıma portalından](https://speech.microsoft.com/customspeech)karşıya yüklenen sesi kayıttan yürütebilir ve belirtilen tanınma sonucunun doğru olup olmadığını belirleyebilirsiniz. Bu araç, herhangi bir ses verisi almak zorunda kalmadan Microsoft 'un temel konuşma konuşmadan metin modeli veya eğitilen özel bir modelin kalitesini hızlıca incelemenizi sağlar.
 
-Bu belgede, daha önce yüklediğiniz eğitim verilerini kullanarak bir modelin kalitesini görsel olarak nasıl inceleyeceğinizi öğreneceksiniz.
+Bu belgede, daha önce karşıya yüklediğiniz eğitim verilerini kullanarak bir modelin kalitesini görsel olarak incelemeyi öğreneceksiniz.
 
-Bu sayfada, Microsoft'un temel konuşma-metin modelinin ve/veya eğittiğiniz özel bir modelin kalitesini görsel olarak nasıl inceleyeceğinizi öğreneceksiniz. Test etmek için **Veri** sekmesine yüklediğiniz verileri kullanırsınız.
+Bu sayfada, Microsoft 'un temel konuşma konuşmadan metin modeli ve/veya eğitilen özel bir modelin kalitesini görsel olarak incelemeyi öğreneceksiniz. Test için **veri** sekmesine yüklediğiniz verileri kullanacaksınız.
 
 ## <a name="create-a-test"></a>Test oluşturma
 
 Bir test oluşturmak için aşağıdaki yönergeleri izleyin:
 
-1. Özel Konuşma [portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. Özel **Konuşma > Testi> metinden metne**gidin.
-3. **Test Ekle'yi**tıklatın.
-4. **Kaliteyi Denetle 'yi seçin (yalnızca ses verileri)**. Teste bir ad, açıklama verin ve ses veri setinizi seçin.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+2. **> konuşmadan metne git Özel Konuşma Tanıma > testi**yapın.
+3. **Test Ekle**' ye tıklayın.
+4. **İnceleme kalitesi (yalnızca ses verileri)** seçeneğini belirleyin. Teste bir ad, açıklama verin ve ses veri kümenizi seçin.
 5. Test etmek istediğiniz en fazla iki model seçin.
-6. **Oluştur'u**tıklatın.
+6. **Oluştur**' a tıklayın.
 
-Bir test başarıyla oluşturulduktan sonra, modelleri yan yana karşılaştırabilirsiniz.
+Bir test başarıyla oluşturulduktan sonra modelleri yan yana karşılaştırabilirsiniz.
 
 [!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>Yan yana model karşılaştırmaları
 
-Test durumu _Başarılı_olduğunda, testin ayrıntılarını görmek için test öğesi adını tıklatın. Bu ayrıntı sayfası, gönderilen veri kümesinden transkripsiyonla birlikte iki modelin tanıma sonuçlarını gösteren veri setinizdeki tüm deyişlenleri listeler.
+Test durumu _başarılı_olduğunda testin ayrıntılarını görmek için test öğesi adına tıklayın. Bu ayrıntı sayfasında, veri kümenizdeki tüm bildirimler listelenir. Bu, gönderilen veri kümesinden gelen döküm ile birlikte iki modelin tanınma sonuçlarını gösterir.
 
-Yan yana karşılaştırmayı denetlemeye yardımcı olmak için ekleme, silme ve değiştirme gibi çeşitli hata türlerini geçişyapabilirsiniz. Sesi dinleyerek ve her sütundaki tanıma sonuçlarını karşılaştırarak (insan etiketli transkripsiyon ve iki konuşma-metin modelinin sonuçlarını göstererek), hangi modelin ihtiyaçlarınızı karşıladığına ve iyileştirmelerin nerede gerekli olduğuna karar verebilirsiniz.
+Yan yana karşılaştırmayı incelemeye yardımcı olması için ekleme, silme ve değiştirme gibi çeşitli hata türlerini değiştirebilirsiniz. Her sütunda ses dinlemek ve tanıma sonuçlarını karşılaştırmak yoluyla (insan tarafından etiketlenmiş bir konum ve iki konuşmadan metne ait sonuçları gösterir), hangi modelin ihtiyaçlarınıza uygun olduğunu ve iyileştirmelerin gerekli olduğunu belirtebilirsiniz.
 
-Bir konuşma tanıma bitiş noktasının kalitesinin bir uygulama için yeterli olup olmadığını doğrulamak için kalite testini incelemek yararlıdır. Yazıyla yazılmış ses gerektiren objektif bir doğruluk ölçüsü için, [Doğruluğu Değerlendir'de](how-to-custom-speech-evaluate-data.md)bulunan yönergeleri izleyin.
+Bir konuşma tanıma uç noktası kalitesinin bir uygulama için yeterli olup olmadığını doğrulamak için kalite testi inceleniyor yararlı olur. Bir doğruluğun bir amaç ölçüsü için, daha fazla ses kullanılmasını gerektiren [doğruluğu değerlendir](how-to-custom-speech-evaluate-data.md)bölümünde bulunan yönergeleri izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -59,4 +59,4 @@ Bir konuşma tanıma bitiş noktasının kalitesinin bir uygulama için yeterli 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [Özel Konuşma için test verilerini hazırlama](how-to-custom-speech-test-data.md)
+- [Özel Konuşma Tanıma için test verilerini hazırlama](how-to-custom-speech-test-data.md)

@@ -9,81 +9,81 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086877"
 ---
-## <a name="personal-information-entity-types"></a>Kişisel bilgiler varlık türleri:
+## <a name="personal-information-entity-types"></a>Kişisel bilgi varlık türleri:
 
 ### <a name="person"></a>Kişi
-Metindeki kişi adlarını tanıyın.
+Metindeki kişi adlarını tanır.
 
 Diller:
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                                               | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                                               | Model sürümünden itibaren kullanılabilir |
 |--------------|-----------------------------------------------------------|----------------------------------------|
-| Yok          | Tanınan adlar, `Bill Gates`örneğin ,`Marie Curie` | `2020-02-01`                           |
+| Yok          | Örneğin `Bill Gates`, tanınan adlar`Marie Curie` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Kuruluş  
 
-Kuruluşları, şirketleri, ajansları, şirketleri, kulüpleri ve diğer insan gruplarını tanıyın.
+Kuruluşları, şirketleri, kurumları, şirketleri, sinek ve diğer kişi gruplarını tanıyın.
 
 Diller: 
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                                                                                       | Model sürümüyle başlayan kullanılabilir|
+| Alt tür adı | Açıklama                                                                                       | Model sürümünden itibaren kullanılabilir|
 |--------------|---------------------------------------------------------------------------------------------------|--------------|
 | Yok          | kuruluşlar, örneğin `Microsoft` `NASA`,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
 
 ### <a name="phone-number"></a>Telefon Numarası
 
-Telefon numaraları (yalnızca ABD Telefon numaraları). 
+Telefon numaraları (yalnızca ABD telefon numaraları). 
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                                    | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                                    | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin ABD telefon numaraları`(312) 555-0176` | `2020-02-01`                           |
+| Yok          | ABD telefon numaraları, örneğin`(312) 555-0176` | `2020-02-01`                           |
 
-### <a name="email"></a>Email
+### <a name="email"></a>E-posta
 
 E-posta adresi. 
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                                      | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                                      | Model sürümünden itibaren kullanılabilir |
 |--------------|--------------------------------------------------|----------------------------------------|
 | Yok          | Örneğin, e-posta adresi`support@contoso.com` | `2020-02-01`                           |
 
 ### <a name="url"></a>URL'si
 
-İnternet URL'leri.
+Internet URL 'Leri.
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                                          | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                                          | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------------------|----------------------------------------|
-| Yok          | Örneğin, web sitelerine URL'ler`https://www.bing.com` | `2020-02-01`                           |
+| Yok          | Web sitelerine yönelik URL 'Ler, örneğin`https://www.bing.com` | `2020-02-01`                           |
 
 ### <a name="ip-address"></a>IP Adresi
 
-İnternet Protokol Adresi
+Internet Protokolü adresi
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                              | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                              | Model sürümünden itibaren kullanılabilir |
 |--------------|------------------------------------------|----------------------------------------|
 | Yok          | Örneğin ağ adresi`10.0.0.101` | `2020-02-01`                           |
 
@@ -93,240 +93,240 @@ Sayısal miktarlar
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                   | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                   | Model sürümünden itibaren kullanılabilir |
 |--------------|-------------------------------|----------------------------------------|
 | Yaş          | `90 days old`, `30 years old` | `2020-02-01`                           |
 
 ### <a name="datetime"></a>DateTime
 
-Tarih ve Saat varlıkları
+Tarih ve saat varlıkları
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                   | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                   | Model sürümünden itibaren kullanılabilir |
 |--------------|-------------------------------|----------------------------------------|
 | Tarih         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
-### <a name="eu-gps-coordinates"></a>AB GPS Koordinatları
+### <a name="eu-gps-coordinates"></a>AB GPS koordinatları
 
- Avrupa Birliği içindeki yerlerin GPS koordinatları. 
+ Avrupa Birliği içindeki konumların GPS koordinatları. 
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-| Alt tür adı | Açıklama                               | Model sürümüyle başlayan kullanılabilir |
+| Alt tür adı | Açıklama                               | Model sürümünden itibaren kullanılabilir |
 |--------------|-------------------------------------------|----------------------------------------|
-| Yok          | Avrupa Birliği içinde GPS koordinatları | `2019-10-01`                           |
+| Yok          | Avrupa Birliği içindeki GPS koordinatları | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure bilgileri
 
-Kimlik doğrulama bilgileri ve bağlantı dizeleri de dahil olmak üzere tanımlanabilir Azure bilgileri. 
+Kimlik doğrulama bilgileri ve bağlantı dizeleri dahil olmak üzere tanımlanabilir Azure bilgileri. 
 
-* Model sürümü `2019-10-01`ile başlayan kullanılabilir.
+* Model sürümünden `2019-10-01`itibaren kullanılabilir.
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
 | Alt tür adı                          | Açıklama                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
-| Azure DocumentDB Auth Anahtarı             | Azure DocumentDB sunucusu için yetkilendirme anahtarı.                           |
-| Azure IAAS Veritabanı Bağlantı Dizesi | Hizmet (IaaS) veritabanı olarak Azure Altyapısı için bağlantı dizesi. |
-| Azure SQL Bağlantı Dizesi           | Azure SQL veritabanı için bağlantı dizesi.                                |
-| Azure IoT Bağlantı Dizesi           | Nesnelerin Azure İnterneti (IoT) için bağlantı dizesi.                        |
-| Azure Yayımlama Ayar Parolası        | Azure Yayımlama ayarları için parola.                                        |
-| Azure Redis Önbellek Bağlantı Dizesi   | Redis için bir Azure Önbelleği için bağlantı dizesi.                             |
-| Azure SAS                             | Hizmet Olarak Azure Yazılımı (SAS) için bağlantı dizesi.                     |
-| Azure Servis Veri Çiş Bağlantı Dizesi   | Azure servis veri veri nesi için bağlantı dizesi.                                |
-| Azure Depolama Hesap Anahtarı             | Azure depolama hesabının hesap anahtarı.                                   |
-| Azure Depolama Hesap Anahtarı (Genel)   | Azure depolama hesabı için genel hesap anahtarı.                           |
-| SQL Server Bağlantı Dizesi          | BIR SQL sunucusu için bağlantı dizesi.                                         |
+| Azure DocumentDB kimlik doğrulama anahtarı             | Azure DocumentDB sunucusu için yetkilendirme anahtarı.                           |
+| Azure ıAAS veritabanı bağlantı dizesi | Bir Azure hizmet olarak altyapı (IaaS) veritabanı için bağlantı dizesi. |
+| Azure SQL bağlantı dizesi           | Azure SQL veritabanı için bağlantı dizesi.                                |
+| Azure IoT bağlantı dizesi           | Azure nesnelerin Interneti (IoT) için bağlantı dizesi.                        |
+| Azure yayımlama ayarı parolası        | Azure yayımlama ayarları için parola.                                        |
+| Azure Redis Cache bağlantı dizesi   | Redsıs için bir Azure önbelleği bağlantı dizesi.                             |
+| Azure SAS                             | Hizmet olarak Azure yazılım (SAS) için bağlantı dizesi.                     |
+| Azure Service Bus bağlantı dizesi   | Azure Service Bus için bağlantı dizesi.                                |
+| Azure depolama hesabı anahtarı             | Bir Azure depolama hesabı için hesap anahtarı.                                   |
+| Azure depolama hesabı anahtarı (genel)   | Bir Azure depolama hesabı için genel hesap anahtarı.                           |
+| SQL Server bağlantı dizesi          | Bir SQL Server için bağlantı dizesi.                                         |
 
 ### <a name="identification"></a>Kimlik
 
-* Model sürümü `2019-10-01`ile başlayan kullanılabilir.
+* Model sürümünden `2019-10-01`itibaren kullanılabilir.
 
 Diller:
 
-* Genel önizleme:`English`
+* Genel Önizleme:`English`
 
-#### <a name="financial-account-identification"></a>Finansal Hesap Tanımlama
+#### <a name="financial-account-identification"></a>Finansal hesap kimliği
 
 | Alt tür adı               | Açıklama                                                                |
 |----------------------------|----------------------------------------------------------------------------|
-| ABA Yönlendirme Numaraları        | Amerikan Bankacılar Birliği (ABA) transit yönlendirme numaraları.                  |
-| SWIFT Kodu                 | Ödeme talimatı bilgileri için SWIFT kodları.                           |
+| ABA yönlendirme numaraları        | American banker Association (ABA) transit yönlendirme numaraları.                  |
+| SWIFT Kodu                 | Ödeme yönergesi bilgileri için SWIFT kodları.                           |
 | Kredi Kartı                | Kredi kartı numaraları.                                                       |
-| IBAN Kodu                  | Ödeme talimatı bilgileri için IBAN kodları.                            |
+| IBAN kodu                  | Ödeme yönergesi bilgileri için ıBAN kodları.                            |
 
-#### <a name="government-and-country-specific-identification"></a>Hükümete ve ülkeye özel Tanımlama
+#### <a name="government-and-country-specific-identification"></a>Kamu ve ülkeye özgü kimlik
 
-Aşağıdaki varlıklar ülkelere göre gruplandırılır ve listelenir:
+Aşağıdaki varlıklar, ülkeye göre gruplandırılır ve listelenir:
 
 Arjantin
-* Ulusal Kimlik (DNI) Numarası
+* Ulusal kimlik (DNı) numarası
 
 Avustralya
 * Vergi dosya numarası 
-* Ehliyet numarası
-* Pasaport Kimliği
+* Sürücünün lisans KIMLIĞI
+* Passport KIMLIĞI
 * Tıbbi hesap numarası
-* banka hesap numaraları (örneğin çek, tasarruf ve borç hesapları)
+* Banka hesap numaraları (örneğin, denetim, tasarruf ve borç hesapları)
 
 Belçika
-* Ulusal sayı
+* Ulusal numara
 
 Brezilya
-* Tüzel Kişi Numarası (CNPJ)
+* Yasal varlık numarası (CNPJ)
 * CPF numarası
-* Ulusal Kimlik Kartı (RG)
+* Ulusal KIMLIK kartı (RG)
 
 Kanada
-* Pasaport Kimliği
-* Ehliyet numarası
-* Sağlık Sigortası Numarası
-* Kişisel sağlık kimlik numarası (PHIN)
-* Sosyal Güvenlik Numarası
-* banka hesap numaraları (örneğin çek, tasarruf ve borç hesapları)
+* Passport KIMLIĞI
+* Sürücünün lisans KIMLIĞI
+* Sağlık sigortası numarası
+* Kişisel sağlık KIMLIĞI numarası (PHIN)
+* Sosyal güvenlik numarası
+* Banka hesap numaraları (örneğin, denetim, tasarruf ve borç hesapları)
 
 Şili
 * Kimlik kartı numarası 
 
 Çin
 * Kimlik kartı numarası
-* Yerleşik kimlik kartı (PRC) numarası
+* Yerleşik KIMLIK kartı (ÇHC) numarası
 
 Hırvatistan
-* Kimlik kartı numarası
-* Kişisel Kimlik (OIB) numarası
+* KIMLIK kartı numarası
+* Kişisel KIMLIK (OıB) numarası
 
 Çek Cumhuriyeti
-* Ulusal kimlik kartı numarası
+* Ulusal KIMLIK kartı numarası
 
 Danimarka
-* Kişisel kimlik numarası
+* Kişisel KIMLIK numarası
 
 Avrupa Birliği (AB)
-* Ulusal kimlik numarası
-* Pasaport Kimliği
-* Ehliyet numarası
-* Sosyal Güvenlik Numarası (SSN) veya eşdeğer kimlik
-* AB Vergi Kimlik Numarası (TIN)
-* AB Banka Kartı Numarası
+* Ulusal KIMLIK numarası
+* Passport KIMLIĞI
+* Sürücünün lisans KIMLIĞI
+* Sosyal güvenlik numarası (SSN) veya eşdeğer KIMLIK
+* AB vergi kimlik numarası (TIN)
+* AB banka kartı numarası
 
 Finlandiya
-* Ulusal kimlik numarası
-* Pasaport Kimliği
+* Ulusal KIMLIK numarası
+* Passport KIMLIĞI
 
 Fransa
-* Ulusal kimlik kartı (CNI)
-* Sosyal Güvenlik numarası (INSEE)
-* Pasaport Kimliği
-* Ehliyet numarası
+* Ulusal KIMLIK kartı (CNı)
+* Sosyal güvenlik numarası (ıNSEE)
+* Passport KIMLIĞI
+* Sürücünün lisans KIMLIĞI
 
 Almanya
-* Kimlik Kartı numarası
-* Pasaport Kimliği
-* Ehliyet numarası
+* KIMLIK kartı numarası
+* Passport KIMLIĞI
+* Sürücünün lisans KIMLIĞI
 
 Yunanistan 
-* Ulusal kimlik kartı numarası
+* Ulusal KIMLIK kartı numarası
 
 Hong Kong
-* Kimlik kartı (HKID) numarası
+* KIMLIK kartı (HKıD) numarası
 
 Hindistan
-* Kalıcı Hesap numarası (PAN)
-* Benzersiz Kimlik (Aadhaar) Numarası
+* Kalıcı hesap numarası (PAN)
+* Benzersiz KIMLIK (aadhaar) numarası
 
 Endonezya
-* Kimlik kartı numarası (KTP)
+* KIMLIK kartı numarası (KTP)
 
 İrlanda
-* Kişisel Kamu Hizmeti (PPS) Numarası
+* Kişisel genel hizmet (PPS) numarası
 
 İsrail
-* Ulusal Kimlik
-* banka hesap numaraları (örneğin çek, tasarruf ve borç hesapları)
+* Ulusal KIMLIK
+* Banka hesap numaraları (örneğin, denetim, tasarruf ve borç hesapları)
 
 İtalya
-* Ehliyet numarası
+* Sürücünün lisans KIMLIĞI
 
 Japonya
 * Yerleşik kayıt numarası
 * İkamet kartı numarası
-* Ehliyet numarası
-* Sosyal Sigorta Numarası (SIN)
-* Pasaport Kimliği
-* banka hesap numaraları (örneğin çek, tasarruf ve borç hesapları)
+* Sürücünün lisans KIMLIĞI
+* Sosyal sigorta numarası (SIN)
+* Passport KIMLIĞI
+* Banka hesap numaraları (örneğin, denetim, tasarruf ve borç hesapları)
 
 Malezya
-* Kimlik kartı numarası
+* KIMLIK kartı numarası
 
 Hollanda
-* Vatandaş Servisi (BSN) numarası
+* Vatandaşlık hizmeti (BSN) numarası
 
 Yeni Zelanda
-* Sağlık Bakanlığı Numarası
+* Sağlık numarası için minbakanlığı
 
 Norveç
-* Kimlik kartı numarası
+* KIMLIK kartı numarası
 
 Filipinler
-* Birleştirilmiş Çok Amaçlı Kimlik Numarası
+* Birleşik çok amaçlı KIMLIK numarası
 
 Polonya
-* Kimlik Kartı numarası
-* Ulusal Kimlik (PESEL)
-* Pasaport Kimliği
+* KIMLIK kartı numarası
+* Ulusal KIMLIK (PESEL)
+* Passport KIMLIĞI
 
 Portekiz 
-* Vatandaş Kart Numarası
+* Vatandaşlık kartı numarası
 
 Suudi Arabistan
-* Ulusal Kimlik
+* Ulusal KIMLIK
 
 Singapur
-* Ulusal Kayıt Kimlik Kartı (NRIC) numarası
+* Ulusal kayıt KIMLIĞI kartı (NRIC) numarası
 
 Güney Afrika
-* Kimlik Numarası
-* Yerleşik Kayıt numarası
+* KIMLIK numarası
+* Yerleşik kayıt numarası
 
 Güney Kore
-* Yerleşik Kayıt Numarası
+* Yerleşik kayıt numarası
 
 İspanya 
-* Sosyal Güvenlik Numarası (SSN)
+* Sosyal güvenlik numarası (SSN)
 
 İsveç
-* Ulusal Kimlik
-* Pasaport Kimliği
+* Ulusal KIMLIK
+* Passport KIMLIĞI
 
 Tayvan 
-* Ulusal Kimlik
-* İkamet Belgesi (ARC/TARC) numarası
-* Pasaport Kimliği
+* Ulusal KIMLIK
+* Yerleşik sertifika (yay/TARC) numarası
+* Passport KIMLIĞI
 
 Tayland
-* Nüfus Tanımlama kodu
+* Popülasyon kimlik kodu
 
 Birleşik Krallık
-* Pasaport Kimliği
-* Ehliyet numarası
-* Ulusal Sigorta numarası (NINO)
-* Ulusal Sağlık Servisi (NHS) numarası
+* Passport KIMLIĞI
+* Sürücünün lisans KIMLIĞI
+* Ulusal sigorta numarası (NINO)
+* Ulusal Sistem Sağlığı Hizmeti (NHS) numarası
 
 Amerika Birleşik Devletleri
-* Sosyal Güvenlik Numarası (SSN)
-* Ehliyet numarası
-* Pasaport Kimliği
-* Seçim rulo numarası
-* Bireysel Vergi Kimlik Numarası (ITIN)
-* Uyuşturucu yla Mücadele Dairesi (DEA) numarası
-* banka hesap numaraları (örneğin çek, tasarruf ve borç hesapları)
+* Sosyal güvenlik numarası (SSN)
+* Sürücünün lisans KIMLIĞI
+* Passport KIMLIĞI
+* Elektrotoral toplama numarası
+* Bireysel vergi KIMLIK numarası (ITIN)
+* İlaç zorlama Kurumu (DEA) numarası
+* Banka hesap numaraları (örneğin, denetim, tasarruf ve borç hesapları)

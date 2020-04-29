@@ -1,7 +1,7 @@
 ---
-title: Sıcaklık Önceden Oluşturulmuş Varlık - LUIS
+title: Sıcaklık önceden oluşturulmuş varlık-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Dil Anlama (LUIS) sıcaklık önceden oluşturulmuş varlık bilgilerini içerir.
+description: Bu makale, Language Understanding (LUSıS) içindeki sıcaklık önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 7e2b48c6353f56ab2269a8718146cb765797adba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270360"
 ---
-# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için sıcaklık önceden oluşturulmuş varlık
-Sıcaklık çeşitli sıcaklık türlerini ayıklar. Bu varlık zaten eğitilmiş olduğundan, uygulamaya sıcaklık içeren örnek sözcükler eklemeniz gerekmez. Sıcaklık varlığı birçok [kültürde](luis-reference-prebuilt-entities.md)desteklenir.
+# <a name="temperature-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için sıcaklık önceden oluşturulmuş varlık
+Sıcaklık çeşitli sıcaklık türlerini ayıklar. Bu varlık zaten eğitiltiğinden, uygulamanın sıcaklığını içeren örnek bir değer eklemeniz gerekmez. Sıcaklık varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir.
 
 ## <a name="types-of-temperature"></a>Sıcaklık türleri
-Sıcaklık, [Tanıyanlar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub deposundan yönetilir
+Sıcaklık, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml#L819) GitHub deposundan yönetiliyor
 
-## <a name="resolution-for-prebuilt-temperature-entity"></a>Önceden oluşturulmuş sıcaklık varlığı için çözünürlük
+## <a name="resolution-for-prebuilt-temperature-entity"></a>Önceden oluşturulmuş sıcaklık varlığına yönelik çözüm
 
-Aşağıdaki varlık nesneleri sorgu için döndürülür:
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `set the temperature to 30 degrees`
 
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -45,8 +45,8 @@ Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
-Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -75,7 +75,7 @@ Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 ```
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **yerleşik sıcaklık** varlığının çözünürlüğünü gösterir.
+Aşağıdaki örnek, **yerleşik. sıcaklık** varlığının çözünürlüğünü gösterir.
 
 ```json
 "entities": [
@@ -95,6 +95,6 @@ Aşağıdaki örnek, **yerleşik sıcaklık** varlığının çözünürlüğün
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[Yüzde,](luis-reference-prebuilt-percentage.md) [sayı](luis-reference-prebuilt-number.md)ve [yaş](luis-reference-prebuilt-age.md) varlıkları hakkında bilgi edinin.
+[Yüzde](luis-reference-prebuilt-percentage.md), [sayı](luis-reference-prebuilt-number.md)ve [yaş](luis-reference-prebuilt-age.md) varlıkları hakkında bilgi edinin.

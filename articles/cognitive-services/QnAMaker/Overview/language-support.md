@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - QnA Maker
+title: Dil desteği-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: Bilgi tabanınız için QnA Maker tarafından desteklenen kültür, doğal dillerlistesi. Dilleri aynı bilgi tabanında karıştırmayın.
+description: Bilgi tabanınız için Soru-Cevap Oluşturma tarafından desteklenen bir kültürün, doğal dillerin bir listesi. Aynı bilgi bankasındaki dilleri karıştırmayın.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220561"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker kaynak ve bilgi üsleri için dil desteği
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
 
-Kaynaktaki ilk bilgi tabanını oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
+Kaynak için ilk Bilgi Bankası oluşturduğunuzda hizmetin dili seçilir. Kaynaktaki tüm ek bilgi tabanları aynı dilde olmalıdır. 
 
-Dil, QnA Maker'ın kullanıcı sorgularına yanıt olarak sağladığı sonuçların alaka düzeyini belirler.
+Dil, Kullanıcı sorgularına yanıt olarak Soru-Cevap Oluşturma sonuçların uygunluğunu belirler.
 
 [Dil seçiminin etkisi](../how-to/language-knowledge-base.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="languages-supported"></a>Desteklenen diller
 
-Aşağıdaki liste, QnA Maker kaynağı için desteklenen dilleri içerir. 
+Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen dilleri içerir. 
 
 |Dil|
 |--|
@@ -43,7 +43,7 @@ Aşağıdaki liste, QnA Maker kaynağı için desteklenen dilleri içerir.
 |Çekçe|
 |Danca|
 |Felemenkçe|
-|Türkçe|
+|İngilizce|
 |Estonya Dili|
 |Fince|
 |Fransızca|

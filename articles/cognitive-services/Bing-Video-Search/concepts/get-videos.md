@@ -1,7 +1,7 @@
 ---
-title: Bing Video Arama API'sini kullanarak video arama
+title: Bing Video Arama API'si kullanarak video arayın
 titleSuffix: Azure Cognitive Services
-description: Bing Video Arama APIbulur ve web'den ilgili videoları döndürür, bu web üzerinde akıllı ve odaklı video alma için çeşitli özellikler sağlar.
+description: Bing Video Arama Apifınds ve Web 'den ilgili videoları geri döndürmektedir, Web 'de akıllı ve odaklanmış video alımı için çeşitli özellikler sağlar.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220308"
 ---
-# <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si ile video arama
+# <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 
-Bing Video Arama API'si, Bing'in bilişsel haber arama yeteneklerini uygulamalarınız için entegre etmeyi kolaylaştırır. API öncelikle web'den alakalı videoları bulur ve döndürür, ancak web üzerinde akıllı ve odaklanmış video alma için çeşitli özellikler sağlar.
+Bing Video Arama API'si, Bing 'in bilişsel haber arama yeteneklerini uygulamalarınıza tümleştirmeyi kolaylaştırır. API birincil olarak Web 'den ilgili videoları bulur ve geri döndürürse, Web 'de akıllı ve odaklanmış video alımı için çeşitli özellikler sağlar.
 
 ## <a name="getting-videos"></a>Videoları alma
 
@@ -96,9 +96,9 @@ Yanıt, Bing'in sorguyla ilişkili olduğunu düşündüğü videoları bir list
 }
 ```
 
-## <a name="video-thumbnails"></a>Video küçük resimler
+## <a name="video-thumbnails"></a>Video küçük resimleri
 
-Tümünün veya Bing Video Arama API'sı tarafından döndürülen video küçük resimlerinin bir alt kümesini görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API kullanım [ve görüntüleme gereksinimlerinin](../UseAndDisplayRequirements.md)bir parçası olarak, videoları yanıtta verilen sırada görüntülemeniz gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
+Bing Video Arama API'si tarafından döndürülen video küçük resimlerinin tümünü veya bir alt kümesini görüntüleyebilirsiniz. Alt küme görüntülerseniz kullanıcıya kalan videoları görüntüleme seçeneği sunun. Bing API [kullanımı ve görüntüleme gereksinimlerinin](../UseAndDisplayRequirements.md)bir parçası olarak, Videoları yanıtta belirtilen sırada görüntülerinizin olması gerekir. Küçük resmi yeniden boyutlandırma hakkında bilgi için bkz. [Küçük Resimleri Yeniden Boyutlandırma ve Kırpma](../../bing-web-search/resize-and-crop-thumbnails.md). 
 
 Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sürümünü oynatmak için [motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) kullanabilirsiniz. Hareket küçük resmini görüntülediğinizde öznitelik belirlediğinizden emin olun.
 
@@ -106,7 +106,7 @@ Kullanıcı küçük resmin üzerine geldiğinde videonun küçük resim bir sü
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
 -->
 
-Küçük resim tıklandığında, videoyu görüntülemek için üç seçenek vardır:
+Küçük resme tıklandığında, videoyu görüntülemek için üç seçenek vardır:
 
 - Videoyu konak web sitesinde (örneğin YouTube) görüntülemek için [hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) kullanın
 - Videoyu Bing video tarayıcısında görüntülemek için [webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) kullanın
@@ -120,10 +120,10 @@ Video hakkında öngörüler almak için [videoId](https://docs.microsoft.com/re
 
 Video Arama API'si varsayılan olarak sorguyla ilgili tüm videoları döndürür. Yalnızca ücretsiz videolar veya uzunluğu beş dakikayı aşmayan videolar istiyorsanız, aşağıdaki filtre sorgu parametrelerini kullanırsınız:
 
-- [fiyatlandırma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;Videoları fiyatlandırmaya göre filtrele (örneğin, ücretsiz olan veya ödemek zorunda olduğunuz videolar)
-- [çözünürlüğe](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;göre videoları filtreleyin (örneğin, 720p veya daha yüksek çözünürlüğe sahip videolar)
-- [video uzunluğuna](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;göre videoUzun Filtre filtresi videoları (örneğin, uzunluğu beş dakikadan az olan videolar)
-- [tazelik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;Filtre videoları yaşa göre (örneğin, bing tarafından geçen hafta keşfedilen videolar)
+- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;fiyatlandırmaya göre fiyatlandırma filtresi videoları (örneğin, ücretsiz olan veya için ödeme yapmanız gereken videolar)
+- [çözünürlükte](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;videoları çözünürlüğe göre filtreleyin (örneğin, 720p veya daha yüksek çözünürlüklü videolar)
+- [videolength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;videoları video uzunluğuna göre filtreleyin (örneğin, beş dakikadan kısa bir süre içinde olan videolar)
+- [yenilik](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;videoları yaş (örneğin, son hafta içinde Bing tarafından bulunan videolar) ile filtreleyin
 
 Belirli bir etki alanındaki videoları almak için sorgu dizesine [site:](https://msdn.microsoft.com/library/ff795613.aspx) dize işlecini ekleyin.
 

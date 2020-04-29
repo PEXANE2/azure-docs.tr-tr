@@ -1,7 +1,7 @@
 ---
-title: Özel görünümünüzden resim alın - Bing Özel Arama
+title: Özel görünümlerinizden görüntüleri alın-Bing Özel Arama
 titleSuffix: Azure Cognitive Services
-description: Web'in özel görünümünden resim almak için Bing Özel Arama'yı kullanma hakkında üst düzey genel bakış.
+description: Web 'in özel görünümünden görüntü almak için Bing Özel Arama kullanma hakkında üst düzey genel bakış.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
 ms.openlocfilehash: 5fa71c62969e0f1ff7e98f374eca63efa051c041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390341"
 ---
-# <a name="get-images-from-your-custom-view"></a>Özel görünümünüzden resim alın
+# <a name="get-images-from-your-custom-view"></a>Özel görünümlerinizden görüntüleri alın
 
-Bing Özel Görseller Arama, özel arama deneyiminizi resimlerle zenginleştirmenizi sağlar. Özel arama, web sonuçlarına benzer şekilde örneğinizin web sitesi listesinde görüntü aramayı destekler. Görüntüleri Bing'in Özel Görseller Arama API'sini kullanarak veya Barındırılan Kullanıcı Arabirimi özelliğinden alabilirsiniz. Barındırılan Kullanıcı Arabirimi özelliğini kullanmak kolaydır ve arama deneyiminizi kısa sürede çalışır hale getirmek için önerilir.  Barındırılan Kullanıcı Arabirimi'nizi görüntüleri içerecek şekilde yapılandırma hakkında daha fazla bilgi [için, barındırılan Kullanıcı Arabirimi deneyiminizi yapılandırın'](hosted-ui.md)a bakın.
+Bing özel görüntüler arama, özel arama deneyiminizi görüntülerle zenginleştirmenizi sağlar. Özel arama, web sonuçlarına benzer şekilde örneğinizin web sitesi listesinde görüntü aramayı destekler. Resimleri, Bing 'in özel görüntülerini arama API 'sini kullanarak veya barındırılan Kullanıcı Arabirimi özelliği aracılığıyla alabilirsiniz. Barındırılan Kullanıcı arabirimi özelliğinin kullanılması basittir ve arama deneyiminizi kısa bir sırada çalışır duruma getirmek için önerilir.  Barındırılan Kullanıcı arabirimini görüntüler içerecek şekilde yapılandırma hakkında daha fazla bilgi için bkz. [barındırılan Kullanıcı arabirimi deneyiminizi yapılandırma](hosted-ui.md).
 
-Arama sonuçlarını görüntüleme konusunda daha fazla denetim istiyorsanız, Bing'in Özel Görseller Arama API'sini kullanabilirsiniz. API'yi aramak Bing Resim Arama API'sini çağırmaya benzediği için, API'yi çağıran örnekler için Bing Resim Arama'yı kullanıma [çekin.](../Bing-Image-Search/overview.md) Ancak bunu yapmadan önce, Özel [Görseller Arama API başvuru](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) içeriğine aşina olun. Ana farklar desteklenen sorgu parametreleri (özelConfig sorgu parametresini içermelisiniz) ve istek gönderdiğiniz bitiş noktasıdır.
+Arama sonuçlarının görüntülenmesi üzerinde daha fazla denetime sahip olmak istiyorsanız, Bing 'in özel görüntüler arama API 'sini kullanabilirsiniz. API 'YI çağırmak Bing Resim Arama API'si çağırmaya benzer olduğundan, API 'YI çağıran örnekler için [Bing resim arama](../Bing-Image-Search/overview.md) kullanıma alın. Ancak bunu yapmadan önce [özel görüntüler arama API 'si başvuru](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) içeriği hakkında bilgi edinin. Ana farklılıklar, desteklenen sorgu parametreleridir (customConfig sorgu parametresini dahil etmeniz gerekir) ve isteklerin gönderileceği uç nokta.
 
 <!--
 ## Next steps

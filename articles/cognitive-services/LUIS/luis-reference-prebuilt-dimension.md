@@ -1,7 +1,7 @@
 ---
-title: Dimension Prebuilt varlıklar - LUIS
+title: Boyut önceden oluşturulmuş varlıklar-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bu makale, Dil Anlama (LUIS) boyutu önceden oluşturulmuş varlık bilgilerini içerir.
+description: Bu makale, Language Understanding (LUSıS) ' de önceden oluşturulmuş varlık bilgilerini içerir.
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270643"
 ---
-# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>LUIS uygulaması için boyut önceden oluşturulmuş varlık
-Önceden oluşturulmuş boyut varlığı, LUIS uygulama kültüründen bağımsız olarak çeşitli boyut türlerini algılar. Bu varlık zaten eğitilmiş olduğundan, uygulama amaçlarına boyutlar içeren örnek sözcükler eklemeniz gerekmez. Boyut varlık birçok [kültürde](luis-reference-prebuilt-entities.md)desteklenir.
+# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Bir LUSıS uygulaması için boyut önceden oluşturulmuş varlık
+Önceden oluşturulmuş boyut varlığı, LUSıS uygulama kültürüne bakılmaksızın çeşitli boyut türlerini algılar. Bu varlık zaten eğitiltiğinden, uygulama amaçlarını boyutlar içeren örnek bir değer eklemeniz gerekmez. Boyut varlığı [birçok kültürde](luis-reference-prebuilt-entities.md)desteklenir.
 
 ## <a name="types-of-dimension"></a>Boyut türleri
 
-Boyut, [Tanıyanlar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub deposundan yönetilir.
+Boyut, [Tanıyıcılar-metin](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) GitHub deposundan yönetilir.
 
-## <a name="resolution-for-dimension-entity"></a>Boyut varlığı için çözünürlük
+## <a name="resolution-for-dimension-entity"></a>Boyut varlığı için çözüm
 
-Aşağıdaki varlık nesneleri sorgu için döndürülür:
+Sorgu için aşağıdaki varlık nesneleri döndürülür:
 
 `10 1/2 miles of cable`
 
 #### <a name="v3-response"></a>[V3 yanıtı](#tab/V3)
 
-Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
+Aşağıdaki JSON `verbose` parametresi olarak `false`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -45,8 +45,8 @@ Aşağıdaki JSON `verbose` parametre ile `false`ayarlanır:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 verbose yanıtı](#tab/V3-verbose)
-Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
+#### <a name="v3-verbose-response"></a>[V3 ayrıntılı yanıt](#tab/V3-verbose)
+Aşağıdaki JSON `verbose` parametresi olarak `true`ayarlanmıştır:
 
 ```json
 "entities": {
@@ -76,7 +76,7 @@ Aşağıdaki JSON `verbose` parametre ile `true`ayarlanır:
 
 #### <a name="v2-response"></a>[V2 yanıtı](#tab/V2)
 
-Aşağıdaki örnek, **yerleşik boyut** varlığının çözümünü gösterir.
+Aşağıdaki örnek, **yerleşik. Dimension** varlığının çözünürlüğünü gösterir.
 
 ```json
 {
@@ -94,6 +94,6 @@ Aşağıdaki örnek, **yerleşik boyut** varlığının çözümünü gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+[V3 tahmin uç noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
 
-[E-posta,](luis-reference-prebuilt-email.md) [numara](luis-reference-prebuilt-number.md)ve [ordinal](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.
+[E-posta](luis-reference-prebuilt-email.md), [sayı](luis-reference-prebuilt-number.md)ve [sıralı](luis-reference-prebuilt-ordinal.md) varlıklar hakkında bilgi edinin.

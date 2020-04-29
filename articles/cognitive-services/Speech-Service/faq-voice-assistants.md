@@ -1,7 +1,7 @@
 ---
-title: Sesli asistanlar sık sorulan sorular
+title: Sesli yardımcılar hakkında sık sorulan sorular
 titleSuffix: Azure Cognitive Services
-description: Özel Komutlar (Önizleme) veya Doğrudan Satır Konuşması kanalını kullanarak sesli asistanlarla ilgili en popüler soruların yanıtlarını alın.
+description: Özel komutlar (Önizleme) veya doğrudan hat konuşma kanalı kullanarak sesli yardımcılar hakkında en popüler sorulara yanıtlar alın.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110349"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Sesli asistanlar sık sorulan sorular
+# <a name="voice-assistants-frequently-asked-questions"></a>Sesli yardımcılar hakkında sık sorulan sorular
 
-Bu belgede sorularınıza yanıt bulamıyorsanız, diğer [destek seçeneklerine](support.md)göz atın.
+Bu belgede sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](support.md)göz atın.
 
 ## <a name="general"></a>Genel
 
-**S: Ses asistanı nedir?**
+**S: Ses Yardımcısı nedir?**
 
-**A:** Cortana gibi, bir ses asistanı da kullanıcının konuşulan konuşmalarını dinleyen, anlam için bu söyleyişlerin içeriğini analiz eden, söyleyişin amacına yanıt olarak bir veya daha fazla eylem gerçekleştiren ve kullanıcıya genellikle konuşulan bir bileşeni içeren bir yanıt sağlayan bir çözümdür. Bir sistemle etkileşim için "seslendirme, ses çıkarma" deneyimidir. sesli asistan yazarları, [Özel Komutlar (Önizleme)](custom-commands.md) veya Bot Framework'ün [Doğrudan Hat Konuşması](direct-line-speech.md) kanalı kullanılarak oluşturulan bir asistanla iletişim kurmak için Konuşma SDK'sındaki leri kullanarak `DialogServiceConnector` cihaz üzerinde bir uygulama oluştururlar. Bu yardımcılar, markanıza veya ürününüze özel bir deneyim sağlamak için özel anahtar kelimeler, özel konuşma ve özel ses kullanabilir.
+Y **:** Cortana gibi, bir ses Yardımcısı, kullanıcının konuşulan makollarını dinleyen bir çözümdür, söz konusu söz konusu çıkışların içeriğini analiz etmek için bir veya daha fazla eylem gerçekleştirir ve genellikle konuşulan bir bileşeni içeren kullanıcıya bir yanıt verir. Bu, bir sistemle etkileşimde bulunmak için bir "sesli oturum, sesli çıkış" deneyimidir. Sesli yardım yazarları, `DialogServiceConnector` [özel komutlar (Önizleme)](custom-commands.md) veya bot çerçevesinin [doğrudan çizgi konuşma](direct-line-speech.md) kanalı kullanılarak oluşturulan bir yardımcı ile iletişim kurmak için konuşma SDK 'sında kullanarak bir cihaz üzerinde uygulama oluşturur. Bu yardımcılar, marka veya ürününüze uyarlanmış bir deneyim sağlamak için özel anahtar sözcükler, özel konuşma ve özel ses kullanabilir.
 
-**S: Özel Komutlar (Önizleme) veya Doğrudan Satır Konuşması kullanmalı mıyım? Ne fark eder ki?**
+**S: özel komutları (Önizleme) mi yoksa doğrudan konuşma hattını mi kullanmalıyım? Fark nedir?**
 
-**C:** [Özel Komutlar (Önizleme),](custom-commands.md) görev tamamlama senaryoları için çok uygun bir yardımcı oluşturmak ve barındırmak için daha düşük karmaşıklıkta bir araç kümesidir. [Doğrudan Satır Konuşması,](direct-line-speech.md) sağlam konuşma senaryoları etkinleştirebilecek daha zengin ve daha karmaşık özellikler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırması](voice-assistants.md#choosing-an-assistant-solution) bakın.
+Y **:** [özel komutlar (Önizleme)](custom-commands.md) , görev tamamlama senaryolarına uygun olan bir yardımcıyı kolayca oluşturup barındırmak için daha düşük karmaşıklığa sahip bir araç kümesidir. [Doğrudan hat](direct-line-speech.md) konuşması, güçlü bir konuşma senaryolarını etkinleştirebilecek daha zengin, daha gelişmiş yetenekler sağlar. Daha fazla bilgi için [yardımcı çözümlerin karşılaştırmasına](voice-assistants.md#choosing-an-assistant-solution) bakın.
 
-**S: Nasıl başlarım?**
+**S: Nasıl yaparım? kullanmaya başlamak istiyor musunuz?**
 
-**A:** Bir Özel Komutlar (Önizleme) uygulaması veya temel Bot Framework bot uyarak başlamak için en iyi yolu.
+Y **:** Özel komutlar (Önizleme) uygulaması veya temel bot Framework bot oluşturmaya başlamak için en iyi yol.
 
-- [Özel Komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
-- [Temel bir Bot Framework botu oluşturun](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Bir botu Doğrudan Satır Konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Özel komutlar (Önizleme) uygulaması oluşturma](quickstart-custom-speech-commands-create-new.md)
+- [Temel bir bot Framework bot oluşturma](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Bir bot 'ı doğrudan hat konuşma kanalına bağlama](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hata Ayıklama
 
-**S: Kanal sırrım nerede?**
+**S: Kanal gizliliğim nerede?**
 
-**A:** Doğrudan Satır Konuşması'nın önizleme sürümünü kullandıysanız veya ilgili belgeleri okuyorsanız, Doğrudan Satır Konuşması kanalı kayıt sayfasında gizli bir anahtar bulmayı bekleyebilirsiniz. Konuşma SDK `DialogServiceConfig` v1.7 fabrika yöntemi `FromBotSecret` de bu değeri bekliyor.
+Y **:** Doğrudan hat konuşma önizleme sürümünü kullandıysanız veya ilgili belgeleri okuyorsanız, doğrudan hat konuşma kanalı kaydı sayfasında bir gizli anahtar bulmayı bekleyebilir. Konuşma SDK 'sında `DialogServiceConfig` v 1.7 `FromBotSecret` Factory yöntemi de bu değeri bekler.
 
-Direct Line Speech'in en son sürümü, bir cihazdan botuna başvurma işlemini kolaylaştırır. Kanal kayıt sayfasında, en üstteki açılır sayfa, Doğrudan Satır Konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirer. Bir kez ilişkili, v1.8 Konuşma `BotFrameworkConfig::FromSubscription` SDK aboneliğiile `DialogServiceConnector` ilişkili olduğunuz bot temas a yapılandıracak bir fabrika yöntemi içerir.
+Doğrudan hat konuşma 'nın en son sürümü bir cihazdan bot ile iletişim kurma sürecini basitleştirir. Kanal kaydı sayfasında, üstteki açılan kutuda doğrudan hat konuşma kanalı kaydınızı bir konuşma kaynağıyla ilişkilendirir. Bağlantı kurulduktan sonra, v 1.8 konuşma SDK 'Sı, `BotFrameworkConfig::FromSubscription` aboneliğiniz ile ilişkilendirdiğiniz bot ile iletişim `DialogServiceConnector` kurmak üzere bir fabrika yöntemi içerir.
 
-İstemci uygulamanızı hala v1.7'den v1.8'e geçiriyorsanız, `DialogServiceConfig::FromBotSecret` kanal gizli parametresi (örneğin kullandığınız önceki gizli) için boş olmayan, null olmayan bir değerle çalışmaya devam edebilir. Yalnızca yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanırken göz ardı edilecektir. Servis tarafı ilişkilendirmesi ilgili olmadan önce cihazda bunlar denetlendirilmeden, değerin boş ve boş olmaması _gerektiğini_ lütfen unutmayın.
+Hala, istemci uygulamanızı v 1.7 'den v 1.8 'e geçiriyorsanız, `DialogServiceConfig::FromBotSecret` kanal gizli parametresi için boş olmayan ve null olmayan bir değer ile çalışmaya devam edebilir, örneğin, daha önce kullandığınız gizli dizi. Daha yeni bir kanal kaydıyla ilişkili bir konuşma aboneliği kullanılırken yalnızca yok sayılır. Bu değer, hizmet tarafı ilişkisinin ilgili olması için cihazda denetlendiğinden, null ve boş olmayan bir değer _olmalıdır_ .
 
-Daha ayrıntılı bir kılavuz için, lütfen kanal kaydında yürüyen [öğretici bölümüne](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) bakın.
+Daha ayrıntılı bir kılavuz için, lütfen kanal kaydını adım adım gösteren [öğretici bölümüne](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) bakın.
 
-**S: Bağlanırken 401 hata alıyorum ve hiçbir şey çalışmıyor. Konuşma abonelik anahtarımgeçerli olduğunu biliyorum. Ne var ne yok?**
+**S: bağlanırken bir 401 hatası alıyorum ve hiçbir şey işe yarar. Konuşma aboneliği anahtarımın geçerli olduğunu biliyorum. Ne var ne yok?**
 
-**A:** Aboneliğinizi Azure portalında yönetirken, lütfen **Bilişsel Hizmetler** kaynağını (Microsoft.CognitiveServicesAllInOne, "Tüm Bilişsel Hizmetler") _değil,_ **Konuşma** kaynağını (Microsoft.CognitiveServicesSpeechServicesServices, "Speech") kullandığınızdan emin olun. Ayrıca, [sesli asistanlar için Konuşma hizmeti bölge desteği](regions.md#voice-assistants)kontrol edin.
+Y **:** Aboneliğinizi Azure portal yönetirken, lütfen _bilişsel_ **Hizmetler** kaynağını (Microsoft. Biliveservicesallinone, "tüm bilişsel hizmetler") değil, **konuşma** kaynağını (Microsoft. CognitiveServicesSpeechServices, "konuşma") kullandığınızdan emin olun. Ayrıca, [sesli yardımcılar Için konuşma hizmeti bölgesi desteğini](regions.md#voice-assistants)inceleyin.
 
-![doğrudan satır konuşması için doğru abonelik](media/voice-assistants/faq-supported-subscription.png "uyumlu bir Konuşma aboneliği örneği")
+![doğrudan hat konuşmayı için doğru abonelik](media/voice-assistants/faq-supported-subscription.png "uyumlu bir konuşma aboneliği örneği")
 
-**S: Benim tanıma metni `DialogServiceConnector`geri almak , ama bir '1011' hata ve benim bot hiçbir şey bakın. Neden?**
+**S: tanıma metnini My `DialogServiceConnector`'dan geri aldım, ancak bir ' 1011 ' hatası ve botum 'dan hiçbir şey görmüyorum. Kaydol?**
 
-**A:** Bu hata, yardımcınız ve ses asistanı hizmeti arasında bir iletişim sorunu gösterir.
+Y **:** Bu hata, yardımcınızla ses Yardımcısı hizmeti arasında bir iletişim sorunu olduğunu gösterir.
 
-- Özel Komutlar (Önizleme) için, Özel Komutlar (Önizleme) Uygulamanızın yayınlandığından emin olun
-- Doğrudan Satır Konuşması [için, botunuzu Doğrudan Hat Konuşması kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bağladığınızdan, botunuza [Akış protokolü desteği eklediğinizden](https://aka.ms/botframework/addstreamingprotocolsupport) emin olun (ilgili Web Soketi desteğiyle) ve ardından botunuzun kanaldan gelen isteklere yanıt verilip vermeyini kontrol edin.
+- Özel komutlar (Önizleme) için, özel komutlar (Önizleme) uygulamanızın yayımlandığından emin olun
+- Doğrudan hat konuşması için, [bot 'Unuzu doğrudan hat konuşma kanalına bağladığınıza](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), bot 'Unuza [akış protokolü desteği](https://aka.ms/botframework/addstreamingprotocolsupport) (ilgili Web yuva desteğiyle) eklemiş olduğunuzdan emin olun ve ardından, bot 'un kanaldan gelen isteklere yanıt verdiğini denetleyin.
 
-**S: Bu kod hala çalışmıyor ve/veya bir `DialogServiceConnector`. Ne yapmalıyım?**
+**S: Bu kod hala çalışmıyor ve/veya kullanırken farklı bir hata alıyorum `DialogServiceConnector`. Ne yapmam gerekir?**
 
-**A:** Dosya tabanlı günlüğe kaydetme önemli ölçüde daha fazla ayrıntı sağlar ve destek isteklerini hızlandırmaya yardımcı olabilir. Bu işlevselliği etkinleştirmek [için, dosya günlüğe kaydetmenin nasıl kullanılacağına](how-to-use-logging.md)bakın.
+Y **:** Dosya tabanlı günlük kaydı önemli ölçüde daha fazla ayrıntı sağlar ve destek isteklerini hızlandırmaya yardımcı olabilir. Bu işlevi etkinleştirmek için bkz. [dosya günlüğünü kullanma](how-to-use-logging.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

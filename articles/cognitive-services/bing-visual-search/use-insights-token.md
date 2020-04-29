@@ -1,7 +1,7 @@
 ---
-title: Öngörüler belirteci kullanma - Bing Görsel Arama
+title: Öngörüler belirtecini kullanma-Bing Görsel Arama
 titleSuffix: Azure Cognitive Services
-description: Bir resim hakkında bilgi almak için Bing Görsel Arama API'si ile bir görüntünün içgörü belirtecinin nasıl kullanılacağını gösterir.
+description: Bir görüntüyle ilgili Öngörüler elde etmek için bir görüntünün öngörü belirtecinin Bing Görsel Arama API'si nasıl kullanılacağını gösterir.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67341714"
 ---
-# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Bir resim için öngörüler elde etmek için bir öngörü belirteci kullanın
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Bir görüntü için Öngörüler elde etmek için bir Öngörüler belirteci kullanma
 
-Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında bilgi için [Bing Görsel Arama API'si nedir?](overview.md) Bu makalede, bir içgörü belirteci kullanarak gösterir. Öngörüalmak için görüntünün nasıl yüklendiğini gösteren örnekler için, hızlı başlangıçlara[(C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python)](quickstarts/python.md)bakın.
+Bing Görsel Arama API’si, verdiğiniz bir görüntü hakkında bilgi döndürür. Bir URL veya bir içgörü belirteci kullanarak ya da karşıya resim yükleyerek görüntüyü verebilirsiniz. Bu seçenekler hakkında daha fazla bilgi için bkz. [Bing Görsel Arama API'si nedir?](overview.md). Bu makalede, bir Öngörüler belirtecinin kullanılması gösterilmektedir. Öngörüleri almak için bir görüntüyü karşıya yüklemeyi gösteren örnekler için bkz. quickbaşlangıçları ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
 
-Bing Visual Search'e bir resim belirteci veya URL gönderirseniz, aşağıdaki ler POST'un gövdesine eklemeniz gereken form verilerini gösterir. Form verilerinin üstbilgiyi `Content-Disposition` içermesi ve parametresini `name` "knowledgeRequest" olarak ayarlamanız gerekir. `imageInfo` Nesne yle ilgili ayrıntılar için isteğe bakın:
+Bing Görsel Arama bir görüntü belirteci veya URL gönderirseniz, aşağıda GÖNDERI gövdesine eklemeniz gereken form verileri gösterilir. Form verileri `Content-Disposition` üstbilgiyi içermeli ve `name` parametresini "knowledgeRequest" olarak ayarlamanız gerekir. `imageInfo` Nesneyle ilgili ayrıntılar için bkz. istek:
 
 ```json
 {
@@ -43,7 +43,7 @@ Bing Visual Search'e bir resim belirteci veya URL gönderirseniz, aşağıdaki l
 }
 ```
 
-Bu makaledeki örnekler, içgörü belirteci nin nasıl kullanılacağını göstermektedir. Bir /images/search API `Image` yanıtındaki bir nesnenin öngörülerini alırsınız. Öngörüler belirteci alma hakkında bilgi için Bing [Resim Arama API'si nedir?](../Bing-Image-Search/overview.md)
+Bu makaledeki örneklerde, Öngörüler belirtecinin nasıl kullanılacağı gösterilmektedir. Bir/Imate/Search API `Image` yanıtında bulunan bir nesneden Öngörüler belirtecini alırsınız. Öngörüler belirtecini alma hakkında daha fazla bilgi için bkz. [Bing resim arama API'si nedir?](../Bing-Image-Search/overview.md).
 
 ```
 --boundary_1234-abcd
@@ -58,23 +58,23 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Öngörüler belirteci kullanan örnekler için [Bkz. C#](#use-with-c) | [Java](#use-with-java) | [Düğümü.js](#use-with-nodejs) | [Python](#use-with-python).
+Öngörüler belirtecini kullanan örnekler için bkz. [C#](#use-with-c) | [Java](#use-with-java) | [Node. js](#use-with-nodejs) | [Python](#use-with-python).
 
-## <a name="use-with-c"></a>C ile kullanın #
+## <a name="use-with-c"></a>C ile kullanma #
 
-### <a name="c-prerequisites"></a>C# ön koşullar
+### <a name="c-prerequisites"></a>C# önkoşulları
 
-- Bu koduN Windows'da çalıştırılması için [Visual Studio 2019'un](https://www.visualstudio.com/downloads/) herhangi bir sürümü.
-- Azure aboneliği. Bu hızlı başlangıç için [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonelik anahtarı veya ücretli abonelik anahtarı kullanabilirsiniz.
+- Bu kodun Windows üzerinde çalışmasını sağlamak için herhangi bir [Visual Studio 2019](https://www.visualstudio.com/downloads/) sürümü.
+- Azure aboneliği. Bu hızlı başlangıçta, [ücretsiz bir deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) aboneliği anahtarı veya ücretli bir abonelik anahtarı kullanabilirsiniz.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 Bu uygulamayı çalıştırmak için şu adımları izleyin:
 
-1. Visual Studio'da bir konsol çözümü oluşturun.
-2. Program.cs içeriğini bu hızlı başlatmada gösterilen kodla değiştirin.
+1. Visual Studio 'da bir konsol çözümü oluşturun.
+2. Program.cs içeriğini, bu hızlı başlangıçta gösterilen kodla değiştirin.
 3. `accessKey` değerini, abonelik anahtarınızla değiştirin.
-4. `insightsToken` Değeri bir /images/search yanıtından gelen bir öngörü belirteciyle değiştirin.
+4. Değeri, `insightsToken` bir/ımasi/Search yanıtından bir Öngörüler belirteci ile değiştirin.
 5. Programı çalıştırın.
 
 ```csharp
@@ -233,18 +233,18 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-## <a name="use-with-java"></a>Java ile kullanın
+## <a name="use-with-java"></a>Java ile kullanma
 
-### <a name="java-prerequisites"></a>Java ön koşulları
+### <a name="java-prerequisites"></a>Java önkoşulları
 
-- Bu kodu derlemek ve çalıştırmak için [JDK 7 veya 8'i](https://aka.ms/azure-jdks) kullanmanız gerekir. Sık kullanılanınız varsa Java IDE kullanabilirsiniz, ancak bir metin düzenleyicisi yeterli olacaktır.
-- Bu hızlı başlangıç için [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonelik anahtarı veya ücretli abonelik anahtarı kullanabilirsiniz.
+- Bu kodu derlemek ve çalıştırmak için [JDK 7 veya 8](https://aka.ms/azure-jdks) kullanmanız gerekir. Sık kullanılana sahipseniz bir Java IDE kullanabilirsiniz, ancak bir metin Düzenleyicisi yeterli olur.
+- Bu hızlı başlangıçta, [ücretsiz bir deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) aboneliği anahtarı veya ücretli bir abonelik anahtarı kullanabilirsiniz.
 
-## <a name="run-the-java-application"></a>Java uygulamasını çalıştırın
+## <a name="run-the-java-application"></a>Java uygulamasını çalıştırma
 
 Bu uygulamayı çalıştırmak için şu adımları izleyin:
 
-1. [Gson Java kitaplığını](https://github.com/google/gson)indirin veya kurun. Ayrıca Maven üzerinden Gson elde edebilirsiniz.
+1. [Gson Java kitaplığını](https://github.com/google/gson)indirin veya yükleyin. Ayrıca, Gson 'yı Maven aracılığıyla elde edebilirsiniz.
 2. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun.
 3. Sağlanan kodu `VisualSearch.java` adlı bir dosyaya ekleyin.
 4. `subscriptionKey` değerini, abonelik anahtarınızla değiştirin.
@@ -347,14 +347,14 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>Node.js ile kullanın
+## <a name="use-with-nodejs"></a>Node. js ile kullanma
 
-### <a name="nodejs-prerequisites"></a>Düğüm.js ön koşullar
+### <a name="nodejs-prerequisites"></a>Node. js önkoşulları
 
-- Bu kodu çalıştırmak için [Node.js 6'ya](https://nodejs.org/en/download/) sahip olmalısınız.
-- Bu hızlı başlangıç için [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonelik anahtarı veya ücretli abonelik anahtarı kullanabilirsiniz.
+- Bu kodu çalıştırmak için [Node. js 6](https://nodejs.org/en/download/) ' ya sahip olmanız gerekir.
+- Bu hızlı başlangıçta, [ücretsiz bir deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) aboneliği anahtarı veya ücretli bir abonelik anahtarı kullanabilirsiniz.
 
-## <a name="run-the-javascript-application"></a>JavaScript uygulamasını çalıştırın
+## <a name="run-the-javascript-application"></a>JavaScript uygulamasını çalıştırma
 
 Bu uygulamayı çalıştırmak için şu adımları izleyin:
 
@@ -411,14 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
-## <a name="use-with-python"></a>Python ile kullanın
+## <a name="use-with-python"></a>Python ile kullanma
 
-### <a name="python-prerequisites"></a>Python ön koşullar
+### <a name="python-prerequisites"></a>Python önkoşulları
 
-- Bu kodu çalıştırmak için [Python 3'e](https://www.python.org/) sahip olmalısınız.
+- Bu kodu çalıştırmak için [Python 3](https://www.python.org/) ' ün olması gerekir.
 - Bu hızlı başlangıçta bir [ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) abonelik anahtarı veya ücretli abonelik anahtarı kullanabilirsiniz.
 
-## <a name="run-the-python-application"></a>Python uygulamasını çalıştırın
+## <a name="run-the-python-application"></a>Python uygulamasını çalıştırma
 
 Bu uygulamayı çalıştırmak için şu adımları izleyin:
 
@@ -476,8 +476,8 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Görsel Arama tek sayfalık web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)  
+[Görsel Arama tek sayfalı Web uygulaması oluşturma](tutorial-bing-visual-search-single-page-app.md)  
 [Bing Görsel Arama API’si nedir?](overview.md)  
 [Bilişsel Hizmetler’i deneyin](https://aka.ms/bingvisualsearchtryforfree)  
 [Ücretsiz deneme erişim anahtarı alın](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[Resimler - Görsel Arama](https://aka.ms/bingvisualsearchreferencedoc)
+[Görüntüler-Görsel Arama](https://aka.ms/bingvisualsearchreferencedoc)

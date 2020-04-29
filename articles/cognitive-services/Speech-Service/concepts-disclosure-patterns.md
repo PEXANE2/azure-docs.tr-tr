@@ -1,7 +1,7 @@
 ---
-title: Açıklama Tasarım Desenleri
+title: Açıklama tasarım desenleri
 titleSuffix: Azure Cognitive Services
-description: Tasarım desenleri ve ifşaat için en iyi uygulamalar.
+description: Tasarım desenleri ve en iyi deneyimler.
 services: cognitive-services
 author: sharonlo101
 manager: nitinme
@@ -11,247 +11,247 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74776631"
 ---
 # <a name="disclosure-design-patterns"></a>Tasarım desenlerini açıklama
-Artık sentetik ses deneyiminiz için doğru [açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment) belirlediğinize&#39;, potansiyel tasarım modellerini keşfetmek için iyi bir zaman&#39;.
+Yapay sesli deneyiminize yönelik doğru [Açıklama düzeyini](concepts-disclosure-guidelines.md#disclosure-assessment)&#39;ve potansiyel tasarım düzenlerini araştırmak için uygun bir zaman&#39;.
 ## <a name="overview"></a>Genel Bakış
-Sentetik ses deneyiminize uygulayabileceğiniz bir tasarım örüntüsü spektrumu vardır. Açıklama değerlendirmenizin sonucu 'Yüksek İfşaat' ise, sentetik sesin kökenini açıkça iletmek anlamına gelen [**açık açıklama**](#explicit-disclosure)yapmanızı öneririz. [**Örtük açıklama,**](#implicit-disclosure) gerekli açıklama düzeylerinin yüksek veya düşük olup olmadığı konusunda ses deneyimlerine yarar sağlayan ipuçları nı ve etkileşim kalıplarını içerir.
-![Açıklama desenleri spektrumu](media/responsible-ai/disclosure-patterns/affordances.png)
+Yapay sesli deneyiminize uygulayabileceğiniz bir dizi açıklama tasarım deseni vardır. Açıklama değerlendirmeinizin sonucu ' yüksek açığa çıkması ' ise [**açık bir açıklama**](#explicit-disclosure)önerilir, bu da yapay ses çıkış sağlarının kaynaklarına iletişim kurmasıdır. [**Örtük açığa çıkması**](#implicit-disclosure) , gerekli bir açıklama düzeyi yüksek veya düşük olup olmadığına bakılmaksızın sesli deneyimlere yönelik ipuçları ve etkileşim desenleri içerir.
+![Açıklama desenleri](media/responsible-ai/disclosure-patterns/affordances.png)
 
 
 
 
 
 
-| Açık açıklama desenleri                                                                                                                                                                                    | Örtük açıklama kalıpları                                                                 |
+| Açık açıklama desenleri                                                                                                                                                                                    | Örtük açıklama desenleri                                                                 |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|[Şeffaf Giriş](#transparent-introduction)<br> [Sözel Şeffaf Giriş](#verbal-transparent-introduction)<br>  [Açık Byline](#explicit-byline)<br>  [Özelleştirme ve Kalibrasyon](#customization-and-calibration)<br> [Ebeveyn İfşası](#parental-disclosure)<br> [Sesin nasıl üretiliş edildiği hakkında daha fazla bilgi edinmek için fırsatlar sunmak](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Yetenek Açıklama](#capability-disclosure)<br>[Örtük İşaretler ve Geri Bildirim](#implicit-cues--feedback)<br> [Konuşma Şeffaflığı](#conversational-transparency) |
+|[Şeffaf giriş](#transparent-introduction)<br> [Çapraz şeffaf giriş](#verbal-transparent-introduction)<br>  [Açık satır](#explicit-byline)<br>  [Özelleştirme ve ayarlama](#customization-and-calibration)<br> [Ebeveyn açıklaması](#parental-disclosure)<br> [Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama](#providing-opportunities-to-learn-more-about-how-the-voice-was-made) | [Yetenek açığa çıkması](#capability-disclosure)<br>[Örtük Ipuçları ve geri bildirim](#implicit-cues--feedback)<br> [Konuşma saydamlığı](#conversational-transparency) |
 
 
 
-Sentetik sesinize doğrudan uygulanan desenlere başvurmak için aşağıdaki grafiği kullanın. Bu grafikteki diğer koşullardan bazıları senaryonuz için de geçerli olabilir:<br/>
+Yapay sesinize uygulanan desenlere doğrudan başvurmak için aşağıdaki grafiği kullanın. Bu grafikteki diğer koşullardan bazıları senaryonuz için de geçerli olabilir:<br/>
 
 
 
-| Sentetik ses deneyiminiz ise... | Öneriler | Tasarım desenleri |
+| Yapay ses deneyiminiz varsa... | Öneriler | Tasarım desenleri |
 | --- | --- | --- |
-| Yüksek İfşa Gerektirir  | Kullanıcıların ilişki kurmalarına yardımcı olmak için en az bir açık desen ve örtülü ipuçlarını önceden kullanın. |[Açık Açıklama](#explicit-disclosure)<br>[Örtük Açıklama](#implicit-disclosure)  |
-| Düşük Açıklama Gerektirir | Açıklama en az veya gereksiz olabilir, ancak bazı örtük desenler yararlanabilir. | [Yetenek Açıklama](#capability-disclosure)<br>[Konuşma Şeffaflığı](#conversational-transparency)  |
-| Yüksek düzeyde bir katılıma sahiptir | Uzun vadede oluşturun ve kullanıcı yolculuğu boyunca ifşaat için birden fazla giriş noktası sunun. Bu son derece bir onboarding deneyimi olması tavsiye edilir. | [Şeffaf Giriş](#transparent-introduction)<br>[Özelleştirme ve Kalibrasyon](#customization-and-calibration)<br>[Yetenek Açıklama](#capability-disclosure) |
-| Birincil hedef kitle olarak çocukları içerir | Ebeveynleri birincil açıklama kitlesi olarak hedefle ve çocuklara ifşaatı etkili bir şekilde iletebilmelerine dikkat edin.  | [Ebeveyn İfşası](#parental-disclosure)<br>[Sözel Şeffaf Giriş](#verbal-transparent-introduction)<br> [Örtük Açıklama](#implicit-disclosure)<br> [Konuşma Şeffaflığı](#conversational-transparency)  |
-| Görme engelli kullanıcıları veya görme yetisi düşük kişileri birincil hedef kitle olarak içerir  | Tüm kullanıcıları dahil edin ve herhangi bir görsel açıklama biçiminin alternatif metin veya ses efektleri ile ilişkili olduğundan emin olun. Kontrast oranı ve görüntü boyutu için erişilebilirlik standartlarına uyun. İfşaatı iletmek için işitsel ipuçlarını kullanın.  | [Sözel Şeffaf Giriş](#verbal-transparent-introduction) <br>[İşitsel İpuçları](#implicit-cues--feedback)<br>[Haptic İpuçları](#implicit-cues--feedback)<br>[Konuşma Şeffaflığı](#conversational-transparency)<br>[Erişilebilirlik Standartları](https://www.microsoft.com/accessibility) |
-| Ekransız, aygıtsız mı dır veya birincil veya tek etkileşim modu olarak sesi kullanır | İfşaatı iletmek için işitsel ipuçlarını kullanın. | [Sözel Şeffaf Giriş](#verbal-transparent-introduction) <br> [İşitsel İpuçları](#implicit-cues--feedback)  |
-| Potansiyel olarak birden fazla kullanıcı/dinleyici içerir (örn. birden fazla evde kişisel asistan)  | Çeşitli kullanıcı bağlamlarına ve anlayış düzeylerine dikkat edin ve kullanıcı yolculuğunda ifşa etmek için birden fazla fırsat sunun.  | [Şeffaf Giriş (Return User)](#transparent-introduction)<br> [Sesin nasıl üretiliş edildiği hakkında daha fazla bilgi edinmek için fırsatlar sunmak](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Konuşma Şeffaflığı](#conversational-transparency)  |
+| Yüksek açığa çıkması gerekir  | Kullanıcıların ilişkilendirme oluşturmasına yardımcı olmak için en az bir açık kalıp ve örtük ipuçları kullanın. |[Açık açıklama](#explicit-disclosure)<br>[Örtük açıklama](#implicit-disclosure)  |
+| Düşük bir açıklama gerektirir | Açıklama en az veya gereksiz olabilir, ancak bazı örtük desenlerden yararlanabilir. | [Yetenek açığa çıkması](#capability-disclosure)<br>[Konuşma saydamlığı](#conversational-transparency)  |
+| , Yüksek düzeyde bir görevlendirmeye sahiptir | Uzun süreli oluşturun ve Kullanıcı yolculuğu boyunca açıklanmek üzere birden çok giriş noktası sunun. Bir ekleme deneyiminizin olması önemle önerilir. | [Şeffaf giriş](#transparent-introduction)<br>[Özelleştirme ve ayarlama](#customization-and-calibration)<br>[Yetenek açığa çıkması](#capability-disclosure) |
+| Birincil amaçlanan hedef kitle olarak alt öğeler içerir | Ana öğeleri birincil açıklama kitleleri olarak hedefleyin ve bu bilgilerin, çocuklarla iletişim kurabildiğinden emin olun.  | [Ebeveyn açıklaması](#parental-disclosure)<br>[Çapraz şeffaf giriş](#verbal-transparent-introduction)<br> [Örtük açıklama](#implicit-disclosure)<br> [Konuşma saydamlığı](#conversational-transparency)  |
+| Birincil amaçlanan hedef kitle olarak görme engelli kullanıcıları veya kişileri görme  | Tüm kullanıcıların yanı sıra, herhangi bir görsel açıklama biçiminin diğer metin veya ses efektlerine sahip olduğundan emin olun. Kontrast oranı ve görüntüleme boyutu için erişilebilirlik standartlarına uyar. Açığa çıkabilecek iletişim kurmak için sessel ipuçları kullanın.  | [Çapraz şeffaf giriş](#verbal-transparent-introduction) <br>[Seste Ipuçları](#implicit-cues--feedback)<br>[Haptik Ipuçları](#implicit-cues--feedback)<br>[Konuşma saydamlığı](#conversational-transparency)<br>[Erişilebilirlik standartları](https://www.microsoft.com/accessibility) |
+| Ekran-daha az, cihaz-daha az veya tek etkileşim modu olarak seslendirmeyi kullanır | Açığa çıkabilecek iletişim kurmak için sessel ipuçları kullanın. | [Çapraz şeffaf giriş](#verbal-transparent-introduction) <br> [Seste Ipuçları](#implicit-cues--feedback)  |
+| Potansiyel olarak birden çok Kullanıcı/dinleyici içeriyor (örneğin, birden çok evdeki kişisel yardımcı)  | Çeşitli Kullanıcı bağlamlarının ve seviyelerinin öğrenmiş olması ve Kullanıcı yolculuğunda açıklanmak üzere birden çok fırsat sunmanın olması.  | [Saydam giriş (dönüş kullanıcısı)](#transparent-introduction)<br> [Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)<br> [Konuşma saydamlığı](#conversational-transparency)  |
 
 
 
 ## <a name="explicit-disclosure"></a>Açık açıklama
-Sentetik ses deneyiminiz yüksek ifşaat gerektiriyorsa, sentetik niteliği açıkça belirtmek için aşağıdaki açık desenlerden en az birini kullanmak en iyisidir.
-### <a name="transparent-introduction"></a>Şeffaf Giriş
+Yapay sesli deneyiminizin yüksek bir açıklama gerektirmesi durumunda yapay doğası açıkça sağlamak için aşağıdaki açık desenlerden en az birini kullanmak en iyisidir.
+### <a name="transparent-introduction"></a>Şeffaf giriş
 
-Ses deneyimi başlamadan önce, sesinin kökeni ve yetenekleri hakkında tamamen şeffaf olarak dijital asistanı tanıtın. Bu deseni kullanmak için en uygun an, yeni bir kullanıcıya binerken veya geri dönen bir kullanıcıya yeni özellikler sunarken. Bir giriş sırasında örtük ipuçları nın uygulanması, kullanıcıların dijital ajanın sentetik doğası hakkında zihinsel bir model oluşturmalarına yardımcı olur.
+Ses deneyimi başlamadan önce, sesin kaynakları ve özellikleri hakkında tamamen saydam olacak şekilde dijital yardımcı 'yı tanıtın. Bu düzenin en iyi şekilde kullanılması, yeni bir kullanıcı ekleme veya dönen bir kullanıcıya yeni özellikler tanıtma. Giriş sırasında örtük ipuçları uygulamak, kullanıcıların sayısal aracının yapay doğası hakkında bir model oluşturmasına yardımcı olur.
 
 #### <a name="first-time-user-experience"></a>İlk kez kullanıcı deneyimi
 
-![İlk çalıştırma deneyimi sırasında saydam giriş](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
-*Sentetik ses yeni bir kullanıcı onboarding sırasında tanıtıldı.*
+![İlk çalıştırma deneyimi sırasında şeffaf giriş](media/responsible-ai/disclosure-patterns/transparent-intro-first.png) <br>
+*Yeni bir Kullanıcı eklenirken yapay ses ortaya çıkartılır.*
 
 Öneriler
-- Sesin yapay olduğunu açıklayın (örn. &quot;dijital)&quot;
-- Aracının neler yapabileceğini açıklayın
-- Ses&#39;kökenlerini açıkça belirtin
-- Sentetik ses hakkında daha fazla bilgi edinmek için bir giriş noktası sunun
+- Sesin yapay olduğunu (örn. &quot;dijital&quot;) Açıklama
+- Aracının yapabilme yeteneğine sahip olduğunu açıkla
+- Sesli&#39;s kaynakları açıkça durumu
+- Yapay ses hakkında daha fazla bilgi edinmek için bir giriş noktası sunun
 
-#### <a name="returning-user-experience"></a>Dönen kullanıcı deneyimi
+#### <a name="returning-user-experience"></a>Kullanıcı deneyimi döndürülüyor
 
-Bir kullanıcı biniş deneyimini atlarsa, kullanıcı sesi ilk kez tetikleyene kadar Saydam Giriş deneyimine giriş noktaları sunmaya devam edin.
+Kullanıcı ekleme deneyimini atrsa, Kullanıcı sesi ilk kez tetiklene kadar saydam giriş deneyimine giriş noktaları sunmaya devam edin.
 <br/>
 
-![İade kullanıcı deneyimi sırasında saydam giriş](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
-*Sentetik ses deneyimine tutarlı bir giriş noktası sağlayın. Kullanıcı yolculuğunun herhangi bir noktasında sesi ilk kez tetiklediğinde kullanıcının biniş deneyimine geri dönmesine izin verin.*
+![Dönme Kullanıcı deneyimi sırasında şeffaf giriş](media/responsible-ai/disclosure-patterns/transparent-intro-return.png)<br/>
+*Yapay sesli deneyimle tutarlı bir giriş noktası sağlayın. Kullanıcı yolculuğunda herhangi bir noktada sesi ilk kez tetiklerse, kullanıcının ekleme deneyimine dönmesini sağlar.*
 
 
-### <a name="verbal-transparent-introduction"></a>Sözel Şeffaf Giriş
+### <a name="verbal-transparent-introduction"></a>Çapraz şeffaf giriş
 
-Dijital asistanın&#39;sesinin kökenini belirten bir sözlü istem, kendi başına ifşaata ulaşmak için yeterince açık. Bu desen, sesin tek etkileşim biçimi olduğu yüksek açıklama senaryoları için en iyisidir.
+Dijital yardımcının&#39;s Voice 'un açığa çıkması için yeterince açık olduğunu belirten konuşulan bir istem. Bu model, sesin kullanılabilir tek etkileşim modu olduğu yüksek açıklanmasına yönelik senaryolar için idealdir.
 <br/>
 
-![Sözel olarak konuşulan şeffaf giriş](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
-<br/>*Kullanıcı deneyiminde bir kişiyi&#39;sesini zaten tanıtabileceğiniz veya atfedebileceğiniz anlar olduğunda saydam bir giriş kullanın.*
+![Saydam olarak konuşulan saydam giriş](media/responsible-ai/disclosure-patterns/spoken-prompt-1.png)
+<br/>*Kullanıcı deneyiminde, bir kişiyi&#39;s sesini zaten tanıtan veya özniteolabileceğiniz bir süre olduğunda saydam bir giriş kullanın.*
 
 
-![Birinci şahısta sözlü olarak konuşulan şeffaf giriş](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
-*Daha fazla şeffaflık için, ses aktörü sentetik sesin kökenini ilk kişide açıklayabilir.*
+![İlk kişiye şeffaf bir giriş yapın](media/responsible-ai/disclosure-patterns/spoken-prompt-2.png)<br/>
+*Ek saydamlık için, ses aktör ilk kişinin yapay sesine ilişkin kaynakları açığa çıkarabilir.*
 
-### <a name="explicit-byline"></a>Açık Byline
+### <a name="explicit-byline"></a>Açık satır
 
-Kullanıcı sesi tetiklemek için bir ses oynatıcı veya etkileşimli bileşenle etkileşimde bulunacaksa bu deseni kullanın.
+Kullanıcı sesi tetiklemek için bir ses yürütücüsü veya etkileşimli bileşen ile etkileşim kurulacaktır bu kalıbı kullanın.
 
 
-![Haber medyası senaryosunda açık satır ara](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
-*Açık bir satır, sesin nereden geldiğinin atfedildiğidir.*
+![Haber medya senaryosunda açık satır](media/responsible-ai/disclosure-patterns/explicit-byline.png) <br/>
+*Açık bir byline, sesin nereden geldiği atıdır.*
 
 Öneriler
 
-- Sentezlenen ses hakkında daha fazla bilgi edinmek için giriş noktası teklif edin
+- Birleştirilmiş ses hakkında daha fazla bilgi edinmek için teklif giriş noktası
 
-### <a name="customization-and-calibration"></a>Özelleştirme ve Kalibrasyon
+### <a name="customization-and-calibration"></a>Özelleştirme ve ayarlama
 
-Kullanıcılara dijital asistanın bunlara nasıl yanıt vereceği (örneğin, sesin nasıl geldiği) üzerinde denetim sağlayın.  Bir kullanıcı bir sistemle kendi şartlarında ve belirli hedefleri göz önünde bulundurarak etkileşime geçtiğinde, tanım gereği bunun gerçek bir kişi olmadığını&#39;zaten anlamış olur.
+Kullanıcılar, dijital yardımcının bunlara nasıl yanıt vereceğini (yani, ses seslerinin) üzerinde denetim sağlar.  Bir Kullanıcı kendi koşullarında bir sistemle ve belirli hedeflere göz önüne alarak etkileşime geçtiğinde, gerçek bir kişi değil&#39;s 'yi zaten anlamıştır.
 
-#### <a name="user-control"></a>Kullanıcı Denetimi
+#### <a name="user-control"></a>Kullanıcı denetimi
 
-Sentetik ses deneyimi üzerinde anlamlı ve belirgin bir etkisi olan seçenekler sunun.
+Yapay ses deneyiminde anlamlı ve belirgin bir etkiye sahip seçimler sunun.
 
 ![Kullanıcı tercihleri](media/responsible-ai/disclosure-patterns/customization-user-control.png)<br/>
-*Kullanıcı tercihleri, kullanıcıların deneyimlerini özelleştirmelerine ve geliştirmelerine olanak tanır.*
+*Kullanıcı tercihleri, kullanıcıların deneyimlerini özelleştirmesini ve iyileştirmelerini sağlar.*
 
 Öneriler
 
-- Kullanıcıların sesi özelleştirmesine izin verin (örn. dil ve ses türünü seçin)
-- Kullanıcılara, sisteme benzersiz sesine yanıt vermelerini (örn. ses kalibrasyonu, özel komutlar) öğretecek bir yol sağlayın
-- Kullanıcı tarafından oluşturulan veya bağlamsal etkileşimler için optimize edin (örn. anımsatıcılar)
+- Kullanıcıların sesi özelleştirmesine izin ver (örneğin, dil ve ses türü seçin)
+- Kullanıcılara, benzersiz sesinin (ör. ses ayarlaması, özel komutlar) yanıt vermesini öğretmek için bir yol sağlayın
+- Kullanıcı tarafından oluşturulan veya bağlamsal etkileşimler için iyileştirin (ör. Anımsatıcılar)
 
-#### <a name="persona-customization"></a>Persona Özelleştirme
+#### <a name="persona-customization"></a>Kişi özelleştirmesi
 
-Dijital asistanın sesini&#39;özelleştirmenin yollarını sunun. Ses bir ünlüye veya yaygın olarak tanınabilir bir kişiye dayanıyorsa, kullanıcılar sesi önizlediğinde hem görsel hem de sözlü tanıtımları kullanmayı düşünün.
+Dijital yardımcı&#39;s sesini özelleştirmek için yollar sunar. Ses bir ünlüye veya çok daha tanınabilir bir kişiye dayanıyorsa, kullanıcılar sesi önizlediğinizde hem görsel hem de konuşulan tanıtımları kullanmayı göz önünde bulundurun.
 
 ![Ses özelleştirme](media/responsible-ai/disclosure-patterns/customization-voice-type.png)<br/>
-*Bir dizi ses arasından seçim yapma olanağı sunmak yapay doğayı aktarmaya yardımcı olur.*
+*Bir ses kümesi arasından seçim yapma özelliği sunan yapay doğası sağlamaya yardımcı olur.*
 
 Öneriler
-- Kullanıcıların her sesin sesini önizlemesine izin verme
-- Her ses için özgün bir giriş kullanın
-- Sentezlenen ses hakkında daha fazla bilgi edinmek için giriş noktaları sunun
+- Kullanıcıların her ses sesinin önizlemesine izin ver
+- Her ses için gerçek bir giriş kullanın
+- Birleştirilmiş ses hakkında daha fazla bilgi edinmek için giriş noktaları sunun
 
-### <a name="parental-disclosure"></a>Ebeveyn İfşası
+### <a name="parental-disclosure"></a>Ebeveyn açıklaması
 
-COPPA yönetmeliklerine uymanın yanı sıra, birincil hedef kitleniz küçük çocuklarsa ve maruz kalma seviyeniz yüksekse ebeveynlere ifşa atalım. Hassas kullanımlar için, bir yetişkin sentetik sesin kullanımını kabul edene kadar deneyimi gating düşünün. Ebeveynleri, bu mesajı çocuklarına iletmeye teşvik edin.
+COPPA düzenlemelerine uyanın yanı sıra, birincil amaçlanan hedef kitlesi küçük bir alt öğe ise ve pozlama düzeyiniz yüksek ise ebeveynler için açıklama sağlayın. Gizli kullanımlar için, bir yetişkin yapay sesinin kullanımını kabul edene kadar deneyimi kabul etmeyi göz önünde bulundurun. Ebeveynler, iletileri alt öğelerine iletmelerini teşvik edin.
 
 ![Ebeveynler için açıklama](media/responsible-ai/disclosure-patterns/parental-disclosure.png)<br/>
-*Ebeveynler için optimize edilmiş şeffaf bir giriş, bir yetişkinin, bir çocuk onunla etkileşime girmeden önce sesin sentetik doğasından haberdar edilmesini sağlar.*
+*Ebeveynler için en iyi duruma getirilmiş şeffaf bir giriş, bir yetişkin 'nin bir alt ile etkileşime geçmeden önce sesin yapay doğası hakkında bilgi almasını sağlar.*
 
 Öneriler
 
-- Açıklama için birincil hedef kitle olarak hedef ebeveynler
-- Ebeveynleri çocuklarına ifşaat iletmeye teşvik edin
-- Sentezlenen ses hakkında daha fazla bilgi edinmek için giriş noktaları sunun
-- Velilere ifşaatı okuduğunu &quot;göstermek&quot; için basit bir koruma sorusu sorarak deneyimi kapılayın
+- Ana öğeleri birincil hedef kitle olarak açıklama olarak hedefleyin
+- Üst öğeleri, alt öğelerine açıklama ile iletişim kurmaya teşvik edin
+- Birleştirilmiş ses hakkında daha fazla bilgi edinmek için giriş noktaları sunun
+- Ebeveynler, üst bilgilerin açığa çıkmasına neden olduğunu &quot;göstermek&quot; için ebeveynlerle basit bir güvenlik sorusu sorarak deneyim
 
-### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Sesin nasıl üretiliş edildiği hakkında daha fazla bilgi edinmek için fırsatlar sunmak
+### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama
 
-Sentetik ses teknolojisi hakkında daha fazla bilgi sağlayan bir sayfaya, açılır pencereye veya harici siteye içeriğe duyarlı giriş noktaları sunun. Örneğin, biniş sırasında veya kullanıcı konuşma sırasında daha fazla bilgi istediğinde daha fazla bilgi edinmek için bir bağlantıyı yüzebilirsiniz.
+Yapay ses teknolojisi hakkında daha fazla bilgi sağlayan bir sayfa, açılır pencere veya dış siteye bağlama duyarlı giriş noktaları sunun. Örneğin, ekleme sırasında veya Kullanıcı konuşma sırasında daha fazla bilgi isteminde bulunduğunda daha fazla bilgi edinmek için bir bağlantıyı yüzeyinizi seçebilirsiniz.
 
 ![Daha fazla bilgi için giriş noktası](media/responsible-ai/disclosure-patterns/learn-more-entry-point.png)<br/>
-*Sentezlenen ses hakkında daha fazla bilgi edinme fırsatı sunan bir giriş noktası örneği.*
+*Sentezlenmiş ses hakkında daha fazla bilgi edinmek için fırsat sunan bir giriş noktası örneği.*
 
-Bir kullanıcı sentetik ses hakkında daha fazla bilgi istediğinde, birincil amaç onları sentetik sesin kökeni hakkında eğitmek ve teknoloji hakkında şeffaf olmaktır.
+Bir Kullanıcı yapay sesle ilgili daha fazla bilgi istediğinde, birincil hedef yapay sesin kaynakları hakkında eğitmektir ve teknolojide saydam hale olmaktır.
 
-![Kullanıcılara sentetik ses hakkında daha fazla bilgi sağlayın](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
-*Daha fazla bilgi harici bir site yardım sitesinde sunulabilir.*
+![Yapay sesle kullanıcılara daha fazla bilgi sağlama](media/responsible-ai/disclosure-patterns/learn-more.png)<br/>
+*Daha fazla bilgi, bir dış site yardım sitesinde sunulabilir.*
 
 Öneriler
 
-- Karmaşık kavramları basitleştirin ve yasal ve teknik jargon kullanmaktan kaçının
-- Bu içeriği gizlilik ve kullanım koşulları bildirimlerinde gömmeyin
-- Kullanılabilir olduğunda içeriği kısa tutun ve görüntüleri kullanın
+- Karmaşık kavramları basitleştirip, legalei ve teknik jargkullanmaktan kaçının
+- Bu içeriği gizlilik ve kullanım koşulları deyimlerine eklemeyin
+- İçeriği kısa tutun ve kullanılabilir olduğunda canlandırın kullanın
 
 ## <a name="implicit-disclosure"></a>Örtük açıklama
 
-Tutarlılık, kullanıcı yolculuğu boyunca dolaylı olarak ifşaat elde etmek için anahtardır. Aygıtlar ve etkileşim modları arasında görsel ve işitsel ipuçlarının tutarlı kullanımı, örtük desenler ve açık açıklama arasında ilişki kurulmasına yardımcı olabilir.
+Tutarlılık, Kullanıcı yolculuğu boyunca örtülü olarak açıklanmaya yönelik anahtardır. Cihazlar ve etkileşim modları genelinde görsel ve sessel ipuçlarının tutarlı kullanımı örtük desenler ve açık açıklama arasında ilişkilendirme oluşturmaya yardımcı olabilir.
 
-![Örtük ipuçlarının tutarlılığı](media/responsible-ai/disclosure-patterns/consistency.png)
+![Örtük ipuçları tutarlılığı](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues--feedback"></a>Örtük İpuçları & Geribildirim
+### <a name="implicit-cues--feedback"></a>Örtük Ipuçları & geri bildirim
 
-Antropomorfizm, ajanın gerçek görsel temsilinden sese, seslere, ışık kalıplarına, sıçrayan şekillere ve hatta bir cihazın titreşimine kadar farklı şekillerde tezahür edebilir. Kişiliğinizi tanımlarken, insana benzer bir avatarı hedeflemek yerine örtük ipuçlarından ve geri bildirim kalıplarından yararlanın. Bu, daha açık bir açıklama gereksinimini en aza indirmenin bir yoludur.
+Anthropomorphism, aracının gerçek görsel gösteriminden ses, ses, ışık desenleri, sıçrama şekilleri, hatta bir cihazın titreşimi gibi farklı yollarla bildirim alabilir. Kişiyi tanımlarken, çok insan benzeri bir avatar için amacı yerine örtük ipuçları ve geri bildirim desenlerinden yararlanın. Bu, daha belirgin bir açıklama gereksinimini en aza indirmek için bir yoldur.
 
 ![Görsel ipuçları ve geri bildirim](media/responsible-ai/disclosure-patterns/visual-affordances.png)<br/>
-*Bu ipuçları çok insan gibi olmadan ajan antropomorfize yardımcı olur. Ayrıca zaman içinde sürekli kullanıldığında kendi başlarına etkili ifşa mekanizmaları haline gelebilirler.*
+*Bu ipuçları, çok insan gibi bir aracı anthropomorphize yardımcı olur. Ayrıca, zaman içinde sürekli olarak kullanıldığında kendi kendine etkin bir açıklama mekanizmaları de olabilirler.*
 
-Aşağıdaki ipuçlarını bir araya getirirken deneyiminizin farklı etkileşim modlarını göz önünde bulundurun:
+Aşağıdaki ipucu türlerini eklerken deneyiminizin farklı şekillerini göz önünde bulundurun:
 
-| Görsel İpuçları                                                                                                                                                               | İşitsel İpuçları                                                      | Haptic İpuçları |
+| Görsel Ipuçları                                                                                                                                                               | Seste Ipuçları                                                      | Haptik Ipuçları |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------|-------------|
-|  Avatar <br>Yanıt veren gerçek zamanlı ipuçları (örn. animasyonlar)<br> Ekran dışı ipuçları (örn. bir cihazdaki ışıklar ve desenler)<br>  | Sonicon (örn. kısa bir farklı ses, müzik notaları serisi) | Titreşim   |
+|  Avatar <br>Yanıt veren gerçek zamanlı ipuçları (ör. animasyon)<br> Ekran olmayan ipuçları (örneğin, bir cihazdaki ışıklar ve desenler)<br>  | Sonıcon (örn., önemli bir ses, müzik notları dizisi) | Titreşimi   |
 
-### <a name="capability-disclosure"></a>Yetenek Açıklama
+### <a name="capability-disclosure"></a>Yetenek açığa çıkması
 
-Dijital asistanın neler yapabileceğine ilişkin doğru beklentiler ayarlayarak dolaylı olarak ifşaat elde edilebilir. Kullanıcıların dijital asistanla nasıl etkileşimde bulunacaklarını öğrenebilmeleri ve deneyimin erken aşamalarında sentetik ses hakkında daha fazla bilgi edinmek için bağlamsal yardım sunabilmeleri için örnek komutlar sağlayın.
+Açıklama, dijital yardımcının özelliği için doğru beklentileri ayarlanarak örtülü olarak elde edilebilir. Kullanıcıların dijital yardımınızla etkileşim kurmayı öğrenmeleri ve bu deneyimin erken aşamaları sırasında yapay sesle ilgili daha fazla bilgi edinmek için bağlamsal yardım sunabilmesi için örnek komutlar sağlayın.
 
 ![Görsel ipuçları ve geri bildirim](media/responsible-ai/disclosure-patterns/capability-disclosure.png)<br/>
 
-### <a name="conversational-transparency"></a>Konuşma Şeffaflığı
+### <a name="conversational-transparency"></a>Konuşma saydamlığı
 
-Konuşmalar beklenmeyen yollara düştüğünde, beklentileri sıfırlamaya, saydamlığı güçlendirmeye ve kullanıcıları başarılı yollara yönlendirmeye yardımcı olabilecek varsayılan yanıtlar oluşturmayı düşünün. Konuşmada açık açıklamayı kullanmak için de fırsatlar vardır.
+Konuşmalar beklenmeyen yollara denk geldiğinde, beklentileri sıfırlamasına, saydamlığa zorlamaya ve kullanıcıların başarılı yollara yaklaşmasına yardımcı olabilecek varsayılan yanıtları yeniden taslağı yapmayı düşünün. Görüşmede açık bir açıklama kullanmanın fırsatları da vardır.
 
 ![Beklenmeyen yolları işleme](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Görev dışı &quot;veya&quot; aracıya yöneltilen kişisel sorular, kullanıcılara aracının sentetik doğasını hatırlatmak ve onları uygun şekilde etkileşime sokmaya veya gerçek bir kişiye yönlendirmeye yönlendirmek için iyi bir zamandır.
+Kapalı görev veya &quot;aracıya&quot; yönelik kişisel sorular, kullanıcılara aracının yapay yapısını anımsatmak ve BT 'yi uygun bir kişiye doğru şekilde yönelmek ya da onları gerçek bir kişiye yönlendirmek için iyi bir zaman harcar.
 
-![Görev sorularını işleme](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
+![Görev için soruları işleme](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
-## <a name="when-to-disclose"></a>Ne zaman ifşa edilsin
+## <a name="when-to-disclose"></a>Ne zaman açığa çıkar
 
-Kullanıcı yolculuğu boyunca ifşa ataak için birçok fırsat vardır. İlk kullanım için tasarım, ikinci kullanım, nth kullanımı &quot;..., ama aynı zamanda şeffaflık vurgulamak için başarısızlık&quot; anları kucaklamak-sistem bir hata yaptığında veya kullanıcı aracı&#39;yetenekleri bir sınırlama keşfettiğinde gibi.
+Kullanıcı yolculuğu boyunca açıklananın çok sayıda fırsat vardır. İlk kullanım için tasarım, ikinci kullanım, n...., ayrıca &quot;&quot; , saydamlık vurgulamamasının (sistem bir hata yaptığı veya Kullanıcı aracı&#39;s özellikleri sınırlaması bulduğunda olduğu gibi).
 
 ![Kullanıcı yolculuğu boyunca açıklama fırsatları](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
-Çeşitli açıklama fırsatlarını vurgulayan standart bir dijital asistan kullanıcı yolculuğu örneği.
+Standart dijital yardım kullanıcısı, çeşitli açıklama fırsatlarını vurgulayan bir örnektir.
 
-### <a name="up-front"></a>Ön
+### <a name="up-front"></a>Yukarı-ön
 
-İfşaat için en uygun an, bir kişinin sentetik sesle ilk etkileşimidir.Kişisel bir sesli asistan senaryosunda, bu, biniş sırasında veya kullanıcının deneyimi ilk kez neredeyse unbox'ları olarak ortaya çıkan bir senaryo olacaktır. Diğer senaryolarda, sentetik bir sesin bir web sitesindeki içeriği ilk okuması veya bir kullanıcının sanal bir karakterle etkileşimde ilk etkileşimi olabilir.
+En iyi açıklama, bir kişi yapay sesle ilk kez etkileşime geçtiğinde.Kişisel bir ses Yardımcısı senaryosunda bu, ekleme işlemi sırasında veya Kullanıcı deneyimi ilk kez daha önce kaldırırdı. Diğer senaryolarda, yapay bir ses bir Web sitesindeki içeriği ilk kez okuduğunda veya Kullanıcı sanal karakterle ilk kez etkileşime geçtiğinde bu olabilir.
 
-- [Şeffaf Giriş](#transparent-introduction)
-- [Yetenek Açıklama](#capability-disclosure)
-- [Özelleştirme ve Kalibrasyon](#customization-and-calibration)
-- [Örtük İpuçları](#implicit-cues--feedback)
+- [Şeffaf giriş](#transparent-introduction)
+- [Yetenek açığa çıkması](#capability-disclosure)
+- [Özelleştirme ve ayarlama](#customization-and-calibration)
+- [Örtük Ipuçları](#implicit-cues--feedback)
 
 ### <a name="upon-request"></a>İstek üzerine
 
-Kullanıcılar, istendiğinde kullanıcı yolculuğu sırasında herhangi bir noktada ek bilgilere kolayca erişebilmeli, tercihleri kontrol edebilmeli ve saydam iletişim alabilmelidir.
+Kullanıcılar, istendiğinde Kullanıcı yolculuğu sırasında herhangi bir noktada ek bilgilere ve denetim tercihlerine kolayca erişebilmelidir.
 
-- [Sesin nasıl üretiliş edildiği hakkında daha fazla bilgi edinmek için fırsatlar sunmak](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [Özelleştirme ve Kalibrasyon](#customization-and-calibration)
-- [Konuşma Şeffaflığı](#conversational-transparency)
+- [Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [Özelleştirme ve ayarlama](#customization-and-calibration)
+- [Konuşma saydamlığı](#conversational-transparency)
 
 ### <a name="continuously"></a>Sürekli
 
-Kullanıcı deneyimini sürekli olarak geliştiren örtük tasarım desenlerini kullanın.
+Kullanıcı deneyimini sürekli geliştiren örtülü tasarım düzenlerini kullanın.
 
-- [Yetenek Açıklama](#capability-disclosure)
-- [Örtük İpuçları](#implicit-cues--feedback)
+- [Yetenek açığa çıkması](#capability-disclosure)
+- [Örtük Ipuçları](#implicit-cues--feedback)
 
 ### <a name="when-the-system-fails"></a>Sistem başarısız olduğunda
 
-İfşaatı incelikle başarısız olmak için bir fırsat olarak kullanın.
+Sorunsuz bir şekilde başarısız olan bir fırsat olarak açıklama kullanın.
 
-- [Konuşma Şeffaflığı](#conversational-transparency)
-- [Sesin nasıl üretiliş edildiği hakkında daha fazla bilgi edinmek için fırsatlar sunmak](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
-- [İnsana teslim](#conversational-transparency)
+- [Konuşma saydamlığı](#conversational-transparency)
+- [Sesin nasıl yapıldığı hakkında daha fazla bilgi edinmek için fırsat sağlama](#providing-opportunities-to-learn-more-about-how-the-voice-was-made)
+- [İnsana iletimi](#conversational-transparency)
 
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-- [Microsoft Bot Yönergeleri](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana Tasarım Yönergeleri](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP Konuşma Tasarımı Yönergeleri](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Karışık Gerçeklik Sesli Komut Yönergeleri](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Microsoft bot yönergeleri](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
+- [Cortana tasarım yönergeleri](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP konuşma tasarım yönergeleri](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed Reality sesli komut yönergeleri](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
-## <a name="reference-docs"></a>Referans dokümanları
+## <a name="reference-docs"></a>Başvuru belgeleri
 
-* [Ses Yetenek için Açıklama](https://aka.ms/disclosure-voice-talent)
-* [Sentetik Ses Teknolojisinin Sorumlu Dağıtımına İlişkin Yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
-* [Gating Genel Bakış](concepts-gating-overview.md)
-* [Nasıl Açıklar?](concepts-disclosure-guidelines.md)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)
+* [Yapay sesli teknolojinin sorumlu dağıtımına ilişkin yönergeler](concepts-guidelines-responsible-deployment-synthetic.md)
+* [Geçişi genel bakış](concepts-gating-overview.md)
+* [Nasıl açığa çıkarmaz](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ses Yetenek için Açıklama](https://aka.ms/disclosure-voice-talent)
+* [Sesli Taçanın açıklanması](https://aka.ms/disclosure-voice-talent)

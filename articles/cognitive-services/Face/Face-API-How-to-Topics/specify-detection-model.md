@@ -1,7 +1,7 @@
 ---
-title: Algılama modeli nasıl belirtilir - Yüz
+title: Bir algılama modeli belirleme-yüz
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure Yüz uygulamanızda hangi yüz algılama modelini kullanacağınızı nasıl seçeceğiniz gösterecektir.
+description: Bu makalede, Azure yüz uygulamanızla hangi yüz algılama modelinin kullanılacağını nasıl seçeceğiniz gösterilmektedir.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
 ms.openlocfilehash: 40ca1dbf981c5a9025cf5a0bac6b007709d69a77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76934571"
 ---
 # <a name="specify-a-face-detection-model"></a>Yüz algılama modeli belirtme
 
-Bu kılavuz, Azure Yüz hizmeti için yüz algılama modelini nasıl belirtdiğinizi gösterir.
+Bu kılavuzda, Azure yüz hizmeti için bir yüz algılama modeli belirtme gösterilmektedir.
 
-Face hizmeti, görüntülerdeki insan yüzleri ne zıddatları üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimleri ve araştırmadaki gelişmelere dayanarak modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncellemeleri olarak sunuyoruz. Geliştiriciler, yüz algılama modelinin hangi sürümünü kullanmak istediklerini belirtme seçeneğine sahiptir; kullanım durumlarına en uygun modeli seçebilirler.
+Yüz hizmeti, görüntülerde insan yüzeyleri üzerinde işlem gerçekleştirmek için makine öğrenimi modellerini kullanır. Müşteri geri bildirimlerine ve araştırmada ilerlemeleri temel alan modellerimizin doğruluğunu geliştirmeye devam ediyoruz ve bu geliştirmeleri model güncelleştirmeleri olarak sunduk. Geliştiriciler, yüz algılama modelinin hangi sürümünü kullanmak istediğinizi belirtme seçeneğine sahiptir; Kullanım durumlarına en uygun modeli seçebilirler.
 
-Belirli yüz operasyonlarında yüz algılama modelini nasıl belirtin öğrenin. Yüz hizmeti, bir yüzün görüntüsünü başka bir veri biçimine dönüştürdüğünde yüz algılama yı kullanır.
+Belirli yüz işlemlerinde yüz algılama modelini nasıl belirteceğinizi öğrenmek için okumaya devam edin. Yüz tanıma hizmeti bir yüzün görüntüsünü başka bir veri biçimine dönüştürdüğünde yüz algılamayı kullanır.
 
-En son modeli kullanıp kullanmamanız gerektiğinden emin değilseniz, yeni modeli değerlendirmek ve geçerli veri kümenizi kullanarak sonuçları karşılaştırmak için [farklı modelleri Değerlendir](#evaluate-different-models) bölümüne gidin.
+En son modeli kullanıp kullanmayacağınızı bilmiyorsanız, yeni modeli değerlendirmek ve sonuçları geçerli veri kümesi kullanarak karşılaştırmak için [farklı modelleri değerlendir](#evaluate-different-models) bölümüne atlayın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-AI yüz algılama kavramına aşina olmalısınız. Bilmiyorsanız, yüz algılama kavramsal kılavuzuna veya nasıl yapılacağınız kılavuzuna bakın:
+AI yüz algılaması kavramı hakkında bilgi sahibi olmanız gerekir. Değilseniz, yüz algılama kavramsal Kılavuzu veya nasıl yapılır Kılavuzu ' na bakın.
 
 * [Yüz algılama kavramları](../concepts/face-detection.md)
-* [Görüntüdeki yüzleri niçin algılarsın?](HowtoDetectFacesinImage.md)
+* [Görüntüdeki yüzeyleri algılama](HowtoDetectFacesinImage.md)
 
-## <a name="detect-faces-with-specified-model"></a>Belirtilen modele sahip yüzleri algılama
+## <a name="detect-faces-with-specified-model"></a>Belirtilen modelle yüzler Algıla
 
-Yüz algılama insan yüzlerinin sınırlayıcı kutusu konumlarını bulur ve görsel simgelerini tanımlar. Yüzün özelliklerini ayıklar ve [tanıma](../concepts/face-recognition.md) işlemlerinde daha sonra kullanmak üzere saklar.
+Yüz algılama, insan yüzlerinin sınırlama kutusu konumlarını bulur ve görsel çizgilerini tanımlar. Bu, yüzün özelliklerini ayıklar ve daha sonra [tanıma](../concepts/face-recognition.md) işlemlerinde kullanılmak üzere depolar.
 
-Yüz - [Api] Algıla'yı kullandığınızda, model sürümünü `detectionModel` parametreyle atayabilirsiniz. Kullanılabilir değerler şunlardır:
+[Yüz algılama] API 'sini kullandığınızda, `detectionModel` parametresi ile model sürümünü atayabilirsiniz. Kullanılabilir değerler şunlardır:
 
 * `detection_01`
 * `detection_02`
 
-Yüz için bir istek URL ' [si - REST] API'yi algıla şu şekilde görünecektir:
+[Yüz algılama] REST API için bir istek URL 'si şöyle görünür:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-İstemci kitaplığını kullanıyorsanız, uygun bir `detectionModel` dize geçirerek değeri atayabilirsiniz. Atanmamış olarak bırakırsanız, API varsayılan model sürümünü`detection_01`kullanır ( ). .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
+İstemci kitaplığını kullanıyorsanız, uygun bir dizeye geçirerek değerini `detectionModel` atayabilirsiniz. Atanmamış olarak bırakırsanız, API varsayılan model sürümünü (`detection_01`) kullanır. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
 ```
 
-## <a name="add-face-to-person-with-specified-model"></a>Belirtilen modelle Kişiye Yüz Ekleme
+## <a name="add-face-to-person-with-specified-model"></a>Belirtilen modele sahip kişiye yüz ekleyin
 
-Face hizmeti, görüntüdeki yüz verilerini ayıklayabilir ve [PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API aracılığıyla bir **Kişi** nesnesiyle ilişkilendirebilir. Bu API çağrısında, algılama modelini Yüz - [Algıla']daki gibi belirtebilirsiniz.
+Yüz tanıma hizmeti bir görüntüden yüz verileri ayıklayabilir ve Person [kişi-yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API 'si aracılığıyla bir **kişi** nesnesiyle ilişkilendirebilirler. Bu API çağrısında, algılama modelini [yüz algılamayla]aynı şekilde belirtebilirsiniz.
 
 .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
@@ -71,14 +71,14 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Bu kod, **PersonGroup** kimliği `mypersongroupid` olan bir Kişi Grubu oluşturur ve bu gruba bir **Kişi** ekler. Daha sonra `detection_02` modeli kullanarak bu **Kişiye** bir Yüz ekler. *AlgılamaModel* parametresini belirtmezseniz, API varsayılan modeli kullanır. `detection_01`
+Bu kod, KIMLIĞI `mypersongroupid` olan bir **persongroup** oluşturur ve bu gruba bir **kişi** ekler. Ardından, `detection_02` modeli kullanarak bu **kişiye** bir yüz ekler. *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01`.
 
 > [!NOTE]
-> Bir **Kişi** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve bir **Kişi** nesnesiyle karşılaştırmak için yeni yüzler algılarken aynı algılama modelini kullanmanız gerekmez (örneğin, Yüz [- API'yi tanımlayın).]
+> Bir **kişi** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve bir **kişi** nesnesiyle Karşılaştırılacak yeni yüzeyleri algılamada aynı algılama modelini kullanmanız gerekmez (örneğin, [yüz] tanıma API 'si).
 
-## <a name="add-face-to-facelist-with-specified-model"></a>Belirtilen modelle FaceList'e yüz ekleme
+## <a name="add-face-to-facelist-with-specified-model"></a>Belirtilen modelle çok yönlü listeye yüz ekleme
 
-Varolan bir **FaceList** nesnesine yüz eklediğinizde bir algılama modeli de belirtebilirsiniz. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
+Ayrıca, mevcut bir çok **yönlü liste** nesnesine bir yüz eklediğinizde bir algılama modeli de belirtebilirsiniz. .NET istemci kitaplığı için aşağıdaki kod örneğine bakın.
 
 ```csharp
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
@@ -87,31 +87,31 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Bu kod, adı verilen `My face collection` bir **FaceList** oluşturur `detection_02` ve modelle birlikte bir Yüz ekler. *AlgılamaModel* parametresini belirtmezseniz, API varsayılan modeli kullanır. `detection_01`
+Bu kod, `My face collection` `detection_02` adlı bir çok **yönlü liste** oluşturur ve modele sahip bir yüz ekler. *DetectionModel* parametresini BELIRTMEZSENIZ, API varsayılan modeli kullanır `detection_01`.
 
 > [!NOTE]
-> Bir **FaceList** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve **Bir FaceList** nesnesiyle karşılaştırmak için yeni yüzler algılarken aynı algılama modelini kullanmanız gerekmez.
+> Bir çok **yönlü liste** nesnesindeki tüm yüzler için aynı algılama modelini kullanmanız gerekmez ve çok **yönlü bir liste** nesnesiyle Karşılaştırılacak yeni yüzeyleri algılamada aynı algılama modelini kullanmanız gerekmez.
 
-## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirme
+## <a name="evaluate-different-models"></a>Farklı modelleri değerlendirin
 
-Farklı yüz algılama modelleri farklı görevler için optimize edilebiyi sunar. Farklılıklara genel bakış için aşağıdaki tabloya bakın.
+Farklı yüz algılama modelleri farklı görevler için iyileştirilmiştir. Farklılıklara genel bakış için aşağıdaki tabloya bakın.
 
 |**detection_01**  |**detection_02**  |
 |---------|---------|
-|Tüm yüz algılama işlemleri için varsayılan seçenek. | Mayıs 2019'da piyasaya sürüldü ve isteğe bağlı olarak tüm yüz algılama operasyonlarında kullanılabilir.
-|Küçük, yan görünüm veya bulanık yüzler için optimize edilmedi.  | Küçük, yan görünümde ve bulanık yüzler üzerinde geliştirilmiş doğruluk. |
-|Algılama çağrısında belirtilmişse yüz özniteliklerini (kafa pozu, yaş, duygu vb.) döndürür. |  Yüz öznitelikleri döndürmez.     |
-|Algılama çağrısında belirtilmişse, yüz işaretlerini döndürür.   | Yüz işaretleri dönmez.  |
+|Tüm yüz algılama işlemleri için varsayılan seçenek. | 2019 Mayıs 'ta serbest bırakılır ve isteğe bağlı olarak tüm yüz algılama işlemlerinde kullanılabilir.
+|Küçük, yan görünüm veya bulanık yüz için en iyi duruma getirilmemiştir.  | Küçük, yan görünüm ve bulanık yüzler üzerinde geliştirilmiş doğruluk. |
+|Algıla çağrısında belirtilerse yüz özniteliklerini (Head, Age, duygu vb.) döndürür. |  Yüz özniteliklerini döndürmez.     |
+|Algıla çağrısında belirtilerse yüz çizgilerini döndürür.   | Yüz yer işaretlerini döndürmez.  |
 
-Ve `detection_02` modellerin performanslarını karşılaştırmanın `detection_01` en iyi yolu, bunları örnek bir veri kümesinde kullanmaktır. Her algılama modelini kullanarak [Yüz - Api'yi] çeşitli görüntülerde, özellikle de görülmesi zor birçok yüzün veya yüzlerin görüntülerinde api algılamanızı öneririz. Her modelin döndürdgösterdiği yüz sayısına dikkat edin.
+`detection_01` Ve `detection_02` modellerinin performanslarını karşılaştırmak için en iyi yol, bunları örnek bir veri kümesi üzerinde kullanmaktır. [Yüz tanıma] API 'sini çeşitli görüntülerde, özellikle de görülmesi zor olan çok sayıda yüzün veya yüzlerin her bir algılama modeli kullanılarak çağrılmasını öneririz. Her modelin döndürdüğü yüz sayısına dikkat edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, farklı Yüz API'leri ile kullanılacak algılama modelini nasıl belirtileceğinizi öğrendiniz. Ardından, yüz algılama kullanmaya başlamak için hızlı bir başlangıç izleyin.
+Bu makalede, farklı yüz API 'Leri ile kullanmak üzere algılama modelinin nasıl belirtildiklerini öğrendiniz. Sonra, yüz algılamayı kullanmaya başlamak için hızlı başlangıç izleyin.
 
-* [Yüz .NET SDK](../Quickstarts/csharp-sdk.md)
-* [Yüz Python SDK](../Quickstarts/python-sdk.md)
-* [Yüz Git SDK](../Quickstarts/go-sdk.md)
+* [Yüz .NET SDK 'Sı](../Quickstarts/csharp-sdk.md)
+* [Yüz Python SDK 'Sı](../Quickstarts/python-sdk.md)
+* [Yüz go SDK 'Sı](../Quickstarts/go-sdk.md)
 
 [Yüz - Algılama]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

@@ -1,7 +1,7 @@
 ---
-title: Bilgi tabanında işbirliği - QnA Maker
+title: Bilgi Bankası 'nda işbirliği-Soru-Cevap Oluşturma
 titleSuffix: Azure Cognitive Services
-description: QnA Maker birden fazla kişinin bir bilgi tabanında işbirliği yapmasına izin verir. Bu özellik Azure Rol Tabanlı Erişim Denetimi ile sağlanır.
+description: Soru-Cevap Oluşturma, bir Bilgi Bankası 'nda birden çok kişinin işbirliği yapmasına izin verir. Bu özellik Azure rol tabanlı Access Control sağlanır.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: diberry
 ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75660758"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Bilgi tabanınızda işbirliği yapın
+# <a name="collaborate-on-your-knowledge-base"></a>Bilgi bankasında işbirliği yapın
 
-QnA Maker, aynı QnA Maker kaynağındaki tüm bilgi üslerinde birden çok kişinin işbirliği yapmasına olanak tanır. Bu özellik Azure [Rol Tabanlı Erişim Denetimi](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)ile sağlanır.
+Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik Azure [rol tabanlı Access Control](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)sağlanır.
 
-QnA Maker hizmetinizi biriyle paylaşmak için aşağıdaki adımları gerçekleştirin:
+Soru-Cevap Oluşturma hizmetinizi biriyle paylaşmak için aşağıdaki adımları gerçekleştirin:
 
-1. Azure portalında oturum açın ve QnA Maker kaynağınıza gidin.
+1. Azure portal oturum açın ve Soru-Cevap Oluşturma kaynağına gidin.
 
-    ![QnA Maker kaynak listesi](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![Soru-Cevap Oluşturma kaynak listesi](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-1. **Erişim Denetimi (IAM)** sekmesine gidin.
+1. **Access Control (IAM)** sekmesine gidin.
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
-    ![QnA Maker IAM eklemek](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-1. **Sahibi** veya **Katılımcı** rolünü seçin. Role Tabanlı Erişim Denetimi aracılığıyla salt okunur erişim izni veremezsiniz. Sahibi ve Katılımcı rolleri, QnA Maker hizmetine okuma yazma erişim izinlerine sahiptir.
+1. **Sahibi** veya **katkıda** bulunan rolünü seçin. Rol tabanlı Access Control aracılığıyla salt okuma erişimi verilemez. Sahip ve katkıda bulunan rollerinin Soru-Cevap Oluşturma hizmetine okuma yazma erişim izinleri vardır.
 
-    ![QnA Maker IAM rol eklemek](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    ![Soru-Cevap Oluşturma ıAM rol Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-1. Kullanıcının e-posta adresini girin ve **Kaydet'e**basın.
+1. Kullanıcının e-posta adresini girin ve **Kaydet**' e basın.
 
-    ![QnA Maker IAM e-posta eklemek](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![Soru-Cevap Oluşturma ıAM e-posta Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-QnA Maker hizmetinizi paylaştığınız kişi, [QnA Maker portalına](https://qnamaker.ai) giriş yaptığında bu hizmetteki tüm bilgi tabanlarını görebilir.
+Soru-Cevap Oluşturma hizmetinizi ile paylaştığınız kişi, [soru-cevap oluşturma portalında](https://qnamaker.ai) oturum açar ve bu hizmette tüm bilgi temellerini görebilirler.
 
-QnA Maker hizmetinde belirli bir bilgi tabanını paylaşamazsınız. Daha ayrıntılı erişim denetimi istiyorsanız, bilgi temellerinizi farklı QnA Maker hizmetleri arasında dağıtmayı düşünün.
+Bir Soru-Cevap Oluşturma hizmetinde belirli bir Bilgi Bankası 'nı paylaşacağınızı unutmayın. Daha ayrıntılı erişim denetimi istiyorsanız bilgi tabanlarınızı farklı Soru-Cevap Oluşturma hizmetlerine dağıtmayı göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

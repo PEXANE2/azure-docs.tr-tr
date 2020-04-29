@@ -5,16 +5,16 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 98a0ddd828c3d72fdead0ccc2fb1daabf7548de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712578"
 ---
-Ayar, `Eula` kapsayıcının lisansını kabul ettiğinizi gösterir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir `accept`ve değer .
+`Eula` Ayar, kapsayıcının lisansını kabul ettiğinizi gösterir. Bu yapılandırma ayarı için bir değer belirtmeniz gerekir ve değer olarak `accept`ayarlanmalıdır.
 
 |Gerekli| Adı | Veri türü | Açıklama |
 |--|------|-----------|-------------|
-|Evet| `Eula` | Dize | Lisans kabulü<br><br>Örnek:<br>`Eula=accept` |
+|Yes| `Eula` | Dize | Lisans kabulü<br><br>Örnek:<br>`Eula=accept` |
 
-Bilişsel Hizmetler kapsayıcıları, Azure'u kullanımınızı düzenleyen [sözleşmeniz](https://go.microsoft.com/fwlink/?linkid=2018657) uyarınca lisanslanır. Azure kullanımınızı düzenleyen varolan bir sözleşmeniz yoksa, Azure kullanımını düzenleyen sözleşmenizin [Çevrimiçi Hizmet Koşullarını](https://go.microsoft.com/fwlink/?linkid=2018760)içeren Microsoft Çevrimiçi Abonelik [Sözleşmesi](https://go.microsoft.com/fwlink/?linkid=2018755)olduğunu kabul edersiniz. Önizlemeler [için, Microsoft Azure Önizlemeleri için Ek Kullanım Koşullarını](https://go.microsoft.com/fwlink/?linkid=2018815)da kabul edersiniz. Kapsayıcıyı kullanarak bu koşulları kabul edersiniz.
+Bilişsel hizmetler kapsayıcıları, Azure kullanımınızı düzenleyen [sözleşmeniz](https://go.microsoft.com/fwlink/?linkid=2018657) kapsamında lisanslanır. Azure kullanımınızı yöneten mevcut bir anlaşmanız yoksa, Azure 'un kullanımını yöneten sözleşmenizin, [çevrimiçi hizmet koşulları](https://go.microsoft.com/fwlink/?linkid=2018760)'nı içeren [Microsoft çevrimiçi abonelik sözleşmesi](https://go.microsoft.com/fwlink/?linkid=2018755)olduğunu kabul etmiş olursunuz. Önizlemeler için Ayrıca, [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://go.microsoft.com/fwlink/?linkid=2018815)'nı kabul etmiş olursunuz. Kapsayıcıyı kullanarak bu koşulları kabul etmiş olursunuz.

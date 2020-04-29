@@ -1,7 +1,7 @@
 ---
-title: Veri depolama - LUIS
+title: Veri depolama-LUSıS
 titleSuffix: Azure Cognitive Services
-description: LUIS, şifrelenmiş verileri anahtartarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda depolar.
+description: LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79220022"
 ---
-# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Dil Anlama (LUIS) Bilişsel Hizmetlerveri depolama ve kaldırma
-LUIS, şifrelenmiş verileri anahtartarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda depolar. Bu veriler 30 gün boyunca saklanır. 
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUSıS) bilişsel hizmetler 'de veri depolama ve kaldırma
+LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. Bu veriler 30 gün boyunca depolanır. 
 
-## <a name="export-and-delete-app"></a>Uygulamayı dışa aktarma ve silme
-Kullanıcılar, uygulamayı [dışa aktarma](luis-how-to-start-new-app.md#export-app) ve [silme](luis-how-to-start-new-app.md#delete-app) konusunda tam kontrole sahiptir. 
+## <a name="export-and-delete-app"></a>Uygulamayı dışarı ve silme
+Kullanıcılar, uygulamayı [dışarı](luis-how-to-start-new-app.md#export-app) ve [silmeye](luis-how-to-start-new-app.md#delete-app) yönelik tam denetime sahiptir. 
 
 ## <a name="utterances"></a>Konuşmalar
 
-Söyleyişler iki farklı yerde saklanabilir. 
+Utterslar iki farklı yerde depolanabilir. 
 
-* **Yazma işlemi sırasında,** söyleyerek oluşturulur ve Niyet saklanır. Başarılı bir LUIS uygulaması için niyetler içinde söylenmeler gereklidir. Uygulama yayımlandıktan ve bitiş noktasında sorgular aldıktan sonra, bitiş noktası `log=false`isteğinin sorgu dizesi, bitiş noktası sözcüğün depolanıp depolanmayaçıklanmayonu belirler. Bitiş noktası depolanırsa, portalın **Yapı** bölümünde, Gözden Geçir uç nokta lı söyleyişler bölümünde bulunan etkin öğrenme **sözcüğünün** bir parçası olur. 
-* Uç **nokta söyleyişlerini gözden geçirdiğinizde**ve bir amaca bir söz eklediğinizde, söyleyiş artık gözden geçirilecek uç nokta sözcüklerinin bir parçası olarak depolanır. Uygulamanın amaçlarına eklenir. 
+* **Yazma işlemi**sırasında, yazmalar oluşturulur ve amaç içinde depolanır. Başarılı bir Lua uygulaması için amaçlarla ilgili bir amaç gereklidir. Uygulama yayımlandıktan ve uç noktada sorguları aldıktan sonra, uç nokta isteğinin QueryString `log=false`, uç nokta ile depolandığını belirler. Uç nokta depolanıyorsa, bu, **Gözden geçirme uç noktası utaları** bölümünde, portalın **Build** bölümünde bulunan etkin öğrenme utslerini bir parçası haline gelir. 
+* **Uç nokta konutlerini gözden geçirdikten**ve bir amaca yönelik olarak bir e-posta eklediğinizde, söylenişi artık incelenmek üzere uç nokta çeşidinin bir parçası olarak depolanmaz. Uygulamanın hedefleri için eklenmiştir. 
 
 <a name="utterances-in-an-intent"></a>
 
-### <a name="delete-example-utterances-from-an-intent"></a>Örnek açıklamaları bir amaçla silme
+### <a name="delete-example-utterances-from-an-intent"></a>Bir amacınızdan örnek söyleyeni silme
 
-[LUIS](luis-reference-regions.md)eğitimi için kullanılan örnek açıklamaları silin. LUIS uygulamanızdan bir örnek açıklama silerseniz, bu açıklama LUIS web hizmetinden kaldırılır ve dışa aktarılmaz.
+Eðssıs eğitimi için kullanılan örnekleri silin [LUIS](luis-reference-regions.md). LUSıS uygulamanızın bir örneğini silerseniz, bu, LUSıS Web hizmetinden kaldırılır ve dışarı aktarma için kullanılamaz.
 
 <a name="utterances-in-review"></a>
 
-### <a name="delete-utterances-in-review-from-active-learning"></a>İncelemedeki açıklamaları etkin öğrenmeden silme
+### <a name="delete-utterances-in-review-from-active-learning"></a>Etkin öğrenime göre gözden geçirdiklerinizi silme
 
-Luis'in **[Gözden Geçir uç nokta açıklamaları sayfasında](luis-how-to-review-endpoint-utterances.md)** önerdiği kullanıcı söyleyişleri listesinden çıkan ları silebilirsiniz. Bu listeden gelen açıklamalarıssilinmesi, bu açıklamaların önerilmesini engeller, ancak günlüklerden silmez.
+Konuşma **[uç noktası sıralayıcısı sayfasında](luis-how-to-review-endpoint-utterances.md)**, luya 'nın önerdiği Kullanıcı arasları listesinden gelen noktaları silebilirsiniz. Bu listedeki söyleymeleri silmek, bunların önerilmesine izin vermez, ancak bunları günlüklerden silmez.
 
-Eğer aktif öğrenme söyleyişlerini istemiyorsanız, [aktif öğrenmeyi devre dışı kullanabilirsiniz.](luis-how-to-review-endpoint-utterances.md#disable-active-learning) Etkin öğrenmeyi devre dışı bırakmak da günlük kaydetmeyi devre dışı kılabilir.
+Etkin öğrenimi istemiyorsanız, [etkin öğrenmeyi devre dışı](luis-how-to-review-endpoint-utterances.md#disable-active-learning)bırakabilirsiniz. Etkin öğrenmeyi devre dışı bırakmak, günlüğü de devre dışı bırakır
 
-### <a name="disable-logging-utterances"></a>Günlük söyleyişlerini devre dışı
-[Etkin öğrenmeyi devre dışı bırakmak](luis-how-to-review-endpoint-utterances.md#disable-active-learning) günlük leilgililiği devre dışı bırakmaktır.
+### <a name="disable-logging-utterances"></a>Günlüğe kaydetme belgelerini devre dışı bırak
+[Etkin öğrenmeyi devre dışı bırakmak](luis-how-to-review-endpoint-utterances.md#disable-active-learning) günlüğe kaydetmeyi devre dışı bırakır.
 
 
 <a name="accounts"></a>
 
 ## <a name="delete-an-account"></a>Hesap silme
-Bir hesabı silerseniz, tüm uygulamalar, örnek açıklamaları ve günlükleriyle birlikte silinir. Veriler, hesap ve veriler kalıcı olarak silinmeden önce 60 gün boyunca saklanır.
+Bir hesabı silerseniz, tüm uygulamalar, örnek ve günlükleriyle birlikte silinir. Veriler, hesap ve veriler kalıcı olarak silinmeden önce 60 gün boyunca tutulur.
 
-Hesap silme, **Ayarlar** sayfasından kullanılabilir. **Ayarlar** sayfasına ulaşmak için sağ üst gezinti çubuğunda hesap adınızı seçin.
+Hesap silme, **Ayarlar** sayfasından kullanılabilir. **Ayarlar** sayfasına ulaşmak için sağ üst gezinti çubuğundan hesap adınızı seçin.
 
-## <a name="data-inactivity-as-an-expired-subscription"></a>Süresi dolmuş bir abonelik olarak veri etkinliği
-Veri saklama ve silme amacıyla, etkin olmayan bir LUIS uygulaması _Microsoft'un takdirine bağlı_ olarak süresi dolmuş bir abonelik olarak kabul edilebilir. Bir uygulama, son 90 gün için aşağıdaki ölçütleri karşılıyorsa etkin değil sayılır: 
+## <a name="data-inactivity-as-an-expired-subscription"></a>Süresi biten bir abonelik olarak verilerin etkin olmaması
+Veri saklama ve silme amaçları doğrultusunda, etkin olmayan bir _Luo uygulaması Microsoft 'un_ kullanım açısından süresi geçen bir abonelik olarak kabul edilebilir. Son 90 gün için aşağıdaki ölçütleri karşılıyorsa bir uygulama etkin değil olarak kabul edilir: 
 
-* **Hiç** arama yapılmadı.
+* Kendisine **hiçbir** çağrı yapılmadı.
 * Değiştirilmedi.
-* Atanmış geçerli bir anahtarı yok.
-* Kullanıcı oturum açmadı.
+* Kendisine atanmış geçerli bir anahtarı yok.
+* Bir kullanıcının oturum açması gerekiyordu.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uygulama nın dışa aktarılmasına ve silmesi hakkında bilgi edinin](luis-how-to-start-new-app.md)
+> [Bir uygulamayı dışarı ve silmeyi öğrenin](luis-how-to-start-new-app.md)

@@ -1,7 +1,7 @@
 ---
 title: Metin Analizi API’sini çağırma
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Azure Bilişsel Hizmetler Metin Analizi REST API ve Postacı'yı nasıl arayabilirsiniz açıklanmaktadır.
+description: Bu makalede, Azure bilişsel hizmetler REST API ve Postman Metin Analizi nasıl çağrlayabileceğiniz açıklanır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79219307"
 ---
-# <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi REST API nasıl çağrılır?
+# <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
-**Text Analytics API'sine** yapılan aramalar, herhangi bir dilde formüle edebilirsiniz HTTP POST / GET aramaları vardır. Bu makalede, temel kavramları göstermek için REST ve [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) kullanın.
+**Metin Analizi API'si** çağrıları, herhangi bir dilde formülleştirmek IÇIN http post/Get çağrılardır. Bu makalede, önemli kavramları göstermek için REST ve [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) kullanırız.
 
-Her istek erişim anahtarınızı ve bir HTTP bitiş noktasını içermelidir. Bitiş noktası, kaydolma sırasında seçtiğiniz bölgeyi, hizmet URL'sini ve istekte `sentiment`kullanılan `keyphrases` `languages`bir `entities`kaynağı belirtir: , , ve . 
+Her isteğin erişim anahtarınızı ve bir HTTP uç noktasını içermesi gerekir. Uç nokta, kaydolma sırasında seçtiğiniz bölgeyi, hizmet URL 'sini ve istekte kullanılan bir kaynağı belirtir `sentiment`:, `keyphrases`, `languages`ve. `entities` 
 
-Text Analytics'in devletsiz olduğunu, bu nedenle yönetilen veri varlıkları olmadığını hatırlayın. Metniniz yüklenir, alındıktan sonra analiz edilir ve sonuçlar hemen arama uygulamasına döndürülür.
+Yönetilecek veri varlığı olmadığından Metin Analizi durum bilgisiz olduğunu hatırlayın. Metniniz karşıya yüklenir, teslim edildiğinde çözümlenir ve sonuçlar çağıran uygulamaya hemen döndürülür.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,64 +35,64 @@ Text Analytics'in devletsiz olduğunu, bu nedenle yönetilen veri varlıkları o
 
 ## <a name="json-schema-definition"></a>JSON şema tanımı
 
-Giriş ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmez. Şema, aşağıdaki listede açıklanan öğelerden oluşan basittir. 
+Giriş, ham yapılandırılmamış metinde JSON olmalıdır. XML desteklenmiyor. Şema basittir ve aşağıdaki listede açıklanan öğelerden oluşur. 
 
-Şu anda tüm Metin Analizi işlemleri için aynı belgeleri gönderebilirsiniz: duyarlılık, anahtar tümcecik, dil algılama ve varlık tanımlama. (Şema gelecekte her analiz için değişebilir.)
+Şu anda tüm Metin Analizi işlemler için aynı belgeleri gönderebilirsiniz: yaklaşım, anahtar tümceciği, dil algılama ve varlık tanımlama. (Şema, gelecekte her analiz için farklılık gösterir.)
 
 | Öğe | Geçerli değerler | Gerekli mi? | Kullanım |
 |---------|--------------|-----------|-------|
-|`id` |Veri türü dizedir, ancak uygulamada belge kimlikleri gerçeksayılar olma eğilimindedir. | Gerekli | Sistem, çıktıyı yapılandırmak için sağladığınız tetkikleri kullanır. İstekteki her kimlik için dil kodları, anahtar tümcecikler ve duyarlılık puanları oluşturulur.|
-|`text` | Yapılandırılmamış ham metin, 5.120 karaktere kadar. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Duyarlılık analizi, anahtar tümcecik çıkarma ve varlık tanımlaması için metin desteklenen bir [dilde](../text-analytics-supported-languages.md)olmalıdır. |
-|`language` | Desteklenen bir [dil](../text-analytics-supported-languages.md) için 2 karakterli [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) kodu | Değişir | Duygusallık analizi, anahtar cümle çıkarma ve varlık bağlama için gerekli; dil algılama için isteğe bağlıdır. Bunu dışlarsanız hata yoktur, ancak çözümleme onsuz zayıflamış olur. Dil kodu `text` sağladığınız koda karşılık gelir. |
+|`id` |Veri türü dizedir, ancak uygulama belge kimlikleri ' nde tam sayı olarak eğilimlidir. | Gerekli | Sistem çıktıyı yapılandırmak için sağladığınız kimlikleri kullanır. İstekteki her bir KIMLIK için dil kodları, anahtar tümceleri ve yaklaşım puanları oluşturulur.|
+|`text` | Yapılandırılmamış ham metin, en fazla 5.120 karakter. | Gerekli | Dil algılama için metin herhangi bir dilde ifade edilebilir. Yaklaşım analizi, anahtar ifade ayıklama ve varlık tanımlama için, metin [desteklenen bir dilde](../text-analytics-supported-languages.md)olmalıdır. |
+|`language` | 2 karakterlik [ıso 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) [desteklenen bir dil](../text-analytics-supported-languages.md) için kod | Değişir | Yaklaşım analizi, anahtar ifade ayıklama ve varlık bağlama için gereklidir; dil algılama için isteğe bağlı. Bunu dışladığınızda bir hata yoktur, ancak analiz bu olmadan zayıflatılmalıdır. Dil kodu, sağladığınız öğesine `text` karşılık gelmelidir. |
 
-Sınırlar hakkında daha fazla bilgi için Metin [Analizine Genel Bakış > Veri limitlerine](../overview.md#data-limits)bakın. 
+Sınırlamalar hakkında daha fazla bilgi için bkz. [metin analizi genel bakış > veri sınırları](../overview.md#data-limits). 
 
-## <a name="set-up-a-request-in-postman"></a>Postacı'da istek tesayar
+## <a name="set-up-a-request-in-postman"></a>Postman 'da istek ayarlama
 
-Hizmet, 1 MB boyutuna kadar olan isteği kabul eder. Postacı 'yı (veya başka bir Web API test aracını) kullanıyorsanız, son noktayı kullanmak istediğiniz kaynağı içerecek şekilde ayarlayın ve erişim anahtarını istek üstbilgisinde sağlayın. Her işlem, bitiş noktasına uygun kaynağı eklenizi gerektirir. 
+Hizmet, boyutu 1 MB 'a kadar olan isteği kabul eder. Postman (veya başka bir Web API test aracı) kullanıyorsanız, uç noktasını kullanmak istediğiniz kaynağı içerecek şekilde ayarlayın ve erişim anahtarını bir istek üst bilgisine sağlayın. Her işlem için ilgili kaynağı uç noktaya eklemeniz gerekir. 
 
-1. Postacı olarak:
+1. Postman 'da:
 
-   + İstek türü olarak **Gönder'i** seçin.
-   + Portal sayfasından kopyaladığınız bitiş noktasına yapıştırın.
-   + Bir kaynak ekle.
+   + İstek türü olarak **gönderi** ' ı seçin.
+   + Portal sayfasından kopyaladığınız uç noktaya yapıştırın.
+   + Kaynak Ekle.
 
-   Kaynak uç noktaları aşağıdaki gibidir (bölgeniz değişebilir):
+   Kaynak uç noktaları aşağıdaki gibidir (bölgeniz farklılık gösterebilir):
 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
-2. Üç istek üstbilgisini ayarlayın:
+2. Üç istek üst bilgilerini ayarlayın:
 
-   + `Ocp-Apim-Subscription-Key`: Azure portalından elde edilen erişim anahtarınız.
-   + `Content-Type`: uygulama/json.
-   + `Accept`: uygulama/json.
+   + `Ocp-Apim-Subscription-Key`: Azure portal adresinden alınan erişim anahtarınız.
+   + `Content-Type`: Application/JSON.
+   + `Accept`: Application/JSON.
 
-   İsteğiniz bir **/keyPhrases** kaynağı varsayarak aşağıdaki ekran görüntüsüne benzer olmalıdır.
+   İsteğiniz, **/keyPhrases** kaynağını varsayarak aşağıdaki ekran görüntüsüne benzer şekilde görünmelidir.
 
-   ![Bitiş noktası ve üstbilgi içeren ekran görüntüsü isteme](../media/postman-request-keyphrase-1.png)
+   ![Uç nokta ve üst bilgilerle ekran görüntüsü iste](../media/postman-request-keyphrase-1.png)
 
-4. **Gövde'yi** tıklatın ve biçim için **ham'ı** seçin.
+4. **Gövde** ' ye tıklayın ve biçim için **RAW** ' ı seçin.
 
-   ![Gövde ayarlarıyla ekran görüntüsü iste](../media/postman-request-body-raw.png)
+   ![Gövde ayarları ile ekran görüntüsü iste](../media/postman-request-body-raw.png)
 
-5. Bazı JSON belgelerine amaçlanan çözümleme için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
+5. Bazı JSON belgelerini amaçlanan analiz için geçerli bir biçimde yapıştırın. Belirli bir analiz hakkında daha fazla bilgi için aşağıdaki konulara bakın:
 
   + [Dil algılama](text-analytics-how-to-language-detection.md)  
-  + [Anahtar tümcecik çıkarma](text-analytics-how-to-keyword-extraction.md)  
+  + [Anahtar tümceciği ayıklama](text-analytics-how-to-keyword-extraction.md)  
   + [Yaklaşım analizi](text-analytics-how-to-sentiment-analysis.md)  
   + [Varlık tanıma](text-analytics-how-to-entity-linking.md)  
 
 
-6. İsteği göndermek için **Gönder'i** tıklatın. Dakika ve saniye başına gönderebileceğiniz istek sayısı hakkında bilgi için genel bakışta [veri sınırları](../overview.md#data-limits) bölümüne bakın.
+6. İsteği göndermek için **Gönder** ' e tıklayın. Dakika ve saniye başına gönderebilmeniz için istek sayısı hakkında genel [bakış bölümüne bakın](../overview.md#data-limits) .
 
-   Postacı'da yanıt, istekte sağlanan her belge kimliği için bir öğeyle birlikte bir sonraki pencerede tek bir JSON belgesi olarak görüntülenir.
+   Postman 'da, yanıt, istekte belirtilen her belge KIMLIĞI için bir öğe olan bir sonraki pencerede, tek bir JSON belgesi olarak görüntülenir.
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
- [Metin Analizine Genel Bakış](../overview.md)  
+ [Metin Analizi genel bakış](../overview.md)  
  [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

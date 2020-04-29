@@ -1,7 +1,7 @@
 ---
-title: Özel Konuşma için bir model eğitin - Konuşma hizmeti
+title: Özel Konuşma Tanıma konuşma hizmeti için model eğitme
 titleSuffix: Azure Cognitive Services
-description: Konuşmadan metne modelini eğitmek, Microsoft'un temel modeli veya özel bir model için tanıma doğruluğunu artırabilir. Bir model insan etiketli transkripsiyonlar ve ilgili metin kullanılarak eğitilir.
+description: Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli veya özel bir model için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77137763"
 ---
-# <a name="train-a-model-for-custom-speech"></a>Özel Konuşma için bir model eğitin
+# <a name="train-a-model-for-custom-speech"></a>Özel Konuşma için modeli eğitme
 
-Konuşmadan metne modelini eğitmek, Microsoft'un temel modeliiçin tanıma doğruluğunu artırabilir. Bir model insan etiketli transkripsiyonlar ve ilgili metin kullanılarak eğitilir. Bu veri kümeleri, daha önce yüklenen ses verileriyle birlikte, sözcükleri, ifadeleri, kısaltmaları, adları ve diğer ürüne özgü terimleri tanıyacak şekilde konuşma-metin modelini hassaslaştırmak ve eğitmek için kullanılır. Sağladığınız daha fazla etki alanı içi veri kümeleri (kullanıcıların ne söyleyeceği ve neleri tanımasını beklediğiniz ile ilgili veriler), modeliniz o kadar doğru olur ve bu da daha iyi tanıma yla sonuçlanır. İlişkisiz verileri eğitiminize aktararak modelinizin doğruluğunu azaltabileceğinizi veya zarar verebileceğinizi unutmayın.
+Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Daha önce karşıya yüklenen ses verileriyle birlikte bu veri kümeleri, sözcükleri, tümceleri, kısaltmaları, adları ve ürüne özgü diğer koşulları tanımak üzere konuşmayı metne dönüştürme ve eğitim için kullanılır. Sağladığınız daha fazla etki alanı veri kümesi (kullanıcıların söyledikleri ve tanımak istediğiniz veriler ile ilgili veriler), modelinizin daha doğru olur ve bu da daha iyi bir tanıma sonucu elde edilir. İlgisiz verileri eğitimlere besleyerek, modelinize ait doğruluğu azaltabilir veya zarar verebilir.
 
-## <a name="use-training-to-resolve-accuracy-issues"></a>Doğruluk sorunlarını çözmek için eğitimi kullanma
+## <a name="use-training-to-resolve-accuracy-issues"></a>Doğruluk sorunlarını gidermek için eğitim kullanma
 
-Modelinizde tanıma sorunlarıyla karşılaşıyorsanız, ek eğitim için insan etiketli transkriptler ve ilgili verileri kullanmak doğruluğu artırmaya yardımcı olabilir. Sorununuzu gidermek için hangi veri kümesini kullanacağınızı belirlemek için bu tabloyu kullanın:
+Modelinize yönelik tanınma sorunlarıyla karşılaşdıysanız, insan etiketli döküm ve ek eğitim için ilgili verilerin kullanılması doğruluğu artırmaya yardımcı olabilir. Bu tabloyu kullanarak, sorununuzu gidermek için hangi veri kümesinin kullanılacağını saptayın:
 
 | Kullanım örneği | Veri türü |
 | -------- | --------- |
-| Tıbbi terminoloji veya BT jargonu gibi sektöre özgü kelime ve dilbilgisi üzerindeki tanıma doğruluğunu artırın. | İlgili metin (cümleler/söyleyişler) |
-| Ürün adları veya kısaltmalar gibi standart olmayan telaffuzu olan bir sözcüğün veya terimin fonetik ve görüntülenen biçimini tanımlayın. | İlgili metin (telaffuz) |
-| Konuşma stilleri, aksanveya belirli arka plan gürültülerinde tanıma doğruluğunu artırın. | Ses + insan etiketli transkriptler |
+| Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi veya It jarggibi tanıma doğruluğunu geliştirir. | İlgili metin (cümleler/utterer) |
+| Ürün adları veya kısaltmalar gibi standart olmayan telaffuz içeren bir sözcüğün veya bir terimin fonetik ve görüntülenen formunu tanımlayın. | İlgili metin (telaffuz) |
+| Konuşma stillerinde, aksanların veya belirli arka plan noseslerdeki tanıma doğruluğunu geliştirir. | Ses + insan etiketli yazılı betikler |
 
 > [!IMPORTANT]
-> Veri seti yüklemediyseniz, lütfen [verilerinizi hazırlayın ve test edin.](how-to-custom-speech-test-data.md) Bu belge, veri yüklemek için yönergeler ve yüksek kaliteli veri kümeleri oluşturmak için yönergeler sağlar.
+> Bir veri kümesini karşıya yüklemediyseniz lütfen [verilerinizi hazırlayın ve test](how-to-custom-speech-test-data.md)edin. Bu belge, verileri karşıya yüklemeye yönelik yönergeler ve yüksek kaliteli veri kümeleri oluşturma yönergeleri sağlar.
 
 ## <a name="train-and-evaluate-a-model"></a>Modeli eğitme ve değerlendirme
 
-Bir modeli eğitmenin ilk adımı eğitim verilerini yüklemektir. İnsan etiketli transkripsiyonları ve ilgili metinleri (sözler ve telaffuzlar) hazırlamak için [verilerinizi](how-to-custom-speech-test-data.md) adım adım hazırlayın ve test edin. Eğitim verilerini yükledikten sonra, modelinizi eğitmeye başlamak için aşağıdaki yönergeleri izleyin:
+Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](how-to-custom-speech-test-data.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
-1. Özel Konuşma [portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **Konuşmadan metne > Özel Konuşma > Eğitimine**gidin.
-3. **Tren modeline**tıklayın.
-4. Ardından, eğitimbir **Ad** ve **Açıklama**verin.
-5. Senaryo **ve Taban çizgisi modeli** açılır menüsünden etki alanınıza en uygun senaryoyu seçin. Hangi senaryoyu seçeceğiniz emin değilseniz **Genel'i**seçin. Temel model eğitim için başlangıç noktasıdır. Bir tercihiniz yoksa, en son kullanın.
-6. Eğitim **verilerini seç** sayfasından, eğitim için kullanmak istediğiniz bir veya birden çok ses + insan etiketli transkripsiyon veri kümelerini seçin.
-7. Eğitim tamamlandıktan sonra, yeni eğitilmiş model üzerinde doğruluk testi yapmayı seçebilirsiniz. Bu adım isteğe bağlıdır.
-8. Özel modelinizi oluşturmak için **Oluştur'u** seçin.
+1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
+2. **Konuşmayı metne > Özel Konuşma Tanıma > eğitimi**'ne gidin.
+3. **Modeli eğitme**' ye tıklayın.
+4. Ardından, eğitime bir **ad** ve **Açıklama**sağlayın.
+5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. Tercih ediyorsanız, en son ' u kullanabilirsiniz.
+6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
+7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
+8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
 
-Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tablo da durumu görüntüler: İşleme, Başarılı, Başarısız.
+Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: Işlem, başarılı, başarısız.
 
-## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Eğitimli bir modelin doğruluğunu değerlendirme
+## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Eğitilen bir modelin doğruluğunu değerlendirin
 
-Verileri inceleyebilir ve bu belgeleri kullanarak model doğruluğunu değerlendirebilirsiniz:
+Bu belgeleri kullanarak verileri inceleyebilir ve model doğruluğunu değerlendirebilirsiniz:
 
 - [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 - [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
 
-Doğruluğu test etmeyi seçtiyseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizde kullandığınızdan farklı bir akustik veri kümesi seçmek önemlidir.
+Doğruluk sınamasını yapmayı seçerseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizden farklı bir akustik veri kümesi seçmeniz önemlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

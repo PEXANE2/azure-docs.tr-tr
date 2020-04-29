@@ -1,7 +1,7 @@
 ---
-title: .NET kullanarak ılımlılık işlerini kullanma - İçerik Moderatör
+title: .NET-Content Moderator kullanarak denetleme işlerini kullanma
 titleSuffix: Azure Cognitive Services
-description: Azure İçerik Moderatörü'nde resim veya metin içeriği için uçlardan uca içerik denetleme işleri başlatmak için İçerik Moderatörü .NET SDK'yı kullanın.
+description: Azure Content Moderator görüntü veya metin içeriğine yönelik uçtan uca içerik denetleme işleri başlatmak için Content Moderator .NET SDK 'sını kullanın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76294346"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>Moderasyon işlerini tanımlayın ve kullanın (.NET)
+# <a name="define-and-use-moderation-jobs-net"></a>Denetleme işlerini tanımlama ve kullanma (.NET)
 
-Bir ılımlılık iş içerik ılımlılık, iş akışları ve değerlendirmeleri işlevselliği için sarıcı bir tür olarak hizmet vermektedir. Bu kılavuz, [.NET için İçerik Moderatör SDK'sını](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) kullanmaya başlamanıza yardımcı olacak bilgi ve kod örnekleri sağlar:
+Bir denetleme işi, içerik denetleme, iş akışları ve İncelemeler işlevleri için bir sarmalayıcı türü görevi görür. Bu kılavuzda, [.NET için Content moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 'yı kullanmaya başlamanıza yardımcı olacak bilgiler ve kod örnekleri sunulmaktadır:
 
 - Tarama ve insan denetimciler için incelemeler oluşturma için bir denetim işi başlatma
 - Bekleyen incelemenin durumunu alma
 - İncelemeyi izleme ve son durumunu alma
-- İnceleme sonuçlarını geri arama URL'sine gönderme
+- İnceleme sonuçlarını geri çağırma URL 'sine gönder
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- İçerik Moderatör [İnceleme araç](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya bir hesap oluşturun.
+- Content Moderator [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) sitesinde oturum açın veya hesap oluşturun.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>API anahtarınızın inceleme oluşturma amacıyla inceleme API'sini çağırabildiğinden emin olun
 
@@ -80,7 +80,7 @@ using System.Threading;
 Aboneliğiniz için bir Content Moderator istemcisi oluşturmak üzere aşağıdaki kodu ekleyin.
 
 > [!IMPORTANT]
-> **AzureEndpoint** ve **CMSubscriptionKey** alanlarını bitiş noktası URL'niz ve abonelik anahtarınızın değerleriyle güncelleştirin.
+> **AzureEndpoint** ve **cmsubscriptionkey** alanlarını Endpoint URL 'nizin ve abonelik anahtarınızın değerleriyle güncelleştirin.
 
 ```csharp
 /// <summary>

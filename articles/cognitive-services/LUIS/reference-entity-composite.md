@@ -1,7 +1,7 @@
 ---
-title: Bileşik varlık türü - LUIS
+title: Bileşik varlık türü-LUSıS
 titleSuffix: Azure Cognitive Services
-description: Bileşik varlık, önceden oluşturulmuş varlıklar, basit, düzenli ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bütün bir varlık oluşturur.
+description: Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71695161"
 ---
 # <a name="composite-entity"></a>Bileşik varlık 
 
-Bileşik varlık, önceden oluşturulmuş varlıklar, basit, düzenli ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bütün bir varlık oluşturur. 
+Bileşik bir varlık, önceden oluşturulmuş varlıklar, basit, normal ifade ve liste varlıkları gibi diğer varlıklardan oluşur. Ayrı varlıklar bir bütün varlığı oluşturur. 
 
-**Bu varlık iyi bir uyum zaman veri:**
+**Bu varlık, veriler şu durumlarda iyi bir uyum:**
 
-* Birbirleri ile akrabalar. 
+* Birbirleriyle ilişkilidir. 
 * Konuşma bağlamında birbiriyle ilişkilidir.
-* Çeşitli varlık türleri kullanın.
-* Bir bilgi birimi olarak istemci uygulaması tarafından gruplandırılmalı ve işlenmesi gerekir.
-* Makine öğrenimi gerektiren çeşitli kullanıcı söyleyişlerine sahip olmak.
+* Çeşitli varlık türlerini kullanın.
+* İstemci uygulama tarafından bir bilgi birimi olarak gruplanıp işlenmelidir.
+* Makine öğrenimi gerektiren çeşitli Kullanıcı yelpazimine sahiptir.
 
-![kompozit varlık](./media/luis-concept-entities/composite-entity.png)
+![Bileşik varlık](./media/luis-concept-entities/composite-entity.png)
 
 ## <a name="example-json"></a>Örnek JSON
 
-Önceden oluşturulmuş `number` ve `Location::ToLocation` aşağıdaki söyleyerek kompozit bir varlık düşünün:
+Aşağıdaki utterance ile önceden oluşturulmuş `number` ve `Location::ToLocation` bileşik bir varlık göz önünde bulundurun:
 
 `book 2 tickets to cairo`
 
-`2`Not, numara ve `cairo`ToLocation'ın aralarında varlıkların hiçbirinin parçası olmayan sözcükler bulunduğuna dikkat edin. [LUIS](luis-reference-regions.md) web sitesinde etiketli bir sözcükte kullanılan yeşil altı çizili, bileşik bir varlığı gösterir.
+Bu `2`sayı, ve `cairo`, tolocation 'ın, varlıkların herhangi bir parçası olmayan aralarında sözcükler içerdiğine dikkat edin. [Luo](luis-reference-regions.md) Web sitesinde etiketli bir şekilde kullanılan yeşil alt çizgi, bileşik bir varlığı gösterir.
 
-![Kompozit Varlık](./media/luis-concept-data-extraction/composite-entity.png)
+![Bileşik varlık](./media/luis-concept-data-extraction/composite-entity.png)
 
-#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmini uç nokta yanıtı](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 tahmin uç noktası yanıtı](#tab/V2)
 
-Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve bileşik içindeki tüm `entities` varlıklar da dizide döndürülür:
+Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve Birleşik içindeki tüm varlıklar `entities` dizide de döndürülür:
 
 ```JSON
   "entities": [
@@ -89,9 +89,9 @@ Bileşik varlıklar bir `compositeEntities` dizide döndürülür ve bileşik i�
   ]
 ```    
 
-#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmini uç nokta yanıtı](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 tahmin uç noktası yanıtı](#tab/V3)
 
-Bu JSON sorgu `verbose=false` dizesinde ayarlanırsa:
+Bu, sorgu dizesinde ayarlandıysa `verbose=false` JSON 'dir:
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ Bu JSON sorgu `verbose=false` dizesinde ayarlanırsa:
 }
 ```
 
-Bu JSON sorgu `verbose=true` dizesinde ayarlanırsa:
+Bu, sorgu dizesinde ayarlandıysa `verbose=true` JSON 'dir:
 
 ```json
 "entities": {
@@ -174,9 +174,9 @@ Bu JSON sorgu `verbose=true` dizesinde ayarlanırsa:
 
 |Veri nesnesi|Varlık adı|Değer|
 |--|--|--|
-|Önceden Oluşturulmuş Varlık - sayı|"builtin.number"|"2"|
-|Önceden Oluşturulmuş Varlık - GeographyV2|"Konum::ToLocation"|"kahire"|
+|Önceden oluşturulmuş varlık numarası|"yerleşik. numara"|iki|
+|Önceden oluşturulmuş varlık-GeographyV2|"Location:: ToLocation"|Cairo|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu [öğreticide,](luis-tutorial-composite-entity.md)çıkarılan çeşitli türleri tek bir varlık içine demetlemek için bileşik bir **varlık** ekleyin. İstemci uygulaması, verileri biraraya getirebilir ve ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.
+Bu [öğreticide](luis-tutorial-composite-entity.md), çeşitli türlerin ayıklanan verilerini tek bir kapsayan varlığa dönüştürmek için bir **Bileşik varlık** ekleyin. İstemci uygulaması, verileri paketleyerek ilgili verileri farklı veri türlerinde kolayca ayıklayabilir.
