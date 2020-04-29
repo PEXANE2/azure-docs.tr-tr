@@ -1,6 +1,6 @@
 ---
-title: Bildirim Hub'ları ad alanının fiyatlandırma katmanını değiştirme | Microsoft Dokümanlar
-description: Azure Bildirim Hub'ları ad alanının fiyatlandırma katmanını nasıl değiştireceğinizi öğrenin.
+title: Notification Hubs ad alanının fiyatlandırma katmanını Değiştir | Microsoft Docs
+description: Azure Notification Hubs ad alanının fiyatlandırma katmanını değiştirmeyi öğrenin.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -14,71 +14,71 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
 ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656479"
 ---
-# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure bildirim hub'larının ad alanının fiyatlandırma katmanını değiştirme
+# <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification Hub 'ları ad alanının fiyatlandırma katmanını değiştirme
 
-Bildirim Hub'ları üç katmanda sunulur: **ücretsiz,** **temel**ve **standart.** Bu makalede, bir Azure Bildirim Hub'ları ad alanının fiyatlandırma katmanını nasıl değiştireceğiniz gösterilmektedir.
+Notification Hubs üç katmanda sunulur: **ücretsiz**, **temel**ve **Standart**. Bu makalede bir Azure Notification Hubs ad alanı için fiyatlandırma katmanının nasıl değiştirileceği gösterilmektedir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Bildirim Hub'larında hub en küçük kaynak/varlıktır. Genellikle tek bir uygulamayla eşler ve uygulama için desteklediğimiz her Platform Bildirim Sistemi (PNS) için bir sertifika tutabilir. Uygulama bir melez veya yerel ve çapraz platform uygulaması olabilir.
+Azure Notification Hubs, hub en küçük kaynak/varlıktır. Genellikle bir uygulamayla eşlenir ve uygulama için destekduğumuz her bir Platform Bildirim Sistemi (PNS) için bir sertifika tutabilir. Uygulama karma veya yerel ve platformlar arası bir uygulama olabilir.
 
-**Ad alanı,** bildirim hub'ları topluluğudur. Her ad alanı genellikle ilişkili ve belirli bir amaç için kullanılan hub'lardan oluşur. Örneğin, sırasıyla geliştirme, sınama ve üretim amaçları için üç farklı ad alanınız olabilir.
+**Ad alanı** , Bildirim Hub 'larının koleksiyonudur. Her ad alanı genellikle ilgili ve belirli bir amaç için kullanılan hub 'lardan oluşur. Örneğin, geliştirme, test ve üretim amaçları için sırasıyla üç farklı ad alanına sahip olabilirsiniz.
 
-Bir ad alanını **ücretsiz,** **temel**veya **standart** fiyatlandırma katmanlarıyla ilişkilendirebilirsiniz. Katmanı gereksinimlerinize uygun bir ad alanı için kullanabilirsiniz. Aşağıdaki bölümler, Bildirim Hub'ları ad alanının fiyatlandırma katmanını nasıl değiştireceğinizi gösterir.
+Bir ad alanını **ücretsiz**, **temel**veya **Standart** fiyatlandırma katmanlarında ilişkilendirebilirsiniz. Gereksinimlerinizi karşılayacak bir ad alanı için katmanını kullanabilirsiniz. Aşağıdaki bölümlerde bir Notification Hubs ad alanının fiyatlandırma katmanını nasıl değiştirebileceğiniz gösterilmektedir.
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 
-Azure portalını kullanırken, ad alanı sayfasında veya hub sayfasında bir ad alanı için fiyatlandırma katmanını değiştirebilirsiniz. Hub sayfasında değiştirdiğinizde, aslında ad alanı düzeyinde değiştirirsiniz. Ad alanı nın fiyatlandırma katmanını ve ad alanındaki tüm hub'ları değiştirir.
+Azure portal kullanırken, ad alanı sayfasındaki veya hub sayfasındaki bir ad alanı için fiyatlandırma katmanını değiştirebilirsiniz. Bir hub sayfasında değişiklik yaparken, aslında onu ad alanı düzeyinde değiştirirsiniz. Ad alanı için fiyatlandırma katmanını ve ad alanındaki tüm Hub 'ları değiştirir.
 
-### <a name="change-tier-on-the-namespace-page"></a>Ad alanı sayfasında katmanı değiştirme
+### <a name="change-tier-on-the-namespace-page"></a>Ad alanı sayfasında Katmanı Değiştir
 
-Aşağıdaki yordam, ad alanı sayfasındaki bir ad alanının fiyatlandırma katmanının nasıl değiştirilebildiğini gösterir. Bir ad alanı için katmanı değiştirdiğinizde, bu ad alanındaki tüm hub'lar için geçerlidir.
+Aşağıdaki yordamda, ad alanı sayfasında bir ad alanı için fiyatlandırma katmanının nasıl değiştirileceği gösterilmektedir. Bir ad alanı için katmanı değiştirdiğinizde, bu ad alanındaki tüm Hub 'lara uygulanır.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Sol menüdeki **Tüm hizmetleri** seçin.
-3. **Nesnelerin İnterneti** bölümünde **Bildirim Hub'ı Ad Alanları'nı** seçin. Metnin yanındaki yıldız işaretini (`*`) seçerseniz, sık **kullanılanlar**altında sol gezinti çubuğuna eklenir. İleriye doğru ad alanları sayfasına daha hızlı erişmenize yardımcı olur. SıK Kullanılanlar'a ekledikten sonra **Bildirim Hub Ad Alanları'nı**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
+3. **Nesnelerin interneti** bölümünde **Notification Hub ad alanları** ' nı seçin. Metnin yanındaki yıldız işaretini (`*`) seçerseniz, **Sık Kullanılanlar**altındaki sol gezinti çubuğuna eklenir. Ad alanları sayfasına daha hızlı erişmenizi sağlar. SıK KULLANıLANLARA ekledikten sonra **Bildirim Hub 'ı ad alanları**' nı seçin.
 
-    ![Tüm hizmetler -> Bildirim Merkezi Ad Boşlukları](./media/change-pricing-tier/all-services-nhub.png)
+    ![Tüm hizmetler-> Notification Hub ad alanları](./media/change-pricing-tier/all-services-nhub.png)
 
-4. Bildirim **Merkezi Ad Alanları** sayfasında, fiyatlandırma katmanını değiştirmek istediğiniz ad alanını seçin.
-5. Ad alanınız için **Bildirim Hub Ad Alanı** sayfasında, **Essentials** bölümünde ad alanı için geçerli fiyatlandırma katmanını görebilirsiniz. Aşağıdaki resimde, ad alanının fiyatlandırma katmanının **Ücretsiz**olduğunu görebilirsiniz.
+4. **Bildirim Hub 'ı ad alanları** sayfasında, fiyatlandırma katmanını değiştirmek istediğiniz ad alanını seçin.
+5. Ad alanınız için **Bildirim Hub 'ı ad alanı** sayfasında, **temel** bileşenler bölümünde ad alanı için geçerli fiyatlandırma katmanını görebilirsiniz. Aşağıdaki görüntüde, ad alanının fiyatlandırma katmanının **boş**olduğunu görebilirsiniz.
 
-    ![Ad alanı sayfasındaki geçerli fiyatlandırma katmanı](./media/change-pricing-tier/pricing-tier-before.png)
+    ![Ad alanı sayfasındaki geçerli Fiyatlandırma Katmanı](./media/change-pricing-tier/pricing-tier-before.png)
 
-6. Ad alanınız için **Bildirim Hub Ad Alanı** sayfasında **Yönet** bölümünde **Fiyatlandırma Katmanı'nı** seçin.
+6. Ad alanınız için **Bildirim Hub 'ı ad alanı** sayfasında **Yönet** bölümünde **fiyatlandırma katmanı** ' nı seçin.
 
     ![Ad alanı sayfasında fiyatlandırma katmanını seçin](./media/change-pricing-tier/namespace-select-pricing-menu.png)
 
-7. Fiyatlandırma katmanını değiştirin ve ardından **Seç** düğmesini tıklatın.
-8. **Uyarılarda**katman değişikliği eyleminin durumunu görebilirsiniz.
-9. **Genel Bakış** sayfasına geçin. Yeni katmanın **Essentials** **bölümündeki Fiyatlandırma Katmanı** alanı için gösterildiğini doğrulayın.
-10. Bu adım isteğe bağlıdır. Ad alanında herhangi bir hub seçin. **Essentials** bölümünde aynı fiyatlandırma katmanını gördüğünüzden onaylayın. Ad alanındaki tüm hub'lar için aynı fiyatlandırma katmanını görmeniz gerekir.
+7. Fiyatlandırma katmanını değiştirin ve ardından **Seç** düğmesine tıklayın.
+8. **Uyarı**içindeki katman değişikliği eyleminin durumunu görebilirsiniz.
+9. **Genel bakış** sayfasına geçin. Yeni katmanın **temel** bileşenler bölümündeki **fiyatlandırma katmanı** alanı için gösterildiğini onaylayın.
+10. Bu adım isteğe bağlıdır. Ad alanındaki herhangi bir hub seçin. **Temel** bileşenler bölümünde aynı fiyatlandırma katmanını görtığınızdan emin olun. Ad alanındaki tüm Hub 'lar için aynı fiyatlandırma katmanını görmeniz gerekir.
 
-### <a name="change-tier-on-the-hub-page"></a>Hub sayfasında katmanı değiştirme
+### <a name="change-tier-on-the-hub-page"></a>Hub sayfasındaki katmanı değiştirme
 
-Aşağıdaki yordam, hub sayfasındaki bir ad alanının fiyatlandırma katmanının nasıl değiştirilebildiğini gösterir. Hub sayfasından başlayarak bu adımları yapmanıza rağmen, ad alanı nın ve ad alanındaki tüm hub'ların fiyatlandırma katmanını gerçekten değiştirirsiniz.
+Aşağıdaki yordamda, hub sayfasındaki bir ad alanı için fiyatlandırma katmanının nasıl değiştirileceği gösterilmektedir. Bu adımları Hub sayfasından başlayarak yapmış olsanız da ad alanı için fiyatlandırma katmanını ve ad alanındaki tüm Hub 'ları değiştirirsiniz.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Sol menüdeki **Tüm hizmetleri** seçin.
-3. **Nesnelerin İnterneti** bölümünde **Bildirim Hub'larını** seçin.
-4. Bildirim **merkezinizi**seçin.
-5. Sol menüde **Fiyatlandırma Katmanı'nı** seçin.
-6. Fiyatlandırma katmanını değiştirin ve **Seç** düğmesini tıklatın. Bu eylem, hub'ı içeren ad alanı için fiyatlandırma katmanı ayarını değiştirir. Yani, ad alanı sayfasında ve tüm hub sayfalarında yeni fiyatlandırma katmanını görürsünüz.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
+3. **Nesnelerin interneti** bölümünde **Notification Hubs** ' yi seçin.
+4. Bildirim **hub**'ınızı seçin.
+5. Sol taraftaki menüde **fiyatlandırma katmanını** seçin.
+6. Fiyatlandırma katmanını değiştirin ve **Seç** düğmesine tıklayın. Bu eylem, hub 'ı içeren ad alanı için fiyatlandırma katmanı ayarını değiştirir. Bu nedenle, ad alanı sayfasında ve tüm Hub sayfalarında yeni fiyatlandırma katmanını görürsünüz.
 
 > [!NOTE]
-> Tüm fiyatlandırma katmanı değişiklikleri hemen geçerli olur.
+> Tüm fiyatlandırma katmanı değişiklikleri hemen etkili olur.
 
 ## <a name="use-rest-api"></a>REST API’yi kullanma
 
-Geçerli fiyatlandırma katmanını almak ve güncelleştirmek için aşağıdaki Kaynak Sağlayıcı REST API'lerini kullanabilirsiniz.
+Geçerli fiyatlandırma katmanını almak ve güncelleştirmek için aşağıdaki kaynak sağlayıcısı REST API 'Lerini kullanabilirsiniz.
 
-### <a name="get-current-pricing-tier-for-a-namespace"></a>Ad alanı için geçerli fiyatlandırma katmanını alın
+### <a name="get-current-pricing-tier-for-a-namespace"></a>Bir ad alanı için geçerli fiyatlandırma katmanını al
 
 Geçerli ad alanı katmanını almak için aşağıdaki örnekte gösterildiği gibi bir GET komutu gönderin:
 
@@ -86,9 +86,9 @@ Geçerli ad alanı katmanını almak için aşağıdaki örnekte gösterildiği 
 GET: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
 ```
 
-### <a name="update-pricing-tier-for-a-namespace"></a>Ad alanı için fiyatlandırma katmanını güncelleştirme
+### <a name="update-pricing-tier-for-a-namespace"></a>Ad alanı için fiyatlandırma katmanını Güncelleştir
 
-Ad alanı katmanını güncelleştirmek için, aşağıdaki örnekte gösterildiği gibi bir PUT komutu gönderin:
+Ad alanı katmanını güncelleştirmek için aşağıdaki örnekte gösterildiği gibi bir PUT komutu gönderin:
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
@@ -97,4 +97,4 @@ Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu katmanlar ve fiyatlandırma hakkında daha fazla bilgi için [Bildirim Hub'ları](https://azure.microsoft.com/pricing/details/notification-hubs/)fiyatlandırması'na bakın.
+Bu katmanlar ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Notification Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/notification-hubs/).

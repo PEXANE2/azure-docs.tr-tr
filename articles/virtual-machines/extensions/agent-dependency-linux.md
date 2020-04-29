@@ -1,6 +1,6 @@
 ---
-title: Linux için Azure Monitör Bağımlılık sanal makine uzantısı
-description: Sanal makine uzantısı kullanarak Azure Monitör Bağımlılığı aracısını Linux sanal makinesine dağıtın.
+title: Linux için Azure Izleyici bağımlılığı sanal makine uzantısı
+description: Bir sanal makine uzantısı kullanarak Linux sanal makinesine Azure Izleyici bağımlılık aracısını dağıtın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: mgoedtel
@@ -15,25 +15,25 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254046"
 ---
-# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux için Azure Monitör Bağımlılık sanal makine uzantısı
+# <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Linux için Azure Izleyici bağımlılığı sanal makine uzantısı
 
-VMs Haritası için Azure Monitor özelliği, verilerini Microsoft Bağımlılık aracısından alır. Linux için Azure VM Bağımlılık aracısı sanal makine uzantısı Microsoft tarafından yayınlanır ve desteklenir. Uzantı, Bağımlılık aracısını Azure sanal makinelerine yükler. Bu belge, Linux için Azure VM Bağımlılık aracısı sanal makine uzantısı için desteklenen platformları, yapılandırmaları ve dağıtım seçeneklerini ayrıntılarıyla açıklar.
+VM'ler için Azure İzleyici Map özelliği, verileri Microsoft bağımlılık Aracısı 'ndan alır. Linux için Azure VM bağımlılık Aracısı sanal makine uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, Azure sanal makinelerine bağımlılık Aracısı 'nı yüklüyor. Bu belgede, Linux için Azure VM bağımlılık Aracısı sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-Linux için Azure VM Bağımlılık aracısı uzantısı, VM dağıtımı makalesinin Desteklenen işletim sistemleri bölümünde listelenen desteklenen işletim [sistemleriyle](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) karşı çalıştırılabilir.
+Linux için Azure VM bağımlılık Aracısı uzantısı, VM'ler için Azure İzleyici dağıtım makalesinin [desteklenen işletim sistemleri](../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) bölümünde listelenen desteklenen işletim sistemlerine karşı çalıştırılabilir.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Aşağıdaki JSON, Azure Linux VM'deki Azure VM Bağımlılık aracısı uzantısı şemasını gösterir. 
+Aşağıdaki JSON, Azure Linux VM 'de Azure VM bağımlılık Aracısı uzantısı için şemayı gösterir. 
 
 ```json
 {
@@ -73,20 +73,20 @@ Aşağıdaki JSON, Azure Linux VM'deki Azure VM Bağımlılık aracısı uzantı
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Adı | Değer/Örnek |
+| Adı | Değer/örnek |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| yayımcı | Microsoft.Azure.Monitoring.DependencyAgent |
-| type | BağımlılıkAgentLinux |
-| typeHandlerVersion | 9.5 |
+| yayımcı | Microsoft. Azure. Monitoring. DependencyAgent |
+| type | DependencyAgentLinux |
+| typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Azure Kaynak Yöneticisi şablonlarıyla Azure VM uzantılarıdağıtabilirsiniz. Azure Kaynak Yöneticisi şablonu dağıtımı sırasında Azure VM Bağımlılık aracısı uzantısını çalıştırmak için Azure Kaynak Yöneticisi şablonunda önceki bölümde ayrıntılı JSON şemasını kullanabilirsiniz.
+Azure VM uzantılarını Azure Resource Manager şablonlarıyla dağıtabilirsiniz. Bir Azure Resource Manager şablon dağıtımı sırasında Azure VM bağımlılık Aracısı uzantısı 'nı çalıştırmak için bir Azure Resource Manager şablonunun önceki bölümünde ayrıntılı JSON şemasını kullanabilirsiniz.
 
-Sanal makine uzantısı için JSON sanal makine kaynağının içine iç içe olabilir. Veya, kaynak yöneticisi JSON şablonunun köküne veya en üst seviyesine yerleştirebilirsiniz. JSON'un yerleşimi kaynak adının ve türünün değerini etkiler. Daha fazla bilgi için [bkz.](../../azure-resource-manager/templates/child-resource-name-type.md)
+Bir sanal makine uzantısı için JSON, sanal makine kaynağının içinde iç içe olabilir. Ya da, bunu bir Kaynak Yöneticisi JSON şablonunun kök veya üst düzeyine yerleştirebilirsiniz. JSON yerleştirmesi, kaynak adının ve türün değerini etkiler. Daha fazla bilgi için bkz. [alt kaynaklar için ad ve tür ayarlama](../../azure-resource-manager/templates/child-resource-name-type.md).
 
-Aşağıdaki örnek, Bağımlılık aracısı uzantısı sanal makine kaynağı nın içinde iç içe olduğunu varsayar. Uzantı kaynağını yuvaya yerleştirdiğinizde, JSON `"resources": []` sanal makinenin nesnesine yerleştirilir.
+Aşağıdaki örnek, bağımlılık Aracısı uzantısının sanal makine kaynağının içinde iç içe olduğunu varsayar. Uzantı kaynağını iç içe aktardığınızda JSON, sanal makinenin `"resources": []` nesnesine yerleştirilir.
 
 
 ```json
@@ -107,7 +107,7 @@ Aşağıdaki örnek, Bağımlılık aracısı uzantısı sanal makine kaynağı 
 }
 ```
 
-UzantıJSON'u şablonun köküne yerleştirdiğinizde, kaynak adı üst sanal makineye bir başvuru içerir. Tür iç içe yapılandırmayı yansıtır. 
+JSON uzantısını şablon köküne yerleştirdiğinizde, kaynak adı üst sanal makineye bir başvuru içerir. Tür, iç içe geçmiş yapılandırmayı yansıtır. 
 
 ```json
 {
@@ -127,9 +127,9 @@ UzantıJSON'u şablonun köküne yerleştirdiğinizde, kaynak adı üst sanal ma
 }
 ```
 
-## <a name="azure-cli-deployment"></a>Azure CLI dağıtımı
+## <a name="azure-cli-deployment"></a>Azure CLı dağıtımı
 
-Bağımlılık aracısı VM uzantısını varolan bir sanal makineye dağıtmak için Azure CLI'yi kullanabilirsiniz.  
+Bağımlılık Aracısı VM uzantısını var olan bir sanal makineye dağıtmak için Azure CLı 'yı kullanabilirsiniz.  
 
 ```azurecli
 
@@ -145,13 +145,13 @@ az vm extension set \
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-Uzantı lı dağıtımların durumuyla ilgili veriler Azure portalından ve Azure CLI kullanılarak alınabilir. Belirli bir VM uzantılarının dağıtım durumunu görmek için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın:
+Uzantı dağıtımlarının durumuyla ilgili veriler Azure portal ve Azure CLı kullanılarak alınabilir. Belirli bir VM için uzantıların dağıtım durumunu görmek için, Azure CLı kullanarak aşağıdaki komutu çalıştırın:
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Uzantı yürütme çıktısı aşağıdaki dosyaya kaydedilir:
+Uzantı yürütme çıkışı aşağıdaki dosyaya kaydedilir:
 
 ```
 /opt/microsoft/dependcency-agent/log/install.log 
@@ -159,4 +159,4 @@ Uzantı yürütme çıktısı aşağıdaki dosyaya kaydedilir:
 
 ### <a name="support"></a>Destek
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarına başvurun. Veya bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek **al'ı**seçin. Azure Desteği'ni nasıl kullanacağınız hakkında bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin. Azure desteğinin nasıl kullanılacağı hakkında bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.

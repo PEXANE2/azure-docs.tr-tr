@@ -1,124 +1,124 @@
 ---
-title: ArrInspector denetim aracı
-description: ArrInspector aracının kullanım kılavuzu
+title: ArrInspector inceleme aracı
+description: ArrInspector aracının Kullanıcı el kitabı
 author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
 ms.openlocfilehash: e3acfc15b0c12822e48009bef4aabadac701fb2d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680082"
 ---
-# <a name="the-arrinspector-inspection-tool"></a>ArrInspector denetim aracı
+# <a name="the-arrinspector-inspection-tool"></a>ArrInspector inceleme aracı
 
-ArrInspector, çalışan bir Azure Uzaktan İşlem oturumunu denetlemek için kullanılan web tabanlı bir araçtır. Hata ayıklama amacıyla, işlenen sahnenin yapısını incelemek, günlük iletilerini göstermek ve sunucudaki canlı performansı izlemek için kullanılacaktır.
+ArrInspector, çalışan bir Azure uzaktan Işleme oturumu denetlemek için kullanılan Web tabanlı bir araçtır. Hata ayıklama amacıyla, işlenen sahnenin yapısını incelemek, günlük iletilerini göstermek ve sunucudaki canlı performansı izlemek için kullanılması amaçlanmıştır.
 
 ![ArrInspector](./media/arr-inspector.png)
 
-## <a name="connecting-to-the-arrinspector"></a>ArrInspector'e Bağlanma
+## <a name="connecting-to-the-arrinspector"></a>ArrInspector 'e bağlanma
 
-ARR sunucunuzun ana `mixedreality.azure.com`bilgisayar adını (bitişle biteni) aldıktan sonra [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)kullanarak bağlanın. Bu işlev, `StartArrInspector.html` uygulamanın çalıştığı aygıtta bir işlev oluşturur. ArrInspector'i başlatmak için, bu dosyayı bir bilgisayarda bir tarayıcı (Kenar, Firefox veya Chrome) ile açın. Dosya yalnızca 24 saat için geçerlidir.
+ARR sunucunuzun ana bilgisayar adını (bitiş `mixedreality.azure.com`) edindikten sonra, [ConnectToArrInspectorAsync](../../how-tos/frontend-apis.md#connect-to-arr-inspector)kullanarak bağlanın. Bu işlev, uygulamanın `StartArrInspector.html` çalıştığı cihazda bir oluşturur. ArrInspector başlatmak için, bu dosyayı bir BILGISAYARDAKI tarayıcıyla (Edge, Firefox veya Chrome) açın. Dosya yalnızca 24 saat için geçerlidir.
 
-Arama `ConnectToArrInspectorAsync` yapan uygulama zaten bir bilgisayarda çalışıyorsa:
+Çağıran `ConnectToArrInspectorAsync` uygulama zaten bir bilgisayarda çalışıyorsa:
 
-* Unity tümleştirmesini kullanıyorsanız, otomatik olarak sizin için başlatılabilir.
-* Aksi takdirde, dosyayı *Kullanıcı Klasörleri\\LocalAppData\\\\[your_app]\\AC Temp'te*bulabilirsiniz.
+* Unity tümleştirmesi kullanıyorsanız, sizin için otomatik olarak başlatılabilir.
+* Aksi takdirde, dosyayı *Kullanıcı klasörleri\\LocalAppData\\[your_app]\\AC\\geçici*bölümünde bulabilirsiniz.
 
-Uygulama HoloLens'te çalışıyorsa:
+Uygulama bir HoloLens üzerinde çalışıyorsa:
 
-1. [Windows Aygıt Portalı'nı](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens'e erişin.
-1. Dosya *Gezgini > Sisteme*gidin.
-1. Kullanıcı *Klasörlerine\\Gidin LocalAppData\\[your_app]\\AC\\Temp*.
-1. *StartArrInspector.html'i* bilgisayarınıza kaydedin.
-1. Oturumun ArrInspector yüklemek için *StartArrInspector.html* açın.
+1. [Windows cihaz portalını](https://docs.microsoft.com/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens 'e erişin.
+1. *System > dosya Gezgini*' ne gidin.
+1. *Kullanıcı klasörleri\\LocalAppData\\[your_app]\\AC\\geçici*öğesine gidin.
+1. *Startarrınspector. html* dosyasını bilgisayarınıza kaydedin.
+1. Oturumun ArrInspector yüklemek için *Startarrınspector. html* dosyasını açın.
 
 ## <a name="the-performance-panel"></a>Performans paneli
 
-![Performans Paneli](./media/performance-panel.png)
+![Performans paneli](./media/performance-panel.png)
 
-Bu panel, sunucu tarafından açığa çıkarılan tüm kare başına performans değerlerinin grafiklerini gösterir. Değerleri şu anda çerçeve süresi, FPS, CPU ve bellek kullanımı, genel RAM kullanımı, nesne sayıları, vb gibi bellek istatistikleri içerir.
+Bu panelde, sunucu tarafından kullanıma sunulan tüm çerçeve başına performans değerlerinin grafikleri gösterilmektedir. Şu anda değerler çerçeve süresi, FPS, CPU ve bellek kullanımı, genel RAM kullanımı, nesne sayıları vb. gibi bellek istatistikleri içerir.
 
-Bu parametrelerden birini görselleştirmek için **Yeni Ekle** düğmesini tıklatın ve iletişim kutusunda gösterilen kullanılabilir değerlerden birini seçin. Bu eylem, değerleri gerçek zamanlı olarak izleyerek panele yeni bir kaydırma grafiği ekler. Sağında *minimum,* *maksimum* ve *geçerli* değeri görebilirsiniz.
+Bu parametrelerden birini görselleştirmek için **Yeni Ekle** düğmesine tıklayın ve iletişim kutusunda gösterilen kullanılabilir değerlerden birini seçin. Bu eylem panele yeni bir kayan grafik ekler ve değerleri gerçek zamanlı olarak izliyor. Sağ tarafta en *düşük*, *en yüksek* ve *geçerli* değeri görebilirsiniz.
 
-Ancak, içeriğini fareyle sürükleyerek grafiği kaydırabilirsiniz, ancak yatay kaydırma yalnızca ArrInspector duraklatılmış durumda olduğunda mümkündür.
+Grafiğin içeriğini fareyle sürükleyerek grafiği kaydırabilirsiniz, ancak yatay kaydırma yalnızca ArrInspector duraklatılmış durumdaysa mümkündür.
 
-Sürükleme sırasında CTRL'yi basılı tutmak, yakınlaştırmanızı sağlar. Yatay yakınlaştırma, alttaki kaydırıcı ile de kontrol edilebilir.
+Sürüklerken CTRL tuşunu basılı tutarak yakınlaştırmanızı sağlayabilirsiniz. Yatay yakınlaştırma, alt kısımdaki kaydırıcı ile de denetlenebilir.
 
-Dikey aralık varsayılan olarak görüntülenen değerlere göre hesaplanır ve sağdaki metin kutularında min ve max değerleri gösterilir. Değerler el ile ayarlandığında, doğrudan textbox'a yazarak veya kaydırma/yakınlaştırma ile grafik bu değerleri kullanır. Otomatik dikey çerçeveyi geri yüklemek için sağ üst köşedeki simgeyi tıklatın.
+Dikey Aralık varsayılan olarak, şu anda görüntülenen değerlere göre hesaplanır ve en az ve en büyük değerler sağdaki metin kutularında gösterilir. Değerler el ile ayarlandığında, metin kutusuna doğrudan yazılarak veya kaydırma/yakınlaştırma ile, grafik bu değerleri kullanır. Otomatik Dikey çerçeveleme geri yüklemek için sağ üst köşedeki simgeye tıklayın.
 
-![dikey aralık](./media/vertical-range.png)
+![dikey Aralık](./media/vertical-range.png)
 
-## <a name="the-log-panel"></a>Günlük paneli
+## <a name="the-log-panel"></a>Günlük bölmesi
 
-![Günlük Paneli](./media/log-panel.png)
+![Günlük bölmesi](./media/log-panel.png)
 
-Günlük paneli, sunucu tarafında oluşturulan günlük iletilerinin listesini gösterir. Bağlantıda, 200'e kadar önceki günlük iletileri gösterir ve yenilerini olduğu gibi yazdırır.
+Günlük panelinde sunucu tarafında oluşturulan günlük iletilerinin bir listesi gösterilir. Bağlantıda, en fazla 200 önceki günlük iletisi görüntülenir ve bunlar, olduğu gibi yeni olanları yazdıracaktır.
 
-Üstteki düğmeleri kullanarak listeyi `[Error/Warning/Info/Debug]` günlük türüne göre filtreleyebilirsiniz.
-![Günlük Filtre Düğmeleri](./media/log-filter.png)
+Üstteki düğmeleri kullanarak listeyi günlük türüne `[Error/Warning/Info/Debug]` göre filtreleyebilirsiniz.
+![Günlük Filtresi düğmeleri](./media/log-filter.png)
 
-## <a name="the-timing-data-capture-panel"></a>Zamanlama Veri Yakalama paneli
+## <a name="the-timing-data-capture-panel"></a>Zamanlama verileri yakalama paneli
 
-![Zamanlama Veri Yakalama](./media/timing-data-capture.png)
+![Zamanlama verileri yakalama](./media/timing-data-capture.png)
 
-Bu panel, zamanlama bilgilerini sunucudan yakalamak ve indirmek için kullanılır. Dosya, [Chrome İzleme JSON biçimini](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)kullanır. Verileri incelemek için URL'de `Chrome://tracing` Chrome'u açın ve indirilen dosyayı sayfaya sürükleyip bırakın. Zamanlama verileri sürekli olarak sabit boyutlu bir zil arabelleğinde toplanır. Yazıldığında, yakalama yalnızca yakın geçmiş hakkında bilgi içerir, birkaç dakika birkaç saniye anlamına gelir.
+Bu panel, sunucudan zamanlama bilgilerini yakalamak ve indirmek için kullanılır. Dosya [Chrome Izleme JSON biçimini](https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit)kullanır. Verileri incelemek için, URL `Chrome://tracing` 'de Chrome ' u açın ve indirilen dosyayı sayfaya sürükleyip bırakın. Zamanlama verileri, sabit boyutlu bir halka arabelleğinde sürekli olarak toplanır. Bu sırada, yakalama yalnızca anında geçmiş hakkında bilgiler içerir ve birkaç dakika bekleyin.
 
-## <a name="the-scene-inspection-panel"></a>Sahne İnceleme paneli
+## <a name="the-scene-inspection-panel"></a>Sahne Incelemesi bölmesi
 
-![Sahne Denetim Paneli](./media/scene-inspection-panel.png)
+![Sahne Inceleme paneli](./media/scene-inspection-panel.png)
 
-Bu panel, işlenen sahnenin yapısını gösterir. Nesne hiyerarşisi solda, seçili nesnenin içeriği sağdadır. Panel salt okunur ve gerçek zamanlı olarak güncellenir.
+Bu panel, işlenmiş sahnenin yapısını gösterir. Nesne hiyerarşisi sol tarafta, seçili nesnenin içeriği sağ tarafta. Panel salt okunurdur ve gerçek zamanlı olarak güncelleştirilir.
 
-## <a name="the-vm-debug-information-panel"></a>VM Hata Ayıklama Bilgi paneli
+## <a name="the-vm-debug-information-panel"></a>VM hata ayıklama bilgileri bölmesi
 
-![VM Hata Ayıklama Bilgi Paneli](./media/state-debugger-panel.png)
+![VM hata ayıklama bilgileri bölmesi](./media/state-debugger-panel.png)
 
-Bu panel bazı hata ayıklama işlevleri sunar.
+Bu panelde bazı hata ayıklama işlevleri sunulmaktadır.
 
-### <a name="restart-service"></a>Hizmeti yeniden başlatın
+### <a name="restart-service"></a>Hizmeti yeniden Başlat
 
-**Hizmeti Yeniden Başlat** düğmesi, arrInspector'in bağlı olduğu sanal makinede çalışma süresini yeniden başlatır. Ekli istemcibağlantısı kesilir ve yeniden başlatılan hizmete bağlanmak için arrInspector sayfasının yeniden yüklenmesi gerekir.
+**Hizmeti yeniden Başlat** düğmesi, arrInspector 'in bağlandığı sanal makinede çalışma zamanını yeniden başlatır. Tüm bağlı istemcilerin bağlantısı kesilir ve yeniden başlatılan hizmete bağlanmak için arrInspector sayfasının yeniden yüklenmesi gerekir.
 
-### <a name="collect-debug-information"></a>Hata ayıklama bilgilerini toplama
+### <a name="collect-debug-information"></a>Hata ayıklama bilgilerini topla
 
-**VM için Hata Ayıklama Bilgilerini Topla** düğmesi, VM'de hata ayıklama bilgileri toplamak için ARR örneğini tetiklemenize olanak tanıyan bir iletişim kutusu açar:
+**VM Için hata ayıklama bilgilerini topla** DÜĞMESI, sanal makinede hata ayıklama bilgilerini toplamak için ARR örneğini tetiklemeyi sağlayan bir iletişim kutusu açar:
 
-![VM Hata Ayıklama Bilgi İletişim](./media/state-debugger-dialog.png)
+![VM hata ayıklama bilgileri Iletişim kutusu](./media/state-debugger-dialog.png)
 
-Hata ayıklama bilgileri, Azure Uzaktan İşlem ekibe çalışan bir ARR örneğinde oluşan sorunları çözümlemesine yardımcı olur. İletişim kutusunda ek ayrıntılar sağlamak için bir metin alanı vardır( örneğin bir sorunu yeniden oluşturma adımları.
+Hata ayıklama bilgileri, Azure uzaktan Işleme ekibinin çalışan bir ARR örneğinde oluşan sorunları çözümlemesine yardımcı olur. İletişim kutusunda ek ayrıntılar sağlayan bir metin alanı bulunur, örneğin bir sorunu yeniden oluşturma adımları.
 
-**Toplamabaşlat** düğmesini tıklattıktan sonra iletişim kapatılacak ve toplama işlemi başlar. VM hakkında bilgi toplama birkaç dakika sürebilir.
+**Toplamaya başla** düğmesine tıklandıktan sonra iletişim kutusu kapanır ve koleksiyon işlemi başlar. VM 'deki bilgilerin toplanması birkaç dakika sürebilir.
 
-![VM Hata Ayıklama Bilgi toplama devam ediyor](./media/state-debugger-panel-in-progress.png)
+![VM hata ayıklama bilgileri toplama işlemi devam ediyor](./media/state-debugger-panel-in-progress.png)
 
-Koleksiyon tamamlandıktan sonra, ArrInspector penceresinde bir bildirim alırsınız. Bu bildirim, bu özel koleksiyonu tanımlayan bir kimlik içerir. Azure Uzaktan İşleme ekibine aktarmak için bu kimliği kaydettiğinizi unutmayın.
+Koleksiyon tamamlandıktan sonra ArrInspector penceresinde bir bildirim alırsınız. Bu bildirim, bu belirli koleksiyonu tanımlayan bir KIMLIK içerir. Azure uzaktan Işleme ekibine iletmek için bu KIMLIĞI kaydettiğinizden emin olun.
 
-![VM Debug Bilgi toplama başarısı](./media/state-debugger-snackbar-success.png)
+![VM hata ayıklama bilgileri toplama başarısı](./media/state-debugger-snackbar-success.png)
 
 > [!IMPORTANT]
-> VM hata ayıklama bilgilerini indiremez veya başka bir şekilde erişemezsiniz. Toplanan verilere yalnızca Azure Uzaktan İşlem ekibi erişebilir. Gördüğünüz sorunu araştırmamız için bizimle irtibata geçmeniz ve tahsilat kimliğini göndermeniz gerekmektedir.
+> VM hata ayıklama bilgilerine indiremez veya erişemezsiniz. Toplanan verilere yalnızca Azure uzaktan Işleme ekibinin erişimi vardır. Bizimle iletişime geçerek, gördüğünüz sorunu araştırmanız için koleksiyon KIMLIĞINI de göndermeniz gerekir.
 
 ## <a name="pause-mode"></a>Duraklatma modu
 
-Sağ üst köşede, bir anahtar panellerin canlı güncellemesini duraklatmanızı sağlar. Bu mod, belirli bir durumu dikkatle incelemek için yararlı olabilir.
+Sağ üst köşede, bir anahtar, panellerin canlı güncelleştirmesini duraklatmanızı sağlar. Bu mod, belirli bir durumu dikkatle incelemek için yararlı olabilir.
 
-![Duraklatma Modu](./media/pause-mode.png)
+![Duraklatma modu](./media/pause-mode.png)
 
-Canlı güncelleştirmeyi yeniden etkinleştirirken, tüm paneller sıfırlanır.
+Canlı güncelleştirme yeniden etkinleştirildiğinde tüm paneller sıfırlanır.
 
-## <a name="host-configuration"></a>Ana bilgisayar yapılandırması
+## <a name="host-configuration"></a>Konak yapılandırması
 
-Varsayılan olarak araç, ArrInspector'e hizmet veren aynı ana bilgisayarda çalışan ARR sunucusuna bağlanır. Ancak, araç bağlantı noktası açık bir ARR örneği çalıştırdığınızı varsayarak, başka bir sunucuyu incelemek üzere yapılandırabilirsiniz.
+Araç varsayılan olarak, ArrInspector hizmet veren ana bilgisayarda çalışan ARR sunucusuna bağlanır. Ancak, araç noktası açık olan bir ARR örneği çalıştırdığı varsayıldığında, başka bir sunucuyu incelemek üzere yapılandırabilirsiniz.
 
-Bunu yapmak için, üstbilgi çubuğunun solundaki ana menüye erişin ve *Ana Bilgisayar yapılandırmasını*seçin. **Yeni ana bilgisayar ekle'yi**tıklatın ve adını ve ana bilgisayar adını girin. *Ana bilgisayar adı* için yalnızca `.mixedreality.azure.com`, eklemeyin `http://` veya bağlantı noktası olarak biten ana bilgisayar adını kullanın.
+Bunu yapmak için, üst bilgi çubuğunun solundaki ana menüye erişin ve *konak yapılandırması*' nı seçin. **Yeni konak Ekle**' ye tıklayın ve adı ve ana bilgisayar adını girin. *Ana bilgisayar* adı için yalnızca içinde `.mixedreality.azure.com`biten ana bilgisayar adını kullanın `http://` , bir bağlantı noktası eklemeyin.
 
-![Ana Bilgisayar Yapılandırması](./media/host-configuration.png)
+![Konak yapılandırması](./media/host-configuration.png)
 
-Bir ana bilgisayardan diğerine hızlı bir şekilde geçiş yapmak için sağ üstteki açılır bırakmayı kullanın.
+Bir konaktan diğerine hızlıca geçiş yapmak için sağ üst köşedeki açılan eklentiyi kullanın.
 
-![Ev Sahibi Combo](./media/host-switch-combo.png)
+![Konak açılan kutusu](./media/host-switch-combo.png)
 
-Ana bilgisayar listesi tarayıcı yerel depolama sında depolanır, böylece aynı tarayıcıyı yeniden açarken korunur.
+Konak listesi tarayıcı yerel deposunda depolanır, bu nedenle aynı tarayıcı yeniden kullanılırken korunur.

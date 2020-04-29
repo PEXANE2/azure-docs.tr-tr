@@ -1,24 +1,24 @@
 ---
-title: Log Analytics veri güvenliği | Microsoft Dokümanlar
-description: Log Analytics'in gizliliğinizi nasıl koruduğu ve verilerinizi nasıl koruduğu hakkında bilgi edinin.
+title: Log Analytics veri güvenliği | Microsoft Docs
+description: Log Analytics gizliliğinizi nasıl koruduğunu ve verilerinizin güvenliğini nasıl sağlayacağınızı öğrenin.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: 63d8d8d3701a9adca4bd01e6e061877f5d0bd245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333354"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
-Bu belge, [Azure Güven Merkezi'ndeki](../../security/fundamentals/trust-center.md)bilgileri tamamlamak için Azure Monitor'un bir özelliği olan Log Analytics'e özgü bilgiler sağlamayı amaçlamaktadır.  
+Bu belge, [Azure Güven Merkezi](../../security/fundamentals/trust-center.md)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
 
-Bu makalede verilerin Log Analytics tarafından nasıl toplandığı, işlendiği ve güvenlik altına alındığı açıklanır. Aracıları web hizmetine bağlanmak, operasyonel verileri toplamak için System Center Operations Manager'ı kullanmak veya Log Analytics tarafından kullanılmak üzere Azure tanılama larından veri almak için aracılar kullanabilirsiniz. 
+Bu makalede verilerin Log Analytics tarafından nasıl toplandığı, işlendiği ve güvenlik altına alındığı açıklanır. Web hizmetine bağlanmak için aracıları kullanabilir, işletimsel verileri toplamak için System Center Operations Manager kullanabilir veya Log Analytics tarafından kullanılmak üzere Azure tanılama 'dan veri alabilirsiniz. 
 
-Log Analytics hizmeti, bulut tabanlı verilerinizi aşağıdaki yöntemleri kullanarak güvenli bir şekilde yönetir:
+Log Analytics hizmeti, aşağıdaki yöntemleri kullanarak bulut tabanlı verilerinizi güvenli bir şekilde yönetir:
 
 * Veri ayırma
 * Veri saklama
@@ -27,152 +27,152 @@ Log Analytics hizmeti, bulut tabanlı verilerinizi aşağıdaki yöntemleri kull
 * Uyumluluk
 * Güvenlik standartları sertifikaları
 
-[Azure destek seçeneklerindeki](https://azure.microsoft.com/support/options/)güvenlik ilkelerimiz de dahil olmak üzere aşağıdaki bilgilerden herhangi biriyle ilgili sorularınız, önerileriniz veya sorunlarla ilgili olarak bizimle iletişime geçin.
+[Azure destek seçeneklerinde](https://azure.microsoft.com/support/options/)güvenlik ilkeleriniz dahil olmak üzere, aşağıdaki bilgilerden herhangi biri hakkında sorularınız, öneriler veya sorunlar ile bizimle iletişim kurun.
 
-## <a name="sending-data-securely-using-tls-12"></a>TLS 1.2 kullanarak güvenli bir şekilde veri gönderme 
+## <a name="sending-data-securely-using-tls-12"></a>TLS 1,2 kullanarak güvenli bir şekilde veri gönderme 
 
-Log Analytics'e aktarılan verilerin güvenliğini sağlamak için, aracıyı en az Taşıma Katmanı Güvenliği (TLS) 1.2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Secure Sockets Layer'ın (SSL) eski sürümlerinin savunmasız olduğu tespit edilmiştir ve hala geriye dönük uyumluluğa izin vermek için çalışırken, bu sürümler **önerilmez**ve endüstri bu eski protokoller için desteği bırakmak için hızla hareket etmektedir. 
+Log Analytics yoldaki verilerin güvenliğini sağlamak için, aracıyı en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bu sürümler **önerilmez**ve sektör bu eski protokoller için destek vermeyi hızla taşır. 
 
-[PCI Güvenlik Standartları Konseyi,](https://www.pcisecuritystandards.org/) TLS/SSL'nin eski sürümlerini devre dışı bırakıp daha güvenli protokollere yükseltmek için [30 Haziran 2018 tarihine kadar süre](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) verdi. Azure eski desteği bıraktığında, aracılarınız en az TLS 1.2 üzerinden iletişim kuramazsa, Log Analytics'e veri gönderemezsiniz. 
+[PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , TLS/SSL 'nin eski sürümlerini devre dışı bırakmak ve daha güvenli protokollere yükseltmek Için [30 Haziran 2018 ' nin son tarihini](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) ayarladı. Azure eski desteği düşürdüğünde, aracılarınız en az TLS 1,2 üzerinden iletişim kuramıyorsa, Log Analytics veri gönderemeyebilirsiniz. 
 
-Aracınızı, platform düzeyindeki güvenlik özelliklerini otomatik olarak algılayabiliyor ve kullanılabilir olduklarında daha güvenli protokollerden yararlanabiliyor, kesinlikle gerekli olmadıkça yalnızca TLS 1.2'yi kullanacak şekilde ayarlamanızı açıkça önermiyoruz. TLS 1.3 olarak. 
+Yalnızca, TLS 1,3 gibi daha yeni güvenli protokollerden otomatik olarak algılama ve bu özelliklerden faydalanmanıza olanak tanıyan platform düzeyi güvenlik özelliklerini bozabileceği için, yalnızca kesinlikle gerekli olmadığı sürece, aracılarınızın yalnızca TLS 1,2 kullanmasını öneririz. 
 
-### <a name="platform-specific-guidance"></a>Platforma özel rehberlik
+### <a name="platform-specific-guidance"></a>Platforma özgü kılavuz
 
-|Platform / Dil | Destek | Daha Fazla Bilgi |
+|Platform/dil | Destek | Daha Fazla Bilgi |
 | --- | --- | --- |
-|Linux | Linux dağıtımları TLS 1.2 desteği için [OpenSSL'ye](https://www.openssl.org) güvenme eğilimindedir.  | OpenSSL sürümünüzün desteklenir olduğunu doğrulamak için [OpenSSL Changelog'u](https://www.openssl.org/news/changelog.html) kontrol edin.|
-| Windows 8.0 - 10 arası | Desteklenen ve varsayılan olarak etkinleştirildi. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)hala kullandığınızı doğrulamak için.  |
-| Windows Server 2012 - 2016 | Desteklenen ve varsayılan olarak etkinleştirildi. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
-| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenen, ancak varsayılan olarak etkin değil. | Nasıl etkinleştirilene ilişkin ayrıntılar için [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfasına bakın.  |
+|Linux | Linux dağıtımları, TLS 1,2 desteği için [OpenSSL](https://www.openssl.org) 'yi kullanır.  | OpenSSL sürümünüzü doğrulamak için [OpenSSL changelog](https://www.openssl.org/news/changelog.html) ' yı denetleyin.|
+| Windows 8,0-10 | Desteklenir ve varsayılan olarak etkindir. | Hala [varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)kullandığınızdan emin olun.  |
+| Windows Server 2012-2016 | Desteklenir ve varsayılan olarak etkindir. | [Varsayılan ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) hala kullandığınızı doğrulamak için |
+| Windows 7 SP1 ve Windows Server 2008 R2 SP1 | Desteklenir, ancak varsayılan olarak etkinleştirilmez. | ' Nin nasıl etkinleştirileceği hakkında ayrıntılı bilgi için bkz. [Aktarım Katmanı Güvenliği (TLS) kayıt defteri ayarları](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) sayfası.  |
 
 ## <a name="data-segregation"></a>Veri ayırma
-Verileriniz Log Analytics hizmeti tarafından alındıktan sonra, veriler hizmet boyunca her bileşende mantıksal olarak ayrı tutulur. Tüm veriler çalışma alanı başına etiketlenir. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır. Verileriniz seçtiğiniz bölgedeki depolama kümesinde özel bir veritabanında depolanır.
+Verileriniz Log Analytics hizmeti tarafından alındıktan sonra, veriler hizmet genelinde her bir bileşen üzerinde mantıksal olarak ayrı tutulur. Tüm veriler çalışma alanı başına etiketlendi. Bu etiketleme, veri yaşam döngüsü boyunca devam eder ve her bir hizmet katmanında uygulanır. Verileriniz, seçtiğiniz bölgedeki depolama kümesindeki özel bir veritabanında depolanır.
 
 ## <a name="data-retention"></a>Veri saklama
-Dizine eklenmiş günlük arama verileri fiyatlandırma planınıza göre depolanır ve saklanır. Daha fazla bilgi için Bkz. [Log Analytics Fiyatlandırması.](https://azure.microsoft.com/pricing/details/log-analytics/)
+Dizinli günlük arama verileri, fiyatlandırma planınıza göre depolanır ve korunur. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-[Abonelik sözleşmenizin](https://azure.microsoft.com/support/legal/subscription-agreement/)bir parçası olarak, Microsoft verilerinizi sözleşme koşullarına göre saklar.  Müşteri verileri kaldırıldığında, hiçbir fiziksel sürücü yok olmaz.  
+[Abonelik sözleşmenizin](https://azure.microsoft.com/support/legal/subscription-agreement/)bir parçası olarak Microsoft, verilerinizi sözleşme koşullarına göre korur.  Müşteri verileri kaldırıldığında, hiçbir fiziksel sürücü yok edilmez.  
 
-Aşağıdaki tablo, kullanılabilir çözümlerden bazılarını listeler ve topladıkları veri türüne örnekler sağlar.
+Aşağıdaki tabloda, kullanılabilir çözümlerin bazıları listelenmekte ve topladıkları veri türü örnekleri verilmektedir.
 
-| **Çözüm** | **Veri türleri** |
+| **Çözümden** | **Veri türleri** |
 | --- | --- |
 | Kapasite ve Performans |Performans verileri ve meta veriler |
 | Güncelleştirme Yönetimi |Meta veriler ve durum verileri |
-| Günlük Yönetimi |Kullanıcı tanımlı olay günlükleri, Windows Olay Günlükleri ve/veya IIS Günlükleri |
-| Değişiklik İzleme |Yazılım envanteri, Windows hizmeti ve Linux daemon meta verileri ve Windows/Linux dosya meta verileri |
-| SQL ve Aktif Dizin Değerlendirmesi |WMI verileri, kayıt defteri verileri, performans verileri ve SQL Server dinamik yönetim görünümü sonuçları |
+| Günlük yönetimi |Kullanıcı tanımlı olay günlükleri, Windows olay günlükleri ve/veya IIS günlükleri |
+| Değişiklik İzleme |Yazılım envanteri, Windows hizmeti ve Linux Daemon meta verileri ve Windows/Linux dosya meta verileri |
+| SQL ve Active Directory Değerlendirmesi |WMI verileri, kayıt defteri verileri, performans verileri ve SQL Server dinamik yönetim görünümü sonuçları |
 
-Aşağıdaki tabloda veri türlerinin örnekleri gösterilmektedir:
+Aşağıdaki tabloda veri türü örnekleri gösterilmektedir:
 
 | **Veri türü** | **Alanlar** |
 | --- | --- |
-| Uyarı |Uyarı Adı, Uyarı Açıklaması, BaseManagedEntityId, Problem Kimliği, IsMonitorAlert, RuleId, ResolutionState, Öncelik, Önem, Kategori, Sahibi, ResolvedBy, TimeRaised, TimeAdded, LastModi, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
-| Yapılandırma |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Olay |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Not:** Windows etkinlik günlüğüne özel alanlara sahip etkinlikler yazdığınızda, Log Analytics bunları toplar. |
-| Meta Veriler |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adres, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
-| Performans |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Durum |StatechangeEventid, stateid, newhealthstate, oldhealthstate, bağlam, timegenerated, timeadded, stateid2, basemanagedentityid, monitorid, healthstate, lastmodified, lastgreenalertgenerated, databasetimemodified |
+| Uyarı |Uyarı adı, uyarı açıklaması, BaseManagedEntityId, sorun KIMLIĞI, ısmonitoralert, RuleId, ResolutionState, Priority, önem derecesi, kategori, sahip, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, Timeresoliner, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
+| Yapılandırma |CustomerID, bjecttype TID, EntityId, ManagedTypeId, Managedtypepropertyıd, CurrentValue, ChangeDate |
+| Olay |EventID, EventOriginalID, Basemanagedentityınternalıd, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Note:** Windows olay günlüğünde özel alanlarıyla olayları yazdığınızda, Log Analytics toplar. |
+| Meta Veriler |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Performans |ObjectName, CounterName, Perfmonınstancename, Performancedataıd, performanslı Cesourceınternalıd, SampleValue, Timeörneklenmiş, TimeAdded |
+| Durum |Statechangeeventıd, stateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, Monitorıd, HealthState, LastModified, Lastlıalertgenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fiziksel güvenlik
-Log Analytics hizmeti Microsoft personeli tarafından yönetilir ve tüm etkinlikler günlüğe kaydedilir ve denetlenebilir. Log Analytics bir Azure Hizmeti olarak işletilmektedir ve tüm Azure Uyumluluk ve Güvenlik gereksinimlerini karşılar. [Microsoft Azure Güvenlik Genel Bakış](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)sayfa 18'de Azure varlıklarının fiziksel güvenliği yle ilgili ayrıntıları görüntüleyebilirsiniz. Güvenli alanlara fiziksel erişim hakları, transfer ve fesih de dahil olmak üzere Log Analytics hizmetinden artık sorumlu olmayan herkes için bir iş günü içinde değiştirilir. [Microsoft Datacenters'da](https://azure.microsoft.com/global-infrastructure/)kullandığımız küresel fiziksel altyapı hakkında bilgi edinebilirsiniz.
+Log Analytics hizmeti Microsoft personeli tarafından yönetilir ve tüm etkinlikler günlüğe kaydedilir ve denetlenebilir. Log Analytics bir Azure hizmeti olarak çalıştırılır ve tüm Azure uyumluluk ve güvenlik gereksinimlerini karşılar. [Microsoft Azure güvenliğine genel bakış](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)'ın 18. sayfasında Azure varlıklarının fiziksel güvenliği hakkındaki ayrıntıları görüntüleyebilirsiniz. Güvenli alanlara yönelik fiziksel erişim hakları, artık Log Analytics hizmeti sorumluluğunu olmayan herkes için, aktarım ve sonlandırma dahil olmak üzere bir iş günü içinde değiştirilir. [Microsoft veri merkezlerinde](https://azure.microsoft.com/global-infrastructure/)kullandığımız küresel fiziksel altyapıyı bulabilirsiniz.
 
 ## <a name="incident-management"></a>Olay yönetimi
-Log Analytics, tüm Microsoft hizmetlerinin bağlı olduğu bir olay yönetimi işlemine sahiptir. Özetlemek gerekirse, biz:
+Log Analytics, tüm Microsoft hizmetlerinin bağlı olduğu bir olay yönetimi işlemine sahiptir. Özetlemek gerekirse şunları yaptık:
 
-* Güvenlik sorumluluğunun bir kısmının Microsoft'a, bir kısmının müşteriye ait olduğu paylaşılan bir sorumluluk modelini kullanma
-* Azure güvenlik olaylarını yönetme:
-  * Bir olayın algılanması üzerine soruşturma başlatın
-  * Bir olaydaki olay müdahale ekibi üyesi tarafından bir olayın etkisini ve şiddetini değerlendirin. Kanıtlara dayanarak, değerlendirme güvenlik müdahale ekibinin daha da yükselmesine neden olabilir veya olmayabilir.
-  * Teknik veya adli soruşturmayı yürütmek, çevreleme, azaltma ve geçici çözüm stratejilerini belirlemek için güvenlik müdahale uzmanları tarafından bir olayı tanılayın. Güvenlik ekibi müşteri verilerinin yasadışı veya yetkisiz bir kişiye maruz kalmış olabileceğine inanıyorsa, Müşteri Olayı Bildirimi işleminin paralel yürütülmesi paralel olarak başlar.  
-  * Olayı stabilize edin ve atlatın. Olay yanıt ekibi, sorunu azaltmak için bir kurtarma planı oluşturur. Etkilenen sistemlerin karantinaya alınması gibi kriz önleme adımları hemen ve tanıya paralel olarak ortaya çıkabilir. Acil risk geçtikten sonra ortaya çıkan uzun vadeli azaltıcı etkenler planlanabilir.  
-  * Olayı kapatın ve otopsi yap. Olay müdahale ekibi, olayın tekrarını önlemek için politikaları, prosedürleri ve işlemleri gözden geçirmek amacıyla olayın ayrıntılarını özetleyen bir otopsi oluşturur.
-* Müşterilere güvenlik olaylarını bildirin:
-  * Etkilenen müşterilerin kapsamını belirlemek ve etkilenen herkese mümkün olduğunca ayrıntılı bir bildirim de sunmak
-  * Müşterilere, kendi başlarına bir araştırma gerçekleştirebilmeleri ve bildirim işlemini gereksiz yere geciktirmeden son kullanıcılarına verdikleri taahhütleri yerine getirebilmeleri için yeterli ayrıntılı bilgi sağlamak için bir bildirim oluşturun.
-  * Gerektiğinde olayı doğrulayın ve bildirin.
-  * Makul olmayan bir gecikme olmaksızın ve herhangi bir yasal veya sözleşme taahhüdüuyarınca bir olay bildirimi ile müşterilerine bildirin. Güvenlik olayları yla ilgili bildirimler, Microsoft'un e-posta yoluyla da dahil olmak üzere seçtiği herhangi bir yolla bir veya daha fazla müşteri yöneticisine teslim edilir.
-* Ekip hazırlığı ve eğitimini gerçekleştirin:
-  * Microsoft personelinin, şüpheli güvenlik sorunlarını belirlemelerine ve bildirmelerine yardımcı olan güvenlik ve bilinirlik eğitimini tamamlaması gerekir.  
-  * Microsoft Azure hizmetinde çalışan operatörler, müşteri verilerini barındıran hassas sistemlere erişimlerini çevreleyen ek eğitim yükümlülüklerine sahiptir.
-  * Microsoft güvenlik yanıt personeli rolleri için özel eğitim alır
+* Güvenlik sorumluluğunun bir kısmının Microsoft 'a ait olduğu ve bir bölümün müşteriye ait olduğu bir paylaşılan sorumluluk modeli kullanın
+* Azure Güvenlik olaylarını yönetme:
+  * Bir olayın algılanması üzerine araştırma başlatma
+  * Bir olayın etkisini ve önem derecesini, bir çağrı olayı yanıt ekibi üyesine göre değerlendirin. Kanıt temelinde, değerlendirme güvenlik yanıtı ekibine daha fazla yükseltme ile sonuçlanmayabilir veya bu olmayabilir.
+  * Teknik veya Forli araştırma yapmak, kapsama, azaltma ve geçici çözüm stratejilerini belirlemek için güvenlik yanıtı uzmanlarıyla bir olay tanılayın. Güvenlik ekibi müşteri verilerinin izinsiz veya yetkisiz bir kişiye sunulduğunu düşündüğü takdirde, müşteri olay bildirim işleminin paralel yürütmesi paralel olarak başlar.  
+  * Olaydan sabitleştir ve kurtarın. Olay yanıtı ekibi, sorunu azaltmak için bir kurtarma planı oluşturur. Diğer bir deyişle, etkilenen sistemleri karantinaya alma gibi kapsama adımları anında ve Tanılama ile paralel olarak gerçekleşebilir. Daha uzun süreli azaltmaları, hemen risk geçtikten sonra gerçekleşecek şekilde planlanabilir.  
+  * Olayı kapatın ve mortem gerçekleştirin. Olay yanıtı ekibi, olayın tekrarlanmasını engellemek için ilkeleri, yordamları ve işlemleri gözden geçirme amacıyla, olayın ayrıntılarını özetleyen bir post-The-mortıtem oluşturur.
+* Müşterilerimize güvenlik olaylarını bildir:
+  * Etkilenen müşterilerin kapsamını belirleme ve mümkün olduğunca ayrıntılı bir şekilde etkilenmiş olan herkes için bir bildirim sağlama
+  * Kullanıcılara, son kullanıcılarına yaptığı tüm taahhütlere bir araştırma gerçekleştirebilmesi ve bildirim işlemini etkilenmemesi bir süre erteleyerek son kullanıcılar için yapmış oldukları taahhütler sağlamak üzere yeterince ayrıntılı bilgiler sunabilmesi için bir bildirim oluşturun.
+  * Gerektiğinde olayı onaylayın ve bildirin.
+  * Müşterilere makul bir gecikme olmadan ve yasal ya da sözleşmeli taahhütte uygun olmayan bir olay bildirimi bildirin. Güvenlik olaylarının bildirimleri bir veya daha fazla müşterinin yöneticilerine, e-posta ile birlikte dahil olmak üzere Microsoft tarafından seçilen her türlü şekilde gönderilir.
+* Takım hazırlığı ve eğitimi yürütün:
+  * Microsoft personeli, güvenlik ve tanıma eğitiminin tamamlanabilmesi için gereklidir ve bu da şüpheli güvenlik sorunlarını tanımlayıp rapor eder.  
+  * Microsoft Azure hizmetinde çalışan operatörler, müşteri verilerini barındıran hassas sistemlere erişimi çevreleyen ek eğitim yükümlülüklerine sahiptir.
+  * Microsoft Güvenlik Yanıt personeli, rolleri için özelleştirilmiş eğitim alıyor
 
-Herhangi bir müşteri verisi kaybı meydana gelirse, her müşteriye bir gün içinde bildirimde bulunacağız. Ancak, müşteri veri kaybı hizmet ile oluştu asla. 
+Müşteri verilerinin kaybolması meydana gelirse, her müşteriyi bir gün içinde bilgilendiririz. Ancak, hizmette müşteri veri kaybı hiçbir şekilde gerçekleşmez. 
 
-Microsoft'un güvenlik olaylarına nasıl tepki verdiği hakkında daha fazla bilgi için [Bulut'ta Microsoft Azure Güvenlik Yanıtı'na](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf)bakın.
+Microsoft 'un güvenlik olaylarına nasıl yanıt verdiği hakkında daha fazla bilgi için bkz. [bulutta Microsoft Azure Güvenlik yanıtı](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Uyumluluk
-Log Analytics yazılım geliştirme ve hizmet ekibinin bilgi güvenliği ve yönetim programı iş gereksinimlerini destekler ve [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/) ve Microsoft Güven Merkezi [Uyumluluğu'nda](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)açıklandığı şekilde yasalara ve düzenlemelere uyar. Log Analytics'in güvenlik gereksinimlerini nasıl oluşturduğu, güvenlik denetimlerini nasıl tanımladığı, riskleri nasıl yönettiği ve riskleri nasıl izlediği de burada açıklanmıştır. Her yıl, polisleri, standartları, prosedürleri ve yönergeleri gözden geçiriyoruz.
+Log Analytics yazılım geliştirme ve hizmet ekibinin bilgi güvenliği ve idare programı, iş gereksinimlerini destekler ve [Microsoft Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/) ve [Microsoft Trust Center uyumluluğu](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)bölümünde açıklandığı gibi yasalar ve yönetmeliklere uyar. Log Analytics güvenlik gereksinimlerini nasıl belirler, güvenlik denetimlerini tanımlar, yönetir ve izleyiciler riskleri de burada açıklanmıştır. Yıllık olarak, ilkeleri, standartları, yordamları ve yönergeleri gözden geçiririz.
 
-Her geliştirme ekibi üyesi resmi uygulama güvenliği eğitimi alır. Dahili olarak, yazılım geliştirme için bir sürüm kontrol sistemi kullanırız. Her yazılım projesi sürüm kontrol sistemi tarafından korunmaktadır.
+Her geliştirme ekibi üyesi resmi uygulama güvenliği eğitimi alır. Dahili olarak, yazılım geliştirme için bir sürüm denetim sistemi kullanırız. Her yazılım projesi, sürüm denetim sistemi tarafından korunur.
 
-Microsoft'un, Microsoft'taki tüm hizmetleri denetleyen ve değerlendiren bir güvenlik ve uyumluluk ekibi vardır. Ekibi bilgi güvenliği görevlileri yapar ve Log Analytics'i geliştiren mühendislik ekipleriyle ilişkili değildir. Güvenlik görevlilerinin kendi yönetim zincirleri vardır ve güvenlik ve uyumu sağlamak için ürün ve hizmetlerin bağımsız değerlendirmeleri yapar.
+Microsoft, Microsoft 'taki tüm hizmetleri fazla olarak gördüğü ve değerlendirir bir güvenlik ve uyumluluk ekibine sahiptir. Bilgi güvenliği ofislerinin ekibi, Log Analytics geliştiren mühendislik ekipleriyle ilişkili değildir. Güvenlik ofislerinin kendi yönetim zinciri vardır ve güvenlik ve uyumluluk sağlamak için ürün ve hizmetlerin bağımsız değerlendirmelerini sağlar.
 
-Microsoft'un yönetim kurulu, Microsoft'taki tüm bilgi güvenliği programları hakkında yıllık bir rapor la bildirilir.
+Microsoft 'un yöneticileri panosu, Microsoft 'ta tüm bilgi güvenliği programları hakkında yıllık bir rapor tarafından bildirilir.
 
-Log Analytics yazılım geliştirme ve hizmet ekibi, çeşitli sertifikalar almak için Microsoft Yasal ve Uyumluluk ekipleri ve diğer endüstri ortaklarıile aktif olarak çalışmaktadır.
+Log Analytics yazılım geliştirme ve hizmet ekibi, çeşitli sertifikalar elde etmek üzere Microsoft yasal ve uyumluluk ekipleriyle ve diğer sektör ortaklarıyla etkin bir şekilde çalışır.
 
-## <a name="certifications-and-attestations"></a>Sertifikalar ve attestation
+## <a name="certifications-and-attestations"></a>Sertifikalamaları ve belirlediğimizi karşıladığımızı
 Azure Log Analytics aşağıdaki gereksinimleri karşılar:
 
-* [ISO/IEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
-* [ISO/IEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO/ıEC 27001](https://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/ıEC 27018:2014](https://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
-* PCI Güvenlik Standartları Konseyi tarafından [Ödeme Kartı Endüstrisi (PCI Uyumlu) Veri Güvenliği Standardı (PCI DSS).](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)
-* [Servis Organizasyonu Denetimleri (SOC) 1 Tip 1 ve SOC 2 Tip 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) uyumlu
-* HIPAA İş Ortağı Sözleşmesi olan şirketler için [HIPAA ve HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa)
-* Windows Ortak Mühendislik Kriterleri
-* Microsoft Güvenilir Bilgi İşlem
-* Azure hizmeti olarak, Log Analytics'in kullandığı bileşenler Azure uyumluluk gereksinimlerine bağlıdır. [Microsoft Trust Center Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)'da daha fazla bilgi edinebilirsiniz.
+* PCI güvenlik standartları Council tarafından [ödeme kartı sektörü (PCI uyumlu) veri güvenliği standardı (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) .
+* [Hizmet kuruluşu denetimleri (SoC) 1 tür 1 ve SOC 2 tür 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) uyumlu
+* HIPAA Iş ilişkisi sözleşmesi olan şirketler için [HIPAA ve HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa)
+* Windows ortak mühendislik ölçütleri
+* Microsoft güvenilir bilgi Işlem
+* Azure hizmeti olarak, Log Analytics kullandığı bileşenler Azure uyumluluk gereksinimlerine bağlı olarak kullanılır. [Microsoft Güven Merkezi uyumluluğuna](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)daha fazla bilgi edinebilirsiniz.
 
 > [!NOTE]
-> Bazı sertifikalarda/attestation'larda Log Analytics, eski *Operasyonel Öngörüler*adı altında listelenmiştir.
+> Bazı sertifikalarında/belirlediğimizi karşıladığımızı, Log Analytics önceki *operasyonel*içgörüler adı altında listelenir.
 >
 >
 
 ## <a name="cloud-computing-security-data-flow"></a>Bulut bilgi işlem güvenliği veri akışı
-Aşağıdaki diyagram, şirketinizden gelen bilgi akışı olarak bir bulut güvenlik mimarisini ve azure portalında sizin gördüğünüz Log Analytics hizmetine taşınırken nasıl güvence altına alınır gibi güvenli olduğunu gösterir. Her adım hakkında daha fazla bilgi diyagramı izler.
+Aşağıdaki diyagramda bir bulut güvenlik mimarisi, şirketinizdeki bilgilerin akışı ve güvenlik altına alındıkça Log Analytics hizmetine taşındıkça, sonunda sizin tarafınızdan Azure portal görülür. Her adım hakkında daha fazla bilgi diyagrama uyar.
 
 ![Log Analytics veri toplama ve güvenlik görüntüsü](./media/data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Log Analytics'e kaydolun ve veri toplayın
-Kuruluşunuzun Log Analytics'e veri göndermesi için, Azure sanal makinelerinde veya ortamınızdaki veya diğer bulut sağlayıcınızdaki sanal veya fiziksel bilgisayarlarda çalışan bir Windows veya Linux aracısı yapılandırabilirsiniz.  Operations Manager'ı kullanırsanız, yönetim grubundan Operations Manager aracısını yapılandırabilirsiniz. Kullanıcılar (siz, diğer bireysel kullanıcılar veya bir grup kişi) bir veya daha fazla Log Analytics çalışma alanı oluşturur ve aşağıdaki hesaplardan birini kullanarak aracıları kaydeder:
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Log Analytics ve veri toplamak için kaydolun
+Kuruluşunuzun Log Analytics veri gönderebilmesi için, Azure sanal makinelerinde çalışan bir Windows veya Linux aracısını ya da ortamınızdaki veya diğer bulut sağlayıcılarınızdaki sanal veya fiziksel bilgisayarları yapılandırın.  Operations Manager kullanıyorsanız, yönetim grubundan Operations Manager aracısını yapılandırırsınız. Kullanıcılar (siz, diğer bireysel kullanıcılar veya bir grup kişi olabilir) bir veya daha fazla Log Analytics çalışma alanı oluşturabilir ve aşağıdaki hesaplardan birini kullanarak aracıları kaydedebilirsiniz:
 
-* [Kuruluş Kimliği](../../active-directory/fundamentals/sign-up-organization.md)
-* [Microsoft Account - Outlook, Office Live, MSN](https://account.microsoft.com/account)
+* [Kuruluş KIMLIĞI](../../active-directory/fundamentals/sign-up-organization.md)
+* [Microsoft hesabı-Outlook, Office Live, MSN](https://account.microsoft.com/account)
 
-Günlük Analizi çalışma alanı, verilerin toplandığı, toplandığı, analiz edildiği ve sunulduğu yerdir. Çalışma alanı öncelikle verileri bölmek için bir araç olarak kullanılır ve her çalışma alanı benzersizdir. Örneğin, üretim verilerinizin bir çalışma alanıyla, test verilerinizin de başka bir çalışma alanıyla yönetilmesini isteyebilirsiniz. Çalışma alanları, yöneticinin verilere kullanıcı erişimini denetlemesine de yardımcı olur. Her çalışma alanıyla ilişkili birden çok kullanıcı hesabı olabilir ve her kullanıcı hesabı birden çok Log Analytics çalışma alanına erişebilir. Veri merkezi bölgesini temel alan çalışma alanları oluşturursunuz.
+Log Analytics çalışma alanı, verilerin toplandığı, toplanmış, çözümlenmiş ve sunulduğu yerdir. Çalışma alanı birincil olarak, verileri bölümlemek için bir yol olarak kullanılır ve her çalışma alanı benzersizdir. Örneğin, üretim verilerinizin bir çalışma alanıyla yönetilmesini ve test verilerinizin başka bir çalışma alanıyla yönetilmesini isteyebilirsiniz. Çalışma alanları, bir yöneticinin verilere erişimi denetlemesine de yardımcı olur. Her çalışma alanı kendisiyle ilişkilendirilmiş birden çok kullanıcı hesabı içerebilir ve her kullanıcı hesabı birden çok Log Analytics çalışma alanına erişebilir. Veri merkezi bölgesini temel alan çalışma alanları oluşturursunuz.
 
-Operasyon Yöneticisi için, Operasyon Yöneticisi yönetim grubu Log Analytics hizmetiyle bir bağlantı kurar. Daha sonra, yönetim grubundaki hangi aracı tarafından yönetilen sistemlerin hizmete veri toplamasına ve göndermesine izin verildiğini yapılandırırsınız. Etkinleştirdiğiniz çözüme bağlı olarak, bu çözümlerden elde edilen veriler doğrudan bir Operasyon Yöneticisi yönetim sunucusundan Log Analytics hizmetine gönderilir veya aracı tarafından yönetilen sistem tarafından toplanan veri hacmi nedeniyle doğrudan hizmete aracı. Operations Manager tarafından izlenmeyen sistemler için her biri doğrudan Log Analytics hizmetine güvenli bir şekilde bağlanır.
+Operations Manager için Operations Manager yönetim grubu Log Analytics hizmetiyle bir bağlantı kurar. Ardından, yönetim grubundaki aracıyla yönetilen sistemlerin hizmete veri toplayıp gönderebileceği için izin verileceğini yapılandırırsınız. Etkinleştirdiğiniz çözüme bağlı olarak, bu çözümlerdeki veriler doğrudan bir Operations Manager yönetim sunucusundan Log Analytics hizmetine gönderilir ya da aracıyla yönetilen sistemle toplanan verilerin hacmi nedeniyle doğrudan aracıdan hizmete gönderilir. Operations Manager tarafından izlenmeyen sistemler için, her biri Log Analytics hizmetine doğrudan güvenli bir şekilde bağlanır.
 
-Bağlı sistemler ve Log Analytics hizmeti arasındaki tüm iletişim şifrelenir. TLS (HTTPS) protokolü şifreleme için kullanılır.  Log Analytics'in şifreleme protokollerinde en son gelişmelerden haberdar olduğundan emin olmak için Microsoft SDL işlemi izlenir.
+Bağlı sistemler ve Log Analytics hizmeti arasındaki tüm iletişimler şifrelenir. Şifreleme için TLS (HTTPS) protokolü kullanılır.  Microsoft SDL süreci, şifreleme protokollerinde en son gelişmelerden Log Analytics güncel olduğundan emin olmak için izlenir.
 
-Her tür aracı, Log Analytics için veri toplar. Toplanan veri türü kullanılan çözüm türlerine bağlıdır. [Çözüm Galerisi'nden Veri Toplama İşlemi Çözümlerini Ekle çözümlerinde](../../azure-monitor/insights/solutions.md)veri toplamanın bir özetini görebilirsiniz. Ayrıca, çoğu çözüm için daha ayrıntılı koleksiyon bilgileri mevcuttur. Çözüm, önceden tanımlanmış görünümler, günlük arama sorguları, veri toplama kuralları ve işleme mantığından oluşan bir pakettir. Bir çözümü almak için Log Analytics'i yalnızca yöneticiler kullanabilir. Çözüm alındıktan sonra, Operasyon Yöneticisi yönetim sunucularına (kullanılırsa) ve sonra seçtiğiniz aracılara taşınır. Daha sonra, aracılar verileri toplar.
+Her aracı türü Log Analytics için veri toplar. Toplanan verilerin türü, kullanılan çözüm türlerine bağlıdır. Veri toplamanın bir özetini [, Çözüm Galerisi Log Analytics çözüm Ekle](../../azure-monitor/insights/solutions.md)' de görebilirsiniz. Ayrıca, çoğu çözüm için daha ayrıntılı toplama bilgileri de mevcuttur. Bir çözüm, önceden tanımlanmış görünümler, günlük arama sorguları, veri toplama kuralları ve işlem mantığının bir paketidir. Yalnızca Yöneticiler, bir çözümü içeri aktarmak için Log Analytics kullanabilir. Çözüm alındıktan sonra, Operations Manager yönetim sunucularına (kullanılıyorsa) ve ardından seçtiğiniz aracılarla taşınır. Daha sonra, aracılar verileri toplar.
 
-## <a name="2-send-data-from-agents"></a>2. Aracılardan veri gönderme
-Tüm aracı türlerini bir kayıt anahtarıyla kaydedersiniz ve temsilci ile Log Analytics hizmeti arasında sertifika tabanlı kimlik doğrulaması ve 443 portlu TLS kullanılarak güvenli bir bağlantı kurulur. Log Analytics, anahtarları oluşturmak ve korumak için gizli bir mağaza kullanır. Özel anahtarlar her 90 günde bir döndürülür ve Azure'da depolanır ve katı düzenleme ve uyumluluk uygulamalarını izleyen Azure işlemleri tarafından yönetilir.
+## <a name="2-send-data-from-agents"></a>2. aracılardan veri gönderme
+Tüm aracı türlerini bir kayıt anahtarı ile kaydedersiniz ve bağlantı noktası 443 ile sertifika tabanlı kimlik doğrulaması ve TLS kullanarak aracı ve Log Analytics hizmeti arasında güvenli bir bağlantı oluşturulur. Log Analytics, anahtar oluşturmak ve sürdürmek için gizli bir depo kullanır. Özel anahtarlar her 90 günde bir döndürülür ve Azure 'da depolanır ve katı mevzuata ve uyumluluk uygulamalarını izleyen Azure işlemleri tarafından yönetilir.
 
-Operations Manager ile, Log Analytics çalışma alanına kayıtlı yönetim grubu, Bir İşlem Yöneticisi yönetim sunucusuyla güvenli bir HTTPS bağlantısı kurar.
+Operations Manager, bir Log Analytics çalışma alanıyla kaydedilen yönetim grubu, bir Operations Manager yönetim sunucusuyla güvenli bir HTTPS bağlantısı kurar.
 
-Azure sanal makinelerinde çalışan Windows veya Linux aracıları için, Azure tablolarında tanılama olaylarını okumak için salt okunur depolama anahtarı kullanılır.  
+Azure sanal makineler üzerinde çalışan Windows veya Linux aracıları için, Azure tablolarındaki Tanılama olaylarını okumak üzere salt okunurdur bir depolama anahtarı kullanılır.  
 
-Log Analytics ile entegre olan bir Operasyon Yöneticisi yönetim grubuna rapor veren herhangi bir aracı, yönetim sunucusu herhangi bir nedenle hizmetle iletişim kuramıyorsa, toplanan veriler yönetim üzerinde geçici bir önbellekte yerel olarak depolanır Sunucu.   İki saat boyunca her sekiz dakikada bir verileri yeniden göndermeye çalışıyorlar.  Yönetim sunucusunu atlayan ve doğrudan Log Analytics'e gönderilen veriler için davranış, Windows aracısıyla tutarlıdır.  
+Log Analytics ile tümleştirilmiş bir Operations Manager yönetim grubuna raporlama ile, yönetim sunucusu herhangi bir nedenle hizmetle iletişim kuramıyorsa, toplanan veriler yerel olarak yönetim sunucusundaki geçici bir önbellekte depolanır.   Verileri iki saat boyunca sekiz dakikada bir yeniden göndermeye çalışır.  Yönetim sunucusunu atlayan ve doğrudan Log Analytics gönderilen veriler için, davranış Windows aracısıyla tutarlıdır.  
 
-Önbelleğe alınan Windows veya yönetim sunucusu aracısı, işletim sisteminin kimlik bilgisi deposu tarafından korunur. Hizmet iki saat sonra verileri işleyemezse, aracılar verileri sıraya alır. Sıra dolduğunda, aracı performans verilerinden başlayarak veri türlerini düşürmeye başlar. Aracı sıra sınırı, gerekirse değiştirebilmeniz için bir kayıt defteri anahtarıdır. Toplanan veriler sıkıştırılır ve Operasyon Yöneticisi yönetim grubu veritabanlarıatılarak hizmete gönderilir, bu nedenle bunlara herhangi bir yük eklemez. Toplanan veriler gönderildikten sonra önbellekten kaldırılır.
+Önbelleğe alınan Windows veya yönetim sunucusu Aracısı verileri, işletim sisteminin kimlik bilgisi deposu tarafından korunur. Hizmet iki saatten sonra verileri işleyemeyecek şekilde, aracılar verileri sıraya alacak. Sıra dolarsa, aracı, performans verilerinden başlayarak veri türlerini bırakmayı başlatır. Aracı sırası sınırı, gerekirse değişiklik yapabilmeniz için bir kayıt defteri anahtarıdır. Toplanan veriler sıkıştırılır ve hizmete gönderilir, Operations Manager yönetim grubu veritabanlarını atlayarak bunlara hiçbir yük eklemez. Toplanan veriler gönderildikten sonra önbellekten kaldırılır.
 
-Yukarıda açıklandığı gibi, yönetim sunucusundan veya doğrudan bağlı aracılardan gelen veriler TLS üzerinden Microsoft Azure veri merkezlerine gönderilir. İsteğe bağlı olarak, veriler için ek güvenlik sağlamak için ExpressRoute'u kullanabilirsiniz. ExpressRoute, bir ağ servis sağlayıcısı tarafından sağlanan çok protokoletiket anahtarlama (MPLS) VPN gibi mevcut WAN ağınızdan Azure'a doğrudan bağlanmanın bir yoludur. Daha fazla bilgi için [ExpressRoute'a](https://azure.microsoft.com/services/expressroute/)bakın.
+Yukarıda açıklandığı gibi, yönetim sunucusu veya doğrudan bağlı aracılardan veriler Microsoft Azure veri merkezlerine TLS üzerinden gönderilir. İsteğe bağlı olarak, ExpressRoute kullanarak veriler için ek güvenlik sağlayabilirsiniz. ExpressRoute, bir ağ hizmeti sağlayıcısı tarafından sağlanmış olan çok protokollü etiket anahtarlama (MPLS) VPN gibi mevcut WAN ağınızdan Azure 'a doğrudan bağlanmak için bir yoldur. Daha fazla bilgi için bkz. [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics hizmeti veri alır ve işler
-Log Analytics hizmeti, sertifikaları ve veri bütünlüğünü Azure kimlik doğrulamasıyla doğrulayarak gelen verilerin güvenilir bir kaynaktan gelmesini sağlar. İşlenmemiş ham veriler daha sonra bölgedeki bir Azure Etkinlik Hub'ında depolanır ve veriler sonunda istirahatte depolanır. Depolanan veri türü, veri toplamak için alınan ve kullanılan çözüm türlerine bağlıdır. Daha sonra, Log Analytics hizmeti ham verileri işler ve veritabanına alır.
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Log Analytics hizmeti verileri alır ve işler
+Log Analytics hizmeti, sertifikaları ve Azure kimlik doğrulamasıyla veri bütünlüğünü doğrulayarak gelen verilerin güvenilen bir kaynaktan olmasını sağlar. İşlenmemiş ham veriler daha sonra, verilerin sonunda bekleyen bir Azure Olay Hub 'ında depolanacaktır. Depolanan verilerin türü, içeri aktarılan ve veri toplamak için kullanılan çözümlerin türlerine bağlıdır. Daha sonra, Log Analytics hizmet ham verileri işler ve veritabanına geri gelir.
 
-Veritabanında depolanan toplanan verilerin bekletme süresi, seçili fiyatlandırma planına bağlıdır. *Ücretsiz* katman için toplanan veriler yedi gün boyunca kullanılabilir. *Ücretli* katman için toplanan veriler varsayılan olarak 31 gün kullanılabilir, ancak 730 güne uzatılabilir. Veriler, veri gizliliğini sağlamak için Azure depolama alanında şifrelenir ve veriler yerel olarak yedekli depolama (LRS) kullanılarak yerel bölgede çoğaltılır. Son iki haftalık veriler DeSD tabanlı önbellekte depolanır ve bu önbellek şifrelenir.
+Veritabanında depolanan toplanan verilerin saklama süresi, seçilen fiyatlandırma planına bağlıdır. *Ücretsiz* katman için toplanan veriler yedi gün boyunca kullanılabilir. *Ücretli* katmanda, toplanan veriler varsayılan olarak 31 gün kullanılabilir, ancak 730 güne genişletilebilir. Veriler, verilerin gizliliğini sağlamak için Azure depolama 'da Rest 'ten şifrelenmiş olarak depolanır ve veriler yerel olarak yedekli depolama (LRS) kullanılarak yerel bölgede çoğaltılır. Verilerin son iki haftası da SSD tabanlı önbellekte depolanır ve bu önbellek şifrelenir.
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verilere erişmek için Log Analytics'i kullanın
-Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığınız kuruluş hesabını veya Microsoft hesabını kullanarak Azure portalında oturum açarsınız. Portal ve Log Analytics hizmeti arasındaki tüm trafik güvenli bir HTTPS kanalı üzerinden gönderilir. Portalı kullanırken, kullanıcı istemcisinde (web tarayıcısı) bir oturum kimliği oluşturulur ve oturum sonlandırılana kadar veriler yerel bir önbellekte depolanır. Sonlandırıldığında önbellek silinir. Kişisel olarak tanımlayıcı bilgiler içermeyen istemci tarafı çerezleri otomatik olarak kaldırılmaz. Oturum tanımlama bilgileri HTTPOnly olarak işaretlenir ve güvenli hale alınır. Önceden belirlenmiş bir boşta kalan dönemden sonra Azure portal oturumu sonlandırılır.
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. verilere erişmek için Log Analytics kullanın
+Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığınız kuruluş hesabını veya Microsoft hesabı kullanarak Azure portal oturum açın. Portal ve Log Analytics hizmeti arasındaki tüm trafik güvenli bir HTTPS kanalı üzerinden gönderilir. Portalı kullanırken Kullanıcı istemcisinde (Web tarayıcısı) bir oturum KIMLIĞI oluşturulur ve veriler, oturum sonlandırılana kadar yerel önbellekte depolanır. Sonlandırıldığında, önbellek silinir. Kişisel olarak tanımlanabilen bilgiler içermeyen istemci tarafı tanımlama bilgileri otomatik olarak kaldırılmaz. Oturum tanımlama bilgileri HTTPOnly olarak işaretlenir ve güvenli hale getirilir. Önceden belirlenmiş bir boşta kalma süresinden sonra, Azure portal oturumu sonlandırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure VM hızlı başlatılmasını](../../azure-monitor/learn/quick-collect-azurevm.md)takiben Azure Sanal Tom'larınız için Günlük Analizi ile nasıl veri topladığınızı öğrenin.  
+* Azure [VM hızlı başlangıç](../../azure-monitor/learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  
 
-*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlarından veri toplamak istiyorsanız, [Linux bilgisayarlar için Hızlı Başlatma](../../azure-monitor/learn/quick-collect-linux-computer.md) veya Windows bilgisayarlar için Hızlı [Başlatma'ya](../../azure-monitor/learn/quick-collect-windows-computer.md) bakın
+*  Ortamınızdaki fiziksel veya sanal Windows veya Linux bilgisayarlardan veri toplamak istiyorsanız bkz. [Linux bilgisayarları Için hızlı başlangıç](../../azure-monitor/learn/quick-collect-linux-computer.md) veya [Windows bilgisayarları için hızlı başlangıç](../../azure-monitor/learn/quick-collect-windows-computer.md)
 

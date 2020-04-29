@@ -1,63 +1,63 @@
 ---
-title: TexConv - Doku dönüştürme aracı
-description: TexConv komut satırı aracı için kullanım kılavuzu
+title: TexConv-doku dönüştürme aracı
+description: TexConv komut satırı aracı için Kullanıcı el kitabı
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 1d9b2ca163b70435a6c0e245e66492e8e2866639
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680030"
 ---
-# <a name="texconv---texture-conversion-tool"></a>TexConv - Doku dönüştürme aracı
+# <a name="texconv---texture-conversion-tool"></a>TexConv-doku dönüştürme aracı
 
-TexConv, PNG, TGA, JPEG ve DDS gibi tipik giriş biçimlerindeki dokuları çalışma zamanı tüketimi için optimize edilmiş biçimlerde işlemek için bir komut satırı aracıdır.
-En yaygın senaryo tek bir giriş dosyasını `A.xxx` optimize edilmiş `B.yyy`bir biçime dönüştürmek olsa da, aracın gelişmiş kullanımlar için birçok ek seçeneği vardır.
+TexConv, PNG, TGA, JPEG ve DDS gibi tipik giriş biçimlerinden, çalışma zamanı tüketimine yönelik iyileştirilmiş biçimlere kadar dokuları işlemek için bir komut satırı aracıdır.
+En yaygın senaryo, tek bir giriş dosyasını `A.xxx` iyileştirilmiş bir biçime `B.yyy`dönüştürirken, araç gelişmiş kullanımlar için birçok ek seçeneğe sahiptir.
 
 ## <a name="command-line-help"></a>Komut satırı yardımı
 
-`--help` Parametre ile TexConv.exe çalıştıran tüm kullanılabilir seçenekleri listeleyecek. Ayrıca, TexConv ne yaptığını anlamadan yardımcı olmak için, yürütülürken kullanılan seçenekleri yazdırır. Ayrıntılar için bu çıktıya başvurun.
+`--help` Parametresi Ile texconv. exe ' yi çalıştırmak, tüm kullanılabilir seçenekleri listeler. Ayrıca, TexConv, ne yaptığını anlamanıza yardımcı olmak için, çalıştırıldığında kullanılan seçenekleri yazdırır. Ayrıntılar için bu çıkışa bakın.
 
 ## <a name="general-usage"></a>Genel kullanım
 
-TexConv her zaman **tam olarak bir çıkış** dosyası üretir. Çıktıyı birleştirmek için **birden çok giriş** dosyası kullanabilir. Montaj için, aynı zamanda hangi kanal *(Kırmızı, Yeşil, Mavi* veya *Alfa)* hangi giriş dosyası almak ve çıkış görüntünün hangi kanaliçine taşımak için söyler bir **kanal eşleme**gerekir.
+TexConv her zaman **tam olarak bir çıkış** dosyası üretir. Çıktıyı birleştirmek için **birden çok giriş** dosyası kullanabilir. Derleme için Ayrıca, bu, hangi kanalın (*kırmızı, yeşil, mavi* veya *Alfa*) hangi giriş dosyasından ele alınacağı ve bunu çıkış resminin hangi kanalında taşıyacağını belirten bir **Kanal eşlemesine**de ihtiyaç duyuyor.
 
-En düz ileri komut satırı şudur:
+En düz ileri sarma komut satırı budur:
 
 ```cmd
 TexConv.exe -out D:/result.dds -in0 D:/img.jpg -rgba in0
 ```
 
-- `-out`çıktı dosyasını ve biçimini belirtir
+- `-out`çıkış dosyasını ve biçimini belirtir
 - `-in0`ilk giriş görüntüsünü belirtir
-- `-rgba`çıkış görüntüsünün dört kanalı da kullanması gerektiğini ve giriş görüntüsünden 1:1 alınması gerektiğini söyler
+- `-rgba`çıkış resminin tüm dört kanalı kullanması gerektiğini ve giriş görüntüsünden 1:1 alınması gerektiğini söyler
 
 ## <a name="multiple-input-files"></a>Birden çok giriş dosyası
 
-Birden çok giriş dosyasından çıktıyı birleştirmek için, artan `-in` sayıda seçeneği kullanarak her giriş dosyasını belirtin:
+Birden çok giriş dosyasındaki çıktıyı birleştirmek için, her giriş dosyasını artan bir sayıyla birlikte `-in` kullanarak belirtin:
 
 ```cmd
 -in0 D:/img0.jpg -in1 D:/img1.jpg -in2 D:/img2.jpg ...
 ```
 
-2B dokulardan bir küp eşleme oluştururken, `-right` `-left`bir `-top` `-bottom`de `-front` `-back` , `-px` `-nx`, `-py` `-ny` `-pz`, `-nz`, , , , , , .
+`-right`2B dokulardan bir küp harita montajı sırasında, birisi, `-left` `-top` `-bottom`,,, `-front`, `-back` `-px` `-nx` `-py` `-ny` `-pz` `-nz`,,,,,,,,,,,,,,,
 
-Bu girdileri çıktı dosyasıyla eşleştirmek için uygun bir kanal eşleme gerekir.
+Bu girişleri çıkış dosyasına eşlemek için uygun bir kanal eşleştirmesi gerekir.
 
 ## <a name="channel-mappings"></a>Kanal eşlemeleri
 
-Kanal eşleme seçenekleri, verilen çıktı kanallarını dolduracak girişin hangisini belirleyeceklerini belirtir. Her kanalın girişini ayrı ayrı şu şekilde belirtebilirsiniz:
+Kanal eşleme seçenekleri, verilen çıkış kanallarının hangi girişte doldurulacağını belirtir. Her bir kanalın girişini şöyle ayrı belirtebilirsiniz:
 
 ```cmd
 -r in0.b -g in0.g -b in0.r -a in1.r
 ```
 
-Burada çıkış RGB kanalları ilk giriş görüntü kullanılarak doldurulur ama kırmızı ve mavi takas alırsınız. Çıktının alfa kanalı, ikinci giriş görüntüsünün kırmızı kanalındaki değerlerle doldurulur.
+Burada çıktının RGB kanalları ilk giriş görüntüsü kullanılarak doldurulacak ancak kırmızı ve mavi, takas edilecek. Çıktının alfa kanalı, ikinci giriş resminin kırmızı kanalındaki değerlerle doldurulur.
 
-Her kanal için eşlemenin ayrı ayrı belirtilmesi en büyük esnekliği sağlar. Kolaylık sağlamak için aynı "swizzling" işleçleri kullanılarak yazılabilir:
+Her kanal için eşlemenin belirtilmesi, en büyük esnekliği sağlar. Daha kolay olması için "swizzling" işleçleri kullanılarak yazılabilir:
 
 ```cmd
 -rgb in0.bgr -a in1.r
@@ -65,99 +65,99 @@ Her kanal için eşlemenin ayrı ayrı belirtilmesi en büyük esnekliği sağla
 
 ### <a name="output-channels"></a>Çıkış kanalları
 
-Aşağıdaki kanal eşleme seçenekleri mevcuttur:
+Aşağıdaki kanal eşleme seçenekleri kullanılabilir:
 
-- `-r`, `-g` `-b`, `-a` , : Bunlar tek kanallı atamaları belirtir
+- `-r``-b`, `-g`,, `-a` : Bu tek kanal atamalarını belirtir
 - `-rg`: Kırmızı ve yeşil kanal atamalarını belirtin.
 - `-rgb`: Kırmızı, yeşil ve mavi kanal atamalarını belirtin.
-- `-rgba`: Dört kanal atamalarını da belirtir.
+- `-rgba`: Dört kanal atamasını belirtir.
 
-Yalnızca R, RG veya RGB kanalından bahsetmek, TexConv'a sırasıyla yalnızca 1, 2 veya 3 kanallı bir çıktı dosyası oluşturmasını bildirir.
+Yalnızca R, RG veya RGB kanalının bahsetmesi, TexConv 'ın sırasıyla yalnızca 1, 2 veya 3 kanallı bir çıkış dosyası oluşturmasını söyler.
 
 ### <a name="input-swizzling"></a>Giriş swizzling
 
-Hangi giriş dokusunun hangi çıkış kanalını doldurması gerektiğini belirtirken, giriş ibareyi döndürebilirsiniz:
+Hangi giriş dokusunun hangi çıkış kanalını dolduracağı konusunda bir Swizzle, bir tane girişi içerebilir:
 
 - `-rgba in0`eşdeğerdir`-rgba in0.rgba`
-- `-rgba in0.bgra`giriş kanallarını döndürür
-- `-rgb in0.rrr`tüm kanallara kırmızı kanal çoğaltır
+- `-rgba in0.bgra`Giriş kanallarını Swizzle
+- `-rgb in0.rrr`kırmızı kanalı tüm kanallarla çoğaltır
 
-Kanallar siyah veya beyaz ile de doldurulabilir:
+Ayrıca, kanalları siyah ya da beyazla doldurabilir.
 
-- `-rgb in0 -a white`4 kanal çıkış dokusu oluşturacak ama alfayı tam opak olarak ayarlayacak
-- `-rg black -b white`tamamen mavi bir doku yaratacak
+- `-rgb in0 -a white`4 kanal çıkış dokusu oluşturur, ancak alfa 'yi tamamen opak olarak ayarlar
+- `-rg black -b white`tamamen mavi bir doku oluşturacak
 
-## <a name="common-options"></a>Sık kullanılan seçenekler
+## <a name="common-options"></a>Ortak seçenekler
 
-En ilginç seçenekler aşağıda listelenmiştir. Daha fazla seçenek `TexConv --help`tarafından listelenir.
+En ilginç seçenekler aşağıda listelenmiştir. Daha fazla seçenek tarafından `TexConv --help`listelenmiştir.
 
 ### <a name="output-type"></a>Çıkış türü
 
 - `-type 2D`: Çıktı normal bir 2B görüntü olacaktır.
-- `-type Cubemap`: Çıktı bir küp eşlem görüntüsü olacaktır. Yalnızca DDS çıktı dosyaları için desteklenir. Bu belirtildiğinde, bir 6 düzenli 2D giriş görüntüleri küp eşler oluşturabilirsiniz.
+- `-type Cubemap`: Çıktı bir küp harita görüntüsü olacaktır. Yalnızca DDS çıkış dosyaları için desteklenir. Bu belirtildiğinde, bir tane, 6 normal 2B giriş görüntülerinden küp harita 'i birleştirebilir.
 
 ### <a name="image-compression"></a>Görüntü sıkıştırma
 
-- `-compression none`: Çıkış görüntüsü sıkıştırılmamış olacaktır.
-- `-compression medium`: Desteklenirse, çıktı görüntüsü çok fazla kaliteden ödün vermeden sıkıştırma kullanır.
-- `-compression high`: Desteklenirse, çıktı görüntüsü daha küçük bir dosya lehine sıkıştırma ve fedakarlık kalitesini kullanır.
+- `-compression none`: Çıkış resminin sıkıştırması kaldırılacak.
+- `-compression medium`: Destekleniyorsa, çıkış resmi çok fazla kaliteden ödün vermeden sıkıştırmayı kullanacaktır.
+- `-compression high`: Destekleniyorsa, çıkış resmi daha küçük bir dosya için sıkıştırmayı ve feice kalitesini kullanır.
 
-### <a name="mipmaps"></a>Mipmaps
+### <a name="mipmaps"></a>Mipmap
 
-Varsayılan olarak, TexConv çıktı biçimi desteklediğinde mipmaps oluşturur.
+Varsayılan olarak, TexConv çıkış biçimi onu desteklediğinde, msunucudan mı haritaları oluşturur.
 
-- `-mipmaps none`: Mipmaps oluşturulmayacak.
-- `-mipmaps Linear`: Desteklenirse, bir kutu filtresi kullanılarak mipmaps oluşturulur.
+- `-mipmaps none`: Msunucudan haritalar oluşturulmayacak.
+- `-mipmaps Linear`: Destekleniyorsa, bir kutu filtresi kullanılarak mı haritaları oluşturulacaktır.
 
-### <a name="usage-srgb--gamma-correction"></a>Kullanım (sRGB / gama düzeltme)
+### <a name="usage-srgb--gamma-correction"></a>Kullanım (sRGB/Gamma düzeltme)
 
-Bu `-usage` seçenek çıktının amacını belirtir ve böylece TexConv'a giriş ve çıktı dosyalarına gama düzeltmesi uygulayıp uygulamayacağını söyler. Kullanım yalnızca RGB kanallarını etkiler. Alfa kanalı her zaman 'doğrusal' değerler içerdiği kabul edilir. Kullanım belirtilmemişse, 'otomatik' modu ilk giriş görüntüsünün biçimi ve dosya adından kullanımı algılamaya çalışır. Örneğin, tek ve çift kanallı çıkış biçimleri her zaman doğrusaldır. TexConv'un hangi kararı verdiğine görmek için çıktıyı kontrol edin.
+Bu `-usage` seçenek, çıktının amacını belirtir ve bu nedenle, giriş ve çıkış dosyalarına gama düzeltmesinin uygulanıp uygulanamayacağını belirten texconv öğesine söyler. Kullanım yalnızca RGB kanallarını etkiler. Alfa kanalı her zaman ' doğrusal ' değerler içerecek şekilde değerlendirilir. Kullanım belirtilmemişse, ' Auto ' modu, ilk giriş görüntüsünün biçiminden ve dosya adından kullanımı algılamaya çalışır. Örneğin, tek ve çift kanal çıkış biçimleri her zaman doğrusal değildir. Hangi karar TexConv yaptığını görmek için çıktıyı kontrol edin.
 
-- `-usage Linear`: Çıktı görüntüsü renkleri temsil eden değerler içerir. Bu genellikle metalik ve pürüzlülük dokular için durum, yanı sıra maskeler her türlü.
+- `-usage Linear`: Çıkış resmi, renkleri temsil eden değerler içeriyor. Bu genellikle metalik ve kabalık dokuların yanı sıra tüm maske türlerini kullanır.
 
-- `-usage Color`: Çıkış görüntüsü, diffüz/albedo haritaları gibi renkleri temsil eder. SRGB bayrağı çıkış DDS üstbilgisinde ayarlanır.
+- `-usage Color`: Çıkış resmi, dağıtma/Albedo haritaları gibi rengi temsil eder. SRGB bayrağı output DDS üst bilgisinde ayarlanacak.
 
-- `-usage HDR`: Çıktı dosyası kodlama için piksel başına 8 bitten fazla kullanmalıdır. Sonuç olarak tüm değerler doğrusal alanda depolanır. HDR dokuları için verilerin rengi veya diğer verileri temsil edip etmediği önemli değildir.
+- `-usage HDR`: Çıkış dosyası kodlama için piksel başına 8 bitten fazlasını kullanmalıdır. Sonuç olarak tüm değerler doğrusal alanda depolanır. HDR dokuları için, verilerin rengi veya diğer verileri temsil etmeksizin önemi yoktur.
 
-- `-usage NormalMap`: Çıkış görüntüsü teğet uzay normal eşlemi temsil eder. Değerler normale dönecek ve mipmap hesaplaması biraz optimize edilecektir.
+- `-usage NormalMap`: Çıkış resmi bir teğet-Space normal eşlemesini temsil eder. Değerler normalleştirilir ve mipmap hesaplama biraz iyileştirecektir.
 
-- `-usage NormalMap_Inverted`: Çıkış, Y girişinin ters yönünü gösteren teğet uzay normal bir haritadır.
+- `-usage NormalMap_Inverted`: Çıktı, Y ile bir teğet-Space normal eşlemedir ve girişin ters yönünde işaret eder.
 
-### <a name="image-rescaling"></a>Görüntü yeniden ölçekleme
+### <a name="image-rescaling"></a>Görüntü yeniden oluşturma
 
-- `-minRes 64`: Çıktının minimum çözünürlüğünü belirtir. Giriş görüntüsü daha küçükse, yükseltilir.
-- `-maxRes 1024`: Çıktının maksimum çözünürlüğünü belirtir. Giriş görüntüsü daha büyükse, küçültülmüş olur.
-- `-downscale 1`: Bu 0'dan büyükse, giriş görüntüleri N kez çözünürlükte yarıya indirilir. Genel bir kalite indirimi uygulamak için bunu kullanın.
+- `-minRes 64`: Çıktının en düşük çözünürlüğünü belirtir. Giriş resmi daha küçükse, ölçeklendirilmez.
+- `-maxRes 1024`: Çıktının en yüksek çözünürlüğünü belirtir. Giriş resmi daha büyükse, küçük ölçekli olur.
+- `-downscale 1`: Bu 0 ' dan büyükse, giriş görüntüleri çözüm N kez yarıya iner. Genel kalite azaltma uygulamak için bunu kullanın.
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="convert-a-color-texture"></a>Renk dokusunu dönüştürme
+### <a name="convert-a-color-texture"></a>Renk dokusunu Dönüştür
 
 ```cmd
 TexConv.exe -out D:/diffuse.dds -in0 D:/diffuse.jpg -rgba in0 -usage color
 ```
 
-### <a name="convert-a-normal-map"></a>Normal bir haritayı dönüştürme
+### <a name="convert-a-normal-map"></a>Normal Haritayı Dönüştür
 
 ```cmd
 TexConv.exe -out D:/normalmap.dds -in0 D:/normalmap.png -rgb in0 -usage normalmap
 ```
 
-### <a name="create-an-hdr-cubemap"></a>HDR küp haritası oluşturma
+### <a name="create-an-hdr-cubemap"></a>HDR küp harita oluşturma
 
 ```cmd
 TexConv.exe -out "D:/skybox.dds" -in0 "D:/skymap.hdr" -rgba in0 -type cubemap -usage hdr
 ```
 
-HDR küp eşlemleri için harika bir kaynak [hdrihaven.com.](https://hdrihaven.com/hdris/)
+HDR cubemaps için harika bir kaynak [hdrihaven.com](https://hdrihaven.com/hdris/).
 
-### <a name="bake-multiple-images-into-one"></a>Birden fazla görüntüyü tek bir resim halinde pişirin
+### <a name="bake-multiple-images-into-one"></a>Birden çok görüntüyü tek bir bakışta
 
 ```cmd
 TexConv.exe -out "D:/Baked.dds" -in0 "D:/metal.tga" -in1 "D:/roughness.png" -in2 "D:/DiffuseAlpha.dds" -r in1.r -g in0.r -b black -a in2.a -usage linear
 ```
 
-### <a name="extract-a-single-channel"></a>Tek bir kanalı ayıklama
+### <a name="extract-a-single-channel"></a>Tek bir kanalı Ayıkla
 
 ```cmd
 TexConv.exe -out D:/alpha-mask-only.dds -in0 D:/DiffuseAlpha.dds -r in0.a

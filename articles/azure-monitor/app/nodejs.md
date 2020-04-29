@@ -4,19 +4,19 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411591"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
-[Azure Application Insights,](../../azure-monitor/app/app-insights-overview.md) performansı ve diğer sorunları keşfetmenize ve hızla tanılamanıza yardımcı olmak için dağıtımdan sonra arka uç hizmetlerinizi ve bileşenlerinizi izler. Application Insights'ı veri merkezinizde, Azure VM'lerinde, web uygulamalarında ve hatta diğer genel bulutlarda barındırılan Node.js hizmetleri için kullanabilirsiniz.
+[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Application Insights'ı veri merkezinizde, Azure VM'lerinde, web uygulamalarında ve hatta diğer genel bulutlarda barındırılan Node.js hizmetleri için kullanabilirsiniz.
 
 İzleme verilerinizi almak, depolamak ve araştırmak için SDK'yı kodunuza ekleyin ve Azure'da karşılık gelen Application Insights kaynağını ayarlayın. SDK daha fazla analiz ve araştırma için verileri bu kaynağa gönderir.
 
-Node.js SDK'sı gelen ve giden HTTP isteklerini, özel durumları ve bazı sistem ölçümlerini otomatik olarak izleyebilir. Sürüm 0.20'den başlayarak, SDK mongodb, MySQL ve Redis gibi bazı ortak [üçüncü taraf paketleri](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)de izleyebilir. Gelen bir HTTP isteği ile ilgili tüm olaylar, daha hızlı sorun giderme için birbiriyle ilişkilendirilir.
+Node.js SDK'sı gelen ve giden HTTP isteklerini, özel durumları ve bazı sistem ölçümlerini otomatik olarak izleyebilir. Sürüm 0,20 ' den başlayarak, SDK, MongoDB, MySQL ve redde gibi bazı yaygın [üçüncü taraf paketleri](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)de izleyebilir. Gelen bir HTTP isteği ile ilgili tüm olaylar, daha hızlı sorun giderme için birbiriyle ilişkilendirilir.
 
 TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özelliklerini el ile işaretleyebilir ve izleyebilirsiniz. TelemetryClient API'si bu makalenin ilerleyen bölümlerinde ayrıntılı bir şekilde anlatılmıştır.
 
@@ -32,11 +32,11 @@ Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ü
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Uygulama Öngörüleri kaynağı ayarlama
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Application Insights kaynağı ayarlama
 
 
-1. [Azure portalında][portal]oturum açın.
-2. **Kaynak** > **Oluştur Geliştirici araçları** > **Uygulama Öngörüleri'ni**seçin. Kaynak; telemetri verilerini, bu veriler için depolamayı, kayıtlı rapor ve panoları, kural ve uyarı yapılandırmasını almak ve diğer işlemlere yönelik bir uç nokta içerir.
+1. [Azure Portal][portal] oturum açın.
+2. **Kaynak** > oluştur**Geliştirici Araçları** > **Application Insights**seçin. Kaynak; telemetri verilerini, bu veriler için depolamayı, kayıtlı rapor ve panoları, kural ve uyarı yapılandırmasını almak ve diğer işlemlere yönelik bir uç nokta içerir.
 
 3. Kaynak oluşturma sayfasındaki **Uygulama Türü** kutusundan **Node.js Uygulaması**'nı seçin. Uygulama türü oluşturulan varsayılan pano ve raporları belirler. (Herhangi bir Application Insights kaynağı herhangi bir dil ve platformdan veri toplayabilir.)
 
@@ -92,7 +92,7 @@ SDK gönderilecek verileri toplu hale getirdiği için öğelerin portalde göst
 * Portal kaynak görünümünde **Yenile**’ye tıklayın. Grafikler belirli aralıklarla otomatik olarak yenilenir ancak el ile yenilerseniz anında yenilenir.
 * [Gerekli giden bağlantı noktalarının](../../azure-monitor/app/ip-addresses.md) açık olduğunu doğrulayın.
 * Belirli olayları aramak için [Arama](../../azure-monitor/app/diagnostic-search.md) sekmesini kullanın.
-* [SSS'yi][FAQ]kontrol edin.
+* [SSS][FAQ]'yi denetleyin.
 
 
 ## <a name="sdk-configuration"></a>SDK yapılandırması

@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma'da Hyper-V Dağıtım Planlayıcısı raporunu analiz edin
-description: Bu makalede, Hyper-VM'lerin Azure'a olağanüstü kurtarma için Azure Site Kurtarma Dağıtım Planlayıcısı tarafından oluşturulan bir raporun nasıl analiz edileniş şekli açıklanmaktadır.
+title: Azure Site Recovery 'de Hyper-V Dağıtım Planlayıcısı raporunu analiz etme
+description: Bu makalede, Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan bir raporun nasıl analiz edileceği açıklanır.
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257907"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Sitesi Kurtarma Dağıtım Planlayıcısı raporunu çözümleme
+# <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Dağıtım Planlayıcısı raporunu analiz etme
 Bu makalede, Hyper-V’den Azure’a dağıtım senaryosu için Azure Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporunda bulunan sayfalar ele alınmaktadır.
 
 ## <a name="on-premises-summary"></a>Şirket içi özeti
@@ -51,7 +51,7 @@ Hyper-V'den Azure'a dağıtım raporunun öneriler sayfasında, seçilen ve iste
 
 **Profili oluşturulmuş veri süresi**: Profil oluşturma işleminin gerçekleştirildiği süre. Varsayılan olarak, araç hesaplamadaki tüm profil verilerini içerir. Rapor oluşturma sırasında StartDate ve EndDate seçeneğini kullandıysanız belirli bir dönem için rapor oluşturulur. 
 
-**Profilli Hyper-V sunucu sayısı**: VM'lerin raporu oluşturulan Hyper-V sunucularının sayısı. Hyper-V sunucularının adını görüntülemek için sayıyı seçin. Şirket İçi Depolama Gereksinimi sayfası açılır ve depolama gereksinimleriyle birlikte tüm sunucuları gösterir. 
+**Profili oluşturulan Hyper-v sunucularının sayısı**: VM 'leri raporu oluşturulan Hyper-v sunucularının sayısı. Hyper-V sunucularının adını görüntülemek için sayıyı seçin. Şirket İçi Depolama Gereksinimi sayfası açılır ve depolama gereksinimleriyle birlikte tüm sunucuları gösterir. 
 
 **İstenen RPO**: Dağıtımınıza yönelik kurtarma noktası hedefi. Varsayılan olarak, gerekli ağ bant genişliği 15, 30 ve 60 dakikalık RPO değerleri için hesaplanır. Seçim temel alınarak, etkilenen değerler sayfada güncelleştirilir. Raporu oluştururken DesiredRPOinMin parametresini kullandıysanız bu değer İstenen RPO sonucunda gösterilir.
 
@@ -179,7 +179,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 
 **VM Adı**: Rapor oluşturulurken VMListFile içinde kullanılan VM adı. Bu sütunda ayrıca sanal makinelere bağlanan diskler de (VHD) listelenir. Adlar, profil oluşturma sırasında aracın sanal makineleri bulduğu Hyper-V konak adlarını içerir.
 
-**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet,** \* VM'nin [premium SSD'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu durumlar içindir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
+**VM Uyumluluğu**: Değerler **Evet** ve **Evet**\* şeklindedir. **Evet** \* , VM 'nin [Premium SSD 'ler](../virtual-machines/windows/disks-types.md)için uygun olduğu örneklere yöneliktir. Burada, profili oluşturulan yüksek değişim sıklığı veya IOPS diski, diske eşlenen boyuttan daha büyük bir premium disk boyutuna sığar. Depolama hesabı, bir diskin boyutuna göre hangi premium depolama disk türüne eşleneceğine karar verir: 
 * <128 GB bir P10’dur.
 * 128 GB ile 256 GB arası P15’tir.
 * 256 GB ile 512 GB arası P20'dir.
@@ -187,7 +187,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 * 1.025 GB ile 2.048 GB arası P40’tır.
 * 2.049 GB ile 4.095 GB arası P50’dir.
 
-Örneğin, bir diskin iş yükü özellikleri onu P20 veya P30 kategorisine koyduysa, ancak boyut daha düşük bir premium depolama disk türüne göre eşleyse, araç VM'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
+Örneğin, bir diskin iş yükü özellikleri P20 veya P30 kategorisine yerleştiriyorsa, ancak boyut onu daha düşük bir Premium depolama disk türüne eşledikten sonra, araç bu VM 'yi **Evet**\*olarak işaretler. Araç ayrıca kaynak disk boyutunu önerilen premium depolama disk türüne uyacak şekilde değiştirmenizi veya hedef disk türünü yük devretme sonrasını değiştirmenizi önerir.
 
 **Depolama Türü**: Standart veya Premium.
 
@@ -203,7 +203,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 
 **Disk Sayısı**: Sanal makine üzerindeki disklerin (VHD) toplam sayısı.
 
-**Disk Boyutu (GB)**: VM'nin tüm disklerinin toplam boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
+**Disk boyutu (GB)**: sanal makinenin tüm disklerinin toplam boyutu. Araç ayrıca sanal makinedeki ayrı diskler için disk boyutunu gösterir.
 
 **Çekirdek**: Sanal makine üzerindeki CPU çekirdeği sayısı.
 
@@ -246,7 +246,7 @@ Site Recovery Dağıtım Planlayıcısı tarafından oluşturulan Excel raporu, 
 
 * Kaynak IOPS, depolama IOPS için sanal makine başına desteklenen 80.000 sınırını aşıyor.
 
-* Kaynak VM ortalama veri karmaşası, ortalama G/Ç boyutu için desteklenen Site Kurtarma veri karmaşası limitini 20 MB/sn'yi aşar.
+* Kaynak VM ortalama veri karmaşası, ortalama g/ç boyutu için desteklenen Site Recovery veri değişim sınırını (20 MB/sn) aşıyor.
 
 * Kaynak VM ortalama etkili yazma IOPS değeri, 840 olan desteklenen Site Recovery IOPS sınırını aşıyor.
 
@@ -275,7 +275,7 @@ Aşağıdaki tablo, Site Recovery sınırlarını sağlar. Bu sınırlar, testle
 ---|---|---|---
 Standart depolama | 8 KB | VM başına 2 MB/sn | VM başına 168 GB
 Premium depolama | 8 KB  | VM başına 5 MB/sn | VM başına 421 GB
-Premium depolama | 16 KB veya daha yüksek| VM başına 20 MB/sn | VM başına 1684 GB
+Premium depolama | 16 KB veya daha yüksek| VM başına 20 MB/s | VM başına 1684 GB
 
 Bu sınırlar yüzde 30 G/Ç çakışmasını varsayan ortalama sayılardır. Site Recovery; çakışma oranı, büyük yazma boyutları ve gerçek iş yükü G/Ç davranışına göre daha yüksek aktarım hızını işleyebilir. Yukarıdaki sayılar yaklaşık beş dakikalık tipik bir kapsamı varsayar. Diğer bir deyişle, veriler karşıya yüklendikten sonra işlenir ve beş dakika içinde bir kurtarma noktası oluşturulur.
 
@@ -302,7 +302,7 @@ Bu sınırlar yüzde 30 G/Ç çakışmasını varsayan ortalama sayılardır. Si
 
 **Kullanılabilir boş alan (GB)**: Birimde kullanılabilir olan boş alan.
 
-**Birim (GB) için gerekli toplam depolama alanı**: Başarılı ilk çoğaltma ve delta çoğaltma için birim de gerekli toplam boş depolama alanı. 
+**Birimde gereken toplam depolama alanı (GB)**: başarılı bir ilk çoğaltma ve Delta çoğaltma için birimde gereken toplam boş depolama alanı. 
 
 **Başarılı bir çoğaltma için birimde sağlanacak toplam ek depolama alanı (GB)**: Başarılı bir ilk çoğaltma ve değişiklik çoğaltması için birimde sağlanması gereken toplam ek alan için öneride bulunur.
 
@@ -327,7 +327,7 @@ Her birim için şirket içi depolama gereksinimleri önerisine uyduktan sonra, 
 
 **Açıklamalar**: Sanal makinenin herhangi bir birimi için herhangi bir eylem gerekiyorsa, burada açıklama sağlanır. Örneğin, bir birimde yeterli boş alan yoksa açıklamada "Bu sanal makineyi korumak için depolama alanı ekleyin" ifadesi yer alır.
 
-**Hacim (VHD yolu)**: VM VHD'lerinin bulunduğu birim adı. 
+**Birim (VHD yolu)**: sanal makinenin VHD 'lerinin bulunduğu birim adı. 
 
 **Birimdeki kullanılabilir boş alan (GB)**: Birimde sanal makine için kullanılabilen boş disk alanı. Birimlerdeki kullanılabilir boş alan hesaplanırken, VHD'leri aynı birimde yer alan önceki toplu işlerin sanal makineleri tarafından değişiklik çoğaltması için kullanılan disk alanını hesaba katar. 
 
@@ -341,12 +341,12 @@ Her birim için şirket içi depolama gereksinimleri önerisine uyduktan sonra, 
 
 **İlk çoğaltma için gereken en düşük bant değişliği (Mb/sn)**: Sanal makinenin ilk çoğaltması için gereken en düşük bant genişliği.
 
-**Delta çoğaltma (Mbps) için gereken minimum bant genişliği**: VM için delta çoğaltma için gereken minimum bant genişliği.
+**Delta çoğaltma için gereken en düşük bant genişliği (MB/sn)**: sanal makinenin Delta çoğaltması için gereken en düşük bant genişliği.
 
 ### <a name="network-utilization-details-for-each-batch"></a>Her toplu iş için ağ kullanım ayrıntıları 
 Her toplu iş tablosunda, toplu işin ağ kullanımının özeti sağlanır.
 
-**Toplu iş için kullanılabilir bant genişliği**: Önceki toplu işlemin delta çoğaltma bant genişliği göz önünde bulundurularak toplu iş için kullanılabilir bant genişliği.
+**Toplu iş için kullanılabilir bant**genişliği: önceki toplu işin Delta çoğaltma bant genişliği dikkate alındıktan sonra toplu iş için kullanılabilir bant genişliği.
 
 **Toplu işin ilk çoğaltması için kullanılabilir yaklaşık bant genişliği**: Toplu işteki sanal makinelerin ilk çoğaltması için kullanılabilir bant genişliği. 
 

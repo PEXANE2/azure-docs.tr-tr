@@ -1,6 +1,6 @@
 ---
-title: Zaman Serisi Modeli - Azure Time Serisi Öngörüleri | Microsoft Dokümanlar
-description: Azure Time Series Öngörüleri Önizlemesinde Zaman Serisi Modeli hakkında bilgi edinin.
+title: Zaman serisi modeli-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights önizlemede zaman serisi modeli hakkında bilgi edinin.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476663"
 ---
-# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Serisi Öngörüler Önizlemezaman Serisi Modeli
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Azure Time Series Insights önizlemede zaman serisi modeli
 
-Bu makalede, Azure Zaman Serisi Öngörüleri Önizleme ortamında Zaman Serisi Modeli, yetenekleri ve kendi modellerinizi oluşturmaya ve güncelleştirmeye nasıl başlayacağınızı açıklayınız.
+Bu makalede zaman serisi modeli, özellikleri ve Azure Time Series Insights önizleme ortamında kendi modellerinizi oluşturma ve güncelleştirme işlemlerinin nasıl başlatılacağı açıklanmaktadır.
 
 > [!TIP]
->  * Canlı Zaman Serisi Modeli örneği için [Contoso Wind Farm demo](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
-> * Zaman Serisi Model UI'nizde nasıl gezineceğimize dair bilgi edinmek için [Azure Zaman Serisi Öngörüleri Önizleme gezgini](time-series-insights-update-explorer.md) hakkında bilgi edinin.
-> * Time Series Insights web explorer'ı kullanarak [Time Series Modeli ile nasıl çalışacağınızı](time-series-insights-update-how-to-tsm.md) öğrenin.
+>  * Canlı bir zaman serisi modeli örneği için [contoso rüzgar grubu tanıtım](https://insights.timeseries.azure.com/preview/samples) ortamına gidin.
+> * Zaman serisi modeli Kullanıcı arabiriminize nasıl gidebileceğinizi öğrenmek için [Azure Time Series Insights önizleme Gezgini](time-series-insights-update-explorer.md) hakkında bilgi edinin.
+> * Time Series Insights Web gezginini kullanarak [zaman serisi modeliyle çalışmayı](time-series-insights-update-how-to-tsm.md) öğrenin.
 
 ## <a name="summary"></a>Özet
 
-Geleneksel olarak, IoT aygıtlarından toplanan veriler bağlamsal bilgilerden yoksunolduğundan, sensörleri hızlı bir şekilde bulmayı ve analiz etmeyi zorlaştırır. Time Serisi Modeli'nin temel motivasyonu, IoT veya Time Series verilerini bulmayı ve analiz etmeyi basitleştirmektir. Tüketiciye hazır veri kümelerini analitik için hazırlamaya yardımcı olmak için zaman serisi verilerinin kürasyonunu, bakımını ve zenginleştirmesini sağlayarak bu amaca ulaşır.
+Geleneksel olarak, IoT cihazlarından toplanan verilerin bağlamsal bilgileri yoktur, bu da algılayıcıların hızla bulunup çözümlenmesini zorlaştırır. Zaman serisi modeli için ana mosyon, IoT veya zaman serisi verilerinin bulunmasını ve çözümlenmesini basitleştiriyor. Analiz için tüketiciye yönelik veri kümelerine hazırlanmaya yardımcı olmak üzere zaman serisi verilerinin gizleme, bakım ve zenginleştirmesini etkinleştirerek bu amaca erişir.
 
-## <a name="scenario-contosos-new-smart-oven"></a>Senaryo: Contoso yeni akıllı fırın
+## <a name="scenario-contosos-new-smart-oven"></a>Senaryo: contoso 'nun yeni akıllı oven 'si
 
-**Contoso akıllı fırının hayali senaryosunu düşünün.** Bu senaryoda, her Contoso akıllı fırın beş sıcaklık sensörleri, dört üst brülör her biri için bir ve fırın kendisi için bir olduğunu varsayalım. Yakın zamana kadar, her Contoso sıcaklık sensörü verilerini tek tek gönderdi, depolandı ve görselleştirdi. Mutfak aletleri nin izlenmesi için Contoso, her bir sensör için bir tane olan temel grafiklere dayanıyordu.
+**Contoso Smart oven 'nin kurgusal senaryosunu göz önünde bulundurun.** Bu senaryoda, her contoso akıllı oven 'nin her dört üst yazıcılar ve bir oven için biri olmak üzere beş sıcaklık sensöri olduğunu varsayalım. Son olarak, her contoso sıcaklık algılayıcısı, verileri ayrı ayrı gönderdi, depolamıştır ve görselleştirilir. Contoso gereç izleme için contoso, her bir algılayıcı için bir tane olmak üzere temel grafiklere güvendi.
 
-Contoso ilk veri ve görselleştirme çözümünden memnun olsa da, çeşitli sınırlamalar ortaya çıktı:
+Contoso, ilk veri ve görselleştirme çözümüyle karşılandıysa, bazı sınırlamalar görünür hale gelmiştir:
 
-* Müşteriler, en iyi brülörlerin çoğu açıkken genel fırının ne kadar ısınacağını bilmek istediler. Contoso, genel fırının koşulları hakkında birleşik bir cevap bulmakta ve analiz etmekte daha fazla zorluk çekti.
-* Contoso mühendisleri, üst brülörlerin aynı anda çalıştırılmasının verimsiz güç çekmeyle sonuçlanmayacağını doğrulamak istediler. Hangi sıcaklık ve gerilim sensörlerinin birbiriyle ilişkili olduğunu ve mağazada nasıl bulunup bulunabildiğini çapraz yönlendirmede güçlük vardı.
-* Contoso kalite güvence ekibi, iki sensör versiyonu arasındaki geçmişi denetlemek ve karşılaştırmak istedi. Hangi verilerin hangi sensör sürümüne ait olduğunu belirlemekte güçlük vardı.
+* Müşteriler, en üst kağıdın büyük bir kısmında ne kadar hızlı bir şekilde yararlandığını öğrenmek istedi. Contoso, genel oven koşullarına ilişkin Birleşik bir cevap çözümleme ve sunma konusunda daha zorluk yaşadı.
+* Contoso mühendisleri, aynı anda çalışan en üst yazıcılar 'ın verimsiz güç çekilmesine neden olduğunu doğrulamak istedi. Birbirleriyle ilgili sıcaklık ve voltaj sensörleri ve bunların depoda nasıl konumlandırması arasında çapraz başvurmaya yönelik zorluk vardı.
+* Contoso kalite güvencesi ekibi, iki algılayıcı sürümü arasındaki geçmişi denetlemek ve karşılaştırmak istedi. Hangi verilerin hangi algılayıcı sürümüne ait olduğunu belirlemede zorluk vardı.
 
-Kapsamlı akıllı fırın zaman serisi modelini yapılandırma, düzenleme ve tanımlama yeteneği olmadan, her sıcaklık sensörü yerinden edilmiş, izole edilmiş ve daha az bilgilendirici veri noktalarına sahip olur. Her veri kümesi diğerlerinden bağımsız olarak yaşadığı için bu veri noktalarını eyleme geçirilebilir öngörülere dönüştürmek daha zordu.
+Çok sayıda akıllı oven zaman serisi modelini yapı, düzenleme ve tanımlama özelliği olmadan, her sıcaklık algılayıcısı, yalıtılmış ve daha az bilgilendirici veri noktası olarak tutulur. Bu veri noktalarının, her veri kümesi diğerlerinden bağımsız olduğundan, eyleme dönüştürülebilir içgörüler halinde açılması daha zordur.
 
-Bu sınırlamalar Contoso'nun yeni fırınına eşlik edecek akıllı veri toplama ve görselleştirme araçlarının önemini ortaya koymuştur:
+Bu sınırlamalar, contoso 'nun yeni oven 'i ile birlikte akıllı veri toplama ve görselleştirme araçlarının önemini ortaya çıkarmaktadır:
 
-* Verileri ilişkilendirip uygun bir görünümde birleştirebildiğinizde veri görselleştirme kullanışlıdır. Bir örnek sıcaklık sensörleri ile birlikte voltaj sensörleri gösteriyor.
-* Karşılaştırma, yakınlaştırma ve zaman aralığı işlevlerinin yanı sıra birden fazla varlık için çok boyutlu verileri yönetmek zor olabilir.
+* Veri görselleştirme, verileri uygun bir görünümle ilişkilendirip birleştirebildiğinizde yararlı olur. Sıcaklık sensörleriyle birlikte voltaj algılayıcıları gösteren bir örnek.
+* Birçok varlık için çok boyutlu verilerin, karşılaştırma, yakınlaştırma ve zaman aralığı işlevselleriyle birlikte yönetilmesi zor olabilir.
 
-**Zaman Serisi Modeli,** bu hayali örnekte karşılaşılan senaryoların çoğu için kullanışlı bir çözüm sağlar:
+Zaman serisi modeli, bu kurgusal örnekte karşılaşılan birçok senaryoya **uygun bir çözüm sağlar** :
 
-[![Zaman Serisi Model akıllı fırın grafik örneği](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
+[![Zaman serisi modeli akıllı oven grafik örneği](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Zaman Serisi Modeli sorgularda ve gezinmede hayati bir rol oynar, çünkü karşılaştırmaların zaman aralıkları arasında ve sensör ve aygıt türleri arasında çizilmesine izin vererek verileri bağlamsallaştırır. (**A**) 
-* Zaman Serisi Modeli'nde kalıcı veriler zaman serisi sorgu hesaplamalarını değişken olarak koruduğu ndan ve sorgu zamanında yeniden kullandığından veriler daha da bağlamsallaştırılır.
-* Time Series Model, gelişmiş görselleştirme ve yönetim yetenekleri için verileri düzenler ve toplar. (**B**) 
+* Zaman serisi modeli sorgular ve gezinmede önemli bir rol oynar, bu da karşılaştırmalar, zaman aralıklarıyla ve algılayıcı ile cihaz çeşitleri arasında çizilmesine izin vererek verileri ayırır. (**A**) 
+* Zaman serisi modelinde kalıcı veriler, zaman serisi sorgu hesaplamalarıyla değişken olarak korunduğu ve bunları sorgu sırasında yeniden kullandığı için veriler daha kapsamlı hale getirilir.
+* Zaman serisi modeli, geliştirilmiş görselleştirme ve yönetim özellikleri için verileri düzenler ve toplar. (**B**) 
 
 ### <a name="key-capabilities"></a>Temel işlevler
 
-Zaman serisi bağlamsallaştırmayı basit ve zahmetsiz hale getirmek amacıyla Time Series Model, Time Series Insights Preview'da aşağıdaki özellikleri sağlar. Size yardımcı olur:
+Zaman serisi bağlamı 'nı yönetmeyi basit ve kolay hale getirmek için amaç sayesinde, zaman serisi modeli Time Series Insights önizlemede aşağıdaki özellikleri sağlar. Size yardımcı olur:
 
-* Skaler işlevler, toplu işlemler ve benzeri nedenlerle hesaplamaları veya formülleri yazar ve yönetin.
-* Gezinmeyi, aramayı ve başvuruları etkinleştirmek için üst-alt ilişkilerini tanımlayın.
-* *Örnek alanları*olarak tanımlanan örneklerle ilişkili özellikleri tanımlayın ve bunları hiyerarşioluşturmak için kullanın.
+* Skaler işlevler, toplama işlemleri vb. kullanarak hesaplamalar veya formüller yazın ve yönetin.
+* Gezinti, arama ve başvuruyu etkinleştirmek için üst-alt ilişkilerini tanımlayın.
+* *Örnek alanları*olarak tanımlanan örneklerle ilişkili özellikleri tanımlayın ve bunları hiyerarşi oluşturmak için kullanın.
 
 ### <a name="components"></a>Bileşenler
 
-Zaman Serisi Modeli üç temel bileşene sahiptir:
+Zaman serisi modelinin üç çekirdek bileşeni vardır:
 
-* [Zaman Serisi Model örnekleri](#time-series-model-instances)
-* [Zaman Serisi Model hiyerarşileri](#time-series-model-hierarchies)
-* [Zaman Serisi Model türleri](#time-series-model-types)
+* [Zaman serisi model örnekleri](#time-series-model-instances)
+* [Zaman serisi model hiyerarşileri](#time-series-model-hierarchies)
+* [Zaman serisi model türleri](#time-series-model-types)
 
-Bu bileşenler, bir zaman serisi modelini belirtmek ve Azure Zaman Serisi Öngörüleri verilerinizi düzenlemek için birleştirilir.
+Bu bileşenler, zaman serisi modeli belirtmek ve Azure Time Series Insights verilerinizi düzenlemek için birleştirilir.
 
-[![Zaman Serisi Modeli genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
+[![Zaman serisi modeline genel bakış grafiği](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Zaman serisi [modeli, Zaman Serisi Öngörüleri Önizleme](time-series-insights-update-how-to-tsm.md) arabirimi aracılığıyla oluşturulabilir ve yönetilebilir. Zaman Serisi Model ayarları [Model Ayarları API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)üzerinden yönetilebilir.
+[Time Series Insights Preview](time-series-insights-update-how-to-tsm.md) arabirimi aracılığıyla bir zaman serisi modeli oluşturulup yönetebilirsiniz. Zaman serisi modeli ayarları, [model ayarları API 'si](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)aracılığıyla yönetilebilir.
 
-## <a name="time-series-model-instances"></a>Zaman Serisi Model örnekleri
+## <a name="time-series-model-instances"></a>Zaman serisi model örnekleri
 
-Zaman Serisi Model *örnekleri,* zaman serisinin sanal gösterimleridir.
+Zaman serisi model *örnekleri* , zaman serisinin kendi sanal temsilleridir.
 
-Çoğu durumda, örnekler benzersiz **deviceId** veya **assetId**tarafından tanımlanır , hangi zaman serisi kimlikleri olarak kaydedilir.
+Çoğu durumda, örnekler otomatik olarak **DeviceID** veya **AssetID**tarafından tanımlanır ve bu, zaman serisi kimlikleri olarak kaydedilir.
 
-Örnekler, zaman serisi kimliği, tür, ad, açıklama, hiyerarşiler ve örnek alanları gibi *örnek özellikleri*olarak adlandırılan onlarla ilişkili açıklayıcı bilgilere sahiptir. En azından, örnek özellikleri hiyerarşi bilgilerini içerir.
+Örneklere, zaman serisi KIMLIĞI, tür, ad, açıklama, hiyerarşiler ve örnek alanları gibi *örnek özellikleri*olarak adlandırılan açıklayıcı bilgiler vardır. En azından, örnek özellikleri hiyerarşi bilgilerini içerir.
 
-*Örnek alanları,* hiyerarşi düzeyleriiçin değerlerin yanı sıra üretici, işleç ve benzeri değerleri içerebilen açıklayıcı bilgiler topluluğu.
+*Örnek alanları* , hiyerarşi düzeyleri ve üretici, işleç vb. değerleri içerebilen açıklayıcı bilgilerin bir koleksiyonudur.
 
-Bir olay kaynağı Zaman Serisi Öngörüleri ortamı için yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, Time Series Model sorguları kullanılarak Zaman Serisi Öngörüleri explorer aracılığıyla oluşturulabilir veya güncelleştirilebilir.
+Time Series Insights ortamı için bir olay kaynağı yapılandırıldıktan sonra, örnekler otomatik olarak keşfedilir ve bir zaman serisi modelinde oluşturulur. Örnekler, zaman serisi modeli sorguları kullanılarak Time Series Insights Gezgini aracılığıyla oluşturulabilir veya güncelleştirilir.
 
-[Contoso Rüzgar Çiftliği demo](https://insights.timeseries.azure.com/preview/samples) birkaç canlı örnek örnekler sağlar.
+[Contoso rüzgar grubu tanıtımı](https://insights.timeseries.azure.com/preview/samples) çeşitli canlı örnek örnekleri sunar.
 
-[![Zaman Serisi Model örneği örneği](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
+[![Zaman serisi modeli örnek örneği](media/v2-update-tsm/time-series-model-instance.png)](media/v2-update-tsm/time-series-model-instance.png#lightbox)
 
 ### <a name="instance-properties"></a>Örnek özellikleri
 
-Örnekler **timeSeriesId,** **typeId,** **ad,** **açıklama,** **hiyerarşiId'ler**ve **instanceFields**tarafından tanımlanır. Her örnek yalnızca bir *tür*ve bir veya daha fazla *hiyerarşieşler.*
+Örnekler **Timeseriesıd**, **TypeId**, **Name**, **Description**, **hierarchyıds**ve **ınstancefields**tarafından tanımlanır. Her örnek yalnızca bir *türe*ve bir veya daha fazla *hiyerarşilere*eşlenir.
 
 | Özellik | Açıklama |
 | --- | ---|
-| timeSeriesId | Örneğin ilişkili olduğu zaman serisinin UUID'si. |
-| Typeıd | Zaman Serisi Modeli nin UUID örneği ile ilişkilidir. Varsayılan olarak, keşfedilen tüm yeni örnekler varsayılan bir türle ilişkilendirilir.
-| ad | **Ad** özelliği isteğe bağlıdır ve büyük/küçük harf duyarlıdır. **Ad** kullanılamıyorsa, varsayılan olarak **timeSeriesId'e** Bir ad vereli, **timeSeriesId** [hala kuyuda](time-series-insights-update-explorer.md#4-time-series-well)kullanılabilir. |
+| Timeseriesıd | Örneğin ilişkilendirildiği zaman serisinin UUID 'SI. |
+| Türü | Örneğin ilişkilendirildiği zaman serisi modeli türünün UUID 'SI. Varsayılan olarak, bulunan tüm yeni örnekler varsayılan bir türle ilişkili alır.
+| ad | **Name** özelliği isteğe bağlıdır ve büyük/küçük harfe duyarlıdır. **Ad** yoksa, varsayılan olarak **Timeseriesıd değerini**alır. Bir ad sağlanmışsa, **Timeseriesıd** [yine de kullanılabilir.](time-series-insights-update-explorer.md#4-time-series-well) |
 | açıklama | Örneğin metin açıklaması. |
-| hiyerarşiIds | Örneğin hangi hiyerarşilere ait olduğunu tanımlar. |
-| instanceAlanlar | Bir örneğin özellikleri ve bir örneği tanımlayan statik veriler. Arama işlemleri gerçekleştirmek için dizin oluşturmayı desteklerken hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlarlar. |
+| Hierarchyıds | Örneğin hangi hiyerarşilerin ait olduğunu tanımlar. |
+| ınstancefields | Bir örneğin ve bir örneği tanımlayan herhangi bir statik verinin özellikleri. Bunlar hiyerarşi veya hiyerarşi dışı özelliklerin değerlerini tanımlar, Ayrıca, arama işlemlerini gerçekleştirmek için dizin oluşturmayı da destekler. |
 
 > [!NOTE]
-> Hiyerarşiler örnek alanları kullanılarak oluşturulur. Ek **örnek Alanlar,** diğer örnek özellik tanımları için eklenebilir.
+> Hiyerarşiler örnek alanları kullanılarak oluşturulur. Ek örnek özellik tanımları için ek **ınstancefields** eklenebilir.
 
-Örnekler aşağıdaki JSON gösterimi var:
+Örnekler aşağıdaki JSON gösterimine sahiptir:
 
 ```JSON
 {
@@ -129,29 +129,29 @@ Bir olay kaynağı Zaman Serisi Öngörüleri ortamı için yapılandırıldıkt
 ```
 
 > [!TIP]
-> Zaman Serisi Öngörüler Örnek API ve oluşturmak, okumak, güncelleme küçlükve (CRUD) desteği silmek için, [Veri sorgu makalesini](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) ve [Örnek API REST belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
+> Time Series Insights örneği API 'SI ve oluşturma, okuma, güncelleştirme ve silme (CRUD) desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [örnek API Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)okuyun.
 
-## <a name="time-series-model-hierarchies"></a>Zaman Serisi Model hiyerarşileri
+## <a name="time-series-model-hierarchies"></a>Zaman serisi model hiyerarşileri
 
-Zaman Serisi Model *hiyerarşileri* özellik adlarını ve ilişkilerini belirterek örnekleri düzenler.
+Zaman serisi model *hiyerarşileri* , özellik adlarını ve bunların ilişkilerini belirterek örnekleri düzenler.
 
-Belirli bir Zaman Serisi Öngörüleri ortamında birden çok hiyerarşiyi yapılandırabilirsiniz. Zaman Serisi Modeli örneği, tek bir hiyerarşiyle veya birden çok hiyerarşiyle (çok-çok ilişkisi) eşlenebilir.
+Belirli bir Time Series Insights ortamında birden fazla hiyerarşiyi yapılandırabilirsiniz. Zaman serisi model örneği, tek bir hiyerarşiye veya birden çok hiyerarşiyle (çoktan çoğa ilişki) eşleyebilirsiniz.
 
-[Contoso Wind Farm demo](https://insights.timeseries.azure.com/preview/samples) istemci arabirimi standart bir örnek ve tür hiyerarşisi görüntüler.
+[Contoso rüzgar grubu demo](https://insights.timeseries.azure.com/preview/samples) istemci arabirimi standart bir örnek ve tür hiyerarşisi görüntüler.
 
-[![Zaman Serisi Model hiyerarşisi örneği](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
+[![Zaman serisi modeli hiyerarşisi örneği](media/v2-update-tsm/time-series-model-hierarchies.png)](media/v2-update-tsm/time-series-model-hierarchies.png#lightbox)
 
 ### <a name="hierarchy-definition"></a>Hiyerarşi tanımı
 
-Hiyerarşiler hiyerarşi **id**, **ad**ve **kaynak**tarafından tanımlanır.
+Hiyerarşiler hiyerarşi **kimliği**, **ad**ve **kaynak**tarafından tanımlanır.
 
 | Özellik | Açıklama |
 | ---| ---|
-| id | Hiyerarşi için benzersiz tanımlayıcı, örneğin, bir örnek tanımlarken kullanılır. |
-| ad | Hiyerarşi için bir ad sağlamak için kullanılan bir dize. |
-| source | Kullanıcıların oluşturmak istediği hiyerarşinin yukarıdan aşağıya üst-alt sırası olan kuruluş hiyerarşisini veya yolu belirtir. Üst-alt özellikleri eşlenek örnek alanları. |
+| id | Hiyerarşinin, örneğin bir örnek tanımladığınızda kullanılan benzersiz tanımlayıcısı. |
+| ad | Hiyerarşi için bir ad sağlamak üzere kullanılan dize. |
+| source | Kullanıcıların oluşturmak istedikleri hiyerarşinin üst-alt öğe sırası olan kuruluş hiyerarşisini veya yolunu belirtir. Üst-alt özellikleri eşleme örneği alanları. |
 
-Hiyerarşiler JSON'da şu şekilde temsil edilir:
+Hiyerarşiler JSON içinde şu şekilde temsil edilir:
 
 ```JSON
 {
@@ -182,15 +182,15 @@ Hiyerarşiler JSON'da şu şekilde temsil edilir:
 
 Önceki JSON örneğinde:
 
-* `Location`üst `states` ve alt `cities`ile bir hiyerarşi tanımlar. Her `location` biri `states`birden fazla olabilir, `cities`sırayla birden fazla olabilir.
-* `ManufactureDate`üst `year` ve alt `month`ile bir hiyerarşi tanımlar. Her `ManufactureDate` biri `years`birden fazla olabilir, `months`sırayla birden fazla olabilir.
+* `Location`üst `states` ve alt `cities`öğesi olan bir hiyerarşiyi tanımlar. Her `location` biri birden çok `states`içerebilir, bu da birden fazla `cities`bulunabilir.
+* `ManufactureDate`üst `year` ve alt `month`öğesi olan bir hiyerarşiyi tanımlar. Her `ManufactureDate` biri birden çok `years`içerebilir, bu da birden fazla `months`bulunabilir.
 
 > [!TIP]
-> Zaman Serisi Öngörüler Örneği API ve CRUD desteği için Veri [sorgumakalesini](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) ve [Hiyerarşi API REST belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
+> Time Series Insights örneği API 'SI ve CRUD desteği için, [verileri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini ve [HIYERARŞI API 'si Rest belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)okuyun.
 
 ### <a name="hierarchy-example"></a>Hiyerarşi örneği
 
-**Hiyerarşi H1'in** `building`, ve `floor`onun `room` **örnek Alan Adları** tanımının bir parçası olduğu bir örnek düşünün:
+Bu hiyerarşinin `building`, `floor`, `room` ve hiyerarşisinde **ınstancefieldnames** tanımının bir parçası olarak bulunduğu bir örnek düşünün: **H1**
 
 ```JSON
 {
@@ -206,45 +206,45 @@ Hiyerarşiler JSON'da şu şekilde temsil edilir:
 }
 ```
 
-Önceki tanımda ve birkaç zaman dizisinde kullanılan örnek alanları göz önüne alındığında, hiyerarşi öznitelikleri ve değerleri aşağıdaki tabloda gösterildiği gibi görünür:
+Önceki tanımda ve birkaç zaman serisinde kullanılan örnek alanları verildiğinde, hiyerarşi öznitelikleri ve değerler aşağıdaki tabloda gösterildiği gibi görünür:
 
-| Zaman Serisi Kimliği | Örnek alanlar |
+| Zaman serisi KIMLIĞI | Örnek alanları |
 | --- | --- |
-| ID1 | "bina" = "1000", "kat" = "10", "oda" = "55"  |
-| ID2 | "bina" = "1000", "oda" = "55" |
-| ID3 | "kat" = "10" |
-| ID4 | "bina" = "1000", "kat" = "10"  |
-| ID5 | "Bina", "kat" veya "oda" hiçbiri ayarlı değildir. |
+| ID1 | "derleme" = "1000", "Floor" = "10", "Oda" = "55"  |
+| ID2 | "derleme" = "1000", "Oda" = "55" |
+| ID3 | "Floor" = "10" |
+| ID4 | "derleniyor" = "1000", "Floor" = "10"  |
+| ID5 | Hiçbir "derleme", "kat" veya "Oda" ayarlanmamış. |
 
-Zaman Serisi **ID1** ve **ID4,** [Azure Zaman Serisi Öngörüler gezgininde](time-series-insights-update-explorer.md) **H1** hiyerarşisinin bir parçası olarak görüntülenir, çünkü *bina,* *zemin*ve *oda* parametrelerini tam olarak tanımlamış ve doğru şekilde sıralamış.
+**ID1** ve **ID4** zaman serisi, tam olarak tanımlanmış ve doğru sıralı *oluşturma*, *kat*ve *Oda* parametrelerine sahip olduklarından [Azure Time Series Insights Explorer](time-series-insights-update-explorer.md) 'ın **H1** hiyerarşisinin bir parçası olarak görüntülenir.
 
-Diğerleri, belirtilen veri hiyerarşisine uymadığından *Ebeveynsiz Örnekler* altında sınıflandırılır.
+Bunlar, belirtilen veri hiyerarşisine uygun olmadıkları için, *üst öğe olmayan örnekler* altında sınıflandırılmaktadır.
 
-## <a name="time-series-model-types"></a>Zaman Serisi Model türleri
+## <a name="time-series-model-types"></a>Zaman serisi model türleri
 
-Zaman Serisi Model *türleri,* hesaplamalar yapmak için değişkenleri veya formülleri tanımlamanıza yardımcı olur. Türleri belirli bir Time Series Insights örneği ile ilişkilidir.
+Zaman serisi model *türleri* , hesaplamalar yapmak için değişkenler veya formüller tanımlamanıza yardımcı olur. Türler, belirli bir Time Series Insights örneğiyle ilişkilendirilir.
 
-Bir türbir veya daha fazla değişken olabilir. Örneğin, bir Zaman Serisi Model örneği, *avg sıcaklık,* *min sıcaklığı*ve *maksimum sıcaklık*değişkenlerinden oluşan *sıcaklık sensörü*türünden olabilir.
+Bir tür bir veya daha fazla değişkene sahip olabilir. Örneğin, bir zaman serisi model örneği, *Ortalama sıcaklık*, *en az sıcaklık*ve *en fazla sıcaklık*değişkenleriyle oluşan *sıcaklık algılayıcısı*türünde olabilir.
 
-[Contoso Rüzgar Çiftliği demo,](https://insights.timeseries.azure.com/preview/samples) kendi örnekleri ile ilişkili birkaç Zaman Serisi Model türleri görselleştirir.
+[Contoso rüzgar grubu gösterimi](https://insights.timeseries.azure.com/preview/samples) , ilgili örneklerle Ilişkili çeşitli zaman serisi modeli türlerini görselleştirir.
 
-[![Zaman Serisi Model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
+[![Zaman serisi model türü örneği](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Zaman Serisi Öngörüler Örneği API ve CRUD desteği için Veri [sorgu makalesini](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) ve [Tip API REST belgelerini](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)okuyun.
+> Time Series Insights örneği API 'SI ve CRUD desteği için, [veri sorgulama](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) makalesini okuyun ve [API Rest belgelerini yazın](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Tür özellikleri
 
-Zaman Serisi Model türleri **id,** **isim,** **açıklama**ve **değişkenler**ile tanımlanır.
+Zaman serisi model türleri **kimlik**, **ad**, **Açıklama**ve **değişkenler**tarafından tanımlanır.
 
 | Özellik | Açıklama |
 | ---| ---|
-| id | Türü için UUID. |
-| ad | Türü için bir ad sağlamak için kullanılan bir dize. |
-| açıklama | Türü için bir dize açıklaması. |
-| Değişken | Türle ilişkili değişkenleri belirtin. |
+| id | Türün UUID 'SI. |
+| ad | Tür için bir ad sağlamak üzere kullanılan dize. |
+| açıklama | Tür için bir dize açıklaması. |
+| değişkenlerinin | Türle ilişkili değişkenleri belirtin. |
 
-Türleri aşağıdaki JSON örneğine uygundur:
+Türler aşağıdaki JSON örneğine uyar:
 
 ```JSON
 {
@@ -286,28 +286,28 @@ Türleri aşağıdaki JSON örneğine uygundur:
 
 ### <a name="variables"></a>Değişkenler
 
-Zaman Serisi Öngörüleri türleri, olaylarla ilgili formül ve hesaplama kurallarını belirten birçok değişkene sahip olabilir.
+Time Series Insights türler, olaylar üzerinde formül ve hesaplama kurallarını belirten birçok değişkene sahip olabilir.
 
-Her değişken üç *türden*biri olabilir: *sayısal*, *kategorik*, ve *toplam*.
+Her değişken üç *türden*biri olabilir: *sayısal*, *kategorik*ve *Toplam*.
 
-* **Sayısal** türler sürekli değerlerle çalışır. 
-* **Kategorik** türler, tanımlanmış bir ayrıdeğer kümesiyle çalışır.
-* **Toplam** değerler tek bir tür (tüm sayısal veya tüm kategorik) birden çok değişkeni birleştirir.
+* **Sayısal** türleri sürekli değerlerle çalışır. 
+* **Kategorik** türleri tanımlanmış bir dizi farklı değer kümesiyle çalışır.
+* **Toplama** değerleri, tek bir türdeki birden çok değişkeni (tüm sayısal veya tüm kategorik) birleştirir.
 
-Aşağıdaki tablo, her değişken türü için hangi özelliklerin ilgili olduğunu gösterir.
+Aşağıdaki tabloda, her değişken türü için uygun olan özellikler görüntülenmektedir.
 
-[![Zaman Serisi Model değişken tablosu](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
+[![Zaman serisi modeli değişken tablosu](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
 #### <a name="numeric-variables"></a>Sayısal değişkenler
 
-| Değişken özellik | Açıklama |
+| Variable Özelliği | Açıklama |
 | --- | ---|
-| Değişken filtre | Filtreler, hesaplama için düşünülen satır sayısını kısıtlamak için isteğe bağlı koşullu yan tümcelerdir. |
-| Değişken değer | Cihazdan veya sensörlerden gelen veya Zaman Serisi İfadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenler *Çift*türünden olmalıdır.|
-| Değişken enterpolasyon | Enterpolasyon, varolan verileri kullanarak bir sinyali nasıl yeniden oluşturacağız belirtir. *Sayısal* değişkenler için adım ve *Doğrusal* enterpolasyon seçenekleri mevcuttur. |
-| Değişken toplama | *Avg*, *Min*, *Max*, *Sum*, *Count*, *First*, *Son* ve zaman ağırlıklı (*Avg*, *Min*, *Max*, *Sum*, *Sol*) operatörleri ile destek hesaplama. |
+| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
+| Değişken değeri | Cihaz veya sensörlerden gelen ve zaman serisi Ifadeleri kullanılarak dönüştürülen hesaplama için kullanılan telemetri değerleri. Sayısal tür değişkenleri *Double*türünde olmalıdır.|
+| Değişken ilişkilendirme | Enterpolasyon, var olan verileri kullanarak bir sinyalin nasıl yeniden oluşturulacağını belirtir. *Adım* ve *Doğrusal* enterpolasyon seçenekleri sayısal değişkenler için kullanılabilir. |
+| Değişken toplama | *AVG*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last* ve Time-ağırlıklı (*AVG*, *Min*, *Max*, *Sum*, *Left*) işleçleri ile hesaplamayı destekler. |
 
-Değişkenler aşağıdaki JSON örneğine uygundur:
+Değişkenler aşağıdaki JSON örneğine uyar:
 
 ```JSON
 "Interpolated Speed": {
@@ -330,15 +330,15 @@ Değişkenler aşağıdaki JSON örneğine uygundur:
 
 #### <a name="categorical-variables"></a>Kategorik değişkenler
 
-| Değişken özellik | Açıklama |
+| Variable Özelliği | Açıklama |
 | --- | ---|
-| Değişken filtre | Filtreler, hesaplama için düşünülen satır sayısını kısıtlamak için isteğe bağlı koşullu yan tümcelerdir. |
-| Değişken değer | Cihazdan veya sensörlerden gelen hesaplama için kullanılan telemetri değerleri. Kategorik tür değişkenler *Uzun* veya *String*olmalıdır. |
-| Değişken enterpolasyon | Enterpolasyon, varolan verileri kullanarak bir sinyali nasıl yeniden oluşturacağız belirtir. *Adım* enterpolasyon seçeneği kategorik değişkenler için kullanılabilir. |
-| Değişken kategoriler | Kategoriler, aygıttan gelen değerler veya sensörler arasında bir etikete eşleme oluşturur. |
-| Değişken varsayılan kategori | Varsayılan kategori, "kategoriler" özelliğinde eşlenen olmayan tüm değerler içindir. |
+| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
+| Değişken değeri | Cihazdan veya sensörlerden gelen hesaplama için kullanılan telemetri değerleri. Kategorik tür değişkenleri *Long* veya *String*olmalıdır. |
+| Değişken ilişkilendirme | Enterpolasyon, var olan verileri kullanarak bir sinyalin nasıl yeniden oluşturulacağını belirtir. *Adım* ilişkilendirme seçeneği kategorik değişkenler için kullanılabilir. |
+| Değişken kategorileri | Kategoriler cihazdan veya algılayıcılardan bir etikete gelen değerler arasında bir eşleme oluşturur. |
+| Değişken varsayılan kategorisi | Varsayılan kategori, "Categories" özelliğinde eşlenmemiş tüm değerler içindir. |
 
-Değişkenler aşağıdaki JSON örneğine uygundur:
+Değişkenler aşağıdaki JSON örneğine uyar:
 
 ```JSON
 "Status": {
@@ -368,14 +368,14 @@ Değişkenler aşağıdaki JSON örneğine uygundur:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Toplam değişkenler
+#### <a name="aggregate-variables"></a>Toplam değişkenleri
 
-| Değişken özellik | Açıklama |
+| Variable Özelliği | Açıklama |
 | --- | ---|
-| Değişken filtre | Filtreler, hesaplama için düşünülen satır sayısını kısıtlamak için isteğe bağlı koşullu yan tümcelerdir. |
-| Değişken toplama | *Avg,* *Min,* *Max*, *Sum*, *Count*, *First*, *Last*ile destek hesaplaması . |
+| Değişken filtresi | Filtreler, hesaplama için göz önünde bulundurulmakta olan satır sayısını kısıtlamak için isteğe bağlı Koşullu yan tümcelerdir. |
+| Değişken toplama | *AVG*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*ile hesaplamayı destekler. |
 
-Değişkenler aşağıdaki JSON örneğine uygundur:
+Değişkenler aşağıdaki JSON örneğine uyar:
 
 ```JSON
 "Aggregate Speed": {
@@ -387,12 +387,12 @@ Değişkenler aşağıdaki JSON örneğine uygundur:
 }
 ```
 
-Değişkenler bir zaman serisi modelinin tür tanımında depolanır ve depolanan tanımı geçersiz kılmak için [Sorgu API'leri](time-series-insights-update-tsq.md) aracılığıyla satır satır da sağlanabilir.
+Değişkenler, zaman serisi modelinin tür tanımında depolanır ve depolanan tanımı geçersiz kılmak için [sorgu API 'leri](time-series-insights-update-tsq.md) aracılığıyla satır içi olarak sağlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Zaman Serisi Öngörüleri Önizleme depolama ve giriş'i](./time-series-insights-update-storage-ingress.md)okuyun.
+- [Azure Time Series Insights önizleme depolama ve](./time-series-insights-update-storage-ingress.md)giriş makalesini okuyun.
 
-- Azure Zaman Serisi [Öngörüleri Önizlemesinde Veri modellemesinde](./time-series-insights-update-how-to-tsm.md) sık karşılaşılan Zaman Serisi Modeli işlemleri hakkında bilgi edinin
+- [Azure Time Series Insights önizlemede veri modellemesinde](./time-series-insights-update-how-to-tsm.md) yaygın zaman serisi modeli işlemleri hakkında bilgi edinin
 
-- Yeni [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.
+- Yeni [zaman serisi modeli](https://docs.microsoft.com/rest/api/time-series-insights/preview-model) başvuru belgelerini okuyun.

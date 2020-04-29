@@ -1,6 +1,6 @@
 ---
-title: Azure CDN'de sorun giderme dosya sıkıştırma | Microsoft Dokümanlar
-description: Azure CDN dosya sıkıştırma ile ilgili sorunları giderin.
+title: Azure CDN dosya sıkıştırması sorunlarını giderme | Microsoft Docs
+description: Azure CDN dosya sıkıştırmasıyla ilgili sorunları giderin.
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -15,108 +15,108 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476432"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN dosya sıkıştırma sorunlarını giderme
-Bu makale, [CDN dosya sıkıştırma](cdn-improve-performance.md)ile sorunları gidermek yardımcı olur.
+Bu makale, [CDN dosya sıkıştırması](cdn-improve-performance.md)ile ilgili sorunları gidermenize yardımcı olur.
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı da dosyalayabilirsiniz. [Azure Destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**tıklatın.
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**'ı tıklatın.
 
 ## <a name="symptom"></a>Belirti
-Bitiş noktanız için sıkıştırma etkindir, ancak dosyalar sıkıştırılmamış olarak döndürülür.
+Uç noktanız için sıkıştırma etkin, ancak dosyalar sıkıştırılmamış olarak döndürülüyor.
 
 > [!TIP]
-> Dosyalarınızın sıkıştırılmış olarak döndürülüp döndürülmediğini kontrol etmek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [geliştirici araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizle döndürülen HTTP yanıt üstbilgilerini kontrol edin.  `Content-Encoding` **Gzip**, **bzip2**veya **söndürme**değeri ile adlı bir üstbilgi varsa, içeriğiniz sıkıştırılır.
+> Dosyalarınızın sıkıştırılmış döndürülüp döndürülmediğini denetlemek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [Geliştirici Araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizdeki geri döndürülen HTTP yanıt üstbilgilerini denetleyin.  **Gzip**, **bzip2**veya **söndür**değeri `Content-Encoding` ile adlandırılmış bir üst bilgi varsa, içeriğiniz sıkıştırılır.
 > 
-> ![İçerik Kodlama üstbilgi](./media/cdn-troubleshoot-compression/cdn-content-header.png)
+> ![Content-Encoding üst bilgisi](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
 > 
 
 ## <a name="cause"></a>Nedeni
-Çeşitli olası nedenleri vardır, dahil:
+Aşağıdakiler de dahil olmak üzere birkaç olası nedeni vardır:
 
-* İstenen içerik sıkıştırma için uygun değildir.
-* İstenen dosya türü için sıkıştırma etkinleştirildi.
-* HTTP isteği, geçerli bir sıkıştırma türü isteyen bir üstbilgi içermiş.
-* Origin yığınlı içerik gönderiyor.
+* İstenen içerik sıkıştırma için uygun değil.
+* İstenen dosya türü için sıkıştırma etkin değil.
+* HTTP isteği, geçerli bir sıkıştırma türü isteyen bir üstbilgi içermiyordu.
+* Kaynak, öbekli içerik gönderiyor.
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 > [!TIP]
-> Yeni uç noktaları dağıtmada olduğu gibi, CDN yapılandırma değişikliklerinin ağ da yayılması biraz zaman alır.  Genellikle, değişiklikler 90 dakika içinde uygulanır.  CDN bitiş noktanız için sıkıştırmayı ilk kez ayarladıysanız, sıkıştırma ayarlarının PS'lere yayDığından emin olmak için 1-2 saat beklemeyi düşünmelisiniz. 
+> Yeni uç noktalar dağıtımında olduğu gibi, CDN yapılandırma değişikliklerinin ağ üzerinden yayılması biraz zaman alır.  Genellikle, değişiklikler 90 dakika içinde uygulanır.  CDN uç noktanız için ilk kez sıkıştırmayı ayarladıysanız, sıkıştırma ayarlarının pop 'Lara yayıldığından emin olmak için 1-2 saat beklemeyi göz önünde bulundurmanız gerekir. 
 > 
 > 
 
 ### <a name="verify-the-request"></a>İsteği doğrulama
-İlk olarak, istek üzerine hızlı bir akıl sağlığı kontrolü yapmalıyız.  Yapılan istekleri görüntülemek için tarayıcınızın [geliştirici araçlarını](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) kullanabilirsiniz.
+İlk olarak, istek üzerinde hızlı bir göz atın.  Gerçekleştirilen istekleri görüntülemek için tarayıcınızın [geliştirici araçlarını](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) kullanabilirsiniz.
 
-* İsteğin kaynağınıza değil, `<endpointname>.azureedge.net`bitiş noktası URL'nize gönderildiğini doğrulayın.
-* İsteğin bir **Kabul-Kodlama** üstbilgisini içerdiğini ve bu üstbilginin değeri **gzip,** **deflate**veya **bzip2**içerir.
+* İsteğin noktanıza değil, uç nokta URL `<endpointname>.azureedge.net`'nize gönderildiğini doğrulayın.
+* İsteğin bir **Accept-Encoding** üst bilgisi içerdiğini ve bu üstbilginin değeri **gzip**, **söndür**veya **bzip2**içerdiğini doğrulayın.
 
 > [!NOTE]
-> **Akamai profillerinden Azure CDN** yalnızca **gzip** kodlamayı destekler.
+> **Akamai profillerindeki Azure CDN** yalnızca **gzip** kodlamasını destekler.
 > 
 > 
 
-![CDN istek üstbilgi](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
+![CDN istek üstbilgileri](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profiles"></a>Sıkıştırma ayarlarını doğrula (standart CDN profilleri)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Sıkıştırma ayarlarını doğrulama (Standart CDN profilleri)
 > [!NOTE]
-> Bu adım yalnızca CDN profiliniz **Microsoft'tan bir Azure CDN Standardı,** **Verizon'dan Azure CDN Standardı**veya **Akamai profilinden Azure CDN Standardı** ysa geçerlidir. 
+> Bu adım, yalnızca CDN profiliniz **Microsoft 'tan Azure CDN Standart**, **Verizon 'ten standart Azure CDN**veya **Akamai profilinden Azure CDN Standart** olduğunda geçerlidir. 
 > 
 > 
 
-[Azure portalındaki](https://portal.azure.com) bitiş noktanıza gidin ve **Yapıl'ı** tıklatın.
+[Azure Portal](https://portal.azure.com) uç noktanıza gidin ve **Yapılandır** düğmesine tıklayın.
 
 * Sıkıştırmanın etkin olduğunu doğrulayın.
-* Sıkıştırılacak içeriğin sıkıştırılmış biçimler listesine dahil edildiğine göre MIME türünü doğrulayın.
+* Sıkıştırılan içeriğin MIME türünün sıkıştırılmış biçimler listesine dahil edildiğini doğrulayın.
 
 ![CDN sıkıştırma ayarları](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profiles"></a>Sıkıştırma ayarlarını doğrulayın (Premium CDN profilleri)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Sıkıştırma ayarlarını doğrulama (Premium CDN profilleri)
 > [!NOTE]
-> Bu adım yalnızca CDN profiliniz **Verizon profilinden** bir Azure CDN Premium'sa geçerlidir.
+> Bu adım yalnızca CDN profiliniz Verizon profilinden bir **Azure CDN Premium** olduğunda geçerlidir.
 > 
 > 
 
-[Azure portalında](https://portal.azure.com) bitiş noktanıza gidin ve **Yönet** düğmesini tıklatın.  Ek geçit açılacak.  **HTTP Büyük** sekmesinin üzerine gidin, ardından **Önbellek Ayarları'nın** üzerinde gezinin.  **Sıkıştırma'yı**tıklatın. 
+[Azure Portal](https://portal.azure.com) uç noktanıza gidin ve **Yönet** düğmesine tıklayın.  Ek portal açılır.  **Http büyük** sekmesinin üzerine gelin ve ardından **önbellek ayarları** açılır seçeneğinin üzerine gelin.  **Sıkıştırma**' ya tıklayın. 
 
 * Sıkıştırmanın etkin olduğunu doğrulayın.
-* Dosya **Türleri** listesini doğrulayın, MIME türlerinin virgülle ayrılmış bir listesini (boşluk yok) içerir.
-* Sıkıştırılacak içeriğin sıkıştırılmış biçimler listesine dahil edildiğine göre MIME türünü doğrulayın.
+* **Dosya türleri** LISTESININ, MIME türleri için virgülle ayrılmış bir liste (boşluk yok) içerdiğini doğrulayın.
+* Sıkıştırılan içeriğin MIME türünün sıkıştırılmış biçimler listesine dahil edildiğini doğrulayın.
 
-![CDN premium sıkıştırma ayarları](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
+![CDN Premium sıkıştırma ayarları](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>İçeriğin önbelleğe alınmış olduğunu doğrulayın (Verizon CDN profilleri)
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>İçeriğin önbelleğe alındığını doğrulama (Verizon CDN profilleri)
 > [!NOTE]
-> Bu adım yalnızca CDN profiliniz **Verizon'dan** bir Azure CDN Standardı veya Verizon **profilinden Azure CDN Premium** ise geçerlidir.
+> Bu adım yalnızca CDN profiliniz Verizon **Azure CDN veya Verizon profilinden Premium Premium** **'Dan bir Azure CDN Standart** ise geçerlidir.
 > 
 > 
 
-Tarayıcınızın geliştirici araçlarını kullanarak, dosyanın istendiği bölgede önbelleğe alolduğundan emin olmak için yanıt üstaylarını denetleyin.
+Tarayıcınızın geliştirici araçlarını kullanarak, dosyanın istenen bölgede önbelleğe alındığından emin olmak için yanıt üst bilgilerini denetleyin.
 
-* **Sunucu** yanıt üstbilgisini kontrol edin.  Üstbilgi, aşağıdaki örnekte görüldüğü gibi **Platform (POP/Server ID)** biçimine sahip olmalıdır.
-* **X-Önbellek** yanıt üstbilgisini kontrol edin.  Üstbilgi **HIT**okumalısınız.  
+* **Sunucu** yanıt üst bilgisini denetleyin.  Üst bilgi, aşağıdaki örnekte görüldüğü gibi, biçim **platformuna (pop/sunucu kimliği)** sahip olmalıdır.
+* **X-Cache** yanıt üst bilgisini denetleyin.  Üst bilgi **isabet**okuması gerekir.  
 
-![CDN yanıt üstbilgi](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
+![CDN yanıt üstbilgileri](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Dosyanın boyut gereksinimlerini karşıladığını doğrulayın (Verizon CDN profilleri)
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Dosyanın boyut gereksinimlerini karşıladığından emin olun (Verizon CDN profilleri)
 > [!NOTE]
-> Bu adım yalnızca CDN profiliniz **Verizon'dan** bir Azure CDN Standardı veya Verizon **profilinden Azure CDN Premium** ise geçerlidir.
+> Bu adım yalnızca CDN profiliniz Verizon **Azure CDN veya Verizon profilinden Premium Premium** **'Dan bir Azure CDN Standart** ise geçerlidir.
 > 
 > 
 
-Sıkıştırma için uygun olmak için bir dosya aşağıdaki boyut gereksinimlerini karşılaması gerekir:
+Sıkıştırma için uygun olması için bir dosyanın aşağıdaki boyut gereksinimlerini karşılaması gerekir:
 
-* 128 bayttan daha büyük.
-* 1 MB'dan küçük.
+* 128 bayttan büyük.
+* 1 MB 'tan küçük.
 
-### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>**Via** üstbilgiiçin başlangıç sunucusundaki isteği denetleme
-**Via** HTTP üstbilgisi web sunucusuna isteğin bir proxy sunucusu tarafından geçirildiğini gösterir.  İstek bir **Via** üstbilgisi içerdiğinde, Microsoft IIS web sunucuları varsayılan olarak yanıtları sıkıştırmaz.  Bu davranışı geçersiz kılmak için aşağıdakileri gerçekleştirin:
+### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Kaynak sunucudaki isteği bir **Via** üstbilgisi için denetleyin
+**VIA** http üstbilgisi, isteğin bir ara sunucu tarafından geçtiğini Web sunucusuna gösterir.  Microsoft IIS Web sunucuları varsayılan olarak istek bir **Via** üstbilgisi içerdiğinde yanıtları sıkıştırmaz.  Bu davranışı geçersiz kılmak için aşağıdakileri yapın:
 
-* **IIS 6**: [IIS Metabase özelliklerinde HcNoCompressionForxies="FALSE" kümesi](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 ve up**: [Sunucu yapılandırmasında hem **noCompressionForHttp10** hem de **noCompressionForProxies'i** False'a ayarlayın](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**: [IIS metatabanı özelliklerinde Hcnocompressionforproxy = "false" ayarını](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90)) yapın
+* **IIS 7 ve yukarı**: [sunucu yapılandırmasında hem **NoCompressionForHttp10** hem de **nocompressionforproxy** değerlerini false olarak ayarlayın](https://www.iis.net/configreference/system.webserver/httpcompression)
 

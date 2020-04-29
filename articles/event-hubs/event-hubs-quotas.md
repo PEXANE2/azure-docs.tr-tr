@@ -1,6 +1,6 @@
 ---
-title: Kotalar ve limitler - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
-description: Bu makalede, Azure Olay Hub'ları için sınırlar ve kotalar sağlanmaktadır. Örneğin, abonelik başına ad alanı sayısı, ad alanı başına olay hub'ı sayısı.
+title: Kotalar ve sınırlar-Azure Event Hubs | Microsoft Docs
+description: Bu makalede, Azure Event Hubs için sınırlamalar ve Kotalar sağlanmıştır. Örneğin, abonelik başına ad alanı sayısı, ad alanı başına Olay Hub 'ları sayısı.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: bbe747228fa2f587bc1369c3cb1fbbc91d1817e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76309549"
 ---
 # <a name="azure-event-hubs-quotas-and-limits"></a>Azure Event Hubs kotaları ve sınırları
 
-Bu bölümde Azure Etkinlik Hub'larında temel kotalar ve sınırlar listelenmidir.
+Bu bölümde, Azure Event Hubs 'deki temel kotalar ve sınırlar listelenmektedir.
 
 [!INCLUDE [event-hubs-limits](../../includes/event-hubs-limits.md)]
 
@@ -32,6 +32,6 @@ Bu bölümde Azure Etkinlik Hub'larında temel kotalar ve sınırlar listelenmid
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Olay Hub'larına genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub'ları Otomatik Şişirme](event-hubs-auto-inflate.md)
+* [Event Hubs genel bakış](event-hubs-what-is-event-hubs.md)
+* [Event Hubs otomatik Şişir](event-hubs-auto-inflate.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

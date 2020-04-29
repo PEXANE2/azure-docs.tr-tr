@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub TLS desteği
-description: IoT Hub ile iletişim kuran aygıtlar ve hizmetler için güvenli TLS bağlantılarını kullanmanın en iyi uygulamaları
+description: IoT Hub ile iletişim kuran cihazlar ve hizmetler için güvenli TLS bağlantıları kullanmanın en iyi yöntemleri
 services: iot-hub
 author: rezasherafat
 ms.service: iot-fundamentals
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
 ms.openlocfilehash: 7ab3b48d22f116a707f68cbf6284928c7d2557e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409520"
 ---
-# <a name="tls-support-in-iot-hub"></a>IoT Hub'da TLS desteği
+# <a name="tls-support-in-iot-hub"></a>IoT Hub 'de TLS desteği
 
-IoT Hub, IoT aygıtlarından ve hizmetlerinden gelen bağlantıları güvence altına almak için Aktarım Katmanı Güvenliği'ni (TLS) kullanır. TLS protokolünün üç sürümü şu anda desteklenir: 1.0, 1.1 ve 1.2 sürümleri.
+IoT Hub IoT cihazlarından ve hizmetlerinden gelen bağlantıları güvenli hale getirmek için Aktarım Katmanı Güvenliği 'ni (TLS) kullanır. TLS protokolünün üç sürümü şu anda desteklenmektedir. 1,0, 1,1 ve 1,2 sürümleri.
 
-TLS 1.0 ve 1.1 eski olarak kabul edilir ve amortisman için planlanmıştır. Daha fazla bilgi [için, IoT Hub için TLS 1.0 ve 1.1'i amortismana](iot-hub-tls-deprecating-1-0-and-1-1.md)alma bölümüne bakın. IoT Hub'a bağlanırken TLS 1.2'yi tercih edilen TLS sürümü olarak kullanmanız önerilir.
+TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için planlanmaktadır. Daha fazla bilgi için bkz. [IoT Hub IÇIN TLS 1,0 ve 1,1 kullanımdan](iot-hub-tls-deprecating-1-0-and-1-1.md)kaldırılıyor. IoT Hub bağlanırken tercih edilen TLS sürümü olarak TLS 1,2 kullanmanız önemle önerilir.
 
-## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>IoT Hub kaynağınızdaki bağlantıları TLS 1,2 ile sınırlandırın
+## <a name="restrict-connections-to-tls-12-in-your-iot-hub-resource"></a>IoT Hub kaynağınız içindeki TLS 1,2 bağlantılarını kısıtla
 
-Daha fazla güvenlik için, IoT Hub'larınızı *yalnızca* TLS sürüm 1.2 kullanan istemci bağlantılarına izin verecek şekilde yapılandırmanız ve [önerilen şifrelerin](#recommended-ciphers)kullanımını zorlamanız önerilir.
+Ek güvenlik için, IoT Hub 'larınızı *yalnızca* TLS sürüm 1,2 kullanan istemci bağlantılarına izin verecek şekilde yapılandırmanız ve [Önerilen şifrelemelerin](#recommended-ciphers)kullanımını zorunlu hale getirilmesi önerilir.
 
-Bu amaçla, [desteklenen bölgelerden](#supported-regions) herhangi birinde yeni bir IoT `minTlsVersion` Hub'ı sağlama ve özelliği `1.2` Azure Kaynak Yöneticisi şablonunuzun IoT hub kaynak belirtimine ayarlayın:
+Bu amaçla, [desteklenen bölgelerin](#supported-regions) herhangi birinde yeni bir IoT Hub sağlayın ve `minTlsVersion` özelliğini Azure Resource Manager şablonunuzun IoT Hub kaynak belirtiminde `1.2` olarak ayarlayın:
 
 ```json
 {
@@ -49,14 +49,14 @@ Bu amaçla, [desteklenen bölgelerden](#supported-regions) herhangi birinde yeni
 }
 ```
 
-Bu yapılandırmayı kullanan oluşturulan IoT Hub kaynağı, TLS 1.0 ve 1.1 sürümlerini kullanarak bağlanmaya çalışan aygıt ve servis istemcilerini reddeder. Benzer şekilde, istemci HELLO mesajı [önerilen şifrelerin](#recommended-ciphers)herhangi birini listelemiyorsa TLS el sıkışma sıyrık reddedilecektir.
+Bu yapılandırmayı kullanan oluşturulan IoT Hub kaynak, 1,0 ve 1,1 TLS sürümlerini kullanarak bağlanmayı deneyen cihaz ve hizmet istemcilerini reddeder. Benzer şekilde, istemci Merhaba iletisi [Önerilen şifrelemelerin](#recommended-ciphers)hiçbirini LISTELEMEZ ise TLS el sıkışması reddedilir.
 
 > [!NOTE]
-> Özellik `minTlsVersion` salt okunur ve IoT Hub kaynağınız oluşturulduktan sonra değiştirilemez. Bu *nedenle, tüm* IoT cihazlarınızın ve hizmetlerinizin TLS 1.2 ve önerilen [şifrelerle](#recommended-ciphers) önceden uyumlu olduğunu doğrubir şekilde test etmeniz ve doğrulamanız esastır.
+> `minTlsVersion` Özelliği salt okunurdur ve IoT Hub kaynağınız oluşturulduktan sonra değiştirilemez. Bu nedenle, *Tüm* IoT cihazlarınızın ve hizmetlerinizin TLS 1,2 ile uyumlu olduğunu ve [Önerilen şifrelemeleri](#recommended-ciphers) önceden test etmek ve doğrulamak önemlidir.
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
-TLS 1.2 kullanımını gerektiren IoT Hub'ları aşağıdaki bölgelerde oluşturulabilir:
+TLS 1,2 kullanımını gerektiren IoT Hub 'Ları aşağıdaki bölgelerde oluşturulabilir:
 
 * Doğu ABD
 * Orta Güney ABD
@@ -65,30 +65,30 @@ TLS 1.2 kullanımını gerektiren IoT Hub'ları aşağıdaki bölgelerde oluştu
 * US Gov Virginia
 
 > [!NOTE]
-> Başarısız olduktan sonra, `minTlsVersion` IoT Hub'ınızın özelliği, başarısız lık sonrası coğrafi eşleştirilmiş bölgede etkili olmaya devam edecektir.
+> Yük devretme sonrasında, IoT Hub `minTlsVersion` özelliği, coğrafi olarak eşleştirilmiş bölgenin yük devretmesinde etkili olmaya devam edecektir.
 
-### <a name="recommended-ciphers"></a>Önerilen şifreler
+### <a name="recommended-ciphers"></a>Önerilen şifrelemeler
 
-Yalnızca TLS 1.2 kabul edecek şekilde yapılandırılan IoT Hub'ları da aşağıdaki önerilen şifrelerin kullanımını zorunlu kılabilir:
+Yalnızca TLS 1,2 ' i kabul edecek şekilde yapılandırılan IoT Hub 'Ları, aşağıdaki önerilen şifrelemelerin kullanımını da zorunlu tutar:
 
 * `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
 
-### <a name="use-tls-12-in-your-iot-hub-sdks"></a>TLS 1.2'yi IoT Hub SDK'larınızda kullanın
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>IoT Hub SDK 'larınız için TLS 1,2 kullanın
 
-TLS 1.2'yi yapılandırmak ve IoT Hub istemci SDK'larında şifrelere izin vermek için aşağıdaki bağlantıları kullanın.
+IoT Hub istemci SDK 'lerinde TLS 1,2 ve izin verilen şifrelemeleri yapılandırmak için aşağıdaki bağlantıları kullanın.
 
-| Dil | TLS 1.2'yi destekleyen sürümler | Belgeler |
+| Dil | TLS 1,2 destekleyen sürümler | Belgeler |
 |----------|------------------------------------|---------------|
-| C        | Etiket 2019-12-11 veya yeni            | [Bağlantı](https://aka.ms/Tls_C_SDK_IoT) |
-| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantı](https://aka.ms/Tls_Python_SDK_IoT) |
-| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_CSharp_SDK_IoT) |
-| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Java_SDK_IoT) |
-| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantı](https://aka.ms/Tls_Node_SDK_IoT) |
+| C        | Etiket 2019-12-11 veya üzeri            | [Bağlantısının](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Sürüm 2.0.0 veya daha yeni             | [Bağlantısının](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Sürüm 1.21.4 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Sürüm 1.19.0 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Sürüm 1.12.2 veya daha yeni            | [Bağlantısının](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
-### <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunuzda TLS 1.2'yi kullanın
+### <a name="use-tls-12-in-your-iot-edge-setup"></a>IoT Edge kurulumunda TLS 1,2 kullanma
 
-IoT Edge aygıtları, IoT Hub ile iletişim kurarken TLS 1.2 kullanacak şekilde yapılandırılabilir. Bu amaçla, [IoT Edge dokümantasyon sayfasını](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)kullanın.
+IoT Edge cihazlar, IoT Hub iletişim kurarken TLS 1,2 kullanacak şekilde yapılandırılabilir. Bu amaçla [IoT Edge belge sayfasını](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md)kullanın.

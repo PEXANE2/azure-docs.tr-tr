@@ -1,70 +1,70 @@
 ---
-title: Azure Blockchain Hizmeti sınırları
-description: Azure Blockchain Hizmeti'nde hizmete ve işlevsel sınırlara genel bakış
+title: Azure blok zinciri hizmeti sınırları
+description: Azure blok zinciri hizmetindeki hizmet ve işlevsel sınırlara genel bakış
 ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
 ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676528"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Hizmetinde Sınırlar
+# <a name="limits-in-azure-blockchain-service"></a>Azure blok zinciri hizmeti sınırları
 
-Azure Blockchain Hizmeti, bir üyenin sahip olabileceği düğüm sayısı, konsorsiyum kısıtlamaları ve depolama tutarları gibi hizmet ve işlevsel sınırlara sahiptir.
+Azure blok zinciri hizmeti, bir üyenin sahip olduğu düğüm sayısı, konsorsiyum kısıtlamaları ve depolama tutarları gibi hizmet ve işlevsel sınırlara sahiptir.
 
 ## <a name="pricing-tier"></a>Fiyatlandırma katmanı
 
-İşlemler ve geçerlidüğümlerle ilgili maksimum sınırlar, Azure Blockchain Hizmetini temel veya standart fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
+İşlem ve doğrulayıcı düğümlerine yönelik en fazla sınır, Azure blok zinciri hizmetini temel veya standart fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
 
-| Fiyatlandırma katmanı | Maksimum hareket düğümleri | Maksimum geçerlilik düğümleri |
+| Fiyatlandırma katmanı | En fazla işlem düğümleri | En fazla Doğrulayıcı düğümleri |
 |:---|:---:|:---:|
 | Temel | 10 | 1 |
 | Standart | 10 | 2 |
 
-Konsorsiyum ağınızın en az iki Azure Blockchain Hizmeti standart katman düğümü olmalıdır. Standart katman düğümleri iki doğrulayıcı düğüm içerir. [İstanbul Bizans Fay Toleransı konsensüsünü](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)karşılamak için dört doğrulayıcı düğüm gereklidir.
+Konsorsiyumun ağınız, en az iki Azure blok zinciri hizmeti standart katman düğümüne sahip olmalıdır. Standart katman düğümleri iki Doğrulayıcı düğümü içerir. [Istanbul Byzantine hata toleransı konsensus](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)' i karşılamak için dört Doğrulayıcı düğümü gerekir.
 
-Temel katmanı kullanmak geliştirme, test ve kavramların kanıtı içindir. Üretim sınıfı dağıtımları için standart katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız.
+Temel katmanı kullanarak geliştirme, test etme ve kavram kanıtı vardır. Üretim sınıfı dağıtımları için standart katmanı kullanın. Ayrıca, blok Veri Yöneticisi Zinciri kullanıyorsanız veya yüksek hacimli özel işlemler gönderiyorsanız *Standart* katmanı da kullanmanız gerekir.
 
-Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
+Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanını değiştirmek desteklenmez.
 
 ## <a name="storage-capacity"></a>Depolama kapasitesi
 
-Genel muhasebe verileri ve günlükleri için düğüm başına kullanılabilecek maksimum depolama miktarı 1,8 terabayttır.
+Muhasebe verileri ve Günlükler için düğüm başına kullanılabilecek maksimum depolama alanı miktarı 1,8 terabayt 'dir.
 
-Azalan genel muhasebe ve günlük depolama boyutu desteklenmez.
-## <a name="consortium-limits"></a>Konsorsiyum limitleri
+Azalan defter ve günlük depolama boyutu desteklenmiyor.
+## <a name="consortium-limits"></a>Konsorsiyum sınırları
 
-* **Konsorsiyum ve üye adları** Azure Blockchain Hizmeti'ndeki diğer konsorsiyum ve üye adlardan benzersiz olmalıdır.
+* **Konsorsiyumun ve üye adlarının** Azure blok zinciri hizmetindeki diğer konsorsiyum ve üye adlarından benzersiz olması gerekir.
 
 * **Üye ve konsorsiyum adları değiştirilemez**
 
-* **Konsorsiyumdaki tüm üyeler aynı fiyatlandırma katmanında olmalıdır**
+* **Bir konsorsiyumun tüm üyeleri aynı fiyatlandırma katmanında olmalıdır**
 
-* **Konsorsiyuma katılan tüm üyeler aynı bölgede ikamet etmelidir.**
+* **Bir konsorsiyumde katılan tüm Üyeler aynı bölgede bulunmalıdır**
 
-    Bir konsorsiyumda oluşturulan ilk üye bölgeyi belirler. Konsorsiyuma davet edilen üyelerin ilk üyeyle aynı bölgede ikamet etmesi gerekmektedir. Tüm üyelerin aynı bölgeyle sınırlandırılması, ağ konsensüsunun olumsuz etkilenmemesini sağlamaya yardımcı olur.
+    Bir konsorsiyda oluşturulan ilk üye bölgeyi belirler. Bir konsorsiyumye davet edilen Üyeler ilk üyeyle aynı bölgede bulunmalıdır. Tüm üyelerin aynı bölgeye sınırlandırılması, ağ konsensus 'in olumsuz şekilde etkilenmemesini sağlamaya yardımcı olur.
 
-* **Bir konsorsiyumun en az bir yöneticisi olmalıdır**
+* **Konsorsiyumun en az bir Yöneticisi olmalıdır**
 
-    Konsorsiyumda yalnızca bir yönetici varsa, konsorsiyuma başka bir yönetici eklenene veya terfi ettirilene kadar kendilerini konsorsiyumdan kaldıramazlar veya üyelerini silemezler.
+    Bir konsorsiyumda yalnızca bir yönetici varsa, bu kullanıcılar kendi konsorsiyumdan kaldıramazlar veya konsorsiyumun başka bir Yöneticisi eklenip yükseltilene kadar üyelerini silmez.
 
-* **Konsorsiyumdan çıkarılan üyeler bir daha eklenemez**
+* **Konsorsiyumun kaldırıldığı Üyeler yeniden eklenemez**
 
-    Bunun yerine, konsorsiyuma katılmaya ve yeni bir üye oluşturmak için yeniden davet edilmeleri gerekir. Geçmiş işlemleri korumak için varolan üye kaynakları silinmez.
+    Bunun yerine, konsorsiyumun katılması için yeniden davet edilmesi ve yeni bir üye oluşturulması gerekir. Geçmiş işlemleri korumak için mevcut üye kaynakları silinmez.
 
-* **Konsorsiyumdaki tüm üyeler aynı genel muhasebe sürümünü kullanmalıdır**
+* **Bir konsorsiyumun tüm üyeleri aynı muhasebe sürümünü kullanıyor olmalıdır**
 
-    Azure Blockchain Hizmeti'nde bulunan yama, güncelleştirmeler ve genel muhasebe sürümleri hakkında daha fazla bilgi için [bkz.](ledger-versions.md)
+    Azure blok zinciri hizmeti 'nde kullanılabilen düzeltme eki, güncelleştirmeler ve genel muhasebe sürümleri hakkında daha fazla bilgi için bkz. [düzeltme eki uygulama, güncelleştirmeler ve sürümler](ledger-versions.md).
 
 ## <a name="performance"></a>Performans
 
-Her işlem gönderimi için *eth.estimate* gaz işlevini kullanmayın. *Eth.estimate* işlevi bellek yoğundur. İşlevi birden çok kez çağırmak, saniyede hareketleri önemli ölçüde azaltır.
+Her işlem gönderimi için *ETH. tahmin* gaz işlevini kullanmayın. *ETH. tahmin* işlevi bellek açısından yoğun. İşlevi birden çok kez çağırmak, saniye başına işlem azaltır.
 
-Mümkünse, işlemleri göndermek için konservatif bir gaz değeri kullanın ve *eth.estimate*kullanımını en aza indirin.
+Mümkünse, işlem göndermek için bir klasik gaz değeri kullanın ve *ETH. tahmin*kullanımını en aza indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yama, güncellemeler ve sürümler - [Yama](ledger-versions.md)lama ve yükseltmelerle ilgili politikalar hakkında daha fazla bilgi edinin.
+Sistem düzeltme eki uygulama [, güncelleştirmeler ve sürümler](ledger-versions.md)hakkında daha fazla bilgi edinin.

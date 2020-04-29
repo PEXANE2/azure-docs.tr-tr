@@ -1,5 +1,5 @@
 ---
-title: Azure portalını kullanarak şirket içi kodlayıcılarla canlı akış | Microsoft Dokümanlar
+title: Azure portal kullanarak şirket içi kodlayıcılarla canlı akış | Microsoft Docs
 description: Bu öğretici, doğrudan teslimat için yapılandırılmış bir Kanal oluşturmaya ilişkin adımları anlatmaktadır.
 services: media-services
 documentationcenter: ''
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162761"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portalLarını kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirin
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Azure portal kullanarak şirket içi kodlayıcılarla canlı akış gerçekleştirme
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
 Bu öğretici, Azure portal kullanarak doğrudan teslimat için yapılandırılmış bir **Kanal** oluşturmaya ilişkin adımları anlatmaktadır. 
 
@@ -54,8 +54,8 @@ Aşağıdaki adımlar, doğrudan teslimat için yapılandırılan kanalları kul
 > [!NOTE]
 > İçerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumunda olduğundan emin olun. 
     
-1. Bilgisayara bir video kamera bağlayın. <br/>Kurulum fikirleri için, [Basit ve taşınabilir olay video dişli kurulum]( https://link.medium.com/KNTtiN6IeT)göz atın.
-1. Çoklu bit hızlı RTMP ya da Parçalı MP4 akışı çıktısı veren bir şirket içi gerçek zamanlı kodlayıcı çalıştırın ve yapılandırın. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Ayrıca, bu bloggöz atın: [OBS ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
+1. Bilgisayara bir video kamera bağlayın. <br/>Kurulum fikirleri için [basit ve taşınabilir olay video dişli kurulumuna]( https://link.medium.com/KNTtiN6IeT)göz atın.
+1. Çoklu bit hızlı RTMP ya da Parçalı MP4 akışı çıktısı veren bir şirket içi gerçek zamanlı kodlayıcı çalıştırın ve yapılandırın. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
    
     Bu adım, Kanalınızı oluşturduktan sonra da gerçekleştirilebilir.
 1. Geçiş Kanalı oluşturun ve başlatın.

@@ -1,6 +1,6 @@
 ---
-title: Dağıtılmış veriler – Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
-description: PostgreSQL için Azure Veritabanı'nda dağıtılmış tablolar, başvuru tabloları, yerel tablolar ve kırıklar hakkında bilgi edinin.
+title: Dağıtılmış veri – Hyperscale (Citus)-PostgreSQL için Azure veritabanı
+description: PostgreSQL için Azure veritabanı 'nda dağıtılmış tablolar, başvuru tabloları, yerel tablolar ve parçalar hakkında bilgi edinin.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,50 +8,50 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243659"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure Veritabanında dağıtılmış veriler – Hyperscale (Citus)
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda dağıtılmış veriler – hiper ölçek (Citus)
 
-Bu makalede, PostgreSQL için Azure Veritabanı'ndaki üç tablo türü özetlenmiştir - Hyperscale (Citus).
-Dağıtılmış tabloların parça olarak nasıl depolanır ve düğümlere parçaların nasıl yerleştirildiğini gösterir.
+Bu makalede PostgreSQL için Azure veritabanı 'nın (Citus) üç tablo türü özetlenmektedir.
+Dağıtılmış tabloların parçalar halinde nasıl depolandığını ve parçaların düğümlerin üzerine yerleştirilme şeklini gösterir.
 
 ## <a name="table-types"></a>Tablo türleri
 
-Bir Hyperscale (Citus) sunucu grubunda, her biri farklı amaçlar için kullanılan üç tür tablo vardır.
+Her biri farklı amaçlar için kullanılan bir hiper ölçek (Citus) sunucu grubunda üç tür tablo vardır.
 
-### <a name="type-1-distributed-tables"></a>Tip 1: Dağıtılmış tablolar
+### <a name="type-1-distributed-tables"></a>Tür 1: dağıtılmış tablolar
 
-İlk tür ve en yaygın, dağıtılmış tablolar. SQL deyimleri için normal tablolar gibi görünürler, ancak alt düğümler arasında yatay olarak bölümlere ayrılmıştır. Bunun anlamı, tablonun satırlarının parça adı verilen parça tablolarda farklı düğümlerde depolanmasıdır.
+İlk tür ve en yaygın, dağıtılmış tablolardır. Bunlar SQL deyimlerine normal tablolar gibi görünürler, ancak bunlar alt düğümlerde yatay olarak bölümlendirilir. Bunun anlamı, tablo satırlarının parçalar olarak adlandırılan parça tablolarında farklı düğümlerde depolanmasıdır.
 
-Hyperscale (Citus) bir küme boyunca yalnızca SQL değil, DDL deyimlerini de çalıştırAr.
-Dağıtılmış bir tablonun şemasını değiştirme, tablonun tüm parçalarını çalışanlar arasında güncelleştirmek için basamaklar.
+Hiper ölçek (Citus), küme genelinde yalnızca SQL ancak DDL deyimlerini değil.
+Dağıtılmış tablo basamaklarının şemasını değiştirerek tüm tablo parçaları çalışanlar arasında güncelleştirin.
 
 #### <a name="distribution-column"></a>Dağıtım sütunu
 
-Hyperscale (Citus), satırları kırıklara atamak için algoritmik parçalama kullanır. Atama, dağıtım sütunu adı verilen bir tablo sütununun değerine göre deterministically yapılır. Küme yöneticisi, bir tablo dağıtırken bu sütunu belirlemelidir.
-Doğru seçimi yapmak performans ve işlevsellik için önemlidir.
+Hiper ölçek (Citus), parçaları parçalara eklemek için algoritmik parçalama kullanır. Atama, dağıtım sütunu olarak adlandırılan tablo sütununun değerine göre belirleyici olarak yapılır. Küme yöneticisinin bir tabloyu dağıtırken bu sütunu belirlemesi gerekir.
+Performans ve işlevsellik için doğru seçimi yapmak önemlidir.
 
-### <a name="type-2-reference-tables"></a>Tip 2: Başvuru tabloları
+### <a name="type-2-reference-tables"></a>Tür 2: başvuru tabloları
 
-Başvuru tablosu, tüm içeriği tek bir parçaya yoğunlaşmış dağıtılmış tablo türüdür. Parça her işçide kopyalanır. Herhangi bir çalışandaki sorgular, başka bir düğümden satır isteme ağı yükü olmadan başvuru bilgilerine yerel olarak erişebilir. Satır başına ayrı parçaları ayırmaya gerek olmadığından, başvuru tablolarının dağıtım sütunu yoktur.
+Başvuru tablosu, tüm içerikleri tek bir parça halinde yoğunlaştı olan bir dağıtılmış tablo türüdür. Parça her çalışan üzerinde çoğaltılır. Herhangi bir çalışan sorguları, başka bir düğümden satır isteme ağ ek yükü olmadan başvuru bilgilerine yerel olarak erişebilir. Satır başına ayrı parçaları ayırt etmenize gerek olmadığı için başvuru tablolarında dağıtım sütunu yoktur.
 
-Başvuru tabloları genellikle küçüktür ve herhangi bir alt düğümüzerinde çalışan sorgularla ilgili verileri depolamak için kullanılır. Örnek, sipariş durumları veya ürün kategorileri gibi numaralandırılmış değerlerdir.
+Başvuru tabloları genellikle küçüktür ve herhangi bir çalışan düğümünde çalışan sorgularla ilgili verileri depolamak için kullanılır. Sipariş durumları veya ürün kategorileri gibi bir örnek olarak numaralandırılan değerler aşağıda bulunur.
 
-### <a name="type-3-local-tables"></a>Tür 3: Yerel tablolar
+### <a name="type-3-local-tables"></a>Tür 3: yerel tablolar
 
-Hyperscale (Citus) kullandığınızda, bağlandığınız koordinatör düğüm normal bir PostgreSQL veritabanıdır. Koordinatör üzerinde sıradan tablolar oluşturabilir ve bunları parçalamayarak seçim ememezsiniz.
+Hyperscale (Citus) kullandığınızda, bağlandığınız düzenleyici düğümü normal bir PostgreSQL veritabanıdır. Düzenleyici üzerinde sıradan tablolar oluşturabilir ve bunları parçalara parçalamayı seçemezsiniz.
 
-Yerel tablolar için iyi bir aday, birleştirme sorgularına katılmayan küçük yönetim tabloları olacaktır. Bir örnek, uygulama oturum açma ve kimlik doğrulaması için bir kullanıcı tablosudur.
+Yerel tablolar için iyi bir aday, JOIN sorgularına katılmayan küçük yönetim tabloları olacaktır. Bir örnek, uygulama oturum açma ve kimlik doğrulama için bir Kullanıcı tablosudur.
 
-## <a name="shards"></a>Kırıklar
+## <a name="shards"></a>Parçalar
 
-Önceki bölümde, dağıtılmış tabloların alt düğümlerde kırık olarak nasıl depolandığı açıklanmıştır. Bu bölümde daha fazla teknik ayrıntı tartışılmaktadır.
+Önceki bölümde, dağıtılmış tabloların çalışan düğümlerinde parçalar halinde nasıl depolandığı açıklanmıştır. Bu bölümde daha fazla teknik ayrıntı açıklanmaktadır.
 
-Koordinatörteki meta veri tablosu, `pg_dist_shard` sistemdeki her dağıtılmış tablonun her parçası için bir satır içerir. Satır, karma alanda (parça değeri, shardmaxvalue) tamsayı aralığıyla bir parça kimliğiyle eşleşir.
+Düzenleyicinizdeki `pg_dist_shard` meta veri tablosu, sistemdeki her bir dağıtılmış tablonun her biri için bir satır içerir. Satır bir karma alanındaki (shardminvalue, shardmaxvalue) bir dizi tamsayının bulunduğu parça KIMLIĞIYLE eşleşir.
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Koordinatör düğüm hangi parçanın `github_events`bir satır tuttuğunu belirlemek istiyorsa, satırdaki dağıtım sütununun değerini işşer. Daha sonra shard\'s aralığının haşlanmış değerini içeren düğüm denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimleri olacak şekilde tanımlanır.
+Düzenleyici düğümü, hangi parçanın bir satırı bulundurduğunu belirleme istiyorsa `github_events`, satırdaki dağıtım sütununun değerini karma hale getirir. Sonra düğüm, hangi\'parça aralığının karma değeri içerdiğini denetler. Aralıklar, karma işlevin görüntüsünün ayrık birleşimi olması için tanımlanır.
 
-### <a name="shard-placements"></a>Parça yerleşimleri
+### <a name="shard-placements"></a>Parça yerleştirme
 
-102027'nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, işçilerden birinde adı `github_events_102027` verilen bir tabloda okunur veya yazılır. Hangi işçi? Bu tamamen meta veri tabloları tarafından belirlenir. Parçanın işçiye eşlenemesi, parça yerleşimi olarak bilinir.
+Parça 102027 ' nin söz konusu satırla ilişkili olduğunu varsayalım. Satır, çalışanlarından birinde çağrılan `github_events_102027` bir tabloda okunabilir veya yazılır. Hangi çalışan? Bu, tamamen meta veri tabloları tarafından belirlenir. Parça ile çalışan arasındaki eşleme, parça yerleşimi olarak bilinir.
 
-Koordinatör düğüm, sorguları belirli tablolara başvuran parçalar halinde `github_events_102027` yeniden yazar ve bu parçaları uygun işçiler üzerinde çalıştırın. Burada, basılı kimlik 102027 tutan düğümü bulmak için arka planda çalıştırılatan bir sorgu örneği verilmiştir.
+Düzenleyici düğümü, gibi `github_events_102027` belirli tablolara başvuran ve ilgili çalışanlar üzerinde bu parçaları çalıştıran parçalara sorguları yeniden yazar. Parça KIMLIĞI 102027 olan düğümü bulmak için arka planda çalıştırılan bir sorgu örneği aşağıda verilmiştir.
 
 ```sql
 SELECT
@@ -91,4 +91,4 @@ WHERE shardid = 102027;
     └─────────┴───────────┴──────────┘
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Dağıtılmış tablolar için [dağıtım sütunu](concepts-hyperscale-choose-distribution-column.md) nasıl seçeceğinizi öğrenin.
+- Dağıtılmış tablolar için [bir dağıtım sütunu seçme](concepts-hyperscale-choose-distribution-column.md) hakkında bilgi edinin.

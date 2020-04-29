@@ -1,7 +1,7 @@
 ---
-title: Her Zaman Açık VPN tünelini yapılandırma
+title: Her zaman açık VPN tüneli yapılandırma
 titleSuffix: Azure Virtual WAN
-description: Virtual WAN için Her Zaman VPN aygıt tünelini yapılandırma adımları
+description: Sanal WAN için Always on VPN cihaz tüneli yapılandırma adımları
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: cherylmc
 ms.openlocfilehash: e3eea639eaa52c07e877476e9215144e916618d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502860"
 ---
-# <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Virtual WAN için Her Zaman VPN aygıt tünelini yapılandırma
+# <a name="configure-an-always-on-vpn-device-tunnel-for-virtual-wan"></a>Sanal WAN için Always on VPN cihaz tüneli yapılandırma
 
 [!INCLUDE [intro](../../includes/vpn-gateway-vwan-always-on-intro.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bir noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Talimatlar için aşağıdaki bölümlere bakın:
+Noktadan siteye yapılandırma oluşturmanız ve sanal hub atamasını düzenlemeniz gerekir. Yönergeler için aşağıdaki bölümlere bakın:
 
 * [P2S yapılandırması oluşturma](virtual-wan-point-to-site-portal.md#p2sconfig)
-* [Hub atamasını değiştirme](virtual-wan-point-to-site-portal.md#edit)
+* [Hub atamasını düzenleme](virtual-wan-point-to-site-portal.md#edit)
 
-## <a name="configure-the-device-tunnel"></a>Aygıt tünelini yapılandırma
+## <a name="configure-the-device-tunnel"></a>Cihaz tüneli yapılandırma
 
 [!INCLUDE [device tunnel](../../includes/vpn-gateway-vwan-always-on-device.md)]
 
-## <a name="to-remove-a-profile"></a>Profili kaldırmak için
+## <a name="to-remove-a-profile"></a>Bir profili kaldırmak için
 
 Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
@@ -38,4 +38,4 @@ Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sanal WAN hakkında daha fazla bilgi için [SSS](virtual-wan-faq.md)bölümüne bakın.
+Sanal WAN hakkında daha fazla bilgi için bkz. [SSS](virtual-wan-faq.md).

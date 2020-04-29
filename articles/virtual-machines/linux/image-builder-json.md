@@ -1,6 +1,6 @@
 ---
-title: Azure Resim Oluşturucu şablonu oluşturma (önizleme)
-description: Azure Image Builder ile kullanılacak bir şablonu nasıl oluşturabilirsiniz öğrenin.
+title: Azure görüntü Oluşturucu şablonu oluşturma (Önizleme)
+description: Azure Image Builder ile kullanmak üzere şablon oluşturmayı öğrenin.
 author: danis
 ms.author: danis
 ms.date: 03/24/2020
@@ -9,17 +9,17 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 manager: gwallace
 ms.openlocfilehash: e1f1bc09406c34836c13deb805fa399ab4751d41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246798"
 ---
-# <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure Resim Oluşturucu şablonu oluşturma 
+# <a name="preview-create-an-azure-image-builder-template"></a>Önizleme: Azure görüntü Oluşturucu şablonu oluşturma 
 
-Azure Image Builder, Bilgileri Image Builder hizmetine aktarmak için bir .json dosyası kullanır. Bu makalede, json dosyasının bölümleri üzerinden gidecek, böylece kendi oluşturabilirsiniz. Tam .json dosyalarının örneklerini görmek için [Azure Image Builder GitHub'a](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)bakın.
+Azure Image Builder, görüntü Oluşturucu hizmetine bilgi geçirmek için bir. JSON dosyası kullanır. Bu makalede, JSON dosyasının bölümlerine gidecektir, bu sayede kendinizinkini oluşturabilirsiniz. Tam. JSON dosyaları örneklerini görmek için bkz. [Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
 
-Bu temel şablon biçimidir:
+Bu, temel şablon biçimidir:
 
 ```json
  { 
@@ -52,9 +52,9 @@ Bu temel şablon biçimidir:
 
 
 
-## <a name="type-and-api-version"></a>Türü ve API sürümü
+## <a name="type-and-api-version"></a>Tür ve API sürümü
 
-Kaynak `type` türü, olması `"Microsoft.VirtualMachineImages/imageTemplates"`gereken. API `apiVersion` değiştikçe zaman içinde değişecektir, `"2019-05-01-preview"` ancak önizleme için olmalıdır.
+`type` , Olması `"Microsoft.VirtualMachineImages/imageTemplates"`gereken kaynak türüdür. `apiVersion` API değiştiğinde zaman içinde değişir, ancak önizleme için olmalıdır `"2019-05-01-preview"` .
 
 ```json
     "type": "Microsoft.VirtualMachineImages/imageTemplates",
@@ -77,8 +77,8 @@ Konum, özel görüntünün oluşturulacağı bölgedir. Image Builder önizleme
 ```json
     "location": "<region>",
 ```
-## <a name="vmprofile"></a>vmProfil
-Varsayılan olarak Görüntü Oluşturucu bir "Standard_D1_v2" oluşturmak VM kullanır, bu geçersiz kılar, örneğin, bir GPU VM için görüntü özelleştirmek istiyorsanız, bir GPU VM boyutu gerekir. Bu isteğe bağlıdır.
+## <a name="vmprofile"></a>vmProfile
+Varsayılan olarak, görüntü Oluşturucu bir "Standard_D1_v2" derleme VM 'si kullanır, bunu geçersiz kılabilirsiniz; Örneğin, bir GPU VM 'si için bir görüntüyü özelleştirmek istiyorsanız, bir GPU VM boyutu gerekir. Bu isteğe bağlıdır.
 
 ```json
  {
@@ -88,7 +88,7 @@ Varsayılan olarak Görüntü Oluşturucu bir "Standard_D1_v2" oluşturmak VM ku
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-Varsayılan olarak, Görüntü Oluşturucu görüntünün boyutunu değiştirmez, kaynak görüntüboyutu kullanır. İşletim sistemi diskinin (Win ve Linux) boyutunu artırabilirsiniz, bu isteğe bağlıdır ve 0 değeri kaynak görüntüyle aynı boyutta bırakmak anlamına gelir. 
+Varsayılan olarak, görüntü Oluşturucu görüntünün boyutunu değiştirmez, kaynak görüntüden boyutu kullanır. İşletim sistemi diskinin boyutunu (Win ve Linux) artırabilirsiniz, bu isteğe bağlıdır ve 0 değeri kaynak görüntüyle aynı boyutu bırakır. 
 
 ```json
  {
@@ -97,7 +97,7 @@ Varsayılan olarak, Görüntü Oluşturucu görüntünün boyutunu değiştirmez
 ```
 
 ## <a name="vnetconfig"></a>vnetConfig
-Herhangi bir VNET özelliği belirtmezseniz, Image Builder kendi VNET, Public IP ve NSG'sini oluşturur. Public IP, hizmetin yapı VM ile iletişim kurabilmesi için kullanılır, ancak bir Genel IP istemiyorsanız veya Image Builder'ın yapılandırma sunucuları (DSC, Chef, Puppet, Ansible), dosya paylaşımları vb. gibi mevcut VNET kaynaklarınıza erişebilmesini istemiyorsanız kullanılır. , sonra bir VNET belirtebilirsiniz. Daha fazla bilgi için ağ belgelerini gözden [geçirin,](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)bu isteğe bağlıdır.
+VNET özellikleri belirtmezseniz, görüntü Oluşturucu kendi sanal ağ, genel IP ve NSG 'yi oluşturur. Genel IP, hizmet için derleme VM ile iletişim kurmak üzere kullanılır, ancak genel bir IP istemiyorsanız veya görüntü oluşturucunun yapılandırma sunucuları (DSC, Chef, Pupevcil hayvan, anormal), dosya paylaşımları vb. gibi var olan VNET kaynaklarınıza erişimi olmasını istiyorsanız, VNET belirtebilirsiniz. Daha fazla bilgi için, [ağ belgelerini](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibNetworking.md#networking-with-azure-vm-image-builder)gözden geçirin, bu isteğe bağlıdır.
 
 ```json
     "vnetConfig": {
@@ -110,7 +110,7 @@ Herhangi bir VNET özelliği belirtmezseniz, Image Builder kendi VNET, Public IP
 
 Bunlar, oluşturulan görüntü için belirtebileceğiniz anahtar/değer çiftleridir.
 
-## <a name="depends-on-optional"></a>Bağlıdır (isteğe bağlı)
+## <a name="depends-on-optional"></a>Bağımlı (isteğe bağlı)
 
 Bu isteğe bağlı bölüm, devam etmeden önce bağımlılıkların tamamlandığından emin olmak için kullanılabilir. 
 
@@ -118,12 +118,12 @@ Bu isteğe bağlı bölüm, devam etmeden önce bağımlılıkların tamamlandı
     "dependsOn": [],
 ```
 
-Daha fazla bilgi için kaynak [bağımlılıklarını tanımla'ya](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)bakın.
+Daha fazla bilgi için bkz. [Kaynak bağımlılıklarını tanımlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson).
 
 ## <a name="identity"></a>Kimlik
-Varsayılan olarak, Image Builder komut dosyalarını kullanmayı veya GitHub ve Azure depolama alanı gibi birden çok konumdan dosya kopyalamayı destekler. Bunları kullanmak için herkese açık olmaları gerekir.
+Varsayılan olarak, görüntü Oluşturucu betikleri kullanmayı veya GitHub ve Azure depolama gibi birden çok konumdan dosya kopyalamayı destekler. Bunları kullanmak için herkese açık bir şekilde erişilebilir olmaları gerekir.
 
-Kimlik Azure depolama hesabında en az 'Depolama Blob Veri Okuyucusu' verildiği sürece, Görüntü Oluşturucu'nun Azure Depolama'ya erişmesine izin vermek için sizin adınız tarafından tanımlanan Azure Kullanıcı Tarafından Atanmış Yönetilen Kimlik'i de kullanabilirsiniz. Bu, depolama lekelerini dışarıdan erişilebilir hale getirmeniz veya SAS Belirteçleri'ni kurmanız gerekolmadığı anlamına gelir.
+Azure depolama hesabında, kimliğe en az ' Depolama Blobu veri okuyucu ' değeri verildiği sürece, görüntü oluşturucunun Azure Storage 'a erişmesine izin vermek için, sizin tarafınızdan tanımlanan Azure Kullanıcı tarafından atanan yönetilen bir kimliği de kullanabilirsiniz. Bu, depolama bloblarını dışarıdan erişilebilir hale getirmeniz veya SAS belirteçleri oluşturmanız gerekmediği anlamına gelir.
 
 
 ```json
@@ -135,29 +135,29 @@ Kimlik Azure depolama hesabında en az 'Depolama Blob Veri Okuyucusu' verildiği
         },
 ```
 
-Tam bir örnek için bkz: [Azure Depolama'daki dosyalara erişmek için Azure Kullanıcı Tarafından Atanmış Yönetilen Kimlik Kullan.](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)
+Tam bir örnek için bkz. Azure [depolama 'da dosyalara erişmek Için Azure Kullanıcı tarafından atanan bir yönetilen kimlik kullanma](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage).
 
-Kullanıcı tarafından atanan kimlik için Görüntü Oluşturucu desteği: • Yalnızca tek bir kimliği destekler • Özel alan adlarını desteklemez
+Kullanıcı tarafından atanan bir kimlik için görüntü Oluşturucu desteği: • yalnızca tek bir kimliği destekler • özel etki alanı adlarını desteklemez
 
-Daha fazla bilgi edinmek için Azure [kaynakları için yönetilen kimlikler nedir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-Bu özelliği dağıtma hakkında daha fazla bilgi için, [Azure CLI'yi kullanarak Azure VM'de Azure kaynakları için yönetilen kimlikleri yapılandırma](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)'ya bakın.
+Daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Bu özelliği dağıtma hakkında daha fazla bilgi için bkz. Azure [CLI kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity).
 
-## <a name="properties-source"></a>Özellikleri: kaynak
+## <a name="properties-source"></a>Özellikler: kaynak
 
-Bu `source` bölüm, Image Builder tarafından kullanılacak kaynak görüntü hakkında bilgi içerir.
+`source` Bölümü, görüntü Oluşturucu tarafından kullanılacak kaynak görüntüyle ilgili bilgiler içerir.
 
-API, görüntü oluşturmanın kaynağını tanımlayan bir 'SourceType' gerektirir, şu anda üç tür vardır:
-- PlatformImage - kaynak görüntü bir Pazar görüntüsü olduğunu belirtti.
-- ManagedImage - normal yönetilen bir görüntüden başlarken bunu kullanın.
-- SharedImageVersion - Bu kaynak olarak Paylaşılan Resim Galerisi'nde bir resim sürümü kullanırken kullanılır.
+API, görüntü derlemesi için kaynağı tanımlayan bir ' SourceType ' gerektirir; şu anda üç tür vardır:
+- Platformımage-kaynak görüntünün Market görüntüsü olduğunu gösterdi.
+- Managedımage-normal yönetilen görüntüden itibaren bunu kullanın.
+- Parça sürümü-bu, paylaşılan bir görüntü galerisinde kaynak olarak bir görüntü sürümü kullanırken kullanılır.
 
 ### <a name="iso-source"></a>ISO kaynağı
-Şimdi [RHEL Bring Your Own Abonelik görüntüleri](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)olduğu gibi, görüntü oluşturucu bu işlevselliği küçümseyen, aşağıdaki zaman çizelgeleri gözden geçirin:
-    * 31 Mart 2020 - RHEL ISO kaynaklarına sahip Görüntü Şablonları artık kaynak sağlayıcısı tarafından kabul edilecektir.
-    * 30 Nisan 2020- RHEL ISO kaynaklarını içeren Görüntü Şablonları artık işlenmeyecektir.
+Şu anda [kendi abonelik görüntülerini](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos)getiren bu işlevselliği Image Builder 'dan kullanımdan kaldıracağız. lütfen aşağıdaki zaman çizelgelerini gözden geçirin:
+    * 31 Mart 2020-RHEL ISO kaynaklarıyla birlikte görüntü şablonları artık kaynak sağlayıcısı tarafından kabul edilecektir.
+    * 30 Nisan 2020-RHEL ISO kaynaklarını içeren görüntü şablonları artık işlenmeyecek.
 
-### <a name="platformimage-source"></a>PlatformImage kaynağı 
-Azure Image Builder, Windows Server ve istemciyi destekler ve Linux Azure Marketi görüntülerini tam liste için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) bakın. 
+### <a name="platformimage-source"></a>Platformımage kaynağı 
+Azure Image Builder, Windows Server ve Client ve Linux Azure Marketi görüntülerini destekler, tam liste için [buraya](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) bakın. 
 
 ```json
         "source": {
@@ -170,17 +170,17 @@ Azure Image Builder, Windows Server ve istemciyi destekler ve Linux Azure Market
 ```
 
 
-Buradaki özellikler, AZ CLI kullanarak VM's oluşturmak için kullanılan özellikleri almak için aşağıdakileri çalıştırın: 
+Buradaki özellikler, VM 'leri oluşturmak için kullanılan, AZ CLı kullanarak, özellikleri almak için aşağıdaki adımları çalıştırmıştır. 
  
 ```azurecli-interactive
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-Sürümde 'en son' kullanabilirsiniz, sürüm görüntü oluşturma gerçekleştiğinde değerlendirilir, şablon gönderildiğinde değil. Bu işlevselliği Paylaşılan Resim Galerisi hedefiyle kullanırsanız, şablonu yeniden göndermeyi önleyebilir ve resim oluşturmayı aralıklarla yeniden çalıştırabilirsiniz, böylece resimleriniz en son resimlerden yeniden oluşturulur.
+Sürümünde ' en son ' seçeneğini kullanabilirsiniz. sürüm, şablon gönderildiğinde değil, görüntü oluşturma işlemi gerçekleştiğinde değerlendirilir. Bu işlevi paylaşılan görüntü Galerisi hedefi ile birlikte kullanıyorsanız, şablonu yeniden göndermeyi ve görüntü oluşturmayı yeniden çalıştırmayı önleyebilirsiniz, böylece görüntüleriniz en son görüntülerden yeniden oluşturulur.
 
-### <a name="managedimage-source"></a>ManagedImage kaynağı
+### <a name="managedimage-source"></a>Managedımage kaynağı
 
-Kaynak görüntüyü genelleştirilmiş bir VHD veya VM'nin varolan yönetilen görüntüsü olarak ayarlar. Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve Azure Image Builder şablonunuzla aynı bölgede olmalıdır. 
+Kaynak görüntüyü genelleştirilmiş bir VHD veya VM 'nin mevcut bir yönetilen görüntüsü olarak ayarlar. Kaynak yönetilen görüntü desteklenen bir işletim sistemi olmalıdır ve Azure Image Builder şablonunuz ile aynı bölgede olmalıdır. 
 
 ```json
         "source": { 
@@ -189,11 +189,11 @@ Kaynak görüntüyü genelleştirilmiş bir VHD veya VM'nin varolan yönetilen g
         }
 ```
 
-Yönetilen `imageId` görüntünün ResourceId olmalıdır. Kullanılabilir `az image list` resimleri listelemek için kullanın.
+`imageId` Yönetilen görüntünün RESOURCEID olmalıdır. Kullanılabilir `az image list` görüntüleri listelemek için kullanın.
 
 
-### <a name="sharedimageversion-source"></a>SharedImageVersion kaynağı
-Kaynak resmi Paylaşılan Resim Galerisi'nde varolan bir resim sürümünü ayarlar. Görüntü sürümü desteklenen bir işletim sistemi olmalıdır ve görüntü Azure Image Builder şablonunuzla aynı bölgeye çoğaltılmalıdır. 
+### <a name="sharedimageversion-source"></a>Parça sürümü kaynağı
+Kaynak görüntüyü paylaşılan görüntü galerisinde var olan bir görüntü sürümü olarak ayarlar. Görüntü sürümü desteklenen bir işletim sistemi olmalıdır ve görüntünün Azure Image Builder şablonunuz ile aynı bölgeye çoğaltılması gerekir. 
 
 ```json
         "source": { 
@@ -202,33 +202,33 @@ Kaynak resmi Paylaşılan Resim Galerisi'nde varolan bir resim sürümünü ayar
    } 
 ```
 
-Görüntü `imageVersionId` sürümünün ResourceId olmalıdır. Resim sürümlerini listelemek için [az sig resim-sürüm listesini](/cli/azure/sig/image-version#az-sig-image-version-list) kullanın.
+`imageVersionId` Görüntü sürümünün RESOURCEID olmalıdır. Resim sürümlerini listelemek için [az Sig Image-Version List](/cli/azure/sig/image-version#az-sig-image-version-list) kullanın.
 
-## <a name="properties-buildtimeoutinminutes"></a>Özellikler: buildTimeoutInMinutes
+## <a name="properties-buildtimeoutinminutes"></a>Özellikler: Buildtimeoutınminutes
 
-Varsayılan olarak, Görüntü Oluşturucu su 240 dakika çalışır. Bundan sonra, görüntü oluşturma tamamlandı olsun ya da olmasın, zaman dışarı ve durdurmak. Zaman anına isabet edilirse, buna benzer bir hata görürsünüz:
+Varsayılan olarak, görüntü Oluşturucu 240 dakika boyunca çalışır. Bundan sonra, görüntü yapısının tamamlanıp tamamlanmayacağı, zaman aşımına uğrayacaktır ve durdurulur. Zaman aşımı isabet alıyorsa şuna benzer bir hata görürsünüz:
 
 ```text
 [ERROR] Failed while waiting for packerizer: Timeout waiting for microservice to
 [ERROR] complete: 'context deadline exceeded'
 ```
 
-Bir buildTimeoutInMinutes değeri belirtmezseniz veya 0 olarak ayarlarsanız, bu varsayılan değeri kullanır. Değeri en fazla 960 min 'e (16 saat) kadar artırabilir veya azaltabilirsiniz. Windows için, bunu 60 dakikanın altına ayarlamanızı önermiyoruz. Zaman aşımını bulursanız, özelleştirme adımının kullanıcı girişi gibi bir şey bekleyip beklemediğinizi görmek için [günlükleri](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)gözden geçirin. 
+Buildtimeoutınminutes değeri belirtmez veya 0 olarak ayarlarsanız, bu varsayılan değeri kullanır. Değeri en fazla 960dakika (16sa) kadar artırabilir veya azaltabilirsiniz. Windows için, bu ayarı 60 dakika içinde ayarlamayı önermiyoruz. Zaman aşımına uğramış olduğunu fark ederseniz, özelleştirme adımının Kullanıcı girişi gibi bir şeyi beklediğini görmek için [günlükleri](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-image-build-logs)gözden geçirin. 
 
-Özelleştirmelerin tamamlanması için daha fazla zamana ihtiyacınız olduğunu düşünüyorsanız, bunu biraz genel merkezle ihtiyacınız olduğunu düşündüğünüz şeye ayarlayın. Ancak, bir hata görmeden önce zaman anına gelmesini beklemek zorunda kaldığınız için çok yüksek ayaryapmayın. 
+Özelleştirmelerin tamamlaması için daha fazla zaman gerektiğini fark ederseniz, bunu, ihtiyacınız olan ve küçük bir ek yük ile istediğiniz şekilde ayarlayın. Ancak bir hata görüntülemeden önce zaman aşımına uğramamasını beklemeniz gerekebilecek için çok yüksek bir ayarlama yapın. 
 
 
-## <a name="properties-customize"></a>Özellikler: özelleştirmek
+## <a name="properties-customize"></a>Özellikler: özelleştirme
 
-Image Builder birden çok 'özelleştirici' destekler. Özelleştiriciler, görüntünüzün çalıştırılması veya sunucuların yeniden başlatılması gibi resminizi özelleştirmek için kullanılan işlevlerdir. 
+Görüntü Oluşturucu çoklu ' özelleştiriciler ' destekler. Özelleştiriciler, resminizi özelleştirmek için kullanılan işlevlerdir (örneğin, betikleri çalıştırma veya sunucuları yeniden başlatma). 
 
-`customize`Kullanırken: 
-- Birden çok özelleştirici kullanabilirsiniz, ancak `name`benzersiz bir olması gerekir.
-- Özelleştiriciler şablonda belirtilen sırada çalıştırın.
-- Bir özelleştirmebaşarısız olursa, tüm özelleştirme bileşeni başarısız olur ve bir hatayı geri bildirir.
-- Bir şablonda kullanmadan önce komut dosyasını iyice test etmemeniz önerilir. Komut dosyasını kendi VM'nizde hata ayıklamanız daha kolay olacaktır.
-- Hassas verileri komut dosyalarına koymayın. 
-- [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanmıyorsanız komut dosyası konumlarının herkese açık olması gerekir.
+Kullanırken `customize`: 
+- Birden çok özelleştiriciler kullanabilirsiniz, ancak benzersiz `name`olmalıdır.
+- Özelleştiriciler, şablonda belirtilen sırada yürütülür.
+- Bir Özelleştirici başarısız olursa, tüm özelleştirme bileşeni başarısız olur ve bir hatayı geri bildirir.
+- Bir şablonda kullanmadan önce betiği iyice sınamanız önemle tavsiye edilir. Kendi sanal makinenizde betik hata ayıklaması daha kolay olacaktır.
+- Gizli verileri betiklerine yerleştirmeyin. 
+- [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanmadığınız durumlar dışında, betik konumlarının herkese açık bir şekilde erişilebilir olması gerekir.
 
 ```json
         "customize": [
@@ -250,12 +250,12 @@ Image Builder birden çok 'özelleştirici' destekler. Özelleştiriciler, gör�
 ```     
 
  
-Özelleştirme bölümü bir dizidir. Azure Image Builder, özelleştiriciler arasında sırayla çalışır. Herhangi bir özelleştirici herhangi bir hata yapı işlemi başarısız olur. 
+Customize bölümü bir dizidir. Azure Image Builder, özelleştiriciler aracılığıyla sıralı sırayla çalışacaktır. Herhangi bir Özelleştirici içindeki herhangi bir hata derleme işlemini başarısız olur. 
  
  
-### <a name="shell-customizer"></a>Kabuk özelleyici
+### <a name="shell-customizer"></a>Kabuk Özelleştirici
 
-Kabuk özelleştirici, kabuk komut dosyalarının çalıştırılmasını destekler, bunlar IB'nin bunlara erişmesi için herkese açık olmalıdır.
+Kabuk Özelleştirici, kabuk betikleri çalıştırmayı destekler, bu, ıB 'nin bunlara erişebilmesi için herkese açık bir şekilde erişilebilir olması gerekir.
 
 ```json
     "customize": [ 
@@ -275,25 +275,25 @@ Kabuk özelleştirici, kabuk komut dosyalarının çalıştırılmasını destek
     ], 
 ```
 
-İşletim Sistemi Desteği: Linux 
+İşletim sistemi desteği: Linux 
  
-Özellikleri özelleştirin:
+Özellikleri Özelleştir:
 
-- **türü** – Kabuk 
-- **ad** - özelleştirmeyi izlemek için ad 
-- **scriptUri** - URI dosyanın konumuna 
-- **inline** - kabuk komutları dizisi, virgüllerle ayrılmıştır.
-- **sha256Checksum** - Dosyanın sha256 checksum değeri, bu yerel oluşturmak ve sonra Image Builder checksum ve doğrulamak.
-    * Mac/Linux pistinde bir terminal kullanarak sha256Checksum'u oluşturmak için:`sha256sum <fileName>`
+- **tür** – Shell 
+- **ad** -özelleştirmeyi izlemek için ad 
+- **Scripturi** -URI, dosyanın konumuna 
+- noktalı virgülle ayrılmış kabuk komutlarının **satır içi** dizisi.
+- **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
+    * Mac/Linux çalıştıran bir Terminal kullanarak sha256Checksum oluşturmak için:`sha256sum <fileName>`
 
 
-Komutların süper kullanıcı ayrıcalıklarıyla çalışması için önceden belirlenmiş `sudo`olmaları gerekir.
+Komutların süper kullanıcı ayrıcalıklarıyla çalışması için, ön ekine sahip `sudo`olmaları gerekir.
 
 > [!NOTE]
-> Kabuk özelleyicisini RHEL ISO kaynağıyla çalıştırırken, herhangi bir özelleştirme oluşmadan önce ilk özelleştirme kabuk işlemenizin bir Red Hat yetkilendirme sunucusuna kaydolduğundan emin olmanız gerekir. Özelleştirme tamamlandıktan sonra, komut dosyası nın yetkilendirme sunucusuna kaydını silmesi gerekir.
+> RHEL ISO kaynağı ile kabuk Özelleştirici çalıştırırken, özelleştirme gerçekleşmeden önce, ilk özelleştirme kabuğunuzun bir Red Hat yetkilendirme sunucusuyla kaydolduğunu güvence altına almanız gerekir. Özelleştirme tamamlandıktan sonra betiğin, yetkilendirme sunucusuyla kaydı yapılmalıdır.
 
-### <a name="windows-restart-customizer"></a>Windows yeniden başlat özelleyici 
-Yeniden Başlat özelleyici, bir Windows VM'yi yeniden başlatmanızı ve yeniden çevrimiçi olmasını beklemenizi sağlar, bu da yeniden başlatma gerektiren yazılımları yüklemenize olanak tanır.  
+### <a name="windows-restart-customizer"></a>Windows yeniden başlatma Özelleştirici 
+Yeniden başlatma Özelleştirici, bir Windows sanal makinesini yeniden başlatmanızı ve yeniden çevrimiçi hale gelmesini bekleyebilir, bu sayede yeniden başlatma gerektiren yazılımları yükleyebilirsiniz.  
 
 ```json 
      "customize": [ 
@@ -308,19 +308,19 @@ Yeniden Başlat özelleyici, bir Windows VM'yi yeniden başlatmanızı ve yenide
         ],
 ```
 
-İşletim Sistemi Desteği: Windows
+İşletim sistemi desteği: Windows
  
-Özellikleri özelleştirin:
-- **Türü**: WindowsRestart
-- **restartCommand** - Komut yeniden başlatma (isteğe bağlı) yürütmek için. Varsayılan değer: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
-- **restartCheckCommand** – Komut yeniden başlatma başarılı olup olmadığını kontrol etmek için (isteğe bağlı). 
-- **yeniden başlatmaTimeout** - Büyüklük ve birim dizesi olarak belirtilen zaman dışarıyı yeniden başlatın. Örneğin, `5m` (5 dakika) `2h` veya (2 saat). Varsayılan değer: '5m'
+Özellikleri Özelleştir:
+- **Yazın**: windowsrestart
+- yeniden başlatma işlemini yürütmek için **restartCommand** komutu (isteğe bağlı). Varsayılan değer: `'shutdown /r /f /t 0 /c \"packer restart\"'`.
+- **restartCheckCommand** – yeniden başlatmanın başarılı olup olmadığını denetlemek için komut (isteğe bağlı). 
+- **restartTimeout** -yeniden başlatma zaman aşımı, bir büyüklük ve birim dizesi olarak belirtildi. Örneğin, `5m` (5 dakika) veya `2h` (2 saat). Varsayılan değer: ' 5dk '
 
 ### <a name="linux-restart"></a>Linux yeniden başlatma  
-Linux Yeniden Başlatma özelleyicisi yoktur, ancak sürücüleri veya yeniden başlatma gerektiren bileşenler yüklüyorsanız, bunları yükleyebilir ve Shell özelleyicisini kullanarak yeniden başlatabilirsiniz, yapı VM'ye 20 dakika ssh zaman acısı vardır.
+Linux yeniden başlatma Özelleştirici yoktur, ancak sürücüleri veya yeniden başlatma gerektiren bileşenleri yüklüyorsanız, yükleyebilir ve kabuk Özelleştirici kullanarak bir yeniden başlatma başlatabilirsiniz, derleme VM 'sine yönelik 20 dakikalık bir SSH zaman aşımı vardır.
 
-### <a name="powershell-customizer"></a>PowerShell özelleştirici 
-Kabuk özelleyici powershell komutları ve satır başı çalışan destekler, komut ib onlara erişmek için kamuya erişilebilir olmalıdır.
+### <a name="powershell-customizer"></a>PowerShell Özelleştirici 
+Kabuk Özelleştirici PowerShell betikleri ve satır içi komutunu çalıştırmayı destekler, ıB 'nin bunlara erişebilmesi için betiklerin herkese açık bir şekilde erişilebilir olması gerekir.
 
 ```json 
      "customize": [
@@ -343,20 +343,20 @@ Kabuk özelleyici powershell komutları ve satır başı çalışan destekler, k
 
 İşletim sistemi desteği: Windows ve Linux
 
-Özellikleri özelleştirin:
+Özellikleri Özelleştir:
 
-- **türü** – PowerShell.
-- **scriptUri** - URI PowerShell komut dosyası dosyasının konumuna. 
-- **inline** – Satır altı komutları çalıştırılacak, virgülle ayrılacak.
-- **validExitCodes** – Komut dosyası/satır lı komuttan döndürülebilen isteğe bağlı, geçerli kodlar, bu komut/satır komutunun bildirilen hatasını önler.
-- **runElevated** – İsteğe bağlı, boolean, yüksek izinlerle komutları ve komutları çalıştırmak için destek.
-- **sha256Checksum** - Dosyanın sha256 checksum değeri, bu yerel oluşturmak ve sonra Image Builder checksum ve doğrulamak.
-    * Windows [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) bir PowerShell kullanarak, sha256Checksum oluşturmak için
+- **tür** – PowerShell.
+- **Scripturi** -URI, PowerShell betik dosyasının konumuna. 
+- **satır içi** – çalıştırılacak olan satır içi komutlar, virgülle ayrılır.
+- **Validexitcodes** : isteğe bağlı, betiğe/satır içi komuttan döndürülebilecek geçerli kodlar, bu, betik/satır içi komutunun bildirilen başarısızlığından kaçınacaktır.
+- **runyükseltici** – isteğe bağlı, Boole, yükseltilmiş izinlerle komutları ve betikleri çalıştırmaya yönelik destek.
+- **sha256Checksum** -dosyanın SHA256 sağlama toplamı değeri, bu yerel olarak oluşturulur ve ardından görüntü Oluşturucu sağlama toplamı ve doğrular.
+    * Windows [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) üzerinde bir PowerShell kullanarak sha256Checksum oluşturmak için
 
 
-### <a name="file-customizer"></a>Dosya özelleyici
+### <a name="file-customizer"></a>Dosya Özelleştirici
 
-Dosya özelleştirici, görüntü oluşturucuya github veya Azure depolama sundan dosya indirmeimkanı sağlar. Yapı yapılarına dayanan bir görüntü yapı ardışık hattınız varsa, dosya özelleyicisini yapı paylaşımından karşıdan yükleyip yapı yı görüntüye taşıyabilirsiniz.  
+Dosya Özelleştirici, görüntü oluşturucunun bir GitHub veya Azure depolamadan dosya indirmesini sağlar. Yapı yapıtlarına dayanan bir görüntü derleme işlem hattına sahipseniz, derleme paylaşımından dosya Özelleştirici 'yi indirmek için ayarlayabilir ve yapıtları görüntüye taşıyabilirsiniz.  
 
 ```json
      "customize": [ 
@@ -372,25 +372,25 @@ Dosya özelleştirici, görüntü oluşturucuya github veya Azure depolama sunda
 
 İşletim sistemi desteği: Linux ve Windows 
 
-Dosya özelleştirici özellikleri:
+Dosya Özelleştirici özellikleri:
 
-- **sourceUri** - erişilebilir bir depolama bitiş noktası, bu GitHub veya Azure depolama olabilir. Tüm bir dizin değil, yalnızca bir dosya indirebilirsiniz. Bir dizin indirmeniz gerekiyorsa, sıkıştırılmış bir dosya kullanın ve Shell veya PowerShell özelleştiricilerini kullanarak dosyayı açın. 
-- **hedef** – bu tam hedef yolu ve dosya adıdır. Başvurulan herhangi bir yol ve alt dizinler mevcut olmalı, bunları önceden ayarlamak için Shell veya PowerShell özelleştiricilerini kullanmalıdır. Yolu oluşturmak için komut dosyası özelleştiricilerini kullanabilirsiniz. 
+- **sourceURI** -erişilebilir bir depolama uç noktası, GitHub veya Azure depolama olabilir. Bir dizinin tamamını değil yalnızca bir dosyayı indirebilirsiniz. Bir dizin indirmeniz gerekiyorsa, sıkıştırılmış bir dosya kullanın, ardından Shell veya PowerShell özelleştiricileri kullanarak bu dosyayı açın. 
+- **hedef** : Bu, tam hedef yolu ve dosya adıdır. Başvurulan tüm yol ve alt dizinler var olmalıdır, bunu önceden ayarlamak için Shell veya PowerShell özelleştiricileri kullanın. Yolu oluşturmak için özelleştiriciler ' i kullanabilirsiniz. 
 
 Bu, Windows dizinleri ve Linux yolları tarafından desteklenir, ancak bazı farklılıklar vardır: 
-- Linux OS ' s - Görüntü oluşturucu yazabilirsiniz tek yol / tmp olduğunu.
-- Windows – Yol kısıtlaması yok, ancak yol var olmalıdır.
+- Linux işletim sistemi – tek yol Image Builder,/t MP.
+- Windows – yol kısıtlaması yok, ancak yol var olmalıdır.
  
  
-Dosyayı karşıdan yüklemeye çalışan veya belirli bir dizine koymaya çalışan bir hata varsa, özelleştirme adımı başarısız olur ve bu işlem.log'da olur.
+Dosyayı indirmeye çalışırken bir hata varsa veya belirtilen bir dizine yerleştirirseniz, özelleştirme adımı başarısız olur ve bu, özelleştirme. log ' da olur.
 
 > [!NOTE]
-> Dosya özelleştirici sadece küçük dosya indirme, < 20MB için uygundur. Daha büyük dosya yüklemeleri için bir komut dosyası veya satır satır komutu, Linux `wget` veya, `curl`Windows gibi dosyaları indirmek için kullanım kodu `Invoke-WebRequest`kullanın.
+> Dosya Özelleştirici yalnızca küçük dosya indirmeleri için uygundur < 20 MB. Daha büyük dosya indirmeleri için bir betik veya satır içi komutu, Linux `wget` veya `curl`Windows gibi dosyaları indirmek için kullanılan kodu kullanın. `Invoke-WebRequest`
 
-Dosya özellemindeki dosyalar [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanılarak Azure Depolama'dan indirilebilir.
+Dosya Özelleştirici içindeki dosyalar, [MSI](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage)kullanılarak Azure Storage 'dan indirilebilir.
 
 ### <a name="windows-update-customizer"></a>Windows Update Özelleştirici
-Bu özelleştirici, Packer topluluğu tarafından sürdürülen açık kaynak kodlu bir proje olan Packer için [topluluk Windows Update Provisioner](https://packer.io/docs/provisioners/community-supported.html) üzerine kurulmuştur. Microsoft, Görüntü Oluşturucu hizmetiyle geçici çözümü sınayıp doğrular ve bu hizmetle ilgili sorunları araştırmayı destekler ve sorunları gidermek için çalışır, ancak açık kaynak projesi Microsoft tarafından resmi olarak desteklenmez. Windows Update Provisioner ile ilgili ayrıntılı belgeler ve yardım için lütfen proje deposuna bakın.
+Bu Özelleştirici, Packer topluluğu tarafından tutulan açık kaynaklı bir proje olan Packer için [topluluk Windows Update hazırlayıcı](https://packer.io/docs/provisioners/community-supported.html) üzerine kurulmuştur. Microsoft, görüntü Oluşturucu hizmeti ile birlikte hizmeti sınar ve doğrular ve bunlarla ilgili sorunları araştırarak sorunları gidermeye çalışır, ancak açık kaynak proje Microsoft tarafından resmi olarak desteklenmez. Hakkında ayrıntılı belgeler ve Windows Update hazırlayıcı ile ilgili yardım için lütfen proje deposuna bakın.
  
      "customize": [
             {
@@ -405,22 +405,22 @@ Bu özelleştirici, Packer topluluğu tarafından sürdürülen açık kaynak ko
                ], 
 İşletim sistemi desteği: Windows
 
-Özellikleri özelleştirin:
-- **yazın** – WindowsUpdate.
-- **searchCriteria** - İsteğe bağlı olarak, hangi güncelleştirme türünün yüklendiği (Önerilen, Önemli vb.), BrowseOnly=0 ve IsInstalled=0 (Önerilen) varsayılan dır.
-- **filtreler** – İsteğe bağlı, güncellemeleri eklemek veya hariç tutmak için bir filtre belirtmenize olanak tanır.
-- **updateLimit** – İsteğe bağlı olarak, kaç güncelleştirmenin yüklenebileceğini tanımlar, varsayılan 1000.
+Özellikleri Özelleştir:
+- **şunu yazın** : windowsupdate.
+- **SearchCriteria** -isteğe bağlı, hangi tür güncelleştirmelerin yüklü olduğunu tanımlar (önerilen, önemli vs.), BrowseOnly = 0 ve IsInstalled = 0 (önerilir) varsayılandır.
+- **Filtreler** : isteğe bağlı, güncelleştirmeleri dahil etmek veya hariç tutmak için bir filtre belirtmenize izin verir.
+- **Updatelimit** : isteğe bağlı, kaç güncelleştirme yüklenebileceğini tanımlar, varsayılan 1000.
  
  
 
 ### <a name="generalize"></a>Genelleştir 
-Varsayılan olarak, Azure Image Builder görüntüyü 'genelleştirmek' için her görüntü özelleştirme aşamasının sonunda 'deprovision' kodu da çalıştıracaktır. Genelleme, görüntünün birden çok VM oluşturmak için yeniden kullanılabileceğini niçin ayarlandığı bir işlemdir. Azure Görüntü Oluşturucu, Windows VM'leri için Sysprep kullanır. Azure Image Builder, Linux için 'waagent -deprovision' çalıştırın. 
+Varsayılan olarak, Azure Image Builder, görüntüyü ' genelleştirmek ' için her görüntü özelleştirme aşamasının sonunda ' deprovision ' kodunu da çalıştıracak. Genelleştirmek, görüntünün ayarlandığı bir işlemdir, bu sayede birden fazla VM oluşturmak için yeniden kullanılabilir. Windows VM 'Leri için Azure Image Builder, Sysprep kullanır. Linux için Azure görüntü Oluşturucu ' waagent-deprovision ' çalıştırır. 
 
-Görüntü Oluşturucu kullanıcılarının genelleme yapması komutları her durum için uygun olmayabilir, bu nedenle Azure Image Builder gerekirse bu komutu özelleştirmenize olanak tanır. 
+Genelleştirilecek komutlar Image Builder kullanıcıları her durum için uygun olmayabilir, bu nedenle Azure Image Builder gerekirse bu komutu özelleştirmenize olanak tanır. 
 
-Varolan özelleştirmeyi geçiriyorsanız ve farklı Sysprep/waagent komutları kullanıyorsanız, Görüntü Oluşturucu genel komutlarını kullanabilirsiniz ve VM oluşturma başarısız olursa, kendi Sysprep veya waagent komutlarınızı kullanın.
+Var olan özelleştirmeyi geçiriyorsanız ve farklı Sysprep/waagent komutları kullanıyorsanız, görüntü Oluşturucu genel komutlarını kullanabilir ve VM oluşturma işlemi başarısız olursa, kendi Sysprep veya waagent komutlarınızı kullanın.
 
-Azure Image Builder bir Windows özel görüntüsünü başarıyla oluşturursa ve ondan bir VM oluşturursanız, VM oluşturmanın başarısız olduğunu veya başarıyla tamamlanmadığını fark ederseniz, Windows Server Sysprep belgelerini gözden geçirmeniz veya bir destek isteği oluşturmanız gerekir. Windows Server Sysprep Müşteri Hizmetleri Destek ekibi, sorun giderme ve doğru Sysprep kullanımı hakkında tavsiyelerde bulunabilir.
+Azure Image Builder başarıyla bir Windows özel görüntüsü oluşturursa ve bundan bir VM oluşturursanız, VM oluşturma işleminin başarısız olduğunu veya başarılı bir şekilde tamamlanmayacağını bulun, Windows Server Sysprep belgelerini gözden geçirmeniz veya Windows Server Sysprep müşteri hizmetleri destek ekibi ile bir destek isteği oluşturarak doğru Sysprep kullanımını giderebilen ve önermeniz gerekir.
 
 
 #### <a name="default-sysprep-command"></a>Varsayılan Sysprep komutu
@@ -433,31 +433,31 @@ echo '>>> Sysprepping VM ...'
 if( Test-Path $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml ){ rm $Env:SystemRoot\\windows\\system32\\Sysprep\\unattend.xml -Force} & $Env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit
 while($true) { $imageState = Get-ItemProperty HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Setup\\State | Select ImageState; if($imageState.ImageState -ne 'IMAGE_STATE_GENERALIZE_RESEAL_TO_OOBE') { Write-Output $imageState.ImageState; Start-Sleep -s 5  } else { break } }
 ```
-#### <a name="default-linux-deprovision-command"></a>Varsayılan Linux deprovision komutu
+#### <a name="default-linux-deprovision-command"></a>Varsayılan Linux sağlamayı kaldırma komutu
 
 ```bash
 /usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync
 ```
 
-#### <a name="overriding-the-commands"></a>Komutları Geçersiz Kılma
-Komutları geçersiz kılmak için, tam dosya adı içeren komut dosyalarını oluşturmak için PowerShell veya Shell komut dosyası hükümlerini kullanın ve bunları doğru dizinlere koyun:
+#### <a name="overriding-the-commands"></a>Komutları geçersiz kılma
+Komutları geçersiz kılmak için PowerShell veya Shell betik hazırlayıcılar ' ni kullanarak tam dosya adına sahip komut dosyalarını oluşturun ve bunları doğru dizinlere yerleştirin:
 
-* Windows: c:\DeprovisioningScript.ps1
-* Linux: /tmp/DeprovisioningScript.sh
+* Windows: C:\deprovisioningscript.exe. ps1
+* Linux:/tmp/deprovisioningscript.exe
 
-Görüntü Oluşturucu bu komutları okuyacak, bu AIB günlükleri, 'özelleştirme.log' yazılır. Günlüklerin nasıl toplandığıyla ilgili [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) sorununa bakın.
+Görüntü Oluşturucu bu komutları okuyacak, bunlar ' özelleştirme. log ' AıB günlüklerine yazılır. Bkz. günlüklerin nasıl toplanacağı hakkında [sorun giderme](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#collecting-and-reviewing-aib-logs) .
  
-## <a name="properties-distribute"></a>Özellikler: dağıtmak
+## <a name="properties-distribute"></a>Özellikler: dağıt
 
-Azure Image Builder üç dağıtım hedefini destekler: 
+Azure görüntü Oluşturucu üç dağıtım hedefini destekler: 
 
-- **managedImage** - yönetilen görüntü.
-- **sharedImage** - Paylaşılan Resim Galerisi.
-- **VHD** - Bir depolama hesabında VHD.
+- **Managedımage** tarafından yönetilen görüntü.
+- **Sharedimage** -paylaşılan görüntü Galerisi.
+- Depolama hesabında **VHD** VHD.
 
-Aynı yapılandırmada hedef türlerin her ikisine de bir görüntü dağıtabilirsiniz, [lütfen örneklere](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)bakın.
+Aynı yapılandırmadaki her iki hedef türüne bir görüntü dağıtabilirsiniz, lütfen [örneklere](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)bakın.
 
-Dağıtmak için birden fazla hedefiniz olduğundan, Image Builder' ı sorgulayarak erişilebilen her dağıtım `runOutputName`hedefi için bir durum tutar.  Bu `runOutputName` dağıtım hakkında bilgi için dağıtım sonrası sorgulayabileceğiniz bir nesnedir. Örneğin, VHD'nin konumunu veya görüntü sürümünün çoğaltıldığı bölgeleri veya oluşturulan SIG Image sürümünü sorgulayabilirsiniz. Bu her dağıtım hedefinin bir özelliğidir. Her `runOutputName` dağıtım hedefine özgü olmalıdır. Aşağıda bir örnek, bu paylaşılan resim galerisi dağıtım sorgulayan:
+' Ye dağıtım yapmak için birden fazla hedefe sahip olabilirsiniz, görüntü Oluşturucu, `runOutputName`sorgulanarak erişilebilen her dağıtım hedefi için bir durum tutar.  , `runOutputName` Bu dağıtım hakkında bilgi için gönderi dağıtımını sorgulayabilir. Örneğin, VHD konumunu veya görüntü sürümünün çoğaltılacağı bölgeleri veya SıG görüntü sürümü oluşturulmasını sorgulayabilirsiniz. Bu, her dağıtım hedefinin bir özelliğidir. Her `runOutputName` dağıtım hedefi için benzersiz olmalıdır. İşte bu, paylaşılan görüntü Galerisi dağıtımını sorgulmıştır:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -490,9 +490,9 @@ az resource show \
 }
 ```
 
-### <a name="distribute-managedimage"></a>Distribute: managedImage
+### <a name="distribute-managedimage"></a>Dağıt: Managedımage
 
-Görüntü çıktısı yönetilen bir görüntü kaynağı olacaktır.
+Görüntü çıkışı yönetilen bir görüntü kaynağı olacaktır.
 
 ```json
 "distribute": [
@@ -508,28 +508,28 @@ Görüntü çıktısı yönetilen bir görüntü kaynağı olacaktır.
          }]
 ```
  
-Özellikleri dağıtın:
-- **türü** – managedImage 
-- **imageId** – Hedef görüntünün kaynak kimliği, beklenen\<biçim: /subscriptions/\<subscriptionId>/resourceGroups/ destinationResourceGroupName>/providers/Microsoft.Compute/images/imageNamename\<>
-- **konum** - yönetilen görüntünün konumu.  
-- **runOutputName** – dağıtımı tanımlamak için benzersiz bir ad.  
-- **artifactTags** - İsteğe bağlı kullanıcı belirtilen anahtar değer çifti etiketleri.
+Özellikleri dağıtma:
+- **tür** – managedımage 
+- **ImageID** – hedef görüntünün kaynak kimliği; beklenen biçim:/subscriptions/\<SubscriptionID>/ResourceGroups/\<destinationresourcegroupname>/Providers/Microsoft.COMPUTE/images/\<ImageName>
+- **konum** -yönetilen görüntünün konumu.  
+- **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
+- **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
  
  
 > [!NOTE]
-> Hedef kaynak grubu olmalıdır.
-> Görüntünün farklı bir bölgeye dağıtılmasını istiyorsanız, dağıtım süresini artırır. 
+> Hedef kaynak grubu mevcut olmalıdır.
+> Görüntünün farklı bir bölgeye dağıtılmasını istiyorsanız dağıtım süresini arttıracaktır. 
 
-### <a name="distribute-sharedimage"></a>Distribute: sharedImage 
-Azure Paylaşılan Resim Galerisi, görüntü bölgesi çoğaltma, sürüm leme ve özel görüntülerin paylaşılmasına olanak tanıyan yeni bir Görüntü Yönetimi hizmetidir. Azure Image Builder bu hizmetle dağıtımı destekler, böylece görüntüleri Paylaşılan Resim Galerileri tarafından desteklenen bölgelere dağıtabilirsiniz. 
+### <a name="distribute-sharedimage"></a>Dağıt: parça 
+Azure Paylaşılan görüntü Galerisi, görüntü bölgesi çoğaltmasının yönetilmesine izin veren, özel görüntülerin sürümü oluşturma ve paylaşımı sağlayan yeni bir görüntü yönetim hizmetidir. Azure görüntü Oluşturucu bu hizmetle dağıtmayı destekler, böylece paylaşılan görüntü galerilerine göre desteklenen bölgelere görüntü dağıtabilirsiniz. 
  
-Paylaşılan Resim Galerisi şu şekildedir: 
+Paylaşılan görüntü Galerisi şu şekilde yapılır: 
  
-- Galeri - Birden çok paylaşılan resim için kapsayıcı. Bir bölgede bir galeri dağıtılır.
-- Görüntü tanımları - görüntüler için kavramsal bir gruplama. 
-- Resim sürümleri - Bu bir VM veya ölçek kümesi dağıtmak için kullanılan bir görüntü türüdür. Görüntü sürümleri, VM'lerin dağıtılması gereken diğer bölgelere çoğaltılabilir.
+- Galeri-birden çok paylaşılan görüntü kapsayıcısı. Bir galeri tek bir bölgede dağıtılır.
+- Görüntü tanımları-görüntüler için kavramsal gruplama. 
+- Görüntü sürümleri-bu, VM veya ölçek kümesi dağıtmak için kullanılan bir görüntü türüdür. Görüntü sürümleri, VM 'Lerin dağıtılması gereken diğer bölgelere çoğaltılabilir.
  
-Resim Galerisi'ne dağıtabilmek için önce bir galeri ve resim tanımı oluşturmanız gerekir, [bkz.](shared-images.md) 
+Görüntü galerisine dağıtabilmeniz için önce bir galeri ve görüntü tanımı oluşturmanız gerekir, [paylaşılan görüntüler](shared-images.md)' e bakın. 
 
 ```json
 {
@@ -547,19 +547,19 @@ Resim Galerisi'ne dağıtabilmek için önce bir galeri ve resim tanımı oluşt
 }
 ``` 
 
-Paylaşılan resim galerileri için özellikleri dağıtın:
+Paylaşılan görüntü galerilerine yönelik özellikleri dağıtma:
 
-- **türü** - sharedImage  
-- **galleryImageId** – Paylaşılan resim galerisinin kimliği. Biçimi:\</subscriptions/ subscriptionId\<>/resourceGroups/ resourceGroupName>/providers/Microsoft.Compute/galleries/\<sharedImageGalleryName\<>/images/ imageGalleryName>.
-- **runOutputName** – dağıtımı tanımlamak için benzersiz bir ad.  
-- **artifactTags** - İsteğe bağlı kullanıcı belirtilen anahtar değer çifti etiketleri.
-- **çoğaltmaBölgeler** - Çoğaltma için bölgelerin dizi. Bölgelerden biri Galeri'nin dağıtıldığı bölge olmalıdır.
+- **tür** -sharedimage  
+- **Gallerımageıd** : paylaşılan görüntü galerisinin kimliği. Biçim:\</subscriptions/SubscriptionID>\</ResourceGroups/resourcegroupname>/Providers/Microsoft.COMPUTE/Galleries/\<sharedimagegallername>/images/\<ımagegallername>.
+- **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
+- **Artifacttags** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
+- **replicationregion** -çoğaltma için bölgelerin dizisi. Bölgelerden biri, galerinin dağıtıldığı bölge olmalıdır.
  
 > [!NOTE]
-> Azure Image Builder'ı galeriye farklı bir bölgede kullanabilirsiniz, ancak Azure Image Builder hizmetinin görüntüyü veri merkezleri arasında aktarması gerekir ve bu daha uzun sürer. Image Builder, tek renkli bir tamsayıya dayanarak görüntüyü otomatik olarak sürümler, şu anda belirtemezsiniz. 
+> Azure Image Builder 'ı galeriye farklı bir bölgede kullanabilirsiniz, ancak Azure Image Builder hizmetinin görüntüyü veri merkezleri arasında aktarması gerekir ve bu daha uzun sürer. Image Builder, bir monoton tamsayıya göre otomatik olarak görüntü sürümüne sahip olur, bunu şu anda belirtemezsiniz. 
 
-### <a name="distribute-vhd"></a>Dağıt: VHD  
-Bir VHD çıktı yapabilirsiniz. Daha sonra VHD'yi kopyalayabilir ve Azure MarketPlace'de yayımlamak veya Azure Yığını ile kullanmak için kullanabilirsiniz.  
+### <a name="distribute-vhd"></a>Dağıtma: VHD  
+Bir VHD 'ye çıkış yapabilirsiniz. Daha sonra VHD 'yi kopyalayabilir ve Azure Market 'Te yayımlamak için kullanabilir veya Azure Stack kullanabilirsiniz.  
 
 ```json
 { 
@@ -572,15 +572,15 @@ Bir VHD çıktı yapabilirsiniz. Daha sonra VHD'yi kopyalayabilir ve Azure Marke
 }
 ```
  
-İşletim Sistemi Desteği: Windows ve Linux
+İşletim sistemi desteği: Windows ve Linux
 
-VHD parametrelerini dağıtın:
+VHD parametrelerini dağıt:
 
-- **türü** - VHD.
-- **runOutputName** – dağıtımı tanımlamak için benzersiz bir ad.  
-- **etiketler** - İsteğe bağlı kullanıcı belirtilen anahtar değeri çifti etiketleri.
+- **tür** -VHD.
+- **Runoutputname** : dağıtımı tanımlamak için benzersiz ad.  
+- **Etiketler** -isteğe bağlı kullanıcı tarafından belirtilen anahtar değer çifti etiketleri.
  
-Azure Image Builder, kullanıcının bir depolama hesabı konumu belirtmesine izin `runOutputs` vermez, ancak konumu almak için durumun sorgulanabilir.  
+Azure görüntü Oluşturucu, kullanıcının bir depolama hesabı konumu belirtilmesine izin vermez, ancak konumunu almak `runOutputs` için durumunu sorgulayabilirsiniz.  
 
 ```azurecli-interactive
 az resource show \
@@ -588,9 +588,9 @@ az resource show \
 ```
 
 > [!NOTE]
-> VHD oluşturulduktan sonra, mümkün olan en kısa sürede farklı bir konuma kopyalayın. VHD, görüntü şablonu Azure Image Builder hizmetine gönderildiğinde oluşturulan geçici kaynak grubunda bir depolama hesabında depolanır. Resim şablonu silerseniz, VHD'yi kaybedersiniz. 
+> VHD oluşturulduktan sonra, bunu farklı bir konuma (mümkün olan en kısa sürede) kopyalayın. VHD, görüntü şablonu Azure görüntü Oluşturucu hizmetine gönderildiğinde oluşturulan geçici kaynak grubundaki bir depolama hesabında depolanır. Görüntü şablonunu silerseniz, VHD 'yi kaybedersiniz. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Image Builder GitHub'da](https://github.com/danielsollondon/azvmimagebuilder)farklı senaryolar için örnek .json dosyaları vardır.
+[Azure görüntü Oluşturucu GitHub](https://github.com/danielsollondon/azvmimagebuilder)'da farklı senaryolar için Sample. JSON dosyaları vardır.
  

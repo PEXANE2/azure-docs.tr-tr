@@ -1,103 +1,103 @@
 ---
-title: MySQL için Azure Active Directory - Azure Veritabanı'nı kullanma
-description: MySQL için Azure Veritabanı ile kimlik doğrulama için Azure Active Directory'yi (Azure AD) nasıl ayarlayabilirsiniz hakkında bilgi edinin
+title: Azure Active Directory kullanma-MySQL için Azure veritabanı
+description: MySQL için Azure veritabanı ile kimlik doğrulaması için Azure Active Directory (Azure AD) ayarlama hakkında bilgi edinin
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79299014"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Etkin Dizini'ni kullanma
+# <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>MySQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
-Bu makale, MySQL için Azure Active Directory erişimini nasıl yapılandıracağınız ve Azure AD belirteci kullanarak nasıl bağlanabileceğiniz adımlarını gözden geçirecektir.
+Bu makale, MySQL için Azure veritabanı ile Azure Active Directory erişimi yapılandırma ve Azure AD belirteci kullanarak bağlanma adımlarında size yol gösterecektir.
 
 > [!IMPORTANT]
-> MySQL için Azure Veritabanı için Azure AD kimlik doğrulaması şu anda genel önizlemededir.
+> MySQL için Azure veritabanı Azure AD kimlik doğrulaması şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="setting-the-azure-ad-admin-user"></a>Azure AD Yöneticisi kullanıcısını ayarlama
+## <a name="setting-the-azure-ad-admin-user"></a>Azure AD yönetici kullanıcısını ayarlama
 
-Yalnızca bir Azure AD Yöneticisi kullanıcısı, Azure AD tabanlı kimlik doğrulaması için kullanıcılar oluşturabilir/etkinleştirebilir. Oluşturmak ve Azure AD Yöneticisi kullanıcısını oluşturmak için lütfen aşağıdaki adımları izleyin
+Yalnızca bir Azure AD Yönetici kullanıcısı, kullanıcıları Azure AD tabanlı kimlik doğrulaması için oluşturabilir/etkinleştirebilir. Azure AD Yönetici kullanıcısı oluşturmak için lütfen aşağıdaki adımları izleyin
 
-1. Azure portalında, Azure AD için etkinleştirmek istediğiniz MySQL için Azure Veritabanı örneğini seçin.
-2. Ayarlar altında Active Directory Admin'i seçin:
+1. Azure portal Azure AD için etkinleştirmek istediğiniz MySQL için Azure veritabanı örneğini seçin.
+2. Ayarlar altında yönetici Active Directory ' yi seçin:
 
-![azure reklam yöneticisi ayarlama][2]
+![Azure AD yöneticisini ayarlama][2]
 
-3. Azure AD yöneticisi olmak için müşteri kiracısında geçerli bir Azure AD kullanıcısı seçin.
+3. Müşteri kiracısında Azure AD yöneticisi olacak geçerli bir Azure AD kullanıcısı seçin.
 
 > [!IMPORTANT]
-> Yöneticiyi ayarlarken, tam yönetici izinleriyle MySQL sunucusu için Azure Veritabanına yeni bir kullanıcı eklenir.
+> Yönetici ayarlanırken, MySQL için Azure veritabanı sunucusuna tam yönetici izinleriyle yeni bir Kullanıcı eklenir.
 
-MySQL sunucusu başına yalnızca bir Azure AD yöneticisi oluşturulabilir ve başka bir yöneticinin seçimi sunucu için yapılandırılan mevcut Azure AD yöneticisinin üzerine yazar.
+Her MySQL sunucusu için yalnızca bir Azure AD yöneticisi oluşturulabilir ve başka bir tane seçilebilir, sunucu için yapılandırılmış mevcut Azure AD yöneticisinin üzerine yazılır.
 
-İleride yayınlanacak bir sürümde, birden fazla yöneticiye sahip olmak için tek bir kullanıcı yerine bir Azure REKLAM grubu belirtmeyi destekleyeceğiz, ancak bu henüz desteklenmedi.
+Gelecekteki bir sürümde, tek bir kullanıcı yerine birden çok yönetici olacak şekilde bir Azure AD grubu belirtmeyi destekliyoruz, ancak şu anda henüz desteklenmiyor.
 
-Yöneticiyi yapılandırdıktan sonra artık oturum açabilirsiniz:
+Yönetici yapılandırıldıktan sonra artık oturum açabilirsiniz:
 
-## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Azure AD'yi kullanarak MySQL için Azure Veritabanına bağlanma
+## <a name="connecting-to-azure-database-for-mysql-using-azure-ad"></a>Azure AD kullanarak MySQL için Azure veritabanı 'na bağlanma
 
-Aşağıdaki üst düzey diyagram, MySQL için Azure Veritabanı ile Azure AD kimlik doğrulamasını kullanmanın iş akışını özetler:
+Aşağıdaki üst düzey diyagram MySQL için Azure veritabanı ile Azure AD kimlik doğrulaması kullanma iş akışını özetler:
 
 ![kimlik doğrulama akışı][1]
 
-Azure AD tümleştirmesini, Azure AD farkında olmayan ve yalnızca MySQL'e bağlanırken kullanıcı adı ve parola belirtmeyi destekleyen mysql CLI gibi ortak MySQL araçlarıyla çalışacak şekilde tasarladık. Yukarıdaki resimde gösterildiği gibi Azure AD belirteci'ni parola olarak geçiyoruz.
+Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca MySQL 'e bağlanırken Kullanıcı adı ve parola belirtmeyi destekleyen MySQL CLı gibi ortak MySQL araçlarıyla çalışacak şekilde tasarladık. Yukarıdaki resimde gösterildiği gibi Azure AD belirtecini parola olarak geçiyoruz.
 
 Şu anda aşağıdaki istemcileri test ettik:
 
-- MySQLWorkbench 
-- Mysql CLI
+- Mysqlçalışma ekranı 
+- MySQL CLı
 
-Biz de en yaygın uygulama sürücüleri test ettik, bu sayfanın sonunda ayrıntıları görebilirsiniz.
+Ayrıca, en yaygın uygulama sürücülerini test ettik, bu sayfanın sonundaki ayrıntıları görebilirsiniz.
 
-Aşağıda açıklanan Azure AD ile bir kullanıcının/uygulamanın kimlik doğrulaması yapması gereken adımlar şunlardır:
+Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="step-1-authenticate-with-azure-ad"></a>Adım 1: Azure AD ile kimlik doğrulaması
+### <a name="step-1-authenticate-with-azure-ad"></a>1. Adım: Azure AD ile kimlik doğrulama
 
-[Azure CLI'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
+[Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 
-Azure AD ile kimlik doğrulaması yapmak için Azure CLI aracını çağırın. Azure AD kullanıcı kimliğinizi ve parolanızı vermenizi gerektirir.
+Azure AD ile kimlik doğrulaması gerçekleştirmek için Azure CLı aracını çağırın. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
 
 ```
 az login
 ```
 
-Bu komut, Azure AD kimlik doğrulama sayfasına bir tarayıcı penceresi başlatacaktır.
+Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır.
 
 > [!NOTE]
-> Bu adımları gerçekleştirmek için Azure Bulut Su Toplarını da kullanabilirsiniz.
-> Azure Bulut Su Ağıtı'nda Azure AD erişim jetonunu alırken açıkça `az login` aramanız ve yeniden oturum açmanız gerekeceğini lütfen unutmayın (kodlu ayrı pencerede). Bu işaretten `get-access-token` sonra komut beklendiği gibi çalışacaktır.
+> Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
+> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. `get-access-token` Komutun bu oturum açma işleminden sonra beklendiği gibi çalışacaktır.
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>Adım 2: Azure AD erişim jetonunu alın
+### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
-MySQL için Azure Veritabanı'na erişmek için 1 adımdan Azure AD kimlik doğrulaması yapılan kullanıcıiçin bir erişim jetonu edinmek için Azure CLI aracını çağırın.
+Azure AD kimliği doğrulanmış kullanıcı için adım 1 ' den MySQL için Azure veritabanı 'na erişim için bir erişim belirteci almak üzere Azure CLı aracını çağırın.
 
-Örnek (Genel Bulut için):
+Örnek (genel bulut için):
 
 ```shell
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-Yukarıdaki kaynak değeri tam olarak gösterildiği gibi belirtilmelidir. Diğer bulutlar için kaynak değeri aşağıdakileri kullanarak aranabilir:
+Yukarıdaki kaynak değeri tam olarak gösterildiği gibi belirtilmelidir. Diğer bulutlarda, kaynak değeri şu kullanılarak aranabilir:
 
 ```shell
 az cloud show
 ```
 
-Azure CLI sürüm 2.0.71 ve sonrası için komut tüm bulutlar için aşağıdaki daha kullanışlı sürümde belirtilebilir:
+Azure CLı sürüm 2.0.71 ve üzeri için, komut tüm bulutlar için aşağıdaki daha uygun sürümde belirtilebilir:
 
 ```shell
 az account get-access-token --resource-type oss-rdbms
 ```
 
-Kimlik doğrulama başarılı olduktan sonra, Azure AD bir erişim jetonu döndürecek:
+Kimlik doğrulaması başarılı olduktan sonra Azure AD, bir erişim belirteci döndürür:
 
 ```json
 {
@@ -109,16 +109,16 @@ Kimlik doğrulama başarılı olduktan sonra, Azure AD bir erişim jetonu dönd�
 }
 ```
 
-Belirteç, kimliği doğrulanan kullanıcı hakkındaki tüm bilgileri kodlayan ve MySQL hizmeti için Azure Veritabanı'nı hedefleyen bir Base 64 dizesidir.
+Belirteç, kimliği doğrulanmış kullanıcıyla ilgili tüm bilgileri kodlayan ve MySQL için Azure veritabanı hizmetine hedeflenen bir temel 64 dizesidir.
 
 > [!NOTE]
-> Erişim belirteci geçerliliği 5 dakika ile 60 dakika arasındadır. MySQL için Azure Veritabanı'na giriş başlatmadan hemen önce erişim jetonuna ulaşmanızı öneririz.
+> Erişim belirteci geçerliliği, 5 dakikadan 60 dakika arasında bir süre sürer. MySQL için Azure veritabanı 'nda oturum açmayı başlatmadan önce erişim belirtecini almanızı öneririz.
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>Adım 3: MySQL ile oturum açmak için parola olarak belirteç kullanın
+### <a name="step-3-use-token-as-password-for-logging-in-with-mysql"></a>3. Adım: MySQL ile oturum açmak için belirteci parola olarak kullanın
 
-Bağlanırken MySQL kullanıcı parolası olarak erişim belirteci kullanmanız gerekir. MySQLWorkbench gibi GUI istemcilerini kullanırken, belirteci almak için yukarıdaki yöntemi kullanabilirsiniz. 
+Bağlantı sırasında MySQL Kullanıcı parolası olarak erişim belirtecini kullanmanız gerekir. Mysqlme gibi GUI istemcilerini kullanırken, belirteci almak için yukarıdaki yöntemi kullanabilirsiniz. 
 
-CLI'yi kullanırken, bağlanmak için bu kısa eli kullanabilirsiniz: 
+CLı kullanırken, bu kısa süreli bağlantı kurmak için şunu kullanabilirsiniz: 
 
 **Örnek (Linux/macOS):**
 ```
@@ -128,25 +128,25 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
-"Metin eklentisini etkinleştirme" ayarına dikkat edin – belirteçlerin işlenmeden sunucuya gönderilmesini sağlamak için diğer istemcilerle benzer bir yapılandırma kullanmanız gerekir.
+"Enable-şifresiz-Plugin" ayarını unutmayın. belirtecin karma kalmadan sunucuya gönderilmesini sağlamak için diğer istemcilerle benzer bir yapılandırma kullanmanız gerekir.
 
-Azure AD kimlik doğrulamasını kullanarak MySQL sunucunuza kimlik doğrulaması yapılır.
+Artık Azure AD kimlik doğrulaması kullanarak MySQL sunucunuza kimliğiniz doğrulanır.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda Azure AD kullanıcıları oluşturma
+## <a name="creating-azure-ad-users-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD kullanıcıları oluşturma
 
-MySQL veritabanınız için Azure Veritabanınıza bir Azure REKLAM kullanıcısı eklemek için bağlandıktan sonra aşağıdaki adımları gerçekleştirin (nasıl bağlanılabağlanınız la ilgili sonraki bölüme bakın):
+MySQL veritabanı için Azure veritabanı 'na bir Azure AD kullanıcısı eklemek için, bağlandıktan sonra aşağıdaki adımları gerçekleştirin (bkz. bağlanma hakkında sonraki bölüm):
 
-1. Öncelikle Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
-2. Azure AD Yöneticisi kullanıcısı olarak MySQL örneği için Azure Veritabanınızda oturum açın.
-3. MySQL `<user>@yourtenant.onmicrosoft.com` için Azure Veritabanı'nda kullanıcı oluşturun.
+1. İlk olarak Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
+2. MySQL için Azure veritabanı örneğinde Azure AD Yönetici kullanıcısı olarak oturum açın.
+3. MySQL için `<user>@yourtenant.onmicrosoft.com` Azure veritabanı 'nda kullanıcı oluşturun.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
 ```
 
-32 karakteri aşan kullanıcı adları için, bağlanırken kullanılmak üzere bir takma ad kullanmanız önerilir: 
+32 karakteri aşan Kullanıcı adları için, bağlantı sırasında kullanılmak üzere bunun yerine bir diğer ad kullanmanız önerilir: 
 
 Örnek:
 
@@ -155,57 +155,57 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 ```
 
 > [!NOTE]
-> Azure AD aracılığıyla bir kullanıcının kimliğini doğrulamak, kullanıcıya MySQL veritabanı için Azure Veritabanı'ndaki nesnelere erişme izni vermez. Kullanıcıya gerekli izinleri el ile vermelisiniz.
+> Azure AD aracılığıyla bir kullanıcının kimliğini doğrulamak, kullanıcıya MySQL için Azure veritabanı veritabanı içindeki nesnelere erişim izni vermez. Kullanıcıya gerekli izinleri el ile vermeniz gerekir.
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda Azure REKLAM grupları oluşturma
+## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda Azure AD grupları oluşturma
 
-Veritabanınıza erişmek için bir Azure REKLAM grubunu etkinleştirmek için, kullanıcılarla aynı mekanizmayı kullanın, ancak bunun yerine grup adını belirtin:
+Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';
 ```
 
-Oturum açarken, grup üyeleri kişisel erişim belirteçlerini kullanır, ancak kullanıcı adı olarak belirtilen grup adı ile imzalar.
+Oturum açarken, grubun üyeleri kendi kişisel erişim belirteçlerini kullanır, ancak Kullanıcı adı olarak belirtilen grup adıyla oturum açılır.
 
-## <a name="token-validation"></a>Belirteç Doğrulama
+## <a name="token-validation"></a>Belirteç doğrulama
 
-MySQL için Azure Veritabanı'ndaki Azure AD kimlik doğrulaması, kullanıcının MySQL sunucusunda bulunmasını sağlar ve belirteç içeriğini doğrulayarak belirteci geçerliliğini denetler. Aşağıdaki belirteç doğrulama adımları gerçekleştirilir:
+MySQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcının MySQL sunucusunda mevcut olmasını sağlar ve belirtecin içeriğini doğrulayarak belirtecin geçerliliğini denetler. Aşağıdaki belirteç doğrulama adımları gerçekleştirilir:
 
--   Belirteç Azure AD tarafından imzalanmıştır ve kurcalanmamıştır
+-   Belirteç Azure AD tarafından imzalanmış ve bu değişiklik yapılmamıştır
 -   Belirteç, sunucuyla ilişkili kiracı için Azure AD tarafından verildi
--   Belirteci'nin süresi dolmadı
--   Belirteç, MySQL kaynağı için Azure Veritabanı içindir (başka bir Azure kaynağı için değil)
+-   Belirtecin süresi sona ermedi
+-   Belirteç, MySQL için Azure veritabanı kaynağına yöneliktir (başka bir Azure kaynağı değil)
 
-## <a name="compatibility-with-application-drivers"></a>Uygulama sürücüleri ile uyumluluk
+## <a name="compatibility-with-application-drivers"></a>Uygulama sürücüleriyle uyumluluk
 
-Çoğu sürücü desteklenir, ancak parolayı açık metin olarak göndermek için ayarları kullandığınızdan emin olun, böylece belirteç değiştirilmeden gönderilir.
+Çoğu sürücü desteklenir, ancak belirtecin değişiklik yapılmadan gönderilmesi için parolayı düz metin olarak gönderme ayarlarını kullandığınızdan emin olun.
 
 * C/C++
-  * libmysqlclient: Desteklenen
-  * mysql-konektör-c++: Desteklenen
+  * libmysqlclient: destekleniyor
+  * MySQL-bağlayıcı-c + +: desteklenir
 * Java
-  * Konektör/J (mysql-konektör-java): Desteklenen, `useSSL` ayarı kullanmalıdır
+  * Bağlayıcı/J (MySQL-Connector-Java): desteklenir, `useSSL` ayar kullanılmalıdır
 * Python
-  * Bağlayıcı/Python: Desteklenen
+  * Bağlayıcı/Python: destekleniyor
 * Ruby
-  * mysql2: Desteklenen
+  * mysql2: destekleniyor
 * .NET
-  * mysql-connector-net: Desteklenen, mysql_clear_password için eklenti eklemek gerekir
-  * mysql-net/MySqlConnector: Desteklenen
+  * MySQL-Connector-net: desteklenen, mysql_clear_password için eklenti eklemesi gerekiyor
+  * MySQL-net/MySqlConnector: destekleniyor
 * Node.js
-  * mysqljs: Desteklenmez (yama olmadan açık metin de belirteç göndermez)
-  * düğüm-mysql2: Desteklenen
+  * mysqljs: desteklenmez (düzeltme eki olmadan şifresiz metin olarak bir belirteç göndermez)
+  * Node-mysql2: destekleniyor
 * Perl
-  * DBD::mysql: Desteklenen
-  * Net::MySQL: Desteklenmiyor
+  * DBD:: MySQL: destekleniyor
+  * Net:: MySQL: desteklenmiyor
 * Başlayın
-  * go-sql-driver: Desteklenen, `?tls=true&allowCleartextPasswords=true` bağlantı dizesine ekle
+  * Go-SQL-Driver: desteklenir, bağlantı `?tls=true&allowCleartextPasswords=true` dizesine ekleyin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [MySQL için Azure Veritabanı ile Azure Active Directory kimlik doğrulaması için](concepts-azure-ad-authentication.md) genel kavramları gözden geçirin
+* [MySQL Için Azure veritabanı ile Azure Active Directory kimlik doğrulaması](concepts-azure-ad-authentication.md) için genel kavramları gözden geçirin
 
 <!--Image references-->
 

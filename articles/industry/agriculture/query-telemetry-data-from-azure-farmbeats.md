@@ -1,48 +1,48 @@
 ---
-title: Yutulan telemetri verilerini sorgulama
-description: Bu makalede, sindirilen telemetri verilerinin nasıl sorgulanılacaösin.
+title: Sorgusu alınan telemetri verileri
+description: Bu makalede, alınan Telemetri verilerinin nasıl sorgulanmakta olduğu açıklanır.
 author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349812"
 ---
-# <a name="query-ingested-telemetry-data"></a>Yutulan telemetri verilerini sorgulama
+# <a name="query-ingested-telemetry-data"></a>Sorgusu alınan telemetri verileri
 
-Bu makalede, Azure FarmBeats'ten alınan sensör verilerinin nasıl sorgulanılan bir şekilde sorgulanış ları açıklanmaktadır.
+Bu makalede, Azure Farmınts 'den alınan algılayıcı verilerinin nasıl sorgulanmakta olduğu açıklanır.
 
-Cihazlar ve sensörler gibi Nesnelerin İnterneti (IoT) kaynaklarından veri yutmak FarmBeats'te yaygın bir senaryodur. Aygıtlar ve sensörler için meta veriler oluşturur sunuz ve tarihi verileri farmbeats'e kanonik biçimde sindirirsiniz. FarmBeats Datahub'da sensör verileri kullanılabilir hale geldikten sonra, işlem yapılabilir öngörüler oluşturmak veya modeller oluşturmak için aynı sorguyı sorgulayabiliriz.
+Cihazlar ve algılayıcılar gibi Nesnelerin İnterneti (IoT) kaynaklarından veri almak, Farmınts 'de yaygın bir senaryodur. Cihazlar ve sensörler için meta veriler oluşturur ve ardından geçmiş verileri, kurallı bir biçimde Farmto 'Lar için kullanırsınız. Bir algılayıcı verileri Farmrets veri hub 'ında kullanılabilir olduktan sonra, eyleme dönüştürülebilir içgörüler veya yapı modelleri oluşturmak için aynı şekilde sorgu yapabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makaleye devam etmeden önce FarmBeats yüklü ve FarmBeats için IoT cihazlardan sensör telemetri verileri yutulan emin olun.
+Bu makaleye devam etmeden önce, IoT cihazlarınızdan farmınts ve giriş algılayıcı telemetri verilerini, bu makaleye yüklediğinizden emin olun.
 
-Sensör telemetri verilerini almak [için, geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md)
+Algılayıcı telemetri verilerini almak için alma [Geçmiş telemetri verilerini](ingest-historical-telemetry-data-in-azure-farmbeats.md) ziyaret edin
 
-Devam etmeden önce, API'leri kullanarak sindirilmiş telemetriyi sorguladığınız için FarmBeats REST API'lerine aşina olduğunuzdan da emin olmanız gerekir. FarmBeats API'leri hakkında daha fazla bilgi için [FarmBeats REST API'lerine](rest-api-in-azure-farmbeats.md)bakın. **FarmBeats Datahub bitiş noktanıza API isteklerinde bulunabildiğinizden emin olun.**
+Devam etmeden önce, API 'Leri kullanarak alınan Telemetriyi sorgulamadığınızda, Farmcts REST API 'Lerini de öğrendiğinizden emin olmanız gerekir. Farmtts API 'Leri hakkında daha fazla bilgi için bkz. [FARMTEMPTS REST API 'leri](rest-api-in-azure-farmbeats.md). **Farmrets Datahub uç noktanıza API istekleri yapabildiğinizden emin olun**.
 
-## <a name="query-ingested-sensor-telemetry-data"></a>Yutulan sensör telemetri verilerini sorgulama
+## <a name="query-ingested-sensor-telemetry-data"></a>Sorgu alınan algılayıcı telemetri verileri
 
-FarmBeats'ten telemetri verilerine erişmenin ve sorgulamanın iki yolu vardır:
+Farmtts 'den telemetri verilerine erişmek ve bunları sorgulamak için iki yol vardır:
 
 - API ve
-- Zaman Serisi Öngörüleri (TSI).
+- Time Series Insights (TSI).
 
-### <a name="query-using-rest-api"></a>REST API kullanarak sorgu
+### <a name="query-using-rest-api"></a>REST API kullanarak sorgulama
 
-FarmBeats REST API'lerini kullanarak yutulan sensör telemetri verilerini sorgulamak için aşağıdaki adımları izleyin:
+Farmınts REST API 'Lerini kullanarak alınan algılayıcı telemetri verilerini sorgulamak için adımları izleyin:
 
-1. İlgilendiğiniz sensörü tanımlayın. Bunu /Sensor API'de GET isteği nde bulunarak yapabilirsiniz.
+1. İlgilendiğiniz algılayıcıyı belirler. Bunu,/sensör API 'sinde bir GET isteği yaparak yapabilirsiniz.
 
 > [!NOTE]
-> İlgilenen sensör nesnesinin **kimliği** ve **sensörüModelId.**
+> İlgilendiğiniz algılayıcı nesnesinin **kimliği** ve **Sensormodelıd** .
 
-2. Adım 1'de belirtildiği gibi **SensorModelId** için /SensorModel API'de GET/{id} yapın. "Sensör Modeli" sensöründen yutulan telemetri ile ilgili tüm meta verilere ve ayrıntılara sahiptir. Örneğin, **Sensör Modeli** nesnesi içindeki **Sensör Ölçümü,** sensörün hangi önlemlerin gönderildiği ve hangi tür ve birimlerde gönderildiği hakkında ayrıntılara sahiptir. Örneğin,
+2. Adım 1 ' de belirtildiği gibi **Sensormodelıd** için/SensorModel API 'sinde Get/{ID} yapın. "Algılayıcı modeli", sensörden alınan telemetri hakkında tüm meta verileri ve ayrıntıları içerir. Örneğin, algılayıcı **modeli** nesnesi Içindeki **algılayıcı ölçüsü** , sensörlerin hangi ölçülerde ve hangi türlerde ve birimlerde olduğuna ilişkin ayrıntıları içerir. Örneğin,
 
   ```json
   {
@@ -54,9 +54,9 @@ FarmBeats REST API'lerini kullanarak yutulan sensör telemetri verilerini sorgul
       "description": "<Description of the measure>"
   }
   ```
-Sensör Modeli için GET/{id} çağrısından yanıta dikkat edin.
+Algılayıcı modeli için GET/{id} çağrısından gelen yanıtı bir yere unutmayın.
 
-3. /Telemetri API'de aşağıdaki giriş yüküyle POST araması yapın
+3. /Telemetri API 'sinde aşağıdaki giriş yüküne sahip bir POST çağrısı yapın
 
   ```json
   {
@@ -77,7 +77,7 @@ Sensör Modeli için GET/{id} çağrısından yanıta dikkat edin.
     ]
   }
   ```
-4. /Telemetri API'sinin yanıtı şuna benzer:
+4. /Telemetri API 'sindeki yanıt şuna benzer şekilde görünür:
 
   ```json
   {
@@ -105,21 +105,21 @@ Sensör Modeli için GET/{id} çağrısından yanıta dikkat edin.
     ]
   }
   ```
-Yukarıdaki örnek yanıtta, sorgulanmış sensör telemetrisi, iki zaman damgasında bildirilen telemetrinin değerleri ("moist_soil_last") ve ölçü adı ile birlikte iki zaman damgası için veri verir. Bildirilen değerlerin türünü ve birimini yorumlamak için ilişkili Sensör Modeline (adım 2'de açıklandığı şekilde) başvurmanız gerekir.
+Yukarıdaki örnek yanıtta, sorgulanan algılayıcı telemetrisi, iki zaman damgasına ilişkin verileri, ölçü adı ("moist_soil_last") ve bildirilen Telemetriyi iki zaman damgasına göre verir. Bildirilen değerlerin türünü ve birimini yorumlamak için ilişkili algılayıcı modeline (adım 2 ' de açıklandığı gibi) başvurmanız gerekecektir.
 
-### <a name="query-using-azure-time-series-insights-tsi"></a>Azure Zaman Serisi Öngörülerini Kullanarak Sorgula (TSI)
+### <a name="query-using-azure-time-series-insights-tsi"></a>Azure Time Series Insights kullanarak sorgulama (TSI)
 
-FarmBeats, IoT ölçeğinde verileri yüksek düzeyde bağlamsallaştırılan ve zaman serisi için optimize edilmiş verileri yutmak, depolamak, sorgulamak ve görselleştirmek için [Azure Zaman Serisi Öngörülerinden (TSI)](https://azure.microsoft.com/services/time-series-insights/) yararlanır.
+Farmınts, IoT ölçeğinde verileri almak, depolamak, sorgulamak ve görselleştirmek için [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) kullanır. Bu, zaman serisi için en iyi duruma getirilmiş ve en iyileştirilmiş veri.
 
-Telemetri verileri bir EventHub'dan alınır ve farmbeats kaynak grubu içinde bir TSI ortamına işlenir ve itilir. Veriler daha sonra doğrudan TSI'den sorgulanabilir. Daha fazla bilgi için [TSI belgelerine](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer) bakın
+Telemetri verileri bir EventHub üzerinde alınır ve sonra işlenir ve Farmtts kaynak grubu içindeki bir TSI ortamına gönderilir. Veriler daha sonra doğrudan TSI 'dan sorgulanabilir. Daha fazla bilgi için bkz. [TSI belgeleri](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)
 
-TSI'deki verileri görselleştirmek için aşağıdaki adımları izleyin:
+TSI üzerinde verileri görselleştirmek için adımları izleyin:
 
-1. Azure **Portal** > **FarmBeats DataHub kaynak grubuna** gidin > **Zaman Serisi Öngörüler** ortamını (tsi-xxxx) > Veri Erişim **İlkeleri'ni**seçin. Reader veya Contributor erişimi olan kullanıcı ekleyin.
-2. **Time Series Insights** ortamının **Genel Bakış** sayfasına (tsi-xxxx) gidin ve Time **Series Insights Explorer URL'sini**seçin. Artık yutulan telemetriyi görselleştirebileceksiniz.
+1. **Azure Portal** > **farmrets Datahub kaynak grubu** ' na gidin > **Time Series Insights** ortamı (TSİ-xxxx) > **veri erişim ilkeleri**' ni seçin. Okuyucu veya katkıda bulunan erişimi olan kullanıcı ekleyin.
+2. **Time Series Insights** ortamının (TSİ-xxxx) **genel bakış** sayfasına gidin ve **Time Series Insights Explorer URL 'sini**seçin. Artık alınan telemetrisini görselleştirebileceksiniz.
 
-TSI, telemetrinin depolanması, sorgulanması ve görselleştirilmesinin yanı sıra Power BI panosuna tümleştirme yi de sağlar. Daha fazla bilgi için [buraya]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) bakın
+Telemetriyi depolamanın, sorgulayan ve görselleştirmenin yanı sıra, TSI Power BI panosu ile tümleştirmeyi de sağlar. Daha fazla bilgi için [buraya]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure FarmBeats örneğinizden gelen sensör verilerini şimdi sorguladınız. Şimdi, çiftlikleriniz için haritaları nasıl [oluşturacağınızı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.
+Artık Azure Farmtts örneğinden gelen algılayıcı verilerini sorguladınız. Şimdi, gruplar için [haritalar oluşturmayı](generate-maps-in-azure-farmbeats.md#generate-maps) öğrenin.

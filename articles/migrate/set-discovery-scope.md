@@ -1,78 +1,78 @@
 ---
-title: Azure Geçiş ile VMware VM keşfinin kapsamını ayarlama
-description: Azure Geçişi ile VMware VM değerlendirmesi ve geçişi için keşif kapsamının nasıl ayarlanır olduğunu açıklar.
+title: Azure geçişi ile VMware VM keşfi kapsamını ayarlama
+description: Azure geçişi ile VMware VM değerlendirmesi ve geçişi için bulma kapsamının nasıl ayarlanacağını açıklar.
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 29b3077ead168cef2790468d6ac62d1c59c24c11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337642"
 ---
-# <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM'ler için bulma kapsamı ayarlama
+# <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM 'Leri için bulma kapsamını ayarlama
 
-Bu makalede, [Azure Geçiş cihazı](migrate-appliance-architecture.md)tarafından keşfedilen VMware VM'ler için keşif kapsamının nasıl sınırlandırılabildiğini açıklanmaktadır.
+Bu makalede, [Azure geçişi](migrate-appliance-architecture.md)gereci tarafından bulunan VMware VM 'leri için bulma kapsamının nasıl sınırlandırılacağını açıklanmaktadır.
 
-Azure Geçir cihazı, şirket içi VMware VM'leri aşağıdaki leri keşfeder: 
+Azure geçişi gereci, şu durumlarda şirket içi VMware VM 'lerini bulur: 
 
-- VMware VM'leri Azure'a geçiş için değerlendirmek için [Azure Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanın.
-- VMware VM'lerin [Azure'a aracısız geçişi](server-migrate-overview.md) için [Azure Geçiş:Sunucu Geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) aracısını kullanın.
+- Azure 'a geçiş için VMware VM 'lerini değerlendirmek üzere [Azure geçişi: Sunucu değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanın.
+- VMware VM 'lerinden Azure 'a [daha az geçiş](server-migrate-overview.md) Için [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracı 'nı kullanın.
 
-## <a name="set-discovery-scope"></a>Keşif kapsamını ayarlama
+## <a name="set-discovery-scope"></a>Bulma kapsamını ayarla
 
 
-VMware VM değerlendirmesi veya geçişi için Azure Geçir cihazını ayarladıktan sonra, cihaz VM'leri keşfetmeye ve Azure'a VM meta verilerini göndermeye başlar. Cihazı keşif için vCenter Server'a bağlamadan önce, keşif kapsamını keşfi vCenter Server veri merkezleri, kümeler, kümeler klasörü, ana bilgisayarlar, ana bilgisayarlar klasörü veya tek tek VM'lerle sınırlayacak şekilde ayarlayabilirsiniz.
+VMware VM 'Leri değerlendirmesi veya geçiş için Azure geçişi gereci ayarladıktan sonra, Gereç VM 'Leri bulmaya ve VM meta verilerini Azure 'a göndermeye başlar. Gereci bulma için vCenter Server 'ye bağlanmadan önce bulma kapsamını, bulmayı vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya ayrı VM 'Ler için sınırlamak üzere ayarlayabilirsiniz.
 
-Kapsamı ayarlamak için, Azure Geçir'in vCenter Sunucusuna erişmek için kullandığı hesapta izinler atarsınız.
+Kapsamı ayarlamak için, Azure geçişi 'nin vCenter Server erişmek için kullandığı hesaba izinler atarsınız.
 
-## <a name="create-a-vcenter-user-account"></a>vCenter kullanıcı hesabı oluşturma
+## <a name="create-a-vcenter-user-account"></a>VCenter Kullanıcı hesabı oluşturma
 
-Azure Geçir cihazının VMware VM'leri keşfetmek, değerlendirmek ve geçirmek için kullandığı bir vCenter kullanıcı hesabı nı henüz ayarlamadıysanız, bunu önce yapın.
+Azure geçişi gerecinin VMware VM 'lerini keşfetmek, değerlendirmek ve geçirmek için kullandığı bir vCenter Kullanıcı hesabı ayarlamadıysanız, önce bunu yapın.
 
-1.    vCenter Server yöneticisi olarak vSphere Web Client'da oturum açın.
-2.    **Yönetim** > **SSO kullanıcılarını ve Gruplarını**seçin ve **Kullanıcılar** sekmesini tıklatın.
-3.    Yeni **Kullanıcı** simgesini seçin.
-4.    **Yeni**kullanıcı bilgilerini tamam > doldurun.
+1.    VCenter Server Yöneticisi olarak vSphere Web Istemcisinde oturum açın.
+2.    **Yönetim** > **SSO kullanıcıları ve grupları**' nı seçin ve **Kullanıcılar** sekmesine tıklayın.
+3.    **Yeni Kullanıcı** simgesini seçin.
+4.    **Tamam**> Yeni Kullanıcı bilgilerini girin.
 
-Hesap izinleri, ne dağıttığınız için bağlıdır.
+Hesap izinleri, dağıtmakta olduğunuz işe bağlıdır.
 
 **Özellik** | **Hesap izinleri**
 --- | ---
-[Değerlendirmek](tutorial-assess-vmware.md)| Hesabın salt okunur erişime ihtiyacı vardır.
-[Uygulamaları/rolleri/özellikleri bulma](how-to-discover-applications.md) | Sanal makineler > Konuk İşlemleri için etkinleştirilen ayrıcalıklar sayesinde hesabın salt okunur erişime ihtiyacı vardır.
-[Bağımlılıkları analiz et (aracısız)](how-to-create-group-machine-dependencies-agentless.md) | Sanal makineler > Konuk İşlemleri için etkinleştirilen ayrıcalıklar sayesinde hesabın salt okunur erişime ihtiyacı vardır.
-[Geçiş (aracısız)](tutorial-migrate-vmware.md) | Doğru izinlere atanmış bir role ihtiyacınız var.<br/><br/> Bir rol oluşturmak için vCenter Server yöneticisi olarak vSphere Web Client'da oturum açın. **rol oluştur>** vCenter Server örneğini seçin. Bir rol adı belirtin, örneğin <em>Azure_Migrate</em>ve [role gerekli izinleri](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) atayın.
+[Lamayı](tutorial-assess-vmware.md)| Hesabın salt okuma erişimi olması gerekir.
+[Uygulamaları/rolleri/özellikleri bulma](how-to-discover-applications.md) | Hesabın, Konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıklarla salt okuma erişimi olması gerekir.
+[Bağımlılıkları çözümleme (aracısız)](how-to-create-group-machine-dependencies-agentless.md) | Hesabın, Konuk Işlemleri > sanal makineler için etkinleştirilen ayrıcalıklarla salt okuma erişimi olması gerekir.
+[Geçir (aracısız)](tutorial-migrate-vmware.md) | Doğru izinleri atanmış bir role ihtiyacınız vardır.<br/><br/> Rol oluşturmak için, vSphere Web Istemcisinde vCenter Server yönetici olarak oturum açın. **Rol oluştur**> vCenter Server örneğini seçin. Rol adı belirtin, örneğin <em>Azure_Migrate</em>ve [gerekli izinleri](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) role atayın.
 
 
-## <a name="assign-permissions-on-vcenter-objects"></a>vCenter nesnelerinde izin atama
+## <a name="assign-permissions-on-vcenter-objects"></a>VCenter nesnelerinde izin atama
 
-İki yöntemden birini kullanarak stok nesnelerinde izinatlayabilirsiniz:
+İki yöntemden birini kullanarak sayım nesnelerinde izin atayabilirsiniz:
 
-- Keşfetmek/geçirmek istediğiniz VM'leri barındıran tüm üst nesneler için, kullanmakta olduğunuz hesaba gerekli izinleri içeren bir rol atayın.
-- Alternatif olarak, rolü ve kullanıcı hesabını veri merkezi düzeyinde atayabilir ve bunları alt nesnelere çoğaltabilirsiniz. Ardından, keşfetmek/geçirmek istemediğiniz her nesne için hesaba **erişim yok** rolü verin. Hantal olduğu için bu yaklaşımı önermiyoruz ve her yeni alt nesnenin ebeveynden devralınan erişime otomatik olarak verildiği için erişim denetimlerini ortaya çıkarabiliriz.
+- Bulma/geçirme yapmak istediğiniz VM 'Leri barındıran tüm üst nesneler için, gerekli izinlere sahip bir rolü, kullanmakta olduğunuz hesaba atayın.
+- Alternatif olarak, rol ve Kullanıcı hesabını veri merkezi düzeyinde atayabilir ve bunları alt nesnelere yayabilirsiniz. Sonra, keşfetmek/geçirmek istemediğiniz her nesne için hesaba **erişim** rolü vermeyin. Her yeni alt nesneye otomatik olarak devralınan erişim izni verildiğinden, bu yaklaşımın bir bütün olduğundan bu yaklaşımı önermiyoruz.
 
-İlgili tüm nesneler için kullandığınız hesaba bir rol atamak için aşağıdakileri yapın:
+Tüm ilgili nesneler için kullanmakta olduğunuz hesaba bir rol atamak için şunları yapın:
 
-- **Değerlendirme için**: VM değerlendirmesi için, keşfetmek istediğiniz VM'leri barındıran tüm ana nesneler için vCenter kullanıcı hesabına **salt okunur** rolünü uygulayın. Ana nesneler dahil: ana bilgisayar, ana bilgisayar klasörü, küme ve hiyerarşideki kümelerin klasörü, veri merkezine kadar. Bu izinleri hiyerarşideki alt nesnelere yayıltın.
+- **Değerlendirme için**: VM değerlendirmesi için, keşfi yapmak Istediğiniz VM 'leri barındıran tüm üst nesneler için vCenter Kullanıcı hesabına **salt okuma** rolünü uygulayın. Dahil edilen üst nesneler: veri merkezine kadar, hiyerarşide ana bilgisayar, konak ve küme klasörünün klasörü. Bu izinleri hiyerarşideki alt nesnelere yay.
 
     ![İzin atama](./media/tutorial-assess-vmware/assign-perms.png)
 
-- **Aracısız geçiş için**: Aracısız geçiş için, keşfetmek istediğiniz VM'leri barındıran tüm ana nesneler için kullanıcı hesabına gerekli [izinlerle](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) kullanıcı tanımlı bir rol uygulayın. Rolü <em>Azure_Migrate</em>adlandırabilirsiniz.
+- **Aracısız geçiş için**: aracısız geçiş için, keşfetmek Istediğiniz VM 'leri barındıran tüm üst nesneler için Kullanıcı hesabı için [gerekli izinlere](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) sahip kullanıcı tanımlı bir rol uygulayın. Rolü <em>Azure_Migrate</em>adı verebilirsiniz.
 
 ### <a name="scope-support"></a>Kapsam desteği
 
-Şu anda, vCenter hesabı vCenter VM klasör düzeyinde verilen erişim eki varsa, Sunucu Değerlendirme aracı VM'leri keşfedemez. Ana bilgisayar ve kümelerin klasörleri desteklenir.
+Şu anda, vCenter hesabının vCenter VM klasör düzeyinde erişimi varsa sunucu değerlendirmesi aracı VM 'Leri bulamaz. Konaklar ve kümelerin klasörleri desteklenir.
 
-Keşfinizi VM klasörlerine göre kapsamda kapsamda genişletmek istiyorsanız, vCenter hesabının VM düzeyinde atanmış salt okunur erişime sahip olduğundan emin olmak için bir sonraki yordamı tamamlayın.
+Bulma işlemini VM klasörlerine göre yapmak istiyorsanız, vCenter hesabının bir VM düzeyinde salt okuma erişimi olduğundan emin olmak için bir sonraki yordamı izleyin.
 
-1. Keşif için kapsama almak istediğiniz VM klasörlerinde ki tüm VM'lere salt okunur izinleri atayın.
-2. VM'leri barındıran tüm üst nesnelere salt okunur erişimi tanıyın.
-    - Veri merkezine kadar hiyerarşideki tüm üst nesneler (ana bilgisayar, ana bilgisayar klasörü, küme, kümeler klasörü) dahildir.
-    - İzinleri tüm alt nesnelere yaymanız gerekmez.
-3. Veri merkezini **Koleksiyon Kapsamı**olarak seçerek keşif için kimlik bilgilerini kullanın. Rol tabanlı erişim denetimi kurulumu, ilgili vCenter kullanıcı hesabının yalnızca kiracıya özgü VM'lere erişmesini sağlar.
+1. Bulma için kapsama eklemek istediğiniz VM klasörlerindeki tüm VM 'lerde salt okunurdur izinleri atayın.
+2. VM 'Leri barındıran tüm üst nesnelere salt okuma erişimi verin.
+    - Veri merkezine kadar olan hiyerarşide tüm üst nesneler (ana bilgisayar, konak klasörü, küme, küme klasörü) bulunur.
+    - İzinleri tüm alt nesnelere yaymaya gerek yoktur.
+3. Veri merkezini **koleksiyon kapsamı**olarak seçerek bulma için kimlik bilgilerini kullanın. Rol tabanlı erişim denetimi kurulumu, karşılık gelen vCenter Kullanıcı hesabının yalnızca kiracıya özgü VM 'lere erişimi olmasını sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Cihazı ayarlayın](how-to-set-up-appliance-vmware.md) ve [sürekli keşif başlatın.](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential)
+Gereci [kurun](how-to-set-up-appliance-vmware.md) ve [sürekli bulmayı başlatın](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential).

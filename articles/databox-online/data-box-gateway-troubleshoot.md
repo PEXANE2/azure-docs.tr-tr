@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
 ms.openlocfilehash: 54f6473954c73de6ec29602c3d1563579b3e8cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265395"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway sorunlarınızı giderme 
@@ -48,7 +48,7 @@ Destek paketi toplamak için aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. Destek paketi oluşturulduktan sonra **Destek paketini indir**'e tıklayın. Seçtiğiniz yola .zip uzantılı bir paket indirilir. Paketin zip'ini açabilirsin.
+2. Destek paketi oluşturulduktan sonra **Destek paketini indir**'e tıklayın. Seçtiğiniz yola .zip uzantılı bir paket indirilir. Paketi unzip edebilirsiniz.
 
     ![Kullanıcı ekle'ye tıklayın](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
@@ -98,8 +98,8 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Hesap veya paylaşım devre dışı olduğundan hesaba veri yüklenemedi.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Hesap izinleri yanlış olduğundan veya güncel olmadığından kapsayıcı bağlantısı kurulamadı. Erişiminizi kontrol edin.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Kapsayıcı dolu olduğundan yeni veri eklenemedi. Türe göre desteklenen kapsayıcı boyutları için Azure özelliklerine bakın. Örneğin Azure Dosyaları en fazla 5 TB büyüklüğündeki dosyaları kabul eder.                                     |
-    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Paylaşımla ilişkili kapsayıcı olmadığı için veri yüklenememiş.                                     |    
-    |    2997            |    ERROR_ITEM_CANCELED                                     |    Beklenmeyen bir hata oluştu. Bu kendi kendine çözecek geçici bir hatadır.                                                                           |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Paylaşımda ilişkilendirilen kapsayıcı mevcut olmadığından veriler karşıya yüklenemedi.                                     |    
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Beklenmeyen bir hata oluştu. Bu, kendisini çözecek geçici bir hatadır.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Beklenmeyen bir hata oluştu. Bu hata kendiliğinden çözülebilir ancak 24 saatten uzun bir süre devam ederse Microsoft Desteği ile iletişim kurun.                                                                                                     |
     |    16000           |    RefreshException                                        |    Bu dosya indirilemedi.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Yerel sisteminizde mevcut olduğundan bu dosya indirilemedi.                                                                                                                                                         |

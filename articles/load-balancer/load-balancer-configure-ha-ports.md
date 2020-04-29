@@ -1,7 +1,7 @@
 ---
-title: Azure Yük Dengeleyicisi için Yüksek Kullanılabilirlik Bağlantı Noktalarını Yapılandırma
+title: Azure Load Balancer için yüksek kullanılabilirlik bağlantı noktalarını yapılandırma
 titleSuffix: Azure Load Balancer
-description: Tüm bağlantı noktalarındaki iç trafiği dengelemek için Yüksek Kullanılabilirlik Bağlantı Noktalarını nasıl kullanacağınızı öğrenin
+description: Tüm bağlantı noktalarında iç trafik yükünü dengelemek için yüksek kullanılabilirlik bağlantı noktalarını nasıl kullanacağınızı öğrenin
 services: load-balancer
 documentationcenter: na
 author: rdhillon
@@ -15,46 +15,46 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
 ms.openlocfilehash: c6b8ecb443408f23ae604bd9c8139cb0a2afcd12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477791"
 ---
-# <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>İç yük dengeleyicisi için Yüksek Kullanılabilirlik Bağlantı Noktalarını Yapılandırın
+# <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>İç yük dengeleyici için yüksek kullanılabilirlik bağlantı noktaları yapılandırma
 
-Bu makalede, bir iç yük dengeleyici yüksek kullanılabilirlik bağlantı noktaları bir örnek dağıtım sağlar. Ağ sanal cihazlarına (NVA) özgü yapılandırmalar hakkında daha fazla bilgi için ilgili sağlayıcı web sitelerine bakın.
+Bu makalede, iç yük dengeleyicide yüksek kullanılabilirlik bağlantı noktalarının örnek bir dağıtımı sağlanmıştır. Ağ sanal gereçlerine (NVA 'lar) özgü yapılandırma hakkında daha fazla bilgi için, ilgili sağlayıcı web sitelerine bakın.
 
 >[!NOTE]
->Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Standart Yük Dengeleyicisi anlatılmaktadır. Temel Yük Dengeleyicisi hakkında daha fazla bilgi için [Bkz. Yük Dengeleyicisi genel bakışı.](load-balancer-overview.md)
+>Azure Load Balancer iki farklı türü destekler: Temel ve Standart. Bu makalede Standart Load Balancer açıklanmaktadır. Temel Load Balancer hakkında daha fazla bilgi için bkz. [Load Balancer genel bakış](load-balancer-overview.md).
 
-Resimde, bu makalede açıklanan dağıtım örneğinin aşağıdaki yapılandırması gösterilmektedir:
+Çizimde, bu makalede açıklanan dağıtım örneği için aşağıdaki yapılandırma gösterilmektedir:
 
-- NVA'lar, Yüksek Kullanılabilirlik Bağlantı Noktaları yapılandırmasının arkasındaki dahili yük dengeleyicisinin arka uç havuzunda dağıtılır. 
-- DMZ alt ağına uygulanan kullanıcı tanımlı rota (UDR), iç yük dengeleyici sanal IP olarak bir sonraki atlamayı yaparak tüm trafiği NVA'lara yönlendirir. 
-- İç yük dengeleyici, yük dengeleyici algoritmasına göre trafiği etkin NV'lerden birine dağıtır.
-- NVA trafiği işler ve arka uç alt netindeki orijinal hedefe iletir.
-- İlgili udr arka uç alt netinde yapılandırılırsa, dönüş yolu aynı rotayı alabilir. 
+- NVA 'lar, yüksek kullanılabilirlik bağlantı noktaları yapılandırmasının arkasındaki bir iç yük dengeleyicinin arka uç havuzunda dağıtılır. 
+- DMZ alt ağında uygulanan Kullanıcı tanımlı yol (UDR), sonraki atlamayı iç yük dengeleyici sanal IP 'si olarak yaparak tüm trafiği NVA 'lar 'e yönlendirir. 
+- İç yük dengeleyici, trafiği yük dengeleyici algoritmasına göre etkin NVA 'lar birine dağıtır.
+- NVA trafiği işler ve arka uç alt ağındaki özgün hedefe iletir.
+- Arka uç alt ağında karşılık gelen bir UDR yapılandırılmışsa, dönüş yolu aynı rotayı alabilir. 
 
-![Yüksek Kullanılabilirlik Bağlantı Noktaları örnek dağıtım](./media/load-balancer-configure-ha-ports/haports.png)
+![Yüksek kullanılabilirlik bağlantı noktaları örnek dağıtımı](./media/load-balancer-configure-ha-ports/haports.png)
 
-## <a name="configure-high-availability-ports"></a>Yüksek Kullanılabilirlik Bağlantı Noktalarını Yapılandırma
+## <a name="configure-high-availability-ports"></a>Yüksek kullanılabilirlik bağlantı noktalarını yapılandırma
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Yüksek Kullanılabilirlik Bağlantı Noktalarını yapılandırmak için, arka uç havuzunda NVA'larla bir dahili yük dengeleyiciayarlayın. NVA durumunu ve Yüksek Kullanılabilirlik Bağlantı Noktaları ile yük dengeleyici kuralını algılamak için karşılık gelen bir yük dengeleyici sistem sondası yapılandırması ayarlayın. Genel yük dengeleyicisi ile ilgili yapılandırma Başlat'ta ele [alınmıştır.](load-balancer-get-started-ilb-arm-portal.md) Bu makalede, Yüksek Kullanılabilirlik Bağlantı Noktaları yapılandırması vurgulamaktadır.
+Yüksek kullanılabilirlik bağlantı noktalarını yapılandırmak için arka uç havuzundaki NVA 'lar ile iç yük dengeleyici ayarlayın. NVA durumunu ve yük dengeleyici kuralını yüksek kullanılabilirlik bağlantı noktalarıyla algılamak için karşılık gelen yük dengeleyici durum araştırma yapılandırmasını ayarlayın. Genel yük dengeleyici ile ilgili yapılandırma, [kullanmaya başlama](load-balancer-get-started-ilb-arm-portal.md)bölümünde ele alınmıştır. Bu makalede, yüksek kullanılabilirlik bağlantı noktaları yapılandırması vurgulanmaktadır.
 
-Yapılandırma aslında ön uç bağlantı noktası ve arka uç bağlantı noktası değerini **0**olarak ayarlama içerir. Protokol değerini **Tümü'ne**ayarlayın. Bu makalede, Azure portalı, PowerShell ve Azure CLI'yi kullanarak Yüksek Kullanılabilirlik Bağlantı Noktaları'nın nasıl yapılandırılabildiğini açıklanmaktadır.
+Yapılandırma temelde ön uç bağlantı noktası ve arka uç bağlantı noktası değerini **0**olarak ayarlamayı içerir. Protokol değerini **All**olarak ayarlayın. Bu makalede Azure portal, PowerShell ve Azure CLı kullanarak yüksek kullanılabilirlik bağlantı noktalarının nasıl yapılandırılacağı açıklanır.
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure portalı ile Yüksek Kullanılabilirlik Bağlantı Noktaları yük dengeleyici kuralını yapılandırma
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure portal ile yüksek kullanılabilirlik bağlantı noktaları yük dengeleyici kuralı yapılandırma
 
-Azure portalını kullanarak Yüksek Kullanılabilirlik Bağlantı Noktalarını yapılandırmak için **HA Bağlantı Noktaları** onay kutusunu seçin. Seçildiğinde, ilgili bağlantı noktası ve protokol yapılandırması otomatik olarak doldurulur. 
+Azure portal kullanarak yüksek kullanılabilirlik bağlantı noktalarını yapılandırmak için, **ha bağlantı noktaları** onay kutusunu seçin. Seçildiğinde, ilişkili bağlantı noktası ve protokol yapılandırması otomatik olarak doldurulur. 
 
-![Azure portalı üzerinden Yüksek Kullanılabilirlik Bağlantı Noktaları yapılandırması](./media/load-balancer-configure-ha-ports/haports-portal.png)
+![Azure portal aracılığıyla yüksek kullanılabilirlik bağlantı noktaları yapılandırması](./media/load-balancer-configure-ha-ports/haports-portal.png)
 
-### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Kaynak Yöneticisi şablonu aracılığıyla Yüksek Kullanılabilirlik Bağlantı Noktaları yük dengeleme kuralını yapılandırma
+### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Kaynak Yöneticisi şablonu aracılığıyla yüksek kullanılabilirlik bağlantı noktaları Yük Dengeleme kuralı yapılandırma
 
-Load Balancer kaynağında Microsoft.Network/loadBalancers için 2017-08-01 API sürümünü kullanarak Yüksek Kullanılabilirlik Bağlantı Noktalarını yapılandırabilirsiniz. Aşağıdaki JSON snippet REST API üzerinden Yüksek Kullanılabilirlik Bağlantı Noktaları için yük dengeleyici yapılandırmadeğişiklikleri göstermektedir:
+Load Balancer kaynağında Microsoft. Network/loadBalancers için 2017-08-01 API sürümünü kullanarak yüksek kullanılabilirlik bağlantı noktaları yapılandırabilirsiniz. Aşağıdaki JSON kod parçacığı, REST API aracılığıyla yüksek kullanılabilirlik bağlantı noktaları için yük dengeleyici yapılandırmasındaki değişiklikleri gösterir:
 
 ```json
     {
@@ -85,17 +85,17 @@ Load Balancer kaynağında Microsoft.Network/loadBalancers için 2017-08-01 API 
     }
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-powershell"></a>PowerShell ile Yüksek Kullanılabilirlik Bağlantı Noktaları yük dengeleyici kuralını yapılandırın
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-powershell"></a>PowerShell ile yüksek kullanılabilirlik bağlantı noktaları yük dengeleyici kuralı yapılandırma
 
-PowerShell ile dahili yük dengeleyicisini oluştururken Yüksek Kullanılabilirlik Bağlantı Noktaları yük dengeleyici kuralını oluşturmak için aşağıdaki komutu kullanın:
+PowerShell ile iç yük dengeleyici oluştururken yüksek kullanılabilirlik bağlantı noktaları yük dengeleyici kuralını oluşturmak için aşağıdaki komutu kullanın:
 
 ```powershell
 lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Azure CLI ile Yüksek Kullanılabilirlik Bağlantı Noktaları yük dengeleyici kuralını yapılandırma
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Azure CLı ile yüksek kullanılabilirlik bağlantı noktaları yük dengeleyici kuralı yapılandırma
 
-[Dahili yük dengeleyici kümesi oluşturma](load-balancer-get-started-ilb-arm-cli.md)nın 4.
+[İç yük dengeleyici kümesi oluşturma](load-balancer-get-started-ilb-arm-cli.md)adım 4 ' te, yüksek kullanılabilirlik bağlantı noktaları yük dengeleyici kuralını oluşturmak için aşağıdaki komutu kullanın:
 
 ```azurecli
 az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
@@ -103,4 +103,4 @@ az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --na
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Yüksek Kullanılabilirlik Bağlantı Noktaları](load-balancer-ha-ports-overview.md)hakkında daha fazla bilgi edinin.
+[Yüksek kullanılabilirlik bağlantı noktaları](load-balancer-ha-ports-overview.md)hakkında daha fazla bilgi edinin.

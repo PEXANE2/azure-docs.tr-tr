@@ -1,6 +1,6 @@
 ---
-title: Kayıt Yönetimi
-description: Bu konu, anında iletme bildirimleri almak için aygıtların bildirim hub'larına nasıl kaydedilenle açıklanmaktadır.
+title: Kayıt yönetimi
+description: Bu konuda, anında iletme bildirimleri almak için cihazların Notification Hub 'larına nasıl kaydedileceği açıklanmaktadır.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -17,38 +17,38 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
 ms.openlocfilehash: 00de9c803ef796eda8da609a4009e0a8cfcb3664
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455376"
 ---
 # <a name="registration-management"></a>Kayıt yönetimi
 
-Bu konu, anında iletme bildirimleri almak için aygıtların bildirim hub'larına nasıl kaydedilenle açıklanmaktadır. Konu, kayıtları yüksek düzeyde açıklar, ardından aygıtları kaydetmek için iki ana delek sunar: aygıttan doğrudan bildirim merkezine kaydolmak ve bir uygulama arka ucu üzerinden kaydolmak.
+Bu konuda, anında iletme bildirimleri almak için cihazların Notification Hub 'larına nasıl kaydedileceği açıklanmaktadır. Konu başlığı yüksek düzeyde kayıtları açıklar ve cihazları kaydetmek için iki ana deseni tanıtır: cihazdan doğrudan Bildirim Hub 'ına kaydetme ve bir uygulama arka ucu üzerinden kaydetme.
 
-## <a name="what-is-device-registration"></a>Cihaz kaydı nedir
+## <a name="what-is-device-registration"></a>Cihaz kaydı nedir?
 
-Bildirim Hub'ı ile cihaz **kaydı, Kayıt** veya **Yükleme**kullanılarak gerçekleştirilir.
+Bir Bildirim Hub 'ına sahip cihaz kaydı, **kayıt** veya **yükleme**kullanılarak gerçekleştirilir.
 
 ### <a name="registrations"></a>Kayıtlar
 
-Kayıt, etiketleri ve şablonu olan bir aygıt için Platform Bildirim Hizmeti (PNS) tutamacını ilişkilendirer. PNS tutamacı bir ChannelURI, aygıt belirteci veya FCM kayıt kimliği olabilir. Etiketler, bildirimleri doğru aygıt tutamaçları kümesine yönlendirmek için kullanılır. Daha fazla bilgi için [Yönlendirme ve Etiket İfadeleri'ne](notification-hubs-tags-segment-push-message.md)bakın. Şablonlar, kayıt başına dönüştürmeyi uygulamak için kullanılır. Daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md).
+Kayıt bir cihaz için platform bildirim hizmeti (PNS) tanıtıcısını Etiketler ve muhtemelen bir şablon ile ilişkilendirir. PNS tanıtıcısı, bir ChannelURI, cihaz belirteci veya FCM kayıt KIMLIĞI olabilir. Etiketler, bildirimleri doğru cihaz tutamaçları kümesine yönlendirmek için kullanılır. Daha fazla bilgi için bkz. [Yönlendirme ve etiket ifadeleri](notification-hubs-tags-segment-push-message.md). Şablonlar, kayıt başına dönüştürmeyi uygulamak için kullanılır. Daha fazla bilgi için bkz. [Şablonlar](notification-hubs-templates-cross-platform-push-messages.md).
 
 > [!NOTE]
-> Azure Bildirim Hub'ları cihaz başına en fazla 60 etiketi destekler.
+> Azure Notification Hubs, cihaz başına en fazla 60 etiketi destekler.
 
 ### <a name="installations"></a>Yüklemeler
 
-Yükleme, itme ile ilgili özellikleri bir çanta içeren gelişmiş bir kayıttır. Cihazlarınızı kaydetmek için en son ve en iyi yaklaşımdır. Ancak, henüz istemci tarafı .NET SDK ([Arka uç işlemleri için Bildirim Hub SDK)](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)tarafından desteklenmemektedir.  Bu, istemci aygıtının kendisinden kaydoluyorsanız, yüklemeleri desteklemek için [Bildirim Hub'ları REST API](/rest/api/notificationhubs/create-overwrite-installation) yaklaşımını kullanmanız gerekeceği anlamına gelir. Bir arka uç hizmeti kullanıyorsanız, [arka uç işlemleri için Bildirim Hub SDK'yı](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)kullanabilmelisin.
+Yükleme, gönderim ile ilgili özelliklerin bir paketini içeren gelişmiş bir kayıttır. Cihazlarınızı kaydetmek için en son ve en iyi yaklaşım bu. Ancak, istemci tarafı .NET SDK ([arka uç işlemleri Için Bildirim Hub 'ı SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) tarafından henüz itibarıyla desteklenmez.  Bu, istemci cihazın kendisinden kayıt yapıyorsanız, yüklemeleri desteklemek için [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation) yaklaşımını kullanmanız gerektiği anlamına gelir. Bir arka uç hizmeti kullanıyorsanız, [arka uç işlemleri Için Notification Hub SDK 'sını](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)kullanabilmeniz gerekir.
 
-Yüklemeleri kullanmanın bazı önemli avantajları şunlardır:
+Yüklemeler kullanmanın bazı önemli avantajları aşağıda verilmiştir:
 
-- Bir yükleme oluşturma veya güncelleme tamamen idempotent olduğunu. Böylece yinelenen kayıtlar hakkında herhangi bir endişe duymadan yeniden deneyebilirsiniz.
-- Yükleme modeli, bildirimin doğrudan`$InstallationId:{INSTALLATION_ID}`belirli aygıta gönderilmesini sağlayan özel bir etiket biçimini () destekler. Örneğin, uygulamanın kodu bu aygıt `joe93developer` için bir yükleme kimliği ayarlarsa, bir geliştirici `$InstallationId:{joe93developer}` etikete bildirim gönderirken bu aygıtı hedefleyebilir. Bu, herhangi bir ek kodlama yapmanıza gerek kalmadan belirli bir aygıtı hedeflemenize olanak tanır.
-- Yüklemeleri kullanmak, kısmi kayıt güncelleştirmeleri yapmanızı da sağlar. Bir yüklemenin kısmi güncelleştirmesi, [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902)kullanan bir PATCH yöntemi yle istenir. Bu, kayıt üzerindeki etiketleri güncelleştirmek istediğinizde yararlıdır. Tüm kaydı aşağı çekmeniz ve ardından önceki etiketlerin tamamını yeniden göndermeniz gerekmez.
+- Bir yüklemenin oluşturulması veya güncelleştirilmesi tamamen ıdempotent. Bu sayede yinelenen kayıtlar hakkında herhangi bir kaygısız yeniden deneyebilirsiniz.
+- Yükleme modeli, doğrudan belirli bir cihaza bildirim gönderilmesini`$InstallationId:{INSTALLATION_ID}`sağlayan özel bir etiket biçimi () destekler. Örneğin, uygulamanın kodu bu belirli bir cihaz `joe93developer` için BIR yükleme kimliği ayarladıysanız, bir geliştirici `$InstallationId:{joe93developer}` etikete bildirim gönderirken bu cihazı hedefleyebilir. Bu, herhangi bir ek kodlama yapmak zorunda kalmadan belirli bir cihazı hedeflemenize olanak sağlar.
+- Yüklemeleri kullanmak, kısmi kayıt güncelleştirmeleri yapmanızı de sağlar. Bir yüklemenin kısmi güncelleştirmesi, [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902)kullanan bir yama yöntemiyle istenir. Bu, kayıt üzerindeki etiketleri güncelleştirmek istediğinizde yararlıdır. Tüm kaydı geri çekmek ve sonra önceki tüm etiketleri yeniden göndermek zorunda kalmazsınız.
 
-Yükleme aşağıdaki özellikleri içerebilir. Yükleme özelliklerinin tam listesi için, [REST API veya](/rest/api/notificationhubs/create-overwrite-installation) Yükleme [Özellikleri](/dotnet/api/microsoft.azure.notificationhubs.installation)ile Yükleme Oluştur veya Üzerine Yazma bölümüne bakın.
+Yükleme, aşağıdaki özellikleri içerebilir. Yükleme özelliklerinin tüm listesi için bkz. REST API veya [yükleme özellikleri](/dotnet/api/microsoft.azure.notificationhubs.installation) [ile yükleme oluşturma veya üzerine yazma](/rest/api/notificationhubs/create-overwrite-installation) .
 
 ```json
 // Example installation format to show some supported properties
@@ -87,45 +87,45 @@ Yükleme aşağıdaki özellikleri içerebilir. Yükleme özelliklerinin tam lis
 ```
 
 > [!NOTE]
-> Varsayılan olarak, kayıtlar ve yüklemeler sona ermez.
+> Varsayılan olarak, kayıt ve yüklemelerin kullanım süreleri dolmaz.
 
-Kayıtlar ve kurulumlar her cihaz/kanal için geçerli bir PNS tutamacı içermelidir. PNS tutamaçları yalnızca aygıttaki bir istemci uygulamasında elde edilebildiği için, bir desen doğrudan istemci uygulamasıyla bu cihaza kaydolmaktır. Diğer taraftan, etiketlerle ilgili güvenlik konuları ve iş mantığı, uygulamanın arka ucunda cihaz kaydını yönetmeniz gerektirebilir.
+Kayıtlar ve yüklemeler her cihaz/kanal için geçerli bir PNS tanıtıcısı içermelidir. PNS tanıtıcıları yalnızca cihazdaki bir istemci uygulamasında alınabileceğinden, tek bir model doğrudan bu cihaza istemci uygulaması ile kaydolmalıdır. Öte yandan, etiketlerle ilgili güvenlik konuları ve iş mantığı, uygulama arka ucunda cihaz kaydını yönetmenizi gerektirebilir.
 
 > [!NOTE]
-> Yüklemeler API Baidu hizmetini desteklemez (Kayıtlar API'si olsa da). 
+> Yüklemeler API 'SI, Baidu hizmetini desteklemez (ancak, kayıt API 'SI olsa da). 
 
 ### <a name="templates"></a>Şablonlar
 
-[Şablonlar](notification-hubs-templates-cross-platform-push-messages.md)kullanmak istiyorsanız, aygıt yüklemesi de json biçiminde bu aygıtla ilişkili tüm şablonları tutar (yukarıdaki örneğe bakın). Şablon adları, aynı aygıt için farklı şablonları hedeflemeye yardımcı olur.
+[Şablonları](notification-hubs-templates-cross-platform-push-messages.md)kullanmak istiyorsanız, cihaz yüklemesi bu cihazla ilişkili tüm ŞABLONLARı bir JSON biçiminde de barındırır (Yukarıdaki örneğe bakın). Şablon adları, aynı cihaz için farklı şablonların hedeflemesini sağlamaya yardımcı olur.
 
-Her şablon adı, bir şablon gövdesi ve isteğe bağlı bir etiket kümesiyle eşlenir. Ayrıca, her platform ek şablon özellikleri olabilir. Windows Mağazası (WNS kullanarak) ve Windows Phone 8 (MPNS kullanarak) için, şablonun bir parçası olabilir. APN'ler söz konusu olduğunda, bir son kullanma özelliğini sabit veya şablon ifadesine ayarlayabilirsiniz. Yükleme özelliklerinin tam listesi için [bkz.](/rest/api/notificationhubs/create-overwrite-installation)
+Her şablon adı bir şablon gövdesine ve isteğe bağlı bir Etiketler kümesiyle eşlenir. Üstelik, her platformun ek şablon özellikleri olabilir. Windows Mağazası (WNS kullanarak) ve Windows Phone 8 (MPNS kullanarak) için ek bir başlık kümesi, şablonun bir parçası olabilir. APNs durumunda, bir süre sonu özelliğini bir sabit ya da bir şablon ifadesi olarak ayarlayabilirsiniz. Yükleme özelliklerinin tüm listesi için bkz. [rest ile bir yükleme oluşturma veya üzerine yazma](/rest/api/notificationhubs/create-overwrite-installation) .
 
-### <a name="secondary-tiles-for-windows-store-apps"></a>Windows Mağazası Uygulamaları için İkincil Kutucuklar
+### <a name="secondary-tiles-for-windows-store-apps"></a>Windows Mağazası uygulamaları için ikincil kutucuklar
 
-Windows Mağazası istemci uygulamaları için, ikincil kutucuklara bildirim göndermek, birincil uygulamaya göndermekle aynıdır. Bu da yüklemelerde desteklenir. İkincil kutucuklar, istemci uygulamanızdaki SDK'nın saydam olarak işlediği farklı bir ChannelUri'ye sahiptir.
+Windows Mağazası istemci uygulamaları için, ikincil kutucuklara bildirim göndermek, birincil birine göndermelerle aynıdır. Bu, yüklemelerde de desteklenir. İkincil kutucukların, istemci uygulamanızdaki SDK 'nın saydam şekilde işlediği farklı bir ChannelUri 'Si vardır.
 
-İkincil Kutucuklar sözlüğü, Windows Mağazası uygulamanızda İkincil Kutucuklar nesnesini oluşturmak için kullanılan aynı TileId'i kullanır. Birincil ChannelUri olduğu gibi, ikincil fayans ChannelUris her an değiştirebilirsiniz. Bildirim merkezindeki yüklemeleri güncel tutmak için, aygıtın ikincil kutucukların geçerli ChannelUris'i ile yenilemesi gerekir.
+Secondarykutucukları sözlüğü, Windows Mağazası uygulamanızda Secondarykutucukları nesnesini oluşturmak için kullanılan Tileıd 'yi kullanır. Birincil Channelurı 'Sinde olduğu gibi, ikincil kutucukların Channeluri 'Leri herhangi bir anda değişebilir. Bildirim Hub 'ında yüklemelerin güncelleştirilmesini sağlamak için, cihazın bunları ikincil kutucukların geçerli ChannelUris ile yenilemesi gerekir.
 
 ## <a name="registration-management-from-the-device"></a>Cihazdan kayıt yönetimi
 
-İstemci uygulamalarından cihaz kaydını yönetirken, arka uç yalnızca bildirim göndermekten sorumludur. İstemci uygulamaları PNS işlemlerini güncel tutar ve etiketleri kaydeder. Aşağıdaki resim bu deseni göstermektedir.
+İstemci uygulamalarından cihaz kaydını yönetirken arka uç yalnızca bildirim göndermekten sorumludur. İstemci uygulamaları, PNS 'lerin güncel ve kayıt etiketlerini tutacağız. Aşağıdaki resimde bu desenler gösterilmektedir.
 
 ![Cihazdan kayıt](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
-Aygıt önce PNS'den PNS tutamacını alır, sonra doğrudan bildirim hub'ına kaydeder. Kayıt başarılı olduktan sonra, uygulama arka ucu bu kaydı hedefleyen bir bildirim gönderebilir. Bildirimlerin nasıl gönderilen hakkında daha fazla bilgi için [Yönlendirme ve Etiketler İfadeleri'ne](notification-hubs-tags-segment-push-message.md)bakın.
+Cihaz önce PNS tanıtıcılarını PNS 'den alır, ardından doğrudan Bildirim Hub 'ına kaydeder. Kayıt başarılı olduktan sonra, uygulama arka ucu kaydı hedefleyen bir bildirim gönderebilir. Bildirimlerin nasıl gönderileceği hakkında daha fazla bilgi için bkz. [Yönlendirme ve etiket ifadeleri](notification-hubs-tags-segment-push-message.md).
 
-Bu durumda, bildirim hub'larınıza aygıttan erişmek için yalnızca Dinleme haklarını kullanırsınız. Daha fazla bilgi için [Güvenlik'e](notification-hubs-push-notification-security.md)bakın.
+Bu durumda, cihazdaki bildirim hub 'larına erişmek için yalnızca dinleme haklarını kullanırsınız. Daha fazla bilgi için bkz. [güvenlik](notification-hubs-push-notification-security.md).
 
-Aygıttan kaydolmak en basit yöntemdir, ancak bazı dezavantajları vardır:
+Cihazdan kayıt en basit yöntemdir, ancak bazı dezavantajları vardır:
 
-- İstemci uygulaması etiketlerini yalnızca uygulama etkin olduğunda güncelleyebilir. Örneğin, bir kullanıcının spor takımlarla ilgili etiketleri kaydeden iki aygıtı varsa, ilk aygıt ek bir etiket için kaydolduğunda (örneğin, Seahawks), ikinci cihazdaki uygulama gelene kadar Seahawks hakkındaki bildirimleri almaz ikinci kez yürütülür. Daha genel olarak, etiketler birden çok aygıttan etkilendiğinde, etiketleri arka uçtan yönetmek istenen bir seçenektir.
-- Uygulamalar hacklenebildiği için, [güvenlik](notification-hubs-push-notification-security.md)makalesinde açıklandığı gibi, belirli etiketlere kaydın güvence altına alınması ekstra bakım gerektirir.
+- Bir istemci uygulaması, yalnızca uygulama etkin olduğunda bu etiketlerin güncelleştirilmesini sağlayabilir. Örneğin, bir kullanıcının spor ekipleriyle ilgili etiketleri kaydeden iki cihazı varsa, ilk cihaz ek bir etiket için (örneğin, deniz Hawks) kaydolduğunda ikinci cihaz ikinci cihazdaki uygulama ikinci bir kez yürütülene kadar, bulunan Hawks hakkındaki bildirimleri almaz. Daha genel olarak, Etiketler birden fazla cihazdan etkileniyorsa, arka ucun etiketlerinin yönetilmesi, istenen seçenektir.
+- Uygulamalar hacdiğinden, kayıt güvenliğinin güvenli hale getirilmesi, makalenin [güvenlik](notification-hubs-push-notification-security.md)bölümünde açıklandığı gibi ek bakım gerektirir.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Yükleme kullanan bir aygıttan bildirim hub'ına kaydolmak için örnek kod
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Yükleme kullanarak bir cihazdan Bildirim Hub 'ına kaydolmak için örnek kod
 
-Şu anda, bu yalnızca [Bildirim Hub'ları REST API](/rest/api/notificationhubs/create-overwrite-installation)kullanılarak desteklenir.
+Şu anda bu yalnızca [Notification Hubs REST API](/rest/api/notificationhubs/create-overwrite-installation)kullanılarak desteklenir.
 
-Yüklemeyi güncelleştirmek için [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902) kullanarak PATCH yöntemini de kullanabilirsiniz.
+Yüklemeyi güncelleştirmek için [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902) kullanarak da Patch yöntemini kullanabilirsiniz.
 
 ```csharp
 class DeviceInstallation
@@ -204,9 +204,9 @@ else
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Kayıt kullanarak bir cihazdan bildirim hub'ına kaydolmak için örnek kod
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration"></a>Bir cihazdan kayıt kullanarak bir Bildirim Hub 'ına kaydolmak için örnek kod
 
-Bu yöntemler, çağrıldıkları aygıt için bir kayıt oluşturur veya güncelleştirin. Bu, tanıtıcıyı veya etiketleri güncelleştirmek için tüm kaydın üzerine yazmanız gerektiği anlamına gelir. Kayıtların geçici olduğunu unutmayın, bu nedenle belirli bir aygıtın ihtiyaç duyduğu geçerli etiketlere sahip güvenilir bir mağazanız olmalıdır.
+Bu yöntemler, çağrıldığı cihaz için bir kayıt oluşturur veya güncelleştirir. Yani, tanıtıcıyı veya etiketleri güncelleştirmek için kaydın tamamının üzerine yazmanız gerekir. Kayıtların geçici olduğunu unutmayın, bu nedenle her zaman belirli bir cihazın ihtiyaç duyacağı geçerli etiketlere sahip güvenilir bir mağazaya sahip olmanız gerekir.
 
 ```csharp
 // Initialize the Notification Hub
@@ -261,17 +261,17 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 ## <a name="registration-management-from-a-backend"></a>Arka uçtan kayıt yönetimi
 
-Kayıtları arka uçtan yönetme ek kod yazmayı gerektirir. Aygıttaki uygulama, uygulama her başlatında (etiketler ve şablonlarla birlikte) güncelleştirilmiş PNS tutamacını arka uca sağlamalı ve arka uç bu tutamacı bildirim hub'ında güncelleştirmelidir. Aşağıdaki resim bu tasarımı göstermektedir.
+Arka uca kayıtları yönetmek için ek kod yazılması gerekir. Cihazdaki uygulamanın, uygulama her başlatıldığında (Etiketler ve şablonlar ile birlikte), arka uca güncelleştirilmiş PNS tanıtıcısı sağlaması gerekir ve arka uç, Bildirim Hub 'ında bu tanıtıcıyı güncelleştirmelidir. Aşağıdaki resimde bu tasarım gösterilmektedir.
 
 ![Kayıt yönetimi](./media/notification-hubs-registration-management/notification-hubs-registering-on-backend.png)
 
-Kayıtları arka uçtan yönetmenin avantajları arasında, aygıttaki ilgili uygulama etkin olmasa bile etiketleri kayıtlara değiştirebilme ve kaydına bir etiket eklemeden önce istemci uygulamasının kimliğini nitre etme olanağı bulunur.
+Arka uca kayıtları yönetmenin avantajları, cihazdaki ilgili uygulama etkin olmadığında bile kayıtları kayıt için değiştirme ve kayda etiket eklemeden önce istemci uygulamasının kimliğini doğrulama imkanını içerir.
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Yükleme kullanarak arka uçtan bir bildirim hub'ına kaydolmak için örnek kod
+### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>Bir yükleme kullanarak arka uçta bir Bildirim Hub 'ına kaydolmak için örnek kod
 
-İstemci aygıtı hala pns tutamacını ve ilgili yükleme özelliklerini eskisi gibi alır ve arka uçta kayıt ve yetki etiketleri vb gerçekleştirebilirsiniz özel bir API çağırır. Arka uç, [arka uç işlemleri için Bildirim Hub SDK'dan](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)yararlanabilir.
+İstemci cihaz hala PNS tanıtıcısını ve ilgili yükleme özelliklerini daha önce olduğu gibi alır ve arka uçta kayıt ve yetkilendirme etiketlerini gerçekleştirebilen özel bir API 'yi çağırır. Arka uç, [arka uç işlemleri Için Bildirim Hub 'ı SDK 'Sının üzerinden](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)yararlanabilir.
 
-Yüklemeyi güncelleştirmek için [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902) kullanarak PATCH yöntemini de kullanabilirsiniz.
+Yüklemeyi güncelleştirmek için [JSON-Patch standardını](https://tools.ietf.org/html/rfc6902) kullanarak da Patch yöntemini kullanabilirsiniz.
 
 ```csharp
 // Initialize the Notification Hub
@@ -315,9 +315,9 @@ public async Task<HttpResponseMessage> Put(DeviceInstallation deviceUpdate)
 }
 ```
 
-### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Kayıt kimliği kullanarak bir cihazdan bildirim hub'ına kaydolmak için örnek kod
+### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-a-registration-id"></a>Kayıt KIMLIĞI kullanarak bir cihazdan Bildirim Hub 'ına kaydolmak için örnek kod
 
-Uygulama arka nızın arkasından, kayıtlarda temel CRUDS işlemlerini gerçekleştirebilirsiniz. Örnek:
+Uygulama arka ucunuzdaki kayıtlar üzerinde temel CRUDS işlemlerini gerçekleştirebilirsiniz. Örneğin:
 
 ```csharp
 var hub = NotificationHubClient.CreateClientFromConnectionString("{connectionString}", "hubName");
@@ -341,4 +341,4 @@ await hub.UpdateRegistrationAsync(r);
 await hub.DeleteRegistrationAsync(r);
 ```
 
-Arka uç, kayıt güncelleştirmeleri arasında eşzamanlılık ele almalıdır. Service Bus, kayıt yönetimi için iyimser eşzamanlılık denetimi sunar. HTTP düzeyinde, bu kayıt yönetimi işlemlerinde ETag kullanımı ile uygulanır. Bu özellik, eşzamanlılık nedenleriyle bir güncelleştirme reddedilirse özel bir durum oluşturan Microsoft SDK'lar tarafından saydam olarak kullanılır. Uygulama arka ucu, bu özel durumları işlemekten ve gerekirse güncelleştirmeyi yeniden denemekten sorumludur.
+Arka uç, kayıt güncelleştirmeleri arasında eşzamanlılık işleyecek olmalıdır. Service Bus, kayıt yönetimi için iyimser eşzamanlılık denetimi sağlar. HTTP düzeyinde, bu, kayıt yönetimi işlemlerinde ETag kullanımı ile uygulanır. Bu özellik, Microsoft SDK 'Ları tarafından şeffaf bir şekilde bir güncelleştirme reddedildiğinde bir özel durum oluşturan, saydam bir şekilde kullanılır. Uygulama arka ucu, bu özel durumları işlemekten ve gerekirse güncelleştirmeyi yeniden denemeye yöneliktir.

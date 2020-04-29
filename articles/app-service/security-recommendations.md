@@ -1,6 +1,6 @@
 ---
 title: Güvenlik önerileri
-description: Paylaşılan sorumluluk modelimizde belirtildiği gibi güvenlik yükümlülüklerinizin yerine getirilmesine yardımcı olmak için güvenlik önerilerini uygulayın. Uygulamanızın güvenliğini artırın.
+description: Güvenli yükümlülüklerinizi, paylaşılan sorumluluk modelinizde belirtilen şekilde karşılamanız için güvenlik önerilerini uygulayın. Uygulamanızın güvenliğini geliştirme.
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
@@ -8,56 +8,56 @@ ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546694"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service için güvenlik önerileri
 
-Bu makale, Azure Uygulama Hizmeti için güvenlik önerileri içerir. Bu önerilerin uygulanması, paylaşılan sorumluluk modelimizde açıklandığı gibi güvenlik yükümlülüklerinizin yerine getirilmesine yardımcı olacak ve Web App çözümlerinizin genel güvenliğini artıracaktır. Microsoft'un hizmet sağlayıcı sorumluluklarını yerine getirmek için ne yaptığı hakkında daha fazla bilgi için [Azure altyapı güvenliği'ni](../security/fundamentals/infrastructure.md)okuyun.
+Bu makale Azure App Service için güvenlik önerileri içerir. Bu önerilerin uygulanması, paylaşılan sorumluluk modelinizde açıklandığı şekilde güvenlik yükümlülüklerinizi karşılamanız ve Web uygulaması çözümleriniz için genel güvenliği iyileştirmenize yardımcı olacaktır. Microsoft 'un hizmet sağlayıcısı sorumluluklarını yerine getirmek için neler yaptığı hakkında daha fazla bilgi için [Azure altyapı güvenliği](../security/fundamentals/infrastructure.md)makalesini okuyun.
 
 ## <a name="general"></a>Genel
 
-| Öneri | Yorumlar |
+| Öneri | Açıklamalar |
 |-|-|----|
-| Güncel kalın | Desteklenen platformların, programlama dillerinin, protokollerin ve çerçevelerin en son sürümlerini kullanın. |
+| Güncel kalın | Desteklenen platformlar, programlama dilleri, protokoller ve çerçeveler için en son sürümleri kullanın. |
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
 
-| Öneri | Yorumlar |
+| Öneri | Açıklamalar |
 |-|----|
-| Anonim erişimi devre dışı | Anonim istekleri desteklemeniz gerekmedikçe, anonim erişimi devre dışı kındırın. Azure Uygulama Hizmeti kimlik doğrulama seçenekleri hakkında daha fazla bilgi için [Azure Uygulama Hizmeti'nde kimlik doğrulama ve yetkilendirme](overview-authentication-authorization.md)bilgisine bakın.|
-| Kimlik doğrulama gerektirir | Mümkün olduğunda, kimlik doğrulama ve yetkilendirmeyi işlemek için kod yazmak yerine Uygulama Hizmeti kimlik doğrulama modüllerini kullanın. [Azure Uygulama Hizmeti'nde kimlik doğrulama ve yetkilendirme](overview-authentication-authorization.md)ye bakın. |
-| Kimlik doğrulaması erişimiyle arka uç kaynaklarını koruma | Kullanıcının kimliğini kullanabilir veya bir arka uç kaynağına kimlik doğrulamak için bir uygulama kimliği kullanabilirsiniz. Bir uygulama kimliğini kullanmayı seçtiğinizde yönetilen bir [kimlik](overview-managed-identity.md)kullanın.
-| İstemci sertifikası kimlik doğrulaması gerektirme | İstemci sertifikası kimlik doğrulaması, yalnızca sağladığınız sertifikaları kullanarak kimlik doğrulaması yapabilecek istemcilerin bağlantılarına izin vererek güvenliği artırır. |
+| Anonim erişimi devre dışı bırak | Anonim istekleri desteklemeniz gerekmiyorsa, anonim erişimi devre dışı bırakın. Azure App Service kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure App Service kimlik doğrulama ve yetkilendirme](overview-authentication-authorization.md).|
+| Kimlik doğrulaması gerektir | Mümkün olduğunda kimlik doğrulama ve yetkilendirmeyi işlemek için kod yazmak yerine App Service kimlik doğrulama modülünü kullanın. Bkz. [Azure App Service kimlik doğrulaması ve yetkilendirme](overview-authentication-authorization.md). |
+| Kimliği doğrulanmış erişim ile arka uç kaynaklarını koruma | Bir arka uç kaynağında kimlik doğrulaması yapmak için kullanıcının kimliğini kullanabilir veya bir uygulama kimliği kullanabilirsiniz. Uygulama kimliği kullanmayı seçtiğinizde, [yönetilen bir kimlik](overview-managed-identity.md)kullanın.
+| İstemci sertifikası kimlik doğrulaması iste | İstemci sertifikası kimlik doğrulaması, yalnızca sağladığınız sertifikaları kullanarak kimlik doğrulayabilecek istemcilerden gelen bağlantılara izin vererek güvenliği geliştirir. |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Öneri | Yorumlar |
+| Öneri | Açıklamalar |
 |-|-|
-| HTTP'yi HTTP'lere Yönlendirme | Varsayılan olarak, istemciler hem HTTP hem de HTTPS kullanarak web uygulamalarına bağlanabilir. HTTPS hem şifreli hem de kimlik doğrulaması yapılan güvenli bir bağlantı sağlamak için SSL/TLS protokolünü kullandığından HTTP'yi HTTP'lere yönlendirmenizi öneririz. |
-| Azure kaynaklarına iletişimi şifreleme | Uygulamanız [SQL Veritabanı](https://azure.microsoft.com/services/sql-database/) veya [Azure Depolama](/azure/storage/)gibi Azure kaynaklarına bağlandığında, bağlantı Azure'da kalır. Bağlantı Azure'daki paylaşılan ağdan geçtiğiiçin, tüm iletişimi her zaman şifrelemeniz gerekir. |
-| Mümkün olan en son TLS sürümünü gerektirir | 2018 yılından bu yana yeni Azure Uygulama Hizmeti uygulamaları TLS 1.2 kullanıyor. TLS'nin yeni sürümleri, eski protokol sürümlerine göre güvenlik geliştirmelerini içerir. |
-| FTPS'yi kullanma | Uygulama Hizmeti, dosyalarınızı dağıtmak için hem FTP'yi hem de FTPS'yi destekler. Mümkün olduğunda FTP yerine FTPS kullanın. Bu protokollerden biri veya her ikisi kullanılmadığında, [bunları devre dışı bırakmalısınız.](deploy-ftp.md#enforce-ftps) |
-| Uygulama verilerinin güvenliğini sağlama | Veritabanı kimlik bilgileri, API belirteçleri veya özel anahtarlar gibi uygulama sırlarını kod veya yapılandırma dosyalarınızda depolamayın. Yaygın olarak kabul edilen yaklaşım, seçtiğiniz dilde standart deseni kullanarak [ortam değişkenleri](https://wikipedia.org/wiki/Environment_variable) olarak bunlara erişmektir. Azure Uygulama Hizmeti'nde, [uygulama ayarları](web-sites-configure.md) ve [bağlantı dizeleri](web-sites-configure.md)aracılığıyla ortam değişkenlerini tanımlayabilirsiniz. Uygulama ayarları ve bağlantı dizeleri Azure'da şifrelenmiş olarak depolanır. Uygulama ayarları, uygulama başladığında uygulamanızın işlem bellene enjekte edilmeden önce yalnızca şifresi çözülür. Şifreleme anahtarları düzenli olarak döndürülür. Alternatif olarak, gelişmiş sırlar yönetimi için Azure Uygulama Hizmeti uygulamanızı [Azure Key Vault](/azure/key-vault/) ile tümleştirebilirsiniz. [Anahtar Kasası'na yönetilen bir kimlikle erişerek,](../key-vault/tutorial-web-application-keyvault.md)Uygulama Hizmeti uygulamanız ihtiyacınız olan sırlara güvenli bir şekilde erişebilir. |
+| HTTP 'yi HTTPs 'ye yönlendir | Varsayılan olarak, istemciler Web uygulamalarına hem HTTP ya da HTTPS kullanarak bağlanabilir. HTTPS SSL/TLS protokolünü kullandığından, hem şifreli hem de kimliği doğrulanmış güvenli bir bağlantı sağlamak için HTTP 'yi HTTPs 'ye yeniden yönlendirmenizi öneririz. |
+| Azure kaynaklarıyla iletişimi şifreleyin | Uygulamanız [SQL veritabanı](https://azure.microsoft.com/services/sql-database/) veya [Azure depolama](/azure/storage/)gibi Azure kaynaklarına bağlanıyorsa, bağlantı Azure 'da kalır. Bağlantı, Azure 'daki paylaşılan ağ üzerinden başladığından, her zaman tüm iletişimi şifrelemeniz gerekir. |
+| Mümkün olan en son TLS sürümünü gerektir | 2018 yeni Azure App Service uygulamalar TLS 1,2 ' i kullandığından. Daha yeni TLS sürümleri, eski protokol sürümleri üzerinde güvenlik geliştirmeleri içerir. |
+| FTPS kullanma | App Service, dosyalarınızı dağıtmak için hem FTP hem de FTPS 'yi destekler. Mümkün olduğunda, FTP yerine FTPS kullanın. Bu protokollerin biri veya her ikisi kullanımda olmadığında, [bunları devre dışı bırakmanız](deploy-ftp.md#enforce-ftps)gerekir. |
+| Uygulama verilerinin güvenliğini sağlama | Kodunuzda veya yapılandırma dosyalarınızda veritabanı kimlik bilgileri, API belirteçleri veya özel anahtarlar gibi uygulama gizli dizileri depolamayın. Yaygın olarak kabul edilen yaklaşım, bunlara seçtiğiniz dilde standart bir model kullanılarak [ortam değişkenleri](https://wikipedia.org/wiki/Environment_variable) olarak erişiyor. Azure App Service, [uygulama ayarları](web-sites-configure.md) ve [bağlantı dizeleri](web-sites-configure.md)aracılığıyla ortam değişkenlerini tanımlayabilirsiniz. Uygulama ayarları ve bağlantı dizeleri Azure 'da şifreli olarak depolanır. Uygulama ayarlarının şifresi, uygulama başladığında uygulamanızın işlem belleğine eklenmeden önce çözülür. Şifreleme anahtarları düzenli olarak döndürülür. Alternatif olarak, gelişmiş gizlilikler yönetimi için Azure App Service uygulamanızı [Azure Key Vault](/azure/key-vault/) tümleştirebilirsiniz. [Key Vault yönetilen bir kimlikle](../key-vault/tutorial-web-application-keyvault.md)App Service uygulamanız, ihtiyacınız olan gizli bilgilere güvenli bir şekilde erişebilir. |
 
 ## <a name="networking"></a>Ağ
 
-| Öneri | Yorumlar |
+| Öneri | Açıklamalar |
 |-|-|
-| Statik IP kısıtlamaları kullanma | Windows'daki Azure Uygulama Hizmeti, uygulamanıza erişmesine izin verilen IP adreslerinin bir listesini tanımlamanıza olanak tanır. İzin verilen liste tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir dizi IP adresini içerebilir. Daha fazla bilgi için Azure [Uygulama Hizmeti Statik IP Kısıtlamaları'na](app-service-ip-restrictions.md)bakın.  |
-| Yalıtılmış fiyatlandırma katmanını kullanma | Yalıtılmış fiyatlandırma katmanı dışında, tüm katmanlar uygulamalarınızı Azure Uygulama Hizmeti'ndeki paylaşılan ağ altyapısında çalıştırın. İzole edilen katman, uygulamalarınızı özel bir [Uygulama Hizmeti ortamında](environment/intro.md)çalıştırarak tam ağ yalıtımı sağlar. Bir Uygulama Hizmeti ortamı Azure [Sanal Ağı'nın](/azure/virtual-network/)kendi örneğinde çalışır.|
-| Şirket içi kaynaklara erişirken güvenli bağlantılar kullanma | Şirket içi kaynaklara bağlanmak için [Karma bağlantıları,](app-service-hybrid-connections.md) [Sanal Ağ tümleştirmesini](web-sites-integrate-with-vnet.md)veya [Uygulama Hizmeti ortamını](environment/intro.md) kullanabilirsiniz. |
-| Gelen ağ trafiğine maruz kalma sınırı | Ağ güvenlik grupları, ağ erişimini kısıtlamanızı ve açıkta kalan uç noktaların sayısını denetlemenize olanak tanır. Daha fazla bilgi için, [Bir Uygulama Hizmeti Ortamına Gelen Trafiği Nasıl Kontrol Edin.](environment/app-service-app-service-environment-control-inbound-traffic.md) |
+| Statik IP kısıtlamalarını kullanın | Windows üzerinde Azure App Service, uygulamanıza erişmelerine izin verilen IP adreslerinin bir listesini tanımlamanızı sağlar. İzin verilen liste, tek tek IP adreslerini veya bir alt ağ maskesi tarafından tanımlanan bir IP adresi aralığını içerebilir. Daha fazla bilgi için bkz. [Azure App Service STATIK IP kısıtlamaları](app-service-ip-restrictions.md).  |
+| Yalıtılmış fiyatlandırma katmanını kullanın | Yalıtılmış fiyatlandırma katmanı hariç tüm katmanlar, uygulamalarınızı Azure App Service paylaşılan ağ altyapısında çalıştırır. Yalıtılmış katman, uygulamalarınızı adanmış bir [App Service ortamı](environment/intro.md)içinde çalıştırarak tamamen ağ yalıtımı sağlar. Bir App Service ortamı, kendi [Azure sanal ağı](/azure/virtual-network/)Örneğinizde çalışır.|
+| Şirket içi kaynaklara erişirken güvenli bağlantıları kullanma | Şirket içi kaynaklara bağlanmak için [karma bağlantılar](app-service-hybrid-connections.md), [sanal ağ tümleştirmesi](web-sites-integrate-with-vnet.md)veya [App Service ortamı](environment/intro.md) ' nı kullanabilirsiniz. |
+| Gelen ağ trafiği için pozlamayı sınırlayın | Ağ güvenlik grupları ağ erişimini kısıtlayıp açığa çıkarılan uç noktaların sayısını denetlemenizi sağlar. Daha fazla bilgi için bkz. [App Service ortamı gelen trafiği denetleme](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
 ## <a name="monitoring"></a>İzleme
 
-| Öneri | Yorumlar |
+| Öneri | Açıklamalar |
 |-|-|
-|Azure Güvenlik Merkezi standart katmanını kullanma | [Azure Güvenlik Merkezi,](../security-center/security-center-app-services.md) Azure Uygulama Hizmeti ile yerel olarak entegre edilmiştir. Değerlendirmeleri çalıştırabilir ve güvenlik önerileri sağlayabilir. |
+|Azure Güvenlik Merkezi Standart katmanını kullanın | [Azure Güvenlik Merkezi](../security-center/security-center-app-services.md) , Azure App Service ile yerel olarak tümleşiktir. Değerlendirme çalıştırabilir ve güvenlik önerileri sağlayabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ek güvenlik gereksinimleri olup olmadığını görmek için uygulama sağlayıcınıza danışın. Güvenli uygulamalar geliştirme hakkında daha fazla bilgi için [Güvenli Geliştirme Belgeleri'ne](../security/fundamentals/abstract-develop-secure-apps.md)bakın.
+Ek güvenlik gereksinimleri olup olmadığını görmek için uygulama sağlayıcınıza danışın. Güvenli uygulamalar geliştirme hakkında daha fazla bilgi için bkz. [Güvenli Geliştirme belgeleri](../security/fundamentals/abstract-develop-secure-apps.md).
