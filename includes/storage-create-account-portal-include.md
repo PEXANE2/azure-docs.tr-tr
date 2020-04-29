@@ -9,10 +9,10 @@ ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76759866"
 ---
 Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşağıdaki adımları izleyin:
@@ -36,8 +36,8 @@ Azure portalında genel amaçlı v2 bir depolama hesabı oluşturmak için aşa�
    |Çoğaltma     |Okuma erişimli coğrafi olarak yedekli depolama (RA-GRS)         |
    |Erişim katmanı     |Sık Erişimli         |
 
-8. [Azure Veri Gölü Depolama'yı](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, **Gelişmiş** sekmesini seçin ve ardından **Hiyerarşik ad alanını** **Etkin**olarak ayarlayın.
+8. [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)kullanmayı planlıyorsanız, **Gelişmiş** sekmesini seçin ve ardından **hiyerarşik ad alanını** **etkin**olarak ayarlayın.
 9. Depolama hesabı ayarlarınızı gözden geçirmek ve hesabı oluşturmak için **Gözden Geçir + Oluştur**’u seçin.
-10. **Oluştur'u**seçin.
+10. **Oluştur**’u seçin.
 
-Depolama hesaplarının türleri ve diğer depolama hesabı ayarları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Kaynak grupları hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi'ne genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)bilgisine bakın. 
+Depolama hesaplarının türleri ve diğer depolama hesabı ayarları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD'de Koşullu Erişim ile Azure yönetimine erişimi yönetme
-description: Azure yönetimine erişimi yönetmek için Azure AD'de Koşullu Erişim'i kullanma hakkında bilgi edinin.
+title: Azure AD 'de koşullu erişimle Azure yönetimine erişimi yönetme
+description: Azure yönetimine erişimi yönetmek için Azure AD 'de koşullu erişim kullanma hakkında bilgi edinin.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,36 +16,36 @@ ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77137403"
 ---
-# <a name="manage-access-to-azure-management-with-conditional-access"></a>Koşullu Erişim ile Azure yönetimine erişimi yönetme
+# <a name="manage-access-to-azure-management-with-conditional-access"></a>Koşullu erişimle Azure yönetimine erişimi yönetme
 
 > [!CAUTION]
-> Azure yönetimine erişimi yönetmek için bir ilke ayarlamadan önce Koşullu Erişim'in nasıl çalıştığını anladığınızdan emin olun. Portala kendi erişiminizi engelleyebilecek koşullar oluşturmadığınızdan emin olun.
+> Azure yönetimine erişimi yönetmek üzere bir ilke ayarlamadan önce Koşullu erişimin nasıl çalıştığını anladığınızdan emin olun. Portala kendi erişiminizi engelleyebilen koşullar oluşturduğunuzdan emin olun.
 
-Azure Etkin Dizininde Koşullu Erişim (Azure AD), belirttiğiniz belirli koşullara bağlı olarak bulut uygulamalarına erişimi denetler. Erişime izin vermek için, ilkedeki gereksinimlerin karşılanıp karşılanmadığına bağlı olarak erişime izin veren veya engelleyen Koşullu Erişim ilkeleri oluşturursunuz. 
+Azure Active Directory (Azure AD) koşullu erişim, belirttiğiniz belirli koşullara göre bulut uygulamalarına erişimi denetler. Erişime izin vermek için ilkedeki gereksinimlerin karşılanıp karşılanmadığını temel alarak erişime izin veren veya erişimi engelleyen koşullu erişim ilkeleri oluşturabilirsiniz. 
 
-Genellikle, bulut uygulamalarınız için erişimi denetlemek için Koşullu Erişim'i kullanırsınız. Azure yönetimine erişimi belirli koşullara (oturum açma riski, konum veya aygıt gibi) göre denetlemek ve çok faktörlü kimlik doğrulama gibi gereksinimleri zorlamak için ilkeler de ayarlayabilirsiniz.
+Genellikle, bulut uygulamalarınıza erişimi denetlemek için koşullu erişim kullanın. Ayrıca, belirli koşullara göre (oturum açma riski, konum veya cihaz gibi) Azure yönetimine erişimi denetlemek ve Multi-Factor Authentication gibi gereksinimleri zorlamak için ilkeler ayarlayabilirsiniz.
 
-Azure yönetimi için bir ilke oluşturmak için, ilkeyi uygulayacağınız uygulamayı seçerken **Bulut uygulamaları** altında **Microsoft Azure Yönetimi'ni** seçersiniz.
+Azure yönetimine yönelik bir ilke oluşturmak için, ilkenin uygulanacağı uygulamayı seçerken **bulut uygulamaları** altında **Microsoft Azure Yönetim** ' i seçersiniz.
 
 ![Azure yönetimi için Koşullu Erişim](./media/conditional-access-azure-management/conditional-access-azure-mgmt.png)
 
-Oluşturduğunuz ilke, aşağıdakiler de dahil olmak üzere tüm Azure yönetim uç noktaları için geçerlidir:
+Oluşturduğunuz ilke, aşağıdakiler de dahil olmak üzere tüm Azure Yönetim uç noktaları için geçerlidir:
 
-- Azure portalında
-- Azure Kaynak Yöneticisi sağlayıcısı
-- Klasik Servis Yönetimi API'leri
+- Azure portal
+- Azure Resource Manager sağlayıcı
+- Klasik hizmet yönetimi API 'Leri
 - Azure PowerShell
-- Visual Studio abonelikleri yönetici portalı
+- Visual Studio abonelikleri Yönetici portalı
 - Azure DevOps
-- Azure Veri Fabrikası portalı
+- Azure Data Factory portalı
 
-İlkenin Azure Kaynak Yöneticisi API'sini çağıran Azure PowerShell için geçerli olduğunu unutmayın. Microsoft Graph olarak adlandırdığı [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)için geçerli değildir.
+İlkenin Azure Resource Manager API 'yi çağıran Azure PowerShell için geçerli olduğunu unutmayın. Microsoft Graph çağıran [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)için de geçerlidir.
 
 
-Koşullu Erişim'in nasıl ayarlanıp kullanılacağı hakkında daha fazla bilgi için [Azure Etkin Dizini'nde Koşullu Erişim'e](../active-directory/active-directory-conditional-access-azure-portal.md)bakın.
+Koşullu erişimin nasıl ayarlanacağı ve kullanılacağı hakkında daha fazla bilgi için [Azure Active Directory 'de koşullu erişim](../active-directory/active-directory-conditional-access-azure-portal.md)konusuna bakın.

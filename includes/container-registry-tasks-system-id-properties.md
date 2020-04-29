@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 700dbfde3be2f24eb57acbdeb9d2841ef2bdfe44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77112315"
 ---
-Komut çıktısında, `identity` bölüm görevde bir `SystemAssigned` tür kimliğinigösterir. Görev `principalId` kimliğinin temel kimliği:
+Komut çıkışında, `identity` bölümünde türünde `SystemAssigned` bir kimlik ayarlanır. , `principalId` Görev KIMLIĞININ asıl kimliğidir:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ Komut çıktısında, `identity` bölüm görevde bir `SystemAssigned` tür kiml
   "location": "eastus",
 [...]
 ``` 
-Daha sonraki komutlarda kullanmak üzere principalId'i bir değişkende depolamak için [az acr görev göster][az-acr-task-show] komutunu kullanın. Görevinizin adını ve kayıt defterinizi aşağıdaki komutta değiştirin:
+Daha sonraki komutlarda kullanmak için PrincipalId 'yi bir değişkende depolamak üzere [az ACR Task Show][az-acr-task-show] komutunu kullanın. Aşağıdaki komutta, göreviniz ve kayıt defterinizin adını değiştirin:
 
 ```azurecli
 principalID=$(az acr task show --name mytask --registry myregistry --query identity.principalId --output tsv)

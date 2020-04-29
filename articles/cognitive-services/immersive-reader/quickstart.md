@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: C ile Sürükleyici Okuyucu başlattı bir web uygulaması oluşturun #'
+title: 'Hızlı başlangıç: C ile modern okuyucuyu Başlatan bir Web uygulaması oluşturma #'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, sıfırdan bir web uygulaması oluşturur ve Sürükleyici Reader API işlevselliğini eklersiniz.
+description: Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturup tam ekran okuyucusu API işlevini eklersiniz.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,40 +11,40 @@ ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 8dd8459922caa9f765d59bc28fbf050b86834b46
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845252"
 ---
-# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Quickstart: Sürükleyici Okuyucu (C#) başlatan bir web uygulaması oluşturun
+# <a name="quickstart-create-a-web-app-that-launches-the-immersive-reader-c"></a>Hızlı başlangıç: tam ekran okuyucuyu Başlatan bir Web uygulaması oluşturma (C#)
 
-[Immersive Reader,](https://www.onenote.com/learningtools) okuma anlama geliştirmek için kanıtlanmış teknikleri uygulayan kapsayıcı bir şekilde tasarlanmış bir araçtır.
+[Tam ekran okuyucu](https://www.onenote.com/learningtools) , okuma kavramasını geliştirmek için kendini kanıtlamış teknikler uygulayan, ve dahil tasarlanmış bir araçtır.
 
-Bu hızlı başlangıçta, sıfırdan bir web uygulaması oluşturun ve Sürükleyici Reader SDK'yı kullanarak Sürükleyici Okuyucu'yu entegre edebilirsiniz. Bu quickstart tam bir çalışma örneği [burada](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)mevcuttur.
+Bu hızlı başlangıçta, sıfırdan bir Web uygulaması oluşturur ve modern Okuyucu SDK 'sını kullanarak tam ekran okuyucuyu tümleştirin. Bu hızlı başlangıç için tam bir çalışma örneğine [buradan](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)ulaşabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads)
-* Azure Etkin Dizin kimlik doğrulaması için yapılandırılan Sürükleyici Bir Reader kaynağı. Kurulumu için [bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özelliklerini yapılandırırken burada oluşturulan bazı değerlere ihtiyacınız olacaktır. Oturumunuzun çıktısını ileride başvurmak için bir metin dosyasına kaydedin.
+* Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](./how-to-create-immersive-reader.md) izleyin. Örnek proje özellikleri yapılandırılırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
 
-## <a name="create-a-web-app-project"></a>Bir web uygulaması projesi oluşturma
+## <a name="create-a-web-app-project"></a>Web uygulaması projesi oluşturma
 
-Yerleşik Model-View-Controller ile ASP.NET Çekirdek Web Uygulaması şablonu ve Core 2.1'i ASP.NET kullanarak Visual Studio'da yeni bir proje oluşturun. Projeye "QuickstartSampleWebApp" adını verin.
+Visual Studio 'da, yerleşik Model-View-Controller ve ASP.NET Core 2,1 ASP.NET Core Web uygulaması şablonunu kullanarak yeni bir proje oluşturun. Projeyi "QuickstartSampleWebApp" olarak adlandırın.
 
 ![Yeni Proje](./media/quickstart-csharp/1-createproject.png)
 
-![Yeni Projeyi Yapılandır](./media/quickstart-csharp/2-configureproject.png)
+![Yeni proje yapılandırma](./media/quickstart-csharp/2-configureproject.png)
 
-![Yeni ASP.NET Çekirdek Web Uygulaması](./media/quickstart-csharp/3-createmvc.png)
+![Yeni ASP.NET Core Web uygulaması](./media/quickstart-csharp/3-createmvc.png)
 
 ## <a name="set-up-authentication"></a>Kimlik doğrulamasını ayarlama
 
 ### <a name="configure-authentication-values"></a>Kimlik doğrulama değerlerini yapılandırma
 
-_Solution Explorer'daki_ projeye sağ tıklayın ve Kullanıcı **Sırlarını Yönet'i**seçin. Bu _secrets.json_adlı bir dosya açılacaktır. Bu dosya kaynak denetiminde denetlenmez. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. _Secrets.json_ içeriğini aşağıdakilerle değiştirerek, Sürükleyici Okuyucu kaynağınızı oluşturduğunuzda verilen değerleri sağlar.
+_Çözüm Gezgini_ projeye sağ tıklayın ve **Kullanıcı gizli dizilerini Yönet**' i seçin. Bu, _gizli dizileri. JSON_adlı bir dosya açar. Bu dosya kaynak denetimine iade edilmedi. [Burada](https://docs.microsoft.com/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows) daha fazla bilgi edinin. Gizli dizi okuyucu kaynağınızı oluştururken verilen değerleri sağlayarak _gizli dizileri. JSON_ içeriğini aşağıdaki ile değiştirin.
 
 ```json
 {
@@ -55,25 +55,25 @@ _Solution Explorer'daki_ projeye sağ tıklayın ve Kullanıcı **Sırlarını Y
 }
 ```
 
-### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Microsoft.IdentityModel.Clients.ActiveDirectory NuGet paketini ekleyin
+### <a name="add-the-microsoftidentitymodelclientsactivedirectory-nuget-package"></a>Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini ekleyin
 
-Aşağıdaki kod **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet paketinden gelen nesneleri kullanır, bu nedenle projenizde bu pakete bir başvuru eklemeniz gerekir.
+Aşağıdaki kod, **Microsoft. IdentityModel. clients. ActiveDirectory** NuGet paketindeki nesneleri kullanarak projenizdeki bu pakete bir başvuru eklemeniz gerekir.
 
-NuGet Paket Yöneticisi Konsolunu Araçlardan açın **-> NuGet Package Manager -> Paket Yöneticisi Konsolu** ve aşağıdaki komutu çalıştırın:
+**Araçlar-> NuGet Paket Yöneticisi-> paket yöneticisi konsolundan** NuGet Paket Yöneticisi konsolunu açın ve şu komutu çalıştırın:
 
 ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
 ```
 
-### <a name="update-the-controller-to-acquire-the-token"></a>Belirteci elde etmek için denetleyiciyi güncelleştirme 
+### <a name="update-the-controller-to-acquire-the-token"></a>Belirteci almak için denetleyiciyi güncelleştirme 
 
-_Denetleyicileri\HomeController.cs'yi_açın ve dosyanın üst _kısmındaki ifadeleri kullandıktan_ sonra aşağıdaki kodu ekleyin.
+_Controllers\homecontroller.cs_dosyasını açın ve dosyanın en üstündeki _using_ deyimlerinden sonra aşağıdaki kodu ekleyin.
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Şimdi, denetleyiciyi _secrets.json'dan_Azure AD değerlerini elde edecek şekilde yapılandıracağız. _HomeController_ sınıfının üst kısmında, ```public class HomeController : Controller {```sonra , aşağıdaki kodu ekleyin.
+Şimdi, denetleyiciyi _gizli dizi. JSON_' dan Azure AD değerlerini alacak şekilde yapılandıracağız. _HomeController_ sınıfının en üstünde, sonra ```public class HomeController : Controller {```aşağıdaki kodu ekleyin.
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -143,14 +143,14 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 }
 ```
 
-## <a name="add-sample-content"></a>Örnek içerik ekleme
-İlk olarak, _Açık Görünümler\Paylaşılan\Layout.cshtml_. Satırdan ```</head>```önce, aşağıdaki kodu ekleyin:
+## <a name="add-sample-content"></a>Örnek içerik Ekle
+İlk olarak, _Views\shared\layout.exe. cshtml_dosyasını açın. Satırdan ```</head>```önce aşağıdaki kodu ekleyin:
 
 ```html
 @RenderSection("Styles", required: false)
 ```
 
-Şimdi, bu web uygulamasına örnek içerik ekleyeceğiz. _Görünümler\Home\Index.cshtml'i_ açın ve otomatik olarak oluşturulan tüm kodu bu örnekle değiştirin:
+Şimdi bu Web uygulamasına örnek içerik ekleyeceğiz. _Views\home\ındex.cshtml_ dosyasını açın ve otomatik olarak oluşturulan tüm kodu şu örnekle değiştirin:
 
 ```html
 @{
@@ -216,13 +216,13 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 </div>
 ```
 
-Metnin tümünün, metnin dillerini açıklayan bir **lang** özniteliği ne sahip olduğuna dikkat edin. Bu öznitelik, Immersive Reader'ın ilgili dil ve dilbilgisi özellikleri sağlamasına yardımcı olur.
+Metnin tümünde, metnin dillerini açıklayan bir **lang** özniteliği olduğuna dikkat edin. Bu öznitelik, modern okuyucunun ilgili dil ve dil bilgisi özelliklerini sağlamasına yardımcı olur.
 
-## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Sürükleyici Reader'ı başlatmayı işlemek için JavaScript ekleyin
+## <a name="add-javascript-to-handle-launching-the-immersive-reader"></a>Derinlikli okuyucu başlatma tanıtıcısına JavaScript ekleme
 
-Immersive Reader kitaplığı, Sürükleyici Okuyucu'yu başlatma ve Sürükleyici Okuyucu düğmelerini oluşturma gibi işlevler sağlar. [Burada](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) daha fazla bilgi edinin.
+Modern okuyucu kitaplığı, derinlikli okuyucu başlatma ve tam ekran okuyucu düğmelerini işleme gibi işlevler sağlar. [Burada](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/reference) daha fazla bilgi edinin.
 
-_Views\Home\Index.cshtml'in_alt kısmında aşağıdaki kodu ekleyin:
+_Views\home\ındex.cshtml_altında aşağıdaki kodu ekleyin:
 
 ```html
 @section Scripts
@@ -294,21 +294,21 @@ _Views\Home\Index.cshtml'in_alt kısmında aşağıdaki kodu ekleyin:
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
-Menü çubuğundan **Hata Ayıklama > Başlat Hata Ayıklama'yı**seçin veya uygulamayı başlatmak için **F5** tuşuna basın.
+Menü çubuğundan **hata ayıkla > hata ayıklamayı Başlat**' ı seçin veya **F5** ' e basarak uygulamayı başlatın.
 
 Tarayıcınızda şunları görmeniz gerekir:
 
 ![Örnek uygulama](./media/quickstart-csharp/4-buildapp.png)
 
-## <a name="launch-the-immersive-reader"></a>Sürükleyici Okuyucuyu Başlat
+## <a name="launch-the-immersive-reader"></a>Tam ekran okuyucuyu başlatın
 
-"Sürükleyici Okuyucu" düğmesine tıkladığınızda, sayfadaki içerikle başlatılan Sürükleyici Okuyucuyu görürsünüz.
+"Modern okuyucu" düğmesine tıkladığınızda, sayfadaki içerikle birlikte modern okuyucu başlatılır.
 
 ![Tam Ekran Okuyucu](./media/quickstart-csharp/5-viewimmersivereader.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Node.js kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Düğüm.js quickstart'ı](./quickstart-nodejs.md) görüntüleyin
-* Python kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
-* Swift'i kullanarak Sürükleyici Reader SDK ile başka neler yapabileceğinizi görmek için [iOS öğreticisini](./tutorial-ios-picture-immersive-reader.md) görüntüleyin
-* [Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) ve [Immersive Reader SDK Referans](./reference.md) keşfedin
+* Node. js kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi görmek için [Node. js hızlı](./quickstart-nodejs.md) başlangıcını görüntüleyin
+* Python kullanarak modern Okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [Python öğreticisini](./tutorial-python.md) görüntüleyin
+* Swift kullanarak tam ekran okuyucu SDK 'Sı ile neler yapabileceğinizi öğrenmek için [iOS öğreticisini](./tutorial-ios-picture-immersive-reader.md) görüntüleyin
+* [Modern Okuyucu SDK 'sını](https://github.com/microsoft/immersive-reader-sdk) ve [tam ekran okuyucu SDK başvurusunu](./reference.md) keşfet

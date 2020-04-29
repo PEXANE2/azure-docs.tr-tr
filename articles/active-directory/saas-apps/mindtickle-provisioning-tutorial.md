@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için MindTickle'ı yapılandırın | Microsoft Dokümanlar"
-description: Azure Active Directory'yi otomatik olarak sağlanan ve kullanıcı hesaplarını MindTickle'a otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırma | Microsoft Docs'
+description: Kullanıcı hesaplarını mini olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,134 +16,134 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: 6ae7b6ac9c6feb539e4da3627ebbabd3c5b628fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061248"
 ---
-# <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için MindTickle'ı yapılandır
+# <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırma
 
-Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları MindTickle'a otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için MindTickle ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları mini olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Mindticula ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
+> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 >
-> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* Azure AD kiracı
-* [Bir MindTickle kiracı](https://www.mindtickle.com/)
-* Yönetici izinleri ile MindTickle bir kullanıcı hesabı.
+* Bir Azure AD kiracısı
+* [Mini bir kiracı](https://www.mindtickle.com/)
+* Yönetici izinleriyle mini Kullanıcı hesabı.
 
-## <a name="assigning-users-to-mindtickle"></a>Kullanıcıları MindTickle'a atama
+## <a name="assigning-users-to-mindtickle"></a>Kullanıcıları Mindtici 'ye atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların MindTickle'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek MindTickle'a atayabilirsiniz:
-* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Mindticine erişmesi gerektiğine karar vermeniz gerekir. Kararlandıktan sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları mini bir şekilde atayabilirsiniz:
+* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-mindtickle"></a>MindTickle kullanıcı atamak için önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-mindtickle"></a>Kullanıcıları mini uçlarına atamaya yönelik önemli ipuçları
 
-* Otomatik kullanıcı sağlama yapılandırmasını sınamak için MindTickle'a tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
+* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için, en az bir Azure AD kullanıcısına en çok bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
 
-* Bir kullanıcıyı MindTickle'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
+* Bir kullanıcıyı Mindtici 'ye atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
 
-## <a name="setup-mindtickle-for-provisioning"></a>Kurulum MindTickle sağlama için
+## <a name="setup-mindtickle-for-provisioning"></a>Sağlama için Mini Kurulum
 
-Azure AD ile otomatik kullanıcı sağlama için MindTickle'ı yapılandırmadan önce MindTickle'da SCIM sağlamayı etkinleştirmeniz gerekir.
-
-
-1.  SCIM sağlama yapılandırmak için gereken JWT belirteci elde etmek için [MindTickle destek ekibine](mailto:help@mindtickle.com) ulaşın.
+Azure AD ile otomatik Kullanıcı sağlama için Mindtickalıbı yapılandırmadan önce, mindticon 'da SCıM sağlamasını etkinleştirmeniz gerekir.
 
 
-## <a name="add-mindtickle-from-the-gallery"></a>Galeriden MindTickle ekle
+1.  SCıM sağlamasını yapılandırmak için gereken JWT belirtecini almak için [Mindticula 'nin destek ekibine](mailto:help@mindtickle.com) ulaşın.
 
-MindTickle'ı Azure AD ile otomatik kullanıcı sağlama için yapılandırmak için, MindTickle'ı Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden MindTickle eklemek için aşağıdaki adımları gerçekleştirin:**
+## <a name="add-mindtickle-from-the-gallery"></a>Galeriden mini Ekle
 
-1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
+Azure AD ile otomatik Kullanıcı sağlama için Mindtickalıbı 'yi yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen SaaS uygulamaları listenize Mindticsel 'yi eklemeniz gerekir.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+**Azure AD uygulama galerisinden mini eklemek için aşağıdaki adımları uygulayın:**
 
-2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
+
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **MindTickle'ı**girin , sonuç panelinde **MindTickle'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna, **mindtickalıbı**girin, sonuçlar panelinde **mindtickalıbı** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-    ![MindTickle sonuç listesinde](common/search-new-app.png)
+    ![Sonuçlar listesinde bir mini](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-mindtickle"></a>MindTickle için otomatik kullanıcı sağlama yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-mindtickle"></a>Mini Kullanıcı sağlamasını yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak MindTickle'daki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup atamalarını Azure AD 'de Kullanıcı ve/veya grup atamalarına göre oluşturma, güncelleştirme ve devre dışı bırakma adımları gösterilmektedir.
 
 > [!TIP]
-> Ayrıca [MindTickle tek oturum](mindtickle-tutorial.md)açma öğreticisinde verilen talimatları izleyerek MindTickle için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini birbiriyle dışa
+> Ayrıca, mindticsel için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi tercih edebilirsiniz. Bu, en [az bir çoklu oturum açma öğreticisinde](mindtickle-tutorial.md)sunulan talimatları takip edebilir. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
 
-### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>Azure AD'de MindTickle için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-mindtickle-in-azure-ad"></a>Azure AD 'de mini Kullanıcı sağlamayı otomatik olarak yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **MindTickle'ı**seçin.
+2. Uygulamalar listesinde, **mini**' i seçin.
 
-    ![Uygulamalar listesinde MindTickle bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki en küçük bağlantı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://admin.mindtickle.com/scim` altında, **Kiracı URL'ye**giriş . Gizli Belirteç textbox'ta daha önce alınan **JWT belirteci** değerini girin, MindTickle destek ekibi tarafından verilen **JWT belirteç** değerini girin. Azure AD'nin politikalarıma bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, MindTickle hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://admin.mindtickle.com/scim` **kiracı URL 'sini**girin. Daha önce gizli bir belirteç metin kutusunda alınan **JWT belirteç** değerini girin, Mindtickalıbı destek ekibi tarafından verilen **JWT belirteç** değerini girin. Azure AD 'nin Ilkelerinize bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Mindtici hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet**'e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını MindTickle'a Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümü altında, **Kullanıcı Azure Active Directory Kullanıcıları mini halinde eşitler**' ı seçin.
 
-    ![MindTickle Kullanıcı Eşlemeleri](media/mindtickle-provisioning-tutorial/usermapping.png)
+    ![Mini Kullanıcı eşlemelerini Temizleme](media/mindtickle-provisioning-tutorial/usermapping.png)
 
-9. **Öznitelik Eşleme** bölümünde Azure AD'den MindTickle'a senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemi için MindTickle' daki kullanıcı hesaplarıyla çalışmak için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Mindtickile eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Mindtickalıbı içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![MindTickle Kullanıcı Eşlemeleri](media/mindtickle-provisioning-tutorial/userattribute.png)
+    ![Mini Kullanıcı eşlemelerini Temizleme](media/mindtickle-provisioning-tutorial/userattribute.png)
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. MindTickle için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+13. Mini Azure AD sağlama hizmetini etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek MindTickle'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** içindeki Istenen değerleri seçerek, mindticiler için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. İlk eşitlemenin gerçekleştirilimi sonraki eşitlemelerden daha uzun sürer. Kullanıcıların ve/veya grupların sağlanmasının ne kadar süreceğü hakkında daha fazla bilgi için, [kullanıcıların sağlanmasının ne kadar süreceğini](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)görün. 
+Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin sonraki eşitlemeler daha uzun sürer. Kullanıcıların ve/veya grupların sağlaması için ne kadar süreceğine ilişkin daha fazla bilgi için bkz. [kullanıcıları sağlamak için ne kadar sürer](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users). 
 
-MindTickle'daki Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemedurumunu izlemek ve sağlama etkinlik raporunuza gelen bağlantıları izlemek için **Geçerli Durum** bölümünü kullanabilirsiniz. Daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) Azure AD sağlama günlüklerini okumak için [otomatik kullanıcı hesabı sağlama hakkında raporlama'ya](../app-provisioning/check-status-user-account-provisioning.md)bakın.
+İlerleme durumunu izlemek için **geçerli durum** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından, Mindticde üzerinde gerçekleştirilen tüm eylemleri açıklayan sağlama etkinliği raporunuzun bağlantılarını izleyebilirsiniz. Daha fazla bilgi için bkz. [Kullanıcı hazırlama durumunu denetleme](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Azure AD sağlama günlüklerini okumak için bkz. [Otomatik Kullanıcı hesabı sağlama hakkında raporlama](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

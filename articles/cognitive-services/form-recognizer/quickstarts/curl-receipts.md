@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: cURL kullanarak makbuz verilerini ayıklayın - Form Tanıyın'
+title: 'Hızlı başlangıç: kıvrımlı biçimli tanıyıcı kullanarak makbuz verilerini ayıklama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, ABD satış makbuzlarının görüntülerinden veri ayıklamak için cURL ile Form Recognizer REST API'yi kullanacaksınız.
+description: Bu hızlı başlangıçta, ABD satış girişlerinin görüntülerinden veri ayıklamak için, biçim tanıyıcı REST API kıvrımlı olarak kullanacaksınız.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,52 +10,52 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: e053222d3b79668c2f6044417e31e104ce0f4222
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77118497"
 ---
-# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Quickstart: CURL ile Form Recognizer REST API kullanarak makbuz veri ayıklama
+# <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Hızlı başlangıç: biçim tanıyıcı ile REST API kullanarak alış verilerini ayıklama
 
-Bu hızlı başlangıçta, ABD satış makbuzlarında ilgili bilgileri ayıklamak ve tanımlamak için cURL'li Azure Form Recognizer REST API'yi kullanırsınız.
+Bu hızlı başlangıçta, ABD satış girişlerinde ilgili bilgileri ayıklamak ve tanımlamak için Azure form tanıyıcısı 'nı kıvrımlı REST API kullanacaksınız.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
-- [cURL](https://curl.haxx.se/windows/) yüklendi.
-- Makbuz resminin URL'si. Bu hızlı başlangıç için örnek bir [resim](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) kullanabilirsiniz.
+Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
+- [kıvrımlı](https://curl.haxx.se/windows/) yüklendi.
+- Bir makbuz görüntüsünün URL 'SI. Bu hızlı başlangıç için [örnek bir görüntü](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) kullanabilirsiniz.
 
-## <a name="create-a-form-recognizer-resource"></a>Form Tanıyıcı kaynağı oluşturma
+## <a name="create-a-form-recognizer-resource"></a>Form tanıyıcı kaynağı oluşturma
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="analyze-a-receipt"></a>Bir makbuzu analiz
+## <a name="analyze-a-receipt"></a>Okundu bilgisi Analizi
 
-Bir makbuzu çözümlemeye başlamak için, aşağıdaki cURL komutunu kullanarak **[Analiz Makbuzu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API'sini ararsınız. Komutu çalıştırmadan önce şu değişiklikleri yapın:
+Bir alındısı analizine başlamak için aşağıdaki kıvrımlı komutunu kullanarak **[Çözümleme alındı](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` Recognizer aboneliğinizle elde ettiğiniz bitiş noktasıyla değiştirin.
-1. Makbuz `<your receipt URL>` görüntüsünün URL adresiyle değiştirin.
+1. Form `<Endpoint>` tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
+1. Bir `<your receipt URL>` makbuz resminin URL adresiyle değiştirin.
 1. Önceki `<subscription key>` adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
 ```bash
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-`202 (Success)` **İşlem-Konum** üstbilgini içeren bir yanıt alırsınız. Bu üstbilginin değeri, eşzamanlı işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem kimliği içerir. Aşağıdaki örnekte, sonraki `operations/` dize işlem kimliğidir.
+Har `202 (Success)` **işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, sonraki `operations/` DIZE işlem kimliğidir.
 
 ```console
 https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
-## <a name="get-the-receipt-results"></a>Makbuz sonuçlarını alın
+## <a name="get-the-receipt-results"></a>Makbuz sonuçlarını alma
 
-**Analiz Makbuzu** API'sini aradıktan sonra, işlemin durumunu ve çıkarılan verileri almak için **[Analiz Makbuzu Sonuç](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API'sini alırsınız. Komutu çalıştırmadan önce şu değişiklikleri yapın:
+**Çözümleme alındı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[çözümleme sonucu alma](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. Form `<Endpoint>` Recognizer abonelik anahtarınızla elde ettiğiniz bitiş noktasıyla değiştirin. Form Recognizer kaynak **Genel Bakış** sekmenizde bulabilirsiniz.
-1. Önceki `<operationId>` adımdaki işlem kimliğiyle değiştirin.
+1. Form `<Endpoint>` tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
+1. Önceki `<operationId>` ADıMDAKI işlem kimliğiyle değiştirin.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
@@ -64,13 +64,13 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/ana
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
 
-JSON çıkışıyla `200 (Success)` bir yanıt alırsınız. İlk alan, `"status"`, işlemin durumunu gösterir. İşlem tamamlanırsa, `"recognitionResults"` alan fişten çıkarılan her metin satırını içerir ve `"understandingResults"` alan makbuzun en alakalı bölümleri için anahtar/değer bilgilerini içerir. İşlem tamamlanmadıysa, değeri `"status"` olacaktır `"running"` veya `"notStarted"`, ve API'yi el ile veya komut dosyası aracılığıyla yeniden aramalısınız. Aramalar arasında bir veya daha fazla bir ara vermenizi öneririz.
+JSON çıkışıyla bir `200 (Success)` yanıt alacaksınız. İlk alan, `"status"`, işlemin durumunu gösterir. İşlem tamamlandıysa, `"recognitionResults"` alan, alış irsaliyesinden ayıklanan her metin satırını içerir ve `"understandingResults"` alan, girişin en ilgili bölümleri için anahtar/değer bilgilerini içerir. İşlem tamamlanmadıysa, değeri `"status"` `"running"` veya `"notStarted"`olur ve API 'yi el ile ya da bir komut dosyası aracılığıyla tekrar çağırmanız gerekir. Çağrılar arasında bir saniye veya daha fazla Aralık önerilir.
 
-Aşağıdaki makbuz resmine ve ilgili JSON çıkışına bakın. Çıktı okunabilirlik için kısaltıldı.
+Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına bakın. Çıktı okunabilirlik için kısaltıldı.
 
-![Contoso mağazasından bir makbuz](../media/contoso-allinone.jpg)
+![Contoso mağazasından alındı](../media/contoso-allinone.jpg)
 
-Düğüm, `"recognitionResults"` tanınan metnin tümlerini içerir. Metin sayfaya, sonra satıra, sonra da tek tek sözcüklerle düzenlenir. Düğüm, `"understandingResults"` modelin keşfettiği makbuza özgü değerleri içerir. Burada vergi, toplam, tüccar adresi ve benzeri gibi yararlı anahtar/ değer çiftleri bulacaksınız.
+Düğüm `"recognitionResults"` , tüm tanınan metni içerir. Metin sayfaya, sonra satıra, sonra da tek sözcüklere göre düzenlenir. `"understandingResults"` Düğüm, modelin bulduğu girişe özgü değerleri içerir. Burada, vergi, toplam, ticari adres vb. gibi faydalı anahtar/değer çiftleri bulacaksınız.
 
 ```json
 { 
@@ -399,7 +399,7 @@ Düğüm, `"recognitionResults"` tanınan metnin tümlerini içerir. Metin sayfa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir satış makbuzunun içeriğini ayıklamak için cURL ile Form Recognizer REST API'yi kullandınız. Ardından, Form Tanıyıcısı API'sini daha derinlemesine incelemek için başvuru belgelerine bakın.
+Bu hızlı başlangıçta, bir satış girişinin içeriğini ayıklamak için, biçim tanıyıcı ' i kıvrımlı REST API kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
 > [REST API başvuru belgeleri](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

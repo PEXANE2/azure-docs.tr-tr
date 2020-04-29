@@ -1,6 +1,6 @@
 ---
-title: JAR bağımlılıklarını yönetme - Azure HDInsight
-description: Bu makalede, HDInsight uygulamaları için Java Arşivi (JAR) bağımlılıklarını yönetmek için en iyi uygulamalar tartışılmaktadır.
+title: JAR bağımlılıklarını yönetme-Azure HDInsight
+description: Bu makalede, HDInsight uygulamaları için Java Arşivi (JAR) bağımlılıklarını yönetmeye yönelik en iyi yöntemler açıklanmaktadır.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,32 +9,32 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.openlocfilehash: da3387dd9846847f7643ded43c8cbff8ed8b166e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77135739"
 ---
-# <a name="jar-dependency-management-best-practices"></a>JAR bağımlılık yönetimi en iyi uygulamalar
+# <a name="jar-dependency-management-best-practices"></a>JAR bağımlılığı yönetimi en iyi uygulamaları
 
-HDInsight kümelerine yüklenen bileşenlerin üçüncü taraf kitaplıklarına bağımlılığı vardır. Genellikle, Guava gibi ortak modüllerin belirli bir sürümü bu yerleşik bileşenler tarafından başvurulan. Bağımlılıkları olan bir uygulama gönderdiğiniz zaman, aynı modülün farklı sürümleri arasında çakışmaya neden olabilir. Önce classpath'te başlattığınız bileşen sürümü, yerleşik bileşenler sürüm uyumsuzluğu nedeniyle özel durumlar atabilir. Ancak, yerleşik bileşenler bağımlılıklarını önce classpath'e enjekte ederse, uygulamanız `NoSuchMethod`.
+HDInsight kümelerine yüklenen bileşenlerin üçüncü taraf kitaplıklara bağımlılıkları vardır. Genellikle guava gibi yaygın modüllerin belirli bir sürümüne bu yerleşik bileşenler tarafından başvurulur. Bir uygulamayı bağımlılıklarıyla birlikte gönderdiğinizde, aynı modülün farklı sürümleri arasında çakışmaya neden olabilir. İlk olarak sınıflara başvuruda bulunan bileşen sürümü varsa, yerleşik bileşenler sürüm uyumsuzluğu nedeniyle özel durumlar oluşturabilir. Ancak, yerleşik bileşenler bağımlılıklarını ilk olarak Sınıfyoluna ekler, uygulamanız gibi `NoSuchMethod`hatalar oluşturabilir.
 
-Sürüm çakışmasını önlemek için uygulama bağımlılıklarınızı gölgelemeyi düşünün.
+Sürüm çakışmasını önlemek için uygulama bağımlılıklarınızı gölgelendirmeyi göz önünde bulundurun.
 
-## <a name="what-does-package-shading-mean"></a>Paket gölgeleme ne anlama gelir?
-Gölgeleme, bağımlılıkları eklemenin ve yeniden adlandırmanın bir yolunu sağlar. Bağımlılıklarınızın özel bir kopyasını oluşturmak için sınıfları yeniden değiştirir ve etkilenen bytecode ve kaynakları yeniden yazar.
+## <a name="what-does-package-shading-mean"></a>Paket gölgelemesi ne anlama geliyor?
+Gölgeleme, bağımlılıkları dahil etmek ve yeniden adlandırmak için bir yol sağlar. Sınıfları yeniden konumlandırır ve bağımlılıklarınızın özel bir kopyasını oluşturmak için etkilenen ByteCode ve kaynakları yeniden yazar.
 
-## <a name="how-to-shade-a-package"></a>Nasıl bir paket gölge?
+## <a name="how-to-shade-a-package"></a>Bir paket nasıl gölgelenecek?
 
-### <a name="use-uber-jar"></a>Uber-jar kullanın
-Uber-jar, hem uygulama kavanozunu hem de bağımlılıklarını içeren tek bir kavanoz dosyasıdır. Uber kavanozundaki bağımlılıklar varsayılan olarak gölgelendirilmeyecektir. Bazı durumlarda, diğer bileşenler veya uygulamalar bu kitaplıkların farklı bir sürümüne başvuruyorsa, bu sürüm çakışması başlatabilir. Bunu önlemek için, gölgeli bağımlılıkların bir kısmını (veya tamamını) içeren bir Uber-Jar dosyası oluşturabilirsiniz.
+### <a name="use-uber-jar"></a>Uber-jar kullanma
+Uber-jar, hem uygulama jar 'i hem de onun bağımlılıklarını içeren tek bir jar dosyasıdır. Uber-jar içindeki bağımlılıklar, varsayılan değer olarak gölmez. Bazı durumlarda, diğer bileşenler veya uygulamalar bu kitaplıkların farklı bir sürümüne başvuracak olursa bu sürüm çakışmasına neden olabilir. Bunu önlemek için, bağımlılıkların gölgeli bir Uber-jar dosyası oluşturabilirsiniz.
 
-### <a name="shade-package-using-maven"></a>Maven kullanarak gölge paketi
-Maven hem Java hem de Scala'da yazılmış uygulamalar oluşturabilir. Maven-shade-plugin kolayca gölgeli bir uber-jar oluşturmanıza yardımcı olabilir.
+### <a name="shade-package-using-maven"></a>Maven kullanarak paket gölgelendir
+Maven, hem Java hem de Scala 'da yazılmış uygulamalar oluşturabilir. Maven-gölge-eklentisi, gölgeli bir Uber-jar kolay bir şekilde oluşturmanıza yardımcı olabilir.
 
-Aşağıdaki örnekte, `pom.xml` maven-shade-plugin kullanarak bir paketi gölgelemek üzere güncelleştirilen bir dosya gösterilmektedir.  XML bölümü, `<relocation>…</relocation>` ilgili `com.google.guava` JAR `com.google.shaded.guava` dosya girişlerini taşıyarak ve etkilenen bytecode'u yeniden yazarak sınıfları paketten pakete taşır.
+Aşağıdaki örnekte, Maven- `pom.xml` gölge-eklentisini kullanarak bir paketi gölgelendirmek üzere güncelleştirilmiş bir dosya gösterilmektedir.  XML bölümü `<relocation>…</relocation>` , ilgili jar dosyası girişlerini `com.google.guava` taşıyarak ve `com.google.shaded.guava` etkilenen bytecode 'u yeniden yazarak, sınıfları paketten pakete taşır.
 
-Değiştirdikten `pom.xml`sonra, `mvn package` gölgeli uber-jar oluşturmak için çalıştırabilirsiniz.
+' Yi `pom.xml`değiştirdikten sonra, gölgeli `mvn package` Uber-jar 'yi oluşturmak için çalıştırabilirsiniz.
 
 ```xml
   <build>
@@ -64,10 +64,10 @@ Değiştirdikten `pom.xml`sonra, `mvn package` gölgeli uber-jar oluşturmak iç
   </build>
 ```
 
-### <a name="shade-package-using-sbt"></a>SBT kullanarak gölge paketi
-SBT aynı zamanda Scala ve Java için bir yapı aracıdır. SBT maven-gölge-eklentisi gibi bir gölge eklentisi yok. Dosyayı `build.sbt` gölge paketleri için değiştirebilirsiniz. 
+### <a name="shade-package-using-sbt"></a>SBT kullanarak paket gölgelendir
+SBT Ayrıca Scala ve Java için bir yapı aracıdır. SBT 'nin Maven-gölge-eklentisi gibi bir gölge eklentisi yok. Dosyayı gölge paketleri `build.sbt` olarak değiştirebilirsiniz. 
 
-Örneğin, gölgelemek `com.google.guava`için, dosyaya aşağıdaki `build.sbt` komutu ekleyebilirsiniz:
+Örneğin, gölgelendirmek `com.google.guava`için aşağıdaki komutu `build.sbt` dosyasına ekleyebilirsiniz:
 
 ```scala
 assemblyShadeRules in assembly := Seq(
@@ -75,10 +75,10 @@ assemblyShadeRules in assembly := Seq(
 )
 ```
 
-Sonra çalıştırabilirsiniz `sbt clean` `sbt assembly` ve gölgeli kavanoz dosyası oluşturmak için. 
+Ardından, ve ' `sbt clean` `sbt assembly` yi çalıştırarak gölgeli jar dosyasını oluşturabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HDInsight IntelliJ Araçlarını Kullanma](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
+* [HDInsight IntelliJ araçlarını kullanma](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox)
 
-* [IntelliJ Spark için bir Scala Maven uygulaması oluşturun](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)
+* [IntelliJ 'de Spark için bir Scala Maven uygulaması oluşturma](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-create-standalone-application)

@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Tek sayfalı Bing Video Arama uygulaması oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu öğretici, Bing Video Arama API'sinin tek sayfalık bir Web uygulamasında nasıl kullanılacağını açıklar.
+description: Bu öğreticide, Bing Video Arama API'si tek sayfalı bir Web uygulamasında nasıl kullanılacağı açıklanmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988269"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
@@ -138,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Örneğin, gerçek `SafeSearch` bir API `strict`çağrısındaki parametre `moderate`varsayılan `moderate` olarak olabilir.
+Örneğin, gerçek bir `SafeSearch` API çağrısındaki parametresi, veya `strict` `moderate` `moderate` varsayılan olarak olabilir.
 
 ## <a name="performing-the-request"></a>İsteği gerçekleştirme
-Sorgu, seçenekler dizesi ve API anahtarı verili durumdayken, `BingWebSearch` işlevi Bing Arama uç noktasına isteği yöneltmek için bir `XMLHttpRequest` nesnesi kullanır. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+Sorgu, seçenekler dizesi ve API anahtarı verili durumdayken, `BingWebSearch` işlevi Bing Arama uç noktasına isteği yöneltmek için bir `XMLHttpRequest` nesnesi kullanır. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -373,7 +373,7 @@ Aşağıdaki JavaScript alıntısında `video` işleyicisi gösterilir. Videos u
 > * Görüntüye ve bu görüntüyü içeren sayfaya bağlanan HTML `<a>` etiketlerini oluşturur.
 > * Resim ve bu resmin bulunduğu site hakkındaki bilgileri görüntüleyen bir açıklama oluşturur.
 
-Küçük resim boyutu hem `<img>` etiketinde hem de küçük resmin URL'sindeki `h` ve `w` alanlarında kullanılır. Bing tam olarak bu boyutta bir [küçük resim](../bing-web-search/resize-and-crop-thumbnails.md) döndürecek.
+Küçük resim boyutu hem `<img>` etiketinde hem de küçük resmin URL'sindeki `h` ve `w` alanlarında kullanılır. Bing, tam olarak bu boyutun [küçük bir resmini](../bing-web-search/resize-and-crop-thumbnails.md) döndürür.
 
 ## <a name="persisting-client-id"></a>Kalıcı istemci kimliği
 Bing arama API'lerinden gelen yanıtlar, başarılı isteklerle birlikte API'ye geri gönderilmesi gereken bir `X-MSEdge-ClientID` üst bilgisi içerir. Birden çok Bing Arama API'si kullanılıyorsa, mümkün olduğunca bu API'lerin tümünde aynı istemci kimliği kullanılmalıdır.
@@ -389,7 +389,7 @@ Tarayıcı güvenlik ilkeleri (CORS) `X-MSEdge-ClientID` üst bilgisinin JavaScr
 > [!NOTE]
 > Üretim ortamındaki bir Web uygulamasında, isteği sunucu tarafından gerçekleştirmeniz gerekir. Aksi takdirde, Bing Arama API'si anahtarınızın Web sayfasına eklenmesi gerekir ve bu durumda kaynağı görüntüleyen herkes tarafından görülebilir. API abonelik anahtarınız altında gerçekleştirilen tüm kullanım, yetkisiz tarafların yaptığı istekler bile size faturalandırılır; dolayısıyla anahtarınızı açıklamamanız önemlidir.
 
-Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Böyle bir proxy'den `Access-Control-Expose-Headers` gelen yanıt, yanıt üstbilgilerine izin veren ve bunları JavaScript'te kullanılabilir kılan bir üstbilgiye sahiptir.
+Geliştirme amacıyla, Bing Web Araması API’si isteğini CORS ara sunucusu aracılığıyla yapabilirsiniz. Bu tür bir ara sunucudan alınan yanıtın, `Access-Control-Expose-Headers` yanıt üst bilgilerine izin veren ve JavaScript için kullanılabilir hale getiren bir üstbilgisi vardır.
 
 Öğretici uygulamamızın istemci kimliği üst bilgisine erişebilmesi için CORS ara sunucusu kolayca yüklenebilir. İlk olarak, henüz yüklemediyseniz [Node.js'yi yükleyin](https://nodejs.org/en/download/). Ardından komut penceresinde aşağıdaki komutu yürütün:
 

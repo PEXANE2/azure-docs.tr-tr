@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: WPF, C# ile çeviri uygulaması oluşturma - Çevirmen Metin API'
+title: "Öğretici: WPF, C#-Translator Metin Çevirisi API'si bir çeviri uygulaması oluşturma"
 titleSuffix: Azure Cognitive Services
-description: Bu eğitimde, metin çevirisi, dil algılama ve yazım denetimi gerçekleştirmek için tek bir abonelik anahtarıyla bir WPF uygulaması oluşturursunuz.
+description: Bu öğreticide, tek bir abonelik anahtarıyla metin çevirisi, dil algılama ve yazım denetimi yapmak için bir WPF uygulaması oluşturacaksınız.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,104 +11,104 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77118611"
 ---
-# <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile çeviri uygulaması oluşturma
+# <a name="tutorial-create-a-translation-app-with-wpf"></a>Öğretici: WPF ile bir çeviri uygulaması oluşturma
 
-Bu eğitimde, metin çevirisi, dil algılama ve yazım denetimi için tek bir abonelik anahtarıyla Azure Bilişsel Hizmetleri kullanan bir [Windows Sunu Vakfı (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) uygulaması oluşturursunuz. Özellikle, uygulamanız Çevirmen Metin ve [Bing Yazım Denetimi'nden](https://azure.microsoft.com/services/cognitive-services/spell-check/)API'leri arayacaktır.
+Bu öğreticide, tek bir abonelik anahtarıyla metin çevirisi, dil algılama ve yazım denetimi için Azure bilişsel hizmetler 'i kullanan bir [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) uygulaması oluşturacaksınız. Özellikle, uygulamanız Translator Metin Çevirisi ve [Bing yazım denetimi](https://azure.microsoft.com/services/cognitive-services/spell-check/)API 'leri çağıracaktır.
 
-WPF nedir? Masaüstü istemci uygulamaları oluşturan bir UI çerçevesidir. WPF geliştirme platformu, uygulama modeli, kaynaklar, denetimler, grafikler, düzen, veri bağlama, belgeler ve güvenlik gibi çok çeşitli uygulama geliştirme özelliklerini destekler. Bu .NET Framework'ün bir alt kümesidir, bu nedenle ASP.NET veya Windows Forms kullanarak .NET Framework ile daha önce uygulama inşa ettiyseniz, programlama deneyimi tanıdık olmalıdır. WPF, uygulama programlama için bildirimsel bir model sağlamak için Genişletilebilir biçimlendirme dili (XAML) kullanır ve bunu önümüzdeki bölümlerde inceleyeceğiz.
+WPF nedir? Masaüstü istemci uygulamaları oluşturan bir UI çerçevesidir. WPF geliştirme platformu, uygulama modeli, kaynaklar, denetimler, grafikler, düzen, veri bağlama, belgeler ve güvenlik dahil olmak üzere çok sayıda uygulama geliştirme özelliği destekler. .NET Framework bir alt kümesidir, bu nedenle daha önce ASP.NET veya Windows Forms kullanarak .NET Framework ile uygulamalar oluşturduysanız, programlama deneyiminin tanıdık olması gerekir. WPF, uygulama programlamaya yönelik bildirim temelli bir model sağlamak için Genişletilebilir uygulama biçimlendirme dili 'ni (XAML) kullanır. Bu, gelecek bölümlerde gözden geçireceğiz.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Visual Studio'da bir WPF projesi oluşturma
-> * Projenize montajlar ve NuGet paketleri ekleyin
-> * XAML ile uygulamanızın UI'ini oluşturun
-> * Dil almak, metni çevirmek ve kaynak dili algılamak için Çevirmen Metin API'sini kullanın
-> * Girişinizi doğrulamak ve çeviri doğruluğunu artırmak için Bing Yazım Denetimi API'sini kullanın
-> * WPF uygulamanızı çalıştırın
+> * Visual Studio 'da WPF projesi oluşturma
+> * Projenize derlemeler ve NuGet paketleri ekleyin
+> * XAML ile uygulamanızın kullanıcı arabirimini oluşturma
+> * Dilleri almak, metin çevirmek ve kaynak dilini algılamak için Translator Metin Çevirisi API'si kullanın
+> * Girişinizi doğrulamak ve çeviri doğruluğunu artırmak için Bing Yazım Denetimi API'si kullanın
+> * WPF uygulamanızı çalıştırma
 
-### <a name="cognitive-services-used-in-this-tutorial"></a>Bu eğitimde kullanılan Bilişsel Hizmetler
+### <a name="cognitive-services-used-in-this-tutorial"></a>Bu öğreticide kullanılan bilişsel hizmetler
 
-Bu liste, bu öğreticide kullanılan Bilişsel Hizmetleri içerir. Her özellik için API başvurusuna göz atmak için bağlantıyı izleyin.
+Bu liste, bu öğreticide kullanılan bilişsel hizmetleri içerir. Her bir özelliğin API başvurusuna gözatabilmek için bağlantıyı izleyin.
 
 | Hizmet | Özellik | Açıklama |
 |---------|---------|-------------|
-| Translator Metin Çevirisi | [Dil Alın](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Metin çevirisi için desteklenen dillerin tam listesini alın. |
-| Translator Metin Çevirisi | [Çevirme](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 60'tan fazla dile çevirin. |
-| Translator Metin Çevirisi | [Algılama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini algılayın. Algılama için güven puanı içerir. |
+| Translator Metin Çevirisi | [Dilleri al](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Metin çevirisi için desteklenen dillerin tüm listesini alın. |
+| Translator Metin Çevirisi | [Çevir](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Metni 60 ' den fazla dile çevirin. |
+| Translator Metin Çevirisi | [Algılama](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Giriş metninin dilini tespit edin. Algılama için güvenirlik puanı içerir. |
 | Bing Yazım Denetimi | [Yazım Denetimi](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Çeviri doğruluğunu artırmak için yazım hatalarını düzeltin. |
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Devam etmeden önce aşağıdakileri yapmanız gerekir:
+Devam etmeden önce şunlar gerekir:
 
-* Azure Bilişsel Hizmetler aboneliği. [Bilişsel Hizmetler anahtarı alın.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource)
+* Azure bilişsel hizmetler aboneliği. [Bilişsel hizmetler anahtarı alın](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
 * Bir Windows makinesi
-* [Visual Studio 2019](https://www.visualstudio.com/downloads/) - Topluluk veya Kurumsal
+* [Visual Studio 2019](https://www.visualstudio.com/downloads/) -Community veya Enterprise
 
 > [!NOTE]
-> Bu öğretici için Aboneliği Batı ABD bölgesinde oluşturmanızı öneririz. Aksi takdirde, bu alıştırma da çalışırken koddaki uç noktaları ve bölgeleri değiştirmeniz gerekir.  
+> Bu öğretici için Batı ABD bölgede aboneliğin oluşturulmasını öneririz. Aksi takdirde, Bu alıştırmada çalışırken koddaki uç noktaları ve bölgeleri değiştirmeniz gerekir.  
 
-## <a name="create-a-wpf-app-in-visual-studio"></a>Visual Studio'da WPF uygulaması oluşturma
+## <a name="create-a-wpf-app-in-visual-studio"></a>Visual Studio 'da WPF uygulaması oluşturma
 
-Yapmamız gereken ilk şey Visual Studio'da projemizi kurmak.
+Yapmanız gereken ilk şey, Visual Studio 'da projemizi ayarladık.
 
-1. Visual Studio'yu açın. **Yeni bir proje oluştur'u**seçin.
-1. **Yeni bir proje oluştur'da** **WPF Uygulamasını (.NET Framework)** bulun ve seçin. Seçenekleri daraltmak için **Dil'den** C# seçeneğini belirleyebilirsiniz.
-1. **İleri'yi**seçin ve `MSTranslatorTextDemo`ardından projenizi adlandırın.
-1. Çerçeve sürümünü **.NET Framework 4.7.2** veya sonraki sürümolarak ayarlayın ve **Oluştur'u**seçin.
-   ![Visual Studio'ya ad ve çerçeve sürümünü girin](media/name-wpf-project-visual-studio.png)
+1. Visual Studio'yu açın. **Yeni proje oluştur**' u seçin.
+1. **Yeni proje oluştur**' da WPF uygulaması ' nı bulun ve seçin **(.NET Framework)**. Seçenekleri daraltmak için **dilden** C# ' ı seçebilirsiniz.
+1. **İleri**' yi seçin ve ardından projenizi `MSTranslatorTextDemo`adlandırın.
+1. Framework sürümünü **.NET Framework 4.7.2** veya üzeri olarak ayarlayın ve **Oluştur**' u seçin.
+   ![Visual Studio 'da ad ve çerçeve sürümünü girin](media/name-wpf-project-visual-studio.png)
 
-Projeniz oluşturuldu. Açık iki sekme olduğunu fark `MainWindow.xaml` edeceksiniz: `MainWindow.xaml.cs`ve . Bu öğretici boyunca, bu iki dosyaya kod ekleyeceğiz. Uygulamanın kullanıcı `MainWindow.xaml` arabirimini değiştireceğiz. Çevirmen Metni `MainWindow.xaml.cs` ve Bing Yazım Denetimi çağrılarımızı değiştireceğiz.
+Projeniz oluşturuldu. İki sekmeden açık olduğunu fark edeceksiniz: `MainWindow.xaml` ve. `MainWindow.xaml.cs` Bu öğreticide, bu iki dosyaya kod ekliyoruz. Uygulamanın kullanıcı arabirimine `MainWindow.xaml` göre değişiklik yapacağız. Translator Metin Çevirisi ve Bing Yazım Denetimi `MainWindow.xaml.cs` çağrılarımız için değişiklik yapacağız.
    ![Ortamınızı gözden geçirin](media/blank-wpf-project.png)
 
-Bir sonraki bölümde, JSON ayrıştırma gibi ek işlevsellik için projemize derlemeler ve NuGet paketi ekleyeceğiz.
+Sonraki bölümde, JSON ayrıştırma gibi ek işlevler için projenize derlemeler ve bir NuGet paketi ekleyeceğiz.
 
-## <a name="add-references-and-nuget-packages-to-your-project"></a>Projenize referanslar ve NuGet paketleri ekleyin
+## <a name="add-references-and-nuget-packages-to-your-project"></a>Projenize başvurular ve NuGet paketleri ekleyin
 
-Projemiz, NuGet paket yöneticisini kullanarak yükleyeceğimiz bir avuç .NET Framework derlemesi ve NewtonSoft.Json gerektirir.
+Projemiz .NET Framework derlemeleri ve NuGet Paket Yöneticisi 'ni kullanarak yükleytiğimiz NewtonSoft. json ' ı gerektirir.
 
-### <a name="add-net-framework-assemblies"></a>.NET Framework derlemeleri ekle
+### <a name="add-net-framework-assemblies"></a>.NET Framework derlemeleri Ekle
 
-Nesneleri seri hale getirmek ve deserialize etmek ve HTTP isteklerini ve yanıtlarını yönetmek için projemize derlemeler ekleyelim.
+Nesneleri seri hale getirmek ve seri durumdan çıkarmak için ve HTTP isteklerini ve yanıtlarını yönetmek için projenize derleme ekleyelim.
 
-1. Projenizi Visual Studio'nun Çözüm Gezgini'nde bulun. Projenizi sağ tıklatın, ardından **Başvuru Yöneticisi'ni**açan **> Başvuru Ekle'yi**seçin.
-1. **Derlemeler** sekmesi, başvuru için kullanılabilen tüm .NET Framework derlemelerini listeler. Başvuruları aramak için sağ üstteki arama çubuğunu kullanın.
-   ![Montaj başvuruları ekleme](media/add-assemblies-2019.png)
+1. Projenizi Visual Studio 'nun Çözüm Gezgini bulun. Projenize sağ tıklayın ve ardından **başvuru Yöneticisi**'ni açan **> başvuru Ekle**' yi seçin.
+1. **Derlemeler** sekmesi, başvuru için kullanılabilen tüm .NET Framework derlemeleri listeler. Başvuruları aramak için sağ üst köşedeki arama çubuğunu kullanın.
+   ![Derleme başvuruları Ekle](media/add-assemblies-2019.png)
 1. Projeniz için aşağıdaki başvuruları seçin:
    * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
    * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
-1. Bu başvuruları projenize ekledikten **sonra, Başvuru Yöneticisi'ni**kapatmak için **Tamam'ı** tıklatabilirsiniz.
+   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+1. Bu başvuruları projenize ekledikten sonra, **başvuru Yöneticisi**'ni kapatmak için **Tamam** ' a tıklayabilirsiniz.
 
 > [!NOTE]
-> Derleme başvuruları hakkında daha fazla bilgi edinmek istiyorsanız, [bkz.](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)
+> Derleme başvuruları hakkında daha fazla bilgi edinmek istiyorsanız bkz. [nasıl yapılır: başvuru Yöneticisi 'ni kullanarak başvuru ekleme veya kaldırma](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
-### <a name="install-newtonsoftjson"></a>NewtonSoft.Json'ı yükleyin
+### <a name="install-newtonsoftjson"></a>NewtonSoft. JSON 'ı yükler
 
-Uygulamamız JSON nesnelerini deserialize etmek için NewtonSoft.Json'u kullanacaktır. Paketi yüklemek için aşağıdaki yönergeleri izleyin.
+Uygulamamız JSON nesnelerinin serisini kaldırmak için NewtonSoft. JSON kullanacaktır. Paketi yüklemek için bu yönergeleri izleyin.
 
-1. Projenizi Visual Studio'nun Çözüm Gezgini'nde bulun ve projenize sağ tıklayın. **NuGet Paketlerini Yönet'i**seçin.
-1. **Gözat** sekmesini bulun ve seçin.
-1. [NewtonSoft.Json'ı](https://www.nuget.org/packages/Newtonsoft.Json/) arama çubuğuna girin.
+1. Projenizi Visual Studio 'nun Çözüm Gezgini bulun ve projenize sağ tıklayın. **NuGet Paketlerini Yönet**' i seçin.
+1. **Araştır** sekmesini bulun ve seçin.
+1. Arama çubuğuna [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json/) girin.
 
-    ![NewtonSoft.Json'ı bulun ve kurun](media/nuget-package-manager.png)
+    ![NewtonSoft. JSON öğesini bulun ve yükler](media/nuget-package-manager.png)
 
-1. Paketi seçin ve **Yükle'yi**tıklatın.
-1. Yükleme tamamlandığında, sekmeyi kapatın.
+1. Paketi seçin ve ardından **yüklensin**' e tıklayın.
+1. Yükleme tamamlandığında sekmesini kapatın.
 
 ## <a name="create-a-wpf-form-using-xaml"></a>XAML kullanarak WPF formu oluşturma
 
-Uygulamanızı kullanmak için bir kullanıcı arabirimine ihtiyacınız olacak. XAML'yi kullanarak, kullanıcıların giriş ve çeviri dillerini seçmelerine, çevrilmesi için metin girmelerine ve çeviri çıktısını görüntülemelerine olanak tanıyan bir form oluştururuz.
+Uygulamanızı kullanmak için bir kullanıcı arabirimine ihtiyacınız olacak. XAML kullanarak, kullanıcıların giriş ve çeviri dillerini seçmesine, çevrilecek metni girmesine ve çeviri çıktısını görüntülemesine olanak tanıyan bir form oluşturacağız.
 
-Ne inşa ettiğimize bir bakalım.
+Biz oluşturduğumuzun bir bakalım.
 
 ![WPF XAML kullanıcı arabirimi](media/translator-text-csharp-xaml.png)
 
@@ -117,19 +117,19 @@ Kullanıcı arabirimi şu bileşenleri içerir:
 | Adı | Tür | Açıklama |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Metin çevirisi için Microsoft Translator tarafından desteklenen dillerin listesini görüntüler. Kullanıcı çeviri yaptığı kaynak dili seçer. |
-| `ToLanguageComboBox` | ComboBox | `FromComboBox`Aynı dil listesini , ancak kullanıcının çevirdiği dili seçmek için kullanılır. |
-| `TextToTranslate` | TextBox | Kullanıcının çevrilecek metni girmesini sağlar. |
+| `ToLanguageComboBox` | ComboBox | Aynı dil listesini ile `FromComboBox`görüntüler, ancak kullanıcının çevirdiğini dili seçmek için kullanılır. |
+| `TextToTranslate` | TextBox | Kullanıcının çevrilecek metin girmesine izin verir. |
 | `TranslateButton` | Düğme | Metni çevirmek için bu düğmeyi kullanın. |
 | `TranslatedTextLabel` | Etiketle | Çeviriyi görüntüler. |
-| `DetectedLanguageLabel` | Etiketle | Çevrilecek metnin algılanan dilini görüntüler`TextToTranslate`( ). |
+| `DetectedLanguageLabel` | Etiketle | Çevrilecek metnin algılanan dilini görüntüler (`TextToTranslate`). |
 
 > [!NOTE]
-> Bu formu XAML kaynak kodunu kullanarak oluşturuyoruz, ancak Visual Studio'daki düzenleyiciile formu oluşturabilirsiniz.
+> Bu formu XAML kaynak kodunu kullanarak oluşturuyoruz, ancak formu Visual Studio 'daki düzenleyiciyle oluşturabilirsiniz.
 
-Projemize kodu ekleyelim.
+Kodu projenize ekleyelim.
 
-1. Visual Studio'da. `MainWindow.xaml`
-1. Bu kodu projenize kopyalayın ve değişikliklerinizi kaydetmek için **> Kaydet MainWindow.xaml'ı** seçin.
+1. Visual Studio 'da sekmesini seçin `MainWindow.xaml`.
+1. Bu kodu projenize kopyalayın ve sonra değişikliklerinizi kaydetmek için **dosya > MainWindow. xaml dosyasını Kaydet** ' i seçin.
    ```xaml
    <Window x:Class="MSTranslatorTextDemo.MainWindow"
            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -164,27 +164,27 @@ Projemize kodu ekleyelim.
        </Grid>
    </Window>
    ```
-Şimdi Visual Studio'da uygulamanın kullanıcı arabiriminin önizlemesini görmeniz gerekir. Yukarıdaki resme benzer görünmelidir.
+Artık Visual Studio 'da uygulamanın kullanıcı arabiriminin önizlemesini görmeniz gerekir. Yukarıdaki görüntüye benzer görünmelidir.
 
-İşte bu, formun hazır. Şimdi Metin Çevirisi ve Bing Yazım Denetimi'ni kullanmak için bazı kodlar yazalım.
+Bu, formunuz için hazırlayın. Şimdi metin çevirisini ve Bing Yazım Denetimi kullanmak için kod yazalım.
 
 > [!NOTE]
-> Bu formu tweak veya kendi oluşturmak için çekinmeyin.
+> Bu formu ince ayar veya kendinizinkini oluşturabilirsiniz.
 
 ## <a name="create-your-app"></a>Uygulamanızı oluşturun
 
-`MainWindow.xaml.cs`uygulamamızı kontrol eden kodu içerir. Sonraki birkaç bölümde, açılan menülerimizi doldurmak ve Çevirmen Metin ve Bing Yazım Denetimi tarafından açığa çıkarılan bir avuç API'yi çağırmak için kod ekleyeceğiz.
+`MainWindow.xaml.cs`uygulamamızı denetleyen kodu içerir. Sonraki birkaç bölümde, açılan menülerinizi doldurmak ve Translator Metin Çevirisi ve Bing Yazım Denetimi tarafından sunulan el ile API 'yi çağırmak için kod ekleyeceğiz.
 
-* Program başlatıldığında `MainWindow` ve anında başlatıldığında, `Languages` Dil seçimi açılır bırakmalarımızı almak ve doldurmak için Çevirmen Metin API'sinin yöntemi çağrılır. Bu, her oturumun başında bir kez olur.
-* **Çevir** düğmesi tıklandığında, kullanıcının dil seçimi ve metni alınır, girişte yazım denetimi gerçekleştirilir ve kullanıcı için çeviri ve algılanan dil görüntülenir.
-  * Çevirmen `Translate` Metin API yöntemi metin çevirmek `TextToTranslate`için denir. Bu çağrı, `to` açılır `from` menüler kullanılarak seçilen dilleri de içerir.
-  * Çevirmen `Detect` Metin API yöntemi metin dilini belirlemek için `TextToTranslate`çağrılır.
-  * Bing Yazım Denetimi, `TextToTranslate` yazım hatalarını doğrulamak ve ayarlamak için kullanılır.
+* Program başlatıldığında ve `MainWindow` örneği oluşturulduğunda, dil seçim açılır `Languages` listelerimizi almak ve doldurmak için Translator metin çevirisi API'si yöntemi çağırılır. Bu, her oturumun başlangıcında bir kez gerçekleşir.
+* **Çevir** düğmesine tıklandığında, kullanıcının dil seçimi ve metni alınır, girişte yazım denetimi yapılır ve çeviri ve algılanan dil kullanıcı için görüntülenir.
+  * Translator Metin Çevirisi API'si `Translate` yöntemi, metni ' den `TextToTranslate`çevirmek için çağrılır. Bu çağrı, `to` açılan menüler kullanılarak `from` seçilen ve dillerini de içerir.
+  * Translator Metin Çevirisi API'si `Detect` yöntemi, öğesinin `TextToTranslate`metin dilini belirlemede çağrılır.
+  * Bing Yazım Denetimi, yazım hatalarını doğrulamak `TextToTranslate` ve ayarlamak için kullanılır.
 
-Tüm projemiz `MainWindow : Window` sınıfa eklenmiş durumda. Abonelik anahtarınızı ayarlamak için kod ekleyerek başlayalım, Çevirmen Metni ve Bing Yazım Denetimi için uç noktaları bildirelim ve uygulamayı başlatalım.
+Tüm projemiz `MainWindow : Window` sınıfında kapsüllenir. Abonelik anahtarınızı ayarlamak, Translator Metin Çevirisi ve Bing Yazım Denetimi için uç noktaları bildirmek ve uygulamayı başlatmak için kod ekleyerek başlayalım.
 
-1. Visual Studio'da. `MainWindow.xaml.cs`
-1. Önceden doldurulmuş `using` ifadeleri aşağıdakilerle değiştirin.  
+1. Visual Studio 'da sekmesini seçin `MainWindow.xaml.cs`.
+1. Önceden doldurulmuş `using` deyimleri aşağıdaki kodla değiştirin.  
    ```csharp
    using System;
    using System.Windows;
@@ -196,7 +196,7 @@ Tüm projemiz `MainWindow : Window` sınıfa eklenmiş durumda. Abonelik anahtar
    using System.Text;
    using Newtonsoft.Json;
    ```
-1. `MainWindow : Window` Sınıfı bulun ve bu kodla değiştirin:
+1. `MainWindow : Window` Sınıfını bulun ve bu kodla değiştirin:
    ```csharp
    {
        // This sample uses the Cognitive Services subscription key for all services. To learn more about
@@ -246,31 +246,31 @@ Tüm projemiz `MainWindow : Window` sınıfa eklenmiş durumda. Abonelik anahtar
    // In the following sections, we'll add code below this.
    }
    ```
-1. Bilişsel Hizmetler abonelik anahtarınızı ekleyin ve kaydedin.
+1. Bilişsel hizmetler abonelik anahtarınızı ekleyin ve kaydedin.
 
-Bu kod bloğunda, çeviri için kullanılabilir diller hakkında bilgi içeren iki üye değişken beyan ettik:
+Bu kod bloğunda, çeviri için kullanılabilir diller hakkında bilgi içeren iki üye değişkeni bildirdik:
 
 | Değişken | Tür | Açıklama |
 |----------|------|-------------|
-|`languageCodes` | Dize dizileri |Dil kodlarını önbelleğe alır. Translator hizmeti dilleri belirlemek için kısa kodlar kullanır (örneğin İngilizce için `en`). |
+|`languageCodes` | Dizeler dizisi |Dil kodlarını önbelleğe alır. Translator hizmeti dilleri belirlemek için kısa kodlar kullanır (örneğin İngilizce için `en`). |
 |`languageCodesAndTitles` | Sıralanmış sözlük | Kullanıcı arabirimindeki "kolay anlaşılır" adları, API’de kullanılan kısa kodlarla eşleştirir. Büyük küçük harf kullanımından bağımsız olarak alfabetik sırayla tutulur. |
 
-Sonra, `MainWindow` yapıcı içinde, biz ile `HandleExceptions`hata işleme ekledik. Bu hata işleme, bir özel durum işlenmezse bir uyarı sağlanmasını sağlar. Daha sonra sağlanan abonelik anahtarının uzunluğu 32 karakter olduğunu doğrulamak için bir denetim çalıştırılır. Anahtar 32 karakterden küçük/büyükse bir hata atılır.
+Ardından, `MainWindow` Oluşturucu içinde ile `HandleExceptions`hata işleme ekledik. Bu hata işleme, bir özel durum işlenmediğinde bir uyarının sağlandığından emin olmanızı sağlar. Daha sonra, belirtilen abonelik anahtarını doğrulamak için bir denetim çalıştırılır ve 32 karakter uzunluğunda olur. Anahtar 32 karakterden fazlaysa bir hata oluşur.
 
-En azından doğru uzunlukta anahtarlar varsa, `InitializeComponent()` arama, ana uygulama penceresinin XAML açıklamasını bularak, yükleyerek ve anında ayarlayarak kullanıcı arabirimini yuvarlar.
+En azından doğru uzunlukta olan anahtarlar varsa, `InitializeComponent()` çağrı, ana uygulama penceresinin xaml açıklamasını bularak, yükleyerek ve örnekleyerek Kullanıcı arabirimini alır.
 
-Son olarak, çeviri için dil almak ve uygulamamızın kullanıcı arabirimi için açılan menüleri doldurmak için arama yöntemlerini çağırmak için kod ekledik. Merak etme, yakında bu aramaların arkasındaki koda ulaşacağız.
+Son olarak, çeviri dillerini almak ve uygulamanın kullanıcı arabirimimizin açılan menülerini doldurmak için yöntemleri çağırmak için bir kod ekledik. Endişelenmeyin, bu çağrıların arkasındaki koda yakında başlayacağız.
 
 ## <a name="get-supported-languages"></a>Desteklenen dilleri alma
 
-Çevirmen Metin API'si şu anda 60'tan fazla dili desteklemektedir. Zaman içinde yeni dil desteği ekleneceği için, uygulamanızdaki dil listesini kodlamak yerine Çevirmen Metni tarafından açığa çıkarılan Diller kaynağını aramanızı öneririz.
+Translator Metin Çevirisi API'si şu anda 60 'den fazla dili destekliyor. Yeni dil desteği zamana göre eklenebileceğinden, uygulamanızdaki dil listesini sabit bir şekilde kodlamak yerine Translator Metin Çevirisi tarafından açığa çıkarılan diller kaynağını çağırmayı öneririz.
 
-Bu bölümde, Diller kaynağına `GET` çeviri için kullanılabilen dillerin listesini istediğimizi belirten bir istek oluştururuz.
+Bu bölümde, çeviri için kullanılabilen dillerin bir `GET` listesini Istediğimizden sonra diller kaynağına bir istek oluşturacağız.
 
 > [!NOTE]
-> Diller kaynağı, dil desteğini aşağıdaki sorgu parametreleriyle filtrelemenize olanak tanır: çeviri, sözlük ve çeviri. Daha fazla bilgi için [API başvurusuna](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages)bakın.
+> Diller kaynağı, dil desteğini Şu sorgu parametreleriyle filtrelemenizi sağlar: alfabe, sözlük ve çeviri. Daha fazla bilgi için bkz. [API başvurusu](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
-Daha ileri gitmeden önce, Diller kaynağına bir çağrı için örnek çıktıya bir göz atalım:
+Daha fazla ilerleyebilmemiz için, diller kaynağı çağrısı için örnek çıktıya göz atalım:
 
 ```json
 {
@@ -289,11 +289,11 @@ Daha ileri gitmeden önce, Diller kaynağına bir çağrı için örnek çıktı
 }
 ```
 
-Bu çıktıdan, belirli bir dilin `name` dil kodunu ve dil kodunu ayıklayabiliriz. Uygulamamız JSON nesnesi deserialize NewtonSoft.Json kullanır ([`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm)).
+Bu çıktıdan, dil kodunu ve belirli bir dilin `name` içeriğini ayıklayabiliriz. Uygulamamız JSON nesnesinin ([`JsonConvert.DeserializeObject`](https://www.newtonsoft.com/json/help/html/M_Newtonsoft_Json_JsonConvert_DeserializeObject__1.htm)) serisini kaldırmak Için NewtonSoft. JSON kullanıyor.
 
-Son bölümde kaldığımız yerden devam ederek, desteklenen dilleri uygulamamıza getirmek için bir yöntem ekleyelim.
+Son bölümde kaldığınız yerden başladığımızda, uygulamamıza desteklenen diller için bir yöntem ekleyelim.
 
-1. Visual Studio'da, '' için `MainWindow.xaml.cs`sekmeyi açın.
+1. Visual Studio 'da, sekmesini açın `MainWindow.xaml.cs`.
 2. Bu kodu projenize ekleyin:
    ```csharp
    // ***** GET TRANSLATABLE LANGUAGE CODES
@@ -322,16 +322,16 @@ Son bölümde kaldığımız yerden devam ederek, desteklenen dilleri uygulamam�
    // In the following sections, we'll add code below this.
    ```
 
-Yöntem `GetLanguagesForTranslate()` bir HTTP GET isteği oluşturur `scope=translation` ve sorgu dize parametresini kullanarak çeviri için desteklenen dillere isteğin kapsamını sınırlamak için kullanılır. Desteklenen dillerin İngilizce olarak döndürülmesi için `en` değerine sahip `Accept-Language` üst bilgisi eklenir.
+`GetLanguagesForTranslate()` YÖNTEMI BIR http get isteği oluşturur ve isteğin kapsamını çeviri için `scope=translation` desteklenen dillere sınırlamak için sorgu dizesi parametresini kullanır. Desteklenen dillerin İngilizce olarak döndürülmesi için `en` değerine sahip `Accept-Language` üst bilgisi eklenir.
 
-JSON yanıtı ayrıştırılır ve bir sözlük dönüştürülür. Daha sonra dil kodları `languageCodes` üye değişkene eklenir. Dil kodlarını ve kolay dil adlarını içeren anahtar/değer çiftleri döndürülür ve `languageCodesAndTitles` üye değişkenine eklenir. Formdaki açılır menüler dost adları görüntüler, ancak çeviri istemek için kodlar gereklidir.
+JSON yanıtı ayrıştırılır ve bir sözlüğe dönüştürülür. Ardından, dil kodları `languageCodes` üye değişkenine eklenir. Dil kodlarını ve kolay dil adlarını içeren anahtar/değer çiftleri döndürülür ve `languageCodesAndTitles` üye değişkenine eklenir. Formdaki açılan menülerde kolay adlar görüntülenir, ancak bu kodlar çeviriyi istemek için gereklidir.
 
-## <a name="populate-language-drop-down-menus"></a>Dil açılır menülerini doldurma
+## <a name="populate-language-drop-down-menus"></a>Dil açılır menülerini doldur
 
-Kullanıcı arabirimi XAML kullanılarak tanımlanır, bu nedenle arama `InitializeComponent()`dışında kurmak için çok yapmanız gerekmez. Yapmanız gereken tek şey, çeviri ye ve **Translate from** açılan **menülere Çevir'e** samimi dil adlarını eklemektir. Yöntem `PopulateLanguageMenus()` adları ekler.
+Kullanıcı arabirimi XAML kullanılarak tanımlanır, bu yüzden çağrının `InitializeComponent()`yanı sıra ayarlamayı çok ayarlamanız gerekmez. Yapmanız gereken tek şey, kolay dil adlarını, **çeviri** **ve açılan menülere çevirecek şekilde** bir adım adım ekler. `PopulateLanguageMenus()` Yöntemi adlarını ekler.
 
-1. Visual Studio'da, '' için `MainWindow.xaml.cs`sekmeyi açın.
-2. Bu kodu projenize aşağıdaki `GetLanguagesForTranslate()` yöntemin altına ekleyin:
+1. Visual Studio 'da, sekmesini açın `MainWindow.xaml.cs`.
+2. Bu kodu, `GetLanguagesForTranslate()` yönteminin altına projenize ekleyin:
    ```csharp
    private void PopulateLanguageMenus()
    {
@@ -353,19 +353,19 @@ Kullanıcı arabirimi XAML kullanılarak tanımlanır, bu nedenle arama `Initial
    // In the following sections, we'll add code below this.
    ```
 
-Bu yöntem `languageCodesAndTitles` sözlük üzerinde yineler ve her iki menüye her iki anahtar ekler. Menüler doldurulduktan sonra, dillerden gelen ve gelen varsayılan varsayılan değer sırasıyla **Algılama** ve **İngilizce** olarak ayarlanır.
+Bu yöntem, `languageCodesAndTitles` sözlüğü üzerinde dolaşır ve her anahtarı her iki menüye de ekler. Menüler doldurulduktan sonra varsayılan ve sonraki diller sırasıyla **Algıla** ve **İngilizce** olarak ayarlanır.
 
 > [!TIP]
 > Menüler için varsayılan bir seçim olmadan, kullanıcı önce bir "hedef" veya "kaynak" dil seçmeden **Çevir**’e tıklayabilir. Varsayılan değerler bu sorunla başa çıkma gereksinimini ortadan kaldırır.
 
-Şimdi `MainWindow` bu başlatılan ve kullanıcı arabirimi oluşturulan, bu kod **Çevirme** düğmesi tıklanana kadar çalışmaz.
+`MainWindow` Artık başlatılmış ve Kullanıcı arabirimi oluşturulduktan sonra, **çeviri** düğmesine tıklanana kadar bu kod çalışmaz.
 
-## <a name="detect-language-of-source-text"></a>Kaynak metnin dilini algılama
+## <a name="detect-language-of-source-text"></a>Kaynak metnin dilini Algıla
 
-Şimdi, Çevirmen Metin API'sini kullanarak kaynak metnin dilini (metin alanımıza girilen metin) algılama yöntemi oluşturacağız. Bu istek tarafından döndürülen değer daha sonra çeviri isteğimizde kullanılacaktır.
+Artık Translator Metin Çevirisi API'si kullanarak kaynak metnin (metin alanına girilen metin) dilini algılamak için yöntem oluşturacağız. Bu istek tarafından döndürülen değer, daha sonra çeviri isteğinde kullanılacaktır.
 
-1. Visual Studio'da, '' için `MainWindow.xaml.cs`sekmeyi açın.
-2. Bu kodu projenize aşağıdaki `PopulateLanguageMenus()` yöntemin altına ekleyin:
+1. Visual Studio 'da, sekmesini açın `MainWindow.xaml.cs`.
+2. Bu kodu, `PopulateLanguageMenus()` yönteminin altına projenize ekleyin:
    ```csharp
    // ***** DETECT LANGUAGE OF TEXT TO BE TRANSLATED
    private string DetectLanguage(string text)
@@ -412,16 +412,16 @@ Bu yöntem `languageCodesAndTitles` sözlük üzerinde yineler ve her iki menüy
    // In the following sections, we'll add code below this.
    ```
 
-Bu yöntem, Algıla kaynağına bir HTTP `POST` isteği oluşturur. Bu tek bir `text`argüman alır, hangi istek gövdesi olarak birlikte geçirilir. Daha sonra, çeviri isteğimizi oluşturduğumuzda, Kullanıcı Arabirimi'mize girilen metin dil algılama için bu yönteme geçirilecektir.
+Bu yöntem, Algıla kaynağına `POST` bir http isteği oluşturur. İsteğin gövdesi olarak geçirilen tek bir `text`bağımsız değişken alır. Daha sonra, çeviri isteimizi oluşturduğumuzda, Kullanıcı arabirimimize girilen metin, dil algılama için bu yönteme geçirilir.
 
-Ayrıca, bu yöntem yanıtın güven puanını değerlendirir. Puan, kullanıcı arabirimimizde algılanan dilden büyükse `0.5`görüntülenir.
+Ayrıca, bu yöntem yanıtın güvenilirlik Puanını değerlendirir. Puan şundan `0.5`büyükse, algılanan Dil Kullanıcı arabirimimizde görüntülenir.
 
-## <a name="spell-check-the-source-text"></a>Kaynak metni denetleme
+## <a name="spell-check-the-source-text"></a>Kaynak metnini yazım denetimi
 
-Şimdi Bing Yazım Denetimi API'sini kullanarak kaynak metnimizi denetlemek için bir yöntem oluşturacağız. Yazım denetimi, Translator Text API'den doğru çevirileri geri almamızı sağlar. Kaynak metindeki düzeltmeler, **Çeviri** düğmesi tıklandığında çeviri isteğimizde iletilir.
+Artık Bing Yazım Denetimi API'si kullanarak kaynak metnimizi yazım denetimi yapmak için bir yöntem oluşturacağız. Yazım denetimi, Translator Metin Çevirisi API'si ' den doğru çevirileri geri almanızı sağlar. **Çeviri düğmesine tıklandığında** , kaynak metinde yapılan tüm düzeltmeler çeviri talebimize geçirilir.
 
-1. Visual Studio'da, '' için `MainWindow.xaml.cs`sekmeyi açın.
-2. Bu kodu projenize aşağıdaki `DetectLanguage()` yöntemin altına ekleyin:
+1. Visual Studio 'da, sekmesini açın `MainWindow.xaml.cs`.
+2. Bu kodu, `DetectLanguage()` yönteminin altına projenize ekleyin:
 
 ```csharp
 // ***** CORRECT SPELLING OF TEXT TO BE TRANSLATED
@@ -480,12 +480,12 @@ private string CorrectSpelling(string text)
 // In the following sections, we'll add code below this.
 ```
 
-## <a name="translate-text-on-click"></a>Metni tıklatıldığında çevirme
+## <a name="translate-text-on-click"></a>Tıklama üzerinde metin çevir
 
-Yapmamız gereken son şey, kullanıcı arabirimimizdeki **Çevir** düğmesi tıklatıldığında çağrılan bir yöntem oluşturmaktır.
+Yapmanız gereken son şey, Kullanıcı arabirimimizin **çevir** düğmesine tıklandığında çağrılan bir yöntem oluşturmaktır.
 
-1. Visual Studio'da, '' için `MainWindow.xaml.cs`sekmeyi açın.
-1. Bu kodu projenize metodun altına ekleyin ve kaydedin: `CorrectSpelling()`  
+1. Visual Studio 'da, sekmesini açın `MainWindow.xaml.cs`.
+1. Bu kodu, `CorrectSpelling()` yönteminin altına projenize ekleyin ve kaydedin:  
    ```csharp
    // ***** PERFORM TRANSLATION ON BUTTON CLICK
    private async void TranslateButton_Click(object sender, EventArgs e)
@@ -559,23 +559,23 @@ Yapmamız gereken son şey, kullanıcı arabirimimizdeki **Çevir** düğmesi t�
    }
    ```
 
-İlk adım ,"from" ve "to" dillerini ve kullanıcının formumuza girdiği metni almaktır. Kaynak dil **Algıla**olarak `DetectLanguage()` ayarlanmışsa, kaynak metnin dilini belirlemek için çağrılır. Metin, Çevirmen API'sinin desteklemediği bir dilde olabilir. Bu durumda, kullanıcıyı bilgilendirmek için bir ileti görüntüleyin ve metni çevirmeden döndürün.
+İlk adım, "Kimden" ve "to" dillerini ve kullanıcının formumuza girdiği metni almak için kullanılır. Kaynak dili **Algıla**olarak ayarlandıysa, `DetectLanguage()` kaynak metnin dilini belirlemek için çağrılır. Metin, çevirmen API 'sinin desteklemediği bir dilde olabilir. Bu durumda, kullanıcıyı bilgilendirmek için bir ileti görüntüler ve metni çevirmeden geri döndürün.
 
-Kaynak dil İngilizce ise (belirtilerek veya algılanarak), metnin yazımını `CorrectSpelling()` ile denetleyin ve düzeltmeleri uygulayın. Düzeltilen metin, kullanıcının düzeltme yapıldığını görmesi için metin alanına geri eklenir.
+Kaynak dil İngilizce ise (belirtilerek veya algılanarak), metnin yazımını `CorrectSpelling()` ile denetleyin ve düzeltmeleri uygulayın. Düzeltilen metin, kullanıcının bir düzeltmenin yapıldığını görmesi için metin alanına geri eklenir.
 
-Metni çevirecek kod tanıdık görünmelidir: URI'yi oluşturun, bir istek oluşturun, gönderin ve yanıtı ayrıştırın. JSON dizisi çeviri için birden fazla nesne içerebilir, ancak uygulamamız yalnızca bir nesne gerektirir.
+Metni çevirecek kod tanıdık gelmelidir: URI oluşturma, istek oluşturma, gönderme ve yanıtı ayrıştırma. JSON dizisi çeviri için birden fazla nesne içerebilir, ancak uygulamamız yalnızca bir tane gerektirir.
 
-Başarılı bir istekten sonra, `TranslatedTextLabel.Content` `translation`çevrilen metni görüntülemek için kullanıcı arabirimini güncelleyen ,
+Başarılı bir istek `TranslatedTextLabel.Content` yapıldıktan sonra, çevrilmiş metni göstermek `translation`için Kullanıcı arabirimini güncelleştiren ile değiştirilmiştir.
 
-## <a name="run-your-wpf-app"></a>WPF uygulamanızı çalıştırın
+## <a name="run-your-wpf-app"></a>WPF uygulamanızı çalıştırma
 
-Bu kadar, WPF kullanılarak oluşturulmuş çalışan bir çeviri uygulaması var. Uygulamanızı çalıştırmak için Visual Studio'da **Başlat** düğmesini tıklatın.
+Bu, WPF kullanılarak oluşturulan bir çalışan çeviri uygulamasına sahipsiniz. Uygulamanızı çalıştırmak için, Visual Studio 'daki **Başlat** düğmesine tıklayın.
 
 ## <a name="source-code"></a>Kaynak kod
 
-Bu projenin kaynak kodu GitHub'da kullanılabilir.
+Bu proje için kaynak kodu GitHub ' da kullanılabilir.
 
-* [Kaynak kodu keşfedin](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
+* [Kaynak kodunu keşfet](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

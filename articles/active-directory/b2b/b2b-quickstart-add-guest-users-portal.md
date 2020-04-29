@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure portalında konuk kullanıcı ekleme - Azure AD'
+title: 'Hızlı başlangıç: Azure portal Konuk kullanıcıları ekleme-Azure AD'
 description: Bu hızlı başlangıcı kullanarak, Azure AD yöneticilerinin Azure portalda nasıl B2B konuk kullanıcıları ekleyebileceğini öğrenecek ve B2B davet iş akışı boyunca adım adım yol gösterici bilgiler alacaksınız.
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f3d96926221a69e1cf216be81368a2eb87c938a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76758351"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalda dizininize konuk kullanıcı ekleme
@@ -25,7 +25,7 @@ Herhangi bir kişiyi dizininize konuk kullanıcı olarak ekleyerek onu kuruluşu
 
 Bu hızlı başlangıçta, Azure AD’ye yeni bir konuk kullanıcı ekler, davet gönderir ve konuk kullanıcının davet kullanım işleminin nasıl göründüğünü görürsünüz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -40,19 +40,19 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 2. Sol bölmede **Azure Active Directory**’yi seçin.
 3.  **Yönet** bölümünde **Kullanıcılar**’ı seçin.
 
-    ![Kullanıcılar seçeneğini nerede seçebileceğinizi gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Kullanıcı seçeneğinin nerede seçileceğini gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  **Yeni konuk kullanıcı**’yı seçin.
 
-    ![Yeni konuk kullanıcı seçeneğinin seçilebileceği yeri gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Yeni Konuk Kullanıcı seçeneğinin nerede seçileceğini gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
-5. Yeni **kullanıcı** **sayfasında, Kullanıcıyı Davet** et'i seçin ve ardından konuk kullanıcının bilgilerini ekleyin. 
+5. **Yeni Kullanıcı** sayfasında, **kullanıcıyı davet et** ' i seçin ve ardından Konuk kullanıcının bilgilerini ekleyin. 
 
-   - **Adı.** Konuk kullanıcının adı ve soyadı.
+   - **Ada.** Konuk kullanıcının adı ve soyadı.
    - **E-posta adresi (gerekli)**. Konuk kullanıcının e-posta adresi.
-   - **Kişisel mesaj (isteğe bağlı)** Konuk kullanıcıya kişisel bir karşılama iletisi ekleyin.
-   - **Gruplar**: Konuk kullanıcıyı varolan bir veya daha fazla gruba ekleyebilirsiniz veya daha sonra yapabilirsiniz.
-   - **Dizin rolü**: Kullanıcı için Azure AD yönetim izinleri gerekiyorsa, bunları Azure AD rolüne ekleyebilirsiniz. 
+   - **Kişisel ileti (isteğe bağlı)** Konuk kullanıcıya kişisel bir hoş geldiniz iletisi ekleyin.
+   - **Gruplar**: Konuk kullanıcıyı bir veya daha fazla var olan gruba ekleyebilir veya daha sonra yapabilirsiniz.
+   - **Dizin rolü**: Kullanıcı IÇIN Azure AD Yönetim izinlerine ihtiyacınız varsa, bunları BIR Azure AD rolüne ekleyebilirsiniz. 
 
 6. Konuk kullanıcıya otomatik olarak daveti göndermek için **Davet Et**’i seçin. **Kullanıcı başarıyla davet edildi** iletisi ile sağ üst kısımda bir bildirim görüntülenir. 
 7.  Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
@@ -64,8 +64,8 @@ Test kiracınıza Salesforce uygulamasını ekleyin ve test konuk kullanıcısı
 3.  **Yeni uygulama**’yı seçin.
 4. **Galeriden ekle** bölümünde **Salesforce** araması yapın ve bunu seçin.
 
-    ![Galeri arama kutusundan Ekle'yi gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
-5. **Ekle'yi**seçin.
+    ![Galeri arama kutusundan Ekle ' nin gösterildiği ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+5. **Add (Ekle)** seçeneğini belirleyin.
 6. **Yönet** bölümünde **Çoklu oturum açma**’yı seçin ve **Çoklu Oturum Açma Modu** bölümünde **Parola tabanlı Oturum açma**’yı seçin ve **Kaydet**’e tıklayın.
 7. **Yönet** bölümünde **Kullanıcılar ve gruplar** > **Kullanıcı ekle** > **Kullanıcılar ve gruplar** seçeneklerini belirleyin.
 8. Arama kutusunu kullanarak test kullanıcısını arayın (gerekirse) ve listeden test kullanıcısını seçin. Ardından **Seç**'e tıklayın.
@@ -80,7 +80,7 @@ Test kiracınıza Salesforce uygulamasını ekleyin ve test konuk kullanıcısı
 
 3.  E-posta gövdesinde **Başlarken**‘i seçin. Tarayıcıda bir **İzinleri gözden geçir** sayfası açılır. 
 
-    ![İnceleme izinleri sayfasını gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![İzinleri gözden geçir sayfasını gösteren ekran görüntüsü](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. **Kabul Et**’i seçin. Konuk kullanıcının erişebileceği uygulamaları listeleyen Erişim Paneli açılır.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: WEDO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve WEDO arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: WEDO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile WEDO arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,193 +16,193 @@ ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ce7ffb389a585511883c3b35de3773ae37342b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76992376"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Öğretici: WEDO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wedo"></a>Öğretici: WEDO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, WEDO'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edilebildiğini öğreneceksiniz. WEDO'yu Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
+Bu öğreticide, WEDO 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. WEDO 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* WEDO erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla WEDO'da otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de WEDO 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla WEDO için otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* WEDO tek oturum açma (SSO) özellikli abonelik. SSO aboneliği almak için lütfen [WEDO Müşteri destek ekibiyle](mailto:info@wedo.swiss) iletişime geçin.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* WEDO çoklu oturum açma (SSO) etkin aboneliği. Lütfen bir SSO aboneliği almak için [Wedo istemci destek ekibine](mailto:info@wedo.swiss) başvurun.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* **WEDO, SP ve IDP'nin** başlattığı SSO'ya destek verdi
+* WEDO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 
-* [WEDO'yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri Koşullu Erişim'den itibaren genişletir. Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* [WEDO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-wedo-from-the-gallery"></a>Galeriden WEDO ekleme
 
-WEDO'nun Azure AD'ye entegrasyonunu yapılandırmak için, WEDO'yu galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+WEDO 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize WEDO eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **WEDO** yazın.
-1. Sonuçlar panelinden **WEDO'yu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Wedo** yazın.
+1. Sonuçlar panelinden **Wedo** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-wedo"></a>WEDO için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-wedo"></a>WEDO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak WEDO ile yapılandırın ve test edin. SSO'nun çalışması için, WEDO'daki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Wedo Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile WEDO içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu WEDO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu WEDO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[WEDO SSO'yu yapılandırın](#configure-wedo-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[WEDO test kullanıcısını oluşturun](#create-wedo-test-user)** - WEDO'da b.simon'ın kullanıcının Azure REKLAM gösterimine bağlı bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[WEDO SSO 'Yu yapılandırın](#configure-wedo-sso)** .
+    * Wedo **[test kullanıcısı oluşturun](#create-wedo-test-user)** -Wedo 'da, kullanıcının Azure AD gösterimine bağlı olan B. Simon 'a karşılık gelen bir karşılığı vardır.
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. AZURE [portalında](https://portal.azure.com/), **WEDO** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **Wedo** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/sp/acs`
 
-1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/`
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.wedo.swiss/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [WEDO İstemci destek ekibine](mailto:info@wedo.swiss) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Wedo istemci destek ekibine](mailto:info@wedo.swiss) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. WEDO uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. WEDO uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
-    | Adı | Kaynak Özniteliği|
+    | Adı | Kaynak özniteliği|
     | ------------ | --------- |
-    | e-posta | user.email |
-    | firstName | user.firstName |
-    | lastName | user.lasttName |
-    | userName | user.userName |
+    | e-posta | Kullanıcı. e-posta |
+    | firstName | Kullanıcı. firstName |
+    | lastName | User. lasttName |
+    | userName | User. userName |
 
-1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **WEDO'yu Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **WEDO ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın WEDO'ya erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, WEDO 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **WEDO'yu**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Wedo**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-wedo-sso"></a>WEDO SSO'nun yapılandırılsın
+## <a name="configure-wedo-sso"></a>WEDO SSO 'yu yapılandırma
 
-WEDO'da Azure AD SSO'ya olanak sağlamak için aşağıdaki adımları izleyin.
+WEDO 'da Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [WEDO'ya](https://login.wedo.swiss/)giriş yapın. **Yönetici rolüne**sahip olmanız gerekir.
-1. Profil ayarlarında, bölüm **Ağ ayarlarında**menü **Kimlik Doğrulaması'nı** seçin.
-1. **SAML Kimlik Doğrulama** sayfasında aşağıdaki adımları gerçekleştirin:
+1. [Wedo](https://login.wedo.swiss/)'da oturum açın. **Yönetici rolüne**sahip olmanız gerekir.
+1. Profil ayarları ' nda, bölüm **ağ ayarları**' nda menü **kimlik doğrulamasını** seçin.
+1. **SAML kimlik doğrulaması** sayfasında, aşağıdaki adımları uygulayın:
 
-   ![SAML Kimlik Doğrulama bağlantısı](media/wedo-tutorial/network-security-authentification.png)
+   ![SAML kimlik doğrulama bağlantısı](media/wedo-tutorial/network-security-authentification.png)
 
-   a. **SAML Kimlik Doğrulamasını etkinleştirin.**
+   a. **SAML kimlik doğrulamasını**etkinleştirin.
 
-   b. Kimlik **Sağlayıcısı meta verileri (XML)** sekmesini seçin.
+   b. **Kimlik sağlayıcısı meta verileri (XML)** sekmesini seçin.
 
-   c. İndirilen **Federasyon Metadata XML'i** Azure portalından Notepad'e açın ve meta data XML'nin içeriğini kopyalayın ve **X.509 Sertifika** metin kutusuna yapıştırın.
+   c. İndirilen **Federasyon meta VERILERI XML** 'ı Azure Portal Not defteri ' nden açın ve meta veri XML içeriğini kopyalayın ve **X. 509.952 Certificate** metin kutusuna yapıştırın.
 
-   d. **Kaydet'e** tıklayın
+   d. **Kaydet** 'e tıklayın
 
-### <a name="create-wedo-test-user"></a>WEDO test kullanıcıoluşturma
+### <a name="create-wedo-test-user"></a>WEDO test kullanıcısı oluşturma
 
-Bu bölümde, WEDO'da Bob Simon adında bir test kullanıcısı oluşturacaksınız. Bilgiler, *Azure AD test kullanıcısı oluştur'dan*eşleşmelidir.
+Bu bölümde, WEDO 'da Bob Simon adlı bir test kullanıcısı oluşturacaksınız. Bilgiler, *Azure AD test kullanıcısı oluşturma*ile eşleşmelidir.
 
-1. WEDO'daki Profil ayarından, *Ağ ayarları* bölümünden **Kullanıcılar'ı** seçin.
-1. **Kullanıcı Ekle'yi**tıklatın.
-1. Kullanıcı ekle açılır penceresinde, kullanıcının bilgilerini doldurun
+1. WEDO içindeki profil ayarından, *ağ ayarları* bölümünden **Kullanıcılar** ' ı seçin.
+1. **Kullanıcı Ekle**' ye tıklayın.
+1. Kullanıcı Ekle açılır penceresinde, kullanıcının bilgilerini girin
 
-    a. Adı `B`.
+    a. Ad `B`.
 
     b. Soyadı `Simon`.
 
-    c. E-postayı `username@companydomain.extension`girin. Örneğin, `B.Simon@contoso.com`. Şirketinizin kısa adı ile aynı etki alanına sahip e-postaolması zorunludur.
+    c. E-postayı `username@companydomain.extension`girin. Örneğin, `B.Simon@contoso.com`. Şirketinizin kısa adı ile aynı etki alanına sahip e-posta olması zorunludur.
 
-    d. Kullanıcı `User`türü.
+    d. Kullanıcı türü `User`.
 
-    e. **Kullanıcı Oluştur'u**tıklatın.
+    e. **Kullanıcı oluştur**' a tıklayın.
 
-    f. Takımlar *Seç* sayfasında **Kaydet'i**tıklatın.
+    f. *Takımları Seç* sayfasında **Kaydet**' e tıklayın.
 
-    g.  Davet *kullanıcı* sayfasında **Evet'i**tıklatın.
+    g.  *Kullanıcıyı davet et* sayfasında **Evet**' e tıklayın.
 
 1. E-posta ile aldığınız bağlantıyı kullanarak kullanıcıyı doğrulama
 
 > [!NOTE]
-> Sahte bir kullanıcı oluşturmak istiyorsanız (yukarıdaki e-posta ağınızda yok), kullanıcıyı doğrulamak için [desteğimize](mailto:info@wedo.swiss) başvurun*.
+> Sahte bir kullanıcı oluşturmak istiyorsanız (yukarıda bir e-posta ağınızda yoksa), kullanıcıyı doğrulamak için [destek ekibimize](mailto:info@wedo.swiss) başvurun.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki WEDO döşemesini tıklattığınızda, SSO'yu kurduğunuz WEDO'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde WEDO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız WEDO 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile WEDO'u deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile WEDO 'yi deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Wedo'yu gelişmiş görünürlük ve kontrollerle nasıl koruyabiliriz?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle WEDO 'yi koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
