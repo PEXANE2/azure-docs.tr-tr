@@ -1,7 +1,7 @@
 ---
-title: Arama sonuçlarını görüntülemek için sıralamayı kullanma
+title: Arama sonuçlarını göstermek için derece kullanma
 titleSuffix: Azure Cognitive Services
-description: Arama sonuçlarını sıralama sırasına göre görüntülemek için Bing RankingResponse yanıtının nasıl kullanılacağını gösterir.
+description: Arama sonuçlarının derece sırada görüntülenmesi için Bing RankingResponse yanıtının nasıl kullanılacağını gösterir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,65 +12,65 @@ ms.topic: tutorial
 ms.date: 12/19/2019
 ms.author: aahi
 ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382336"
 ---
-# <a name="build-a-console-app-search-client-in-c"></a>C'de konsol uygulaması arama istemcisi oluşturma #
+# <a name="build-a-console-app-search-client-in-c"></a>C 'de konsol uygulama arama istemcisi oluşturma #
 
-Bu öğretici, kullanıcıların Bing Web Arama API'sini sorgulamasına ve sıralanmış sonuçları görüntülemesine olanak tanıyan basit bir .NET Core konsol uygulamasının nasıl oluşturulabildiğini gösterir.
+Bu öğreticide, kullanıcıların Bing Web Araması API'si sorgulamasını ve derecelendirilen sonuçları görüntülemesini sağlayan basit bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-Bu öğretici nasıl gösterin:
+Bu öğreticide nasıl yapılacağı gösterilmektedir:
 
-- Bing Web Arama API'sine basit bir sorgu yapma
-- Sıralı sırada sorgu sonuçlarını görüntüleme
+- Bing Web Araması API'si basit bir sorgu yapın
+- Sorgu sonuçlarını dereceli sırada görüntüle
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Öğretici ile birlikte takip etmek için, ihtiyacınız var:
+Öğreticiyle birlikte izlemek için şunlar gerekir:
 
-- Visual Studio. Eğer yoksa, [indirin ve ücretsiz Visual Studio 2017 Community Edition yükleyin.](https://www.visualstudio.com/downloads/)
-- Bing Web Arama API'si için bir abonelik anahtarı. Bir aboneliğiniz yoksa [ücretsiz deneme sürümüne kaydolun](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+- Visual Studio. Bunu yapmazsanız, [ücretsiz Visual Studio 2017 Community Edition ' ı indirip yükleyin](https://www.visualstudio.com/downloads/).
+- Bing Web Araması API'si için bir abonelik anahtarı. Bir aboneliğiniz yoksa [ücretsiz deneme sürümüne kaydolun](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 
-## <a name="create-a-new-console-app-project"></a>Yeni bir Konsol Uygulaması projesi oluşturun
+## <a name="create-a-new-console-app-project"></a>Yeni bir konsol uygulaması projesi oluştur
 
 Visual Studio’da `Ctrl`+`Shift`+`N` ile yeni bir proje oluşturun.
 
-Yeni **Proje** iletişim kutusunda Visual **C# > Windows Classic Desktop > Console App (.NET Framework)** seçeneğini tıklayın.
+**Yeni proje** iletişim kutusunda, **Visual C# > Windows Klasik Masaüstü > konsol uygulaması (.NET Framework)** seçeneğine tıklayın.
 
-Uygulama **MyConsoleSearchApp**adı ve sonra **Tamam'ı**tıklatın.
+Uygulamayı **Myconsolesearchapp**olarak adlandırın ve ardından **Tamam**' a tıklayın.
 
-## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>projeye JSON.net Nuget paketini ekleyin
+## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net NuGet paketini projeye ekleyin
 
-JSON.net, API tarafından döndürülen JSON yanıtlarıyla çalışmanızı sağlar. NuGet paketini projenize ekleyin:
+JSON.net, API tarafından döndürülen JSON yanıtları ile çalışmanıza olanak sağlar. NuGet paketini projenize ekleyin:
 
-- **Solution Explorer'da** projeye sağ tıklayın ve **NuGet Paketlerini Yönet'i seçin...**.
-- **Gözat** sekmesinde, ' `Newtonsoft.Json`ı arayın. En son sürümü seçin ve sonra **Yükle'yi**tıklatın.
-- **Değişiklikleri İncele** **penceresindetamam** düğmesini tıklatın.
+- **Çözüm Gezgini** projeye sağ tıklayıp **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
+- **Araştır** sekmesinde için `Newtonsoft.Json`arama yapın. En son sürümü seçin ve ardından **Install**' a tıklayın.
+- **Değişiklikleri gözden geçir** penceresinde **Tamam** düğmesine tıklayın.
 - **NuGet: MyConsoleSearchApp**başlıklı Visual Studio sekmesini kapatın.
 
-## <a name="add-a-reference-to-systemweb"></a>System.Web'e başvuru ekleme
+## <a name="add-a-reference-to-systemweb"></a>System. Web 'e başvuru ekleme
 
-Bu öğretici `System.Web` derlemeye dayanır. Projenize bu derlemeye bir başvuru ekleyin:
+Bu öğretici `System.Web` derlemeyi temel alır. Projenize bu derlemeye bir başvuru ekleyin:
 
-- **Solution**Explorer'da, **Referanslar'a** sağ tıklayın ve **Referans Ekle'yi seçin...**
-- **Çerçeve > Derlemeler'i**seçin, ardından aşağı kaydırın ve **System.Web'i** denetleyin
-- **Tamam'ı** seçin
+- **Çözüm Gezgini**, **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
+- **Derlemeler > Framework**' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
+- **Tamam 'ı** seçin
 
-## <a name="add-some-necessary-using-statements"></a>Bazı gerekli ifadeleri kullanarak ekleme
+## <a name="add-some-necessary-using-statements"></a>Bazı gerekli using deyimlerini ekleyin
 
-Bu öğreticideki kod, üç ek kullanma deyimleri gerektirir. bu ifadeleri **Program.cs** `using` üstündeki varolan ifadelerin altına ekleyin:
+Bu öğreticideki kod, üç ek using deyimi gerektirir. Bu deyimleri, **program.cs**'in en `using` üstündeki mevcut deyimlerinin altına ekleyin:
 
 ```csharp
 using System.Web;
 using System.Net.Http;
 ```
 
-## <a name="ask-the-user-for-a-query"></a>Kullanıcıdan sorgu isteyin
+## <a name="ask-the-user-for-a-query"></a>Kullanıcıdan bir sorgu isteyin
 
-**Çözüm Gezgini'nde,** **Program.cs**açın. Yöntemi `Main()` güncelleştirin:
+**Çözüm Gezgini**' de, **program.cs**' yi açın. `Main()` Yöntemi güncelleştirin:
 
 ```csharp
 static void Main()
@@ -91,13 +91,13 @@ static void Main()
 
 Bu yöntem:
 
-- Kullanıcıdan sorgu ister
-- Sorguyu yürütmek ve sonuçları görüntülemek için çağrılar `RunQueryAndDisplayResults(userQuery)`
-- Konsol penceresinin hemen kapanmasını önlemek için kullanıcı girişi bekler.
+- Kullanıcıdan bir sorgu ister
+- Sorguyu `RunQueryAndDisplayResults(userQuery)` yürütmek ve sonuçları göstermek için çağrılar
+- Konsol penceresinin hemen kapatmasını engellemek için Kullanıcı girişi bekler.
 
-## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Bing Web Arama API'sini kullanarak sorgu sonuçlarını arama
+## <a name="search-for-query-results-using-the-bing-web-search-api"></a>Bing Web Araması API'si kullanarak sorgu sonuçları arayın
 
-Ardından, API'yi sorgulayan ve sonuçları görüntüleyen bir yöntem ekleyin:
+Sonra, API 'YI sorgulayan ve sonuçları görüntüleyen bir yöntem ekleyin:
 
 ```csharp
 static void RunQueryAndDisplayResults(string userQuery)
@@ -137,16 +137,16 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 Bu yöntem:
 
-- Web Arama `HttpClient` API'sini sorgulamak için bir oluşturma
-- Bing'in `Ocp-Apim-Subscription-Key` isteği doğrulamak için kullandığı HTTP üstbilgisini ayarlar
-- İsteği yürütür ve sonuçları deserialize etmek için JSON.net kullanır
-- Tüm `DisplayAllRankedResults(responseObjects)` sonuçları sıralı sırada görüntülemek için yapılan aramalar
+- Web Araması API `HttpClient` 'sini sorgulamak için bir oluşturur
+- Bing 'in `Ocp-Apim-Subscription-Key` isteğin kimliğini doğrulamak için kullandığı http üstbilgisini ayarlar
+- İsteği yürütür ve sonuçların serisini kaldırmak için JSON.net kullanır
+- Tüm `DisplayAllRankedResults(responseObjects)` sonuçları derecelendirilmiş sırada görüntüleme çağrıları
 
-Abonelik anahtarınızın değerini `Ocp-Apim-Subscription-Key` ayarladıklarından emin olun.
+Değerini `Ocp-Apim-Subscription-Key` abonelik anahtarınıza ayarladığınızdan emin olun.
 
-## <a name="display-ranked-results"></a>Sıralamalı sonuçları görüntüleme
+## <a name="display-ranked-results"></a>Derecelendirilmiş sonuçları görüntüle
 
-Sonuçların sıralı sırada nasıl görüntülenilebildiğini göstermeden önce, örnek bir web arama yanıtına bir göz atın:
+Sonuçları derecelendirildi sırada görüntülemeyi göstermeden önce, örnek bir Web araması yanıtına göz atın:
 
 ```json
 {
@@ -221,15 +221,15 @@ Sonuçların sıralı sırada nasıl görüntülenilebildiğini göstermeden ön
 }
 ```
 
-`rankingResponse` JSON[nesnesi (belgeler)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)arama sonuçları için uygun görüntü sırasını açıklar. Aşağıdaki, öncelikli gruplardan birini veya birkaçını içerir:
+`rankingResponse` JSON nesnesi ([Belgeler](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse)) arama sonuçları için uygun görüntüleme sırasını açıklar. Aşağıdaki, önceliklendirilmiş gruplardan bir veya daha fazlasını içerir:
 
-- `pole`: En görünür tedaviyi elde etmek için arama sonuçları (örneğin, ana çizgi ve kenar çubuğunun üzerinde görüntülenir).
+- `pole`: En sık görünen işlemi almak için arama sonuçları (örneğin, ana hat ve kenar çubuğu üzerinde gösterilir).
 - `mainline`: Ana satırda görüntülenecek arama sonuçları.
-- `sidebar`: Kenar çubuğunda görüntülenecek arama sonuçları. Kenar çubuğu yoksa, sonuçları ana çizginin altında görüntüleyin.
+- `sidebar`: Kenar çubuğunda görüntülenecek arama sonuçları. Kenar çubuğu yoksa, sonuçları Mainline altında görüntüleyin.
 
-Sıralama yanıtı JSON bir veya daha fazla grupları içerebilir.
+Sıralama yanıtı JSON, bir veya daha fazla gruptan birini içerebilir.
 
-**Program.cs,** sonuçları düzgün sıralanmış sırada görüntülemek için aşağıdaki yöntemi ekleyin:
+**Program.cs**' de, sonuçları düzgün bir şekilde derecelendirilen sırada göstermek için aşağıdaki yöntemi ekleyin:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)
@@ -273,10 +273,10 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 
 Bu yöntem:
 
-- Yanıtın `rankingResponse` içerdiği gruplar üzerinde döngüler
-- Her gruptaki öğeleri arayarak görüntüler`DisplaySpecificResults(...)`
+- Yanıtın içerdiği `rankingResponse` gruplar üzerinde döngüler
+- Her bir gruptaki öğeleri çağırarak görüntüler`DisplaySpecificResults(...)`
 
-**Program.cs**olarak, aşağıdaki iki yöntem ekleyin:
+**Program.cs**içinde aşağıdaki iki yöntemi ekleyin:
 
 ```csharp
 static void DisplaySpecificResults(Newtonsoft.Json.Linq.JToken resultIndex, Newtonsoft.Json.Linq.JToken items, string title, params string[] fields)
@@ -305,7 +305,7 @@ static void DisplayItem(Newtonsoft.Json.Linq.JToken item, string title, string[]
 }
 ```
 
-Bu yöntemler, arama sonuçlarını konsola çıkarmak için birlikte çalışır.
+Bu yöntemler, arama sonuçlarının konsola çıktısını almak için birlikte çalışır.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -331,4 +331,4 @@ WebPage:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sonuçları görüntülemek için sıralamayı kullanma](rank-results.md)hakkında daha fazla bilgi edinin.
+[Sonuçları göstermek için derecelendirmeyi kullanma](rank-results.md)hakkında daha fazla bilgi edinin.

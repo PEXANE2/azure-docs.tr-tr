@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Go ile bir web araması gerçekleştirin - Bing Web Search REST API'
+title: 'Hızlı başlangıç: go-Bing Web Araması REST API bir Web araması gerçekleştirme'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlatmayı, Bing Web Search REST API'sine Go'yu kullanarak istek göndermek ve JSON yanıtı almak için kullanın
+description: Go kullanarak istekleri Bing Web Araması REST API göndermek ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -13,15 +13,15 @@ ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
 ms.openlocfilehash: 589f7884f390ae57df4e946bcd34ca3bda629ed8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74978807"
 ---
-# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Quickstart: Bing Web Search REST API ve Go'yu kullanarak web'de arama yapın
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Web Araması REST API kullanarak Web 'de arama yapın ve git
 
-Bing Web Arama API'sine ilk aramanızı yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Go uygulaması API'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama Git'de yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bing Web Araması API'si ilk çağrısını yapmak ve JSON yanıtını almak için bu hızlı başlangıcı kullanın. Bu Go uygulaması, API 'ye bir arama isteği gönderir ve yanıtı gösterir. Bu uygulama go 'da yazıldığı sırada API, çoğu programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu hızlı başlangıcı çalıştırmak için aşağıdakilere ihtiyacınız olacaktır:
@@ -111,7 +111,7 @@ type BingAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Ana işlevi ve değişkenleri tanımlama  
 
-Bu kod, ana işlevi tanımlar ve gerekli değişkenleri ayarlar. `endpoint`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
+Bu kod, ana işlevi tanımlar ve gerekli değişkenleri ayarlar. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. `searchTerm` için değeri değiştirerek arama sorgusunu değiştirebilirsiniz.
 
 ```go
 // Declare the main function. This is required for all Go programs.
@@ -307,7 +307,7 @@ func main() {
 
 ## <a name="sample-response"></a>Örnek yanıt  
 
-Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt `BingAnswer` yapı kullanılarak biçimlendirilmişve . `result.URL` `result.Name`
+Bing Web Araması API'si yanıtları JSON biçiminde döndürülür. Bu örnek yanıt `BingAnswer` struct kullanılarak biçimlendirildi ve `result.Name` ve `result.URL`gösterir.
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

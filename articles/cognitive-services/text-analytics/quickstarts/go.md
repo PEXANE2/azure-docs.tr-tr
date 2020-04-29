@@ -1,7 +1,7 @@
 ---
 title: "Hızlı başlangıç: Metin Analizi API'sini çağırmak için Go kullanma"
 titleSuffix: Azure Cognitive Services
-description: Azure Bilişsel Hizmetler'de Metin Analizi API'sini kullanmaya hızla başlamanıza yardımcı olmak için bilgi ve kod örnekleri alın.
+description: Azure bilişsel hizmetler 'de Metin Analizi API'si kullanmaya hızlı bir şekilde başlamanıza yardımcı olması için bilgi ve kod örnekleri alın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: 03311cb873420f741ca0150dde59fb27eaa5d76f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75378780"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Hızlı başlangıç: Metin Analizi Bilişsel Hizmetini çağırmak için Go kullanma 
 <a name="HOLTop"></a>
 
-Bu makalede, dili nasıl algılayabildiğinizi, [duyarlılığı nasıl analiz](#SentimentAnalysis)ettiğinizi, anahtar [tümcecikleri ayıkladığınızı](#KeyPhraseExtraction)ve Go ile [Metin Analizi API'lerini](//go.microsoft.com/fwlink/?LinkID=759711)kullanarak [bağlantılı varlıkları nasıl tanımlayabileceğinizi](#Entities) gösterir. [detect language](#Detect)
+Bu makalede, Go ile [metin analizi API 'leri](//go.microsoft.com/fwlink/?LinkID=759711) kullanarak [dilin nasıl algılanacağı](#Detect), yaklaşım [analiziyle](#SentimentAnalysis), [anahtar tümceciklerini ayıklamada](#KeyPhraseExtraction)ve [bağlantılı varlıkların](#Entities) nasıl kullanılacağı gösterilir.
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -39,9 +39,9 @@ Dil Algılama API'si, [Dili Algıla metodunu](https://westcentralus.dev.cognitiv
 
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi API anahtarınızı ve bitiş noktanızı koda kopyalayın.
+1. Metin Analizi API'si anahtarınızı ve uç noktanızı koda kopyalayın.
 1. Dosyayı '.go' uzantısıyla kaydedin.
-1. Kök klasörünüzden go yüklü bir bilgisayarda komut istemi açın.
+1. Kök klasörünüzden bir go yüklü olan bilgisayarda bir komut istemi açın.
 1. Dosyayı oluşturun, örneğin: `go build detect.go`.
 1. Dosyayı çalıştırın, örneğin: `go run detect.go`.
 
@@ -172,9 +172,9 @@ Yaklaşım Analizi API'si, [Yaklaşım metodunu](https://westcentralus.dev.cogni
 
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın.
+1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın.
 1. Dosyayı '.go' uzantısıyla kaydedin.
-1. Kök klasörünüzden go yüklü bir bilgisayarda komut istemi açın.
+1. Kök klasörünüzden bir go yüklü olan bilgisayarda bir komut istemi açın.
 1. Dosyayı oluşturun, örneğin: `go build sentiment.go`.
 1. Dosyayı çalıştırın, örneğin: `go run sentiment.go`.
 
@@ -253,7 +253,7 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Yaklaşımı analiz etme yanıtı
 
-Sonuç, 1.0'a yakın, negatif ise 0.0'a yakın puanlanırsa pozitif olarak ölçülür.
+Sonuç, 0,0 ' e daha yakınsa 1,0 ve negatif bir değer alıyorsa pozitif olarak ölçülür.
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür:
 
 ```json
@@ -280,7 +280,7 @@ Anahtar İfade Ayıklama API'si [Anahtar İfadeler metodunu](https://westcentral
 
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
-1. Metin Analizi anahtarınızı ve bitiş noktanızı kodda kopyalayın.
+1. Metin Analizi anahtarınızı ve uç noktanızı koda kopyalayın.
 1. Dosyayı '.go' uzantısıyla kaydedin.
 1. Go yüklü bir bilgisayarda bir komut istemi açın.
 1. Dosyayı oluşturun, örneğin: `go build key-phrases.go`.
@@ -404,7 +404,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 
 ## <a name="identify-entities"></a>Varlıkları tanımlama
 
-Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) metinden "Amerika Birleşik Devletleri" gibi sözcükler ayıklar ve ardından bu kelimenin (ler) türünü ve/veya Vikipedi bağlantısını verir. "Amerika Birleşik Devletleri" `location`için türü , Vikipedi `https://en.wikipedia.org/wiki/United_States`bağlantı ise .  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
+Varlıklar API'si, [Varlıklar metodunu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634) kullanarak bir metin belgesindeki iyi bilinen varlıkları tanımlar. [Varlıklar](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) , "Birleşik Devletler" gibi metinden sözcükleri ayıklar, ardından bu kelimelerin türünü ve/veya Vimi bağlantısını verir. "Birleşik Devletler" `location`türü, vikipe bağlantısı olduğunda `https://en.wikipedia.org/wiki/United_States`.  Aşağıdaki örnekte İngilizce belgelerin varlıkları tanımlanır.
 
 1. Sık kullandığınız kod düzenleyicisinde yeni bir Go projesi oluşturun.
 1. Aşağıda sağlanan kodu ekleyin.
@@ -538,7 +538,7 @@ Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde d�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Power BI ile Metin Analizi](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Power BI Metin Analizi](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

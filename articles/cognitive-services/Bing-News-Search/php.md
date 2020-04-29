@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: PHP ve Bing Haberler Arama REST API ile bir haber araması gerçekleştirin'
+title: 'Hızlı başlangıç: PHP ve Bing Haber Arama REST API bir haber araması gerçekleştirin'
 titleSuffix: Azure Cognitive Services
-description: PHP kullanarak Bing Haberler Arama REST API'sine bir istek göndermek ve Bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
+description: Bu hızlı başlangıcı, PHP kullanarak Bing Haber Arama REST API isteği göndermek ve bir JSON yanıtı almak için kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,35 +12,35 @@ ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 79f00e4138d0fecdc7320235dd9c496033693d2b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75383107"
 ---
-# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Quickstart: PHP ve Bing Haberler Arama REST API kullanarak bir haber arama sı
+# <a name="quickstart-perform-a-news-search-using-php-and-the-bing-news-search-rest-api"></a>Hızlı başlangıç: PHP ve Bing Haber Arama REST API kullanarak bir haber araması gerçekleştirin
 
 İlk Bing Resim Arama API’si çağrınızı yapmak ve bir JSON yanıtı almak için bu hızlı başlangıcı kullanın. Bu basit JavaScript uygulaması, API’ye bir arama sorgusu gönderir ve ham sonuçları görüntüler.
 
-Bu uygulama PHP ile yazılmış olsa da, API çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Bu uygulama PHP 'de yazıldığı sırada API, en fazla programlama dili ile uyumlu bir Web hizmeti hizmetidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* PHP 5.6 veya sonrası
+* PHP 5,6 veya üzeri
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Ayrıca bakınız [Bilişsel Hizmetler Fiyatlandırma - Bing Arama API.](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-[Bing Haberler Arama API'si,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) Bing arama motorundaki haber sonuçlarını döndürür.
+[Bing haber arama API'si](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) Bing arama altyapısından haber sonuçları döndürür.
 
 1. Kod açıklamasında belirtildiği gibi `php.ini` dosyanızda güvenli HTTP desteğinin etkinleştirildiğinden emin olun.
 2. Sık kullandığınız IDE veya düzenleyicide yeni bir PHP projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
 4. `accessKey` değerini, aboneliğiniz için geçerli olan bir erişim anahtarı ile değiştirin.
-5. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+5. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 5. Programı çalıştırın.
 
 ```php
@@ -103,7 +103,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 ?>
 ```
 
-**Yanıt**
+**Yanıtıyla**
 
 Başarılı yanıt, aşağıdaki örnekte gösterildiği gibi JSON biçiminde döndürülür: 
 

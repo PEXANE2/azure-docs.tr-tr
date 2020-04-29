@@ -1,7 +1,7 @@
 ---
-title: Quickstart - Java kullanarak API'ye sorgu gönderme - Bing Yerel İş Arama
+title: Hızlı başlangıç-Java-Bing yerel Iş araması kullanarak API 'ye bir sorgu gönderme
 titleSuffix: Azure Cognitive Services
-description: Azure Bilişsel Hizmeti olan Bing Yerel İş Arama API'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
+description: Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: quickstart
 ms.date: 11/29/2019
 ms.author: aahi
 ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74665194"
 ---
-# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Hızlı başlatma: Java kullanarak Bing Yerel İş Arama API'sine sorgu gönderme
+# <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>Hızlı başlangıç: Java kullanarak Bing yerel Iş Arama API 'sine bir sorgu gönderme
 
-Azure Bilişsel Hizmeti olan Bing Yerel İş Arama API'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Java'da yazılmış olsa da, API, HTTP isteklerini yapma ve JSON'u ayrıştırma yeteneğine sahip herhangi bir programlama diliyle uyumlu bir RESTful Web hizmetidir.
+Azure bilişsel hizmeti olan Bing yerel Iş Arama API 'sine istek göndermeye başlamak için bu hızlı başlangıcı kullanın. Bu basit uygulama Java 'da yazıldığı sırada, API, HTTP istekleri yapma ve JSON 'u ayrıştırma yeteneğine sahip olan herhangi bir programlama diliyle uyumlu olan bir yeniden takip eden Web hizmetidir.
 
-Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API'den yerel yanıt verilerini alır.
+Bu örnek uygulama, arama sorgusu `hotel in Bellevue`için API 'den gelen yerel yanıt verilerini alır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Java Geliştirme Kiti(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 
-Bing Arama API'lerine sahip bir [Bilişsel Hizmetler API hesabınız](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme sürümünü etkinleştirdiğinizde erişim anahtarının sağlanması gerekir.  Ayrıca bakınız [Bilişsel Hizmetler Fiyatlandırma - Bing Arama API.](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
+Bing Arama API'lerine sahip bir [Bilişsel Hizmetler API hesabınız](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) olması gerekir. [Ücretsiz deneme](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) bu hızlı başlangıç için yeterlidir. Ücretsiz deneme sürümünüzü etkinleştirdiğinizde girilen erişim anahtarına ihtiyacınız olacak.  Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
-Bu örnek uygulama *Bellevue'deki*bir otelin sorgusundan yerel yanıt verilerini alır.
+Bu örnek uygulama, *Bellevue içindeki bir otel*için sorgudan yerel yanıt verilerini alır.
 
-## <a name="create-the-request"></a>İstek oluşturma 
+## <a name="create-the-request"></a>İstek oluştur 
 
-Aşağıdaki kod, `WebRequest`erişim anahtarı üstbilgisini ayarlar ve "Bellevue'deki otel" için bir sorgu dizesi ekler.  Ardından isteği gönderir ve yanıtı JSON metnini içeren bir dizeye atar.
+Aşağıdaki kod bir `WebRequest`oluşturur, erişim anahtarı üst bilgisini ayarlar ve "Bellevue içinde otel" için bir sorgu dizesi ekler.  Ardından isteği gönderir ve yanıtı JSON metnini içeren bir dizeye atar.
 
 ```java
     // construct URL of search request (endpoint + query string)
@@ -49,9 +49,9 @@ Aşağıdaki kod, `WebRequest`erişim anahtarı üstbilgisini ayarlar ve "Bellev
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
 ```
 
-## <a name="run-the-complete-application"></a>Uygulamanın tamamını çalıştırın
+## <a name="run-the-complete-application"></a>Uygulamanın tamamını Çalıştır
 
-Bing Yerel İşletme Arama API'si Bing arama motorundan gelen sonuçları döndürür.
+Bing yerel Iş Arama API 'SI, Bing arama altyapısından sonuçlar döndürür.
 1. gson kitaplığını indirip yükleyin.
 2. Tercih ettiğiniz IDE veya düzenleyicide bir Java projesi oluşturun.
 3. Aşağıda sağlanan kodu ekleyin.
@@ -165,6 +165,6 @@ public class LocalSearchCls {
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Yerel İş Arama sıcağınızda](local-quickstart.md)
-- [Yerel İş Arama Düğümü hızlı başlat](local-search-node-quickstart.md)
-- [Yerel İş Arama Python quickstart](local-search-python-quickstart.md)
+- [Yerel Iş araması hızlı başlangıç](local-quickstart.md)
+- [Yerel Iş arama düğümü hızlı başlangıç](local-search-node-quickstart.md)
+- [Yerel Iş arama Python hızlı başlangıç](local-search-python-quickstart.md)

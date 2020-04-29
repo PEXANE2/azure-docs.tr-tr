@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure CLI ile yayımla/abone ol kanallarını ve konu filtrelerini kullanarak perakende stok ürün yelpazesini güncelleştirin'
-description: "Öğretici: Bu eğitimde, bir konu ve abonelikten ileti gönderip alacağınızı ve Azure CLI'yi kullanarak filtre kurallarıeklemeyi ve kullanmayı öğrenirsiniz"
+title: "Öğretici: Azure CLı ile yayımlama/abone olma kanalları ve konu filtrelerini kullanarak perakende envanter sınıflama 'nı güncelleştirme"
+description: 'Öğretici: Bu öğreticide, bir konudan ve abonelikten ileti gönderme ve alma ile Azure CLı kullanarak filtre kuralları ekleme ve kullanma hakkında bilgi edineceksiniz.'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,17 +10,17 @@ ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
 ms.openlocfilehash: 0bd0d8eb8abe6f320f73e35b1e3b08e1d8dc1de3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718917"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Öğretici: CLI'yi ve konuları/abonelikleri kullanarak envanter güncelleştirme
 
 Microsoft Azure Service Bus, uygulamalar ve hizmetler arasında bilgi gönderen çok kiracılı bir bulut mesajlaşma hizmetidir. Zaman uyumsuz işlemler esnek ve aracılı mesajlaşmanın yanı sıra ilk giren ilk çıkar (FIFO) yöntemiyle yapılandırılmış mesajlaşma ve yayımlama/abonelik olanakları da sunar. Bu öğretici, bir perakende stok senaryosunda, Azure CLI ve Java kullanan yayımlama/abone olma kanallarıyla Service Bus konu başlıklarını ve abonelikleri kullanmayı göstermektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure CLI kullanarak bir Service Bus konu başlığı ve bu konu başlığına bir veya daha fazla abonelik oluşturma
 > * Azure CLI kullanarak konu başlığı filtreleri ekleme
@@ -40,7 +40,7 @@ Java ile bir Service Bus uygulaması geliştirebilmeniz için şunlar yüklü ol
 
 - [Java Geliştirme Seti](https://aka.ms/azure-jdks), en son sürümü.
 - [Azure CLI](https://docs.microsoft.com/cli/azure)
-- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri.
+- [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -326,7 +326,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 ```
 
 > [!NOTE]
-> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
+> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -346,7 +346,7 @@ Service Bus’ın yayımlama/abone olma özelliklerini kullanma hakkında daha f
 > [!div class="nextstepaction"]
 > [PowerShell ve konular/abonelikler kullanarak stok güncelleştirme](service-bus-tutorial-topics-subscriptions-portal.md)
 
-[ücretsiz bir hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[Ücretsiz hesap]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

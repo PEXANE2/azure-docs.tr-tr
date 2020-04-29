@@ -1,19 +1,19 @@
 ---
-title: 'Öğretici: Monitör ve tune - PostgreSQL için Azure Veritabanı - Tek Sunucu'
-description: Bu öğretici, PostgreSQL - Single Server için Azure Veritabanı'nda izleme ve ayar yapma yoluyla yürür.
+title: 'Öğretici: Izleme ve ayarlama-PostgreSQL için Azure veritabanı-tek sunucu'
+description: Bu öğreticide PostgreSQL için Azure veritabanı-tek sunucu izleme ve ayarlama işlemleri gösterilmektedir.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 5/6/2019
 ms.openlocfilehash: d1958c6ef0f7ed52e939967b5e82886fe1373ed8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74774746"
 ---
-# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Öğretici: PostgreSQL için Azure Veritabanını izleyin ve ayarlayın - Tek Sunucu
+# <a name="tutorial-monitor-and-tune-azure-database-for-postgresql---single-server"></a>Öğretici: PostgreSQL için Azure veritabanı 'nı Izleme ve ayarlama-tek sunucu
 
 PostgreSQL için Azure Veritabanı, sunucu performansınızı anlamanıza ve geliştirmenize yardımcı olan özelliklere sahiptir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]

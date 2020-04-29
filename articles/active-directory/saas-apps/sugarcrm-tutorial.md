@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Sugar CRM ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Sugar CRM arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: cukr CRM ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve cukr CRM arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,82 +17,82 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74231974"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Öğretici: Sugar CRM ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>Öğretici: cukr CRM ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Sugar CRM'yi Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Sugar CRM'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, cukr CRM 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Cukr CRM 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Sugar CRM erişimi olan denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Sugar CRM'de otomatik olarak oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de cukr CRM 'ye erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla cukr CRM 'de otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Sugar CRM tek oturum açma (SSO) aboneliği ni sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Cukr CRM çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Şeker CRM **SP** başlatılan SSO destekler
+* Cukr CRM **SP** tarafından başlatılan SSO 'yu destekler
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-## <a name="adding-sugar-crm-from-the-gallery"></a>Galeriden Şeker CRM ekleme
+## <a name="adding-sugar-crm-from-the-gallery"></a>Galeriden cukr CRM ekleme
 
-Sugar CRM'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Sugar CRM eklemeniz gerekir.
+Cukr CRM 'nin tümleştirmesini Azure AD ile yapılandırmak için, Galeriden cukr CRM 'yi yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Şeker CRM** yazın.
-1. Sonuçlar panelinden **Sugar CRM'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **cukr CRM** yazın.
+1. Sonuçlar panelinden **CUKR CRM** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Sugar CRM için Azure AD oturum açma işlemlerini yapılandırma ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sugar-crm"></a>Cukr CRM için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Sugar CRM ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Sugar CRM'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU cukr CRM ile yapılandırın ve test edin. SSO 'nun çalışması için, cukr CRM 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Sugar CRM ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu cukr CRM ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[Sugar CRM SSO'yu yapılandırın.](#configure-sugar-crm-sso)**
-    1. **[Sugar CRM test kullanıcısını oluşturun](#create-sugar-crm-test-user)** - Kullanıcının Azure AD gösterimine bağlı Olan Şeker CRM'de B.Simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[CUKR CRM SSO 'Yu yapılandırın](#configure-sugar-crm-sso)** .
+    1. Cukr CRM 'de kullanıcının Azure AD gösterimine bağlı olan B. Simon 'a sahip olmak için **[CUKR CRM test kullanıcısı oluşturun](#create-sugar-crm-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında,](https://portal.azure.com/) **Sugar CRM** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **cukr CRM** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |--|
     | `https://<companyname>.sugarondemand.com`|
     | `https://<companyname>.trial.sugarcrm`|
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |--|
@@ -101,126 +101,126 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     | `https://<companyname>.trial.sugarcrm.eu/<companyname>`|
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Sugar CRM İstemci destek ekibine](https://support.sugarcrm.com/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [CUKR CRM istemci destek ekibine](https://support.sugarcrm.com/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Şeker **CRM'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **CUKR CRM 'Yi ayarlama** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Sugar CRM'ye erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, cukr CRM 'ye erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **Şeker CRM'yi**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **CUKR CRM**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-sugar-crm-sso"></a>Şeker CRM SSO yapılandırılması
+## <a name="configure-sugar-crm-sso"></a>Cukr CRM SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, Sugar CRM şirket sitenizde yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, cukr CRM şirket sitenizde yönetici olarak oturum açın.
 
-1. **Admin'e**git.
+1. **Yönetici**'ye gidin.
 
     ![Yönetici](./media/sugarcrm-tutorial/ic795888.png "Yönetici")
 
-1. **Yönetim** bölümünde Parola **Yönetimi'ni**tıklatın.
+1. **Yönetim** bölümünde, **parola yönetimi**' ne tıklayın.
 
     ![Yönetim](./media/sugarcrm-tutorial/ic795889.png "Yönetim")
 
-1. **SAML Kimlik Doğrulamasını Etkinleştir'i**seçin.
+1. **SAML kimlik doğrulamasını etkinleştir**' i seçin.
 
     ![Yönetim](./media/sugarcrm-tutorial/ic795890.png "Yönetim")
 
-1. **SAML Kimlik Doğrulama** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **SAML kimlik doğrulaması** bölümünde aşağıdaki adımları uygulayın:
 
-    ![SAML Kimlik Doğrulama](./media/sugarcrm-tutorial/ic795891.png "SAML Kimlik Doğrulama")  
+    ![SAML kimlik doğrulaması](./media/sugarcrm-tutorial/ic795891.png "SAML kimlik doğrulaması")  
 
-    a. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin**değerini yapıştırın.
+    a. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
   
-    b. **SLO URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL**değerini yapıştırın.
+    b. **SLO URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
   
-    c. Taban-64 kodlanmış sertifikanızı not defterinde açın, içeriğini panonuza kopyalayın ve ardından tüm Sertifikayı **X.509 Sertifika** metin kutusuna yapıştırın.
+    c. Base-64 kodlu sertifikanızı Not defteri 'nde açın, bu içeriği panonuza kopyalayın ve ardından tüm sertifikayı **X. 509.440 sertifikası** metin kutusuna yapıştırın.
   
-    d. **Kaydet**'e tıklayın.
+    d. **Kaydet**’e tıklayın.
 
-### <a name="create-sugar-crm-test-user"></a>Şeker CRM test kullanıcısı oluşturma
+### <a name="create-sugar-crm-test-user"></a>Cukr CRM test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının Sugar CRM'de oturum açabilmeleri için, bunların Sugar CRM'ye uygun olarak sağlanması gerekir. Sugar CRM durumunda, sağlama manuel bir görevdir.
+Azure AD kullanıcılarının cukr CRM 'de oturum açmasını sağlamak için, cukr CRM 'ye sağlanması gerekir. Cukr CRM söz konusu olduğunda, sağlama el ile gerçekleştirilen bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. **Sugar CRM** şirket sitenizde yönetici olarak oturum açın.
+1. **CUKR CRM** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Admin'e**git.
+1. **Yönetici**'ye gidin.
 
     ![Yönetici](./media/sugarcrm-tutorial/ic795888.png "Yönetici")
 
-1. **Yönetim** **bölümünde, Kullanıcı Yönetimi'ni**tıklatın.
+1. **Yönetim** bölümünde **Kullanıcı yönetimi**' ne tıklayın.
 
     ![Yönetim](./media/sugarcrm-tutorial/ic795893.png "Yönetim")
 
-1. **Kullanıcılara \> **Git Yeni Kullanıcı Oluştur .
+1. **Kullanıcılar \> yeni kullanıcı oluştur**' a gidin.
 
-    ![Yeni Kullanıcı Oluşturma](./media/sugarcrm-tutorial/ic795894.png "Yeni Kullanıcı Oluşturma")
+    ![Yeni Kullanıcı Oluştur](./media/sugarcrm-tutorial/ic795894.png "Yeni Kullanıcı Oluştur")
 
-1. Kullanıcı **Profili** sekmesinde aşağıdaki adımları gerçekleştirin:
+1. **Kullanıcı profili** sekmesinde aşağıdaki adımları gerçekleştirin:
 
     ![Yeni Kullanıcı](./media/sugarcrm-tutorial/ic795895.png "Yeni Kullanıcı")
 
-    * İlgili metin kutularına geçerli bir Azure Active Directory kullanıcısının **kullanıcı adını,** **soyadını**ve **e-posta adresini** yazın.
+    * **Kullanıcı adını**, **soyadını**ve ilgili metin kutularına geçerli bir Azure Active Directory kullanıcının **e-posta adresini** yazın.
   
-1. **Durum**olarak, **Etkin'i**seçin.
+1. **Durum**olarak **etkin**' i seçin.
 
 1. Parola sekmesinde aşağıdaki adımları gerçekleştirin:
 
     ![Yeni Kullanıcı](./media/sugarcrm-tutorial/ic795896.png "Yeni Kullanıcı")
 
-    a. Parolayı ilgili textbox'a yazın.
+    a. Parolayı ilgili metin kutusuna yazın.
 
-    b. **Kaydet**'e tıklayın.
+    b. **Kaydet**’e tıklayın.
 
 > [!NOTE]
-> Azure AD kullanıcı hesaplarını sağlamak için Sugar CRM tarafından sağlanan diğer Sugar CRM kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
+> Azure AD Kullanıcı hesapları sağlamak için cukr CRM tarafından sunulan diğer tüm cukr CRM Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Şeker CRM döşemesini tıklattığınızda, SSO'yu kurduğunuz Sugar CRM'de otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde cukr CRM kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız cukr CRM 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Sugar CRM'yi deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile cukr CRM 'yi deneyin](https://aad.portal.azure.com/)
 

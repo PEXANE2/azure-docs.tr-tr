@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: REST API ve C# ile yazım denetimi - Bing Yazım Denetimi'
+title: 'Hızlı başlangıç: REST API ve C# ile yazım denetimi Bing Yazım Denetimi'
 titleSuffix: Azure Cognitive Services
-description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API'sini kullanmaya başlayın.
+description: Yazım ve dilbilgisini denetlemek için Bing Yazım Denetimi REST API kullanmaya başlayın.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: 036ea00362b604957a1887127fca0b8d775d4e7b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75382974"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Quickstart: Bing Yazım Denetimi REST API ve C ile yazım denetimi #
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Hızlı başlangıç: Bing Yazım Denetimi REST API ve C ile yazım denetimi #
 
-Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması API'ye bir istek gönderir ve önerilen düzeltmelerin listesini döndürür. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub'da](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)kullanılabilir.
+Bing Yazım Denetimi REST API ilk çağrlarınızı yapmak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir istek gönderir ve önerilen düzeltmelerin bir listesini döndürür. Bu uygulama C# ile yazılmış olmakla birlikte API, çoğu programlama diliyle uyumlu bir RESTful Web hizmetidir. Bu uygulamanın kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs)' da kullanılabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* [Visual Studio 2017 veya sonrası](https://www.visualstudio.com/downloads/)herhangi bir baskı .
-* Visual `Newtonsoft.Json` studio'da NuGet paketi olarak yüklemek için:
-    1. **Çözüm Gezgini'nde,** Çözüm dosyasına sağ tıklayın.
-    1. **Çözüm için NuGet Paketlerini Yönet'i**seçin.
-    1. Paketi `Newtonsoft.Json` arayın ve yükleyin.
-* Linux/MacOS kullanıyorsanız, bu uygulama [Mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
+* Herhangi bir [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/downloads/)sürümü.
+* Visual Studio `Newtonsoft.Json` 'Da bir NuGet paketi olarak yüklemek için:
+    1. **Çözüm Gezgini**, çözüm dosyasına sağ tıklayın.
+    1. **Çözüm Için NuGet Paketlerini Yönet**' i seçin.
+    1. Paketi arayın `Newtonsoft.Json` ve yükler.
+* Linux/MacOS kullanıyorsanız, bu uygulama [mono](https://www.mono-project.com/)kullanılarak çalıştırılabilir.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Proje oluşturma ve başlatma
 
-1. Visual Studio'da `SpellCheckSample` yeni bir konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
+1. Visual Studio 'da adlı `SpellCheckSample` yeni bir konsol çözümü oluşturun. Ardından ana kod dosyasına aşağıdaki ad alanlarını ekleyin.
     
     ```csharp
     using System;
@@ -46,7 +46,7 @@ Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlan
     using Newtonsoft.Json;
     ```
 
-2. API bitiş noktası, abonelik anahtarınız ve yazım denetimi yapılacak metin için değişkenler oluşturun. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+2. API uç noktası, abonelik anahtarınız ve yazım denetimi yapılacak metin için değişkenler oluşturun. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
     ```csharp
     namespace SpellCheckSample
@@ -62,7 +62,7 @@ Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlan
     }
     ```
 
-3. Arama parametreleriniz için bir değişken oluşturun. Sonra pazar kodunuzu `mkt=`ekle. Piyasa kodu, talepte bulunduğunuz ülkedir. Ayrıca, yazım denetimi modunuzu `&mode=`sonra ekleyin. Mod ya `proof` (çoğu yazım/dilbilgisi hatalarını yakalar) ya da `spell` (çoğu yazım ı yakalar, ancak o kadar çok dilbilgisi hatası yakalamaz).
+3. Arama parametreleriniz için bir değişken oluşturun. Pazar kodunuzu sonuna ekleyin `mkt=`. Pazar kodu, isteği yaptığınız ülkeniz. Ayrıca, daha sonra `&mode=`yazım denetimi modlarınızı ekleyin. Mod `proof` (en fazla yazım/dilbilgisi hatalarını yakalar) veya `spell` (çok sayıda dilbilgisi hatası değil, en fazla yazım yakalar).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -70,7 +70,7 @@ Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlan
 
 ## <a name="create-and-send-a-spell-check-request"></a>Yazım denetimi isteği oluşturma ve gönderme
 
-1. API'ye istek göndermek `SpellCheck()` için çağrılan bir eşzamanlı işlev oluşturun. Bir `HttpClient`, ' oluşturun ve `Ocp-Apim-Subscription-Key` abonelik anahtarınızı üstbilgiye ekleyin. Ardından işlev içinde aşağıdaki adımları gerçekleştirin.
+1. API 'ye bir istek göndermek `SpellCheck()` için çağrılan bir zaman uyumsuz işlev oluşturun. `HttpClient`Oluşturun ve abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. Sonra işlevi içinde aşağıdaki adımları gerçekleştirin.
 
     ```csharp
     async static void SpellCheck()
@@ -83,13 +83,13 @@ Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlan
     }
     ```
 
-2. Ev sahibinize, yola ve parametrelere ekleyerek isteğiniz için URI'yi oluşturun.
+2. Konağınız, yolunuz ve parametrelerinizi ekleyerek isteğiniz için URI 'yi oluşturun.
     
     ```csharp
     string uri = host + path + params_;
     ```
 
-3. Metninizi içeren `KeyValuePair` bir nesneyle bir liste oluşturun `FormUrlEncodedContent` ve bir nesne oluşturmak için kullanın. Üstbilgi bilgilerini ayarlayın ve `PostAsync()` isteği göndermek için kullanın.
+3. Metninizi içeren bir `KeyValuePair` nesne içeren bir liste oluşturun ve bunu bir `FormUrlEncodedContent` nesne oluşturmak için kullanın. Üst bilgi bilgilerini ayarlayın ve isteği göndermek `PostAsync()` için kullanın.
 
     ```csharp
     var values = new Dictionary<string, string>();
@@ -99,11 +99,11 @@ Bing Yazım Denetimi REST API'ye ilk aramanızı yapmak için bu hızlı başlan
     response = await client.PostAsync(uri, new FormUrlEncodedContent(values));
     ```
 
-## <a name="get-and-print-the-api-response"></a>API yanıtını alın ve yazdırın
+## <a name="get-and-print-the-api-response"></a>API yanıtını al ve Yazdır
 
-### <a name="get-the-client-id-header"></a>İstemci kimliği üstbilgisini alma
+### <a name="get-the-client-id-header"></a>İstemci KIMLIĞI üst bilgisini al
 
-Yanıt bir `X-MSEdge-ClientID` üstbilgi içeriyorsa, değeri alın ve yazdırın.
+Yanıt bir `X-MSEdge-ClientID` başlık içeriyorsa, değeri alın ve yazdırın.
 
 ``` csharp
 string client_id;
@@ -114,9 +114,9 @@ if (response.Headers.TryGetValues("X-MSEdge-ClientID", out IEnumerable<string> h
 }
 ```
 
-### <a name="get-the-response"></a>Yanıtı alın
+### <a name="get-the-response"></a>Yanıtı al
 
-API'den yanıt alın. JSON nesnesini deserialize edin ve konsola yazdırın.
+API 'den gelen yanıtı alın. JSON nesnesinin serisini kaldırma ve konsola yazdırma.
 
 ```csharp
 string contentString = await response.Content.ReadAsStringAsync();
@@ -125,9 +125,9 @@ dynamic jsonObj = JsonConvert.DeserializeObject(contentString);
 Console.WriteLine(jsonObj);
 ```
 
-## <a name="call-the-spell-check-function"></a>Yazım denetimi işlevini arama
+## <a name="call-the-spell-check-function"></a>Yazım denetimi işlevini çağırın
 
-Projenizin Ana işlevinde. `SpellCheck()`
+Projenizin ana işlevinde, çağırın `SpellCheck()`.
 
 ```csharp
 static void Main(string[] args)
@@ -139,7 +139,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Projenizi oluşturun ve çalıştırın. Visual Studio kullanıyorsanız, dosyayı hata ayıklamak için **F5** tuşuna basın.
+Projenizi derleyin ve çalıştırın. Visual Studio kullanıyorsanız, dosyada hata ayıklamak için **F5** ' e basın.
 
 ## <a name="example-json-response"></a>Örnek JSON yanıtı
 

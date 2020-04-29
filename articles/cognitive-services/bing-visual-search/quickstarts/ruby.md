@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: REST API ve Ruby kullanarak görüntü öngörüleri alın - Bing Görsel Arama'
+title: 'Hızlı başlangıç: REST API ve Ruby-Bing Görsel Arama kullanarak görüntü öngörülerini alın'
 titleSuffix: Azure Cognitive Services
-description: Bing Görsel Arama API'sine nasıl görüntü yükleyip bu konuda bilgi edineceklerini öğrenin.
+description: Bing Görsel Arama API'si bir görüntüyü karşıya yüklemeyi ve ilgili öngörüleri nasıl alabileceğinizi öğrenin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75379649"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Bing Visual Search REST API ve Ruby'yi kullanarak görüntü öngörüleri alın
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Hızlı başlangıç: Bing Görsel Arama REST API ve Ruby kullanarak görüntü öngörülerini alın
 
-Bu hızlı başlangıç, Bing Görsel Arama'yı aramak ve sonuçları görüntülemek için Ruby programlama dilini kullanır. POST isteği, api bitiş noktasına bir resim yükler. Sonuçlar, URL'leri ve yüklenen resme benzer görüntüler hakkında açıklayıcı bilgiler içerir.
+Bu hızlı başlangıç, Bing Görsel Arama çağırmak ve sonuçları göstermek için Ruby programlama dilini kullanır. POST isteği bir görüntüyü API uç noktasına yükler. Sonuçlar, karşıya yüklenen görüntüye benzer görüntüler ve URL 'Ler hakkında açıklayıcı bilgiler içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlatmayı çalıştırmak için:
+Bu hızlı başlangıcı çalıştırmak için:
 
-* [Ruby 2.4 veya sonraki yükleme](https://www.ruby-lang.org/en/downloads/)
-* Abonelik anahtarı alın:
+* [Ruby 2,4 veya üstünü](https://www.ruby-lang.org/en/downloads/) yükler
+* Abonelik anahtarı al:
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>Proje ve gerekli modüller
 
-IDE veya düzenleyicinizde yeni bir Ruby projesi oluşturun. Alma `net/http` `uri` , `json` ve sonuçların JSON metin işlemek için. Kitaplık, `base64` dosya adı dizesini kodlamak için kullanılır: 
+IDE veya Düzenleyicinizde yeni bir Ruby projesi oluşturun. Sonuçların JSON metnini işlemek `json` için ve içeri aktarın `net/http` `uri` `base64` Kitaplık, dosya adı dizesini kodlamak için kullanılır: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Değişkenleri tanımlama
 
-Aşağıdaki kod gerekli değişkenleri atar. Bitiş noktasının doğru olduğunu onaylayın ve değeri Azure hesabınızdaki bir abonelik anahtarıyla değiştirin. `accessKey`  Post `batchNumber` verilerinin öncü ve son sınırları için gerekli bir GUID'dir.  Değişken `fileName` POST için görüntü dosyasını tanımlar.  Geçerli `if` bir abonelik anahtarı için blok testleri.
+Aşağıdaki kod gerekli değişkenleri atar. Uç noktanın doğru olduğundan emin olun ve `accessKey` değeri Azure hesabınızdaki bir abonelik anahtarıyla değiştirin.  , `batchNumber` Post verilerinin baştaki ve sondaki sınırları için gereken bir GUID 'dir.  `fileName` DEĞIŞKEN, gönderi için resim dosyasını tanımlar.  Blok `if` , geçerli bir abonelik anahtarı için test eder.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>POST isteği için form verileri
+## <a name="form-data-for-post-request"></a>POST isteği için veri formu
 
-POST'a görüntü verileri, satır aralığı ve sondaki sınırlar tarafından kapatılır. Aşağıdaki işlevler sınırları belirler:
+GÖNDERILECEK görüntü verileri, baştaki ve sondaki sınırlara göre alınmıştır. Aşağıdaki işlevler sınırları ayarlar:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-Ardından, post gövdesini içerecek şekilde bitiş noktası URI'yi ve bir dizi oluşturun.  Başlangıç sınırını diziye yüklemek için önceki işlevi kullanın. Resim dosyasını diziye okuyun. Ardından, dizinin bitiş sınırını okuyun:
+Sonra, uç nokta URI 'sini ve POST gövdesini içeren bir diziyi oluşturun.  Başlangıç sınırını diziye yüklemek için Previous işlevini kullanın. Görüntü dosyasını diziye okuyun. Ardından, bitiş sınırını diziye okuyun:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>HTTP isteğini oluşturma
+## <a name="create-the-http-request"></a>HTTP isteği oluşturma
 
-`Ocp-Apim-Subscription-Key` Başlığı ayarlayın.  İsteği oluşturma. Ardından, üstbilgi ve içerik türünü atayın. İstek için daha önce oluşturulan POST gövdesine katılın:
+`Ocp-Apim-Subscription-Key` Üstbilgiyi ayarlayın.  İsteği oluşturma. Ardından, üst bilgi ve içerik türünü atayın. Daha önce oluşturulan POST gövdesini isteğe ekleyin:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -108,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>İstek ve yanıt
 
-Ruby isteği gönderir ve aşağıdaki kod satırı ile yanıt alır:
+Ruby isteği gönderir ve aşağıdaki kod satırıyla yanıtı alır:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>Sonuçları yazdırma
+## <a name="print-the-results"></a>Sonuçları Yazdır
 
-Yanıtın üstbilgilerini yazdırın ve çıktıyı biçimlendirmek için JSON kitaplığını kullanın:
+Yanıtın üst bilgilerini yazdırın ve çıktıyı biçimlendirmek için JSON kitaplığını kullanın:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Sonuçlar
 
-Aşağıdaki JSON çıktının bir bölümüdür:
+Aşağıdaki JSON, çıktının bir segmentine sahiptir:
 
 ```
 Relevant Headers:
@@ -285,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [Bing Görsel Arama genel bakış](../overview.md)
-> [Görsel Arama tek sayfalık web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)
+> [görsel arama tek sayfalı Web uygulaması oluşturma](../tutorial-bing-visual-search-single-page-app.md)

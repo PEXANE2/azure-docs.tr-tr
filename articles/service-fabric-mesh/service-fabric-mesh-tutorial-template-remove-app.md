@@ -1,5 +1,5 @@
 ---
-title: Öğretici- Azure Hizmet Kumaş Kafesi'nde çalışan bir uygulamayı kaldırma
+title: Öğretici-Azure Service Fabric ağı 'nda çalışan bir uygulamayı kaldırma
 description: Bu öğreticide, Service Fabric Mesh’te çalışan bir uygulamayı kaldırma ve kaynakları silme hakkında bilgi edineceksiniz.
 author: dkkapur
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 4780f81d23f0183837d2aafb9a8e5e2c41faa1cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351808"
 ---
 # <a name="tutorial-remove-an-application-and-resources"></a>Öğretici: Bir uygulamayı ve kaynakları kaldırma
@@ -36,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 * [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 

@@ -1,5 +1,5 @@
 ---
-title: Öğretici- Azure Hizmet Kumaş Kafesi'nde çalışan bir uygulamayı yükseltme
+title: Öğretici-Azure Service Fabric ağı 'nda çalışan bir uygulamayı yükseltme
 description: Bu öğreticide, Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.
 author: dkkapur
 ms.topic: tutorial
@@ -7,15 +7,15 @@ ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351741"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>Öğretici: Service Fabric Mesh’te çalışan Service Fabric uygulamasını yükseltme
 
-Bu öğretici, bir serinin üçüncü bölümüdür. Ayrılan CPU kaynaklarını artırarak, [daha önce Service Fabric Mesh'te dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.  İşi bittiğinde, daha yüksek CPU kaynaklarıyla çalışan bir web ön uç hizmetiniz olur.
+Bu öğretici, bir serinin üçüncü bölümüdür. Ayrılan CPU kaynaklarını artırarak, [daha önce Service Fabric Mesh'te dağıtılmış](service-fabric-mesh-tutorial-template-deploy-app.md) Service Fabric uygulamasını yükseltmeyi öğreneceksiniz.  İşiniz bittiğinde, daha yüksek CPU kaynaklarıyla çalışan bir Web ön uç hizmetiniz olur.
 
 Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
@@ -36,7 +36,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 * [Azure Cloud Shell](service-fabric-mesh-howto-setup-cli.md)’i açın veya [Azure CLI ve Service Fabric Mesh CLI’sini yerel olarak yükleyin](service-fabric-mesh-howto-setup-cli.md#install-the-azure-service-fabric-mesh-cli).
 
@@ -50,7 +50,7 @@ Bu öğreticide, örnek olarak, [önceden dağıtılmış olan](service-fabric-m
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-Uygulama kaynağının dağıtım şablonunda, her hizmetin istenen CPU kaynaklarını ayarlamak için kullanılabilen bir *cpu* özelliği vardır. Uygulama, birden çok hizmetten oluşabilir; her hizmet, birlikte dağıtılan ve yönetilen benzersiz bir *cpu* ayarına sahiptir. Web ön uç hizmetinin CPU kaynaklarını artırmak için dağıtım şablonundaki veya parametre dosyasındaki *cpu değerini* değiştirin.  Ardından uygulamayı yükseltin.
+Uygulama kaynağının dağıtım şablonunda, her hizmetin istenen CPU kaynaklarını ayarlamak için kullanılabilen bir *cpu* özelliği vardır. Uygulama, birden çok hizmetten oluşabilir; her hizmet, birlikte dağıtılan ve yönetilen benzersiz bir *cpu* ayarına sahiptir. Web ön uç hizmetinin CPU kaynaklarını artırmak için dağıtım şablonu veya parametreler dosyasındaki *cpue* değerini değiştirin.  Ardından uygulamayı yükseltin.
 
 ### <a name="modify-the-deployment-template-parameters"></a>Dağıtım şablonu parametrelerini değiştirme
 

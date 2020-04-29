@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Konuşma-metin çevirme - Konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı metne çevirme-metin okuma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: yulili
 ms.openlocfilehash: d4781808ce8e80f62e86ce1d0c6db9c38b2636d0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74981035"
 ---
-Bu hızlı başlangıçta, konuşmayı bir dilden metne etkileşimli olarak çevirmek için [Konuşma SDK'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç ön koşulu yerine getirerek, konuşmadan metne çevirme yalnızca beş adımdan oluşur:
+Bu hızlı başlangıçta konuşmayı bir dilden başka bir dilde metne etkileşimli bir şekilde çevirmek için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Birkaç önkoşulu karşıladıktan sonra, konuşmayı metne çevirme yalnızca beş adım sürer:
 > [!div class="checklist"]
-> * Abonelik ````SpeechConfig```` anahtarınızdan ve bölgenizden bir nesne oluşturun.
-> * Kaynak ````SpeechConfig```` ve hedef dilleri belirtmek için nesneyi güncelleştirin.
-> * Nesneyi ````TranslationRecognizer```` yukarıdan ````SpeechConfig```` kullanarak bir nesne oluşturun.
-> * Nesneyi ````TranslationRecognizer```` kullanarak, tek bir söyleyiş için tanıma işlemini başlatın.
-> * İade ````TranslationRecognitionResult```` edilenleri inceleyin.
+> * Abonelik anahtarınızdan ve bölgenizde bir ````SpeechConfig```` nesne oluşturun.
+> * Kaynak ve ````SpeechConfig```` hedef dilleri belirtmek için nesneyi güncelleştirin.
+> * Yukarıdaki ````SpeechConfig```` nesneyi ````TranslationRecognizer```` kullanarak bir nesne oluşturun.
+> * ````TranslationRecognizer```` Nesnesini kullanarak, tek bir söylik için tanıma sürecini başlatın.
+> * ````TranslationRecognitionResult```` Döndürülen ' i inceleyin.
