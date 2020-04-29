@@ -1,7 +1,7 @@
 ---
-title: Konuşma sentezi temelleri - Konuşma servisi
+title: Konuşma birleştirme temelleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Metinden konuşmaya dönüştürmek için Konuşma SDK'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne yapısı, desteklenen ses çıktıbiçimleri ve konuşma sentezi için özel yapılandırma seçenekleri hakkında bilgi edineceksiniz.
+description: Metinden konuşmaya dönüştürmek için konuşma SDK 'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne oluşturma, desteklenen ses çıkış biçimleri ve konuşma birleştirme için özel yapılandırma seçenekleri hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: 74f762dd0004bf72b703d0f611a16762b1ff028d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399530"
 ---
-# <a name="learn-the-basics-of-speech-synthesis"></a>Konuşma sentezinin temellerini öğrenin
+# <a name="learn-the-basics-of-speech-synthesis"></a>Konuşma sensören'in temellerini öğrenin
 
-Bu makalede, Konuşma SDK kullanarak metin-konuşma sentezi yapmak için ortak tasarım desenleri öğrenirler. Temel yapılandırma ve sentez yaparak başlarsınız ve aşağıdakiler dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçersiniz:
+Bu makalede, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
-* Yanıtları bellek içi akış olarak alma
-* Çıktı örnek oranını ve bit oranını özelleştirme
-* SSML kullanarak sentez istekleri gönderme (konuşma sentezi biçimlendirme dili)
-* Nöral sesler kullanma
+* Bellek içi akışlar olarak yanıt alma
+* Çıkış örneği hızını ve bit hızını özelleştirme
+* SSML kullanarak senssıs istekleri gönderme (konuşma birleştirme biçimlendirme dili)
+* Sinir seslerini kullanma
 
 > [!TIP]
-> Hızlı başlangıçlarımızdan birini tamamlama şansınız olmadıysa, lastikleri tekmelemenizi ve konuşma tanımayı kendiniz denemenizi öneririz.
+> Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve konuşma tanımayı kendiniz denemeniz önerilir.
 > * [Mikrofondan konuşmayı tanıma](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"

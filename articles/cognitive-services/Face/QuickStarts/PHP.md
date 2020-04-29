@@ -1,7 +1,7 @@
 ---
 title: 'Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, PHP ile Face REST API'sini kullanarak görüntüdeki yüzleri algılarsınız.
+description: Bu hızlı başlangıçta, PHP ile yüz REST API kullanarak bir görüntüden yüzleri algılayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403357"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Hızlı Başlangıç: REST API ve PHP kullanarak bir görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için PHP içeren Azure Yüz REST API'sini kullanırsınız.
+Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API PHP ile kullanacaksınız.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
-- [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod düzenleyicisi.
+- Yüz abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da yüz hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
+- [Visual Studio Code](https://code.visualstudio.com/download)gibi bir kod Düzenleyicisi.
 - PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) paketi.
-- PHP özellikli bir web tarayıcısı. Bunu ayarlamadıysanız, bunu makinenize [XAMPP'yi](https://www.apachefriends.org/) kurup kurarak yapabilirsiniz.
+- PHP özellikli bir Web tarayıcısı. Bu ayarı yaptıysanız, makinenizde [XAMPP](https://www.apachefriends.org/) 'yi yükleyip kurarak bunu yapabilirsiniz.
 
 ## <a name="initialize-the-html-file"></a>HTML dosyasını başlatma
 
-Yeni bir HTML dosyası oluşturun, *Faces.html'i algılayın*ve aşağıdaki kodu ekleyin.
+Yeni bir HTML dosyası oluşturun, *detectFaces. html*ve aşağıdaki kodu ekleyin.
 
 ```html
 <html>
@@ -41,9 +41,9 @@ Yeni bir HTML dosyası oluşturun, *Faces.html'i algılayın*ve aşağıdaki kod
 </html>
 ```
 
-## <a name="write-the-php-script"></a>PHP komut dosyasını yazma
+## <a name="write-the-php-script"></a>PHP betiğini yazma
 
-Belgenin öğesinin `body` içine aşağıdaki kodu ekleyin. Bu kod, URL alanı, **Analiz yüz** düğmesi, yanıt bölmesi ve görüntü görüntüleme bölmesi ile temel bir kullanıcı arabirimi ayarlar.
+Aşağıdaki kodu belgenin `body` öğesi içine ekleyin. Bu kod, bir URL alanı, bir çözüm **Çözümle** düğmesi, yanıt bölmesi ve görüntü görüntü bölmesi ile temel bir kullanıcı arabirimi ayarlar.
 
 ```php
 <?php
@@ -99,13 +99,13 @@ catch (HttpException $ex)
 ?>
 ```
 
-`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz ve `uriBase` doğru bitiş noktası dizesini içermesi için dizeyi değiştirmeniz gerekir. Alan, `returnFaceAttributes` alınacak öznitelikleri n için belirtir; amacınıza bağlı olarak bu dizeyi değiştirmek isteyebilirsiniz.
+`subscriptionKey` Alanı abonelik anahtarınızın değeriyle güncelleştirmeniz gerekir ve `uriBase` dizeyi doğru uç nokta dizesini içerecek şekilde değiştirmeniz gerekir. Alan `returnFaceAttributes` , alınacak yüz özniteliklerini belirtir; Bu dizeyi, amaçlanan kullanım yönteminize bağlı olarak değiştirmek isteyebilirsiniz.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="run-the-script"></a>Betiği çalıştırın
 
-Dosyayı PHP özellikli bir web tarayıcısında açın. Aşağıdaki gibi Bir JSON Face veri dizisi almalısınız.
+Dosyayı PHP özellikli bir Web tarayıcısında açın. Aşağıdaki gibi yüz verilerinden oluşan bir JSON dizesi almalısınız.
 
 ```json
 [
@@ -288,7 +288,7 @@ Dosyayı PHP özellikli bir web tarayıcısında açın. Aşağıdaki gibi Bir J
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntüdeki insan yüzlerini algılamak, yüzleri dikdörtgenlerle ayırmak ve yaş ve cinsiyet gibi öznitelikleri döndürmek için kullanılan Yüz API'sini keşfedin.
+Görüntüde insan yüzlerini algılamak için kullanılan Yüz Tanıma API'si bulun, yüzleri dikdörtgenlerle kaldırır ve yaş ve cinsiyet gibi öznitelikleri döndürün.
 
 > [!div class="nextstepaction"]
 > [Yüz Tanıma API’leri](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

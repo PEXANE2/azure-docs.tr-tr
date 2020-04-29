@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Konuşma-metin çevirme - Konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı metne çevirme-metin okuma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, konuşmayı bir dilden konuşmaya başka bir dilde etkileşimli olarak çevirmek için Konuşma SDK'sını kullanırsınız.
+description: Bu hızlı başlangıçta, konuşmayı bir dilden başka bir dilde konuşmaya etkileşimli bir şekilde çevirmek için konuşma SDK 'sını kullanacaksınız.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 438a19978ffa1fb2046383d229dc189f97f8b691
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400215"
 ---
-# <a name="quickstart-translate-speech-to-text"></a>Quickstart: Konuşmadan metne çevirme
+# <a name="quickstart-translate-speech-to-text"></a>Hızlı başlangıç: konuşmayı metne çevirme
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-stt/header.md)]

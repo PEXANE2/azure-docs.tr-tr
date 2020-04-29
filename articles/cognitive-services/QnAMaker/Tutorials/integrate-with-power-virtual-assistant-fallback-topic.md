@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: Güç Sanal Ajanlar ile entegre - QnA Maker'
+title: 'Öğretici: Power Virtual Agents ile tümleştirme-Soru-Cevap Oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu eğitimde, aktif öğrenme ile bilgi tabanının kalitesini artırmak. Varolan soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin veya ekleyin.
+description: Bu öğreticide, etkin öğrenme ile bilgi Bankalarınızın kalitesini geliştirebilirsiniz. Mevcut soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin veya ekleyin.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,289 +11,289 @@ ms.topic: tutorial
 ms.date: 03/11/2020
 ms.author: diberry
 ms.openlocfilehash: 4557dee995c8a01067f7e6ad0e79bb7115b6ecdb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81402825"
 ---
-# <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Öğretici: Güç Sanal Ajanlar için bilgi tabanı ekleyin
-Bilgi tabanınızdan yanıtlar sağlamak için Bir [Güç Sanal Aracılar](https://powervirtualagents.microsoft.com/) botu oluşturun ve genişletin.
+# <a name="tutorial-add-your-knowledge-base-to-power-virtual-agents"></a>Öğretici: bilgi tabanınızı Power Virtual Agents 'e ekleme
+Bilgi tabanınızdan yanıt sağlamak için bir [Power Virtual Agents](https://powervirtualagents.microsoft.com/) bot oluşturun ve genişletin.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Bir Güç Sanal Ajanlar bot oluşturma
-> * Sistem geri dönüş konusu oluşturma
-> * QnA Maker'ı bir konuya eylem olarak Güç Otomatikleştirme akışı olarak ekleyin
-> * Güç Otomatikleştir çözümü oluşturun
-> * Çözümünüze Güç Otomatikleştir akışı ekleyin
-> * Güç Sanal Aracılar Yayınla
-> * Güç Sanal Aracıları Test Edin ve QnA Maker bilgi tabanınızdan bir yanıt alın
+> * Power sanal aracıları oluştur bot
+> * Bir sistem geri dönüş konusu oluşturun
+> * Power otomatikleştir akışı olarak bir konuya eylem olarak Soru-Cevap Oluşturma ekleme
+> * Power otomatikleştir çözümü oluşturma
+> * Çözümünüze Power otomatikleştir akışı ekleme
+> * Power Virtual aracılarını yayımlama
+> * Power Virtual aracılarını test edin ve Soru-Cevap Oluşturma bilgi tabanınızdan bir yanıt alın
 
-## <a name="integrate-an-agent-with-a-knowledge-base"></a>Bir aracıyı bilgi tabanıyla bütünleştirme
+## <a name="integrate-an-agent-with-a-knowledge-base"></a>Bir aracıyı Bilgi Bankası ile tümleştirme
 
-[Güç Sanal Aracılar](https://powervirtualagents.microsoft.com/) ekipleri kılavuzlu, no-kod grafik arayüzü kullanarak güçlü botlar oluşturmak için izin verir. Veri bilimcileri veya geliştiriciler gerekmez.
+[Güç sanal aracıları](https://powervirtualagents.microsoft.com/) , ekiplerin Kılavuzlu, kod içermeyen bir grafik arabirimi kullanarak güçlü botlar oluşturmalarına olanak tanır. Veri bilimcileri veya geliştiricilere ihtiyacınız yoktur.
 
-Power Virtual Agents'te, eylem gerçekleştirerek kullanıcı sorularını yanıtlamak için bir dizi konu (konu alanı) içeren bir aracı oluşturursunuz. Bir yanıt bulunamazsa, bir sistem geri dönüşü bir yanıtı döndürebilir.
+Güç sanal aracılarında, eylemler gerçekleştirerek Kullanıcı sorularını yanıtlamak için bir dizi konuyla (konu alanı) bir aracı oluşturursunuz. Bir Yanıt bulunamazsa, sistem geri dönüşü bir yanıt döndürebilir.
 
-Sorunu bir konunun eyleminin bir parçası olarak veya *System Fallback* konu yolunun bir parçası olarak bilgi tabanınıza gönderecek aracıyı yapılandırın. Her ikisi de bilgi tabanınıza bağlanmak ve bir yanıt dönmek için bir eylem kullanır.
+Bir konunun eyleminin bir parçası olarak veya *sistem geri dönüş* konu yolunun bir parçası olarak soruyu bilgi bankasına göndermek için aracıyı yapılandırın. Bunlar her ikisi de bilgi tabanınızı bağlamak ve bir yanıt döndürmek için bir eylem kullanır.
 
-## <a name="power-automate-connects-to-generateanswer-action"></a>Power Automate eyleme `GenerateAnswer` bağlanır
+## <a name="power-automate-connects-to-generateanswer-action"></a>Güç otomatikleştirme, `GenerateAnswer` eyleme bağlanır
 
-Aracınızı bilgi tabanınıza bağlamak için eylemi oluşturmak için Power Automate'i kullanın. Power Automate, QnA Maker'ın `GenerateAnswer` API'sine bağlanan bir işlem akışı sağlar.
+Aracınızı bilgi tabanınızı bağlamak için, bu eylemi oluşturmak üzere güç otomatikleştirmesini kullanın. Güç otomatikleştirme, Soru-Cevap Oluşturma `GenerateAnswer` API 'sine bağlanan bir işlem akışı sağlar.
 
-Akışı tasarlayıp kurtardıktan sonra, Power Automate çözümünden elde edilebilir. Bu çözümü aracınızda bir eylem olarak kullanın.
+Akışı tasarladıktan ve kaydettikten sonra, Power otomatikleştir çözümünden erişilebilir. Bu çözümü aracısında bir eylem olarak kullanın.
 
-## <a name="connect-an-agent-to-your-knowledge-base"></a>Bilgi tabanınıza bir aracı bağlayın
+## <a name="connect-an-agent-to-your-knowledge-base"></a>Bilgi bankasında bir aracıyı bağlama
 
-Power Virtual Agents'teki bir aracıyı QnA Maker'daki bir bilgi üssüne bağlama adımlarının genel bir özeti aşağıda veda edebilirsiniz.
+Power sanal aracılarında bir aracıyı Soru-Cevap Oluşturma bir bilgi tabanına bağlama adımlarına genel bir bakış aşağıda verilmiştir.
 
-* [QnA Maker](https://www.qnamaker.ai/) portalında:
-    * Bilgi tabanınızı oluşturun ve yayınlayın.
-    * Kimlik, çalışma zamanı bitiş noktası anahtarı ve çalışma zamanı bitiş noktası ana bilgisayarı da dahil olmak üzere bilgi temel bilgilerinizi kopyalayın.
-* Güç [Sanal Aracılar](https://powerva.microsoft.com/) portalında:
-    * Aracı konusu oluşturun.
-    * Bir eylemi çağırın (Akışı Otomatikleştir'e güç vermek için).
-* Power [Automate](https://us.flow.microsoft.com/) portalında:
-    * [QnA Maker'S GenerateAnswer](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)bir konektör ile bir akış oluşturun.
-        * QnA Maker bilgi bankası bilgilerini yayınladı:
-            * Bilgi bankası kimliği
-            * QnA Maker kaynak bitiş noktası ana bilgisayarı
-            * QnA Maker kaynak uç noktası anahtarı
-        * Giriş - kullanıcı sorgusu
-        * Çıktı - bilgi temel cevabı
+* [Soru-cevap oluşturma](https://www.qnamaker.ai/) portalında:
+    * Bilgi tabanınızı derleyin ve yayımlayın.
+    * KIMLIK, çalışma zamanı uç noktası anahtarı ve çalışma zamanı uç noktası Konağı dahil Bilgi Bankası ayrıntılarınızı kopyalayın.
+* [Power Virtual Agents](https://powerva.microsoft.com/) portalında:
+    * Bir aracı konu başlığı oluşturun.
+    * Bir eylem çağırın (akışı Power otomatikleştirmek için).
+* [Power otomatikleştir](https://us.flow.microsoft.com/) portalında:
+    * [GenerateAnswer soru-cevap oluşturma](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)için bağlayıcı içeren bir akış oluşturun.
+        * Soru-Cevap Oluşturma yayımlanan Bilgi Bankası bilgileri:
+            * Bilgi Bankası KIMLIĞI
+            * Soru-Cevap Oluşturma kaynak uç noktası Konağı
+            * Soru-Cevap Oluşturma kaynak uç noktası anahtarı
+        * Giriş-Kullanıcı sorgusu
+        * Çıkış-Bilgi Bankası yanıtı
     * Bir çözüm oluşturun ve akışı ekleyin.
-* Güç Sanal Ajanlar dön:
-    * Bir konu için bir ileti olarak çözümün çıktısını seçin.
+* Power sanal aracılarına geri dön:
+    * Bir konu başlığı olarak çözümün çıkışını bir ileti olarak seçin.
 
 ## <a name="create-and-publish-a-knowledge-base"></a>Bilgi bankası oluşturma ve yayımlama
 
-1. Bir bilgi tabanı oluşturmak için [hızlı başlatıizleyin.](../Quickstarts/create-publish-knowledge-base.md) Bir bot oluşturma hakkında, son bölümü tamamlamayın. Bunun yerine, Güç Sanal Aracılar ile bir bot oluşturmak için bu öğretici kullanın.
+1. Bilgi Bankası oluşturmak için [hızlı](../Quickstarts/create-publish-knowledge-base.md) başlangıcı izleyin. Son bölümü, bir bot oluşturma hakkında tamammayın. Bunun yerine, Power sanal aracılarıyla bir bot oluşturmak için bu öğreticiyi kullanın.
 
     > [!div class="mx-imgBorder"]
-    > ![Yayınlanan bilgi tabanı ayarlarının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Yayımlanan bilgi tabanı ayarlarının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-    [QnA Maker](https://www.qnamaker.ai/) portalındaki **Ayarlar** sayfasında bulunan yayınlanmış bilgi tabanı ayarlarınızı girin. QnA Maker `GenerateAnswer` bağlantınızı yapılandırmak için [Power Automate adımı](#create-a-power-automate-flow-to-connect-to-your-knowledge-base) için bu bilgilere ihtiyacınız olacaktır.
+    [Soru-cevap oluşturma](https://www.qnamaker.ai/) portalındaki **Ayarlar** sayfasında bulunan yayımlanmış bilgi tabanı ayarlarınızı girin. Soru-Cevap Oluşturma `GenerateAnswer` bağlantınızı yapılandırmak Için [Power otomatikleştir adımında](#create-a-power-automate-flow-to-connect-to-your-knowledge-base) bu bilgilere ihtiyacınız olacaktır.
 
-1. QnA Maker portalında, **Ayarlar** sayfasında, bitiş noktası anahtarını, bitiş noktası ana bilgisayarını ve bilgi bankası kimliğini bulun.
+1. Soru-Cevap Oluşturma portalında, **Ayarlar** sayfasında, uç nokta anahtarını, uç nokta konağını ve BILGI Bankası kimliğini bulun.
 
-## <a name="create-an-agent-in-power-virtual-agents"></a>Güç Sanal Aracılar bir aracı oluşturma
+## <a name="create-an-agent-in-power-virtual-agents"></a>Power Virtual aracılarında bir aracı oluşturma
 
-1. [Power Virtual Agents için oturum açın.](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409) Okul unuzu veya iş e-posta hesabınızı kullanın.
-1. Bu ilk botunsa, aracının **ana** sayfasında olacaksın. Bu ilk bot değilse, sayfanın sağ üst alanından bot seçin ve **+ Yeni Bot**seçin.
+1. [Power sanal aracılarında oturum açın](https://go.microsoft.com/fwlink/?LinkId=2108000&clcid=0x409). Okul veya iş e-posta hesabınızı kullanın.
+1. İlk bot ise, aracının **ana** sayfasında olursunuz. İlk bot sizin değilse, sayfanın sağ üst kısmından bot ' ı seçin ve **+ yeni bot**' ı seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Power Virtual Agents ana sayfasının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-home.png)
 
-1. [QnA Maker](https://www.qnamaker.ai/) portalındaki **Ayarlar** sayfasında bulunan yayınlanmış bilgi tabanı ayarlarınızı girin.
+1. [Soru-cevap oluşturma](https://www.qnamaker.ai/) portalındaki **Ayarlar** sayfasında bulunan yayımlanmış bilgi tabanı ayarlarınızı girin.
 
-## <a name="topics-provided-in-the-bot"></a>Botta sağlanan konular
+## <a name="topics-provided-in-the-bot"></a>Bot 'ta sunulan konular
 
-Aracı, konu alanınızdaki soruları yanıtlamak için konu koleksiyonunu kullanır. Bu öğreticide, aracının sizin için sağlanan birçok konu vardır, kullanıcı konuları ve sistem konuları ayrılmıştır.
+Aracı konu alanındaki soruları yanıtlamak için konu koleksiyonunu kullanır. Bu öğreticide, aracı sizin için sunulan birçok konuya sahiptir ve Kullanıcı konuları ve sistem konuları ' na bölünmüştür.
 
 > [!div class="mx-imgBorder"]
-> ![Aracıda sağlanan konuların ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
+> ![Aracıda belirtilen konuların ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topics-provided.png)
 
 
 ## <a name="create-the-system-fallback-topic"></a>Sistem geri dönüş konusunu oluşturma
 
-Aracı herhangi bir konudan bilgi tabanınıza bağlanabilse de, bu öğretici *sistem geri dönüş* konusunu kullanır. Geri dönüş konusu, aracı bir yanıt buladığında kullanılır. Aracı, kullanıcının metnini QnA Maker'ın `GenerateAnswer` API'sine aktarıyor, yanıtı bilgi tabanınızdan alır ve kullanıcıya ileti olarak görüntüler.
+Aracı herhangi bir konudan bilgi tabanınızı bağlayabilse de, bu öğretici *sistem geri dönüş* konusunu kullanır. Aracı bir yanıt bulamadığında geri dönüş konusu kullanılır. Aracı kullanıcının metnini Soru-Cevap Oluşturma `GenerateAnswer` API 'sine geçirir, bilgi tabanınızdan yanıtı alır ve kullanıcıya ileti olarak görüntüler.
 
-1. Power [Virtual Agents](https://powerva.microsoft.com/#/) portalında, sağ üst köşede **Ayarlar** 'ı (vites simgesi) seçin. Sonra **Sistem Fallback**seçin.
-
-    > [!div class="mx-imgBorder"]
-    > ![System Fallback için Power Virtual Agents menü öğesinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
-
-1. Sistem geri dönüş konusu eklemek için **+ Ekle'yi** seçin.
+1. [Power Virtual Agents](https://powerva.microsoft.com/#/) portalında, sağ üst köşedeki **Ayarlar** ' ı (dişli simgesi) seçin. Ardından **sistem geri dönüş**' ı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Geri dönüş konusu eklemenin ekran görüntüsü.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+    > ![Sistem geri dönüşü için Power Virtual Agents menü öğesinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-system-fallback.png)
 
-1. Konu eklendikten sonra, yazar tuvalindeki geri dönüş konusunu yazarken **Geri Dönüş konusuna Git'i** seçin.
+1. Bir sistem geri dönüş konusu eklemek için **+ Ekle** ' yi seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Geri dönüş konusu ekleme ekranının ekran görüntüsü.](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-settings-add-fallback-topic.png)
+
+1. Konu eklendikten sonra, yazma tuvalindeki geri dönüş konusunu yazmak için **geri dönüş konusuna git** ' i seçin.
 
     > [!TIP]
-    > Geri dönüş konusuna geri dönmeniz gerekiyorsa, **Sistem** konularının bir parçası olarak **Konular** bölümünde kullanılabilir.
+    > Geri dönüş konusuna geri dönmeniz gerekirse, **sistem** konularının bir parçası olarak **konular** bölümünde bulunur.
 
-## <a name="use-the-authoring-canvas-to-add-an-action"></a>Eylem eklemek için yazma tuvalini kullanma
+## <a name="use-the-authoring-canvas-to-add-an-action"></a>Bir eylem eklemek için yazma tuvali 'ni kullanma
 
-Geri dönüş konusunu bilgi tabanınıza bağlamak için tuval yazan Power Virtual Agents'i kullanın. Konu tanınmayan kullanıcı metniyle başlar. Bu metni QnA Maker'a aktaran ve ardından yanıtı ileti olarak gösteren bir eylem ekleyin. Bir yanıtı görüntülemenin son [adımı,](#add-your-solutions-flow-to-power-virtual-agents)daha sonra bu öğreticide ayrı bir adım olarak işlenir.
+Bilgi bankalarınıza geri dönüş konusunu bağlamak için Power Virtual Agents yazma tuvalinden yararlanabilirsiniz. Konu, tanınmayan Kullanıcı metniyle başlar. Bu metni Soru-Cevap Oluşturma geçiren ve sonra yanıtı ileti olarak gösteren bir eylem ekleyin. Bir yanıtı görüntülemenin son adımı, Bu öğreticinin ilerleyen bölümlerinde [ayrı bir adım](#add-your-solutions-flow-to-power-virtual-agents)olarak işlenir.
 
-Bu bölümde geri dönüş konu konuşma akışı oluşturur.
+Bu bölüm, geri dönüş konusu konuşma akışını oluşturur.
 
-1. Yeni geri dönüş eylemi zaten konuşma akışı öğeleri olabilir. **Seçenekler** menüsünü seçerek **Artır öğesini** silin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Güç Sanal Ajanlar geri dönüş konu ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
-
-1. **İleti** **+** kutusundan akan bağlayıcıyı seçin ve ardından eylem **çağır'ı**seçin.
+1. Yeni geri dönüş eylemi, zaten konuşma akışı öğelerine sahip olabilir. **Seçenekler** menüsünü seçerek **ilerleme** öğesini silin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eylem çağrısının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
+    > ![Power Virtual Agents geri dönüş konusunun ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-fallback-topic-delete-escalate.png)
 
-1. **Akış oluştur**'u seçin. İşlem sizi Power Automate portalına götürür.
-
-    > [!div class="mx-imgBorder"]
-    > ![Akış Oluşturma ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
-
-## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Bilgi tabanınıza bağlanmak için Güç Otomatikleştir akışı oluşturun
-
-Aşağıdaki yordam, bir Güç Otomatikleştirme akışı oluşturur:
-* Gelen kullanıcı metnini alır ve QnA Maker'a gönderir.
-* QnA Maker üst yanıtını bir değişkene atar ve değişkeni (üst yanıt) yanıt olarak aracınıza geri gönderir.
-
-1. **Power Automate'de** **Akış Şablonu** sizin için başlatılır. Power **Virtual Agents** akış öğesinde, aracıdan gelen giriş değişkenini bilgi tabanınıza yapılandırmak için **Edit'i** seçin. Metin tabanlı giriş değişkeni aracınızın kullanıcı tarafından gönderilen metin sorusudur.
+1. Ileti kutusundan **+** bağlayıcı akışını seçin ve **Message** ardından **eylem çağır**' ı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Giriş değişkeninizi metin dizesi olarak yapılandırmak için Güç Otomatikleştirme seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
+    > ![Eylem çağırma ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/create-new-item-call-an-action.png)
 
-1. Bir metin girişi ekleyin ve `InputText`değişkeni adı `IncomingUserQuestion`, . Bu adlandırma, giriş metnini daha sonra oluşturduğunuz çıktı metninden ayırt edinmesine yardımcı olur.
-
-    > [!div class="mx-imgBorder"]
-    > ![Giriş değişken adını ve açıklamasını yapılandırmak için Power Automate seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
-
-1. Akışa **+** yeni bir adım eklemek için **Power Virtual Agents** kutusundan akan bağlayıcıyı seçin **(Power Virtual Agent'a İade değeri(ler)** öncesinde). Ardından **eylem ekle'yi**seçin.
-
-1. `Qna` **QnA Maker eylemlerini** bulmak için arama yapın ve ardından **yanıt oluştur'u**seçin.
+1. **Akış oluştur**'u seçin. İşlem sizi Power otomatikleştir portalına götürür.
 
     > [!div class="mx-imgBorder"]
-    > ![Yanıt Oluştur ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
+    > ![Akış oluştur ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/create-a-flow.png)
 
-    QnA Maker için gerekli bağlantı ayarları eylemde ve aracının soru ayarlarında görünür.
+## <a name="create-a-power-automate-flow-to-connect-to-your-knowledge-base"></a>Bilgi tabanınızı bağlamak için Power otomatikleştir akışı oluşturma
+
+Aşağıdaki yordam şu şekilde bir güç otomatikleştirme akışı oluşturur:
+* Gelen Kullanıcı metnini alır ve Soru-Cevap Oluşturma gönderir.
+* Soru-Cevap Oluşturma en iyi yanıtını bir değişkene atar ve bu değişkeni (üst yanıt), aracıya geri yanıt olarak gönderir.
+
+1. **Power otomatikleştirmede** **akış şablonu** sizin için başlatılır. **Güç sanal aracıları** akış öğesinde, aracıdan bilgi tabanınızdan gelen giriş değişkenini yapılandırmak için **Düzenle** ' yi seçin. Metin tabanlı giriş değişkeni, aracıınızdan Kullanıcı tarafından gönderilen metin sorusıdır.
+
+    > [!div class="mx-imgBorder"]
+    > ![Giriş değişkeninizi metin dizesi olarak yapılandırmak için Power otomatikleştir seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable.png)
+
+1. Bir metin girişi ekleyin ve bir açıklamasıyla birlikte değişkeni `InputText`adlandırın `IncomingUserQuestion`. Bu adlandırma, giriş metnini daha sonra oluşturduğunuz çıkış metniyle ayırt etmenize yardımcı olur.
+
+    > [!div class="mx-imgBorder"]
+    > ![Giriş değişkeni adı ve açıklamasını yapılandırmak için Power otomatikleştir seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-configure-input-variable-name-and-description.png)
+
+1. Akışa yeni **+** bir adım eklemek Için **Power Virtual Agents** kutusundan bağlayıcı akışını seçin ( **Power Virtual Agent 'a dönüş değerinden**önce). Ardından **Eylem Ekle**' yi seçin.
+
+1. Soru-Cevap Oluşturma eylemlerini `Qna` bulmak için arama **QnA Maker** yapın ve ardından **cevap oluştur**' u seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Yanıt oluştur ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/generate-answer-action-selected.png)
+
+    Soru-Cevap Oluşturma için gereken bağlantı ayarları, aracıdan gelen soru ayarlarında ve eylem ' de görünür.
 
     > [!div class="mx-imgBorder"]
     > ![Gerekli bağlantı ayarlarının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/generate-answer-knowledge-base-settings.png)
 
-1. Eylemi bilgi bankası kimliğiniz, bitiş noktası ana bilgisayarınız ve bitiş noktası anahtarınızla yapılandırın. Bunlar bilgi tabanınızın **Ayarlar** sayfasında, QnA Maker portalında bulunur.
+1. Eylemi Bilgi Bankası KIMLIĞI, uç nokta ana bilgisayarınız ve uç nokta anahtarınızla yapılandırın. Bunlar, Soru-Cevap Oluşturma portalında bilgi bankaınızın **Ayarlar** sayfasında bulunur.
 
     > [!div class="mx-imgBorder"]
-    > ![Yayınlanan bilgi tabanı ayarlarının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
+    > ![Yayımlanan bilgi tabanı ayarlarının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/published-knowledge-base-settings.png)
 
-1. **Soruyu**yapılandırmak için metin kutusunu seçin ve `InputText` ardından listeden seçin.
+1. **Soruyu**yapılandırmak için metin kutusunu seçin ve listeden öğesini seçin `InputText` .
 
-1. Akışa yeni bir adım eklemek için **+** **Yanıt oluştur** eylem kutusundan akan bağlayıcıyı seçin. Ardından **eylem ekle'yi**seçin.
+1. Akışa yeni bir adım eklemek için, **Yanıt oluştur** Eylem kutusundan **+** bağlayıcı akışını seçin. Ardından **Eylem Ekle**' yi seçin.
 
-1. Döndürülen yanıt metnini yakalamak için `GenerateAnswer`bir değişken eklemek `Initialize variable` için eylemi arayın ve seçin.
+1. Öğesinden `GenerateAnswer`döndürülen yanıt metnini yakalamak için bir değişken eklemek için, `Initialize variable` eylemi arayıp seçin.
 
-    Değişkenin adını '' `OutgoingQnAAnswer`olarak ayarlayın ve **String**olarak türünü seçin. **Değeri**ayarlama.
-
-    > [!div class="mx-imgBorder"]
-    > ![Çıktı değişkeninin başlatılmasının ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
-
-1. Akışa yeni bir adım eklemek **+** **için, Initialize değişken** eylem kutusundan akan bağlayıcıyı seçin. Ardından **eylem ekle'yi**seçin.
-
-1. Değişkene tüm bilgi tabanı JSON yanıtını ayarlamak için`Apply to each` eylemi arayın ve seçin. 'yi `GenerateAnswer` `answers`seçin.
-
-1. Yalnızca üst yanıtı döndürmek **için, her kutuya** aynı uygula'da **eylem ekle'yi**seçin. **Değişkeni Ayarla**ve Seç.
-
-    Değişken **ilerletmek** için ayarla kutusunda Ad **için**metin kutusunu seçin ve ardından listeden **GidenQnAAnswer'ı** seçin.
-
-    **Değer**için metin kutusunu seçin ve ardından listeden **Yanıtlar Yanıtı'nı** seçin.
+    Değişkenin adını olarak `OutgoingQnAAnswer`ayarlayın ve türü **dize**olarak seçin. **Değeri**ayarlama.
 
     > [!div class="mx-imgBorder"]
-    > ![Değişkenin adını ve değerini ayarlama ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
+    > ![Çıkış değişkenini başlatma ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/initialize-output-variable-for-qna-answer.png)
 
-1. Değişkeni (ve değerini) döndürmek **için, Power Virtual Agent akış öğesine İade değeri(ler) öğesini** seçin. Ardından **Edit** > **Çıktıekle'yi**seçin. Bir **Metin** çıktı türü seçin ve `FinalAnswer`sonra **Başlığı** girin. **Değer**için metin kutusunu seçin ve `OutgoingQnAAnswer` sonra değişkeni seçin.
+1. Akışa yeni bir adım eklemek için, **değişken Başlat** Eylem kutusundan **+** bağlayıcı akışını seçin. Ardından **Eylem Ekle**' yi seçin.
+
+1. Tüm Bilgi Bankası JSON yanıtını değişkene ayarlamak için,`Apply to each` eylemi arayıp seçin. `GenerateAnswer` `answers`Öğesini seçin.
+
+1. Yalnızca en üstteki yanıtı döndürmek için, her kutuya aynı **Uygula** kutusunda **Eylem Ekle**' yi seçin. **Değişken ayarla**' yı bulun ve seçin.
+
+    **Değişken ayarla** kutusunda **ad**' ın metin kutusunu seçin ve ardından listeden **Outgoingqnaanswer** ' ı seçin.
+
+    **Değer**için metin kutusunu seçin ve ardından listeden **cevap yanıtı** ' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![İade değerini ayarlama ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
+    > ![Değişken için ad ve değer ayarlamanın ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-flow-apply-to-each-set-variable.png)
+
+1. Değişkeni (ve değerini) döndürmek için, **Power Virtual Agent akış öğesinin dönüş değerlerini** seçin. Ardından,**Çıkış Ekle**' **yi seçin.** >  Bir **metin** çıkış türü seçin ve **başlığını** girin `FinalAnswer`. **Değer**için metin kutusunu seçin ve ardından `OutgoingQnAAnswer` değişkeni seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Dönüş değerini ayarlamanın ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-automate-flow-return-value.png)
 
 1. Akışı kaydetmek için **Kaydet**’i seçin.
 
-## <a name="create-a-solution-and-add-the-flow"></a>Bir çözüm oluşturun ve akış ekleyin
+## <a name="create-a-solution-and-add-the-flow"></a>Bir çözüm oluşturun ve akışı ekleyin
 
-Aracının akışı bulabilmesi ve akışa bağlanması için, akış bir Power Automate çözümüne dahil edilmelidir.
+Aracının akışı bulması ve akışa bağlanması için akışın bir güç otomatikleştirme çözümüne dahil olması gerekir.
 
-1. Power Automate portalında yken, sol daki gezintiden **Çözümler'i** seçin.
+1. Power otomatikleştir portalında hala, sol taraftaki gezinmede **çözümler** ' i seçin.
 
 1. **+ Yeni çözüm**’ü seçin.
 
-1. Görünen ad girin. Çözüm listesi, kuruluşunuzdaki veya okulunuzdaki tüm çözümleri içerir. Sadece çözümlerinize filtre uygulamanıza yardımcı olan bir adlandırma kuralı seçin. Örneğin, e-postanızı çözüm adınıza önek atabilirsiniz: `jondoe-power-virtual-agent-qnamaker-fallback`.
+1. Görünen ad girin. Çözüm listesi, kuruluşunuzdaki veya okulunuzdaki her çözümü içerir. Yalnızca çözümlerinizi filtrelemenize yardımcı olacak bir adlandırma kuralı seçin. Örneğin, e-postanızı çözümünüz adına önek olarak ekleyebilirsiniz: `jondoe-power-virtual-agent-qnamaker-fallback`.
 
-1. Seçenekler listesinden yayımcınızı seçin.
+1. Seçenekler listesinden yayımcıyı seçin.
 
 1. Ad ve sürüm için varsayılan değerleri kabul edin.
 
-1. İşlemi tamamlamak için **Oluştur'u** seçin.
+1. İşlemi tamamlaması için **Oluştur** ' u seçin.
 
 ## <a name="add-your-flow-to-the-solution"></a>Akışınızı çözüme ekleyin
 
-1. Çözümler listesinde, yeni oluşturduğunuz çözümü seçin. Listenin başında olmalı. Değilse, çözüm adının bir parçası olan e-posta adınıza göre arama yapın.
+1. Çözümler listesinde, az önce oluşturduğunuz çözümü seçin. Listenin en üstünde olmalıdır. Aksi takdirde, çözüm adının bir parçası olan e-posta adınızla arama yapın.
 
-1. Çözümde + **Varolan Ekle'yi**ve ardından listeden **Akış'ı** seçin.
+1. Çözümde **+ Varolanı Ekle**' yi seçin ve listeden **Flow** ' u seçin.
 
-1. Akışınızı bulun ve işlemi tamamlamak için **Ekle'yi** seçin. Çok sayıda akış varsa, en son akışı bulmak için **Değiştirilen** sütuna bakın.
+1. Akışınızı bulun ve ardından **Ekle** ' yi seçerek işlemi sona erdirin. Çok sayıda akış varsa, en son akışı bulmak için **değiştirilen** sütununa bakın.
 
-## <a name="add-your-solutions-flow-to-power-virtual-agents"></a>Power Virtual Agents'e çözümünüzün akışını ekleyin
+## <a name="add-your-solutions-flow-to-power-virtual-agents"></a>Çözümünüzün akışını Power Virtual Agent 'a ekleyin
 
-1. Power Virtual Agents'teki temsilcinizle tarayıcı sekmesine dönün. Yazma tuvali hala açık olmalıdır.
+1. Güç sanal aracılarında aracınızın bulunduğu tarayıcı sekmesine dönün. Yazma tuvali hala açık olmalıdır.
 
-1. Akışa yeni bir adım eklemek için, **İleti** eylem **+** kutusunun altına bağlayıcıyı seçin. Ardından **eylem çağır'ı**seçin.
+1. Akışa yeni bir adım eklemek için **ileti** eylemi kutusunda **+** bağlayıcısını seçin. Sonra **bir eylem çağır**' ı seçin.
 
-1. Yeni eylemde, **Tanınmayan Tetikleyici Tümceleme'nin**giriş değerini seçin. Bu, metni aracıdan akışa geçirir.
-
-    > [!div class="mx-imgBorder"]
-    > ![Tanınmayan tetikleyici tümceciği seçmek için Güç Sanal Aracılar seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
-
-1. Akışa yeni bir adım eklemek **için, Eylem** kutusunun altına konektörü **+** seçin. Ardından **İletiyi göster'i**seçin.
-
-1. İleti metnini `Your answer is:`girin, . Yerinde `FinalAnswer` araç çubuğunun işlevini kullanarak bağlam değişkeni olarak seçin.
+1. Yeni eylemde, **Unrecognizedtriggerdeyimin**giriş değerini seçin. Bu, metni aracıdan akışa geçirir.
 
     > [!div class="mx-imgBorder"]
-    > ![İleti metnini girmek için Güç Sanal Aracılar seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
+    > ![Tanınmayan tetikleyici tümceciğini seçmek için Power Virtual Agents seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-select-unrecognized-trigger-phrase.png)
 
-1. Bağlam araç çubuğundan, konu için yazma tuval ayrıntılarını kaydetmek için **Kaydet'i**seçin.
+1. Akışta yeni bir adım eklemek için, **eylem** kutusunda **+** bağlayıcısını seçin. Ardından **bir Ileti göster**' i seçin.
 
-İşte son ajan tuvali böyle görünüyor.
+1. İleti metnini girin `Your answer is:`. Yerinde `FinalAnswer` araç çubuğunun işlevini kullanarak bir bağlam değişkeni olarak öğesini seçin.
+
+    > [!div class="mx-imgBorder"]
+    > ![İleti metnini girmek için Power Virtual Agents seçeneğinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-show-message-final-answer.png)
+
+1. Bağlam araç çubuğundan **Kaydet**' i seçerek konunun yazma tuvali ayrıntılarını kaydedin.
+
+Son aracı tuvali aşağıdaki gibi görünür.
 
 > [!div class="mx-imgBorder"]
-> ![Son aracı tuvalin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
+> ![Son aracı tuvalinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-topic-authoring-canvas-full-flow.png)
 
-## <a name="test-the-agent"></a>Aracıyı test edin
+## <a name="test-the-agent"></a>Aracıyı test etme
 
-1. Test bölmesinde, Konular **arasında Parça'yı**geçiş. Bu, konular arasındaki ilerlemeyi ve tek bir konu içinde izlemenizi sağlar.
+1. Test bölmesinde, **konular arasında izleme**' yi değiştirin. Bu, konular arasındaki ilerlemeyi ve tek bir konu dahilinde izlemenize olanak sağlar.
 
-1. Aşağıdaki sırada kullanıcı metni girerek aracıtest edin. Yazma tuvali, başarılı adımları yeşil onay işaretiyle bildirir.
+1. Kullanıcı metnini aşağıdaki sırayla girerek aracıyı test edin. Yazma tuvali, başarılı adımları yeşil onay işaretiyle bildirir.
 
     |Soru sırası|Test soruları|Amaç|
     |--|--|--|
-    |1|Hello|Konuşmaya başlama|
-    |2|Mağaza saatleri|Örnek konu. Bu sizin için herhangi bir ek çalışma olmadan yapılandırılır.|
-    |3|Evet|Cevap olarak`Did that answer your question?`|
-    |4|Mükemmel|Cevap olarak`Please rate your experience.`|
-    |5|Evet|Cevap olarak`Can I help with anything else?`|
-    |6|Bilgi bankası nedir?|Bu soru, metni yanıtlamak için bilgi tabanınıza gönderen geri dönüş eylemini tetikler. Sonra cevap gösterilir. |
+    |1|Hello|Konuşmaya başla|
+    |2|Depolama saatleri|Örnek konu. Bu, sizin için sizin için herhangi bir ek iş olmadan yapılandırılır.|
+    |3|Yes|Yanıt olarak`Did that answer your question?`|
+    |4|Mükemmel|Yanıt olarak`Please rate your experience.`|
+    |5|Yes|Yanıt olarak`Can I help with anything else?`|
+    |6|Bilgi Bankası nedir?|Bu soru, yanıt vermek için metin bilgi tabanınızı gönderen geri dönüş eylemini tetikler. Ardından Yanıt gösterilir. |
 
 > [!div class="mx-imgBorder"]
-> ![Son aracı tuvalin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
+> ![Son aracı tuvalinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/power-virtual-agent-test-tracked.png)
 
 ## <a name="publish-your-bot"></a>Botunuzu yayımlayın
 
-Aracıyı okulunuzun veya kuruluşunuzun tüm üyeleri için kullanılabilir hale getirmek için yayımlamanız gerekir.
+Aracıyı okulunuzun veya kuruluşunuzun tüm üyeleri için kullanılabilir hale getirmek için, yayımlamanız gerekir.
 
-1. Soldaki gezintiden **Yayımla'yı**seçin. Ardından **Publish** sayfada Yayınla'yı seçin.
+1. Soldaki gezinmede **Yayımla**' yı seçin. Sonra sayfada **Yayımla** ' yı seçin.
 
-1. Demo web sitesinde bot deneyin **(Yayınla**altında bağlantı arayın).
+1. Tanıtım Web sitesinde botunuzu deneyin ( **Yayımla**altındaki bağlantıyı arayın).
 
-    Yeni bir web sayfası bot ile açılır. Bota aynı test sorusunu sorun:`What is a knowledge base?`
+    Bot 'unuzla yeni bir Web sayfası açılır. Bot 'a aynı test sorusunu sorun:`What is a knowledge base?`
 
     > [!div class="mx-imgBorder"]
-    > ![Son aracı tuvalin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
+    > ![Son aracı tuvalinin ekran görüntüsü](../media/how-to-integrate-power-virtual-agent/demo-chat-bot.png)
 
-## <a name="share-your-bot"></a>Botunuzu paylaşın
+## <a name="share-your-bot"></a>Botunuzu paylaşma
 
-Demo web sitesini paylaşmak için, bir kanal olarak yapılandırın.
+Tanıtım Web sitesini paylaşmak için kanal olarak yapılandırın.
 
-1. Soldaki gezintiden Kanalları **Manage** > **Yönet'i**seçin.
+1. Sol taraftaki gezinmede**kanalları** **Yönet** > ' i seçin.
 
-1. Kanallar listesinden **Demo web sitesini** seçin.
+1. Kanallar listesinden **demo web sitesi** ' ni seçin.
 
-1. Bağlantıyı kopyalayın ve **Kaydet'i**seçin. Demo web sitenizin bağlantısını okul veya kuruluş üyelerinize gönderilen bir e-postaya yapıştırın.
+1. Bağlantıyı kopyalayın ve **Kaydet**' i seçin. Tanıtım Web sitenizin bağlantısını okulunuza veya kuruluş üyelerinize bir e-postaya yapıştırın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilgi tabanıyla yaptığınız iş bittiğinde, Azure portalındaki QnA Maker kaynaklarını kaldırın.
+Bilgi Bankası ile işiniz bittiğinde, Azure portal Soru-Cevap Oluşturma kaynakları kaldırın.
 
 ## <a name="next-step"></a>Sonraki adım
 
@@ -302,4 +302,4 @@ Bilgi tabanıyla yaptığınız iş bittiğinde, Azure portalındaki QnA Maker k
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 * [Power Virtual Agents](https://docs.microsoft.com/power-virtual-agents/)
 * [Power Automate](https://docs.microsoft.com/power-automate/)
-* [QnA Maker konektörü](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) ve [konektör ayarları](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)
+* [Soru-cevap oluşturma Bağlayıcısı](https://us.flow.microsoft.com/connectors/shared_cognitiveservicesqnamaker/qna-maker/) ve [bağlayıcı ayarları](https://docs.microsoft.com/connectors/cognitiveservicesqnamaker/)

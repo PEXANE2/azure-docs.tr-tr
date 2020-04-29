@@ -1,55 +1,55 @@
 ---
 title: Kaynak kilitlemeyi anlama
-description: Bir plan atarken kaynakları korumak için Azure Planları'ndaki kilitleme seçenekleri hakkında bilgi edinin.
+description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 03/25/2020
 ms.topic: conceptual
 ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383603"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Planları'nda kaynak kilitlemeyi anlama
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
-Ölçekte tutarlı ortamlar oluşturulması ancak bu tutarlılığı koruyacak bir mekanizma varsa gerçekten değerlidir. Bu makalede, Azure Planları'nda kaynak kilitlemenin nasıl çalıştığı açıklanmaktadır. Kaynak kilitleme ve _reddet atamalarının_uygulanmasına bir örnek görmek için, [koruma yeni kaynaklar](../tutorials/protect-new-resources.md) öğreticisine bakın.
+Ölçekteki tutarlı ortamların oluşturulması, bu tutarlılığı sürdürmek için bir mekanizma varsa gerçek anlamda değerlidir. Bu makalede, Azure şemaları 'nda kaynak kilitleme 'nin nasıl çalıştığı açıklanmaktadır. Kaynak kilitleme ve _reddetme atamalarından_oluşan bir örnek görmek için bkz. [yeni kaynakları koruma](../tutorials/protect-new-resources.md) öğreticisi.
 
 > [!NOTE]
-> Azure Planları tarafından dağıtılan kaynak kilitleri yalnızca plan ataması tarafından dağıtılan kaynaklara uygulanır. Kaynak gruplarında zaten var olanlar gibi varolan kaynakların kilidi eklenmez.
+> Azure şemaları tarafından dağıtılan kaynak kilitleri yalnızca şema atama tarafından dağıtılan kaynaklara uygulanır. Zaten var olan kaynak gruplarında olanlar gibi mevcut kaynaklar bunlara kilit eklenmez.
 
-## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumları
+## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumlar
 
-Kilitleme Modu plan ataması için geçerlidir ve üç seçeneği vardır: **Kilitleme ,** **Salt Oku**, veya **Silmeyin**. Kilitleme modu, bir plan ataması sırasında yapılandırma sırasında yapılandırılır. Plan ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
-Ancak kilitleme modları Azure Planları dışında değiştirilemez.
+Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **kilitleme**, **salt okuma**veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
+Ancak, kilitleme modları Azure şemaları dışında değiştirilemez.
 
-Bir plan atamasında eserler tarafından oluşturulan kaynaklar dört durum vardır: **Kilitli Değil**, **Yalnızca Oku**, **Düzenleyemiyor / Sil,** veya **Silemez**. Her yapı türü **Kilitli Olmayan** durumda olabilir. Aşağıdaki tablo, kaynağın durumunu belirlemek için kullanılabilir:
+Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
 
-|Mod|Artefakt Kaynak Türü|Durum|Açıklama|
+|Mod|Yapıt kaynak türü|Durum|Açıklama|
 |-|-|-|-|
-|Kilitleme|*|Kilitli Değil|Kaynaklar Azure Planları tarafından korunmaz. Bu durum, bir plan ataması dışından bir **Salt Oku** veya **Silme yat kaynak** grubu yapısına eklenen kaynaklar için de kullanılır.|
-|Salt Okunur|Kaynak grubu|Düzenleyemiyor / Sil|Kaynak grubu yalnızca okunur ve kaynak grubundaki etiketler değiştirilemez. **Kilitli olmayan** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
-|Salt Okunur|Kaynak dışı grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez -- değişiklik olmaz ve silinemez.|
-|Silme|*|Silemez|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli olmayan** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
+|Kilitleme|*|Kilitlenmedi|Kaynaklar Azure şemaları tarafından korunmuyor. Bu durum, bir **salt okunurdur** veya bir şema atamasının dışında kaynak grubu yapıtı **silme** ' ya eklenen kaynaklar için de kullanılır.|
+|Salt Okunur|Kaynak grubu|Düzenleme/silme yapılamıyor|Kaynak grubu salt okunurdur ve kaynak grubundaki Etiketler değiştirilemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
+|Salt Okunur|Kaynak olmayan Grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez--değişiklik yok ve silinemez.|
+|Silme|*|Silinemiyor|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 
 ## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
 
-Abonelikte uygun [rol tabanlı erişim denetimine](../../../role-based-access-control/overview.md) (RBAC) sahip birinin (RBAC) 'Sahip' rolü gibi herhangi bir kaynağı değiştirmesine veya silmesine izin verilmesi genellikle mümkündür. Azure Blueprints dağıtılan bir atamanın bir parçası olarak kilitleme uyguladığında bu erişim söz konusu değildir. Atama **Yalnızca Oku** veya Silme **seçeneğiyle** ayarlanmışsa, abonelik sahibi bile engellenen eylemi korumalı kaynak üzerinde gerçekleştiremez.
+Genellikle abonelikte, ' sahip ' rolü gibi uygun [rol tabanlı erişim denetimi](../../../role-based-access-control/overview.md) (RBAC) ile herhangi bir kaynağı değiştirme veya silme izni verilmesi olasıdır. Bu erişim, Azure şemaları, dağıtılan bir atamanın parçası olarak kilitlemeyi uygularken durum değildir. Atama salt **okuma** veya **silme** seçeneği ile ayarlandıysa, abonelik sahibi korumalı kaynak üzerinde engellenmiş eylemi gerçekleştirebilir.
 
-Bu güvenlik önlemi, tanımlanan planın tutarlılığını ve yanlışlıkla veya programlı silme veya değiştirmeden oluşturmak üzere tasarlandığı ortamı korur.
+Bu güvenlik ölçüsü, tanımlanan şema 'in ve yanlışlıkla ya da programlı silme veya değiştirme işleminden oluşturmakta tasarlanan ortamın tutarlılığını korur.
 
-### <a name="assign-at-management-group"></a>Yönetim grubunda atama
+### <a name="assign-at-management-group"></a>Yönetim grubuna ata
 
-Abonelik sahiplerinin plan atamasını kaldırmasını önlemek için ek bir seçenek, planı bir yönetim grubuna atamaktır. Bu senaryoda, yalnızca yönetim grubunun **sahipleri** plan atamasını kaldırmak için gereken izinlere sahiptir.
+Abonelik sahiplerinin bir şema atamasını kaldırmasını önlemeye yönelik ek bir seçenek, şema 'in bir yönetim grubuna atanması olur. Bu senaryoda, BLUEPRINT atamasını kaldırmak için gerekli izinlere sahip yalnızca yönetim grubunun **sahipleri** vardır.
 
-Planı abonelik yerine bir yönetim grubuna atamak için, REST API değişiklikleri aşağıdaki gibi görünmesi için çağırır:
+Şemayı bir abonelik yerine bir yönetim grubuna atamak için, REST API çağrısı şuna benzer şekilde değişir:
 
 ```http
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
 ```
 
-Tarafından `{assignmentMG}` tanımlanan yönetim grubu, yönetim grubu hiyerarşisi içinde olmalı veya plan tanımının kaydedildiği aynı yönetim grubu olmalıdır.
+Tarafından `{assignmentMG}` tanımlanan yönetim grubu, yönetim grubu hiyerarşisinde olmalıdır ya da şema tanımının kaydedildiği yönetim grubu aynı olmalıdır.
 
-Plan atamasının istek gövdesi aşağıdaki gibi görünür:
+Şema atamasının istek gövdesi şöyle görünür:
 
 ```json
 {
@@ -85,39 +85,39 @@ Plan atamasının istek gövdesi aşağıdaki gibi görünür:
 }
 ```
 
-Bu istek gövdesindeki ve aboneliğe atanan temel `properties.scope` fark, özelliktir. Bu gerekli özellik, plan atamasının geçerli olduğu aboneliğe ayarlanmalıdır. Abonelik, plan atamasının depolandığı yönetim grubu hiyerarşisinin doğrudan bir alt nedeni olmalıdır.
+Bu istek gövdesinde ve bir aboneliğe atanmakta olan anahtar farkı `properties.scope` özelliktir. Bu gerekli özellik, şema atamasının uygulandığı aboneliğe ayarlanmalıdır. Abonelik, şema atamasının depolandığı yönetim grubu hiyerarşisinin doğrudan bir alt öğesi olmalıdır.
 
 > [!NOTE]
-> Yönetim grubu kapsamına atanan bir plan hala bir abonelik düzeyi planı ataması olarak çalışır. Tek fark, abonelik sahiplerinin atamayı ve ilişkili kilitleri kaldırmasını önlemek için plan atamasının depolandığı yerdir.
+> Yönetim grubu kapsamına atanan bir şema, hala abonelik düzeyinde bir şema ataması olarak çalışır. Tek fark, abonelik sahiplerinin atamayı ve ilişkili kilitleri kaldırmasını engellemek için şema atamasının depolandığı yerdir.
 
-## <a name="removing-locking-states"></a>Kilitleme durumlarını kaldırma
+## <a name="removing-locking-states"></a>Kilitleme durumları kaldırılıyor
 
-Bir atama tarafından korunan bir kaynağı değiştirmek veya silmek gerekli hale gelirse, bunu yapmanın iki yolu vardır.
+Atama tarafından korunan bir kaynağı değiştirmek veya silmek için gerekli hale gelirse, bunu iki şekilde yapabilirsiniz.
 
-- Plan atamasını **Kilitle'nin** kilitleme moduna güncelleştirme
-- Plan atamasını silme
+- Şema atamasını kilitleme **moduna yükseltme**
+- Şema atamasını silme
 
-Atama kaldırıldığında, Azure Planları tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak geride bırakılır ve normal yollarla silinmesi gerekir.
+Atama kaldırıldığında, Azure şemaları tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak arka planda bırakılır ve normal yollarla silinmelidir.
 
-## <a name="how-blueprint-locks-work"></a>Plan kilitleri nasıl çalışır?
+## <a name="how-blueprint-locks-work"></a>Şema kilitleri nasıl çalışır?
 
-Bir RBAC [reddet atamaları](../../../role-based-access-control/deny-assignments.md) reddet eylem bir plan atama sırasında yapı kaynaklarına uygulanır atama **Yalnızca Oku** veya **Silmem** seçeneği seçti. Reddet eylemi, plan atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimlikle yapı kaynaklarından kaldırılabilir. Bu güvenlik önlemi kilitleme mekanizmasını zorlar ve Azure Planları dışındaki plan kilidinin kaldırılmasını önler.
+Atama **yalnızca okuma** veya **silme** seçeneği belirlenmişse, bir şema atama sırasında yapıt [kaynaklarına reddetme izni reddetme eylemi](../../../role-based-access-control/deny-assignments.md) uygulanır. Reddetme eylemi, BLUEPRINT atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimliğe göre yapıt kaynaklarından kaldırılabilir. Bu güvenlik ölçüsü, kilitleme mekanizmasını zorlar ve Azure şemaları dışında şema kilidinin kaldırılmasını engeller.
 
-:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Kaynak grubunda plan reddi ataması" border="false":::
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Kaynak grubunda Blueprint reddetme ataması" border="false":::
 
-Her modun [reddet atama özellikleri](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) aşağıdaki gibidir:
+Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) aşağıdaki gibidir:
 
-|Mod |İzinler.Eylemler |İzinler.NotActions |Müdürler[i]. Türü |DışlamaMüdürleri[i]. Kimliği | DoNotApplyToChildScopes |
+|Mod |İzinler. eylemler |Permissions. NotActions |Sorumlular [i]. Türüyle |Excludesorumlularını [i]. Numarasını | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Salt Okunur |**\*** |**\*/oku** |SystemDefined (Herkes) |plan atama ve **dışlanmış Principals** kullanıcı tanımlı |Kaynak grubu - _doğru_; Kaynak - _yanlış_ |
-|Silme |**\*/silme** | |SystemDefined (Herkes) |plan atama ve **dışlanmış Principals** kullanıcı tanımlı |Kaynak grubu - _doğru_; Kaynak - _yanlış_ |
+|Salt Okunur |**\*** |**\*/Read** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Silme |**\*/Delete** | |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
 
 > [!IMPORTANT]
-> Azure Kaynak Yöneticisi rol atama ayrıntılarını 30 dakikaya kadar önbelleğe alabilirsiniz. Sonuç olarak, reddet atamaları plan kaynakları üzerinde eylem inkar hemen tam etkili olmayabilir. Bu süre zarfında, plan kilitleri tarafından korunması amaçlanan bir kaynağı silmek mümkün olabilir.
+> Azure Resource Manager, rol atama ayrıntılarını 30 dakikaya kadar önbelleğe alır. Sonuç olarak, şemayı reddetme, şema kaynaklarını reddetme eylemini reddetme işlemleri hemen etkili olmayabilir. Bu süre boyunca, BLUEPRINT kilitleri tarafından korunması amaçlanan bir kaynağı silmek mümkün olabilir.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Bir asıl atamayı reddetme atamasından hariç tutma
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Bir sorumluyu reddetme atamasından dışlama
 
-Bazı tasarım veya güvenlik senaryolarında, bir asıl'ı plan atamasının oluşturduğu [reddet atamasından](../../../role-based-access-control/deny-assignments.md) hariç tutmak gerekebilir. Bu adım, [atama yı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **dışlanmış Principals** dizisine en fazla beş değer eklenerek REST API'da yapılır. Aşağıdaki atama tanımı **dışlanmış Principals**içeren bir istek gövdesi örneğidir:
+Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu adım, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır. Aşağıdaki atama tanımı, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
 
 ```json
 {
@@ -159,9 +159,9 @@ Bazı tasarım veya güvenlik senaryolarında, bir asıl'ı plan atamasının ol
 }
 ```
 
-## <a name="exclude-an-action-from-a-deny-assignment"></a>Reddet atamasından bir eylemi hariç tutma
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Reddetme atamasından bir eylemi hariç tutma
 
-Bir plan [atamasında bir atamayı reddetme](../../../role-based-access-control/deny-assignments.md) [atamasında bir asıl hariç tutmak](#exclude-a-principal-from-a-deny-assignment) gibi, belirli [RBAC işlemlerini](../../../role-based-access-control/resource-provider-operations.md)hariç tutabilirsiniz. **Properties.locks** bloğu içinde, **dışlanan Principals** aynı yerde, **dışlanmış Eylemler** eklenebilir:
+Bir şema atamasında bir [reddetme atamasında](../../../role-based-access-control/deny-assignments.md) [sorumluyu dışlamala](#exclude-a-principal-from-a-deny-assignment) benzer şekilde, belirli [RBAC işlemlerini](../../../role-based-access-control/resource-provider-operations.md)hariç bırakabilirsiniz. **Properties. kilitleri** bloğunda, **excludedsorumlularını** aynı yerde, bir **excludedadıctions** eklenebilir:
 
 ```json
 "locks": {
@@ -177,13 +177,13 @@ Bir plan [atamasında bir atamayı reddetme](../../../role-based-access-control/
 },
 ```
 
-**Dışlanan Principals** açık olmalıdır, **dışlanmış Eylemler** girişleri `*` RBAC işlemlerinin joker karakter eşleştirilmesi için yararlanabilir.
+**Excludedsorumlularını** açık olmalıdır, ancak **excludedadctions** girişleri, RBAC işlemlerinin joker karakter `*` eşleştirmesinin kullanımını sağlayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yeni [kaynakları koru](../tutorials/protect-new-resources.md) öğreticisini izleyin.
-- [Plan yaşam döngüsü](lifecycle.md)hakkında bilgi edinin.
+- [Yeni kaynakları koru](../tutorials/protect-new-resources.md) öğreticisini izleyin.
+- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
-- Varolan atamaları nasıl [güncelleştirini](../how-to/update-existing-assignments.md)öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

@@ -1,61 +1,61 @@
 ---
-title: Yönetim gruplarınızla nasıl çalışılabilen - Azure Yönetimi
-description: Yönetim grubu hiyerarşinizi nasıl görüntüleyecek, koruyacağınızı, güncelleştirecek ve sileceklerinizi öğrenin.
+title: Yönetim gruplarınız ile çalışma-Azure Idare
+description: Yönetim grubu hiyerarşinizi görüntülemeyi, bakımını yapmayı, güncelleştirmeyi ve silmeyi öğrenin.
 ms.date: 04/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: 423d1837c3d5710e24abb94f5411200319e8a8aa
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381675"
 ---
-# <a name="manage-your-resources-with-management-groups"></a>Kaynaklarınızı yönetim gruplarıyla yönetin
+# <a name="manage-your-resources-with-management-groups"></a>Kaynakları yönetim gruplarıyla yönetme
 
 Kuruluşunuzda birden fazla abonelik varsa bu abonelikler için verimli bir şekilde erişim, ilke ve uyumluluk yönetimi gerçekleştirmek isteyebilirsiniz. Azure yönetim grupları, aboneliklerin üzerinde bir kapsam düzeyi sunar. Abonelikleri "yönetim grupları" adlı kapsayıcılarla düzenler ve idare koşullarınızı bu yönetim gruplarına uygularsınız. Bir yönetim grubu içindeki aboneliklerin tümü otomatik olarak yönetim grubuna uygulanmış olan koşulları devralır.
 
-Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar. Yönetim grupları hakkında daha fazla bilgi edinmek için, [azure yönetim gruplarıyla kaynaklarınızı](./overview.md)düzenleyin'e bakın.
+Yönetim grupları, sahip olabileceğiniz abonelik türüne bakılmaksızın kurumsal düzeyde yönetimi büyük ölçekte sunar. Yönetim grupları hakkında daha fazla bilgi edinmek için bkz. [Azure Yönetim gruplarıyla kaynaklarınızı düzenleme](./overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 > [!IMPORTANT]
-> Azure Kaynak Yöneticisi kullanıcı belirteçleri ve yönetim grubu önbelleği, yenilemek zorunda kalmadan önce 30 dakika dayanır. Bir yönetim grubunu veya aboneliği taşımak gibi herhangi bir eylem yaptıktan sonra, göstermek 30 dakika kadar sürebilir. Güncelleştirmeleri daha erken görmek için tarayıcıyı yenileyerek, oturum unuzu ve dışarıda oturum unuzu yenileyerek veya yeni bir belirteç isteyerek belirtecinizi güncelleştirmeniz gerekir.  
+> Azure Resource Manager Kullanıcı belirteçleri ve yönetim grubu önbelleği, yenilemeye zorlanmadan önce 30 dakika sürer. Bir yönetim grubu veya aboneliğini taşıma gibi herhangi bir eylem gerçekleştirdikten sonra, bu işlemin görünmesi 30 dakika kadar sürebilir. Güncelleştirmeleri daha erken görmek için, tarayıcıyı yenileyerek, oturum açıp kapatarak veya yeni bir belirteç isteyerek belirtecinizi güncelleştirmeniz gerekir.  
 
-## <a name="change-the-name-of-a-management-group"></a>Yönetim grubunun adını değiştirme
+## <a name="change-the-name-of-a-management-group"></a>Bir yönetim grubunun adını değiştirme
 
-Portal, PowerShell veya Azure CLI'yi kullanarak yönetim grubunun adını değiştirebilirsiniz.
+Portal, PowerShell veya Azure CLı kullanarak yönetim grubunun adını değiştirebilirsiniz.
 
-### <a name="change-the-name-in-the-portal"></a>Portaldaki adı değiştirme
+### <a name="change-the-name-in-the-portal"></a>Portalda adı değiştirme
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
 1. Yeniden adlandırmak istediğiniz yönetim grubunu seçin.
 
-1. **Ayrıntıları**seçin.
+1. **Ayrıntılar**' ı seçin.
 
-1. Sayfanın üst kısmındaki **Yeniden Adlandır grubu** seçeneğini seçin.
+1. Sayfanın üst kısmındaki **grubu yeniden adlandır** seçeneğini belirleyin.
 
-   :::image type="content" source="./media/detail_action_small.png" alt-text="Yönetim grubu sayfasında Grup'u yeniden adlandır" border="false":::
+   :::image type="content" source="./media/detail_action_small.png" alt-text="Yönetim grubu sayfasındaki Grup seçeneğini yeniden adlandır" border="false":::
 
-1. Menü açıldığında, görüntülenmek istediğiniz yeni adı girin.
+1. Menü açıldığında, görüntülenmesini istediğiniz yeni adı girin.
 
-   :::image type="content" source="./media/rename_context.png" alt-text="Yönetim grubunu yeniden adlandırmak için Grup bölmesini yeniden adlandırın" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="Grup bölmesini, yönetim grubunu yeniden adlandırılacak şekilde yeniden adlandır" border="false":::
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-### <a name="change-the-name-in-powershell"></a>PowerShell'de adı değiştirme
+### <a name="change-the-name-in-powershell"></a>PowerShell 'de adı değiştirme
 
-Görüntü adını güncelleştirmek için **Update-AzManagementGroup**kullanın. Örneğin, bir yönetim grubu görüntüleminin adını "Contoso BT"den "Contoso Group" olarak değiştirmek için aşağıdaki komutu çalıştırAbilirsiniz:
+Görünen adı güncelleştirmek için **Update-AzManagementGroup**kullanın. Örneğin, bir yönetim grubu görünen adını "contoso IT" iken "contoso Group" olarak değiştirmek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
 Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
-### <a name="change-the-name-in-azure-cli"></a>Azure CLI'de adı değiştirme
+### <a name="change-the-name-in-azure-cli"></a>Azure CLı 'de adı değiştirme
 
-Azure CLI için güncelleştirme komutunu kullanın.
+Azure CLı için Update komutunu kullanın.
 
 ```azurecli-interactive
 az account management-group update --name 'Contoso' --display-name 'Contoso Group'
@@ -65,39 +65,39 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 Bir yönetim grubunu silmek için aşağıdaki gereksinimlerin karşılanması gerekir:
 
-1. Yönetim grubu altında alt yönetim grubu veya abonelik yoktur.
+1. Yönetim grubu altında alt yönetim grubu veya abonelik yok.
 
-   - Bir abonelik veya yönetim grubunu başka bir yönetim grubuna taşımak için [bkz.](#moving-management-groups-and-subscriptions)
+   - Bir aboneliği veya yönetim grubunu başka bir yönetim grubuna taşımak için bkz. [hiyerarşideki Yönetim gruplarını ve abonelikleri taşıma](#moving-management-groups-and-subscriptions).
 
-1. Yönetim grubu ("Sahibi", "Katkıda Bulunan", veya "Yönetim Grubu Katılımcısı") hakkında yazma izinleri almanız gerekir. Hangi izinlere sahip olduğunuzu görmek için yönetim grubunu seçin ve ardından **IAM'yi**seçin. RBAC Rolleri hakkında daha fazla bilgi edinmek için bkz.  
-   [RBAC ile erişimi ve izinleri yönetin.](../../role-based-access-control/overview.md)
+1. Yönetim grubu ("sahip", "katkıda bulunan" veya "yönetim grubu katılımcısı") üzerinde yazma izinlerine sahip olmanız gerekir. Sahip olduğunuz izinleri görmek için yönetim grubunu seçin ve ardından **IAM**' i seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz.  
+   [RBAC ile erişimi ve Izinleri yönetin](../../role-based-access-control/overview.md).
 
-### <a name="delete-in-the-portal"></a>Portalda silme
+### <a name="delete-in-the-portal"></a>Portalda Sil
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
 1. Silmek istediğiniz yönetim grubunu seçin.
 
-1. **Ayrıntıları**seçin.
+1. **Ayrıntılar**' ı seçin.
 
-1. **Sil'i** Seçin
+1. **Sil** ' i seçin
 
-   :::image type="content" source="./media/delete.png" alt-text="Grup seçeneğini silme" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="Grup silme seçeneği" border="false":::
 
    > [!TIP]
-   > Simge devre dışı bırakılırsa, fare seçicinizi simgenin üzerinde gezinmek size nedenini gösterir.
+   > Simge devre dışıysa, simgenin üzerinde fare seçicinizi, nedenini gösterir.
 
 1. Yönetim grubunu silmek istediğinizi onaylayan bir pencere açılır.
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="Grup onay pencereni silme" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="Grup onay penceresini Sil" border="false":::
 
-1. **Evet'i**seçin.
+1. **Evet**' i seçin.
 
-### <a name="delete-in-powershell"></a>PowerShell içinde silme
+### <a name="delete-in-powershell"></a>PowerShell 'de Sil
 
-Yönetim gruplarını silmek için PowerShell içindeki **Kaldır-AzManagementGroup** komutunu kullanın.
+Yönetim gruplarını silmek için PowerShell içindeki **Remove-AzManagementGroup** komutunu kullanın.
 
 ```azurepowershell-interactive
 Remove-AzManagementGroup -GroupName 'Contoso'
@@ -105,43 +105,43 @@ Remove-AzManagementGroup -GroupName 'Contoso'
 
 ### <a name="delete-in-azure-cli"></a>Azure CLI ile silme
 
-Azure CLI ile az hesap yönetimi grubu silme komutunu kullanın.
+Azure CLı ile az Account Management-Group Delete komutunu kullanın.
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'
 ```
 
-## <a name="view-management-groups"></a>Yönetim gruplarını görüntüleme
+## <a name="view-management-groups"></a>Yönetim gruplarını görüntüle
 
-Doğrudan veya devralınan Bir RBAC rolüne sahip olduğunuz herhangi bir yönetim grubunu görüntüleyebilirsiniz.  
+Üzerinde doğrudan veya devralınmış bir RBAC rolüne sahip olduğunuz herhangi bir yönetim grubunu görüntüleyebilirsiniz.  
 
 ### <a name="view-in-the-portal"></a>Portalda görüntüle
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
-1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişebildiğiniz tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adını seçmek sizi hiyerarşideki bir düzeye götürür. Gezinti, dosya gezgini ile aynı şekilde çalışır.
+1. Yönetim grubu hiyerarşisi sayfası yüklenir. Bu sayfa, erişiminiz olan tüm yönetim gruplarını ve abonelikleri keşfedebileceğiniz yerdir. Grup adı seçildiğinde hiyerarşide bir düzey yer alır. Gezinti, dosya Gezgini ile aynı şekilde çalışmaktadır.
 
-1. Yönetim grubunun ayrıntılarını görmek için, yönetim grubunun başlığının yanındaki **(ayrıntılar)** bağlantısını seçin. Bu bağlantı kullanılamıyorsa, bu yönetim grubunu görüntüleme izniniz yoktur.
+1. Yönetim grubunun ayrıntılarını görmek için yönetim grubunun başlığının yanındaki **(Ayrıntılar)** bağlantısını seçin. Bu bağlantı kullanılamıyorsa, bu yönetim grubunu görüntüleme izniniz yok.
 
    :::image type="content" source="./media/main.png" alt-text="Ana" border="false":::
 
-### <a name="view-in-powershell"></a>PowerShell'de Görüntüle
+### <a name="view-in-powershell"></a>PowerShell 'de görüntüle
 
-Tüm grupları almak için Get-AzManagementGroup komutunu kullanırsınız. Yönetim grubu GET PowerShell komutlarının tam listesi için [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) modüllerine bakın.  
+Tüm grupları almak için Get-AzManagementGroup komutunu kullanın. Yönetim grubu Al PowerShell komutlarını tam listesi için bkz. [az. resources](/powershell/module/az.resources/Get-AzManagementGroup) Modules.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
 ```
 
-Tek bir yönetim grubunun bilgileri için -GroupName parametresini kullanın
+Tek bir yönetim grubunun bilgileri için-GroupName parametresini kullanın
 
 ```azurepowershell-interactive
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-Belirli bir yönetim grubunu ve altındaki hiyerarşinin tüm düzeylerini döndürmek için **-Genişlet** ve **-Yeniden Lanetleme** parametrelerini kullanın.  
+Belirli bir yönetim grubunu ve altındaki hiyerarşinin tüm düzeylerini döndürmek için **-Expand** ve **-Recurse** parametreleri kullanın.  
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -176,21 +176,21 @@ DisplayName : TestRecurseChild
 Children    :
 ```
 
-### <a name="view-in-azure-cli"></a>Azure CLI'de Görünüm
+### <a name="view-in-azure-cli"></a>Azure CLı 'de görüntüle
 
-Tüm grupları almak için liste komutunu kullanırsınız.  
+Tüm grupları almak için List komutunu kullanın.  
 
 ```azurecli-interactive
 az account management-group list
 ```
 
-Tek bir yönetim grubunun bilgileri için, göster komutunu kullanın
+Tek bir yönetim grubunun bilgileri için göster komutunu kullanın
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso'
 ```
 
-Belirli bir yönetim grubunu ve altındaki hiyerarşinin tüm düzeylerini döndürmek için **-Genişlet** ve **-Yeniden Lanetleme** parametrelerini kullanın.
+Belirli bir yönetim grubunu ve altındaki hiyerarşinin tüm düzeylerini döndürmek için **-Expand** ve **-Recurse** parametreleri kullanın.
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso' -e -r
@@ -198,80 +198,80 @@ az account management-group show --name 'Contoso' -e -r
 
 ## <a name="moving-management-groups-and-subscriptions"></a>Yönetim gruplarını ve abonelikleri taşıma   
 
-Bir yönetim grubu oluşturmanın bir nedeni, abonelikleri bir araya getirmektir. Yalnızca yönetim grupları ve abonelikler başka bir yönetim grubunun çocukları yapılabilir. Yönetim grubuna taşınan bir abonelik, tüm kullanıcı erişimini ve ilkeleri üst yönetim grubundan devralır
+Bir yönetim grubu oluşturmanın bir nedeni, abonelikleri birlikte paketlemenize neden olur. Yalnızca yönetim grupları ve abonelikler başka bir yönetim grubunun alt öğeleri haline getirilebilir. Bir yönetim grubuna taşınan bir abonelik, tüm Kullanıcı erişimini ve ilkelerini üst yönetim grubundan devralır
 
-Bir yönetim grubunu veya aboneliği başka bir yönetim grubunun çocuğu olarak taşınırken üç kuralın doğru olarak değerlendirilmesi gerekir.
+Bir yönetim grubu veya aboneliğini başka bir yönetim grubunun alt öğesi olacak şekilde taşırken, üç kural doğru olarak değerlendirilmelidir.
 
-Taşıma eylemini yapıyorsanız, şunları yapmanız gerekir: 
+Taşıma eylemini gerçekleştiriyorsanız şunlar gerekir: 
 
-- Yönetim grubu yazma ve Rol Atama çocuk abonelik veya yönetim grubu üzerinde izinleri yazmak.
-  - Yerleşik rol örneği **Sahibi**
-- Yönetim grubu hedef üst yönetim grubuna erişim yazar.
-  - Yerleşik rol örneği: **Sahibi**, **Katılımcısı**, **Yönetim Grubu Katılımcısı**
-- Yönetim grubu, varolan üst yönetim grubuna erişim yazar.
-  - Yerleşik rol örneği: **Sahibi**, **Katılımcısı**, **Yönetim Grubu Katılımcısı**
+- Alt abonelik veya yönetim grubundaki yönetim grubu yazma ve rol atama yazma izinleri.
+  - Yerleşik rol örneği **sahibi**
+- Hedef üst yönetim grubunda yönetim grubu yazma erişimi.
+  - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
+- Yönetim grubu var olan üst yönetim grubu üzerinde yazma erişimi.
+  - Yerleşik rol örneği: **sahip**, **katkıda bulunan**, **Yönetim grubu katılımcısı**
 
-**Özel Durum**: Hedef veya varolan üst yönetim grubu Root yönetim grubuysa, izin gereksinimleri geçerli değildir. Root yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan iniş noktası olduğundan, bir öğeyi taşımak için izinlere ihtiyacınız yoktur.
+**Özel durum**: hedef veya var olan üst yönetim grubu kök yönetim grubinise, izin gereksinimleri geçerli değildir. Kök yönetim grubu tüm yeni yönetim grupları ve abonelikler için varsayılan giriş noktası olduğundan, bir öğeyi taşımak için üzerinde izinleriniz olması gerekmez.
 
-Abonelikteki Sahip rolü geçerli yönetim grubundan devralılırsa, hareket hedefleriniz sınırlıdır. Aboneliği yalnızca Sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceğiniz için katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik için Doğrudan Sahip rolüne atandıysanız (yönetim grubundan devralınmadı), bu görevi katkıda bulunan olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
+Abonelikte sahip rolü geçerli yönetim grubundan devralınmışsa, taşıma hedefleriniz sınırlıdır. Aboneliği yalnızca sahip rolüne sahip olduğunuz başka bir yönetim grubuna taşıyabilirsiniz. Aboneliğin sahipliğini kaybedeceinizden katılımcı olduğunuz bir yönetim grubuna taşıyamazsınız. Abonelik (yönetim grubundan devralınmadı) için sahip rolüne doğrudan atandıysanız, bunu katılımcı olduğunuz herhangi bir yönetim grubuna taşıyabilirsiniz.
 
-Azure portalında hangi izinlere sahip olduğunuzu görmek için yönetim grubunu seçin ve ardından **IAM'yi**seçin. RBAC Rolleri hakkında daha fazla bilgi edinmek için [rbac ile erişimi ve izinleri yönet'e](../../role-based-access-control/overview.md)bakın.
+Azure portal hangi izinlere sahip olduğunu görmek için, yönetim grubunu seçin ve ardından **IAM**öğesini seçin. RBAC rolleri hakkında daha fazla bilgi edinmek için bkz. [RBAC ile erişimi ve Izinleri yönetme](../../role-based-access-control/overview.md).
 
 ## <a name="move-subscriptions"></a>Abonelikleri taşıma 
 
-### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Portaldaki bir yönetim grubuna varolan bir Abonelik ekleme
+### <a name="add-an-existing-subscription-to-a-management-group-in-the-portal"></a>Portalda bir yönetim grubuna mevcut bir abonelik ekleme
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
-1. Ebeveyn olmayı planladığınız yönetim grubunu seçin.
+1. Üst öğe olmasını planladığınız yönetim grubunu seçin.
 
-1. Sayfanın üst kısmında **abonelik ekle'yi**seçin.
+1. Sayfanın üst kısmında, **Abonelik Ekle**' yi seçin.
 
-1. Listede doğru kimlikle aboneliği seçin.
+1. Listeden doğru KIMLIĞI olan aboneliği seçin.
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="Yönetim grubuna eklemek için kullanılabilir abonelikler" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="Bir yönetim grubuna eklemek için kullanılabilir abonelikler" border="false":::
 
-1. "Kaydet"i seçin.
+1. "Kaydet" i seçin.
 
-### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Portaldaki bir yönetim grubundan abonelik kaldırma
+### <a name="remove-a-subscription-from-a-management-group-in-the-portal"></a>Portalda bir yönetim grubundan abonelik kaldırma
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
-1. Planlamanız gereken yönetim grubunu seçin.  
+1. Geçerli üst öğe olan planlama yaptığınız yönetim grubunu seçin.  
 
 1. Taşımak istediğiniz listede abonelik için satırın sonundaki elipsi seçin.
 
-   :::image type="content" source="./media/move_small.png" alt-text="Yönetim grubunda seçeneği taşıma" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="Bir yönetim grubunda taşıma seçeneği" border="false":::
 
-1. **Taşı'yı**seçin.
+1. **Taşı**' yı seçin.
 
-1. Açılan menüde **Üst yönetim grubunu**seçin.
+1. Açılan menüde, **ana yönetim grubunu**seçin.
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="Üst grubu değiştirmek için bölmeyi taşıma" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="Bölmeyi üst grubu değiştirmek için taşı" border="false":::
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-### <a name="move-subscriptions-in-powershell"></a>PowerShell'deki abonelikleri taşıma
+### <a name="move-subscriptions-in-powershell"></a>Abonelikleri PowerShell 'e taşıma
 
-PowerShell'de aboneliği taşımak için Yeni YönetimGroupSubscription komutunu kullanırsınız.  
+Bir aboneliği PowerShell 'de taşımak için New-AzManagementGroupSubscription komutunu kullanın.  
 
 ```azurepowershell-interactive
 New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-Abonelik ve yönetim grubu arasındaki bağlantıyı kaldırmak için Remove-AzManagementGroupSubscription komutunu kullanın.
+İle abonelik arasındaki bağlantıyı ve yönetim grubunu kaldırmak için Remove-AzManagementGroupSubscription komutunu kullanın.
 
 ```azurepowershell-interactive
 Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-### <a name="move-subscriptions-in-azure-cli"></a>Azure CLI'de abonelikleri taşıma
+### <a name="move-subscriptions-in-azure-cli"></a>Azure CLı 'de abonelikleri taşıma
 
-CLI'de bir aboneliği taşımak için ekle komutunu kullanırsınız.
+Bir aboneliği CLı 'da taşımak için Add komutunu kullanın.
 
 ```azurecli-interactive
 az account management-group subscription add --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
@@ -285,37 +285,37 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups"></a>Yönetim gruplarını taşıma 
 
-### <a name="move-management-groups-in-the-portal"></a>Portaldaki yönetim gruplarını taşıma
+### <a name="move-management-groups-in-the-portal"></a>Yönetim gruplarını portalda taşıma
 
-1. [Azure portalına](https://portal.azure.com)giriş yapın.
+1. [Azure Portal](https://portal.azure.com)oturum açın.
 
-1. **Tüm hizmet** > **Yönetimi gruplarını**seçin.
+1. **Tüm hizmetler** > **Yönetim gruplarını**seçin.
 
-1. Ebeveyn olmayı planladığınız yönetim grubunu seçin.
+1. Üst öğe olmasını planladığınız yönetim grubunu seçin.
 
-1. Sayfanın üst kısmında **yönetim grubu ekle'yi**seçin.
+1. Sayfanın üst kısmında **Yönetim grubu Ekle**' yi seçin.
 
-1. Açılan menüde, yeni bir yönetim grubu isteyip istemediğiniz veya varolan bir yönetim grubu kullanıp kullanmadığınızı seçin.
+1. Açılan menüde, yeni bir yönetim grubu istiyorsanız seçin veya var olan bir yönetim grubunu kullanın.
 
-   - Yeni seçiseçmek yeni bir yönetim grubu oluşturur.
-   - Varolan bir seçim, bu yönetim grubuna taşıyabileceğiniz tüm yönetim gruplarının bir açılır düşüşünü sunar.  
+   - Yeni seçildiğinde yeni bir yönetim grubu oluşturulur.
+   - Mevcut olanı seçtiğinizde, bu yönetim grubuna taşıyacağınız tüm yönetim gruplarının açılan listesi görüntülenir.  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="Yönetim grubunu yeni veya varolan gruba taşıma" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="Bir yönetim grubunu yeni veya mevcut bir gruba taşıma" border="false":::
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
-### <a name="move-management-groups-in-powershell"></a>PowerShell'deki yönetim gruplarını taşıyın
+### <a name="move-management-groups-in-powershell"></a>Yönetim gruplarını PowerShell 'de taşıma
 
-Bir yönetim grubunu farklı bir gruba taşımak için PowerShell'deki Update-AzManagementGroup komutunu kullanın.
+Yönetim grubunu farklı bir grup altında taşımak için PowerShell 'de Update-AzManagementGroup komutunu kullanın.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
 Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
 ```  
 
-### <a name="move-management-groups-in-azure-cli"></a>Azure CLI'de yönetim gruplarını taşıma
+### <a name="move-management-groups-in-azure-cli"></a>Azure CLı 'de Yönetim gruplarını taşıma
 
-Azure CLI ile bir yönetim grubunu taşımak için güncelleştirme komutunu kullanın.
+Bir yönetim grubunu Azure CLı ile taşımak için Update komutunu kullanın.
 
 ```azurecli-interactive
 az account management-group update --name 'Contoso' --parent ContosoIT
@@ -323,25 +323,25 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Etkinlik günlüklerini kullanarak yönetim gruplarını denetleme
 
-Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Bir yönetim grubunun başına gelen tüm olayları diğer Azure kaynaklarıyla aynı merkezi konumda sorgulayabilirsiniz. Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
+Yönetim grupları [Azure Etkinlik Günlüğü](../../azure-monitor/platform/platform-logs-overview.md)'nde desteklenir. Diğer Azure kaynaklarıyla aynı merkezi konumdaki bir yönetim grubunda gerçekleşen tüm olayları sorgulayabilirsiniz. Örneğin, belirli bir yönetim grubunda yapılan tüm Rol Atamalarını veya İlke Ataması değişikliklerini görebilirsiniz.
 
-:::image type="content" source="./media/al-mg.png" alt-text="Yönetim gruplarıyla Etkinlik Günlükleri" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="Yönetim gruplarıyla etkinlik günlükleri" border="false":::
 
 Azure portalının dışında Yönetim Gruplarını sorgulamak istediğinizde, yönetim gruplarının hedef kapsamı **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** gibi görünür.
 
-## <a name="referencing-management-groups-from-other-resource-providers"></a>Diğer Kaynak Sağlayıcılardan yönetim gruplarına başvurma
+## <a name="referencing-management-groups-from-other-resource-providers"></a>Diğer kaynak sağlayıcılardan yönetim gruplarına başvurma
 
-Diğer Kaynak Sağlayıcı'nın eylemlerinden yönetim gruplarına başvururken, kapsam olarak aşağıdaki yolu kullanın. Bu yol PowerShell, Azure CLI ve REST API'leri kullanılırken kullanılır.  
+Diğer kaynak sağlayıcılarının eylemlerdeki yönetim gruplarına başvururken, kapsam olarak aşağıdaki yolu kullanın. PowerShell, Azure CLı ve REST API 'Leri kullanılırken bu yol kullanılır.  
 
 `/providers/Microsoft.Management/managementGroups/{yourMgID}`
 
-Bu yolu kullanmanın bir örneği, PowerShell'deki bir yönetim grubuna yeni bir rol ataması atamaktır:
+Bu yolu kullanmanın bir örneği, PowerShell 'de bir yönetim grubuna yeni bir rol ataması atamasıdır:
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
-Bir yönetim grubunda bir ilke tanımı alırken aynı kapsam yolu kullanılır.
+Bir yönetim grubunda ilke tanımı alınırken aynı kapsam yolu kullanılır.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01

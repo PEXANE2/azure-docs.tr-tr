@@ -1,5 +1,5 @@
 ---
-title: Bing Web Arama Python istemci kitaplığı hızlı başlat
+title: Bing Web Araması Python istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,15 +9,15 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: b6ab34019207ccbeec5448b848e501e063707d16
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81384962"
 ---
-Bing Web Arama istemci kitaplığı, Bing Web Arama'yı Python uygulamanıza entegre etmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
+Bing Web Araması istemci kitaplığı, Bing Web Araması Python uygulamanıza tümleştirmeyi kolaylaştırır. Bu hızlı başlangıçta istek göndermeyi, JSON yanıtı almayı, sonuçları filtrelemeyi ve ayrıştırmayı öğreneceksiniz.
 
-Kodu hemen görmek istiyor musunuz? [Python için Bing Arama istemci kitaplıkları için](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) örnekler GitHub'da mevcuttur.
+Kodu hemen görmek istiyor musunuz? [Python için Bing arama istemci kitaplıklarının](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/search) örnekleri GitHub ' da kullanılabilir.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -83,7 +83,7 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. Favori IDE ortamınızda veya düzenleyicide yeni bir Python projesi oluşturun.
 
-1. Bu örnek kodu projenize kopyalayın. `endpoint`aşağıdaki genel bitiş noktası veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktası olabilir.:  
+1. Bu örnek kodu projenize kopyalayın. `endpoint`, aşağıdaki genel uç nokta veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) uç noktası olabilir.:  
 
     ```python
     # Import required modules.
@@ -167,17 +167,17 @@ Yanıtta web sayfaları, görüntüler, haberler veya videolar varsa hepsinin il
 
 1. `SUBSCRIPTION_KEY` değerini geçerli bir abonelik anahtarıyla değiştirin.
 
-1. Portaldaki uç nokta url'nizle değiştirin. `YOUR_ENDPOINT`
+1. Portal `YOUR_ENDPOINT` 'daki uç nokta URL 'siyle değiştirin.
 
 1. Programı çalıştırın. Örneğin: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>İşlevleri tanımlama ve sonuçları filtreleme
 
-Bing Web Arama API'sine ilk aramanızı yaptığınıza göre, birkaç işleve bakalım. Aşağıdaki bölümlerde sorguları rafine etmek ve sonuçları filtreleme için SDK işlevselliği vurgulanır. Her işlev, önceki bölümde oluşturduğunuz Python programına eklenebilir.
+Bing Web Araması API'si ilk çağrınızın ne olduğuna göre, şimdi birkaç işleve bakalım. Aşağıdaki bölümlerde sorguları iyileştirme ve sonuçları filtreleme için SDK işlevselliği vurgulanacak. Her işlev, önceki bölümde oluşturduğunuz Python programına eklenebilir.
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing tarafından döndürülen sonuç sayısını sınırlama
 
-Bu örnek, `count` `offset` SDK [ `search` yöntemi](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanılarak döndürülen sonuç sayısını sınırlamak için parametreleri ve parametreleri kullanır. İlk sonucun `name` ve `url` değerleri yazdırılır.
+Bu örnek, `count` SDK 'nın `offset` [ `search` yöntemi](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanılarak döndürülen sonuç sayısını sınırlamak için ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri yazdırılır.
 
 1. Python projenize şu kodu ekleyin:
 
@@ -216,7 +216,7 @@ Bu örnek, `count` `offset` SDK [ `search` yöntemi](https://docs.microsoft.com/
 
 ### <a name="filter-for-news-and-freshness"></a>Haberler ve güncellik filtresi
 
-Bu örnek, `response_filter` `freshness` [ `search` SDK'nın yöntemini](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)kullanarak arama sonuçlarını filtrelemek için parametreleri ve parametreleri kullanır. Döndürülen arama sonuçları Bing'in son 24 saat içinde keşfettiği haberler ve sayfalarla sınırlıdır. İlk sonucun `name` ve `url` değerleri yazdırılır.
+Bu örnek, `response_filter` SDK 'nın `freshness` [ `search` metodunu](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)kullanarak arama sonuçlarını filtrelemek için ve parametrelerini kullanır. Döndürülen arama sonuçları Bing'in son 24 saat içinde keşfettiği haberler ve sayfalarla sınırlıdır. İlk sonucun `name` ve `url` değerleri yazdırılır.
 
 1. Python projenize şu kodu ekleyin:
 
@@ -266,7 +266,7 @@ Bu örnek, `response_filter` `freshness` [ `search` SDK'nın yöntemini](/python
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Güvenli arama, yanıt sayısı ve yükseltme filtresini kullanma
 
-Bu örnek, `answer_count` `promote`SDK `safe_search` [ `search` yöntemini](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanarak arama sonuçlarını filtrelemek için , ve parametreleri kullanır. İlk sonucun `name` ve `url` değerleri görüntülenir.
+Bu örnek, SDK `answer_count`'nın `promote` [ `search` metodunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)kullanarak `safe_search` arama sonuçlarını filtrelemek için, ve parametrelerini kullanır. İlk sonucun `name` ve `url` değerleri görüntülenir.
 
 1. Python projenize şu kodu ekleyin:
 

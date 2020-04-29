@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Kutusu siparişi verme öğreticisi | Microsoft Dokümanlar
+title: Sipariş Azure Data Box öğretici | Microsoft Docs
 description: Dağıtım önkoşullarını ve Azure Data Box siparişi etmeyi öğrenin
 services: databox
 author: alkohli
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
 ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81398691"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Öğretici: Azure Data Box sipariş etme
@@ -50,7 +50,7 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
     
    [![Azure Data Box arama 1](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. **Oluştur'u**tıklatın.
+3. **Oluştur**' a tıklayın.
 
 4. Data Box'ın bölgenizde kullanılabilir olup olmadığını kontrol edin. Aşağıdaki bilgileri girin veya seçin ve sonra **Uygula**'ya tıklayın. 
 
@@ -61,9 +61,9 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
     |Kaynak ülke     |   Verilerinizin bulunduğu ülkeyi/bölgeyi seçin.         |
     |Hedef Azure bölgesi     |     Verileri aktarmak istediğiniz Azure bölgesini seçin.        |
 
-5. Veri **Kutusu'nü**seçin. Tek bir sipariş için maksimum kullanılabilir kapasite 80 TB'dir. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
+5. Veri **kutusunu**seçin. Tek bir sipariş için kullanılabilir maksimum kapasite 80 TB 'tır. Daha büyük veri boyutları için birden fazla sipariş oluşturabilirsiniz.
 
-      [![Veri Kutusu seçeneğini seçin 1](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
+      [![Data Box seçenek 1 ' i seçin](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
 6. **Sipariş** bölümünde **Sipariş ayrıntıları**'nı belirtin. Aşağıdaki bilgileri girin veya seçin ve sonra **İleri**'ye tıklayın.
     
@@ -72,19 +72,19 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
     |Adı     |  Siparişi takip etmek için kullanılacak kolay bir ad girin. <br> Ad harf, rakam ve tirelerden oluşan 3-24 karakter arası uzunlukta olabilir. <br> Ad bir harf veya sayıyla başlamalı ve bitmelidir.      |
     |Kaynak grubu     |   Var olan bir taneyi kullanın veya yenisini oluşturun. <br> Kaynak grubu, birlikte yönetilebilen ve ya dağıtılabilen kaynaklardan oluşan mantıksal kapsayıcıdır.         |
     |Hedef Azure bölgesi     | Depolama hesabınız için bir bölge seçin. <br> Daha fazla bilgi için [bölge kullanılabilirliği](data-box-overview.md#region-availability)’ne gidin.        |
-    |Depolama hedefi     | Depolama hesabı veya yönetilen diskler ya da her ikisini seçin. <br> Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. <br> Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz. <br>Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için Azure Veri Kutusu'nun güvenilir bir hizmet olarak nasıl [ekleyeceğinize](../storage/common/storage-network-security.md#exceptions)bakın.|
+    |Depolama hedefi     | Depolama hesabı veya yönetilen diskler ya da her ikisini seçin. <br> Belirtilen Azure bölgesine göre filtrelenen listeden var olan bir veya daha fazla depolama hesabı seçin. Data Box en çok 10 depolama hesabına bağlanabilir. <br> Dilerseniz yeni bir **Genel amaçlı v1**, **Genel amaçlı v2** veya **Blob depolama hesabı** da oluşturabilirsiniz. <br>Sanal ağları olan depolama hesapları desteklenir. Data Box hizmetinin güvenli depolama hesaplarıyla çalışmasına izin vermek için, depolama hesabı ağ güvenlik duvarı ayarları içinden güvenilen hizmetleri etkinleştirin. Daha fazla bilgi için bkz. [Azure Data Box güvenilir hizmet olarak ekleme](../storage/common/storage-network-security.md#exceptions).|
 
     Depolama hesabı depolama hedefi olarak kullanılıyorsa aşağıdaki ekran görüntüsünü görürsünüz:
 
-    ![Depolama hesabı için Veri Kutusu sırası](media/data-box-deploy-ordered/order-storage-account.png)
+    ![Depolama hesabı için Data Box sıralaması](media/data-box-deploy-ordered/order-storage-account.png)
 
-    Şirket içi VHD'lerden yönetilen diskler oluşturmak için Veri Kutusu'nu kullanıyorsanız, aşağıdaki bilgileri de sağlamanız gerekir:
+    Şirket içi VHD 'lerden yönetilen diskler oluşturmak için Data Box kullanıyorsanız, aşağıdaki bilgileri de sağlamanız gerekir:
 
     |Ayar  |Değer  |
     |---------|---------|
-    |Kaynak grupları     | Şirket içi VHD'lerden yönetilen diskler oluşturmayı düşünüyorsanız yeni kaynak grupları oluşturun. Varolan bir kaynak grubunu yalnızca Veri Kutusu hizmeti tarafından yönetilen disk için veri kutusu sırası oluşturulurken kaynak grubu daha önce oluşturulduysa kullanabilirsiniz. <br> Noktalı virgülle ayrılmış birden çok kaynak grubu belirtin. En fazla 10 kaynak grubu desteklenir.|
+    |Kaynak grupları     | Şirket içi VHD'lerden yönetilen diskler oluşturmayı düşünüyorsanız yeni kaynak grupları oluşturun. Mevcut bir kaynak grubunu yalnızca kaynak grubu, Data Box hizmeti tarafından yönetilen disk için bir Data Box sırası oluşturulurken daha önce oluşturulduysa kullanabilirsiniz. <br> Noktalı virgülle ayrılmış birden çok kaynak grubu belirtin. En fazla 10 kaynak grubu desteklenir.|
 
-    ![Yönetilen disk için Veri Kutusu sırası](media/data-box-deploy-ordered/order-managed-disks.png)
+    ![Yönetilen disk için Data Box sıralaması](media/data-box-deploy-ordered/order-managed-disks.png)
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Data Box hizmeti, VHD'leri yönetilen disklere dönüştürmeden ve kaynak gruplarına taşımadan önce hazırlama depolama hesabına sayfa blobları olarak yükler. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
@@ -101,7 +101,7 @@ Cihaz sipariş etmek için Azure portalında aşağıdaki adımları izleyin.
 
 ## <a name="track-the-order"></a>Siparişi izleme
 
-Siparişi verdikten sonra durumunu Azure portalından takip edebilirsiniz. Veri Kutusu siparişinize gidin ve durumu görüntülemek için **Genel Bakış'a** gidin. Portalda siparişin durumu **Sipariş edildi** olarak görünür.
+Siparişi verdikten sonra durumunu Azure portalından takip edebilirsiniz. Data Box siparişiniz ' ne gidin ve durumu görüntülemek için **genel bakış** ' a gidin. Portalda siparişin durumu **Sipariş edildi** olarak görünür.
 
 Cihaz yoksa bir bildirim alırsınız. Cihaz varsa, Microsoft gönderilecek cihazı belirler ve gönderimi hazırlar. Cihaz hazırlanırken şu eylemler gerçekleştirilir:
 

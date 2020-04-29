@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Konuşmayı birden çok dile çevirin - Konuşma hizmeti'
+title: 'Hızlı başlangıç: konuşmayı birden çok dile çevirme-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, konuşmayı bir dilden konuşmaya başka bir dilde etkileşimli olarak çevirmek için Konuşma SDK'sını kullanırsınız.
+description: Bu hızlı başlangıçta, konuşmayı bir dilden başka bir dilde konuşmaya etkileşimli bir şekilde çevirmek için konuşma SDK 'sını kullanacaksınız.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: c1e04cdda77da3aac7a3c85f0967e9a48d3d7cca
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400248"
 ---
-# <a name="quickstart-translate-speech-to-multiple-languages"></a>Hızlı başlangıç: Konuşmayı birden çok dile çevirin
+# <a name="quickstart-translate-speech-to-multiple-languages"></a>Hızlı başlangıç: konuşmayı birden çok dile çevirme
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-stt-multiple-languages/header.md)]

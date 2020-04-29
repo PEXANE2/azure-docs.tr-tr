@@ -1,61 +1,61 @@
 ---
-title: Erişim denetim günlükleri - Azure CLI - MariaDB için Azure Veritabanı
-description: Bu makalede, Azure CLI'den MariaDB için Azure Veritabanı'ndaki denetim günlüklerinin nasıl yapılandırılabildiğini ve bunlara erişilenler açıklanmaktadır.
+title: Erişim denetim günlükleri-Azure CLı-MariaDB için Azure veritabanı
+description: Bu makalede, Azure CLı 'dan MariaDB için Azure veritabanı 'nda denetim günlüklerinin nasıl yapılandırılacağı ve erişebileceği açıklanır.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: e9716f0fa8e0ae44d614bbb28ed6846105e683d6
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81384200"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLI'deki denetim günlüklerini yapılandırma ve erişim
+# <a name="configure-and-access-audit-logs-in-the-azure-cli"></a>Azure CLı 'de denetim günlüklerini yapılandırma ve erişme
 
-[MariaDB denetim günlükleri için Azure Veritabanını](concepts-audit-logs.md) Azure CLI'den yapılandırabilirsiniz.
+[MariaDB Için Azure veritabanı denetim günlüklerini](concepts-audit-logs.md) Azure CLI 'dan yapılandırabilirsiniz.
 
 > [!IMPORTANT]
-> Denetim günlüğü işlevi şu anda önizlemede.
+> Denetim günlüğü işlevselliği Şu anda önizleme aşamasındadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılacağını kılavuzunda adım atmak için şunları yapmanız gerekir:
+Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 
-- [MariaDB sunucusu için Azure Veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md)
+- [MariaDB sunucusu için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılsa kılavuzu, Azure CLI sürüm 2.0 veya sonrası kullanmanızı gerektirir. Sürümü onaylamak için Azure CLI komut istemine girin. `az --version` Yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye]( /cli/azure/install-azure-cli)bakın.
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde, girin `az --version`. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
-## <a name="configure-audit-logging"></a>Denetim günlüğe kaydetme
+## <a name="configure-audit-logging"></a>Denetim günlüğünü yapılandırma
 
-Denetim günlüğe kaydetmeyi aşağıdaki adımları kullanarak etkinleştirin ve yapılandırın: 
+Aşağıdaki adımları kullanarak denetim günlüğünü etkinleştirin ve yapılandırın: 
 
-1. **audit_logs_enabled** parametresini "AGİ" olarak ayarlayarak denetim günlüklerini açın. 
+1. **Audit_logs_enabled** PARAMETRESINI "on" olarak ayarlayarak denetim günlüklerini açın. 
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_enabled --resource-group myresourcegroup --server mydemoserver --value ON
     ```
 
-1. **audit_log_egitvents** parametresini güncelleştirerek günlüğe kaydedilecek [olay türlerini](concepts-audit-logs.md#configure-audit-logging) seçin.
+1. **Audit_log_egitvents** parametresini güncelleştirerek günlüğe kaydedilecek [olay türlerini](concepts-audit-logs.md#configure-audit-logging) seçin.
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_events --resource-group myresourcegroup --server mydemoserver --value "ADMIN,CONNECTION"
     ```
 
-1. **audit_log_exclude_users** parametresini güncelleştirerek günlük dışı bırakılacak mariaDB kullanıcılarını ekleyin. MariaDB kullanıcı adlarını sağlayarak kullanıcıları belirtin.
+1. **Audit_log_exclude_users** parametresi güncelleştirilerek günlüğe kaydetme dışında tutulacak MariaDB kullanıcılarını ekleyin. Kullanıcıları, MariaDB kullanıcı adlarını girerek belirtin.
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_exclude_users --resource-group myresourcegroup --server mydemoserver --value "azure_superuser"
     ```
 
-1. **audit_log_include_users** parametresini güncelleştirerek günlüğe kaydedilecek belirli MariaDB kullanıcılarını ekleyin. MariaDB kullanıcı adlarını sağlayarak kullanıcıları belirtin.
+1. **Audit_log_include_users** parametresini güncelleştirerek günlüğe kaydetmek için dahil edilecek herhangi bir özel MariaDB kullanıcısı ekleyin. Kullanıcıları, MariaDB kullanıcı adlarını girerek belirtin.
     ```azurecli-interactive
     az mariadb server configuration set --name audit_log_include_users --resource-group myresourcegroup --server mydemoserver --value "sampleuser"
     ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MariaDB için Azure Veritabanı'ndaki [denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin
-- [Azure portalında](howto-configure-audit-logs-portal.md) denetim günlüklerini nasıl yapılandırılamayı öğrenin
+- MariaDB için Azure veritabanı 'nda [Denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin
+- [Azure Portal](howto-configure-audit-logs-portal.md) denetim günlüklerini yapılandırma hakkında bilgi edinin

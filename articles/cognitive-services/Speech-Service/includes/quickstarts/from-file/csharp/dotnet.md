@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: d9bc744292922fd127e983392199fa21554d3c62
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400514"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
+İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
-1. Görsel Stüdyo 2019'u başlatın.
-2. Projenizi yükleyin `Program.cs`ve açın.
-3. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">Whatstheweatherlike.wav'ı <span class="docon docon-download x-hidden-focus"></span> </a> indirin ve projenize ekleyin.
-    - *Whatstheweatherlike.wav* dosyasını dosyanın `Program.cs` yanına kaydedin.
-    - Çözüm **Gezgini'nden** projeye sağ tıklayın, **Varolan öğeyi > ekle'yi**seçin.
-    - *Whatstheweatherlike.wav* dosyasını seçin ve **ardından Ekle** düğmesini seçin.
-    - Yeni eklenen dosyaya sağ tıklayın, **Özellikler'i**seçin.
-    - Kopyayı Her **Zaman Kopyalamak** **için Çıktı Dizini** olarak değiştirin.
+1. Visual Studio 2019 ' i başlatın.
+2. Projenizi yükleyin ve açın `Program.cs`.
+3. <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">Whatsthedalgalı gibi. wav <span class="docon docon-download x-hidden-focus"></span> </a> ' yı indirin ve projenize ekleyin.
+    - `Program.cs` Dosyanın yanındaki *whatsthedalgalı gibi. wav* dosyasını kaydedin.
+    - **Çözüm Gezgini** projeye sağ tıklayın, **> varolan öğeyi Ekle**' yi seçin.
+    - *Whatsthedalgalı gibi. wav* dosyasını seçin, sonra **Ekle** düğmesini seçin.
+    - Yeni eklenen dosyaya sağ tıklayın, **Özellikler**' i seçin.
+    - **Çıkış Dizinine Kopyala** ' yı **her zaman kopyalamak**üzere değiştirin.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için iskelet görevi gören bazı kodlar ekleyelim. 'li bir `RecognizeSpeechAsync()`async yöntemi oluşturduğunuza dikkat edin.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. Adlı `RecognizeSpeechAsync()`bir zaman uyumsuz yöntem oluşturduğunuza dikkat edin.
 
 ```csharp
 using System;
@@ -62,11 +62,11 @@ namespace HelloWorld
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `SpeechRecognizer` nesneyi başlatmadan önce, abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Yönteme `RecognizeSpeechAsync()` bu kodu ekleyin.
+Bir `SpeechRecognizer` nesneyi başlatabilmeniz için önce abonelik anahtarınızı ve abonelik bölgenizi kullanan bir yapılandırma oluşturmanız gerekir. Bu kodu `RecognizeSpeechAsync()` yöntemine ekleyin.
 
 > [!NOTE]
-> Bu örnek, `FromSubscription()` `SpeechConfig`'yi oluşturmak için yöntemi kullanır. Kullanılabilir yöntemlerin tam listesi için [SpeechConfig Class'a](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)bakın.
-> Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
+> Bu örnek, `SpeechConfig`oluşturmak `FromSubscription()` için yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
 ```csharp
 // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -75,7 +75,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Ses yapılandırması oluşturma
 
-Şimdi, ses dosyanızı `AudioConfig` işaret eden bir nesne oluşturmanız gerekir. Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için kullanılan bir deyimin içinde oluşturulur. Bu kodu yönteme, `RecognizeSpeechAsync()` Konuşma yapılandırmanızın hemen altına ekleyin.
+Şimdi, ses dosyanıza işaret eden bir `AudioConfig` nesnesi oluşturmanız gerekir. Yönetilmeyen kaynakların doğru şekilde yayınlanmasıyla emin olmak için bir using ifadesinin içinde bu nesne oluşturulur. Bu kodu, konuşma yapılandırmanızın `RecognizeSpeechAsync()` hemen altına, yöntemine ekleyin.
 
 ```csharp
 using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
@@ -83,9 +83,9 @@ using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 }
 ```
 
-## <a name="initialize-a-speechrecognizer"></a>Bir SpeechRecognizer'ı Başlatma
+## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer başlatma
 
-Şimdi, nesneyi `SpeechRecognizer` daha önce `SpeechConfig` oluşturulan `AudioConfig` nesneleri ve nesneleri kullanarak oluşturalım. Bu nesne, yönetilmeyen kaynakların doğru şekilde serbest bırakılmasını sağlamak için bir using deyiminin içinde de oluşturulur. Bu `RecognizeSpeechAsync()` kodu, nesnenizi ```AudioConfig``` saran kullanarak ifadenin içine ekleyin.
+Şimdi, daha önce oluşturulan `SpeechRecognizer` `SpeechConfig` ve `AudioConfig` nesnelerini kullanarak nesneyi oluşturalım. Bu nesne, yönetilmeyen kaynakların uygun şekilde serbest bırakılması için bir using ifadesinin içinde de oluşturulur. Bu kodu `RecognizeSpeechAsync()` yöntemine sarmalayan ```AudioConfig``` using ifadesinin içine ekleyin.
 
 ```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
@@ -95,20 +95,20 @@ using (var recognizer = new SpeechRecognizer(config, audioInput))
 
 ## <a name="recognize-a-phrase"></a>Bir tümceciği tanıma
 
-Nesneden, `SpeechRecognizer` `RecognizeOnceAsync()` yöntemi aramalısınız. Bu yöntem, Konuşma hizmetinin tanınmak için tek bir ifade gönderdiğinizi ve ifade tanımlandıktan sonra konuşmayı tanımayı durdurmak için tanımladığını bilmesini sağlar.
+`SpeechRecognizer` Nesnesinden `RecognizeOnceAsync()` yöntemi çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar.
 
-Using deyiminin içine şu kodu ekleyin:
+Using ifadesinin içinde şu kodu ekleyin:
 
 ```csharp
 Console.WriteLine("Recognizing first result...");
 var result = await recognizer.RecognizeOnceAsync();
 ```
 
-## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hataları) görüntüleme
+## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
 
-Tanıma sonucu Konuşma hizmeti tarafından döndürüldüğünde, bununla ilgili bir şey yapmak istersiniz. Basit tutacağız ve sonucu konsola yazdıracağız.
+Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
 
-Aşağıdaki kullanarak deyimi `RecognizeOnceAsync()`içinde, bu kodu ekleyin:
+Using ifadesinin içinde, aşağıdaki `RecognizeOnceAsync()`kodu ekleyin:
 
 ```csharp
 switch (result.Reason)
@@ -133,9 +133,9 @@ switch (result.Reason)
 }
 ```
 
-## <a name="check-your-code"></a>Kodunuzu kontrol edin
+## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuz şu şekilde görünmelidir:
+Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 ```csharp
 //
@@ -193,13 +193,13 @@ namespace HelloWorld
 }
 ```
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
+Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
-1. Kodu derle: *Visual Studio'nun*menü çubuğundan **Yapı** > **Çözüm'ü**seçin.
-2. Uygulamanızı başlatın: Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya **F5 tuşuna**basın.
-3. Tanımayı başlat: Ses dosyanız Konuşma hizmetine gönderilir, metin olarak yazılır ve konsolda işlenir.
+1. Kodu derleyin: *Visual Studio*menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
+2. Uygulamanızı başlatın: menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya **F5**tuşuna basın.
+3. Tanımayı Başlat: ses dosyanız konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
    ```console
    Recognizing first result...

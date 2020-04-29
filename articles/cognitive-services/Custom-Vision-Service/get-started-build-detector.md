@@ -1,7 +1,7 @@
 ---
-title: Quickstart Nesne dedektörü oluşturma - Özel Görüş Hizmeti
+title: Hızlı başlangıç bir nesne algılayıcısı oluşturma-Özel Görüntü İşleme Hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, bir resim sınıflandırma modeli oluşturmak için Custom Vision web sitesini nasıl kullanacağınızı öğreneceksiniz.
+description: Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir görüntü sınıflandırma modeli oluşturma hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,94 +11,94 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404103"
 ---
-# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quickstart: Özel Vizyon ile nesne dedektörü nasıl inşa edilebilen
+# <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Hızlı başlangıç: Özel Görüntü İşleme bir nesne algılayıcısı oluşturma
 
-Bu hızlı başlangıçta, Custom Vision web sitesi aracılığıyla nesne dedektörü oluşturmayı öğreneceksiniz. Bir dedektör modeli oluşturduğunuzda, nesne algılama için Özel Görme hizmetini kullanabilirsiniz.
+Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesi aracılığıyla bir nesne algılayıcısı oluşturmayı öğreneceksiniz. Bir algılayıcı modeli oluşturduğunuzda, nesne algılama için Özel Görüntü İşleme hizmetini kullanabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Dedektör modelinizi eğitmek için bir dizi görüntü. [Örnek resim](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) kümesini GitHub'da kullanabilirsiniz. Veya aşağıdaki ipuçlarını kullanarak kendi resimlerinizi seçebilirsiniz.
+- Algılayıcı modelinize eğiten bir görüntü kümesi. GitHub üzerinde [örnek görüntüler](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) kümesini kullanabilirsiniz. Ya da aşağıdaki ipuçlarını kullanarak kendi görüntülerinizi seçebilirsiniz.
 
-## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portalında Özel Vizyon kaynakları oluşturun
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure portal Özel Görüntü İşleme kaynakları oluşturma
 
 [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
 
-Web tarayıcınızda, Özel [Vizyon web sayfasına](https://customvision.ai) gidin ve __Oturum Aç'ı__seçin. Azure portalında oturum açarken kullandığınız hesapla oturum açın.
+Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvision.ai) gidin ve __oturum aç '__ ı seçin. Azure portal oturum açmak için kullandığınız hesapla oturum açın.
 
 ![Oturum açma sayfasının görüntüsü](./media/browser-home.png)
 
 
-1. İlk projenizi oluşturmak için **Yeni Proje'yi**seçin. **Yeni proje** oluştur iletişim kutusu görüntülenir.
+1. İlk projenizi oluşturmak için **Yeni proje**' yi seçin. **Yeni proje oluştur** iletişim kutusu görüntülenir.
 
-    ![Yeni proje iletişim kutusunda ad, açıklama ve etki alanları vardır.](./media/get-started-build-detector/new-project.png)
+    ![Yeni proje iletişim kutusunda ad, açıklama ve etki alanları için alanlar bulunur.](./media/get-started-build-detector/new-project.png)
 
-1. Proje için bir ad ve açıklama girin. Ardından bir Kaynak Grubu seçin. Oturum açmış hesabınız bir Azure hesabıyla ilişkiliyse, Kaynak Grubu açılır bölümü Özel Vizyon Hizmeti Kaynağı içeren tüm Azure Kaynak Gruplarınızı görüntüler. 
+1. Proje için bir ad ve açıklama girin. Ardından bir kaynak grubu seçin. Oturum açmış hesabınız bir Azure hesabıyla ilişkiliyse, kaynak grubu açılır listesi bir Özel Görüntü İşleme Hizmeti kaynağı içeren tüm Azure Kaynak gruplarınızı görüntüler. 
 
    > [!NOTE]
-   > Kullanılabilir kaynak grubu yoksa, lütfen [Azure portalında](https://portal.azure.com/)oturum açmak için kullandığınız hesapla aynı hesapla [customvision.ai](https://customvision.ai) oturum açtığınızı onaylayın. Ayrıca, lütfen Özel Görme portalında, Özel Görme kaynaklarınızın bulunduğu Azure portalındaki dizin le aynı "Dizin"i seçtiğinizi onaylayın. Her iki sitede de, dizininizin ekranın sağ üst köşesindeki açılan hesap menüsünden seçebilirsiniz. 
+   > Kullanılabilir kaynak grubu yoksa, lütfen [Azure Portal](https://portal.azure.com/)oturum açmak için kullandığınız hesapla [customvision.ai](https://customvision.ai) oturum açtığınızdan emin olun. Ayrıca, lütfen Özel Görüntü İşleme kaynaklarınızın bulunduğu Azure portal dizin olarak Özel Görüntü İşleme portalında aynı "Dizin" i seçtiğinizi onaylayın. Her iki sitede, ekranın sağ üst köşesindeki açılan hesap menüsünden dizininizi seçebilirsiniz. 
 
-1. Proje Türleri altında __Nesne__ __Algılama'yı__seçin.
+1. __Proje türleri__altında __nesne algılamayı__ seçin.
 
-1. Ardından, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi, belirli görüntü türleri için dedektörü optimize eder. İsterseniz etki alanını daha sonra değiştirebilirsiniz.
+1. Sonra, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi belirli görüntü türleri için algılayıcısının en iyi duruma getirir. İsterseniz, etki alanını daha sonra değiştirebileceksiniz.
 
     |Domain|Amaç|
     |---|---|
-    |__Genel__| Çok çeşitli nesne algılama görevleri için optimize edin. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanını seçeceğiniz den emin değilseniz, Genel etki alanını seçin. |
-    |__Logo__|Görüntülerde marka logolarını bulmak için optimize edin.|
-    |__Kompakt etki alanları__| Mobil cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için optimize edin. Kompakt etki alanları tarafından oluşturulan modeller yerel olarak çalıştırmak için dışa aktarılabilir.|
+    |__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin. |
+    |__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
+    |__Compact etki alanları__| Mobil cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için iyileştirildi. Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir.|
 
-1. Son olarak, __proje oluştur'u__seçin.
+1. Son olarak, __proje oluştur__' u seçin.
 
-## <a name="choose-training-images"></a>Eğitim resimlerini seçin
+## <a name="choose-training-images"></a>Eğitim görüntülerini seçin
 
 [!INCLUDE [choose training images](includes/choose-training-images.md)]
 
 ## <a name="upload-and-tag-images"></a>Görüntüleri karşıya yükleme ve etiketleme
 
-Bu bölümde dedektörü eğitmeye yardımcı olmak için görüntüleri yükleyecek ve elle etiketleyeceksiniz. 
+Bu bölümde, algılayıcısının eğitilmesi için görüntüleri karşıya yükleyecek ve el ile etiketlemelisiniz. 
 
-1. Resim eklemek için __resim ekle__ düğmesini tıklatın ve ardından __yerel dosyalara gözat'ı__seçin. Resimleri yüklemek için __Aç'ı__ seçin.
+1. Görüntü eklemek için __Görüntü ekle__ düğmesine tıklayın ve ardından __yerel dosyalara gözatamazsınız__' ı seçin. Görüntüleri karşıya yüklemek için __Aç__ ' ı seçin.
 
-    ![Görüntü ekleme denetimi sol üstte ve sol altta bir düğme olarak gösterilir.](./media/get-started-build-detector/add-images.png)
+    ![Resim ekle denetimi, sol üst köşede ve alt ortadaki bir düğme olarak gösterilir.](./media/get-started-build-detector/add-images.png)
 
-1. Yüklenen resimlerinizi UI'nin **Etiketlenmemiş** bölümünde görürsünüz. Bir sonraki adım, dedektörün tanımayı öğrenmesini istediğiniz nesneleri el ile etiketlemektir. Etiketleme iletişim penceresini açmak için ilk resmi tıklatın. 
+1. Karşıya yüklenen görüntülerinizi, Kullanıcı arabiriminin **etiketlenmemiş** bölümünde görürsünüz. Bir sonraki adım, algılayıcısının tanıması için öğrenimini istediğiniz nesneleri el ile etiketleyecaktır. Etiketleme iletişim penceresini açmak için ilk resme tıklayın. 
 
-    ![Etiketlenmemiş bölümde yüklenen resimler](./media/get-started-build-detector/images-untagged.png)
+    ![Karşıya yüklenen görüntüler, etiketlenmemiş bölüm](./media/get-started-build-detector/images-untagged.png)
 
-1. Resminizdeki nesnenin etrafındaki dikdörtgeni tıklatın ve sürükleyin. Ardından, **+** düğmeyle yeni bir etiket adı girin veya açılır listeden varolan bir etiket seçin. Dedektör eğitimde olumsuz bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnenin her örneğini etiketlemek çok önemlidir. Etiketlemeyi bitirdiğinizde, etiketlerinizi kaydetmek ve bir sonraki resme geçmek için sağdaki oku tıklatın.
+1. Görüntinizdeki nesnenin etrafına bir dikdörtgeni tıklatın ve sürükleyin. Ardından, **+** düğme ile yeni bir etiket adı girin veya açılan listeden varolan bir etiketi seçin. Algılayıcı, eğitiminde negatif bir örnek olarak etiketlenmemiş arka plan alanını kullandığından, algılamak istediğiniz nesnelerin her örneğini etiketlemek çok önemlidir. Etiketlerinizi tamamladığınızda, sağ taraftaki oka tıklayarak etiketlerinizi kaydedin ve sonraki görüntüde geçiş yapın.
 
-    ![Nesneyi dikdörtgen seçimle etiketleme](./media/get-started-build-detector/image-tagging.png)
+    ![Bir nesneyi dikdörtgen seçim ile etiketleme](./media/get-started-build-detector/image-tagging.png)
 
-Başka bir resim kümesi yüklemek için bu bölümün üst kısmına dönün ve adımları yineleyin.
+Başka bir görüntü kümesini karşıya yüklemek için bu bölümün üst kısmına dönün ve adımları tekrarlayın.
 
-## <a name="train-the-detector"></a>Dedektörü eğitin
+## <a name="train-the-detector"></a>Algılayıcısı eğitme
 
-Dedektör modelini eğitmek için **Tren** düğmesini seçin. Dedektör, etiketlenen her nesneyi tanımlayan bir model oluşturmak için geçerli görüntülerin ve etiketlerinin tümünü kullanır.
+Algılayıcı modelini eğiteetmek için **eğitme** düğmesini seçin. Algılayıcı, her etiketli nesneyi tanımlayan bir model oluşturmak için tüm geçerli görüntüleri ve bunların etiketlerini kullanır.
 
-![Web sayfasının üstbilgi araç çubuğunun sağ üst kısmındaki tren düğmesi](./media/getting-started-build-a-classifier/train01.png)
+![Web sayfasının başlık araç çubuğunun sağ üst köşesindeki eğitme düğmesi](./media/getting-started-build-a-classifier/train01.png)
 
-Eğitim süreci sadece birkaç dakika sürer. Bu süre zarfında, eğitim süreci yle ilgili bilgiler **Performans** sekmesinde görüntülenir.
+Eğitim süreci yalnızca birkaç dakika sürer. Bu süre boyunca, eğitim işlemiyle ilgili bilgiler **performans** sekmesinde görüntülenir.
 
-![Ana bölümde bir eğitim iletişim kutusu bulunan tarayıcı penceresi](./media/get-started-build-detector/training.png)
+![Ana bölümde eğitim iletişim kutusuyla tarayıcı penceresi](./media/get-started-build-detector/training.png)
 
-## <a name="evaluate-the-detector"></a>Dedektörü değerlendirin
+## <a name="evaluate-the-detector"></a>Algılayıcısının değerlendirilmesi
 
-Eğitim tamamlandıktan sonra, modelin performansı hesaplanır ve görüntülenir. Custom Vision hizmeti, hassaslık, hatırlama ve ortalama ortalama hassasiyeti hesaplamak için eğitim için gönderdiğiniz görüntüleri kullanır. Hassaslık ve geri çağırma, dedektörün etkinliğinin iki farklı ölçümütür:
+Eğitim tamamlandıktan sonra modelin performansı hesaplanır ve görüntülenir. Özel Görüntü İşleme Hizmeti, duyarlılık, geri çağırma ve ortalama ortalama duyarlık hesaplamak için eğitim için gönderdiğiniz görüntüleri kullanır. Duyarlık ve geri çağırma, bir algılayıcısının verimliliğinden oluşan iki farklı ölçümlerdir:
 
-- **Kesinlik,** tanımlanan sınıflandırmaların doğru olan kısmını gösterir. Örneğin, model köpek olarak 100 görüntü tespit ve bunların 99 aslında köpekler, o zaman hassas% 99 olacaktır.
-- **Geri çağırma,** doğru tanımlanmış gerçek sınıflandırmaların kesirlerini gösterir. Örneğin, aslında 100 adet elma görüntüsü olsaydı ve model 80'i elma olarak tanımlasaydı, geri çağırma %80 olurdu.
+- **Duyarlık** , doğru olan belirlenen sınıflandırmaların kesirini gösterir. Örneğin, model, 100 görüntüsünü köpekler olarak tanımlarsa ve bunların 99 ' i gerçekten dotalar ise, duyarlık %99% olur.
+- **Geri çağırma** , doğru şekilde tanımlanan gerçek sınıflandırmaların kesirini belirtir. Örneğin, gerçekten de 100 resim ve bir model, her ikisi de 80 olarak tanımlanmış ise, geri çekme %80% olur.
 
-![Eğitim sonuçları genel hassasiyeti ve geri çağırmayı ve ortalama ortalama hassasiyeti gösterir.](./media/get-started-build-detector/trained-performance.png)
+![Eğitim sonuçları, genel duyarlık ve geri çağırma ve ortalama duyarlık hassasiyetini gösterir.](./media/get-started-build-detector/trained-performance.png)
 
 ### <a name="probability-threshold"></a>Olasılık Eşiği
 
@@ -106,13 +106,13 @@ Eğitim tamamlandıktan sonra, modelin performansı hesaplanır ve görüntülen
 
 ## <a name="manage-training-iterations"></a>Eğitim yinelemelerini yönetme
 
-Dedektörünüzü her eğittiğınızda, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **Performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Sol bölmede, eskimişse bir yinelemeyi silmek için kullanabileceğiniz **Sil** düğmesini de bulacaksınız. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili tüm görüntüleri silersiniz.
+Algılayıcısının her eğişinizde, kendi güncelleştirilmiş performans ölçümleriyle yeni bir _yineleme_ oluşturursunuz. Tüm yinelemelerinizi **performans** sekmesinin sol bölmesinde görüntüleyebilirsiniz. Sol bölmede, bir yinelemeyi silmek için kullanabileceğiniz **Sil** düğmesini de bulabilirsiniz. Bir yinelemeyi sildiğinizde, onunla benzersiz olarak ilişkili olan tüm görüntüleri silersiniz.
 
-Bkz. Eğitimli modellerinize programlı olarak nasıl eriştiğinizi öğrenmek için [modelinizi tahmin API'sıyla kullanın.](./use-prediction-api.md)
+Eğitilen modellerinize programlı bir şekilde erişme hakkında bilgi edinmek için bkz. [modelinizi tahmın API 'Siyle kullanma](./use-prediction-api.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Custom Vision web sitesini kullanarak bir nesne dedektörü modeli oluşturmayı ve nasıl eğitileceğinizi öğrendiniz. Ardından, modelinizi geliştirme işlemi hakkında daha fazla bilgi alın.
+Bu hızlı başlangıçta, Özel Görüntü İşleme Web sitesini kullanarak bir nesne algılayıcı modeli oluşturmayı ve eğiteyi öğrendiniz. Daha sonra, modelinizi iyileştirmeye yönelik yinelemeli süreç hakkında daha fazla bilgi alın.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

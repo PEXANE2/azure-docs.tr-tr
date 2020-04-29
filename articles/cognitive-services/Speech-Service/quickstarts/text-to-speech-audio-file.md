@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Ses dosyasına konuşma sentezleme - Konuşma hizmeti'
+title: 'Hızlı başlangıç: ses dosyasına konuşma Sentezleştirme-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlatmada, metni ses dosyasında sentezlenmiş konuşmaya dönüştürmek için Konuşma SDK'sını kullanırsınız.
+description: Bu hızlı başlangıçta, bir ses dosyasında metni sentezleştirilmiş konuşmaya dönüştürmek için konuşma SDK 'sını kullanacaksınız.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: b02b43b0f10e1a120ac7e2e3e763aa1e918075b1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400338"
 ---
-# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Quickstart: Konuşmayı ses dosyasına sentezleme
+# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Hızlı başlangıç: ses dosyasına konuşma Sentezleştirme
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

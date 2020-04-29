@@ -1,125 +1,125 @@
 ---
-title: Azure Red Hat OpenShift için Azure Active Directory tümleştirmesi
-description: Microsoft Azure Red Hat OpenShift kümenizde uygulamaları test etmek için bir Azure REKLAM güvenlik grubu ve kullanıcı nasıl oluşturabilirsiniz öğrenin.
+title: Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
+description: Microsoft Azure Red Hat OpenShift kümenizdeki uygulamaları test etmeye yönelik bir Azure AD güvenlik grubu ve Kullanıcı oluşturmayı öğrenin.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382907"
 ---
-# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory tümleştirmesi
+# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory Tümleştirmesi
 
-Azure Etkin Dizin (Azure AD) kiracısı oluşturmadıysanız, bu yönergeleri devam etmeden önce [Azure Red Hat OpenShift için Azure AD kiracısı oluştur'daki](howto-create-tenant.md) yönergeleri izleyin.
+Henüz bir Azure Active Directory (Azure AD) kiracısı oluşturmadıysanız, bu yönergelere devam etmeden önce [Azure Red Hat OpenShift Için Azure AD kiracısı oluşturma](howto-create-tenant.md) bölümündeki yönergeleri izleyin.
 
-Microsoft Azure Red Hat OpenShift, kümeniz adına görevleri gerçekleştirmek için izinlere ihtiyaç duyar. Kuruluşunuzun hizmet sorumlusu olarak kullanmak üzere zaten bir Azure AD kullanıcısı, Azure AD güvenlik grubu veya Azure AD uygulama kaydı yoksa, bunları oluşturmak için bu yönergeleri izleyin.
+Microsoft Azure Red Hat OpenShift, kümeniz adına görevleri gerçekleştirmek için izinler gerektirir. Kuruluşunuzun hizmet sorumlusu olarak kullanılacak bir Azure AD kullanıcısı, Azure AD güvenlik grubu veya bir Azure AD uygulama kaydı yoksa, bunları oluşturmak için bu yönergeleri izleyin.
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Yeni bir Azure Active Directory kullanıcısı oluşturma
 
-Azure [portalında,](https://portal.azure.com)kiracınızın portalın sağ üst ağında ki kullanıcı adınız altında göründüğünden emin olun:
+[Azure Portal](https://portal.azure.com), kiracınızın portalın sağ üst köşesindeki Kullanıcı adınızın altında göründüğünden emin olun:
 
-![Sağ](./media/howto-create-tenant/tenant-callout.png) üstte kiracı nın listelendiği portalın ekran görüntüsü Yanlış kiracı görüntüleniyorsa, sağ üstteki kullanıcı adınızı tıklatın, ardından **Dizin Değiştir'i**tıklatın ve **Tüm Dizinler** listesinden doğru kiracıyı seçin.
+![Kiracı 'nın sağ](./media/howto-create-tenant/tenant-callout.png) üst köşesinde listelenen portalın ekran görüntüsü yanlış kiracı görüntüleniyorsa, sağ üst köşedeki Kullanıcı adına tıklayın, ardından **Dizin Değiştir**' e tıklayın ve **tüm dizinler** listesinden doğru kiracıyı seçin.
 
-Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Directory 'Sahibi' kullanıcısı oluşturun.
+Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Directory ' Owner ' kullanıcısı oluşturun.
 
-1. [Kullanıcılar-Tüm kullanıcılar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) blade gidin.
-2. **Kullanıcı** bölmesini açmak için **+Yeni kullanıcıyı** tıklatın.
-3. Bu kullanıcı için bir **Ad** girin.
-4. Oluşturduğunuz **User name** kiracının adını temel alan ve `.onmicrosoft.com` sonunda eklenen bir Kullanıcı adı oluşturun. Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu kullanıcı adını yazın. Kümenizde oturum açabilmek için buna ihtiyacınız olacak.
-5. Dizin rol bölmesini açmak için **Dizin rolünü** tıklatın ve **Sahibi'ni** seçin ve ardından bölmenin altındaki **Tamam'ı** tıklatın.
-6. **Kullanıcı** bölmesinde **Parolayı Göster'i** tıklatın ve geçici parolayı kaydedin. İlk kez oturum açtıktan sonra sıfırlamanız istenir.
-7. Bölmenin alt kısmında, kullanıcıyı oluşturmak için **Oluştur'u** tıklatın.
+1. [Kullanıcılar-tüm kullanıcılar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) dikey penceresine gidin.
+2. **+ Yeni Kullanıcı** ' ya tıklayarak **Kullanıcı** bölmesini açın.
+3. Bu Kullanıcı için bir **ad** girin.
+4. Sonuna `.onmicrosoft.com` eklenmiş olarak, oluşturduğunuz kiracının adına göre bir **Kullanıcı adı** oluşturun. Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu Kullanıcı adını yazın. Kümenizin kümenizde oturum açması için bu gereklidir.
+5. Dizin **rolü ' nü tıklatıp Dizin** rolü bölmesini **açın ve sonra** bölmenin altındaki **Tamam** ' a tıklayın.
+6. **Kullanıcı** bölmesinde, **parolayı göster** ' e tıklayın ve geçici parolayı kaydedin. İlk kez oturum açtıktan sonra, bunu sıfırlamanız istenir.
+7. Kullanıcı oluşturmak için bölmenin alt kısmındaki **Oluştur** ' a tıklayın.
 
 ## <a name="create-an-azure-ad-security-group"></a>Azure AD güvenlik grubu oluşturma
 
-Küme yöneticisierişimi sağlamak için, bir Azure REKLAM güvenlik grubundaki üyelikler OpenShift grubuna "osa-müşteri yöneticileri" eşitlenir. Belirtilmezse, küme yöneticisi erişimi verilmez.
+Küme Yöneticisi erişimi sağlamak için bir Azure AD güvenlik grubundaki Üyelikler, OpenShift grubu "OSA-Müşteri-yöneticileri" ile eşitlenir. Belirtilmemişse, hiçbir Küme Yöneticisi erişimi verilmez.
 
-1. Azure [Active Directory gruplarını](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) açın.
-2. **+Yeni Grup'u**tıklatın.
-3. Bir grup adı ve açıklaması sağlayın.
-4. **Grup türünü** **Güvenlik**olarak ayarlayın.
-5. **Üyelik türünü** **Atanmış**olarak ayarlayın.
+1. [Azure Active Directory grupları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) dikey penceresini açın.
+2. **+ Yeni Grup**' a tıklayın.
+3. Bir grup adı ve açıklama sağlayın.
+4. **Grup türünü** **güvenlik**olarak ayarlayın.
+5. **Üyelik türünü** **atandı**olarak ayarlayın.
 
     Önceki adımda oluşturduğunuz Azure AD kullanıcısını bu güvenlik grubuna ekleyin.
 
-6. **Üyeleri Seç** bölmesini açmak için **Üyeler'i** tıklatın.
+6. Üyeler **' i** tıklatarak **üyeleri Seç** bölmesini açın.
 7. Üyeler listesinde, yukarıda oluşturduğunuz Azure AD kullanıcısını seçin.
-8. Portalın alt kısmında, güvenlik grubu oluşturmak için **Seç'e** ve ardından **Oluştur'a** tıklayın.
+8. Portalın alt kısmındaki **Seç** ' e tıklayın ve sonra güvenlik grubunu oluşturmak için **Oluştur** ' a tıklayın.
 
-    Grup kimliği değerini yazın.
+    Grup KIMLIĞI değerini yazın.
 
-9. Grup oluşturulduğunda, bunu tüm grupların listesinde görürsünüz. Yeni gruba tıklayın.
-10. Görünen sayfada **Nesne Kimliğini**kopyalayın. Bu değere Azure `GROUPID` Kırmızı [Şapka OpenShift küme](tutorial-create-cluster.md) oluşturma öğreticisinde olduğu gibi atıfta bulunacağız.
+9. Grup oluşturulduğunda, bu dosyayı tüm gruplar listesinde görürsünüz. Yeni gruba tıklayın.
+10. Görüntülenen sayfada, **nesne kimliğini**kopyalayın. `GROUPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
 
 > [!IMPORTANT]
-> Bu grubu osa-customer-admins OpenShift grubuyla senkronize etmek için, Azure CLI'yi kullanarak kümeyi oluşturun. Azure portalı şu anda bu grubu ayarlamak için bir alandan yoksundur.
+> Bu grubu OSA-müşteri-Yöneticiler OpenShift grubuyla eşitlemek için Azure CLı kullanarak kümeyi oluşturun. Azure portal Şu anda bu grubu ayarlamak için bir alan eksik.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD uygulama kaydı oluşturma
 
-`--aad-client-app-id` Bayrağı `az openshift create` komuta atlayarak kümeoluşturmanın bir parçası olarak otomatik olarak bir Azure Etkin Dizin (Azure AD) uygulama kayıt istemcisi oluşturabilirsiniz. Bu öğretici, tamlık için Azure AD uygulama kaydının nasıl oluşturulabileceğinizi gösterir.
+`az openshift create` Komutun `--aad-client-app-id` bayrağını atlayarak, kümeyi oluşturmanın bir parçası olarak otomatik olarak BIR Azure Active Directory (Azure AD) uygulama kayıt istemcisi oluşturabilirsiniz. Bu öğreticide, Azure AD uygulama kaydını tamamlanma için nasıl oluşturacağınız gösterilmektedir.
 
-Kuruluşunuzun hizmet sorumlusu olarak kullanmak üzere zaten bir Azure Etkin Dizin (Azure AD) uygulama kaydı yoksa, bir tane oluşturmak için aşağıdaki yönergeleri izleyin.
+Kuruluşunuzda hizmet sorumlusu olarak kullanılacak bir Azure Active Directory (Azure AD) uygulama kaydı yoksa, bir tane oluşturmak için bu yönergeleri izleyin.
 
-1. Uygulama [kayıtları bıçak](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) açın ve **+Yeni kayıt**tıklayın.
-2. Bir başvuru bölmesini **kaydedin,** başvuru kaydınız için bir ad girin.
-3. **Desteklenen hesap türleri** altında **bu kuruluş dizinindeki Hesapların yalnızca** seçildiğinden emin olun. Bu en güvenli seçimdir.
-4. Kümenin URI'sini anladığımızda uri'yi daha sonra yeniden yönlendireceğiz. Azure AD uygulama kaydını oluşturmak için **Kaydol** düğmesini tıklatın.
-5. Görünen **sayfada, Uygulama (istemci) kimliğini**kopyalayın. Bu değere Azure `APPID` Kırmızı [Şapka OpenShift küme](tutorial-create-cluster.md) oluşturma öğreticisinde olduğu gibi atıfta bulunacağız.
+1. [Uygulama kayıtları dikey penceresini](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) açın ve **+ Yeni kayıt**' ye tıklayın.
+2. **Uygulama kaydetme** bölmesinde, uygulama kaydınız için bir ad girin.
+3. **Desteklenen hesap türleri** altında **yalnızca bu kuruluş dizinindeki hesapların** seçili olduğundan emin olun. Bu en güvenli seçenektir.
+4. Kümenin URI 'sini öğrendikten sonra yeniden yönlendirme URI 'SI ekleyeceğiz. Azure AD uygulama kaydını oluşturmak için **Kaydet** düğmesine tıklayın.
+5. Görüntülenen sayfada, **uygulama (istemci) kimliğini**kopyalayın. `APPID` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
 
-![Uygulama nesnesayfasının ekran görüntüsü](./media/howto-create-tenant/get-app-id.png)
+![Uygulama nesnesi sayfasının ekran görüntüsü](./media/howto-create-tenant/get-app-id.png)
 
-### <a name="create-a-client-secret"></a>İstemci sırrı oluşturma
+### <a name="create-a-client-secret"></a>İstemci parolası oluşturma
 
-Uygulamanızın kimliğini Azure Active Directory olarak doğrulamak için bir istemci sırrı oluşturun.
+Azure Active Directory için uygulamanızın kimliğini doğrulamak için bir istemci gizli dizisi oluşturun.
 
-1. Uygulama kayıtları sayfasının **Yönet** **bölümünde, Sertifikalar & sırları**tıklayın.
-2. **Sertifikalar & sırlar** bölmesine **+Yeni istemci sırrını**tıklatın.  **İstemci gizli bölmeekle** görüntülenir.
-3. **Açıklama**Sağlayın.
-4. Set, örneğin **2 Yıl Içinde,** tercih ettiğiniz süreye **kadar sona erer.**
-5. **Ekle'yi** tıklatın ve anahtar değeri sayfanın **İstemci sırları** bölümünde görünür.
-6. Anahtar değerini kopyalayın. Bu değere Azure `SECRET` Kırmızı [Şapka OpenShift küme](tutorial-create-cluster.md) oluşturma öğreticisinde olduğu gibi atıfta bulunacağız.
+1. Uygulama kayıtları sayfasının **Yönet** bölümünde **Sertifikalar & parolaları**' na tıklayın.
+2. **Sertifikalar & gizlilikler** bölmesinde **+ yeni istemci parolası**' na tıklayın.  **İstemci gizli dizisi Ekle** bölmesi görüntülenir.
+3. Bir **Açıklama**girin.
+4. **Zaman aşımı** süresini tercih ettiğiniz süre (örneğin **2 yıl**) olarak ayarlayın.
+5. **Ekle** ' ye tıkladıktan sonra, sayfanın **istemci gizli** dizileri bölümünde anahtar değeri görünür.
+6. Anahtar değerini kopyalayın. `SECRET` [Azure Red Hat OpenShift kümesi oluşturma](tutorial-create-cluster.md) öğreticisinde bu değere başvuracağız.
 
-![Sertifikalar ve sırlar bölmesinin ekran görüntüsü](./media/howto-create-tenant/create-key.png)
+![Sertifikalar ve gizlilikler bölmesinin ekran görüntüsü](./media/howto-create-tenant/create-key.png)
 
-Azure Uygulama Nesneleri hakkında daha fazla bilgi için [Azure Etkin Dizini'ndeki Uygulama ve hizmet ana nesneleri'ne](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)bakın.
+Azure uygulama nesneleri hakkında daha fazla bilgi için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)bölümüne bakın.
 
-Yeni bir Azure AD uygulaması oluşturma yla ilgili ayrıntılar [için](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)bkz.
+Yeni bir Azure AD uygulaması oluşturma hakkında ayrıntılı bilgi için bkz. [Azure Active Directory v 1.0 uç noktası ile uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
 
 ## <a name="add-api-permissions"></a>API izinleri ekleme
 
 [//]: # (Microsoft Graph olarak değiştirmeyin. Microsoft Graph ile çalışmaz.)
-1. **Yönet** bölümünde **API izinlerini** tıklatın
-2. **İzin Ekle'yi** tıklatın ve Azure **Etkin Dizin Grafiği'ni** seçin ve ardından **Temsilciler Dairesi'ne izin ler ver.**
+1. **Yönet** bölümünde **API izinleri** ' ne tıklayın.
+2. **Izin Ekle** ' ye tıklayın ve ardından **Azure Active Directory grafik** **' i seçin**.
 > [!NOTE]
-> "Microsoft Graph" döşemesini değil, "Azure Etkin Dizin Grafiği"ni seçtiğinizden emin olun.
+> "Microsoft Graph" kutucuğunu değil, "Azure Active Directory Graf" öğesini seçtiğinizden emin olun.
 
-3. Aşağıdaki listede **Kullanıcı'yı** genişletin ve **User.Read** iznini etkinleştirin. **Kullanıcı.Read** varsayılan olarak etkinse, Azure **Etkin Dizin Grafiği** izni Kullanıcı olduğundan emin **olun.Oku**.
-4. Yukarı kaydırın ve **Uygulama izinlerini**seçin.
-5. Aşağıdaki listede **Dizin** genişletin ve **Directory.ReadAll**etkinleştirin.
-6. Değişiklikleri kabul etmek için **İzin Ekle'yi** tıklatın.
-7. API izinleri paneli artık hem *User.Read* hem de *Directory.ReadAll'ı*göstermelidir. Lütfen **Admin onayı gerekli** *sütunda Uyarı Dizin.ReadAll*yanında unutmayın.
-8. Azure Abonelik *Yöneticisiyseniz,* aşağıdaki **Abonelik *Adı* için Yönetici Onayı Ver'i** tıklatın. *Azure Abonelik Yöneticisi*değilseniz, yöneticinizden onay isteyin.
+3. Aşağıdaki listeden **Kullanıcı** ' yı genişletin ve **Kullanıcı. oku** iznini etkinleştirin. **Kullanıcı. Read** varsayılan olarak etkinleştirilmişse, **kullanıcı. Read** **Azure Active Directory Graph** iznine sahip olduğundan emin olun.
+4. Yukarı kaydırın ve **Uygulama izinleri**' ni seçin.
+5. Aşağıdaki listede yer alan **dizini** genişletin ve **Directory. ReadAll**öğesini etkinleştirin.
+6. Değişiklikleri kabul etmek için **Izin Ekle** ' ye tıklayın.
+7. API izinleri panelinde artık *User. Read* ve *Directory. ReadAll*gösterilmelidir. Lütfen *Directory. ReadAll*' ın yanındaki **yönetici onayı gerekli** sütununda uyarı ' yı unutmayın.
+8. *Azure abonelik yöneticisiyseniz*, aşağıdaki ** *abonelik adı* için yönetici onayı ver** ' e tıklayın. *Azure abonelik Yöneticisi*değilseniz, yöneticinizden onay isteyin.
 
-![API izinleri panelinin ekran görüntüsü. User.Read and Directory.ReadTüm izinler eklendi, yönetici onayı dizin için gerekli.ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+![API izinleri bölmesinin ekran görüntüsü. User. Read ve Directory. ReadAll izinleri eklendi, dizin için yönetici onayı gerekli. ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> Küme yöneticileri grubunun eşitlenmesi yalnızca onay verildikten sonra çalışır. *Yönetici onayı için gerekli* sütunda bir onay işareti ve *"Abonelik Adı*için verilen" iletisi içeren yeşil bir daire görürsünüz.
+> Küme yöneticileri grubunun eşitlenmesi, yalnızca onay verildikten sonra çalışır. *Yönetici onayı gerekli* sütununda onay işareti olan yeşil bir daire ve " *abonelik adı*için verildi" iletisi görüntülenir.
 
-Yöneticilerin ve diğer rollerin yönetimi yle ilgili ayrıntılar için Azure [abonelik yöneticileri ekle veya değiştir'](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)bölümüne bakın.
+Yöneticileri ve diğer rolleri yönetme hakkında daha fazla bilgi için bkz. [Azure abonelik yöneticileri ekleme veya değiştirme](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
 
 ## <a name="resources"></a>Kaynaklar
 
-* [Azure Active Directory'deki uygulamalar ve hizmet temel nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Azure Active Directory içindeki uygulamalar ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
 * [Hızlı Başlangıç: Azure Active Directory v1.0 uç noktasına uygulama kaydetme](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Tüm Azure Red Hat OpenShift ön koşullarıyla](howto-setup-environment.md)karşılaştıysanız, ilk kümenizi oluşturmaya hazırsınız!
+Tüm [Azure Red Hat OpenShift önkoşullarını](howto-setup-environment.md)karşıladıysanız, ilk kümenizi oluşturmaya hazırsınız demektir!
 
 Öğreticiyi deneyin:
 > [!div class="nextstepaction"]

@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlatma: Azure REST API ve Python ile görüntüdeki yüzleri algılama'
+title: 'Hızlı başlangıç: Azure REST API ve Python ile görüntüdeki yüzeyleri algılama'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, görüntüdeki yüzleri algılamak için Python ile Azure Yüz REST API'sini kullanırsınız.
+description: Bu hızlı başlangıçta, bir görüntüdeki yüzeyleri algılamak için Azure yüz REST API Python ile kullanacaksınız.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,39 +11,39 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403210"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı başlatma: Face REST API ve Python'u kullanarak görüntüdeki yüzleri algılama
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı başlangıç: yüz REST API ve Python kullanarak görüntüdeki yüzeyleri algılama
 
-Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Python ile azure yüz rest API'sini kullanırsınız. Komut dosyası yüzlerin etrafına kareler çizer ve görüntüye cinsiyet ve yaş bilgilerini yerleştirir.
+Bu hızlı başlangıçta, bir görüntüdeki insan yüzlerini algılamak için Azure yüz REST API Python ile kullanacaksınız. Komut dosyası yüzlerin çevresine kareler ve görüntüdeki cinsiyet ve yaş bilgilerini çizer.
 
-![Bir erkek ve bir kadın, her biri yüzlerinin etrafına çizilmiş bir dikdörtgen ile ve yaş ve cinsiyet görüntü görüntülenen](../images/labelled-faces-python.png)
+![Her biri yüz ve yaş etrafında çizilmiş ve görüntüde görünen bir dörtgenle bir adam ve kadın](../images/labelled-faces-python.png)
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Yüz API abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face API hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
+- Yüz Tanıma API'si abonelik anahtarı. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=face-api)'den ücretsiz bir deneme aboneliği anahtarı edinebilirsiniz. Ya da Yüz Tanıma API'si hizmetine abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin.
 
-## <a name="run-the-jupyter-notebook"></a>Jupyter not defterini çalıştırın
+## <a name="run-the-jupyter-notebook"></a>Jupyter Not defterini çalıştırma
 
-[MyBinder](https://mybinder.org)’da Jupyter not defteri olarak bu hızlı başlangıcı çalıştırabilirsiniz. Binder'ı başlatmak için aşağıdaki düğmeyi seçin. Daha sonra not defterindeki yönergeleri izleyin.
+[MyBinder](https://mybinder.org)’da Jupyter not defteri olarak bu hızlı başlangıcı çalıştırabilirsiniz. Cildi başlatmak için aşağıdaki düğmeyi seçin. Ardından not defterindeki yönergeleri izleyin.
 
-[![Cilt](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
+[![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
-Alternatif olarak, komut satırından aşağıdaki adımlarla bu hızlı başlatmayı çalıştırabilirsiniz:
+Alternatif olarak, komut satırından aşağıdaki adımlarla bu hızlı başlangıcı çalıştırabilirsiniz:
 
 1. Aşağıdaki kodu bir metin düzenleyicisine kopyalayın.
 1. Gerektiğinde kodda aşağıdaki değişiklikleri yapın:
     1. `subscription_key` değerini abonelik anahtarınızla değiştirin.
-    1. Yüz API `face_api_url` kaynağınız için uç nokta URL'sini eklemek için değerini edin.
+    1. Değerini, Yüz Tanıma API'si kaynağınız `face_api_url` için uç nokta URL 'sini içerecek şekilde düzenleyin.
     1. İsteğe bağlı olarak `image_url` değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
 1. Kodu, `.py` uzantısıyla bir dosya olarak kaydedin. Örneğin, `detect-face.py`.
 1. Bir komut istemi penceresi açın.
@@ -260,7 +260,7 @@ Başarılı bir yanıt JSON biçiminde döndürülür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, desteklenen senaryolar hakkında daha fazla bilgi edinmek için Yüz API başvuru belgelerini inceleyin.
+Daha sonra, desteklenen senaryolar hakkında daha fazla bilgi edinmek için Yüz Tanıma API'si başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
-> [Yüz API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Yüz Tanıma API'si](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

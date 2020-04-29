@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Kontrolü - Kimlik ve Erişim Denetimi
-description: Azure Güvenlik Denetimi Kimlik ve Erişim Denetimi
+title: Azure Güvenlik denetimi-kimlik ve Access Control
+description: Azure güvenlik denetim kimliği ve Access Control
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,163 +8,163 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 473fe838f53df0a874a2c793792533e01b7c069a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408525"
 ---
-# <a name="security-control-identity-and-access-control"></a>Güvenlik Kontrolü: Kimlik ve Erişim Kontrolü
+# <a name="security-control-identity-and-access-control"></a>Güvenlik denetimi: kimlik ve Access Control
 
-Kimlik ve erişim yönetimi önerileri, kimlik tabanlı erişim denetimiyle ilgili sorunları ele almaya, yönetime erişimi kilitlemeye, kimlikle ilgili olaylara karşı uyarı yapmaya, anormal hesap davranışına ve rol tabanlı erişim denetimine odaklanır.
+Kimlik ve erişim yönetimi önerileri, kimlik tabanlı erişim denetimiyle ilgili sorunları gidermeye, yönetim erişimini kilitlemeyi, kimlik ile ilgili olayları, olağan dışı hesap davranışından ve rol tabanlı erişim denetimine karşı uyarma konusuna odaklanmaktadır.
 
-## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: İdari hesapların envanterini korumak
+## <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 3.1 | 4.1 | Müşteri |
 
-Azure AD,açıkça atanması gereken ve sorgulanabilen yerleşik rollere sahiptir. Yönetim gruplarına üye hesapları bulmak için geçici sorgular gerçekleştirmek için Azure AD PowerShell modüllerini kullanın.
+Azure AD 'nin açıkça atanması ve sorgulanabilir olması gereken yerleşik rolleri vardır. Yönetim gruplarının üyesi olan hesapları bulmaya yönelik geçici sorgular gerçekleştirmek için Azure AD PowerShell modülünü kullanın.
 
-- [PowerShell ile Azure AD'de dizin rolü nasıl elde elabilirsiniz?](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Azure AD 'de PowerShell ile dizin rolü alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [PowerShell ile Azure AD'de dizin rolünün üyelerini nasıl edinilir?](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-## <a name="32-change-default-passwords-where-applicable"></a>3.2: Varsayılan parolaları varsa değiştirme
+## <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 3,2 | 4.2 | Müşteri |
 
-Azure AD varsayılan parola kavramına sahip değildir. Parola gerektiren diğer Azure kaynakları, hizmete bağlı olarak farklılık gösteren karmaşıklık gereksinimleri ve minimum parola uzunluğuyla bir parola oluşturulmasını zorlar. Varsayılan parolaları kullanabilen üçüncü taraf uygulamalardan ve pazar yeri hizmetlerinden siz sorumlusunuz.
+Azure AD varsayılan parola kavramına sahip değildir. Parola gerektiren diğer Azure kaynakları, karmaşıklık gereksinimleriyle ve hizmete bağlı olarak, en düşük parola uzunluğuna sahip bir parola oluşturulmasını zorlar. Varsayılan parolaları kullanbilen üçüncü taraf uygulamalardan ve Market hizmetlerinden siz sorumlusunuz.
 
-## <a name="33-use-dedicated-administrative-accounts"></a>3.3: Özel yönetim hesaplarını kullanma
+## <a name="33-use-dedicated-administrative-accounts"></a>3,3: adanmış yönetim hesapları kullanın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 3.3 | 4.3 | Müşteri |
 
-Özel yönetim hesaplarının kullanımı yla ilgili standart işletim yordamları oluşturun. Yönetim hesabı sayısını izlemek için Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi'ni kullanın.
+Adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Yönetim hesaplarının sayısını izlemek için Azure Güvenlik Merkezi kimlik ve erişim yönetimi 'ni kullanın.
 
-Ayrıca, Microsoft Hizmetleri için Azure AD Ayrıcalıklı Kimlik Yönetimi Ayrıcalıklı Rolleri ve Azure Kaynak Yöneticisi'ni kullanarak Tam Zamanında / Yeterli Erişim'i etkinleştirebilirsiniz. 
+Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayrıcalıklı rolleri kullanarak tam zamanında/tam erişimi etkinleştirebilirsiniz ve Azure Resource Manager. 
 
-- [Ayrıcalıklı Kimlik Yönetimi hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
-## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Azure Active Directory ile tek oturum açma (SSO) kullanma
+## <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
 | 3.4 | 4.4 | Müşteri |
 
-Mümkün olan her yerde, hizmet başına tek tek kimlik bilgilerini yapılandırmak yerine Azure Active Directory SSO'su kullanın. Azure Güvenlik Merkezi Kimlik ve Erişim Yönetimi önerilerini kullanın.
+Mümkün olan yerlerde, tek başına bağımsız kimlik bilgilerini hizmet başına yapılandırmak yerine Azure Active Directory SSO kullanın. Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini kullanın.
 
-- [Azure AD ile SSO'yı anlayın](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure AD ile SSO 'yu anlama](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Tüm Azure Active Directory tabanlı erişim için çok faktörlü kimlik doğrulamayı kullanın
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3,5 | 4.5, 11.5, 12.11, 16.3 | Müşteri |
+| 3,5 | 4,5, 11,5, 12,11, 16,3 | Müşteri |
 
-Azure AD MFA'sını etkinleştirin ve Azure Güvenlik Merkezi Kimlik ve Erişim Yönetimi önerilerini izleyin.
+Azure AD MFA 'yı etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-- [Azure'da MFA nasıl etkinleştirilir?](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-- [Azure Güvenlik Merkezi'nde kimlik ve erişim nasıl izlenir?](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
-## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Tüm idari görevler için özel makineleri (Ayrıcalıklı Erişim İş İstasyonları) kullanın
+## <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.6 | 4.6, 11.6, 12.12 | Müşteri |
+| 3,6 | 4,6, 11,6, 12,12 | Müşteri |
 
-Azure kaynaklarında oturum açmak ve yapılandırmak için MFA yapılandırılmış PAW'ları (ayrıcalıklı erişim iş istasyonları) kullanın.
+Azure kaynaklarını açmak ve yapılandırmak için MFA ile Paw 'lar (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-- [Ayrıcalıklı Erişim İş İstasyonları hakkında bilgi edinin](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Azure'da MFA nasıl etkinleştirilir?](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+- [Azure 'da MFA 'yı etkinleştirme](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7: İdari hesaplardan şüpheli faaliyetlere ilişkin günlük ve uyarı
+## <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinliklerle ilgili günlüğe kaydet ve uyar
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.7 | 4.8, 4.9 | Müşteri |
+| 3.7 | 4,8, 4,9 | Müşteri |
 
-Çevrede şüpheli veya güvensiz etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Etkin Dizin güvenlik raporlarını kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi'ni kullanın.
+Ortamda şüpheli veya güvenli olmayan bir etkinlik gerçekleştiğinde Günlükler ve uyarılar oluşturmak için Azure Active Directory güvenlik raporları kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlikler için işaretlenmiş Azure AD kullanıcılarını belirleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Riskli etkinlik için işaretlenen Azure AD kullanıcılarını belirleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk)
 
-- [Azure Güvenlik Merkezi'nde kullanıcıların kimlik ve erişim etkinlikleri ni izleyebilirsiniz?](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [Azure Güvenlik Merkezi 'nde kullanıcıların kimlik ve erişim etkinliğini izleme](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
-## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
+## <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.8 | 11.7 | Müşteri |
+| 3,8 | 11,7 | Müşteri |
 
-Yalnızca IP adresi aralıklarının veya ülkelerin/bölgelerinin belirli mantıksal gruplandırmalarından erişime izin vermek için Koşullu Erişim Adlandırılmış Konumlar'ı kullanın.
+IP adresi aralıklarının veya ülkelerin/bölgelerin yalnızca belirli mantıksal gruplarından erişime izin vermek için adlandırılmış konumlarda koşullu erişim kullanın.
 
-- [Azure'da Adlandırılmış Konumlar nasıl yapılandırılır?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+- [Azure 'da adlandırılmış konumları yapılandırma](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
-## <a name="39-use-azure-active-directory"></a>3.9: Azure Etkin Dizini Kullanma
+## <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.9 | 16.1, 16.2, 16.4, 16.5, 16.6 | Müşteri |
+| 3.9 | 16,1, 16,2, 16,4, 16,5, 16,6 | Müşteri |
 
-Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Etkin Dizini'ni (AAD) kullanın. AAD, istirahatte ve aktarım sırasında veriler için güçlü şifreleme kullanarak verileri korur. AAD ayrıca kullanıcı kimlik bilgilerini tuzlar, iş lerle ve güvenli bir şekilde saklar.
+Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory (AAD) kullanın. AAD, bekleyen ve aktarım sırasında veriler için güçlü şifrelemeyi kullanarak verileri korur. AAD Ayrıca, karma ve Kullanıcı kimlik bilgilerini güvenli bir şekilde depolar.
 
-- [AAD örneğini oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+- [AAD örneği oluşturma ve yapılandırma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
-## <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Kullanıcı erişimini düzenli olarak gözden geçirin ve uzlaştırın
+## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.10 | 16.9, 16.10 | Müşteri |
+| 3,10 | 16,9, 16,10 | Müşteri |
 
-Azure AD, eski hesapları keşfetmeye yardımcı olmak için günlükler sağlar. Ayrıca, grup üyeliklerini, kurumsal uygulamalara erişimi ve rol atamalarını verimli bir şekilde yönetmek için Azure Kimlik Erişim İncelemeleri'ni kullanın. Kullanıcı erişimi, yalnızca doğru Kullanıcıların sürekli erişime sahip olduğundan emin olmak için düzenli olarak gözden geçirilebilir. 
+Azure AD, eski hesapların keşfedilmesine yardımcı olmak için Günlükler sağlar. Ayrıca, grup üyeliklerini etkin bir şekilde yönetmek, kurumsal uygulamalara erişmek ve rol atamaları için Azure kimlik erişimi Incelemelerini kullanın. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişimi düzenli olarak incelenebilir. 
 
-- [Azure AD raporlaması anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
+- [Azure AD raporlamayı anlama](https://docs.microsoft.com/azure/active-directory/reports-monitoring/)
 
-- [Azure Kimlik Erişim İncelemeleri nasıl kullanılır?](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+- [Azure kimlik erişimi Incelemelerini kullanma](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
-## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11: Devre dışı bırakılan kimlik bilgilerine erişme girişimlerini izleme
+## <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: devre dışı bırakılmış kimlik bilgilerine erişme girişimlerini izleme
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.11 | 16.12 | Müşteri |
+| 3,11 | 16,12 | Müşteri |
 
-Herhangi bir SIEM/İzleme aracıyla tümleştirmenize olanak tanıyan Azure AD Oturum Açma Etkinliği, Denetim ve Risk Etkinliği günlük kaynaklarına erişebilirsiniz.
+Azure AD oturum açma etkinliğine, denetim ve risk olay günlüğü kaynaklarına erişiminiz vardır ve bu, herhangi bir SıEM/Izleme aracıyla tümleştirmenize imkan tanır.
 
-Azure Active Directory kullanıcı hesapları için Tanılama Ayarları oluşturarak ve denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics Çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. Log Analytics Çalışma Alanı içinde istediğiniz Uyarıları yapılandırabilirsiniz.
+Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluşturarak ve denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-- [Azure Etkinlik Günlükleri Azure Monitörü'ne nasıl entegre edilir?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
-## <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Hesap giriş davranış sapması konusunda uyarı
+## <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.12 | 16.13 | Müşteri |
+| 3,12 | 16,13 | Müşteri |
 
-Kullanıcı kimlikleri ile ilgili algılanan şüpheli eylemlere otomatik yanıtları yapılandırmak için Azure AD Riski ve Kimlik Koruması özelliklerini kullanın. Ayrıca, daha fazla araştırma için Azure Sentinel'e veri sindirebilirsiniz.
+Azure AD risk ve kimlik koruması özelliklerini kullanarak, Kullanıcı kimlikleriyle ilgili şüpheli eylemleri algılanan otomatik yanıtları yapılandırın. Ayrıca, daha fazla araştırma için verileri Azure Sentinel 'e aktarabilirsiniz.
 
-- [Azure AD riskli oturum açmaları nasıl görüntülenebilir?](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD riskli oturum açma işlemlerini görüntüleme](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
-- [Kimlik Koruması risk politikalarını yapılandırma ve etkinleştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+- [Kimlik koruması risk ilkelerini yapılandırma ve etkinleştirme](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
 
-- [Azure Sentinel'e nasıl binilir?](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+- [Azure Sentinel 'i ekleme](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Destek senaryoları sırasında Microsoft'a ilgili müşteri verilerine erişim sağlama
+## <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: destek senaryoları sırasında Microsoft 'un ilgili müşteri verilerine erişimini sağlama
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 3.13 | 16 | Müşteri |
+| 3,13 | 16 | Müşteri |
 
-Microsoft'un müşteri verilerine erişmesi gereken destek senaryolarında, Customer Lockbox müşteri veri erişim isteklerini gözden geçirmeniz ve onaylamanız veya reddetmeniz için bir arabirim sağlar.
+Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Müşteri Kasası müşteri verileri erişim isteklerini gözden geçirmeniz ve onaylayabilmeniz ya da reddetmeniz için bir arabirim sağlar.
 
-- [Müşteri Kilit Kutusunu Anlayın](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
+- [Müşteri Kasası anlayın](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sonraki Güvenlik Denetimine bakın: [Veri Koruması](security-control-data-protection.md)
+- Sonraki güvenlik denetimine bakın: [veri koruma](security-control-data-protection.md)

@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 5ebd56e102ab2ac113e509ea44966aa5f67e9b75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400568"
 ---
 ## <a name="additional-language-and-platform-support"></a>Ek dil ve platform desteği
 
-Bu sekmeyi tıklattıysanız, büyük olasılıkla en sevdiğiniz programlama dilinde hızlı bir başlangıç görmediniz. Endişelenmeyin, GitHub'da ek hızlı başlangıç malzemelerimiz ve kod örneklerimiz mevcuttur. Programlama diliniz ve platform/işletim sistemi kombinasyonunuz için doğru örneği bulmak için tabloyu kullanın.
+Bu sekmeye tıkladıysanız, büyük olasılıkla en sevdiğiniz programlama dilinde bir hızlı başlangıç görmezsiniz. Endişelenmeyin, GitHub 'da kullanılabilir ek hızlı başlangıç malzemeleri ve kod örnekleri sunuyoruz. Programlama diliniz ve platformu/işletim sistemi kombinasyonunuzun doğru örneğini bulmak için tablosunu kullanın.
 
-| Dil | Ek Quickstarts | Kod örnekleri |
+| Dil | Ek hızlı başlangıç | Kod örnekleri |
 |--|--|--|
-| C# | [Mikrofondan][1-mic], [Damladan][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Birlik][unity], [Xamarin][xamarin] |
-| C++ | [Mikrofondan][2-mic], [Damladan][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Mikrofondan][3-mic], [Damladan][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Mikrofondan tarayıcı][js-browser], [Dosyadan Düğüm.js][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [mikrofondan iOS][obj-iOS-qck], [mikrofondan macOS][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Mikrofondan][4-mic], [Damladan][4-blob] | [Windows, Linux, macOS][python] |
-| Swift | [mikrofondan iOS][swift-iOS-qck], [mikrofondan macOS][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Mikrofondan][1-mic] [BLOB 'tan][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Mikrofondan][2-mic] [BLOB 'tan][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Mikrofondan][3-mic] [BLOB 'tan][3-blob] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | Dosyadan bir [Node. js][js-node] [tarayıcısı][js-browser] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [MIC 'Den iOS][obj-iOS-qck], [MIC 'den MacOS][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Mikrofondan][4-mic] [BLOB 'tan][4-blob] | [Windows, Linux, macOS][python] |
+| Swift | [MIC 'Den iOS][swift-iOS-qck], [MIC 'den MacOS][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-mic]: ../../../../quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp
 [1-blob]: ../../../../quickstarts/from-blob.md?pivots=programming-language-csharp

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda tümleştirme çalışma süresini izleme
-description: Azure Veri Fabrikası'nda farklı türde tümleştirme çalışma süresini nasıl izleyeceğinizi öğrenin.
+title: Azure Data Factory tümleştirme çalışma zamanını izleme
+description: Azure Data Factory farklı tümleştirme çalışma zamanı türlerini nasıl izleyeceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,17 +11,17 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398958"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
   
-**Tümleştirme çalışma süresi,** Azure Veri Fabrikası tarafından farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için kullanılan bilgi işlem altyapısıdır. Veri Fabrikası tarafından sunulan üç tür tümleştirme çalışma süreleri vardır:
+**Integration Runtime** , farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır. Data Factory tarafından sunulan üç tür tümleştirme çalışma zamanı vardır:
 
 - Azure tümleştirme çalışma zamanı
 - Kendinden konak tümleştirme çalışma zamanı
@@ -35,92 +35,92 @@ Tümleştirme çalışma zamanı (IR) örneğinin durumunu almak için aşağıd
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
-Cmdlet, farklı entegrasyon çalışma zamanı türleri için farklı bilgiler döndürür. Bu makalede, her tümleştirme çalışma zamanı türü için özellikleri ve durumları açıklanmaktadır.  
+Cmdlet 'i farklı tümleştirme çalışma zamanı türleri için farklı bilgiler döndürür. Bu makalede, her bir tümleştirme çalışma zamanı türünün özellikleri ve durumları açıklanmaktadır.  
 
 ## <a name="azure-integration-runtime"></a>Azure tümleştirme çalışma zamanı
-Azure tümleştirme çalışma zamanının bilgi işlem kaynağı Azure'da tam olarak yönetilir. Aşağıdaki **tablo, Get-AzDataFactoryV2IntegrationRuntime** komutu tarafından döndürülen özellikler için açıklamalar sağlar:
+Azure tümleştirme çalışma zamanı için işlem kaynağı, Azure 'da tam olarak yönetilen esnek. Aşağıdaki tabloda **Get-AzDataFactoryV2IntegrationRuntime** komutu tarafından döndürülen özellikler için açıklamalar verilmiştir:
 
 ### <a name="properties"></a>Özellikler
-Aşağıdaki tablo, Azure tümleştirme çalışma zamanı için cmdlet tarafından döndürülen özelliklerin açıklamalarını sağlar:
+Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet tarafından döndürülen özelliklerin açıklamaları verilmiştir:
 
 | Özellik | Açıklama |
 -------- | ------------- | 
 | Adı | Azure tümleştirme çalışma zamanının adı. |  
 | Durum | Azure tümleştirme çalışma zamanının durumu. | 
-| Konum | Azure tümleştirme çalışma zamanının konumu. Azure tümleştirme çalışma zamanının konumu hakkında ayrıntılı bilgi [için](concepts-integration-runtime.md)bkz. |
+| Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
-| ResourceGroupName | Veri fabrikasının ait olduğu kaynak grubunun adı.  |
+| ResourceGroupName | Data Factory 'nin ait olduğu kaynak grubunun adı.  |
 | Açıklama | Tümleştirme çalışma zamanının açıklaması.  |
 
 ### <a name="status"></a>Durum
-Aşağıdaki tablo, Azure tümleştirme çalışma zamanının olası durumlarını sağlar:
+Aşağıdaki tabloda bir Azure tümleştirme çalışma zamanının olası durumları verilmiştir:
 
-| Durum | Yorumlar / Senaryolar | 
+| Durum | Açıklamalar/senaryolar | 
 | ------ | ------------------ |
-| Çevrimiçi | Azure tümleştirme çalışma zamanı çevrimiçi ve kullanıma hazır. | 
-| Çevrimdışı | Azure tümleştirme çalışma süresi, iç hata nedeniyle çevrimdışıdır. |
+| Çevrimiçi | Azure tümleştirme çalışma zamanı çevrimiçi ve kullanılabilir hale gelmiştir. | 
+| Çevrimdışı | Azure Integration Runtime bir iç hata nedeniyle çevrimdışı. |
 
 ## <a name="self-hosted-integration-runtime"></a>Kendinden konak tümleştirme çalışma zamanı
-Bu bölümde Get-AzDataFactoryV2IntegrationRuntime cmdlet tarafından döndürülen özellikler için açıklamalar verilmektedir. 
+Bu bölüm Get-AzDataFactoryV2IntegrationRuntime cmdlet 'i tarafından döndürülen özelliklerle ilgili açıklamalar sağlar. 
 
 > [!NOTE] 
 > Döndürülen özellikler ve durum, genel olarak barındırılan tümleştirme çalışma zamanı ve çalışma zamanındaki her düğüm hakkında bilgi içerir.  
 
 ### <a name="properties"></a>Özellikler
 
-Aşağıdaki **tablo, her düğüm**için izleme özellikleri açıklamaları sağlar:
+Aşağıdaki tabloda **her düğüm**Için izleme özelliklerinin açıklamaları verilmiştir:
 
 | Özellik | Açıklama | 
 | -------- | ----------- | 
-| Adı | Kendi kendine barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, kendi kendine barındırılan tümleştirme çalışma zamanı yüklü olan şirket içi bir Windows makinesidir. |  
-| Durum | Genel olarak barındırılan tümleştirme çalışma zamanının ve her düğümün durumu. Örnek: Çevrimiçi/Çevrimdışı/Sınırlı/vb. Bu durumlar hakkında bilgi için bir sonraki bölüme bakın. | 
-| Sürüm | Kendi kendine barındırılan tümleştirme çalışma zamanı ve her düğümün sürümü. Kendi kendine barındırılan tümleştirme çalışma süresinin sürümü, gruptaki düğümlerin çoğunluğunun sürümüne göre belirlenir. Kendi kendine barındırılan tümleştirme çalışma zamanı kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal kendi kendine barındırılan tümleştirme çalışma zamanı işleviyle aynı sürüm numarasına sahip düğümler düzgün bir şekilde. Diğerleri sınırlı moddadır ve el ile güncelleştirilmelidir (yalnızca otomatik güncelleştirme başarısız olursa). | 
-| Kullanılabilir bellek | Kendi barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer neredeyse gerçek zamanlı anlık görüntüdür. | 
-| CPU kullanımı | Kendi kendine barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer neredeyse gerçek zamanlı anlık görüntüdür. |
-| Ağ (Dahili/Çıkış) | Kendi kendine barındırılan tümleştirme çalışma zamanı düğümünün ağ kullanımı. Bu değer neredeyse gerçek zamanlı anlık görüntüdür. | 
-| Eşzamanlı İşler (Çalışan / Limit) | **Koşmak**. Her düğümde çalışan iş veya görev sayısı. Bu değer neredeyse gerçek zamanlı anlık görüntüdür. <br/><br/>**Sınır .** Sınır, her düğüm için en büyük eşzamanlı işleri belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ yeterince kullanılmadığında bile etkinlikler zamanlandığında, gelişmiş senaryolarda eşzamanlı iş yürütmeyi ölçeklendirme sınırını artırabilirsiniz. Bu özellik, tek düğümlü kendi kendine barındırılan tümleştirme çalışma süresiyle de kullanılabilir. |
-| Rol | Çok düğümlü kendi kendine barındırılan tümleştirme çalışma zamanında iki tür rol vardır – sevk çisi ve çalışan. Tüm düğümler işçidir, bu da hepsinin işleri yürütmek için kullanılabildiği anlamına gelir. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı işçi düğümlerine göndermek için kullanılan tek bir sevk düğümü vardır. Sevk eden düğüm aynı zamanda bir işçi düğümüdür. |
+| Adı | Şirket içinde barındırılan tümleştirme çalışma zamanının ve onunla ilişkili düğümlerin adı. Düğüm, şirket içinde barındırılan tümleştirme çalışma zamanının yüklü olduğu şirket içi bir Windows makinedir. |  
+| Durum | Genel olarak barındırılan tümleştirme çalışma zamanının ve her düğümün durumu. Örnek: çevrimiçi/çevrimdışı/sınırlı/vb. Bu durumlar hakkında daha fazla bilgi için sonraki bölüme bakın. | 
+| Sürüm | Şirket içinde barındırılan tümleştirme çalışma zamanının ve her düğümün sürümü. Şirket içinde barındırılan tümleştirme çalışma zamanının sürümü, gruptaki düğümlerin çoğunluğu sürümüne göre belirlenir. Şirket içinde barındırılan tümleştirme çalışma zamanı kurulumunda farklı sürümlere sahip düğümler varsa, yalnızca mantıksal şirket içinde barındırılan tümleştirme çalışma zamanı ile aynı sürüm numarasına sahip düğümler düzgün şekilde çalışır. Diğerleri sınırlı moddadır ve el ile güncelleştirilmesi gerekir (yalnızca büyük/küçük harfe otomatik güncelleştirme başarısız olur). | 
+| Kullanılabilir bellek | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
+| CPU kullanımı | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. |
+| Ağ (ın/out) | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
+| Eşzamanlı Işler (çalışıyor/limit) | **Çalışıyor**. Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. <br/><br/>**Sınır**. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ kullanımda olsa bile etkinlikler zaman aşımına uğradıkça, Gelişmiş senaryolarda eşzamanlı iş yürütülmesini ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu yetenek, tek düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı ile de kullanılabilir. |
+| Rol | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
 
-Özelliklerin bazı ayarları, kendi kendine barındırılan tümleştirme çalışma zamanında iki veya daha fazla düğüm olduğunda (diğer bir deyişle, bir ölçeklendirme senaryosunda) daha anlamlıdır.
+Özelliklerin bazı ayarları, şirket içinde barındırılan tümleştirme çalışma zamanı 'nda (yani, bir genişleme senaryosunda) iki veya daha fazla düğüm olduğunda daha anlamlı hale getirir.
 
-#### <a name="concurrent-jobs-limit"></a>Eşzamanlı iş sınırı
+#### <a name="concurrent-jobs-limit"></a>Eşzamanlı işlerin sınırı
 
-Eşzamanlı işler sınırının varsayılan değeri makine boyutuna göre ayarlanır. Bu değeri hesaplamak için kullanılan faktörler RAM miktarına ve makinenin CPU çekirdeği sayısına bağlıdır. Yani daha fazla çekirdek ve daha fazla bellek, eşzamanlı işlerin varsayılan sınırı daha yüksek.
+Eşzamanlı işler sınırının varsayılan değeri makine boyutuna göre ayarlanır. Bu değeri hesaplamak için kullanılan faktörler, RAM miktarına ve makinenin CPU çekirdekleri sayısına bağlıdır. Bu nedenle, daha fazla çekirdek ve daha fazla bellek, eşzamanlı işlerin varsayılan sınırının daha yüksektir.
 
-Düğüm sayısını artırarak ölçeklendirin. Düğüm sayısını artırdığınızda, eşzamanlı iş sınırı, kullanılabilir tüm düğümlerin eşzamanlı iş sınırı değerlerinin toplamıdır.  Örneğin, bir düğüm en fazla on iki eşzamanlı iş çalıştırmanıza izin veriyorsa, üç benzer düğüm daha ekleyerek en fazla 48 eşzamanlı iş çalıştırmanızı sağlar (yani 4 x 12). Eşzamanlı iş sınırını yalnızca her düğümde varsayılan değerleriçeren düşük kaynak kullanımı gördüğünüzde artırmanızı öneririz.
+Düğüm sayısını artırarak ölçeklendirebilirsiniz. Düğüm sayısını artırdığınızda, eşzamanlı işler sınırı, tüm kullanılabilir düğümlerin eşzamanlı iş sınırı değerlerinin toplamıdır.  Örneğin, bir düğüm en fazla on iki eşzamanlı iş çalıştırmanızı sağlar, daha sonra üç benzer düğüm eklemek en fazla 48 eşzamanlı iş (yani 4 x 12) çalıştırmanızı sağlar. Yalnızca her bir düğümdeki varsayılan değerlerle kaynak kullanımını düşük bir şekilde gördüğünüzde, eşzamanlı iş sınırını artırmanız önerilir.
 
-Azure portalında hesaplanan varsayılan değeri geçersiz kılabilirsiniz. Yazar > Bağlantıları > Tümleştirme Çalışma Süreleri > > Düğüm >leri Eş zamanlı iş değerini değiştir'i seçin. PowerShell [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) komutunu da kullanabilirsiniz.
+Azure portal hesaplanan varsayılan değeri geçersiz kılabilirsiniz. > bağlantıları > tümleştirme çalışma zamanları > > düğümlerini Düzenle > düğüm başına eşzamanlı iş değerini değiştir ' i seçin. PowerShell [Update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) komutunu da kullanabilirsiniz.
   
 ### <a name="status-per-node"></a>Durum (düğüm başına)
-Aşağıdaki tablo, kendi kendine barındırılan tümleştirme çalışma zamanı düğümünün olası durumlarını sağlar:
+Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün olası durumları verilmiştir:
 
 | Durum | Açıklama |
 | ------ | ------------------ | 
-| Çevrimiçi | Düğüm Veri Fabrikası hizmetine bağlıdır. |
+| Çevrimiçi | Düğüm Data Factory hizmetine bağlandı. |
 | Çevrimdışı | Düğüm çevrimdışı. |
-| Yükseltme | Düğüm otomatik olarak güncelleniyor. |
-| Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, servis veri meskeni bağlantısı sorunu veya kimlik bilgisi eşitleme sorunu nedeniyle olabilir. |
-| Etkin değil | Düğüm, diğer çoğunluk düğümlerinin yapılandırmasından farklı bir yapılandırmadadır. |
+| Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor. |
+| Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
+| Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır. |
 
-Düğüm, diğer düğümlere bağlanamıyorsa etkin olmayabilir.
+Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
 
 ### <a name="status-overall-self-hosted-integration-runtime"></a>Durum (genel olarak barındırılan tümleştirme çalışma zamanı)
-Aşağıdaki tablo, kendi kendine barındırılan tümleştirme çalışma zamanının olası durumlarını sağlar. Bu durum, çalışma süresine ait tüm düğümlerin durumlarına bağlıdır. 
+Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma zamanının olası durumları verilmiştir. Bu durum, çalışma zamanına ait tüm düğümlerin durumlarına bağlıdır. 
 
 | Durum | Açıklama |
 | ------ | ----------- | 
-| İhtiyaç Kaydı | Bu barındırılan tümleştirme çalışma süresine henüz düğüm kaydedilmemiştir. |
+| Kayıt gerekiyor | Henüz şirket içinde barındırılan tümleştirme çalışma zamanına hiçbir düğüm kaydedilmemiş. |
 | Çevrimiçi | Tüm düğümler çevrimiçi. |
-| Çevrimdışı | Hiçbir düğüm çevrimiçi değildir. |
-| Sınırlı | Bu kendi kendine barındırılan tüm düğümleri sağlıklı bir durumda değildir. Bu durum, bazı düğümlerin kapana kısAlınabileceğine dair bir uyarıdır. Bu durum, sevk/işçi düğümündeki bir kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir. |
+| Çevrimdışı | Çevrimiçi düğüm yok. |
+| Sınırlı | Bu şirket içinde barındırılan tümleştirme çalışma zamanındaki düğümlerin hepsi sağlıklı durumda değil. Bu durum, bazı düğümlerin kapatılmış olabileceğini belirten bir uyarıdır. Bu durum, dağıtıcı/çalışan düğümündeki bir kimlik bilgisi eşitleme sorunundan kaynaklanıyor olabilir. |
 
-Cmdlet'in yürütülmesi sırasında ayrıntılı kendi kendine barındırılan tümleştirme çalışma zamanı özelliklerini ve anlık görüntü değerlerini içeren JSON yükünü almak için **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet'i kullanın.
+Ayrıntılı şirket içinde barındırılan tümleştirme çalışma zamanı özelliklerini ve cmdlet 'inin yürütülmesi sırasında anlık görüntü değerlerini içeren JSON yükünü getirmek için **Get-AzDataFactoryV2IntegrationRuntimeMetric** cmdlet 'ini kullanın.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName | ConvertTo-Json 
 ```
 
-Örnek çıktı (bu kendi kendine barındırılan tümleştirme çalışma süresiyle ilişkili iki düğüm olduğunu varsayar):
+Örnek çıktı (Bu şirket içinde barındırılan tümleştirme çalışma zamanı ile ilişkili iki düğüm olduğunu varsayar):
 
 ```json
 {
@@ -155,33 +155,33 @@ Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -Resou
 
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure SSIS tümleştirmesi çalışma zamanı
-Azure-SSIS tümleştirme çalışma süresi, SSIS paketlerinizi çalıştırmak için ayrılmış tam olarak yönetilen bir Azure sanal makine kümesidir . Azure Veri Fabrikası'nın diğer etkinliklerini çalıştırmaz. Bir kez sağlanan, özelliklerini sorgulayabilir ve genel / düğüm özgü durumlarını izleyebilirsiniz.
+Azure-SSIS Integration Runtime, SSIS paketlerinizi çalıştırmak için adanmış, tam olarak yönetilen bir Azure sanal makine (veya düğümleri) kümesidir. Azure Data Factory başka hiçbir etkinlik çalıştırmaz. Sağlandıktan sonra, özelliklerini sorgulayabilir ve genel/düğüme özel durumlarını izleyebilirsiniz.
 
 ### <a name="properties"></a>Özellikler
 
-| Özellik / Durum | Açıklama |
+| Özellik/durum | Açıklama |
 | --------------- | ----------- |
-| CreateTime | Azure-SSIS tümleştirme çalışma sürenizin oluşturulduğu UTC zamanı. |
-| Düğümler | Azure-SSIS tümleştirme çalışma sürenizin düğüme özgü durumlarla (başlangıç/kullanılabilir/geri dönüşüm/kullanılamaz) ve işlem uygulanabilir hatalarla ayrılmış/kullanılabilir düğümleri. |
-| Diğer Hatalar | Azure-SSIS tümleştirme çalışma zamanınızda düğüme özgü olmayan eylem hataları. |
-| Son İşlem | Azure-SSIS tümleştirme çalışma zamanınızdaki son başlatma/durdurma işleminin sonucu, başarısız olursa işlem hatası(lar) ile birlikte. |
-| Durum | Azure-SSIS tümleştirme çalışma sürenizin genel durumu (başlangıç/başlangıç/başlatma/durdurma/durdurma/durdurma). |
-| Konum | Azure-SSIS tümleştirme çalışma sürenizin konumu. |
-| DüğümBoyutu | Azure-SSIS tümleştirme çalışma sürenizin her düğümünün boyutu. |
-| Düğüm Sayısı | Azure-SSIS tümleştirme çalışma zamanınızdaki düğüm sayısı. |
-| MaxParallelExecutionsPerNode | Azure-SSIS tümleştirme çalışma zamanınızda düğüm başına paralel yürütme sayısı. |
-| KatalogServerEndpoint | SSISDB'yi barındırmak için varolan Azure SQL Veritabanı/Yönetilen Örnek sunucunuzun bitiş noktası. |
-| KatalogAdminUserName | Mevcut Azure SQL Veritabanı/Yönetilen Örnek sunucunuzun yönetici kullanıcı adı. Veri Fabrikası hizmeti, bu bilgileri sizin adınıza SSISDB'yi hazırlamak ve yönetmek için kullanır. |
-| KatalogAdminPassword | Mevcut Azure SQL Veritabanı/Yönetilen Örnek sunucunuzun yönetici parolası. |
-| KatalogFiyatlandırmaTier | SSISDB'nin fiyatlandırma katmanı, mevcut Azure SQL Veritabanı sunucunuz tarafından barındırılır.  SSISDB barındırma Azure SQL Veritabanı Yönetilen Örnek için geçerli değildir. |
-| VNetid | Azure-SSIS tümleştirmeçalışma sürenizin katılması için sanal ağ kaynak kimliği. |
-| Alt ağ | Katılmak için Azure-SSIS tümleştirme çalışma sürenizin alt ağ adı. |
-| Kimlik | Azure-SSIS tümleştirme çalışma sürenizin kaynak kimliği. |
-| Tür | Azure-SSIS tümleştirme çalışma sürenizin türü (Yönetilen/Kendi Kendine Barındırılan) türü. |
-| ResourceGroupName | Veri fabrikanızın ve Azure-SSIS tümleştirme çalışma saatinin oluşturulduğu Azure Kaynak Grubunuzun adı. |
-| DataFactoryName | Azure veri fabrikanızın adı. |
-| Adı | Azure-SSIS tümleştirme çalışma sürenizin adı. |
-| Açıklama | Azure-SSIS tümleştirme çalışma sürenizin açıklaması. |
+| CreateTime | Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu UTC saati. |
+| Düğümler | Azure-SSIS tümleştirme çalışma zamanının ayrılan/kullanılabilir düğümleri, düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eylem yapılabilir hatalar ile. |
+| Diğer hatalar | Azure-SSIS tümleştirme çalışma zamanı 'nda düğüme özgü olmayan işlem yapılabilir hatalar. |
+| LastOperation | Azure-SSIS tümleştirme çalışma zamanmağınızda son başlatma/durdurma işleminin sonucu başarısız olursa, işlem yapılabilir hata (ler). |
+| Durum | Azure-SSIS tümleştirme çalışma zamanının genel durumu (ilk/başlangıç/başlatma/durdurma/durdurma). |
+| Konum | Azure-SSIS tümleştirme çalışma zamanının konumu. |
+| NodeSize | Azure-SSIS tümleştirme çalışma zamanının her bir düğümünün boyutu. |
+| NodeCount | Azure-SSIS tümleştirme çalışma zamanının düğüm sayısı. |
+| MaxParallelExecutionsPerNode | Azure-SSIS tümleştirme çalışma zamanının düğüm başına paralel yürütmelerinin sayısı. |
+| CatalogServerEndpoint | SSıSDB barındırmak için mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun uç noktası. |
+| CatalogAdminUserName | Mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun Yönetici Kullanıcı adı. Data Factory hizmet bu bilgileri, sizin adınıza SSıSDB hazırlamak ve yönetmek için kullanır. |
+| CatalogAdminPassword | Mevcut Azure SQL veritabanı/yönetilen örnek sunucunuzun yönetici parolası. |
+| CatalogPricingTier | Mevcut Azure SQL veritabanı sunucunuz tarafından barındırılan SSSıSDB fiyatlandırma katmanı.  SSıSDB barındıran Azure SQL veritabanı yönetilen örneği için geçerli değildir. |
+| Vnetıd | Azure-SSIS tümleştirme çalışma zamanının katılması için sanal ağ kaynak KIMLIĞI. |
+| Alt ağ | Azure-SSIS tümleştirme çalışma zamanının katılması için alt ağ adı. |
+| Kimlik | Azure-SSIS tümleştirme çalışma zamanının kaynak KIMLIĞI. |
+| Tür | Azure-SSIS tümleştirme çalışma zamanının türü (yönetilen/kendiliğinden konak). |
+| ResourceGroupName | Veri Fabrikanızın ve Azure-SSIS tümleştirme çalışma zamanının oluşturulduğu Azure Kaynak grubunuzun adı. |
+| DataFactoryName | Azure Data Factory 'nizin adı. |
+| Adı | Azure-SSIS tümleştirme çalışma zamanının adı. |
+| Açıklama | Azure-SSIS tümleştirme çalışma zamanının açıklaması. |
 
   
 ### <a name="status-per-node"></a>Durum (düğüm başına)
@@ -189,48 +189,48 @@ Azure-SSIS tümleştirme çalışma süresi, SSIS paketlerinizi çalıştırmak 
 | Durum | Açıklama |
 | ------ | ----------- | 
 | Başlatılıyor | Bu düğüm hazırlanıyor. |
-| Kullanılabilir | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırdır. |
-| Geri dönüşüm | Bu düğüm onarılıyor/yeniden başlatılıyor. |
-| Kullanılamaz | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazır değildir ve çözebileceğiniz işlem yapılabilir hatalar/sorunlar vardır. |
+| Kullanılabilir | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırlayın. |
+| 2 | Bu düğüm onarılıyor/yeniden başlatılıyor. |
+| Kullanılamaz | Bu düğüm, SSIS paketlerini dağıtmanıza/yürütmeye yönelik değil ve giderebileceğiniz hata/sorunlar oluştu. |
 
-### <a name="status-overall-azure-ssis-integration-runtime"></a>Durum (genel Azure-SSIS tümleştirme çalışma zamanı)
+### <a name="status-overall-azure-ssis-integration-runtime"></a>Durum (Genel Azure-SSIS tümleştirme çalışma zamanı)
 
 | Genel durum | Açıklama | 
 | -------------- | ----------- | 
-| Başlangıç | Azure-SSIS tümleştirme çalışma sürenizin düğümleri tahsis edilmedi/hazırlanmadı. | 
-| Başlatılıyor | Azure-SSIS tümleştirme çalışma sürenizin düğümleri tahsis ediliyor/hazırlandı ve faturalandırma başlatıldı. |
-| Başlatıldı | Azure-SSIS tümleştirme çalışma sürenizin düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanız/yürütmeniz için hazır. |
-| Durduruluyor  | Azure-SSIS tümleştirme çalışma sürenizin düğümleri serbest bırakılıyor. |
-| Durduruldu | Azure-SSIS tümleştirme çalışma sürenizin düğümleri serbest bırakıldı ve faturalandırma durduruldu. |
+| Başlangıç | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmadı/hazırlandı. | 
+| Başlatılıyor | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |
+| Başlatıldı | Azure-SSIS tümleştirme çalışma zamanının düğümleri ayrıldı/hazırlandı ve SSIS paketlerini dağıtmanıza/yürütmeniz için hazır. |
+| Durduruluyor  | Azure-SSIS tümleştirme çalışma zamanının düğümleri serbest bırakılıyor. |
+| Durduruldu | Azure-SSIS tümleştirme çalışma zamanının düğümleri yayımlanmıştır ve faturalandırma durdurulur. |
 
-### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Azure portalında Azure-SSIS tümleştirme çalışma süresini izleme
+### <a name="monitor-the-azure-ssis-integration-runtime-in-the-azure-portal"></a>Azure portal Azure-SSIS tümleştirme çalışma zamanını izleme
 
-Aşağıdaki ekran görüntüleri, izlenecek Azure-SSIS IR'nin nasıl seçilebildiğini gösterir ve görüntülenen bilgilerin bir örneğini sağlar.
+Aşağıdaki ekran görüntüleri izlenecek Azure-SSIS IR seçme ve görüntülenen bilgilere bir örnek sağlama işlemlerinin nasıl yapılacağını gösterir.
 
-![İzlemek için Azure-SSIS tümleştirme çalışma süresini seçin](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
+![İzlenecek Azure-SSIS tümleştirme çalışma zamanını seçin](media/monitor-integration-runtime/monitor-azure-ssis-ir-image1.png)
 
-![Azure-SSIS tümleştirme çalışma süresi hakkındaki bilgileri görüntüleme](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
+![Azure-SSIS tümleştirme çalışma zamanı hakkındaki bilgileri görüntüleme](media/monitor-integration-runtime/monitor-azure-ssis-ir-image2.png)
 
-### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>PowerShell ile Azure-SSIS tümleştirme çalışma süresini izleme
+### <a name="monitor-the-azure-ssis-integration-runtime-with-powershell"></a>PowerShell ile Azure-SSIS tümleştirme çalışma zamanını izleme
 
-Azure-SSIS IR'nin durumunu denetlemek için aşağıdaki örnekteki gibi bir komut dosyası kullanın.
+Azure-SSIS IR durumunu denetlemek için aşağıdaki örnekte olduğu gibi bir komut dosyası kullanın.
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
-### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Azure-SSIS tümleştirme çalışma süresi hakkında daha fazla bilgi
+### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime hakkında daha fazla bilgi
 
-Azure-SSIS tümleştirme çalışma süresi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Azure-SSIS Integration Runtime hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- [Azure-SSIS Tümleştirme Çalışma Zamanı.](concepts-integration-runtime.md#azure-ssis-integration-runtime) Bu makalede, Azure-SSIS IR dahil olmak üzere genel olarak tümleştirme çalışma saatleri hakkında kavramsal bilgiler sağlar. 
+- [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Bu makalede, Azure-SSIS IR dahil olmak üzere genel olarak tümleştirme çalışma zamanları hakkında kavramsal bilgiler verilmektedir. 
 - [Öğretici: SSIS paketlerini Azure’a dağıtma](tutorial-create-azure-ssis-runtime-portal.md). Bu makale bir Azure-SSIS IR oluşturmaya ilişkin adım adım yönergeler sağlar ve SSIS kataloğunu barındırmak için bir Azure SQL veritabanı kullanır. 
-- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale, öğreticiyi genişletir ve Azure SQL Veritabanı Yönetilen Örneği'ni kullanma ve IR'yi sanal bir ağa katılma hakkında yönergeler sağlar. 
+- [Nasıl yapılır: Azure-SSIS tümleştirme çalışma zamanı oluşturma](create-azure-ssis-integration-runtime.md). Bu makale öğreticiye genişleterek Azure SQL veritabanı yönetilen örneği kullanımı ve IR 'yi bir sanal ağa katma hakkında yönergeler sağlar. 
 - [Azure-SSIS IR’yi yönetme](manage-azure-ssis-integration-runtime.md). Bu makale bir Azure-SSIS IR’yi durdurma, başlatma veya kaldırma işlemini gösterir. Ayrıca, IR’ye daha fazla düğüm ekleyerek Azure-SSIS IR’nizi ölçeklendirmeyi gösterir. 
-- [Azure-SSIS IR’yi bir sanal ağa ekleyin](join-azure-ssis-integration-runtime-virtual-network.md). Bu makale Azure-SSIS IR’yi bir Azure sanal ağına ekleme hakkında kavramsal bilgiler sağlar. Ayrıca, Azure-SSIS IR'nin sanal ağa katılabilmesi için sanal ağı yapılandırmak için Azure portalını kullanmak için adımlar da sağlar. 
+- [Azure-SSIS IR’yi bir sanal ağa ekleyin](join-azure-ssis-integration-runtime-virtual-network.md). Bu makale Azure-SSIS IR’yi bir Azure sanal ağına ekleme hakkında kavramsal bilgiler sağlar. Ayrıca, Azure-SSIS IR sanal ağa katılabilmesi için sanal ağı yapılandırmak üzere Azure portal kullanma adımları da sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Boru hatlarını farklı şekillerde izlemek için aşağıdaki makalelere bakın: 
+İşlem hatlarını farklı yollarla izlemek için aşağıdaki makalelere bakın: 
 
-- [Quickstart: bir veri fabrikası oluşturun.](quickstart-create-data-factory-dot-net.md)
-- [Veri Fabrikası ardışık hatlarını izlemek için Azure Monitörünü kullanma](monitor-using-azure-monitor.md)
+- [Hızlı başlangıç: Veri Fabrikası oluşturma](quickstart-create-data-factory-dot-net.md).
+- [Data Factory işlem hatlarını izlemek için Azure Izleyicisini kullanın](monitor-using-azure-monitor.md)

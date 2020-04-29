@@ -1,6 +1,6 @@
 ---
-title: Uygulama Ağ Geçidi'nde Azure Web Uygulama Güvenlik Duvarı (WAF) v2 özel kuralları
-description: Bu makalede, Azure Uygulama Ağ Geçidi'ndeki Web Uygulaması Güvenlik Duvarı (WAF) v2 özel kurallarına genel bir bakış sağlanmaktadır.
+title: Application Gateway Azure Web uygulaması güvenlik duvarı (WAF) v2 özel kuralları
+description: Bu makalede, Azure Application Gateway 'de Web uygulaması güvenlik duvarı (WAF) v2 özel kurallarına genel bir bakış sunulmaktadır.
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,36 +8,36 @@ ms.service: web-application-firewall
 ms.date: 04/14/2020
 ms.author: victorh
 ms.openlocfilehash: c0f802f5113e38e811c110ee913099e76fa7be0b
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81383823"
 ---
-# <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi'nde Web Uygulaması Güvenlik Duvarı v2 için özel kurallar
+# <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı v2 için özel kurallar
 
-Azure Uygulama Ağ Geçidi Web Uygulaması Güvenlik Duvarı (WAF) v2, birçok farklı saldırı türüne karşı koruma sağlayan önceden yapılandırılmış, platform tarafından yönetilen bir kural kümesiyle birlikte gelir. Bu saldırılar, site ler arası komut dosyası ekleme, SQL enjeksiyonu ve diğerleri içerir. WAF yöneticisiyseniz, temel kural kümesi (CRS) kurallarını artırmak için kendi kurallarınızı yazmak isteyebilirsiniz. Kurallarınız, eşleşen ölçütlere bağlı olarak istenen trafiği engelleyebilir veya buna izin verebilir.
+Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, birçok farklı saldırı türünden koruma sağlayan, önceden yapılandırılmış, platform tarafından yönetilen bir kural kümesiyle birlikte gelir. Bu saldırılar siteler arası betik oluşturma, SQL ekleme ve diğer kişiler içerir. Bir WAF yöneticisiyseniz, çekirdek kural kümesi (sp_configure) kurallarını genişletmek için kendi kurallarınızı yazmak isteyebilirsiniz. Kurallarınız, eşleşen ölçütlere göre istenen trafiği engelleyebilir veya izin verebilir.
 
-Özel kurallar, WAF'den geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanıza olanak sağlar. Bu kurallar, yönetilen kural kümelerinde yer alan diğer kurallardan daha yüksek bir önceliğe sahip. Özel kurallar bir kural adı, kural önceliği ve eşleşen koşullar dizisi içerir. Bu koşullar yerine getirilirse, bir eylem yapılır (izin vermek veya engellemek için).
+Özel kurallar, WAF üzerinden geçen her istek için değerlendirilen kendi kurallarınızı oluşturmanızı sağlar. Bu kurallar, yönetilen kural kümelerindeki kuralların geri kalanından daha yüksek bir öncelik tutar. Özel kurallar bir kural adı, kural önceliği ve eşleşen koşulların bir dizisini içerir. Bu koşullar karşılanıyorsa, bir eylem yapılır (izin vermek veya engellemek için).
 
-Örneğin, 192.168.5.4/24 aralığındaki bir IP adresinden gelen tüm istekleri engelleyebilirsiniz. Bu kuralda, işleç *IPMatch,* matchValues IP adres aralığı (192.168.5.4/24) ve eylem trafiği engellemek için. Ayrıca kuralın adını ve önceliğini de belirlersiniz.
+Örneğin, 192.168.5.4/24 aralığındaki bir IP adresinden gelen tüm istekleri engelleyebilirsiniz. Bu kuralda, işleç *Ipmatch*Ise, MATCHVALUES değeri IP adres aralığıdır (192.168.5.4/24) ve işlem trafiği engeller. Kuralın adını ve önceliğini de ayarlarsınız.
 
-Özel kurallar, güvenlik gereksinimlerinizi karşılayan daha gelişmiş kurallar yapmak için bileşik mantığı nı destekler. Örneğin, (Durum 1 **ve** Koşul 2) **veya** Durum 3). Bu, Koşul 1 **ve** Koşul 2 karşılanırsa **veya** Koşul 3 karşılanırsa, WAF'ın özel kuralda belirtilen eylemi yapması gerektiği anlamına gelir.
+Özel kurallar, güvenlik gereksinimlerinizi karşılayan daha gelişmiş kurallar oluşturmak için bileşik mantık kullanımını destekler. Örneğin, (koşul 1 **ve** koşul 2) **veya** koşul 3). Bu, koşul 1 **ve** koşul 2 karşılanırsa **veya** koşul 3 karşılanıyorsa, WAF 'nin özel kuralda belirtilen eylemi yapması gerektiği anlamına gelir.
 
-Aynı kural içinde farklı eşleşen koşullar her zaman kullanılarak bileşik **ve**. Örneğin, belirli bir IP adresinden ve yalnızca belirli bir tarayıcı kullanıyorlarsa trafiği engelleyin.
+Aynı kural içindeki farklı eşleşen koşullar, **ve**kullanarak her zaman bileşik bir şekilde yapılır. Örneğin, belirli bir IP adresinden gelen trafiği ve yalnızca belirli bir tarayıcıyı kullanıyorsa engelleyin.
 
-İsterseni **veya** iki farklı koşul istiyorsanız, iki koşul farklı kurallarda olmalıdır. Örneğin, belirli bir IP adresinden gelen trafiği engelleyin veya belirli bir tarayıcı kullanıyorsanız trafiği engelleyin.
+**Ya** da iki farklı koşul istiyorsanız, iki koşulun farklı kurallarda olması gerekir. Örneğin, belirli bir IP adresinden gelen trafiği engelleyin veya belirli bir tarayıcı kullanılıyorsa trafiği engelleyin.
 
 > [!NOTE]
-> WAF özel kurallarının maksimum sayısı 100'dür. Uygulama Ağ Geçidi sınırları hakkında daha fazla bilgi için [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)abakın.
+> WAF özel kural sayısı üst sınırı 100 ' dir. Application Gateway limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
-Düzenli ifadeler, CRS kural kümelerinde olduğu gibi özel kurallarda da desteklenir. Örneğin, Örnek 3 ve 5'e [bakın, Özel web uygulaması güvenlik duvarı kurallarını oluştur ve kullan.](create-custom-waf-rules.md)
+Normal ifadeler Ayrıca, benzer RuleSets gibi özel kurallarda de desteklenir. Örnekler için bkz. örnek 3 ve 5 [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md).
 
-## <a name="allowing-vs-blocking"></a>Engelleme ye izin verme
+## <a name="allowing-vs-blocking"></a>Vs. engellemeye izin verme
 
-Özel kurallarla trafiğe izin vermek ve engellemek kolaydır. Örneğin, çeşitli IP adreslerinden gelen tüm trafiği engelleyebilirsiniz. İstek belirli bir tarayıcıdan geliyorsa, trafiğe izin vermek için başka bir kural daha yapabilirsiniz.
+Özel kurallar sayesinde trafiğin izin verilmesi ve engellenmesi basittir. Örneğin, bir IP adresi aralığından gelen tüm trafiği engelleyebilirsiniz. İstek belirli bir tarayıcıdan geliyorsa, trafiğe izin vermek için başka bir kural yapabilirsiniz.
 
-Bir şeye izin vermek `-Action` için, parametrenin **İzin Ver olarak**ayarlandığından emin olun. Bir şeyi engellemek için, parametrenin `-Action` **Engelle'ye**ayarlandığından emin olun.
+Bir şeye izin vermek için, `-Action` parametrenin **izin ver**' e ayarlandığından emin olun. Bir şeyi engellemek için, `-Action` parametresinin **Block**olarak ayarlandığından emin olun.
 
 ```azurepowershell
 $AllowRule = New-AzApplicationGatewayFirewallCustomRule `
@@ -55,7 +55,7 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-Azure `$BlockRule` Kaynak Yöneticisi'nde aşağıdaki özel kuralın önceki eşler:
+Önceki `$BlockRule` Azure Resource Manager aşağıdaki özel kurala eşlenir:
 
 ```json
 "customRules": [
@@ -86,46 +86,46 @@ Azure `$BlockRule` Kaynak Yöneticisi'nde aşağıdaki özel kuralın önceki e�
     ], 
 ```
 
-Bu özel kural, bir ad, öncelik, bir eylem ve eylemin gerçekleşmesi için karşılanması gereken eşleşen koşullar dizisini içerir. Bu alanların daha ayrıntılı açıklaması için aşağıdaki alan açıklamalarına bakın. Örneğin özel kurallar, [bkz.](create-custom-waf-rules.md)
+Bu özel kural bir ad, öncelik, bir eylem ve eylemin gerçekleşmesi için karşılanması gereken eşleşen koşulların dizisini içerir. Bu alanların daha ayrıntılı açıklaması için aşağıdaki alan açıklamalarına bakın. Örneğin özel kurallar için bkz. [özel Web uygulaması güvenlik duvarı kuralları oluşturma ve kullanma](create-custom-waf-rules.md).
 
 ## <a name="fields-for-custom-rules"></a>Özel kurallar için alanlar
 
 ### <a name="name-optional"></a>Ad [isteğe bağlı]
 
-Kuralın adı.  Günlüklerde görünüyor.
+Kuralın adı.  Günlüklerde görüntülenir.
 
 ### <a name="priority-required"></a>Öncelik [gerekli]
 
-- Kural değerleme sırasını belirler. Değer ne kadar düşükse, kuralın daha erken değerlendirilmesi o kadar erken. İzin verilebilen aralık 1-100 arasındadır. 
-- Tüm özel kurallar arasında benzersiz olmalıdır. Öncelik 40 olan bir kural öncelik 80 ile bir kural önce değerlendirilir.
+- Kural değerlendirme sırasını belirler. Değer ne kadar düşükse, kural değerlendirme daha erken yapılır. İzin verilen Aralık 1-100 ' dir. 
+- Tüm özel kurallar arasında benzersiz olmalıdır. Öncelik 40 olan bir kural, öncelik 80 olan bir kuraldan önce değerlendirilir.
 
 ### <a name="rule-type-required"></a>Kural türü [gerekli]
 
-Şu anda, **MatchRule**olmalıdır.
+Şu anda **Matchrule**olmalıdır.
 
-### <a name="match-variable-required"></a>Eşleştirme değişkeni [gerekli]
+### <a name="match-variable-required"></a>Match değişkeni [gerekli]
 
 Değişkenlerden biri olmalıdır:
 
-- RemoteAddr – uzak bilgisayar bağlantısının IP Adresi/hostname
-- RequestMethod – HTTP İstek yöntemi (GET, POST, PUT, DELETE, vb.)
-- QueryString – URI'de Değişken
-- PostArgs – Post gövdesinde gönderilen argümanlar. Bu eşanlamlı değişkenini kullanan Özel Kurallar yalnızca 'İçerik Türü' üstbilgisi 'application/x-www-form-urlencoded' ve 'multipart/form-data' olarak ayarlanmışsa uygulanır.
-- RequestUri – Uri talebi
-- RequestHeaders - İsteğin Başlıkları
-- RequestBody – Bu bir bütün olarak tüm istek gövdesi içerir. Bu eşanlamlı değişkenini kullanan özel kurallar yalnızca 'İçerik Türü' üstbilgi 'application/x-www-form-urlencoded' olarak ayarlanmışsa uygulanır. 
-- İstek Çerezleri – İsteğin Çerezleri
+- RemoteAddr – uzak bilgisayar bağlantısının IP adresi/ana bilgisayar adı
+- RequestMethod – HTTP Istek yöntemi (GET, POST, PUT, DELETE vb.)
+- QueryString – URI 'de değişken
+- PostArgs: POST gövdesinde gönderilen bağımsız değişkenler. Bu Match değişkenini kullanan özel kurallar yalnızca ' Content-Type ' üst bilgisi ' Application/x-www-form-urlencoded ' ve ' multipart/form-Data ' olarak ayarlandıysa geçerlidir.
+- RequestUri – isteğin URI 'SI
+- RequestHeaders – isteğin üst bilgileri
+- RequestBody: Bu, tüm istek gövdesini bir bütün olarak içerir. Bu Match değişkenini kullanan özel kurallar yalnızca ' Content-Type ' üst bilgisi ' Application/x-www-form-urlencoded ' olarak ayarlandığında uygulanır. 
+- RequestCookies – isteğin tanımlama bilgileri
 
 ### <a name="selector-optional"></a>Seçici [isteğe bağlı]
 
-MatchVariable koleksiyonunun alanını açıklar. Örneğin, matchVariable RequestHeaders ise, seçici *Kullanıcı-Aracı* üstbilgide olabilir.
+MatchVariable koleksiyonunun alanını açıklar. Örneğin, matchVariable, RequestHeaders ise, seçici *Kullanıcı Aracısı* üstbilgisinde olabilir.
 
-### <a name="operator-required"></a>Operatör [gerekli]
+### <a name="operator-required"></a>İşleç [gerekli]
 
 Aşağıdaki işleçlerden biri olmalıdır:
 
-- IPMatch - yalnızca Match Variable *RemoteAddr* olduğunda kullanılır
-- Eşit – giriş MatchValue ile aynıdır
+- Ipmatch-yalnızca Match değişkeni *Remoteaddr* olduğunda kullanılır
+- Eşittir – giriş, MatchValue ile aynıdır
 - Contains
 - LessThan
 - GreaterThan
@@ -134,37 +134,37 @@ Aşağıdaki işleçlerden biri olmalıdır:
 - BeginsWith
 - EndsWith
 - Regex
-- Geomatch (önizleme)
+- Coğrafi eşleşme (Önizleme)
 
-### <a name="negate-condition-optional"></a>Negate durumu [isteğe bağlı]
+### <a name="negate-condition-optional"></a>Negate koşulu [isteğe bağlı]
 
-Geçerli durumu inkar eder.
+Geçerli koşulu geçersiz kılar.
 
-### <a name="transform-optional"></a>[isteğe bağlı] dönüştürme
+### <a name="transform-optional"></a>Dönüştürme [isteğe bağlı]
 
-Eşleşmeden önce yapılacak dönüşümadlarının bulunduğu dizelerin listesi denenir. Aşağıdaki dönüşümler olabilir:
+Eşleşmesinden önce yapılacak dönüşümlerdeki adlara sahip dizelerin listesi. Bunlar aşağıdaki dönüşümler olabilir:
 
 - Küçük harf
 - Trim
-- UrlDecode
+- URL kod çözme
 - UrlEncode 
 - RemoveNulls
 - HtmlEntityDecode
 
-### <a name="match-values-required"></a>Eşleşin değerleri [gerekli]
+### <a name="match-values-required"></a>Değerleri Eşleştir [gerekli]
 
-*OR*'ed olarak düşünülebilir karşı maç değerleri listesi. Örneğin, IP adresleri veya diğer dizeleri olabilir. Değer biçimi önceki işleç bağlıdır.
+Eşleştirilecek değerler listesi, *veya*' Ed olarak düşünülebilir. Örneğin, bu IP adresleri veya diğer dizeler olabilir. Değer biçimi Previous işlecine bağlıdır.
 
 ### <a name="action-required"></a>Eylem [gerekli]
 
-- İzin Ver – Diğer tüm kuralları atlayarak işlemi onaylar. Belirtilen istek izin listesine eklenir ve eşleştikten sonra, istek daha fazla değerlendirmeyi durdurur ve arka uç havuzuna gönderilir. İzin listesinde yer alan kurallar başka özel kurallar veya yönetilen kurallar için değerlendirilmez.
-- Blok – *SecDefaultAction* (algılama/önleme modu) dayalı hareketi engeller. Eyleme İzin Ver gibi, istek değerlendirildikten ve blok listesine eklendikten sonra değerlendirme durdurulur ve istek engellenir. Bundan sonraki herhangi bir istek aynı koşulları karşılar değerlendirmez ve sadece engellenir. 
-- Günlük – Kuralın günlüğe yazılmasına izin verir, ancak kuralların geri kalanının değerlendirme için çalışmasını sağlar. Diğer özel kurallar öncelik sırasına göre değerlendirilir ve yönetilen kurallar izlenir.
+- Allow: işlemi, diğer tüm kuralları atlayarak verir. Belirtilen istek izin verilenler listesine eklenir ve eşleştirdikten sonra, istek daha fazla değerlendirmeyi durduruyor ve arka uç havuzuna gönderilir. İzin verilenler listesindeki kurallar, başka özel kurallar veya yönetilen kurallar için değerlendirilmez.
+- Block: *Secdefaultaction* (algılama/önleme modu) temelinde işlemi engeller. Izin verme eyleminde olduğu gibi, istek değerlendirildikten ve blok listesine eklendikten sonra, değerlendirme durdurulur ve istek engellenir. Aynı koşulları karşıladıktan sonra herhangi bir istek değerlendirilmeyecek ve yalnızca engellenmeyecektir. 
+- GNLK – kuralın günlüğe yazmasına Izin verir, ancak kuralların geri kalanının değerlendirme için çalışmasına izin verir. Diğer özel kurallar öncelik sırasına göre değerlendirilir ve ardından yönetilen kurallar gelir.
 
-## <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (önizleme)
+## <a name="geomatch-custom-rules-preview"></a>Geomatch özel kuralları (Önizleme)
 
-Özel kurallar, uygulamalarınızın ve güvenlik ilkelerinizin tam gereksinimlerine uygun özel kurallar oluşturmanıza izin sağlar. Web uygulamalarınız için erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Daha fazla bilgi için [Geomatch özel kurallarına (önizleme)](geomatch-custom-rules.md)bakın.
+Özel kurallar, uygulamalarınızın ve Güvenlik ilkelerinizin tam ihtiyaçlarını karşılamak için özel kurallar oluşturmanıza olanak sağlar. Web uygulamalarınıza olan erişimi ülkeye/bölgeye göre kısıtlayabilirsiniz. Daha fazla bilgi için bkz. [Geomatch özel kuralları (Önizleme)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel kuralları öğrendikten [sonra, kendi özel kurallarınızı oluşturun.](create-custom-waf-rules.md)
+Özel kurallar hakkında bilgi aldıktan sonra [kendi özel kurallarınızı oluşturun](create-custom-waf-rules.md).

@@ -1,6 +1,6 @@
 ---
-title: Azure veri fabrikasını programlı olarak izleme
-description: Farklı yazılım geliştirme kitleri (SDK'lar) kullanarak veri fabrikasındaki bir ardışık hattı nasıl izleyeceğizi öğrenin.
+title: Programlı olarak bir Azure Data Factory izleme
+description: Farklı yazılım geliştirme setleri (SDK 'lar) kullanarak bir veri fabrikasında bir işlem hattını izlemeyi öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,30 +11,30 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398826"
 ---
-# <a name="programmatically-monitor-an-azure-data-factory"></a>Azure veri fabrikasını programlı olarak izleme
+# <a name="programmatically-monitor-an-azure-data-factory"></a>Programlı olarak bir Azure Data Factory izleme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu makalede, farklı yazılım geliştirme kitleri (SDK) kullanarak bir veri fabrikasında bir ardışık izleme nasıl açıklanır. 
+Bu makalede, farklı yazılım geliştirme setleri (SDK 'lar) kullanılarak bir veri fabrikasında bir işlem hattının nasıl izleneceği açıklanır. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="data-range"></a>Veri aralığı
 
-Veri Fabrikası yalnızca 45 gün boyunca boru hattı çalıştıran verileri depolar. Veri Fabrikası ardışık işakleri ile ilgili verileri programlı olarak `Get-AzDataFactoryV2PipelineRun` sorguladiğinizde (örneğin, PowerShell komutuyla) isteğe bağlı `LastUpdatedAfter` ve `LastUpdatedBefore` parametreler için maksimum tarih yoktur. Ancak, örneğin, son bir yıla ait verileri sorgularsanız, sorgu bir hata döndürmez, ancak yalnızca son 45 güne ait ardışık ardışık işveri verir.
+Data Factory yalnızca 45 gün boyunca işlem hattı çalıştırma verilerini depolar. Data Factory işlem hattı çalıştırmaları hakkında daha fazla bilgi için bkz. Örneğin, PowerShell komutu `Get-AzDataFactoryV2PipelineRun` ile isteğe bağlı `LastUpdatedAfter` ve `LastUpdatedBefore` parametreler için en fazla tarih yok. Ancak, bir önceki yıla ait veriler için sorgulama yaparsanız sorgu bir hata döndürmez, ancak yalnızca son 45 günden alınan işlem hattı çalıştırma verilerini döndürür.
 
-Ardışık hatlar denetim verilerini 45 günden fazla sürdürmek istiyorsanız, [Azure Monitor](monitor-using-azure-monitor.md)ile kendi tanılama günkaydinizi ayarlayın.
+İşlem hattı çalıştırma verilerini 45 günden fazla süreyle kalıcı hale getirmek istiyorsanız, [Azure izleyici](monitor-using-azure-monitor.md)ile kendi tanılama günlük kaydını ayarlayın.
 
 ## <a name="net"></a>.NET
-.NET SDK kullanarak bir ardışık hatlar oluşturma ve izleme konusunda tam [bir](quickstart-create-data-factory-dot-net.md)gözden geçirme için bkz.
+.NET SDK kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [.NET kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-dot-net.md).
 
-1. Verileri kopyalamayı bitirene kadar ardışık hatlar çalışmasının durumunu sürekli olarak denetlemek için aşağıdaki kodu ekleyin.
+1. Veri kopyalamayı bitirene kadar işlem hattı çalıştırmasının durumunu sürekli olarak denetlemek için aşağıdaki kodu ekleyin.
 
     ```csharp
     // Monitor the pipeline run
@@ -51,7 +51,7 @@ Ardışık hatlar denetim verilerini 45 günden fazla sürdürmek istiyorsanız,
     }
     ```
 
-2. Kopyalama etkinliği çalıştırayrıntılarını ( örneğin, okunan/yazılan verilerin boyutu) alan anize aşağıdaki kodu ekleyin.
+2. Kopyalama etkinliği çalıştırma ayrıntılarını (örneğin, okunan/yazılan verilerin boyutu) alan aşağıdaki kodu ekleyin.
 
     ```csharp
     // Check the copy activity run details
@@ -67,12 +67,12 @@ Ardışık hatlar denetim verilerini 45 günden fazla sürdürmek istiyorsanız,
     Console.ReadKey();
     ```
 
-.NET SDK ile ilgili tüm belgeler için [bkz.](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)
+.NET SDK ile ilgili tüm belgeler için, [Data Factory .NET SDK başvurusu](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet)' na bakın.
 
 ## <a name="python"></a>Python
-Python SDK kullanarak bir ardışık hatlar oluşturma ve izleme tam bir walkthrough için, [Python kullanarak bir veri fabrikası ve ardışık alma](quickstart-create-data-factory-python.md)bakın.
+Python SDK kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [Python kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-python.md).
 
-Ardışık hatlar çalışmasını izlemek için aşağıdaki kodu ekleyin:
+İşlem hattı çalıştırmasını izlemek için aşağıdaki kodu ekleyin:
 
 ```python
 # Monitor the pipeline run
@@ -85,10 +85,10 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Python SDK ile ilgili tüm belgeler için [Veri Fabrikası Python SDK referansına](/python/api/overview/azure/datafactory?view=azure-python)bakın.
+Python SDK ile ilgili tüm belgeler için, [Data Factory Python SDK başvurusu](/python/api/overview/azure/datafactory?view=azure-python)' na bakın.
 
 ## <a name="rest-api"></a>REST API
-REST API kullanarak bir ardışık hatlar oluşturma ve izleme tam bir walkthrough için, [REST API kullanarak bir veri fabrikası ve boru hattı oluşturun](quickstart-create-data-factory-rest-api.md)bakın.
+REST API kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için, bkz. [REST API kullanarak veri fabrikası oluşturma ve işlem hattı oluşturma](quickstart-create-data-factory-rest-api.md).
  
 1. İşlem hattı çalıştırma durumunu, verileri kopyalama işlemi tamamlanıncaya kadar sürekli olarak denetlemek için aşağıdaki betiği çalıştırın.
 
@@ -115,10 +115,10 @@ REST API kullanarak bir ardışık hatlar oluşturma ve izleme tam bir walkthrou
     $response | ConvertTo-Json
     ```
 
-REST API ile ilgili tüm belgeler için [Veri Fabrikası REST API başvurusuna](/rest/api/datafactory/)bakın.
+REST API hakkındaki tüm belgeler için bkz. [Data Factory REST API başvurusu](/rest/api/datafactory/).
 
 ## <a name="powershell"></a>PowerShell
-PowerShell kullanarak bir boru hattı oluşturma ve izleme konusunda tam bir yol için [powershell kullanarak bir veri fabrikası ve boru hattı oluşturma](quickstart-create-data-factory-powershell.md)bölümüne bakın.
+PowerShell kullanarak bir işlem hattı oluşturma ve izlemeye yönelik kapsamlı bir anlatım için bkz. [PowerShell kullanarak veri fabrikası ve işlem hattı oluşturma](quickstart-create-data-factory-powershell.md).
 
 1. İşlem hattı çalıştırma durumunu, verileri kopyalama işlemi tamamlanıncaya kadar sürekli olarak denetlemek için aşağıdaki betiği çalıştırın.
 
@@ -152,8 +152,8 @@ PowerShell kullanarak bir boru hattı oluşturma ve izleme konusunda tam bir yol
     $result.Error -join "`r`n"
     ```
 
-PowerShell cmdlets hakkında tam belgeler için Data [Factory PowerShell cmdlet referansına](/powershell/module/az.datafactory)bakın.
+PowerShell cmdlet 'leri hakkında tüm belgeler için bkz. [PowerShell cmdlet başvurusu Data Factory](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası ardışık hatlarını izlemek için Azure Monitor'u kullanma hakkında bilgi edinmek için Azure Monitor makalesini [kullanarak veri hatlarını](monitor-using-azure-monitor.md) izleyin. 
+Data Factory işlem hatlarını izlemek üzere Azure Izleyici 'yi kullanmayı öğrenmek için bkz. Azure izleyici 'yi [kullanarak işlem hatlarını izleme](monitor-using-azure-monitor.md) . 
 

@@ -5,15 +5,15 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392734"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
-Azure API'leri ile etkileşimde kalmak için BIR AKS kümesi için bir [Azure Etkin Dizin (AD) hizmet yöneticisi][aad-service-principal] veya yönetilen bir [kimlik](use-managed-identity.md)gerekir. Azure yük bakiyesi veya kapsayıcı kayıt defteri (ACR) gibi diğer Azure kaynaklarını dinamik olarak oluşturmak ve yönetmek için bir hizmet sorumlusu veya yönetilen kimlik gereklidir.
+Azure API 'Leri ile etkileşime geçmek için bir AKS kümesi, [Azure Active Directory (ad) hizmet sorumlusu][aad-service-principal] ya da [yönetilen kimlik](use-managed-identity.md)gerektirir. Bir Azure yük dengeleyici veya kapsayıcı kayıt defteri (ACR) gibi diğer Azure kaynaklarını dinamik olarak oluşturmak ve yönetmek için hizmet sorumlusu veya yönetilen kimlik gerekir.
 
 Bu makalede, AKS kümeleriniz için bir hizmet sorumlusunun nasıl oluşturulacağı ve kullanılacağı gösterilmektedir.
 
@@ -21,9 +21,9 @@ Bu makalede, AKS kümeleriniz için bir hizmet sorumlusunun nasıl oluşturulaca
 
 Azure AD hizmet sorumlusu oluşturmak için, Azure AD kiracınızla bir uygulamayı kaydetme ve uygulamanızı aboneliğinizdeki bir role atama izinlerinizin olması gerekir. Gerekli izinlere sahip değilseniz Azure AD veya abonelik yöneticinizden gerekli izinleri atamasını istemeniz veya AKS kümesiyle kullanmanız için bir hizmet sorumlusu oluşturma ön işlemlerini tamamlamanız gerekebilir.
 
-Farklı bir Azure AD kiracısından bir hizmet sorumlusu kullanıyorsanız, kümeyi dağıttığınızda kullanılabilir izinler etrafında ek hususlar vardır. Dizin bilgilerini okumak ve yazmak için uygun izinlere sahip olmayabilirsiniz. Daha fazla bilgi için Azure [Etkin Dizini'nde varsayılan kullanıcı izinleri nelerdir?][azure-ad-permissions]
+Farklı bir Azure AD kiracısından bir hizmet sorumlusu kullanıyorsanız, kümeyi dağıtırken kullanılabilen izinlerle ilgili ek konular vardır. Dizin bilgilerini okumak ve yazmak için uygun izinleriniz olmayabilir. Daha fazla bilgi için bkz [. Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?][azure-ad-permissions]
 
-Ayrıca Azure CLI sürüm 2.0.59 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü `az --version` bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Otomatik olarak bir hizmet sorumlusu oluşturma ve kullanma
 
@@ -68,7 +68,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> Varolan bir servis müdürünü özelleştirilmiş gizli bir hizmet müdürü kullanıyorsanız, sırrın 190 bayttan fazla olmadığından emin olun.
+> Özelleştirilmiş gizli dizi var olan bir hizmet sorumlusunu kullanıyorsanız, gizliliğin 190 bayttan daha uzun olmadığından emin olun.
 
 Azure portalı kullanarak bir AKS kümesi dağıtırsanız, **Kubernetes kümesi oluştur** iletişim kutusunun *Kimlik doğrulaması* sayfasında **Hizmet sorumlusu yapılandır**’ı seçin. **Var olanı kullan**’ı seçin ve aşağıdaki değerleri belirtin:
 
@@ -77,64 +77,64 @@ Azure portalı kullanarak bir AKS kümesi dağıtırsanız, **Kubernetes kümesi
 
 ![Azure Vote’a göz atma görüntüsü](media/kubernetes-service-principal/portal-configure-service-principal.png)
 
-## <a name="delegate-access-to-other-azure-resources"></a>Diğer Azure kaynaklarına erişimi temsilciye devretme
+## <a name="delegate-access-to-other-azure-resources"></a>Diğer Azure kaynaklarına erişim yetkisi verme
 
-AKS kümesinin hizmet ilkesi diğer kaynaklara erişmek için kullanılabilir. Örneğin, AKS kümenizi mevcut bir Azure sanal ağ alt ağına dağıtmak veya Azure Kapsayıcı Kayıt Defteri'ne (ACR) bağlanmak istiyorsanız, bu kaynaklara erişimi hizmet ilkesine devretmeniz gerekir.
+AKS kümesi için hizmet sorumlusu diğer kaynaklara erişmek için kullanılabilir. Örneğin, AKS kümenizi var olan bir Azure sanal ağ alt ağına dağıtmak veya Azure Container Registry (ACR) hizmetine bağlanmak istiyorsanız, hizmet sorumlusu için bu kaynaklara erişim yetkisi almanız gerekir.
 
-İzinleri devretmek için az rol atamakomutunu kullanarak bir [rol ataması oluşturun.][az-role-assignment-create] Kaynak grubu `appId` veya sanal ağ kaynağı gibi belirli bir kapsama atama. Bir rol, aşağıdaki örnekte gösterildiği gibi, hizmet sorumlusunun kaynak üzerinde hangi izinlere sahip olduğunu tanımlar:
+İzinleri devretmek için [az role atama Create][az-role-assignment-create] komutunu kullanarak bir rol ataması oluşturun. ' Yi `appId` , kaynak grubu veya sanal ağ kaynağı gibi belirli bir kapsama atayın. Daha sonra bir rol, aşağıdaki örnekte gösterildiği gibi, hizmet sorumlusunun kaynak üzerinde hangi izinlere sahip olduğunu tanımlar:
 
 ```azurecli
 az role assignment create --assignee <appId> --scope <resourceScope> --role Contributor
 ```
 
-Bir `--scope` kaynak için */subscriptions/\<\>guid /resourceGroups/myResourceGroup* veya */subscriptions/ guid\<\>/resourceGroups/myResourceGroup/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet* gibi tam bir kaynak kimliği olması gerekir
+Bir kaynağın */Subscriptions/\<GUID\>/ResourceGroups/myresourcegroup* veya */Subscriptions/\<GUID\>/resourceGroups/myResourceGroupVnet/Providers/Microsoft.Network/virtualNetworks/myVnet* gibi bir tam kaynak kimliği olması gerekir `--scope`
 
-Aşağıdaki bölümlerde yapmanız gereken ortak delegasyonlar ayrıntılı.
+Aşağıdaki bölümlerde, yapmanız gerekebilecek ortak temsilciler ayrıntılandırır.
 
-### <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
+### <a name="azure-container-registry"></a>Azure Container Registry
 
-Azure Kapsayıcı Kayıt Defteri'ni (ACR) kapsayıcı görüntü deponuz olarak kullanıyorsanız, AKS kümenizin görüntüleri okuması ve çekmesi için hizmet sorumlusuna izin vermeniz gerekir. Şu anda, önerilen yapılandırma bir kayıt defteri ile tümleştirmek ve hizmet sorumlusu için uygun rolü atamak için [az aks oluşturma][az-aks-create] veya [az aks güncelleştirme][az-aks-update] komutunu kullanmaktır. Ayrıntılı adımlar için Azure [Kubernetes Hizmetinden Azure Kapsayıcı Kayıt Defteri ile Kimlik Doğrulaması'na][aks-to-acr]bakın.
+Kapsayıcı görüntü depolukça Azure Container Registry (ACR) kullanıyorsanız, görüntüleri okumak ve çekmek için AKS kümenizin hizmet sorumlusu için izinler vermeniz gerekir. Şu anda önerilen yapılandırma, [az aks Create][az-aks-create] veya [az aks Update][az-aks-update] komutunu bir kayıt defteriyle tümleştirilecek ve hizmet sorumlusu için uygun rolü atayacak şekilde kullanmaktır. Ayrıntılı adımlar için bkz. [Azure Kubernetes hizmetinden Azure Container Registry kimlik doğrulaması][aks-to-acr].
 
 ### <a name="networking"></a>Ağ
 
-Sanal ağ ve alt ağ veya genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanımını kullanabilirsiniz. Aşağıdaki rol izinlerinden birini atayın:
+Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanabilirsiniz. Aşağıdaki rol izinleri kümesinden birini atayın:
 
 - Özel bir [rol][rbac-custom-role] oluşturun ve aşağıdaki rol izinlerini tanımlayın:
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-- Veya, sanal ağ içindeki alt ağdaki [Ağ Katılımcısı'nın][rbac-network-contributor] yerleşik rolünü atayın
+  - *Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action*
+  - *Microsoft. Network/virtualNetworks/alt ağlar/okuma*
+  - *Microsoft. Network/virtualNetworks/alt ağlar/yazma*
+  - *Microsoft. Network/publicIPAddresses/JOIN/Action*
+  - *Microsoft. Network/publicIPAddresses/Read*
+  - *Microsoft. Network/Publicıpaddresses/Write*
+- Veya, sanal ağ içindeki alt ağda bulunan [ağ katılımcısı][rbac-network-contributor] yerleşik rolünü atayın
 
 ### <a name="storage"></a>Depolama
 
-Başka bir kaynak grubundaki varolan Disk kaynaklarına erişmeniz gerekebilir. Aşağıdaki rol izinlerinden birini atayın:
+Başka bir kaynak grubundaki mevcut disk kaynaklarına erişmeniz gerekebilir. Aşağıdaki rol izinleri kümesinden birini atayın:
 
 - Özel bir [rol][rbac-custom-role] oluşturun ve aşağıdaki rol izinlerini tanımlayın:
-  - *Microsoft.Compute/disks/read*
-  - *Microsoft.Compute/disks/write*
-- Veya, kaynak grubundaki [Depolama Hesabı Katılımcısı][rbac-storage-contributor] yerleşik rolünü atama
+  - *Microsoft. COMPUTE/Disks/Read*
+  - *Microsoft. COMPUTE/Disks/Write*
+- Veya, kaynak grubunda [depolama hesabı katılımcısı][rbac-storage-contributor] yerleşik rolünü atama
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
-AKS ile tümleştirmek için Sanal Kubelet kullanıyorsanız ve AKS kümesinden ayrı kaynak grubunda Azure Kapsayıcı Örnekleri (ACI) çalıştırmayı seçerseniz, AKS hizmet sorumlusuna ACI kaynak grubunda *Katılımcı* izinleri verilmelidir.
+Sanal Kubelet 'i AKS ile tümleştirilebilir ve kaynak grubunda AKS kümesine göre Azure Container Instances (ACI) çalıştırmayı seçerseniz, AKS hizmet sorumlusuna acı kaynak grubunda *katkıda bulunan* izinleri verilmelidir.
 
 ## <a name="additional-considerations"></a>Diğer konular
 
 AKS ve Azure AD hizmet sorumlularını kullanılırken aşağıdaki noktalara dikkat edin.
 
 - Kubernetes için hizmet sorumlusu, küme yapılandırmasının bir parçasıdır. Ancak, kümeyi dağıtmak için kimlik kullanmayın.
-- Varsayılan olarak, hizmet temel kimlik bilgileri bir yıl boyunca geçerlidir. Hizmet temel kimlik bilgilerini istediğiniz zaman [güncelleyebilir veya döndürebilirsiniz.][update-credentials]
-- Her hizmet sorumlusunun bir Azure AD uygulamasıyla ilişkilendirilmiş olması gerekir. Bir Kubernetes kümesinin hizmet sorumlusu, geçerli bir Azure AD uygulama *https://www.contoso.org/example*adıyla ilişkilendirilebilir (örneğin: ). Uygulama URL'sinin gerçek bir uç nokta olması gerekmez.
+- Varsayılan olarak, hizmet sorumlusu kimlik bilgileri bir yıl için geçerlidir. [Hizmet sorumlusu kimlik bilgilerini dilediğiniz zaman güncelleştirebilir veya döndürebilirsiniz][update-credentials] .
+- Her hizmet sorumlusunun bir Azure AD uygulamasıyla ilişkilendirilmiş olması gerekir. Bir Kubernetes kümesinin hizmet sorumlusu, geçerli herhangi bir Azure AD uygulama adıyla ilişkilendirilebilir (örneğin: *https://www.contoso.org/example*). Uygulama URL'sinin gerçek bir uç nokta olması gerekmez.
 - Hizmet sorumlusu **İstemci kimliğini** belirttiğinizde `appId` değerini kullanın.
-- Kubernetes kümesindeki aracı düğümü VM'lerde, hizmet temel kimlik bilgileri dosyada depolanır`/etc/kubernetes/azure.json`
+- Kubernetes kümesindeki aracı düğümü VM 'lerinde hizmet sorumlusu kimlik bilgileri dosyada depolanır`/etc/kubernetes/azure.json`
 - Hizmet sorumlusunu otomatik olarak oluşturmak için [az aks create][az-aks-create] komutunu kullandığınızda, hizmet sorumlusu kimlik bilgileri komutun çalıştırıldığı makinede `~/.azure/aksServicePrincipal.json` dosyasına yazılır.
-- Ek AKS CLI komutlarında özel olarak bir hizmet ilkesini geçirmiyorsanız, bulunan `~/.azure/aksServicePrincipal.json` varsayılan hizmet ilkesi kullanılır.  
-- Ayrıca isteğe bağlı olarak aksServicePrincipal.json dosyasını kaldırabilirsiniz ve AKS yeni bir hizmet ilkesi oluşturur.
+- Ek AKS CLı komutlarına özel olarak bir hizmet sorumlusu geçirmezseniz, adresinde `~/.azure/aksServicePrincipal.json` bulunan varsayılan hizmet sorumlusu kullanılır.  
+- Ayrıca, isteğe bağlı olarak aksServicePrincipal. json dosyasını kaldırabilir ve AKS 'ler yeni bir hizmet sorumlusu oluşturur.
 - [az aks create][az-aks-create] komutu tarafından oluşturulan bir AKS kümesini sildiğinizde, otomatik olarak oluşturulan hizmet sorumlusu silinmez.
-    - Hizmet üstatlarını silmek için, küme *hizmetinizle sorgulayınPrincipalProfile.clientId* ve [az reklam uygulaması ile sil.][az-ad-app-delete] Aşağıdaki kaynak grubunu ve küme adlarını kendi değerlerinizle değiştirin:
+    - Hizmet sorumlusunu silmek için, kümenizin *Serviceprincipalprofile. ClientID* ' yi sorgulayın ve [az ad App Delete][az-ad-app-delete]ile silin. Aşağıdaki kaynak grubunu ve küme adlarını kendi değerlerinizle değiştirin:
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -142,7 +142,7 @@ AKS ve Azure AD hizmet sorumlularını kullanılırken aşağıdaki noktalara di
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-Bir AKS kümesinin hizmet temel kimlik bilgileri Azure CLI tarafından önbelleğe alınır. Bu kimlik bilgilerinin süresi dolmuşsa, AKS kümelerini dağıtan hatalarla karşılaşırsınız. [Az aks oluştururken][az-aks-create] aşağıdaki hata iletisi önbelleğe alınan hizmet temel kimlik bilgileri ile ilgili bir sorun gösterebilir:
+Bir AKS kümesi için hizmet sorumlusu kimlik bilgileri, Azure CLı tarafından önbelleğe alınır. Bu kimlik bilgilerinin geçerliliği dolmuşsa AKS kümelerini dağıtma hatalarıyla karşılaşırsınız. [Az aks Create][az-aks-create] çalıştırılırken aşağıdaki hata iletisi, önbelleğe alınmış hizmet sorumlusu kimlik bilgileriyle ilgili bir sorun olduğunu gösteriyor olabilir:
 
 ```console
 Operation failed with status: 'Bad Request'.
@@ -156,13 +156,13 @@ Aşağıdaki komutu kullanarak kimlik bilgileri dosyasının yaşını denetleyi
 ls -la $HOME/.azure/aksServicePrincipal.json
 ```
 
-Hizmet temel kimlik bilgileri için varsayılan son kullanma süresi bir yıldır. *aksServicePrincipal.json* dosyanız bir yıldan eskiyse, dosyayı silin ve bir AKS kümesini yeniden dağıtmayı deneyin.
+Hizmet sorumlusu kimlik bilgileri için varsayılan süre sonu zamanı bir yıldır. *Aksserviceprincipal. JSON* dosyanız bir yıldan eskiyse dosyayı silin ve bır aks kümesini yeniden dağıtmayı deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Active Directory hizmet ilkeleri hakkında daha fazla bilgi için [Bkz. Uygulama ve hizmet temel nesneleri.][service-principal]
+Azure Active Directory hizmet sorumluları hakkında daha fazla bilgi için bkz. [uygulama ve hizmet sorumlusu nesneleri][service-principal].
 
-Kimlik bilgilerini nasıl güncelleştirişti hakkında bilgi için [AKS'deki bir hizmet sorumlusunun kimlik bilgilerini güncelleştirme veya döndürme][update-credentials]bilgisine bakın.
+Kimlik bilgilerini güncelleştirme hakkında daha fazla bilgi için bkz. [AKS 'de hizmet sorumlusu için kimlik bilgilerini güncelleştirme veya döndürme][update-credentials].
 
 <!-- LINKS - internal -->
 [aad-service-principal]:../active-directory/develop/app-objects-and-service-principals.md

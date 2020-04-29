@@ -1,7 +1,7 @@
 ---
 title: 'Öğretici: Python’da TensorFlow modelini çalıştırma - Özel Görüntü İşleme Hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Python’da TensorFlow modeli çalıştırın. Bu makale yalnızca Custom Vision hizmetinde görüntü sınıflandırma projelerinden dışa aktarılan modeller için geçerlidir.
+description: Python’da TensorFlow modeli çalıştırın. Bu makale yalnızca Özel Görüntü İşleme hizmetindeki görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404128"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Öğretici: Python’da TensorFlow modelini çalıştırma
@@ -22,7 +22,7 @@ ms.locfileid: "81404128"
 Özel Görüntü İşleme Hizmeti'ndeki [TensorFlow modelinizi dışarı aktardıktan](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) sonra bu hızlı başlangıcı izleyerek bu modeli görüntü sınıflandırma amacıyla yerel ortamda kullanabilirsiniz.
 
 > [!NOTE]
-> Bu öğretici yalnızca görüntü sınıflandırma projelerinden dışa aktarılan modeller için geçerlidir.
+> Bu öğretici yalnızca görüntü sınıflandırması projelerinden aktarılmış modeller için geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Görüntüyü tahmin için hazırlama
 
-Görüntüyü tahmine hazırlamak için atmanız gereken birkaç adım vardır. Bu adımlar eğitim sırasında gerçekleştirilen görüntü işleme adımlarına benzer:
+Görüntüyü tahmin için hazırlamak üzere uygulamanız gereken birkaç adım vardır. Bu adımlar eğitim sırasında gerçekleştirilen görüntü işleme adımlarına benzer:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Dosyayı açma ve BGR renk alanında bir görüntü oluşturma
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>1600 boyutu >görüntüleri işleme
+### <a name="handle-images-with-a-dimension-1600"></a>Boyut >1600 ile görüntüleri işleme
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Görüntü tahmininde bulunma
 
-Görüntü bir tensör olarak hazırlandıktan sonra, bir tahmin için model aracılığıyla gönderebilirsiniz:
+Görüntü bir Tensor olarak hazırlandıktan sonra, bunu bir tahmine yönelik model aracılığıyla gönderebiliriz:
 
 ```Python
 
@@ -210,7 +210,7 @@ Tensor görüntü model aracılığıyla çalıştırıldığında etiketlerle e
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, modelinizi mobil bir uygulamaya nasıl sarın öğrenin:
+Ardından, modelinizi bir mobil uygulamaya nasıl kaydıracağınızı öğrenin:
 * [Dışarı aktarılan Tensorflow modelinizi bir Android uygulamasında kullanma](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Dışarı aktarılan CoreML modelinizi bir Swift iOS uygulamasında kullanma](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Dışarı aktarılan CoreML modelinizi Xamarin ile bir iOS uygulamasında kullanma](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

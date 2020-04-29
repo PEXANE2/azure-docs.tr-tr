@@ -1,6 +1,6 @@
 ---
-title: Azure Olay Izgara olay işleyicileri
-description: Azure Olay Idamı için desteklenen olay işleyicilerini açıklar. Azure Otomasyonu, Fonksiyonlar, Etkinlik Hub'ları, Karma Bağlantılar, Mantık Uygulamaları, Servis Veri Yol, Sıra Depolama, Webhooks.
+title: Azure Event Grid olay işleyicileri
+description: Azure Event Grid için desteklenen olay işleyicilerini açıklar. Azure Otomasyonu, Işlevler, Event Hubs, Karma Bağlantılar, Logic Apps, Service Bus, kuyruk depolama, Web kancaları.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,80 +8,80 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 73118823aec9b8d4bd872986b13f19496240c0b9
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393451"
 ---
-# <a name="event-handlers-in-azure-event-grid"></a>Azure Olay Kılavuz'undaki olay işleyicileri
+# <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid içindeki olay işleyicileri
 
-Olay işleyicisi, olayın gönderildiği yerdir. İşleyici olayı işlemek için başka bir eylem de alır. Bazı Azure hizmetleri olayları işlemek için otomatik olarak yapılandırılır. Olayları işlemek için herhangi bir WebHook'u da kullanabilirsiniz. Etkinliklerle başa çıkmak için WebHook'un Azure'da barındırılması gerekmez. Olay Grid yalnızca HTTPS WebHook uç noktalarını destekler.
+Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır. Olayları işlemek için herhangi bir Web kancasını da kullanabilirsiniz. Web kancasının olayları işlemek için Azure 'da barındırılması gerekmez. Event Grid yalnızca HTTPS Web kancası uç noktalarını destekler.
 
-Bu makalede, her olay işleyicisi için içeriğe bağlantılar sağlar.
+Bu makale, her olay işleyicisi için içerik bağlantıları sağlar.
 
 ## <a name="azure-automation"></a>Azure Otomasyonu
 
-Olayları otomatik runbook'larla işlemek için Azure Otomasyonu'nu kullanın.
+Otomatik runbook 'larla olayları işlemek için Azure Otomasyonu 'nu kullanın.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-|[Öğretici: Olay Izgarave Microsoft Ekipleri ile Azure Otomasyonu](ensure-tags-exists-on-new-virtual-machines.md) |Bir olay gönderen sanal bir makine oluşturun. Olay, sanal makineyi etiketleyen bir Otomasyon runbook'u tetikler ve microsoft teams kanalına gönderilen bir iletiyi tetikler. |
+|[Öğretici: Event Grid ve Microsoft ekipleriyle Azure Otomasyonu](ensure-tags-exists-on-new-virtual-machines.md) |Bir olay gönderen bir sanal makine oluşturun. Olay, sanal makineyi etiketleyen bir Otomasyon Runbook 'unu tetikler ve bir Microsoft ekipleri kanalına gönderilen bir ileti tetikler. |
 
 ## <a name="azure-functions"></a>Azure İşlevleri
 
-Olaylara sunucusuz yanıt vermek için Azure Işlevleri'ni kullanın.
+Olaylara sunucusuz yanıt vermek için Azure Işlevlerini kullanın.
 
 İşleyici olarak Azure İşlevleri’ni kullanırken, genel HTTP tetikleyicileri yerine Event Grid tetikleyicisini kullanın. Event Grid, Event Grid İşlevi tetikleyicilerini otomatik olarak doğrular. Genel HTTP tetikleyicileri ile [doğrulama yanıtını](security-authentication.md#webhook-event-delivery) uygulamanız gerekir.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Hızlı başlangıç: Olayları işlevle işleme](custom-event-to-function.md) | İşlenmek üzere bir işleve özel bir olay gönderir. |
-| [Azure İşlevler için Olay Izgara tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) | İşlevlerde Olay Izgara tetikleyicisinin kullanılmasına genel bakış. |
-| [Öğretici: Olay Izgara'yı kullanarak yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirin](resize-images-on-storage-blob-upload-event.md) | Kullanıcılar görüntüleri web uygulaması üzerinden depolama hesabına yükler. Bir depolama blob oluşturulduğunda, Olay Grid yüklenen görüntüyü yeniden boyutlandıran işlev uygulamasına bir olay gönderir. |
-| [Öğretici: Büyük verileri veri ambarına aktarın](event-grid-event-hubs-integration.md) | Olay Hub'ları bir Yakalama dosyası oluşturduğunda, Olay Grid bir etkinlik uygulamasını işlev uygulamasına gönderir. Uygulama Yakalama dosyasını alır ve verileri bir veri ambarına geçirir. |
-| [Öğretici: Azure Hizmet Veri Servisi'ni Azure Olay Izgara tümleştirme örneklerine](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Olay Grid, Service Bus konusundan işlev uygulamasına ve mantık uygulamasına ileti gönderir. |
+| [Hızlı başlangıç: işlev ile olayları Işleme](custom-event-to-function.md) | İşlemek için bir işleve özel bir olay gönderir. |
+| [Azure Işlevleri için Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) | Işlevlerde Event Grid tetikleyiciyi kullanmaya genel bakış. |
+| [Öğretici: Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](resize-images-on-storage-blob-upload-event.md) | Kullanıcılar, görüntüleri Web uygulamasına depolama hesabına yükler. Bir Depolama Blobu oluşturulduğunda, Event Grid işlev uygulamasına bir olay göndererek karşıya yüklenen görüntüyü yeniden boyutlandırır. |
+| [Öğretici: veri ambarına büyük veri akışı](event-grid-event-hubs-integration.md) | Event Hubs bir yakalama dosyası oluşturduğunda, Event Grid bir işlev uygulamasına bir olay gönderir. Uygulama yakalama dosyasını alır ve verileri bir veri ambarına geçirir. |
+| [Öğretici: Azure Event Grid tümleştirme örneklerine Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid, Service Bus konudan işlev uygulaması ve mantıksal uygulama 'a ileti gönderir. |
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Çözümünüz olayları işleyebilir daha hızlı aldığında Olay Hub'larını kullanın. Başvurunuz, Olay Hub'larından gelen olayları kendi zamanında işler. Gelen olayları işlemek için olay işleme ölçeklendirebilirsiniz.
+Çözümünüz olayları işleyebileceğinden daha hızlı olay aldığında Event Hubs kullanın. Uygulamanız Event Hubs olaylarını kendi zamanlamaya göre işler. Gelen olayları işlemek için olay işlemenizi ölçeklendirebilirsiniz.
 
-Olay Hub'ları olay kaynağı veya olay işleyicisi olarak hareket edebilir. Aşağıdaki makalede, Olay Hub'larının işleyici olarak nasıl kullanılacağı gösterilmektedir.
+Event Hubs, bir olay kaynağı veya olay işleyicisi olarak davranabilir. Aşağıdaki makalede Event Hubs bir işleyici olarak nasıl kullanılacağı gösterilmektedir.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Hızlı başlangıç: Azure CLI ve Olay Izgarası ile özel etkinlikleri Azure Etkinlik Hub'larına yönlendirin](custom-event-to-eventhub.md) | Özel bir olayı bir uygulama tarafından işlenmek üzere olay merkezine gönderir. |
-| [Kaynak Yöneticisi şablonu: özel konu ve Olay Hub'ları bitiş noktası](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Özel bir konu için abonelik oluşturan Kaynak Yöneticisi şablonu. Etkinlikleri bir Azure Etkinlik Hub'larına gönderir. |
+| [Hızlı başlangıç: Azure CLı ve Event Grid ile Azure Event Hubs özel olayları yönlendirme](custom-event-to-eventhub.md) | Bir uygulama tarafından işlenmek üzere bir olay hub 'ına özel bir olay gönderir. |
+| [Kaynak Yöneticisi şablonu: özel konu ve Event Hubs uç noktası](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Özel konu için abonelik oluşturan Kaynak Yöneticisi şablonu. Olayları bir Azure Event Hubs gönderir. |
 
 ## <a name="hybrid-connections"></a>Karma Bağlantılar
 
-Kurumsal ağ içinde bulunan ve herkese açık bir bitiş noktası olmayan uygulamalara olay göndermek için Azure Röle Karma Bağlantıları'nı kullanın.
+Olayları kurumsal ağ içinde olan uygulamalara göndermek için Azure Relay Karma Bağlantılar kullanın ve genel olarak erişilebilen bir uç nokta yoktur.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Öğretici: etkinlikleri karma bağlantıya gönderme](custom-event-to-hybrid-connection.md) | Dinleyici uygulaması tarafından işlenmek üzere varolan karma bağlantıya özel bir olay gönderir. |
+| [Öğretici: olayları karma bağlantıya gönder](custom-event-to-hybrid-connection.md) | Bir dinleyici uygulaması tarafından işlenmek üzere var olan karma bağlantıya özel bir olay gönderir. |
 
 ## <a name="logic-apps"></a>Logic Apps
 
-Olaylara yanıt vermek için iş süreçlerini otomatikleştirmek için Logic Apps'ı kullanın.
+Olaylara yanıt vermek için iş süreçlerini otomatikleştirmek için Logic Apps kullanın.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Öğretici: Azure Olay Izgara ve Mantık Uygulamaları ile sanal makine değişikliklerini izleyin](monitor-virtual-machine-changes-event-grid-logic-app.md) | Bir mantık uygulaması sanal makinedeki değişiklikleri izler ve bu değişikliklerle ilgili e-postalar gönderir. |
-| [Öğretici: Logic Apps'ı kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderin](publish-iot-hub-events-to-logic-apps.md) | Bir mantık uygulaması, IoT hub'ınıza her cihaz ekleninher bir bildirim e-postası gönderir. |
-| [Öğretici: Azure Hizmet Veri Servisi'ni Azure Olay Izgara tümleştirme örneklerine](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Olay Grid, Service Bus konusundan işlev uygulamasına ve mantık uygulamasına ileti gönderir. |
+| [Öğretici: Azure Event Grid ve Logic Apps ile sanal makine değişikliklerini izleme](monitor-virtual-machine-changes-event-grid-logic-app.md) | Mantıksal uygulama, bir sanal makinedeki değişiklikleri izler ve bu değişiklikler hakkında e-posta gönderir. |
+| [Öğretici: Logic Apps kullanarak Azure IoT Hub olaylarıyla ilgili e-posta bildirimleri gönderme](publish-iot-hub-events-to-logic-apps.md) | Logic App bir cihaz, IoT Hub 'ınıza her eklendiğinde bir bildirim e-postası gönderir. |
+| [Öğretici: Azure Event Grid tümleştirme örneklerine Azure Service Bus](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid, Service Bus konudan işlev uygulaması ve mantıksal uygulama 'a ileti gönderir. |
 
 ## <a name="service-bus"></a>Service Bus
 
 ### <a name="service-bus-queues"></a>Service Bus kuyrukları
 
-Olay Izgara'daki olayları doğrudan Arabelleğe Alma'da kullanılmak üzere Servis Veri Yolu kuyruklarına yönlendirebilir veya kurumsal uygulamalarda komut & denetim senaryoları.
+Event Grid olayları, ara belleğe almak veya komut & denetim senaryolarında kurumsal uygulamalarda kullanmak üzere Service Bus sıralara doğrudan yönlendirebilirsiniz.
 
-Azure portalında, etkinlik aboneliği oluştururken bitiş noktası türü olarak "Servis Veri Hizmeti Sırası"nı seçin ve ardından Servis Veri Servisi kuyruğunu seçmek için "bir bitiş noktası seçin" seçeneğini tıklayın.
+Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus kuyruğu" öğesini seçin ve ardından bir Service Bus kuyruğu seçmek için "uç nokta seç" e tıklayın.
 
-#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Servis Veri Çiş sıra işleyicisi eklemek için CLI kullanma
+#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>Service Bus kuyruğu işleyicisi eklemek için CLı kullanma
 
-Azure CLI için aşağıdaki örnek abone oluyor ve bir Hizmet Veri Servisi kuyruğuna olay ızgarası konusunu bağlar:
+Azure CLı için aşağıdaki örnek abone olur ve bir olay Kılavuzu konusunu Service Bus kuyruğuna bağlar:
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -95,15 +95,15 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
 ```
 
-### <a name="service-bus-topics"></a>Servis Veri Günü konuları
+### <a name="service-bus-topics"></a>Service Bus konuları
 
-Hizmet Veri Yolu konularıyla Azure sistem olaylarını işlemek için veya komut & kontrol ileti senaryoları için Event Grid'deki olayları doğrudan Hizmet Veri Yolu konularına yönlendirebilirsiniz.
+Service Bus konular ile Azure sistem olaylarını işlemek veya komut & denetim mesajlaşma senaryoları için Event Grid olayları doğrudan Service Bus konularına yönlendirebilirsiniz.
 
-Azure portalında, etkinlik aboneliği oluştururken bitiş noktası türü olarak "Servis Veri Aracı Konusu"nu seçin ve ardından Bir Hizmet Veri Aracı konusu seçmek için "seç ve bitiş noktası"nı tıklatın.
+Azure portal, bir olay aboneliği oluştururken, uç nokta türü olarak "Service Bus konu" öğesini seçin ve ardından bir Service Bus konu başlığı seçmek için "Seç ve uç nokta" seçeneğine tıklayın.
 
-#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Servis Veri Çöse konu işleyicisi eklemek için CLI kullanma
+#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>Service Bus konu işleyicisi eklemek için CLı kullanma
 
-Azure CLI için aşağıdaki örnek abone oluyor ve bir Hizmet Veri Servisi kuyruğuna olay ızgarası konusunu bağlar:
+Azure CLı için aşağıdaki örnek abone olur ve bir olay Kılavuzu konusunu Service Bus kuyruğuna bağlar:
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -119,24 +119,24 @@ az eventgrid event-subscription create \
 
 ## <a name="queue-storage"></a>Kuyruk Depolama
 
-Çekilmesi gereken olayları almak için Sıra depolama alanını kullanın. Yanıtlanması çok uzun süren uzun bir işlem olduğunda Kuyruk depolama alanını kullanabilirsiniz. Uygulamayı sıra depolama alanına olay göndererek olayları kendi zamanlamasıyla çekebilir ve işleyebilir.
+Çekilmesi gereken olayları almak için kuyruk depolama alanını kullanın. Yanıt vermeyi çok uzun süren uzun süre çalışan bir işleminiz varsa kuyruk depolama alanını kullanabilirsiniz. Uygulama kuyruk depolamaya olay göndererek olayları kendi zamanlamaya göre çekebilir ve işleyebilir.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Hızlı başlangıç: Azure CLI ve Olay Izgarası ile özel olayları Azure Kuyruğu depolama alanına yönlendirin](custom-event-to-queue-storage.md) | Özel olayların Sıra depolama alanına nasıl gönderilebildiğini açıklar. |
+| [Hızlı başlangıç: Azure CLı ve Event Grid ile Azure kuyruk depolama 'ya özel olayları yönlendirme](custom-event-to-queue-storage.md) | Bir kuyruk depolamasına özel olayların nasıl gönderileceğini açıklar. |
 
 ## <a name="webhooks"></a>WebHooks
 
-Olaylara yanıt veren özelleştirilebilir uç noktalar için web hooks kullanın.
+Olaylara yanıt veren özelleştirilebilir uç noktalar için Web kancalarını kullanın.
 
 |Başlık  |Açıklama  |
 |---------|---------|
-| Quickstart: oluşturmak ve özel olaylar rota - [Azure CLI](custom-event-quickstart.md), [PowerShell](custom-event-quickstart-powershell.md), ve [portal](custom-event-quickstart-portal.md). | WebHook'a özel olayların nasıl gönderilebildiğini gösterir. |
-| Quickstart: Ile özel bir web bitiş noktasına Blob depolama olayları rota - [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json), [PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json), ve [portal](blob-event-quickstart-portal.md). | Blob depolama olaylarının WebHook'a nasıl gönderilebildiğini gösterir. |
-| [Quickstart: konteyner kayıt defteri olayları gönderme](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Kapsayıcı Kayıt Defteri etkinliklerini göndermek için Azure CLI'nin nasıl kullanılacağını gösterir. |
-| [Genel bakış: olayları bir HTTP bitiş noktasına alma](receive-events.md) | Olay Aboneliği'nden olayları almak ve olayları almak ve diziden arındırmak için bir HTTP bitiş noktasını nasıl doğrulayabilmek için açıklanır. |
+| Hızlı başlangıç: [Azure CLI](custom-event-quickstart.md), [PowerShell](custom-event-quickstart-powershell.md)ve [Portal](custom-event-quickstart-portal.md)ile özel olaylar oluşturun ve yönlendirin. | Web kancasına nasıl özel olaylar gönderileceğini gösterir. |
+| Hızlı başlangıç: Blob Depolama olaylarını- [Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json), [PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json)ve [Portal](blob-event-quickstart-portal.md)ile özel bir Web uç noktasına yönlendirin. | Blob Storage olaylarının bir Web kancasına nasıl gönderileceğini gösterir. |
+| [Hızlı başlangıç: kapsayıcı kayıt defteri olayları gönderme](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Container Registry olaylarını göndermek için Azure CLı 'nın nasıl kullanılacağını gösterir. |
+| [Genel Bakış: HTTP uç noktasına olay alma](receive-events.md) | Bir olay aboneliğinden olayları almak ve olayları almak ve seri durumdan çıkarmak için bir HTTP uç noktasının nasıl doğrulanacağını açıklar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Event Grid’e giriş için bkz. [Event Grid hakkında](overview.md).
-* Olay Ağıt'ı kullanmaya hızla başlamak için [Azure Olay Ağıtı ile özel etkinlikler oluştur ve yönlendir'e](custom-event-quickstart.md)bakın.
+* Event Grid kullanmaya hızlıca başlamak için bkz. [özel olayları oluşturma ve Azure Event Grid ile yönlendirme](custom-event-quickstart.md).

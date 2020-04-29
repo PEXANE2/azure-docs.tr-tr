@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Amaç tanıma belgeleri
-summary: Konuşma ve Dil Anlama (LUIS) hizmetleri ile niyet tanıma, niyet ve varlıkları tanımlarken, metin içine ses akışları gerçek zamanlı transkripsiyon sağlar.
+summary: Konuşma ve Language Understanding (LUU) hizmetleriyle amaç tanıma, ses akışlarının gerçek zamanlı olarak dökümünü, amaç ve varlıkları tanımlayarak metne dönüştürür.
 metadata:
-  title: Niyet tanıma belgeleri - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
+  title: Amaç tanıma belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,19 +12,19 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401496"
 landingContent:
-- title: Niyet tanıma hakkında
+- title: Amaç tanıma hakkında
   linkLists:
   - linkListType: quickstart
     links:
     - text: Konuşmayı, amaçları ve varlıkları tanıma
       url: quickstarts/intent-recognition.md
-- title: Kasıtlı tanıma ile geliştirin
+- title: Amaç tanıma ile geliştirme
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -40,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Dil desteği
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Niyet tanıma fiyatlandırması
+    - text: Amaç tanıma fiyatlandırması
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

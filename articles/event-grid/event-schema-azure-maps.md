@@ -1,6 +1,6 @@
 ---
-title: Olay Izgara kaynağı olarak Azure Haritalar
-description: Azure Etkinlik Ağıtı ile Azure Haritalar etkinlikleri için sağlanan özellikleri ve şema açıklanır
+title: Azure haritalar Event Grid kaynak olarak
+description: Azure Event Grid ile Azure Maps olayları için belirtilen özellikleri ve şemayı açıklar
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393413"
 ---
-# <a name="azure-maps-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Haritalar
+# <a name="azure-maps-as-an-event-grid-source"></a>Azure haritalar Event Grid kaynak olarak
 
-Bu makalede, Azure Haritalar olaylarının özellikleri ve şeması sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](https://docs.microsoft.com/azure/event-grid/event-schema)bakın. Ayrıca, Azure Haritalar'ı etkinlik kaynağı olarak kullanmanız için hızlı başlangıçların ve öğreticilerin bir listesini de verir.
+Bu makalede, Azure Maps olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema). Ayrıca, Azure haritalar 'ı bir olay kaynağı olarak kullanmak için hızlı başlayan ve öğreticilerin bir listesini sağlar.
 
-## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+## <a name="event-grid-event-schema"></a>Event Grid olay şeması
 
-### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+### <a name="available-event-types"></a>Kullanılabilir olay türleri
 
-Azure Haritalar hesabı aşağıdaki olay türlerini yayır:
+Azure haritalar hesabı aşağıdaki olay türlerini yayar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Alınan koordinatlar belirli bir geofence dışından içinde taşındı zaman yükseltilmiş |
-| Microsoft.Maps.GeofenceÇıktı | Alınan koordinatlar belirli bir coğrafi çitin içinden dışarıya taşındığında yükseltildi |
-| Microsoft.Maps.GeofenceResult | Duruma bakılmaksızın, geofencing sorgusu her sonuç döndürdüğünde yükseltildi |
+| Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge sınırı 'ın içinden içine arasında taşındığında tetiklenir |
+| Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
+| Microsoft. maps. GeofenceResult | Bölge sınırlama sorgusu, durumdan bağımsız olarak bir sonuç döndürdüğünde tetiklenir |
 
 ### <a name="event-examples"></a>Olay örnekleri
 
-Aşağıdaki örnek, bir **GeofenceEntered** olayının şema gösterir
+Aşağıdaki örnek, **Geofencegirildi** olayının şemasını gösterir
 
 ```JSON
 {   
@@ -62,7 +62,7 @@ Aşağıdaki örnek, bir **GeofenceEntered** olayının şema gösterir
 }
 ```
 
-Aşağıdaki örnek **GeofenceResult** için şema göstermek 
+Aşağıdaki örnek **GeofenceResult** için şemayı gösterir 
 
 ```JSON
 {   
@@ -102,16 +102,16 @@ Aşağıdaki örnek **GeofenceResult** için şema göstermek
 
 ### <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey verilere sahiptir:
+Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
-| id | string | Etkinlik için benzersiz tanımlayıcı. |
-| veri | object | Olay verilerini geofencing. |
+| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | object | Bölge sınırlaması olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -119,59 +119,59 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| apiKategori | string | Olayın API kategorisi. |
-| apiName | string | Olayın API adı. |
-| sorunlar | object | İşlemsırasında karşılaşılan sorunları listeler. Herhangi bir sorun döndürülürse, yanıtla birlikte döndürülen geometriler olmaz. |
+| apiCategory | string | Etkinliğin API kategorisi. |
+| apiName | string | Etkinliğin API adı. |
+| sorunlar | object | İşlem sırasında karşılaşılan sorunları listeler. Herhangi bir sorun döndürülürse, yanıtla birlikte hiçbir geometriler döndürülmeyecektir. |
 | responseCode | number | HTTP yanıt kodu |
-| Geometri | object | Koordinat konumunu içeren veya aramaBuffer'ın konumu etrafındaki çakışan çit geometrilerini listeler. |
+| ileri | object | Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |
 
-Haritalar API'sında bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
+Maps API 'sinde bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| error | ErrorDetails |Bu nesne, Haritalar API'sında bir hata oluştuğunda döndürülür  |
+| error | ErrorDetails |Bu nesne, Haritalar API 'sinde bir hata oluştuğunda döndürülür  |
 
-Hatalar Ayrıntıları nesnesi, Haritalar API'sında bir hata oluştuğunda döndürülür. Hata Ayrıntıları veya nesneaşağıdaki özelliklere sahiptir:
+Maps API 'sinde bir hata oluştuğunda ErrorDetails nesnesi döndürülür. ErrorDetails veya nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kod | string | HTTP durum kodu. |
-| message | string | Varsa, hatanın okunabilir bir açıklaması. |
-| innererror | İç Hata | Varsa, hata hakkında hizmete özgü bilgiler içeren bir nesne. |
+| message | string | Kullanılabiliyorsa, hatanın okunabilir bir açıklaması. |
+| ınnererror | Innererror | Varsa, hatayla ilgili hizmete özel bilgileri içeren bir nesne. |
 
-InnerError hata hakkında hizmete özgü bilgiler içeren bir nesnedir. InnerError nesnesi aşağıdaki özelliklere sahiptir: 
+Innererror, hatayla ilgili hizmete özel bilgileri içeren bir nesnedir. Innererror nesnesi aşağıdaki özelliklere sahiptir: 
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | kod | string | Hata iletisi. |
 
-Geometriler nesnesi, istekteki kullanıcı süresine göre süresi dolmuş geofences geometri künyelerini listeler. Geometriler nesnesi aşağıdaki özelliklere sahip geometri öğeleri vardır: 
+Geometriler nesnesi, istekteki Kullanıcı saatine göre süresi geçen bölge sayısının geometri kimliklerini listeler. Geometriler nesnesi, aşağıdaki özelliklere sahip geometri öğelerine sahiptir: 
 
 | Özellik | Tür | Açıklama |
 |:-------- |:---- |:----------- |
-| Deviceıd | string | Cihazın kimliği. |
-| Mesafe | string | <p>Koordinattan geofence en yakın sınıra mesafe. Pozitif, koordinatın geofence'in dışında olduğu anlamına gelir. Koordinat geofence dışında, ancak arama Buffer değerinden daha uzak en yakın geofence sınırından ise, o zaman değeri 999 olduğunu. Negatif, koordinatın geofence'in içinde olduğu anlamına gelir. Koordinat çokgenin içindeyse, ancak aramanın değerinden daha fazlaysaBuffer en yakın geofencing sınırından uzaktaysa, değeri -999'dur. 999 değeri, koordinatın geofence'in çok dışında olduğuna dair büyük bir güven olduğu anlamına gelir. -999 değeri, koordinatın geofence içinde iyi olduğu büyük bir güven olduğu anlamına gelir.<p> |
-| geometriid |string | Benzersiz kimlik geofence geometrisi tanımlar. |
-| nearestlat | number | Geometrinin en yakın noktasının enlemi. |
-| nearestlon | number | Geometrinin en yakın noktasının boylam. |
-| udId | string | Benzersiz kimlik, bir geofence yüklerken kullanıcı yükleme hizmetinden döndürülür. Geofencing sonrası API'ye dahil edilmez. |
+| DeviceID | string | Cihazın KIMLIĞI. |
+| Uzaklık | string | <p>Koordinatlardan bölge alanının en yakın kenarlığına olan uzaklık. Pozitif, koordinat bölge sayısının dışında olduğu anlamına gelir. Koordinat Bölge sınırının dışında, ancak en yakın bölge genişliğinden daha fazla searchBuffer değeri varsa, değer 999 ' dir. Negatif, koordinat bölge sayısının içinde olduğu anlamına gelir. Koordinat Çokgen içindeyse, ancak en yakın bölge sınırlaması kenarından daha fazla searchBuffer değerinden fazla olursa değer-999 olur. 999 değeri, koordinat bölge alanının dışında iyi bir güvenilirlik olduğu anlamına gelir. -999 değeri, koordinatın bölge kapsamında iyi olduğu anlamına gelir.<p> |
+| geometryıd |string | Benzersiz kimlik, bölge sınırı geometrisini tanımlar. |
+| nearestlat | number | En yakın geometri noktası enlem. |
+| nearestlon | number | Geometri 'nın en yakın noktasının boylam. |
+| UDID | string | Bölge, karşıya yüklenirken Kullanıcı karşıya yükleme hizmetinden döndürülen benzersiz kimlik. , Bölge sınırlaması Post API 'sine dahil edilmez. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| süresi dolmuşGeofenceGeometryId | dize[] | İsteğe göre süresi dolan geofence geometri kimliğinin listeleri. |
-| Geometri | geometriler[] |Koordinat konumunu içeren veya aramaBuffer'ın konumu etrafındaki çakışan çit geometrilerini listeler. |
-| geçersizPeriodGeofenceGeometryId | dize[]  | İsteğe göre geçersiz bir dönemde olan geofence geometri kimliği listeleri. |
-| isOlayPublished | boole | Azure Haritalar etkinlik abonesine en az bir olay yayınlanırsa, Azure Haritalar etkinlik abonesine hiçbir olay yayınlanmamışsa yanlış olur. |
+| expiredGeofenceGeometryId | String [] | İstekteki Kullanıcı saatine göre süresi dolmak üzere olan bölge sınırı 'ın geometri kimliği listesi. |
+| ileri | geometriler [] |Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |
+| ınvalidperiodgeofencegeometryıd | String []  | İstekteki Kullanıcı saatine göre geçersiz süre içinde olan bölge sınırı 'ın geometri kimliği listesi. |
+| ıventventyayımlandı | boole | Azure Maps olay abonesi 'nda en az bir olay yayımlandıysa true, Azure Maps olay abonesi 'nda hiçbir olay yayımlanmamışsa false. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Etkinlik Ağıt'ı kullanarak Azure Haritalar etkinliklerine tepki verme](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Haritalarını Olay Ağıtı ile tümleştirmeye genel bakış. |
-| [Öğretici: Geofence'i ayarlama](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bu öğretici, Azure Haritalar'ı kullanarak coğrafi çit oluşturmanız için temel adımlardan geçmenizi sağlar. Geofence sonuçlarını akış ve geofence sonuçlarına dayalı bir bildirim ayarlamak için Azure Event Grid'i kullanırsınız. |
+| [Event Grid kullanarak Azure Maps olaylarına tepki verme](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid ile Azure haritalarını tümleştirmeyle ilgili genel bakış. |
+| [Öğretici: bölge kümesi ayarlama](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bu öğretici, Azure haritalar 'ı kullanarak bölge sınırlaması ayarlama konusunda size kılavuzluk eder. Bölge sonuçlarının akışını yapmak ve bölge sonuçlarına dayalı bir bildirim ayarlamak için Azure Event Grid kullanırsınız. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
-* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
+* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).

@@ -1,222 +1,222 @@
 ---
-title: QnA Maker hizmeti ayarlama - QnA Maker
-description: Herhangi bir QnA Maker bilgi tabanı oluşturmadan önce Azure'da bir QnA Maker hizmeti ayarlamanız gerekir. Abonelikte yeni kaynaklar oluşturma yetkisi olan herkes bir QnA Maker hizmeti ayarlayabilir.
+title: Soru-Cevap Oluşturma Hizmeti ayarlama-Soru-Cevap Oluşturma
+description: Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402981"
 ---
-# <a name="manage-qna-maker-resources"></a>QnA Maker kaynaklarını yönetme
+# <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
-Herhangi bir QnA Maker bilgi tabanı oluşturmadan önce Azure'da bir QnA Maker hizmeti ayarlamanız gerekir. Abonelikte yeni kaynaklar oluşturma yetkisi olan herkes bir QnA Maker hizmeti ayarlayabilir.
+Herhangi bir Soru-Cevap Oluşturma bilgi tabanı oluşturabilmeniz için önce Azure 'da bir Soru-Cevap Oluşturma Hizmeti ayarlamanız gerekir. Bir abonelikte yeni kaynaklar oluşturmak için yetkilendirmeye sahip olan herkes, Soru-Cevap Oluşturma bir hizmet ayarlayabilir.
 
-Aşağıdaki kavramların sağlam bir şekilde anlaşılması, kaynağınızı oluşturmadan önce yararlıdır:
+Kaynağı oluşturmadan önce aşağıdaki kavramların bir katı şekilde anlaşılması yararlı olur:
 
-* [QnA Maker kaynakları](../Concepts/azure-resources.md)
-* [Anahtar yazma ve yayımlama](../Concepts/azure-resources.md#keys-in-qna-maker)
+* [Soru-Cevap Oluşturma kaynakları](../Concepts/azure-resources.md)
+* [Yazma ve yayımlama anahtarları](../Concepts/azure-resources.md#keys-in-qna-maker)
 
-## <a name="create-a-new-qna-maker-service"></a>Yeni bir QnA Maker hizmeti oluşturun
+## <a name="create-a-new-qna-maker-service"></a>Yeni bir Soru-Cevap Oluşturma hizmeti oluşturun
 
-Bu yordam, bilgi tabanı içeriğini yönetmek için gereken Azure kaynaklarını oluşturur. Bu adımları tamamladıktan sonra, Azure portalındaki kaynağın **Anahtarları** sayfasında _abonelik_ anahtarlarını bulabilirsiniz.
+Bu yordam, Bilgi Bankası içeriğini yönetmek için gereken Azure kaynaklarını oluşturur. Bu adımları tamamladıktan sonra, Azure portal kaynak için **anahtarlar** sayfasında _abonelik_ anahtarlarını bulabilirsiniz.
 
-1. Azure portalında oturum açın ve [bir QnA Maker](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) kaynağı oluşturun.
+1. Azure portal oturum açın ve [bir soru-cevap oluşturma kaynağı oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) .
 
-1. Hüküm ve koşulları okuduktan sonra **Oluştur'u** seçin:
+1. Hüküm ve koşulları okuduktan sonra **Oluştur** ' u seçin:
 
-    ![Yeni bir QnA Maker hizmeti oluşturun](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
+    ![Yeni bir Soru-Cevap Oluşturma hizmeti oluşturun](../media/qnamaker-how-to-setup-service/create-new-resource-button.png)
 
-1. **QnA Maker'da**uygun katmanları ve bölgeleri seçin:
+1. **Soru-cevap oluşturma**, uygun katmanları ve bölgeleri seçin:
 
-    ![Yeni bir QnA Maker hizmeti oluşturun - fiyatlandırma katmanı ve bölgeleri](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
+    ![Yeni bir Soru-Cevap Oluşturma hizmeti oluşturma-fiyatlandırma katmanı ve bölgeler](../media/qnamaker-how-to-setup-service/enter-qnamaker-info.png)
 
-    * **Ad** alanına, bu QnA Maker hizmetini tanımlamak için benzersiz bir ad girin. Bu ad, bilgi temellerinizin ilişkilendirileceği QnA Maker bitiş noktasını da tanımlar.
-    * QnA Maker kaynağının dağıtılacayacağı **Aboneliyi** seçin.
-    * QnA Maker yönetim hizmetleri (portal ve yönetim API'leri) için **Fiyatlandırma katmanını** seçin. [SKU fiyatlandırması hakkında daha fazla bilgi](https://aka.ms/qnamaker-pricing)için.
-    * Yeni bir **Kaynak grubu** (önerilir) oluşturun veya bu QnA Maker kaynağını dağıtmak için varolan bir grup kullanın. QnA Maker birkaç Azure kaynağı oluşturur. Bu kaynakları tutmak için bir kaynak grubu oluşturduğunuzda, bu kaynakları kaynak grubu adına göre kolayca bulabilir, yönetebilir ve silebilirsiniz.
-    * Kaynak **grubu konumunu**seçin.
-    * Azure Bilişsel Arama hizmetinin **Arama fiyatlandırma katmanını** seçin. Ücretsiz katman seçeneği kullanılamıyorsa (soluk görünüyorsa), aboneliğiniz aracılığıyla zaten ücretsiz bir hizmetin olduğu anlamına gelir. Bu durumda, Temel katmanla başlamanız gerekir. Bkz. [Azure Bilişsel Arama fiyatlandırma ayrıntıları.](https://azure.microsoft.com/pricing/details/search/)
+    * **Ad** alanına bu soru-cevap oluşturma hizmetini tanımlamak için benzersiz bir ad girin. Bu ad ayrıca, bilgi tabanlarınızın ilişkilendirileceği Soru-Cevap Oluşturma uç noktasını tanımlar.
+    * Soru-Cevap Oluşturma kaynağın dağıtılacağı **aboneliği** seçin.
+    * Soru-Cevap Oluşturma Management Services (portal ve yönetim API 'Leri) için **fiyatlandırma katmanını** seçin. [SKU fiyatlandırması hakkında daha fazla ayrıntı](https://aka.ms/qnamaker-pricing)için bkz..
+    * Yeni bir **kaynak grubu** oluşturun (önerilir) veya bu soru-cevap oluşturma kaynağını dağıtmak için mevcut bir tane kullanın. Soru-Cevap Oluşturma çeşitli Azure kaynakları oluşturur. Bu kaynakları barındıracak bir kaynak grubu oluşturduğunuzda, bu kaynakları kaynak grubu adına göre kolayca bulabilir, yönetebilir ve silebilirsiniz.
+    * **Kaynak grubu konumu**seçin.
+    * Azure Bilişsel Arama hizmetinin **Ara fiyatlandırma katmanını** seçin. Ücretsiz katman seçeneği kullanılamıyorsa (soluk görünürse), aboneliğiniz aracılığıyla dağıtılan ücretsiz bir hizmetiniz zaten var demektir. Bu durumda, temel katmanla başlamanız gerekir. Bkz. [Azure bilişsel arama fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/).
     * Azure Bilişsel Arama dizinlerinin dağıtılmasını istediğiniz **Arama konumunu** seçin. Müşteri verilerinin depolanması gereken kısıtlamalar, Azure Bilişsel Arama için seçtiğiniz konumu belirlemenize yardımcı olur.
-    * Uygulama **adı** alanına Azure Uygulama Hizmeti örneğiniz için bir ad girin.
-    * Varsayılan olarak, Uygulama Hizmeti varsayılan olarak standart (S1) katmanına uygun olur. Oluşturulduktan sonra planı değiştirebilirsiniz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/)hakkında daha fazla bilgi edinin.
-    * Uygulama Hizmetinin dağıtılanacağı **Web Sitesi konumunu** seçin.
+    * **Uygulama adı** alanına Azure App Service örneğiniz için bir ad girin.
+    * Varsayılan olarak, varsayılan olarak standart (S1) katmanına App Service. Oluşturulduktan sonra planı değiştirebilirsiniz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/)hakkında daha fazla bilgi edinin.
+    * App Service dağıtılacağı **Web sitesi konumunu** seçin.
 
         > [!NOTE]
-        > **Arama Konumu,** Web **Sitesi Konumundan**farklı olabilir.
+        > **Arama konumu** , **Web sitesi konumundan**farklı olabilir.
 
-    * **Uygulama Öngörülerini**etkinleştirmek isteyip istemediğinizi seçin. **Uygulama Öngörüleri** etkinse, QnA Maker trafikte, sohbet günlüklerinde ve hatalarda telemetri toplar.
-    * Uygulama **Öngörüleri** kaynağının dağıtılacayacağı App insights konumunu seçin.
-    * Maliyet tasarrufu önlemleri için, QnA Maker için oluşturulan tüm Azure kaynaklarını [paylaşabilirsiniz.](#configure-qna-maker-to-use-different-cognitive-search-resource)
+    * **Application Insights**etkinleştirmek isteyip istemediğinizi seçin. **Application Insights** etkinleştirilirse, soru-cevap oluşturma trafik, sohbet günlükleri ve hatalar üzerinde telemetri toplar.
+    * Application Insights kaynağın dağıtılacağı **App Insights konumunu** seçin.
+    * Maliyet tasarrufu ölçüleri için, Soru-Cevap Oluşturma için oluşturulan tüm Azure kaynaklarını [paylaşabilirsiniz](#configure-qna-maker-to-use-different-cognitive-search-resource) .
 
-1. Tüm alanlar doğrulandıktan sonra **Oluştur'u**seçin. İşlemin tamamlanması birkaç dakika sürebilir.
+1. Tüm alanlar doğrulandıktan sonra **Oluştur**' u seçin. İşlemin tamamlanması birkaç dakika sürebilir.
 
-1. Dağıtım tamamlandıktan sonra aboneliğinizde oluşturulan aşağıdaki kaynakları görürsünüz:
+1. Dağıtım tamamlandıktan sonra, aboneliğinizde aşağıdaki kaynakların oluşturulduğunu görürsünüz:
 
-   ![Kaynak yeni bir QnA Maker hizmeti oluşturdu](../media/qnamaker-how-to-setup-service/resources-created.png)
+   ![Kaynak yeni bir Soru-Cevap Oluşturma Hizmeti oluşturdu](../media/qnamaker-how-to-setup-service/resources-created.png)
 
-    _Bilişsel Hizmetler_ türüne sahip kaynak _abonelik_ anahtarlarınız vardır.
+    Bilişsel _Hizmetler_ türündeki kaynağın _abonelik_ anahtarları vardır.
 
-## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portalında abonelik anahtarlarını bulma
+## <a name="find-subscription-keys-in-the-azure-portal"></a>Azure portal abonelik anahtarlarını bulma
 
-QnA Maker kaynağını oluşturduğunuz Azure portalından abonelik anahtarlarınızı görüntüleyebilir ve sıfırlayabilirsiniz.
+Abonelik anahtarlarınızı, Soru-Cevap Oluşturma kaynağı oluşturduğunuz Azure portal görüntüleyebilir ve sıfırlayabilirsiniz.
 
-1. Azure portalındaki QnA Maker kaynağına gidin ve _Bilişsel Hizmetler_ türüne sahip kaynağı seçin:
+1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve bilişsel _Hizmetler_ türünün bulunduğu kaynağı seçin:
 
-    ![QnA Maker kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Soru-Cevap Oluşturma kaynak listesi](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
-2. **Tuşlara**Git :
+2. **Anahtarlara**git:
 
     ![Abonelik anahtarı](../media/qnamaker-how-to-key-management/subscription-key.PNG)
 
-## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker portalında uç nokta tuşlarını bulun
+## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>Soru-Cevap Oluşturma portalında uç nokta anahtarlarını bulma
 
-Bitiş noktası anahtarları bilgi tabanına arama yapmak için kullanıldığından, bitiş noktası kaynakla aynı bölgededir.
+Uç nokta anahtarları bilgi tabanına çağrı yapmak için kullanıldığından, uç nokta kaynakla aynı bölgededir.
 
-Uç nokta tuşları [QnA Maker portalından](https://qnamaker.ai)yönetilebilir.
+Uç nokta anahtarları [soru-cevap oluşturma portalından](https://qnamaker.ai)yönetilebilir.
 
-1. [QnA Maker portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **Servis ayarlarını**seçin:
+1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın, profilinize gidin ve ardından **hizmet ayarları**' nı seçin:
 
-    ![Bitiş noktası tuşu](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Uç nokta anahtarı](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
-2. Anahtarlarınızı görüntüleyin veya sıfırlanın:
+2. Anahtarlarınızı görüntüleyin veya sıfırlayın:
 
     > [!div class="mx-imgBorder"]
-    > ![Bitiş noktası anahtar yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > ![Uç nokta anahtar Yöneticisi](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Anahtarlarınızı açığa çıktığını düşünüyorsanız yenileyin. Bu, istemci uygulamanız veya bot kodunuzda ilgili değişiklikler gerektirebilir.
+    >Tehlikede olduğunu düşünüyorsanız, anahtarlarınızı yenileyin. Bu, istemci uygulamanızda veya bot kodunuzda ilgili değişiklikleri gerektirebilir.
 
-## <a name="upgrade-qna-maker-sku"></a>QnA Maker SKU yükseltme
+## <a name="upgrade-qna-maker-sku"></a>Soru-Cevap Oluşturma SKU 'YU yükselt
 
-Bilgi tabanınızda, mevcut seviyenizin ötesinde daha fazla soru ve yanıt almak istediğinizde, QnA Maker hizmet fiyatlandırma katmanınızı yükseltin.
+Bilgi tabanınızda, geçerli katmanınızın ötesinde daha fazla soru ve yanıt almak istediğinizde Soru-Cevap Oluşturma Hizmeti fiyatlandırma katmanınızı yükseltin.
 
-QnA Maker yönetimi SKU yükseltmek için:
+Soru-Cevap Oluşturma yönetim SKU 'sunu yükseltmek için:
 
-1. Azure portalındaki QnA Maker kaynağınıza gidin ve **Fiyatlandırma katmanını**seçin.
+1. Azure portal Soru-Cevap Oluşturma kaynağına gidin ve **fiyatlandırma katmanı**' nı seçin.
 
-    ![QnA Maker kaynağı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
+    ![Soru-Cevap Oluşturma kaynağı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource.png)
 
-1. Uygun SKU'yu seçin ve **Seç**tuşuna basın.
+1. Uygun SKU 'yu seçin ve **Seç**' e basın.
 
-    ![QnA Maker fiyatlandırma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
+    ![Soru-Cevap Oluşturma fiyatlandırması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-## <a name="upgrade-app-service"></a>Uygulama Hizmetini Yükseltme
+## <a name="upgrade-app-service"></a>App Service yükselt
 
- Bilgi tabanınızın müşteri uygulamanızdan daha fazla istek sunması gerektiğinde, Uygulama Hizmeti fiyatlandırma katmanınızı yükseltin.
+ Bilgi tabanınızın istemci uygulamanızdan daha fazla istek sunması gerektiğinde App Service fiyatlandırma katmanınızı yükseltin.
 
-App Service'i [büyütebilir](https://docs.microsoft.com/azure/app-service/manage-scale-up) veya ölçeklendirebilirsiniz.
+App Service [ölçeklendirebilir](https://docs.microsoft.com/azure/app-service/manage-scale-up) veya ölçeklendirebilirsiniz.
 
-Azure portalındaki Uygulama Hizmeti kaynağına gidin ve gerektiğinde **Ölçeklendir** veya **Ölçeklendir seçeneğini belirleyin.**
+Azure portal App Service kaynağına gidin ve gereken kadar **ölçeği yukarı** veya **genişletme** seçeneğini belirleyin.
 
-![QnA Maker Uygulama Hizmeti ölçeği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
+![Soru-Cevap Oluşturma App Service ölçeği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
 ## <a name="upgrade-the-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetini yükseltme
 
-Çok sayıda bilgi tabanına sahip olmayı planlıyorsanız, Azure Bilişsel Arama hizmeti fiyatlandırma katmanınızı yükseltin.
+Birçok bilgi tabanınız varsa, Azure Bilişsel Arama Service fiyatlandırma katmanınızı yükseltin.
 
-Şu anda, Azure arama SKU'nun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenilen SKU ile yeni bir Azure arama kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve ardından QnA Maker yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Şu anda Azure Search SKU 'sunun yerinde yükseltmesini gerçekleştiremezsiniz. Ancak, istenen SKU ile yeni bir Azure Search kaynağı oluşturabilir, verileri yeni kaynağa geri yükleyebilir ve sonra Soru-Cevap Oluşturma yığınına bağlayabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
-1. Azure portalında yeni bir Azure arama kaynağı oluşturun ve istediğiniz SKU'yu seçin.
+1. Azure portal yeni bir Azure Search kaynağı oluşturun ve istediğiniz SKU 'YU seçin.
 
-    ![QnA Maker Azure arama kaynağı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
+    ![Azure Search kaynağı Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
 
-1. Orijinal Azure arama kaynağınızdaki dizinleri yenisine geri yükleyin. Yedek [geri yükleme örnek koduna](https://github.com/pchoudhari/QnAMakerBackupRestore)bakın.
+1. Dizinleri özgün Azure Search kaynağından yeni bir kaynağa geri yükleyin. Bkz. [yedekleme geri yükleme örnek kodu](https://github.com/pchoudhari/QnAMakerBackupRestore).
 
-1. Veriler geri yüklendikten sonra yeni Azure arama kaynağınıza gidin, **Keys'i**seçin ve **Ad** ve **Yönetici anahtarını**yazın:
+1. Veriler geri yüklendikten sonra, yeni Azure Arama kaynağınız ' ne gidin, **anahtarlar**' ı seçin ve **adı** ve **yönetici anahtarını**yazın:
 
-    ![QnA Maker Azure arama tuşları](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
+    ![Azure Arama anahtarları Soru-Cevap Oluşturma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-keys.png)
 
-1. Yeni Azure arama kaynağını QnA Maker yığınına bağlamak için QnA Maker App Service örneğine gidin.
+1. Yeni Azure Search kaynağını Soru-Cevap Oluşturma yığınına bağlamak için, Soru-Cevap Oluşturma App Service örneğine gidin.
 
-    ![QnA Maker Uygulama Hizmeti örneği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
+    ![Soru-Cevap Oluşturma App Service örneği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-resource-list-appservice.png)
 
-1. **Uygulama ayarlarını** seçin ve **AzureSearchName** ve **AzureSearchAdminKey** alanlarındaki ayarları adım 3'ten değiştirin.
+1. **Uygulama ayarları** ' nı seçin ve 3. adımdaki **AzureSearchName** ve **AzureSearchAdminKey** alanlarındaki ayarları değiştirin.
 
-    ![QnA Maker Uygulama Hizmeti ayarı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
+    ![Soru-Cevap Oluşturma App Service ayarı](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-settings.png)
 
-1. Uygulama Hizmeti örneğini yeniden başlatın.
+1. App Service örneğini yeniden başlatın.
 
-    ![QnA Maker Uygulama Hizmeti örneğinin yeniden başlatılması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+    ![Soru-Cevap Oluşturma App Service örneğinin yeniden başlatılması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
 
-## <a name="get-the-latest-runtime-updates"></a>En son çalışma zamanı güncelleştirmelerini alın
+## <a name="get-the-latest-runtime-updates"></a>En son çalışma zamanı güncelleştirmelerini al
 
-QnAMaker çalışma süresi, Azure portalında [bir QnAMaker hizmeti oluşturduğunuzda](./set-up-qnamaker-service-azure.md) dağıtılan Azure Uygulama Hizmeti örneğinin bir parçasıdır. Güncelleştirmeler çalışma saatinde düzenli aralıklarla yapılır. QnA Maker App Service örneği, Nisan 2019 site uzantısı sürümünden (sürüm 5+) sonra otomatik güncelleştirme modundadır. Bu güncelleştirme, yükseltmeler sırasında SIFIR kapalı kalma süresini dikkate almak üzere tasarlanmıştır.
+QnAMaker çalışma zamanı, Azure portal [bir qnaoluşturucu hizmeti oluşturduğunuzda](./set-up-qnamaker-service-azure.md) dağıtılan Azure App Service örneğinin bir parçasıdır. Güncelleştirmeler çalışma zamanında düzenli olarak yapılır. Soru-Cevap Oluşturma App Service örneği, Nisan 2019 site uzantısı sürümünden (sürüm 5 +) sonra otomatik güncelleştirme modunda. Bu güncelleştirme, yükseltmeler sırasında sıfır kesinti olması için tasarlanmıştır.
 
-Geçerli sürümünüzü https://www.qnamaker.ai/UserSettings'den kontrol edebilirsiniz. Sürümünüz sürüm 5.x'ten eskiyse, en son güncelleştirmeleri uygulamak için Uygulama Hizmetini yeniden başlatmanız gerekir:
+Geçerli sürümünüzü adresinde https://www.qnamaker.ai/UserSettingsdenetleyebilirsiniz. Sürümünüz 5. x sürümünden eskiyse, en son güncelleştirmeleri uygulamak için App Service yeniden başlatmanız gerekir:
 
-1. [Azure portalındaki](https://portal.azure.com)QnAMaker hizmetinize (kaynak grubu) gidin.
-
-    > [!div class="mx-imgBorder"]
-    > ![QnAMaker Azure kaynak grubu](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
-
-1. Uygulama Hizmeti örneğini seçin ve **Genel Bakış** bölümünü açın.
+1. [Azure Portal](https://portal.azure.com)QnAMaker hizmetinize (kaynak grubu) gidin.
 
     > [!div class="mx-imgBorder"]
-    > ![QnAMaker Uygulama Hizmeti örneği](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+    > ![QnAMaker Azure Kaynak grubu](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
-
-1. Uygulama Hizmetini Yeniden Başlatın. Güncelleştirme işlemi birkaç saniye içinde bitmelidir. Bu QnAMaker hizmetini kullanan bağımlı uygulamalar veya botlar bu yeniden başlatma döneminde son kullanıcılar tarafından kullanılamaz.
-
-    ![QnAMaker Uygulama Hizmeti örneğinin yeniden başlatılması](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
-
-## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>QnA Maker'ı farklı Bilişsel Arama kaynağını kullanacak şekilde yapılandırın
-
-Portal üzerinden bir QnA hizmeti ve onun bağımlılıklarını (Arama gibi) oluşturursanız, sizin için bir Arama hizmeti oluşturulur ve QnA Maker hizmetine bağlanır. Bu kaynaklar oluşturulduktan sonra, önceden varolan bir Arama hizmetini kullanmak ve yeni oluşturduğunuz hizmeti kaldırmak için Uygulama Hizmeti ayarını güncelleştirebilirsiniz.
-
-QnA Maker'ın **Uygulama Hizmeti** kaynağı Bilişsel Arama kaynağını kullanır. QnA Maker tarafından kullanılan Bilişsel Arama kaynağını değiştirmek için Azure portalındaki ayarı değiştirmeniz gerekir.
-
-1. QnA Maker'ın kullanmasını istediğiniz Bilişsel Arama kaynağının **Yönetici anahtarını** ve **Adını** alın.
-
-1. [Azure portalında](https://portal.azure.com) oturum açın ve QnA Maker kaynağınızla ilişkili **Uygulama Hizmeti'ni** bulun. İkisi de aynı isme sahip.
-
-1. **Ayarlar'ı**seçin, ardından **Yapılandırma'yı**. Bu, QnA Maker'ın Uygulama Hizmeti için varolan tüm ayarları görüntüler.
+1. App Service örneğini seçin ve **genel bakış** bölümünü açın.
 
     > [!div class="mx-imgBorder"]
-    > ![Uygulama Hizmeti yapılandırma ayarlarını gösteren Azure portalının ekran görüntüsü](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > ![QnAMaker App Service örneği](../media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. Aşağıdaki anahtarların değerlerini değiştirin:
+
+1. App Service yeniden başlatın. Güncelleştirme işlemi birkaç saniye içinde bitmelidir. Bu QnAMaker hizmetini kullanan bağımlı uygulamalar veya botlar, bu yeniden başlatma döneminde son kullanıcılar için kullanılamaz.
+
+    ![QnAMaker App Service örneğini yeniden başlatma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-restart.png)
+
+## <a name="configure-qna-maker-to-use-different-cognitive-search-resource"></a>Soru-Cevap Oluşturma farklı Bilişsel Arama kaynağı kullanacak şekilde yapılandırma
+
+Portal üzerinden bir QnA hizmeti ve bağımlılıklarını (arama gibi) oluşturursanız, sizin için bir arama hizmeti oluşturulur ve Soru-Cevap Oluşturma hizmetine bağlanır. Bu kaynaklar oluşturulduktan sonra, önceden var olan bir arama hizmetini kullanmak için App Service ayarını güncelleştirebilir ve yeni oluşturduğunuz birini kaldırabilirsiniz.
+
+Soru-Cevap Oluşturma **App Service** kaynağı bilişsel arama kaynağını kullanır. Soru-Cevap Oluşturma tarafından kullanılan Bilişsel Arama kaynağını değiştirmek için Azure portal ayarı değiştirmeniz gerekir.
+
+1. Soru-Cevap Oluşturma kullanmak istediğiniz Bilişsel Arama kaynağın **yönetici anahtarını** ve **adını** alın.
+
+1. [Azure Portal](https://portal.azure.com) oturum açın ve soru-cevap oluşturma kaynağınız ile ilişkili **App Service** bulun. Her ikisi de aynı ada sahip.
+
+1. **Ayarlar**' ı ve ardından **yapılandırma**' yı seçin. Bu, Soru-Cevap Oluşturma App Service tüm mevcut ayarlarını görüntüler.
+
+    > [!div class="mx-imgBorder"]
+    > ![App Service yapılandırma ayarlarını gösteren Azure portal ekran görüntüsü](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+
+1. Aşağıdaki anahtarlar için değerleri değiştirin:
 
     * **AzureSearchAdminKey**
     * **AzureSearchName**
 
-1. Yeni ayarları kullanmak için Uygulama hizmetini yeniden başlatmanız gerekir. **Genel Bakış'ı**seçin, ardından **Yeniden Başlat'ı**seçin.
+1. Yeni ayarları kullanmak için App Service 'i yeniden başlatmanız gerekir. **Genel bakış**' ı ve ardından **Yeniden Başlat**' ı seçin
 
     > [!div class="mx-imgBorder"]
-    > ![Yapılandırma ayarları değiştikten sonra Azure portalının Uygulama Hizmetini yeniden başlatma sının ekran görüntüsü](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > ![Yapılandırma ayarları değişikliğinden sonra App Service yeniden başlatma Azure portal ekran görüntüsü](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
-Azure Kaynak Yöneticisi şablonları aracılığıyla bir QnA hizmeti oluşturursanız, tüm kaynakları oluşturabilir ve varolan bir Arama hizmetini kullanmak için Uygulama Hizmeti oluşturmayı denetleyebilirsiniz.
+Azure Resource Manager şablonları aracılığıyla bir QnA hizmeti oluşturursanız, tüm kaynakları oluşturabilir ve App Service oluşturmayı, var olan bir arama hizmetini kullanacak şekilde denetleyebilirsiniz.
 
-Uygulama Hizmeti [Uygulaması ayarlarını](../../../app-service/configure-common.md#configure-app-settings)yapılandırma hakkında daha fazla bilgi edinin.
+App Service [uygulama ayarlarını](../../../app-service/configure-common.md#configure-app-settings)yapılandırma hakkında daha fazla bilgi edinin.
 
-## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Zaman ayarı önlemek için Uygulama hizmetini boşta ayarlama
+## <a name="configure-app-service-idle-setting-to-avoid-timeout"></a>Zaman aşımını önlemek için App Service boşta ayarını yapılandırın
 
-Yayınlanan bir bilgi tabanı için QnA Maker tahmin çalışma süresine hizmet veren uygulama hizmeti, hizmet boştaysa otomatik olarak zaman acısı için varsayılan bir zaman acısı yapılandırmasına sahiptir. QnA Maker için bu, tahmin çalışma sürenizin yanıt API'sini zaman zaman trafik siz dönemlerden sonra zaman zaman dışarı ürettiği anlamına gelir.
+Yayımlanmış bir bilgi tabanı için Soru-Cevap Oluşturma tahmin çalışma zamanına hizmet eden App Service, boşta kalma zaman aşımı yapılandırmasına sahiptir ve bu hizmet boşta kalırsa otomatik olarak zaman aşımına uğramıştır. Soru-Cevap Oluşturma için bu, tahmin çalışma zamanı generateAnswer API 'nizin zaman zaman trafik olmadan sonra zaman aşımına uğraymasına yol gösterir.
 
-Trafik olmadığında bile tahmin bitiş noktası uygulamasını yüklü tutmak için boşta kalan uygulamayı her zaman adabına ayarlayın.
+Tahmin uç noktası uygulamasının trafik olmadığında bile yüklenmesini sağlamak için boşta seçeneğini her zaman açık olarak ayarlayın.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. QnA Maker kaynağınızın uygulama hizmetini arayın ve seçin. QnA Maker kaynağıyla aynı ada sahip olacak, ancak farklı bir Uygulama Hizmeti **türüne** sahip olacaktır.
-1. **Ayarları** bul ardından **Yapılandırma'yı**seçin.
-1. Yapılandırma bölmesinde **Genel ayarları**seçin, ardından **Her Zaman'ı**bulun ve değer olarak **Açık'ı** seçin.
+1. Soru-Cevap Oluşturma kaynağınızın App Service 'i arayın ve seçin. Soru-Cevap Oluşturma kaynağıyla aynı ada sahip olur, ancak farklı **türde** App Service olacaktır.
+1. **Ayarları** bulun ve **yapılandırma**' yı seçin.
+1. Yapılandırma bölmesinde **Genel ayarlar**' ı seçin, **her zaman açık**' i bulun ve değer olarak **Açık** ' ı seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Yapılandırma bölmesinde **Genel ayarları**' seçeneğini belirleyin, ardından **Always always**'yi bulun ve değer olarak **Açık** seçeneğini belirleyin.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
+    > ![Yapılandırma bölmesinde, * * Genel Ayarlar * * öğesini seçin, ardından * * Always on * * öğesini bulun ve değer olarak * * seçeneğini belirleyin.](../media/qnamaker-how-to-upgrade-qnamaker/configure-app-service-idle-timeout.png)
 
-1. Yapılandırmayı kaydetmek için **Kaydet'i** seçin.
+1. Yapılandırmayı kaydetmek için **Kaydet** ' i seçin.
 1. Yeni ayarı kullanmak için uygulamayı yeniden başlatmak isteyip istemediğiniz sorulur. **Devam**'ı seçin.
 
-Uygulama Hizmeti [Genel ayarlarını](../../../app-service/configure-common.md#configure-general-settings)yapılandırma hakkında daha fazla bilgi edinin.
+App Service [genel ayarlarını](../../../app-service/configure-common.md#configure-general-settings)yapılandırma hakkında daha fazla bilgi edinin.
 
 ## <a name="delete-azure-resources"></a>Azure kaynaklarını silme
 
-QnA Maker bilgi tabanlarınız için kullanılan Azure kaynaklarından herhangi birini silerseniz, bilgi tabanları artık çalışmaz. Kaynakları silmeden önce, bilgi temellerinizi **Ayarlar** sayfasından dışa aktardığınızdan emin olun.
+Soru-Cevap Oluşturma bilgi tabanlarınız için kullanılan Azure kaynaklarından herhangi birini silerseniz, Bilgi Bankası esaları artık çalışmaz. Herhangi bir kaynağı silmeden önce, bilgi temellerinizi **Ayarlar** sayfasından dışarı aktardığınızdan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Uygulama hizmeti](../../../app-service/index.yml) ve Arama [hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
+[Uygulama hizmeti](../../../app-service/index.yml) ve [Arama hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Bilgi bankası oluşturma ve yayımlama](../Quickstarts/create-publish-knowledge-base.md)

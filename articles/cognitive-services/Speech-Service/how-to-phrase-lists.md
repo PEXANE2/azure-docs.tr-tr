@@ -1,7 +1,7 @@
 ---
-title: İfade Listeleri - Konuşma hizmeti
+title: Tümcecik listeleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmadan metne tanıma sonuçlarını iyileştirmek için `PhraseListGrammar` nesneyi kullanarak Konuşma hizmetini bir İfade Listesi ile nasıl sağlayacağınızı öğrenin.
+description: Konuşmayı metne dönüştürme sonuçlarını geliştirmek için `PhraseListGrammar` nesnesini kullanarak bir tümcecik listesi ile konuşma hizmetini nasıl sağlayacağınızı öğrenin.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,26 +12,26 @@ ms.date: 02/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 5a21358edae4c61f35993770c22634da9ac83633
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81401961"
 ---
-# <a name="phrase-lists-for-speech-to-text"></a>Metin den sözle'ye için tümcecik Listeleri
+# <a name="phrase-lists-for-speech-to-text"></a>Konuşmayı metne yönelik tümcecik listeleri
 
-Konuşma hizmetine bir tümcecik listesi sağlayarak, konuşma tanımanın doğruluğunu artırabilirsiniz. Tümcecik Listeleri, ses verilerindeki bilinen ifadeleri tanımlamak için kullanılır, örneğin bir kişinin adı veya belirli bir konum.
+Konuşma hizmetini bir tümcecik listesi ile birlikte sunarak, konuşma tanımanın doğruluğunu artırabilirsiniz. Tümcecik listeleri, bir kişinin adı veya belirli bir konum gibi, ses verilerinde bilinen tümcecikleri belirlemek için kullanılır.
 
-Örnek olarak, "Taşın" komutunuz ve konuşulabilecek olası bir "Ward" hedefiniz varsa, "Ward'a Taşı" girişi ekleyebilirsiniz. Bir tümcecik eklemek, ses "Ward'a Taşı" yerine "Koğuşa Taşı" olarak tanındığı tanılandığında "Doğruya Taşı" olasılığı artar.
+Örnek olarak, "taşı" komutuna ve söylenen "Ward" bir hedefe sahipseniz, "Ward 'e taşı" girişini ekleyebilirsiniz. Bir tümcecik eklemek, ses "ilerlemek için taşı" yerine "ilerlemek" yerine tanınabilmesi olasılığını artırır.
 
-Tümcecik Listesine tek sözcük veya tam tümcecik eklenebilir. Tanıma sırasında, tümceciğin tamamı için tam bir eşleşme sese ayrı bir tümcecik olarak eklenmişse, bir tümcecik listesindeki bir giriş kullanılır. İfadeyle tam eşleşme bulunamazsa, tanıma yardımcı olmaz.
+Tek sözcükler veya bütün ifadeler, bir tümcecik listesine eklenebilir. Tanıma sırasında, tüm tümcecik için tam eşleşme, sese ayrı bir tümcecik olarak dahil ediliyorsa tümcecik listesindeki bir giriş kullanılır. Tümcecikle tam eşleşme bulunamazsa, tanıma yardımlı değildir.
 
 >[!Note]
-> Şu anda, Tümce listeleri yalnızca İngilizce'yi metin konuşma için destekler.
+> Şu anda, tümcecik listeleri yalnızca konuşmayı metin için destekler.
 
-## <a name="how-to-use-phrase-lists"></a>İfade Listeleri nasıl kullanılır?
+## <a name="how-to-use-phrase-lists"></a>Tümcecik listelerini kullanma
 
-Aşağıdaki örnekler, nesneyi kullanarak Bir `PhraseListGrammar` İfade Listesi'nin nasıl oluşturulabildiğini göstermektedir.
+Aşağıdaki örneklerde, `PhraseListGrammar` nesnesi kullanılarak bir tümcecik listesinin nasıl oluşturulacağı gösterilmektedir.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -89,9 +89,9 @@ phraseListGrammar.addPhrase("Move to Ted");
 ::: zone-end
 
 >[!Note]
-> Konuşma hizmetinin konuşmayla eşleştirmek için kullanacağı en fazla İfade Listesi sayısı 1024'tür.
+> Konuşma hizmetinin konuşmayı eşleştirmek için kullanacağı en fazla tümcecik listesi sayısı 1024 tümceciklerdir.
 
-Ayrıca clear() `PhraseListGrammar` arayarak ilişkili tümcecikleri de temizleyebilirsiniz.
+Ayrıca, `PhraseListGrammar` Clear () öğesini çağırarak ile ilişkili tümcecikleri temizleyebilirsiniz.
 
 ::: zone pivot="programming-language-csharp"
 
@@ -134,8 +134,8 @@ phraseListGrammar.clear();
 ::: zone-end
 
 > [!NOTE]
-> Bir `PhraseListGrammar` nesnedeki değişiklikler, bir sonraki tanıma da veya Konuşma hizmetine yeniden bağlanmayı izleyen bir şekilde etkili olur.
+> Bir `PhraseListGrammar` nesne üzerinde yapılan değişiklikler, bir sonraki tanıma veya konuşma hizmetine yeniden bağlanma sonrasında etkili olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma SDK referans belgeleri](speech-sdk.md)
+* [Konuşma SDK başvuru belgeleri](speech-sdk.md)

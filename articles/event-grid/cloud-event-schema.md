@@ -1,6 +1,6 @@
 ---
-title: CloudEvents şemasındaki etkinliklerle Azure Etkinlik Ağıt'ı kullanma
-description: Azure Etkinlik Ağıt'taki etkinlikler için CloudEvents şemasını nasıl kullanacağımı açıklar. Hizmet, Bulut Etkinlikleri'nin JSON uygulamasındaki olayları destekler.
+title: CloudEvents şemasında olaylarla Azure Event Grid kullanma
+description: Azure Event Grid olaylar için CloudEvents şemasının nasıl kullanılacağını açıklar. Hizmet, bulut olaylarının JSON uygulamasındaki olayları destekler.
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394390"
 ---
-# <a name="cloudevents-v10-schema-with-event-grid"></a>Olay Izgara ile CloudEvents v1.0 şema
+# <a name="cloudevents-v10-schema-with-event-grid"></a>Event Grid ile CloudEvents v 1.0 şeması
 
-Varsayılan olay [şemasına](event-schema.md)ek olarak, Azure Event [Grid, CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [HTTP protokol bağlamanın](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları doğal olarak destekler. [CloudEvents](https://cloudevents.io/) olay verilerini açıklamak için açık bir [belirtimdir.](https://github.com/cloudevents/spec/blob/v1.0/spec.md)
+Azure Event Grid, [varsayılan olay şemasına](event-schema.md)ek olarak, [cloudevents v 1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [http protokol bağlamasının](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları yerel olarak destekler. [Cloudevents](https://cloudevents.io/) , olay verilerini tanımlamaya yönelik [açık bir belirtimdir](https://github.com/cloudevents/spec/blob/v1.0/spec.md) .
 
-CloudEvents, yayımlama ve bulut tabanlı etkinlikler tüketmek için ortak bir olay şeması sağlayarak birlikte çalışabilirliği kolaylaştırır. Bu şema, tek tip takımlama, olayları işleme & yönlendirmenin standart yolları ve dış olay şemasını deserialize etmenin evrensel yolları sağlar. Ortak bir şema ile, daha kolay platformlar arasında iş entegre edebilirsiniz.
+CloudEvents, yayımlama için ortak bir olay şeması sağlayarak ve bulut tabanlı olayları tüketerek birlikte çalışabilirliği basitleştirir. Bu şema, tek düzen araçları, & işleme olaylarını yönlendirme için standart yolları ve dış olay şemasının serisini kaldırma evrensel yollarını sağlar. Ortak bir şema ile, iş platformları arasında daha kolay bir şekilde tümleşebilir.
 
-CloudEvents, Microsoft da dahil olmak üzere birçok [ortak çalışan](https://github.com/cloudevents/spec/blob/master/community/contributors.md)tarafından Cloud Native [Computing Foundation](https://www.cncf.io/)aracılığıyla oluşturulmaktadır. Şu anda sürüm 1.0 olarak kullanılabilir.
+CloudEvents, [bulut Yerel Bilgi Işlem altyapısı](https://www.cncf.io/)aracılığıyla Microsoft gibi birkaç [ortak](https://github.com/cloudevents/spec/blob/master/community/contributors.md)şekilde oluşturulmuştur. Şu anda sürüm 1,0 olarak sunulmaktadır.
 
-Bu makalede, Olay Grid ile CloudEvents şeması açıklanmaktadır.
+Bu makalede, Event Grid ile CloudEvents şeması açıklanmaktadır.
 
-## <a name="sample-event-using-cloudevents-schema"></a>CloudEvents şemakullanarak örnek olay
+## <a name="sample-event-using-cloudevents-schema"></a>CloudEvents şemasını kullanan örnek olay
 
-Aşağıda CloudEvents biçiminde bir Azure Blob Depolama olayı örneği verilmiştir:
+CloudEvents biçiminde Azure Blob depolama olayına bir örnek aşağıda verilmiştir:
 
 ``` JSON
 {
@@ -54,22 +54,22 @@ Aşağıda CloudEvents biçiminde bir Azure Blob Depolama olayı örneği verilm
 }
 ```
 
-CloudEvents v1.0'daki kullanılabilir alanların, türlerinin ve tanımlarının ayrıntılı bir [açıklamasına buradan ulaşabilirsiniz.](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)
+Kullanılabilir alanlar, bunların türleri ve CloudEvents v 1.0 içindeki tanımlara ilişkin ayrıntılı bir açıklama [burada bulunabilir](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
-CloudEvents şemasında ve Olay Izgara şemasında teslim edilen olaylar için üstbilgi değerleri `content-type`. CloudEvents şeması için bu üstbilgi `"content-type":"application/cloudevents+json; charset=utf-8"`değeri . Olay Izgara şeması için bu `"content-type":"application/json; charset=utf-8"`üstbilgi değeri .
+CloudEvents şemasında teslim edilen olaylar ve Event Grid şeması için üst bilgi değerleri, hariç aynıdır `content-type`. CloudEvents şeması için bu üst bilgi değeri olur `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid şeması için bu üst bilgi değeri olur `"content-type":"application/json; charset=utf-8"`.
 
-## <a name="event-grid-for-cloudevents"></a>CloudEvents için Olay Izgara
+## <a name="event-grid-for-cloudevents"></a>CloudEvents için Event Grid
 
-CloudEvents şemasındaki olayların hem giriş hem de çıktısı için Olay Grid'i kullanabilirsiniz. CloudEvents'i Blob Depolama etkinlikleri, IoT Hub etkinlikleri ve özel olaylar gibi sistem etkinlikleri için kullanabilirsiniz. Ayrıca tel üzerinde ileri geri bu olayları dönüştürebilirsiniz.
+CloudEvents şemasında olay girişi ve çıktısı için Event Grid kullanabilirsiniz. BLOB depolama olayları ve IoT Hub olayları ve özel olaylar gibi sistem olayları için CloudEvents kullanabilirsiniz. Ayrıca, bu olayları tel ve ileri doğru şekilde dönüştürebilir.
 
 
 | Giriş şeması       | Çıktı şeması
 |--------------------|---------------------
 | CloudEvents biçimi | CloudEvents biçimi
-| Olay Izgara biçimi  | CloudEvents biçimi
-| Olay Izgara biçimi  | Olay Izgara biçimi
+| Event Grid biçimi  | CloudEvents biçimi
+| Event Grid biçimi  | Event Grid biçimi
 
-Tüm olay şemaları için Olay Izgarası, bir olay ızgarası konusuna yayımlarken ve bir olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için [Olay Izgara güvenliği ve kimlik doğrulaması'na](security-authentication.md)bakın.
+Tüm olay şemaları için Event Grid, bir olay kılavuzu konusuna yayımlarken ve olay aboneliği oluştururken doğrulama gerektirir. Daha fazla bilgi için bkz. [güvenlik ve kimlik doğrulaması Event Grid](security-authentication.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[CloudEvents v1.0 şemasını Event Grid ile nasıl kullanacağız.](cloudevents-schema.md)  
+Bkz. [Event Grid Ile CloudEvents v 1.0 şeması kullanma](cloudevents-schema.md).  

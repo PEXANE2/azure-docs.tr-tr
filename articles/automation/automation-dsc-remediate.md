@@ -1,6 +1,6 @@
 ---
-title: Uyumlu olmayan Azure Otomasyon Durumu Yapılandırma sunucularını düzeltin
-description: Yapılandırma durumunun sürüklendiği sunuculara isteğe bağlı yapılandırmaları yeniden uygulama
+title: Uyumsuz Azure Otomasyonu durum yapılandırma sunucularını düzelt
+description: Yapılandırma durumunun düzeltebilecekler sahip olduğu sunuculara yapılandırmaları isteğe bağlı olarak yeniden uygulama
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,41 +9,40 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: cc5884e1f70bdccee4e7a113e6e3ee2d6604b50a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81406079"
 ---
-# <a name="remediate-noncompliant-dsc-servers"></a>Uyumlu olmayan DSC sunucularını düzeltin
+# <a name="remediate-noncompliant-dsc-servers"></a>Uyumsuz DSC sunucularını düzelt
 
-Sunucular Azure Otomasyon Durumu Yapılandırması'na kaydedildiğinde, `ApplyandMonitor`yapılandırma `ApplyAndAutoCorrect`modu `ApplyOnly`, yani . Mod `ApplyAndAutoCorrect`ayarlanmıyorsa, herhangi bir nedenle uyumlu bir durumdan sürüklenen sunucular, el ile düzeltilene kadar uyumlu değildir.
+Sunucular Azure Otomasyonu durum yapılandırmasıyla kaydedildiğinde, yapılandırma modu `ApplyOnly`, `ApplyandMonitor`veya `ApplyAndAutoCorrect`olarak ayarlanır. Mod olarak `ApplyAndAutoCorrect`ayarlanmamışsa, her nedenden dolayı uyumlu bir durumdan alınan sunucular el ile düzeltilene kadar uyumsuz kalır.
 
-Azure bilgi işlem, müşterilerin sanal makinelerde komut ları çalıştırmasına olanak tanıyan Çalıştır Komutu adlı bir özellik sunar.
-Bu belge, yapılandırma sürüklenme el ile düzeltirken bu özellik için örnek komut dosyaları sağlar.
+Azure işlem, müşterilerin sanal makinelerde betikleri çalıştırmasına izin veren Run komutu adlı bir özellik sunar.
+Bu belge, yapılandırma DRFT 'i el ile düzeltirken bu özellik için örnek betik sağlar.
 
-## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>PowerShell kullanarak Windows sanal makinelerin doğru sürüklenme
+## <a name="correct-drift-of-windows-virtual-machines-using-powershell"></a>PowerShell kullanarak Windows sanal makinelerini doğru Drın
 
-Windows sanal makinelerde Çalıştır Komutu özelliğini kullanarak adım adım talimatlar için, [Windows VM'nizde Run Komutu ile PowerShell komutdosyalarını çalıştır'A](/azure/virtual-machines/windows/run-command)bakın.
+Windows sanal makinelerinde Çalıştır komut özelliğini kullanarak adım adım yönergeler için, [Çalıştır komutuyla WINDOWS VM 'niz Içindeki PowerShell betiklerini çalıştırma](/azure/virtual-machines/windows/run-command)sayfasına bakın.
 
-Azure Otomasyon Durumu Yapılandırma düğümlerini en son yapılandırmayı indirmeye ve uygulamak için [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) cmdlet'i kullanın.
+Bir Azure Otomasyonu durum yapılandırma düğümünü en son yapılandırmayı indirip uygulamayı zorlamak için [Update-DscConfiguration](/powershell/module/psdesiredstateconfiguration/update-dscconfiguration) cmdlet 'ini kullanın.
 
 ```powershell
 Update-DscConfiguration -Wait -Verbose
 ```
 
-## <a name="correct-drift-of-linux-virtual-machines"></a>Linux sanal makinelerin doğru sürüklenme
+## <a name="correct-drift-of-linux-virtual-machines"></a>Linux sanal makinelerini doğru DRT
 
-Benzer işlevler şu anda Linux sunucuları için kullanılamıyor.
-Tek seçenek kayıt işlemini tekrarlamaktır.
-
-Azure düğümleri için, Azure portalından veya Az modül cmdletlerini kullanarak sürüklenmedüzeltmeyapabilirsiniz. Bu işlemle ilgili [ayrıntılar, Azure Otomasyon Durumu Yapılandırması tarafından yönetilmek üzere Onboarding makinelerde](automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal)belgelenmiştir.
-Karma düğümler için, dahil Python komut dosyalarını kullanarak sürüklenme düzeltebilirsiniz.
-[Linux repo için PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)bakın.
+Linux sunucuları için şu anda benzer işlevler bulunmamaktadır.
+Tek seçenek kayıt işlemini tekrarlamalısınız.
+Azure düğümleri için, Azure portal veya az Module cmdlet 'lerini kullanarak DRFT 'yi düzeltebilirsiniz. Bu işlemle ilgili ayrıntılar, [Azure Otomasyonu durum yapılandırması tarafından yönetim için makineleri ekleme](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal)bölümünde belgelenmiştir.
+Karma düğümler için, dahil edilen Python betiklerini kullanarak değişikliklerini 'yi düzeltebilirsiniz.
+Bkz. [Linux deposu Için POWERSHELL DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)bakın.
-- Sürekli dağıtım ardışık bir şekilde Azure Otomasyon Durumu Yapılandırmasını kullanma örneğini görmek için [bkz.](automation-dsc-cd-chocolatey.md)
+- PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).
+- Azure Otomasyonu durum yapılandırması 'nı sürekli bir dağıtım ardışık düzeninde kullanmaya ilişkin bir örnek görmek için bkz. [Azure Otomasyonu durum yapılandırması ve Chocolatey kullanarak sürekli dağıtım](automation-dsc-cd-chocolatey.md).

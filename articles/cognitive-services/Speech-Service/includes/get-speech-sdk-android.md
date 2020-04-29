@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400031"
 ---
 :::row:::
     :::column span="3":::
-        Android için geliştirilirken, iki Speech SDK mevcuttur. Java Konuşma SDK'sı yerel olarak Bir Android paketi olarak kullanılabilir veya .NET Speech SDK **Xamarin.Android** ile kullanılabilir.
+        Android için geliştirme yaparken, kullanılabilir iki konuşma SDK 'Sı vardır. Java konuşma SDK 'Sı yerel olarak bir Android paketi olarak kullanılabilir veya 2,0 .NET Standard uyguladığı için .NET konuşma SDK 'Sı **Xamarin. Android** ile birlikte kullanılabilir.
     :::column-end:::
     :::column:::
         <br>
@@ -23,7 +23,7 @@ ms.locfileid: "81400031"
     :::column-end:::
 :::row-end:::
 
-# <a name="android-studio"></a>[Android Stüdyosu](#tab/android-studio)
+# <a name="android-studio"></a>[Android Studio](#tab/android-studio)
 
 [!INCLUDE [get-speech-sdk-dotnet](get-speech-sdk-java.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "81400031"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android, .NET geliştiricileri için eksiksiz Android SDK’sını sunar. Visual Studio’da C# veya F# kullanarak tamamen yerel Android uygulamaları oluşturun. Daha fazla bilgi için Bkz. <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
+        Xamarin.Android, .NET geliştiricileri için eksiksiz Android SDK’sını sunar. Visual Studio’da C# veya F# kullanarak tamamen yerel Android uygulamaları oluşturun. Daha fazla bilgi için bkz <a href="https://docs.microsoft.com/xamarin/android/" target="_blank">. Xamarin. <span class="docon docon-navigate-external x-hidden-focus"></span> Android</a>
     :::column-end:::
     :::column:::
         <br>

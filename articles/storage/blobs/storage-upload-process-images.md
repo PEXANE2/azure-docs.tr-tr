@@ -1,6 +1,6 @@
 ---
 title: Azure Depolama ile buluta görüntü verileri yükleme | Microsoft Docs
-description: Uygulama verilerini depolamak için Azure Blob depolama sını bir web uygulamasıyla kullanma
+description: Uygulama verilerini depolamak için bir Web uygulamasıyla Azure Blob depolamayı kullanma
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,21 +9,21 @@ ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81393857"
 ---
-# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure Depolama ile görüntü verilerini buluta yükleyin
+# <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Öğretici: Azure depolama ile buluta görüntü verileri yükleme
 
-Bu öğretici, bir dizinin birinci bölümüdür. Bu eğitimde, görüntüleri bir depolama hesabına yüklemek için Azure Blob depolama istemcikitaplığını kullanan bir web uygulamasının nasıl dağıtılanacağını öğreneceksiniz. İşi nizi bitirdiğinde, Azure depolama sundaki görüntüleri depolayan ve görüntüleyen bir web uygulamanız olur.
+Bu öğretici, bir dizinin birinci bölümüdür. Bu öğreticide, bir depolama hesabına görüntü yüklemek için Azure Blob depolama istemci kitaplığı 'nı kullanan bir Web uygulamasını dağıtmayı öğreneceksiniz. İşiniz bittiğinde, Azure depolama 'daki görüntüleri depolayan ve görüntüleyen bir Web uygulamasına sahip olursunuz.
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
-![.NET'te görüntü rezer Uygulaması](media/storage-upload-process-images/figure2.png)
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+![.NET 'teki görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Düğüm.js v10 SDK](#tab/nodejsv10)
-![Düğüm.js V10 görüntü resizer uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdk"></a>[Node. js ile v10 arasındaki SDK](#tab/nodejsv10)
+![Node. js Ile v10 arasındaki içinde görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
@@ -33,17 +33,17 @@ Serinin birinci bölümünde şunları öğrenirsiniz:
 > * Depolama hesabı oluşturma
 > * Kapsayıcı oluşturma ve izinleri ayarlama
 > * Erişim anahtarı alma
-> * Azure'a bir web uygulaması dağıtma
+> * Bir Web uygulamasını Azure 'a dağıtma
 > * Uygulama ayarlarını yapılandırma
-> * Web uygulamasıyla etkileşim
+> * Web uygulamasıyla etkileşim kurma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
+Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemek ve kullanmak için bu öğretici, Azure CLI sürüm 2.0.4 veya daha sonraçalıştırılmasını gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
+CLı 'yi yerel olarak yüklemek ve kullanmak için bu öğreticide, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -57,12 +57,12 @@ az group create --name myResourceGroup --location southeastasia
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Örnek, görüntüleri Azure depolama hesabındaki bir blob kapsayıcısına yükler. Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve bunlara erişmek için benzersiz ad alanı sağlar. Oluşturduğunuz kaynak grubunda [az storage account create](/cli/azure/storage/account) komutunu kullanarak bir depolama hesabı oluşturun.
+Örnek, görüntüleri bir Azure depolama hesabındaki blob kapsayıcısına yükler. Depolama hesabı, Azure Storage veri nesnelerinizi depolamak ve bunlara erişmek için benzersiz ad alanı sağlar. Oluşturduğunuz kaynak grubunda [az storage account create](/cli/azure/storage/account) komutunu kullanarak bir depolama hesabı oluşturun.
 
 > [!IMPORTANT]
-> Öğreticinin 2. Etkinlik Ağıtını destekleyen bir Azure bölgesinde depolama hesabınızı oluşturduğunuzdan emin olun. Desteklenen bölgelerin listesi için [bölgeye göre Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all)bakın.
+> Öğreticinin 2. bölümünde blob depolamayla Azure Event Grid kullanırsınız. Depolama hesabınızı, Event Grid destekleyen bir Azure bölgesinde oluşturduğunuzdan emin olun. Desteklenen bölgelerin listesi için bkz. [bölgeye göre Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
-Aşağıdaki komutta, `<blob_storage_account>` yer tutucuyu gördüğünüz Blob depolama hesabı için kendi genel olarak benzersiz adınızı değiştirin.
+Aşağıdaki komutta, `<blob_storage_account>` yer tutucuyu gördüğünüz BLOB depolama hesabı için kendi genel benzersiz adınızı değiştirin.
 
 ```azurecli-interactive
 blobStorageAccount="<blob_storage_account>"
@@ -71,13 +71,13 @@ az storage account create --name $blobStorageAccount --location southeastasia \
   --resource-group myResourceGroup --sku Standard_LRS --kind StorageV2 --access-tier hot
 ```
 
-## <a name="create-blob-storage-containers"></a>Blob depolama kapları oluşturma
+## <a name="create-blob-storage-containers"></a>BLOB depolama kapsayıcıları oluşturma
 
-Uygulama, Blob depolama hesabında iki kapsayıcı kullanır. Kapsayıcılar klasörlere benzer ve lekeleri depolar. *Images* kapsayıcısı, uygulamanın tam çözünürlüklü görüntüleri yüklediği yerdir. Serinin sonraki bölümlerinde bir Azure işlev uygulaması, yeniden boyutlandırılan küçük resimleri *thumbnails* kapsayıcısına yükler.
+Uygulama, Blob depolama hesabında iki kapsayıcı kullanır. Kapsayıcılar, klasörlere ve depo bloblarına benzer. *Images* kapsayıcısı, uygulamanın tam çözünürlüklü görüntüleri yüklediği yerdir. Serinin sonraki bölümlerinde bir Azure işlev uygulaması, yeniden boyutlandırılan küçük resimleri *thumbnails* kapsayıcısına yükler.
 
-[az storage account keys list](/cli/azure/storage/account/keys) komutunu kullanarak depolama hesabı anahtarını alın. Ardından, [az depolama kapsayıcısı oluşturma](/cli/azure/storage/container) komutu ile iki kapsayıcı oluşturmak için bu anahtarı kullanın.
+[az storage account keys list](/cli/azure/storage/account/keys) komutunu kullanarak depolama hesabı anahtarını alın. Ardından, [az Storage Container Create](/cli/azure/storage/container) komutuyla iki kapsayıcı oluşturmak için bu anahtarı kullanın.
 
-*Görüntüler* konteynerinin genel erişimi `off`. *Küçük resimler* konteynerinin genel erişimi `container`. Genel `container` erişim ayarı, web sayfasını ziyaret eden kullanıcıların küçük resimleri görüntülemesine izin verir.
+*Görüntüler* kapsayıcısının genel erişimi olarak `off`ayarlanır. *Küçük resim* kapsayıcısının genel erişimi olarak `container`ayarlanır. `container` Genel erişim ayarı, Web sayfasını ziyaret eden kullanıcıların küçük resimleri görüntülemesini sağlar.
 
 ```azurecli-interactive
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -93,7 +93,7 @@ echo "Make a note of your Blob storage account key..."
 echo $blobStorageAccountKey
 ```
 
-Blob depolama hesap adınızı ve anahtarınızı not alın. Örnek uygulama, görüntüleri yüklemek için depolama hesabına bağlanmak için bu ayarları kullanır. 
+BLOB depolama hesabı adınızı ve anahtarınızı bir yere göz önüne alın. Örnek uygulama, görüntüleri karşıya yüklemek için depolama hesabına bağlanmak üzere bu ayarları kullanır. 
 
 ## <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Web uygulaması, GitHub örnek deposundan dağıtılan örnek uygulama kodu için bir barındırma alanı sağlar. [az webapp create](/cli/azure/webapp) komutuyla `myAppServicePlan` App Service planında bir [web uygulaması](../../app-service/overview.md) oluşturun.  
 
-Aşağıdaki komutta, `<web_app>` benzersiz bir adla değiştirin. Geçerli karakterler: `a-z`, `0-9`, ve `-`. `<web_app>` benzersiz değilse *Belirtilen `<web_app>` adına sahip web sitesi zaten var* hata iletisiyle karşılaşırsınız. Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.  
+Aşağıdaki komutta, öğesini benzersiz bir `<web_app>` adla değiştirin. Geçerli karakterler: `a-z`, `0-9`, ve `-`. `<web_app>` benzersiz değilse *Belirtilen `<web_app>` adına sahip web sitesi zaten var* hata iletisiyle karşılaşırsınız. Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.  
 
 ```azurecli-interactive
 webapp="<web_app>"
@@ -121,11 +121,11 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>GitHub deposundan örnek uygulamayı dağıtma
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
 App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler. Bu öğreticide, web uygulamasını bir [genel GitHub örnek deposundan](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) dağıtırsınız. [az webapp deployment source config](/cli/azure/webapp/deployment/source) komutuyla Git dağıtımını web uygulamasında gerçekleşecek şekilde yapılandırın.
 
-Örnek proje ASP.NET bir [MVC](https://www.asp.net/mvc) uygulaması içerir. Uygulama bir resmi kabul eder, bir depolama hesabına kaydeder ve küçük resim kapsayıcısından görüntüleri görüntüler. Web uygulaması Azure Depolama hizmetiyle etkileşimde kalmak için [Azure.Storage,](/dotnet/api/azure.storage) [Azure.Storage.Blobs](/dotnet/api/azure.storage.blobs)ve [Azure.Storage.Blobs.Models](/dotnet/api/azure.storage.blobs.models) ad alanlarını kullanır.
+Örnek proje bir [ASP.NET MVC](https://www.asp.net/mvc) uygulaması içerir. Uygulama bir görüntüyü kabul eder, bir depolama hesabına kaydeder ve küçük resim kapsayıcılarından görüntüleri görüntüler. Web uygulaması, Azure depolama hizmetiyle etkileşim kurmak için [Azure. Storage](/dotnet/api/azure.storage), [Azure. Storage. blob 'ları](/dotnet/api/azure.storage.blobs)ve [Azure. Storage. blob. model](/dotnet/api/azure.storage.blobs.models) ad alanlarını kullanır.
 
 ```azurecli-interactive
 az webapp deployment source config --name $webapp --resource-group myResourceGroup \
@@ -133,7 +133,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Düğüm.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node. js ile v10 arasındaki SDK](#tab/nodejsv10)
 App Service bir web uygulamasına içerik dağıtmanın birkaç yolunu destekler. Bu öğreticide, web uygulamasını bir [genel GitHub örnek deposundan](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) dağıtırsınız. [az webapp deployment source config](/cli/azure/webapp/deployment/source) komutuyla Git dağıtımını web uygulamasında gerçekleşecek şekilde yapılandırın.
 
 ```azurecli-interactive
@@ -146,9 +146,9 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>Web uygulaması ayarlarını yapılandırma
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
-Örnek web uygulaması, görüntüleri yüklemek [için .NET için Azure Depolama API'lerini](/dotnet/api/overview/azure/storage) kullanır. Depolama hesabı kimlik bilgileri web uygulamasının uygulama ayarlarında ayarlanır. [Az webapp config appsettings set](/cli/azure/webapp/config/appsettings) komutu ile dağıtılan uygulamaya uygulama ayarları ekleyin.
+Örnek Web uygulaması, görüntüleri karşıya yüklemek için [.net Için Azure depolama API 'lerini](/dotnet/api/overview/azure/storage) kullanır. Depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -158,9 +158,9 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Düğüm.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node. js ile v10 arasındaki SDK](#tab/nodejsv10)
 
-Örnek web uygulaması, görüntüleri karşıya yüklemek için kullanılan erişim belirteçlerini istemek için [Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-js)’nı kullanır. Depolama SDK tarafından kullanılan depolama hesabı kimlik bilgileri web uygulaması nın uygulama ayarlarında ayarlanır. [Az webapp config appsettings set](/cli/azure/webapp/config/appsettings) komutu ile dağıtılan uygulamaya uygulama ayarları ekleyin.
+Örnek web uygulaması, görüntüleri karşıya yüklemek için kullanılan erişim belirteçlerini istemek için [Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-js)’nı kullanır. Depolama SDK 'Sı tarafından kullanılan depolama hesabı kimlik bilgileri, Web uygulaması için uygulama ayarları 'nda ayarlanır. Uygulama ayarlarını, [az WebApp config appSettings set](/cli/azure/webapp/config/appsettings) komutuyla dağıtılan uygulamaya ekleyin.
 
 ```azurecli-interactive
 az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
@@ -170,19 +170,19 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
 
 ---
 
-Web uygulamasını dağıttıktan ve yapılandırdıktan sonra, uygulamadaki resim yükleme işlevini test edebilirsiniz.
+Web uygulamasını dağıttıktan ve yapılandırdıktan sonra, uygulamanın görüntü karşıya yükleme işlevini test edebilirsiniz.
 
 ## <a name="upload-an-image"></a>Bir görüntüyü karşıya yükleme
 
 Web uygulamasını test etmek için, yayımlanan uygulamanızın URL'sine gidin. Web uygulamasının varsayılan URL'si `https://<web_app>.azurewebsites.net` şeklindedir.
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
 
-Dosya belirtmek ve yüklemek için **Fotoğrafları Yükle** bölgesini seçin veya bir dosyayı bölgeye sürükleyin. Görüntü başarıyla karşıya yüklenirse kaybolur. **Oluşturulan Küçük Resimler** bölümü, bu konuda daha sonra test edene kadar boş kalır.
+Bir dosya belirtmek ve karşıya yüklemek için **Fotoğrafları karşıya yükle** bölgesini seçin ya da bir dosyayı bölgenin üzerine sürükleyin. Görüntü başarıyla karşıya yüklenirse kaybolur. **Oluşturulan küçük resimler** bölümü, bu konunun ilerleyen kısımlarında Test edilene kadar boş kalır.
 
-![.NET'e Fotoğraf Yükle](media/storage-upload-process-images/figure1.png)
+![.NET 'e fotoğraf yükleme](media/storage-upload-process-images/figure1.png)
 
-Örnek kodda, `UploadFileToStorage` *Storagehelper.cs* dosyasındaki görev, [uploadasync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) yöntemini kullanarak görüntüleri depolama hesabı içindeki *resim* kapsayıcısına yüklemek için kullanılır. Aşağıdaki kod örneği `UploadFileToStorage` görevini içerir.
+Örnek kodda, `UploadFileToStorage` *Storagehelper.cs* dosyasındaki görev, görüntüleri [uploadasync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) yöntemi kullanılarak depolama hesabı içindeki *görüntüler* kapsayıcısına yüklemek için kullanılır. Aşağıdaki kod örneği `UploadFileToStorage` görevini içerir.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -214,25 +214,25 @@ Aşağıdaki sınıflar ve yöntemler, yukarıdaki görevde kullanılır:
 
 | Sınıf    | Yöntem   |
 |----------|----------|
-| [Urı](/dotnet/api/system.uri) | [Uri yapıcı](/dotnet/api/system.uri.-ctor) |
-| [DepolamaSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential(String, String) oluşturucu](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
+| [Kullanılmamışsa](/dotnet/api/system.uri) | [URI Oluşturucusu](/dotnet/api/system.uri.-ctor) |
+| [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (dize, dize) Oluşturucusu](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10-sdk"></a>[Düğüm.js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10-sdk"></a>[Node. js ile v10 arasındaki SDK](#tab/nodejsv10)
 
-Dosya seçmek için **Dosyayı Seçin'i** seçin ve ardından **Resmi Yükle'yi**tıklatın. **Oluşturulan Küçük Resimler** bölümü, bu konuda daha sonra test edene kadar boş kalır. 
+Dosya **Seç ' i seçin ve** ardından **görüntüyü karşıya yükle**' ye tıklayın. **Oluşturulan küçük resimler** bölümü, bu konunun ilerleyen kısımlarında Test edilene kadar boş kalır. 
 
-![Node.js V10'a Fotoğraf Yükle](media/storage-upload-process-images/upload-app-nodejs.png)
+![Node. js Ile v10 arasındaki 'a fotoğraf yükleme](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Örnek kodda `post` yolu, görüntüyü blob kapsayıcısına yüklemeden sorumludur. Yol, modülleri karşıya yükleme işlemine yardımcı olması için kullanır:
 
-- [multer](https://github.com/expressjs/multer) rota işleyicisi için yükleme stratejisini uygular.
-- [into-stream,](https://github.com/sindresorhus/into-stream) [arabelleği createBlockBlobFromStream'in](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)gerektirdiği şekilde bir akışa dönüştürür.
+- [Multer](https://github.com/expressjs/multer) , yol işleyicisi için karşıya yükleme stratejisi uygular.
+- [Stream](https://github.com/sindresorhus/into-stream) , [Createblockblobfromstream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)için gereken şekilde arabelleği bir akışa dönüştürür.
 
-Dosya rotaya gönderildiğinde, dosyanın içeriği blob kapsayıcısına yüklenene kadar bellekte kalır.
+Dosya rotaya gönderilirken dosyanın içeriği, dosya BLOB kapsayıcısına yükleninceye kadar bellekte kalır.
 
 > [!IMPORTANT]
-> Büyük dosyaların belleğe yüklenmesi web uygulamanızın performansını olumsuz etkileyebilir. Kullanıcıların büyük dosyalar göndermesini bekliyorsanız, web sunucusu dosya sisteminde dosyaları düzenlemeyi ve ardından Blob depolama alanına yüklemeleri zamanlamayı düşünebilirsiniz. Dosyalar Blob depolama alanına geldikten sonra, bunları sunucu dosya sisteminden kaldırabilirsiniz.
+> Büyük dosyaların belleğe yüklenmesi Web uygulamanızın performansı üzerinde olumsuz bir etkiye sahip olabilir. Kullanıcıların büyük dosyaları nakletmesini beklemeniz durumunda, Web sunucusu dosya sisteminde dosyaları hazırlama ve sonra blob depolamaya yükleme zamanlama işlemlerini düşünebilirsiniz. Dosyalar BLOB depolama alanından olduktan sonra bunları sunucu dosya sisteminden kaldırabilirsiniz.
 
 ```javascript
 const {
@@ -300,39 +300,39 @@ router.post('/', uploadStrategy, async (req, res) => {
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Depolama hesabında görüntünün gösterildiğini doğrulayın
 
-[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar'ı**seçin, ardından **resim** kapsayıcısını seçin.
+[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **görüntüler** kapsayıcısını seçin.
 
 Kapsayıcıda görüntünün gösterildiğini doğrulayın.
 
-![Resim konteynerinin Azure Portal listesi](media/storage-upload-process-images/figure13.png)
+![Azure Portal görüntü kapsayıcısı listesi](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Küçük resim görüntülemeyi test etme
 
-Küçük resim görüntülemeyi test etmek için, uygulamanın **küçük resim** kabını okuyup okuyamadığını kontrol etmek için **küçük resim** konteynerine bir resim yüklersiniz.
+Küçük resim görüntülemeyi test etmek için **, küçük resim kapsayıcısına bir** görüntü yükleyerek uygulamanın **küçük** resim kapsayıcısını okuyup okuyamadığını kontrol edebilirsiniz.
 
-[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar'ı**seçin, ardından **küçük küçük resim** kapsayıcısını seçin. **Karşıya Yükle**’yi seçerek **Blobu karşıya yükle** bölmesini açın.
+[Azure Portal](https://portal.azure.com) oturum açın. Soldaki menüden **Depolama hesapları**’nı ve sonra depolama hesabınızın adını seçin. **Kapsayıcılar**' ı seçin ve ardından **küçük resim** kapsayıcısını seçin. **Karşıya Yükle**’yi seçerek **Blobu karşıya yükle** bölmesini açın.
 
-Dosya seçiciile bir dosya seçin ve **Yükle'yi**seçin.
+Dosya seçicisine sahip bir dosya seçin ve **karşıya yükle**' yi seçin.
 
 **thumbnails** kapsayıcısına yüklenen görüntünün görünür olduğunu doğrulamak için uygulamanıza geri gidin.
 
-# <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
-![Yeni görüntü görüntülenen .NET görüntü resizer uygulaması](media/storage-upload-process-images/figure2.png)
+# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+![Yeni görüntü görüntülenirken .NET görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Düğüm.js v10 SDK](#tab/nodejsv10)
-![Yeni görüntü görüntülenen Node.js V10 görüntü resizer uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+# <a name="nodejs-v10-sdk"></a>[Node. js ile v10 arasındaki SDK](#tab/nodejsv10)
+![Yeni görüntü görüntülenirken Node. js Ile v10 arasındaki görüntü yeniden Oluşturucu uygulaması](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
 
-Serinin ikinci bölümünde, bu görüntüye gerek kalmadan küçük resim oluşturmayı otomatikleştirirsiniz. Azure portalındaki **thumbnails** kapsayıcısında, karşıya yüklediğiniz görüntüyü seçin ve **Sil**’i seçerek görüntüyü silin. 
+Serinin ikinci bölümünde, küçük resim oluşturmayı otomatikleştirerek bu görüntüye ihtiyacınız olmaz. Azure portalındaki **thumbnails** kapsayıcısında, karşıya yüklediğiniz görüntüyü seçin ve **Sil**’i seçerek görüntüyü silin. 
 
-Azure depolama hesabınızdan içeriği önbelleğe almak için İçerik Dağıtım Ağı'nı (CDN) etkinleştirebilirsiniz. Azure depolama hesabınızla CDN'yi etkinleştirme hakkında daha fazla bilgi için [bkz.](../../cdn/cdn-create-a-storage-account-with-cdn.md)
+Azure Depolama hesabınızdaki içerikleri önbelleğe almak için Content Delivery Network (CDN) etkinleştirebilirsiniz. Azure depolama hesabınızla CDN 'yi etkinleştirme hakkında daha fazla bilgi için bkz. [Azure Storage hesabını Azure CDN Ile tümleştirme](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Serinin birinci bölümünde, depolama yla etkileşimde olacak bir web uygulamasını nasıl yapılandırabileceğinizi öğrendiniz.
+Serinin birinci bölümünde, bir Web uygulamasını depolama ile etkileşimde bulunmak üzere nasıl yapılandıracağınızı öğrendiniz.
 
-Görüntüyü yeniden boyutlandırmak için bir Azure işlevini tetiklemek için Olay Izgarasını kullanma hakkında bilgi edinmek için serinin ikinci bölümüne gidin.
+Bir görüntüyü yeniden boyutlandırmak üzere bir Azure işlevi tetiklemek için Event Grid kullanmayı öğrenmek üzere serinin ikinci bölümüne gidin.
 
 > [!div class="nextstepaction"]
 > [Karşıya yüklenen bir görüntüyü yeniden boyutlandırmak üzere bir Azure İşlevi’ni tetiklemek için Event Grid kullanma](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

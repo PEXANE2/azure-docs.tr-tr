@@ -1,7 +1,7 @@
 ---
-title: Metinden konuşmaya - Konuşma hizmeti
+title: Metin okuma-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmetindeki metinden konuşmaya özelliği, uygulamalarınızın, araçlarınızın veya aygıtlarınızın metni doğal insan benzeri sentezlenmiş konuşmaya dönüştürmesini sağlar. Önceden ayarlanmış sesleri seçin veya kendi özel sesinizi oluşturun.
+description: Konuşma hizmetindeki metinden konuşmaya özelliği, uygulamalarınızın, araçlarınızın veya cihazların metni doğal insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Önceden belirlenmiş sesler ' i seçin veya kendi özel sesinizi oluşturun.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,75 +11,75 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399494"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Konuşma hizmetinden metin konuşma, uygulamalarınızın, araçlarınızın veya aygıtlarınızın metni insan ayarı gibi sentezlenmiş konuşmaya dönüştürmesini sağlar. Standart ve sinirsel sesler arasından seçim yapın veya ürününize veya markanıza özgü özel bir ses oluşturun. 75+ standart ses 45'ten fazla dilde ve yerel olarak mevcuttur ve belirli sayıda dilde ve yerel olarak 5 sinirsel ses mevcuttur. Desteklenen seslerin, dillerin ve yerel birimlerin tam listesi için [desteklenen dillere](language-support.md#text-to-speech)bakın.
+Konuşma hizmetinden metin okuma, uygulamalarınızın, araçların veya cihazlarınızın metni insan benzeri sentezleştirilmiş konuşmaya dönüştürmesine olanak sağlar. Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için benzersiz özel bir ses oluşturun. 75 + standart sesler 45 ' den fazla dilde ve yerel ayarlarda kullanılabilir ve bir dizi dilde ve yerel ayara 5 sinir seste erişilebilir. Desteklenen seslerin, dillerin ve yerel ayarların tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
 > [!NOTE]
-> Bing Konuşması 15 Ekim 2019 tarihinde kullanımdan kaldırıldı. Uygulamalarınız, araçlarınız veya ürünleriniz Bing Konuşma API'leri veya Özel Konuşma kullanıyorsa, Konuşma hizmetine geçiş inizi yardımcı olacak kılavuzlar oluşturduk.
-> - [Bing Konuşmasından Konuşma hizmetine geçiş](how-to-migrate-from-bing-speech.md)
+> Bing Konuşma, 15 Ekim 2019 ' de kullanımdan çıkarıldı. Uygulamalarınız, araçlar veya ürünleriniz Bing Konuşma API 'Leri veya Özel Konuşma Tanıma kullanıyorsa, konuşma hizmetine geçiş yapmanıza yardımcı olacak kılavuzlar oluşturduk.
+> - [Bing Konuşma konuşma hizmetine geçirme](how-to-migrate-from-bing-speech.md)
 
-## <a name="core-features"></a>Temel özellikler
+## <a name="core-features"></a>Temel Özellikler
 
-* Konuşma sentezi - Standart, sinirsel veya özel sesleri kullanarak metinden konuşmaya dönüştürmek için [Konuşma SDK'sını](quickstarts/text-to-speech-audio-file.md) veya [REST API'yi](rest-text-to-speech.md) kullanın.
+* Konuşma birleştirme-standart, sinir veya özel sesler kullanarak metin okumayı dönüştürmek için [konuşma SDK 'sını](quickstarts/text-to-speech-audio-file.md) veya [REST API](rest-text-to-speech.md) kullanın.
 
-* Uzun sesin eşzamanlı sentezi - [Uzun Ses API'sini](long-audio-api.md) kullanarak metin-konuşma dosyalarını 10 dakikadan uzun bir süre (örneğin sesli kitaplar veya dersler) eşzamanlı olarak sentezleyin. Konuşma SDK veya konuşma-to-metin REST API kullanılarak gerçekleştirilen sentez aksine, yanıtlar gerçek zamanlı olarak döndürülür değil. Beklenti, isteklerin eşit bir şekilde gönderilmesi, yanıtların yoklanmış olması ve sentezlenen sesin hizmetten kullanılabilir hale geldiğinde indirilmesidir. Sadece özel sinirsel sesler desteklenir.
+* Zaman uyumsuz birleştirme uzun seslidir-metin okuma dosyalarını 10 dakikadan uzun zaman uyumsuz bir şekilde birleştirmek için [uzun ses API](long-audio-api.md) 'sini kullanın (örneğin, ses defterleri veya seminerler). Konuşma SDK 'Sı veya konuşmadan metne REST API kullanarak senkinden farklı olarak, yanıtlar gerçek zamanlı olarak döndürülmez. Beklentiler, isteklerin zaman uyumsuz olarak gönderilmesi, yanıtların yoklandığının ve hizmetten kullanıma hazır hale getirilme sesinin indirilmesinden kaynaklandır. Yalnızca özel sinir sesleri desteklenir.
 
-* Standart sesler - İstatistiksel Parametrik Sentez ve/veya Concatenation Sentez teknikleri kullanılarak oluşturulmuştur. Bu sesler son derece anlaşılır ve ses doğaldır. Çok çeşitli ses seçenekleriyle uygulamalarınızın 45'ten fazla dilde kolayca konuşmasını sağlayabilirsiniz. Bu sesler, kısaltmalar, kısaltma genişletmeleri, tarih/saat yorumları, politelefonlar ve daha fazlası için destek de dahil olmak üzere yüksek telaffuz doğruluğu sağlar. Standart seslerin tam listesi için [desteklenen dillere](language-support.md#text-to-speech)bakın.
+* Standart sesler-Istatistiksel parametrik sen, ve/veya birleştirme birleştirme tekniklerini kullanarak oluşturulur. Bu sesler, yüksek oranda anlaşılır ve sessiz doğal bir şekilde yapılır. Uygulamalarınızın çok sayıda dilde 45 konuşmasını, çok çeşitli ses seçenekleriyle kolayca sağlayabilirsiniz. Bu sesler, kısaltmalar, kısaltma genişletmeleri, tarih/saat yorumlamalar, polyphones ve daha fazlası için destek de dahil olmak üzere yüksek telaffuz doğruluk sağlar. Standart seslerin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-* Nöral sesler - Derin sinir ağları konuşma dilinde stres ve tonlama açısından geleneksel konuşma sentezinin sınırlarını aşmak için kullanılır. Prosody tahmin ve ses sentezi aynı anda gerçekleştirilir, bu da daha akıcı ve doğal sondaj çıkışları ile sonuçlanır. Sinirsel sesler chatbots ve ses asistanları ile etkileşimleri daha doğal ve ilgi çekici hale getirmek için kullanılabilir, sesli kitaplar içine e-kitap gibi dijital metinler dönüştürmek, ve araç içi navigasyon sistemleri geliştirmek. İnsana benzer doğal prosody ve kelimelerin net eklemleme ile, sinirsel sesler önemli ölçüde AI sistemleri ile etkileşim zaman dinleme yorgunluğunu azaltır. Nöral seslerin tam listesi için [desteklenen dillere](language-support.md#text-to-speech)bakın.
+* Sinir seslerde, geleneksel konuşma senillerinin sınırlarını aşmak için derin sinir ağları, konuşulan dilde stres ve kullanım gibi Prosody tahmini ve ses birleştirmesinin eşzamanlı olarak gerçekleştirilmesi, daha akıcı ve doğal bir çıkış ile sonuçlanır. Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, AI sistemleriyle etkileşime geçerek sinir seslileri büyük ölçüde dinlemeyi azaltır. Sinir sesin tam listesi için bkz. [desteklenen diller](language-support.md#text-to-speech).
 
-* Konuşma Sentezi Biçimlendirme Dili (SSML) - Konuşmadan metne çıktılarını özelleştirmek için kullanılan XML tabanlı biçimlendirme dili. SSML ile, adım süresini ayarlayabilir, duraklatma ekleyebilir, telaffuzu artırabilir, konuşma hızını hızlandırabilir veya yavaşlatabilir, ses düzeyini artırabilir veya azaltabilir ve birden çok sesi tek bir belgeye atfedebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
+* Konuşma birleştirme biçimlendirme dili (SSML)-konuşmayı metne çıktıları özelleştirmek için kullanılan XML tabanlı bir biçimlendirme dili. SSML ile, aralığı ayarlayabilir, duraklamalar ekleyebilir, söylenişi artırabilir veya yavaşlatır, konuşma hızını artırabilir veya azaltabilir, hacmi artırabilir veya azaltabilirsiniz ve tek bir belgeye birden çok ses özniteliği ekleyebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-Metin-konuşma hizmeti [Konuşma SDK](speech-sdk.md)üzerinden kullanılabilir. Çeşitli dillerde ve platformlarda hızlı başlangıçlar olarak kullanılabilen birkaç yaygın senaryo vardır:
+Metinden konuşmaya hizmeti, [konuşma SDK 'sı](speech-sdk.md)aracılığıyla kullanılabilir. Hızlı başlangıçların çeşitli dillerde ve platformlarda kullanıma sunulduğu birkaç yaygın senaryo vardır:
 
 * [Konuşmayı ses dosyasına sentezleme](quickstarts/text-to-speech-audio-file.md)
 * [Konuşmayı hoparlöre sentezleme](quickstarts/text-to-speech.md)
-* [Uzun biçimli sesi eş zamanlı olarak sentezle](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+* [Uzun biçimli ses zaman uyumsuz olarak sentezleştir](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-İstersen, metin-konuşma hizmeti [REST](rest-text-to-speech.md)üzerinden erişilebilir.
+İsterseniz, metinden konuşmaya hizmetine [rest](rest-text-to-speech.md)aracılığıyla erişilebilir.
 
 ## <a name="sample-code"></a>Örnek kod
 
-Metinden konuşmaya örnek kod GitHub'da mevcuttur. Bu örnekler, en popüler programlama dillerinde metinden konuşmaya dönüştürmeyi kapsar.
+Metinden konuşmaya yönelik örnek kod GitHub ' da kullanılabilir. Bu örnekler, en popüler programlama dillerinde metinden konuşmaya dönüştürmeyi kapsar.
 
 - [Metinden konuşmaya örnekleri (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Metinden konuşmaya örnekleri (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="customization"></a>Özelleştirme
 
-Standart ve sinirsel seslere ek olarak, ürününize veya markanıza özgü özel sesler oluşturabilir ve ince ayar yapabilirsiniz. Başlamak için gereken tek şey bir avuç ses dosyası ve ilgili transkripsiyonlar. Daha fazla bilgi için bkz: [Özel Ses ile başlayın](how-to-custom-voice.md)
+Standart ve sinir seslerinizin yanı sıra, ürün veya marka için benzersiz özel sesler oluşturabilir ve bunları hassas bir şekilde ayarlayabilirsiniz. Kullanmaya başlamak her şey için çok sayıda ses dosyası ve ilişkili dökümlerdir. Daha fazla bilgi için bkz. [özel sesle çalışmaya başlama](how-to-custom-voice.md)
 
-## <a name="pricing-note"></a>Fiyatlandırma notu
+## <a name="pricing-note"></a>Fiyatlandırma notunun
 
-Metinden konuşmaya hizmeti kullanırken, noktalama işaretleri de dahil olmak üzere konuşmaya dönüştürülen her karakter için faturalandırılırsınız. SSML belgesinin kendisi faturalandırılabilir olmasa da, metnin telefon ve perde gibi konuşmaya nasıl dönüştürüldüğünü ayarlamak için kullanılan isteğe bağlı öğeler faturalandırılabilir karakterler olarak sayılır. Aşağıda faturalandırılabilir olanların bir listesi verebilme
+Metin okuma hizmeti kullanılırken, noktalama, noktalama dahil olmak üzere her bir karakter için faturalandırılırsınız. SSML belgesinin kendisi faturalanabilir olsa da, metnin, alfabesine ve sıklık gibi bir şekilde konuşmaya dönüştürülmesini ayarlamak için kullanılan isteğe bağlı öğeler faturalanabilir karakter olarak sayılır. Faturalandırılabilir nelerin listesi aşağıda verilmiştir:
 
-- İsteğin SSML gövdesindeki metinden konuşmaya hizmetine geçirilen metin
-- İstek gövdesinin metin alanındaki tüm biçimlendirme, SSML `<speak>` biçiminde, `<voice>`
-- Harfler, noktalama işaretleri, boşluklar, sekmeler, biçimlendirme ve tüm boşluk karakterleri
-- Unicode'da tanımlanan her kod noktası
+- İsteğin SSML gövdesinde metin okuma hizmetine geçilen metin
+- SSML biçimindeki istek gövdesinin metin alanı içindeki `<speak>` ve `<voice>` etiketleri hariç tüm biçimlendirme
+- Harfler, noktalama, boşluk, sekme, biçimlendirme ve tüm beyaz boşluk karakterleri
+- Unicode 'da tanımlanan her kod noktası
 
-Ayrıntılı bilgi için [Fiyatlandırma'ya](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın.
+Ayrıntılı bilgi için bkz. [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
-> Her Çince, Japonca ve Korece karakter faturalandırma için iki karakter olarak sayılır.
+> Her Çince, Japonca ve Kore dili karakteri faturalandırma için iki karakter olarak sayılır.
 
-## <a name="reference-docs"></a>Referans dokümanları
+## <a name="reference-docs"></a>Başvuru belgeleri
 
 - [Konuşma SDK'sı](speech-sdk.md)
-- [REST API: Metinden konuşmaya](rest-text-to-speech.md)
+- [REST API: metinden konuşmaya](rest-text-to-speech.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ücretsiz Konuşma hizmeti aboneliği alın](get-started.md)
-- [Konuşma SDK alın](speech-sdk.md)
+- [Ücretsiz bir konuşma hizmeti aboneliği alın](get-started.md)
+- [Konuşma SDK 'sını alın](speech-sdk.md)

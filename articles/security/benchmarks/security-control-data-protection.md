@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Denetimi - Veri Koruma
-description: Azure Güvenlik Denetimi Veri Koruması
+title: Azure Güvenlik denetimi-veri koruma
+description: Azure Güvenlik denetimi veri koruması
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
@@ -8,127 +8,127 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 035894c80e619851264aae91daa2d7852d156964
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408553"
 ---
-# <a name="security-control-data-protection"></a>Güvenlik Denetimi: Veri Koruma
+# <a name="security-control-data-protection"></a>Güvenlik denetimi: veri koruma
 
-Veri koruma önerileri, şifreleme, erişim denetimi listeleri, kimlik tabanlı erişim denetimi ve veri erişimi için denetim günlüğüyle ilgili sorunları ele almaya odaklanır.
+Veri koruma önerileri şifreleme, erişim denetim listeleri, kimlik tabanlı erişim denetimi ve veri erişimi için denetim günlüğü ile ilgili sorunları gidermeye odaklanmaktadır.
 
-## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Hassas Bilgilerin envanterini koruyun
+## <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.1 | 13.1 | Müşteri |
+| 4.1 | 13,1 | Müşteri |
 
-Hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için Etiketler'i kullanın.
-
-- [Etiketler nasıl oluşturulur ve kullanılır](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
-
-## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Hassas bilgileri depolama veya işleme sistemlerini yalıtma
-
-| Azure Kimliği | BDT'ler | Sorumluluk |
-|--|--|--|
-| 4.2 | 13.2, 2.10 | Müşteri |
-
-Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamlarınızın talep ettiği Azure kaynaklarına erişim düzeyini kısıtlayabilirsiniz. Azure Etkin Dizin rolü tabanlı erişim denetimi aracılığıyla Azure kaynaklarına erişimi denetleyebilirsiniz. 
-
-- [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
-
-- [Yönetim Grupları nasıl oluşturulur?](https://docs.microsoft.com/azure/governance/management-groups/create)
+Gizli bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın.
 
 - [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Hassas bilgilerin yetkisiz aktarımının izlenmesi ve engellenmesi
+## <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.3 | 13.3 | Paylaşımlı |
+| 4.2 | 13,2, 2,10 | Müşteri |
 
-Azure Marketi'nin, hassas bilgilerin yetkisiz aktarımı için izleyen ve bilgi güvenliği profesyonellerini uyarırken bu tür aktarımları engelleyen ağ çevresinde üçüncü taraf çözümünden yararlanın.
+Ortam türü ve veri duyarlılığı düzeyi gibi bireysel güvenlik etki alanları için ayrı abonelikler ve yönetim grupları kullanarak yalıtım uygulayın. Uygulamalarınızın ve kurumsal ortamların talep ettiği Azure kaynaklarınıza erişim düzeyini kısıtlayabilirsiniz. Azure kaynaklarına erişimi, Azure Active Directory rol tabanlı erişim denetimi aracılığıyla denetleyebilirsiniz. 
 
-Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas ve müşteri veri kaybına ve açığa karşı koruma olarak ele adatır. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
+- [Ek Azure abonelikleri oluşturma](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
-- [Azure'da müşteri verilerinin korunmasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+- [Yönetim Grupları oluşturma](https://docs.microsoft.com/azure/governance/management-groups/create)
 
-## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Tüm hassas bilgileri taşıma sırasında şifreleme
+- [Etiketler oluşturma ve kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+## <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: hassas bilgilerin yetkisiz aktarımını izleme ve engelleme
+
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.4 | 14.4 | Paylaşımlı |
+| 4.3 | 13,3 | Shared |
 
-Geçişteki tüm hassas bilgileri şifreleyin. Azure kaynaklarınıza bağlanan tüm istemcilerin TLS 1,2 veya daha büyük bir anlaşma sağlayabilmesini sağlayın.
+Hassas bilgilerin yetkisiz aktarımını izleyen ve bilgi güvenliği uzmanlarına uyarı ederken bu tür aktarımları engelleyen bir üçüncü taraf çözümünü Azure Marketi 'nden yararlanın.
 
-Mümkün olduğu durumlarda, aktarım sırasında istirahat te şifreleme ve şifreleme için Azure Güvenlik Merkezi önerilerine uyun.
+Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini, müşteri veri kaybına ve pozlamaya karşı hassas ve koruma olarak değerlendirir. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Azure ile aktarım sırasında şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Hassas verileri tanımlamak için etkin bir bulma aracı kullanın
+## <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4,5 | 14.5 | Paylaşımlı |
+| 4.4 | 14,4 | Shared |
 
-Azure'daki özel hizmetiniz için hiçbir özellik yoksa, kurumda veya uzak hizmet sağlayıcısında bulunanlar da dahil olmak üzere kuruluşun teknoloji sistemleri tarafından depolanan, işlenen veya iletilen tüm hassas bilgileri tanımlamak ve kuruluşun hassas bilgi envanterini güncelleştirmek için bir üçüncü taraf etkin bulma aracı kullanın.
+Yoldaki tüm hassas bilgileri şifreleyin. Azure kaynaklarınıza bağlanan tüm istemcilerin TLS 1,2 veya üzerini anlaşamadığından emin olun.
 
-Office 365 belgelerindeki hassas bilgileri tanımlamak için Azure Bilgi Koruması'nı kullanın.
+Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme için kullanın.
 
-Azure SQL Veritabanlarında depolanan bilgilerin sınıflandırılmasına ve etiketlenmesine yardımcı olmak için Azure SQL Bilgi Koruması'nı kullanın.
+- [Azure ile iletim sırasında şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
-- [Azure SQL Veri Bulma nasıl uygulanır?](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+## <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
 
-- [Azure Bilgi Koruması nasıl uygulanır?](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
-
-- [Azure'da müşteri verilerinin korunmasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
-
-## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Kaynaklara erişimi denetlemek için Rol tabanlı erişim denetimini kullanın
-
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.6 | 14.6 | Müşteri |
+| 4,5 | 14,5 | Shared |
 
-Verilere ve kaynaklara erişimi denetlemek için Azure AD RBAC'ı kullanın, aksi takdirde hizmete özel erişim denetim yöntemlerini kullanın.
+Azure 'daki belirli bir hizmet için kullanılabilir bir özellik yoksa, şirket içinde veya uzak bir hizmet sağlayıcısında bulunan ve kuruluşun önemli bilgi envanterini güncelleştiren tüm hassas bilgileri, kuruluşunuzun teknoloji sistemleri tarafından saklanan, işlenen veya aktarılan tüm hassas bilgileri tanımlamak için üçüncü taraf bir etkin bulma aracı kullanın.
 
-- [Azure'da RBAC nasıl yapılandırılmaz?](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+Office 365 belgelerindeki önemli bilgileri tanımlamak için Azure Information Protection kullanın.
 
-## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Erişim denetimini uygulamak için ana bilgisayar tabanlı veri kaybı önlemeyi kullanın
+Azure SQL veritabanlarında depolanan bilgilerin sınıflandırmasına ve etiketlemesine yardımcı olması için Azure SQL Information Protection kullanın.
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+- [Azure SQL veri bulmayı uygulama](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
+
+- [Azure Information Protection uygulama](https://docs.microsoft.com/azure/information-protection/deployment-roadmap)
+
+- [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+
+## <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için rol tabanlı erişim denetimi kullanma
+
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.7 | 14.7 | Paylaşımlı |
+| 4.6 | 14,6 | Müşteri |
 
-Bilgi işlem kaynaklarına uyumluluk için gerekliyse, veriler sistemden kopyalandığında bile verilere erişim denetimlerini zorlamak için otomatik ana bilgisayar tabanlı Veri Kaybı Önleme çözümü gibi bir üçüncü taraf aracı uygulayın.
+Veri ve kaynaklara erişimi denetlemek için Azure AD RBAC kullanın, aksi takdirde hizmete özel erişim denetimi yöntemlerini kullanın.
 
-Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
+- [Azure 'da RBAC 'yi yapılandırma](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
-- [Azure'da müşteri verilerinin korunmasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+## <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
 
-## <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Hassas bilgileri istirahatte şifreleme
-
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.8 | 14.8 | Müşteri |
+| 4,7 | 14,7 | Shared |
 
-Tüm Azure kaynaklarında şifrelemeyi kullanın. Microsoft, Azure'un şifreleme anahtarlarınızı yönetmesine izin vermenizi önerir, ancak bazı durumlarda kendi anahtarlarınızı yönetmeniz seçeneği vardır. 
+İşlem kaynaklarında uyumluluk için gerekliyse, verileri bir sistemden kopyalandıklarında bile verilere erişim denetimlerine zorlamak için otomatik ana bilgisayar tabanlı veri kaybı önleme çözümü gibi bir üçüncü taraf aracı uygulayın.
 
-- [Azure'da dinlenilerde şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Müşteri tarafından yönetilen şifreleme anahtarları nasıl yapılandırılabilen](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+- [Azure 'da müşteri veri korumasını anlama](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Kritik Azure kaynaklarında yapılan değişiklikleri kaydedin ve uyarı
+## <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
-| Azure Kimliği | BDT'ler | Sorumluluk |
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
 |--|--|--|
-| 4.9 | 14.9 | Müşteri |
+| 4,8 | 14,8 | Müşteri |
 
-Kritik Azure kaynaklarında ne zaman değişiklikler yapılacağına dair uyarılar oluşturmak için Azure Etkinlik Günlüğü ile Azure Monitörünü kullanın.
+Tüm Azure kaynaklarında bekleyen şifreleme kullanın. Microsoft, Azure 'un şifreleme anahtarlarınızı yönetmesine izin vermesini önerir, ancak bazı örneklerde kendi anahtarlarınızı yönetmeniz için seçenek vardır. 
 
-- [Azure Etkinlik Günlüğü etkinlikleri için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure 'da bekleyen şifrelemeyi anlama](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+
+- [Müşteri tarafından yönetilen şifreleme anahtarlarını yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+
+## <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
+
+| Azure KIMLIĞI | CIS kimlikleri | Ğuna |
+|--|--|--|
+| 4,9 | 14,9 | Müşteri |
+
+Azure Izleyici 'yi Azure etkinlik günlüğü ile birlikte kullanarak, önemli Azure kaynaklarına yapılan değişikliklerin ne zaman gerçekleştiği hakkında uyarılar oluşturun.
+
+- [Azure etkinlik günlüğü olayları için uyarı oluşturma](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sonraki Güvenlik Denetimine bakın: [Güvenlik Açığı Yönetimi](security-control-vulnerability-management.md)
+- Sonraki güvenlik denetimine bakın: [güvenlik açığı yönetimi](security-control-vulnerability-management.md)

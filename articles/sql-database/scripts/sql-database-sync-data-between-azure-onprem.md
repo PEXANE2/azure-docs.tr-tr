@@ -1,5 +1,5 @@
 ---
-title: PowerShell örnek-SQL Veritabanı ve SQL Server arasında şirket içi eşitleme
+title: PowerShell örneği-şirket içi SQL Server SQL veritabanı ile eşitleme
 description: Azure SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme için Azure PowerShell örnek betiği
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 756bac4b85093013b27b373f6a03461cf9a50f7d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81381186"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell kullanarak bir SQL Veritabanı ile SQL Server şirket içi veritabanı arasında eşitleme
@@ -26,19 +26,19 @@ Bu PowerShell örneği, bir Azure SQL Veritabanı ile SQL Server şirket içi ve
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici AZ PowerShell 1.4.0 veya daha sonra gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici AZ PowerShell 1.4.0 veya üstünü gerektirir. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 SQL Data Sync hizmetine genel bakış için bkz. [Azure SQL Data Sync ile birden fazla bulut ve şirket içi veritabanı arasında veri eşitleme](../sql-database-sync-data.md).
 
 > [!IMPORTANT]
-> Azure SQL Veri Eşitlemesi şu anda Azure SQL Veritabanı Yönetilen Örneği'ni desteklemez.
+> Azure SQL Data Sync Şu anda Azure SQL veritabanı yönetilen örneğini desteklemez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Hub veritabanı olarak AdventureWorksLT örnek veritabanından bir Azure SQL veritabanı oluşturma
+- AdventureWorksLT örnek veritabanından merkez veritabanı olarak bir Azure SQL veritabanı oluşturma
 - Eşitleme veritabanıyla aynı bölgede bir Azure SQL veritabanı oluşturma
-- Üye veritabanı olarak şirket içi BIR SQL Server veritabanı oluşturma
-- Örneği çalıştırmadan önce parametre yer tutucularını güncelleştirme
+- Üye veritabanı olarak şirket içi SQL Server veritabanı oluşturma
+- Örneği çalıştırmadan önce parametre yer tutucularını güncelleştirin
 
 ## <a name="example"></a>Örnek
 
@@ -292,14 +292,14 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-| [Yeni-azsqlsyncagent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Yeni bir Eşitleme Aracısı oluşturur |
-| [Yeni-AzsqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Eşitleme Aracısı ile ilişkili aracı anahtarı oluşturur |
+| [New-AzSqlSyncAgent](/powershell/module/az.sql/New-azSqlSyncAgent) |  Yeni bir Eşitleme Aracısı oluşturur |
+| [New-AzSqlSyncAgentKey](/powershell/module/az.sql/New-azSqlSyncAgentKey) |  Eşitleme Aracısı ile ilişkili aracı anahtarı oluşturur |
 | [Get-AzSqlSyncAgentLinkedDatabase](/powershell/module/az.sql/Get-azSqlSyncAgentLinkedDatabase) |  Eşitleme Aracısına ait tüm bilgileri alır |
-| [Yeni-AzsqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Eşitleme Grubuna yeni bir üye ekler |
-| [Güncelleme-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Veritabanı şema bilgilerini yeniler |
-| [Al-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Veritabanı şema bilgilerini alır |
-| [Güncelleme-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Eşitleme Grubunu güncelleştirir |
-| [Başlangıç-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Bir Eşitlemeyi tetikler |
+| [New-AzSqlSyncMember](/powershell/module/az.sql/New-azSqlSyncMember) |  Eşitleme Grubuna yeni bir üye ekler |
+| [Update-AzSqlSyncSchema](/powershell/module/az.sql/Update-azSqlSyncSchema) |  Veritabanı şema bilgilerini yeniler |
+| [Get-AzSqlSyncSchema](https://docs.microsoft.com/powershell/module/az.sql/Get-azSqlSyncSchema) |  Veritabanı şema bilgilerini alır |
+| [Update-AzSqlSyncGroup](/powershell/module/az.sql/Update-azSqlSyncGroup) |  Eşitleme Grubunu güncelleştirir |
+| [Start-AzSqlSyncGroupSync](/powershell/module/az.sql/Start-azSqlSyncGroupSync) | Bir Eşitlemeyi tetikler |
 | [Get-AzSqlSyncGroupLog](/powershell/module/az.sql/Get-azSqlSyncGroupLog) |  Eşitleme Günlüğünü denetler |
 |||
 
@@ -311,18 +311,18 @@ Ek SQL Veritabanı PowerShell betiği örnekleri [Azure SQL Veritabanı PowerShe
 
 SQL Data Sync hakkında daha fazla bilgi için bkz.:
 
-- Genel Bakış - [Azure SQL Veri Eşitlemi ile verileri birden çok bulut ve şirket içi veritabanları nda eşitleme](../sql-database-sync-data.md)
-- Veri Eşitlemeyi Ayarlama
-    - Portalda - [Öğretici: Azure SQL Veritabanı ve SQL Server arasında verileri şirket içinde eşitlemek için SQL Veri Eşitlemeyi'ni ayarlayın](../sql-database-get-started-sql-data-sync.md)
+- Genel Bakış- [Azure SQL Data Sync ile birden çok bulut ve şirket içi veritabanı arasında veri eşitleme](../sql-database-sync-data.md)
+- Veri eşitlemesini ayarlama
+    - Portalda- [öğreticide, Azure SQL veritabanı ve şirket içi SQL Server arasında veri eşitlemek için SQL Data Sync ayarlama](../sql-database-get-started-sql-data-sync.md)
     - PowerShell ile
         - [PowerShell kullanarak birden çok Azure SQL veritabanı arasında eşitleme](sql-database-sync-data-between-sql-databases.md)
-- Veri Eşitleme Aracısı - [Azure SQL Veri Eşitleme için Veri Eşitleme Aracısı](../sql-database-data-sync-agent.md)
-- En iyi uygulamalar - [Azure SQL Veri Eşitleme için en iyi uygulamalar](../sql-database-best-practices-data-sync.md)
-- Monitör - [Azure Monitor günlükleriyle SQL Veri Eşitlemesini Izleyin](../sql-database-sync-monitor-oms.md)
-- Sorun Giderme - [Azure SQL Veri Eşitleme ile sorun giderme](../sql-database-troubleshoot-data-sync.md)
-- Eşitleme şeasını güncelleştirme
-    - Transact-SQL ile - [Azure SQL Veri Eşitleme'deki şema değişikliklerinin çoğaltılması otomatikleştirin](../sql-database-update-sync-schema.md)
-    - PowerShell ile - [Varolan bir eşitleme grubunda eşitleme şemasını güncellemek için PowerShell'i kullanın](sql-database-sync-update-schema.md)
+- Veri eşitleme Aracısı- [Azure SQL Data Sync Için veri eşitleme Aracısı](../sql-database-data-sync-agent.md)
+- En iyi uygulamalar- [Azure SQL Data Sync Için en iyi yöntemler](../sql-database-best-practices-data-sync.md)
+- İzleyici- [Azure izleyici günlükleri ile izleyici SQL Data Sync](../sql-database-sync-monitor-oms.md)
+- Sorun giderme- [Azure SQL Data Sync sorunlarını giderme](../sql-database-troubleshoot-data-sync.md)
+- Eşitleme şemasını güncelleştirme
+    - Transact-SQL- [Azure SQL Data Sync şema değişikliklerinin çoğaltılmasını otomatikleştirin](../sql-database-update-sync-schema.md)
+    - PowerShell ile- [varolan bir eşitleme grubundaki eşitleme şemasını güncelleştirmek Için PowerShell kullanın](sql-database-sync-update-schema.md)
 
 SQL Veritabanı hakkında daha fazla bilgi için bkz.:
 

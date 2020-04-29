@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Konuşma çevirisi belgeleri
-summary: Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşma-konuşma ve konuşma-metin çevirisini sağlar
+summary: Konuşma hizmetinden konuşma çevirisi, ses akışlarının gerçek zamanlı, çok dilli konuşmadan konuşmaya ve konuşmadan metne çevirisini sağlar
 metadata:
-  title: Konuşma çevirisi belgeleri - Öğreticiler, API Başvuru - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
+  title: Konuşma çevirisi belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 04/13/2020
   ms.author: trbye
   ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401429"
 landingContent:
 - title: Konuşma çevirisi hakkında
@@ -34,11 +34,11 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: Konuşmayı konuşmaya çevirme
       url: quickstarts/translate-speech-to-speech.md
-- title: Konuşma çevirisi ile geliştirin
+- title: Konuşma çevirisi ile geliştirme
   linkLists:
   - linkListType: learn
     links:
-    - text: Konuşmayı gerçek zamanlı olarak çevirin
+    - text: Konuşmayı gerçek zamanlı olarak çevir
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:

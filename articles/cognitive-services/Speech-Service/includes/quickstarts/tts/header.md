@@ -6,15 +6,15 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: trbye
 ms.openlocfilehash: 005cf83508d25e8f44190e07336fbb4e444f8e6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400423"
 ---
-Bu hızlı başlangıçta, metni sentezlenmiş konuşmaya dönüştürmek için [Konuşma SDK'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanırsınız. Metinden konuşmaya hizmet, [metinden konuşmaya dil desteği](../../../language-support.md#text-to-speech)altında sentezlenen sesler için çok sayıda seçenek sunar. Birkaç ön koşulu yerine getirdikten sonra, sentezlenmiş konuşmayı varsayılan konuşmacılara işlemek yalnızca dört adımdan oluşur:
+Bu hızlı başlangıçta, metni sentezleştirilmiş konuşmaya dönüştürmek için [konuşma SDK 'sını](~/articles/cognitive-services/speech-service/speech-sdk.md) kullanacaksınız. Metin okuma hizmeti, birleştirilmiş sesler için [metin okuma dili desteği](../../../language-support.md#text-to-speech)altında çok sayıda seçenek sunar. Birkaç önkoşul karşıladıktan sonra, birleştirilmiş konuşmayı varsayılan hoparlörlere işleme yalnızca dört adım sürer:
 > [!div class="checklist"]
-> * Abonelik `SpeechConfig` anahtarınızdan ve bölgenizden bir nesne oluşturun.
-> * Nesneyi `SpeechSynthesizer` yukarıdan `SpeechConfig` kullanarak bir nesne oluşturun.
-> * Metni `SpeechSynthesizer` konuşmak için nesneyi kullanma.
-> * İade `SpeechSynthesisResult` edilen hataları denetleyin.
+> * Abonelik anahtarınızdan ve bölgenizde bir `SpeechConfig` nesne oluşturun.
+> * Yukarıdaki `SpeechConfig` nesneyi `SpeechSynthesizer` kullanarak bir nesne oluşturun.
+> * Metni konuşmak `SpeechSynthesizer` için nesnesini kullanma.
+> * Hata için `SpeechSynthesisResult` döndürülen ' i kontrol edin.

@@ -1,7 +1,7 @@
 ---
-title: Uzun Ses API (Önizleme) - Konuşma hizmeti
+title: Uzun ses API 'SI (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Uzun Ses API'sinin uzun biçimli metnin konuşmaya eşzamanlı sentezi için nasıl tasarlandığını öğrenin.
+description: Uzun ses API 'sinin zaman uyumsuz senkron metin okuma için nasıl tasarlandığına öğrenin.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,78 +11,78 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
 ms.openlocfilehash: b7cca314ec59e46cf17751b1aec28b5c3ea029ed
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81401069"
 ---
-# <a name="long-audio-api-preview"></a>Uzun Ses API (Önizleme)
+# <a name="long-audio-api-preview"></a>Uzun ses API 'SI (Önizleme)
 
-Uzun Ses API konuşma (örneğin: sesli kitaplar) uzun biçimli metin asynchronous sentezi için tasarlanmıştır. Bu API sentezlenmiş sesi gerçek zamanlı olarak döndürmez, bunun yerine beklenti yanıt(lar) için anket yapacak ve çıktı(lar) hizmetten kullanılabilir hale getirilir gibi tüketmek tir. Konuşma SDK tarafından kullanılan konuşma API metin aksine, Uzun Ses API yayıncılar ve ses içerik platformları için ideal hale, 10 dakikadan daha uzun sentezlenmiş ses oluşturabilirsiniz.
+Uzun ses API 'SI, zaman uyumsuz birleştirme için tasarlanan uzun biçimli metin (örneğin, ses kitapları) için tasarlanmıştır. Bu API gerçek zamanlı olarak birleştirilmiş ses döndürmez, bunun yerine beklentiler, yanıtları yoklayacaksınız ve çıkışta hizmetten kullanılabilir hale getirildiklerinden çıktıyı tüketebilir. Konuşma SDK 'Sı tarafından kullanılan metinden konuşmaya dönüştürme API 'sinin aksine, uzun ses API 'SI 10 dakikadan daha uzun bir şekilde birleştirilmiş ses oluşturabilir ve bu da Yayımcılar ve ses içeriği platformları için idealdir.
 
-Uzun Ses API ek faydaları:
+Uzun ses API 'sinin ek avantajları:
 
-* Hizmet tarafından döndürülen sentezlenmiş konuşma, yüksek doğrulukta ses çıkışları sağlayan sinirsel sesler kullanır.
-* Gerçek zamanlı yanıtlar desteklenmediğinden, sesli bitiş noktası dağıtmaya gerek yoktur.
+* Hizmet tarafından döndürülen sentezleştirilmiş konuşma, yüksek kaliteli ses çıkışları sağlayan sinir seslerini kullanır.
+* Gerçek zamanlı yanıtlar desteklenmediğinden, bir ses uç noktası dağıtmanız gerekmez.
 
 > [!NOTE]
-> Uzun Ses API şimdi sadece [Özel Nöral Ses](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)destekler.
+> Uzun ses API 'SI artık yalnızca [özel sinir sesini](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)destekliyor.
 
 ## <a name="workflow"></a>İş akışı
 
-Genellikle, Uzun Ses API'sini kullanırken, sentezlenecek bir metin dosyası veya dosya gönderirsiniz, durum için anket, sonra durum başarılı olursa, ses çıktısını indirebilirsiniz.
+Genellikle, uzun ses API 'SI kullanılırken, birleştirme için bir metin dosyası ya da dosya gönderir, durum için yoklama yapılır, ardından durum başarılı olursa ses çıkışını indirebilirsiniz.
 
 Bu diyagram, iş akışına üst düzey bir genel bakış sağlar.
 
-![Uzun Ses API iş akışı diyagramı](media/long-audio-api/long-audio-api-workflow.png)
+![Uzun ses API iş akışı diyagramı](media/long-audio-api/long-audio-api-workflow.png)
 
-## <a name="prepare-content-for-synthesis"></a>İçeriği senteze hazırlama
+## <a name="prepare-content-for-synthesis"></a>Birleştirme için içerik hazırlama
 
-Metin dosyanızı hazırlarken aşağıdakileri yapın:
+Metin dosyanızı hazırlarken şunları yaptığınızdan emin olun:
 
-* Düz metin (.txt) veya SSML metni (.txt)
-* [Byte Order Mark (BOM) ile UTF-8](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) olarak kodlanır
-* Tek bir dosya değil, bir zip
-* Düz metin için 400'den fazla karakter veya SSML metni için 400'den fazla [faturalandırılabilir karakter](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) ve 10.000'den az paragraf içerir
-  * Düz metin için her paragraf **Enter/Return** - [Düz metin giriş örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) görüntüle tuşuna basarak ayrılır
-  * SSML metni için her SSML parçası paragraf olarak kabul edilir. SSML parçaları farklı paragraflarla ayrılacak - [SSML metin giriş örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüle
+* Düz metin (. txt) ya da SSML metni (. txt)
+* , [Bayt sıra Işaretiyle UTF-8 olarak kodlanır (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
+* ZIP değil tek bir dosyadır
+* SSML metni için düz metin veya 400 [faturalanabilir karakter](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) için 400 karakterden daha uzun ve 10.000 ' den az paragraf içeriyor
+  * Düz metin için, her paragraf **Enter/Return** -View [düz metin girişi örneğine](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) vurarak ayrılır
+  * SSML metninde her SSML parçası bir paragraf olarak değerlendirilir. SSML parçaları farklı paragraflar ile ayrılmalıdır- [SSML metin girişi örneğini](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) görüntüleyin
 > [!NOTE]
-> Çince (Anakara), Çince (Hong Kong), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
+> Çince (Mainland), Çince (Hong Kong), Çince (Tayvan), Japonca ve Korece için bir sözcük iki karakter olarak sayılır. 
 
-## <a name="submit-synthesis-requests"></a>Sentez istekleri gönderme
+## <a name="submit-synthesis-requests"></a>Sensıs isteklerini gönder
 
-Giriş içeriğini hazırladıktan sonra, isteği göndermek için [uzun biçimli ses sentezini hızlı](https://aka.ms/long-audio-python) bir şekilde takip edin. Birden fazla giriş dosyanız varsa, birden çok istek göndermeniz gerekir. Dikkat edilmesi gereken bazı sınırlamalar vardır: 
-* İstemci, her Azure abonelik hesabı için sunucuya saniyede en fazla 5 istek gönderebilir. Sınırlamayı aşarsa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen istek miktarını saniyede azaltın
-* Sunucunun her Azure abonelik hesabı için 120'ye kadar istek çalışmasına ve sıraya girmesine izin verilir. Sınırlamayı aşarsa, sunucu 429 hata kodu (çok fazla istek) döndürecektir. Lütfen bazı istekler tamamlanana kadar yeni istek göndermeyi bekleyin ve kaçının
-* Sunucu, her Azure abonelik hesabı için en fazla 20.000 istek tutar. Sınırlamayı aşarsa, lütfen yenilerini göndermeden önce bazı istekleri silin
+Giriş içeriği hazırlandıktan sonra, isteği göndermek için [uzun biçimli ses senup hızlı](https://aka.ms/long-audio-python) başlangıcı ' nı izleyin. Birden fazla giriş dosyanız varsa, birden çok istek göndermeniz gerekir. Bilmeniz için bazı sınırlamalar vardır: 
+* İstemcinin her bir Azure abonelik hesabı için saniyede en fazla 5 istek göndermesine izin verilir. Sınırlama aştıysa, istemci 429 hata kodu (çok fazla istek) alır. Lütfen saniye başına istek miktarını azaltın
+* Sunucunun her bir Azure abonelik hesabı için en fazla 120 istek çalıştırmasına ve sıraya alma yapmasına izin verilir. Sınırlama aşıldıysa, sunucu 429 hata kodu (çok fazla istek) döndürür. Lütfen bekleyin ve bazı istekler tamamlanana kadar yeni istek gönderilmesini önleyin
+* Sunucu, her bir Azure aboneliği hesabı için en fazla 20.000 istek tutar. Bu sınırlama aşıldıysa, yeni bir istek göndermeden önce lütfen bazı istekleri silin
 
 ## <a name="audio-output-formats"></a>Ses çıkış biçimleri
 
-Esnek ses çıkış biçimlerini destekliyoruz. Paragraf başına ses çıkışları oluşturabilir veya 'concatenateResult' parametresini ayarlayarak sesleri tek bir çıktıya dönüştürebilirsiniz. Aşağıdaki ses çıkış biçimleri Uzun Ses API'sı tarafından desteklenir:
+Esnek ses çıkışı biçimlerini destekliyoruz. ' ConcatenateResult ' parametresini ayarlayarak, paragraf başına ses çıkışları oluşturabilir veya sesos 'yi bir çıkışa birleştirebilirsiniz. Aşağıdaki ses çıkış biçimleri, uzun ses API 'SI tarafından desteklenir:
 
 > [!NOTE]
-> Varsayılan ses biçimi riff-16khz-16bit-mono-pcm'dir.
+> Varsayılan ses biçimi Riff-16khz-16bit-mono-PCM ' dir.
 
-* riff-8khz-16bit-mono-pcm
-* riff-16khz-16bit-mono-pcm
-* riff-24khz-16bit-mono-pcm
-* riff-48khz-16bit-mono-pcm
-* ses-16khz-32kbitrate-mono-mp3
-* ses-16khz-64kbitrate-mono-mp3
-* ses-16khz-128kbitrate-mono-mp3
-* ses-24khz-48kbitrate-mono-mp3
-* ses-24khz-96kbitrate-mono-mp3
-* ses-24khz-160kbitrate-mono-mp3
+* Riff-8khz-16bit-mono-PCM
+* Riff-16khz-16bit-mono-PCM
+* Riff-24khz-16bit-mono-PCM
+* Riff-48kHz-16bit-mono-PCM
+* Ses-16khz-32K bit hızı-mono-MP3
+* Ses-16khz-64kbit hızı-mono-MP3
+* Ses-16khz-128kbit hızı-mono-MP3
+* Ses-24khz-48kbit hızı-mono-MP3
+* Ses-24khz-96kbit hızı-mono-MP3
+* Ses-24khz-160kbit hızı-mono-MP3
 
-## <a name="quickstarts"></a>Hızlı Başlangıçlar
+## <a name="quickstarts"></a>Hızlı başlangıçlar
 
-Uzun Ses API'sini başarılı bir şekilde çalıştırmanıza yardımcı olmak için tasarlanmış hızlı başlangıçlar sunuyoruz. Bu tablo, dile göre düzenlenen Uzun Ses API hızlı başlatmalarının bir listesini içerir.
+Uzun ses API 'sini başarılı bir şekilde çalıştırmanıza yardımcı olacak hızlı başlangıçlara sunuyoruz. Bu tablo, dile göre düzenlenen uzun ses API 'SI hızlı başlangıçlarını bir listesini içerir.
 
 * [Hızlı başlangıç: Python](https://aka.ms/long-audio-python)
 
 ## <a name="sample-code"></a>Örnek kod
-Uzun Ses API'si için örnek kod GitHub'da mevcuttur.
+Uzun ses API 'sinin örnek kodu GitHub ' da kullanılabilir.
 
 * [Örnek kod: Python](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/Python)
 * [Örnek kod: C #](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/CustomVoice-API-Samples/CSharp)

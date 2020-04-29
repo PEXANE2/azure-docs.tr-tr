@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Desenler - LUIS'
-description: Bu öğreticide daha az örnek açıklama sağlarken, amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimini içeren bir şablon sözcük örneği olarak sağlanır.
+title: 'Öğretici: desenler-LUSıS'
+description: Bu öğreticide daha az örnek Aralık sağlarken amacı ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimi içeren bir şablon söylenişi örneği olarak sağlanır.
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380780"
 ---
-# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: Tahminleri geliştirmek için ortak desen şablonu oluşturma biçimleri ekleyin
+# <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: tahminleri geliştirmek için ortak desen şablonu söylenişi biçimleri ekleme
 
-Bu öğreticide, daha az örnek sözcük sağlamanıza olanak tanıyan niyet ve varlık tahminini artırmak için desenler kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimini içeren bir amaca atanmış bir şablon sözcükbiçimidir.
+Bu öğreticide, daha az örnek elde etmenizi sağlayan amaç ve varlık tahminini artırmak için desenleri kullanın. Bu desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimi içeren bir amaca atanan bir şablon utterine atanır.
 
-**Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Desen oluşturma
@@ -24,40 +24,40 @@ Bu öğreticide, daha az örnek sözcük sağlamanıza olanak tanıyan niyet ve 
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="utterances-in-intent-and-pattern"></a>Niyet ve desen desöyleymeler
+## <a name="utterances-in-intent-and-pattern"></a>Amaç ve desen için söylenme
 
-LUIS uygulamasında depolanan iki tür söyleyiş vardır:
+LUSıS uygulamasında depolanan iki tür utterde vardır:
 
-* Niyet'teki örnek söz
-* Desendeki şablon söyleyinçleri
+* Amaç ile örnek söylenme
+* Desen içindeki şablon utsliği
 
-Şablon sözcüklerini desen olarak eklemek, bir amac için genel olarak daha az örnek sözcük sağlar.
+Şablon utinlerini bir desen olarak eklemek, bir amaca göre daha az örnek elde etmenizi sağlar.
 
-Desen, metin eşleştirme ve makine öğreniminin bir leşimi olarak uygulanır.  Desendeki şablon, niyetteki örnek sözlerle birlikte, LUIS'e hangi söyleyişlerin niyete uyduğunu daha iyi anlamasını sağlar.
+Bir model metin eşleştirme ve makine öğrenmesinin birleşimi olarak uygulanır.  Bu şablon, tarzda verilen örnek söyleyeni sağlar. Bu, bir amaç için ne kadar uygun olduğunu daha iyi anlayabilirsiniz.
 
-## <a name="import-example-app-and-clone-to-new-version"></a>Örnek uygulamayı ve klonunu yeni sürüme aktarma
+## <a name="import-example-app-and-clone-to-new-version"></a>Örnek uygulamayı ve kopyayı yeni sürüme aktar
 
 Aşağıdaki adımları kullanın:
 
-1.  Uygulamayı indirin ve kaydedin [JSON dosyasını.](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)
+1.  [Uygulama json dosyasını](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true)indirip kaydedin.
 
-1. JSON'u [önizleme LUIS portalına](https://preview.luis.ai)yeni bir uygulamaya aktarın. **Uygulamalarım** sayfasında, **konuşma için + Yeni uygulamasını**seçin, ardından **JSON olarak Içe Aktar'ı**seçin. Önceki adımda indirdiğiniz dosyayı seçin.
+1. JSON 'ı [Önizleme Luin portalına](https://preview.luis.ai)yeni bir uygulamaya aktarın. **Uygulamalarım** sayfasında, **konuşma için + yeni uygulama**' yı seçin ve ardından **JSON olarak içeri aktar**' ı seçin. Önceki adımda indirdiğiniz dosyayı seçin.
 
-1. **Sürümler** sekmesinde **Yönet** bölümünden etkin sürümü seçin ve ardından **Klon'u**seçin. Klonlanmış sürümü `patterns`adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
+1. **Yönet** bölümünün **sürümler** sekmesinde etkin sürümü seçin ve ardından **Kopyala**' yı seçin. Kopyalanmış sürümü `patterns`adlandırın. Kopyalama, özgün sürümünüzü etkilemeden farklı LUIS özelliklerini deneyebileceğiniz ideal bir yol sunar. Sürüm adı, URL rotasının bir parçası olarak kullanıldığından ad bir URL'de geçerli olmayan herhangi bir karakter içeremez.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Yeni amaçları ve konuşmalarını oluşturma
 
-İki niyet, yöneticinin veya yöneticinin doğrudan raporlarını, söyleyiş metnine göre bulur. Zorluk iki niyet farklı şeyler _demek_ ama kelimelerin çoğu aynıdır. Sadece sipariş kelimesi farklıdır. Niyetin doğru tahmin edilebilmesi için birçok örnek olması gerekir.
+İki amaç, söylenişi metnine göre yöneticiyi veya yöneticinin doğrudan raporlarını bulur. Zorluk, iki amaç farklı şeyler _anlamına gelmektedir_ ancak sözcüklerin çoğu aynı olur. Yalnızca sözcük sırası farklıdır. Amacın doğru bir şekilde tahmin edilmesi için birçok örnek içermelidir.
 
-1. Gezinti çubuğundan **Oluştur'u** seçin.
+1. Gezinti çubuğundan **Oluştur** ' u seçin.
 
-1. **Niyetler** sayfasında, yeni bir amaç oluşturmak için **+ Oluştur'u** seçin.
+1. Yeni bir amaç oluşturmak için **amaçlar** sayfasında **+ Oluştur** ' u seçin.
 
 1. Açılan iletişim kutusuna `OrgChart-Manager` girip **Done** (Bitti) öğesini seçin.
 
     ![Yeni ileti oluşturma açılır penceresi](media/luis-tutorial-pattern/hr-create-new-intent-popup.png)
 
-1. Amaca örnek konuşmalar ekleyin. Bu söyleyişler _tam olarak_ aynı değildir ama ayıklanabilir bir desen var.
+1. Amaca örnek konuşmalar ekleyin. Bu uttaslar _tam olarak_ benzer değildir ancak ayıklanabilen bir desen vardır.
 
     |Örnek konuşmalar|
     |--|
@@ -71,7 +71,7 @@ Aşağıdaki adımları kullanın:
 
 1. Sol gezinti bölmesinden **Intents** (Amaçlar) öğesini seçin.
 
-1. Yeni bir amaç oluşturmak için **+ Oluştur'u** seçin. Açılan iletişim kutusuna `OrgChart-Reports` girip **Done** (Bitti) öğesini seçin.
+1. Yeni bir amaç oluşturmak için **+ Oluştur** ' u seçin. Açılan iletişim kutusuna `OrgChart-Reports` girip **Done** (Bitti) öğesini seçin.
 
 1. Amaca örnek konuşmalar ekleyin.
 
@@ -87,11 +87,11 @@ Aşağıdaki adımları kullanın:
 
 [!INCLUDE [Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-### <a name="train-the-app-before-testing-or-publishing"></a>Uygulamayı test etmeden veya yayınlamadan önce eğitin
+### <a name="train-the-app-before-testing-or-publishing"></a>Test veya yayımlamadan önce uygulamayı eğitme
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-### <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak için yayımlama
+### <a name="publish-the-app-to-query-from-the-endpoint"></a>Uygulamayı bitiş noktasından sorgulamak üzere yayımlayın
 
 [!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
@@ -99,7 +99,7 @@ Aşağıdaki adımları kullanın:
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adres çubuğundaki URL'nin sonuna gidin _YOUR_QUERY_HERE_ ve YOUR_QUERY_HERE `Who is the boss of Jill Jones?`değiştirin: .
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile değiştirin: `Who is the boss of Jill Jones?`.
 
     ```json
     {
@@ -189,16 +189,16 @@ Aşağıdaki adımları kullanın:
     }
     ```
 
-En iyi iki niyetin puanları yakın ama en yüksek niyet önemli ölçüde yüksek değil (%60'ın üzerinde). ve bir sonraki niyet puanının üzerinde yeterince uzak değil.
+İki üst amaca ait puanlar kapalı, ancak en yüksek amaç önemli ölçüde yüksek değil (%60 üzerinde) ve bir sonraki amaç puanı üzerinde yeterince fazla değil.
 
-LUIS eğitimi her seferinde tam olarak aynı olmadığından (biraz varyasyon vardır), bu en iyi iki puan bir sonraki eğitim döngüsünde tersine çevirebilir. Sonuç olarak yanlış amaç döndürülebilir.
+LUSıS eğitimi her seferinde tam olarak aynı olmadığından (bir dizi değişim vardır), bu en üstteki iki puan sonraki eğitim döngüsünün üzerine çevirebilirsiniz. Sonuç olarak yanlış amaç döndürülebilir.
 
 Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha yüksek ve uzak hale getirmek için desenleri kullanın.
 
 Bu ikinci tarayıcı penceresini açık bırakın. Öğreticinin sonraki bölümlerinde kullanacaksınız.
 
 ## <a name="template-utterances"></a>Konuşma şablonları
-İnsan Kaynakları konu etki alanının doğası nedeniyle, kuruluşlardaki çalışan ilişkileri hakkında birkaç ortak soru yolu vardır. Örneğin:
+Insan kaynakları konu etki alanının doğası gereği, kuruluşlardaki çalışan ilişkilerini sormanın bazı yaygın yolları vardır. Örneğin:
 
 |Konuşmalar|
 |--|
@@ -211,18 +211,18 @@ Bu amaç için bazı konuşma şablonu örnekleri şunlardır:
 
 |Konuşma şablonu örnekleri|söz dizimini anlamı|
 |--|--|
-|`Who does {Employee} report to[?]`|Değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
-|`Who reports to {Employee}[?]`|Değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
+|`Who does {Employee} report to[?]`|değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
+|`Who reports to {Employee}[?]`|değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
 
-`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı `[?]`sözdizimi, işaretleri sözcüklerveya isteğe bağlı [noktalama.](luis-reference-application-settings.md#punctuation-normalization) LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
+`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı sözdizimi, `[?]`, kelime veya [noktalama](luis-reference-application-settings.md#punctuation-normalization) işareti isteğe bağlıdır. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
 
-Sözdizimi normal bir ifade gibi görünse de, normal bir ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
+Sözdizimi bir normal ifade gibi göründüğünden, normal bir ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
 
-Bir örüntün bir söyleyiş ile eşleşebilmesi için, _öncelikle_ sözcük içindeki varlıkların şablon daki varlıklarla eşleşmesi gerekir. Bu, varlıkların desenleri başarılı olmadan önce, varlıkların yüksek derecede tahmin içeren örnek liyatasahip olması anlamına gelir. Ancak şablon varlıkların değil yalnızca amaçların tahmin edilmesine yardımcı olur.
+Bir düzenin bir söylenişi ile eşleşmesi için, _ilk_ olarak, bir desen içindeki varlıkların, şablondaki varlıklarla eşleşmesi gerekir. Bu, varlıkların varlıklar içeren desenler başarılı olmadan önce, büyük bir tahmine sahip bir şekilde daha fazla örneğe sahip olması anlamına gelir. Ancak şablon varlıkların değil yalnızca amaçların tahmin edilmesine yardımcı olur.
 
 **Desenler daha az örnek konuşma sağlamanızı mümkün kılsa da varlıkların algılanmaması durumunda desen eşleşmez.**
 
-### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>OrgChart-Manager amacıyla desenleri ekleyin
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>Kuruluş Yöneticisi amacı için desenler ekleme
 
 1. Üst menüden **Build** (Derle) öğesini seçin.
 
@@ -239,9 +239,9 @@ Bir örüntün bir söyleyiş ile eşleşebilmesi için, _öncelikle_ sözcük i
     |`Who is {Employee}['s] supervisor[?]`|
     |`Who is the boss of {Employee}[?]`|
 
-    Bu şablon söyleyinceleri kıvırcık köşeli ayraç gösterimi ile **Çalışan** varlık içerir.
+    Bu şablon, küme ayracı gösterimine sahip **çalışan** varlığını içerir.
 
-1. Desenler sayfasında yken, **OrgChart-Reports** amacını seçin ve ardından aşağıdaki şablon sözcülerini girin:
+1. Desenler sayfasında, **kuruluş şeması-raporlar** hedefini seçin, sonra aşağıdaki şablon utslerini girin:
 
     |Konuşma şablonları|
     |:--|
@@ -254,13 +254,13 @@ Bir örüntün bir söyleyiş ile eşleşebilmesi için, _öncelikle_ sözcük i
 
 ### <a name="query-endpoint-when-patterns-are-used"></a>Desenler kullanıldığında uç noktayı sorgulama
 
-Artık desenler uygulamaya eklendiklerine göre, tahmin çalışma zamanı bitiş noktasında uygulamayı eğitin, yayınlayın ve sorgulayın.
+Artık desenler uygulamaya eklendiğine göre, uygulamayı tahmin çalışma zamanı uç noktasında eğitin, yayımlar ve sorgular.
 
-1. **Tren'i**seçin. Eğitim tamamlandıktan sonra **Yayımla'yı** seçin ve **Üretim** yuvasını seçin ve **ardından Bitti'yi**seçin.
+1. **Eğitim**' i seçin. Eğitim tamamlandıktan sonra **Yayımla** ' yı seçin ve **Üretim** yuvasını seçin ve **bitti**' yi seçin.
 
-1. Yayımlama tamamlandıktan sonra tarayıcı sekmelerini bitiş noktası URL sekmesine geri değiştirin.
+1. Yayımlama işlemi tamamlandıktan sonra, tarayıcı sekmelerini uç nokta URL 'SI sekmesine geri geçirin.
 
-1. Adres çubuğundaki URL'nin sonuna gidin ve _YOUR_QUERY_HERE_ değiştirin:`Who is the boss of Jill Jones?`
+1. Adres çubuğunda URL 'nin sonuna gidin ve _YOUR_QUERY_HERE_ ile değiştirin:`Who is the boss of Jill Jones?`
 
     ```json
     {
@@ -350,11 +350,11 @@ Artık desenler uygulamaya eklendiklerine göre, tahmin çalışma zamanı biti�
     }
     ```
 
-Niyet tahmini şimdi önemli ölçüde daha güvenli ve sonraki en yüksek niyet puanı önemli ölçüde daha düşüktür. Bu iki niyet antrenman yaparken terlik sürmez.
+Amaç tahmini artık önemli ölçüde daha önemlidir ve bir sonraki en yüksek amaç puanı önemli ölçüde düşüktür. Bu iki amaç, eğitim sırasında-flop ' i çevirmez.
 
 ### <a name="working-with-optional-text-and-prebuilt-entities"></a>İsteğe bağlı metin ve önceden oluşturulmuş varlıklarla çalışma
 
-Bu öğreticinin önceki bölümlerinde kullanılan desen konuşma şablonları s harfinin iyelik olarak kullanılması `'s` ve soru işaretinin kullanılması `?` gibi birkaç isteğe bağlı metin örneğine sahiptir. Söyleyiş metninde geçerli ve gelecekteki tarihlere izin vermeniz gerektiğini varsayalım.
+Bu öğreticinin önceki bölümlerinde kullanılan desen konuşma şablonları s harfinin iyelik olarak kullanılması `'s` ve soru işaretinin kullanılması `?` gibi birkaç isteğe bağlı metin örneğine sahiptir. Söylenişi metninde geçerli ve gelecek tarihlere izin vermeniz gerektiğini varsayalım.
 
 Örnek konuşmalar şunlardır:
 
@@ -365,9 +365,9 @@ Bu öğreticinin önceki bölümlerinde kullanılan desen konuşma şablonları 
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-Bu örneklerin her birinde LUIS'in doğru tahmin yapabilmesi için gerekli olan bir fiil çekimi (`was`, `is`, `will be`) ve tarih (`March 3`, `now` ve `in a month`) bulunmaktadır. Tablodaki son iki örnek dışında hemen hemen aynı `in` `on`metni kullandığına dikkat edin.
+Bu örneklerin her birinde LUIS'in doğru tahmin yapabilmesi için gerekli olan bir fiil çekimi (`was`, `is`, `will be`) ve tarih (`March 3`, `now` ve `in a month`) bulunmaktadır. Tablodaki son iki örneğin `in` ve `on`hariç neredeyse aynı metni kullandığına dikkat edin.
 
-Bu isteğe bağlı bilgilere izin veren örnek şablon belaları:
+Bu isteğe bağlı bilgilere izin veren örnek şablon örnekleri:
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |:--|:--|
@@ -378,11 +378,11 @@ Bu isteğe bağlı bilgilere izin veren örnek şablon belaları:
 Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe bağlı metnin konuşma şablonuna eklenmesini kolaylaştırır, ikinci düzeye kadar iç içe yerleştirilebilir `[[]]` ve varlık ya da metin içerebilir.
 
 
-**Soru: Neden tüm `w` harfler, her şablonda ilk harf, küçük harf? İsteğe bağlı olarak daha büyük veya küçük olmaları gerekmez mi?** İstemci uygulaması tarafından sorgu uç noktasına gönderilen konuşma küçük harfe dönüştürülür. Konuşma şablonu ve uç nokta konuşmasında büyük harf veya küçük harf kullanılabilir. Karşılaştırma her zaman küçük harfe dönüştürme sonrasında gerçekleştirilir.
+**Soru: her bir şablon için `w` ilk harf olan tüm harfler, küçük harflerle neden kullanılır? İsteğe bağlı olarak büyük veya küçük harf olmaması gerekir mi?** İstemci uygulaması tarafından sorgu uç noktasına gönderilen konuşma küçük harfe dönüştürülür. Konuşma şablonu ve uç nokta konuşmasında büyük harf veya küçük harf kullanılabilir. Karşılaştırma her zaman küçük harfe dönüştürme sonrasında gerçekleştirilir.
 
 **Soru: March 3 (Mart 3) hem sayı `3` hem de tarih `March 3` olarak tahmin ediliyorsa konuşma şablonunun sayı bölümü neden önceden oluşturulmuş durumda değil?** Konuşma şablonu tahmini `March 3` olarak doğrudan veya `in a month` çıkarımıyla bağlamsal olarak kullanmaktadır. Tarih, sayı içerebilir ancak her sayı tarih olmayabilir. Her zaman tahmin JSON sonuçlarında döndürülmesini istediğiniz türü en iyi temsil eden varlığını kullanın.
 
-**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyiyi birleştirmek için [grupve veya](#use-the-or-operator-and-groups) fiil-zamanları gruplayabilirsiniz.
+**Soru: `Who will {Employee}['s] manager be on March 3?` gibi zayıf ifadeler nasıl işlenir?** `will` ve `be` ifadelerinin ayrılması gereken bunun gibi dilbilgisi açısından farklı fiil çekimlerinin yeni bir konuşma şablonu halinde ayrılması gerekir. Var olan konuşma şablonu bununla eşleşmez. Konuşmanın amacı değişmiş olmasına rağmen konuşmadaki kelime yerleşimleri değişmemiştir. Bu değişiklik LUIS tahminini etkiler. Bu söyleyleri birleştirmek için [ve veya](#use-the-or-operator-and-groups) fiil-tenslerini gruplandırabilirsiniz.
 
 **Unutmayın: Önce varlıklar bulunur, ardından desen eşleştirilir.**
 
@@ -396,13 +396,13 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
     |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
     |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-2. Uygulamayı eğitmek için navigasyon çubuğundan **Tren'i** seçin.
+2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
-3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin üst kısmındatest'i **seçin.**
+3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin en üstündeki **Test** ' i seçin.
 
 4. Desenin eşleştirildiğini ve amaç puanının oldukça yüksek olduğunu doğrulamak için birkaç test konuşması girin.
 
-    İlk konuşmayı girdikten sonra tüm tahmin sonuçlarını görebilmek için sonucun altındaki **Inspect** (İncele) öğesini seçin. Her söyleyiş **OrgChart-Manager** amacına sahip olmalı ve Çalışan ve datetimeV2 varlıkları için değerleri ayıklamak gerekir.
+    İlk konuşmayı girdikten sonra tüm tahmin sonuçlarını görebilmek için sonucun altındaki **Inspect** (İncele) öğesini seçin. Her bir söylemeye, **kuruluş şeması Yöneticisi** amacına sahip olmalıdır ve çalışanların ve datetimeV2 varlıkların değerlerini ayıklamalıdır.
 
     |İfade|
     |--|
@@ -413,45 +413,45 @@ Söz diziminde isteğe bağlı köşeli parantez `[]` kullanılması isteğe ba�
     |`Who will be Jill Jones manager next Month`|
     |`Who will be Jill Jones manager in a month?`|
 
-Bu konuşmaların tümü varlık bulduğundan aynı desenle eşleşir ve yüksek tahmin puanına sahiptir. Birçok sözcük çeşileçliği yapacak birkaç desen eklediniz. Şablon söyleyişin desende çalışması için herhangi bir örnek söyleyiş eklemenize gerek yoktu.
+Bu konuşmaların tümü varlık bulduğundan aynı desenle eşleşir ve yüksek tahmin puanına sahiptir. Birçok farklı çeşitliliğe uyum sağlayacak birkaç desen eklediniz. Şablonda şablon utinine sahip olmak için herhangi bir örnek ekleme gerekmedi.
 
-Sağlanan desenlerin bu kullanımı:
+Belirtilen desenlerin kullanımı:
 * Daha yüksek tahmin puanları
-* Niyet aynı örnek deyişletitler ile
-* Desen deseni sadece birkaç iyi inşa şablon uyrarak ile
+* Amaç ile aynı örnek,
+* Yalnızca birkaç iyi oluşturulmuş şablon ile birlikte desen
 
-### <a name="use-the-or-operator-and-groups"></a>OR işleci ve gruplarını kullanma
+### <a name="use-the-or-operator-and-groups"></a>OR işlecini ve gruplarını kullanın
 
-Önceki şablon ların bazıları çok yakındır. Şablon söyleyişlerini azaltmak için **grubu** `()` ve **OR** `|` sözdizimini kullanın.
+Önceki şablon dıklıları çok yakın. Şablon uttaslarını azaltmak için **grubunu** `()` ve **veya** `|` sözdizimini kullanın.
 
-Aşağıdaki 2 desen, grup `()` ve OR `|` sözdizimini kullanarak tek bir desende birleşebilir.
+Aşağıdaki 2 desenleri, Grup `()` ve veya `|` söz dizimini kullanarak tek bir desen içinde birleştirilebilir.
 
 |Amaç|İsteğe bağlı metin ve önceden oluşturulmuş varlıklara sahip örnek konuşmalar|
 |--|--|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[in]{datetimeV2}?]`|
 |OrgChart-Manager|`who will be {Employee}['s] manager [[on]{datetimeV2}?]`|
 
-Yeni şablon söyleyiş olacaktır:
+Yeni şablon söylenişi şu şekilde olacaktır:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-Bu, gerekli fiil zaman ve isteğe `on` bağlı `in` ve aralarında bir **veya** boru ile etrafında bir **grup** kullanır.
+Bu, gerekli **group** fiil zaman hali ve isteğe bağlı `in` ve `on` aralarında bir **veya** dikey çizgi etrafında bir grup kullanır.
 
-1. **Desenler** sayfasında **OrgChart-Manager** filtresini seçin. Arayarak `manager`listeyi daralt.
+1. **Desenler** sayfasında, **kuruluş şeması-yönetici** filtresini seçin. Öğesini arayarak listeyi daraltın `manager`.
 
-1. Şablon söyleyinin bir sürümünü tutun (bir sonraki adımda düzenlemek için) ve diğer varyasyonları silin.
+1. Şablonun tek bir sürümünü saklayın (bir sonraki adımda düzenlemek için) ve diğer çeşitlemeleri silin.
 
 1. Konuşma şablonunu şu şekilde değiştirin: 
 
     `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`
 
-2. Uygulamayı eğitmek için navigasyon çubuğundan **Tren'i** seçin.
+2. Uygulamayı eğitebilmeniz için gezinti çubuğunda **eğitme** ' yi seçin.
 
-3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin üst kısmındatest'i **seçin.**
+3. Eğitim tamamlandıktan sonra, test panelini açmak için panelin en üstündeki **Test** ' i seçin.
 
-    Söyleyiş sürümlerini test etmek için Test bölmesini kullanın:
+    Utterance 'in sürümlerini test etmek için test bölmesini kullanın:
 
-    |Test bölmesine girilen söylenmeler|
+    |Test bölmesine girilecek söylenme|
     |--|
     |`Who is Jill Jones manager this month`|
     |`Who is Jill Jones manager on July 5th`|
@@ -460,13 +460,13 @@ Bu, gerekli fiil zaman ve isteğe `on` bağlı `in` ve aralarında bir **veya** 
     |`Who will be Jill Jones manager in a month`|
     |`Who will be Jill Jones manager on July 5th`|
 
-Daha fazla desen sözdizimini kullanarak, uygulamanızda tutmanız gereken şablon sözcük lerinin sayısını azaltırken, yine de yüksek bir tahmin puanına sahip olursunuz.
+Daha fazla desen söz dizimi kullanarak, uygulamanızda saklanması gereken şablon Puanlarınızın sayısını, hala yüksek bir tahmin puanı elde ederek azaltabilirsiniz.
 
-### <a name="use-the-utterance-beginning-and-ending-anchors"></a>Sözcük başlangıç ve bitiş çapalarını kullanma
+### <a name="use-the-utterance-beginning-and-ending-anchors"></a>Söylenişi başlangıç ve bitiş bağlayıcılarını kullanma
 
-Desen sözdizimi, bir bakıcının başlangıç ve bitiş `^`söyleyiş bağlantı sözdizimini sağlar. Başlangıç ve bitiş söyleyiş çapa ları çok özel ve muhtemelen edebi söyleyiyi hedeflemek için birlikte kullanılabilir veya niyetleri hedeflemek için ayrı ayrı kullanılabilir.
+Desen sözdizimi, `^`bir giriş işaretinin başlangıç ve bitiş söylenişi bağlantı sözdizimini sağlar. Başlangıç ve bitiş söylenişi bağlayıcıları, tek özel ve büyük olasılıkla sabit değerli bir şekilde hedeflemek veya hedef amaçlar için ayrı olarak kullanılmak üzere birlikte kullanılabilir.
 
-## <a name="using-patternany-entity"></a>Pattern.any entity'i kullanma
+## <a name="using-patternany-entity"></a>Model kullanma. herhangi bir varlık
 
 pattern.any varlığı, ifade nedeniyle varlığın sonunun konuşmanın geri kalanından ayrılmasının zor olduğu durumlarda serbest biçimli verileri bulmanızı sağlar.
 
@@ -496,29 +496,29 @@ Sözcüklerin uzunluklarının değişmesi, LUIS'in varlığın sonunu belirleme
 |Who authored {FormName}[?] ({FormName} kim yazdı[?])|
 |{FormName} is published in French[?] ({FormName} Fransızca mı yayımlandı[?])|
 
-### <a name="add-example-utterances-with-patternany"></a>Desen ile örnek söyleyinekler ekleyin.any
+### <a name="add-example-utterances-with-patternany"></a>Desen ile örnek ekleme
 
 1. Üst gezinti bölmesinden **Build** (Derle) öğesini, sol gezinti bölmesinden de **Intents** (Amaçlar) öğesini seçin.
 
 1. Amaç listesinden **FindForm** öğesini seçin.
 
-1. Bazı örnek söyleyişler ekleyin. Desen olarak tahmin edilmesi gereken metin.any **kalın**metindedir. Form adını, sözcükteki diğer sözcüklerden belirlemek zordur. Desen.any varlığın sınırlarını işaretleyerek yardımcı olacaktır.
+1. Örnek bir örnek ekleyin. Bir model olarak tahmin edilecek metin. herhangi biri **kalın metinte**. Form adı, çevresindeki diğer sözcüklerden daha kolay bir şekilde belirlenir. . Any, varlığın sınırları işaretlenerek yardımcı olur.
 
     |Örnek konuşma|Form adı|
     |--|--|
-    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Laboratuvarda yangın çıktığında yapılacak işlemler formu nerede ve ben okuduktan sonra kimin imzalaması gerekiyor?)|Laboratuvarda yangın çıktığında ne yapmalı?
-    |Where is **Request relocation from employee new to the company** on the server? (Yeni şirket çalışanı taşınma talep formu sunucuda nerede?)|Yeni çalışandan şirkete taşınma isteği|
-    |Who authored "**Health and wellness requests on the main campus**" and what is the most current version? ("Ana kampüsteki sağlık ve sağlıklı yaşam istekleri"ni kim yazdı ve en güncel sürümü nedir?)|Ana kampüste sağlık ve zindelik talepleri|
-    |I'm looking for the form named "**Office move request including physical assets**". ("Fiziksel eşyalar dahil olmak üzere ofis taşıma isteği" adlı formu arıyorum.) |Fiziksel varlıklar da dahil olmak üzere ofis taşıma isteği|
+    |Where is the form **What to do when a fire breaks out in the Lab** and who needs to sign it after I read it? (Laboratuvarda yangın çıktığında yapılacak işlemler formu nerede ve ben okuduktan sonra kimin imzalaması gerekiyor?)|Bir yangın laboratuvarda kesilse ne yapmalı
+    |Where is **Request relocation from employee new to the company** on the server? (Yeni şirket çalışanı taşınma talep formu sunucuda nerede?)|Şirketten yeni çalışana yeniden konumlandırma isteği|
+    |Who authored "**Health and wellness requests on the main campus**" and what is the most current version? ("Ana kampüsteki sağlık ve sağlıklı yaşam istekleri"ni kim yazdı ve en güncel sürümü nedir?)|Ana kampüs üzerinde sistem durumu ve welllik istekleri|
+    |I'm looking for the form named "**Office move request including physical assets**". ("Fiziksel eşyalar dahil olmak üzere ofis taşıma isteği" adlı formu arıyorum.) |Fiziksel varlıklar dahil Office taşıma isteği|
 
     Form adlarındaki değişik kullanımlar nedeniyle Pattern.any varlığı olmadan LUIS'in form başlığının sonunu belirlemesi zor olacaktır.
 
 ### <a name="create-a-patternany-entity"></a>Pattern.any varlığı oluşturma
-Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Desen sözdizimi ile varlığın başlangıcını ve sonunu işaretlediği için yalnızca bir desende çalışır.
+Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Yalnızca bir düzende çalışarak, model varlığın başlangıcını ve sonunu sözdizimiyle işaret ettiğinden.
 
 1. Sol gezinti panelinden **Entities** (Varlıklar) öğesini seçin.
 
-1. **+ Oluştur**' u `FormName`seçin, adı girin ve **Desen.any'yi** seçin. **Oluştur'u**seçin.
+1. **+ Oluştur**' u seçin, adı `FormName`girin ve **model. herhangi bir** tür olarak seçin. **Oluştur**’u seçin.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>Pattern.any kullanan bir desen ekleme
 
@@ -550,13 +550,13 @@ Pattern.any varlığı farklı uzunluklardaki varlıkları ayıklar. Desen sözd
 
 1. Üst gezinti çubuğundan **Test** düğmesini seçerek test panelini kapatın.
 
-### <a name="using-an-explicit-list"></a>Açık bir liste kullanma
+### <a name="using-an-explicit-list"></a>Açık liste kullanma
 
 Pattern.any içerdiğinde deseninizin varlıkları yanlış ayıkladığını fark ederseniz bu sorunu gidermek için [açık liste](reference-pattern-syntax.md#explicit-lists) kullanın.
 
-## <a name="what-did-this-tutorial-accomplish"></a>Bu öğretici neyi başardı?
+## <a name="what-did-this-tutorial-accomplish"></a>Bu öğretici ne başardı?
 
-Bu öğretici, LUIS'in daha fazla örnek söyleyiş eklemek zorunda kalmadan amacı önemli ölçüde daha yüksek bir puanla tahmin etmelerine yardımcı olacak desenler ekledi. Varlıkları ve yok sayılabilir metinleri işaretlemek LUIS'in deseni daha fazla konuşmaya uygulamasını mümkün hale getirdi.
+Bu öğreticide, LUTO 'ın daha fazla örnek eklemek zorunda kalmadan önemli ölçüde daha yüksek bir puana sahip olma amacını tahmin etmeye yönelik desenler eklenmiştir. Varlıkları ve yok sayılabilir metinleri işaretlemek LUIS'in deseni daha fazla konuşmaya uygulamasını mümkün hale getirdi.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

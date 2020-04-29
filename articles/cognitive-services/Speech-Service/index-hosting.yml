@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Barındırma belgeleri
-summary: Konuşma hizmeti kapsayıcıları, standart veya özelleştirilmiş modelleri kapsayan hem Metinden metne hem de Metinden Konuşmaya senaryolar için kullanılabilir.
+summary: Konuşma hizmeti kapsayıcıları, konuşmadan metne ve metin okuma senaryolarında, standart veya özelleştirilmiş modeller dahil olmak üzere kullanılabilir.
 metadata:
-  title: Hosting belgeleri - Öğreticiler, API Başvuru - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
+  title: Barındırma belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 03/23/2020
   ms.author: trbye
   ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401507"
 landingContent:
 - title: Barındırma hakkında
@@ -32,7 +32,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure Konuşma kaynağı oluşturma
+    - text: Azure konuşma kaynağı oluşturma
       url: get-started.md#new-resource
     - text: Konuşma kapsayıcılarını yapılandırma
       url: speech-container-configuration.md

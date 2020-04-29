@@ -1,6 +1,6 @@
 ---
 title: Geçici tablolar
-description: Synapse SQL havuzunda geçici tabloları kullanmak için, oturum düzeyi geçici tabloların ilkelerini vurgulamak için temel kılavuz.
+description: SYNAPSE SQL havuzunda geçici tabloları kullanmaya yönelik temel kılavuz, oturum düzeyi geçici tablolarının ilkelerini vurgulamalıdır.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,33 @@ ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408038"
 ---
-# <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda geçici tablolar
-Bu makalede, geçici tablolar kullanmak için temel kılavuz içerir ve oturum düzeyi geçici tabloların ilkelerini vurgular. 
+# <a name="temporary-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki geçici tablolar
+Bu makale, geçici tabloları kullanmaya yönelik temel kılavuz içerir ve oturum düzeyi geçici tablolarının ilkelerini vurgular. 
 
-Bu makaledeki bilgileri kullanmak, hem yeniden kullanılabilirliği hem de bakım kolaylığını artırarak kodunuzu modüle etmenize yardımcı olabilir.
+Bu makaledeki bilgilerin kullanılması, kodunuzun kodlarınlığı ve bakım kolaylığını iyileştirmeye yardımcı olabilir.
 
-## <a name="what-are-temporary-tables"></a>Geçici tablolar nedir?
-Geçici tablolar, özellikle ara sonuçların geçici olduğu dönüşüm sırasında verileri işlerken yararlıdır. SQL havuzunda, oturum düzeyinde geçici tablolar bulunur.  
+## <a name="what-are-temporary-tables"></a>Geçici tablolar nelerdir?
+Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL havuzunda, geçici tablolar oturum düzeyinde mevcuttur.  
 
-Geçici tablolar yalnızca oluşturuldukları oturum tarafından görülebilir ve oturum oturumu kapatıldığında otomatik olarak bırakılır.  
+Geçici tablolar yalnızca oluşturuldukları oturum için görünür ve bu oturum kapattığında otomatik olarak bırakılır.  
 
-Geçici tablolar, sonuçları uzak depolama yerine yerel depolama alanına yazıldığından performans avantajı sunar.
+Geçici tablolar, sonuçları uzak depolama yerine yerel olarak yazıldığı için bir performans avantajı sunar.
 
-Geçici tablolar, özellikle ara sonuçların geçici olduğu dönüşüm sırasında verileri işlerken yararlıdır. SQL Analytics ile oturum düzeyinde geçici tablolar bulunur.  Yalnızca oluşturuldukları oturumda görülebilirler. Bu nedenle, oturum oturumu kapatıldığında otomatik olarak bırakılırlar. 
+Geçici tablolar, özellikle de ara sonuçların geçici olduğu dönüştürme sırasında verileri işlerken yararlı olur. SQL Analytics ile, geçici tablolar oturum düzeyinde bulunur.  Bunlar yalnızca oluşturuldukları oturum tarafından görülebilir. Bu nedenle, bu oturum kapattığında otomatik olarak bırakılır. 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL havuzunda geçici tablolar
+## <a name="temporary-tables-in-sql-pool"></a>SQL havuzundaki geçici tablolar
 
-SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel depolama alanına yazıldığından geçici tablolar bir performans avantajı sunar.
+SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak yazıldığı için geçici tablolar bir performans avantajı sunar.
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızı bir `#`.  Örneğin:
+Geçici tablolar, tablo adınızın bir `#`ile önek olarak eklenerek oluşturulur.  Örneğin:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -57,7 +57,7 @@ WITH
 )
 ```
 
-Geçici tablolar da tam `CTAS` olarak aynı yaklaşım kullanılarak oluşturulabilir:
+Geçici tablolar, tam olarak aynı yaklaşımla `CTAS` birlikte kullanılarak da oluşturulabilir:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -98,14 +98,14 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS`güçlü bir komutdur ve işlem günlüğü alanının kullanımında verimli olmanın avantajına sahiptir. 
+> `CTAS`güçlü bir komuttur ve işlem günlüğü alanı kullanımıyla ilgili verimli bir avantajdır. 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>Geçici tabloları bırakma
-Yeni bir oturum oluşturulduğunda, geçici tablo bulunmamalıdır.  
+Yeni bir oturum oluşturulduğunda geçici tabloların olmaması gerekir.  
 
-`CREATE TABLE` İfadelerinizin başarılı olduğundan emin olmak için aynı ada sahip geçici bir yordam oluşturan aynı depolanmış yordamı `DROP` çağırıyorsanız, aşağıdaki örnekte olduğu gibi basit bir ön varoluş denetimi kullanılabilir:
+Aynı adı taşıyan bir geçici oluşturan aynı saklı yordamı arıyorsanız, deyimlerinizin `CREATE TABLE` başarılı olmasını sağlamak için, aşağıdaki örnekte olduğu gibi basit bir ön varlık öncesi denetim `DROP` kullanılabilir:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -114,18 +114,18 @@ BEGIN
 END
 ```
 
-Tutarlılık kodlama için, hem tablolar hem de geçici tablolar için bu deseni kullanmak iyi bir uygulamadır.  Kodunuzda geçici tabloları nisini tamamladığınızda kaldırmak için kullanmak `DROP TABLE` da iyi bir fikirdir.  
+Kodlama tutarlılığı için, bu düzenin hem tablolar hem de geçici tablolar için kullanılması iyi bir uygulamadır.  Ayrıca, kodunuzda bu dosyalarla işiniz bittiğinde geçici `DROP TABLE` tabloları kaldırmak için kullanmanız iyi bir fikirdir.  
 
-Depolanan yordam geliştirmede, bu nesnelerin temizlenmelerini sağlamak için bir yordamın sonunda açılan komutların bir araya geldiğini görmek yaygındır.
+Saklı yordam geliştirmede, bu nesnelerin temizlendiğinden emin olmak için bir yordamın sonunda bırakma komutlarının birlikte paketlenmiştir.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modüler kod
-Geçici tablolar bir kullanıcı oturumunda herhangi bir yerde görülebildiği için, bu özellik uygulama kodunuzu modüle etmenize yardımcı olmak için kullanılabilir.  
+## <a name="modularizing-code"></a>Kodu modüle etme
+Geçici tablolar bir kullanıcı oturumunda herhangi bir yerde görünebileceğinizden, bu özellik uygulama kodunuzu modüler hale getirmenize yardımcı olmak için yararlanılabilir olabilir.  
 
-Örneğin, aşağıdaki saklı yordam, veritabanındaki tüm istatistikleri istatistik adına göre güncelleştirmek için DDL oluşturur:
+Örneğin, aşağıdaki saklı yordam veritabanındaki tüm istatistikleri istatistik adına göre güncelleştirmek için DDL 'yi oluşturur:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -199,13 +199,13 @@ FROM    t1
 GO
 ```
 
-Bu aşamada, gerçekleşen tek eylem, DDL deyimleri ile geçici bir tablo, #stats_ddl oluşturan depolanmış bir yordam oluşturulmasıdır.  
+Bu aşamada, oluşan tek eylem, DDL deyimleriyle #stats_ddl geçici bir tablo oluşturan bir saklı yordamın oluşturulmasına neden olur.  
 
-Bu depolanan yordam, bir oturum içinde birden fazla kez çalıştırılırsa başarısız olmadığından emin olmak için varolan bir #stats_ddl düşürür.  
+Bu saklı yordam, bir oturum içinde birden çok kez çalıştırıldığında başarısız olmamasını sağlamak için mevcut bir #stats_ddl bırakır.  
 
-Ancak, depolanan `DROP TABLE` yordamın sonunda hiçbir şey olmadığından, depolanan yordam tamamlandığında, depolanan yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  
+Bununla birlikte, `DROP TABLE` saklı yordamın sonunda, saklı yordam tamamlandığında, saklı yordamın dışında okunabilmesi için oluşturulan tabloyu bırakır.  
 
-SQL havuzunda, diğer SQL Server veritabanlarından farklı olarak, geçici tabloyu oluşturan yordamın dışında kullanmak mümkündür.  SQL havuzu geçici tabloları oturumun içinde **herhangi bir yerde** kullanılabilir. Bu özellik, aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir kodlara yol açabilir:
+SQL havuzunda, diğer SQL Server veritabanlarının aksine, geçici tabloyu onu oluşturan yordamın dışında kullanmak mümkündür.  SQL havuzu geçici tabloları, oturum içinde **herhangi bir yerde** kullanılabilir. Bu özellik aşağıdaki örnekte olduğu gibi daha modüler ve yönetilebilir koda yol açabilir:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -227,11 +227,11 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>Geçici tablo sınırlamaları
-SQL havuzu geçici tablolar uygularken birkaç sınırlama uygular.  Şu anda, yalnızca oturum kapsamı namına geçici tablolar desteklenir.  Genel Geçici Tablolar desteklenmez.  
+SQL havuzu, geçici tablolar uygularken birkaç sınırlama uygular.  Şu anda yalnızca oturum kapsamlı geçici tablolar desteklenir.  Genel geçici tablolar desteklenmez.  
 
-Ayrıca, geçici tablolarda görünümler oluşturulamaz.  Geçici tablolar yalnızca karma veya yuvarlak robin dağılımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmez. 
+Ayrıca, görünümler geçici tablolarda oluşturulamaz.  Geçici tablolar yalnızca karma veya hepsini bir kez deneme dağıtımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmiyor. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tablo geliştirme hakkında daha fazla bilgi edinmek için [SQL Analytics kaynakları makalesini kullanarak Tasarım tabloları'na](sql-data-warehouse-tables-overview.md) bakın.
+Tablo geliştirme hakkında daha fazla bilgi için [SQL Analytics kaynaklarını kullanarak tabloları tasarlama](sql-data-warehouse-tables-overview.md) makalesine bakın.
 

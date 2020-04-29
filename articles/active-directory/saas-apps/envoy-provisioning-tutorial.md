@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Elçi'yi yapılandırın | Microsoft Dokümanlar"
-description: Azure AD'den Elçi'ye kullanıcı hesaplarını otomatik olarak nasıl sağlayıp geçici olarak sağmayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Envoy yapılandırma | Microsoft Docs'
+description: Azure AD 'den tam olarak Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,166 +16,166 @@ ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 68e17ba1dd5981e565e56d6c8137f77d33ad755b
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393506"
 ---
-# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Elçi'yi yapılandır
+# <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Envoy yapılandırma
 
-Bu öğretici, otomatik kullanıcı sağlamayı yapılandırmak için hem Elçi hem de Azure Etkin Dizin (Azure AD) işlemlerinde gerçekleştirmeniz gereken adımları açıklar. Azure AD, yapılandırıldığınızda, Azure REKLAM Sağlama hizmetini kullanarak kullanıcıları ve grupları [Elçi'ye](https://envoy.com/pricing/) otomatik olarak hükümler ve hükümlerden arındırma sağlar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../manage-apps/user-provisioning.md)bkz. 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Envoy hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti ['ni kullanarak kullanıcıları](https://envoy.com/pricing/) ve grupları otomatik olarak sağlar ve geçersiz hale hazırlar. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../manage-apps/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
-> * Elçi'de kullanıcı oluşturma
-> * Artık erişim gerektirmediklerinde Elçi'deki kullanıcıları kaldırma
-> * Kullanıcı özniteliklerini Azure AD ve Elçi arasında eşitlenmiş tutma
-> * Elçi'de provizyon grupları ve grup üyelikleri
-> * Elçiye [tek oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) (önerilir)
+> * Envoy 'de Kullanıcı oluşturma
+> * Artık erişim gerektirmeyen kullanıcıları kaldır
+> * Kullanıcı özniteliklerinin Azure AD ve Envoy arasında eşitlenmiş olmasını sağlama
+> * Envoy 'de grupları ve grup üyeliklerini sağlama
+> * Envoy için [Çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-tutorial) (önerilir)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Azure AD kiracı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Sağlama yapılandırma [izniyle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) Azure AD'deki bir kullanıcı hesabı (örn. Uygulama Yöneticisi, Bulut Uygulama yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
-* [Bir Elçi kiracı](https://envoy.com/pricing/).
-* Yönetici izinleri olan Elçi'deki bir kullanıcı hesabı.
+* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örn. uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* [Bir Envoy kiracısı](https://envoy.com/pricing/).
+* Yönetici izinlerine sahip bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. Adım. Sağlama dağıtımınızı planlayın
-1. Sağlama [hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
-2. [Kimler in provizyon kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)alınacağını belirleyin.
-3. Azure AD ile Elçi arasında hangi verilerin eşlenere verilen leri [belirleyin.](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 
+1. [Sağlama hizmeti 'nin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)hakkında bilgi edinin.
+2. [Sağlama için kimin kapsam](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)içinde olacağını belirleme.
+3. [Azure AD ve Envoy arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>2. Adım Elçisi Azure AD ile sağlamayı destekleyecek şekilde yapılandırın
+## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>2. Adım Azure AD ile sağlamayı desteklemek için Envoy 'yi yapılandırma
 
-1. Elçi Yönetici [Konsolunuzda](https://dashboard.envoy.com/login)oturum açın. **Entegrasyonlar'a**tıklayın.
+1. [Envoy Yönetici konsolunuza](https://dashboard.envoy.com/login)oturum açın. **Tümleştirmeler**' e tıklayın.
 
-    ![Elçi Entegrasyonları](media/envoy-provisioning-tutorial/envoy01.png)
+    ![Envoy tümleştirmeleri](media/envoy-provisioning-tutorial/envoy01.png)
 
-2. **Microsoft Azure SCIM tümleştirmesi**için **Yükle'yi** tıklatın.
+2. **Microsoft Azure SCIM tümleştirmesi**için **yüklensin** ' e tıklayın.
 
-    ![Elçi Yükleme](media/envoy-provisioning-tutorial/envoy02.png)
+    ![Envoy yüklemesi](media/envoy-provisioning-tutorial/envoy02.png)
 
-3. Tüm kullanıcıları **Eşitle**için **Kaydet'e** tıklayın. 
+3. **Tüm kullanıcıları eşitlemek**için **Kaydet** ' e tıklayın. 
 
-    ![Elçi Kaydet](media/envoy-provisioning-tutorial/envoy03.png)
+    ![Kayıt kaydet](media/envoy-provisioning-tutorial/envoy03.png)
 
-4. **OAUTH TAŞıYıCı belirteci**kopyalayın. Bu değer, Azure portalındaki Elçi uygulamanızın sağlama sekmesinde **Gizli Belirteç** alanına girilir.
+4. **OAUTH TAŞıYıCı belirtecini**kopyalayın. Bu değer, Azure portal, Envoy uygulamanızın sağlama sekmesindeki **gizli belirteç** alanına girilir.
     
-    ![Elçi OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
+    ![Envoy OAUTH](media/envoy-provisioning-tutorial/envoy04.png)
 
-## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Elçi Ekleme
+## <a name="step-3-add-envoy-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Envoy ekleme
 
-Elçi'ye sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden Elçi ekleyin. Daha önce SSO elçisi kurulumu varsa, aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. [Burada](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)galeriden bir uygulama ekleme hakkında daha fazla bilgi edinin. 
+Azure AD Uygulama Galerisi ' nden Zenginy ' i ekleyerek sağlamayı, sağlama işlemini yönetmeye başlayın. Daha önce SSO için Envoy 'yi ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Tedarik kapsamına kimlerde olacağını tanımlama 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım. Sağlama kapsamında kim olacağını tanımlama 
 
-Azure AD sağlama hizmeti, uygulamaya yapılan atamaya ve kullanıcının/ grubun özniteliklerine göre kimin sağlanacak kapsamını kapsamanızı sağlar. Atamaya göre uygulamanız için kimlerin sağlanacak kapsamını seçerseniz, uygulamayı zedelektirler ve kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca kullanıcı nın veya grubun özelliklerine göre kimlerin sağlanacak kapsamını seçerseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
+Azure AD sağlama hizmeti, uygulamaya atamaya ve Kullanıcı/Grup özniteliklerine göre sağlanacak olan kapsamlarına olanak tanır. Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, uygulamayı kullanıcılara ve gruplara atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Yalnızca Kullanıcı veya grubun özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)açıklandığı gibi bir kapsam filtresi kullanabilirsiniz. 
 
-* Kullanıcıları ve grupları Elçi'ye atarken Varsayılan **Erişim**dışında bir rol seçmeniz gerekir. Varsayılan Erişim rolüne sahip kullanıcılar sağlama nın dışında tutulur ve sağlama günlüklerinde etkin bir şekilde hak sahibi olmadığı şeklinde işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolüyse, ek roller eklemek için [uygulama bildirimini](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) güncelleştirebilirsiniz. 
+* Kullanıcıları ve grupları, Envoy 'e atarken **varsayılan erişim**dışında bir rol seçmeniz gerekir. Varsayılan erişim rolüne sahip kullanıcılar sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak işaretlenir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, ek roller eklemek için [uygulama bildirimini güncelleştirebilirsiniz](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-* Küçük başla. Herkese kullanıma başlamadan önce küçük bir kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanmış kullanıcılara ve gruplara ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu denetleyebilirsiniz. Kapsam tüm kullanıcılar ve gruplar için ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
+* Küçük Başlat. Herkese sunulmadan önce küçük bir Kullanıcı ve grup kümesiyle test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak bunu kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)belirtebilirsiniz. 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-envoy"></a>5. Adım. Elçi'ye otomatik kullanıcı sağlama yı yapılandırma 
+## <a name="step-5-configure-automatic-user-provisioning-to-envoy"></a>5. Adım. Otomatik Kullanıcı sağlamasını yapılandırma 
 
-Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak TestApp'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
+Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
-### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Azure AD'deki Elçi için otomatik kullanıcı sağlama yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Azure AD 'de Envoy için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Elçi'yi**seçin.
+2. Uygulamalar listesinde, **Envoy**' yi seçin.
 
-    ![Başvurular listesindeki Elçi bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Envoy bağlantısı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. Yönetici **Kimlik Bilgileri** bölümü `https://app.envoy.com/scim/v2` altında, **Kiracı URL'ye**giriş . **Gizli**Belirteç'te daha önce alınan **OAUTH BEARER TOKEN** değerini girdi. Azure AD'nin Elçi'ye bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Elçi hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünün altında, `https://app.envoy.com/scim/v2` **kiracı URL 'sini**girin. Daha önce **gizli bir belirteçte**ALıNAN **OAUTH taşıyıcı belirteç** değerini girin. Azure AD 'nin Envoy 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Envoy hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-   ![Sağlama](./media/envoy-tutorial/provisioning.png)
+   ![alınıyor](./media/envoy-tutorial/provisioning.png)
 
-6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata olduğunda e-posta bildirimi gönder'i** seçin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+    ![Bildirim e-postası](common/provisioning-notification-email.png)
 
 7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Elçiye Senkronize Et'i**seçin.
+8. **Eşlemeler** bölümü altında, **kullanıcıları Azure Active Directory kullanıcılarla eşitler**' ı seçin.
 
-9. Azure AD'den **Elçi'ye, Öznitelik-Eşleme** bölümünde senkronize edilen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Elçi'deki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. [Eşleşen hedef özniteliği](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Elçi API'sinin bu özniteliğe göre kullanıcıları filtrelemeyi desteklediğinden emin olmanız gerekir. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde Azure AD 'den tam olarak eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Envoy içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, Envoy API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|
    |---|---|
    |userName|Dize|
-   |externalId|Dize|
+   |externalID|Dize|
    |displayName|Dize|
    |başlık|Dize|
-   |e-postalar[yazın eq "iş"].value|Dize|
-   |tercihDil|Dize|
+   |e-postalar [tür EQ "iş"]. değer|Dize|
+   |preferredLanguage|Dize|
    |bölüm|Dize|
-   |adresleri[yazın eq "iş"].ülke|Dize|
-   |adresleri[yazın eq "iş"].yerellik|Dize|
-   |adresleri[yazın eq "iş"].region|Dize|
-   |adresleri[yazın eq "iş"].postalCode|Dize|
-   |adresleri[yazın eq "iş"].biçimlendirilmiş|Dize|
-   |adresleri[yazın eq "iş"].streetAddress|Dize|
-   |name.givenName|Dize|
-   |name.familyName|Dize|
-   |name.formatlı|Dize|
-   |phoneNumbers[eq yazın "mobil"].value|Dize|
-   |phoneNumbers[yazın eq "iş"].value|Dize|
+   |adresler [tür EQ "iş"]. ülke|Dize|
+   |adresler [tür EQ "iş"]. konum|Dize|
+   |adresler [tür EQ "iş"]. bölge|Dize|
+   |adresler [tür EQ "iş"]. PostaKodu|Dize|
+   |adresler [tür EQ "iş"]. biçimlendirildi|Dize|
+   |adresler [tür EQ "Work"]. streetAddress|Dize|
+   |ad.|Dize|
+   |Name. familyName|Dize|
+   |ad. biçimlendirildi|Dize|
+   |phoneNumbers [tür EQ "mobil"]. değer|Dize|
+   |phoneNumbers [tür EQ "iş"]. değer|Dize|
    |yerel ayar|Dize|
 
-10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Elçiye Senkronize**Et'i seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları eşitlemeyi**seçin.
 
-11. Azure AD'den **Atrit-Eşleme** bölümünde Elçi'ye eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için Elçi'deki gruplarla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Envoy ile eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Envoy içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
       |Öznitelik|Tür|
       |---|---|
       |displayName|Dize|
-      |externalId|Dize|
+      |externalID|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
 
-13. Elçi için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
+13. Azure AD sağlama hizmetini Envoy için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
+    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **Kapsam'da** istenen değerleri seçerek Elçi'ye sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama Kapsamı](common/provisioning-scope.png)
+    ![Sağlama kapsamı](common/provisioning-scope.png)
 
-15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
+15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
 
-    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
+    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve grupların ilk eşitleme döngüsünü başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki döngülere göre ilk çevrimin gerçekleşmesi daha uzun sürer. 
+Bu işlem, **Ayarlar** bölümünde **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngü daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki Döngülerde yerine daha uzun sürer. 
 
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-* Hangi kullanıcıların başarılı veya başarısız bir şekilde sağlandığını belirlemek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanma
-* Sağlama döngüsünün durumunu ve tamamlanmasına ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) kontrol edin
-* Sağlama yapılandırması sağlıksız bir durumda gibi görünüyorsa, uygulama karantinaya alınır. Karantina durumları hakkında daha fazla bilgi [için burada.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu öğrenmek için [sağlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) denetleyin
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Buradaki](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)karantina durumları hakkında daha fazla bilgi edinin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../manage-apps/check-status-user-account-provisioning.md)

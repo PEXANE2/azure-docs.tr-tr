@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: LUIS tuşu oluşturma'
+title: 'Hızlı başlangıç: bir LUSıS anahtarı oluşturma'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıçta, luis uygulaması oluşturmayı ve bir anahtar almayı öğreneceksiniz.
+description: Bu hızlı başlangıçta, bir LUO uygulamasının nasıl oluşturulduğunu ve bir anahtarın nasıl alınacağını öğreneceksiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,17 +11,17 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: trbye
 ms.openlocfilehash: df12b51020083489d431d0ebcd7eb506ef97caa2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400843"
 ---
-# <a name="quickstart-getting-a-luis-endpoint-key"></a>Quickstart: LUIS uç noktası anahtarı alma
+# <a name="quickstart-getting-a-luis-endpoint-key"></a>Hızlı başlangıç: bir LUSıS uç noktası anahtarı alma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğundan emin olun:
+Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 * LUIS hesabı. [LUIS portalından](https://www.luis.ai/home) ücretsiz bir hesap alabilirsiniz.
 
@@ -29,34 +29,34 @@ Bu öğreticiye başlamadan önce aşağıdaki öğelere sahip olduğundan emin 
 
 LUIS, konuşmadaki amaçları tanımak için Konuşma hizmetiyle tümleştirilir. Konuşma hizmeti aboneliğine ihtiyacınız yoktur; LUIS yeterlidir.
 
-LUIS üç tür anahtar kullanır:
+LUSıS üç tür anahtar kullanır:
 
 |Anahtar türü|Amaç|
 |--------|-------|
-|Yazma|LUIS uygulamalarını programlı olarak oluşturmanıza ve değiştirmenize olanak tanır|
-|Başlangıç|LUIS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
-|Uç Nokta |Belirli bir LUIS uygulamasına erişimi yetkilendirme|
+|Yazma|LUSıS uygulamalarını programlı bir şekilde oluşturmanızı ve değiştirmenizi sağlar|
+|Başlangıç|LUSıS uygulamanızı yalnızca metin kullanarak test etmenizi sağlar|
+|Uç Nokta |Belirli bir Lua uygulamasına erişim yetkisi verir|
 
-Bu öğretici için uç nokta anahtar türüne ihtiyacınız var. Öğretici, [önceden oluşturulmuş Ev otomasyonu uygulamasını](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlat'ı kullanarak oluşturabileceğiniz örnek Ev Otomasyonu LUIS uygulamasını kullanır. Kendi LUIS uygulamanızı oluşturduysanız, bunun yerine kullanabilirsiniz.
+Bu öğretici için uç nokta anahtar türüne ihtiyacınız vardır. Öğretici, [önceden oluşturulmuş giriş Otomasyonu uygulama](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) hızlı başlangıcı ' nı Izleyerek oluşturabileceğiniz GIRIŞ Otomasyonu Luo uygulaması örneğini kullanır. Kendi bir LUSıS uygulaması oluşturduysanız bunun yerine kullanabilirsiniz.
 
-Bir LUIS uygulaması oluşturduğunuzda, LUIS otomatik olarak bir başlangıç anahtarı oluşturur, böylece uygulamayı metin sorgularını kullanarak test edebilirsiniz. Bu anahtar Konuşma hizmeti tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUIS kaynağı oluşturun ve LUIS uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
+Bir LUSıS uygulaması oluşturduğunuzda, bu uygulamayı metin sorgularını kullanarak test edebilmeniz için, LUSıS otomatik olarak bir başlangıç anahtarı oluşturur. Bu anahtar, konuşma hizmeti tümleştirmesini etkinleştirmez ve bu öğreticiyle çalışmaz. Azure panosunda bir LUSıS kaynağı oluşturun ve bunu LUO uygulamasına atayın. Bu öğretici için ücretsiz abonelik katmanını kullanabilirsiniz.
 
-Azure panosunda LUIS kaynağını oluşturduktan [sonra, LUIS portalına](https://www.luis.ai/home)giriş yapın, **Uygulamalarım** sayfasında uygulamanızı seçin ve ardından uygulamanın **Yönet** sayfasına geçin. Son olarak, kenar çubuğundaki **Anahtarlar ve Uç Noktaları'nı** seçin.
+Azure panosu 'nda LUO kaynağını oluşturduktan sonra, [Halu portalında](https://www.luis.ai/home)oturum açın, **uygulamalarım** sayfasında uygulamanızı seçin, sonra uygulamanın **Yönet** sayfasına geçin. Son olarak, kenar çubuğunda **anahtarlar ve uç noktalar** ' ı seçin.
 
 ![LUIS portalı anahtarları ve uç nokta ayarları](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-endpoints-page.png)
 
-**Anahtarlar ve Bitiş Noktası ayarları** sayfasında:
+**Anahtarlar ve uç nokta ayarları** sayfasında:
 
-1. Kaynaklar ve **Anahtarlar** bölümüne gidin ve **kaynak ata'yı**seçin.
-1. Uygulama iletişim **kutunuza bir anahtar atarken** aşağıdaki değişiklikleri yapın:
+1. Aşağı kaydırarak **kaynaklar ve anahtarlar** bölümüne gidin ve **kaynak ata**' yı seçin.
+1. **Uygulamanıza anahtar ata** iletişim kutusunda aşağıdaki değişiklikleri yapın:
 
-   * **Kiracı**altında, **Microsoft'u**seçin.
-   * **Abonelik Adı**altında, kullanmak istediğiniz LUIS kaynağını içeren Azure aboneliğini seçin.
-   * **Key'in**altında, uygulamayla birlikte kullanmak istediğiniz LUIS kaynağını seçin.
+   * **Kiracı**altında **Microsoft**' u seçin.
+   * **Abonelik adı**bölümünde, kullanmak istediğiniz Luo kaynağını içeren Azure aboneliğini seçin.
+   * **Anahtar**altında uygulamayla birlikte kullanmak istediğiniz Luo kaynağını seçin.
 
    Kısa süre içinde yeni abonelik sayfanın altındaki tabloda görüntülenir.
 
-1. Panoya kopyalamak için anahtarın yanındaki simgeyi seçin. (İstediğiniz anahtarı kullanabilirsiniz.)
+1. Panoya kopyalamak için bir anahtarın yanındaki simgeyi seçin. (İstediğiniz anahtarı kullanabilirsiniz.)
 
 ![LUIS app abonelik anahtarları](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
@@ -64,4 +64,4 @@ Azure panosunda LUIS kaynağını oluşturduktan [sonra, LUIS portalına](https:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Niyetleri Tanıyın](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)
+> [Amaçları tanıma](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

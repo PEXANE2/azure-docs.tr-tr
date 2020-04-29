@@ -1,142 +1,142 @@
 ---
-title: Desen sözdizimi başvurusu - LUIS
-description: Dil Anlama (LUIS) uygulamalarında kullanıcı söyleyişlerinden önemli verileri ayıklamak için varlıklar oluşturun. Çıkarılan veriler istemci uygulaması tarafından kullanılır.
+title: Model sözdizimi başvurusu-LUSıS
+description: Language Understanding (LUSıS) uygulamalarındaki Kullanıcı dıklarından anahtar verileri ayıklamak için varlıklar oluşturun. Ayıklanan veriler, istemci uygulaması tarafından kullanılır.
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
 ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382155"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
 
-Desen sözdizimi bir sözcük için bir şablondur. Şablon, eşleştirmek istediğiniz sözcükleri ve varlıkların yanı sıra göz ardı etmek istediğiniz sözcükleri ve [noktalama işaretlerini](luis-reference-application-settings.md#punctuation-normalization) içermelidir. Bu normal bir ifade **değildir.**
+Desen sözdizimi, utterance için bir şablondur. Şablon, eşleştirmek istediğiniz sözcükler ve varlıkların yanı sıra yoksaymak istediğiniz sözcüklerin ve [noktalama işaretlerini](luis-reference-application-settings.md#punctuation-normalization) içermelidir. Normal bir ifade **değil** .
 
 > [!CAUTION]
-> Desenler yalnızca makinede öğrenilen varlık ebeveynlerini içerir, alt bileşenleri değil.
+> Desenler, alt bileşenleri değil, yalnızca makine tarafından öğrenilen varlık üst öğelerini içerir.
 
-Desenlerdeki varlıklar kıvırcık köşeli `{}`ayraçlarla çevrilidir. Desenler, varlıkları ve rolleri olan varlıkları içerebilir. [Desen.any](luis-concept-entity-types.md#patternany-entity) sadece desenlerde kullanılan bir varlıktır.
+Desenlerdeki varlıklar, `{}`küme ayraçları ile çevrelenmiş. Desenler varlıkları ve rolleri olan varlıkları içerebilir. [Desen. any](luis-concept-entity-types.md#patternany-entity) yalnızca desenlerinde kullanılan bir varlıktır.
 
-Desen sözdizimi aşağıdaki sözdizimini destekler:
+Model sözdizimi aşağıdaki sözdizimini destekler:
 
 |İşlev|Sözdizimi|İç içe geçme düzeyi|Örnek|
 |--|--|--|--|
-|varlık| {}- kıvırcık braketler|2|Form {entity-name} nerede?|
-|isteğe bağlı|[] - kare köşeli ayraçlar<BR><BR>İsteğe bağlı ve gruplandırmanın herhangi bir kombinasyonunun iç içe geçme düzeylerinde 3'ün sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
-|gruplandırma|() - parantez|2|(a \| b)|
-|or| \|- dikey çubuk (boru)<br><br>Bir grupta dikey çubuklarda (Veya) 2 sınırı vardır |-|Form nerede ({form-name-kısa} &#x7c; {form-name-long} &#x7c; {form-number})|
-|söyleyiş başlangıcı ve/veya sonu|^ - caret|-|^söyleyiş başlar<br>söyleyiş yapılır^<br>^tüm söyleyyiş ile {sayı} varlığı^|
+|varlık| {}-süslü ayraçlar|2|{Entity-Name} formu nerede?|
+|isteğe bağlı|[]-köşeli parantezler<BR><BR>Herhangi bir isteğe bağlı ve gruplandırma birleşiminin iç içe geçme düzeylerinde 3 sınırı vardır |2|Soru işareti isteğe bağlıdır [?]|
+|gruplandırma|()-parantez|2|-( \| b)|
+|or| \|-dikey çubuk (kanal)<br><br>Bir gruptaki dikey çubuklar (veya) üzerinde 2 sınırı vardır |-|Burada form ({form-adı-Short} &#x7c; {form-adı-Long} &#x7c; {form-Number})|
+|söylenişi başlangıcı ve/veya bitişi|^-şapka işareti|-|^ söylenişi 'a başla<br>söylenişi tamamlandı ^<br>{Number} varlık ^ ile tüm söylenişi ile tam sabit değer eşleşmesi ^|
 
-## <a name="nesting-syntax-in-patterns"></a>Sözdizimini desenlere yerleştirme
+## <a name="nesting-syntax-in-patterns"></a>Desenlerdeki iç içe sözdizimi
 
-Kare paranteziçeren **isteğe bağlı** sözdizimi iki düzeyiçlenebilir. Örneğin: `[[this]is] a new form`. Bu örnek, aşağıdaki ifadelere izin verir:
+Köşeli parantezler ile **isteğe bağlı** sözdizimi, iç içe iki düzey olabilir. Örneğin: `[[this]is] a new form`. Bu örnek aşağıdaki söyleylerini sağlar:
 
-|İç içe isteğe bağlı söyleyiş örneği|Açıklama|
+|İç içe isteğe bağlı söylenişi örneği|Açıklama|
 |--|--|
-|Bu yeni bir formdur|desendeki tüm sözcükleri eşler|
-|yeni bir formdur|desende dış isteğe bağlı sözcük ve isteğe bağlı olmayan sözcüklerle eşleşir|
-|yeni bir form|sadece gerekli sözcükleri eşler|
+|Bu yeni bir formdur|Düzendeki tüm kelimeleri eşleştirir|
+|Yeni bir form|desenli dış isteğe bağlı sözcük ve isteğe bağlı olmayan sözcüklerden eşleşir|
+|Yeni bir form|yalnızca gerekli kelimeleri eşleştirir|
 
-Parantez içeren **gruplandırma** sözdizimi iki düzey iç içe olabilir. Örneğin: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Bu özellik, üç varlıktan herhangi birinin eşleşmesine izin verir.
+**Gruplama** sözdizimi, parantez ile iç içe iki düzey olabilir. Örneğin: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Bu özellik üç varlığın eşleştirilmesini sağlar.
 
-Entity1, kaynak (Seattle) ve hedef (Kahire) ve Entity 2 gibi rolleri olan bir konumsa, bir liste varlığından (RedWest-C) bilinen bir yapı adıysa, aşağıdaki sözcükler bu desenle eşleşir:
+Entity1, Origin (Seattle) ve hedef (Cairo) gibi rollere sahip bir konum ise ve varlık 2 bir liste varlığındaki bilinen bir bina adı (Redbatı-C) ise, aşağıdaki utterlikler bu düzene eşlenir:
 
-|İç içe gruplandırma söyleyiş örneği|Açıklama|
+|İç içe gruplandırma söylenişi örneği|Açıklama|
 |--|--|
-|RedWest-C|dış gruplandırma varlığıyla eşleşir|
+|Redbatı-C|Dış gruplandırma varlığıyla eşleşir|
 |Seattle|iç gruplandırma varlıklarından biriyle eşleşir|
 |Cairo|iç gruplandırma varlıklarından biriyle eşleşir|
 
-## <a name="nesting-limits-for-groups-with-optional-syntax"></a>İsteğe bağlı sözdizimi olan gruplar için iç içe geçme sınırları
+## <a name="nesting-limits-for-groups-with-optional-syntax"></a>İsteğe bağlı sözdizimi olan gruplar için iç içe sınırları
 
-**İsteğe bağlı** sözdizimi ile **gruplandırma** nın bir birleşimi, 3 iç içe geçme düzeyi sınırına sahiptir.
-
-|İzin Verildi|Örnek|
-|--|--|
-|Evet|( [ ( test1 &#x7c; test2 ) ] &#x7c; test3 )|
-|Hayır|( [ [ test1 ] &#x7c; test2 ] &#x7c; test3 )|
-
-## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Veya sözdizimi olan gruplar için iç içe geçme sınırları
-
-**Or-ing** sözdizimi ile **gruplandırma** nın birleşimi 2 dikey çubuk sınırına sahiptir.
+**İsteğe bağlı** sözdizimine sahip **gruplama** birleşimi 3 iç içe geçme düzeyi sınırına sahiptir.
 
 |İzin Verildi|Örnek|
 |--|--|
-|Evet|( test1 &#x7c; test2 &#x7c; ( test3 &#x7c; test4 ) )|
-|Hayır|( test1 &#x7c; test2 &#x7c; test3 &#x7c; ( test4 &#x7c; test5 ) |
+|Yes|([(test1 &#x7c; test2)] &#x7c; test3)|
+|Hayır|([([test1] &#x7c; test2)] &#x7c; test3)|
 
-## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Desen şablonuna varlık eklemek için sözdizimi
-Desen şablonuna bir varlık eklemek için varlık adını kıvırcık `Who does {Employee} manage?`ayraçlarla çevreleyin.
+## <a name="nesting-limits-for-groups-with-or-ing-syntax"></a>Ya da tabanlı sözdizimi olan gruplar için iç içe sınırları
 
-|Varlıklı desen|
+**OR-ing** sözdizimine sahip **gruplama** birleşimi 2 dikey çubuk sınırına sahiptir.
+
+|İzin Verildi|Örnek|
+|--|--|
+|Yes|(test1 &#x7c; test2 &#x7c; (test3 &#x7c; test4))|
+|Hayır|(test1 &#x7c; test2 &#x7c; test3 &#x7c; (test4 &#x7c; test5)) |
+
+## <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Bir model şablonuna varlık eklemek için sözdizimi
+Model şablonuna bir varlık eklemek için, varlık adını gibi `Who does {Employee} manage?`küme ayraçları ile çevreleyin.
+
+|Varlıkla birlikte|
 |--|
 |`Who does {Employee} manage?`|
 
-## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Desen şablonuna varlık ve rol eklemek için sözdizimi
-Varlık rolü varlık adı `{entity:role}` ile bir üst üste sonra rol adı tarafından gösterilir. Desen şablonuna rolü olan bir varlık eklemek için, varlık adını ve rol `Book a ticket from {Location:Origin} to {Location:Destination}`adını kıvırcık ayraçlarla çevreleyin.
+## <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Bir model şablonuna varlık ve rol eklemek için sözdizimi
+Bir varlık rolü, varlık adının `{entity:role}` ardından iki nokta üst üste, ardından rol adı ile birlikte gösterilir. Model şablonuna bir rol içeren bir varlık eklemek için varlık adı ve rol adını, gibi küme ayraçları ile çevreleyin `Book a ticket from {Location:Origin} to {Location:Destination}`.
 
-|Varlık rolleri ile desen|
+|Varlık rollerine sahip model|
 |--|
 |`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
-## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Desen şablonuna desen eklemek için sözdizimi
-Desen.herhangi bir varlık desene değişen uzunlukta bir varlık eklemenize izin verir. Desen şablonu izli olduğu sürece, desen.herhangi bir uzunluk olabilir.
+## <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Bir model eklemek için sözdizimi. herhangi bir model şablonu
+Model. herhangi bir varlık, düzene farklı uzunlukta bir varlık eklemenize olanak tanır. Model şablonu izlenmedikçe, model. any herhangi bir uzunlukta olabilir.
 
-Desen şablonuna bir **Desen.herhangi** bir varlık eklemek için Desen'i çevreleyin.herhangi bir varlığı kıvırcık ayraçlarla çevreleyin, örneğin `How much does {Booktitle} cost and what format is it available in?`.
+Bir **örüntü. herhangi** bir varlık, model eklemek için, model çevreleyin. gibi küme ayraçları `How much does {Booktitle} cost and what format is it available in?`olan tüm varlıklar.
 
-|Desen ile Desen.herhangi bir varlık|
+|Desenli model. any varlığı|
 |--|
 |`How much does {Booktitle} cost and what format is it available in?`|
 
-|Desendeki kitap başlıkları|
+|Düzendeki kitap başlıkları|
 |--|
-|Ne kadar **bu kitap** maliyeti çalmak ve ne biçimde mevcuttur?|
-|**Maliyet** ne kadar sorulması ve hangi biçimde kullanılabilir?|
-|**Gece-Zaman** maliyeti köpek Meraklı Olay ne kadar ve ne formatta mevcuttur?|
+|**Bu kitabın** maliyeti ne kadar sürer ve hangi biçimi kullanabilir?|
+|Ne kadar çok **sorun** var ve hangi biçimi kullanabilir?|
+|Ne kadar büyük **bir köpek, gece ve ne zaman maliyetinde bir Köpeyı** merak ediyor?|
 
-Kitap başlığının kelimeleri LUIS için kafa karıştırıcı değildir çünkü LUIS kitap başlığının nerede bittiğini bilir.
+Book 'ın, kitap başlığının, bu modele bağlı olarak, kitap başlığının nerede bittiğini öğrendiği için, kitap başlığının kelimeleri LUO 'ya kafa karıştırıcı değildir.
 
 ## <a name="explicit-lists"></a>Açık listeler
 
-aşağıdaki halde özel durumlara izin vermek için yazma API'si aracılığıyla açık bir [liste](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) oluşturun:
+Şunu yaparken özel duruma izin vermek için yazma API 'SI aracılığıyla [açık bir liste](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8) oluşturun:
 
-* Desenin bir [Desen içerir.herhangi](luis-concept-entity-types.md#patternany-entity) bir
-* Ve bu desen sözdizimi, söyleyiş dayalı yanlış bir varlık çıkarma olasılığı sağlar.
+* Düzeniniz bir model içeriyor [. any](luis-concept-entity-types.md#patternany-entity)
+* Bu desen söz dizimi, utterance temelinde yanlış bir varlık ayıklama olasılığının kullanılmasına izin verir.
 
-Örneğin, hem isteğe bağlı sözdizimi `[]`hem de varlık `{}`sözdizimini içeren bir deseniniz olduğunu varsayalım.
+Örneğin, hem isteğe bağlı sözdizimi, `[]`hem de varlık söz `{}`dizimi içeren bir örüntükiz olduğunu ve verileri hatalı bir şekilde ayıkladığınızı varsayalım.
 
-{subject} [from {person}]' hakkında '[bul] e-postasını düşünün.
+[{Person}] ' kaynağından {Subject} [hakkında [bul] e-postasını göz önünde bulundurun.
 
-Aşağıdaki ifadelerde, **özne** ve **kişi** varlığı doğru ve yanlış olarak ayıklanır:
+Aşağıdaki söyleyenlerdeki **Konu** ve **kişi** varlığı doğru ve yanlış bir şekilde ayıklanır:
 
-|İfade|Varlık|Doğru çıkarma|
+|İfade|Varlık|Doğru ayıklama|
 |--|--|:--:|
-|Chris köpekler hakkında e-posta|özne=köpekler<br>kişi=Chris|✔|
-|La Mancha gelen adam hakkında e-posta|özne=adam<br>kişi=La Mancha|X|
+|Chris 'ten gelen köpekler hakkında e-posta|Konu = köpekler<br>kişi = Chris|✔|
+|La Mancha 'den adam hakkında e-posta|Konu = Man<br>kişi = La Mancha|X|
 
-Önceki tabloda, konu (bir `the man from La Mancha` kitap başlığı) olmalıdır, ancak konu `from`isteğe bağlı kelime içerdiğinden, başlık yanlış tahmin edilir.
+Yukarıdaki tabloda, konu `the man from La Mancha` (kitap başlığı) olmalıdır, ancak konu isteğe bağlı kelimeyi `from`içerdiğinden, başlık yanlış tahmin edilir.
 
-Desenin bu özel durumu `the man from la mancha` düzeltmek [için, açık liste için yazma API'sini](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)kullanarak {konu} varlığı için açık bir liste eşleşmesi olarak ekleyin.
+Bu özel durumu düzende onarmak için, `the man from la mancha` [Açık LISTE için yazma API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5ade550bd5b81c209ce2e5a8)'sini kullanarak {Subject} varlığı için açık bir liste eşleşmesi olarak ekleyin.
 
-## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>İsteğe bağlı metni şablon sözcükte işaretlemek için sözdizimi
-Normal ifade kare svesi sözdizimini kullanarak `[]`isteğe bağlı metni sözcükte işaretleyin. İsteğe bağlı metin, yalnızca iki paranteze kadar olan kare köşeli ayraçları iç içe alabilir.
+## <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Bir şablonda isteğe bağlı metni işaretlemek için sözdizimi
+Normal ifade köşeli ayraç söz dizimini kullanarak el ile, yazı içinde isteğe bağlı metni işaretleyin `[]`. İsteğe bağlı metin, köşeli ayraçları yalnızca iki köşeli ayraç içine alabilir.
 
-|İsteğe bağlı metiniçeren desen|Anlamı|
+|İsteğe bağlı metin içeren desenler|Anlamı|
 |--|--|
-|`[find] email about {subject} [from {person}]`|`find`ve `from {person}` isteğe bağlı|
-|'Bana yardım edebilir misin?]|Noktalama işareti isteğe bağlıdır|
+|`[find] email about {subject} [from {person}]`|`find`ve `from {person}` isteğe bağlıdır|
+|' Bana [?] yardımcı olabilir|Noktalama işareti isteğe bağlıdır|
 
-Noktalama işaretleri (`?` `!`, `.`, ) göz ardı edilmelidir ve desenler kare ayraç sözdizimi kullanarak bunları yoksaymanız gerekir.
+Noktalama işaretleri (`?`, `!`, `.`) göz ardı edilmelidir ve desenlerdeki köşeli ayraç söz dizimini kullanarak bunları yok saymanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Desenler hakkında daha fazla bilgi edinin:
 
-* [Desen ekleme](luis-how-to-model-intent-pattern.md)
-* [Desen ekleme nasıl.herhangi bir varlık](luis-how-to-add-entities.md#add-a-patternany-entity)
-* [Örüntü Kavramları](luis-concept-patterns.md)
+* [Desenler ekleme](luis-how-to-model-intent-pattern.md)
+* [Nasıl eklenir. herhangi bir varlık](luis-how-to-add-entities.md#add-a-patternany-entity)
+* [Desenler kavramları](luis-concept-patterns.md)
 
-.json yanıtında [duyguların](luis-reference-prebuilt-sentiment.md) nasıl geri döndüğünü anlayın.
+. JSON yanıtında [yaklaşım nasıl döndürüleceğini](luis-reference-prebuilt-sentiment.md) anlayın.

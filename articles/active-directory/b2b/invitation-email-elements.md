@@ -1,6 +1,6 @@
 ---
-title: B2B davetiye e-postasının öğeleri - Azure Active Directory | Microsoft Dokümanlar
-description: Azure Active Directory B2B işbirliği daveti e-posta şablonu
+title: B2B davetiyesi e-postası öğeleri-Azure Active Directory | Microsoft Docs
+description: Azure Active Directory B2B işbirliği davetiyesi e-posta şablonu
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,86 +13,86 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407205"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği daveti e-postasının öğeleri - Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory
 
-Davet e-postaları, Iş ortaklarını Azure AD'deki B2B işbirliği kullanıcıları olarak gemiye getirmek için önemli bir bileşendir. [B2B işbirliğini kullanarak birini davet etmek için bir e-posta göndermeniz gerekli olmasa](add-user-without-invite.md)da, bunu yapmak kullanıcıya davetinizi kabul edip etmeme konusunda karar vermesi için gereken tüm bilgileri verir. Ayrıca, kaynaklarınıza geri dönmeleri gerektiğinde gelecekte her zaman başvurabilecekleri bir bağlantı da sağlar.
+Davet e-postaları, Azure AD 'de B2B işbirliği kullanıcıları olarak iş ortaklarını panoda getirecek kritik bir bileşendir. [B2B işbirliğiyle birini davet etmek için bir e-posta göndermeniz gerekli olmasa](add-user-without-invite.md)da, bunu yapmanız, kullanıcıya, davetinizi kabul edip etmemeyi öğrenmek için gereken tüm bilgileri verir. Ayrıca, kaynaklara geri dönmeleri gerektiğinde gelecekte her zaman başvurabileceği bir bağlantı sağlar.
 
 ![B2B davet e-postasını gösteren ekran görüntüsü](media/invitation-email-elements/invitation-email.png)
 
 > [!NOTE]
-> Bu yeni e-posta şablonu hala tüm kiracılariçin dışarı haddelenmiş ediliyor, bu nedenle bazı kiracılar hala eski bir tasarım kullanıyor. Mayıs 2020 sonuna kadar, tüm kiracıların davetiyeleri bu şablonu kullanacaktır.
+> Bu yeni e-posta şablonu hala tüm kiracılara alındı, bu nedenle bazı kiracılar hala eski bir tasarım kullanıyor. 2020 Mayıs 'un sonuna kadar tüm kiracılardan davetiye bu şablonu kullanacaktır.
 
-## <a name="explaining-the-email"></a>E-postayı açıklama
+## <a name="explaining-the-email"></a>E-postayı açıklayan
 
-E-postanın birkaç öğesine bakalım, böylece yeteneklerini en iyi nasıl kullanacağınızı biliyorsunuz.
+Özelliklerini kullanmanın en iyi şekilde haberdar olmak için e-postanın birkaç öğesine göz atalım.
 
 ### <a name="subject"></a>Özne
 
-E-postanın konusu aşağıdaki leri izler:
+E-postanın konusu bu düzene uyar:
 
-&lt;kullanıcı&gt; adı, sizi kendi kuruluşlarındaki uygulamalara erişmeye davet etti.
+&lt;Kullanıcı&gt; adı, BT 'yi kuruluşlarındaki uygulamalara erişmeye davet etti.
 
-### <a name="from-address"></a>Adresten
+### <a name="from-address"></a>Kimden adresi
 
-From adresi için LinkedIn benzeri bir desen kullanıyoruz. Bu desen, e-posta , davet invites@microsoft.combaşka bir kuruluştan geliyor olsa da açıkça belirtmelidir. Biçimi: Microsoft Davetiyeler <invites@microsoft.com> veya Microsoft davetleri &lt;kiracı&gt; <invites@microsoft.com>adı adına. 
+Kimden adresi için LinkedIn benzeri bir model kullanıyoruz. Bu düzen, e-postanın kaynağından invites@microsoft.comgeldiğinden, davetin başka bir kuruluştan geldiğinden emin olmak için bunu temizlemelidir. Biçim: Microsoft <invites@microsoft.com> davetleri veya Microsoft davetleri, &lt;TenantName&gt; <invites@microsoft.com>adına. 
 
 ### <a name="reply-to"></a>Yanıtla
 
-Yanıtlayan e-posta, hazır olduğunda davetlinin e-postasına ayarlanır, böylece e-postayı yanıtlamak davetliye bir e-posta gönderir.
+Yanıt e-postası, mevcut olduğunda davet edilen e-postasına ayarlanır, böylece e-postayı yanıtlamak davet eden e-posta gönderir.
 
 ### <a name="phishing-warning"></a>Kimlik avı uyarısı
 
-E-posta, kullanıcıya kimlik avı hakkında kısa bir uyarı yla başlar ve onları yalnızca bekledikleri davetleri kabul etmeleri gerektiği konusunda uyarır. Davet ettiğiniz ortakların davetinize şaşırmayan ve bunu önceden onlara belirtmemenizi sağlamak iyi bir uygulamadır.
+E-posta, kullanıcıya kimlik avı hakkında kısa bir uyarıyla başlar ve yalnızca beklediğiniz davetleri kabul etmeleri gerektiğini uyarır. Davet ettiğiniz iş ortaklarının, sizin tarafınızdan bir süre önce kendisine bahseterek davetiniz tarafından şaşırmayacak olduğundan emin olmak iyi bir uygulamadır.
 
-![E-postadaki kimlik avı uyarısının görüntüsü](media/invitation-email-elements/phishing-warning.png)
+![E-postadaki kimlik avı uyarısı görüntüsü](media/invitation-email-elements/phishing-warning.png)
 
-### <a name="inviters-information"></a>Davetli bilgileri
+### <a name="inviters-information"></a>Davet eden kişinin bilgileri
 
-E-posta, daveteden kişi ve daveti gönderdikleri kuruluş hakkında bilgi içerir. Bu, gönderenin adını ve e-posta adresini ve kuruluşla ilişkili adı ve birincil etki alanını içerir. Tüm bu bilgiler, davetlinin daveti kabul etme konusunda bilinçli bir karar vermesine yardımcı olmalıdır.
+E-posta, davet eden ve daveti gönderdikleri kuruluş hakkındaki bilgileri içerir. Bu, gönderenin adı ve e-posta adresinin yanı sıra kuruluşla ilişkili ad ve birincil etki alanını da içerir. Bu bilgilerin tümü, davetinin daveti kabul etme konusunda bilinçli bir karar vermesini sağlamaya yardımcı olmalıdır.
 
-![Davetlinin e-postadaki bilgilerinin görüntüsü](media/invitation-email-elements/inviters-information.png)
+![E-postadaki davet eden bilgilerin görüntüsü](media/invitation-email-elements/inviters-information.png)
 
 ### <a name="invitation-message"></a>Davet iletisi
 
-Davet eden kişi, [konuk kullanıcıyı dizine, gruba veya uygulamaya davet](add-users-administrator.md) ettiklerinde veya davet [API'sini kullandıklarında](customize-invitation-api.md)davetinin bir parçası olarak bir ileti içeriyorsa, ileti e-postanın ana bölümünde vurgulanır. Ayrıca, davetlinin adı ve profil görüntüsü de dahil. İletinin kendisi bir metin alanıdır, bu nedenle güvenlik nedenleriyle HTML etiketlerini işlemez.
+Davet eden, [bir konuk kullanıcıyı Dizin, Grup veya uygulamaya davet](add-users-administrator.md) ettikleri ya da [davet API 'sini kullandıklarında](customize-invitation-api.md), davetinin bir parçası olarak bir ileti içeriyorsa, ileti e-postanın ana bölümünde vurgulanır. Ayrıca, davet eden kişinin adı ve profil görüntüsü bir tane ayarlandıklarında de bulunur. İletinin kendisi bir metin alanıdır, bu nedenle güvenlik nedenleriyle, HTML etiketlerini işlemez.
 
-![E-postadaki davet iletisinin görüntüsü](media/invitation-email-elements/invitation-message.png)
+![E-postadaki davet iletisi görüntüsü](media/invitation-email-elements/invitation-message.png)
 
-### <a name="accept-button-and-redirect-url"></a>Kabul düğmesini kabul edin ve URL'yi yeniden yönlendirin
+### <a name="accept-button-and-redirect-url"></a>Kabul et düğmesi ve yönlendirme URL 'SI
 
-E-postanın bir sonraki bölümünde, daveti kabul ettikten sonra davetlinin nerede alınacağı hakkında bilgi ve bunu yapmak için bir düğme yer almaktadır.  Gelecekte, davetli her zaman doğrudan kaynaklarınıza dönmek için bu bağlantıyı kullanabilirsiniz.
+E-postanın sonraki bölümü, davetinin daveti kabul ettikten sonra nereye alınacağını öğrenmek için bir düğme içerir.  Gelecekte, davetli bu bağlantıyı, kaynaklarınıza doğrudan geri dönmek için kullanabilir.
 
-![Kabul düğmesinin görüntüsü ve e-postadaki URL'yi yeniden yönlendirme](media/invitation-email-elements/accept-button.png)
+![E-postadaki kabul düğmesi ve yeniden yönlendirme URL 'SI görüntüsü](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>Altbilgi bölümü
 
-Altbilgi, gönderilen davet hakkında daha fazla bilgi içerir. Davetlinin gelecekteki davetlerini engellemesi her zaman bir seçenek vardır. Kuruluş bir [gizlilik bildirimi ayarladıysa,](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)bildirimin bağlantısı burada görüntülenir.  Aksi takdirde, bir not kuruluşun bir gizlilik bildirimi ayarlamadığını gösterir.
+Alt bilgi, gönderilmekte olan davet hakkında daha fazla bilgi içerir. Davetli bir sonraki davetleri engellemek için her zaman bir seçenek vardır. Kuruluş [bir gizlilik bildirimi ayarlandıysa](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area), deyimin bağlantısı burada görüntülenir.  Aksi halde, kuruluşun bir gizlilik bildirimi ayarlayamadığını gösteren bir nottur.
 
 ![E-postadaki altbilgi bölümünün görüntüsü](media/invitation-email-elements/footer-section.png)
  
-## <a name="how-the-language-is-determined"></a>Dil nasıl belirlenir?
+## <a name="how-the-language-is-determined"></a>Dilin nasıl belirlendiği
 
-Davet e-postasında konuk kullanıcıya sunulan dil aşağıdaki ayarlarla belirlenir. Bu ayarlar öncelik sırasına göre listelenir. Ayar yapılandırılmamışsa, listedeki bir sonraki ayar dili belirler.
+Davet e-postasında Konuk kullanıcıya sunulan dil aşağıdaki ayarlara göre belirlenir. Bu ayarlar öncelik sırasına göre listelenir. Bir ayar yapılandırılmamışsa, listedeki bir sonraki ayar dili belirler.
 
-- Davet API'si kullanılırsa [davet edilenUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) nesnesinin **iletiDili** özelliği
--   Konuğun [kullanıcı nesnesinde](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) belirtilen **tercih edilenDil** özelliği
--   Konuk kullanıcının ev kiracısının özelliklerinde ayarlanan **Bildirim dili** (yalnızca Azure AD kiracıları için)
--   Kaynak kiracının özelliklerinde ayarlanan **Bildirim dili**
+- Davet oluşturma API 'SI kullanılıyorsa, [Davettedusermessageınfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) nesnesinin **MessageLanguage** özelliği
+-   Konuğun [Kullanıcı nesnesinde](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) belirtilen **PreferredLanguage** özelliği
+-   Konuk kullanıcının ana kiracının özelliklerinde ayarlanan **bildirim dili** (yalnızca Azure AD kiracılar için)
+-   Kaynak kiracının özelliklerinde ayarlanan **bildirim dili**
 
-Bu ayarların hiçbiri yapılandırılmamışsa, dil varsayılan olarak İngilizce (ABD) olarak tanımlanır.
+Bu ayarlardan hiçbiri yapılandırılmazsa, dil varsayılan olarak Ingilizce (US) olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure AD B2B işbirliği ile ilgili aşağıdaki makalelere bakın:
 
-- [Azure AD B2B işbirliği nedir](what-is-b2b.md)
+- [Azure AD B2B işbirliği nedir?](what-is-b2b.md)
 - [Azure Active Directory yöneticileri B2B işbirliği kullanıcılarını nasıl ekler?](add-users-administrator.md)
 - [Bilgi çalışanları B2B işbirliği kullanıcılarını nasıl ekler?](add-users-information-worker.md)
-- [B2B işbirliği daveti itfa](redemption-experience.md)
-- [B2B işbirliği kullanıcılarını davetsiz ekleme](add-user-without-invite.md)
+- [B2B işbirliği daveti satın alma](redemption-experience.md)
+- [Bir davetiye olmadan B2B işbirliği kullanıcıları ekleyin](add-user-without-invite.md)

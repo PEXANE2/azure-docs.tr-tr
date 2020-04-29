@@ -1,7 +1,7 @@
 ---
-title: Anahtar kelime adlandırma yönergeleri - Konuşma hizmeti
+title: Anahtar sözcük adlandırma yönergeleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Etkili bir anahtar kelime oluşturmak, cihazınızın tutarlı ve doğru bir şekilde yanıt vermesi için hayati önem taşır.
+description: Etkin anahtar sözcük oluşturma, cihazınızın sürekli olarak ve doğru şekilde yanıt vermesini sağlamak için önemlidir.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: c00d27e5e7b7a8d614ce94ea4024b6093669757c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399837"
 ---
-# <a name="guidelines-for-creating-an-effective-keyword"></a>Etkili bir anahtar kelime oluşturma yönergeleri
+# <a name="guidelines-for-creating-an-effective-keyword"></a>Etkin anahtar sözcük oluşturma yönergeleri
 
-Etkili bir anahtar kelime oluşturmak, cihazınızın tutarlı ve doğru bir şekilde yanıt vermesi için hayati önem taşır. Anahtar kelimenizi özelleştirmek, cihazınızı farklılaştırmanın ve markanızı güçlendirmenin etkili bir yoludur. Bu makalede, etkili bir anahtar kelime oluşturmak için bazı yol gösterici ilkeler öğrenirsiniz.
+Etkin anahtar sözcük oluşturma, cihazınızın sürekli olarak ve doğru şekilde yanıt vermesini sağlamak için önemlidir. Anahtar keliinizi özelleştirmek, cihazınızı ayırt etmenin ve markanızı güçlendirmenin etkili bir yoludur. Bu makalede, etkin anahtar sözcük oluşturmak için bazı temel ilkeler öğrenirsiniz.
 
-## <a name="choose-an-effective-keyword"></a>Etkili bir anahtar kelime seçin
+## <a name="choose-an-effective-keyword"></a>Etkin bir anahtar sözcük seçin
 
-Bir anahtar kelime seçerken aşağıdaki yönergeleri göz önünde bulundurun:
+Bir anahtar sözcük seçerken aşağıdaki yönergeleri göz önünde bulundurun:
 
 > [!div class="checklist"]
-> * Anahtar kelimeniz İngilizce bir sözcük veya tümcecik olmalıdır.
-> * Bunu söylemek iki saniyeden fazla sürmez.
-> * 4 ile 7 hecekelimeleri en iyi şekilde çalışır. Örneğin, "Hey, Bilgisayar" iyi bir anahtar kelimedir. Sadece "Hey" zavallı bir tane.
-> * Anahtar kelimeler yaygın İngilizce telaffuz kurallarına uymalıdır.
-> * Ortak İngilizce telaffuz kurallarına uyan benzersiz veya hatta uydurma bir sözcük yanlış pozitifliği azaltabilir. Örneğin, "computerama" iyi bir anahtar kelime olabilir.
-> * Ortak bir sözcük seçmeyin. Örneğin, "yemek" ve "gitmek" insanların sıradan konuşmasık sık söylediği kelimelerdir. Bunlar cihazınız için yanlış tetikleyiciler olabilir.
-> * Alternatif telaffuzları olabilecek bir anahtar kelime kullanmaktan kaçının. Kullanıcıların cihazlarının yanıt vermesi için "doğru" telaffuzunu bilmeleri gerekir. Örneğin, "509" "beş sıfır dokuz", "beş oh dokuz" veya "beş yüz dokuz" olarak telaffuz edilebilir. "R.E.I." "r-e-i" veya "Ray" olarak telaffuz edilebilir. "Live" "/līv/" veya "/liv/" olarak telaffuz edilebilir.
-> * Özel karakterler, semboller veya basamaklar kullanmayın. Örneğin, "Go#" ve "20 + cats" sorunlu anahtar kelimeler olabilir. Ancak, "keskin gitmek" veya "yirmi artı kedi" işe yarayabilir. Markanızdaki sembolleri kullanmaya devam edebilir ve uygun telaffuzu güçlendirmek için pazarlama ve belgeleri kullanabilirsiniz.
+> * Anahtar kelimelisiniz Ingilizce bir sözcük veya tümcecik olmalıdır.
+> * İki saniyeden daha uzun sürmemelidir.
+> * 4 ile 7 hece hecelere en iyi şekilde çalışan sözcükler. Örneğin, "Hey, Computer" iyi bir anahtar sözcüktür. Yalnızca "Hey" kötü bir alışkanlıktır.
+> * Anahtar sözcükler, yaygın Ingilizce Söyleniş kurallarını izlemelidir.
+> * Yaygın Ingilizce telaffuz kuralları takip eden, benzersiz veya hatta oluşturulmuş bir sözcük, hatalı pozitif sonuçları düşürebilir. Örneğin, "computerama" iyi bir anahtar sözcük olabilir.
+> * Ortak bir sözcük seçemezsiniz. Örneğin, "yemek" ve "Go", insanların normal konuşmada sıkça söyledikleri sözcüklerdir. Cihazınız için yanlış Tetikleyiciler olabilir.
+> * Alternatif söylenişleri olabilecek bir anahtar sözcük kullanmaktan kaçının. Kullanıcıların, cihazlarını yanıt vermesini sağlamak için "sağ" söylenişini bilmeleri gerekir. Örneğin, "509", "5 0 9", "5 0 9" veya "509" olarak kullanılabilir. "R.E.I." "r-e-i" veya "Ray" olarak kullanılabilir. "Canlı", "/līv/" veya "/Liv/" ile yapılabilir.
+> * Özel karakterler, semboller veya basamaklar kullanmayın. Örneğin, "Go #" ve "20 + kediler" sorunlu anahtar sözcüklerdir. Bununla birlikte, "keskin" veya "yirmi Plus kediler" işe devam edebilir. Markanızdaki sembolleri kullanmaya devam edebilir ve uygun telaffuz zorlamak için pazarlama ve belgeleri kullanabilirsiniz.
 
 > [!NOTE]
-> Anahtar kelimeniz olarak ticari markalı bir sözcük seçerseniz, söz sahibinin sahibi olduğunuzdan veya ticari marka sahibinden bu kelimeyi kullanmak için izin aldığınızdan emin olun. Microsoft, seçtiğiniz anahtar kelimeden kaynaklanabilir herhangi bir yasal sorundan sorumlu değildir.
+> Anahtar kelime olarak bir trademarked sözcüğü seçerseniz, bu ticari marka sahibi olduğunuzdan veya ticari marka sahibinden, kelimeyi kullanmak için izninizin olduğundan emin olun. Microsoft, sizin tercih ettiğiniz anahtar kelimeden çıkabilecek herhangi bir yasal sorun için tabi değildir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Speech Studio'u kullanarak özel bir anahtar kelimeoluşturmayı](speech-devices-sdk-create-kws.md)öğrenin.
+[Konuşma Studio kullanarak özel bir anahtar sözcük oluşturmayı](speech-devices-sdk-create-kws.md)öğrenin.

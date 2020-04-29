@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Konuşma senaryoları belgeleri
-summary: Çeşitli konuşma senaryolarını keşfedin. Toplantı senaryolarında Konuşma Transkripsiyon'u veya Çok cihazlı Konuşma'yı ve Çağrı Merkezi senaryolarında transkripsiyon kullanmayı öğrenin.
+summary: Çeşitli konuşma senaryolarını inceleyin. Toplantı senaryolarında konuşma dökümünü veya çok cihazlı konuşmayı kullanmayı ve çağrı merkezi senaryolarında bir dökümü kullanmayı öğrenin.
 metadata:
-  title: Konuşma senaryoları dokümantasyonu - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
+  title: Konuşma senaryoları belgeleri-öğreticiler, API başvurusu-Azure bilişsel hizmetler | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,35 +12,35 @@ metadata:
   ms.date: 03/16/2020
   ms.author: trbye
   ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401474"
 landingContent:
-- title: Konuşma Transkripsiyon hakkında (toplantı senaryosu)
+- title: Konuşma dökümü hakkında (Toplantı senaryosu)
   linkLists:
   - linkListType: overview
     links:
-    - text: Toplantılarda Konuşma Transkripsiyonu Nedir?
+    - text: Toplantılarda konuşma dökümü nedir?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Gerçek zamanlı Konuşma Transkripsiyonu
+    - text: Gerçek zamanlı konuşma dökümü
       url: how-to-use-conversation-transcription.md
     - text: Zaman uyumsuz Konuşma Transkripsiyonu
       url: how-to-async-conversation-transcription.md
-- title: Çok aygıtlı Konuşma Hakkında (toplantı senaryosu)
+- title: Çok cihazlı konuşma hakkında (Toplantı senaryosu)
   linkLists:
   - linkListType: overview
     links:
-    - text: Çoklu Cihaz Konuşma nedir?
+    - text: Çok cihazlı konuşma nedir?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Sohbet başlatma ve sohbete katılma
       url: quickstarts/multi-device-conversation.md
-- title: Çağrı Merkezi Transkripsiyonu (özel/aracı senaryosu)
+- title: Çağrı merkezi dökümü (özel/aracı senaryosu)
   linkLists:
   - linkListType: overview
     links:
@@ -50,9 +50,9 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Konuşma Transkripsiyon dil desteği
+    - text: Konuşma dökümü dil desteği
       url: conversation-transcription.md#language-support
     - text: Çok cihazlı konuşma dili desteği
       url: multi-device-conversation.md#language-support
-    - text: Konuşma transkripsiyon fiyatlandırması
+    - text: Konuşma dökümü fiyatlandırması
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400813"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
@@ -16,20 +16,20 @@ ms.locfileid: "81400813"
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * Ses çekimi için mikrofona erişebildiğinizden emin olun
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
+İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
-1. Görsel **Stüdyo 2019'u**başlatın.
-2. Projenizi yükleyin ve *Program.cs*açın.
+1. **Visual Studio 2019**' i başlatın.
+2. Projenizi yükleyin ve *program.cs*açın.
 
 ## <a name="source-code"></a>Kaynak kod
 
-*Program.cs* dosyasının içeriğini aşağıdaki C# koduyla değiştirin.
+*Program.cs* dosyasının Içeriğini aşağıdaki C# kodu ile değiştirin.
 
 ```csharp
 using System;
@@ -91,11 +91,11 @@ namespace Speech.Recognition
 
 ## <a name="build-and-run-app"></a>Uygulama oluşturma ve çalıştırma
 
-Artık uygulamanızı yeniden oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanıma işlevini test etmeye hazırsınız.
+Artık uygulamanızı yeniden oluşturmaya ve konuşma tanıma işlevini konuşma hizmetini kullanarak test etmeye hazır olursunuz.
 
-1. **Kodu derle** - Visual Studio'nun menü çubuğundan **Build** > **Build Solution'ı**seçin.
-2. **Uygulamanızı başlatın** - Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya <kbd>F5 tuşuna</kbd>basın.
-3. **Tanımayı başlatın** - İngilizce bir ifade konuşmanızı ister. Konuşmanız Konuşma hizmetine gönderilir, metin olarak yazılır ve konsolda işlenir.
+1. **Kodu derleyin** -Visual Studio menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
+2. **Uygulamanızı başlatın** -menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya <kbd>F5</kbd>tuşuna basın.
+3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

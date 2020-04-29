@@ -1,77 +1,77 @@
 ---
-title: Tahmin puanları - LUIS
-description: Tahmin puanı, luis API hizmetinin kullanıcı nın söyleyiş lerine dayalı tahmin sonuçları için sahip olduğu güven derecesini gösterir.
+title: Tahmin puanları-LUO
+description: Tahmin puanı, LUSıS API hizmeti 'nin, Kullanıcı utanına bağlı olarak tahmin sonuçları için sahip olduğunu gösterir.
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382372"
 ---
-# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu gösterir
+# <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu belirtir
 
-Tahmin puanı, LUIS'in kullanıcı söyleyiş lerinin tahmin sonuçları için sahip olduğu güven derecesini gösterir.
+Bir tahmin puanı, bir Kullanıcı aracının tahmin sonuçlarına güvenirlik derecesi olduğunu gösterir.
 
-Tahmin puanı sıfır (0) ile bir (1) arasındadır. Luis skoruna bir örnek 0.99'dur. Düşük güven puanına örnek olarak 0,01'dir.
+Tahmin puanı sıfır (0) ile bir (1) arasındadır. Son derece iyi bir Lune puanı 0,99 ' dir. Düşük güvenilirliğe sahip bir örnek 0,01 ' dir.
 
 |Puan değeri|Güvenilirlik|
 |--|--|
-|1|kesin maç|
-|0.99|yüksek güven|
-|0.01|düşük güven|
-|0|eşleşmek için kesin başarısızlık|
+|1|kesin eşleşme|
+|0.99|yüksek güvenirlik|
+|0,01|düşük güvenilirlik|
+|0|eşleşmeyen kesin hata|
 
-## <a name="top-scoring-intent"></a>En çok puan lama niyeti
+## <a name="top-scoring-intent"></a>En iyi Puanlama hedefi
 
-Her söyleyiş tahmini bir üst puanlama niyet döndürür. Bu tahmin, tahmin puanlarının sayısal bir karşılaştırmasIdır.
+Her söylenişi tahmini, bir en yüksek puan hedefi döndürür. Bu tahmin, tahmin puanlarının sayısal bir karşılaştırmasına sahiptir.
 
-## <a name="proximity-of-scores-to-each-other"></a>Puanların birbirine yakınlığı
+## <a name="proximity-of-scores-to-each-other"></a>Puanlarının birbirlerine yakınlığı
 
-En iyi 2 puan aralarında çok küçük bir fark olabilir. LUIS, en yüksek skoru geri almaktan başka bir yakınlık göstermiyor.
+İlk 2 puan aralarında çok küçük bir fark olabilir. LUO, en üst puanı döndürmekten başka bir yakınlık göstermez.
 
-## <a name="return-prediction-score-for-all-intents"></a>Tüm niyetler için tahmin puanını iade etme
+## <a name="return-prediction-score-for-all-intents"></a>Tüm amaçlar için dönüş tahmini puanı
 
-Bir test veya bitiş noktası sonucu tüm amaçları içerebilir. Bu yapılandırma, doğru querystring adı/değer çifti kullanılarak bitiş noktasına ayarlanır.
+Bir test veya uç nokta sonucu, tüm amaçları içerebilir. Bu yapılandırma, doğru QueryString ad/değer çiftini kullanarak bitiş noktasında ayarlanır.
 
-|Tahmin API'si|Querystring adı|
+|Tahmin API'si|QueryString adı|
 |--|--|
-|V3|`show-all-intents=true`|
+|Yüklemesinde|`show-all-intents=true`|
 |V2|`verbose=true`|
 
-## <a name="review-intents-with-similar-scores"></a>Benzer puanlarla niyetleri gözden geçirme
+## <a name="review-intents-with-similar-scores"></a>Benzer puanları olan amaçları gözden geçirme
 
-Tüm niyetler için puanı gözden geçirmek, yalnızca doğru niyetin tanımlanmasının değil, aynı zamanda bir sonraki tanımlanan niyetin puanının, sözcük için önemli ölçüde ve tutarlı bir şekilde daha düşük olduğunu doğrulamak için iyi bir yoldur.
+Tüm amaçlar için puanı gözden geçirmek, yalnızca doğru bir amaç olduğunu doğrulamak için iyi bir yoldur, ancak bir sonraki tanımlanan amaç puanı, önemli ölçüde ve sürekli olarak daha düşüktür.
 
-Birden çok niyet, bir söyleyiş bağlamına bağlı olarak yakın tahmin puanlarına sahipse, LUIS niyetler arasında geçiş yapabilir. Bu durumu düzeltmek için, her niyete daha geniş bir bağlamsal farklılık yelpazesiyle söz eklemeye devam edin veya sohbet botu gibi istemci uygulamasının 2 üst amacın nasıl işleyeceğiniz hakkında programlı seçimler yapması nasıI olabilir.
+Birden çok amaç, bir utterance içeriğine göre kapalı tahmin puanlarına sahip ise, LUYA amaçları arasında geçiş gösterebilir. Bu durumu onarmak için, her bir amaca göre her bir amaca uygun olarak daha fazla bağlamsal farklılıklar eklemeye devam edin veya bir sohbet bot gibi istemci uygulamasına, 2 üst amaçların nasıl işleneceği hakkında programlama seçenekleri elde edebilirsiniz.
 
-Çok yakından puanlanan 2 niyet, **non-deterministic eğitim**nedeniyle ters olabilir. En yüksek puan ikinci üst, ikinci üst skor ise ilk en yüksek puan olabilir. Bu durumu önlemek için, 2 niyeti farklılaştıran kelime seçimi ve bağlam ile bu söyleyiş için en iyi iki niyetin her birine örnek ifadeler ekleyin. İki niyet, aynı sayıda örnek söze sahip olmalıdır. Eğitim nedeniyle ters liği önlemek için ayrılık için başparmak kuralı, puanlar% 15 fark.
+Çok yakın puanlanmış 2 amaç, **belirleyici olmayan eğitim**nedeniyle ters çıkabilir. En üstteki puan ikinci üst ve ikinci en üst puanı ilk en iyi puan haline gelebilir. Bu durumu engellemek için, 2 amaçlarını kapsayan sözcük seçimi ve bağlamı ile bu söylik için en üst iki amaç için her birine örnek ekleyin. İki amaç aynı sayıda örnek ile aynı olmalıdır. Bir parmak izi, eğitim nedeniyle insürüme engel olmak için bir Thumb kuralı, puanlar %15 farkındır.
 
-[Tüm verilerle eğitim](luis-how-to-train.md#train-with-all-data)vererek **deterministik olmayan eğitimi** kapatabilirsiniz.
+**Belirleyici olmayan eğitimi** [tüm verilerle birlikte eğitime](luis-how-to-train.md#train-with-all-data)dönüştürebilirsiniz.
 
-## <a name="differences-with-predictions-between-different-training-sessions"></a>Farklı eğitim oturumları arasındaki öngörülerle arasındaki farklar
+## <a name="differences-with-predictions-between-different-training-sessions"></a>Farklı eğitim oturumları arasındaki tahminlerle ilgili farklılıklar
 
-Aynı modeli farklı bir uygulamada eğittiyseniz ve puanlar aynı olmadığında, bu fark **deterministik olmayan bir eğitim** (rastgelelik öğesi) olmasıdır. İkinci olarak, birden fazla niyet için bir söyleyiş herhangi bir örtüşme aynı söyleyiş için üst niyet eğitime dayalı olarak değişebilir anlamına gelir.
+Aynı modeli farklı bir uygulamada eğitedığınızda ve puanlar aynı değilse, bu fark, **belirleyici olmayan bir eğitim** (rastgele bir öğe) olmasından kaynaklanır. İkinci olarak, bir aradan daha fazla hedefe kadar tüm çakışmalar, eğitime göre değişiklik gösterir.
 
-Sohbet botunuzun bir niyete olan güvenini göstermek için belirli bir LUIS puanı gerekiyorsa, en iyi iki amaç arasındaki puan farkını kullanmalısınız. Bu durum eğitim varyasyonları için esneklik sağlar.
+Sohbet botunuz, bir amaç için güvenilirliği belirtmek üzere belirli bir LUO puanı gerektiriyorsa, en üstteki iki amaç arasındaki puan farkını kullanmanız gerekir. Bu durum, eğitiminde Çeşitlemeler için esneklik sağlar.
 
-[Tüm verilerle eğitim](luis-how-to-train.md#train-with-all-data)vererek **deterministik olmayan eğitimi** kapatabilirsiniz.
+**Belirleyici olmayan eğitimi** [tüm verilerle birlikte eğitime](luis-how-to-train.md#train-with-all-data)dönüştürebilirsiniz.
 
 ## <a name="e-exponent-notation"></a>E (üs) gösterimi
 
-Tahmin puanları, 0-1 aralığının üzerinde _görünarak_ üslü gösterimi `9.910309E-07`kullanabilir. Bu skor çok **az** bir sayının göstergesidir.
+Tahmin puanları, gibi 0-1 aralığının üstünde _görünen_ üs gösterimini kullanabilir `9.910309E-07`. Bu puan, çok **küçük** bir sayının göstergesidir.
 
-|E gösterim puanı |Gerçek puan|
+|E Gösterim puanı |Gerçek puan|
 |--|--|
-|9.910309E-07|.0000009910309|
+|9.910309 e-07|.0000009910309|
 
 <a name="punctuation"></a>
 
 ## <a name="application-settings"></a>Uygulama ayarları
 
-Aksama ve noktalama işaretlerinin tahmin puanlarını nasıl etkilediğini denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
+Aksanların ve noktalama işaretlerinin tahmin puanlarını denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. LUIS uygulamanıza nasıl varlık ekleyeceğiniz hakkında daha fazla bilgi edinmek için [taraf ekle'](luis-how-to-add-entities.md) ye bakın.
+LUSıS uygulamanıza varlık ekleme hakkında daha fazla bilgi edinmek için bkz. [varlık ekleme](luis-how-to-add-entities.md) .

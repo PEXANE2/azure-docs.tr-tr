@@ -1,7 +1,7 @@
 ---
-title: Senaryo Kullanılabilirliği - Konuşma hizmeti
+title: Senaryo kullanılabilirliği-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK programlama dilleri ve ortamları geniş bir yelpazede birçok senaryo özellikleri. Tüm senaryolar henüz tüm programlama dillerinde veya tüm ortamlarda kullanılamaz. Aşağıda her senaryonun kullanılabilirliği listelenmiştir.
+description: Konuşma SDK 'Sı çok çeşitli programlama dilleri ve ortamları genelinde birçok senaryoyu sunar. Tüm senaryolar henüz tüm programlama dillerinde veya tüm ortamlarda kullanılabilir değildir. Her senaryonun kullanılabilirliği aşağıda listelenmiştir.
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
 ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400156"
 ---
-# <a name="scenario-availability"></a>Senaryo Kullanılabilirliği
+# <a name="scenario-availability"></a>Senaryo kullanılabilirliği
 
-Konuşma SDK programlama dilleri ve ortamları geniş bir yelpazede birçok senaryo özellikleri. Tüm senaryolar henüz tüm programlama dillerinde veya tüm ortamlarda kullanılamaz. Aşağıda her senaryonun kullanılabilirliği listelenmiştir.
+Konuşma SDK 'Sı çok çeşitli programlama dilleri ve ortamları genelinde birçok senaryoyu sunar. Tüm senaryolar henüz tüm programlama dillerinde veya tüm ortamlarda kullanılabilir değildir. Her senaryonun kullanılabilirliği aşağıda listelenmiştir.
 
-- **Konuşma Tanıma (SR), İfade Listesi, Niyet, Çeviri ve Şirket İçi kaplar**
+- **Konuşma tanıma (SR), tümcecik listesi, amaç, çeviri ve şirket içi kapsayıcılar**
   - C++/Windows & Linux & macOS
   - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
-  - Java (Jre ve Android)
+  - Java (JRE ve Android)
   - JavaScript (Brower ve NodeJS)
   - Python
   - Swift
   - Objective-C  
-- **Metinden Konuşmaya (TTS)**
+- **Metinden konuşmaya (TTS)**
   - C++/Windows & Linux
-  - C#/Windows & UWP & Birliği
-  - Java (Jre ve Android)
+  - C#/Windows & UWP & Unity
+  - Java (JRE ve Android)
   - Python
   - Swift
   - Objective-C
-  - TTS REST API her durumda kullanılabilir.
-- **Anahtar Kelime Tespit (KWS)**
+  - TTS REST API, her durumda kullanılabilir.
+- **Anahtar sözcük biriktirme (KWS)**
   - C++/Windows & Linux
   - C#/Windows & Linux
   - Python/Windows & Linux
-  - Java/Windows & Linux & Android (Konuşma Cihazları SDK)
-  - Anahtar kelime tespit (KWS) işlevi herhangi bir mikrofon türüyle çalışabilir, resmi KWS desteği, ancak şu anda Azure Kinect DK donanımında veya Konuşma Aygıtları SDK'da bulunan mikrofon dizileriyle sınırlıdır
+  - Java/Windows & Linux & Android (konuşma cihazları SDK)
+  - Anahtar sözcük biriktirme (KWS) işlevi herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır
 - **Ses yardımcıları**
   - C++/Windows & Linux & macOS
   - C#/Windows
-  - Java/Windows & Linux & macOS & Android (Konuşma Cihazları SDK)
-- **Konuşma Transkripsiyonu**
+  - Java/Windows & Linux & macOS & Android (konuşma cihazları SDK)
+- **Konuşma dökümü**
   - C++/Windows & Linux
   - C# (Framework & .NET Core)/Windows & UWP & Linux
-  - Java/Windows & Linux & Android (Konuşma Cihazları SDK)
-- **Çok cihazlı Konuşma**
+  - Java/Windows & Linux & Android (konuşma cihazları SDK)
+- **Çok cihazlı konuşma**
   - C++/Windows
   - C# (Framework & .NET Core)/Windows
-- **Çağrı Merkezi Transkripsiyon**
-  - REST API ve her durumda kullanılabilir
-- **Codec Sıkıştırılmış Ses Girişi**
+- **Çağrı merkezi dökümü**
+  - REST API ve herhangi bir durumda kullanılabilir
+- **Codec sıkıştırılmış ses girişi**
   - C++/Linux
   - C#/Linux
   - Java/Linux, Android ve iOS

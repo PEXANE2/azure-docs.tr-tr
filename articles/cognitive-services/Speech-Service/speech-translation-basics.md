@@ -1,7 +1,7 @@
 ---
-title: Konuşma çevirisi temelleri - Konuşma hizmeti
+title: Konuşma çevirisi temelleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşmayı çevirmek için Konuşma SDK'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne yapılandırma, desteklenen ses giriş biçimleri ve konuşma çevirisi için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
+description: Konuşmayı çevirmek için konuşma SDK 'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne oluşturma, desteklenen ses girişi biçimleri ve konuşma çevirisi için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,20 +12,20 @@ ms.date: 04/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399597"
 ---
-# <a name="learn-the-basics-of-speech-translation"></a>Konuşma çevirisinin temellerini öğrenin
+# <a name="learn-the-basics-of-speech-translation"></a>Konuşma çevirisi temelleri hakkında bilgi edinin
 
-Konuşma hizmetinin temel özelliklerinden biri, insan konuşmasını tanıyabilme ve diğer dillere çevirebilme yeteneğidir. Bu makalede, yüksek kaliteli konuşma çevirisi gerçekleştirmek için uygulamalarınızda ve ürünlerinizde Speech SDK'yı nasıl kullanacağınızı öğreneceksiniz.
+Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı algılayabilir ve diğer dillere çevirebilir. Bu makalede, yüksek kaliteli konuşma çevirisi gerçekleştirmek için uygulama ve ürünlerinize yönelik konuşma SDK 'sını nasıl kullanacağınızı öğreneceksiniz.
 
 > [!TIP]
-> Hızlı başlangıçlarımızdan birini tamamlama şansınız olmadıysa, lastikleri tekmeleyip konuşma çevirisini kendiniz denemenizi öneririz.
+> Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve konuşma çevirisini kendiniz denemeniz önerilir.
 > * [Konuşmayı metne çevirme](quickstarts/translate-speech-to-text.md)
-> * [Konuşmayı birden çok dile çevirin](quickstarts/translate-speech-to-text-multiple-languages.md)
+> * [Konuşmayı birden fazla dile çevirme](quickstarts/translate-speech-to-text-multiple-languages.md)
 > * [Konuşmayı konuşmaya çevirme](quickstarts/translate-speech-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -50,4 +50,4 @@ Konuşma hizmetinin temel özelliklerinden biri, insan konuşmasını tanıyabil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Codec sıkıştırılmış ses biçimlerini kullanma](how-to-use-codec-compressed-audio-input-streams.md)
+* [Codec bileşeni sıkıştırılmış ses biçimlerini kullan](how-to-use-codec-compressed-audio-input-streams.md)

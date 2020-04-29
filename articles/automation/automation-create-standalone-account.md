@@ -1,113 +1,113 @@
 ---
 title: Tek başına Azure Otomasyonu hesabı oluşturma
-description: Bu makale, Azure Otomasyonu'nda örnek bir güvenlik temel kimlik doğrulaması oluşturma, test etme ve kullanma adımlarında size yol sunar.
+description: Bu makalede, Azure Otomasyonu 'nda örnek bir güvenlik sorumlusu kimlik doğrulaması oluşturma, test etme ve kullanma adımları gösterilmektedir.
 services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392283"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
-Bu makalede, Azure portalında nasıl bir Azure Otomasyon hesabı oluşturabileceğiniz gösterilmektedir. Ek yönetim çözümleri veya Azure Monitor günlükleriyle tümleştirme kullanmadan Otomasyon'u değerlendirmek ve öğrenmek için portal Otomasyon hesabını kullanabilirsiniz. Bu yönetim çözümlerini ekleyebilir veya gelecekte herhangi bir noktada runbook işlerinin gelişmiş izlenmesi için Azure Monitor günlükleriyle tümleştirebilirsiniz.
+Bu makalede, Azure portal Azure Otomasyonu hesabının nasıl oluşturulacağı gösterilmektedir. Ek yönetim çözümlerini kullanmadan veya Azure Izleyici günlükleriyle tümleştirmeden Otomasyon hakkında bilgi edinmek için Portal Otomasyonu hesabını kullanabilirsiniz. Gelecekte herhangi bir noktada runbook işlerinin gelişmiş izlenmesi için, bu yönetim çözümlerini ekleyebilir veya Azure Izleyici günlükleriyle tümleştirebilirsiniz.
 
-Otomasyon hesabıyla, Azure Kaynak Yöneticisi veya klasik dağıtım modelindeki kaynakları yöneterek runbook'ların kimliğini doğrulayabilirsiniz. Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir.
+Otomasyon hesabı ile Azure Resource Manager veya klasik dağıtım modelinde kaynakları yöneterek runbook 'ları doğrulayabilirsiniz. Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir.
 
-Azure portalında bir Otomasyon hesabı oluşturduğunuzda, **Çalıştır** hesabı otomatik olarak oluşturulur. Bu hesap aşağıdaki görevleri yapar:
+Azure portal bir Otomasyon hesabı oluşturduğunuzda, **Farklı Çalıştır** hesabı otomatik olarak oluşturulur. Bu hesap aşağıdaki görevleri yapar:
 
-* Azure Etkin Dizin (Azure AD)'nde bir hizmet ilkesi oluşturur.
+* Azure Active Directory (Azure AD) içinde bir hizmet sorumlusu oluşturur.
 * Bir sertifika oluşturur.
-* Azure Kaynak Yöneticisi kaynaklarını runbook'ları kullanarak yöneten Katılımcı RolüTabanlı Erişim Denetimi'ni (RBAC) atar.
+* Runbook 'ları kullanarak Azure Resource Manager kaynaklarını yöneten, katkıda bulunan rol tabanlı Access Control (RBAC) atar.
 
-Sizin için oluşturulan bu hesapla, otomasyon ihtiyaçlarınızı desteklemek için çalışma defterleri oluşturmaya ve dağıtmaya hızlı bir şekilde başlayabilirsiniz.
+Sizin için oluşturulan bu hesap sayesinde, Otomasyon gereksinimlerinizi desteklemek için Runbook 'ları oluşturmaya ve dağıtmaya hızlı bir başlangıç yapabilirsiniz.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Otomasyon hesabı oluşturmak için gereken izinler
 
-Bir Otomasyon hesabı oluşturmak veya güncelleştirmek ve bu makalede açıklanan görevleri tamamlamak için aşağıdaki ayrıcalıklara ve izinlere sahip olmalısınız:
+Bir Otomasyon hesabı oluşturmak veya güncelleştirmek ve bu makalede açıklanan görevleri gerçekleştirmek için aşağıdaki ayrıcalıklara ve izinlere sahip olmanız gerekir:
 
-* Bir Otomasyon hesabı oluşturmak için Azure AD kullanıcı hesabınızın, kaynaklar için `Microsoft.Automation` Sahip rolüne eşdeğer izinlere sahip bir role eklenmesi gerekir. Daha fazla bilgi için Azure [Otomasyonunda Rol Tabanlı Erişim Denetimi'ne](automation-role-based-access-control.md)bakın.
-* Azure portalında, **Azure Active Directory** > **MANAGE** > **Kullanıcı ayarları**altında, Uygulama **kayıtları** **Evet**olarak ayarlanmışsa, Azure AD kiracınızdaki yönetici olmayan kullanıcılar [Active Directory uygulamalarını kaydedebilir.](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions) **Uygulama kayıtları** **Hayır**olarak ayarlanmışsa, bu eylemi gerçekleştiren kullanıcının Azure AD'de genel bir yönetici olması gerekir.
+* Bir Otomasyon hesabı oluşturmak için, Azure AD Kullanıcı hesabınızın, kaynaklar için `Microsoft.Automation` sahip rolüne eşdeğer izinlere sahip bir role eklenmesi gerekir. Daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda rol tabanlı Access Control](automation-role-based-access-control.md).
+* Azure Portal **Azure Active Directory** > **MANAGE** > **Kullanıcı ayarlarını**Yönet altında **uygulama kayıtları** **Evet**olarak ayarlanırsa, Azure AD kiracınızdaki yönetici olmayan kullanıcılar [Active Directory uygulamalarını kaydedebilir](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). **Uygulama kayıtları** **Hayır**olarak ayarlanırsa, bu EYLEMI gerçekleştiren kullanıcının Azure AD 'de Genel yönetici olması gerekir.
 
-Aboneliğin genel Yönetici/Yardımcı Yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, Etkin Dizini'ne konuk olarak eklenirsiniz. Bu senaryoda, Bu iletiyi Otomasyon Hesabı Ekle bölmesinde görürsünüz:`You do not have permissions to create.`
+Aboneliğin genel yönetici/ortak yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, konuk olarak Active Directory eklenir. Bu senaryoda, bu iletiyi Otomasyon hesabı Ekle bölmesinde görürsünüz:`You do not have permissions to create.`
 
-Önce genel Yönetici/Yardımcı Yönetici rolüne bir kullanıcı eklenirse, kullanıcıyı aboneliğin Etkin Dizin örneğinden kaldırabilirsiniz. Kullanıcıyı Active Directory'deki Kullanıcı rolüne göre okuyabilirsiniz.
+Önce genel yönetici/ortak yönetici rolüne bir Kullanıcı eklendiyse, kullanıcıyı aboneliğin Active Directory örneğinden kaldırabilirsiniz. Kullanıcıyı Active Directory kullanıcı rolüne yeniden ekleyebilirsiniz.
 
 Kullanıcı rollerini doğrulamak için:
 
-1. Azure portalında Azure Etkin Dizin bölmesine gidin.
-1. **Kullanıcıları ve grupları**seçin.
-1. **Tüm kullanıcıları**seçin.
-1. Belirli bir kullanıcıyı seçtikten sonra **Profil'i**seçin. Kullanıcı profili altında **Kullanıcı türü** özniteliğinin değeri **Konuk**olmamalıdır.
+1. Azure portal Azure Active Directory bölmesine gidin.
+1. **Kullanıcılar ve gruplar ' ı**seçin.
+1. **Tüm kullanıcılar**' ı seçin.
+1. Belirli bir Kullanıcı seçtikten sonra **profil**' i seçin. Kullanıcı profili altındaki **Kullanıcı türü** özniteliğinin değeri **konuğa**sahip olmamalıdır.
 
-## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Azure portalında yeni bir Otomasyon hesabı oluşturma
+## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Azure portal yeni bir Otomasyon hesabı oluşturun
 
-Azure portalında bir Azure Otomasyon hesabı oluşturmak için aşağıdaki adımları tamamlayın:
+Azure portal bir Azure Otomasyonu hesabı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Abonelik Yöneticileri rolünün üyesi ve aboneliğin yardımcı yöneticisi olan bir hesapla Azure portalında oturum açın.
-1. Seçin **+ Kaynak Oluştur**.
-1. **Otomasyon**ara . Arama sonuçlarında **Otomasyon'u**seçin.
+1. Abonelik yöneticileri rolünün üyesi ve aboneliğin ortak Yöneticisi olan bir hesapla Azure portal oturum açın.
+1. **+ Kaynak oluştur**' u seçin.
+1. **Otomasyon**araması yapın. Arama sonuçlarında **Otomasyon**' u seçin.
 
-   ![Azure Marketi'nde Otomasyon & Denetimi'ni arayın ve seçin](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
+   ![Azure Marketi 'nde Otomasyon & denetimini arama ve seçme](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
-1. Bir sonraki ekranda **yeni oluştur'u**seçin.
+1. Sonraki ekranda **Yeni oluştur**' u seçin.
 
    ![Otomasyon hesabı ekle](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Aşağıdaki iletiyi Otomasyon Hesabı Ekle bölmesinde görürseniz, hesabınız abonelik Yöneticileri rolünün bir üyesi ve aboneliğin yardımcı yöneticisi değildir.
+   > Otomasyon hesabı Ekle bölmesinde aşağıdaki iletiyi görürseniz, hesabınız abonelik yöneticileri rolünün bir üyesi ve aboneliğin ortak Yöneticisi değildir.
    >
-   > ![Otomasyon hesap uyarısı ekle](media/automation-create-standalone-account/create-account-without-perms.png)
+   > ![Otomasyon hesabı ekleme uyarısı](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Otomasyon Hesabı Ekle bölmesine, **Ad** alanına yeni Otomasyon hesabınızın adını girin. Seçildikten sonra bu ismi değiştiremezsin. 
+1. Otomasyon hesabı Ekle bölmesinde, **ad** alanına yeni otomasyon hesabınız için bir ad girin. Bu adı seçtikten sonra değiştiremezsiniz. 
 
     > [!NOTE]
-    > Otomasyon hesap adları bölge ve kaynak grubuna göre benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.
+    > Otomasyon hesabı adları, bölge ve kaynak grubu başına benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.
 
-1. Birden fazla aboneliğiniz varsa, yeni hesap için kullanılacak aboneliği belirtmek için **Abonelik** alanını kullanın.
-1. **Kaynak grubu**için, yeni veya varolan bir kaynak grubu girin veya seçin.
-1. **Konum**için bir Azure veri merkezi konumu seçin.
-1. Azure **Run As hesabı** için Evet **seçildiğinden** emin olun ve ardından **Oluştur'u**tıklatın.
+1. Birden fazla aboneliğiniz varsa, yeni hesap için kullanılacak aboneliği belirtmek için **abonelik** alanını kullanın.
+1. **Kaynak grubu**için, yeni veya mevcut bir kaynak grubu girin veya seçin.
+1. **Konum**Için bir Azure veri merkezi konumu seçin.
+1. **Azure farklı çalıştır hesabı oluştur** seçeneği için **Evet** ' in seçili olduğundan emin olun ve ardından **Oluştur**' a tıklayın.
 
    > [!NOTE]
-   > Azure Çalıştır Hesabı Olarak **Oluştur'a Hayır'ı** seçerek Çalıştır hesabı oluşturmamayı seçerseniz, Hesap Ekle bölmesinde bir ileti görüntülenir. **Create Azure Run As account** Hesap Azure portalında oluşturulsa da, hesabın klasik dağıtım modeli aboneliğinizde veya Azure Kaynak Yöneticisi abonelik dizini hizmetinde karşılık gelen bir kimlik kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran tüm runbook'ların bu dağıtım modellerindeki kaynaklara karşı görevleri doğrulamasını ve gerçekleştirebilmelerini önler.
+   > **Azure farklı çalıştır hesabı oluştur**' **u seçerek farklı** Çalıştır hesabı oluşturmayı seçerseniz, Otomasyon hesabı Ekle bölmesinde bir ileti görüntülenir. Hesap Azure portal oluşturulsa da hesabın klasik dağıtım modeli aboneliğinizde veya Azure Resource Manager abonelik dizin hizmetinde ilgili bir kimlik doğrulama kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran runbook 'ların bu dağıtım modellerindeki kaynaklara göre kimlik doğrulaması yapmasını ve görevler gerçekleştirmesini engeller.
    >
-   > ![Otomasyon hesap uyarısı ekle](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+   > ![Otomasyon hesabı ekleme uyarısı](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
-   > Hizmet sorumlusu oluşturulmadı, Katılımcı rolü atanmaz.
+   > Hizmet sorumlusu oluşturulmadığında katkıda bulunan rolü atanmaz.
    >
 
-1. Otomasyon hesabı oluşturmanın ilerlemesini izlemek için menüdeki **Bildirimler'i** seçin.
+1. Otomasyon hesabı oluşturma işleminin ilerlemesini izlemek için menüdeki **Bildirimler** ' i seçin.
 
 ### <a name="resources-included"></a>Kaynaklar dahil
 
-Otomasyon hesabı başarıyla oluşturulduğunda bazı kaynaklar sizin için otomatik olarak oluşturulur. Oluşturma dan sonra, bu runbook'lar saklamak istemiyorsanız güvenle silinebilir. Hesap Olarak Çalıştır, bir runbook'ta hesabınıza kimlik doğrulamak için kullanılabilir ve başka bir hesap oluşturmadığınız veya gerektirmediğiniz sürece bırakılmalıdır. Aşağıdaki tabloda Farklı Çalıştır hesabının kaynakları özetlenmektedir.
+Otomasyon hesabı başarıyla oluşturulduğunda bazı kaynaklar sizin için otomatik olarak oluşturulur. Oluşturulduktan sonra, bu runbook 'ları korumak istemiyorsanız güvenli bir şekilde silinebilir. Farklı Çalıştır hesapları, bir runbook 'ta hesabınızda kimlik doğrulaması yapmak için kullanılabilir ve başka bir tane oluşturmadığınız ya da bunları gerektirmediğiniz sürece bu durumda bırakılmalıdır. Aşağıdaki tabloda Farklı Çalıştır hesabının kaynakları özetlenmektedir.
 
 | Kaynak | Açıklama |
 | --- | --- |
-| AzureAutomationTutorial Runbook |Çalıştır hesabı nı kullanarak kimlik doğrulamasını gösteren örnek bir grafik çalışma kitabı. Runbook tüm Kaynak Yöneticisi kaynaklarını alır. |
-| AzureAutomationTutorialScript Runbook |Run As hesabını kullanarak kimlik doğrulamasını gösteren örnek bir PowerShell runbook. Runbook tüm Kaynak Yöneticisi kaynaklarını alır. |
-| AzureAutomationTutorialPython2 Runbook |Run As hesabını kullanarak kimlik doğrulamasını gösteren örnek bir Python runbook. Runbook, abonelikte bulunan tüm kaynak gruplarını listeler. |
-| AzureRunAsCertificate |Otomasyon hesabı oluşturulduğunda veya varolan bir hesap için PowerShell komut dosyası kullanılarak otomatik olarak oluşturulan bir sertifika kıymeti. Sertifika, Azure ile kimlik doğrulaması yaparak Azure Kaynak Yöneticisi kaynaklarını runbook'lardan yönetebilirsiniz. Bu sertifikanın bir yıllık kullanım ömrü vardır. |
-| AzureRunAsConnection |Otomasyon hesabı oluşturulduğunda veya varolan bir hesap için PowerShell komut dosyası kullanılarak otomatik olarak oluşturulan bir bağlantı varlığı. |
+| AzureAutomationTutorial Runbook |Farklı Çalıştır hesabını kullanarak kimlik doğrulamanın nasıl yapılacağını gösteren örnek bir grafik runbook. Runbook tüm Kaynak Yöneticisi kaynaklarını alır. |
+| AzureAutomationTutorialScript Runbook |Farklı Çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını gösteren örnek bir PowerShell runbook 'u. Runbook tüm Kaynak Yöneticisi kaynaklarını alır. |
+| AzureAutomationTutorialPython2 Runbook |Farklı Çalıştır hesabını kullanarak kimlik doğrulaması yapılacağını gösteren örnek bir Python runbook. Runbook, abonelikte bulunan tüm kaynak gruplarını listeler. |
+| AzureRunAsCertificate |Otomasyon hesabı oluşturulduğunda veya var olan bir hesap için bir PowerShell betiği kullanılarak otomatik olarak oluşturulan bir sertifika varlığı. Sertifika, runbook 'lardan Azure Resource Manager kaynaklarını yönetebilmeniz için Azure ile kimlik doğrulaması yapar. Bu sertifikanın bir yıllık kullanım ömrü vardır. |
+| AzureRunAsConnection |Otomasyon hesabı oluşturulduğunda veya var olan bir hesap için bir PowerShell betiği kullanılarak otomatik olarak oluşturulan bağlantı varlığı. |
 
-## <a name="create-a-classic-run-as-account"></a>Hesap Olarak Klasik Çalıştır Oluşturma
+## <a name="create-a-classic-run-as-account"></a>Klasik farklı çalıştır hesabı oluşturma
 
-Bir Azure Otomasyon hesabı oluşturduğunuzda, Klasik Çalıştır Hesapları artık varsayılan olarak oluşturulmaz. Hala bir Klasik Çalıştır Hesabı gerekiyorsa:
+Klasik farklı çalıştır hesapları artık bir Azure Otomasyonu hesabı oluşturduğunuzda varsayılan olarak oluşturulmaz. Hala klasik bir Farklı Çalıştır hesabına ihtiyacınız varsa:
 
-1. Otomasyon hesabınızdan **Hesap Ayarları**altında Hesap **Olarak Çalıştır'ı** seçin.
-2. **Hesap Olarak Azure Klasik Çalıştır'ı**seçin.
-3. Klasik Çalıştır Hesabı Oluşturma'ya devam etmek için **Oluştur'u** tıklatın.
+1. Otomasyon hesabınızdan **Hesap ayarları**altında **Farklı Çalıştır hesapları** ' nı seçin.
+2. **Azure klasik farklı çalıştır hesabı**' nı seçin.
+3. Klasik farklı çalıştır hesabı oluşturma işlemine devam etmek için **Oluştur** ' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Grafik yazma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu'nda Grafik yazma'ya](automation-graphical-authoring-intro.md)bakın.
-* PowerShell runbook'ları ile başlamak için [ilk PowerShell runbook'uma](automation-first-runbook-textual-powershell.md)bakın.
-* PowerShell iş akışı runbook'larına başlamak için [ilk PowerShell iş akışı çalışma kitabıma](automation-first-runbook-textual.md)bakın.
-* Python 2 runbook'ları ile başlamak için [ilk Python2 runbook'uma](automation-first-runbook-textual-python2.md)bakın.
-* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-)bakın.
+* Grafik yazma hakkında daha fazla bilgi için bkz. [Azure Otomasyonu 'Nda grafik yazma](automation-graphical-authoring-intro.md).
+* PowerShell runbook 'larını kullanmaya başlamak için bkz. [Ilk PowerShell runbook 'Um](automation-first-runbook-textual-powershell.md).
+* PowerShell iş akışı runbook 'larını kullanmaya başlamak için bkz. [Ilk PowerShell iş akışı runbook 'Um](automation-first-runbook-textual.md).
+* Python 2 runbook 'ları kullanmaya başlamak için bkz. [Ilk Python2 runbook 'Um](automation-first-runbook-textual-python2.md).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+).

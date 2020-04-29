@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight sanal ağ mimarisi
-description: Azure Sanal Ağı'nda bir HDInsight kümesi oluşturduğunuzda kullanılabilir kaynakları öğrenin.
+description: Bir Azure sanal ağında HDInsight kümesi oluştururken kullanılabilir kaynakları öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,80 +8,80 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390216"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
-Bu makalede, bir HDInsight kümesini özel bir Azure Sanal Ağına dağıttığınızda mevcut olan kaynaklar açıklanmaktadır. Bu bilgiler, şirket içi kaynakları Azure'daki HDInsight kümenize bağlamanıza yardımcı olur. Azure Sanal Ağlar hakkında daha fazla bilgi [için](../virtual-network/virtual-networks-overview.md)bkz.
+Bu makalede, bir HDInsight kümesini özel bir Azure sanal ağına dağıtırken mevcut olan kaynaklar açıklanmaktadır. Bu bilgiler, şirket içi kaynaklarınızı Azure 'daki HDInsight kümenize bağlamanıza yardımcı olur. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağı nedir?](../virtual-network/virtual-networks-overview.md).
 
 ## <a name="resource-types-in-azure-hdinsight-clusters"></a>Azure HDInsight kümelerinde kaynak türleri
 
-Azure HDInsight kümelerinde farklı türde sanal makineler veya düğümler vardır. Her düğüm türü sistemin çalışmasında bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve kümedeki rolleri özetlenir.
+Azure HDInsight kümelerinde farklı türlerde sanal makineler veya düğümler vardır. Her düğüm türü, sistem işleminde bir rol oynar. Aşağıdaki tabloda bu düğüm türleri ve bunların rolleri kümede özetlenmektedir.
 
 | Tür | Açıklama |
 | --- | --- |
-| Baş düğüm |  Apache Storm dışındaki tüm küme türleri için, baş düğümleri dağıtılmış uygulamanın yürütülmesini yöneten işlemleri barındırAr. Kafa düğümü, küme kaynakları arasında çalıştırmak üzere koordine edilen uygulamaları ssh'e sokabileceğiniz ve yürütebileceğiniz düğümdür. Kafa düğümlerinin sayısı tüm küme türleri için iki olarak sabitlenir. |
-| ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri koordine eder. Ayrıca baş düğümülider seçimi yapar ve hangi baş düğümü belirli bir ana hizmet çalışıyor izler. ZooKeeper düğümlerinin sayısı üç olarak sabitlenir. |
-| İşçi düğümü | Veri işleme işlevini destekleyen düğümleri temsil eder. İşlem e-mesuliyetini ölçeklendirmek ve maliyetleri yönetmek için altdüğümler kümeden eklenebilir veya kaldırılabilir. |
-| R Server kenar düğümü | R Server kenar düğümü, ssh'e sokabileceğiniz düğümü temsil eder ve daha sonra küme kaynakları arasında çalışacak şekilde koordine edilen uygulamaları çalıştırır. Kenar düğümü küme içindeki veri çözümlemesi ile katılmaz. Bu düğüm aynı zamanda R Studio Server'ı barındırarak tarayıcı kullanarak R uygulamasını çalıştırmanızı sağlar. |
-| Bölge düğümü | HBase küme türü için bölge düğümü (Veri Düğümü olarak da adlandırılır) Region Server'ı çalıştırAr. Bölge Sunucuları, HBase tarafından yönetilen verilerin bir kısmını hizmet eve getirir ve yönetir. Bilgi işlem yeteneğini ölçeklendirmek ve maliyetleri yönetmek için bölge düğümleri kümeden eklenebilir veya kaldırılabilir.|
-| Nimbus düğümü | Fırtına küme türü için Nimbus düğümü Kafa düğümüne benzer işlevsellik sağlar. Nimbus düğümü, Fırtına topolojilerinin çalışmasını koordine eden Zookeeper aracılığıyla kümedeki diğer düğümlere görevler atar. |
-| Süpervizör düğümü | Fırtına küme türü için, denetleyici düğümü işlemi yapmak için Nimbus düğümü tarafından sağlanan yönergeleri yürütür. |
+| Baş düğüm |  Apache Storm dışındaki tüm küme türleri için baş düğümler, dağıtılmış uygulamanın yürütülmesini yöneten süreçler barındırır. Baş düğüm aynı zamanda, SSH ve küme kaynakları genelinde çalışacak şekilde koordine ettiğiniz uygulamaları yürütebilmeniz için de düğümdür. Baş düğümlerin sayısı, tüm küme türleri için iki olarak düzeltilir. |
+| ZooKeeper düğümü | Zookeeper, veri işleme yapan düğümler arasındaki görevleri düzenler. Ayrıca baş düğümün öncü seçimi de yapar ve hangi baş düğümün belirli bir ana hizmetin çalıştığını izler. ZooKeeper düğümlerinin sayısı üç olarak düzeltilir. |
+| Çalışan düğümü | Veri işleme işlevselliğini destekleyen düğümleri temsil eder. İşlem yeteneklerini ölçeklendirmek ve maliyetleri yönetmek için çalışan düğümleri kümeden eklenebilir veya kaldırılabilir. |
+| R Server Edge düğümü | R Server Edge düğümü, daha sonra küme kaynaklarında çalışacak şekilde koordine ettiğiniz ve bu uygulamaları yürütebilmeniz gereken düğümü temsil eder. Bir Edge düğümü, küme içindeki veri analizine katılmaz. Bu düğüm, r Studio Server 'ı da barındırır ve bir tarayıcı kullanarak R uygulaması çalıştırmanızı sağlar. |
+| Bölge düğümü | HBase küme türü için bölge düğümü (veri düğümü olarak da anılır) bölge sunucusunu çalıştırır. Bölge sunucuları HBase tarafından yönetilen verilerin bir kısmını sunar ve yönetir. Bilgi işlem yeteneğini ölçeklendirmek ve maliyetleri yönetmek için, bölge düğümleri kümeden eklenebilir veya kaldırılabilir.|
+| Nimbus düğümü | Nimbus düğümü, fırtınası kümesi türü için baş düğüme benzer işlevler sağlar. Nimbus düğümü, Zookeeper aracılığıyla bir kümedeki diğer düğümlere görevler atar ve bu da halka topolojilerinin çalıştırılmasını koordine eder. |
+| Gözetmen düğümü | Fırtınası küme türü için, gözetmen düğümü, işlemi yapmak için Nimbus düğümü tarafından sunulan yönergeleri yürütür. |
 
 ## <a name="resource-naming-conventions"></a>Kaynak adlandırma kuralları
 
-Kümenizdeki düğümleri ele alırken Tam Nitelikli Alan Adları (FQDNs) kullanın. [Ambari API'yi](hdinsight-hadoop-manage-ambari-rest-api.md)kullanarak kümenizdeki çeşitli düğüm türleri için FQDN'leri alabilirsiniz.
+Kümenizdeki düğümleri adreslarken tam etki alanı adlarını (FQDN) kullanın. [AMBARı API](hdinsight-hadoop-manage-ambari-rest-api.md)'sini kullanarak kümenizdeki çeşitli düğüm türleri için FQDN 'leri edinebilirsiniz.
 
-Bu FQDNs şeklinde `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`olacaktır.
+Bu FQDN 'Ler form `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`olur.
 
-Headnodes `<node-type-prefix>` için *hn* olacak, işçi düğümleri için *wn* ve zookeeper düğümleri için *zn.*
+, `<node-type-prefix>` İş düğümleri için *hn* , çalışan düğümleri için *WN* ve Zookeeper düğümleri için *Zn* olacaktır.
 
-Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN'nin yalnızca ilk bölümünü kullanın:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
+Yalnızca ana bilgisayar adına ihtiyacınız varsa, FQDN 'nin yalnızca ilk kısmını kullanın:`<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Temel sanal ağ kaynakları
 
-Aşağıdaki diyagram, AZURE'da HDInsight düğümlerinin ve ağ kaynaklarının yerleşimini gösterir.
+Aşağıdaki diyagramda HDInsight düğümlerinin ve ağ kaynaklarının Azure 'da yerleştirilmesi gösterilmektedir.
 
-![Azure özel VNET'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
+![Azure özel VNET 'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-Azure Sanal Ağı'ndaki varsayılan kaynaklar, önceki tabloda belirtilen küme düğümü türlerini içerir. Ve sanal ağ ve dış ağlar arasındaki iletişimi destekleyen ağ aygıtları.
+Bir Azure sanal ağındaki varsayılan kaynaklar, önceki tabloda belirtilen küme düğümü türlerini içerir. Ve sanal ağ ve dış ağlar arasındaki iletişimi destekleyen ağ cihazları.
 
-Aşağıdaki tablo, HDInsight özel bir Azure Sanal Ağı'na dağıtıldığında oluşturulan dokuz küme düğümlerini özetler.
+Aşağıdaki tabloda, HDInsight özel bir Azure sanal ağına dağıtıldığında oluşturulan dokuz küme düğümü özetlenmektedir.
 
-| Kaynak türü | Mevcut sayı | Ayrıntılar |
+| Kaynak türü | Sayı var | Ayrıntılar |
 | --- | --- | --- |
 |Baş düğüm | iki |    |
 |Zookeeper düğümü | Üç | |
-|İşçi düğümü | iki | Bu sayı küme yapılandırması ve ölçekleme bağlı olarak değişebilir. Apache Kafka için en az üç işçi düğümü gereklidir.  |
-|Ağ geçidi düğümü | iki | Ağ geçidi düğümleri, Azure'da oluşturulan ancak aboneliğinizde görünmeyen Azure sanal makineleridir. Bu düğümleri yeniden başlatmanız gerekiyorsa desteğe başvurun. |
+|Çalışan düğümü | iki | Bu sayı, küme yapılandırmasına ve ölçeklendirilmesine göre farklılık gösterebilir. Apache Kafka için en az üç çalışan düğümü gerekir.  |
+|Ağ geçidi düğümü | iki | Ağ Geçidi düğümleri Azure 'da oluşturulan ancak aboneliğinizde görünmeyen Azure sanal makinelerdir. Bu düğümleri yeniden başlatmanız gerekiyorsa desteğe başvurun. |
 
-Mevcut aşağıdaki ağ kaynakları HDInsight ile kullanılan sanal ağ içinde otomatik olarak oluşturulur:
+Mevcut olan aşağıdaki ağ kaynakları, HDInsight ile kullanılan sanal ağ içinde otomatik olarak oluşturulur:
 
-| Ağ kaynağı | Mevcut sayı | Ayrıntılar |
+| Ağ kaynağı | Sayı var | Ayrıntılar |
 | --- | --- | --- |
 |Yük dengeleyici | Üç | |
-|Ağ Arabirimleri | Dokuz | Bu değer, her düğümün kendi ağ arabirimi olduğu normal bir kümeyi temel alıntır. Dokuz arabirim içindir: iki baş düğümleri, üç zookeeper düğümleri, iki işçi düğümleri ve önceki tabloda belirtilen iki ağ geçidi düğümleri. |
+|Ağ Arabirimleri | lusu | Bu değer, her düğümün kendi ağ arabirimine sahip olduğu normal bir kümeyi temel alır. Dokuz arabirim şunlardır: iki baş düğüm, üç Zookeeper düğümü, iki çalışan düğümü ve önceki tabloda belirtilen iki ağ geçidi düğümü. |
 |Genel IP Adresleri | iki |    |
 
-## <a name="endpoints-for-connecting-to-hdinsight"></a>HDInsight'a bağlanmak için uç noktalar
+## <a name="endpoints-for-connecting-to-hdinsight"></a>HDInsight 'a bağlanmak için uç noktalar
 
-HDInsight kümenize üç şekilde erişebilirsiniz:
+HDInsight kümenize üç yolla erişebilirsiniz:
 
-- Sanal ağın dışında bir HTTPS `CLUSTERNAME.azurehdinsight.net`bitiş noktası .
-- Headnode doğrudan bağlanmak için bir SSH `CLUSTERNAME-ssh.azurehdinsight.net`bitiş noktası.
-- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`içinde bir HTTPS bitiş noktası. Bu URL'deki " "`-int`" ne dikkat edin. Bu bitiş noktası, bu sanal ağdaki özel bir IP'ye çözülür ve herkese açık internetten erişilemez.
+- Üzerinde `CLUSTERNAME.azurehdinsight.net`sanal ağın dışında bir HTTPS uç noktası.
+- Konumundaki `CLUSTERNAME-ssh.azurehdinsight.net`baş düğümüne 'a doğrudan bağlanmak için bir SSH uç noktası.
+- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`IÇINDE bir HTTPS uç noktası. Bu URL 'de`-int`"" olduğuna dikkat edin. Bu uç nokta, bu sanal ağdaki özel bir IP 'ye çözümlenir ve genel İnternet 'ten erişilemez.
 
-Bu üç uç nokta, her birine bir yük dengeleyicisi atanır.
+Bu üç uç noktaya her biri bir yük dengeleyici atanır.
 
-Ortak IP adresleri, sanal ağ dışından bağlantıya izin veren iki uç noktaya da sağlanır.
+Genel IP adresleri, sanal ağın dışından bağlantıya izin veren iki uç noktaya de sağlanır.
 
-1. Bir ortak IP, kümeye internetten `CLUSTERNAME.azurehdinsight.net`bağlanırken kullanmak üzere tam nitelikli alan adı (FQDN) için yük dengeleyicisine atanır.
-1. İkinci ortak IP adresi SSH yalnızca etki `CLUSTERNAME-ssh.azurehdinsight.net`alanı adı için kullanılır.
+1. Bir genel IP, kümeye internet `CLUSTERNAME.azurehdinsight.net`'ten bağlanırken kullanılacak tam etki alanı adı (FQDN) için yük dengeleyiciye atanır.
+1. İkinci genel IP adresi yalnızca SSH etki alanı adı `CLUSTERNAME-ssh.azurehdinsight.net`için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel bitiş noktası olan sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)
+- [Özel uç nokta ile bir sanal ağdaki HDInsight kümelerine gelen trafiği güvenli hale getirme](https://azure.microsoft.com/blog/secure-incoming-traffic-to-hdinsight-clusters-in-a-vnet-with-private-endpoint/)

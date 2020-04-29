@@ -1,7 +1,7 @@
 ---
-title: Konuşma tanıma temelleri - Konuşma hizmeti
+title: Konuşma tanıma temelleri-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'yı metinden metne dönüştürmek için nasıl kullanacağınızı öğrenin. Bu makalede, nesne yapısı, desteklenen ses giriş biçimleri ve konuşma tanıma için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
+description: Konuşmayı metne dönüştürmek için konuşma SDK 'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne oluşturma, desteklenen ses girişi biçimleri ve konuşma tanıma için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: bdf8db4a7c946a50698d35aada5950ded671afb7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399798"
 ---
 # <a name="learn-the-basics-of-speech-recognition"></a>Konuşma tanımanın temellerini öğrenin
 
-Konuşma hizmetinin temel özelliklerinden biri, insan konuşmasını tanıyabilme ve yazıya aktarma yeteneğidir (genellikle metinden metne konuşma olarak adlandırılır). Bu makalede, yüksek kaliteli konuşma tanıma gerçekleştirmek için uygulamalarınızda ve ürünlerinizde Konuşma SDK'sını nasıl kullanacağınızı öğreneceksiniz.
+Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma olarak adlandırılır). Bu makalede, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli konuşma tanıma işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
 > [!TIP]
-> Hızlı başlangıçlarımızdan birini tamamlama şansınız olmadıysa, lastikleri tekmelemenizi ve konuşma tanımayı kendiniz denemenizi öneririz.
+> Hızlı başlangıçlarımızın birini tamamlamaya yönelik bir şansınız yoksa, alana 'yi başlatmanıza ve konuşma tanımayı kendiniz denemeniz önerilir.
 > * [Mikrofondan konuşmayı tanıma](quickstarts/speech-to-text-from-microphone.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -52,4 +52,4 @@ Konuşma hizmetinin temel özelliklerinden biri, insan konuşmasını tanıyabil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Codec sıkıştırılmış ses biçimlerini kullanma](how-to-use-codec-compressed-audio-input-streams.md)
+* [Codec bileşeni sıkıştırılmış ses biçimlerini kullan](how-to-use-codec-compressed-audio-input-streams.md)

@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 17d8c0157fcd478d01452167d240fb67daeeda5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399663"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede, bir Azure hesabınız ve Konuşma hizmeti aboneliğiniz olduğu varsayar. Hesabınız ve aboneliğiniz yoksa, [Konuşma hizmetini ücretsiz olarak deneyin.](../../../get-started.md)
+Bu makalede bir Azure hesabınız ve konuşma hizmeti aboneliğiniz olduğunu varsaymaktadır. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](../../../get-started.md).
 
-## <a name="install-the-speech-sdk"></a>Konuşma SDK'yı yükleyin
+## <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
-Herhangi bir şey yapmadan önce Konuşma SDK'sını yüklemeniz gerekir. Platformunuza bağlı olarak, Konuşma <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">SDK makalesinin <span class="docon docon-navigate-external x-hidden-focus"></span> Konuşma SDK bölümünün</a> altındaki talimatları izleyin.
+Herhangi bir şey yapabilmeniz için önce konuşma SDK 'sını yüklemeniz gerekir. Platformunuza bağlı olarak, konuşma SDK makalesinin <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">konuşma SDK 'sını <span class="docon docon-navigate-external x-hidden-focus"></span> al</a> bölümünde yer alan yönergeleri izleyin.
 
-## <a name="import-dependencies"></a>İthalat bağımlılıkları
+## <a name="import-dependencies"></a>Bağımlılıkları içeri aktar
 
-Bu makaledeki örnekleri çalıştırmak için `import` python kodu dosyasının en üstünde aşağıdaki ifadeleri ekleyin.
+Bu makaledeki örnekleri çalıştırmak için Python kod dosyasının en üstüne aşağıdaki `import` deyimleri ekleyin.
 
 ```python
 import os
 import azure.cognitiveservices.speech as speechsdk
 ```
 
-## <a name="sensitive-data-and-environment-variables"></a>Hassas veriler ve çevre değişkenleri
+## <a name="sensitive-data-and-environment-variables"></a>Hassas veriler ve ortam değişkenleri
 
-Bu makaledeki örnek kaynak kodu, Konuşma kaynağı abonelik anahtarı ve bölge gibi hassas verileri depolamak için ortam değişkenlerine bağlıdır. Python kodu dosyası, ana bilgisayar ortam değişkenlerinden atanan iki `SPEECH__SUBSCRIPTION__KEY` değer `SPEECH__SERVICE__REGION`içerir, yani. Bu değişkenlerin her ikisi de genel kapsamdadır ve kod dosyasının işlev tanımı içinde erişilebilir olmalarını sağlar. Çevre değişkenleri hakkında daha fazla bilgi için [çevre değişkenlerine ve uygulama yapılandırmalarına](../../../../cognitive-services-security.md#environment-variables-and-application-configuration)bakın.
+Bu makaledeki örnek kaynak kodu, konuşma kaynağı abonelik anahtarı ve bölgesi gibi hassas verileri depolamak için ortam değişkenlerine bağımlıdır. Python kod dosyası, `SPEECH__SUBSCRIPTION__KEY` ve `SPEECH__SERVICE__REGION`gibi konak makineler ortam değişkenlerinden atanan iki değer içerir. Bu değişkenlerin her ikisi de genel kapsamdadır ve kod dosyasının işlev tanımı içinde erişilebilir hale getirir. Ortam değişkenleri hakkında daha fazla bilgi için bkz. [ortam değişkenleri ve uygulama yapılandırması](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
 
 ```python
 speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ['SPEECH__SERVICE__REGION']
@@ -38,19 +38,19 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 
 ## <a name="create-a-speech-translation-configuration"></a>Konuşma çevirisi yapılandırması oluşturma
 
-Konuşma SDK'sını kullanarak Konuşma hizmetini aramak için [`SpeechTranslationConfig`][config]bir . Bu sınıf, anahtarınız ve ilişkili bölgeniz, bitiş noktanız, ana bilgisayar veya yetkilendirme belirteciniz gibi aboneliğiniz hakkında bilgiler içerir.
+Konuşma SDK 'sını kullanarak konuşma hizmetini çağırmak için bir [`SpeechTranslationConfig`][config]oluşturmanız gerekir. Bu sınıf, uygulamanız hakkında, anahtarınız ve ilgili bölge, uç nokta, ana bilgisayar veya yetkilendirme belirteci gibi bilgileri içerir.
 
 > [!TIP]
-> Konuşma tanıma, konuşma sentezi, çeviri veya niyet tanıma gerçekleştirin, her zaman bir yapılandırma oluşturursunuz.
+> Konuşma tanıma, konuşma birleştirme, çeviri veya amaç tanıma işlemlerini gerçekleştirmekten bağımsız olarak her zaman bir yapılandırma oluşturacaksınız.
 
-Bir baş harfe başlatmanın birkaç [`SpeechTranslationConfig`][config]yolu vardır:
+[`SpeechTranslationConfig`][config]Şunları başlatabilmeniz için birkaç yol vardır:
 
-* Abonelikle: bir anahtar ve ilişkili bölgede geçirin.
-* Bir bitiş noktası ile: Konuşma hizmeti bitiş noktası geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
-* Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
+* Abonelik ile: bir anahtarı ve ilişkili bölgeyi geçirin.
+* Uç nokta ile: bir konuşma hizmeti uç noktasında geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Bir ana bilgisayar ile: bir konak adresini geçirin. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
+* Yetkilendirme belirteci ile: bir yetkilendirme belirtecini ve ilişkili bölgeyi geçirin.
 
-Bir anahtar ve bölge kullanılarak [`SpeechTranslationConfig`][config] nasıl oluşturulduğuna bir göz atalım. Bölge tanımlayıcınızı bulmak için [bölge destek](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
+Bir [`SpeechTranslationConfig`][config] anahtar ve bölge kullanarak nasıl oluşturulduğuna göz atalım. Bölge tanımlarınızı bulmak için [bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -60,9 +60,9 @@ def translate_speech_to_text():
             subscription=speech_key, region=service_region)
 ```
 
-## <a name="change-source-language"></a>Kaynak dilini değiştirme
+## <a name="change-source-language"></a>Kaynak dilini değiştir
 
-Konuşma çevirisinin yaygın bir görevi giriş (veya kaynak) dilini belirtmektir. Giriş dilini İtalyanca'ya nasıl değiştireceğinize bir göz atalım. Kodunuzda, [`SpeechTranslationConfig`][config] özelliğe atama, örnekle `speech_recognition_language` etkileşimde bulundu.
+Konuşma çevirisi 'nin yaygın bir görevi, giriş (veya kaynak) dilini belirtmektir. Giriş dilini Italyanca olarak nasıl değiştirebileceğinizi göz atalım. Kodunuzda, [`SpeechTranslationConfig`][config] `speech_recognition_language` özelliğine atayarak örnekle etkileşime geçin.
 
 ```python
 def translate_speech_to_text():
@@ -73,11 +73,11 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
 ```
 
-Özellik [`speech_recognition_language`][recognitionlang] bir dil-yerel biçim dizesi bekliyor. Desteklenen [yerel halk/dil](../../../language-support.md)listesindeki **Yerel sütundaki** herhangi bir değer sağlayabilirsiniz.
+Özelliği [`speech_recognition_language`][recognitionlang] , bir dil yerel ayar dizesi bekliyor. Desteklenen [yerel ayarlar/diller](../../../language-support.md)listesindeki **yerel ayar** sütununda herhangi bir değer sağlayabilirsiniz.
 
-## <a name="add-translation-language"></a>Çeviri dili ekleme
+## <a name="add-translation-language"></a>Çeviri dili Ekle
 
-Konuşma çevirisinin bir diğer yaygın görevi hedef çeviri dillerini belirtmektir, en az bir tane gereklidir, ancak katları desteklenir. Aşağıdaki kod snippet' inde, çeviri dili olarak hem Fransızca hem de Almanca hedefolarak.
+Konuşma çevirisi 'nin başka bir ortak görevi, hedef çeviri dillerini belirtmektir, ancak en az bir tane gereklidir ancak katları desteklenir. Aşağıdaki kod parçacığında, hem Fransızca hem de Almanca, Çeviri dili olarak hedefler.
 
 ```python
 def translate_speech_to_text():
@@ -91,13 +91,13 @@ def translate_speech_to_text():
     translation_config.add_target_language("de")
 ```
 
-Her aramada [`add_target_language`][addlang]yeni bir hedef çeviri dili belirtilir. Başka bir deyişle, konuşma kaynak dilden tanındığı zaman, her hedef çeviri, ortaya çıkan çeviri işleminin bir parçası olarak kullanılabilir.
+Her çağrısıyla [`add_target_language`][addlang], yeni bir hedef çeviri dili belirtilir. Diğer bir deyişle, konuşma kaynak dilden tanındığında, her hedef çeviri, elde edilen çeviri işleminin bir parçası olarak kullanılabilir.
 
-## <a name="initialize-a-translation-recognizer"></a>Çeviri tanıyıcısını başlatma
+## <a name="initialize-a-translation-recognizer"></a>Çeviri tanıyıcısı başlatma
 
-Bir , bir [`SpeechTranslationConfig`][config]sonraki adım oluşturduktan sonra [`TranslationRecognizer`][recognizer]bir . Bir [`TranslationRecognizer`][recognizer]harfini başharflediğinizde, bunu geçirmeniz `translation_config`gerekir. Yapılandırma nesnesi, konuşma hizmetinin isteğinizi doğrulamak için gerektirdiği kimlik bilgilerini sağlar.
+Bir [`SpeechTranslationConfig`][config]oluşturduktan sonra, bir sonraki adım bir [`TranslationRecognizer`][recognizer]' ı başlatmaktır. Bir [`TranslationRecognizer`][recognizer]başlattığınızda, bunu geçirmeniz gerekir `translation_config`. Yapılandırma nesnesi, konuşma hizmeti 'nin isteğinizi doğrulamak için ihtiyaç duyduğu kimlik bilgilerini sağlar.
 
-Cihazınızın varsayılan mikrofonunu kullanarak konuşmayı fark ediyorsanız, aşağıdaki [`TranslationRecognizer`][recognizer] gibi görünmelidir:
+Cihazınızın varsayılan mikrofonunu [`TranslationRecognizer`][recognizer] kullanarak konuşmayı tanıyor olmanız halinde şöyle görünmelidir:
 
 ```python
 def translate_speech_to_text():
@@ -111,12 +111,12 @@ def translate_speech_to_text():
             translation_config=translation_config)
 ```
 
-Ses giriş aygıtını belirtmek istiyorsanız, ''ınızı ilke [`AudioConfig`][audioconfig] olarak alırken `audio_config` bir parametre [`TranslationRecognizer`][recognizer]oluşturmanız ve parametreyi sağlamanız gerekir.
+Ses giriş cihazını belirtmek isterseniz, oluşturmanız [`AudioConfig`][audioconfig] ve ' ı başlatırken `audio_config` parametresini sağlamanız gerekir. [`TranslationRecognizer`][recognizer]
 
 > [!TIP]
-> [Ses giriş aygıtınız için aygıt kimliğini nasıl alacağınızı öğrenin.](../../../how-to-select-audio-input-devices.md)
+> [Ses giriş cihazınız için CIHAZ kimliğini nasıl alabileceğinizi öğrenin](../../../how-to-select-audio-input-devices.md).
 
-İlk olarak, nesneye `AudioConfig` aşağıdaki gibi başvurursunuz:
+İlk olarak, `AudioConfig` nesnesine aşağıdaki gibi başvuracağız:
 
 ```python
 def translate_speech_to_text():
@@ -132,7 +132,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-Mikrofon kullanmak yerine ses dosyası sağlamak istiyorsanız, yine de `audioConfig`bir . Ancak, aramak yerine [`AudioConfig`][audioconfig] `use_default_microphone=True`bir parametre oluşturduğunuzda, `filename="path-to-file.wav"` parametreyi `filename` arar ve sağlarsınız.
+Mikrofon kullanmak yerine bir ses dosyası sağlamak istiyorsanız, yine de sağlamanız gerekir `audioConfig`. Ancak [`AudioConfig`][audioconfig], ile `use_default_microphone=True`çağırmak yerine bir oluşturduğunuzda, ile `filename="path-to-file.wav"` çağrın ve `filename` parametresini sağlarsınız.
 
 ```python
 def translate_speech_to_text():
@@ -150,7 +150,7 @@ def translate_speech_to_text():
 
 ## <a name="translate-speech"></a>Konuşmayı çevirme
 
-Konuşma çevirmek için, Konuşma SDK bir mikrofon veya ses dosyası girişi dayanır. Konuşma tanıma, konuşma çevirisiden önce gerçekleşir. Tüm nesneler baş harfe böldükten sonra tanı-bir işlevi arayın ve sonucu alın.
+Konuşmayı çevirmek için, konuşma SDK 'Sı bir mikrofona veya ses dosyası girişine bağımlıdır. Konuşma tanıma, konuşma çevirisi öncesinde oluşur. Tüm nesneler başlatıldıktan sonra, Recognize-bir kez işlevini çağırın ve sonucu alın.
 
 ```python
 import os
@@ -187,18 +187,18 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-Konuşmadan metne ilişkin daha fazla bilgi için [konuşma tanımanın temellerini](../../../speech-to-text-basics.md)görün.
+Konuşmayı metne dönüştürme hakkında daha fazla bilgi için bkz. [konuşma tanımanın temelleri](../../../speech-to-text-basics.md).
 
-## <a name="synthesize-translations"></a>Synthesize çevirileri
+## <a name="synthesize-translations"></a>Çevirileri sentezleştir
 
-Başarılı bir konuşma tanıma ve çeviriden sonra, sonuç sözlükteki tüm çevirileri içerir. Sözlük [`translations`][translations] anahtarı hedef çeviri dilidir ve değeri çevrilmiş metindir. Tanınan konuşma tercüme edilebilir, sonra farklı bir dilde sentezlenebilir (konuşma-konuşma).
+Başarılı bir konuşma tanıma ve çeviri işleminden sonra, sonuç bir Sözlükteki tüm çevirileri içerir. [`translations`][translations] Sözlük anahtarı hedef çeviri dilidir ve değer, çevrilmiş metindir. Tanınan konuşma çevrilebilir ve farklı bir dilde (konuşma konuşmaya) alınabilir.
 
-### <a name="event-based-synthesis"></a>Olay tabanlı sentez
+### <a name="event-based-synthesis"></a>Olay tabanlı sensıs
 
-Nesne `TranslationRecognizer` bir `Synthesizing` olayı ortaya çıkarır. Olay birkaç kez ateşler ve sentezlenen sesi çeviri tanıma sonucundan almak için bir mekanizma sağlar. Birden çok dile çeviri yorsanız, [bkz.](#manual-synthesis) Bir [`voice_name`][voicename] atama yaparak sentez sesi belirtin ve olay `Synthesizing` için bir olay işleyicisi sağlayın, ses olsun. Aşağıdaki örnek, çevrilen sesi *.wav* dosyası olarak kaydeder.
+`TranslationRecognizer` Nesne bir `Synthesizing` olay gösterir. Olay birkaç kez harekete geçirilir ve çeviri tanıma sonucundan birleştirilmiş sesi almak için bir mekanizma sağlar. Birden çok dile arıyorsanız bkz. [el ile birleştirme](#manual-synthesis). Bir oluşturma [`voice_name`][voicename] ve `Synthesizing` olay için olay işleyicisi sağlama yoluyla sensıs sesini belirtin, sesi alın. Aşağıdaki örnek, çevrilmiş sesi bir *. wav* dosyası olarak kaydeder.
 
 > [!IMPORTANT]
-> Olay tabanlı sentez yalnızca tek bir çeviri ile çalışır, birden çok hedef çeviri dili **eklemeyin.** Ayrıca, hedef [`voice_name`][voicename] çeviri dili ile aynı dil olmalıdır, örneğin; `"de"` için `"de-DE-Hedda"`harita olabilir.
+> Olay tabanlı birleştirme yalnızca tek bir çeviri ile birlikte çalışarak birden çok hedef çeviri **dili eklemeyin.** [`voice_name`][voicename] Ayrıca, hedef çeviri diliyle aynı dil olmalıdır, örneğin; `"de"` ile `"de-DE-Hedda"`eşlenecek.
 
 ```python
 import os
@@ -250,9 +250,9 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-### <a name="manual-synthesis"></a>Manuel sentez
+### <a name="manual-synthesis"></a>El ile birleştirme
 
-Sözlük, [`translations`][translations] çeviri metninden ses sentezlemek için kullanılabilir. Her çeviride yineleyin ve çeviriyi sentezleyin. Bir `SpeechSynthesizer` örnek oluştururken, nesnenin `SpeechConfig` [`speech_synthesis_voice_name`][speechsynthesisvoicename] özelliğinin istenilen sese ayarlanması gerekir. Aşağıdaki örnek beş dile çevirir ve her çeviri daha sonra ilgili nöral dilde bir ses dosyasına sentezlenir.
+[`translations`][translations] Sözlük, çeviri metninin sesini sentezleştirmek için kullanılabilir. Her bir çeviride yineleme yapın ve çeviriyi sentezleştirme. Bir `SpeechSynthesizer` örnek oluştururken `SpeechConfig` nesnenin [`speech_synthesis_voice_name`][speechsynthesisvoicename] özelliği istenen sesle ayarlanmış olması gerekir. Aşağıdaki örnek, beş dili dönüştürür ve her bir çeviri, karşılık gelen sinir dilinde bir ses dosyası ile birleştirilmiştir.
 
 ```python
 import os
@@ -300,7 +300,7 @@ def synthesize_translations(result):
 translate_speech_to_text()
 ```
 
-Konuşma sentezi hakkında daha fazla bilgi [için, konuşma sentezinin temellerini](../../../text-to-speech-basics.md)görün.
+Konuşma birleştirme hakkında daha fazla bilgi için bkz. [konuşma birleştirme temelleri](../../../text-to-speech-basics.md).
 
 [config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
 [audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python
