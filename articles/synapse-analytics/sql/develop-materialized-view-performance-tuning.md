@@ -1,6 +1,6 @@
 ---
 title: Gerçekleştirilmiş görünümler ile performans ayarlama
-description: Sorgu performansınızı artırmak için somutlaştırılmış görünümleri kullanırken bilmeniz gereken öneriler ve hususlar.
+description: Sorgu performansınızı geliştirmek için gerçekleştirilmiş görünümleri kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,99 +11,99 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 30ca03633b9b0788235439204a3c1926fe6b6a6b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429986"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
-Synapse SQL havuzunda, somutlaştırılmış görünümler, sorgu değişikliği olmadan hızlı performans elde etmek için karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede, maddeleştirilmiş görünümlerin kullanılmasına ilişkin genel kılavuz açıklanmaktadır.
+SYNAPSE SQL havuzunda gerçekleştirilmiş görünümler, bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
 
-## <a name="materialized-views-vs-standard-views"></a>Maddeleştirilmiş görünümler ve standart görünümler
+## <a name="materialized-views-vs-standard-views"></a>Gerçekleştirilmiş görünümler ve standart görünümler karşılaştırması
 
-SQL havuzu hem standart hem de maddelendirilmiş görünümleri destekler.  Her ikisi de SELECT ifadeleri ile oluşturulan ve sorgulara mantıksal tablolar olarak sunulan sanal tablolardır.  Görünümler, ortak veri hesaplamasının karmaşıklığını ortaya çıkarır ve sorguları yeniden yazmaya gerek kalmadan hesaplama değişikliklerine bir soyutlama katmanı ekler.  
+SQL havuzu hem standart hem de gerçekleştirilmiş görünümleri destekler.  Her ikisi de SELECT ifadelerle oluşturulmuş ve sorguları Mantıksal tablolar olarak sunulan sanal tablolardır.  Görünümler ortak veri hesaplamasının karmaşıklığını açığa çıkarır ve değişiklikleri hesaplama için bir soyutlama katmanı ekler. böylece sorguları yeniden yazmanız gerekmez.  
 
-Standart görünüm, görünüm her kullanıldığında verilerini bilgilenir.  Diskte depolanan veri yok. İnsanlar genellikle bir veritabanında mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak standart görünümleri kullanır.  Standart bir görünüm kullanmak için, bir sorgunun doğrudan başvuruda bulunması gerekir.
+Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte depolanan veri yok. İnsanlar genellikle standart görünümleri, bir veritabanındaki mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak kullanır.  Standart bir görünüm kullanmak için bir sorgunun kendisine doğrudan başvuru yapması gerekir.
 
-Somutlaştırılmış görünüm, verilerini bir tablo gibi SQL havuzunda önceden hesaplar, depolar ve korur.  Materyalize görünüm her kullanıldığında yeniden hesaplama gerekmez.  Bu nedenle, verilerin tamamını veya bir alt kümesini maddeleştirilmiş görünümlerde kullanan sorgular daha hızlı performans elde edebilir.  Daha da iyisi, sorgular doğrudan başvuru yapmadan somutlaştırılmış bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeye gerek yoktur.  
+Gerçekleştirilmiş bir görünüm, verileri SQL havuzunda tıpkı bir tablo gibi önceden hesaplar, depolar ve korur.  Gerçekleştirilmiş bir görünümün kullanıldığı her seferinde yeniden hesaplama gerekli değildir.  Gerçekleştirilmiş görünümlerde verilerin tümünü veya bir alt kümesini kullanan sorguların bazıları daha hızlı performans elde edebilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
 
-Standart görünüm gereksinimlerinin çoğu yine de maddeleştirilmiş görünüm için geçerlidir. Maddeleştirilmiş görünüm sözdizimi ve diğer gereksinimler hakkında ayrıntılı bilgi için SELECT [olarak MATERYALIZE GÖRÜNÜM OLUŞTUR'a](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
+Standart Görünüm gereksinimlerinin çoğu, gerçekleştirilmiş bir görünüm için hala geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimlere ilişkin ayrıntılar için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-| Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm
+| Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
-|Tanımı görüntüleme                 | Azure veri ambarında depolanır.              | Azure veri ambarında depolanır.
-|İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Önceden işlenmiş ve Azure veri ambarında depolanmış. Veriler temel tablolara eklendikçe güncelleştirildi.
-|Veri yenileme                    | Her zaman güncelleştirildi                               | Her zaman güncelleştirildi
-|Karmaşık sorgulardan görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ekstra depolama                   | Hayır                                           | Evet
-|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | SELECT OLARAK MADDELEŞTIRILMIŞ GÖRÜNÜM OLUŞTURMA
+|Tanımı görüntüleme                 | Azure veri ambarı 'nda depolanır.              | Azure veri ambarı 'nda depolanır.
+|İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında Azure veri ambarı 'nda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
+|Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
+|Karmaşık sorgulardan Görünüm verilerini alma hızı     | Dığını                                         | Hızlı  
+|Ek depolama                   | Hayır                                           | Yes
+|Sözdizimi                          | GÖRÜNÜM OLUŞTUR                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
-## <a name="benefits-of-using-materialized-views"></a>Maddeleştirilmiş görünümleri kullanmanın yararları
+## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
 
-Düzgün tasarlanmış bir materyalize görünüm aşağıdaki avantajları sağlar:
+Düzgün şekilde tasarlanan gerçekleştirilmiş bir görünüm aşağıdaki avantajları sağlar:
 
-- JO'lar ve toplu işlevler içeren karmaşık sorgular için azaltılmış yürütme süresi. Sorgu ne kadar karmaşıksa, yürütme-zaman tasarrufu potansiyeli de o kadar yüksek olabilir. Bir sorgunun hesaplama maliyeti yüksek olduğunda ve ortaya çıkan veri kümesi küçük olduğunda en fazla avantaj elde edilir.  
+- Birleştirmelere ve toplama işlevlerine sahip karmaşık sorgular için daha az yürütme süresi. Sorgu ne kadar karmaşık olursa, yürütme zamanı kaydetme olasılığı o kadar yüksektir. En avantaja, bir sorgunun hesaplama maliyeti yüksekse ve elde edilen veri kümesi küçük olduğunda kazanılabilir.  
 
-- SQL havuzundaki en iyi duruma getirici, sorgu yürütme planlarını geliştirmek için otomatik olarak dağıtılan önemli leştirilmiş görünümleri kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar için saydamdır ve somutlaştırılmış görünümlere doğrudan başvuru yapmak için sorgular gerektirmez.
+- SQL havuzundaki iyileştirici, sorgu yürütme planlarını geliştirmek için dağıtılan gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar tarafından saydamdır ve gerçekleştirilmiş görünümlere doğrudan başvuru yapmak için sorgular gerektirmez.
 
-- Görünümler üzerinde düşük bakım gerektirir.  Somutlaştırılmış görünüm verileri iki yerde, görünüm oluşturma zamanındaki ilk veriler için kümelenmiş sütun deposu dizini ve artımlı veri değişiklikleri için delta deposu depolar.  Temel tablolardaki tüm veri değişiklikleri otomatik olarak senkron bir şekilde delta deposuna eklenir.  Arka plan işlemi (tuple mover), verileri delta deposundan görünümün sütun deposu dizinine düzenli olarak taşır.  Bu tasarım, önemlileştirilmiş görünümleri sorgulayarak, temel tabloları doğrudan sorgulayan la aynı verileri döndürmeye olanak tanır.
-- Somutlaştırılmış görünümdeki veriler temel tablolardan farklı olarak dağıtılabilir.  
-- Somutlaştırılmış görünümdeki veriler, normal tablolardaki verilerle aynı yüksek kullanılabilirlik ve esneklik avantajlarından yararlanır.  
+- Görünümlerde düşük bakım gerektirir.  Gerçekleştirilmiş görünüm, verileri iki yerde depolar, görünüm oluşturma sırasında ilk veriler için kümelenmiş bir columnstore dizini ve artımlı veri değişiklikleri için bir Delta deposu.  Taban tablolardaki tüm veri değişiklikleri, Delta deposuna zaman uyumlu şekilde otomatik olarak eklenir.  Arka plan işlemi (demet taşıyıcısı) düzenli aralıklarla verileri Delta deposundan görünümün columnstore dizinine taşımaktır.  Bu tasarım, gerçekleştirilmiş görünümlerin doğrudan temel tabloları sorgulamak için aynı verileri döndürmesini sağlar.
+- Gerçekleştirilmiş bir görünümdeki veriler, temel tablolardan farklı şekilde dağıtılabilir.  
+- Gerçekleştirilmiş görünümlerde veri, normal tablolardaki verilerle aynı yüksek kullanılabilirlik ve dayanıklılık avantajlarını alır.  
 
-Diğer veri ambarı sağlayıcılarıyla karşılaştırıldığında, SQL havuzunda uygulanan maddeleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
+Diğer veri ambarı sağlayıcılarına kıyasla, SQL havuzunda uygulanan gerçekleştirilmiş görünümler de aşağıdaki ek avantajları sağlar:
 
-- Temel tablolardaki veri değişiklikleriyle otomatik ve eşzamanlı veri yenileme. Kullanıcı eylemi gerekmez.
-- Geniş toplam işlev desteği. Bkz. [SELECT (Transact-SQL) olarak MATERYALIZE GÖRÜNÜM OLUŞTUR.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- Sorguya özgü maddeleştirilmiş görünüm önerisi desteği.  Bkz. [AÇIKLAMA (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Taban tablolardaki veri değişiklikleriyle otomatik ve zaman uyumlu veri yenileme. Kullanıcı eylemi gerekli değildir.
+- Geniş kapsamlı toplama işlevi desteği. Bkz. [Select (Transact-SQL) olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Sorguya özgü gerçekleştirilmiş görünüm önerisi için destek.  Bkz. [açıkla (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="common-scenarios"></a>Genel senaryolar  
+## <a name="common-scenarios"></a>Yaygın senaryolar  
 
-Somutlaştırılmış görünümler genellikle aşağıdaki senaryolarda kullanılır:
+Gerçekleştirilmiş görünümler genellikle aşağıdaki senaryolarda kullanılır:
 
-**Boyutu büyük verilere karşı karmaşık analitik sorguların performansını artırmak gerekir**
+**Büyük verilere karşı karmaşık analitik sorguların performansını artırmanın gerekli olması gerekir**
 
-Karmaşık analitik sorgular genellikle daha fazla toplama işlevleri ve tablo birleşimleri kullanarak sorgu yürütmede karıştırma lar ve birleştirmeler gibi daha fazla işlem ağırlıklı işleme neden olur.  Bu nedenle, bu sorguların tamamlanması daha uzun sürer, özellikle büyük tablolarda.  
+Karmaşık analitik sorgular genellikle daha fazla toplama işlevleri ve tablo birleştirmeleri kullanır, bu da karışık ve sorgu yürütmesindeki birleşimler gibi daha fazla işlem ağır işleme neden olur.  Bu, özellikle büyük tablolarda, bu sorguların tamamlanması daha uzun sürer.  
 
-Kullanıcılar sorguların ortak hesaplamalarından döndürülen veriler için önemlileştirilmiş görünümler oluşturabilir, bu nedenle bu veriler sorgular tarafından gerekli olduğunda yeniden hesaplama gerekmez ve böylece daha düşük işlem maliyeti ve daha hızlı sorgu yanıtı sağlar.
+Kullanıcılar, sorguların ortak hesaplamalarından döndürülen veriler için gerçekleştirilmiş görünümler oluşturabilir, bu nedenle sorgular için bu verilere ihtiyaç duyduğunda, daha düşük işlem maliyetine ve daha hızlı sorgu yanıtına izin veren bir yeniden hesaplama gerekmez.
 
-**Hiçbir veya minimum sorgu değişikliği olmadan daha hızlı performansa ihtiyaç duyma**
+**Hiçbir veya en düşük sorgu değişikliği ile daha hızlı performans gerekiyor**
 
-Veri ambarlarında şema ve sorgu değişiklikleri genellikle normal ETL işlemleri ve raporlama desteklemek için minimumda tutulur.  Görünümlerin neden olduğu maliyet sorgu performansındaki kazançla dengelenebilirse, kişiler sorgu performansı atoması için önemlileştirilmiş görünümler kullanabilir.
+Veri ambarlarındaki şema ve sorgu değişiklikleri genellikle normal ETL işlemlerini ve raporlamayı desteklemek için en düşük düzeyde tutulur.  Görünümler, görünümler tarafından tahakkuk eden maliyet sorgu performansından kazanımdan kayılarak, sorgu performansı ayarlama için gerçekleştirilmiş görünümleri kullanabilir.
 
-Ölçekleme ve istatistik yönetimi gibi diğer tuning seçenekleriyle karşılaştırıldığında, maddeleşmiş bir görünüm oluşturmak ve korumak için çok daha az etkili bir üretim değişimidir ve potansiyel performans kazancı da daha yüksektir.
+Ölçeklendirme ve istatistik yönetimi gibi diğer ayarlama seçeneklerine kıyasla, gerçekleştirilmiş bir görünüm oluşturup sürdürmek için çok daha az bir üretim değişikliği ve potansiyel performans kazancı da daha yüksektir.
 
-- Somutlaştırılmış görünümler oluşturmak veya korumak, temel tablolara karşı çalışan sorguları etkilemez.
-- Sorgu optimize edici, bir sorguda doğrudan görünüm başvurusu olmadan dağıtılan maddeleştirilmiş görünümleri otomatik olarak kullanabilir. Bu özellik, performans atonlama sorgu değişikliği ihtiyacını azaltır.
+- Gerçekleştirilmiş görünümlerin oluşturulması veya sürdürülmesi, temel tablolara karşı çalışan sorguları etkilemez.
+- Sorgu iyileştiricisi, bir sorgudaki doğrudan görünüm başvurusu olmadan dağıtılmış gerçekleştirilmiş görünümleri otomatik olarak kullanabilir. Bu yetenek, performans ayarlamasındaki sorgu değişikliği gereksinimini azaltır.
 
-**Daha hızlı sorgu performansı için farklı veri dağıtım stratejisine ihtiyacınız var**
+**Daha hızlı sorgu performansı için farklı veri dağıtımı stratejisi gerekir**
 
-Azure veri ambarı, dağıtılmış ve büyük ölçüde paralel bir işleme (MPP) sistemidir.   Veri ambarı tablosundaki veriler, üç [dağıtım stratejilerinden](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) biri (karma, round_robin veya çoğaltılmış) kullanılarak 60 düğüme dağıtılır.  
+Azure veri ambarı, dağıtılmış ve yüksek düzeyde paralel işleme (MPP) sistemidir.   Veri ambarı tablosundaki veriler, üç [dağıtım stratejisinden](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.  
 
-Veri dağıtımı tablo oluşturma zamanında belirtilir ve tablo bırakılana kadar değişmeden kalır. Disküzerinde sanal bir tablo olan materyalize görünüm karma ve round_robin veri dağıtımlarını destekler.  Kullanıcılar, temel tablolardan farklı, ancak görünümleri sık kullanan sorguların performansı için en uygun olan bir veri dağıtımı seçebilir.  
+Veri dağıtımı tablo oluşturma zamanında belirtilir ve tablo bırakılana kadar değişmeden kalır. Gerçekleştirilmiş görünüm, karma ve round_robin veri dağıtımlarını destekler.  Kullanıcılar, temel tablolardan farklı olan, ancak görünümleri sık kullanan sorguların performansı için en uygun olan veri dağıtımını seçebilirler.  
 
-## <a name="design-guidance"></a>Tasarım kılavuzu
+## <a name="design-guidance"></a>Tasarım Kılavuzu
 
-Sorgu performansını artırmak için somutlaştırılmış görünümleri kullanma yla ilgili genel kılavuz aşağıda veda edinilir:
+Sorgu performansını artırmak için gerçekleştirilmiş görünümleri kullanmaya yönelik genel rehberlik aşağıda verilmiştir:
 
 **İş yükünüz için tasarım**
 
-Somutlaştırılmış görünümler oluşturmaya başlamadan önce, sorgu desenleri, önemi, sıklığı ve elde edilen verilerin boyutu açısından iş yükünüzü derinlemesine anlamanız önemlidir.  
+Gerçekleştirilmiş görünümler oluşturmaya başlamadan önce, iş yükünüzü sorgu desenleri, önem derecesi, sıklık ve elde edilen verilerin boyutu açısından derinlemesine bir şekilde anlamak önemlidir.  
 
-Kullanıcılar, sorgu optimize edici tarafından önerilen önemlileştirilmiş görünümler için WITH_RECOMMENDATIONS <SQL_statement> çalıştırabilir.  Bu öneriler sorguya özgü olduğundan, tek bir sorgudan yararlanan, aynı iş yükündeki diğer sorgular için en uygun olmayabilir.  
+Kullanıcılar, sorgu iyileştiricisi tarafından önerilen gerçekleştirilmiş görünümler için> AÇıKLA WITH_RECOMMENDATIONS <SQL_statement çalıştırabilir.  Bu öneriler sorguya özgü olduğundan, tek bir sorgunun avantajlarından faydalanmış olan gerçekleştirilmiş bir görünüm aynı iş yükünde diğer sorgular için en iyi durumda olmayabilir.  
 
-Bu önerileri iş yükünüz göz önünde bulundurularak değerlendirin.  İdeal somutlaştırılmış görünümler, iş yükünün performansından yararlanan görünümlerdir.  
+İş yükünüz gereksinimlerinize göre bu önerileri değerlendirin.  İdeal gerçekleştirilmiş görünümler iş yükünün performansına faydalanabilir.  
 
-**Daha hızlı sorgular ve maliyet arasındaki dengenin farkında olun**
+**Daha hızlı sorgular ve maliyet arasındaki zorunluluğunu getirir farkında olun**
 
-Her somutlaştırılmış görünüm için bir veri depolama maliyeti ve görünümü korumak için bir maliyet vardır.  Temel tablolardaki veri değiştikçe, maddeleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  
+Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolardaki veriler değiştikçe, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  
 
-Sorgu performansı bozulmasını önlemek için, her somutlaştırılmış görünüm, satırları delta deposundan sütun deposu dizin segmentlerine taşıma ve veri değişikliklerini birleştirme dahil olmak üzere veri ambarı altyapısı tarafından ayrı ayrı tutulur.  
+Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her bir görünüm veri ambarı altyapısı tarafından ayrı tutulur; bu da satırları Delta deposundan columnstore dizin kesimlerine taşıma ve veri değişikliklerini birleştirme dahil olmak üzere.  
 
-Maddeleştirilmiş görünüm sayısı ve taban tablosu değişiklikleri arttığında bakım iş yükü daha yüksek tırmanıyor.   Kullanıcılar, tüm somutlaştırılmış görünümlerden kaynaklanan maliyetin sorgu performansı kazancıyla dengelenebilir mi kontrol etmelidir.  
+Gerçekleştirilmiş görünümler ve temel tablo değişikliklerinin sayısı arttıkça bakım iş yükü o kadar artar.   Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  
 
-Bu sorguyu, veritabanındaki maddelendirilmiş görünüm listesi için çalıştırabilirsiniz:
+Veritabanında gerçekleştirilmiş görünüm listesi için bu sorguyu çalıştırabilirsiniz:
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -111,13 +111,13 @@ FROM sys.views V
 JOIN sys.indexes I ON V.object_id= I.object_id AND I.index_id < 2;
 ```
 
-Somutlaştırılmış görünüm sayısını azaltmak için seçenekler:
+Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri:
 
-- İş yüklerinizdeki karmaşık sorgular tarafından sıklıkla kullanılan yaygın veri kümelerini tanımlayın.  En iyi duruma getirici yürütme planları oluştururken bunları yapı taşları olarak kullanabilsin diye bu veri kümelerini depolamak için maddeleştirilmiş görünümler oluşturun.  
+- İş yükünüzün karmaşık sorguların sıklıkla kullandığı ortak veri kümelerini belirler.  İyileştiricinin bunları yürütme planları oluştururken yapı taşları olarak kullanabilmesi için, bu veri kümelerini depolamak üzere gerçekleştirilmiş görünümler oluşturun.  
 
-- Düşük kullanıma sahip veya artık gerekli olmayan maddeleştirilmiş görünümleri bırakın.  Devre dışı bırakılmış bir maddeleştirilmiş görünüm korunmaz, ancak yine de depolama maliyetine neden olur.  
+- Az kullanım veya artık gerekli olmayan gerçekleştirilmiş görünümleri bırakın.  Devre dışı gerçekleştirilmiş bir görünüm korunmaz, ancak depolama maliyeti hala buna neden olur.  
 
-- Verileri çakışmasa bile aynı veya benzer temel tablolarda oluşturulan somutlaştırılmış görünümleri birleştirin.  Somutlaştırılmış görünümlerin birleştirilmesi, ayrı görünümlerin toplamından daha büyük bir boyut görünümüne neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
+- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
 
 ```sql
 -- Query 1 would benefit from having a materialized view created with this SELECT statement
@@ -137,23 +137,23 @@ GROUP BY A, C
 
 ```
 
-**Tüm performans atonunudlama sorgu değişikliği gerektirmez**
+**Tüm performans ayarları sorgu değişikliğini gerektirmez**
 
-Veri ambarı optimize edici, sorgu performansını artırmak için dağıtılan maddeleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu destek, görünümlere başvurmayan sorgulara ve maddeleştirilmiş görünümler oluşturmada desteklenmeyen agregakullanan sorgulara saydam olarak uygulanır.  Sorgu değişikliği gerekmez. Somutlaştırılmış bir görünüm kullanılıp kullanılıp kullanılmamasını onaylamak için bir sorgunun tahmini yürütme planını denetleyebilirsiniz.  
+Veri ambarı iyileştirici, sorgu performansını artırmak için dağıtılmış gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu destek, görünümlere başvurmayan sorgulara ve gerçekleştirilmiş görünümler oluşturmada desteklenmeyen toplamalar kullanan sorgulara şeffaf bir şekilde uygulanır.  Sorgu değişikliğine gerek yoktur. Gerçekleştirilmiş bir görünümün kullanıldığını onaylamak için bir sorgunun tahmini yürütme planını kontrol edebilirsiniz.  
 
-**Önemli leştirilmiş görünümleri izleme**
+**Gerçekleştirilmiş görünümleri izle**
 
-Maddeleştirilmiş görünüm, kümelenmiş sütun deposu dizini (CCI) olan bir tablo gibi veri ambarında depolanır.  Verileri somutlaştırılmış bir görünümden okuma, dizini taramayı ve delta deposundan değişiklikleri uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, bir sorguyu somutlaştırılmış görünümden çözme, temel tabloları doğrudan sorgulamaktan daha uzun sürebilir.  Sorgu performansı bozulmasını önlemek için, görünümün overhead_ratio (total_rows / base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) çalıştırmak için iyi bir uygulamadır.  overhead_ratio çok yüksekse, delta deposundaki tüm satırların sütun deposu dizinine taşınması için maddeleştirilmiş görünümü yeniden oluşturmayı düşünün.  
+Gerçekleştirilmiş bir görünüm, veri ambarında, kümelenmiş columnstore dizini (CCı) içeren bir tabloda olduğu gibi depolanır.  Gerçekleştirilmiş bir görünümden veri okuma, dizin taramayı ve Delta deposundan değişiklik uygulamayı içerir.  Delta deposundaki satır sayısı çok yüksekse, gerçekleştirilmiş bir görünümden bir sorgunun çözümlenmesi doğrudan temel tabloları sorgulamadan daha uzun sürebilir.  Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (total_rows/base_view_row) izlemek için [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) çalıştırmak iyi bir uygulamadır.  Overhead_ratio çok yüksekse, gerçekleştirilmiş görünümü yeniden oluşturmayı düşünün. bu nedenle, Delta deposundaki tüm satırlar columnstore dizinine taşınır.  
 
-**Maddeleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
+**Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 
-Bu iki özellik, sorgu performans için aynı zamanda SQL havuzunda tanıtılır. Sonuç kümesi önbelleğe alma statik verilere karşı yinelenen sorgulardan yüksek eşzamanlılık ve hızlı yanıt süreleri elde etmek için kullanılır.  
+Bu iki özellik SQL havuzunda sorgu performansı ayarlama için aynı anda tanıtılmıştır. Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt süreleri sağlamak için kullanılır.  
 
-Önbelleğe alınmış sonucu kullanmak için, sorgu isteyen önbellek biçiminin önbelleği oluşturan sorguyla eşleşmesi gerekir.  Ayrıca, önbelleğe alınmış sonucun tüm sorguiçin geçerli olması gerekir.  Somutlaştırılmış görünümler temel tablolarda veri değişikliklerine izin verir.  Maddeleştirilmiş görünümdeki veriler bir sorguparçasına uygulanabilir.  Bu destek, aynı somutlaştırılmış görünümlerin daha hızlı performans için bazı hesaplamaları paylaşan farklı sorgular tarafından kullanılmasını sağlar.
+Önbelleğe alınan sonucu kullanmak için, sorgu isteyen önbelleğin formu, önbelleği üreten sorguyla eşleşmelidir.  Ayrıca, önbelleğe alınan sonucun tüm sorguya uygulanması gerekir.  Gerçekleştirilmiş görünümler, temel tablolardaki veri değişikliklerine izin verir.  Gerçekleştirilmiş görünümlerde bulunan veriler, bir sorgu parçasına uygulanabilir.  Bu destek, daha hızlı performans için bazı hesaplamayı paylaşan farklı sorgular tarafından aynı gerçekleştirilmiş görünümlerin kullanılmasına izin verir.
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, katalog üzerinden mağazalardan daha fazla para harcayan müşterileri bulan TPCDS benzeri bir sorgu kullanılır. Ayrıca tercih edilen müşterileri ve menşe ülkelerini tanımlar.   Sorgu, SUM() ve GROUP BY içeren üç alt SELECT deyiminin birliğinden TOP 100 kayıtlarını seçmeyi içerir.
+Bu örnekte, katalogdan daha fazla ücret harcamış müşterileri bulan TPCDS benzeri bir sorgu kullanılmaktadır. Ayrıca tercih edilen müşterileri ve bunların kaynak ülkesini tanımlar.   Sorgu SUM () ve GROUP BY içeren üç alt SELECT deyimi BIRLEŞIMDEN Ilk 100 kaydı seçmeyi içerir.
 
 ```sql
 WITH year_total AS (
@@ -271,7 +271,7 @@ ORDER BY t_s_secyear.customer_id
 OPTION ( LABEL = 'Query04-af359846-253-3');
 ```
 
-Sorgunun tahmini yürütme planını denetleyin.  Yürütmek için daha fazla zaman alan 18 shuffles ve 17 birleştirme işlemleri vardır. Şimdi üç alt SELECT deyiminin her biri için bir somutlaştırılmış görünüm oluşturalım.
+Sorgunun tahmini yürütme planını denetleyin.  18 karıştırılmış Les ve 17 birleştirme işlemi vardır ve bu işlemler yürütülmesi daha fazla zaman alır. Şimdi üç alt SELECT deyimlerinin her biri için bir gerçekleştirilmiş görünüm oluşturalım.
 
 ```sql
 CREATE materialized view nbViewSS WITH (DISTRIBUTION=HASH(customer_id)) AS
@@ -352,13 +352,13 @@ GROUP BY c_customer_id
 
 ```
 
-Özgün sorgunun yürütme planını yeniden denetleyin.  Şimdi birleştirme sayısı 17'den 5'e değişiyor ve artık bir değişiklik yok.  Plandaki Filtre işlemi simgesini tıklatın. Çıktı Listesi, verilerin temel tablolar yerine maddelendirilmiş görünümlerden okunduğunu gösterir.  
+Özgün sorgunun yürütme planını yeniden denetleyin.  Artık 17 ' den 5 ' e kadar olan birleştirme sayısı ve artık karışmıyor.  Plandaki filtre işlemi simgesine tıklayın. Çıkış listesi, verileri temel tablolar yerine gerçekleştirilmiş görünümlerden okuduğunuzu gösterir.  
 
  ![Plan_Output_List_with_Materialized_Views](./media/develop-materialized-view-performance-tuning/output-list.png)
 
-Somutlaştırılmış görünümlerle, aynı sorgu herhangi bir kod değişikliği olmadan çok daha hızlı çalışır.  
+Gerçekleştirilmiş görünümler sayesinde, aynı sorgu herhangi bir kod değişikliği olmadan çok daha hızlı çalışır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [Synapse SQL geliştirme genel bakış'a](develop-overview.md)bakın.
+Daha fazla geliştirme ipucu için bkz. [SYNAPSE SQL geliştirmesine genel bakış](develop-overview.md).
  

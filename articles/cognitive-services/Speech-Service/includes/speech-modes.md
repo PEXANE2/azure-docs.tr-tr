@@ -6,32 +6,32 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: trbye
 ms.openlocfilehash: d97a1bf00d722414bedda4be79adc0c26d02c751
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422158"
 ---
 ## <a name="speech-modes"></a>Konuşma modları
 
-**Etkileşimli**
-- Komut ve kontrol senaryoları içindir.
-- X segmentasyon süresi değerine sahiptir.
-- Tanınan bir sözcük sonunda, hizmet o istek kimliğinden ses işlemeyi durdurur ve sırayı sona erdirir. Bağlantı kapalı değil.
-- Tanıma için maksimum sınır 20'dir.
-- Çağırmak için tipik `RecognizeOnceAsync`Karbon çağrısı .
+**LiDE**
+- Komut ve denetim senaryolarına yöneliktir.
+- , Bir segment zaman aşımı değeri X ' i içerir.
+- Tanınan bir zaman sonunda hizmet, bu istek KIMLIĞINDEN ses işlemeyi durduruyor ve sonra da sona erecektir. Bağlantı kapalı değil.
+- Maksimum tanıma sınırı 20s 'dir.
+- Invoke için tipik karbon çağrısı `RecognizeOnceAsync`.
 
 **Konuşma**
-- Daha uzun süre çalışan tanımalar içindir.
-- Y. segmentasyon zaman çıkış değerine sahiptir (Y != X)
-- Dönüş sona ermeden birden fazla tam söyleyiş işleyecek.
-- Çok fazla sessizlik için dönüş sona erecek.
-- Karbon yeni bir istek kimliği ile devam edecek ve gerektiğinde ses yeniden.
-- Hizmet, 10 dakikalık konuşma tanıma sonrasında zorla bağlantısını kesecektir.
-- Karbon, onaylanmamış sesi yeniden bağlar ve yeniden oynatır.
-- Karbon ile `StartContinuousRecognition`çağrılır.
+- Daha uzun süre çalışan için tasarlanmıştır.
+- , Bir segmentleme zaman aşımı değeri olan Y. (Y! = X)
+- , Açmayı sonlandırmadan birden çok tamamlanmış şekilde işlem görür.
+- , Çok fazla sessizlik için de sona erdir.
+- Karbon, yeni bir istek KIMLIĞIYLE devam eder ve gerekirse sesi yeniden dener.
+- Hizmet, 10 dakikadan kısa bir süre sonra, konuşma tanımayı zorla keser.
+- Karbon, geri bağlantı kurar ve kabul edilmemiş sesi yeniden oynaacaktır.
+- Karbon ile `StartContinuousRecognition`çağrıldı.
 
-**Dikte**
-- Kullanıcıların konuşarak noktalama işaretlerini belirtmelerine olanak tanır.
-- Tanımayı başlatan API `EnableDictation` çağrısıne bakılmaksızın `SpeechConfig` nesne üzerinde belirterek Karbon olarak çağrılır.
-- 1.<sup>st</sup> taraf kümesi `speech.fragment` ara sonuçlar için iletileri döndürür,<sup>3.</sup> `speech.hypothesis`
+**Etme**
+- Kullanıcıların konuşmayı konuşarak noktalama işaretleri belirlemesine izin verir.
+- Tanımayı Başlatan API çağrısından bağımsız `EnableDictation` olarak `SpeechConfig` nesne üzerinde belirtilerek bilgi olarak çağrılır.
+- 1<sup>St</sup> <sup>taraf kümesi, 3.</sup> taraf ileti döndüren `speech.hypothesis` ara sonuçlara yönelik iletileri döndürür `speech.fragment` .

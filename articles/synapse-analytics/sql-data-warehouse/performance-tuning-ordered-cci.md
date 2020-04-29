@@ -1,6 +1,6 @@
 ---
 title: Sıralı kümelenmiş columnstore dizini ile performans ayarlama
-description: Sorgu performansınızı artırmak için sıralı kümelenmiş sütun mağazası dizini kullanırken bilmeniz gereken öneriler ve hususlar.
+description: Sorgu performansınızı geliştirmek için sıralı kümelenmiş columnstore dizini kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417051"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore dizini ile performans ayarlama  
 
-Kullanıcılar Synapse SQL havuzunda bir sütun mağazası tablosunu sorguladığında, en iyi duruma getirici her segmentte depolanan minimum ve maksimum değerleri denetler.  Sorgu yükleminin sınırları dışında olan segmentler diskten belleğe okunmaz.  Okunacak kesim sayısı ve toplam boyutları küçükse, sorgu daha hızlı performans elde edebilir.   
+Kullanıcılar SYNAPSE SQL havuzundaki bir columnstore tablosunu sorgulayıp iyileştirici, her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sıralı vs sıralı olmayan kümelenmiş sütun deposu dizini
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sıralı ve sıralı olmayan kümelenmiş columnstore dizini
 
-Varsayılan olarak, dizin seçeneği olmadan oluşturulan her tablo için, bir iç bileşen (dizin oluşturucusu) üzerinde sıralı olmayan bir kümelenmiş sütun deposu dizini (CCI) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentine sıkıştırılır.  Her kesimin değer aralığında meta veriler vardır, bu nedenle sorgu yükleminin sınırları dışında olan segmentler sorgu yürütme sırasında diskten okunmaz.  CCI en yüksek düzeyde veri sıkıştırma sunar ve sorguların daha hızlı çalıştırabilmesi için okumak için segmentlerin boyutunu azaltır. Ancak, dizin oluşturucusu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip segmentler oluşabilir ve sorguların diskten daha fazla kesim okumasına ve tamamlanmasının daha uzun sürmesine neden olabilir.  
+Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her tablo için bir iç bileşen (Dizin Oluşturucu) üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
 
-Sıralı bir CCI oluştururken, Synapse SQL altyapısı, dizin oluşturucu onları dizin segmentlerine sıkıştırmadan önce bellekteki varolan verileri sıralı anahtara göre sıralar.  Sıralanmış verilerle, segment çakışması, sorguların daha verimli bir segment eliminasyonuna ve böylece diskten okunacak kesim sayısı daha küçük olduğundan daha hızlı performansa sahip olmasını sağlayarak azalır.  Tüm veriler aynı anda bellekte sıralanabilirse, segment çakışması önlenebilir.  Veri ambarlarında bulunan büyük tablolar nedeniyle, bu senaryo sık sık gerçekleşmez.  
+Sıralı bir CCı oluştururken, SYNAPSE SQL Engine, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, bellekteki mevcut verileri sıra anahtarları göre sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarlarındaki büyük tablolar nedeniyle bu senaryo genellikle gerçekleşmez.  
 
-Bir sütunun segment aralıklarını denetlemek için, tablo adınız ve sütun adınız ile aşağıdaki komutu çalıştırın:
+Bir sütunun kesim aralıklarını denetlemek için, aşağıdaki komutu tablo adınızla ve sütun adınızla çalıştırın:
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -50,18 +50,18 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Sıralı bir CCI tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler bu toplu iş içinde sıralanır, tablodaki tüm veriler arasında genel sıralama yoktur.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralanan CCI'yı YENIDEN OLUŞTURAbAbilir.  Synapse SQL'de, sütun deposu dizini REBUILD çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için REBUILD her seferinde bir bölüm yapılır.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" olur ve REBUILD bu bölüm için tamamlanana kadar kullanılamaz. 
+> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  SYNAPSE SQL 'de, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
 
 ## <a name="query-performance"></a>Sorgu performansı
 
-Bir sorgunun sıralı cci'den elde ettiği performans kazancı, sorgu desenlerine, verilerin boyutuna, verilerin ne kadar iyi sıralanmasına, kesimlerin fiziksel yapısına ve sorgu yürütmesi için seçilen DWU ve kaynak sınıfına bağlıdır.  Kullanıcılar, sıralı bir CCI tablosu tasarlarken sipariş sütunlarını seçmeden önce tüm bu etkenleri gözden geçirmelidir.
+Sorgunun düzenli bir CCı 'den performans kazancı, sorgu desenlerine, verilerin boyutuna, verilerin ne kadar iyi sıralandığına, parçaların fiziksel yapısına ve sorgu yürütmesi için seçilen DWU ve kaynak sınıfına bağlıdır.  Kullanıcılar, sıralı bir CCı tablosu tasarlarken sütunları sıralamayı seçmeden önce tüm bu faktörleri incelemelidir.
 
-Tüm bu desenlere sahip sorgular genellikle sıralı CCI ile daha hızlı çalışır.  
-1. Sorgularda eşitlik, eşitsizlik veya aralık yüklemleri vardır
-1. Yüklem sütunları ve sıralı CCI sütunları aynıdır.  
-1. Yüklem sütunları, sıralı CCI sütunlarının sütun ordinal'ı ile aynı sırada kullanılır.  
+Tüm bu desenleri içeren sorgular genellikle sıralı CCı ile daha hızlı çalışır.  
+1. Sorgular eşitlik, eşitsizlik veya Aralık koşullarına sahiptir
+1. Koşul sütunları ve sıralı CCı sütunları aynı.  
+1. Koşul sütunları, sıralı CCı sütunlarının sütun sırası ile aynı sırada kullanılır.  
  
-Bu örnekte, tablo T1 Col_C, Col_B ve Col_A sırasına göre sıralanmış kümelenmiş bir sütun deposu dizini vardır.
+Bu örnekte, T1 tablosunun Col_C, Col_B ve Col_A dizisinde sıralanmış bir kümelenmiş columnstore dizini vardır.
 
 ```sql
 
@@ -70,7 +70,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Sorgu 1'in performansı, sipariş edilen CCI'dan diğer üç sorgudan daha fazla yararlanabilir. 
+Sorgu 1 ' in performansı, sıralı CCı 'dan diğer üç sorgudan daha fazla avantaj sağlayabilir. 
 
 ```sql
 -- Query #1: 
@@ -91,25 +91,25 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Veri yükleme performansı
 
-Sıralı bir CCI tablosuna veri yükleme performansı bölümlenmiş tabloya benzer.  Verileri sıralı bir CCI tablosuna yüklemek, veri sıralama işlemi nedeniyle sipariş edilmeyen bir CCI tablosundan daha uzun sürebilir, ancak sorgular daha sonra sipariş edilen CCI ile daha hızlı çalıştırılabilir.  
+Sıralı bir CCı tablosuna yükleme verilerinin performansı bölümlenmiş bir tabloyla benzerdir.  Verilerin sıralı bir CCı tablosuna yüklenmesi, veri sıralama işlemi nedeniyle sıralı olmayan bir CCı tablosundan daha uzun sürebilir, ancak sorgular daha sonra sıralı CCı ile daha hızlı çalışabilir.  
 
-Burada farklı şema ile tablolara veri yükleme örnek bir performans karşılaştırması.
+Aşağıda, verileri farklı şemalara sahip tablolara yüklemenin bir örnek performans karşılaştırması verilmiştir.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
-CcI ve sıralı CCI arasında örnek bir sorgu performans karşılaştırması aşağıda verilmiştir.
+CCı ve sıralı CCı arasında örnek bir sorgu performansı karşılaştırması aşağıda verilmiştir.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/occi_query_performance.png)
 
  
-## <a name="reduce-segment-overlapping"></a>Segment çakışma azaltın
+## <a name="reduce-segment-overlapping"></a>Çakışan kesimi azalt
 
-Çakışan kesimlerin sayısı, sıralı CCI oluşturma sırasında sıralı verilerin boyutuna, kullanılabilir belleğe ve en yüksek paralellik derecesine (MAXDOP) bağlıdır. Aşağıda, sıralı CCI oluştururken segment çakışmasını azaltma seçenekleri verilmiştir.
+Çakışan parçaların sayısı, sıralanan CCı oluşturma sırasında sıralanacak verilerin boyutuna, kullanılabilir belleğe ve en yüksek paralellik (MAXDOP) ayarına bağlıdır. Aşağıda, sıralı CCı oluşturulurken çakışan parçayı azaltma seçenekleri verilmiştir.
 
-- Dizin oluşturucu verileri segmentlere sıkıştırmadan önce veri sıralama için daha fazla bellek sağlamak için daha yüksek bir DWU üzerinde xbiggerc kaynak sınıfını kullanın.  Dizin segmentinde bir kez, verilerin fiziksel konumu değiştirilemez.  Bir segment içinde veya segmentler arasında veri sıralaması yoktur.  
+- Dizin Oluşturucu verileri kesimlere sıkıştırmadan önce veri sıralamasına daha fazla bellek sağlamak için xlargerc kaynak sınıfını daha yüksek bir DWU üzerinde kullanın.  Dizin segmentinde, verilerin fiziksel konumu değiştirilemez.  Bir kesim içinde veya kesimlerde veri sıralaması yoktur.  
 
-- MAXDOP = 1 ile sipariş cci oluşturun.  Sıralı CCI oluşturma için kullanılan her iş parçacığı bir veri alt kümesi üzerinde çalışır ve yerel olarak sıralar.  Farklı iş parçacıklarına göre sıralanmış veriler arasında genel sıralama yoktur.  Paralel iş parçacığı kullanmak, sıralı bir CCI oluşturma süresini azaltabilir, ancak tek bir iş parçacığı kullanmaktan daha çakışan parçalar oluşturur.  Şu anda, MAXDOP seçeneği yalnızca CREATE TABLE AS SELECT komutunu kullanarak sıralı bir CCI tablosu oluştururken desteklenir.  CREATE INDEX veya CREATE TABLE komutları aracılığıyla sıralanan bir CCI oluşturmak MAXDOP seçeneğini desteklemez. Örneğin,
+- MAXDOP = 1 ile sıralı CCı oluştur.  Sıralı CCı oluşturma için kullanılan her iş parçacığı verilerin bir alt kümesinde çalışarak yerel olarak sıralar.  Farklı iş parçacıkları tarafından sıralanan veriler arasında genel sıralama yoktur.  Paralel iş parçacıklarının kullanılması, sıralı bir CCı oluşturma süresini azaltabilir, ancak tek bir iş parçacığı kullanmaktan daha fazla çakışan kesim oluşturur.  Şu anda, MAXDOP seçeneği yalnızca SELECT komutu olarak CREATE TABLE kullanılarak sıralı bir CCı tablosu oluşturulurken desteklenir.  CREATE INDEX veya CREATE TABLE komutları aracılığıyla sıralı bir CCı oluşturma, MAXDOP seçeneğini desteklemez. Örneğin,
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -117,26 +117,26 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- Verileri tablolara yüklemeden önce sıralama tuşuna göre önceden sıralayın.
+- Verileri tablolara yüklemeden önce sıralama anahtarına göre önceden sıralayın.
 
-Aşağıda, yukarıdaki önerilerin ardından çakışan sıfır segmente sahip sıralı bir CCI tablo dağılımı örneği verilmiştir. Sipariş edilen CCI tablosu, MAXDOP 1 ve xbiggerc kullanılarak 20 GB'lık bir yığın tablodan CTAS aracılığıyla DWU1000c veritabanında oluşturulur.  CCI, çoğaltmasız bir BIGINT sütununda sıralanır.  
+Aşağıda, Yukarıdaki önerilerden sonra çakışan sıfır kesimine sahip sıralı bir CCı tablo dağıtımına örnek verilmiştir. Sıralı CCı tablosu, MAXTAS ile bir DWU1000c veritabanında, MAXDOP 1 ve xlargerc kullanılarak 20 GB yığın tablosundan oluşturulur.  CCı, yinelenen olmayan bir BIGINT sütununda sıralanır.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
-## <a name="create-ordered-cci-on-large-tables"></a>Büyük tablolarda sıralı CCI oluşturma
+## <a name="create-ordered-cci-on-large-tables"></a>Büyük tablolarda sıralı CCı oluşturma
 
-Sıralı bir CCI oluşturmak çevrimdışı bir işlemdir.  Bölümü olmayan tablolar için, sipariş edilen CCI oluşturma işlemi tamamlanana kadar veriler kullanıcılar tarafından erişilemez.   Bölümlenmiş tablolar için, motor bölüm tarafından sıralanan CCI bölümlerini oluşturduğundan, kullanıcılar sıralanan CCI oluşturma işleminde olmayan bölümlerdeki verilere erişebilir.   Büyük tablolarda sipariş edilen CCI oluşturma sırasında kapalı kalma süresini en aza indirmek için bu seçeneği kullanabilirsiniz: 
+Sıralı bir CCı oluşturma, çevrimdışı bir işlemdir.  Bölüm içermeyen tablolar için, sıralı CCı oluşturma işlemi tamamlanana kadar verilere kullanıcılar erişemez.   Bölümlenmiş tablolar için, altyapı sıralı CCı bölümünü bölüm tarafından oluşturduğundan, kullanıcılar sıralı CCı oluşturma işleminin işlem içinde olmadığı bölümlerdeki verilere erişmeye devam edebilir.   Büyük tablolarda sıralı CCı oluşturma sırasında kapalı kalma süresini en aza indirmek için bu seçeneği kullanabilirsiniz: 
 
 1.    Hedef büyük tabloda (Table_A olarak adlandırılır) bölümler oluşturun.
-2.    Tablo A ile aynı tablo ve bölüm şeması ile boş bir sıralı CCI tablosu (Table_B olarak adlandırılır) oluşturun.
-3.    Bir bölümü Tablo A'dan Tablo B'ye değiştirin.
-4.    ALTER INDEX <Ordered_CCI_Index> <Table_B <> Table_B yeniden oluşturma bölüm = <Partition_ID> Tablo B'de yeniden anahtarlanan bölümü yeniden oluşturmak için çalıştırın.  
-5.    Table_A her bölüm için adım 3 ve 4'ü yineleyin.
-6.    Tüm bölümler Table_A'den Table_B değiştirildikten ve yeniden inşa edildikten sonra Table_A bırakın ve Table_B Table_A olarak yeniden adlandırın. 
+2.    Tablo A ile aynı tablo ve bölüm şemasına sahip boş bir sıralı CCı tablosu (Table_B olarak adlandırılır) oluşturun.
+3.    A tablosundan tablo B 'ye bir bölüm geçirin.
+4.    "ALTER INDEX <Ordered_CCI_Index> <Table_B> YENIDEN oluşturma bölümünde <tablo B Partition_ID  
+5.    Table_A içindeki her bölüm için 3. ve 4. adımı yineleyin.
+6.    Tüm bölümler Table_A Table_B, yeniden oluşturulduktan sonra Table_A bırakın ve Table_A Table_B yeniden adlandırın. 
 
 ## <a name="examples"></a>Örnekler
 
-**A. Sıralı sütunlar ve sipariş ordinal kontrol etmek için:**
+**A. sıralı sütunları ve sıra sıra sayısını denetlemek Için:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -145,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. Sütun ordinalini değiştirmek, sipariş listesinden sütun eklemek veya kaldırmak veya CCI'dan sipariş edilen CCI'ya değiştirmek için:**
+**B. sütun sırasını değiştirmek Için, sipariş listesinden sütun ekleyin veya kaldırın ya da CCı 'dan sıralı CCı 'ya geçiş yapın:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
@@ -155,4 +155,4 @@ WITH (DROP_EXISTING = ON)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

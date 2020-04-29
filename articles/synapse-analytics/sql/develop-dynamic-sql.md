@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL'de dinamik SQL kullanın
-description: Synapse SQL'de dinamik SQL kullanma ipuçları.
+title: SYNAPSE SQL 'de dinamik SQL kullanma
+description: SYNAPSE SQL 'de dinamik SQL kullanmaya yönelik ipuçları.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: b546e6ba6967edcf41e2830a639e69d436827c40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429609"
 ---
-# <a name="dynamic-sql-in-synapse-sql"></a>Synapse SQL'de Dinamik SQL
-Bu makalede, dinamik SQL kullanmak ve Synapse SQL kullanarak çözümler geliştirmek için ipuçları bulacaksınız.
+# <a name="dynamic-sql-in-synapse-sql"></a>SYNAPSE SQL 'de dinamik SQL
+Bu makalede, dinamik SQL kullanma ve SYNAPSE SQL kullanarak çözüm geliştirme hakkında ipuçları bulacaksınız.
 
-## <a name="dynamic-sql-example"></a>Dinamik SQL Örneği
+## <a name="dynamic-sql-example"></a>Dinamik SQL örneği
 
-Uygulama kodu geliştirirken, esnek, genel ve modüler çözümler sunmaya yardımcı olmak için dinamik SQL kullanmanız gerekebilir.
+Uygulama kodu geliştirirken esnek, genel ve modüler çözümler sunmaya yardımcı olması için dinamik SQL kullanmanız gerekebilir.
 
 > [!NOTE]
-> SQL havuzu şu anda blob veri türlerini desteklemez. Blob veri türleri hem varchar(max) hem de nvarchar(max) türlerini içerdiğinden, blob veri türlerinin desteklenmesi dizelerin izinboyutunu sınırlayabilir. Uygulama kodunuzda büyük dizeleri oluşturmak için bu türleri kullandıysanız, kodu parçalara ayırmanız ve bunun yerine EXEC deyimini kullanmanız gerekir.
+> SQL havuzu şu anda blob veri türlerini desteklemiyor. Blob veri türleri hem varchar (max) hem de nvarchar (max) türlerini içerdiğinden, blob veri türlerini desteklememe, dizelerin boyutunu sınırlayabilir. Büyük dizeler oluşturmak için uygulama kodunuzda bu türleri kullandıysanız, kodu parçalara ayırmak ve bunun yerine EXEC ifadesini kullanmanız gerekir.
 
 Basit bir örnek:
 
@@ -41,8 +41,8 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 Dize kısaysa, [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) normal olarak kullanabilirsiniz.
 
 > [!NOTE]
-> Dinamik SQL olarak yürütülen ifadeler yine de tüm T-SQL doğrulama kurallarına tabi olacaktır.
+> Dinamik SQL olarak yürütülen deyimler, tüm T-SQL doğrulama kurallarına tabi olmaya devam edecektir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](develop-overview.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](develop-overview.md).

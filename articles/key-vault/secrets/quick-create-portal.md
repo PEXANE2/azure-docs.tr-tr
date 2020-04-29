@@ -12,17 +12,17 @@ ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7d659ca519e5bd7f26e4cca17707e0db397aae98
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81424821"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
 Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, bir anahtar kasası oluşturacak ve ardından bir gizli diziyi depolamak için kullanacaksınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -30,15 +30,15 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portalı menüsünden veya **Ana** sayfadan **kaynak oluştur'u**seçin.
-2. Arama kutusuna, **Anahtar Kasası**girin.
+1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
+2. Arama kutusuna **Key Vault**girin.
 3. Sonuç listesinden **Key Vault**’u seçin.
 4. Key Vault bölümünde **Oluştur**’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıç **için, Contoso-vault2**kullanın. 
+    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **contoso-vault2**kullanıyoruz. 
     - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak Grubu**altında, **yeni oluştur'u** seçin ve bir kaynak grubu adı girin.
-    - **Konum** çekme menüsünde bir konum seçin.
+    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
 6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
 
@@ -53,23 +53,23 @@ Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleşti
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault’a gizli dizi ekleme
 
-Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu örnekte, bir uygulama tarafından kullanılabilecek bir gizli dizi ekleyeceğiz. Şifre **examplePassword** denir ve biz içinde **hVFkk965BuUv** değerini saklıyoruz.
+Kasaya bir gizli dizi eklemek için birkaç ek adım uygulamanız gerekir. Bu örnekte, bir uygulama tarafından kullanılabilecek bir gizli dizi ekleyeceğiz. Parola, **Examplepassword** olarak adlandırılır ve **hVFkk965BuUv** değerini bu değerde depolarız.
 
-1. Key Vault özellikleri sayfalarında **Sırlar'ı**seçin.
+1. Key Vault Özellikler sayfalarında **gizli**dizileri ' ni seçin.
 2. **Oluştur/İçeri Aktar**’a tıklayın.
 3. **Bir gizli dizi oluştur** ekranında aşağıdaki değerleri seçin:
     - **Karşıya yükleme seçenekleri**: El ile.
     - **Ad**: ExamplePassword.
     - **Değer**: hVFkk965BuUv
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur'u**tıklatın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**' a tıklayın.
 
 Gizli dizinin başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede gizli diziye tıklayabilirsiniz. Ondan sonra bazı özellikleri görebilirsiniz. Geçerli sürüme tıklarsanız önceki adımda belirtilen değeri görebilirsiniz.
 
 ![Gizli dizi özellikleri](../media/quick-create-portal/current-version-hidden.png)
 
-Sağ bölmedeki "Gizli Değeri Göster" düğmesine tıklayarak gizli değeri görebilirsiniz. 
+Sağ bölmedeki "gizli değeri göster" düğmesine tıkladığınızda gizli değeri görebilirsiniz. 
 
-![Gizli değer ortaya çıktı](../media/quick-create-portal/current-version-shown.png)
+![Gizli dizi değeri görüntülendi](../media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -83,8 +83,8 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Key Vault oluşturdunuz ve içinde bir sır depoladın. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta bir Key Vault oluşturdunuz ve içinde gizli dizi depolıdınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- Azure [Anahtar Kasasına Genel Bakış](../general/overview.md)
-- Azure [Key Vault geliştiricisi kılavuzuna](../general/developers-guide.md) bakın
-- Azure Key Vault en iyi uygulamalarını gözden [geçirin](../general/best-practices.md)
+- [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
+- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

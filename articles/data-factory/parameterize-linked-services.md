@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda bağlantılı hizmetleri parametrenize
-description: Azure Veri Fabrikası'nda bağlantılı hizmetleri nasıl parametrenize geçeceğinizi ve dinamik değerleri çalışma zamanında nasıl geçeceğinizi öğrenin.
+title: Azure Data Factory bağlı hizmetleri Parametreleştir
+description: Azure Data Factory bağlı hizmetleri Parametreleştirme ve çalışma zamanında dinamik değerleri geçirme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,29 +11,29 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419400"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Veri Fabrikası'nda bağlantılı hizmetleri parametrenize
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory bağlı hizmetleri Parametreleştir
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Artık bağlı bir hizmeti parametreye aktarabilir ve dinamik değerleri çalışma zamanında geçirebilirsiniz. Örneğin, aynı Azure SQL Veritabanı sunucusundaki farklı veritabanlarına bağlanmak istiyorsanız, artık bağlı hizmet tanımındaki veritabanı adını parametrenize alabilirsiniz. Bu, Azure SQL veritabanı sunucusundaki her veritabanı için bağlantılı bir hizmet oluşturmanızı önler. Bağlı hizmet tanımındaki diğer özellikleri de parametrenize alabilirsiniz - örneğin, *Kullanıcı adı.*
+Artık bağlı bir hizmeti parametreleştirebilirsiniz ve çalışma zamanında dinamik değerler geçirebilirsiniz. Örneğin, aynı Azure SQL veritabanı sunucusundaki farklı veritabanlarına bağlanmak istiyorsanız, artık bağlı hizmet tanımındaki veritabanı adını parametreleştirebilirsiniz. Bu, Azure SQL veritabanı sunucusunda her bir veritabanı için bağlı bir hizmet oluşturmanızı önler. Bağlı hizmet tanımındaki diğer özellikleri de parametreleştirebilirsiniz; Örneğin, *Kullanıcı adı.*
 
-Bağlantılı hizmetleri parametrelendirmek için Azure portalındaki Veri Fabrikası UI'sini veya programlama arabirimini kullanabilirsiniz.
+Bağlı hizmetleri parametreleştirmek için Azure portal veya bir programlama arabirimindeki Data Factory Kullanıcı arabirimini kullanabilirsiniz.
 
 > [!TIP]
-> Parolaları veya sırları parametrelememenizi öneririz. Bunun yerine tüm bağlantı dizeleri'ni Azure Anahtar Kasası'nda saklayın ve *Gizli Adı*parametreleştirin.
+> Parola veya gizli dizileri parametreetmememiz önerilir. Tüm bağlantı dizelerini Azure Key Vault ' de depolayın ve *gizli adı*parametreleştirin.
 
-Yedi dakikalık bir tanıtım ve bu özelliğin tanıtımı için aşağıdaki videoyu izleyin:
+Bu özelliğin yedi dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
 ## <a name="supported-data-stores"></a>Desteklenen veri depoları
 
-Şu anda, bağlantılı hizmet parametrelendirmesi aşağıdaki veri depoları için Azure portalındaki Veri Fabrikası UI'sinde desteklenir. Diğer tüm veri depoları için, **Bağlantılar** sekmesindeki **Kod** simgesini seçerek ve JSON düzenleyicisini kullanarak bağlantılı hizmeti parametrenize edebilirsiniz.
+Şu anda, bağlantılı hizmet Parametreleştirme, aşağıdaki veri depoları için Azure portal Data Factory Kullanıcı arabiriminde desteklenir. Diğer tüm veri depoları için, **Bağlantılar** sekmesindeki **kod** simgesini seçerek ve JSON düzenleyicisini kullanarak bağlı hizmeti parametreleştirebilirsiniz.
 - Azure SQL Veritabanı
 - Azure SQL Veri Ambarı
 - SQL Server
@@ -45,7 +45,7 @@ Yedi dakikalık bir tanıtım ve bu özelliğin tanıtımı için aşağıdaki v
 
 ## <a name="data-factory-ui"></a>Data Factory Kullanıcı Arabirimi (UI)
 
-![Bağlantılı Hizmet tanımına dinamik içerik ekleme](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Bağlı hizmet tanımına dinamik içerik ekleme](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Yeni parametre oluşturma](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

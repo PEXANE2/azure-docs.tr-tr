@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Studio'da SQL komut dosyaları (önizleme)
-description: Giriş Azure Synapse Studio (önizleme) SQL komut dosyaları
+title: Azure SYNAPSE Studio 'da SQL betikleri (Önizleme)
+description: Giriş Azure SYNAPSE Studio (Önizleme) SQL betikleri
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,84 +9,84 @@ ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
 ms.openlocfilehash: 940c6d6d96c5c1aa062397d21ea96dace2c09bae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431078"
 ---
-# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure Synapse Studio'da SQL komut dosyalarını kullanma (önizleme)
+# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>Azure SYNAPSE Studio 'da SQL betiği kullanma (Önizleme)
 
-Azure Synapse Studio (önizleme), SQL sorguları yazmanız için bir SQL komut dosyası web arabirimi sağlar. SQL havuzuna (önizleme) veya isteğe bağlı SQL'e (önizleme) bağlanabilirsiniz. 
+Azure SYNAPSE Studio (Önizleme), SQL sorgularını yazmak için bir SQL komut dosyası Web arabirimi sağlar. SQL Havuzu (Önizleme) veya SQL isteğe bağlı (Önizleme) bağlantısı yapabilirsiniz. 
 
-## <a name="begin-authoring-in-sql-script"></a>SQL komut dosyasında yazmaya başlayın 
+## <a name="begin-authoring-in-sql-script"></a>SQL betikte yazmayı Başlat 
 
-SQL komut dosyasında yazma deneyimini başlatmanın birkaç yolu vardır. Aşağıdaki yöntemlerden biri aracılığıyla yeni bir SQL komut dosyası oluşturabilirsiniz.
+SQL komut dosyasında yazma deneyimini başlatmak için birkaç yol vardır. Aşağıdaki yöntemlerden birini kullanarak yeni bir SQL betiği oluşturabilirsiniz.
 
-1. "+" simgesini seçin ve SQL komut dosyasını seçin.
+1. "+" Simgesini seçin ve SQL betiği ' ni seçin.
 
     > [!div class="mx-imgBorder"] 
     >![newsqlscript](./media/author-sql-script/newsqlscript.png)
 
-2. SQL komut dosyalarını geliştir altındaki Eylemler menüsünden SQL komut dosyalarını geliştirin altındaki "Eylemler" menüsünden "Yeni SQL komut dosyası"nı seçin. 
+2. SQL betikleri geliştirme altındaki Eylemler menüsünde, SQL betikleri geliştirme altında "eylemler" menüsünden "yeni SQL betiği" seçeneğini belirleyin. 
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscript2actions.png)
 
 or 
 
-3. SQL komut dosyalarını geliştir'in altındaki "Eylemler" menüsünden "İçe Aktarma"yı seçin ve yerel depolama alanınızdan varolan bir SQL komut dosyası seçin.
+3. SQL betikleri geliştirme altında "eylemler" menüsünden "Içeri aktar" seçeneğini belirleyin ve yerel depoınızdan mevcut bir SQL betiğini seçin.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscript3actions.png)
 
-## <a name="create-your-sql-script"></a>SQL komut dosyanızı oluşturun
+## <a name="create-your-sql-script"></a>SQL komut dosyanızı oluşturma
 
-1. "Özellik" düğmesini seçerek ve SQL komut dosyasına atanan varsayılan adı değiştirerek SQL komut dosyanız için bir ad seçin.
+1. "Özellik" düğmesini seçerek ve SQL betiğine atanan varsayılan adı değiştirerek SQL komutlarınız için bir ad seçin.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlscriptrename.png)
 
-1. "Bağlan" açılır menüsünden belirli SQL havuzunu veya isteğe bağlı SQL havuzunu seçin. Veya gerekirse, "Veritabanını Kullan"dan veritabanını seçin.
+1. Belirli SQL havuzunu veya "Bağlan" açılan menüsünden SQL isteğe bağlı ' yı seçin. Ya da gerekirse "veritabanını kullan" ' dan veritabanını seçin.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlchoosepool.png)
 
-1. Intellisense özelliğini kullanarak SQL komut dosyanızı yazmaya başlayın.
+1. IntelliSense özelliğini kullanarak SQL komut dosyanızı yazmaya başlayın.
 
     > [!div class="mx-imgBorder"] 
     > ![newsqlscript](./media/author-sql-script/newsqlintellisense.png)
 
-## <a name="run-your-sql-script"></a>SQL komut dosyanızı çalıştırma
+## <a name="run-your-sql-script"></a>SQL komut dosyanızı çalıştırın
 
-SQL komut dosyanızı çalıştırmak için "Çalıştır" düğmesini seçin. Sonuçlar varsayılan olarak bir tabloda görüntülenir.
+SQL betiğinizi yürütmek için "Çalıştır" düğmesini seçin. Sonuçlar bir tabloda varsayılan olarak görüntülenir.
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newsqlscriptresultstable.png)
 
-## <a name="export-your-results"></a>Sonuçlarınızı dışa aktarma
+## <a name="export-your-results"></a>Sonuçlarınızı dışarı aktarın
 
-"Dışa aktarma sonuçları" seçerek ve uzantıyı seçerek sonuçları farklı biçimlerde (CSV, Excel, JSON, XML dahil) yerel depolama alanınıza dışa aktarabilirsiniz.
+"Sonuçları dışarı aktar" seçeneğini belirleyerek ve uzantıyı seçerek, sonuçları yerel depolama verilerinize farklı biçimlerde (CSV, Excel, JSON, XML dahil) aktarabilirsiniz.
 
-Ayrıca"Chart" düğmesini seçerek SQL komut dosyası sonuçlarını grafikte görselleştirebilirsiniz. "Grafik türü" ve "Kategori sütunu" seçeneğini belirleyin. "Görüntü olarak kaydet" seçeneğini seçerek grafiği bir resme dışa aktarabilirsiniz. 
+Ayrıca, "grafik" düğmesini seçerek SQL betiği sonuçlarını bir grafik ile görselleştirebilirsiniz. "Grafik türü" ve "Kategori sütunu" nı seçin. "Görüntü olarak Kaydet" i seçerek grafiği bir resme dışarı aktarabilirsiniz. 
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newsqlscriptresultschart.png)
 
-## <a name="explore-data-from-a-parquet-file"></a>Parke dosyasından verileri keşfedin.
+## <a name="explore-data-from-a-parquet-file"></a>Bir Parquet dosyasından verileri araştırma.
 
-Dosya içeriğini önizlemek için SQL komut dosyası kullanarak bir depolama hesabında Parke dosyalarını keşfedebilirsiniz. 
+Dosya içeriğini önizlemek için SQL betiği kullanarak bir depolama hesabındaki Parquet dosyalarını inceleyebilirsiniz. 
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newscriptsqlodparquet.png)
 
-## <a name="sql-tables-external-tables-views"></a>SQL Tablolar, dış tablolar, görünümler
+## <a name="sql-tables-external-tables-views"></a>SQL tabloları, dış tablolar, görünümler
 
-Verilerin altındaki "Eylemler" menüsünü seçerek, "Yeni SQL komut dosyası", "TOP 1000 satırını seçin", "CREATE", "DROP and CREATE" gibi çeşitli eylemleri seçebilirsiniz. SQL havuzu ve isteğe bağlı SQL düğümlerini sağ tıklayarak kullanılabilir hareketi keşfedin.
+Veriler altındaki "eylemler" menüsünü seçerek, "yeni SQL betiği", "en üstteki 1000 satırları Seç", "Oluştur", "bırak ve oluştur" gibi çeşitli eylemleri seçebilirsiniz. SQL havuzunun düğümlerine ve isteğe bağlı SQL 'e sağ tıklayıp kullanılabilir hareketi araştırın.
 
 > [!div class="mx-imgBorder"] 
 > ![newsqlscript](./media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL komut dosyası yazma hakkında daha fazla bilgi için [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)bölümüne bakın.
+SQL betiği yazma hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](https://docs.microsoft.com/azure/synapse-analytics).

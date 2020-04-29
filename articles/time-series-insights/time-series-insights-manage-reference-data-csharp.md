@@ -1,6 +1,6 @@
 ---
-title: C# - Azure Time Series Insights | Microsoft Dokümanlar
-description: C# ile yazılmış özel bir uygulama oluşturarak GA ortamınız için başvuru verilerini nasıl yöneteceklerini öğrenin.
+title: C# kullanarak GA ortamlarında başvuru verilerini yönetme-Azure Time Series Insights | Microsoft Docs
+description: C# dilinde yazılmış özel bir uygulama oluşturarak GA ortamınız için başvuru verilerini yönetmeyi öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,70 +12,70 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416978"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C kullanarak Azure Time Series Öngörüleri ortamı için GA başvuru verilerini yönetme #
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C kullanarak Azure Time Series Insights ortamı için GA başvuru verilerini yönetme #
 
-Bu makalede, Azure Zaman Serisi Öngörüleri GA [Referans Veri Yönetimi API'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)programlı API istekleri yapmak için C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Etkin Dizini nasıl birleştirilen gösteriş gösterilmiştir.
+Bu makalede, Azure Time Series Insights GA [başvuru VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)'SINE programlı API istekleri yapmak Için C#, [msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)ve Azure Active Directory nasıl birleştirileceğini gösterilmektedir.
 
 > [!TIP]
-> GA C# kod [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)örneklerini ' de görüntüleyin.
+> ' Deki [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)GA C# kod örneklerini görüntüleyin.
 
 ## <a name="summary"></a>Özet
 
-Aşağıdaki örnek kod aşağıdaki özellikleri gösterir:
+Aşağıdaki örnek kod aşağıdaki özellikleri göstermektedir:
 
-* [PublicClientApplication'ı](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**kullanarak erişim belirteci edinme MSAL.NET.
-* GA [Referans Veri Yönetimi API'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)karşı sıralı OLUŞTURMA, OKUMA, GÜNCELLEME ve DELETE işlemleri.
-* Ortak hata kodları da dahil olmak üzere ortak yanıt [kodları.](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)
+* [Msal.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **publicclientapplication**kullanarak bir erişim belirteci alınıyor.
+* GA [başvuru veri yönetimi API 'sine](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)KARŞı sıralı oluşturma, okuma, GÜNCELLEŞTIRME ve silme işlemleri.
+* [Ortak hata kodları](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)dahil ortak yanıt kodları.
     
-    Başvuru Veri Yönetimi API'si her öğeyi ayrı ayrı işler ve bir öğeyle ilgili bir hata diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğeye ve bir öğede hata varsa, 99 öğe yazılır ve biri reddedilir.
+    Başvuru Veri Yönetimi API 'SI her öğeyi ayrı ayrı işler ve bir öğe ile bir hata, diğerlerinin başarıyla tamamlanmasını engellemez. Örneğin, isteğiniz 100 öğe içeriyorsa ve bir öğede hata varsa, 99 öğe yazılır ve bir öğe reddedilir.
 
 ## <a name="prerequisites-and-setup"></a>Önkoşullar ve kurulum
 
-Örnek kodu derlemeden ve çalıştırmadan önce aşağıdaki adımları tamamlayın:
+Örnek kodu derleyip çalıştırmadan önce aşağıdaki adımları gerçekleştirin:
 
-1. [GA Azure Zaman Serisi Öngörüleri](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-) ortamını sağlama.
+1. [BIR GA Azure Time Series Insights ortamı sağlayın](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+) .
 
-1. Ortamınızda [bir Başvuru Veri kümesi oluşturun.](time-series-insights-add-reference-data-set.md) Aşağıdaki Başvuru Veri düzenini kullanın:
+1. Ortamınızda [bir başvuru veri kümesi oluşturun](time-series-insights-add-reference-data-set.md) . Aşağıdaki başvuru veri şemasını kullanın:
 
    | Anahtar adı | Tür |
    | --- | --- |
    | uuid | Dize | 
 
-1. Azure Zaman Serisi Öngörüleri ortamınızı Azure Etkin Dizini için [Kimlik Doğrulama ve yetkilendirmede](time-series-insights-authentication-and-authorization.md)açıklandığı şekilde yapılandırın. `http://localhost:8080/` **Redirect URI**olarak kullanın.
+1. [Kimlik doğrulama ve yetkilendirme](time-series-insights-authentication-and-authorization.md)bölümünde açıklandığı gibi, Azure Active Directory için Azure Time Series Insights ortamınızı yapılandırın. `http://localhost:8080/` **Yeniden yönlendirme URI 'si**olarak kullanın.
 
-1. Gerekli proje bağımlılıklarını yükleyin.
+1. Gerekli proje bağımlılıklarını yükler.
 
-1. Aşağıdaki örnek kodu, her **#PLACEHOLDER uygun** ortam tanımlayıcısıyla değiştirerek düzenleme.
+1. Her **#PLACEHOLDER #** öğesini uygun ortam tanımlayıcısı ile değiştirerek aşağıdaki örnek kodu düzenleyin.
 
-1. Projenizin kök dizininde çalıştırın. `dotnet run` İstendiğinde, Azure'da oturum açabilmek için kullanıcı profilinizi kullanın. 
+1. Projenizin `dotnet run` kök dizini içinde çalıştırın. İstendiğinde, Azure 'da oturum açmak için Kullanıcı profilinizi kullanın. 
 
 ## <a name="project-dependencies"></a>Proje bağımlılıkları
 
-Visual Studio ve **NETCore.app'ın**en yeni sürümünü kullanmanız önerilir:
+Visual Studio 'nun en yeni sürümünü ve **Netcore. app**' i kullanmanız önerilir:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Sürüm 16.4.2+
-* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) - Sürüm 2.2.8
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) -sürüm 16.4.2 +
+* [Netcore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -Version 2.2.8
 
-Örnek kodun iki gerekli bağımlılığı vardır:
+Örnek kodun iki zorunlu bağımlılığı vardır:
 
-* MSAL.NET [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) - 4.7.1 paketi.
-* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 paket.
+* MSAL.NET [Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1 Package.
+* [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3 paketi.
 
-[NuGet 2.12+](https://www.nuget.org/)kullanarak paketleri ekleyin:
+[NuGet 2.12 +](https://www.nuget.org/)kullanarak paketleri ekleyin:
 
 * `dotnet add package Newtonsoft.Json --version 12.0.3`
 * `dotnet add package Microsoft.Identity.Client --version 4.7.1`
 
-Veya:
+Veya
 
-1. Dosyayı `csharp-tsi-msal-ga-sample.csproj` bildirin:
+1. Bir `csharp-tsi-msal-ga-sample.csproj` dosya bildirin:
 
     ```XML
     <Project Sdk="Microsoft.NET.Sdk">
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- GA [Başvuru Veri Yönetimi API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) başvuru belgelerini okuyun.
+- GA [başvurusu VERI YÖNETIMI API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) başvurusu belgelerini okuyun.

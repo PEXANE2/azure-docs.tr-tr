@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Studio (önizleme) dizüstü bilgisayarları oluşturun, geliştirin ve koruyun
-description: Bu makalede, veri hazırlama ve görselleştirme yapmak için Azure Synapse Studio (önizleme) dizüstü bilgisayarlarını nasıl oluşturup geliştireceklerini öğrenirsiniz.
+title: Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
+description: Bu makalede, veri hazırlama ve görselleştirme için Azure SYNAPSE Studio (Önizleme) Not defterleri oluşturmayı ve geliştirmeyi öğreneceksiniz.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
@@ -10,82 +10,82 @@ ms.date: 04/15/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430233"
 ---
-# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure Synapse Studio (önizleme) dizüstü bilgisayarları oluşturun, geliştirin ve koruyun
+# <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure SYNAPSE Studio (Önizleme) not defterlerini oluşturma, geliştirme ve sürdürme
 
-Azure Synapse Studio (önizleme) dizüstü bilgisayarı, canlı kod, görselleştirmeler ve anlatı metni içeren dosyalar oluşturmanız için bir web arabirimidir. Dizüstü bilgisayarlar, fikirleri doğrulamak ve verilerinizden öngörüler almak için hızlı denemeler kullanmak için iyi bir yerdir. Dizüstü bilgisayarlar ayrıca veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer Büyük Veri senaryolarında da yaygın olarak kullanılır.
+Azure SYNAPSE Studio (Önizleme) Not defteri, canlı kod, görselleştirme ve anlatım metni içeren dosyalar oluşturmanız için bir Web arabirimidir. Not defterleri, fikirlerinizi doğrulamak ve hızlı denemeleri kullanarak verilerinizden Öngörüler elde etmek için iyi bir yerdir. Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer büyük veri senaryolarında da yaygın olarak kullanılır.
 
-Azure Synapse Studio dizüstü bilgisayar ile şunları yapabilirsiniz:
+Bir Azure SYNAPSE Studio not defteriyle şunları yapabilirsiniz:
 
-* Sıfır kurulum çabasıyla başlayın.
+* Sıfır kurulum çabası ile çalışmaya başlayın.
 * Yerleşik kurumsal güvenlik özellikleriyle verileri güvende tutun.
-* Verileri ham biçimler (CSV, txt, JSON, vb.), işlenmiş dosya biçimleri (parke, Delta Gölü, ORC, vb.) ve Sql tabular veri dosyaları arasında Analiz edin.
-* Gelişmiş yazma özellikleri ve yerleşik veri görselleştirme ile üretken olun.
+* Ham biçimlerdeki verileri (CSV, txt, JSON, vb.), işlenen dosya biçimlerini (Parquet, Delta Gölü, ORC, vb.) ve SQL tablolu veri dosyalarını Spark ve SQL 'de analiz edin.
+* Gelişmiş yazma özellikleri ve yerleşik veri görselleştirmesi ile üretken olun.
 
-Bu makalede, Azure Synapse Studio'da not defterlerinin nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, Azure SYNAPSE Studio 'da Not defterlerinin nasıl kullanılacağı açıklanır.
 
 ## <a name="create-a-notebook"></a>Not defteri oluşturma
 
-Not defteri oluşturmanın iki yolu vardır. **Nesne**Gezgini'nden yeni bir not defteri oluşturabilir veya varolan bir not defterini Azure Synapse çalışma alanına aktarabilirsiniz. Azure Synapse Studio dizüstü bilgisayarlar standart Jupyter Notebook IPYNB dosyalarını tanıyabilir.
+Bir not defteri oluşturmanın iki yolu vardır. Yeni bir not defteri oluşturabilir veya var olan bir not defterini **Nesne Gezgini**bir Azure SYNAPSE çalışma alanına aktarabilirsiniz. Azure SYNAPSE Studio Not defterleri, standart Jupyter Notebook IPYNB dosyalarını algılayabilir.
 
-![synaps-oluşturma-alma-not defteri](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
+![SYNAPSE-oluşturma-içeri aktarma-Not defteri](./media/apache-spark-development-using-notebooks/synapse-create-import-notebook.png)
 
-## <a name="develop-notebooks"></a>Dizüstü bilgisayar geliştirme
+## <a name="develop-notebooks"></a>Not defterleri geliştirme
 
-Not defterleri, bağımsız olarak veya grup olarak çalıştırılabilen tek tek kod veya metin blokları olan hücrelerden oluşur.
+Not defterleri, bağımsız olarak veya grup olarak çalıştırılan kod veya metin blokları olan hücrelerden oluşur.
 
-### <a name="add-a-cell"></a>Hücre ekleme
+### <a name="add-a-cell"></a>Hücre Ekle
 
 Not defterinize yeni bir hücre eklemenin birden çok yolu vardır.
 
-1. Sol üst **+ Hücre** düğmesini genişletin ve kod hücresi ekle veya **metin hücresi ekle'yi**seçin. **Add code cell**
+1. Sol üst **+ hücre** düğmesini genişletin ve **kod hücresi Ekle** ya da **metin hücresi Ekle**' yi seçin.
 
-    ![hücre ile hücre ekle düğmesi](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
+    ![Ekle-hücre-düğme](./media/apache-spark-development-using-notebooks/synapse-add-cell-1.png)
 
-2. İki hücre arasındaki boşluğun üzerine girin ve **kod ekle** veya metin **ekle'yi**seçin.
+2. İki hücre arasındaki alanın üzerine gelin ve **Kod Ekle** veya **metin ekle**' yi seçin.
 
-    ![ara hücre ekleme](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
+    ![boşluk Ekle-boşluk](./media/apache-spark-development-using-notebooks/synapse-add-cell-2.png)
 
-3. [Komut modu altında Kısayol tuşlarını](#shortcut-keys-under-command-mode)kullanın. Geçerli hücrenin üzerine bir hücre eklemek için **A** tuşuna basın. Geçerli hücrenin altına bir hücre eklemek için **B** tuşuna basın.
+3. [Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)kullanın. Geçerli hücrenin üstüne bir hücre eklemek için **a** 'ya basın. Geçerli hücrenin altına bir hücre eklemek için **B** tuşuna basın.
 
-### <a name="set-a-primary-language"></a>Birincil dil ayarlama
+### <a name="set-a-primary-language"></a>Birincil dil ayarla
 
-Azure Synapse Studio dizüstü bilgisayarlar dört kıvılcım dili destekler:
+Azure SYNAPSE Studio Not defterleri dört Spark dilini destekler:
 
-* pyspark (piton)
-* kıvılcım (Scala)
-* sparkSQL
+* pyspark (Python)
+* Spark (Scala)
+* Mini SQL
 * Spark.NET (C#)
 
-Üst komut çubuğundaki açılır listeden yeni eklenen hücreler için birincil dili ayarlayabilirsiniz.
+En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için birincil dili ayarlayabilirsiniz.
 
-   ![varsayılan-sinaps dili](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
+   ![Varsayılan-SYNAPSE-Language](./media/apache-spark-development-using-notebooks/synapse-default-language.png)
 
 ### <a name="use-multiple-languages"></a>Birden çok dil kullanma
 
-Bir hücrenin başında doğru dil sihirli komutunu belirterek tek bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda hücre dillerinde geçiş yapmak için sihirli komutlar listelenilmektedir.
+Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Sihirli komut |Dil | Açıklama |  
+|Magic komutu |Dil | Açıklama |  
 |---|------|-----|
-|%pyspark| Python | Spark Context'a karşı bir **Python** sorgusu yürütün.  |
-|%kıvılcım| Scala | Kıvılcım Bağlamı'na karşı bir **Scala** sorgusu yürütün.  |  
-|%sql| SparkSQL | Spark Context'a karşı bir **SparkSQL** sorgusu yürütün.  |
-|%csharp % | Spark.NET C # | Kıvılcım Bağlamı'na karşı **Spark.NET c#** sorgusu yürütün. |
+|%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
+|%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
+|%% SQL| Mini SQL | Spark bağlamına karşı bir **mini SQL** sorgusu yürütün.  |
+|%% CSharp | Spark.NET C # | Spark bağlamına karşı bir **spark.NET C#** sorgusu yürütün. |
 
-Aşağıdaki resim, **%%pyspark** sihirli komutunu veya **Spark(Scala)** not defterindeki **%sql** sihirli komutuyla Bir SparkSQL sorgusunu kullanarak pyspark sorgusunu nasıl yazabileceğinize bir örnektir. Not defterinin ana dilinin Scala olarak ayarlı olduğuna dikkat edin.
+Aşağıdaki görüntü, bir **Spark (Scala)** not defterinde%% **pyspark** Magic komutunu veya **%% SQL** Magic komutuyla bir mini SQL sorgusunu kullanarak pyspark sorgusunun nasıl yazılacağını gösteren bir örnektir. Not defteri için birincil dilin Scala olarak ayarlandığını unutmayın.
 
-   ![sinaps-kıvılcım-büyü](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
+   ![SYNAPSE-Spark-mıknatıcs](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>Diller arasında veri referansı için geçici tabloları kullanma
+### <a name="use-temp-tables-to-reference-data-across-languages"></a>Diller arasında verilere başvurmak için geçici tabloları kullanma
 
-Synapse Studio not defterinde verilere veya değişkenlere doğrudan farklı dillerde başvuru yapamazsınız. Spark'ta, diller arasında geçici bir tabloya başvurulabilir. Burada, geçici çözüm olarak `Scala` Bir DataFrame'in içinde `PySpark` ve `SparkSQL` spark geçici tablosunda nasıl okunduğuna bir örnek verilmiştir.
+Bir Synapse Studio not defterindeki farklı dillerdeki verilere veya değişkenlere doğrudan başvurulamıyor. Spark 'ta, diller arasında geçici bir tabloya başvuru yapılabilir. Bir geçici çözüm olarak Spark geçici tablosunu kullanarak ve `Scala` `PySpark` `SparkSQL` ' de bir veri çerçevesinin nasıl okunmasına ilişkin bir örnek aşağıda verilmiştir.
 
-1. Hücre 1'de, Scala kullanarak SQL havuz bağlayıcısından bir DataFrame okuyun ve geçici bir tablo oluşturun.
+1. 1. hücrede, Scala kullanarak SQL havuzu bağlayıcısından bir veri çerçevesini okuyun ve geçici bir tablo oluşturun.
 
    ```scala
    %%scala
@@ -93,128 +93,128 @@ Synapse Studio not defterinde verilere veya değişkenlere doğrudan farklı dil
    scalaDataFrame.registerTempTable( "mydataframetable" )
    ```
 
-2. Hücre 2'de, Verileri Spark SQL kullanarak sorgula.
+2. 2. hücrede Spark SQL kullanarak verileri sorgulayın.
    
    ```sql
    %%sql
    SELECT * FROM mydataframetable
    ```
 
-3. Hücre 3'te, PySpark'taki verileri kullanın.
+3. 3. hücrede, PySpark içindeki verileri kullanın.
 
    ```python
    %%pyspark
    myNewPythonDataFrame = spark.sql("SELECT * FROM mydataframetable")
    ```
 
-### <a name="ide-style-intellisense"></a>IDE tarzı IntelliSense
+### <a name="ide-style-intellisense"></a>IDE stili IntelliSense
 
-Azure Synapse Studio dizüstü bilgisayarlar, IDE tarzı IntelliSense'i hücre düzenleyicisine getirmek için Monako düzenleyicisiyle entegre edilmiştir. Sözdizimi vurgulanması, hata oluşturucu ve otomatik kod tamamlamaları kod yazmanıza ve sorunları daha hızlı belirlemenize yardımcı olur.
+Azure SYNAPSE Studio Not defterleri, IDE stili IntelliSense 'i hücre düzenleyicisine getirmek için Monako düzenleyiciyle tümleşiktir. Sözdizimi vurgulaması, hata Oluşturucusu ve otomatik kod tamamlama, kod yazmanıza ve sorunları daha hızlı belirlemenize yardımcı olur.
 
-IntelliSense özellikleri farklı diller için farklı olgunluk düzeylerindedir. Desteklenenleri görmek için aşağıdaki tabloyu kullanın.
+IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. Desteklenen öğeleri görmek için aşağıdaki tabloyu kullanın.
 
-|Diller| Sözdizimi Vurgulama | Sözdizimi Hata İşaretleyici  | Sözdizimi Kodu Tamamlama | Değişken Kod Tamamlama| Sistem İşlev Kodu Tamamlama| Kullanıcı İşlev Kodu Tamamlama| Akıllı Girinti | Kod Katlama|
+|Diller| Sözdizimi vurgusu | Söz dizimi hata Işaretleyicisi  | Sözdizimi kodu tamamlama | Değişken kodu tamamlama| Sistem Işlevi kod tamamlama| Kullanıcı Işlevi kod tamamlama| Akıllı Girinti | Kod katlama|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
-|Kıvılcım (Scala)|Evet|Evet|Evet|Evet|-|-|-|Evet|
-|SparkSQL|Evet|Evet|-|-|-|-|-|-|
-|Spark.NET (C#)|Evet|-|-|-|-|-|-|-|
+|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
+|Mini SQL|Yes|Yes|-|-|-|-|-|-|
+|Spark.NET (C#)|Yes|-|-|-|-|-|-|-|
 
-### <a name="format-text-cell-with-toolbar-buttons"></a>Metin hücreni araç çubuğu düğmeleriyle biçimlendirme
+### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
-Ortak işaretleme eylemleri yapmak için metin hücreleri araç çubuğundaki biçim düğmelerini kullanabilirsiniz. Kalın yazı, metni italikleştirme, kod parçacıkları ekleme, sıralanmamış liste ekleme, sıralı liste ekleme ve URL'den resim ekleme içerir.
+Ortak markaşağı eylemleri yapmak için metin hücreleri araç çubuğundaki Biçim düğmelerini kullanabilirsiniz. Bu, kalın metin, italicizing metin, kod parçacıkları ekleme, sırasız liste ekleme, sıralı liste ekleme ve URL 'den görüntü ekleme içerir.
 
-  ![sinaps-metin-hücre-araç çubuğu](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
+  ![SYNAPSE-metin-hücre-araç çubuğu](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar.png)
 
-### <a name="undo-cell-operations"></a>Hücre işlemlerini geri ala
-En son hücre işlemini iptal etmek için **geri alma** düğmesini tıklatın veya **Ctrl+Z** tuşuna basın. Şimdi en son 20 tarihsel hücre eylemleri kadar geri alabilirsiniz. 
+### <a name="undo-cell-operations"></a>Hücre işlemlerini geri al
+En son hücre işlemini iptal etmek için **geri al** düğmesine tıklayın veya **CTRL + Z** tuşlarına basın. Artık en son 20 geçmiş hücresi eylemini geri alabilirsiniz. 
 
-   ![sinaps-geri-hücreler](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
+   ![SYNAPSE-geri al-hücreler](./media/apache-spark-development-using-notebooks/synapse-undo-cells.png)
 
-### <a name="move-a-cell"></a>Hücreyi taşıma
+### <a name="move-a-cell"></a>Bir hücreyi taşıma
 
-En sağdaki ek hücre eylemleri menüsüne erişmek için elipsleri (...) seçin. Ardından, geçerli hücreyi taşımak için **hücreyi yukarı veya** **aşağı taşı'yı** seçin. 
+En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (...) simgesini seçin. Ardından, geçerli hücreyi taşımak için **hücreyi yukarı taşı** veya **hücreyi aşağı taşı** ' yı seçin. 
 
-Komut modu [altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi yukarı taşımak için **Ctrl+Alt+↑** tuşuna basın. Geçerli hücreyi aşağı taşımak için **Ctrl+Alt+.** tuşuna basın.
+[Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi taşımak için **Ctrl + Alt + ↑** tuşlarına basın. Geçerli hücreyi aşağı taşımak için **Ctrl + Alt + ↓** tuşlarına basın.
 
-   ![hareket-a-hücre](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
+   ![hücre taşı](./media/apache-spark-development-using-notebooks/synapse-move-cells.png)
 
-### <a name="delete-a-cell"></a>Hücreyi silme
+### <a name="delete-a-cell"></a>Bir hücreyi silme
 
-Bir hücreyi silmek için, en sağdaki ek hücre eylemleri menüsüne erişmek için elipsleri (...) seçin ve hücreyi **sil'i**seçin. 
+Bir hücreyi silmek için, en sağdaki Ek hücre eylemleri menüsüne erişmek üzere üç nokta (...) simgesini seçin ve ardından **hücreyi Sil**' i seçin. 
 
-Komut modu [altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi silmek için **D,D** tuşuna basın.
+[Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)da kullanabilirsiniz. Geçerli hücreyi silmek için **d, d** tuşuna basın.
   
-   ![delete-a-cell](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
+   ![hücreyi Sil](./media/apache-spark-development-using-notebooks/synapse-delete-cell.png)
 
 ### <a name="collapse-a-cell-input"></a>Hücre girişini daraltma
-Daraltmak için geçerli hücrenin altındaki ok düğmesini tıklatın. Genişletmek için, hücre daraltılırken ok düğmesini tıklatın.
+Daraltmak için geçerli hücrenin altındaki ok düğmesine tıklayın. Genişletmek için, hücre daraltıldığında ok düğmesine tıklayın.
 
-   ![çökme hücre girişi](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
+   ![daraltma-hücre girişi](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-input.gif)
 
-### <a name="collapse-a-cell-output"></a>Hücre çıktısını daraltma
+### <a name="collapse-a-cell-output"></a>Hücre çıkışını daraltma
 
-Daraltmak için geçerli hücre çıkışının sol üst kısmındaki **daraltma çıkış** düğmesini tıklatın. Genişletmek için, hücre çıkışı daraltılırken **hücre çıktısını göster'i** tıklatın.
+Daraltmak için geçerli hücre çıktısının sol üst kısmındaki **çıktıyı Daralt** düğmesine tıklayın. Genişletmek için hücre çıktısı daraltıldığında **hücre çıktısını göster** ' e tıklayın.
 
-   ![çökme hücre çıkışı](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
+   ![daraltma-hücre çıkışı](./media/apache-spark-development-using-notebooks/synapse-collapse-cell-output.gif)
 
-## <a name="run-notebooks"></a>Not defterlerini çalıştırma
+## <a name="run-notebooks"></a>Not defterlerini Çalıştır
 
-Not defterinizdeki kod hücrelerini tek tek veya hepsini aynı anda çalıştırabilirsiniz. Her hücrenin durumu ve ilerlemesi not defterinde temsil edilir.
+Kod hücrelerini Not defterinizde tek seferde veya tümünde çalıştırabilirsiniz. Her hücrenin durumu ve ilerlemesi not defterinde temsil edilir.
 
-### <a name="run-a-cell"></a>Hücre çalıştırma
+### <a name="run-a-cell"></a>Bir hücre Çalıştır
 
 Bir hücrede kodu çalıştırmanın birkaç yolu vardır.
 
-1. Çalıştırmak istediğiniz hücreye girin ve **Hücre çalıştır** düğmesini seçin veya **Ctrl+Enter**tuşuna basın.
+1. Çalıştırmak istediğiniz hücreye gelin ve **hücreyi Çalıştır** düğmesini seçin veya **CTRL + ENTER**tuşlarına basın.
 
-   ![run-cell-1](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
+   ![1. çalışma hücresi](./media/apache-spark-development-using-notebooks/synapse-run-cell.png)
 
 
-2. En sağdaki ek hücre eylemleri menüsüne erişmek için elipsleri (**...**) seçin. Ardından, **Hücreyi Çalıştır'ı**seçin.
+2. En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, **hücreyi Çalıştır**' ı seçin.
 
-   ![run-cell-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
+   ![çalışma-2](./media/apache-spark-development-using-notebooks/synapse-run-cell-2.png)
    
-3. [Komut modu altında Kısayol tuşlarını](#shortcut-keys-under-command-mode)kullanın. Geçerli hücreyi çalıştırmak için **Shift+Enter** tuşuna basın ve aşağıdaki hücreyi seçin. Geçerli hücreyi çalıştırmak için **Alt+Enter** tuşuna basın ve aşağıdaki yeni bir hücre ekleyin.
+3. [Komut modu altında kısayol tuşlarını](#shortcut-keys-under-command-mode)kullanın. Geçerli hücreyi çalıştırmak için **SHIFT + enter** tuşlarına basın ve aşağıdaki hücreyi seçin. Geçerli hücreyi çalıştırmak ve aşağıya yeni bir hücre eklemek için **Alt + Enter** tuşlarına basın.
 
 
-### <a name="run-all-cells"></a>Tüm hücreleri çalıştırın
-Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tümlerini Çalıştır** düğmesini tıklatın.
+### <a name="run-all-cells"></a>Tüm hücreleri Çalıştır
+Geçerli not defterindeki tüm hücreleri sırayla çalıştırmak için **Tümünü Çalıştır** düğmesine tıklayın.
 
-   ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
+   ![tüm hücreleri Çalıştır](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
-### <a name="run-all-cells-above-or-below"></a>Tüm hücreleri yukarıda veya aşağıda çalıştırın
+### <a name="run-all-cells-above-or-below"></a>Yukarıdaki veya altındaki tüm hücreleri Çalıştır
 
-En sağdaki ek hücre eylemleri menüsüne erişmek için elipsleri (**...**) seçin. Ardından, akımın üzerindeki tüm hücreleri sırayla çalıştırmak için **yukarıdaki hücreleri çalıştır'ı** seçin. Akımın altındaki tüm hücreleri sırayla çalıştırmak için **aşağıdaki hücreleri Çalıştır'ı** seçin.
+En sağdaki Ek hücre eylemleri menüsüne erişmek için üç nokta (**...**) simgesini seçin. Ardından, geçerli sıradaki tüm hücreleri çalıştırmak için **yukarıdaki hücreleri Çalıştır** ' ı seçin. Sıradaki geçerli olan tüm hücreleri çalıştırmak için **aşağıdaki hücreleri Çalıştır** ' ı seçin.
 
-   ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
-
-
-### <a name="cell-status-indicator"></a>Hücre durum göstergesi
-
-Geçerli ilerlemesini görmenize yardımcı olmak için hücrenin altında adım adım hücre yürütme durumu görüntülenir. Hücre çalışması tamamlandıktan sonra, toplam süre ve bitiş saatini içeren bir yürütme özeti gösterilir ve gelecekteki başvuru için orada tutulur.
-
-![hücre durumu](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
-
-### <a name="spark-progress-indicator"></a>Kıvılcım ilerleme göstergesi
-
-Azure Synapse Studio dizüstü bilgisayar tamamen Spark tabanlıdır. Kod hücreleri Spark havuzunda uzaktan yürütülür. Bir Spark iş ilerleme göstergesi, iş yürütme durumunu anlamanıza yardımcı olacak bir gerçek zamanlı ilerleme çubuğuyla sağlanır.
+   ![çalışma--veya-aşağı hücreleri](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
-![kıvılcım-ilerleme göstergesi](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
+### <a name="cell-status-indicator"></a>Hücre durumu göstergesi
 
-### <a name="spark-session-config"></a>Kıvılcım oturumu config
+Bir adım adım hücre yürütme durumu, geçerli ilerlemesini görmenizi sağlayacak şekilde hücrenin altında görüntülenir. Hücre çalıştırma işlemi tamamlandıktan sonra, toplam süre ve bitiş saatine sahip bir yürütme özeti gösterilir ve gelecekte başvuru için orada tutulur.
 
-Yapılandırma oturumunda geçerli Spark oturumuna verecek zaman aşım süresini, sayısını ve yürütücülerin boyutunu **belirtebilirsiniz.** Spark oturumunu yeniden başlatma, yapılandırma değişikliklerinin etkili olması içindir. Önbelleğe alınmış tüm not defteri değişkenleri temizlenir.
+![hücre-durum](./media/apache-spark-development-using-notebooks/synapse-cell-status.png)
 
-![oturum-mgmt](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+### <a name="spark-progress-indicator"></a>Spark ilerleme göstergesi
+
+Azure SYNAPSE Studio Not defteri yalnızca Spark tabanlıdır. Kod hücreleri Spark havuzunda uzaktan yürütülür. İş yürütme durumunu anlamanıza yardımcı olmak üzere gerçek zamanlı ilerleme çubuğu içeren bir Spark işi ilerleme göstergesi görünür.
 
 
-## <a name="bring-data-to-a-notebook"></a>Not defterine veri getirme
+![Spark-ilerleme-gösterge](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
 
-Aşağıdaki kod örneklerinde gösterildiği gibi Azure Blob Depolama, Azure Veri Gölü Deposu Gen 2 ve SQL havuzundan veri yükleyebilirsiniz.
+### <a name="spark-session-config"></a>Spark oturum yapılandırması
 
-### <a name="read-a-csv-from-azure-data-lake-store-gen2-as-a-spark-dataframe"></a>Azure Veri Gölü Deposu Gen2'den Bir CSV'yi Spark DataFrame olarak okuyun
+**Yapılandırma oturumunda**geçerli Spark oturumuna verilecek yürüticilere zaman aşımı süresini, sayısını ve bunların boyutunu belirtebilirsiniz. Spark oturumunu yeniden başlatmak, yapılandırma değişikliklerinin etkili olması içindir. Tüm önbelleğe alınmış Not defteri değişkenleri temizlenir.
+
+![oturum-MGMT](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+
+
+## <a name="bring-data-to-a-notebook"></a>Verileri bir not defterine getirme
+
+Aşağıdaki kod örneklerinde gösterildiği gibi Azure Blob depolama, Azure Data Lake Store Gen 2 ve SQL havuzundaki verileri yükleyebilirsiniz.
+
+### <a name="read-a-csv-from-azure-data-lake-store-gen2-as-a-spark-dataframe"></a>Spark veri çerçevesi olarak Azure Data Lake Store Gen2 'ten CSV okuma
 
 ```python
 from pyspark.sql import SparkSession
@@ -233,7 +233,7 @@ df1 = spark.read.option('header', 'true') \
 
 ```
 
-#### <a name="read-a-csv-from-azure-blob-storage-as-a-spark-dataframe"></a>Azure Blob Depolama'dan Bir CSV'yi Kıvılcım Veri Çerçevesi olarak okuyun
+#### <a name="read-a-csv-from-azure-blob-storage-as-a-spark-dataframe"></a>Azure Blob depolama 'dan bir CSV 'yi Spark veri çerçevesi olarak okuma
 
 ```python
 
@@ -255,32 +255,32 @@ df = spark.read.option("header", "true") \
 
 ```
 
-### <a name="read-data-from-the-primary-storage-account"></a>Birincil depolama hesabından verileri okuma
+### <a name="read-data-from-the-primary-storage-account"></a>Birincil depolama hesabından veri okuma
 
-Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahtarları vermeye gerek yok. Veri Gezgini'nde, bir dosyaya sağ tıklayın ve veri ayıklayıcıotomatik olarak oluşturulmuş yeni bir dizüstü bilgisayar görmek için **Yeni not defterini** seçin.
+Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahtarları sağlamanız gerekmez. Veri Gezgini, bir dosyaya sağ tıklayıp **Yeni Not defteri** ' ni seçerek veri ayıklayıcısı otomatik olarak oluşturulur yeni bir not defteri görüntüleyin.
 
-![veri-hücre](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
+![verilerden hücrelere](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>Not defterindeki verileri görselleştirin
+## <a name="visualize-data-in-a-notebook"></a>Not defterindeki verileri görselleştirme
 
-### <a name="display"></a>Görüntüle()
+### <a name="display"></a>Display ()
 
-Bir çubuk grafik, çizgi grafiği, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneği yle bir tablo sonuçları görünümü sağlanır. Kod yazmak zorunda kalmadan verilerinizi görselleştirebilirsiniz. Grafikler **Grafik Seçenekleri'nde**özelleştirilebilir. 
+Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde**özelleştirilebilir. 
 
-**%sql** magic komutlarının çıktısı varsayılan olarak işlenen tablo görünümünde görünür. İşlenen tablo görünümünü oluşturmak için Spark DataFrames veya Esnek Dağıtılmış Veri Kümeleri (RDD) işlevinde **display()`<DataFrame name>`** olarak adlandırabilirsiniz.
+**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. İşlenmiş tablo görünümünü oluşturmak için Spark dataframe veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevinde **Display (`<DataFrame name>`)** öğesini çağırabilirsiniz.
 
-   ![yerleşik grafikler](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   ![yerleşik-grafikler](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
-### <a name="displayhtml"></a>DisplayHTML()
+### <a name="displayhtml"></a>DisplayHTML ()
 
-HTML veya etkileşimli kitaplıklar işleyebilir, **bokeh**gibi, **displayHTML()** kullanarak.
+**Displayhtml ()** kullanarak **BOKEH**gibi HTML veya etkileşimli kitaplıkları işleyebilirsiniz.
 
-Aşağıdaki resim **bokeh**kullanarak bir harita üzerinde glifler ihya bir örnektir.
+Aşağıdaki resim **bokeh**kullanarak bir harita üzerinde karakter çizme örneğidir.
 
-   ![bokeh örnek](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
+   ![bokeh-örnek](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
    
 
-Yukarıdaki resmi çizmek için aşağıdaki örnek kodu çalıştırın.
+Yukarıdaki görüntüyü çizmek için aşağıdaki örnek kodu çalıştırın.
 
 ```python
 from bokeh.plotting import figure, output_file
@@ -312,83 +312,83 @@ displayHTML(html)
 
 ```
 
-## <a name="save-notebooks"></a>Not defterlerini kaydet
+## <a name="save-notebooks"></a>Not defterlerini Kaydet
 
-Çalışma alanınızda tek bir not defterini veya tüm dizüstü bilgisayarları kaydedebilirsiniz.
+Çalışma alanınızdaki tek bir not defterini veya tüm not defterlerini kaydedebilirsiniz.
 
-1. Tek bir not defterine yaptığınız değişiklikleri kaydetmek için, not defteri komut çubuğundaki **Yayımla** düğmesini seçin.
+1. Tek bir not defterine yaptığınız değişiklikleri kaydetmek için Not defteri komut çubuğundaki **Yayımla** düğmesini seçin.
 
-   ![yayımlama-defter](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
+   ![Yayımlama-Not defteri](./media/apache-spark-development-using-notebooks/synapse-publish-notebook.png)
 
-2. Çalışma alanınızdaki tüm not defterlerini kaydetmek için, çalışma alanı komut çubuğundaki **tümünü yayımla** düğmesini seçin. 
+2. Çalışma alanınızdaki tüm not defterlerini kaydetmek için çalışma alanı komut çubuğunda **Tümünü Yayımla** düğmesini seçin. 
 
-   ![yayımlama-tüm](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
+   ![tümünü Yayımla](./media/apache-spark-development-using-notebooks/synapse-publish-all.png)
 
-Not defteri özelliklerinde, tasarruf yaparken hücre çıktısını dahil edip etmeyeceğini yapılandırabilirsiniz.
+Not defteri özelliklerinde, kaydetme sırasında hücre çıkışının eklenip eklenmeyeceğini yapılandırabilirsiniz.
 
-   ![not defteri özellikleri](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
+   ![Not defteri-Özellikler](./media/apache-spark-development-using-notebooks/synapse-notebook-properties.png)
 
-## <a name="magic-commands"></a>Sihirli komutlar
-Azure Synapse Studio dizüstü bilgisayarlarında tanıdık Jupyter sihirli komutlarınızı kullanabilirsiniz. Mevcut sihirli komutları olarak aşağıdaki listeyi kontrol edin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için GitHub'daki kullanım durumlarınızı bize bildirin.
+## <a name="magic-commands"></a>MAGIC komutları
+Tanıdık Jupyıter Magic komutlarınızı Azure SYNAPSE Studio Not defterleri ' nde kullanabilirsiniz. Aşağıdaki listede geçerli olan MAGIC komutları olarak kontrol edin. İhtiyaçlarınızı karşılamak için daha fazla sihirli komut oluşturmaya devam edebilmemiz için kullanım durumlarınızı GitHub 'da bize söyleyin.
 
-Mevcut hat büyüleri: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%zaman](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+Kullanılabilir satır mıknatıcs: [% lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
-Kullanılabilir hücre büyüleri: [%%zaman](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%%zamanit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%yakalama](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%sql](#use-multiple-languages), [%%pyspark](#use-multiple-languages), [%kıvılcım](#use-multiple-languages), [%csharp](#use-multiple-languages)
+Kullanılabilir hücre mıknatıcs: [%% Time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%% timeIt](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%% Capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture),%% [WriteFile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile),% [% SQL](#use-multiple-languages), [%% pyspark](#use-multiple-languages), [%% Spark](#use-multiple-languages), [%% CSharp](#use-multiple-languages)
 
 ## <a name="shortcut-keys"></a>Kısayol tuşları
 
-Jupyter Notebook'lara benzer şekilde Azure Synapse Studio dizüstü bilgisayarlarda da modal kullanıcı arabirimi bulunur. Klavye, dizüstü bilgisayar hücresinin hangi modda olduğuna bağlı olarak farklı şeyler yapar. Synapse Studio dizüstü bilgisayarlar belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve edit modu.
+Jupyıter not defterlerine benzer şekilde, Azure SYNAPSE Studio Not defterleri de kalıcı bir kullanıcı arabirimine sahiptir. Klavye, Not defteri hücresinin bulunduğu moda bağlı olarak farklı şeyler yapar. SYNAPSE Studio Not defterleri, belirli bir kod hücresi için aşağıdaki iki modu destekler: komut modu ve düzenleme modu.
 
-1. Bir hücre, yazmanızı isteyen metin imleci olmadığında komut modundadır. Bir hücre Komut modundayken, not defterini bir bütün olarak ancak tek tek hücrelere yazmama olarak demezsiniz. Bir hücrenin `ESC` düzenleyici alanının dışına tıklamak için fareye basarak veya kullanarak komut moduna girin.
+1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. Bir hücrenin düzenleyici alanının dışına `ESC` tıklayarak ya da fareyi kullanarak komut moduna girin.
 
    ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imleci yle gösterilir. Bir hücre edit modundayken, hücreye yazamazsınız. Bir hücrenin düzenleyici `Enter` alanına tıklamak için fareye basarak veya kullanarak düzenleme moduna girin.
+2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazmanız yapılamaz. Bir hücrenin düzenleyici alanına tıklayarak `Enter` ya da fareyi kullanarak düzenleme modunu girin.
    
    ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>Komut modu altında kısayol tuşları
 
-Aşağıdaki tuş vuruşu kısayollarını kullanarak Azure Synapse dizüstü bilgisayarlarında kodda daha kolay gezinebilir ve kod çalıştırabilirsiniz.
+Aşağıdaki tuş vuruşu kısayollarını kullanarak Azure SYNAPSE Not defterlerindeki kodu daha kolay bir şekilde gezinebilir ve çalıştırabilirsiniz.
 
-| Eylem |Synapse Studio dizüstü bilgisayar Kısayolları  |
+| Eylem |SYNAPSE Studio Not defteri kısayolları  |
 |--|--|
-|Geçerli hücreyi çalıştırın ve aşağıdakileri seçin | Shift+Enter |
-|Geçerli hücreyi çalıştırın ve aşağıdaki ekleme | Alt+Enter |
-|Yukarıdaki hücreyi seçin| Yukarı |
-|Aşağıdaki hücreyi seçin| Aşağı |
-|Yukarıdaki hücre ekleme| A |
-|Aşağıdaki hücreekleme| B |
-|Seçili hücreleri yukarıda genişletme| Shift+Up |
-|Seçili hücreleri aşağıda genişletme| Shift+Down|
-|Hücreyi yukarı taşıma| Ctrl+Alt+↑ |
-|Hücreyi aşağı taşıma| Ctrl+Alt+. |
-|Seçili hücreleri silme| D, D |
-|Edit moduna geçme| Enter |
+|Geçerli hücreyi çalıştırın ve aşağıdan seçin | Shift+Enter |
+|Geçerli hücreyi çalıştırın ve Alta ekleyin | Alt+Enter |
+|Üstteki hücreyi seçin| Yukarı |
+|Aşağıdan hücre seçin| Aşağı |
+|Yukarıya hücre ekle| A |
+|Aşağıya hücre ekle| B |
+|Üstteki seçili hücreleri Genişlet| SHIFT + yukarı |
+|Seçili hücreleri aşağıdan Genişlet| SHIFT + aşağı|
+|Hücreyi yukarı taşı| Ctrl + alt + ↑ |
+|Hücreyi aşağı taşı| Ctrl + alt + ↓ |
+|Seçili hücreleri sil| D, D |
+|Düzenleme moduna geç| Enter |
 
-### <a name="shortcut-keys-under-edit-mode"></a>Edit modu altında kısayol tuşları
+### <a name="shortcut-keys-under-edit-mode"></a>Düzenleme modundaki kısayol tuşları
 
-Aşağıdaki tuş vuruşu kısayollarını kullanarak, Azure Synapse not defterlerinde kodu edit modundayken daha kolay gezinebilir ve çalıştırabilirsiniz.
+Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Azure SYNAPSE Not defterlerindeki kodu daha kolay bir şekilde açabilir ve çalıştırabilirsiniz.
 
-| Eylem |Synapse Studio dizüstü bilgisayar kısayolları  |
+| Eylem |SYNAPSE Studio Not defteri kısayolları  |
 |--|--|
-|İmleci yukarı taşıma | Yukarı |
+|İmleci yukarı taşı | Yukarı |
 |İmleci aşağı taşı|Aşağı|
-|Geri al|Ctrl + Z|
-|Yinele|Ctrl + Y|
-|Yorum Yap/Yorum yap|Ctrl + /|
-|Önce sözcüğü silme|Ctrl + Arka Boşluk|
-|Sözcüğü sonra silme|Ctrl + Sil|
-|Hücre başlangıcına git|Ctrl + Ana Sayfa|
-|Hücre sonuna gitme |Ctrl + Bitiş|
-|Bir kelime sola git|Ctrl + Sol|
-|Bir kelime sağa git|Ctrl + Sağ|
-|Tümünü seç|Ctrl + A|
-|Girinti| Ctrl + ]|
-|Dedent|Ctrl + [|
-|Komut moduna geçme| Esc |
+|Geri al|CTRL + Z|
+|Yinele|CTRL + Y|
+|Açıklama/açıklama kaldır|CTRL +/|
+|Önceki kelimeyi Sil|CTRL + geri al|
+|Sonra sözcüğü Sil|Ctrl + Delete|
+|Hücre başlangıcına git|Ctrl + Home|
+|Hücre sonuna git |CTRL + END|
+|Bir kelimeyi sola git|Ctrl + sol|
+|Bir sözcüğe sağ git|CTRL + sağ|
+|Tümünü seç|CTRL + A|
+|Leyebilirsiniz| CTRL +]|
+|Girintiyi geri al|CTRL + [|
+|Komut moduna geç| Esc |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.NET Apache Spark belgeleri için](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

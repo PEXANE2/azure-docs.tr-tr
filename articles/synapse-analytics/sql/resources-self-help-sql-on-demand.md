@@ -1,6 +1,6 @@
 ---
-title: SQL on-demand Preview) kendi kendine yardım
-description: Bu bölümde, SQL isteğe bağlı (önizleme) ile ilgili sorunları gidermenize yardımcı olabilecek bilgiler bulunur.
+title: SQL isteğe bağlı Önizleme) kendi kendine yardım
+description: Bu bölüm, isteğe bağlı SQL (Önizleme) ile ilgili sorunları gidermenize yardımcı olabilecek bilgiler içerir.
 services: synapse analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -10,55 +10,55 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: e2c262915c928cf487cb84aeb3423d67e7a96e97
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424835"
 ---
-# <a name="self-help-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için kendi kendine yardım (önizleme)
+# <a name="self-help-for-sql-on-demand-preview"></a>İsteğe bağlı SQL için kendi kendine yardım (Önizleme)
 
-Bu makalede, Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) ile ilgili en sık karşılaşılan sorunları nasıl gideriyleçözebilirsiniz hakkında bilgiler yer alıyor.
+Bu makale, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) ile ilgili sık karşılaşılan sorunların nasıl giderileceği hakkında bilgiler içerir.
 
-## <a name="sql-on-demand-is-grayed-out-in-synapse-studio"></a>SYN'de isteğe bağlı SQL gri renkte
+## <a name="sql-on-demand-is-grayed-out-in-synapse-studio"></a>SYNAPSE Studio 'da isteğe bağlı SQL gri
 
-Synapse Studio isteğe bağlı OLARAK SQL bağlantısı kuramazsa, SQL isteğe bağlı olarak gri renkte olduğunu veya durum "Çevrimdışı" olarak gösterir. Genellikle, aşağıdaki durumlardan biri gerçekleştiğinde bu sorun oluşur:
+SYNAPSE Studio isteğe bağlı SQL bağlantısı kuramazsa, isteğe bağlı SQL 'nin gri olduğunu veya "çevrimdışı" durumunu gösterdiğini fark edeceksiniz. Genellikle, bu sorun aşağıdaki durumlardan biri gerçekleştiğinde oluşur:
 
-1) Ağınız Azure Synapse arka ucuna iletişimi engeller. En sık karşılaşılan durum, bağlantı noktası 1443'ün engellenmesidir. SQL on-demand bu bağlantı noktası engelini kaldırmak için çalışmak için. Diğer sorunlar da sql on-demand de çalışmasını engelleyebilir, [daha fazla bilgi için tam sorun giderme kılavuzunu ziyaret edin.](../troubleshoot/troubleshoot-synapse-studio.md)
-2) İsteğe bağlı OLARAK SQL'e giriş yapma izniniz yok. Erişim kazanmak için Azure Synapse çalışma alanı yöneticilerinden birinin sizi çalışma alanı yöneticisine veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için erişim denetimi yle ilgili tam kılavuzu ziyaret edin.](access-control.md)
+1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasıdır. SQL isteğe bağlı olarak, bu bağlantı noktasının engelini kaldırın. Daha fazla bilgi edinmek için, diğer sorunlar hakkında SQL isteğe bağlı olarak [sorun giderme kılavuzunu ziyaret edebilirsiniz](../troubleshoot/troubleshoot-synapse-studio.md).
+2) İsteğe bağlı SQL 'de oturum açma izniniz yok. Erişim kazanmak için, Azure SYNAPSE çalışma alanı yöneticilerinin sizi çalışma alanı yöneticisine veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için Access Control 'ta tam kılavuzu ziyaret edin](access-control.md).
 
-## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığı için sorgu başarısız oldu
+## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
 
-Sorgunuz 'Dosya var olmadığı için açılamaz veya başka bir işlem tarafından kullanılıyor' hatasıyla başarısız olursa ve her iki dosyanın da bulunduğundan eminseniz ve başka bir işlem tarafından kullanılmazsa, bu SQL on-demand dosyaya erişemeyeceği anlamına gelir. Azure Etkin Dizin kimliğinizin dosyaya erişme hakları olmadığından bu sorun genellikle gerçekleşir. Varsayılan olarak, SQL isteğe bağlı olarak Azure Active Directory kimliğinizi kullanarak dosyaya erişmeye çalışır. Bu sorunu gidermek için dosyaya erişmek için uygun haklara sahip olmanız gerekir. En kolay yolu, sorgulamaya çalıştığınız depolama hesabında kendinize 'Depolama Blob Veri Katılımcısı' rolünü vermektir. [Daha fazla bilgi için depolama alanı için Azure Active Directory erişim denetiminin tam kılavuzunu ziyaret edin.](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 
+Sorgunuz mevcut olmadığı veya başka bir işlem tarafından kullanıldığı için ' dosya açılamıyor ' hatası ile başarısız olursa ve her iki dosyanın da mevcut olduğundan ve bu dosya başka bir işlem tarafından kullanılmadığından, SQL isteğe bağlı olarak dosyaya erişemez demektir. Bu sorun genellikle Azure Active Directory kimliğiniz dosyaya erişim haklarına sahip olmadığı için oluşur. Varsayılan olarak, SQL isteğe bağlı, Azure Active Directory kimliğinizi kullanarak dosyaya erişmeye çalışıyor. Bu sorunu çözmek için, dosyaya erişmek için uygun haklara sahip olmanız gerekir. En kolay yol, sorgulama yapmaya çalıştığınız depolama hesabında kendinize ait ' Depolama Blobu veri katılımcısı ' rolünü vermaktır. [Daha fazla bilgi için Azure Active Directory Access Control hakkında tam kılavuzu ziyaret edin](../../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). 
 
-## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Geçerli kaynak kısıtlamaları nedeniyle yürütülemediği için sorgu başarısız oldu 
+## <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>Geçerli kaynak kısıtlamaları nedeniyle yürütülemediğinden sorgu başarısız oldu 
 
-Sorgunuz 'Bu sorgu geçerli kaynak kısıtlamaları nedeniyle yürütülemez' hata iletisiyle başarısız olursa, SQL OD'nin kaynak kısıtlamaları nedeniyle şu anda bu sorguyu yürütemediği anlamına gelir: 
+Sorgunuz hata iletisiyle başarısız olursa, ' Bu sorgu geçerli kaynak kısıtlamaları nedeniyle yürütülemiyor ', kaynak kısıtlamaları nedeniyle SQL OD 'nin şu anda yürütemediği anlamına gelir: 
 
-- Lütfen makul boyutlardaveri türlerinin kullanıldığından emin olun. Ayrıca, dize sütunları için Parke dosyaları için şema belirtin, çünkü varsayılan olarak VARCHAR(8000). 
+- Lütfen makul boyutlarda veri türlerinin kullanıldığından emin olun. Ayrıca, varsayılan olarak VARCHAR (8000) olacak şekilde dize sütunları için Parquet dosyaları için şema belirtin. 
 
 - Sorgunuz CSV dosyalarını hedefliyorsa, [istatistik oluşturmayı](develop-tables-statistics.md#statistics-in-sql-on-demand-preview)düşünün. 
 
-- Sorguyu optimize etmek [için SQL on-demand için performans en iyi uygulamalarını](best-practices-sql-on-demand.md) ziyaret edin.  
+- Sorguyu iyileştirmek için [isteğe bağlı SQL için en iyi performans uygulamalarını](best-practices-sql-on-demand.md) ziyaret edin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sql isteğe bağlı olarak nasıl kullanılacağı hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri gözden geçirin:
+İsteğe bağlı SQL kullanımı hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri gözden geçirin:
 
-- [Tek CSV dosyasorgulama](query-single-csv-file.md)
+- [Tek CSV dosyasını sorgula](query-single-csv-file.md)
 
 - [Sorgu klasörleri ve birden çok CSV dosyası](query-folders-multiple-csv-files.md)
 
 - [Belirli dosyaları sorgula](query-specific-files.md)
 
-- [Parke dosyalarını sorgula](query-parquet-files.md)
+- [Parquet dosyalarını sorgulama](query-parquet-files.md)
 
-- [Sorgu Parke iç içe türleri](query-parquet-nested-types.md)
+- [Parquet iç içe türlerini sorgulama](query-parquet-nested-types.md)
 
-- [JSON dosyalarını sorgula](query-json-files.md)
+- [JSON dosyalarını sorgulama](query-json-files.md)
 
-- [Görünüm oluşturma ve kullanma](create-use-views.md)
+- [Görünümleri oluşturma ve kullanma](create-use-views.md)
 
 - [Dış tablolar oluşturma ve kullanma](create-use-external-tables.md)
 
-- [Sorgu sonuçlarını depolama alanına depolama](create-external-table-as-select.md)
+- [Sorgu sonuçlarını depolama alanında saklama](create-external-table-as-select.md)

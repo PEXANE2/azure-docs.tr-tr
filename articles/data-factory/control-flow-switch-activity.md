@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda değiştirme etkinliği
-description: Geçiş etkinliği, bir koşula göre işlem akışını denetlemenize olanak tanır.
+title: Azure Data Factory etkinlik değiştirme
+description: Switch etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,17 +10,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418023"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda değiştirme etkinliği
+# <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik değiştirme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Geçiş etkinliği, geçiş deyiminin programlama dillerinde sağladığı işlevselliği sağlar. Durum değerlendirmesiyle eşleşen bir servis talebine karşılık gelen bir dizi aktiviteyi değerlendirir.
+Switch etkinliği, programlama dillerinde bir switch ifadesinin sağladığı işlevleri sağlar. Koşul değerlendirmesiyle eşleşen bir servis talebine karşılık gelen bir etkinlik kümesini değerlendirir.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -69,20 +69,20 @@ Geçiş etkinliği, geçiş deyiminin programlama dillerinde sağladığı işle
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Anahtar etkinliğinin adı. | Dize | Evet
-type | Anahtarla'ya *Switch* ayarlanmalıdır* | Dize | Evet
-ifade | Dize değerine değerlendirilmesi gereken ifade | Sonuç türü dizeli ifade | Evet
-Durumda | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve yürütülecek bir dizi etkinlik içeren servis talepleri kümesi. En az bir durumda sağlamalıdır. Maksimum 25 kasa sınırı var. | Büyük/Küçük Harf Nesneleri Dizisi | Evet
-varsayılanEtkinlikler | İfade değerlendirmesi tatmin olmadığında yürütülen etkinlikler kümesi. | Etkinlikler Dizisi | Evet
+ad | Anahtar etkinliğinin adı. | Dize | Yes
+type | *Switch* olarak ayarlanmalıdır* | Dize | Yes
+ifade | Dize değeri değerlendirmesi gereken ifade | Sonuç türü dize olan ifade | Yes
+çalışmaların | Değer ifade değerlendirmesiyle eşleştiğinde yürütülecek bir değer ve bir etkinlik kümesi içeren servis talepleri kümesi. En az bir örnek sağlanmalıdır. 25 servis talebi için maksimum sınır vardır. | Case nesneleri dizisi | Yes
+Defaultacmize | İfade değerlendirmesi karşılanmadığı zaman yürütülen etkinlik kümesi. | Etkinlik dizisi | Yes
 
 ## <a name="example"></a>Örnek
 
-Bu örnekteki ardışık işlem, verileri bir giriş klasöründen çıktı klasörüne kopyalar. Çıktı klasörü, boru hattı parametresi değerine göre belirlenir: routeSelection.
+Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection.
 
 > [!NOTE]
-> Bu bölümde, ardışık hattı çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak bir Veri Fabrikası ardışık hattı oluşturmak için adım adım yönergeleri içeren bir yol [için, bkz.](quickstart-create-data-factory-powershell.md)
+> Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Anahtar etkinliği olan boru hattı (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Switch etkinliğine sahip işlem hattı (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -230,7 +230,7 @@ Bu örnekteki ardışık işlem, verileri bir giriş klasöründen çıktı klas
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Depolama bağlantılı hizmet (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -244,9 +244,9 @@ Bu örnekteki ardışık işlem, verileri bir giriş klasöründen çıktı klas
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure Blob veri seti (BlobDataset.json)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
 
-Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outputPath2** parametresinin değerine ayarlar. 
+İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
 
 ```json
 {
@@ -272,7 +272,7 @@ Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outpu
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Boru hattı parametresi JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
 
 ```json
 {
@@ -288,7 +288,7 @@ Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outpu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu komutlar, JSON dosyalarını klasöre kaydettiğinizi varsayar: C:\ADF. 
+Bu komutlar JSON dosyalarını şu klasöre kaydettiğiniz varsayılmaktadır: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -331,7 +331,7 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

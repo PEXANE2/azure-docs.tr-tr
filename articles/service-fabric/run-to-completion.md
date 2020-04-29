@@ -1,28 +1,28 @@
 ---
-title: Hizmet Kumaşında RunToCompletion semantik
-description: Hizmet Kumaşında RunToCompletion semantikini açıklar.
+title: Service Fabric içindeki RunToCompletion semantiği
+description: Service Fabric içindeki RunToCompletion semantiğini açıklar.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431299"
 ---
 # <a name="runtocompletion"></a>RunToCompletion
 
-Sürüm 7.1 ile başlayarak, Service Fabric [kapsayıcılar][containers-introduction-link] ve [konuk çalıştırılabilir][guest-executables-introduction-link] uygulamalar için **RunToCompletion** semantik destekler. Bu anlamsal uygulamalar, bir görevi ve çıkışı tamamlayan, her zaman çalışan uygulamaları ve hizmetleri etkinleştirir.
+Sürüm 7,1 ' den başlayarak, [kapsayıcılar][containers-introduction-link] ve [Konuk yürütülebilir][guest-executables-introduction-link] uygulamalar için **runtocompletion** semantiğini destekler Service Fabric. Bu semantikler, her zaman uygulama ve Hizmetleri çalıştırmanın yanı sıra bir görevi ve çıkışı tamamlamak için uygulama ve hizmetleri etkinleştirir.
 
-Bu makaleye geçmeden önce Service Fabric uygulama modeli ve [Service Fabric hosting modelini][hosting-model-link]tanımanızı öneririz. [Service Fabric application model][application-model-link]
+Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-model-link] ve [Service Fabric barındırma modeli][hosting-model-link]hakkında bilgi sahibi olmanız önerilir.
 
 > [!NOTE]
-> RunToCompletion semantik şu anda [Güvenilir Hizmetler][reliable-services-link] programlama modeli kullanılarak yazılmış hizmetler için desteklenmez.
+> RunToCompletion semantiği Şu anda [Reliable Services][reliable-services-link] programlama modeli kullanılarak yazılan hizmetler için desteklenmez.
  
-## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion semantik ve belirtim
-RunToCompletion semantik [ServiceManifest'i alırken][application-and-service-manifests-link] **Yürütme Politikası** olarak belirtilebilir. Belirtilen ilke ServiceManifest'i oluşturan tüm CodePackages tarafından devredilir. Aşağıdaki ApplicationManifest.xml snippet bir örnek sağlar.
+## <a name="runtocompletion-semantics-and-specification"></a>RunToCompletion semantiği ve belirtimi
+[ServiceManifest içeri aktarılırken][application-and-service-manifests-link]RunToCompletion semantiği bir **ExecutionPolicy** olarak belirtilebilir. Belirtilen ilke, ServiceManifest 'i kapsayan tüm kod paketleri tarafından devralınır. Aşağıdaki ApplicationManifest. xml kod parçacığı bir örnek sağlar.
 
 ```xml
 <ServiceManifestImport>
@@ -32,22 +32,22 @@ RunToCompletion semantik [ServiceManifest'i alırken][application-and-service-ma
   </Policies>
 </ServiceManifestImport>
 ```
-**ExecutionPolicy** aşağıdaki iki öznitelik sağlar:
-* **Tür:** **RunToCompletion** şu anda bu öznitelik için izin verilen tek değerdir.
-* **Yeniden başlatın:** Bu öznitelik, ServicePackage'ı oluşturan CodePackages'a uygulanan yeniden başlatma ilkesini hata durumunda belirtir. Sıfır olmayan bir **çıkış koduyla** çıkan bir CodePackage başarısız olmuş kabul edilir. Bu öznitelik için izin verilen değerler **OnFailure** ve **Asla** **OnFailure** varsayılan olarak vardır.
+**ExecutionPolicy** aşağıdaki iki özniteliğe izin verir:
+* **Tür:** **runtocompletion** Şu anda bu öznitelik için izin verilen tek değerdir.
+* **Yeniden Başlat:** Bu öznitelik, hata durumunda ServicePackage 'i kapsayan kod paketlerine uygulanan yeniden başlatma ilkesini belirtir. **Sıfır olmayan çıkış kodu** ile çıkış yapılan bir CodePackage başarısız olduğu kabul edilir. Bu öznitelik için izin verilen değerler **OnFailure** ve **hiçbir** şekilde varsayılan olarak **OnFailure** .
 
-**OnFailure**olarak ayarlanmış yeniden başlatma ilkesi yle, herhangi bir CodePackage başarısız olursa **(sıfır olmayan çıkış kodu)**, tekrarlanan hatalar arasında geri dönüşler ile yeniden başlatılır. Herhangi bir CodePackage başarısız **olursa, Asla**olarak ayarlanmış yeniden başlatma ilkesi yle, DağıtılanServicePackage'in dağıtım durumu **Başarısız** olarak işaretlenir, ancak diğer CodePackage'ların yürütmeye devam etmesine izin verilir. ServicePackage'ı oluşturan tüm CodePackage başarılı bir şekilde tamamlanması için çalıştırılırsa **(çıkış kodu 0)** DeployedServicePackage'ın dağıtım durumu **RanToCompletion**olarak işaretlenir. 
+Yeniden başlatma ilkesi **OnFailure**olarak ayarlandığında, herhangi bir CodePackage **(sıfır olmayan çıkış kodu)** başarısız olursa, yinelenen hatalar arasında geri dönerek yeniden başlatılır. Yeniden başlatma ilkesi **hiçbir**şekilde ayarlandığında, herhangi bir CodePackage başarısız olursa, DeployedServicePackage dağıtım durumu **başarısız** olarak Işaretlenir, ancak diğer kod paketlerinin yürütmeye devam etmesine izin verilir. ServicePackage 'i kapsayan tüm kod paketleri başarıyla tamamlanarak **(çıkış kodu 0)** çalışıyorsa, DeployedServicePackage dağıtım durumu **RanToCompletion**olarak işaretlenir. 
 
-## <a name="complete-example-using-runtocompletion-semantics"></a>RunToCompletion semantikkullanarak tam bir örnek
+## <a name="complete-example-using-runtocompletion-semantics"></a>RunToCompletion semantiğini kullanarak örnek tamamlama
 
-RunToCompletion semantik kullanarak tam bir örnek bakalım.
+RunToCompletion semantiğini kullanarak komple bir örneğe bakalım.
 
 > [!IMPORTANT]
-> Aşağıdaki örnek, Service Fabric [ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma aşinalık varsayar.
+> Aşağıdaki örnek, [Service Fabric ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma konusunda benzerlik olduğunu varsayar.
 >
-> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 başvurur. Windows Server kapsayıcıları bir ana bilgisayar işletim sistemi tüm sürümlerinde uyumlu değildir. Daha fazla bilgi için [Windows Kapsayıcı Sürüm Uyumluluğu'na](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)bakın.
+> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage'dan oluşan bir ServicePackage'ı tanımlar. *RunToCompletionCodePackage1* sadece **stdout** ve çıkışları için bir mesaj günlükleri. *RunToCompletionCodePackage2* bir süre için loopback adresi pings ve sonra **0,** **1** veya **2**bir çıkış kodu ile çıkar .
+Aşağıdaki ServiceManifest. xml, kapsayıcıları temsil eden iki CodePackage içeren bir ServicePackage 'i açıklar. *RunToCompletionCodePackage1* yalnızca **stdout** 'a bir ileti kaydeder ve çıkılıyor. *RunToCompletionCodePackage2* bir süre için geri döngü adresine ping atar ve sonra **0**, **1** veya **2**çıkış kodu ile çıkar.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Aşağıdaki ServiceManifest.xml, kapsayıcıları temsil eden iki CodePackage'd
 </ServiceManifest>
 ```
 
-Aşağıdaki ApplicationManifest.xml yukarıda açıklanan ServiceManifest.xml dayalı bir uygulama açıklar. **Bu OnFailure**bir yeniden başlatma ilkesi ile *WindowsRunToCompletionServicePackage* için **RunToCompletion** **ExecutionPolicy** belirtir. *WindowsRunToCompletionServicePackage*etkinleştirilmesi üzerine, kurucu CodePackages başlatılacaktır. *RunToCompletionCodePackage1* ilk etkinleştirme de başarılı bir şekilde çıkmalıdır. Ancak, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)** bu durumda yeniden başlatma ilkesi **OnFailure**olduğu için yeniden başlatılır .
+Aşağıdaki ApplicationManifest. xml, yukarıda açıklanan ServiceManifest. xml ' i temel alan bir uygulamayı açıklar. **OnFailure**yeniden başlatma Ilkesiyle *Windowsruntocompletionservicepackage* için **runtocompletion** **ExecutionPolicy** öğesini belirtir. *Windowsruntocompletionservicepackage*'in etkinleştirilmesinden sonra, bileşen kod paketleri başlatılır. *RunToCompletionCodePackage1* ilk etkinleştirme sırasında başarıyla çıkış olmalıdır. Bununla birlikte, *RunToCompletionCodePackage2* başarısız olabilir **(sıfır olmayan çıkış kodu)**, bu durumda yeniden başlatma ilkesi **OnFailure**olduğundan yeniden başlatılır.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -102,22 +102,22 @@ Aşağıdaki ApplicationManifest.xml yukarıda açıklanan ServiceManifest.xml d
   </DefaultServices>
 </ApplicationManifest>
 ```
-## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>Dağıtılmış ServicePackage'ın dağıtım durumunu sorgulama
-Dağıtılan ServicePackage'ın dağıtım durumu PowerShell'den [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] kullanılarak veya [FabricClient][fabric-client-link] API [GetDeployedServicePackageListAsync (String, Uri, String)][deployed-service-package-fabricclient-link] kullanılarak C#'dan sorgulanabilir
+## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>DeployedServicePackage dağıtım durumu sorgulanıyor
+Bir DeployedServicePackage dağıtım durumu, [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] kullanılarak PowerShell 'Den veya [FabricClient][fabric-client-link] API [GetDeployedServicePackageListAsync (String, Uri, String)][deployed-service-package-fabricclient-link] kullanılarak C# ' den sorgulanabilir
 
-## <a name="considerations-when-using-runtocompletion-semantics"></a>RunToCompletion semantikkullanırken dikkat edilmesi gerekenler
+## <a name="considerations-when-using-runtocompletion-semantics"></a>RunToCompletion semantiğinin kullanılmasıyla ilgili konular
 
-Geçerli RunToCompletion desteği için aşağıdaki noktalar belirtilmelidir.
-* Bu semantik ler yalnızca [kapsayıcılar][containers-introduction-link] ve [konuk çalıştırılabilir][guest-executables-introduction-link] uygulamalar için desteklenir.
-* RunToCompletion semantikiçeren uygulamalar için yükseltme senaryolarına izin verilmez. Kullanıcılar gerekirse bu tür uygulamaları silmeli ve yeniden oluşturmalıdır.
-* Failover olayları, CodePackages'ın başarılı bir şekilde tamamlandıktan sonra, aynı düğümde veya kümenin diğer düğümlerinde yeniden yürütülmesine neden olabilir. Başarısız olaylara örnek olarak düğüm yeniden başlatılır ve düğümdeki Servis Kumaşı çalışma zamanı yükseltmeleri verilebilir.
+Geçerli RunToCompletion desteği için aşağıdaki noktaların not edilmelidir.
+* Bu [semantikler yalnızca kapsayıcılar][containers-introduction-link] ve [Konuk yürütülebilir][guest-executables-introduction-link] uygulamalar için desteklenir.
+* RunToCompletion semantiği olan uygulamalara yönelik yükseltme senaryolarına izin verilmez. Kullanıcılar gerekirse bu uygulamaları silip yeniden oluşturur.
+* Yük devretme olayları, başarıyla tamamlandıktan sonra, aynı düğümdeki veya kümedeki diğer düğümlerde kod paketlerinin yeniden yürütülmesine neden olabilir. Yük devretme olayları örnekleri, düğüm yeniden başlatılır ve bir düğümdeki çalışma zamanı yükseltmeleri Service Fabric.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İlgili bilgiler için aşağıdaki makalelere bakın.
 
-* [Servis Kumaş ve konteynerler.][containers-introduction-link]
-* [Servis Kumaş ve konuk icra.][guest-executables-introduction-link]
+* [Service Fabric ve kapsayıcılar.][containers-introduction-link]
+* [Service Fabric ve konuk yürütülebilir dosyaları.][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

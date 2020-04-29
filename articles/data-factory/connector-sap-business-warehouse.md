@@ -1,6 +1,6 @@
 ---
-title: SAP BW'den veri kopyalama
-description: Bir Azure Veri Fabrikası ardışık alanında kopyalama etkinliği kullanarak SAP İş Ambarı'ndan desteklenen lavabo veri depolarına verileri nasıl kopyalayatılayış edin.
+title: SAP BW verileri kopyalama
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak SAP Business Warehouse 'tan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,71 +13,71 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418074"
 ---
-# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak SAP İş Ambarından veri kopyalama
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+# <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak SAP Business Warehouse 'tan veri kopyalama
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-sap-business-warehouse-connector.md)
-> * [Geçerli sürüm](connector-sap-business-warehouse.md)
+> * [Güncel sürüm](connector-sap-business-warehouse.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, bir SAP İş Ambarı'ndan (BW) veri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, bir SAP Business Warehouse 'tan (siyah-beyaz) veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 >[!TIP]
->Sap veri tümleştirme senaryosunda ADF'nin genel desteğini öğrenmek için, ayrıntılı giriş, karşılaştırma ve kılavuzlu [Azure Veri Fabrikası teknik incelemesini kullanarak SAP veri tümleştirmesine](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) bakın.
+>ADF 'nin SAP veri tümleştirme senaryosunda genel desteğini öğrenmek için ayrıntılı giriş, comparme ve kılavuzla [Azure Data Factory Teknik İnceleme kullanarak SAP veri tümleştirme](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) konusuna bakın.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu SAP İş Ambarı bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu SAP Business Warehouse Connector, aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-SAP İş Ambarı'ndaki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+SAP Business Warehouse 'tan verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu SAP İş Ambarı bağlayıcısı destekler:
+Özellikle, bu SAP Business Warehouse Connector şunları destekler:
 
-- SAP İş Ambarı **sürüm 7.x**.
-- MDX sorgularını kullanarak **InfoCubes ve QueryCubes(BEx** sorguları dahil) verilerinin kopyalanması.
-- Temel kimlik doğrulamasını kullanarak verileri kopyalama.
+- SAP Business Warehouse **sürüm 7. x**.
+- MDX sorgularını kullanarak **InfoCubes ve Queryküplerinden** (Bex sorguları dahil) verileri kopyalama.
+- Temel kimlik doğrulaması kullanarak verileri kopyalama.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu SAP İş Ambarı konektörünü kullanmak için şunları yapmanız gerekir:
+Bu SAP Business Warehouse bağlayıcısını kullanmak için şunları yapmanız gerekir:
 
-- Kendi kendine barındırılan Tümleştirme Çalışma Zamanı'nı ayarlayın. Ayrıntılar için [Kendi barındırılan Tümleştirme Çalışma Zamanı](create-self-hosted-integration-runtime.md) makalesine bakın.
-- SAP **NetWeaver kitaplığını** Tümleştirme Runtime makinesine yükleyin. SAP Netweaver kitaplığını SAP yöneticinizden veya doğrudan [SAP Yazılım İndirme Merkezi'nden](https://support.sap.com/swdc)alabilirsiniz. En son sürümün indirme konumunu almak için **SAP Not #1025361'ni** arayın. Tümleştirme Çalışma Zamanı yüklemenizle eşleşen **64 bit** SAP NetWeaver kitaplığını seçtiğinizden emin olun. Ardından SAP Not'a göre SAP NetWeaver RFC SDK'da bulunan tüm dosyaları yükleyin. SAP NetWeaver kitaplığı, SAP İstemci Araçları yüklemesinde de yer alır.
+- Şirket içinde barındırılan bir Integration Runtime ayarlayın. Ayrıntılar için bkz. [Şirket içinde barındırılan Integration Runtime](create-self-hosted-integration-runtime.md) makalesi.
+- Integration Runtime makinesine **SAP NetWeaver kitaplığını** yüklersiniz. SAP NetWeaver kitaplığını SAP yöneticinizden alabilir veya doğrudan [SAP Software Download Center](https://support.sap.com/swdc)' dan edinebilirsiniz. En son sürüme ait indirme konumunu almak için **SAP Note #1025361** aratın. Integration Runtime yüklemenize uyan **64 bitlik** SAP NetWeaver kitaplığını seçtiğinizden emin olun. Daha sonra SAP NetWeaver RFC SDK 'sına dahil edilen tüm dosyaları SAP notuna göre yükler. SAP NetWeaver kitaplığı, SAP Istemci araçları yüklemesine de dahildir.
 
 >[!TIP]
->SAP BW'ye bağlantı sorununu gidermek için şunları emin olun:
->- NetWeaver RFC SDK'dan çıkarılan tüm bağımlılık kitaplıkları %windir%\system32 klasöründe yer almaktadır. Genellikle icudt34.dll, icuin34.dll, icuuc34.dll, libicudecnumber.dll, librfc32.dll, libsapucu.dll, sapcrypto.dll, sapcryto_old.dll, sapnwrfc.dll vardır.
->- SAP Server'a bağlanmak için kullanılan gerekli bağlantı noktaları, genellikle 3300 ve 3201 bağlantı noktası olan Self barındırılan IR makinesinde etkinleştirilir.
+>SAP BW bağlantı sorununu gidermek için, şunları yaptığınızdan emin olun:
+>- NetWeaver RFC SDK 'dan ayıklanan tüm bağımlılık kitaplıkları%Windir%\System32 klasöründe bulunur. Genellikle icudt34. dll, icuin34. dll, icuuc34. dll, libıuıudecnumber. dll, librfc32. dll, libsapucum. dll, sapşifre. dll, sapcryto_old. dll, sapnwrfc. dll ' dir.
+>- SAP sunucusuna bağlanmak için kullanılan bağlantı noktaları, genellikle bağlantı noktası 3300 ve 3201 olan şirket içinde barındırılan IR makinesinde etkinleştirilir.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, SAP İş Ambarı bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, SAP Business Warehouse Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Sap İş Ambarı (BW) bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+SAP Business Warehouse (bant genişliği) bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **SapBw** | Evet |
-| sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | Evet |
-| systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Evet |
-| clientId | SAP W sistemindeki istemci kimliği.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Evet |
-| userName | SAP sunucusuna erişimi olan kullanıcının adı. | Evet |
-| password | Kullanıcının parolası. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullarda](#prerequisites)belirtildiği gibi Kendi kendine barındırılan Tümleştirme Çalışma Süresi gereklidir. |Evet |
+| type | Type özelliği: **Sapbeyaz** olarak ayarlanmalıdır | Yes |
+| sunucu | SAP BW örneğinin bulunduğu sunucunun adı. | Yes |
+| systemNumber | SAP BW sisteminin sistem numarası.<br/>İzin verilen değer: dize olarak temsil edilen iki basamaklı ondalık sayı. | Yes |
+| clientId | SAP W sistemindeki istemcinin istemci KIMLIĞI.<br/>İzin verilen değer: dize olarak temsil edilen üç basamaklı ondalık sayı. | Yes |
+| userName | SAP sunucusuna erişimi olan kullanıcının adı. | Yes |
+| password | Kullanıcının parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşul](#prerequisites)bölümünde belirtildiği gibi, kendinden konak Integration Runtime gereklidir. |Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -104,11 +104,11 @@ Sap İş Ambarı (BW) bağlantılı hizmet için aşağıdaki özellikler destek
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde SAP BW veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm SAP BW veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-SAP BW'deki verileri kopyalamak için, veri kümesinin tür özelliğini **SapBwCube**olarak ayarlayın. Tür İlişkisel Tablo SAP BW veri kümesi için desteklenen türe özgü özellikleri olsa da.
+SAP BW verileri kopyalamak için, veri kümesinin Type özelliğini **Sapbwcube**olarak ayarlayın. RelationalTable türünde SAP BW veri kümesi için desteklenen türe özgü özellik yok.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -125,22 +125,22 @@ SAP BW'deki verileri kopyalamak için, veri kümesinin tür özelliğini **SapBw
 }
 ```
 
-Dakti-zimd veri kümesi kullanıyorsanız, `RelationalTable` ileriye dönük yenisini kullanmanız önerilirken, yine de olduğu gibi desteklenir.
+`RelationalTable` Türü belirtilmiş veri kümesi kullanıyorsanız, hala olduğu gibi desteklenir, ancak yeni bir adım ileri kullanmanız önerilir.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde SAP BW kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm SAP BW kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="sap-bw-as-source"></a>KAYNAK OLARAK SAP BW
+### <a name="sap-bw-as-source"></a>Kaynak olarak SAP BW
 
-SAP BW'deki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
+SAP BW verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği şu şekilde ayarlanmalıdır: **SapBwSource** | Evet |
-| sorgu | SAP BW örneğindeki verileri okumak için MDX sorgusunu belirtir. | Evet |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Sapbwsource** olarak ayarlanmalıdır | Yes |
+| sorgu | SAP BW örneğinden verileri okumak için MDX sorgusunu belirtir. | Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -172,42 +172,42 @@ SAP BW'deki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümü
 ]
 ```
 
-Dakti-yazılı `RelationalSource` kaynak kullanıyorsanız, ileriye dönük yeni bir kaynak kullanmanız önerilirken, yine de olduğu gibi desteklenir.
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
-## <a name="data-type-mapping-for-sap-bw"></a>SAP BW için veri türü eşleme
+## <a name="data-type-mapping-for-sap-bw"></a>SAP BW için veri türü eşlemesi
 
-SAP BW'den veri kopyalanırken, SAP BW veri türlerinden Azure Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopya etkinliği kaynak şemasını ve veri türünü lavaboyla nasıl eşler hakkında bilgi edinmek için Şema ve [veri türü eşlemelerine](copy-activity-schema-and-type-mapping.md) bakın.
+SAP BW verileri kopyalarken, SAP BW veri türlerinden aşağıdaki eşlemeler Azure Data Factory geçici veri türlerini kullanır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md) .
 
-| SAP BW veri türü | Veri fabrikası geçici veri türü |
+| SAP BW veri türü | Veri Fabrikası geçici veri türü |
 |:--- |:--- |
 | ACCP | int |
-| Char | Dize |
+| CHAR | Dize |
 | CLNT | Dize |
 | CURR | Ondalık |
 | CUKY | Dize |
-| Aralık | Ondalık |
+| DEC | Ondalık |
 | FLTP | Çift |
 | INT1 | Bayt |
 | INT2 | Int16 |
 | INT4 | int |
-| Lang | Dize |
+| LANG | Dize |
 | LCHR | Dize |
-| LRAW | Bayt[] |
+| LRAW | Byte [] |
 | PREC | Int16 |
-| Quan | Ondalık |
-| Ham | Bayt[] |
-| RAWSTRING | Bayt[] |
-| Dize | Dize |
-| Birim | Dize |
-| DATS | Dize |
+| QUA | Ondalık |
+| Madde | Byte [] |
+| RAWSTRING | Byte [] |
+| DIZISINDE | Dize |
+| BIRIM | Dize |
+| KATALAR | Dize |
 | NUMC | Dize |
-| TİmS | Dize |
+| TIMS | Dize |
 
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

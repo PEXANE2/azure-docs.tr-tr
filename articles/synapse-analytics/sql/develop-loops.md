@@ -1,6 +1,6 @@
 ---
-title: T-SQL döngülerini kullanma
-description: Synapse SQL'de T-SQL döngüleri kullanma, imleçleri değiştirme ve ilgili çözümleri SQL havuzu ile geliştirme ipuçları.
+title: T-SQL döngüleri kullanma
+description: T-SQL döngülerini kullanma, imleçleri değiştirme ve SYNAPSE SQL 'deki SQL havuzuyla ilgili çözümleri geliştirmeyle ilgili ipuçları.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429960"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Synapse SQL'de T-SQL döngülerini kullanma
-Bu makalede, T-SQL döngüleri kullanmak, imleçleri değiştirmek ve Synapse SQL'de SQL havuzu ile ilgili çözümleri geliştirmek için gerekli ipuçları nı sağlar.
+# <a name="using-t-sql-loops-in-synapse-sql"></a>SYNAPSE SQL 'de T-SQL döngüleri kullanma
+Bu makalede T-SQL döngülerini kullanma, imleçler değiştirme ve SYNAPSE SQL 'de SQL havuzuyla ilgili çözümleri geliştirme konusunda temel ipuçları sunulmaktadır.
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
-Synapse SQL, deyim bloklarını tekrar tekrar yürütmek için [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) döngüsüne destek sağlar. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod özellikle BREAK anahtar sözcük kullanarak döngüyü sonlandırAna kadar devam eder. 
+SYNAPSE SQL, sürekli olarak ekstre blokları yürütmeye yönelik [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder. 
 
-SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için yararlıdır. Neyse ki, SQL koduyla yazılmış hemen hemen tüm imleçler hızlı ileri, salt okunur çeşitlidir. Yani, [WHILE] döngüler imleçler yerine harika bir alternatiftir.
+SQL havuzundaki döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, [WHILE] döngüleri, imleçleri değiştirmek için harika bir alternatiftir.
 
-## <a name="replacing-cursors-in-sql-pool"></a>SQL havuzunda imleçleri değiştirme
+## <a name="replacing-cursors-in-sql-pool"></a>SQL havuzundaki imleçleri değiştirme
 
-Dalış yapmadan önce şu soru göz önünde bulundurulmalıdır: "Bu imleç, set tabanlı işlemleri kullanmak üzere yeniden yazılabilir mi?" Birçok durumda, cevap evet ve sık sık en iyi yaklaşımdır. Küme tabanlı bir işlem genellikle yinelemeli, satır satır yaklaşımdaha hızlı yürütülür.
+' De kullanılmadan önce, aşağıdaki soru göz önünde bulundurulmalıdır: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?" Çoğu durumda, yanıt Evet 'tir ve sıklıkla en iyi yaklaşım olur. Küme temelli bir işlem, genellikle yinelemeli, satır satır yaklaşımına göre daha hızlı yürütülür.
 
-Hızlı ileri okuma imleci kolayca bir döngü yapısı ile değiştirilir. Aşağıdaki kod basit bir örnektir. Bu kod örneği, veritabanındaki her tablonun istatistiklerini güncelleştirir. Döngüdeki tabloların üzerine yineleyerek, her komut sırayla yürütülür.
+İleri sarma salt okuma imleçler kolayca bir döngü yapısıyla değiştirilmiştir. Aşağıdaki kod basit bir örnektir. Bu kod örneği, veritabanındaki her tablo için istatistikleri günceller. Döngüdeki tabloları yineleerek her komut sırayla yürütülür.
 
-İlk olarak, tek tek ifadeleri tanımlamak için kullanılan benzersiz bir satır numarası içeren geçici bir tablo oluşturun:
+İlk olarak, ayrı ayrı deyimleri tanımlamak için kullanılan benzersiz bir satır numarası içeren geçici bir tablo oluşturun:
 
 ```sql
 CREATE TABLE #tbl
@@ -47,7 +47,7 @@ FROM    sys.tables
 ;
 ```
 
-İkinci olarak, döngüyü yürütmek için gereken değişkenleri başlatma:
+İkinci olarak, döngüyü yürütmek için gereken değişkenleri başlatın:
 
 ```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -55,7 +55,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Şimdi, bunları teker teker yürüten deyimler üzerinden döngü:
+Şimdi onları birer birer yürüten deyimler üzerinde döngü gerçekleştirin:
 
 ```sql
 WHILE   @i <= @nbr_statements
@@ -66,7 +66,7 @@ BEGIN
 END
 ```
 
-Son olarak ilk adımda oluşturulan geçici tabloyu bırakın
+Son olarak, ilk adımda oluşturulan geçici tabloyu bırakın
 
 ```sql
 DROP TABLE #tbl;
@@ -74,4 +74,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](develop-overview.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](develop-overview.md).

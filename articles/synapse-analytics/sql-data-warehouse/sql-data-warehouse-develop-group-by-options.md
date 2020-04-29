@@ -1,6 +1,6 @@
 ---
-title: Seçeneklere göre grup kullanma
-description: Synapse SQL havuzunda seçeneklere göre grup uygulama ipuçları.
+title: Gruplandırma ölçütü seçeneklerini kullanma
+description: SYNAPSE SQL havuzunda gruplandırma ölçütü seçeneklerini uygulamaya yönelik ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,29 +12,29 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416191"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL havuzundaki seçeneklere göre gruplandırma
+# <a name="group-by-options-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda gruplandırma ölçütü seçenekleri
 
-Bu makalede, SQL havuzunda grup seçeneklerine göre grup uygulama ipuçları bulacaksınız.
+Bu makalede, SQL havuzunda grup seçeneklerini uygulamaya yönelik ipuçları bulacaksınız.
 
 ## <a name="what-does-group-by-do"></a>GROUP BY ne yapar?
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi verileri bir özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçenekleraşağıdaki gibi geçici çözüm vardır:
+[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
 
-* ROLLUP ile GRUP
-* GRUPLANDıRMA KÜMELerİ
-* KÜP İlE GRUP LA
+* TOPLAMASıYLA gruplandırma ölçütü
+* GRUPLANDıRMA KÜMELERI
+* KÜP ile gruplandırma ölçütü
 
-## <a name="rollup-and-grouping-sets-options"></a>Toplama ve gruplandırma seçenekleri kümeler
+## <a name="rollup-and-grouping-sets-options"></a>Toplama ve gruplandırma kümeleri seçenekleri
 
-Buradaki en basit seçenek, açık sözdizimine güvenmek yerine toplamayı gerçekleştirmek için UNION ALL'ı kullanmaktır. Sonuç tamamen aynıdır.
+Buradaki en basit seçenek, açık sözdizimine güvenmek yerine, toplamayı gerçekleştirmek için UNıON ALL kullanmaktır. Sonuç tamamen aynıdır.
 
-ROLLUP seçeneği ile GROUP BY deyimini kullanarak aşağıdaki örnek:
+Aşağıdaki örnek, toplama seçeneği ile GROUP BY ifadesini kullanıyor:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -49,13 +49,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ROLLUP kullanarak, önceki örnek aşağıdaki toplamaları ister:
+Önceki örnek, ROLLUP kullanarak aşağıdaki toplamaları ister:
 
-* Ülke ve Bölge
+* Ülke ve bölge
 * Ülke
 * Genel Toplam
 
-ROLLUP'ı değiştirmek ve aynı sonuçları döndürmek için UNION ALL'ı kullanabilir ve gerekli toplamaları açıkça belirtebilirsiniz:
+TOPLAMAYı değiştirmek ve aynı sonuçları döndürmek için UNıON ALL ' ı kullanabilir ve gerekli toplamaları açıkça belirtebilirsiniz:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -82,15 +82,15 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-GRUPLAMA KÜMELERİnİnİ DEĞIŞTIRMEK IÇIN örnek ilkesi uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNION ALL bölümleri oluşturmanız gerekir.
+Gruplandırma KÜMELERINI değiştirmek için, örnek ilke uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNıON ALL bölümlerini oluşturmanız yeterlidir.
 
 ## <a name="cube-options"></a>Küp seçenekleri
 
-UNION ALL yaklaşımını kullanarak KÜP İlE Bİr GRUP OLUŞTURMAK MÜMKÜNDÜR. Sorun, kodun hızlı bir şekilde hantal ve hantal hale gelebiliyor olmasıdır. Bu sorunu azaltmak için bu daha gelişmiş yaklaşımı kullanabilirsiniz.
+UNıON ALL yaklaşımını kullanarak KÜPLE bir grup oluşturmak mümkündür. Bu sorun, kodun hızlı bir şekilde hızla ve farkında hale gelmesine neden olabilir. Bu sorunu azaltmak için daha gelişmiş bir yaklaşım kullanabilirsiniz.
 
-Önceki örneği kullanarak, ilk adım oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır.
+Önceki örneği kullanarak, ilk adım oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan ' Cube ' öğesini tanımlamaktır.
 
-Bu bizim için tüm düzeyleri oluşturur beri iki türetilmiş tabloların CROSS JOIN not alın. Kodun geri kalanı biçimlendirme için vardır:
+Bu iki türetilmiş tablonun çapraz BIRLEŞTIRMESINI göz önünde bulunun çünkü bu, bizim için tüm düzeyleri oluşturur. Kodun geri kalanı biçimlendirme için mevcuttur:
 
 ```sql
 CREATE TABLE #Cube
@@ -121,11 +121,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Aşağıdaki resim CTAS sonuçlarını gösterir:
+Aşağıdaki görüntüde CTAS sonuçları gösterilmektedir:
 
-![Küpe göre gruplandırma](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Küpe göre Gruplandır](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-İkinci adım, ara sonuçları depolamak için bir hedef tablo belirtmektir:
+İkinci adım, geçici sonuçları depolamak için bir hedef tablo belirtmektir:
 
 ```sql
 DECLARE
@@ -148,7 +148,7 @@ WITH
 ;
 ```
 
-Üçüncü adım, toplama gerçekleştiren sütunküpümüz üzerinde döngü. Sorgu, #Cube geçici tablosundaki her satır için bir kez çalışır. Sonuçlar #Results geçici tablosunda saklanır:
+Üçüncü adım, toplama işlemi gerçekleştiren sütun küpümüzden fazla döngüdür. Sorgu #Cube geçici tablodaki her satır için bir kez çalışır. Sonuçlar #Results geçici tabloda depolanır:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -172,7 +172,7 @@ BEGIN
 END
 ```
 
-Son olarak, #Results geçici tablodan okuyarak sonuçları döndürebilirsiniz:
+Son olarak, #Results geçici tablodan okurken sonuçları döndürebilirsiniz:
 
 ```sql
 SELECT *
@@ -181,8 +181,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Kodu bölümlere ayırıp bir döngü yapısı oluşturarak, kod daha yönetilebilir ve korunabilir hale gelir.
+Kodu bölümlere ayırarak ve bir döngü yapısı oluşturarak, kod daha yönetilebilir ve sürdürülebilir hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](sql-data-warehouse-overview-develop.md).

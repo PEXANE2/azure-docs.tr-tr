@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'te bağlantılı bir hizmet sağlama ve koruma
-description: Yönetilen Vnet ile bağlantılı bir hizmeti nasıl sağlayacağınızı ve güvenli hale nasıl sağlayacağınızı öğrenin
+title: Azure SYNAPSE Analytics 'te bağlı bir hizmeti sağlama ve koruma
+description: Yönetilen VNET ile bağlı bir hizmeti sağlamayı ve güvenliğini sağlama hakkında bilgi edinin
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -10,64 +10,64 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430558"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Özel Bağlantılar ile bağlantılı bir hizmeti güvence altına alma 
+# <a name="securing-a-linked-service-with-private-links"></a>Bağlı bir hizmetin özel bağlantılarla güvenliğini sağlama 
 
-Bu makalede, Synapse'de bağlantılı bir hizmeti özel bir bitiş noktasıyla nasıl güvence altına alacağınızı öğreneceksiniz.
+Bu makalede, özel bir uç nokta ile SYNAPSE 'de bağlı bir hizmetin nasıl güvenli hale alınacağını öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**: Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure Depolama hesabı**: Azure Veri Gölü Gen 2'yi *kaynak* veri deposu olarak kullanıyorsunuz. Depolama hesabınız yoksa, bir depolama hesabı oluşturmak için adımlar için [bir Azure Depolama hesabı oluşturma'ya](../../storage/blobs/data-lake-storage-quickstart-create-account.md) bakın. Depolama Hesabı'na erişmek için Synapse Studio IP filtresine sahip olduğundan ve yalnızca **Seçili ağların** Depolama hesabına erişmesine izin verdiğinden emin olun. Bıçak **Güvenlik Duvarları ve sanal ağların** altındaki ayar aşağıdaki resimdeki gibi görünmelidir.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md) . Depolama hesabının buna erişmek için SYNAPSE Studio IP filtrelemesine sahip olduğundan ve yalnızca **Seçili ağların** depolama hesabına erişmesine izin verdiğinizden emin olun. Dikey pencere **güvenlik duvarları ve sanal ağlar** altındaki ayar aşağıdaki resim gibi görünmelidir.
 
-![Güvenli Depolama Hesabı](./media/secure-storage-account.png)
+![Güvenli depolama hesabı](./media/secure-storage-account.png)
 
-## <a name="create-a-linked-service-with-private-links"></a>Özel Bağlantılar ile bağlantılı bir hizmet oluşturma
+## <a name="create-a-linked-service-with-private-links"></a>Özel bağlantılarla bağlantılı hizmet oluşturma
 
-Azure Synapse Analytics'te bağlantılı bir hizmet, bağlantı bilgilerinizi diğer hizmetlerle tanımladığınız yerdir. Bu bölümde, Azure Synapse Analytics ve Azure Data Lake Gen 2'yi bağlantılı hizmetler olarak eklersiniz.
+Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer hizmetlere tanımladığınız yerdir. Bu bölümde, Azure SYNAPSE Analytics ve Azure Data Lake Gen 2 ' yi bağlı hizmetler olarak ekleyeceksiniz.
 
-1. Azure Synapse Studio'yu açın ve **Yönet** sekmesine gidin.
-1. **Dış bağlantılar**altında, **Bağlantılı hizmetleri**seçin.
-1. Bağlantılı bir hizmet eklemek için **Yeni'yi**tıklatın.
-1. Listeden Azure Veri Gölü Depolama Gen2 döşemesini seçin ve **Devam et'i**tıklatın.
-1. **Etkileşimli Yazma'yı etkinleştirdiğinizden**emin olun. Etkinleştirilmesi yaklaşık 1 dakika sürebilir. 
-1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru luğunu doğrulamak için test bağlantısını tıklatın.
-1. **Test bağlantısını**seçin, Depolama Hesabı özel bir Bitiş Noktası oluşturma ve onayı olmadan bu hesaba erişim emmediği için başarısız olmalıdır. Hata iletisinde, bir sonraki bölüme gitmek için izleyebileceğiniz özel bir **bitiş noktası** oluşturmak için bir bağlantı görmeniz gerekir. Bu bağlantıyı izlerseniz, bir sonraki bölümü atlayın.
+1. Azure SYNAPSE Studio 'Yu açın ve **Yönet** sekmesine gidin.
+1. **Dış bağlantılar**altında **bağlı hizmetler**' i seçin.
+1. Bağlı bir hizmet eklemek için **Yeni**' ye tıklayın.
+1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' a tıklayın.
+1. **Etkileşimli yazma**özelliğini etkinleştirdiğinizden emin olun. 1 dakika içinde etkinleştirilmesi gerekebilir. 
+1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' ya tıklayın.
+1. **Bağlantıyı test**et ' i seçtiğinizde, depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması olmadan bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, bir sonraki bölüme gitmek için izleyebileceğiniz bir **Özel uç nokta** oluşturmak üzere bir bağlantı görmeniz gerekir. Bu bağlantıyı izlerseniz, sonraki parçayı atlayın.
 1. Bittiğinde **Oluştur**’u seçin.
 
-## <a name="create-a-managed-private-endpoint"></a>Yönetilen özel bitiş noktası oluşturma
+## <a name="create-a-managed-private-endpoint"></a>Yönetilen özel uç nokta oluşturma
 
-Yukarıdaki bağlantıyı test ederken köprüye tıklamadıysanız, aşağıdaki yolu izleyin. Şimdi, yukarıda oluşturulan bağlantılı hizmete bağlanacağınız yönetilen bir özel bitiş noktası oluşturmanız gerekir.
+Bu durumda, yukarıdaki bağlantıyı sınarken köprüye tıklamadınız, aşağıdaki yolu izleyin. Şimdi, yukarıda oluşturulan bağlı hizmete bağlanacak bir yönetilen özel uç noktası oluşturmanız gerekir.
 
 1. **Yönet** sekmesine gidin.
-1. **Yönetilen Sanal Ağlar** bölümüne gidin.
-1. Yönetilen özel bitiş noktası altında **+ Yeni'yi** seçin.
-1. Listeden Azure Veri Gölü Depolama Gen2 döşemesini seçin ve **Devam et'i**seçin.
-1. Yukarıda oluşturduğunuz Depolama Hesabının adını girin.
-1. **Oluştur'u** seçin
-1. Birkaç saniye bekledikten sonra oluşturulan özel bağlantının onay alması gerektiğini görmelisiniz.
+1. **Yönetilen sanal ağlar** bölümüne gidin.
+1. Yönetilen özel uç nokta altında **+ Yeni** ' yi seçin.
+1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' ı seçin.
+1. Yukarıda oluşturduğunuz depolama hesabının adını girin.
+1. **Oluştur** ' u seçin
+1. Özel bağlantının oluşturulduğu saniye bekledikten sonra bir onay gerektiğini görmeniz gerekir.
 
-## <a name="approval-of-a-private-link"></a>Özel bir bağlantının onayı
-1. Yukarıda oluşturduğunuz Özel Bitiş Noktası'nı seçin. Depolama Hesabı düzeyinde Özel Bitiş Noktasını onaylamanızı sağlayacak bir köprü görebilirsiniz. *Alternatif olarak doğrudan Azure portalı Depolama Hesabı'na gidin ve **Özel uç nokta bağlantıları** bıçağına gidin.*
-1. Stüdyoda oluşturduğunuz Özel bitiş noktasını işaretleyin ve **Onayla'yı**seçin.
-1. Açıklama ekleyin ve **evet'i** tıklatın
-1. **Yönet**Sekmesinin **Yönetilen Sanal Ağlar** bölümü altındaki Synapse Studio'ya geri dön.
-1. Özel bitiş noktanız için onay almak yaklaşık 1 dakika sürer.
+## <a name="approval-of-a-private-link"></a>Özel bir bağlantının onaylanması
+1. Yukarıda oluşturduğunuz özel uç noktayı seçin. Depolama hesabı düzeyinde özel uç noktasını onaylamanıza olanak sağlayacak bir köprü görebilirsiniz. *Alternatif olarak, Azure portal depolama hesabına doğrudan gidip **Özel uç nokta bağlantıları** dikey penceresine gidebilirsiniz.*
+1. Studio 'da oluşturduğunuz özel uç noktayı işaret edin ve **Onayla**' yı seçin.
+1. Bir açıklama ekleyin ve **Evet** ' e tıklayın.
+1. **Yönet**sekmesinin **yönetilen sanal ağlar** bölümünde SYNAPSE Studio 'ya geri dönün.
+1. Onayın özel uç noktanıza yansıtılmasıyla ilgili olarak yaklaşık 1 dakika sürer.
 
-## <a name="check-the-connection-works"></a>Bağlantı çalışmalarını denetleme
-1. **Yönet** sekmesine gidin ve oluşturduğunuz bağlantılı hizmeti seçin.
+## <a name="check-the-connection-works"></a>Bağlantının çalışıp çalışmadığını denetleyin
+1. **Yönet** sekmesine gidin ve oluşturduğunuz bağlı hizmeti seçin.
 1. **Etkileşimli yazmanın** etkin olduğundan emin olun.
-1. **Bağlantıyı sına**’yı seçin. Bağlantının başarılı olduğunu görmelisiniz.
+1. **Bağlantıyı sına**’yı seçin. Bağlantının başarılı olduğunu görmeniz gerekir.
 
-Şimdi Synapse ve bağlantılı hizmet arasında güvenli ve özel bir bağlantı kurduk!
+Artık SYNAPSE ile bağlı hizmetiniz arasında güvenli ve özel bir bağlantı oluşturdunuz!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse Analytics'te Yönetilen özel bitiş noktası hakkında daha fazla bilgi geliştirmek için [Synapse Yönetilen özel bitiş noktası](data-integration-data-lake.md) makalesi nin etrafındaki konsepte bakın.
+SYNAPSE Analytics 'te yönetilen özel uç nokta hakkında daha fazla bilgi için, [SYNAPSE tarafından yönetilen özel uç nokta makalesindeki kavram](data-integration-data-lake.md) bölümüne bakın.
 
-Synapse Analytics için veri tümleştirmesi hakkında daha fazla bilgi için, [Verileri Veri Gölü makalesine doğru sindirin'](data-integration-data-lake.md) e bakın.
+SYNAPSE Analytics veri tümleştirmesi hakkında daha fazla bilgi için bkz. [verileri Data Lake bir makaleye dönüştürme](data-integration-data-lake.md) .

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda sistem değişkenleri
-description: Bu makalede, Azure Veri Fabrikası tarafından desteklenen sistem değişkenleri açıklanmaktadır. Veri Fabrikası varlıklarını tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
+title: Azure Data Factory sistem değişkenleri
+description: Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri açıklanır. Data Factory varlıkları tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,45 +12,45 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.openlocfilehash: 2690ded0ac45719cb1082c85ab535c91ad491172
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417972"
 ---
-# <a name="system-variables-supported-by-azure-data-factory"></a>Azure Veri Fabrikası tarafından desteklenen sistem değişkenleri
+# <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen sistem değişkenleri
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Azure Veri Fabrikası tarafından desteklenen sistem değişkenleri açıklanmaktadır. Veri Fabrikası varlıklarını tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
+Bu makalede Azure Data Factory tarafından desteklenen sistem değişkenleri açıklanır. Data Factory varlıkları tanımlarken bu değişkenleri ifadelerde kullanabilirsiniz.
 
-## <a name="pipeline-scope"></a>Boru hattı kapsamı
-Bu sistem değişkenleri, JSON boru hattının herhangi bir yerine başvurulabilir.
-
-| Değişken Adı | Açıklama |
-| --- | --- |
-| @pipeline(). Datafactory |Boru hattı nın içinde çalışan veri fabrikasının adı |
-| @pipeline(). Boru hattı |Boru hattının adı |
-| @pipeline(). Runid | Belirli bir boru hattı çalıştırımının kimliği |
-| @pipeline(). Tetikleyici Türü | Ardışık lığı çağıran tetikleyicinin türü (Manuel, Zamanlayıcı) |
-| @pipeline(). TriggerId| Boru hattını çağıran tetikleyicinin kimliği |
-| @pipeline(). TriggerName| Ardışık hattı çağıran tetikleyicinin adı |
-| @pipeline(). Tetikleme Zamanı| Boru hattını çağıran tetikleyicinin zamanı. Tetikleme süresi, zamanlanan saat değil, gerçek ateşlenen saattir. Örneğin, `13:20:08.0149599Z` yerine döndürülür`13:20:00.00Z` |
-
-## <a name="schedule-trigger-scope"></a>Zamanlama Tetikleyici kapsamı
-Tetikleyici "ScheduleTrigger" türündeyse, bu sistem değişkenleri tetikleyici JSON'un herhangi bir yerine başvurulabilir.
+## <a name="pipeline-scope"></a>Ardışık düzen kapsamı
+Bu sistem değişkenlerine JSON işlem hattı içinde herhangi bir yerde başvurulabilir.
 
 | Değişken Adı | Açıklama |
 | --- | --- |
-| @trigger().scheduledTime |Tetikleyicinin ardışık hatlar çalışmasını çağırmak için zamanlanması zamanı. Örneğin, her 5 dakikada bir ateşleyen bir tetikleyici `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z`için, bu değişken `2017-06-01T22:30:00Z` sırasıyla , döndürecek.|
-| @trigger().startTime |Tetikin boru hattı nı çağırmak için **ateşlediği** zaman. Örneğin, her 5 dakikada bir ateşleyen bir tetikleyici için, `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z`bu `2017-06-01T22:30:00.9935483Z` değişken sırasıyla bu gibi bir şeyi döndürebilir. (Not: Zaman damgası ISO 8601 formatında varsayılan olarak)|
+| @pipeline(). DataFactory |İşlem hattı çalıştırmasının çalıştırıldığı veri fabrikasının adı |
+| @pipeline(). Konfigüre |İşlem hattının adı |
+| @pipeline(). RunId | Belirli işlem hattı çalıştırmasının KIMLIĞI |
+| @pipeline(). TriggerType | İşlem hattını çağıran tetikleyicinin türü (El Ile, zamanlayıcı) |
+| @pipeline(). Triggerıd| İşlem hattını çağıran tetikleyicinin KIMLIĞI |
+| @pipeline(). TriggerName| İşlem hattını çağıran tetikleyicinin adı |
+| @pipeline(). TriggerTime| İşlem hattını çağıran tetikleyicinin süresi. Tetikleyici süresi, zamanlanan zamandan değil, gerçek tetikleme zamandır. Örneğin, `13:20:08.0149599Z` yerine şunu döndürür`13:20:00.00Z` |
 
-## <a name="tumbling-window-trigger-scope"></a>Yuvarlanan Pencere Tetikkapsamı
-Tetikleyici "TumblingWindowTrigger" türündeyse, bu sistem değişkenleri tetikleyici JSON'un herhangi bir yerine başvurulabilir.
-(Not: Zaman damgası ISO 8601 formatında varsayılan olarak)
+## <a name="schedule-trigger-scope"></a>Tetikleyici kapsamını zamanla
+Tetikleyici türü "ScheduleTrigger" ise bu sistem değişkenlerine, JSON tetikleyicisi içinde herhangi bir yerde başvurulabilir.
 
 | Değişken Adı | Açıklama |
 | --- | --- |
-| @trigger().outputs.windowStartTime |Tetikleyici, ardışık hatlar çalışmasını çağırmak için zamanlandığında pencerenin başlangıcı. Yuvarlanan pencere tetikleyicisi "saatlik" bir frekansa sahipse, bu saatin başındaki saat olacaktır.|
-| @trigger().outputs.windowEndTime |Tetikleyici, ardışık hatlar çalışmasını çağırmak için zamanlandığında pencerenin sonu. Yuvarlanan pencere tetikleyicisi "saatlik" bir frekansa sahipse, saatin sonundaki saat budur.|
+| @trigger(). scheduledTime |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için zamanlandığı zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00Z` `2017-06-01T22:25:00Z` `2017-06-01T22:30:00Z` sırasıyla döndürülür.|
+| @trigger(). başlangıçsaati |Tetikleyicinin işlem hattı çalıştırmasını çağırmak için **aslında** tetikleyeceği zaman. Örneğin, her 5 dakikada bir tetiklenen bir tetikleyici için, bu değişken `2017-06-01T22:20:00.4061448Z` `2017-06-01T22:25:00.7958577Z` `2017-06-01T22:30:00.9935483Z` sırasıyla bu gibi bir şey döndürebilir. (Note: zaman damgası varsayılan olarak ISO 8601 biçimindedir)|
+
+## <a name="tumbling-window-trigger-scope"></a>Atlayan pencere tetikleme kapsamı
+Tetikleyici türü "TumblingWindowTrigger" ise bu sistem değişkenlerine, JSON tetikleyicisi içinde herhangi bir yerde başvurulabilir.
+(Note: zaman damgası varsayılan olarak ISO 8601 biçimindedir)
+
+| Değişken Adı | Açıklama |
+| --- | --- |
+| @trigger(). çıktılar. windowStartTime |Tetikleyici, işlem hattı çalıştırmasını çağırmak üzere zamanlandığında pencerenin başlangıcı. Atlayan pencere tetikleyicisi "saatlik" bir sıklık içeriyorsa, bu saat, saatin başlangıcında olur.|
+| @trigger(). çıktılar. Windowbitişsaati |Tetikleyici, işlem hattı çalıştırmasını çağırmak üzere zamanlandığında pencerenin sonu. Atlayan pencere tetikleyicisi "saatlik" bir sıklık içeriyorsa, saat sonunda saat olur.|
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu değişkenlerin ifadelerde nasıl kullanıldığı hakkında bilgi için, [İfade dili & işlevlerine](control-flow-expression-language-functions.md)bakın.
+Bu değişkenlerin ifadelerde nasıl kullanıldığı hakkında bilgi için bkz. [ifade dili & işlevleri](control-flow-expression-language-functions.md).

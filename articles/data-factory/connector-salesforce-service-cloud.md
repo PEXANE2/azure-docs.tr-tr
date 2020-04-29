@@ -1,6 +1,6 @@
 ---
-title: Verileri Salesforce Service Cloud'dan ve salesforce Service Cloud'a kopyalama
-description: Salesforce Service Cloud'dan desteklenen lavabo veri depolarına veya desteklenen kaynak veri depolarından Salesforce Service Cloud'a veri fabrikası ardışık bir kopya etkinliği kullanarak verileri nasıl kopyalayacağınızı öğrenin.
+title: Ve Salesforce hizmeti bulutuna veri kopyalama
+description: Veri Fabrikası ardışık düzeninde kopyalama etkinliği kullanarak Salesforce hizmeti bulutlarından desteklenen havuz veri depolarına veya desteklenen kaynak veri depolarından verileri Salesforce hizmeti bulutuna kopyalamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,70 +12,70 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: ec2aa5b1492534908adb55544623110242717609
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416666"
 ---
-# <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Salesforce Service Cloud'dan kopyalayın
+# <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Salesforce hizmeti bulutlarından kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Salesforce Service Cloud'dan ve Salesforce Service Cloud'dan verileri kopyalamak için nasıl kullanılacağı açıklanmaktadır. Kopyalama [etkinliğine](copy-activity-overview.md) genel bir genel bakış sunan Kopyalama Etkinliği genel bakış makalesine dayanıyor.
+Bu makalede, verileri Salesforce hizmeti bulutlarından kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Salesforce Service Cloud bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu Salesforce hizmeti bulutu Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Salesforce Service Cloud'daki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan Salesforce Service Cloud'a veri kopyalayabilirsiniz. Kopyaetkinliği tarafından kaynak veya lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Salesforce hizmeti bulutundaki verileri desteklenen herhangi bir havuz veri deposuna kopyalayabilirsiniz. Ayrıca, desteklenen herhangi bir kaynak veri deposundan verileri Salesforce hizmeti bulutuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu Salesforce Service Cloud bağlayıcısı destekler:
+Özellikle, bu Salesforce hizmeti bulutu Bağlayıcısı şunları destekler:
 
-- Salesforce Developer, Professional, Enterprise veya Unlimited sürümleri.
-- Salesforce üretim, kum havuzu ve özel etki alanından ve Salesforce'a veri kopyalama.
+- Salesforce geliştiricisi, Professional, Enterprise veya sınırsız sürümler.
+- Ve Salesforce üretimden, korumalı alana ve özel etki alanından veri kopyalama.
 
-Salesforce konektörü Salesforce REST/Bulk API'nin üzerine inşa edilmiştir. Varsayılan olarak, bağlayıcı Salesforce'tan verileri kopyalamak için [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce'a kopyalamak için [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. Ayrıca, bağlantılı hizmetteki [ `apiVersion` özellik](#linked-service-properties) üzerinden veri okumak/yazmak için kullanılan API sürümünü de açıkça ayarlayabilirsiniz.
+Salesforce Bağlayıcısı, Salesforce REST/toplu API 'nin üzerine kurulmuştur. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. Ayrıca, bağlantılı hizmette [ `apiVersion` özelliği](#linked-service-properties) aracılığıyla verileri okumak/yazmak için kullanılan API sürümünü açıkça ayarlayabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Salesforce'ta API izni etkinleştirilmelidir. Daha fazla bilgi için bkz: [Salesforce'ta API erişimini izin kümesine göre etkinleştir](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
+Salesforce 'ta API izninin etkinleştirilmiş olması gerekir. Daha fazla bilgi için bkz. [izin kümesine göre Salesforce 'TA API erişimini etkinleştirme](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
 
 ## <a name="salesforce-request-limits"></a>Salesforce istek sınırları
 
-Salesforce'un hem toplam API istekleri hem de eşzamanlı API istekleri için sınırları vardır. Aşağıdaki noktalara dikkat edin:
+Salesforce, hem toplam API istekleri hem de eşzamanlı API istekleri için sınırlara sahiptir. Aşağıdaki noktalara dikkat edin:
 
-- Eşzamanlı istek sayısı sınırı aşarsa, azaltma oluşur ve rasgele hatalar görürsünüz.
-- Toplam istek sayısı sınırı aşarsa, Salesforce hesabı 24 saat boyunca engellenir.
+- Eşzamanlı isteklerin sayısı sınırı aşarsa, kısıtlama gerçekleşir ve rastgele sorunlar görürsünüz.
+- Toplam istek sayısı sınırı aşarsa, Salesforce hesabı 24 saat için engellenir.
 
-Ayrıca her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hata iletisi alabilirsiniz. Daha fazla bilgi için [Salesforce geliştirici sınırlarındaki](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)"API istek sınırları" bölümüne bakın.
+Ayrıca, her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hata iletisini alabilirsiniz. Daha fazla bilgi için [Salesforce geliştirici limitlerinin](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)"API isteği sınırları" bölümüne bakın.
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Salesforce Service Cloud bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler Salesforce hizmeti bulut bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Salesforce bağlantılı hizmet için aşağıdaki özellikler desteklenir.
+Salesforce bağlantılı hizmeti için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type |Tür özelliği **SalesforceServiceCloud**olarak ayarlanmalıdır. |Evet |
-| çevreUrl | Salesforce Service Cloud örneğinin URL'sini belirtin. <br> - Varsayılan `"https://login.salesforce.com"`dır. <br> - Sanal andan verileri kopyalamak için `"https://test.salesforce.com"`. <br> - Özel etki alanından verileri kopyalamak `"https://[domain].my.salesforce.com"`için, örneğin, belirtin. |Hayır |
-| kullanıcı adı |Kullanıcı hesabı için bir kullanıcı adı belirtin. |Evet |
-| password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) |Evet |
-| Securitytoken |Kullanıcı hesabı için bir güvenlik belirteci belirtin. <br/><br/>Genel olarak güvenlik belirteçleri hakkında bilgi edinmek için [Güvenlik ve API'ye](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)bakın. Güvenlik belirteci, yalnızca Salesforce'taki [güvenilir IP adresi listesine](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) Tümleştirme Runtime IP'sini eklerseniz atlanabilir. Azure IR kullanırken Azure [Tümleştirme Çalışma Zamanı IP adreslerine](azure-integration-runtime-ip-addresses.md)bakın.<br/><br/>Güvenlik belirteci alma ve sıfırlama hakkında talimatlar için [bkz.](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) |Hayır |
-| apiVersion | Kullanılacak Salesforce REST/Bulk API sürümünü belirtin, `48.0`örneğin. Varsayılan olarak, bağlayıcı Salesforce'tan verileri kopyalamak için [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce'a kopyalamak için [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. | Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. | Kaynak için hayır, kaynak bağlantılı hizmetin tümleştirme çalışma süresi yoksa lavabo için Evet |
+| type |Type özelliği **SalesforceServiceCloud**olarak ayarlanmalıdır. |Yes |
+| environmentUrl | Salesforce hizmeti bulut örneğinin URL 'sini belirtin. <br> -Varsayılan değer `"https://login.salesforce.com"`. <br> -Korumalı verileri veri kopyalamak için belirtin `"https://test.salesforce.com"`. <br> -Özel etki alanından veri kopyalamak için, örneğin, `"https://[domain].my.salesforce.com"`. |Hayır |
+| kullanıcı adı |Kullanıcı hesabı için bir Kullanıcı adı belirtin. |Yes |
+| password |Kullanıcı hesabı için bir parola belirtin.<br/><br/>Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Yes |
+| Belirtilmedi |Kullanıcı hesabı için bir güvenlik belirteci belirtin. <br/><br/>Genel olarak güvenlik belirteçleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik ve API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). Güvenlik belirteci yalnızca Integration Runtime IP 'sini Salesforce üzerindeki [GÜVENILIR IP adresi listesine](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) eklediğinizde atlanabilir. Azure IR kullanırken [Azure INTEGRATION RUNTIME IP adresleri](azure-integration-runtime-ip-addresses.md)' ne bakın.<br/><br/>Güvenlik belirtecini alma ve sıfırlamaya ilişkin yönergeler için bkz. [güvenlik belirteci alma](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm). Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Hayır |
+| apiVersion | Kullanılacak Salesforce REST/toplu API sürümünü belirtin, ör `48.0`. Varsayılan olarak, bağlayıcı Salesforce 'tan veri kopyalamak için [V45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) kullanır ve verileri Salesforce 'a kopyalamak için [V40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) kullanır. | Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Kaynak için Hayır, kaynak bağlı hizmette tümleştirme çalışma zamanı yoksa, havuz için Evet |
 
 >[!IMPORTANT]
->Verileri Salesforce Service Cloud'a kopyaladiğinizde, varsayılan Azure Tümleştirme Çalışma Süresi kopyayı yürütmek için kullanılamaz. Başka bir deyişle, kaynak bağlantılı hizmetinizin belirli bir tümleştirme çalışma süresi yoksa, Salesforce Service Cloud örneğinizin yakınında bir konuma sahip [bir Azure Tümleştirme Çalışma Süresi oluşturun.](create-azure-integration-runtime.md#create-azure-ir) Salesforce Service Cloud bağlantılı hizmeti aşağıdaki örnekte olduğu gibi ilişkilendirin.
+>Verileri Salesforce hizmeti bulutuna kopyaladığınızda, varsayılan Azure Integration Runtime kopyayı yürütmek için kullanılamaz. Diğer bir deyişle, kaynak bağlı hizmetinizin belirtilen bir tümleştirme çalışma zamanı yoksa Salesforce hizmeti bulut örneğinizin yakınında bir konum ile açık [bir Azure Integration Runtime oluşturun](create-azure-integration-runtime.md#create-azure-ir) . Salesforce hizmeti bulutu bağlı hizmetini aşağıdaki örnekte olduğu gibi ilişkilendirin.
 
-**Örnek: Veri Fabrikası'nda kimlik bilgilerini depolama**
+**Örnek: Data Factory kimlik bilgilerini depolama**
 
 ```json
 {
@@ -101,7 +101,7 @@ Salesforce bağlantılı hizmet için aşağıdaki özellikler desteklenir.
 }
 ```
 
-**Örnek: Anahtar Kasası'nda kimlik bilgilerini saklayın**
+**Örnek: Key Vault kimlik bilgilerini depolama**
 
 ```json
 {
@@ -137,21 +137,21 @@ Salesforce bağlantılı hizmet için aşağıdaki özellikler desteklenir.
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde Salesforce Service Cloud veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Salesforce hizmeti bulutu veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Salesforce Service Cloud'dan ve Salesforce Service Cloud'a gelen verileri kopyalamak için aşağıdaki özellikler desteklenir.
+Ve Salesforce hizmeti bulutuna veri kopyalamak için aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği **SalesforceServiceCloudObject**olarak ayarlanmalıdır.  | Evet |
-| objectApiName | Veri almak için Salesforce nesne adı. | Kaynak için hayır, lavabo için Evet |
+| type | Type özelliği **SalesforceServiceCloudObject**olarak ayarlanmalıdır.  | Yes |
+| objectApiName | Verilerin alınması için Salesforce nesne adı. | Kaynak için Hayır, havuz için Evet |
 
 > [!IMPORTANT]
-> **API Adı'nın** "__c" bölümü herhangi bir özel nesne için gereklidir.
+> Tüm özel nesneler için **API adının** "__C" kısmı gereklidir.
 
-![Veri Fabrikası Salesforce bağlantı API Adı](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
+![Data Factory Salesforce bağlantısı API 'SI adı](media/copy-data-from-salesforce/data-factory-salesforce-api-name.png)
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -172,29 +172,29 @@ Salesforce Service Cloud'dan ve Salesforce Service Cloud'a gelen verileri kopyal
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği **İlişkisel Tablo**olarak ayarlanmalıdır. | Evet |
-| tableName | Salesforce Service Cloud'daki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
+| type | Veri kümesinin Type özelliği **Relationaltable**olarak ayarlanmalıdır. | Yes |
+| tableName | Salesforce hizmeti bulutundaki tablonun adı. | Hayır (etkinlik kaynağında "sorgu" belirtilmişse) |
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde Salesforce Service Cloud kaynak ve lavabo tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Salesforce hizmeti bulut kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="salesforce-service-cloud-as-a-source-type"></a>Kaynak türü olarak Salesforce Service Cloud
+### <a name="salesforce-service-cloud-as-a-source-type"></a>Kaynak türü olarak Salesforce hizmeti bulutu
 
-Salesforce Service Cloud'dan gelen verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir.
+Salesforce hizmeti bulutundaki verileri kopyalamak için, etkinlik **kaynağını** kopyalama bölümünde aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının tür özelliği **SalesforceServiceCloudSource**olarak ayarlanmalıdır. | Evet |
-| sorgu |Verileri okumak için özel sorguyu kullanın. [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) sorgusu veya SQL-92 sorgusu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu na bakın. Sorgu belirtilmemişse, veri kümesinde "objectApiName"de belirtilen Salesforce Service Cloud nesnesinin tüm verileri alınır. | Hayır (veri kümesinde "objectApiName" belirtilirse) |
-| readBehavior | Varolan kayıtları sorgulayıp sorgulamayacağını veya silinenler de dahil olmak üzere tüm kayıtları sorgulayıp sorgulayacağını gösterir. Belirtilmemişse, varsayılan davranış eskidir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryAll**.  | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği **SalesforceServiceCloudSource**olarak ayarlanmalıdır. | Yes |
+| sorgu |Verileri okumak için özel sorguyu kullanın. [Salesforce nesne sorgu dili (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) SORGUSUNU veya SQL-92 sorgusunu kullanabilirsiniz. [Sorgu ipuçları](#query-tips) bölümünde daha fazla ipucu görüntüleyin. Sorgu belirtilmemişse, veri kümesindeki "objectApiName" içinde belirtilen Salesforce hizmeti bulut nesnesinin tüm verileri alınır. | Hayır (veri kümesindeki "objectApiName" belirtilmişse) |
+| readBehavior | Mevcut kayıtların sorgulanıp sorgulanmayacağını veya silinen kayıtlar dahil olmak üzere tüm kayıtları sorganıp sorgulanmayacağını gösterir. Belirtilmemişse, varsayılan davranış eski ' dir. <br>İzin verilen değerler: **sorgu** (varsayılan), **queryall**.  | Hayır |
 
 > [!IMPORTANT]
-> **API Adı'nın** "__c" bölümü herhangi bir özel nesne için gereklidir.
+> Tüm özel nesneler için **API adının** "__C" kısmı gereklidir.
 
-![Veri Fabrikası Salesforce bağlantı API Ad listesi](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
+![Data Factory Salesforce bağlantısı API 'SI ad listesi](media/copy-data-from-salesforce/data-factory-salesforce-api-name-2.png)
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -226,19 +226,19 @@ Salesforce Service Cloud'dan gelen verileri kopyalamak için, kopyalama etkinli�
 ]
 ```
 
-### <a name="salesforce-service-cloud-as-a-sink-type"></a>Lavabo türü olarak Salesforce Service Cloud
+### <a name="salesforce-service-cloud-as-a-sink-type"></a>Havuz türü olarak Salesforce hizmeti bulutu
 
-Verileri Salesforce Service Cloud'a kopyalamak için, kopyalama etkinliği **lavabo** bölümünde aşağıdaki özellikler desteklenir.
+Verileri Salesforce hizmeti bulutuna kopyalamak için, kopyalama etkinliği **havuzu** bölümünde aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği lavabonun türü özelliği **SalesforceServiceCloudSink**olarak ayarlanmalıdır. | Evet |
-| yazmaDavranışı | İşlem için yazma davranışı.<br/>İzin verilen değerler Ekle ve **Yukarı satır.** **Insert** | Hayır (varsayılan Insert' tir) |
-| externalIdFieldName | Yükseltme işlemi için harici kimlik alanının adı. Belirtilen alan, Salesforce Service Cloud nesnesinde "Dış Kimlik Alanı" olarak tanımlanmalıdır. Karşılık gelen giriş verilerinde NULL değerleri olamaz. | "Upsert" için evet |
-| yazmaBatchSize | Her toplu iş partisinde Salesforce Service Cloud'a yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000'dir) |
-| yoksNullValues | Yazma işlemi sırasında giriş verilerinden NULL değerlerini yoksayıp yoksaymayacağını gösterir.<br/>İzin verilen değerler **doğru** ve **yanlıştır.**<br>- **True**: Bir yükseltme veya güncelleştirme işlemi yaptığınızda hedef nesnedeki verileri değişmeden bırakın. Bir ekleme işlemi yaparken tanımlı bir varsayılan değer ekleyin.<br/>- **False**: Bir yükseltme veya güncelleştirme işlemi yaptığınızda hedef nesnedeki verileri NULL olarak güncelleştirin. Bir ekleme işlemi yaparken NULL değeri ekleyin. | Hayır (varsayılan yanlıştır) |
+| type | Kopyalama etkinliği havuzunun Type özelliği **SalesforceServiceCloudSink**olarak ayarlanmalıdır. | Yes |
+| writeBehavior | İşlem için yazma davranışı.<br/>İzin verilen değerler **Insert** ve **upsert**. | Hayır (varsayılan değer ekler) |
+| externalIdFieldName | Upsert işlem için dış KIMLIK alanının adı. Belirtilen alanın Salesforce hizmeti bulut nesnesinde "dış kimlik alanı" olarak tanımlanması gerekir. Karşılık gelen giriş verilerinde NULL değer bulunamaz. | "Upsert" için Evet |
+| writeBatchSize | Her toplu işte Salesforce hizmeti bulutuna yazılan verilerin satır sayısı. | Hayır (varsayılan değer 5.000) |
+| ıgnorenullvalues | Bir yazma işlemi sırasında giriş verilerinden NULL değerlerin yoksayılıp yoksayılmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false**şeklindedir.<br>- **Doğru**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde verileri hedef nesnede değiştirmeden bırakın. Ekleme işlemi yaparken tanımlanmış bir varsayılan değer ekleyin.<br/>- **Yanlış**: bir yukarı veya güncelleştirme işlemi gerçekleştirdiğinizde hedef NESNESINDEKI verileri null olarak güncelleştirin. Ekleme işlemi yaparken NULL değer ekleyin. | Hayır (varsayılan değer false) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -275,68 +275,68 @@ Verileri Salesforce Service Cloud'a kopyalamak için, kopyalama etkinliği **lav
 
 ## <a name="query-tips"></a>Sorgu ipuçları
 
-### <a name="retrieve-data-from-a-salesforce-service-cloud-report"></a>Salesforce Service Cloud raporundan veri alma
+### <a name="retrieve-data-from-a-salesforce-service-cloud-report"></a>Salesforce hizmeti bulutu raporundan veri alma
 
-Salesforce Service Cloud raporlarından bir sorgu 'u `{call "<report name>"}`' olarak belirterek veri alabilirsiniz. `"query": "{call \"TestReport\"}"` bunun bir örneğidir.
+Bir sorgu belirterek Salesforce hizmeti bulut raporlarından veri alabilirsiniz `{call "<report name>"}`. `"query": "{call \"TestReport\"}"` bunun bir örneğidir.
 
-### <a name="retrieve-deleted-records-from-the-salesforce-service-cloud-recycle-bin"></a>Salesforce Service Cloud Geri Dönüşüm Kutusu'ndan silinen kayıtları alma
+### <a name="retrieve-deleted-records-from-the-salesforce-service-cloud-recycle-bin"></a>Salesforce hizmeti bulutu geri dönüşüm kutusu 'ndan silinen kayıtları alma
 
-Salesforce Service Cloud Geri Dönüşüm Kutusu'ndan silinen yumuşak `readBehavior` `queryAll`kayıtları sorgulamak için . 
+Salesforce hizmeti bulutu geri dönüşüm kutusu 'ndaki geçici silinen kayıtları sorgulamak için, olarak `readBehavior` `queryAll`belirtebilirsiniz. 
 
-### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL ve SQL sorgu sözdizimi arasındaki fark
+### <a name="difference-between-soql-and-sql-query-syntax"></a>SOQL ve SQL sorgu söz dizimi arasındaki fark
 
-Salesforce Service Cloud'dan veri kopyalarken SOQL sorgusu veya SQL sorgusu kullanabilirsiniz. Bu iki farklı sözdizimi ve işlevsellik desteği olduğunu unutmayın, karıştırmak yok. Salesforce Service Cloud tarafından yerel olarak desteklenen SOQL sorgusunu kullanmanız önerilir. Aşağıdaki tabloda temel farklar listelenebvardır:
+Salesforce hizmeti bulutlarından verileri kopyalarken, SOQL sorgusu veya SQL sorgusu kullanabilirsiniz. Bu ikisinin farklı sözdizimi ve işlevsellik desteğine sahip olduğunu ve bunu karıştırmadığını unutmayın. Salesforce hizmeti bulutu tarafından yerel olarak desteklenen SOQL sorgusunun kullanılması önerilir. Aşağıdaki tabloda başlıca farklılıklar listelenmektedir:
 
-| Sözdizimi | SOQL Modu | SQL Modu |
+| Sözdizimi | SOQL modu | SQL modu |
 |:--- |:--- |:--- |
-| Sütun seçimi | Sorguda kopyalanacak alanları, örneğin,`SELECT field1, filed2 FROM objectname` | `SELECT *`sütun seçimine ek olarak desteklenir. |
-| Tırnak | Dosyalanmış/nesne adları alıntı yapılamaz. | Alan/nesne adları alıntılanabilir, örneğin.`SELECT "id" FROM "Account"` |
-| Datetime biçimi |  [Ayrıntılara](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) ve sonraki bölümdeki örneklere bakın. | [Ayrıntılara](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) ve sonraki bölümdeki örneklere bakın. |
-| Boolean değerleri | Olarak `False` temsil `True`ve , örneğin `SELECT … WHERE IsDeleted=True`. | 0 veya 1 olarak temsil edilir, örneğin `SELECT … WHERE IsDeleted=1`. |
-| Sütun yeniden adlandırma | Desteklenmiyor. | Desteklenen, örneğin: `SELECT a AS b FROM …`. |
-| İlişki | Desteklenen, örneğin `Account_vod__r.nvs_Country__c`. | Desteklenmiyor. |
+| Sütun seçimi | Sorguda kopyalanacak alanların numaralandırılması gerekir, ör.`SELECT field1, filed2 FROM objectname` | `SELECT *`, sütun seçimine ek olarak desteklenir. |
+| Tırnak işaretleri | Dosyalanmış/nesne adları tırnak içine alınamaz. | Alan/nesne adları tırnak içine alınabilir, ör.`SELECT "id" FROM "Account"` |
+| Tarih saat biçimi |  [Buradaki](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) ayrıntılara ve sonraki bölümde örneklere bakın. | [Buradaki](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) ayrıntılara ve sonraki bölümde örneklere bakın. |
+| Boole değerleri | Ve `False` `True`olarak temsil edilir, ör `SELECT … WHERE IsDeleted=True`. | 0 veya 1 olarak temsil edilir, ör `SELECT … WHERE IsDeleted=1`. |
+| Sütun yeniden adlandırma | Desteklenmiyor. | Desteklenir, örneğin: `SELECT a AS b FROM …`. |
+| İlişki | Desteklenir, ör `Account_vod__r.nvs_Country__c`. | Desteklenmiyor. |
 
-### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime sütunundaki bir yer yan tümcesi kullanarak verileri alma
+### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime sütununda WHERE yan tümcesini kullanarak veri alma
 
-SOQL veya SQL sorgusunu belirtirken, DateTime biçimi farkıyla dikkat edin. Örneğin:
+SOQL veya SQL sorgusu belirttiğinizde, tarih saat biçimi farklılığı ile ilgilenyin. Örneğin:
 
-* **SOQL örneği**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
+* **Soql örneği**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL örneği**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY hatası:Kesildi
+### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY hatası: kesildi
 
-"MALFORMED_QUERY: Kesildi" hatasına ulaştıysanız, normalde bunun nedeni verilerde JunctionIdList türü sütunudur ve Salesforce bu tür verileri çok sayıda satırla destekleme sınırlamasına sahiptir. Azaltmak için JunctionIdList sütunu hariç tutmayı deneyin veya kopyalanması gereken satır sayısını sınırlamayı deneyin (birden çok kopyalama etkinliği çalıştırAna bölünebilirsiniz).
+"MALFORMED_QUERY: kesildi" hatasıyla karşılaşırsanız, normalde bu durum veride Junctionıdlist türünde sütununuzu ve Salesforce 'un bu verileri çok sayıda satırla desteklemeye yönelik sınırlaması vardır. Azaltmak için, Junctionıdlist sütununu dışlamanızı veya Kopyalanacak satır sayısını sınırlamayı deneyin (birden çok kopyalama etkinliği çalışmasına bölüm oluşturabilirsiniz).
 
-## <a name="data-type-mapping-for-salesforce-service-cloud"></a>Salesforce Service Cloud için veri türü eşleme
+## <a name="data-type-mapping-for-salesforce-service-cloud"></a>Salesforce hizmeti bulutu için veri türü eşlemesi
 
-Salesforce Service Cloud'daki verileri kopyaladiğinizde, Salesforce Service Cloud veri türlerinden Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemasını ve veri türünü lavaboyla nasıl eşlenebildiğini öğrenmek için Bkz. [Şema ve veri türü eşlemeleri.](copy-activity-schema-and-type-mapping.md)
+Salesforce hizmeti bulutlarından verileri kopyaladığınızda, veri türleri Data Factory için Salesforce hizmeti bulutu veri türlerinden aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
-| Salesforce Service Cloud veri türü | Veri Fabrikası geçici veri türü |
+| Salesforce hizmeti bulutu veri türü | Data Factory geçici veri türü |
 |:--- |:--- |
-| Otomatik Numara |Dize |
+| Otomatik sayı |Dize |
 | Onay kutusu |Boole |
 | Para birimi |Ondalık |
 | Tarih |DateTime |
 | Tarih/Saat |DateTime |
-| Email |Dize |
+| E-posta |Dize |
 | Kimlik |Dize |
-| Arama İlişkisi |Dize |
-| Çok Select Picklist |Dize |
+| Arama Ilişkisi |Dize |
+| Çoklu seçim listesi |Dize |
 | Sayı |Ondalık |
 | Yüzde |Ondalık |
 | Telefon |Dize |
 | Seçim Listesi |Dize |
 | Metin |Dize |
-| Metin Alanı |Dize |
-| Metin Alanı (Uzun) |Dize |
-| Metin Alanı (Zengin) |Dize |
-| Metin (Şifreli) |Dize |
+| Metin alanı |Dize |
+| Metin alanı (uzun) |Dize |
+| Metin alanı (zengin) |Dize |
+| Metin (şifrelenmiş) |Dize |
 | URL'si |Dize |
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi [için](copy-activity-overview.md#supported-data-stores-and-formats)bkz.
+Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

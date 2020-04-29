@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL'de GROUP BY seçeneklerini kullanma
-description: Synapse SQL farklı GROUP BY seçeneklerini uygulayarak çözümler geliştirmeye olanak sağlar.
+title: SYNAPSE SQL 'de GROUP BY seçeneklerini kullanma
+description: SYNAPSE SQL, farklı gruplandırma seçenekleri uygulayarak çözüm geliştirmeye olanak sağlar.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,34 +12,34 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 261f75344d250ae8a8d9687f4bcd80535d11716b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429050"
 ---
-# <a name="group-by-options-in-synapse-sql"></a>Synapse SQL'de GROUP BY seçenekleri
-Synapse SQL farklı GROUP BY seçeneklerini uygulayarak çözümler geliştirmeye olanak sağlar. 
+# <a name="group-by-options-in-synapse-sql"></a>SYNAPSE SQL 'de gruplandırma ölçütü seçenekleri
+SYNAPSE SQL, farklı gruplandırma seçenekleri uygulayarak çözüm geliştirmeye olanak sağlar. 
 
-## <a name="what-does-group-by-do"></a>GROUP BY ne yapar?
+## <a name="what-does-group-by-do"></a>Gruplandırma ölçütü ne yapar
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi verileri bir özet satır kümesine toplar.
+[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar.
 
-Sql isteğe bağlı tüm GROUP BY seçeneklerini destekler. SQL havuzu sınırlı sayıda GROUP BY seçeneğini destekler.
+İsteğe bağlı SQL, gruplama ölçütü seçeneklerinin tamamını destekler. SQL havuzu sınırlı sayıda GROUP BY seçeneğini destekler.
 
-## <a name="group-by-options-supported-in-sql-pool"></a>SQL havuzunda desteklenen GROUP BY seçenekleri
+## <a name="group-by-options-supported-in-sql-pool"></a>SQL havuzunda desteklenen Grup seçenekleri
 
-GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçenekleraşağıdaki gibi geçici çözüm vardır:
+GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
 
-* ROLLUP ile GRUP
-* GRUPLANDıRMA KÜMELerİ
-* KÜP İlE GRUP LA
+* TOPLAMASıYLA gruplandırma ölçütü
+* GRUPLANDıRMA KÜMELERI
+* KÜP ile gruplandırma ölçütü
 
-### <a name="rollup-and-grouping-sets-options"></a>Toplama ve gruplandırma seçenekleri kümeler
+### <a name="rollup-and-grouping-sets-options"></a>Toplama ve gruplandırma kümeleri seçenekleri
 
-Buradaki en basit seçenek, açık sözdizimine güvenmek yerine toplama işlemini yürütmek için UNION ALL'ı kullanmaktır. Sonuç tam olarak aynıdır
+Buradaki en basit seçenek, açık sözdizimine güvenmek yerine, toplamayı yürütmek için UNıON ALL kullanmaktır. Sonuç tamamen aynıdır
 
-Aşağıdaki örnekte, ROLLUP seçeneğiyle GROUP BY deyimi ni kullanır:
+Aşağıdaki örnek, toplama seçeneği ile GROUP BY ifadesini kullanır:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -54,13 +54,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-ROLLUP kullanarak, önceki örnek aşağıdaki toplamaları ister:
+Önceki örnek, ROLLUP kullanarak aşağıdaki toplamaları ister:
 
-* Ülke ve Bölge
+* Ülke ve bölge
 * Ülke
 * Genel Toplam
 
-ROLLUP'ı değiştirmek ve aynı sonuçları döndürmek için UNION ALL'ı kullanabilir ve gerekli toplamaları açıkça belirtebilirsiniz:
+TOPLAMAYı değiştirmek ve aynı sonuçları döndürmek için UNıON ALL ' ı kullanabilir ve gerekli toplamaları açıkça belirtebilirsiniz:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -87,13 +87,13 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-GRUPLAMA KÜMELERİnİnİ DEĞIŞTIRMEK IÇIN örnek ilkesi uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNION ALL bölümleri oluşturmanız gerekir.
+Gruplandırma KÜMELERINI değiştirmek için, örnek ilke uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNıON ALL bölümlerini oluşturmanız yeterlidir.
 
 ### <a name="cube-options"></a>Küp seçenekleri
 
-UNION ALL yaklaşımını kullanarak KÜP İlE Bİr GRUP OLUŞTURMAK MÜMKÜNDÜR. Sorun, kodun hızlı bir şekilde hantal ve hantal hale gelebiliyor olmasıdır. Bu sorunu azaltmak için bu daha gelişmiş yaklaşımı kullanabilirsiniz.
+UNıON ALL yaklaşımını kullanarak KÜPLE bir grup oluşturmak mümkündür. Bu sorun, kodun hızlı bir şekilde hızla ve farkında hale gelmesine neden olabilir. Bu sorunu azaltmak için daha gelişmiş bir yaklaşım kullanabilirsiniz.
 
-İlk adım, oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır. Tüm düzeyleri oluşturur gibi iki türetilmiş tabloların CROSS JOIN dikkat edin. Kodun geri kalanı biçimlendirme için oradadır.
+İlk adım, oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan ' Cube ' öğesini tanımlamaktır. Tüm düzeyleri ürettiği için, iki türetilmiş tablonun çapraz BIRLEŞTIĞI yere göz atın. Kodun geri kalanı biçimlendirme için mevcuttur.
 
 ```sql
 CREATE TABLE #Cube
@@ -124,11 +124,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Aşağıdaki resimde [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)sonuçları gösterilmektedir:
+Aşağıdaki görüntüde [Create Table sonuçları şöyle](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)gösterilmektedir:
 
-![Küpe göre gruplandırma](./media/develop-group-by-options/develop-group-by-cube.png)
+![Küpe göre Gruplandır](./media/develop-group-by-options/develop-group-by-cube.png)
 
-İkinci adım, ara sonuçları depolamak için bir hedef tablo belirtmektir:
+İkinci adım, geçici sonuçları depolamak için bir hedef tablo belirtmektir:
 
 ```sql
 DECLARE
@@ -151,7 +151,7 @@ WITH
 ;
 ```
 
-Üçüncü adım, toplama yı gerçekleştiren sütunküpü üzerinde döngü. Sorgu, #Cube geçici tablosundaki her satır için bir kez çalışır. Sonuçlar #Results geçici tablosunda saklanır:
+Üçüncü adım, toplama işlemi gerçekleştiren sütun küpünün üzerine döngüdür. Sorgu #Cube geçici tablodaki her satır için bir kez çalışır. Sonuçlar #Results geçici tabloda depolanır:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -175,7 +175,7 @@ BEGIN
 END
 ```
 
-Son olarak, #Results geçici tablodan okuyarak sonuçları döndürebilirsiniz:
+Son olarak, #Results geçici tablodan okurken sonuçları döndürebilirsiniz:
 
 ```sql
 SELECT *
@@ -184,8 +184,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Kodu bölümlere ayırıp bir döngü yapısı oluşturarak, kod daha yönetilebilir ve korunabilir hale gelir.
+Kodu bölümlere ayırarak ve bir döngü yapısı oluşturarak, kod daha yönetilebilir ve sürdürülebilir hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](develop-overview.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](develop-overview.md).

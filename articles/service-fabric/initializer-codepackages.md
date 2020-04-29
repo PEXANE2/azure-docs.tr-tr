@@ -1,34 +1,34 @@
 ---
-title: Hizmet Kumaşında Başharf KodlarıPaketler
-description: Hizmet Kumaşında Initializer CodePackages açıklar.
+title: Service Fabric Başlatıcı kod paketleri
+description: Service Fabric içindeki Başlatıcı kod paketlerini açıklar.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430636"
 ---
-# <a name="initializer-codepackages"></a>Baş harf koduPaketleri
+# <a name="initializer-codepackages"></a>Başlatıcı Kod Paketleri
 
-7.1 sürümüyle başlayan Service Fabric, [konteynerler][containers-introduction-link] ve [konuk çalıştırılabilir][guest-executables-introduction-link] uygulamalar için **Initializer CodePackages'ı** destekler. Initializer CodePackages, diğer CodePackage'lar yürütmeye başlamadan önce ServicePackage kapsamında başlatma işlemleri gerçekleştirme olanağı sağlar. Bir ServicePackage ile olan [ilişkileri, SetupEntryPoint'in][setup-entry-point-link] CodePackage için ne olduğuna benzer.
+Sürüm 7,1 ' den başlayarak, [kapsayıcılar][containers-introduction-link] ve [Konuk yürütülebilir][guest-executables-introduction-link] uygulamalar için **Başlatıcı kod paketlerini** destekler Service Fabric. Başlatıcı CodePackages, diğer kod paketleri yürütülmeye başlamadan önce ServicePackage kapsamında başlatma gerçekleştirme fırsatı sağlar. Bir ServicePackage ile olan ilişkisi, bir CodePackage için [Setupentrypoint][setup-entry-point-link] öğesine benzerdir.
 
-Bu makaleye geçmeden önce Service Fabric uygulama modeli ve [Service Fabric hosting modelini][hosting-model-link]tanımanızı öneririz. [Service Fabric application model][application-model-link]
+Bu makaleye devam etmeden önce [Service Fabric uygulama modeli][application-model-link] ve [Service Fabric barındırma modeli][hosting-model-link]hakkında bilgi sahibi olmanız önerilir.
 
 > [!NOTE]
-> Initializer CodePackages şu anda [Güvenilir Hizmetler][reliable-services-link] programlama modeli kullanılarak yazılmış hizmetler için desteklenmez.
+> Başlatıcı kod paketleri şu anda [Reliable Services][reliable-services-link] programlama modeli kullanılarak yazılan hizmetler için desteklenmiyor.
  
-## <a name="semantics"></a>Semantiği
+## <a name="semantics"></a>İçeriyor
 
-Bir Initializer CodePackage başarılı **tamamlanması (çıkış kodu 0)** çalışması bekleniyor. Başarısız bir Initializer CodePackage başarıyla tamamlanana kadar yeniden başlatılır. Birden çok Başlatılan CodePackages izin verilir ve **başarılı tamamlanması**için yürütülür , **sırayla**, ServicePackage diğer CodePackages yürütme başlamadan önce **belirli bir sırada.**
+Bir başlatıcı CodePackage 'in başarıyla tamamlanması için çalıştırılması bekleniyor **(çıkış kodu 0)**. Başarısız bir başlatıcı CodePackage, başarıyla tamamlanana kadar yeniden başlatılır. Birden fazla Başlatıcı CodePackage 'e izin verilir ve bu, hizmet paketindeki diğer kod paketleri yürütülmeye başlamadan önce, **sırasıyla** **belirtilen sırada başarılı bir** şekilde **tamamlanmasıyla**yürütülür.
 
-## <a name="specifying-initializer-codepackages"></a>Initializer CodePackages belirtme
-ServiceManifest'te **Initializer** özniteliğini doğru olarak ayarlayarak Bir CodePackage'ı **Initializer** olarak işaretleyebilirsiniz. Birden çok Initializer CodePackages olduğunda, yürütme sıraları **ExecOrder** özniteliği ile belirtilebilir. **ExecOrder** negatif olmayan bir tamsayı olmalıdır ve yalnızca Initializer CodePackages için geçerlidir. **ExecOrder'ın** daha düşük değerlerine sahip Initializer CodePackages önce yürütülür. **ExecOrder** bir Initializer CodePackage için belirtilmemişse, varsayılan değeri 0 olarak kabul edilir. **ExecOrder** aynı değere sahip Initializer CodePackages göreli yürütme sırası belirtilmemiştir.
+## <a name="specifying-initializer-codepackages"></a>Başlatıcı kod paketleri belirtme
+ServiceManifest içinde **Başlatıcı** özniteliğini **true** olarak ayarlayarak bir CodePackage 'i başlatıcı olarak işaretleyebilirsiniz. Birden çok Başlatıcı kod paketi olduğunda, yürütme sırası **execorder** özniteliği aracılığıyla belirtilebilir. **Execorder** negatif olmayan bir tamsayı olmalıdır ve yalnızca başlatıcı kod paketleri için geçerlidir. **Execorder** 'ın daha düşük değerleriyle Başlatıcı kod paketleri önce yürütülür. Başlatıcı CodePackage için **Execorder** belirtilmemişse, varsayılan değer olan 0 varsayılır. Aynı **execorder** değeri Ile birlikte Başlatıcı kod paketlerinin göreli yürütme sırası belirtilmemiş.
 
-Aşağıdaki ServiceManifest snippet üç CodePackages iki Initializers olarak işaretlenmiş açıklar. Bu ServicePackage etkinleştirildiğinde, **ExecOrder**en düşük değerine sahip olduğundan *InitCodePackage0* ilk yürütülür. *InitCodePackage0'ın*başarılı bir şekilde tamamlanmasıüzerine (çıkış kodu 0) *InitCodePackage1* yürütülür. Son olarak, *InitCodePackage1'in*başarıyla tamamlanması *üzerine, WorkloadCodePackage* yürütülür.
+Aşağıdaki ServiceManifest kod parçacığı, iki adet bir başlatıcı olarak işaretlenen üç kod paketini açıklar. Bu ServicePackage etkinleştirildiğinde *InitCodePackage0* , en düşük **execorder**değerine sahip olduğundan önce yürütülür. *InitCodePackage0*(çıkış kodu 0) başarıyla tamamlandığında, *InitCodePackage1* yürütülür. Son olarak, *InitCodePackage1*başarıyla tamamlandığında *workloadcodepackage* yürütülür.
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ Aşağıdaki ServiceManifest snippet üç CodePackages iki Initializers olarak i
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>Initializer CodePackages kullanarak tam örnek
+## <a name="complete-example-using-initializer-codepackages"></a>Başlatıcı kod paketlerini kullanarak örneği doldurun
 
-Initializer CodePackages kullanarak tam bir örnek bakalım.
+Başlatıcı kod paketleri 'ni kullanarak tüm bir örneğe bakalım.
 
 > [!IMPORTANT]
-> Aşağıdaki örnek, Service Fabric [ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma aşinalık varsayar.
+> Aşağıdaki örnek, [Service Fabric ve Docker kullanarak Windows kapsayıcı uygulamaları][containers-getting-started-link]oluşturma konusunda benzerlik olduğunu varsayar.
 >
-> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 başvurur. Windows Server kapsayıcıları bir ana bilgisayar işletim sistemi tüm sürümlerinde uyumlu değildir. Daha fazla bilgi için [Windows Kapsayıcı Sürüm Uyumluluğu'na](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)bakın.
+> Bu örnek, mcr.microsoft.com/windows/nanoserver:1809 öğesine başvurur. Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Aşağıdaki ServiceManifest.xml daha önce açıklanan ServiceManifest snippet üzerine inşa edin. *InitCodePackage0*, *InitCodePackage1* ve *WorkloadCodePackage* kapsayıcıları temsil eden CodePackages'tir. Etkinleştirme üzerine, *InitCodePackage0* ilk yürütülür. Bir dosyaya ileti kaydeder ve çıkar. Ardından, *InitCodePackage1* yürütülür ve bir dosyaya ileti günlüğe kaydeder ve çıkar. Son olarak, *WorkloadCodePackage* yürütme başlar. Ayrıca bir dosyaya bir ileti günlükleri, **stdout** için dosyanın içeriğini çıktıları ve sonra sonsuza kadar ping.
+Aşağıdaki ServiceManifest. xml, daha önce açıklanan ServiceManifest parçacığı üzerinde oluşturulur. *InitCodePackage0*, *InitCodePackage1* ve *workloadcodepackage* , kapsayıcıları temsil eden codepackages. Etkinleştirmeden sonra, *InitCodePackage0* önce yürütülür. Bir dosyaya ileti kaydeder ve çıkılıyor. Sonra, *InitCodePackage1* yürütülür ve ayrıca bir dosyaya ileti kaydeder ve çıkar. Son olarak, *Workloadcodepackage* yürütmeye başlar. Ayrıca bir iletiyi bir dosyaya kaydeder, **stdout** 'a dosyanın içeriğini çıkarır ve sonsuza kadar ping atar.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ Aşağıdaki ServiceManifest.xml daha önce açıklanan ServiceManifest snippet 
 </ServiceManifest>
 ```
 
-Aşağıdaki ApplicationManifest.xml yukarıda açıklanan ServiceManifest.xml dayalı bir uygulama açıklar. Tüm kapsayıcılar için aynı **Birim** montaj belirtir unutmayın, yani **C:\WorkspaceOnHost** **C monte edilir:\WorkspaceOnContainer** her üç kapsayıcıüzerinde. Net etkisi, tüm kapsayıcıların etkinleştirildikleri sırada aynı günlük dosyasına yazmalarıdır.
+Aşağıdaki ApplicationManifest. xml, yukarıda açıklanan ServiceManifest. xml ' i temel alan bir uygulamayı açıklar. Tüm kapsayıcılar için aynı **birim** bağlama olduğunu belirtir, yani **C:\workspace onhost** , her üç kapsayıcıda **c:\workspace oncontainer dosyasına** bağlanır. Net etkisi, tüm kapsayıcıların etkinleştirildikleri sırayla aynı günlük dosyasına yazmalarıdır.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ Aşağıdaki ApplicationManifest.xml yukarıda açıklanan ServiceManifest.xml d
   </DefaultServices>
 </ApplicationManifest>
 ```
-ServicePackage başarıyla etkinleştirildikten sonra, **C:\WorkspaceOnHost\log.txt** içeriği aşağıdaki olmalıdır.
+ServicePackage başarıyla etkinleştirildikten sonra, **C:\workspace Onhost\log.txt** içerikleri aşağıdaki gibi olmalıdır.
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -140,8 +140,8 @@ Hi from WorkloadCodePackage.
 
 İlgili bilgiler için aşağıdaki makalelere bakın.
 
-* [Servis Kumaş ve konteynerler.][containers-introduction-link]
-* [Servis Kumaş ve konuk icra.][guest-executables-introduction-link]
+* [Service Fabric ve kapsayıcılar.][containers-introduction-link]
+* [Service Fabric ve konuk yürütülebilir dosyaları.][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

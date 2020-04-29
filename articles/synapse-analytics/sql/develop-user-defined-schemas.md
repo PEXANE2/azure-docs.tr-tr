@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL içinde kullanıcı tanımlı şemalar
-description: Aşağıdaki bölümlerde, Azure Synapse Analytics'in Synapse SQL özelliğiyle çözümler geliştirmek için T-SQL kullanıcı tanımlı şemaları kullanmak için çeşitli ipuçları bulacaksınız.
+title: SYNAPSE SQL içindeki kullanıcı tanımlı şemalar
+description: Aşağıdaki bölümlerde, Azure SYNAPSE Analytics 'in SYNAPSE SQL özelliği ile çözümler geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanmaya yönelik çeşitli ipuçları bulacaksınız.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,49 +10,49 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428712"
 ---
-# <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL içinde kullanıcı tanımlı şemalar
+# <a name="user-defined-schemas-within-synapse-sql"></a>SYNAPSE SQL içindeki kullanıcı tanımlı şemalar
 
-Aşağıdaki bölümlerde, Synapse SQL içinde çözümler geliştirmek için T-SQL kullanıcı tanımlı şemaları kullanmak için çeşitli ipuçları bulacaksınız.
+Aşağıdaki bölümlerde, SYNAPSE SQL 'de çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanmaya yönelik çeşitli ipuçları bulacaksınız.
 
-## <a name="schemas-for-application-boundaries"></a>Uygulama sınırları için şemalar
+## <a name="schemas-for-application-boundaries"></a>Uygulama sınırları şemaları
 
-Geleneksel analitik mimarisi genellikle iş yükü, etki alanı veya güvenliğe dayalı uygulama sınırları oluşturmak için ayrı veritabanları kullanır. Örneğin, geleneksel bir SQL Server analiz altyapısı bir evreleme veritabanı, bir analiz veritabanı ve veri mart veritabanları içerebilir. Bu topolojide, her veritabanı mimaride bir iş yükü ve güvenlik sınırı olarak çalışır.
+Geleneksel analiz mimarisi genellikle iş yüküne, etki alanına veya güvenliğe göre uygulama sınırları oluşturmak için ayrı veritabanlarını kullanır. Örneğin, geleneksel bir SQL Server Analiz altyapısı, hazırlama veritabanı, analiz veritabanı ve veri reyonı veritabanları içerebilir. Bu topolojide, her veritabanı mimaride bir iş yükü ve güvenlik sınırı olarak çalışır.
 
-Bunun yerine, Synapse SQL tüm analitik iş yükünü tek bir veritabanında çalıştırın. Çapraz veritabanı birleştirmelerine izin verilmez. Synapse SQL, ambar tarafından kullanılan tüm tabloların tek bir veritabanında depolanmasını bekler.
+Bunun yerine, SYNAPSE SQL tüm analiz iş yükünü tek bir veritabanı içinde çalıştırır. Çapraz veritabanı birleştirmelerine izin verilmez. SYNAPSE SQL, ambarın tarafından kullanılan tüm tabloların tek bir veritabanı içinde depolanmasını bekler.
 
 > [!NOTE]
-> SQL havuzları herhangi bir veritabanı sorguları çapraz desteklemez. Sonuç olarak, bu modelden yararlanan analiz uygulamalarının gözden geçirilmesi gerekir. SQL isteğe bağlı (önizleme) çapraz veritabanı sorgularını destekler.
+> SQL havuzları, herhangi bir türdeki çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu düzenin faydalarından yararlanan analiz uygulamalarının yeniden gözden geçirilmesi gerekir. İsteğe bağlı SQL (Önizleme), çapraz veritabanı sorgularını destekler.
 
 ## <a name="user-defined-schema-recommendations"></a>Kullanıcı tanımlı şema önerileri
 
-Kullanıcı tanımlı şemalar kullanarak iş yüklerini, güvenlik, etki alanı ve işlevsel sınırları birleştirme önerileri dahildir:
+, Kullanıcı tanımlı şemalar kullanarak iş yüklerini, güvenliği, etki alanını ve işlevsel sınırları birleştirme önerileridir:
 
-- Tüm analitik iş yükünüzü çalıştırmak için tek bir veritabanı kullanın.
-- Tek bir veritabanı nı kullanmak için mevcut analiz ortamınızı birleştirin.
-- Daha önce veritabanları kullanılarak uygulanan sınırı sağlamak için **kullanıcı tanımlı şemalardan** yararlanın.
+- Tüm analiz iş yüklerinizi çalıştırmak için tek bir veritabanı kullanın.
+- Mevcut analiz ortamınızı tek bir veritabanı kullanacak şekilde birleştirin.
+- Daha önce veritabanları kullanılarak uygulanan sınırı sağlamak için **Kullanıcı tanımlı şemalardan** yararlanın.
 
-Kullanıcı tanımlı şemalar daha önce kullanılmamışsa, temiz bir sayfanız vardır. Synapse SQL veritabanında kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
+Daha önce Kullanıcı tanımlı şemalar kullanılmazsa, temiz bir tablet görürsünüz. SYNAPSE SQL veritabanında kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
 
-Şemalar zaten kullanılmışsa, birkaç seçeneğiniz vardır:
+Şemalar zaten kullanıldıysa, birkaç seçeneğiniz vardır:
 
-- Eski şema adlarını kaldırın ve yeni bir başlangıç
-- Eski şema adlarını, eski şema adını tablo adına önceden bekleyene göre tutun
-- Eski şema yapısını yeniden oluşturan ek bir şemada tablo üzerinde görünümler uygulayarak eski şema adlarını koruyun.
+- Eski şema adlarını kaldır ve yeni Başlat
+- Eski şema adı ' nı tablo adına ön bekliyor olarak tutarak eski şema adlarını koruyun
+- Eski şema yapısını yeniden oluşturan ek bir şemadaki tablo üzerinde görünümler uygulayarak eski şema adlarını koruyun.
 
 > [!NOTE]
-> İlk incelemede, seçenek 3 en cazip seçim gibi görünebilir. Görünümler yalnızca Synapse SQL'de okunur. Herhangi bir veri veya tablo değişikliği taban tablokarşı yapılması gerekir. Seçenek 3, sisteminize bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız, bu konuda ek bir düşünce vermek isteyebilirsiniz.
+> İlk denetim sırasında 3. seçenek en çekici seçim gibi görünebilir. Görünümler, SYNAPSE SQL 'de salt okunurdur. Herhangi bir veri veya tablo değişikliğini temel tabloya karşı gerçekleştirilmesi gerekir. Seçenek 3 Ayrıca sisteminizde bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız buna ek bir fikir vermek isteyebilirsiniz.
 > 
 > 
 
 ### <a name="examples"></a>Örnekler
 
-Veritabanı adlarına göre kullanıcı tanımlı şemalar uygulayın.
+Veritabanı adlarına göre Kullanıcı tanımlı şemaları uygulayın.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create analytics tables in the edw schema
 );
 ```
 
-Eski şema adlarını tablo adına önceden bekleterek saklayın. İş yükü sınırı için şemakullanın.
+Eski şema adlarını tablo adına ön bekliyor olarak bırakın. İş yükü sınırı için şemaları kullanın.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Görünümleri kullanarak eski şema adlarını koruyun.
+Görünümleri kullanarak eski şema adlarını saklayın.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Şema stratejisindeki herhangi bir değişiklik, veritabanı için güvenlik modelinin gözden geçirilmesini gerektirir. Çoğu durumda, şema düzeyinde izinler atayarak güvenlik modelini basitleştirebilirsiniz.
+> Şema stratejisindeki herhangi bir değişiklik, veritabanının güvenlik modelinin gözden geçirilmesini gerektirir. Birçok durumda, şema düzeyinde izinler atayarak güvenlik modelini basitleştirebileceksiniz.
 
-Daha fazla tanecikli izin gerekiyorsa, veritabanı rollerini kullanabilirsiniz. Veritabanı rolleri hakkında daha fazla bilgi için [veritabanı rollerini ve kullanıcı makalesini yönet'e](../../analysis-services/analysis-services-database-users.md) bakın.
+Daha ayrıntılı izinler gerekliyse, veritabanı rollerini kullanabilirsiniz. Veritabanı rolleri hakkında daha fazla bilgi için bkz. [veritabanı rollerini ve kullanıcıları yönetme](../../analysis-services/analysis-services-database-users.md) makalesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [Synapse SQL geliştirme genel bakış'a](develop-overview.md)bakın.
+Daha fazla geliştirme ipucu için bkz. [SYNAPSE SQL geliştirmesine genel bakış](develop-overview.md).

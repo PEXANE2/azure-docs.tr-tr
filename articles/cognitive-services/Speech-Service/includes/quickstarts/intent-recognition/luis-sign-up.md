@@ -6,45 +6,45 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81422324"
 ---
-Niyet tanıma hızlı başlatılmasını tamamlamak için, LUIS önizleme portalını kullanarak bir LUIS hesabı ve bir proje oluşturmanız gerekir. Bu hızlı başlatma yalnızca bir LUIS aboneliği gerektirir. Konuşma hizmeti *aboneliği* gerekmez.
+Amaç tanıma hızlı başlangıcı ' nı tamamlayabilmeniz için, LUSıS önizleme portalını kullanarak bir LUO hesabı ve proje oluşturmanız gerekir. Bu hızlı başlangıçta yalnızca bir LUSıS aboneliği gerekir. Konuşma hizmeti aboneliği gerekli *değildir* .
 
-Yapmanız gereken ilk şey LUIS önizleme portalını kullanarak bir LUIS hesabı ve uygulaması oluşturmaktır. Oluşturduğunuz LUIS uygulaması, ev otomasyonu için, niyetler, varlıklar ve örnek söz lerle ilgili önceden oluşturulmuş bir etki alanı kullanır. İşi bittiğinde, Konuşma SDK'sını kullanarak arayabilirsiniz bulutta çalışan bir LUIS bitiş noktası nız olur. 
+Yapmanız gereken ilk şey, LUSıS önizleme portalını kullanarak bir LUO hesabı ve uygulaması oluşturmaktır. Oluşturduğunuz LUU uygulaması, giriş otomasyonu için, amaçları, varlıkları ve örnek utbotları sağlayan önceden oluşturulmuş bir etki alanı kullanacaktır. İşiniz bittiğinde, bulutta çalışan ve konuşma SDK 'sını kullanarak çağırabileceğinizi bir LUO uç noktası olur. 
 
-LUIS uygulamanızı oluşturmak için aşağıdaki yönergeleri izleyin:
+LUSıS uygulamanızı oluşturmak için bu yönergeleri izleyin:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Quickstart: Önceden oluşturulmuş etki alanı uygulaması oluşturun<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Hızlı başlangıç: önceden oluşturulmuş etki alanı uygulaması oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
-Bitirdiğinde, dört şeye ihtiyacın olacak:
+İşiniz bittiğinde dört şeyin olması gerekir:
 
-* **Konuşma primi** ile yeniden yayımla
-* LUIS **Birincil anahtarınız**
-* LUIS **Konumunuz**
-* LUIS **Uygulama Kimliğiniz**
+* Konuşma ile birlikte yeniden yayımlama **özelliği** açıldı
+* LUSıS **birincil anahtarınız**
+* LUSıS **konumunuz**
+* LUSıS **Uygulama Kimliğiniz**
 
-Bu bilgileri [LUIS önizleme portalında](https://preview.luis.ai/)bulabileceğiniz yer:
+Burada, bu bilgileri [lusıs Önizleme portalında](https://preview.luis.ai/)bulabilirsiniz:
 
-1. LUIS önizleme portalından uygulamanızı seçin ve **ardından Yayındüğmesini** seçin.
+1. LUSıS önizleme portalından uygulamanızı seçin ve ardından **Yayınla** düğmesini seçin.
 
-2. **Konuşma astarseçeneğini** **Açık** konumuna `en-US` kaydırma seçeneğini kullanıyorsanız, **Üretim** yuvasını seçin. Ardından **Yayımla** düğmesini seçin.
+2. **Konuşma primi** seçeneğini **Açık** konuma Dönüştür ' ü `en-US` kullanıyorsanız **Üretim** yuvasını seçin. Ardından **Yayınla** düğmesini seçin.
 
     > [!IMPORTANT]
-    > Konuşma tanıma doğruluğunu artıracağı için **konuşma astarı** şiddetle tavsiye edilir.
+    > Konuşma tanıma doğruluğunu iyileştirecek kadar **konuşma Prime** kesinlikle önerilir.
 
     > [!div class="mx-imgBorder"]
-    > ![Luis'i bitiş noktasına yayımla](../../../media/luis/publish-app-popup.png)
+    > ![LUSıS 'yi uç noktaya Yayımla](../../../media/luis/publish-app-popup.png)
 
-3. LUIS önizleme portalından **Yönet'i**seçin ve ardından **Azure Kaynakları'nı**seçin. Bu sayfada, LUIS anahtarınızı ve konumunuzu (bazen _bölge_olarak da adlandırılır) bulacaksınız.
-
-   > [!div class="mx-imgBorder"]
-   > ![LUIS tuşu ve konumu](../../../media/luis/luis-key-region.png)
-
-4. Anahtarınızı ve konumunuzu aldıktan sonra uygulama kimliğine ihtiyacınız olur. **Uygulama Ayarları'nı** seçin -- uygulama kimliğiniz bu sayfada mevcuttur.
+3. LUSıS önizleme portalından **Yönet**' i ve ardından **Azure kaynakları**' nı seçin. Bu sayfada, LUSıS anahtarınızı ve konumunuzu (bazen _bölge_olarak adlandırılır) bulacaksınız.
 
    > [!div class="mx-imgBorder"]
-   > ![LUIS uygulama kimliği](../../../media/luis/luis-app-id.png)
+   > ![LUSıS anahtar ve konumu](../../../media/luis/luis-key-region.png)
+
+4. Anahtarınızı ve konumunuzu aldıktan sonra uygulama KIMLIĞI gerekir. **Uygulama ayarlarını** seçin--uygulama kimliğiniz bu sayfada bulunur.
+
+   > [!div class="mx-imgBorder"]
+   > ![LUSıS uygulama KIMLIĞI](../../../media/luis/luis-app-id.png)

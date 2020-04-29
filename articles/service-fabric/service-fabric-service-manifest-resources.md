@@ -1,30 +1,30 @@
 ---
-title: Servis Kumaşı hizmet bitiş noktalarını belirtme
-description: HTTPS uç noktalarının nasıl ayarlanılmayı içeren bir hizmet bildiriminde uç nokta kaynakları nasıl açıklayınız?
+title: Service Fabric hizmet uç noktalarını belirtme
+description: HTTPS uç noktalarını ayarlama dahil olmak üzere bir hizmet bildiriminde uç nokta kaynaklarını açıklama
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417586"
 ---
-# <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtin
+# <a name="specify-resources-in-a-service-manifest"></a>Hizmet bildiriminde kaynakları belirtme
 ## <a name="overview"></a>Genel Bakış
-Hizmet bildirimi, hizmet tarafından kullanılan kaynakların derlenen kodu değiştirmeden beyan edilmesine veya değiştirilmesine izin verir. Service Fabric, hizmet için uç nokta kaynaklarının yapılandırmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişim, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynakların bildirimi, bu kaynakların dağıtım sırasında değiştirilmesine izin verir, bu da hizmetin yeni bir yapılandırma mekanizması getirmesi gerekmediği anlamına gelir. ServiceManifest.xml dosyası için şema tanımı Hizmet Kumaş SDK ve *c:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*araçları ile yüklenir.
+Hizmet bildirimi, derlenen kodu değiştirmeden, hizmet tarafından kullanılan kaynakların bildirilmesini veya değiştirilmesini sağlar. Service Fabric, hizmet için uç nokta kaynaklarının yapılandırılmasını destekler. Hizmet bildiriminde belirtilen kaynaklara erişimi, uygulama bildirimindeki SecurityGroup aracılığıyla denetlenebilir. Kaynak bildirimi, bu kaynakların dağıtım zamanında değiştirilmesini sağlar, yani hizmetin yeni bir yapılandırma mekanizması tanıtılmasına gerek kalmaz. ServiceManifest. xml dosyası için şema tanımı, Service Fabric SDK ve araçlar ile birlikte *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*ile yüklenir.
 
 ## <a name="endpoints"></a>Uç Noktalar
-Hizmet bildiriminde bir uç nokta kaynağı tanımlandığında, hizmet dokusu, bağlantı noktası açıkça belirtilmediğinde ayrılmış uygulama bağlantı noktası aralığından bağlantı noktaları atar. Örneğin, bu paragraftan sonra sağlanan bildirim parçacığında belirtilen son nokta *ServiceEndpoint1'e* bakın. Ayrıca, hizmetler bir kaynakta belirli bir bağlantı noktası da isteyebilir. Farklı küme düğümleri üzerinde çalışan hizmet yinelemelerine farklı bağlantı noktası numaraları atanırken, aynı düğümüzerinde çalışan bir hizmetin yinelemeleri bağlantı noktasını paylaşır. Hizmet yinelemeleri daha sonra çoğaltma ve istemci isteklerini dinlemek için gerektiğinde bu bağlantı noktalarını kullanabilir.
+Hizmet bildiriminde bir uç nokta kaynağı tanımlandığında Service Fabric, bir bağlantı noktası açıkça belirtilmediğinde, ayrılmış uygulama bağlantı noktası aralığından bağlantı noktaları atar. Örneğin, bu paragraftan sonra sunulan bildirim parçacığında belirtilen uç nokta *ServiceEndpoint1* bakın. Ayrıca, hizmetler bir kaynakta belirli bir bağlantı noktası da talep edebilir. Farklı küme düğümlerinde çalışan hizmet Çoğaltmalarından farklı bağlantı noktası numaraları atanabilir, ancak aynı düğümde çalışan bir hizmetin çoğaltmaları bağlantı noktasını paylaşır. Hizmet çoğaltmaları daha sonra bu bağlantı noktalarını, çoğaltma ve istemci isteklerini dinlemek için gereken şekilde kullanabilir.
 
-Bir https bitiş noktası belirten bir hizmeti etkinleştirdikten sonra, Service Fabric bağlantı noktasının erişim denetim girişini ayarlar, belirtilen sunucu sertifikasını bağlantı noktasına bağlar ve ayrıca hizmetin sertifikanın özel anahtarına izin olarak çalıştığını gösteren kimliği verir. Etkinleştirme akışı, Hizmet Kumaşı her başlatıldığında veya bir yükseltme yoluyla uygulamanın sertifika bildirimi değiştirildiğinde çağrılır. Bitiş noktası sertifikası da değişiklikler/yenilemeler için izlenir ve izinler gerektiğinde periyodik olarak yeniden uygulanır.
+HTTPS uç noktası belirten bir hizmeti etkinleştirdikten sonra, Service Fabric bağlantı noktası için erişim denetimi girişini ayarlar, belirtilen sunucu sertifikasını bağlantı noktasına bağlar ve ayrıca hizmetin çalıştığı kimliği sertifikanın özel anahtarına izin olarak verir. Etkinleştirme akışı Service Fabric her başladığında veya uygulamanın sertifika bildirimi bir yükseltme yoluyla değiştirildiğinde çağrılır. Uç nokta sertifikası değişiklikler/yenilemeler için de izlenir ve izinler gerektiğinde düzenli olarak yeniden uygulanır.
 
-Hizmetin sona ermesi üzerine, Service Fabric bitiş noktası erişim denetimi girişini temizler ve sertifika bağlamayı kaldırır. Ancak, sertifikanın özel anahtarına uygulanan izinler temizlenmez.
+Hizmetin sonlandırılması sırasında, Service Fabric uç nokta erişim denetimi girişini temizler ve sertifika bağlamasını kaldırır. Ancak, sertifikanın özel anahtarına uygulanan tüm izinler temizlenmeyecektir.
 
 > [!WARNING] 
-> Tasarım gereği statik bağlantı noktaları ClusterManifest'te belirtilen uygulama bağlantı noktası aralığıyla çakışmamalıdır. Statik bir bağlantı noktası belirtirseniz, uygulama bağlantı noktası aralığının dışına atarsanız, aksi takdirde bağlantı noktası çakışmaları neden olur. Sürüm 6.5CU2 ile böyle bir çakışma tespit ettiğimizde bir **Sağlık Uyarısı** yayınlayacağız, ancak dağıtımın sevk edilen 6,5 davranışıyla senkronize olarak devam etmesine izin veririz. Ancak, uygulama dağıtımını sonraki büyük sürümlerden engelleyebiliriz.
+> Tasarım statik bağlantı noktaları, kümele bildiriminde belirtilen uygulama bağlantı noktası aralığıyla çakışmamalıdır. Statik bir bağlantı noktası belirtirseniz, uygulamayı uygulama bağlantı noktası aralığı dışında atarsanız, bağlantı noktası çakışmalarına neden olur. Sürüm 6.5 CU2 UYGULAMAZSANıZ, bu tür bir çakışmayı tespit ettiğimiz ancak dağıtımın sevk edilen 6,5 davranışı ile eşitlenmiş halde devam etmesine izin veren bir **sistem durumu uyarısı** vereceğiz. Ancak, uygulama dağıtımını bir sonraki Ana sürümlerden önleyebiliriz.
 >
-> Sürüm 7.0 ile uygulama bağlantı noktası aralığı kullanımı nın HostingConfig ötesine geçtiğini tespit ettiğimizde bir **Sağlık Uyarısı** yayınlayacaktır::ApplicationPortExhaustThresholdPercentage (varsayılan %80).
+> Sürüm 7,0 ile, uygulama bağlantı noktası aralığı kullanımı, HostingConfig:: ApplicationPortExhaustThresholdPercentage (varsayılan 80%) ötesine geçtiğinde bir **sistem durumu uyarısı** yayınlarız.
 >
 
 ```xml
@@ -37,7 +37,7 @@ Hizmetin sona ermesi üzerine, Service Fabric bitiş noktası erişim denetimi g
 </Resources>
 ```
 
-Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **Bitiş Noktaları** bölümünde de başvurulması gerekir.  Örneğin, **ServiceEndpoint2a** ve **ServiceEndpoint2b** farklı kod paketlerine başvuran aynı hizmet paketinin uç noktalarıysa, her uç noktaya karşılık gelen kod paketi aşağıdaki gibi açıklığa kavuşturulur:
+Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **uç noktalar** bölümünde de başvurulması gerekir.  Örneğin, **ServiceEndpoint2a** ve **ServiceEndpoint2b** , farklı kod paketlerine başvuran aynı hizmet paketinden gelen noktalardır, her bir uç noktaya karşılık gelen kod paketi aşağıdaki gibi açıklığa kavuşturuldu:
 
 ```xml
 <Resources>
@@ -48,12 +48,12 @@ Tek bir hizmet paketinde birden çok kod paketi varsa, kod paketinin **Bitiş No
 </Resources>
 ```
 
-Config paket ayarları dosyasından (settings.xml) uç noktalarına başvuru hakkında daha fazla bilgi için [durumlu Güvenilir Hizmetleri Yapılandırmaya](service-fabric-reliable-services-configuration.md) bakın.
+Yapılandırma paketi ayarları dosyasından (Settings. xml) bulunan uç noktalar hakkında daha fazla bilgi edinmek için [durum bilgisi olan Reliable Services yapılandırma](service-fabric-reliable-services-configuration.md) konusuna bakın.
 
-## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTP bitiş noktası belirtme
-Aşağıdaki hizmet bildirimi, &lt;Kaynaklar&gt; öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
+## <a name="example-specifying-an-http-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTP uç noktası belirtme
+Aşağıdaki hizmet bildirimi &lt;Resources&gt; öğesinde bir TCP uç noktası kaynağı ve iki HTTP uç noktası kaynağı tanımlar.
 
-HTTP uç noktaları servis kumaşı tarafından otomatik olarak ACL'd'dir.
+HTTP uç noktaları, Service Fabric tarafından otomatik olarak ACL ' dir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -100,18 +100,18 @@ HTTP uç noktaları servis kumaşı tarafından otomatik olarak ACL'd'dir.
 </ServiceManifest>
 ```
 
-## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTPS bitiş noktası belirtme
-HTTPS protokolü sunucu kimlik doğrulaması sağlar ve istemci-sunucu iletişimini şifrelemek için de kullanılır. Hizmet Kumaşı hizmetinizde HTTPS'yi etkinleştirmek için, hizmet bildiriminin *Kaynaklar -> Bitiş Noktaları -> Bitiş Noktası* bölümünde, son nokta *ServiceEndpoint3*için daha önce gösterildiği gibi protokolü belirtin.
+## <a name="example-specifying-an-https-endpoint-for-your-service"></a>Örnek: hizmetiniz için bir HTTPS uç noktası belirtme
+HTTPS protokolü sunucu kimlik doğrulaması sağlar ve aynı zamanda istemci-sunucu iletişimini şifrelemek için de kullanılır. Service Fabric hizmetinizde HTTPS 'yi etkinleştirmek için, *ServiceEndpoint3*uç noktası için daha önce gösterildiği gibi hizmet bildiriminin *kaynaklar-> uç noktaları-> uç noktası* bölümünde Protokolü belirtin.
 
 > [!NOTE]
-> Uygulama yükseltmesırasında bir hizmetin protokolü değiştirilemez. Yükseltme sırasında değiştirilirse, bu bir kesme değişikliğidir.
+> Uygulamanın yükseltilmesi sırasında bir hizmetin Protokolü değiştirilemez. Yükseltme sırasında değiştirilmişse, bu bir değişiklik değildir.
 > 
 
 > [!WARNING] 
-> HTTPS kullanırken, aynı düğüme dağıtılan farklı hizmet örnekleri (uygulamadan bağımsız) için aynı bağlantı noktasını ve sertifikayı kullanmayın. Farklı uygulama örneklerinde aynı bağlantı noktasını kullanarak iki farklı hizmetin yükseltilmesi bir yükseltme hatasına neden olur. Daha fazla bilgi için bkz: [HTTPS uç noktalarıyla birden çok uygulamayı yükseltme. ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)
+> HTTPS kullanırken, aynı düğüme dağıtılan farklı hizmet örnekleri (uygulamadan bağımsız) için aynı bağlantı noktasını ve sertifikayı kullanmayın. Farklı uygulama örneklerinde aynı bağlantı noktasını kullanarak iki farklı hizmetin yükseltilmesi, yükseltme hatasına neden olur. Daha fazla bilgi için bkz. [https uç noktaları ile birden çok uygulamayı yükseltme ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
 >
 
-Burada bir HTTPS bitiş noktası için gerekli yapılandırmagösteren bir örnek ApplicationManifest olduğunu. Sunucu/bitiş noktası sertifikası parmak izi veya özortak adla beyan edilebilir ve bir değer sağlanmalıdır. EndpointRef ServiceManifest'teki EndpointResource'a bir başvurudur ve protokolü 'https' protokolüne ayarlanmış olmalıdır. Birden fazla EndpointCertificate ekleyebilirsiniz.  
+Bir HTTPS uç noktası için gereken yapılandırmayı gösteren örnek bir ApplicationManifest aşağıda verilmiştir. Sunucu/uç nokta sertifikası parmak izi veya konu ortak adı ile tanımlanmış olabilir ve bir değer sağlanmalıdır. EndpointRef, ServiceManifest içindeki EndpointResource öğesine bir başvurudur ve protokol ' https ' protokolüne ayarlanmış olmalıdır. Birden fazla EndpointCertificate ekleyebilirsiniz.  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -155,16 +155,16 @@ Burada bir HTTPS bitiş noktası için gerekli yapılandırmagösteren bir örne
 </ApplicationManifest>
 ```
 
-Linux kümeleri için **MY** mağazası varsayılan olarak **/var/lib/sfcerts**klasörüne aktarılır.
+Linux kümeleri için **My mağazam** , **/var/lib/sfcerts**klasörünü varsayılan olarak alır.
 
 
-## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest.xml'de Uç Noktaları Geçersiz Kılma
+## <a name="overriding-endpoints-in-servicemanifestxml"></a>ServiceManifest. xml dosyasında uç noktaları geçersiz kılma
 
-ApplicationManifest'te ConfigOverrides bölümüne kardeş olacak bir ResourceOverrides bölümü ekleyin. Bu bölümde, Hizmet bildiriminde belirtilen kaynaklar bölümünde Uç Noktalar bölümü için geçersiz kılma belirtebilirsiniz. Geçersiz uç noktaları çalışma süresi 5.7.217/SDK 2.7.217 ve üzeri desteklenir.
+ApplicationManifest içinde, bir Resourcekılmalar ekleyin bölümü, bu, Configkıkılatıon için eşdüzey bir bölüm olacaktır. Bu bölümde, hizmet bildiriminde belirtilen kaynaklar bölümündeki uç noktalar bölümünde geçersiz kılma seçeneğini belirtebilirsiniz. Çalışma zamanı 5.7.217/SDK 2.7.217 ve üzeri için uç noktaların geçersiz kılınması desteklenir.
 
-ApplicationParametrelerini kullanarak ServiceManifest'te EndPoint'i geçersiz kılmak için ApplicationManifest'i aşağıdaki gibi değiştirin:
+ApplicationParameters kullanılarak ServiceManifest içindeki uç noktayı geçersiz kılmak için ApplicationManifest öğesini aşağıdaki gibi değiştirin:
 
-ServiceManifestImport bölümünde yeni bir bölüm "ResourceOveroverrides" ekleyin.
+Servicemanifestımport bölümünde yeni bir "Resourcekılmalar" bölümü ekleyin.
 
 ```xml
 <ServiceManifestImport>
@@ -182,7 +182,7 @@ ServiceManifestImport bölümünde yeni bir bölüm "ResourceOveroverrides" ekle
   </ServiceManifestImport>
 ```
 
-Aşağıdaki Parametrelerekle:
+Parametreleri aşağıda ekleyin:
 
 ```xml
   <Parameters>
@@ -194,17 +194,17 @@ Aşağıdaki Parametrelerekle:
   </Parameters>
 ```
 
-Uygulamayı dağıtırken bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
+Uygulamayı dağıttığınızda, bu değerleri ApplicationParameters olarak geçirebilirsiniz.  Örneğin:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-Not: ApplicationParameters için sağlanan değerler boşsa, ilgili EndPointName için ServiceManifest'te sağlanan varsayılan değere geri döneriz.
+Note: ApplicationParameters için değerler boşsa, karşılık gelen EndPointName için ServiceManifest içinde belirtilen varsayılan değere geri döneceğiz.
 
 Örneğin:
 
-ServiceManifest'te belirttiğiniz
+Belirttiğiniz hizmet bildiriminde
 
 ```xml
   <Resources>
@@ -214,6 +214,6 @@ ServiceManifest'te belirttiğiniz
   </Resources>
 ```
 
-Uygulama parametreleri için Port1 ve Protocol1 değeri boş veya boştur. Bağlantı noktası hala ServiceFabric tarafından kararlaştırıldı. Ve Protokol tcp olacaktır.
+Ve uygulama parametreleri için PORT1 ve Protocol1 değeri null ya da boş. Bağlantı noktası hala ServiceFabric tarafından kararmaya devam etmektedir. Ve protokol TCP olur.
 
-Yanlış bir değer belirttiğinizi varsayalım. Port için olduğu gibi bir int yerine "Foo" dize değeri belirtti.  Yeni HizmetFabricApplication komutu bir hata ile başarısız olur : 'ServiceEndpoint1' özniteliği 'Port1' bölümünde 'ResourceOverrides' geçersiz dir adı ile geçersizdir. Belirtilen değer 'Foo' ve gerekli 'int'.
+Yanlış bir değer belirtdiğinizi varsayın. Bağlantı noktası gibi bir int yerine "foo" dize değerini belirttiniz.  New-ServiceFabricApplication komutu bir hata ile başarısız olur: ' Resourceoverride ' bölümündeki ' ServiceEndpoint1 ' özniteliği ' PORT1 ' adlı geçersiz kılma parametresi geçersiz. Belirtilen değer ' foo ' ve gerekli ' int '.

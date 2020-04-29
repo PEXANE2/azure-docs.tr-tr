@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda desteklenen dosya biçimleri
-description: Bu konu, Azure Veri Fabrikası'ndaki dosya tabanlı bağlayıcılar tarafından desteklenen dosya biçimlerini ve sıkıştırma kodlarını açıklar.
+title: Azure Data Factory 'de desteklenen dosya biçimleri
+description: Bu konu, Azure Data Factory dosya tabanlı bağlayıcılar tarafından desteklenen dosya biçimlerini ve sıkıştırma kodlarını açıklamaktadır.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: dbcfad3dd3db9f5c9431e07d85d77a77a10283c4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419043"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Veri Fabrikası'nda desteklenen dosya biçimleri ve sıkıştırma kodlayıcıları
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory 'de desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*Bu makale aşağıdaki bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md), [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md), [Azure Dosya Depolama](connector-azure-file-storage.md), Dosya [Sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Bulut Depolama](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), ve [SFTP](connector-sftp.md).*
+*Bu makale aşağıdaki bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md),, [HDFS](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).*
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-Dosyaları iki dosya tabanlı veri deposu arasında olduğu gibi kopyalamak için [Kopyala etkinliğini](copy-activity-overview.md) kullanabilirsiniz ve bu durumda veriler herhangi bir serileştirme veya deserialization olmadan verimli bir şekilde kopyalanır. 
+[Kopyalama etkinliğini](copy-activity-overview.md) , dosyaları iki dosya tabanlı veri deposu arasında olduğu gibi kopyalamak için kullanabilirsiniz. Bu durumda, veriler serileştirme veya seri durumundan çıkarma yapılmadan verilerin verimli bir şekilde kopyalanabilmesi. 
 
-Buna ek olarak, belirli bir biçimdeki dosyaları ayrıştabilir veya oluşturabilirsiniz. Örneğin, aşağıdakileri gerçekleştirebilirsiniz:
+Ayrıca, belirli bir biçimin dosyalarını ayrıştırır veya oluşturabilirsiniz. Örneğin, şunları yapabilirsiniz:
 
-* Şirket içi BIR SQL Server veritabanındaki verileri kopyalayın ve Parke formatında Azure Veri Gölü Depolama Gen2'ye yazın.
-* Dosyaları şirket içi bir dosya sisteminden metin (CSV) biçiminde kopyalayın ve Avro biçiminde Azure Blob depolamasına yazın.
-* Sıkıştırılmış dosyaları şirket içi bir dosya sisteminden kopyalayın, anında sıkıştırmayı debzorlayın ve çıkarılan dosyaları Azure Veri Gölü Depolama Gen2'ye yazın.
-* Verileri Azure Blob depolamaalanından Gzip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL Veritabanı'na yazın.
-* Serileştirme/deserialization veya sıkıştırma/dekompresyon gerektiren daha birçok etkinlik.
+* Şirket içi SQL Server veritabanından veri kopyalayın ve Parquet biçiminde Azure Data Lake Storage 2. yazın.
+* Metin (CSV) biçimindeki dosyaları şirket içi bir dosya sisteminden kopyalayın ve avro biçiminde Azure Blob depolama alanına yazın.
+* ZIP dosyalarını şirket içi bir dosya sisteminden kopyalayın, açık olarak açıp Azure Data Lake Storage 2. ve ayıklanan dosyaları yazın.
+* Verileri Azure Blob depolama alanından gzip sıkıştırılmış metin (CSV) biçiminde kopyalayın ve Azure SQL veritabanı 'na yazın.
+* Serileştirme/seri durumdan çıkarma veya sıkıştırma/sıkıştırmayı gerektiren çok sayıda etkinlik.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer Kopyalama Etkinliği makalelerini görün:
+Diğer kopyalama etkinliği makalelerine bakın:
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 - [Kopyalama etkinliği performansı](copy-activity-performance.md)

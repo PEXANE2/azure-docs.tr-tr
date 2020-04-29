@@ -1,6 +1,6 @@
 ---
-title: Azure Tablo depolama alanına ve bu depolama dan veri kopyalama
-description: Desteklenen kaynak mağazalardan Azure Tablo depolamasına veya Tablo depolamadan desteklenen lavabo depolarına veri fabrikasını kullanarak nasıl kopyalayış edilebildiğini öğrenin.
+title: Azure Tablo depolamadan veri kopyalama
+description: Desteklenen kaynak depolardan Azure Tablo depolama 'ya veya tablo depolamadan Data Factory kullanarak verileri desteklenen havuz depolarına kopyalamayı öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,57 +12,57 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417489"
 ---
-# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Azure Table depolamasına ve azure tablo depolamasına kopyalama
+# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Tablo depolamadan veri kopyalama
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-table-connector.md)
 > * [Geçerli sürüm](connector-azure-table-storage.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Azure Tablo depolama alanına ve Azure Tablo depolamadan veri kopyalamak için Azure Veri Fabrikası'nda Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama Etkinliği'ne genel bir genel bakış sunan [Kopyalama Etkinliği genel bakış](copy-activity-overview.md) makalesine dayanmaktadır.
+Bu makalede, Azure Tablo depolamadan veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu Azure Tablo depolama konektörü aşağıdaki etkinlikler için desteklenir:
+Bu Azure Tablo depolama Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Desteklenen herhangi bir kaynak veri deposundan Tablo depolamasına verileri kopyalayabilirsiniz. Ayrıca, Tablo depolamadan desteklenen herhangi bir lavabo veri deposuna verileri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Desteklenen herhangi bir kaynak veri deposundan tablo depolamaya veri kopyalayabilirsiniz. Ayrıca, tablo depolamadan desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak veya havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Özellikle, bu Azure Tablosu bağlayıcısı hesap anahtarı nı ve hizmet paylaşılan erişim imzası kimlik doğrularını kullanarak verilerin kopyalanmasına destek verir.
+Özellikle, bu Azure Tablo Bağlayıcısı, hesap anahtarı ve hizmet paylaşılan erişim imzası kimlik doğrulamaları kullanılarak verilerin kopyalanmasını destekler.
 
 ## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Tablo depolamasına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler tablo depolamaya özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-### <a name="use-an-account-key"></a>Hesap anahtarı kullanma
+### <a name="use-an-account-key"></a>Hesap anahtarı kullan
 
-Hesap anahtarını kullanarak Azure Depolama bağlantılı bir hizmet oluşturabilirsiniz. Veri fabrikasına Depolama'ya küresel erişim sağlar. Aşağıdaki özellikler desteklenir.
+Hesap anahtarını kullanarak bir Azure depolama bağlı hizmeti oluşturabilirsiniz. Veri fabrikasına depolama için genel erişim sağlar. Aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Evet |
-| Connectionstring | ConnectionString özelliği için Depolama'ya bağlanmak için gereken bilgileri belirtin. <br/>Hesap anahtarını Azure Key Vault'a `accountKey` koyabilir ve yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. |Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
+| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Yes |
+| Dizisi | ConnectionString özelliği için depolamaya bağlanmak için gereken bilgileri belirtin. <br/>Ayrıca hesap anahtarını Azure Key Vault yerleştirebilir ve `accountKey` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . |Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
->"AzureStorage" türüne bağlı hizmeti kullanıyorsanız, bu yeni "AzureTableStorage" bağlantılı hizmet türünü ileriye dönük olarak kullanmanız önerilirken, bu hizmet yine de olduğu gibi desteklenir.
+>"AzureStorage" türünde bağlı hizmet kullanıyorsanız, bu yeni "AzureTableStorage" bağlı hizmet türünü ileride kullanmanız önerilirken olduğu gibi hala desteklenmektedir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -80,7 +80,7 @@ Hesap anahtarını kullanarak Azure Depolama bağlantılı bir hizmet oluşturab
 }
 ```
 
-**Örnek: Azure Key Vault'ta mağaza hesabı anahtarı**
+**Örnek: Azure Key Vault hesap anahtarını depolayın**
 
 ```json
 {
@@ -108,15 +108,15 @@ Hesap anahtarını kullanarak Azure Depolama bağlantılı bir hizmet oluşturab
 
 ### <a name="use-shared-access-signature-authentication"></a>Paylaşılan erişim imzası kimlik doğrulamasını kullanma
 
-Ayrıca paylaşılan bir erişim imzası kullanarak Depolama bağlantılı bir hizmet oluşturabilirsiniz. Veri fabrikasına depolamadaki tüm/belirli kaynaklara sınırlı/zamana bağlı erişim sağlar.
+Ayrıca, paylaşılan erişim imzası kullanarak bir depolama bağlı hizmeti oluşturabilirsiniz. Veri fabrikasını, depolama alanındaki tüm/belirli kaynaklara kısıtlı/zamana göre erişim ile sağlar.
 
-Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bunu, bir istemciye depolama hesabınızdaki nesnelere belirli bir süre ve belirli bir izin kümesiyle sınırlı izinler vermek için kullanabilirsiniz. Hesap erişim anahtarlarınızı paylaşmak zorunda değilsiniz. Paylaşılan erişim imzası, sorgu parametrelerinde bir depolama kaynağına kimlik doğrulaması için gerekli tüm bilgileri kapsayan bir URI'dir. Paylaşılan erişim imzasıyla depolama kaynaklarına erişmek için istemcinin yalnızca paylaşılan erişim imzasını uygun oluşturucuya veya yönteme geçirmesi gerekir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzaları: Paylaşılan erişim imza modelini anlayın.](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+Paylaşılan erişim imzası, Depolama hesabınızdaki kaynaklara temsilci erişimi sağlar. Bu ayarı, belirli bir süre ve belirli bir izin kümesiyle Depolama hesabınızdaki nesnelere sınırlı bir izin vermek için kullanabilirsiniz. Hesap erişim anahtarlarınızı paylaşmak zorunda değilsiniz. Paylaşılan erişim imzası, bir depolama kaynağına kimliği doğrulanmış erişim için gereken tüm bilgileri sorgu parametrelerinde kapsayan bir URI 'dir. Paylaşılan erişim imzasıyla depolama kaynaklarına erişmek için, istemcinin yalnızca paylaşılan erişim imzasını uygun oluşturucuya veya yönteme geçirmesi gerekir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. paylaşılan erişim [imzaları: paylaşılan erişim imzası modelini anlama](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 > [!NOTE]
-> Veri Fabrikası artık hem **hizmet paylaşılan erişim imzalarını** hem de **hesap paylaşılan erişim imzalarını**destekler. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni](../storage/common/storage-sas-overview.md)ver. 
+> Data Factory artık **hizmet paylaşılan erişim imzalarını** ve **Hesap paylaşılan erişim imzalarını**desteklemektedir. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../storage/common/storage-sas-overview.md). 
 
 > [!TIP]
-> Depolama hesabınız için paylaşılan bir hizmet erişim imzası oluşturmak için aşağıdaki PowerShell komutlarını gerçekleştirebilirsiniz. Yer tutucuları değiştirin ve gerekli izni ver.
+> Depolama hesabınız için bir hizmet paylaşılan erişim imzası oluşturmak için aşağıdaki PowerShell komutlarını çalıştırabilirsiniz. Yer tutucuları değiştirin ve gerekli izinleri verin.
 > `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
@@ -124,14 +124,14 @@ Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdak
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Evet |
-| sasUri | Tabloya paylaşılan erişim imzası URI'nin SAS URI'sini belirtin. <br/>Bu alanı Güvenli Bir Şekilde Veri Fabrikası'nda depolamak için SecureString olarak işaretleyin. Otomatik döndürmeden yararlanmak ve belirteç kısmını kaldırmak için Azure Key Vault'a SAS belirteci de koyabilirsiniz. Azure Key Vault [makalesinde](store-credentials-in-key-vault.md) daha fazla ayrıntı içeren aşağıdaki örneklere ve Mağaza kimlik bilgilerine bakın. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Zamanı'nı veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel bir ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
+| type | Type özelliği **AzureTableStorage**olarak ayarlanmalıdır. |Yes |
+| sasUri | Tabloya paylaşılan erişim imzası URI 'sinin SAS URI 'sini belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, otomatik dönüşten yararlanmak ve belirteç bölümünü kaldırmak için Azure Key Vault SAS belirtecini de koyabilirsiniz. Daha ayrıntılı bilgi için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault makalesine depolayın](store-credentials-in-key-vault.md) . | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel bir ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 >[!NOTE]
->"AzureStorage" türüne bağlı hizmeti kullanıyorsanız, bu yeni "AzureTableStorage" bağlantılı hizmet türünü ileriye dönük olarak kullanmanız önerilirken, bu hizmet yine de olduğu gibi desteklenir.
+>"AzureStorage" türünde bağlı hizmet kullanıyorsanız, bu yeni "AzureTableStorage" bağlı hizmet türünü ileride kullanmanız önerilirken olduğu gibi hala desteklenmektedir.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -152,7 +152,7 @@ Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdak
 }
 ```
 
-**Örnek: Azure Key Vault'ta mağaza hesabı anahtarı**
+**Örnek: Azure Key Vault hesap anahtarını depolayın**
 
 ```json
 {
@@ -181,24 +181,24 @@ Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdak
 }
 ```
 
-Paylaşılan bir erişim imzası URI oluşturduğunuzda, aşağıdaki noktaları göz önünde bulundurun:
+Paylaşılan erişim imzası URI 'SI oluşturduğunuzda, aşağıdaki noktaları göz önünde bulundurun:
 
-- Veri fabrikanızda bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığına bağlı olarak nesneler üzerinde uygun okuma/yazma izinleri ayarlayın.
-- **Son kullanma süresini** uygun şekilde ayarlayın. Depolama nesnelerine erişimin ardışık ardışık etkin süre içinde sona ermediğinden emin olun.
-- URI ihtiyaca göre doğru tablo düzeyinde oluşturulmalıdır.
+- Veri fabrikanızdaki bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığını temel alarak nesneler üzerinde uygun okuma/yazma izinleri ayarlayın.
+- **Süre sonu süresini** uygun şekilde ayarlayın. Depolama nesneleri erişiminin işlem hattının etkin döneminde dolamamasını sağlayın.
+- URI, ihtiyaya göre doğru tablo düzeyinde oluşturulmalıdır.
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Azure Tablosu veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Azure Tablo veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Azure Table'a veri kopyalamak için, veri kümesinin tür özelliğini **AzureTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir.
+Verileri Azure tablosuna kopyalamak için, veri kümesinin Type özelliğini **AzureTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği **AzureTable**olarak ayarlanmalıdır. |Evet |
-| tableName |Bağlı hizmetin başvurulması yla tablonun adı Tablo depolama veritabanı örneğinde yer almaktadır. |Evet |
+| type | Veri kümesinin Type özelliği **AzureTable**olarak ayarlanmalıdır. |Yes |
+| tableName |Bağlı hizmetin başvurduğu tablo depolama veritabanı örneğindeki tablonun adı. |Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -218,61 +218,61 @@ Azure Table'a veri kopyalamak için, veri kümesinin tür özelliğini **AzureTa
 }
 ```
 
-### <a name="schema-by-data-factory"></a>Veri Fabrikası'na Göre Şema
+### <a name="schema-by-data-factory"></a>Data Factory şema
 
-Azure Tablo gibi şema içermeyen veri depoları için, Veri Fabrikası şema'yı aşağıdaki yollardan biriyle çıkartır:
+Azure tablosu gibi şema içermeyen veri depoları için, Data Factory şemayı aşağıdaki yollarla bir şekilde algılar:
 
-* Kopyalama etkinliğinde sütun eşleciliğini belirtirseniz, Veri Fabrikası verileri almak için kaynak yan sütun listesini kullanır. Bu durumda, bir satır bir sütun için bir değer içermiyorsa, bunun için null bir değer sağlanır.
-* Kopyalama etkinliğinde sütun eşlemesini belirtmezseniz, Veri Fabrikası verilerdeki ilk satırı kullanarak şemayı çıkartır. Bu durumda, ilk satır tam şema içermiyorsa (örneğin, bazı sütunların null değeri vardır), kopyalama işlemi sonucunda bazı sütunlar gözden kaçırılır.
+* Kopyalama etkinliğinde sütun eşlemeyi belirtirseniz, verileri almak için kaynak tarafı sütun listesini kullanın Data Factory. Bu durumda, bir satır bir sütun için değer içermiyorsa, için null değer sağlanır.
+* Kopyalama etkinliğinde sütun eşlemeyi belirtmezseniz, verileri verilerdeki ilk satırı kullanarak şemayı Data Factory. Bu durumda, ilk satır tam şemayı içermiyorsa (ör. bazı sütunlarda null değer varsa), kopyalama işleminin sonucunda bazı sütunlar kaçırılacaktır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Azure Tablo kaynağı ve lavabo tarafından desteklenen özelliklerin bir listesi bulunmaktadır.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Azure tablo kaynağı ve havuzu tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-table-as-a-source-type"></a>Kaynak türü olarak Azure Tablosu
+### <a name="azure-table-as-a-source-type"></a>Kaynak türü olarak Azure tablosu
 
-Azure Tablosu'ndaki verileri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **AzureTableSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir.
+Azure tablosundan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzureTableSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının tür özelliği **AzureTableSource**olarak ayarlanmalıdır. |Evet |
-| azureTableSourceQuery |Verileri okumak için özel Tablo depolama sorgusunu kullanın. Aşağıdaki bölümdeki örneklere bakın. |Hayır |
-| azureTableSourceIgnoreTableNotFound |Tablonun özel durum var olmasına izin verilip vermeyeceğini gösterir.<br/>İzin verilen değerler **True** ve **False** (varsayılan) olarak verilir. |Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği **AzureTableSource**olarak ayarlanmalıdır. |Yes |
+| azureTableSourceQuery |Verileri okumak için özel tablo depolama sorgusunu kullanın. Aşağıdaki bölümdeki örneklere bakın. |Hayır |
+| azureTableSourceIgnoreTableNotFound |Tablonun özel durumunun mevcut olup olmayacağını gösterir.<br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. |Hayır |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery örnekleri
 
 >[!NOTE]
->Azure Tablo sorgusu işlemi, Azure [Tablo hizmeti tarafından zorlanan](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)30 saniye içinde zamanlanır. Makaleyi [sorgulamak için Tasarım'dan](../storage/tables/table-storage-design-for-query.md) sorguyu nasıl optimize edebilirsiniz öğrenin.
+>Azure Tablo hizmeti, Azure [Tablo hizmeti tarafından zorlanan](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)30 saniye içinde işlem zaman aşımına uğrar. Sorguyu [sorgulamak üzere tasarımın](../storage/tables/table-storage-design-for-query.md) nasıl iyileştirileceği hakkında bilgi edinin.
 
-Azure Veri Fabrikası'nda, verileri bir datetime türü sütununa filtrelemek istiyorsanız, aşağıdaki örneğe bakın:
+Azure Data Factory, verileri bir tarih saat türü sütununa karşı filtrelemek istiyorsanız şu örneğe başvurun:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
 ```
 
-Verileri dize türü sütununa filtrelemek istiyorsanız, aşağıdaki örneğe bakın:
+Verileri bir dize türü sütununa karşı filtrelemek istiyorsanız şu örneğe başvurun:
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime ge '201710010000_0000' and LastModifiedTime le '201710010000_9999'"
 ```
 
-Ardışık etki hattı parametresini kullanıyorsanız, tarih saati değerini önceki örneklere göre uygun biçime atın.
+İşlem hattı parametresini kullanırsanız, DateTime değerini önceki örneklere göre doğru biçime atayın.
 
-### <a name="azure-table-as-a-sink-type"></a>Lavabo türü olarak Azure Tablosu
+### <a name="azure-table-as-a-sink-type"></a>Havuz türü olarak Azure tablosu
 
-Verileri Azure Tablosu'na kopyalamak için, kopyalama etkinliğindeki lavabo türünü **AzureTableSink**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **lavabo** bölümünde desteklenir.
+Verileri Azure tablosuna kopyalamak için kopyalama etkinliğindeki havuz türünü **AzureTableSink**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **havuzunu** Kopyala bölümünde desteklenir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği lavabonun türü özelliği **AzureTableSink**olarak ayarlanmalıdır. |Evet |
-| azureTableDefaultPartitionKeyValue |Lavabo tarafından kullanılabilecek varsayılan bölüm anahtar değeri. |Hayır |
-| azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, "AzureTableDefaultPartitionKeyValue" bölüm anahtarı olarak kullanılır. |Hayır |
-| azureTableTableKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmemişse, her satır için bir GUID kullanın. |Hayır |
-| azureTableInsertType |Azure Tablosu'na veri ekleme modu. Bu özellik, eşleşen bölüm ve satır anahtarları ile çıktı tablosunda varolan satırların değerlerinin değiştirilip değiştirilmediğini veya birleştirilip birleştirilmediğini denetler. <br/><br/>İzin verilen değerler **birleştirilir** (varsayılan) ve **değiştirilir.** <br/><br> Bu ayar satır düzeyinde değil, tablo düzeyinde geçerlidir. Her iki seçenek de girişte bulunmayan çıktı tablosundaki satırları siler. Birleştirme ve değiştirme ayarlarının nasıl çalıştığı hakkında bilgi edinmek için, [varlığı Ekle veya birleştir](https://msdn.microsoft.com/library/azure/hh452241.aspx) ve varlığı girin veya [değiştirin'e](https://msdn.microsoft.com/library/azure/hh452242.aspx)bakın. |Hayır |
-| yazmaBatchSize |Toplu Boyut veya writeBatchTimeout vurulduğunda Azure Tablosu'na veri ekler.<br/>İzin verilen değerler insa (satır sayısı) olan tümsecidir. |Hayır (varsayılan değer 10.000'dir) |
-| yazmaBatchTimeout |Toplu Boyut veya writeBatchTimeout vurulduğunda Azure Tablosu'na veri ekler.<br/>İzin verilen değerler zaman ası dır. Bir örnek "00:20:00" (20 dakika). |Hayır (varsayılan değer 90 saniyedir, depolama istemcisi varsayılan zaman amı) |
+| type | Kopyalama etkinliği havuzunun Type özelliği **AzureTableSink**olarak ayarlanmalıdır. |Yes |
+| azureTableDefaultPartitionKeyValue |Havuz tarafından kullanılabilen varsayılan bölüm anahtarı değeri. |Hayır |
+| azureTablePartitionKeyName |Değerleri bölüm anahtarları olarak kullanılan sütunun adını belirtin. Belirtilmemişse, bölüm anahtarı olarak "AzureTableDefaultPartitionKeyValue" kullanılır. |Hayır |
+| azureTableRowKeyName |Sütun değerleri satır anahtarı olarak kullanılan sütunun adını belirtin. Belirtilmezse, her satır için bir GUID kullanın. |Hayır |
+| azureTableInsertType |Azure tablosuna veri ekleme modu. Bu özellik, çıkış tablosunda eşleşen bölüm ve satır anahtarlarının değerlerinin değiştirilmesini veya birleştirildiğini denetler. <br/><br/>İzin verilen değerler **merge** (varsayılan) ve **Replace**. <br/><br> Bu ayar, tablo düzeyinde değil, satır düzeyinde geçerlidir. Hiçbir seçenek, girişte bulunmayan çıkış tablosundaki satırları siler. Birleştirme ve değiştirme ayarlarının nasıl çalıştığı hakkında bilgi edinmek için bkz. [varlık ekleme veya birleştirme](https://msdn.microsoft.com/library/azure/hh452241.aspx) ve [varlık ekleme veya değiştirme](https://msdn.microsoft.com/library/azure/hh452242.aspx). |Hayır |
+| writeBatchSize |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler.<br/>İzin verilen değerler Integer (satır sayısı). |Hayır (varsayılan değer 10.000) |
+| writeBatchTimeout |WriteBatchSize veya writeBatchTimeout değeri isabet edildiğinde Azure tablosuna veri ekler.<br/>İzin verilen değerler TimeSpan. Örnek olarak "00:20:00" (20 dakika) bulunur. |Hayır (varsayılan değer 90 saniyedir, depolama istemcisinin varsayılan zaman aşımı) |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -307,9 +307,9 @@ Verileri Azure Tablosu'na kopyalamak için, kopyalama etkinliğindeki lavabo tü
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 
-Hedef sütunu azureTablePartitionKeyName olarak kullanmadan önce **"çevirmen"** özelliğini kullanarak bir hedef sütunu hedef sütunla eşle.
+Hedef sütunu azureTablePartitionKeyName olarak kullanabilmeniz için önce **"Translator"** özelliğini kullanarak bir kaynak sütunu hedef sütuna eşleyin.
 
-Aşağıdaki örnekte, kaynak sütun DivisionID hedef sütun DivisionID eşlenir:
+Aşağıdaki örnekte, DivisionID kaynak sütunu DivisionID hedef sütunuyla eşlenir:
 
 ```json
 "translator": {
@@ -318,7 +318,7 @@ Aşağıdaki örnekte, kaynak sütun DivisionID hedef sütun DivisionID eşlenir
 }
 ```
 
-"DivisionID" bölüm anahtarı olarak belirtilir.
+"DivisionID", bölüm anahtarı olarak belirtilir.
 
 ```json
 "sink": {
@@ -327,26 +327,26 @@ Aşağıdaki örnekte, kaynak sütun DivisionID hedef sütun DivisionID eşlenir
 }
 ```
 
-## <a name="data-type-mapping-for-azure-table"></a>Azure Tablosu için veri türü eşleme
+## <a name="data-type-mapping-for-azure-table"></a>Azure tablosu için veri türü eşlemesi
 
-Verileri Azure Tablosu'ndan ve Azure Tablosu'na kopyaladiğinizde, Azure Tablo veri türlerinden Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemasını ve veri türünü lavaboyla nasıl eşlenebildiğini öğrenmek için Bkz. [Şema ve veri türü eşlemeleri.](copy-activity-schema-and-type-mapping.md)
+Ve Azure tablosundan verileri kopyaladığınızda, Azure Tablo veri türleri arasında, geçici veri türlerini Data Factory için aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
-Verileri Azure Tablosu'na taşıdığınızda, Azure Tablosu tarafından tanımlanan aşağıdaki [eşlemeler](https://msdn.microsoft.com/library/azure/dd179338.aspx) Azure Tablo OData türlerinden .NET türüne veya tam tersi olarak kullanılır.
+Verileri Azure tablosuna taşıdığınızda, Azure tablosu [tarafından tanımlanan aşağıdaki eşlemeler](https://msdn.microsoft.com/library/azure/dd179338.aspx) Azure Tablo OData türlerinden .net türüne ve tam tersi şekilde kullanılır.
 
-| Azure Tablo veri türü | Veri Fabrikası geçici veri türü | Ayrıntılar |
+| Azure Tablo veri türü | Data Factory geçici veri türü | Ayrıntılar |
 |:--- |:--- |:--- |
-| Edm.İkili |bayt[] |64 KB'ye kadar bayt dizisi. |
+| EDM. Binary |Byte [] |64 KB 'a kadar olan bir bayt dizisi. |
 | Edm.Boolean |bool |Boole değeri. |
-| Edm.DateTime |DateTime |Eşgüdümlü Evrensel Zaman (UTC) olarak ifade edilen 64 bitlik bir değer. Desteklenen DateTime aralığı gece yarısı başlar, Ocak 1, 1601 Ad. (C.E.), UTC. Aralık 31 Aralık 9999 biter. |
-| Edm.Double |double |64 bit kayan nokta değeri. |
-| Edm.Guid |Guid |128 bit küresel olarak benzersiz tanımlayıcı. |
-| Edm.Int32 |Int32 |32 bit'lik bir tamsayı. |
-| Edm.Int64 |Int64 |64 bit'lik bir tamsayı. |
-| Edm.String |Dize |UTF-16 kodlanmış bir değer. Dize değerleri 64 KB'ye kadar olabilir. |
+| EDM. DateTime |DateTime |Eşgüdümlü Evrensel Saat (UTC) olarak ifade edilen 64 bitlik bir değer. Desteklenen tarih saat aralığı gece yarısı başlar, 1 Ocak 1601 M.S. (C.E.), UTC. Aralık 31 Aralık 9999 ' de sona erer. |
+| Edm.Double |double |64 bitlik kayan nokta değeri. |
+| EDM. Guid |Guid |128 bitlik bir genel benzersiz tanımlayıcı. |
+| Edm.Int32 |Int32 |32 bitlik bir tamsayı. |
+| Edm.Int64 |Int64 |64 bitlik bir tamsayı. |
+| Edm.String |Dize |UTF-16 kodlu bir değer. Dize değerleri 64 KB 'a kadar olabilir. |
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi [için](copy-activity-overview.md#supported-data-stores-and-formats)bkz.
+Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

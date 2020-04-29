@@ -1,6 +1,6 @@
 ---
-title: Gizli değişikliklerin Key Vault durumu e-posta
-description: Key Vault sırları değişikliklerine yanıt vermek için Mantık Uygulamaları kullanma kılavuzu
+title: Gizli dizi değişikliklerinin Key Vault durumu olduğunda e-posta
+description: Key Vault gizli dizi değişikliklerine yanıt vermek için Logic Apps kullanma kılavuzu
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,83 +11,83 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 53e8586486d9a9ebf870de350d5607f58977c0f5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423281"
 ---
-# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Önemli kasa sırlarının durum değişiklikleri hakkında e-posta almak için Mantık Uygulamalarını kullanın
+# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Anahtar Kasası gizliliklerin durum değişiklikleriyle ilgili e-posta almak için Logic Apps kullanın
 
-Bu kılavuzda [Azure Mantıksal Uygulamaları](../../logic-apps/index.yml)kullanarak Azure Olay [Kılavuzu](../../event-grid/index.yml) üzerinden alınan Azure Anahtar Kasası etkinliklerine nasıl yanıt vereceğinizi öğreneceksiniz. Sonunda, Azure Anahtar Kasası'nda her sır oluşturulduğunda bir bildirim e-postası göndermek üzere ayarlanmış bir Azure mantık uygulamasına sahip olursunuz.
+Bu kılavuzda, [Azure Logic Apps](../../logic-apps/index.yml)kullanarak [Azure Event Grid](../../event-grid/index.yml) aracılığıyla alınan Azure Key Vault olaylarına nasıl yanıt verileceğini öğreneceksiniz. Son olarak, Azure Key Vault her gizli dizi oluşturulduğunda bildirim e-postası gönderecek şekilde ayarlanmış bir Azure Logic App 'e sahip olursunuz.
 
-Azure Key Vault / Azure Olay Ağı tümleştirmesi hakkında genel bilgi [için](event-grid-overview.md)bkz.
+Azure Key Vault/Azure Event Grid tümleştirmesine genel bakış için bkz. [Azure Event Grid Ile izleme Key Vault (Önizleme)](event-grid-overview.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Logic Apps (Office 365 Outlook gibi) tarafından desteklenen herhangi bir e-posta sağlayıcısından gelen bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen Logic App bağlayıcılarının tam listesi için bkz. [Bağlayıcılara genel bakış](/connectors)
-- Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
-- Azure Aboneliğinizde önemli bir kasa. Set'teki adımları izleyerek hızlı bir şekilde yeni bir anahtar kasası oluşturabilir [ve Azure CLI'yi kullanarak Azure Key Vault'tan bir sır alabilirsiniz.](../secrets/quick-create-cli.md)
+- Azure Logic Apps tarafından desteklenen herhangi bir e-posta sağlayıcısından (Office 365 Outlook gibi) bir e-posta hesabı. Bu e-posta hesabı olay bildirimlerini göndermek için kullanılır. Desteklenen Logic App bağlayıcılarının tam listesi için bkz. [Bağlayıcılara genel bakış](/connectors)
+- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliğinizdeki bir Anahtar Kasası. [Azure CLI kullanarak Azure Key Vault bir gizli anahtarı ayarlama ve alma](../secrets/quick-create-cli.md)bölümündeki adımları izleyerek hızlı bir şekilde yeni bir Anahtar Kasası oluşturabilirsiniz.
 
-## <a name="create-a-logic-app-via-event-grid"></a>Olay Izgarası üzerinden Bir Mantık Uygulaması Oluşturma
+## <a name="create-a-logic-app-via-event-grid"></a>Event Grid aracılığıyla mantıksal uygulama oluşturma
 
-İlk olarak, olay ızgara işleyicisi ile Mantık Uygulaması oluşturun ve Azure Key Vault "SecretNewVersionCreated" etkinliklerine abone olun.
+İlk olarak, Event Grid işleyicisiyle mantıksal uygulama oluşturun ve "SecretNewVersionCreated" olaylarını Azure Key Vault abone olun.
 
-Azure Olay Ağı aboneliği oluşturmak için aşağıdaki adımları izleyin:
+Azure Event Grid aboneliği oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında, anahtar kasanıza gidin, **Etkinlikler > Başlayın'ı** seçin ve **Mantık Uygulamaları'nı** tıklatın
+1. Azure portal, anahtar kasanıza gidin, **olay > Başlarken** ' i seçin ve **Logic Apps** ' ye tıklayın.
 
     
-    ![Key Vault - etkinlikler sayfası](../media/eventgrid-logicapps-kvsubs.png)
+    ![Key Vault Olaylar sayfası](../media/eventgrid-logicapps-kvsubs.png)
 
-1. **Logic Apps Designer'da** bağlantıyı doğrulayın ve **Devam et'i** tıklatın 
+1. **Logic Apps tasarımcı** bağlantıyı doğrulayıp **devam** ' a tıklayın. 
  
-    ![Mantık App Designer - bağlantı](../media/eventgrid-logicappdesigner1.png)
+    ![Mantıksal uygulama Tasarımcısı-bağlantı](../media/eventgrid-logicappdesigner1.png)
 
-1. Kaynak **olayı oluştuğunda** aşağıdakileri yapın:
-    - **Abonelik** ve **Kaynak Adını** varsayılan olarak bırakın.
-    - **Kaynak Türü**için **Microsoft.KeyVault.vaults'u** seçin.
-    - Etkinlik Türü Öğesi için **Microsoft.KeyVault.SecretNewVersionCreated** **'ı**seçin - 1 .
+1. **Bir kaynak olayı gerçekleştiğinde** , şunları yapın:
+    - **Aboneliği** ve **kaynak adını** varsayılan olarak bırakın.
+    - **Kaynak türü**için **Microsoft. keykasası. kaults** ' ı seçin.
+    - **Olay türü öğesi-1**için **Microsoft. Keykasası. SecretNewVersionCreated** öğesini seçin.
 
-    ![Mantık App Designer - olay işleyicisi](../media/eventgrid-logicappdesigner2.png)
+    ![Logic App Designer-olay işleyicisi](../media/eventgrid-logicappdesigner2.png)
 
-1. Select **+ Yeni Adım** Bu bir eylem seçmek için bir pencere açar.
+1. **+ Yeni adım** ' ı seçin Bu işlem bir eylem seçmek üzere bir pencere açar.
 1. **E-posta**'yı arayın. E-posta sağlayıcınıza uygun bağlayıcıyı bulun ve seçin. Bu öğreticide **Office 365 Outlook** kullanılır. Diğer e-posta sağlayıcılarının adımları da bunlara benzer.
-1. **E-posta Gönder (V2)** eylemini seçin.
+1. **E-posta gönder (v2)** eylemini seçin.
 
-   ![Mantık App Designer - e-posta eklemek](../media/eventgrid-logicappdesigner3.png)
+   ![Mantıksal uygulama Tasarımcısı-e-posta Ekle](../media/eventgrid-logicappdesigner3.png)
 
 1. E-posta şablonunuzu oluşturun:
-    - **Bunun için:** Bildirim e-postalarını almak için e-posta adresini girin. Bu öğreticide, test etmek için erişebileceğiniz bir e-posta hesabı kullanın.
-    - **Konu** ve **Gövde**: E-postanızın metnini yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Olayın verilerini kullanarak `@{triggerBody()?['Data']}`alabilirsiniz.
+    - **Şunları yapmak için:** Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test etmek için erişebileceğiniz bir e-posta hesabı kullanın.
+    - **Konu** ve **Gövde**: E-postanızın metnini yazın. Olay verileri temelinde dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Kullanarak `@{triggerBody()?['Data']}`olayın verilerini alabilirsiniz.
 
-    E-posta şablonunuzun görünümü bu örnek gibi görünebilir.
+    E-posta şablonunuz, bu örneğe benzeyebilir.
 
-    ![Mantık App Designer - e-posta eklemek](../media/eventgrid-logicappdesigner4.png)
+    ![Mantıksal uygulama Tasarımcısı-e-posta Ekle](../media/eventgrid-logicappdesigner4.png)
 
-8. **Olarak Kaydet'i**tıklatın.
-9. Yeni mantık uygulaması için bir **ad** girin ve **Oluştur'a**tıklayın.
+8. **Farklı kaydet**' e tıklayın.
+9. Yeni mantıksal uygulama için bir **ad** girin ve **Oluştur**' a tıklayın.
     
-    ![Mantık App Designer - e-posta eklemek](../media/eventgrid-logicappdesigner5.png)
+    ![Mantıksal uygulama Tasarımcısı-e-posta Ekle](../media/eventgrid-logicappdesigner5.png)
 
-## <a name="test-and-verify"></a>Test edin ve doğrulayın
+## <a name="test-and-verify"></a>Test ve doğrulama
 
-1.  Azure portalındaki anahtar kasanıza gidin ve **Etkinlik Abonelikleri > Etkinlikler'i**seçin.  Yeni bir aboneliğin oluşturulduğunu doğrulama
+1.  Azure portal anahtar kasanıza gidin ve **olay abonelikleri > olaylar**' ı seçin.  Yeni bir aboneliğin oluşturulduğunu doğrulama
     
-    ![Mantık App Designer - e-posta eklemek](../media/eventgrid-logicapps-kvnewsubs.png)
+    ![Mantıksal uygulama Tasarımcısı-e-posta Ekle](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Anahtar kasanıza gidin, **Sırlar'ı**seçin ve **+ Oluştur/İçe'yi**seçin. Test amacıyla yeni bir sır oluşturun ve kalan parametreleri varsayılan ayarlarında tutun.
+1.  Anahtar kasanıza gidin, **gizlilikler**' ı seçin ve **+ Oluştur/al**' ı seçin. Sınama amacıyla yeni bir gizli dizi oluşturun anahtarı adlandırın ve varsayılan ayarlarında kalan parametreleri saklayın.
 
-    ![Anahtar Vault - Gizli oluşturun](../media/eventgrid-logicapps-kv-create-secret.png)
+    ![Key Vault-gizli dizi oluştur](../media/eventgrid-logicapps-kv-create-secret.png)
 
-1. Gizli bir ekranda herhangi bir ad, herhangi bir değer sağlamak ve **oluştur'u** **seçin.**
+1. Gizli dizi **Oluştur** ekranında herhangi bir ad ve herhangi bir değer girip **Oluştur**' u seçin.
 
-Gizli oluşturulduğunda, yapılandırılan adreslerden bir e-posta alınır.
+Gizli dizi oluşturulduğunda, yapılandırılan adreslerde bir e-posta alınır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel Bakış: [Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)](event-grid-overview.md)
-- Nasıl yapilir: [Anahtar kasabildirimlerini Azure Otomasyonu'na yönlendirin.](event-grid-tutorial.md)
-- [Azure Anahtar Kasası için Azure Olay Izgara olay şeması (önizleme)](../../event-grid/event-schema-key-vault.md)
+- Genel Bakış: [Azure Event Grid Key Vault izleme (Önizleme)](event-grid-overview.md)
+- Nasıl yapılır: [Anahtar Kasası bildirimlerini Azure Otomasyonu 'Na yönlendirme](event-grid-tutorial.md).
+- [Azure Key Vault için Azure Event Grid olay şeması (Önizleme)](../../event-grid/event-schema-key-vault.md)
 - [Azure Event Grid](../../event-grid/index.yml) hakkında daha fazla bilgi edinin.
 - [Azure App Service’in Logic Apps özelliği](../../logic-apps/index.yml) hakkında daha fazla bilgi edinin.

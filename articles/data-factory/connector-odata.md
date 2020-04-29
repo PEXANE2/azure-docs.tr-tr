@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak OData kaynaklarından veri kopyalama
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak desteklenen lavabo veri depolarına OData kaynaklarından gelen verileri nasıl kopyalaylayamamayı öğrenin.
+title: Azure Data Factory kullanarak OData kaynaklarından veri kopyalama
+description: Azure Data Factory işlem hattındaki kopyalama etkinliğini kullanarak OData kaynaklarından desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: c2fe6b6cc7b52dda9f2beffa444f1965723ea92a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416921"
 ---
-# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Bir OData kaynağından kopyalama
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak OData kaynağından veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-odata-connector.md)
 > * [Geçerli sürüm](connector-odata.md)
 
-Bu makalede, Bir OData kaynağından veri kopyalamak için Azure Veri Fabrikası'nda Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Makale, Azure [Veri Fabrikası'ndaki Kopyalama Etkinliği'ne](copy-activity-overview.md)dayanmaktadır ve bu da Kopyalama Etkinliğine genel bir genel bakış sunar.
+Bu makalede, bir OData kaynağından veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Makale, kopyalama etkinliğine genel bir bakış sunan [Azure Data Factory kopyalama etkinliği](copy-activity-overview.md)üzerinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu OData bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu OData Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
+- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Verileri Bir OData kaynağından desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama Etkinliği'nin kaynak ve lavabo olarak desteklediği veri depolarının listesi için [desteklenen veri depolarına ve biçimlere](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+OData kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının bir listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Özellikle, bu OData bağlayıcısı destekler:
+Özellikle, bu OData Bağlayıcısı şunları destekler:
 
-- OData sürüm 3.0 ve 4.0.
-- Aşağıdaki kimlik doğrulamalarından birini kullanarak veri kopyalama: **Anonim**, **Temel**, **Windows**, ve **AAD hizmet ilkesi**.
+- OData sürüm 3,0 ve 4,0.
+- Şu kimlik doğrulamalarından birini kullanarak verileri kopyalama: **anonim**, **temel**, **Windows**ve **AAD hizmet sorumlusu**.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -49,29 +49,29 @@ Verileri Bir OData kaynağından desteklenen herhangi bir lavabo veri deposuna k
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, OData bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanabileceğiniz özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
+Aşağıdaki bölümler, bir OData bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanabileceğiniz özelliklerle ilgili ayrıntıları sağlar.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Aşağıdaki özellikler, OData bağlantılı bir hizmet için desteklenir:
+OData bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | **Tür** özelliği **OData**olarak ayarlanmalıdır. |Evet |
-| url | OData hizmetinin kök URL'si. |Evet |
-| authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulama türü. İzin verilen değerler **Anonim,** **Temel**, **Windows**ve **AadServicePrincipal'dır.** Kullanıcı tabanlı OAuth desteklenmez. | Evet |
-| userName | Temel veya Windows kimlik doğrulaması kullanıyorsanız **kullanıcı Adı** belirtin. | Hayır |
-| password | Kullanıcı Adı için belirlediğiniz kullanıcı hesabının **parolasını** **belirtin.** Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** türü olarak işaretleyin. Ayrıca [Azure Key Vault'ta depolanan bir gizli ye de başvuruda](store-credentials-in-key-vault.md)bulunabilirsiniz. | Hayır |
-| hizmetPrincipalId | Azure Etkin Dizin uygulamasının istemci kimliğini belirtin. | Hayır |
-| aadServicePrincipalCredentialType | Hizmet asıl kimlik doğrulaması için kullanılacak kimlik bilgisi türünü belirtin. İzin verilen `ServicePrincipalKey` değerler `ServicePrincipalCert`şunlardır: veya . | Hayır |
-| servicePrincipalKey | Azure Active Directory uygulamasının anahtarını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| hizmetPrincipalEmbeddedCert | Azure Active Directory'de kayıtlı uygulamanızın base64 kodlanmış sertifikasını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| hizmetPrincipalEmbeddedCertPassword | Sertifikanız bir parolayla korunuyorsa sertifikanızın parolasını belirtin. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için **SecureString** olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md)  | Hayır|
-| Kiracı | Uygulamanızın bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı kimliği) belirtin. Azure portalının sağ üst köşesinde fareyi gezdirerek alın. | Hayır |
-| aadResourceId | Yetkilendirme için talep ettiğiniz AAD kaynağını belirtin.| Hayır |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresi kullanılır. |Hayır |
+| type | **Type** özelliği **OData**olarak ayarlanmalıdır. |Yes |
+| url | OData hizmetinin kök URL 'SI. |Yes |
+| authenticationType | OData kaynağına bağlanmak için kullanılan kimlik doğrulaması türü. İzin verilen değerler **anonim**, **temel**, **Windows**ve **aadserviceprincipal**. Kullanıcı tabanlı OAuth desteklenmez. | Yes |
+| userName | Temel veya Windows kimlik doğrulamasını kullanıyorsanız **Kullanıcı adını** belirtin. | Hayır |
+| password | Kullanıcı **adı**için belirttiğiniz kullanıcı hesabı için **parola** belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** türü olarak işaretleyin. Ayrıca, [Azure Key Vault depolanan bir gizli](store-credentials-in-key-vault.md)dizi için de başvurabilirsiniz. | Hayır |
+| Serviceprincipalıd | Azure Active Directory uygulamasının istemci KIMLIĞINI belirtin. | Hayır |
+| aadServicePrincipalCredentialType | Hizmet sorumlusu kimlik doğrulaması için kullanılacak kimlik bilgisi türünü belirtin. İzin verilen değerler: `ServicePrincipalKey` veya `ServicePrincipalCert`. | Hayır |
+| Servicesprincipalkey | Azure Active Directory uygulamasının anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| Serviceprincıpalimon Beddedcert | Azure Active Directory kayıtlı olan uygulamanızın Base64 olarak kodlanmış sertifikasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
+| Serviceprincıpalimon Beddedcertpassword | Sertifikanızın bir parolayla güvenliği varsa sertifikanızın parolasını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı **SecureString** olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın.  | Hayır|
+| Kiracı | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alın. | Hayır |
+| Aadresourceıd | Yetkilendirme için istediğiniz AAD kaynağını belirtin.| Hayır |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Integration Runtime kullanılır. |Hayır |
 
-**Örnek 1: Anonim kimlik doğrulamayı kullanma**
+**Örnek 1: anonim kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -90,7 +90,7 @@ Aşağıdaki özellikler, OData bağlantılı bir hizmet için desteklenir:
 }
 ```
 
-**Örnek 2: Temel kimlik doğrulamasını kullanma**
+**Örnek 2: temel kimlik doğrulaması kullanma**
 
 ```json
 {
@@ -138,7 +138,7 @@ Aşağıdaki özellikler, OData bağlantılı bir hizmet için desteklenir:
 }
 ```
 
-**Örnek 4: Hizmet temel anahtar kimlik doğrulamasını kullanma**
+**Örnek 4: hizmet sorumlusu anahtar kimlik doğrulamasını kullanma**
 
 ```json
 {
@@ -165,7 +165,7 @@ Aşağıdaki özellikler, OData bağlantılı bir hizmet için desteklenir:
 }
 ```
 
-**Örnek 5: Hizmet temel sertifika kimlik doğrulamasını kullanma**
+**Örnek 5: hizmet sorumlusu sertifika kimlik doğrulamasını kullanma**
 
 ```json
 {
@@ -198,18 +198,18 @@ Aşağıdaki özellikler, OData bağlantılı bir hizmet için desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bu bölümde, OData veri kümesinin desteklediği özelliklerin bir listesi sağlar.
+Bu bölüm, OData veri kümesinin desteklediği özelliklerin bir listesini sağlar.
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Bkz. Veri Kümeleri ve bağlantılı hizmetler.](concepts-datasets-linked-services.md) 
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md). 
 
-OData'daki verileri kopyalamak için, veri kümesinin **tür** özelliğini **ODataResource**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+OData 'ten veri kopyalamak için, veri kümesinin **Type** özelliğini **ODataResource**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin **tür** özelliği **ODataResource**olarak ayarlanmalıdır. | Evet |
-| yol | OData kaynağına giden yol. | Evet |
+| type | Veri kümesinin **Type** özelliği **ODataResource**olarak ayarlanmalıdır. | Yes |
+| yol | OData kaynağının yolu. | Yes |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -230,22 +230,22 @@ OData'daki verileri kopyalamak için, veri kümesinin **tür** özelliğini **OD
 }
 ```
 
-## <a name="copy-activity-properties"></a>Etkinlik özelliklerini kopyalama
+## <a name="copy-activity-properties"></a>Kopyalama etkinliği özellikleri
 
-Bu bölümde, OData kaynağının desteklediği özelliklerin bir listesi sağlar.
+Bu bölüm, OData kaynağının desteklediği özelliklerin bir listesini sağlar.
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [bkz.](concepts-pipelines-activities.md) 
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md). 
 
 ### <a name="odata-as-source"></a>Kaynak olarak OData
 
-OData'daki verileri kopyalamak için, Aşağıdaki özellikler Kopyalama Etkinliği **kaynak** bölümünde desteklenir:
+OData 'ten veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama Etkinliği kaynağının **tür** özelliği **ODataSource**olarak ayarlanmalıdır. | Evet |
-| sorgu | Verileri filtreleme için OData sorgu seçenekleri. Örnek: `"$select=Name,Description&$top=5"`.<br/><br/>**Not**: OData bağlayıcısı verileri birleştirilmiş `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`URL'den kopyalar: . Daha fazla bilgi için Bkz. [OData URL bileşenleri.](https://www.odata.org/documentation/odata-version-3-0/url-conventions/) | Hayır |
+| type | Kopyalama etkinliği kaynağının **Type** özelliği **odatasource**olarak ayarlanmalıdır. | Yes |
+| sorgu | Verileri filtrelemek için OData sorgu seçenekleri. Örnek: `"$select=Name,Description&$top=5"`.<br/><br/>**Note**: OData BAĞLAYıCıSı Birleşik URL 'den verileri kopyalar: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Daha fazla bilgi için bkz. [OData URL bileşenleri](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Hayır |
 
-**Örnek**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -277,38 +277,38 @@ OData'daki verileri kopyalamak için, Aşağıdaki özellikler Kopyalama Etkinli
 ]
 ```
 
-Dakti-yazılı `RelationalSource` kaynak kullanıyorsanız, ileriye dönük yeni bir kaynak kullanmanız önerilirken, yine de olduğu gibi desteklenir.
+Yazılan kaynağı kullanıyorsanız `RelationalSource` , hala olduğu gibi desteklenmektedir, ileri ' yi kullanmaya devam etmeniz önerilir.
 
-## <a name="data-type-mapping-for-odata"></a>OData için veri türü eşleme
+## <a name="data-type-mapping-for-odata"></a>OData için veri türü eşlemesi
 
-OData'daki verileri kopyaladiğinizde, OData veri türleri ile Azure Veri Fabrikası geçici veri türleri arasında aşağıdaki eşlemeler kullanılır. Copy Activity'in kaynak şemasını ve veri türünü lavaboyla nasıl eşleşdirdisini öğrenmek için [Bkz. Şema ve veri türü eşlemeleri.](copy-activity-schema-and-type-mapping.md)
+OData 'ten veri kopyaladığınızda, OData veri türleri ve Azure Data Factory geçici veri türleri arasında aşağıdaki eşlemeler kullanılır. Kopyalama etkinliğinin kaynak şemayı ve veri türünü havuza nasıl eşlediğini öğrenmek için bkz. [şema ve veri türü eşlemeleri](copy-activity-schema-and-type-mapping.md).
 
-| OData veri türü | Veri Fabrikası geçici veri türü |
+| OData veri türü | Data Factory geçici veri türü |
 |:--- |:--- |
-| Edm.İkili | Bayt[] |
+| EDM. Binary | Byte [] |
 | Edm.Boolean | Bool |
-| Edm.Bayt | Bayt[] |
-| Edm.DateTime | DateTime |
-| Edm.Ondalık | Ondalık |
+| EDM. Byte | Byte [] |
+| EDM. DateTime | DateTime |
+| EDM. Decimal | Ondalık |
 | Edm.Double | Çift |
-| Edm.Single | Tek |
-| Edm.Guid | Guid |
-| Edm.Int16 | Int16 |
+| EDM. Single | Tek |
+| EDM. Guid | Guid |
+| EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
-| Edm.SByte | Int16 |
+| EDM. SByte | Int16 |
 | Edm.String | Dize |
-| Edm.Zaman | TimeSpan |
+| EDM. Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]
-> OData karmaşık veri türleri **(Object**gibi) desteklenmez.
+> OData karmaşık veri türleri (örneğin, **nesne**) desteklenmez.
 
 
-## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
 
-Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
+Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Veri Fabrikası'nda Copy Activity'in kaynak ve lavabo olarak desteklediği veri depolarının listesi için [desteklenen veri depolarına bakın.](copy-activity-overview.md#supported-data-stores-and-formats)
+Kopyalama etkinliğinin Azure Data Factory kaynak ve havuz olarak desteklediği veri depolarının listesi için bkz. [desteklenen veri depoları ve biçimleri](copy-activity-overview.md#supported-data-stores-and-formats).

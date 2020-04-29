@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) için en iyi uygulamalar
-description: İsteğe bağlı SQL (önizleme) ile çalışırken bilmeniz gereken öneriler ve en iyi uygulamalar.
+title: Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
+description: İsteğe bağlı SQL (Önizleme) ile çalışırken bilmeniz gereken öneriler ve en iyi uygulamalar.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,61 +11,61 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429076"
 ---
-# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) için en iyi uygulamalar
+# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te isteğe bağlı SQL (Önizleme) için en iyi uygulamalar
 
-Bu makalede, isteğe bağlı SQL (önizleme) kullanmak için en iyi uygulamalar koleksiyonunu bulacaksınız. İsteğe bağlı SQL, Azure Synapse Analytics'te ek bir kaynaktır.
+Bu makalede, isteğe bağlı SQL (Önizleme) kullanmak için en iyi yöntemler koleksiyonunu bulacaksınız. İsteğe bağlı SQL, Azure SYNAPSE Analytics içinde ek bir kaynaktır.
 
 ## <a name="general-considerations"></a>Dikkat edilmesi gereken temel noktalar
 
-İsteğe bağlı SQL, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya yutma yetenekleri yoktur. Bu nedenle, sorgu hedeflerinin SQL on-demand'in dışında olduğu tüm dosyalar. Depolama dan dosya okuma ile ilgili her şey sorgu performansı üzerinde bir etkisi olabilir.
+İsteğe bağlı SQL, Azure depolama hesaplarınızdaki dosyaları sorgulamanızı sağlar. Yerel depolama veya alma özelliklerine sahip değildir. Bu nedenle, sorgunun hedeflediği tüm dosyalar isteğe bağlı SQL 'e ait değildir. Depolama alanından dosyaların okunmayla ilgili her şey, sorgu performansının üzerinde bir etkiye sahip olabilir.
 
-## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Azure Depolama hesabını ve SQL isteğe bağlı olarak birlikte bulun
+## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Azure Storage hesabını ve isteğe bağlı SQL 'i birlikte bulundurma
 
-Gecikme yi en aza indirmek için Azure depolama hesabınızı ve SQL isteğe bağlı bitiş noktanızı birlikte bulunduun. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
+Gecikme süresini en aza indirmek için, Azure depolama hesabınızı ve SQL isteğe bağlı uç noktanızı birlikte bulundurma. Çalışma alanı oluşturma sırasında sağlanan depolama hesapları ve uç noktaları aynı bölgede bulunur.
 
-En iyi performans için, SQL isteğe bağlı diğer depolama hesaplarına erişirseniz, aynı bölgede olduğundan emin olun. Aynı bölgede değillerse, uzak ve bitiş noktası bölgeleri arasında veri ağ aktarımı için gecikme sayılmı artar.
+En iyi performans için, isteğe bağlı SQL ile diğer depolama hesaplarına eriştiğinizde aynı bölgede olduklarından emin olun. Aynı bölgede değillerse, verilerin uzak ve uç noktanın bölgeleri arasındaki ağ aktarımı için gecikme süresi artar.
 
-## <a name="azure-storage-throttling"></a>Azure Depolama azaltma
+## <a name="azure-storage-throttling"></a>Azure depolama alanı azaltma
 
-Depolama hesabınıza birden çok uygulama ve hizmet erişebilir. Depolama azaltma, uygulamalar, hizmetler ve SQL isteğe bağlı iş yükü tarafından oluşturulan birleşik IOPS veya iş yükü depolama hesabının sınırlarını aştığında oluşur. Sonuç olarak, sorgu performansı üzerinde önemli bir olumsuz etki yaşarsınız.
+Birden çok uygulama ve hizmet, depolama hesabınıza erişebilir. Depolama alanı azaltma, uygulamalar, hizmetler ve SQL isteğe bağlı iş yükü tarafından oluşturulan Birleşik ıOPS veya üretilen iş yükü depolama hesabının sınırlarını aştığında oluşur. Sonuç olarak, sorgu performansı üzerinde önemli bir olumsuz etkisi yaşarsınız.
 
-Azaltma algılandıktan sonra, SQL isteğe bağlı olarak bu senaryoyu yerleşik olarak ele almıştır. İsteğe bağlı SQL, azaltma çözülene kadar depolama isteklerini daha yavaş bir hızda yapar.
+Daraltma algılandıktan sonra, SQL isteğe bağlı, bu senaryonun yerleşik olarak işlenmesini içerir. İsteğe bağlı SQL, azaltma çözümlenene kadar daha yavaş bir hızda depolama istekleri yapar.
 
 > [!TIP]
-> En iyi sorgu yürütmesi için, sorgu yürütme sırasında depolama hesabını diğer iş yükleriyle vurgulamamalısınız.
+> En iyi sorgu yürütmesi için, sorgu yürütme sırasında depolama hesabını diğer iş yükleri ile vurgumalısınız.
 
-## <a name="prepare-files-for-querying"></a>Sorgu için dosya hazırlama
+## <a name="prepare-files-for-querying"></a>Dosyaları sorgulamaya hazırlama
 
-Mümkünse, dosyaları daha iyi performans için hazırlayabilirsiniz:
+Mümkünse, daha iyi performans için dosyaları hazırlayacaksınız:
 
-- CSV'yi Parke Dönüştürün - Parke columnar formatındadır. Sıkıştırılmış olduğundan, dosya boyutları aynı verilere sahip CSV dosyalarından daha küçüktür. İsteğe bağlı SQL'in okumak için daha az zamana ve depolama isteklerine ihtiyacı olacaktır.
-- Bir sorgu tek bir büyük dosyayı hedefliyorsa, dosyayı birden çok küçük dosyaya bölmenin avantajını bulursunuz.
-- CSV dosya boyutunuzu 10 GB'ın altında tutmayı deneyin.
-- Tek bir OPENROWSET yolu veya harici bir tablo KONUMU için eşit büyüklükte dosyalara sahip olmak daha iyidir.
-- Bölümlerinizi farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölme - [belirli bölümleri hedeflemek için dosya adı ve dosya yolu işlevlerini kullanın.](#use-fileinfo-and-filepath-functions-to-target-specific-partitions)
+- CSV 'yi Parquet-Parquet, sütunlu biçim olarak dönüştürür. Sıkıştırılmış olduğundan, dosya boyutları aynı verilerle CSV dosyalarından daha küçüktür. İsteğe bağlı SQL 'i okumak için daha az zaman ve depolama istekleri gerekecektir.
+- Bir sorgu tek bir büyük dosyayı hedefliyorsa, onu birden çok daha küçük dosyaya bölmeyi avantajdan yararlanabilirsiniz.
+- CSV dosyanızın boyutunu 10 GB 'tan daha düşük tutmaya çalışın.
+- Tek bir OPENROWSET yolu veya dış tablo konumu için eşit boyutlu dosyalar olması daha iyidir.
+- Bölümleri farklı klasörlere veya dosya adlarına depolayarak verilerinizi bölümleyin; [belirli bölümleri hedeflemek için dosya adı ve FilePath işlevlerini kullanın](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için dosya bilgisi ve dosya yolu işlevlerini kullanma
+## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Belirli bölümleri hedeflemek için FileInfo ve FilePath işlevlerini kullanın
 
-Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için SQL on-demand'e talimat verebilirsiniz. Bu işlev, sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. Ek bir bonus daha iyi performans elde edeceğiz.
+Veriler genellikle bölümler halinde düzenlenir. Belirli klasörleri ve dosyaları sorgulamak için isteğe bağlı SQL 'e bildirebilirsiniz. Bu işlev, sorgunun okuması ve işlemesi gereken dosya sayısını ve veri miktarını azaltır. Ek bir ödül daha iyi bir performans elde edersiniz.
 
-Daha fazla bilgi [için, dosya adı](develop-storage-files-overview.md#filename-function) ve dosya [yolu](develop-storage-files-overview.md#filepath-function) işlevlerini ve belirli dosyaları nasıl [sorgulayabildiğini](query-specific-files.md)denetleyin.
+Daha fazla bilgi için [dosya adı](develop-storage-files-overview.md#filename-function) ve [FilePath](develop-storage-files-overview.md#filepath-function) işlevlerini ve [belirli dosyaları sorgulama](query-specific-files.md)ile ilgili örnekleri denetleyin.
 
-Depolanan verileriniz bölümlenmiyorsa, bu dosyaları hedefleyen sorguları en iyi duruma getirmek için bu işlevleri kullanabilmek için bu verileri bölümlemeyi düşünün. [Bölümlenmiş Spark tablolarını](develop-storage-files-spark-tables.md) isteğe bağlı OLARAK SQL'den sorgularken, sorgu otomatik olarak yalnızca gerekli dosyaları hedefler.
+Depolanan verileriniz bölümlenmemişse, bu dosyaları hedefleyen sorguları iyileştirmek için bu işlevleri kullanabilmek üzere Bölümlendirmeyi düşünün. [Bölümlenmiş Spark TABLOLARıNı](develop-storage-files-spark-tables.md) SQL isteğe bağlı olarak sorgularken, sorgu yalnızca gerekli dosyaları hedefleyecek.
 
-## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını artırmak için CETAS'ı kullanın ve birleştirir
+## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 
-[CETAS,](develop-tables-cetas.md) isteğe bağlı SQL'de mevcut olan en önemli özelliklerden biridir. CETAS, dış tablo meta verileri oluşturan ve SELECT sorgu sonuçlarını depolama hesabınızdaki bir dosya kümesine aktaran paralel bir işlemdir.
+[Cetas](develop-tables-cetas.md) , SQL isteğe bağlı olarak sunulan en önemli özelliklerden biridir. CETAS, dış tablo meta verileri oluşturan ve SELECT sorgu sonuçlarını Depolama hesabınızdaki bir dosya kümesine dışarı aktaran paralel bir işlemdir.
 
-CETAS'ı, birleştirilmiş başvuru tabloları gibi sık kullanılan sorgu bölümlerini yeni bir dosya kümesinde depolamak için kullanabilirsiniz. Ardından, birden çok sorguda ortak birleştirmeleri yinelemek yerine bu tek dış tabloya katılabilirsiniz.
+Birleşik başvuru tabloları gibi sorguların sık kullanılan parçalarını yeni bir dosya kümesine depolamak için CETAS kullanabilirsiniz. Daha sonra, birden çok sorgu içinde ortak birleştirmeleri yinelemek yerine bu tek dış tabloya katabilirsiniz.
 
-CETAŞ Parke dosyaları oluşturduğunda, ilk sorgu bu dış tabloyu hedefaldığında istatistikler otomatik olarak oluşturulur ve bu da performansın iyileştirilmesine neden olur.
+CETAS, Parquet dosyalarını oluşturduğunda, ilk sorgu bu dış tabloyu hedeflediğinde istatistikler otomatik olarak oluşturulur ve bu da gelişmiş performansa neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sık karşılaşılan sorunlar ve çözümler için [Sorun Giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesini gözden geçirin. İsteğe bağlı OLARAK SQL havuzu yerine SQL [havuzuyla](best-practices-sql-pool.md) çalışıyorsanız, belirli kılavuzlar için lütfen SQL havuzu için En İyi Uygulamalar makalesine bakın.
+Sık karşılaşılan sorunlar ve çözümleri için [sorun giderme](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) makalesini inceleyin. İsteğe bağlı SQL yerine SQL havuzu ile çalışıyorsanız, lütfen belirli yönergeler için [SQL havuzu Için En Iyi uygulamalar](best-practices-sql-pool.md) makalesine bakın.

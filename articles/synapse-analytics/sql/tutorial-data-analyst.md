@@ -1,6 +1,6 @@
 ---
-title: Veri Analisti öğreticisi - Azure Synapse Studio'daki Azure Açık Veri Kümelerini analiz etmek için isteğe bağlı SQL (önizleme) kullanın (önizleme)
-description: Bu eğitimde, farklı Azure Açık Veri kümelerini isteğe bağlı SQL kullanarak (önizleme) birleştirerek keşif veri analizini kolayca nasıl gerçekleştireceğinizi ve Azure Synapse Studio'daki sonuçları görselleştirmeyi öğreneceksiniz.
+title: Veri analist öğreticisi-Azure SYNAPSE Studio 'da Azure açık veri kümelerini analiz etmek için SQL isteğe bağlı (Önizleme) kullanma (Önizleme)
+description: Bu öğreticide, SQL isteğe bağlı (Önizleme) kullanarak farklı Azure açık veri kümeleri birleştiren araştırmacı veri analizini kolayca gerçekleştirmeyi ve Azure SYNAPSE Studio 'da sonuçları görselleştirmeyi öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,21 +10,21 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1080001cb222f91503080914d7fb253e5ee82626
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423232"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Azure Açık Veri Kümelerini analiz etmek ve Sonuçları Azure Synapse Studio'da görselleştirmek için isteğe bağlı SQL'i (önizleme) kullanın (önizleme)
+# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Azure açık veri kümelerini analiz etmek ve sonuçları Azure SYNAPSE Studio 'da (Önizleme) görselleştirmek için SQL isteğe bağlı (Önizleme) kullanın
 
-Bu eğitimde, farklı Azure Açık Veri kümelerini isteğe bağlı SQL kullanarak birleştirerek ve ardından Sonuçları Azure Synapse Studio'da görselleştirerek araştırmacı veri çözümlemesi yapmayı öğrenirsiniz.
+Bu öğreticide, Azure SYNAPSE Studio 'da SQL 'i isteğe bağlı olarak kullanarak farklı Azure açık veri kümelerini birleştirerek araştırmacı veri analizini gerçekleştirmeyi öğrenirsiniz.
 
-Özellikle, pick-up ve bırakma tarihleri/saatleri, karşılama ve bırakma yerleri, seyahat mesafeleri, belirlenen ücretler, fiyat türleri, ödeme türleri ve sürücü tarafından bildirilen yolcu sayılarını içeren [New York (NYC) Taksi veri kümesini](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analiz emzebilirsiniz.
+Özellikle, seçme ve bırakma tarihleri/zamanları, çekme ve bırakma konumları, seyahat mesafeleri, liste, ücret türleri, ödeme türleri ve sürücü tarafından bildirilen yolcular sayımlarını içeren [New York City (NYC) TAXI veri kümesini](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) analiz edersiniz.
 
-Analizin odak noktası, zaman içinde taksi seferlerinin sayısındaki değişimlerdeki eğilimleri bulmak. Diğer iki Azure Açık Veri kümesini[(Resmi Tatiller](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) ve [Hava Durumu Verileri)](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)analiz edin ve taksi yolculuklarının sayısındaki aykırı ları anlarsınız.
+Çözümlemenin odaklanmasına, zaman içinde vergilenklarca riçlü sayıdaki değişiklikler hakkında eğilimleri bulmanız. Diğer iki Azure açık veri kümesini ([genel tatiller](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) ve [Hava durumu verileri](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)) analiz edersiniz.
 
-## <a name="create-credentials"></a>Kimlik bilgileri oluşturma
+## <a name="create-credentials"></a>Kimlik bilgileri oluştur
 
 ```sql
 -- There is no secret. We are using public storage account which doesn't need a secret.
@@ -44,11 +44,11 @@ SECRET = ''
 GO
 ```
 
-## <a name="automatic-schema-inference"></a>Otomatik şema çıkarımı
+## <a name="automatic-schema-inference"></a>Otomatik Şema çıkarımı
 
-Veriler Parke dosya biçiminde depolandığından, otomatik şema çıkarımı kullanılabilir, bu nedenle dosyalardaki tüm sütunların veri türlerini listelemek zorunda kalmadan verileri kolayca sorgulayabilirsiniz. Ayrıca, bir dosyaların belirli bir alt kümesi filtrelemek için sanal sütun mekanizması ve filepath işlevi kullanabilirsiniz.
+Veriler Parquet dosya biçiminde depolandığından, otomatik Şema çıkarımı kullanılabilir, bu yüzden bir tane, dosyalardaki tüm sütunların veri türlerini listelemek gerekmeden verileri kolayca sorgulayabilir. Ayrıca, bir tanesi belirli bir dosya alt kümesini filtrelemek için sanal sütun mekanizması ve FilePath işlevini kullanabilir.
 
-Önce aşağıdaki sorguyu çalıştırarak NYC Taksi verilerini yakından izleyelim:
+Aşağıdaki sorguyu çalıştırarak NYC TAXI verilerini ilk kez öğrenelim:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -58,11 +58,11 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-Aşağıdaki NYC Taksi verileri için sonuç snippet gösterir:
+Aşağıda, NYC TAXI verileri için sonuç parçacığı gösterilmektedir:
 
-![sonuç parçacığı](./media/tutorial-data-analyst/1.png)
+![Sonuç kod parçacığı](./media/tutorial-data-analyst/1.png)
 
-Benzer şekilde, resmi tatiller veri kümesini aşağıdaki sorguyu kullanarak sorgulayabiliriz:
+Benzer şekilde, aşağıdaki sorguyu kullanarak genel tatiller veri kümesini sorgulayabiliriz:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -72,9 +72,9 @@ SELECT TOP 100 * FROM
     ) AS [holidays]
 ```
 
-Aşağıdaki resmi tatiller veri kümesi için sonuç snippet gösterir:
+Aşağıda, genel tatiller veri kümesi için sonuç parçacığı gösterilmektedir:
 
-![sonuç snippet 2](./media/tutorial-data-analyst/2.png)
+![Sonuç kod parçacığı 2](./media/tutorial-data-analyst/2.png)
 
 Son olarak, aşağıdaki sorguyu kullanarak hava durumu veri kümesini de sorgulayabiliriz:
 
@@ -88,15 +88,15 @@ FROM
     ) AS [weather]
 ```
 
-Aşağıda, hava durumu veri kümesinin sonucu gösterilmektedir:
+Aşağıda Hava durumu veri kümesi için sonuç parçacığı gösterilmektedir:
 
-![sonuç snippet 3](./media/tutorial-data-analyst/3.png)
+![Sonuç kod parçacığı 3](./media/tutorial-data-analyst/3.png)
 
-[Nyc Taksi,](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) [Resmi Tatiller](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)ve Hava [Durumu Veri](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) veri kümelerinin açıklamalarında tek tek sütunların anlamı hakkında daha fazla bilgi edinebilirsiniz.
+[NYC TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [genel tatiller](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)ve [Hava durumu veri](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) veri kümelerinin açıklamalarındaki tek tek sütunların anlamı hakkında daha fazla bilgi edinebilirsiniz.
 
-## <a name="time-series-seasonality-and-outlier-analysis"></a>Zaman serileri, mevsimsellik ve aykırı analiz
+## <a name="time-series-seasonality-and-outlier-analysis"></a>Zaman serisi, mevsimsellik ve aykırı değer analizi
 
-Aşağıdaki sorguyu kullanarak taksi yolculuklarının yıllık sayısını kolayca özetleyebilirsiniz:
+Aşağıdaki sorguyu kullanarak yıllık sayıda TAXI bayıldığı 'i kolayca özetleyebilirsiniz:
 
 ```sql
 SELECT
@@ -112,20 +112,20 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-Aşağıdaki taksi sürmek yıllık sayısı için sonuç snippet gösterir:
+Aşağıda, yıllık sayıda TAXI rides için sonuç parçacığı gösterilmektedir:
 
-![sonuç snippet 4](./media/tutorial-data-analyst/4.png)
+![Sonuç kod parçacığı 4](./media/tutorial-data-analyst/4.png)
 
-Veriler Tablo'dan Grafik görünümüne geçerek Synapse Studio'da görüntülenebilir. Farklı grafik türleri (Alan, Çubuk, Sütun, Satır, Pasta ve Dağılım) arasından seçim yapabilirsiniz. Bu durumda, Sütun grafiğini Kategori sütunu "current_year" olarak ayarlanmış olarak çizelim:
+Veriler, tablodan grafik görünümüne geçerek SYNAPSE Studio 'da görselleştirilebilir. Farklı grafik türleri (alan, çubuk, sütun, çizgi, pasta ve dağılım) arasından seçim yapabilirsiniz. Bu durumda, Kategori sütunu "current_year" olarak ayarlanmış sütun grafiği çizelim:
 
-![sonuç görselleştirme 5](./media/tutorial-data-analyst/5.png)
+![Sonuç görselleştirme 5](./media/tutorial-data-analyst/5.png)
 
-Bu görselleştirme itibaren, yıllar içinde sürmek azalan sayıda bir eğilim açıkça görülebilir, muhtemelen sürüş paylaşım şirketlerinin son zamanlarda artan popülaritesi nedeniyle.
+Bu görselleştirmede, yıl boyunca azalan sayıda bayıldığı eğilimi, büyük bir olasılıkla paylaşım şirketlerinin son derece artmasından dolayı açıkça görülebilir.
 
 > [!NOTE]
-> Bu öğretici nin yazıldığı sırada, 2019 yılı verileri eksiktir, bu nedenle o yıl için bir dizi sürüşte büyük bir düşüş söz vardır.
+> Bu öğreticinin yazıldığı sırada, 2019 için veriler eksik olduğundan bu yıl için bir dizi bayıldığı de çok büyük bir düşüş vardır.
 
-Sonra, analizlerimizi tek bir yıla odaklayalım, örneğin, 2016. Aşağıdaki sorgu, o yıl içinde günlük sürüş sayısını döndürür:
+Daha sonra, analizimize tek bir yılda odaklanalım, örneğin, 2016. Aşağıdaki sorgu, söz konusu yıl boyunca günlük sayıda bayıldığı döndürür:
 
 ```sql
 SELECT
@@ -141,17 +141,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-Aşağıdaki, bu sorgu için sonuç parçacığı gösterir:
+Bu sorgu için sonuç parçacığı aşağıda gösterilmiştir:
 
-![sonuç snippet 6](./media/tutorial-data-analyst/6.png)
+![Sonuç kod parçacığı 6](./media/tutorial-data-analyst/6.png)
 
-Yine, Kategori sütun "current_day" ve Legend (dizi) sütun "rides_per_day" ile Sütun grafik çizerek verileri kolayca görselleştirebilirsiniz.
+Daha sonra, "current_day" Kategori sütunu ve "rides_per_day" gösterge (seri) sütunuyla sütun grafiği çizdirme yoluyla verileri kolayca görselleştirebiliriz.
 
-![sonuç görselleştirme 7](./media/tutorial-data-analyst/7.png)
+![Sonuç görselleştirme 7](./media/tutorial-data-analyst/7.png)
 
-Arsa itibaren, bu Cumartesi zirve ile, bir haftalık desen olduğu görülebilir. Yaz aylarında, tatil dönemi nedeniyle daha az taksi yolculukları vardır. Ancak, ne zaman ve neden meydana net bir desen olmadan taksi sürmek sayısında bazı önemli düşüşler de vardır.
+Çizinden, Cumartesi 'ın tepe noktası ile haftalık bir model olduğunu gözlemlenebilir. Yaz ayları sırasında, tatil dönemi nedeniyle daha az sayıda TAXI bayıldığı vardır. Ancak, bazı önemli bırakmalarca, açık bir model olmadan ve neden gerçekleştiklerinde, açıkça bir sıra meydana gelir.
 
-Sonra, bu damla lar potansiyel resmi tatil dataset ile NYC taksi sürmek katılarak resmi tatil ile ilişkili olup olmadığını görelim:
+Daha sonra, bu bırakıtlar ortak tatiller veri kümesiyle NYC TAXI bayıldığı 'e katılarak genel tatiller ile bağıntılı olup olmadığını görelim:
 
 ```sql
 WITH taxi_rides AS
@@ -186,13 +186,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![sonuç görselleştirme 8](./media/tutorial-data-analyst/8.png)
+![Sonuç görselleştirme 8](./media/tutorial-data-analyst/8.png)
 
-Bu kez, resmi tatillerde taksi yolculuklarının sayısını vurgulamak istiyoruz. Bu amaçla, Kategori sütunu için "yok"u ve "rides_per_day"ı ve "tatil"i Legend (dizi) sütunları olarak seçeceğiz.
+Bu kez, genel tatiller sırasında vergileni bayıldığı sayısını vurgulamak istiyoruz. Bu amaçla, Kategori sütunu için "none", "rides_per_day" ve gösterge (seri) sütunları olarak "tatil" i seçeceğiz.
 
-![sonuç görselleştirme 9](./media/tutorial-data-analyst/9.png)
+![Sonuç görselleştirme 9](./media/tutorial-data-analyst/9.png)
 
-Arsa itibaren, açıkça resmi tatillerde taksi sürmek bir dizi daha düşük olduğu görülebilir. Ancak, 23 Ocak'ta hala açıklanamayan bir büyük düşüş var. O gün NYC'deki hava durumunu hava durumu veri kümesini sorgulayarak kontrol edelim:
+Çizmeden, genel tatiller sırasında çok sayıda TAXI bayıldığı 'in daha düşük olduğu açıkça görülebilir. Ancak yine de, 23 Ocak tarihinde açıklanamayan bir çok büyük bir bırakma vardır. Hava durumu veri kümesini sorgulayarak bu gündeki NYC içindeki hava durumunu kontrol edelim:
 
 ```sql
 SELECT
@@ -219,17 +219,17 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![sonuç görselleştirme 10](./media/tutorial-data-analyst/10.png)
+![Sonuç görselleştirme 10](./media/tutorial-data-analyst/10.png)
 
-Sorgu sonuçları taksi sürmek bir dizi düşüş nedeniyle olduğunu göstermektedir:
+Sorgunun sonuçları, bir dizi TAXI 'nin şu nedenlerle olduğunu belirtir:
 
-- yoğun kar (~ 30 cm) olduğu gibi, NYC o gün kar fırtınası
-- soğuktu (sıcaklık sıfır derecenin altında)
-- ve rüzgarlı (~10m/s)
+- büyük bir kar vardı (yaklaşık 30 cm), NYC 'de o güne göz at
+- Bu, soğuk (santigrat derece düşük olan sıcaklık)
+- ve WINDY (~ 10m/sn)
 
-Bu öğretici, veri analistinin araştırmacı veri çözümlemesi nasıl hızlı bir şekilde gerçekleştirebileceğini, isteğe bağlı SQL kullanarak farklı veri kümelerini kolayca birleştirebileceğini ve Azure Synapse Studio'yu kullanarak sonuçları nasıl görselleştirebileceğini göstermiştir.
+Bu öğretici, veri analistinin keşif veri analizini hızlı bir şekilde nasıl gerçekleştirebildiğini, isteğe bağlı SQL kullanarak farklı veri kümelerini kolayca nasıl birleştirebileceğini ve Azure SYNAPSE Studio 'Yu kullanarak sonuçları görselleştirmesini göstermiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İsteğe bağlı Olarak [Connect SQL'i Power BI Desktop'a](tutorial-connect-power-bi-desktop.md) gözden geçirin & SQL isteğe bağlı olarak Power BI Desktop'a nasıl bağlanıp raporlar oluşturup rapor oluşturup rapor oluşturup rapor oluşturabilirsiniz.
+İsteğe bağlı SQL 'i Power BI Desktop 'e nasıl bağlayacağınızı ve rapor oluşturmayı öğrenmek için bkz. [SQL isteğe bağlı bağlantı Power BI Desktop & rapor oluşturma](tutorial-connect-power-bi-desktop.md) makalesi.
  

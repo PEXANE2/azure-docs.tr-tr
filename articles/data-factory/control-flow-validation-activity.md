@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda doğrulama etkinliği
-description: Doğrulama etkinliği, kullanıcının belirlediği belirli ölçütlerle ekteki veri kümesini doğrulayana kadar ardışık hatlar yürütmeye devam etmez.
+title: Azure Data Factory doğrulama etkinliği
+description: Doğrulama etkinliği, eklenen veri kümesini kullanıcının belirttiği ölçütlere göre doğrulayıp işlem hattının yürütülmesine devam etmez.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417938"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda doğrulama etkinliği
+# <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory doğrulama etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ardışık hatlar sisteminde doğrulama, yalnızca ekteki veri kümesi başvurusu var olduğunu, belirtilen ölçütleri karşıladığını veya zaman adedine ulaşıldığını doğruladıktan sonra yürütmeye devam etmesini sağlamak için bir doğrulama yı kullanabilirsiniz.
+İşlem hattının yalnızca yürütmeye devam etmesini sağlamak için bir işlem hattında bir doğrulama kullanabilirsiniz, bu işlem, eklenen veri kümesi başvurusunun var olduğunu doğrulandıktan sonra, belirtilen ölçütlere uyduğunda veya zaman aşımına ulaşılmıştır.
 
 
 ## <a name="syntax"></a>Sözdizimi
@@ -62,17 +62,17 @@ Ardışık hatlar sisteminde doğrulama, yalnızca ekteki veri kümesi başvurus
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | 'Doğrulama' etkinliğinin adı | Dize | Evet |
-type | **Doğrulama**olarak ayarlanmalıdır. | Dize | Evet |
-Dataset | Etkinlik, bu veri kümesi başvurusu var olduğunu ve belirtilen ölçütleri karşıladığını veya zaman adedine ulaşıldığını doğrulayana kadar yürütmeyi engeller. Sağlanan Veri Kümesi "Minimum Boyut" veya "ChildItems" özelliğini desteklemelidir. | Dataset başvurusu | Evet |
-timeout | Çalıştırılacak etkinliğinin zaman aşımını belirtir. Değer belirtilmemişse, varsayılan değer 7 gündür ("7.00:00:00"). Biçim d.hh:mm:ss | Dize | Hayır |
-Uyku | Doğrulama girişimleri arasında saniye cinsinden bir gecikme. Değer belirtilmemişse, varsayılan değer 10 saniyedir. | Tamsayı | Hayır |
-Childıtems | Klasörde alt öğeler olup olmadığını denetler. Doğru olarak ayarlanabilir : Klasörün var olduğunu ve öğeleri olduğunu doğrulayın. Klasörde en az bir öğe bulunana veya zaman önce değerine ulaşılAna kadar engeller.-false: Klasörün var olduğunu ve boş olduğunu doğrulayın. Klasör boşalana veya zaman adedine ulaşana kadar engeller. Değer belirtilmemişse, klasör var olana veya zaman anına erişilene kadar etkinlik engellenir. | Boole | Hayır |
-Minimumsize | Baytlarda bir dosyanın minimum boyutu. Değer belirtilmemişse, varsayılan değer 0 bayt | Tamsayı | Hayır |
+ad | ' Doğrulama ' etkinliğinin adı | Dize | Yes |
+type | **Doğrulama**olarak ayarlanmalıdır. | Dize | Yes |
+veri kümesi | Etkinlik, bu veri kümesi başvurusunun var olduğunu ve belirtilen ölçütlere uyup uymadığını ya da zaman aşımına ulaşılmasına kadar yürütmeyi engeller. Belirtilen veri kümesi "MinimumSize" veya "ChildItems" özelliğini desteklemelidir. | Veri kümesi başvurusu | Yes |
+timeout | Çalıştırılacak etkinliğinin zaman aşımını belirtir. Değer belirtilmemişse, varsayılan değer 7 gündür ("7.00:00:00"). Biçim d. hh: mm: ss şeklindedir | Dize | Hayır |
+kullanılmadığında | Doğrulama denemeleri arasındaki saniye cinsinden gecikme. Değer belirtilmemişse, varsayılan değer 10 saniyedir. | Tamsayı | Hayır |
+childItems | Klasörde alt öğeler olup olmadığını denetler. -True olarak ayarlanabilir: klasörün var olduğunu ve öğe olduğunu doğrulayın. Klasörde en az bir öğe mevcut olana kadar veya zaman aşımı değerine ulaşılana kadar engeller.-false: klasörün var olduğunu ve boş olduğunu doğrulayın. Klasör boş olana veya zaman aşımı değerine ulaşılana kadar engeller. Hiçbir değer belirtilmemişse, etkinlik, klasör mevcut olana kadar veya zaman aşımına ulaşılıncaya kadar engeller. | Boole | Hayır |
+minimumSize | Bir dosyanın bayt cinsinden en küçük boyutu. Değer belirtilmemişse, varsayılan değer 0 bayttır | Tamsayı | Hayır |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın:
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün:
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

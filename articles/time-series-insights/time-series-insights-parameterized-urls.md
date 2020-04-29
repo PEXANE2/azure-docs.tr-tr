@@ -1,6 +1,6 @@
 ---
-title: Parametreli URL'lerle özel görünümleri paylaşın - Azure Time Series Insights | Microsoft Dokümanlar
-description: Azure Time Series Öngörüleri'nde özelleştirilmiş explorer görünümlerini kolayca paylaşmak için parametreli URL'ler oluşturmayı öğrenin.
+title: Parametreli URL 'lerle özel görünümleri paylaşma-Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights ' de özelleştirilmiş gezgin görünümlerini kolayca paylaşmak için parametreli URL 'Ler oluşturmayı öğrenin.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,25 +11,25 @@ ms.workload: big-data
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416989"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
-Zaman Serisi Öngörüler Gezgini'nde özel bir görünümü paylaşmak için, programlı bir şekilde özel görünümün parametreli URL'sini oluşturabilirsiniz.
+Time Series Insights Explorer 'da özel bir görünüm paylaşmak için programlı bir şekilde özel görünümün parametreli bir URL 'SI oluşturabilirsiniz.
 
-Zaman Serisi Öngörüler Gezgini, deneyimdeki görünümleri doğrudan URL'den belirtmek için URL sorgu parametrelerini destekler. Örneğin, yalnızca URL'yi kullanarak hedef ortamı, arama koşulunu ve istenen zaman aralığını belirtebilirsiniz. Bir kullanıcı özelleştirilmiş URL'yi seçtiğinde, arabirim, Time Series Insights portalında doğrudan o varlığa bir bağlantı sağlar. Veri erişimi ilkeleri uygulanır.
+Time Series Insights Gezgini, deneyimdeki görünümleri doğrudan URL 'den belirtmek için URL sorgu parametrelerini destekler. Örneğin, yalnızca URL'yi kullanarak hedef ortamı, arama koşulunu ve istenen zaman aralığını belirtebilirsiniz. Kullanıcı özelleştirilmiş URL 'yi seçtiğinde, arabirim Time Series Insights portalında doğrudan bu varlığa bir bağlantı sağlar. Veri erişimi ilkeleri uygulanır.
 
 > [!TIP]
-> * [Ücretsiz Time Series Insights demosu](https://insights.timeseries.azure.com/samples)görüntüleyin.
-> * Eşlik eden [Time Series Insights Explorer belgelerini](./time-series-insights-explorer.md) okuyun.
+> * Ücretsiz [Time Series Insights tanıtımı](https://insights.timeseries.azure.com/samples)' nı görüntüleyin.
+> * Eşlik eden [Time Series Insights gezgin](./time-series-insights-explorer.md) belgelerini okuyun.
 
 ## <a name="environment-id"></a>Ortam Kimliği
 
-`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Veri erişimi FQDN'nin bir bileşenidir ve azure portalında ortama genel bakışın sağ üst köşesinde bulabilirsiniz. Her şeyden önce gelen `env.timeseries.azure.com`her şey.
+`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Bu, veri erişim FQDN 'sinin bir bileşenidir ve Azure portal ortama genel bakış ' ın sağ üst köşesinde bulabilirsiniz. Bundan önce `env.timeseries.azure.com`gelen her şey.
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 
@@ -45,88 +45,88 @@ Mutlak zaman değerleri için, `from=<integer>` ve `to=<integer>` parametrelerin
 * `to=<integer>`, arama aralığının bitiş zamanını gösteren JavaScript milisaniyesi cinsinden bir değerdir.
 
 > [!TIP]
-> Tarihleri JavaScript milisaniyelerine kolayca çevirmek [için, Epoch & Unix Timestamp Converter'ı](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)deneyin.
+> Tarihleri JavaScript milisaniyeye kolayca çevirmek için, [dönem & Unix zaman damgası dönüştürücüsünü](https://www.freeformatter.com/epoch-timestamp-to-date-converter.html)deneyin.
 
 ### <a name="relative-time-values"></a>Göreli zaman değerleri
 
-Göreceli bir zaman değeri `relativeMillis=<value>`için, *değerin* API'den alınan en son zaman damgasından JavaScript milisaniyesinde olduğu yeri kullanın.
+Göreli bir zaman değeri için, `relativeMillis=<value>` *değeri* API 'den alınan en son zaman damgasından JavaScript milisaniyedir ' i kullanın.
 
 Örneğin, `&relativeMillis=3600000` en 60 dakikanın verilerini görüntüler.
 
-Kabul edilen değerler Zaman Serisi Öngörüleri explorer **hızlı zaman** menüsüne karşılık gelir ve şunları içerir:
+Kabul edilen değerler Time Series Insights Explorer **hızlı zaman** menüsüne karşılık gelir ve şunları içerir:
 
 * `1800000`(Son 30 dakika)
 * `3600000`(Son 60 dakika)
-* `10800000`(Son 3 Saat)
-* `21600000`(Son 6 Saat)
-* `43200000`(Son 12 Saat)
-* `86400000`(Son 24 Saat)
-* `604800000`(Son 7 Gün)
-* `2592000000`(Son 30 Saat)
+* `10800000`(Son 3 saat)
+* `21600000`(Son 6 saat)
+* `43200000`(Son 12 saat)
+* `86400000`(Son 24 saat)
+* `604800000`(Son 7 gün)
+* `2592000000`(Son 30 saat)
 
 ### <a name="optional-parameters"></a>İsteğe bağlı parametreler
 
-Parametre, `timeSeriesDefinitions=<collection of term objects>` Time Series Insights görünümünde görünecek yüklem terimlerini belirtir:
+`timeSeriesDefinitions=<collection of term objects>` Parametresi bir Time Series Insights görünümünde görünecek koşul koşullarını belirtir:
 
-| Parametre | URL Öğesi | Açıklama |
+| Parametre | URL öğesi | Açıklama |
 | --- | --- | --- |
-| **Adı** | `\<string>` | *Dönem* adı. |
-| **splitBy** | `\<string>` | *Bölme ölçütü* sütunun adı. |
+| **ada** | `\<string>` | *Dönem* adı. |
+| **Bölünmüş** | `\<string>` | *Bölme ölçütü* sütunun adı. |
 | **measureName** | `\<string>` | *Ölçü* sütununun adı. |
-| **Yüklemi** | `\<string>` | Sunucu tarafı filtrelemesi için *where* yan tümcesi. |
-| **useSum** | `true` | Ölçünüz için toplam kullanarak belirten isteğe bağlı bir parametre. |
+| **koşulunda** | `\<string>` | Sunucu tarafı filtrelemesi için *where* yan tümcesi. |
+| **useSum** | `true` | Ölçmenize yönelik Sum kullanımını belirten isteğe bağlı bir parametre. |
 
 > [!NOTE]
-> Seçili `Events` **useSum** ölçüsü ise, varsayılan olarak sayım seçilir.  
-> `Events` Seçili değilse, ortalama varsayılan olarak seçilir. |
+> `Events` Seçili **usesum** ölçüsünde, varsayılan olarak sayı seçilidir.  
+> `Events` Seçili değilse, varsayılan olarak ortalama seçilidir. |
 
-* Anahtar `multiChartStack=<true/false>` değeri çifti grafikte istifleme sağlar.
-* Anahtar `multiChartSameScale=<true/false>` değer çifti isteğe bağlı bir parametre içinde terimler arasında aynı Y ekseni ölçeğini sağlar.  
-* Grafik `timeBucketUnit=<Unit>&timeBucketSize=<integer>` daha ayrıntılı veya daha düzgün, daha toplu bir görünüm sağlamak için aralık kaydırıcısını ayarlamanızı sağlar.  
-* Parametre, `timezoneOffset=<integer>` grafiğin UTC'ye ofset olarak görüntülenmesi için saat dilimini ayarlamanızı sağlar.
+* `multiChartStack=<true/false>` Anahtar-değer çifti grafikte yığınlama imkanı sunar.
+* `multiChartSameScale=<true/false>` Anahtar-değer çifti, isteğe bağlı bir parametre içindeki terimleri kapsayan aynı Y ekseni ölçeğini sunar.  
+* , `timeBucketUnit=<Unit>&timeBucketSize=<integer>` Grafiğin daha ayrıntılı veya daha yumuşak, daha toplanmış bir görünümünü sağlamak için Aralık kaydırıcısını ayarlamanıza olanak sağlar.  
+* `timezoneOffset=<integer>` Parametresi, grafiğin saat dilimini UTC 'ye bir uzaklığa göre görüntülenecek şekilde ayarlamanıza olanak sağlar.
 
-| Çift(ler) | Açıklama |
+| Çift (ler) | Açıklama |
 | --- | --- |
-| `multiChartStack=false` | `true`varsayılan olarak etkindir, bu nedenle yığına geçin. `false` |
-| `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  Varsayılan olarak, `false` bu nedenle `true` geçmek bu işlevselliği sağlar. |
-| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler `days`= `hours` `minutes`, `seconds` `milliseconds`, , .  Her zaman birimin ilk harfini büyük yapın. </br> TimeBucketSize için istenilen sondayı geçirerek birim sayısını **tanımlayın.**  |
+| `multiChartStack=false` | `true`Varsayılan olarak etkin olduğundan yığına geçirin `false` . |
+| `multiChartStack=false&multiChartSameScale=true` | Terimler arasında aynı Y ekseni ölçeğini kullanmak için yığın oluşturmanın etkinleştirilmesi gerekir.  Bu, `false` varsayılan olarak, geçirme `true` bu işlevselliği sunar. |
+| `timeBucketUnit=<Unit>&timeBucketSize=<integer>` | Birimler = `days`, `hours`, `minutes`, `seconds`, `milliseconds`.  Her zaman birimin ilk harfini büyük yapın. </br> **TimeBucketSize**için istenen tamsayıyı geçirerek birim sayısını tanımlayın.  |
 | `timezoneOffset=-<integer>` | Bu tamsayı her zaman milisaniye cinsindendir. |
 
 > [!NOTE]
-> **timeBucketUnit** değerleri 7 güne kadar düzeltilebilir.
-> **timezoneOffset** değerleri ne UTC ne de yerel saattir.
+> **timeBucketUnit** değerleri 7 güne kadar düzgünleştirilir.
+> **timezonespan** değeri UTC veya yerel saat değil.
 
 ### <a name="examples"></a>Örnekler
 
-Zaman Serisi Öngörüleri ortamına URL parametresi olarak zaman serisi tanımları eklemek için aşağıdakileri ekleyin:
+Bir Time Series Insights ortamına URL parametresi olarak zaman serisi tanımları eklemek için, şunu ekleyin:
 
 ```URL parameter
 &timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},
 {"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-Aşağıdakiler için örnek zaman serisi tanımlarını kullanın:
+İçin örnek zaman serisi tanımlarını kullanın:
 
-* Ortam kimliği
-* Verilerin son 60 dakikası
-* İsteğe bağlı parametreleri oluşturan terimler **(F1PressureID**, **F2TempStation**ve **F3VibrationPL)**
+* Ortam KIMLIĞI
+* Son 60 dakikalık veriler
+* İsteğe bağlı parametreleri oluşturan koşullar (**F1PressureID**, **F2TempStation**ve **F3VibrationPL**)
 
-Görünüm için aşağıdaki parametreli URL'yi oluşturabilirsiniz:
+Bir görünüm için aşağıdaki parametreli URL 'YI oluşturabilirsiniz:
 
 ```URL
 https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]
 ```
 
-[![Zaman Serisi Öngörüler explorer parametreli URL](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
+[![Time Series Insights Explorer parametreli URL 'SI](media/parameterized-url/share-parameterized-url.png)](media/parameterized-url/share-parameterized-url.png#lightbox)
 
 > [!TIP]
-> Yukarıdaki URL [örneğini kullanarak Explorer'ı](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) canlı olarak görün.
+> Yukarıdaki [URL örneğini kullanarak](https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0000-100000000108&relativeMillis=3600000&timeSeriesDefinitions=[{"name":"F1PressureId","splitBy":"Id","measureName":"Pressure","predicate":"'Factory1'"},{"name":"F2TempStation","splitBy":"Station","measureName":"Temperature","predicate":"'Factory2'"},{"name":"F3VibrationPL","splitBy":"ProductionLine","measureName":"Vibration","predicate":"'Factory3'"}]) gezgin Live ' a bakın.
 
-Yukarıdaki URL, parametrelendirilmiş Zaman Serisi Öngörüleri explorer görünümünü açıklar ve görüntüler. 
+Yukarıdaki URL tanımlar ve parametreli Time Series Insights Gezgin görünümünü görüntüler. 
 
-* Parametreli yüklemler.
+* Parametreli koşullar.
 
-  [![Zaman Serisi Öngörüler explorer parametreli yüklemler.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
+  [![Time Series Insights Explorer parametreli koşullar.](media/parameterized-url/share-parameterized-url-predicates.png)](media/parameterized-url/share-parameterized-url-predicates.png#lightbox)
 
 * Paylaşılan tam grafik görünümü.
 
@@ -134,6 +134,6 @@ Yukarıdaki URL, parametrelendirilmiş Zaman Serisi Öngörüleri explorer gör�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* C# kullanarak verileri nasıl [sorgulayarak sorgulamayı](time-series-insights-query-data-csharp.md)öğrenin.
+* [C# kullanarak verileri sorgulamayı](time-series-insights-query-data-csharp.md)öğrenin.
 
-* [Zaman Serisi Öngörüler Explorer](./time-series-insights-explorer.md)hakkında bilgi edinin.
+* [Time Series Insights Gezgini](./time-series-insights-explorer.md)hakkında bilgi edinin.

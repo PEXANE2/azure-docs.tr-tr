@@ -1,6 +1,6 @@
 ---
 title: Ortak parametreler ve üst bilgiler
-description: Anahtar Kasa kaynaklarıyla ilgili yapabileceğiniz tüm işlemlerde ortak parametreler ve üstbilgiler.
+description: Key Vault kaynaklarıyla ilgili yapabileceğiniz tüm işlemlerde ortak olan parametreler ve üstbilgiler.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430883"
 ---
 # <a name="common-parameters-and-headers"></a>Ortak parametreler ve üst bilgiler
 
-Aşağıdaki bilgiler, Key Vault kaynaklarıyla ilgili yapabileceğiniz tüm işlemlerde yaygındır:
+Aşağıdaki bilgiler Key Vault kaynaklarıyla ilgili yapabileceğiniz tüm işlemler için ortaktır:
 
-- URI'deki api sürümüyle değiştirin. `{api-version}`
-- URI'deki abonelik tanımlayıcınızla değiştirin `{subscription-id}`
-- Kaynak `{resource-group-name}` grubuyla değiştirin. Daha fazla bilgi için Azure kaynaklarınızı yönetmek için Kaynak gruplarını kullanma'ya bakın.
-- URI'deki anahtar kasa adınız ile değiştirin. `{vault-name}`
-- İçerik Türü üstbilgisini uygulama/json olarak ayarlayın.
-- Yetkilendirme üstbilgisini Azure Etkin Dizini'nden (AAD) aldığınız bir JSON Web Belirteci olarak ayarlayın. Daha fazla bilgi için Azure [Kaynak Yöneticisi isteklerini doğrulama'ya](authentication-requests-and-responses.md) bakın.
+- URI `{api-version}` 'deki api sürümü ile değiştirin.
+- URI `{subscription-id}` 'deki abonelik tanımlayıcın ile değiştirin
+- Kaynak `{resource-group-name}` grubuyla değiştirin. Daha fazla bilgi için bkz. Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma.
+- URI `{vault-name}` 'deki Anahtar Kasası adınızla değiştirin.
+- Content-Type üst bilgisini Application/JSON olarak ayarlayın.
+- Yetkilendirme üst bilgisini Azure Active Directory (AAD) tarafından aldığınız JSON Web Token ayarlayın. Daha fazla bilgi için bkz. [kimlik doğrulama Azure Resource Manager](authentication-requests-and-responses.md) istekleri.
 
-## <a name="common-error-response"></a>Yaygın hata yanıtı
-Hizmet, başarı veya başarısızlığı belirtmek için HTTP durum kodlarını kullanır. Ayrıca, hatalar aşağıdaki biçimde bir yanıt içerir:
+## <a name="common-error-response"></a>Ortak hata yanıtı
+Hizmet, başarılı veya başarısız olduğunu göstermek için HTTP durum kodlarını kullanacaktır. Ayrıca, başarısızlıklar aşağıdaki biçimde bir yanıt içerir:
 
 ```
    {  
@@ -43,9 +43,9 @@ Hizmet, başarı veya başarısızlığı belirtmek için HTTP durum kodlarını
 |Öğe adı | Tür | Açıklama |
 |---|---|---|
 | kod | string | Oluşan hata türü.|
-| message | string | Hataya neyin neden olduğunu açıklaması. |
+| message | string | Hatanın neden olduğuna ilişkin bir açıklama. |
 
 
 
 ## <a name="see-also"></a>Ayrıca Bkz.
- [Azure Key Vault REST API Başvurusu](/rest/api/keyvault/)
+ [Azure Key Vault REST API başvurusu](/rest/api/keyvault/)

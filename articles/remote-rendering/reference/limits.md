@@ -6,47 +6,47 @@ ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417700"
 ---
 # <a name="limitations"></a>Sınırlamalar
 
-Bazı özelliklerin boyutu, sayısı veya diğer sınırlamaları vardır.
+Birçok özellik boyut, sayı veya diğer sınırlamalara sahiptir.
 
-## <a name="azure-frontend"></a>Azure Ön Uç
+## <a name="azure-frontend"></a>Azure ön ucu
 
-* İşlem başına toplam AzureFrontend örnekleri: 16.
-* AzureFrontend başına toplam AzureSession örnekleri: 16.
+* İşlem başına toplam AzureFrontend örneği: 16.
+* AzureFrontend başına toplam AzureSession örneği: 16.
 
 ## <a name="objects"></a>Nesneler
 
-* Tek bir türde izin verilebilen toplam nesneler (Varlık, CutPlaneComponent, vb.): 16.777.215.
-* İzin verilebilen toplam aktif kesme düzlemi: 8.
+* Tek bir türdeki izin verilen toplam nesne (Entity, CutPlaneComponent, vb.): 16.777.215.
+* İzin verilen toplam etkin kesme düzlemleri: 8.
 
 ## <a name="materials"></a>Malzemeler
 
-* Bir varlıkta izin verilebilen toplam malzeme sayısı: 65.535.
+* Bir varlık için izin verilen toplam malzeme: 65.535.
 
-## <a name="overall-number-of-polygons"></a>Toplam çokgen sayısı
+## <a name="overall-number-of-polygons"></a>Toplam poligonu sayısı
 
-Tüm yüklenen modeller için izin verilebilen çokgen [sayısı, oturum yönetimi REST API'ye](../how-tos/session-rest-api.md#create-a-session)geçildiği gibi VM'nin boyutuna bağlıdır:
+Tüm yüklü modeller için izin verilen sayıda poligon, [oturum yönetim REST API](../how-tos/session-rest-api.md#create-a-session)geçirilen sanal makinenin boyutuna bağlıdır:
 
 | VM boyutu | Maksimum çokgen sayısı |
 |:--------|:------------------|
-|Standart| 20 milyon |
-|Premium| limitsiz |
+|Stand| 20.000.000 |
+|Premium| sınır yok |
 
 
 ## <a name="platform-limitations"></a>Platform sınırlamaları
 
-**Windows 10 masaüstü**
+**Windows 10 Masaüstü**
 
-* Unity'den "PC Bağımsız" dağıtımı desteklenmez. Bunun yerine UWP kullanın.
-* UWP/x86 desteklenen tek UWP platformudur. UWP/x64 desteklenmez.
+* Unity 'den "PC tek başına" dağıtımı desteklenmez. Bunun yerine UWP kullanın.
+* UWP/x86 yalnızca desteklenen UWP platformudur. UWP/x64 desteklenmez.
 
-**Hololens 2**
+**HoloLens 2**
 
-* [PV kamera özelliğinden alınan görüntü](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) desteklenmez.
+* [BD kamerasından işleme](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) özelliği desteklenmiyor.

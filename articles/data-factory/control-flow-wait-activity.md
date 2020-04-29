@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda bekleme etkinliği
-description: Bekle etkinliği, belirtilen dönem için ardışık noktanın yürütülmesini duraklatır.
+title: Azure Data Factory bekleme etkinliği
+description: Bekleme etkinliği, belirtilen dönem için işlem hattının yürütülmesini duraklatır.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417921"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda bekleme etkinliğini yürütme
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory 'de bekleme etkinliğini Yürüt
 İşlem hattında Bekleme etkinliğini kullandığınızda, işlem hattı izleyen etkinlikleri yürütmeye devam etmeden önce belirtilen süre kadar bekler. 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,17 +41,17 @@ ms.locfileid: "81417921"
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Wait` Etkinliğin adı. | Dize | Evet
-type | **Bekle'** ye ayarlanmalıdır. | Dize | Evet
-waitTimeInSeconds | İşleme devam etmeden önce ardışık işlemin beklediği saniye sayısı. | Tamsayı | Evet
+ad | `Wait` Etkinliğin adı. | Dize | Yes
+type | **Wait**olarak ayarlanmalıdır. | Dize | Yes
+Waittimeınseconds | İşlem hattının işleme devam etmeden önce bekleyeceği saniye sayısı. | Tamsayı | Yes
 
 ## <a name="example"></a>Örnek
 
 > [!NOTE]
-> Bu bölümde, ardışık hattı çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak bir Veri Fabrikası ardışık hattı oluşturmak için adım adım yönergeleri içeren bir yol [için, bkz.](quickstart-create-data-factory-powershell.md)
+> Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-wait-activity"></a>Bekleme etkinliği olan ardışık hatlar
-Bu örnekte, ardışık iki etkinlik vardır: **Kadar** ve **Bekleyin.** Bekle etkinliği bir saniye bekleyecek şekilde yapılandırılır. Ardışık hatlar, Web etkinliğini her çalıştırma arasında bir saniyebekleme süresiyle bir döngü içinde çalıştırın. 
+### <a name="pipeline-with-wait-activity"></a>Bekleme etkinliği ile işlem hattı
+Bu örnekte, işlem hattının iki etkinliği vardır: **until** ve **wait**. Bekleme etkinliği bir saniye bekleyecek şekilde yapılandırılmıştır. İşlem hattı, her çalıştırma arasında ikinci bir bekleme süresine sahip bir döngüde Web etkinliğini çalıştırır. 
 
 ```json
 {
@@ -102,7 +102,7 @@ Bu örnekte, ardışık iki etkinlik vardır: **Kadar** ve **Bekleyin.** Bekle e
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

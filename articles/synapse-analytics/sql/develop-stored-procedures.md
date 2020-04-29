@@ -1,6 +1,6 @@
 ---
 title: Saklı yordamları kullanma
-description: Çözümler geliştirmek için Synapse SQL havuzunda (veri ambarı) depolanan yordamları uygulamak için ipuçları.
+description: Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,43 +11,43 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430987"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>SQL havuzunda depolanan yordamları kullanma
+# <a name="using-stored-procedures-in-sql-pool"></a>SQL havuzunda saklı yordamları kullanma
 
-Çözümler geliştirmek için Synapse SQL havuzunda (veri ambarı) depolanan yordamları uygulamak için ipuçları.
+Çözümleri geliştirmek için SYNAPSE SQL havuzunda (veri ambarı) saklı yordamları uygulamaya yönelik ipuçları.
 
-## <a name="what-to-expect"></a>Ne beklenebilir
+## <a name="what-to-expect"></a>Bekleneceğiniz
 
-SQL havuzu, SQL Server'da kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünuzun performansını en üst düzeye çıkarmak için kullanabileceğiniz ölçeklendirilebilir özel özellikler vardır.
+SQL havuzu SQL Server ' de kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünüzün performansını en üst düzeye çıkarmak için kullanabileceğiniz genişleme özel özellikleri vardır.
 
-Ancak, SQL havuzunun ölçeğini ve performansını korumak için davranış farklılıkları ve desteklenmeyen diğer özellikler ve işlevler de vardır.
+Ancak, SQL havuzunun ölçeğini ve performansını korumak için, davranış farklılıkları ve bazıları desteklenmeyen bazı özellikler ve işlevler de vardır.
 
-## <a name="introducing-stored-procedures"></a>Depolanan yordamları tanıtma
+## <a name="introducing-stored-procedures"></a>Saklı yordamları tanıtma
 
-Depolanan yordamlar, SQL kodunuzu kapsüllemenin harika bir yoludur; verilerinize yakın bir yerde veri ambarında depolamak. Depolanan yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüle etmelerine yardımcı olur; kodun daha fazla yeniden kullanılabilirliğini kolaylaştırır. Depolanan her yordam, parametreleri daha da esnek hale getirmek için de kabul edebilir.
+Saklı yordamlar, SQL kodunuzu kapsüllemek için harika bir yoldur; veri ambarındaki verilerinize yakın bir şekilde depolanın. Saklı yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüler hale getirmenize yardımcı olur; kodun daha fazla yeniden kullanılabilirliğini kolaylaştırın. Her saklı yordam aynı zamanda parametreleri daha da esnek hale getirmek için kabul edebilir.
 
-SQL havuzu basitleştirilmiş ve basitleştirilmiş bir saklı yordam uygulaması sağlar. SQL Server ile karşılaştırıldığında en büyük fark, depolanan yordamın önceden derlenmiş kod olmamasıdır. Veri ambarlarında, derleme süresi, sorguları büyük veri hacimlerine karşı çalıştırmak için gereken süreyle karşılaştırıldığında küçüktür. Depolanan yordam kodunun büyük sorgular için doğru şekilde optimize edilmesini sağlamak daha önemlidir. Amaç milisaniye değil, saat, dakika ve saniye kaydetmektir. Bu nedenle, depolanan yordamları SQL mantığı için kapsayıcılar olarak düşünmek daha yararlıdır.
+SQL havuzu Basitleştirilmiş ve kolaylaştırılmış bir saklı yordam uygulamasını sağlar. SQL Server kıyasla en büyük fark, saklı yordamın önceden derlenmiş kod olmaması gerektiğidir. Veri ambarlarında, derleme süresi, büyük veri birimlerine karşı sorgu çalıştırmak için gereken zamana kıyasla küçüktür. Saklı yordam kodunun büyük sorgular için doğru iyileştirildiğinden emin olmak daha önemlidir. Amaç, milisaniye değil, saat, dakika ve saniyeyi tasarrufu sağlamaktır. Bu nedenle, saklı yordamları SQL Logic Container olarak düşünmek daha yararlıdır.
 
-SQL havuzu depolanan yordamınızı çalıştırdığında, SQL deyimleri ayrıştı, çevrilmiş ve çalışma zamanında optimize edilir. Bu işlem sırasında, her deyim dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu gönderilen sorgudan farklıdır.
+Saklı yordamınız SQL havuzu tarafından yürütüldüğünde, SQL deyimleri ayrıştırılır, çevrilir ve çalışma zamanında iyileştirilir. Bu işlem sırasında her bir ifade dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu, gönderilen sorgudan farklı.
 
-## <a name="nesting-stored-procedures"></a>İç içe depolanan yordamlar
+## <a name="nesting-stored-procedures"></a>Saklı yordamları iç içe geçirme
 
-Depolanan yordamlar diğer depolanan yordamları aradığında veya dinamik SQL'i çalıştırdığında, iç depolanan yordamın veya kod çağırmanın iç içe olduğu söylenir.
+Saklı yordamlar diğer saklı yordamları çağırdığında veya dinamik SQL yürütürde, iç saklı yordam veya kod çağırma iç içe geçmiş olarak kabul edilir.
 
-SQL havuzu en fazla sekiz iç içe geçme düzeyi destekler. Bu, SQL Server'dan biraz farklıdır. SQL Server'daki yuva düzeyi 32'dir.
+SQL havuzu, en fazla sekiz iç içe geçme düzeyini destekler. Bu SQL Server biraz farklıdır. SQL Server iç içe geçme düzeyi 32 ' dir.
 
-Üst düzey depolanan yordam çağrısı yuva düzeyi 1 eşittir.
+Üst düzey saklı yordam çağrısı, iç içe düzey 1 ' e karşılık gelir.
 
 ```sql
 EXEC prc_nesting
 ```
 
-Depolanan yordam da başka bir EXEC çağrısı yaparsa, yuva düzeyi ikiye yükselir.
+Saklı yordam aynı zamanda başka bir EXEC çağrısı de yapıyorsa, iç içe düzey iki olarak artar.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -57,7 +57,7 @@ GO
 EXEC prc_nesting
 ```
 
-İkinci yordam daha sonra bazı dinamik SQL yürütürse, iç içe düzey üçe yükselir.
+İkinci yordam daha sonra bazı dinamik SQL çalıştırırsa, iç içe düzeyi üç olarak artar.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -68,30 +68,30 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> SQL havuzu şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)desteklemiyor. Yuva seviyesini izlemeniz gerekiyor. Sekiz yuva düzeyi sınırını aşmanız olası değildir, ancak bunu yaparsanız, iç içe geçme düzeylerini bu sınıra sığdırmak için kodunuzu yeniden çalışmanız gerekir.
+> SQL havuzu şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)öğesini desteklemiyor. İç içe düzeyi izlemeniz gerekir. Sekiz iç içe düzey sınırı aşmanız çok düşüktür, ancak bunu yaparsanız, iç içe geçme düzeylerine bu sınırın sığması için kodunuzu yeniden güncelleştirmeniz gerekir.
 
-## <a name="insertexecute"></a>Ekle.. Yürütmek
+## <a name="insertexecute"></a>Ekle.. YÜRÜTME
 
-SQL havuzu, depolanan yordamın sonuç kümesini insert deyimiyle tüketmenize izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Örneğin, [geçici tablolardaki](develop-tables-temporary.md)makaleye bakın.
+SQL havuzu, bir INSERT ifadesiyle saklı yordamın sonuç kümesini kullanmanıza izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Bir örnek için [geçici tablolardaki](develop-tables-temporary.md)makaleye bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Sql havuzunda uygulanmayan Transact-SQL depolanan yordamların bazı yönleri vardır.
+SQL havuzunda uygulanmayan Transact-SQL saklı yordamlarının bazı yönleri vardır.
 
 Bunlar:
 
 * geçici saklı yordamlar
-* numaralı saklı yordamlar
-* genişletilmiş depolanmış yordamlar
-* CLR saklanan yordamlar
+* numaralandırılmış saklı yordamlar
+* Genişletilmiş saklı yordamlar
+* CLR saklı yordamları
 * şifreleme seçeneği
 * çoğaltma seçeneği
-* tablo değerli parametreleri
-* salt okunur parametreler
-* varsayılan parametreler
-* yürütme bağlamları
+* tablo değerli parametreler
+* salt okuma parametreleri
+* Varsayılan parametreler
+* Yürütme bağlamları
 * Return deyimi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](develop-overview.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](develop-overview.md).

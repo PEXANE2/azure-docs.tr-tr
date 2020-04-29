@@ -1,6 +1,6 @@
 ---
 title: Eşleme veri akışı oluşturma
-description: Azure Veri Fabrikası eşleme veri akışı oluşturma
+description: Azure Data Factory eşleme veri akışı oluşturma
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/12/2019
 ms.openlocfilehash: cd1342ae5912a9a91f1bd8d1bdacecdb5a2bbdb0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416522"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory Veri Akışı Oluşturma
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-ADF'deki Veri Akışlarını eşleme, herhangi bir kodlama gerektirmeden verileri ölçekte dönüştürmenin bir yolunu sağlar. Bir dizi dönüşüm oluşturarak veri akışı tasarımcısında bir veri dönüştürme işi tasarlayabilirsiniz. Veri dönüştürme adımlarını izleyen herhangi bir sayıda kaynak dönüşümüyle başlayın. Ardından, sonuçlarınızı bir hedefe çıkarmak için veri akışınızı lavaboile tamamlayın.
+ADF 'de veri akışlarını eşleme, hiçbir kodlama gerekmeden verileri ölçeklendirmeye yönelik bir yol sağlar. Bir dizi dönüştürme oluşturarak veri akışı tasarımcısında bir veri dönüştürme işi tasarlayabilirsiniz. Herhangi bir sayıdaki kaynak dönüşümle başlayın ve ardından veri dönüştürme adımları. Daha sonra, sonuçlarınızı bir hedefe aktarmak için havuz ile veri akışınızı doldurun.
 
-Azure portalından yeni bir V2 Veri Fabrikası oluşturarak başlayın. Yeni fabrikanızı oluşturduktan sonra, Veri Fabrikası Kullanıcı Çağrı'sını başlatmak için "Yazar & Monitörü" döşemesine tıklayın.
+İlk olarak Azure portal yeni bir v2 Data Factory oluşturmaya başlayın. Yeni fabrikanızı oluşturduktan sonra, Data Factory Kullanıcı arabirimini başlatmak için "yazar & Izleyicisi" kutucuğuna tıklayın.
 
-![Veri Akışı seçenekleri](media/data-flow/v2portal.png "veri akışı oluşturmak")
+![Veri akışı seçenekleri](media/data-flow/v2portal.png "veri akışı oluşturma")
 
-Veri Fabrikası UI'ye ulaştıktan sonra örnek Veri Akışları'nı kullanabilirsiniz. Örnekler ADF Şablon Galerisi'nden edinilebilir. ADF'de "Şablondan Ardışık Kaynak" oluşturun ve şablon galerisinden Veri Akışı kategorisini seçin.
+Data Factory kullanıcı arabiriminden olduktan sonra örnek veri akışlarını kullanabilirsiniz. Bu örnekler ADF Şablon Galerisi ' nden kullanılabilir. ADF 'de "şablondan işlem hattı" oluşturun ve şablon galerisinden veri akışı kategorisini seçin.
 
-![Veri Akışı seçenekleri](media/data-flow/template.png "veri akışı oluşturmak")
+![Veri akışı seçenekleri](media/data-flow/template.png "veri akışı oluşturma")
 
-Azure Blob Depolama hesap bilgilerinizi girmeniz istenir.
+Azure Blob depolama hesabı bilgilerinizi girmeniz istenir.
 
-![Veri Akışı seçenekleri](media/data-flow/template2.png "veri akışı oluşturmak 2")
+![Veri akışı seçenekleri](media/data-flow/template2.png "veri akışı oluşturma 2")
 
-[Bu örnekler için kullanılan verileri burada bulabilirsiniz.](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata) Örnek verileri indirin ve örnekleri yürütebilmeniz için dosyaları Azure Blob depolama hesaplarınızda saklayın.
+[Bu örnekler için kullanılan veriler burada bulunabilir](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Örnekleri yürütebilmeniz için örnek verileri indirin ve dosyaları Azure Blob depolama hesaplarınıza depolayın.
 
-## <a name="create-new-data-flow"></a>Yeni veri akışı oluşturma
+## <a name="create-new-data-flow"></a>Yeni veri akışı oluştur
 
-Veri Akışları oluşturmak için ADF UI'deki Kaynak Oluştur "artı işareti" düğmesini kullanın.
+Veri akışları oluşturmak için ADF Kullanıcı arabirimindeki kaynak oluştur "artı işareti" düğmesini kullanın.
 
-![Veri Akışı seçenekleri](media/data-flow/newresource.png "Yeni Kaynak")
+![Veri akışı seçenekleri](media/data-flow/newresource.png "Yeni kaynak")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kaynak dönüşümü](data-flow-source.md)yle veri dönüşümünüzü oluşturmaya başlayın.
+Veri dönüşümünüzü [kaynak dönüşümle](data-flow-source.md)oluşturmaya başlayın.

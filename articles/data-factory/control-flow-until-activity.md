@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'ndaki etkinlik kadar
-description: Until etkinliği, etkinlikle ilişkili durum doğru olarak değerlendirilene veya zaman dışarı çıkana kadar bir döngü içinde bir dizi etkinlik yürütür.
+title: Azure Data Factory etkinlik tarihine kadar
+description: Until etkinliği, etkinlik ile ilişkili koşul doğru olarak değerlendirilene veya zaman aşımına uğrayana kadar bir dizi etkinliği yürütür.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417955"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki etkinlik kadar
+# <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı işlevselliği sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
@@ -55,19 +55,19 @@ Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı i�
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Until` Etkinliğin adı. | Dize | Evet
-type | **Kadar'** a ayarlanmalıdır. | Dize | Evet
-ifade | Doğru veya yanlışı değerlendirmesi gereken ifade | Ifa -de.  | Evet
-timeout | Do-until döngüsü burada belirtilen süreden sonra devre dışı. | Dize. `d.hh:mm:ss`(veya) `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gündür. | Hayır
-Etkinlikler | İfade dinlenir e kadar yürütülen etkinlikler `true`kümesi. | Bir dizi etkinlik. |  Evet
+ad | `Until` Etkinliğin adı. | Dize | Yes
+type | To **until**olarak ayarlanmalıdır. | Dize | Yes
+ifade | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Yes
+timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss`veya `hh:mm:ss`. Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
+Etkinlikler | İfadesi olarak `true`değerlendirilene kadar yürütülen etkinlik kümesi. | Etkinlik dizisi. |  Yes
 
 ## <a name="example-1"></a>Örnek 1
 
 > [!NOTE]
-> Bu bölümde, ardışık hattı çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak bir Veri Fabrikası ardışık hattı oluşturmak için adım adım yönergeleri içeren bir yol [için, bkz.](quickstart-create-data-factory-powershell.md)
+> Bu bölüm, işlem hattını çalıştırmak için JSON tanımları ve örnek PowerShell komutları sağlar. Azure PowerShell ve JSON tanımlarını kullanarak Data Factory işlem hattı oluşturmaya yönelik adım adım yönergeler için bkz. [öğretici: Azure PowerShell kullanarak veri fabrikası oluşturma](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-until-activity"></a>Etkinlik kadar ile Boru Hattı
-Bu örnekte, ardışık iki etkinlik vardır: **Kadar** ve **Bekleyin.** Bekle etkinliği, Web etkinliğini döngüde çalıştırmadan önce belirtilen süreyi bekler. Veri Fabrikası'ndaki ifadeler ve işlevler hakkında bilgi edinmek için [İfade dili ve işlevlerine](control-flow-expression-language-functions.md)bakın. 
+### <a name="pipeline-with-until-activity"></a>Etkinlik Until işlem hattı
+Bu örnekte, işlem hattının iki etkinliği vardır: **until** ve **wait**. Bekleme etkinliği, döngüsünde Web etkinliğini çalıştırmadan önce belirtilen süre boyunca bekler. Data Factory ifadeler ve işlevler hakkında bilgi edinmek için bkz. [Expression Language and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -118,9 +118,9 @@ Bu örnekte, ardışık iki etkinlik vardır: **Kadar** ve **Bekleyin.** Bekle e
 ```
 
 ## <a name="example-2"></a>Örnek 2 
-Bu örnekteki ardışık işlem, verileri bir giriş klasöründen bir döngüdeki bir çıktı klasörüne kopyalar. Yineleme parametresi değeri false olarak ayarlandığında veya bir dakika sonra zamanlandığında döngü sona erer.   
+Bu örnekteki işlem hattı, verileri bir giriş klasöründen bir döngüde çıkış klasörüne kopyalar. Yineleme parametresinin değeri false olarak ayarlandığında veya bir dakika sonra zaman aşımına uğrarsa döngü sonlandırılır.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Etkinlik (Adfv2QuickStartPipeline.json) kadar boru hattı
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Until etkinliği ile işlem hattı (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -193,7 +193,7 @@ Bu örnekteki ardışık işlem, verileri bir giriş klasöründen bir döngüde
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure Depolama bağlantılı hizmet (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Azure depolama bağlı hizmeti (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -207,8 +207,8 @@ Bu örnekteki ardışık işlem, verileri bir giriş klasöründen bir döngüde
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure Blob veri seti (BlobDataset.json)
-Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outputPath2** parametresinin değerine ayarlar. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametreli Azure blob veri kümesi (BlobDataset. JSON)
+İşlem hattı **FolderPath** değerini, Işlem hattının **OutputPath1** ya da **outputPath2** parametresinin değerine ayarlar. 
 
 ```json
 {
@@ -234,7 +234,7 @@ Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outpu
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Boru hattı parametresi JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Ardışık düzen parametresi JSON (PipelineParameters. JSON)
 
 ```json
 {
@@ -248,7 +248,7 @@ Ardışık etki, **folderPath'i,** ardışık yolun **outputPath1** veya **outpu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu komutlar, JSON dosyalarını klasöre kaydettiğinizi varsayar: C:\ADF. 
+Bu komutlar JSON dosyalarını klasörüne kaydettiğiniz varsayılmaktadır: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -288,7 +288,7 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda Avro formatı
-description: Bu konu, Azure Veri Fabrikası'nda Avro biçimiyle nasıl başa çıkılabildiğini açıklar.
+title: Azure Data Factory avro biçimi
+description: Bu konu, Azure Data Factory ' de avro biçimi ile nasıl başa çıkılacağını açıklamaktadır.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 931287fa2a4104069b101236bec9f76bb7193e8d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416345"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Avro formatı
+# <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory avro biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Avro dosyalarını ayrışturmak veya verileri Avro formatına yazmak**istediğinizde bu makaleyi izleyin. 
+**Avro dosyalarını ayrıştırmak veya verileri avro biçimine yazmak**istediğinizde bu makaleye uyun. 
 
-Avro formatı aşağıdaki bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md), [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md), [Azure Dosya Depolama](connector-azure-file-storage.md), Dosya [Sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Bulut Depolama](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), ve [SFTP](connector-sftp.md).
+Avro biçimi şu bağlayıcılar için desteklenir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md) [,,](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [Datasets](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde Avro veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, avro veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
 | Özellik         | Açıklama                                                  | Gerekli |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Veri kümesinin tür özelliği **Avro**olarak ayarlanmalıdır. | Evet      |
-| location         | Dosya(lar) konum ayarları. Her dosya tabanlı bağlayıcının kendi konum türü ve `location`desteklenen özellikleri vardır. **Bağlayıcı makalesindeki ayrıntılara bakın -> Dataset özellikleri bölümünde.** | Evet      |
-| avroCompressionCodec | Avro dosyalarına yazarken kullanılacak sıkıştırma codec'i. Avro dosyalarından okurken, Veri Fabrikası dosya meta verilerini temel alan sıkıştırma kodlarını otomatik olarak belirler.<br>Desteklenen türleri "**none**" (varsayılan), "**deflate**", "**snappy**". Not şu anda Avro dosyalarını okurken/yazarken Snappy'yi desteklemez. | Hayır       |
+| type             | Veri kümesinin Type özelliği **avro**olarak ayarlanmalıdır. | Yes      |
+| location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında `location`kendi konum türü ve desteklenen özellikleri vardır. **Bağlayıcı makalesi-> veri kümesi özellikleri bölümünde ayrıntılara bakın**. | Yes      |
+| avroCompressionCodec | Avro dosyalarına yazılırken kullanılacak sıkıştırma codec bileşeni. Avro dosyalarından okurken, dosya meta verileri temelinde sıkıştırma codec bileşenini otomatik olarak belirleme Data Factory.<br>Desteklenen türler şunlardır "**none**" (varsayılan), "**söndür**", "**Snappy**". Şu anda kopyalama etkinliği, okuma/yazma avro dosyaları sırasında Snappy 'yi desteklemez. | Hayır       |
 
 > [!NOTE]
-> Avro dosyaları için sütun adındaki beyaz boşluk desteklenmez.
+> Sütun adında boşluk, avro dosyaları için desteklenmez.
 
-Aşağıda Azure Blob Depolama Avro veri kümesi bir örnektir:
+Aşağıda, Azure Blob depolamada bir avro veri kümesi örneği verilmiştir:
 
 ```json
 {
@@ -62,36 +62,36 @@ Aşağıda Azure Blob Depolama Avro veri kümesi bir örnektir:
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde Avro kaynağı ve lavabo tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, avro kaynak ve havuz tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="avro-as-source"></a>Kaynak olarak Avro
+### <a name="avro-as-source"></a>Kaynak olarak avro
 
-Aşağıdaki özellikler kopyalama etkinliği *** \*kaynak\* *** bölümünde desteklenir.
-
-| Özellik      | Açıklama                                                  | Gerekli |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinlik kaynağının türü özelliği **AvroSource**olarak ayarlanmalıdır. | Evet      |
-| mağazaAyarları | Veri deposundan verilerin nasıl okunacaklarına ilişkin özellikler grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
-
-### <a name="avro-as-sink"></a>Lavabo olarak Avro
-
-Aşağıdaki özellikler kopyalama etkinliği *** \*lavabo\* *** bölümünde desteklenir.
+Aşağıdaki özellikler, etkinlik *** \*kaynağını\* *** kopyalama bölümünde desteklenir.
 
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Kopyalama etkinlik kaynağının türü özelliği **AvroSink**olarak ayarlanmalıdır. | Evet      |
-| mağazaAyarları | Veri deposuna nasıl veri yazılailgili bir grup özellik. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makaledeki ayrıntılara bakın -> Etkinlik özelliklerini kopyala bölümünden kopyalayın.** | Hayır       |
+| type          | Kopyalama etkinliği kaynağının Type özelliği **Avrosource**olarak ayarlanmalıdır. | Yes      |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında `storeSettings`kendi desteklenen okuma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
+
+### <a name="avro-as-sink"></a>Avro as havuzu
+
+Aşağıdaki özellikler, etkinlik *** \*havuzunu\* *** Kopyala bölümünde desteklenir.
+
+| Özellik      | Açıklama                                                  | Gerekli |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | Kopyalama etkinliği kaynağının Type özelliği **Avrosink**olarak ayarlanmalıdır. | Yes      |
+| storeSettings | Veri deposuna veri yazma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının altında `storeSettings`kendi desteklenen yazma ayarları vardır. **Bağlayıcı makalesi-> kopyalama etkinliği özellikleri bölümünde ayrıntılara bakın**. | Hayır       |
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
 ### <a name="copy-activity"></a>Kopyalama etkinliği
-Avro [karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) Kopyalama Etkinliğinde desteklenmez (kayıtlar, enumlar, diziler, haritalar, sendikalar ve sabit).
+Kopyalama etkinliğinde avro [karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, numaralandırmalar, diziler, Haritalar, birleşimler ve sabit).
 
 ### <a name="data-flows"></a>Veri akışları
-Veri akışlarında Avro dosyalarıyla çalışırken, karmaşık veri türlerini okuyabilir ve yazabilirsiniz, ancak önce veri kümesinden fiziksel şemayı temizlediğinizden emin olun. Veri akışlarında, mantıksal projeksiyonunuzu ayarlayabilir ve karmaşık yapılar olan sütunlar türetebilir, ardından bu alanları bir Avro dosyasıyla otomatik olarak eşleyebilirsiniz.
+Veri akışlarında avro dosyalarla çalışırken, karmaşık veri türlerini okuyup yazabilir, ancak önce veri kümesinden fiziksel şemayı temizlediğinizden emin olun. Veri akışlarında, mantıksal projeksiyonunu ayarlayabilir ve karmaşık yapılar olan sütunları türetebilirsiniz, ardından bu alanları bir avro dosyasına otomatik olarak eşleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-- [Meta veri etkinliğini alın](control-flow-get-metadata-activity.md)
+- [GetMetadata etkinliği](control-flow-get-metadata-activity.md)

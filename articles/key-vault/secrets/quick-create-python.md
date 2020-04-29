@@ -1,6 +1,6 @@
 ---
-title: Quickstart - Python için Azure Key Vault istemci kitaplığı
-description: Python istemci kitaplığını kullanarak Azure anahtar kasasından nasıl sır oluşturup, nasıl silen ve silmeyi öğrenin
+title: Hızlı başlangıç-Python için Azure Key Vault istemci kitaplığı
+description: Python istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
@@ -8,56 +8,56 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.openlocfilehash: a4d758a67ee6a19473f1a53a790b89c0e120084d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81424982"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Python için Azure Key Vault istemci kitaplığı
+# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault istemci kitaplığı
 
-Python için Azure Key Vault istemci kitaplığı ile başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
+Python için Azure Key Vault istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
 
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Python için Key Vault istemci kitaplığını kullanın:
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Python için Key Vault istemci kitaplığını şu şekilde kullanın:
 
-- Anahtarlar ve parolalar üzerinde güvenliği ve denetimi artırın.
-- Şifreleme anahtarlarını dakikalar içinde oluşturun ve aktarın.
-- Bulut ölçeği ve genel artıklık la gecikme süresini azaltın.
-- TLS/SSL sertifikaları için görevleri basitleştirin ve otomatikleştirin.
-- FIPS 140-2 Düzey 2 onaylı HSM'leri kullanın.
+- Anahtarlar ve parolalar üzerinde güvenlik ve denetim düzeyini artırın.
+- Şifreleme anahtarlarını dakikalar içinde oluşturun ve içeri aktarın.
+- Bulut ölçeği ve küresel yedeklilik ile gecikme süresini azaltın.
+- TLS/SSL sertifikaları için görevleri basitleştirme ve otomatikleştirme.
+- FIPS 140-2 düzey 2 doğrulanan HSM 'leri kullanın.
 
-[API başvuru belgeleri](/python/api/overview/azure/key-vault?view=azure-python) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Paketi (Python Paket Dizini)](https://pypi.org/project/azure-keyvault/)
+[API başvurusu belge](/python/api/overview/azure/key-vault?view=azure-python) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [paketi (Python paket dizini)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği - [ücretsiz bir abonelik oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Python 2.7, 3.5.3 veya daha sonra
+- Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Python 2,7, 3.5.3 veya üzeri
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) veya [Azure PowerShell](/powershell/azure/overview)
 
-Bu hızlı başlangıç, Bir Linux terminal penceresinde [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) çalıştırdığınızı varsayar.
+Bu hızlı başlangıçta, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 'Yi bir Linux Terminal penceresinde çalıştırdığınız varsayılır.
 
-## <a name="setting-up"></a>Ayarlama
+## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="install-the-package"></a>Paketi yükleyin
+### <a name="install-the-package"></a>Paketi yükler
 
-Konsol penceresinden Python için Azure Key Vault sırları kitaplığını yükleyin.
+Konsol penceresinde, Python için Azure Key Vault gizli dizi Kitaplığı ' nı yükler.
 
 ```console
 pip install azure-keyvault-secrets
 ```
 
-Bu hızlı başlangıç için azure.identity paketini de yüklemeniz gerekir:
+Bu hızlı başlangıçta, Azure. Identity paketini de yüklemeniz gerekecektir:
 
 ```console
 pip install azure.identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve anahtar kasası oluşturma
+### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
 
-Bu hızlı başlatma, önceden oluşturulmuş bir Azure anahtar kasası kullanır. [Azure CLI quickstart,](quick-create-cli.md) [Azure PowerShell quickstart](quick-create-powershell.md)veya Azure portalı [quickstart'taki](quick-create-portal.md)adımları izleyerek önemli bir kasa oluşturabilirsiniz. Alternatif olarak, aşağıdaki Azure CLI komutlarını çalıştırabilirsiniz.
+Bu hızlı başlangıçta önceden oluşturulmuş bir Azure Anahtar Kasası kullanılmaktadır. [Azure CLI hızlı başlangıç](quick-create-cli.md), [Azure PowerShell hızlı](quick-create-powershell.md)başlangıç veya [Azure Portal Hızlı Başlangıç](quick-create-portal.md)adımlarını izleyerek bir Anahtar Kasası oluşturabilirsiniz. Alternatif olarak, aşağıdaki Azure CLı komutlarını çalıştırabilirsiniz.
 
 > [!Important]
-> Her anahtar kasanın benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
+> Her Anahtar Kasası benzersiz bir ada sahip olmalıdır. -Unique-keykasa-adı> <aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -68,15 +68,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
 
-Bulut tabanlı Python uygulamasının kimliğini doğrulamanın en basit yolu yönetilen bir kimliktir; bkz. Ayrıntılar [için Azure Key Vault'a erişmek için Uygulama Hizmeti yönetilen kimliği kullanın.](../general/managed-identity.md) Ancak basitlik adına, bu hızlı başlatma bir Python konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimliğini doğrulamak için bir hizmet sorumlusu nun ve erişim denetim ilkesinin kullanılması nı gerektirir.
+Bulut tabanlı bir Python uygulamasının kimlik doğrulamasının en kolay yolu, yönetilen bir kimlikle; Ayrıntılar için [Azure Key Vault erişmek üzere App Service yönetilen bir kimlik kullanma](../general/managed-identity.md) konusuna bakın. Kolaylık sağlaması için, bu hızlı başlangıç bir Python konsol uygulaması oluşturur. Azure ile bir masaüstü uygulamasının kimlik doğrulaması için hizmet sorumlusu ve erişim denetimi ilkesi kullanılması gerekir.
 
-Azure CLI az reklam [sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
+Azure CLı [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir hizmet ilkesi oluşturun:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Bu işlem bir dizi anahtar / değer çifti döndürecektir. 
+Bu işlem, bir dizi anahtar/değer çifti döndürür. 
 
 ```console
 {
@@ -92,21 +92,21 @@ Bu işlem bir dizi anahtar / değer çifti döndürecektir.
 }
 ```
 
-Aşağıdaki [Çevre değişkenini ayarla](#set-environmental-variables) adımadımda kullanacağımız için clientId ve clientSecret'a dikkat edin.
+Aşağıdaki [ortam değişkenini ayarla](#set-environmental-variables) adımında kullanabilmemiz Için ClientID ve ClientSecret değerlerini göz önünde ayırın.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Servis müdürüne anahtar kasanıza erişim hakkı verin
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Anahtar kasanıza hizmet sorumlusu erişimi verin
 
-MüşteriYi [az keyvault set-ilke](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek servis müdürünüze izin veren anahtar kasanız için bir erişim ilkesi oluşturun. Servis sorumlusuna hem anahtarlar hem de sırlar için izinleri al, listele ve ayarla.
+ClientID 'yi [az keykasa Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek, hizmet sorumlusuna izin veren Anahtar Kasası için bir erişim ilkesi oluşturun. Her iki anahtar ve gizli dizi için hizmet sorumlusu al, Listele ve ayarla izinlerini verin.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Çevresel değişkenleri ayarlama
+#### <a name="set-environmental-variables"></a>Ortam değişkenlerini ayarlama
 
-Uygulamamızdaki Varsayılan AzureCredential yöntemi üç çevresel değişkene dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve `AZURE_TENANT_ID`. Bu `export VARNAME=VALUE` değişkenleri, biçimi kullanarak [bir hizmet ana adımı oluştur'da](#create-a-service-principal) belirttiğiniz clientId, clientSecret ve tenantId değerlerine ayarlayın. (Bu yöntem yalnızca geçerli kabuğunuz için değişkenleri ve kabuktan oluşturulan işlemleri ayarlar; bu değişkenleri `/etc/environment ` ortamınıza kalıcı olarak eklemek, dosyanızı yeniden düzenlendi.) 
+Uygulamamızda DefaultAzureCredential yöntemi üç çevresel değişkene dayanır: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`ve. `AZURE_TENANT_ID` Bu değişkenleri `export VARNAME=VALUE` biçimini kullanarak [hizmet sorumlusu oluşturma](#create-a-service-principal) adımında not ettiğiniz ClientID, ClientSecret ve tenantıd değerlerine ayarlayın. (Bu yöntem yalnızca geçerli kabuğunuzun ve kabuktan oluşturulan süreçlerin değişkenlerini ayarlar; bu değişkenleri ortamınıza kalıcı olarak eklemek için `/etc/environment ` dosyanızı düzenleyin.) 
 
-Ayrıca anahtar kasa adınızı bir ortam değişkeni `KEY_VAULT_NAME`olarak kaydetmeniz gerekir.
+Ayrıca, Anahtar Kasası adınızı adlı `KEY_VAULT_NAME`bir ortam değişkeni olarak kaydetmeniz gerekir.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -120,15 +120,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Nesne modeli
 
-Python için Azure Key Vault istemci kitaplığı, anahtarları ve sertifikalar ve sırlar gibi ilgili varlıkları yönetmenize olanak tanır. Aşağıdaki kod örnekleri, bir istemci oluşturmak, bir sır ayarlamak, bir sır almak ve bir sırrı silmek nasıl gösterecektir.
+Python için Azure Key Vault istemci kitaplığı, sertifikaları ve gizli dizileri gibi anahtarları ve ilgili varlıkları yönetmenizi sağlar. Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir.
 
-Tüm konsol uygulaması . https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app
+Konsol uygulamasının tamamına adresinden https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appulaşılabilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-### <a name="add-directives"></a>Yönergeekleme
+### <a name="add-directives"></a>Yönergeler ekleme
 
-Kodunuzun üst bölümüne aşağıdaki yönergeleri ekleyin:
+Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 
 ```python
 import os
@@ -136,9 +136,9 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Kimlik doğrulaması ve istemci oluşturma
+### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
 
-Anahtar kasanıza doğrulanması ve anahtar kasa istemcisi oluşturma, yukarıdaki [Set çevresel değişkenler](#set-environmental-variables) adımındaki çevresel değişkenlere bağlıdır. Anahtar kasanızın adı URI anahtar kasasına genişletilir ve "https://<your-key-vault-name>.vault.azure.net" biçiminde genişletilir.
+Anahtar kasanıza kimlik doğrulama ve Anahtar Kasası istemcisi oluşturma, yukarıdaki [ortam değişkenlerini ayarla](#set-environmental-variables) adımında bulunan ortam değişkenlerine bağlıdır. Anahtar kasanızın adı, Anahtar Kasası URI 'sine, "https://<-Key-kasa-adı>. vault.azure.net" biçiminde genişletilir.
 
 ```python
 credential = DefaultAzureCredential()
@@ -146,39 +146,39 @@ credential = DefaultAzureCredential()
 client = SecretClient(vault_url=KVUri, credential=credential)
 ```
 
-### <a name="save-a-secret"></a>Bir sırrı kaydet
+### <a name="save-a-secret"></a>Gizli dizi Kaydet
 
-Başvurunuzun kimliği doğrulanabildiği için, istemciyi kullanarak keyvault'unuza bir sır koyabilirsiniz. SetSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) Bu gizli için bir ad gerektirir -- bu örnekte "mySecret" kullanıyoruz.  
+Uygulamanızın kimliği doğrulandığına göre, istemciyi kullanarak anahtar kasanıza gizli dizi ekleyebilirsiniz. SetSecret yöntemi] (/DotNet/api/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) Bu, gizli anahtar için bir ad gerektirir; Bu örnekte "mySecret" kullanıyoruz.  
 
 ```python
 client.set_secret(secretName, secretValue)
 ```
 
-Gizlinin [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
+Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Bir sır alma
+### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
-Şimdi istemci ile daha önce ayarlanmış değeri [alabilirsiniz. GetSecret yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Artık önceden ayarlanan değeri istemcisiyle elde edebilirsiniz [. GetSecret yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 retrieved_secret = client.get_secret(secretName)
  ```
 
-Sırrın artık `retrieved_secret.value`.
+Gizli anahtar artık olarak `retrieved_secret.value`kaydedilir.
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Son olarak, istemci ile anahtar kasasından sırrı [silelim. DeleteSecret yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Son olarak, anahtar kasanızdan parolayı istemciyle silelim [. DeleteSecret yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 client.delete_secret(secretName)
 ```
 
-Gizli [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutu ile gitti doğrulayabilirsiniz:
+Parolanın [az keykasasecret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) komutuyla yapıldığını doğrulayabilirsiniz:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -186,7 +186,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyaç duyulmadığında, anahtar kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLI veya Azure PowerShell'i kullanabilirsiniz.
+Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -239,8 +239,8 @@ print(" done.")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir anahtar kasası oluşturdunuz, bir sır sakladınız ve bu sırrı aldınız. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- Azure [Anahtar Kasasına Genel Bakış](../general/overview.md)
-- Azure [Key Vault geliştiricisi kılavuzuna](../general/developers-guide.md) bakın
-- Azure Key Vault en iyi uygulamalarını gözden [geçirin](../general/best-practices.md)
+- [Azure Key Vault genel bakışını](../general/overview.md) okuyun
+- [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
+- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

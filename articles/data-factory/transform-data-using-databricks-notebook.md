@@ -1,5 +1,5 @@
 ---
-title: Etkinlikle birlikte bir Databricks Not Defteri çalıştırma
+title: Etkinliğe sahip bir Databricks Not defteri çalıştırma
 description: Bir Azure veri fabrikasında databricks iş kümesine göre Databricks not defteri çalıştırmak için Databricks Not Defteri Etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 ms.service: data-factory
@@ -12,10 +12,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
 ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418992"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory’de Databricks Not Defteri etkinliği ile bir Databricks not defteri çalıştırma
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
   - İşlem hattı çalıştırmasını izleme.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
 Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağıdaki videoyu izleyin:
 
@@ -54,7 +54,7 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 
 1.  **Yeni veri fabrikası** bölmesinde **Ad** altına **ADFTutorialDataFactory** girin.
 
-    Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** \<adınızı\>ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](https://docs.microsoft.com/azure/data-factory/naming-rules) makalesini inceleyin.
+    Azure veri fabrikasının adı *genel olarak benzersiz*olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin. (Örneğin, ** \<adınız\>ADFTutorialDataFactory**kullanın). Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](https://docs.microsoft.com/azure/data-factory/naming-rules) makalesini inceleyin.
 
     ![Yeni veri fabrikası için bir ad belirtin](media/transform-data-using-databricks-notebook/new-azure-data-factory.png)
 
@@ -62,9 +62,9 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 
 1.  **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
     
-    - **Varolan alanı kullan'ı** seçin ve açılan listeden varolan bir kaynak grubu seçin.
+    - **Mevcut olanı kullan** ' ı seçin ve açılır listeden var olan bir kaynak grubunu seçin.
     
-    - **Yeni Oluştur'u** seçin ve bir kaynak grubunun adını girin.
+    - **Yeni oluştur** ' u seçin ve bir kaynak grubunun adını girin.
 
     Bu hızlı başlangıçtaki adımlardan bazıları kaynak grubu için **ADFTutorialResourceGroup** adını kullandığınızı varsayar. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
@@ -110,7 +110,7 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
     1.  **Erişim Belirteci**’ni Azure Databricks çalışma alanından oluşturun. Adımları [burada](https://docs.databricks.com/api/latest/authentication.html#generate-token) bulabilirsiniz.
 
-    1.  **Küme sürümü için** **4.2'yi** seçin (Apache Spark 2.3.1, Scala 2.11 ile)
+    1.  **Küme sürümü**için **4,2** (Apache Spark 2.3.1, Scala 2,11) seçeneğini belirleyin
 
     1.  **Küme düğümü türü** için bu öğreticide **Genel Amaçlı (HDD)** bölümünde **Standart\_D3\_v2** seçin. 
     
@@ -122,7 +122,7 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1.  (artı) düğmesini **+** seçin ve menüde **Pipeline'ı** seçin.
+1.  **+** (Artı) düğmesini seçin ve ardından menüde işlem **hattı** ' nı seçin.
 
     ![Yeni işlem hattı oluşturma düğmeleri](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
@@ -142,7 +142,7 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
     b. **AzureDatabricks\_LinkedService** öğesini seçin (önceki yordamda oluşturdunuz).
 
-    c. **Ayarlar** sekmesine geçiş yapın
+    c. **Ayarlar** sekmesine geçiş yap
 
     c. Göz atarak bir Databricks **Not Defteri yolu** seçin. Şimdi bir not defteri oluşturup burada yolunu belirtelim. Sonraki birkaç adımı izleyerek Not Defteri Yolunu alın.
 
@@ -152,7 +152,7 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
           ![Yeni klasör oluşturma](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [Yeni bir not defteri (Python) oluşturun,](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) **adftutorial** Klasörü altında **mynotebook** diyelim, **Oluştur'u tıklatın.**
+       1. [Yeni bir not defteri](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python) oluşturun, **adföğretici** klasörü altında **mynot defteri** ' ni çağıralım, Oluştur ' a tıklayın **.**
 
           ![Yeni not defteri oluşturma](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -179,7 +179,7 @@ Bu bölümde bir Databricks bağlı hizmetini yazacaksınız. Bu bağlı hizmet,
 
        ![Parametre ekleme](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  Parametreyi **giriş** olarak adlandırın ve değeri ifade ** \@pipeline().parameters.name**olarak sağlayın.
+    b.  Parametreyi **girdi** olarak adlandırın ve değeri ifade ** \@ardışık düzeni (). Parameters. Name**olarak sağlayın.
 
 1.  İşlem hattını doğrulamak için araç çubuğundaki **Doğrula** düğmesini seçin. Doğrulama penceresini kapatmak için ** \> ** (sağ ok) düğmesini seçin.
 
@@ -201,7 +201,7 @@ Araç çubuğunda **Tetikleyici**’yi ve sonra **Şimdi Tetikle**’yi seçin.
 
 ## <a name="monitor-the-pipeline-run"></a>İşlem hattı çalıştırmasını izleme
 
-1.  **Monitör** sekmesine geçin. Bir ardışık hatlar çalışması gördüğünüzü onaylayın. Not defterinin yürütüldüğü bir Databricks iş kümesinin oluşturulması yaklaşık 5-8 dakika sürer.
+1.  **İzleyici** sekmesine geçin. bir işlem hattı çalıştırması Görtığınızdan emin olun. Not defterinin yürütüldüğü bir Databricks iş kümesinin oluşturulması yaklaşık 5-8 dakika sürer.
 
     ![İşlem hattını izleme](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nda filtreleme etkinliği
-description: Filtre etkinliği girişleri filtreler.
+title: Azure Data Factory etkinliği filtrele
+description: Filtre etkinliği girdileri filtreler.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417217"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda filtreleme etkinliği
-Bir giriş dizisine filtre ifadesi uygulamak için bir filtre etkinliğini ardışık düzende kullanabilirsiniz. 
+# <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
+Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Sözdizimi
@@ -39,14 +39,14 @@ Bir giriş dizisine filtre ifadesi uygulamak için bir filtre etkinliğini ardı
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | `Filter` Etkinliğin adı. | Dize | Evet
-type | **Filtrelenecek**şekilde ayarlanmalıdır. | Dize | Evet
-Durum | Girişi filtrelemek için kullanılacak koşul. | İfadeler | Evet
-Bileşen | Hangi filtrenin uygulanması gerektiğini giriş dizisi. | İfadeler | Evet
+ad | `Filter` Etkinliğin adı. | Dize | Yes
+type | **Filter**olarak ayarlanmalıdır. | Dize | Yes
+koşul | Girişi filtrelemek için kullanılacak koşul. | İfadeler | Yes
+öğeler | Filtrenin uygulanması gereken giriş dizisi. | İfadeler | Yes
 
 ## <a name="example"></a>Örnek
 
-Bu örnekte, ardışık iki etkinlik vardır: **Filtre** ve **ForEach**. Filtre etkinliği, 3'ten büyük bir değeri olan öğeler için giriş dizisini filtrelemek için yapılandırılır. ForEach etkinliği daha sonra filtre uygulanmış değerler üzerinde yinelenir ve değişken **testini** geçerli değere ayarlar.
+Bu örnekte, işlem hattının iki etkinliği vardır: **Filter** ve **foreach**. Filtre etkinliği, giriş dizisini 3 ' ten büyük bir değere sahip öğeler için filtrelemek üzere yapılandırılmıştır. ForEach etkinliği daha sonra filtrelenmiş değerler üzerinde yinelenir ve değişken **testini** geçerli değere ayarlar.
 
 ```json
 {
@@ -113,7 +113,7 @@ Bu örnekte, ardışık iki etkinlik vardır: **Filtre** ve **ForEach**. Filtre 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
+Data Factory tarafından desteklenen diğer denetim akışı etkinliklerini görün: 
 
 - [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)

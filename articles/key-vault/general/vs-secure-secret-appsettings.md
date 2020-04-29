@@ -1,6 +1,6 @@
 ---
-title: Bir web uygulaması için gizli uygulama ayarlarını güvenli bir şekilde kaydetme - Azure Key Vault | Microsoft Dokümanlar
-description: Temel Key Vault Sağlayıcısı, Kullanıcı Sırrı veya .NET 4.7.1 yapılandırma oluşturucularını kullanarak Azure kimlik bilgileri veya üçüncü taraf API anahtarları gibi gizli uygulama ayarlarını güvenli ASP.NET bir şekilde kaydetme
+title: Web uygulaması için gizli uygulama ayarlarını güvenli bir şekilde kaydetme-Azure Key Vault | Microsoft Docs
+description: ASP.NET Core Key Vault sağlayıcısı, Kullanıcı parolası veya .NET 4.7.1 yapılandırma oluşturucuları kullanarak Azure kimlik bilgileri veya üçüncü taraf API anahtarları gibi gizli uygulama ayarlarını güvenli bir şekilde kaydetme
 services: visualstudio
 author: cawaMS
 manager: paulyuk
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: cawa
 ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429765"
 ---
-# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Bir web uygulaması için gizli uygulama ayarlarını güvenli bir şekilde kaydedin
+# <a name="securely-save-secret-application-settings-for-a-web-application"></a>Gizli uygulama ayarlarını bir Web uygulaması için güvenli bir şekilde Kaydet
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Azure uygulamaları için gizli uygulama yapılandırma ayarlarını güvenli bir şekilde nasıl kaydedebilirsiniz.
+Bu makalede, Azure uygulamaları için gizli uygulama yapılandırma ayarlarının güvenli bir şekilde nasıl kaydedileceği açıklanır.
 
-Geleneksel olarak tüm web uygulaması yapılandırma ayarları Web.config gibi yapılandırma dosyalarına kaydedilir. Bu uygulama, GitHub gibi ortak kaynak denetim sistemlerine Bulut kimlik bilgileri gibi gizli ayarların denetlemesine yol açar. Bu arada, kaynak kodunu değiştirmek ve geliştirme ayarlarını yeniden yapılandırmak için gereken ek yükü nedeniyle güvenlik en iyi uygulama izlemek zor olabilir.
+Geleneksel olarak tüm Web uygulaması yapılandırma ayarları, Web. config gibi yapılandırma dosyalarına kaydedilir. Bu uygulama, GitHub gibi genel kaynak denetimi sistemlerine bulut kimlik bilgileri gibi gizli ayarları denetlemeye yol açar. Bu arada, kaynak kodu değiştirmek ve geliştirme ayarlarını yeniden yapılandırmak için gerekli olan ek yük nedeniyle en iyi güvenlik uygulamasını izlemek zor olabilir.
 
-Geliştirme işleminin güvenli olduğundan emin olmak için, uygulama gizli ayarlarını en az veya kaynak kodu değişikliği olmadan güvenli bir şekilde kaydetmek için araç ve çerçeve kitaplıkları oluşturulur.
+Geliştirme sürecinin güvenli olduğundan emin olmak için, uygulama gizli ayarlarını minimum veya kaynak kodu değişikliğiyle güvenli bir şekilde kaydetmek üzere araç ve çatı kitaplıkları oluşturulmuştur.
 
-## <a name="aspnet-and-net-core-applications"></a>ASP.NET ve .NET Çekirdek uygulamaları
+## <a name="aspnet-and-net-core-applications"></a>ASP.NET ve .NET Core Uygulamaları
 
-### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Kaynak denetim klasörünün dışındaki Kullanıcı Gizli deposunda gizli ayarları kaydetme
-Hızlı bir prototip yapıyorsanız veya internet erişiminiz yoksa, gizli ayarlarınızı kaynak denetim klasörünün dışına, Kullanıcı Sırrı mağazasına taşıyarak başlayın. Kullanıcı Gizli deposu kullanıcı profiler klasörü altında kaydedilmiş bir dosya, bu nedenle sırları kaynak denetimi için iade edilmez. Aşağıdaki [diyagram, Kullanıcı Sırrı'nın](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) nasıl çalıştığını gösterir.
+### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Gizli dizi ayarlarını, kaynak denetimi klasörü dışında Kullanıcı gizli deposunda Kaydet
+Hızlı bir prototip yapıyorsanız veya İnternet erişiminiz yoksa, gizli ayarlarınızı kaynak denetimi klasörü dışında Kullanıcı gizli deposuna taşımaya başlayın. Kullanıcı gizli dizisi, Kullanıcı Profil Oluşturucu klasörü altında kaydedilmiş bir dosyadır, bu nedenle gizli dizileri kaynak denetiminde iade edilmez. Aşağıdaki diyagramda [Kullanıcı gizliliğinin](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio) nasıl çalıştığı gösterilmektedir.
 
-![Kullanıcı Sırrı gizli ayarları kaynak denetimi dışında tutar](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
+![Kullanıcı gizli dizisi, kaynak denetimi dışında gizli ayarları tutar](../media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
-.NET çekirdek konsol uyrağı uygulamasını çalıştırıyorsanız, sırrınızı güvenli bir şekilde kaydetmek için Key Vault'u kullanın.
+.NET Core konsol uygulaması çalıştırıyorsanız, gizli anahtarı güvenli bir şekilde kaydetmek için Key Vault kullanın.
 
-### <a name="save-secret-settings-in-azure-key-vault"></a>Azure Anahtar Kasası'nda gizli ayarları kaydetme
-Bir proje geliştiriyorsanız ve kaynak kodunu güvenli bir şekilde paylaşmanız gerekiyorsa, [Azure Anahtar Kasası'nı](https://azure.microsoft.com/services/key-vault/)kullanın.
+### <a name="save-secret-settings-in-azure-key-vault"></a>Gizli ayarları Azure Key Vault Kaydet
+Bir proje geliştirmekte ve kaynak kodunu güvenli bir şekilde paylaşmanız gerekiyorsa [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)kullanın.
 
-1. Azure aboneliğinizde bir Anahtar Kasası oluşturun. UI'de gerekli tüm alanları doldurun ve bıçağın altında *Oluştur'u* tıklatın
+1. Azure aboneliğinizde bir Key Vault oluşturun. Kullanıcı arabirimindeki tüm gerekli alanları doldurun ve dikey pencerenin alt kısmındaki *Oluştur* ' a tıklayın
 
-    ![Azure Anahtar Kasası Oluşturma](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
+    ![Azure Key Vault oluştur](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Size ve ekip üyelerinize Key Vault'a erişim izni verir. Büyük bir ekibiniz varsa, bir [Azure Etkin Dizin grubu](../../active-directory/active-directory-groups-create-azure-portal.md) oluşturabilir ve bu güvenlik grubunun Anahtar Kasası'na erişimini ekleyebilirsiniz. Gizli *İzinler* açılır durumda, *Gizli Yönetim İşlemleri*altında *Al* ve *Liste'yi* kontrol edin.
-Web uygulamanızı zaten oluşturduysanız, Web uygulamasına Key Vault'a erişim izni vererek, Uygulama Ayarları'nda veya dosyalarda gizli yapılandırma depolamadan anahtar kasasına erişebilsin. Web uygulamanızı adına göre arayın ve kullanıcılara erişim izni verdiğiniz şekilde ekleyin.
+2. Size ve takım üyelerinize Key Vault erişimi verin. Büyük bir ekibiniz varsa, bir [Azure Active Directory grubu](../../active-directory/active-directory-groups-create-azure-portal.md) oluşturabilir ve bu güvenlik grubuna Key Vault erişimi ekleyebilirsiniz. *Gizli izinler* açılan menüsünde, *gizli yönetim işlemleri*altında *Al* ve *Listele* ' yi işaretleyin.
+Web uygulamanız zaten oluşturulmuşsa, uygulama ayarlarında veya dosyalarında gizli yapılandırmayı depolamadan, anahtar kasasına erişebilmeleri için Web uygulamasına Key Vault erişim izni verin. Web uygulamanızı adına göre arayın ve kullanıcılara erişim verdiğiniz şekilde ekleyin.
 
-    ![Key Vault erişim ilkesi ekle](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
+    ![Key Vault erişim ilkesi Ekle](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. Azure portalındaki Key Vault'a sırrınızı ekleyin. İç içe yapılandırma ayarları için Anahtar Kasa gizli adının geçerli olması için ':' ile '--' değiştirin. ':' bir Key Vault sırrı adına izin verilmez.
+3. Azure portal Key Vault için gizli anahtarı ekleyin. İç içe yapılandırma ayarları için ': ' değerini '--' ile değiştirin, bu nedenle Key Vault gizli adı geçerli olur. ': ' Key Vault gizli dizi adında olmasına izin verilmiyor.
 
-    ![Key Vault gizli ekle](../media/vs-secure-secret-appsettings/add-keyvault-secret.png)
+    ![Key Vault gizli dizi ekleyin](../media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE]
-    > Visual Studio 2017 V15.6'dan önce Visual Studio için Azure Hizmetleri Kimlik Doğrulama uzantısını yüklemenizi öneririz. Ama işlevsellik Visual Studio entegre olarak şimdi deprecated olduğunu. Bu nedenle Visual Studio 2017'nin eski bir sürümündeyseniz, bu işlevselliği yerel olarak kullanabilmeniz ve Visual Studio oturum açma Kimliğini kullanarak Anahtar kasasına erişebilmeniz için en az VS 2017 15.6 veya üzeri güncellemenizi öneririz.
+    > Visual Studio 2017 V 15.6 öncesinde, Visual Studio için Azure Hizmetleri kimlik doğrulama uzantısı 'nı yüklemenizi öneririz. Ancak işlevsellik Visual Studio içinde tümleştirildiği için artık kullanım dışıdır. Visual Studio 2017 ' nin eski bir sürümü kullanıyorsanız, bu işlevselliği yerel olarak kullanabilmeniz ve Visual Studio oturum açma kimliğini kullanarak anahtar kasasına erişmek için en az VS 2017 15,6 veya daha güncel güncelleştirmeleri güncelleştirmeniz önerilir.
     >
 
-4. Projenize aşağıdaki NuGet paketlerini ekleyin:
+4. Aşağıdaki NuGet paketlerini projenize ekleyin:
 
     ```
     Microsoft.Azure.KeyVault
     Microsoft.Azure.Services.AppAuthentication
     Microsoft.Extensions.Configuration.AzureKeyVault
     ```
-5. Program.cs dosyaya aşağıdaki kodu ekleyin:
+5. Aşağıdaki kodu Program.cs dosyasına ekleyin:
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -87,26 +87,26 @@ Web uygulamanızı zaten oluşturduysanız, Web uygulamasına Key Vault'a erişi
 
         private static string GetKeyVaultEndpoint() => Environment.GetEnvironmentVariable("KEYVAULT_ENDPOINT");
     ```
-6. Launchsettings.json dosyasına Key Vault URL'nizi ekleyin. KEYVAULT_ENDPOINT ortam *değişkeni* adı, 6.
+6. Key Vault URL 'nizi launchsettings. JSON dosyasına ekleyin. *KEYVAULT_ENDPOINT* ortam değişkeni adı, adım 6 ' da eklediğiniz kodda tanımlanmıştır.
 
-    ![Proje ortamı değişkeni olarak Anahtar Kasa URL'si ekleme](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
+    ![Key Vault URL 'sini bir proje ortamı değişkeni olarak ekleyin](../media/vs-secure-secret-appsettings/add-keyvault-url.png)
 
-7. Projehatasını çıkarmaya başlayın. Başarılı bir şekilde çalışmalı.
+7. Projede hata ayıklamayı başlatın. Başarıyla çalışmalıdır.
 
 ## <a name="aspnet-and-net-applications"></a>ASP.NET ve .NET uygulamaları
 
-.NET 4.7.1, sırların kod değişikliği olmadan kaynak denetim klasörünün dışına taşınabilmesini sağlayan Key Vault ve Secret yapılandırma oluşturucularını destekler.
-Devam etmek için [.NET 4.7.1'i indirin](https://www.microsoft.com/download/details.aspx?id=56115) ve .NET çerçevesinin eski bir sürümünü kullanıyorsa uygulamanızı geçirin.
+.NET 4.7.1, parolaların, kod değişikliği olmadan kaynak denetimi klasörünün dışına taşınabilmesini sağlayan Key Vault ve gizli dizi yapılandırma oluşturucularını destekler.
+Devam etmek için [.NET 4.7.1 indirin](https://www.microsoft.com/download/details.aspx?id=56115) ve .NET Framework 'ün daha eski bir sürümünü kullanıyorsa uygulamanızı geçirin.
 
-### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Gizli ayarları kaynak denetim klasörünün dışında bulunan gizli bir dosyaya kaydetme
-Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyorsanız, bu seçeneği belirleyin.
+### <a name="save-secret-settings-in-a-secret-file-that-is-outside-of-source-control-folder"></a>Gizli dizi ayarlarını kaynak denetimi klasörü dışında bir gizli dosyada Kaydet
+Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyorsanız, bu seçenekle birlikte gidin.
 
-1. Aşağıdaki NuGet paketini projenize yükleyin
+1. Aşağıdaki NuGet paketini projenize yükler
     ```
     Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. Aşağıdakilere benzer bir dosya oluşturun. Proje klasörünüzün dışındaki bir konumun altına kaydedin.
+2. Aşağıdakine benzer bir dosya oluşturun. Bunu proje klasörünüzün dışında bir konuma kaydedin.
 
     ```xml
     <root>
@@ -117,7 +117,7 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
     </root>
     ```
 
-3. Gizli dosyayı Web.config dosyanızda yapılandırma oluşturucusu olarak tanımlayın. Bu bölümü *appSettings* bölümünün önüne koyun.
+3. Gizli dosyayı, Web. config dosyanızda bir yapılandırma Oluşturucusu olacak şekilde tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun.
 
     ```xml
     <configBuilders>
@@ -129,7 +129,7 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
     </configBuilders>
     ```
 
-4. Özel Ayarlar bölümünün gizli yapılandırma oluşturucuyu kullandığını belirtin. Sahte değeri olan gizli ayar için bir giriş olduğundan emin olun.
+4. AppSettings bölümünde gizli dizi yapılandırma oluşturucusunun kullanılması. Gizli bir değere sahip gizli dizi ayarı için bir giriş olduğundan emin olun.
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -141,17 +141,17 @@ Hızlı bir prototip yazıyorsanız ve Azure kaynaklarını sağlamak istemiyors
         </appSettings>
     ```
 
-5. Uygulamanızı hata ayıklama. Başarılı bir şekilde çalışmalı.
+5. Uygulamanızda hata ayıklayın. Başarıyla çalışmalıdır.
 
-### <a name="save-secret-settings-in-an-azure-key-vault"></a>Azure Anahtar Kasası'nda gizli ayarları kaydetme
-Projeniz için bir Anahtar Kasası yapılandırmak için temel ASP.NET bölümdeki yönergeleri izleyin.
+### <a name="save-secret-settings-in-an-azure-key-vault"></a>Gizli ayarları bir Azure Key Vault kaydetme
+Projeniz için bir Key Vault yapılandırmak üzere ASP.NET Core bölümündeki yönergeleri izleyin.
 
-1. Aşağıdaki NuGet paketini projenize yükleyin
+1. Aşağıdaki NuGet paketini projenize yükler
    ```
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. Web.config'de Key Vault yapılandırma oluşturucusu tanımlayın. Bu bölümü *appSettings* bölümünün önüne koyun. VaultName'i, Key Vault'unuz herkese açık Azure'daysa key vault adı olarak değiştirin veya Sovereign bulutu kullanıyorsanız tam URI' yi değiştirin. *vaultName*
+2. Web. config 'de Key Vault Configuration Builder tanımlayın. Bu bölümü *appSettings* bölümünden önce koyun. Key Vault Genel Azure veya Sovereign bulutu kullanıyorsanız, *VAULTNAME* değerini Key Vault adı olacak şekilde değiştirin.
 
     ```xml
     <configSections>
@@ -163,7 +163,7 @@ Projeniz için bir Anahtar Kasası yapılandırmak için temel ASP.NET bölümde
         </builders>
     </configBuilders>
     ```
-3. Key Vault yapılandırma oluşturucusu kullanıyor appSettings bölümünü belirtin. Sahte değeri olan gizli ayar için herhangi bir giriş olduğundan emin olun.
+3. AppSettings bölümünün Key Vault yapılandırma oluşturucusunu kullandığını belirtin. Gizli bir değere sahip gizli dizi ayarı için herhangi bir giriş olduğundan emin olun.
 
    ```xml
    <appSettings configBuilders="AzureKeyVault">
@@ -175,4 +175,4 @@ Projeniz için bir Anahtar Kasası yapılandırmak için temel ASP.NET bölümde
    </appSettings>
    ```
 
-4. Projehatasını çıkarmaya başlayın. Başarılı bir şekilde çalışmalı.
+4. Projede hata ayıklamayı başlatın. Başarıyla çalışmalıdır.

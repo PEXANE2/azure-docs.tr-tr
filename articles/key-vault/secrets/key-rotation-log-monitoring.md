@@ -1,6 +1,6 @@
 ---
-title: Azure Anahtar Kasası'nı uçdan uca anahtar döndürme ve denetlemeyle ayarlama | Microsoft Dokümanlar
-description: Anahtar döndürmeyi ayarlamanıza ve anahtar kasa günlüklerini izlemenize yardımcı olmak için bu nasıl yapılacağını kılavuzunu kullanın.
+title: Uçtan uca anahtar döndürme ve denetleme ile Azure Key Vault ayarlama | Microsoft Docs
+description: Anahtar dönüşü ayarlamanıza ve Anahtar Kasası günlüklerini izlemenize yardımcı olması için bu nasıl yapılır kılavuzunu kullanın.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430259"
 ---
-# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Önemli döndürme ve denetleme yle Azure Anahtar Kasası'nı ayarlama
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Anahtar döndürme ve denetimle Azure Key Vault ayarlama
 
 ## <a name="introduction"></a>Giriş
 
-Bir anahtar kasa sonra, anahtarları ve sırlarını saklamak için kullanmaya başlayabilirsiniz. Uygulamalarınızın artık anahtarlarınızı veya sırlarınızı devam etmesi gerekmez, ancak gerektiğinde kasadan talep edebilirsiniz. Anahtar kasası, uygulamanızın davranışını etkilemeden tuşları ve sırları güncellemenizi sağlar ve bu da anahtar ve gizli yönetiminiz için çok çeşitli olanaklar sunar.
+Anahtar kasasından sonra anahtarları ve gizli dizileri depolamak için kullanmaya başlayabilirsiniz. Uygulamalarınızın artık anahtarlarınızı veya gizli dizileri kalıcı hale getirmek zorunda kalmaz, ancak gerektiğinde bunları kasadan talep edebilir. Anahtar Kasası, uygulamanızın davranışını etkilemeden anahtarları ve gizli dizileri güncelleştirmenize olanak tanır. Bu, anahtar ve gizli yönetibilmeniz için bir dizi olasılıktan oluşur.
 
-Bu makalede, depolama hesabı anahtarlarının zamanlanmış bir döndürmesi nasıl uygulanacağı, anahtar kasa denetim günlüklerinin nasıl izlendiği ve beklenmeyen isteklerde bulunulduğunda uyarıların nasıl yükseltilen olduğu ele alınmaktadır. 
+Bu makalede, depolama hesabı anahtarları için zamanlanmış bir döndürmeyi uygulama, Anahtar Kasası denetim günlüklerini izleme ve beklenmeyen istekler yapıldığında uyarı oluşturma adımları gösterilmektedir. 
 
-Öncelikle seçtiğiniz yöntemi kullanarak bir anahtar kasası oluşturmanız gerekir:
+Önce tercih ettiğiniz yöntemi kullanarak bir Anahtar Kasası oluşturmanız gerekir:
 
-- [Azure CLI'yi kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın](quick-create-cli.md)
-- [Azure PowerShell'i kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın](quick-create-powershell.md)
-- [Azure portalLarını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın](quick-create-portal.md)
+- [Azure CLı kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-cli.md)
+- [Azure PowerShell kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-powershell.md)
+- [Azure portal kullanarak Azure Key Vault bir gizli dizi ayarlama ve alma](quick-create-portal.md)
 
 
-## <a name="store-a-secret"></a>Bir sırrı saklayın
+## <a name="store-a-secret"></a>Gizli dizi depolayın
 
-Bir uygulamanın Key Vault'tan bir sır alabilmesi için önce sırrı oluşturmalı ve kasanıza yüklemeniz gerekir.
+Bir uygulamanın Key Vault bir gizli dizi almasına izin vermek için, öncelikle gizli anahtarı oluşturmanız ve bunu kasanıza yüklemeniz gerekir.
 
 Bir Azure PowerShell oturumu başlatın ve aşağıdaki komutla Azure hesabınızda oturum açın:
 
@@ -42,27 +42,27 @@ Bir Azure PowerShell oturumu başlatın ve aşağıdaki komutla Azure hesabını
 Connect-AzAccount
 ```
 
-Açılan tarayıcı penceresinde Azure hesabınızın kullanıcı adını ve parolasını girin. PowerShell bu hesapla ilişkili tüm abonelikleri alır. PowerShell varsayılan olarak ilkini kullanır.
+Açılır tarayıcı penceresinde, Azure hesabınızın kullanıcı adını ve parolasını girin. PowerShell, bu hesapla ilişkili tüm abonelikleri alır. PowerShell, varsayılan olarak ilk olanı kullanır.
 
-Birden çok aboneliğiniz varsa, anahtar kasanızı oluşturmak için kullanılan aboneliği belirtmeniz gerekebilir. Hesabınızın aboneliklerini görmek için aşağıdakileri girin:
+Birden çok aboneliğiniz varsa, anahtar kasanızı oluşturmak için kullanılan bir tane belirtmeniz gerekebilir. Hesabınıza yönelik abonelikleri görmek için aşağıdakileri girin:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Günlüğe kaydolacağınız anahtar kasasıyla ilişkili aboneliği belirtmek için girin:
+Günlüğe kaydetmek istediğiniz anahtar kasası ile ilişkili aboneliği belirtmek için şunu girin:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
-Bu makalede, bir depolama hesabı anahtarının gizli olarak depolandığı gösterildiğinden, bu depolama hesabı anahtarını almanız gerekir.
+Bu makalede bir depolama hesabı anahtarının gizli olarak depolanması gösterilmektedir. bu depolama hesabı anahtarını almanız gerekir.
 
 ```powershell
 Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Sırrınızı aldıktan sonra (bu durumda, depolama hesabı anahtarınız), bu anahtarı güvenli bir dize dönüştürmeniz ve ardından anahtar kasanızda bu değere sahip bir sır oluşturmanız gerekir.
+Gizli anahtarı aldıktan sonra (Bu durumda, depolama hesabı anahtarınız), bu anahtarı güvenli bir dizeye dönüştürmeniz ve sonra Anahtar Kasanızda bu değere sahip bir gizli dizi oluşturmanız gerekir.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
@@ -70,7 +70,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
-Sonra, yarattığınız sır için URI'yi getirin. Anahtar kasasını aramak ve sırrınızı geri almak için bu URI'ye daha sonraki bir adımda ihtiyacınız olacak. Aşağıdaki PowerShell komutunu çalıştırın ve sırrın URI'si olan kimlik değerini not edin:
+Ardından, oluşturduğunuz gizli dizi için URI 'yi alın. Anahtar kasasını çağırmak ve gizli anahtarı almak için bu URI 'nin sonraki bir adımda olması gerekir. Aşağıdaki PowerShell komutunu çalıştırın ve gizli dizi URI 'SI olan KIMLIK değerini unutmayın:
 
 ```powershell
 Get-AzKeyVaultSecret –VaultName <vaultName>
@@ -78,36 +78,36 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
 ## <a name="set-up-the-application"></a>Uygulamayı ayarlama
 
-Artık gizli bir deponuz olduğuna göre, birkaç adım daha yaptıktan sonra kodu almak ve kullanmak için kod kullanabilirsiniz.
+Gizli bir gizli dizi olduğuna göre, birkaç adım daha gerçekleştirdikten sonra bu kodu almak ve kullanmak için kodu kullanabilirsiniz.
 
-Öncelikle uygulamanızı Azure Active Directory'ye kaydettirmelisiniz. Ardından Key Vault'a başvuru bilgilerinizi söyleyin, böylece uygulamanızdan gelen isteklere izin verebilir.
+İlk olarak, Azure Active Directory uygulamanızı kaydetmeniz gerekir. Daha sonra uygulama bilgilerinizi Key Vault söyleyin. böylece uygulamanızdaki isteklere izin verebilir.
 
 > [!NOTE]
-> Uygulamanız, anahtar kasanızla aynı Azure Active Directory kiracısında oluşturulmalıdır.
+> Uygulamanız, anahtar kasanız ile aynı Azure Active Directory kiracısında oluşturulmalıdır.
 
-1. **Azure Etkin Dizini**Açın.
+1. **Azure Active Directory**açın.
 2. **Uygulama kayıtları**'nı seçin. 
-3. Azure Active Directory'ye uygulama eklemek için **Yeni uygulama kaydı'nı** seçin.
+3. Azure Active Directory bir uygulama eklemek için **Yeni uygulama kaydı** ' nı seçin.
 
-    ![Azure Active Directory'de uygulamaları açın](../media/keyvault-keyrotation/azure-ad-application.png)
+    ![Uygulamaları Azure Active Directory açın](../media/keyvault-keyrotation/azure-ad-application.png)
 
-4. **Create**altında, uygulama türünü **Web uygulaması / API** olarak bırakın ve uygulamanıza bir ad verin. Başvurunuza oturum **açma URL'si**verin. Bu URL, bu demo için istediğiniz her şey olabilir.
+4. **Oluştur**altında uygulama türünü **Web uygulaması/API** olarak bırakın ve uygulamanıza bir ad verin. Uygulamanıza bir **oturum açma URL 'si**verin. Bu URL, bu tanıtım için istediğiniz herhangi bir şey olabilir.
 
-    ![Uygulama kaydı oluşturma](../media/keyvault-keyrotation/create-app.png)
+    ![Uygulama kaydı oluştur](../media/keyvault-keyrotation/create-app.png)
 
-5. Uygulama Azure Etkin Dizini'ne eklendikten sonra uygulama sayfası açılır. **Ayarlar'ı**seçin ve ardından **Özellikler'i**seçin. Uygulama **Kimliği** değerini kopyalayın. Daha sonraki adımlarda ihtiyacınız olacak.
+5. Uygulama Azure Active Directory eklendikten sonra uygulama sayfası açılır. **Ayarlar**' ı seçin ve ardından **Özellikler**' i seçin. **Uygulama kimliği** değerini kopyalayın. Daha sonraki adımlarda bu gereklidir.
 
-Ardından, Azure Etkin Dizini ile etkileşimkurabilmesi için uygulamanız için bir anahtar oluşturun. Bir anahtar oluşturmak için Ayarlar altında **Anahtarlar'ı** seçin. **Settings** Azure Active Directory uygulamanız için yeni oluşturulan anahtara dikkat edin. Daha sonraki bir adımda gerekecektir. Bu bölümden ayrıldıktan sonra anahtar kullanılamaz. 
+Daha sonra, Azure Active Directory etkileşime girebilmesi için uygulamanız için bir anahtar oluşturun. Anahtar oluşturmak için **Ayarlar**altında **anahtarlar** ' ı seçin. Azure Active Directory uygulamanız için yeni oluşturulan anahtarı unutmayın. Daha sonraki bir adımda gerekecektir. Bu bölümden ayrıldığınızda anahtar kullanılamaz. 
 
 ![Azure Active Directory uygulama anahtarları](../media/keyvault-keyrotation/create-key.png)
 
-Başvurunuzdan anahtar kasasına herhangi bir arama yapmadan önce, anahtar kasasına başvurunuz ve izinleri hakkında bilgi vermelisiniz. Aşağıdaki komut, azure Active Directory uygulamanızdan kasa adını ve uygulama kimliğini kullanır ve uygulamaya anahtar kasanıza erişim **hakkı** verir.
+Uygulamanızdan anahtar kasasına çağrı yapmadan önce, uygulamanız ve izinleri hakkında anahtar kasasını bildirmeniz gerekir. Aşağıdaki komut, uygulamanın anahtar kasanıza **erişmesini sağlamak için Azure Active Directory uygulamanızdaki kasa** adını ve uygulama kimliğini kullanır.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-Artık başvuru çağrılarınızı oluşturmaya hazırsınız. Uygulamanızda, Azure Anahtar Kasası ve Azure Etkin Dizini ile etkileşim kurmak için gereken NuGet paketlerini yüklemeniz gerekir. Visual Studio Package Manager konsolundan aşağıdaki komutları girin. Bu makalenin yazımında, Azure Active Directory paketinin geçerli sürümü 3.10.305231913'tür, bu nedenle en son sürümü onaylayın ve gerektiğinde güncelleyin.
+Artık uygulama çağrılarınızı oluşturmaya başlamaya hazırsınız. Uygulamanızda, Azure Key Vault ve Azure Active Directory etkileşimde bulunmak için gereken NuGet paketlerini yüklemelisiniz. Visual Studio paket yöneticisi konsolundan aşağıdaki komutları girin. Bu makalenin yazıldığı Azure Active Directory paketinin güncel sürümü 3.10.305231913, bu nedenle en son sürümü onaylayın ve gerektiği şekilde güncelleştirin.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -115,13 +115,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-Uygulama kodunuzda, Azure Etkin Dizin kimlik doğrulamanızın yöntemini tutmak için bir sınıf oluşturun. Bu örnekte, bu sınıf **Utils**denir. Aşağıdaki `using` ifadeyi ekleyin:
+Uygulama kodunuzda, Azure Active Directory kimlik doğrulaması için yöntemi tutacak bir sınıf oluşturun. Bu örnekte, bu sınıf **yardımcı programlar**olarak adlandırılır. Aşağıdaki `using` ifadeyi ekleyin:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Ardından, Azure Etkin Dizini'nden JWT belirteci almak için aşağıdaki yöntemi ekleyin. Sürdürülebilirlik için, sabit kodlanmış dize değerlerini web veya uygulama yapılandırmanıza taşımak isteyebilirsiniz.
+Sonra, Azure Active Directory JWT belirtecini almak için aşağıdaki yöntemi ekleyin. Bakım için, sabit kodlanmış dize değerlerini Web veya uygulama yapılandırmanıza taşımak isteyebilirsiniz.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -140,13 +140,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Key Vault'u aramak ve gizli değerinizi almak için gerekli kodu ekleyin. Öncelikle aşağıdaki `using` ifadeyi eklemeniz gerekir:
+Key Vault çağırmak ve gizli değeri almak için gerekli kodu ekleyin. İlk olarak, aşağıdaki `using` ifadeyi eklemeniz gerekir:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Key Vault çağırmak ve sırrınızı almak için yöntem aramaları ekleyin. Bu yöntemde, önceki adımda kaydettiğiniz gizli URI'yi sağlarsınız. Daha önce oluşturduğunuz **Utils** sınıfından **GetToken** yönteminin kullanımına dikkat edin.
+Key Vault çağırmak ve gizli dizinizi almak için yöntem çağrılarını ekleyin. Bu yöntemde, önceki bir adımda kaydettiğiniz gizli URI 'yi sağlarsınız. Daha önce oluşturduğunuz **yardımcı programlar** sınıfından **GetToken** yönteminin kullanımını göz önünde bulabilirsiniz.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -154,26 +154,26 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-Uygulamanızı çalıştırdığınızda, artık Azure Active Directory'nin kimliğini doğrulamanız ve ardından gizli değerinizi Azure Key Vault'tan almanız gerekir.
+Uygulamanızı çalıştırdığınızda, artık Azure Active Directory kimlik doğrulaması yapılmalıdır ve sonra Azure Key Vault gizli değeri alınıyor.
 
-## <a name="key-rotation-using-azure-automation"></a>Azure Otomasyonu kullanarak anahtar döndürme
+## <a name="key-rotation-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak anahtar döndürme
 
 > [!IMPORTANT]
-> Azure Otomasyon runbook'ları hala `AzureRM` modülün kullanımını gerektirir.
+> Azure Otomasyonu runbook 'ları hâlâ `AzureRM` modülün kullanılmasını gerektirir.
 
-Artık Key Vault sırları olarak depoladığınız değerler için bir rotasyon stratejisi kurmaya hazırsınız. Sırlar çeşitli şekillerde döndürülebilir:
+Artık Key Vault gizli dizileri olarak depoladığınız değerler için bir döndürme stratejisi ayarlamaya hazırsınız. Gizli dizileri çeşitli yollarla döndürülebilir:
 
-- Manuel işlemin bir parçası olarak
-- API çağrılarını kullanarak programlanabilir
-- Azure Otomasyon komut dosyası aracılığıyla
+- El ile gerçekleştirilen bir işlemin parçası olarak
+- API çağrılarını kullanarak programlı olarak
+- Bir Azure Otomasyonu betiği aracılığıyla
 
-Bu makalenin amaçları doğrultusunda, Azure depolama hesabının erişim anahtarını değiştirmek için Azure Otomasyonu ile birlikte PowerShell'i kullanırsınız. Daha sonra bu yeni anahtar ile önemli bir kasa sırrı güncelleyin.
+Bu makalenin amaçları doğrultusunda, Azure depolama hesabının erişim anahtarını değiştirmek için PowerShell 'i Azure Otomasyonu ile birlikte kullanacaksınız. Daha sonra bu yeni anahtarla bir Anahtar Kasası parolasını güncelleştireceksiniz.
 
-Azure Otomasyonu'nun anahtar kasanızda gizli değerler ayarlamasına izin vermek için **AzureRunAsConnection**adlı bağlantı için istemci kimliğini almanız gerekir. Bu bağlantı, Azure Otomasyon uçağını kurduğunuzda oluşturdu. Bu kimliği bulmak için Azure Otomasyon uyrunuzdan **Varlıklar'ı** seçin. Buradan **Bağlantılar'ı**seçin ve ardından **AzureRunAsConnection** hizmet ilkesini seçin. **ApplicationId** değerini not edin.
+Azure Otomasyonu 'nun Anahtar Kasanızda gizli değerler değiştirmesine izin vermek için **Azurerunasconnection**adlı BAĞLANTıNıN istemci kimliğini almanız gerekir. Bu bağlantı, Azure Otomasyonu örneğinizi oluştururken oluşturulmuştur. Bu KIMLIĞI bulmak için Azure Otomasyonu örneğinden **varlıklar** ' ı seçin. Buradan **Bağlantılar**' ı seçin ve ardından **Azurerunasconnection** hizmet sorumlusu ' nı seçin. **ApplicationId** değerini unutmayın.
 
-![Azure Otomasyon istemci kimliği](../media/keyvault-keyrotation/Azure_Automation_ClientID.png)
+![Azure Otomasyonu istemci KIMLIĞI](../media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-**Varlıklar'da** **Modülleri**seçin. **Galeri'yi**seçin ve ardından aşağıdaki modüllerin her birinin güncelleştirilmiş sürümlerini arayın ve içe aktarın:
+**Varlıklar**' da **modüller**' i seçin. **Galeri**' yi seçin ve ardından aşağıdaki modüllerden her birinin güncelleştirilmiş sürümlerini arayın ve içeri aktarın:
 
     Azure
     Azure.Storage
@@ -183,19 +183,19 @@ Azure Otomasyonu'nun anahtar kasanızda gizli değerler ayarlamasına izin verme
     AzureRM.Storage
 
 > [!NOTE]
-> Bu makalenin yazımında, yalnızca daha önce kayda geçen modüllerin aşağıdaki komut dosyası için güncellenmesi gerekir. Otomasyon işiniz başarısız olursa, gerekli tüm modülleri ve bunların bağımlılıklarını içe aktardığınızı onaylayın.
+> Bu makalenin yazıldığı sırada, aşağıdaki komut dosyası için yalnızca önceden belirtilen modüllerin güncellenmesi gerekir. Otomasyon işiniz başarısız olursa, gerekli tüm modülleri ve bunların bağımlılıklarını içeri aktardığınızı onaylayın.
 
-Azure Otomasyon bağlantınız için uygulama kimliğini aldıktan sonra, anahtar kasanıza bu uygulamanın kasanızdaki sırları güncelleştirme izni olduğunu söylemeniz gerekir. Aşağıdaki PowerShell komutunu kullanın:
+Azure Otomasyonu bağlantınız için uygulama KIMLIĞINI aldıktan sonra, anahtar kasanıza bu uygulamanın kasadaki gizli dizileri güncelleştirme izni olduğunu söylemeniz gerekir. Aşağıdaki PowerShell komutunu kullanın:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Ardından, Azure Otomasyonu örneğinizin altındaki **Runbook'ları** seçin ve ardından **Runbook Ekle'yi**seçin. **Hızlı Oluştur**’u seçin. Runbook'unuzu adlandırın ve runbook türü olarak **PowerShell'i** seçin. Açıklama ekleyebilirsiniz. Son olarak, **Oluştur'u**seçin.
+Ardından, Azure Automation örneğinizin altındaki **runbook 'ları** seçin ve ardından **runbook Ekle**' yi seçin. **Hızlı Oluştur**’u seçin. Runbook 'unuzu adlandırın ve Runbook türü olarak **PowerShell** ' i seçin. Bir açıklama ekleyebilirsiniz. Son olarak **Oluştur**' u seçin.
 
 ![Runbook oluşturma](../media/keyvault-keyrotation/Create_Runbook.png)
 
-Yeni runbook için editör bölmesine aşağıdaki PowerShell komut dosyası yapıştırın:
+Aşağıdaki PowerShell betiğini yeni runbook 'larınızın düzenleyici bölmesine yapıştırın:
 
 ```powershell
 $connectionName = "AzureRunAsConnection"
@@ -238,13 +238,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-Düzenleyici bölmesinde, komut dosyanızı sınamak için **Test bölmesini** seçin. Komut dosyası hatasız çalıştırdıktan sonra **Yayımla'yı**seçebilir ve runbook yapılandırma bölmesinde runbook için bir zamanlama uygulayabilirsiniz.
+Komut dosyanızı test etmek için Düzenleyici bölmesinde **Test bölmesi** ' ni seçin. Betik hatasız çalıştıktan sonra **Yayımla**' yı seçebilir ve Runbook yapılandırması bölmesinde runbook için bir zamanlama uygulayabilirsiniz.
 
-## <a name="key-vault-auditing-pipeline"></a>Key Vault denetim boru hattı
+## <a name="key-vault-auditing-pipeline"></a>Key Vault denetim işlem hattı
 
-Bir anahtar kasası ayarladığınızda, anahtar kasasına yapılan erişim isteklerinin günlüklerini toplamak için denetimi açabilirsiniz. Bu günlükler belirlenmiş bir Azure depolama hesabında depolanır ve çıkarılabilir, izlenebilir ve analiz edilebilir. Aşağıdaki senaryo, web uygulamasının uygulama kimliğiyle eşleşmeyen bir uygulama kasadan sırları aldığında e-posta gönderen bir ardışık hat lar oluşturmak için Azure işlevlerini, Azure mantık uygulamalarını ve anahtar kasa denetim günlüklerini kullanır.
+Bir Anahtar Kasası ayarladığınızda, anahtar kasasında yapılan erişim isteklerindeki günlükleri toplamak için denetimi açabilirsiniz. Bu Günlükler, belirlenen bir Azure depolama hesabında depolanır ve kullanıma alınabilir, izlenebilir ve analiz edilebilir. Aşağıdaki senaryo, Web uygulamasının uygulama KIMLIĞIYLE eşleşmeyen bir uygulama, kasadan gizli dizileri aldığında bir e-posta gönderen bir işlem hattı oluşturmak için Azure işlevleri, Azure Logic Apps ve Anahtar Kasası denetim günlüklerini kullanır.
 
-İlk olarak, anahtar kasasında oturum açmayı etkinleştirmelisiniz. Aşağıdaki PowerShell komutlarını kullanın. [(Anahtar-tonoz-günlük ile ilgili bu makalede](../general/logging.md)tüm ayrıntıları görebilirsiniz.)
+İlk olarak, Anahtar Kasanızda günlüğü etkinleştirmeniz gerekir. Aşağıdaki PowerShell komutlarını kullanın. ( [Anahtar Kasası günlüğü hakkında bu makaledeki](../general/logging.md)tüm ayrıntıları görebilirsiniz.)
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -252,27 +252,27 @@ $kv = Get-AzKeyVault -VaultName '<vaultName>'
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Günlüğe kaydetme etkinleştirildikten sonra, denetim günlükleri belirlenen depolama hesabında depolanmaya başlar. Bu günlükler, anahtar kasalarınıza nasıl ve ne zaman ve kim tarafından erişilenlerle ilgili olayları içerir.
+Günlüğe kaydetme etkinleştirildikten sonra, denetim günlükleri belirlenen depolama hesabında depolanmaya başlar. Bu günlüklerde, anahtar kasalarınızın nasıl ve ne zaman erişildiği ve kim tarafından kullanıldığı hakkında olaylar bulunur.
 
 > [!NOTE]
-> Anahtar kasa işleminden 10 dakika sonra günlük bilgilerinize erişebilirsiniz. Genellikle bundan daha erken satışa sunulacak.
+> Kayıt bilgilerinizi, Anahtar Kasası işleminden sonraki 10 dakika sonra erişebilirsiniz. Genellikle daha önce kullanılabilir olacaktır.
 
-Bir sonraki [adım, bir Azure Hizmet Veri Servisi kuyruğu oluşturmaktır.](../../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md) Bu sıra, anahtar kasa denetim günlüklerinin itildiği yerdir. Denetim günlüğü iletileri sırada olduğunda, mantık uygulaması onları alır ve üzerlerinde hareket eder. Aşağıdaki adımları içeren bir Hizmet Veri Servisi örneği oluşturun:
+Sonraki adım [Azure Service Bus kuyruğu oluşturmaktır](../../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Bu kuyruk, Anahtar Kasası denetim günlüklerinin gönderildiği yerdir. Denetim günlüğü iletileri kuyrukta olduğunda, mantıksal uygulama bunları kullanır ve üzerinde davranır. Aşağıdaki adımlarla bir Service Bus örneği oluşturun:
 
-1. Hizmet Veri Servisi ad alanı oluşturun (zaten kullanmak istediğiniz bir tane varsa, adım 2'ye atlayın).
-2. Azure portalındaki Hizmet Veri Servisi örneğine göz atın ve kuyruk oluşturmak istediğiniz ad alanını seçin.
-3. Kaynak > **Kurumsal Tümleştirme** > Hizmeti Veri**Servisi** **Oluştur'u**seçin ve ardından gerekli ayrıntıları girin.
-4. Ad alanını seçip **ardından Bağlantı Bilgilerini**seçerek Hizmet Veri Servisi bağlantı bilgilerini bulun. Bir sonraki bölüm için bu bilgilere ihtiyacınız olacak.
+1. Service Bus ad alanı oluşturun (kullanmak istediğiniz bir tane varsa, 2. adıma atlayın).
+2. Azure portal Service Bus örneğine gidin ve kuyruğu oluşturmak istediğiniz ad alanını seçin.
+3.  > **Service Bus****kurumsal tümleştirme** **kaynak** > oluştur ' u seçin ve ardından gerekli ayrıntıları girin.
+4. Ad alanını seçip **bağlantı bilgileri**' ni seçerek Service Bus bağlantı bilgilerini bulun. Sonraki bölümde bu bilgilere ihtiyacınız olacaktır.
 
-Ardından, depolama hesabındaki anahtar kasa günlüklerini yoklamak ve yeni etkinlikler almak için [bir Azure işlevi oluşturun.](../../azure-functions/functions-create-first-azure-function.md) Bu işlev bir zamanlamada tetiklenir.
+Daha sonra, depolama hesabındaki Anahtar Kasası günlüklerini yoklamak ve yeni olayları almak için [bir Azure işlevi oluşturun](../../azure-functions/functions-create-first-azure-function.md) . Bu işlev bir zamanlamaya göre tetiklenecektir.
 
-Bir Azure işlev uygulaması oluşturmak için **kaynak oluştur'u,** **İşlev Uygulaması**için pazarda arama yapın'ı ve ardından **Oluştur'u**seçin. Oluşturma sırasında, varolan bir barındırma planı kullanabilir veya yeni bir barındırma planı oluşturabilirsiniz. Ayrıca dinamik barındırma için tercih edebilirsiniz. Azure İşlevleri için barındırma seçenekleri hakkında daha fazla bilgi için [Azure İşlevlerini nasıl ölçeklendirin'](../../azure-functions/functions-scale.md)e bakın.
+Bir Azure işlev uygulaması oluşturmak için **kaynak oluştur**' u seçin, market 'te **işlev uygulaması**arayın ve ardından **Oluştur**' u seçin. Oluşturma sırasında, mevcut bir barındırma planını kullanabilir veya yeni bir tane oluşturabilirsiniz. Dinamik barındırmayı da tercih edebilirsiniz. Azure Işlevleri barındırma seçenekleri hakkında daha fazla bilgi için bkz. [Azure işlevlerini ölçeklendirme](../../azure-functions/functions-scale.md).
 
-Azure işlev uygulaması oluşturulduktan sonra uygulamanın üzerine gidin ve dil için **Zamanlayıcı** senaryosunu ve **\# C'yi** seçin. Sonra **bu işlevi oluştur'u**seçin.
+Azure işlevi uygulaması oluşturulduktan sonra, bu uygulamaya gidin ve dil için **Zamanlayıcı** senaryosunu ve **C\# ** 'yi seçin. Sonra **Bu Işlevi oluştur**' u seçin.
 
-![Azure Fonksiyonları Başlangıç bıçağı](../media/keyvault-keyrotation/Azure_Functions_Start.png)
+![Azure Işlevleri başlangıç dikey penceresi](../media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-**Geliştir** sekmesinde, run.csx kodunu aşağıdakilerle değiştirin:
+**Geliştir** sekmesinde Run. CSX kodunu aşağıdaki kodla değiştirin:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -384,19 +384,19 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 ```
 
 > [!NOTE]
-> Önceki koddaki değişkenleri, anahtar kasa günlüklerinin yazıldığı depolama hesabınıza, daha önce oluşturduğunuz Hizmet Veri Yolu örneğine ve anahtar kasa depolama günlüklerine giden belirli yolu işaret etmek üzere değiştirin.
+> Yukarıdaki koddaki değişkenleri, Anahtar Kasası günlüklerinin yazıldığı depolama hesabınıza, daha önce oluşturduğunuz Service Bus örneğine ve Anahtar Kasası depolama günlüklerinin özel yoluna işaret etmek üzere değiştirin.
 
-İşlev, anahtar kasa günlüklerinin yazıldığı depolama hesabından en son günlük dosyasını alır, bu dosyadaki en son olayları yakalar ve servis veri hizmeti kuyruğuna iter. 
+İşlevi, Anahtar Kasası günlüklerinin yazıldığı, bu dosyanın en son olaylarını izleyen ve bunları bir Service Bus kuyruğuna gönderen depolama hesabından en son günlük dosyasını seçer. 
 
-Tek bir dosyada birden çok olay olabileceğinden, işlevin de ele alınan son olayın zaman damgasını belirlemek için baktığı bir eşitleme.txt dosyası oluşturmanız gerekir. Bu dosyayı kullanmak, aynı olayı birden çok kez zorlamamanızı sağlar. 
+Tek bir dosya birden çok olaya sahip olabileceğinden, çalıştırılan son olayın zaman damgasını tespit etmek üzere işlevin de göründüğü bir Sync. txt dosyası oluşturmanız gerekir. Bu dosyanın kullanılması, aynı olayı birden çok kez göndermemenizi sağlar. 
 
-Sync.txt dosyası, son karşılaşılan olay için bir zaman damgası içerir. Günlükler yüklendiğinde, doğru şekilde sipariş edildiklerinden emin olmak için zaman damgalarına göre sıralanmalıdır.
+Sync. txt dosyası, son karşılaşılan olayla ilgili bir zaman damgası içerir. Günlükler yüklendiğinde, doğru sıralandıklarından emin olmak için zaman damgalarına göre sıralanmalıdır.
 
-Bu işlev için, Azure İşlevler'de kutunun dışında bulunmayan birkaç ek kitaplıktan başvuruluyuz. Bu kitaplıkları eklemek için, NuGet'i kullanarak bunları çekmek için Azure Fonksiyonları'na ihtiyacımız vardır. **Kod** kutusunun altında **Dosyaları Görüntüle'yi**seçin.
+Bu işlev için, Azure Işlevleri 'nde kutudan kullanılamayan birkaç ek kitaplıklara başvuracağız. Bu kitaplıkları dahil etmek için, NuGet kullanarak bunları çekmek üzere Azure Işlevlerine ihtiyacımız var. **Kod** kutusunda, **dosyaları görüntüle**' yi seçin.
 
 !["Dosyaları görüntüle" seçeneği](../media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-Project.json adlı dosyayı aşağıdaki içeriğe ekleyin:
+Aşağıdaki içeriğe sahip Project. JSON adlı bir dosya ekleyin:
 
 ```json
     {
@@ -411,38 +411,38 @@ Project.json adlı dosyayı aşağıdaki içeriğe ekleyin:
     }
 ```
 
-**Kaydet'i**seçtikten sonra Azure İşlevleri gerekli ikilileri karşıdan yükleyecek.
+**Kaydet**' i seçtikten sonra, Azure işlevleri gerekli ikilileri indirir.
 
-**Tümleştir** sekmesine geçin ve zamanlayıcı parametresine işlev içinde kullanılacak anlamlı bir ad verin. Önceki kodda, işlev zamanlayıcının *myTimer*olarak çağrılmasını bekler. Zamanlayıcı için [cron ifadesini](../../app-service/webjobs-create.md#CreateScheduledCRON) aşağıdaki `0 * * * * *`gibi belirtin: . Bu ifade, işlevin dakikada bir çalışmasına neden olur.
+**Tümleştirin** sekmesine geçin ve Zamanlayıcı parametresine işlev içinde kullanmak için anlamlı bir ad verin. Yukarıdaki kodda, işlev zamanlayıcının *MyTimer*olarak çağrılmasına bekliyor. Süreölçer için bir [cron ifadesini](../../app-service/webjobs-create.md#CreateScheduledCRON) aşağıdaki gibi belirtin: `0 * * * * *`. Bu ifade, işlevin dakikada bir kez çalışmasına neden olur.
 
-Aynı **Tümleştir** sekmesinde, **Azure Blob depolama**türünden bir giriş ekleyin. Bu giriş, işlev tarafından incelenen son olayın zaman damgasını içeren sync.txt dosyasını gösterir. Bu giriş, parametre adı kullanılarak işlev içinde erişilecektir. Önceki kodda, Azure Blob depolama girişi parametre adının *blob*olmasını bekler. sync.txt dosyasının bulunduğu depolama hesabını seçin (aynı veya farklı bir depolama hesabı olabilir). Yol alanında, dosyaya giden yolu biçimde `{container-name}/path/to/sync.txt`sağlayın.
+Aynı **tümleştirme** sekmesinde **Azure Blob depolama**türünde bir giriş ekleyin. Bu giriş, işlevine baktığı son olayın zaman damgasını içeren Sync. txt dosyasına işaret eder. Bu girişe, işlev içinde parametre adı kullanılarak erişilir. Yukarıdaki kodda, Azure Blob depolama girişi parametre adının *Inputblob*olmasını bekler. Sync. txt dosyasının bulunacağı depolama hesabını seçin (aynı veya farklı bir depolama hesabı olabilir). Yol alanında, dosyanın yolunu biçiminde `{container-name}/path/to/sync.txt`girin.
 
-**Azure Blob depolama**türünden bir çıktı ekleyin. Bu çıktı, girişte tanımladığınız sync.txt dosyasını gösterir. Bu çıktı, son olayın baktığı zaman damgasını yazmak için işlev tarafından kullanılır. Önceki kod bu *parametrenin outputBlob*olarak adlandırılmasını bekler.
+**Azure Blob depolama**türünde bir çıkış ekleyin. Bu çıktı, girişte tanımladığınız Sync. txt dosyasına işaret eder. Bu çıktı, işlevi tarafından, en son olayın zaman damgasını yazmak için kullanılır. Yukarıdaki kod bu parametrenin *outputblob*olarak adlandırıldığını bekliyor.
 
-İşlev artık hazır. **Geliştirme** sekmesine geri dönüp kodu kaydettiğinden emin olun. Tüm derleme hataları için çıktı penceresini denetleyin ve gerektiğinde düzeltin. Kod derleniyorsa, kod artık anahtar kasagünlüklerini her dakika kontrol etmeli ve yeni olayları tanımlanan Hizmet Veri Servisi kuyruğuna itmelidir. İşlev her tetikleninde günlük penceresine günlüğe kaydetme bilgilerinin yazılması gerektiğini görmeniz gerekir.
+İşlev artık hazır. **Geliştirme** sekmesine dönüp kodu kaydettiğinizden emin olun. Herhangi bir derleme hatası için çıkış penceresini kontrol edin ve bunları gerektiği gibi düzeltin. Kod derleniyorsa, kod bundan sonra Anahtar Kasası günlüklerini her dakikada denetlemelidir ve tanımlanan Service Bus kuyruğuna yeni olaylar itilebilmelidir. İşlevin her tetiklenişinde günlüğe kaydetme bilgilerinin günlük penceresine yazılacağını görmeniz gerekir.
 
-### <a name="azure-logic-app"></a>Azure mantık uygulaması
+### <a name="azure-logic-app"></a>Azure mantıksal uygulaması
 
-Ardından, işlevin Hizmet Veri Servisi kuyruğuna ittiği olayları alan, içeriği ayrıştıran ve eşleşen bir duruma dayalı bir e-posta gönderen bir Azure mantık uygulaması oluşturmanız gerekir.
+Ardından, işlevin Service Bus kuyruğuna itileceği olayları oluşturan, içeriği ayrıştırdığı ve eşleşen koşula göre bir e-posta gönderen bir Azure mantıksal uygulaması oluşturmanız gerekir.
 
- > Kaynak**Tümleştirme** > **Mantığı Uygulaması** **Oluştur'u**seçerek [bir mantık uygulaması oluşturun.](../../logic-apps/quickstart-create-first-logic-app-workflow.md)
+Kaynak > **Integration**tümleştirme > **mantıksal uygulaması** **Oluştur**seçeneğini belirleyerek [bir mantıksal uygulama oluşturun](../../logic-apps/quickstart-create-first-logic-app-workflow.md) .
 
-Mantık uygulaması oluşturulduktan sonra, ona gidin ve **Edit'i**seçin. Mantık uygulaması düzenleyicisinde **Service Bus Queue'yi** seçin ve kuyruğa bağlamak için Servis Veri Aracı kimlik bilgilerinizi girin.
+Mantıksal uygulama oluşturulduktan sonra şuraya gidin ve **Düzenle**' yi seçin. Mantıksal uygulama Düzenleyicisi 'nde **Service Bus kuyruğu** ' nu seçin ve kuyruğa bağlamak için Service Bus kimlik bilgilerinizi girin.
 
-![Azure Mantık Uygulama Servis Veri Servisi](../media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
+![Azure Logic App Service veriyolu](../media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-**Koşul ekle'yi**seçin. Bu durumda, gelişmiş düzenleyiciye geçin ve aşağıdaki kodu girin. *APP_ID* web uygulamanızın gerçek uygulama kimliğiyle değiştirin:
+**Koşul Ekle**' yi seçin. Koşulda, gelişmiş düzenleyiciye geçin ve aşağıdaki kodu girin. *APP_ID* , Web uygulamanızın gerçek uygulama kimliğiyle değiştirin:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Gelen olaydan (Hizmet Veri Günü iletisinin gövdesi) *gelen uygulama* uygulamanın *uygulaması* değilse, bu ifade aslında **yanlış** döndürür.
+Bu ifade, gelen olaydaki *AppID* (Service Bus iletisinin gövdesi) uygulamanın *AppID* değeri değilse aslında **false** döndürür.
 
-Şimdi, EĞER NO altında bir eylem **oluşturmak, HIÇBIR ŞEY YAPMAYın**.
+Şimdi, **Hayır, HIÇBIR şey yapma**altında bir eylem oluşturun.
 
 ![Azure Logic Apps eylemi seçin](../media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Eylem için **Office 365'i seçin - e-posta gönderin.** Tanımlanan koşul **yanlış**döndürdüğünde göndermek için bir e-posta oluşturmak için alanları doldurun. Office 365'inyoksa, aynı sonuçları elde etmek için alternatifler arayın.
+Eylem için **Office 365-e-posta gönder**' i seçin. Tanımlanan koşul **false**değerini döndürdüğünde göndermek üzere bir e-posta oluşturmak için alanları doldurun. Office 365 yoksa, aynı sonuçlara ulaşmak için alternatifler arayın.
 
-Artık dakikada bir kez yeni anahtar kasa denetim günlüklerini arayan uçlardan uca bir ardışık ardışık ardışık noktanız var. Bulduğu yeni günlükleri Servis Veri Servisi kuyruğuna iter. Yeni bir ileti sıraya düştüğünde mantık uygulaması tetiklenir. Etkinlik içindeki *uygulama* arama uygulamasının uygulama kimliğiyle eşleşmiyorsa, bir e-posta gönderir.
+Artık bir dakika sonra Yeni Anahtar Kasası denetim günlüklerini gösteren uçtan uca bir işlem hattı vardır. Bulduğu yeni günlüklere Service Bus kuyruğuna iter. Mantıksal uygulama, sıradaki yeni bir ileti olduğunda tetiklenir. Olaydaki *AppID* , çağıran UYGULAMANıN uygulama kimliğiyle eşleşmezse, bir e-posta gönderir.

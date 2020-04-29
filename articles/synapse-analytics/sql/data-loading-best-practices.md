@@ -1,6 +1,6 @@
 ---
 title: Veri yükleme en iyi yöntemleri
-description: Synapse SQL'e veri yükleme için öneriler ve performans optimizasyonları
+description: SYNAPSE SQL 'e veri yüklemeye yönelik öneriler ve performans iyileştirmeleri
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431052"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri depolama için veri yükleme için en iyi uygulamalar
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Veri depolamaya yönelik verileri yüklemeye yönelik en iyi uygulamalar
 
-Veri yükleme için öneriler ve performans optimizasyonları
+Verileri yüklemek için öneriler ve performans iyileştirmeleri
 
 ## <a name="preparing-data-in-azure-storage"></a>Azure Depolama’da verileri hazırlama
 
@@ -36,9 +36,9 @@ Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosya
 
 ## <a name="running-loads-with-enough-compute"></a>Yükleri yeterli işlemle çalıştırma
 
-En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklemeyi düşünün.
+En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bunu yapmak uygun değilse, en az sayıda yükü eşzamanlı olarak çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
 
-Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Bir yükü çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
+Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir kaynak sınıfına veya iş yükü grubuna atayın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının kaynak sınıfıyla çalıştırılır.  Bu yöntem bir kullanıcının kaynak sınıfını geçerli kaynak sınıfının ihtiyacına uygun olarak değiştirmeye çalışmaktan daha basittir.
 
 ### <a name="example-of-creating-a-loading-user"></a>Yükleme kullanıcısı oluşturmayla ilgili örnek
 
@@ -58,13 +58,13 @@ Veri ambarına bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kodda, myS
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-Statik RC20 kaynak sınıfları için kaynaklarla bir yük çalıştırmak için LoaderRC20 olarak oturum açın ve yükü çalıştırın.
+StaticRC20 kaynak sınıfları için kaynaklarla bir yük çalıştırmak için, LoaderRC20 olarak oturum açın ve yükü çalıştırın.
 
-Yükleri dinamik yerine statik kaynak sınıfları altında çalıştırın. Statik kaynak sınıflarını kullanmak, [veri ambarı birimleriniz](resource-consumption-models.md)ne olursa olsun aynı kaynakları garanti eder. Bir dinamik kaynak sınıfı kullanırsanız, kaynaklar hizmet düzeyinize göre değişir. Dinamik sınıflar için, daha düşük bir hizmet düzeyi, yükleme kullanıcınız için daha büyük bir kaynak sınıfı kullanmanız gerektiğini gösteriyor olabilir.
+Yükleri dinamik yerine statik kaynak sınıfları altında çalıştırın. Statik kaynak sınıflarının kullanılması, [veri ambarı birimlerinizde](resource-consumption-models.md)bağımsız olarak aynı kaynakları garanti eder. Bir dinamik kaynak sınıfı kullanırsanız, kaynaklar hizmet düzeyinize göre değişir. Dinamik sınıflar için, daha düşük bir hizmet düzeyi, yükleme kullanıcınız için daha büyük bir kaynak sınıfı kullanmanız gerektiğini gösteriyor olabilir.
 
 ## <a name="allowing-multiple-users-to-load"></a>Birden çok kullanıcının yüklemesine izin verme
 
-Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması gerekir. [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ile yüklenmesi veritabanının DENETIM izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir. Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
+Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması gerekir. [Select (Transact-SQL) olarak Create Table](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir. Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
 
 Örneğin, A departmanı için schema_A ve B departmanı için schema_B adında veritabanı şemaları olduğunu düşünelim. user_A ve user_B adlı veritabanı kullanıcıları sırayla A ve B departmanları için PolyBase yükleme kullanıcıları olsun. Her ikisine de CONTROL veritabanı izinleri verilmiştir. A ve B şemalarını oluşturanlar DENY kullanarak bu şemaları kilitler:
 
@@ -73,7 +73,7 @@ Genellikle bir veri ambarına veri yükleyebilen birden çok kullanıcı olması
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
-User_A ve user_B diğer bölümün şemasından uzak kaldılar.
+User_A ve user_B artık diğer bölüm şemasından kilitlidir.
 
 ## <a name="loading-to-a-staging-table"></a>Hazırlama tablosuna yükleme
 
@@ -88,9 +88,9 @@ Columnstore dizinleri, verileri yüksek kaliteli satır grupları olarak sıkı�
 - Yükleme kullanıcısının en yüksek sıkıştırma oranlarına ulaşmak için yeterli belleğe sahip olduğundan emin olmak için, orta veya büyük bir kaynak sınıfının üyesi olan yükleme kullanıcılarını kullanın.
 - Yeni satır gruplarını tamamen doldurmak için yeterli satır yükleyin. Bir toplu yükleme sırasında her 1.048.576 satır, tam bir satır grubu olarak doğrudan columnstore’da sıkıştırılır. 102.400’den daha az satır içeren yükler, satırları bir b ağacı dizininde tutulduğu deltastore’a gönderir. Çok az sayıda satır yüklerseniz, hepsi deltastore’a gönderilerek hemen columnstore biçiminde sıkıştırılmayabilir.
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API veya BCP kullanırken toplu iş boyutunu artırma
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SQLBulkCopy API veya BCP kullanırken toplu iş boyutunu artır
 
-Daha önce de belirtildiği gibi, PolyBase ile yükleme Synapse SQL havuzu ile en yüksek iş hasılatını sağlayacaktır. PolyBase'i yüklemek için kullanamıyorsanız ve SQLBulkCopy API'yi (veya BCP) kullanmanız gerekiyorsa, daha iyi iş üretimi için toplu iş boyutunu artırmayı düşünmelisiniz - iyi bir başparmak kuralı 100K ile 1M satırarasında bir toplu iş boyutudur.
+Daha önce bahsedildiği gibi, PolyBase ile yükleme, SYNAPSE SQL Pool ile en yüksek verimlilik sağlar. Yüklemek için PolyBase 'i kullanamaz ve SQLBulkCopy API 'sini (veya BCP) kullanmanız gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı düşünmelisiniz. Thumb 'in iyi bir kuralı, 100K ila 1M satır arasında bir toplu iş boyutudur.
 
 ## <a name="handling-loading-failures"></a>Yükleme hatalarını işleme
 
@@ -106,9 +106,9 @@ Gün boyunca binlerce ekleme yapmanız gerekiyorsa, eklemeleri toplu olarak yük
 
 ## <a name="creating-statistics-after-the-load"></a>Yüklemeden sonra istatistik oluşturma
 
-Sorgu performansını geliştirmek için ilk yüklemeden veya verilerdeki önemli değişikliklerden sonra istatistiklerin tüm sütunlarda oluşturulması önemlidir.  Bu el ile yapılabilir veya [otomatik oluşturma istatistikleri](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)etkinleştirebilirsiniz.
+Sorgu performansını geliştirmek için ilk yüklemeden veya verilerdeki önemli değişikliklerden sonra istatistiklerin tüm sütunlarda oluşturulması önemlidir.  Bu, el ile yapılabilir veya [otomatik oluşturma istatistiklerini](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)etkinleştirebilirsiniz.
 
-İstatistiklerin ayrıntılı bir açıklaması için bkz. [İstatistikler](develop-tables-statistics.md). Aşağıdaki örnek, Customer_Speed tablosunun beş sütununda istatistiklerin el ile nasıl oluşturulacak olduğunu gösterir.
+İstatistiklerin ayrıntılı bir açıklaması için bkz. [İstatistikler](develop-tables-statistics.md). Aşağıdaki örnek, Customer_Speed tablonun beş sütununda nasıl el ile istatistik oluşturulacağını gösterir.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

@@ -1,6 +1,6 @@
 ---
 title: İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
-description: Azure anahtar kasasından depolanan kimlik bilgilerini nasıl getireceğinizi ve veri fabrikası ardışık iş aktarımlarında bunları nasıl kullanacağınızı öğrenin.
+description: Azure Anahtar Kasası 'nda depolanan kimlik bilgilerini getirme ve bunları Data Factory işlem hattı çalıştırmaları sırasında kullanma hakkında bilgi edinin.
 services: data-factory
 author: ChrisLound
 manager: anandsub
@@ -11,48 +11,48 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: f2531ebfd8b1eafc04fa6eda660b0eec3d1147f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417087"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>İşlem hattı etkinliklerinde Azure Key Vault gizli dizilerini kullanma
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Kimlik bilgilerini veya gizli değerleri Azure Anahtar Kasası'nda saklayabilir ve bunları ardışık hat lar yürütme sırasında bunları etkinliklerinize geçmek için kullanabilirsiniz.
+Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etkinliklerinize geçirilecek işlem hattı yürütme sırasında kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu özellik, veri fabrikası yönetilen kimliğine dayanır.  [Veri Fabrikası için Yönetilen kimlikten](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) nasıl çalıştığını öğrenin ve veri fabrikanızın ilişkili olduğundan emin olun.
+Bu özellik, Data Factory tarafından yönetilen kimliği kullanır.  [Data Factory Için yönetilen kimliğin](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) nasıl çalıştığını öğrenin ve Data Factory 'nizin ilişkili bir tane olduğundan emin olun.
 
 ## <a name="steps"></a>Adımlar
 
-1. Veri fabrikanızın özelliklerini açın ve Yönetilen Kimlik Uygulama Kimliği değerini kopyalayın.
+1. Data Factory 'nizin özelliklerini açın ve yönetilen kimlik uygulama KIMLIĞI değerini kopyalayın.
 
-    ![Yönetilen Kimlik Değeri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
+    ![Yönetilen kimlik değeri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/managedidentity.png)
 
-2. Anahtar kasa erişim ilkelerini açın ve Sırları Al ve Listelemek için yönetilen kimlik izinlerini ekleyin.
+2. Anahtar Kasası erişim ilkelerini açın ve gizli dizileri almak ve listelemek için yönetilen kimlik izinlerini ekleyin.
 
     ![Key Vault erişim ilkeleri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies.png)
 
     ![Key Vault erişim ilkeleri](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    **Ekle'yi**tıklatın, ardından **Kaydet'i**tıklatın.
+    **Ekle**' ye ve ardından **Kaydet**' e tıklayın.
 
-3. Key Vault sırrınıza gidin ve Gizli Tanımlayıcı'yı kopyalayın.
+3. Key Vault verilerinize giderek gizli dizi tanımlayıcısını kopyalayın.
 
-    ![Gizli Tanımlayıcı](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
+    ![Gizli dizi tanımlayıcısı](media/how-to-use-azure-key-vault-secrets-pipeline-activities/secretidentifier.png)
 
-    Veri fabrikası boru hattı çalıştırma sırasında almak istediğiniz gizli URI bir not alın.
+    Data Factory işlem hattı çalıştırma sırasında almak istediğiniz gizli URI 'nizi bir yere göz önünde bir şekilde oluşturun.
 
-4. Veri Fabrikası ardışık alanınızda yeni bir Web etkinliği ekleyin ve aşağıdaki gibi yapılandırın.  
+4. Data Factory işlem hattınızda yeni bir Web etkinliği ekleyin ve bunu aşağıdaki şekilde yapılandırın.  
 
     |Özellik  |Değer  |
     |---------|---------|
-    |Güvenli Çıkış     |True         |
-    |URL'si     |[Gizli URI değeriniz]?api-version=7.0         |
+    |Güvenli çıkış     |True         |
+    |URL'si     |[Gizli URI değeri]? api-version = 7.0         |
     |Yöntem     |GET         |
     |Kimlik Doğrulaması     |MSI         |
     |Kaynak        |https://vault.azure.net       |
@@ -60,15 +60,15 @@ Bu özellik, veri fabrikası yönetilen kimliğine dayanır.  [Veri Fabrikası i
     ![Web etkinliği](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
 
     > [!IMPORTANT]
-    > Gizli URI'nizin sonuna **?api-version=7.0** eklemeniz gerekir.  
+    > Gizli URI 'nizin sonuna **? api-version = 7.0** eklemeniz gerekir.  
 
     > [!CAUTION]
-    > Gizli değerin düz metinde günlüğe kaydolmasını önlemek için Güvenli Çıktı seçeneğini true olarak ayarlayın.  Bu değeri tüketen diğer etkinliklerin Güvenli Giriş seçeneğinin gerçek olması gerekir.
+    > Gizli çıkışın düz metin olarak kaydedilmesini engellemek için güvenli çıkış seçeneğini true olarak ayarlayın.  Bu değeri kullanan diğer etkinliklerin, güvenli giriş seçeneğinin true olarak ayarlanmış olması gerekir.
 
-5. Değeri başka bir etkinlikte kullanmak için aşağıdaki kod ifadesini ** @activity('Web1').output.value**kullanın.
+5. Değeri başka bir etkinlikte kullanmak için şu kod ifadesini ** @activitykullanın (' Web1 '). Output. Value**.
 
     ![Kod ifadesi](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veri depoları ve bilgi işlemlerinde kimlik bilgilerini depolamak için Azure Key Vault'u nasıl kullanacağınızı öğrenmek için Azure [Anahtar Kasası'nda Mağaza kimlik bilgilerine](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) bakın
+Veri depoları ve hesaplar için kimlik bilgilerini depolamak üzere Azure Key Vault nasıl kullanacağınızı öğrenmek için bkz. [Azure Key Vault kimlik bilgilerini depolama](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)

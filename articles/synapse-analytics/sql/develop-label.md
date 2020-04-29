@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL'de sorgu etiketlerini kullanma
-description: Bu makalede Synapse SQL sorgu etiketleri kullanmak için gerekli ipuçları dahildir.
+title: SYNAPSE SQL 'de sorgu etiketlerini kullanma
+description: Bu makaleye dahil olmak üzere, SYNAPSE SQL 'de sorgu etiketlerini kullanmaya yönelik temel ipuçları yer almaktadır.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,20 +12,20 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430038"
 ---
-# <a name="use-query-labels-in-synapse-sql"></a>Synapse SQL'de sorgu etiketlerini kullanma
-Bu makalede Synapse SQL sorgu etiketleri kullanmak için gerekli ipuçları dahildir.
+# <a name="use-query-labels-in-synapse-sql"></a>SYNAPSE SQL 'de sorgu etiketlerini kullanma
+Bu makaleye dahil olmak üzere, SYNAPSE SQL 'de sorgu etiketlerini kullanmaya yönelik temel ipuçları yer almaktadır.
 
 > [!NOTE]
-> İsteğe bağlı SQL (önizleme) etiketleme sorgularını desteklemez.
+> İsteğe bağlı SQL (Önizleme) sorguları etiketlemeyi desteklemez.
 
-## <a name="what-are-query-labels"></a>Sorgu etiketleri nedir
-SQL havuzu sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe girmeden önce, bir örneğe bakalım:
+## <a name="what-are-query-labels"></a>Sorgu etiketleri nedir?
+SQL havuzu sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe geçmeden önce bir örneğe göz atalım:
 
 ```sql
 SELECT *
@@ -34,11 +34,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Son satır, sorguya 'Sorgu Etiketim' dizesini etiketler. Etiket DMV'ler aracılığıyla sorgulanabilir olduğundan, bu etiket özellikle yararlıdır. Etiketler için sorgulama, sorun sorgularını bulmak için bir mekanizma sağlar ve ELT çalışmasında ilerlemeyi belirlemeye yardımcı olur.
+Son çizgi ' My Query Tag ' dizesini sorguya etiketleyin. Etiket, DMVs aracılığıyla sorgu özellikli olduğundan bu etiket özellikle yararlıdır. Etiketleri sorgulamak, sorun sorgularını bulmaya yönelik bir mekanizma sağlar ve ilerlemeyi bir ELT çalıştırması aracılığıyla belirlemesine yardımcı olur.
 
-İyi adlandırma kuralı en yararlıdır. Örneğin, etiketin PROJECT, PROCEDURE, STATEMENT veya COMMENT ile başlatılması, sorguyu kaynak denetimindeki tüm kodlar arasında benzersiz olarak tanımlar.
+İyi adlandırma kuralı en yararlı seçenektir. Örneğin, etiketi PROJECT, PROCEDURE, DEYIMLE ve açıklama ile başlatmak, sorguyu kaynak denetimindeki tüm kodlar arasında benzersiz şekilde tanımlar.
 
-Aşağıdaki sorgu etikete göre arama yapmak için dinamik bir yönetim görünümü kullanır:
+Aşağıdaki sorgu, etikete göre aramak için dinamik bir yönetim görünümü kullanır:
 
 ```sql
 SELECT  *
@@ -48,11 +48,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Sorgu yaparken sözcük etiketinin etrafına kare ayraçlar veya çift tırnak lar koymak önemlidir. Etiket ayrılmış bir sözcükve sınırlandırılamadığını zaman hataya neden olur. 
+> Sorgulama sırasında, sözcük etiketinin çevresine köşeli ayraç veya çift tırnak koymak gereklidir. Etiket, ayrılmış bir sözcüktür ve sınırlandırılmamış bir hata oluşmasına neden olur. 
 > 
 > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](develop-overview.md)ına bakın.
+Daha fazla geliştirme ipucu için bkz. [geliştirmeye genel bakış](develop-overview.md).
 
 

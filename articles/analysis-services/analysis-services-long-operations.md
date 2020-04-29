@@ -1,54 +1,54 @@
 ---
-title: Azure Analiz Hizmetleri'nde uzun süreli işlemler için en iyi uygulamalar | Microsoft Dokümanlar
-description: Bu makalede, uzun süren işlemler için en iyi uygulamalar açıklanmaktadır.
+title: Azure Analysis Services ' de uzun süre çalışan işlemler için en iyi uygulamalar | Microsoft Docs
+description: Bu makalede, uzun süre çalışan işlemler için en iyi yöntemler açıklanmaktadır.
 author: minewiskan
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
 ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428114"
 ---
-# <a name="best-practices-for-long-running-operations"></a>Uzun süren operasyonlar için en iyi uygulamalar
+# <a name="best-practices-for-long-running-operations"></a>Uzun süre çalışan işlemler için en iyi uygulamalar
 
-Azure Çözümleme Hizmetleri'nde *düğüm,* sunucu kaynağının çalıştığı ana bilgisayar sanal makinesini temsil eder. Uzun süren sorgular, yenileme işlemleri ve sorgu ölçeklendirme eşitleme gibi bazı işlemler, sunucu kaynağı farklı bir düğüme taşınırsa başarısız olabilir. Bu senaryodaki yaygın hata iletileri şunlardır:
+Azure Analysis Services, *düğüm* bir sunucu kaynağının çalıştığı konak sanal makinesini temsil eder. Sunucu kaynağı farklı bir düğüme taşınırsa, uzun süre çalışan sorgular, yenileme işlemleri ve sorgu genişleme eşitlemesi gibi bazı işlemler başarısız olabilir. Bu senaryodaki yaygın hata iletileri şunları içerir:
 
-- "Uzun süredir devam eden bir XMLA isteğini bulmaya çalışırken bir hata oluştu. İstek, hizmet yükseltmesi veya sunucu yeniden başlatma sı tarafından kesintiye uğramış olabilir."
-- "Model için<guid>ID '<database>ile İş ' ' ' hizmet hatası (hareketsizlik) iletisi ile iptal edildi 'Herhangi bir güncelleştirme olmadan sıkışmış çünkü yenileme isteği iptal. Bu bir dahili hizmet sorunudur. Lütfen bu sorun tekrar tekrar olursa, lütfen işi yeniden gönderin veya yardım almak için bir bilet gönderin."
+- "Uzun süreli çalışan bir XMLA isteği bulmaya çalışırken bir hata oluştu. İstek, hizmet yükseltmesi veya sunucu yeniden başlatma tarafından kesintiye uğramış olabilir. "
+- "'<guid><database>' MODELI için ' ' kimlikli iş, hiçbir güncelleştirme olmadan takıldığından dolayı yenileme isteğini iptal etme iletisi olan hizmet hatası nedeniyle iptal edildi. Bu bir iç hizmet sorunudur. Bu sorun sürekli olarak gerçekleşirse yardım almak için lütfen işi yeniden gönderin veya bir bilet dosyası yapın. "
 
-Uzun süren operasyonların kesintiye uğraması için birçok neden vardır. Örneğin, Azure'daki güncelleştirmeler: 
-- İşletim Sistemi yamaları 
+Uzun süre çalışan işlemlerin kesintiye uğramamasının pek çok nedeni vardır. Örneğin, Azure 'daki güncelleştirmeler: 
+- İşletim sistemi düzeltme ekleri 
 - Güvenlik güncelleştirmeleri
-- Azure Analiz Hizmetleri hizmet güncelleştirmeleri
-- Servis Kumaş güncellemeleri. Service Fabric, Azure Analiz Hizmetleri de dahil olmak üzere bir dizi Microsoft bulut hizmeti tarafından kullanılan bir platform bileşenidir.
+- Azure Analysis Services hizmet güncelleştirmeleri
+- Service Fabric güncelleştirmeler. Service Fabric, Azure Analysis Services dahil olmak üzere çok sayıda Microsoft bulut hizmeti tarafından kullanılan bir platform bileşenidir.
 
-Hizmette meydana gelen güncelleştirmelerin yanı sıra, yük dengelemesi nedeniyle düğümler arasında doğal bir hizmet hareketi vardır. Düğüm hareketleri bulut hizmetinin beklenen bir parçasıdır. Azure Analiz Hizmetleri düğüm hareketlerinden kaynaklanan etkileri en aza indirmeye çalışır, ancak bunları tamamen ortadan kaldırmak imkansızdır. 
+Hizmette gerçekleşen güncelleştirmelerin yanı sıra, Yük Dengeleme nedeniyle düğümler arasında doğal bir hizmet taşıması vardır. Düğüm hareketleri, bir bulut hizmetinin beklenen bir parçasıdır. Azure Analysis Services, düğüm hareketilerinden etkileri en aza indirmenize çalışır, ancak tamamen ortadan kaldırmak olanaksızdır. 
 
-Düğüm hareketlerine ek olarak, oluşabilecek başka hatalar da vardır. Örneğin, bir veri kaynağı veritabanı sistemi çevrimdışı olabilir veya ağ bağlantısı kaybolur. Yenileme sırasında bir bölüm 10 milyon satıra sahipse ve 9 milyonuncu satırda bir hata oluşuyorsa, hata noktasında yenilemeyi yeniden başlatmanın bir yolu yoktur. Hizmet baştan başlamak zorundadır. 
+Düğüm hareketlerine ek olarak, oluşabilecek başka sorunlar da vardır. Örneğin, bir veri kaynağı veritabanı sistemi çevrimdışı olabilir veya ağ bağlantısı kaybolabilir. Yenileme sırasında, Bölüm 10.000.000 satıra sahiptir ve 9 milionth satırında bir hata oluşursa yenilemeyi hata durumunda yeniden başlatmanın bir yolu yoktur. Hizmetin baştan itibaren yeniden başlatılması gerekebilir. 
 
-## <a name="refresh-rest-api"></a>REST API'yi yenile
+## <a name="refresh-rest-api"></a>REST API Yenile
 
-Hizmet kesintileri, veri yenileme gibi uzun süren işlemler için zor olabilir. Azure Çözümleme Hizmetleri, hizmet kesintilerinden kaynaklanan olumsuz etkileri azaltmaya yardımcı olmak için bir REST API içerir. Daha fazla bilgi için [REST API ile Asynchronous yenile'ye](analysis-services-async-refresh.md)bakın.
+Hizmet kesintileri, veri yenileme gibi uzun süre çalışan işlemler için zor olabilir. Azure Analysis Services, hizmet kesintilerinden olumsuz etkileri azaltmaya yardımcı olmak için bir REST API içerir. Daha fazla bilgi için bkz. [REST API zaman uyumsuz yenileme](analysis-services-async-refresh.md).
  
-REST API'sinin yanı sıra, uzun süren yenileme işlemleri sırasında olası sorunları en aza indirmek için kullanabileceğiniz başka yaklaşımlar da vardır. Temel amaç, yenileme işlemini baştan başlatmak zorunda kalmamak ve bunun yerine aşamalar halinde işlenebilecek daha küçük gruplar halinde yenilemeler gerçekleştirmektir. 
+REST API yanı sıra, uzun süre çalışan yenileme işlemleri sırasında olası sorunları en aza indirmek için kullanabileceğiniz başka yaklaşımlar de vardır. Ana amaç, yenileme işlemini baştan yeniden başlatmak zorunda kalmamak ve bunun yerine, aşamalar halinde kaydedilebilen daha küçük toplu işlerle yenileme işlemi gerçekleştirmektir. 
  
-REST API bu tür yeniden başlatma ya da bölüm oluşturma ve silme tam esneklik için izin vermez. Bir senaryo karmaşık veri yönetimi işlemleri gerektiriyorsa, çözümünüzün mantığına bir tür toplu iş ekleme içermelidir. Örneğin, verileri birden çok, ayrı toplu iş halinde işlemek için hareketleri kullanarak, başlangıçtan itibaren yeniden başlatılmasını değil, bunun yerine bir ara denetim noktasından yeniden başlatmayı gerektirmemesine izin verir. 
+REST API, bu yeniden başlatmaya izin verir, ancak bölüm oluşturma ve silmenin tam esnekliğine izin vermez. Bir senaryo karmaşık veri yönetimi işlemleri gerektiriyorsa, çözümünüz mantığındaki bazı toplu işlem formunu içermelidir. Örneğin, verileri birden çok işlemek için işlemleri kullanarak ayrı toplu işler, bir başarısızlık için baştan başlatma gerektirmeyen bir ara kontrol noktasından izin verir. 
  
-## <a name="scale-out-query-replicas"></a>Ölçeklendirme sorgu yinelemeleri
+## <a name="scale-out-query-replicas"></a>Genişleme sorgu çoğaltmaları
 
-İster REST ister özel mantık kullanarak, istemci uygulama sorguları toplu işlenirken yine de tutarsız veya ara sonuçlar döndürebilir. İşleme olurken istemci uygulama sorguları tarafından döndürülen tutarlı veriler gerekiyorsa ve model verileri bir ara durumdaysa, salt okunur sorgu yinelemeleriyle [ölçeklendirmek](analysis-services-scale-out.md) kullanabilirsiniz.
+REST veya özel mantık kullanarak, toplu işler işlenirken istemci uygulama sorguları hala tutarsız veya ara sonuçlar döndürebilir. İşlem sırasında istemci uygulama sorguları tarafından döndürülen tutarlı veriler gerekliyse ve model verileri ara durumundaysa, salt okuma sorgu çoğaltmalarıyla [genişleme](analysis-services-scale-out.md) kullanabilirsiniz.
 
-Salt okunur sorgu yinelemelerini kullanarak, yenilemeler toplu olarak gerçekleştirilirken, istemci uygulama kullanıcıları yalnızca okunan yinelemelerde eski veri anlık görüntüsünü sorgulamaya devam edebilir. Yenilemeler tamamlandıktan sonra, salt okunur yinelemeleri güncel getirmek için bir Eşitleme işlemi gerçekleştirilebilir.
+Salt okuma sorgu çoğaltmaları kullanarak, yenilemeler toplu olarak gerçekleştirilirken, istemci uygulama kullanıcıları salt okuma çoğaltmalarıyla verilerin eski anlık görüntüsünü sorgulamaya devam edebilir. Yenileme tamamlandığında, salt okuma çoğaltmalarını güncel hale getirmek için bir eşitleme işlemi gerçekleştirilebilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [REST API ile zaman uyumsuz yenileme](analysis-services-async-refresh.md)  
 [Azure Analysis Services ölçeğini genişletme](analysis-services-scale-out.md)  
-[Analiz Hizmetleri yüksek kullanılabilirlik](analysis-services-bcdr.md)  
-[Azure hizmetleri için kılavuzu yeniden deneyin](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
+[Yüksek kullanılabilirlik Analysis Services](analysis-services-bcdr.md)  
+[Azure hizmetleri için yeniden deneme Kılavuzu](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)   
 

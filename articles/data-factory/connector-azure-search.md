@@ -1,6 +1,6 @@
 ---
-title: Verileri Arama dizinine kopyalama
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık ardışık yapıda Kopyalama Etkinliği'ni kullanarak verileri Azure arama dizinine nasıl itinveya kopyalayamahakkında bilgi edinin.
+title: Verileri arama dizinine Kopyala
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak bir Azure Search dizinine veri gönderme veya kopyalama hakkında bilgi edinin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,47 +12,47 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: dfa1ad318ccc9e891b646ec050f6a0776e108206
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418244"
 ---
-# <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Bilişsel Arama dizinine kopyalama
+# <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Bilişsel Arama dizinine veri kopyalama
 
-> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-search-connector.md)
 > * [Geçerli sürüm](connector-azure-search.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, verileri Azure Bilişsel Arama dizinine kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, Azure Bilişsel Arama dizinine veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Desteklenen herhangi bir kaynak veri deposundan gelen verileri arama dizinine kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
+Desteklenen herhangi bir kaynak veri deposundan verileri arama dizinine kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 ## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümlerde, Azure Bilişsel Arama bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılar sağlanmaktadır.
+Aşağıdaki bölümlerde, Azure Bilişsel Arama Connector 'a özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Azure Bilişsel Arama bağlantılı hizmet için aşağıdaki özellikler desteklenir:
+Azure Bilişsel Arama bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği şu şekilde ayarlanmalıdır: **AzureSearch** | Evet |
-| url | Arama hizmetinin URL'si. | Evet |
-| anahtar | Arama hizmeti için yönetici anahtarı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) Azure Tümleştirme Çalışma Süresi'ni veya Kendi kendine barındırılan Tümleştirme Çalışma Süresini (veri deponuz özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
+| type | Type özelliği: **Azuresearch** olarak ayarlanmalıdır | Yes |
+| url | Arama Hizmeti URL 'SI. | Yes |
+| anahtar | Arama hizmeti için yönetici anahtarı. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak [Integration Runtime](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
 > [!IMPORTANT]
-> Azure Bilişsel Arama bağlantılı bir hizmette bulut veri deposundan arama dizinine veri kopyalarken connactVia'da açık bölgeiçeren bir Azure Tümleştirme Çalışma Süresi'ne başvurmanız gerekir. Bölgeyi arama hizmetinizin bulunduğu bölge olarak ayarlayın. [Azure Tümleştirme Runtime'dan](concepts-integration-runtime.md#azure-integration-runtime)daha fazla bilgi edinin.
+> Verileri bir bulut veri deposundan arama dizinine kopyalarken, Azure Bilişsel Arama bağlı hizmetinde, Connactto aracılığıyla açık bölge ile bir Azure Integration Runtime başvurmanız gerekir. Bölgeyi, arama hizmetinizin bulunduğu konum olarak ayarlayın. [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime)hakkında daha fazla bilgi edinin.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -76,16 +76,16 @@ Azure Bilişsel Arama bağlantılı hizmet için aşağıdaki özellikler destek
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Azure Bilişsel Arama veri kümesi tarafından desteklenen özelliklerin bir listesi yer almaktadır.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Azure Bilişsel Arama veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Verileri Azure Bilişsel Arama'ya kopyalamak için aşağıdaki özellikler desteklenir:
+Verileri Azure Bilişsel Arama 'e kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndex** | Evet |
-| indexName | Arama dizininin adı. Veri Fabrikası dizin oluşturmaz. Dizin Azure Bilişsel Arama'da bulunmalıdır. | Evet |
+| type | DataSet 'in Type özelliği: **AzureSearchIndex** olarak ayarlanmalıdır | Yes |
+| indexName | Arama dizininin adı. Data Factory dizini oluşturmaz. Dizinin Azure Bilişsel Arama mevcut olması gerekir. | Yes |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -106,34 +106,34 @@ Verileri Azure Bilişsel Arama'ya kopyalamak için aşağıdaki özellikler dest
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Azure Bilişsel Arama kaynağı tarafından desteklenen özelliklerin bir listesi sağlanmaktadır.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Azure Bilişsel Arama kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
-### <a name="azure-cognitive-search-as-sink"></a>Lavabo Olarak Azure Bilişsel Arama
+### <a name="azure-cognitive-search-as-sink"></a>Havuz olarak Azure Bilişsel Arama
 
-Verileri Azure Bilişsel Arama'ya kopyalamak için, kopyalama etkinliğindeki kaynak türünü **AzureSearchIndexSink**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **lavabo** bölümünde desteklenir:
+Verileri Azure Bilişsel Arama 'e kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzureSearchIndexSink**olarak ayarlayın. Aşağıdaki özellikler, kopyalama etkinliği **havuzu** bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının tür özelliği şu şekilde ayarlanmalıdır: **AzureSearchIndexSink** | Evet |
-| yazmaDavranışı | Diziniçinde zaten bir belge varken birleşip değiştirilmeyeceğini belirtir. [WriteBehavior özelliğine](#writebehavior-property)bakın.<br/><br/>İzin verilen değerler şunlardır: **Birleştirme** (varsayılan) ve **Yükle**. | Hayır |
-| yazmaBatchSize | Arabellek boyutu writeBatchSize'a ulaştığında verileri arama dizinine yükler. Ayrıntılar için [WriteBatchSize özelliğine](#writebatchsize-property) bakın.<br/><br/>İzin verilen değerler şunlardır: 1 ile 1.000 arasında bir insa; varsayılan değer 1000'dir. | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **AzureSearchIndexSink** olarak ayarlanmalıdır | Yes |
+| writeBehavior | Dizinde bir belgenin zaten mevcut olduğu zaman birleştirilip birleştirilmeyeceğini veya değiştirip edilmeyeceğini belirtir. Bkz. [Writebehavior özelliği](#writebehavior-property).<br/><br/>İzin verilen değerler şunlardır: **birleştirme** (varsayılan) ve **karşıya yükleme**. | Hayır |
+| writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında verileri arama dizinine yükler. Ayrıntılar için bkz. [Writebatchsize özelliği](#writebatchsize-property) .<br/><br/>İzin verilen değerler: tamsayı 1 ile 1.000 arasında; Varsayılan değer 1000 ' dir. | Hayır |
 
 ### <a name="writebehavior-property"></a>WriteBehavior özelliği
 
-AzureSearchSink veri yazarken ekler. Başka bir deyişle, belge yazarken, belge anahtarı arama dizininde zaten varsa, Azure Bilişsel Arama çakışma özel durumu oluşturmak yerine varolan belgeyi güncelleştirir.
+Veri yazarken AzureSearchSink upları. Diğer bir deyişle, bir belge yazarken belge anahtarı arama dizininde zaten mevcutsa Azure Bilişsel Arama bir çakışma özel durumu oluşturmak yerine mevcut belgeyi güncelleştirir.
 
-AzureSearchSink aşağıdaki iki yükseltme davranışı sağlar (AzureSearch SDK kullanarak):
+AzureSearchSink aşağıdaki iki yukarı yönlü davranışı sağlar (AzureSearch SDK kullanarak):
 
-- **Birleştirme**: Yeni belgedeki tüm sütunları varolan sütunla birleştirin. Yeni belgede null değeri olan sütunlar için, varolan sütundaki değer korunur.
-- **Upload**: Yeni belge varolanBelgenin yerini alır. Yeni belgede belirtilmeyen sütunlar için, değer varolan belgede null olmayan bir değer olup olmadığını geçersiz kılacak şekilde ayarlanır.
+- **Birleştir**: yeni belgedeki tüm sütunları mevcut bir belge ile birleştirin. Yeni belgede null değeri olan sütunlarda, var olan bir değer korunur.
+- **Karşıya yükle**: yeni belge var olanı yenisiyle değiştirir. Yeni belgede belirtilmeyen sütunlar için, varolan belgede null olmayan bir değer olup olmadığı için değer null olarak ayarlanır.
 
-Varsayılan davranış **Birleştirme'dir.**
+Varsayılan davranış **birleştirilir**.
 
-### <a name="writebatchsize-property"></a>WriteBatchSize Özelliği
+### <a name="writebatchsize-property"></a>WriteBatchSize özelliği
 
-Azure Bilişsel Arama hizmeti, belge toplu olarak yazmayı destekler. Bir toplu iş 1 ila 1.000 Eylem içerebilir. Eylem, yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
+Azure Bilişsel Arama hizmeti, toplu iş olarak belge yazmayı destekler. Batch, 1 ile 1.000 arasında eylem içerebilir. Bir eylem, karşıya yükleme/birleştirme işlemini gerçekleştirmek için bir belgeyi işler.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities":[
@@ -167,20 +167,20 @@ Azure Bilişsel Arama hizmeti, belge toplu olarak yazmayı destekler. Bir toplu 
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Aşağıdaki tabloda, Azure Bilişsel Arama veri türünün desteklenip desteklenmediğini belirtin.
+Aşağıdaki tabloda bir Azure Bilişsel Arama veri türünün desteklenip desteklenmediğini belirtir.
 
-| Azure Bilişsel Arama veri türü | Azure Bilişsel Arama Lavabosu'nda desteklendi |
+| Azure Bilişsel Arama veri türü | Azure Bilişsel Arama havuzunda desteklenir |
 | ---------------------- | ------------------------------ |
 | Dize | E |
 | Int32 | E |
 | Int64 | E |
 | Çift | E |
 | Boole | E |
-| DataTimeOffset | E |
-| Dize Dizisi | N |
-| Coğrafya Noktası | N |
+| Veri Timesapmayı | E |
+| Dize dizisi | N |
+| GeographyPoint | N |
 
-Şu anda ComplexType gibi diğer veri türleri desteklenmez. Azure Bilişsel Arama destekli veri türlerinin tam listesi için desteklenen [veri türlerine (Azure Bilişsel Arama)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)bakın.
+Şu anda diğer veri türleri, yani ComplexType desteklenmez. Desteklenen Azure Bilişsel Arama veri türlerinin tam listesi için bkz. [desteklenen veri türleri (Azure bilişsel arama)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

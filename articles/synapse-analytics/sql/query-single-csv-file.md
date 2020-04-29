@@ -1,6 +1,6 @@
 ---
-title: İsteğe bağlı SQL kullanarak CSV dosyalarını sorgula (önizleme)
-description: Bu makalede, SQL on-demand (önizleme) kullanarak farklı dosya biçimleri ile tek CSV dosyaları sorgulama öğreneceksiniz.
+title: İsteğe bağlı SQL kullanarak CSV dosyalarını sorgulama (Önizleme)
+description: Bu makalede, SQL isteğe bağlı (Önizleme) kullanarak farklı dosya biçimlerine sahip tek CSV dosyalarını sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431598"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgula
 
-Bu makalede, Azure Synapse Analytics'te isteğe bağlı SQL (önizleme) kullanarak tek bir CSV dosyasını nasıl sorguladığınızı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
+Bu makalede, Azure SYNAPSE Analytics 'te SQL isteğe bağlı (Önizleme) kullanarak tek bir CSV dosyasını sorgulamayı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
 
-- Üstbilgi satırı ile ve olmadan
-- Virgül ve sekme-sınırlandırılmış değerler
-- Windows ve Unix stil satır uçları
-- Alıntı yapılan ve alıntı yapılan değerler ve kaçan karakterler
+- Üst bilgi satırı ile ve olmadan
+- Virgül ve sekmeyle ayrılmış değerler
+- Windows ve UNIX stil satırı sonları
+- Tırnak işaretleri olmayan ve tırnak içine alınmış değerler ve kaçış karakterleri
 
-Yukarıdaki varyasyonların tümü aşağıda ele alınacaktır.
+Yukarıdaki tüm Çeşitlemeler aşağıda ele alınacaktır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri inceleyin:
+Bu makalenin geri kalanını okumadan önce aşağıdaki makaleleri gözden geçirin:
 
 - [İlk kez kurulum](query-data-storage.md#first-time-setup)
 - [Ön koşullar](query-data-storage.md#prerequisites)
 
-## <a name="windows-style-new-line"></a>Windows stili yeni hat
+## <a name="windows-style-new-line"></a>Windows stili yeni satır
 
-Aşağıdaki sorgu, üstbilgi satırı olmayan, Windows stili yeni satırlı ve virgülle sınırlandırılmış sütunlarla csv dosyasının nasıl okunduğunu gösterir.
+Aşağıdaki sorgu, Windows stili yeni bir satırla ve virgülle ayrılmış sütunlarla bir başlık satırı olmadan bir CSV dosyasının nasıl okunacağını gösterir.
 
 Dosya önizlemesi:
 
-![Üstbilgi olmadan CSV dosyasının ilk 10 satır, Windows tarzı yeni satır.](./media/query-single-csv-file/population.png)
+![Üst bilgi içermeyen CSV dosyasının ilk 10 satırı, Windows stili yeni satır.](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -61,13 +61,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix tarzı yeni hat
+## <a name="unix-style-new-line"></a>UNIX stili yeni satır
 
-Aşağıdaki sorgu, unix stilinde yeni bir satır ve virgül le sınırlı sütunlar içeren üstbilgi satırı olmayan bir dosyanın nasıl okunduğunu gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumuna dikkat edin.
+Aşağıdaki sorgu, bir üst bilgi satırı olmadan bir dosyanın nasıl okunacağını, UNIX stili yeni bir satırla ve virgülle sınırlandırılmış sütunlara gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
 Dosya önizlemesi:
 
-![CSV dosyasının ilk 10 satırı üstbilgi satırı olmadan ve Unix Stili yeni satırı yla.](./media/query-single-csv-file/population-unix.png)
+![Üst bilgi satırı olmayan ve UNIX stili yeni satıra sahip CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -88,13 +88,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="header-row"></a>Üstbilgi satırı
+## <a name="header-row"></a>Üst bilgi satırı
 
-Aşağıdaki sorgu, Unix stiliyeni bir satır ve virgül le sınırlı sütunlar içeren bir üstbilgi satırı olan okuma dosyasının nasıl yapılacağını gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumuna dikkat edin.
+Aşağıdaki sorgu, bir üst bilgi satırı olan bir okuma dosyasının, UNIX stili yeni bir satırla ve virgülle ayrılmış sütunlarda nasıl yapılacağını gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
 Dosya önizlemesi:
 
-![CSV dosyasının ilk 10 satırı üstbilgi satırı ve Unix Stili yeni satırı ile.](./media/query-single-csv-file/population-unix-hdr.png)
+![Üst bilgi satırı ve UNIX stili yeni satıra sahip CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -115,13 +115,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>Özel teklif karakteri
+## <a name="custom-quote-character"></a>Özel tırnak karakteri
 
-Aşağıdaki sorgu, Unix stiliyeni satır, virgül le sınırlı sütunlar ve alıntı değeri olan bir dosyanın üstbilgi satırıyla nasıl okunduğunu gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumuna dikkat edin.
+Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni satır, virgülle ayrılmış sütunlar ve tırnak içine alınmış değerlerle gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
 Dosya önizlemesi:
 
-![CSV dosyasının ilk 10 satırı üstbilgi satırı ve Unix-Style yeni satırı ve teklif edilen değerleri ile.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Üst bilgi satırı ve UNIX stili yeni satır ve tırnak işaretli değerler içeren CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -145,15 +145,15 @@ WHERE
 ```
 
 > [!NOTE]
-> FIELDQUOTE'ın varsayılan değeri çift teklif olduğundan, BU sorgu FIELDQUOTE parametresini atladıysanız aynı sonuçları döndürur.
+> FIELDQUOTE için varsayılan değer bir çift tırnak olduğundan, bu sorgu, FIELDQUOTE parametresini atlarsanız aynı sonuçları döndürür.
 
-## <a name="escaping-characters"></a>Kaçan karakterler
+## <a name="escaping-characters"></a>Kaçış karakterleri
 
-Aşağıdaki sorgu, Unix stiliyeni satır, virgül le sınırlı sütunlar ve değerler içindeki alan delimiter (virgül) için kullanılan bir kaçış char ile üstbilgi satırı olan bir dosyanın nasıl okunduğunu gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumuna dikkat edin.
+Aşağıdaki sorgu, bir üst bilgi satırıyla bir dosyanın nasıl okunacağını, UNIX stili yeni bir satır, virgülle ayrılmış sütunlar ve değer içinde alan sınırlayıcısı (virgül) için kullanılan kaçış karakteri gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
 Dosya önizlemesi:
 
-![Üstbilgi satırı ve Unix-Style yeni satır ve kaçış char alan delimiter için kullanılan CSV dosyasının ilk 10 satır.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Üst bilgi satırı ile CSV dosyasının ilk 10 satırı ve alan sınırlayıcısı için kullanılan UNIX stili yeni satır ve çıkış karakteri.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -176,15 +176,15 @@ WHERE
 ```
 
 > [!NOTE]
-> ESCAPECHAR belirtilmezse bu sorgu başarısız olur, çünkü "Slov,enia" daki virgül ülke adının bir parçası yerine alan sınırlayıcı olarak kabul edilir. "Slov,enia" iki sütun olarak kabul edilecektir. Bu nedenle, belirli bir satırda diğer satırlardan bir sütun daha fazla ve WITH yan tümcesinde tanımladığınız sütundan daha fazla olacaktır.
+> "Slov, enıa" içindeki virgül, ülke adının bir parçası yerine alan sınırlayıcısı olarak değerlendirildiğinden, bu sorgu, ESCAPECHAR belirtilmemişse başarısız olur. "Slov, Enia" iki sütun olarak değerlendirilir. Bu nedenle, belirli satırda diğer satırlardan daha fazla bir sütun ve WıTH yan tümcesinde tanımladığınız bir sütun daha vardır.
 
-## <a name="tab-delimited-files"></a>Sekme-sınırlandırılmış dosyalar
+## <a name="tab-delimited-files"></a>Sekmeyle ayrılmış dosyalar
 
-Aşağıdaki sorgu, unix stilinde yeni satırlı ve sekme sütunları olan bir dosyanın üstbilgi satırıyla nasıl okunduğunu gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumuna dikkat edin.
+Aşağıdaki sorgu, bir dosyanın bir başlık satırı ile, UNIX stili yeni bir satırla ve sekmeyle ayrılmış sütunlarla nasıl okunacağını gösterir. Diğer örneklerle karşılaştırıldığında dosyanın farklı konumunu aklınızda yapın.
 
 Dosya önizlemesi:
 
-![Üstbilgi satırı ve Unix-Style yeni satır ve sekme delimiter ile CSV dosyasının ilk 10 satır.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Üst bilgi satırı ve UNIX stili yeni çizgi ve sekme sınırlayıcısı ile CSV dosyasının ilk 10 satırı.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
@@ -206,14 +206,14 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Sütunalt kümesini döndürme
+## <a name="returning-subset-of-columns"></a>Sütunların alt kümesi döndürülüyor
 
-Şimdiye kadar, WITH kullanarak ve tüm sütunları listeleyerek CSV dosya şema belirttiniz. Yalnızca gereksinim duyulan her sütun için bir ordinal numarası kullanarak sorgunuzda gerçekten gereksinim duyduğunuz sütunları belirtebilirsiniz. Ayrıca ilginizi çekmiyor sütunları da atlasınız.
+Şimdiye kadar, Ile kullanarak CSV dosya şemasını belirttiniz ve tüm sütunları listelediyseniz. Sorgunuz için gereken sütunları yalnızca gerekli her sütun için bir sıra numarası kullanarak belirtebilirsiniz. İlgilendiğiniz sütunları da atlayabilirsiniz.
 
-Aşağıdaki sorgu, yalnızca gerekli sütunları belirterek bir dosyadaki farklı ülke adlarının sayısını döndürür:
+Aşağıdaki sorgu, yalnızca gereken sütunları belirterek bir dosyadaki farklı ülke adlarının sayısını döndürür:
 
 > [!NOTE]
-> Aşağıdaki sorgudaki WITH yan tümcesi'ne bir göz atın ve *[country_name]* sütununu tanımladığınız satırın sonunda "2" (tırnak işareti olmadan) olduğunu unutmayın. Bu, *[country_name]* sütunun dosyadaki ikinci sütun olduğu anlamına gelir. Sorgu, ikincisi hariç dosyadaki tüm sütunları yoksayacaktır.
+> Aşağıdaki sorgudaki WıTH yan tümcesine göz atın ve *[country_name]* sütununu tanımladığınız satırın sonunda "2" (tırnak işareti olmadan) olduğunu unutmayın. Bu, *[country_name]* sütununun dosyadaki ikinci sütun olduğu anlamına gelir. Sorgu, ikinci tane hariç dosyadaki tüm sütunları yoksayar.
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ WITH (
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki makaleler nasıl göstereceğiniz gösterecektir:
+Sonraki makalelerde şunları nasıl kullanacağınız gösterilmektedir:
 
-- [Parke dosyalarını sorgulama](query-parquet-files.md)
+- [Parquet dosyaları sorgulanıyor](query-parquet-files.md)
 - [Klasörleri ve birden çok dosyayı sorgulama](query-folders-multiple-csv-files.md)

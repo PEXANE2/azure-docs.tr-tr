@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: 7106e139108681e1908b20d2daac5e619a63555d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421987"
 ---
-Sıkıştırılmış ses işleme [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisans lama nedenleriyle GStreamer ikilileri derlenmez ve Konuşma SDK ile bağlantılı değildir. Bunun yerine, bu işlevleri içeren bir sarmalayıcı kitaplığı oluşturulması ve SDK kullanarak uygulamalarla birlikte gönderilmesi gerekir.
+Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeniyle, GStreamer ikili dosyaları derlenmez ve konuşma SDK 'Sı ile bağlantılı değildir. Bunun yerine, bu işlevleri içeren bir sarmalayıcı kitaplığın SDK kullanılarak uygulamalarla oluşturulması ve birlikte kullanılması gerekir.
 
-Bu sarıcı kitaplığını oluşturmak için, ilk olarak [GStreamer SDK'yı](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)indirin ve kurun. Ardından, [sarmalayıcı kitaplığı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)için **Xcode** projesini indirin.
+Bu sarmalayıcı kitaplığı oluşturmak için önce [GStreamer SDK 'sını](https://gstreamer.freedesktop.org/data/pkg/ios/1.16.0/gstreamer-1.0-devel-1.16.0-ios-universal.pkg)indirip yükleyin. Ardından, [sarmalayıcı kitaplığı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/compressed-streams/GStreamerWrapper)Için **Xcode** projesini indirin.
 
-Projeyi **Xcode'da** açın ve **Genel iOS Aygıt** hedefi için oluşturun - belirli bir hedef için oluşturmak için *çalışmaz.*
+Projeyi **Xcode** 'da açın ve **genel iOS cihaz** hedefi için oluşturun; Bu, belirli bir hedef için oluşturmak *için çalışmaz.*
 
-Yapı adımı adı ile gerekli tüm mimariler için dinamik bir kütüphane `GStreamerWrapper.framework`ile dinamik bir çerçeve paketi oluşturacaktır.
+Derleme adımı, adı taşıyan tüm gerekli mimarilere yönelik dinamik bir kitaplık içeren dinamik bir çerçeve paketi oluşturur `GStreamerWrapper.framework`.
 
-Bu çerçeve, Konuşma hizmeti SDK ile sıkıştırılmış ses akışları kullanan tüm uygulamalara dahil edilmelidir.
+Bu çerçevenin konuşma hizmeti SDK 'Sı ile sıkıştırılmış ses akışları kullanan tüm uygulamalara dahil olması gerekir.
 
-Bunu gerçekleştirmek için **Xcode** projenizde aşağıdaki ayarları uygulayın:
+Bunu gerçekleştirmek için aşağıdaki ayarları **Xcode** projenize uygulayın:
 
-1. Kopya `GStreamerWrapper.framework` sadece inşa ve Bilişsel Hizmetler Konuşma SDK çerçeve, [buradan](https://aka.ms/csspeech/iosbinary)indirebilirsiniz , örnek proje içeren dizine.
-1. *Yolları Proje Ayarları'ndaki*çerçevelere ayarlayın.
-   1. **Gömülü İkili üstbilginin** altındaki **Genel** sekmesinde, SDK kitaplığını çerçeve olarak ekleyin: **Katıştırılmış ikililer** > **ekleyin Diğerini ekleyin...** > Seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
+1. `GStreamerWrapper.framework` [Buradan](https://aka.ms/csspeech/iosbinary)Indirebileceğiniz bilişsel hizmetler konuşma SDK 'sının oluşturduğunuz ve çerçevesini, örnek projenizi içeren dizine kopyalayın.
+1. *Proje ayarlarındaki*çerçeveler için yolları ayarlayın.
+   1. **Katıştırılmış ikili dosyaların** altındaki **genel** sekmesinde, bir Framework olarak SDK Kitaplığı ekleyin: **katıştırılmış ikililer** > Ekle**başka...** > seçtiğiniz dizine gidin ve her iki çerçeveyi seçin.
    1. **Derleme Ayarları** sekmesine gidin ve **Tümü** ayarını etkinleştirin.
 1. `$(SRCROOT)/..` dizinini **Arama Yolları** başlığı altında _Çerçeve Arama Yolları_’na ekleyin.

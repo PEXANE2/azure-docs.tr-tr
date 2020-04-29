@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Fabrikası'nı kullanarak Office 365'ten verileri kopyalama
-description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık ardışık alanda kopyalama etkinliğini kullanarak desteklenen lavabo veri depolarına Office 365'teki verileri nasıl kopyalaylaydestekleyeceğinizi öğrenin.
+title: Azure Data Factory kullanarak Office 365 ' den veri kopyalama
+description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak Office 365 ' den desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,86 +12,86 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: ea68fa8d9326e6d9ebb4f475d16ac83959cae6e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416884"
 ---
-# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Office 365'ten Azure'a veri kopyalama
+# <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' deki verileri Azure 'a kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Veri [Fabrikası, Microsoft Graph veri bağlantısıyla](https://docs.microsoft.com/graph/data-connect-concept-overview)tümleşir ve Office 365 kiracınızdaki zengin kuruluş verilerini ölçeklenebilir bir şekilde Azure'a getirmenize ve bu değerli veri varlıklarına dayalı analitik uygulamalar oluşturmanıza ve öngörüler elde etmenize olanak tanır. Ayrıcalıklı Erişim Yönetimi ile tümleştirme, Office 365'teki değerli küratörlü veriler için güvenli erişim denetimi sağlar.  Microsoft Graph verilerine genel bir bakış için lütfen [bu bağlantıya](https://docs.microsoft.com/graph/data-connect-concept-overview) bakın ve lisans bilgileri için [bu bağlantıya](https://docs.microsoft.com/graph/data-connect-policies#licensing) bakın.
+Azure Data Factory, [Microsoft Graph veri bağlantısı](https://docs.microsoft.com/graph/data-connect-concept-overview)ile tümleşir. böylece, zengin kurumsal 365 verileri Azure 'a ölçeklenebilir bir şekilde Azure 'a getirip analiz uygulamaları oluşturabilir ve bu değerli veri varlıklarına göre öngörüleri ayıklayabilirsiniz. Privileged Access Management tümleştirme, Office 365 ' deki değerli seçkin veriler için güvenli erişim denetimi sağlar.  Lütfen Microsoft Graph veri bağlantısı hakkında genel bakış için [Bu bağlantıya](https://docs.microsoft.com/graph/data-connect-concept-overview) başvurun ve lisans bilgileri için [Bu bağlantıya](https://docs.microsoft.com/graph/data-connect-policies#licensing) başvurun.
 
-Bu makalede, Office 365'teki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
+Bu makalede, Office 365 ' den veri kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
-ADF Office 365 bağlayıcısı ve Microsoft Graph veri bağlantısı, adres defteri kişileri, takvim etkinlikleri, e-posta iletileri, kullanıcı bilgileri, posta kutusu ayarları ve benzeri dahil olmak üzere Exchange E-posta sı etkin posta kutularından farklı türde veri kümelerinin ölçeklendirilmesini sağlar.  Kullanılabilir veri kümelerinin tam listesini görmek için [buraya](https://docs.microsoft.com/graph/data-connect-datasets) bakın.
+ADF Office 365 Bağlayıcısı ve Microsoft Graph veri bağlantısı, Exchange e-posta etkin posta kutularındaki, adres defteri kişileri, takvim olayları, e-posta iletileri, Kullanıcı bilgileri, posta kutusu ayarları vb. gibi farklı veri kümesi türlerinin ölçeğini alma işlemi sırasında etkinleştirilir.  Kullanılabilir veri kümelerinin tüm listesini görmek için [buraya](https://docs.microsoft.com/graph/data-connect-datasets) başvurun.
 
-Şimdilik, tek bir kopyalama etkinliği içinde yalnızca **Office 365'teki verileri [Azure Blob Depolama](connector-azure-blob-storage.md), Azure Veri Gölü Depolama Gen1 ve Azure Veri Gölü Depolama [Gen2'den](connector-azure-data-lake-storage.md) JSON biçiminde [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)** kopyalayabilirsiniz (tür kümesiObjects). Office 365'i diğer veri depolarına veya diğer biçimlere yüklemek istiyorsanız, [desteklenen ADF hedef depolarından](copy-activity-overview.md#supported-data-stores-and-formats) herhangi biri içine veri daha fazla yüklemek için sonraki kopyalama etkinliğiyle ilk kopyalama etkinliğini zincirleyebilirsiniz ("Desteklenen veri depoları ve biçimleri" tablosundaki "lavabo olarak desteklenen" sütununa bakın).
+Şimdilik tek bir kopyalama etkinliği içinde, yalnızca **Office 365 ' den [Azure Blob depolama](connector-azure-blob-storage.md)alanına, [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md)ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md) JSON biçiminde** (setofobjects) veri kopyalayabilirsiniz. Office 365 ' i diğer veri deposu türlerine veya başka biçimlerde yüklemek istiyorsanız, [desteklenen ADF hedef depolarından](copy-activity-overview.md#supported-data-stores-and-formats) birine veri yüklemek için ilk kopyalama etkinliğini sonraki bir kopyalama etkinliğiyle zincirleyebilirsiniz ("desteklenen veri depoları ve biçimleri" tablosunda "havuz olarak desteklenir" sütununa bakın).
 
 >[!IMPORTANT]
->- Veri fabrikasını ve lavabo veri deposunu içeren Azure aboneliği, Office 365 kiracısı ile aynı Azure Etkin Dizin (Azure AD) kiracısının altında olmalıdır.
->- Kopyalama etkinliği için kullanılan Azure Tümleştirme Çalışma Zamanı bölgesinin yanı sıra hedefin Office 365 kiracı kullanıcı posta kutusunun bulunduğu aynı bölgede olduğundan emin olun. Azure IR konumunun nasıl belirlendiğini anlamak için [buraya](concepts-integration-runtime.md#integration-runtime-location) bakın. Desteklenen Office bölgeleri ve ilgili Azure bölgeleri listesi için [tabloya](https://docs.microsoft.com/graph/data-connect-datasets#regions) bakın.
->- Hizmet Sorumlusu kimlik doğrulaması, Hedef Mağazalar olarak Azure Blob Depolama, Azure Veri Gölü Depolama Gen1 ve Azure Veri Gölü Depolama Gen2 için desteklenen tek kimlik doğrulama mekanizmasıdır.
+>- Data Factory ve havuz veri deposu içeren Azure aboneliğinin, Office 365 kiracısı ile aynı Azure Active Directory (Azure AD) kiracısı altında olması gerekir.
+>- Kopyalama etkinliği için kullanılan Azure Integration Runtime bölgesinin ve hedefin, Office 365 Kiracı kullanıcılarının posta kutusunun bulunduğu bölgede bulunduğundan emin olun. Azure IR konumunun nasıl belirlendiğini anlamak için [buraya](concepts-integration-runtime.md#integration-runtime-location) başvurun. Desteklenen Office bölgelerinin ve ilgili Azure bölgelerinin listesi için [buradaki tabloya](https://docs.microsoft.com/graph/data-connect-datasets#regions) bakın.
+>- Hizmet sorumlusu kimlik doğrulaması, Azure Blob depolama, Azure Data Lake Storage 1. ve Azure Data Lake Storage 2. hedef depoları olarak desteklenen tek kimlik doğrulama mekanizmasıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Office 365'teki verileri Azure'a kopyalamak için aşağıdaki ön koşul adımlarını tamamlamanız gerekir:
+Office 365 ' deki verileri Azure 'a kopyalamak için aşağıdaki önkoşul adımlarını gerçekleştirmeniz gerekir:
 
-- Office 365 kiracı [yöneticiniz, burada](https://docs.microsoft.com/graph/data-connect-get-started)açıklandığı gibi biniş eylemlerini tamamlamalıdır.
-- Azure Active Directory'de bir Azure AD web uygulaması oluşturun ve yapılandırıldı.  Yönergeler için [bkz.](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
-- Office 365'in bağlantılı hizmetini tanımlamak için kullanacağınız aşağıdaki değerlere dikkat edin:
-    - Kiracı kimliği. Talimatlar için [bkz.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
-    - Uygulama Kimliği ve Uygulama anahtarı.  Talimatlar için [bkz.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
-- Azure AD web uygulamasının sahibi olarak veri erişim isteğini yapacak olan kullanıcı kimliğini ekleyin (Azure AD web uygulamasından ayarlar > Sahipleri > Add sahibi) >. 
-    - Kullanıcı kimliği, veri aldığınız Office 365 kuruluşunda olmalı ve Konuk kullanıcı olmamalıdır.
+- Office 365 Kiracı yöneticinizin, [burada](https://docs.microsoft.com/graph/data-connect-get-started)açıklandığı gibi taslak eylemleri tamamlaması gerekir.
+- Azure Active Directory bir Azure AD Web uygulaması oluşturun ve yapılandırın.  Yönergeler için bkz. [Azure AD uygulaması oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application).
+- Office 365 için bağlı hizmeti tanımlamak üzere kullanacağınız aşağıdaki değerleri unutmayın:
+    - Kiracı KIMLIĞI. Yönergeler için bkz. [KIRACı kimliği Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+    - Uygulama KIMLIĞI ve uygulama anahtarı.  Yönergeler için bkz. [uygulama kimliği ve kimlik doğrulama anahtarı alın](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+- Azure AD Web uygulaması 'nın sahibi olarak veri erişim isteği oluşturacak Kullanıcı kimliğini (Azure AD Web uygulamasından > ayarları > Owners > sahip Ekle) ekleyin. 
+    - Kullanıcı kimliği, verileri aldığınız Office 365 kuruluşunda olmalıdır ve Konuk Kullanıcı olmamalıdır.
 
 ## <a name="approving-new-data-access-requests"></a>Yeni veri erişim isteklerini onaylama
 
-Bu bağlam için ilk kez veri talep ediyorsanız (hangi veri tablosuna erişiliyor, hangi hedef hesaba yüklenen veri ve hangi kullanıcı kimliği veri erişim isteği yapıyor), kopyalama etkinliği durumunu "Devam Ediyor" olarak görürsünüz ve yalnızca [Eylemler altındaki "Ayrıntılar" bağlantısına](copy-activity-overview.md#monitoring) tıkladığınızda durumu "İzin İstek" olarak görürsünüz.  Veri ayıklama işlemi nin devam edebilmesi için veri erişimi onaylayıcı grubunun bir üyesinin Ayrıcalıklı Erişim Yönetimi'ndeki isteği onaylaması gerekir.
+Bu bağlam için ilk kez veri isteğinde bulunduğunuzu (veri tablosu erişimi olan bir birleşimi) hangi hedef hesabı içine yüklenmekte olan veri ve veri erişim isteğini yapan kullanıcı kimliği), kopyalama etkinliği durumunu "sürüyor" olarak görürsünüz ve yalnızca [Eylemler bölümündeki "Ayrıntılar" bağlantısına](copy-activity-overview.md#monitoring) tıkladığınızda durum "Requestingonay" olarak görüntülenir.  Veri ayıklama işleminin devam edebilmesi için, veri erişimi onaylayan grubunun bir üyesinin Privileged Access Management isteği onaylaması gerekir.
 
-Onaylayanın veri erişim isteğini nasıl onaylayacağına [buradan](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) bakın ve veri erişimi onaylayıcı grubunun nasıl ayarlayacağı da dahil olmak üzere Ayrıcalıklı Erişim Yönetimi ile genel tümleştirme yle ilgili bir açıklama için [buraya](https://docs.microsoft.com/graph/data-connect-pam) bakın.
+Onaylayanın veri erişim isteğini nasıl onaylayabilmesi için [buraya](https://docs.microsoft.com/graph/data-connect-tips#approve-pam-requests-via-office-365-admin-portal) başvurun ve veri erişimi onaylayan grubunu ayarlama da dahil olmak üzere Privileged Access Management ile genel tümleştirme hakkında açıklama için [buraya](https://docs.microsoft.com/graph/data-connect-pam) bakın.
 
 ## <a name="policy-validation"></a>Doğrulamayı yeniden deneme
 
-Yönetilen bir uygulamanın parçası olarak ADF oluşturulursa ve Azure ilkeleri atamaları yönetim kaynak grubundaki kaynaklarda yapılırsa, her kopyalama etkinliği için ADF ilke atamalarının uygulandığından emin olmak için denetler. Desteklenen ilkelerin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-policies#policies) bakın.
+ADF, yönetilen bir uygulamanın parçası olarak oluşturulduysa ve yönetim kaynak grubundaki kaynaklarda Azure ilkeleri atamaları yapılırsa, her kopyalama etkinliği çalıştırması için ADF, ilke atamalarının zorlandığından emin olmak için kontrol eder. Desteklenen ilkelerin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-policies#policies) bakın.
 
 ## <a name="getting-started"></a>Başlarken
 
 >[!TIP]
->Office 365 bağlayıcısı kullanma nın bir walkthrough için [Bkz. Office 365 makalesinden veri yükle.](load-office-365-data.md)
+>Office 365 bağlayıcısını kullanma hakkında yönergeler için bkz. [Office 'teki verileri yükleme 365](load-office-365-data.md) makalesi.
 
-Aşağıdaki araçlardan veya SDK'lardan birini kullanarak kopyalama etkinliğiyle bir ardışık hatlar oluşturabilirsiniz. Kopyalama etkinliği olan bir ardışık hatlar oluşturmak için adım adım yönergeleri içeren bir öğreticiye gitmek için bir bağlantı seçin. 
+Aşağıdaki araçlardan veya SDK 'Lardan birini kullanarak kopyalama etkinliğiyle bir işlem hattı oluşturabilirsiniz. Bir kopyalama etkinliği ile işlem hattı oluşturmak için adım adım yönergeler içeren öğreticiye gitmek üzere bir bağlantı seçin. 
 
 - [Azure portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK'sı](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
 - [REST API](quickstart-create-data-factory-rest-api.md)
-- [Azure Kaynak Yöneticisi şablonu](quickstart-create-data-factory-resource-manager-template.md). 
+- [Azure Resource Manager şablonu](quickstart-create-data-factory-resource-manager-template.md). 
 
-Aşağıdaki bölümler, Office 365 bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümlerde, Office 365 bağlayıcısına özgü Data Factory varlıkları tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlanmaktadır.
 
-## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
+## <a name="linked-service-properties"></a>Bağlı hizmet özellikleri
 
-Aşağıdaki özellikler Office 365 bağlantılı hizmet için desteklenir:
+Aşağıdaki özellikler Office 365 bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Tür özelliği ayarlanmalıdır: **Office365** | Evet |
-| office365TenantId | Office 365 hesabının ait olduğu Azure kiracı kimliği. | Evet |
-| hizmetPrincipalTenantId | Azure AD web uygulamanızın bulunduğu kiracı bilgilerini belirtin. | Evet |
-| hizmetPrincipalId | Uygulamanın istemci kimliğini belirtin. | Evet |
-| servicePrincipalKey | Uygulamanın anahtarını belirtin. Bu alanı Güvenli Bir Şekilde Veri Fabrikası'nda depolamak için SecureString olarak işaretleyin. | Evet |
-| connectVia | Veri deposuna bağlanmak için kullanılacak Tümleştirme Çalışma Süresi.  Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. | Hayır |
+| type | Type özelliği: **Office365** olarak ayarlanmalıdır | Yes |
+| office365TenantId | Office 365 hesabının ait olduğu Azure kiracı KIMLIĞI. | Yes |
+| Serviceprincipaltenantıd | Azure AD Web uygulamanızın bulunduğu kiracı bilgilerini belirtin. | Yes |
+| Serviceprincipalıd | Uygulamanın istemci KIMLIĞINI belirtin. | Yes |
+| Servicesprincipalkey | Uygulamanın anahtarını belirtin. Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. | Yes |
+| connectVia | Veri deposuna bağlanmak için kullanılacak Integration Runtime.  Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır |
 
 >[!NOTE]
-> **Office365TenantId** ve **servicePrincipalTenantId** ve sağlamak için ilgili değer arasındaki fark:
->- Kendi kuruluşunuzun kullanımı için Office 365 verilerine karşı bir uygulama geliştiren bir kuruluş geliştiricisiyseniz, kuruluşunuzun AAD kiracı kimliği olan her iki özellik için de aynı kiracı kimliğini sağlamanız gerekir.
->- Müşterileriniz için bir uygulama geliştiren bir ISV geliştiricisiyseniz, office365TenantId müşterinizin (uygulama yükleyicisi) AAD kiracı kimliği ve hizmetPrincipalTenantId şirketinizin AAD kiracı kimliği olacaktır.
+> **Office365TenantId** ve **serviceprincipaltenantıd** ile buna karşılık gelen değer arasındaki fark:
+>- Kendi kuruluşunuzun kullanımı için Office 365 verilerine yönelik bir uygulama geliştiren bir kurumsal geliştiricisiyseniz, kuruluşunuzun AAD kiracı KIMLIĞI olan her iki özellik için de aynı kiracı KIMLIĞINI sağlamanız gerekir.
+>- Müşterileriniz için bir uygulama geliştiren bir ISV geliştiricisiyseniz office365TenantId, müşterinizin (uygulama yükleyicisi) AAD kiracı KIMLIĞI ve Serviceprincipaltenantıd, şirketinizin AAD Kiracı kimliği olacaktır.
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 {
@@ -113,18 +113,18 @@ Aşağıdaki özellikler Office 365 bağlantılı hizmet için desteklenir:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde, Office 365 veri kümesi tarafından desteklenen özelliklerin bir listesi sağlar.
+Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Office 365 veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Office 365'teki verileri kopyalamak için aşağıdaki özellikler desteklenir:
+Office 365 ' den veri kopyalamak için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **Office365Table** | Evet |
-| tableName | Office 365'ten çıkarılacak veri kümesinin adı. Çıkarma için kullanılabilir Office 365 veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-datasets#datasets) bakın. | Evet |
+| type | DataSet 'in Type özelliği: **Office365Table** olarak ayarlanmalıdır | Yes |
+| tableName | Office 365 ' den Ayıklanacak veri kümesinin adı. Ayıklama için kullanılabilen Office 365 veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-datasets#datasets) bakın. | Yes |
 
-Eğer ayarı `dateFilterColumn` `startTime`olsaydı `endTime`, `userScopeFilterUri` , , ve veri kümesi, hala olduğu gibi desteklenir, ileriye dönük etkinlik kaynağında yeni modeli kullanmak için önerilir iken.
+,, Ve ' `dateFilterColumn`i `startTime`ayarlıyorsanız `endTime`,, `userScopeFilterUri` ve ' de olduğu gibi, etkinlik kaynağı ' nda yeni modeli kullanmanız önerilir.
 
-**Örnek**
+**Örneğinde**
 
 ```json
 {
@@ -145,23 +145,23 @@ Eğer ayarı `dateFilterColumn` `startTime`olsaydı `endTime`, `userScopeFilterU
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde, Office 365 kaynağı tarafından desteklenen özelliklerin bir listesi sağlar.
+Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. işlem [hatları](concepts-pipelines-activities.md) makalesi. Bu bölüm, Office 365 kaynağı tarafından desteklenen özelliklerin bir listesini sağlar.
 
 ### <a name="office-365-as-source"></a>Kaynak olarak Office 365
 
-Office 365'teki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölümünde aşağıdaki özellikler desteklenir:
+Office 365 ' den veri kopyalamak için aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinlik kaynağının türü özelliği şu şekilde ayarlanmalıdır: **Office365Source** | Evet |
-| izin Verilen Gruplar | Grup seçimi yüklemi.  Verilerin alınacağı en fazla 10 kullanıcı grubu seçmek için bu özelliği kullanın.  Grup belirtilmemişse, tüm kuruluş için veriler döndürülür. | Hayır |
-| userScopeFilterUri | Özellik `allowedGroups` belirtilmediğinde, Office 365'ten ayıklamak için belirli satırları filtrelemek için tüm kiracıya uygulanan bir yüklem ifadesi kullanabilirsiniz. Yüklem biçimi, Microsoft Graph API'lerinin sorgu biçimiyle `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`eşleşmelidir, örneğin. | Hayır |
-| tarihFilterColumn | DateTime filtre sütununun adı. Office 365 verilerinin ayıklandığı zaman aralığını sınırlamak için bu özelliği kullanın. | Veri kümesinde bir veya daha fazla DateTime sütunu varsa evet. Bu DateTime filtresini gerektiren veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-filtering#filtering) bakın. |
-| startTime | Filtreuygulanacak DateTime değerini başlatın. | Belirtilirse `dateFilterColumn` evet |
-| endTime | Filtre uygulanacak DateTime değerini sonla. | Belirtilirse `dateFilterColumn` evet |
-| outputColumns | Batmak için kopyalamak için sütundizi. | Hayır |
+| type | Kopyalama etkinliği kaynağının Type özelliği: **Office365Source** olarak ayarlanmalıdır | Yes |
+| allowedGroups | Grup Seçimi koşulu.  Verilerin alınacağı en fazla 10 kullanıcı grubunu seçmek için bu özelliği kullanın.  Hiçbir grup belirtilmemişse, veriler tüm kuruluş için döndürülür. | Hayır |
+| userScopeFilterUri | `allowedGroups` Özellik belirtilmediğinde, Office 365 ' den Ayıklanacak belirli satırları filtrelemek için kiracının tamamına uygulanan bir koşul ifadesi kullanabilirsiniz. Koşul biçimi Microsoft Graph API 'lerin sorgu biçimiyle eşleşmelidir, örn. `https://graph.microsoft.com/v1.0/users?$filter=Department eq 'Finance'`. | Hayır |
+| Tarih FilterColumn | Tarih saat filtresi sütununun adı. Office 365 verilerinin ayıklandığı zaman aralığını sınırlamak için bu özelliği kullanın. | Veri kümesinde bir veya daha fazla DateTime sütunu varsa evet. Bu tarih saat filtresini gerektiren veri kümelerinin listesi için [buraya](https://docs.microsoft.com/graph/data-connect-filtering#filtering) bakın. |
+| startTime | Filtrelemek için tarih saat değerini başlatın. | `dateFilterColumn` Belirtilmişse Evet |
+| endTime | Filtrelemek için tarih saat değeri sonu. | `dateFilterColumn` Belirtilmişse Evet |
+| outputColumns | Havuza kopyalanacak sütunların dizisi. | Hayır |
 
-**Örnek:**
+**Örneğinde**
 
 ```json
 "activities": [
@@ -304,4 +304,4 @@ Office 365'teki verileri kopyalamak için, kopyalama etkinliği **kaynak** böl�
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.
+Azure Data Factory içindeki kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).

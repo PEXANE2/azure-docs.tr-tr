@@ -1,6 +1,6 @@
 ---
-title: Yönetilebilirlik ve izleme - sorgu etkinliği, kaynak kullanımı
-description: Azure Synapse Analytics'i yönetmek ve izlemek için hangi özelliklerin kullanılabilip kullanılabilmelerini öğrenin. Sorgu etkinliğini ve veri ambarınızın kaynak kullanımını anlamak için Azure portalını ve Dinamik Yönetim Görünümlerini (DMV) kullanın.
+title: Yönetilebilirlik ve izleme-sorgu etkinliği, kaynak kullanımı
+description: Azure SYNAPSE Analytics 'i yönetmek ve izlemek için kullanabileceğiniz özellikleri öğrenin. Sorgu etkinliğini ve veri ambarınızın kaynak kullanımını anlamak için Azure portal ve dinamik yönetim görünümlerini (DMVs) kullanın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -12,58 +12,58 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416210"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak kullanımı ve sorgu etkinliğini izleme
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kaynak kullanımını ve sorgu etkinliğini izleme
 
-Azure Synapse Analytics, veri ambarı iş yükünüzle ilgili yüzey öngörülerine Azure portalı içinde zengin bir izleme deneyimi sağlar. Azure portalı, ölçümler ve günlükler için yapılandırılabilir bekletme süreleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığı için veri ambarınızı izlerken önerilen araçtır. Portal ayrıca, yalnızca veri ambarınız için değil, tüm Azure analiz platformunuz için tüm Azure analiz platformunuz için tümsel bir izleme deneyimi sağlamak için Azure Monitor (günlükler) gibi diğer Azure izleme hizmetleriyle log analitiği ile tümleştirmenize olanak tanır. Bu dokümantasyon, SQL Analytics ile analiz platformunuzu optimize etmek ve yönetmek için hangi izleme yeteneklerinin kullanılabillerini açıklar.
+Azure SYNAPSE Analytics, veri ambarı iş yükünüz ile ilgili öngörülere yönelik Azure portal içinde zengin bir izleme deneyimi sağlar. Azure portal, veri Ambarınızı izlerken, ölçüm ve Günlükler için yapılandırılabilir bekletme dönemleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığından önerilen araçtır. Portal Ayrıca, yalnızca veri Ambarınızla değil, tümleşik bir izleme deneyimi için tüm Azure Analytics platformunuzu değil, bütünsel bir izleme deneyimi sağlamak amacıyla Log Analytics ile Azure Izleyici (Günlükler) gibi diğer Azure izleme hizmetleriyle tümleştirmenize olanak sağlar. Bu belgelerde, SQL Analytics ile analiz platformunuzu iyileştirmek ve yönetmek için kullanabileceğiniz izleme özellikleri açıklanmaktadır.
 
 ## <a name="resource-utilization"></a>Kaynak kullanımı
 
-Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. Bu ölçümler Azure [Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla su yüzüne çıkar.
+SQL Analytics için Azure portal aşağıdaki ölçümler mevcuttur. Bu ölçümler [Azure izleyici](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla ortaya çıkmış.
 
-| Metrik Adı             | Açıklama                                                  | Toplama Türü |
+| Ölçüm adı             | Açıklama                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Avg, Min, Max    |
-| Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde IO Kullanımı       | Avg, Min, Max    |
-| Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Avg, Min, Max   |
-| Etkin Sorgular          | Sistemde çalıştırılabilen etkin sorgu sayısı             | Toplam              |
-| Sıralı Sorgular          | Yürütmeyi başlatmak için bekleyen sıralı sorgu ların sayısı          | Toplam              |
-| Başarılı Bağlantılar  | Veritabanına karşı başarılı bağlantı (oturum açma) sayısı | Toplam, Sayma       |
-| Başarısız Bağlantılar      | Veritabanına karşı başarısız bağlantı (oturum açma) sayısı | Toplam, Sayma       |
-| Güvenlik Duvarı tarafından engellendi     | Engellenen veri ambarına giriş sayısı     | Toplam, Sayma       |
-| DWU sınırı               | Veri ambarının hizmet düzeyi hedefi                | Avg, Min, Max    |
-| DWU yüzdesi          | CPU yüzdesi ile Veri IO yüzdesi arasında maksimum        | Avg, Min, Max    |
-| Kullanılan DWU                | DWU sınırı * DWU yüzdesi                                   | Avg, Min, Max    |
-| Önbellek isabet yüzdesi    | (önbellek isabetleri / önbellek miss) * 100 nerede önbellek vurur yerel SSD önbellek ve önbellek miss tüm sütun mağaza segmentleri isabet toplamıdır yerel SSD önbelleğinde kalır sütun mağazası segmentleri tüm düğümleri arasında özetlenebilir | Avg, Min, Max    |
-| Önbellek kullanılan yüzde   | (kullanılan önbellek / önbellek kapasitesi) * Kullanılan önbelleğin tüm düğümler ve önbellek kapasitesi boyunca yerel SSD önbelleğindeki tüm baytların toplamı olduğu 100, tüm düğümler arasında yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Avg, Min, Max    |
-| Yerel tempdb yüzdesi | Tüm işlem düğümleri arasında yerel tempdb kullanımı - değerler her beş dakikada bir yayılır | Avg, Min, Max    |
-| Veri Depolama Boyutu (GB) | Veritabanının toplam boyutu. Bu, kullanılan, ayrılmış ve ayrılmamış alanı içerir. Sorgu ve yük performansını en iyi duruma getirmek için veritabanı için ayrılmamış alan tutulur. | Toplam |
-| Olağanüstü Durum Kurtarma Boyutu (GB) | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
-| Anlık Görüntü Depolama boyutu (GB) | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntü toplam boyutu. Bu, otomatik ve kullanıcı tanımlı anlık görüntüleri içerir. | Toplam |
+| CPU yüzdesi          | Veri ambarı için tüm düğümlerde CPU kullanımı      | Ortalama, en düşük, en fazla    |
+| Veri G/Ç yüzdesi      | Veri ambarı için tüm düğümlerde GÇ kullanımı       | Ortalama, en düşük, en fazla    |
+| Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Ortalama, en düşük, en fazla   |
+| Etkin sorgular          | Sistemde yürütülen etkin sorguların sayısı             | Toplam              |
+| Kuyruğa alınmış sorgular          | Yürütülmeye başlamak için bekleyen sıraya alınmış sorgu sayısı          | Toplam              |
+| Başarılı bağlantılar  | Veritabanına yönelik başarılı bağlantı sayısı (oturum açma) | Toplam, sayı       |
+| Başarısız Bağlantılar      | Veritabanına karşı başarısız bağlantı sayısı (oturum açma) | Toplam, sayı       |
+| Güvenlik duvarı tarafından engellendi     | Engellenen veri ambarına ait oturum açma sayısı     | Toplam, sayı       |
+| DWU sınırı               | Veri ambarının hizmet düzeyi hedefi                | Ortalama, en düşük, en fazla    |
+| DWU yüzdesi          | CPU yüzdesi ile veri GÇ yüzdesi arasındaki en fazla        | Ortalama, en düşük, en fazla    |
+| Kullanılan DWU                | DWU sınırı * DWU yüzdesi                                   | Ortalama, en düşük, en fazla    |
+| İsabetli önbellek okuması yüzdesi    | (önbellek isabet sayısı/önbellek isabetsizliği) * 100, önbellek isabetlerinin yerel SSD önbelleğindeki tüm columnstore segmentlerinin toplamı olduğu ve önbellek isabetsizlik, tüm düğümlerde toplanan yerel SSD önbelleğinde bulunan columnstore kesimlerinin isabetsizliği | Ortalama, en düşük, en fazla    |
+| Önbellek kullanılan yüzde   | (kullanılan önbellek/önbellek kapasitesi) * 100, kullanılan önbellek tüm düğümlerde yerel SSD önbelleğindeki tüm baytların toplamı ve önbellek kapasitesi tüm düğümlerde yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Ortalama, en düşük, en fazla    |
+| Yerel tempdb yüzdesi | Tüm işlem düğümlerinde yerel tempdb kullanımı-değerler her beş dakikada bir dağıtılır | Ortalama, en düşük, en fazla    |
+| Veri depolama boyutu (GB) | Veritabanının toplam boyutu. Bu, kullanılan, ayrılmış ve ayrılmamış alanı içerir. Sorgu ve yükleme performansını iyileştirmek için veritabanının ayrılmamış alanı tutulur. | Toplam |
+| Olağanüstü durum kurtarma boyutu (GB) | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
+| Anlık görüntü depolama boyutu (GB) | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntülerin toplam boyutu. Buna otomatik ve Kullanıcı tanımlı anlık görüntüler dahildir. | Toplam |
 
-Ölçümleri görüntülerken ve uyarıları ayarlarken göz önünde bulundurulması gerekenler:
+Ölçümleri görüntülerken ve uyarıları ayarlarken dikkate alınması gereken noktalar:
 
-- Kullanılan DWU, SQL havuzunda yalnızca üst düzey bir **kullanım temsilini** temsil eder ve kapsamlı bir kullanım göstergesi değildir. Yukarı veya aşağı ölçeklendirmek için, eşzamanlılık, bellek, tempdb ve uyarlanabilir önbellek kapasitesi gibi DWU tarafından etkilenebilir tüm faktörleri göz önünde bulundurun. İş yükünüzü, iş hedeflerinize ulaşmak için en iyi neyin işe yaradığını belirlemek için [farklı DWU ayarlarında çalıştırmanızı](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) öneririz.
-- Belirli bir veri ambarı için başarısız ve başarılı bağlantılar bildirilir - mantıksal sunucu için değil
-- Bellek yüzdesi, veri ambarı boşta olsa bile kullanımı yansıtır - etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklemenin gereksinimlerinizi karşılamak için iş yükü performansını artırıp artıracağına ilişkin bütünsel bir karar vermek için bu ölçütünüzü başkalarıyla birlikte (tempdb, gen2 önbelleği) kullanın ve izleyin.
+- Kullanılan DWU, SQL havuzundaki **kullanım için yalnızca üst düzey bir temsili** temsil eder ve kapsamlı bir kullanım göstergesi olması anlamına gelir. Ölçeği artırma veya azaltma yapılıp yapılmayacağını anlamak için eşzamanlılık, bellek, tempdb ve Uyarlamalı önbellek kapasitesi gibi DWU tarafından etkilenen tüm faktörleri göz önünde bulundurun. İş hedeflerinizi karşılayacak en iyi şeyi belirlemek için iş [yükünüzü farklı DWU ayarlarında çalıştırmayı](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) öneririz.
+- Başarısız ve başarılı bağlantılar, belirli bir veri ambarı için (mantıksal sunucu için değil) raporlanır
+- Veri ambarı boşta durumunda olsa bile bellek yüzdesi kullanımı yansıtır; etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklendirmenin, gereksinimlerinizi karşılamak üzere iş yükü performansını artırabilmesi için bu ölçümü diğer kullanıcılarla birlikte (tempdb, Gen2 Cache) kullanın ve izleyin.
 
 ## <a name="query-activity"></a>Sorgu etkinliği
 
-T-SQL üzerinden SQL Analytics'i izlerken programlı bir deneyim için, hizmet dinamik yönetim görünümleri (DMV) kümesi sağlar. Bu görünümler, iş yükünüzle ilgili performans sorunlarını etkin olarak giderirken ve tanımlarken yararlıdır.
+SQL analizini T-SQL aracılığıyla izlerken bir programlama deneyimi için, hizmet bir dizi dinamik yönetim görünümü (DMVs) sağlar. Bu görünümler, iş yükünüzün performans sorunlarını etkin bir şekilde gidermeye ve tanımlamaya yönelik olarak faydalıdır.
 
-Synapse SQL için geçerli olan DMV listesini görüntülemek için bu [belgelere](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)bakın. 
+SYNAPSE SQL 'e uygulanan DMVs listesini görüntülemek için bu [belgeye](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)bakın. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri 
 
-Hem ölçümler hem de günlükler Azure Monitor'a, özellikle [Azure Monitor günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine ihraç edilebilir ve [günlük sorguları](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)aracılığıyla programlanabilir. SQL Analytics için günlük gecikmesi yaklaşık 10-15 dakikadır. Gecikme gecikmesini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
+Hem ölçümler hem de Günlükler Azure izleyici 'ye, özellikle de [Azure izleyici günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine aktarılabilir ve [günlük sorgularıyla](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programlı olarak erişilebilir. SQL Analytics için günlük gecikme süresi yaklaşık 10-15 dakikadır. Gecikme süresini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki Nasıl Yap'lı kılavuzu, veri ambarınızı izlerken ve yönetirken sık karşılaşılan senaryoları ve kullanım durumlarını açıklar:
+Aşağıdaki nasıl yapılır kılavuzunda, veri Ambarınızı izlerken ve yönetirken yaygın senaryolar ve kullanım örnekleri açıklanmaktadır:
 
-- [Veri ambarı iş yükünüzü DMV'lerle izleme](sql-data-warehouse-manage-monitor.md)
+- [DMV 'ler ile veri ambarı iş yükünüzü izleme](sql-data-warehouse-manage-monitor.md)

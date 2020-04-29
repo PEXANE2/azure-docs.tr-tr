@@ -1,6 +1,6 @@
 ---
 title: REST API hata kodları - Azure Key Vault
-description: Bu hata kodları, Azure Key Vault web hizmetindeki bir işlemle döndürülebilir.
+description: Bu hata kodları Azure Key Vault Web hizmetindeki bir işlem tarafından döndürülebilir.
 keywords: ''
 services: machine-learning
 author: msmbaldwin
@@ -11,30 +11,30 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432066"
 ---
-# <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API Hata Kodları
+# <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hata kodları
  
-Aşağıdaki hata kodları, Azure Key Vault web hizmetindeki bir işlemle döndürülebilir.
+Aşağıdaki hata kodları Azure Key Vault Web hizmetindeki bir işlem tarafından döndürülebilir.
  
-## <a name="http-401-unauthenticated-request"></a>HTTP 401: Kimlik doğrulamamış istek
+## <a name="http-401-unauthenticated-request"></a>HTTP 401: kimliği doğrulanmamış Istek
 
-401, isteğin Key Vault için doğrulanmamış olduğu anlamına gelir. 
+401, isteğin Key Vault için kimliği doğrulanmamış anlamına gelir. 
 
-Bir istek:
+Şu durumlarda bir isteğin kimliği doğrulanır:
 
-- Anahtar kasası arayanın kimliğini bilir; Ve
-- Arayan Key Vault kaynaklarına erişmeye çalışsın. 
+- Anahtar Kasası çağıranın kimliğini bilir; '
+- Çağıranın Key Vault kaynaklarına erişmeye çalışmasına izin verilir. 
 
-Bir isteğin 401'i döndürmesi için birkaç farklı neden vardır.
+Bir isteğin 401 döndürmesine neden olabilecek birkaç farklı neden vardır.
 
-### <a name="no-authentication-token-attached-to-the-request"></a>İsteke iliştirilmiş kimlik doğrulama belirteci yok. 
+### <a name="no-authentication-token-attached-to-the-request"></a>İsteğe bağlı kimlik doğrulama belirteci yok. 
 
-Burada bir örnek PUT isteği, bir sırrın değerini ayarı:
+Aşağıda bir örnek PUT isteği verilmiştir ve bir gizli dizi değeri ayarlanıyor:
 
 ``` 
 PUT https://putreqexample.vault.azure.net//secrets/DatabaseRotatingPassword?api-version=7.0 HTTP/1.1
@@ -51,15 +51,15 @@ Content-Length: 31
 }
 ```
 
-"Yetkilendirme" üstbilgisi, veri düzlemi işlemleri için Key Vault'a yapılan her aramada gereken erişim belirtecidir. Üstbilgi eksikse, yanıt 401 olmalıdır.
+"Yetkilendirme" üstbilgisi, veri düzlemi işlemleri için Key Vault her çağrısıyla gerekli olan erişim belirtecidir. Üst bilgi eksikse, yanıt 401 olmalıdır.
 
-### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Belirteç, onunla ilişkili doğru kaynakyoksun. 
+### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Belirteç ile ilişkili doğru kaynak eksik. 
 
-Azure OAUTH bitiş noktasından bir erişim belirteci talep ederken, "kaynak" adı verilen bir parametre zorunludur. Belirteci, kullanım amacı için belirteci kapsamı olduğundan, belirteç sağlayıcısı için değer önemlidir. **Tüm** belirteçlerin Bir Key Vault'a erişme leri için kaynak *\/https: /vault.keyvault.net* (hiçbir iz bırakan eğik çizgi ile).
+Azure OAUTH uç noktasından bir erişim belirteci istenirken, "Resource" adlı bir parametre zorunludur. Bu değer belirteç sağlayıcısı için önemlidir çünkü belirteci amaçlanan kullanım için kapsamlanır. Bir Key Vault erişmek için **Tüm** belirteçlerin kaynağı *https\/:/Vault.keyvault.net* (sondaki eğik çizgi olmadan).
 
-### <a name="the-token-is-expired"></a>Belirteç süresi doldu
+### <a name="the-token-is-expired"></a>Belirtecin geçerliliği zaman aşımına uğradı
 
-Belirteçleri base64 kodlanmış ve değerleri gibi [http://jwt.calebb.net](http://jwt.calebb.net)web sitelerinde deşifre edilebilir. Burada yukarıdaki belirteç deşifre edilir:
+Belirteçler Base64 kodlardır ve değerler gibi web sitelerinde kodu çözülebilir [http://jwt.calebb.net](http://jwt.calebb.net). Yukarıdaki belirtecin kodu çözülmüş:
 
 ```
     {
@@ -89,18 +89,18 @@ Belirteçleri base64 kodlanmış ve değerleri gibi [http://jwt.calebb.net](http
 
 Bu belirteçte birçok önemli bölümü görebiliriz:
 
-- aud (hedef kitle): Belirteç kaynağı. <https://vault.azure.net>Bunun. Bu belirteç, grafik gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmaz.
-- iat (verilen): Belirteç verildiği dönemin başlangıcından bu yana kene sayısı.
-- nbf (daha önce değil): Bu belirteç geçerli olduğunda çağın başlangıcından bu yana kene sayısı.
-- exp (sona erme): Bu belirteç sona erdiğinde çağın başlangıcından bu yana kene sayısı.
-- appid (uygulama kimliği): Bu isteği yapan uygulama kimliği için GUID.
-- tid (kiracı kimliği): Bu talebi yapan müdürün kiracı kimliği için GUID
+- AUD (hedef kitle): belirtecin kaynağı. Bunun olduğuna dikkat edin <https://vault.azure.net>. Bu belirteç, Graph gibi bu değerle açıkça eşleşmeyen herhangi bir kaynak için çalışmayacaktır.
+- IAT (çıkarılan): belirteç verildiğinde dönem başlangıcından bu yana geçen onay işareti sayısı.
+- NBF (daha önce değil): Bu belirteç geçerli olduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.
+- exp (sona erme): Bu belirtecin süresi dolduğunda dönem başlangıcından bu yana geçen onay işareti sayısı.
+- AppID (uygulama KIMLIĞI): Bu isteği yapan uygulama KIMLIĞI için GUID.
+- TID (kiracı KIMLIĞI): Bu isteği yapan asıl öğe kiracı KIMLIĞI için GUID
 
-İsteğin çalışabilmesi için belirteçte tüm değerlerin düzgün bir şekilde tanımlanması önemlidir. Her şey doğruysa, istek 401 ile sonuçlanmaz.
+Her değerin, isteğin çalışması için belirteçte doğru şekilde tanımlanması önemlidir. Her şey doğruysa, istek 401 ile sonuçlanmaz.
 
-### <a name="troubleshooting-401"></a>Sorun Giderme 401
+### <a name="troubleshooting-401"></a>401 sorunlarını giderme
 
-401'ler jeton üretimi açısından araştırılmalıdır, anahtar kasasına istek tesbit edilmeden önce. Genellikle kod belirteç istemek için kullanılıyor. Belirteç alındıktan sonra, Anahtar Kasa isteğine aktarılır. Kod yerel olarak çalışıyorsa, ''ye istek/yanıt' ı `https://login.microsoftonline.com`yakalamak için Fiddler'ı kullanabilirsiniz. Bir istek şuna benzer:
+istek, anahtar kasasında yapılmadan önce, belirteç oluşturma noktasından araştırılmalıdır. Belirteç istemek için genellikle kod kullanılıyor. Belirteç alındıktan sonra, Key Vault isteğine geçirilir. Kod yerel olarak çalışıyorsa, istek/yanıt yakalamak için Fiddler kullanabilirsiniz `https://login.microsoftonline.com`. İstek şöyle görünür:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
@@ -112,59 +112,59 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-Aşağıdaki kullanıcı tarafından sağlanan bilgi lapa doğru olmalıdır:
+Aşağıdaki Kullanıcı tarafından sağlanan bilgi mush doğru olmalıdır:
 
-- Anahtar kasa kiracı kimliği
-- Kaynak değeri https%3A%2F%2Fvault.azure.net olarak ayarlanmıştır (URL kodlanmış)
+- Anahtar Kasası kiracı KIMLIĞI
+- Kaynak değeri https %3 olarak ayarlandı %2 F %2 F Kasası. Azure. net (URL kodlamalı)
 - İstemci Kimliği
 - Gizli anahtar
 
-İsteğin geri kalanının hemen hemen aynı olduğundan emin olun.
+İsteğin geri kalanının neredeyse aynı olduğundan emin olun.
 
-Yalnızca yanıt erişim jetonunu alabilirseniz, kiracı kimliğini, istemci kimliğini (uygulama kimliği) ve kaynağı sağlamak için bu belirteci çözebilirsiniz (yukarıda gösterildiği gibi).
+Yalnızca yanıt erişim belirtecini alabilmeniz için, kiracı KIMLIĞINI, istemci KIMLIĞINI (uygulama KIMLIĞI) ve kaynağı sağlamak üzere bu dosyanın kodunu çözbırakabilirsiniz (yukarıda gösterildiği gibi).
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403: Yetersiz İzinler
+## <a name="http-403-insufficient-permissions"></a>HTTP 403: yetersiz Izinler
 
-HTTP 403, isteğin doğrulanmış olduğu (istenen kimliği bildiği) ancak kimliğin istenen kaynağa erişim izni olmadığı anlamına gelir. İki nedeni vardır:
+HTTP 403 isteğin kimliğinin doğrulandığı (istekte bulunan kimliği bilir) ancak kimliğin istenen kaynağa erişim izni olmadığı anlamına gelir. İki nedeni vardır:
 
 - Kimlik için erişim ilkesi yok.
-- İstenen kaynağın IP adresi, anahtar kasasının güvenlik duvarı ayarlarında beyaz listeye alınmaz.
+- İstekte bulunan kaynağın IP adresi, anahtar kasasının güvenlik duvarı ayarlarında beyaz listeye alınmamış.
 
-HTTP 403 genellikle müşterinin uygulaması müşterinin düşündüğü istemci kimliğini kullanmadığında oluşur. Bu genellikle erişim ilkelerinin gerçek arama kimliği için doğru şekilde ayarlanmadığı anlamına gelir.
+HTTP 403 genellikle müşterinin uygulaması müşterinin yaptığı istemci KIMLIĞINI kullanmamasından kaynaklanır. Bu genellikle, erişim ilkelerinin gerçek arayan kimliği için doğru şekilde ayarlanmayacağı anlamına gelir.
 
-### <a name="troubleshooting-403"></a>Sorun Giderme 403
+### <a name="troubleshooting-403"></a>403 sorunlarını giderme
 
-İlk olarak, günlüğe kaydetmeyi açın. Nasıl yapılacağını anlatan talimatlar için [Azure Anahtar Kasası günlüğe bakın).](logging.md)
+İlk olarak, günlüğü açın. Bunun nasıl yapılacağı hakkında yönergeler için bkz. [Azure Key Vault Logging](logging.md)).
 
-Günlüğe kaydetme açık olduktan sonra, 403'ün erişim ilkesinden mi yoksa güvenlik duvarı ilkesine mi bağlı olduğunu belirleyebilirsiniz.
+Günlüğe kaydetme etkinleştirildikten sonra, 403 ' nin erişim ilkesi veya güvenlik duvarı ilkesi olup olmadığını belirleyebilirsiniz.
 
-#### <a name="error-due-to-firewall-policy"></a>Güvenlik duvarı ilkesi nedeniyle hata
+#### <a name="error-due-to-firewall-policy"></a>Güvenlik duvarı ilkesi nedeniyle hata oluştu
 
-"Müşteri adresi (00.00.00.00) yetkili değildir ve arayan güvenilir bir hizmet değildir"
+"İstemci adresi (00.00.00.00) yetkili değil ve arayan güvenilir bir hizmet değil"
 
-Sınırlı bir "Azure Güvenilen Hizmetler" listesi vardır. Azure Web Siteleri Güvenilir Bir Azure Hizmeti **değildir.** Daha fazla bilgi için Azure Uygulama Hizmetleri tarafından anahtar [kasagüvenlik erişimi](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)blog yazısına bakın.
+"Azure güvenilir hizmetler" öğesinin sınırlı bir listesi vardır. Azure Web siteleri, güvenilir bir Azure hizmeti **değildir** . Daha fazla bilgi için bkz. [Azure Uygulama Hizmetleri tarafından güvenlik duvarı erişimi Key Vault](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services)blog gönderisi.
 
-Çalışması için Azure Web Sitesi'nin IP adresini Key Vault'a eklemeniz gerekir.
+Çalışması için Azure Web sitesinin IP adresini Key Vault eklemeniz gerekir.
 
-Erişim ilkesi nedeniyle: istek için nesne kimliğini bulun ve nesne kimliğinin kullanıcının erişim ilkesini atamaya çalıştığı nesneyle eşleştiğinden emin olun. AAD'de genellikle aynı ada sahip birden çok nesne olacaktır, bu nedenle doğru olanı seçmek çok önemlidir. Erişim ilkesini silerek ve yeniden ekleyerek, aynı ada sahip birden çok nesne nin var olup olmadığını görmek mümkündür.
+Erişim ilkesi nedeniyle: istek için nesne KIMLIĞINI bulun ve nesne KIMLIĞININ, kullanıcının erişim ilkesini atamaya çalıştığı nesneyle eşleştiğinden emin olun. AAD 'de aynı ada sahip birden fazla nesne olacaktır, bu nedenle doğru olanı seçmek çok önemlidir. Erişim ilkesini silip yeniden ekleyerek, aynı ada sahip birden fazla nesnenin mevcut olup olmadığını görmek mümkündür.
 
-Buna ek olarak, erişim ilkelerinin çoğu portalda gösterildiği gibi "Yetkili uygulama" kullanımını gerektirmez. Yetkili uygulama, nadir bulunan "adına" kimlik doğrulama senaryoları için kullanılır. 
+Ayrıca, çoğu erişim ilkesi portalda gösterildiği gibi "yetkilendirilmiş uygulama" kullanımını gerektirmez. Yetkilendirilmiş uygulama "yerinde" kimlik doğrulama senaryolarında kullanılır, bu da nadir bir durumdur. 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429: Çok Fazla İstek
+## <a name="http-429-too-many-requests"></a>HTTP 429: çok fazla Istek
 
-Azaltma, istek sayısı zaman dilimi için belirtilen maksimumu aştığında oluşur. Azaltma gerçekleşirse, Anahtar Vault yanıtı HTTP 429 olacaktır. Yapılan istek türleri için belirtilen maksimumlar vardır. Örneğin: HSM 2048 bit anahtarının oluşturulması 10 saniyede 5 istektir, ancak diğer tüm HSM işlemlerinin 1000 istek/10 saniye sınırı vardır. Bu nedenle, azaltmanın nedenini belirlerken hangi tür çağrıların yapıldığını anlamak önemlidir.
-Genel olarak, Key Vault istekleri 2000 istekleri/10 saniye ile sınırlıdır. Özel durumlar, [Key Vault hizmet limitlerinde](service-limits.md) belgelenen Anahtar İşlemleridir
+Kısıtlama, istek sayısı, zaman çerçevesi için belirtilen üst sınırı aştığında oluşur. Daraltma gerçekleşirse, Key Vault yanıtı HTTP 429 olur. Yapılan istek türleri için belirtilen en büyük sınırlar vardır. Örneğin: HSM 2048 bit anahtarının oluşturulması 10 saniye başına 5 istektir, ancak diğer tüm HSM işlemlerinde 1000 istek/10 saniye sınırı vardır. Bu nedenle, azaltma nedeni belirlenirken hangi çağrı türlerinin yapıldığını anlamak önemlidir.
+Genel olarak, Key Vault istekleri 2000 istek/10 saniye ile sınırlıdır. Özel durumlar, [Key Vault hizmet limitleri](service-limits.md) bölümünde belgelendiği gibi önemli işlemlerdir
 
-### <a name="troubleshooting-429"></a>Sorun Giderme 429
-Azaltma bu teknikler kullanılarak etrafında çalışılır:
+### <a name="troubleshooting-429"></a>429 sorunlarını giderme
+Daraltma, şu teknikleri kullanarak geçici bir şekilde çalışmıştır:
 
-- İstenen bir kaynağa desenler olup olmadığını belirleyerek ve arama uygulamasında önbelleğe almaya çalışarak Anahtar Kasası'na yapılan istek sayısını azaltın. 
+- İstenen bir kaynağa yönelik desenler olup olmadığını belirleyerek ve bunları çağıran uygulamada önbelleğe almaya çalışırken, Key Vault yapılan isteklerin sayısını azaltın. 
 
-- Key Vault azaltma oluştuğunda, yeniden denemek için üstel bir geri leme kullanmak için istenen kodu uyarlayın. Algoritma burada açıklanmıştır: [Uygulamanızı nasıl daraltabilirsiniz](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- Key Vault azaltma gerçekleştiğinde, istenen kodu, yeniden denemek için üstel geri alma kullanacak şekilde uyarlayın. Algoritma burada açıklanmıştır: [uygulamanızı kısıtlama](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
 
-- Önbelleğe alınarak istek sayısı azaltılamıyorsa ve zamanlanmış geri dönüş işe yaramazsa, anahtarları birden çok Anahtar Kasasına bölmeyi düşünün. Tek bir abonelik için hizmet limiti tek tek Key Vault sınırının 5 katıdır. 5'ten fazla Anahtar Kasa kullanıyorsanız, birden fazla abonelik kullanmaya dikkat edilmelidir. 
+- İstek sayısı önbelleğe alma ile azaltılamaz ve zaman aşımına uğradı seçeneği çalışmazsa, anahtarları birden çok anahtar kasalarına bölmeyi göz önünde bulundurun. Tek bir abonelik için hizmet sınırı, bireysel Key Vault sınırı olan 5x ' dir. 5 ' ten fazla Anahtar Kasası kullanılıyorsa, birden fazla abonelik kullanılarak dikkate alınması gerekir. 
 
-Limitleri artırmak için istek de dahil olmak üzere ayrıntılı rehberlik, burada bulabilirsiniz: [Key Vault azaltma rehberlik](overview-throttling.md)
+Sınırları artırma isteği dahil ayrıntılı kılavuz burada bulunabilir: [Key Vault azaltma Kılavuzu](overview-throttling.md)
 
 

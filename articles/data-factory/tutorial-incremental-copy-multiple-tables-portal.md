@@ -1,5 +1,5 @@
 ---
-title: Azure portalLarını kullanarak birden çok tabloyı artımlı olarak kopyalama
+title: Azure portal kullanarak birden çok tabloyu artımlı olarak kopyalama
 description: Bu öğreticide, değişim verileri şirket içi SQL Server veritabanındaki birden çok tablodan Azure SQL veritabanına artımlı olarak kopyalayan bir Azure Data Factory işlem hattı oluşturacaksınız.
 services: data-factory
 ms.author: yexu
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
 ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81419281"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
@@ -50,7 +50,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
     
     Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
-1. **Aşağıdaki etkinliklerle bir boru hattı oluşturun:** 
+1. **Aşağıdaki etkinliklerle bir işlem hattı oluşturun**: 
     
     a. İşlem hattına parametre olarak geçen kaynak tablosu adlarının bir listesi üzerinden yinelenen bir ForEach eylemi oluşturun. Her kaynak tablosunda, bu tabloya yönelik olarak yüklenen değişiklikleri gerçekleştirmek için aşağıdaki eylemleri çağırır.
 
@@ -65,11 +65,11 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
     ![Artımlı olarak veri yükleme](media/tutorial-incremental-copy-multiple-tables-portal/high-level-solution-diagram.png)
 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 * **SQL Server**. Bu öğreticide şirket içi SQL Server veritabanını kaynak veri deposu olarak kullanırsınız. 
-* **Azure SQL Veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md). 
+* **Azure SQL veritabanı**. SQL veritabanını havuz veri deposu olarak kullanırsınız. SQL veritabanınız yoksa, oluşturma adımları için bkz. [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md). 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>SQL Server veritabanınızda kaynak tabloları oluşturma
 
@@ -116,7 +116,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 1. **Sunucu Gezgini**’nde veritabanına sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 
-1. Aşağıdaki SQL komutunu Azure SQL veritabanınıza `customer_table` göre `project_table`çalıştırın ve aşağıdaki tabloları oluşturun:  
+1. Ve `customer_table` `project_table`adlı tablolar oluşturmak için Azure SQL veritabanınızda aşağıdaki SQL komutunu çalıştırın:  
     
     ```sql
     create table customer_table
@@ -135,7 +135,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
     ```
 
 ### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Üst eşik değerini depolamak için Azure SQL veritabanında başka bir tablo oluşturma
-1. Filigran değerini depolamak için bir `watermarktable` tablo oluşturmak için Aşağıdaki SQL komutunu Azure SQL veritabanınıza karşı çalıştırın: 
+1. Eşik değerini depolamak için adlı `watermarktable` bir tablo oluşturmak üzere Azure SQL VERITABANıNıZDA aşağıdaki SQL komutunu çalıştırın: 
     
     ```sql
     create table watermarktable
@@ -175,11 +175,11 @@ END
 ```
 
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL veritabanında veri türleri ve ek saklı yordamlar oluşturma
-Azure SQL veritabanınızda iki depolanmış yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır.
+Azure SQL veritabanınızda iki saklı yordam ve iki veri türü oluşturmak için aşağıdaki sorguyu çalıştırın. Bunlar, kaynak tablodaki verileri hedef tablolarla birleştirmek için kullanılır.
 
-Yolculuğu kolaylaştırmak için, delta verilerini bir tablo değişkeni üzerinden aktaran bu Saklı Yordamları doğrudan kullanır ız ve ardından hedef depoda birleştirileştiririz. Tablo değişkeninde "büyük" delta satırı sayısının (100'den fazla) depolanmasını beklemediğini zedilen dikkatli olun.  
+Yolculuğun başlamasını kolaylaştırmak için, bu saklı yordamları doğrudan bir tablo değişkeni aracılığıyla içindeki Delta verileri geçirerek ve ardından bunları hedef depoda birleştirerek kullanırız. Tablo değişkeninde bir "büyük" sayıda Delta satırı (100 ' den fazla) beklenmediğinden emin olun.  
 
-Çok sayıda delta satırını hedef depoda birleştirmeniz gerekiyorsa, önce tüm delta verilerini hedef depodaki geçici bir "evreleme" tablosuna kopyalamak için kopyalama etkinliği kullanmanızı ve ardından tablo değişkenini kullanarak "evreleme" tablosundan "son" tabloya birleştirmeden kendi depolanmış yordamınızı oluşturmanızı öneririz. 
+Hedef depoda çok sayıda Delta satırını birleştirmeniz gerekiyorsa, tüm Delta verileri önce hedef depodaki geçici bir "hazırlama" tablosuna kopyalamak için kopyalama etkinliği 'ni kullanmanızı ve ardından bunları "hazırlama" tablosundan "son" tablosuna birleştirmek için tablo değişkeni kullanmadan kendi saklı yordamlarınızı uygulamanızı öneririz. 
 
 
 ```sql
@@ -233,7 +233,7 @@ END
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-2. Sol menüde, **bir kaynak** > **Analiz** > **Veri Fabrikası**Oluştur'u seçin: 
+2. Sol menüde, **kaynak** > **Analizi** > **Data Factory**oluştur ' u seçin: 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -244,14 +244,14 @@ END
    `Data factory name "ADFIncCopyTutorialDF" is not available`
 
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
-5. Kaynak **Grubu**için aşağıdaki adımlardan birini yapın:
+5. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
      
     - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
     - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 6. **Sürüm** için **V2**'yi seçin.
 7. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-8. **Oluştur'u**tıklatın.      
+8. **Oluştur**' a tıklayın.      
 9. Oluşturma işlemi tamamlandıktan sonra, resimde gösterildiği gibi **Data Factory** sayfasını görürsünüz.
    
    ![Data factory giriş sayfası](./media/doc-common-process/data-factory-home-page.png)
@@ -264,10 +264,10 @@ END
 
 1. **Tümleştirme Çalışma Zamanları** sekmesinde **+ Yeni**’ye tıklayın. 
 
-1. **Tümleştirme Çalışma Zamanı Kurulumu** penceresinde, **veri hareketi gerçekleştir'i ve etkinlikleri dış hesaplamalara gönder'i**seçin ve Devam **et'i**tıklatın. 
+1. **Integration Runtime kurulum** penceresinde, **veri taşıma ve dağıtım etkinliklerini dış hesaplamalar**' ı seçin ve **devam**' a tıklayın. 
 
-1. **Kendi Kendine Barındırılan'ı**seçin ve **Devam et'i**tıklatın. 
-1. **Ad**için **MySelfHostedIR'i** girin ve **Oluştur'u**tıklatın. 
+1. **Şirket Içinde barındırılan**' i seçin ve **devam**' a tıklayın. 
+1. **Ad**Için **Myselfhostedır** girin ve **Oluştur**' a tıklayın. 
 
 1. **1. Seçenek: Hızlı kurulum** bölümünde **Bu bilgisayarda hızlı kurulumu başlatmak için buraya tıklayın** seçeneğine tıklayın. 
 
@@ -300,7 +300,7 @@ Bu adımda, şirket içi SQL Server veritabanınızı veri fabrikasına bağlars
     1. **Kullanıcı adı** alanına SQL Server veritabanına erişimi olan kullanıcının adını girin. Kullanıcı hesabınızda veya sunucu adında eğik çizgi karakteri (`\`) kullanmanız gerekirse kaçış karakterini (`\`) kullanın. `mydomain\\myuser` bunun bir örneğidir.
     1. **Parola** alanına kullanıcının **parolasını** girin. 
     1. Data Factory’nin SQL Server veritabanınıza bağlanıp bağlanamadığını test etmek için **Bağlantıyı sına**’ya tıklayın. Bağlantı başarılı olana kadar tüm hataları düzeltin. 
-    1. Bağlantılı hizmeti kaydetmek için **Finish'i**tıklatın.
+    1. Bağlı hizmeti kaydetmek için **son**' a tıklayın.
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmetini oluşturun
 Son adımda, kaynak SQL Server veritabanınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. Bu adımda, hedef/havuz Azure SQL veritabanınızı veri fabrikasına bağlarsınız. 
@@ -315,7 +315,7 @@ Son adımda, kaynak SQL Server veritabanınızı veri fabrikasına bağlamak iç
     1. **Kullanıcı adı** alanına SQL Server veritabanına erişimi olan kullanıcının adını girin. 
     1. **Parola** alanına kullanıcının **parolasını** girin. 
     1. Data Factory’nin SQL Server veritabanınıza bağlanıp bağlanamadığını test etmek için **Bağlantıyı sına**’ya tıklayın. Bağlantı başarılı olana kadar tüm hataları düzeltin. 
-    1. Bağlantılı hizmeti kaydetmek için **Finish'i**tıklatın.
+    1. Bağlı hizmeti kaydetmek için **son**' a tıklayın.
 
 1. Listede iki bağlı hizmet gördüğünüzü doğrulayın. 
    
@@ -328,9 +328,9 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra **Veri Kümesi**’ne tıklayın.
 
-1. Yeni **Veri Kümesi** penceresinde **SQL Server'ı**seçin, **Devam et'i**tıklatın. 
+1. **Yeni veri kümesi** penceresinde **SQL Server**' yi seçin ve **devam**' a tıklayın. 
 
-1. Web tarayıcısında veri kümesinin yapılandırılması için yeni bir sekme açıldığını görürsünüz. Ağaç görünümünde bir veri kümesi de görürsünüz. Alttaki Özellikler penceresinin **Genel** sekmesinde **Ad** için **SourceDataset** adını girin. 
+1. Web tarayıcısında veri kümesinin yapılandırılması için yeni bir sekme açıldığını görürsünüz. Ağaç görünümünde de bir veri kümesi görürsünüz. Alttaki Özellikler penceresinin **Genel** sekmesinde **Ad** için **SourceDataset** adını girin. 
 
 1. Özellikler penceresinin **Bağlantı** sekmesine geçin ve **Bağlı hizmet** için **SqlServerLinkedService** hizmetini seçin. Burada bir tablo seçmezsiniz. İşlem hattındaki Kopyalama etkinliği, tüm tabloyu yüklemek yerine verileri yüklemek için bir SQL sorgusu kullanır.
 
@@ -340,9 +340,9 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
 ### <a name="create-a-sink-dataset"></a>Havuz veri kümesi oluşturma
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra **Veri Kümesi**’ne tıklayın.
 
-1. Yeni **Veri Kümesi** penceresinde **Azure SQL Veritabanı'nı**seçin ve **Devam et'i**tıklatın. 
+1. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın. 
 
-1. Web tarayıcısında veri kümesinin yapılandırılması için yeni bir sekme açıldığını görürsünüz. Ağaç görünümünde bir veri kümesi de görürsünüz. Alttaki Özellikler penceresinin **Genel** sekmesinde, **Ad** için **SinkDataset** adını girin.
+1. Web tarayıcısında veri kümesinin yapılandırılması için yeni bir sekme açıldığını görürsünüz. Ağaç görünümünde de bir veri kümesi görürsünüz. Alttaki Özellikler penceresinin **Genel** sekmesinde, **Ad** için **SinkDataset** adını girin.
 
 1. Özellikler penceresinin **Parametreler** sekmesine geçin ve aşağıdaki adımları uygulayın: 
 
@@ -350,11 +350,11 @@ Bu adımda veri kaynağı, veri hedefi ve eşiğin depolanacağı yeri temsil ed
     1. **Ad** alanına **SinkTableName**, **tür** alanına **String** değerini girin. Bu veri kümesi, **SinkTableName** değerini bir parametre olarak alır. SinkTableName parametresi, çalışma zamanında dinamik olarak işlem hattı tarafından ayarlanır. İşlem hattındaki ForEach etkinliği, tablo adlarının bir listesi üzerinden yinelenir ve her yinelemede tablo adını bu veri kümesine geçirir.
    
     ![Havuz Veri Kümesi - özellikler](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. Özellikler penceresindeki **Bağlantı** sekmesine geçin ve **Bağlantılı hizmet**için **AzureSqlDatabaseLinkedService'i** seçin. **Table** özelliği için **Dinamik içerik ekle**'ye tıklayın.   
+1. Özellikler penceresi **bağlantı** sekmesine geçin ve **bağlı hizmet**Için **azuressqldatabaselinkedservice** ' i seçin. **Table** özelliği için **Dinamik içerik ekle**'ye tıklayın.   
     
-1. Dinamik **İçerik Ekle** penceresinde, **Parametreler** bölümünde **SinkTableName'i** seçin. 
+1. **Dinamik Içerik Ekle** penceresinde **Parametreler** bölümünde **sinktablename** ' ı seçin. 
  
-1. **Finish'e**tıkladıktan@datasetsonra " (). SinkTableName" tablo adı olarak.
+1. **Son**' a tıkladıktan sonra "(@dataset)" görürsünüz. SinkTableName "Tablo adı olarak.
 
    ![Havuz Veri Kümesi - bağlantı](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -363,7 +363,7 @@ Bu adımda üst eşik değerini depolamak için bir veri kümesi oluşturacaksı
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra **Veri Kümesi**’ne tıklayın.
 
-1. Yeni **Veri Kümesi** penceresinde **Azure SQL Veritabanı'nı**seçin ve **Devam et'i**tıklatın. 
+1. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve **devam**' a tıklayın. 
 
 1. Alttaki Özellikler penceresinin **Genel** sekmesinde, **Ad** için **WatermarkDataset** adını girin.
 1. **Bağlantı** sekmesine geçin ve aşağıdaki adımları uygulayın: 
@@ -388,13 +388,13 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra da **İşlem Hattı**’na tıklayın.
 
-1. **Genel** sekmesinde, **Ad**için **IncrementalCopyPipeline'ı** girin. 
+1. **Genel** sekmesinde, **ad**için **ıncrementalcopypipeline** girin. 
 
-1. **Parametreler** sekmesinde aşağıdaki adımları yapın: 
+1. **Parametreler** sekmesinde aşağıdaki adımları uygulayın: 
 
     1. **+ Yeni** öğesine tıklayın. 
     1. **name** parametresi için **tableList** girin. 
-    1. Parametre türü için **Dizi'yi**seçin. **Array**
+    1. Parametre **türü**için **dizi** ' ı seçin.
 
 1. **Etkinlikler** araç kutusunda **Yineleme ve Koşullar**’ı genişletin ve **ForEach** etkinliğini sürükleyerek işlem hattı tasarımcısı yüzeyine bırakın. **Özellikler** penceresinin **Genel** sekmesinde **IterateSQLTables** girin. 
 
@@ -448,15 +448,15 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
         ![Kopyalama Etkinliği - kaynak ayarları](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **SinkDataset**’i seçin. 
         
-1. Aşağıdaki adımları yapın:
+1. Aşağıdaki adımları uygulayın:
 
-    1. **SinkTableName** parametresi için `@{item().TABLE_NAME}` **Dataset özelliklerine**.
-    1. **Depolanan Yordam Adı** özelliği `@{item().StoredProcedureNameForMergeOperation}`için.
-    1. **Tablo türü** özelliği `@{item().TableType}`için .
-    1. **Tablo türü parametre adı için**, . `@{item().TABLE_NAME}`
+    1. **DataSet özelliklerinde**, **sinktablename** parametresi için girin `@{item().TABLE_NAME}`.
+    1. **Saklı yordam adı** özelliği için girin `@{item().StoredProcedureNameForMergeOperation}`.
+    1. **Tablo türü** özelliği için girin `@{item().TableType}`.
+    1. **Tablo türü parametre adı**için girin `@{item().TABLE_NAME}`.
 
     ![Kopyalama Etkinliği - parametreler](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
-1. **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. **Kopyala** etkinliğini **Depolanan Yordam** etkinliğine bağlayın. 
+1. **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. **Kopyalama** etkinliğini **saklı yordam** etkinliğine bağlayın. 
 
 1. İşlem hattında **Saklı Yordam** etkinliğini seçin ve **Özellikler** penceresinin **Genel** sekmesinde **Ad** alanına **StoredProceduretoWriteWatermarkActivity** adını girin. 
 
@@ -475,14 +475,14 @@ Bu işlem hattı parametre olarak tablo adları listesini alır. ForEach etkinli
         | TableName | Dize | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Saklı Yordam Etkinliği - saklı yordam ayarları](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
-1. Oluşturduğunuz varlıkları Veri Fabrikası hizmetinde yayınlamak için **Tümünü Yayımla'yı** seçin. 
+1. Oluşturduğunuz varlıkları Data Factory hizmetine yayımlamak için **Tümünü Yayımla** ' yı seçin. 
 
 1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirimleri görmek için **Bildirimleri Göster** bağlantısına tıklayın. **X** simgesine tıklayarak bildirim penceresini kapatın.
 
  
 ## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-1. Ardışık iş tonu için araç çubuğunda **tetikleyici ekle'yi**tıklatın ve **Şimdi Tetikle'yi**tıklatın.     
+1. İşlem hattının araç çubuğunda **tetikleyici Ekle**' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.     
 
 1. **İşlem Hattı Çalıştırma** penceresinde **tableList** parametresi için aşağıdaki değeri girip **Son**’a tıklayın. 
 
@@ -583,7 +583,7 @@ VALUES
 
 ## <a name="rerun-the-pipeline"></a>İşlem hattını yeniden çalıştırma
 1. Web tarayıcısı penceresinde, soldaki **Düzenle** sekmesine geçin. 
-1. Ardışık iş tonu için araç çubuğunda **tetikleyici ekle'yi**tıklatın ve **Şimdi Tetikle'yi**tıklatın.   
+1. İşlem hattının araç çubuğunda **tetikleyici Ekle**' ye tıklayın ve **Şimdi Tetikle**' ye tıklayın.   
 1. **İşlem Hattı Çalıştırma** penceresinde **tableList** parametresi için aşağıdaki değeri girip **Son**’a tıklayın. 
 
     ```
@@ -610,7 +610,7 @@ VALUES
 1. **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Görüntüle** bağlantısına tıklayın. Seçili işlem hattı çalıştırmasıyla ilişkili tüm etkinlik çalıştırmalarını görürsünüz. 
 
 ## <a name="review-the-final-results"></a>Son sonuçları gözden geçirme
-SQL Server Management Studio'da, güncelleştirilmiş/yeni verilerin kaynak tablolardan hedef tablolara kopyalandığını doğrulamak için aşağıdaki sorguları hedef SQL veritabanına karşı çalıştırın. 
+SQL Server Management Studio, güncelleştirilmiş/yeni verilerin kaynak tablolardan hedef tablolara kopyalandığını doğrulamak için, hedef SQL veritabanında aşağıdaki sorguları çalıştırın. 
 
 **Sorgu** 
 ```sql

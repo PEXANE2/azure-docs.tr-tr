@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'te Azure Veri Gölü Depolama Gen2'ye girme
-description: Azure Synapse Analytics'te Azure Veri Gölü Depolama Gen2'ye nasıl veri sindirilemeyi öğrenin
+title: Azure SYNAPSE Analytics 'te Azure Data Lake Storage 2. alma
+description: Azure SYNAPSE Analytics 'te verileri Azure Data Lake Storage 2. alma hakkında bilgi edinin
 services: synapse-analytics
 author: djpmsft
 ms.service: synapse-analytics
@@ -10,66 +10,66 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4d7d7be523749797e5dbce0e50c307fc682974f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430584"
 ---
-# <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'ye veri alma 
+# <a name="ingesting-data-into-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. içine veri yerleştirme 
 
-Bu makalede, Azure Synapse Analytics'i kullanarak bir Azure Veri Gölü Gen 2 (Azure Veri Gölü Gen 2) depolama hesabında bir konumdan diğerine verileri nasıl yutacağınız öğrenilir.
+Bu makalede, Azure SYNAPSE Analytics kullanarak bir Azure Data Lake Gen 2 (Azure Data Lake Gen 2) depolama hesabında verileri bir konumdan diğerine alma hakkında bilgi edineceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği**: Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure Depolama hesabı**: Azure Veri Gölü Gen 2'yi *kaynak* veri deposu olarak kullanıyorsunuz. Depolama hesabınız yoksa, bir depolama hesabı oluşturmak için adımlar için [bir Azure Depolama hesabı oluşturma'ya](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bakın.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**: Azure Data Lake Gen 2 ' nı *kaynak* veri deposu olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 
-Azure Synapse Analytics'te bağlantılı bir hizmet, bağlantı bilgilerinizi diğer hizmetlerle tanımladığınız yerdir. Bu bölümde, Azure Synapse Analytics ve Azure Data Lake Gen 2'yi bağlantılı hizmetler olarak eklersiniz.
+Azure SYNAPSE Analytics 'te, bağlı bir hizmet, bağlantı bilgilerinizi diğer hizmetlere tanımladığınız yerdir. Bu bölümde, Azure SYNAPSE Analytics ve Azure Data Lake Gen 2 ' yi bağlı hizmetler olarak ekleyeceksiniz.
 
-1. Azure Synapse Analytics UX'yi açın ve **Yönet** sekmesine gidin.
-1. **Dış bağlantılar**altında, **Bağlantılı hizmetleri**seçin.
-1. Bağlantılı bir hizmet eklemek için **Yeni'yi**tıklatın.
-1. Listeden Azure Veri Gölü Depolama Gen2 döşemesini seçin ve **Devam et'i**tıklatın.
-1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru luğunu doğrulamak için test bağlantısını tıklatın. 
-1. Tamamlandığında **Oluştur'u** tıklatın.
+1. Azure SYNAPSE Analytics UX ' i açın ve **Yönet** sekmesine gidin.
+1. **Dış bağlantılar**altında **bağlı hizmetler**' i seçin.
+1. Bağlı bir hizmet eklemek için **Yeni**' ye tıklayın.
+1. Listeden Azure Data Lake Storage 2. kutucuğunu seçin ve **devam**' a tıklayın.
+1. Kimlik doğrulama kimlik bilgilerinizi girin. Hesap anahtarı, hizmet sorumlusu ve yönetilen kimlik, şu anda desteklenen kimlik doğrulama türleridir. Kimlik bilgilerinizin doğru olduğunu doğrulamak için Bağlantıyı Sına ' ya tıklayın. 
+1. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-Bir ardışık iş, bir dizi etkinlik yürütmesi için mantıksal akışı içerir. Bu bölümde, Azure Veri Gölü Gen 2'den sql havuzuna veri yutacak bir kopyalama etkinliği içeren bir ardışık işlem oluşturursunuz.
+İşlem hattı, bir dizi etkinliğin yürütülmesi için mantıksal akışı içerir. Bu bölümde, Azure Data Lake Gen 2 ' den bir SQL havuzuna veri veren bir kopyalama etkinliği içeren bir işlem hattı oluşturacaksınız.
 
-1. **Düzenleme** sekmesine gidin. Ardışık hatlar üstbilgisinin yanındaki artı simgesine tıklayın ve **Pipeline'ı**seçin.
-1. Etkinlikler bölmesinde **Taşı ve Dönüştür** altında, **Kopyala verilerini** boru hattı tuvaline sürükleyin.
-1. Kopyalama etkinliğine tıklayın ve **Kaynak** sekmesine gidin. Yeni kaynak veri kümesi oluşturmak için **Yeni'yi** tıklatın.
-1. Veri deponuz olarak Azure Veri Gölü Depolama Gen2'yi seçin ve devam et'i tıklatın.
-1. Biçiminiz olarak DelimitedText'i seçin ve devam et'i tıklatın.
-1. Ayarözellikleri bölmesinde, oluşturduğunuz ADLS bağlantılı hizmeti seçin. Kaynak verilerinizin dosya yolunu belirtin ve ilk satırda üstbilgi olup olmadığını belirtin. Şema dosya deposundan veya örnek bir dosyadan içe aktarabilirsiniz. Bittiğinde Tamam'ı tıklatın.
-1. Yeni bir lavabo veri kümesi oluşturmak **için** **Lavabo** sekmesine gidin.
-1. Veri deponuz olarak Azure Veri Gölü Depolama gen2'yi seçin ve devam et'i tıklatın.
-1. Biçiminiz olarak DelimitedText'i seçin ve devam et'i tıklatın.
-1. Ayarözellikleri bölmesinde, oluşturduğunuz ADLS bağlantılı hizmeti seçin. Veri yazmak istediğiniz klasörün yolunu belirtin. Bittiğinde Tamam'ı tıklatın.
+1. Organize **et sekmesine gidin** . ardışık düzen üstbilgisinin yanındaki artı simgesine tıklayın ve Işlem **hattı**' nı seçin.
+1. Etkinlikler bölmesinde **taşıma ve dönüştürme** ' nın altında, verileri ardışık düzen tuvaline **Kopyala** ' yı sürükleyin.
+1. Kopyalama etkinliğine tıklayın ve **kaynak** sekmesine gidin. yeni bir kaynak veri kümesi oluşturmak Için **Yeni** ' ye tıklayın.
+1. Veri depolduğunuz Azure Data Lake Storage 2. seçin ve devam ' a tıklayın.
+1. Biçim olarak DelimitedText ' i seçin ve devam ' a tıklayın.
+1. Özellikleri ayarla bölmesinde, oluşturduğunuz ADLS bağlı hizmeti ' ni seçin. Kaynak verilerinizin dosya yolunu belirtin ve ilk satırın bir üst bilgisine sahip olup olmadığını belirtin. Şemayı dosya deposundan veya örnek bir dosyadan içeri aktarabilirsiniz. Bittiğinde Tamam ' a tıklayın.
+1. **Havuz** sekmesine gidin. yeni bir havuz veri kümesi oluşturmak Için **Yeni** 'yi tıklatın.
+1. Veri depolama alanı olarak Azure Data Lake Storage Gen2 seçin ve devam ' a tıklayın.
+1. Biçim olarak DelimitedText ' i seçin ve devam ' a tıklayın.
+1. Özellikleri ayarla bölmesinde, oluşturduğunuz ADLS bağlı hizmeti ' ni seçin. Veri yazmak istediğiniz klasörün yolunu belirtin. Bittiğinde Tamam ' a tıklayın.
 
-## <a name="debug-and-publish-pipeline"></a>Hata ayıklama ve yayın boru hattı
+## <a name="debug-and-publish-pipeline"></a>Hata ayıklama ve yayımlama işlem hattı
 
-Ardışık işlem inizi yapılandırmayı tamamladıktan sonra, her şeyin doğru olduğunu doğrulamak için yapılarınızı yayımlamadan önce bir hata ayıklama çalışması gerçekleştirebilirsiniz.
+İşlem hattınızı yapılandırmayı tamamladıktan sonra, yapılarınızı yayımlamadan önce, her şeyin doğru olduğunu doğrulamak için bir hata ayıklama çalıştırması gerçekleştirebilirsiniz.
 
 1. İşlem hattında hata ayıklamak için araç çubuğunda **Hata Ayıkla**'yı seçin. Pencerenin altındaki **Çıkış** sekmesinde işlem hattı çalıştırmasının durumu görüntülenir. 
-1. Ardışık hatlar başarılı bir şekilde çalıştırıladıktan sonra, üst araç çubuğunda **Tümünü Yayımla'yı**seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve ardışık yollar) Synapse Analytics hizmetine yayımlar.
-1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üstteki çan düğmesini tıklatın. 
+1. İşlem hattı başarıyla çalıştırıldığında, üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) SYNAPSE Analytics hizmetinde yayımlar.
+1. **Başarıyla yayımlandı** iletisini görene kadar bekleyin. Bildirim iletilerini görmek için sağ üst köşedeki zil düğmesine tıklayın. 
 
 
-## <a name="trigger-and-monitor-the-pipeline"></a>Boru hattını tetikleme ve izleme
+## <a name="trigger-and-monitor-the-pipeline"></a>İşlem hattını tetikleme ve izleme
 
-Bu adımda, önceki adımda yayınlanan ardışık hattı el ile tetiklersiniz. 
+Bu adımda, önceki adımda yayınlanan işlem hattını el ile tetiklersiniz. 
 
-1. Araç çubuğunda **Tetikleyici Ekle'yi** ve ardından Şimdi **Tetikle'yi**seçin. **İşlem Hattı Çalıştırma** sayfasında **Son**’u seçin.  
-1. Sol kenar çubuğunda bulunan **Monitör** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. Etkinlik ayrıntılarını görüntülemek ve ardışık hattı yeniden çalıştırmak için **Eylemler** sütunundaki bağlantıları kullanabilirsiniz.
-1. İşlem hattı çalıştırmalarıyla ilişkili etkinlik çalıştırmalarını görmek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Görüntüle** bağlantısını seçin. Bu örnekte, yalnızca bir etkinlik vardır, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemiyle ilgili ayrıntılar için **Eylemler** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. Pipeline Runs'ı seçerek üstteki **Boru Hattı** Çalışır'ı seçin ve Pipeline Runs görünümüne geri döner. Görünümü yenilemek için **Yenile**’yi seçin.
-1. Verilerinizin SQL havuzunda doğru şekilde yazıldığını doğrulayın.
+1. Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. **İşlem Hattı Çalıştırma** sayfasında **Son**’u seçin.  
+1. Sol kenar çubuğunda bulunan **izleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. Etkinlik ayrıntılarını görüntülemek ve Işlem hattını yeniden çalıştırmak için **Eylemler** sütunundaki bağlantıları kullanabilirsiniz.
+1. İşlem hattı çalıştırmalarıyla ilişkili etkinlik çalıştırmalarını görmek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Görüntüle** bağlantısını seçin. Bu örnekte yalnızca bir etkinlik bulunur, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemiyle ilgili ayrıntılar için **Eylemler** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne dönmek için üstteki işlem **hattı çalıştırmalarını** seçin. Görünümü yenilemek için **Yenile**’yi seçin.
+1. Verilerinizin SQL havuzunda doğru yazıldığından emin olun.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse Analytics için veri tümleştirmesi hakkında daha fazla bilgi için, verileri sql havuzu makalesine doğru [sindirin'](data-integration-sql-pool.md) e bakın.
+SYNAPSE Analytics için veri tümleştirmesi hakkında daha fazla bilgi için bkz. [verileri BIR SQL havuzuna dönüştürme](data-integration-sql-pool.md) .

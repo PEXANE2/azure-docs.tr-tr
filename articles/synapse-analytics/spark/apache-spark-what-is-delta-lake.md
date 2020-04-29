@@ -1,6 +1,6 @@
 ---
-title: Delta Gölü Nedir
-description: Delta Gölü'ne genel bakış ve Azure Synapse Analytics'in bir parçası olarak nasıl çalıştığı
+title: Delta Lake nedir?
+description: Delta Gölü ve Azure SYNAPSE Analytics 'in bir parçası olarak nasıl çalıştığı hakkında genel bakış
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,36 +10,36 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429206"
 ---
 # <a name="what-is-delta-lake"></a>Delta Gölü nedir?
 
-Azure Synapse Analytics, Linux Foundation Delta Lake ile uyumludur. Delta Lake Apache Spark ve büyük veri iş yükleri ACID (atomiklik, tutarlılık, izolasyon ve dayanıklılık) işlemleri getiren bir açık kaynak depolama katmanıdır.
+Azure SYNAPSE Analytics, Linux Foundation Delta Gölü ile uyumludur. Delta Gölü, Apache Spark ve büyük veri iş yüklerine ACID (Atomicity, tutarlılık, yalıtım ve dayanıklılık) işlemlerini getiren açık kaynaklı bir depolama katmanıdır.
 
 ## <a name="key-features"></a>Önemli özellikler
 
 | Özellik | Açıklama |
 | --- | --- |
-| **ASİt İşlemlerİ** | Veri gölleri genellikle birden çok işlem ve boru hattı aracılığıyla doldurulur ve bazıları okumalarla eş zamanlı olarak veri yazar. Delta Gölü ve işlemlerin eklenmesinden önce, veri mühendisleri veri bütünlüğünü sağlamak için el ile hataya meyilli bir süreçten geçmek zorunda kaldılar. Delta Gölü veri göllerine tanıdık ASİt işlemlerini getiriyor. Bu serializability, izolasyon düzeyi güçlü düzeyde sağlar. [Delta Gölü'ne Dalma: İşlem Günlüğü'nü Açma](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html)hakkında daha fazla bilgi edinin.|
-| **Ölçeklenebilir Meta veri işleme** | Büyük verilerde, meta verilerin kendisi bile "büyük veri" olabilir. Delta Lake, tüm meta verilerini işlemek için Spark'ın dağıtılmış işlem gücünden yararlanarak meta verileri de veri gibi ele adatır. Sonuç olarak, Delta Gölü milyarlarca bölüm ve dosyaile petabayt ölçekli tabloları rahatlıkla işleyebilir. |
-| **Zaman Yolculuğu (veri sürümü)** | Bir değişikliği "geri alma" veya önceki sürüme geri dönme yeteneği, işlemlerin temel özelliklerinden biridir. Delta Lake, denetimler, geri almalar veya denemeleri yeniden oluşturmak için verilerin önceki sürümlerine geri dönmenizi sağlayan verilerin anlık görüntülerini sağlar. [Büyük Ölçekli Veri Gölleri için Delta Lake Time Travel tanıtımı](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html)hakkında daha fazla bilgi edinin. |
-| **Açık Biçim** | Apache Parke, Delta Lake'in temel biçimidir ve biçime özgü verimli sıkıştırma ve kodlama şemalarından yararlanmanızı sağlar. |
-| **Birleşik Toplu İşlem ve Akış Kaynağı ve Lavabo** | Delta Gölü'ndeki bir tablo hem toplu işlem tablosu, hem de akış kaynağı ve lavabodur. Akış veri yutma, toplu tarihi geri doldurma ve etkileşimli sorgular tüm kutusunda çalışmak. |
-| **Şema Uygulama** | Şema zorlama, veri türlerinin doğru olduğundan ve gerekli sütunların bulunmasını sağlamaya yardımcı olarak hatalı verilerin veri tutarsızlığına neden olmasını önler. Daha fazla bilgi için, [Delta Gölü into Diving: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
-| **Şema Evrimi** | Delta Gölü, geçiş DDL yazmak zorunda kalmadan otomatik olarak uygulanabilen bir tablo şemasında değişiklik yapmanızı sağlar. Daha fazla bilgi için, [Delta Gölü into Diving: Schema Enforcement & Evolution](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
-| **Denetim Geçmişi** | Delta Lake işlem günlüğü, değişikliklerin tam denetim izini sağlayan verilerde yapılan her değişiklikle ilgili ayrıntıları kaydeder. |
-| **Güncellemeler ve Silmeler** | Delta Lake çeşitli işlevler için Scala / Java / Python ve SQL API'lerini destekler. Birleştirme, güncelleştirme ve silme işlemleri için destek, uyumluluk gereksinimlerini karşılamanıza yardımcı olur. Daha fazla bilgi için, Birleştirme, güncelleştirme ve DML komutlarını silmek için kod parçacıkları içeren [Python API'lerini kullanarak Delta Lake Tables'ta](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)Delta Lake Release ve Simple, Reliable Ups and Deletes'i [duyurun.](https://delta.io/news/delta-lake-0-4-0-released/) |
-| **%100 Apache Spark API ile uyumlu** | Geliştiriciler, mevcut Spark uygulamalarıyla tam olarak uyumlu olduğu için Delta Lake'i mevcut veri boru hatlarıyla en az değişiklikle kullanabilirler. |
+| **ACID Işlemleri** | Veri Lakes genellikle birden çok işlem ve işlem hattı ile doldurulur ve bazıları okumalarla eşzamanlı olarak veri yazıyor. Delta Gölü ve işlemlerin eklenmesinden önce veri mühendislerinin, veri bütünlüğünü sağlamak için el ile hata eden bir işlemden geçmesi gerekiyordu. Delta Gölü, tanıdık ACID işlemlerini veri Lakes 'e getirir. En güçlü yalıtım düzeyi düzeyi olan serializyeteneği sağlar. [Delta Gölü 'da daha fazla bilgi edinin: Işlem günlüğü açılıyor](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
+| **Ölçeklenebilir meta veri Işleme** | Büyük verilerde bile meta verilerin kendisi "büyük veri" olabilir. Delta Gölü meta verileri, tüm meta verilerini işlemek için Spark 'ın dağıtılmış işleme gücünden yararlanarak verileri tıpkı verilerle değerlendirir. Sonuç olarak, Delta Gölü, milyarlarca bölüm ve dosya içeren petablarca ölçekli tabloları kolayca işleyebilir. |
+| **Seyahat süresi (veri sürümü oluşturma)** | Bir değişikliği "geri alma" veya önceki sürüme geri dönme özelliği, işlemlerin temel özelliklerinden biridir. Delta Gölü, denetimler, geri alma veya yeniden oluşturma için verilerin önceki sürümlerine dönmenize olanak sağlayan verilerin anlık görüntülerini sağlar. [Büyük ölçekli veri ölçeği Için Delta Gölü zaman gezine giriş konusunda](https://databricks.com/blog/2019/02/04/introducing-delta-time-travel-for-large-scale-data-lakes.html)daha fazla bilgi edinin. |
+| **Biçim aç** | Apache Parquet, Delta Gölü için temel biçimdir ve biçimde yerel olan etkili sıkıştırma ve kodlama düzenlerinden yararlanmanızı sağlar. |
+| **Birleşik toplu Işlem ve akış kaynağı ve havuzu** | Delta Gölü bir tablo, hem bir toplu iş tablosu hem de bir akış kaynağı ve havuz. Akış verisi alma, toplu geçmiş geri doldurma ve etkileşimli sorgular yalnızca kutudan çıkar. |
+| **Şema zorlaması** | Şema zorlaması, veri türlerinin doğru ve gerekli sütunların mevcut olduğundan ve verilerin tutarsızlığına neden olmasını önlemeye yardımcı olur. Daha fazla bilgi için bkz [. Delta Gölü içine atlama: şema zorlama & evrimi](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Şema evrimi** | Delta Gölü, geçiş DDL yazmak zorunda kalmadan otomatik olarak uygulanabilen bir tablo şemasında değişiklik yapmanızı sağlar. Daha fazla bilgi için bkz [. Delta Gölü içine atlama: şema zorlama & evrimi](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html) |
+| **Denetim geçmişi** | Delta Gölü işlem günlüğü, değişikliklerin tam denetim izini sağlayan verilerde yapılan her değişiklikle ilgili ayrıntıları kaydeder. |
+| **Güncelleştirmeler ve silmeler** | Delta Gölü, çeşitli işlevler için Scala/Java/Python ve SQL API 'Lerini destekler. Birleştirme, güncelleştirme ve silme işlemleri için destek, uyumluluk gereksinimlerini karşılamanıza yardımcı olur. Daha fazla bilgi için bkz. Delta, güncelleştirme ve silme DML komutlarının kod parçacıklarını içeren [Python API 'leri kullanılarak](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)Delta Gölü [0.4.0 sürümü](https://delta.io/news/delta-lake-0-4-0-released/) ve basit, güvenilir üst bilgi duyurusu ve silme. |
+| **Apache Spark API ile uyumlu %100** | Geliştiriciler, var olan Spark uygulamalarıyla tam olarak uyumlu olduğundan, Delta Gölü, en az değişikliğe sahip mevcut veri komut zincirleriyle birlikte kullanılabilir. |
 
-Tam dokümantasyon için [Delta Gölü Dokümantasyon Sayfasına](https://docs.delta.io/latest/delta-intro.html) bakın
+Tam belgeler için bkz. Delta Gölü [belge sayfası](https://docs.delta.io/latest/delta-intro.html)
 
-Daha fazla bilgi için [Delta Lake Project'e](https://lfprojects.org)bakın.
+Daha fazla bilgi için bkz. [Delta Lake projesi](https://lfprojects.org).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.NET Apache Spark belgeleri için](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

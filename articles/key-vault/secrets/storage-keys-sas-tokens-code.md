@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault yönetilen depolama hesabı - PowerShell sürümü
-description: Yönetilen depolama hesabı özelliği, Azure Anahtar Kasası ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar.
+title: Azure Key Vault yönetilen depolama hesabı-PowerShell sürümü
+description: Yönetilen depolama hesabı özelliği, Azure Key Vault ile Azure depolama hesabı arasında sorunsuz bir tümleştirme sağlar.
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,19 +9,19 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.openlocfilehash: 7307741e56c7fc912f60d0496979243eb4be77a4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431273"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Kodda paylaşılan erişim imza belirteçlerini getirme
 
-Anahtar kasanızdaki [paylaşılan erişim imza belirteçleri](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ile depolama hesabınızı yönetebilirsiniz. Bu makalede, bir SAS belirteci getiren ve onunla işlemleri gerçekleştiren C# kodu örnekleri sağlar.  SAS belirteçlerinin nasıl oluşturulup depolanış edilebildiğim hakkında daha fazla bilgi için, [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönet](overview-storage-keys.md) veya Key Vault ve Azure [PowerShell ile depolama hesabı anahtarlarını yönet'e](overview-storage-keys-powershell.md)bakın.
+Depolama hesabınızı Anahtar Kasanızda [paylaşılan erişim imzası belirteçleriyle](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) yönetebilirsiniz. Bu makalede bir SAS belirteci getiren ve ile işlem gerçekleştiren C# kodu örnekleri sağlanmaktadır.  SAS belirteçlerini oluşturma ve depolama hakkında daha fazla bilgi için bkz. [Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme](overview-storage-keys.md) veya [Key Vault ve Azure PowerShell depolama hesabı anahtarlarını yönetme](overview-storage-keys-powershell.md).
 
 ## <a name="code-samples"></a>Kod örnekleri
 
-Bu örnekte, kod anahtar kasanızdan bir SAS belirteci getirir, yeni bir depolama hesabı oluşturmak için kullanır ve yeni bir Blob hizmet istemcisi oluşturur.  
+Bu örnekte, kod anahtar kasaınızdan bir SAS belirteci getirir, bunu yeni bir depolama hesabı oluşturmak için kullanır ve yeni bir blob hizmeti istemcisi oluşturur.  
 
 ```cs
 // After you get a security token, create KeyVaultClient with vault credentials.
@@ -40,7 +40,7 @@ var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("htt
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
 ```
 
-Paylaşılan erişim imza belirtecinizin süresi dolmak üzereyse, paylaşılan erişim imza jetonunu anahtar kasanızdan alabilir ve kodu güncelleştirebilirsiniz.
+Paylaşılan erişim imza belirtecinizin kullanım süreleri dolarsa, anahtar kasaınızdan paylaşılan erişim imza belirtecini getirip kodu güncelleştirebilirsiniz.
 
 ```cs
 // If your shared access signature token is about to expire,
@@ -51,6 +51,6 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Key Vault ve Azure CLI veya [Azure PowerShell](overview-storage-keys-powershell.md) [ile depolama hesabı anahtarlarını](overview-storage-keys.md) nasıl yönetebilirsiniz öğrenin.
-- Bkz. [Yönetilen depolama hesabı anahtar örnekleri](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
-- [Anahtar Vault PowerShell referans](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
+- [Azure PowerShell](overview-storage-keys-powershell.md) [Key Vault ve Azure CLI veya Azure PowerShell ile depolama hesabı anahtarlarını yönetmeyi](overview-storage-keys.md) öğrenin.
+- Bkz. [yönetilen depolama hesabı anahtar örnekleri](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
+- [PowerShell başvurusunu Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

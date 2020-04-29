@@ -1,6 +1,6 @@
 ---
 title: Eşleme veri akışlarını parametreleştirme
-description: Veri fabrikası ardışık kaynaklarından haritalama veri akışını nasıl parametreize edin
+description: Data Factory işlem hatlarından eşleme veri akışını Parametreleştirme hakkında bilgi edinin
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,69 +8,69 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 82660cdb4ab6523bae7608fe3b071f20cb3603f8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419179"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Eşleme veri akışlarını parametreleştirme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Azure Veri Fabrikası'ndaki veri akışlarını eşleme parametrelerinkullanımını destekler. Veri akışı tanımınızın içindeki parametreleri tanımlayabilirsiniz ve bu parametreleri ifadeleriniz boyunca kullanabilirsiniz. Parametre değerleri, Veri Akışını Yürüt etkinliği aracılığıyla çağrı ardışık etki alanı tarafından ayarlanabilir. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
+Azure Data Factory veri akışlarını eşleme, parametrelerin kullanımını destekler. Daha sonra deyimlerinizin tamamında kullanabileceğiniz veri akışı tanımınızın içinde parametreler tanımlayabilirsiniz. Parametre değerleri, veri akışını Yürüt etkinliği aracılığıyla çağıran işlem hattı tarafından ayarlanabilir. Veri akışı etkinlik ifadelerindeki değerleri ayarlamak için üç seçeneğiniz vardır:
 
-* Dinamik bir değer ayarlamak için boru hattı denetimi akış ifadesi dilini kullanma
-* Dinamik bir değer ayarlamak için veri akışı ifade dilini kullanma
-* Statik bir gerçek değer ayarlamak için her iki ifade dilini de kullanma
+* Ardışık düzen denetim akışı ifade dilini kullanarak dinamik bir değer ayarlayın
+* Dinamik bir değer ayarlamak için veri akışı ifade dilini kullanın
+* Statik değişmez değer ayarlamak için ifade dilini kullanın
 
-Veri akışlarınızın genel amaçlı, esnek ve yeniden kullanılabilir olmasını sağlamak için bu özelliği kullanın. Veri akışı ayarlarını ve ifadelerini bu parametrelerle parametreleştirebilirsiniz.
+Verilerinizi genel amaçlı, esnek ve yeniden kullanılabilir hale getirmek için bu özelliği kullanın. Veri akışı ayarlarını ve deyimlerini bu parametrelerle parametreleştirebilirsiniz.
 
-## <a name="create-parameters-in-a-mapping-data-flow"></a>Haritalama veri akışında parametreler oluşturma
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametre oluşturma
 
-Veri akışınıza parametreler eklemek için, genel özellikleri görmek için veri akışı tuvalinin boş bölümünü tıklatın. Ayarlar bölmesinde **Parametre**adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için **Yeni'yi** seçin. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
+Veri akışınıza parametreler eklemek için, genel özellikleri görmek üzere veri akışı tuvalinin boş kısmına tıklayın. Ayarlar bölmesinde, **parametre**adlı bir sekme görürsünüz. Yeni bir parametre oluşturmak için **Yeni** ' yi seçin. Her parametre için bir ad atamanız, bir tür seçmeniz ve isteğe bağlı olarak varsayılan bir değer ayarlamanız gerekir.
 
-![Veri Akışı parametreleri oluşturma](media/data-flow/create-params.png "Veri Akışı parametreleri oluşturma")
+![Veri akışı parametreleri oluşturma](media/data-flow/create-params.png "Veri akışı parametreleri oluşturma")
 
-## <a name="use-parameters-in-a-mapping-data-flow"></a>Haritalama veri akışında parametreleri kullanma 
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Eşleme veri akışında parametreleri kullanma 
 
-Parametreler herhangi bir veri akışı ifadesinde başvurulabilir. Parametreler $ ile başlar ve değişmezdir. Kullanılabilir parametrelerin **listesini, Parametreler** sekmesi altında İfade Oluşturucusu'nun içinde bulabilirsiniz.
+Parametrelere, herhangi bir veri akışı ifadesinde başvurulabilir. Parametreler $ ile başlar ve sabittir. **Parametreler** sekmesinde, ifade oluşturucusunun içindeki kullanılabilir parametrelerin listesini bulacaksınız.
 
 ![Veri akışı parametre ifadesi](media/data-flow/parameter-expression.png "Veri akışı parametre ifadesi")
 
-**Yeni parametre** seçerek ve adı ve türünü belirterek hızlı bir şekilde ek parametreler ekleyebilirsiniz.
+**Yeni parametre** ' i seçip adı ve türü belirterek hızlı bir şekilde ek parametreler ekleyebilirsiniz.
 
 ![Veri akışı parametre ifadesi](media/data-flow/new-parameter-expression.png "Veri akışı parametre ifadesi")
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>Bir sütun adı parametre olarak geçme
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Sütun adını parametre olarak geçirme
 
-Ortak bir desen parametre değeri olarak bir sütun adı geçmektir. Parametreyle ilişkili sütuna başvurmak için `byName()` işlevi kullanın. Gibi bir döküm fonksiyonu ile uygun türüne `toString()`sütun döküm unutmayın.
+Ortak bir model, bir sütun adını parametre değeri olarak geçirmektir. Parametresiyle ilişkili sütuna başvurmak için `byName()` işlevini kullanın. Sütununu, gibi bir atama işleviyle ilgili türe dönüştürmeyi unutmayın `toString()`.
 
-Örneğin, bir dize sütununa göre bir `columnName`dize eşlemi yapmak isterseniz, türetilmiş sütun dönüşüme `toString(byName($columnName))`eşit olarak ekleyebilirsiniz.
+Örneğin, bir parametreye `columnName`göre bir dize sütununu eşlemek isterseniz, öğesinden türetilmiş bir sütun dönüşümü ekleyebilirsiniz. `toString(byName($columnName))`
 
-![Bir sütun adı parametre olarak geçme](media/data-flow/parameterize-column-name.png "Sütun adını paramete olarak geçirme")
+![Sütun adını parametre olarak geçirme](media/data-flow/parameterize-column-name.png "Sütun adını paramete olarak geçirme")
 
-## <a name="assign-parameter-values-from-a-pipeline"></a>Bir ardışık kaynaktan parametre değerleri atama
+## <a name="assign-parameter-values-from-a-pipeline"></a>İşlem hattından parametre değerleri atama
 
-Parametrelerle veri akışınızı oluşturduktan sonra, veri akışını yürüt veri akışı etkinliği ile bir ardışık kaynaktan yürütebilirsiniz. Etkinliği boru hattı tuvalinize ekledikten sonra, etkinliğin **Parametreler** sekmesinde kullanılabilir veri akışı parametreleri sunulur.
+Veri akışınızı parametrelerle oluşturduktan sonra, veri akışını Yürüt etkinliğinin bulunduğu bir işlem hattından çalıştırabilirsiniz. Etkinliği işlem hattı Tuvalinize ekledikten sonra etkinliğin **Parametreler** sekmesinde kullanılabilir veri akışı parametreleri görüntülenir.
 
-![Veri Akışı parametresi ayarlama](media/data-flow/parameter-assign.png "Veri Akışı parametresi ayarlama")
+![Veri akışı parametresini ayarlama](media/data-flow/parameter-assign.png "Veri akışı parametresini ayarlama")
 
-Parametre veri türünüz dizeise, parametre değerlerini ayarlamak için metin kutusunu tıklattığınızda, bir ardışık lık veya veri akışı ifadesi girmeyi seçebilirsiniz. Ardışık hatlar ifadesini seçerseniz, ardışık hatlar ifadesi paneli ile sunulur. Örneğin, string enterpolasyon sözdizimi `'@{<expression>}'`içinde ardışık işlevler içerdiğinden emin olun:
+Parametre veri türü dize ise, parametre değerlerini ayarlamak için metin kutusuna tıkladığınızda bir işlem hattı veya bir veri akışı ifadesi girmeyi seçebilirsiniz. Ardışık düzen ifadesini seçerseniz, işlem hattı ifade paneli sunulur. Dize ilişkilendirme sözdiziminin içinde ardışık düzen işlevlerini dahil ettiğinizden emin olun `'@{<expression>}'`, örneğin:
 
 ```'@{pipeline().RunId}'```
 
-Parametreniz tür dizesinden değilse, her zaman Veri Akışı İfade Oluşturucusu ile birlikte sunulur. Burada, parametrenin veri türüyle eşleşen istediğiniz herhangi bir ifadeyi veya gerçek değerleri girebilirsiniz. Aşağıda veri akışı ifade örnekleri ve ifade oluşturucu bir edebi dize vardır:
+Parametreniz dize türünde değilse, her zaman veri akışı Ifade Oluşturucusu görüntülenir. Burada, parametresinin veri türüyle eşleşen herhangi bir ifade veya sabit değer girebilirsiniz. Aşağıda, veri akışı ifadesi ve ifade oluşturucusunun bir sabit dizesi örnekleri verilmiştir:
 
 * ```toInteger(Role)```
 * ```'this is my static literal string'```
 
-Her haritalama veri akışı, ardışık hatlar ve veri akışı ifade parametrelerinin herhangi bir birleşimine sahip olabilir. 
+Her eşleme veri akışı, ardışık düzen ve veri akışı ifade parametrelerinin herhangi bir birleşimini içerebilir. 
 
 ![Veri akışı parametreleri örneği](media/data-flow/parameter-example.png "Veri akışı parametreleri örneği")
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Veri akışı etkinliğini yürütme](control-flow-execute-data-flow-activity.md)
-* [Kontrol akışı ifadeleri](control-flow-expression-language-functions.md)
+* [Veri akışı yürütme etkinliği](control-flow-execute-data-flow-activity.md)
+* [Denetim akışı ifadeleri](control-flow-expression-language-functions.md)

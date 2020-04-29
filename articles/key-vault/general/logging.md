@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault günlük | Microsoft Dokümanlar
+title: Günlüğe kaydetme Azure Key Vault | Microsoft Docs
 description: Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak için bu öğreticiyi kullanın.
 services: key-vault
 author: msmbaldwin
@@ -11,85 +11,85 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: e9198892f95635add27bcfe9e479d0dd6fe3f08d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422595"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bir veya daha fazla anahtar kasası oluşturduktan sonra, büyük olasılıkla anahtar kasalarınıza nasıl ve ne zaman ve kim tarafından erişilir izleyebilirsiniz. Bunu, sağladığınız bir Azure depolama hesabında bilgi kaydeden Azure Key Vault için günlüğe kaydetmeyi etkinleştirerek yapabilirsiniz. Belirtilen depolama hesabınız için **öngörüler-günlükler-denetim olayı** adlı yeni bir kapsayıcı otomatik olarak oluşturulur. Birden çok anahtar kasası için günlükleri toplamak için aynı depolama hesabını kullanabilirsiniz.
+Bir veya daha fazla Anahtar Kasası oluşturduktan sonra muhtemelen anahtar kasalarınızın nasıl ve ne zaman erişildiğini ve kim tarafından yapılacağını izlemek isteyeceksiniz. Bu, bilgileri, sağladığınız bir Azure depolama hesabına kaydeden Azure Key Vault için günlüğe kaydetmeyi etkinleştirerek yapabilirsiniz. Belirtilen depolama hesabınız için **Öngörüler-logs-auditevent** adlı yeni bir kapsayıcı otomatik olarak oluşturulur. Birden çok Anahtar Kasası için günlükleri toplamak üzere bu depolama hesabını kullanabilirsiniz.
 
-Anahtar kasa işleminden sonra günlük bilgilerinize en fazla 10 dakika (en fazla) erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
+Kayıt bilgilerinizi 10 dakika (en çok) Anahtar Kasası işleminden sonra erişebilirsiniz. Çoğu durumda, bundan daha hızlı olacaktır.  Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
 
 * Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
 * Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
 
-Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak için bu öğreticiyi kullanın. Bir depolama hesabı oluşturur, günlüğe kaydetmeyi etkinleştirin ve toplanan günlük bilgilerini yorumlayaceksiniz.  
+Azure Anahtar Kasası günlüğü ile çalışmaya başlamada yardım almak için bu öğreticiyi kullanın. Bir depolama hesabı oluşturacak, günlüğe kaydetmeyi etkinleştireceksiniz ve toplanan günlük bilgilerini yorumlayacak.  
 
 > [!NOTE]
-> Bu öğretici anahtar kasalarının, anahtarların veya gizli anahtarların nasıl oluşturulacağı hakkında yönergeler içermez. Bu bilgi için Azure [Anahtar Kasası nedir'](overview.md)e bakın). Veya, çapraz platform Azure CLI yönergeleri için [bu eşdeğer öğreticiye](manage-with-cli2.md)bakın).
+> Bu öğretici anahtar kasalarının, anahtarların veya gizli anahtarların nasıl oluşturulacağı hakkında yönergeler içermez. Bu bilgi için bkz. [Azure Key Vault nedir?](overview.md)). Veya platformlar arası Azure CLı yönergeleri için [Bu eşdeğer öğreticiye](manage-with-cli2.md)bakın.
 >
-> Bu makalede, tanıgünlüğe kaydetmeyi güncelleştirmek için Azure PowerShell yönergeleri verilmektedir. Azure portalının **Tanılama günlükleri** bölümünde Azure Monitor'u kullanarak tanılama günlüğünü de güncelleştirebilirsiniz. 
+> Bu makalede, tanılama günlüğünü güncelleştirmek için Azure PowerShell yönergeler sağlanmaktadır. Tanılama günlük kaydını, Azure portal **tanılama günlükleri** bölümünde Azure izleyici 'yi kullanarak da güncelleştirebilirsiniz. 
 >
 
-Key Vault hakkında genel bilgi için azure [anahtar kasası nedir?](overview.md) Key Vault'un nerede bulunduğu hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
+Key Vault hakkında genel bilgi için bkz. [Azure Key Vault nedir?](overview.md)). Key Vault nerede kullanılabildiği hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/key-vault/)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakilere sahip olmanız gerekir:
 
 * Kullanmakta olduğunuz var olan bir anahtar kasası.  
-* Azure PowerShell, minimum 1.0.0 sürümü. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell'i zaten yüklediyseniz ve azure PowerShell konsolundan sürümü `$PSVersionTable.PSVersion`bilmiyorsanız girin.  
+* En düşük 1.0.0 sürümü Azure PowerShell. Azure PowerShell'i yüklemek ve Azure aboneliğinizle ilişkilendirmek için bkz. [Azure PowerShell'i yükleme ve yapılandırma](/powershell/azure/overview). Azure PowerShell zaten yüklediyseniz ve sürümü bilmiyorsanız, Azure PowerShell konsolundan yazın `$PSVersionTable.PSVersion`.  
 * Anahtar Kasası günlükleriniz için Azure'da yeterli depolama.
 
-## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Anahtar kasa aboneliğinize bağlanın
+## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>Anahtar Kasası aboneliğinize bağlanma
 
-Anahtar günlüğe kaydetmeyi ayarlamanın ilk adımı, Azure PowerShell'i günlüğe kaydetmek istediğiniz anahtar kasasına çekmektir.
+Anahtar günlüğü ayarlamanın ilk adımı, günlüğe kaydetmek istediğiniz anahtar kasasından Azure PowerShell işaret ediyor.
 
-Aşağıdaki komutu kullanarak bir Azure PowerShell oturumu başlatın ve Azure hesabınızda oturum açın:  
+Bir Azure PowerShell oturumu başlatın ve aşağıdaki komutu kullanarak Azure hesabınızda oturum açın:  
 
 ```powershell
 Connect-AzAccount
 ```
 
-Açılır tarayıcı penceresinde Azure hesabı kullanıcı adınızı ve parolanızı girin. Azure PowerShell, bu hesapla ilişkili tüm abonelikleri alır. Varsayılan olarak, PowerShell ilkini kullanır.
+Açılır tarayıcı penceresinde Azure hesabı kullanıcı adınızı ve parolanızı girin. Azure PowerShell, bu hesapla ilişkili tüm abonelikleri alır. Varsayılan olarak, PowerShell ilk olanı kullanır.
 
-Anahtar kasanızı oluşturmak için kullandığınız aboneliği belirtmeniz gerekebilir. Hesabınızın aboneliklerini görmek için aşağıdaki komutu girin:
+Anahtar kasanızı oluşturmak için kullandığınız aboneliği belirtmeniz gerekebilir. Hesabınıza yönelik abonelikleri görmek için aşağıdaki komutu girin:
 
 ```powershell
 Get-AzSubscription
 ```
 
-Ardından, günlüğe kaydolacağınız anahtar kasasıyla ilişkili aboneliği belirtmek için girin:
+Daha sonra, günlük kaydı yaptığınız Anahtar Kasası ile ilişkili aboneliği belirtmek için şunu girin:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-PowerShell'i doğru aboneye işaret etmek, özellikle hesabınızla ilişkili birden fazla aboneliğiniz varsa önemli bir adımdır. Azure PowerShell'i yapılandırma hakkında daha fazla bilgi için [Azure PowerShell'i nasıl yükleyip yapılandırılatırınız.](/powershell/azure/overview)
+Özellikle hesabınızla ilişkili birden fazla aboneliğiniz varsa, PowerShell 'in doğru aboneliğe işaret edilmesi önemli bir adımdır. Azure PowerShell yapılandırma hakkında daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
 
-## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Günlükleriniz için bir depolama hesabı oluşturma
+## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>Günlüklerinizi için bir depolama hesabı oluşturun
 
-Günlükleriniz için varolan bir depolama hesabı kullanabiliyor olsanız da, Key Vault günlüklerine adanmış bir depolama hesabı oluştururuz. Bunu daha sonra belirtmemiz gerektiğinde, ayrıntıları **sa**adlı bir değişkende depolarız.
+Günlüklerinizin mevcut bir depolama hesabını kullanabilseniz de, Key Vault günlüklerine ayrılmayacak bir depolama hesabı oluşturacağız. Daha sonra bunu belirtmemiz gereken durumlarda, ayrıntıları **sa**adlı bir değişkende depolayacağız.
 
-Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynak grubuyla aynı kaynak grubunu da kullanırız. Başlangıç [öğretici](../secrets/quick-create-cli.md)itibaren , Bu kaynak grubu **ContosoResourceGroup**adlı , ve Biz Doğu Asya konumunu kullanmaya devam edeceğiz. Bu değerleri, geçerli olduğu şekilde kendi değerlerinizle değiştirin:
+Daha fazla yönetim kolaylığı için, anahtar kasasını içeren kaynakla aynı kaynak grubunu da kullanacağız. [Başlangıç öğreticisinde](../secrets/quick-create-cli.md), bu kaynak grubuna **contosoresourcegroup**adı verilir ve Doğu Asya konumunu kullanmaya devam edeceğiz. Bu değerleri, uygun olduğu şekilde kendi değerlerinizle değiştirin:
 
 ```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
 > [!NOTE]
-> Varolan bir depolama hesabı kullanmaya karar verirseniz, anahtar kasanızla aynı aboneliği kullanmanız gerekir. Ayrıca, klasik dağıtım modeli yerine Azure Kaynak Yöneticisi dağıtım modelini kullanmalıdır.
+> Mevcut bir depolama hesabını kullanmaya karar verirseniz, anahtar kasanız ile aynı aboneliği kullanması gerekir. Ve klasik dağıtım modeli yerine Azure Resource Manager dağıtım modelini kullanmalıdır.
 >
 >
 
 ## <a name="identify-the-key-vault-for-your-logs"></a><a id="identify"></a>Günlükleriniz için anahtar kasasını tanımlama
 
-Başlangıç [öğretici](../secrets/quick-create-cli.md), anahtar tonoz adı **ContosoKeyVault**oldu. Bu adı kullanmaya devam edeceğiz ve ayrıntıları **kv**adlı bir değişkende saklayacağız:
+[Başlangıç öğreticisinde](../secrets/quick-create-cli.md), Anahtar Kasası adı **contosokeykasaiydi**. Bu adı kullanmaya devam edeceğiz ve ayrıntıları **kV**adlı bir değişkende depolarız:
 
 ```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
@@ -97,13 +97,13 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging"></a><a id="enable"></a>Günlü kaydını etkinleştir
 
-Key Vault için günlüğe kaydetmeyi etkinleştirmek için, yeni depolama hesabı ve anahtar kasası için oluşturduğumuz değişkenlerle birlikte **Set-AzDiagnosticSetting** cmdlet'i kullanacağız. Ayrıca **-Etkin** bayrağı **$true** ve kategoriyi **AuditEvent** (Key Vault günlüğe kaydetme için tek kategori) olarak ayarlayacağız:
+Key Vault için günlüğe kaydetmeyi etkinleştirmek üzere, **set-AzDiagnosticSetting** cmdlet 'ini yeni depolama hesabı ve Anahtar Kasası için oluşturduğumuz değişkenlerle birlikte kullanacağız. Ayrıca, **-Enabled** bayrağını **$true** ve kategoriyi **auditevent** (Key Vault günlük için tek kategori) olarak ayarlayacağız:
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Çıktı şuna benzer:
+Çıktı şöyle görünür:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -115,9 +115,9 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
         Enabled : False
         Days    : 0
 
-Bu çıktı, anahtar kasanız için artık günlük kaydının etkinleştirilen olduğunu doğrular ve bilgileri depolama hesabınıza kaydeder.
+Bu çıktı, günlük kaydının anahtar kasanız için etkin olduğunu onaylar ve depolama hesabınıza bilgi kaydeder.
 
-İsteğe bağlı olarak, günlükleriniz için eski günlüklerin otomatik olarak silinmesi için bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, **-Bekletme Etkin** bayrağını **$true**ayarlayarak bekletme ilkesini ayarlayın ve **-BekletmeGünleri** parametresini **90'a** ayarlayın, böylece 90 günden daha eski günlükler otomatik olarak silinir.
+İsteğe bağlı olarak, günlüklerinizi için eski günlüklerin otomatik olarak silineceği bir bekletme ilkesi ayarlayabilirsiniz. Örneğin, **-RetentionEnabled** bayrağını **$true**olarak ayarlayarak bekletme ilkesi ayarlayın ve 90 günden eski günlüklerin otomatik olarak silinmesi için **-retentionındays** parametresini **90** olarak ayarlayın.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -125,24 +125,24 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 Günlüğe kaydedilenler:
 
-* Erişim izinleri, sistem hataları veya kötü istekler sonucunda başarısız istekler de dahil olmak üzere tüm doğrulanmış REST API istekleri.
-* Oluşturma, silme, anahtar kasa erişim ilkelerini ayarlama ve etiketler gibi önemli kasa özniteliklerini güncelleştirme gibi anahtar kasasının kendisi üzerindeki işlemler.
-* Anahtar kasasında ki anahtarlar ve sırlar üzerinde operasyonlar:
-  * Bu anahtarları veya sırları oluşturma, değiştirme veya silme.
-  * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, paketleme ve açma, sır alma ve anahtarları ve sırları (ve sürümlerini) listeleme.
-* Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnekler, taşıyıcı belirteci olmayan, hatalı biçimlendirilmiş veya süresi dolmuş veya geçersiz bir belirteci olan isteklerdir.  
+* Erişim izinlerinin, sistem hatalarının veya hatalı isteklerin sonucu olarak başarısız istekler dahil tüm kimliği doğrulanmış REST API istekleri.
+* Oluşturma, silme, Anahtar Kasası erişim ilkelerini ayarlama ve Etiketler gibi Anahtar Kasası özniteliklerini güncelleştirme dahil olmak üzere anahtar kasasındaki işlemler.
+* Anahtar kasasındaki anahtarlar ve gizli diziler için aşağıdakiler de dahil olmak üzere işlemler:
+  * Bu anahtarları veya parolaları oluşturma, değiştirme veya silme.
+  * Anahtarları imzalama, doğrulama, şifreleme, şifre çözme, sarmalama ve kaldırma, gizli dizileri alma ve anahtarları ve gizli dizileri (ve bunların sürümlerini) listeleme.
+* Bir 401 yanıtına neden olan kimliği doğrulanmamış istekler. Örnek olarak, hatalı biçimlendirilmiş veya geçerliliği olmayan ya da geçersiz bir belirtece sahip bir taşıyıcı belirteci olmayan isteklerdir.  
 
 ## <a name="access-your-logs"></a><a id="access"></a>Günlüklerinize erişme
 
-Anahtar Vault günlükleri, sağladığınız depolama hesabındaki **öngörüler-günlükler-denetim olayı** konteynerinde depolanır. Günlükleri görüntülemek için, lekeler indirmek zorunda.
+Key Vault Günlükler, verdiğiniz depolama hesabındaki **Öngörüler-logs-auditevent** kapsayıcısında depolanır. Günlükleri görüntülemek için Blobları indirmeniz gerekir.
 
-İlk olarak, kapsayıcı adı için bir değişken oluşturun. Bu değişkeni, gözden geçirmenin geri kalanında kullanırsınız.
+İlk olarak, kapsayıcı adı için bir değişken oluşturun. Bu değişkeni, izlenecek yolun geri kalanı boyunca kullanacaksınız.
 
 ```powershell
 $container = 'insights-logs-auditevent'
 ```
 
-Bu kapsayıcıdaki tüm lekeleri listelemek için şunları girin:
+Bu kapsayıcıdaki tüm Blobları listelemek için şunu girin:
 
 ```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
@@ -163,13 +163,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Bu çıktıdan da görebileceğiniz gibi, lekeler bir adlandırma kuralını izler:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Bu çıktıdan görebileceğiniz gibi, Bloblar bir adlandırma kuralını izler:`resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Tarih ve saat değerleri UTC'yi kullanır.
 
-Birden çok kaynak için günlükleri toplamak için aynı depolama hesabını kullanabileceğiniz için, blob adındaki tam kaynak kimliğine erişmek veya ihtiyacınız olan lekeleri indirmek için yararlıdır. Ancak bunu yapmadan önce tüm blobların nasıl indirileceğini ele alacağız.
+Birden çok kaynağa yönelik günlükleri toplamak için aynı depolama hesabını kullanabilmeniz için, blob adı içindeki tam kaynak KIMLIĞI, yalnızca ihtiyaç duyduğunuz bloblara erişmek veya onları indirmek için yararlıdır. Ancak bunu yapmadan önce tüm blobların nasıl indirileceğini ele alacağız.
 
-Lekeleri indirmek için bir klasör oluşturun. Örneğin:
+Blobları indirmek için bir klasör oluşturun. Örneğin:
 
 ```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -181,13 +181,13 @@ Ardından tüm blobların listesini alın:
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Blobs'ı hedef klasöre indirmek için bu listeyi **Get-AzStorageBlobContent** üzerinden inceleyin:
+Blob 'ları hedef klasöre indirmek için **Get-AzStorageBlobContent** aracılığıyla bu listeyi kanal halinde kullanın:
 
 ```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Bu ikinci komutu çalıştırdığınızda, blob adlarında **/** delimiter hedef klasörün altında tam bir klasör yapısı oluşturur. Bu yapıyı, lekeleri dosya olarak indirmek ve depolamak için kullanırsınız.
+Bu ikinci komutu çalıştırdığınızda, blob adlarındaki **/** sınırlayıcı, hedef klasör altında tam bir klasör yapısı oluşturur. Bu yapıyı blob 'ları dosya olarak indirmek ve depolamak için kullanacaksınız.
 
 Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
 
@@ -203,26 +203,26 @@ Blobları seçmeli olarak indirmek için jokerleri kullanın. Örneğin:
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Ocak 2019 ayına ait tüm günlükleri indirmek istiyorsanız: `-Blob '*/year=2019/m=01/*'`
+* 2019 Ocak ayının tüm günlüklerini indirmek istiyorsanız şunu kullanın `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
-Artık günlüklerin içinde neler olduğuna bakmaya başlamak için hazırsınız. Ama bu konuda harekete geçmeden önce, iki komut daha bilmelisiniz:
+Artık günlüklerin içinde neler olduğuna bakmaya başlamak için hazırsınız. Ancak, bu konuda geçiş yapmadan önce, daha fazla iki komut bilmeniz gerekir:
 
 * Anahtar kasası kaynağınızın tanılama ayarlarının durumunu sorgulamak için: `Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * Anahtar kasası kaynağınızın günlüğe kaydetmesini devre dışı bırakmak için: `Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
 ## <a name="interpret-your-key-vault-logs"></a><a id="interpret"></a>Anahtar Kasası günlüklerinizi yorumlama
 
-Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Örnek bir günlük girişine bakalım. Şu komutu çalıştırın:
+Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir örnek günlük girişine bakalım. Şu komutu çalıştırın:
 
 ```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 
-Buna benzer bir günlük girişi döndürür:
+Şuna benzer bir günlük girdisi döndürür:
 
 ```json
     {
@@ -247,35 +247,35 @@ Buna benzer bir günlük girişi döndürür:
     }
 ```
 
-Aşağıdaki tabloda alan adları ve açıklamaları listelenebvardır:
+Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
 | Alan adı | Açıklama |
 | --- | --- |
-| **time** |UTC'deki tarih ve saat. |
-| **Resourceıd** |Azure Kaynak Yöneticisi kaynak kimliği. Key Vault günlükleri için bu her zaman Anahtar Kasa kaynak kimliğidir. |
+| **time** |UTC olarak tarih ve saat. |
+| **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
 | **operationName** |Sonraki tabloda belirtildiği gibi işlemin adı. |
-| **operationVersion** |İstemci tarafından istenen REST API sürümü. |
-| **Kategori** |Sonuç türü. Key Vault günlükleri için **AuditEvent** tek ve kullanılabilir değerdir. |
+| **operationVersion** |İstemci tarafından istenen sürümü REST API. |
+| **alan** |Sonuç türü. Key Vault günlükleri için, **auditevent** tek ve kullanılabilir bir değerdir. |
 | **resultType** |REST API isteğinin sonucu. |
 | **resultSignature** |HTTP durumu. |
 | **resultDescription** |Kullanılabilir olduğunda sonuç hakkında ek açıklama. |
 | **durationMs** |Milisaniye cinsinden REST API'si isteğini sunmak için geçen süre. Buna ağ gecikme süresi dahil değildir; bu nedenle istemci tarafında ölçtüğünüz süre bu süreyle eşleşmeyebilir. |
-| **callerIpAddress** |İstekte bulundu müşterinin IP adresi. |
+| **callerIpAddress** |İsteği yapan istemcinin IP adresi. |
 | **correlationId** |İstemci tarafı günlüklerini hizmet tarafı (Anahtar Kasası) günlükleriyle ilişkilendirmek için istemcinin geçirebileceği isteğe bağlı bir GUID. |
-| **Kimlik** |REST API isteğinde sunulan belirteçten kimlik. Bu genellikle bir "kullanıcı", bir "hizmet sorumlusu" veya bir Azure PowerShell cmdlet kaynaklanan bir istek durumunda olduğu gibi "kullanıcı+appId" kombinasyonudur. |
-| **Özellikler** |İşleme göre değişen bilgiler **(operationName).** Çoğu durumda, bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API isteği URI ve HTTP durum kodunu içerir. Buna ek olarak, bir nesne bir istek sonucu döndürüldüğünde (örneğin, **KeyCreate** veya **VaultGet),** aynı zamanda uri ("id" olarak), tonoz URI veya gizli URI anahtarını da içerir. |
+| **IDENTITY** |REST API isteğinde sunulan belirteçten kimlik. Bu, genellikle bir "Kullanıcı," bir "hizmet sorumlusu" veya "Kullanıcı + AppID" birleşimidir ve bir Azure PowerShell cmdlet 'inin sonucu olan bir istekte bulunur. |
+| **özelliklerinin** |İşleme göre farklılık gösteren bilgiler (**OperationName**). Çoğu durumda bu alan istemci bilgilerini (istemci tarafından geçirilen kullanıcı aracısı dizesi), tam REST API istek URI 'sini ve HTTP durum kodunu içerir. Ayrıca, bir nesne bir isteğin sonucu olarak döndürüldüğünde (örneğin, **Keycreate** veya **vaultget**), anahtar URI 'sini ("kimlik" olarak), kasa URI 'sini veya gizli URI 'yi de içerir. |
 
-**OperationName** alan değerleri *ObjectVerb* biçimindedir. Örneğin:
+**OperationName** alan değerleri *objectverb* biçimindedir. Örneğin:
 
-* Tüm anahtar kasa `Vault<action>` işlemleri gibi `VaultGet` biçimi `VaultCreate`vardır.
-* Tüm anahtar işlemleri `Key<action>` gibi `KeySign` biçimi `KeyList`var ve .
-* Tüm gizli işlemler `Secret<action>` gibi biçimi `SecretGet` `SecretListVersions`var ve .
+* Tüm Anahtar Kasası işlemleri, `Vault<action>` `VaultGet` ve `VaultCreate`gibi biçimdedir.
+* Tüm anahtar işlemleri, `Key<action>` `KeySign` ve `KeyList`gibi biçimdedir.
+* Tüm gizli işlemler, `Secret<action>` `SecretGet` ve `SecretListVersions`gibi biçimdedir.
 
-Aşağıdaki tabloda **operationName** değerleri ve ilgili REST API komutları listelenir:
+Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API komutları listelenmektedir:
 
 | operationName | REST API komutu |
 | --- | --- |
-| **Kimlik Doğrulaması** |Azure Active Directory bitiş noktası üzerinden kimlik doğrulaması |
+| **Kimlik Doğrulaması** |Azure Active Directory uç noktası aracılığıyla kimlik doğrulaması |
 | **VaultGet** |[Bir anahtar kasası hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Bir anahtar kasası oluşturma veya güncelleştirme](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Bir anahtar kasasını silme](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
@@ -284,7 +284,7 @@ Aşağıdaki tabloda **operationName** değerleri ve ilgili REST API komutları 
 | **KeyCreate** |[Bir anahtar oluşturma](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
 | **KeyGet** |[Bir anahtar hakkında bilgi edinme](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
 | **KeyImport** |[Bir kasaya bir anahtar aktarma](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| **KeyBackup** |[Bir anahtarı yedekleme](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| **KeyBackup** |[Anahtar yedekleme](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
 | **KeyDelete** |[Bir anahtarı silme](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
 | **KeyRestore** |[Bir anahtarı geri yükleme](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
 | **KeySign** |[Bir anahtar ile oturum açma](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
@@ -297,7 +297,7 @@ Aşağıdaki tabloda **operationName** değerleri ve ilgili REST API komutları 
 | **KeyList** |[Bir kasadaki anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
 | **KeyListVersions** |[Bir anahtarın sürümlerini listeleme](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
 | **SecretSet** |[Gizli anahtar oluşturma](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| **SecretGet** |[Bir sır alın](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| **SecretGet** |[Gizli dizi alın](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
 | **SecretUpdate** |[Gizli anahtarı güncelleştirme](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
 | **SecretDelete** |[Gizli anahtarı silme](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
 | **SecretList** |[Bir kasadaki gizli anahtarları listeleme](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
@@ -305,16 +305,16 @@ Aşağıdaki tabloda **operationName** değerleri ve ilgili REST API komutları 
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>Azure İzleyici günlüklerini kullanma
 
-Key Vault **AuditEvent** günlüklerini incelemek için Azure Monitor günlüklerinde Key Vault çözümünü kullanabilirsiniz. Azure Monitor günlüklerinde, verileri çözümlemek ve ihtiyacınız olan bilgileri almak için günlük sorgularını kullanırsınız. 
+Key Vault **auditevent** günlüklerini gözden geçirmek Için Azure izleyici günlüklerinde Key Vault çözümünü kullanabilirsiniz. Azure Izleyici günlüklerinde, verileri analiz etmek ve ihtiyacınız olan bilgileri almak için günlük sorgularını kullanırsınız. 
 
-Bunu nasıl ayarlanız da dahil olmak üzere daha fazla bilgi için [Azure Monitor günlüklerinde Azure Anahtar Kasası çözümüne](../../azure-monitor/insights/azure-key-vault.md)bakın. Bu makalede, günlüklerinizi ilk olarak bir Azure depolama hesabına yönlendirdiğiniz ve Azure Monitor günlüklerini buradan okunacak şekilde yapılandırdığınız Azure Monitor günlükleri önizlemesi sırasında sunulan eski Key Vault çözümünden geçiş yapmanız gerekiyorsa da yönergeler de içerir.
+Bunu ayarlama dahil daha fazla bilgi için bkz. [Azure izleyici günlüklerinde Azure Key Vault çözümü](../../azure-monitor/insights/azure-key-vault.md). Bu makalede, Azure Izleyici günlükleri önizlemesi sırasında sunulan eski Key Vault çözümünden geçiş yapmanız gerekiyorsa, günlüklerinizi bir Azure depolama hesabına ilk kez yönlendirmekte ve Azure Izleyici günlüklerini buradan okumak üzere yapılandırmış olursunuz.
 
 ## <a name="next-steps"></a><a id="next"></a>Sonraki adımlar
 
-Bir .NET web uygulamasında Azure Key Vault kullanan bir öğretici için, [bir web uygulamasından Azure Anahtar Kasası'nı kullanın'a](tutorial-net-create-vault-azure-web-app.md)bakın.
+.NET Web uygulamasında Azure Key Vault kullanan bir öğretici için bkz. [bir Web uygulamasından Azure Key Vault kullanma](tutorial-net-create-vault-azure-web-app.md).
 
 Programlama başvuruları için bkz. [Azure Anahtar Kasası geliştirici kılavuzu](developers-guide.md).
 
-Azure Anahtar Kasası için Azure PowerShell 1,0 cmdlets listesi için Azure [Anahtar Kasası cmdlets'e](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)bakın.
+Azure Key Vault için Azure PowerShell 1,0 cmdlet 'lerinin bir listesi için bkz. [Azure Key Vault cmdlet 'leri](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
 
-Azure Anahtar Kasası ile anahtar döndürme ve günlük denetimi hakkında bir öğretici için [bkz.](../secrets/key-rotation-log-monitoring.md)
+Azure Key Vault ile anahtar döndürme ve günlük denetimi hakkında bir öğretici için bkz. [uçtan uca anahtar döndürme ve denetleme ile Key Vault ayarlama](../secrets/key-rotation-log-monitoring.md).

@@ -1,5 +1,5 @@
 ---
-title: Azure portalını kullanarak bir boru hattında dallanma ve zincirleme etkinlikleri
+title: Azure portal kullanarak bir işlem hattındaki dallanma ve zincirleme etkinlikleri
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
 author: djpmsft
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418760"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
@@ -42,9 +42,9 @@ Bu öğreticide Azure portalı kullanılır. Azure Data Factory ile etkileşim k
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **Azure aboneliği.** Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
-* **Azure Depolama hesabı.** Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
-* **Azure SQL Veritabanı**. Veritabanını **havuz** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesine bakın.
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+* **Azure depolama hesabı**. Blob depolama alanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın.
+* **Azure SQL veritabanı**. Veritabanını **havuz** veri deposu olarak kullanabilirsiniz. Azure SQL Veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı oluşturma](../sql-database/sql-database-get-started-portal.md) makalesine bakın.
 
 ### <a name="create-blob-table"></a>Blob tablosu oluşturma
 
@@ -129,7 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol menüde > kaynak**Veri + Analitik** > **Veri Fabrikası** **Oluştur'u**seçin:
+1. Sol taraftaki menüden > **veri ve analiz** >  **kaynak oluştur**' u seçin**Data Factory**:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -141,7 +141,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
        `Data factory name “ADFTutorialDataFactory” is not available`
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
-4. Kaynak **Grubu**için aşağıdaki adımlardan birini yapın:
+4. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
 
       - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
       - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
@@ -150,7 +150,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur'u**tıklatın.      
+7. **Oluştur**' a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -173,8 +173,8 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
    ![Başlarken sayfası](./media/tutorial-control-flow-portal/get-started-page.png)
 3. İşlem hattının özellikler penceresinde **Parametreler** sekmesine geçin ve **Yeni** düğmesini kullanarak String türündeki şu üç parametreyi ekleyin: sourceBlobContainer, sinkBlobContainer ve receiver.
 
-    - **sourceBlobContainer** - kaynak blob veri seti tarafından tüketilen boru hattı parametresi.
-    - **sinkBlobContainer** – lavabo blob veri seti tarafından tüketilen boru hattında parametre
+    - **Sourceblobcontainer** -işlem hattında kaynak blob veri kümesi tarafından tüketilen parametre.
+    - **Sinkblobcontainer** – işlem hattında havuz blob veri kümesi tarafından tüketilen parametre
     - **receiver** – bu parametre, işlem hattında e-posta adresi bu parametre ile belirtilen alıcıya başarı veya hata e-postaları gönderen iki Web etkinliği tarafından kullanılır.
 
    ![Yeni işlem hattı menüsü](./media/tutorial-control-flow-portal/pipeline-parameters.png)
@@ -282,7 +282,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     ![Yayımlama](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Başarılı olan bir işlem hattı çalıştırması tetikleme
-1. Bir ardışık hatlar çalışmasını **tetiklemek** için araç çubuğunda **Tetikle'yi** tıklatın ve **Şimdi Tetikle'yi**tıklatın.
+1. Bir işlem hattı çalıştırması **tetiklemek** için araç çubuğunda **Tetikle** ' e tıklayın ve **Şimdi Tetikle**' ye tıklayın.
 
     ![İşlem hattı çalıştırmasını tetikleme](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. **İşlem Hattı Çalıştırması** penceresinde aşağıdaki adımları uygulayın:
@@ -290,7 +290,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     1. **sourceBlobContainer** parametresi için **adftutorial/adfv2branch/input** yolunu girin.
     2. **sinkBlobContainer** parametresi için **adftutorial/adfv2branch/output** yolunu girin.
     3. **Receiver** parametresine ait bir **e-posta adresi** girin.
-    4. **Bitiş'e** tıklayın
+    4. **Son** ' a tıklayın
 
         ![İşlem hattı çalıştırma parametreleri](./media/tutorial-control-flow-portal/pipeline-run-parameters.png)
 
@@ -305,7 +305,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Başarısız olan bir işlem hattı çalıştırması tetikleme
 1. Soldaki **Düzenle** sekmesine geçin.
-2. Bir ardışık hatlar çalışmasını **tetiklemek** için araç çubuğunda **Tetikle'yi** tıklatın ve **Şimdi Tetikle'yi**tıklatın.
+2. Bir işlem hattı çalıştırması **tetiklemek** için araç çubuğunda **Tetikle** ' e tıklayın ve **Şimdi Tetikle**' ye tıklayın.
 3. **İşlem Hattı Çalıştırması** penceresinde aşağıdaki adımları uygulayın:
 
     1. **sourceBlobContainer** parametresi için **adftutorial/dummy/input** yolunu girin. Sahte klasörün adftutorial kapsayıcısında bulunmadığından emin olun.

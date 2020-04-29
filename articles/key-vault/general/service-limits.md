@@ -1,6 +1,6 @@
 ---
-title: Azure Anahtar Kasası Hizmet Limitleri - Azure Key Vault | Microsoft Dokümanlar
-description: Azure Key Vault için hizmet sınırları hakkında bilgi edinin.
+title: Azure Key Vault hizmet limitleri-Azure Key Vault | Microsoft Docs
+description: Azure Key Vault için hizmet limitleri hakkında bilgi edinin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 75fec93be9b43785a91c93b7c609231e37188602
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429830"
 ---
-# <a name="azure-key-vault-service-limits"></a>Azure Key Vault hizmet sınırları
+# <a name="azure-key-vault-service-limits"></a>Hizmet sınırlarını Azure Key Vault
 
-Azure Key Vault için hizmet sınırları aşağıda veda edinebilirsiniz.
+Azure Key Vault için hizmet limitleri aşağıda verilmiştir.
 
 [!INCLUDE [key-vault-limits](../../../includes/key-vault-limits.md)]
 

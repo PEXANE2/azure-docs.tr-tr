@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning ardışık hatlarını çalıştırma
-description: Azure Machine Learning ardışık alanlarınızı Azure Veri Fabrikası ardışık hatlarınızda nasıl çalıştırılacınız öğrenin.
+title: Azure Machine Learning işlem hatlarını yürütme
+description: Azure Machine Learning işlem hatlarınızı Azure Data Factory işlem hatlarınız içinde nasıl çalıştıracağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,19 +11,19 @@ author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
 ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419009"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Azure Machine Learning ardışık hatlarını çalıştırma
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Data Factory Azure Machine Learning işlem hatlarını yürütme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Machine Learning ardışık hatlarınızı Azure Veri Fabrikası ardışık hatlarınızda bir adım olarak çalıştırın. Machine Learning Execute Pipeline etkinliği, olası kredi varsayılanlarını tanımlama, duyarlılığı belirleme ve müşteri davranış modellerini çözümleme gibi toplu tahmin senaryolarına olanak tanır.
+Azure Machine Learning işlem hatlarınızı, Azure Data Factory işlem hatlarında bir adım olarak çalıştırın. Machine Learning yürütme işlem hattı etkinliği, olası kredi varsayılanlarını tanımlama, yaklaşımı belirleme ve müşteri davranış düzenlerini çözümleme gibi toplu tahmin senaryolarına olanak tanır.
 
-Aşağıdaki videoda bu özelliğin altı dakikalık tanıtımı ve gösterimi yer almaktadır.
+Aşağıdaki videoda, bu özelliğin altı dakikalık bir girişi ve gösterimi sunulmaktadır.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -52,24 +52,24 @@ Aşağıdaki videoda bu özelliğin altı dakikalık tanıtımı ve gösterimi y
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-ad | Boru hattındaki etkinliğin adı | Dize | Evet
-type | Etkinlik türü 'AzureMLExecutePipeline' | Dize | Evet
-linkedServiceName | Azure Machine Learning'e Bağlantılı Hizmet | Bağlantılı hizmet başvurusu | Evet
-mlPipelineId | Yayınlanan Azure Machine Learning ardışık hattının kimliği | String (veya sonuç string Türü ile ifade) | Evet
-denemeAdı | Machine Learning ardışık boru hattının geçmiş deneme adını çalıştırma | String (veya sonuç string Türü ile ifade) | Hayır
-mlPipelineParametreler | Anahtar, Yayınlanan Azure Machine Learning ardışık nokta uç noktasına geçirilecek değer çiftleri. Anahtarlar, yayınlanan Machine Learning ardışık boru hattında tanımlanan boru hattı parametrelerinin adlarıyla eşleşmelidir | Anahtar değer çiftleri olan nesne (veya resultType nesnesi ile İfade) | Hayır
-mlParentRunId | Üst Azure Machine Learning ardışık çalışma kimliği | String (veya sonuç string Türü ile ifade) | Hayır
-continueOnStepFailure | Bir adım başarısız olursa Makine Öğrenimi ardışık işakindeki diğer adımların yürütülmesine devam edilip edilemeyeceği | boole | Hayır
+ad | İşlem hattındaki etkinliğin adı | Dize | Yes
+type | Etkinliğin türü ' AzureMLExecutePipeline ' | Dize | Yes
+linkedServiceName | Azure Machine Learning bağlı hizmet | Bağlı hizmet başvurusu | Yes
+Mlpipelineıd | Yayınlanan Azure Machine Learning işlem hattının KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Yes
+experimentName | Machine Learning işlem hattı çalıştırmasının çalışma geçmişi deneme adı | Dize (veya dize resultType 'ı olan ifade) | Hayır
+mlPipelineParameters | Yayımlanan Azure Machine Learning ardışık düzen uç noktasına geçirilecek anahtar, değer çiftleri. Anahtarların yayımlanan Machine Learning işlem hattında tanımlanan işlem hattı parametrelerinin adlarıyla eşleşmesi gerekir | Anahtar değer çiftlerine sahip nesne (veya resultType nesnesi olan Ifade) | Hayır
+mlParentRunId | Ana Azure Machine Learning işlem hattı çalıştırma KIMLIĞI | Dize (veya dize resultType 'ı olan ifade) | Hayır
+Devam Onstepfailure | Bir adım başarısız olursa Machine Learning ardışık düzen çalıştırmasında diğer adımların yürütülmesine devam edilip edilmeyeceğini belirtir | boole | Hayır
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Verileri başka şekillerde nasıl dönüştüreceklerini açıklayan aşağıdaki makalelere bakın:
+Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:
 
-* [Veri Akışı etkinliğini yürütme](control-flow-execute-data-flow-activity.md)
+* [Veri akışı yürütme etkinliği](control-flow-execute-data-flow-activity.md)
 * [U-SQL etkinliği](transform-data-using-data-lake-analytics.md)
-* [Kovan aktivitesi](transform-data-using-hadoop-hive.md)
-* [Domuz aktivitesi](transform-data-using-hadoop-pig.md)
-* [MapAz etkinliği](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop Akış etkinliği](transform-data-using-hadoop-streaming.md)
-* [Kıvılcım etkinliği](transform-data-using-spark.md)
+* [Hive etkinliği](transform-data-using-hadoop-hive.md)
+* [Pig etkinliği](transform-data-using-hadoop-pig.md)
+* [MapReduce etkinliği](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
+* [Spark etkinliği](transform-data-using-spark.md)
 * [.NET özel etkinliği](transform-data-using-dotnet-custom-activity.md)
-* [Depolanan yordam etkinliği](transform-data-using-stored-procedure.md)
+* [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)

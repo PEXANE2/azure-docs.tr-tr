@@ -1,6 +1,6 @@
 ---
-title: Monitör ardışık hattı Azure Synapse Studio çalışır (önizleme)
-description: Çalışma alanı ardışık hat lar denetimini izlemek için Azure Synapse Studio'yu kullanın.
+title: İzleme işlem hattı çalıştırmaları Azure SYNAPSE Studio (Önizleme)
+description: Çalışma alanı işlem hattı çalıştırmalarını izlemek için Azure SYNAPSE Studio 'Yu kullanın.
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,46 +9,46 @@ ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
 ms.openlocfilehash: 712dc62e29229f03dec12afdf18edbf55667dbdf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430792"
 ---
-# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı ardışık hat lar denetimini izlemek için Azure Synapse Studio'u kullanın
+# <a name="use-azure-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarını izlemek için Azure SYNAPSE Studio 'Yu kullanma
 
-Azure Synapse Analytics ile, çözümünüzün içinde veri hareketinizi, veri dönüşümünüzü ve bilgi işlem etkinliklerinizi otomatikleştirebilen ve düzenleyebilen karmaşık ardışık hatlar oluşturabilir ve oluşturabilirsiniz. Bu ardışık hatları Azure Synapse Studio 'yı (önizleme) kullanarak yazar ve izleyebilirsiniz.
+Azure SYNAPSE Analytics ile çözümünüzdeki veri taşıma, veri dönüştürme ve işlem etkinliklerini otomatikleştirebilen ve düzenleyen karmaşık işlem hatları oluşturabilirsiniz. Azure SYNAPSE Studio (Önizleme) kullanarak bu işlem hatlarını yazabilir ve izleyebilirsiniz.
 
-Bu makalede, ardışık hatlar ınızın en son durumunu, sorunlarını ve ilerlemelerini izlemenize olanak tanıyan ardışık işlem yapılarını nasıl izleyeceğiniz açıklanmaktadır.
+Bu makalede, işlem hatlarınızın en son durumunu, sorunlarını ve ilerlemesini görmenizi sağlayan işlem hattı çalıştırmalarınızın nasıl izleneceği açıklanır.
 
-## <a name="access-the-list-of-pipeline-runs"></a>Boru hattı çalıştırmaları listesine erişin
+## <a name="access-the-list-of-pipeline-runs"></a>İşlem hattı çalıştırmaları listesine erişin
 
-Çalışma alanınızda çalışan ardışık hatlar listesini görmek için önce [Azure Synapse Studio'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
+Çalışma alanınızdaki işlem hattı çalıştırmalarının listesini görmek için önce [Azure SYNAPSE Studio 'yu açın](https://web.azuresynapse.net/) ve çalışma alanınızı seçin.
 
-![Çalışma alanına giriş yapın](./media/common/login-workspace.png)
+![Çalışma alanında oturum aç](./media/common/login-workspace.png)
 
-Çalışma alanınızı açtıktan sonra soldaki **Monitör** bölümünü seçin.
+Çalışma alanınızı açtıktan sonra, soldaki **izleyici** bölümünü seçin.
 
-![Monitör merkezini seçin](./media/common/left-nav.png)
+![Izleme hub 'ı seçin](./media/common/left-nav.png)
 
-**Boru hattı çalıştırmaları** listesini görüntülemek için Pipeline çalışır'ı seçin.
+İşlem hattı çalıştırmaları listesini görüntülemek için işlem **hattı çalıştırmaları** ' nı seçin.
 
-![Boru hattı çalışanlarını seçin](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
+![İşlem hattı çalıştırmalarını seçin](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>Boru hattı çalışanlarınızı filtreleme
+## <a name="filtering-your-pipeline-runs"></a>İşlem hattı çalıştırmalarınız filtreleniyor
 
-Boru hattı çalışır listesini ilgilendiğiniz kişilere filtreleyebilirsiniz. Ekranın üst kısmındaki filtreler, filtrelemek istediğiniz bir alan belirtmenize olanak tanır.
+İşlem hattı çalıştırmalarının listesini ilgilendiğiniz olanlarla filtreleyebilirsiniz. Ekranın üst kısmındaki filtreler, filtrelemek istediğiniz bir alan belirtmenize izin verir.
 
-Örneğin, yalnızca "tatil" adlı ardışık iş akdinin çalışanlarını görmek için görünümü filtreleyebilirsiniz:
+Örneğin, "tatil" adlı işlem hattı için yalnızca işlem hattı çalıştırmalarını görmek üzere görünümü filtreleyebilirsiniz:
 
 ![Filtre düğmesi](./media/common/filter-button.png)
 
 ![Örnek filtre](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>Belirli bir boru hattı çalışmasıyla ilgili ayrıntıları görüntüleme
+## <a name="viewing-details-about-a-specific-pipeline-run"></a>Belirli bir işlem hattı çalıştırmasıyla ilgili ayrıntıları görüntüleme
 
-Ardışık hatlar hattı çalıştırınla ilgili ayrıntıları görüntülemek için, ardışık hatlar çalışmasını seçin. Ardından, ardışık hatlar çalışmasıyla ilişkili etkinlik çalışır görüntüle. Ardışık hatlar hala çalışıyorsa, ilerlemeyi izleyebilirsiniz. 
+İşlem hattı çalıştırınızla ilgili ayrıntıları görüntülemek için işlem hattı çalıştırmasını seçin. Sonra işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntüleyin. İşlem hattı çalışmaya devam ediyorsa, ilerlemeyi izleyebilirsiniz. 
   
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulamaları izleme hakkında daha fazla bilgi edinmek için [Monitor Apache Spark uygulamaları](how-to-monitor-spark-applications.md) makalesine bakın. 
+Uygulamaları izleme hakkında daha fazla bilgi edinmek için [Apache Spark uygulamaları izleme](how-to-monitor-spark-applications.md) makalesine bakın. 

@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Studio sorun giderme (önizleme)
-description: Sorun Giderme Azure Synapse Studio
+title: Azure SYNAPSE Studio sorunlarını giderme (Önizleme)
+description: Azure SYNAPSE Studio sorunlarını giderme
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,95 +8,95 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: ede38317762e5aac5562c9bb3494713c3edacc69
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431325"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (önizleme) sorun giderme
+# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure SYNAPSE Studio (Önizleme) sorunlarını giderme
 
-Bu sorun giderme kılavuzu, ağ bağlantısı sorunları hakkında destek bileti açarken hangi bilgilerin sağlandığı na ilişkin talimat sağlar. Doğru bilgilerle, sorunu daha hızlı çözebiliriz.
+Bu sorun giderme kılavuzu, ağ bağlantısı sorunları üzerinde bir destek bileti açılırken hangi bilgilerin sağlanmasında yönergeler sağlar. Uygun bilgilerle sorunu daha çabuk çözebiliriz.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL isteğe bağlı (önizleme) hizmet bağlantısı sorunu
+## <a name="sql-on-demand-preview-service-connectivity-issue"></a>SQL isteğe bağlı (Önizleme) hizmeti bağlantı sorunu
 
 ### <a name="symptom-1"></a>Belirti 1
 
-"Sql on-demand" seçeneği "Connect to" açılır açılır durumda gri renkte.
+"Bağlan" açılan listesinde "SQL isteğe bağlı" seçeneği gri renkte.
 
-![belirti1](media/troubleshooting-synapse-studio/symptom1v2.png)
+![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Belirti 2
 
-Sorguyu "SQL on-demand" ile çalıştırmak size "Sunucuya bağlantı kurmakta başarısız oldu" hata iletisi verir.
+Sorguyu "SQL isteğe bağlı" ile çalıştırmak "sunucu bağlantısı kurulamadı" hata iletisini verir.
 
-![belirti2](media/troubleshooting-synapse-studio/symptom2.png)
+![symptom2](media/troubleshooting-synapse-studio/symptom2.png)
 
 ## <a name="troubleshooting-steps"></a>Sorun giderme adımları
 
 > [!NOTE] 
->    Aşağıdaki sorun giderme adımları Krom Kenar ve Chrome içindir. Aynı sorun giderme adımlarına sahip diğer tarayıcıları (FireFox gibi) kullanabilirsiniz, ancak "Geliştirici Aracı" penceresi bu TSG'deki ekran ekranlarından farklı bir düzene sahip olabilir. Mümkünse, belirli bir durumda yanlış bilgi gösterebileceğinden, sorun giderme için klasik Edge'i KULLANMAYIN.
+>    Aşağıdaki sorun giderme adımları, Kmıum Edge ve Chrome içindir. Aynı sorun giderme adımlarıyla diğer tarayıcıları (FireFox gibi) kullanabilirsiniz, ancak "Geliştirici Aracı" penceresi bu TSG 'deki ekran görüntüleriyle farklı bir düzene sahip olabilir. Mümkünse, belirli bir durumda yanlış bilgi gösterebileceğinden, sorun giderme için klasik kenar kullanmayın.
 
-"Tanılama Bilgileri" panelini açın, "Tanılamayı İndir" düğmesini seçin. İndirilen bilgileri hata bildirimi için saklayın. Bunun yerine, "Oturum Kimliği"ni kopyalayabilir ve destek biletini açarken ekleyebilirsiniz.
+"Tanılama bilgileri" panelini açın, "tanılamayı Indir" düğmesini seçin. Hata raporlama için indirilen bilgileri saklayın. Bunun yerine, "oturum KIMLIĞI" ni kopyalayabilir ve destek bileti açılırken ekleyebilirsiniz.
 
-![tanı-bilgi](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
+![Tanılama-bilgi](media/troubleshooting-synapse-studio/diagnostic-info-download.png)
 
-Sorun gidermeye başlamak için Azure Synapse Studio'da gerçekleştirdiğiniz işlemi yeniden deneyin.
+Sorun gidermeye başlamak için, Azure SYNAPSE Studio 'da gerçekleştirdiğiniz işlemi yeniden deneyin.
 
-- Belirti 1 için, "SQL komut dosyası" sekmesinde "Veritabanını kullan" açılır tabanının sağındaki "Yenile" düğmesini seçin ve "SQL on-demand"i görüp göremeyeceğinizi kontrol edin.
-- Belirti 2 için, başarılı bir şekilde yürütülüp yürütülmeyeceğini görmek için sorguyu yeniden çalıştırmayı deneyin.
+- Belirti 1 için, "SQL komut dosyası" sekmesinde "veritabanı kullan" açılan menüsünün sağ tarafındaki "Yenile" düğmesini seçin ve "SQL isteğe bağlı" seçeneğini görüp görmeyeceğinizi denetleyin.
+- Belirti 2 ' de, başarıyla yürütülüp yürütülmediğini görmek için sorguyu yeniden çalıştırmayı deneyin.
 
-Sorun hala varsa, "Geliştirici Araçları" (DevTools) açmak için tarayıcınızda F12 tuşuna basın.
+Sorun devam ederse, "Geliştirici Araçları" (DevTools) öğesini açmak için tarayıcınızda F12 tuşuna basın.
 
-"Geliştirici Araçları" penceresinde "Ağ" paneline geçin. Gerekirse "Ağ" panelindeki araç çubuğundaki "Temizle" düğmesini seçin.
-"Ağ" panelindeki "Önbelleği devre dışı" denetiminin denetlendiğine emin olun.
+"Geliştirici Araçları" penceresinde "ağ" paneline geçin. Gerekirse "ağ" panelinde araç çubuğunda "Temizle" düğmesini seçin.
+"Ağ" panelinde "önbelleği devre dışı bırak" onay işaretli olduğundan emin olun.
 
-Azure Synapse Studio'da gerçekleştirdiğiniz işlemi yeniden deneyin. "Geliştirici Araçları"nda "Ağ" listesinde gösterilen yeni öğeler görebilirsiniz. Destek biletini sağlamak için geçerli sistem zamanınızı not edin.
+Azure SYNAPSE Studio 'da gerçekleştirdiğiniz işlemi yeniden deneyin. "Geliştirici Araçları" içindeki "ağ" listesinde gösterilen yeni öğeler görebilirsiniz. Destek bileti sağlamak için geçerli sisteminizin saatini aklınızda yapın.
 
-![ağ paneli](media/troubleshooting-synapse-studio/network-panel.png)
+![Ağ-panel](media/troubleshooting-synapse-studio/network-panel.png)
 
-Url sütunu aşağıdaki desenle eşleşen öğeyi bulun:
+URL sütunu aşağıdaki Düzenle eşleşen öğeyi bul:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-*[A]* çalışma alanı adınız, "-ondemand" "-sqlod" ve *[B]* veritabanı adı olmalıdır, örneğin "master" olmalıdır. Aynı URL değerine sahip ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; SEÇENEKLER ve POST. Bu iki öğenin durum sütunu altında "x" tek basamaklı olabileceği "200" veya "20x" olup olmadığını kontrol edin.
+Burada [*A*] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir ve burada [*B*], "ana" gibi bir veritabanı adı olmalıdır. Aynı URL değerine ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; Seçenekler ve GÖNDERI. Bu iki öğenin durum sütunu altında "200" veya "20X" olup olmadığını kontrol edin; burada "x" herhangi bir tek basamak olabilir.
 
-Bunlardan biri "20x" dışında bir şey varsa ve:
+Bunlardan birinin "20X" ve dışında bir şey varsa:
 
-- durum "(başarısız)" ile başlar, "Durum" sütununu genişletin veya metnin tamamını görmek için işaretçinizin üzerinde durum metninin üzerine gezin. Destek biletini açarken metni ve/veya ekran görüntüsünü ekleyin.
+- durum "(başarısız)" ile başlar, "durum" sütununu genişletebilirsiniz ya da tüm metni görmek için işaretçinizi durum metninin üzerine getirin. Destek bileti açılırken metin ve/veya ekran görüntüsü ekleyin.
 
     ![durum-metin](media/troubleshooting-synapse-studio/status-text.png)
 
-    - ERR_NAME_NOT_RESOLVED görürseniz ve çalışma alanınızı 10 dakika içinde oluşturduysanız, 10 dakika bekleyin ve sorunun hala var olup olmadığını görmek için yeniden deneyin.
-    - ERR_INTERNET_DISCONNECTED veya ERR_NETWORK_CHANGED görürseniz, pc ağ bağlantınızın sorunlar yaşadığını gösterebilir. Ağ bağlantınızı kontrol edin ve işlemi yeniden deneyin.
-    - "SSL" içeren ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR veya başka hata kodları görürseniz, yerel SSL yapılandırmanızın sorun yaşadığını veya ağ yöneticinizin isteğe bağlı SQL sunucusuna erişimi engellediğini gösterebilir. Bir destek bileti açın ve açıklamaya hata kodunu takın.
-    - ERR_NETWORK_ACCESS_DENIED görüyorsanız, yerel güvenlik duvarı politikanızın *.database.windows.net etki alanına veya uzak bağlantı noktasına erişimi engelleyip engellemediğini yöneticiye kontrol etmeniz gerekebilir.
-    - İsteğe bağlı olarak, bilgisayarınızdaki bir ağ yapılandırma sorununu ekarte etmek için aynı işlemi hemen farklı bir makine de ve/veya ağ ortamında deneyin.
+    - ERR_NAME_NOT_RESOLVED görürseniz ve çalışma alanınızı 10 dakika içinde oluşturduysanız, 10 dakika bekleyin ve sorunun hala mevcut olup olmadığını görmek için yeniden deneyin.
+    - ERR_INTERNET_DISCONNECTED veya ERR_NETWORK_CHANGED görürseniz, bılgısayar ağ bağlantınızın sorun olduğunu belirtebilir. Ağ bağlantınızı denetleyip işlemi yeniden deneyin.
+    - "SSL" içeren ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR veya diğer hata kodları görürseniz, bu, yerel SSL yapılandırmanızın sorun olduğunu veya ağ yöneticinizin isteğe bağlı SQL Server 'a erişimi engellediği anlamına gelebilir. Bir destek bileti açın ve hata kodunu açıklamaya ekleyin.
+    - ERR_NETWORK_ACCESS_DENIED görürseniz, yerel güvenlik duvarı ilkenizin *. database.windows.net etki alanına veya 1443 uzak bağlantı noktasına erişiminin engellenip engellenmediğini yönetici ile denetlemeniz gerekebilir.
+    - İsteğe bağlı olarak, bilgisayarınızda bir ağ yapılandırması sorununu denemek için aynı işlemi, farklı bir makine ve/veya ağ ortamında hemen deneyin.
 
-- durum "40x", "50x" veya diğer sayılar, ayrıntıları görmek için öğe(ler) seçin. Sağdaki öğe ayrıntılarını görmelisiniz. "Yanıt Üstbilgi" bölümünü bulun; ardından "access-control-allow-allow-origin" adlı bir öğenin var olup olmadığını denetleyin. Bu nedenle, aşağıdaki değerlerden birine sahip olup olmadığını denetleyin:
+- durum "40X", "50x" veya diğer numaralardan, ayrıntıları görmek için öğe (ler) i seçin. Öğe ayrıntılarını sağ tarafta görmeniz gerekir. "Yanıt üst bilgisi" bölümünü bulun; ardından "erişim-denetim-izin-Origin" adlı bir öğenin var olup olmadığını denetleyin. Bu durumda, aşağıdaki değerlerden birine sahip olup olmadığını kontrol edin:
 
     - `*`(tek yıldız işareti)
-    - https://web.azuresynapse.net/(veya tarayıcı adres çubuğunuzdaki metnin başladığı diğer değer)
+    - https://web.azuresynapse.net/(veya tarayıcınızın adres çubuğundaki metnin başladığı diğer değer)
 
-Yanıt üstbilgisi yukarıdaki değerlerden birini içeriyorsa, hata bilgilerini zaten toplamamız gerektiği anlamına gelir. Gerekirse bir destek bileti açabilir ve isteğe bağlı olarak öğe ayrıntılarının ekran görüntüsünü ekleyebilirsiniz.
+Yanıt üst bilgisi yukarıdaki değerlerden birini içeriyorsa, hata bilgilerini zaten topladığımız anlamına gelir. Gerekirse bir destek bileti açabilir ve isteğe bağlı olarak öğe ayrıntılarının ekran görüntüsünü ekleyebilirsiniz.
 
-Üstbilgigöremiyorsanız veya üstbilgide yukarıda listelenen değerlerden biri yoksa, bileti açtığınızda öğe ayrıntılarının ekran görüntüsünü takın.
+Üstbilgiyi göremiyorsanız veya üst bilgide yukarıda listelenen değerlerden biri yoksa, bileti açtığınızda öğe ayrıntılarının ekran görüntüsünü ekleyin.
 
-![öğe ayrıntıları](media/troubleshooting-synapse-studio/item-details.png)
+![öğe-Ayrıntılar](media/troubleshooting-synapse-studio/item-details.png)
 
-Yukarıdaki adımlar sorununuzu çözmezse, bir destek bileti açmanız gerekebilir. Destek biletinizi gönderirken, bu kılavuzun başında indirilen "Oturum Kimliği" veya "Tanılama Bilgileri"ni ekleyin.
+Yukarıdaki adımlar sorununuzu çözmezse, bir destek bileti açmanız gerekebilir. Destek biletinizi gönderirken, bu kılavuzun başlangıcında "oturum KIMLIĞI" veya "tanılama bilgileri" ni ekleyin.
 
-Sorunu rapor ederken, isteğe bağlı olarak "Geliştirici Araçları"ndaki "Konsol" sekmenizin ekran görüntüsünü alabilir ve destek biletine takabilirsiniz. İçeriği kaydırın ve iletinin tamamını yakalamak için gerekirse birden fazla ekran görüntüsü alın.
+Sorunu bildirirken, isteğe bağlı olarak "Geliştirici Araçları" içindeki "konsolunuzun" sekmesinin ekran görüntüsünü alabilir ve destek biletini iliştirebilirsiniz. Tüm iletiyi yakalamak gerekirse içeriği kaydırın ve birden fazla ekran görüntüsü alın.
 
-![geliştirici-araç-konsol](media/troubleshooting-synapse-studio/developer-tool-console.png)
+![Geliştirici-araç-konsol](media/troubleshooting-synapse-studio/developer-tool-console.png)
 
-Ekran görüntüleri ekiyorsanız, ekran görüntülerini ne zaman aldığınıza (veya tahmini bir zaman aralığına) sahip olun. Bu sorun içine bakarken bize yardımcı olacaktır.
+Ekran görüntüleri iliştirirken, ekran görüntülerini aldığınız zaman (veya tahmini bir zaman aralığı) belirtin. Sorunu ararken bize yardımcı olacak.
 
-Bazı tarayıcılar "Konsol" sekmesinde zaman damgalarını göstermeyi destekler. Krom Kenar/Chrome için"Geliştirici Araçları"ndaki "Ayarlar" iletişim kutusunu açın ve "Tercihler" sekmesinde "Zaman damgalarını göster"i işaretleyin.
+Belirli tarayıcıların "konsol" sekmesinde zaman damgalarını göstermesini destekler. Kmıum Edge/Chrome için, "Geliştirici Araçları" içindeki "Ayarlar" iletişim kutusunu açın ve "Tercihler" sekmesinde "zaman damgalarını göster" seçeneğini işaretleyin.
 
-![geliştirici-araç-konsol-ayarları](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
+![Geliştirici-araç-konsol-ayarlar](media/troubleshooting-synapse-studio/developer-tool-console-settings.png)
 
-![show-time-stamp](media/troubleshooting-synapse-studio/show-time-stamp.png)
+![zaman damgasını göster](media/troubleshooting-synapse-studio/show-time-stamp.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Önceki adımlar sorunu gidermek için yardımcı olursa [bir destek bileti oluştur](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Önceki adımlar sorununuzu çözmeye yardımcı olursa [destek bileti oluşturun](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

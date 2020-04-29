@@ -1,6 +1,6 @@
 ---
-title: Veri kaynağı sonuçlarınıza bağlanmak için Yönetilen özel bitiş noktası oluşturun.
-description: Bu makalede, bir Azure Synapse çalışma alanından veri kaynaklarınız için yönetilen özel bitiş noktası nasıl oluşturulacağı öğretilir.
+title: Veri kaynağı sonuçlarınıza bağlanmak için yönetilen bir özel uç nokta oluşturun.
+description: Bu makalede, Azure SYNAPSE çalışma alanından veri kaynaklarınıza yönetilen bir özel uç nokta oluşturma hakkında öğretir.
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
@@ -8,41 +8,41 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428907"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza Yönetilen özel bitiş noktası oluşturma (önizleme)
+# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma (Önizleme)
 
-Bu makalede, Azure'daki veri kaynağınız için yönetilen özel bir bitiş noktası nasıl oluşturulacağı öğretilir. Daha fazla bilgi edinmek için [Yönetilen özel uç noktalarına](./synapse-workspace-managed-private-endpoints.md) bakın.
+Bu makalede, Azure 'daki veri kaynağınıza yönetilen bir özel uç nokta oluşturma hakkında öğretir. Daha fazla bilgi için bkz. [yönetilen özel uç noktalar](./synapse-workspace-managed-private-endpoints.md) .
 
-## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>Adım 1: Azure Synapse çalışma alanınızı Azure portalında açın
+## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>1. Adım: Azure SYNAPSE çalışma alanınızı Azure portal açın
 
-Azure Synapse Studio'dan veri kaynağınıza yönetilen özel bir bitiş noktası oluşturabilirsiniz. Azure portalında **Genel Bakış** sekmesini seçin ve **Synapse Studio'yu Başlat'ı**seçin.
-![Azure Synapse Studio'u başlatın](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Azure SYNAPSE Studio 'dan veri kaynağınıza yönetilen bir özel uç nokta oluşturabilirsiniz. Azure portal **genel bakış** sekmesini seçin ve **SYNAPSE Studio 'yu Başlat**' ı seçin.
+![Azure SYNAPSE Studio 'Yu başlatma](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
 
-## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>Adım 2: Synapse Studio'da Yönetilen Sanal Ağlar sekmesine gidin
+## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>2. Adım: SYNAPSE Studio 'da yönetilen sanal ağlar sekmesine gidin
 
-Azure Synapse Studio'da sol gezintiden **Yönet** sekmesini seçin. **Yönetilen Sanal Ağlar'ı** seçin ve ardından **+ Yeni'yi**seçin.
-![Yönetilen yeni özel bitiş noktası oluşturma](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
+Azure SYNAPSE Studio 'da sol gezinti bölmesindeki **Yönet** sekmesini seçin. **Yönetilen sanal ağlar** ' ı seçin ve sonra **+ Yeni**' yi seçin.
+![Yeni yönetilen özel uç nokta oluştur](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
-## <a name="step-3-select-the-data-source-type"></a>Adım 3: Veri kaynağı türünü seçin
+## <a name="step-3-select-the-data-source-type"></a>3. Adım: veri kaynağı türünü seçin
 
-Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS gen2 hesabıdır. **Devam**'ı seçin.
+Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS Gen2 hesabıdır. **Devam**'ı seçin.
 ![Hedef veri kaynağı türü seçin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
-## <a name="step-4-enter-information-about-the-data-source"></a>Adım 4: Veri kaynağı hakkında bilgi girin
+## <a name="step-4-enter-information-about-the-data-source"></a>4. Adım: veri kaynağıyla ilgili bilgileri girin
 
-Sonraki pencerede, veri kaynağı hakkında bilgi girin. Bu örnekte, bir ADLS gen2 hesabına yönetilen özel bitiş noktası oluşturuyoruz. Yönetilen özel bitiş noktası için bir **Ad** girin. Azure **aboneliği** ve **Depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
+Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, ADLS Gen2 hesabına yönetilen özel bir uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı**sağlayın. **Oluştur**’u seçin.
 ![Hedef veri kaynağı ayrıntılarını girin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
-## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>Adım 5: Yönetilen özel bitiş noktanızın başarıyla oluşturulduğunu doğrulama
+## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. Adım: yönetilen özel uç noktanızın başarıyla oluşturulduğunu doğrulama
 
-İsteği gönderdikten sonra, isteği görürsünüz. Yönetilen özel bitiş noktanızın başarılı bir şekilde oluşturulduğunu doğrulamak için, *Sağlama Durumunu*denetleyin. Sağlama durumunu güncelleştirmek için 1 dakika beklemeniz ve **Yenile'yi** seçmeniz gerekebilir. ADLS gen2 hesabının Yönetilen özel bitiş noktasının başarıyla oluşturulduğunu görebilirsiniz.
+İsteği gönderdikten sonra, durumunu görürsünüz. Yönetilen özel uç noktanızın başarıyla oluşturulmasını doğrulamak için *sağlama durumunu*kontrol edin. Sağlama durumunu güncelleştirmek için 1 dakika beklemeniz ve **Yenile** ' yi seçmeniz gerekebilir. ADLS Gen2 hesabının yönetilen özel uç noktasının başarıyla oluşturulduğunu görebilirsiniz.
 
-*Onay* *Durumu'nun Beklemede*olduğunu da görebilirsiniz. Hedef kaynağın sahibi, özel uç nokta bağlantısı isteğini onaylayabilir veya reddedebilir. Sahibi özel bitiş noktası bağlantı isteğini onaylarsa, özel bir bağlantı kurulur. Reddedilirse, özel bir bağlantı kurulmaz.
+*Onay durumunun* *bekliyor*olduğunu da görebilirsiniz. Hedef kaynağın sahibi özel uç nokta bağlantı isteğini onaylayabilir veya reddedebilir. Sahip özel uç nokta bağlantı isteğini onayladığında, özel bir bağlantı oluşturulur. Reddedilirse, özel bir bağlantı kurulmaz.
 ![Yönetilen özel uç nokta oluşturma isteği durumu](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar

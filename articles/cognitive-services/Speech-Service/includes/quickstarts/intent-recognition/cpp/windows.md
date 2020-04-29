@@ -7,105 +7,105 @@ ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 770e037641ac8fbf75989dc94b66fd1df0689e50
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81422082"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">Geliştirme ortamınız için<span class="docon docon-navigate-external x-hidden-focus"></span>Konuşma SDK'sını yükleyin ve boş bir örnek proje oluşturun.</a>
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp" target="_blank">Geliştirme ortamınız Için konuşma SDK 'Sını yükleyip boş bir örnek proje<span class="docon docon-navigate-external x-hidden-focus"></span>oluşturun</a>.
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>Niyet tanıma için bir LUIS uygulaması oluşturma
+## <a name="create-a-luis-app-for-intent-recognition"></a>Amaç tanıma için bir LUSıS uygulaması oluşturma
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-Ardından, Visual Studio'da projenizi açın.
+Ardından, projenizi Visual Studio 'da açın.
 
-1. Görsel Stüdyo 2019'u başlatın.
-2. Projenizi yükleyin `helloworld.cpp`ve açın.
+1. Visual Studio 2019 ' i başlatın.
+2. Projenizi yükleyin ve açın `helloworld.cpp`.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için iskelet görevi gören bazı kodlar ekleyelim. 'li bir `recognizeIntent()`async yöntemi oluşturduğunuza dikkat edin.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim. Adlı `recognizeIntent()`bir zaman uyumsuz yöntem oluşturduğunuza dikkat edin.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-16,72-80)]
 
 ## <a name="create-a-speech-configuration"></a>Konuşma yapılandırması oluşturma
 
-Bir `IntentRecognizer` nesneyi başlatmadan önce, LUIS tahmin kaynağınızın anahtarını ve konumunu kullanan bir yapılandırma oluşturmanız gerekir.
+Bir `IntentRecognizer` nesneyi başlatabilmeniz IÇIN, lusıs tahmin kaynağınız için anahtar ve konum kullanan bir yapılandırma oluşturmanız gerekir.
 
 > [!IMPORTANT]
-> Başlangıç anahtarınız ve yazma tuşlarınız çalışmaz. Daha önce oluşturduğunuz tahmin anahtarınızı ve konumunuzu kullanmanız gerekir. Daha fazla bilgi için [bkz.](#create-a-luis-app-for-intent-recognition)
+> Başlangıç anahtarınız ve yazma anahtarlarınız çalışmayacak. Daha önce oluşturduğunuz tahmin anahtarınızı ve konumunuzu kullanmanız gerekir. Daha fazla bilgi için bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
-Yönteme `recognizeIntent()` bu kodu ekleyin. Bu değerleri güncelleştirdiğinden emin olun:
+Bu kodu `recognizeIntent()` yöntemine ekleyin. Bu değerleri güncelleştirdiğinizden emin olun:
 
-* LUIS `"YourLanguageUnderstandingSubscriptionKey"` tahmin anahtarınızla değiştirin.
-* LUIS `"YourLanguageUnderstandingServiceRegion"` konumunuzla değiştirin.  [Bölgeden](https://aka.ms/speech/sdkregion) **Bölge tanımlayıcısı** kullanın.
+* LUSıS tahmin anahtarınızla değiştirin `"YourLanguageUnderstandingSubscriptionKey"` .
+* LUSıS konumunuz ile değiştirin `"YourLanguageUnderstandingServiceRegion"` .  Bölgeden **bölge tanımlayıcısı** kullanın [.](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
-> Bu değerleri bulmak için yardıma ihtiyacınız varsa, [bkz.](#create-a-luis-app-for-intent-recognition)
+> Bu değerleri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-Bu örnek, `FromSubscription()` `SpeechConfig`'yi oluşturmak için yöntemi kullanır. Kullanılabilir yöntemlerin tam listesi için [SpeechConfig Class'a](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)bakın.
+Bu örnek, `SpeechConfig`oluşturmak `FromSubscription()` için yöntemini kullanır. Kullanılabilir yöntemlerin tam listesi için bkz. [SpeechConfig Class](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
 
-Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
+Konuşma SDK 'Sı, dil için en-US kullanarak varsayılan olarak tanıma yapılır, kaynak dili seçme hakkında bilgi için bkz. [konuşmayı için kaynak dilini belirtme](../../../../how-to-specify-source-language.md) .
 
-## <a name="initialize-an-intentrecognizer"></a>Bir IntentRecognizer'ı Başlatma
+## <a name="initialize-an-intentrecognizer"></a>Bir Yoğunlumtanıyıcıyı başlatma
 
-Şimdi, bir. `IntentRecognizer` Bu kodu yönteme, `recognizeIntent()` Konuşma yapılandırmanızın hemen altına ekleyin.
+Şimdi bir `IntentRecognizer`oluşturalım. Bu kodu, konuşma yapılandırmanızın `recognizeIntent()` hemen altına, yöntemine ekleyin.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=28)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>Bir LanguageUnderstandingModel ve Niyetler ekleyin
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel ve amaçlar ekleyin
 
-A'yı `LanguageUnderstandingModel` niyet tanıyan kişiyle ilişkilendirmeniz ve tanınmak istediğiniz amaçları eklemeniz gerekir. Ev otomasyonu için önceden oluşturulmuş alan dan gelen niyetleri kullanacağız.
+Bir `LanguageUnderstandingModel` öğesini amaç tanıyıcı ile ilişkilendirmeniz ve tanınan hedefleri eklemeniz gerekir. Ana otomasyon için önceden oluşturulmuş etki alanındaki amaçları kullanacağız.
 
-Bu kodu aşağıdaki `IntentRecognizer`kodu ekleyin. LUIS uygulama kimliğinizle değiştirdiğinizden `"YourLanguageUnderstandingAppId"` emin olun.
+Buraya bu kodu ekleyin `IntentRecognizer`. LUSıS uygulama KIMLIĞINIZ ile `"YourLanguageUnderstandingAppId"` değiştirdiğinizden emin olun.
 
 >[!TIP]
-> Bu değeri bulmak için yardıma ihtiyacınız varsa, [bkz.](#create-a-luis-app-for-intent-recognition)
+> Bu değeri bulmak için yardıma ihtiyacınız varsa bkz. [Amaç tanıma için BIR lusıs uygulaması oluşturma](#create-a-luis-app-for-intent-recognition).
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=31-33)]
 
-## <a name="recognize-an-intent"></a>Bir niyeti tanıma
+## <a name="recognize-an-intent"></a>Amacı tanıma
 
-Nesneden, `IntentRecognizer` `RecognizeOnceAsync()` yöntemi aramalısınız. Bu yöntem, Konuşma hizmetinin tanınmak için tek bir ifade gönderdiğinizi ve ifade tanımlandıktan sonra konuşmayı tanımayı durdurmak için tanımladığını bilmesini sağlar. Basitlik için geleceğin tamamlanmasını bekleyeceğiz.
+`IntentRecognizer` Nesnesinden `RecognizeOnceAsync()` yöntemi çağıracağız. Bu yöntem, konuşma hizmetinin tanıma için tek bir tümcecik gönderdiğini ve bu ifadenin konuşmayı tanımayı durdur olarak belirlenmesinin ardından olduğunu bilmesini sağlar. Basitlik sağlamak için gelecekte işlemin tamamlanmasını bekliyoruz.
 
 Bu kodu modelinizin altına ekleyin:
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=43)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hataları) görüntüleme
+## <a name="display-the-recognition-results-or-errors"></a>Tanıma sonuçlarını (veya hatalarını) görüntüleme
 
-Tanıma sonucu Konuşma hizmeti tarafından döndürüldüğünde, bununla ilgili bir şey yapmak istersiniz. Basit tutacağız ve sonucu konsola yazdıracağız.
+Tanınma sonucu konuşma hizmeti tarafından döndürüldüğünde, onunla ilgili bir şey yapmak isteyeceksiniz. Bu uygulamayı basit tutmaya ve sonucu konsola yazdıracağız.
 
-Bu kodu aşağıdaki `auto result = recognizer->RecognizeOnceAsync().get();`ekle:
+Aşağıdaki `auto result = recognizer->RecognizeOnceAsync().get();`kodu ekleyin:
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=46-71)]
 
-## <a name="check-your-code"></a>Kodunuzu kontrol edin
+## <a name="check-your-code"></a>Kodunuzu denetleyin
 
-Bu noktada, kodunuz şu şekilde görünmelidir:
+Bu noktada, kodunuzun şöyle görünmesi gerekir:
 
 > [!NOTE]
-> Bu sürüme bazı yorumlar ekledik.
+> Bu sürüme bazı açıklamalar ekledik.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-79)]
 
-## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak konuşma tanımamızı test etmeye hazırsınız.
+Artık uygulamanızı oluşturmaya ve konuşma tanıma özelliğini kullanarak konuşma tanıma 'yı test etmeye hazır olursunuz.
 
-1. **Kodu derle** - Visual Studio'nun menü çubuğundan **Build** > **Build Solution'ı**seçin.
-2. **Uygulamanızı başlatın** - Menü çubuğundan **Hata** > **Ayıklama'yı** seçin veya <kbd>F5 tuşuna</kbd>basın.
-3. **Tanımaya başlayın** - İngilizce bir ifade konuşmanızı ister. Konuşmanız Konuşma hizmetine gönderilir, metin olarak yazılır ve konsolda işlenir.
+1. **Kodu derleyin** -Visual Studio menü çubuğundan derleme**Build Solution**' **ı seçin.** > 
+2. **Uygulamanızı başlatın** -menü çubuğundan hata**ayıklamayı Başlat hata** **Ayıkla** > ' yı seçin veya <kbd>F5</kbd>tuşuna basın.
+3. **Tanımayı Başlat** -bu, İngilizce bir tümceciği konuşarak ister. Konuşma konuşma hizmetine gönderilir, metin olarak yeniden oluşturulur ve konsolunda işlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici - Azure Synapse Analytics: Synapse için kıvılcım iş tanımı'
-description: Öğretici - Spark iş tanımları oluşturmak ve bunları bir Synapse Spark havuzuna göndermek için Azure Synapse Analytics'i kullanın.
+title: 'Öğretici-Azure SYNAPSE Analytics: SYNAPSE için Spark iş tanımı'
+description: Öğretici-Azure SYNAPSE Analytics 'i kullanarak Spark iş tanımları oluşturun ve bunları bir Synapse Spark havuzuna gönderebilirsiniz.
 author: hrasheed-msft
 ms.author: jejiang
 ms.reviewer: jasonh
@@ -9,169 +9,169 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.openlocfilehash: d5443a2db6f4fecbd84ef51166f44c3a6e920aee
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422973"
 ---
-# <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Öğretici: Synapse Spark havuzları için Apache Spark iş tanımları oluşturmak için Azure Synapse Analytics'i kullanın
+# <a name="tutorial-use-azure-synapse-analytics-to-create-apache-spark-job-definitions-for-synapse-spark-pools"></a>Öğretici: SYNAPSE Spark havuzları için Apache Spark iş tanımları oluşturmak için Azure SYNAPSE Analytics kullanma
 
-Bu öğretici, Spark iş tanımları oluşturmak ve sonra bunları bir Synapse Spark havuzuna göndermek için Azure Synapse Analytics'in nasıl kullanılacağını gösterir. Eklentiyi birkaç şekilde kullanabilirsiniz:
+Bu öğreticide, Spark iş tanımları oluşturmak ve ardından bunları bir Synapse Spark havuzuna göndermek için Azure SYNAPSE Analytics 'in nasıl kullanılacağı gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
 
-* Synapse Spark havuzunda Bir Kıvılcım iş tanımı geliştirin ve gönderin.
+* Bir Synapse Spark havuzunda Spark iş tanımı geliştirin ve gönderebilirsiniz.
 * Gönderimden sonra iş ayrıntılarını görüntüleyin.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Synapse Spark havuzunda Bir Kıvılcım iş tanımı geliştirin ve gönderin.
+> * Bir Synapse Spark havuzunda Spark iş tanımı geliştirin ve gönderebilirsiniz.
 > * Gönderimden sonra iş ayrıntılarını görüntüleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Synapse Analytics çalışma alanı. Talimatlar için [bkz.](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace)
+* Azure SYNAPSE Analytics çalışma alanı. Yönergeler için bkz. [Azure SYNAPSE Analytics çalışma alanı oluşturma](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-Bir Kıvılcım iş tanımı göndermeden önce, çalışmak istediğiniz ADLS Gen2 dosya sisteminin Depolama Blob Veri Sahibi olmanız gerekir. Değilseniz, izni el ile eklemeniz gerekir.
+Spark iş tanımı göndermeden önce, çalışmak istediğiniz ADLS 2. FileSystem 'ın Depolama Blobu veri sahibi olmanız gerekir. Aksi takdirde, izni el ile eklemeniz gerekir.
 
-### <a name="scenario-1-add-permission"></a>Senaryo 1: İzin ekleme
+### <a name="scenario-1-add-permission"></a>Senaryo 1: izin ekleme
 
-1. [Microsoft Azure'u](https://ms.portal.azure.com)açın, ardından Depolama hesabını açın.
+1. [Microsoft Azure](https://ms.portal.azure.com)açın ve depolama hesabı ' nı açın.
 
-2. **Kapsayıcılar'ı**tıklatın, ardından **bir Dosya sistemi**oluşturun. Bu öğreticide `sparkjob` kullanılır.
+2. **Kapsayıcılar**' a ve ardından bir **dosya sistemi**oluşturun. Bu öğreticide `sparkjob` kullanılır.
 
-    ![Kıvılcım iş tanımı göndermek için gönder düğmesini tıklatın](./media/apache-spark-job-definitions/open-azure-container.png)
+    ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/open-azure-container.png)
 
-    ![Kıvılcım Gönderme iletişim kutusu](./media/apache-spark-job-definitions/create-new-filesystem.png)
+    ![Spark gönderimi iletişim kutusu](./media/apache-spark-job-definitions/create-new-filesystem.png)
 
-3. Aç, `sparkjob` **Access Control(IAM)'yi**tıklatın, sonra **Ekle'yi** tıklatın ve **rol ataması ekle'yi**seçin.
+3. Öğesini `sparkjob`açın, **Access Control (IAM)** ve ardından **Ekle** ' ye tıklayın ve **rol ataması Ekle**' yi seçin.
 
-    ![Kıvılcım iş tanımı göndermek için gönder düğmesini tıklatın](./media/apache-spark-job-definitions/add-role-assignment-01.png)
+    ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/add-role-assignment-01.png)
 
-    ![Kıvılcım iş tanımı göndermek için gönder düğmesini tıklatın](./media/apache-spark-job-definitions/add-role-assignment-02.png)
+    ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/add-role-assignment-02.png)
 
-4. **Rol atamaları'nı**tıklatın, kullanıcı adını girin ve ardından kullanıcı rolünü doğrulayın.
+4. **Rol atamaları**' na tıklayın, Kullanıcı adı girin ve Kullanıcı rolünü doğrulayın.
 
-    ![Kıvılcım iş tanımı göndermek için gönder düğmesini tıklatın](./media/apache-spark-job-definitions/verify-user-role.png)
+    ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/verify-user-role.png)
 
-### <a name="scenario-2-prepare-folder-structure"></a>Senaryo 2: Klasör yapısını hazırlama
+### <a name="scenario-2-prepare-folder-structure"></a>Senaryo 2: klasör yapısını hazırlama
 
-Bir Kıvılcım iş tanımı göndermeden önce yapmanız gereken bir iş, DOSYALARı ADLS Gen2'ye yüklemek ve klasör yapısını orada hazırlamaktır. Dosyaları depolamak için Synapse Studio'daki Depolama düğümlerini kullanıyoruz.
+Bir Spark iş tanımı göndermeden önce, yapmanız gereken bir iş ADLS 2. ve klasör yapısını buradan hazırlamak için dosyaları karşıya yüklüyor. Dosyaları depolamak için SYNAPSE Studio 'da depolama düğümü kullanırız.
 
-1. [Azure Synapse Analytics'i](https://web.azuresynapse.net/)açın.
+1. [Azure SYNAPSE Analytics](https://web.azuresynapse.net/)'i açın.
 
-2. **Veriler'i**tıklatın, **Depolama hesaplarını**seçin ve ilgili dosyaları ADLS Gen2 dosya sisteminize yükleyin. Scala, Java, .NET ve Python'u destekliyoruz. Bu öğretici bir gösteri olarak şekilde örnek kullanır, istediğiniz gibi proje yapısını değiştirebilirsiniz.
+2. **Veri**' ye tıklayın, **depolama hesapları**' nı seçin ve ilgili dosyaları ADLS 2. dosya sisteminize yükleyin. Scala, Java, .NET ve Python destekliyoruz. Bu öğretici, gösterim olarak şekildeki örneği kullanır, proje yapısını istediğiniz gibi değiştirebilirsiniz.
 
-    ![Kıvılcım iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/prepare-project-structure.png)
+    ![Spark iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/prepare-project-structure.png)
 
-## <a name="create-a-spark-job-definition"></a>Kıvılcım iş tanımı oluşturma
+## <a name="create-a-spark-job-definition"></a>Spark iş tanımı oluşturma
 
-1. [Azure Synapse Analytics'i](https://web.azuresynapse.net/)açın ve **Geliştir'i**seçin.
+1. [Azure SYNAPSE Analytics](https://web.azuresynapse.net/)'i açın ve **Geliştir**' i seçin.
 
-2. Sol bölmeden **Iş tanımlarını Spark'ı** seçin.
+2. Sol bölmeden **Spark iş tanımları** ' nı seçin.
 
-3. "Kıvılcım iş tanımları"nın sağındaki **Eylemler** düğümünün üzerinde durun.
+3. "Spark iş tanımları" öğesinin sağ tarafındaki **Eylemler** düğümü ' ne tıklayın.
 
-     ![Yeni kıvılcım iş tanımı oluşturma](./media/apache-spark-job-definitions/create-new-definition-01.png)
+     ![Yeni Spark iş tanımı oluştur](./media/apache-spark-job-definitions/create-new-definition-01.png)
 
-4. **Eylemler** açılır listesinden Yeni **Kıvılcım iş tanımını** seçin
+4. **Eylemler** açılan listesinden **Yeni Spark iş tanımı** ' nı seçin.
 
-     ![Yeni kıvılcım iş tanımı oluşturma](./media/apache-spark-job-definitions/create-new-definition-02.png)
+     ![Yeni Spark iş tanımı oluştur](./media/apache-spark-job-definitions/create-new-definition-02.png)
 
-5. Yeni Kıvılcım iş tanımı penceresinde, dili seçin ve ardından aşağıdaki bilgileri sağlayın:  
+5. Yeni Spark iş tanımı penceresinde dil ' i seçin ve ardından aşağıdaki bilgileri sağlayın:  
 
-   * **Spark(Scala)** olarak **Dil'i** seçin.
-
-    |  Özellik   | Açıklama   |  
-    | ----- | ----- |  
-    |İş tanımı adı| Kıvılcım iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar herhangi bir zamanda güncellenebilir.|  
-    |Ana tanım dosyası| İş için kullanılan ana dosya. Depolama alanınızdan bir JAR dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz. |
-    |Ana sınıf adı| Tam nitelikli tanımlayıcı veya ana tanım dosyasında bulunan ana sınıf.|
-    |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler.|
-    |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz.|
-    |Kıvılcım havuzu| İş seçilen Kıvılcım havuzuna gönderilecektir.|
-    |Kıvılcım sürümü| Kıvılcım havuzunun çalıştırdığı Kıvılcım sürümü.|
-    |Executors| İş için belirtilen Kıvılcım havuzunda verilecek uygulayıcı sayısı.|
-    |Uygulayıcı boyutu| İş için belirtilen Spark havuzunda verilen uygulayıcılar için kullanılacak çekirdek ve bellek sayısı.|  
-    |Sürücü boyutu| İş için belirtilen Kıvılcım havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
-
-    ![Kıvılcım iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-scala-definition.png)
-
-   * **PySpark(Python)** olarak **Dil'i** seçin.
+   * **Spark (Scala)** olarak **dili** seçin.
 
     |  Özellik   | Açıklama   |  
     | ----- | ----- |  
-    |İş tanımı adı| Kıvılcım iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar herhangi bir zamanda güncellenebilir.|  
-    |Ana tanım dosyası| İş için kullanılan ana dosya. Depolama alanınızdan bir PY dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz.|
+    |İş tanımı adı| Spark iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir.|  
+    |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir JAR dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz. |
+    |Ana sınıf adı| Tam tanımlayıcı veya ana tanım dosyasındaki ana sınıf.|
     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler.|
-    |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz.|
-    |Kıvılcım havuzu| İş seçilen Kıvılcım havuzuna gönderilecektir.|
-    |Kıvılcım sürümü| Kıvılcım havuzunun çalıştırdığı Kıvılcım sürümü.|
-    |Executors| İş için belirtilen Kıvılcım havuzunda verilecek uygulayıcı sayısı.|
-    |Uygulayıcı boyutu| İş için belirtilen Spark havuzunda verilen uygulayıcılar için kullanılacak çekirdek ve bellek sayısı.|  
-    |Sürücü boyutu| İş için belirtilen Kıvılcım havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
+    |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
+    |Spark havuzu| İş, seçili Spark havuzuna gönderilir.|
+    |Spark sürümü| Spark havuzunun çalıştığı Spark sürümü.|
+    |Yürütücüler| İş için belirtilen Spark havuzunda verilecek yürüticilerinin sayısı.|
+    |Yürütücü boyutu| İş için belirtilen Spark havuzunda verilen yürüticileri için kullanılacak çekirdek ve bellek sayısı.|  
+    |Sürücü boyutu| İş için belirtilen Spark havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
 
-    ![Kıvılcım iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-py-definition.png)
+    ![Spark iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-scala-definition.png)
 
-   * **Dili** **.NET Kıvılcım(C#/F#)** olarak seçin.
+   * **Dili** **Pyspark (Python)** olarak seçin.
 
     |  Özellik   | Açıklama   |  
     | ----- | ----- |  
-    |İş tanımı adı| Kıvılcım iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar herhangi bir zamanda güncellenebilir.|  
-    |Ana tanım dosyası| İş için kullanılan ana dosya. Depolama alanınızdan Spark uygulaması için .NET'inizi (diğer bir deyişle ana çalıştırılabilir dosya, kullanıcı tanımlı işlevleri içeren DL'ler ve diğer gerekli dosyaları içeren DL'ler) içeren bir ZIP dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz.|
-    |Ana çalıştırılabilir dosya| Ana tanım ZIP dosyasındaki ana çalıştırılabilir dosya.|
+    |İş tanımı adı| Spark iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir.|  
+    |Ana tanım dosyası| İş için kullanılan ana dosya. Depolamadan bir Kopyala dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
     |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler.|
-    |Başvuru dosyaları| Ana tanımzip dosyasına dahil olmayan Spark uygulaması için .NET'in yürütülmesi için işçi düğümleri tarafından gerekli ek dosyalar (diğer bir deyişle bağımlı kavanozlar, ek kullanıcı tanımlı işlev DLL'leri ve diğer config dosyaları). Dosyayı bir depolama hesabına yüklemek için **Dosyayı Yükle'yi** seçebilirsiniz.|
-    |Kıvılcım havuzu| İş seçilen Kıvılcım havuzuna gönderilecektir.|
-    |Kıvılcım sürümü| Kıvılcım havuzunun çalıştırdığı Kıvılcım sürümü.|
-    |Executors| İş için belirtilen Kıvılcım havuzunda verilecek uygulayıcı sayısı.|
-    |Uygulayıcı boyutu| İş için belirtilen Spark havuzunda verilen uygulayıcılar için kullanılacak çekirdek ve bellek sayısı.|  
-    |Sürücü boyutu| İş için belirtilen Kıvılcım havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
+    |Başvuru dosyaları| Ana tanım dosyasında başvuru için kullanılan ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
+    |Spark havuzu| İş, seçili Spark havuzuna gönderilir.|
+    |Spark sürümü| Spark havuzunun çalıştığı Spark sürümü.|
+    |Yürütücüler| İş için belirtilen Spark havuzunda verilecek yürüticilerinin sayısı.|
+    |Yürütücü boyutu| İş için belirtilen Spark havuzunda verilen yürüticileri için kullanılacak çekirdek ve bellek sayısı.|  
+    |Sürücü boyutu| İş için belirtilen Spark havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
 
-    ![Kıvılcım iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-net-definition.png)
+    ![Spark iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-py-definition.png)
 
-6. Kıvılcım iş tanımını kaydetmek için **Yayımla'yı** seçin.
+   * **Dili** **.net Spark (C#/f #)** olarak seçin.
 
-    ![Kıvılcım iş tanımını yayımla](./media/apache-spark-job-definitions/publish-net-definition.png)
+    |  Özellik   | Açıklama   |  
+    | ----- | ----- |  
+    |İş tanımı adı| Spark iş tanımınız için bir ad girin.  Bu öğreticide `job definition sample` kullanılır. Bu ad, yayımlanana kadar dilediğiniz zaman güncelleştirilemeyebilir.|  
+    |Ana tanım dosyası| İş için kullanılan ana dosya. Tümleştirmeden .NET uygulamanızı (yani, ana yürütülebilir dosya, Kullanıcı tanımlı işlevler ve diğer gerekli dosyaları içeren dll 'Ler) içeren bir ZIP dosyası seçin. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
+    |Ana yürütülebilir dosya| Ana tanım ZIP dosyasındaki ana yürütülebilir dosya.|
+    |Komut satırı bağımsız değişkenleri| İş için isteğe bağlı bağımsız değişkenler.|
+    |Başvuru dosyaları| Ana tanım ZIP dosyasına (yani, bağımlı jliler, ek kullanıcı tanımlı işlev dll 'Leri ve diğer yapılandırma dosyaları) dahil olmayan Spark için .NET uygulamasını yürütmek üzere çalışan düğümlerin gerek duyduğu ek dosyalar. Dosyayı bir depolama hesabına yüklemek için **dosyayı karşıya yükle** ' yi seçebilirsiniz.|
+    |Spark havuzu| İş, seçili Spark havuzuna gönderilir.|
+    |Spark sürümü| Spark havuzunun çalıştığı Spark sürümü.|
+    |Yürütücüler| İş için belirtilen Spark havuzunda verilecek yürüticilerinin sayısı.|
+    |Yürütücü boyutu| İş için belirtilen Spark havuzunda verilen yürüticileri için kullanılacak çekirdek ve bellek sayısı.|  
+    |Sürücü boyutu| İş için belirtilen Spark havuzunda verilen sürücü için kullanılacak çekirdek ve bellek sayısı.|
 
-## <a name="submit-a-spark-job-definition"></a>Kıvılcım iş tanımı gönderme
+    ![Spark iş tanımının değerini ayarlama](./media/apache-spark-job-definitions/create-net-definition.png)
 
-Bir Kıvılcım iş tanımı oluşturduktan sonra, bir Synapse Spark havuzuna gönderebilirsiniz. Bu bölümdeki örnekleri denemeden önce **Get-started'daki** adımları geçtiğinize emin olun.
+6. Spark iş tanımını kaydetmek için **Yayımla** ' yı seçin.
 
-### <a name="scenario-1-submit-spark-job-definition"></a>Senaryo 1: Spark iş tanımı gönder
+    ![Spark iş tanımını Yayımla](./media/apache-spark-job-definitions/publish-net-definition.png)
 
-1. Tıklatarak bir kıvılcım iş tanımı penceresi açın.
+## <a name="submit-a-spark-job-definition"></a>Spark iş tanımı gönder
 
-      ![Göndermek için kıvılcım iş tanımını açın ](./media/apache-spark-job-definitions/open-spark-definition.png)
+Spark iş tanımı oluşturduktan sonra, bunu bir Synapse Spark havuzuna gönderebilirsiniz. Bu bölümde örnekleri denemeden önce **Get-Started** ' daki adımları gerçekleştirdiğinizden emin olun.
 
-2. Projenizi seçili Kıvılcım Havuzu'na göndermek için **gönder** simgesini tıklatın. Kıvılcım uygulamasının LogQuery'sini görmek için **Spark izleme URL** sekmesini tıklatabilirsiniz.
+### <a name="scenario-1-submit-spark-job-definition"></a>Senaryo 1: Spark iş tanımını gönder
 
-    ![Kıvılcım iş tanımı göndermek için gönder düğmesini tıklatın](./media/apache-spark-job-definitions/submit-spark-definition.png)
+1. Bir Spark iş tanımı penceresini tıklatarak açın.
 
-    ![Kıvılcım Gönderme iletişim kutusu](./media/apache-spark-job-definitions/submit-definition-result.png)
+      ![Göndermek için Spark iş tanımını aç ](./media/apache-spark-job-definitions/open-spark-definition.png)
 
-### <a name="scenario-2-view-spark-job-running-progress"></a>Senaryo 2: İlerlemeyi çalıştıran Spark işini görüntüleme
+2. Projenizi seçili Spark havuzuna göndermek için **Gönder** simgesine tıklayın. Spark uygulamasının LogQuery öğesini görmek için **Spark izleme URL 'si** sekmesine tıklayabilirsiniz.
 
-1. **Videoyu İzle'yi**tıklatın ve ardından **Kıvılcım uygulamaları** seçeneğini belirleyin. Gönderilen Kıvılcım uygulamasını bulabilirsiniz.
+    ![Spark iş tanımını göndermek için Gönder düğmesine tıklayın](./media/apache-spark-job-definitions/submit-spark-definition.png)
 
-    ![Kıvılcım uygulamasını görüntüle](./media/apache-spark-job-definitions/view-spark-application.png)
+    ![Spark gönderimi iletişim kutusu](./media/apache-spark-job-definitions/submit-definition-result.png)
 
-2. Ardından Spark uygulamasını tıklatın, **LogQuery** penceresi görüntülenir. **LogQuery'den**iş yürütme ilerlemesini görüntüleyebilirsiniz.
+### <a name="scenario-2-view-spark-job-running-progress"></a>Senaryo 2: Spark işi çalışma ilerlemesini görüntüleme
 
-    ![kıvılcım uygulamasını görüntüle LogQuery](./media/apache-spark-job-definitions/view-job-log-query.png)
+1. **İzle**' ye tıklayın, ardından **Spark uygulamaları** seçeneğini belirleyin. Gönderilen Spark uygulamasını bulabilirsiniz.
 
-### <a name="scenario-3-check-output-file"></a>Senaryo 3: Çıktı dosyasını denetleyin
+    ![Spark uygulamasını görüntüle](./media/apache-spark-job-definitions/view-spark-application.png)
 
- 1. **Veriler'i**tıklatın, ardından **Depolama hesaplarını**seçin. Başarılı bir çalışmadan sonra ADLS Gen2 depolama alanına gidebilir ve çıkışları kontrol edebilirsiniz.
+2. Ardından Spark uygulamasına tıklayın, **Logquery** penceresi görüntülenir. **Logquery**'den iş yürütme ilerleme durumunu görüntüleyebilirsiniz.
 
-    ![Çıktı dosyasını görüntüleme](./media/apache-spark-job-definitions/view-output-file.png)
+    ![Spark uygulaması LogQuery 'yi görüntüle](./media/apache-spark-job-definitions/view-job-log-query.png)
+
+### <a name="scenario-3-check-output-file"></a>Senaryo 3: çıkış dosyasını denetle
+
+ 1. **Veriler**' e tıklayın ve **depolama hesapları**' nı seçin. Başarılı bir çalıştıktan sonra, ADLS 2. depolama alanına gidebilir ve çıktıların oluşturulmasını sağlayabilirsiniz.
+
+    ![Çıkış dosyasını görüntüle](./media/apache-spark-job-definitions/view-output-file.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğretici, Spark iş tanımları oluşturmak ve sonra bunları bir Synapse Spark havuzuna göndermek için Azure Synapse Analytics'in nasıl kullanılacağını göstermiştir. Ardından, Power BI veri kümeleri oluşturmak ve Power BI verilerini yönetmek için Azure Synapse Analytics'i kullanabilirsiniz. 
+Bu öğreticide, Spark iş tanımları oluşturmak ve ardından bunları bir Synapse Spark havuzuna göndermek için Azure SYNAPSE Analytics 'in nasıl kullanılacağı gösterilmiştir. Daha sonra, Azure SYNAPSE Analytics 'i kullanarak Power BI veri kümeleri oluşturabilir ve Power BI verileri yönetebilirsiniz. 
 
-- [Power BI Desktop'da verilere bağlanma](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
+- [Power BI Desktop verilere bağlanma](https://docs.microsoft.com/power-bi/desktop-quickstart-connect-to-data)
 - [Power BI ile görselleştirme](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
