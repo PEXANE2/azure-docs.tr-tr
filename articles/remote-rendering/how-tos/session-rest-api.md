@@ -1,33 +1,33 @@
 ---
 title: Oturum yönetimi REST API
-description: Oturumların nasıl yönetilir olduğunu açıklar
+description: Oturumların nasıl yönetileceğini açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681252"
 ---
-# <a name="use-the-session-management-rest-api"></a>Oturum yönetimini kullanın REST API
+# <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
-Azure Uzaktan İşleme işlevini kullanmak için bir *oturum*oluşturmanız gerekir. Her oturum, Azure'da ayrılan ve istemci aygıtın bağlanmasını bekleyen bir sanal makineye (VM) karşılık gelir. Bir aygıt bağlandığında, VM istenen verileri işler ve sonucu bir video akışı olarak hizmet eder. Oturum oluşturma sırasında, hangi sunucuda çalıştırmak istediğinizi ve fiyatlandırmayı belirleyen sunucuyu seçtiniz. Oturuma artık gerek kalmadıktan sonra durdurulmalıdır. El ile durdurulmazsa, oturumun *kira süresi* sona erdiğinde otomatik olarak kapatılır.
+Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum*oluşturmanız gerekir. Her oturum, Azure 'da ayrılan bir sanal makineye (VM) karşılık gelir ve bir istemci cihazının bağlanmasını bekliyor. Bir cihaz bağlandığı zaman, VM istenen verileri işler ve sonucu bir video akışı olarak sunar. Oturum oluşturma sırasında, hangi tür sunucuyu çalıştırmak istediğinizi tercih edersiniz ve bu da fiyatlandırmayı belirler. Oturum artık gerekmiyorsa, durdurulmalıdır. El ile durdurulmamışsa, oturumun *kira süresi* sona erdiğinde otomatik olarak kapatılır.
 
-Komut *Dosyaları* klasöründe, hizmetimizin kullanımını gösteren *RenderingSession.ps1*adlı [ARR örnek](https://github.com/Azure/azure-remote-rendering) deposunda bir PowerShell komut dosyası salıyoruz. Komut dosyası ve yapılandırması burada açıklanmıştır: [Örnek PowerShell komut dosyaları](../samples/powershell-example-scripts.md)
+Hizmetimizin kullanımını gösteren *Renderingsession. ps1*adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
 
 > [!TIP]
-> Bu sayfada listelenen PowerShell komutları birbirini tamamlamak içindir. Tüm komut dosyalarını aynı PowerShell komut istemi içinde sırayla çalıştırıyorsanız, bunlar üst üste inşa edecektir.
+> Bu sayfada listelenen PowerShell komutları birbirini tamamlamak için tasarlanmıştır. Tüm komut dosyalarını aynı PowerShell komut isteminde sırayla çalıştırırsanız, bunların üzerine inşa edilir.
 
 ## <a name="regions"></a>Bölgeler
 
-İstekleri göndermek için temel URL'ler için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
+İsteklerin gönderileceği temel URL 'Ler için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
 
-Aşağıdaki örnek komut dosyaları için *westus2*bölgesini seçtik.
+Aşağıdaki örnek betikler için *westus2*bölgesini seçtik.
 
-### <a name="example-script-choose-an-endpoint"></a>Örnek komut dosyası: Bir bitiş noktası seçin
+### <a name="example-script-choose-an-endpoint"></a>Örnek betik: bir uç nokta seçin
 
 ```PowerShell
 $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
@@ -35,20 +35,20 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>Hesaplar
 
-Uzaktan İşleme hesabınız yoksa, bir [hesap oluşturun.](create-an-account.md) Her kaynak, oturum API'ları boyunca kullanılan bir *hesap Kimliği*ile tanımlanır.
+Uzaktan Işleme hesabınız yoksa, [bir tane oluşturun](create-an-account.md). Her kaynak, oturum API 'Leri boyunca kullanılan bir *AccountID*tarafından tanımlanır.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Örnek komut dosyası: hesap Kimliği ve accountKey'i ayarlama
+### <a name="example-script-set-accountid-and-accountkey"></a>Örnek betik: AccountID ve accountKey ayarla
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
 ```
 
-## <a name="common-request-headers"></a>Ortak istek üstbilgi
+## <a name="common-request-headers"></a>Ortak istek üstbilgileri
 
-* *Yetkilendirme* üstbilgisi ,`Bearer TOKEN`Güvenli`TOKEN` [Belirteç Hizmeti tarafından döndürülen](tokens.md)kimlik doğrulama belirtecidir " " değerine sahip olmalıdır.
+* *Yetkilendirme* üst bilgisi "`Bearer TOKEN`" değerine sahip olmalıdır, burada "`TOKEN`" [güvenli belirteç hizmeti tarafından döndürülen](tokens.md)kimlik doğrulama belirtecidir.
 
-### <a name="example-script-request-a-token"></a>Örnek komut dosyası: Belirteç iste
+### <a name="example-script-request-a-token"></a>Örnek betik: belirteç ISTEME
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
@@ -57,31 +57,31 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
 
-## <a name="common-response-headers"></a>Ortak yanıt üstbilgi
+## <a name="common-response-headers"></a>Ortak yanıt üst bilgileri
 
-* *MS-CV* üstbilgisi, ürün ekibi tarafından hizmet içindeki aramayı izlemek için kullanılabilir.
+* *MS-CV* üst bilgisi, hizmet içindeki çağrıyı izlemek için ürün ekibi tarafından kullanılabilir.
 
 ## <a name="create-a-session"></a>Oturum oluşturma
 
-Bu komut bir oturum oluşturur. Yeni oturumun kimliğini döndürür. Diğer tüm komutlar için oturum kimliğine ihtiyacınız vardır.
+Bu komut bir oturum oluşturur. Yeni oturumun KIMLIĞINI döndürür. Tüm diğer komutlar için oturum KIMLIĞI gereklidir.
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/create | POST |
+| /V1/accounts/*AccountID*/Sessions/Create | POST |
 
 **İstek gövdesi:**
 
-* maxLeaseTime (zaman dilimi): VM'nin otomatik olarak devre dışı olacağı bir zaman kaybı değeri
-* modelleri (dizi): varlık konteyner URL'leri ön yükleme
-* boyutu (string): VM boyutu (**"standart"** veya **"premium"**). Belirli [VM boyut sınırlamalarını](../reference/limits.md#overall-number-of-polygons)görün.
+* maxLeaseTime (TimeSpan): VM 'nin otomatik olarak kullanımdan kaldırılacağı zaman aşımı değeri
+* modeller (dizi): önyükleme için varlık kapsayıcısı URL 'Leri
+* Boyut (dize): VM boyutu (**"standart"** veya **"Premium"**). Bkz. belirli [VM boyut sınırlamaları](../reference/limits.md#overall-number-of-polygons).
 
-**Yanıt:**
+**Lerinde**
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
-| 202 | - sessionId: GUID | Başarılı |
+| 202 | -SessionID: GUID | Başarılı |
 
-### <a name="example-script-create-a-session"></a>Örnek komut dosyası: Oturum oluşturma
+### <a name="example-script-create-a-session"></a>Örnek betik: oturum oluşturma
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/create" -Method Post -ContentType "application/json" -Body "{ 'maxLeaseTime': '4:0:0', 'models': [], 'size': 'standard' }" -Headers @{ Authorization = "Bearer $token" }
@@ -109,36 +109,36 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 52
 ```
 
-### <a name="example-script-store-sessionid"></a>Örnek komut dosyası: Store sessionId
+### <a name="example-script-store-sessionid"></a>Örnek betik: Store SessionID
 
-Yukarıdaki istekten gelen yanıt, tüm izleme istekleri için ihtiyacınız olan bir **sessionId**içerir.
+Yukarıdaki istekten gelen yanıt, tüm izleme istekleri için gereken bir **SessionID**içerir.
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>Oturumu güncelleştirme
+## <a name="update-a-session"></a>Bir oturumu güncelleştirme
 
-Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir oturumun kira süresini uzatabilirsiniz.
+Bu komut, bir oturumun parametrelerini güncelleştirir. Şu anda yalnızca bir oturumun kira süresini genişletebilirsiniz.
 
 > [!IMPORTANT]
-> Kiralama süresi her zaman oturumun başlangıcından bu yana toplam süre olarak verilir. Bu, bir saatlik kira süresiolan bir oturum oluşturduysanız ve kiralama süresini bir saat daha uzatmak istiyorsanız, maksimum LeaseTime'ını iki saate güncelleştirmeniz gerektiği anlamına gelir.
+> Kira süresi her zaman, oturumun başlangıcından itibaren toplam süre olarak verilir. Bu, bir saatin kira saatiyle bir oturum oluşturduysanız ve kira süresini başka bir saat için uzatmak istediğinizde, maxLeaseTime değerini iki saate güncelleştirmeniz gerekir.
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/*accountID*/session/*sessionId* | Yama |
+| /V1/accounts/*AccountID*/Sessions/*SessionID* | DÜZELTMESI |
 
 **İstek gövdesi:**
 
-* maxLeaseTime (zaman dilimi): VM'nin otomatik olarak devre dışı olacağı bir zaman kaybı değeri
+* maxLeaseTime (TimeSpan): VM 'nin otomatik olarak kullanımdan kaldırılacağı zaman aşımı değeri
 
-**Yanıt:**
+**Lerinde**
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
 | 200 | | Başarılı |
 
-### <a name="example-script-update-a-session"></a>Örnek komut dosyası: Oturumu güncelleştirme
+### <a name="example-script-update-a-session"></a>Örnek betik: bir oturumu güncelleştirme
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,21 +160,21 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>Etkin oturumlar alın
+## <a name="get-active-sessions"></a>Etkin oturumları al
 
-Bu komut, etkin oturumların listesini döndürür.
+Bu komut, etkin oturumların bir listesini döndürür.
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions | GET |
+| /V1/accounts/*AccountID*/Sessions | GET |
 
-**Yanıt:**
+**Lerinde**
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
-| 200 | - oturumlar: oturum özellikleri dizisi | oturum özelliklerinin açıklaması için "Oturum özelliklerini al" bölümüne bakın |
+| 200 | -Sessions: oturum özellikleri dizisi | oturum özelliklerinin açıklaması için bkz. "oturum özelliklerini al" bölümü |
 
-### <a name="example-script-query-active-sessions"></a>Örnek komut dosyası: Sorgu etkin oturumları
+### <a name="example-script-query-active-sessions"></a>Örnek betik: etkin oturumları sorgulama
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,21 +203,21 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>Oturum özellikleri alın
+## <a name="get-sessions-properties"></a>Oturum özelliklerini al
 
-Bu komut, VM ana bilgisayar adı gibi bir oturum hakkında bilgi döndürür.
+Bu komut, sanal makine ana bilgisayar adı gibi bir oturumla ilgili bilgileri döndürür.
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/*sessionId*/properties | GET |
+| /V1/accounts/*AccountID*/Sessions/*SessionID*/Properties | GET |
 
-**Yanıt:**
+**Lerinde**
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
-| 200 | - mesaj: string<br/>- sessionElapsedTime: zaman dilimi<br/>- sessionHostname: dize<br/>- sessionId: dize<br/>- oturumMaxLeaseTime: zaman dilimi<br/>- sessionSize: enum<br/>- sessionStatus: enum | enum sessionStatus { başlangıç, hazır, durma, durdurma, süresi dolmuş, hata}<br/>Durum 'hata' veya 'süresi dolmuş' ise, ileti daha fazla bilgi içerir |
+| 200 | -Message: String<br/>-sessionElapsedTime: TimeSpan<br/>-sessionHostname: dize<br/>-SessionID: String<br/>-sessionMaxLeaseTime: TimeSpan<br/>-sessionSize: sabit listesi<br/>-sessionStatus: Enum | Enum sessionStatus {başlatılıyor, hazırlanıyor, durduruluyor, durduruldu, zaman aşımına uğradı, hata}<br/>Durum ' Error ' veya ' dolmuşsa ' ise, ileti daha fazla bilgi içerir |
 
-### <a name="example-script-get-session-properties"></a>Örnek komut dosyası: Oturum özelliklerini alma
+### <a name="example-script-get-session-properties"></a>Örnek komut dosyası: oturum özelliklerini al
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -246,21 +246,21 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 60
 ```
 
-## <a name="stop-a-session"></a>Oturumu durdurma
+## <a name="stop-a-session"></a>Oturumu Durdur
 
-Bu komut bir oturumu durdurur. Ayrılan VM kısa bir süre sonra geri alınacaktır.
+Bu komut bir oturumu sonlandırır. Ayrılan VM kısa bir süre sonra geri kazanılacaktır.
 
 | URI | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/*accountId*/sessions/*sessionId* | DELETE |
+| /V1/accounts/*AccountID*/Sessions/*SessionID* | DELETE |
 
-**Yanıt:**
+**Lerinde**
 
-| Durum kodu | JSON yükü | Yorumlar |
+| Durum kodu | JSON yükü | Açıklamalar |
 |-----------|:-----------|:-----------|
 | 204 | | Başarılı |
 
-### <a name="example-script-stop-a-session"></a>Örnek komut dosyası: Oturumu durdur
+### <a name="example-script-stop-a-session"></a>Örnek betik: oturumu durdurma
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Delete -Headers @{ Authorization = "Bearer $token" }
@@ -283,4 +283,4 @@ RawContentLength  : 0
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Örnek PowerShell komut dosyaları](../samples/powershell-example-scripts.md)
+* [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)

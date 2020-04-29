@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 015986ffa687142cf20ca18cff175ac6c5952a11
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671124"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. Visual Studio itibaren, kaynak dosya **helloworld.cpp**açın.
+1. Visual Studio 'dan **HelloWorld. cpp**kaynak dosyasını açın.
 
-1. Tüm kodu aşağıdaki parçacıkla değiştirin:
+1. Tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
     ```cpp
     #include "pch.h"
@@ -201,27 +201,27 @@ Başlamadan önce şunları unutmayın:
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
+1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı oluşturma ve çalıştırma
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı derleyin ve çalıştırın
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya <kbd>F5</kbd>tuşuna basın) seçin.
+1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya <kbd>F5</kbd>tuşuna basın).
 
-1. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
-    - Konuşma kodunu diğerleriyle paylaşırsanız ve onlar konuşmaya katılırsa, onların transkripsiyonlarını da görürsünüz.
+1. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir
+    - Konuşma kodunu diğer kişilerle paylaşırsanız ve konuşmaya katılırsanız, bu kişilerin de onların dökümünü görürsünüz.
 
-1. Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak için klavyenizdeki <kbd>Ctrl+C</kbd> tuşuna basın.
+1. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için klavyenizde <kbd>CTRL + C</kbd> tuşlarına basın.
 
     > [!NOTE]
-    > Visual Studio'dan benzer bir özel durumla `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` ilgili bir ileti görebilirsiniz: Bunu güvenle yok sayabilirsiniz.
+    > Şuna benzer bir özel durum hakkında Visual Studio 'dan bir ileti görebilirsiniz: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` bunu güvenle yoksayabilirsiniz.
     > <br/> <br/>
-    > Devam etmek için <kbd>F5</kbd> tuşuna basın.
+    > Devam etmek için <kbd>F5</kbd> 'e basın.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Varolan bir konuşmaya katılmak için uygulamayı oluşturma ve çalıştırma
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Mevcut bir konuşmaya katmak için uygulamayı derleyin ve çalıştırın
 
-1. Aşağıdaki işlevi **helloworld.cpp'inize** kopyalayıp yapıştırın: `int main()`
+1. Aşağıdaki işlevi, `int main()` işlevden hemen önce **HelloWorld. cpp** öğesine kopyalayıp yapıştırın:
 
     ```cpp
     void JoinExistingConversation(const std::string& conversationId)
@@ -274,7 +274,7 @@ Başlamadan önce şunları unutmayın:
     }
     ```
 
-2. İşlevinizi `int main()` şu şekilde değiştirin: `StartNewConversation();`
+2. İşlevinizdeki `StartNewConversation();` `int main()` ile değiştirin:
 
     ```cpp
     // Set this to the conversation you want to join
@@ -283,23 +283,23 @@ Başlamadan önce şunları unutmayın:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Visual Studio'ya geri `YourConversationId` dön `int main()` ve işlevinizi önceki adımdaki konuşma kimliğiyle değiştirin.
+4. Visual Studio 'ya geri dönün ve işlevinizde `YourConversationId` `int main()` , önceki adımdaki konuşma kimliğiyle değiştirin.
 
-5. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun hatasız derlenmesi gerekir.
+5. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun hatasız derlenmesi gerekir.
 
-6. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya <kbd>F5</kbd>tuşuna basın) seçin.
+6.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya <kbd>F5</kbd>tuşuna basın).
 
-7. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
-    - Tarayıcınıza geri dönerseniz, siz konuşurken transkripsiyonlarınızın orada da göründüğünü görmeniz gerekir.
+7. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+    - Tarayıcınıza geri giderseniz, yaptığınız gibi, yaptığınız gibi görünmeler burada görünür.
 
-8.  Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak ve konuşmayı sonlamak için <kbd>Ctrl+C</kbd> tuşuna basın.
+8.  Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
 
     > [!NOTE]
-    > Visual Studio'dan benzer bir özel durumla `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` ilgili bir ileti görebilirsiniz: Bunu güvenle yok sayabilirsiniz.
+    > Şuna benzer bir özel durum hakkında Visual Studio 'dan bir ileti görebilirsiniz: `Exception thrown at 0x76EB90BF (KernelBase.dll) in helloworld.exe: 0x40010005: Control-C.` bunu güvenle yoksayabilirsiniz.
     > <br/> <br/>
-    > Devam etmek için <kbd>F5</kbd> tuşuna basın.
+    > Devam etmek için <kbd>F5</kbd> 'e basın.
 
-9. Tarayıcınıza geri dönün ve sağ üst köşedeki çıkış düğmesini kullanarak konuşmaçıkın.
+9. Tarayıcınıza geri dönün ve sağ üst köşedeki Çıkış düğmesini kullanarak konuşmadan çıkın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

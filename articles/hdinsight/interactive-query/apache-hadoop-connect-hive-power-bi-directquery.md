@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight'ta Power BI ile Etkileşimli Sorgu Kovanı verilerine bakın
-description: Azure HDInsight'tan Etkileşimli Sorgu Kovanı verilerini görselleştirmek için Microsoft Power BI'yi kullanın
+title: Azure HDInsight 'ta Power BI etkileşimli sorgu Hive verilerine bakın
+description: Azure HDInsight 'tan etkileşimli sorgu Hive verilerini görselleştirmek için Microsoft Power BI kullanma
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,79 +9,79 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79368001"
 ---
-# <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight'ta doğrudan sorgu yu kullanarak Microsoft Power BI ile Etkileşimli Sorgu Apache Hive verilerini görselleştirin
+# <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight 'ta doğrudan sorgu kullanarak Microsoft Power BI ile etkileşimli sorgu Apache Hive verilerini görselleştirme
 
-Bu makalede, Microsoft Power BI'nin Azure HDInsight İnteraktif Sorgu kümelerine nasıl bağlanılabildiği ve doğrudan sorguyu kullanarak Apache Hive verilerini nasıl görselleştireceğiniz açıklanmaktadır. Örnek, verileri Bir `hivesampletable` Kovan tablosundan Power BI'ye yükler. `hivesampletable` Kovan tablosu bazı cep telefonu kullanım verilerini içerir. Daha sonra kullanım verilerini bir dünya haritasında çizersiniz:
+Bu makalede, Microsoft Power BI 'yi Azure HDInsight etkileşimli sorgu kümelerine bağlama ve doğrudan sorgu kullanarak Apache Hive verileri görselleştirme açıklanır. Belirtilen örnek, verileri bir `hivesampletable` Hive tablosundan Power BI yükler. `hivesampletable` Hive tablosu bazı cep telefonu kullanım verilerini içerir. Ardından, kullanım verilerini bir dünya eşlemesinde çizdirebilirsiniz:
 
-![HDInsight Power BI harita raporu](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
+![Eşleme raporu Power BI HDInsight](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-Power BI Desktop'daki genel ODBC konektörü aracılığıyla içe aktarma yapmak için [Apache Hive ODBC sürücüsünden](../hadoop/apache-hadoop-connect-hive-power-bi.md) yararlanabilirsiniz. Ancak Hive sorgu motorunun etkileşimli olmayan doğası göz önüne alındığında BI iş yükleri için önerilmez. [HDInsight Interactive Query konektörü](./apache-hadoop-connect-hive-power-bi-directquery.md) ve [HDInsight Apache Spark konektörü](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) performansları için daha iyi seçeneklerdir.
+Power BI Desktop Genel ODBC Bağlayıcısı aracılığıyla içeri aktarmak için [Apache HIVE ODBC sürücüsünden](../hadoop/apache-hadoop-connect-hive-power-bi.md) yararlanabilirsiniz. Ancak, Hive sorgu altyapısının etkileşimli olmayan doğası olarak verilen bı iş yükleri için önerilmez. [HDInsight etkileşimli sorgu Bağlayıcısı](./apache-hadoop-connect-hive-power-bi-directquery.md) ve [HDInsight Apache Spark Bağlayıcısı](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect) , performansı için daha iyi seçimlerdir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu makaleyi gözden geçirmeden önce aşağıdaki öğelere sahip olmalısınız:
+Bu makaleye geçmeden önce aşağıdaki öğelere sahip olmanız gerekir:
 
-* **HDInsight kümesi**. Küme, Apache Hive'a sahip bir HDInsight kümesi veya yeni yayımlanan Etkileşimli Sorgu kümesi olabilir. Küme oluşturmak için [bkz.](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* **[Microsoft Power BI Masaüstü](https://powerbi.microsoft.com/desktop/)**. Microsoft [İndirme Merkezi'nden](https://www.microsoft.com/download/details.aspx?id=45331)bir kopyasını indirebilirsiniz.
+* **HDInsight kümesi**. Küme, Apache Hive veya yeni bir etkileşimli sorgu kümesi olan bir HDInsight kümesi olabilir. Küme oluşturmak için bkz. [küme oluşturma](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
+* **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)**. Bir kopyasını [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=45331)' nden indirebilirsiniz.
 
-## <a name="load-data-from-hdinsight"></a>HDInsight'tan veri yükleme
+## <a name="load-data-from-hdinsight"></a>HDInsight 'tan veri yükleme
 
-`hivesampletable` Kovan tablosu tüm HDInsight kümeleriyle birlikte gelir.
+`hivesampletable` Hive tablosu tüm HDInsight kümeleriyle birlikte gelir.
 
 1. Power BI Desktop'ı başlatın.
 
-2. Menü çubuğundan Ana **Sayfa** > Veri > **Alın'a gidin...**.**Get Data**
+2. Menü çubuğundan **ana** > **veri** > Al**daha fazla...** seçeneğine gidin.
 
-    ![HDInsight Power BI Veri Daha Fazla Alın](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
+    ![HDInsight Power BI verileri daha fazla al](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
-3. Veri **Al** penceresinden, arama kutusuna **HDInsight** girin.  
+3. **Veri al** penceresinde, arama kutusuna **HDInsight** girin.  
 
-4. Arama sonuçlarından **HDInsight Interactive Query'yi**seçin ve ardından **Bağlan'ı**seçin.  **HDInsight Interactive Query'yi**görmüyorsanız, Power BI Masaüstünüzü en son sürüme güncellemeniz gerekir.
+4. Arama sonuçlarından **HDInsight etkileşimli sorgu**' yı seçin ve ardından **Bağlan**' ı seçin.  **HDInsight etkileşimli sorgusunu**görmüyorsanız Power BI Desktop en son sürüme güncelleştirmeniz gerekir.
 
-5. Üçüncü taraf hizmet iletişim kutusuna **Bağlanma'yı kapatmaya** **devam** et'i seçin.
+5. **Üçüncü taraf bir hizmet** Iletişim kutusuna bağlanmayı kapatmak için **devam** ' ı seçin.
 
-6. **HDInsight İnteraktif Sorgu** penceresinde, aşağıdaki bilgileri girin ve sonra **Tamam'ı**seçin:
+6. **HDInsight etkileşimli sorgu** penceresinde aşağıdaki bilgileri girip **Tamam**' ı seçin:
 
     |Özellik | Değer |
     |---|---|
-    |Sunucu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net.*|
-    |Database |Bu makale için **varsayılan** girin.|
-    |Veri Bağlantısı modu |Bu makale için **DirectQuery'yi** seçin.|
+    |Sunucu |Küme adını girin, örneğin *myiqcluster.azurehdinsight.net*.|
+    |Veritabanı |Bu makale için **varsayılan** girin.|
+    |Veri Bağlantısı modu |Bu makale için **DirectQuery** 'yi seçin.|
 
-    ![HDInsight interaktif sorgu Power BI DirectQuery bağlamak](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
+    ![HDInsight etkileşimli sorgu Power BI DirectQuery Connect](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. HTTP kimlik bilgilerini girin ve sonra **Bağlan'ı**seçin. Varsayılan kullanıcı adı **yöneticidir.**
+7. HTTP kimlik bilgilerini girin ve sonra **Bağlan**' ı seçin. Varsayılan Kullanıcı adı **admin**' dir.
 
-8. Sol bölmedeki **Navigator** penceresinden **kovan örneği'ni**seçin.
+8. Sol bölmedeki **Gezgin** penceresinden **hivesampletale**' yı seçin.
 
-9. Ana pencereden **Yükle'yi** seçin.
+9. Ana pencereden **Yükle** ' yi seçin.
 
-    ![HDInsight interaktif sorgu Güç BI kovan örnektablosu](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
+    ![HDInsight etkileşimli sorgu Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
-## <a name="visualize-data-on-a-map"></a>Verileri haritada görselleştir
+## <a name="visualize-data-on-a-map"></a>Haritada verileri görselleştirme
 
-Son işlemden devam et.
+Son yordamdan devam edin.
 
-1. Görseller bölmesinden, dünya simgesi **olan Harita'yı**seçin. Genel bir harita daha sonra ana pencerede görüntülenir.
+1. Görsel öğeler **bölmesinden, dünya simgesini seçin.** Daha sonra ana pencerede bir genel harita görüntülenir.
 
-    ![HDInsight Power BI raporu özelleştirin](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
+    ![HDInsight Power BI raporu özelleştirir](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
 
-2. Alanlar bölmesinden **ülke** ve **aygıt make'i**seçin. Birkaç dakika sonra ana pencerede veri noktalarının yer aldığı bir dünya haritası görüntülenir.
+2. Alanlar bölmesinde, **ülke** ve **devicemake**' ı seçin. Veri noktalarıyla bir dünya haritası, birkaç dakika sonra ana pencerede görüntülenir.
 
 3. Haritayı genişletin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, Microsoft Power BI'yi kullanarak HDInsight'tan gelen verileri nasıl görselleştirdiğinizi öğrendiniz.  Veri görselleştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, Microsoft Power BI kullanarak HDInsight 'tan verileri görselleştirmeyi öğrendiniz.  Veri görselleştirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [Azure HDInsight'ta ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirin.](../hadoop/apache-hadoop-connect-hive-power-bi.md) 
-* [Azure HDInsight'ta Apache Hive sorgularını çalıştırmak için Apache Zeppelin'i kullanın.](../interactive-query/hdinsight-connect-hive-zeppelin.md)
-* [Microsoft Hive ODBC Driver ile Excel'i HDInsight'a bağlayın.](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)
-* [Güç Sorgusu'yu kullanarak Excel'i Apache Hadoop'a bağlayın.](../hadoop/apache-hadoop-connect-excel-power-query.md)
-* [Azure HDInsight'a bağlanın ve Visual Studio için Veri Gölü Araçlarını kullanarak Apache Hive sorguları çalıştırın.](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
-* [Visual Studio Kodu için Azure HDInsight Aracı'nı kullanın.](../hdinsight-for-vscode.md)
-* [VERILERI HDInsight'a Yükleyin.](./../hdinsight-upload-data.md)
+* [Azure HDInsight 'TA ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirin](../hadoop/apache-hadoop-connect-hive-power-bi.md). 
+* [Azure HDInsight 'ta Apache Hive sorguları çalıştırmak Için Apache Zeppelin kullanın](../interactive-query/hdinsight-connect-hive-zeppelin.md).
+* [Excel 'i Microsoft Hive ODBC sürücüsü Ile HDInsight 'A bağlayın](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+* [Power Query kullanarak Excel 'i Apache Hadoop bağlama](../hadoop/apache-hadoop-connect-excel-power-query.md).
+* [Azure HDInsight 'A bağlanın ve Visual Studio Data Lake araçları 'nı kullanarak Apache Hive sorguları çalıştırın](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+* [Visual Studio Code Için Azure HDInsight aracını kullanın](../hdinsight-for-vscode.md).
+* [HDInsight 'A veri yükleme](./../hdinsight-upload-data.md).

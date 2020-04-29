@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Linux sanal makine ölçek seti oluşturun'
-description: Sanal makine ölçeği kümesini kullanarak Linux VM'lerinde yüksek kullanılabilir bir uygulama oluşturmak ve dağıtmak için Azure CLI'yi nasıl kullanacağınızı öğrenin
+title: 'Öğretici: Linux sanal makine ölçek kümesi oluşturma'
+description: Azure CLı kullanarak bir sanal makine ölçek kümesi kullanarak Linux VM 'lerinde yüksek kullanılabilirliğe sahip bir uygulama oluşturma ve dağıtma hakkında bilgi edinin
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -17,10 +17,10 @@ ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7a256fc5268c10dd05a2cf58747107cb26c3ced9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238597"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi oluşturma ve Linux üzerinde yüksek oranda kullanılabilir bir uygulama dağıtma
@@ -35,7 +35,7 @@ Sanal makine ölçek kümesi, birbiriyle aynı ve otomatik olarak ölçeklendiri
 > * Ölçek kümesi örneklerine ait bağlantı bilgilerini görüntüleme
 > * Ölçek kümesinde veri diskleri kullanma
 
-Bu öğretici, sürekli olarak en son sürüme güncelleştirilen [Azure Bulut Kabuğu'ndaki](https://docs.microsoft.com/azure/cloud-shell/overview)CLI'yi kullanır. Bulut Kabuğu'nu açmak için, herhangi bir kod bloğunun üstünden **deneyin'i** seçin.
+Bu öğretici, en son sürüme sürekli olarak güncellenen [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)içindeki CLI 'yi kullanır. Cloud Shell açmak için herhangi bir kod bloğunun en üstünden **deneyin** ' i seçin.
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.30 veya sonraki bir sürümünü çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 

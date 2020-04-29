@@ -8,16 +8,16 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670381"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure İzleyici Uyarıları ile olaylara yanıt verme
 Azure İzleyici'deki uyarılar, Log Analytics deponuzdaki önemli bilgileri belirleyebilir. Bunlar düzenli aralıklarla otomatik olarak günlük aramaları çalıştıran uyarı kuralları tarafından oluşturulur. Günlük aramasının sonuçları belirli ölçütlerle eşleşirse bir uyarı kaydı oluşturulur ve kayıt otomatik bir yanıt gerçekleştirmek için yapılandırılabilir.  Bu öğretici, [Log Analytics verilerinin panolarını oluşturma ve paylaşma](tutorial-logs-dashboards.md) öğreticisinin devamı niteliğindedir.   
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uyarı kuralı oluşturma
@@ -26,7 +26,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticideki örneği tamamlamak için [Log Analytics çalışma alanına bağlı](../../azure-monitor/learn/quick-collect-azurevm.md) mevcut bir sanal makinenizin olması gerekir.  
 
 ## <a name="sign-in-to-azure-portal"></a>Azure portalda oturum açın
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç. 
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın. 
 
 ## <a name="create-alerts"></a>Uyarı oluşturma
 Uyarılar, Azure İzleyici'deki uyarı kuralları tarafından oluşturulur ve kaydedilmiş sorguları veya özel günlük aramalarını düzenli aralıklarla otomatik olarak çalıştırabilir.  Belirli performans ölçümleri temelinde veya belirli bir zaman aralığında bir olay sayısı oluşturulduğunda, bir olay olmadığında ya da belirli olaylar oluşturulduğunda uyarılar oluşturabilirsiniz.  Örneğin uyarılar ortalama CPU kullanımı belirli bir eşiği aştığında, eksik bir güncelleştirme algılandığında veya belirli bir Windows hizmetinin veya Linux daemon'unun çalışmadığının algılanması üzerine bir olay oluşturulduğunda bunu size bildirmek için kullanılabilir.  Günlük aramasının sonuçları belirli ölçütlerle eşleşiyorsa bir uyarı oluşturulur. Kural daha sonra otomatik olarak, size bir uyarıyı bildirmek veya başka bir işlemi çağırmak gibi bir veya daha fazla eylemi çalıştırabilir. 

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitör terminolojisi güncellemeleri | Microsoft Dokümanlar
+title: Azure Izleyici terminolojisi güncelleştirmeleri | Microsoft Docs
 description: Azure izleme hizmetlerinde yapılan son terminoloji değişikliklerini açıklar.
 ms.subservice: ''
 ms.topic: conceptual
@@ -7,43 +7,43 @@ author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
 ms.openlocfilehash: 0c5e1096b0780d2f9e50389f772e63344935012b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274144"
 ---
-# <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Monitör adlandırma ve terminoloji değişiklikleri
-Son zamanlarda Azure Monitor'da önemli değişiklikler yapıldı ve Azure müşterileri için izlemeyi kolaylaştırmak için farklı hizmetler birleştirildi. Bu makalede, Azure Monitor belgelerindeki son ad ve terminoloji değişiklikleri açıklanmaktadır.
+# <a name="azure-monitor-naming-and-terminology-changes"></a>Azure Izleyici adlandırma ve terminoloji değişiklikleri
+Azure 'da, Azure müşterilerine yönelik izlemeyi basitleştirmek için, Azure Izleyici 'de son zamanlarda, farklı hizmetlerle birleştirilmiş değişiklikler yapılmıştır. Bu makalede, Azure Izleyici belgelerindeki son ad ve terminoloji değişiklikleri açıklanmaktadır.
 
-## <a name="october-2019---diagnostic-log-to-resource-log"></a>Ekim 2019 - Kaynak Günlüğüne Tanı Günlüğü
-"Tanılama günlükleri" gerçekte toplananlarla daha iyi eşleşecek şekilde "kaynak günlükleri" olarak değiştirildi. "Tanı ayarları" terimi aynı kalır.  
+## <a name="october-2019---diagnostic-log-to-resource-log"></a>2019 Ekim-kaynak günlüğüne tanılama günlüğü
+"Tanılama günlükleri", gerçekten toplanmaya daha iyi eşleşecek şekilde "kaynak günlükleri" olarak değiştirildi. "Tanılama ayarları" terimi aynı kalır.  
 
-## <a name="february-2019---log-analytics-terminology"></a>Şubat 2019 - Log Analytics terminolojisi
-Azure Monitor altında farklı hizmetlerin birleştirilmesinden sonra, Azure Monitor hizmetini ve farklı bileşenlerini daha iyi tanımlamak için belgelerimizdeki terminolojiyi değiştirerek bir sonraki adımı atıyoruz. 
+## <a name="february-2019---log-analytics-terminology"></a>Şubat 2019-Log Analytics terimleri
+Azure Izleyici kapsamında farklı hizmetlerin Birleştirmeden sonra, Azure Izleyici hizmetini ve farklı bileşenlerini daha iyi anlatmak için belgelerimizin terminolojisini değiştirerek bir sonraki adımı sunuyoruz. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Azure Monitor günlük verileri hala bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanır ve analiz edilir, ancak birçok yerde _Log Analytics_ terimini _Azure Monitor günlükleri_olarak değiştiriyoruz. Bu terim Azure Monitor'daki rolünü daha iyi yansıtır ve [Azure Monitor'daki ölçümlerle](platform/data-platform-metrics.md)daha iyi tutarlılık sağlar.
+Azure Izleyici günlük verileri bir Log Analytics çalışma alanında depolanır ve yine de aynı Log Analytics hizmeti tarafından toplanıp çözümlenmektedir, ancak birçok yerde _Log Analytics_ terimi _Azure izleyici günlüklerine_değiştiririz. Bu terim, Azure Izleyici 'de rolünü daha iyi yansıtır ve [Azure izleyici 'de ölçümlerle](platform/data-platform-metrics.md)daha iyi tutarlılık sağlar.
 
-Günlük _analitiği_ terimi artık öncelikle sorgu yazmak ve çalıştırmak ve günlük verilerini analiz etmek için kullanılan Azure portalındaki sayfa için geçerlidir. Metrik verileri çözümlemek için kullanılan Azure portalındaki sayfa olan [metrik](platform/metrics-charts.md)explorer'ın işlevsel eşdeğeridir.
+_Log Analytics_ terimi artık öncelikle sorguları yazmak ve çalıştırmak ve günlük verilerini çözümlemek için kullanılan Azure Portal sayfa için geçerlidir. Ölçüm verilerini çözümlemek için kullanılan Azure portal sayfa olan [Ölçüm Gezgini](platform/metrics-charts.md)'nin işlevsel eşdeğeridir.
 
 ### <a name="log-analytics-workspaces"></a>Log Analytics çalışma alanları
-Azure Monitor'da günlük verilerini tutan [çalışma alanları](platform/manage-access.md) hala Log Analytics çalışma alanları olarak adlandırılır. Azure portalındaki **Log Analytics** menüsü Log **Analytics çalışma alanları** olarak yeniden adlandırıldı ve yeni çalışma alanları [oluşturduğunuz](learn/quick-create-workspace.md) ve veri kaynaklarını yapılandırdığınız yerdir. **Azure Monitor'da** günlüklerinizi ve diğer izleme verilerinizi analiz edin ve Çalışma alanınızı **Log Analytics çalışma alanlarında**yapılandırın.
+Azure Izleyici 'de günlük verilerini tutan [çalışma alanlarına](platform/manage-access.md) hala Log Analytics çalışma alanları adı verilir. Azure portal **Log Analytics** menüsü **Log Analytics çalışma alanları** olarak yeniden adlandırıldı ve [Yeni çalışma alanları oluşturduğunuz](learn/quick-create-workspace.md) ve veri kaynaklarını yapılandırdığınız yerdir. Günlüklerinizi ve diğer izleme verilerinizi **Azure izleyici** 'de çözümleyin ve çalışma alanınızı **Log Analytics çalışma alanlarında**yapılandırın.
 
 ### <a name="management-solutions"></a>Yönetim çözümleri
-[Yönetim çözümleri,](insights/solutions.md) işlevselliklerini daha iyi açıklayan _izleme çözümlerine_yeniden adlandırılmıştır.
+[Yönetim çözümleri](insights/solutions.md) , işlevlerini daha iyi açıklayan _izleme çözümleri_olarak yeniden adlandırıldı.
 
 
-## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>Ağustos 2018 - İzleme hizmetlerinin Azure Monitör'de konsolidasyonu
-Log Analytics ve Application Insights, Azure kaynaklarını ve karma ortamları izlemek için tek bir entegre deneyim sağlamak için Azure Monitor'da birleştirildi. Bu hizmetlerden hiçbir işlevsellik kaldırılmadı ve kullanıcılar herhangi bir özellik kaybı veya ödün vermeden her zaman tamamladıkları senaryoları gerçekleştirebilir.
+## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>Ağustos 2018-izleme hizmetlerini Azure Izleyici 'ye birleştirme
+Log Analytics ve Application Insights Azure Izleyici 'de birleştirildi ve Azure kaynaklarını ve karma ortamlarını izlemeye yönelik tek bir tümleşik deneyim sağlar. Bu hizmetlerden hiçbir işlev kaldırılmadı ve kullanıcılar herhangi bir kayıp veya tehlikeye girmeden her zaman tamamlandıkları senaryoları gerçekleştirebilir.
 
-Bu hizmetlerin her biri için belgeler Azure Monitor için tek bir içerik kümesinde birleştirilmiştir. Bu, okuyucuya, birden çok içerik kümesine başvurmak yerine belirli bir izleme senaryosunun tüm içeriğini tek bir konumda bulmasında yardımcı olur. Birleştirilmiş hizmet geliştikçe, içerik daha entegre hale gelecektir.
+Bu hizmetlerin her biri için belgeler, Azure Izleyici için tek bir içerik kümesiyle birleştirildi. Bu, birden çok içerik kümesine başvurmak zorunda kalmadan tek bir konumdaki belirli bir izleme senaryosuna ilişkin içeriğin tümünü bulmaya yardımcı olur. Birleştirilmiş hizmet geliştikçe içerik daha tümleşik hale gelir.
 
-Oturum Analizi'nin aracılar ve görünümler gibi bir parçası olarak kabul edilen diğer özellikler de Azure Monitor'un özellikleri olarak yeniden konumlandırıldı. İşlevleri, Azure portalındaki deneyimlerinde olası iyileştirmeler dışında değişmedi.
+Aracılar ve görünümler gibi Log Analytics bir parçası olarak kabul edilen diğer özellikler de Azure Izleyici 'nin özellikleri olarak yeniden konumlandırılamıştı. İşlevselliği, Azure portal deneyimlerine ait olası geliştirmelerden farklı şekilde değişmemiştir.
 
 
-## <a name="april-2018---retirement-of-operations-management-suite-brand"></a>Nisan 2018 - Operasyon Yönetimi Paketi markasının emekliliği
-Operations Management Suite (OMS), lisanslama amacıyla aşağıdaki Azure yönetim hizmetlerinin bir biri miydi:
+## <a name="april-2018---retirement-of-operations-management-suite-brand"></a>Nisan 2018-Operations Management Suite markasını devre dışı bırakma
+Operations Management Suite (OMS), lisans amaçlarıyla aşağıdaki Azure Yönetim hizmetlerinden bir paketiydi:
 
 - Application Insights
 - Azure Otomasyonu
@@ -51,12 +51,12 @@ Operations Management Suite (OMS), lisanslama amacıyla aşağıdaki Azure yöne
 - Log Analytics
 - Site Recovery
 
-[Bu hizmetler için yeni fiyatlandırma sunulmuştur](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)ve OMS birleştirme artık yeni müşteriler için kullanılamaz. Yukarıda açıklanan Azure Monitor'da konsolidasyon dışında, OMS'nin bir parçası olan hizmetlerin hiçbiri değişmedi. 
+[Bu hizmetler Için yeni fiyatlandırma sunuldu](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)ve OMS paketlendirmesi yeni müşteriler için artık kullanılamıyor. OMS 'nin parçası olan hizmetlerden hiçbiri, yukarıda açıklanan Azure Izleyici ile birleştirme dışında değişmemiştir. 
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure [Monitor'un](overview.md) farklı bileşenlerini ve özelliklerini açıklayan genel görünümünü okuyun.
+- Farklı bileşenlerini ve özelliklerini açıklayan [Azure izleyici 'ye genel bakış](overview.md) konusunu okuyun.
 - [OMS portalının geçişi](../log-analytics/log-analytics-oms-portal-transition.md)hakkında bilgi edinin.

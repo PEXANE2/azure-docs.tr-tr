@@ -1,23 +1,23 @@
 ---
-title: REST API'yi kullanarak Yedekleme İşlerini Yönetme
-description: Bu makalede, REST API'yi kullanarak Azure Yedekleme'nin yedekleme ve geri yükleme işlerini nasıl izleyeceğinizi ve yöneteceğimizi öğrenin.
+title: REST API kullanarak yedekleme Işlerini yönetme
+description: Bu makalede REST API kullanarak Azure Backup yedekleme ve geri yükleme işlerini izleme ve yönetme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273533"
 ---
-# <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API'yi kullanarak yedekleme ve işleri geri yükleme
+# <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API kullanarak yedekleme ve geri yükleme işlerini izleme
 
-Azure Yedekleme hizmeti, yedeklemeyi tetikleme, işlemleri geri yükleme, yedeklemeyi devre dışı bırakma gibi çeşitli senaryolarda arka planda çalışan işleri tetikler. Bu işler kimliklerini kullanarak izlenebilir.
+Azure Backup hizmeti, yedekleme, geri yükleme işlemlerini tetikleme, yedeklemeyi devre dışı bırakma gibi çeşitli senaryolarda arka planda çalışan işleri tetikler. Bu işler kimlikleri kullanılarak izlenebilir.
 
-## <a name="fetch-job-information-from-operations"></a>Operasyonlardan İş bilgilerini getir
+## <a name="fetch-job-information-from-operations"></a>İşlemlerden Iş bilgilerini getir
 
-Yedeklemeyi tetikleme gibi bir işlem her zaman bir jobID döndürecektir. Örneğin: [Bir tetikleyici yedekleme REST API işleminin](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) son yanıtı aşağıdaki gibidir:
+Yedeklemenin tetiklenmesi gibi bir işlem, her zaman bir iş kimliği döndürür. Örneğin: bir [tetikleyici yedekleme REST API işleminin](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) son yanıtı aşağıdaki gibidir:
 
 ```http
 {
@@ -33,7 +33,7 @@ Yedeklemeyi tetikleme gibi bir işlem her zaman bir jobID döndürecektir. Örne
 }
 ```
 
-Azure VM yedekleme işi "jobId" alanı tarafından tanımlanır ve [burada](https://docs.microsoft.com/rest/api/backup/jobdetails/) basit bir *GET* isteği kullanılarak izlenebilir.
+Azure VM yedekleme işi "JobId" alanı tarafından tanımlanır ve basit bir *Get* isteği kullanılarak [burada](https://docs.microsoft.com/rest/api/backup/jobdetails/) belirtildiği gibi izlenebilir.
 
 ## <a name="tracking-the-job"></a>İşi izleme
 
@@ -41,17 +41,17 @@ Azure VM yedekleme işi "jobId" alanı tarafından tanımlanır ve [burada](http
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-Yukarıda `{jobName}` bahsedilen "jobId" olduğunu. Yanıt her zaman 200 Tamam "durum" alanı işin geçerli durumunu gösteren. Bir kez "Tamamlandı" veya "TamamlanmışUyarılar" , 'genişletilmişInfo' bölümü iş hakkında daha fazla bilgi ortaya koymaktadır.
+, `{jobName}` Yukarıda bahsedilen "JobId" dır. Yanıt, işin geçerli durumunu gösteren "durum" alanı ile her zaman 200 Tamam olur. "Completed" veya "Completedwithuyarılarla" olduğunda, ' Extendeınfo ' bölümü iş hakkında daha fazla ayrıntı gösterir.
 
 ### <a name="response"></a>Yanıt
 
 |Adı  |Tür  |Açıklama  |
 |---------|---------|---------|
-|200 TAMAM     | [İş Kaynağı](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | Tamam        |
+|200 TAMAM     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | Tamam        |
 
 #### <a name="example-response"></a>Örnek yanıt
 
-*GET* URI gönderildikten sonra 200 (Tamam) yanıtı döndürülür.
+*Get* URI 'si gönderildikten sonra bir 200 (Tamam) yanıtı döndürülür.
 
 ```http
 HTTP/1.1 200 OK

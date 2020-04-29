@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Olay verilerini SQL Veri Ambarına geçirin - Azure Olay Hub'ları"
-description: 'Öğretici: Bu öğretici, olay ızgarası tarafından tetiklenen bir Azure işlevini kullanarak olay merkezinizden bir SQL veri ambarına nasıl veri yakalayacaklarını gösterir.'
+title: "Öğretici: olay verilerini SQL veri ambarı 'na geçirme-Azure Event Hubs"
+description: "Öğretici: Bu öğreticide, bir olay kılavuzuyla tetiklenen bir Azure işlevi kullanarak Olay Hub 'ından bir SQL veri ambarına veri yakalama işlemi gösterilmektedir."
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: ''
@@ -10,13 +10,13 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
 ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80130860"
 ---
-# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Yakalanan Olay Hub'ları verilerini Olay Ağı ve Azure Işlevlerini kullanarak BIR SQL Veri Ambarına geçirme
+# <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Öğretici: Event Grid ve Azure Işlevlerini kullanarak yakalanan Event Hubs verilerini SQL veri ambarı 'na geçirme
 
 Event Hubs [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) özelliği, Event Hubs'da akışı yapılan verileri bir Azure Blob depolama alanına veya Azure Data Lake Store'a otomatik olarak iletmenin en kolay yoludur. Ardından, verileri işleyebilir ve SQL Veri Ambarı veya Cosmos DB gibi istediğiniz bir diğer depolama hedefine aktarabilirsiniz. Bu öğreticide, olay hub'ınızdaki verilerin [olay kılavuzu](https://docs.microsoft.com/azure/event-grid/overview) tarafından tetiklenen bir Azure işlevi kullanılarak SQL veri ambarında nasıl yakalandığını öğreneceksiniz.
 
@@ -39,12 +39,12 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Görsel stüdyo 2019](https://www.visualstudio.com/vs/). Yükleme işlemi sırasında şu iş yüklerini de yüklediğinizden emin olun: .NET masaüstü geliştirme, Azure geliştirme, ASP.NET ve web geliştirme, Node.js geliştirme ve Python geliştirme
-- Git [örneğini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) indirin Örnek çözüm aşağıdaki bileşenleri içerir:
+- [Visual studio 2019](https://www.visualstudio.com/vs/). Yükleme işlemi sırasında şu iş yüklerini de yüklediğinizden emin olun: .NET masaüstü geliştirme, Azure geliştirme, ASP.NET ve web geliştirme, Node.js geliştirme ve Python geliştirme
+- [Git örneğini](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) indirin örnek çözüm aşağıdaki bileşenleri içerir:
     - *WindTurbineDataGenerator* - Capture özelliğinin etkin olduğu bir olay hub'ına örnek rüzgar türbini verisi gönderen basit bir yayımcı
     - *FunctionDWDumper* - Azure Depolama blobunda bir Avro dosyası yakalandığında Event Grid bildirimi alan Azure İşlevi. Blobun URI yolunu alır, içeriğini okur ve bu verileri bir SQL Veri Ambarı'na gönderir.
 
-    Bu örnekte en son Azure.Messaging.EventHubs paketi kullan›r. Microsoft.Azure.EventHubs paketini kullanan eski örneği [burada](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)bulabilirsiniz. 
+    Bu örnek, en son Azure. Messaging. EventHubs paketini kullanır. [Burada](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)Microsoft. Azure. EventHubs paketini kullanan eski örneği bulabilirsiniz. 
 
 ### <a name="deploy-the-infrastructure"></a>Altyapıyı dağıtma
 Bu [Azure Resource Manager şablonunu](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) kullanarak söz konusu öğretici için gerekli altyapıyı dağıtmak üzere Azure PowerShell veya Azure CLI'yi kullanın. Bu şablon aşağıdaki kaynakları oluşturur:
@@ -108,7 +108,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="publish-code-to-the-functions-app"></a>Kodu İşlevler Uygulamasında yayımlama
 
-1. Visual Studio 2019'da *EventHubsCaptureEventGridDemo.sln* çözümlerini açın.
+1. Visual Studio 2019 ' de *Eventhubscaptureeventgriddemo. sln* çözümünü açın.
 
 1. Çözüm Gezgini’nde *FunctionEGDWDumper*’a sağ tıklayın ve **Yayımla**’yı seçin.
 
@@ -118,7 +118,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Hedef işlev uygulaması](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. Şablon aracılığıyla dağıttığınız işlev uygulamasını seçin. **Tamam'ı**seçin.
+1. Şablon aracılığıyla dağıttığınız işlev uygulamasını seçin. **Tamam**’ı seçin.
 
    ![İşlev uygulaması seçme](./media/store-captured-data-data-warehouse/select-function-app.png)
 
@@ -131,7 +131,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>İşlevler uygulamasında bir Event Grid aboneliği oluşturma
  
-1. [Azure portalına](https://portal.azure.com/)gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
+1. [Azure Portal](https://portal.azure.com/)gidin. Kaynak grubunuzu ve işlev uygulamanızı seçin.
 
    ![İşlev uygulamasını görüntüleme](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -143,14 +143,14 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Abonelik ekleme](./media/store-captured-data-data-warehouse/add-event-grid-subscription.png)
 
-1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur'u**seçin.
+1. Event grid aboneliğine bir ad verin. Olay türü olarak **Event Hubs Ad Alanları**’nı kullanın. Event Hubs ad alanı örneğinizi seçmek için değerler sağlayın. Abone uç noktasını sağlanan değer olarak bırakın. **Oluştur**’u seçin.
 
    ![Abonelik oluşturma](./media/store-captured-data-data-warehouse/set-subscription-values.png)
 
 ## <a name="generate-sample-data"></a>Örnek veri oluşturma  
 Artık Olay Hub'ı, SQL veri ambarı, Azure İşlev Uygulaması ve Event Grid aboneliğinizi ayarlamayı tamamladınız. Kaynak kodunda bağlantı dizesini ve olay hub'ınızın adını güncelleştirdikten sonra Olay Hub'ına yönelik veri akışları oluşturmak için WindTurbineDataGenerator.exe dosyasını çalıştırabilirsiniz. 
 
-1. Portalda olay hub'ı ad alanınızı seçin. **Bağlantı Dizeleri'ni**seçin.
+1. Portalda olay hub'ı ad alanınızı seçin. **Bağlantı dizelerini**seçin.
 
    ![Bağlantı dizelerini seçme](./media/store-captured-data-data-warehouse/event-hub-connection.png)
 
@@ -162,7 +162,7 @@ Artık Olay Hub'ı, SQL veri ambarı, Azure İşlev Uygulaması ve Event Grid ab
 
    ![Anahtarı kopyalama](./media/store-captured-data-data-warehouse/copy-key.png)
 
-4. Visual Studio projenize geri dönün. *WindTurbineDataGenerator* projesinde, açık *program.cs.*
+4. Visual Studio projenize geri dönün. *WindTurbineDataGenerator* projesinde, *program.cs*' yi açın.
 
 5. **EventHubConnectionString** ve **EventHubName** değerlerini bağlantı dizesi ve olay hub'ınızın adıyla güncelleştirin. 
 

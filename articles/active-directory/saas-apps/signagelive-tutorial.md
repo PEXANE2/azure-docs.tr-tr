@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Signagelive ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Signagelive arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Signagelive ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve Signagelive arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,184 +17,184 @@ ms.date: 1/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dab2fd0ee2f25e835b4bd07a3534475d3d93b5e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73160932"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Öğretici: Signagelive ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Öğretici: Signagelive ile tümleştirme Azure Active Directory
 
-Bu eğitimde, Signagelive'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Signagelive'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Signagelive 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Signagelive Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* Signagelive erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Signagelive'da (tek oturum açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portalı.
+* Signagelive 'e erişimi olan Azure AD 'de denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Signagelive 'de (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Signagelive ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Signagelive ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, bir [aylık deneme](https://azure.microsoft.com/pricing/free-trial/)sürümü alabilirsiniz.
-* Signagelive tek oturum açma özellikli abonelik.
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, bir [aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)alabilirsiniz.
+* Signagelive çoklu oturum açma özellikli bir abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Signagelive, SP tarafından başlatılan SSO'ya destek veriyor.
+* Signagelive, SP tarafından başlatılan SSO 'yu destekler.
 
-## <a name="add-signagelive-from-the-gallery"></a>Galeriden Signagelive ekle
+## <a name="add-signagelive-from-the-gallery"></a>Galeriden Signagelive ekleme
 
-Signagelive'ın Azure AD'ye entegrasyonunu yapılandırmak için, önce galeriden Signagelive'ı yönetilen SaaS uygulamaları listenize ekleyin.
+Signagelive tümleştirmesini Azure AD 'ye göre yapılandırmak için, önce galerideki Signagelive öğesini yönetilen SaaS uygulamaları listenize ekleyin.
 
-Galeriden Signagelive eklemek için aşağıdaki adımları izleyin:
+Galeriden Signagelive eklemek için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında](https://portal.azure.com), sol bölmede, **Azure Etkin Dizin** simgesini seçin.
+1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory** simgesini seçin.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a**gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar**' a gidin ve ardından **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Signagelive'ı**girin. 
+4. Arama kutusuna **Signagelive**girin. 
 
-     ![Sonuç listesinde signagelive](common/search-new-app.png)
+     ![Sonuç listesinde Signagelive](common/search-new-app.png)
 
-5. Sonuç bölmesinden **Signagelive'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini seçin.
+5. Sonuçlar bölmesinde **Signagelive** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesini seçin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Signagelive ile Azure AD tek oturum açma işlemini yapılandırıp test esinizsiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Signagelive'daki ilgili kullanıcı arasında bir bağlantı kurmanız gerekir.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Signagelive ile yapılandırıp test edersiniz.
+Çoklu oturum açma için, Signagelive içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
-Azure AD oturum açma işlemlerini Signagelive ile yapılandırmak ve test etmek için öncelikle aşağıdaki yapı taşlarını tamamlayın:
+Azure AD çoklu oturum açmayı Signagelive ile yapılandırmak ve test etmek için önce aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD oturumunu yapılandırın.](#configure-azure-ad-single-sign-on)
-2. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için [Signagelive tek oturum](#configure-signagelive-single-sign-on) açma yı yapılandırın.
-3. Britta Simon ile Azure AD tek oturum açma işlemini test etmek için [bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için [Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)
-5. Signagelive'da Britta Simon'ın kullanıcının Azure AD gösterimine bağlı bir muadili olması için [bir Signagelive test kullanıcısı oluşturun.](#create-a-signagelive-test-user)
-6. Yapılandırmanın çalıştığını doğrulamak için [tek oturum](#test-single-sign-on) açma yı test edin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD çoklu oturum açmayı yapılandırın](#configure-azure-ad-single-sign-on) .
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için [Signagelive çoklu oturum açmayı yapılandırın](#configure-signagelive-single-sign-on) .
+3. Britta Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
+4. Azure AD 'de çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirmek için [Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user) .
+5. Kullanıcının Azure AD gösterimine bağlı olan Signagelive 'de Britta Simon 'a sahip olacak [bir Signagelive test kullanıcısı oluşturun](#create-a-signagelive-test-user) .
+6. Yapılandırmanın çalıştığını doğrulamak için [Çoklu oturum açmayı test](#test-single-sign-on) edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Signagelive ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdaki adımları izleyin:
+Azure AD çoklu oturum açmayı Signagelive ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. **Signagelive** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Signagelive** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML'yi** seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML** ' yi seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla tek oturum açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme'yi** seçin.
+3. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** ' yi seçin.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları izleyin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları uygulayın:
 
-    ![Signagelive Domain ve URL'ler tek oturum açma bilgileri](common/sp-signonurl.png)
+    ![Signagelive etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-signonurl.png)
 
-    Oturum **Açma URL** kutusuna, aşağıdaki deseni kullanan bir URL girin:`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
+    **Oturum açma URL 'si** kutusunda, aşağıdaki kalıbı kullanan bir URL girin:`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri gerçek oturum açma URL'si ile güncelleştirin. Değeri almak için [Signagelive Müşteri destek ekibine](mailto:support@signagelive.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Signagelive istemci destek ekibine](mailto:support@signagelive.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, gereksiniminize göre verilen seçeneklerden **Sertifikayı (Ham)** indirmek için **İndir'i** seçin. Ardından bilgisayarınıza kaydedin.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (ham)** ' i, gereksiniminize göre verilen seçenekten indirmek için **İndir** ' i seçin. Ardından bu dosyayı bilgisayarınıza kaydedin.
 
     ![Sertifika indirme bağlantısı](common/certificateraw.png)
 
-6. **Signagelive'ı ayarla** bölümünde, ihtiyacınız olan URL'yi kopyalayın.
+6. **Signagelive ayarla** bölümünde, IHTIYACıNıZ olan URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure AD Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-signagelive-single-sign-on"></a>Signagelive Tek oturum aç
+### <a name="configure-signagelive-single-sign-on"></a>Signagelive çoklu oturum açmayı yapılandırma
 
-Signagelive tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Raw)** ve kopyalanan URL'leri Azure portalından [Signagelive destek ekibine](mailto:support@signagelive.com)gönderin. Saml SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlı olmasını sağlarlar.
+Signagelive tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (ham)** ve Azure Portal URL 'leri [Signagelive destek ekibine](mailto:support@signagelive.com)gönderin. SAML SSO bağlantısının her iki tarafında da düzgün şekilde ayarlandığından emin olurlar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
+3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları uygulayın.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**yazın.
   
-    b. Kullanıcı **adı** alanına "brittasimon@yourcompanydomain.extensiongirin. Örneğin, bu durumda , "BrittaSimon@contoso.com"girebilirsiniz.
+    b. **Kullanıcı adı** alanına "brittasimon@yourcompanydomain.extension" yazın. Örneğin, bu durumda "BrittaSimon@contoso.com" girebilirsiniz.
 
-    c. **Parolayı Göster** onay kutusunu seçin ve ardından Parola kutusunda görüntülenen değeri not edin.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri unutmayın.
 
-    d. **Oluştur'u**seçin.
+    d. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Signagelive'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Signagelive 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon özelliğini etkinleştirin.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Signagelive'ı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Signagelive**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Başvuru listesinde **Signagelive'ı**seçin.
+2. Uygulamalar listesinde **Signagelive**' yi seçin.
 
     ![Uygulamalar listesindeki Signagelive bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini seçin. Ardından, **Atama Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
+4. **Kullanıcı Ekle** düğmesini seçin. Sonra **atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **Britta Simon'ı**seçin. Ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **Britta Simon**' u seçin. Ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında bir rol değeri bekliyorsanız, Rolü **Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin. Ardından, ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama 'da bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Sonra, ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda Atama **düğmesini** seçin.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesini seçin.
 
 ### <a name="create-a-signagelive-test-user"></a>Signagelive test kullanıcısı oluşturma
 
-Bu bölümde, Signagelive Britta Simon adlı bir kullanıcı oluşturun. Signagelive platformundaki kullanıcıları eklemek için [Signagelive destek ekibiyle](mailto:support@signagelive.com) birlikte çalışın. Tek oturum açmadan önce kullanıcıları oluşturmalı ve etkinleştirmelisiniz.
+Bu bölümde, Signagelive içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Kullanıcıları Signagelive platformuna eklemek için [Signagelive destek](mailto:support@signagelive.com) ekibiyle çalışın. Çoklu oturum açma kullanmadan önce kullanıcıları oluşturmanız ve etkinleştirmeniz gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, MyApps portalını kullanarak Azure AD tek oturum açma yapılandırmanızı test edeyim.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı Uygulamaps portalını kullanarak test edersiniz.
 
-MyApps portalındaki **Signagelive** karo'yu seçtiğinizde, otomatik olarak oturum açmanız gerekir. MyApps portalı hakkında daha fazla bilgi için [MyApps portalı nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+Uygulamaps portalındaki **Signagelive** kutucuğunu seçtiğinizde, otomatik olarak oturum açmış olmanız gerekir. Uygulamaps portalı hakkında daha fazla bilgi için, bkz. [Uygulamaps portalı nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile nasıl entegre edilebildiğini anlatan öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

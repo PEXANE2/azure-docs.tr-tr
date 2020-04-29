@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: EthicsPoint Olay Yönetimi (EPIM) ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve EthicsPoint Olay Yönetimi (EPIM) arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: Etiicspoint olay yönetimiyle Azure Active Directory tümleştirme (EPıM) | Microsoft Docs'
+description: Azure Active Directory ve Ahicspoint olay yönetimi (EPıM) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,193 +17,193 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 029e45fc4768084b0dcd89b32c5392d26192f7d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157147"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Öğretici: EthicsPoint Olay Yönetimi (EPIM) ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Öğretici: Etiicspoint olay yönetimiyle Azure Active Directory tümleştirme (EPıM)
 
-Bu eğitimde, EthicsPoint Olay Yönetimi'ni (EPIM) Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-EthicsPoint Olay Yönetimi'ni (EPIM) Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Ahicspoint olay yönetimi 'ni (EPıM) Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile Eticspoint Olay yönetimini (EPıM) tümleştirmek aşağıdaki avantajları sağlar:
 
-* EthicsPoint Olay Yönetimi'ne (EPIM) erişimi olan Azure AD'da denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla EthicsPoint Olay Yönetimi (EPIM) (Tek Oturum Açma) ile otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, Eticspoint olay yönetimine (EPıM) erişimi olan bir denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla, Ahicspoint olay yönetimi (EPıM) (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini EthicsPoint Olay Yönetimi (EPIM) ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Etiicspoint olay yönetimi (EPıM) ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* EthicsPoint Olay Yönetimi (EPIM) tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Eticspoint olay yönetimi (EPıM) çoklu oturum açma etkin aboneliği
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* EthicsPoint Olay Yönetimi (EPIM) **SP** tarafından başlatılan SSO'ya destek veriyor
+* Eticspoint olay yönetimi (EPıM), **SP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-ethicspoint-incident-management-epim-from-the-gallery"></a>Galeriden EthicsPoint Olay Yönetimi (EPIM) ekleme
+## <a name="adding-ethicspoint-incident-management-epim-from-the-gallery"></a>Galeriden Eticspoint olay yönetimi (EPıM) ekleme
 
-EthicsPoint Olay Yönetimi'nin (EPIM) Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize EthicsPoint Olay Yönetimi 'ni (EPIM) eklemeniz gerekir.
+Eticspoint olay yönetimi 'nin (EPıM) Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Eticspoint olay yönetimi (EPıM) eklemeniz gerekir.
 
-**Galeriden EthicsPoint Olay Yönetimi 'ni (EPIM) eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Eticspoint olay yönetimi (EPıM) eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda, **EthicsPoint Olay Yönetimi (EPIM)** yazın, sonuç panelinden **EthicsPoint Olay Yönetimi 'ni (EPIM)** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna, **Etiicspoint olay yönetimi (EPIM)** yazın, sonuç panelinden **Eticspoint olay yönetimi (EPIM)** öğesini seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Ki Etik Nokta Olay Yönetimi (EPIM)](common/search-new-app.png)
+     ![Sonuçlar listesinde Etiıspoint olay yönetimi (EPıM)](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini EthicsPoint Olay Yönetimi (EPIM) ile yapılandırıp test edeyimsiniz.
-Tek oturum açma nın işe yaraması için, Bir Azure REKLAM kullanıcısı ile EthicsPoint Olay Yönetimi 'ndeki (EPIM) ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak Eticspoint olay yönetimi (EPIM) Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı (EPıM olay yönetimi (EPıM) arasında bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD oturumaçmaişlemlerini EthicsPoint Olay Yönetimi (EPIM) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açmayı, Eticspoint olay yönetimi (EPıM) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[EthicsPoint Olay Yönetimi (EPIM) Tek Oturum](#configure-ethicspoint-incident-management-epim-single-sign-on)** Açma 'yı yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[EthicsPoint Olay Yönetimi (EPIM) test kullanıcısını oluşturun](#create-ethicspoint-incident-management-epim-test-user)** - kullanıcının Azure REKLAM gösterimine bağlı EthicsPoint Olay Yönetimi 'nde (EPIM) Britta Simon'ın bir muadili olması için.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Eticspoint olay yönetimi 'ni (EPıM) çoklu oturum açmayı yapılandırın](#configure-ethicspoint-incident-management-epim-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı olan eticspoint olay yönetimi (EPıM) içinde Britta Simon 'a sahip olmak için, **[Etiicspoint olay yönetimi (EPIM) test kullanıcısı oluşturun](#create-ethicspoint-incident-management-epim-test-user)** .
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini EthicsPoint Olay Yönetimi (EPIM) ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açma 'yı Etiicspoint olay yönetimi (EPıM) ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **EthicsPoint Olay Yönetimi (EPIM)** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Etiicspoint olay yönetimi (EPIM)** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![EthicsPoint Olay Yönetimi (EPIM) Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
+    ![Ahicspoint olay yönetimi (EPıM) etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
     
     | |
     |--|
     | `https://<companyname>.navexglobal.com`|
     | `https://<companyname>.ethicspointvp.com`|
 
-    b. **Tanımlayıcı** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.navexglobal.com/adfs/services/trust`
+    b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.navexglobal.com/adfs/services/trust`
 
-    c. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<servername>.navexglobal.com/adfs/ls/`
+    c. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<servername>.navexglobal.com/adfs/ls/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [EthicsPoint Olay Yönetimi (EPIM) İstemci destek ekibine](https://www.navexglobal.com/company/contact-us) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Eticspoint olay yönetimi (EPıM) istemci destek ekibine](https://www.navexglobal.com/company/contact-us) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+5. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-6. **EthicsPoint Olay Yönetimi (EPIM) Kurulumu** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+6. Etsel **olay yönetimi (EPıM) ayarlama** bölümünde uygun URL 'leri gereksiniminize göre kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
     a. Oturum Açma URL’si
 
-    b. Azure Reklam Tanımlayıcısı
+    b. Azure AD tanımlayıcısı
 
-    c. Giriş URL'si
+    c. Oturum kapatma URL 'SI
 
-### <a name="configure-ethicspoint-incident-management-epim-single-sign-on"></a>Yapılandırma EtikNokta Olay Yönetimi (EPIM) Tek Oturum Açma
+### <a name="configure-ethicspoint-incident-management-epim-single-sign-on"></a>Eticspoint olay yönetimi (EPıM) çoklu oturum açmayı yapılandırma
 
-**EthicsPoint Olay Yönetimi (EPIM)** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'i** ve uygun kopyalanmış URL'leri Azure portalından [EthicsPoint Olay Yönetimi (EPIM) destek ekibine](https://www.navexglobal.com/company/contact-us)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Eticspoint olay yönetimi (EPIM)** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den [etiıspoint olay yönetimi (EPIM) destek ekibine](https://www.navexglobal.com/company/contact-us)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın EthicsPoint Olay Yönetimi'ne (EPIM) erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, Etiıtspoint olay yönetimine (EPıM) erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **EthicsPoint Olay Yönetimi 'ni (EPIM)** seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve sonra **Etiicspoint olay yönetimi (EPIM)** öğesini seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **EthicsPoint Olay Yönetimi (EPIM) seçeneğini belirleyin.**
+2. Uygulamalar listesinde, **Etiicspoint olay yönetimi (EPıM)** öğesini seçin.
 
-    ![Uygulamalar listesindeki EthicsPoint Olay Yönetimi (EPIM) bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Etiicspoint olay yönetimi (EPıM) bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-ethicspoint-incident-management-epim-test-user"></a>EthicsPoint Olay Yönetimi (EPIM) test kullanıcısı oluşturma
+### <a name="create-ethicspoint-incident-management-epim-test-user"></a>Eticspoint olay yönetimi (EPıM) test kullanıcısı oluşturma
 
-Bu bölümde, EthicsPoint Olay Yönetimi 'nde (EPIM) Britta Simon adında bir kullanıcı oluşturursunuz. EthicsPoint [Olay Yönetimi (EPIM) destek ekibiyle](https://www.navexglobal.com/company/contact-us) birlikte çalışarak kullanıcıları EthicsPoint Olay Yönetimi (EPIM) platformuna ekleyin. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Eticspoint olay yönetiminde (EPıM) Britta Simon adlı bir Kullanıcı oluşturacaksınız. Etiicspoint olay yönetimi (EPıM) platformunda kullanıcıları eklemek için, [Eticspoint olay yönetimi (EPIM) destek ekibi](https://www.navexglobal.com/company/contact-us) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki EthicsPoint Olay Yönetimi (EPIM) döşemesini tıklattığınızda, SSO'yu kurduğunuz EthicsPoint Olay Yönetimi'nde (EPIM) otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Etiıspoint olay yönetimi (EPıM) kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Eticspoint olay yönetiminde (EPıM) otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Konuşma-konuşma, C# (UWP) - Konuşma hizmeti çevirme'
+title: 'Hızlı başlangıç: konuşmayı konuşmaya çevirme, C# (UWP)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,59 +11,59 @@ ms.date: 04/04/2020
 ms.author: erhopf
 ms.topic: include
 ms.openlocfilehash: 08001aabd279b2df64635719e9ef3e0772df62e9
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671085"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve C# kodu arkasını uygulama ekleyin.
+Şimdi uygulamanın kullanıcı arabirimini tanımlayan XAML kodunu ekleyin ve C# arka plan kod uygulamasını ekleyin.
 
-1. **Çözüm Gezgini'nde**, açık `MainPage.xaml`.
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
 
-1. Tasarımcının XAML görünümünde, **Grid** etiketine aşağıdaki XAML snippet'i `</Grid>`ekleyin (arasında ve arasında): `<Grid>`
+1. Tasarımcının XAML görünümünde, **kılavuz** ETIKETINE aşağıdaki xaml kod parçacığını ekleyin (ve `<Grid>` `</Grid>`arasında):
 
    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml#StackPanel)]
 
-1. **Çözüm Gezgini'nde,** kod arkasındaki `MainPage.xaml.cs`kaynak dosyayı açın. (Bu altında `MainPage.xaml`gruplandı .)
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.)
 
-1. Aşağıdaki parçacıkla tüm kodu değiştirin:
+1. İçindeki tüm kodu aşağıdaki kod parçacığıyla değiştirin:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/uwp/translate-speech-to-text/helloworld/MainPage.xaml.cs#code)]
 
-1. Bu `SpeechTranslationFromMicrophone_ButtonClicked` dosyadaki işleyicide dizeyi `YourSubscriptionKey`bulun ve abonelik anahtarınızla değiştirin.
+1. Bu dosyadaki `SpeechTranslationFromMicrophone_ButtonClicked` İşleyicide, dizeyi `YourSubscriptionKey`bulun ve abonelik anahtarınızla değiştirin.
 
-1. İşleyicide `SpeechTranslationFromMicrophone_ButtonClicked` dizeyi `YourServiceRegion`bulun ve aboneliğinizle ilişkili [bölgeyle](~/articles/cognitive-services/Speech-Service/regions.md) değiştirin. (Örneğin, ücretsiz `westus` deneme aboneliği için kullanın.)
+1. `SpeechTranslationFromMicrophone_ButtonClicked` İşleyicisinde, dizeyi `YourServiceRegion`bulun ve aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile değiştirin. (Örneğin, ücretsiz deneme `westus` aboneliği için kullanın.)
 
-1. Menü çubuğundan, değişikliklerinizi kaydetmek için**Tümlerini Kaydet'i** **seçin.** > 
+1. Değişikliklerinizi kaydetmek için menü çubuğundan **Dosya** > **Tümünü Kaydet** ' i seçin.
 
 ## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
 
-Artık uygulamanızı oluşturmaya ve test etmeye hazırsınız.
+Artık uygulamanızı derlemek ve test etmek için hazırsınız.
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için **Hata Ayıklama** > **Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna) seçin. **Helloworld** penceresi görüntülenir.
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). **F5** >  **HelloWorld** penceresi görüntülenir.
 
-   ![C# örnek UWP çeviri uygulaması - quickstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
+   ![C# ' de örnek UWP çeviri uygulaması-hızlı başlangıç](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-1. **Mikrofonu Etkinleştir'i**seçin ve erişim izni isteği geldiğinde **Evet'i**seçin.
+1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
 
-   ![Mikrofon erişim izni isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon erişimi izin isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. **Mikrofon girişinden konuşmayı Çevir'i**seçin ve cihazınızın mikrofonuna İngilizce bir tümcecik veya cümle konuşun. Uygulama konuşmanızı Konuşma hizmetine iletir ve konuşmanızı başka bir dilde metne çevirir (bu durumda Almanca). Konuşma hizmeti çevrilen metni pencerede çeviren uygulamaya geri gönderir.
+1. **Mikrofon girişinden konuşmayı çevir**' i seçin ve cihazınızın mikrofonuna İngilizce bir tümcecik veya cümle konuşun. Uygulama konuşmanızı konuşma hizmetine iletir ve bu da konuşmayı başka bir dildeki (Bu örnekte, Almanca) metne dönüştürür. Konuşma hizmeti, çevrilmiş metni, penceredeki çeviriyi görüntüleyen uygulamaya geri gönderir.
 
-   ![Konuşma çevirisi kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
+   ![Konuşma çevirisi Kullanıcı arabirimi](~/articles/cognitive-services/Speech-Service/media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB'nin MongoDB için API'si için RU/s'leri güncelleştirmek için PowerShell komut dosyası
-description: Azure Cosmos DB'nin MongoDB için API'sinde bir veritabanı veya kapsayıcının veri verisini güncelleştirmek için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin
+title: MongoDB için Azure Cosmos DB API 'SI için RU/s 'yi güncelleştirme için PowerShell betiği
+description: Bir veritabanı veya MongoDB için Azure Cosmos DB API 'sindeki bir kapsayıcı için üretilen işi güncelleştirmek üzere bir PowerShell betiği kullanmayı öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: c0dba303a82fb39036b04198f835e4a1e71b6a1d
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365867"
 ---
-# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB için bir veritabanı veya koleksiyon için RU/ları güncelleştirin - MongoDB API
+# <a name="update-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'si için bir veritabanı veya koleksiyon için RU/sn 'yi güncelleştirme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Yeni bir cosmos DB MongoDB API Veritabanı oluşturur veya güncelleştirir. |
-| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Yeni bir cosmos DB SQL Koleksiyonu oluşturur veya güncelleştirir. |
-|**Azure Kaynak Grupları**| |
+| [Set-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbdatabase) | Yeni bir Cosmos DB MongoDB API veritabanını oluşturur veya güncelleştirir. |
+| [Set-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbmongodbcollection) | Yeni bir Cosmos DB SQL koleksiyonu oluşturur veya güncelleştirir. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

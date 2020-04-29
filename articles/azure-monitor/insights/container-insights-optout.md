@@ -1,43 +1,43 @@
 ---
-title: Azure Kubernetes Hizmet kümenizi İzlemeyi Nasıl Durdurun | Microsoft Dokümanlar
-description: Bu makalede, kapsayıcılar için Azure Monitor ile Azure AKS kümenizin izlemeyi nasıl durdurabileceğiniz açıklanmaktadır.
+title: Azure Kubernetes hizmet kümenizi Izlemeyi durdurma | Microsoft Docs
+description: Bu makalede, Azure AKS kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl sonlandırabileceğiniz açıklanır.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275262"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici ile Azure Kubernetes Service (AKS) ortamınızı izlemeyi durdurma
 
-AKS kümenizin izlenmesini etkinleştirdikten sonra, artık izlemek istemediğinize karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, Azure CLI'yi kullanarak veya sağlanan Azure Kaynak Yöneticisi şablonlarıyla bunu nasıl başarılalıştırılacak gösterilmektedir.  
+AKS kümenizi izlemeyi etkinleştirdikten sonra, artık bunu izlemek istediğinize karar verirseniz kümeyi izlemeyi durdurabilirsiniz. Bu makalede, Azure CLı kullanılarak veya belirtilen Azure Resource Manager şablonlarıyla nasıl yapılacağı gösterilmektedir.  
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Kapsayıcılar için Azure Monitor'u devre dışı katmak için [az aks devre dışı-eklentiler](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) komutunu kullanın. Komut aracıyı küme düğümlerinden kaldırır, çözümü veya Azure Monitor kaynağınızda toplanıp depolanmış verileri kaldırmaz.  
+Kapsayıcılar için Azure Izleyicisini devre dışı bırakmak için [az aks Disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) komutunu kullanın. Komut, aracıyı küme düğümlerinden kaldırır, çözümü veya daha önce toplanan ve Azure Izleyici kaynağınız içinde depolanan verileri kaldırmaz.  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-Kümenizin izlemeyi yeniden etkinleştirmek için [bkz.](container-insights-enable-new-cluster.md#enable-using-azure-cli)
+Kümeniz için izlemeyi yeniden etkinleştirmek üzere bkz. [Azure CLI kullanarak Izlemeyi etkinleştirme](container-insights-enable-new-cluster.md#enable-using-azure-cli).
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Sağlanan, çözüm kaynaklarının kaynak grubunuzda tutarlı ve sürekli olarak kaldırılmasını destekleyen iki Azure Kaynak Yöneticisi şablonu sunulur. Bunlardan biri, izlemeyi durdurmak için yapılandırmayı belirten bir JSON şablonudur ve diğeri de kümenin dağıtıldığı AKS küme kaynak kimliğini ve kaynak grubunu belirtmek için yapılandırdığınız parametre değerlerini içerir.
+, Çözüm kaynaklarını kaynak grubunuzda sürekli olarak ve sürekli olarak kaldırmayı desteklemek için iki Azure Resource Manager şablonudur. Bunlardan biri, izlemeyi durduracak yapılandırmayı belirten bir JSON şablonudur ve diğeri, kümenin dağıtıldığı AKS kümesi kaynak KIMLIĞINI ve kaynak grubunu belirtmek için yapılandırdığınız parametre değerlerini içerir.
 
-Şablon kullanarak kaynakları dağıtma kavramına aşina değilseniz, bkz:
+Bir şablon kullanarak kaynak dağıtma kavramı hakkında bilgi sahibi değilseniz, bkz:
 * [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../../azure-resource-manager/templates/deploy-powershell.md)
-* [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
+* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->Şablonun kümenin aynı kaynak grubunda dağıtılması gerekir. Bu şablonu kullanırken başka özellikleri veya eklentileri atlarsanız, kümeden kaldırılmasına neden olabilir. Örneğin, kümenizde uygulanan RBAC ilkeleri için *etkinleştiriciRBAC* veya AKS kümesi için etiketler belirtilmişse *aksResourceTagValues.*  
+>Şablonun, kümenin aynı kaynak grubunda dağıtılması gerekir. Bu şablonu kullanırken başka özellikleri veya eklentileri atlarsanız, kümeden kaldırılmasına neden olabilir. Örneğin, kümenizde uygulanan RBAC ilkeleri için *Enablertzya* ya da aks kümesi için Etiketler belirtilmişse, *Aksresourcetagvalues* .  
 >
 
-Azure CLI'yi kullanmayı seçerseniz, öncelikle CLI'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLI sürümünü 2.0.27 veya sonraki sürümde çalışıyor olmalısınız. Sürümünüzü tanımlamak için `az --version`çalıştırın. Azure CLI'yi yüklemeniz veya yükseltmeniz gerekiyorsa, [bkz.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz ve kullanmanız gerekir. Azure CLı sürüm 2.0.27 veya üstünü çalıştırıyor olmanız gerekir. Sürümünüzü tanımlamak için öğesini çalıştırın `az --version`. Azure CLı 'yi yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 'Yı yüklemek](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-template"></a>Şablon oluşturma
 
@@ -89,7 +89,7 @@ Azure CLI'yi kullanmayı seçerseniz, öncelikle CLI'yi yerel olarak yüklemeniz
     }
     ```
 
-2. Bu dosyayı **OptOutTemplate.json** olarak yerel bir klasöre kaydedin.
+2. Bu dosyayı bir yerel klasöre **Optouttemplate. JSON** olarak kaydedin.
 
 3. Aşağıdaki JSON sözdizimini dosyanıza yapıştırın:
 
@@ -115,21 +115,21 @@ Azure CLI'yi kullanmayı seçerseniz, öncelikle CLI'yi yerel olarak yüklemeniz
     }
     ```
 
-4. Seçili kümenin **Özellikleri** sayfasında bulabileceğiniz AKS kümesinin değerlerini kullanarak **aksResourceId** ve **aksResourceLocation** değerlerini düzenleyin.
+4. **Aksresourceıd** ve **Aksresourcelocation** değerlerini, seçilen kümenin **Özellikler** sayfasında bulabileceğiniz aks kümesinin değerlerini kullanarak düzenleyin.
 
     ![Kapsayıcı özellikleri sayfası](media/container-insights-optout/container-properties-page.png)
 
-    **Özellikler** sayfasındayken, **Çalışma Alanı Kaynak Kimliğini**de kopyalayın. Günlük Analizi çalışma alanını daha sonra silmeye karar verirseniz, bu değer gereklidir. Log Analytics çalışma alanı bu işlemin bir parçası olarak gerçekleştirilmez.
+    **Özellikler** sayfasında, **çalışma alanı kaynak kimliğini**de kopyalayın. Log Analytics çalışma alanını daha sonra silmek istediğinize karar verirseniz bu değer gereklidir. Log Analytics çalışma alanı silindiğinde bu işlemin bir parçası olarak yapılmaz.
 
-    AKS kümesi için belirtilen varolan etiket değerleriyle eşleşecek **şekilde aksResourceTagValues** değerlerini düzenle.
+    **Aksresourcetagvalues** değerlerini, aks kümesi için belirtilen varolan etiket değerleriyle eşleşecek şekilde düzenleyin.
 
-5. Bu dosyayı **OptOutParam.json** olarak yerel bir klasöre kaydedin.
+5. Bu dosyayı bir yerel klasöre **Optoutparam. JSON** olarak kaydedin.
 
 6. Bu şablonu dağıtmaya hazırsınız.
 
-### <a name="remove-the-solution-using-azure-cli"></a>Azure CLI'yi kullanarak çözümü kaldırma
+### <a name="remove-the-solution-using-azure-cli"></a>Azure CLı kullanarak çözümü kaldırma
 
-Çözümü kaldırmak ve AKS kümenizdeki yapılandırmayı temizlemek için Linux'ta Azure CLI ile aşağıdaki komutu uygulayın.
+Çözümü kaldırmak ve AKS kümenizdeki yapılandırmayı temizlemek için Linux 'ta Azure CLı ile aşağıdaki komutu yürütün.
 
 ```azurecli
 az login   
@@ -143,11 +143,11 @@ Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamaml
 ProvisioningState       : Succeeded
 ```
 
-### <a name="remove-the-solution-using-powershell"></a>PowerShell kullanarak çözümü kaldırın
+### <a name="remove-the-solution-using-powershell"></a>PowerShell 'i kullanarak çözümü kaldırma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Çözümü kaldırmak ve yapılandırmayı AKS kümenizden temizlemek için şablonu içeren klasörde aşağıdaki PowerShell komutlarını uygulayın.    
+Çözümü kaldırmak ve AKS kümenizdeki yapılandırmayı temizlemek için şablonu içeren klasörde aşağıdaki PowerShell komutlarını yürütün.    
 
 ```powershell
 Connect-AzAccount
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çalışma alanı yalnızca kümenin izlenmesini desteklemek için oluşturulduysa ve artık gerek yoksa, el ile silmeniz gerekir. Çalışma alanını nasıl sileceksiniz hakkında bilginiz yoksa, [bkz.](../../log-analytics/log-analytics-manage-del-workspace.md) 4. adımda daha önce kopyalanan **Çalışma Alanı Kaynak Kimliğini** unutmayın, buna ihtiyacınız olacak.
+Çalışma alanı yalnızca kümeyi izlemeyi desteklemek için oluşturulduysa ve artık gerekmiyorsa, el ile silmeniz gerekir. Bir çalışma alanının nasıl silineceği konusunda bilgi sahibi değilseniz, bkz. [Azure Portal bir Azure Log Analytics çalışma alanını silme](../../log-analytics/log-analytics-manage-del-workspace.md). 4. adımda daha önce kopyalanmış **çalışma alanı kaynak kimliği** hakkında unutmayın, bunun için gerekli olacaktır.

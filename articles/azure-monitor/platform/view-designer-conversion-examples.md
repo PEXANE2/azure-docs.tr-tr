@@ -1,5 +1,5 @@
 ---
-title: Çalışma kitapları dönüştürme örneklerine Azure Monitor görünüm tasarımcısı
+title: Azure Izleyici Görünüm Tasarımcısı çalışma kitapları dönüştürme örnekleri
 description: ''
 author: austonli
 ms.author: aul
@@ -7,19 +7,19 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: b50d8cfa4731c487997e2bf431a9c71eff08f5d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274170"
 ---
-# <a name="view-designer-conversion-examples"></a>Tasarımcı dönüşüm örneklerini görüntüleme
+# <a name="view-designer-conversion-examples"></a>Görünüm Tasarımcısı dönüştürme örnekleri
 
-Görünüm tasarımcısı sekmeli çalışma kitabını çoğaltmak için, araç çubuğundaki </> simgesiyle gösterilen Advanced düzenleyicisine aşağıdaki kodu kopyalayıp yapıştırın
+Görünüm Tasarımcısı sekmeli çalışma kitabını çoğaltmak için aşağıdaki kodu kopyalayın ve araç çubuğundaki </> simgesiyle belirtilen gelişmiş düzenleyiciye yapıştırın
 
-![Gelişmiş Düzenleyici Araç Çubuğu](media/view-designer-conversion-examples/toolbar.png)
+![Gelişmiş Düzenleyici araç çubuğu](media/view-designer-conversion-examples/toolbar.png)
 
-Kullanıcıların sorgu ayarlarını ve aboneliklerini kendi erişilebilir kaynaklarına güncellemeleri gerekebilir
+Kullanıcıların sorgu ayarlarını ve aboneliklerini kendi erişilebilir kaynaklarına güncelleştirmeleri gerekebilir
 
 ## <a name="vertical"></a>Dikey
 
@@ -337,7 +337,7 @@ Kullanıcıların sorgu ayarlarını ve aboneliklerini kendi erişilebilir kayna
 }
 ```
 
-## <a name="tabbed"></a>Sekmeli 
+## <a name="tabbed"></a>İşleminde 
 
 ```Json
 {

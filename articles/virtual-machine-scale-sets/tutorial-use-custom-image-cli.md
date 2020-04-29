@@ -1,5 +1,5 @@
 ---
-title: Öğretici - Azure CLI ile ayarlanmış bir ölçekte özel bir VM görüntüsü kullanma
+title: Öğretici-Azure CLı ile bir ölçek kümesinde özel bir VM görüntüsü kullanma
 description: Azure CLI kullanarak, sanal makine ölçek kümesini dağıtmak için kullanabileceğiniz bir özel sanal makine görüntüsünün nasıl oluşturulacağını öğrenin
 author: cynthn
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 6d9f625bf425a33b690fd303a4f13d032bd59fa0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062710"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümeleri için özel görüntü oluşturma ve kullanma
@@ -24,7 +24,7 @@ ms.locfileid: "80062710"
 > * Özel bir sanal makine görüntüsü oluşturma
 > * Özel sanal makine görüntüsünü kullanan bir ölçek kümesini dağıtma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,7 +91,7 @@ Sanal makinenin serbest bırakılıp genelleştirilmesi birkaç dakika sürebili
 
 Şimdi [az image create](/cli//azure/image) komutunu kullanarak sanal makinenin bir görüntüsünü oluşturun. Aşağıdaki örnek, sanal makinenizden *myImage* adlı bir görüntü oluşturur:
 
-> [NOT] Kaynak Grubu ve Sanal Makine konumu farklıysa, `--location` görüntüyü oluşturmak için kullanılan vm kaynağının konumunu belirli bir şekilde özel olarak aşağıdaki komutlara parametre ekleyebilirsiniz. 
+> NOTUN Kaynak grubu ve sanal makine konumu farklıysa, görüntüyü oluşturmak için kullanılan kaynak VM 'nin `--location` konumunu bir yere eklemek için aşağıdaki komutlara parametresini ekleyebilirsiniz. 
 
 ```azurecli-interactive
 az image create \

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure CLI ile Azure kaynakları için özel bir rol oluşturma'
-description: Bu öğreticide Azure CLI'yi kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
+title: 'Öğretici: Azure CLı ile Azure kaynakları için özel bir rol oluşturma'
+description: Bu öğreticide Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturmaya başlayın.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239871"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Öğretici: Azure CLI'yi kullanarak Azure kaynakları için özel bir rol oluşturma
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Öğretici: Azure CLı kullanarak Azure kaynakları için özel bir rol oluşturma
 
-Azure [kaynakları için yerleşik roller](built-in-roles.md) kuruluşunuzun özel gereksinimlerini karşılamazsa, kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure CLI'yı kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemindeki her şeyi görüntülemesini ve ayrıca destek biletlerini açmasını sağlar.
+[Azure kaynaklarına yönelik yerleşik roller](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi oluşturabilirsiniz. Bu öğretici için Azure CLI'yı kullanarak Reader Support Tickets adlı özel bir rol oluşturacaksınız. Özel rol, kullanıcının bir aboneliğin yönetim düzlemine ait her şeyi görüntülemesine olanak sağlar ve destek biletlerini de açabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel rol oluşturma
@@ -32,18 +32,18 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Özel rolü güncelleştirme
 > * Özel rolü silme
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 - [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
-- [Azure Bulut Kabuğu](../cloud-shell/overview.md) veya [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Cloud Shell](../cloud-shell/overview.md) veya [Azure CLI](/cli/azure/install-azure-cli)
 
 ## <a name="sign-in-to-azure-cli"></a>Azure CLI'da oturum açma
 
-[Azure CLI'de](/cli/azure/authenticate-azure-cli)oturum açın.
+[Azure CLI](/cli/azure/authenticate-azure-cli)'da oturum açın.
 
 ## <a name="create-a-custom-role"></a>Özel rol oluşturma
 
@@ -61,7 +61,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 1. ReaderSupportRole.json dosyasını bir düzenleyicide açıp aşağıdaki JSON kodunu ekleyin.
 
-    Farklı özellikler hakkında bilgi için [Azure kaynakları için Özel rolleri'ne](custom-roles.md)bakın.
+    Farklı özellikler hakkında daha fazla bilgi için bkz. [Azure kaynakları Için özel roller](custom-roles.md).
 
     ```json
     {

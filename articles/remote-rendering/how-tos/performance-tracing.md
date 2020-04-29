@@ -1,131 +1,131 @@
 ---
 title: İstemci tarafı performans izlemeleri oluşturma
-description: WPF kullanarak istemci tarafı performans profilleme için en iyi uygulamalar
+description: WPF kullanarak istemci tarafı performans profili oluşturma için en iyi yöntemler
 author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
 ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681317"
 ---
 # <a name="create-client-side-performance-traces"></a>İstemci tarafı performans izlemeleri oluşturma
 
-Azure Uzaktan İşleme performansının istenilen kadar iyi olmamasının birçok nedeni vardır. Bulut sunucusundaki saf görüntüleme performansının yanı sıra, özellikle ağ bağlantısının kalitesi deneyim üzerinde önemli bir etkiye sahiptir. Sunucunun performansını profillemek için, bölüm [Sunucu tarafı performans sorgularına](../overview/features/performance-queries.md)bakın.
+Azure uzaktan Işleme performansının istendiği kadar iyi olmasının pek çok nedeni vardır. Bulut sunucusunda saf işleme performansının dışında, özellikle ağ bağlantısının kalitesi deneyim üzerinde önemli bir etkiye sahiptir. Sunucunun performansını profili eklemek için, bölüm [sunucu tarafı performans sorguları](../overview/features/performance-queries.md)bölümüne bakın.
 
-Bu *bölümde, performans izlemeleri*aracılığıyla olası istemci tarafındaki darboğazların nasıl belirlenecek olarak tanımlanmaları üzerinde duruluyor.
+Bu bölümde *performans izlemeleri*aracılığıyla olası istemci tarafı performans sorunlarını belirleme konusu ele alınmaktadır.
 
 ## <a name="getting-started"></a>Başlarken
 
-Windows performans izleme işlevinde yeniyseniz, bu bölümde başlamanıza yardımcı olacak en temel terimler ve uygulamalardan bahsedilir.
+Windows performans izleme işlevselliğine yeni başladıysanız, bu bölüm başlamanıza olanak sağlayacak en temel hüküm ve uygulamalardan bahsetmeye sunulacaktır.
 
 ### <a name="installation"></a>Yükleme
 
-ARR ile izleme yapmak için kullanılan uygulamalar, tüm Windows geliştirme için kullanılabilecek genel amaçlı araçlardır. Bunlar [Windows Performans Araç Seti](https://docs.microsoft.com/windows-hardware/test/wpt/)aracılığıyla sağlanır. Bu araç kitini almak için [Windows Değerlendirme ve Dağıtım Kiti'ni](https://docs.microsoft.com/windows-hardware/get-started/adk-install)indirin.
+ARR ile izleme yapmak için kullanılan uygulamalar, tüm Windows geliştirme için kullanılabilen genel amaçlı araçlardır. [Windows performans araç seti](https://docs.microsoft.com/windows-hardware/test/wpt/)aracılığıyla sağlanırlar. Bu araç setini almak için [Windows değerlendirme ve dağıtım seti](https://docs.microsoft.com/windows-hardware/get-started/adk-install)'ni indirin.
 
 ### <a name="terminology"></a>Terminoloji
 
-Performans izlemeleri hakkında bilgi ararken, kaçınılmaz olarak bir dizi terimle karşılaşabilirsiniz. En önemlileri şunlardır:
+Performans izlemeleriyle ilgili bilgi ararken, bir dizi terim boyunca kaçınılmaz. En önemli olanlar şunlardır:
 
 * `ETW`
 * `ETL`
 * `WPR`
 * `WPA`
 
-**ETW** [ **W**indows için **E**vent **T**yarış anlamına](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)gelir. Windows'da yerleşik olan verimli çekirdek düzeyinde izleme olanağının yalnızca kapsamlı adıdır. ETW'yi destekleyen uygulamalar performans sorunlarını izlemek için yardımcı olabilecek eylemleri günlüğe kaydetmek için etkinlik *izleme* olarak adlandırılır. Varsayılan olarak, işletim sistemi zaten disk erişimleri, görev anahtarları ve benzeri şeyler için olaylar yayan. ARR gibi uygulamalar ayrıca, örneğin bırakılan çerçeveler, ağ gecikmesi vb. hakkında özel olaylar yarar.
+**ETW** , [ **W**Windows için **T**bir **E-pul**kasasının](https://docs.microsoft.com/windows/win32/etw/about-event-tracing)temsil eder. Bu, Windows 'da yerleşik olarak bulunan etkili çekirdek düzeyi izleme özelliği için çok daha fazla bir addır. Bu, ETW 'yi destekleyen uygulamalar, performans sorunlarını izlemenize yardımcı olabilecek günlük eylemlerine olay yayabileceğinden *olay* izleme olarak adlandırılır. Varsayılan olarak, işletim sistemi, disk erişimleri, görev geçişleri gibi şeyler için olayları zaten yayar. ARR gibi uygulamalar, bırakılan çerçeveler, ağ gecikmesi vb. gibi özel olayları da yayar.
 
-**ETL** **E**vent **T**yarış **L**ogging anlamına gelir. Bu yalnızca bir izlemenin toplandığı (günlüğe kaydedilmiş) olduğu ve bu nedenle genellikle izleme verilerini depolayan dosyalar için dosya uzantısı olarak kullanıldığı anlamına gelir. Bu nedenle, bir izleme yaptığınızda, \*genellikle daha sonra bir .etl dosyası olacaktır.
+**ETL** , **E-pul**yarış/ **Çıkış oranını**temsil eder. **T** Yalnızca bir izlemenin toplanması (günlüğe kaydedilmiş) ve bu nedenle genellikle izleme verilerini depolayan dosyalar için dosya uzantısı olarak kullanıldığı anlamına gelir. Bu nedenle, bir izleme yaptığınızda genellikle bir \*. ETL dosyanız olur.
 
-**WPR,** [ **W**indows **P**erformance **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) anlamına gelir ve olay izlerinin kaydını başlatan ve durduran uygulamanın adıdır. WPR, hangi olayları\*tam olarak günlüğe kaydetmek için yapılandıran bir profil dosyası (.wprp) alır. Böyle `wprp` bir dosya ARR SDK ile sağlanır. Bir masaüstü bilgisayarda izleme ler yaparken, WPR'yi doğrudan başlatabilirsiniz. HoloLens üzerinde bir izleme yaparken, genellikle yerine web arayüzü üzerinden gidin.
+**WPR** , [ **W**Windows **P**erformans **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) için temsil eder ve olay izlemelerinin kaydını başlatan ve durduran uygulamanın adıdır. WPR, günlüğe kaydedilecek tam olayları\*yapılandıran bir profil dosyası (. wprp) alır. Bu tür `wprp` bir dosya ARR SDK ile birlikte sağlanır. Bir masaüstü BILGISAYAR üzerinde izleme yaparken, WPR 'yi doğrudan başlatabilirsiniz. HoloLens üzerinde bir izleme yaparken, genellikle bunun yerine web arabiriminden ilerleirsiniz.
 
-**WPA,** [ **W**indows **P**erformance **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) anlamına gelir ve .etl dosyalarını açmak \*ve performans sorunlarını belirlemek için verileri elemek için kullanılan GUI uygulamasının adıdır. WPA, verileri çeşitli ölçütlere göre sıralamanızı, verileri çeşitli şekillerde görüntülemenizi, ayrıntıları araştırmanızı ve bilgileri ilişkilendirmenizi sağlar.
+**WPA** , [ **W**Windows **P**erformans **A**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) IÇIN temsil eder ve. etl dosyalarını açmak \*için kullanılan GUI uygulamasının adı ve performans sorunlarını belirlemek için verileri veri aracılığıyla kullanır. WPA, verileri çeşitli ölçütlere göre sıralamanıza, verileri çeşitli yollarla görüntülemenize, ayrıntıları daha sonra görmenizi ve bilgileri ilişkilendirmenize olanak tanır.
 
-ETL izlemeleri herhangi bir Windows aygıtında (yerel PC, HoloLens, bulut sunucusu, vb.) oluşturulabilirken, genellikle diske kaydedilir ve bir masaüstü bilgisayarda WPA ile analiz edilir. ETL dosyaları, diğer geliştiricilere bir göz atabilmeleri için gönderilebilir. Ancak dosya yolları ve IP adresleri gibi hassas bilgilerin ETL izlerinde yakalanıp alınabileceğini unutmayın. ETW'yi iki şekilde kullanabilirsiniz: izleri kaydetmek veya izleri çözümlemek. İzleme leri kaydetmek doğrudan ileridir ve minimum kurulum gerektirir. Öte yandan izleri analiz wpa aracı ve araştırdığınız sorun hem iyi bir anlayış gerektirir. WPA öğrenme için genel malzeme aşağıda verilecektir, yanı sıra arr özgü izleri yorumlamak için nasıl yönergeleri.
+ETL izlemeleri herhangi bir Windows cihazında (yerel bılgısayar, HoloLens, bulut sunucusu vb.) oluşturulalese de, genellikle diske kaydedilir ve bir masaüstü BILGISAYAR üzerinde WPA ile çözümlenir. ETL dosyaları, bu geliştiricilerin bir görünüme sahip olması için diğer geliştiricilere gönderilebilir. Dosya yolları ve IP adresleri gibi hassas bilgilerin ETL izlemelerinde yakalanabileceğini unutmayın. ETW 'yi iki şekilde kullanabilirsiniz: izlemeleri kaydetmek veya izlemeleri çözümlemek için. İzleme kaydı, düzenli ve en az kurulum gerektirir. Diğer yandan izlemeleri analiz etmek, hem WPA aracının hem de araştırdığınız sorunun anlaşılmasına gerek duyar. Öğrenimi WPA için genel malzeme aşağıda verilmiştir ve ayrıca, ARR 'e özgü izlemelerin nasıl yorumlanacağı konusunda yönergeler sağlanır.
 
-## <a name="recording-a-trace-on-a-local-pc"></a>Yerel bir bilgisayarda izleme kaydetme
+## <a name="recording-a-trace-on-a-local-pc"></a>Yerel bir bılgısayarda izleme kaydetme
 
-ARR performans sorunlarını belirlemek için doğrudan HoloLens üzerinde izleme yapmayı tercih etmelisiniz, çünkü gerçek performans özelliklerinin anlık görüntüsünü elde etmenin tek yolu bu. Ancak, özellikle HoloLens performans kısıtlamaları olmadan bir izleme yapmak istiyorsanız veya sadece WPA nasıl kullanılacağını öğrenmek istiyorsanız ve gerçekçi bir izleme gerekmez, burada bunu yapmak için nasıl.
+ARR performans sorunlarını belirlemek için, gerçek performans özelliklerinin anlık görüntüsünü almanın tek yolu olduğundan, bir HoloLens üzerinde doğrudan bir izleme yapmayı tercih etmelisiniz. Ancak, HoloLens performans kısıtlamaları olmadan bir izleme yapmak istiyorsanız veya yalnızca WPA 'Yı kullanmayı ve gerçekçi bir izlemeye ihtiyaç duymasını öğrenmek istiyorsanız, bunun nasıl yapılacağını burada bulabilirsiniz.
 
 ### <a name="wpr-configuration"></a>WPR yapılandırması
 
-1. Başlat menüsünden [Windows Performans Kaydedicisini](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) *başlatın.*
-1. **Diğer Seçenekleri** Genişlet
-1. **Profil Ekle'yi tıklatın...**
-1. *AzureRemoteRenderingNetworkProfiling.wprp*dosyasını seçin. Bu dosyayı ARR SDK'da *Araçlar/ETLProfiles*altında bulabilirsiniz.
-   Profil artık *Özel ölçümler*altında WPR listelenecektir. Tek etkin profil olduğundan emin olun.
-1. *Birinci seviye triajı*genişlet:
-    * Tek yapmak istediğiniz ARR ağ olaylarının hızlı bir izini yakalamaksa, bu seçeneği **devre dışı edin.**
-    * ARR ağ olaylarını CPU veya bellek kullanımı gibi diğer sistem özellikleriyle ilişkilendirmeniz gerekiyorsa, bu seçeneği **etkinleştirin.**
-    * Bu seçeneği etkinleştirirseniz, izleme büyük olasılıkla boyutu birden çok gigabayt olacak ve kaydetmek ve WPA açık uzun bir zaman alır.
+1. *Başlat menüsünden* [Windows performans Kaydedicisi](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) ' ni başlatın.
+1. **Diğer seçenekleri** Genişlet
+1. **Profil ekle 'ye tıklayın...**
+1. *Azureremoterenderingnetworkprofil oluşturma. wprp*dosyasını seçin. Bu dosyayı, *Araçlar/ETLProfiles*altındaki ARR SDK 'sında bulabilirsiniz.
+   Profil artık *özel ölçümler*altında WPR 'de listelenecektir. Etkin olan tek profil olduğundan emin olun.
+1. *İlk düzey önceliklendirme*'i Genişlet:
+    * Tek yapmak istiyorsanız, ARR ağ olaylarının hızlı bir izlemesini yakalayın, bu seçeneği **devre dışı bırakın** .
+    * ARR ağ olaylarını CPU veya bellek kullanımı gibi diğer sistem özellikleriyle ilişkilendirmenize gerek duyuyorsanız, bu seçeneği **etkinleştirin** .
+    * Bu seçeneği etkinleştirirseniz, izlemenin büyük olasılıkla boyutu büyük olasılıkla çok gigabayt olur ve WPA 'da kaydedilmesi ve açılması uzun zaman alır.
 
-Daha sonra WPR yapılandırmanız şu şekilde görünmelidir:
+Daha sonra WPR yapılandırmanızın şöyle görünmesi gerekir:
 
 ![WPR yapılandırması](./media/wpr.png)
 
 ### <a name="recording"></a>Kayıt
 
-İzleme kaydetmeye başlamak için **Başlat'ı** tıklatın. İstediğiniz zaman kaydı başlatıp durdurabilirsiniz; bunu yapmadan önce uygulamanızı kapatmanız gerekmez. Gördüğünüz gibi, ETW her zaman tüm sistem için bir izleme kaydedecektir gibi, hangi uygulama izlemek için belirtmenize gerek yoktur. Dosya, `wprp` hangi olay türlerinin kaydedilen olduğunu belirtir.
+İzlemeyi kaydetmeye başlamak için **Başlat** ' a tıklayın. Kaydı dilediğiniz zaman başlatabilir ve durdurabilirsiniz. Bunu yapmadan önce uygulamanızı kapatmanız gerekmez. Aynı şekilde, ETW 'nin tüm sistem için her zaman bir izleme kaydedebileceği için, hangi uygulamanın izlendiğinizi belirtmeniz gerekmez. Dosya `wprp` , kaydedilecek olay türlerini belirtir.
 
-Kaydı durdurmak ve ETL dosyasını nerede depolayacağınızda belirtmek için **Kaydet'i** tıklatın.
+Kaydı durdurmak için **Kaydet** ' e tıklayın ve etl dosyasının depolanacağı yeri belirtin.
 
-Artık doğrudan WPA'da açabileceğiniz veya başka birine gönderebileceğiniz bir ETL dosyanız var.
+Artık doğrudan WPA 'da açabileceğiniz ya da başka birine gönderebileceğiniz bir ETL dosyanız var.
 
-## <a name="recording-a-trace-on-a-hololens"></a>HoloLens'te iz kaydetme
+## <a name="recording-a-trace-on-a-hololens"></a>HoloLens üzerinde izleme kaydetme
 
-HoloLens'te bir izleme kaydetmek için cihazınızı başlatın ve *Cihaz Portalını*açmak için IP adresini tarayıcıya girin.
+HoloLens üzerinde bir izleme kaydetmek için cihazınızı önyükleyin ve *cihaz portalını*açmak için BIR tarayıcıya IP adresini girin.
 
-![Cihaz Portalı](./media/wpr-hl.png)
+![Cihaz portalı](./media/wpr-hl.png)
 
-1. Solda, *Performans > Performans İzleme'ye*gidin.
-1. **Özel profilleri** seçin
-1. **Gözat'ı tıklatın...**
-1. *AzureRemoteRenderingNetworkProfiling.wprp*dosyasını seçin. Bu dosyayı ARR SDK'da *Araçlar/ETLProfiles*altında bulabilirsiniz.
-1. **İzle Başlat'ı** tıklatın
-1. HoloLens şu anda bir iz kaydediyor. Araştırmak istediğiniz performans sorunlarını tetiklediğinden emin olun. Ardından **İzlemeyi Durdur'u**tıklatın.
-1. İzleme, web sayfasının alt kısmında listelenir. ETL dosyasını indirmek için sağ taraftaki disk simgesini tıklatın.
+1. Sol tarafta *performans > performansı izleme*' ye gidin.
+1. **Özel profiller** seçin
+1. **Araştır 'a tıklayın...**
+1. *Azureremoterenderingnetworkprofil oluşturma. wprp*dosyasını seçin. Bu dosyayı, *Araçlar/ETLProfiles*altındaki ARR SDK 'sında bulabilirsiniz.
+1. **Izlemeyi Başlat** 'a tıklayın
+1. HoloLens şimdi bir izleme kaydediyor. Araştırmak istediğiniz performans sorunlarını tetiklediğinizden emin olun. Sonra **Izlemeyi durdur**' a tıklayın.
+1. İzleme, Web sayfasının alt kısmında listelenecektir. ETL dosyasını indirmek için sağ taraftaki disk simgesine tıklayın.
 
-Artık doğrudan WPA'da açabileceğiniz veya başka birine gönderebileceğiniz bir ETL dosyanız var.
+Artık doğrudan WPA 'da açabileceğiniz ya da başka birine gönderebileceğiniz bir ETL dosyanız var.
 
-## <a name="analyzing-traces-with-wpa"></a>WPA ile izlemeleri analiz etme
+## <a name="analyzing-traces-with-wpa"></a>WPA ile izlemeleri çözümleme
 
 ### <a name="wpa-basics"></a>WPA temelleri
 
-Windows Performans Çözümleyicisi, ETL dosyalarını açmak ve izleri incelemek için standart bir araçtır. WPA'nın nasıl çalıştığına ilişkin bir açıklama bu makalenin kapsamı dışındadır. Başlamak için şu kaynaklara göz atın:
+Windows Performans Çözümleyici, ETL dosyalarını açmak ve izlemeleri denetlemek için standart bir araçtır. Bu makalede WPA 'nın nasıl çalıştığı hakkında bir açıklama. Başlamak için şu kaynaklara göz atın:
 
-* İlk genel bakış için [tanıtım videolarını](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) izleyin.
-* WPA'nın kendisi, ortak adımları açıklayan bir *Başlarken* sekmesine sahiptir. Kullanılabilir konulara bir göz atın. Özellikle "Verileri Görüntüle" altında, belirli veriler için grafiklerin nasıl oluşturulabildiğini hızlı bir şekilde tanıtabilirsiniz.
-* Bu web [sitesinde](https://randomascii.wordpress.com/2015/09/24/etw-central/)mükemmel bilgiler var, ancak, tüm yeni başlayanlar için ilgili değildir.
+* İlk genel bakış için [Tanıtım videolarını](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) izleyin.
+* WPA 'nın, yaygın adımları açıklayan bir *Başlangıç* sekmesi vardır. Mevcut konulara göz atın. Özellikle "verileri görüntüle" bölümünde, belirli veriler için grafik oluşturma hakkında hızlı bir giriş alırsınız.
+* [Bu web sitesi hakkında](https://randomascii.wordpress.com/2015/09/24/etw-central/)harika bilgiler vardır ancak bunların hepsi yeni başlayanlar için uygun değildir.
 
 ### <a name="graphing-data"></a>Verileri grafikleme
 
-ARR izleme ile başlamak için, aşağıdaki parçaları bilmek iyidir.
+ARR izlemeyi kullanmaya başlamak için aşağıdaki parçaların öğrenmesi iyi.
 
 ![Performans grafiği](./media/wpa-graph.png)
 
-Yukarıdaki resimde, verilerin izlenmesi tablosu ve aynı verilerin grafik gösterimi gösterilmektedir.
+Yukarıdaki görüntüde, bir izleme verileri tablosu ve aynı verilerin grafik temsili gösterilmektedir.
 
-Alttaki tabloda, sarı (altın) çubuğu ve mavi çubuğu not edin. Bu çubukları sürükleyebilir ve herhangi bir konuma yerleştirebilirsiniz.
+Alttaki tabloda sarı (altın) çubuğun ve mavi çubuğun olduğunu aklınızda edin. Bu çubukları sürükleyip istediğiniz konuma yerleştirebilirsiniz.
 
-**Sarı çubuğun solundaki** tüm sütunlar **anahtar**olarak yorumlanır. Anahtarlar, sol üst penceredeki ağacı yapılandırmak için kullanılır. Burada iki *temel* sütun var, "Sağlayıcı Adı" ve "Görev Adı". Sonuç olarak sol üst penceredeki ağaç yapısı iki kat derinliğindedir. Sütunları yeniden sıralarsanız veya anahtar alanından sütun ekler veya kaldırırsanız, ağaç görünümündeki yapı değişir.
+**Sarı çubuğun solundaki tüm sütunlar** **anahtarlar**olarak yorumlanır. Anahtarlar, ağacı üst sol pencerede yapılandırmak için kullanılır. Burada, "sağlayıcı adı" ve "görev adı" olmak üzere iki *anahtar* sütunu var. Sonuç olarak sol üst penceredeki ağaç yapısı iki düzeyden daha derin. Sütunları yeniden sıralar veya anahtar alanından sütun ekleyip kaldırırsanız, ağaç görünümündeki yapı değişir.
 
-Sağ üst teki **grafik ekranı** için **mavi çubuğun sağındaki sütunlar** kullanılır. Çoğu zaman yalnızca ilk sütun kullanılır, ancak bazı grafik modları birden çok veri sütunu gerektirir. Satır grafiklerin çalışması için, bu sütundaki *toplama modunun* ayarlanması gerekir. 'Avg' veya 'Max' kullanın. Toplama modu, bir piksel birden çok olayiçeren bir aralığı kapladığında, grafiğin belirli bir pikseldeki değerini belirlemek için kullanılır. Bu, toplamayı 'Toplam'a ayarlayıp yakınlaştırıp uzaklaştırarak gözlemlenebilir.
+**Mavi çubuğun sağındaki sütunlar** , sağ üst penceredeki **grafik görüntüsü** için kullanılır. Çoğu zaman yalnızca ilk sütun kullanılır, ancak bazı grafik modları birden çok veri sütunu gerektirir. Çizgi grafiklerin çalışması için söz konusu sütundaki *toplama modunun* ayarlanması gerekir. ' AVG ' veya ' Max ' kullanın. Toplama modu, bir piksel birden çok olaya sahip bir aralığı kapsıyorsa, belirtilen pikselde grafiğin değerini belirlemede kullanılır. Bu, toplama ' Sum ' olarak ayarlanarak ve sonra yakınlaştırılırken ve uzaklaştırarak gözlemlenebilir.
 
-Ortadaki sütunların özel bir anlamı yoktur.
+Ortadaki sütunlarda özel bir anlamı yoktur.
 
-![Etkinlik görünümü](./media/wpa-event-view.png)
+![Olaylar görünümü](./media/wpa-event-view.png)
 
-Genel *Olaylar Görünümü* Düzenleyicisi'nde tüm sütunları görüntülenecek şekilde, toplama modunu, sıralamayı ve hangi sütunların anahtar olarak veya grafik olarak kullanıldığını yapılandırabilirsiniz. Yukarıdaki örnekte, **Alan 2** etkindir ve Alan 3 - 6 devre dışı bırakılır. Alan 2 genellikle bir ETW olayının ilk *özel veri* alanıdır ve bu nedenle bazı ağ gecikme değerini temsil eden ARR "FrameStatistics" olayları için kullanılır. Bu olayın diğer değerlerini görmek için diğer "Alan" sütunlarını etkinleştirin.
+*Genel olaylar görünümü Düzenleyicisi* 'nde, görüntülenecek tüm sütunları, toplama modunu, sıralamayı ve hangi sütunların anahtar veya grafik olarak kullanıldığını yapılandırabilirsiniz. Yukarıdaki örnekte, **alan 2** etkindir ve 3-6 alanı devre dışı bırakılır. Alan 2 genellikle ETW olayının ilk *özel veri* alanıdır ve bu nedenle, bazı ağ gecikmesi değerlerini temsil eden ARR "Framestatistik" olayları için. Bu olayın daha fazla değerini görmek için diğer "alan" sütunlarını etkinleştirin.
 
-### <a name="presets"></a>Önayarları
+### <a name="presets"></a>'Nı
 
-Bir izlemeyi düzgün bir şekilde çözümlemek için, kendi iş akışınızı ve tercih edilen veri ekranınızı çözmeniz gerekir. Ancak, ARR'a özel olaylar açısından hızlı bir genel gün alınabilmek için Windows Software Protection Platform profilini ve dosyaları *Tools/ ETLProfiles*klasöründe açTıkırılıyor. Tam profil yüklemek için, WPA menü çubuğundan *Profiller > Uygula...'ı* seçin veya *Hazır Ayarlarım* paneli *(Ön Ayarlarım)*> Açılan Lar panelini açın ve *İçe Aktar'ı*seçin. Eski aşağıdaki resimde olduğu gibi tam bir WPA yapılandırması kuracak. İkincisi yalnızca çeşitli görünüm yapılandırmaları için ön ayarlar yapar ve arr olay verilerinin belirli bir parçası bakmak için hızlı bir görünüm açmak için izin verir.
+Bir izlemeyi doğru bir şekilde analiz etmek için kendi iş akışınızı ve tercih edilen veri görüntülemeyi belirlemeniz gerekir. Bununla birlikte, ARR 'e özgü olaylara hızlı bir genel bakış alabilmek için, Windows yazılım koruma platformu profili ve ön ayar dosyalarını klasör *araçları/ETLProfiles*klasörüne dahil ediyoruz. Tam bir profili yüklemek için, > profiller ' i seçin *..* . WPA menü çubuğundan veya *ön ayarlarım* panelini açın (*pencere Önayarlarımı >* ve *içeri aktar*' ı seçin. İlki, aşağıdaki görüntüde olduğu gibi tamamen bir WPA yapılandırması ayarlayacaktır. İkincisi yalnızca çeşitli görünüm yapılandırmalarının ön ayarlarını yapar ve belirli bir ARR olay verisi parçasına bakmak için hızlı bir şekilde bir görünüm açmanıza olanak tanır.
 
-![Önayarları](./media/wpa-arr-trace.png)
+!['Nı](./media/wpa-arr-trace.png)
 
-Yukarıdaki resimde çeşitli ARR'ye özgü olayların görünümleri ve genel CPU kullanımının bir görünümü gösterilmektedir.
+Yukarıdaki görüntüde, çeşitli ARR 'ya özgü olayların görünümleri ve genel CPU kullanımının görünümü gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

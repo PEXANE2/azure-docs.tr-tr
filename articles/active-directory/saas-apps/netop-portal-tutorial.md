@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Netop Portal ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve Netop Portal arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: NetOp Portal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve NetOp Portal arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,150 +17,150 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75550154"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Öğretici: Netop Portal ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>Öğretici: NetOp Portal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, Netop Portal'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Netop Portal'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, NetOp portalını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. NetOp Portal 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Netop Portal'a erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla Netop Portal'da otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de, NetOp portalına erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak şirket içi portala oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Netop Portal tek oturum açma (SSO) aboneliği ni sağladı.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* NetOp Portal çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* Netop **Portal, IDP'nin** başlattığı SSO'ya destek verdi
+* NetOp portalı **IDP** tarafından başlatılan SSO 'yu destekler
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
+> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
 
-## <a name="adding-netop-portal-from-the-gallery"></a>Galeriden Netop Portal Ekleme
+## <a name="adding-netop-portal-from-the-gallery"></a>Galeriden NetOp Portal ekleme
 
-Netop Portal'ın Azure AD'ye entegrasyonunu yapılandırmak için Galeriden Yönetilen SaaS uygulamaları listenize Netop Portal eklemeniz gerekir.
+NetOp Portal 'ın tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden yönetilen SaaS uygulamaları listenize NetOp Portal eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Netop Portal** yazın.
-1. Sonuç panelinden **Netop Portal'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **NetOp Portal** yazın.
+1. Sonuçlar panelinden **NetOp Portal** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-netop-portal"></a>Netop Portal için Azure AD oturum açma işlemlerini yapılat ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-netop-portal"></a>Newtop portalında Azure AD çoklu oturum açma yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Netop Portal ile yapılandırın ve test edin. SSO'nun çalışması için, Netop Portal'daki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NetOp portalı ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve NetOp portalında ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu Netop Portal ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu, NetOp portalı ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[Netop Portal SSO'yu yapılandırın.](#configure-netop-portal-sso)**
-    1. **[Netop Portal test kullanıcısını oluşturun](#create-netop-portal-test-user)** - Netop Portal'da Kullanıcının Azure AD gösterimine bağlı b.simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[NetOp Portal SSO 'Yu yapılandırma](#configure-netop-portal-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Kullanıcı Azure AD gösterimi ile bağlantılı olan NetOp portalında B. Simon 'a karşılık gelen bir **[En Iyi Portal test kullanıcısı oluşturun](#create-netop-portal-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **Netop Portal** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla ayarla tek oturum** açmada, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **NetOp Portal** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, uygulama **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL'ler Azure ile önceden doldurulmuş durumdadır. Kullanıcının **Kaydet** düğmesini tıklatarak yapılandırmayı kaydetmesi gerekir.
+1. **Temel SAML yapılandırması** bölümünde uygulama, **IDP** tarafından başlatılan modda önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. Kullanıcının **Kaydet** düğmesine tıklayarak yapılandırmayı kaydetmesi gerekir.
 
-1. Netop Portal uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. NetOp portal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/edit-attribute.png)
 
-1. Yukarıdakilere ek olarak, Netop Portal uygulaması, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
+1. En üst portal uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |  Kaynak Özniteliği|
+    | Adı |  Kaynak özniteliği|
     | ---------------| --------- |
-    | NRC-HESAP-KİmLİk | "adfs-demo" |
-    | NRC-E-POSTA | user.userprincipalname |
-    | NRC-GIVEN-NAME | user.givenname |
-    | NRC-SOYAD | user.surname |
-    | NRC-KULLANICI ADI | user.userprincipalname |
-    | nameidentifier | user.userprincipalname |
+    | NRC-HESAP KIMLIĞI | "ADFS tanıtım" |
+    | NRC-E-POSTA | User. UserPrincipalName |
+    | NRC-VERILEN-AD | Kullanıcı. |
+    | NRC-SOYADı | User. soyadı |
+    | NRC-KULLANıCı ADı | User. UserPrincipalName |
+    | nameidentifier | User. UserPrincipalName |
     | | |
 
-1. **SAML** ile Kurulum tek oturum açma bölümünde, **SAML İmza Sertifikası** bölümünde, **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Netop Portal'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. Şirket **portalı ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Netop Portal'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, B. Simon 'u, NetOp portalına erişim vererek Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar **listesinde, Netop Portal'ı**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **NetOp Portal**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-netop-portal-sso"></a>Netop Portal SSO'nun yapılandırılması
+## <a name="configure-netop-portal-sso"></a>NetOp Portal SSO 'yu yapılandırma
 
-**Netop Portal** tarafında tek oturum açma yapılandırmak için, Azure portalından indirilen **Federasyon Metadata XML'ine** ve Giriş URL'sine bağlanmanız gerekir. Azure AD kimlik doğrulaması için NetOp Portalını yapılandırmak için [buradaki](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) belgelerin 3.
+**NetOp Portal** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta verileri XML** ve Azure Portal oturum açma URL 'si gerekir. Azure AD kimlik doğrulaması için NetOp portalını yapılandırmak üzere [buradaki](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) belge adım 3 ' teki yönergeleri izleyin.
 
-### <a name="create-netop-portal-test-user"></a>Netop Portal test kullanıcısı oluşturun
+### <a name="create-netop-portal-test-user"></a>NetOp Portal test kullanıcısı oluştur
 
-Bu bölümde, Netop Portal Britta Simon adlı bir kullanıcı oluşturun. Kullanıcıları Netop Portal platformuna eklemek için [Netop Portal destek ekibiyle](mailto:casemanager@netop.com) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, NetOp portalında Britta Simon adlı bir Kullanıcı oluşturacaksınız. NetOp Portal platformunda kullanıcıları eklemek için [NetOp Portal destek ekibi](mailto:casemanager@netop.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim Paneli'ndeki Netop Portal döşemesini tıklattığınızda, SSO'yu kurduğunuz Netop Portal'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde NetOp Portal kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız NetOp portalında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Netop Portal'ı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile NetOp portalını deneyin](https://aad.portal.azure.com/)
 

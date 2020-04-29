@@ -1,5 +1,5 @@
 ---
-title: Öğretici`:` Erişim anahtarı yla Azure Depolama'ya erişmek için yönetilen bir kimliği kullanma - Linux - Azure AD
+title: Öğretici`:` Access Key-Linux-Azure AD aracılığıyla Azure depolama 'ya erişmek için yönetilen bir kimlik kullanma
 description: Linux VM üzerinde bir sistem tarafından atanmış yönetilen kimlik kullanarak Azure Depolama'ya erişme işleminde size yol gösteren bir öğretici.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86f875fa80f8bb8dd33a369a23f49833162cd417
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273813"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Öğretici: Erişim anahtarı yoluyla Azure Depolama'ya erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma
@@ -42,10 +42,10 @@ Henüz bir depolama hesabınız yoksa, şimdi oluşturacaksınız.  Ayrıca bu a
 
 1. Azure portalının sol üst köşesinde bulunan **+/Yeni hizmet oluştur** düğmesine tıklayın.
 2. **Depolama**'ya ve **Depolama Hesabı**'na tıklayın; yeni bir "Depolama hesabı oluştur" paneli görüntülenir.
-3. Daha sonra kullanacağınız depolama hesabı için bir **Ad** girin.  
+3. Daha sonra kullanacağınız depolama hesabı için bir **ad** girin.  
 4. **Dağıtım modeli** ve **Hesap türü** sırasıyla "Kaynak yöneticisi" ve "Genel amaçlı" olarak ayarlanmalıdır. 
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.
-6. **Oluştur'u**tıklatın.
+6. **Oluştur**' a tıklayın.
 
     ![Yeni depolama hesabı oluşturma](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -66,7 +66,7 @@ Bu adımda, VM sistem tarafından atanan yönetilen kimliğinize depolama hesab�
 
 1. Yeni oluşturulan depolama hesabınıza geri gidin.
 2. Sol bölmedeki **Erişim denetimi (IAM)** bağlantısına tıklayın.  
-3. VM'iniz için yeni bir rol ataması eklemek için sayfanın üstüne **+ rol ataması ekle'yi** tıklatın
+3. VM 'niz için yeni bir rol ataması eklemek üzere sayfanın üstünde **+ rol ataması Ekle** ' ye tıklayın
 4. Sayfanın sağ tarafında, **Rol** olarak  "Depolama Hesabı Anahtarı İşleci Hizmet Rolü" seçeneğini ayarlayın. 
 5. Sonraki açılan listede **Erişimin atanacağı hedef** olarak "Sanal Makine" seçeneğini ayarlayın.  
 6. Ardından, uygun aboneliğin **Abonelik**’te listelendiğinden emin olun ve sonra **Kaynak Grubu**’nu "Tüm kaynak grupları" olarak ayarlayın.  

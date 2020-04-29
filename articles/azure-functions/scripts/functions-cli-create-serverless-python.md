@@ -1,22 +1,22 @@
 ---
-title: Sunucusuz Python işlev uygulaması oluşturma - Azure CLI
-description: Azure CLI'yi kullanarak sunucusuz bir Python işlev uygulaması oluşturun
+title: Sunucusuz Python işlev uygulaması oluşturma-Azure CLı
+description: Azure CLı kullanarak sunucusuz Python işlev uygulaması oluşturma
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 11/23/2019
 ms.openlocfilehash: c55934c42db6bb7248db107b97fb8998163fae8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922633"
 ---
-# <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Azure CLI'yi kullanarak sunucusuz bir Python işlev uygulaması oluşturun
+# <a name="create-a-serverless-python-function-app-using-azure-cli"></a>Azure CLı kullanarak sunucusuz Python işlev uygulaması oluşturma
 
 Bu Azure İşlevleri örnek betiği, işlevleriniz için kapsayıcı olan bir işlev uygulaması oluşturur. 
 
 >[!NOTE]
->Oluşturulan işlev uygulaması Python sürüm 3.6'da çalışır. Python sürüm 3.7 de Azure Fonksiyonları tarafından desteklenir.
+>Oluşturulan işlev uygulaması Python sürüm 3,6 ' de çalışır. Python sürüm 3,7, Azure Işlevleri tarafından da desteklenir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -26,7 +26,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu komut dosyası, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak bir Azure İşlevi uygulaması oluşturur.
+Bu betik, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak bir Azure işlev uygulaması oluşturur.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-consumption-python/create-function-app-consumption-python.sh "Create an Azure Function on a Consumption plan")]
 

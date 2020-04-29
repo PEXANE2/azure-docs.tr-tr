@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: ProMaster ile Azure Active Directory entegrasyonu (Inlogik tarafından) | Microsoft Dokümanlar'
-description: Azure Active Directory ve ProMaster (Inlogik tarafından) arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: ProMaster ile Azure Active Directory tümleştirme (ınlogik tarafından) | Microsoft Docs'
+description: Azure Active Directory ve ProMaster (ınlogik tarafından) arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,84 +15,84 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: b48d11e15d452b72426c5b83d387f9e004e95dc7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80293902"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Öğretici: ProMaster ile Azure Active Directory entegrasyonu (Inlogik tarafından)
+# <a name="tutorial-azure-active-directory-integration-with-promaster-by-inlogik"></a>Öğretici: ProMaster ile Azure Active Directory tümleştirme (ınlogik tarafından)
 
-Bu eğitimde, ProMaster'ı (Inlogik tarafından) Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-ProMaster'ı (Inlogik tarafından) Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, ProMaster 'ı (ınlogik tarafından) Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz.
+Azure AD ile ProMaster 'ı Tümleştirme (ınlogik tarafından), aşağıdaki avantajları sağlar:
 
-* ProMaster erişimi olan Azure AD'de (Inlogik tarafından) kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla ProMaster'da (Inlogik tarafından) (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de ProMaster 'a erişimi olan (ınlogik tarafından) denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla ProMaster (ınlogik tarafından) (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini ProMaster ile yapılandırmak için (Inlogik tarafından) aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini ProMaster (ınlogik tarafından) ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* ProMaster (Inlogik tarafından) tek oturum açma özellikli abonelik
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* ProMaster (ınlogik 'e göre) çoklu oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* ProMaster (Inlogik tarafından) **SP** ve **IDP** sso başlatılan destekler
-* ProMaster'ı (Inlogik tarafından) yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* ProMaster (ınlogik tarafından) **SP** ve **IDP** tarafından başlatılan SSO 'yu destekler
+* ProMaster 'ı yapılandırdıktan sonra (ınlogik tarafından), kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve ne zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>Galeriden ProMaster (Inlogik tarafından) ekleme
+## <a name="adding-promaster-by-inlogik-from-the-gallery"></a>Galeriden ProMaster (ınlogik tarafından) ekleme
 
-ProMaster'ın (Inlogik tarafından) Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize ProMaster 'ı (Inlogik tarafından) eklemeniz gerekir.
+ProMaster (ınlogik tarafından) Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize ProMaster (ınlogik tarafından) eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **ProMaster (Inlogik tarafından)** yazın.
-1. Sonuç panelinden **ProMaster'ı (Inlogik'e göre)** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Promaster (ınlogik tarafından)** yazın.
+1. Sonuçlar panelinden **Promaster (ınlogik tarafından)** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD tek oturum açma işlemlerini **B.Simon**adlı bir test kullanıcısına göre ProMaster (Inlogik tarafından) ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile ProMaster'daki ilgili kullanıcı (Inlogik tarafından) arasında bir bağlantı ilişkisi nin kurulması gerekir.
+Bu bölümde, **B. Simon**adlı bir test kullanıcısına göre Promaster (ınlogik tarafından) ADLı Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ve ProMaster (ınlogik tarafından) ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD oturumaçmayı ProMaster ile (Inlogik tarafından) yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı ProMaster (ınlogik tarafından) yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[ProMaster 'ı (Inlogik tarafından) SSO'ya göre yapılandırın](#configure-promaster-by-inlogik-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[ProMaster (Inlogik tarafından) test kullanıcısı oluşturun](#create-promaster-by-inlogik-test-user)** - Kullanıcının Azure AD gösterimine bağlı ProMaster'da (Inlogik tarafından) B.Simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[ProMaster (ınlogik tarafından) SSO 'Yu yapılandırın](#configure-promaster-by-inlogik-sso)** .
+    * User 'ın Azure AD gösterimine bağlı olan Promaster (ınlogik tarafından) için bir- **[Master (ınlogik tarafından) test kullanıcısı oluşturun](#create-promaster-by-inlogik-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
 
-Azure AD oturum açma işlemlerini ProMaster ile (Inlogik tarafından) yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açmayı ProMaster (ınlogik tarafından) ile yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **ProMaster (Inlogik tarafından)** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **Promaster (by ınlogik)** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |-|-|
@@ -100,7 +100,7 @@ Azure AD oturum açma işlemlerini ProMaster ile (Inlogik tarafından) yapıland
     | `https://<CUSTOMDOMAIN>/SAMLBASE`|
     | |
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |-|-|
@@ -108,9 +108,9 @@ Azure AD oturum açma işlemlerini ProMaster ile (Inlogik tarafından) yapıland
     | `https://<CUSTOMDOMAIN>/SAMLBASE/saml/acs`|
     | |
 
-5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+5. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     | |
     |-|-|
@@ -119,66 +119,66 @@ Azure AD oturum açma işlemlerini ProMaster ile (Inlogik tarafından) yapıland
     | |
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [ProMaster (Inlogik tarafından) İstemci destek ekibine](https://www.inlogik.com/contact) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [Promaster (ınlogik tarafından) istemci destek ekibine](https://www.inlogik.com/contact) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+6. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın ProMaster'a erişim sağlayarak (Inlogik tarafından) Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, ProMaster (ınlogik tarafından) erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **ProMaster'ı (Inlogik'e göre)** seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Promaster (ınlogik tarafından)** öğesini seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-promaster-by-inlogik-sso"></a>ProMaster 'ı yapılandırın (Inlogik tarafından) SSO
+## <a name="configure-promaster-by-inlogik-sso"></a>ProMaster (ınlogik tarafından) SSO 'yu yapılandırma
 
-**ProMaster'da (Inlogik tarafından)** tek oturum açma yı yapılandırmak için, **App Federation Metadata Url'sini** [ProMaster'a (Inlogik tarafından) destek ekibine](https://www.inlogik.com/contact)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Promaster (ınlogik tarafından)** tarafında çoklu oturum açmayı yapılandırmak Için, **uygulama Federasyon meta veri URL 'sini** [Promaster (ınlogik) destek ekibine](https://www.inlogik.com/contact)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-promaster-by-inlogik-test-user"></a>ProMaster (Inlogik tarafından) test kullanıcısı oluşturma
+### <a name="create-promaster-by-inlogik-test-user"></a>ProMaster (ınlogik tarafından) test kullanıcısı oluşturma
 
-Bu bölümde, ProMaster'da (Inlogik tarafından) B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları ProMaster (Inlogik tarafından) platformuna eklemek için [ProMaster (Inlogik tarafından) destek ekibiyle](https://www.inlogik.com/contact) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, ProMaster 'da B. Simon adlı bir Kullanıcı oluşturursunuz (ınlogik tarafından). Promaster ( [ınlogik tarafından)](https://www.inlogik.com/contact) , kullanıcıları Promaster (ınlogik) platformuna eklemek için destek ekibi ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-### <a name="test-sso"></a>Test SSO
+### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki ProMaster (Inlogik tarafından) döşemesini tıklattığınızda, SSO'yu kurduğunuz ProMaster'da (Inlogik tarafından) otomatik olarak oturum açmanız gerekir. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde ProMaster (by ınlogik) kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız ProMaster (ınlogik tarafından) otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile ProMaster'ı (Inlogik tarafından) deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile ProMaster 'ı (ınlogik tarafından) deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [ProMaster (Inlogik tarafından) gelişmiş görünürlük ve kontrollerle nasıl korunur?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle ProMaster 'ı koruma (ınlogik tarafından)](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

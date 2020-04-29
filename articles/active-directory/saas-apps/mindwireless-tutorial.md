@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: MindWireless ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve mindWireless arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
+title: 'Öğretici: mindWireless ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ile mindWireless arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,149 +17,149 @@ ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee64f14491a97c754f3e1dbbbf6e6a7ed6f93844
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72596211"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>Öğretici: MindWireless ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>Öğretici: mindWireless ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde mindWireless'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. mindWireless'ı Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
+Bu öğreticide, mindWireless 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. MindWireless 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* MindWireless erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açarak MindWireless'a oturum açmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de mindWireless erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla mindWireless 'e otomatik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* mindWireless tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* mindWireless çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* mindWireless **IDP'yi** destekliyor SSO
+* mindWireless **IDP** tarafından başlatılan SSO 'yu destekliyor
 
 ## <a name="adding-mindwireless-from-the-gallery"></a>Galeriden mindWireless ekleme
 
-mindWireless'ın Azure AD'ye entegrasyonunu yapılandırmak için mindWireless'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+MindWireless 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeriden mindWireless öğesini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **mindWireless** yazın.
-1. Sonuç panelinden **mindWireless'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **mindwireless** yazın.
+1. Sonuçlar panelinden **Mindwireless** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mindwireless"></a>MindWireless için Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on-for-mindwireless"></a>MindWireless için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak mindWireless ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı bağlantısı kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak mindWireless Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, mindWireless içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu mindWireless ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu mindWireless ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    * Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[MindWireless SSO'yu yapılandırır](#configure-mindwireless-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    * **[MindWireless test kullanıcısını oluşturun](#create-mindwireless-test-user)** - kullanıcının Azure AD gösterimine bağlı olan B.Simon'ın bir örneğini göz önünde bulundurun.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[mindWireless SSO 'Yu yapılandırın](#configure-mindwireless-sso)** .
+    * User 'ın Azure AD gösterimine bağlı olan mindWireless 'de B. Simon 'ın bir karşılığı olacak şekilde **[mindwireless test kullanıcısı oluşturun](#create-mindwireless-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında](https://portal.azure.com/), **mindWireless** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **mindwireless** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **SAML sayfasıyla tek oturum açma'da** aşağıdaki alanların değerlerini girin:
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.mwsmart.com/`
+    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.mwsmart.com/`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [mindWireless Client destek ekibine](mailto:sdulloor@mindwireless.com) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Mindwireless istemci destek ekibine](mailto:sdulloor@mindwireless.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. mindWireless uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. mindWireless uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, mindWireless uygulaması, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Daha fazlasına ek olarak, mindWireless uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Ad Alanı  |  Kaynak Özniteliği|
+    | Adı | Ad Alanı  |  Kaynak özniteliği|
     | -------------- | --------------- | ----------------|
-    | Çalışan Kimlik Numarası | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| user.employeeid |
+    | Çalışan Kimlik Numarası | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| User. EmployeeID |
 
     > [!NOTE]
-    > Talep adı her zaman **Çalışan Kimliği** ve kullanıcının EmployeeID'sini içeren **user.employeeid'e**eşlediğimiz değerdir. Burada Azure AD'den mindWireless'a kullanıcı eşlemi EmployeeID'de yapılır, ancak uygulama ayarlarınızı temel alarak farklı bir değerle eşleyebilirsiniz. Önce [mindWireless destek ekibiyle](mailto:sdulloor@mindwireless.com) çalışarak bir kullanıcının doğru tanımlayıcısını kullanabilir ve bu değeri **Çalışan Kimliği** iddiasıyla eşleyebilirsiniz.
+    > Talep adı her zaman **çalışan kimliği** ve kullanıcının EmployeeID 'sini içeren **User. EmployeeID**ile eşlendiğimiz değer olmalıdır. Burada Azure AD 'den mindWireless 'e yönelik kullanıcı eşlemesi, EmployeeID üzerinde yapılır, ancak uygulama ayarlarınıza göre aynı zamanda farklı bir değerle eşleyebilirsiniz. İlk olarak, bir kullanıcının doğru tanımlayıcısını kullanmak ve bu değeri **çalışan kimliği** talebi ile eşlemek Için [mindwireless destek](mailto:sdulloor@mindwireless.com) ekibiyle birlikte çalışabilirsiniz.
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **MindWireless'ı ayarla** bölümünde, gereksiniminize göre uygun URL(ler)'i kopyalayın.
+1. **MindWireless ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın mindWireless'a erişim sağlayarak Azure tek oturum açma özelliğini kullanmasını sağlayacaksınız.
+Bu bölümde, mindWireless erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **mindWireless'ı**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Mindwireless**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-mindwireless-sso"></a>Zihin yapılandırmaWireless SSO
+## <a name="configure-mindwireless-sso"></a>MindWireless SSO 'yu yapılandırma
 
-**MindWireless** tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından [mindWireless destek ekibine](mailto:sdulloor@mindwireless.com)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Mindwireless** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (base64)** ve uygun kopyalanmış URL 'Leri Azure Portal ' den [mindwireless destek ekibine](mailto:sdulloor@mindwireless.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
-### <a name="create-mindwireless-test-user"></a>mindWireless test kullanıcısı oluşturma
+### <a name="create-mindwireless-test-user"></a>MindWireless test kullanıcısı oluştur
 
-Bu bölümde, mindWireless'da B.Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları mindWireless platformuna eklemek için [mindWireless destek ekibiyle](mailto:sdulloor@mindwireless.com) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, mindWireless içinde B. Simon adlı bir Kullanıcı oluşturacaksınız. Mindwireless platformunda kullanıcıları eklemek için [mindwireless destek ekibi](mailto:sdulloor@mindwireless.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki mindWireless döşemesini tıklattığınızda, SSO'yu kurduğunuz mindWireless'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde mindWireless kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız mindWireless 'de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile mindWireless'ı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile mindWireless 'i deneyin](https://aad.portal.azure.com/)

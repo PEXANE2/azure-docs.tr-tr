@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: RBAC ve Azure PowerShell ile Azure kaynaklarına kullanıcı erişimi verme'
-description: Bu eğitimde rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell'i kullanarak kullanıcıya Azure kaynaklarına nasıl erişilenleri öğrenin.
+title: 'Öğretici: RBAC ve Azure PowerShell ile Azure kaynaklarına Kullanıcı erişimi verme'
+description: Bu öğreticide rol tabanlı erişim denetimi (RBAC) ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme hakkında bilgi edinin.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,24 +14,24 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.openlocfilehash: f4ba56bf79d707200bf361ab4c717bb63d081953
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77138221"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Öğretici: RBAC ve Azure PowerShell'i kullanarak kullanıcıya Azure kaynaklarına erişim hakkı tanıyın
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Öğretici: RBAC ve Azure PowerShell kullanarak Azure kaynaklarına Kullanıcı erişimi verme
 
-[Rol tabanlı erişim denetimi (RBAC),](overview.md) Azure kaynaklarına erişimi yönetmenin yoludur. Bu öğreticide bir kullanıcıya bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
+[Rol tabanlı erişim denetimi (RBAC)](overview.md) , Azure kaynaklarına erişimi yönetme yöntemidir. Bu öğreticide bir kullanıcıya bir abonelik içindeki her şeyi görüntüleme ve bir kaynak grubundaki her şeyi yönetme izni vermek için Azure PowerShell'i kullanacaksınız.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir kullanıcıya farklı kapsamlarda erişim izni verme
 > * Erişimi listeleme
 > * Erişimi kaldırma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -81,7 +81,7 @@ Rol atamak için kullanıcı, grup veya hizmet sorumlu gerekir. Kullanıcınız 
 
 Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kullanmanız gerekir.
 
-1. [Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanarak bölge konumlarının listesini alın.
+1. [Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanarak bölge konumlarının bir listesini alın.
 
    ```azurepowershell
    Get-AzLocation | select Location
@@ -93,7 +93,7 @@ Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kulla
    $location = "westus"
    ```
 
-1. [Yeni Kaynak Grubu](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun.
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun.
 
    ```azurepowershell
    New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
@@ -109,7 +109,7 @@ Kaynak grubu kapsamında rol atamasını göstermek için bir kaynak grubu kulla
 
 ## <a name="grant-access"></a>Erişim verme
 
-Kullanıcıya erişim sağlamak için, bir rol atamak için [Yeni Rol Atama](/powershell/module/az.resources/new-azroleassignment) komutunu kullanırsınız. Güvenlik sorumlusunu, rol tanımını ve kapsamı belirtmeniz gerekir.
+Kullanıcıya erişim izni vermek için, [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment) komutunu kullanarak bir rol atamalısınız. Güvenlik sorumlusunu, rol tanımını ve kapsamı belirtmeniz gerekir.
 
 1. [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) komutunu kullanarak aboneliğinizin kimliğini alın.
 
@@ -172,7 +172,7 @@ Kullanıcıya erişim sağlamak için, bir rol atamak için [Yeni Rol Atama](/po
 
 ## <a name="list-access"></a>Erişimi listeleme
 
-1. Aboneliğin erişimini doğrulamak için rol atamalarını listelemek için [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) komutunu kullanın.
+1. Abonelik erişimini doğrulamak için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) komutunu kullanarak rol atamalarını listeleyin.
 
     ```azurepowershell
     Get-AzRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
@@ -192,7 +192,7 @@ Kullanıcıya erişim sağlamak için, bir rol atamak için [Yeni Rol Atama](/po
 
     Çıktıda Okuyucu rolünün abonelik kapsamında RBAC Tutorial User kullanıcısına atanmış olduğunu görebilirsiniz.
 
-1. Kaynak grubunun erişimini doğrulamak için, rol atamalarını listelemek için [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) komutunu kullanın.
+1. Kaynak grubunun erişimini doğrulamak için [Get-Azroleatama](/powershell/module/az.resources/get-azroleassignment) komutunu kullanarak rol atamalarını listeleyin.
 
     ```azurepowershell
     Get-AzRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
@@ -234,7 +234,7 @@ Kullanıcıya erişim sağlamak için, bir rol atamak için [Yeni Rol Atama](/po
 
 ## <a name="remove-access"></a>Erişimi kaldırma
 
-Kullanıcılar, gruplar ve uygulamalar için erişimi kaldırmak için, rol atamasını kaldırmak için [Kaldır-AzRoleAssignment'ı](/powershell/module/az.resources/remove-azroleassignment) kullanın.
+Kullanıcılar, gruplar ve uygulamalar için erişimi kaldırmak üzere, bir rol atamasını kaldırmak için [Remove-Azroleatama](/powershell/module/az.resources/remove-azroleassignment) komutunu kullanın.
 
 1. Kullanıcının kaynak grubu kapsamındaki Katılımcı rol atamasını kaldırmak için aşağıdaki komutu kullanın.
 
@@ -268,7 +268,7 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve ku
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. Onaylamak istendiğinde, **Y**yazın. Silmek birkaç saniye sürer.
+1. Onaylamanız istendiğinde **Y**yazın. Bu işlem birkaç saniye sürer.
 
 1. Kullanıcıyı silmek için [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser) komutunu kullanın.
 
@@ -279,4 +279,4 @@ Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu ve ku
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [RBAC ve Azure PowerShell'i kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-powershell.md)
+> [RBAC ve Azure PowerShell kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-powershell.md)

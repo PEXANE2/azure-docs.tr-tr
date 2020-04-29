@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory iProva ile tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Etkin Dizin ve iProva arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: iProva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve iProva arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,67 +16,67 @@ ms.date: 03/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 98458f8be162d0903f5ea0d1f7d4651d46f78e8e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80048445"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Öğretici: Azure Active Directory iProva ile tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iprova"></a>Öğretici: iProva ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, iProva'yı Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. iProva'yı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu öğreticide, iProva 'i Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. İProva 'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de iProva erişimi olan denetimi denetler.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla iProva'da otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de iProva 'e erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla iProva otomatik olarak oturum açmalarına olanak tanıyın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* iProva tek oturum açma (SSO) özellikli abonelik.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* iProva çoklu oturum açma (SSO) etkin abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* iProva **SP** başlatılan SSO destekler
+* iProva **SP** tarafından başlatılan SSO 'yu destekler
 
-* iProva'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* İProva 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-iprova-from-the-gallery"></a>Galeriden iProva ekleme
 
-iProva'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize iProva eklemeniz gerekir.
+İProva tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden iProva yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **iProva** yazın.
-1. Sonuç panelinden **iProva'yı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **iProva** yazın.
+1. Sonuçlar panelinden **iProva** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>iProva için Azure AD oturum açma işlemlerini yapılandırma ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-iprova"></a>İProva için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **b.simon**adlı bir test kullanıcısı kullanarak iProva ile yapılandırın ve test edin. SSO'nun çalışması için, iProva'daki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu iProva ile yapılandırın ve test edin. SSO 'nun çalışması için, iProva içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO'yu iProva ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu iProva ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Sonraki adımlara hazırlık olarak **[iProva'dan yapılandırma bilgilerini alın.](#retrieve-configuration-information-from-iprova)**
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[iProva test kullanıcısını oluşturun](#create-iprova-test-user)** - iProva'da kullanıcının Azure AD gösterimine bağlı b.simon'ın bir muadili olması için.
-1. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[iProva SSO'yu yapılandırın.](#configure-iprova-sso)**
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Sonraki adımlar için hazırlık olarak **[iProva adresinden yapılandırma bilgilerini alın](#retrieve-configuration-information-from-iprova)** .
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. Kullanıcının Azure AD gösterimine bağlı olan iProva 'de B. Simon 'ya karşılık gelen bir **[iProva test kullanıcısı oluşturun](#create-iprova-test-user)** .
+1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[IPROVA SSO 'Yu yapılandırın](#configure-iprova-sso)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="retrieve-configuration-information-from-iprova"></a>iProva'dan yapılandırma bilgilerini alma
+## <a name="retrieve-configuration-information-from-iprova"></a>İProva adresinden yapılandırma bilgilerini al
 
-Bu bölümde, Azure AD oturum açma işlemlerini yapılandırmak için iProva'dan bilgi alırsınız.
+Bu bölümde, Azure AD çoklu oturum açma 'yı yapılandırmak için iProva adresinden bilgi alırsınız.
 
-1. Bir web tarayıcısı açın ve aşağıdaki URL deseni kullanarak iProva'daki **SAML2 bilgi** sayfasına gidin:
+1. Bir Web tarayıcısı açın ve aşağıdaki URL modelini kullanarak iProva içindeki **SAML2 Info** sayfasına gidin:
 
     | | |
     |-|-|
@@ -84,152 +84,152 @@ Bu bölümde, Azure AD oturum açma işlemlerini yapılandırmak için iProva'da
     | `https://SUBDOMAIN.iprova.be/saml2info`|
     | | |
 
-    ![iProva SAML2 bilgi sayfasını görüntüleyin](media/iprova-tutorial/iprova-saml2-info.png)
+    ![İProva SAML2 Info sayfasını görüntüleme](media/iprova-tutorial/iprova-saml2-info.png)
 
-1. Başka bir tarayıcı sekmesinde sonraki adımlara devam ederken tarayıcı sekmesini açık bırakın.
+1. Başka bir tarayıcı sekmesindeki sonraki adımlarla devam ederken tarayıcı sekmesini açık bırakın.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure [portalında](https://portal.azure.com/), **iProva** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **iProva** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. Oturum **Açma URL** kutusunu **iProva SAML2 bilgi** sayfasındaki Oturum Açma **URL'sinin** arkasında görüntülenen değerle doldurun. Bu sayfa diğer tarayıcı sekmenizde hala açıktır.
+    a. Oturum açma **URL 'si** kutusunu, **iProva SAML2 Info** sayfasındaki etiket **oturum açma URL 'sinin** arkasında görüntülenen değerle doldurur. Bu sayfa hala diğer tarayıcı sekmesinizdeki açıktır.
 
-    b. **IProva** **SAML2 bilgi** sayfasında **EntityID** etiketinin arkasında görüntülenen değerle tanımlayıcı kutusunu doldurun. Bu sayfa diğer tarayıcı sekmenizde hala açıktır.
+    b. **Tanımlayıcı** kutusunu, **iProva SAML2 Info** sayfasında **EntityId** etiketinin arkasında görüntülenen değerle doldurur. Bu sayfa hala diğer tarayıcı sekmesinizdeki açıktır.
 
-    c. **Yanıt-URL** kutusunu **iProva SAML2 bilgi** sayfasındaki yanıt **url** etiketinin arkasında görüntülenen değerle doldurun. Bu sayfa diğer tarayıcı sekmenizde hala açıktır.
+    c. **Reply-URL** kutusunu, **iProva SAML2 Info** sayfasında etiket **yanıt URL 'sinin** arkasında görüntülenen değerle doldurur. Bu sayfa hala diğer tarayıcı sekmesinizdeki açıktır.
 
-1. iProva uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. iProva uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, iProva uygulaması aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. İProva uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak Özniteliği| Ad Alanı  |
+    | Adı | Kaynak özniteliği| Ad Alanı  |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
-1. **SAML ile Tek Oturum** Açma sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
 ## <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ## <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın iProva'ya erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, iProva 'e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde **iProva'yı**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **iProva**' yi seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="create-iprova-test-user"></a>iProva test kullanıcısı oluşturma
+## <a name="create-iprova-test-user"></a>İProva test kullanıcısı oluştur
 
-1. **Yönetici** hesabını kullanarak iProva'da oturum açın.
+1. **Yönetici** hesabını kullanarak iProva 'de oturum açın.
 
-2. Git **menüsünü** açın.
+2. **Git** menüsünü açın.
 
-3. **Uygulama yönetimini**seçin.
+3. **Uygulama yönetimi**' ni seçin.
 
-4. Kullanıcılar ve **kullanıcı grupları** panelinde **Kullanıcıları** seçin.
+4. Kullanıcılar **ve Kullanıcı grupları** panelinde **Kullanıcılar** ' ı seçin.
 
-5. **Ekle'yi**seçin.
+5. **Add (Ekle)** seçeneğini belirleyin.
 
-6. Kullanıcı **adı** kutusuna, kullanıcı nın kullanıcı `B.Simon@contoso.com`adını girin.
+6. Kullanıcı **adı** kutusuna, gibi `B.Simon@contoso.com`kullanıcının Kullanıcı adını girin.
 
-7. Tam **ad** kutusuna, **B.Simon**gibi kullanıcının tam adını girin.
+7. **Tam ad** kutusuna **B. Simon**gibi bir kullanıcının tam adını girin.
 
-8. Parola yok seçeneğini belirleyin **(tek oturum açma kullanın) seçeneğini belirleyin.**
+8. **Parola yok (çoklu oturum açma kullan)** seçeneğini belirleyin.
 
-9. **E-posta adres** kutusuna, kullanıcının e-posta adresini girin. `B.Simon@contoso.com`
+9. **E-posta adresi** kutusuna, gibi `B.Simon@contoso.com`kullanıcının e-posta adresini girin.
 
-10. Sayfanın sonuna doğru ilerleyin ve **Bitir'i**seçin.
+10. Sayfanın sonuna kadar aşağı kaydırın ve **son**' u seçin.
 
-## <a name="configure-iprova-sso"></a>iProva SSO'da yapılandır
+## <a name="configure-iprova-sso"></a>İProva SSO 'yu yapılandırma
 
-1. **Yönetici** hesabını kullanarak iProva'da oturum açın.
+1. **Yönetici** hesabını kullanarak iProva 'de oturum açın.
 
-2. Git **menüsünü** açın.
+2. **Git** menüsünü açın.
 
-3. **Uygulama yönetimini**seçin.
+3. **Uygulama yönetimi**' ni seçin.
 
-4. **Sistem ayarları** panelinde **Genel'i** seçin.
+4. **Sistem ayarları** panelinde **genel** ' i seçin.
 
-5. **Edit'i**seçin.
+5. **Düzenle**' yi seçin.
 
-6. Access denetimine aşağı **kaydırın.**
+6. **Access Control**'a gidin.
 
-    ![iProva Erişim denetim ayarları](media/iprova-tutorial/iprova-accesscontrol.png)
+    ![iProva erişim denetimi ayarları](media/iprova-tutorial/iprova-accesscontrol.png)
 
-7. **Kullanıcıların ağ hesaplarıyla otomatik olarak oturum açtığı**ayarı bulun ve **SAML üzerinden kimlik doğrulamasını Evet**olarak değiştirin. Artık ek seçenekler görüntülenir.
+7. **Kullanıcıların kendi ağ hesaplarıyla otomatik olarak oturum açtığı**ayarı bulun ve bunu **Evet, SAML aracılığıyla kimlik doğrulaması**ile değiştirin. Ek seçenekler artık görüntülenir.
 
 8. **Ayarla** seçeneğini belirleyin.
 
-9. **Sonraki'ni**seçin.
+9. **İleri**’yi seçin.
 
-10. iProva, federasyon verilerini bir URL'den indirmek veya bir dosyadan yüklemek isteyip istemediğinizi sorar. **URL'den seçeneğini** seçin.
+10. iProva Federasyon verilerini bir URL 'den indirmek veya bir dosyadan karşıya yüklemek isteyip istemediğinizi sorar. **URL** 'yi seçin seçeneğini belirleyin.
 
     ![Azure AD meta verilerini indirin](media/iprova-tutorial/iprova-download-metadata.png)
 
-11. "Azure AD tek oturum aç"ı bölümünün son adımında kaydettiğiniz meta veri URL'sini yapıştırın.
+11. "Azure AD çoklu oturum açmayı yapılandırma" bölümünün son adımında kaydettiğiniz meta veri URL 'sini yapıştırın.
 
-12. Meta verileri Azure AD'den indirmek için ok şeklindeki düğmeyi seçin.
+12. Meta verileri Azure AD 'den indirmek için ok şeklinde düğmesini seçin.
 
-13. İndirme tamamlandığında, indirilen onay iletisi **Geçerli Federasyon Veri dosyası** görüntülenir.
+13. İndirme tamamlandığında, onay iletisi **geçerli Federasyon verileri dosyası indirilir** .
 
-14. **Sonraki'ni**seçin.
+14. **İleri**’yi seçin.
 
-15. Şimdilik **Test giriş** seçeneğini atlayın ve **İleri'yi**seçin.
+15. Şimdilik **test oturum açma** seçeneğini atlayın ve **İleri**' yi seçin.
 
-16. Açılan **kutuyu kullanma Talebi'nde** **windowsaccountname'yi**seçin.
+16. **Kullanılacak talep** açılan kutusunda **deposundaki kullanıcıların windowsaccountname**' yi seçin.
 
-17. **Bitiş'i**seçin.
+17. **Son**' u seçin.
 
-18. Şimdi **genel ayarları edin** ekranına geri dönüyorsunuz. Sayfanın altına doğru ilerleyin ve yapılandırmanızı kaydetmek için **Tamam'ı** seçin.
+18. Şimdi **Genel Ayarları Düzenle** ekranına geri dönersiniz. Sayfanın alt kısmına gidin ve yapılandırmanızı kaydetmek için **Tamam** ' ı seçin.
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki iProva döşemesini tıklattığınızda, SSO'yu kurduğunuz iProva'da otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde iProva kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız iProva için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile iProva'yı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile iProva deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Gelişmiş görünürlük ve kontrollerle iProva nasıl korunur?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Gelişmiş görünürlük ve denetimlerle iProva koruma](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

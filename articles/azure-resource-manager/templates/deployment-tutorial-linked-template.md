@@ -1,50 +1,50 @@
 ---
-title: Öğretici - Bağlantılı şablon dağıtma
-description: Bağlantılı bir şablonu nasıl dağıtılayacaklarını öğrenin
+title: Öğretici-bağlantılı şablon dağıtma
+description: Bağlı bir şablonu dağıtmayı öğrenin
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80672930"
 ---
-# <a name="tutorial-deploy-a-linked-template"></a>Öğretici: Bağlantılı bir şablon dağıtma
+# <a name="tutorial-deploy-a-linked-template"></a>Öğretici: bağlı bir şablon dağıtma
 
-Önceki [öğreticilerde,](./deployment-tutorial-local-template.md)yerel bilgisayarınızda depolanan bir şablonu nasıl dağıtabileceğinizi öğrendiniz. Karmaşık çözümleri dağıtmak için, şablonu birçok şablona kırabilir ve bu şablonları ana şablon aracılığıyla dağıtabilirsiniz. Bu öğreticide, bağlı bir şablona başvuru içeren bir ana şablonu nasıl dağıtabileceğinizi öğrenirsiniz. Ana şablon dağıtıldığında, bağlı şablonun dağıtımını tetikler. Ayrıca, SAS belirteci kullanarak bağlantılı şablonu nasıl depolayıp güvenli hale sağlayacağınızı da öğrenirsiniz. Tamamlanması yaklaşık **12 dakika** sürer.
+[Önceki öğreticilerde](./deployment-tutorial-local-template.md), yerel bilgisayarınızda depolanan bir şablonu dağıtmayı öğrendiniz. Karmaşık çözümleri dağıtmak için bir şablonu birçok şablona bölebilir ve bu şablonları bir ana şablon aracılığıyla dağıtabilirsiniz. Bu öğreticide, bağlantılı bir şablona başvuruyu içeren bir ana şablon dağıtmayı öğreneceksiniz. Ana şablon dağıtıldığında, bağlantılı şablonun dağıtımını tetikler. Ayrıca, bağlı şablonu SAS belirtecini kullanarak depolamayı ve güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Yaklaşık **12 dakika** sürer.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Önceki öğreticiyi tamamlamanızı öneririz, ancak gerekli değildir.
+Önceki öğreticiyi tamamlamanızı öneririz, ancak bu gerekli değildir.
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Önceki öğreticilerde, bir depolama hesabı, Uygulama Hizmeti planı ve web uygulaması oluşturan bir şablon dağıtırsınız. Kullanılan şablon:
+Önceki öğreticilerde, bir depolama hesabı, App Service planı ve Web uygulaması oluşturan bir şablon dağıtırsınız. Kullanılan şablon:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
-## <a name="create-a-linked-template"></a>Bağlantılı bir şablon oluşturma
+## <a name="create-a-linked-template"></a>Bağlantılı şablon oluşturma
 
-Depolama hesabı kaynağını bağlantılı bir şablona ayırabilirsiniz:
+Depolama hesabı kaynağını bağlı bir şablona ayırabilirsiniz:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Aşağıdaki şablon ana şablondur.  Vurgulanan **Microsoft.Resources/deployments nesnesi,** bağlantılı bir şablonun nasıl çağrıldığını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel abunuzda kullanılabilen bir dosya olarak depolanamaz. Yalnızca *http* veya *https*içeren bir URI değeri sağlayabilirsiniz. Kaynak Yöneticisi şablona erişebilmeli. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmek ve söz öğe için URI'yi kullanmaktır. URI bir parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
+Aşağıdaki şablon ana şablondur.  Vurgulanan **Microsoft. resources/dağıtımlar** nesnesi, bağlantılı bir şablonun nasıl çağrılacağını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olarak depolanamaz. Yalnızca *http* ya da *https*içeren bir URI değeri sağlayabilirsiniz. Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır. URI, parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Ana şablonun bir kopyasını .json uzantısı ile azuredeploy.json ile yerel bilgisayarınıza kaydedin. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez.  Bağlantılı şablon, GitHub deposundan bir depolama hesabına kopyalanır.
+Ana şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy. JSON. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez.  Bağlantılı şablon bir GitHub deposundan bir depolama hesabına kopyalanacak.
 
-## <a name="store-the-linked-template"></a>Bağlantılı şablonu depolama
+## <a name="store-the-linked-template"></a>Bağlı şablonu depola
 
-Aşağıdaki PowerShell komut dosyası bir depolama hesabı oluşturur, bir kapsayıcı oluşturur ve bağlı şablonu GitHub deposundan kapsayıcıya kopyalar. Bağlantılı şablonun bir kopyası [GitHub'da](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json)depolanır.
+Aşağıdaki PowerShell betiği bir depolama hesabı oluşturur, bir kapsayıcı oluşturur ve bağlantılı şablonu bir GitHub deposundan kapsayıcıya kopyalar. Bağlantılı şablonun bir kopyası [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json)'da depolanır.
 
-Cloud Shell'i açmak için **Try-it'i** seçin, PowerShell komut dosyasını kopyalamak için **Kopyala'yı** seçin ve komut dosyasını yapıştırmak için kabuk bölmesine sağ tıklayın:
+Cloud Shell açmak için **dene** ' yi seçin, PowerShell betiğini kopyalamak için **Kopyala** ' yı seçin ve komut dosyasını yapıştırmak için kabuk bölmesine sağ tıklayın:
 
 > [!IMPORTANT]
-> Depolama hesabı adları uzunluk ve kullanım numaraları ve küçük harfler sadece 3 ve 24 karakter arasında olmalıdır. İsim benzersiz olmalı. Şablonda, depolama hesabı adı "depo" eklenen proje adıdır ve proje adı 3 ile 11 karakter arasında olmalıdır. Bu nedenle proje adı depolama hesabı adı gereksinimlerini karşılamalı ve 11 karakterden az karaktere sahiptir.
+> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -87,12 +87,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci oluşturun ve şablon için URI'ye ekleyin. Dağıtımı tamamlamak için yeterli zaman tanımak için son kullanma süresini ayarlayın. Şablonu içeren blob yalnızca hesap sahibi tarafından erişilebilir. Ancak, blob için bir SAS belirteci oluşturduğunuzda, blob bu URI olan herkes için erişilebilir. Başka bir kullanıcı URI'yi yakalarsa, bu kullanıcı şablona erişebilir. SAS belirteci, şablonlarınıza erişimi sınırlamanın iyi bir yoludur, ancak parolalar gibi hassas verileri doğrudan şablona eklememelisiniz.
+Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci oluşturun ve şablon için URI 'sine dahil edin. Dağıtım işleminin tamamlanmasına yetecek sürenin sona ereceği süre sonu süresini ayarlayın. Şablonu içeren Blobun yalnızca hesap sahibi tarafından erişilebilir. Ancak, blob için bir SAS belirteci oluşturduğunuzda, blob bu URI 'ye sahip herkes tarafından erişilebilir. Başka bir Kullanıcı URI 'yi kesirse, bu kullanıcı şablona erişebilir. SAS belirteci, şablonlarınıza erişimi sınırlayan iyi bir yoldur, ancak parolalar gibi hassas verileri doğrudan şablonda içermemelidir.
 
-Kaynak grubunu oluşturmadıysanız, [bkz.](./deployment-tutorial-local-template.md#create-resource-group)
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> Aşağıdaki Azure CLI kodunda tarih parametresi -d macOS'ta geçersiz bir bağımsız değişken olacaktır. Yani macOS kullanıcıları, macOS'ta terminalde geçerli saate 2 saat eklemek için -v+2H kullanmalısınız.
+> Aşağıdaki Azure CLı kodunda Tarih parametresi-d, macOS içinde geçersiz bir bağımsız değişken olabilir. Yani macOS kullanıcıları, macOS 'ta terminalde geçerli saate 2 saat eklemek için-v + 2H kullanmanız gerekir.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -168,14 +168,14 @@ az deployment group create \
 
 Kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
+1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantılı bir şablonu nasıl dağıtabileceğinizi öğrendiniz. Sonraki öğreticide, şablon dağıtmak için devop ardışık bir yapı oluşturmayı öğrenirsiniz.
+Bağlı bir şablonu dağıtmayı öğrendiniz. Sonraki öğreticide, bir şablonu dağıtmak için DevOp Işlem hattı oluşturmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Bir ardışık hat lar oluşturma](./deployment-tutorial-pipeline.md)
+> [İşlem hattı oluşturma](./deployment-tutorial-pipeline.md)

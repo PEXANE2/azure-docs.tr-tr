@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: LinkedIn Learning ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve LinkedIn Learning arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici Azure Active Directory: LinkedIn Learning ile çoklu oturum açma (SSO) Tümleştirmesi | Microsoft Docs'
+description: Azure Active Directory ve LinkedIn öğrenimi arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,169 +16,169 @@ ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 15509866980cdf85f54fc03cb77eed36f83c982f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76983376"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Öğretici: LinkedIn Learning ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>Öğretici: LinkedIn Learning ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
-Bu eğitimde, LinkedIn Learning'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. LinkedIn Learning'i Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
+Bu öğreticide, LinkedIn öğrenimini Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. LinkedIn öğrenimini Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* LinkedIn Learning erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla LinkedIn Learning'de otomatik olarak oturum açabilmelerini etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Azure AD 'de LinkedIn öğrenimine erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesapları ile LinkedIn öğrenimine otomatik olarak kaydolmalarına imkan tanıyın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğeler gereklidir:
 
-* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* LinkedIn Learning tek oturum açma (SSO) aboneliği ni etkinleştirildi.
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* LinkedIn Learning çoklu oturum açma (SSO) etkin aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-* LinkedIn **Learning, SP ve IDP** tarafından başlatılan SSO'ya destek veriyor
-* LinkedIn Learning **Just In Time** kullanıcı sağlama destekler
-* LinkedIn Learning'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan Oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* LinkedIn Learning **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* LinkedIn Learning **, tam zamanında** Kullanıcı sağlamayı destekler
+* LinkedIn öğrenimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
-## <a name="adding-linkedin-learning-from-the-gallery"></a>Galeriden LinkedIn Learning ekleme
+## <a name="adding-linkedin-learning-from-the-gallery"></a>Galeriden LinkedIn öğrenme ekleme
 
-LinkedIn Learning'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Yönetilen SaaS uygulamaları listenize LinkedIn Learning'i eklemeniz gerekir.
+LinkedIn Learning 'in Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize LinkedIn öğrenimini eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
-1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **LinkedIn Learning** yazın.
-1. Sonuç panelinden **LinkedIn Learning'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Sonuçlar panelinden **LinkedIn Learning** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-learning"></a>LinkedIn Learning için Azure AD oturum açma işlemlerini yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-single-sign-on-for-linkedin-learning"></a>LinkedIn Learning için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak LinkedIn Learning ile yapılandırın ve test edin. SSO'nun çalışması için, LinkedIn Learning'deki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon**adlı bir test kullanıcısı kullanarak LinkedIn Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, LinkedIn Learning 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO'yu LinkedIn Learning ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO 'yu LinkedIn öğrenimi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[LinkedIn Learning SSO'yu yapılandırır](#configure-linkedin-learning-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    1. **[LinkedIn Learning test kullanıcısını oluşturun](#create-linkedin-learning-test-user)** - LinkedIn Learning'de Kullanıcının Azure AD gösterimine bağlı b.simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+1. **[LinkedIn LEARNING SSO 'Yu yapılandırma](#configure-linkedin-learning-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. LinkedIn Learning 'de kullanıcının Azure AD gösterimine bağlanmış bir B. Simon 'ya sahip olmak için **[LinkedIn öğrenme testi kullanıcısı oluşturun](#create-linkedin-learning-test-user)** .
+1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. **LinkedIn Learning** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
-1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. [Azure Portal](https://portal.azure.com/), **LinkedIn öğrenme** uygulaması tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
 
-     a. **Tanımlayıcı** textbox'ına LinkedIn Portal'dan kopyalanan **Varlık Kimliği'ni** girin. 
+     a. **Tanımlayıcı** metin kutusunda, LinkedIn portalından KOPYALANMıŞ **varlık kimliğini** girin. 
 
-    b. **Yanıtla URL** metin kutusuna LinkedIn Portal'dan kopyalanan **İddia Tüketici Hizmeti (ACS) Url'sini** girin.
+    b. **Yanıt URL 'si** metin kutusuna, LinkedIn portalından kopyalanmış **TÜKETICI hizmeti (ACS) URL 'sini** girin.
 
-    c. Uygulamayı **SP Başlatılan** modda yapılandırmak istiyorsanız, oturum açma URL'nizi belirteceğiniz **Temel SAML Yapılandırması** bölümünde **ek URL'ler seç** seçeneğini tıklatın. Giriş Url'nizi oluşturmak için **Assertion Consumer Service (ACS) Url'sini** kopyalayın ve /saml/ ile /login/ ile değiştirin. Bu yapıldıktan sonra, oturum açma URL'si aşağıdaki deseni olmalıdır:
+    c. Uygulamayı **SP tarafından başlatılan** modda yapılandırmak istiyorsanız, oturum açma URL 'Nizi BELIRTEBILECEĞINIZ **temel SAML yapılandırması** bölümünde **ek URL 'ler ayarla** seçeneğine tıklayın. Oturum açma URL 'nizi oluşturmak için, **onaylama tüketici hizmeti (ACS) URL 'sini** kopyalayın ve/SAML/değerini/login/ile değiştirin. Bu işlem yapıldıktan sonra oturum açma URL 'SI aşağıdaki düzende olmalıdır:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
-    ![LinkedIn Learning Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![LinkedIn Learning etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
-    > Bu değerler gerçek değer değildir. Bu değerleri, öğreticinin **LinkedIn Learning SSO'yu Yapılandırışla** bölümünde daha sonra açıklanan gerçek Tanımlayıcı ve Yanıt URL'si ile güncelleştireceksiniz.
+    > Bu değerler gerçek değer değildir. Bu değerleri, öğreticinin daha sonra **LinkedIn öğrenme SSO 'Yu yapılandırma** bölümünde açıklanan gerçek tanımlayıcı ve yanıt URL 'si ile güncelleşceksiniz.
 
-1. LinkedIn Learning uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir, **nameidentifier** **user.userprincipalname**ile eşlenir gibi. LinkedIn Learning uygulaması **nameidentifier** **user.mail**ile eşlenir bekliyor, bu yüzden **düzenleme** simgesine tıklayarak öznitelik eşleme düzenlemeniz ve öznitelik eşlemi değiştirmeniz gerekir.
+1. LinkedIn öğrenme uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. LinkedIn Learning uygulaması, **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
-1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **LinkedIn Learning'i Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **LinkedIn öğrenimini ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın LinkedIn Learning'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, LinkedIn Learning 'e erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulama listesinde **LinkedIn Learning'i**seçin.
-1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **LinkedIn Learning**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-linkedin-learning-sso"></a>LinkedIn Learning SSO'da yapılandırın
+## <a name="configure-linkedin-learning-sso"></a>LinkedIn Learning SSO 'yu yapılandırma
 
-1. Farklı bir web tarayıcısı penceresinde, LinkedIn Learning kiracınızı yönetici olarak oturum açın.
+1. Farklı bir Web tarayıcısı penceresinde, LinkedIn öğrenme kiracınızda yönetici olarak oturum açın.
 
-2. **Hesap Merkezi'nde** **Ayarlar**altında **Genel Ayarlar'ı** tıklatın. Ayrıca, açılan listeden **Öğrenme - Varsayılan'ı** seçin.
+2. **Hesap Merkezi**'nde **Ayarlar**' ın altında **Genel ayarlar** ' a tıklayın. Ayrıca, açılır listeden **öğrenme-varsayılan** öğesini seçin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-3. **Formdan tek tek alanları yüklemek ve kopyalamak için Buraya tıklayın** ve **Entity Id** ve Assertion Consumer **Service (ACS) Url'sini** kopyalayın ve Azure portalındaki Temel **SAML Yapılandırması** bölümüne yapıştırın.
+3. Form ve **varlık kimliği** ve **onaylama TÜKETICI hizmeti (ACS) URL** **'sinden ayrı alanları yüklemek ve kopyalamak için buraya tıklayın veya tıklayın** ve Azure Portal içindeki **temel SAML yapılandırması** bölümüne yapıştırın.
 
-    ![Tek İşaret-On'u Yapılandır](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-4. **LinkedIn Yönetici Ayarları** bölümüne gidin. Azure portalından indirdiğiniz **XML dosyasını Upload XML dosya** seçeneğini tıklayarak yükleyin.
+4. **LinkedIn yönetici ayarları** bölümüne gidin. **XML dosyasını karşıya yükle** seçeneğine tıklayarak Azure Portal indirdiğiniz XML dosyasını karşıya yükleyin.
 
-    ![Tek İşaret-On'u Yapılandır](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-5. SSO'ya etkinleştirmek için **Üzerine** tıklayın. Bağlı Olmayan'dan **Bağlı** **Olmayan'a** SSO durumu değişir
+5. SSO 'yu **etkinleştirmek için tıklayın** . SSO durum, bağlı **değil** olarak değişir **Connected**
 
-    ![Tek İşaret-On'u Yapılandır](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
+    ![Çoklu oturum açmayı yapılandırma](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
-### <a name="create-linkedin-learning-test-user"></a>LinkedIn Learning test kullanıcılarını oluşturun
+### <a name="create-linkedin-learning-test-user"></a>LinkedIn öğrenme testi kullanıcısı oluşturma
 
-LinkedIn Learning Application tam zamanında kullanıcı sağlamayı destekler ve kimlik doğrulama sonrası kullanıcılar uygulamada otomatik olarak oluşturulur. LinkedIn Learning portalındaki yönetici ayarları sayfasında, anahtarı otomatik olarak aktife **otomatik olarak atayın lisansları** sadece zaman sağlama da yapın ve bu da kullanıcıya bir lisans atayacaktır.
+LinkedIn öğrenme uygulaması, tam zamanında Kullanıcı sağlamayı ve kimlik doğrulama kullanıcılarının uygulamada otomatik olarak oluşturulmasını destekler. LinkedIn öğrenme portalındaki yönetici ayarları sayfasında, anahtarı ters çevir, otomatik olarak etkin bir şekilde sağlamak üzere **Lisansları atar** ve bu da kullanıcıya bir lisans atar.
 
    ![Azure AD test kullanıcısı oluşturma](./media/linkedinlearning-tutorial/LinkedinUserprovswitch.png)
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki LinkedIn Learning döşemesini tıklattığınızda, SSO'yu kurduğunuz LinkedIn Learning'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde LinkedIn öğrenme kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız LinkedIn öğrenimi için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile LinkedIn Learning'i deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile LinkedIn öğrenimini deneyin](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API için Azure CLI örnekleri
-description: Azure Cosmos DB Cassandra API için Azure CLI örnekleri
+title: Azure Cosmos DB Cassandra API için Azure CLı örnekleri
+description: Azure Cosmos DB Cassandra API için Azure CLı örnekleri
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,23 +8,23 @@ ms.topic: sample
 ms.date: 9/25/2019
 ms.author: mjbrown
 ms.openlocfilehash: 8edeb6b0c64057f892fa8af4ed1680d5371805a1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71275461"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API için Azure CLI örnekleri
+# <a name="azure-cli-samples-for-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API için Azure CLı örnekleri
 
-Aşağıdaki tablo, Azure Cosmos DB Cassandra API için Azure CLI komut dosyalarını örnekleyen bağlantılar içerir. Tüm Azure Cosmos DB CLI komutları için başvuru sayfaları [Azure CLI Başvurusu'nda](/cli/azure/cosmosdb)mevcuttur. Tüm Azure Cosmos DB CLI komut dosyası örnekleri [Azure Cosmos DB CLI GitHub Deposu'nda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
+Aşağıdaki tabloda, Azure Cosmos DB Cassandra API için örnek Azure CLı betikleri bağlantıları yer almaktadır. Tüm Azure Cosmos DB CLı komutlarına yönelik başvuru sayfaları, [Azure CLI başvurusunda](/cli/azure/cosmosdb)bulunabilir. Tüm Azure Cosmos DB CLı betiği örnekleri [Azure Cosmos DB CLI GitHub deposunda](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)bulunabilir.
 
 | |  |
 |---|---|
-| [Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için bir Azure Cosmos DB hesabı, anahtar alanı ve tablo oluşturur. |
-| [İş buzunu değiştir](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Bir anahtar boşluğunda ve masada RU/s'leri güncelleştirin.|
-| [Bölgeler ekleme veya başarısız](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Bir bölge ekleyin, önceliği değiştirin, el ile başarısız lık tetikle.|
-| [Hesap anahtarları ve bağlantı dizeleri](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Hesap anahtarlarını, salt okunur tuşları, anahtarları yeniden oluşturma ve bağlantı dizelerini listele.|
-| [IP güvenlik duvarı ile güvenli](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| IP güvenlik duvarı yapılandırılmış bir Cosmos hesabı oluşturun.|
-| [Hizmet bitiş noktalarıyla güvenli yeni hesap](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Bir Cosmos hesabı oluşturun ve hizmet bitiş noktalarıyla güvenli olun.|
-| [Hizmet bitiş noktalarıyla varolan hesabı güvenli hale](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Alt ağ sonunda yapılandırıldığında, hizmet bitiş noktalarıyla güvenli hale getirmek için bir Cosmos hesabını güncelleştirin.|
+| [Azure Cosmos hesabı, anahtar alanı ve tablo oluşturma](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Cassandra API için Azure Cosmos DB bir hesap, anahtar uzayı ve tablo oluşturur. |
+| [Aktarım hızını değiştirme](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Anahtar alanı ve tablodaki RU/s 'yi güncelleştirin.|
+| [Yük devretme bölgesi ekleme veya](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | Bir bölge ekleyin, yük devretme önceliğini değiştirin, el ile yük devretme tetikleyin.|
+| [Hesap anahtarları ve bağlantı dizeleri](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | Hesap anahtarlarını listeleyin, salt okunurdur, anahtarları yeniden oluşturun ve bağlantı dizelerini listeleyin.|
+| [IP güvenlik duvarıyla güvenli hale getirme](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| IP güvenlik duvarı yapılandırılmış bir Cosmos hesabı oluşturun.|
+| [Hizmet uç noktaları ile güvenli yeni hesap](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Hizmet uç noktaları ile Cosmos hesabı oluşturun ve güvenli hale getirin.|
+| [Mevcut hesabı hizmet uç noktalarıyla güvenli hale getirin](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| Alt ağ sonunda yapılandırıldığında hizmet uç noktalarıyla güvenli hale getirmek için Cosmos hesabını güncelleştirin.|
 |||

@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Arşiv dizini günlükleri bir depolama hesabına | Microsoft Dokümanlar
-description: Azure Etkin Dizin günlüklerini bir depolama hesabına itmek için Azure Tanılama'yı nasıl ayarlayabilirsiniz öğrenin
+title: Öğretici-dizin günlüklerini bir depolama hesabına arşivleme | Microsoft Docs
+description: Azure Active Directory günlüklerini depolama hesabına göndermek için Azure Tanılama ayarlamayı öğrenin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74007858"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure REKLAM günlüğünü bir Azure depolama hesabına arşivleyin
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure AD günlüklerini bir Azure depolama hesabında arşivleme
 
 Bu öğreticide bir Azure depolama hesabına Azure Active Directory (Azure AD) günlüğü yönlendirme amacıyla Azure İzleyici tanılama ayarlarını yapmayı öğreneceksiniz.
 
@@ -38,9 +38,9 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Günlükleri Azure depolama hesabında arşivleme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
-2. **Azure Etkin Dizin** > **Etkinliği** > **Denetimi günlüklerini**seçin. 
+2. **Azure Active Directory** > **Activity**etkinlik > **Denetim günlükleri**' ni seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin. 
 
@@ -76,5 +76,5 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure Monitor'da oturum açma günlüklerini şema yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
+* [Azure Izleyici 'de oturum açma günlüğü şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

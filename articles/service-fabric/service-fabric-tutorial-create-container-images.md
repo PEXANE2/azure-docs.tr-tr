@@ -1,5 +1,5 @@
 ---
-title: Azure'da Hizmet Kumaşı'nda kapsayıcı resimleri oluşturma
+title: Azure 'da Service Fabric kapsayıcı görüntüleri oluşturma
 description: Bu öğreticide, çok kapsayıcılı bir Service Fabric uygulaması için kapsayıcı görüntülerini nasıl oluşturabileceğinizi öğrenirsiniz.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78252779"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Öğretici: Linux Service Fabric kümesi üzerinde kapsayıcı görüntüleri oluşturma
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry’yi dağıtma
 
-Azure hesabınızda oturum açmak için önce **az giriş** komutunu çalıştırın.
+İlk olarak, Azure hesabınızda oturum açmak için **az Login** komutunu çalıştırın.
 
 ```azurecli
 az login
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 Bu öğreticinin geri kalan aşamalarında, seçtiğiniz kapsayıcı kayıt defteri adı için yer tutucu olarak “acrName” kullanacağız. Lütfen bu değeri not edin.
 
-## <a name="sign-in-to-your-container-registry"></a>Konteyner kayıt defterinizde oturum açın
+## <a name="sign-in-to-your-container-registry"></a>Kapsayıcı kayıt defterinizde oturum açın
 
-Görüntüleri ona itmeden önce ACR örneğinde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
+Görüntüleri göndermeden önce ACR Örneğinizde oturum açın. İşlemi tamamlamak için **az acr login** komutunu kullanın. Kapsayıcı kayıt defterine oluşturulduğunda verilen benzersiz adı sağlayın.
 
 ```azurecli
 az acr login --name <acrName>
@@ -198,7 +198,7 @@ azure-vote-front
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, github bir uygulama çekildi ve konteyner görüntüleri oluşturuldu ve bir kayıt defterine itildi. Aşağıdaki adımlar tamamlandı:
+Bu öğreticide, bir uygulama GitHub 'dan çekilir ve kapsayıcı görüntüleri oluşturulup bir kayıt defterine gönderildi. Aşağıdaki adımlar tamamlandı:
 
 > [!div class="checklist"]
 > * Uygulama kaynağını GitHub’dan kopyalama

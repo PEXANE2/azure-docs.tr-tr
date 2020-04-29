@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Tablo API'sinde tablo oluşturmak için PowerShell komut dosyası
-description: Azure Cosmos DB Tablo API'sinde bir veritabanı veya kapsayıcının veri meçlerini güncelleştirmek için PowerShell komut dosyasını nasıl kullanacağınızı öğrenin
+title: Azure Cosmos DB Tablo API'si bir tablo oluşturmak için PowerShell betiği
+description: Bir veritabanı veya Azure Cosmos DB bir kapsayıcı için üretilen işi güncelleştirmek üzere bir PowerShell betiği kullanmayı öğrenin Tablo API'si
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 9ea03996c793c3d53e4a3657c537f9354892c647
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365594"
 ---
-# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB için tablo oluşturma - Tablo API
+# <a name="create-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB Tablo API'si için tablo oluşturma
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,11 +38,11 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 
 | Komut | Notlar |
 |---|---|
-|**Azure Kaynakları**| |
-| [Yeni Kaynak](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
+|**Azure kaynakları**| |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Bir kaynak oluşturur. |
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Cosmos DB Tablo API Tablosu oluşturur veya güncelleştirir. |
-|**Azure Kaynak Grupları**| |
+| [Set-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbtable) | Bir Cosmos DB Tablo API'si tablosu oluşturur veya güncelleştirir. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

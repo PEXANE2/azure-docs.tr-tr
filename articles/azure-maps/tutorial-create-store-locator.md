@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Haritalar'ı kullanarak mağaza bulucu uygulaması oluşturun | Microsoft Azure Haritaları"
-description: Bu eğitimde, Microsoft Azure Maps web SDK'yı kullanarak mağaza bulucu web uygulaması oluşturmayı öğreneceksiniz.
+title: 'Öğretici: Azure Maps kullanarak bir mağaza Bulucu uygulaması oluşturma | Microsoft Azure haritaları'
+description: Bu öğreticide, Microsoft Azure Maps web SDK 'sını kullanarak bir depo Konumlandırıcı Web uygulaması oluşturmayı öğreneceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 01/14/2020
@@ -10,112 +10,112 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 49b57b213a452d6c594bbc1ca537e68bd7a83864
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80333849"
 ---
-# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Haritalar'ı kullanarak mağaza bulucu oluşturma
+# <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
-Bu öğretici, Azure Haritalar'ı kullanarak basit bir mağaza bulucu oluşturma sürecinde size yol gösteriş eder. Mağaza bulucuları yaygındır. Bu tür uygulamalarda kullanılan kavramların çoğu diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucu sunan tüketicilere doğrudan satmak çoğu işletme için bir zorunluluktur. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
     
 > [!div class="checklist"]
-> * Azure Harita Denetimi API'sini kullanarak yeni bir web sayfası oluşturun.
-> * Bir dosyadan özel verileri yükleyin ve haritada görüntüleyin.
-> * Bir adres bulmak veya bir sorgu girmek için Azure Haritalar Arama hizmetini kullanın.
-> * Kullanıcının konumunu tarayıcıdan alın ve haritada gösterin.
+> * Azure Harita Denetimi API 'sini kullanarak yeni bir Web sayfası oluşturun.
+> * Bir dosyadan özel verileri yükleyin ve bir haritada görüntüleyin.
+> * Azure haritalar arama hizmetini kullanarak bir adres bulun veya bir sorgu girin.
+> * Tarayıcıdan kullanıcının konumunu alın ve haritada görüntüleyin.
 > * Haritada özel semboller oluşturmak için birden çok katmanı birleştirin.  
-> * Veri noktalarını kümele.  
+> * Küme veri noktaları.  
 > * Haritaya yakınlaştırma denetimleri ekleyin.
 
 <a id="Intro"></a>
 
-Canlı mağaza [bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
+[Canlı mağaza Bulucu örneğine](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) veya [kaynak koduna](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)atlayın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticideki adımları tamamlamak için öncelikle bir Azure Haritalar hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 fiyatlandırma katmanına sahip bir Azure Haritalar hesabı aboneliği oluşturmak için [hesap oluştur'daki](quick-demo-map-app.md#create-an-account-with-azure-maps) yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtarı al'daki](quick-demo-map-app.md#get-the-primary-key-for-your-account) adımları izleyin. Azure Haritalar'da kimlik doğrulama hakkında daha fazla bilgi için Azure [Haritalar'da kimlik doğrulamayı yönet'e](how-to-manage-authentication.md)bakın.
+Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Azure Maps hesabı oluşturmanız ve birincil anahtarınızı (abonelik anahtarı) almanız gerekir. S1 Fiyatlandırma Katmanı içeren bir Azure Maps hesabı aboneliği oluşturmak için [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) bölümündeki yönergeleri izleyin ve hesabınızın birincil anahtarını almak için [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
-## <a name="design"></a>Tasarım
+## <a name="design"></a>Tasarlama
 
-Koda atlamadan önce, bir tasarımla başlamak iyi bir fikirdir. Mağaza bulucunuz istediğiniz kadar basit veya karmaşık olabilir. Bu öğreticide, basit bir mağaza bulucu oluşturmak. İsterseniz bazı işlevleri genişletmenize yardımcı olmak için yol boyunca bazı ipuçları ekleriz. Contoso Coffee adında kurgusal bir şirket için bir mağaza bulucusu oluşturuyoruz. Aşağıdaki şekil, bu öğreticide oluşturduğumuz mağaza bulucusu genel düzeni bir tel çerçevesi gösterir:
-
-<center>
-
-![Contoso Coffee mağaza yerleri için mağaza bulucu uygulamasının tel kafesi](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
-
-Bu mağaza bulucunun kullanışlılığını en üst düzeye çıkarmak için, bir kullanıcının ekran genişliği 700 pikselden daha küçük olduğunda ayarlayan duyarlı bir düzen ekleriz. Duyarlı bir mizanpaj, mağaza bulucuyu mobil aygıtta olduğu gibi küçük bir ekranda kullanmayı kolaylaştırır. Burada küçük ekran düzeni bir tel çerçevesi' s:  
+Koda geçmeden önce tasarım ile başlamak iyi bir fikirdir. Mağaza konumlarınız, olmasını istediğiniz kadar basit veya karmaşık olabilir. Bu öğreticide, basit bir mağaza Bulucu oluşturacağız. Tercih ediyorsanız bazı işlevleri genişletmenize yardımcı olmak için bazı ipuçları ekledik. Contoso kahve adlı kurgusal bir şirket için mağaza Bulucu oluşturacağız. Aşağıdaki şekilde, bu öğreticide oluşturduğumuz mağaza bulucunun genel düzeninin bir tel kafes 'i gösterilmektedir:
 
 <center>
 
-![Mobil cihazda Contoso Coffee mağaza bulucu uygulamasının tel kafesi](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![Contoso kahve mağaza konumları için mağaza Bulucu uygulamasının tel kafes 'i](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
-Tel kafesler oldukça basit bir uygulama göstermektedir. Uygulamanın bir arama kutusu, yakındaki mağazaların bir listesi ve semboller gibi bazı işaretçileri olan bir harita vardır. Ayrıca, kullanıcı bir işaretçi seçtiğinde ek bilgiler görüntüleyen bir açılır pencereye sahiptir. Daha ayrıntılı olarak, burada bu öğretici bu mağaza bulucu içine inşa özellikleri şunlardır:
+Bu mağaza bulucunun kullanışlılığını en üst düzeye çıkarmak için, bir kullanıcının ekran genişliği 700 pikselden daha küçük olduğunda ayarlayan bir yanıt veren düzen ekledik. Hızlı yanıt veren bir düzen, mağaza bulucunun bir mobil cihazda olduğu gibi küçük bir ekranda kullanılmasını kolaylaştırır. Küçük ekran düzeninin tel kafesi aşağıda verilmiştir:  
 
-* Alınan sekme-sınırlandırılmış veri dosyasından tüm konumlar haritaya yüklenir.
-* Kullanıcı haritayı kaydırıp yakınlaştırabilir, arama yapabilir ve Konumum GPS düğmesini seçebilir.
-* Sayfa düzeni, aygıt ekranının genişliğine göre ayarlanır.  
-* Üstbilgi mağaza logosunu gösterir.  
-* Kullanıcı, adres, posta kodu veya şehir gibi bir konumu aramak için bir arama kutusu ve arama düğmesini kullanabilir. 
-* Arama `keypress` kutusuna eklenen bir olay, kullanıcı Enter tuşuna baslarsa aramayı tetikler. Bu işlevsellik genellikle göz ardı edilir, ancak daha iyi bir kullanıcı deneyimi oluşturur.
-* Harita hareket ettiğinde, haritanın merkezinden her konuma olan uzaklık hesaplanır. Sonuç listesi, haritanın en üstündeki en yakın konumları görüntülemek için güncelleştirilir.  
-* Sonuç listesinde bir sonuç seçtiğinizde, harita seçili konumun üzerine ortalanır ve konumla ilgili bilgiler açılır pencerede görünür.  
-* Haritada belirli bir konumu n seçilmesi de açılır pencereyi tetikler.
-* Kullanıcı uzaklaştırdığında, konumlar kümeler halinde gruplanır. Kümeler, daireiçinde bir sayı olan bir daire ile temsil edilir. Kullanıcı yakınlaştırma düzeyini değiştirdiğinde kümeler oluşur ve ayrılır.
-* Bir küme seçmek, haritada iki düzeyde yakınlaştırır ve kümenin konumu üzerinde ortalar.
+<center>
+
+![Bir mobil cihazda contoso kahve Mağazası Bulucu uygulamasının tel kafes 'i](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+
+Wireframes oldukça basittir bir uygulama gösterir. Uygulamanın bir arama kutusu, yakındaki mağazaların listesi ve simgeler gibi bazı işaretçileri olan bir eşlem vardır. Ayrıca, Kullanıcı bir işaretleyici seçtiğinde ek bilgi görüntüleyen bir açılır pencere içerir. Daha ayrıntılı bilgi için, bu öğreticide bu mağaza bulucusunu geliştirdiğimiz özellikler şunlardır:
+
+* İçeri aktarılan sekmeyle ayrılmış veri dosyasındaki tüm konumlar haritaya yüklenir.
+* Kullanıcı Haritayı açabilir ve yakınlaştırabilir, bir arama gerçekleştirebilir ve konumumu GPS düğmesini seçebilir.
+* Sayfa düzeni, cihaz ekranının genişliğine göre ayarlanır.  
+* Bir üst bilgi mağaza logosunu gösterir.  
+* Kullanıcı, adres, posta kodu veya şehir gibi bir konum aramak için bir arama kutusu ve arama düğmesi kullanabilir. 
+* Arama `keypress` kutusuna eklenen bir olay, Kullanıcı ENTER tuşuna bastığında aramayı tetikler. Bu işlevsellik genellikle daha fazla bakmış olsa da daha iyi bir kullanıcı deneyimi oluşturur.
+* Harita taşırken, eşlemenin merkezinden her konum için uzaklık hesaplanır. Sonuçlar listesi haritanın en üstündeki konumları görüntüleyecek şekilde güncelleştirilir.  
+* Sonuçlar listesinde bir sonuç seçtiğinizde, eşleme seçilen konumun üzerine ortalanır ve konum hakkındaki bilgiler açılır pencerede görüntülenir.  
+* Haritada belirli bir konumun seçilmesi bir açılır pencereyi de tetikler.
+* Kullanıcı uzaklaşır konumlar kümeler halinde gruplandırılır. Kümeler, dairenin içinde sayı olan bir daireyle temsil edilir. Kullanıcı yakınlaştırma düzeyini değiştirdiğinde kümeler formu ve ayrı ayrı.
+* Bir kümeyi seçmek, iki düzeyi haritada ve kümenin konumunu üzerine ortalar.
 
 <a id="create a data-set"></a>
 
-## <a name="create-the-store-location-dataset"></a>Mağaza konumu veri kümesini oluşturma
+## <a name="create-the-store-location-dataset"></a>Depo konumu veri kümesini oluşturma
 
-Bir mağaza bulucu uygulaması geliştirmeden önce, haritada görüntülemek istediğimiz mağazaların bir veri kümesini oluşturmamız gerekir. Bu eğitimde, Contoso Coffee adlı hayali bir kahve dükkanı için bir veri seti kullanıyoruz. Bu basit depo bulucuiçin veri kümesi bir Excel çalışma kitabında yönetilir. Veri seti, dokuz ülkeye/bölgeye yayılmış 10.213 Contoso Coffee kahve dükkanı yeri içerir: Amerika Birleşik Devletleri, Kanada, İngiltere, Fransa, Almanya, İtalya, Hollanda, Danimarka ve İspanya. Verilerin nasıl göründüğünün ekran görüntüsü aşağıda vereyim:
+Bir mağaza Bulucu uygulaması geliştirmeden önce, haritada göstermek istediğimiz mağazaların bir veri kümesi oluşturuyoruz. Bu öğreticide, contoso kahve adlı kurgusal bir kafeterde bir veri kümesi kullanacağız. Bu basit mağaza bulucunun veri kümesi bir Excel çalışma kitabında yönetilir. Veri kümesi, dokuz ülkede/bölgede 10.213 contoso kahve kahve dükkanı yayma konumları içerir: Birleşik Devletler, Kanada, Birleşik Krallık, Fransa, Almanya, Italya, Hollanda, Danimarka ve Ispanya. Verilerin nasıl göründüğünü aşağıda görebilirsiniz:
 
 <center>
 
-![Excel çalışma kitabındaki depo bulucu verilerinin ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
+![Bir Excel çalışma kitabındaki depo Konumlandırıcı verilerinin ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
 
-Excel [çalışma kitabını indirebilirsiniz.](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data) 
+[Excel çalışma kitabını indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). 
 
-Verilerin ekran görüntüsüne baktığımızda aşağıdaki gözlemleri yapabiliriz:
+Verilerin ekran görüntüsüne bakarak aşağıdaki gözlemleri yapabiliriz:
     
-* Konum bilgileri **Adres Hattı,** **Şehir,** **Belediye** (ilçe), **Yönetici Bölümü** (eyalet/il), **Posta Kodu** (posta kodu) ve **Ülke** sütunları kullanılarak depolanır.  
-* **Enlem** ve **Boylam** sütunları her Contoso Coffee kahve dükkanı nın konumunun koordinatlarını içerir. Koordinat bilgileriniz yoksa, konum koordinatlarını belirlemek için Azure Haritalar'daki Arama hizmetlerini kullanabilirsiniz.
-* Bazı ek sütunlar kafelerle ilgili meta veriler içerir: telefon numarası, Boolean sütunları ve mağaza açılış ve kapanış saatleri 24 saat biçiminde. Boolean sütunları Wi-Fi ve tekerlekli sandalye erişilebilirliği içindir. Konum verilerinizle daha alakalı meta veriler içeren kendi sütunlarınızı oluşturabilirsiniz.
+* Konum bilgileri **Adressatırı**, **şehir**, **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
+* **Enlem** ve **boylam** sütunları, her contoso Coffee kahve dükkanı mağaza konumunun koordinatlarını içerir. Koordinat bilgilerine sahip değilseniz, Konum koordinatlarını öğrenmek için Azure haritalar 'daki arama hizmetleri ' ni kullanabilirsiniz.
+* Bazı ek sütunlar, kafeterlerle ilgili meta verileri içerir: telefon numarası, Boole sütunları ve açılış ve kapanış zamanlarını 24 saat biçiminde depolar. Boole sütunları Wi-Fi ve wheelsandalye erişilebilirliği içindir. Konum verilerinize daha uygun olan meta verileri içeren kendi sütunlarınızı oluşturabilirsiniz.
 
 > [!Note]
-> Azure Haritalar, küresel Mercator projeksiyonunda verileri "EPSG:3857" olarak işler, ancak WGS84 datum'u kullanan "EPSG:4325"deki verileri okur. 
+> Azure Maps, verileri küresel Mercator projeksiyonu "EPSG: 3857" olarak işler, ancak WGS84 Datum kullanan "EPSG: 4325" içindeki verileri okur. 
 
-Veri kümesini uygulamaya maruz bırakmanın birçok yolu vardır. Bir yaklaşım, verileri bir veritabanına yüklemek ve verileri sorgulayan bir web hizmetini ortaya çıkarmaktır. Daha sonra sonuçları kullanıcının tarayıcısına gönderebilirsiniz. Bu seçenek, büyük veri kümeleri veya sık sık güncelleştirilen veri kümeleri için idealdir. Ancak, bu seçenek daha fazla geliştirme çalışması gerektirir ve daha yüksek bir maliyeti vardır. 
+Veri kümesini uygulamada açığa çıkarmak için birçok yol vardır. Bir yaklaşım, verileri bir veritabanına yüklemek ve verileri sorgulayan bir Web hizmetini kullanıma sunmasıdır. Ardından sonuçları kullanıcının tarayıcısına gönderebilirsiniz. Bu seçenek, büyük veri kümeleri veya sık güncellenen veri kümeleri için idealdir. Ancak, bu seçenek daha fazla geliştirme çalışması gerektirir ve maliyeti daha yüksektir. 
 
-Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabileceği düz bir metin dosyasına dönüştürmektir. Dosyanın kendisi, uygulamanın geri kalanıyla birlikte barındırılabilir. Bu seçenek her şeyi basit tutar, ancak kullanıcı tüm verileri karşıdan yüklediği için yalnızca daha küçük veri kümeleri için iyi bir seçenek. Veri dosyası boyutu 1 MB'dan küçük olduğundan, bu veri kümesi için düz metin dosyasını kullanırız.  
+Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabileceği düz bir metin dosyasına dönüştürmesidir. Dosyanın kendisi, uygulamanın geri kalanı ile barındırılabilir. Bu seçenek, şeyleri basit tutar, ancak kullanıcı tüm verileri indirdiğinden daha küçük veri kümeleri için iyi bir seçenektir. Veri dosyasının boyutu 1 MB 'tan küçük olduğundan bu veri kümesi için düz metin dosyası kullanıyoruz.  
 
-Çalışma kitabını düz bir metin dosyasına dönüştürmek için çalışma kitabını sekme yle sınırlandırılmış dosya olarak kaydedin. Her sütun, sütunların kodumuzda ayrıştırılamasını kolaylaştıran bir sekme karakteriyle sınırlandırılır. Virgülle ayrılmış değer (CSV) biçimini kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. Etrafında virgül olan herhangi bir alan tırnak işaretleriile sarılı olacaktır. Bu verileri Excel'de sekme yle sınırlandırılmış dosya olarak dışa aktarmak için **Farklı Kaydet'i**seçin. Tür açılır listesinde **Kaydet'te** **Metin (Sekme delimited)(*.txt)** seçeneğini belirleyin. *DosyacontosoCoffee.txt*adı . 
-
-<center>
-
-![Tür iletişim kutusu olarak kaydet ekran görüntüsü](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
-
-Not Defteri'nde metin dosyasını açarsanız, aşağıdaki şekilde benzer görünür:
+Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee. txt*olarak adlandırın. 
 
 <center>
 
-![Sekme sınırlandırılabilen bir veri kümesini gösteren notepad dosyasının ekran görüntüsü](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![Farklı Kaydet tür iletişim kutusunun ekran görüntüsü](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+
+Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şekilde görünür:
+
+<center>
+
+![Sekmeyle ayrılmış bir veri kümesi gösteren bir not defteri dosyasının ekran görüntüsü](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>Projeyi ayarlama
 
-Projeyi oluşturmak için [Visual Studio'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html*, *index.css*ve *index.js*. Bu dosyalar, uygulamanın düzenini, stilini ve mantığını tanımlar. *Veri* adında bir klasör oluşturun ve *klasöre ContosoCoffee.txt* ekleyin. *Resim*adlı başka bir klasör oluşturun. Bu uygulamada haritadaki simgeler, düğmeler ve işaretçiler için 10 resim kullanıyoruz. Bu [resimleri indirebilirsiniz.](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data) Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
+Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index. html*, *index. css*ve *index. js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Data* adlı bir klasör oluşturun ve klasöre *ContosoCoffee. txt* ekleyin. *Görüntüler*adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
 
 <center>
 
-![Basit Depo Bulucu proje klasörünün ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Basit depo Konumlandırıcı proje klasörünün ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
 
 ## <a name="create-the-user-interface"></a>Kullanıcı arabirimini oluşturma
 
-Kullanıcı arabirimi oluşturmak için *index.html*kodu ekleyin:
+Kullanıcı arabirimini oluşturmak için *index. html*dosyasına kod ekleyin:
 
-1. `meta` *Index.html'e* `head` aşağıdaki etiketleri ekleyin. Etiket `charset` karakter kümesini (UTF-8) tanımlar. Değeri, `http-equiv` Internet Explorer ve Microsoft Edge'e en son tarayıcı sürümlerini kullanmalarını söyler. Ve son `meta` etiket, duyarlı düzenler için iyi çalışan bir görünüm portu belirtir.
+1. Aşağıdaki `meta` etiketleri *index. html*dosyasına `head` ekleyin. `charset` Etiket, (UTF-8) karakter kümesini tanımlar. Internet Explorer ve `http-equiv` Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son `meta` etiket ise, yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
 
     ```HTML
     <meta charset="utf-8">
@@ -123,27 +123,27 @@ Kullanıcı arabirimi oluşturmak için *index.html*kodu ekleyin:
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-1. Azure Haritalar web denetimi JavaScript ve CSS dosyalarına referanslar ekleyin:
+1. Azure Maps Web Control JavaScript ve CSS dosyalarına başvurular ekleyin:
 
     ```HTML
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
-1. Azure Haritalar Hizmetleri modülüne bir başvuru ekleyin. Modül, Azure Haritalar REST hizmetlerini saran ve JavaScript'te kullanımını kolaylaştıran bir JavaScript kitaplığıdır. Modül, arama işlevselliğini güçlandırmak için kullanışlıdır.
+1. Azure haritalar Hizmetleri modülüne bir başvuru ekleyin. Modül, Azure Maps REST hizmetlerini sarmalayan ve JavaScript 'te kullanımını kolaylaştıran bir JavaScript kitaplığı. Modül, arama işlevselliğini güçetmek için kullanışlıdır.
 
     ```HTML
     <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
     ```
 
-1. *index.js ve index.css'ye* referans lar ekleyin: *index.css*
+1. *İndex. js* ve *index. css*öğesine başvurular ekleyin:
 
     ```HTML
     <link rel="stylesheet" href="index.css" type="text/css">
     <script src="index.js"></script>
     ```
 
-1. Belgenin gövdesine bir `header` etiket ekleyin. Etiketin `header` içine logoyu ve şirket adını ekleyin.
+1. Belge gövdesinde bir `header` etiket ekleyin. `header` Etiket içinde, logo ve şirket adını ekleyin.
 
     ```HTML
     <header>
@@ -152,7 +152,7 @@ Kullanıcı arabirimi oluşturmak için *index.html*kodu ekleyin:
     </header>
     ```
 
-1. Bir `main` etiket ekleyin ve metin kutusu ve arama düğmesi olan bir arama paneli oluşturun. Ayrıca, `div` harita, liste paneli ve Konumum GPS düğmesi için referanslar ekleyin.
+1. Bir `main` etiket ekleyin ve metin kutusu ve arama düğmesine sahip bir arama bölmesi oluşturun. Ayrıca, harita `div` , liste paneli ve KONUMUMU GPS için başvurular ekleyin.
 
     ```HTML
     <main>
@@ -168,9 +168,9 @@ Kullanıcı arabirimi oluşturmak için *index.html*kodu ekleyin:
     </main>
     ```
 
-Bitirdikten *sonra, index.html* bu [örnek index.html dosyası](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)gibi görünmelidir.
+İşiniz bittiğinde *index. html* [Bu örnek index. html dosyası](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html)gibi görünmelidir.
 
-Bir sonraki adım CSS stilleri tanımlamaktır. CSS stilleri, uygulama bileşenlerinin nasıl ortaya konulduruluşlarını ve uygulamanın görünümünü tanımlar. *Index.css'yi* açın ve aşağıdaki kodu ekleyin. Stil, `@media` ekran genişliği 700 pikselden küçükolduğunda kullanılacak alternatif stil seçeneklerini tanımlar.  
+Sonraki adım CSS stillerini tanımlamaktır. CSS stilleri, uygulama bileşenlerinin nasıl düzenlendiğini ve uygulamanın görünümünü tanımlar. *İndex. css* ' ye açın ve aşağıdaki kodu ekleyin. `@media` Stil, ekran genişliği 700 pikselden küçük olduğunda kullanılacak alternatif stil seçeneklerini tanımlar.  
 
    ```CSS
     html, body {
@@ -375,13 +375,13 @@ Bir sonraki adım CSS stilleri tanımlamaktır. CSS stilleri, uygulama bileşenl
     }
    ```
 
-Uygulamayı şimdi çalıştırın, üstbilgi, arama kutusu ve arama düğmesini görürsünüz. Ancak harita henüz yüklenmediğinden görünmüyor. Bir arama yapmaya çalışırsanız, hiçbir şey olmaz. Bir sonraki bölümde açıklanan JavaScript mantığını ayarlamamız gerekir. Bu mantık, mağaza bulucunun tüm işlevlerine erişir.
+Uygulamayı şimdi çalıştırın, üst bilgi, arama kutusu ve arama düğmesini görürsünüz. Ancak, eşleme henüz yüklenmediği için görünür değildir. Bir arama yapmayı denerseniz, hiçbir şey olmaz. Bir sonraki bölümde açıklanan JavaScript mantığını ayarlamız gerekir. Bu mantık, mağaza bulucunun tüm işlevlerine erişir.
 
-## <a name="wire-the-application-with-javascript"></a>Uygulamayı JavaScript ile kablola
+## <a name="wire-the-application-with-javascript"></a>JavaScript ile uygulamayı tel bağlantı
 
-Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrışdırmak ve ardından verileri harita üzerinde işlemek için JavaScript'i eklememiz gerekir. Başlamak için *index.js'yi* açın ve aşağıdaki adımlarda açıklandığı gibi kod ekleyin.
+Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek ve ayrıştırmak için JavaScript 'i eklememiz ve sonra verileri haritada işlemesi gerekir. Başlamak için *index. js* ' yi açın ve aşağıdaki adımlarda açıklandığı gibi buna kod ekleyin.
 
-1. Ayarların güncelleştirilen kolay olmasını sağlamak için genel seçenekler ekleyin. Harita, açılan pencere, veri kaynağı, simge katmanı ve HTML işaretçisi için değişkenleri tanımlayın. HTML işaretçisini bir arama alanının merkezini gösterecek şekilde ayarlayın. Ayrıca, Azure Haritalar arama hizmeti istemcisinin bir örneğini tanımlayın.
+1. Ayarları daha kolay güncelleştirilmesini sağlamak için genel seçenekler ekleyin. Harita, açılan pencere, veri kaynağı, simge katmanı ve HTML işaretçisi için değişkenleri tanımlayın. HTML işaretini bir arama alanının merkezini gösterecek şekilde ayarlayın. Azure haritalar arama hizmeti istemcisinin bir örneğini tanımlayın.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,14 +395,14 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. *index.js'ye*kod ekleyin. Aşağıdaki kod haritayı başlatılmasını. Sayfa yükleme tamamlanana kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekledik. Daha sonra, haritanın yüklenmesini izlemek ve arama düğmesine ve Konumum düğmesine işlevsellik sağlamak için olayları bağladık.
+1. *İndex. js*' ye kod ekleyin. Aşağıdaki kod eşlemeyi başlatır. Sayfa yüklemeyi bitirene kadar beklemek için bir [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) ekledik. Daha sonra, eşlemenin yüklenmesini izlemek için olaylar ve arama düğmesine ve Konumum düğmesine işlevsellik veririz.
 
-   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum yazdığında enter tuşuna bastığında, kullanıcının sorgusuna karşı bulanık bir arama başlatılır. Arama sonuçlarını bu ülkelerle/bölgelerle `countrySet` sınırlama seçeneğine bir dizi ülke ISO 2 değeri aktarın. Arama yapmak için ülkelerin/bölgelerin sınırlandırılması, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
+   Kullanıcı arama düğmesini seçtiğinde veya arama kutusuna bir konum yazdığında, sonra ENTER tuşuna bastığında, kullanıcının sorgusuna yönelik belirsiz bir arama başlatılır. Arama sonuçlarını bu ülkelere/bölgelerle sınırlamak için bir Country ISO `countrySet` 2 değerleri dizisi geçirin. Ülkeleri/bölgeleri arama yapılacak şekilde sınırlamak, döndürülen sonuçların doğruluğunu artırmaya yardımcı olur. 
   
-   Arama tamamlandıktan sonra, ilk sonucu alın ve harita kamerasını o alanın üzerine ayarlayın. Kullanıcı Konumum düğmesini seçtiğinde, HTML5 Coğrafi Konum API'sını kullanarak kullanıcının konumunu alın. Bu API tarayıcıda yerleşiktir. Ardından, haritayı konumlarının üzerine ortalayın.  
+   Arama tamamlandıktan sonra, ilk sonucu alın ve harita kamerayı bu alana ayarlayın. Kullanıcı konumumu seçtiğinde, HTML5 coğrafi konum API 'sini kullanarak kullanıcının konumunu alın. Bu API tarayıcıda yerleşik olarak bulunur. Ardından, Haritayı konumlarına göre ortalayın.  
 
    > [!Tip]
-   > Açılır pencereleri kullandığınızda, tek `Popup` bir örnek oluşturmak ve içeriğini ve konumunu güncelleştirerek örneği yeniden kullanmak en iyisidir. Kodunuza `Popup`eklediğiniz her örnek için sayfaya birden çok DOM öğesi eklenir. Bir sayfada ne kadar çok DOM öğesi varsa, tarayıcının izlemesi gereken o kadar çok şey olur. Çok fazla öğe varsa, tarayıcı yavaş olabilir.
+   > Açılır pencereleri kullanırken, tek `Popup` bir örnek oluşturmak ve içeriğini ve konumunu güncelleştirerek örneği yeniden kullanmak en iyisidir. Kodunuza eklediğiniz `Popup`her örnek için, sayfaya bırden fazla DOM öğesi eklenir. Sayfada daha fazla DOM öğesi varsa, tarayıcıda izlemek için gereken daha fazla şey vardır. Çok fazla öğe varsa tarayıcı yavaş kalabilir.
 
     ```JavaScript
     function initialize() {
@@ -510,7 +510,7 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     window.onload = initialize;
     ```
 
-1. Haritanın `ready` olay dinleyicisinde, arama alanının merkezini görüntülemek için bir yakınlaştırma denetimi ve HTML işaretçisi ekleyin.
+1. Haritanın `ready` olay dinleyicisinde, bir arama alanının merkezini göstermek için bir yakınlaştırma denetımı ve HTML işaretleyicisi ekleyin.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -527,7 +527,7 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     map.markers.add(centerMarker);
     ```
 
-1. Haritanın `ready` olay dinleyicisinde bir veri kaynağı ekleyin. Ardından, veri kümesini yüklemek ve ayrıştmak için bir arama yapın. Veri kaynağında kümele'yi etkinleştirin. Bir kümede çakışan noktaları bir araya getirerek veri kaynağı grupları üzerinde kümeleme. Kümeler, kullanıcı yakınlaştıkça ayrı ayrı noktalara ayrılır. Bu davranış daha iyi bir kullanıcı deneyimi sağlar ve performansı artırır.
+1. Haritanın `ready` olay dinleyicisinde bir veri kaynağı ekleyin. Ardından, veri kümesini yükleme ve ayrıştırma çağrısı yapın. Veri kaynağında kümelendirmeyi etkinleştirin. Veri kaynağı gruplarında, çakışan noktaları bir kümede birlikte bulunan kümelendirmelidir. Kümeler, Kullanıcı yakınlaşarak tek tek noktalara ayrılır. Bu davranış daha iyi bir kullanıcı deneyimi sağlar ve performansı geliştirir.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -542,9 +542,9 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     loadStoreData();
     ```
 
-1. Haritanın `ready` olay dinleyicisine veri kümesini yükledikten sonra, verileri işlemek için bir katman kümesi tanımlayın. Kümelenmiş veri noktalarını işlemek için kabarcık katmanı kullanılır. Bir sembol katmanı kabarcık katmanı üzerinde her kümede nokta sayısını işlemek için kullanılır. İkinci bir sembol katmanı, haritadaki tek tek konumlar için özel bir simge oluşturur.
+1. Veri kümesini haritanın `ready` olay dinleyicisine yükledikten sonra, verileri işlemek için bir katman kümesi tanımlayın. Bir kabarcık katmanı, kümelenmiş veri noktalarını işlemek için kullanılır. Balon katmanının üzerindeki her kümedeki noktaların sayısını işlemek için bir sembol katmanı kullanılır. İkinci bir sembol katmanı, haritadaki ayrı konumlar için özel bir simge oluşturur.
 
-   Kullanıcı `mouseover` `mouseout` haritadaki bir küme veya simgenin üzerinde gezindiğinde fare imlecini değiştirmek için kabarcık ve simge katmanlarına ekleme ve olaylar ekleyin. Küme `click` kabarcığı katmanına bir olay ekleyin. Bu `click` olay haritada iki düzey yakınlaştırır ve kullanıcı herhangi bir küme seçtiğinde haritayı bir küme üzerinde ortalar. Simge `click` katmanına bir olay ekleyin. Bu `click` olay, bir kullanıcı tek bir konum simgesi ni seçtiğinde bir kafenin ayrıntılarını gösteren bir açılır pencere görüntüler. Haritanın hareket etmesini izlemek için haritaya bir olay ekleyin. Bu olay çıktığında, liste panelindeki öğeleri güncelleştirin.  
+   Kullanıcı `mouseover` haritada `mouseout` bir kümenin veya simgenin üzerine geldiğinde fare imlecini değiştirmek için kabarcık ve simge katmanlarına olay ekleyin. Küme kabarcık `click` katmanına bir olay ekleyin. Bu `click` olay, haritada iki düzey daha yakınlaştırılır ve Kullanıcı herhangi bir kümeyi seçtiğinde Haritayı bir küme üzerine ortalar. Simge katmanına `click` bir olay ekleyin. Bu `click` olay, Kullanıcı tek bir konum simgesi seçtiğinde bir kafeterin ayrıntılarını gösteren bir açılır pencere görüntüler. Haritanın taşınması tamamlandığında izlemek üzere haritaya bir olay ekleyin. Bu olay tetiklendiğinde, liste panelindeki öğeleri güncelleştirin.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -627,7 +627,7 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     });
     ```
 
-1. Kahve dükkanı veri seti yüklendiğinde, önce indirilmelidir. Ardından, metin dosyası satırlara bölünmelidir. İlk satır üstbilgi bilgilerini içerir. Kodun takibini kolaylaştırmak için, üstbilgiyi bir nesneye ayrıştırır, bu nedenle her özelliğin hücre dizinini aramak için kullanabiliriz. İlk satırdan sonra, kalan satırları niçin döngüye sokup bir nokta özelliği oluşturun. Nokta özelliğini veri kaynağına ekleyin. Son olarak, liste panelini güncelleştirin.
+1. Kahve dükkanı veri kümesi yüklendiğinde, önce indirilmelidir. Sonra, metin dosyası çizgilere bölünmelidir. İlk satır üst bilgi bilgilerini içerir. Kodun izlenmesini kolaylaştırmak için üst bilgiyi bir nesnesine ayrıştırır, bu da daha sonra her bir özelliğin hücre dizinini aramak için kullanabiliriz. İlk satırdan sonra, kalan satırlarda ilerleyin ve bir nokta özelliği oluşturun. Point özelliğini veri kaynağına ekleyin. Son olarak, liste panelini güncelleştirin.
 
     ```JavaScript
     function loadStoreData() {
@@ -686,7 +686,7 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     }
     ```
 
-1. Liste paneli güncelleştirildiğinde, mesafe hesaplanır. Bu mesafe, haritanın merkezinden geçerli harita görünümündeki tüm nokta özelliklerine kadardır. Özellikler daha sonra mesafeye göre sıralanır. HTML, liste panelindeki her konumu görüntülemek için oluşturulur.
+1. Liste paneli güncelleştirilirken uzaklık hesaplanır. Bu uzaklık, haritanın merkezinden geçerli harita görünümündeki tüm nokta özelliklerine kadar olur. Özellikler daha sonra uzaklığına göre sıralanır. Her konumu liste panelinde göstermek için HTML oluşturulur.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';
@@ -824,7 +824,7 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     }
     ```
 
-1. Kullanıcı liste panelinde bir öğe seçtiğinde, öğenin ilişkili olduğu şekil veri kaynağından alınır. Formda depolanan özellik bilgilerini temel alan bir açılır pencere oluşturulur. Harita şeklin üzerinde ortalanır. Harita 700 pikselden daha genişse, açılır pencerenin görünür olması için harita görünümü ofset edilir.
+1. Kullanıcı liste panelinde bir öğe seçtiğinde, öğenin ilişkili olduğu şekil veri kaynağından alınır. Şeklin içinde depolanan Özellik bilgilerini temel alan bir açılır pencere oluşturulur. Harita şeklin üzerine ortalanır. Eşleme 700 piksel genişliğinde değilse, harita görünümü, açılır pencere görünür olacak şekilde denkleştirilir.
 
     ```JavaScript
     //When a user selects a result in the side panel, look up the shape by its ID value and display the pop-up window.
@@ -920,41 +920,41 @@ Artık her şey kullanıcı arabiriminde ayarlandı. Verileri yüklemek ve ayrı
     }
     ```
 
-Şimdi, tamamen işlevsel bir mağaza bulucunuz var. Bir web tarayıcısında, mağaza bulucu için *index.html* dosyasını açın. Kümeler haritada göründüğünde, arama kutusunu kullanarak, Konumum düğmesini seçerek, bir küme seçerek veya tek tek konumları görmek için haritayı yakınlaştırarak bir konum arayabilirsiniz.
+Artık tam işlevli bir depolama Konumlayıcı vardır. Bir Web tarayıcısında mağaza Bulucu için *index. html* dosyasını açın. Kümeler haritada görüntülendiğinde, arama kutusunu kullanarak, bir küme seçerek veya tek tek konumları görmek için haritada yakınlaştırarak bir konum araması yapabilirsiniz ' ı seçin.
 
-Bir kullanıcı Konumum düğmesini ilk kez seçtiğinde, tarayıcı kullanıcının konumuna erişmek için izin isteyen bir güvenlik uyarısı görüntüler. Kullanıcı konumunu paylaşmayı kabul ederse, harita kullanıcının konumunu yakınlaştırır ve yakındaki kafeler gösterilir. 
+Kullanıcı konumumu ilk kez seçtiğinde tarayıcı, kullanıcının konumuna erişmek için izin isteyen bir güvenlik uyarısı görüntüler. Kullanıcı konumunu paylaşmayı kabul ederse, harita kullanıcının konumuna yakınlaşarak yakın kafeterler gösterilir. 
 
 <center>
 
 ![Tarayıcının kullanıcının konumuna erişim isteğinin ekran görüntüsü](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Kahve dükkanı konumları olan bir alanda yeterince yakınlaştırdığınızda, kümeler ayrı konumlara ayrılır. Haritadaki simgelerden birini seçin veya açılır pencereyi görmek için yan panelde bir öğe seçin. Açılır pencere, seçili konumun bilgilerini gösterir.
+Kahve dükterleri bulunan bir alanda yeterince yakından yakınlaştırdığınızda, kümeler tek tek konumlara ayrılır. Harita üzerindeki simgelerden birini seçin veya açılan pencereyi görmek için yan paneldeki bir öğeyi seçin. Açılır pencere, seçili konum için bilgileri gösterir.
 
 <center>
 
-![Bitmiş mağaza bulucu ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+![Tamamlanan mağaza bulucunun ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
-Tarayıcı penceresini 700 pikselden daha kısa bir genişlikte yeniden boyutlandırAcak veya uygulamayı mobil bir cihazda açarsanız, düzen daha küçük ekranlar için daha uygun olacaktır. 
+Tarayıcı penceresini 700 piksel genişliğinde veya uygulamayı bir mobil cihazda açmak için yeniden boyutlandırırsanız, düzen daha küçük ekranlarda daha uygun olacak şekilde değişir. 
 
 <center>
 
-![Mağaza bulucuküçük ekran lı sürümüekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![Mağaza Konumlandırıcı 'nın küçük ekran sürümünün ekran görüntüsü](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Azure Haritalar'ı kullanarak temel bir mağaza bulucusu oluşturmayı öğrenirsiniz. Bu öğreticide oluşturduğunuz mağaza bulucu, ihtiyacınız olan tüm işlevselliğe sahip olabilir. Mağaza bulucunuza özellikler ekleyebilir veya daha özel bir kullanıcı deneyimi için daha gelişmiş özellikler kullanabilirsiniz: 
+Bu öğreticide, Azure haritalar 'ı kullanarak temel bir mağaza Konumlandırıcısı oluşturmayı öğreneceksiniz. Bu öğreticide oluşturduğunuz mağaza Bulucu, ihtiyacınız olan tüm işlevlere sahip olabilir. Mağaza bulucusinize özellikler ekleyebilir veya daha özel bir kullanıcı deneyimi için daha gelişmiş özellikler kullanabilirsiniz: 
 
 > [!div class="checklist"]
 > * Arama kutusuna [yazarken önerileri](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20Autosuggest%20and%20JQuery%20UI) etkinleştirin.  
 > * [Birden çok dil için destek](https://azuremapscodesamples.azurewebsites.net/?sample=Map%20Localization)ekleyin. 
-> * Kullanıcının [rota boyunca konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
-> * [Filtreleri ayarlamak](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)için yeteneği ekleyin. 
-> * Sorgu dizesini kullanarak ilk arama değerini belirtmek için destek ekleyin. Bu seçeneği mağaza bulucunuza eklediğinizde, kullanıcılar aramaları yer imi yapabilir ve paylaşabilir. Ayrıca, aramaları başka bir sayfadan bu sayfaya geçirmeniz için kolay bir yöntem de sağlar.  
-> * Mağaza bulucunuzu Azure [Uygulaması Hizmeti Web Uygulaması](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)olarak dağıtın. 
-> * Verilerinizi bir veritabanında saklayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için, [sql server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) ve en yakın komşu için [uzamsal verileri](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)sorgula'ya bakın.
+> * Kullanıcının [bir rota üzerinde konumları filtrelemesine](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)izin verin. 
+> * [Filtre ayarlama](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)özelliğini ekleyin. 
+> * Sorgu dizesi kullanarak bir ilk arama değeri belirtmek için destek ekleyin. Bu seçeneği mağaza bulucusınıza eklediğinizde, kullanıcılar aramaları yer işaretine ekleyebilir ve aramaları paylaşabilir. Ayrıca, bu sayfaya aramaları başka bir sayfadan iletmeniz için kolay bir yöntem sağlar.  
+> * Mağaza bulucuyu bir [Azure App Service Web uygulaması](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)olarak dağıtın. 
+> * Verilerinizi bir veritabanında depolayın ve yakındaki konumları arayın. Daha fazla bilgi edinmek için bkz. [SQL Server uzamsal veri türlerine genel bakış](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) ve [en yakın komşu Için uzamsal verileri sorgulama](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
 > [!div class="nextstepaction"]
-> [Tam kaynak kodunu görüntüleme](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
+> [Tam kaynak kodunu görüntüle](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
 > [!div class="nextstepaction"]
 > [Canlı örneği görüntüle](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
@@ -962,7 +962,7 @@ Bu eğitimde, Azure Haritalar'ı kullanarak temel bir mağaza bulucusu oluşturm
 Azure Haritalar'ın kapsamı ve özellikleri hakkında daha fazla bilgi edinmek için:
 
 > [!div class="nextstepaction"]
-> [Yakınlaştırma düzeyleri ve döşeme ızgarası](zoom-levels-and-tile-grid.md)
+> [Yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md)
 
 Daha fazla kod örneği ve etkileşimli bir kodlama deneyimi için:
 

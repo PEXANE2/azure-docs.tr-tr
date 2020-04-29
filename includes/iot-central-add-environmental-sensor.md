@@ -9,83 +9,83 @@ ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 9618dc1cef8d04cc5906579af0ef372694aeaaa9
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673988"
 ---
 ## <a name="create-a-device-template"></a>Cihaz şablonu oluşturma
 
-Yerel makinenizde `environmental-sensor` çağrılan bir klasör oluşturun.
+Yerel makinenizde adlı `environmental-sensor` bir klasör oluşturun.
 
-Çevre [sensörü yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) JSON dosyasını `environmental-sensor` indirin ve klasöre kaydedin.
+[Ortam algılayıcısı yetenek modeli](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json) json dosyasını indirin ve `environmental-sensor` klasöre kaydedin.
 
-İndirdiğiniz `EnvironmentalSensorInline.capabilitymodel.json` dosyadaki iki örneği şirket `{YOUR_COMPANY_NAME_HERE}` adınız ile değiştirmek için bir metin düzenleyicisi kullanın.
+İndirdiğiniz `{YOUR_COMPANY_NAME_HERE}` `EnvironmentalSensorInline.capabilitymodel.json` dosyada şirket adınızla iki örneğini değiştirmek için bir metin düzenleyicisi kullanın.
 
-Azure IoT Merkezi uygulamanızda, aygıt *Environmental sensor* yetenek modeli dosyasını `EnvironmentalSensorInline.capabilitymodel.json` içe aktararak Çevre sensörü adı verilen bir aygıt şablonu oluşturun:
+Azure IoT Central uygulamanızda, `EnvironmentalSensorInline.capabilitymodel.json` cihaz yetenek modeli dosyasını Içeri aktararak *çevresel algılayıcı* adlı bir cihaz şablonu oluşturun:
 
-![İçe aktarılan aygıt yetenek modeline sahip aygıt şablonu](./media/iot-central-add-environmental-sensor/device-template.png)
+![İçeri aktarılan cihaz özelliği modeliyle cihaz şablonu](./media/iot-central-add-environmental-sensor/device-template.png)
 
-Cihaz özelliği modeli iki arabirim içerir: standart **Aygıt Bilgileri** arabirimi ve özel **Çevre Sensörü** arabirimi. **Çevre Sensörü** arabirimi aşağıdaki yetenekleri tanımlar:
+Cihaz yetenek modeli iki arabirim içerir: standart **cihaz bilgileri** arabirimi ve özel **çevresel algılayıcı** arabirimi. **Çevresel algılayıcı** arabirimi aşağıdaki özellikleri tanımlar:
 
 | Tür | Görünen Ad | Açıklama |
 | ---- | ------------ | ----------- |
-| Özellik | Cihaz Durumu     | Aygıtın durumu. Çevrimiçi/çevrimdışı iki durum mevcuttur. |
-| Özellik (yazılabilir) | Müşteri Adı    | Aygıtı şu anda çalıştıran müşterinin adı. |
-| Özellik (yazılabilir) | Parlaklık Düzeyi | Cihazdaki ışığın parlaklık düzeyi. 1 (yüksek), 2 (orta), 3 (düşük) olarak belirtilebilir. |
-| Telemetri | Sıcaklık | Aygıt tarafından algılanan geçerli sıcaklık. |
-| Telemetri | Nem oranı    | Cihaz tarafından algılanan akım nemi. |
-| Komut | Yanıp          | Belirli bir zaman aralığı için cihazdaki LED'i yanıp sönmeye başlayın. |
-| Komut | turnon         | Cihazın LED'ini açın. |
-| Komut | kapatma        | Cihazın LED'ini kapatın. |
-| Komut | rundiagnostics | Bu eşzamanlı komut, aygıtta bir tanılama çalışmasını başlatır. |
+| Özellik | Cihaz Durumu     | Cihazın durumu. Çevrimiçi/çevrimdışı iki durum kullanılabilir. |
+| Özellik (yazılabilir) | Müşteri adı    | Müşterinin Şu anda cihazda çalışan adı. |
+| Özellik (yazılabilir) | Parlaklık düzeyi | Cihazdaki ışığın parlaklık düzeyi. 1 (yüksek), 2 (orta), 3 (düşük) olarak belirtilebilir. |
+| Telemetri | Sıcaklık | Cihaz tarafından algılanan geçerli sıcaklık. |
+| Telemetri | Nem oranı    | Cihaz tarafından algılanan geçerli nem. |
+| Komut | /          | Belirli bir zaman aralığı için cihazdaki yeniden yanıp sönmesini Başlat. |
+| Komut | turnon         | Cihazın ıŞıĞıNı açın. |
+| Komut | kapatma        | Cihazdaki ışığı devre dışı bırakın. |
+| Komut | rundiagnostics | Bu zaman uyumsuz komut, cihazda bir tanılama çalıştırması başlatır. |
 
-**IoT** Central uygulamanızda Aygıt Durumu özelliğinin nasıl görüntülenebildiğini özelleştirmek için aygıt şablonunda **Özelleştir'i** seçin. Aygıt **Durumu** girişini genişletin, **Doğru ad** olarak _Çevrimiçi'yi_ ve **False adı**olarak _Çevrimdışı_ girin. Ardından değişiklikleri kaydedin:
+**Cihaz durumu** özelliğinin IoT Central uygulamanızda nasıl görüntüleneceğini özelleştirmek için cihaz şablonunda **Özelleştir** ' i seçin. **Cihaz durumu** girişini genişletin, **doğru** ad olarak _çevrimiçi_ ve **yanlış ad**olarak _çevrimdışı_ girin. Sonra değişiklikleri kaydedin:
 
-![Aygıt şablonu özelleştirme](./media/iot-central-add-environmental-sensor/customize-template.png)
+![Cihaz şablonunu özelleştirme](./media/iot-central-add-environmental-sensor/customize-template.png)
 
 ## <a name="create-views"></a>Görünümler oluşturma
 
-Görünümler, IoT Central uygulamanıza bağlı aygıtlarla etkileşim kurmanıza izin verir. Örneğin, telemetriyi görüntüleyen görünümler, özellikleri görüntüleyen görünümler ve yazılabilir ve bulut özelliklerini yeniden deletmenize izin veren görünümler olabilir. Görünümler aygıt şablonunun bir parçasıdır.
+Görünümler, IoT Central uygulamanıza bağlı cihazlarla etkileşime geçmesini sağlar. Örneğin, Telemetriyi görüntüleyen görünümleriniz, özellikleri görüntüleyen görünümler ve yazılabilir ve bulut özelliklerini düzenlemenize olanak sağlayan görünümler bulunabilir. Görünümler bir cihaz şablonunun parçasıdır.
 
-**Çevre sensörü** aygıt şablonuna bazı varsayılan görünümler eklemek için aygıt şablonunuza gidin, **Görünümler'i**seçin ve **Varsayılan Görünümler oluştur** döşemesini seçin. Genel **Bakış** ve **Hakkında'nın Açık**olduğundan emin olun ve ardından **varsayılan pano görünümünü oluştur'u(lar)** seçin. **About** Artık şablonunuzda tanımlanan iki varsayılan görünüm var.
+**Ortam algılayıcı** cihaz şablonunuza bazı varsayılan görünümler eklemek için cihaz şablonunuza gidin, **Görünümler**' i seçin ve **varsayılan görünümleri oluştur** kutucuğunu seçin. **Genel bakış** ve **hakkında** **olduğundan emin**olun ve ardından **varsayılan pano görünüm oluştur**' u seçin. Artık, şablonunuzda tanımlanmış iki varsayılan görünümünüz vardır.
 
-**Çevre Sensörü** arabirimi iki yazılabilir özellik içerir - **Müşteri Adı** ve **Parlaklık Düzeyi.** Bir görünüm oluşturmak için, bu özellikleri yeniden kullanmak için kullanabilirsiniz:
+**Çevresel algılayıcı** arabirimi iki yazılabilir Özellik Içerir- **müşteri adı** ve **parlaklık düzeyi**. Bir görünüm oluşturmak için bu özellikleri düzenlemek üzere kullanabilirsiniz:
 
-1. **Görünümler'i** seçin ve ardından **Düzenleme aygıtını ve bulut veri** döşemesini seçin.
+1. **Görünümler** ' i seçin ve ardından **cihazı ve bulut verilerini Düzenle** kutucuğunu seçin.
 
-1. _Özellikler'i_ form adı olarak girin.
+1. _Özellikleri_ form adı olarak girin.
 
-1. Parlaklık **Düzeyi** ve **Müşteri Adı** özelliklerini seçin. Ardından **Ekle bölümünü**seçin.
+1. **Parlaklık düzeyini** ve **müşteri adı** özelliklerini seçin. Ardından **Bölüm Ekle**' yi seçin.
 
 1. Yaptığınız değişiklikleri kaydedin.
 
-![Özellik düzenlemeyi etkinleştirmek için görünüm ekleme](./media/iot-central-add-environmental-sensor/properties-view.png)
+![Özellik düzenlemesini etkinleştirmek için bir görünüm ekleyin](./media/iot-central-add-environmental-sensor/properties-view.png)
 
 ## <a name="publish-the-template"></a>Şablonu yayımlama
 
-**Çevre sensörü** aygıtı şablonu kullanan bir aygıt eklemeden önce yayımlamanız gerekir.
+**Ortam algılayıcısı** cihaz şablonunu kullanan bir cihaz ekleyebilmeniz için önce onu yayımlamanız gerekir.
 
-Aygıt şablonunda **Yayımla'yı**seçin. Bu **aygıt şablonunu uygulama paneline** yayımla'da **Yayımla'yı**seçin.
+Cihaz şablonunda **Yayımla**' yı seçin. **Bu cihaz şablonunu uygulama panelinde Yayımla** ' da, **Yayımla**' yı seçin.
 
-Şablonun kullanıma hazır olup olmadığını kontrol etmek için, IoT Merkezi uygulamanızdaki **Cihazlar** sayfasına gidin. **Cihazlar** bölümünde, uygulamada yayınlanan aygıtların bir listesi gösterilmektedir:
+Şablonun kullanıma hazırsa emin olmak için IoT Central uygulamanızdaki **cihazlar** sayfasına gidin. **Cihazlar** bölümü, uygulamadaki yayınlanan cihazların bir listesini gösterir:
 
-![Aygıtlar sayfasında yayınlanan şablonlar](./media/iot-central-add-environmental-sensor/published-templates.png)
+![Cihazlar sayfasında yayımlanan şablonlar](./media/iot-central-add-environmental-sensor/published-templates.png)
 
 ## <a name="add-a-real-device"></a>Gerçek cihaz ekleme
 
-Azure IoT Merkezi uygulamanızda, önceki bölümde oluşturduğunuz aygıt şablonuna gerçek bir aygıt ekleyin:
+Azure IoT Central uygulamanızda, önceki bölümde oluşturduğunuz cihaz şablonuna gerçek bir cihaz ekleyin:
 
-1. **Cihazlar** sayfasında **Çevre sensörü** aygıtı şablonuna tıklayın.
+1. **Cihazlar** sayfasında, **çevresel algılayıcı** cihaz şablonunu seçin.
 
     > [!TIP]
-    > **+ Yeni'yi**seçmeden önce kullanılacak şablonu seçtiğinizden emin olun, aksi takdirde ilişkili olmayan bir aygıt oluşturursunuz.
+    > **+ Yeni**' yi seçmeden önce kullanılacak şablonu seçtiğinizden emin olun, aksi takdirde ilişkilendirilmemiş bir cihaz oluşturacaksınız.
 
-1. Seçin **+ Yeni**.
+1. **+ Yeni**seçeneğini belirleyin.
 
-1. **Benzetimkapalı** olduğundan **Off**emin olun. Ardından **Oluştur**’u seçin.
+1. **Benzetimli** 'un **kapalı**olduğundan emin olun. Ardından **Oluştur**’u seçin.
 
-Aygıt adını tıklatın ve sonra **Bağlan'ı**seçin. **Aygıt Bağlantısı** sayfasındaki aygıt bağlantısı bilgilerini not edin - **kimlik kapsamı,** **Aygıt Kimliği**ve **Birincil anahtar**. Aygıt kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
+Cihaz adına tıklayın ve ardından **Bağlan**' ı seçin. Cihaz **bağlantısı** sayfa **kimliği KAPSAMı**, **cihaz kimliği**ve **birincil anahtar**üzerindeki cihaz bağlantı bilgilerini bir yere unutmayın. Cihaz kodunuzu oluştururken bu değerlere ihtiyacınız vardır:
 
 ![Cihaz bağlantı bilgileri](./media/iot-central-add-environmental-sensor/device-connection.png)

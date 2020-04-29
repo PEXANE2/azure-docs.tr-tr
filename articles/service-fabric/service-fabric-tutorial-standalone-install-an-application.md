@@ -1,23 +1,23 @@
 ---
-title: Tek başına kümeye uygulama yükleme
-description: Bu öğreticide, bağımsız Service Fabric kümenize nasıl bir uygulama yükleyin ilerlersiniz.
+title: Tek başına kümede uygulama yükleme
+description: Bu öğreticide, tek başına Service Fabric kümenize bir uygulamanın nasıl yükleneceğini öğreneceksiniz.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: 124fc6035c1d0ad504a34b7db227f0f4675f24f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75613967"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Öğretici: Service Fabric tek başına kümenize uygulama dağıtma
 
-Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici seride, AWS'de barındırılan bağımsız bir küme oluşturur ve içine bir uygulama dağıtırsınız.
+Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fabric’in benimsediği "her işletim sistemi, her bulut" yaklaşımının bir parçası olarak bir küme oluşturma seçeneği sunar. Bu öğretici serisinde, AWS üzerinde barındırılan bir tek başına küme oluşturur ve bir uygulamayı buna dağıtırsınız.
 
-Bu öğretici, bir serinin üçüncü bölümüdür.  Service Fabric bağımsız kümeleri, Service Fabric ile "herhangi bir işletim sistemi, herhangi bir bulut" yaklaşımımızın bir parçası olarak size kendi ortamınızı seçme ve bir küme oluşturma seçeneği sunar. Bu öğreticide, bu tek başına kümeyi barındırmak için gereken AWS altyapısını oluşturma işlemi gösterilmektedir.
+Bu öğretici, bir serinin üçüncü bölümüdür.  Tek başına kümeler Service Fabric kendi ortamınızı seçme ve "tüm işletim sistemi, herhangi bir bulut" Service Fabric yaklaşımızın parçası olarak bir küme oluşturma seçeneğini sunar. Bu öğreticide, bu tek başına kümeyi barındırmak için gereken AWS altyapısını oluşturma işlemi gösterilmektedir.
 
 Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
@@ -29,8 +29,8 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 
 Bu öğreticiye başlamadan önce:
 
-* [Visual Studio 2019'u yükleyin](https://www.visualstudio.com/) ve **Azure geliştirme** ve ASP.NET ve web geliştirme iş yüklerini **yükleyin.**
-* [Servis Kumaşı SDK'yı yükleyin](service-fabric-get-started.md)
+* [Visual Studio 2019](https://www.visualstudio.com/) ' i yükleyip **Azure geliştirme** ve **ASP.net ve Web geliştirme** iş yüklerini yüklersiniz.
+* [Service Fabric SDK 'sını yükler](service-fabric-get-started.md)
 
 ## <a name="download-the-voting-sample-application"></a>Voting örnek uygulamasını indirme
 
@@ -46,13 +46,13 @@ Uygulama indirildikten sonra, doğrudan Visual Studio'dan bir kümeye dağıtabi
 
 1. Visual Studio’yu açın
 
-2. **Dosya** > **Aç'ı** Seçin
+2. **Dosya** > **açma** Seç
 
 3. Git deposunu kopyaladığınız klasöre gidin ve Voting.sln dosyasını seçin
 
-4. Çözüm Gezgini'ndeki `Voting` uygulama projesine sağ tıklayın ve **Yayımla'yı** seçin
+4. Çözüm Gezgini `Voting` uygulama projesine sağ tıklayın ve **Yayımla** ' yı seçin.
 
-5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure'da tam nitelikli bir alan adı (FQDN) otomatik olarak verilmez, ancak VM Genel Bakış sayfasında kolayca [ayarlanabilirsiniz.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
+5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmediğini, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabildiğini unutmayın.](https://docs.microsoft.com/azure/virtual-machines/linux/portal-create-fqdn)
 
 6. Tercih ettiğiniz tarayıcıyı açın ve küme adresini girin (bu uygulamanın 8080 numaralı bağlantı noktasında dağıttığı bağlantı uç noktası - örneğin, ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Ön Kapı - Azure portalı için WAF ilkesi oluşturun'
-description: Bu eğitimde, Azure portalını kullanarak Bir Web Uygulama Güvenlik Duvarı (WAF) ilkesioluşturmayı öğrenirsiniz.
+title: 'Öğretici: Azure ön kapısı için WAF ilkesi oluşturma-Azure portal'
+description: Bu öğreticide, Azure portal kullanarak bir Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturmayı öğreneceksiniz.
 author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
@@ -8,76 +8,76 @@ ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: victorh
 ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79475850"
 ---
-# <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak Azure Ön Kapı'da Bir Web Uygulaması Güvenlik Duvarı ilkesi oluşturun
+# <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Öğretici: Azure ön kapıda Azure portal kullanarak Web uygulaması güvenlik duvarı ilkesi oluşturma
 
-Bu öğretici, temel bir Azure Web Uygulaması Güvenlik Duvarı (WAF) ilkesini nasıl oluşturacağınızı ve Azure Ön Kapı'daki bir ön uç ana bilgisayara nasıl uygulayacağınızı gösterir.
+Bu öğreticide, temel bir Azure Web uygulaması güvenlik duvarı (WAF) ilkesi oluşturma ve Azure ön kapısının bir ön uç konağına uygulama işlemi gösterilmektedir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAF ilkesi oluşturma
-> * Ön uç ana bilgisayarla ilişkilendirin
+> * Ön uç konakla ilişkilendirin
 > * WAF kurallarını yapılandırma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Quickstart: Ön Kapı profili](../../frontdoor/quickstart-create-front-door.md)oluşturma'da açıklanan yönergeleri izleyerek bir Ön Kapı profili oluşturun. 
+[Hızlı başlangıç: ön kapı profili oluşturma](../../frontdoor/quickstart-create-front-door.md)bölümünde açıklanan yönergeleri Izleyerek bir ön kapı profili oluşturun. 
 
-## <a name="create-a-web-application-firewall-policy"></a>Web Uygulaması Güvenlik Duvarı ilkesi oluşturma
+## <a name="create-a-web-application-firewall-policy"></a>Web uygulaması güvenlik duvarı ilkesi oluşturma
 
-İlk olarak, portalı kullanarak yönetilen Varsayılan Kural Kümesi (DRS) ile temel bir WAF ilkesi oluşturun. 
+İlk olarak, portalı kullanarak yönetilen varsayılan kural kümesi (DRS) ile temel bir WAF ilkesi oluşturun. 
 
-1. Ekranın sol üst tarafında, **WAF** için **kaynak>** arama oluşturma>Web uygulaması güvenlik **duvarı (Önizleme)** > **Oluştur'u**seçin.
-2. **WAF ilke** sayfasının **Temeller** sekmesinde, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılanları kabul edin ve ardından Gözden Geçir + oluştur seçeneğini **belirleyin:**
+1. Ekranın sol üst kısmında, **kaynak oluştur** ' u seçin>**WAF** araması yapın>**Web uygulaması güvenlik duvarı (Önizleme)** seçin > **Oluştur**' u seçin.
+2. **BIR WAF Ilkesi oluştur** sayfasının **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Abonelik            |Ön Kapı abonelik adınızı seçin.|
-    | Kaynak grubu          |Ön Kapı kaynak grup adınızı seçin.|
-    | İlke adı             |WAF politikanız için benzersiz bir ad girin.|
+    | Abonelik            |Ön kapı abonelik adınızı seçin.|
+    | Kaynak grubu          |Ön kapı kaynak grubu adınızı seçin.|
+    | İlke adı             |WAF ilkeniz için benzersiz bir ad girin.|
 
    ![WAF ilkesi oluşturma](../media/waf-front-door-create-portal/basic.png)
 
-3. **WAF ilkesi oluştur** sayfasının **Ilişkilendirme** sekmesinde, **ön uç ana bilgisayar Ekle'yi**seçin, aşağıdaki ayarları girin ve sonra **Ekle'yi**seçin:
+3. **BIR WAF Ilkesi oluştur** sayfasının **ilişkilendirme** sekmesinde, **ön uç Konağı Ekle**' yi seçin, aşağıdaki ayarları girin ve ardından **Ekle**' yi seçin:
 
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Ön kapı              | Ön Kapı profil adınızı seçin.|
-    | Ön uç ana bilgisayar           | Ön kapı ana host'unuzun adını seçin ve sonra **Ekle'yi**seçin.|
+    | Ön kapı              | Ön kapı profili adınızı seçin.|
+    | Ön uç Konağı           | Ön kapı ana bilgisayarın adını ve ardından **Ekle**' yi seçin.|
     
     > [!NOTE]
-    > Ön uç ana bilgisayar bir WAF ilkesiyle ilişkiliyse, gri renkte olarak gösterilir. Önce ön yüz ana bilgisayarını ilişkili ilkeden kaldırmanız ve ardından ön yüz ana bilgisayarını yeni bir WAF ilkesiyle yeniden ilişkilendirmeniz gerekir.
-1. **Gözden Geçir + oluştur'u**seçin, ardından **Oluştur'u**seçin.
+    > Ön uç Konağı bir WAF ilkesiyle ilişkiliyse, gri renkte gösterilir. Önce ön uç konağını ilişkili ilkeden kaldırmalı ve ardından ön uç konağını yeni bir WAF ilkesiyle yeniden ilişkilendirmeniz gerekir.
+1. **Gözden geçir + oluştur**' u seçin ve **Oluştur**' u seçin.
 
-## <a name="configure-web-application-firewall-rules-optional"></a>Web Uygulaması Güvenlik Duvarı kurallarını yapılandırma (isteğe bağlı)
+## <a name="configure-web-application-firewall-rules-optional"></a>Web uygulaması güvenlik duvarı kurallarını yapılandırma (isteğe bağlı)
 
-### <a name="change-mode"></a>Modu değiştir
+### <a name="change-mode"></a>Modu Değiştir
 
-Bir WAF ilkesi oluşturduğunuzda, varsayılan WAF ilkesi **Algılama** modundadır. **Algılama** modunda, WAF herhangi bir isteği engellemez, bunun yerine, WAF kurallarıyla eşleşen istekler WAF günlüklerinde günlüğe kaydedilir.
-WAF'ı iş başında görmek için mod ayarlarını **Algılama'dan** **Önleme'ye**değiştirebilirsiniz. **Önleme** modunda, Varsayılan Kural Kümesi'nde (DRS) tanımlanan kuralları eşleştirebilen istekler engellenir ve WAF günlüklerinde günlüğe kaydedilir.
+Bir WAF ilkesi oluşturduğunuzda, varsayılan WAF ilkesi **algılama** modundadır. **Algılama** modunda WAF herhangi bir isteği engellemez, bunun yerine WAF kurallarıyla eşleşen istekler WAF günlüklerinde günlüğe kaydedilir.
+WAF 'yi eylemde görmek için, mod ayarlarını **algılamayı** **engelleme**olarak değiştirebilirsiniz. **Önleme** modunda, varsayılan kural KÜMESI (DRS) içinde tanımlanan kurallarla eşleşen istekler engellenir ve WAF günlüklerinde günlüğe kaydedilir.
 
- ![WAF ilke modunu değiştirme](../media/waf-front-door-create-portal/policy.png)
+ ![WAF ilke modunu değiştir](../media/waf-front-door-create-portal/policy.png)
 
 ### <a name="custom-rules"></a>Özel kurallar
 
-**Özel kurallar** bölümünde **özel kural ekle'yi** seçerek özel bir kural oluşturabilirsiniz. Bu, özel kural yapılandırma sayfasını başlatir. Aşağıda, sorgu dizesi **blokme**içeriyorsa, isteği engellemek için özel bir kural yapılandırma örneği verilmiştir.
+Özel **kurallar** bölümünün altında **özel kural ekle** seçeneğini belirleyerek özel bir kural oluşturabilirsiniz. Bu, özel kural yapılandırma sayfasını başlatır. Sorgu dizesi **blok içeriyorsa,** bir isteği engellemek için özel bir kural yapılandırmanın bir örneği aşağıda verilmiştir.
 
-![WAF ilke modunu değiştirme](../media/waf-front-door-create-portal/customquerystring2.png)
+![WAF ilke modunu değiştir](../media/waf-front-door-create-portal/customquerystring2.png)
 
-### <a name="default-rule-set-drs"></a>Varsayılan Kural Kümesi (DRS)
+### <a name="default-rule-set-drs"></a>Varsayılan kural kümesi (DRS)
 
-Azure tarafından yönetilen Varsayılan Kural Kümesi varsayılan olarak etkinleştirilir. Kural grubu içindeki tek bir kuralı devre dışı bırakıp, bu kural grubu içindeki kuralları genişletin, kural numarasının önündeki **onay kutusunu** seçin ve yukarıdaki sekmede Devre **Dışı Nı** seçin. Kural kümesiiçindeki tek tek kurallar için eylem türlerini değiştirmek için, kural numarasının önündeki onay kutusunu seçin ve ardından yukarıdaki eylem sekmesini **değiştir'i** seçin.
+Azure tarafından yönetilen varsayılan kural kümesi varsayılan olarak etkindir. Bir kural grubundaki tek bir kuralı devre dışı bırakmak için bu kural grubundaki kuralları genişletin, kural numarasının önündeki **onay kutusunu** seçin ve yukarıdaki sekmede **devre dışı bırak** ' ı seçin. Kural kümesindeki tek tek kuralların eylem türlerini değiştirmek için, kural numarasının önündeki onay kutusunu seçin ve ardından yukarıdaki **eylemi Değiştir** sekmesini seçin.
 
- ![WAF Kural Kümesini Değiştir](../media/waf-front-door-create-portal/managed2.png)
+ ![WAF kural kümesini Değiştir](../media/waf-front-door-create-portal/managed2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Web Uygulaması Güvenlik Duvarı](../overview.md)
-> [hakkında bilgi edinin Azure Ön Kapı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)
+> [Azure Web uygulaması güvenlik duvarı](../overview.md)
+> hakkında bilgi edinin[Azure ön kapısı hakkında daha fazla bilgi edinin](../../frontdoor/front-door-overview.md)

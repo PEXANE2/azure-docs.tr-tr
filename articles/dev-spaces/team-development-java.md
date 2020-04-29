@@ -5,34 +5,34 @@ author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
-description: Bu öğretici, Azure Kubernetes Hizmeti'ndeki bir Java uygulamasında ekip geliştirme yapmak için Azure Dev Spaces ve Visual Studio Code'u nasıl kullanacağınızı gösterir
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
+description: Bu öğreticide, Azure Kubernetes hizmetindeki bir Java uygulamasında takım geliştirmesi yapmak için Azure Dev Spaces ve Visual Studio Code nasıl kullanılacağı gösterilmektedir
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 352671b2fe31095b0ffcaffb49195071a456a892
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78245018"
 ---
-# <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Java ve Visual Studio Kodunu kullanarak ekip geliştirme
+# <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Java kullanarak ve Azure Dev Spaces ile Visual Studio Code takım geliştirme
 
-Bu eğitimde, geliştirme boşluklarını kullanarak geliştiricilerden oluşan bir ekibin aynı Kubernetes kümesinde aynı anda nasıl işbirliği yapabildiğini öğreneceksiniz.
+Bu öğreticide, geliştiricilerin bir ekibinin geliştirme alanlarını kullanarak aynı Kubernetes kümesinde eşzamanlı olarak nasıl işbirliği yapabildiği hakkında bilgi edineceksiniz.
 
 ## <a name="learn-about-team-development"></a>Ekip geliştirmesi hakkında bilgi edinme
 Şu ana kadar uygulamanızın kodunu uygulama üzerinde çalışan tek geliştiriciymişsiniz gibi çalıştırıyordunuz. Bu bölümde, Azure Dev Spaces’ın ekip geliştirmesini nasıl kolaylaştırdığını öğreneceksiniz:
-* Geliştiricilerden oluşan bir ekibin paylaşılan bir geliştirme alanında veya gerektiğinde farklı geliştirme alanlarında çalışarak aynı ortamda çalışmasını etkinleştirin.
+* Bir geliştiricilerin bir ekibini, paylaşılan bir geliştirme alanında ya da gerektiğinde ayrı geliştirme alanlarında çalışarak aynı ortamda çalışmasını sağlama.
 * Her geliştiricinin yalıtılmış olarak ve başkalarını bölme korkusu olmadan kodlarını yinelemelerini destekler.
 * Kod işlemeden önce sahtelerini yaratmaya veya bağımlılıkları benzetmeye gerek kalmadan kodu uçtan uca test edin.
 
 ### <a name="challenges-with-developing-microservices"></a>Mikro hizmet geliştirme zorlukları
 Örnek uygulamanız şu an için pek karmaşık değil. Ancak gerçek dünyada geliştirme sırasında daha çok hizmet ekledikçe ve geliştirme ekibi büyüdükçe zorluklar kısa sürede ortaya çıkar. Geliştirme için her şeyi yerel olarak çalıştırmak pek mantıklı olmayabilir.
 
-* Geliştirme makineniz, gereksinim duyduğunuz her hizmeti aynı anda çalıştırmak için yeterli kaynağa sahip olmayabilir.
-* Bazı hizmetlere genel olarak erişilebilen olması gerekebilir. Örneğin, bir hizmetin bir webhook'a yanıt veren bir bitiş noktası olması gerekebilir.
-* Bir hizmet alt kümesini çalıştırmak istiyorsanız, tüm hizmetleriniz arasındaki tam bağımlılık hiyerarşisini bilmeniz gerekir. Özellikle hizmet sayınız arttıkça, bunu belirlemek zor olabilir.
-* Bazı geliştiriciler, hizmet bağımlılıklarının birçoğunu benzetmeye veya bu bağımlılıkların sahtelerini oluşturmaya başvurur. Bu yaklaşım yardımcı olabilir, ancak bu mocks yönetmek yakında geliştirme maliyetini etkileyebilir. Ayrıca, bu yaklaşım geliştirme ortamınızı üretimden çok farklı görünmesine yol açar, bu da ince hataların sürünmesine olanak tanır.
-* Bu entegrasyon testi her türlü yapmanın zor hale gelir izler. Tümleştirme testi yalnızca yürütme sonrası gerçekleşebilir, bu da geliştirme döngüsünün sonraki aşamalarında sorunlarla karşılaşacağınız anlamına gelir.
+* Geliştirme makinenizin her seferinde ihtiyacınız olan her hizmeti çalıştırmak için yeterli kaynak bulunmayabilir.
+* Bazı hizmetlerin herkese açık bir şekilde erişilebilir olması gerekebilir. Örneğin, bir hizmetin bir Web kancasına yanıt veren bir uç noktaya sahip olması gerekebilir.
+* Hizmetlerin bir alt kümesini çalıştırmak istiyorsanız, tüm hizmetlerinize ilişkin tam bağımlılık hiyerarşisini bilmeniz gerekir. Özellikle hizmet numaranız artdıkça bu durum zor olabilir.
+* Bazı geliştiriciler, hizmet bağımlılıklarının birçoğunu benzetmeye veya bu bağımlılıkların sahtelerini oluşturmaya başvurur. Bu yaklaşım yardımcı olabilir ancak bu hareketleri yönetmek, geliştirme maliyetini yakında etkileyebilir. Ayrıca, bu yaklaşım, üretim ortamından çok farklı arayan geliştirme ortamınız üzerinde gezinerek, hafif hataların yayılmasını sağlar.
+* Her türlü tümleştirme testini yapmak zor olur. Tümleştirme testi yalnızca yürütme sonrası gerçekleşebilir, bu da geliştirme döngüsünün sonraki aşamalarında sorunlarla karşılaşacağınız anlamına gelir.
 
     ![](media/common/microservices-challenges.png)
 
@@ -42,33 +42,33 @@ Azure Dev Spaces ile, Azure’da *paylaşılan* bir geliştirme alanı ayarlayab
 ### <a name="work-in-your-own-space"></a>Kendi alanınızda çalışma
 Hizmetiniz için kod geliştirirken ve kodu iade etmeye hazır olmadan önce, kodun iyi durumda olmadığı zamanlar olacaktır. Hala yinelemeli olarak şekillendiriyor, test ediyor ve çözümlerle deney yapıyorsunuz. Azure Dev Spaces, ekip üyelerinizi bölme korkusu olmadan yalıtılmış olarak çalışmanızı sağlayan **alan** kavramını sunar.
 
-## <a name="use-dev-spaces-for-team-development"></a>Takım geliştirme için Dev Spaces'i kullanma
-*Webfrontend* -> *mywebapi* örnek uygulamamızı kullanarak bu fikirleri somut bir örnekle gösterelim. Bir geliştirici, Scott, *mywebapi* hizmeti bir değişiklik yapmak gerekiyor bir senaryo hayal edeceğiz, ve *sadece* bu hizmet. *Webfrontend* Scott'ın güncelleştirmesinin bir parçası olarak değiştirmek gerekmez.
+## <a name="use-dev-spaces-for-team-development"></a>Takım geliştirmesi için geliştirme alanlarını kullanma
+*Webön uç* -> *mywebapi* örnek uygulamanızı kullanarak bu fikirleri somut bir örnekle gösterelim. Bir geliştiricinin, Scott, *mywebapi* hizmetinde değişiklik yapması gereken bir senaryo ve *yalnızca* bu hizmet. *Web ön* ucu Scott 'ın güncelleştirmesinin bir parçası olarak değişikliğe gerek kalmaz.
 
-Dev Spaces _kullanmadan,_ Scott geliştirmek ve onun güncelleme test etmek için birkaç yolu olurdu, bunların hiçbiri ideal:
-* TÜM bileşenleri yerel olarak çalıştırın. Bu Docker yüklü daha güçlü bir geliştirme makinesi gerektirir, ve potansiyel Olarak MiniKube.
-* Tüm bileşenleri Kubernetes kümesinde yalıtılmış bir ad alanında çalıştırın. *Webfrontend* değişmediğinden, bu küme kaynaklarının israfıdır.
-* SADECE *mywebapi*çalıştırın ve test etmek için manuel REST aramaları yapmak. Bu, uça akışını test etmez.
-* Geliştirici *mywebapi*farklı bir örneğine istek göndermek için izin *webfrontend* geliştirme odaklı kod ekleyin. Bu *webfrontend* hizmeti karmaşıklaştırır.
+Geliştirici _alanlarını kullanmadan Scott_ , bu güncelleştirmeyi geliştirmek ve test etmek için bazı yöntemlere sahiptir ve bunlardan hiçbiri idealdir:
+* Tüm bileşenleri yerel olarak çalıştırın. Bu, Docker 'ın yüklü olduğu daha güçlü bir geliştirme makinesi ve potansiyel MiniKube gerektirir.
+* Tüm bileşenleri Kubernetes kümesinde yalıtılmış bir ad alanında çalıştırın. *Web ön* ucu değişmediğinden, bu küme kaynaklarının bir atık bir kümesidir.
+* YALNıZCA *mywebapi*' i çalıştırın ve El Ile yapılan Rest çağrılarını test edin. Bu, uçtan uca akışın tamamını test etmez.
+* Geliştiricilerin farklı *mywebapi*örneğine istek göndermesini sağlayan *Web ön* ucunda geliştirme odaklı kod ekleyin. Bu, *webön uç* hizmetini karmaşıklaştırır.
 
-### <a name="set-up-your-baseline"></a>Taban çizginizi ayarlama
-Önce hizmetlerimizin bir temelini dağıtmamız gerekecek. Bu dağıtım, yerel kodunuzu iade edilen sürümle kolayca karşılaştırabilmeniz için "bilinen son iyi" "bilinen iyiyi" temsil eder. Daha sonra bu temele dayalı bir alt alan oluşturacağız, böylece *mywebapi'deki* değişikliklerimizi daha büyük uygulama bağlamında test edebiliriz.
+### <a name="set-up-your-baseline"></a>Taban çizgisini ayarlama
+İlk olarak hizmetlerimizin temelini dağıtmamız gerekecektir. Bu dağıtım, "bilinen son iyi" kullanımı temsil eder; böylece yerel kodunuzun davranışını ve iade edilen sürümü ile kolayca karşılaştırabilirsiniz. Daha sonra bu taban çizgisine göre bir alt alan oluşturacak ve daha büyük bir uygulama bağlamında *mywebapi* 'teki değişiklikleri test edebilmeniz için
 
-1. [Dev Spaces örnek uygulamasını](https://github.com/Azure/dev-spaces)klonla:`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
-1. Çıkış uzak şube *azds_updates:*`git checkout -b azds_updates origin/azds_updates`
-1. _Dev_ alanını seçin: `azds space select --name dev`. Bir üst dev alanı seçmek istendiğinde, _ \<\>hiçbiri'ni_seçin.
-1. _Mywebapi_ dizinine gidin ve çalıştırın:`azds up -d`
-1. _Webfrontend_ dizinine gidin ve çalıştırın:`azds up -d`
-1. `azds list-uris` _Webfrontend_ için genel bitiş noktasını görmek için yürütme
+1. [Geliştirici alanları örnek uygulamasını](https://github.com/Azure/dev-spaces)kopyalayın:`git clone https://github.com/Azure/dev-spaces && cd dev-spaces`
+1. Uzak dalı *azds_updates*kullanıma al:`git checkout -b azds_updates origin/azds_updates`
+1. _Geliştirme_ alanını seçin: `azds space select --name dev`. Bir üst dev alanı seçmeniz istendiğinde, _ \<hiçbiri\>_' ni seçin.
+1. _Mywebapi_ dizinine gidin ve yürütün:`azds up -d`
+1. _Webön uç_ dizinine gidin ve yürütün:`azds up -d`
+1. `azds list-uris` _Web ön_ ucu için genel uç noktasını görmek için yürütün
 
 > [!TIP]
-> Yukarıdaki adımlar el ile bir taban çizgisi ayarlar, ancak takımların temel inizi taahhüt edilen kodla otomatik olarak güncel tutmak için CI/CD kullanmalarını öneririz.
+> Yukarıdaki adımlar el ile bir taban çizgisi ayarlar, ancak ekiplerin ayrılmış kodla otomatik olarak güncel tutulması için CI/CD kullanmasını öneririz.
 >
-> Aşağıdaki diyagrama benzer bir iş akışı oluşturmak için [Azure DevOps ile CI/CD ayarlama kılavuzumuza](how-to/setup-cicd.md) göz atın.
+> Aşağıdaki diyagrama benzer bir iş akışı oluşturmak için [Azure DevOps Ile CI/CD ayarlamaya yönelik kılavuzumuza](how-to/setup-cicd.md) göz atın.
 >
 > ![Örnek CI/CD diyagramı](media/common/ci-cd-complex.png)
 
-Bu noktada taban çizginiz çalışıyor olmalıdır. `azds list-up --all` komutunu çalıştırdığınızda aşağıdakine benzer bir çıktı görürsünüz:
+Bu noktada taban çizgisi çalışıyor olmalıdır. `azds list-up --all` komutunu çalıştırdığınızda aşağıdakine benzer bir çıktı görürsünüz:
 
 ```
 $ azds list-up --all
@@ -81,27 +81,27 @@ webfrontend                   dev       Service  1m ago   Running
 webfrontend-6b6ddbb98f-fgvnc  dev       Pod      1m ago   Running
 ```
 
-DevSpace sütunu, her iki hizmetin _de dev_adlı bir alanda çalıştığını gösterir. Herkese açık URL'yi açan ve web uygulamasına yönlendiren herkes, her iki hizmette de çalışan iade edilmiş kod yolunu çağırır. Şimdi _mywebapi_geliştirmeye devam etmek istediğinizi varsayalım. Nasıl kod değişiklikleri yapabilir ve bunları test edebilir, öte yandan da geliştirme ortamını kullanan diğer geliştiricilerin işlemini kesintiye uğratmazsınız? Bunu yapmak için kendi alanınızı ayarlarsınız.
+DevSpace sütunu her iki hizmetin _dev_adlı bir alanda çalıştığını gösterir. Ortak URL 'YI açan ve Web uygulamasına giden herkes, her iki hizmet arasında çalışan iade kodu yolunu çağıracaktır. Şimdi _mywebapi_geliştirmeye devam etmek istediğinizi varsayalım. Nasıl kod değişiklikleri yapabilir ve bunları test edebilir, öte yandan da geliştirme ortamını kullanan diğer geliştiricilerin işlemini kesintiye uğratmazsınız? Bunu yapmak için kendi alanınızı ayarlarsınız.
 
 ### <a name="create-a-dev-space"></a>Geliştirme alanı oluşturma
-_Dev_dışındaki bir alanda _mywebapi_ kendi sürümünü çalıştırmak için, aşağıdaki komutu kullanarak kendi alanı oluşturabilirsiniz:
+Kendi _mywebapi_ sürümünüzü _dev_dışında bir alanda çalıştırmak için aşağıdaki komutu kullanarak kendi alanınızı oluşturabilirsiniz:
 
 ```cmd
 azds space select --name scott
 ```
 
-İstendiğinde, **üst dev alanı**olarak _dev'i_ seçin. Bu bizim yeni alan, _dev / scott_, uzay _dev_türetilecek anlamına gelir. Bu durumun test sırasında bize nasıl yardımcı olacağını birazdan göreceksiniz.
+İstendiğinde, **üst geliştirme alanı**olarak _dev_ ' ı seçin. Bu, yeni alanım, _dev/Scott_, Space _dev_'dan türetecektir. Bu durumun test sırasında bize nasıl yardımcı olacağını birazdan göreceksiniz.
 
-Giriş varsayımlarımıza uygun olarak, yeni alan için _Scott_ adını kullandık, böylece akranlar bu alanda kimin çalıştığını belirleyebilirler. Ama istediğiniz her şey çağrılabilir ve _sprint4_ veya _demo_gibi ne anlama geldiğini hakkında esnek olabilir. Ne olursa olsun, _dev_ bu uygulamanın bir parçası üzerinde çalışan tüm geliştiriciler için temel olarak hizmet vermektedir:
+Giriş kuramsal sitemizi sayesinde, eşlerin _Bu adı yeni_ alan için kullandık ve bu nedenle, eşler üzerinde kimin çalıştığını tanımlayabiliriz. Ancak, istediğiniz herhangi bir şey olarak adlandırılır ve _sprint4_ veya _demo_gibi ne anlama geldiğini esnek hale getirebilirsiniz. Her ne olursa olsun, _dev_ bu uygulamanın bir parçası üzerinde çalışan tüm geliştiriciler için taban çizgisi görevi görür:
 
 ![](media/common/ci-cd-space-setup.png)
 
-Geliştirme ortamındaki tüm alanların listesini görmek için `azds space list` komutunu çalıştırın. _Seçili_ sütun, şu anda hangi alanı seçtiğinizi (doğru/yanlış) gösterir. Sizin durumunuzda, _dev/scott_ adlı alan oluşturulduğunda otomatik olarak seçildi. İstediğiniz zaman `azds space select` komutuyla başka bir alan seçebilirsiniz.
+Geliştirme ortamındaki tüm alanların listesini görmek için `azds space list` komutunu çalıştırın. _Seçili_ sütun şu anda hangi alanı seçtiğinizi gösterir (true/false). Bu durumda, _geliştirme/Scott_ adlı alan oluşturulduğunda otomatik olarak seçilmiştir. İstediğiniz zaman `azds space select` komutuyla başka bir alan seçebilirsiniz.
 
 Şimdi nasıl çalıştığını görelim.
 
 ### <a name="make-a-code-change"></a>Kod değişikliği yapma
-VS `mywebapi` Kodu penceresine gidin ve yönteme `String index()` `src/main/java/com/ms/sample/mywebapi/Application.java`kod edin, örneğin:
+İçin `mywebapi` vs Code penceresine gidin ve ' de `String index()` `src/main/java/com/ms/sample/mywebapi/Application.java`yöntemine bir kod düzenleme yapın, örneğin:
 
 ```java
 @RequestMapping(value = "/", produces = "text/plain")
@@ -112,7 +112,7 @@ public String index() {
 
 ### <a name="run-the-service"></a>Hizmeti çalıştırma
 
-Hizmeti çalıştırmak için, hizmeti çalıştırmak `azds up` için F5'e (veya Terminal Penceresine yazın) vurun. Hizmet otomatik olarak yeni seçilen boşluk _dev / scott_çalışacaktır. Hizmetinizin kendi alanında çalıştığını doğrulayın: `azds list-up`
+Hizmeti çalıştırmak için, hizmeti çalıştırmak için F5 tuşuna basın `azds up` (veya Terminal penceresine yazın). Hizmet, yeni seçilen Space _dev/Scott_içinde otomatik olarak çalışacaktır. Hizmetini çalıştırarak `azds list-up`hizmetinizin kendi alanında çalıştığını doğrulayın:
 
 ```cmd
 $ azds list-up
@@ -122,9 +122,9 @@ mywebapi                  scott     Service  3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-*Mywebapi* bir örnek şimdi dev _/ scott_ alanda çalışıyor dikkat edin. _Dev'de_ çalışan sürüm hala çalışıyor, ancak listede yok.
+Şimdi _dev/Scott_ alanında *mywebapi* örneğinin çalıştığını unutmayın. _Geliştirme_ aşamasında çalışan sürüm hala çalışıyor ancak listede yok.
 
-Çalıştırarak geçerli alan için URL'leri listele. `azds list-uris`
+Çalıştırarak `azds list-uris`geçerli alanın URL 'lerini listeleyin.
 
 ```cmd
 $ azds list-uris
@@ -135,18 +135,18 @@ http://localhost:53831 => mywebapi.scott:80                                Tunne
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 
-*Webfrontend* için genel erişim noktası *URL'sinin scott.s*ile önceden belirlenmiş olduğuna dikkat edin. Bu URL _dev/scott_ alanına özgüdür. Bu URL öneki, Ingress denetleyicisine istekleri bir hizmetin _dev/scott_ sürümüne yönlendirmesini söyler. Bu URL'ye sahip bir istek Dev Spaces tarafından işlendiğinde, Giriş Denetleyicisi önce isteği _geliştirme/scott_ alanında *webfrontend* hizmetine yönlendirmeye çalışır. Bu başarısız olursa, istek bir geri dönüş olarak _dev_ alanında *webfrontend* hizmetine yönlendirilecektir. Ayrıca, Kubernetes *bağlantı noktası ileri etme* işlevini kullanarak yerel host üzerinden hizmete erişmek için bir localhost URL'si olduğunu da unutmayın. Azure Dev Spaces'te URL'ler ve yönlendirme hakkında daha fazla bilgi için [Azure Dev Spaces'in nasıl çalıştığını ve nasıl yapılandırıldığına](how-dev-spaces-works.md)bakın.
+*Web ön* ucu için genel erişim noktası URL 'sinin *Scott. s*ile ön ek olduğuna dikkat edin. Bu URL, _dev/Scott_ alanı için benzersizdir. Bu URL öneki, giriş denetleyicisine istekleri bir hizmetin _geliştirme/Scott_ sürümüne yönlendirmasını söyler. Bu URL 'ye sahip bir istek dev Spaces tarafından işlendiği zaman, giriş denetleyicisi ilk olarak isteği _dev/Scott_ alanındaki *webön uç* hizmetine yönlendirmeye çalışır. Bu işlem başarısız olursa, istek _geliştirme_ alanındaki *webön uç* hizmetine geri dönüş olarak yönlendirilir. Ayrıca, Kubernetes *bağlantı noktası-iletme* işlevini kullanarak hizmete localhost üzerinden erişmek için bir localhost URL 'si olduğuna dikkat edin. Azure Dev Spaces URL 'Ler ve yönlendirme hakkında daha fazla bilgi için, bkz. [Azure dev Spaces nasıl çalıştığını ve nasıl yapılandırıldığını](how-dev-spaces-works.md)öğrenin.
 
-![Uzay Yönlendirme](media/common/Space-Routing.png)
+![Boşluk yönlendirme](media/common/Space-Routing.png)
 
 Azure Dev Spaces’ın bu yerleşik özelliği, her geliştiricinin alanlarındaki hizmetlerin tam yığınını yeniden oluşturmasına gerek kalmadan kodu paylaşılan bir alanda test etmenize olanak sağlar. Bu yönlendirme, bu kılavuzun önceki adımında gösterildiği gibi uygulama kodunuzun yayma üst bilgilerini iletmesini gerektirir.
 
 ### <a name="test-code-in-a-space"></a>Alanda kodu test etme
-*Mywebapi'nin* yeni sürümünü *webfrontend*ile test etmek için tarayıcınızı *webfrontend* için genel erişim noktası URL'sine açın ve Hakkında sayfasına gidin. Yeni iletinizin görüntülendiğini görmelisiniz.
+*Web ön*ucu ile yeni *mywebapi* sürümünüzü test etmek için tarayıcınızı *Web ön* ucu için genel erişim noktası URL 'sine açın ve hakkında sayfasına gidin. Yeni iletinizin görüntülendiğini görmelisiniz.
 
-Şimdi, URL'nin "scott.s." bölümünü kaldırın ve tarayıcıyı yenileyin. Eski davranışı görmelisiniz *(mywebapi* sürümü _dev_çalışan).
+Şimdi, URL'nin "scott.s." bölümünü kaldırın ve tarayıcıyı yenileyin. Eski davranışı görmeniz gerekir ( _dev_sürümünde çalışan *mywebapi* sürümü ile).
 
-Her zaman en son değişikliklerinizi içeren bir _dev_ alanınız olduğunda ve uygulamanızın bu öğretici bölümde açıklandığı gibi DevSpace'in alan tabanlı yönlendirmeden yararlanmak üzere tasarlandığını varsayarsak, umarım Dev Spaces'in daha büyük uygulama bağlamında yeni özellikleri test etmeye nasıl yardımcı olabileceğini görmek kolaylaşır. _Tüm_ hizmetleri özel alanınıza dağıtmak yerine, _dev'den_ve yalnızca üzerinde çalıştığınız hizmetlerden "yukarı" türeyen özel bir alan oluşturabilirsiniz. Dev Spaces yönlendirme altyapısı, geri kalanını, bulabildiği kadar çok hizmeti özel alanınızdan kullanarak, geri kalanı yla da ilgilenecek ve _dev_ alanda çalışan en son sürüye geri döner. Ve daha da iyisi, _birden fazla_ geliştirici aktif birbirlerini bozmadan kendi alanında aynı anda farklı hizmetler geliştirebilirsiniz.
+En son değişiklerinizi her zaman içeren bir _geliştirme_ alanınız varsa ve uygulamanızın bu öğretici bölümünde açıklandığı gibi devspace 'in alan tabanlı yönlendirmesinden yararlanmak üzere tasarlandığını varsayarsak, geliştirme alanlarının, daha büyük uygulama bağlamında yeni özellikleri test ederken büyük ölçüde nasıl yardımcı olduğunu görmek çok kolay hale gelir. _Tüm_ Hizmetleri özel alanınıza dağıtmak zorunda kalmak yerine, _geliştirme_ve gerçekten üzerinde çalıştığınız hizmetlerden oluşan özel bir alan oluşturabilirsiniz. Geliştirme alanları yönlendirme altyapısı, bulma sırasında özel alanınızda çok sayıda hizmetten yararlanarak bu geri kalanı işleyerek, _geliştirme_ alanında çalışan en son sürüme doğru bir şekilde geri dönüş yapabilir. Daha iyi bir şekilde, _birden çok_ geliştirici, birbirini kesintiye uğratmadan kendi alanında aynı anda farklı hizmetler geliştirebilir.
 
 ### <a name="well-done"></a>Bravo!
 Başlangıç kılavuzunu tamamladınız! Şunları öğrendiniz:
@@ -156,9 +156,9 @@ Başlangıç kılavuzunu tamamladınız! Şunları öğrendiniz:
 > * Kapsayıcılarda yinelemeli kod geliştirin.
 > * İki ayrı hizmeti bağımsız olarak geliştirin ve Kubernetes’in DNS hizmet bulma yöntemini kullanarak başka bir hizmete çağrı yapın.
 > * Kodunuzu bir ekip ortamında verimli bir şekilde geliştirip test edin.
-> * Daha büyük bir mikro hizmet uygulaması bağlamında yalıtılmış değişiklikleri kolayca test etmek için Dev Spaces'i kullanarak bir işlevsellik temeli oluşturma
+> * Daha büyük bir mikro hizmet uygulaması bağlamı içindeki yalıtılmış değişiklikleri kolayca test etmek için geliştirme alanlarını kullanarak bir işlev temeli oluşturun
 
-Azure Dev Alanlarını keşfettiğinize göre, [geliştirme alanınızı bir ekip üyesiyle paylaşın](how-to/share-dev-spaces.md) ve işbirliği yapmaya başlayın.
+Azure Dev Spaces araştırdığınıza [göre, geliştirme alanınızı bir takım üyesi ile paylaşır](how-to/share-dev-spaces.md) ve işbirliği yapmaya başlayın.
 
 ## <a name="clean-up"></a>Temizleme
 Geliştirme alanları ve içinde çalışan hizmetler dahil olmak üzere bir kümedeki Azure Dev Spaces örneğini tamamen silmek için `az aks remove-dev-spaces` komutunu kullanın. Bu eylemin geri alınamayacağını unutmayın. İleride kümeye yeniden Azure Dev Spaces desteği ekleyebilirsiniz ancak sıfırdan başlamış gibi olursunuz. Eski hizmetleriniz ve alanlarınız geri yüklenmez.

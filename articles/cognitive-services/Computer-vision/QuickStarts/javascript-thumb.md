@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 2485794d9ec1ce78a8916014dc1117ed59c34e44
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656056"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Quickstart: Computer Vision REST API ve JavaScript kullanarak bir küçük resim oluşturun
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Hızlı başlangıç: Görüntü İşleme REST API ve JavaScript kullanarak küçük resim oluşturma
 
-Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden küçük resim oluşturursunuz. Giriş görüntüsünden en boy oranı farklı olabilir yükseklik ve genişlik, belirtin. Computer Vision, ilgi alanını akıllıca belirlemek ve o bölgeye dayalı kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak bir görüntüden küçük resim oluşturacaksınız. Giriş görüntüsünden en boy oranına göre farklılık gösterebilen yükseklik ve genişlik belirtirsiniz. Görüntü İşleme, ilgilendiğiniz alanı saptamak ve bu bölgeye göre kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Abonelik anahtarınızı ve bitiş noktası URL'nizi geçici bir konuma kaydedin.
+Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Abonelik anahtarınızı ve uç nokta URL 'nizi geçici bir konuma kaydedin.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. _get-thumbnail.html_adlı bir dosya oluşturun, metin düzenleyicisinde açın ve aşağıdaki kodu kopyalayın.
-1. İsteğe bağlı olarak, `value` `inputImage` denetimözünün değerini çözümlemek istediğiniz farklı bir resmin URL'si ile değiştirin.
+1. _Get-Thumbnail. html_adlı bir dosya oluşturun, dosyayı bir metin düzenleyicisinde açın ve içine aşağıdaki kodu kopyalayın.
+1. İsteğe bağlı olarak, `value` `inputImage` denetimin özniteliğinin değerini, çözümlemek ISTEDIĞINIZ farklı bir görüntünün URL 'siyle değiştirin.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
-1. Web sayfası tarayıcıda görüntülendiğinde, abonelik anahtarınızı ve bitiş noktası URL'nizi uygun giriş kutularına yapıştırın.
-1. Son olarak, **Küçük Resmi Oluştur** düğmesini seçin.
+1. Web sayfası tarayıcıda görüntülendiğinde, abonelik anahtarınızı ve uç nokta URL 'nizi uygun giriş kutularına yapıştırın.
+1. Son olarak, **küçük resim oluştur** düğmesini seçin.
 
 ```html
 <!DOCTYPE html>

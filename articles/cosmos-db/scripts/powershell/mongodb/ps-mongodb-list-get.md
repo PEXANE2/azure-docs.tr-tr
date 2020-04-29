@@ -1,6 +1,6 @@
 ---
-title: MongoDB için Azure Cosmos DB'nin API'sinde işlem yapmak ve listelemek için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - Azure Cosmos DB listesi ve MongoDB API için işlem alın
+title: MongoDB için Azure Cosmos DB API 'sindeki işlemleri listelemek ve almak için PowerShell betiği
+description: MongoDB API 'SI için Azure PowerShell betiği Azure Cosmos DB listesi ve Get işlemleri
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365898"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB için veritabanlarını ve grafikleri listeleyin ve alın - MongoDB API
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Azure Cosmos DB-MongoDB API 'SI için veritabanları ve grafikler listeleme ve edinme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB Hesaplarını listeler veya belirli bir Cosmos DB Hesabı alır. |
-| [Al-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Cosmos DB MongoDB API Veritabanlarını bir Hesapta listeler veya bir Hesapta belirli bir Cosmos DB MogoDB API Veritabanı alır. |
-| [Al-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Cosmos DB MongoDB API Koleksiyonlarını listeler veya veritabanında belirli bir Cosmos DB MongoDB API Koleksiyonunu alır |
-|**Azure Kaynak Grupları**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Bir hesapta Cosmos DB MongoDB API veritabanlarını listeler veya bir hesapta belirtilen bir Cosmos DB MogoDB API 'SI veritabanını alır. |
+| [Get-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Cosmos DB MongoDB API koleksiyonlarını listeler veya bir veritabanında belirtilen bir Cosmos DB MongoDB API 'SI koleksiyonunu alır |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

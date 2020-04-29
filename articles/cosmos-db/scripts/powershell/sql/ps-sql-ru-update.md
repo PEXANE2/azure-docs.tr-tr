@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB SQL API Veritabanı veya Kapsayıcı için iş verisini (RU/s) güncelleştirmek için PowerShell komut dosyası
-description: Azure Cosmos DB SQL API Veritabanı veya Kapsayıcı için iş verisini (RU/s) güncelleştirmek için PowerShell komut dosyası
+title: Azure Cosmos DB SQL API veritabanı veya kapsayıcısı için üretilen iş (RU/s) güncelleştirme için PowerShell betiği
+description: Azure Cosmos DB SQL API veritabanı veya kapsayıcısı için üretilen iş (RU/s) güncelleştirme için PowerShell betiği
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: 950a76c2caaffe6eef578d5614e9469c5942e08c
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365982"
 ---
-# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Azure Cosmos DB SQL API Veritabanı veya Kapsayıcı için iş verisini (RU/s) güncelleştirme
+# <a name="update-throughput-rus-for-an-azure-cosmos-db-sql-api-database-or-container"></a>Azure Cosmos DB SQL API veritabanı veya kapsayıcısı için güncelleştirme üretilen iş (RU/sn)
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Yeni bir cosmos DB SQL Veritabanı oluşturur veya güncelleştirir. |
-| [Al-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Cosmos DB SQL Konteyner alır. |
-| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Yeni bir cosmos DB SQL Kapsayıcısı oluşturur veya güncelleştirir. |
-|**Azure Kaynak Grupları**| |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Yeni bir Cosmos DB SQL veritabanı oluşturur veya güncelleştirir. |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Cosmos DB bir SQL kapsayıcısı alır. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Yeni bir Cosmos DB SQL kapsayıcısını oluşturur veya güncelleştirir. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 
