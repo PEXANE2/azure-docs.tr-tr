@@ -1,5 +1,5 @@
 ---
-title: "C'deki REST araması ile model alın #"
+title: "C 'de REST çağrısıyla model al #"
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,34 +9,34 @@ ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
 ms.openlocfilehash: 96129b9141b4759fd61b539fa08354f02af3af7b
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80151095"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Dil Anlama - Kaynak 32 karakter anahtarı yazma ve bitiş noktası URL yazma. [Azure portalı](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)ile oluşturun.
-* [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını bilişsel-hizmet dili-anlayan GitHub deposundan aktarın.
+* Azure Language Understanding-yazma kaynağı 32 karakter anahtarı ve yazma uç noktası URL 'SI. [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) veya [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli)ile oluşturun.
+* Bilişsel hizmetler-dil düzeyi GitHub deposundan [Travelagent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) uygulamasını içeri aktarın.
 * İçeri aktarılan TravelAgent uygulamasının LUIS uygulama kimliği. Uygulama kimliği, uygulama panosunda gösterilir.
 * Konuşmaları alan uygulamanın içindeki sürüm kimliği. Varsayılan kimlik: "0.1".
-* [.NET Çekirdek 3.1](https://dotnet.microsoft.com/download)
+* [.NET Core 3,1](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
 
 ## <a name="example-utterances-json-file"></a>Örnek konuşmalar JSON dosyası
 
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
-## <a name="change-model-programmatically"></a>Modeli programlı olarak değiştirme
+## <a name="change-model-programmatically"></a>Modeli program aracılığıyla değiştirme
 
-1. C# dilini hedefleyen, proje ve klasör adı ile yeni `model-with-rest`bir konsol uygulaması oluşturun.
+1. Proje ve klasör adı ile C# dilini hedefleyen yeni bir konsol uygulaması oluşturun `model-with-rest`.
 
     ```console
     dotnet new console -lang C# -n model-with-rest
     ```
 
-1. Aşağıdaki dotnet CLI komutları ile gerekli bağımlılıkları yükleyin.
+1. Aşağıdaki DotNet CLı komutlarıyla gerekli bağımlılıkları yükler.
 
     ```console
     dotnet add package System.Net.Http
@@ -164,15 +164,15 @@ ms.locfileid: "80151095"
     }
     ```
 
-1. Kendi değerlerinizle `YOUR-` başlayan değerleri değiştirin.
+1. İle `YOUR-` başlayan değerleri kendi değerlerinizle değiştirin.
 
     |Bilgi|Amaç|
     |--|--|
-    |`YOUR-KEY`|32 karakter yazarlık anahtarın.|
-    |`YOUR-ENDPOINT`| Yazma URL bitiş noktanız. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
-    |`YOUR-APP-ID`| LUIS uygulama kimliğiniz. |
+    |`YOUR-KEY`|32 karakter yazma anahtarınız.|
+    |`YOUR-ENDPOINT`| Yazma URL 'niz uç noktasıdır. Örneğin, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Kaynağı oluşturduğunuzda kaynak adınızı ayarlarsınız.|
+    |`YOUR-APP-ID`| LUSıS uygulama KIMLIĞINIZ. |
 
-    Atanan anahtarlar ve kaynaklar, **Azure kaynakları** sayfasındaki Yönet bölümündeki LUIS portalında görülebilir. Uygulama kimliği, **Uygulama Ayarları** sayfasında aynı Yönet bölümünde mevcuttur.
+    Atanan anahtarlar ve kaynaklar, **Azure kaynakları** sayfasındaki Yönet bölümündeki Luo portalında görünür. Uygulama KIMLIĞI, **uygulama ayarları** sayfasında aynı Yönet bölümünde bulunur.
 
 1. Konsol uygulamasını derleyin.
 
@@ -180,7 +180,7 @@ ms.locfileid: "80151095"
     dotnet build
     ```
 
-1. Konsol uygulamasını çalıştırın. Konsol çıkışı, tarayıcı penceresinde daha önce gördüğünüz JSON'ı görüntüler.
+1. Konsol uygulamasını çalıştırın. Konsol çıktısı, daha önce tarayıcı penceresinde gördüğünüz JSON 'ı görüntüler.
 
     ```console
     dotnet run
@@ -188,7 +188,7 @@ ms.locfileid: "80151095"
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu hızlı başlatmayı bitirdiğinizde, dosyayı dosya sisteminden silin.
+Bu hızlı başlangıcı tamamladığınızda dosyayı dosya sisteminden silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

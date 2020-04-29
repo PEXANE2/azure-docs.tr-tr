@@ -1,6 +1,6 @@
 ---
-title: Kombine kayıtla başlayın - Azure Active Directory
-description: Birleştirilmiş Azure AD Çok Faktörlü Kimlik Doğrulamasını ve self servis parola sıfırlama kaydını etkinleştirme
+title: Birleşik kayıt ile çalışmaya başlama-Azure Active Directory
+description: Birleşik Azure AD Multi-Factor Authentication ve self servis parola sıfırlama kaydını etkinleştirin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,76 +12,76 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639690"
 ---
-# <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory'de birleştirilmiş güvenlik bilgi kaydını etkinleştirme
+# <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory 'da Birleşik güvenlik bilgileri kaydını etkinleştirme
 
-Kullanıcılar, birleştirilmiş kayıt öncesinde Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı ayrı kaydetti. İnsanlar benzer yöntemler Multi-Factor Authentication ve SSPR için kullanılan ama her iki özellik için kayıt olmak zorunda karıştı. Şimdi, kombine kayıt ile, kullanıcılar bir kez kayıt ve Hem Multi-Factor Kimlik Doğrulama ve SSPR avantajlarından elde edebilirsiniz.
+Birleşik kayıt öncesinde, kullanıcılar Azure Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı olarak kaydetti. İnsanlar Multi-Factor Authentication ve SSPR için benzer yöntemlerin kullanıldığını, ancak her iki özelliğe de kaydolmaları gerektiğini karıştı. Artık, birleştirilmiş kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Multi-Factor Authentication hem de SSPR avantajlarından yararlanabilir.
 
-Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkilerini anladığınızdan emin olmak için [birleştirilmiş güvenlik bilgi kaydı](concept-registration-mfa-sspr-combined.md) makalesini gözden geçirin.
+Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkilerini anladığınızdan emin olmak için [güvenlik bilgileri kaydı](concept-registration-mfa-sspr-combined.md) başlıklı makaleye bakın.
 
-![Kombine güvenlik bilgi kaydı gelişmiş deneyim](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![Birleşik güvenlik bilgileri kaydı gelişmiş deneyimi](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 ## <a name="enable-combined-registration"></a>Birleşik kaydı etkinleştirme
 
-Birleşik kaydı etkinleştirmek için şu adımları tamamlayın:
+Birleşik kaydı etkinleştirmek için şu adımları uygulayın:
 
-1. Azure portalında kullanıcı yöneticisi veya genel yönetici olarak oturum açın.
-2. Azure **Etkin Dizin** > **Kullanıcı ayarlarına** > gidin**Kullanıcı özelliği önizleme ayarlarını yönetin.**
-3. Kullanıcılar altında **güvenlik bilgilerini kaydetmek ve yönetmek için önizleme özelliklerini kullanabilir,** **Seçili** bir kullanıcı grubu veya **Tüm** kullanıcılar için etkinleştirmeyi seçebilir.
+1. Azure portal bir Kullanıcı Yöneticisi veya genel yönetici olarak oturum açın.
+2. **Azure Active Directory** > **Kullanıcı ayarları** > **Kullanıcı özelliği Önizleme ayarlarını yönet**' e gidin.
+3. Kullanıcılar ' ın altında, **güvenlik bilgilerini kaydetmek ve yönetmek için Önizleme özelliklerini kullanabilir**, **Seçili** bir Kullanıcı grubu için veya **Tüm** kullanıcılar için etkinleştirmeyi seçebilirsiniz.
 
-   ![Tüm kullanıcılar için birleştirilmiş güvenlik bilgileri önizleme deneyimini etkinleştirin](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
+   ![Tüm kullanıcılar için Birleşik güvenlik bilgileri önizleme deneyimini etkinleştir](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info-preview.png)
 
 > [!NOTE]
-> Birleşik kaydı etkinleştirdikten sonra, yeni deneyim le telefon numarasını veya mobil uygulamalarını kaydeden veya onaylayan kullanıcılar, bu yöntemler Çok Faktörlü Kimlik Doğrulama ve SSPR ilkelerinde etkinleştirilmişse, bunları Çok Faktörlü Kimlik Doğrulama ve SSPR için kullanabilir. Bu deneyimi devre dışı ederseniz, sayfaya erişebilmeleri için önceki `https://aka.ms/ssprsetup` SSPR kayıt sayfasına giden kullanıcıların çok faktörlü kimlik doğrulamagerçekleştirmeleri gerekir.
+> Birleşik kayıt etkinleştirildikten sonra, bu yöntemler Multi-Factor Authentication ve SSPR ilkelerinde etkinleştirilmişse, telefon numaralarını veya mobil uygulamaları yeni deneyim aracılığıyla kaydeden veya onaylayan kullanıcılar bunları Multi-Factor Authentication ve SSPR için kullanabilir. Daha sonra bu deneyimi devre dışı bırakırsanız, önceki SSPR kayıt sayfasına `https://aka.ms/ssprsetup` gittikleri kullanıcıların sayfaya erişebilmeleri için çok faktörlü kimlik doğrulaması gerçekleştirmesi gerekir.
 
-Siteyi Internet Explorer'da Bölge Atama Listesi'ne yapılandırıldıysanız, aşağıdaki sitelerin aynı bölgede olması gerekir:
+Internet Explorer 'da siteden bölge atama listesini yapılandırdıysanız, aşağıdaki sitelerin aynı bölgede olması gerekir:
 
 * [https://login.microsoftonline.com](https://login.microsoftonline.com)
 * [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
 * [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
 
-## <a name="conditional-access-policies-for-combined-registration"></a>Birleşik kayıt için Koşullu Erişim ilkeleri
+## <a name="conditional-access-policies-for-combined-registration"></a>Birleşik kayıt için koşullu erişim ilkeleri
 
-Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama için ne zaman ve nasıl kaydolduklarını güvence altına almak, Koşullu Erişim ilkesindeki kullanıcı eylemleriyle artık mümkün. Bu özellik, [birleştirilmiş kayıt özelliğini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştiren kuruluşlar tarafından kullanılabilir. Bu işlevsellik, kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve SSPR'ye İk biniş sırasında güvenilir bir ağ konumu gibi merkezi bir konumdan kaydolmasını istedikleri kuruluşlarda etkinleştirilebilir.
+Kullanıcıların Azure Multi-Factor Authentication ve self servis parola sıfırlaması için ne zaman ve nasıl kaydoldığına ilişkin güvenlik, koşullu erişim ilkesindeki Kullanıcı eylemleri ile mümkün değildir. Bu özellik, [Birleşik kayıt özelliğini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştiren kuruluşlar tarafından kullanılabilir. Bu işlev, kullanıcıların Azure Multi-Factor Authentication ve SSPR 'ye, HR ekleme sırasında güvenilen ağ konumu gibi merkezi bir konumdan kaydolmaları istedikleri kuruluşlarda etkinleştirilebilir.
 
-Koşullu Erişim'de güvenilir konumlar oluşturma hakkında daha fazla bilgi için, makaleye bakın [Azure Etkin Dizin Koşullu Erişim'deki konum durumu nedir?](../conditional-access/location-condition.md#named-locations)
+Koşullu erişimde güvenilen konumlar oluşturma hakkında daha fazla bilgi için [Azure Active Directory Koşullu erişim bölümünde konum koşulunun ne olduğuna](../conditional-access/location-condition.md#named-locations) bakın.
 
-### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilir bir konumdan kayıt gerektiren bir ilke oluşturma
+### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilen bir konumdan kayıt gerektirecek bir ilke oluşturun
 
-Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmaya çalışan tüm seçili kullanıcılar için geçerlidir ve güvenilir ağ olarak işaretlenmiş bir konumdan bağlanmadıkları sürece erişimi engeller.
+Aşağıdaki ilke, Birleşik kayıt deneyimini kullanarak kaydolmayı deneyen tüm seçili kullanıcılar için geçerlidir ve güvenilen ağ olarak işaretlenen bir konumdan bağlanmadıkları sürece erişimi engeller.
 
-1. Azure **portalında**Azure **Etkin Dizin** > **Güvenliği** > **Koşullu Erişimine** göz atın
-1. Select **+ Yeni ilke**
-1. *Güvenilen Ağlarda Birleşik Güvenlik Bilgileri Kaydı*gibi bu ilke için bir ad girin.
-1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin. Bu iipolitikasın uygulanmasını istediğiniz kullanıcıları ve grupları seçin ve **ardından Bitti'yi**seçin.
+1. **Azure Portal** **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi** ' ne gidin
+1. **+ Yeni ilke** Seç
+1. Bu ilke için *Güvenilen ağlarda Birleşik güvenlik bilgileri kaydı*gibi bir ad girin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin. Bu ilkenin uygulanmasını istediğiniz kullanıcıları ve grupları seçin, sonra **bitti**' yi seçin.
 
    > [!WARNING]
-   > Kullanıcıların kombine kayıt için etkinleştirilmesi gerekir.
+   > Kullanıcıların Birleşik kayıt için etkinleştirilmesi gerekir.
 
-1. **Bulut uygulamaları veya eylemleri**altında, Kullanıcı **eylemlerini**seçin. **Kayıt güvenlik bilgilerini**işaretleyin, ardından **Bitti'yi**seçin.
+1. **Bulut uygulamaları veya eylemler**altında **Kullanıcı eylemleri**' ni seçin. **Güvenlik bilgilerini kaydet**' i denetleyip **bitti**' yi seçin.
 
     ![Güvenlik bilgileri kaydını denetlemek için koşullu erişim ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
 
-1. **Koşullar** > **Konumları**altında, aşağıdaki seçenekleri yapılandırın:
-   1. **Evet'i** Yapılandır
-   1. **Herhangi bir konumu** ekle
-   1. **Tüm güvenilen konumları** hariç tut
-1. *Konumlar* penceresinde **Bitti'yi** seçin ve ardından *Koşullar* penceresinde **Bitti'yi** seçin.
-1. **Access denetimleri** > altında**Hibe**, **erişimi engelle'yi**seçin, ardından **Seçin**
-1. AyarI **Etkinleştir ilkesi** **ni A'ya**
-1. İlkeyi sonuçlandırmak için **Oluştur'u** seçin
+1. **Koşullar** > **konumlar**bölümünde, aşağıdaki seçenekleri yapılandırın:
+   1. **Evet** yapılandırma
+   1. **Herhangi bir konum** Ekle
+   1. **Tüm güvenilen konumları** Dışla
+1. *Konumlar* penceresinde **bitti** ' yi seçin ve ardından *koşullar* penceresinde **bitti** ' yi seçin.
+1. **Erişim denetimleri** > **izni**altında, **erişimi engelle** **' yi seçin ve ardından**
+1. **Ilkeyi** **Açık** olarak ayarla
+1. İlkeyi sonlandırmak için **Oluştur** ' u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yardıma ihtiyacınız varsa, [birleştirilmiş güvenlik bilgileri kaydının nasıl giderilengiderilen](howto-registration-mfa-sspr-combined-troubleshoot.md) nasıl giderilene bakın veya [Azure Active Directory Koşullu Erişim'de konum koşulunun ne olduğunu öğrenin?](../conditional-access/location-condition.md)
+Yardıma ihtiyacınız varsa bkz. [Birleşik güvenlik bilgileri kaydı nasıl giderilir](howto-registration-mfa-sspr-combined-troubleshoot.md) veya [koşullu erişim Azure Active Directory konum koşulunun ne olduğunu öğrenin?](../conditional-access/location-condition.md)
 
-Azure AD kiracınızdaki özellikleri etkinleştirmek [için, self servis parola sıfırlamayı etkinleştirmek](tutorial-enable-sspr.md) ve [Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmek](tutorial-enable-azure-mfa.md)için öğreticilere bakın.
+Azure AD kiracınızdaki özellikleri etkinleştirmek için, [self servis parola sıfırlamayı etkinleştirme](tutorial-enable-sspr.md) ve [Azure Multi-Factor Authentication 'yi etkinleştirme](tutorial-enable-azure-mfa.md)öğreticilerine bakın.
 
-[Kiracınızda birleşik kaydı](howto-registration-mfa-sspr-combined.md) nasıl etkinleştirmek veya kullanıcıları kimlik doğrulama [yöntemlerini yeniden kaydetmeye nasıl zorlayacağınızı](howto-mfa-userdevicesettings.md#manage-user-authentication-options)öğrenin.
+[Kiracınızda Birleşik kaydın nasıl etkinleştirileceğini](howto-registration-mfa-sspr-combined.md) veya [kullanıcılara kimlik doğrulama yöntemlerini yeniden kaydetmeye zorleyeceğinizi](howto-mfa-userdevicesettings.md#manage-user-authentication-options)öğrenin.
 
-[Azure Çok Faktörlü Kimlik Doğrulama ve SSPR için kullanılabilir yöntemleri](concept-authentication-methods.md)de gözden geçirebilirsiniz.
+[Azure Multi-Factor Authentication ve SSPR için kullanılabilir yöntemleri](concept-authentication-methods.md)de inceleyebilirsiniz.

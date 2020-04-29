@@ -1,51 +1,51 @@
 ---
-title: Azure CLI kullanarak Günlük Analizi çalışma alanı oluşturun | Microsoft Dokümanlar
-description: Azure CLI ile bulut ve şirket içi ortamlarınızdan yönetim çözümleri ve veri toplama yı etkinleştirmek için Bir Günlük Analizi çalışma alanı oluşturmayı öğrenin.
+title: Azure CLı kullanarak Log Analytics çalışma alanı oluşturma | Microsoft Docs
+description: Azure CLı ile bulut ve şirket içi ortamlarınızdaki yönetim çözümlerini ve veri toplamayı etkinleştirmek için Log Analytics çalışma alanı oluşturmayı öğrenin.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: 0e91bc9c994a48b335c3ccb7373a9f4f5dc6d1e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605079"
 ---
-# <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLI 2.0 ile Günlük Analizi çalışma alanı oluşturma
+# <a name="create-a-log-analytics-workspace-with-azure-cli-20"></a>Azure CLı 2,0 ile Log Analytics çalışma alanı oluşturma
 
-Azure CLI 2.0, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, Azure Monitor'da Bir Günlük Analizi çalışma alanını dağıtmak için Azure CLI 2.0'ı nasıl kullanacağınızı gösterir. Log Analytics çalışma alanı, Azure Monitor günlük verileri için benzersiz bir ortamdır. Her çalışma alanının kendi veri deposu ve yapılandırması vardır ve veri kaynakları ve çözümleri verilerini belirli bir çalışma alanında depolayabilmek üzere yapılandırılır. Aşağıdaki kaynaklardan veri toplamak istiyorsanız bir Log Analytics çalışma alanına ihtiyacınız vardır:
+Azure CLI 2.0, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure Izleyici 'de bir Log Analytics çalışma alanı dağıtmak için Azure CLı 2,0 'nin nasıl kullanılacağı gösterilmektedir. Log Analytics çalışma alanı, Azure Izleyici günlük verileri için benzersiz bir ortamdır. Her çalışma alanının kendi veri deposu ve yapılandırması vardır ve veri kaynakları ve çözümleri verilerini belirli bir çalışma alanında depolamak üzere yapılandırılır. Aşağıdaki kaynaklardan veri toplamayı planlıyorsanız bir Log Analytics çalışma alanı gerekir:
 
 * Aboneliğinizdeki Azure kaynakları  
-* Sistem Merkezi Operasyon Yöneticisi tarafından izlenen şirket içi bilgisayarlar  
-* Configuration Manager'dan aygıt koleksiyonları  
+* System Center Operations Manager tarafından izlenen şirket içi bilgisayarlar  
+* Configuration Manager cihaz koleksiyonları  
 * Azure depolama biriminden tanılama veya günlük verileri  
 
-Ortamınızdaki Azure VM'leri ve Windows veya Linux VM'leri gibi diğer kaynaklar için aşağıdaki konulara bakın:
+Ortamınızdaki Azure VM 'Leri ve Windows veya Linux VM 'Leri gibi diğer kaynaklar için aşağıdaki konulara bakın:
 
 * [Azure sanal makinelerinden veri toplama](../learn/quick-collect-azurevm.md)
-* [Karma Linux bilgisayarından veri toplama](../learn/quick-collect-linux-computer.md)
-* [Karma Windows bilgisayarından veri toplama](quick-collect-windows-computer.md)
+* [Karma Linux bilgisayarından veri topla](../learn/quick-collect-linux-computer.md)
+* [Karma Windows bilgisayarından veri topla](quick-collect-windows-computer.md)
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.30 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI 2.0 yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
-az grup dağıtımı oluşturmak ile bir çalışma alanı [oluşturun.](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create) Aşağıdaki örnek, yerel makinenizden gelen Kaynak Yöneticisi şablonunu kullanarak *doğu daki* konumda bir çalışma alanı oluşturur. JSON şablonu yalnızca çalışma alanının adını istenecek şekilde yapılandırılır ve ortamınızda standart yapılandırma olarak kullanılabilecek diğer parametreler için varsayılan bir değer belirtir. Veya kuruluşunuzdaki paylaşılan erişim için şablonu bir Azure depolama hesabında saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynakları dağıt'a](../../azure-resource-manager/templates/deploy-cli.md) bakın
+[Az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)komutuyla bir çalışma alanı oluşturun. Aşağıdaki örnek, yerel makinenizden Kaynak Yöneticisi şablonu kullanarak *eastus* konumunda bir çalışma alanı oluşturur. JSON şablonu yalnızca size çalışma alanının adını isteyecek şekilde yapılandırılmıştır ve ortamınızda standart bir yapılandırma olarak kullanılabilecek diğer parametreler için varsayılan bir değer belirtir. İsterseniz, şablonu kuruluşunuzda paylaşılan erişim için bir Azure depolama hesabında da saklayabilirsiniz. Şablonlarla çalışma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](../../azure-resource-manager/templates/deploy-cli.md)
 
-Desteklenen bölgeler hakkında bilgi için, günlük [analizinin bulunduğu bölgelere](https://azure.microsoft.com/regions/services/) bakın ve **ürün arama** alanından Azure Monitörünü arayın.
+Desteklenen bölgeler hakkında daha fazla bilgi için, bkz. [Log Analytics bölgeler kullanılabilir](https://azure.microsoft.com/regions/services/) ve **bir ürün Için aramadan** Azure izleyici araması yapın.
 
-Aşağıdaki parametreler varsayılan değer kümesi:
+Aşağıdaki parametreler varsayılan bir değer ayarlar:
 
-* yer - Doğu ABD varsayılan
-* sku - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB Başına fiyatlandırma katmanı için varsayılan
+* konum-varsayılan olarak Doğu ABD
+* SKU-Nisan 2018 fiyatlandırma modelinde yayınlanan yeni GB başına fiyatlandırma katmanına varsayılan olarak sahiptir
 
 >[!WARNING]
->Yeni Nisan 2018 fiyatlandırma modeline dahil olan bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak ise, tek geçerli Log Analytics fiyatlandırma katmanı **PerGB2018'dir.**
+>Yeni Nisan 2018 fiyatlandırma modelini kabul eden bir abonelikte Log Analytics çalışma alanı oluşturuyor veya yapılandırıyorsanız, geçerli Log Analytics fiyatlandırma katmanı yalnızca **PerGB2018**olur.
 >
 
 ### <a name="create-and-deploy-template"></a>Şablon oluşturma ve dağıtma
@@ -106,22 +106,22 @@ Aşağıdaki parametreler varsayılan değer kümesi:
     }
     ```
 
-2. Gereksinimlerinizi karşılamak için şablonu edin. Hangi özelliklerin ve değerlerin desteklenildiğini öğrenmek için [Microsoft.OperationalInsights/çalışma alanları şablonu](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) başvurularını inceleyin.
-3. Bu dosyayı yerel bir klasöre **deploylaworkspacetemplate.json** olarak kaydedin.   
-4. Bu şablonu dağıtmaya hazırsınız. Şablonu içeren klasörden aşağıdaki komutları kullanın. Bir çalışma alanı adı için istendiğinde, tüm Azure aboneliklerinde genel olarak benzersiz bir ad sağlayın.
+2. Gereksinimlerinizi karşılayacak şekilde şablonu düzenleyin. Hangi özelliklerin ve değerlerin desteklendiğini öğrenmek için [Microsoft. Operationalınsights/Workspaces şablon](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces) başvurusunu gözden geçirin.
+3. Bu dosyayı bir yerel klasöre **deploylaworkspace Template. JSON** olarak kaydedin.   
+4. Bu şablonu dağıtmaya hazırsınız. Şablonu içeren klasörden aşağıdaki komutları kullanın. Bir çalışma alanı adı sorulduğunda, tüm Azure abonelikleri genelinde genel olarak benzersiz bir ad sağlayın.
 
     ```azurecli
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deploylaworkspacetemplate.json
     ```
 
-Dağıtımın tamamlanması birkaç dakika sürebilir. Bittiğinde, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
+Dağıtımın tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren aşağıdakine benzer bir ileti görürsünüz:
 
 ![Dağıtım tamamlandığında örnek sonuç](media/quick-create-workspace-cli/template-output-01.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık kullanılabilir bir çalışma alanınız olduğuna göre, izleme telemetrisi koleksiyonunu yapılandırabilir, bu verileri çözümlemek için günlük aramaları çalıştırabilir ve ek veriler ve analitik öngörüler sağlamak için bir yönetim çözümü ekleyebilirsiniz.  
+Artık kullanılabilir bir çalışma alanınız olduğuna göre, izleme telemetri koleksiyonunu yapılandırabilir, bu verileri çözümlemek için günlük aramalarını çalıştırabilir ve ek veri ve analitik Öngörüler sağlamak için bir yönetim çözümü ekleyebilirsiniz.  
 
-* Azure Tanılama veya Azure depolama alanıyla Azure kaynaklarından veri toplamayı etkinleştirmek [için, Log Analytics'te kullanılmak üzere Azure hizmet günlüklerini ve ölçümlerini topla'ya](../platform/collect-azure-metrics-logs.md)bakın.  
-* Operasyon Yöneticisi yönetim grubunuzu bildiren aracılardan veri toplamak ve Log Analytics çalışma alanınızda depolamak için [Sistem Merkezi Operasyon Yöneticisi'ni veri kaynağı olarak](../platform/om-agents.md) ekleyin.  
-* [Configuration Manager'ı](../platform/collect-sccm.md) hiyerarşideki koleksiyonların üyesi olan bilgisayarları içe aktarmaya bağlayın.  
-* Kullanılabilir [izleme çözümlerini](../insights/solutions.md) ve çalışma alanınızdan bir çözümü nasıl ekleyeceğiniz veya kaldırılanızı gözden geçirin.
+* Azure Tanılama veya Azure depolama ile Azure kaynaklarından veri toplamayı etkinleştirmek için, bkz. [Log Analytics Kullanım Için Azure hizmet günlükleri ve ölçümleri toplama](../platform/collect-azure-metrics-logs.md).  
+* Operations Manager yönetim grubunuzu raporlayan aracılardan veri toplamak ve Log Analytics çalışma alanınızda depolamak için [veri kaynağı olarak System Center Operations Manager](../platform/om-agents.md) ekleyin.  
+* Hiyerarşideki koleksiyonların üyesi olan bilgisayarları içeri aktarmak için [Configuration Manager](../platform/collect-sccm.md) bağlanın.  
+* Kullanılabilir [izleme çözümlerini](../insights/solutions.md) ve çalışma alanınızdan bir çözümün nasıl ekleneceğini ve kaldırılacağını gözden geçirin.
