@@ -1,33 +1,33 @@
 ---
-title: Azure İşlevler için Azure Sıra depolama tetikleyicisi
-description: Azure Sıra depolama verileri değiştikçe bir Azure İşlevi çalıştırmayı öğrenin.
+title: Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
+description: Azure kuyruk depolama verileri değişiklikleri olarak bir Azure Işlevi çalıştırmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 74ca984232bef979062221a451d0ee10a6965bc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277381"
 ---
-# <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure İşlevler için Azure Sıra depolama tetikleyicisi
+# <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure kuyruk depolama tetikleyicisi
 
-İletiler Azure Sıra depolama alanına eklendikçe sıra depolama tetikleyicisi bir işlev çalıştırıyor.
+Kuyruk depolama tetikleyicisi, Azure kuyruk depolamaya iletiler eklendikçe bir işlevi çalıştırır.
 
 ## <a name="encoding"></a>Encoding
 
-İşlevler *base64* kodlanmış bir dize bekliyoruz. Kodlama türünde yapılan ayarlamaların *(temel64* kodlanmış dize olarak veri hazırlamak için) arama hizmetinde uygulanması gerekir.
+İşlevler bir *Base64* kodlamalı dize bekler. Kodlama türünde yapılan ayarlamaların (verileri *Base64* kodlamalı bir dize olarak hazırlamak için), çağıran hizmette uygulanması gerekir.
 
 ## <a name="example"></a>Örnek
 
-Kuyrukta yeni bir öğe alındığı zaman bir işlev başlatmak için sıra tetikleyicisini kullanın. Kuyruk iletisi işleve giriş olarak sağlanır.
+Kuyruktaki yeni bir öğe alındığında bir işlev başlatmak için kuyruk tetikleyicisini kullanın. Kuyruk iletisi işleve giriş olarak sağlanır.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-Aşağıdaki örnek, sırayı `myqueue-items` yoklayan ve bir sıra öğesi her işlenirken günlük yazan bir [C# işlevini](functions-dotnet-class-library.md) gösterir.
+Aşağıdaki örnek, kuyruğu yoklayan `myqueue-items` ve kuyruk öğesi her işlendiğinde bir günlük yazan bir [C# işlevini](functions-dotnet-class-library.md) gösterir.
 
 ```csharp
 public static class QueueFunctions
@@ -42,11 +42,11 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, *bir function.json* dosyasında bir sıra tetikleyicisi bağlamayı ve bağlamayı kullanan [C# komut dosyası (.csx)](functions-reference-csharp.md) kodunu gösterir. İşlev sırayı `myqueue-items` yoklar ve bir sıra öğesi her işlendiher kez bir günlük yazar.
+Aşağıdaki örnek, bağlamayı kullanan bir *function. JSON* dosyası ve [C# betiği (. CSX)](functions-reference-csharp.md) kodunda bir sıra tetikleyicisi bağlamasını gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-Burada *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -63,9 +63,9 @@ Burada *function.json* dosyası:
 }
 ```
 
-[Yapılandırma](#configuration) bölümü bu özellikleri açıklar.
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
 
-İşte C# komut dosyası kodu:
+C# betik kodu aşağıda verilmiştir:
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -95,13 +95,13 @@ public static void Run(CloudQueueMessage myQueueItem,
 }
 ```
 
-[Kullanım](#usage) bölümü, `myQueueItem`function.json `name` özelliği tarafından adlandırılır açıklar.  [İleti meta veri bölümü](#message-metadata) gösterilen diğer tüm değişkenleri açıklar.
+[Kullanım](#usage) bölümü, Function `myQueueItem`. JSON içindeki `name` özelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function.json* dosyasında bir sıra tetikleyicisi bağlamave bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev sırayı `myqueue-items` yoklar ve bir sıra öğesi her işlendiher kez bir günlük yazar.
+Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir kuyruk tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi `myqueue-items` kuyruğu yoklar ve bir kuyruk öğesi işlendiğinde bir günlük yazar.
 
-Burada *function.json* dosyası:
+İşte *function. JSON* dosyası:
 
 ```json
 {
@@ -118,12 +118,12 @@ Burada *function.json* dosyası:
 }
 ```
 
-[Yapılandırma](#configuration) bölümü bu özellikleri açıklar.
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
 
 > [!NOTE]
-> Ad parametresi, `context.bindings.<name>` sıra öğesi yükünü içeren JavaScript kodundaki gibi yansıtır. Bu yük aynı zamanda işlevin ikinci parametresi olarak geçirilir.
+> Ad parametresi, kuyruk öğesi `context.bindings.<name>` yükünü içeren JavaScript kodunda olduğu gibi yansıtır. Bu yük aynı zamanda işleve ikinci parametre olarak geçirilir.
 
-İşte JavaScript kodu:
+JavaScript kodu aşağıda verilmiştir:
 
 ```javascript
 module.exports = async function (context, message) {
@@ -140,13 +140,13 @@ module.exports = async function (context, message) {
 };
 ```
 
-[Kullanım](#usage) bölümü, `myQueueItem`function.json `name` özelliği tarafından adlandırılır açıklar.  [İleti meta veri bölümü](#message-metadata) gösterilen diğer tüm değişkenleri açıklar.
+[Kullanım](#usage) bölümü, Function `myQueueItem`. JSON içindeki `name` özelliği tarafından adlandırılan açıklanmaktadır.  [İleti meta verileri bölümü](#message-metadata) gösterilen diğer değişkenlerin tümünü açıklar.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir tetikleyici aracılığıyla bir işleve geçirilen bir sıra iletisinin nasıl okunduğunu gösterir.
+Aşağıdaki örnek, bir tetikleyici aracılığıyla işleve geçirilen bir sıra iletisinin nasıl okunacağını gösterir.
 
-Bir Depolama kuyruk tetikleyici *sürünün* ayarlandığı `queueTrigger` *function.json* tanımlanır.
+Bir depolama kuyruğu tetikleyicisi, *türünün* olarak `queueTrigger`ayarlandığı *function. JSON* içinde tanımlanır.
 
 ```json
 {
@@ -163,7 +163,7 @@ Bir Depolama kuyruk tetikleyici *sürünün* ayarlandığı `queueTrigger` *func
 }
 ```
 
-Kod `func.ServiceBusMessage`init *\_.py işlevinizdeki sıra iletisini okumanızı sağlayan bir parametre yi " olarak bildirir. _ \__*
+* _ \__ İnit\_. Kopyala* kodu bir parametre bildirir `func.ServiceBusMessage`ve bu, işlevinizdeki sıra iletisini okumanızı sağlar.
 
 ```python
 import logging
@@ -192,7 +192,7 @@ def main(msg: func.QueueMessage):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki Java örneği, sıraya `myqueuename`yerleştirilen tetikleyici iletiyi günlüğe kaydeden bir depolama sırası tetikleyici işlevini gösterir.
+Aşağıdaki Java örneğinde, tetiklenen iletiyi kuyruğa `myqueuename`kaydeden bir depolama kuyruğu tetikleme işlevi gösterilmektedir.
 
  ```java
  @FunctionName("queueprocessor")
@@ -210,13 +210,13 @@ Aşağıdaki Java örneği, sıraya `myqueuename`yerleştirilen tetikleyici ilet
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-[C# sınıfı kitaplıklarında,](functions-dotnet-class-library.md)sıra tetikleyicisini yapılandırmak için aşağıdaki öznitelikleri kullanın:
+[C# sınıf kitaplıklarında](functions-dotnet-class-library.md), bir kuyruk tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
 * [QueueTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueTriggerAttribute.cs)
 
-  Özniteliğin oluşturucusu, aşağıdaki örnekte gösterildiği gibi, izlemek için sıranın adını alır:
+  Aşağıdaki örnekte gösterildiği gibi özniteliğin Oluşturucusu, izlenecek sıranın adını alır:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -228,7 +228,7 @@ Aşağıdaki Java örneği, sıraya `myqueuename`yerleştirilen tetikleyici ilet
   }
   ```
 
-  `Connection` Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabı bağlantı dizesini içeren uygulama ayarını belirtecek şekilde özelliği ayarlayabilirsiniz:
+  Aşağıdaki örnekte gösterildiği gibi `Connection` , kullanılacak depolama hesabı bağlantı dizesini içeren uygulama ayarını belirtmek için özelliğini ayarlayabilirsiniz:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -240,11 +240,11 @@ Aşağıdaki Java örneği, sıraya `myqueuename`yerleştirilen tetikleyici ilet
   }
   ```
 
-  Tam bir örnek için [bkz.](#example)
+  Tüm örnek için bkz. [örnek](#example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantısı dizesi içeren bir uygulama ayarı adını alır. Öznitelik parametre, yöntem veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf düzeyini ve yöntem düzeyini gösterir:
+  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantı dizesi içeren bir uygulama ayarının adını alır. Özniteliği parametresi, yöntemi veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf düzeyi ve Yöntem düzeyini gösterir:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -258,19 +258,19 @@ Aşağıdaki Java örneği, sıraya `myqueuename`yerleştirilen tetikleyici ilet
   }
   ```
 
-Kullanılacak depolama hesabı aşağıdaki sırada belirlenir:
+Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 * `QueueTrigger` Özniteliğin `Connection` özelliği.
-* Öznitelik `StorageAccount` ile aynı parametreye `QueueTrigger` uygulanan öznitelik.
-* İşlev `StorageAccount` için uygulanan öznitelik.
-* Sınıfa `StorageAccount` uygulanan öznitelik.
+* Özniteliği `StorageAccount` ile `QueueTrigger` aynı parametreye uygulanan öznitelik.
+* İşleve `StorageAccount` uygulanan öznitelik.
+* Sınıfına `StorageAccount` uygulanan öznitelik.
 * "AzureWebJobsStorage" uygulama ayarı.
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Öznitelikler C# Script tarafından desteklenmez.
+Öznitelikler C# betiği tarafından desteklenmez.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -280,7 +280,7 @@ Kullanılacak depolama hesabı aşağıdaki sırada belirlenir:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Ek `QueueTrigger` açıklama, işlevi tetikleyen kuyruğa erişmenizi sağlar. Aşağıdaki örnek, sıra iletisini `message` parametre aracılığıyla işleviçin kullanılabilir hale getirir.
+`QueueTrigger` Ek açıklama, işlevi tetikleyen sıraya erişmenizi sağlar. Aşağıdaki örnek, kuyruk iletisini `message` parametresi aracılığıyla işlev için kullanılabilir hale getirir.
 
 ```java
 package com.function;
@@ -301,114 +301,114 @@ public class QueueTriggerDemo {
 
 | Özellik    | Açıklama |
 |-------------|-----------------------------|
-|`name`       | İşlev imzasındaki parametre adını bildirir. İşlev tetiklendiğinde, bu parametrenin değeri sıra iletisinin içeriğini alır. |
-|`queueName`  | Depolama hesabında sıra adını bildirir. |
-|`connection` | Depolama hesabı bağlantı dizesini işaret ediyor. |
+|`name`       | İşlev imzasında parametre adını bildirir. İşlev tetiklendiğinde, bu parametrenin değeri kuyruk iletisinin içeriğine sahiptir. |
+|`queueName`  | Depolama hesabındaki sıra adını bildirir. |
+|`connection` | Depolama hesabı bağlantı dizesine işaret eder. |
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `QueueTrigger` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
+Aşağıdaki tabloda, *function. JSON* dosyasında ve `QueueTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
 
-|function.json özelliği | Öznitelik özelliği |Açıklama|
+|function. JSON özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**Türü** | yok| Ayarlanmış `queueTrigger`olmalı. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**Yön**| yok | Yalnızca *function.json* dosyasında. Ayarlanmış `in`olmalı. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
-|**Adı** | yok |İşlev kodundaki sıra madde yükü içeren değişkenin adı.  |
-|**queueName** | **Kuyruk Adı**| Yoklama sırasının adı. |
-|**bağlantı** | **Bağlantı** |Bu bağlama için kullanılacak Depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adın geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" olarak ayarlarsanız, `connection` İşlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. Boş bırakırsanız, `connection` İşlevler çalışma zamanı, uygulama ayarında adı `AzureWebJobsStorage`verilen varsayılan Depolama bağlantı dizesini kullanır.|
+|**türüyle** | yok| Olarak `queueTrigger`ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**Görünüm**| yok | Yalnızca *function. JSON* dosyasında. Olarak `in`ayarlanmalıdır. Bu özellik, Azure portal tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**ada** | yok |İşlev kodundaki kuyruk öğesi yükünü içeren değişkenin adı.  |
+|**Adı** | **Adı**| Yoklamaya yönelik kuyruğun adı. |
+|**bağlantı** | **Bağlanma** |Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" `connection` olarak ayarlarsanız, işlevler çalışma zamanı "Mystorage" adlı bir uygulama ayarı arar. Boş bırakırsanız `connection` , işlevler çalışma zamanı adlı `AzureWebJobsStorage`uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
-İleti verilerine ' i gibi `string paramName`bir yöntem parametresi kullanarak erişin. Aşağıdaki türlerden herhangi birini bağlayabilirsiniz:
+Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName`. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
-* Nesne - İşlevler çalışma zamanı, JSON yükünü kodunuzda tanımlanan rasgele bir sınıf örneğine dönüştürür. 
+* Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-Bir hata iletisine `CloudQueueMessage` bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
+' A bağlanıp `CloudQueueMessage` bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
+# <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-İleti verilerine ' i gibi `string paramName`bir yöntem parametresi kullanarak erişin. *Function.json* `paramName` özelliğinde `name` belirtilen değerdir. Aşağıdaki türlerden herhangi birini bağlayabilirsiniz:
+Gibi bir yöntem parametresi kullanarak ileti verilerine erişin `string paramName`. , `paramName` `name` *Function. JSON*özelliğinde belirtilen değerdir. Aşağıdaki türlerden birine bağlanabilirsiniz:
 
-* Nesne - İşlevler çalışma zamanı, JSON yükünü kodunuzda tanımlanan rasgele bir sınıf örneğine dönüştürür. 
+* Nesne-Işlevler çalışma zamanı, kodunuzda tanımlanan rastgele bir sınıfın örneğine bir JSON yükünü seri durumdan çıkarır. 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
 
-Bir hata iletisine `CloudQueueMessage` bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
+' A bağlanıp `CloudQueueMessage` bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Sıra madde `context.bindings.<NAME>` *yükü, function.json'da*tanımlanan adla eşleşen bir yerde `<NAME>` kullanılabilir. Yük JSON ise, değer bir nesneye ayrılır.
+Kuyruk öğesi yükü, *function. JSON*içinde `<NAME>` tanımlanan adla eşleşen ile `context.bindings.<NAME>` kullanılabilir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
-[QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)olarak yazılan parametre aracılığıyla sıra iletisine erişin.
+Sıra iletisine [queuemessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)olarak yazılan parametre aracılığıyla erişin.
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) ek açıklama işlevi tetikleyen sıra iletisine erişim sağlar.
+[Queuetrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) ek açıklaması, işlevi tetikleyen kuyruk iletisine erişmenizi sağlar.
 
 ---
 
 ## <a name="message-metadata"></a>İleti meta verileri
 
-Sıra tetikleyicisi birkaç [meta veri özelliği](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamaifadelerinin bir parçası olarak veya kodunuzda parametre olarak kullanılabilir. Özellikler [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
+Sıra tetikleyicisi çeşitli [meta veri özellikleri](./functions-bindings-expressions-patterns.md#trigger-metadata)sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Özellikler [Cloudqueuemessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) sınıfının üyeleridir.
 
 |Özellik|Tür|Açıklama|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Sıra yükü (geçerli bir dize varsa). Sıra iletisi yükü bir `QueueTrigger` dize ise, `name` *işlev.json*özelliği tarafından adlandırılan değişken ile aynı değere sahiptir.|
-|`DequeueCount`|`int`|Bu iletinin kaç kez sıradan silindiği.|
-|`ExpirationTime`|`DateTimeOffset`|İletinin süresinin dolduğu saat.|
-|`Id`|`string`|Sıra ileti kimliği.|
-|`InsertionTime`|`DateTimeOffset`|İletinin kuyruğa eklenme zamanı.|
-|`NextVisibleTime`|`DateTimeOffset`|İletinin bir sonraki görünür olacağı saat.|
+|`QueueTrigger`|`string`|Kuyruk yükü (geçerli bir dize varsa). Kuyruk iletisi yükü bir dizeyse, `QueueTrigger` `name` *function. JSON*içindeki özelliği tarafından adlandırılan değişkenle aynı değere sahip olur.|
+|`DequeueCount`|`int`|Bu iletinin sıraya alınma sayısı.|
+|`ExpirationTime`|`DateTimeOffset`|İletinin süre sonu.|
+|`Id`|`string`|Kuyruk ileti KIMLIĞI.|
+|`InsertionTime`|`DateTimeOffset`|İletinin sıraya eklendiği zaman.|
+|`NextVisibleTime`|`DateTimeOffset`|İletinin bir sonraki görünür olacağı zaman.|
 |`PopReceipt`|`string`|İletinin pop makbuzu.|
 
-## <a name="poison-messages"></a>Zehirli mesajlar
+## <a name="poison-messages"></a>Zarar iletileri
 
-Bir kuyruk tetikleyici işlevi başarısız olduğunda, Azure İşlevleri işlevi ilk deneme de dahil olmak üzere belirli bir sıra iletisi için beş kata kadar yeniden çalışır. Beş denemenin tümü de başarısız olursa, çalışma zamanı işlevleri * &lt;özgün sıra adı>-poison*adlı bir kuyruğa ileti ekler. İletileri günlüğe kaydederek veya el ile dikkat gerektiren bir bildirim göndererek zehir kuyruğundan gelen iletileri işlemek için bir işlev yazabilirsiniz.
+Bir kuyruk tetikleyicisi işlevi başarısız olduğunda, Azure Işlevleri, ilk deneme dahil olmak üzere belirli bir kuyruk iletisi için işlevi en fazla beş kez yeniden dener. Tüm beş deneme başarısız olursa, işlevler çalışma zamanı * &lt;originalsıra>-Poison*adlı bir kuyruğa ileti ekler. Onları günlüğe kaydederek veya el ile ilgilenilmesi gereken bir bildirim göndererek, zarar kuyruğundan iletileri işlemek için bir işlev yazabilirsiniz.
 
-Zehirli iletileri el ile işlemek için, sıra iletisinin [sırasını](#message-metadata) ayırAbilirsiniz'ı denetleyin.
+Zarar iletilerini el ile işlemek için kuyruk iletisinin [Dequeuecount](#message-metadata) değerini kontrol edin.
 
 ## <a name="polling-algorithm"></a>Yoklama algoritması
 
-Sıra tetikleyicisi, boşta sıra yoklamanın depolama işlem maliyetleri üzerindeki etkisini azaltmak için rasgele bir üstel geri leme algoritması uygular.
+Sıra tetikleyicisi, depolama işlem maliyetlerinde boşta sıra yoklamanın etkisini azaltmak için rastgele bir üstel geri alma algoritması uygular.
 
 Algoritma aşağıdaki mantığı kullanır:
 
-- İleti bulunduğunda, çalışma süresi iki saniye bekler ve sonra başka bir ileti için denetler
-- İleti bulunmadığında, yeniden denemeden önce yaklaşık dört saniye bekler.
-- Bir sıra iletisi almak için sonraki başarısız girişimleri sonra, bekleme süresi varsayılan bir dakika maksimum bekleme süresine ulaşana kadar artmaya devam eder.
-- Maksimum bekleme süresi ana `maxPollingInterval` [bilgisayar.json dosyasındaki](functions-host-json.md#queues)özellik üzerinden yapılandırılabilir.
+- Bir ileti bulunduğunda, çalışma zamanı iki saniye bekler ve sonra başka bir ileti arar
+- Hiçbir ileti bulunamadığında, yeniden denemeden önce dört saniye bekler.
+- Sonraki başarısız bir kuyruk iletisi almaya çalıştıktan sonra, bekleme süresi, varsayılan olarak bir dakika olacak şekilde en fazla bekleme süresine ulaşana kadar artmaya devam eder.
+- En uzun bekleme süresi, `maxPollingInterval` [Host. JSON dosyasındaki](functions-host-json.md#queues)özelliği aracılığıyla yapılandırılabilir.
 
-Yerel geliştirme için maksimum yoklama aralığı varsayılan olarak iki saniyeye kadar dır.
+Yerel geliştirme için en fazla yoklama aralığı varsayılan olarak iki saniyedir.
 
-Faturalandırma ile ilgili olarak, çalışma süresine göre yoklama harcanan zaman "ücretsiz" ve hesabınıza karşı sayılmaz.
+Faturalandırmayla ilgili olarak, çalışma zamanı tarafından yoklama harcanan süre "ücretsizdir" ve hesabınıza göre sayılmaz.
 
 ## <a name="concurrency"></a>Eşzamanlılık
 
-Birden çok sıra iletisi bekliyorsa, sıra tetikleyicisi bir toplu ileti ler alır ve bunları işlemek için aynı anda işlev örneklerini çağırır. Varsayılan olarak, toplu iş boyutu 16'dır. İşlenen sayı 8'e düştüğünde, çalışma zamanı başka bir toplu iş alır ve bu iletileri işlemeye başlar. Bu nedenle, tek bir sanal makinede (VM) işlev başına işlenen en fazla eşzamanlı ileti sayısı 24'tür. Bu sınır, her VM'de sıra tetiklenen her işlev için ayrı ayrı geçerlidir. İşlev uygulamanız birden fazla VM'ye ölçeklendirilecekse, her VM tetikleyicileri bekler ve işlevleri çalıştırmayı dener. Örneğin, bir işlev uygulaması 3 VM'ye ölçeklenirse, bir kuyruk tetiklenen işlevin varsayılan maksimum eşzamanlı örneği sayısı 72'dir.
+Bekleyen birden çok kuyruk iletisi olduğunda, kuyruk tetikleyicisi bir toplu ileti alır ve işlev örneklerini işlemek için eşzamanlı olarak çağırır. Varsayılan olarak, toplu iş boyutu 16 ' dır. İşlenen sayı 8 ' e iniyorsa, çalışma zamanı başka bir Batch alır ve bu iletileri işlemeye başlar. Bu nedenle, bir sanal makinede (VM) işlev başına işlenen en fazla eşzamanlı ileti sayısı 24 ' dir. Bu sınır, her bir sanal makinenin her bir sıraya göre tetiklenen işleve ayrı olarak uygulanır. İşlev uygulamanız birden çok VM 'ye ölçeklenirken, her sanal makine Tetikleyicileri bekler ve işlevleri çalıştırmaya çalışır. Örneğin, bir işlev uygulaması 3 VM 'ye ölçekleniyorsa, bir sıra tetiklenen işlevin varsayılan en fazla eşzamanlı örneği 72 ' dir.
 
-Toplu iş boyutu ve yeni bir toplu iş almak için eşik [host.json dosyasında](functions-host-json.md#queues)yapılandırılabilir. Bir işlev uygulamasında sıra tetiklenen işlevler için paralel yürütmeyi en aza indirmek istiyorsanız, toplu iş boyutunu 1 olarak ayarlayabilirsiniz. Bu ayar, işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılığı ortadan kaldırır. 
+Toplu iş boyutu ve yeni bir toplu işlem alma eşiği, [Host. json dosyasında](functions-host-json.md#queues)yapılandırılabilir. Bir işlev uygulamasındaki Queue-tetiklenen işlevler için paralel yürütmeyi en aza indirmek isterseniz, toplu iş boyutunu 1 olarak ayarlayabilirsiniz. Bu ayar, yalnızca işlev uygulamanız tek bir sanal makinede (VM) çalıştığı sürece eşzamanlılık ortadan kaldırır. 
 
-Sıra tetikleyicisi, bir işlevin bir sıra iletisini birden çok kez işlemesini otomatik olarak engeller; işlevlerin idempotent olması için yazılması gerekmez.
+Sıra tetikleyicisi, bir işlevin bir sıra iletisini birden çok kez işlemesini otomatik olarak önler; işlevlerin ıdempotent olarak yazılması gerekmez.
 
-## <a name="hostjson-properties"></a>host.json özellikleri
+## <a name="hostjson-properties"></a>Host. JSON özellikleri
 
-[Ana bilgisayar.json](functions-host-json.md#queues) dosyası, sıra tetikleyici davranışını denetleyen ayarlar içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [host.json ayarları](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
+[Host. JSON](functions-host-json.md#queues) dosyası, sıra tetikleyicisi davranışını denetleyen ayarları içerir. Kullanılabilir ayarlarla ilgili ayrıntılar için [Host. JSON ayarları](functions-bindings-storage-queue-output.md#hostjson-settings) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sıra depolama iletileri yazma (Çıktı bağlama)](./functions-bindings-storage-blob-output.md)
+- [Yazma kuyruğu depolama iletileri (çıkış bağlaması)](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

@@ -1,6 +1,6 @@
 ---
-title: Şeffaf Veri Şifreleme (Portal)
-description: Azure Synapse Analytics'te Saydam Veri Şifreleme (TDE)
+title: Saydam Veri Şifrelemesi (portal)
+description: Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE)
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 247691326e3aa2c8027dd0318b23a2cbfcba1efe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745237"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>Şeffaf Veri Şifreleme (TDE) ile başlayın
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Saydam Veri Şifrelemesi ile çalışmaya başlama (TDE)
 
 > [!div class="op_single_selector"]
 >
-> * [Güvenliğe Genel Bakış](sql-data-warehouse-overview-manage-security.md)
+> * [Güvenliğe genel bakış](sql-data-warehouse-overview-manage-security.md)
 > * [Kimlik Doğrulaması](sql-data-warehouse-authentication.md)
-> * [Şifreleme (Portal)](sql-data-warehouse-encryption-tde.md)
+> * [Şifreleme (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 ## <a name="required-permissions"></a>Gerekli İzinler
 
-Saydam Veri Şifreleme 'yi (TDE) etkinleştirmek için yönetici veya dbmanager rolünün bir üyesi olmalısınız.
+Saydam Veri Şifrelemesi (TDE) etkinleştirmek için, bir yönetici veya dbmanager rolünün bir üyesi olmanız gerekir.
 
-## <a name="enabling-encryption"></a>Şifrelemeyi Etkinleştirme
+## <a name="enabling-encryption"></a>Şifrelemeyi etkinleştirme
 
-TDE'yi etkinleştirmek için aşağıdaki adımları izleyin:
+TDE ' yi etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) veritabanını açma
-2. Veritabanı bıçak, **Ayarlar** düğmesini tıklatın
-3. Saydam **veri şifreleme** ![seçeneği portalı ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. **On** ayar ![portalı ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
-5. Portal ayarlarını **kaydet'i**
-   ![seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
+1. Veritabanını [Azure Portal](https://portal.azure.com) açın
+2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
+3. **Saydam veri şifreleme** seçeneği ![Portal ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. **Üzerinde Portal ayarlarını** ayarlama ![' yı seçin.](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-on.png)
+5. Portal ayarlarını **Kaydet**
+   ![' i seçin Kaydet](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save.png)  
 
-## <a name="disabling-encryption"></a>Şifrelemeyi Devre Dışı Bırakma
+## <a name="disabling-encryption"></a>Şifrelemeyi devre dışı bırakma
 
-TDE'yi devre dışı katmak için aşağıdaki adımları izleyin:
+TDE ' yi devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com) veritabanını açma
-2. Veritabanı bıçak, **Ayarlar** düğmesini tıklatın
-3. Saydam **veri şifreleme** ![seçeneği portalı ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
-4. Kapalı **ayar** ![lı portal ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. Portal ayarını **kaydet'i**
-   ![seçin kaydet 2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
+1. Veritabanını [Azure Portal](https://portal.azure.com) açın
+2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
+3. **Saydam veri şifreleme** seçeneği ![Portal ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
+4. **Devre dışı bırakma** ![portalı ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
+5. Portalın **kaydedileceği ilkeyi kaydet**
+   ![seçeneğini belirleyin 2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
-## <a name="encryption-dmvs"></a>Şifreleme DMV'leri
+## <a name="encryption-dmvs"></a>Şifreleme DMVs
 
-Şifreleme aşağıdaki DMV'lerle doğrulanabilir:
+Şifreleme Aşağıdaki DMVs ile onaylanır:
 
-* [Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

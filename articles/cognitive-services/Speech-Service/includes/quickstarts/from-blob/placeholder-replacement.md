@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Blob depolamada depolanan konuşmayı tanıyın - Konuşma hizmeti'
+title: "Hızlı başlangıç: BLOB depolama 'da depolanan konuşmayı tanıma-konuşma hizmeti"
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -10,17 +10,17 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: cb5b14bd5585c85947ef0dafeae1fb41cb8a4a5c
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887438"
 ---
 Aşağıdaki değerleri değiştirmeniz gerekir:
 
- - `YourSubscriptionKey`: Konuşma kaynağı için Azure portalının **Keys** sayfasında bulunur
- - `YourServiceRegion`: Konuşma kaynağı için Azure portalının **Genel Bakış** sayfasında bulunur
- - `YourFileUrl`: Depolama hesabı kaynağı için Azure portalının **Blob hizmeti / Kapsayıcılar** sayfası nın altında bulunan
+ - `YourSubscriptionKey`: konuşma kaynağı için Azure portal **anahtarlar** sayfasında bulunur
+ - `YourServiceRegion`: konuşma kaynağı için Azure portal **genel bakış** sayfasında bulunur
+ - `YourFileUrl`: depolama hesabı kaynağı için Azure portal **BLOB hizmeti/kapsayıcıları** sayfasında bulunur
      - Uygun kapsayıcıyı seçin
-     - İstenilen blob'u seçin
-     - **Url'yi** **URL** Özellikler sayfasının altında kopyalama
+     - İstenen blobu seçin
+     - **Özellikler** sayfasının altındaki **URL 'yi** kopyalayın

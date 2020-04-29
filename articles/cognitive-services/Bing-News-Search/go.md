@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Bing Haberler Arama REST API ve Git kullanarak haber alın'
+title: 'Hızlı başlangıç: Bing Haber Arama REST API ve Go kullanarak haber alın'
 titleSuffix: Azure Cognitive Services
-description: Bu hızlı başlangıç, Bing Haberler Arama API'sini aramak için Git dilini kullanır. Sonuçlar, sorgu dizesi tarafından tanımlanan haber kaynaklarının adlarını ve URL'lerini içerir.
+description: Bu hızlı başlangıçta Bing Haber Arama API'si çağırmak için go dili kullanılır. Sonuçlar, sorgu dizesi tarafından tanımlanan haber kaynaklarının adlarını ve URL 'Lerini içerir.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.openlocfilehash: aaeb905c9cdc1e7b74e21d3c191f6a24a94fcd7d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053801"
 ---
-# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Quickstart: Bing Haberler Arama REST API ve Git kullanarak haber sonuçları alın
+# <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Hızlı başlangıç: Bing Haber Arama REST API kullanarak haber sonuçları alın ve git
 
-Bu hızlı başlangıç, Bing Haberler Arama API'sini aramak için Git dilini kullanır. Sonuçlar, sorgu dizesi tarafından tanımlanan haber kaynaklarının adlarını ve URL'lerini içerir.
+Bu hızlı başlangıçta Bing Haber Arama API'si çağırmak için go dili kullanılır. Sonuçlar, sorgu dizesi tarafından tanımlanan haber kaynaklarının adlarını ve URL 'Lerini içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-* Go [ikililerini](https://golang.org/dl/) yükleyin
-* Sonuçları görüntülemek için güzel yazıcı için go-spew kitaplığı yükleyin
-    * Bu kitaplığı yükleyin:`$ go get -u https://github.com/davecgh/go-spew`
+* [Go ikililerini](https://golang.org/dl/) yükler
+* Sonuçları göstermek için BT 'nin yazıcı için go-Spew kitaplığını yükler
+    * Bu kitaplığı yükler:`$ go get -u https://github.com/davecgh/go-spew`
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-## <a name="create-a-project-and-import-libraries"></a>Proje oluşturma ve kitaplıkları içe aktarma
+## <a name="create-a-project-and-import-libraries"></a>Proje oluşturma ve kitaplıkları içeri aktarma
 
-IDE veya düzenleyicinizde yeni bir Go projesi oluşturun. Ardından `net/http` istekleri almak, `ioutil` yanıtı okumak `encoding/json` ve sonuçların JSON metnini işlemek için. Go-pew kütüphane JSON ayrıştırmak için gereklidir. 
+IDE veya Düzenleyicinizde yeni bir go projesi oluşturun. Ardından istekler `net/http` için içeri aktarın `ioutil` , yanıtı okumak ve `encoding/json` sonuçların JSON metnini işlemek için. JSON ayrıştırmak için go-Spew kitaplığı gereklidir. 
 
 ```go
 package main
@@ -45,9 +45,9 @@ import (
 
 ```
 
-## <a name="create-a-struct-to-format-the-news-search-results"></a>Haberler arama sonuçlarını biçimlendirmek için bir yapı oluşturma
+## <a name="create-a-struct-to-format-the-news-search-results"></a>Haber arama sonuçlarını biçimlendirmek için bir yapı oluşturma
 
-`NewsAnswer` yapısı, yanıtta sağlanan verileri biçimlendirir. Yanıt JSON çok düzeyli ve oldukça karmaşıktır.  Aşağıdaki uygulama temel leri kapsamaktadır.
+`NewsAnswer` yapısı, yanıtta sağlanan verileri biçimlendirir. JSON yanıtı çok düzeyli ve oldukça karmaşıktır.  Aşağıdaki uygulama temel bilgileri içerir.
 
 ```go
 // This struct formats the answer provided by the Bing News Search API.
@@ -87,7 +87,7 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Ana işlevi ve değişkenleri tanımlama  
 
-Aşağıdaki kod ana işlevi bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. Aşağıdaki genel bitiş noktasını veya kaynağınız için Azure portalında görüntülenen [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) bitiş noktasını kullanabilirsiniz.
+Aşağıdaki kod Main işlevini bildirir ve gerekli değişkenleri atar. Uç noktasının geçerli olduğunu doğrulayın ve `token` değerini Azure hesabınızdan geçerli bir abonelik anahtarı ile değiştirin. Aşağıdaki genel uç noktayı veya kaynak için Azure portal görüntülenmiş [özel alt etki alanı](../../cognitive-services/cognitive-services-custom-subdomains.md) uç noktasını kullanabilirsiniz.
 
 ```go
 func main() {
@@ -106,9 +106,9 @@ func main() {
 }
 ```
 
-## <a name="query-and-header"></a>Sorgu ve üstbilgi
+## <a name="query-and-header"></a>Sorgu ve üst bilgi
 
-Sorgu dizesini ekleyin ve anahtar üstbilgisini erişin
+Sorgu dizesini ve erişim anahtarı üst bilgisini ekleyin
 
 ```go
 // Add the query to the request.  
@@ -121,9 +121,9 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 ```
 
-## <a name="get-request"></a>İstek alma
+## <a name="get-request"></a>İsteği al
 
-İstemciyi oluşturun ve Get isteğini gönderin. 
+İstemcisini oluşturun ve get isteğini gönderin. 
 
 ```go
 // Instantiate a client.  
@@ -137,9 +137,9 @@ if err != nil {
 
 ```
 
-## <a name="send-the-request"></a>İsteği gönderme
+## <a name="send-the-request"></a>İsteği gönder
 
-İstek gönder ve sonuçları `ioutil`kullanarak okuyun.
+Kullanarak `ioutil`isteği gönderin ve sonuçları okuyun.
 
 ```go
 resp, err := client.Do(req)
@@ -160,7 +160,7 @@ if err != nil {
 
 ## <a name="handle-the-response"></a>Yanıtı işleme
 
-İşlev, `Unmarshall` Haber Arama API'sı tarafından döndürülen JSON metninden bilgileri ayıklar.  Sonra `go-spew` güzel yazıcıyı kullanarak sonuçlardan düğümleri görüntüleyebilirsiniz.
+`Unmarshall` İşlevi, haber arama API tarafından döndürülen JSON metnindeki bilgileri ayıklar.  Ardından, sonuçları `go-spew` düzgün yazıcı kullanarak sonuçlardan görüntüleyebilirsiniz.
 
 ```go
 // Create a new answer object 
@@ -181,7 +181,7 @@ spew.Dump(result.Name, result.URL)
 
 ## <a name="results"></a>Sonuçlar
 
-Sonuçlar, her sonucun adını ve URL'sini içerir.
+Sonuçlar her sonucun adını ve URL 'sini içerir.
 
 ```
 (string) (len=91) "Cognitive Services Market: Global Industry Analysis and Opportunity Assessment, 2019 - 2025"
@@ -206,4 +206,4 @@ Sonuçlar, her sonucun adını ve URL'sini içerir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bing Haber Arama nedir](search-the-web.md)
+> [Bing Haber Arama nedir?](search-the-web.md)

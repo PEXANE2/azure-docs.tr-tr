@@ -1,86 +1,86 @@
 ---
-title: Uzaktan İşleme Oturumları
-description: Uzaktan İşleme oturumunun ne olduğunu açıklar
+title: Remote Rendering Oturumları
+description: Uzaktan Işleme oturumunun ne olduğunu açıklar
 author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: 91a59e1398bf5e68799ad16a20dfb824904edc8a
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681694"
 ---
-# <a name="remote-rendering-sessions"></a>Uzaktan İşleme Oturumları
+# <a name="remote-rendering-sessions"></a>Remote Rendering Oturumları
 
-Azure Uzaktan İşleme 'de (ARR) *oturum* önemli bir kavramdır. Bu makalede, bir oturumun tam olarak ne olduğu açıklanmaktadır.
+Azure uzaktan Işleme (ARR) 'de *oturum* , önemli bir kavramdır. Bu makalede, tam olarak bir oturum olduğu açıklanır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Uzaktan İşlem, karmaşık işleme görevlerini buluta boşaltarak çalışır. Çoğu bulut sunucusunda GPU olmadığı için bu işleme görevleri herhangi bir sunucu tarafından yerine getirilememektedir. Söz konusu veri miktarı ve etkileşimli kare hızlarında sonuç üretmenin zor gereksinimi nedeniyle, daha yaygın web trafiği için mümkün olabileceği gibi, kullanıcı isteğinin de başka bir makineye teslim edilemediği sunucunun sorumluluğu.
+Azure uzaktan Işleme, karmaşık işleme görevlerinin buluta yük devrederden işe yarar. Çoğu bulut sunucusunun GPU 'ları olmadığından, bu işleme görevleri yalnızca herhangi bir sunucu tarafından yerine getirilemiyor. Dahil edilen veri miktarı ve etkileşimli çerçeve tarifelerinde sonuçlar üretmenin sabit gereksinimi nedeniyle, daha yaygın web trafiği için mümkün olabilecek şekilde, hangi kullanıcının istek üzerine başka bir makineye de ulaşamadığı bir sorumluluktur.
 
-Bu, Azure Uzaktan İşleme'yi kullandığınızda, gerekli donanım özelliklerine sahip bir bulut sunucusunun yalnızca işleme isteklerinizi işlemek için rezerve edilmesi gerektiği anlamına gelir. *Oturum,* bu sunucuyla etkileşimiçeren her şeyi ifade eder. Bu, kullanımınız için bir makineyi rezerve etmek *(kiralamak)* için ilk istekle başlar, modelleri yüklemek ve işlemek için tüm komutlarla devam eder ve bulut sunucusunda kirayı serbest bırakmakla sona erer.
+Bu, Azure uzaktan Işleme kullandığınızda, gerekli donanım özelliklerine sahip bir bulut sunucusunun yalnızca işleme isteklerinizi işlemek için ayrılmış olması gerekir. Bir *oturum* , bu sunucuyla etkileşime geçen her şeyi ifade eder. Kullanım için bir makineyi ayırma (*kira*) başlangıç isteğiyle başlar, model yükleme ve düzenleme için tüm komutlarla devam eder ve kirayı bulut sunucusuna serbest bırakarak sona erer.
 
 ## <a name="managing-sessions"></a>Oturumları yönetme
 
-Oturumları yönetmenin ve oturumlarla etkileşimkurmanın birden çok yolu vardır. Oturum oluşturmanın, güncelleştirmenin ve kapatmanın dilden bağımsız yolu [oturum yönetimi REST API'dir.](../how-tos/session-rest-api.md) C# ve C++'da bu işlemler `AzureFrontend` sınıflar `AzureSession`ve . Unity uygulamaları için `ARRServiceUnity` bileşen tarafından sağlanan diğer yardımcı program işlevleri vardır.
+Oturumları yönetmek ve bunlarla etkileşim kurmak için birden çok yol vardır. Oturumların oluşturulması, güncelleştirilmesi ve kapatılmasından bağımsız olarak, [oturum yönetimi REST API](../how-tos/session-rest-api.md). C# ve C++ ' da, bu işlemler sınıflar ve `AzureFrontend` `AzureSession`sınıfları aracılığıyla sunulur. Unity uygulamalarında, `ARRServiceUnity` bileşen tarafından sağlanan başka yardımcı program işlevleri de vardır.
 
-Etkin bir oturuma *bağlandıktan* sonra, [modelleri yükleme](models.md) ve sahneyle etkileşim `AzureSession` gibi işlemler sınıf boyunca açığa alınır.
+Etkin bir oturuma *bağlandıktan* sonra, [model yükleme](models.md) ve sahne ile etkileşim kurma gibi işlemler `AzureSession` sınıfı aracılığıyla sunulur.
 
-### <a name="managing-multiple-sessions-simultaneously"></a>Aynı anda birden çok oturumu yönetme
+### <a name="managing-multiple-sessions-simultaneously"></a>Birden çok oturumu eşzamanlı olarak yönetme
 
-Tek bir cihazdan birden çok oturuma tam *olarak bağlanmak* mümkün değildir. Ancak, tek bir uygulamadan istediğiniz kadar oturum oluşturabilir, gözlemleyebilir ve kapatabilirsiniz. Uygulamanın bir oturuma bağlanması amaçlanmadığı sürece, HoloLens 2 gibi bir cihazda da çalıştırılması gerekmez. Oturumları merkezi bir mekanizma aracılığıyla denetlemek istiyorsanız, böyle bir uygulama için bir kullanım örneği olabilir. Örneğin, birden çok tablet ve HoloLenses oturum açabilirsiniz bir web uygulaması, inşa edebilirsiniz. Ardından uygulama tabletlerde hangi CAD modelinin görüntülenmesi gibi seçenekleri görüntüleyebilir. Bir kullanıcı bir seçim yaparsa, bu bilgiler paylaşılan bir deneyim oluşturmak için tüm HoloLenses'a iletilir.
+Bir cihazdan birden çok oturuma tam olarak *bağlanmak* mümkün değildir. Ancak, tek bir uygulamadan istediğiniz sayıda oturum oluşturabilir, gözlemleyebilirsiniz ve kapatabilirsiniz. Uygulamanın bir oturuma hiçbir zaman bağlanmadığından, her iki durumda da HoloLens 2 gibi bir cihazda çalışması gerekmez. Bu tür bir uygulama için kullanım örneği, bir merkezi mekanizmasıyla oturumları denetlemek istediğinizde olabilir. Örneğin, bir tane birden çok tablette ve Holomerses 'in oturum açabilbileceği bir Web uygulaması oluşturabilir. Daha sonra uygulama, tabletlerdeki, hangi CAD modelinin görüntüleneceği gibi seçenekleri görüntüleyebilir. Bir Kullanıcı bir seçim yaptığında, bu bilgiler paylaşılan bir deneyim oluşturmak için tüm Holomercekler 'e iletilir.
 
 ## <a name="session-phases"></a>Oturum aşamaları
 
-Her oturum birden fazla aşamadan geçer.
+Her oturum birden çok aşamaya gider.
 
 ### <a name="session-startup"></a>Oturum başlatma
 
-[ArR'dan yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, yaptığı ilk şey bir oturumu [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmektir. Bu UUID, oturumla ilgili bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün süreyle devam ettirilir, böylece oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç**olarak bildirilecektir.
+ARR 'nin [Yeni bir oturum oluşturmasını](../how-tos/session-rest-api.md#create-a-session)istediğinizde, ilk şey bir oturum [UUID 'si](https://en.wikipedia.org/wiki/Universally_unique_identifier)döndürmemelidir. Bu UUID, oturum hakkındaki bilgileri sorgulamanızı sağlar. UUID ve oturumla ilgili bazı temel bilgiler 30 gün boyunca kalıcıdır, bu sayede oturum durdurulduktan sonra bile bu bilgileri sorgulayabilirsiniz. Bu noktada, **oturum durumu** **Başlangıç**olarak bildirilir.
 
-Ardından, Azure Uzaktan İşleme, oturumunuzu barındırabilecek bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları rezerve edecektir. Bunun nedeni, bölgeler arasında ağ gecikmesinin iyi bir deneyimi garanti edemeyecek kadar yüksek olmasıdır. İkinci faktör, belirttiğiniz *boyuttır.* Her bölgede, *Standart* veya *Premium* boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyutun tüm sunucuları bölgenizde şu anda kullanılıyorsa, oturum oluşturma başarısız olur. Hata nedeni [sorgulanabilir.](../how-tos/session-rest-api.md#get-sessions-properties)
-
-> [!IMPORTANT]
-> *Standart* VM boyutu talep ederseniz ve yüksek talep nedeniyle istek başarısız olursa, bu *Premium* sunucu istemenin de başarısız olacağı anlamına gelmez. Bu nedenle, sizin için bir seçenekse, *Premium* VM'ye geri dönmeyi deneyebilirsiniz.
-
-Hizmet uygun bir sunucu bulduğunda, uygun sanal makineyi (VM) üzerine kopyalayarak azure uzaktan render ana bilgisayarına dönüştürmesi gerekir. Bu işlem birkaç dakika sürer. Daha sonra VM önyüklenir ve **oturum durumu** **Hazır'a**geçilir.
-
-Bu noktada, sunucu yalnızca girişinizi bekliyor. Bu da hangi hizmet için fatura almak noktasıdır.
-
-### <a name="connecting-to-a-session"></a>Oturuma bağlanma
-
-Oturum *hazır*olduğunda, oturuma *bağlanabilirsiniz.* Aygıt bağlıyken modelleri yüklemek ve değiştirmek için komutlar gönderebilir. Her ARR ana bilgisayar aynı anda yalnızca bir istemci aygıtı na hizmet eder, bu nedenle bir istemci oturuma bağlandığında, işlenen içerik üzerinde özel denetime sahiptir. Bu aynı zamanda, render performansının denetiminiz dışındaki nedenlerle asla değişmeyeceği anlamına gelir.
+Ardından, Azure uzaktan Işleme oturumunuzu barındırabileceğinizi bir sunucu bulmaya çalışır. Bu arama için iki parametre vardır. İlk olarak, yalnızca [bölgenizdeki](../reference/regions.md)sunucuları ayıracaktır. Bunun nedeni, bölgeler arasında ağ gecikmesi, bir deneyim sağlamak için çok yüksek olabilir. İkinci faktör, belirlediğiniz istenen *boyutdır* . Her bölgede, *Standart* veya *Premium* boyut isteğini yerine getirebilecek sınırlı sayıda sunucu vardır. Sonuç olarak, istenen boyuttaki tüm sunucular Şu anda bölgenizde kullanılıyorsa, oturum oluşturma başarısız olur. Hatanın nedeni [sorgulanamaz](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Bir oturuma yalnızca bir istemci *bağlanabilse* de, geçerli durumları gibi oturumlar hakkındaki temel bilgiler bağlanmadan sorgulanabilir.
+> *Standart* bir VM boyutu istemeniz durumunda istek yüksek talebe göre başarısız olursa, bir *Premium* sunucu isteğinde bulunulmasının da başarısız olduğunu göstermez. Bu, sizin için bir seçenek ise, bir *Premium* sanal makineye geri düşmenize deneyebilirsiniz.
 
-Bir aygıt oturuma bağlıyken, diğer aygıtların bağlanma girişimleri başarısız olur. Ancak, bağlı aygıt bağlantıyı kestiğinde, gönüllü olarak veya bir tür hata nedeniyle oturum başka bir bağlantı isteğini kabul eder. Önceki tüm durum (yüklenen modeller ve benzeri) bir sonraki bağlantı aygıtıtemiz bir sayfa alır gibi atılır. Böylece oturumlar farklı aygıtlar tarafından birçok kez yeniden kullanılabilir ve çoğu durumda son kullanıcıdan oturum başlangıç yükü gizlemek mümkün olabilir.
+Hizmet uygun bir sunucu bulduğunda, bir Azure uzaktan Işleme konağına dönüştürmek için doğru sanal makineyi (VM) üzerine kopyalamanız gerekir. Bu işlem birkaç dakika sürer. Daha sonra VM 'nin önyüklendi ve **oturum durumu** , **Ready**olarak geçiş yapar.
+
+Bu noktada, sunucu özel olarak girişinizi bekliyor. Bu ayrıca hizmet için faturalandırılırsınız.
+
+### <a name="connecting-to-a-session"></a>Bir oturuma bağlanma
+
+Oturum *hazırlanıyor*, buna *bağlanabilirsiniz* . Bağlantı sırasında cihaz, modelleri yüklemek ve değiştirmek için komut gönderebilir. Her ARR ana bilgisayarı tek seferde yalnızca bir istemci cihaza hizmet veriyorsa, bir istemci bir oturuma bağlandığında, işlenmiş içerik üzerinde özel denetim sahibi olur. Bu Ayrıca, işleme performansının denetiminizin dışındaki nedenlerle hiçbir değişiklik olmayacağı anlamına gelir.
 
 > [!IMPORTANT]
-> Uzak sunucu, istemci tarafındaki verilerin durumunu hiçbir zaman değiştirmez. Tüm veri mutasyonları (dönüşüm güncelleştirmeleri ve yükleme istekleri gibi) istemci uygulaması tarafından gerçekleştirilmelidir. Tüm eylemler istemci durumunu hemen güncelleştirin.
+> Bir oturuma yalnızca bir istemci *bağlanabilse* de, oturumları hakkındaki temel bilgiler (örneğin, geçerli durumları) bağlanmadan sorgulanamaz.
+
+Bir cihaz bir oturuma bağlıyken, diğer cihazların bağlanmasına yönelik girişimler başarısız olur. Ancak, bağlı cihazın bağlantısı kesildiğinde, gönüllü olarak veya bazı hata türleri nedeniyle, oturum başka bir bağlantı isteği kabul eder. Önceki tüm durum (yüklenen modeller ve bu gibi) atılır ve bir sonraki bağlantı aygıtı temiz bir tablet alır. Böylece oturumlar, farklı cihazlara göre birçok kez yeniden kullanılabilir ve çoğu durumda son kullanıcıdan oturum başlatma yükünü gizlemek mümkün olabilir.
+
+> [!IMPORTANT]
+> Uzak sunucu, istemci tarafı verilerinin durumunu hiçbir şekilde değiştirmez. Tüm veri (dönüştürme güncelleştirmeleri ve yükleme istekleri gibi) istemci uygulama tarafından gerçekleştirilmelidir. Tüm eylemler istemci durumunu hemen güncelleştirir.
 
 ### <a name="session-end"></a>Oturum sonu
 
-Yeni bir oturum isteğinde, genellikle bir ila sekiz saat aralığında *maksimum kira süresi*belirtirsiniz. Bu, ev sahibinin girişinizi kabul edeceği süredir.
+Yeni bir oturum istediğinizde, genellikle bir ile sekiz saat aralığında bir *maksimum kira süresi*belirtirsiniz. Bu, konağın girişinizi kabul edeceği süredir.
 
-Bir oturumun sona ermesinin iki düzenli nedeni vardır. Oturumun el ile durdurulmasını istersiniz veya maksimum kira süresi nin dolmasını istersiniz. Her iki durumda da, ana bilgisayara herhangi bir etkin bağlantı hemen kapatılır ve hizmet bu sunucuda kapatılır. Sunucu daha sonra Azure havuzuna geri verilir ve başka amaçlarla talep edilebilir. Oturumu durdurma geri alınamaz veya iptal edilemez. Oturumun durdurulduğu **oturumda** sorgulanması, el ile kapatılıp kapatılmadığına veya maksimum kira süresine ulaşıldığından bağlı olarak **Durduruldu** veya **Süresi Doldu**döndürülecektir.
+Bir oturumun bitmesi için iki normal neden vardır. Oturumu durdurulacak veya en fazla kira süresinin sona ereceğini el ile istemeniz gerekir. Her iki durumda da, ana bilgisayara etkin olan bağlantı hemen kapatılır ve hizmet bu sunucuda kapatılır. Sunucu daha sonra Azure havuzuna geri verilir ve diğer amaçlar için bir talep alabilir. Bir oturumun durdurulması geri alınamaz veya iptal edilemez. Durdurulmuş bir oturumdaki oturum **durumunun** sorgulanması, el ile kapatılıp kapatılmadığına veya en fazla kira süresine ulaşılmasına bağlı olarak **durdurulmuş** veya **süresi sona ermeden**döndürülür.
 
-Bir oturum da bazı hata nedeniyle durdurulabilir.
+Bir oturum, bazı hatalar nedeniyle durdurulmuş de olabilir.
 
-Her durumda, bir oturum durdurulduğunda daha fazla faturalandırılmazsınız.
+Her durumda, bir oturum durdurulduğunda daha fazla faturalandırılmaz.
 
 > [!WARNING]
-> Bir oturuma bağlanıp bağlanmadığınız ve ne kadar süreyle faturalandırmayı etkilemez. Hizmet için ödediğiniz ödeme, *oturum süresine*bağlıdır , bu da sunucunun yalnızca sizin için ayrılmış olduğu süre ve istenen donanım özellikleri (VM boyutu) anlamına gelir. Bir oturum alar, beş dakika bağlanın ve sonra oturumu durdurmazsa, kira süresi dolana kadar çalışmaya devam ederse, tam oturum kiralama süresi için faturalandırılırsınız. Tersine, *maksimum kira süresi* çoğunlukla bir güvenlik ağıdır. Sekiz saatlik kira süresine sahip bir oturum isteyip istemediğiniz önemli değildir, daha sonra oturumu el ile durdurursanız yalnızca beş dakika kullanın.
+> Bir oturuma bağlanıp, ne kadar süreyle faturalandırmayı etkilemediği. Hizmetin ödedikleriniz, *oturum süresine*bağlıdır, bu da bir sunucunun sizin için özel olarak ayırdığı zaman ve istenen donanım ÖZELLIKLERI (VM boyutu) anlamına gelir. Bir oturum başlatırsanız, beş dakikaya bağlanıp oturumu durdurmayın, böylece kira süresi dolana kadar çalışmaya devam eder, tam oturum kiralama süresi için faturalandırılırsınız. Buna karşılık, *en fazla kiralama süresi* genellikle bir güvenlik ağı olur. Sekiz saatlik bir kira süresi ile oturum isteyip istemenizden bağımsız olarak, oturumu daha sonra el ile durdurursanız beş dakika boyunca kullanın.
 
-#### <a name="extend-a-sessions-lease-time"></a>Oturumun kiralama süresini uzatma
+#### <a name="extend-a-sessions-lease-time"></a>Bir oturumun kira süresini genişletme
 
-Etkin bir [oturumun kira süresini,](../how-tos/session-rest-api.md#update-a-session) daha uzun süre ihtiyacınız olduğu ortaya çıkarsa uzatabilirsiniz.
+Etkin bir oturumun kira süresini, daha uzun bir süre sonra da ihtiyacınız olduğunu [uzatabilir](../how-tos/session-rest-api.md#update-a-session) .
 
 ## <a name="example-code"></a>Örnek kod
 
-Aşağıdaki kod, bir oturumu başlatma, *hazır* durumu bekleme, bağlanma ve ardından bağlantıyı kesme ve yeniden kapatma gibi basit bir uygulama gösterir.
+Aşağıdaki kod, bir oturum başlatma, *hazırlık* durumunu bekleme, bağlanma ve sonra yeniden bağlantı kesme ve kapatma gibi basit bir uygulama gösterir.
 
 ``` cs
 RemoteRenderingInitialization init = new RemoteRenderingInitialization();
@@ -136,13 +136,13 @@ await session.StopAsync().AsTask();
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-Birden `AzureFrontend` `AzureSession` çok ve örnek, koddan tutulabilir, işlenebilir ve sorgulanabilir. Ancak aynı anda yalnızca `AzureSession` tek bir aygıt bağlanabilir.
+Birden `AzureFrontend` çok `AzureSession` ve örnek, koddan korunabilir, değiştirilebilir ve sorgulanabilir. Ancak tek `AzureSession` seferde yalnızca bir cihaz bağlanabilir.
 
-Sanal bir makinenin ömrü `AzureFrontend` örne veya `AzureSession` örne bağlı değildir. `AzureSession.StopAsync`oturumu durdurmak için çağrılmalıdır.
+Bir sanal makinenin ömrü `AzureFrontend` örneğe veya `AzureSession` örneğe bağlı değildir. `AzureSession.StopAsync`bir oturumu durdurmak için çağrılmalıdır.
 
-Kalıcı oturum kimliği üzerinden `AzureSession.SessionUUID()` sorgulanabilir ve yerel olarak önbelleğe alınabilir. Bu kimlikle, bir `AzureFrontend.OpenSession` uygulama bu oturuma bağlanmayı arayabilir.
+Kalıcı oturum KIMLIĞI ile yerel olarak sorgulanabilir `AzureSession.SessionUUID()` ve yerel olarak önbelleğe alınabilir. Bu KIMLIKLE, bir uygulama bu oturuma bağlamak `AzureFrontend.OpenSession` için çağrı yapabilir.
 
-Doğru `AzureSession.IsConnected` olduğunda, `AzureSession.Actions` [modelleri yüklemek,](models.md) [varlıkları](entities.md)işlemek ve işlenen sahne hakkında [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren `RemoteManager`bir örneği döndürür.
+True `AzureSession.IsConnected` olduğunda, [model yükleme](models.md), [varlıkları](entities.md)işleme `RemoteManager`ve işlenmiş sahneye ilişkin [sorgu bilgilerini](../overview/features/spatial-queries.md) içeren öğesinin bir örneğini `AzureSession.Actions` döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

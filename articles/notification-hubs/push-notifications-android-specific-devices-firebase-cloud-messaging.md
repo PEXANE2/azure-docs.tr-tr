@@ -1,6 +1,6 @@
 ---
-title: Azure Bildirim Hub'ları ve Google Firebase Bulut Mesajlaşmasını kullanarak belirli cihazlara anında iletme bildirimleri gönderme | Microsoft Dokümanlar
-description: Azure Bildirim Hub'ları ve Google Firebase Bulut Mesajlaşma (FCM) kullanarak belirli Android cihazlara bildirim leri iletmek için Bildirim Hub'larını nasıl kullanacağınızı öğrenin.
+title: Azure Notification Hubs ve Google Firebase Cloud Messaging kullanarak belirli cihazlara anında iletme bildirimleri gönderin | Microsoft Docs
+description: Azure Notification Hubs ve Google Firebase Cloud Messaging (FCM) kullanarak belirli Android cihazlara bildirim göndermek için Notification Hubs nasıl kullanacağınızı öğrenin.
 services: notification-hubs
 documentationcenter: android
 author: sethmanheim
@@ -18,13 +18,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/30/2019
 ms.openlocfilehash: b7ee3afc2e8b9958a868c8c117262d2017c9b600
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80126869"
 ---
-# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Öğretici: Bildirim Hub'ları ve Google Firebase Bulut Mesajlaşmasını kullanarak belirli cihazlara bildirim gönderme
+# <a name="tutorial-send-notifications-to-specific-devices-using-notification-hubs-and-google-firebase-cloud-messaging"></a>Öğretici: Notification Hubs ve Google Firebase Cloud Messaging kullanarak belirli cihazlara bildirimler gönderme
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -38,19 +38,19 @@ Bu öğreticide, aşağıdaki eylemleri gerçekleştireceksiniz:
 
 > [!div class="checklist"]
 > * Mobil uygulamaya kategori seçimi ekleme.
-> * Etiketlerle yapılan bildirimler için kayıtlı.
+> * Etiketlerle bildirimler için kaydedilir.
 > * Etiketli bildirimler gönderme.
 > * Uygulamayı test edin
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici, [Öğretici: Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaşma'yı kullanarak Android cihazlara bildirimleri iletme](notification-hubs-android-push-notification-google-fcm-get-started.md)uygulamasında oluşturulur. Bu öğreticiyi başlatmadan [önce, Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaşma'yı kullanarak Android cihazlarına bildirimleri](notification-hubs-android-push-notification-google-fcm-get-started.md)iletin.
+Bu öğretici, [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri aracılığıyla](notification-hubs-android-push-notification-google-fcm-get-started.md)oluşturduğunuz uygulamayı oluşturur. Bu öğreticiye başlamadan önce [öğretici: Azure Notification Hubs ve Firebase Cloud Messaging kullanarak Android cihazlarına anında iletme bildirimleri gönderin](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="add-category-selection-to-the-app"></a>Uygulamaya kategori seçimi ekleme
 
 İlk adım, mevcut ana etkinliğinize kullanıcının kaydolunacak kategorileri seçmesini sağlayan UI öğeleri eklemektir. Bir kullanıcı tarafından seçilen kategoriler cihazda depolanır. Uygulama başlatıldığında, etiketler olarak seçilen kategorilerle bildirim hub’ınızda bir cihaz kaydı oluşturulur.
 
-1. 'yi `res/layout/activity_main.xml file`açın ve içeriği aşağıdakilerle değiştirin:
+1. `res/layout/activity_main.xml file`Öğesini açın ve içeriği aşağıdaki ile değiştirin:
 
     ```xml
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -103,7 +103,7 @@ Bu öğretici, [Öğretici: Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaş
             />
     </LinearLayout>
     ```
-2. Dosyayı `res/values/strings.xml` açın ve aşağıdaki satırları ekleyin:
+2. `res/values/strings.xml` Dosyasını açın ve aşağıdaki satırları ekleyin:
 
     ```xml
     <string name="button_subscribe">Subscribe</string>
@@ -115,10 +115,10 @@ Bu öğretici, [Öğretici: Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaş
     <string name="label_sports">Sports</string>
     ```
 
-    Grafik `main_activity.xml` düzeniniz aşağıdaki resimde gibi görünmelidir:
+    `main_activity.xml` Grafik düzeniniz aşağıdaki görüntüde şöyle görünmelidir:
 
     ![][A1]
-3. Sınıfınızla `MainActivity` `Notifications` aynı pakette bir sınıf oluşturun.
+3. Sınıfınız ile aynı `Notifications` pakette bir sınıf oluşturun. `MainActivity`
 
     ```java
     import java.util.HashSet;
@@ -204,12 +204,12 @@ Bu öğretici, [Öğretici: Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaş
     ```
 
     Bu sınıf, bu cihazın alması gereken haber kategorilerini depolamak için yerel depolamayı kullanır. Ayrıca, bu kategoriler için kaydolma yöntemlerini içerir.
-4. Sınıfınızda, `MainActivity` için `Notifications`bir alan ekleyin:
+4. Sınıfınıza `MainActivity` için `Notifications`bir alan ekleyin:
 
     ```java
     private Notifications notifications;
     ```
-5. Ardından, `onCreate` aşağıdaki kodda gösterildiği gibi yöntemi güncelleştirin. Bildirimler sınıfının **subscribeToCategories** yönteminde Bildirim **Hub'larına** kaydolursunuz. 
+5. Ardından, aşağıdaki kodda `onCreate` gösterildiği gibi yöntemini güncelleştirin. **Bildirim** sınıfının **subscribeToCategories** yönteminde Notification Hubs kayıt yaptırın. 
 
     ```java
     @Override
@@ -267,7 +267,7 @@ Bu öğretici, [Öğretici: Azure Bildirim Hub'ları ve Firebase Bulut Mesajlaş
     }
     ```
 
-    Bu yöntem, bir kategoriler listesi `Notifications` oluşturur ve listeyi yerel depolama alanında depolamak ve ilgili etiketleri bildirim merkezinize kaydetmek için sınıfı kullanır. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
+    Bu yöntem, kategorilerin bir listesini oluşturur ve bu `Notifications` sınıfı kullanarak listeyi yerel depoda depolar ve Bildirim Hub 'ınızla ilgili etiketleri kaydeder. Kategoriler değiştirildiğinde kayıt yeni kategorilerle yeniden oluşturulur.
 
 Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanında depolayabilir ve kullanıcının kategori seçimini her değiştirmesinde bildirim hub’ına kaydolabilir.
 
@@ -275,7 +275,7 @@ Uygulamalarınız artık bir kategori kümesini cihazdaki yerel depolama alanın
 
 Bu adımlar, yerel depolama alanında depolanan kategorileri kullanarak başlatma sırasında bildirim hub’ına kaydolur.
 
-1. Aşağıdaki kodun `onCreate` `MainActivity` sınıftaki yöntemin sonunda olduğunu doğrulayın:
+1. Aşağıdaki kodun, `onCreate` `MainActivity` sınıfındaki yönteminin sonunda olduğunu doğrulayın:
 
     ```java
     notifications.subscribeToCategories(notifications.retrieveCategories());

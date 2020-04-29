@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure portalı & SSMS kullanarak veri yükleme'
-description: Tutorial, WideWorldImportersDW veri ambarını küresel bir Azure blob'undan Azure Synapse Analytics SQL havuzuna yüklemek için Azure portalı ve SQL Server Management Studio'yu kullanır.
+title: 'Öğretici: Azure portal & SSMS kullanarak veri yükleme'
+description: Öğretici Azure portal ve SQL Server Management Studio kullanarak genel bir Azure blobundan bir Azure SYNAPSE Analytics SQL havuzuna WideWorldImportersDW veri ambarını yükler.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, synapse-analytics
 ms.openlocfilehash: 16263a23c978e3486ff7c5d9281117f850cb885c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744369"
 ---
-# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Öğretici: Verileri Azure Synapse Analytics SQL havuzuna yükleyin
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Öğretici: Azure SYNAPSE Analytics SQL havuzuna veri yükleme
 
-Bu öğretici, WideWorldImportersDW veri ambarını Azure Blob depolamadan Azure Synapse Analytics SQL havuzundaki veri ambarınıza yüklemek için PolyBase'i kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
+Bu öğretici, Azure Blob depolama alanındaki WideWorldImportersDW veri ambarını Azure SYNAPSE Analytics SQL havuzundaki veri ambarınıza yüklemek için PolyBase 'i kullanır. Öğreticide aşağıdaki işlemler için [Azure Portal](https://portal.azure.com) ve [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılır:
 
 > [!div class="checklist"]
 >
-> * Azure portalında SQL havuzunu kullanarak veri ambarı oluşturma
+> * Azure portal SQL havuzunu kullanarak bir veri ambarı oluşturma
 > * Azure portalında sunucu düzeyinde güvenlik duvarı kuralı ayarlama
-> * SSMS ile SQL havuzuna bağlanın
+> * SSMS ile SQL havuzuna bağlanma
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturma
 > * Veri kaynağı olarak Azure blob kullanan dış tablolar oluşturma
 > * Verileri veri ambarınıza yüklemek için CTAS T-SQL deyimini kullanma
@@ -34,7 +34,7 @@ Bu öğretici, WideWorldImportersDW veri ambarını Azure Blob depolamadan Azure
 > * Tarih boyutu ve satış bilgi tablolarında bir yıllık veri oluşturma
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturma
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -42,82 +42,82 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>SQL havuzunda boş veri ambarı oluşturma
 
-Tanımlı bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle bir SQL havuzu oluşturulur. SQL havuzu, Bir [Azure kaynak grubunda](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve [Azure SQL mantıksal sunucusunda](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)oluşturulur.
+Bir SQL havuzu tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. SQL havuzu, bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve BIR [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-features.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)içinde oluşturulur.
 
-Boş bir SQL havuzu oluşturmak için aşağıdaki adımları izleyin.
+Boş bir SQL havuzu oluşturmak için bu adımları izleyin.
 
-1. Azure portalında **kaynak oluştur'u** seçin.
+1. Azure portal **kaynak oluştur** ' u seçin.
 
-1. **Yeni** sayfadan **Veritabanları'nı** seçin ve **Yeni** sayfada **Öne Çıkanlar** altında Azure **Synapse Analytics'i** seçin.
+1. **Yeni** sayfadan **veritabanları** ' nı seçin ve **Yeni** sayfada **öne çıkan** **Azure SYNAPSE Analytics** ' i seçin.
 
-    ![SQL havuzu oluşturma](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![SQL Havuzu Oluştur](./media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-1. **Proje Ayrıntıları** bölümünü aşağıdaki bilgilerle doldurun:
+1. **Proje ayrıntıları** bölümünü aşağıdaki bilgilerle doldurun:
 
    | Ayar | Örnek | Açıklama |
    | ------- | --------------- | ----------- |
    | **Abonelik** | Aboneliğiniz  | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
-1. **SQL havuz ayrıntıları**altında, SQL havuzu için bir ad sağlayın. Ardından, açılır yerden varolan bir sunucuyu seçin veya yeni bir sunucu oluşturmak için **Sunucu** ayarlarının altında **yeni oluştur'u** seçin. Formu aşağıdaki bilgilerle doldurun:
+1. **SQL havuzu ayrıntıları**' nın altında, SQL havuzunuz için bir ad sağlayın. Sonra, açılan listeden mevcut bir sunucuyu seçin ya da **sunucu** ayarları altında **Yeni oluştur** ' u seçerek yeni bir sunucu oluşturun. Formu aşağıdaki bilgilerle doldurun:
 
     | Ayar | Önerilen değer | Açıklama |
     | ------- | --------------- | ----------- |
-    |**SQL havuz adı**|SampleDW| Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
+    |**SQL havuzu adı**|SampleDW| Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Sunucu adı** | Genel olarak benzersiz bir ad | Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-    | **Sunucu admin giriş** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+    | **Sunucu Yöneticisi oturum açma** | Geçerli bir ad | Geçerli oturum açma adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
     | **Parola** | Geçerli bir parola | Parolanızda en az 8 karakter bulunmalı ve parolanız şu üç kategoriden karakterler içermelidir: büyük harf karakterler, küçük harf karakterler, sayılar ve alfasayısal olmayan karakterler. |
     | **Konum** | Geçerli bir konum | Bölgeler hakkında bilgi için bkz. [Azure Bölgeleri](https://azure.microsoft.com/regions/). |
 
     ![veritabanı oluşturma](./media/load-data-wideworldimportersdw/create-database-server.png)
 
-1. **Performans düzeyini seçin.** Kaydırıcı varsayılan olarak **DW1000c**olarak ayarlanır. İstenilen performans ölçeğini seçmek için kaydırıcıyı yukarı ve aşağı taşıyın.
+1. **Performans düzeyini seçin**. Kaydırıcı varsayılan olarak **DW1000c**olarak ayarlanır. İstediğiniz performans ölçeğini seçmek için kaydırıcıyı yukarı ve aşağı taşıyın.
 
     ![veritabanı oluşturma](./media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-1. Ek **Ayarlar** sayfasında, **Varolan Verileri Kullan'ı** Yok olarak ayarlayın ve SQL_Latin1_General_CP1_CI_AS varsayılan olarak **Collation'ı** *SQL_Latin1_General_CP1_CI_AS*bırakın.
+1. **Ek ayarlar** sayfasında, **mevcut verileri kullan** ' ı yok olarak ayarlayın ve **harmanlamayı** varsayılan *SQL_Latin1_General_CP1_CI_AS*olarak bırakın.
 
-1. Ayarlarınızı gözden geçirmek için **Gözden Geçir + oluştur'u** seçin ve ardından veri ambarınızı oluşturmak için **Oluştur'u** seçin. Devam eden **dağıtım** sayfasını **Bildirimler** menüsünden açarak ilerlemenizi izleyebilirsiniz.
+1. Ayarlarınızı gözden geçirmek için **gözden geçir + oluştur** ' u seçin ve ardından **Oluştur** ' u seçerek veri Ambarınızı oluşturun. **Bildirimler** menüsünden **dağıtım sürüyor** sayfasını açarak ilerlemenizi izleyebilirsiniz.
 
      ![bildirim](./media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
-Azure Synapse Analytics hizmeti, sunucu düzeyinde harici uygulamaların ve araçların sunucuya veya sunucudaki veritabanlarına bağlanmasını engelleyen bir güvenlik duvarı oluşturur. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz.  İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmak için bu adımları izleyin.
+Azure SYNAPSE Analytics hizmeti, dış uygulamaların ve araçların sunucuya veya sunucudaki herhangi bir veritabanına bağlanmasını engelleyen sunucu düzeyinde bir güvenlik duvarı oluşturur. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz.  İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmak için bu adımları izleyin.
 
 > [!NOTE]
-> Azure Synapse Analytics SQL havuzu 1433 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
+> Azure SYNAPSE Analytics SQL havuzu 1433 bağlantı noktası üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
 >
 
 1. Dağıtım tamamlandıktan sonra, gezinti menüsündeki arama kutusunda havuz adınızı arayın ve SQL havuzu kaynağını seçin. Sunucu adını seçin.
 
-    ![kaynağınıza gidin](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
+    ![kaynağınızın adresine gidin](./media/load-data-wideworldimportersdw/search-for-sql-pool.png)
 
 1. Sunucu adını seçin.
     ![sunucu adı](././media/load-data-wideworldimportersdw/find-server-name.png)
 
-1. **Güvenlik duvarı ayarlarını göster'i**seçin. SQL havuz sunucusu için **Güvenlik Duvarı ayarları** sayfası açılır.
+1. **Güvenlik Duvarı ayarlarını göster**' i seçin. SQL havuzu sunucusu için **güvenlik duvarı ayarları** sayfası açılır.
 
     ![sunucu ayarları](./media/load-data-wideworldimportersdw/server-settings.png)
 
-1. Güvenlik **Duvarları ve sanal ağlar** sayfasında, geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için **istemci IP** ekle'yi seçin. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
+1. **Güvenlik duvarları ve sanal ağlar** sayfasında, geçerli IP adresinizi yeni bir güvenlik duvarı kuralına eklemek için **Istemci IP 'si Ekle** ' yi seçin. Güvenlik duvarı kuralı, 1433 numaralı bağlantı noktasını tek bir IP adresi veya bir IP adresi aralığı için açabilir.
 
     ![sunucu güvenlik duvarı kuralı](./media/load-data-wideworldimportersdw/server-firewall-rule.png)
 
-1. **Kaydet'i**seçin. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
+1. **Kaydet**’i seçin. Geçerli IP adresiniz için mantıksal sunucuda 1433 numaralı bağlantı noktası açılarak sunucu düzeyinde güvenlik duvarı kuralı oluşturulur.
 
-Artık istemci IP adresinizi kullanarak SQL sunucusuna bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz serveradmin hesabını kullanın.  
+Artık istemci IP adresinizi kullanarak SQL Server 'a bağlanabilirsiniz. Bağlantı SQL Server Management Studio’dan veya seçtiğiniz diğer bir araçtan çalışır. Bağlandığınızda, daha önce oluşturduğunuz serveradmin hesabını kullanın.  
 
 > [!IMPORTANT]
 > Varsayılan olarak, SQL Veritabanı güvenlik duvarı üzerinden erişim tüm Azure hizmetleri için etkindir. Tüm Azure hizmetleri için güvenlik duvarını kapatmak üzere bu sayfada **KAPALI**’ya ve ardından **Kaydet**’e tıklayın.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Tam sunucu adını alma
 
-Tam nitelikli sunucu adı sunucuya bağlanmak için kullanılan şeydir. Azure portalındaki SQL havuz kaynağınıza gidin ve **Sunucu adı**altında tam nitelikli adı görüntüleyin.
+Tam sunucu adı, sunucuya bağlanmak için kullanılan şeydir. Azure portal SQL havuz kaynağınız ' ne gidin ve **sunucu adı**' nın altındaki tam adı görüntüleyin.
 
 ![sunucu adı](././media/load-data-wideworldimportersdw/find-server-name.png)
 
@@ -132,7 +132,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | Ayar      | Önerilen değer | Açıklama |
     | ------------ | --------------- | ----------- |
     | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
-    | Sunucu adı | Tam sunucu adı | Örneğin, **sqlpoolservername.database.windows.net** tam nitelikli bir sunucu adıdır. |
+    | Sunucu adı | Tam sunucu adı | Örneğin, **sqlpoolservername.Database.Windows.net** tam sunucu adıdır. |
     | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum Aç | Sunucu yöneticisi hesabı | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
@@ -141,13 +141,13 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
 
 3. **Bağlan**'a tıklayın. SSMS’te Nesne Gezgini penceresi açılır.
 
-4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından **Sistem veritabanları**'nı ve **asıl** öğesini genişleterek asıl veritabanındaki nesneleri görüntüleyin.  Yeni veritabanınızdaki nesneleri görüntülemek için **SampleDW'yi** genişletin.
+4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından **Sistem veritabanları**'nı ve **asıl** öğesini genişleterek asıl veritabanındaki nesneleri görüntüleyin.  Yeni veritabanınızdaki nesneleri görüntülemek için **Sampledw** ' ı genişletin.
 
     ![veritabanı nesneleri](./media/load-data-wideworldimportersdw/connected.png)
 
 ## <a name="create-a-user-for-loading-data"></a>Verileri yüklemek için kullanıcı oluşturma
 
-Sunucu yöneticisi hesabı yönetim işlemlerini gerçekleştirmeye yöneliktir ve kullanıcı verileri üzerinde sorgu çalıştırmaya uygun değildir. Verileri yükleme, yoğun bellek kullanan bir işlemdir. Bellek maksimumları, kullandığınız SQL havuzu nun oluşturmasına, [veri ambarı birimlerine](what-is-a-data-warehouse-unit-dwu-cdwu.md)ve [kaynak sınıfına](resource-classes-for-workload-management.md)göre tanımlanır.
+Sunucu yöneticisi hesabı yönetim işlemlerini gerçekleştirmeye yöneliktir ve kullanıcı verileri üzerinde sorgu çalıştırmaya uygun değildir. Verileri yükleme, yoğun bellek kullanan bir işlemdir. Bellek üst sınırları, kullanmakta olduğunuz SQL havuzunun oluşturulmasına, [veri ambarı birimlerine](what-is-a-data-warehouse-unit-dwu-cdwu.md)ve [kaynak sınıfına](resource-classes-for-workload-management.md)göre tanımlanır.
 
 En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi oluşturmaktır. Ardından yükleme kullanıcısını uygun bir bellek ayırma üst sınırına olanak tanıyan bir [kaynak sınıfına](resource-classes-for-workload-management.md) ekleyin.
 
@@ -170,7 +170,7 @@ En iyisi verileri yüklemeye ayrılmış bir oturum açma ve kullanıcı bilgisi
 
     ![Örnek veri ambarında yeni sorgu](./media/load-data-wideworldimportersdw/create-loading-user.png)
 
-5. Aşağıdaki T-SQL komutlarını girerek LoaderRC60 oturum açma bilgisi için LoaderRC60 adlı bir veritabanı kullanıcısı oluşturun. İkinci satır, yeni kullanıcıya yeni veri ambarı üzerinde DENETİM izinleri verir.  Bu izinler, kullanıcıyı veritabanı sahibi yapmaya benzer. Üçüncü satır, kaynak `staticrc60` [sınıfının](resource-classes-for-workload-management.md)bir üyesi olarak yeni kullanıcıekler.
+5. Aşağıdaki T-SQL komutlarını girerek LoaderRC60 oturum açma bilgisi için LoaderRC60 adlı bir veritabanı kullanıcısı oluşturun. İkinci satır, yeni kullanıcıya yeni veri ambarı üzerinde DENETİM izinleri verir.  Bu izinler, kullanıcıyı veritabanı sahibi yapmaya benzer. Üçüncü satır, yeni kullanıcıyı `staticrc60` [kaynak sınıfının](resource-classes-for-workload-management.md)bir üyesi olarak ekler.
 
     ```sql
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
@@ -198,9 +198,9 @@ Verileri yüklemenin ilk adımı LoaderRC60 olarak oturum açmaktır.
 
 ## <a name="create-external-tables-and-objects"></a>Dış tablolar ve nesneler oluşturma
 
-Verileri yeni veri ambarınıza yükleme işlemine başlamaya hazırsınız. İleriye dönük başvuru için, verilerinizi Azure Blob depolama alanına nasıl alacağınızı veya doğrudan kaynağınızdan SQL havuzuna nasıl yükleyerinizi öğrenmek için [yüklemeye genel bakış'a](design-elt-data-loading.md)bakın.
+Verileri yeni veri ambarınıza yükleme işlemine başlamaya hazırsınız. Daha sonra başvurmak üzere verilerinizi Azure Blob depolama alanına alma veya doğrudan kaynağınızdan SQL havuzuna yükleme hakkında bilgi edinmek için bkz. [yüklemeye genel bakış](design-elt-data-loading.md).
 
-Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hakkındaki bilgileri belirtin. Bu bilgiler verilerin konumu, verilerdeki içeriğin biçimi ve verilerin tablo tanımıdır. Veriler, genel bir Azure Blob'da bulunur.
+Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hakkındaki bilgileri belirtin. Bu bilgiler verilerin konumu, verilerdeki içeriğin biçimi ve verilerin tablo tanımıdır. Veriler küresel bir Azure Blob 'Unda bulunur.
 
 1. Önceki bölümde veri ambarınızda LoaderRC60 olarak oturum açmıştınız. SSMS'de, LoaderRC60 bağlantınızın altında **SampleDW** seçeneğine sağ tıklayın ve **Yeni Sorgu**'yu seçin.  Yeni bir sorgu penceresi görüntülenir.
 
@@ -214,7 +214,7 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     CREATE MASTER KEY;
     ```
 
-4. Aşağıdaki [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini çalıştırarak Azure blobunun konumunu tanımlayın. Bu, dünya çapında dış ithalatçılar verilerinin konumudur.  Sorgu penceresine eklediğiniz komutları çalıştırmak için, çalıştırmak istediğiniz komutları vurgulayın ve **Yürüt**'e tıklayın.
+4. Aşağıdaki [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini çalıştırarak Azure blobunun konumunu tanımlayın. Bu, dünya çapındaki dışarıdan içe aktarmalar verilerinin konumudur.  Sorgu penceresine eklediğiniz komutları çalıştırmak için, çalıştırmak istediğiniz komutları vurgulayın ve **Yürüt**'e tıklayın.
 
     ```sql
     CREATE EXTERNAL DATA SOURCE WWIStorage
@@ -248,7 +248,7 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     CREATE SCHEMA wwi;
     ```
 
-7. Harici tabloları oluşturun. Tablo tanımları veritabanında depolanır, ancak tablolar Azure blob depolama sında depolanan verilere başvurur. Aşağıdaki T-SQL komutlarını çalıştırarak, tamamı dış veri kaynağında daha önce tanımladığımız Azure blobunu işaret eden birçok dış tablo oluşturun.
+7. Harici tabloları oluşturun. Tablo tanımları veritabanında depolanır, ancak tablolar Azure Blob depolamada depolanan verilere başvurur. Aşağıdaki T-SQL komutlarını çalıştırarak, tamamı dış veri kaynağında daha önce tanımladığımız Azure blobunu işaret eden birçok dış tablo oluşturun.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -523,20 +523,20 @@ Aşağıdaki SQL betiklerini çalıştırarak yüklemek istediğiniz veriler hak
     );
     ```
 
-8. Object Explorer'da, oluşturduğunuz dış tabloların listesini görmek için SampleDW'yi genişletin.
+8. Nesne Gezgini, oluşturduğunuz dış tabloların listesini görmek için Örnekledw ' ı genişletin.
 
     ![Dış tabloları görüntüleme](./media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-sql-pool"></a>Verileri SQL havuzuna yükleme
+## <a name="load-the-data-into-sql-pool"></a>Verileri SQL Pool 'a yükleme
 
-Bu bölümde, örnek verileri Azure Blob'dan SQL havuzuna yüklemek için tanımladığınız dış tablolar kullanılır.  
+Bu bölüm, Azure Blobundan SQL havuzuna örnek verileri yüklemek için tanımladığınız dış tabloları kullanır.  
 
 > [!NOTE]
 > Bu öğretici verileri doğrudan son tabloya yükler. Üretim ortamında, genellikle CREATE TABLE AS SELECT kullanarak bir hazırlama tablosuna yüklersiniz. Veriler hazırlama tablosundayken tüm gerekli dönüştürmeleri yapabilirsiniz. Hazırlama tablosundaki verileri üretim tablosuna eklemek için, INSERT...SELECT deyimini kullanabilirsiniz. Daha fazla bilgi için kz. [Üretim tablosuna veri ekleme](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 
-Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimi harici bir tablodan seçim yaptığında, veriler veri ambarındaki ilişkisel tabloya aktarılır.
+Verileri Azure Depolama Blobu'ndan veri ambarınızdaki yeni tablolara yüklemek için, betikte [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi kullanılır. CTAS bir SELECT deyiminin sonuçlarına göre yeni tablo oluşturur. Yeni tablo, select deyiminin sonuçları ile aynı sütunlara ve veri türlerine sahiptir. Select deyimleri bir dış tablodan seçim yaparken, veriler veri ambarındaki ilişkisel bir tabloya aktarılır.
 
-Bu komut dosyası, wwi.dimension_Date ve wwi.fact_Sale tablolarına veri yüklemez. Bu tablolar, boyutlandırılabilir satır sayısı içermesi için daha sonraki bir adımda oluşturulur.
+Bu betik, wwi. dimension_Date ve wwi. fact_Sale tablolarına veri yüklemez. Bu tablolar, boyutlandırılabilir satır sayısı içermesi için daha sonraki bir adımda oluşturulur.
 
 1. Aşağıdaki betiği çalıştırarak verileri veri ambarınızdaki yeni tablolara yükleyin.
 
@@ -685,7 +685,7 @@ Bu komut dosyası, wwi.dimension_Date ve wwi.fact_Sale tablolarına veri yüklem
     ;
     ```
 
-2. Verilerinizi yüklenirken görüntüleyin. Birkaç GB veri yüklüyor ve yüksek performanslı kümelenmiş sütun deposu dizinlerine sıkıştırıyorsunuz. SampleDW üzerinde yeni bir sorgu penceresi açın ve aşağıdaki sorguyu çalıştırarak yüklemenin durumunu gösterin. Sorguyu başladıktan sonra, SQL havuzu biraz ağır kaldırma yaparken bir kahve ve atıştırmalık alın.
+2. Verilerinizi yüklenirken görüntüleyin. Birkaç GB veri yüklüyorsunuz ve yüksek performanslı columnstore dizinlerine sıkıştırıyorsunuz. SampleDW üzerinde yeni bir sorgu penceresi açın ve aşağıdaki sorguyu çalıştırarak yüklemenin durumunu gösterin. Sorguyu başlattıktan sonra, SQL havuzu bazı ağır bir kaldırma yaparken bir kahve ve bir snack alın.
 
     ```sql
     SELECT
@@ -732,7 +732,7 @@ Bu komut dosyası, wwi.dimension_Date ve wwi.fact_Sale tablolarına veri yüklem
 
 ## <a name="create-tables-and-procedures-to-generate-the-date-and-sales-tables"></a>Tarih ve Satış tablolarını oluşturmak için tablolar ve yordamlar oluşturma
 
-Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturur. Ayrıca wwi.dimension_Date ve wwi.fact_Sale tablolarında satır milyonlarca oluşturabilirsiniz depolanmış yordamlar oluşturur.
+Bu bölümde wwi. dimension_Date ve wwi. fact_Sale tabloları oluşturulur. Ayrıca, wwi. dimension_Date ve wwi. fact_Sale tablolarında milyonlarca satır oluşturabilen saklı yordamlar da oluşturur.
 
 1. dimension_Date ve fact_Sale tabloları oluşturun.  
 
@@ -876,7 +876,7 @@ Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturur. Ayrıca 
     END;
     ```
 
-4. Wwi.dimension_Date ve wwi.fact_Sale tablolarını dolduran bu yordamı oluşturun. wwi.dimension_Date tablosunu doldurmak için [wwi].[PopulateDateDimensionForYear] çağrısı yapar.
+4. Wwi. dimension_Date ve wwi. fact_Sale tablolarını dolduran bu yordamı oluşturun. wwi.dimension_Date tablosunu doldurmak için [wwi].[PopulateDateDimensionForYear] çağrısı yapar.
 
     ```sql
     CREATE PROCEDURE [wwi].[Configuration_PopulateLargeSaleTable] @EstimatedRowsPerDay [bigint],@Year [int] AS
@@ -933,7 +933,7 @@ Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturur. Ayrıca 
 
 ## <a name="generate-millions-of-rows"></a>Milyonlarca satır oluşturma
 
-İkinci dünya fact_Sale tablosunda milyonlarca satır ve dimension_Date tablosundaki ilgili verileri oluşturmak için oluşturduğunuz depolanmış yordamları kullanın.
+Wwi. fact_Sale tablosunda milyonlarca satır oluşturmak için oluşturduğunuz saklı yordamları ve wwi. dimension_Date tablosundaki karşılık gelen verileri kullanın.
 
 1. [wwi].[seed_Sale] çekirdeğini daha fazla satırla oluşturmak için bu yordamı çalıştırın.
 
@@ -941,7 +941,7 @@ Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturur. Ayrıca 
     EXEC [wwi].[InitialSalesDataPopulation]
     ```
 
-2. 2000 yılında her gün için günde 100.000 satır ile wwi.fact_Sale doldurmak için bu yordamı çalıştırın.
+2. Wwi. fact_Sale, 2000 yılında her gün için günde 100.000 satır ile doldurmak için bu yordamı çalıştırın.
 
     ```sql
     EXEC [wwi].[Configuration_PopulateLargeSaleTable] 100000, 2000
@@ -961,7 +961,7 @@ Bu bölümde wwi.dimension_Date ve wwi.fact_Sale tabloları oluşturur. Ayrıca 
 
 ## <a name="populate-the-replicated-table-cache"></a>Çoğaltılmış tablo önbelleğini doldurma
 
-SQL havuzu, verileri her İşlem düğümüne önbelleğe alarak bir tabloyu çoğaltır. Tabloya karşı bir sorgu çalıştırıldığında önbellek doldurulur. Bu nedenle, çoğaltılmış bir tablodaki ilk sorgunun önbelleği doldurması ek süre gerektirebilir. Önbellek doldurulduktan sonra çoğaltılmış tablolardaki sorgular daha hızlı çalıştırılır.
+SQL havuzu, verileri her bir Işlem düğümüne önbelleğe alarak bir tabloyu çoğaltır. Tabloya karşı bir sorgu çalıştırıldığında önbellek doldurulur. Bu nedenle, çoğaltılmış bir tablodaki ilk sorgunun önbelleği doldurması ek süre gerektirebilir. Önbellek doldurulduktan sonra çoğaltılmış tablolardaki sorgular daha hızlı çalıştırılır.
 
 İşlem düğümlerindeki çoğaltılmış tablo önbelleğini doldurmak için şu SQL sorgularını çalıştırın.
 
@@ -1083,7 +1083,7 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlemi duraklatarak, yalnızca veri depolama için ücretlendirilir siniz ve verilerle çalışmaya hazır olduğunuzda bilgi işlem için yeniden başlatabilirsiniz. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlemi sürdürmek için **Başlat**’a tıklayın.
+2. Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında, yalnızca veri depolama alanı için ücret alınır ve verilerle çalışmaya her seferinde işlem yapabilirsiniz. İşlemi duraklatmak için, **Duraklat** düğmesine tıklayın. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlemi sürdürmek için **Başlat**’a tıklayın.
 
 3. Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz. İşlem ve depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**’e tıklayın.
 
@@ -1098,16 +1098,16 @@ Bu öğreticide, veri ambarı oluşturmayı ve verileri yüklemek için kullanı
 Şu işlemleri yaptınız:
 > [!div class="checklist"]
 >
-> * Azure portalında SQL havuzunu kullanarak veri ambarı oluşturma
+> * Azure portal SQL havuzunu kullanarak bir veri ambarı oluşturdunuz
 > * Azure portalında sunucu düzeyinde güvenlik duvarı kuralı ayarlama
-> * SSMS ile SQL havuzuna bağlı
+> * SSMS ile SQL havuzuna bağlanıldı
 > * Verileri yüklemek için belirlenen bir kullanıcı oluşturuldu
 > * Azure Depolama Blobu'ndaki veriler için dış tablolar oluşturuldu
 > * Verileri veri ambarınıza yüklemek için CTAS T-SQL deyimi kullanıldı
 > * Yüklendikleri sırada verilerin ilerleme durumu görüntülendi
 > * Yeni yüklenen verilere ilişkin istatistikler oluşturuldu
 
-Varolan bir veritabanını Azure Synapse SQL havuzuna nasıl geçirteceklerini öğrenmek için geliştirme genel görünümüne ilerleyin.
+Mevcut bir veritabanını Azure SYNAPSE SQL Pool 'a geçirmeyi öğrenmek için geliştirmeye genel bakış ' a ilerleyin.
 
 > [!div class="nextstepaction"]
->[Varolan bir veritabanını SQL havuzuna geçirmek için tasarım kararları](sql-data-warehouse-overview-develop.md)
+>[Mevcut bir veritabanını SQL havuzuna geçirmeye yönelik tasarım kararları](sql-data-warehouse-overview-develop.md)

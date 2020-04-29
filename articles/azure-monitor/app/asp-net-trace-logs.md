@@ -1,25 +1,25 @@
 ---
-title: Application Insights'ta .NET izleme günlüklerini keşfedin
+title: Application Insights 'de .NET izleme günlüklerini keşfet
 description: Trace, NLog veya Log4Net tarafından oluşturulan arama günlükleri.
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.openlocfilehash: 273d5a2f4e1155541e159332312bdaa68aa175d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276276"
 ---
-# <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>.NET/.NET Core ve Python izleme günlüklerini Application Insights'da keşfedin
+# <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights 'de .NET/.NET Core ve Python izleme günlüklerini keşfet
 
-ASP.NET/ASP.NET Core uygulamanız için iLogger, NLog, log4Net veya System.Diagnostics.Trace'den [Azure Uygulama Öngörülerine][start]tanılama izleme günlükleri gönderin. Python uygulamaları için, Azure Monitor için OpenCensus Python'da AzureLogHandler kullanarak tanılama izleme günlükleri gönderin. Daha sonra onları keşfedebilir ve arayabilirsiniz. Bu günlükler uygulamanızdaki diğer günlük dosyalarıyla birleştirilir, böylece her kullanıcı isteğiyle ilişkili izleri belirleyebilir ve bunları diğer olaylar ve özel durum raporlarıyla ilişkilendirebilirsiniz.
+ILogger, NLog, log4Net veya System. Diagnostics. Trace 'ten [Azure Application Insights][start]Için ASP.NET/ASP.NET Core uygulamanız için Tanılama izleme günlükleri gönderin. Python uygulamaları için, Azure Izleyici için OpenCensus Python 'da AzureLogHandler kullanarak Tanılama izleme günlükleri gönderin. Daha sonra bunları keşfedebilir ve arayabilirsiniz. Bu Günlükler, uygulamanızdaki diğer günlük dosyalarıyla birleştirilir, böylece her Kullanıcı isteğiyle ilişkili izlemeleri tanımlayabilir ve bunları diğer olaylar ve özel durum raporlarıyla ilişkilendirebilir.
 
 > [!NOTE]
-> Günlük yakalama modülüne mi ihtiyacınız var? Üçüncü taraf loggers için yararlı bir bağdaştırıcı. Ancak NLog, log4Net veya System.Diagnostics.Trace kullanmıyorsanız, doğrudan [**Application Insights TrackTrace()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aramayı düşünün.
+> Günlük yakalama modülüne mi ihtiyacınız var? Bu, üçüncü taraf Günlükçüler için kullanışlı bir bağdaştırıcıdır. Ancak zaten NLog, log4Net veya System. Diagnostics. Trace kullanmıyorsanız, yalnızca [**Application Insights TrackTrace ()**](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) yöntemini doğrudan çağırmayı düşünün.
 >
 >
-## <a name="install-logging-on-your-app"></a>Uygulamanızda günlük yükleme
-Seçtiğiniz günlük çerçevesini projenizde yükleyin, bu da app.config veya web.config'e girişle sonuçlanmalıdır.
+## <a name="install-logging-on-your-app"></a>Uygulamanıza günlük yüklemesi
+Seçtiğiniz günlük çerçevesini projenize yükleyerek App. config veya Web. config dosyasında bir girişin oluşmasına neden olmalıdır.
 
 ```XML
  <configuration>
@@ -33,54 +33,54 @@ Seçtiğiniz günlük çerçevesini projenizde yükleyin, bu da app.config veya 
 </configuration>
 ```
 
-## <a name="configure-application-insights-to-collect-logs"></a>Günlükleri toplamak için Uygulama Öngörülerini Yapılandır
-Henüz [yapmadıysanız, projenize Uygulama Öngörüleri ekleyin.](../../azure-monitor/app/asp-net.md) Günlük toplayıcısını ekleme seçeneği görürsünüz.
+## <a name="configure-application-insights-to-collect-logs"></a>Günlükleri toplamak için Application Insights yapılandırma
+Henüz yapmadıysanız [projenize Application Insights ekleyin](../../azure-monitor/app/asp-net.md) . Günlük toplayıcıyı dahil etmek için bir seçenek göreceksiniz.
 
-Veya **Uygulama Öngörülerini Yapılandırmak**için Solution Explorer'da projenizi sağ tıklatın. İzleme **koleksiyonunu yapılandır** seçeneğini seçin.
+Veya **Application Insights yapılandırmak**için Çözüm Gezgini ' de projenize sağ tıklayın. **İzleme koleksiyonunu Yapılandır** seçeneğini belirleyin.
 
 > [!NOTE]
-> Application Insights menüsü veya günlük toplayıcı seçeneği yok mu? [Sorun Giderme'yi](#troubleshooting)deneyin.
+> Application Insights menü veya günlük Toplayıcı seçeneği yok mu? [Sorun gidermeyi](#troubleshooting)deneyin.
 
 ## <a name="manual-installation"></a>El ile yükleme
-Proje türünüz Application Insights yükleyicisi (örneğin bir Windows masaüstü projesi) tarafından desteklenmiyorsa bu yöntemi kullanın.
+Proje türü Application Insights yükleyicisi (örneğin, bir Windows Masaüstü Projesi) tarafından desteklenmiyorsa bu yöntemi kullanın.
 
-1. log4Net veya NLog kullanmayı planlıyorsanız, projenize yükleyin.
-2. Çözüm Gezgini'nde projenizi sağ tıklatın ve **NuGet Paketlerini Yönet'i**seçin.
-3. "Uygulama Öngörüleri" araması yapın.
+1. Log4Net veya NLog kullanmayı planlıyorsanız, bunu projenize yükleyebilirsiniz.
+2. Çözüm Gezgini, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+3. "Application Insights" araması yapın.
 4. Aşağıdaki paketlerden birini seçin:
 
-   - ILogger için: [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - ILogger için: [Microsoft. Extensions. Logging. ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
-   - NLog için: [Microsoft.ApplicationInsights.NLogTarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - NLog için: [Microsoft. ApplicationInsights. nlogtarget](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
-   - Log4Net için: [Microsoft.ApplicationInsights.Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Log4Net için: [Microsoft. ApplicationInsights. Log4NetAppender](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
-   - System.Diagnostics için: [Microsoft.ApplicationInsights.TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - System. Diagnostics için: [Microsoft. ApplicationInsights. TraceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
-   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft. ApplicationInsights. diagnosticsourcelistener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
-   - [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft. ApplicationInsights. etwcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
 [![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
-   - [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
-[![Nuget](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+   - [Microsoft. ApplicationInsights. eventsourcelistener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-NuGet paketi gerekli derlemeleri yükler ve varsa web.config veya app.config'i değiştirir.
+NuGet paketi gerekli derlemeleri ve varsa Web. config veya App. config ' i değiştirir.
 
 ## <a name="ilogger"></a>ILogger
 
-Konsol uygulamaları ve ASP.NET Core ile Uygulama Öngörüleri ILogger uygulamasını kullanma örnekleri [için ,.NET Core ILogger günlükleri için ApplicationInsightsLoggerProvider](ilogger.md)bölümüne bakın.
+Application Insights Illogger uygulamasının konsol uygulamaları ve ASP.NET Core ile kullanılması örnekleri için bkz. [.NET Core ıllogger Için Applicationınsightsloggerprovider](ilogger.md).
 
-## <a name="insert-diagnostic-log-calls"></a>Tanılama günlüğü çağrıları ekleme
-System.Diagnostics.Trace kullanıyorsanız, tipik bir arama olacaktır:
+## <a name="insert-diagnostic-log-calls"></a>Tanılama günlüğü çağrıları Ekle
+System. Diagnostics. Trace kullanırsanız, tipik bir çağrı şöyle olur:
 
     System.Diagnostics.Trace.TraceWarning("Slow response - database01");
 
-log4net veya NLog'u tercih ederseniz, şunları kullanın:
+Log4net veya NLog tercih ediyorsanız şunu kullanın:
 
     logger.Warn("Slow response - database01");
 
 ## <a name="use-eventsource-events"></a>EventSource olaylarını kullanma
-[System.Diagnostics.Tracing.EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını traceolarak Application Insights'a gönderilecek şekilde yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yükleyin. Ardından `TelemetryModules` [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının bölümünü edin.
+[System. Diagnostics. Tracing. EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EventSourceListener` NuGet paketini yüklemeniz gerekir. Sonra `TelemetryModules` [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının bölümünü düzenleyin.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -91,12 +91,12 @@ log4net veya NLog'u tercih ederseniz, şunları kullanın:
 ```
 
 Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
- * **Ad,** toplanacak EventSource'un adını belirtir.
- * **Düzey** toplamak için günlük düzeyini belirtir: *Kritik*, *Hata*, *Bilgilendirme*, *LogAlways*, *Verbose*, veya *Uyarı*.
- * **Anahtar kelimeler** (isteğe bağlı) kullanılacak anahtar kelime birleşimlerinin gerçek değerini belirtir.
+ * **Name** toplanacak EventSource öğesinin adını belirtir.
+ * **Düzey** toplanacak günlüğe kaydetme düzeyini belirtir: *Critical*, *Error*, *bilgilendirici*, *LogAlways*, *verbose*veya *Warning*.
+ * **Anahtar sözcükler** (isteğe bağlı) kullanılacak anahtar sözcük birleşimlerinin tamsayı değerini belirtir.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource olaylarını kullanma
-[System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) olaylarını traces olarak Uygulama Öngörüleri'ne gönderilecek şekilde yapılandırabilirsiniz. İlk olarak, [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet paketini yükleyin. Daha sonra [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının "Telemetri Modülleri" bölümünü değiştirin.
+[System. Diagnostics. DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, [`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet paketini yüklemeniz gerekir. Sonra [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının "TelemetryModules" bölümünü düzenleyin.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
@@ -106,13 +106,13 @@ Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
     </Add>
 ```
 
-İzlemek istediğiniz her DiagnosticSource için, DiagnosticSource'unuzun adına **Ad** özniteliği ayarlanmış bir giriş ekleyin.
+İzlemek istediğiniz her bir DiagnosticSource için, **Name** özniteliğiyle diagnosticsource adına ayarlanmış bir giriş ekleyin.
 
 ## <a name="use-etw-events"></a>ETW olaylarını kullanma
-Windows için Olay İzleme (ETW) olaylarının Uygulama Öngörüleri'ne iz olarak gönderilmesini yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EtwCollector` NuGet paketini yükleyin. Daha sonra [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının "Telemetri Modülleri" bölümünü değiştirin.
+Windows için olay Izleme (ETW) olaylarını, izleme olarak Application Insights gönderilmek üzere yapılandırabilirsiniz. İlk olarak, `Microsoft.ApplicationInsights.EtwCollector` NuGet paketini yüklemeniz gerekir. Sonra [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) dosyasının "TelemetryModules" bölümünü düzenleyin.
 
 > [!NOTE] 
-> ETW olayları yalnızca SDK'yı barındıran işlem Performans Günlüğü Kullanıcıları veya Yöneticilerinin üyesi bir kimlik altında çalıştığında toplanabilir.
+> ETW olayları yalnızca, SDK 'Yı barındıran işlem, performans günlüğü kullanıcılarının veya yöneticilerinin üyesi olan bir kimlik altında çalışıyorsa toplanabilir.
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule, Microsoft.ApplicationInsights.EtwCollector">
@@ -123,36 +123,36 @@ Windows için Olay İzleme (ETW) olaylarının Uygulama Öngörüleri'ne iz olar
 ```
 
 Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
- * **ProviderName,** toplamak için ETW sağlayıcısının adıdır.
- * **ProviderGuid,** toplamak için ETW sağlayıcısının GUID'ini belirtir. Bunun yerine `ProviderName`kullanılabilir.
- * **Düzey** toplamak için günlük düzeyini ayarlar. Bu *Kritik*olabilir , *Hata*, *Bilgilendirme*, *LogAlways*, *Verbose*, veya *Uyarı*.
- * **Anahtar kelimeler** (isteğe bağlı) kullanılacak anahtar kelime kombinasyonlarının gerçek değerini ayarlar.
+ * **ProviderName** toplanacak ETW sağlayıcısının adıdır.
+ * **ProviderGuid** toplanacak ETW sağlayıcısının GUID değerini belirtir. Yerine kullanılabilir `ProviderName`.
+ * **Düzey** , toplanacak günlüğe kaydetme düzeyini ayarlar. *Kritik*, *hata*, *bilgilendirici*, *LogAlways*, *verbose*veya *Uyarı*olabilir.
+ * **Anahtar sözcükler** (isteğe bağlı) kullanılacak anahtar sözcük birleşimlerinin tamsayı değerini ayarlayın.
 
-## <a name="use-the-trace-api-directly"></a>İzleme API'sini doğrudan kullanma
-Uygulama Öngörüleri izleme API'sini doğrudan arayabilirsiniz. Günlüğe kaydeden bağdaştırıcılar bu API'yi kullanır.
+## <a name="use-the-trace-api-directly"></a>Trace API 'sini doğrudan kullanma
+Application Insights Trace API 'sine doğrudan çağrı yapabilirsiniz. Günlüğe kaydetme bağdaştırıcıları bu API 'YI kullanır.
 
-Örnek:
+Örneğin:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
-TrackTrace'in bir avantajı, iletiye nispeten uzun veriler koyabiliyor olmasıdır. Örneğin, POST verilerini burada kodlayabilirsiniz.
+TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.
 
-İletinize önem düzeyi de ekleyebilirsiniz. Ve diğer telemetriler gibi, farklı izleme kümelerini filtrelemeye veya arama yapmaya yardımcı olmak için özellik değerleri ekleyebilirsiniz. Örnek:
+İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örneğin:
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-Bu, [Arama'da][diagnostic] belirli bir veritabanıyla ilgili belirli bir önem düzeyidüzeyinin tüm iletilerini kolayca filtrelemenizi sağlar.
+Bu, belirli bir veritabanıyla ilgili belirli bir önem derecesindeki tüm iletileri [aramanızı][diagnostic] kolayca filtrelemenizi sağlar.
 
 ## <a name="azureloghandler-for-opencensus-python"></a>OpenCensus Python için AzureLogHandler
-Azure Monitör Günlük İşleyicisi, Python günlüklerini Azure Monitor'a dışa aktarmanızı sağlar.
+Azure Izleyici günlüğü Işleyicisi, Python günlüklerini Azure Izleyici 'ye vermenize olanak tanır.
 
-Azure Monitor için [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md) ile uygulamanızı enstrüman.
+Azure Izleyici için [Opencensus Python SDK 'sını](../../azure-monitor/app/opencensus-python.md) kullanarak uygulamanızı işaretleyin.
 
-Bu örnek, Azure Monitor'a bir uyarı düzeyi günlüğünasıl gönderilenleri gösterir.
+Bu örnek, Azure Izleyici 'ye bir uyarı düzeyi günlüğünün nasıl gönderileceğini gösterir.
 
 ```python
 import logging
@@ -164,50 +164,50 @@ logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=<your-in
 logger.warning('Hello, World!')
 ```
 
-## <a name="explore-your-logs"></a>Günlüklerinizi keşfedin
+## <a name="explore-your-logs"></a>Günlüklerinizi araştırma
 Uygulamanızı hata ayıklama modunda çalıştırın veya canlı olarak dağıtın.
 
-[Uygulama Öngörüleri portalındaki][portal]uygulamanızın genel bakış bölmesinde [Ara'yı][diagnostic]seçin.
+Uygulamanızın genel bakış bölmesinde [Application Insights portalında][portal] [Ara][diagnostic]' yı seçin.
 
-Örneğin şunları yapabilirsiniz:
+Örneğin:
 
-* Günlük izlemelerine veya belirli özelliklere sahip öğelere filtre uygulayın.
+* Günlük izlemelerinde veya belirli özelliklere sahip öğelerde filtre uygulayın.
 * Belirli bir öğeyi ayrıntılı olarak inceleyin.
-* Aynı kullanıcı isteğiyle ilgili diğer sistem günlüğü verilerini bulun (aynı OperationId'ye sahiptir).
+* Aynı kullanıcı isteğiyle ilgili diğer sistem günlüğü verilerini bulun (aynı operationId değerine sahiptir).
 * Bir sayfanın yapılandırmasını sık kullanılan olarak kaydedin.
 
 > [!NOTE]
->Uygulamanız çok fazla veri gönderiyorsa ve 2.0.0-beta3 veya sonraki ASP.NET sürümiçin Application Insights SDK'yı kullanıyorsanız, *uyarlanabilir örnekleme* özelliği çalışabilir ve telemetrinizin yalnızca bir kısmını gönderebilir. [Örnekleme hakkında daha fazla bilgi edinin.](../../azure-monitor/app/sampling.md)
+>Uygulamanız çok miktarda veri gönderirse ve ASP.NET Version 2.0.0-Beta3 veya üzeri için Application Insights SDK kullanıyorsanız, *Uyarlamalı örnekleme* özelliği yalnızca telemetrinizin bir kısmını kullanabilir ve gönderebilir. [Örnekleme hakkında daha fazla bilgi edinin.](../../azure-monitor/app/sampling.md)
 >
 
 ## <a name="troubleshooting"></a>Sorun giderme
-### <a name="how-do-i-do-this-for-java"></a>Bunu Java için nasıl yaparım?
-Java [günlük bağdaştırıcılarını](../../azure-monitor/app/java-trace-logs.md)kullanın.
+### <a name="how-do-i-do-this-for-java"></a>Bunu Java için Nasıl yaparım? misiniz?
+[Java günlük bağdaştırıcılarını](../../azure-monitor/app/java-trace-logs.md)kullanın.
 
-### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Proje bağlamı menüsünde Uygulama Öngörüleri seçeneği yok
-* Geliştirici Analitik Araçları'nın geliştirme makinesine yüklü olduğundan emin olun. Visual Studio **Tools** > **Uzantıları ve Güncellemeleri,** **Geliştirici Analitik Araçları**arayın. **Yüklü** sekmesinde değilse, **Çevrimiçi** sekmesini açın ve yükleyin.
-* Bu, Devloper Analytics Tools'un desteklemediği bir proje türü olabilir. [Manuel yükleme yi](#manual-installation)kullanın.
+### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Proje bağlam menüsünde Application Insights seçeneği yoktur
+* Developer Analytics Tools geliştirme makinesinde yüklü olduğundan emin olun. Visual Studio **araçları** > **uzantıları ve güncelleştirmelerinde**, **Developer Analytics Tools**bakın. **Yüklü** sekmesinde yoksa, **çevrimiçi** sekmesini açın ve yükleme.
+* Bu, devloper Analytics araçlarının desteklemediği bir proje türü olabilir. [El ile yükleme](#manual-installation)kullanın.
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Yapılandırma aracında günlük bağdaştırıcısı seçeneği yok
-* Önce günlük çerçevesini yükleyin.
-* System.Diagnostics.Trace kullanıyorsanız, [ *web.config'de*yapılandırdığınızdan](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)emin olun.
-* Application Insights'ın en son sürümüne sahip olduğundan emin olun. Visual Studio'da **Araçlar** > **Uzantıları ve Güncelleştirmeleri'ne**gidin ve **Güncelleştirmeler** sekmesini açın. **Geliştirici Analitik Araçları** varsa, güncellemek için seçin.
+* Önce günlüğe kaydetme çerçevesini yükler.
+* System. Diagnostics. Trace kullanıyorsanız, [ *Web. config*'de yapılandırdığınızdan](https://msdn.microsoft.com/library/system.diagnostics.eventlogtracelistener.aspx)emin olun.
+* Application Insights en son sürümüne sahip olduğunuzdan emin olun. Visual Studio 'da **Araçlar** > **Uzantılar ve güncelleştirmeler**' e gidin ve **güncelleştirmeler** sekmesini açın. **Developer Analytics Tools** , güncelleştirmek için seçin.
 
-### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"Enstrümantasyon tuşu boş olamaz" hata iletisini alıyorum
-Uygulama Bilgileri'ni yüklemeden günlük bağdaştırıcısı Nuget paketini yüklemiş olabilirsiniz. Solution Explorer'da *ApplicationInsights.config'e*sağ tıklayın ve **Uygulama Öngörülerini Güncelleştir'i**seçin. Azure'da oturum açmanız ve bir Application Insights kaynağı oluşturmanız veya varolan bir kaynağı yeniden kullanmanız istenir. Bu sorunu çözer.
+### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hata iletisini alıyorum
+Büyük olasılıkla Application Insights yüklemeden günlük bağdaştırıcısı NuGet paketini yüklediniz. Çözüm Gezgini, *ApplicationInsights. config dosyasına*sağ tıklayın ve **Application Insights Güncelleştir**' i seçin. Azure 'da oturum açmanız ve bir Application Insights kaynağı oluşturmanız veya var olan bir kaynağın yeniden kullanılması istenir. Bu, sorunu çözmelidir.
 
-### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>İzleri görebiliyorum ama tanıaramadaki diğer olayları göremiyorum
-Tüm olaylar ve istekler için boru hattı üzerinden almak için bir süre alabilir.
+### <a name="i-can-see-traces-but-not-other-events-in-diagnostic-search"></a>İzleme, tanılama aramasında diğer olayları görebiliyorum
+İşlem hattını almak için tüm olaylar ve isteklerin zaman alabilir.
 
-### <a name="how-much-data-is-retained"></a><a name="limits"></a>Ne kadar veri tutulur?
-Çeşitli etkenler, tutulan veri miktarını etkiler. Daha fazla bilgi için, müşteri etkinlik ölçümleri sayfasının [sınırlar](../../azure-monitor/app/api-custom-events-metrics.md#limits) bölümüne bakın.
+### <a name="how-much-data-is-retained"></a><a name="limits"></a>Ne kadar veri tutuluyor?
+Birçok etken, tutulan veri miktarını etkiler. Daha fazla bilgi için, müşteri olay ölçümleri sayfasının [sınırlar](../../azure-monitor/app/api-custom-events-metrics.md#limits) bölümüne bakın.
 
-### <a name="i-dont-see-some-log-entries-that-i-expected"></a>Beklediğim bazı günlük girişlerini görmüyorum
-Uygulamanız hacimli miktarda veri gönderiyorsa ve 2.0.0-beta3 veya sonraki sürümASP.NET için Application Insights SDK'yı kullanıyorsanız, uyarlanabilir örnekleme özelliği çalışabilir ve telemetrinizin yalnızca bir kısmını gönderebilir. [Örnekleme hakkında daha fazla bilgi edinin.](../../azure-monitor/app/sampling.md)
+### <a name="i-dont-see-some-log-entries-that-i-expected"></a>Beklendiğim bazı günlük girdilerini göremiyorum
+Uygulamanız Voluminous miktarda veri gönderiyorsa ve ASP.NET sürümü 2.0.0-Beta3 veya üzeri için Application Insights SDK kullanıyorsanız, uyarlamalı örnekleme özelliği yalnızca telemetrinizin bir kısmını kullanabilir ve gönderebilir. [Örnekleme hakkında daha fazla bilgi edinin.](../../azure-monitor/app/sampling.md)
 
 ## <a name="next-steps"></a><a name="add"></a>Sonraki adımlar
 
-* [ASP.NET hataları ve özel durumları tanılamak][exceptions]
+* [ASP.NET içinde sorunları ve özel durumları tanılama][exceptions]
 * [Arama hakkında daha fazla bilgi edinin][diagnostic]
 * [Kullanılabilirlik ve yanıt verme testlerini ayarlama][availability]
 * [Sorun giderme][qna]

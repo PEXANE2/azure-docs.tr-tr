@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Premium İş Akışı biçimleri ve codec' leri | Microsoft Dokümanlar
-description: Bu konu, Media Encoder Premium İş Akışı Biçimleri formatlarına ve codec'lere genel bir bakış sağlar
+title: Media Encoder Premium Workflow biçimleri ve codec 'leri | Microsoft Docs
+description: Bu konu, Media Encoder Premium Workflow biçimleri biçimleri ve codec bileşenleri için bir genel bakış sağlar
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,50 +15,50 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269763"
 ---
-# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium İş Akışı biçimleri ve codec'leri
+# <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow biçimleri ve codec bileşenleri
 
 > [!NOTE]
-> Media Encoder Premium İş Akışı medya işlemcisi bu konuda tartışılan Çin'de mevcut değildir. 
+> Bu konuda tartışılan Media Encoder Premium Workflow medya işlemcisi Çin 'de bulunmamaktadır. 
 
-Bu belge, **Media Encoder Premium İş Akışı** kodlayıcısının genel önizleme sürümü tarafından desteklenen giriş ve çıktı dosya biçimlerinin ve codec'lerinin bir listesini içerir.
+Bu belge, **Media Encoder Premium Workflow** Kodlayıcısı 'nın genel önizleme sürümü tarafından desteklenen giriş ve çıkış dosyası biçimlerinin ve codec bileşenlerinin bir listesini içerir.
 
-[Media Encoder Premium İş Akışı Giriş Biçimleri ve Codec'ler](#input_formats)
+[Media Encoder Premium Workflow giriş biçimleri ve codec bileşenleri](#input_formats)
 
-Media Encoder Premium İş Akışı Çıktı Biçimleri ve Codec'ler
+Media Encoder Premium Workflow çıkış biçimleri ve codec bileşenleri
 
-**Media Encoder Premium İş Akışı,** [bu](#closed_captioning) bölümde açıklanan kapalı altyazıyı destekler. 
+**Media Encoder Premium Workflow** , [Bu](#closed_captioning) bölümde açıklanan kapalı açıklamalı alt yazıları destekler. 
 
-## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium İş Akışı Giriş Biçimleri ve Codec'ler
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Media Encoder Premium Workflow giriş biçimleri ve codec bileşenleri
 
-Aşağıdaki bölümde, bu ortam işlemcisinin giriş olarak desteklediği kodc'lar ve dosya biçimleri listelenmektedir.
+Aşağıdaki bölümde, bu medya işlemcisinin giriş olarak desteklediği codec bileşenleri ve dosya biçimleri listelenmektedir.
 
 ### <a name="input-containerfile-formats"></a>Giriş Kapsayıcısı/Dosya Biçimleri
 
 * Adobe® Flash® F4V
-* MXF/SMPTE 377M
+* MXF/SMPTE 377D
 * GXF
-* MPEG-2 Ulaşım Akışları
-* MPEG-2 Program Akışları
+* MPEG-2 aktarım akışları
+* MPEG-2 program akışları
 * MPEG-4/MP4
-* Windows Medya/ASF
-* AVI (Sıkıştırılmamış 8bit/10bit)
+* Windows Media/ASF
+* AVI (sıkıştırılmamış 8bit/10bit)
 
 ### <a name="input-video-codecs"></a>Giriş Video Codec Bileşenleri
 
 * AVC 8 bit/10 bit, 4:2:2’ye kadar, AVCIntra dahil
 * Avid DNxHD (MXF biçiminde)
 * DVCPro/DVCProHD (MXF biçiminde)
-* HEVC/H.265, Ana ve Ana 10 Profil
+* HEVC/H. 265, Main ve ana 10 profili
 * JPEG2000
-* MPEG-2 (422'ye kadar Profil ve Yüksek Seviye; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi türevleri dahil)
+* MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
 * MPEG-1
-* Windows Media Video/VC-1
+* Windows Media videosu/VC-1
 
 ### <a name="input-audio-codecs"></a>Giriş Ses Codec Bileşenleri
 
@@ -71,75 +71,75 @@ Aşağıdaki bölümde, bu ortam işlemcisinin giriş olarak desteklediği kodc'
 * Windows Media Ses
 * WAV/PCM
 
-## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium İş Akışı Çıktı Biçimleri ve Codec'ler
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Media Encoder Premium Workflow çıkış biçimleri ve codec bileşenleri
 
-Aşağıdaki bölümde, bu ortam işlemcisinden çıktı olarak desteklenen kodlar ve dosya biçimleri listelenir.
+Aşağıdaki bölümde, bu medya işlemcisinin çıktısı olarak desteklenen codec bileşenleri ve dosya biçimleri listelenmektedir.
 
-### <a name="output-containerfile-formats"></a>Çıktı Kapsayıcısı/Dosya Biçimleri
+### <a name="output-containerfile-formats"></a>Çıkış kapsayıcısı/dosya biçimleri
 
 * Adobe® Flash® F4V
 * MXF (OP1a, XDCAM ve AS02)
 * DPP (AS11 dahil)
 * GXF
 * MPEG-4/MP4
-* Windows Medya/ASF
-* AVI (Sıkıştırılmamış 8bit/10bit)
-* Düzgün Akış Dosya Biçimi (PIFF 1.3)
+* Windows Media/ASF
+* AVI (sıkıştırılmamış 8bit/10bit)
+* Kesintisiz Akış dosya biçimi (pff 1,3)
 * MPEG-TS 
 
-### <a name="output-video-codecs"></a>Çıkış Video Codec'leri
+### <a name="output-video-codecs"></a>Çıkış video codec bileşenleri
 
-* AVC (H.264; 8-bit; yüksek profile kadar, Seviye 5.2; 4K Ultra HD; AVC İçi)
+* AVC (H., 8 bit; en fazla yüksek profile, düzey 5,2; 4K Ultra HD; AVC Içi)
 * Avid DNxHD (MXF biçiminde)
 * DVCPro/DVCProHD (MXF biçiminde)
-* MPEG-2 (422'ye kadar Profil ve Yüksek Seviye; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi türevleri dahil)
+* MPEG-2 (422 profile ve yüksek düzeyine kadar; XDCAM, XDCAM HD, XDCAM IMX, CableLabs® ve D10 gibi çeşitler dahil)
 * MPEG-1
-* Windows Media Video/VC-1
+* Windows Media videosu/VC-1
 * JPEG küçük resim oluşturma
-* HEVC (H.265; 8 bit ve 10 bit, Ana ve Ana 10 Profil)
+* HEVC (H. 265; 8 bit ve 10 bit, ana ve ana 10 profil)
 
 
-### <a name="output-audio-codecs"></a>Çıkış Ses Codecs
+### <a name="output-audio-codecs"></a>Çıkış ses codec bileşenleri
 
 * AES (SMPTE 331M ve 302M, AES3-2003)
 * Dolby® Digital (AC3)
-* Dolby® Digital Plus (E-AC3) 7,1'e kadar
+* Dolby® Digital Plus (E-AC3) 7,1 'e kadar
 * AAC (AAC-LC, AAC-HE ve AAC-HEv2; 5.1’e kadar)
 * MPEG Katman 2
 * MP3 (MPEG-1 Ses Katmanı 3)
 * Windows Media Ses
 
 >[!NOTE]
->Dolby® Digital (AC3) koduyla kodlarsanız, çıktı yalnızca bir ISO MP4 dosyasına yazılabilir.
+>Dolby® Digital (AC3) olarak kodlarsanız, çıkış yalnızca bir ISO MP4 dosyasına yazılabilir.
 
-## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>Kapalı Altyazı Desteği
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>Kapalı açıklamalı altyazı desteği
 
-Yutma üzerine, **Media Encoder Premium İş Akışı** destekler:
+Alma sırasında **Media Encoder Premium Workflow** şunları destekler:
 
 1. SCC dosyaları
 2. SMPTE-TT dosyaları
-3. CEA-608/CEA-708 – kullanıcı verileri olarak (H.264 temel akışları, ATSC/53, SCTE20 SEI mesajları) veya MXF/GXF dosyalarında yardımcı veri olarak taşınır
-4. STL altyazı dosyaları
+3. CEA-CıL/CEA-708 – Kullanıcı verileri (SEı mesajları H. GXF öğesel akışlar, ATSC/53, SCTE20) veya MXF/dosyalarında ek veri olarak taşınan
+4. STL alt başlık dosyaları
 
-Çıktıda aşağıdaki seçenekler mevcuttur:
+Çıkışta aşağıdaki seçenekler kullanılabilir:
 
-1. CEA-608 - CEA-708 çevirisi
-2. CEA-608/CEA-708 geçiş (H.264 temel akışlarının SEI mesajlarına gömülü veya MXF dosyalarında yardımcı veri olarak taşınır)
-3. Scc
-4. SMPTE Zamanlı Metin (KaynakTAN CEA-608 Başına SMPTE RP2052; DFXP dosya oluşturma dahil)
-5. SRT Altyazı dosyası
-6. DVB altyazı akışları
+1. CEA-608-CEA-708 çevirisi
+2. CEA-fer/CEA-708 pass-(SEı iletilerinde H. ısemarya
+3. SCC
+4. SMPTE zaman aşımına uğrayan metin (bkz. kaynak CEA-608/SMPTE RP2052; DFXP dosya oluşturma dahil)
+5. SRT alt başlık dosyası
+6. DVB alt başlık akışları
 
 > [!NOTE]
-> Yukarıdaki çıktı biçimlerinin tümü Azure Medya Hizmetleri'nde akış yoluyla teslim için desteklenmez.
+> Yukarıdaki çıkış biçimlerinin hepsi, Azure Media Services akış aracılığıyla teslim için desteklenmez.
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Giriş videonuz kapalı altyazı içermiyorsa, çıkış Varlığı yine de boş bir TTML dosyası içerir. 
+Giriş videonuz kapalı açıklamalı alt yazı içermiyorsa, çıkış varlığı hala boş bir TTML dosyası içerecektir. 
 
 ## <a name="need-help"></a>Yardıma mı ihtiyacınız var?
 
-[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) yönlendirerek destek bileti açabilirsiniz
+[Yeni destek isteğine](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) giderek bir destek bileti açabilirsiniz
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

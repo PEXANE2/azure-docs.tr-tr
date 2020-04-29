@@ -1,6 +1,6 @@
 ---
-title: Veri Gölü Depolama Gen1'de erişim denetimine genel bakış | Microsoft Dokümanlar
-description: Azure Veri Gölü Depolama Gen1'de erişim denetiminin nasıl çalıştığını anlama
+title: Data Lake Storage 1. | erişim denetimine genel bakış | Microsoft Docs
+description: Erişim denetiminin Azure Data Lake Storage 1. nasıl çalıştığını anlama
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260338"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
 
-Azure Veri Gölü Depolama Gen1, HDFS'den türetilen ve sırayla POSIX erişim kontrol modelinden türeyen bir erişim denetimi modeli uygular. Bu makalede, Veri Gölü Depolama Gen1 için erişim denetimi modelinin temelleri özetlenmiştir. 
+Azure Data Lake Storage 1., bu sırayla, POSIX erişim denetimi modelinden türetilen bir erişim denetimi modeli uygular. Bu makalede Data Lake Storage 1. için erişim denetimi modelinin temelleri özetlenmektedir. 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>Dosyalar ve klasörler üzerindeki erişim denetimi listeleri
 
@@ -49,7 +49,7 @@ Dosya sistemi nesnesi üzerinde **Okuma**, **Yazma** ve **Yürütme** izinleri b
 |------------|-------------|----------|
 | **Okuma (R)** | Bir dosyanın içeriğini okuyabilir | Klasörün içeriğini listelemek için **Okuma** ve **Yürütme** izinlerini gerektirir|
 | **Yazma (W)** | Bir dosyaya yazabilir veya ekleyebilir | Bir klasörde alt öğeler oluşturmak için **Yazma** ve **Yürütme** gerektirir |
-| **Yürütme (X)** | Veri Gölü Depolama Gen1 bağlamında bir şey ifade etmez | Bir klasörün alt öğelerini geçirmek için gereklidir |
+| **Yürütme (X)** | Data Lake Storage 1. bağlamında hiçbir şey anlamına gelmez | Bir klasörün alt öğelerini geçirmek için gereklidir |
 
 ### <a name="short-forms-for-permissions"></a>İzinlerin kısaltmaları
 
@@ -65,20 +65,20 @@ Dosya sistemi nesnesi üzerinde **Okuma**, **Yazma** ve **Yürütme** izinleri b
 
 ### <a name="permissions-do-not-inherit"></a>İzinler devralınmaz
 
-Veri Gölü Depolama Gen1 tarafından kullanılan POSIX stili modelinde, bir öğenin izinleri maddenin kendisinde depolanır. Diğer bir deyişle, bir öğenin izinleri üst öğelerinden devralınamaz.
+Data Lake Storage 1. tarafından kullanılan POSIX stili modelde bir öğe için izinler öğenin kendisinde depolanır. Diğer bir deyişle, bir öğenin izinleri üst öğelerinden devralınamaz.
 
 ## <a name="common-scenarios-related-to-permissions"></a>İzinlerle ilgili yaygın senaryolar
 
-Aşağıda, bir Veri Gölü Depolama Gen1 hesabında belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak yaygın senaryolar verilmiştir.
+Aşağıda, Data Lake Storage 1. hesapta belirli işlemleri gerçekleştirmek için hangi izinlerin gerekli olduğunu anlamanıza yardımcı olacak bazı yaygın senaryolar verilmiştir.
 
-| İşlem | Nesne              |    /      | Seattle/   | Portland/   | Data.txt       |
+| İşlem | Nesne              |    /      | Ağına   | Portland   | Data. txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
-| Okuma      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Ek | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
-| Sil    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
-| Oluşturma    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Okuma      | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Sonuna ekle | Data. txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Sil    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Oluştur    | Data. txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Liste      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
-| Liste      | /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Liste      | Ağına           |   `--X`   |   `R-X`    |  `---`      | `---`          |
 | Liste      | /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
@@ -98,17 +98,17 @@ Her dosya ve klasör bu kimlikler için farklı izinlere sahiptir:
 * Adlandırılmış gruplar
 * Diğer tüm kullanıcılar
 
-Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) kimlikleridir. Bu nedenle, aksi belirtilmedikçe, Veri Gölü Depolama Gen1 bağlamında bir "kullanıcı", bir Azure REKLAM kullanıcısı veya Azure AD güvenlik grubu anlamına gelebilir.
+Kullanıcıların ve grupların kimlikleri, Azure Active Directory (Azure AD) kimlikleridir. Aksi belirtilmedikçe, Data Lake Storage 1. bağlamında bir "Kullanıcı", bir Azure AD kullanıcısı veya bir Azure AD güvenlik grubu anlamına gelebilir.
 
 ### <a name="the-super-user"></a>Süper kullanıcı
 
-Bir süper kullanıcı, Veri Gölü Depolama Gen1 hesabındaki tüm kullanıcıların en fazla hakkına sahiptir. Süper kullanıcı:
+Bir süper kullanıcı Data Lake Storage 1. hesabındaki tüm kullanıcıların en fazla haklarına sahiptir. Süper kullanıcı:
 
 * **Tüm** dosya ve klasörlerde RWX İzinlerine sahiptir.
 * Herhangi bir dosya veya klasörün izinlerini değiştirebilir.
 * Herhangi bir dosya veya klasörün sahibi olan kullanıcıyı ya da grubu değiştirebilir.
 
-Veri Gölü Depolama Gen1 hesabının **Sahipleri** rolünün bir parçası olan tüm kullanıcılar otomatik olarak bir süper kullanıcıdır.
+Bir Data Lake Storage 1. hesabı için **sahip** rolünün parçası olan tüm kullanıcılar otomatik olarak bir süper kullanıcılardır.
 
 ### <a name="the-owning-user"></a>Sahip olan kullanıcı
 
@@ -128,14 +128,14 @@ Veri Gölü Depolama Gen1 hesabının **Sahipleri** rolünün bir parçası olan
 
 POSIX ACL’lerinde her kullanıcı bir "birincil grup" ile ilişkilendirilir. Örneğin, "gamze" adlı kullanıcı "finans" grubuna ait olabilir. Gamze ayrıca birden fazla gruba ait olabilir, ancak bir grup her zaman birincil grubu olarak atanır. POSIX’te Gamze bir dosya oluşturduğunda o dosyanın sahibi olan grup birincil grubu olarak ayarlanır (bu örnekte "finans" grubudur). Aksi takdirde sahip olan grup, diğer kullanıcılar/gruplar için atanan izinlere benzer şekilde davranır.
 
-Veri Gölü Depolama Gen1'deki kullanıcılarla ilişkili bir "birincil grup" olmadığından, sahip olan grup aşağıdaki gibi atanır.
+Data Lake Storage 1. olan kullanıcılarla ilişkili bir "birincil grup" olmadığından, sahip olan grup aşağıda gösterildiği gibi atanır.
 
-**Yeni bir dosya veya klasör için sahip olma grubunu atama**
+**Yeni bir dosya veya klasör için sahip olan grup atanıyor**
 
-* **Olay 1**: Kök klasör "/". Bu klasör, Bir Veri Gölü Depolama Gen1 hesabı oluşturulduğunda oluşturulur. Bu durumda, sahip olan grup tamamen sıfır GUID olarak ayarlanır.  Bu değer herhangi bir erişime izin vermez.  Bu süre bir grup atanana kadar bir yer tutucudur.
+* **Olay 1**: Kök klasör "/". Bu klasör Data Lake Storage 1. bir hesap oluşturulduğunda oluşturulur. Bu durumda sahip olan Grup, hepsi sıfır GUID 'sine ayarlanır.  Bu değer herhangi bir erişime izin vermez.  Bu, bir grup atanıncaya kadar bir yer tutucudur.
 * **Olay 2** (Diğer her olay): Yeni bir olay oluşturulduğunda sahip olan grup üst klasörden kopyalanır.
 
-**Sahip grubuna sahip olmak**
+**Sahip olan grubu değiştirme**
 
 Sahip olan grup aşağıdakiler tarafından değiştirilebilir:
 * Herhangi bir süper kullanıcı.
@@ -144,12 +144,12 @@ Sahip olan grup aşağıdakiler tarafından değiştirilebilir:
 > [!NOTE]
 > Sahip olan grup, bir dosya veya klasörün ACL’lerini *değiştiremez*.
 >
-> Eylül 2018 tarihinde veya öncesinde oluşturulan hesaplar için, sahip olan grup, yukarıdaki **Durumda 1'in**kök klasörü durumunda hesabı oluşturan kullanıcıya ayarlanmıştı.  Tek bir kullanıcı hesabı, sahip olan grup üzerinden izin sağlamak için geçerli değildir, bu nedenle bu varsayılan ayar tarafından izin verilmez. Bu izni geçerli bir kullanıcı grubuna atayabilirsiniz.
+> 2018 Eylül tarihinde veya daha önce oluşturulan hesaplar için, sahip olan Grup, yukarıdaki **1. durum**için kök klasör olması durumunda hesabı oluşturan kullanıcıya ayarlanmıştır.  Tek bir kullanıcı hesabı, sahip olan grup aracılığıyla izin sağlamak için geçerli değildir, bu nedenle bu varsayılan ayar tarafından izin verilmez. Bu izni, geçerli bir kullanıcı grubuna atayabilirsiniz.
 
 
 ## <a name="access-check-algorithm"></a>Erişim denetimi algoritması
 
-Aşağıdaki pseudocode, Veri Gölü Depolama Gen1 hesapları için erişim denetimi algoritmasını temsil eder.
+Aşağıdaki sözde kod Data Lake Storage 1. hesapları için erişim denetimi algoritmasını temsil eder.
 
 ```
 def access_check( user, desired_perms, path ) : 
@@ -194,16 +194,16 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="the-mask"></a>Maske
 
-Erişim Denetimi Algoritması'nda gösterildiği gibi, maske **adlandırılmış kullanıcılar**, **sahip olan grup**ve **adlandırılmış grupların**erişimini sınırlar.  
+Erişim denetimi algoritmasında gösterildiği gibi, maske **adlandırılmış kullanıcılar**, **sahip olan grup**ve **adlandırılmış gruplar**için erişimi sınırlandırır.  
 
 > [!NOTE]
-> Yeni bir Veri Gölü Depolama Gen1 hesabı için, kök klasörünün Access ACL 'sinin ("/") maskesi RWX varsayılandır.
+> Yeni bir Data Lake Storage 1. hesabı için kök klasörün ("/") erişim ACL 'SI için maske varsayılan olarak RWX 'tir.
 >
 >
 
 ### <a name="the-sticky-bit"></a>Yapışkan bit
 
-Yapışkan bit POSIX dosya sisteminin daha gelişmiş bir özelliğidir. Veri Gölü Depolama Gen1 bağlamında, yapışkan bit gerekli olması olası değildir. Özetle, yapışkan bit bir klasörde etkinleştirilmişse, alt öğe yalnızca alt öğenin sahibi kullanıcısı tarafından silinebilir veya yeniden adlandırılabilir.
+Yapışkan bit POSIX dosya sisteminin daha gelişmiş bir özelliğidir. Data Lake Storage 1. bağlamında, yapışkan bitin gerekli olacağı pek olası bir olasılıktır. Özet ' te, yapışkan bit bir klasörde etkinse, alt öğe yalnızca alt öğenin sahibi olan kullanıcı tarafından silinebilir veya yeniden adlandırılabilir.
 
 Yapışkan bit Azure portalında gösterilmez.
 
@@ -216,19 +216,19 @@ Var olan bir klasör altında yeni bir dosya ya da klasör oluşturulduğunda ü
 
 ### <a name="umask"></a>umask
 
-Bir dosya veya klasör oluştururken, umask alt öğeüzerinde varsayılan ALA'ların nasıl ayarlanır değiştirin. umask, **kullanıcıya**sahip olmak , **grup sahibi**olmak için RWX değeri içeren ana klasörlerdeki 9 bitlik bir değerdir ve **diğer**.
+Bir dosya veya klasör oluştururken, varsayılan ACL 'Lerin alt öğede nasıl ayarlandığını değiştirmek için umask kullanılır. umask, **sahip olan Kullanıcı**, **sahip olan grup**ve **diğer**için RWX değeri içeren üst klasörlerdeki 9 bitlik bir değerdir.
 
-Azure Veri Gölü Depolama Gen1 için umask 007 olarak ayarlanmış sabit bir değerdir. Bu değer,
+Azure Data Lake Storage 1. için umask, 007 olarak ayarlanan sabit bir değerdir. Bu değer şunu yapar
 
 | umask bileşeni     | Sayısal biçim | Kısa biçim | Anlamı |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   `---`      | Kullanıcısahibi olmak için, üst öğenin Varsayılan ACL'sini çocuğun Access ACL'sine kopyalayın | 
-| umask.owning_group  |    0         |   `---`      | Sahip grubu için, üst öğenin Varsayılan ACL'sini çocuğun Access ACL'sine kopyalayın | 
-| umask.other         |    7         |   `RWX`      | Diğer olarak, çocuğun Access ACL'sindeki tüm izinleri kaldırın |
+| umask. owning_user   |    0         |   `---`      | Sahip olan kullanıcı için, üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| umask. owning_group  |    0         |   `---`      | Sahip olan grup için üst öğenin varsayılan ACL 'sini alt öğenin erişim ACL 'sine kopyalayın | 
+| uımask. other         |    7         |   `RWX`      | Diğer bir deyişle, alt öğenin erişim ACL 'sindeki tüm izinleri kaldırın |
 
-Azure Veri Gölü Depolama Gen1 tarafından kullanılan umask değeri, Varsayılan ACL'nin gösterdiğine bakılmaksızın, diğer değerin varsayılan olarak yeni çocuklara asla aktarılamayacağı anlamına gelir. 
+Azure Data Lake Storage 1. tarafından kullanılan umask değeri, varsayılan ACL 'nin gösterdiği değerden bağımsız olarak, diğer alt klasörlerde hiçbir şekilde varsayılan olarak iletilmediği anlamına gelir. 
 
-Aşağıdaki pseudocode, bir alt öğe için AK'lar oluşturulurken umask'ın nasıl uygulandığını gösterir.
+Aşağıdaki sözde kod, bir alt öğe için ACL 'Ler oluştururken umask 'in nasıl uygulanacağını gösterir.
 
 ```
 def set_default_acls_for_new_child(parent, child):
@@ -246,11 +246,11 @@ def set_default_acls_for_new_child(parent, child):
         child_acls.add( new_entry )
 ```
 
-## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1'deki Aç'lar hakkında sık sorulan sorular
+## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Data Lake Storage 1. ACL 'Lerle ilgili genel sorular
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL desteğini etkinleştirmem gerekiyor mu?
 
-Hayır. ACD'ler üzerinden erişim denetimi, veri gölü depolama gen1 hesabı için her zaman açıktır.
+Hayır. Data Lake Storage 1. bir hesap için ACL 'Ler aracılığıyla erişim denetimi her zaman açıktır.
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>Bir klasörü ve içindekileri yinelemeli olarak silmek için hangi izinler gereklidir?
 
@@ -282,14 +282,14 @@ ACL’lerdeki girişler, Azure AD’de kullanıcılara karşılık gelen GUID’
 
 Kullanıcı artık Azure AD’de mevcut değilse bir GUID gösterilir. Bu genellikle, kullanıcı şirketten ayrıldığında veya Azure AD’de kullanıcının hesabı silindiğinde gerçekleşir.
 
-### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage Gen1 ACD'lerin devrini destekliyor mu?
+### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Data Lake Storage 1. ACL 'Leri devralmayı destekliyor mu?
 
 Hayır, ancak üst klasör altında yeni oluşturulan alt dosyalara ve klasöre yönelik ACL’yi ayarlamak için Varsayılan ACL’ler kullanılabilir.  
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX erişim denetimi modeli hakkında daha fazla bilgiyi nereden bulabilirim?
 
 * [Linux üzerinde POSIX Erişim Denetim Listeleri](https://www.linux.com/news/posix-acls-linux)
-* [HDFS izin kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+* [Bir izin Kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 * [POSIX SSS](https://www.opengroup.org/austin/papers/posix_faq.html)
 * [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
@@ -299,4 +299,4 @@ Hayır, ancak üst klasör altında yeni oluşturulan alt dosyalara ve klasöre 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Veri Gölü Depolama Gen1'e Genel Bakış](data-lake-store-overview.md)
+* [Azure Data Lake Storage 1. genel bakış](data-lake-store-overview.md)

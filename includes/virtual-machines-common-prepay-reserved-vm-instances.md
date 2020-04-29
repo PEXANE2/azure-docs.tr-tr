@@ -5,26 +5,26 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/27/2020
 ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371662"
 ---
-Azure rezerve edilmiş bir VM örneğine bağlandığınızda paradan tasarruf edebilirsiniz. Rezervasyon indirimi, rezervasyon kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için sanal bir makineye rezervasyon atamanız gerekmez. Ayrılmış bir örnek satın alma işlemi, VM kullanımınızın yalnızca bilgi işlem kısmını kapsar. Windows VM'ler için kullanım ölçer iki ayrı metreye bölünür. Linux metre ile aynı bir işlem ölçer ve Windows IP sayacı var. Satın alma işlemi yaparken gördüğünüz ücretler yalnızca işlem maliyetleri içindir. Ücretlere Windows yazılım maliyetleri dahil değildir. Yazılım maliyetleri hakkında daha fazla bilgi için Azure [Ayrılmış VM Örneklerine dahil olmayan Yazılım maliyetlerine](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)bakın.
+Bir Azure ayrılmış VM örneğine kaydetme yaptığınızda para tasarrufu yapabilirsiniz. Ayırma indirimi, ayırma kapsamı ve öznitelikleriyle eşleşen çalışan sanal makine sayısına otomatik olarak uygulanır. İndirimleri almak için bir sanal makineye bir ayırma atamanız gerekmez. Ayrılmış örnek satın alma yalnızca VM kullanımınızın işlem parçasını içerir. Windows VM 'Leri için kullanım ölçümü iki ayrı ölçü olarak bölünür. Linux ölçümü ve Windows IP ölçümü ile aynı olan bir işlem ölçümü vardır. Satın almayı yaparken gördüğünüz ücretler yalnızca işlem maliyetlerine yöneliktir. Ücretler Windows Yazılım maliyetlerini içermez. Yazılım maliyetleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örneklerine yazılım maliyetleri dahil değildir](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Satın almadan önce doğru VM boyutunu belirleme
 
-Rezervasyon satın almadan önce, ihtiyacınız olan VM'nin boyutunu belirlemeniz gerekir. Aşağıdaki bölümler, doğru VM boyutunu belirlemenize yardımcı olur.
+Bir ayırma satın almadan önce, ihtiyacınız olan sanal makinenin boyutunu belirlemeniz gerekir. Aşağıdaki bölümler, doğru VM boyutunu belirlemenize yardımcı olur.
 
-### <a name="use-reservation-recommendations"></a>Rezervasyon önerilerini kullanma
+### <a name="use-reservation-recommendations"></a>Ayırma önerilerini kullanma
 
-Satın almanız gereken rezervasyonları belirlemeye yardımcı olmak için rezervasyon önerilerini kullanabilirsiniz.
+Satın almanız gereken rezervasyonları belirlemede yardımcı olması için rezervasyon önerilerini kullanabilirsiniz.
 
-- Azure portalında VM rezerve edilmiş bir örnek satın aldığınızda satın alma önerileri ve önerilen miktar gösterilmektedir.
-- Azure Danışmanı, tek tek abonelikler için satın alma önerileri sağlar.  
-- API'leri hem paylaşılan kapsam hem de tek abonelik kapsamı için satın alma önerileri almak için kullanabilirsiniz. Daha fazla bilgi için, [kurumsal müşteriler için Ayrılmış örnek satın alma önerisi API'leri'ne](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)bakın.
-- Kurumsal Sözleşme (EA) ve Microsoft Müşteri Sözleşmesi (MCA) müşterileri için, Azure [Tüketim Öngörüleri Power BI içerik paketiyle](/power-bi/service-connect-to-azure-consumption-insights)paylaşılan ve tek abonelik kapsamları için satın alma önerileri mevcuttur.
+- Satın alma önerileri ve önerilen miktar, Azure portal bir VM ayrılmış örneği satın alırken gösterilmektedir.
+- Azure Advisor bireysel abonelikler için satın alma önerileri sağlar.  
+- Hem paylaşılan kapsam hem de tek abonelik kapsamı için satın alma önerileri almak üzere API 'Leri kullanabilirsiniz. Daha fazla bilgi için bkz. [Kurumsal müşterilere yönelik ayrılmış örnek satın alma önerisi API 'leri](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
+- Kurumsal Anlaşma (EA) ve Microsoft Müşteri Sözleşmesi (MCA) müşterileri için, [Azure Consumption Insights Power BI içerik paketi](/power-bi/service-connect-to-azure-consumption-insights)ile paylaşılan ve tek abonelik kapsamlarına yönelik satın alma önerileri sunulmaktadır.
 
 ### <a name="services-that-get-vm-reservation-discounts"></a>VM rezervasyon indirimlerini alan hizmetler
 
@@ -55,62 +55,62 @@ Kullanımın rezervasyon indirimlerine uygun olup olmadığını saptamak için 
 
 Örnek boyutu esnekliği hakkında daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-### <a name="analyze-your-usage-information"></a>Kullanım bilgilerinizi analiz edin
+### <a name="analyze-your-usage-information"></a>Kullanım bilgilerinizi çözümleyin
 
-Hangi rezervasyonları satın almanız gerektiğini belirlemeye yardımcı olmak için kullanım bilgilerinizi analiz edin. Kullanım verileri kullanım dosyasında ve API'lerde mevcuttur. Hangi rezervasyonu satın alarak bunları birlikte kullanın. Satın alınacak rezervasyon miktarını belirlemek için günlük olarak yüksek kullanıma sahip VM örneklerini denetleyin. Kullanım `Meter` verilerindeki `Product` alt kategori ve alanlardan kaçının. Bunlar, birinci sınıf depolama alanı kullanan VM boyutları arasında ayrım yapmaz. Rezervasyon satın almak için VM boyutunu belirlemek için bu alanları kullanırsanız, yanlış boyutu satın alabilirsiniz. O zaman beklediğiniz rezervasyon indirimini alamazsınız. Bunun yerine, `AdditionalInfo` doğru VM boyutunu belirlemek için kullanım dosyanızdaki alana veya kullanım API'sine bakın.
+Satın almanız gereken rezervasyonları belirlemede yardımcı olması için kullanım bilgilerinizi çözümleyin. Kullanım verileri, kullanım dosyası ve API 'lerde kullanılabilir. Hangi ayırmayı satın almak istediğinizi öğrenmek için bunları birlikte kullanın. Satın alınacak rezervasyonların miktarını öğrenmek için günlük olarak yüksek kullanıma sahip sanal makine örneklerini denetleyin. Kullanım verilerinde `Meter` alt kategori `Product` ve alanları kullanmaktan kaçının. Premium depolama kullanan VM boyutları arasında ayrım yapmazlar. Bu alanları, rezervasyon satın alma için VM boyutunu tespit etmek üzere kullanırsanız, yanlış boyut satın alabilirsiniz. Daha sonra, beklediğinizi rezervasyon indirimi almazsınız. Bunun yerine, doğru VM `AdditionalInfo` boyutunu öğrenmek için kullanım dosyanızda veya kullanım API 'sindeki alana bakın.
 
-Kullanım dosyanız, fatura dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Kullanım dosyanızı indirme hakkında daha fazla bilgi için [Azure kullanımınızı ve ücretlerinizi görüntüle ve indirin.](../articles/cost-management-billing/understand/download-azure-daily-usage.md) Daha sonra, kullanım dosyası bilgilerini kullanarak, [hangi rezervasyonsatın alınabileceğini belirleyebilirsiniz.](../articles/cost-management-billing/reservations/determine-reservation-purchase.md)
+Kullanım dosyanız, faturalandırma dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Kullanım dosyanızı indirme hakkında daha fazla bilgi için bkz. [Azure kullanımınızı ve ücretlerinizi görüntüleme ve indirme](../articles/cost-management-billing/understand/download-azure-daily-usage.md). Ardından, kullanım dosyası bilgilerini kullanarak [hangi ayırmayı satın almayı belirleyebilirsiniz](../articles/cost-management-billing/reservations/determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması hususları
+### <a name="purchase-restriction-considerations"></a>Satın alma kısıtlaması konuları
 
-Ayrılmış VM Örnekleri, bazı istisnalar dışında çoğu VM boyutu için kullanılabilir. Rezervasyon indirimleri aşağıdaki VM'ler için geçerli değildir:
+Ayrılmış VM örnekleri, bazı özel durumlarla birçok VM boyutu için kullanılabilir. Aşağıdaki VM 'Ler için rezervasyon iskontoları uygulanmaz:
 
-- **VM serisi** - A serisi, Av2 serisi veya G serisi.
+- **VM Serisi** -A serisi, AV2 serisi veya G serisi.
 
-- **Önizleme veya Promo VM'ler** - Önizlemede olan veya promosyon ölçer kullanan herhangi bir VM serisi veya boyutu.
+- **Önizleme veya promosyon VM 'leri** -önizlemede olan veya promosyon ölçümü kullanan tüm VM serisi veya boyutları.
 
-- **Bulutlar** - Rezervasyonlar Almanya veya Çin bölgelerinde satın alınamaz.
+- **Bulutlar** -rezervasyonlar Almanya veya Çin bölgelerinde satın alınabilir.
 
-- **Yetersiz kota** - Tek bir aboneliği kapsamaalan bir rezervasyon, yeni RI aboneliğinde vCPU kotası olmalıdır. Örneğin, hedef aboneliğin D-Serisi için 10 vCPUs kota sınırı varsa, 11 Standard_D1 örneği için rezervasyon satın alamazsınız. Rezervasyonlar için kota denetimi, abonelikte zaten dağıtılan VM'leri içerir. Örneğin, aboneliğin D Serisi için 10 vCPUs kotası varsa ve dağıtılan iki standard_D1 örneği varsa, bu abonelikteki 10 standard_D1 örneği için rezervasyon satın alabilirsiniz. Bu sorunu gidermek için [teklif artış isteği oluşturabilirsiniz.](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md)
+- **Yetersiz kota** -tek bir abonelik kapsamındaki bir ayırma, yeni RI Için abonelikte vCPU kotası kullanılabilir olmalıdır. Örneğin, hedef aboneliğin D serisi için 10 vCPU kota sınırı varsa, 11 Standard_D1 örnekleri için bir ayırma satın alamazsınız. Rezervasyonların kota denetimi abonelikte zaten dağıtılan VM 'Leri içerir. Örneğin, aboneliğin D serisi için 10 vCPU kotası varsa ve dağıtılan iki standard_D1 örneği varsa, bu abonelikte 10 standard_D1 örneği için bir ayırma satın alabilirsiniz. Bu sorunu çözmek için [teklif artışı isteği oluşturabilirsiniz](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
-- **Kapasite kısıtlamaları** - Nadir durumlarda Azure, bir bölgedeki düşük kapasite nedeniyle VM boyutları alt kümesi için yeni rezervasyonsatın almayı sınırlar.
+- **Kapasite kısıtlamaları** -nadir koşullarda Azure, bir bölgedeki düşük KAPASITE nedeniyle VM boyutlarının alt kümesi için yeni rezervasyonların satın alınmasını sınırlandırır.
 
 ## <a name="buy-a-reserved-vm-instance"></a>Ayrılmış VM Örneği Satın Alma
 
-[Azure portalından](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir VM örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../articles/cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın.
-Bu gereksinimler ayrılmış bir VM örneğini satın almak için geçerlidir:
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../articles/cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın.
+Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçerlidir:
 
-- En az bir EA aboneliği veya istediğiniz kadar öde fiyatına sahip bir abonelik için Sahip rolünde olmalısınız.
-- EA abonelikleri için **Ayrılmış Örnekler Ekle** seçeneği, [EA portalında](https://ea.azure.com/)etkinleştirilmelidir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
-- Bulut Çözüm Sağlayıcısı (CSP) programı için rezervasyonları yalnızca yönetici aracılar veya satış temsilcileri satın alabilir.
+- En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
+- EA abonelikleri için, **ayrılmış örnekler Ekle** seçeneğinin [EA portalında](https://ea.azure.com/)etkinleştirilmiş olması gerekir. Veya, bu ayar devre dışı bırakıldıysa, aboneliğin EA Yöneticisi olmanız gerekir.
+- Bulut çözümü sağlayıcısı (CSP) programı için yalnızca yönetici aracıları veya satış aracıları ayırmaları satın alabilir.
 
-Bir örneği satın almak için:
+Örnek satın almak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. **Tüm hizmetler** > **rezervasyonlarını**seçin.
-1. Yeni bir rezervasyon satın almak için **Ekle'yi** seçin ve ardından **Sanal makine'yi**tıklatın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Tüm hizmet** > **ayırmaları**' ni seçin.
+1. **Ekle** ' yi seçerek yeni bir ayırma satın alın ve ardından **sanal makine**' ye tıklayın.
 1. Gerekli alanları doldurun. Seçtiğiniz özniteliklerle eşleşen VM örneklerinin çalıştırılması, rezervasyon indirimi almaya uygundur. İndirim alan VM örneklerinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
-Bir EA anlaşmanız varsa, hızlı bir şekilde ek örnekler eklemek için **daha fazla ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
+EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
 
 
 | Alan      | Açıklama|
 |------------|--------------|
-|Abonelik|Abonelik rezervasyon için ödeme yapmak için kullanılır. Abonelikteki ödeme yöntemi, rezervasyon masraflarından tahsil edilir. Abonelik türü bir kurumsal sözleşme olmalıdır (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi veya kullandıkça öde oranlarına sahip bireysel bir abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, varsa parasal taahhüt bakiyesinden düşülür veya fazlalık olarak tahsil edilir. Kullandıkça öde oranlarına sahip bir abonelik için, ücretler abonelikteki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|    
-|Kapsam       |Rezervasyonun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsam) kapsayabilir. Seçerseniz: <ul><li>**Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. EA müşterileri için faturalandırma bağlamı kayıttır. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>|
-|Bölge    |Rezervasyon kapsamındaki Azure bölgesi.|    
-|VM Boyutu     |VM örneklerinin boyutu.|
-|Optimize etmek için     |Varsayılan olarak VM örnek boyutu esnekliği seçilir. Aynı [VM boyutu grubundaki](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)diğer VM'lere rezervasyon indirimi uygulamak için örnek boyutu esneklik değerini değiştirmek için **Gelişmiş ayarları** tıklatın. Kapasite önceliği dağıtımlarınızda veri merkezi kapasitesine öncelik verir. İhtiyacınız olduğunda VM örneklerini başlatma yeteneğinize ek güven sağlar. Kapasite önceliği yalnızca rezervasyon kapsamı tek abonelik olduğunda kullanılabilir. |
-|Sözleşme Dönemi        |Bir ya da üç yıl.|
-|Miktar    |Rezervasyon içinde satın alınan örnek sayısı. Miktar, faturalandırma iskontosu alabilen çalışan VM örneklerinin sayısıdır. Örneğin, Doğu ABD'de 10 Standard_D2 VM çalıştırıyorsanız, çalışan tüm VM'lerin yararını en üst düzeye çıkarmak için miktarı 10 olarak belirtirsiniz. |
+|Abonelik|Ayırma için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, rezervasyonun maliyetlerine göre ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, varsa parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|    
+|Kapsam       |Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <ul><li>**Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>|
+|Bölge    |Ayırma kapsamındaki Azure bölgesi.|    
+|VM Boyutu     |Sanal makine örneklerinin boyutu.|
+|İçin iyileştirin     |VM örnek boyutu esnekliği varsayılan olarak seçilidir. Aynı [VM Boyut grubundaki](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)diğer VM 'lere rezervasyon iskontosunu uygulamak için örnek boyutu esneklik değerini değiştirmek için **Gelişmiş ayarlar** ' a tıklayın. Kapasite önceliği dağıtımlarınızda veri merkezi kapasitesine öncelik verir. İhtiyaç duyduğunuzda sanal makine örneklerini başlatma yeteneizin daha fazla güvenilirlik sağlar. Kapasite önceliği yalnızca rezervasyon kapsamı tek abonelik olduğunda kullanılabilir. |
+|Sözleşme Dönemi        |Bir yıl veya üç yıl.|
+|Miktar    |Ayırma içinde satın alınan örneklerin sayısı. Miktar, fatura iskontosunu elde eden çalışan sanal makine örneklerinin sayısıdır. Örneğin, Doğu ABD 10 Standard_D2 VM çalıştırıyorsanız, çalışan tüm VM 'Lerin avantajını en üst düzeye çıkarmak için miktarı 10 olarak belirtirsiniz. |
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
-## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve rezervasyon kullanımı
+## <a name="usage-data-and-reservation-utilization"></a>Kullanım verileri ve ayırma kullanımı
 
-Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için hangi VM örneğinin rezervasyon indirimialdığını görebilirsiniz.
+Kullanım verileriniz, kullanım için sıfır geçerli fiyata sahip olup rezervasyon indirimi alır. Her rezervasyon için rezervasyon iskontosunu hangi VM örneğinin aldığını görebilirsiniz.
 
-Kullanım verilerinde rezervasyon indirimlerinin nasıl göründüğü hakkında daha fazla bilgi için, EA müşterisiyseniz [Kurumsal kaydınız için Azure rezervasyon kullanımını anlayın'](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) a bakın. Tek bir aboneliğiniz varsa, [Kullan-Öde aboneliğiniz için Azure rezervasyon kullanımını anlayın'](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)a bakın.
+Kullanım verilerinde rezervasyon iskontolarının nasıl göründüğü hakkında daha fazla bilgi için bkz. EA müşterisiyseniz [Kurumsal kaydınız Için Azure ayırma kullanımını anlayın](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) . Tek bir aboneliğiniz varsa, bkz. [Kullandıkça Öde aboneliğiniz Için Azure ayırma kullanımını anlayın](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="change-a-reservation-after-purchase"></a>Satın alma işleminden sonra rezervasyonu değiştirme
 
@@ -120,30 +120,30 @@ Satın alma işleminden sonra bir rezervasyon üzerinde aşağıdaki değişikli
 - Örnek boyutu esnekliği (varsa)
 - Sahiplik
 
-Ayrıca, bir rezervasyonu daha küçük parçalara bölebilir ve zaten bölünmüş rezervasyonları birleştirebilirsiniz. Değişikliklerin hiçbiri yeni bir ticari işlem yapılmasına veya rezervasyonun bitiş tarihini değiştirmeme neden olmaz.
+Ayrıca, bir ayırmayı daha küçük parçalara bölebilir ve zaten bölünmüş rezervasyonları birleştirebilirsiniz. Değişikliklerden hiçbiri yeni bir ticari işleme neden olmaz ya da ayırmanın bitiş tarihini değiştirmez.
 
-Satın alma işleminden sonra aşağıdaki değişiklik türlerini doğrudan yapamazsınız:
+Satın alma işleminden sonra aşağıdaki değişiklik türlerini yapamazsınız:
 
-- Mevcut bir rezervasyonbölgesi
+- Mevcut bir ayırmanın bölgesi
 - SKU
 - Miktar
 - Süre
 
-Ancak, değişiklik yapmak isterseniz rezervasyon *değiştirebilirsiniz.*
+Ancak, değişiklik yapmak istiyorsanız bir rezervasyon *alışverişi* yapabilirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
-Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure ayırmaları Için self servis değişimlerinin ve para iadesi](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız varsa, [bir destek isteği oluşturun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Rezervasyonu yönetme hakkında bilgi edinmek için bkz. [Azure Ayrılmış Sanal Makine Örnekleri’ni Yönetme](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md).
 - Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-    - [Azure Rezervasyonları nedir?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Azure ayırmaları nelerdir?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
     - [Azure’da Rezervasyonları Yönetme](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
     - [Rezervasyon indiriminin nasıl uygulandığını anlama](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
     - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)

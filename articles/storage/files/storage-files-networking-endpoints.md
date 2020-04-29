@@ -1,6 +1,6 @@
 ---
-title: Azure Dosyaları ağ uç noktalarını yapılandırma | Microsoft Dokümanlar
-description: Azure Dosyaları için ağ seçeneklerine genel bakış.
+title: Azure dosyaları ağ uç noktalarını yapılandırma | Microsoft Docs
+description: Azure dosyaları için ağ seçeneklerine genel bakış.
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,65 +8,65 @@ ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: cc487e8def180735606aa010651dde40ef93908e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80082510"
 ---
-# <a name="configuring-azure-files-network-endpoints"></a>Azure Dosyaları ağ uç noktalarını yapılandırma
-Azure Dosyaları, Azure dosya paylaşımları erişmek için iki ana uç nokta türü sağlar: 
-- Genel BIR IP adresine sahip olan ve dünyanın her yerinden erişilebilen genel uç noktalar.
-- Sanal ağ içinde bulunan ve bu sanal ağın adres alanı içinde özel bir IP adresine sahip olan özel uç noktalar.
+# <a name="configuring-azure-files-network-endpoints"></a>Azure dosyaları ağ uç noktalarını yapılandırma
+Azure dosyaları, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
+- Genel bir IP adresi olan ve dünyanın herhangi bir yerinden erişilebilen genel uç noktalar.
+- Bir sanal ağ içinde bulunan ve bu sanal ağın adres alanından özel bir IP adresine sahip olan özel uç noktalar.
 
-Azure depolama hesabında ortak ve özel uç noktalar bulunur. Depolama hesabı, birden çok dosya paylaşımının yanı sıra blob kapsayıcıları veya kuyruklar gibi diğer depolama kaynaklarını dağıtabileceğiniz paylaşılan bir depolama havuzunun yanı sıra yönetim yapısıdır.
+Azure depolama hesabında genel ve özel uç noktalar mevcuttur. Depolama hesabı, birden çok dosya paylaşımını ve BLOB kapsayıcıları ya da kuyrukları gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzunu temsil eden bir yönetim yapısıdır.
 
-Bu makalede, Azure dosya paylaşımına doğrudan erişmek için bir depolama hesabının uç noktalarının nasıl yapılandırılacak olduğu üzerinde duruluyor. Bu belgede sağlanan ayrıntıların çoğu, Azure Dosya Eşitlemi'nin depolama hesabı için ortak ve özel uç noktalarıyla nasıl çalıştığı konusunda da geçerlidir, ancak Azure Dosya Eşitleme dağıtımı için ağ la ilgili ayrıntılar hakkında daha fazla bilgi için Azure [Dosya Eşitleme proxy'sini ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md)konusuna bakın.
+Bu makalede, Azure dosya paylaşımında doğrudan erişim için bir depolama hesabının uç noktalarının nasıl yapılandırılacağı ele alınmaktadır. Bu belgede sunulan ayrıntıların çoğu, depolama hesabının genel ve özel uç noktaları ile birlikte Azure Dosya Eşitleme için de geçerlidir. ancak, bir Azure Dosya Eşitleme dağıtımına yönelik ağ hususları hakkında daha fazla bilgi için, bkz [Azure dosya eşitleme proxy ve güvenlik duvarı ayarlarını yapılandırma](storage-sync-files-firewall-and-proxy.md).
 
-Nasıl yol gösterebileceğimizi okumadan önce Azure Dosyaları ağ la ilgili [hususları](storage-files-networking-overview.md) okumanızı öneririz.
+Bu nasıl yapılır kılavuzu okumadan önce [Azure dosyaları ağ oluşturma konuları](storage-files-networking-overview.md) okumanız önerilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
-- Bu makalede, zaten bir Azure aboneliği oluşturduğunuz varsayar. Zaten bir aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- Bu makalede, şirket içinde bağlanmak istediğiniz bir depolama hesabında zaten bir Azure dosya paylaşımı oluşturduğunuz varsayar. Azure dosya paylaşımını nasıl oluşturabilirsiniz öğrenmek için [bkz.](storage-how-to-create-file-share.md)
-- Azure PowerShell'i kullanmak istiyorsanız, [en son sürümü yükleyin.](https://docs.microsoft.com/powershell/azure/install-az-ps)
-- Azure CLI'yi kullanmak istiyorsanız, [en son sürümü yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Bu makalede, Şirket içinden bağlamak istediğiniz bir depolama hesabında bir Azure dosya paylaşımının zaten oluşturulduğunu varsaymış olursunuz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
+- Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-a-private-endpoint"></a>Özel uç nokta oluşturma
-Depolama hesabınız için özel bir bitiş noktası oluşturmak, aşağıdaki Azure kaynaklarının dağıtılmasına neden olur:
+Depolama hesabınız için özel bir uç nokta oluşturulması, aşağıdaki Azure kaynaklarının dağıtılmasının oluşmasına neden olur:
 
-- **Özel bitiş noktası**: Depolama hesabının özel bitiş noktasını temsil eden bir Azure kaynağı. Bunu bir depolama hesabı ve ağ arabirimi bağlayan bir kaynak olarak düşünebilirsiniz.
-- **Ağ arabirimi (NIC)**: Belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, sanal bir makine dağıttığınızda dağıtılan aynı kaynaktır, ancak vm'ye atanmak yerine, özel bitiş noktasına aittir.
-- **Özel Bir DNS bölgesi**: Bu sanal ağ için daha önce hiç özel bir bitiş noktası dağıtmadıysanız, sanal ağınız için yeni bir özel DNS bölgesi dağıtılır. Bu DNS bölgesindeki depolama hesabı için bir DNS A kaydı da oluşturulur. Bu sanal ağda zaten özel bir bitiş noktası dağıttıysanız, depolama hesabı için yeni bir A kaydı varolan DNS bölgesine eklenir. Bir DNS bölgesi dağıtmak isteğe bağlıdır, ancak son derece önerilir ve Azure dosya paylaşımlarınızı bir AD hizmeti ilkesiyle monte ediyorsanız veya FileREST API'sini kullanıyorsanız gereklidir.
+- **Özel uç nokta**: depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
+- **Ağ arabirimi (NIC)**: belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
+- **Özel BIR DNS bölgesi**: daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. DNS A kaydı, bu DNS bölgesindeki depolama hesabı için de oluşturulacaktır. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, var olan DNS bölgesine depolama hesabı için yeni bir kayıt eklenecektir. Bir DNS bölgesinin dağıtımı isteğe bağlıdır, ancak Azure dosya paylaşımlarınızı bir AD hizmet sorumlusu ile veya FileREST API 'sini kullanarak oluşturursanız gereklidir.
 
 > [!Note]  
-> Bu makalede, Azure Genel bölgeleri için depolama hesabı DNS soneki kullanır. `core.windows.net` Bu yorum, Azure ABD Devlet bulutu ve Azure Çin bulutu gibi Azure Sovereign bulutları için de geçerlidir - ortamınız için uygun soneklerin yerine geçer. 
+> Bu makalede, `core.windows.net`Azure ortak bölgeleri için depolama hesabı DNS son eki kullanılmaktadır. Bu yorum, Azure ABD kamu bulutu ve Azure Çin bulutu gibi Azure Sogeign bulutları için de geçerlidir. ortamınız için uygun son ekleri yerine koyun. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Özel bir bitiş noktası oluşturmak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda, yeni bir özel bitiş noktası oluşturmak için **Özel bitiş noktası bağlantılarını**ve ardından **+ Özel bitiş noktasını** seçin. 
+Özel bir uç nokta oluşturmak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **Özel uç nokta bağlantıları**' nı ve ardından **+ Özel uç noktasını** seçerek yeni bir özel uç nokta oluşturun. 
 
-![İçeriğin depolama hesabı tablosundaki özel uç nokta bağlantıları öğesinin ekran görüntüsü](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
+![Depolama hesabı İçindekiler tablosundaki özel uç nokta bağlantıları öğesinin ekran görüntüsü](media/storage-files-networking-endpoints/create-private-endpoint-0.png)
 
-Ortaya çıkan sihirbazın tamamlanması gereken birden çok sayfa vardır.
+Ortaya çıkan sihirbazda, tamamlanacak birden çok sayfa vardır.
 
-Temel **Bilgiler** bıçak larında, özel bitiş noktanız için istediğiniz kaynak grubunu, adı ve bölgeyi seçin. Bunlar istediğiniz her şey olabilir, yine de depolama hesabıyla eşleşmek zorunda değildir, ancak içinde özel bitiş noktası oluşturmak istediğiniz sanal ağla aynı bölgede özel bitiş noktası oluşturmanız gerekir.
+**Temel bilgiler** dikey penceresinde, Özel uç noktanız için istenen kaynak grubunu, adı ve bölgeyi seçin. Bunlar istediğiniz gibi olabilir, ancak, içinde özel uç nokta oluşturmak istediğiniz sanal ağ ile aynı bölgede özel uç nokta oluşturmanız gerekir.
 
-![Özel bitiş noktası oluşturma bölümünün Temeller bölümünün ekran görüntüsü](media/storage-files-networking-endpoints/create-private-endpoint-1.png)
+![Özel uç nokta oluştur bölümünün temel bilgiler bölümünün ekran görüntüsü](media/storage-files-networking-endpoints/create-private-endpoint-1.png)
 
-**Kaynak** bıyısında, **dizinimdeki bir Azure kaynağına bağlan'ın**radyo düğmesini seçin. **Kaynak türüaltında,** kaynak türü için **Microsoft.Storage/storageAccounts'u** seçin. **Kaynak** alanı, bağlanmak istediğiniz Azure dosya paylaşımının depolama hesabıdır. Hedef alt kaynak **dosyadır**, çünkü bu Azure Files içindir.
+**Kaynak** dikey penceresinde, **Dizinimde bir Azure kaynağına bağlanmak**için radyo düğmesini seçin. **Kaynak**türü altında, kaynak türü için **Microsoft. Storage/storageaccounts** ' ı seçin. **Kaynak** alanı, bağlanmak istediğiniz Azure dosya paylaşımının bulunduğu depolama hesabıdır. Azure dosyaları için olduğundan, hedef alt kaynak **Dosya**.
 
-**Configuration** blade, özel bitiş noktanızı eklemek istediğiniz belirli sanal ağı ve alt ağı seçmenize olanak tanır. Yukarıda oluşturduğunuz sanal ağı seçin. Hizmet bitiş noktanızı yukarıda eklediğiniz alt ağdan farklı bir alt ağ seçmeniz gerekir. Configuration blade ayrıca özel DNS bölgesini oluşturmak/güncellemek için bilgileri de içerir. Varsayılan `privatelink.file.core.windows.net` bölgeyi kullanmanızı öneririz.
+**Yapılandırma** dikey penceresi, Özel uç noktanızı eklemek istediğiniz belirli sanal ağı ve alt ağı seçmenize olanak sağlar. Yukarıda oluşturduğunuz sanal ağı seçin. Hizmet uç noktanızı eklemiş olduğunuz alt ağdan farklı bir alt ağ seçmelisiniz. Yapılandırma dikey penceresi ayrıca özel DNS bölgesi oluşturma/güncelleştirme bilgilerini içerir. Varsayılan `privatelink.file.core.windows.net` bölgeyi kullanmanızı öneririz.
 
 ![Yapılandırma bölümünün ekran görüntüsü](media/storage-files-networking-endpoints/create-private-endpoint-2.png)
 
-Özel bitiş noktasını oluşturmak için **Gözden Geçir +'yı** tıklatın. 
+Özel uç noktayı oluşturmak için **gözden geçir + oluştur** ' a tıklayın. 
 
-Sanal ağınızın içinde sanal bir makine varsa veya [Burada](storage-files-networking-dns.md)açıklandığı gibi DNS iletmesini yapınız varsa, PowerShell, komut satırı veya terminalden (Windows, Linux veya macOS için çalışır) aşağıdaki komutları çalıştırarak özel bitiş noktanızın doğru şekilde ayarlandığını test edebilirsiniz. Uygun depolama `<storage-account-name>` hesabı adı ile değiştirmeniz gerekir:
+Sanal ağınızın içinde bir sanal makineniz varsa veya DNS iletmeyi [burada](storage-files-networking-dns.md)açıklandığı gibi yapılandırdıysanız, PowerShell, komut satırı veya terminalden (Windows, Linux veya MacOS için çalışır) aşağıdaki komutları çalıştırarak özel uç noktanızın doğru şekilde ayarlandığından test edebilirsiniz. Uygun depolama hesabı `<storage-account-name>` adıyla değiştirmeniz gerekir:
 
 ```
 nslookup <storage-account-name>.file.core.windows.net
 ```
 
-Her şey başarılı bir şekilde çalıştıysa, sanal `192.168.0.5` ağınızdaki özel bitiş noktasının özel IP adresi (Windows için gösterilen çıktı) aşağıdaki çıktıyı görmeniz gerekir:
+Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç NOKTANıN özel IP adresidir (Windows için gösterilen çıktı):
 
 ```Output
 Server:  UnKnown
@@ -78,8 +78,8 @@ Address:  192.168.0.5
 Aliases:  storageaccount.file.core.windows.net
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-Depolama hesabınız için özel bir bitiş noktası oluşturmak için öncelikle depolama hesabınıza ve özel bitiş noktasını eklemek istediğiniz sanal ağ alt ağına bir başvuru almanız gerekir. Değiştir `<storage-account-resource-group-name>` `<storage-account-name>`, `<vnet-resource-group-name>` `<vnet-name>`, `<vnet-subnet-name>` , , ve aşağıda:
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Depolama hesabınız için özel bir uç nokta oluşturmak üzere öncelikle depolama hesabınıza ve özel uç noktayı eklemek istediğiniz sanal ağ alt ağına bir başvuru almanız gerekir. , `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>`Ve `<vnet-subnet-name>` aşağıdaki gibi değiştirin:
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group-name>"
@@ -124,7 +124,7 @@ if ($null -eq $subnet) {
 }
 ```
 
-Özel bir bitiş noktası oluşturmak için depolama hesabına özel bir bağlantı hizmeti bağlantısı oluşturmanız gerekir. Özel bağlantı hizmeti bağlantısı, özel bitiş noktasının oluşturulmasına giriştir. 
+Özel bir uç nokta oluşturmak için, depolama hesabına özel bir bağlantı hizmeti bağlantısı oluşturmanız gerekir. Özel bağlantı hizmeti bağlantısı, Özel uç noktanın oluşturulmasına yönelik bir giriştir. 
 
 ```PowerShell
 # Disable private endpoint network policies
@@ -147,7 +147,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
         -ErrorAction Stop
 ```
 
-Azure özel DNS bölgesi oluşturmak, sanal ağın içindeki `storageaccount.file.core.windows.net` özel IP'yi çözmek gibi depolama hesabının özgün adını etkinleştirir. Özel bir bitiş noktası oluşturma açısından isteğe bağlı olsa da, Bir AD kullanıcı ilkesi kullanarak Azure dosya paylaşımını monte etmek veya REST API üzerinden erişmek için açıkça gereklidir.  
+Azure özel DNS bölgesi oluşturmak, depolama hesabının özgün adını (örneğin `storageaccount.file.core.windows.net` , sanal ağın IÇINDEKI özel IP 'ye çözümleme) sağlar. Özel bir uç nokta oluşturma perspektifinden isteğe bağlı olsa da, bir AD Kullanıcı sorumlusu kullanarak Azure dosya paylaşımının bağlanması veya REST API aracılığıyla erişilmesi için açık bir şekilde gerekir.  
 
 ```PowerShell
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -188,7 +188,7 @@ if ($null -eq $dnsZone) {
 }
 ```
 
-Artık özel DNS bölgesine bir başvurunuz olduğuna göre, depolama hesabınız için bir A kaydı oluşturmanız gerekir.
+Artık özel DNS bölgesine bir başvurunuz olduğuna göre, depolama hesabınız için bir kayıt oluşturmanız gerekir.
 
 ```PowerShell
 $privateEndpointIP = $privateEndpoint | `
@@ -215,7 +215,7 @@ New-AzPrivateDnsRecordSet `
     Out-Null
 ```
 
-Sanal ağınızın içinde sanal bir makine varsa veya [burada](storage-files-networking-dns.md)açıklandığı gibi DNS iletmesini yapılandırmışsanız, özel bitiş noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığını test edebilirsiniz:
+Sanal ağınızın içinde bir sanal makineniz varsa veya [burada](storage-files-networking-dns.md)AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, Özel uç noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığından test edebilirsiniz:
 
 ```PowerShell
 $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.File) | `
@@ -224,7 +224,7 @@ $storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.Fil
 Resolve-DnsName -Name $storageAccountHostName
 ```
 
-Her şey başarılı bir şekilde çalıştıysa, sanal `192.168.0.5` ağınızdaki özel bitiş noktasının özel IP adresi aşağıdaki çıktıyı görmeniz gerekir:
+Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç NOKTANıN özel IP adresidir:
 
 ```Output
 Name                             Type   TTL   Section    NameHost
@@ -240,7 +240,7 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Depolama hesabınız için özel bir bitiş noktası oluşturmak için öncelikle depolama hesabınıza ve özel bitiş noktasını eklemek istediğiniz sanal ağ alt ağına bir başvuru almanız gerekir. Değiştir `<storage-account-resource-group-name>` `<storage-account-name>`, `<vnet-resource-group-name>` `<vnet-name>`, `<vnet-subnet-name>` , , ve aşağıda:
+Depolama hesabınız için özel bir uç nokta oluşturmak üzere öncelikle depolama hesabınıza ve özel uç noktayı eklemek istediğiniz sanal ağ alt ağına bir başvuru almanız gerekir. , `<storage-account-resource-group-name>`, `<storage-account-name>`, `<vnet-resource-group-name>`, `<vnet-name>`Ve `<vnet-subnet-name>` aşağıdaki gibi değiştirin:
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group-name>"
@@ -272,7 +272,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Özel bir bitiş noktası oluşturmak için öncelikle alt ağın özel uç noktası ağ ilkesinin devre dışı bırakıladığından emin olmalısınız. Daha sonra `az network private-endpoint create` komutu ile özel bir bitiş noktası oluşturabilirsiniz
+Özel bir uç nokta oluşturmak için, önce alt ağın özel uç nokta ağ ilkesinin devre dışı olarak ayarlandığından emin olmanız gerekir. Ardından, `az network private-endpoint create` komutuyla özel bir uç nokta oluşturabilirsiniz
 
 ```bash
 # Disable private endpoint network policies
@@ -300,7 +300,7 @@ privateEndpoint=$(az network private-endpoint create \
     tr -d '"')
 ```
 
-Azure özel DNS bölgesi oluşturmak, sanal ağın içindeki `storageaccount.file.core.windows.net` özel IP'yi çözmek gibi depolama hesabının özgün adını etkinleştirir. Özel bir bitiş noktası oluşturma açısından isteğe bağlı olsa da, Bir AD kullanıcı ilkesi kullanarak Azure dosya paylaşımını monte etmek veya REST API üzerinden erişmek için açıkça gereklidir.  
+Azure özel DNS bölgesi oluşturmak, depolama hesabının özgün adını (örneğin `storageaccount.file.core.windows.net` , sanal ağın IÇINDEKI özel IP 'ye çözümleme) sağlar. Özel bir uç nokta oluşturma perspektifinden isteğe bağlı olsa da, bir AD Kullanıcı sorumlusu kullanarak Azure dosya paylaşımının bağlanması veya REST API aracılığıyla erişilmesi için açık bir şekilde gerekir.  
 
 ```bash
 # Get the desired storage account suffix (core.windows.net for public cloud).
@@ -360,7 +360,7 @@ then
 fi
 ```
 
-Artık özel DNS bölgesine bir başvurunuz olduğuna göre, depolama hesabınız için bir A kaydı oluşturmanız gerekir.
+Artık özel DNS bölgesine bir başvurunuz olduğuna göre, depolama hesabınız için bir kayıt oluşturmanız gerekir.
 
 ```bash
 privateEndpointNIC=$(az network private-endpoint show \
@@ -387,7 +387,7 @@ az network private-dns record-set a add-record \
         --output none
 ```
 
-Sanal ağınızın içinde sanal bir makine varsa veya [burada](storage-files-networking-dns.md)açıklandığı gibi DNS iletmesini yapılandırmışsanız, özel bitiş noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığını test edebilirsiniz:
+Sanal ağınızın içinde bir sanal makineniz varsa veya [burada](storage-files-networking-dns.md)AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, Özel uç noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığından test edebilirsiniz:
 
 ```bash
 httpEndpoint=$(az storage account show \
@@ -400,7 +400,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-Her şey başarılı bir şekilde çalıştıysa, sanal `192.168.0.5` ağınızdaki özel bitiş noktasının özel IP adresi aşağıdaki çıktıyı görmeniz gerekir:
+Her şey başarıyla çalıştıysa aşağıdaki çıktıyı görmeniz gerekir, burada `192.168.0.5` sanal ağınızdaki özel uç NOKTANıN özel IP adresidir:
 
 ```Output
 Server:         127.0.0.53
@@ -414,24 +414,24 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>Genel bitiş noktasına erişimi kısıtlama
-Depolama hesabı güvenlik duvarı ayarlarını kullanarak ortak uç noktaya erişimi kısıtlayabilirsiniz. Genel olarak, bir depolama hesabı için çoğu güvenlik duvarı ilkeleri, ağ daki bir veya daha fazla sanal ağa erişimi kısıtlar. Bir depolama hesabına erişimi sanal ağla sınırlamak için iki yaklaşım vardır:
+## <a name="restrict-access-to-the-public-endpoint"></a>Genel uç noktaya erişimi kısıtlama
+Depolama hesabı güvenlik duvarı ayarlarını kullanarak genel uç noktaya erişimi kısıtlayabilirsiniz. Genel olarak, bir depolama hesabı için çoğu güvenlik duvarı ilkesi, ağ erişimini bir veya daha fazla sanal ağa kısıtlar. Bir depolama hesabına erişimi bir sanal ağla kısıtlamak için iki yaklaşım vardır:
 
-- [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-a-private-endpoint) ve tüm genel bitiş noktasına erişimi kısıtlayın. Bu, yalnızca istenen sanal ağlar içinden kaynaklanan trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişmesini sağlar.
-- Ortak bitiş noktasını bir veya daha fazla sanal ağla sınırlandırın. Bu, *hizmet bitiş noktaları*olarak adlandırılan sanal ağın bir yeteneğini kullanarak çalışır. Bir hizmet bitiş noktası aracılığıyla trafiği bir depolama hesabıyla sınırladığınızı, yine de ortak IP adresi üzerinden depolama hesabına erişmeye devam esiniz.
+- [Depolama hesabı için bir veya daha fazla özel uç nokta oluşturun](#create-a-private-endpoint) ve tüm erişimi genel uç noktaya sınırlayın. Bu, yalnızca istenen sanal ağlardan gelen trafiğin depolama hesabı içindeki Azure dosya paylaşımlarına erişebilmesini sağlar.
+- Genel uç noktayı bir veya daha fazla sanal ağla sınırlayın. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bir hizmet uç noktası aracılığıyla bir depolama hesabıyla trafiği kısıtladığınızda, hala genel IP adresi aracılığıyla depolama hesabına erişmeye devam edersiniz.
 
-### <a name="restrict-all-access-to-the-public-endpoint"></a>Tüm genel bitiş noktasına erişimi kısıtlama
-Ortak bitiş noktasına tüm erişim kısıtlandığında, depolama hesabına özel uç noktaları üzerinden erişilebilir. Aksi takdirde depolama hesabının genel bitiş noktasına yönelik geçerli istekler reddedilir. 
+### <a name="restrict-all-access-to-the-public-endpoint"></a>Genel uç noktaya tüm erişimi kısıtla
+Genel uç noktaya erişim kısıtlı olduğunda, depolama hesabına hala özel uç noktalar üzerinden erişilebilir. Aksi takdirde, depolama hesabının genel uç noktasına yönelik geçerli istekler reddedilir. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Tüm ortak bitiş noktasına erişimi kısıtlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **Güvenlik Duvarları ve sanal ağları**seçin.
+Genel uç noktaya erişimini kısıtlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **güvenlik duvarları ve sanal ağlar**' ı seçin.
 
-Sayfanın üst kısmında **Seçili ağlar** radyo düğmesini seçin. Bu, genel bitiş noktasının kısıtlamasını denetlemek için bir dizi ayarı gizleyin. Azure Dosya Eşitlemi gibi güvenilir ilk taraf Microsoft hizmetlerinin depolama hesabına erişmesine izin vermek için **güvenilen Microsoft hizmetlerine izin ver'i** işaretleyin.
+Sayfanın üst kısmında **Seçili ağlar** radyo düğmesini seçin. Bu, genel uç noktanın kısıtlamasını denetlemeye yönelik bir dizi ayarı kaldırır. Güvenilen Microsoft hizmetlerinin, depolama hesabına erişmek için Azure Dosya Eşitleme gibi güvenilen ilk taraf Microsoft hizmetlerine izin vermek üzere **Bu hizmet hesabına erişmesine Izin verin** .
 
-![Uygun kısıtlar yerinde Firewalls ve sanal ağlar bıçak ekran görüntüsü](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
+![Uygun kısıtlarla güvenlik duvarları ve sanal ağlar dikey penceresinin ekran görüntüsü](media/storage-files-networking-endpoints/restrict-public-endpoint-0.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-Aşağıdaki PowerShell komutu, depolama hesabının genel bitiş noktasına yönelik tüm trafiği reddeder. Bu komutun `-Bypass` parametre kümesi `AzureServices`ne olduğunu unutmayın. Bu, Azure Dosya Eşitlemi gibi güvenilir ilk taraf hizmetlerinin depolama hesabına ortak bitiş noktası üzerinden erişmesine olanak tanır.
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Aşağıdaki PowerShell komutu, depolama hesabının genel uç noktasındaki tüm trafiği reddeder. Bu komutun `-Bypass` parametresi olarak `AzureServices`ayarlandığını unutmayın. Bu, Azure Dosya Eşitleme gibi güvenilen ilk taraf hizmetlerin, genel uç nokta aracılığıyla depolama hesabına erişmesi için izin verir.
 
 ```PowerShell
 # This assumes $storageAccount is still defined from the beginning of this of this guide.
@@ -444,7 +444,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Aşağıdaki CLI komutu, depolama hesabının genel bitiş noktasına yönelik tüm trafiği reddeder. Bu komutun `-bypass` parametre kümesi `AzureServices`ne olduğunu unutmayın. Bu, Azure Dosya Eşitlemi gibi güvenilir ilk taraf hizmetlerinin depolama hesabına ortak bitiş noktası üzerinden erişmesine olanak tanır.
+Aşağıdaki CLı komutu, depolama hesabının genel uç noktasındaki tüm trafiği reddeder. Bu komutun `-bypass` parametresi olarak `AzureServices`ayarlandığını unutmayın. Bu, Azure Dosya Eşitleme gibi güvenilen ilk taraf hizmetlerin, genel uç nokta aracılığıyla depolama hesabına erişmesi için izin verir.
 
 ```bash
 # This assumes $storageAccountResourceGroupName and $storageAccountName 
@@ -458,20 +458,20 @@ az storage account update \
 ```
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Ortak bitiş noktasına erişimi belirli sanal ağlarla sınırlama
-Depolama hesabını belirli sanal ağlarla sınırladiğinizde, isteklerin belirtilen sanal ağlar içinden genel bitiş noktasına girmesine izin verirsiniz. Bu, *hizmet bitiş noktaları*olarak adlandırılan sanal ağın bir yeteneğini kullanarak çalışır. Bu özel uç noktaları ile veya olmadan kullanılabilir.
+### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>Genel uç noktaya erişimi belirli sanal ağlara kısıtlama
+Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sanal ağların içinden genel uç noktaya yönelik isteklere izin vermiş olursunuz. Bu, *hizmet uç noktaları*adlı sanal ağın bir özelliği kullanılarak işe yarar. Bu, Özel uç noktalarla veya olmadan kullanılabilir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Ortak bitiş noktasını belirli sanal ağlarla sınırlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **Güvenlik Duvarları ve sanal ağları**seçin. 
+Genel uç noktasını belirli sanal ağlara kısıtlamak istediğiniz depolama hesabına gidin. Depolama hesabının içindekiler tablosunda **güvenlik duvarları ve sanal ağlar**' ı seçin. 
 
-Sayfanın üst kısmında **Seçili ağlar** radyo düğmesini seçin. Bu, genel bitiş noktasının kısıtlamasını denetlemek için bir dizi ayarı gizleyin. Depolama hesabına ortak bitiş noktası üzerinden erişmesine izin verilmesi gereken belirli sanal ağı seçmek için **+Ekle'yi** tıklatın. Bu, bu sanal ağ için bir sanal ağ ve bir alt ağ seçilmesi gerekir. 
+Sayfanın üst kısmında **Seçili ağlar** radyo düğmesini seçin. Bu, genel uç noktanın kısıtlamasını denetlemeye yönelik bir dizi ayarı kaldırır. Ortak uç nokta aracılığıyla depolama hesabına erişmesine izin verilecek belirli sanal ağı seçmek için **+ var olan sanal ağı ekle** ' ye tıklayın. Bu, bu sanal ağ için bir sanal ağ ve alt ağ seçmeyi gerektirir. 
 
-Azure Dosya Eşitlemi gibi güvenilir ilk taraf Microsoft hizmetlerinin depolama hesabına erişmesine izin vermek için **güvenilen Microsoft hizmetlerine izin ver'i** işaretleyin.
+Güvenilen Microsoft hizmetlerinin, depolama hesabına erişmek için Azure Dosya Eşitleme gibi güvenilen ilk taraf Microsoft hizmetlerine izin vermek üzere **Bu hizmet hesabına erişmesine Izin verin** .
 
-![Belirli bir sanal ağ ile Güvenlik Duvarları ve sanal ağlar bıçak ekran görüntüsü ortak bitiş noktası üzerinden depolama hesabına erişmek için izin](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
+![Ortak uç nokta aracılığıyla depolama hesabına erişim izni verilen belirli bir sanal ağla güvenlik duvarları ve sanal ağlar dikey penceresinin ekran görüntüsü](media/storage-files-networking-endpoints/restrict-public-endpoint-1.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
-Hizmet bitiş noktalarını kullanarak depolama hesabının genel bitiş noktasına erişimi belirli sanal ağlarla sınırlamak için öncelikle depolama hesabı ve sanal ağ hakkında bilgi toplamamız gerekir. `<vnet-name>` `<subnet-name>` Bu bilgileri doldurun ve bu bilgileri toplayın. `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>`
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Depolama hesabının genel uç noktasına erişimi hizmet uç noktaları kullanarak belirli sanal ağlara kısıtlamak için, önce depolama hesabı ve sanal ağ hakkında bilgi toplamanız gerekir. `<storage-account-resource-group>` `<storage-account-name>`Bu bilgileri toplamak için,,, `<subnet-name>` `<vnet-resource-group-name>` `<vnet-name>`girin.
 
 ```PowerShell
 $storageAccountResourceGroupName = "<storage-account-resource-group>"
@@ -501,7 +501,7 @@ if ($null -eq $subnet) {
 }
 ```
 
-Sanal ağdaki trafiğin Azure ağ dokusu tarafından depolama hesabı nın genel bitiş noktasına ulaşabilmesi için, sanal ağın alt ağının hizmet bitiş noktasının `Microsoft.Storage` açığa çıkmasına izin vermesi gerekir. Aşağıdaki PowerShell komutları, zaten `Microsoft.Storage` orada değilse, hizmet bitiş noktasını alt ağa ekler.
+Azure ağ dokusunun depolama hesabı genel uç noktasına ulaşmak için sanal ağdan gelen trafiğe izin verilmesi için, sanal ağın alt ağında `Microsoft.Storage` hizmet uç noktası açık olmalıdır. Aşağıdaki PowerShell komutları, `Microsoft.Storage` hizmet uç noktasını henüz yoksa alt ağa ekler.
 
 ```PowerShell
 $serviceEndpoints = $subnet | `
@@ -528,7 +528,7 @@ if ($serviceEndpoints -notcontains "Microsoft.Storage") {
 }
 ```
 
-Depolama hesabı trafiğini kısıtlamanın son adımı, bir ağ kuralı oluşturmak ve depolama hesabının ağ kuralı kümesine eklemektir.
+Depolama hesabıyla trafiği kısıtlayan son adım bir ağ kuralı oluşturmak ve depolama hesabının ağ kural kümesine eklemektir.
 
 ```PowerShell
 $networkRule = $storageAccount | Add-AzStorageAccountNetworkRule `
@@ -545,7 +545,7 @@ $storageAccount | Update-AzStorageAccountNetworkRuleSet `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Hizmet bitiş noktalarını kullanarak depolama hesabının genel bitiş noktasına erişimi belirli sanal ağlarla sınırlamak için öncelikle depolama hesabı ve sanal ağ hakkında bilgi toplamamız gerekir. `<vnet-name>` `<subnet-name>` Bu bilgileri doldurun ve bu bilgileri toplayın. `<storage-account-resource-group>` `<storage-account-name>` `<vnet-resource-group-name>`
+Depolama hesabının genel uç noktasına erişimi hizmet uç noktaları kullanarak belirli sanal ağlara kısıtlamak için, önce depolama hesabı ve sanal ağ hakkında bilgi toplamanız gerekir. `<storage-account-resource-group>` `<storage-account-name>`Bu bilgileri toplamak için,,, `<subnet-name>` `<vnet-resource-group-name>` `<vnet-name>`girin.
 
 ```bash
 storageAccountResourceGroupName="<storage-account-resource-group>"
@@ -574,7 +574,7 @@ subnet=$(az network vnet subnet show \
     tr -d '"')
 ```
 
-Sanal ağdaki trafiğin Azure ağ dokusu tarafından depolama hesabı nın genel bitiş noktasına ulaşabilmesi için, sanal ağın alt ağının hizmet bitiş noktasının `Microsoft.Storage` açığa çıkmasına izin vermesi gerekir. Aşağıdaki CLI komutları, zaten `Microsoft.Storage` orada değilse, hizmet bitiş noktasını alt ağa ekler.
+Azure ağ dokusunun depolama hesabı genel uç noktasına ulaşmak için sanal ağdan gelen trafiğe izin verilmesi için, sanal ağın alt ağında `Microsoft.Storage` hizmet uç noktası açık olmalıdır. Aşağıdaki CLı komutları, `Microsoft.Storage` hizmet uç noktasını henüz yoksa alt ağa ekler.
 
 ```bash
 serviceEndpoints=$(az network vnet subnet show \
@@ -612,7 +612,7 @@ then
 fi
 ```
 
-Depolama hesabı trafiğini kısıtlamanın son adımı, bir ağ kuralı oluşturmak ve depolama hesabının ağ kuralı kümesine eklemektir.
+Depolama hesabıyla trafiği kısıtlayan son adım bir ağ kuralı oluşturmak ve depolama hesabının ağ kural kümesine eklemektir.
 
 ```bash
 az storage account network-rule add \
@@ -632,6 +632,6 @@ az storage account update \
 ---
 
 ## <a name="see-also"></a>Ayrıca bkz.
-- [Azure Dosyaları ağ la ilgili hususlar](storage-files-networking-overview.md)
-- [Azure Dosyaları için DNS yönlendirmeyi yapılandırma](storage-files-networking-dns.md)
-- [Azure Dosyaları için S2S VPN Yapılandırma](storage-files-configure-s2s-vpn.md)
+- [Azure dosyaları ağ iletişimi konuları](storage-files-networking-overview.md)
+- [Azure Dosyalar için DNS iletmeyi yapılandırma](storage-files-networking-dns.md)
+- [Azure dosyaları için S2S VPN 'i yapılandırma](storage-files-configure-s2s-vpn.md)

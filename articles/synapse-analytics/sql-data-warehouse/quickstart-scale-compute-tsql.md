@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'te hesaplamayı ölçeklendirin - T-SQL
-description: T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure Synapse Analytics'te hesaplamayı ölçeklendirin. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
+title: Azure SYNAPSE Analytics-T-SQL içinde ölçeklendirme işlemi
+description: T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure SYNAPSE Analytics 'te işlem ölçeğini ölçeklendirin. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 780137c8e081917b317656de3caba60dfaea4810
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80633739"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Quickstart: T-SQL kullanarak Azure Synapse Analytics'te hesaplamayı ölçeklendirin
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak Azure SYNAPSE Analytics 'te işlem ölçekleme
 
-T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure Synapse Analytics'te (eski adıyla SQL DW) hesaplamayı ölçeklendirin. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
+T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -30,7 +30,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ## <a name="create-a-data-warehouse"></a>Veri ambarı oluşturma
 
-[Hızlı Başlangıç: Oluşturma ve bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanarak **mySampleDataWarehouse** adlı bir veri ambarı oluşturun. Bir güvenlik duvarı kuralına sahip olduğundan ve sql server management studio içinden veri ambarınıza bağlanabildiğinizden emin olmak için hızlı başlatmayı tamamlayın.
+[Hızlı Başlangıç: Oluşturma ve bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanarak **mySampleDataWarehouse** adlı bir veri ambarı oluşturun. Bir güvenlik duvarı kuralınız olduğundan ve SQL Server Management Studio içinden veri ambarınıza bağlanabildiğinizden emin olmak için hızlı başlangıcı doldurun.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Sunucu yöneticisi olarak sunucuya bağlanma
 
@@ -43,16 +43,16 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
    | Ayar       | Önerilen değer | Açıklama |
    | ------------ | ------------------ | ------------------------------------------------- |
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
-   | Sunucu adı | Tam sunucu adı | İşte bir örnek: **mySampleDataWarehouseservername.database.windows.net**. |
+   | Sunucu adı | Tam sunucu adı | Örnek: **mySampleDataWarehouseservername.Database.Windows.net**. |
    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
    | Oturum Aç | Sunucu yöneticisi hesabı | Sunucuyu oluştururken belirttiğiniz hesap. |
-   | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluşturduğunuzda belirttiğiniz parola. |
+   | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluştururken belirttiğiniz parola. |
 
     ![Sunucuya bağlan](./media/quickstart-scale-compute-tsql/connect-to-server.png)
 
 3. **Bağlan**'a tıklayın. SSMS’te Nesne Gezgini penceresi açılır.
 
-4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından **mySampleDataWarehouse'u** yeni veritabanınızdaki nesneleri görüntülemek için genişletin.
+4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Ardından, yeni veritabanınızdaki nesneleri görüntülemek için **Mysampledatawarehouse** ' i genişletin.
 
     ![Veritabanı nesneleri](./media/quickstart-scale-compute-tsql/connected.png)
 
@@ -62,7 +62,7 @@ Hizmet hedefi ayarı, veri ambarı için veri ambarı birimleri sayısını içe
 
 Veri ambarınız için geçerli veri ambarı birimlerini görüntülemek için:
 
-1. **mySampleDataWarehouseservername.database.windows.net**bağlantı altında, **Sistem Veritabanları**genişletmek.
+1. **MySampleDataWarehouseservername.Database.Windows.net**bağlantısı altında **sistem veritabanları**' nı genişletin.
 2. **Ana** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
 3. sys.database_service_objectives dinamik yönetim görünümünden seçim yapmak için aşağıdaki sorguyu çalıştırın.
 
@@ -81,11 +81,11 @@ Veri ambarınız için geçerli veri ambarı birimlerini görüntülemek için:
 
 4. Aşağıdaki sonuçlar, **mySampleDataWarehouse** öğesinin DW400 hizmet hedefine sahip olduğunu gösterir.
 
-    ![iew-akım-dwu](./media/quickstart-scale-compute-tsql/view-current-dwu.png)
+    ![IEW-geçerli-DWU](./media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
-Azure Synapse'de, veri ambarı birimlerini ayarlayarak bilgi işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
+Azure SYNAPSE ' de, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
 Veri ambarı birimlerini değiştirmek için:
 
@@ -136,7 +136,7 @@ Bir veri ambarı duraklatıldığında için T-SQL ile buna bağlanamazsınız. 
 
 ## <a name="check-operation-status"></a>İşlem durumunu denetleme
 
-Azure Sinaps'ınızdaki çeşitli yönetim işlemleri hakkında bilgi vermek için [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV'de aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
+Azure SYNAPSE 'daki çeşitli yönetim işlemleri hakkında bilgi döndürmek için, [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV üzerinde aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
 
 ```sql
 SELECT *
@@ -150,7 +150,7 @@ AND
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure Synapse hakkında daha fazla bilgi edinmek için veri yükleme eğitimine devam edin.
+Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure SYNAPSE hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
->[Verileri Azure Synapse Analytics'e yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Azure SYNAPSE Analytics 'e veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)

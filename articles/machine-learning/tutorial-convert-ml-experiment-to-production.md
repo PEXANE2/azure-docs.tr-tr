@@ -1,39 +1,39 @@
 ---
-title: Makine öğrenimi deneme kodunu üretim koduna dönüştürme
+title: Machine Learning deneme kodunu üretim koduna Dönüştür
 titleSuffix: Azure Machine Learning
-description: MLOpsPython kod şablonunu kullanarak makine öğrenimi deneysel kodunu üretim koduna nasıl dönüştüreceklerini öğrenin.
+description: MLOpsPython Code şablonunu kullanarak makine öğrenimi deneysel kodunu üretim koduna dönüştürmeyi öğrenin.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/13/2020
 ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521433"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Öğretici: ML deneysel kodunu üretim koduna dönüştürün
+# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Öğretici: ML deneysel kodu üretim koduna Dönüştür
 
-Bir makine öğrenme projesi hipotezler gerçek veri kümeleri kullanarak Jupyter Notebook gibi çevik araçlar ile test edilmiştir deneme gerektirir. Model üretime hazır olduğunda, model kodu bir üretim kodu deposuna yerleştirilmelidir. Bazı durumlarda, model kodunun üretim kodu deposuna yerleştirilebilmek için Python komut dosyasına dönüştürülmesi gerekir. Bu öğretici, deneme kodunun Python komut dosyasına nasıl dışa aktarılacak bir yaklaşım olduğunu kapsar.
+Machine Learning projesi, gerçek veri kümelerini kullanarak Jupyter Notebook gibi çevik araçlarla deneme gerektirir. Model üretime hazırsa, model kodu bir üretim kodu deposuna yerleştirilmelidir. Bazı durumlarda, model kodu, üretim kodu deposuna yerleştirilecek Python betiklerine dönüştürülmelidir. Bu öğreticide, deneme kodunu Python betiklerine aktarma hakkında önerilen bir yaklaşım ele alınmaktadır.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Gereksiz kodu temizleme
-> * Jupyter Notebook kodunu işlevlere dönüştür
-> * İlgili görevler için Python komut dosyaları oluşturma
+> * Gereksiz kodu temizle
+> * Kodu işlevlere Jupyter Notebook yeniden düzenleme
+> * İlgili görevler için Python betikleri oluşturma
 > * Birim testleri oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [MLOpsPython şablonunu](https://github.com/microsoft/MLOpsPython/generate) oluşturun `experimentation/Diabetes Ridge Regression Training.ipynb` ve `experimentation/Diabetes Ridge Regression Scoring.ipynb` not defterlerini kullanın. Bu not defterleri denemeden üretime dönüştürmeye örnek olarak kullanılır. Bu defterleri [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation).
-- `nbconvert`yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında __nbconvert yükleme__ bölümü altında sadece yükleme yönergeleri izleyin.
+- [MLOpsPython şablonunu](https://github.com/microsoft/MLOpsPython/generate) oluşturun ve `experimentation/Diabetes Ridge Regression Training.ipynb` ve `experimentation/Diabetes Ridge Regression Scoring.ipynb` not defterlerini kullanın. Bu not defterleri, deneme 'den üretime dönüştürme örneği olarak kullanılır. Bu not defterlerini adresinde [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation)bulabilirsiniz.
+- `nbconvert`yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında, yalnızca __nbconvert 'i yükleme__ bölümündeki yükleme yönergelerini izleyin.
 
-## <a name="remove-all-nonessential-code"></a>Tüm gereksiz kodu kaldırma
+## <a name="remove-all-nonessential-code"></a>Tüm gereksiz kodu kaldır
 
-Deneme sırasında yazılan bazı kodlar yalnızca keşif amaçlıdır. Bu nedenle, deney kodunu üretim koduna dönüştürmek için ilk adım, bu gereksiz kodu kaldırmaktır. Gereksiz kodun kaldırılması da kodu daha koruyabilir hale getirecektir. Bu bölümde, `experimentation/Diabetes Ridge Regression Training.ipynb` kodu not defterinden kaldırırsınız. Şekli `X` yazdıran ifadeler `y` ve hücre `features.describe` araması yalnızca veri araştırması içindir ve kaldırılabilir. Gereksiz kodu kaldırdıktan `experimentation/Diabetes Ridge Regression Training.ipynb` sonra, işaretleme olmadan aşağıdaki kod gibi görünmelidir:
+Deneme sırasında yazılan bazı kodlar yalnızca keşif amaçlıdır. Bu nedenle, deneysel kodu üretim koduna dönüştürmenin ilk adımı, bu gereksiz kodu kaldırmayacak. Gerekli olmayan kodun kaldırılması kodu daha sürdürülebilir hale getirir. Bu bölümde kodu `experimentation/Diabetes Ridge Regression Training.ipynb` Not defterinden kaldıracaksınız. Ve `X` `y` ' nin şeklini ve öğesini çağıran `features.describe` hücre yazdırma deyimleri yalnızca veri araştırması için ve kaldırılabilir. Gereksiz kodu kaldırdıktan sonra, `experimentation/Diabetes Ridge Regression Training.ipynb` markaşağı olmadan aşağıdaki kod gibi görünmelidir:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -74,30 +74,30 @@ model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
 ```
 
-## <a name="refactor-code-into-functions"></a>Yeniden düzenleme kodu işlevlere
+## <a name="refactor-code-into-functions"></a>Kodu işlevlere yeniden düzenleme
 
-İkinci olarak, Jupyter kodunun işlevlere yeniden dahil edilmesi gerekiyor. Kodu işlevlere yeniden düzenleme birim sınamasını kolaylaştırır ve kodun daha korunabilir hale getirir. Bu bölümde, yeniden faktör olacak:
+İkincisi, Juprivcode 'un işlevlere yeniden düzenlenmiş olması gerekir. Kodu işlevlere yeniden düzenleme, birim testini daha kolay hale getirir ve kodu daha sürdürülebilir hale getirir. Bu bölümde, yeniden düzenleme yapacaksınız:
 
-- Diabetes Ridge Regresyon`experimentation/Diabetes Ridge Regression Training.ipynb`Eğitimi not defteri( )
-- Diabetes Ridge Regresyon`experimentation/Diabetes Ridge Regression Scoring.ipynb`Puanlama defteri( )
+- Diabetes Ridge Regresyon eğitimi Not defteri (`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- Diabetes Ridge Regresyon Puanlama Not defteri (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
-### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Fonksiyonlar içine Refactor Diabetes Ridge Regresyon Eğitim dizüstü
+### <a name="refactor-diabetes-ridge-regression-training-notebook-into-functions"></a>Diabetes Ridge gerileme eğitim Not defterini işlevlere yeniden düzenleme
 
-In `experimentation/Diabetes Ridge Regression Training.ipynb`, aşağıdaki adımları tamamlayın:
+' `experimentation/Diabetes Ridge Regression Training.ipynb`De, aşağıdaki adımları izleyin:
 
-1. Veri çerçevesini `split_data` test ve train verilerine bölmek için çağrılan bir işlev oluşturun. İşlev veri çerçevesini `df` parametre olarak almalı ve anahtarları `train` `test`içeren bir sözlük döndürmeli ve .
+1. Veri çerçevesini teste bölmek `split_data` ve verileri eğmek için adlı bir işlev oluşturun. İşlev, veri çerçevesini `df` bir parametre olarak almalıdır ve anahtarları ve `train` `test`anahtarlarını içeren bir sözlük döndürmelidir.
 
-    İşlev içine başlığı *Eğitim ve Doğrulama Kümeleri içine Bölünmüş Veri* altında kod taşıyın ve nesneyi döndürmek için değiştirin. `data` `split_data`
+    *Verileri bölmek Için verileri eğitim ve doğrulama kümeleri* başlığına `split_data` taşıyın ve `data` nesneyi döndürecek şekilde değiştirin.
 
-1. Parametreleri `train_model` `data` alan ve `args` eğitimli bir modeli döndüren , adlı bir işlev oluşturun.
+1. `data` Parametreleri `args` alan ve eğitilen bir model döndüren adlı `train_model`bir işlev oluşturun.
 
-    *Eğitim Kümesi'ndeki Eğitim Modeli* başlığı altındaki `train_model` kodu işleve taşıyın ve nesneyi döndürmek için değiştirin. `reg_model` `args` Sözlüğü kaldırın, değerler `args` parametreden gelecektir.
+    Kodu *eğitim kümesindeki başlık eğitimi modelinde* `train_model` işleve taşıyın ve `reg_model` nesneyi döndürecek şekilde değiştirin. `args` Sözlüğü kaldırma, değerler `args` parametreden gelir.
 
-1. Parametreleri `get_model_metrics` `reg_model` alan ve `data`modeli değerlendiren ve sonra eğitilen model için bir ölçüt sözlüğü döndüren , adlı bir işlev oluşturun.
+1. Parametresi ve `get_model_metrics` `reg_model` `data`parametrelerini değerlendiren ve sonra eğitilen model için ölçüm sözlüğünü döndüren adlı bir işlev oluşturun.
 
-    Kodu *Doğrulama Kümesi'ndeki Modeli doğrulama* işlevine `get_model_metrics` taşıyın ve nesneyi döndürmek için değiştirin. `metrics`
+    Kodu *doğrulama kümesi başlığındaki doğrulama modeli '* ndeki `get_model_metrics` işleve taşıyın ve `metrics` nesneyi döndürecek şekilde değiştirin.
 
-Üç işlev aşağıdaki gibi olmalıdır:
+Üç işlev şu şekilde olmalıdır:
 
 ```python
 # Split the dataframe into test and train data
@@ -127,11 +127,11 @@ def get_model_metrics(reg_model, data):
     return metrics
 ```
 
-Hala, `experimentation/Diabetes Ridge Regression Training.ipynb`aşağıdaki adımları tamamlamak:
+Hala içinde `experimentation/Diabetes Ridge Regression Training.ipynb`, aşağıdaki adımları izleyin:
 
-1. Hiçbir parametre `main`almaz ve hiçbir şey döndürür adlı yeni bir işlev oluşturun.
-1. Kodu "Veri Yükle" başlığı altında `main` işleve taşıyın.
-1. `main` İşlev içine yeni yazılmış işlevler için çağrı ekleme:
+1. Hiçbir parametre alıp hiçbir şey `main`döndürmemesi adlı yeni bir işlev oluşturun.
+1. "Verileri yükle" başlığının altındaki kodu `main` işleve taşıyın.
+1. `main` İşleve yeni yazılan işlevler için etkinleştirmeleri ekleyin:
     ```python
     # Split Data into Training and Validation Sets
     data = split_data(df)
@@ -149,9 +149,9 @@ Hala, `experimentation/Diabetes Ridge Regression Training.ipynb`aşağıdaki ad�
     # Validate Model on Validation Set
     metrics = get_model_metrics(reg, data)
     ```
-1. Kodu "Modeli Kaydet" başlığı altında `main` işleve taşıyın.
+1. Kodu, "modeli Kaydet" başlığının altındaki `main` işleve taşıyın.
 
-İşlev `main` aşağıdaki kod gibi görünmelidir:
+`main` İşlev aşağıdaki kod gibi görünmelidir:
 
 ```python
 def main():
@@ -181,15 +181,15 @@ def main():
     joblib.dump(value=reg, filename=model_name)
 ```
 
-Bu aşamada, not defterinde ilk hücredeki alma deyimleri dışında bir işlevde olmayan kod kalmalıdır.
+Bu aşamada, ilk hücrede içeri aktarma deyimleri dışında bir işlevde bulunmayan not defterinde kalan bir kod olmamalıdır.
 
-`main` İşlev çağıran bir deyim ekleyin.
+`main` İşlevi çağıran bir ifade ekleyin.
 
 ```python
 main()
 ```
 
-Yeniden düzenlemeden `experimentation/Diabetes Ridge Regression Training.ipynb` sonra, işaretleme olmadan aşağıdaki kod gibi görünmelidir:
+Yeniden düzenleme işleminden `experimentation/Diabetes Ridge Regression Training.ipynb` sonra, markafter olmadan aşağıdaki kod gibi görünmelidir:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -256,14 +256,14 @@ def main():
 main()
 ```
 
-### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Refactor Diabetes Ridge Regresyon Fonksiyonlara Not Defteri Puanlama
+### <a name="refactor-diabetes-ridge-regression-scoring-notebook-into-functions"></a>Diabetes Ridge Regresyon Puanlama Not defterini işlevlere yeniden düzenleme
 
-In `experimentation/Diabetes Ridge Regression Scoring.ipynb`, aşağıdaki adımları tamamlayın:
+' `experimentation/Diabetes Ridge Regression Scoring.ipynb`De, aşağıdaki adımları izleyin:
 
-1. Hiçbir parametre `init`almaz ve hiçbir şey döndürmeden adlandırılan yeni bir işlev oluşturun.
-1. Kodu "Yük Modeli" başlığı altında `init` işleve kopyalayın.
+1. Hiçbir parametre alıp hiçbir şey `init`döndürmemesi adlı yeni bir işlev oluşturun.
+1. "Model yükleme" başlığının altındaki kodu `init` işleve kopyalayın.
 
-İşlev `init` aşağıdaki kod gibi görünmelidir:
+`init` İşlev aşağıdaki kod gibi görünmelidir:
 
 ```python
 def init():
@@ -272,23 +272,23 @@ def init():
     model = joblib.load(model_path)
 ```
 
-`init` İşlev oluşturulduktan sonra, "Yük Modeli" başlığı altındaki tüm kodu `init` aşağıdaki gibi tek bir çağrıyla değiştirin:
+`init` İşlev oluşturulduktan sonra, "Load model" başlığı altındaki tüm kodu aşağıdaki `init` şekilde tek bir çağrısıyla değiştirin:
 
 ```python
 init()
 ```
 
-In `experimentation/Diabetes Ridge Regression Scoring.ipynb`, aşağıdaki adımları tamamlayın:
+' `experimentation/Diabetes Ridge Regression Scoring.ipynb`De, aşağıdaki adımları izleyin:
 
-1. Parametre olarak `run`ve `request_headers` aşağıdaki `raw_data` gibi bir sonuç sözlüğü döndüren ve döndüren yeni bir işlev oluşturun:
+1. Parametresi alan `raw_data` ve `request_headers` olarak çağrılan `run`yeni bir işlev oluşturun ve aşağıdaki gibi bir sonuç sözlüğü döndürür:
 
     ```python
     {"result": result.tolist()}
     ```
 
-1. Kodu "Veri Hazırlama" ve "Veri Puan" başlıkları `run` altında işleve kopyalayın.
+1. Kodu "hazırlama verileri" ve "veri puanı" başlıklarının `run` altına kopyalayın.
 
-    İşlev `run` aşağıdaki kod gibi görünmelidir (Değişkenleri `raw_data` ayarlayan ve `request_headers`işlev çağrıldığında daha `run` sonra kullanılacak olan ifadeleri kaldırmayı unutmayın):
+    `run` İşlev aşağıdaki kod gibi görünmelidir (değişkenleri `raw_data` belirleyen deyimleri kaldırmayı unutmayın ve `request_headers`bu, daha sonra `run` işlev çağrıldığında kullanılır):
 
     ```python
     def run(raw_data, request_headers):
@@ -299,7 +299,7 @@ In `experimentation/Diabetes Ridge Regression Scoring.ipynb`, aşağıdaki adım
         return {"result": result.tolist()}
     ```
 
-`run` İşlev oluşturulduktan sonra, "Veri Hazırlama" ve "Veri Puan" başlıkları altındaki tüm kodu aşağıdaki kodla değiştirin:
+`run` İşlev oluşturulduktan sonra, "veri hazırlama" ve "veri puanı" başlıklarının altındaki tüm kodu aşağıdaki kodla değiştirin:
 
 ```python
 raw_data = '{"data":[[1,2,3,4,5,6,7,8,9,10],[10,9,8,7,6,5,4,3,2,1]]}'
@@ -308,9 +308,9 @@ prediction = run(raw_data, request_header)
 print("Test result: ", prediction)
 ```
 
-Önceki kod değişkenleri `raw_data` `request_header`ayarlar ve `run` , `raw_data` `request_header`işlevi çağırır ve , ve tahminleri yazdırır.
+Önceki kod değişkenleri `raw_data` ayarlar ve `request_header`ile `run` `raw_data` `request_header`işlevi çağırır ve tahminleri yazdırır.
 
-Yeniden düzenlemeden `experimentation/Diabetes Ridge Regression Scoring.ipynb` sonra, işaretleme olmadan aşağıdaki kod gibi görünmelidir:
+Yeniden düzenleme işleminden `experimentation/Diabetes Ridge Regression Scoring.ipynb` sonra, markafter olmadan aşağıdaki kod gibi görünmelidir:
 
 ```python
 import json
@@ -339,27 +339,27 @@ print("Test result: ", prediction)
 
 ## <a name="combine-related-functions-in-python-files"></a>Python dosyalarında ilgili işlevleri birleştirme
 
-Üçüncü olarak, ilgili işlevlerin kodun yeniden kullanımına daha iyi yardımcı olması için Python dosyalarında birleştirilmesi gerekir. Bu bölümde, aşağıdaki not defterleri için Python dosyaları oluşturacaksınız:
+Kodun yeniden kullanılmasına daha fazla yardımcı olmak için, üçüncü ve ilgili işlevlerin Python dosyalarında birleştirilmesi gerekir. Bu bölümde, aşağıdaki Not defterleri için Python dosyaları oluşturacaksınız:
 
-- Diabetes Ridge Regresyon`experimentation/Diabetes Ridge Regression Training.ipynb`Eğitimi not defteri( )
-- Diabetes Ridge Regresyon`experimentation/Diabetes Ridge Regression Scoring.ipynb`Puanlama defteri( )
+- Diabetes Ridge Regresyon eğitimi Not defteri (`experimentation/Diabetes Ridge Regression Training.ipynb`)
+- Diabetes Ridge Regresyon Puanlama Not defteri (`experimentation/Diabetes Ridge Regression Scoring.ipynb`)
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Diabetes Ridge Regresyon Eğitimi dizüstü bilgisayarı için Python dosyası oluşturma
+### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Diabetes Ridge Regresyon eğitimi Not defteri için Python dosyası oluşturma
 
-Aşağıdaki ifadeyi `nbconvert` bir komut isteminde çalıştırarak not defterinizi çalıştırılabilir bir komut `experimentation/Diabetes Ridge Regression Training.ipynb`dosyasına dönüştürün:
+Aşağıdaki ifadeyi `nbconvert` paketini ve yolunu kullanan bir komut isteminde çalıştırarak not defterinizi yürütülebilir bir betiğe dönüştürün `experimentation/Diabetes Ridge Regression Training.ipynb`:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-Not defteri dönüştürüldükten `train.py`sonra, istenmeyen yorumları kaldırın. Aşağıdaki kod `main()` gibi koşullu bir çağırma ile dosyanın sonundaki çağrıyı değiştirin:
+Not defteri `train.py`' ne dönüştürüldükten sonra istenmeyen açıklamaları kaldırın. Dosyasının sonundaki çağrısını `main()` , aşağıdaki kod gibi bir koşullu çağrı ile değiştirin:
 
 ```python
 if __name__ == '__main__':
     main()
 ```
 
-Dosyanız `train.py` aşağıdaki kod gibi görünmelidir:
+`train.py` Dosyanız aşağıdaki kod gibi görünmelidir:
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -427,20 +427,20 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`artık çalıştırılarak `python train.py`bir terminalden çağrılabilir.
-İşlevler `train.py` diğer dosyalardan da çağrılabilir.
+`train.py`, artık çalıştırılarak `python train.py`bir terminalden çağrılabilir.
+Ayrıca, işlevleri `train.py` başka dosyalardan de çağrılabilir.
 
-MLOpsPython deposundaki `train_aml.py` `diabetes_regression/training` dizinde bulunan dosya, Azure Machine Learning `train.py` deneme çalışması bağlamında tanımlanan işlevleri çağırır. Fonksiyonlar, daha sonra bu kılavuzda ele alınan birim testlerinde de çağrılabilir.
+MLOpsPython `train_aml.py` deposundaki `diabetes_regression/training` dizininde bulunan dosya Azure Machine Learning deneme çalıştırması bağlamında içinde `train.py` tanımlanan işlevleri çağırır. İşlevler, bu kılavuzun ilerleyen kısımlarında ele alınan birim testlerinde de çağrılabilir.
 
-### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Diabetes Ridge Regresyon Puanlama not defteri için Python dosyası oluşturma
+### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Diabetes Ridge Regresyon Puanlama Not defteri için Python dosyası oluşturma
 
-Aşağıdaki ifadeyi `nbconvert` paketi ve aşağıdaki yolu kullanan bir komut isteminde çalıştırarak not `experimentation/Diabetes Ridge Regression Scoring.ipynb`defterinizi çalıştırılabilir bir komut dosyasına dahil edin:
+Aşağıdaki ifadeyi `nbconvert` paketini ve yolunu kullanan bir komut isteminde çalıştırarak not defterinizi yürütülebilir bir betiğe birlikte açın `experimentation/Diabetes Ridge Regression Scoring.ipynb`:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-Not defteri dönüştürüldükten `score.py`sonra, istenmeyen yorumları kaldırın. Dosyanız `score.py` aşağıdaki kod gibi görünmelidir:
+Not defteri `score.py`' ne dönüştürüldükten sonra istenmeyen açıklamaları kaldırın. `score.py` Dosyanız aşağıdaki kod gibi görünmelidir:
 
 ```python
 import json
@@ -467,13 +467,13 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-Değişkenin `model` genel olması gerekir, böylece komut dosyası boyunca görünür olur. İşlevin başında aşağıdaki ifadeyi `init` ekleyin:
+Betiğin `model` tamamında görünür olması için değişkenin genel olması gerekir. Aşağıdaki ifadeyi `init` işlevinin başına ekleyin:
 
 ```python
 global model
 ```
 
-Önceki deyim ekledikten `init` sonra, işlev aşağıdaki kod gibi görünmelidir:
+Önceki deyimin eklendikten sonra, `init` işlev aşağıdaki kod gibi görünmelidir:
 
 ```python
 def init():
@@ -487,17 +487,17 @@ def init():
 
 ## <a name="create-unit-tests-for-each-python-file"></a>Her Python dosyası için birim testleri oluşturma
 
-Dördüncü olarak, Python işlevleriniz için birim testleri oluşturun. Birim testleri kodu işlevsel gerilemelere karşı korur ve bakımı kolaylaştırır. Bu bölümde, `train.py`'deki işlevler için birim testleri oluşturacaksınız.
+Dördüncü olarak, Python işlevleriniz için birim testleri oluşturun. Birim testleri kodu işlevsel gerilemeler ile koruyabilir ve bakımını daha kolay hale getirir. Bu bölümde, içindeki `train.py`işlevler için birim testleri oluşturacağız.
 
-`train.py`birden çok işlev içerir, ancak bu öğreticide `train_model` Pytest çerçevesini kullanarak işlev için yalnızca tek bir birim testi oluştururuz. Pytest sadece Python birim test çerçevesi değil, ama en yaygın olarak kullanılan biridir. Daha fazla bilgi için [Pytest](https://pytest.org)adresini ziyaret edin.
+`train.py`birden çok işlev içerir, ancak bu öğreticide yalnızca Pytest çerçevesini kullanarak `train_model` işlev için tek bir birim testi oluşturacağız. Pytest tek Python birimi test çatısı değildir, ancak en sık kullanılan bir biridir. Daha fazla bilgi için [Pytest](https://pytest.org)' i ziyaret edin.
 
-Bir birim testi genellikle üç ana eylem içerir:
+Birim testi genellikle üç ana eylem içerir:
 
-- Nesneyi düzenleme - gerekli nesneleri oluşturma ve ayarlama
-- Bir nesneye göre hareket edin
-- Bekleneni ortaya koy
+- Nesne düzenleme-gerekli nesneleri oluşturma ve ayarlama
+- Bir nesne üzerinde işlem
+- Onay beklenildiği onaylama
 
-Birim testi bazı `train_model` sabit kodlanmış veriler ve bağımsız değişkenler ile çağırır ve bir tahmin yapmak için elde edilen eğitilen modeli kullanarak ve beklenen bir değer için bu tahmin karşılaştırarak beklendiği gibi `train_model` hareket doğrulayın.
+Birim testi, bazı sabit `train_model` kodlanmış veriler ve bağımsız değişkenlerle çağrı yapar ve bu tahmini bir tahmin `train_model` yapmak ve bu tahmini beklenen bir değerle karşılaştırmak için elde edilen eğitilen modeli kullanarak beklendiği gibi işlem yapıp yapmadığını doğrular.
 
 ```python
 import numpy as np
@@ -520,8 +520,8 @@ def test_train_model():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir denemeden üretim koduna nasıl dönüştürüldüğünü anladığınızdan, daha fazla bilgi ve sonraki adımlar için aşağıdaki bağlantılara bakın:
+Bir deneyden üretim koduna nasıl dönüştüreceğiniz artık daha fazla bilgi ve sonraki adımlar için aşağıdaki bağlantılara bakın:
 
-+ [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Boru Hatları ve Azure Machine Learning'i kullanarak kendi modelinizi eğitmek, değerlendirmek ve dağıtmak için bir CI/CD ardışık hattı oluşturun
-+ [Azure ML deneme çalıştırmalarını ve ölçümlerini izleyin](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-+ [ML web hizmeti uç noktalarından veri izleme ve toplama](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Pipelines ve Azure Machine Learning kullanarak kendi modelinizi eğlendirmek, değerlendirmek ve dağıtmak IÇIN bir CI/CD işlem hattı oluşturun
++ [Azure ML deneme çalıştırmaları ve ölçümlerini izleme](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
++ [ML Web hizmeti uç noktalarından verileri izleme ve toplama](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

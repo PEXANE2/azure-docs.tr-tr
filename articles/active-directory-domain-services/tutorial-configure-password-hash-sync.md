@@ -1,6 +1,6 @@
 ---
-title: Azure AD Etki Alanı Hizmetleri için parola karma eşitlemesini etkinleştirme | Microsoft Dokümanlar
-description: Bu eğitimde, Azure AD Connect'i kullanarak Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanına parola karma senkronizasyonunu nasıl etkinleştirin öğrenin.
+title: Azure AD Domain Services için parola karma eşitlemesini etkinleştir | Microsoft Docs
+description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanına Azure AD Connect kullanarak parola karması eşitlemesini nasıl etkinleştireceğinizi öğrenin.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -10,70 +10,70 @@ ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
 ms.openlocfilehash: 4bf85a8e38a3cfc46fe4dbaf86639899e7267178
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80676600"
 ---
-# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: Karma ortamlar için Azure Active Directory Etki Alanı Hizmetlerinde parola eşitlemesini etkinleştirme
+# <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: karma ortamlarda Azure Active Directory Domain Services parola eşitlemeyi etkinleştirme
 
-Karma ortamlar için, bir Azure Etkin Dizin (Azure AD) kiracısı, Azure AD Connect'i kullanarak şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenecek şekilde yapılandırılabilir. Varsayılan olarak, Azure AD Connect, Azure Etkin Dizin Etki Alanı Hizmetleri (Azure AD DS) için gereken eski NT LAN Yöneticisi (NTLM) ve Kerberos parola çözümlerini eşitlemez.
+Karma ortamlarda, bir Azure Active Directory (Azure AD) kiracısı, Azure AD Connect kullanılarak şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenmek üzere yapılandırılabilir. Varsayılan olarak Azure AD Connect, eski NT LAN Manager (NTLM) ve Azure Active Directory Domain Services için gereken Kerberos parola karmalarını (Azure AD DS) eşitlemez.
 
-Azure AD DS'yi şirket içi AD DS ortamından senkronize edilmiş hesaplarla kullanmak için, NTLM ve Kerberos kimlik doğrulaması için gereken parola çözümlerini eşitlemek için Azure AD Connect'i yapılandırmanız gerekir. Azure AD Connect yapılandırıldıktan sonra, şirket içi hesap oluşturma veya parola değiştirme olayı da eski parola çözümlerini Azure AD ile eşitler.
+Azure AD DS 'yi şirket içi AD DS ortamından eşitlenen hesaplarla kullanmak için, NTLM ve Kerberos kimlik doğrulaması için gereken parola karmalarını eşitlemek üzere Azure AD Connect yapılandırmanız gerekir. Azure AD Connect yapılandırıldıktan sonra, şirket içi hesap oluşturma veya parola değiştirme olayı da eski parola karmalarını Azure AD ile eşitler.
 
-Şirket içinde AD DS ortamı olmayan yalnızca bulut hesapları kullanıyorsanız, bu adımları gerçekleştirmeniz gerekmez.
+Şirket içi AD DS ortamı olmayan salt bulut hesapları kullanıyorsanız, bu adımları gerçekleştirmeniz gerekmez.
 
-Bu öğreticide şunları öğreniyorsunuz:
+Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Neden eski NTLM ve Kerberos şifre haşiyegereklidir
-> * Azure AD Connect için eski parola karma senkronizasyonu nasıl yapılandırılabilen
+> * Eski NTLM ve Kerberos parola karmalarının neden olması gerekir
+> * Azure AD Connect için eski parola karması eşitlemesini yapılandırma
 
-Azure aboneliğiniz yoksa, başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdaki kaynaklara ihtiyacınız var:
+Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
 * Etkin bir Azure aboneliği.
-    * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* Aboneliğinizle ilişkili ve Azure AD Connect'i kullanarak şirket içi bir diziniyle eşitlenmiş bir Azure Etkin Dizin kiracısı.
-    * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
-    * Gerekirse, [parola karma eşitleme için Azure AD Connect'i etkinleştirin.][enable-azure-ad-connect]
-* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
-    * Gerekirse, [bir Azure Etkin Dizin Etki Alanı Hizmetleri örneği oluşturun ve yapılandırın.][create-azure-ad-ds-instance]
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure AD Connect kullanılarak şirket içi dizin ile eşitlenen aboneliğinizle ilişkili bir Azure Active Directory kiracısı.
+    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
+    * Gerekirse [Parola karması eşitlemesi için Azure AD Connect etkinleştirin][enable-azure-ad-connect].
+* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
+    * Gerekirse, [bir Azure Active Directory Domain Services örneği oluşturun ve yapılandırın][create-azure-ad-ds-instance].
 
-## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Azure AD Connect'i kullanarak parola karma senkronizasyonu
+## <a name="password-hash-synchronization-using-azure-ad-connect"></a>Azure AD Connect kullanarak parola karması eşitlemesi
 
-Azure AD Connect, şirket içi AD DS ortamından kullanıcı hesapları ve gruplar gibi nesneleri Azure AD kiracısına eşitlemek için kullanılır. İşlemin bir parçası olarak, parola karma eşitleme hesaplarının ön-prem AD DS ortamında ve Azure AD'de aynı parolayı kullanmasını sağlar.
+Azure AD Connect, Kullanıcı hesapları ve gruplar gibi nesneleri şirket içi AD DS ortamından bir Azure AD kiracısına eşleştirmek için kullanılır. İşlem kapsamında, Parola karması eşitlemesi hesapların şirket içi AD DS ortamında ve Azure AD 'de aynı parolayı kullanmasını sağlar.
 
-Azure AD DS, yönetilen etki alanında kullanıcıların kimliğini doğrulamak için NTLM ve Kerberos kimlik doğrulaması için uygun bir biçimde parola hashes'e ihtiyaç duyar. Azure AD, parola hatalarını, kiracınız için Azure AD DS'sini etkinleştirene kadar NTLM veya Kerberos kimlik doğrulaması için gerekli biçimde depolamaz. Azure AD, güvenlik nedeniyle parola kimlik bilgilerini açık metin biçiminde de depolamaz. Bu nedenle, Azure AD bu NTLM veya Kerberos parola hatalarını kullanıcıların varolan kimlik bilgilerini temel alarak otomatik olarak oluşturamaz.
+Yönetilen etki alanındaki kullanıcıların kimliğini doğrulamak için Azure AD DS, NTLM ve Kerberos kimlik doğrulaması için uygun bir biçimde parola karmaları gerektirir. Azure AD, kiracınız için Azure AD DS etkinleştirene kadar parola karmalarını NTLM veya Kerberos kimlik doğrulaması için gereken biçimde depolamaz. Azure AD, güvenlik nedenleriyle şifresiz metin biçiminde hiçbir parola kimlik bilgisi depolamaz. Bu nedenle, Azure AD kullanıcıların mevcut kimlik bilgilerini temel alarak bu NTLM veya Kerberos parola karmalarını otomatik olarak üretemiyor.
 
-Azure AD Connect, Azure AD DS için gerekli NTLM veya Kerberos parola hatalarını eşitlemek üzere yapılandırılabilir. [Parola karma eşitleme için Azure AD Connect'i etkinleştirme][enable-azure-ad-connect]adımlarını tamamladığınızdan emin olun. Varolan bir Azure AD Connect örneğiniz varsa, NTLM ve Kerberos için eski parola hatalarını eşitleyebildiğinizden emin olmak için [en son sürüme indirin ve güncelleyin.][azure-ad-connect-download] Bu işlevsellik, Azure AD Connect'in ilk sürümlerinde veya eski DirSync aracında kullanılamaz. Azure AD Connect sürümü *1.1.614.0* veya sonraki sürüm gereklidir.
+Azure AD Connect, Azure AD DS için gerekli NTLM veya Kerberos parola karmalarını eşitleyecek şekilde yapılandırılabilir. [Parola karması eşitlemesi için Azure AD Connect etkinleştirme][enable-azure-ad-connect]adımlarını tamamladığınızdan emin olun. Azure AD Connect var olan bir örneğiniz varsa, NTLM ve Kerberos için eski parola karmalarını eşitlediğinizden emin olmak için [en son sürüme indirin ve güncelleştirin][azure-ad-connect-download] . Bu işlevsellik Azure AD Connect erken sürümlerinde veya eski DirSync aracıyla kullanılamaz. Azure AD Connect Version *1.1.614.0* veya üzeri gereklidir.
 
 > [!IMPORTANT]
-> Azure AD Connect yalnızca şirket içi AD DS ortamlarıyla senkronizasyon için yüklenmeli ve yapılandırılmalıdır. Azure AD Connect'i Azure AD DS yönetilen bir etki alanına yüklemek için desteklenmez.
+> Azure AD Connect yalnızca şirket içi AD DS ortamları ile eşitleme için yüklenmeli ve yapılandırılmalıdır. Nesneleri Azure AD 'ye geri eşitlemeniz için Azure AD DS tarafından yönetilen bir etki alanına Azure AD Connect yüklemek desteklenmez.
 
-## <a name="enable-synchronization-of-password-hashes"></a>Parola varlıklarının eşitlemesini etkinleştirme
+## <a name="enable-synchronization-of-password-hashes"></a>Parola karmalarının eşitlenmesini etkinleştir
 
-Azure AD Connect yüklü ve Azure AD ile senkronize olacak şekilde yapılandırıldı, şimdi NTLM ve Kerberos için eski parola karma eşitlemesini yapılandırın. PowerShell komut dosyası, gerekli ayarları yapılandırmak ve ardından Azure AD için tam parola eşitlemesi başlatmak için kullanılır. Bu Azure AD Connect parola karma eşitleme işlemi tamamlandığında, kullanıcılar eski NTLM veya Kerberos parola karmalarını kullanan Azure AD DS aracılığıyla uygulamalarda oturum açabilir.
+Azure AD Connect yüklendi ve Azure AD ile eşitlenecek şekilde yapılandırıldıysa, artık NTLM ve Kerberos için eski parola karması eşitlemesini yapılandırın. Gerekli ayarları yapılandırmak ve ardından Azure AD 'ye tam parola eşitlemeyi başlatmak için bir PowerShell betiği kullanılır. Azure AD Connect Parola karması eşitleme işlemi tamamlandığında, kullanıcılar, eski NTLM veya Kerberos parola karmaları kullanan Azure AD DS aracılığıyla uygulamalarda oturum açabilirler.
 
-1. Azure AD Connect yüklü bilgisayarda Başlat menüsünden **Azure AD Connect > Senkronizasyon Hizmeti'ni**açın.
-1. **Bağlayıcılar** sekmesini seçin. Şirket içi AD DS ortamı ile Azure AD ortamı arasındaki eşitlemayı oluşturmak için kullanılan bağlantı bilgileri listelenir.
+1. Azure AD Connect yüklü bilgisayarda, Başlat menüsünden, **Azure AD Connect > eşitleme hizmetini**açın.
+1. **Bağlayıcılar** sekmesini seçin. Şirket içi AD DS ortamı ile Azure AD arasında eşitleme oluşturmak için kullanılan bağlantı bilgileri listelenir.
 
-    **Tür,** Azure AD bağlayıcısı için *Windows Azure Etkin Dizin (Microsoft)* veya şirket içi AD DS bağlayıcısı için *Active Directory Etki Alanı Hizmetlerini* gösterir. Bir sonraki adımda PowerShell komut dosyasında kullanılacak bağlayıcı adlarını not alın.
+    **Tür** , Azure AD Bağlayıcısı için *Windows Azure Active Directory (Microsoft)* veya şirket içi AD DS Bağlayıcısı için *Active Directory Domain Services* gösterir. Bir sonraki adımda PowerShell betiğindeki kullanılacak bağlayıcı adlarını bir yere göz önünde alın.
 
-    ![Bağlayıcı adlarını Eşitleme Servis Yöneticisi'nde listele](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
+    ![Bağlayıcı adlarını eşitlenmiş Service Manager listeleyin](media/tutorial-configure-password-hash-sync/service-sync-manager.png)
 
     Bu örnek ekran görüntüsünde aşağıdaki bağlayıcılar kullanılır:
 
-    * Azure AD bağlayıcısının adı *contoso.onmicrosoft.com - AAD*
-    * Şirket içi AD DS konektörü *onprem.contoso.com*
+    * Azure AD Bağlayıcısı adı *contoso.onmicrosoft.com-AAD*
+    * Şirket içi AD DS Bağlayıcısı *OnPrem.contoso.com* olarak adlandırılmıştır
 
-1. Aşağıdaki PowerShell komut dosyasını Azure AD Connect yüklü bilgisayara kopyalayıp yapıştırın. Komut dosyası, eski parola işbadetlerini içeren tam bir parola eşitlemeyi tetikler. Önceki `$azureadConnector` adımdaki bağlayıcı adlarıyla ve `$adConnector` değişkenleri güncelleştirin.
+1. Aşağıdaki PowerShell betiğini kopyalayıp Azure AD Connect yüklü bilgisayara yapıştırın. Betik, eski parola karmalarını içeren tam bir parola eşitlemesini tetikler. `$azureadConnector` Ve `$adConnector` değişkenlerini önceki adımdaki bağlayıcı adlarıyla güncelleştirin.
 
-    Şirket içi hesap NTLM ve Kerberos parola hashes'lerini Azure AD ile senkronize etmek için bu komut dosyasını her AD ormanında çalıştırın.
+    Şirket içi hesap NTLM ve Kerberos parola karmalarını Azure AD ile eşleştirmek için bu betiği her bir AD ormanında çalıştırın.
 
     ```powershell
     # Define the Azure AD Connect connector names and import the required PowerShell module
@@ -97,18 +97,18 @@ Azure AD Connect yüklü ve Azure AD ile senkronize olacak şekilde yapılandır
     Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true
     ```
 
-    Hesap ve grup sayısı açısından dizininizin boyutuna bağlı olarak, eski parola karfetlerinin Azure AD ile eşitlenmesi biraz zaman alabilir. Parolalar, Azure AD ile eşitlendikten sonra Azure AD DS yönetilen etki alanına eşitlenir.
+    Hesap ve grup sayısı bakımından dizininizin boyutuna bağlı olarak, eski parola karmalarının Azure AD 'ye eşitlenmesi biraz zaman alabilir. Daha sonra, parolalar Azure AD ile eşitlendikten sonra Azure AD DS yönetilen etki alanı ile eşitlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Neden eski NTLM ve Kerberos şifre haşiyegereklidir
-> * Azure AD Connect için eski parola karma senkronizasyonu nasıl yapılandırılabilen
+> * Eski NTLM ve Kerberos parola karmalarının neden olması gerekir
+> * Azure AD Connect için eski parola karması eşitlemesini yapılandırma
 
 > [!div class="nextstepaction"]
-> [Azure AD Etki Alanı Hizmetleri yönetilen etki alanında eşitlemenin nasıl çalıştığını öğrenin](synchronization.md)
+> [Azure AD Domain Services yönetilen bir etki alanında eşitlemenin nasıl çalıştığını öğrenin](synchronization.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

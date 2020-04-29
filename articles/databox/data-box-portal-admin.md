@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Kutusu'nun, Azure Veri Kutusu'nun Azure portalı üzerinden yönetin | Microsoft Dokümanlar
-description: Azure Veri Kutusu ve Azure Veri Kutusu Ağır'ınızı yönetmek için Azure portalını nasıl kullanacağınızı açıklar.
+title: Azure Data Box, Azure Data Box Heavy Azure portal aracılığıyla yönetme | Microsoft Docs
+description: Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260000"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Veri Kutunuzu ve Azure Veri Kutusu Ağır'ınızı yönetmek için Azure portalını kullanın
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
-Bu makale, hem Azure Veri Kutusu hem de Azure Veri Kutusu Ağır için geçerlidir. Bu makalede, Azure Veri Kutusu aygıtında gerçekleştirilebilecek bazı karmaşık iş akışları ve yönetim görevleri açıklanmaktadır. Veri Kutusu aygıtını Azure portalı üzerinden veya yerel web web ui üzerinden yönetebilirsiniz.
+Bu makale hem Azure Data Box hem de Azure Data Box Heavy için geçerlidir. Bu makalede Azure Data Box cihazında gerçekleştirilebilecek karmaşık iş akışlarının ve yönetim görevlerinin bazıları açıklanmaktadır. Data Box cihazı Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz.
 
-Bu makale, Azure portalı kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır. Siparişleri yönetmek, Veri Kutusu aygıtını yönetmek ve tamamlanmaya devam ederken siparişin durumunu izlemek için Azure portalını kullanın.
+Bu makale, Azure portalı kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır. Azure portal kullanarak siparişleri yönetin, Data Box cihazı yönetin ve tamamlanana kadar siparişin durumunu izleyin.
 
 
 ## <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir. Siparişi yalnızca sipariş işleme alınmadan önce iptal edebilirsiniz. Sipariş işlendikten ve Veri Kutusu cihazı hazırlandıktan sonra siparişi iptal etmek mümkün değildir.
+Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir. Siparişi yalnızca sipariş işleme alınmadan önce iptal edebilirsiniz. Sipariş işlendikten ve Data Box cihaz hazırlandıktan sonra, siparişi iptal etmek mümkün değildir.
 
 Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
@@ -40,7 +40,7 @@ Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="clone-an-order"></a>Siparişi kopyalama
 
-Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri aktarımı için daha önceden Data Box kullanmıştır. Daha fazla veri oluşturuldukça, bu verileri Azure'a aktarmak için başka bir Veri Kutusu aygıtına ihtiyaç vardır. Bu durumda aynı sipariş kopyalanabilir.
+Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri aktarımı için daha önceden Data Box kullanmıştır. Daha fazla veri üretilmeden, bu verileri Azure 'a aktarmaya yönelik başka bir Data Box cihazının olması gerekir. Bu durumda aynı sipariş kopyalanabilir.
 
 Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
@@ -48,7 +48,7 @@ Siparişi kopyalamak için aşağıdaki adımları gerçekleştirin.
 
     ![Siparişi kopyalama 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur'u**tıklatın.
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**' a tıklayın.
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -65,11 +65,11 @@ Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi si
 
     ![Data Box siparişini silme 1](media/data-box-portal-admin/delete-order1.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil'i**tıklatın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**' e tıklayın.
 
 ## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
 
-Data Box’unuzun E-ink ekranı çalışmıyorsa ve iade gönderimi etiketini göstermiyorsa gönderim etiketini indirmeniz gerekebilir. Data Box Heavy'de E-mürekkep ekranı yoktur ve bu nedenle bu iş akışı Data Box Heavy için geçerli değildir.
+Data Box’unuzun E-ink ekranı çalışmıyorsa ve iade gönderimi etiketini göstermiyorsa gönderim etiketini indirmeniz gerekebilir. Data Box Heavy bir E-mürekkep görüntülenmez ve bu nedenle bu iş akışı Data Box Heavy için uygulanmaz.
 
 Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 
@@ -77,7 +77,7 @@ Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 
     ![Sevkiyat etiketini indirme](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin ve yazdırın. Etiketi katlayın ve cihazdaki açık kola takın. Etiketin görünür olduğundan emin olun. Cihazdaki önceki gönderimden kalan tüm çıkartmaları sökün.
+2.  Aşağıda gösterilen iade sevkiyat etiketi indirilir. Etiketi kaydedin ve yazdırın. Etiketi katlamalı ve cihazdaki açık manşon içine ekleyin. Etiketin görünür olduğundan emin olun. Cihazdaki önceki gönderimden kalan tüm çıkartmaları sökün.
 
     ![Örnek sevkiyat etiketi](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -97,7 +97,7 @@ Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenleme
 
-Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları değiştirmek isteyebilirsiniz. Örneğin cihaz teslim edildiğinde veya alındığında bir kullanıcının bilgilendirilmesi gerekebilir. Verileri kaynaktan silmeden önce Azure depolama hesabında olduğunu doğrulayabilmeleri için veri kopyası tamamlandığında başka bir kullanıcının bilgilendirilmesi gerekebilir. Bu gibi durumlarda bildirim ayrıntılarını düzenleyebilirsiniz.
+Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları değiştirmek isteyebilirsiniz. Örneğin cihaz teslim edildiğinde veya alındığında bir kullanıcının bilgilendirilmesi gerekebilir. Verilerin kaynaktan silinmeden önce Azure depolama hesabında olduğunu doğrulayabilmeleri için, veri kopyalama işlemi tamamlandığında başka bir kullanıcının bilgilendirilmesi gerekebilir. Bu gibi durumlarda bildirim ayrıntılarını düzenleyebilirsiniz.
 
 Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
@@ -120,10 +120,10 @@ Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
     ![Sipariş geçmişi indirme](media/data-box-portal-admin/download-order-history-1.png)
 
-2. **Sipariş geçmişini indir**'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Veri Kutusu Ağır'daki iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
+2. **Sipariş geçmişini indir**'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Data Box Heavy iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
     
    - **Kopyalama günlükleri** - Data Box'tan Azure depolama hesabınıza veri kopyalama sırasında hatalı çıkış veren dosyaların listesini içerir.
-   - **Denetim günlükleri** - Azure veri merkezinin dışında yken Veri Kutusu'ndaki paylaşımları nasıl açAbildiğini ve bu paylaşımlara nasıl erişeceklerine ilişkin bilgiler içerir.
+   - **Denetim günlükleri** -Azure veri merkezi 'nin dışında olduğunda Data Box paylaşımlara açma ve paylaşımlara erişme hakkında bilgi içerir.
    - **BOM dosyaları** - **Göndermeye hazırlama** sırasında indirebileceğiniz dosyaların listesini (dosya bildirimi olarak da bilinir) ve dosyaların adlarını, boyutlarını ve sağlama toplamlarını içerir.
 
        ```
@@ -207,8 +207,8 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 |Alındı     | Cihazınız alındı ve Azure veri merkezinde tarandı. <br> Gönderi incelendikten sonra cihaz karşıya yüklemesi başlar.      |
 |Veri kopyalama     | Veri kopyalama işlemi devam ediyor. Azure portal’da siparişinizin kopyalama ilerleme durumunu takip edin. <br> Veri kopyalama işlemi tamamlanana kadar bekleyin. |
 |Tamamlandı       |Sipariş başarıyla tamamlandı.<br> Şirket içi verilerini sunuculardan silmeden önce verilerinizin Azure’a kopyalandığından emin olun.         |
-|Hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. [Yükleme hatalarla tamamlandığında kopyalama günlüklerinin örneklerine](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)bakın.   |
-|Uyarılarla tamamlandı| Veri kopyası tamamlandı, ancak verileriniz değiştirildi. Veriler, dosya veya blob adlarını değiştirerek düzeltilen kritik olmayan blob veya dosya adı hatalarına sahipti. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Verilerinizdeki değişikliklere not verin. [Yükleme uyarılarla tamamlandığında kopyalama günlüklerinin örneklerine](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)bakın.   |
+|Hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. [Karşıya yükleme hatalarla tamamlandığında kopyalama günlüklerine örneklere](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)bakın.   |
+|Uyarılarla tamamlandı| Veri kopyalama tamamlandı, ancak verileriniz değiştirildi. Veriler, dosya veya blob adlarını değiştirerek düzeltilen kritik olmayan BLOB veya dosya adı hatalarıyla karşılaştı. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Verilerdeki değişikliklere bir göz önünde bir dikkat edin. [Karşıya yükleme uyarılarla tamamlandığında, kopyalama günlüklerine örneklere](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)bakın.   |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal ettiniz veya bir hatayla karşılaşıldı ve sipariş, hizmet tarafından iptal edildi. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
 |Temizleme | Cihaz sürücülerindeki veriler silinir. Cihaz temizleme; sipariş geçmişi Azure portalından indirilmeye hazır olduğunda tamamlanmış olarak değerlendirilir.|
 
@@ -216,4 +216,4 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Veri Kutusu ve Veri Kutusu Ağır sorunları nasıl giderme](data-box-troubleshoot.md)öğrenin.
+- [Data Box ve Data Box Heavy sorunlarını giderme](data-box-troubleshoot.md)hakkında bilgi edinin.

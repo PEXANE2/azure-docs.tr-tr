@@ -5,36 +5,36 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671362"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Geliştirme ortamınızı ayarlayın ve boş bir proje oluşturun](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Doğrudan Satır Konuşma [kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
-> * Ses çekimi için mikrofona erişebildiğinizden emin olun
+> * [Azure konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Geliştirme ortamınızı ayarlama ve boş bir proje oluşturma](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
+> * [Doğrudan hat konuşma kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 > 
   > [!NOTE]
-  > Lütfen [sesli asistanlar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) bakın ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+  > Lütfen [sesli Yardımcılar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
-## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
+## <a name="open-your-project-in-visual-studio"></a>Projenizi Visual Studio 'da açın
 
-İlk adım, visual studio'da projenizin açık olduğundan emin olmaktır.
+İlk adım, projenizin Visual Studio 'da açık olduğundan emin olmak.
 
-## <a name="start-with-some-boilerplate-code"></a>Bazı ortak kodile başlayın
+## <a name="start-with-some-boilerplate-code"></a>Bazı demirbaş kodla başlayın
 
-Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
+Projemiz için bir çatı olarak çalışacak bir kod ekleyelim.
 
-1. **Çözüm Gezgini'nde**, açık `MainPage.xaml`.
+1. **Çözüm Gezgini**' de, `MainPage.xaml`öğesini açın.
 
-1. Tasarımcının XAML görünümünde, tüm içeriği temel bir kullanıcı arabirimi tanımlayan aşağıdaki parçacıkla değiştirin:
+1. Tasarımcının XAML görünümünde, tüm içeriği bir ilkel Kullanıcı arabirimini tanımlayan aşağıdaki kod parçacığına değiştirin:
 
     ```xml
     <Page
@@ -81,15 +81,15 @@ Projemiz için iskelet görevi gören bazı kodlar ekleyelim.
     </Page>
     ```
 
-Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için güncelleştirilir.
+Tasarım görünümü, uygulamanın kullanıcı arabirimini gösterecek şekilde güncelleştirilir.
 
-1. **Çözüm Gezgini'nde,** kod arkasındaki `MainPage.xaml.cs`kaynak dosyayı açın. (Bu altında `MainPage.xaml`gruplandı .) Bu dosyanın içeriğini aşağıdakilerle değiştirin:
+1. **Çözüm Gezgini**' de, arka plan kod kaynak dosyasını `MainPage.xaml.cs`açın. (Altında `MainPage.xaml`gruplandırılır.) Bu dosyanın içeriğini aşağıdaki gibi değiştirin:
 
-- `using``Speech` ve `Speech.Dialog` ad boşlukları için ifadeler
-- Bir düğme işleyicisine bağlı mikrofon erişimi sağlamak için basit bir uygulama
-- İletileri ve uygulamadaki hataları sunmak için temel Kullanıcı Arabirimi yardımcıları
-- Daha sonra doldurulacak başlatma kodu yolu için bir iniş noktası
-- Metinden konuşmaya oynatma (akış desteği olmadan)
+- `using``Speech` ve `Speech.Dialog` ad alanları için deyimler
+- Bir düğme işleyicisine kablolu, mikrofon erişimi sağlamak için basit bir uygulama
+- Uygulamada ileti ve hata sunmak için temel kullanıcı arabirimi yardımcıları
+- Daha sonra doldurulacak başlatma kodu yolu için bir giriş noktası
+- Metin okuma (akış desteği olmadan) çalmak için bir yardımcı
 - Daha sonra doldurulacak dinlemeye başlamak için boş bir düğme işleyicisi
 
     ```csharp
@@ -259,7 +259,7 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için gü
         }
     }
     ```
-1. Yöntem gövdesine aşağıdaki kod parçacığı `InitializeDialogServiceConnector`ekleyin. Bu kod, `DialogServiceConnector` abonelik bilgilerinizle birlikte oluşturur.
+1. Aşağıdaki kod parçacığını öğesinin `InitializeDialogServiceConnector`yöntem gövdesine ekleyin. Bu kod, `DialogServiceConnector` abonelik bilgilerinizi içeren öğesini oluşturur.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
@@ -273,14 +273,14 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için gü
     ```
 
    > [!NOTE]
-   > Lütfen [sesli asistanlar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) bakın ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+   > Lütfen [sesli Yardımcılar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
    > [!NOTE]
-   > Botunuzu yapılandırma hakkında daha fazla bilgi için [Doğrudan Hat Konuşması kanalıiçin](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)Bot Framework belgelerine bakın.
+   > Botunuzu yapılandırma hakkında daha fazla bilgi için, [doğrudan hat konuşma kanalının](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)bot Framework belgelerine bakın.
 
-1. Konuşma aboneliğiniz `YourSpeechSubscriptionKey` `YourServiceRegion` ve [bölgeniz](~/articles/cognitive-services/speech-service/regions.md)için dizeleri ve kendi değerlerinizle değiştirin.
+1. Dizeleri `YourSpeechSubscriptionKey` ve `YourServiceRegion` , konuşma aboneliğiniz ve [bölgeniz](~/articles/cognitive-services/speech-service/regions.md)için kendi değerlerinizle değiştirin.
 
-1. Aşağıdaki kod parçacıklarını yöntem gövdesinin sonuna kadar ekler. `InitializeDialogServiceConnector` Bu kod, bot etkinliklerini, konuşma `DialogServiceConnector` tanıma sonuçlarını ve diğer bilgileri iletmek için güvenilen olaylar için işleyiciler kurar.
+1. Yöntemi gövdesinin sonuna aşağıdaki kod parçacığını ekleyin `InitializeDialogServiceConnector`. Bu kod, bot etkinlikleri, konuşma tanıma sonuçları ve diğer `DialogServiceConnector` bilgilerle iletişim kurmak için tarafından güvendiği olaylar için işleyicileri ayarlar.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için gü
     };
     ```
 
-1. `MainPage` Sınıfta yöntemin `ListenButton_ButtonClicked` gövdesine aşağıdaki kod parçacığı ekleyin. Yapılandırmayı zaten `DialogServiceConnector` oluşturduğunuz ve olay işleyicilerini kaydettiğiniz için bu kod dinlemek için ayarlar.
+1. Aşağıdaki kod parçacığını `ListenButton_ButtonClicked` `MainPage` sınıfındaki yönteminin gövdesine ekleyin. Yapılandırmayı zaten kurup olay `DialogServiceConnector` işleyicilerini kaydettirdiğiniz için bu kod dinlemek üzere ayarlanır.
 
     ```csharp
     if (connector == null)
@@ -364,21 +364,21 @@ Tasarım görünümü, uygulamanın kullanıcı arabirimini göstermek için gü
     }
     ```
     
-## <a name="build-and-run-your-app"></a>Uygulamanızı oluşturun ve çalıştırın
+## <a name="build-and-run-your-app"></a>Uygulamanızı derleyin ve çalıştırın
 
-Artık uygulamanızı oluşturmaya ve Konuşma hizmetini kullanarak özel ses asistanınızı test etmeye hazırsınız.
+Artık uygulamanızı oluşturmaya ve konuşma hizmetini kullanarak özel ses yardımcınızı test etmeye hazır olursunuz.
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözüm'üne** bakın' ı seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. Uygulamayı başlatmak için **Hata Ayıklama** > **Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna) seçin. **Helloworld** penceresi görüntülenir.
+1. Uygulamayı başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya F5 tuşuna basın). **F5** >  **HelloWorld** penceresi görüntülenir.
 
-   ![C# örnek UWP sesli asistan uygulaması - quickstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![C# ' de örnek UWP ses Yardımcısı uygulaması-hızlı başlangıç](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. **Mikrofonu Etkinleştir'i**seçin ve erişim izni isteği geldiğinde **Evet'i**seçin.
+1. **Mikrofonu etkinleştir**' i seçin ve erişim izni Isteği açıldığında **Evet**' i seçin.
 
-   ![Mikrofon erişim izni isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
+   ![Mikrofon erişimi izin isteği](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. **Botunuzla Konuş'u**seçin ve cihazınızın mikrofonuna İngilizce bir ifade veya cümle konuşun. Konuşmanız Doğrudan Satır Konuşması kanalına aktarılır ve pencerede görünen metne aktarılır.
+1. **Botunuz Için konuşun**' ı seçin ve cihazınızın mikrofonuna bir İngilizce tümcecik veya cümle konuşun. Konuşma, doğrudan hat konuşma kanalına iletilir ve pencerede görüntülenen metne kaydedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

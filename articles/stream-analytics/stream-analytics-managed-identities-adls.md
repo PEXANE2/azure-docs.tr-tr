@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama Gen1 için Azure Akış Analizini Doğrula
-description: Bu makalede, Azure Akış Analizi işinizi Azure Veri Gölü Depolama Gen1 çıktısına doğrulamak için yönetilen kimliklerin nasıl kullanılacağı açıklanmaktadır.
+title: Azure Data Lake Storage 1. Azure Stream Analytics kimlik doğrulama
+description: Bu makalede, Azure Data Lake Storage 1. çıkışı için Azure Stream Analytics işinizin kimliğini doğrulamak üzere yönetilen kimliklerin nasıl kullanılacağı açıklanır.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01741ea56b9e6f55c1393e88fc7991d410c33119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254384"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Yönetilen kimlikleri kullanarak Akış Analizini Azure Veri Gölü Depolama Gen1'e doğrulayın
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Yönetilen kimlikleri kullanarak Azure Data Lake Storage 1. Stream Analytics kimlik doğrulama
 
-Azure Akış Analizi, Azure Veri Gölü Depolama (ADLS) Gen1 çıkışıyla yönetilen kimlik doğrulamasını destekler. Kimlik, Azure Etkin Dizini'nde kayıtlı ve belirli bir Akış Analizi işini temsil eden yönetilen bir uygulamadır ve hedeflenen bir kaynağa kimlik doğrulamak için kullanılabilir. Yönetilen kimlikler, parola değişiklikleri veya her 90 günde bir gerçekleşen kullanıcı belirteç leri nedeniyle yeniden kimlik doğrulama gereksinimi gibi kullanıcı tabanlı kimlik doğrulama yöntemlerinin sınırlamalarını ortadan kaldırır. Ayrıca, yönetilen kimlikler, Azure Veri Gölü Depolama Gen1'e çıkan Stream Analytics iş dağıtımlarının otomasyonuna yardımcı olur.
+Azure Stream Analytics, Azure Data Lake Storage (ADLS) Gen1 çıkışıyla yönetilen kimlik kimlik doğrulamasını destekler. Kimlik, belirli bir Stream Analytics işini temsil eden Azure Active Directory kayıtlı yönetilen bir uygulamadır ve hedeflenen bir kaynağın kimliğini doğrulamak için kullanılabilir. Yönetilen kimlikler, her 90 günde bir oluşan parola değişiklikleri veya kullanıcı belirteci süre sonu nedeniyle yeniden kimlik doğrulaması yapılması gibi kullanıcı tabanlı kimlik doğrulama yöntemlerinin sınırlamalarını ortadan kaldırır. Ayrıca, Yönetilen kimlikler Azure Data Lake Storage 1. çıkış yapan Stream Analytics iş dağıtımlarının otomatikleştirilmesine yardımcı olur.
 
-Bu makalede, Azure portalı, Azure Kaynak Yöneticisi şablon dağıtımı ve Visual Studio için Azure Akış Analizi araçları aracılığıyla bir Azure Veri Gölü Depolama Gen1'e çıkan bir Azure Akış Analizi işi için yönetilen kimliği etkinleştirmenin üç yolu gösterilmektedir.
+Bu makalede, Visual Studio için Azure portal, Azure Resource Manager şablon dağıtımı ve Azure Stream Analytics araçları aracılığıyla bir Azure Data Lake Storage 1. çıkış yapan bir Azure Stream Analytics işi için yönetilen kimliği etkinleştirmek için üç yol gösterilmektedir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
-1. Yeni bir Akış Analizi işi oluşturarak veya Azure portalında varolan bir iş açarak başlayın. Ekranın sol tarafında bulunan menü çubuğundan, **Yapıl'ın**altında bulunan **Yönetilen Kimlik'i** seçin.
+1. Yeni bir Stream Analytics işi oluşturarak veya mevcut bir işi Azure portal açarak başlatın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin.
 
-   ![Akış Analizi yönetilen kimliğini yapılandırma](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Stream Analytics yönetilen kimliği yapılandırma](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Sağda görünen pencereden **Sistem atanmış Yönetilen Kimliği Kullan'ı** seçin. Azure Active Directory'deki Akış Analizi işinin kimliği için bir hizmet yöneticisine **Kaydet'i** tıklatın. Yeni oluşturulan kimliğin yaşam döngüsü Azure tarafından yönetilir. Akış Analizi işi silindiğinde, ilişkili kimlik (diğer bir şey, hizmet sorumlusu) Azure tarafından otomatik olarak silinir.
+2. Sağ tarafta görüntülenen pencereden **sistem tarafından atanan yönetilen kimliği kullan** ' ı seçin. Azure Active Directory Stream Analytics işinin kimliği için hizmet sorumlusuna **Kaydet** ' e tıklayın. Yeni oluşturulan kimliğin yaşam döngüsü Azure tarafından yönetilecektir. Stream Analytics işi silindiğinde, ilişkili kimlik (hizmet sorumlusu) Azure tarafından otomatik olarak silinir.
 
-   Yapılandırma kaydedildiğinde, hizmet sorumlusunun Nesne Kimliği (OID) aşağıda gösterildiği gibi Asıl Kimlik olarak listelenir:
+   Yapılandırma kaydedildiğinde, hizmet sorumlusunun nesne KIMLIĞI (OID) aşağıda gösterildiği gibi asıl KIMLIK olarak listelenir:
 
-   ![Stream Analytics hizmeti ana kimliği](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
+   ![Stream Analytics hizmet sorumlusu KIMLIĞI](./media/stream-analytics-managed-identities-adls/stream-analytics-principal-id.png)
  
-   Hizmet sorumlusu, Stream Analytics işiyle aynı ada sahiptir. Örneğin, işinizin adı **MyASAJob**ise, oluşturulan hizmet sorumlusunun adı da **MyASAJob'tır.**
+   Hizmet sorumlusu Stream Analytics işle aynı ada sahiptir. Örneğin, işinizin adı **MyASAJob**ise oluşturulan hizmet sorumlusu adı da **MyASAJob**olur.
 
-3. ADLS Gen1 çıktı lavabosundaki çıkış özellikleri penceresinde Kimlik Doğrulama modu açılır penceresini tıklatın ve **Yönetilen Kimlik **'yi seçin.
+3. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve * * yönetilen kimlik * * öğesini seçin.
 
-4. Diğer özellikleri doldurun. ADLS çıktısı oluşturma hakkında daha fazla bilgi edinmek için akış [analitiğiyle Veri gölü Deposu çıktısı oluşturma](../data-lake-store/data-lake-store-stream-analytics.md)bölümüne bakın. İşiniz bittiğinde **Kaydet**’e tıklayın.
+4. Kalan özellikleri doldurun. Bir ADLS çıkışı oluşturma hakkında daha fazla bilgi edinmek için bkz. [Stream Analytics Ile Data Lake Store çıkışı oluşturma](../data-lake-store/data-lake-store-stream-analytics.md). İşiniz bittiğinde **Kaydet**’e tıklayın.
 
-   ![Azure Veri Gölü Depolamayı Yapılandırma](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
+   ![Azure Data Lake Storage Yapılandır](./media/stream-analytics-managed-identities-adls/stream-analytics-configure-adls.png)
  
-5. ADLS Gen1'inizin Genel Bakış sayfasına gidin ve **Veri gezginine**tıklayın.
+5. ADLS 1. genel bakış sayfasına gidin ve **Veri Gezgini**' ne tıklayın.
 
-   ![Veri Gölü Depolamasına Genel Bakış'ı Yapılandır](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
+   ![Data Lake Storage genel bakış 'ı yapılandırın](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-overview.png)
 
-6. Veri gezgini bölmesinde **Access'i** seçin ve Access bölmesinde **Ekle'yi** tıklatın.
+6. Veri Gezgini bölmesinde, **erişim** ' i seçin ve erişim bölmesinde **Ekle** ' ye tıklayın.
 
-   ![Veri Gölü Depolama Erişimini Yapılandırma](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
+   ![Data Lake Storage erişimini yapılandırma](./media/stream-analytics-managed-identities-adls/stream-analytics-adls-access.png)
 
-7. Kullanıcı yı veya **grup** bölmesindeki metin kutusuna servis sorumlusunun adını yazın. Hizmet sorumlusunun adının aynı zamanda ilgili Akış Analizi işinin adı olduğunu unutmayın. Asıl adı yazmaya başladığınızda, metin kutusunun altında görünür. İstenilen hizmet ana adını seçin ve **Seç'i**tıklatın.
+7. **Kullanıcı veya Grup Seç** bölmesindeki metin kutusunda, hizmet sorumlusunun adını yazın. Hizmet sorumlusu adının de karşılık gelen Stream Analytics işinin adı olduğunu unutmayın. Asıl adı yazmaya başladığınızda metin kutusunun altında görünür. İstenen hizmet asıl adını seçip **Seç**' e tıklayın.
 
-   ![Hizmet ana adı seçin](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
+   ![Hizmet sorumlusu adı seçin](./media/stream-analytics-managed-identities-adls/stream-analytics-service-principal-name.png)
  
-8. **İzinler** bölmesinde, **Yazma** ve **Yürütme** izinlerini denetleyin ve **bu Klasör'e ve tüm alt çocuklara**atayın. Sonra **Tamam'ı**tıklatın.
+8. **İzinler** bölmesinde, **yazma** ve **yürütme** izinlerini denetleyin ve **Bu klasöre ve tüm alt öğelere**atayın. Ardından **Tamam**' a tıklayın.
 
-   ![Yazma ve kullanma izinlerini seçme](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
+   ![Yazma ve yürütme izinlerini seçin](./media/stream-analytics-managed-identities-adls/stream-analytics-select-permissions.png)
  
-9. Hizmet sorumlusu, aşağıda gösterildiği gibi **Erişim** bölmesindeki **Atanmış İzinler** altında listelenir. Artık geri dönüp Stream Analytics işinize başlayabilirsiniz.
+9. Hizmet sorumlusu aşağıda gösterildiği gibi **erişim** bölmesinde **atanan izinler** altında listelenir. Şimdi geri dönüp Stream Analytics işinizi başlatabilirsiniz.
 
-   ![Portaldaki Akış Analizi erişim listesi](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
+   ![Portalda erişim listesi Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
-   Veri Gölü Depolama Gen1 dosya sistemi izinleri hakkında daha fazla bilgi edinmek için [Azure Veri Gölü Depolama Gen1'de Erişim Denetimi'ne](../data-lake-store/data-lake-store-access-control.md)bakın.
+   Data Lake Storage 1. dosya sistemi izinleri hakkında daha fazla bilgi edinmek için bkz. [Azure Data Lake Storage 1. Access Control](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="stream-analytics-tools-for-visual-studio"></a>Visual Studio için Stream Analytics araçları
 
-1. JobConfig.json'da, **Kullanım Sistemi tarafından atanan Kimliği** **True**olarak ayarlayın.
+1. JobConfig. json dosyasında, **sistem tarafından atanan kimliği kullan** seçeneğini **true**olarak ayarlayın.
 
-   ![Stream Analytics iş config yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+   ![Stream Analytics iş yapılandırması tarafından yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. ADLS Gen1 çıktı lavabosundaki çıkış özellikleri penceresinde Kimlik Doğrulama modu açılır penceresini tıklatın ve **Yönetilen Kimlik **'yi seçin.
+2. ADLS 1. çıkış havuzunun çıkış özellikleri penceresinde, kimlik doğrulama modu açılan listesine tıklayın ve * * yönetilen kimlik * * öğesini seçin.
 
-   ![ADLS çıktı yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+   ![ADLS çıkış Yönetilen kimlikler](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 
-3. Özelliklerin geri kalanını doldurun ve **Kaydet'i**tıklatın.
+3. Özellikleri geri kalanı doldurun ve **Kaydet**' e tıklayın.
 
-4. Sorgu düzenleyicisinde **Azure'a Gönder'i** tıklatın.
+4. Sorgu Düzenleyicisi 'nde **Azure 'A Gönder ' e** tıklayın.
 
-   İşi gönderdiğiniz zaman, araçlar iki şey yapar:
+   İşi gönderdiğinizde araçlar iki şey yapar:
 
-   * Azure Active Directory'deki Akış Analizi işinin kimliği için otomatik olarak bir hizmet ilkesi oluşturur. Yeni oluşturulan kimliğin yaşam döngüsü Azure tarafından yönetilir. Akış Analizi işi silindiğinde, ilişkili kimlik (diğer bir şey, hizmet sorumlusu) Azure tarafından otomatik olarak silinir.
+   * , Azure Active Directory Stream Analytics işin kimliği için otomatik olarak bir hizmet sorumlusu oluşturur. Yeni oluşturulan kimliğin yaşam döngüsü Azure tarafından yönetilecektir. Stream Analytics işi silindiğinde, ilişkili kimlik (hizmet sorumlusu) Azure tarafından otomatik olarak silinir.
 
-   * İşyerinde kullanılan ADLS Gen1 öneki yolunun yazma **ve** **çalıştır** izinlerini otomatik olarak ayarlayın ve bu klasöre ve tüm çocuklara atayın.
+   * İşte kullanılan ADLS 1. önek yolu için **yazma** ve **yürütme** izinlerini otomatik olarak ayarlayın ve bu klasöre ve tüm alt öğelere atayın.
 
-5. Akış Analizi CI'yi kullanarak aşağıdaki özellikile Kaynak Yöneticisi şablonlarını [oluşturabilirsiniz. CD Nuget paket](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) sürümü 1.5.0 veya üzeri bir yapı makinesi (Visual Studio dışında). Hizmet yöneticisini almak ve PowerShell üzerinden hizmet ilkesine erişim izni vermek için bir sonraki bölümdeki Kaynak Yöneticisi şablonu dağıtım adımlarını izleyin.
+5. Stream Analytics CI kullanarak aşağıdaki özelliği içeren Kaynak Yöneticisi şablonları oluşturabilirsiniz [. ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)Bir derleme makinesinde (Visual Studio dışında) CD NuGet paketi sürüm 1.5.0 veya üzeri. Hizmet sorumlusunu almak ve PowerShell aracılığıyla hizmet sorumlusuna erişim sağlamak için sonraki bölümde Kaynak Yöneticisi şablonu dağıtım adımlarını izleyin.
 
-## <a name="resource-manager-template-deployment"></a>Kaynak Yöneticisi şablon dağıtımı
+## <a name="resource-manager-template-deployment"></a>Kaynak Yöneticisi şablonu dağıtımı
 
-1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek yönetilen bir kimliğe sahip bir *Microsoft.StreamAnalytics/streamingjobs* kaynağı oluşturabilirsiniz:
+1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek, yönetilen bir kimlikle bir *Microsoft. StreamAnalytics/streamingjobs* kaynağı oluşturabilirsiniz:
 
     ```json
     "Identity": {
@@ -96,7 +96,7 @@ Bu makalede, Azure portalı, Azure Kaynak Yöneticisi şablon dağıtımı ve Vi
     },
     ```
 
-   Bu özellik, Azure Kaynak Yöneticisi'ne Azure Akış Analizi işinizin kimliğini oluşturmasını ve yönetmesini söyler.
+   Bu özellik, Azure Resource Manager Azure Stream Analytics işiniz için kimlik oluşturup yönetmeyeceğini söyler.
 
    **Örnek iş**
    
@@ -152,38 +152,38 @@ Bu makalede, Azure portalı, Azure Kaynak Yöneticisi şablon dağıtımı ve Vi
    }
    ```
 
-   Gerekli ADLS kaynağına erişim izni vermek için iş yanıtından Asıl Kimlik'e dikkat edin.
+   Gerekli ADLS kaynaklarına erişim izni vermek için iş yanıtından sorumlu KIMLIĞI ' ni bir yere göz atın.
 
-   **Kiracı Kimliği,** hizmet yöneticisinin oluşturulduğu Azure Etkin Dizin kiracısının kimliğidir. Hizmet ilkesi, abonelik tarafından güvenilen Azure kiracısında oluşturulur.
+   **KIRACı kimliği** , hizmet sorumlusunun oluşturulduğu Azure Active Directory kiracının kimliğidir. Hizmet sorumlusu, abonelik tarafından güvenilen Azure kiracısında oluşturulur.
 
-   **Tür,** yönetilen kimlik türlerinde açıklandığı gibi yönetilen kimlik türünü gösterir. Yalnızca Atanan Sistem türü desteklenir.
+   **Türü** , yönetilen kimlik türleri bölümünde açıklandığı gibi yönetilen kimliğin türünü gösterir. Yalnızca sistem tarafından atanan tür desteklenir.
 
-2. PowerShell'i kullanarak servis ilkesine erişim sağlayın. PowerShell üzerinden hizmet ilkesine erişim sağlamak için aşağıdaki komutu uygulayın:
+2. PowerShell kullanarak hizmet sorumlusuna erişim sağlama. PowerShell aracılığıyla hizmet sorumlusuna erişim vermek için aşağıdaki komutu yürütün:
 
    ```powershell
    Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
-   **PrincipalId,** hizmet sorumlusunun Nesne Kimliği'dir ve hizmet ilkesi oluşturulduktan sonra portal ekranında listelenir. İşi Kaynak Yöneticisi şablonu dağıtımı kullanarak oluşturduysanız, Nesne Kimliği iş yanıtının Kimlik özelliğinde listelenir.
+   **PrincipalId** , hizmet SORUMLUSUNUN nesne kimliğidir ve hizmet sorumlusu oluşturulduktan sonra Portal ekranında listelenir. İşi Kaynak Yöneticisi Şablon dağıtımı kullanarak oluşturduysanız, nesne KIMLIĞI iş yanıtının Identity özelliğinde listelenir.
 
-   **Örnek**
+   **Örneğinde**
 
    ```powershell
    PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Yukarıdaki PowerShell komutu hakkında daha fazla bilgi edinmek için [Set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) belgelerine bakın.
+   Yukarıdaki PowerShell komutu hakkında daha fazla bilgi edinmek için [set-AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) belgelerine bakın.
 
 ## <a name="limitations"></a>Sınırlamalar
-Bu özellik aşağıdakileri desteklemez:
+Bu özellik şunları desteklemez:
 
-1. **Çok kiracılı erişim**: Belirli bir Akış Analizi işi için oluşturulan Hizmet ilkesi, işin oluşturulduğu Azure Etkin Dizin kiracısında bulunur ve farklı bir Azure Etkin Dizin kiracısında bulunan bir kaynağa karşı kullanılamaz. Bu nedenle, MSI'ı yalnızca Azure Akış Analizi işinizle aynı Azure Active Directory kiracısında bulunan ADLS Gen 1 kaynaklarında kullanabilirsiniz. 
+1. **Çok kiracılı erişim**: belirli bir Stream Analytics işi Için oluşturulan hizmet sorumlusu, işin oluşturulduğu Azure Active Directory kiracısında bulunur ve farklı bir Azure Active Directory kiracısında bulunan bir kaynağa karşı kullanılamaz. Bu nedenle, MSI 'yi yalnızca Azure Stream Analytics işiniz ile aynı Azure Active Directory kiracısındaki ADLS Gen 1 kaynakları üzerinde kullanabilirsiniz. 
 
-2. **[Kullanıcı Atanan Kimlik](../active-directory/managed-identities-azure-resources/overview.md)**: desteklenmez. Bu, kullanıcının Stream Analytics işi tarafından kullanılmak üzere kendi hizmet ilkesini giremeyecekleri anlamına gelir. Hizmet sorumlusu Azure Akış Analizi tarafından oluşturulur.
+2. **[Kullanıcı tarafından atanan kimlik](../active-directory/managed-identities-azure-resources/overview.md)**: desteklenmiyor. Bu, kullanıcının Stream Analytics işleri tarafından kullanılmak üzere kendi hizmet sorumlusunu giremediği anlamına gelir. Hizmet sorumlusu Azure Stream Analytics tarafından oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Akış analitiği yle Veri gölü Deposu çıktısı oluşturma](../data-lake-store/data-lake-store-stream-analytics.md)
-* [Visual Studio ile Test Stream Analytics sorgularını yerel olarak sorgulayın](stream-analytics-vs-tools-local-run.md)
-* [Visual Studio için Azure Akış Analizi araçlarını kullanarak canlı verileri yerel olarak test edin](stream-analytics-live-data-local-testing.md) 
+* [Stream Analytics ile Data Lake Store çıkışı oluşturma](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Visual Studio ile yerel olarak Stream Analytics sorguları test etme](stream-analytics-vs-tools-local-run.md)
+* [Visual Studio için Azure Stream Analytics araçlarını kullanarak canlı verileri yerel olarak test etme](stream-analytics-live-data-local-testing.md) 

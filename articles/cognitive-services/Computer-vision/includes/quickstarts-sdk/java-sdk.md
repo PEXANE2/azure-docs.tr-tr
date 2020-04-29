@@ -1,6 +1,6 @@
 ---
-title: 'Quickstart: Java için Computer Vision istemci kitaplığı'
-description: Bu hızlı başlangıçta, Java için Computer Vision istemci kitaplığı ile başlayın.
+title: 'Hızlı başlangıç: Java için Görüntü İşleme istemci kitaplığı'
+description: Bu hızlı başlangıçta, Java için Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,50 +10,50 @@ ms.topic: include
 ms.date: 12/19/2019
 ms.author: pafarley
 ms.openlocfilehash: dbe986145a223f1958f1945abfa189de90952f4a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80272915"
 ---
 <a name="HOLTop"></a>
 
-[Referans belgeleri](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Artefakt (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [Örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Başvuru belgesi](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [yapıtı (Maven)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
-* [Java Geliştirme Kiti'nin (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
-* [Gradle oluşturma aracı](https://gradle.org/install/)veya başka bir bağımlılık yöneticisi.
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
+* [Java Development Kit 'in (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html) geçerli sürümü
+* [Gradle yapı aracı](https://gradle.org/install/)veya başka bir bağımlılık Yöneticisi.
 
-## <a name="setting-up"></a>Ayarlama
+## <a name="setting-up"></a>Ayarlanıyor
 
-### <a name="create-a-computer-vision-azure-resource"></a>Bilgisayar Vizyonu Azure kaynağı oluşturma
+### <a name="create-a-computer-vision-azure-resource"></a>Görüntü İşleme Azure kaynağı oluşturma
 
-Azure Bilişsel Hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure portalını](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI'yi](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak Computer Vision için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak görüntü işleme için bir kaynak oluşturun. Aşağıdakileri de yapabilirsiniz:
 
-* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra Azure [web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)kullanıma sunulacaktır.  
-* Azure [portalında](https://portal.azure.com/)kaynağınızı görüntüleyin.
+* Ücretsiz olarak yedi gün boyunca geçerli bir [deneme anahtarı](https://azure.microsoft.com/try/cognitive-services/#decision) alın. Kaydolduktan sonra [Azure Web sitesinde](https://azure.microsoft.com/try/cognitive-services/my-apis/)mevcut olacaktır.  
+* [Azure Portal](https://portal.azure.com/)kaynağı görüntüleyin.
 
-Ardından, sırasıyla ve sırasıyla anahtar `COMPUTER_VISION_SUBSCRIPTION_KEY` ve `COMPUTER_VISION_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+Ardından, sırasıyla ve `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT`olarak adlandırılan anahtar ve hizmet uç noktası dizesi için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) .
 
 ### <a name="create-a-new-gradle-project"></a>Yeni bir Gradle projesi oluşturma
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu pencereye gidin. 
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), uygulamanız için yeni bir dizin oluşturun ve bu uygulamaya gidin. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Çalışma `gradle init` dizininizdeki komutu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *build.gradle.kts*de dahil olmak üzere Gradle için temel yapı dosyaları oluşturur.
+Çalışma dizininizden `gradle init` komutunu çalıştırın. Bu komut, uygulamanızı oluşturmak ve yapılandırmak için çalışma zamanında kullanılan *Build. Gradle. kts*de dahil olmak üzere Gradle için temel derleme dosyaları oluşturur.
 
 ```console
 gradle init --type basic
 ```
 
-Bir **DSL**seçmek istendiğinde, **Kotlin**seçin.
+Bir **DSL**seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
-*build.gradle.kts'yi* bulun ve tercih ettiğiniz IDE veya metin düzenleyicisi ile açın. Ardından aşağıdaki yapı yapılandırmasını kopyalayın. Bu yapılandırma, giriş noktası **ComputerVisionQuickstarts**sınıfı olan bir Java uygulaması olarak projeyi tanımlar. Computer Vision kitaplığını ithal ediyor.
+*Build. Gradle. kts* ' i bulun ve tercıh ettiğiniz IDE veya metin düzenleyicinizle açın. Ardından aşağıdaki derleme yapılandırması içine kopyalayın. Bu yapılandırma projeyi, giriş noktası **ComputerVisionQuickstarts**sınıfı olan bir Java uygulaması olarak tanımlar. Görüntü İşleme kitaplığı içeri aktarır.
 
 ```kotlin
 plugins {
@@ -68,23 +68,23 @@ repositories {
 }
 ```
 
-Çalışma dizininizden, proje kaynağı klasörü oluşturmak için aşağıdaki komutu çalıştırın:
+Çalışma dizininizden bir proje kaynak klasörü oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Yeni klasöre gidin ve *ComputerVisionQuickstarts.java*adlı bir dosya oluşturun. Tercih ettiğiniz düzenleyiciveya IDE'de açın `import` ve aşağıdaki ifadeleri ekleyin:
+Yeni klasöre gidin ve *ComputerVisionQuickstarts. Java*adlı bir dosya oluşturun. Bunu tercih ettiğiniz düzenleyicide veya IDE 'de açın ve aşağıdaki `import` deyimleri ekleyin:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imports)]
 
-Sonra **ComputerVisionQuickstarts**için bir sınıf tanımı ekleyin.
+Ardından **ComputerVisionQuickstarts**için bir sınıf tanımı ekleyin.
 
-### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
+### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
-Bu hızlı başlatma, Gradle bağımlılık yöneticisini kullanır. [Maven Merkezi Deposu'ndaki](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)diğer bağımlılık yöneticileri için istemci kitaplığını ve bilgilerini bulabilirsiniz.
+Bu hızlı başlangıç, Gradle bağımlılık yöneticisini kullanır. İstemci kitaplığını ve diğer bağımlılık yöneticilerinin bilgilerini [Maven merkezi deposunda](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-textanalytics/)bulabilirsiniz.
 
-Projenizin *build.gradle.kts* dosyasında, bağımlılık olarak Computer Vision istemci kitaplığını ekleyin.
+Projenizin *Build. Gradle. kts* dosyasında, görüntü işleme istemci kitaplığını bağımlılık olarak ekleyin.
 
 ```kotlin
 dependencies {
@@ -94,134 +94,134 @@ dependencies {
 
 ## <a name="object-model"></a>Nesne modeli
 
-Aşağıdaki sınıflar ve arayüzler, Computer Vision Java SDK'nın bazı temel özelliklerini işler.
+Aşağıdaki sınıflar ve arabirimler Görüntü İşleme Java SDK 'sının bazı önemli özelliklerini işler.
 
 |Adı|Açıklama|
 |---|---|
-| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Bu sınıf tüm Computer Vision işlevleri için gereklidir. Abonelik bilgilerinizle anında kullanırsınız ve bunu diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
-|[ComputerVision](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Bu sınıf istemci nesnesinden gelir ve görüntü çözümlemesi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
-|[GörselÖzellik Türleri](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Bu enum, standart bir Çözümleme işleminde yapılabilecek farklı görüntü çözümleme türlerini tanımlar. Gereksinimlerinize bağlı olarak visualfeaturetypes değerleri kümesi ni belirtirsiniz. |
+| [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) | Bu sınıf tüm Görüntü İşleme işlevleri için gereklidir. Bunu Abonelik bilgileriniz ile birlikte başlatır ve diğer sınıfların örneklerini oluşturmak için kullanırsınız.|
+|[Bilgisayar vizyonu](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervision?view=azure-java-stable)| Bu sınıf, istemci nesnesinden gelir ve görüntü analizi, metin algılama ve küçük resim oluşturma gibi tüm görüntü işlemlerini doğrudan işler.|
+|[VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable)| Bu Enum, standart bir çözümle işleminde yapılabilecek farklı görüntü analizi türlerini tanımlar. İhtiyaçlarınıza bağlı olarak bir VisualFeatureTypes değeri kümesi belirtirsiniz. |
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu kod parçacıkları, Java için Computer Vision istemci kitaplığıyla aşağıdaki görevleri nasıl yapacağınızı gösterir:
+Bu kod parçacıkları, Java için Görüntü İşleme istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-* [İstemcinin kimliğini doğrula](#authenticate-the-client)
+* [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Resim çözümleme](#analyze-an-image)
-* [Basılı ve el yazısıyla yazılmış metni okuma](#read-printed-and-handwritten-text)
+* [Yazdırılmış ve el yazısı metin oku](#read-printed-and-handwritten-text)
 
-## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
+## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 > [!NOTE]
-> Bu hızlı başlatma, Computer Vision anahtarınız için `COMPUTER_VISION_SUBSCRIPTION_KEY`bir ortam [değişkeni oluşturduğunuzu](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayar.
+> Bu hızlı başlangıçta adlı `COMPUTER_VISION_SUBSCRIPTION_KEY`görüntü işleme anahtarınız için [bir ortam değişkeni oluşturdunuz](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) varsayılır.
 
-Aşağıdaki kod sınıfınıza bir `main` yöntem ekler ve kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturur. Azure portalının **Genel Bakış** bölümünü kontrol ederek bulabileceğiniz kendi uç nokta dizenizi girmeniz gerekir. 
+Aşağıdaki kod, sınıfınıza `main` bir yöntem ekler ve kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturur. Azure portal **genel bakış** bölümünü denetleyerek bulabileceğiniz kendi uç nokta dizenizi girmeniz gerekir. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_mainvars)]
 
-Ardından, [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) nesnesi oluşturmak için aşağıdaki kodu ekleyin ve daha sonra tanımlayacağımız başka bir yönteme(ler) aktarın.
+Sonra, bir [ComputerVisionClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable) nesnesi oluşturmak için aşağıdaki kodu ekleyin ve daha sonra tanımlayacağımız diğer yönteme geçirir.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_client)]
 
 > [!NOTE]
-> Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir.
+> Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için onu çalıştıran düzenleyiciyi, IDE 'yi veya kabuğu kapatıp yeniden açmanız gerekir.
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
-Aşağıdaki kod, `AnalyzeLocalImage`yerel bir görüntüyü çözümlemek ve sonuçları yazdırmak için istemci nesnesini kullanan bir yöntem tanımlar. Yöntem, metin açıklaması, kategoriler, etiket listesi, algılanan yüzler, yetişkinlere uygun içerik bayrakları, ana renkler ve görüntü türünü döndürür.
+Aşağıdaki kod, yerel bir görüntüyü çözümlemek `AnalyzeLocalImage`ve sonuçları yazdırmak için istemci nesnesini kullanan yöntemini tanımlar. Yöntemi bir metin açıklaması, kategori, etiket listesi, algılanan yüzeyler, yetişkinlere yönelik içerik bayrakları, ana renkler ve görüntü türü döndürür.
 
-### <a name="set-up-test-image"></a>Test görüntüsünü ayarlama
+### <a name="set-up-test-image"></a>Test görüntüsünü ayarla
 
-İlk olarak, projenizin **src/main/klasöründe** bir **kaynak/klasör** oluşturun ve çözümlemek istediğiniz bir resim ekleyin. Ardından **ComputerVisionQuickstarts** sınıfınıza aşağıdaki yöntem tanımını ekleyin. Gerekirse, resim dosyanızla `pathToLocalImage` eşleşecek değeri değiştirin. 
+İlk olarak, projenizin **src/Main/** klasöründe bir **kaynak/** klasör oluşturun ve analiz etmek istediğiniz bir görüntü ekleyin. Ardından aşağıdaki yöntem tanımını **ComputerVisionQuickstarts** sınıfınıza ekleyin. Gerekirse, değerini resim dosyanıza uyacak `pathToLocalImage` şekilde değiştirin. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
 > [!NOTE]
-> Uzak bir görüntüyü URL'sini kullanarak da analiz edebilirsiniz. Uzak görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) örnek kodu görün.
+> Ayrıca, bir uzak görüntüyü URL 'sini kullanarak çözümleyebilirsiniz. Uzak görüntüleri kapsayan senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
 
 ### <a name="specify-visual-features"></a>Görsel özellikleri belirtin
 
-Ardından, çözümlemenizde hangi görsel özellikleri ayıklamak istediğinizi belirtin. Tam bir liste için [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) tamuna bakın.
+Ardından, analizinizden hangi görsel özellikleri çıkarmak istediğinizi belirtin. Listenin tamamı için [Visualfeaturetypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) numaralandırması bölümüne bakın.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Çözümleme
-Bu yöntem, görüntü çözümlemesi her kapsamı için konsola ayrıntılı sonuçlar yazdırır. Bu yöntem çağrısını Try/Catch bloğunda çevrelemenizi öneririz. **AnalyzeImageInStream** yöntemi, tüm çıkarılan bilgileri içeren bir **ImageAnalysis** nesnesini döndürür.
+Bu yöntem, her görüntü analizi kapsamındaki ayrıntılı sonuçları konsola yazdırır. Bu yöntem çağrısını bir try/catch bloğunda çevrelemeyi öneririz. **AnalyzeImageInStream** yöntemi, ayıklanan tüm bilgileri Içeren bir **ımageanalysis** nesnesi döndürür.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-Aşağıdaki bölümlerde bu bilgilerin nasıl ayrıştırılalı ştırış edilebildiğini göstereceğimiz.
+Aşağıdaki bölümlerde bu bilgilerin ayrıntılı olarak nasıl ayrıştırılacak gösterilmektedir.
 
-### <a name="get-image-description"></a>Resim açıklamasını alın
+### <a name="get-image-description"></a>Görüntü açıklamasını al
 
-Aşağıdaki kod, görüntü için oluşturulan altyazıların listesini alır. Daha fazla bilgi için [bkz.](../../concept-describing-images.md)
+Aşağıdaki kod, görüntü için oluşturulan açıklamalı alt yazıların listesini alır. Daha fazla bilgi için bkz. [görüntüleri açıklama](../../concept-describing-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
 
-### <a name="get-image-category"></a>Resim kategorisi alın
+### <a name="get-image-category"></a>Görüntü kategorisini al
 
-Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla bilgi için [bkz.](../../concept-categorizing-images.md)
+Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla bilgi için bkz. [görüntüleri kategorilere ayırma](../../concept-categorizing-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
 
-### <a name="get-image-tags"></a>Resim etiketlerini alın
+### <a name="get-image-tags"></a>Görüntü etiketlerini al
 
-Aşağıdaki kod, görüntüde algılanan etiketler kümesini alır. Daha fazla bilgi için [İçerik etiketlerini](../../concept-tagging-images.md)görün.
+Aşağıdaki kod görüntüde algılanan etiketlerin kümesini alır. Daha fazla bilgi için bkz. [içerik etiketleri](../../concept-tagging-images.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
 
 ### <a name="detect-faces"></a>Yüz algılama
 
-Aşağıdaki kod, resimde algılanan yüzleri dikdörtgen koordinatlarıyla döndürür ve yüz özniteliklerini seçer. Daha fazla bilgi için Bkz. [Yüz algılama.](../../concept-detecting-faces.md)
+Aşağıdaki kod görüntüde dikdörtgen koordinatlarıyla algılanan yüzeyleri döndürür ve yüz niteliklerini seçer. Daha fazla bilgi için bkz. [yüz algılama](../../concept-detecting-faces.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Yetişkinlere uygun, müstehcen veya kanlı içeriği algılama
+### <a name="detect-adult-racy-or-gory-content"></a>Yetişkin, kcy veya Gori içeriğini algılama
 
-Aşağıdaki kod, görüntüde algılanan yetişkinlere uygun içeriğin varlığını yazdırır. Daha fazla bilgi için [Yetişkin, müstehcen, kanlı içeriğe](../../concept-detecting-adult-content.md)bakın.
+Aşağıdaki kod görüntüde yetişkinlere yönelik içeriğin algılanan varlığını yazdırır. Daha fazla bilgi için bkz. [yetişkin, korcy, Gori içeriği](../../concept-detecting-adult-content.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
 
-### <a name="get-image-color-scheme"></a>Görüntü renk düzeni alın
+### <a name="get-image-color-scheme"></a>Görüntü renk düzenini al
 
-Aşağıdaki kod, baskın renkler ve vurgu rengi gibi görüntüde algılanan renk özniteliklerini yazdırır. Daha fazla bilgi için [Renk düzenlerine](../../concept-detecting-color-schemes.md)bakın.
+Aşağıdaki kod görüntüde, baskın renkler ve vurgu rengi gibi algılanan renk özniteliklerini yazdırır. Daha fazla bilgi için bkz. [renk şemaları](../../concept-detecting-color-schemes.md).
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
 
-### <a name="get-domain-specific-content"></a>Etki alanına özel içerik alın
+### <a name="get-domain-specific-content"></a>Etki alanına özgü içerik al
 
-Computer Vision, görüntüler üzerinde daha fazla analiz yapmak için özel bir model kullanabilir. Daha fazla bilgi için [Etki Alanına özgü içeriğe](../../concept-detecting-domain-content.md)bakın. 
+Görüntü İşleme, görüntüler üzerinde daha fazla analiz yapmak için özel model kullanabilir. Daha fazla bilgi için bkz. [etki alanına özgü içerik](../../concept-detecting-domain-content.md). 
 
-Aşağıdaki kod, görüntüde algılanan ünlüler hakkındaki verileri ayrışdırır.
+Aşağıdaki kod görüntüde algılanan ünlüler hakkında verileri ayrıştırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
 
-Aşağıdaki kod, görüntüde algılanan yer işaretleri yle ilgili verileri ayrışdırır.
+Aşağıdaki kod görüntüde algılanan yer işaretleriyle ilgili verileri ayrıştırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
-### <a name="get-the-image-type"></a>Görüntü türünü alma
+### <a name="get-the-image-type"></a>Görüntü türünü al
 
-Aşağıdaki kod, küçük resim veya&mdash;çizgi çizimi olsun görüntünün türü hakkında bilgi yazdırır.
+Aşağıdaki kod, küçük resim veya çizgi çizme gibi görüntü&mdash;türü hakkında bilgi yazdırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
-## <a name="read-printed-and-handwritten-text"></a>Basılı ve el yazısıyla yazılmış metni okuma
+## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
-Computer Vision görüntüdeki görünür metni okuyabilir ve karakter akışına dönüştürebilir.
+Görüntü İşleme görüntüdeki görünür metni okuyabilir ve bunu bir karakter akışına dönüştürebilir.
 
 > [!NOTE]
-> Ayrıca, URL'sini kullanarak uzak bir resimdeki metni de okuyabilirsiniz. Uzak görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) örnek kodu görün.
+> Ayrıca, URL 'sini kullanarak uzak görüntüdeki metni okuyabilirsiniz. Uzak görüntüleri kapsayan senaryolar için [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java) 'daki örnek koda bakın.
 
-### <a name="call-the-recognize-api"></a>TanıyAPI'nı arayın
+### <a name="call-the-recognize-api"></a>Tanıma API 'sini çağırma
 
-İlk olarak, verilen görüntü için **recognizePrintedTextInStream** yöntemini aramak için aşağıdaki kodu kullanın. Bu kodu projenize eklediğinizde, yerel resminize `localTextImagePath` giden yol la değerini değiştirmeniz gerekir. 
+İlk olarak, verilen görüntü için **recognizePrintedTextInStream** yöntemini çağırmak üzere aşağıdaki kodu kullanın. Bu kodu projenize eklediğinizde, değerini `localTextImagePath` yerel görüntkodunuzla değiştirin. 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
 
-### <a name="print-recognize-results"></a>Sonuçları Tanıyın Yazdır
+### <a name="print-recognize-results"></a>Sonuçları Yazdır
 
-Aşağıdaki kod bloğu döndürülen metni işler ve her satırdaki ilk sözcüğü yazdırmak için ayrıştırır. **OcrResult** örneğinin yapısını hızlı bir şekilde anlamak için bu kodu kullanabilirsiniz.
+Aşağıdaki kod bloğu döndürülen metni işler ve her satırdaki ilk sözcüğü yazdırmak üzere ayrıştırır. Bu kodu bir **Ocrresult** örneğinin yapısını hızlıca anlamak için kullanabilirsiniz.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_print)]
 
@@ -231,7 +231,7 @@ Son olarak, try/catch bloğunu ve yöntem tanımını kapatın.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
-Uygulamayı aşağıdakilerle oluşturabilirsiniz:
+Uygulamayı ile oluşturabilirsiniz:
 
 ```console
 gradle build
@@ -245,17 +245,17 @@ gradle run
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak veya kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, bununla ilişkili diğer kaynakları da siler.
+Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, temel görevleri yapmak için Computer Vision Java kitaplığını kullanmayı öğrendiniz. Ardından, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
+Bu hızlı başlangıçta, Görüntü İşleme Java kitaplığı 'nı kullanarak temel görevleri nasıl kullanacağınızı öğrendiniz. Daha sonra, kitaplık hakkında daha fazla bilgi edinmek için başvuru belgelerini inceleyin.
 
 > [!div class="nextstepaction"]
->[Bilgisayar Vizyon referans (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
+>[Görüntü İşleme başvurusu (Java)](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable)
 
 * [Görüntü İşleme nedir?](../../Home.md)
-* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)bulunabilir.
+* Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java)' da bulunabilir.

@@ -1,6 +1,6 @@
 ---
-title: Medya Hizmetleri .NET SDK ile Varlıkların ve İlgili Varlıkların Yönetimi
-description: .NET için Medya Hizmetleri SDK ile varlıkları ve ilgili varlıkları nasıl yöneteceklerini öğrenin.
+title: Media Services .NET SDK ile varlıkları ve Ilgili varlıkları yönetme
+description: .NET için Media Services SDK ile varlıkları ve ilgili varlıkları yönetmeyi öğrenin.
 author: juliako
 manager: femila
 editor: ''
@@ -15,32 +15,32 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251147"
 ---
-# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Medya Hizmetleri .NET SDK ile Varlıkların ve İlgili Varlıkların Yönetimi
+# <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK ile varlıkları ve Ilgili varlıkları yönetme
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-manage-entities.md)
-> * [Geri kalanı](media-services-rest-manage-entities.md)
+> * [REST](media-services-rest-manage-entities.md)
 > 
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>[V3 Media Services](https://docs.microsoft.com/azure/media-services/latest/)en son sürüme göz atın. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
 
-Bu konu, .NET ile Azure Medya Hizmetleri varlıklarının nasıl yönetilenini gösterir.
+Bu konuda .NET ile Azure Media Services varlıkların nasıl yönetileceği gösterilmektedir.
 
-1 Nisan 2017’den itibaren, hesabınızdaki 90 günden eski olan tüm İş kayıtları, toplam kayıt sayısı üst kota sınırının altında olsa bile ilişkili Görev kayıtlarıyla birlikte otomatik olarak silinecektir. Örneğin, 1 Nisan 2017'de, hesabınızdaki 31 Aralık 2016'dan büyük tüm İş kayıtları otomatik olarak silinir. İş/görev bilgilerini arşivlemeniz gerekiyorsa, bu konuda açıklanan kodu kullanabilirsiniz.
+1 Nisan 2017’den itibaren, hesabınızdaki 90 günden eski olan tüm İş kayıtları, toplam kayıt sayısı üst kota sınırının altında olsa bile ilişkili Görev kayıtlarıyla birlikte otomatik olarak silinecektir. Örneğin, 1 Nisan 2017 ' de hesabınızda 31 Aralık 2016 ' den eski olan Iş kayıtları otomatik olarak silinir. İş/görev bilgilerini arşivlemek gerekirse, bu konuda açıklanan kodu kullanabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme ortamınızı kurun ve app.config dosyanızı [.NET ile Media Services geliştirme](media-services-dotnet-how-to-use.md) bölümünde açıklandığı gibi bağlantı bilgileriyle doldurun. 
 
-## <a name="get-an-asset-reference"></a>Varlık Referansı Alın
-Sık kullanılan bir görev, Medya Hizmetleri'ndeki varolan bir varlığa başvuruda bulunulmaktır. Aşağıdaki kod örneği, varlık Kimliği'ni temel alan sunucu bağlam nesnesindeki Varlıklar koleksiyonundan nasıl varlık başvurusu alabileceğinizi gösterir. Aşağıdaki kod örneği, varolan bir IAsset nesnesine başvuru almak için bir Linq sorgusu kullanır.
+## <a name="get-an-asset-reference"></a>Varlık başvurusu al
+Sık kullanılan bir görev, Media Services var olan bir varlığa başvuru almak için kullanılır. Aşağıdaki kod örneğinde, bir varlık kimliğine bağlı olarak sunucu bağlamı nesnesindeki varlıklar koleksiyonundan nasıl varlık başvurusu alabileceğiniz gösterilmektedir. Aşağıdaki kod örneği, varolan bir ıvarlık nesnesine başvuru almak için bir LINQ sorgusu kullanır.
 
 ```csharp
     static IAsset GetAsset(string assetId)
@@ -57,8 +57,8 @@ Sık kullanılan bir görev, Medya Hizmetleri'ndeki varolan bir varlığa başvu
     }
 ```
 
-## <a name="list-all-assets"></a>Tüm Varlıkları Listele
-Depolama alanınızdaki varlık sayısı arttıkça, varlıklarınızı listelemek yararlı olur. Aşağıdaki kod örneği, sunucu bağlam nesnesindeki Varlıklar koleksiyonunda nasıl yinelenebildiğini gösterir. Her varlıkta, kod örneği de bazı özellik değerlerini konsola yazar. Örneğin, her varlık birçok ortam dosyası içerebilir. Kod örneği, her varlıkla ilişkili tüm dosyaları yazar.
+## <a name="list-all-assets"></a>Tüm varlıkları Listele
+Depolamadaki varlıkların sayısı büyüdükçe, varlıklarınızı listelemek yararlı olur. Aşağıdaki kod örneği, sunucu bağlamı nesnesi üzerindeki varlıklar koleksiyonunun nasıl yineleneceğini göstermektedir. Her varlık ile, kod örneği Ayrıca bazı özellik değerlerini konsola yazar. Örneğin, her varlık birçok medya dosyası içerebilir. Kod örneği her varlıkla ilişkili tüm dosyaları yazar.
 
 ```csharp
     static void ListAssets()
@@ -98,11 +98,11 @@ Depolama alanınızdaki varlık sayısı arttıkça, varlıklarınızı listelem
     }
 ```
 
-## <a name="get-a-job-reference"></a>İş Başvurusu Alın
+## <a name="get-a-job-reference"></a>Iş başvurusu al
 
-Medya Hizmetleri kodundaki görevleri işlemeyle çalışırken, genellikle bir Id'ye dayalı varolan bir işe başvuru almanız gerekir. Aşağıdaki kod örneği, İşler koleksiyonundan bir IJob nesnesine nasıl başvuru alınır gösterilmektedir.
+Media Services koddaki işleme görevleriyle çalışırken, genellikle bir kimliğe göre var olan bir işe başvuru almanız gerekir. Aşağıdaki kod örneği, Işler koleksiyonundan bir ıjob nesnesine nasıl başvuru alınacağını göstermektedir.
 
-Uzun soluklu bir kodlama işine başlarken bir iş başvurusu almanız ve iş parçacığı üzerindeki iş durumunu denetlemeniz gerekebilir. Bu gibi durumlarda, yöntem iş parçacığından döndüğünde, bir iş için yenilenmiş bir başvuru almanız gerekir.
+Uzun süre çalışan bir kodlama işi başlatırken bir iş başvurusu almanız ve iş parçacığı üzerinde iş durumunu denetlemeniz gerekir. Bu gibi durumlarda, yöntemi bir iş parçacığından döndüğünde, bir işe yenilenmiş bir başvuru almanız gerekir.
 
 ```csharp
     static IJob GetJob(string jobId)
@@ -120,10 +120,10 @@ Uzun soluklu bir kodlama işine başlarken bir iş başvurusu almanız ve iş pa
     }
 ```
 
-## <a name="list-jobs-and-assets"></a>İş ve Varlıkları Listele
-İlgili önemli bir görev, Medya Hizmetleri'ndeki ilişkili işleri olan varlıkları listelemektir. Aşağıdaki kod örneği, her IJob nesnesini nasıl listelediğinizi gösterir ve sonra her iş için iş, ilgili tüm görevler, tüm giriş varlıkları ve tüm çıktı varlıklarıyla ilgili özellikleri görüntüler. Bu örnekteki kod, çok sayıda diğer görevler için yararlı olabilir. Örneğin, daha önce çalıştırdığınız bir veya daha fazla kodlama işinden çıktı varlıklarını listelemek istiyorsanız, bu kod çıktı varlıklarına nasıl erişilenleri gösterir. Bir çıktı varlığına başvurunuz olduğunda, içeriği indirerek veya URL sağlayarak diğer kullanıcılara veya uygulamalara teslim edebilirsiniz. 
+## <a name="list-jobs-and-assets"></a>Işleri ve varlıkları listeleme
+Önemli bir ilgili görev, varlıkları Media Services ilişkili işleri ile listeme. Aşağıdaki kod örneği her bir ıjob nesnesini nasıl listeleneceğini gösterir ve ardından her iş için iş, tüm ilgili görevler, tüm giriş varlıkları ve tüm çıkış varlıkları hakkında özellikleri görüntüler. Bu örnekteki kod, diğer birçok görev için yararlı olabilir. Örneğin, daha önce çalıştırdığınız bir veya daha fazla kodlama öğesinden çıkış varlıklarını listelemek istiyorsanız, bu kod çıkış varlıklarına nasıl erişegösterdiğini gösterir. Bir çıkış varlığına başvurunuz varsa, bu içeriği indirerek veya URL 'Ler sağlayarak diğer kullanıcılara veya uygulamalara gönderebilirsiniz. 
 
-Varlıkları teslim etme seçenekleri hakkında daha fazla bilgi için [,.NET için Medya Hizmetleri SDK ile Varlıkları Teslim Etme'ye](media-services-deliver-streaming-content.md)bakın.
+Varlık sunma seçenekleri hakkında daha fazla bilgi için bkz. [.NET için MEDIA SERVICES SDK Ile varlık sunma](media-services-deliver-streaming-content.md).
 
 ```csharp
     // List all jobs on the server, and for each job, also list 
@@ -202,10 +202,10 @@ Varlıkları teslim etme seçenekleri hakkında daha fazla bilgi için [,.NET i�
     }
 ```
 
-## <a name="list-all-access-policies"></a>Tüm Erişim İlkelerini Listele
-Medya Hizmetleri'nde, bir varlık veya dosyaları yla ilgili bir erişim ilkesi tanımlayabilirsiniz. Erişim ilkesi, bir dosyanın veya kıymetin izinlerini (ne tür erişim ve süre) tanımlar. Medya Hizmetleri kodunuzda, genellikle bir IAccessPolicy nesnesi oluşturup varolan bir varlıkla ilişkilendirerek bir erişim ilkesi tanımlarsınız. Ardından, Medya Hizmetleri'ndeki varlıklara doğrudan erişim sağlamanızı sağlayan bir ILocator nesnesi oluşturursunuz. Bu dokümantasyon serisine eşlik eden Visual Studio projesi, erişim ilkeleri ve varlıkların yer bulucularının nasıl oluşturulup atanın gerektiğini gösteren çeşitli kod örnekleri içerir.
+## <a name="list-all-access-policies"></a>Tüm erişim Ilkelerini Listele
+Media Services, bir varlık veya dosya üzerinde bir erişim ilkesi tanımlayabilirsiniz. Erişim ilkesi, bir dosya veya varlık için izinleri (erişim türü ve süre) tanımlar. Media Services kodunuzda, genellikle bir IAccessPolicy nesnesi oluşturup mevcut bir varlıkla ilişkilendirerek bir erişim ilkesi tanımlarsınız. Daha sonra, Media Services varlıklar için doğrudan erişim sağlamanıza olanak tanıyan bir ıdıcator nesnesi oluşturun. Bu belge serisine eşlik eden Visual Studio projesi, varlıklara erişim ilkeleri ve Konumlandırıcı oluşturma ve atamayı gösteren çeşitli kod örnekleri içerir.
 
-Aşağıdaki kod örneği, sunucudaki tüm erişim ilkelerinin nasıl listelenebildiğini gösterir ve her biriyle ilişkili izinlerin türünü gösterir. Erişim ilkelerini görüntülemenin başka bir yararlı yolu sunucudaki tüm ILocator nesnelerini listelemektir ve ardından her yer bulucu için AccessPolicy özelliğini kullanarak ilişkili erişim ilkesini listeleyebilirsiniz.
+Aşağıdaki kod örneği, sunucusunda tüm erişim ilkelerinin nasıl ekleneceğini ve her biriyle ilişkili izinlerin türünü gösterir. Erişim ilkelerini görüntülemenin diğer bir yolu da, sunucudaki tüm ıvcator nesnelerini listeleyerek her bir bulucu için, AccessPolicy özelliğini kullanarak ilişkili erişim ilkesini listeleyebilirsiniz.
 
 ```csharp
     static void ListAllPolicies()
@@ -222,12 +222,12 @@ Aşağıdaki kod örneği, sunucudaki tüm erişim ilkelerinin nasıl listeleneb
     }
 ```
     
-## <a name="limit-access-policies"></a>Erişim İlkelerini Sınırla 
+## <a name="limit-access-policies"></a>Erişim Ilkelerini sınırlandırma 
 
 >[!NOTE]
 > Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Uzun süre boyunca kullanılmak için oluşturulan bulucu ilkeleri gibi aynı günleri / erişim izinlerini sürekli olarak kullanıyorsanız, aynı ilke kimliğini kullanmalısınız (karşıya yükleme olmayan ilkeler için). 
 
-Örneğin, uygulamanızda yalnızca bir kez çalışacak aşağıdaki koda sahip genel bir ilke kümesi oluşturabilirsiniz. Daha sonra kullanmak üzere bir günlük dosyasına günlük defterine günlük atabilirsiniz:
+Örneğin, uygulamanızda yalnızca bir kez çalıştırılacak olan aşağıdaki kodla genel bir ilke kümesi oluşturabilirsiniz. Daha sonra kullanmak üzere kimlikleri günlük dosyasına kaydedebilirsiniz:
 
 ```csharp
     double year = 365.25;
@@ -241,7 +241,7 @@ Aşağıdaki kod örneği, sunucudaki tüm erişim ilkelerinin nasıl listeleneb
     Console.WriteLine("One week policy ID is: " + policyWeek.Id);
 ```
 
-Ardından, kodunızdaki varolan kodları şu şekilde kullanabilirsiniz:
+Daha sonra, kodunuzda şu şekilde mevcut kimlikleri kullanabilirsiniz:
 
 ```csharp
     const string policy1YearId = "nb:pid:UUID:2a4f0104-51a9-4078-ae26-c730f88d35cf";
@@ -265,12 +265,12 @@ Ardından, kodunızdaki varolan kodları şu şekilde kullanabilirsiniz:
     Console.WriteLine("The locator base path is " + originLocator.BaseUri.ToString());
 ```
 
-## <a name="list-all-locators"></a>Tüm Locators listele
-Yer bulucu, bir varlığa erişmek için doğrudan bir yol ve bulucunun ilişkili erişim ilkesinde tanımlandığı şekilde varlığa yönelik izinler sağlayan bir URL'dir. Her varlığın, Locators özelliğinde onunla ilişkili ILocator nesnelerinden oluşan bir koleksiyonu olabilir. Sunucu bağlamında ayrıca tüm yer bulucuları içeren bir Konumbelirleyiciler koleksiyonu vardır.
+## <a name="list-all-locators"></a>Tüm Konumlandırıcı listesini Listele
+Bulucu, bir varlığa erişmek için doğrudan yol sağlayan bir URL 'dir ve bu varlık, bulucunun ilişkili erişim ilkesi tarafından tanımlanan şekilde varlık izinleridir. Her varlık, onun Konumlandırıcı özelliğinde onunla ilişkili bir ıvcator nesneleri koleksiyonuna sahip olabilir. Sunucu bağlamı da tüm Konumlandırıcı 'yı içeren bir Konum Belirleyicisi koleksiyonuna sahiptir.
 
-Aşağıdaki kod örneği, sunucudaki tüm konum belirleyicileri listeler. Her yer bulucu için, ilgili varlık ve erişim ilkesi için Id gösterir. Ayrıca izinlerin türünü, son kullanma tarihini ve varlığa giden tam yolu görüntüler.
+Aşağıdaki kod örneği, sunucudaki tüm konum belirleyicilerinin listesini görüntüler. Her bulucu için, ilgili varlık ve erişim ilkesinin kimliğini gösterir. Ayrıca, izin türünü, sona erme tarihini ve varlığın tam yolunu görüntüler.
 
-Bir varlığa giden bulucu yolunun kıymetin yalnızca temel URL'si olduğunu unutmayın. Bir kullanıcının veya uygulamanın göz atabileceği tek tek dosyalara doğrudan bir yol oluşturmak için, kodunuzun bulucu yoluna belirli bir dosya yolunu eklemesi gerekir. Bunun nasıl yapılacılayacıyla ilgili daha fazla bilgi için, .NET için [Medya Hizmetleri SDK ile Varlıkları Teslim](media-services-deliver-streaming-content.md)etme konusuna bakın.
+Bir varlığa yönelik bir bulucu yolunun yalnızca varlığın temel URL olduğunu unutmayın. Bir kullanıcının veya uygulamanın gözatmasına yönelik tek tek dosyaların doğrudan yolunu oluşturmak için, kodunuzun konum belirleyici yoluna belirli dosya yolunu eklemesi gerekir. Bunun nasıl yapılacağı hakkında daha fazla bilgi için bkz. [.NET için MEDIA SERVICES SDK Ile varlıkları sunma](media-services-deliver-streaming-content.md)konusu.
 
 ```csharp
     static void ListAllLocators()
@@ -292,10 +292,10 @@ Bir varlığa giden bulucu yolunun kıymetin yalnızca temel URL'si olduğunu un
     }
 ```
 
-## <a name="enumerating-through-large-collections-of-entities"></a>Varlıkların büyük koleksiyonları aracılığıyla sayısal
-Varlıkları sorgularken, public REST v2 sorgu sonuçlarını 1000 sonuçla sınırladığı için, aynı anda döndürülen 1000 varlık sınırı vardır. Büyük varlık koleksiyonları arasında sayısallaştırırken Atla ve Al'ı kullanmanız gerekir. 
+## <a name="enumerating-through-large-collections-of-entities"></a>Büyük varlık koleksiyonlarını sıralama
+Varlıkları sorgularken, genel REST v2 sorgu sonuçlarını 1000 sonuçla sınırladığından, tek seferde döndürülen 1000 varlıkların bir sınırı vardır. Büyük varlık koleksiyonlarında sıralama yaparken atla ve Al ' ı kullanmanız gerekir. 
 
-Aşağıdaki işlev, sağlanan Medya Hizmetleri Hesabı'ndaki tüm işlerde döngüler. Medya Hizmetleri, Jobs Collection'da 1000 iş döndürür. İşlev, tüm işlerin numaralandırıldığından emin olmak için Atla ve Al'ı kullanır (hesabınızda 1000'den fazla iş olması durumunda).
+Aşağıdaki işlev, belirtilen Media Services hesabındaki tüm işler için döngü yapılır. Media Services Işler koleksiyonunda 1000 iş döndürür. İşlevi, tüm işlerin numaralandırılmasını sağlamak için atla ve Al ' ın kullanımını sağlar (hesabınızda 1000 taneden fazla iş olması durumunda).
 
 ```csharp
     static void ProcessJobs()
@@ -335,8 +335,8 @@ Aşağıdaki işlev, sağlanan Medya Hizmetleri Hesabı'ndaki tüm işlerde dön
     }
 ```
 
-## <a name="delete-an-asset"></a>Bir Varlığı Silme
-Aşağıdaki örnek bir varlığı siler.
+## <a name="delete-an-asset"></a>Bir varlığı silme
+Aşağıdaki örnekte bir varlık silinir.
 
 ```csharp
     static void DeleteAsset( IAsset asset)
@@ -351,10 +351,10 @@ Aşağıdaki örnek bir varlığı siler.
     }
 ```
 
-## <a name="delete-a-job"></a>İşi Silme
-Bir işi silmek için, Devlet mülkünde belirtildiği gibi işin durumunu denetlemeniz gerekir. Tamamlanan veya iptal edilen işler silinebilirken, sıraya, zamanlanan veya işleme gibi belirli diğer durumlarda ki işlerin önce iptal edilmesi ve ardından silinmesi gerekir.
+## <a name="delete-a-job"></a>Işi silme
+Bir işi silmek için, durum özelliğinde belirtilen şekilde işin durumunu denetlemeniz gerekir. Tamamlanmış veya iptal edilen işler silinebilir, sıraya alınmış, zamanlanmış veya işleme gibi bazı diğer durumlarda gerçekleştirilen işler önce iptal edilmeli, sonra da silinebilirler.
 
-Aşağıdaki kod örneği, iş durumlarını denetleyerek ve durum bittiğinde veya iptal edildiğinde silme yöntemini gösterir. Bu kod, bir işe başvuru almak için bu konudaki önceki bölüme bağlıdır: Bir iş başvurusu alın.
+Aşağıdaki kod örneği, iş durumlarını denetleyerek ve sonra durum tamamlandığında veya iptal edildiğinde silerek bir işi silmeye yönelik bir yöntemi gösterir. Bu kod, bir işe başvuru almak için bu konunun önceki bölümüne bağımlıdır: iş başvurusu alma.
 
 ```csharp
     static void DeleteJob(string jobId)
@@ -404,8 +404,8 @@ Aşağıdaki kod örneği, iş durumlarını denetleyerek ve durum bittiğinde v
 ```
 
 
-## <a name="delete-an-access-policy"></a>Erişim İlkesi Silme
-Aşağıdaki kod örneği, bir ilke Kimliği'ne dayalı bir erişim ilkesine nasıl başvuru alınıp sonra ilkeyi nasıl silerken gösterilmektedir.
+## <a name="delete-an-access-policy"></a>Erişim Ilkesini silme
+Aşağıdaki kod örneği, ilke kimliğine bağlı olarak bir erişim ilkesi başvurusunun nasıl alınacağını gösterir ve ardından ilkeyi siler.
 
 ```csharp
     static void DeleteAccessPolicy(string existingPolicyId)

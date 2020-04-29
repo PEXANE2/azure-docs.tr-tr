@@ -1,76 +1,76 @@
 ---
 title: Işıklar
-description: Işık kaynağı açıklaması ve özellikleri
+description: Hafif kaynak açıklaması ve özellikleri
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680953"
 ---
 # <a name="lights"></a>Işıklar
 
-Varsayılan olarak, uzaktan işlenen nesneler bir [gökyüzü ışığı](sky.md)kullanılarak yanar. Çoğu uygulama için bu zaten yeterlidir, ancak sahneye daha fazla ışık kaynakları ekleyebilirsiniz.
+Varsayılan olarak, uzaktan işlenen nesneler bir [gök ışığı](sky.md)kullanılarak aydınlatılır. Çoğu uygulama için bu zaten yeterlidir, ancak sahneye daha açık kaynaklar ekleyebilirsiniz.
 
 > [!IMPORTANT]
-> Sadece [PBR malzemeleri](pbr-materials.md) ışık kaynaklarından etkilenir. [Renk malzemeleri](color-materials.md) her zaman tamamen parlak görünür.
+> Yalnızca [PBR malzemeleri](pbr-materials.md) hafif kaynaklardan etkilenir. [Renk malzemeleri](color-materials.md) her zaman tamamen parlak şekilde görünür.
 
 > [!NOTE]
-> Döküm gölgeler için şanda desteklenmiyor. Azure Uzaktan İşleme, gerektiğinde birden fazla GPU kullanarak büyük miktarda geometri oluşturmak için optimize edilebiyi optimize edecektir. Gölge döküm için geleneksel yaklaşımlar bu tür senaryolarda iyi çalışmaz.
+> Atama gölgeleri Şu anda desteklenmiyor. Azure uzaktan Işleme, çok büyük miktarlarda geometriyi işlemek için en iyi duruma getirilmiştir ve gerekirse birden fazla GPU kullanılır. Gölge çevrim için geleneksel yaklaşımlar, bu senaryolarda iyi çalışmaz.
 
-## <a name="common-light-component-properties"></a>Ortak ışık bileşeni özellikleri
+## <a name="common-light-component-properties"></a>Ortak açık bileşen özellikleri
 
-Tüm ışık türleri soyut taban `LightComponent` sınıfından türetilmiştir ve bu özellikleri paylaşır:
+Tüm ışık türleri soyut temel sınıftan `LightComponent` türetilir ve bu özellikleri paylaşır:
 
-* **Renk:** [Gama uzayında](https://en.wikipedia.org/wiki/SRGB)ışığın rengi. Alfa yok sayılır.
+* **Renk:** [Gama](https://en.wikipedia.org/wiki/SRGB)alanındaki ışığın rengi. Alfa yok sayılır.
 
-* **Yoğunluk:** Işığın parlaklığı. Nokta ve nokta ışıkları için yoğunluk, ışığın ne kadar parlar olduğunu da tanımlar.
+* **Yoğunluk:** Işığın parlaklığı. Nokta ve spot ışıklar için yoğunluk, ışığın ne kadar uzakta olduğunu da tanımlar.
 
 ## <a name="point-light"></a>Nokta ışığı
 
-Azure Uzaktan İşleme'de, daha yumuşak ışık kaynaklarını simüle etmek için yalnızca tek bir noktadan değil, küçük bir küreden veya küçük bir tüpten de ışık `PointLightComponent` yontabilir.
+Azure uzaktan Işlemede, `PointLightComponent` Softer ışık kaynaklarının benzetimini yapmak için yalnızca tek bir noktadan (aynı zamanda küçük bir kürenin veya küçük bir tüp) ışık olamaz.
 
 ### <a name="pointlightcomponent-properties"></a>PointLightComponent özellikleri
 
-* **Yarıçap:** Varsayılan yarıçap sıfırdır, bu durumda ışık bir nokta ışığı gibi davranır. Yarıçap sıfırdan büyükse, küresel ışık kaynağı olarak hareket eder, bu da aynasal vurgular görünümünü değiştirir.
+* **Yarıçap:** Varsayılan yarıçap sıfırdır ve bu durumda ışığın nokta ışığı olarak hareket eder. Yarıçap sıfırdan büyükse, Yansımalı vurguların görünümünü değiştiren küresel bir açık kaynak olarak davranır.
 
-* **Uzunluk:** Her `Length` ikisi `Radius` de ve sıfır olmayan ise, ışık bir tüp ışığı gibi davranır. Bu neon tüpleri simüle etmek için kullanılabilir.
+* **Uzunluk:** Her ikisi `Length` de `Radius` sıfır değilse, ışık bir boru ışığı işlevi görür. Bu, Neon boruları benzetimini yapmak için kullanılabilir.
 
-* **ZayıflamaCutoff:** (0,0) bırakılırsa, ışığın zayıflaması yalnızca onun `Intensity`. Ancak, ışığın yoğunluğunun doğrusal olarak 0'a düşürüldüğü özel min/max mesafeler sağlayabilirsiniz. Bu özellik, belirli bir ışığın daha küçük bir etki aralığını zorlamak için kullanılabilir.
+* **Zayıflauationkesme:** (0, 0) ise, ışığın zayıflatılaması yalnızca öğesine bağlıdır `Intensity`. Ancak, ışığın şiddette doğrusal olarak ölçeği sıfıra ölçeklendiği özel min/maksimum uzaklıklar sağlayabilirsiniz. Bu özellik, belirli bir ışığın daha küçük bir etkisi aralığını zorlamak için kullanılabilir.
 
-* **Yansıtılan Küp Haritası:** Geçerli bir [küp eşlemi](../../concepts/textures.md)olarak ayarlanırsa, doku ışığın çevresindeki geometriye yansıtılır. Küp haritanın rengi ışığın rengiyle modüle edilir.
+* **Projectedcubemap:** Geçerli bir [küp harita](../../concepts/textures.md)olarak ayarlandıysa, doku ışığın çevresindeki geometri üzerine yansıtıldır. Cubemap 'in rengi ışığın rengi ile modüle edilir.
 
-## <a name="spot-light"></a>Spot ışık
+## <a name="spot-light"></a>Spot ışığı
 
-Benzer `SpotLightComponent` `PointLightComponent` ama ışık bir koni şeklinde sınırlıdır. Koninin yönü *sahibi varlığın negatif z ekseni*tarafından tanımlanır.
+`SpotLightComponent` , Öğesine benzerdir `PointLightComponent` ancak ışık bir koni şekli ile sınırlıdır. Koni yönü, *sahip varlığın negatif z ekseni*tarafından tanımlanır.
 
 ### <a name="spotlightcomponent-properties"></a>SpotLightComponent özellikleri
 
-* **Yarıçap:** Aynı şey `PointLightComponent`için.
+* **Yarıçap:** İle aynı `PointLightComponent`.
 
-* **SpotAngleDeg:** Bu aralık, derece cinsinden ölçülen koninin iç ve dış açısını tanımlar. İç açıdaki her şey tam parlaklıkla aydınlatılır. Bir düşüş penumbra benzeri bir etki oluşturur dış açı doğru uygulanır.
+* **Spotangleder:** Bu Aralık, derece cinsinden ölçülen koni iç ve dış açısını tanımlar. İç açıdaki her şey tam parlaklık ile aydınlatılır. Bir azalma, bir penra benzeri bir efekt üreten dış açıya doğru uygulanır.
 
-* **FalloffExponent:** Düşmenin iç ve dış koni açısı arasındaki geçişleri ne kadar keskin bir şekilde tanımlar. Daha yüksek bir değer daha keskin bir geçişle sonuçlanır. 1.0 varsayılan doğrusal bir geçiş sonuçlanır.
+* **Falloffüs:** İç ve dış koni açısı arasındaki dönüşlerin ne kadar keskin olduğunu tanımlar. Daha yüksek bir değer daha net bir geçişe neden olur. Varsayılan 1,0, doğrusal bir geçişe neden olur.
 
-* **ZayıflamaCutoff:** Aynı şey `PointLightComponent`için.
+* **Zayıflauationkesme:** İle aynı `PointLightComponent`.
 
-* **Öngörülen2dTexture:** Geçerli bir [2B dokuya](../../concepts/textures.md)ayarlanırsa, görüntü ışığın parladığı geometriye yansıtılır. Dokunun rengi ışığın rengiyle modüle edilir.
+* **Projected2dTexture:** Geçerli bir [2B dokusunu](../../concepts/textures.md)ayarlandıysa, görüntü, ışığın bulunduğu geometriye yansıtılır. Dokunun rengi ışığın rengine göre modüle edilir.
 
 ## <a name="directional-light"></a>Yönlü ışık
 
-Sonsuz `DirectionalLightComponent` uzaktaki bir ışık kaynağını simüle eder. Işık, sahibi varlığın *negatif z ekseninin*yönüne doğru parlar. Varlığın konumu göz ardı edilir.
+, `DirectionalLightComponent` Sonsuza kadar uzakta olan bir hafif kaynağın benzetimini yapar. Hafif, *sahip varlığının negatif z ekseninin*yönlerine sahiptir. Varlığın konumu yoksayıldı.
 
 Ek özellik yok.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-Işık kaynaklarının performans oluşturma üzerinde önemli bir etkisi vardır. Bunları dikkatli ve yalnızca uygulama nın gerektirdiği takdirde kullanın. Statik yönlü bileşen de dahil olmak üzere herhangi bir statik küresel aydınlatma durumu, ek görüntüleme maliyeti olmadan, özel bir [gökyüzü dokusu](sky.md)ile elde edilebilir.
+Hafif kaynakların işleme performansı üzerinde önemli bir etkisi vardır. Bunları dikkatle ve yalnızca uygulama için gerekliyse kullanın. Statik yönlü bir bileşen dahil olmak üzere herhangi bir statik küresel aydınlatma koşulu, ek işleme maliyeti olmadan [özel bir gök dokusuyla](sky.md)elde edilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Malzemeler](../../concepts/materials.md)
-* [Gök -yüzü](sky.md)
+* [Çat](sky.md)

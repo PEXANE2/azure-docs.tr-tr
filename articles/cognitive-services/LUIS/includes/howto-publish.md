@@ -11,25 +11,25 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286719"
 ---
 Bir sohbet robotunda veya başka bir istemci uygulamasında bir LUIS tahmini almak için uygulamayı uç noktasında yayımlamanız gerekir.
 
-1. Sağ üst gezintide **Yayımla'yı** seçin.
+1. Sağ üst gezinti bölmesinde **Yayımla** ' yı seçin.
 
     ![LUIS sağ üst menüdeki uç nokta düğmesinde yayımlama](../media/howto-publish/publish-button.png)
 
-2. **Üretim** yuvasını seçin, ardından **Bitti'yi**seçin.
+2. **Üretim** yuvasını seçin ve **bitti**' yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![LUIS uç noktasına yayımlama](../media/howto-publish/publish-app-popup.png)
 
-3. Başarıyı onaylayan bildirimi gördüğünüzde yayımlama tamamlanır.
+3. Başarıyı onaylama bildirimini gördüğünüzde yayımlama işlemi tamamlanır.
 
     ![LUIS uç noktasına yayımlama](../media/howto-publish/publish-endpoint-success.png)
 
-4. **Azure Kaynakları** sayfasına gitmek için bildirimdeki son **nokta URL'lerinize eriş** bağlantısını seçin. Uç nokta URL'leri Örnek **Sorgu**olarak listelenir.
+4. **Azure kaynakları** sayfasına gitmek için bildirimde **uç nokta URL 'lerine erişin** bağlantısına tıklayın. Uç nokta URL 'Leri **örnek sorgu**olarak listelenir.

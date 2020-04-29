@@ -1,59 +1,59 @@
 ---
-title: Hiyerarşik durum geçersiz kılma
+title: Hiyerarşik durumu geçersiz kılma
 description: Hiyerarşik durum geçersiz kılma bileşenleri kavramını açıklar.
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: f3be073857cc8583669ab26f306760478479e2ae
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680797"
 ---
-# <a name="hierarchical-state-override"></a>Hiyerarşik durum geçersiz kılma
+# <a name="hierarchical-state-override"></a>Hiyerarşik durumu geçersiz kılma
 
-Çoğu durumda, bir [modelin](../../concepts/models.md)parçalarının görünümünü dinamik olarak değiştirmek gerekir , örneğin alt grafikleri gizlemek veya parçaları saydam işlemeye değiştirmek gibi. Tüm sahne grafiğiüzerinde tekrarlamayı ve her düğümde malzeme klonlama ve atamayı yönetmeyi gerektirdiğinden, ilgili her parçanın malzemelerini değiştirmek pratik değildir.
+Çoğu durumda, bir [modelin](../../concepts/models.md)bölümlerinin görünümünü dinamik olarak değiştirmek, örneğin alt grafikleri gizlemek veya bölümleri saydam işlemeye geçirmek gerekir. Dahil edilen her bir bölümün materyalini değiştirmek, tüm sahne grafiğinin üzerinde yineleme yapmak ve her düğümde malzeme kopyalamayı ve atamayı yönetmek gerektirdiğinden pratik değildir.
 
-Bu kullanım örneğini mümkün olan en az `HierarchicalStateOverrideComponent`genel kullanıma sahip olarak gerçekleştirmek için . Bu bileşen, sahne grafiğinin rasgele dallarında hiyerarşik durum güncelleştirmeleri uygular. Bu, bir durum sahne grafiğinde herhangi bir düzeyde tanımlanabilir ve ya yeni bir durum tarafından geçersiz kılınana kadar hiyerarşi aşağı damlayan veya bir yaprak nesnesi uygulanmaktadır anlamına gelir.
+En az olası ek yük ile bu kullanım örneğini başarmak için, kullanın `HierarchicalStateOverrideComponent`. Bu bileşen, sahne grafiğinin rastgele dallarında hiyerarşik durum güncelleştirmelerini uygular. Yani, bir durum sahne grafiğinde herhangi bir düzeyde tanımlanabilir ve yeni bir durum tarafından geçersiz kılınana ya da bir yaprak nesneye uygulanana kadar hiyerarşiyi aşağı doğru ayırır.
 
-Örnek olarak, bir araba modeli düşünün ve tüm araba şeffaf olarak değiştirmek istiyorum, iç motor parçası dışında. Bu kullanım örneği, bileşenin yalnızca iki örneğini içerir:
+Örnek olarak, bir otomobil modelini göz önünde bulundurun ve iç altyapı bölümü dışında tüm arabayı saydam olacak şekilde değiştirmek isteyebilirsiniz. Bu kullanım örneği, bileşenin yalnızca iki örneğini içerir:
 
-* İlk bileşen modelin kök düğümüne atanır ve tüm araç için saydam işlemeyi açar.
-* İkinci bileşen, motorun kök düğümüne atanır ve açık bir şekilde bkz.'yi kapatarak durumu yine geçersiz kılar.
+* İlk bileşen modelin kök düğümüne atanır ve tüm otomobil için saydam işlemeyi etkinleştirir.
+* İkinci bileşen, altyapının kök düğümüne atanır ve doğrudan göster modunu devre dışı bırakarak durumu yeniden geçersiz kılar.
 
 ## <a name="features"></a>Özellikler
 
-Geçersiz kılınabilecek sabit durum kümesi şunlardır:
+Geçersiz kılınabilen sabit durumlar kümesi şunlardır:
 
-* **Gizli**: Sahne grafiğindeki ilgili mekalar gizlenir veya gösterilir.
-* **Renk rengi**: İşlenen bir nesne, tek tek renk rengi ve renk tonu ağırlığı ile renklendirilebilir. Aşağıdaki resimde tekerleğin jantını renklendiren renk gösterilmektedir.
+* **Gizli**: sahne grafiğindeki ilgili kafesler gizlenir veya gösterilir.
+* Renk **tonu rengi**: işlenmiş bir nesne, tek tek renk tonu rengi ve renk tonu ağırlığı ile renk tonlu olabilir. Aşağıdaki görüntüde, bir tekerleğin kıyısı renk gösterilmektedir.
   
-  ![Renk Ton](./media/color-tint.png)
+  ![Renk renk tonu](./media/color-tint.png)
 
-* **See-through**: Geometri yarı saydam olarak işlenir, örneğin bir nesnenin iç kısımlarını ortaya çıkarmak için. Aşağıdaki resim, kırmızı fren kaliperi dışında tüm otomobilin see-through modunda işlendiğini gösterir:
+* **Bkz.-Through**: geometri, örneğin bir nesnenin iç parçalarını açığa çıkarmak için yarı şeffaf olarak işlenir. Aşağıdaki görüntüde, kırmızı hızınızı düşüren Caliper dışında, bkz.-Through modunda işlenen tüm otomobil gösterilmektedir:
 
-  ![Transparan](./media/see-through.png)
+  ![Bkz.](./media/see-through.png)
 
   > [!IMPORTANT]
-  > See-through efekti yalnızca *TileBasedComposition* [oluşturma modu](../../concepts/rendering-modes.md) kullanıldığında çalışır.
+  > Yalnızca *Tilebasedcomposition* [işleme modu](../../concepts/rendering-modes.md) kullanıldığında, diğer adım etkisi geçerlidir.
 
-* **Seçili**: Geometri bir [seçim anahattı](outlines.md)ile işlenir.
+* **Seçili**: geometri bir [seçim ana hattı](outlines.md)ile işlenir.
 
-  ![Seçim Anahattı](./media/selection-outline.png)
+  ![Seçim ana hattı](./media/selection-outline.png)
 
-* **DisableCollision**: Geometri [uzamsal sorgulardan](spatial-queries.md)muaftır. **Gizli** bayrak çakışmaları kapatmaz, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
+* **Disableçarpışma**: geometri, [uzamsal sorgulardan](spatial-queries.md)muaf tutulur. **Gizli** bayrağı, çakışmaları devre dışı bırakır, bu nedenle bu iki bayrak genellikle birlikte ayarlanır.
 
 ## <a name="hierarchical-overrides"></a>Hiyerarşik geçersiz kılmalar
 
-Nesne `HierarchicalStateOverrideComponent` hiyerarşisinin birden çok düzeyine eklenebilir. Bir varlıkta her türün yalnızca bir bileşeni `HierarchicalStateOverrideComponent` olabileceğinden, her biri gizli, gezinme, seçili, renk tontve çakışma durumlarını yönetir.
+, `HierarchicalStateOverrideComponent` Bir nesne hiyerarşisinin birden çok düzeyine eklenebilir. Bir varlıktaki her bir türün yalnızca bir bileşeni olabilir, her biri `HierarchicalStateOverrideComponent` gizli, bkz.-Through, seçilen, renk tonu ve çarpışma için durumları yönetir.
 
-Bu nedenle her durum biri olarak ayarlanabilir:
+Bu nedenle, her durum şunlardan birine ayarlanabilir:
 
-* `ForceOn`- durum bu düğüm üzerinde ve altında tüm mesh için etkindir
-* `ForceOff`- devlet bu düğüm üzerinde ve altında tüm meshes için devre dışı bırakılır
-* `InheritFromParent`- durum bu geçersiz kılma bileşeni etkilenmez
+* `ForceOn`-Bu düğüm üzerindeki ve altındaki tüm kafesde durum etkindir
+* `ForceOff`-Bu düğüm üzerindeki ve altındaki tüm kafesler için durum devre dışı bırakıldı
+* `InheritFromParent`-durum bu geçersiz kılma bileşeninden etkilenmemiştir
 
 Durumları doğrudan veya `SetState` işlev aracılığıyla değiştirebilirsiniz:
 
@@ -70,18 +70,18 @@ component.SetState(HierarchicalStates.SeeThrough, HierarchicalEnableState.Inheri
 component.SetState(HierarchicalStates.Hidden | HierarchicalStates.DisableCollision, HierarchicalEnableState.ForceOff);
 ```
 
-### <a name="tint-color"></a>Renk tonu
+### <a name="tint-color"></a>Renk tonu rengi
 
-Renk tonu geçersiz kılma, hem açık/kapalı/devralma durumu hem de renk tonu özelliği olması açısından biraz özeldir. Renk tonunun alfa kısmı renk tonu efektinin ağırlığını tanımlar: 0,0 olarak ayarlanırsa, renk tonu görünmez ve 1,0 olarak ayarlanırsa nesne saf renk rengiyle işlenir. Aradaki değerler için son renk renk rengiyle karıştırılır. Renk tonu rengi, renk animasyonu elde etmek için kare başına olarak değiştirilebilir.
+Hem açık/kapalı/devralma durumu hem de bir renk tonu rengi özelliği olan renk tonu rengi geçersiz kılma biraz özeldir. Renk tonu renginin alfa kısmı, renk azaltma efektinin kalınlığını tanımlar: 0,0 olarak ayarlanırsa, renk tonu rengi görünür olmaz ve 1,0 olarak ayarlandıysa nesne saf renk tonu rengiyle işlenir. -Between değerleri için, son renk, renk tonu rengiyle karışacaktır. Renkli bir animasyon elde etmek için renk tonu rengi çerçeve başına temelinde değiştirilebilir.
 
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
-Kendisi bir `HierarchicalStateOverrideComponent` örnek çok çalışma süresi yükü eklemez. Ancak, etkin bileşenlerin sayısını düşük tutmak her zaman iyi bir uygulamadır. Örneğin, seçilen nesneyi vurgulayan bir seçim sistemi uygularken, vurgu kaldırıldığında bileşenin silinmeniz önerilir. Bileşenleri nötr özelliklerle çevrede tutmak hızla biraraya gelebilir.
+Bir örneği, `HierarchicalStateOverrideComponent` çok çalışma zamanı ek yükü eklemez. Ancak, etkin bileşenlerin sayısını düşük tutmak her zaman iyi bir uygulamadır. Örneğin, çekilen nesneyi vurgulayan bir seçim sistemi uygularken, vurgu kaldırıldığında bileşeni silmeniz önerilir. Bileşenlerin nötr özelliklerle birlikte tutulması hızlı bir şekilde eklenebilir.
 
-Saydam işleme, sunucunun GPU'larına standart işlemeden daha fazla iş yükü koyar. Sahne grafiğinin büyük bölümleri *see-through'a*değiştirilirse , birçok geometri katmanı görünür durumdaysa, bir performans darboğazına dönüşebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)ile nesneler için geçerlidir.
+Saydam işleme, sunucunun GPU 'lara standart işleme göre daha fazla iş yükü koyar. Sahne grafiğinin büyük *bölümleri, çok*sayıda geometrinin görünür olması halinde, görünen bir performans sorunu haline gelebilir. Aynı [seçim anahatları](../../overview/features/outlines.md#performance)olan nesneler için de geçerlidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özetliyor](../../overview/features/outlines.md)
-* [Oluşturma modları](../../concepts/rendering-modes.md)
-* [Uzamsal Sorgular](../../overview/features/spatial-queries.md)
+* [Özetler](../../overview/features/outlines.md)
+* [İşleme modları](../../concepts/rendering-modes.md)
+* [Uzamsal sorgular](../../overview/features/spatial-queries.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Servis Veri Servisi - ileti sayısı
-description: Azure Kaynak Yöneticisi ve Azure Hizmet Veri Mesulini Ad Alanı Yöneticisi API'lerini kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alın.
+title: Azure Service Bus-ileti sayısı
+description: Azure Resource Manager ve Azure Service Bus NamespaceManager API 'Leri kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alın.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: aschhab
 ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891773"
 ---
 # <a name="message-counters"></a>İleti sayaçları
 
-.NET Framework SDK'daki Azure Kaynak Yöneticisi ve Hizmet Veri [GönderisI Ad Alanı Yöneticisi](/dotnet/api/microsoft.servicebus.namespacemanager) API'lerini kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alabilirsiniz.
+.NET Framework SDK 'sında Azure Resource Manager ve Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 'lerini kullanarak kuyruklarda ve aboneliklerde tutulan ileti sayısını alabilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell ile aşağıdaki gibi sayabilirsiniz:
+PowerShell ile, sayımı aşağıdaki gibi edinebilirsiniz:
 
 ```powershell
 (Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
@@ -34,24 +34,24 @@ PowerShell ile aşağıdaki gibi sayabilirsiniz:
 
 ## <a name="message-count-details"></a>İleti sayısı ayrıntıları
 
-Etkin ileti sayısını bilmek, bir kuyruğun şu anda dağıtılandan daha fazla kaynak gerektiren bir biriktirme listesi oluşturup oluşturmadığını belirlemede yararlıdır. Aşağıdaki sayaç ayrıntıları [MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) sınıfında mevcuttur:
+Etkin ileti sayısını bilmek, bir kuyruğun daha önce dağıtılmış olandan daha fazla kaynağın işlemesini gerektiren bir biriktirme listesi oluşturup oluşturmadığını belirlemek için faydalıdır. [Messagecountdetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) sınıfında aşağıdaki sayaç ayrıntıları mevcuttur:
 
--   [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): Etkin durumda ve teslime hazır olan sırada veya abonelikteki iletiler.
--   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): Ölü harf kuyruğundaki iletiler.
--   [ScheduledMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): Zamanlanan durumdaki iletiler.
--   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): Başka bir kuyruğa veya konuya aktarılamayan ve aktarım ölü harf sırasına taşınan iletiler.
--   [TransferİletiSayısı](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Başka bir kuyruğa veya konuya aktarılanınbekleyen iletiler.
+-   [Activemessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ActiveMessageCount): kuyruktaki veya abonelikteki iletiler etkin durumda ve teslim için hazırlanıyor.
+-   [DeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.deadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_DeadLetterMessageCount): teslim edilemeyen ileti sırasındaki iletiler.
+-   [Scheduledmessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.scheduledmessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_ScheduledMessageCount): zamanlanan durumdaki iletiler.
+-   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): başka bir kuyruğa veya konuya aktarılamayan ve aktarım atılacak ileti sırasına taşınmış iletiler.
+-   [Transfermessagecount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): başka bir kuyruğa veya konuya Aktarılmayı bekleyen iletiler.
 
-Bir uygulama kaynakları sıranın uzunluğuna göre ölçeklendirmek istiyorsa, bunu ölçülen bir hızda yapmalıdır. İleti sayaçlarının edinimi, ileti aracısı içinde pahalı bir işlemdir ve bunu sık sık doğrudan ve olumsuz bir şekilde yürütmek varlık performansını etkiler.
+Bir uygulama, sıranın uzunluğuna bağlı olarak kaynakları ölçeklendirmek isterse, bunu ölçülen bir hızda yapmanız gerekir. İleti sayaçlarının alımı, ileti aracısının içindeki pahalı bir işlemdir ve genellikle doğrudan yürütülerek varlık performansını olumsuz yönde etkiler.
 
 > [!NOTE]
-> Hizmet Veri Servisi konusuna gönderilen iletiler, bu konuyla ilgili aboneliklere iletilir. Bu nedenle, bu iletiler aboneye başarıyla iletildik gibi, konunun kendisi üzerinde etkin ileti sayısı 0'dır. Abonelikteki ileti sayısını alın ve 0'dan büyük olduğunu doğrulayın. İletileri abonelikte görmenize rağmen, bunlar aslında konuya ait bir depolama alanında depolanır. 
+> Bir Service Bus konusuna gönderilen iletiler, bu konunun aboneliklerine iletilir. Bu nedenle, söz konusu iletiler aboneliğe başarıyla iletileceği için konunun etkin ileti sayısı 0 ' dır. Abonelikte ileti sayısını alın ve 0 ' dan büyük olduğunu doğrulayın. Abonelikte iletileri görseniz bile, bunlar aslında konunun sahip olduğu bir depolama alanında depolanır. 
 
-Aboneliklere bakarsanız, sıfır olmayan ileti sayısına sahip olurlar (bu tüm varlık için 323 MB'a kadar alan ekler).
+Aboneliklerle karşılaşırsanız, sıfır olmayan ileti sayımına sahip olur (Bu, tüm varlık için en fazla 323MB alan ekler).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Service Bus mesajlaşması hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Service Bus mesajlaşma hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
 
 * [Service Bus kuyrukları, konu başlıkları ve abonelikleri](service-bus-queues-topics-subscriptions.md)
 * [Service Bus kuyrukları ile çalışmaya başlama](service-bus-dotnet-get-started-with-queues.md)

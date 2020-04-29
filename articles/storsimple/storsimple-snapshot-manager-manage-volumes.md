@@ -1,6 +1,6 @@
 ---
-title: StorSimple Snapshot Manager ve birimleri | Microsoft Dokümanlar
-description: Birimleri görüntülemek ve yönetmek ve yedeklemeleri yapılandırmak için StorSimple Snapshot Manager MMC snap-in'in nasıl kullanılacağını açıklar.
+title: StorSimple Snapshot Manager ve birimleri | Microsoft Docs
+description: Birimleri görüntülemek ve yönetmek ve yedeklemeleri yapılandırmak için StorSimple Snapshot Manager MMC ek bileşeninin nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: NA
 author: twooley
@@ -15,199 +15,199 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254657"
 ---
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager'ı kullanın
+# <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Birimleri görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
-Birimleri seçmek ve bunlarla ilgili bilgileri görüntülemek için StorSimple Snapshot Manager **Birimleri** düğümünü **(Kapsam** bölmesindeki) kullanabilirsiniz. Birimler, ana bilgisayar tarafından monte edilen birimlere karşılık gelen sürücüler olarak sunulur. **Birim** düğümü, iSCSI ve aygıtın kullanımı yla keşfedilen birimler de dahil olmak üzere StorSimple tarafından desteklenen yerel birimleri ve birim türlerini gösterir. 
+Birimleri seçmek ve bunlarla ilgili bilgileri görüntülemek için StorSimple Snapshot Manager **birimleri** düğümünü ( **kapsam** bölmesinde) kullanabilirsiniz. Birimler, ana bilgisayar tarafından bağlanan birimlere karşılık gelen sürücüler olarak sunulur. **Birimler** düğümü, iSCSI ve bir cihaz kullanımı aracılığıyla bulunan birimler dahil olmak üzere StorSimple tarafından desteklenen yerel birimleri ve birim türlerini gösterir. 
 
-Desteklenen birimler hakkında daha fazla bilgi [için birden çok birim türü için Destek'e](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)gidin.
+Desteklenen birimler hakkında daha fazla bilgi için, [birden çok birim türü Için desteğe](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)gidin.
 
-![Sonuçlar bölmesinde birim listesi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
+![Sonuçlar bölmesindeki birim listesi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
 
-**Ciltler** düğümü, StorSimple Snapshot Manager bunları bulduktan sonra birimleri yeniden aramanızı veya silmenizi de sağlar. 
+**Birimler** düğümü, storsimple Snapshot Manager saptadıktan sonra birimleri yeniden taramanıza veya silmenize olanak tanır. 
 
-Bu öğretici, hacimleri nasıl monte edebileceğinizi, başlatabileceğinizi ve biçimlendirebileceğinizi ve storSimple Snapshot Manager'ı aşağıdakiler için nasıl kullanabileceğinizi açıklar:
+Bu öğreticide, birimleri bağlama, başlatma ve biçimlendirme işlemlerinin yanı sıra StorSimple Snapshot Manager kullanarak şunları yapabilirsiniz:
 
 * Birimler hakkındaki bilgileri görüntüleme 
 * Birimleri silme
-* Yeniden tazyik hacimleri 
+* Birimleri yeniden Tara 
 * Temel bir birimi yapılandırma ve yedekleme
-* Dinamik bir aynalı ses düzeyini yapılandırın ve yedekle
+* Dinamik bir yansıtılmış birimi yapılandırın ve yedekleyin
 
 > [!NOTE]
-> **Tüm Birim** düğüm eylemleri **Eylemler** bölmesinde de kullanılabilir.
+> Tüm **birim** düğümü eylemleri Ayrıca **Eylemler** bölmesinde de kullanılabilir.
 > 
 > 
 
-## <a name="mount-volumes"></a>Montaj hacimleri
-StorSimple birimlerini monte etmek, başlatmak ve biçimlendirmek için aşağıdaki yordamı kullanın. Bu yordam, sabit diskleri ve ilgili birimleri veya bölümleri yönetmek için bir sistem yardımcı programı olan Disk Yönetimi'ni kullanır. Disk Yönetimi hakkında daha fazla bilgi için Microsoft TechNet web sitesinden [Disk Yönetimi'ne](https://technet.microsoft.com/library/cc770943.aspx) gidin.
+## <a name="mount-volumes"></a>Birimleri bağlama
+StorSimple birimlerini bağlamak, başlatmak ve biçimlendirmek için aşağıdaki yordamı kullanın. Bu yordam, sabit diskleri ve ilgili birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programı olan disk yönetimi 'ni kullanır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](https://technet.microsoft.com/library/cc770943.aspx) ' ne gidin.
 
-#### <a name="to-mount-volumes"></a>Hacimleri monte etmek için
-1. Ana bilgisayarda Microsoft iSCSI başlatıcısını başlatın.
-2. Hedef portal veya bulma IP adresi olarak arabirim IP adreslerinden birini tedarik edin ve aygıta bağlanın. Aygıt bağlandıktan sonra, birimler Windows sisteminize erişebilir. Microsoft iSCSI başlatıcısının kullanımı hakkında daha fazla bilgi için, Microsoft iSCSI [Başlatıcısını Yükleme ve Yapılandırma][1]bölümünde "iSCSI hedef aygıtına bağlanma" bölümüne gidin.
-3. Disk Yönetimini başlatmak için aşağıdaki seçeneklerden birini kullanın:
+#### <a name="to-mount-volumes"></a>Birimleri bağlamak için
+1. Ana bilgisayarınızda Microsoft Iscsı Başlatıcısı ' nı başlatın.
+2. Arabirim IP adreslerinden birini hedef portal veya bulma IP adresi olarak sağlayın ve cihaza bağlanın. Cihaz bağlandıktan sonra, birimlere Windows sisteminiz tarafından erişilebilecektir. Microsoft Iscsı Başlatıcısı 'nı kullanma hakkında daha fazla bilgi için [Microsoft Iscsı Başlatıcısı 'Nı yükleme ve yapılandırma][1]konusundaki "bir iSCSI hedef cihazına bağlanma" bölümüne gidin.
+3. Disk Yönetimi 'ni başlatmak için aşağıdaki seçeneklerden herhangi birini kullanın:
    
-   * **Run** kutusuna Diskmgmt.msc yazın.
-   * Sunucu Yöneticisi'ni başlatın, **Depolama** düğümünü genişletin ve ardından **Disk Yönetimi'ni**seçin.
-   * **Yönetim Araçları**başlatın, **Bilgisayar Yönetimi** düğümünü genişletin ve ardından **Disk Yönetimi'ni**seçin. 
+   * **Çalıştır** kutusuna diskmgmt. msc yazın.
+   * Sunucu Yöneticisi başlatın, **depolama** düğümünü genişletin ve ardından **disk yönetimi**' ni seçin.
+   * **Yönetimsel Araçlar**'ı başlatın, **Bilgisayar Yönetimi** düğümünü genişletin ve ardından **disk yönetimi**'ni seçin. 
      
      > [!NOTE]
-     > Disk Yönetimi'ni çalıştırmak için yönetici ayrıcalıklarını kullanmanız gerekir.
+     > Disk yönetimini çalıştırmak için yönetici ayrıcalıklarını kullanmanız gerekir.
      > 
      > 
-4. Ses(ler) çevrimiçi alın:
+4. Birimleri çevrimiçi duruma alın:
    
-   1. Disk Yönetimi'nde, **Çevrimdışı**olarak işaretlenmiş herhangi bir birimde sağ tıklatın.
-   2. **Diski Yeniden Etkinleştir'i**tıklatın. Disk yeniden etkinleştirildikten sonra disk **Çevrimiçi** olarak işaretlenmelidir.
-5. Birim(ler) başlatma:
+   1. Disk Yönetimi 'nde **çevrimdışı**olarak işaretlenmiş herhangi bir birime sağ tıklayın.
+   2. **Diski yeniden etkinleştir**' e tıklayın. Disk yeniden etkinleştirildikten sonra diskin **çevrimiçi** olarak işaretlenmesi gerekir.
+5. Birim (ler) i başlatın:
    
-   1. Keşfedilen birimleri sağ tıklatın.
-   2. **Menüde, Diski Başlatma'yı**seçin.
-   3. **Diski Başlatma** iletişim kutusunda, başlatılmasını istediğiniz diskleri seçin ve ardından **Tamam'ı**tıklatın.
-6. Basit birimleri biçimlendir:
+   1. Bulunan birimlere sağ tıklayın.
+   2. Menüsünde **Diski Başlat**' ı seçin.
+   3. **Diski Başlat** iletişim kutusunda başlatmak istediğiniz diskleri seçin ve ardından **Tamam**' a tıklayın.
+6. Basit birimleri biçimlendirme:
    
-   1. Biçimlendirmek istediğiniz bir birimi sağ tıklatın.
-   2. Menüde Yeni **Basit Birim'i**seçin.
-   3. Birimi biçimlendirmek için Yeni Basit Birim sihirbazını kullanın:
+   1. Biçimlendirmek istediğiniz bir birime sağ tıklayın.
+   2. Menüde **Yeni basit birim**' i seçin.
+   3. Birimi biçimlendirmek için yeni basit birim Sihirbazı 'nı kullanın:
       
       * Birim boyutunu belirtin.
-      * Bir sürücü mektubu tedarik edin.
-      * NTFS dosya sistemini seçin.
+      * Bir sürücü harfi sağlayın.
+      * NTFS dosya sistemi ' ni seçin.
       * 64 KB ayırma birimi boyutu belirtin.
       * Hızlı biçimlendirme gerçekleştirin.
-7. Çok bölümlü birimleri biçimlendirin. Talimatlar için, [Disk Yönetimi'nin uygulanmasında](https://msdn.microsoft.com/library/dd163556.aspx)"Bölümler ve Birimler" bölümüne gidin.
+7. Çoklu bölümlü birimleri biçimlendirin. Yönergeler için, [Disk Yönetimi uygulama](https://msdn.microsoft.com/library/dd163556.aspx)bölümünde "bölümler ve birimler" bölümüne gidin.
 
-## <a name="view-information-about-your-volumes"></a>Birimlerinizle ilgili bilgileri görüntüleme
+## <a name="view-information-about-your-volumes"></a>Birimleriniz hakkındaki bilgileri görüntüleme
 Yerel ve Azure StorSimple birimleri hakkındaki bilgileri görüntülemek için aşağıdaki yordamı kullanın.
 
 #### <a name="to-view-volume-information"></a>Birim bilgilerini görüntülemek için
-1. StorSimple Snapshot Manager'ı başlatmak için masaüstü simgesini tıklatın. 
-2. **Kapsam** bölmesinde **Birimler** düğümünü tıklatın. **Sonuçlar** bölmesinde, tüm Azure StorSimple birimleri de dahil olmak üzere yerel ve monte edilmiş birimlerin listesi görünür. **Sonuçlar** bölmesindeki sütunlar yapılandırılabilir. (Birimler düğümüne **Volumes** sağ tıklayın, **Görünüm'ü**seçin ve **ardından Sütun Ekle/Kaldır'ı**seçin .)
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın. 
+2. **Kapsam** bölmesinde **birimler** düğümüne tıklayın. Tüm Azure StorSimple birimleri de dahil olmak üzere, yerel ve bağlı birimlerin listesi **sonuçlar** bölmesinde görünür. **Sonuçlar** bölmesindeki sütunlar yapılandırılabilir. ( **Birimler** düğümüne sağ tıklayın, **Görünüm**' ü seçin ve ardından **sütun Ekle/Kaldır**' ı seçin.)
    
     ![Sütunları yapılandırma](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Sonuçlar sütunu | Açıklama |
+   | Sonuç sütunu | Açıklama |
    |:--- |:--- |
-   |  Adı |**Ad** sütunu, keşfedilen her birimiçin atanan sürücü harfini içerir. |
-   |  Cihaz |**Aygıt** sütunu, ana bilgisayara bağlı aygıtın IP adresini içerir. |
-   |  Cihaz Ses Adı |**Aygıt Birim Adı** sütunu, seçili birimin ait olduğu aygıt biriminin adını içerir. Bu, belirli bir birim için Azure portalında tanımlanan birim adıdır. |
-   |  Erişim Yolları |**Erişim Yolları** sütunu ses birimine erişim yolunu görüntüler. Bu, ses in ana bilgisayarda erişilebildiği sürücü harfi veya montaj noktasıdır. |
+   |  Adı |**Ad** sütunu, bulunan her birime atanan sürücü harfini içerir. |
+   |  Cihaz |**Cihaz** sütunu, ana bilgisayara bağlı olan cihazın IP adresini içerir. |
+   |  Cihaz birimi adı |**Cihaz birimi adı** sütunu, Seçilen birimin ait olduğu cihaz biriminin adını içerir. Bu, söz konusu birimin Azure portal tanımlanan birim adıdır. |
+   |  Erişim yolları |**Erişim yolları** sütunu, birimin erişim yolunu görüntüler. Bu, birimin ana bilgisayar üzerinde erişilebilir olduğu sürücü harfi veya bağlama noktasıdır. |
 
-## <a name="delete-a-volume"></a>Bir birim silme
-StorSimple Snapshot Manager'dan bir birimi silmek için aşağıdaki yordamı kullanın.
+## <a name="delete-a-volume"></a>Bir birimi silme
+StorSimple Snapshot Manager bir birimi silmek için aşağıdaki yordamı kullanın.
 
 > [!NOTE]
-> Herhangi bir birim grubunun parçasıysa, bir birimi silemezsiniz. (Silme seçeneği, bir birim grubunun üyesi olan birimler için kullanılamaz.) Hacmi silmek için tüm ses grubunu silmeniz gerekir.
+> Birim grubunun bir parçasıysa bir birimi silemezsiniz. (Silme seçeneği, bir birim grubunun üyesi olan birimlerde kullanılamaz.) Birimi silmek için birim grubunun tamamını silmeniz gerekir.
 
 #### <a name="to-delete-a-volume"></a>Bir birimi silmek için
-1. StorSimple Snapshot Manager'ı başlatmak için masaüstü simgesini tıklatın.
-2. **Kapsam** bölmesinde **Birimler** düğümünü tıklatın. 
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde **birimler** düğümüne tıklayın. 
 3. **Sonuçlar** bölmesinde, silmek istediğiniz birime sağ tıklayın.
-4. Menüde **Sil'i**tıklatın. 
+4. Menüsünde **Sil**' e tıklayın. 
    
-    ![Bir birim silme](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png) 
-5. **Sesi Sil** iletişim kutusu görüntülenir. Metin kutusuna **Onayla** yazın ve ardından **Tamam'ı**tıklatın.
-6. Varsayılan olarak, StorSimple Snapshot Manager silmeden önce bir birim yedekler. Bu önlem, silme kasıtsız ise veri kaybına karşı sizi koruyabilir. StorSimple Snapshot Manager, sesi yedeklerken **Otomatik Anlık Görüntü** iletisi görüntüler. 
+    ![Bir birimi silme](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png) 
+5. **Birimi Sil** iletişim kutusu görüntülenir. Metin kutusuna **onaylayın** yazın ve ardından **Tamam**' a tıklayın.
+6. Varsayılan olarak, StorSimple Snapshot Manager silmeden önce bir birimi yedekler. Bu önlem, silme işlemi istenmeden olursa sizi veri kaybına karşı koruyabilir. StorSimple Snapshot Manager, birimi yedeklediğinde **Otomatik anlık görüntü** ilerleme durumu iletisi görüntüler. 
    
     ![Otomatik anlık görüntü iletisi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png) 
 
-## <a name="rescan-volumes"></a>Yeniden tazyik hacimleri
-StorSimple Snapshot Manager'a bağlı birimleri yeniden tarayabilmek için aşağıdaki yordamı kullanın.
+## <a name="rescan-volumes"></a>Birimleri yeniden Tara
+StorSimple Snapshot Manager bağlı birimleri yeniden taramak için aşağıdaki yordamı kullanın.
 
-#### <a name="to-rescan-the-volumes"></a>Birimleri yeniden tsketmek için
-1. StorSimple Snapshot Manager'ı başlatmak için masaüstü simgesini tıklatın.
-2. **Kapsam** bölmesinde, **Birimler'i**sağ tıklatın ve ardından **Rescan birimlerini**tıklatın.
+#### <a name="to-rescan-the-volumes"></a>Birimleri yeniden taramak için
+1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
+2. **Kapsam** bölmesinde, **birimler**' e sağ tıklayın ve ardından **birimleri yeniden Tara**' ya tıklayın.
    
-    ![Yeniden tazyik hacimleri](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
+    ![Birimleri yeniden Tara](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
    
-    Bu yordam, cilt listesini StorSimple Snapshot Manager ile eşitler. Yeni birimler veya silinen birimler gibi tüm değişiklikler sonuçlara yansıtılır.
+    Bu yordam, birim listesini StorSimple Snapshot Manager eşitler. Yeni birimler veya silinen birimler gibi değişiklikler sonuçlara yansıtılır.
 
 ## <a name="configure-and-back-up-a-basic-volume"></a>Temel bir birimi yapılandırma ve yedekleme
-Temel birimin yedeğini yapılandırmak için aşağıdaki yordamı kullanın ve ardından hemen bir yedekleme başlatın veya zamanlanmış yedeklemeler için bir ilke oluşturun.
+Temel bir birimin yedeğini yapılandırmak için aşağıdaki yordamı kullanın ve ardından hemen bir yedekleme başlatın ya da zamanlanmış yedeklemeler için bir ilke oluşturun.
 
 ### <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce:
 
-* StorSimple aygıtının ve ana bilgisayar bilgisayarının doğru şekilde yapılandırıldığından emin olun. Daha fazla bilgi için [şirket içi StorSimple aygıtınızı dağıtın.](storsimple-deployment-walkthrough-u2.md)
-* StorSimple Snapshot Manager'ı yükleyin ve yapılandırır. Daha fazla bilgi [için, StorSimple Snapshot Manager'ı dağıt'a](storsimple-snapshot-manager-deployment.md)gidin.
+* StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-deployment-walkthrough-u2.md)konusuna gidin.
+* StorSimple Snapshot Manager yükleyip yapılandırın. Daha fazla bilgi için, [StorSimple Snapshot Manager dağıtma](storsimple-snapshot-manager-deployment.md)konusuna gidin.
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>Temel bir birimin yedeklemesini yapılandırmak için
-1. StorSimple aygıtında temel bir birim oluşturun.
-2. Montaj, baş harfe dönüştürme ve ses düzeyini [Montaj ses birimlerinde](#mount-volumes)açıklandığı şekilde biçimlendirin. 
+1. StorSimple cihazında temel bir birim oluşturun.
+2. [Bağlama birimleri](#mount-volumes)bölümünde açıklandığı şekilde birimi bağlayın, başlatın ve biçimlendirin. 
 3. Masaüstünüzdeki StorSimple Snapshot Manager simgesine tıklayın. StorSimple Snapshot Manager penceresi görüntülenir. 
-4. **Kapsam** bölmesinde, **Birimler** düğümüne sağ tıklayın ve ardından **Rescan birimlerini**seçin. Tarama tamamlandığında, **Sonuçlar** bölmesinde bir birim listesi görünmelidir. 
-5. **Sonuçlar** bölmesinde, birime sağ tıklayın ve ardından **Birim Grubu Oluştur'u**seçin. 
+4. **Kapsam** bölmesinde **birimler** düğümüne sağ tıklayın ve ardından **birimleri yeniden Tara**' yı seçin. Tarama tamamlandığında, **sonuçlar** bölmesinde bir birim listesi görünmelidir. 
+5. **Sonuçlar** bölmesinde, birime sağ tıklayın ve ardından **birim grubu oluştur**' u seçin. 
    
-    ![Birim grubu oluşturma](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
-6. Birim **Grubu Oluştur** iletişim kutusunda, birim grubu için bir ad yazın, ona hacimatayın ve ardından **Tamam'ı**tıklatın.
-7. **Kapsam** bölmesinde, Birim **Grupları** düğümünü genişletin. Yeni birim **grubu, Birim Grupları** düğümünün altında görünmelidir. 
-8. Birim grup adını sağ tıklatın.
+    ![Birim grubu oluştur](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
+6. **Birim grubu oluştur** iletişim kutusunda, birim grubu için bir ad yazın, birime birim atayın ve ardından **Tamam**' a tıklayın.
+7. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin. Yeni birim grubu **Birim grupları** düğümünün altında görünmelidir. 
+8. Birim grubu adına sağ tıklayın.
    
-   * Etkileşimli (isteğe bağlı) yedekleme işi başlatmak için **Yedeklemeyi Al'ı**tıklatın. 
-   * Otomatik yedekleme zamanlamak için **Yedekleme İlkesi Oluştur'u**tıklatın. **Genel** sayfada, listeden bir birim grubu seçin. **Zamanlama** sayfasında zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
-9. Yedekleme işinin başladığını doğrulamak için **Kapsam** bölmesindeki **İşler** düğümünü genişletin ve ardından **Çalışan** düğümünü tıklatın. Şu anda çalışan işlerin listesi **Sonuçlar** bölmesinde görünür. 
+   * Etkileşimli (isteğe bağlı) yedekleme işini başlatmak için, **yedeklemeyi al**' ı tıklatın. 
+   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden bir birim grubu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
+9. Yedekleme işinin başlatıldığını onaylamak için, **kapsam** bölmesinde **işler** düğümünü genişletin ve ardından **çalışan** düğümüne tıklayın. Çalışmakta olan işlerin listesi **sonuçlar** bölmesinde görüntülenir. 
 
-## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Dinamik bir yansıtılmış ses düzeyini yapılandırma ve yedekleme
-Dinamik bir yansıtılmış birimin yedekleme yapılandırmak için aşağıdaki adımları tamamlayın:
+## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Dinamik yansıtılmış birimi yapılandırma ve yedekleme
+Dinamik bir yansıtılmış birimin yedeklemesini yapılandırmak için aşağıdaki adımları izleyin:
 
-* Adım 1: Dinamik bir yansıtılmış birim oluşturmak için Disk Yönetimi'ni kullanın. 
-* Adım 2: Yedeklemeyapılandırmak için StorSimple Snapshot Manager'ı kullanın.
+* 1. Adım: dinamik bir yansıtılmış birim oluşturmak için disk yönetimi 'Ni kullanın. 
+* 2. Adım: yedek yapılandırmak için StorSimple Snapshot Manager kullanın.
 
 ### <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce:
 
-* StorSimple aygıtının ve ana bilgisayar bilgisayarının doğru şekilde yapılandırıldığından emin olun. Daha fazla bilgi için [şirket içi StorSimple aygıtınızı dağıtın.](storsimple-8000-deployment-walkthrough-u2.md)
-* StorSimple Snapshot Manager'ı yükleyin ve yapılandırır. Daha fazla bilgi [için, StorSimple Snapshot Manager'ı dağıt'a](storsimple-snapshot-manager-deployment.md)gidin.
-* StorSimple aygıtında iki birim yapılandırın. (Örneklerde, kullanılabilir birimler **Disk 1** ve Disk 2'dir.) **Disk 2** 
+* StorSimple cihazının ve ana bilgisayarın doğru yapılandırıldığından emin olun. Daha fazla bilgi için, Şirket [Içi StorSimple cihazınızı dağıtma](storsimple-8000-deployment-walkthrough-u2.md)konusuna gidin.
+* StorSimple Snapshot Manager yükleyip yapılandırın. Daha fazla bilgi için, [StorSimple Snapshot Manager dağıtma](storsimple-snapshot-manager-deployment.md)konusuna gidin.
+* StorSimple cihazında iki birim yapılandırın. (Örneklerde, kullanılabilir birimler **disk 1** ve **Disk 2**' dir.) 
 
-### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Adım 1: Dinamik bir aynalı birim oluşturmak için Disk Yönetimini kullanın
-Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönetmek için bir sistem yardımcı programıdır. Disk Yönetimi hakkında daha fazla bilgi için Microsoft TechNet web sitesinden [Disk Yönetimi'ne](https://technet.microsoft.com/library/cc770943.aspx) gidin.
+### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>1. Adım: Dinamik yansıtılmış birim oluşturmak için disk yönetimi 'Ni kullanma
+Disk Yönetimi, sabit diskleri ve içerdikleri birimleri veya bölümleri yönetmeye yönelik bir sistem yardımcı programıdır. Disk yönetimi hakkında daha fazla bilgi için Microsoft TechNet Web sitesinde [disk yönetimi](https://technet.microsoft.com/library/cc770943.aspx) ' ne gidin.
 
-#### <a name="to-create-a-dynamic-mirrored-volume"></a>Dinamik bir aynalı hacim oluşturmak için
-1. Disk Yönetimini başlatmak için aşağıdaki seçeneklerden birini kullanın: 
+#### <a name="to-create-a-dynamic-mirrored-volume"></a>Dinamik bir yansıtılmış birim oluşturmak için
+1. Disk Yönetimi 'ni başlatmak için aşağıdaki seçeneklerden herhangi birini kullanın: 
    
-   * **Çalıştır** kutusunu açın, **Diskmgmt.msc**yazın ve Enter tuşuna basın.
-   * Sunucu Yöneticisi'ni başlatın, **Depolama** düğümünü genişletin ve ardından **Disk Yönetimi'ni**seçin. 
-   * **Yönetim Araçları**başlatın, **Bilgisayar Yönetimi** düğümünü genişletin ve ardından **Disk Yönetimi'ni**seçin. 
-2. StorSimple aygıtında iki birim olduğundan emin olun. (Örnekte, kullanılabilir birimler **Disk 1** ve Disk 2'dir.) **Disk 2** 
-3. Disk Yönetimi penceresinde, alt bölmenin sağ sütununda Disk **1'i** sağ tıklatın ve **Yeni Yansıtılmış Birim'i**seçin. 
+   * **Çalıştır** kutusunu açın, **diskmgmt. msc**yazın ve ENTER tuşuna basın.
+   * Sunucu Yöneticisi başlatın, **depolama** düğümünü genişletin ve ardından **disk yönetimi**' ni seçin. 
+   * **Yönetimsel Araçlar**'ı başlatın, **Bilgisayar Yönetimi** düğümünü genişletin ve ardından **disk yönetimi**'ni seçin. 
+2. StorSimple cihazında iki biriminiz bulunduğundan emin olun. (Örnekte, kullanılabilir birimler **disk 1** ve **Disk 2**' dir.) 
+3. Disk Yönetimi penceresinde, alt bölmenin sağ sütununda, **disk 1** ' e sağ tıklayıp **yeni yansıtılmış birim**' i seçin. 
    
-    ![Yeni Aynalı Hacim](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
-4. Yeni **Yansıtılan Birim** sihirbazı sayfasında **İleri'yi**tıklatın.
-5. **Diskleri Seç** sayfasında, **Seçili** bölmede **Disk 2'yi** seçin, **Ekle'yi**tıklatın ve sonra **İleri'yi**tıklatın. 
-6. Sürücü **Mektubu veya Yol Ata,** varsayılanları kabul edin ve sonra **İleri'yi**tıklatın. 
-7. Birim Boyutunu **Biçimlendir** sayfasında, **Ayırma Birimi Boyutu** kutusunda **64K'yı**seçin. Hızlı **biçim** onay kutusunu yap'ı seçin ve sonra **İleri'yi**tıklatın. 
-8. Yeni **Yansıtılan Birim'i Tamamlama** sayfasında ayarlarınızı gözden geçirin ve **ardından Bitir'i**tıklatın. 
-9. Bir ileti, temel diskin dinamik bir diske dönüştürüleceğini gösterir. **Evet'i**tıklatın.
+    ![Yeni yansıtılmış birim](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
+4. **Yeni yansıtılmış birim** Sihirbazı sayfasında, **İleri**' ye tıklayın.
+5. **Diskleri seçin** sayfasında, **Seçili** bölmedeki **Disk 2** ' yi seçin, **Ekle**' ye ve ardından **İleri**' ye tıklayın. 
+6. **Sürücü harfi veya yolu ata** sayfasında, Varsayılanları kabul edin ve ardından **İleri**' ye tıklayın. 
+7. **Birim Biçimlendir** sayfasında, **ayırma birimi boyutu** kutusunda, **64K**' yı seçin. **Hızlı biçimlendirme gerçekleştir** onay kutusunu seçin ve ardından **İleri**' ye tıklayın. 
+8. **Yeni yansıtılmış birimi tamamlama** sayfasında, ayarlarınızı gözden geçirin ve ardından **son**' a tıklayın. 
+9. Temel diskin dinamik diske dönüştürüleceğini belirten bir ileti görüntülenir. **Evet**' e tıklayın.
    
     ![Dinamik disk dönüştürme iletisi](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
-10. Disk Yönetimi'nde, Disk 1 ve Disk 2'nin dinamik yansıtılmış birimler olarak gösterildiğini doğrulayın. (**Dinamik** durum sütununda görünmelidir ve kapasite çubuğu rengi yansıtılmış bir birim gösteren kırmızıya değiştirilmelidir.) 
+10. Disk Yönetimi 'nde disk 1 ve disk 2 ' nin dinamik yansıtılmış birimler olarak gösterildiğini doğrulayın. (**Dinamik** durum sütununda görünmelidir ve kapasite çubuğu rengi, yansıtılmış bir birimi belirten kırmızı olarak değiştirilmelidir.) 
     
-    ![Disk Yönetimi aynalı dinamik diskler](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
+    ![Disk Yönetimi yansıtılmış dinamik diskler](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
 
-### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>Adım 2: Yedeklemeyapılandırmak için StorSimple Snapshot Manager'ı kullanın
-Dinamik bir yansıtılmış birim yapılandırmak için aşağıdaki yordamı kullanın ve sonra hemen bir yedekleme başlatmak veya zamanlanmış yedeklemeler için bir ilke oluşturun.
+### <a name="step-2-use-storsimple-snapshot-manager-to-configure-backup"></a>2. Adım: bir yedeklemeyi yapılandırmak için StorSimple Snapshot Manager kullanma
+Dinamik bir yansıtılmış birimi yapılandırmak için aşağıdaki yordamı kullanın ve ardından hemen bir yedekleme başlatın veya zamanlanmış yedeklemeler için bir ilke oluşturun.
 
-#### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>Dinamik aynalı birimin yedeklemesini yapılandırmak için
+#### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>Dinamik bir yansıtılmış birimin yedeklemesini yapılandırmak için
 1. Masaüstünüzdeki StorSimple Snapshot Manager simgesine tıklayın. StorSimple Snapshot Manager penceresi görüntülenir. 
-2. **Kapsam** bölmesinde, **Birimler** düğümüne sağ tıklayın ve **Rescan birimlerini**seçin. Tarama tamamlandığında, **Sonuçlar** bölmesinde bir birim listesi görünmelidir. Dinamik aynalı birim tek bir birim olarak listelenir. 
-3. **Sonuçlar** bölmesinde, dinamik aynalı birim sağ tıklatın ve sonra **Birim Grubu Oluştur'u**tıklatın. 
-4. Birim **Grubu Oluştur** iletişim kutusunda, birim grubu için bir ad yazın, dinamik aynalı birimi bu gruba atayın ve ardından **Tamam'ı**tıklatın. 
-5. **Kapsam** bölmesinde, Birim **Grupları** düğümünü genişletin. Yeni birim **grubu, Birim Grupları** düğümünün altında görünmelidir. 
-6. Birim grup adını sağ tıklatın. 
+2. **Kapsam** bölmesinde, **birimler** düğümüne sağ tıklayın ve **birimleri yeniden Tara**' yı seçin. Tarama tamamlandığında, **sonuçlar** bölmesinde bir birim listesi görünmelidir. Dinamik yansıtılmış birim tek bir birim olarak listelenir. 
+3. **Sonuçlar** bölmesinde, dinamik yansıtılmış birime sağ tıklayın ve ardından **birim grubu oluştur**' a tıklayın. 
+4. **Birim grubu oluştur** iletişim kutusunda, birim grubu için bir ad yazın, dinamik yansıtılmış birimi bu gruba atayın ve ardından **Tamam**' a tıklayın. 
+5. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin. Yeni birim grubu **Birim grupları** düğümünün altında görünmelidir. 
+6. Birim grubu adına sağ tıklayın. 
    
-   * Etkileşimli (isteğe bağlı) yedekleme işi başlatmak için **Yedeklemeyi Al'ı**tıklatın. 
-   * Otomatik yedekleme zamanlamak için **Yedekleme İlkesi Oluştur'u**tıklatın. **Genel** sayfada, listeden birim grubunu seçin. **Zamanlama** sayfasında zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
-7. Yedekleme işini çalışırken izleyebilirsiniz. **Kapsam** bölmesinde, **İşler** düğümünü genişletin ve ardından **Çalıştır'ı**tıklatın, İş ayrıntıları **Sonuçlar** bölmesinde görünür. Yedekleme işi tamamlandığında, ayrıntılar **Son 24** saat iş listesine aktarılır. 
+   * Etkileşimli (isteğe bağlı) yedekleme işini başlatmak için, **yedeklemeyi al**' ı tıklatın. 
+   * Otomatik yedekleme zamanlamak için **yedekleme Ilkesi oluştur**' a tıklayın. **Genel** sayfasında, listeden birim grubunu seçin. **Zamanlama** sayfasında, zamanlama ayrıntılarını girin. İşiniz bittiğinde **Tamam**'a tıklayın. 
+7. Yedekleme işini çalışırken izleyebilirsiniz. **Kapsam** bölmesinde, **işler** düğümünü genişletin ve ardından **çalışıyor**' a tıklayın, **sonuçlar** bölmesinde iş ayrıntıları görüntülenir. Yedekleme işi tamamlandığında, Ayrıntılar **son 24** saatlik iş listesine aktarılır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [StorSimple çözümünüzü yönetmek için StorSimple Snapshot Manager'ı](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.
-* [Birim grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager'ı](storsimple-snapshot-manager-manage-volume-groups.md)nasıl kullanacağınızı öğrenin.
+* StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.
+* [StorSimple Snapshot Manager kullanarak birim grupları oluşturma ve yönetme](storsimple-snapshot-manager-manage-volume-groups.md)hakkında bilgi edinin.
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx

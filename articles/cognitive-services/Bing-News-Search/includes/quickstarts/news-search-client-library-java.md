@@ -1,5 +1,5 @@
 ---
-title: Bing Haberler Arama Java istemci kitaplığı quickstart
+title: Bing Haber Arama Java istemci kitaplığı hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,17 +9,17 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.openlocfilehash: 76a752bc108158c998d13a548da535d5fb1d5ee2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503877"
 ---
-Java için Bing Haberler Arama istemci kitaplığı ile haber aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Aramaçoğu programlama diliyle uyumlu bir REST API'si olsa da, istemci kitaplığı hizmeti uygulamalarınız için tümleştirmenin kolay bir yolunu sağlar. Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)bulunabilir.
+Java için Bing Haber Arama istemci kitaplığıyla haberleri aramaya başlamak için bu hızlı başlangıcı kullanın. Bing Haber Arama, çoğu programlama dili ile uyumlu bir REST API sahip olsa da, istemci kitaplığı, hizmeti uygulamalarınızla tümleştirmenin kolay bir yolunu sağlar. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)' da bulunabilir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bing Haber Arama istemci kitaplığı bağımlılıklarını Maven, Gradle veya başka bir bağımlılık yönetim sistemini kullanarak yükleyin. Maven POM dosyası şu bildirimi gerektirir:
+Maven, Gradle veya başka bir bağımlılık yönetim sistemini kullanarak Bing Haber Arama istemci kitaplığı bağımlılıklarını yükler. Maven POM dosyası şu bildirimi gerektirir:
 
 ```xml
     <dependencies>
@@ -50,9 +50,9 @@ import okhttp3.Response;
 import java.io.IOException;
 ```
 
-## <a name="create-a-search-client-and-store-credentials"></a>Arama istemcisi oluşturma ve kimlik bilgilerini depolama
+## <a name="create-a-search-client-and-store-credentials"></a>Arama İstemcisi Oluşturma ve kimlik bilgilerini depolama
 
-1. Yeni `NewsSearchAPIImpl` bir `getClient()` arama istemcisi döndüren bir yöntem oluşturun. Bitiş noktanızı yeni`NewsSearchAPIImpl` nesne için ilk parametre olarak `ServiceClientCredentials` ve kimlik bilgilerinizi depolayacak yeni bir nesne ekleyin. 
+1. Yeni `NewsSearchAPIImpl` bir arama istemcisi `getClient()` döndüren adlı bir yöntem oluşturun. Yeni`NewsSearchAPIImpl` nesnenin ilk parametresi olarak uç noktanızı ve kimlik bilgilerinizi depolamak için yeni `ServiceClientCredentials` bir nesne ekleyin. 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -62,7 +62,7 @@ import java.io.IOException;
     }
     ```
 
-2. Nesneyi `ServiceClientCredentials` oluşturmak için `applyCredentialsFilter()` işlevi geçersiz kılın. Yönteme `OkHttpClient.Builder` bir geçiş ve istemci kitaplık çağrısı için kimlik bilgilerinizi oluşturmak için oluşturucu `addNetworkInterceptor()` yöntemini kullanın.
+2. `ServiceClientCredentials` Nesneyi oluşturmak için `applyCredentialsFilter()` işlevini geçersiz kılın. Yöntemine bir `OkHttpClient.Builder` geçirin ve istemci kitaplığı çağrısı için kimlik bilgilerinizi oluşturmak `addNetworkInterceptor()` üzere oluşturucunun metodunu kullanın.
 
     ```java
     new ServiceClientCredentials() {
@@ -87,7 +87,7 @@ import java.io.IOException;
 
 ## <a name="send-and-receive-a-search-request"></a>Arama isteği gönderme ve alma
 
-1. Bing Haber Arama `getClient()` hizmetine arama çağrısı yapan ve arama isteği gönderen bir yöntem oluşturun. Aramayı *pazara* göre filtreleyin ve parametreleri *sayar,* ardından ilk haber sonucu hakkında bilgi yazdırın: ad, URL, yayın tarihi, açıklama, sağlayıcı adı ve aramanız için tahmini eşleşmelerin toplam sayısı.
+1. Bing Haber Arama hizmetine bir arama isteği `getClient()` çağıran ve gönderen bir yöntem oluşturun. Bu aramayı *Pazar* ve *sayı* parametreleriyle filtreleyin, ardından ilk haber sonucuyla ilgili bilgileri YAZDıRıN: ad, URL, Yayın tarihi, açıklama, sağlayıcı adı ve aramanızın tahmini eşleşmelerin toplam sayısı.
 
     ```java
     public static void newsSearch(String subscriptionKey)
@@ -121,7 +121,7 @@ import java.io.IOException;
     
     ```
 
-2. Kodu yürütmek için `main()` arama yönteminizi bir yönteme ekleyin.
+2. Kodu yürütmek için bir `main()` yönteme arama yönteminizi ekleyin.
 
     ```java 
     public static void main(String[] args) {

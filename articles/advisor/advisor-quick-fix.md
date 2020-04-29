@@ -1,53 +1,53 @@
 ---
-title: Danışman önerileri için Hızlı Düzeltme düzeltmesi
-description: Danışman'da Hızlı Düzeltme'yi kullanarak toplu düzeltme gerçekleştirin
+title: Danışman önerileri için hızlı düzeltme düzeltmesi
+description: Danışman 'de hızlı düzeltme kullanarak toplu düzeltme gerçekleştirme
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502496"
 ---
-# <a name="quick-fix-remediation-for-advisor"></a>Danışman için Hızlı Düzeltme düzeltmesi
-**Hızlı Düzeltme,** birden çok kaynak la ilgili öneri için daha hızlı ve daha kolay bir düzeltme yolu sağlar. Kaynaklar için toplu düzeltmeler için yetenek sağlar ve kaynaklarınız için ölçekte düzeltme ile aboneliklerinizi daha hızlı optimize etmenize yardımcı olur.
-Özellik yalnızca Azure portalı üzerinden belirli öneriler için kullanılabilir.
+# <a name="quick-fix-remediation-for-advisor"></a>Danışman için hızlı düzeltme düzeltmesi
+**Hızlı düzeltme** , birden fazla kaynak üzerinde öneri için daha hızlı ve kolay bir düzeltme yolu sağlar. Bu, kaynaklar için toplu düzeltmeler sağlar ve kaynaklarınızın ölçeklendirilmesi ile aboneliklerinizi daha hızlı iyileştirmenize yardımcı olur.
+Özelliği yalnızca Azure portal aracılığıyla belirli öneriler için kullanılabilir.
 
 
-## <a name="steps-to-use-quick-fix"></a>'Hızlı Düzeltme' kullanılacak adımlar
+## <a name="steps-to-use-quick-fix"></a>' Hızlı düzelme ' kullanma adımları
 
-1. **Hızlı Düzeltme** etiketine sahip öneriler listesinden, öneriyi tıklatın.
+1. **Hızlı düzelme** etiketine sahip öneriler listesinden, öneriye tıklayın.
 
-   ![Danışman hızlı düzeltme](./media/quick-fix-1.png)
+   ![Danışman hızlı çözüm](./media/quick-fix-1.png)
    
-   *Resimdeki fiyatlar sadece*
+   *Görüntüdeki fiyatlar yalnızca örnek amaçlıdır*
 
-2. Öneri ayrıntıları sayfasında, bu öneriye sahip olduğunuz kaynakların listesini görürsünüz. Öneri için düzeltmek istediğiniz tüm kaynakları seçin.
+2. Öneri ayrıntıları sayfasında, bu öneriyle ilgili kaynakların listesini görürsünüz. Öneri için düzeltmek istediğiniz tüm kaynakları seçin.
 
-   ![Danışman hızlı düzeltme](./media/quick-fix-2.png)
+   ![Danışman hızlı çözüm](./media/quick-fix-2.png)
    
-   *Resimdeki fiyatlar sadece*
+   *Görüntüdeki fiyatlar yalnızca örnek amaçlıdır*
 
-3. Kaynakları seçtikten sonra, toplu düzeltme için **Hızlı Düzeltme** düğmesini tıklatın.
+3. Kaynakları seçtikten sonra, **hızlı düzeltme** düğmesine tıklayarak toplu olarak düzeltin.
 
    > [!NOTE]
-   > Listelenen kaynaklardan bazıları devre dışı bırakılmış olabilir, çünkü bunları değiştirmek için uygun izinlere sahip değilsiniz.
+   > Listelenen bazı kaynaklar devre dışı bırakılabilir, çünkü bunları değiştirmek için uygun izinlere sahip değilsiniz.
    
    > [!NOTE]
-   > Danışman'da belirtilen avantajlara ek olarak, başka sonuçlar da varsa, bilinçli düzeltme kararları almanıza yardımcı olmak için deneyimolarak size iletilecektir.
+   > Başka etkileri varsa, danışman içinde bahsedilen avantajlara ek olarak, bilgi işlem konusunda bilinçli düzeltme kararları almanıza yardımcı olacak deneyimle karşılaşırsınız.
    
-4. Düzeltmenin tamamlanması için bir bildirim alırsınız. Düzeltilmeyen kaynaklar ve kaynak listesi görünümünde seçili modda kaynaklar varsa bir hata görürsünüz.  
+4. Düzeltme tamamlama için bir bildirim alacaksınız. Kaynak listesi görünümünde, seçili modda düzeltilen ve kaynaklar olduğunda bir hata görürsünüz.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Danışman önerileri hakkında daha fazla bilgi için bkz:
-* [Azure Danışmanına Giriş](advisor-overview.md)
+Danışman önerileri hakkında daha fazla bilgi için bkz.
+* [Azure Advisor 'a giriş](advisor-overview.md)
 * [Danışman’ı kullanmaya başlama](advisor-get-started.md)
-* [Danışman Maliyet önerileri](advisor-cost-recommendations.md)
-* [Danışman Performans önerileri](advisor-performance-recommendations.md)
-* [Danışman Güvenlik önerileri](advisor-security-recommendations.md)
-* [Danışman Operasyonel Mükemmellik önerileri](advisor-operational-excellence-recommendations.md)
+* [Danışman maliyet önerileri](advisor-cost-recommendations.md)
+* [Advisor performans önerileri](advisor-performance-recommendations.md)
+* [Danışman güvenlik önerileri](advisor-security-recommendations.md)
+* [Danışman Işletimsel üstün öneriler](advisor-operational-excellence-recommendations.md)
 * [Danışman REST API](https://docs.microsoft.com/rest/api/advisor/)
