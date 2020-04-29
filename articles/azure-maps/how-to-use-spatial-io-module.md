@@ -1,6 +1,6 @@
 ---
-title: Azure Haritalar uzamsal IO modülü nasıl kullanılır | Microsoft Azure Haritaları
-description: Azure Haritalar Web SDK tarafından sağlanan Uzamsal IO modüllerini nasıl kullanacağınızı öğrenin. Bu modül, geliştiricilerin uzamsal verileri Azure Haritalar web sdk ile tümleştirmesini kolaylaştırmak için sağlam özellikler sağlar.
+title: Azure Maps uzamsal GÇ modülünü kullanma | Microsoft Azure haritaları
+description: Azure Haritalar Web SDK 'Sı tarafından sunulan uzamsal GÇ modülünü nasıl kullanacağınızı öğrenin. Bu modül, geliştiricilerin uzamsal verileri Azure Maps web SDK 'sı ile tümleştirmesini kolaylaştırmak için güçlü özellikler sağlar.
 author: philmea
 ms.author: philmea
 ms.date: 02/28/2020
@@ -9,65 +9,65 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804648"
 ---
-# <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Haritalar Uzamsal IO modülü nasıl kullanılır?
+# <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
 
-Azure Haritalar Web SDK, JavaScript veya TypeScript kullanarak uzamsal verileri Azure Haritalar web SDK ile birleştiren **Uzamsal IO modüllerini**sağlar. Bu modüldeki sağlam özellikler, geliştiricilerin şunları
+Azure Haritalar Web SDK 'Sı, uzamsal verileri JavaScript veya TypeScript kullanarak Azure Maps web SDK 'Sı ile tümleştiren **uzamsal GÇ modülünü**sağlar. Bu modüldeki güçlü özellikler geliştiricilerin şunları yapmasına izin verir:
 
-- [Ortak uzamsal veri dosyalarını okuma ve yazma.](spatial-io-read-write-spatial-data.md) Desteklenen dosya biçimleri şunlardır: KML, KMZ, GPX, GeoRSS, GML, GeoJSON ve csv dosyaları uzamsal bilgi içeren sütunlar içeren. Ayrıca Bilinen Metni (WKT) destekler.
-- [Açık Jeouzamsal Konsorsiyum (OGC) hizmetlerine bağlanın ve Azure Haritalar web SDK ile tümleştirin. Yer kaplama Web Harita Hizmetleri (WMS) ve Web Harita Döşeme Hizmetleri (WMTS) harita üzerinde katmanlar olarak.](spatial-io-add-ogc-map-layer.md)
-- [Web Özellik Hizmeti'ndeki (WFS) sorgu verileri.](spatial-io-connect-wfs-service.md)
-- [Stil bilgilerini içeren ve en az kodu kullanarak otomatik olarak işlemelerini sağlayan karmaşık veri kümelerini yerle bir edin.](spatial-io-add-simple-data-layer.md)
-- [Kaldıraç yüksek hızlı XML ve sınırlı dosya okuyucu ve yazar sınıfları.](spatial-io-core-operations.md)
+- [Sık kullanılan uzamsal veri dosyalarını okuyun ve yazın](spatial-io-read-write-spatial-data.md). Desteklenen dosya biçimleri şunlardır: KML, KMZ, GPX, GeoRSS, GML, GeoJSON ve uzamsal bilgiler içeren sütunlar içeren CSV dosyaları. Ayrıca Iyi bilinen metinleri (WKT) destekler.
+- [Open Geospatial Consortium (OGC) hizmetlerine bağlanın ve Azure Maps web SDK ile tümleştirin. Harita üzerinde katman olarak Web harita Hizmetleri (WMS) ve Web harita kutucuk Hizmetleri 'ni (WMTS) kaplama](spatial-io-add-ogc-map-layer.md).
+- [Verileri bir Web Özellik hizmetinde (WFS) sorgulama](spatial-io-connect-wfs-service.md).
+- [Stil bilgisi içeren karmaşık veri kümelerini kaplama ve bunların en az kod kullanılarak otomatik olarak işlemesini](spatial-io-add-simple-data-layer.md)içerir.
+- [Yüksek hızlı XML ve ayrılmış dosya okuyucusu ve yazıcı sınıflarından yararlanın](spatial-io-core-operations.md).
 
-Bu kılavuzda, bir web uygulamasında Uzamsal IO modüllerini nasıl entegre edebileceğimizi ve kullanacağımızı öğreneceğiz.
+Bu kılavuzda, bir Web uygulamasında uzamsal GÇ modülünü tümleştirme ve kullanma hakkında bilgi edineceksiniz.
 
-Bu video, Azure Haritalar Web SDK'daki Uzamsal IO modülüne genel bir bakış sağlar.
+Bu videoda, Azure Maps web SDK 'sında uzamsal GÇ modülüne ilişkin bir genel bakış sunulmaktadır.
 
 <br/>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Uzamsal verileri Azure Haritalar'a kolayca entegre edin - Microsoft Channel 9 Video"></iframe>
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Uzamsal verileri Azure Maps ile kolayca tümleştirin-Microsoft Channel 9 videosu"></iframe>
 
 
 > [!WARNING]
-> Yalnızca güvendiğiniz bir kaynaktan gelen verileri ve hizmetleri kullanın, özellikle de başka bir etki alanından başvuruyorsanız. Uzamsal IO modülü riski en aza indirmek için adımlar atar, ancak en güvenli yaklaşım uygulamanıza herhangi bir danagerous veri ile başlamak için izin vermez. 
+> Yalnızca güvendiğiniz bir kaynaktan gelen veri ve Hizmetleri, özellikle de başka bir etki alanından başvuru yapıyorsanız kullanın. Uzamsal GÇ modülü, riski en aza indirmek için gereken adımları ele alır, ancak en güvenli yaklaşım, uygulamanıza yönelik herhangi bir desteklenmeyen veriye izin vermez. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Uzamsal IO modüllerini kullanabilmeniz için [önce bir Azure Haritalar hesabı oluşturmanız](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) ve hesabınız için birincil abonelik [anahtarını almanız](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)gerekir.
+Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-with-azure-maps) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)gerekir.
 
-## <a name="installing-the-spatial-io-module"></a>Uzamsal IO modülünün yüklenmesi
+## <a name="installing-the-spatial-io-module"></a>Uzamsal GÇ modülünü yükleme
 
-İki seçenekten birini kullanarak Azure Haritalar uzamsal IO modüllerini yükleyebilirsiniz:
+Azure Maps uzamsal GÇ modülünü iki seçenekten birini kullanarak yükleyebilirsiniz:
 
-* Azure Haritalar mekansal IO modülü için genel olarak barındırılan Azure CDN. Bu seçenek için, HTML dosyasının `<head>` öğesindeki JavaScript'e bir başvuru eklersiniz.
+* Azure Maps uzamsal GÇ modülü için küresel olarak barındırılan Azure CDN. Bu seçenek için, HTML dosyasının `<head>` öğesinde JavaScript 'e bir başvuru eklersiniz.
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-* [Azure-haritalar-mekansal-io](https://www.npmjs.com/package/azure-maps-spatial-io) için kaynak kodu yerel olarak yüklenebilir ve ardından uygulamanızla birlikte barındırılabilir. Bu paket, TypeScript tanımlarını da içerir. Bu seçenek için, paketi yüklemek için aşağıdaki komutu kullanın:
+* [Azure-Maps-uzamsal-GÇ](https://www.npmjs.com/package/azure-maps-spatial-io) için kaynak kodu yerel olarak yüklenebilir ve sonra uygulamanız ile barındırılabilir. Bu paket TypeScript tanımlarını da içerir. Bu seçenek için, paketini yüklemek için aşağıdaki komutu kullanın:
 
     ```sh
     npm install azure-maps-spatial-io
     ```
 
-    Ardından, HTML belgesinin `<head>` öğesinde JavaScript'e bir başvuru ekleyin:
+    Daha sonra, HTML belgesi `<head>` öğesindeki JavaScript 'e bir başvuru ekleyin:
 
     ```html
     <script src="node_modules/azure-maps-spatial-io/dist/atlas-spatial.min.js"></script>
     ```
 
-## <a name="using-the-spatial-io-module"></a>Uzamsal IO modüllerini kullanma
+## <a name="using-the-spatial-io-module"></a>Uzamsal GÇ modülünü kullanma
 
 1. Yeni bir HTML dosyası oluşturun.
 
-2. Azure Haritalar Web SDK'sını yükleyin ve harita denetimini başlatma. Ayrıntılar için [Azure Haritalar harita kontrol](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) kılavuzuna bakın. Bu adımı bitirdikten sonra, HTML dosyanız şu şekilde görünmelidir:
+2. Azure Haritalar Web SDK 'sını yükleyin ve harita denetimini başlatın. Ayrıntılar için bkz. [Azure Maps harita denetim](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) Kılavuzu. Bu adımla işiniz bittiğinde, HTML dosyanız şuna benzemelidir:
 
     ```html
     <!DOCTYPE html>
@@ -121,13 +121,13 @@ Uzamsal IO modüllerini kullanabilmeniz için [önce bir Azure Haritalar hesabı
     </html>
     ```
 
-2. Azure Haritalar mekansal IO modüllerini yükleyin. Bu alıştırma için Azure Haritalar mekansal IO modülü için CDN'yi kullanın. Aşağıdaki başvuruyu HTML `<head>` dosyanızın öğesine ekleyin:
+2. Azure Maps uzamsal GÇ modülünü yükleyin. Bu alıştırmada, Azure Maps uzamsal GÇ modülü için CDN 'yi kullanın. Aşağıdaki başvuruyu, HTML dosyanızın `<head>` öğesine ekleyin:
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>
     ```
 
-3. Bir `datasource`, başlangıç ve haritaya veri kaynağı ekleyin. Bir `layer`, başlangıç ve harita katmanına veri kaynağı ekleyin. Ardından, hem veri kaynağını hem de katmanı işleyin. Bir sonraki adımda kodun tamamını görmek için aşağı kaydırmadan önce, veri kaynağı ve katman kodu parçacıklarını koymak için en iyi yerleri düşünün. Haritayı programlı bir şekilde kullanmadan önce harita kaynağının hazır olduğunu beklememiz gerektiğini hatırlayın.
+3. Bir `datasource`başlatın ve veri kaynağını haritaya ekleyin. Bir `layer`başlatın ve veri kaynağını harita katmanına ekleyin. Ardından, hem veri kaynağını hem de katmanını işleme. Sonraki adımda tam kodu görmek için aşağı kaydırmadan önce, veri kaynağını ve katman kodu parçacıklarını yerleştirmek için en iyi yerleri düşünün. Haritayı programlı bir şekilde işleyebilmemiz için, eşleme kaynağı hazırlanana kadar beklemeniz gerektiğini hatırlayın.
 
     ```javascript
     var datasource, layer;
@@ -145,7 +145,7 @@ Uzamsal IO modüllerini kullanabilmeniz için [önce bir Azure Haritalar hesabı
     map.layers.add(layer);
     ```
 
-4. Hepsini bir araya getirerek, HTML kodunuz aşağıdaki kod gibi görünmelidir. Bu örnek, bir URL'den bir XML dosyasının nasıl okunduğunu gösterir. Ardından, dosyanın özellik verilerini haritaya yükleyin ve görüntüleyin. 
+4. Hepsini birlikte koymak, HTML kodunuzun aşağıdaki kod gibi görünmesi gerekir. Bu örnek, bir URL 'den bir XML dosyasının nasıl okunacağını gösterir. Ardından, dosyanın özellik verilerini haritada yükleyin ve görüntüleyin. 
 
     ```html
     <!DOCTYPE html>
@@ -222,37 +222,37 @@ Uzamsal IO modüllerini kullanabilmeniz için [önce bir Azure Haritalar hesabı
     </html>
     ```
 
-5. Birincil anahtarınızla değiştirmeyi `<Your Azure Maps Key>` unutmayın. HTML dosyanızı açın ve aşağıdaki resme benzer sonuçlar görürsünüz:
+5. Birincil anahtarınızla `<Your Azure Maps Key>` değiştirmeyi unutmayın. HTML dosyanızı açın ve aşağıdaki görüntüye benzer sonuçlar görürsünüz:
 
     <center>
 
-    ![Uzamsal Veri Örneği](./media/how-to-use-spatial-io-module/spatial-data-example.png)
+    ![Uzamsal veri örneği](./media/how-to-use-spatial-io-module/spatial-data-example.png)
 
     </center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Burada gösterdiğimiz özellik, Mekansal IO modülünde bulunan birçok özellikten sadece biridir. Uzamsal IO modülündeki diğer işlevlerin nasıl kullanılacağını öğrenmek için aşağıdaki kılavuzları okuyun:
+Burada gösterilen özellik, uzamsal GÇ modülünde kullanılabilen birçok özellikten yalnızca biridir. Uzamsal GÇ modülündeki diğer işlevleri nasıl kullanacağınızı öğrenmek için aşağıdaki kılavuzlardan okuyun:
 
 > [!div class="nextstepaction"]
-> [Basit bir veri katmanı ekleme](spatial-io-add-simple-data-layer.md)
+> [Basit bir veri katmanı ekleyin](spatial-io-add-simple-data-layer.md)
 
 > [!div class="nextstepaction"]
 > [Uzamsal verileri okuma ve yazma](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [OGC harita katmanı ekleme](spatial-io-add-ogc-map-layer.md)
+> [OGC eşleme katmanı ekleme](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [WFS hizmetine bağlanma](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [Temel operasyonlardan yararlanın](spatial-io-core-operations.md)
+> [Çekirdek işlemlerden yararlanın](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
 > [Desteklenen veri biçimi ayrıntıları](spatial-io-supported-data-format-details.md)
 
-Azure Haritalar Uzamsal IO belgelerine bakın:
+Azure Maps uzamsal GÇ belgelerine başvurun:
 
 > [!div class="nextstepaction"]
-> [Azure Haritalar Uzamsal IO paketi](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure haritalar uzamsal GÇ paketi](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)

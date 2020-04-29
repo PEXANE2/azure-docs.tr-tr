@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Gremlin API işlemlerini listelemek ve almak için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - Azure Cosmos DB listesi ve Gremlin API için işlem alın
+title: Azure Cosmos DB Gremlin API 'SI için listeleme ve işlemleri alınacak PowerShell betiği
+description: Gremlin API için betik Azure Cosmos DB listesi ve Get işlemleri Azure PowerShell
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: bd764dce0bc55582125bdb4e6ffd86dec924390b
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366050"
 ---
-# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB - Gremlin API için veritabanlarını ve grafikleri listeleyin ve alın
+# <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB-Gremlin API 'SI için veritabanları ve grafikler listeleme ve edinme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB Hesaplarını listeler veya belirli bir Cosmos DB Hesabı alır. |
-| [Al-AzCosmosDBGremlinVeritabanı](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Bir Hesaptaki Cosmos DB Gremlin API Veritabanlarını listeler veya bir Hesapta belirli bir Cosmos DB Gremlin API Veritabanı alır. |
-| [Al-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Veritabanındaki Cosmos DB Gremlin API Grafiklerini listeler veya Veritabanında belirli bir Cosmos DB Gremlin API Tablosunu alır. |
-|**Azure Kaynak Grupları**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [Get-AzCosmosDBGremlinDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlindatabase) | Bir hesapta Gremlin API veritabanlarını Cosmos DB listeler veya bir hesapta belirtilen Cosmos DB Gremlin API veritabanını alır. |
+| [Get-AzCosmosDBGremlinGraph](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbgremlingraph) | Bir veritabanındaki Cosmos DB Gremlin API grafiklerini listeler veya bir veritabanında belirtilen bir Cosmos DB Gremlin API tablosu alır. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

@@ -1,7 +1,7 @@
 ---
-title: Yayın Notları - Konuşma Servisi
+title: Sürüm notları-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma Hizmeti özelliğinin çalışan günlüğü sürümleri, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar.
+description: Konuşma hizmeti Özellik sürümlerinin, geliştirmelerin, hata düzeltmelerinin ve bilinen sorunların çalışan bir günlüğü.
 services: cognitive-services
 author: oliversc
 manager: jhakulin
@@ -12,533 +12,533 @@ ms.date: 02/25/2020
 ms.author: oliversc
 ms.custom: seodec18
 ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80607415"
 ---
 # <a name="release-notes"></a>Sürüm notları
-## <a name="speech-sdk-1110-2020-march-release"></a>Konuşma SDK 1.11.0: 2020-Mart açıklaması
+## <a name="speech-sdk-1110-2020-march-release"></a>Konuşma SDK 1.11.0:2020-Mart yayını
 
 **Yeni özellikler**
 
-- Linux: Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 için konuşma SDK için sistem yapılandırmak için nasıl [talimatlar](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) eklendi.
-- Linux: Linux ARM32 ve ARM64'te .NET Core C# desteği eklendi. [Burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)daha fazla bilgi edinin . 
-- C#, C++: `UtteranceId` `ConversationTranscriptionResult`Tüm ara ve son konuşma tanıma sonucu arasında tutarlı bir kimlik eklendi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)için ayrıntılar.
-- Python: Için `Language ID`destek eklendi. Lütfen [github repo](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)speech_sample.py bakın.
-- Windows: Tüm win32 konsol uygulamaları için Windows platformuna sıkıştırılmış ses giriş biçimi desteği eklendi. Ayrıntılar [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
-- JavaScript: NodeJS'te konuşma sentezini (metinden konuşmaya) destekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) daha fazla bilgi edinin. 
-- JavaScript: Tüm gönderilen ve alınan iletilerin incelenmesini sağlamak için yeni API'ler ekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) daha fazla bilgi edinin. 
+- Linux: sistemi konuşma SDK 'Sı için yapılandırma [yönergeleriyle](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) birlikte Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 Için destek eklendi.
+- Linux: Linux ARM32 ve ARM64 üzerinde .NET Core C# desteği eklendi. [Buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)daha fazla bilgi edinin. 
+- C#, C++: içinde `UtteranceId` `ConversationTranscriptionResult`, tüm hammaddeleri ve nihai konuşma tanıma sonucunda tutarlı bir kimlik eklenmiştir. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)için ayrıntılar.
+- Python: için `Language ID`destek eklendi. Lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)deposunda speech_sample. Kopyala bölümüne bakın.
+- Windows: tüm Win32 konsol uygulamaları için Windows platformunda sıkıştırılmış ses girişi biçim desteği eklendi. Ayrıntıları [burada bulabilirsiniz](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+- JavaScript: NodeJS 'de konuşma birleştirme (metinden konuşmaya) desteği. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) daha fazla bilgi edinin. 
+- JavaScript: tüm gönderme ve alma iletilerinin incelemesini sağlamak için yeni API 'ler ekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) daha fazla bilgi edinin. 
         
 **Hata düzeltmeleri**
 
-- C#, C++: Bir `SendMessageAsync` sorun düzeltildi, böylece ikili ileti ikili tür olarak gönderildi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)için ayrıntılar.
-- C#, C++: Nesnenin `Connection MessageReceived` önüne `Connection` atılırsa `Recognizer` olay kullanımının çökmesine neden olabileceği bir sorun giderildi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)için ayrıntılar.
-- Android: Mikrofondan gelen ses arabelleği boyutu, gecikme yi artırmak için 800m'den 100m'ye düşürüldü.
-- Android: Android Studio x86 Android emülatörü ile ilgili bir [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) giderildi.
-- JavaScript: `fromSubscription` API ile Çin'deki bölgeler için destek eklendi. Ayrıntılar [burada](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
-- JavaScript: NodeJS'ten gelen bağlantı hataları için daha fazla hata bilgisi ekleyin.
+- C#, C++: bir sorun düzeltildi, `SendMessageAsync` bu nedenle ikili ileti artık ikili tür olarak gönderilir. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)için ayrıntılar.
+- C#, C++: nesnesinden önce `Connection MessageReceived` `Recognizer` `Connection` atıldığı takdirde olay kullanmanın kilitlenmeye neden olabileceği bir sorun düzeltildi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)için ayrıntılar.
+- Android: gecikme süresini artırmak için mikrofondan gelen ses arabellek boyutu, 800ms 'den 100ms 'e düşer.
+- Android: Android Studio 'de x86 Android öykünücüsü ile ilgili bir [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) düzeltildi.
+- JavaScript: `fromSubscription` API ile Çin 'deki bölgeler Için destek eklendi. Ayrıntıları [burada bulabilirsiniz](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: NodeJS ' den bağlantı hatalarıyla ilgili daha fazla hata bilgisi ekleyin.
         
 **Örnekler**
 
-- Birlik: Niyet tanıma genel örnek, LUIS json ithalat başarısız olduğu sabittir. Ayrıntılar [burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
-- Python: Örnek `Language ID`için eklendi. Ayrıntılar [burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
+- Unity: amaç tanıma genel örneği düzeltildi, burada LUSıS JSON içeri aktarma başarısız oldu. Ayrıntıları [burada bulabilirsiniz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
+- Python: için `Language ID`örnek eklendi. Ayrıntıları [burada bulabilirsiniz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
     
-**Covid19 kısaltılmış test**
+**Covid19 abişşlı test**
 
-Son birkaç hafta içinde uzaktan çalışma nedeniyle, biz normalde yaptığımız kadar çok manuel cihaz doğrulama testi yapamadık. Bunun bir örneği, Linux, iOS ve macOS'ta mikrofon girişi ve hoparlör çıktısını test etmektir. Bu platformlarda herhangi bir değişiklik yapmamış olabilir ve otomatik testlerimiz geçti. Biz bir şey cevapsız olası olay, lütfen bize [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen)bildirin .<br> Sürekli destek için teşekkür ederiz. Her zaman olduğu gibi, [lütfen GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) veya [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731)hakkında soru veya geri bildirim gönderin.<br>
-Sağlıklı kalın!
+Son birkaç hafta içinde uzaktan çalışırken, normalde yaptığımız kadar el ile cihaz doğrulama testi yapamadık. Bunun bir örneği, Linux, iOS ve macOS 'ta mikrofon girişini ve konuşmacı çıkışını test ediyor. Bu platformlarda herhangi bir şeyi bozduğumuz ve otomatikleştirilmiş testlerimiz geçtiğinden hiçbir değişiklik yapmadık. Bir şey kaçırdığımız olası bir olayda, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen)'da bize bildirin.<br> Devam eden destek için teşekkürler. Her zaman, lütfen [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) veya [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731)ilgili sorularınızı veya geri bildirimleri gönderin.<br>
+Sağlıklı olun!
 
-## <a name="speech-sdk-1100-2020-february-release"></a>Konuşma SDK 1.10.0: 2020-Şubat açıklaması
+## <a name="speech-sdk-1100-2020-february-release"></a>Konuşma SDK 1.10.0:2020-Şubat yayını
 
 **Yeni özellikler**
 
- - Python'un yeni 3.8 sürümüne destek olmak için Python paketleri eklendi.
+ - Python 'un yeni 3,8 sürümünü desteklemek için Python paketleri eklendi.
  - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 desteği (C++, C#, Java, Python).
    > [!NOTE] 
-   > Müşteriler OpenSSL'yi [bu talimatlara](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)göre yapılandırmalıdır.
- - Debian ve Ubuntu için Linux ARM32 desteği.
- - DialogServiceConnector artık BotFrameworkConfig'de isteğe bağlı bir "bot kimliği" parametresi destekler. Bu parametre, tek bir Azure konuşma kaynağına sahip birden çok Doğrudan Satır Konuşması botunun kullanılmasına izin verir. Parametre belirtilmeden varsayılan bot (Doğrudan Hat Konuşma kanalı yapılandırma sayfası tarafından belirlenir) kullanılır.
- - DialogServiceConnector artık bir SpeechActivityTemplate özelliğine sahiptir. Bu JSON dizesinin içeriği, konuşma tanıma gibi olaylara yanıt olarak otomatik olarak oluşturulan etkinlikler de dahil olmak üzere, Doğrudan Satır Konuşma botuna ulaşan tüm etkinliklerde desteklenen çok çeşitli alanları önceden doldurmak için Direct Line Speech tarafından kullanılacaktır.
- - TTS artık kimlik doğrulama için abonelik anahtarını kullanır ve bir synthesizer oluşturduktan sonra ilk sentez sonucunun ilk bayt gecikmesini azaltır.
- - Ortalama sözcük hata oranı %18,6 oranında azaltılması için 19 yerel bölge için güncelleştirilmiş konuşma tanıma modelleri (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, ca-ES, zh-TW, th-TH, pt-pt-TR) Yeni modeller Dikte, Çağrı Merkezi Transkripsiyon ve Video Dizini senaryoları da dahil olmak üzere birden fazla etki alanında önemli iyileştirmeler getiriyor.
+   > Müşterilerin OpenSSL 'yi [Bu yönergelere](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)göre yapılandırması gerekir.
+ - DeARM32 ve Ubuntu için Linux desteği.
+ - DialogServiceConnector artık BotFrameworkConfig üzerinde isteğe bağlı "bot ID" parametresini destekliyor. Bu parametre, tek bir Azure konuşma kaynağı ile birden çok doğrudan hat konuşma 'nın kullanımına izin verir. Belirtilen parametre olmadan, varsayılan bot (doğrudan hat konuşma kanalı yapılandırma sayfası tarafından belirlendiği şekilde) kullanılacaktır.
+ - DialogServiceConnector artık bir SpeechActivityTemplate özelliğine sahip. Bu JSON dizesinin içeriği, konuşma tanıma gibi olaylara yanıt olarak otomatik olarak oluşturulan etkinlikler dahil olmak üzere doğrudan hat konuşma bot 'a ulaşan tüm etkinliklerde desteklenen çok çeşitli alanları önceden doldurmak için kullanılır.
+ - Şimdi TTS, kimlik doğrulaması için abonelik anahtarını kullanır, birleştirici oluşturulduktan sonra ilk sende ilk bayt gecikme süresini azaltır.
+ - Ortalama% 18,6 bir sözcük hata oranı azalmasıyla ilgili 19 yerel ayar için konuşma tanıma modelleri güncelleştirildi (ES-ES, es-MX, fr-CA, fr-FR, It-IT, ja-JP, ko-KR, PT-BR, zh-CN, zh-HK,, NB-NO, Fi-FL, ru-RU, PL-PL, CA-ES, zh-TW, TH-, Yeni modeller, dikte etme, çağrı merkezi dökümü ve video dizin oluşturma senaryoları dahil olmak üzere birden çok etki alanı arasında önemli geliştirmeler getirir.
 
 **Hata düzeltmeleri**
 
- - Konuşma Transkripsiyonu JAVA API'lerinde düzgün beklemediği hata düzeltildi 
- - Xamarin [GitHub sorunu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) için Android x86 emülatör düzeltme
- - Eksik ekle (Get| Set)AudioConfig özellik yöntemleri
- - Bağlantı kesildiğinde audioDataStream'in durdurulamadığı bir TTS hatasını düzeltme
- - Bölge olmadan bir bitiş noktası kullanmak, konuşma çevirmeni için USP hatalarına neden olur
- - Evrensel Windows Uygulamaları'nda kimlik oluşturma artık uygun benzersiz bir GUID algoritması kullanır; daha önce ve istemeden genellikle etkileşimleri büyük setleri üzerinde çakışma üretilen bir saptırılmış bir uygulama için varsayılan.
+ - Sohbet 'in JAVA API 'Lerinde düzgün bir şekilde beklemediği düzeltilen hata düzeltildi 
+ - Xamarin [GitHub sorunu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) için Android x86 öykünücü düzeltilmesi
+ - Eksik Ekle (Get | Özellik yöntemlerini AudioConfig olarak ayarla
+ - Bağlantı başarısız olduğunda audioDataStream 'in durdurulabileceği bir TTS hatasını çözme
+ - Bölge olmadan bir uç nokta kullanılması, konuşma çevirmeni için USP hatalarının oluşmasına neden olur
+ - Evrensel Windows uygulamalarında KIMLIK oluşturma artık uygun bir benzersiz GUID algoritması kullanıyor; daha önce ve yanlışlıkla büyük etkileşimler kümesi üzerinde çarpışmaları üreten bir saplaması uygulamasına varsayılan olarak ayarlanır.
  
  **Örnekler**
  
- - [Unity mikrofon ve itme modu akışı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) ile Konuşma SDK kullanmak için birlik örneği
+ - [Unity mikrofon ve gönderim modu akışı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) ile konuşma SDK 'sını kullanmak için Unity örneği
 
 **Diğer değişiklikler**
 
- - [Linux için güncellenen OpenSSL yapılandırma belgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
+ - [Linux için OpenSSL yapılandırma belgeleri güncelleştirildi](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
-## <a name="speech-sdk-190-2020-january-release"></a>Konuşma SDK 1.9.0: 2020-Ocak açıklaması
+## <a name="speech-sdk-190-2020-january-release"></a>Konuşma SDK 1.9.0:2020-Ocak sürümü
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
-- Çok aygıtlı konuşma: Birden çok aygıtı aynı konuşmaya veya metin tabanlı konuşmaya bağlayın ve isteğe bağlı olarak aralarında gönderilen iletileri çevirin. [Bu makalede](multi-device-conversation.md)daha fazla bilgi edinin. 
-- Android .aar paketi için anahtar kelime tanıma desteği eklendi ve x86 ve x64 tatları için destek eklendi. 
-- Amaç-C: `SendMessage` `SetMessageProperty` ve nesneye `Connection` eklenen yöntemler. [Burada](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)belgelere bakın.
-- TTS C++ api `std::wstring` şimdi sentez metin girişi olarak destekler, SDK geçmeden önce bir string bir wstring dönüştürmek için ihtiyaç kaldırarak. [Ayrıntılara buradan](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)bakın. 
-- C#: [Dil kimliği](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) ve kaynak dil [config](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) artık kullanılabilir.
-- JavaScript: Konuşma Hizmetinden gelen özel iletileri geri `Connection` `receivedServiceMessage`çağırma olarak aktarmak için nesneye bir özellik eklendi.
-- JavaScript: Prem `FromHost API` kapları ve egemen bulutlarla kullanımı kolaylaştırmak için destek eklendi. [Burada](speech-container-howto.md)belgelere bakın.
-- JavaScript: Şimdi `NODE_TLS_REJECT_UNAUTHORIZED` [orgads](https://github.com/orgads)bir katkı sayesinde onur . [Ayrıntılara buradan](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)bakın.
+- Çoklu cihaz konuşması: birden çok cihazı aynı konuşmaya veya metin tabanlı konuşmaya bağlayın ve isteğe bağlı olarak bunlar arasında gönderilen iletileri çevirin. [Bu makalede](multi-device-conversation.md)daha fazla bilgi edinin. 
+- Android. AAR paketi için anahtar sözcük tanıma desteği eklendi ve x86 ve x64 türleri için destek eklendi. 
+- Amaç-C: `SendMessage` ve `SetMessageProperty` yöntemleri `Connection` nesnesine eklendi. [Belgelere bakın](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection).
+- TTS C++ API 'si artık `std::wstring` sensıs metin girişi olarak desteklenir ve bir WSTRING 'i SDK 'ya geçirmeden önce dizeye dönüştürme gereksinimini ortadan kaldırır. [Ayrıntılara bakın](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync). 
+- C#: [DIL kimliği](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) ve [kaynak dil yapılandırması](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) artık kullanılabilir.
+- JavaScript: `Connection` nesneye, konuşma hizmetinden geri arama `receivedServiceMessage`olarak özel iletiler geçirmek için bir özellik eklenmiştir.
+- JavaScript: şirket içi kapsayıcılar `FromHost API` ve bağımsız bulutlarla kullanım kolaylığı sağlamak Için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
+- JavaScript: artık [orgads](https://github.com/orgads)' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler. [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
 **Yeni değişiklikler**
 
-- `OpenSSL`sürüm 1.1.1b olarak güncellenmiştir ve Linux için Konuşma SDK çekirdek kitaplığına statik olarak bağlıdır. Gelen kutunuz `OpenSSL` sistemdeki `/usr/lib/ssl` dizine yüklenmediyse, bu bir mola verebilir. Sorunu çözmek için lütfen Konuşma SDK dokümanları altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
-- C# `WordLevelTimingResult.Offset` `int` için döndürülen veri türünü, `long` konuşma verilerinin `WordLevelTimingResults` 2 dakikadan uzun olduğu zamana erişime izin vermek için değiştirdik.
-- `PushAudioInputStream`ve `PullAudioInputStream` şimdi wav üstbilgisini, oluşturulduklarında `AudioStreamFormat`isteğe bağlı olarak belirtilen konuşma hizmetine gönderin. Müşteriler artık [desteklenen ses giriş biçimini](how-to-use-audio-input-streams.md)kullanmalıdır. Diğer biçimler en uygun un altında tanıma sonuçları alır veya başka sorunlara neden olabilir. 
+- `OpenSSL`, 1.1.1 b sürümüne güncelleştirilmiştir ve Linux için konuşma SDK 'Sı temel kitaplığına statik olarak bağlanır. Bu, gelen kutunuz `OpenSSL` sistemdeki `/usr/lib/ssl` dizine yüklenmemişse kesintiye neden olabilir. Bu sorunu geçici olarak çözmek için lütfen konuşma SDK 'Sı belgeleri altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
+- C# `WordLevelTimingResult.Offset` `int` için döndürülen veri türünü, konuşma verileri 2 dakikadan uzun `WordLevelTimingResults` olduğunda erişime izin verecek şekilde değiştirdik. `long`
+- `PushAudioInputStream``PullAudioInputStream` Ayrıca `AudioStreamFormat`, isteğe bağlı olarak, bunlar oluşturulduğunda belirtilen konuşma hizmetine WAV başlık bilgilerini gönderin. Müşterilerin artık [desteklenen ses girişi biçimini](how-to-use-audio-input-streams.md)kullanması gerekir. Diğer tüm biçimler, en uygun tanıma sonuçlarını alır veya başka sorunlara neden olabilir. 
 
 **Hata düzeltmeleri**
 
-- Yukarıdaki `OpenSSL` Breaking değişiklikleri altında güncelleştirmeye bakın. Linux ve Java'da hem aralıklı bir çökme yitirme hem de bir performans sorununu (yüksek yük altında kilit anlaşmazlığı) düzelttik. 
-- Java: Yüksek eşzamanlılık senaryolarında nesne kapatma için iyileştirmeler yaptı.
-- NuGet paketimizi yeniden yapılandırdık. Lib klasörlerinin üç `Microsoft.CognitiveServices.Speech.core.dll` kopyasını `Microsoft.CognitiveServices.Speech.extension.kws.dll` ve altında nüget paketini daha küçük ve daha hızlı indirmeyi sağlamak için kaldırdık ve bazı C++ yerel uygulamalarını derlemek için gereken başlıkları ekledik.
-- [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)sabit quickstart örnekleri . Bunlar Linux, MacOS, Windows'da "mikrofon bulunamadı" istisnası görüntülemeden çıkıyordu.
-- [Bu örnek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)gibi belirli kod yollarında uzun konuşma tanıma sonuçları ile SDK çökmesi düzeltildi.
-- [Bu müşteri sorununu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)gidermek için Azure Web Uygulaması ortamında SDK dağıtım hatası düzeltildi.
-- [Bu müşteri sorununu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)gidermek için `<voice>` çoklu `<audio>` etiket veya etiket kullanırken bir TTS hatası düzeltildi. 
-- SDK askıya alındıktan kurtarıldığınızda bir TTS 401 hatası düzeltildi.
-- JavaScript: [Euirim](https://github.com/euirim)katkısı sayesinde ses verilerinin dairesel bir ithalat sabit . 
-- JavaScript: 1,7'de eklendikçe hizmet özelliklerini ayarlamak için destek eklendi.
-- JavaScript: bağlantı hatasının sürekli, başarısız websocket yeniden bağlanma girişimlerine neden olabileceği bir sorunu düzeltti.
+- Yukarıdaki değişiklikler `OpenSSL` altındaki güncelleştirme bölümüne bakın. Linux ve Java 'da aralıklı bir kilitlenmeyi ve bir performans sorununu (yüksek yük altında kilit çakışması) düzelttik. 
+- Java: yüksek eşzamanlılık senaryolarında nesne kapanışına yönelik iyileştirmeler yapıldı.
+- NuGet paketimize yeniden yapılandırılmış. LIB klasörlerinin üç kopyasını `Microsoft.CognitiveServices.Speech.core.dll` `Microsoft.CognitiveServices.Speech.extension.kws.dll` kaldırdık, NuGet paketini indirmek için daha küçük ve daha hızlı hale getirir ve bazı C++ yerel uygulamalarını derlemek için gereken üst bilgileri ekledik.
+- [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)sabit hızlı başlangıç örnekleri. Linux, MacOS, Windows 'ta "mikrofon bulunamadı" özel durumu görüntülenmeden çıkılıyor.
+- Uzun konuşma tanıma özelliği, [Bu örnek](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)gibi belirli kod yollarında sonuçları elde eden sabit SDK kilitlenmesi.
+- [Bu müşteri sorununa](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)yönelik olarak Azure Web App ORTAMıNDA düzeltilen SDK dağıtım hatası.
+- [Bu müşteri sorununa](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)yönelik birden çok `<voice>` etiket veya `<audio>` etiket kullanılırken bir TTS hatası düzeltildi. 
+- SDK askıya alındı durumundan kurtarıldığı zaman TTS 401 hatası düzeltildi.
+- JavaScript: [euirim](https://github.com/euirim)'ten bir katkı sayesinde ses verilerinin dairesel bir şekilde Içe aktarılması düzeltildi. 
+- JavaScript: 1,7 ' de eklenen hizmet özelliklerini ayarlama desteği eklendi.
+- JavaScript: bir bağlantı hatasının sürekli, başarısız WebSocket yeniden bağlanma girişimlerinde oluşmasına neden olabilecek bir sorun düzeltildi.
 
 **Örnekler**
 
-- [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)Android için anahtar kelime tanıma örneği eklendi.
-- Sunucu senaryosu için [tts](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)örneği burada eklendi.
-- C# ve C++ için çoklu cihaz lı konuşma hızlı başlangıçları [burada](quickstarts/multi-device-conversation.md)eklendi.
+- Android için anahtar sözcük tanıma örneği [buraya](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)eklendi.
+- [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)sunucu senaryosu için TTS örneği eklendi.
+- C# ve C++ için çok cihazlı görüşme hızlı başlangıçlarını [buradan](quickstarts/multi-device-conversation.md)eklediniz.
 
 **Diğer değişiklikler**
 
-- Android'de Optimize Edilmiş SDK çekirdek kitaplığı boyutu.
-- SDK 1.9.0 ve itibaren Konuşma `int` `string` Transkripsiyoncu için ses imzası sürüm alanında hem ve türleri destekler.
+- Android 'de iyileştirilmiş SDK temel kitaplığı boyutu.
+- 1.9.0 ve sonraki sürümlerde SDK, konuşma dökümü `int` için `string` ses imza sürümü alanındaki ve türlerini destekler.
 
-## <a name="speech-sdk-180-2019-november-release"></a>Konuşma SDK 1.8.0: 2019-Kasım açıklaması
+## <a name="speech-sdk-180-2019-november-release"></a>Konuşma SDK 1.8.0:2019-Kasım sürümü
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
-- Prem `FromHost()` kapları ve egemen bulutlar ile kullanımı kolaylaştırmak için bir API eklendi.
-- Konuşma Tanıma için Otomatik Kaynak Dil Algılama eklendi (Java ve C++'da)
-- Beklenen `SourceLanguageConfig` kaynak dilleri belirtmek için kullanılan Konuşma Tanıma nesnesi eklendi (Java ve C++'da)
-- NuGet ve Unity paketleri aracılığıyla Windows (UWP), Android ve iOS'a destek eklendi `KeywordRecognizer`
-- Asynchronous toplu olarak Konuşma Transkripsiyon yapmak için Uzaktan Konuşma Java API eklendi.
+- Şirket içi `FromHost()` kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için bir API eklendi.
+- Konuşma tanıma için otomatik kaynak Dil Algılama eklendi (Java ve C++ ' da)
+- Beklenen `SourceLanguageConfig` kaynak dillerini (Java ve C++ ' da) belirtmek Için kullanılan konuşma tanıma için nesne eklendi
+- NuGet `KeywordRecognizer` ve Unity paketleri aracılığıyla WINDOWS (UWP), Android ve iOS desteği eklendi
+- Zaman uyumsuz toplu işlemlerdeki konuşma dökümü için uzak konuşma Java API 'SI eklendi.
 
 **Yeni değişiklikler**
 
-- Konuşma Transcriber işlevleri namespace `Microsoft.CognitiveServices.Speech.Transcription`altında taşındı.
-- Konuşma Transkripsiyonyöntemlerinin bir `Conversation` bölümü yeni sınıfa taşınır.
+- Konuşma taşıma işlevleri ad alanı `Microsoft.CognitiveServices.Speech.Transcription`altına taşındı.
+- Görüşmenin bir parçası olan yöntemler yeni `Conversation` sınıfa taşınır.
 - 32-bit (ARMv7 ve x86) iOS için bırakılan destek
 
 **Hata düzeltmeleri**
 
-- Geçerli bir Konuşma `KeywordRecognizer` hizmeti abonelik anahtarı olmadan yerel kullanılıyorsa kilitlenme yi düzeltme
+- Yerel `KeywordRecognizer` geçerli bir konuşma hizmeti abonelik anahtarı olmadan kullanılıyorsa kilitlenme için çözüm yapın
 
 **Örnekler**
 
-- Xamarin örneği için`KeywordRecognizer`
-- Birlik örneği için`KeywordRecognizer`
+- İçin Xamarin örneği`KeywordRecognizer`
+- İçin Unity örneği`KeywordRecognizer`
 - Otomatik Kaynak Dil Algılama için C++ ve Java örnekleri.
 
-## <a name="speech-sdk-170-2019-september-release"></a>Konuşma SDK 1.7.0: 2019-Eylül açıklaması
+## <a name="speech-sdk-170-2019-september-release"></a>Konuşma SDK 1.7.0:2019-Eylül sürümü
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
-- Evrensel Windows Platformu (UWP), Android ve iOS'ta Xamarin için beta desteği eklendi
+- Xamarin on Evrensel Windows Platformu (UWP), Android ve iOS için Beta desteği eklendi
 - Unity için iOS desteği eklendi
-- Android, iOS ve Linux'ta ALaw, Mulaw, FLAC için giriş desteği eklendi `Compressed`
-- Hizmete `Connection` ileti göndermek için sınıfa eklendi `SendMessageAsync`
-- İletinin `Connection` özelliğini ayarlamak için sınıfa eklendi `SetMessageProperty`
-- TTS Java (Jre ve Android), Python, Swift ve Objective-C için bağlamalar ekledi
-- TTS, macOS, iOS ve Android için oynatma desteği ekledi.
+- ALaw, Mulaw, Android üzerinde FLAC, iOS ve Linux için giriş desteği eklendi `Compressed`
+- Hizmete `SendMessageAsync` ileti `Connection` göndermek için sınıfına eklendi
+- Bir `SetMessageProperty` iletinin `Connection` Setting özelliğinin sınıfına eklendi
+- Java (JRE ve Android), Python, Swift ve amaç-C için TTS eklendi bağlamaları
+- TTS, macOS, iOS ve Android için kayıttan yürütme desteği ekledi.
 - TTS için "sözcük sınırı" bilgileri eklendi.
 
 **Hata düzeltmeleri**
 
-- Android için Unity 2019'da IL2CPP oluşturma sorunu düzeltildi
-- Wav dosya girişindeki hatalı biçimlendirilmiş üstbilgiile ilgili sorun yanlış işleniyor
-- Bazı bağlantı özelliklerinde benzersiz olmayan UUI'ler ile ilgili sorun düzeltildi
-- Swift bağlayıcılarında nullability belirteçleri hakkında birkaç uyarı düzeltildi (küçük kod değişiklikleri gerektirebilir)
-- Ağ yükü altında websocket bağlantılarının nezaketsiz bir şekilde kapatılmasına neden olan bir hata düzeltildi
-- Android'de bazen yinelenen gösterim ii'lerinin kullanıldığı bir sorun düzeltildi`DialogServiceConnector`
-- Çok dönüşlü etkileşimler arasında bağlantıların kararlılığında iyileştirmeler ve hatalar `Canceled` (olaylar yoluyla)`DialogServiceConnector`
-- `DialogServiceConnector`oturum başlar şimdi düzgün bir etkin sırasında `ListenOnceAsync()` arama da dahil olmak üzere olaylar sağlayacaktır`StartKeywordRecognitionAsync()`
-- Alınan etkinliklerle `DialogServiceConnector` ilişkili bir çökmegiderilmiş
+- Android için Unity 2019 üzerinde IL2CPP derleme sorunu düzeltildi
+- WAV dosya girişi hatalı şekilde işlenmekte olan hatalı biçimlendirilmiş üst bilgilerdeki sorun düzeltildi
+- Bazı bağlantı özelliklerinde benzersiz olmayan UUID 'ler ile ilgili sorun düzeltildi
+- Swift bağlamalarında null değer alabilme belirticileri hakkında birkaç uyarı düzeltildi (küçük kod değişiklikleri gerektirebilir)
+- WebSocket bağlantılarına neden olan bir hata düzeltildi ağ yükü altında düzgün şekilde kapatılacak
+- Android 'de, bazen tarafından kullanılan yinelenen izlenme kimliklerine neden olan bir sorun düzeltildi`DialogServiceConnector`
+- Birden çok yönlü etkileşimler genelinde bağlantı kararlılığı ve ile ortaya çıkabilecek hataların (olaylar aracılığıyla `Canceled` ) raporlanması için geliştirmeler`DialogServiceConnector`
+- `DialogServiceConnector`oturum başlar, etkin bir işlem sırasında çağrılırken `ListenOnceAsync()` de dahil olmak üzere artık olayları doğru şekilde sağlayacak`StartKeywordRecognitionAsync()`
+- Alınmakta olan etkinliklerle `DialogServiceConnector` ilişkili bir kilitlenme olduğunu biliyor
 
 **Örnekler**
 
 - Xamarin için hızlı başlangıç
-- Linux ARM64 bilgileri ile Güncelleştirilmiş CPP Quickstart
-- iOS bilgileriyle Güncelleştirilmiş Unity hızlı başlat
+- Linux ARM64 Information ile güncelleştirilmiş CPP hızlı başlangıcı
+- İOS bilgileriyle Unity hızlı başlangıç güncelleştirildi
 
-## <a name="speech-sdk-160-2019-june-release"></a>Konuşma SDK 1.6.0: 2019-Haziran açıklaması
+## <a name="speech-sdk-160-2019-june-release"></a>Konuşma SDK 1.6.0:2019-Haziran sürümü
 
 **Örnekler**
 
-- UWP ve Unity'de MetinDen Konuşmaya Yönelik Hızlı Başlangıç örnekleri
-- iOS'ta Swift için hızlı başlangıç örneği
-- Konuşma & Niyet Tanıma ve Çeviri için Birlik örnekleri
-- Için güncelleştirilmiş quickstart örnekleri`DialogServiceConnector`
+- UWP ve Unity 'de metin okuma için hızlı başlangıç örnekleri
+- İOS 'ta Swift için hızlı başlangıç örneği
+- Konuşma & Amaç Tanıma ve çevirisi için Unity örnekleri
+- İçin güncelleştirilmiş hızlı başlangıç örnekleri`DialogServiceConnector`
 
-**Geliştirmeler / Değişiklikler**
+**Geliştirmeler/değişiklikler**
 
-- İletişim ad alanı:
+- İletişim kutusu ad alanı:
   - `SpeechBotConnector`, `DialogServiceConnector` olarak yeniden adlandırıldı
   - `BotConfig`, `DialogServiceConfig` olarak yeniden adlandırıldı
-  - `BotConfig::FromChannelSecret()`için yeniden`DialogServiceConfig::FromBotSecret()`
-  - Varolan tüm Doğrudan Satır Konuşması istemcileri yeniden adlandırıldıktan sonra desteklenmeye devam ediyor
-- Proxy, kalıcı bağlantıyı desteklemek için TTS REST bağdaştırıcısını güncelleştirin
-- Geçersiz bir bölge geçirildiğinde hata iletisi geliştirme
-- Swift/Hedef-C:
-  - Geliştirilmiş hata raporlaması: Hatayla sonuçlabilen yöntemler artık iki sürümde `NSError` mevcuttur: Biri hata işleme için bir nesneyi, diğeri de özel durum oluşturan. İlki Swift'e maruz kaldı. Bu değişiklik, varolan Swift koduna uyarlamalar gerektirir.
+  - `BotConfig::FromChannelSecret()`ile yeniden eşlendi`DialogServiceConfig::FromBotSecret()`
+  - Var olan tüm doğrudan hat konuşma istemcileri yeniden adlandırmadan sonra desteklenmeye devam eder
+- Proxy, kalıcı bağlantıyı destekleyecek şekilde TTS REST bağdaştırıcısını güncelleştirme
+- Geçersiz bir bölge geçirildiğinde hata iletisini geliştir
+- Swift/amaç-C:
+  - Geliştirilmiş hata raporlama: bir hata ile sonuçlanan Yöntemler Şu anda iki sürümde mevcuttur: hata işleme için bir `NSError` nesne ve bir özel durum oluşturan bir nesne. İlki Swift 'a açıktır. Bu değişiklik, mevcut Swift koduna uyarlamalar gerektirir.
   - Geliştirilmiş olay işleme
 
 **Hata düzeltmeleri**
 
-- TTS için düzeltme: ses işleme tamamlanana kadar beklemeden geleceğin döndüğü yer `SpeakTextAsync`
-- Tam dil desteğini etkinleştirmek için C#'da dizeleri mareşalleme için düzeltme
-- Örneklerde net461 hedef çerçevesi ile çekirdek kitaplığı yüklemek için .NET çekirdek uygulama sorunu için düzeltme
-- Örneklerdeki çıktı klasörüne yerel kitaplıkları dağıtmak için ara sıra çıkan sorunları düzeltme
-- Web soketinin güvenilir bir şekilde kapanması için düzeltme
-- Linux üzerinde çok ağır yük altında bir bağlantı açarken olası çökme için düzeltme
-- macOS için çerçeve paketinde eksik meta verileri düzeltme
-- Windows'daki `pip install --user` sorunlar için düzeltme
+- TTS için çözüm: daha `SpeakTextAsync` sonra, sesin işleme tamamlanana kadar beklememeden döndürülmüyor
+- Tam dil desteğini etkinleştirmek Için C# içinde sıralama dizelerini onarma
+- Örneklerde net461 Target Framework ile çekirdek kitaplığı yükleme ile ilgili .NET Core uygulama sorunu için çözüm
+- Örneklerindeki çıkış klasörüne yerel kitaplıkları dağıtmaya yönelik zaman zaman sorun giderme
+- Güvenli bir şekilde Web yuvası kapatma için çözüm
+- Linux üzerinde çok ağır yük altında bir bağlantı açılırken olası kilitlenme için çözüm
+- MacOS için çerçeve paketinde eksik meta veriler için çözüm
+- Windows `pip install --user` 'da sorun giderme
 
 ## <a name="speech-sdk-151"></a>Konuşma SDK 1.5.1
 
-Bu bir hata düzeltme sürümüdür ve yalnızca yerel/yönetilen SDK'yı etkiler. SDK'nın JavaScript sürümünü etkilemiyor.
+Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyor. SDK 'nın JavaScript sürümünü etkilemiyor.
 
 **Hata düzeltmeleri**
 
-- Konuşma Transkripsiyonile birlikte kullanıldığında FromSubscription'ı düzeltin.
-- Ses asistanları için anahtar kelime tespitindeki hatayı düzeltme.
+- Konuşma dökümü ile kullanıldığında FromSubscription 'ı onarın.
+- Sesli Yardımcılar için anahtar sözcük biriktirmesiyle ilgili hatayı düzeltir.
 
-## <a name="speech-sdk-150-2019-may-release"></a>Konuşma SDK 1.5.0: 2019-Mayıs açıklaması
+## <a name="speech-sdk-150-2019-may-release"></a>Konuşma SDK 1.5.0:2019-yayın Mayıs
 
 **Yeni özellikler**
 
-- Anahtar kelime tespit (KWS) artık Windows ve Linux için kullanılabilir. KWS işlevselliği herhangi bir mikrofon türüyle çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya Konuşma Aygıtları SDK'da bulunan mikrofon dizileriyle sınırlıdır.
-- İfade ipucu işlevi SDK üzerinden kullanılabilir. Daha fazla bilgi için [buraya](how-to-phrase-lists.md)bakın.
-- Konuşma transkripsiyon işlevselliği SDK üzerinden kullanılabilir. Buraya [here](conversation-transcription-service.md)bakın .
-- Doğrudan Satır Konuşması kanalını kullanarak sesli asistanlar için destek ekleyin.
+- Anahtar sözcük biriktirme (KWS) artık Windows ve Linux için kullanılabilir. KWS işlevselliği herhangi bir mikrofon türü ile çalışabilir, ancak resmi KWS desteği şu anda Azure Kinect DK donanımında veya konuşma cihazları SDK 'sında bulunan mikrofon dizileri ile sınırlıdır.
+- Tümcecik ipucu işlevselliği SDK aracılığıyla kullanılabilir. Daha fazla bilgi için [buraya](how-to-phrase-lists.md)bakın.
+- Konuşma dökümü işlevselliği SDK aracılığıyla kullanılabilir. [Buraya](conversation-transcription-service.md)bakın.
+- Doğrudan hat konuşma kanalını kullanarak sesli Yardımcılar için destek ekleyin.
 
 **Örnekler**
 
-- SDK tarafından desteklenen yeni özellikler veya yeni hizmetler için örnekler eklendi.
+- Yeni özellikler veya SDK tarafından desteklenen yeni hizmetler için örnek eklendi.
 
-**Geliştirmeler / Değişiklikler**
+**Geliştirmeler/değişiklikler**
 
-- Hizmet davranışını veya hizmet sonuçlarını ayarlamak için çeşitli tanıyıcı özellikleri eklendi (maskeleme küfür ve diğerleri gibi).
-- Artık tanıyanı standart yapılandırma özellikleri aracılığıyla yapılandırabilirsiniz, tanıyanı `FromEndpoint`oluştursanız bile.
-- Objective-C: `OutputFormat` özellik `SPXSpeechConfiguration`eklendi.
-- SDK artık Debian 9'u Linux dağıtımı olarak destekliyor.
+- Hizmet davranışını veya hizmet sonuçlarını (maskeleme küfür ve diğerleri gibi) ayarlamak için çeşitli tanıyıcı özellikleri eklendi.
+- Artık tanıyıcıyı oluşturmuş olsanız bile, tanıyıcıyı standart yapılandırma özellikleriyle yapılandırabilirsiniz `FromEndpoint`.
+- Amaç-C: `OutputFormat` özelliği öğesine `SPXSpeechConfiguration`eklendi.
+- SDK artık Linux dağıtımı olarak 9.
 
 **Hata düzeltmeleri**
 
-- Hoparlör kaynağının metin den konuşmaya çok erken verildiği bir sorun giderildi.
+- Konuşmacı kaynağının metinden konuşmaya çok erken bir yere çıkarılması sorunu düzeltildi.
 
 ## <a name="speech-sdk-142"></a>Konuşma SDK 1.4.2
 
-Bu bir hata düzeltme sürümüdür ve yalnızca yerel/yönetilen SDK'yı etkiler. SDK'nın JavaScript sürümünü etkilemiyor.
+Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyor. SDK 'nın JavaScript sürümünü etkilemiyor.
 
 ## <a name="speech-sdk-141"></a>Konuşma SDK 1.4.1
 
-Bu yalnızca JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıdaki düzeltmeler yapıldı:
+Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıdaki düzeltmeler yapılmıştır:
 
-- Web paketinin https-proxy-agent yüklemesini engelleyin.
+- Web paketinin HTTPS-proxy-Agent yüklemesini engelleyin.
 
-## <a name="speech-sdk-140-2019-april-release"></a>Konuşma SDK 1.4.0: 2019-Nisan açıklaması
+## <a name="speech-sdk-140-2019-april-release"></a>Konuşma SDK 1.4.0:2019-Nisan sürümü
 
 **Yeni özellikler**
 
-- SDK artık metinden konuşmaya hizmeti beta sürümü olarak desteklemektedir. Windows ve Linux Masaüstü'nde C++ ve C#'dan desteklenir. Daha fazla bilgi için [metinden konuşmaya genel bakışı](text-to-speech.md#get-started)kontrol edin.
-- SDK artık MP3 ve Opus/OGG ses dosyalarını akış giriş dosyaları olarak destekler. Bu özellik yalnızca C++ ve C# adresinden Linux'ta kullanılabilir ve şu anda beta sürümündedir (daha fazla ayrıntı [burada).](how-to-use-codec-compressed-audio-input-streams.md)
-- Java, .NET core, C++ ve Objective-C için Konuşma SDK macOS desteği kazanmıştır. macOS için Objective-C desteği şu anda beta da.
-- iOS: iOS için Konuşma SDK (Objective-C) şimdi de bir CocoaPod olarak yayınlanır.
-- JavaScript: Varsayılan olmayan mikrofonun giriş aygıtı olarak desteklenmesi.
-- JavaScript: Node.js için proxy desteği.
+- SDK artık beta sürümü olarak metinden konuşmaya hizmetini desteklemektedir. C++ ve C# ' den Windows ve Linux Desktop 'ta desteklenir. Daha fazla bilgi için, [metinden konuşmaya genel bakış ' a](text-to-speech.md#get-started)bakın.
+- SDK artık MP3 ve Opus/OGG ses dosyalarını akış giriş dosyaları olarak desteklemektedir. Bu özellik yalnızca C++ ve C# ' den Linux üzerinde kullanılabilir ve şu anda beta aşamasındadır ( [daha ayrıntılı bilgi).](how-to-use-codec-compressed-audio-input-streams.md)
+- Java, .NET Core, C++ ve amaç-C için konuşma SDK 'Sı, macOS desteği elde etmiş. MacOS için amaç-C desteği şu anda beta aşamasındadır.
+- iOS: iOS için konuşma SDK 'Sı (hedef-C) artık bir CocoaPod olarak yayımlanmıştır.
+- JavaScript: giriş cihazı olarak varsayılan olmayan mikrofonu destekler.
+- JavaScript: node. js için proxy desteği.
 
 **Örnekler**
 
-- MacOS'ta C++ ve Objective-C ile Konuşma SDK'sını kullanmak için örnekler eklendi.
-- Metinden konuşmaya hizmetinin kullanımını gösteren örnekler eklendi.
+- Mac ile konuşma SDK 'sını kullanma örnekleri ve macOS üzerinde hedef-C eklenmiştir.
+- Metin okuma hizmetinin kullanımını gösteren örnekler eklenmiştir.
 
-**Geliştirmeler / Değişiklikler**
+**Geliştirmeler/değişiklikler**
 
-- Python: Tanıma sonuçlarının ek özellikleri `properties` artık özellik üzerinden ortaya çıkıyor.
-- Ek geliştirme ve hata ayıklama desteği için, SDK günlüğe kaydetme ve tanılama bilgilerini bir günlük dosyasına yönlendirebilirsiniz (daha fazla ayrıntı [burada).](how-to-use-logging.md)
-- JavaScript: Ses işleme performansını artırın.
+- Python: tanıma sonuçlarının ek özellikleri artık `properties` özelliği aracılığıyla kullanıma sunulmuştur.
+- Ek geliştirme ve hata ayıklama desteği için, SDK günlüğü ve tanılama bilgilerini bir günlük dosyasına yeniden yönlendirebilir ( [burada](how-to-use-logging.md)daha fazla bilgi bulabilirsiniz).
+- JavaScript: ses işleme performansını geliştirme.
 
 **Hata düzeltmeleri**
 
-- Mac/iOS: Konuşma hizmetine bağlantı kurulamadığında uzun süre beklemeye neden olan hata düzeltildi.
-- Python: Python geri aramaları için bağımsız değişkenler için hata işleme geliştirmek.
-- JavaScript: Konuşma için sabit yanlış durum raporlaması RequestSession'da sona erdi.
+- Mac/iOS: konuşma hizmetine bir bağlantı kurulamazsa uzun bir beklemeye yol gösteren bir hata düzeltildi.
+- Python: Python geri çağırmalar içindeki bağımsız değişkenler için hata işlemeyi geliştir.
+- JavaScript: RequestSession üzerinde konuşma için yanlış durum bildirimi düzeltildi.
 
-## <a name="speech-sdk-131-2019-february-refresh"></a>Konuşma SDK 1.3.1: 2019-Şubat yenileme
+## <a name="speech-sdk-131-2019-february-refresh"></a>Konuşma SDK 1.3.1:2019-Şubat yenilemesi
 
-Bu bir hata düzeltme sürümüdür ve yalnızca yerel/yönetilen SDK'yı etkiler. SDK'nın JavaScript sürümünü etkilemiyor.
+Bu bir hata çözme sürümüdür ve yalnızca yerel/yönetilen SDK 'yi etkiliyor. SDK 'nın JavaScript sürümünü etkilemiyor.
 
-**Hata düzeltmesi**
+**Hata onarımı**
 
-- Mikrofon girişi kullanırken bellek sızıntısı düzeltildi. Akış tabanlı veya dosya girişi etkilenmez.
+- Mikrofon girişi kullanılırken bellek sızıntısı düzeltildi. Akış tabanlı veya dosya girişi etkilenmez.
 
-## <a name="speech-sdk-130-2019-february-release"></a>Konuşma SDK 1.3.0: 2019-Şubat açıklaması
+## <a name="speech-sdk-130-2019-february-release"></a>Konuşma SDK 1.3.0:2019-Şubat yayını
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
-- Konuşma SDK `AudioConfig` sınıf üzerinden giriş mikrofonseçimi destekler. Bu, varsayılan olmayan bir mikrofondan Konuşma hizmetine ses verisi akışı yapmanızı sağlar. Daha fazla bilgi için [ses girişi aygıtı seçimini](how-to-select-audio-input-devices.md)açıklayan belgelere bakın. Bu özellik henüz JavaScript'ten kullanılamıyor.
-- Konuşma SDK şimdi bir beta sürümünde Birlik destekler. [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)sorun bölümü aracılığıyla geri bildirim sağlayın. Bu sürüm, Windows x86 ve x64 (masaüstü veya Evrensel Windows Platformu uygulamaları) ve Android (ARM32/64, x86) üzerinde Birlik'i destekler. Daha fazla bilgi [bizim Unity quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)mevcuttur.
-- Dosya `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (önceki sürümlerde sevk) artık gerekli değildir. İşlevsellik artık çekirdek SDK entegre edilmiştir.
+- Konuşma SDK 'Sı, `AudioConfig` sınıf aracılığıyla giriş mikrofonunun seçimini destekler. Bu, konuşma hizmetine varsayılan olmayan bir mikrofondan ses verileri akışını sağlar. Daha fazla bilgi için bkz. [ses girişi cihaz seçimini](how-to-select-audio-input-devices.md)açıklayan belgeler. Bu özellik JavaScript 'te henüz kullanılamaz.
+- Konuşma SDK 'Sı artık bir beta sürümünde Unity 'yi desteklemektedir. [GitHub örnek deposundaki](https://aka.ms/csspeech/samples)sorun bölümüne geri bildirim sağlayın. Bu sürüm, Windows x86 ve x64 (masaüstü veya Evrensel Windows Platformu uygulamaları) ve Android (ARM32/64, x86) üzerinde Unity 'yi destekler. [Unity hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)başlangıçmızda daha fazla bilgi bulabilirsiniz.
+- Dosya `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (önceki sürümlerde sunulan) artık gerekli değildir. İşlevsellik artık temel SDK ile tümleşiktir.
 
 **Örnekler**
 
-Aşağıdaki yeni içerik örnek [depomuzda](https://aka.ms/csspeech/samples)mevcuttur:
+[Örnek depoımızda](https://aka.ms/csspeech/samples)aşağıdaki yeni içerik mevcuttur:
 
-- Için `AudioConfig.FromMicrophoneInput`ek örnekler .
-- Niyet tanıma ve çeviri için ek Python örnekleri.
-- nesneyi `Connection` iOS'ta kullanmak için ek örnekler.
-- Ses çıkışı ile çeviri için ek Java örnekleri.
-- [Toplu Transkripsiyon REST API](batch-transcription.md)kullanımı için yeni örnek .
+- İçin `AudioConfig.FromMicrophoneInput`ek örnekler.
+- Amaç tanıma ve çeviri için ek Python örnekleri.
+- İOS 'da `Connection` nesnesini kullanmak için ek örnekler.
+- Ses çıkışıyla çeviri için ek Java örnekleri.
+- [Toplu Iş dökümü REST API](batch-transcription.md)kullanımı için yeni örnek.
 
-**Geliştirmeler / Değişiklikler**
+**Geliştirmeler/değişiklikler**
 
 - Python
-  - Gelişmiş parametre doğrulaması ve `SpeechConfig`hata iletileri .
-  - `Connection` Nesne için destek ekleyin.
-  - Windows'da 32 bit Python (x86) desteği.
-  - Python için Konuşma SDK beta dışındadır.
+  - Üzerinde `SpeechConfig`geliştirilmiş parametre doğrulama ve hata iletileri.
+  - `Connection` Nesnesi için destek ekleyin.
+  - Windows üzerinde 32-bit Python (x86) için destek.
+  - Python için konuşma SDK 'Sı beta dışında.
 - iOS
-  - SDK şimdi iOS SDK sürüm 12.1 karşı inşa edilmiştir.
-  - SDK şimdi iOS sürümleri 9.2 ve daha sonra destekler.
-  - Başvuru belgelerini geliştirin ve birkaç özellik adLarını düzeltin.
+  - SDK artık iOS SDK 12,1 sürümüne göre oluşturulmuştur.
+  - SDK artık iOS sürümleri 9,2 ve üstünü desteklemektedir.
+  - Başvuru belgelerini geliştirir ve birçok özellik adını düzeltir.
 - JavaScript
-  - `Connection` Nesne için destek ekleyin.
-  - Birlikte verilen JavaScript için tür tanım dosyaları ekleme
-  - İfade ipuçları için ilk destek ve uygulama.
-  - Tanıma için hizmet JSON ile iade özellikleri koleksiyonu
-- Windows DLL'ler artık bir sürüm kaynağı içeriyor.
-- Bir tanıyıcı `FromEndpoint` oluşturursanız, parametreleri doğrudan bitiş noktası URL'sine ekleyebilirsiniz. Bunu `FromEndpoint` kullanarak tanıyanı standart yapılandırma özellikleri aracılığıyla yapılandıramaz.
+  - `Connection` Nesnesi için destek ekleyin.
+  - Paketlenmiş JavaScript için tür tanımı dosyaları ekleme
+  - Tümcecik ipuçları için başlangıç desteği ve uygulama.
+  - Tanıma için Service JSON ile Özellikler koleksiyonunu döndürün
+- Windows dll 'Leri artık bir sürüm kaynağı içeriyor.
+- Bir tanıyıcı `FromEndpoint` oluşturursanız, doğrudan Endpoint URL 'sine parametreler ekleyebilirsiniz. Kullanarak `FromEndpoint` , tanıyıcıyı standart yapılandırma özellikleri aracılığıyla yapılandıramazsınız.
 
 **Hata düzeltmeleri**
 
-- Boş proxy kullanıcı adı ve proxy parolası doğru şekilde işlenmedi. Bu sürümle, proxy kullanıcı adı ve proxy parolasını boş bir dize olarak ayarlarsanız, proxy'ye bağlanırken gönderilmez.
-- SessionId's SDK tarafından oluşturulan her zaman gerçekten&nbsp;bazı diller / ortamlar için rasgele değildi. Bu sorunu gidermek için rasgele jeneratör başlatma eklendi.
-- Yetki belirteci işleme geliştirmek. Yetkilendirme belirteci kullanmak istiyorsanız, abonelik `SpeechConfig` anahtarını belirtin ve abonelik anahtarını boş bırakın. Sonra her zamanki gibi tanıyın oluşturun.
-- Bazı durumlarda `Connection` nesne doğru serbest bırakılmadı. Bu sorun düzeltilmiştir.
-- JavaScript örneği Safari'de de çeviri sentezi için ses çıktısını destekleyecek şekilde sabitlenmiştir.
+- Boş Proxy Kullanıcı adı ve proxy parolası doğru işlenmedi. Bu sürümle birlikte, Proxy Kullanıcı adı ve proxy parolasını boş bir dizeye ayarlarsanız, ara sunucuya bağlanılırken gönderilmez.
+- SDK tarafından oluşturulan SessionID, bazı diller&nbsp;/ortamlar için her zaman gerçekten gelişigüzel değildir. Bu sorunu giderecek rastgele Oluşturucu başlatması eklendi.
+- Yetkilendirme belirtecinin işlenmesini geliştirme. Bir yetkilendirme belirteci kullanmak istiyorsanız, `SpeechConfig` içinde belirtin ve abonelik anahtarını boş bırakın. Ardından tanıyıcı her zamanki gibi oluşturun.
+- Bazı durumlarda `Connection` nesne doğru şekilde yayımlanmamıştı. Bu sorun düzeltilmiştir.
+- JavaScript örneği, çeviri birleştirmesinin ses çıkışını desteklemek için de Safari 'de düzeltildi.
 
-## <a name="speech-sdk-121"></a>Konuşma SDK 1.2.1
+## <a name="speech-sdk-121"></a>Konuşma SDK 'Sı 1.2.1
 
-Bu yalnızca JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıdaki düzeltmeler yapıldı:
+Bu yalnızca bir JavaScript sürümüdür. Hiçbir özellik eklenmedi. Aşağıdaki düzeltmeler yapılmıştır:
 
-- Ateşin sonu sırayla.sonunda, konuşmada değil.sonda.
-- Geçerli gönderme başarısız olursa sonraki gönderiyi zamanlamayan ses pompasındaki hatayı düzeltin.
-- Auth belirteci ile sürekli tanıma yı düzeltin.
-- Farklı tanıyıcı / uç noktaları için hata düzeltmesi.
-- Dokümantasyon geliştirmeleri.
+- Stream. End sırasında değil, Stream 'in sonuna kadar bir akış sonu tetiklendir.
+- Geçerli gönderme başarısız olduysa, sonraki gönderimi zamanlamadığı ses göndericisinin hatasını düzeltir.
+- Kimlik doğrulama belirteciyle sürekli tanımayı düzeltir.
+- Farklı tanıyıcı/uç noktalar için hata düzeltildi.
+- Belge geliştirmeleri.
 
-## <a name="speech-sdk-120-2018-december-release"></a>Konuşma SDK 1.2.0: 2018-Aralık açıklaması
+## <a name="speech-sdk-120-2018-december-release"></a>Konuşma SDK 1.2.0:2018-Aralık yayını
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
 - Python
-  - Python desteğinin Beta sürümü (3.5 ve üzeri) bu sürümle birlikte kullanılabilir. Daha fazla bilgi için buraya bakınız](quickstart-python.md).
+  - Python desteğinin beta sürümü (3,5 ve üzeri) Bu sürümde kullanılabilir. Daha fazla bilgi için buraya bakın] (hızlı başlangıç-python.md).
 - JavaScript
-  - JavaScript için Konuşma SDK açık kaynaklı olmuştur. Kaynak kodu [GitHub'da](https://github.com/Microsoft/cognitive-services-speech-sdk-js)kullanılabilir.
-  - Şimdi Node.js destek, daha fazla bilgi [burada](quickstart-js-node.md)bulabilirsiniz.
-  - Ses oturumları için uzunluk kısıtlaması kaldırıldı, yeniden bağlantı kapağın altında otomatik olarak gerçekleşecek.
-- `Connection`Nesne
-  - `Recognizer`Bir `Connection` nesneye erişebilirsiniz. Bu nesne, hizmet bağlantısını açıkça başlatmanızı ve olayları bağlamak ve bağlantıyı kesmek için abone olmak için izin verir.
-    (Bu özellik henüz JavaScript ve Python'dan kullanılamıyor.)
-- Ubuntu 18.04 desteği.
+  - JavaScript için konuşma SDK 'Sı açık kaynaklıdır. Kaynak kodu [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js)' da kullanılabilir.
+  - Artık Node. js ' yi destekliyoruz, [burada](quickstart-js-node.md)daha fazla bilgi bulabilirsiniz.
+  - Ses oturumları için uzunluk kısıtlaması kaldırılmıştır, otomatik olarak yeniden bağlanma işlemi, kapak altında otomatik olarak gerçekleşir.
+- `Connection`nesne
+  - `Recognizer`İçinden bir `Connection` nesnesine erişebilirsiniz. Bu nesne, hizmet bağlantısını açık bir şekilde başlatabilmeniz ve olaylara bağlanıp bağlantıyı kesmeye abone olmanızı sağlar.
+    (Bu özellik JavaScript ve Python 'da henüz kullanılamaz.)
+- Ubuntu 18,04 desteği.
 - Android
-  - APK üretimi sırasında Etkin ProGuard desteği.
+  - APK oluşturma sırasında ProGuard desteği etkinleştirildi.
 
-**Gelişmeler**
+**Geliştirmeleri**
 
-- İş parçacığı, kilit, mutexes sayısını azaltarak, iç iş parçacığı kullanımında iyileştirmeler.
-- Geliştirilmiş hata raporlama / bilgi. Bazı durumlarda, hata iletileri tüm yol dışarı yayılan olmamıştır.
-- Güncel modülleri kullanmak için JavaScript'teki güncelleştirilmiş geliştirme bağımlılıkları.
+- İç iş parçacığı kullanımındaki geliştirmeler, iş parçacığı sayısı, kilitler, zaman uyumu sağlayıcılar sayısını azaltır.
+- Geliştirilmiş hata raporlama/bilgi. Birçok durumda, hata iletileri hiç bir şekilde yayılmaz.
+- Güncel modüller kullanmak için JavaScript 'teki geliştirme bağımlılıkları güncelleştirildi.
 
 **Hata düzeltmeleri**
 
-- Bir tür uyuşmazlığı nedeniyle düzeltilen bellek sızıntıları. `RecognizeAsync`
-- Bazı durumlarda istisnalar sızdırılıyordu.
-- Çeviri olay argümanlarında bellek sızıntısını giderme.
-- Uzun süren oturumlarda yeniden bağlanma yla ilgili kilitleme sorunu giderildi.
-- Başarısız çeviriler için nihai sonucun eksik olması yla sonuçlanabilir bir sorun giderildi.
-- C#: Ana `async` iş parçacığında bir işlem beklenmiyorsa, async görevi tamamlanmadan önce tanıyıcısın atılması mümkündür.
-- Java: Java VM'nin çökmesine neden olan bir sorun giderildi.
-- Amaç-C: Sabit enum haritalama; RecognizedIntent yerine `RecognizingIntent`döndürüldü.
-- JavaScript: Varsayılan çıktı biçimini 'basit' olarak `SpeechConfig`ayarlayın.
-- JavaScript: JavaScript ve diğer dillerde config nesnesi özellikleri arasındaki tutarsızlığı kaldırma.
+- İçindeki `RecognizeAsync`bir tür uyumsuzluğu nedeniyle sabit bellek sızıntıları.
+- Bazı durumlarda özel durumlar sızdırılmıştı.
+- Çeviri olay bağımsız değişkenlerinde bellek sızıntısı düzeltiliyor.
+- Uzun süre çalışan oturumlarda yeniden bağlantı sırasında bir kilitleme sorunu düzeltildi.
+- Başarısız çeviriler için eksik nihai sonuca neden olabilecek bir sorun düzeltildi.
+- C#: bir `async` işlem ana iş parçacığında beklenmediyse, zaman uyumsuz görev tamamlanmadan önce tanıyıcı atılamamalıdır.
+- Java: bir sorun düzeltildi Java VM kilitlenmesiyle sonuçlanır.
+- Amaç-C: sabit enum eşlemesi; Yerine RecognizedIntent döndürüldü `RecognizingIntent`.
+- JavaScript: içinde `SpeechConfig`varsayılan çıkış biçimini ' Simple ' olarak ayarlayın.
+- JavaScript: JavaScript ve diğer dillerdeki yapılandırma nesnesindeki özellikler arasında tutarsızlık kaldırılıyor.
 
 **Örnekler**
 
-- Çeşitli örnekleri güncelleştirip düzeltti (örneğin çeviri için çıktı sesleri vb.).
-- [Örnek deposuna](https://aka.ms/csspeech/samples)Düğüm.js örnekleri eklendi.
+- Birkaç örnek güncelleştirildi ve düzeltildi (örneğin, çeviri için çıkış sesleriniz vb.).
+- [Örnek depoya](https://aka.ms/csspeech/samples)Node. js örnekleri eklendi.
 
 ## <a name="speech-sdk-110"></a>Konuşma SDK 1.1.0
 
-**Yeni Özellikler**
+**Yeni özellikler**
 
 - Android x86/x64 desteği.
-- Proxy Desteği: `SpeechConfig` Nesnede artık proxy bilgilerini (ana bilgisayar adı, bağlantı noktası, kullanıcı adı ve parola) ayarlamak için bir işlev arayabilirsiniz. Bu özellik henüz iOS'ta kullanılamıyor.
-- Geliştirilmiş hata kodu ve iletileri. Bir tanıma bir hata döndürürse, bu zaten `CancellationDetails` (iptal edilen `Error`olay) veya (tanıma sonucu) . `Reason` İptal edilen olay artık iki `ErrorCode` ek `ErrorDetails`üye içerir ve . Sunucu bildirilen hatayla ek hata bilgilerini döndürürse, artık yeni üyelerde kullanılabilir.
+- Proxy desteği: `SpeechConfig` nesnesinde, artık proxy bilgilerini (ana bilgisayar adı, bağlantı noktası, Kullanıcı adı ve parola) ayarlamak için bir işlev çağırabilirsiniz. Bu özellik henüz iOS üzerinde kullanılamıyor.
+- Geliştirilmiş hata kodu ve iletileri. Bir tanıma bir hata döndürdüğünden, bu zaten (iptal edilen `Reason` olayda) veya `CancellationDetails` (tanınma sonucunda) olarak `Error`ayarlanmıştır. İptal edilen olay artık iki ek üye `ErrorCode` içeriyor. `ErrorDetails` Sunucu, bildirilen hata ile ek hata bilgileri döndürdüğünden, artık yeni üyelerde kullanılabilir olacaktır.
 
-**Gelişmeler**
+**Geliştirmeleri**
 
-- Tanıyan yapılandırmasında ek doğrulama eklendi ve ek hata iletisi eklendi.
-- Bir ses dosyasının ortasında uzun süreli sessizliğin daha iyi işlenmesi.
-- NuGet paketi: .NET Framework projeleri için, AnyCPU yapılandırması ile bina oluşturmayı engeller.
+- Tanıyıcı yapılandırmasına ek doğrulama eklendi ve ek hata iletisi eklendi.
+- Bir ses dosyasının ortasında uzun süreli sessizlik geliştirilmiş işlem.
+- NuGet paketi: .NET Framework projeleri için, AnyCPU yapılandırmasıyla oluşturmayı engeller.
 
 **Hata düzeltmeleri**
 
-- Tanıyanlarda bulunan birkaç özel durum düzeltildi. Buna ek olarak, özel durumlar `Canceled` yakalanır ve olaya dönüştürülür.
-- Mülk yönetiminde bir bellek sızıntısını düzeltin.
-- Bir ses giriş dosyasının tanıyanı çökertebileceği hata düzeltildi.
-- Oturum durdurma olayından sonra olayların alınabileceği bir hata düzeltildi.
-- Diş işparçacığı bazı yarış koşulları düzeltildi.
-- Çökmeye neden olabilecek bir iOS uyumluluk sorunu düzeltildi.
-- Android mikrofon desteği için kararlılık iyileştirmeleri.
-- JavaScript'teki bir tanıyıcının tanıma dilini yoksayacağı bir hata düzeltildi.
-- JavaScript'te `EndpointId` (bazı durumlarda) ayarlanmasını engelleyen bir hata düzeltildi.
-- JavaScript'te AddIntent'de parametre sırasını değiştirdi ve eksik `AddIntent` JavaScript imzası eklendi.
+- Tanıyıcılar içinde bulunan bazı özel durumlar düzeltildi. Ayrıca, özel durumlar yakalanıp `Canceled` olaya dönüştürülür.
+- Özellik yönetiminde bellek sızıntısı 'nı düzeltir.
+- Bir ses giriş dosyasının tanıyıcıyı kilitlenebildiği bir hata düzeltildi.
+- Bir oturum durdurma olayından sonra olayların alınabileceği bir hata düzeltildi.
+- İş parçacığı oluşturma sırasında bazı yarış koşulları düzeltildi.
+- Bir çökmesine neden olabilecek bir iOS uyumluluğu sorunu düzeltildi.
+- Android mikrofon desteği için kararlılık geliştirmeleri.
+- JavaScript 'teki bir tanıyıcıın tanıma dilini yoksaymasına neden olan bir hata düzeltildi.
+- JavaScript içindeki `EndpointId` (bazı durumlarda) bir hata düzeltildi.
+- JavaScript 'te Addamaciçinde parametre sırası değiştirildi ve eksik `AddIntent` JavaScript imzası eklendi.
 
 **Örnekler**
 
-- [Örnek deposunda](https://aka.ms/csspeech/samples)çekme ve itme akışı kullanımı için C++ ve C# örnekleri eklendi.
+- [Örnek depoda](https://aka.ms/csspeech/samples)çekme ve gönderme akışı kullanımı için C++ ve C# örnekleri eklendi.
 
 ## <a name="speech-sdk-101"></a>Konuşma SDK 1.0.1
 
-Güvenilirlik iyileştirmeleri ve hata düzeltmeleri:
+Güvenilirlik geliştirmeleri ve hata düzeltmeleri:
 
-- Tanıyanı ortadan katarak Yarış durumundan kaynaklanan olası ölümcül hata düzeltildi
-- Ayarlanmamış özellikler durumunda olası önemli hata düzeltildi.
+- Disposing tanıyıcı içindeki yarış durumu nedeniyle olası önemli hata düzeltildi
+- Özellik ayarı sırasında olası önemli hata düzeltildi.
 - Ek hata ve parametre denetimi eklendi.
-- Amaç-C: NSString'te ad geçersiz kılmanın neden olduğu olası olası önemli hata düzeltildi.
-- Amaç-C: API'nin ayarlanmış görünürlüğü
-- JavaScript: Olaylar ve yükleri ile ilgili olarak sabit.
-- Dokümantasyon geliştirmeleri.
+- Amaç-C: NSString 'de geçersiz kılma adı nedeniyle olası önemli hata düzeltildi.
+- Hedef-C: API 'nin görünürlüğü düzeltildi
+- JavaScript: olaylar ve yükleri hakkında düzeltildi.
+- Belge geliştirmeleri.
 
-Örnek [depomuza,](https://aka.ms/csspeech/samples)JavaScript için yeni bir örnek eklendi.
+[Örnek depoımızda](https://aka.ms/csspeech/samples)JavaScript için yeni bir örnek eklenmiştir.
 
-## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Bilişsel Hizmetler Konuşma SDK 1.0.0: 2018-Eylül sürümü
-
-**Yeni özellikler**
-
-- ios'ta Objective-C desteği. [iOS için Objective-C hızlı başlatmamıza](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)göz atın.
-- Tarayıcıda JavaScript desteği. [Bizim JavaScript quickstart](quickstart-js-browser.md)göz atın.
-
-**Yeni değişiklikler**
-
-- Bu sürümle birlikte, bir dizi kesme değişikliği getirilir.
-  Ayrıntılar için [bu sayfayı](https://aka.ms/csspeech/breakingchanges_1_0_0) kontrol edin.
-
-## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Bilişsel Hizmetler Konuşma SDK 0.6.0: 2018-Ağustos açıklaması
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Bilişsel hizmetler konuşma SDK 1.0.0:2018-Eylül sürümü
 
 **Yeni özellikler**
 
-- Konuşma SDK ile oluşturulmuş UWP uygulamaları artık Windows Uygulama Sertifika Kiti 'ni (WACK) geçirebilir.
-  [UWP quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp)göz atın.
-- Linux'ta .NET Standard 2.0 desteği (Ubuntu 16.04 x64).
-- Deneysel: Windows (64-bit) ve Linux 'ta (Ubuntu 16.04 x64) Java 8'i destekleyin.
-  [Java Runtime Ortamı hızlı başlatın.](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)
-
-**Fonksiyonel değişim**
-
-- Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini açığa çıkar.
+- İOS üzerinde amaç-C desteği. [İOS Için hedef C hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md)öğreticimize göz atın.
+- Tarayıcıda JavaScript desteği. [JavaScript hızlı](quickstart-js-browser.md)başlangıçmıza göz atın.
 
 **Yeni değişiklikler**
 
-- Java'da (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık yol desteklenen tüm platformlarda otomatik olarak algılanır.
-- Java ve C#'daki `EndpointUrl` özelliğin erişime giren özelliği kaldırıldı.
+- Bu sürümle birlikte, bir dizi Son değişiklik yapılmıştır.
+  Ayrıntılar için [Bu sayfaya](https://aka.ms/csspeech/breakingchanges_1_0_0) bakın.
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Bilişsel hizmetler konuşma SDK 0.6.0:2018-Ağustos sürümü
+
+**Yeni özellikler**
+
+- Konuşma SDK 'Sı ile oluşturulan UWP uygulamaları artık Windows uygulama sertifikasyon seti 'Ni (WACK) geçirebilir.
+  [UWP hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp)başlangıcı ' nı inceleyin.
+- Linux (Ubuntu 16,04 x64) üzerinde .NET Standard 2,0 desteği.
+- Deneysel: Windows (64-bit) ve Linux (Ubuntu 16,04 x64) üzerinde Java 8 desteği.
+  [Java Runtime Environment hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre)başlangıcı ' nı inceleyin.
+
+**İşlevsel değişiklik**
+
+- Bağlantı hatalarıyla ilgili ek hata ayrıntısı bilgilerini kullanıma sunun.
+
+**Yeni değişiklikler**
+
+- Java 'da (Android), `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` işlev artık bir yol parametresi gerektirmez. Artık tüm desteklenen platformlarda yol otomatik olarak algılanır.
+- Java ve C# ' de özelliğin `EndpointUrl` get-erişimcisi kaldırılmıştır.
 
 **Hata düzeltmeleri**
 
-- Java'da çeviri tanıma da ses sentezi sonucu şimdi uygulanmaktadır.
-- Etkin olmayan iş parçacıklarına ve açık ve kullanılmayan soket sayısının artmasına neden olabilecek bir hata düzeltildi.
-- Uzun süreli bir tanıma iletimin ortasında sona erebilir bir sorun, giderildi.
-- Tanıyan kapatmada bir yarış koşulu düzeltildi.
+- Java 'da, ses birleştirme, çeviri tanıyıcısının sonucu olarak uygulanır.
+- Etkin olmayan iş parçacıklarına ve daha fazla açık ve kullanılmayan yuva sayısına neden olabilecek bir hata düzeltildi.
+- Uzun süre çalışan bir tanımanın iletim ortasında sonlanabilir olduğu bir sorun düzeltildi.
+- Tanıyıcı kapatılırken bir yarış durumu düzeltildi.
 
-## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Bilişsel Hizmetler Konuşma SDK 0.5.0: 2018-Temmuz sürümü
+## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Bilişsel hizmetler konuşma SDK 0.5.0:2018-Temmuz sürümü
 
 **Yeni özellikler**
 
-- Destek Android platformu (API 23: Android 6.0 Marshmallow veya üstü). [Android quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)göz atın.
-- Windows'da .NET Standard 2.0'ı destekleyin. [.NET Core quickstart'a](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)göz atın.
-- Deneysel: Windows'da UWP'yi destekleyin (sürüm 1709 veya sonraki sürüm).
-  - [UWP quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)göz atın.
-  - Not: Konuşma SDK ile oluşturulmuş UWP uygulamaları henüz Windows Uygulama Sertifika Kiti (WACK) geçmez.
-- Otomatik yeniden bağlantı yla uzun süreli tanımayı destekleyin.
+- Android platformu desteği (API 23: Android 6,0 sıralamada Mallow veya üzeri). [Android hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android)' a göz atın.
+- Windows üzerinde 2,0 .NET Standard destekler. [.NET Core hızlı başlangıç](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)' i inceleyin.
+- Deneysel: Windows 'da UWP 'yi destekleme (sürüm 1709 veya üzeri).
+  - [UWP hızlı](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)başlangıcı ' nı inceleyin.
+  - Not: konuşma SDK 'Sı ile derlenen UWP uygulamaları henüz Windows uygulama sertifikasyon Kit 'ı (WACK) iletmez.
+- Otomatik yeniden bağlantı ile uzun süre çalışan tanıma desteği.
 
 **İşlevsel değişiklikler**
 
-- `StartContinuousRecognitionAsync()`uzun süreli tanınmayı destekler.
-- Tanıma sonucu daha fazla alan içerir. Bunlar, tanınan metnin ses başlangıç ve süresinden (hem onaylar) hem de tanıma durumunu `InitialSilenceTimeout` `InitialBabbleTimeout`temsil eden ek değerlerden ve .
-- Fabrika örnekleri oluşturmak için YetkilendirmeToken'i destekleyin.
+- `StartContinuousRecognitionAsync()`uzun süre çalışan tanımayı destekler.
+- Tanınma sonucu daha fazla alan içeriyor. Bunlar, tanınan metnin ses başlangıcından ve süresinden (her ikisi de her ikisi de) ve tanınma durumunu temsil eden ek değerlere (örneğin, `InitialSilenceTimeout` ve `InitialBabbleTimeout`) göre denkleştirilir.
+- Fabrika örnekleri oluşturmak için AuthorizationToken 'ı destekleme.
 
 **Yeni değişiklikler**
 
 - Tanıma olayları: `NoMatch` olay türü `Error` olayla birleştirildi.
-- C#'daki SpeechOutputFormat, `OutputFormat` C++ile uyumlu kalacak şekilde yeniden adlandırıldı.
-- `AudioInputStream` Arabirimin bazı yöntemlerinin dönüş türü biraz değişti:
-  - Java'da `read` yöntem artık `long` `int`.
-  - C#'da `Read` yöntem artık `uint` `int`.
-  - C++'da `Read` artık `GetFormat` `int`yöntem `size_t` yerine 've yöntemler döndürür.
-- C++: Ses giriş akışları örnekleri artık yalnızca . `shared_ptr`
+- C# ' de SpeechOutputFormat, C++ `OutputFormat` ile hizalı kalmak için olarak yeniden adlandırıldı.
+- `AudioInputStream` Arabirimdeki bazı yöntemlerin dönüş türü biraz değişti:
+  - Java 'da, `read` yöntemi yerine artık döndürülür `long` `int`.
+  - C# ' de, `Read` yöntemi artık yerine `uint` döndürülür `int`.
+  - C++ ' da, `Read` ve `GetFormat` yöntemleri artık yerine `size_t` döndürülür `int`.
+- C++: ses giriş akışlarının örnekleri artık yalnızca olarak geçirilebilir `shared_ptr`.
 
 **Hata düzeltmeleri**
 
-- Zaman dolduğunda `RecognizeAsync()` sonuç yanlış dönüş değerleri düzeltildi.
-- Windows'daki medya temel kitaplıklarına olan bağımlılık kaldırıldı. SDK artık Core Audio API'lerini kullanıyor.
-- Belge düzeltmesi: Desteklenen [bölgeleri](regions.md) açıklamak için bölgeler sayfası eklendi.
+- Zaman aşımı durumunda `RecognizeAsync()` sonuç içindeki hatalı dönüş değerleri düzeltildi.
+- Windows 'daki Media Foundation kitaplıkları bağımlılığı kaldırılmıştır. SDK artık çekirdek ses API 'Lerini kullanır.
+- Belge onarımı: desteklenen bölgeleri anlatmak için bir [bölgeler](regions.md) sayfası eklendi.
 
 **Bilinen sorun**
 
-- Android için Konuşma SDK çeviri için konuşma sentezi sonuçlarını bildirmez. Bu sorun bir sonraki sürümde giderilecektir.
+- Android için konuşma SDK 'Sı, çeviri için konuşma sonuçları raporlamaz. Bu sorun bir sonraki sürümde düzeltilecektir.
 
-## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Bilişsel Hizmetler Konuşma SDK 0.4.0: 2018-Haziran sürümü
+## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Bilişsel hizmetler konuşma SDK 0.4.0:2018-Haziran sürümü
 
 **İşlevsel değişiklikler**
 
-- AudioInputStream
+- Audioınputstream
 
-  Bir tanıyıcı artık ses kaynağı olarak bir akışı tüketebilir. Daha fazla bilgi için ilgili [nasıl yapılacağını kılavuzuna](how-to-use-audio-input-streams.md)bakın.
+  Bir tanıyıcı artık ses kaynağı olarak bir akış kullanabilir. Daha fazla bilgi için ilgili [nasıl yapılır Kılavuzu](how-to-use-audio-input-streams.md)' na bakın.
 
-- Ayrıntılı çıktı biçimi
+- Ayrıntılı çıkış biçimi
 
-  Bir `SpeechRecognizer`, istediğiniz `Detailed` veya `Simple` çıktı biçimi oluşturduğunuzda. Bir `DetailedSpeechRecognitionResult` güven puanı, tanınan metin, ham sözlü form, normalleştirilmiş form ve maskeli küfür ile normalleştirilmiş formu içerir.
+  Bir `SpeechRecognizer`oluşturduğunuzda, istek `Detailed` veya `Simple` çıkış biçimi yapabilirsiniz. , `DetailedSpeechRecognitionResult` Maskeli bir küfür ile Güvenirlik puanı, tanınan metin, ham sözlü form, normalleştirilmiş form ve normalleştirilmiş form içerir.
 
-**Son dakika değişikliği**
+**Son değişiklik**
 
-- C#'dan itibaren `SpeechRecognitionResult.Text` `SpeechRecognitionResult.RecognizedText` değiştirildi.
+- C# ' `SpeechRecognitionResult.Text` den `SpeechRecognitionResult.RecognizedText` olarak değiştirilir.
 
 **Hata düzeltmeleri**
 
-- Kapatma sırasında USP katmanındaki olası bir geri arama sorunu giderildi.
-- Bir tanıyıcı bir ses giriş dosyası tükettiyse, dosya tutamacını gerekenden daha uzun süre tutuyordu.
-- İleti pompası ve tanıyan arasında birkaç kilitlenme kaldırıldı.
-- Servisten `NoMatch` gelen yanıt zaman dolduğunda yangın sonucu.
-- Windows'daki medya kuruluşu kitaplıkları gecikme yüklü. Bu kitaplık yalnızca mikrofon girişi için gereklidir.
-- Ses verileri için yükleme hızı orijinal ses hızının yaklaşık iki katı ile sınırlıdır.
-- Windows'da, C# .NET derlemeleri artık güçlü adlandırılmış.
-- Dokümantasyon `Region` düzeltmesi: bir tanıyıcı oluşturmak için gerekli bilgilerdir.
+- Kapatmadan önce USP katmanında olası bir geri çağırma sorunu düzeltildi.
+- Bir tanıyıcı bir ses giriş dosyası kullanıyorsa, dosya tanıtıcısına gerekenden daha uzun süre içinde tutulmakta.
+- İleti göndericisi ve tanıyıcı arasında birkaç kilitlenme kaldırıldı.
+- Hizmetten gelen `NoMatch` yanıt zaman aşımına uğradığından bir sonuç tetikle.
+- Windows 'daki Media Foundation kitaplıkları gecikmeli yüklendi. Bu kitaplık yalnızca mikrofon girişi için gereklidir.
+- Ses verileri için karşıya yükleme hızı, özgün ses hızının iki katı ile sınırlıdır.
+- Windows 'da C# .NET derlemeleri artık güçlü adlandırılmış.
+- Belge onarımı: `Region` bir tanıyıcı oluşturmak için gerekli bilgiler.
 
-Daha fazla örnek eklendi ve sürekli olarak güncelleniyor. En son örnek kümesi için [Konuşma SDK örnekleri GitHub deposuna](https://aka.ms/csspeech/samples)bakın.
+Daha fazla örnek eklenmiştir ve sürekli olarak güncelleştirilir. En son örnek kümesi için bkz. [konuşma SDK örnekleri GitHub deposu](https://aka.ms/csspeech/samples).
 
-## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Bilişsel Hizmetler Konuşma SDK 0.2.12733: 2018-Mayıs yayın
+## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Bilişsel hizmetler konuşma SDK 0.2.12733:2018-Mayıs yayını
 
-Bu sürüm Bilişsel Hizmetler Konuşma SDK ilk kamu önizleme açıklamasıdır.
+Bu sürüm, bilişsel hizmetler konuşma SDK 'sının ilk genel önizleme sürümüdür.

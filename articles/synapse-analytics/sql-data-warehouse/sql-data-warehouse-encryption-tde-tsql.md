@@ -1,6 +1,6 @@
 ---
-title: Saydam veri şifreleme (T-SQL)
-description: Azure Synapse Analytics'te (T-SQL) saydam veri şifreleme (TDE)
+title: Saydam veri şifrelemesi (T-SQL)
+description: Azure SYNAPSE Analytics 'te (T-SQL) saydam veri şifrelemesi (TDE)
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,56 +12,56 @@ ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ae751cc5b8e3ab67f3e65757724d0ebae1c45e02
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745253"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde"></a>Şeffaf Veri Şifreleme (TDE) ile başlayın
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Saydam Veri Şifrelemesi ile çalışmaya başlama (TDE)
 
 > [!div class="op_single_selector"]
 >
-> * [Güvenliğe Genel Bakış](sql-data-warehouse-overview-manage-security.md)
+> * [Güvenliğe genel bakış](sql-data-warehouse-overview-manage-security.md)
 > * [Kimlik Doğrulaması](sql-data-warehouse-authentication.md)
-> * [Şifreleme (Portal)](sql-data-warehouse-encryption-tde.md)
+> * [Şifreleme (portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 
 ## <a name="required-permissions"></a>Gerekli İzinler
 
-Saydam Veri Şifreleme 'yi (TDE) etkinleştirmek için yönetici veya dbmanager rolünün bir üyesi olmalısınız.
+Saydam Veri Şifrelemesi (TDE) etkinleştirmek için, bir yönetici veya dbmanager rolünün bir üyesi olmanız gerekir.
 
-## <a name="enabling-encryption"></a>Şifrelemeyi Etkinleştirme
+## <a name="enabling-encryption"></a>Şifrelemeyi etkinleştirme
 
-TDE'yi etkinleştirmek için aşağıdaki adımları izleyin:
+TDE ' i etkinleştirmek için şu adımları izleyin:
 
-1. Ana veritabanında yönetici veya **dbmanager** rolünün bir üyesi olan bir girişi kullanarak veritabanını barındıran sunucudaki *ana* veritabanına bağlanın
-2. Veritabanını şifrelemek için aşağıdaki ifadeyi uygulayın.
+1. Yönetici veya ana veritabanında **DBManager** rolünün bir üyesi kullanarak veritabanını barındıran sunucudaki *ana* veritabanına bağlanın
+2. Veritabanını şifrelemek için aşağıdaki ifadeyi yürütün.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
-## <a name="disabling-encryption"></a>Şifrelemeyi Devre Dışı Bırakma
+## <a name="disabling-encryption"></a>Şifrelemeyi devre dışı bırakma
 
-TDE'yi devre dışı katmak için aşağıdaki adımları izleyin:
+TDE devre dışı bırakmak için şu adımları izleyin:
 
-1. Yönetici veya ana veritabanındaki **dbmanager** rolünün bir üyesi olan bir girişi kullanarak *ana* veritabanına bağlanma
-2. Veritabanını şifrelemek için aşağıdaki ifadeyi uygulayın.
+1. Ana veritabanında yönetici veya **DBManager** rolünün üyesi olan bir oturum kullanarak *ana* veritabanına bağlanın
+2. Veritabanını şifrelemek için aşağıdaki ifadeyi yürütün.
 
 ```sql
 ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> TDE ayarlarında değişiklik yapmadan önce duraklatılmış bir SQL havuzuna devam edilmelidir.
+> Duraklatılmış bir SQL havuzunun, TDE ayarlarında değişiklik yapılmadan önce sürdürülmelidir.
 
-## <a name="verifying-encryption"></a>Şifrelemeyi Doğrulama
+## <a name="verifying-encryption"></a>Şifreleme doğrulanıyor
 
 Şifreleme durumunu doğrulamak için aşağıdaki adımları izleyin:
 
-1. Ana veritabanındaki yönetici veya **dbmanager** rolünün bir üyesi olan bir giriş kullanarak *ana* veya örnek veritabanına bağlanın
-2. Veritabanını şifrelemek için aşağıdaki ifadeyi uygulayın.
+1. Ana veritabanında yönetici veya **DBManager** rolünün üyesi olan bir oturum kullanarak *ana* veya örnek veritabanına bağlanın
+2. Veritabanını şifrelemek için aşağıdaki ifadeyi yürütün.
 
 ```sql
 SELECT
@@ -71,9 +71,9 @@ FROM
     sys.databases;
 ```
 
-Bunun bir ```1``` sonucu, şifrelenmiş ```0``` bir veritabanını gösterir, şifrelenmemiş bir veritabanını gösterir.
+Sonucu ```1``` şifreli bir veritabanını gösterir, ```0``` şifreli olmayan bir veritabanını gösterir.
 
-## <a name="encryption-dmvs"></a>Şifreleme DMV'leri
+## <a name="encryption-dmvs"></a>Şifreleme DMVs
 
-* [Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys. dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

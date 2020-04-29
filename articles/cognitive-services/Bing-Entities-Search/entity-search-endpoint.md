@@ -1,7 +1,7 @@
 ---
-title: Bing Varlık Arama API bitiş noktası
+title: Bing Varlık Arama API'si uç noktası
 titleSuffix: Azure Cognitive Services
-description: Bing Entity Search API'de, sorguyu temel alan varlıkları Web'den döndüren bir uç nokta vardır. Bu arama sonuçları JSON'da döndürülür.
+description: Bing Varlık Arama API'si bir sorguya göre Web 'den varlıkları döndüren bir uç nokta vardır. Bu arama sonuçları JSON içinde döndürülür.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072665"
 ---
-# <a name="bing-entity-search-api-endpoint"></a>Bing Varlık Arama API bitiş noktası
+# <a name="bing-entity-search-api-endpoint"></a>Bing Varlık Arama API'si uç noktası
 
 
-Bing Entity Search API'de, sorguyu temel alan varlıkları Web'den döndüren bir uç nokta vardır. Bu arama sonuçları JSON'da döndürülür.
+Bing Varlık Arama API'si bir sorguya göre Web 'den varlıkları döndüren bir uç nokta vardır. Bu arama sonuçları JSON içinde döndürülür.
 
-## <a name="get-entity-results-from-the-endpoint"></a>Bitiş noktasından varlık sonuçları alma
+## <a name="get-entity-results-from-the-endpoint"></a>Uç noktadan varlık sonuçları al
 
-**Bing API'sını**kullanarak varlık sonuçları `GET` almak için aşağıdaki bitiş noktasına bir istek gönderin. Arama isteğinizi özelleştirmek için [üstbilgileri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) ve [sorgu parametrelerini](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) kullanın. Arama istekleri `?q=` parametre kullanılarak gönderilebilir.
+**BING API**'yi kullanarak varlık sonuçları almak için aşağıdaki uç noktaya `GET` bir istek gönderin. Arama isteğinizi özelleştirmek için [üst bilgileri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) ve [sorgu parametrelerini](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) kullanın. Arama istekleri `?q=` parametresi kullanılarak gönderilebilir.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
@@ -37,4 +37,4 @@ Bing Entity Search API'de, sorguyu temel alan varlıkları Web'den döndüren bi
 
 ## <a name="see-also"></a>Ayrıca bkz. 
 
-Üstbilgiler, parametreler, pazar kodları, yanıt nesneleri, hatalar ve daha fazlası hakkında daha fazla bilgi için [Bing Entity Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) başvuru makalesine bakın.
+Üstbilgiler, parametreler, Pazar kodları, yanıt nesneleri, hatalar ve daha fazlası hakkında daha fazla bilgi için [Bing varlık arama API'si v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) Reference makalesine bakın.

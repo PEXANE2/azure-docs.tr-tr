@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim - Yöneticiler için MFA gerektirir - Azure Etkin Dizini
-description: Yöneticilerin çok faktörlü kimlik doğrulaması gerçekleştirmesini gerektirecek özel bir Koşullu Erişim ilkesi oluşturun
+title: Koşullu erişim-Yöneticiler için MFA gerektir-Azure Active Directory
+description: Yöneticilerin Multi-Factor Authentication gerçekleştirmesini gerektirmek için özel bir koşullu erişim ilkesi oluşturma
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,71 +12,71 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90e8a8b0926575b5a40a8c0ca7820e31827434ec
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755218"
 ---
-# <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu Erişim: Yöneticiler için MFA gerektirir
+# <a name="conditional-access-require-mfa-for-administrators"></a>Koşullu erişim: Yöneticiler için MFA gerektir
 
-Yönetim hakları atanan hesaplar saldırganlar tarafından hedef alınır. Bu hesaplarda çok faktörlü kimlik doğrulaması (MFA) gerektiren, bu hesapların tehlikeye atılma riskini azaltmanın kolay bir yoludur.
+Yönetici hakları atanmış hesaplar saldırganlar tarafından hedeflenir. Bu hesaplar üzerinde Multi-Factor Authentication (MFA) gerektirme, bu hesapların tehlikeye düşmesi riskini azaltmanın kolay bir yoludur.
 
-Microsoft, en azından aşağıdaki rolleriçin MFA'ya ihtiyaç duymanızı önerir:
+Microsoft, en azından aşağıdaki rollerde MFA gerektirmenizi önerir:
 
 * Faturalama yöneticisi
-* Koşullu Erişim yöneticisi
+* Koşullu Erişim Yöneticisi
 * Exchange yöneticisi
 * Genel yönetici
-* Yardım Masası (Parola) yöneticisi
+* Yardım Masası (parola) Yöneticisi
 * Parola yöneticisi
 * Güvenlik yöneticisi
 * SharePoint yöneticisi
-* Kullanıcı yöneticisi
+* Kullanıcı Yöneticisi
 
-Kuruluşlar uygun gördükleri rolleri eklemeyi veya hariç tutmayı seçebilir.
+Kuruluşlar, uygun gördüğünüz şekilde rolleri dahil etmek veya hariç tutmak seçebilirler.
 
-## <a name="user-exclusions"></a>Kullanıcı hariç tutmalar
+## <a name="user-exclusions"></a>Kullanıcı dışlamaları
 
-Koşullu Erişim ilkeleri güçlü araçlardır, aşağıdaki hesapları politikanızdan hariç öneririz:
+Koşullu erişim ilkeleri güçlü araçlardır ve ilkenizde aşağıdaki hesapların dışlanmasını öneririz:
 
-* Kiracı genelinde hesap kilitlemesini önlemek için **acil durum erişimi** veya kesme **hesabı.** Olası senaryoda tüm yöneticiler kiracınızın dışında kilitli, acil erişim yönetim hesabınız kiracı giriş yapmak için kullanılabilir erişimi kurtarmak için adımlar atın.
-   * Daha fazla bilgi makalede bulunabilir, [Azure AD acil erişim hesaplarını yönet](../users-groups-roles/directory-emergency-access.md).
-* **Azure** AD Connect Sync Hesabı gibi hizmet hesapları ve **hizmet ilkeleri.** Hizmet hesapları, belirli bir kullanıcıya bağlı olmayan etkileşimli olmayan hesaplardır. Normalde uygulamalara programlı erişim sağlayan arka uç hizmetleri tarafından kullanılır, ancak aynı zamanda yönetim amaçlı sistemlerde oturum açmaiçin kullanılır. MFA programlı olarak tamamlanamadığından, bu gibi hizmet hesapları hariç tutulmalıdır. Hizmet ilkeleri tarafından yapılan aramalar Koşullu Erişim tarafından engellenmez.
-   * Kuruluşunuzun bu hesapları komut dosyası veya kodda kullanılıyorsa, [bunları yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi düşünün. Geçici bir geçici çözüm olarak, bu belirli hesapları temel ilkeden hariç tutabilirsiniz.
+* Kiracı genelindeki hesap kilitlenmesini engellemek için **acil durum erişimi** veya **kesme camı** hesapları. Olası olmayan senaryoda tüm yöneticiler kiracınızın dışında kilitlendiğinden, acil durum erişimi yönetim hesabınız kiracıya oturum açmak için kullanılabilir ve erişimi kurtarmak için gerekli adımları uygulayın.
+   * Daha fazla bilgi için [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)makalesinde bulabilirsiniz.
+* Azure AD Connect eşitleme hesabı gibi **hizmet hesapları** ve **hizmet sorumluları**. Hizmet hesapları, belirli bir kullanıcıya bağlı olmayan etkileşimli olmayan hesaplardır. Bunlar normalde, uygulamalar için programlı erişime izin veren, ancak aynı zamanda yönetim amaçlarıyla sistemlerde oturum açmak için kullanılan arka uç hizmetleri tarafından kullanılır. MFA programlı olarak tamamlanmadığı için bunlar gibi hizmet hesapları dışlanmalıdır. Hizmet sorumluları tarafından yapılan çağrılar koşullu erişim tarafından engellenmiyor.
+   * Kuruluşunuzun komut dosyalarında veya kodda kullanımda olan bu hesapları varsa, bunları [yönetilen kimliklerle](../managed-identities-azure-resources/overview.md)değiştirmeyi göz önünde bulundurun. Geçici bir çözüm olarak, bu belirli hesapları temel ilkeden hariç bırakabilirsiniz.
 
-## <a name="create-a-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
+## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, atanan yönetim rollerinin çok faktörlü kimlik doğrulaması gerçekleştirmesini gerektirecek koşullu erişim ilkesi oluşturulmasına yardımcı olur.
+Aşağıdaki adımlar, atanan yönetim rollerinin Multi-Factor Authentication gerçekleştirmesini gerektirmek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur.
 
-1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
-1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
-1. **Yeni ilke**yi seçin.
-1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
-1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
-   1. **Ekle**altında, **Dizin rollerini seçin (önizleme)** ve en azından aşağıdaki rolleri seçin:
-      * Kimlik Doğrulama Yöneticisi
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
+1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+   1. **Dahil et**altında **Dizin rolleri (Önizleme)** öğesini seçin ve en azından aşağıdaki rolleri seçin:
+      * Kimlik doğrulama Yöneticisi
       * Faturalama yöneticisi
-      * Koşullu Erişim yöneticisi
+      * Koşullu Erişim Yöneticisi
       * Exchange yöneticisi
       * Genel yönetici
-      * Yardım Masası yöneticisi
+      * Yardım Masası Yöneticisi
       * Parola yöneticisi
       * Güvenlik yöneticisi
       * SharePoint yöneticisi
-      * Kullanıcı yöneticisi
-   1. **Dışla'nın**altında, **Kullanıcıları ve grupları** seçin ve kuruluşunuzun acil durum erişimini veya kesme cam hesaplarını seçin. 
+      * Kullanıcı Yöneticisi
+   1. **Dışla**altında, **Kullanıcılar ve gruplar** ' ı seçin ve kuruluşunuzun acil erişim veya kesme camı hesaplarını seçin. 
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri** > altında**Ekle,** **Tüm bulut uygulamalarını**seçin ve **Bitti'yi**seçin.
-1. **Koşullar** > Altında**İstemci uygulamaları (Önizleme)**, **Evet** **yapılaşını** ayarlayın ve **Bitti'yi**seçin.
-1. **Access denetimleri** > altında**Hibe, Erişim** **ver'i**seçin, **çok faktörlü kimlik doğrulaması gerektir**in ve **Seç'i**seçin.
-1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
-1. İlkinizi etkinleştirmek için **Oluştur'u** seçin.
+1. **Bulut uygulamaları veya eylemleri** > **dahil**, **tüm bulut uygulamaları**' nı seçin ve **bitti**' yi seçin.
+1. **Koşullar** > **istemci uygulamaları (Önizleme)** altında **Yapılandır** ' ı **Evet**olarak ayarlayın ve **bitti**' yi seçin.
+1. **Erişim denetimleri** > **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve **Seç**' i seçin
+1. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Koşullu Erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
-[Koşullu Erişim Ne Varsa aracını kullanarak oturum açma davranışını simüle edin](troubleshoot-conditional-access-what-if.md)
+[Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

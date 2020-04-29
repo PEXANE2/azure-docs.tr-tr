@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL havuzuna bağlanın
-description: SQL havuzuna bağlanın.
+title: SYNAPSE SQL havuzuna Bağlan
+description: SQL Pool 'a bağlanın.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,22 +12,22 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745321"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>Synapse SQL havuzuna bağlanın
+# <a name="connect-to-synapse-sql-pool"></a>SYNAPSE SQL havuzuna Bağlan
 
-SQL havuzuna bağlanın.
+SQL Pool 'a bağlanın.
 
 ## <a name="find-your-server-name"></a>Sunucu adınızı bulma
 
-Aşağıdaki örnekteki sunucu adı sqlpoolservername.database.windows.net. Tam sunucu adını bulmak için:
+Aşağıdaki örnekteki sunucu adı sqlpoolservername.database.windows.net ' dir. Tam sunucu adını bulmak için:
 
-1. [Azure portalına](https://portal.azure.com)gidin.
-2. Azure **Synapse Analytics'e**tıklayın.
+1. [Azure Portal](https://portal.azure.com)gidin.
+2. **Azure SYNAPSE Analytics**' e tıklayın.
 3. Bağlanmak istediğiniz SQL havuzuna tıklayın.
 4. Tam sunucu adını bulun.
 
@@ -35,9 +35,9 @@ Aşağıdaki örnekteki sunucu adı sqlpoolservername.database.windows.net. Tam 
 
 ## <a name="supported-drivers-and-connection-strings"></a>Desteklenen sürücüler ve bağlantı dizeleri
 
-SQL havuzu [ADO.NET,](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [JDBC'yi](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birini tıklatın.
+SQL havuzu [ADO.net](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'yi destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birine tıklayın.
 
-Azure portalından kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster'i** tıklatın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
+Azure portal kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster** ' e tıklayın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
 
 > [!NOTE]
 > Bağlantınızın kısa süreli kesintiler sırasında devam etmesi için bağlantı zaman aşımını 300 saniyeye ayarlayın.
@@ -79,4 +79,4 @@ SQL havuzu, bağlantı ve nesne oluşturma sırasında bazı ayarları standartl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](sql-data-warehouse-query-visual-studio.md). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi edinmek için Azure [Synapse Analytics'e kimlik doğrulama](sql-data-warehouse-authentication.md)bölümüne bakın.
+Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](sql-data-warehouse-query-visual-studio.md). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics kimlik doğrulaması](sql-data-warehouse-authentication.md).

@@ -1,6 +1,6 @@
 ---
-title: WAF'ı yapılandırma
-description: Azure Uygulama Ağ Geçidi veya üçüncü taraf WAF ile Uygulama Hizmet Ortamınızın önünde bir web uygulaması güvenlik duvarını (WAF) nasıl yapılandıracaklarınızı öğrenin.
+title: WAF 'yi yapılandırma
+description: Azure Application Gateway veya üçüncü taraf bir WAF ile App Service Ortamı önünde bir Web uygulaması güvenlik duvarı (WAF) yapılandırma hakkında bilgi edinin.
 author: ccompy
 ms.assetid: a2101291-83ba-4169-98a2-2c0ed9a65e8d
 ms.topic: tutorial
@@ -8,10 +8,10 @@ ms.date: 03/03/2018
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 987228c5cf0f5231006726718684528a777e92fd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804478"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service Ortamı için Web Uygulaması Güvenlik Duvarı (WAF) Yapılandırma
@@ -66,12 +66,12 @@ Oturum açtıktan sonra, aşağıdaki görüntüde gösterildiği gibi WAF korum
 
 ![Yönetim Panosu][ManagementDashboard]
 
-**Hizmetler** sekmesine tıklayarak WAF’yi koruduğu hizmetler için yapılandırabilirsiniz. Barracuda WAF’nizi yapılandırma hakkında daha ayrıntılı bilgi için [ilgili belgelere](https://techlib.barracuda.com/waf/getstarted1) bakın. Aşağıdaki örnekte, HTTP ve HTTPS'de trafiğe hizmet veren bir Uygulama Hizmeti uygulaması yapılandırılmıştır.
+**Hizmetler** sekmesine tıklayarak WAF’yi koruduğu hizmetler için yapılandırabilirsiniz. Barracuda WAF’nizi yapılandırma hakkında daha ayrıntılı bilgi için [ilgili belgelere](https://techlib.barracuda.com/waf/getstarted1) bakın. Aşağıdaki örnekte, HTTP ve HTTPS üzerinde trafiğe hizmet veren bir App Service uygulaması yapılandırılmıştır.
 
 ![Yönetim Hizmet Ekleme][ManagementAddServices]
 
 > [!NOTE]
-> Uygulamalarınızın nasıl yapılandırıldığına ve Uygulama Hizmet Ortamınızda hangi özelliklerin kullanıldığına bağlı olarak, örneğin bir App Service uygulaması için IP TLS kurulumunuz varsa, 80 ve 443 dışındaki TCP bağlantı noktaları için trafiği iletmeniz gerekir. App Service Ortamlarında kullanılan ağ bağlantı noktalarının listesi için [Gelen Trafiği Denetleme belgelerinde](app-service-app-service-environment-control-inbound-traffic.md) Ağ Bağlantı Noktaları bölümüne bakın.
+> Uygulamalarınızın nasıl yapılandırıldığına ve App Service Ortamı hangi özelliklerin kullanıldığına bağlı olarak, 80 ve 443 dışındaki TCP bağlantı noktaları için trafiği iletmeniz gerekir, örneğin, bir App Service uygulaması için IP TLS kurulumuna sahipseniz. App Service Ortamlarında kullanılan ağ bağlantı noktalarının listesi için [Gelen Trafiği Denetleme belgelerinde](app-service-app-service-environment-control-inbound-traffic.md) Ağ Bağlantı Noktaları bölümüne bakın.
 > 
 > 
 

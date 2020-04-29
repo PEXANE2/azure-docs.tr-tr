@@ -1,111 +1,111 @@
 ---
-title: Bilgi tabanlarını yönet - QnA Maker
-description: QnA Maker, bilgi tabanı ayarlarına ve içeriğine erişim sağlayarak bilgi temellerinizi yönetmenize olanak tanır.
+title: Bilgi temellerini yönetme-Soru-Cevap Oluşturma
+description: Soru-Cevap Oluşturma, Bilgi Bankası ayarları ve içeriğine erişim sağlayarak bilgi tabanlarınızı yönetmenizi sağlar.
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756808"
 ---
-# <a name="create-knowledge-base-and-manage-settings"></a>Bilgi tabanı oluşturma ve ayarları yönetme
+# <a name="create-knowledge-base-and-manage-settings"></a>Bilgi Bankası oluşturma ve ayarları yönetme
 
-QnA Maker, bilgi tabanı ayarlarına ve veri kaynaklarına erişim sağlayarak bilgi temellerinizi yönetmenize olanak tanır.
+Soru-Cevap Oluşturma Bilgi Bankası ayarları ve veri kaynaklarına erişim sağlayarak bilgi tabanlarınızı yönetmenizi sağlar.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 > [!div class="checklist"]
-> * Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-> * Azure portalında oluşturulan bir [QnA Maker kaynağı.](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) Kaynağı oluşturduğunuzda seçtiğiniz Azure Active Directory ID, Abonelik, QnA kaynak adınızı hatırlayın.
+> * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+> * Azure portal oluşturulan [soru-cevap oluşturma kaynağı](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) . Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
 
 ## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
 1. Azure kimlik bilgilerinizle [QnAMaker.ai](https://QnAMaker.ai) portalında oturum açın.
 
-1. QnA Maker portalında **bilgi tabanı oluştur'u**seçin.
+1. Soru-Cevap Oluşturma portalında **Bilgi Bankası oluştur**' u seçin.
 
-1. **Oluştur** sayfasında, QnA Maker kaynağınız zaten varsa **Adım 1'i** atlayın.
+1. Soru-Cevap Oluşturma kaynağınız zaten varsa **Oluştur** sayfasında **1. adımı** atlayın.
 
-    Kaynağı henüz oluşturmadıysanız, Bir **QnA hizmeti oluştur'u**seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluşturduğunuzda seçtiğiniz Azure Active Directory ID, Abonelik, QnA kaynak adınızı hatırlayın.
+    Kaynağı henüz oluşturmadıysanız **QnA hizmeti oluştur**' u seçin. Aboneliğinizde bir Soru-Cevap Oluşturma hizmeti ayarlamak için [Azure portala](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) yönlendirilirsiniz. Kaynağı oluştururken seçtiğiniz Azure Active Directory KIMLIĞI, aboneliğiniz, QnA kaynak adınızı unutmayın.
 
-    Azure portalında kaynağı oluşturmayı bitirdiğinizde, QnA Maker portalına dönün, tarayıcı sayfasını yenileyin ve **Adım 2'ye**devam edin.
+    Azure portal kaynağı oluşturmayı tamamladıktan sonra, Soru-Cevap Oluşturma portalına geri dönün, tarayıcı sayfasını yenileyin ve **2. adıma**geçin.
 
-1. **Adım**3'te, Etkin dizininizi, aboneliğinizi, hizmetinizi (kaynağı) ve hizmette oluşturulan tüm bilgi tabanlarının dilini seçin.
+1. **Adım 3**' te, etkin dizin, abonelik, hizmet (kaynak) ve hizmette oluşturulan tüm bilgi tabanlarının dilini seçin.
 
-   ![QnA Maker hizmet bilgi tabanı seçme ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
+   ![Soru-Cevap Oluşturma Hizmeti Bilgi Bankası seçme ekran görüntüsü](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. **Adım 3,** bilgi tabanınızı `My Sample QnA KB`adlandırın.
+1. **Adım 3**' te bilgi tabanınızı `My Sample QnA KB`adlandırın.
 
-1. **Adım**4'te, ayarları aşağıdaki tabloyla yapılandırın:
+1. **4. adımda**ayarları aşağıdaki tabloyla yapılandırın:
 
     |Ayar|Değer|
     |--|--|
-    |**URL'lerden, .pdf veya .docx dosyalarından çoklu dönüş çıkarma olanağı sağlar.**|İşaretli|
+    |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Varsayılan yanıt metni**| `Quickstart - default answer not found.`|
-    |**+ URL ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**Chit-sohbet**|**Profesyonel'i** Seçin|
+    |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**Chit-sohbet**|**Profesyonel** seçin|
 
-1. **Adım 5**, **KB oluştur'u**seçin.
+1. **5. adımda**, **KB 'nizi oluştur**' u seçin.
 
-    Ayıklama işleminin belgeyi okuması ve soruları ve yanıtları tanımlaması birkaç dakika sürer.
+    Ayıklama işlemi birkaç dakika sürer ve belgeyi okuyup soruları ve yanıtları belirler.
 
-    QnA Maker bilgi tabanını başarıyla oluşturduktan sonra **Bilgi bankası** sayfası açılır. Bu sayfadaki bilgi tabanının içeriğini edinebilirsiniz.
+    Bilgi Bankası Soru-Cevap Oluşturma başarıyla oluşturulduktan sonra **Bilgi Bankası** sayfası açılır. Bilgi Bankası 'nın içeriğini bu sayfada düzenleyebilirsiniz.
 
 ## <a name="edit-knowledge-base"></a>Bilgi bankasını düzenleme
 
-1.  Üst gezinti çubuğunda **bilgi üslerimi** seçin.
+1.  Üst gezinti çubuğunda **bilgi tabanlarımı** seçin.
 
-       Oluşturduğunuz veya sizinle paylaştığınız tüm **hizmetleri, değiştirilen son** tarihin azalan sırasına göre sıralanmış olarak görebilirsiniz.
+       Oluşturduğunuz veya paylaştığınız tüm hizmetleri, **son değiştirilme** tarihinin azalan sırasına göre görebilirsiniz.
 
-       ![Bilgi Temellerim](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+       ![Bilgi tabanlarım](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Üzerinde ayarlamalar yapmak için belirli bir bilgi tabanı seçin.
+1. Üzerinde düzenleme yapmak için belirli bir Bilgi Bankası seçin.
 
-1.  **Ayarlar'ı**seçin. Aşağıdaki liste değiştirebileceğiniz alanları içerir.
+1.  **Ayarlar**' ı seçin. Aşağıdaki liste değiştirebileceğiniz alanları içerir.
 
        |Hedef|Eylem|
        |--|--|
-       |URL ekle|**Bilgi tabanını yönet -> '+ URL ekle'** bağlantısını tıklayarak Bilgi tabanına yeni SSS içeriği eklemek için yeni URL'ler ekleyebilirsiniz.|
-       |URL'yi sil|Varolan URL'leri sil simgesini seçerek silebilirsiniz, çöp kutusu.|
-       |İçeriği yenileyin|Bilgi tabanınızın mevcut URL'lerin en son içeriğini taramasını istiyorsanız, **Yenile** onay kutusunu seçin. Bu, bilgi tabanını en son URL içeriğiyle bir kez günceller. Bu, düzenli bir güncelleştirme zamanlamasını ayarlamıyor.|
-       |Dosya ekle|Desteklenen bir dosya belgesini bilgi tabanının bir parçası olacak şekilde, **Bilgi Tabanını Yönet'i**seçerek ve ardından **Dosya Ekle seçeneğini** seçerek ekleyebilirsiniz|
-    |İçeri Aktarma|**Ayrıca, Alma Bilgisi tabanı** düğmesini seçerek varolan herhangi bir bilgi tabanını da içe aktarabilirsiniz. |
-    |Güncelleştirme|Bilgi tabanının güncelleştirilmesi, bilgi tabanınızla ilişkili QnA Maker hizmetini oluştururken kullanılan **yönetim fiyatlandırma katmanına** bağlıdır. Gerekirse yönetim katmanını Azure portalından da güncelleştirebilirsiniz.
+       |URL Ekle|Bilgi bankasını **Yönet-> ' + URL Ekle '** bağlantısına tıklayarak Bilgi Bankası 'na yenı bir SSS içeriği eklemek Için yeni URL 'ler ekleyebilirsiniz.|
+       |URL 'YI Sil|Sil simgesini seçerek çöp kutusu ' nu seçerek mevcut URL 'Leri silebilirsiniz.|
+       |İçeriği Yenile|Bilgi Bankalarınızın mevcut URL 'lerin en son içeriğini gezinmesi istiyorsanız **Yenile** onay kutusunu seçin. Bu işlem, Bilgi Bankası 'nı en son URL içeriğiyle bir kez güncelleştirir. Bu, güncelleştirmelerin düzenli bir zamanlamasını ayarlamadır.|
+       |Dosya ekle|Bilgi bankasını **Yönet**' i seçip, ardından **+ Dosya Ekle** ' yi seçerek bir bilgi tabanının parçası olmak üzere desteklenen bir dosya belgesi ekleyebilirsiniz|
+    |İçeri Aktarma|Ayrıca, **bilgi tabanı al** düğmesini seçerek mevcut bilgi bankasını içeri aktarabilirsiniz. |
+    |Güncelleştirme|Bilgi bankasını güncelleştirme, Bilgi Bankası ile ilişkili Soru-Cevap Oluşturma Hizmeti oluştururken kullanılan **Yönetim fiyatlandırma katmanına** bağlıdır. Ayrıca, gerekirse yönetim katmanını Azure portal de güncelleştirebilirsiniz.
 
-  1. Bilgi tabanında değişiklik yapmayı bitirdikten sonra, değişiklikleri sürdürmek için sayfanın sağ üst köşesinde **Kaydet'i** seçin ve eğitin.
+  1. Bilgi bankasında değişiklik yapmayı tamamladıktan sonra, değişiklikleri kalıcı hale getirmek için sayfanın sağ üst köşesindeki **Kaydet ve eğit** ' i seçin.
 
-       ![Kaydet ve Eğit](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+       ![Kaydet ve eğitme](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >**Kaydet ve eğit'i**seçmeden önce sayfayı terk ederseniz, tüm değişiklikler kaybolur.
+       >**Kaydet ve eğitme**seçmeden önce sayfadan ayrılırsanız tüm değişiklikler kaybedilir.
 
 
 
-## <a name="manage-large-knowledge-bases"></a>Büyük bilgi tabanlarını yönetme
+## <a name="manage-large-knowledge-bases"></a>Büyük bilgi bankaslarını yönetme
 
-* **Veri kaynak grupları**: Qna'lar çıkarıldıkları veri kaynağına göre gruplandırılır. Veri kaynağını genişletebilir veya daraltabilirsiniz.
+* **Veri kaynağı grupları**: qnas, ayıklandıkları veri kaynağına göre gruplandırılır. Veri kaynağını genişletebilir veya daraltabilirsiniz.
 
-    ![Veri kaynağı soru ve yanıtlarını daraltmak ve genişletmek için QnA Maker veri kaynağı çubuğunu kullanın](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Veri kaynağı sorularını ve yanıtlarını daraltmak ve genişletmek için Soru-Cevap Oluşturma veri kaynağı çubuğunu kullanın](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Arama bilgi tabanı**: Bilgi Bankası tablosunun üst kısmındaki metin kutusuna yazarak bilgi tabanını arayabilirsiniz. Soru, yanıt veya meta veri içeriğini aramak için enter'u tıklatın. Arama filtresini kaldırmak için X simgesine tıklayın.
+* **Bilgi Bankası ara**: Bilgi Bankası tablosunun en üstündeki metin kutusuna yazarak bilgi bankasında arama yapabilirsiniz. Soru, cevap veya meta veri içeriğini aramak için ENTER ' a tıklayın. Arama filtresini kaldırmak için X simgesine tıklayın.
 
-    ![Görünümü yalnızca filtre eşleştirme öğelerine düşürmek için soruların ve yanıtların üzerindeki QnA Maker arama kutusunu kullanın](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Görünümü yalnızca filtre eşleme öğelerine düşürmek için soruların ve yanıtların üzerindeki Soru-Cevap Oluşturma arama kutusunu kullanın](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Pagination**: Büyük bilgi tabanlarını yönetmek için veri kaynakları arasında hızlı bir şekilde ilerleyin
+* **Sayfalandırma**: büyük bilgi bankaslarını yönetmek için veri kaynaklarından hızlıca geçiş yapın
 
-    ![Soru ve cevap sayfalarında gezinmek için soruların ve yanıtların üzerindeki QnA Maker pagination özelliklerini kullanın](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Soruların ve yanıtların sayfalarında gezinmek için soruların ve yanıtların üzerinde Soru-Cevap Oluşturma sayfalandırma özelliklerini kullanın](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Bilgi tabanlarını silme
+## <a name="delete-knowledge-bases"></a>Bilgi temellerini silme
 
-Bir bilgi tabanı (KB) silerken kalıcı bir işlemdir. Geri alınamaz. Bilgi tabanını silmeden önce, bilgi tabanını QnA Maker portalının **Ayarlar** sayfasından dışa aktarmanız gerekir.
+Bilgi Bankası (KB) silindiğinde kalıcı bir işlemdir. Geri alınamaz. Bilgi Bankası 'nı silmeden önce, Bilgi Bankası 'nı Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından dışarı aktarmanız gerekir.
 
-Bilgi tabanınızı ortak çalışanlarla paylaşırsanız,](işbirliği-bilgi-base.md) sonra silin, herkes KB erişimini kaybeder.
+Bilgi bankaınızı ortak çalışanlarla paylaşıyorsanız,] (işbirliği-bilgi-base.md) ve ardından bu dosyayı silerseniz, herkes KB 'ye erişimi kaybeder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir [kaynaktaki](language-knowledge-base.md) tüm bilgi tabanlarının dilini yönetme hakkında bilgi edinin.
+Bir kaynaktaki tüm bilgi tabanlarının [dilini yönetme](language-knowledge-base.md) hakkında bilgi edinin.
 
-* QnA çiftlerini edit
-* QnA Maker tarafından kullanılan Azure kaynaklarını yönetme
+* QnA çiftlerini Düzenle
+* Soru-Cevap Oluşturma tarafından kullanılan Azure kaynaklarını yönetme

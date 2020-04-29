@@ -1,46 +1,46 @@
 ---
-title: Aktif ve aktif olmayan olaylar - Personalizer
-description: Bu makalede, Personalizer hizmeti içinde etkin ve etkin olmayan olayların kullanımı açıklenmektedir.
+title: Etkin ve etkin olmayan olaylar-kişiselleştirici
+description: Bu makalede, kişiselleştirici hizmeti içinde etkin ve etkin olmayan olayların kullanımı ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: a8f27542208965e2b820b9fc45cfcc5353a7f193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77624258"
 ---
 # <a name="active-and-inactive-events"></a>Etkin olan ve olmayan olaylar
 
-**Etkin** bir olay, sonucu müşteriye göstereceğiniz ve ödül puanını belirleyeceğiniz Rank'a yapılan herhangi bir çağrıdır. Bu varsayılan davranıştır.
+**Etkin** bir olay, müşterinin sonucunu göstereceğimizi bildiğiniz ve yeniden puanı belirleyebildiğiniz bir dereceye yapılan çağrıdır. Bu, varsayılan davranıştır.
 
-**Etkin olmayan** bir olay, iş mantığı nedeniyle kullanıcının önerilen eylemi görüp görmeyeceğiniz sıralamaya yapılan bir çağrıdır. Bu, Personalizer'ın varsayılan ödülle eğitilememesine izin verir. Etkin olmayan olaylar Ödül API'sini aramamalıdır.
+**Etkin olmayan** bir olay, kullanıcının iş mantığı nedeniyle önerilen eylemi görüp görmediğinden emin olduğunuz bir derece çağrıdır. Bu, kişiselleştirici varsayılan Reward ile eğitilmemesi için olayı atbırakmanıza olanak tanır. Etkin olmayan olaylar, Reward API 'sini çağırmamalıdır.
 
-Öğrenme döngüsünün olayın gerçek türünü bilmesi önemlidir. Etkin olmayan bir olayın ödül çağrısı olmaz. Etkin bir olay bir Ödül çağrısı na sahip olmalıdır, ancak API çağrısı hiç yapılmazsa, varsayılan ödül puanı uygulanır. Bir olayın durumunu kullanıcı deneyimini etkileyeceğini bildiğiniz anda etkin olmayandan etkin e duruma değiştirin.
+Öğrenme döngüsünün gerçek olay türünü öğrenmesi önemlidir. Etkin olmayan bir olay, bir yeniden çağrıya sahip olmayacaktır. Etkin bir olayın bir yeniden çağrısı olmalıdır ancak API çağrısı hiçbir şekilde yapılmadıysa, varsayılan ödül puanı uygulanır. Kullanıcı deneyimini etkileyeceğini öğrendiğinizde, bir olayın durumunu devre dışı iken etkin olarak değiştirin.
 
 ## <a name="typical-active-events-scenario"></a>Tipik etkin olaylar senaryosu
 
-Uygulamanız Rank API'yi aradığında, uygulamanın **ödülActionId** alanında göstermesi gereken eylemi alırsınız.  O andan itibaren, Personalizer aynı eventId'e sahip bir ödül puanı içeren bir Ödül çağrısı bekler. Ödül puanı gelecekteki Rank aramaları için modeli eğitmek için kullanılır. EventId için Ödül çağrısı alınmazsa, varsayılan ödül uygulanır. [Varsayılan ödüller](how-to-settings.md#configure-rewards-for-the-feedback-loop) Azure portalındaki Personalizer kaynağınızda ayarlanır.
+Uygulamanız, derecelendirme API 'sini çağırdığında, uygulamanın **Rewarterctionıd** alanında gösterilmesi gereken eylemi alırsınız.  Bu andan itibaren, kişiselleştirici aynı EventID 'ye sahip bir ödül çağrısı bekler. Ödül puanı, modeli gelecekteki derece çağrılar için eğitebilmek üzere kullanılır. EventID için bir ödül çağrısı alınmıyorsa, varsayılan bir yeniden eşleşme uygulanır. [Varsayılan yeniden ödüller](how-to-settings.md#configure-rewards-for-the-feedback-loop) Azure Portal, kişiselleştirici kaynağınız üzerinde ayarlanır.
 
 ## <a name="other-event-type-scenarios"></a>Diğer olay türü senaryoları
 
-Bazı senaryolarda, sonucun kullanIlip kullanılmayacağını veya kullanıcıya görüntüleneceğini bile bilmeden uygulamanın Rank'ı araması gerekebilir. Bu durum, örneğin, tanıtılan içeriğin sayfa oluşturmanın bir pazarlama kampanyası tarafından üzerine yazıldığı durumlarda gerçekleşebilir. Rank çağrısının sonucu hiç kullanılmadıysa ve kullanıcı bunu hiç görmediyse, ilgili bir Ödül çağrısı göndermeyin.
+Bazı senaryolarda, uygulamanın, sonucun ne şekilde kullanılacağını veya kullanıcıya görüntülendiğini bilse bile, uygulamanın sırasıyla derece çağrısı yapması gerekebilir. Bu durum, örneğin, yükseltilen içeriğin sayfa işleme bir pazarlama kampanyası tarafından üzerine yazılmasından kaynaklanıyor olabilir. Sıra çağrısının sonucu hiç kullanılmadıysa ve Kullanıcı onu hiç görmüyorsa, karşılık gelen bir ödül çağrısı göndermeyin.
 
-Genellikle, bu senaryolar şu durumlarda gerçekleşir:
+Genellikle, şu durumlarda bu senaryolar meydana gelir:
 
-* Kullanıcının görebileceği veya göremeyen kullanıcı kullanıcısını önceden oluşturmanız.
-* Uygulamanız, Rank çağrılarının çok az gerçek zamanlı bağlamla yapıldığı ve uygulamanın çıktıyı kullanıp kullanmayabileceği veya kullanamayabileceği tahmine dayalı kişiselleştirme yapıyor.
+* Kullanıcının görebileceğini veya görmeyebilirsiniz prerendering kullanıcı ARABIRIMI.
+* Uygulamanız, çok sayıda gerçek zamanlı bağlamla derecelendirme çağrılarının yapıldığı ve uygulamanın çıktıyı kullanmasının veya kullanmayabilir.
 
-Bu gibi durumlarda, Etkinliğin _etkin_olmasını isteyerek Rank'ı aramak için Personalizer'ı kullanın. Personalizer bu etkinlik için bir ödül beklemez ve varsayılan bir ödül uygulamaz.
+Bu durumlarda, etkinliğin _devre dışı_olmasını isteyen derece çağrısı yapmak Için kişiselleştirici kullanın. Kişiselleştirici bu olay için bir ödül beklemez ve varsayılan bir ödül uygulamaz.
 
-Daha sonra iş mantığınızda, uygulama Rank çağrısındaki bilgileri kullanıyorsa, olayı _etkinleştirmeniz_ için etkinleştirmeniz gerekmektedir. Etkinlik aktif olur olmaz, Personalizer bir etkinlik ödülü bekler. Ödül API'sine açık bir arama yapılmazsa, Personalizer varsayılan ödül uygular.
+İş mantığınızdaki daha sonra uygulama, sıralama çağrısından bilgileri kullanıyorsa, olayı _etkinleştirmeniz_ yeterlidir. Etkinlik etkin olduğunda, kişiselleştirici bir olay yeniden bekliyor. Reward API 'sine açık bir çağrı yapılmıyorsa, kişiselleştirici varsayılan bir ödül uygular.
 
 ## <a name="inactive-events"></a>Etkin olmayan olaylar
 
-Bir etkinlik için eğitimi devre dışı kalarak Rank'ı kullanarak rank'ı `learningEnabled = False`arayın.
+Bir olaya yönelik eğitimi devre dışı bırakmak için kullanarak `learningEnabled = False`derecesi çağırın.
 
-Etkin olmayan bir olay için, eventId için bir ödül gönderirseniz `activate` veya bu eventId için API'yi ararsanız öğrenme dolaylı olarak etkinleştirilir.
+Etkin olmayan bir olay için, EventID için bir ödül gönderirseniz veya bu EventID için `activate` API 'yi çağırdığınızda öğrenme, örtülü olarak etkinleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ödül puanını nasıl belirleyip hangi verileri göz önünde bulundurmanızı](concept-rewards.md)öğrenin.
+* [Ödül Puanını ve hangi verilerin dikkate alınacağını nasıl belirleyebileceğinizi](concept-rewards.md)öğrenin.

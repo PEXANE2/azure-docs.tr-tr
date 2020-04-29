@@ -1,63 +1,63 @@
 ---
 title: Şema dağıtımının aşamaları
-description: Bir plan ataması oluştururken Azure Blueprints hizmetlerinin geçtiği güvenlik ve yapıyla ilgili adımları öğrenin.
+description: Şema atama oluştururken Azure şemaları hizmetlerinin üzerinden geçen güvenlik ve yapıt ile ilgili adımları öğrenin.
 ms.date: 11/13/2019
 ms.topic: conceptual
 ms.openlocfilehash: 61d19c84cd659b9df3a272c5c2743944e51df06e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677323"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Şema dağıtımının aşamaları
 
-Bir plan dağıtıldığında, planda tanımlanan kaynakları dağıtmak için Azure Planları hizmeti tarafından bir dizi eylem yapılır. Bu makalede, her adım ne içerir hakkında ayrıntılar sağlar.
+Bir şema dağıtıldığında, şema içinde tanımlanan kaynakları dağıtmak için Azure plan hizmeti tarafından bir dizi eylem alınır. Bu makalede, her adımın neler olduğu hakkında ayrıntılı bilgi sağlanır.
 
-Plan dağıtımı, bir aboneye bir plan atayarak veya [varolan bir atamayı güncelleştirerek](../how-to/update-existing-assignments.md)tetiklenir. Dağıtım sırasında Azure Planları aşağıdaki üst düzey adımları alır:
+Şema dağıtımı, bir aboneliğe bir şema atanarak veya [var olan bir atamayı güncelleştirerek](../how-to/update-existing-assignments.md)tetiklenir. Dağıtım sırasında Azure şemaları aşağıdaki üst düzey adımları gerçekleştirir:
 
 > [!div class="checklist"]
-> - Azure Planları sahibine haklar verdi
-> - Plan atama nesnesi oluşturulur
-> - İsteğe bağlı - Azure Planları **sistem le atanmış** yönetilen kimlik oluşturur
-> - Yönetilen kimlik, plan yapıtlarını dağıtır
-> - Azure Blueprints hizmeti ve **sistem tarafından atanan** yönetilen kimlik hakları iptal edildi
+> - Azure şemaları sahip hakları verildi
+> - Şema atama nesnesi oluşturuldu
+> - İsteğe bağlı-Azure şemaları, **sistem tarafından atanan** yönetilen kimlik oluşturur
+> - Yönetilen kimlik, şema yapıtları dağıtır
+> - Azure şemaları hizmeti ve **sistem tarafından atanan** yönetilen kimlik hakları iptal edilir
 
-## <a name="azure-blueprints-granted-owner-rights"></a>Azure Planları sahibine haklar verdi
+## <a name="azure-blueprints-granted-owner-rights"></a>Azure şemaları sahip hakları verildi
 
-Azure Planları hizmet sorumlusu, [sistem tarafından atanan yönetilen kimlik yönetilen](../../../active-directory/managed-identities-azure-resources/overview.md) kimlik kullanıldığında atanan abonelik veya aboneliklerin sahibine haklar verilir. Verilen rol, Azure Blueprints'in sistem tarafından **atanan** yönetilen kimliği oluşturmasına ve daha sonra iptal etmesine olanak tanır. **Kullanıcı tarafından atanmış** yönetilen bir kimlik kullanıyorsanız, Azure Planları hizmet sorumlusu abonelikte sahip hakları almaz ve gerekmez.
+Azure planları hizmet sorumlusu, atanan abonelik veya aboneliklerde, [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) yönetimli bir kimlik kullanıldığında sahip hakları verilir. Verilen rol, Azure şemaları 'nın **sistem tarafından atanan** yönetilen kimliği oluşturmasına ve daha sonra iptal etmesine olanak tanır. **Kullanıcı tarafından atanan** yönetilen kimlik kullanılıyorsa Azure planları hizmet sorumlusu, abonelik üzerinde sahip haklarına sahip değildir ve bu haklara gerek kalmaz.
 
-Atama portal üzerinden yapılırsa haklar otomatik olarak verilir. Ancak, atama REST API üzerinden yapılırsa, hakları verilmesi ayrı bir API çağrısı ile yapılması gerekir. Azure Blueprints AppId'dir, `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`ancak hizmet ilkesi kiracıya göre değişir. Hizmet ilkesini almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [hizmetMüdürlerini](/graph/api/resources/serviceprincipal) kullanın. Ardından, Azure Blueprints'e [Portal](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _Sahip_ rolünü ver.
+Atama Portal üzerinden yapıldığında haklar otomatik olarak verilir. Ancak, atama REST API aracılığıyla yapılabiliyorsanız, hakların ayrı bir API çağrısıyla yapılması gerekir. Azure şemaları uygulama kimliği `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, ancak hizmet sorumlusu kiracıya göre farklılık gösterir. Hizmet sorumlusunu almak için [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) ve REST uç nokta [servicesorumlularını](/graph/api/resources/serviceprincipal) kullanın. Daha sonra Azure 'a [Portal](../../../role-based-access-control/role-assignments-portal.md), [azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md)veya [Kaynak Yöneticisi şablonu](../../../role-based-access-control/role-assignments-template.md)aracılığıyla _sahip_ rolünü verin.
 
-Azure Planları hizmeti kaynakları doğrudan dağıtmaz.
+Azure şemaları hizmeti, kaynakları doğrudan dağıtmaz.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Plan atama nesnesi oluşturulur
+## <a name="the-blueprint-assignment-object-is-created"></a>Şema atama nesnesi oluşturuldu
 
-Bir kullanıcı, grup veya hizmet sorumlusu bir aboneye bir plan atar. Atama nesnesi, planın atandığı abonelik düzeyinde bulunur. Dağıtım tarafından oluşturulan kaynaklar, dağıtım varlığı bağlamında yapılmaz.
+Bir Kullanıcı, Grup veya hizmet sorumlusu bir aboneliğe şeması atar. Atama nesnesi, şema 'in atandığı abonelik düzeyinde bulunur. Dağıtım tarafından oluşturulan kaynaklar, dağıtım varlığının bağlamında yapılmaz.
 
-Plan ataması oluşturulurken, [yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) türü seçilir. Varsayılan, **sistem tarafından atanmış** yönetilen bir kimliktir. **Kullanıcı tarafından atanan** yönetilen kimlik seçilebilir. **Kullanıcı tarafından atanan** yönetilen bir kimlik kullanırken, plan ataması oluşturulmadan önce tanımlanması ve izinverilmesi gerekir. Hem [Sahip](../../../role-based-access-control/built-in-roles.md#owner) hem de [Blueprint Operatör](../../../role-based-access-control/built-in-roles.md#blueprint-operator) yerleşik `blueprintAssignment/write` **rolleri, kullanıcı tarafından atanan** yönetilen bir kimlik kullanan bir atama oluşturmak için gerekli izine sahiptir.
+Şema atamasını oluştururken, [yönetilen kimliğin](../../../active-directory/managed-identities-azure-resources/overview.md) türü seçilidir. Varsayılan ayar, **sistem tarafından atanan** yönetilen bir kimliktir. **Kullanıcı tarafından atanan** yönetilen kimlik seçilebilir. **Kullanıcı tarafından atanan** bir yönetilen kimlik kullanılırken, şema atama oluşturulmadan önce tanımlanmalı ve izinler verilmelidir. Hem [Owner](../../../role-based-access-control/built-in-roles.md#owner) hem de [Blueprint işlecinin](../../../role-based-access-control/built-in-roles.md#blueprint-operator) yerleşik rollerinin, **Kullanıcı tarafından atanan** yönetilen `blueprintAssignment/write` kimlik kullanan bir atama oluşturmak için gerekli izni vardır.
 
-## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>İsteğe bağlı - Azure Planları sistem le atanmış yönetilen kimlik oluşturur
+## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>İsteğe bağlı-Azure şemaları, sistem tarafından atanan yönetilen kimlik oluşturur
 
-Atama sırasında [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) seçildiğinde, Azure Planları kimliği oluşturur ve yönetilen kimliğe [sahip](../../../role-based-access-control/built-in-roles.md#owner) rolü verir. Varolan bir [atama yükseltilirse,](../how-to/update-existing-assignments.md)Azure Blueprints önceden oluşturulmuş yönetilen kimliği kullanır.
+Atama sırasında [sistem tarafından atanan yönetilen kimlik](../../../active-directory/managed-identities-azure-resources/overview.md) seçildiğinde, Azure şemaları kimliği oluşturur ve yönetilen kimliğe [sahip](../../../role-based-access-control/built-in-roles.md#owner) rolü verir. Mevcut bir [atama yükseltildiyse](../how-to/update-existing-assignments.md), Azure şemaları önceden oluşturulmuş yönetilen kimliği kullanır.
 
-Plan ataması ile ilgili yönetilen kimlik, planda tanımlanan kaynakları dağıtmak veya yeniden dağıtmak için kullanılır. Bu tasarım, atamaların yanlışlıkla birbirine karışmamasını önler.
-Bu tasarım, dağıtılan her kaynağın güvenliğini plandan denetleyerek [kaynak kilitleme](./resource-locking.md) özelliğini de destekler.
+Şema atamasıyla ilgili yönetilen kimlik, şema içinde tanımlanan kaynakları dağıtmak veya yeniden dağıtmak için kullanılır. Bu tasarım, atamaları yanlışlıkla kesintiye uğramasını önler.
+Bu tasarım Ayrıca, Blueprint 'ten dağıtılan her bir kaynağın güvenliğini denetleyerek [kaynak kilitleme](./resource-locking.md) özelliğini destekler.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Yönetilen kimlik, plan yapıtlarını dağıtır
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>Yönetilen kimlik, şema yapıtları dağıtır
 
-Yönetilen kimlik daha sonra tanımlanan [sıralama sırasına](./sequencing-order.md)göre plan içindeki yapıtların Kaynak Yöneticisi dağıtımlarını tetikler. Sipariş, diğer yapılara bağımlı yapılardoğru sırayla dağıtıldığından emin olmak için ayarlanabilir.
+Yönetilen kimlik daha sonra, şema içindeki yapıların Kaynak Yöneticisi dağıtımlarını tanımlanan [sıralama düzeninde](./sequencing-order.md)tetikler. Diğer yapıtlara bağımlı yapıtlar doğru sırada dağıtıldığından emin olmak için sıra ayarlanabilir.
 
-Dağıtım tarafından bir erişim hatası genellikle yönetilen kimliğe verilen erişim düzeyinin sonucudur. Azure Planları hizmeti, **sistem tarafından atanan** yönetilen kimliğin güvenlik yaşam döngüsünü yönetir. Ancak, kullanıcı tarafından atanan yönetilen bir kimliğin haklarını ve yaşam döngüsünü **yönetmekten kullanıcı** sorumludur.
+Bir dağıtım tarafından erişim hatası genellikle yönetilen kimliğe verilen erişim düzeyinin sonucudur. Azure planları Hizmeti, **sistem tarafından atanan** yönetilen kimliğin güvenlik yaşam döngüsünü yönetir. Bununla birlikte, Kullanıcı **tarafından atanan** yönetilen kimliğin haklarının ve yaşam döngüsünün yönetilmesi Kullanıcı tarafından sorumludur.
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Plan hizmeti ve sistem le atanmış yönetilen kimlik hakları iptal edildi
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Blueprint hizmeti ve sistem tarafından atanan yönetilen kimlik hakları iptal edilir
 
-Dağıtımlar tamamlandıktan sonra Azure Blueprints, sisteme **atanan** yönetilen kimliğin abonelikteki haklarını iptal eder. Ardından, Azure Planları hizmeti abonelikten haklarını iptal eder. Hakların kaldırılması, Azure Blueprints'in bir abonelikte kalıcı sahip olmasını engeller.
+Dağıtımlar tamamlandığında, Azure şemaları, abonelikle **sistem tarafından atanan** yönetilen kimliğin haklarını iptal eder. Ardından, Azure planlar hizmeti aboneliğin haklarını iptal eder. Haklar kaldırma, Azure şemaları 'nın bir abonelikte kalıcı bir sahip olmasını önler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Statik ve dinamik parametrelerin](parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
-- Varolan atamaları nasıl [güncelleştirini](../how-to/update-existing-assignments.md)öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

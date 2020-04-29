@@ -1,24 +1,24 @@
 ---
-title: Birlik için Uzaktan İşleme'yi Ayarlama
-description: Bir Unity projesinde Azure Uzaktan İşleme'yi başlatma
+title: Unity için Remote Rendering’i ayarlama
+description: Unity projesinde Azure uzaktan Işlemeyi başlatma
 author: jakrams
 ms.author: jakras
 ms.date: 02/27/2020
 ms.topic: how-to
 ms.openlocfilehash: 0415c0e7ee1432521c3cc2026feff5fc2a41d77e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681148"
 ---
-# <a name="set-up-remote-rendering-for-unity"></a>Birlik için Uzaktan İşleme'yi Ayarlama
+# <a name="set-up-remote-rendering-for-unity"></a>Unity için Remote Rendering’i ayarlama
 
-Azure Uzaktan İşleme'yi (ARR) Unity olarak etkinleştirmek için, Birliğe özel bazı yönleri ele alan özel yöntemler sayılmak üzere özel yöntemler sayılabiliriz.
+Unity 'de Azure uzaktan oluşturma 'yı (ARR) etkinleştirmek için, Unity 'ye özgü bazı yönlerden oluşan adanmış yöntemler sunuyoruz.
 
-## <a name="startup-and-shutdown"></a>Başlatma ve kapatma
+## <a name="startup-and-shutdown"></a>Başlatma ve kapatmadan
 
-Uzaktan İşleme'yi başlatmayı sağlamak `RemoteManagerUnity`için . Bu sınıf genel `RemoteManager` çağrıyı çağırır, ancak sizin için Birliğe özel ayrıntıları zaten uygular. Örneğin, Unity belirli bir koordinat sistemi kullanır. Arama `RemoteManagerUnity.Initialize`yaparken, uygun kongre ayarlanır. Arama ayrıca uzaktan işlenen içeriği görüntülemek için kullanılması gereken Unity kamerayı sağlamanızı da gerektirir.
+Uzaktan Işlemeyi başlatmak için kullanın `RemoteManagerUnity`. Bu sınıf genel `RemoteManager` ' i çağırır, ancak sizin için Unity 'ye özgü ayrıntıları zaten uygular. Örneğin, Unity belirli bir koordinat sistemi kullanır. Çağrılırken `RemoteManagerUnity.Initialize`, uygun kural ayarlanır. Çağrı Ayrıca, uzaktan işlenmiş içeriği görüntülemek için kullanılması gereken Unity kamerayı sağlamanızı gerektirir.
 
 ```cs
 // initialize Azure Remote Rendering for use in Unity:
@@ -27,17 +27,17 @@ RemoteUnityClientInit clientInit = new RemoteUnityClientInit(Camera.main);
 RemoteManagerUnity.InitializeManager(clientInit);
 ```
 
-Uzaktan İşleme'yi kapatmak `RemoteManagerStatic.ShutdownRemoteRendering()`için .
+Uzaktan Işlemeyi kapatmak için çağrısı `RemoteManagerStatic.ShutdownRemoteRendering()`yapın.
 
-Bir `AzureSession` oluşturma ve birincil işleme oturumu olarak seçildikten sonra, `RemoteManagerUnity`bu oturuma kaydedilmelidir:
+Bir `AzureSession` oluşturup, birincil işleme oturumu olarak seçildikten sonra, ile `RemoteManagerUnity`kaydolmalıdır:
 
 ```cs
 RemoteManagerUnity.CurrentSession = ...
 ```
 
-### <a name="full-example-code"></a>Tam örnek kodu
+### <a name="full-example-code"></a>Tam örnek kod
 
-Aşağıdaki kod, Azure Uzaktan İşleme'yi Unity olarak başlatmanız için gereken tüm adımları göstermektedir:
+Aşağıdaki kod, Unity 'de Azure uzaktan Işlemesini başlatmak için gereken tüm adımları göstermektedir:
 
 ```cs
 // initialize Remote Rendering
@@ -62,21 +62,21 @@ session.ConnectToRuntime(new ConnectToRuntimeParams());
 RemoteManagerStatic.ShutdownRemoteRendering();
 ```
 
-## <a name="convenience-functions"></a>Kolaylık fonksiyonları
+## <a name="convenience-functions"></a>Kullanışlı işlevler
 
 ### <a name="session-state-events"></a>Oturum durumu olayları
 
-`RemoteManagerUnity.OnSessionUpdate`oturum durumu değiştiğinde olayları yayır, ayrıntılar için kod belgelerine bakın.
+`RemoteManagerUnity.OnSessionUpdate`oturum durumu değiştiğinde olayları yayar, Ayrıntılar için kod belgelerine bakın.
 
 ### <a name="arrserviceunity"></a>ARRServiceUnity
 
-`ARRServiceUnity`kurulum ve oturum yönetimini kolaylaştırmak için isteğe bağlı bir bileşendir. Uygulama çıkarken veya editörden oyun modu çıkarken oturumunu otomatik olarak durdurmak ve gerektiğinde oturum kirasını otomatik olarak yenileme seçenekleri içerir. Oturum özellikleri (değişkenine `LastProperties` bakın) gibi verileri önbelleğe almaz ve oturum durumu değişiklikleri ve oturum hataları için olayları ortaya çıkarır.
+`ARRServiceUnity`, kurulum ve oturum yönetimini kolaylaştırmak için isteğe bağlı bir bileşendir. Uygulamanın çıkış sırasında veya yürütme modunun düzenleyicide çıkış yapıldığında oturumunu otomatik olarak durdurma ve gerektiğinde oturum kiralamasını otomatik olarak yenileme seçeneklerini içerir. Oturum özellikleri gibi verileri önbelleğe alır (kendi `LastProperties` değişkenine bakın) ve oturum durumu değişiklikleri ve oturum hataları için olayları ortaya koyar.
 
-Aynı `ARRServiceUnity` anda birden fazla örnek olamaz. Bazı yaygın işlevleri uygulayarak daha hızlı başlamanızı sağlar. Daha büyük bir uygulama için olsa da, bu şeyleri kendiniz yapmak için tercih edilebilir.
+Tek seferde birden fazla örneği `ARRServiceUnity` olamaz. Bazı yaygın işlevleri uygulayarak daha hızlı bir şekilde başlamanıza yöneliktir. Daha büyük bir uygulama için, bu şeyleri sizin yapmanız tercih edilebilir, ancak.
 
-Bkz. `ARRServiceUnity` [Öğretici: Bir Birlik projesini sıfırdan ayarlama](../../tutorials/unity/project-setup.md).
+Bir örnek için `ARRServiceUnity` bkz. [öğretici: bir Unity projesini sıfırdan ayarlama](../../tutorials/unity/project-setup.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Unity için Uzaktan İşleme paketini yükleme](install-remote-rendering-unity-package.md)
-* [Öğretici: Sıfırdan bir Birlik projesi kurma](../../tutorials/unity/project-setup.md)
+* [Unity için Remote Rendering paketini yükleme](install-remote-rendering-unity-package.md)
+* [Öğretici: sıfırdan Unity projesi ayarlama](../../tutorials/unity/project-setup.md)

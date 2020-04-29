@@ -1,39 +1,39 @@
 ---
-title: Çevre ve malzeme nin değiştirilmesi
-description: Birbirlik sahnesinde gökyüzü haritasını ve nesne materyallerini nasıl değiştirin için günü gÜ
+title: Ortamı ve malzemeleri değiştirme
+description: Bir Unity sahnede gök eşlem ve nesne malzemelerinin nasıl değiştirileceğini gösteren öğretici.
 author: jakrams
 ms.author: jakras
 ms.date: 02/03/2020
 ms.topic: tutorial
 ms.openlocfilehash: 1354ac3cf2c6fc716ac72ae339928fa49171893e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679621"
 ---
-# <a name="tutorial-changing-the-environment-and-materials"></a>Öğretici: Çevre ve malzeme değiştirme
+# <a name="tutorial-changing-the-environment-and-materials"></a>Öğretici: ortamı ve malzemeleri değiştirme
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Bir sahnenin ortam haritasını değiştirin.
 > * Malzeme parametrelerini değiştirin.
-> * Özel dokular yükleyin.
+> * Özel dokuları yükleyin.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu [öğretici, Öğretici](working-with-remote-entities.md)aşina olduğunuzu varsayar: Unity uzak varlıklar ile çalışma . Ancak, [Öğretici: Bir Birlik projesini sıfırdan ayarlama'da](project-setup.md)gösterildiği gibi, yalnızca oturumlara bağlanabileceğiniz ve bir modeli yükleyebileceğiniz bir Birlik projesine ihtiyacınız vardır.
+Bu öğreticide [öğreticiyi bildiğiniz varsayılmaktadır: Unity 'de uzak varlıklarla çalışma](working-with-remote-entities.md). Bununla birlikte, yalnızca, oturumlara bağlanabildiğinizi ve bir modeli yüklemeyi sağlayan bir Unity projesine ihtiyacınız vardır ve bu, [öğreticide bir Unity projesi kurma: sıfırdan](project-setup.md)gösterildiği gibi.
 
 > [!TIP]
-> [ARR örnekleri deposu,](https://github.com/Azure/azure-remote-rendering) başvuru olarak kullanabileceğiniz *Unity* klasöründeki tüm öğreticiler için hazırlanmış Unity projeleri içerir.
+> [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , *Unity* klasöründe başvuru olarak kullanabileceğiniz tüm öğreticiler için hazırlanan Unity projelerini içerir.
 
-## <a name="change-the-environment-map"></a>Çevre haritasını değiştirme
+## <a name="change-the-environment-map"></a>Ortam haritasını değiştirme
 
-Azure Uzaktan İşleme, ortam aydınlatmasını simüle etmek için [gökyüzü kutularının](../../overview/features/sky.md) (bazen 'çevre haritaları' olarak da adlandırılır) kullanımını destekler. Bu, özellikle örnek modellerimizde olduğu gibi *[Fiziksel Tabanlı Görüntüleme'yi](../../overview/features/pbr-materials.md)* kullandığında kullanışlıdır. ARR ayrıca bu eğitimde kullanacağımız çeşitli yerleşik gökyüzü dokularıyla birlikte gelir.
+Azure uzaktan Işleme, ortam aydınlatmasını taklit etmek için (bazen ' ortam haritaları ' olarak da adlandırılır) [gök kutularının](../../overview/features/sky.md) kullanımını destekler. Bu, özellikle nesneleriniz *[fiziksel tabanlı işleme](../../overview/features/pbr-materials.md)* kullanırken, örnek modellerimiz yaptığımızda yararlıdır. ARR Ayrıca, bu öğreticide kullanabilmemiz için çeşitli yerleşik gök dokularıyla birlikte gelir.
 
-**RemoteSky** adında yeni bir komut dosyası oluşturun ve yeni bir GameObject'e ekleyin. Komut dosyası dosyasını açın ve aşağıdaki kodla değiştirin:
+**Remotesky** adlı yeni bir betik oluşturun ve bunu yeni bir oyunobject öğesine ekleyin. Betik dosyasını açın ve aşağıdaki kodla değiştirin:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -95,15 +95,15 @@ public class RemoteSky : MonoBehaviour
 }
 ```
 
-Yerleşik dokular yüklendiğinden, varyantın `LoadTextureFromSASAsync` yukarıda kullanıldığını unutmayın. [Bağlantılı blob depolarından](../../how-tos/create-an-account.md#link-storage-accounts)yükleme durumunda, `LoadTextureAsync` varyantı kullanın. Bunun modeller için nasıl çalıştığına bir örnek [model yükleme bölümünde](../../concepts/models.md#loading-models)bulunabilir.
+Yerleşik dokular yüklendiğinden `LoadTextureFromSASAsync` , bu değişkenin yukarıda kullanıldığını unutmayın. [Bağlı BLOB depolama](../../how-tos/create-an-account.md#link-storage-accounts)alanından yükleme durumunda, `LoadTextureAsync` türevini kullanın. [Model yükleme bölümünde](../../concepts/models.md#loading-models)bunun modeller için nasıl çalıştığı hakkında bir örnek bulabilirsiniz.
 
-Kodu çalıştırdığınızda ve gökyüzü haritalarında geçiş yaptığınızda, modelinizde büyük ölçüde farklı ışıklandırmalar göreceksiniz. Ancak, arka plan siyah kalır ve gerçek gökyüzü dokusunu göremezsiniz. Bu kasıtlı, bir arka plan oluşturma bir Artırılmış Gerçeklik cihazı ile dikkat dağıtıcı olurdu gibi. Uygun bir uygulamada, nesnelerin daha gerçek görünmesine yardımcı olacağından, gerçek dünya çevrenize benzeyen gökyüzü dokularını kullanmalısınız.
+Kodu çalıştırıp gök haritaları boyunca geçiş yaptığınızda, modelinizde büyük ölçüde farklı aydınlatma fark edeceksiniz. Ancak arka plan siyah kalır ve gerçek gök dokusunu göremezsiniz. Bu bilerek, bir arka plan işleme, genişletilmiş gerçeklik cihazından dikkat dağıtıcı olacak şekilde yapılır. Uygun bir uygulamada, gerçek dünyaya benzer gök dokuları kullanmanız gerekir, bu da nesnelerin daha gerçekçi görünmesini sağlamaya yardımcı olur.
 
 ## <a name="modify-materials"></a>Malzemeleri değiştirme
 
-Önceki öğreticide, seçili nesnelerin renk rengini değiştirmek için [durum geçersiz kılma bileşenleri](../../overview/features/override-hierarchical-state.md) ni kullandık. Şimdi benzer bir etki elde etmek istiyorum, ama bunu bir nesnenin [malzeme](../../concepts/materials.md) değiştirerek.
+Önceki öğreticide, seçili nesnelerin renk tonu rengini değiştirmek için [durum geçersiz kılma bileşenleri](../../overview/features/override-hierarchical-state.md) kullandık. Şimdi de benzer bir etkiye ulaşmak istiyoruz, ancak bunu bir nesnenin [malzemesini](../../concepts/materials.md) değiştirerek yapabilirsiniz.
 
-İlk biz [ikinci öğretici](working-with-remote-entities.md)yaptığı gibi, nesneleri seçmek için bir komut dosyası gerekir. Henüz bir **RemoteRaycaster** komut dosyanız yoksa, şimdi oluşturun. İçeriğini aşağıdaki kodla değiştirin:
+İlk olarak, [ikinci öğreticide](working-with-remote-entities.md)yaptığımız gibi nesneleri seçmek için bir betiğe ihtiyacımız var. Henüz bir **Remoteraycaster** betiğinizi yoksa şimdi oluşturun. İçeriğini şu kodla değiştirin:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -220,9 +220,9 @@ public class RemoteRaycaster : MonoBehaviour
 }
 ```
 
-Bileşeni *RemoteRendering* oyun nesnenize ekleyin. Farenin altındaki nesneleri seçmekten ve seçilen nesnelere *RemoteModelEntity* bileşenleri eklemekten sorumludur. Bu bileşen sınıfı, gerçek malzeme değiştirme işlevini uyguladığımız yerdir.
+*RemoteRendering* Game nesnenizin bileşenini ekleyin. Bu, fare altındaki nesneleri çekmekten ve *Remotemodelentity* bileşenlerini çekilen nesnelere eklemekle sorumludur. Bu bileşen sınıfı, gerçek malzeme değişikliği işlevini uyguladığımız yerdir.
 
-Henüz bir **RemoteModelEntity** komut dosyanız yoksa, komut dosyasını oluşturun ve içeriğini bu kodla değiştirin:
+Henüz bir **Remotemodelentity** betiğinizin yoksa, oluşturun ve içeriğini şu kodla değiştirin:
 
 ```csharp
 using UnityEngine;
@@ -314,21 +314,21 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 
-Bu kodu çalıştırdığınızda, fareyle gezindiğiniz nesneler vurgulanır. Etkisi biz öğretici 2 ne benzer, ama elde yolu farklıdır. Burada seçilen nesne üzerinde malzemelerin listesini almak ve daha sonra farklı bir albedo renk için ilk bir değiştirin.
+Bu kodu çalıştırdığınızda, fare ile üzerine geldiğinizde vurgulanan nesneler vurgulanır. Bu efekt, öğretici 2 ' de yaptığımız yönteme benzerdir, ancak elde edilen yöntem farklıdır. Burada, çekilen nesne üzerindeki malzemelerin listesini alır ve ilk olanı farklı bir Albedo rengine sahip olacak şekilde değiştirirsiniz.
 
 > [!IMPORTANT]
-> Bu yöntemin bir modelin doğru bölümlerini vurgulayıp vurgulamadığının, bir modelin nasıl yazılmasına bağlı olduğunu lütfen unutmayın. Her nesne tam olarak bir malzeme kullanırsa, mükemmel çalışacaktır. Ancak, modelin parçalar ve malzemeler arasında 1:1 ilişkisi yoksa, yukarıdaki naif kod doğru olanı yapmaz.
+> Lütfen bu yöntemin bir modelin doğru bölümlerini vurgulamaları durumunda modelin nasıl yazıldığı hakkında dikkat edin. Her nesne tam olarak bir malzeme kullanıyorsa, bu işlem mükemmel bir şekilde çalışır. Ancak, modelin parçalar ve malzemeler arasında 1:1 ilişkisi yoksa yukarıdaki Naïve kodu doğru şeyi yapmaz.
 
-## <a name="use-a-different-texture"></a>Farklı bir doku kullanma
+## <a name="use-a-different-texture"></a>Farklı bir doku kullanın
 
-[Dokular](../../concepts/textures.md) genellikle kaynak modelin bir parçasıdır. [Model dönüştürme](../../quickstarts/convert-model.md)sırasında, tüm dokular gerekli çalışma zamanı biçimine dönüştürülür ve son model dosyasına paketlenir. Bir dokuyu çalışma zamanında değiştirmek için, [dds dosya biçiminde](https://en.wikipedia.org/wiki/DirectDraw_Surface) kaydetmeniz ve Azure blob depolama alanına yüklemeniz gerekir. Azure blob kapsayıcısı oluşturmak için [bu hızlı başlangıç kılavuzuna](../../quickstarts/convert-model.md) başvurun. Bir blob kapsayıcınız olduğunda, azure depolama gezgininde açabilir ve dosyanızı sürükle ve bırak yoluyla yükleyebilirsiniz.
+[Dokular](../../concepts/textures.md) genellikle kaynak modelin bir parçasıdır. [Model dönüştürme](../../quickstarts/convert-model.md)sırasında tüm dokular gerekli çalışma zamanı biçimine dönüştürülüp son model dosyasına paketlenir. Çalışma zamanında bir dokuyu değiştirmek için, bu dosyayı [DDS dosya biçiminde](https://en.wikipedia.org/wiki/DirectDraw_Surface) kaydetmeniz ve Azure Blob depolama alanına yüklemeniz gerekir. Azure Blob kapsayıcısı oluşturmak için [Bu hızlı başlangıç kılavuzuna](../../quickstarts/convert-model.md) bakın. Bir blob Kapsayıcınız olduktan sonra, Azure Depolama Gezgini içinde açabilir ve sürükleyip bırakma yoluyla dosyanızı karşıya yükleyebilirsiniz.
 
-Çalışma zamanı tarafında, blob depolamabir doku varlık adrese iki farklı şekilde:
+Çalışma zamanı tarafında, blob depolamada bir doku varlığını iki farklı şekilde ele alabilirsiniz:
 
-* SAS URI ile adres dokusu. Bunun için yüklenen dosyaya sağ tıklayın ve bağlam menüsünden "**Paylaşılan Erişim İmzasını Al...**" seçeneğini belirleyin. İşlev varyantı ile `LoadTextureFromSASAsync` bu SAS URI'yi kullanın (aşağıdaki örnek koduna bakın).
-* Blob depolama hesabına bağlı olması durumunda, [blob](../../how-tos/create-an-account.md#link-storage-accounts)depolama parametreleri ile doğrudan doku adresi. Bu durumda ilgili yükleme `LoadTextureAsync`işlevi .
+* Kendi SAS URI 'sine göre doku adresi. Bunun için karşıya yüklenen dosyaya sağ tıklayın ve bağlam menüsünden "**paylaşılan erişim Imzasını al...**" öğesini seçin. Bu SAS URI 'sini `LoadTextureFromSASAsync` işlev değişkeni ile birlikte kullanın (Aşağıdaki örnek koda bakın).
+* [BLOB depolama alanı firmayla bağlantılı](../../how-tos/create-an-account.md#link-storage-accounts)olması durumunda, doğrudan BLOB depolama parametrelerine göre dokuyu çözün. Bu durumda ilgili yükleme işlevi `LoadTextureAsync`.
 
-Şimdi **RemoteModelEntity** komut dosyasını açın, aşağıdaki kodu ekleyin ve yinelenen işlevleri kaldırın:
+Şimdi **Remotemodelentity** betiğini açın, aşağıdaki kodu ekleyin ve yinelenen işlevleri kaldırın:
 
 ```csharp
     private string textureFile = ""; //<SAS URI for your texture>
@@ -385,11 +385,11 @@ Bu kodu çalıştırdığınızda, fareyle gezindiğiniz nesneler vurgulanır. E
     }
 ```
 
-Bu kodu çalıştırın ve modelinizin üzerinde gezinin. Modelinizin uygun UV koordinatları varsa, doku görünmenizi görmeniz gerekir. Aksi takdirde, yalnızca bir renk değişikliği fark edebilirsiniz.
+Bu kodu çalıştırın ve modelinizin üzerine gelin. Modelinize uygun UV koordinatları varsa, dokusunun göründüğünü görmeniz gerekir. Aksi takdirde, yalnızca bir renk değişikliği fark edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu, Azure Uzaktan İşleme'nin Unity ile nasıl kullanılacağı hakkındaki tanıtım serimizi sona erdiriyor. Bir sonraki adım olarak kendinizi ARR bazı temel kavramları aşina olmalıdır, [oturumları](../../concepts/sessions.md)gibi, [varlıklar](../../concepts/entities.md), ve [modeller](../../concepts/models.md) daha derin bir anlayış oluşturmak için. [Işıklar](../../overview/features/lights.md)gibi çeşitli özellikler de vardır , [anahat işleme](../../overview/features/outlines.md), [hiyerarşik durum geçersiz kılar](../../overview/features/override-hierarchical-state.md), ve daha ayrıntılı olarak keşfetmek gerekir [malzemeler.](../../concepts/materials.md)
+Bu, Azure uzaktan Işlemenin Unity ile nasıl kullanılacağına ilişkin giriş serimizi temel alır. Sonraki adım olarak, daha derin bir anlama oluşturmak için [Oturumlar](../../concepts/sessions.md), [varlıklar](../../concepts/entities.md)ve [modeller](../../concepts/models.md) gibi bazı temel kavramlara alışmanız gerekir. Ayrıca [ışıklar](../../overview/features/lights.md), [ana hat işleme](../../overview/features/outlines.md), [hiyerarşik durum geçersiz kılmaları](../../overview/features/override-hierarchical-state.md)ve daha ayrıntılı olarak araştırılacak [malzemeler](../../concepts/materials.md) gibi çeşitli özellikler de vardır.
 
 > [!div class="nextstepaction"]
 > [Unity oyun nesneleri ve bileşenleri](../../how-tos/unity/objects-components.md)

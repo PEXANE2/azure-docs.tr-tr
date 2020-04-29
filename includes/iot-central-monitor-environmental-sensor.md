@@ -9,28 +9,28 @@ ms.date: 03/12/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 6a4b078342cbd62209b092a37fa95b08383789be
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673981"
 ---
-Azure IoT Merkezi uygulamanızda bir operatör olarak şunları yapabilirsiniz:
+Azure IoT Central uygulamanızda bir operatör olarak şunları yapabilirsiniz:
 
-* Cihaz tarafından gönderilen telemetriyi **Genel Bakış** sayfasında görüntüleyin:
+* **Genel bakış** sayfasında cihaz tarafından gönderilen Telemetriyi görüntüleyin:
 
     ![Telemetri görüntüleme](./media/iot-central-monitor-environmental-sensor/view-telemetry.png)
 
-* Cihaz özelliklerini **Hakkında** sayfasında görüntüleyin:
+* **Hakkında** sayfasında cihaz özelliklerini görüntüleyin:
 
     ![Özellikleri görüntüle](./media/iot-central-monitor-environmental-sensor/about-properties.png)
 
-* **Özellikler** sayfasında yazılabilir özellik değerlerini güncelleştirin:
+* **Özellikler** sayfasında yazılabilir özellik değerlerini güncelleştir:
 
-    ![Özellikleri güncelleştirme](./media/iot-central-monitor-environmental-sensor/update-properties.png)
+    ![Güncelleştirme özellikleri](./media/iot-central-monitor-environmental-sensor/update-properties.png)
 
-* **Komutlar** sayfasından komutları arayın:
+* **Komutlar sayfasından komutları** çağırın:
 
-    ![Göz kırpma komutunu arayın](./media/iot-central-monitor-environmental-sensor/call-command.png)
+    ![BLINK komutunu çağır](./media/iot-central-monitor-environmental-sensor/call-command.png)
 
-    ![Komut geçmişini görüntüleme](media/iot-central-monitor-environmental-sensor/command-response.png)
+    ![Komut geçmişini görüntüle](media/iot-central-monitor-environmental-sensor/command-response.png)

@@ -1,43 +1,43 @@
 ---
-title: Sınırlar ve sınırlar - QnA Maker
-description: QnA Maker bilgi tabanı ve hizmet parçaları için meta-sınırları vardır. Test etmek ve yayınlamak için bilgi tabanınızı bu sınırlar içinde tutmak önemlidir.
+title: Sınırlar ve sınırlar-Soru-Cevap Oluşturma
+description: Soru-Cevap Oluşturma Bilgi Bankası ve hizmetinin bölümleri için meta sınırlara sahiptir. Test ve yayımlamak için bilgi bankanızı bu sınırlar dahilinde tutmanız önemlidir.
 ms.topic: reference
 ms.date: 02/14/2020
 ms.openlocfilehash: 6375a6c6efc0c7016d9947e04e9479385aa80af5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273345"
 ---
-# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker bilgi tabanı sınırları ve sınırları
+# <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
-Aşağıda verilen QnA Maker [sınırları, Azure Bilişsel Arama fiyatlandırma katman sınırları](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) ve [QnA Maker fiyatlandırma katmanı sınırlarının](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)bir kombinasyonudur. Kaynak başına kaç bilgi tabanı oluşturabileceğinizi ve her bilgi tabanının ne kadar büyüyebileceğini anlamak için her iki sınır kümesini de bilmeniz gerekir.
+Aşağıda belirtilen Soru-Cevap Oluşturma limitleri [Azure bilişsel arama fiyatlandırma katmanı sınırlarının](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) ve [soru-cevap oluşturma fiyatlandırma katmanı sınırlarının](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)bir birleşimidir. Kaynak başına kaç bilgi tabanı oluşturabileceğiniz ve her bilgi tabanının ne kadar büyüeceği hakkında bilgi sahibi olmak için her iki limit kümesini de bilmeniz gerekir.
 
-## <a name="knowledge-bases"></a>Bilgi üsleri
+## <a name="knowledge-bases"></a>Bilgi Bankası tabanları
 
-Maksimum bilgi tabanı sayısı Azure [Bilişsel Arama katmanı sınırlarına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)dayanır.
+En fazla bilgi Bankası sayısı, [Azure bilişsel arama katmanı sınırlarına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)göre belirlenir.
 
 |**Azure Bilişsel Arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|İzin verilen maksimum yayınlanmış bilgi tabanı sayısı|2|14|49|199|199|2,999|
+|İzin verilen en fazla yayımlanan bilgi tabanı sayısı|2|14|49|199|199|2.999|
 
- Örneğin, katmanınızda izin verilen 15 dizin varsa, 14 bilgi tabanı (yayımlanmış bilgi tabanı başına 1 dizin) yayımlayabilirsiniz. On beşinci indeks, `testkb`, yazma ve test için tüm bilgi üsleri için kullanılır.
+ Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin `testkb`, yazma ve test için tüm bilgi tabanları için kullanılır.
 
-## <a name="extraction-limits"></a>Ekstraksiyon Limitleri
+## <a name="extraction-limits"></a>Ayıklama sınırları
 
 ### <a name="file-naming-constraints"></a>Dosya adlandırma kısıtlamaları
 
-Dosya adları aşağıdaki karakterleri içermeyebilir:
+Dosya adları aşağıdaki karakterleri içeremez:
 
-|Karakter kullanmayın|
+|Karakter kullanma|
 |--|
-|Tek teklif`'`|
-|Çift teklif`"`|
+|Tek tırnak`'`|
+|Çift tırnak`"`|
 
 ### <a name="maximum-file-size"></a>En büyük dosya boyutu
 
-|Biçimlendir|Maksimum dosya boyutu (MB)|
+|Biçimlendir|En büyük dosya boyutu (MB)|
 |--|--|
 |`.docx`|10|
 |`.pdf`|25|
@@ -45,62 +45,62 @@ Dosya adları aşağıdaki karakterleri içermeyebilir:
 |`.txt`|10|
 |`.xlsx`|3|
 
-### <a name="maximum-number-of-files"></a>Maksimum dosya sayısı
+### <a name="maximum-number-of-files"></a>En fazla dosya sayısı
 
-Çıkarılabilen maksimum dosya sayısı ve maksimum dosya boyutu **[QnA Maker fiyatlandırma katman sınırlarınızı](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** temel almaktadır.
+Ayıklanabilen en fazla dosya sayısı ve en büyük dosya boyutu, **[soru-cevap oluşturma fiyatlandırma katmanı limitlerinizi](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)** temel alır.
 
-### <a name="maximum-number-of-deep-links-from-url"></a>URL'den maksimum derin bağlantı sayısı
+### <a name="maximum-number-of-deep-links-from-url"></a>URL 'den en fazla derin bağlantı sayısı
 
-Bir URL sayfasından Qna'ların çıkarılması için taranabilecek en fazla derin bağlantı sayısı **20'dir.**
+Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlantı sayısı **20**' dir.
 
-## <a name="metadata-limits"></a>Meta Veri Sınırları
+## <a name="metadata-limits"></a>Meta veri sınırları
 
-Meta veriler metin tabanlı bir anahtar olarak sunulur: `product:windows 10`değer çifti, örneğin. Bu depolanır ve küçük harfle karşılaştırılır.
+Meta veriler metin tabanlı anahtar olarak sunulur: gibi bir değer çifti `product:windows 10`. Daha küçük bir durumda depolanır ve karşılaştırılır.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Azure Bilişsel Arama fiyatlandırma katmanına göre
 
-Bilgi tabanı başına maksimum meta veri alanı **[sayısı, Azure Bilişsel Arama katmanı sınırlarınızı](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel almaktadır.
+Bilgi Bankası başına en fazla meta veri alanı sayısı, **[Azure bilişsel arama katmanı limitlerinizi](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** temel alır.
 
 |**Azure Bilişsel Arama katmanı** | **Ücretsiz** | **Temel** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
-|QnA Maker hizmeti başına maksimum meta veri alanları (tüm KB'lerde)|1000|100*|1000|1000|1000|1000|
+|Soru-Cevap Oluşturma Hizmeti başına en fazla meta veri alanı (tüm KBs 'lerde)|1000|100 *|1000|1000|1000|1000|
 
 ### <a name="by-name-and-value"></a>Ada ve değere göre
 
 Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağıdaki tabloda listelenmiştir.
 
-|Öğe|İzin verilen chars|Regex desen eşleşmesi|Maksimum kar|
+|Öğe|İzin verilen karakterler|Regex model eşleşmesi|En fazla karakter|
 |--|--|--|--|
-|Ad (anahtar)|Sağ -lar<br>alfanümerik (harfler ve basamaklar)<br>`_`(alt puan)<br> Boşluk içermemelidir.|`^[a-zA-Z0-9_]+$`|100|
-|Değer|Hariç her şeye izin verir<br>`:`(kolon)<br>`|`(dikey boru)<br>Yalnızca bir değere izin verildi.|`^[^:|]+$`|500|
+|Ad (anahtar)|Belirlemesine<br>alfasayısal (harfler ve rakamlar)<br>`_`adında<br> Boşluk içermemelidir.|`^[a-zA-Z0-9_]+$`|100|
+|Değer|Hariç her şeye izin verir<br>`:`üste<br>`|`(dikey boru)<br>Yalnızca bir değere izin verilir.|`^[^:|]+$`|500|
 |||||
 
-## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik sınırları
-Bilgi tabanındaki içeriğe ilişkin genel sınırlar:
-* Cevap metninin uzunluğu: 25.000
+## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik limitleri
+Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
+* Yanıt metninin uzunluğu: 25.000
 * Soru metninin uzunluğu: 1.000
-* Meta veri anahtar/değer metninin uzunluğu: 100
-* Meta veri adı için desteklenen karakterler: Alfabeler, basamaklar ve`_`
-* Meta veri değeri için desteklenen karakterler: Tüm bunlar hariç `:` ve`|`
+* Meta veri anahtarı/değer metninin uzunluğu: 100
+* Meta veri adı için desteklenen karakterler: harfler, rakamlar ve`_`
+* Meta veri değeri için desteklenen karakterler: tümü `:` ve dışında`|`
 * Dosya adı uzunluğu: 200
-* Desteklenen dosya biçimleri: ".tsv", ".pdf", ".txt", ".docx", ".xlsx".
-* Maksimum alternatif soru sayısı: 300
-* Maksimum soru-yanıt çifti sayısı: Seçilen **[Azure Bilişsel Arama katmanına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** bağlıdır. Soru ve yanıt çifti eşlemleri Azure Bilişsel Arama dizinindeki bir belgeye gelir.
-* URL/HTML sayfası: 1 milyon karakter
+* Desteklenen dosya biçimleri: ". tsv", ". pdf", ". txt", ". docx", ". xlsx".
+* Alternatif soruların maksimum sayısı: 300
+* En yüksek soru-cevap çifti sayısı: seçilen **[Azure bilişsel arama katmanına](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)** bağlıdır. Soru ve yanıt çifti, Azure Bilişsel Arama dizininde bulunan bir belgeyle eşlenir.
+* URL/HTML sayfası: 1.000.000 karakter
 
-## <a name="create-knowledge-base-call-limits"></a>Bilgi temel çağrı limitleri oluşturun:
-Bunlar, her bir bilgi bankası eylemi oluşturmanın sınırlarını temsil; diğer bir şey, *KB Oluştur'u* tıklatmak veya CreateKnowledgeBase API'yi aramak.
-* Yanıt başına maksimum alternatif soru sayısı: 300
-* Maksimum URL sayısı: 10
-* Maksimum dosya sayısı: 10
+## <a name="create-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırları oluşturma:
+Bunlar her bir bilgi tabanı oluşturma eyleminin sınırlarını temsil eder; diğer bir deyişle, *BB oluştur* veya CREATEıNFO API 'sini çağırma ' ya tıklayın.
+* Yanıt başına en fazla alternatif soru sayısı: 300
+* En fazla URL sayısı: 10
+* En fazla dosya sayısı: 10
 
-## <a name="update-knowledge-base-call-limits"></a>Bilgi temel arama sınırlarını güncelleştirme
-Bunlar, her güncelleştirme eylemi için sınırları temsil; diğer bir şey, *Kaydet'i tıklatıp eğitmek* veya UpdateKnowledgeBase API'yi aramak.
-* Her kaynak adın uzunluğu: 300
-* En fazla eklenen veya silinen alternatif soru sayısı: 300
-* En fazla eklenen veya silinen meta veri alanları sayısı: 10
-* Yenilenebilen maksimum URL sayısı: 5
+## <a name="update-knowledge-base-call-limits"></a>Bilgi Bankası çağrı sınırlarını güncelleştirme
+Bunlar her bir güncelleştirme eyleminin sınırlarını temsil eder; diğer bir deyişle, *kayıt ve eğitim* ' i ve sonra UPDATEıNFO API 'sini çağırır.
+* Her kaynak adının uzunluğu: 300
+* En fazla eklenen veya silinen diğer soru sayısı: 300
+* Eklenen veya silinen en fazla meta veri alanı sayısı: 10
+* Yenilenebilir en fazla URL sayısı: 5
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hizmet fiyatlandırma katmanlarını](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)ne zaman ve nasıl değiştireceğinizi öğrenin.
+[Hizmet fiyatlandırma katmanlarının](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)ne zaman ve nasıl değiştirileceğini öğrenin.

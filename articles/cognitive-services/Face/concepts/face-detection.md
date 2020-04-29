@@ -1,7 +1,7 @@
 ---
 title: Yüz algılama ve öznitelikler kavramları
 titleSuffix: Azure Cognitive Services
-description: Yüz algılama, görüntüdeki insan yüzlerini bulma ve isteğe bağlı olarak yüzle ilgili farklı verileri döndürme eylemidir.
+description: Yüz algılama, görüntüde insan yüzlerini bulma ve isteğe bağlı olarak farklı türlerde yüz ile ilgili verileri döndürme eylemi olur.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -11,73 +11,73 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73743059"
 ---
-# <a name="face-detection-and-attributes"></a>Yüz algılama ve özellikleri
+# <a name="face-detection-and-attributes"></a>Yüz algılama ve öznitelikler
 
-Bu makalede, yüz algılama ve yüz öznitelik verileri kavramları açıklanmaktadır. Yüz algılama, görüntüdeki insan yüzlerini bulma ve isteğe bağlı olarak yüzle ilgili farklı verileri döndürme eylemidir.
+Bu makalede, yüz algılama ve yüz öznitelik verilerinin kavramları açıklanmaktadır. Yüz algılama, görüntüde insan yüzlerini bulma ve isteğe bağlı olarak farklı türlerde yüz ile ilgili verileri döndürme eylemi olur.
 
-Görüntüdeki yüzleri algılamak için [Yüz - Algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) işlemini kullanırsınız. En azından, algılanan her yüz yanıtta bir faceRectangle alanına karşılık gelir. Sol, üst, genişlik ve yükseklik için bu piksel koordinatları kümesi bulunan yüzü işaretler. Bu koordinatları kullanarak, yüzün konumunu ve boyutunu alabilirsiniz. API yanıtında, yüzler en büyükten en küçülmeye kadar boyut sırasına göre listelenir.
+Görüntüdeki yüzeyleri algılamak için [yüz algılama](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) işlemini kullanırsınız. En azından, algılanan her yüz yanıtta bir faceRectangle alanına karşılık gelir. Sol, üst, genişlik ve yükseklik için bu piksel koordinatları kümesi, bulunan yüzü işaretler. Bu koordinatları kullanarak, yüzün konumunu ve boyutunu alabilirsiniz. API yanıtında, yüzler en büyükten en küçüğe boyut sırasıyla listelenir.
 
 ## <a name="face-id"></a>Yüz Kimliği
 
-Yüz kimliği, görüntüde algılanan her yüz için benzersiz bir tanımlayıcı dizedir. Yüzünüzde bir yüz kimliği isteyebilirsiniz - API aramasını [algıla.](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+Yüz KIMLIĞI, görüntüde algılanan her bir yüz için benzersiz bir tanımlayıcı dizesidir. [Yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API çağrısı IÇIN yüz kimliği isteyebilirsiniz.
 
 ## <a name="face-landmarks"></a>Yüz tanıma yer işaretleri
 
-Yüz işaretleri, göz bebekleri veya burnun ucu gibi bir yüzde bulunması kolay noktalar kümesidir. Varsayılan olarak önceden tanımlanmış 27 yer işareti noktası vardır. Aşağıdaki şekil tüm 27 noktaları gösterir:
+Yüz yüzleri, bir yüz üzerinde yer alan, pupıls veya burun ipucu gibi kolay bir arama noktası kümesidir. Varsayılan olarak önceden tanımlanmış 27 yer işareti noktası vardır. Aşağıdaki şekilde tüm 27 noktaları gösterilmektedir:
 
-![27 simgenin tümündeki etiketli bir yüz diyagramı](../Images/landmarks.1.jpg)
+![Tüm 27 yer işareti etiketli yüz diyagramı](../Images/landmarks.1.jpg)
 
-Noktaların koordinatları piksel birimleri olarak döndürülür.
+Noktaların koordinatları piksel birimlerinde döndürülür.
 
 ## <a name="attributes"></a>Öznitelikler
 
-Öznitelikler, [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API tarafından isteğe bağlı olarak algılanabilen özellikler kümesidir. Aşağıdaki öznitelikler algılanabilir:
+Öznitelikler, [yüz tanıma](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API 'si tarafından isteğe bağlı olarak tespit edilebilir bir özellikler kümesidir. Aşağıdaki öznitelikler tespit edilebilir:
 
-* **Yaş**. Belirli bir yüz yıl içinde tahmini yaş.
-* **Bulanıklaştırma**. Görüntüdeki yüzün bulanıklığı. Bu öznitelik, sıfır ile bir arasında bir değer ve düşük, orta veya yüksek gayri resmi bir derecelendirme döndürür.
-* **Duygu**. Verilen yüz için kendi algılama güven ile duyguların bir listesi. Güven puanları normale döndürülir ve tüm duygular arasındaki puanlar bire kadar eklenir. Döndürülen duygular mutluluk, üzüntü, tarafsız, öfke, hor görme, tiksinti, sürpriz ve korkudur.
-* **Pozlama**. Görüntüdeki yüzün pozu. Bu öznitelik sıfır ve bir ve underExposure, goodExposure veya overExposure gayri resmi bir derecelendirme arasında bir değer döndürür.
-* **Yüz kılları.** Tahmini yüz kılvarlığı ve verilen yüz için uzunluğu.
-* **Cinsiyet**. Verilen yüzün tahmini cinsiyeti. Olası değerler erkek, kadın ve cinsiyetsizdir.
-* **Gözlük.** Verilen yüzün gözlüklü olup olmadığı. Olası değerler NoGlasses, ReadingGlasses, Güneş Gözlüğü ve Yüzme Gözlüğü vardır.
-* **Saç.** Yüzün saç tipi. Bu özellik, saçın görünür olup olmadığını, kelliğin algılanıp algılmadığını ve hangi saç renklerinin algılanıp algılmadığını gösterir.
-* **Baş pozu**. 3D alanda yüzün oryantasyonu. Bu öznitelik derece olarak pitch, roll ve yaw açıları ile açıklanır. Değer aralıkları sırasıyla -90 derece ile 90 derece, -180 derece ile 180 derece ve 90 derece ile 90 derece arasındadır. Açı eşlemeleri için aşağıdaki diyagrama bakın:
+* **Yaş**. Belirli bir yüzün yıllık tahmini yaşı.
+* **Bulanıklaştırma**. Görüntüdeki yüzün bulanıklaştırıltı. Bu öznitelik, sıfır ve bir, düşük, orta veya yüksek bir tamsayı derecelendirmesi arasında bir değer döndürür.
+* **Duygu**. Verilen yüz için algılama güvenlerinin bulunduğu bir liste. Güvenilirlik puanları normalleştirilir ve tüm lamalar genelinde puan ekler. Dönen Özellikler mutluluklar, sadyeti, bağımsız, Anger, Contempt, disgust, sürpriz ve korku.
+* **Pozlama**. Görüntüdeki yüzün pozlaması. Bu öznitelik sıfır ile bir ve çok pozlandırmayı, goodExposure veya aşırı Pozlandırma derecelendirmesi arasında bir değer döndürür.
+* **Yüz artı**. Verilen yüzün tahmini yüz artı olma durumu ve uzunluğu.
+* **Cinsiyeti**. Verilen yüzün tahmini cinsiyeti. Olası değerler erkek, kadın ve genderküçüktür.
+* **Gözlük**. Verilen yüzün gözlük olup olmadığı. Olası değerler gözlük, Readinbahar, güneş gözlüğü ve yüzme Goggles.
+* **Saç**. Yüzün saç türü. Bu öznitelik, saç görünür olup olmadığını, balblerin algılanıp algılanmadığını ve hangi saç renklerinin algılandığını gösterir.
+* **Baş poz**. 3B alanda yüzün yönü. Bu öznitelik, derece cinsinden sıklık, zar ve yaw açılarla açıklanır. Değer aralıkları-90 derece ile 90 derece,-180 derece, 180 derece, ve-90 derece, sırasıyla derece olarak değişir. Açılı eşlemeler için aşağıdaki diyagrama bakın:
 
-    ![Pitch, rulo ve yaw eksenleri etiketli bir kafa](../Images/headpose.1.jpg)
-* **Makyaj.** Yüzün makyajlı olup olmadığı. Bu özellik eyeMakeup ve lipMakeup için bir Boolean değeri döndürür.
-* **Gürültü**. Yüz görüntüsünde algılanan görsel gürültü. Bu öznitelik, sıfır ile bir arasında bir değer ve düşük, orta veya yüksek gayri resmi bir derecelendirme döndürür.
-* **Oklüzyon**. Yüzün bölümlerini engelleyen nesneler olup olmadığı. Bu öznitelik eyeOccluded, alnaOklü ve mouthOccluded için bir Boolean değeri döndürür.
-* **Gülümseyin.** Verilen yüzün gülümseme ifadesi. Bu değer hiçbir gülümseme için sıfır ve net bir gülümseme için bir arasındadır.
+    ![Aralık, top ve yaw eksenlerinin etiketlendiği bir baş](../Images/headpose.1.jpg)
+* **Makeup**. Yüzün oluşturulup oluşturulmayacağını belirtir. Bu öznitelik, eyeMakeup ve lipMakeup için bir Boole değeri döndürür.
+* **Gürültü**. Yüz görüntüde algılanan görsel gürültü. Bu öznitelik, sıfır ve bir, düşük, orta veya yüksek bir tamsayı derecelendirmesi arasında bir değer döndürür.
+* **Occluson**. Yüzün parçalarını engelleyen nesneler olup olmadığı. Bu öznitelik, eyeOccluded, foreheadOccluded ve mouthOccluded için bir Boole değeri döndürür.
+* **Gülümseme**. Verilen yüzün gülümseme ifadesi. Bu değer, gülümseme olmaması için sıfır ve bir açık gülümseme için sıfır arasındadır.
 
 > [!IMPORTANT]
-> Yüz öznitelikleri istatistiksel algoritmalar kullanarak tahmin edilir. Her zaman doğru olmayabilir. Öznitelik verilerine dayalı kararlar alırken dikkatli olun.
+> Yüz nitelikleri, istatistiksel algoritmaların kullanımı aracılığıyla tahmin edilir. Her zaman doğru olmayabilir. Öznitelik verilerine dayalı kararlar verirken dikkatli olun.
 
 ## <a name="input-data"></a>Giriş verileri
 
-Giriş görüntülerinizin en doğru algılama sonuçlarını verdiğinden emin olmak için aşağıdaki ipuçlarını kullanın:
+Giriş görüntülerinizin en doğru algılama sonuçlarını vermesini sağlamak için aşağıdaki ipuçlarını kullanın:
 
-* Desteklenen giriş görüntü biçimleri ilk kare için JPEG, PNG, GIF ve BMP'dir.
-* Görüntü dosyası boyutu 4 MB'dan büyük olmamalıdır.
-* Tespit edilebilir yüz boyutu aralığı 36 x 36 ila 4096 x 4096 pikseldir. Bu aralığın dışındaki yüzler algılanmayacak.
-* Bazı yüzler teknik zorluklar nedeniyle tespit edilemeyebilir. Aşırı yüz açıları (baş pozu) veya yüz tıkanıklığı (güneş gözlüğü veya yüzün bir kısmını engelleyen eller gibi nesneler) algılamayı etkileyebilir. Frontal ve yakın ön yüzler en iyi sonuçları verir.
+* Desteklenen giriş resim biçimleri JPEG, PNG, ilk çerçeve için GIF ve BMP.
+* Görüntü dosyası boyutu 4 MB 'tan büyük olmamalıdır.
+* Algılanabilir yüz boyut aralığı 36 x 36 ile 4096 x 4096 pikseldir. Bu aralığın dışındaki yüzler saptanmaz.
+* Teknik zorluk sorunları nedeniyle bazı yüzler algılanmayabilir. Aşırı yüz açıları (baş poz) veya yüz kapatma (yüz gözlüğü gibi nesneler) algılamayı etkileyebilir. En iyi ve yakın yüzler en iyi sonuçları verir.
 
-Bir video akışındaki yüzleri algılıyorsanız, video kameranızdaki belirli ayarları ayarlayarak performansı nızı artırabilirsiniz:
+Video akışından yüz tespit ediyorsanız, video kameranızdaki belirli ayarları ayarlayarak performansı artırabilirsiniz:
 
-* **Yumuşatma**: Birçok video kamera yumuşatma efekti uygular. Çerçeveler arasında bulanıklık oluşturduğundan ve netliği azalttığından, bunu kapatabiliyorsanız kapatmalısınız.
-* **Deklanşör Hızı**: Daha hızlı deklanşör hızı çerçeveler arasındaki hareket miktarını azaltır ve her kareyi daha net hale getirir. 1/60 saniye veya daha hızlı deklanşör hızlarını öneririz.
-* **Deklanşör Açısı**: Bazı kameralar deklanşör hızı yerine deklanşör açısını belirtir. Mümkünse daha düşük bir deklanşör açısı kullanmalısınız. Bu daha net video çerçeveleri neden olur.
+* **Yumuşatma**: birçok video kameraları bir yumuşatma efekti uygular. Çerçeveler arasında bulanıklaştırma oluşturup netliği azalttığından, bunu kapatmanız gerekir.
+* **Perde hızı**: daha hızlı bir perde hızı, kareler arasındaki hareket miktarını azaltır ve her çerçeveyi daha net hale getirir. 1/60 saniyelik veya daha hızlı bir şekilde perde hızını öneririz.
+* **Perde açısı**: bazı kameralar, perde hızı yerine perde açısını belirtir. Mümkünse, daha düşük bir perde açısı kullanmanız gerekir. Bu, daha net video çerçevelerine neden olur.
 
     >[!NOTE]
-    > Daha düşük deklanşör açısına sahip bir kamera her karede daha az ışık alır, böylece görüntü daha koyu olacaktır. Kullanmak için doğru düzeyi belirlemeniz gerekir.
+    > Aşağı perde açısı olan bir kamera her karede daha az ışık alır, bu nedenle görüntü daha koyu olur. Kullanılacak doğru düzeyi belirlemeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık yüz algılama kavramlarına aşina olduğunuza göre, belirli bir görüntüdeki yüzleri algılayan bir komut dosyasının nasıl yazIleceğini öğrenin.
+Yüz algılama kavramlarıyla ilgili bilgi sahibi olduğunuza göre, belirli bir görüntüde yüzeyleri algılayan bir komut dosyası yazmayı öğrenin.
 
 * [Bir görüntüdeki yüzleri algılama](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

@@ -1,33 +1,33 @@
 ---
-title: Sorun Giderme - Personalizer
-description: Bu makalede, Personalizer hakkında sık sorulan sorun giderme sorularının yanıtlarını içerir.
+title: Sorun giderme-kişiselleştirici
+description: Bu makale, kişiselleştirici hakkında sık sorulan sorun giderme sorularına yanıtlar içerir.
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
 ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80336025"
 ---
-# <a name="personalizer-troubleshooting"></a>Personalizer Sorun Giderme
+# <a name="personalizer-troubleshooting"></a>Kişiselleştirici sorunlarını giderme
 
-Bu makalede, Personalizer hakkında sık sorulan sorun giderme sorularının yanıtlarını içerir.
+Bu makale, kişiselleştirici hakkında sık sorulan sorun giderme sorularına yanıtlar içerir.
 
 ## <a name="transaction-errors"></a>İşlem hataları
 
 <details>
-<summary><b>Hizmetten bir HTTP 429 (Çok fazla istek) yanıtı alıyorum. Ne yapabilirim ki?</b></summary>
+<summary><b>Hizmetten bir HTTP 429 (çok fazla istek) yanıtı alıyorum. Ne yapabilirim?</b></summary>
 
-**Cevap**: Personalizer örneğini oluşturduğunuzda ücretsiz bir fiyat katmanı seçtiyseniz, izin verilen Rank isteklerinin sayısında bir kota sınırı vardır. Rank API için API çağrı oranınızı gözden geçirin (Personalizer kaynağınız için Azure portalındaki Ölçümler bölmesinde) ve çağrı hacminizin seçilen fiyatlandırma katmanı için eşiğin ötesine artması bekleniyorsa fiyatlandırma katmanını (Fiyatlandırma Katmanı bölmesinde) ayarlayın.
+**Cevap**: kişiselleştirici örneği oluşturduğunuzda ücretsiz bir fiyat katmanı oluşturduysanız, Izin verilen derecelendirme isteği sayısında bir kota sınırı vardır. Derecelendirme API 'SI için API çağrı hızınızı gözden geçirin (kişisel kaynağınız için Azure portal ölçümler bölmesinde) ve çağrı biriminiz seçili fiyatlandırma katmanı eşiğinin ötesinde artması bekleniyorsa fiyatlandırma katmanını (Fiyatlandırma Katmanı bölmesinde) ayarlayın.
 
 </details>
 
 <details>
-<summary><b>Ben Rank veya Ödül API'ler bir 5xx hata alıyorum. Ne yapmalıyım?</b></summary>
+<summary><b>Derecelendirmek veya yeniden geçirdim API 'Lerinde 5 xx hatası alıyorum. Ne yapmam gerekir?</b></summary>
 
-**Cevap**: Bu hususlar şeffaf olmalıdır. Devam ederlerse, Personalizer kaynağınız için Azure portalında **Destek + sorun giderme** bölümünde **yeni destek isteği** seçerek desteğe başvurun.
+**Cevap**: Bu sorunlar saydam olmalıdır. Devam ederse, kişiselleştirme kaynağınız için Azure portal **destek + sorun giderme** bölümünde **Yeni destek isteği** ' ni seçerek desteğe başvurun.
 
 </details>
 
@@ -35,85 +35,85 @@ Bu makalede, Personalizer hakkında sık sorulan sorun giderme sorularının yan
 
 <details>
 <summary>
-<b>Öğrenme döngüsü Personalizer olmadan sisteme% 100 maç elde etmez. Bunu nasıl düzeltebilirim?</b></summary>
+<b>Öğrenme döngüsü, kişiselleştirmeden sisteme %100 eşleşme karşılamıyor. Bu Nasıl yaparım? düzeltilsin mi?</b></summary>
 
-**Cevap**: Öğrenme döngüsü ile amacınıza ulaşamamanızın nedenleri:
+**Cevap**: öğrenme döngüsüyle amacınız ile ilgili bilgi verme nedenleri:
 * Rank API çağrısıyla gönderilen yeterli özellik yok
-* Gönderilen özelliklerdeki hatalar - zaman damgaları gibi toplu olmayan özellik verilerinin Rank API'sine gönderilmesi gibi
-* Döngü işleme hataları - örneğin ödüller api'sine etkinlikler için ödül verisi göndermeme
+* Gönderilen özelliklerde hatalar-derecelendirme API 'sine zaman damgaları gibi toplu olmayan özellik verileri gönderme
+* Olay için API 'leri yeniden almak için veri gönderme gibi döngü işleme içeren hatalar
 
-Düzeltmek için, döngüye gönderilen özellikleri değiştirerek işlemi değiştirmeniz veya ödülün Rank'ın yanıtının kalitesinin doğru bir değerlendirmesi olduğundan emin olmanız gerekir.
+Bu sorunu gidermek için, döngüye gönderilen özellikleri değiştirerek işlemeyi değiştirmeniz veya bir değerlendirmenin, derece yanıtının kalitesi için doğru bir değerlendirme olduğundan emin olmanız gerekir.
 
 </details>
 
 <details>
 <summary>
-<b>Öğrenme döngüsü öğrenmek için görünmüyor. Bunu nasıl düzeltebilirim?</b></summary>
+<b>Öğrenme döngüsü öğreniyor gibi görünüyor. Bu Nasıl yaparım? düzeltilsin mi?</b></summary>
 
-**Cevap**: Rank çağrıları etkin bir şekilde öncelik lendirmeden önce öğrenme döngüsübirkaç bin Ödül çağrısına ihtiyaç duyar.
+**Cevap**: öğrenme döngüsünün, derece çağrıları etkin bir şekilde önceliklendirilmesi için birkaç bin yeniden çağrısı gerekir.
 
-Öğrenme döngünüzün şu anda nasıl davrandığından emin değilseniz, [çevrimdışı bir değerlendirme](concepts-offline-evaluation.md)çalıştırın ve düzeltilmiş öğrenme ilkesini uygulayın.
-
-</details>
-
-<details>
-<summary><b>Ben tüm öğeler için tüm aynı olasılıklar ile rütbe sonuçları almaya devam. Personalizer'ın öğrendiğini nasıl bileceğim?</b></summary>
-
-**Cevap**: Personalizer, yeni başladı ve _boş_ bir modele sahip olduğunda veya Personalizer Loop'u sıyrırken ve modeliniz hala **Model güncelleştirme sıklık** döneminiz içinde olduğunda, Sıralama API sonucuyla aynı olasılıkları döndürür.
-
-Yeni güncelleştirme dönemi başladığında, güncelleştirilmiş model kullanılır ve olasılıkların değiştiğini görürsünüz.
+Öğrenme döngünüz Şu anda çalışır durumda olduğundan emin değilseniz, [çevrimdışı bir değerlendirme](concepts-offline-evaluation.md)çalıştırın ve düzeltilen öğrenme ilkesini uygulayın.
 
 </details>
 
 <details>
-<summary><b>Öğrenme döngüsü öğrenme ama artık öğrenmek değil gibi görünüyor, ve Rank sonuçlarının kalitesi o kadar iyi değil. Ne yapmalıyım?</b></summary>
+<summary><b>Tüm öğeler için aynı olasılıkların bulunduğu derece sonuçları almaya devam ediyorum. Kişiselleştirici öğreneceğimizi Nasıl yaparım? mı?</b></summary>
+
+**Cevap**: kişiselleştirici, yeni başlayan ve _boş_ bir MODELI olan bir derece API sonucu içindeki aynı olasılıkların sonucunu döndürür ya da kişiselleştirici döngüsünü sıfırladığınızda ve modeliniz hala **model güncelleştirme sıklığı** döneminizin içindeyse.
+
+Yeni güncelleştirme dönemi başladığında, güncelleştirilmiş model kullanılır ve bu da olasılıkların değişikliğini görürsünüz.
+
+</details>
+
+<details>
+<summary><b>Öğrenme döngüsü öğreniyor ancak artık bilgi vermiyor gibi görünüyor ve sıra sonuçlarının kalitesi iyi değil. Ne yapmam gerekir?</b></summary>
 
 **Cevap**:
-* Bu Personalizer kaynağı (öğrenme döngüsü) için Azure portalında bir değerlendirmeyi tamamladığınızdan ve uyguladığınıza emin olun.
-* Tüm ödüllerin Ödül API'si aracılığıyla gönderildiğinden ve işlendiğinden emin olun.
+* Bu kişiselleştirici kaynak (öğrenme döngüsü) için Azure portal bir değerlendirmeyi tamamladığınızdan ve uyguladığınızdan emin olun.
+* Tüm yeniden temeller, Reward API aracılığıyla gönderildiğinden ve işlendiğinizden emin olun.
 
 </details>
 
 
 <details>
-<summary><b>Öğrenme döngüsünün düzenli olarak güncelleştirilmekte olduğunu ve verilerimi puanlamak için kullanıldığını nasıl bilebilirim?</b></summary>
+<summary><b>Nasıl yaparım? öğrenme döngüsünün düzenli olarak güncelleştirildiğini ve verilerime puan vermek için kullanıldığını öğrenmek mi istiyorsunuz?</b></summary>
 
-**Cevap**: Modelin en son güncelleştirildiğinde Azure portalının **Model ve Öğrenme Ayarları** sayfasında bulabilirsiniz. Eski bir zaman damgası görürseniz, bunun nedeni büyük olasılıkla Rank ve Reward çağrılarını göndermediğinizdir. Hizmetin gelen verisi yoksa, öğrenmeyi güncelleştirmez. Öğrenme döngüsünün yeterince sık güncellenmediğini görürseniz, döngünün Model **Güncelleştirme sıklığını**güncelleyebilirsiniz.
+**Cevap**: Azure Portal model **ve öğrenme ayarları** sayfasında modelin en son ne zaman güncelleştirildiği saati bulabilirsiniz. Eski bir zaman damgası görürseniz, bu durum büyük olasılıkla derecelendirme ve yeniden çağrıları göndermemelidir. Hizmetin gelen verileri yoksa Öğrenimini güncelleştirmez. Öğrenme döngüsünün yeterince sık güncelleştirilmediğinden, döngünün **model güncelleştirme sıklığını**düzenleyebilirsiniz.
 
 </details>
 
 ## <a name="offline-evaluations"></a>Çevrimdışı değerlendirmeler
 
 <details>
-<summary><b>Çevrimdışı değerlendirmenin özelliğinin önemi, yüzlerce veya binlerce öğeiçeren uzun bir liste yi döndürür. Ne oldu?</b></summary>
+<summary><b>Çevrimdışı değerlendirme özelliğinin önem derecesi yüzlerce veya binlerce öğe içeren uzun bir liste döndürür. Ne oldu?</b></summary>
 
-**Cevap**: Bu genellikle zaman damgaları, kullanıcı iT'leri veya gönderilen diğer bazı ince taneli özellikler nedeniyle.
+**Cevap**: Bu, genellikle zaman damgalarının, kullanıcı kimliklerinin veya diğer bazı ayrıntılı özelliklerden kaynaklanır.
 
 </details>
 
 <details>
-<summary><b>Ben çevrimdışı bir değerlendirme oluşturdu ve neredeyse anında başarılı oldu. Neden bu? Sonuç bulamadım mı?</b></summary>
+<summary><b>Çevrimdışı bir değerlendirme oluşturdum ve neredeyse anında başarılı oldu. Neden? Hiç sonuç görmüyorum mi?</b></summary>
 
-**Cevap**: Çevrimdışı değerlendirme, o zaman dilimindeki olaylardan elde edilen eğitilen model verilerini kullanır. Değerlendirmenin başlangıç ve bitiş saati arasındaki zaman diliminde herhangi bir veri göndermediyseniz, herhangi bir sonuç olmadan tamamlanacaktır. Personalizer'a gönderildiğini bildiğiniz etkinliklerle bir zaman aralığı seçerek yeni bir çevrimdışı değerlendirme gönderin.
+**Cevap**: çevrimdışı değerlendirme, bu dönemdeki olaylardaki eğitilen model verilerini kullanır. Değerlendirmenin başlangıç ve bitiş saati arasındaki zaman diliminde herhangi bir veri göndermediyseniz, bu işlem herhangi bir sonuç olmadan tamamlanır. Kişiselleştirmede bildiğiniz bir olay ile zaman aralığı seçerek yeni bir çevrimdışı değerlendirme gönderebilirsiniz.
 
 </details>
 
 
-## <a name="learning-policy"></a>Öğrenme politikası
+## <a name="learning-policy"></a>Öğrenme ilkesi
 
 <details>
-<summary><b>Öğrenme politikasını nasıl içerim?</b></summary>
+<summary><b>Bir öğrenme ilkesini içeri Nasıl yaparım? mı?</b></summary>
 
-**Cevap**: [Öğrenme politikası kavramları](concept-active-learning.md#understand-learning-policy-settings) ve yeni bir öğrenme politikasının nasıl [uygulanacağı](how-to-manage-model.md) hakkında daha fazla bilgi edinin. Bir öğrenme ilkesi seçmek istemiyorsanız, geçerli olaylarınızı temel alan bir öğrenme ilkesi önermek için [çevrimdışı değerlendirmeyi](how-to-offline-evaluation.md) kullanabilirsiniz.
+**Cevap**: [öğrenme ilkesi kavramları](concept-active-learning.md#understand-learning-policy-settings) ve yeni bir öğrenme ilkesinin [nasıl uygulanacağı](how-to-manage-model.md) hakkında daha fazla bilgi edinin. Bir öğrenme ilkesi seçmek istemiyorsanız, geçerli olaylarınız temelinde bir öğrenme ilkesi önermek için [çevrimdışı değerlendirmeyi](how-to-offline-evaluation.md) kullanabilirsiniz.
 
 </details>
 
 ## <a name="security"></a>Güvenlik
 
 <details>
-<summary><b>Döngümün API anahtarı ele geçirildi. Ne yapabilirim ki?</b></summary>
+<summary><b>Döngülerimin API anahtarı tehlikeye geçti. Ne yapabilirim?</b></summary>
 
-**Cevap**: Müşterilerinizi diğer anahtarı kullanmak üzere değiştirdikten sonra bir anahtarı yeniden oluşturabilirsiniz. İki tuşa sahip olmak, herhangi bir kapalı kalma süresine sahip olmak zorunda kalmadan anahtarı tembel bir şekilde yaymanızı sağlar. Bunu bir güvenlik önlemi olarak normal bir döngüde yapmanızı öneririz.
+**Cevap**: istemcilerinizi diğer anahtarı kullanacak şekilde değiştirdikten sonra bir anahtarı yeniden oluşturabilirsiniz. İki anahtara sahip olmak, herhangi bir kesinti olması gerekmeden anahtarı geç bir biçimde yayalmanıza olanak sağlar. Bunu bir güvenlik önlemi olarak düzenli bir döngüde yapmanızı öneririz.
 
 </details>
 

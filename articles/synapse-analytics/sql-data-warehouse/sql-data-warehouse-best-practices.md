@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'teki Synapse SQL havuzu için en iyi uygulamalar (eski adıyla SQL DW)
-description: Azure Synapse Analytics'te (eski adıyla SQL DW) SQL havuzu için çözümler geliştirmek için öneriler ve en iyi uygulamalar.
+title: Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) SQL havuzu için çözüm geliştirmeye yönelik öneriler ve en iyi uygulamalar.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,15 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 4462bf0fc2057922340eb01cb8c786dbc63ce290
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745343"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics'teki Synapse SQL havuzu için en iyi uygulamalar (eski adıyla SQL DW)
+# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
 
-Bu makale, [SQL havuz](sql-data-warehouse-overview-what-is.md) dağıtımınızdan en iyi performansı elde etmenize yardımcı olacak en iyi uygulamalar topluluğudur.  Bu makalenin amacı, bazı temel rehberlik vermek ve odak önemli alanları vurgulamak.  
+Bu makale, [SQL havuzu](sql-data-warehouse-overview-what-is.md) dağıtımından en iyi performansı elde etmenize yardımcı olmak için en iyi uygulamalardan oluşan bir koleksiyondur.  Bu makalenin amacı, size bazı temel rehberlik sunmak ve odağın önemli bölümlerini vurgulayasağlamaktır.  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Duraklatma ve ölçeklendirme ile maliyetleri azaltın
 
@@ -27,24 +27,24 @@ Duraklatma ve ölçeklendirme aracılığıyla maliyetleri azaltma hakkında dah
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
 
-SQL havuzu, sütunlarda istatistikleri otomatik olarak algılamak ve oluşturmak için yapılandırılabilir.  En iyi duruma getirici tarafından oluşturulan sorgu planları yalnızca kullanılabilir istatistikler kadar iyidir.  
+SQL havuzu, sütunlarda istatistikleri otomatik olarak algılayacak ve oluşturulacak şekilde yapılandırılabilir.  İyileştirici tarafından oluşturulan sorgu planları yalnızca kullanılabilir istatistiklerle iyidir.  
 
-Veritabanlarınız için AUTO_CREATE_STATISTICS etkinleştirmenizi ve sorgularınızda kullanılan sütunlarla ilgili istatistiklerin her zaman güncel olduğundan emin olmak için istatistikleri her yükten sonra günlük olarak veya sonra güncel tutmanızı öneririz.
+Sorgularınızda kullanılan sütunlardaki istatistiklerin her zaman güncel olduğundan emin olmak için, veritabanlarınızda AUTO_CREATE_STATISTICS etkinleştirmenizi ve istatistiklerin her bir yükün her gün veya sonrasında güncelleştirilmesini öneririz.
 
-Tüm istatistiklerinizi güncelleştirmenin çok uzun sürdüğünü düşünüyorsanız, hangi sütunların sık istatistik güncelleştirmelerine ihtiyaç duyduğu konusunda daha seçici olmayı deneyebilirsiniz. Örneğin, yeni değer eklenme ihtimali olan tarih sütunlarını her gün güncelleştirmeyi tercih edebilirsiniz.
+Tüm istatistiklerinizin güncelleştirilmesi çok uzun sürüyor olduğunu fark ederseniz, hangi sütunların sık kullanılan istatistik güncelleştirmelerine ihtiyacı olduğunu daha seçmeli bir şekilde denemek isteyebilirsiniz. Örneğin, yeni değer eklenme ihtimali olan tarih sütunlarını her gün güncelleştirmeyi tercih edebilirsiniz.
 
 > [!TIP]
-> Birleştirmelerde yer alan sütunlar, WHERE yan tümcesi kullanılan sütunlar ve GROUP BY'de bulunan sütunlar hakkında güncelleştirilmiş istatistikler alarak en fazla faydayı elde eeceksiniz.
+> Birleşimlerde yer alan sütunlarda, grup tarafından bulunan WHERE yan tümcesinde ve sütunlarda kullanılan sütunlarda güncelleştirilmiş istatistikler bulundurarak en avantaja sahip olursunuz.
 
-Ayrıca bakınız [Tablo istatistiklerini yönetin,](sql-data-warehouse-tables-statistics.md) [İstATİstİkLER OLUŞTURUN](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [İstATİstİkLerİ GÜNCELLİr.](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+Ayrıca bkz. [tablo Istatistiklerini yönetme](sql-data-warehouse-tables-statistics.md), [Istatistik oluşturma](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [güncelleştirme istatistikleri](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Sorgularınızı izlemek ve iyileştirmek için DMV’leri kullanın
 
-SQL havuzunda sorgu yürütmesini izlemek için kullanılabilecek birkaç DMV vardır.  DMVs makalesini kullanarak iş yükünüzü izleyin, yürütme sorgusunun ayrıntılarına nasıl bakacağınıza ilişkin adım adım yönergeleri ayrıntılarıyla açıklar.  
+SQL havuzunda sorgu yürütmeyi izlemek için kullanılabilecek çeşitli DMVs vardır.  DMVs makalesini kullanarak iş yükünüzü Izleme ayrıntıları yürütülen bir sorgunun ayrıntılarına bakmak için adım adım yönergeler.  
 
 Bu DMV’lerdeki sorguları hızlıca bulmak için sorgularınızla LABEL seçeneğini kullanabilirsiniz.
 
-Ayrıca [bakınız DMVs,](sql-data-warehouse-manage-monitor.md) [LABEL](sql-data-warehouse-develop-label.md), [OPTION](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys.dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak iş yükünüzü izleyin.
+Ayrıca bkz. DMVs, [etiket](sql-data-warehouse-develop-label.md), [seçenek](/sql/t-sql/queries/option-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys. dm_exec_sessions](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sessions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [sys. dm_pdw_sql_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), sys. [dm_pdw_dms_workers](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [DBCC PDW_SHOWEXECUTIONPLAN](/sql/t-sql/database-console-commands/dbcc-pdw-showexecutionplan-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [kullanarak iş yükünüzü izleme](sql-data-warehouse-manage-monitor.md).
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>Yeni ürün geliştirmeleriyle sorgu performansını ayarlama
 
@@ -54,35 +54,35 @@ Ayrıca [bakınız DMVs,](sql-data-warehouse-manage-monitor.md) [LABEL](sql-data
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT deyimlerini gruplayın
 
-INSERT deyimi yle küçük bir tabloya tek seferlik yük veya hatta periyodik olarak yeniden yükleme gibi `INSERT INTO MyLookup VALUES (1, 'Type 1')`bir ifadeyle ihtiyaçlarınız için iyi bir performans gösterebilir.  
+Bir INSERT ifadesiyle küçük bir tabloya bir kerelik yükleme veya hatta bir aramanın düzenli olarak yeniden yüklenmesi, gereksinimlerinize göre gereksinimleriniz için iyi bir şekilde çalışabilir `INSERT INTO MyLookup VALUES (1, 'Type 1')`.  
 
 Ancak gün içinde binlerce veya milyonlarca satır yüklemeniz gerekiyorsa, ayrı ayrı INSERT deyimleri gerekli performansı göstermeyebilir.  Bunun yerine işlemlerinizi bir dosyaya yazılacağı ve başka bir işlemin belirli aralıklarla bu dosyayı yükleyeceği şekilde geliştirin.
 
-Ayrıca bakınız [INSERT](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Verileri hızlıca yüklemek ve dışarı aktarmak için PolyBase kullanın
 
-SQL havuzu, Azure Veri Fabrikası, PolyBase ve BCP gibi çeşitli araçlar aracılığıyla veri yüklemeyi ve dışa aktarmayı destekler.  Performansın yüksek öneme sahip olmadığı küçük miktarlardaki veriler için bu araçlardan herhangi birini kullanabilirsiniz.  Ancak, büyük hacimli verileri yüklerken veya dışarı aktarırken ya da yüksek performansa ihtiyaç duyduğunuzda, PolyBase en iyi çözüm olacaktır.  
+SQL havuzu Azure Data Factory, PolyBase ve BCP gibi çeşitli araçlarla verileri yüklemeyi ve vermeyi destekler.  Performansın yüksek öneme sahip olmadığı küçük miktarlardaki veriler için bu araçlardan herhangi birini kullanabilirsiniz.  Ancak, büyük hacimli verileri yüklerken veya dışarı aktarırken ya da yüksek performansa ihtiyaç duyduğunuzda, PolyBase en iyi çözüm olacaktır.  
 
-PolyBase, MPP (Massively Parallel Processing) mimarisinden yararlanmak üzere tasarlanmıştır ve veri büyüklüklerini diğer araçlardan daha hızlı yükleyecek ve dışa aktaracaktır.  PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir.  
+PolyBase, MPP (büyük ölçüde paralel Işleme) mimarisinden yararlanmak için tasarlanmıştır ve veri magnitudes diğer araçlardan daha hızlı yüklenip dışarı aktarır.  PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir.  
 
 > [!TIP]
 > CTAS, işlem günlüğünü en aza indiren ve verilerinizi en hızlı yükleyen seçenektir.
 
-Azure Veri Fabrikası ayrıca PolyBase yüklerini destekler ve CTAS ile benzer bir performans elde edebilir.  PolyBase, Gzip de dahil olmak üzere birçok dosya biçimi için destek sunar.  
+Azure Data Factory, PolyBase yüklerini da destekler ve CTAS olarak benzer performans elde edebilir.  PolyBase, Gzip de dahil olmak üzere birçok dosya biçimi için destek sunar.  
   
 > [!NOTE]
-> Gzip metin dosyalarını kullanırken elde etmeyi en üst düzeye çıkarmak için, yükünüzün paralelliğini en üst düzeye çıkarmak için dosyaları 60 veya daha fazla dosyaya ayırın.  Toplam hızı artırmak için verilerinizi aynı anda yükleyin.
+> Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak için, yüklerinizin paralelliğini en üst düzeye çıkarmak üzere dosyaları 60 veya daha fazla dosyaya bölün.  Toplam hızı artırmak için verilerinizi aynı anda yükleyin.
 
-Ayrıca [bkz. Veri Yükle](design-elt-data-loading.md), [PolyBase kullanmak için kılavuz](guidance-for-loading-data.md), SQL havuz yükleme [desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../), Azure Veri Fabrikası ile Veri [Yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), Azure Veri Fabrikası ile [veri taşıma](../../data-factory/transform-data-using-machine-learning.md), CREATE EXTERNAL FILE FORMAT , ve Select [(CTAS) olarak tablo](sql-data-warehouse-develop-ctas.md) [oluşturun](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [veri yükleme](design-elt-data-loading.md), [PolyBase kullanma kılavuzu](guidance-for-loading-data.md), [SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Azure Data Factory ile VERI yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), [Azure Data Factory verileri taşıma](../../data-factory/transform-data-using-machine-learning.md), [dış dosya biçimi oluşturma](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Dış tabloları önce yükleyip sonra sorgu çalıştırın
 
-Dış tablolar olarak da bilinen Polybase, veri yüklemenin en hızlı yolu olsa da sorgular için en iyi çözüm değildir. Polybase tabloları şu anda yalnızca Azure blob dosyalarını ve Azure Veri Gölü depolama alanını destekler. Bu dosyaları destekleyen herhangi bir işlem kaynağı yoktur.  
+Dış tablolar olarak da bilinen Polybase, veri yüklemenin en hızlı yolu olsa da sorgular için en iyi çözüm değildir. PolyBase tabloları Şu anda yalnızca Azure Blob dosyalarını ve Azure Data Lake depolamayı destekler. Bu dosyaları destekleyen herhangi bir işlem kaynağı yoktur.  
 
-Sonuç olarak, SQL havuzu bu işi boşaltamaz ve bu nedenle verileri okumak için tempdb'ye yükleyerek dosyanın tamamını okumalıdır.  Sonuç olarak bu veriler için birden fazla sorgunuz varsa, verileri bir kez yükleyip sorguların yerel tabloyu kullanmalarını sağlamak daha iyi olacaktır.
+Sonuç olarak, SQL havuzu bu çalışmanın yükünü devretmek ve bu nedenle verileri okumak için tempdb 'ye yükleyerek dosyanın tamamını okumalı olmalıdır.  Sonuç olarak bu veriler için birden fazla sorgunuz varsa, verileri bir kez yükleyip sorguların yerel tabloyu kullanmalarını sağlamak daha iyi olacaktır.
 
-Ayrıca [PolyBase kullanmak için Kılavuzu'na](guidance-for-loading-data.md)bakın.
+Ayrıca bkz. [PolyBase kullanma kılavuzu](guidance-for-loading-data.md).
 
 ## <a name="hash-distribute-large-tables"></a>Büyük tabloları karma olarak dağıtın
 
@@ -95,65 +95,65 @@ Sütuna göre dağıtılmış bir tablonun Hepsini Bir Kez Deneme tablosundan da
 > [!TIP]
 > Dağıtılmış bir tablo yüklenirken, yükleme işleminin yavaşlamaması için gelen verilerinizin dağıtım anahtarına göre sıralanmamış olduğundan emin olun.  
 
-Create TABLE ekstrenizin WITH yan tümcesinde dağıtılmış bir tablonun nasıl tanımlanabileceği ve dağıtılmış tablonun nasıl tanımlanabileceği hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın.
+Dağıtım sütununun nasıl seçileceği hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın ve CREATE TABLE deyimlerinizin WıTH yan tümcesinde dağıtılmış bir tablo tanımlayabilirsiniz.
 
-Ayrıca bakınız [Tablo genel bakış](sql-data-warehouse-tables-overview.md), Tablo [dağılımı](sql-data-warehouse-tables-distribute.md), Tablo dağılımı [nı seçme](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), TABLO [OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), SELECT OLARAK [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo dağıtımı](sql-data-warehouse-tables-distribute.md), [tablo DAĞıTıMı seçme](https://blogs.msdn.microsoft.com/sqlcat/20../../choosing-hash-distributed-table-vs-round-robin-distributed-table-in-azure-sql-dw-service/), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table seçme](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 
-Verileri bölümleme, bölüm değiştirme veya taramaları en iyi duruma geçirerek verilerinizi korumak için etkili olabilirken, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server'da iyi çalışabilecek yüksek parçalılık bölümleme stratejisi SQL havuzunda iyi çalışmayabilir.  
+Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde ayrıntı veren bir bölümlendirme stratejisi, SQL havuzunda iyi çalışmayabilir.  
 
-Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir.  Sql havuzunun arka planda verilerinizi sizin için 60 veritabanına bölümlediğini unutmayın, bu nedenle 100 bölümden bir tablo oluşturursanız, bu aslında 6000 bölümle sonuçlanır.  
+Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir.  Arka planda SQL havuzunun verilerinizi 60 veritabanlarına bölümleyip, 100 bölümden oluşan bir tablo oluşturursanız bu durum, 6000 bölümlerinde sonuçlanır.  
 
 Her iş yükü farklı olduğundan, en iyi yöntem deneme yanılma ile iş yükünüze en uygun bölümleme şeklini belirlemektir.  SQL Server’da kullandığınızdan daha az parça kullanmayı deneyin.  Örneğin, günlük bölümler yerine haftalık veya aylık bölümler kullanın.
 
-Ayrıca bakınız [Tablo bölümleme](sql-data-warehouse-tables-partition.md).
+Ayrıca bkz. [tablo bölümleme](sql-data-warehouse-tables-partition.md).
 
 ## <a name="minimize-transaction-sizes"></a>İşlem boyutları en aza indirin
 
 Bir işlemde çalışan INSERT, UPDATE ve DELETE deyimleri başarısız olduğunda gerçekleştirilen adımların geri alınması gerekir.  Uzun sürecek bir geri alma işlemi olasılığını en aza indirmek için işlem boyutlarını mümkün oldukça küçültün.  Bunu yapmak için INSERT, UPDATE ve DELETE deyimlerini parçalara ayırabilirsiniz.  
 
-Örneğin, mümkünse 1 saat sürmesini beklediğiniz bir INSERT'invarsa, INSERT'i her biri 15 dakika içinde çalışacak dört parçaya ayırın.  Geri alma riskini azaltmak için boş tablolara CTAS, TRUNCATE, DROP TABLE veya INSERT gibi özel Minimal Günlük kılıfları yararlanın.  
+Örneğin, 1 saat beklemeniz beklenen bir EKLEMEMENIZ varsa, her biri 15 dakika içinde çalışacak şekilde, EKLEMEYI dört parçaya bölün.  Geri alma riskini azaltmak için CTAS, TRUNCATE, DROP TABLE veya boş tablolara ekleme gibi çok az sayıda günlüğe kaydetme durumu özelliğinden yararlanın.  
 
-Geri alma işlemlerini ortadan kaldırmanın başka bir yöntemi de veri yönetimi için bölüm değiştirme gibi Yalnızca Meta Veri işlemlerini kullanmaktır.  Örneğin, order_date Ekim 2001'de olduğu tablodaki tüm satırları silmek için DELETE deyimi yürütmek yerine, verilerinizi aylık olarak bölümlerek ve ardından başka bir tablodan boş bir bölüm için verilerle bölümü değiştirebilirsiniz [(ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) örneklerine bakın).  
+Geri alma işlemlerini ortadan kaldırmanın başka bir yöntemi de veri yönetimi için bölüm değiştirme gibi Yalnızca Meta Veri işlemlerini kullanmaktır.  Örneğin, order_date Ekim 2001 ' de olduğu bir tablodaki tüm satırları silmek için bir DELETE deyimini yürütmek yerine, verilerinizi aylık olarak bölümleyebilir ve sonra bölümü başka bir tablodaki boş bir bölümün verileriyle geçirebilirsiniz (bkz. [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) örnekleri).  
 
-Bölümlenmemiş tablolar için DELETE kullanmak yerine tabloda tutmak istediğiniz verileri yazmak için CTAS kullanmayı düşünün.  Bir CTAS aynı miktarda zaman alıyorsa, en az işlem günlüğe kaydetmeye sahip olduğu ve gerekirse hızlı bir şekilde iptal edilebildiği için çalıştırmak çok daha güvenli bir işlemdir.
+Bölümlenmemiş tablolar için, SILME kullanmak yerine bir tabloda tutmak istediğiniz verileri yazmak üzere bir CTAS kullanmayı düşünün.  Bir CTAS aynı süre alırsa, en az işlem günlüğüne sahip olduğu için çalıştırılması çok daha güvenli bir işlemdir ve gerekirse hızlı bir şekilde iptal edilebilir.
 
-Ayrıca bakınız [Hareketleri Anlama](sql-data-warehouse-develop-transactions.md), Hareketleri [Optimize Etme](sql-data-warehouse-develop-best-practices-transactions.md), Tablo [bölümleme](sql-data-warehouse-tables-partition.md), [TRUNCATE TABLE](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), ALTER [TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), ve [Select (CTAS) olarak tablo oluşturun.](sql-data-warehouse-develop-ctas.md)
+Ayrıca bkz. [Işlemleri anlama](sql-data-warehouse-develop-transactions.md), [işlemleri iyileştirme](sql-data-warehouse-develop-best-practices-transactions.md), [tablo bölümleme](sql-data-warehouse-tables-partition.md), [truncate table](/sql/t-sql/statements/truncate-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
-## <a name="reduce-query-result-sizes"></a>Sorgu sonucu boyutlarını küçültme
+## <a name="reduce-query-result-sizes"></a>Sorgu sonuç boyutlarını azalt
 
-Bu adım, büyük sorgu sonucunun neden olduğu istemci tarafı sorunlarını önlemenize yardımcı olur.  Döndürülen satır sayısını azaltmak için sorgunuzu edinebilirsiniz. Bazı sorgu oluşturma araçları, her sorguya "üst N" sözdizimini eklemenize olanak sağlar.  Ayrıca, sorgu sonucunu geçici bir tabloya cetas olarak kullanabilir ve daha sonra alt düzey işleme için PolyBase dışa aktarımını kullanabilirsiniz.
+Bu adım büyük sorgu sonucundan kaynaklanan istemci tarafı sorunlarından kaçınmanıza yardımcı olur.  Döndürülen satır sayısını azaltmak için sorgunuzu düzenleyebilirsiniz. Bazı sorgu oluşturma araçları, her sorguya "ilk N" söz dizimini eklemenize olanak tanır.  Ayrıca sorgu sonucunu geçici bir tabloya CETAS ve sonra alt düzey işleme için PolyBase dışarı aktarmayı kullanabilirsiniz.
 
 ## <a name="use-the-smallest-possible-column-size"></a>Mümkün olan en küçük sütun boyutunu kullanın
 
-DDL'nizi tanımlarken, verilerinizi destekleyecek en küçük veri türünü kullanmak sorgu performansını artırır.  Bu yaklaşım özellikle CHAR ve VARCHAR sütunları için önemlidir.  
+DDL 'nizi tanımlarken, verilerinizi destekleyecek en küçük veri türü kullanılarak sorgu performansı iyileştirecektir.  Bu yaklaşım özellikle CHAR ve VARCHAR sütunları için önemlidir.  
 
 Bir sütundaki en uzun değer 25 karakterse, sütununuzu VARCHAR(25) olarak tanımlayın.  Tüm karakter sütunları için varsayılan uzunluk değeri olarak yüksek bir değer kullanmaktan kaçının.  Ayrıca, NVARCHAR şart değilse sütunları VARCHAR olarak tanımlayın.
 
-Ayrıca [bakınız Tablo genel bakış](sql-data-warehouse-tables-overview.md), [Tablo veri türleri](sql-data-warehouse-tables-data-types.md), [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [tablo veri türleri](sql-data-warehouse-tables-data-types.md), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="use-temporary-heap-tables-for-transient-data"></a>Geçiş verileri için geçici yığın tabloları kullanın
 
-Verileri geçici olarak indirdiğinizde, yığın tablosu kullanmanın genel işlemi daha hızlı hale getireceğini görebilirsiniz.  Verileri yalnızca daha fazla dönüştürme gerçekleştirmeden önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemekten çok daha hızlı olacaktır.  
+Geçici olarak veri giriş yaptığınızda, yığın tablosu kullanmanın genel işlemi daha hızlı hale getirir.  Verileri yalnızca daha fazla dönüştürme gerçekleştirmeden önce hazırlamak için yüklüyorsanız, tabloyu yığın tablosuna yüklemek verileri kümelenmiş bir columnstore tablosuna yüklemekten çok daha hızlı olacaktır.  
 
-Ayrıca verileri geçici bir tabloya yüklemek, tabloyu kalıcı bir depolama alanına yüklemekten çok daha hızlı gerçekleştirilecektir.  Geçici tablolar bir "#" ile başlar ve yalnızca onu oluşturan oturum tarafından erişilebilir, bu nedenle yalnızca sınırlı senaryolarda çalışabilirler.
+Ayrıca verileri geçici bir tabloya yüklemek, tabloyu kalıcı bir depolama alanına yüklemekten çok daha hızlı gerçekleştirilecektir.  Geçici tablolar bir "#" ile başlar ve yalnızca onu oluşturan oturum tarafından erişilebilir, bu nedenle yalnızca sınırlı senaryolarda çalışabilir.
 
 Yığın tabloları, CREATE TABLE deyiminin WITH yan tümcesinde tanımlanır.  Geçici tablo kullanıyorsanız, onun için de istatistik oluşturmayı unutmayın.
 
-Ayrıca bakınız [Geçici tablolar](sql-data-warehouse-tables-temporary.md), [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), SELECT OLARAK [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md), [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [Create Table seçin](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Kümelenmiş columnstore tablolarını iyileştirin
 
-Kümelenmiş sütun deposu dizinleri, verilerinizi SQL havuzunda depolamanın en etkili yollarından biridir.  Varsayılan olarak, SQL havuzundaki tablolar Clustered ColumnStore olarak oluşturulur.  Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  
+Kümelenmiş columnstore dizinleri, verilerinizi SQL havuzunda depolayabilmeniz için en etkili yöntemlerle biridir.  Varsayılan olarak, SQL havuzundaki tablolar kümelenmiş ColumnStore olarak oluşturulur.  Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  
 
-Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla ölçülebilir.  Kümelenmiş sütun deposu tabloları için segment kalitesini algılama ve iyileştirme yle ilgili adım adım yönergeler için [Tablo dizinleri](sql-data-warehouse-tables-index.md) makalesinde [zayıf sütun deposu dizin kalitesinin nedenleri'ne](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) bakın.  
+Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla ölçülebilir.  Kümelenmiş columnstore tabloları için segment kalitesini algılamaya ve geliştirmeye yönelik adım adım yönergeler için [tablo dizinleri](sql-data-warehouse-tables-index.md) makalesindeki [kötü columnstore dizin kalitesinin nedenleri](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) bölümüne bakın.  
 
-Yüksek kaliteli sütun deposu segmentleri önemli olduğundan, veri yüklemek için orta veya büyük kaynak sınıfında bulunan kullanıcı sözcülerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerini](what-is-a-data-warehouse-unit-dwu-cdwu.md) kullanmak, yükleme kullanıcınıza daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
+Yüksek kaliteli columnstore kesimleri önemli olduğundan, verileri yüklemek için orta veya büyük kaynak sınıfında bulunan Kullanıcı kimliklerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) kullanılması, yükleme kullanıcıya daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
 
-Sütun deposu tabloları genellikle tablo başına 1 milyondan fazla satır olana ve her SQL bilardo tablosu 60 tabloya bölünene kadar sıkıştırılmış sütun mağazası segmentine veri itmediğinden, sütun lu tablolar tablo60 milyondan fazla satır olmadığı sürece sorgudan yararlanamaz.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
+Columnstore tabloları, tablo başına 1.000.000 ' den fazla satır olmadığı ve her bir SQL havuzu tablosu 60 tablo olarak bölümlenene kadar genellikle verileri sıkıştırılmış bir columnstore kesimine yerleştirmediği için, bir Thumb kuralı olarak, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip değildir.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
 
-Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  Bir tabloda 100 bölüm varsa, kümelenmiş sütun deposundan (60 dağılım *100 bölüm 1* milyon satır) yararlanmak için en az 6 milyar satır olması gerekir.  
+Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  Bir tabloda 100 bölüm varsa, kümelenmiş bir sütun deposundan faydalanmak için en az 6.000.000.000 satıra sahip olması gerekir (60 dağıtımları *100 bölümleri* 1.000.000 satırları).  
 
 Bu örnekte tablonuzda 6 milyar satır yoksa, bölüm sayısını azaltabilir veya yığın tablo kullanabilirsiniz.  Deneme yaparak columnstore tablosu yerine ikincil dizine sahip yığın tablo ile daha iyi performans elde edip etmeyeceğinizi görebilirsiniz.
 
@@ -164,24 +164,24 @@ Ayrıca bkz. [Tablo dizinleri](sql-data-warehouse-tables-index.md), [Columnstore
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Sorgu performansını artırmak için daha büyük kaynak sınıfı kullanın
 
-SQL havuzu, bellekleri sorgulara ayırmanın bir yolu olarak kaynak gruplarını kullanır.  Kutunun dışında, tüm kullanıcılar dağıtım başına 100 MB bellek veren küçük kaynak sınıfına atanır.  Her zaman 60 dağıtım olduğundan ve her dağıtıma en az 100 MB verildiğinden, sistem genelinde ayrılan bellek toplam 6000 MB (yaklaşık 6 GB) olur.  
+SQL havuzu, kaynak gruplarını sorgulara bellek ayırmak için bir yol olarak kullanır.  Kullanıma hazır olan tüm kullanıcılar, dağıtım başına 100 MB bellek veren küçük kaynak sınıfına atanır.  Her zaman 60 dağıtım olduğundan ve her dağıtıma en az 100 MB verildiğinden, sistem genelinde ayrılan bellek toplam 6000 MB (yaklaşık 6 GB) olur.  
 
-Büyük birleştirmeler veya kümelenmiş columnstore tablolarına yapılan yüklemeler gibi belirli sorgulara daha fazla bellek atanır.  Bazı sorgular, saf taramalar gibi, hiçbir yararı sağlayacaktır.  Ancak, daha büyük kaynak sınıflarını kullanmak eşzamanlılığı azaltır, bu nedenle tüm kullanıcılarınızı büyük bir kaynak sınıfına taşımadan önce bu etkiyi göz önünde bulundurmak isteyeceksiniz.
+Büyük birleştirmeler veya kümelenmiş columnstore tablolarına yapılan yüklemeler gibi belirli sorgulara daha fazla bellek atanır.  Saf taramalar gibi bazı sorgular hiçbir avantaj vermez.  Ancak, daha büyük kaynak sınıfları kullanmak eşzamanlılık azaltır, bu nedenle tüm kullanıcılarınızı büyük bir kaynak sınıfına taşımadan önce bu etkiyi göz önünde bulundurmanız gerekir.
 
-Ayrıca iş [yükü yönetimi için Kaynak sınıfları'na](resource-classes-for-workload-management.md)bakın.
+Ayrıca bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md).
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>Eşzamanlılığı artırmak için daha küçük kaynak sınıfı kullanın
 
-Kullanıcı sorgularının uzun bir gecikmeye sahip olduğunu fark ederseniz, kullanıcılarınızın daha büyük kaynak sınıflarında çalışıyor olması ve diğer sorguların sıraya alınmasına neden olan çok sayıda eşzamanlılık yuvası tüketiyor olması olabilir.  Kullanıcı sorgularının kuyrukta olup olmadığını görmek için `SELECT * FROM sys.dm_pdw_waits` çalıştırıp dönen satırlara bakın.
+Kullanıcı sorgularının uzun bir gecikme olduğunu fark ederseniz, kullanıcılarınız daha büyük kaynak sınıflarında çalışıyor ve diğer sorguların sıraya çıkmasına neden olan birçok eşzamanlılık yuvası kullanıyor olabilir.  Kullanıcı sorgularının kuyrukta olup olmadığını görmek için `SELECT * FROM sys.dm_pdw_waits` çalıştırıp dönen satırlara bakın.
 
-Ayrıca [bkz. İş yükü yönetimi için kaynak sınıfları](resource-classes-for-workload-management.md), [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ayrıca bkz. [iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md), [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="other-resources"></a>Diğer kaynaklar
 
 Genel sorunlar ve çözümleri için [Sorun giderme](sql-data-warehouse-troubleshoot.md) makalemizi de inceleyin.
 
-Bu makalede aradığınızı bulamadıysanız, Azure Synapse belgelerinin tümlerinde arama yapmak için bu sayfanın sol tarafındaki "Doküman Ara"yı kullanmayı deneyin.  [Azure Synapse Forumu,](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) diğer kullanıcılara ve Azure Synapse Ürün Grubu'na soru göndermeniz gereken bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
+Bu makalede aradığınızı bulamazsanız, tüm Azure SYNAPSE belgelerini aramak için bu sayfanın sol tarafındaki "belgeleri ara" seçeneğini kullanmayı deneyin.  [Azure SYNAPSE Forumu](https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse) , diğer kullanıcılara ve Azure SYNAPSE ürün grubuna soru göndermek için kullanabileceğiniz bir yerdir. Sorularınızın diğer kullanıcılar veya ekibimiz tarafından yanıtlandığından emin olmak için bu forumu sürekli takip ediyoruz.  
 
-Stack Taşma ile ilgili sorularınızı sormayı tercih ederseniz, [bir Azure Synapse Stack Overflow Forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)da var.
+Stack Overflow sorularınızı sormak isterseniz, [Azure Synapse Stack Overflow Forumumuzu](https://stackoverflow.com/questions/tagged/azure-sqldw)da sunuyoruz.
 
-Özellik isteklerinde bulunmak için lütfen [Azure Synapse Geri Bildirim](https://feedback.azure.com/forums/307516-sql-data-warehouse) sayfasını kullanın.  İsteklerinizi eklemeniz veya diğer istekleri oylamanız, özellikleri önceliklendirme konusunda bize yardımcı olmaktadır.
+Özellik istekleri yapmak için lütfen [Azure SYNAPSE geri bildirim](https://feedback.azure.com/forums/307516-sql-data-warehouse) sayfasını kullanın.  İsteklerinizi eklemeniz veya diğer istekleri oylamanız, özellikleri önceliklendirme konusunda bize yardımcı olmaktadır.

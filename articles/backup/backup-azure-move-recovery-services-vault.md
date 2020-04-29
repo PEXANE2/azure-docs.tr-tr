@@ -1,114 +1,114 @@
 ---
-title: Azure Yedekleme Kurtarma Hizmetleri kasaları nasıl taşınır?
-description: Kurtarma hizmetlerinin Azure abonelikleri ve kaynak gruplarında nasıl taşınacağına ilişkin talimatlar.
+title: Azure Backup kurtarma hizmetleri kasalarını taşıma
+description: Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma yönergeleri.
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804427"
 ---
-# <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasının Azure Abonelikleri ve Kaynak Grupları arasında taşınması
+# <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Kurtarma Hizmetleri kasasını Azure abonelikleri ve kaynak grupları arasında taşıma
 
-Bu makalede, Azure Yedekleme için yapılandırılan bir Kurtarma Hizmetleri kasasının Azure abonelikleri arasında veya aynı abonelikteki başka bir kaynak grubuna nasıl taşınır. Kurtarma Hizmetleri kasasını taşımak için Azure portalını veya PowerShell'i kullanabilirsiniz.
+Bu makalede, Azure abonelikleri arasında Azure Backup için yapılandırılmış bir kurtarma hizmetleri kasasının veya aynı abonelikteki başka bir kaynak grubunda nasıl taşınacağı açıklanır. Kurtarma Hizmetleri kasasını taşımak için Azure portal veya PowerShell kullanabilirsiniz.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-Kurtarma Hizmetleri kasası için kaynak hareketi Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Kuzey Orta ABD, Doğu ABD, Doğu ABD, Güney Orta ABD, Güney Orta ABD, Batı Orta ABD, Batı ABD, Batı ABD, Batı ABD, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore Orta, Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey desteklenir , Güney Afrika Batı, İngiltere Güney ve İngiltere Batı.
+Kurtarma Hizmetleri Kasası için kaynak taşıma Avustralya Doğu, Avustralya Güney Doğu, Kanada Orta, Kanada Doğu, Güney Doğu Asya, Doğu Asya, Orta ABD, Orta Kuzey ABD, Doğu ABD, Doğu ABD2, Güney Orta ABD, Orta Batı ABD, Batı orta ABD2, Batı ABD, Orta Hindistan, Güney Hindistan, Japonya Doğu, Japonya Batı, Kore orta, Kore Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Kuzey , Güney Afrika Batı, UK Güney ve UK Batı.
 
 ## <a name="unsupported-regions"></a>Desteklenmeyen bölgeler
 
-Fransa Merkez, Fransa Güney, Almanya Kuzeydoğu, Almanya Merkez, ABD Gov Iowa, Çin Kuzey, Çin Kuzey2, Çin Doğu, Çin Doğu2
+Fransa Orta, Fransa Güney, Almanya Kuzeydoğu, Almanya Orta, US Gov Iowa, Çin Kuzey, Çin North2, Çin Doğu, Çin Doğu2
 
-## <a name="prerequisites-for-moving-recovery-services-vault"></a>Kurtarma Hizmetleri kasasının taşınması için ön koşullar
+## <a name="prerequisites-for-moving-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını taşımaya yönelik önkoşullar
 
-- Kaynak grupları arasında kasa taşıma sırasında, hem kaynak hem de hedef kaynak grupları kilitlenerek yazma ve silme işlemlerini engeller. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
-- Yalnızca yönetici aboneliği, kasa taşıma izinlerine sahiptir.
-- Kasaları abonelikler arasında taşımak için, hedef aboneliğin kaynak abonelikle aynı kiracıda olması ve durumunun etkinleştirilmesi gerekir.
-- Hedef kaynak grubunda yazma işlemleri gerçekleştirmek için izniniz olmalıdır.
-- Kasanın taşınması yalnızca kaynak grubunu değiştirir. Kurtarma Hizmetleri kasası aynı yerde ikamet edecek ve değiştirilemez.
-- Bölge başına aynı anda yalnızca bir Kurtarma Hizmetleri kasası taşıyabilirsiniz.
-- Bir VM, abonelikler arasında Kurtarma Hizmetleri kasasıyla veya yeni bir kaynak grubuna taşımazsa, geçerli VM kurtarma noktaları süresi dolana kadar kasada bozulmadan kalır.
-- VM kasayla taşınsa da taşınmasa da, VM'yi kasadaki yedek geçmişinden her zaman geri yükleyebilirsiniz.
-- Azure Disk Şifrelemesi, anahtar kasasının ve VM'lerin aynı Azure bölgesinde ve abonelikte ikamet ettiğini gerektirir.
-- Yönetilen disklerle sanal bir makineyi taşımak için bu [makaleye](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)bakın.
-- Klasik model de dağıtılan kaynakları taşıma seçenekleri, kaynakları abonelik içinde mi yoksa yeni bir aboneye mi taşıyor sanız değişir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
-- Kasa için tanımlanan yedekleme ilkeleri, kasa abonelikler arasında veya yeni bir kaynak grubuna geçtikten sonra korunur.
-- IaaS VM'lerde Azure Dosyaları, Azure Dosya Eşitlemi veya SQL ile kasaların abonelikler ve kaynak grupları arasında taşınması desteklenmez.
-- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, yedeklemelere devam etmek için VM'lerinizi aynı aboneliğe taşımanız ve aynı hedef VM kaynak grup adını (eski abonelikte olduğu gibi) kullanmanız gerekir.
+- Kaynak grupları arasında kasa taşıma sırasında, hem kaynak hem de hedef kaynak grupları, yazma ve silme işlemlerini önleyecek şekilde kilitlidir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
+- Yalnızca yönetici aboneliğinin bir kasayı taşıma izinleri vardır.
+- Kasaların abonelikler arasında taşınması için, hedef aboneliğin kaynak abonelikle aynı kiracıda bulunması ve durumunun etkinleştirilmesi gerekir.
+- Hedef kaynak grubunda yazma işlemleri gerçekleştirmek için izninizin olması gerekir.
+- Kasanın taşınması yalnızca kaynak grubunu değiştirir. Kurtarma Hizmetleri Kasası aynı konumda yer alacak ve değiştirilemez.
+- Tek seferde her bölge için yalnızca bir kurtarma hizmetleri Kasası taşıyabilirsiniz.
+- Bir VM, aboneliklerdeki kurtarma hizmetleri kasasıyla veya yeni bir kaynak grubuna taşınmazsa, geçerli VM kurtarma noktaları, süreleri dolana kadar kasada değişmeden kalır.
+- VM 'nin kasayla taşınıp taşınmadığı veya değil, VM 'yi her zaman kasadaki Korunan yedekleme geçmişinden geri yükleyebilirsiniz.
+- Azure disk şifrelemesi, anahtar kasasının ve VM 'Lerin aynı Azure bölgesinde ve abonelikte bulunmasını gerektirir.
+- Bir sanal makineyi yönetilen disklere taşımak için, bu [makaleye](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/)bakın.
+- Klasik model aracılığıyla dağıtılan kaynakları taşımaya yönelik seçenekler, kaynakları bir abonelik içinde veya yeni bir aboneliğe taşıdığınıza bağlı olarak farklılık gösterir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)bakın.
+- Kasa için tanımlanan yedekleme ilkeleri, kasalardan abonelikler arasında veya yeni bir kaynak grubuna taşındıktan sonra tutulur.
+- Vakaults 'Leri abonelikler ve kaynak grupları arasında IaaS VM 'lerinde Azure dosyaları, Azure Dosya Eşitleme veya SQL ile taşıma desteklenmez.
+- VM yedekleme verilerini içeren bir kasayı abonelikler arasında taşırsanız, sanal makinelerinizi aynı aboneliğe taşımanız ve yedeklemeleri sürdürmek için aynı hedef VM kaynak grubu adını (eski abonelikte olduğu gibi) kullanmanız gerekir.
 
 > [!NOTE]
-> Azure Yedekleme için Kurtarma Hizmetleri kasalarını Azure bölgelerine taşımak desteklenmez.<br><br>
-> **Azure Site Kurtarma'yı**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makineleri yapılandırmışsanız, taşıma işlemi engellenir. Azure Site Kurtarma için kasaları taşımak istiyorsanız, tonozları el ile taşıma hakkında bilgi edinmek için [bu makaleyi](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) inceleyin.
+> Azure bölgeleri arasında Azure Backup için kurtarma hizmetleri kasalarının taşınması desteklenmez.<br><br>
+> **Azure Site Recovery**kullanarak olağanüstü durum kurtarma için herhangi bir VM (Azure IaaS, Hyper-V, VMware) veya fiziksel makine yapılandırdıysanız taşıma işlemi engellenir. Azure Site Recovery için kasa taşımak istiyorsanız, kasaların el ile taşınmasını öğrenmek için [Bu makaleyi](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) gözden geçirin.
 
-## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portalını kullanma
+## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Kurtarma Hizmetleri kasasını farklı kaynak grubuna taşımak için Azure portal kullanın
 
-Kurtarma hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için
-
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Kurtarma Hizmetleri **kasalarının** listesini açın ve taşımak istediğiniz tonoz'u seçin. Kasa panosu açıldığında, aşağıdaki resimde gösterildiği gibi görünür.
-
-   ![Açık Kurtarma Hizmet Kasası](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
-
-   Kasanızın **Essentials** bilgilerini görmüyorsanız açılır simgeyi tıklatın. Şimdi kasanız için Essentials bilgilerini görmelisiniz.
-
-   ![Temel Bilgiler sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
-
-3. Kasagenel bakış menüsünde, **Kaynakları Taşı** bakışını açmak için **Kaynak grubunun**yanındaki **değiştir'i** tıklatın.
-
-   ![Kaynak Grubunu Değiştir](./media/backup-azure-move-recovery-services/change-resource-group.png)
-
-4. Kaynakları **Taşı** bıçağında, seçili kasa için aşağıdaki resimde gösterildiği gibi onay kutusunu seçerek isteğe bağlı ilgili kaynakları taşıması önerilir.
-
-   ![Aboneliği Taşı](./media/backup-azure-move-recovery-services/move-resource.png)
-
-5. Hedef kaynak grubunu eklemek için, **Kaynak grubu** açılır listesinde varolan bir kaynak grubu seçin veya yeni bir grup seçeneği **oluştur'u** tıklatın.
-
-   ![Kaynak Oluşturma](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
-
-6. Kaynak grubunu ekledikten sonra, **taşınan kaynaklarla ilişkili araçların ve komut dosyalarının, yeni kaynak tanımları seçeneğini kullanmak üzere bunları güncelleştirene kadar çalışmayacağını anladığımı** ve kasayı taşımayı tamamlamak için **Tamam'ı** tıklatın.
-
-   ![Onay Mesajı](./media/backup-azure-move-recovery-services/confirmation-message.png)
-
-## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Kurtarma Hizmetleri kasasını farklı bir aboneye taşımak için Azure portalını kullanın
-
-Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneye taşıyabilirsiniz
+Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı kaynak grubuna taşımak için
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz tonoz'u seçin. Kasa panosu açıldığında, aşağıdaki resimde gösterildiği gibi görünür.
+2. **Kurtarma Hizmetleri kasalarının** listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
 
-    ![Açık Kurtarma Hizmet Kasası](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Kasanızın **Essentials** bilgilerini görmüyorsanız açılır simgeyi tıklatın. Şimdi kasanız için Essentials bilgilerini görmelisiniz.
+   Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeye tıklayın. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
 
-    ![Temel Bilgiler sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Kasagenel bakış menüsünde, **Kaynakları Taşı** bakışını açmak için **Abonelik'in**yanındaki **değiştir'i** tıklatın.
+3. Kasa genel bakış menüsünde, **kaynak grubu**' nun yanındaki **Değiştir** ' e tıklayarak **kaynakları taşı** dikey penceresini açın.
+
+   ![Kaynak grubunu değiştir](./media/backup-azure-move-recovery-services/change-resource-group.png)
+
+4. **Kaynakları taşı** dikey penceresinde, seçili kasa için, aşağıdaki görüntüde gösterildiği gibi onay kutusunu seçerek isteğe bağlı ilişkili kaynakları taşımanız önerilir.
+
+   ![Aboneliği taşı](./media/backup-azure-move-recovery-services/move-resource.png)
+
+5. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğine tıklayın.
+
+   ![Kaynak oluştur](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+
+6. Kaynak grubu eklendikten sonra, **taşınan kaynaklarla ilişkili araçların ve betiklerin yeni kaynak kimlikleri seçeneği kullanılarak güncelleştirene** ve ardından kasayı taşımayı tamamlaması için **Tamam** ' a tıkladığımda emin olun.
+
+   ![Onay Iletisi](./media/backup-azure-move-recovery-services/confirmation-message.png)
+
+## <a name="use-azure-portal-to-move-recovery-services-vault-to-a-different-subscription"></a>Kurtarma Hizmetleri kasasını farklı bir aboneliğe taşımak için Azure portal kullanma
+
+Kurtarma Hizmetleri kasasını ve ilişkili kaynaklarını farklı bir aboneliğe taşıyabilirsiniz
+
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+2. Kurtarma Hizmetleri kasalarının listesini açın ve taşımak istediğiniz kasayı seçin. Kasa panosu açıldığında, aşağıdaki görüntüde gösterildiği gibi görünür.
+
+    ![Kurtarma hizmeti kasasını aç](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+
+    Kasanızın **Essentials** bilgilerini görmüyorsanız açılan simgeye tıklayın. Artık kasanızın temel bilgileri bilgisini görmeniz gerekir.
+
+    ![Essentials bilgi sekmesi](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+
+3. Kasa genel bakış menüsünde, **abonelik**' ın yanındaki **Değiştir** ' e tıklayarak **kaynakları taşı** dikey penceresini açın.
 
    ![Aboneliği Değiştir](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
-4. Taşınacak kaynakları seçin, burada listelenen tüm isteğe bağlı kaynakları seçmek için **Tümünü Seç** seçeneğini kullanmanızı öneririz.
+4. Taşınacak kaynakları seçin, burada, listelenen tüm isteğe bağlı kaynakları seçmek için **Tümünü Seç** seçeneğini kullanmanızı öneririz.
 
-   ![kaynağı taşıma](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![kaynağı taşı](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
-5. Kasanın taşınmasını istediğiniz **Abonelik** açılır listesinden hedef aboneliği seçin.
-6. Hedef kaynak grubunu eklemek için, **Kaynak grubu** açılır listesinde varolan bir kaynak grubu seçin veya yeni bir grup seçeneği **oluştur'u** tıklatın.
+5. Kasanın taşınmasını istediğiniz **abonelik** açılır listesinden hedef aboneliği seçin.
+6. Hedef kaynak grubunu eklemek için, **kaynak grubu** açılır listesinde var olan bir kaynak grubunu seçin veya **Yeni grup oluştur** seçeneğine tıklayın.
 
    ![Azure](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. **Taşınan kaynaklarla ilişkili araçların ve komut dosyalarının, onaylamak için yeni kaynak iD'leri seçeneğini kullanmak üzere güncelleştirene kadar çalışmayacağını ve** ardından **Tamam'ı**tıklatın.
+7. **Taşınan kaynaklarla ilişkili araçların ve betiklerin, onaylamak üzere yeni kaynak kimlikleri seçeneğini kullanacak şekilde güncelleştirene kadar çalışmayacaktır** ve ardından **Tamam**' a tıklayın.
 
 > [!NOTE]
-> Çapraz abonelik yedeklemesi (RS kasası ve korumalı VM'ler farklı aboneliklerdedir) desteklenen bir senaryo değildir. Ayrıca, depolama artıklığı seçeneği yerel yedekdepolama (LRS) küresel yedekli depolama (GRS) ve tam tersi kasa taşıma işlemi sırasında değiştirilemez.
+> Çapraz abonelik yedeklemesi (RS kasası ve korunan VM 'Ler farklı aboneliklerde) desteklenen bir senaryo değildir. Ayrıca, yerel yedekli depolama (LRS) ile global olarak yedekli depolama (GRS) arasında depolama artıklığı seçeneği ve tam tersi de kasa taşıma işlemi sırasında değiştirilemez.
 >
 >
 
-## <a name="use-powershell-to-move-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını taşımak için PowerShell'i kullanın
+## <a name="use-powershell-to-move-recovery-services-vault"></a>PowerShell kullanarak kurtarma hizmetleri kasasını taşıma
 
-Kurtarma Hizmetleri kasasını başka bir kaynak `Move-AzureRMResource` grubuna taşımak için cmdlet'i kullanın. `Move-AzureRMResource`kaynak adını ve kaynak türünü gerektirir. Her ikisini de `Get-AzureRmRecoveryServicesVault` cmdlet'ten alabilirsiniz.
+Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için `Move-AzureRMResource` cmdlet 'ini kullanın. `Move-AzureRMResource`Kaynak adı ve kaynak türü gerektirir. `Get-AzureRmRecoveryServicesVault` Cmdlet 'ten her ikisini de alabilirsiniz.
 
 ```powershell
 $destinationRG = "<destinationResourceGroupName>"
@@ -116,31 +116,31 @@ $vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <
 Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Kaynakları farklı abonelik lere taşımak `-DestinationSubscriptionId` için parametreyi ekleyin.
+Kaynakları farklı aboneliğe taşımak için `-DestinationSubscriptionId` parametresini ekleyin.
 
 ```powershell
 Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
-Yukarıdaki cmdlets çalıştırdıktan sonra, belirtilen kaynakları taşımak istediğinizi onaylamak için istenir. Onaylamak için **Y** yazın. Başarılı bir doğrulamadan sonra kaynak taşınır.
+Yukarıdaki cmdlet 'leri yürüttükten sonra, belirtilen kaynakları taşımak istediğinizi onaylamanız istenir. Onaylamak için **Y** yazın. Başarılı bir doğrulamadan sonra kaynak hareketlenir.
 
-## <a name="use-cli-to-move-recovery-services-vault"></a>Kurtarma Hizmetleri kasasını taşımak için CLI'yi kullanın
+## <a name="use-cli-to-move-recovery-services-vault"></a>CLı kullanarak kurtarma hizmetleri kasasını taşıma
 
-Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için aşağıdaki cmdlet'i kullanın:
+Kurtarma Hizmetleri kasasını başka bir kaynak grubuna taşımak için aşağıdaki cmdlet 'i kullanın:
 
 ```azurecli
 az resource move --destination-group <destinationResourceGroupName> --ids <VaultResourceID>
 ```
 
-Yeni bir aboneye geçmek `--destination-subscription-id` için parametreyi sağlayın.
+Yeni bir aboneliğe geçmek için `--destination-subscription-id` parametresini sağlayın.
 
 ## <a name="post-migration"></a>Geçiş sonrası
 
-1. Kaynak gruplarının erişim denetimlerini ayarlayın/doğrulayın.  
-2. Yedekleme raporlama ve izleme özelliğinin, taşımanın tamamlanabilmesi için kasa gönderimi için yeniden yapılandırılması gerekir. Önceki yapılandırma taşıma işlemi sırasında kaybolur.
+1. Kaynak grupları için erişim denetimlerini ayarlayın/doğrulayın.  
+2. Taşıma işlemi tamamlandığında, yedekleme raporlama ve izleme özelliğinin yeniden yapılandırılması gerekir. Taşıma işlemi sırasında önceki yapılandırma kaybedilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak grupları ve abonelikler arasında birçok farklı kaynak türü taşıyabilirsiniz.
+Kaynak grupları ve abonelikler arasında birçok farklı kaynak türünü taşıyabilirsiniz.
 
 Daha fazla bilgi için bkz. [Kaynakları yeni kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).

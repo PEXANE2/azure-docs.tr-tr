@@ -1,36 +1,36 @@
 ---
 title: Uzamsal sorgular
-description: Sahnede uzamsal sorgular nasıl yapılır?
+description: Sahnede uzamsal sorgular yapma
 author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680537"
 ---
 # <a name="spatial-queries"></a>Uzamsal sorgular
 
-Uzamsal sorgular, bir alanda hangi nesnelerin bulunduğu uzaktan işleme hizmetine sorabileceğiniz işlemlerdir. Uzamsal sorgular, kullanıcının işaret ettiği nesneyi bulmak gibi etkileşimleri uygulamak için sıklıkla kullanılır.
+Uzamsal sorgular, uzaktan işleme hizmetine hangi nesnelerin bir alanda konumlandırılabilir olduğunu sorabileceğiniz işlemlerdir. Uzamsal sorgular sıklıkla bir kullanıcının işaret ettiği nesneyi bulmak gibi etkileşimleri uygulamak için kullanılır.
 
-Tüm uzamsal sorgular sunucuda değerlendirilir. Sonuç olarak bunlar eşzamanlı işlemlerdir ve sonuçlar ağınızın gecikme durumuna bağlı olarak bir gecikmeyle gelecektir. Her uzamsal sorgu ağ trafiği oluşturduğundan, aynı anda çok fazla yapmamaya dikkat edin.
+Tüm uzamsal sorgular sunucuda değerlendirilir. Sonuç olarak, zaman uyumsuz işlemlerdir ve sonuçlar ağ gecikme süresine bağlı bir gecikmeyle gönderilir. Her uzamsal sorgu ağ trafiği oluşturduğundan, aynı anda çok fazla yapamamaya dikkat edin.
 
-## <a name="collision-meshes"></a>Çarpışma meshes
+## <a name="collision-meshes"></a>Çakışma kafesleri
 
-Uzamsal sorgular [Havok Fizik](https://www.havok.com/products/havok-physics) motoru tarafından desteklenmektedir ve mevcut olması için özel bir çarpışma örgü gerektirir. Varsayılan olarak, [model dönüştürme](../../how-tos/conversion/model-conversion.md) çakışma meshes oluşturur. Karmaşık bir modelde uzamsal sorgular gerektirmezseniz, birden çok yönden etkisi [olduğundan, dönüşüm seçeneklerinde](../../how-tos/conversion/configure-model-conversion.md)çakışma kafesi oluşturmayı devre dışı bırakmayı düşünün:
+Uzamsal sorgular [Havok fizik](https://www.havok.com/products/havok-physics) altyapısı tarafından desteklenir ve özel bir çakışma ağı bulunmasını gerektirir. Varsayılan olarak, [model dönüştürme](../../how-tos/conversion/model-conversion.md) çakışma kafesleri oluşturur. Karmaşık bir modelde uzamsal sorgular gerekmiyorsa, [dönüştürme seçeneklerinde](../../how-tos/conversion/configure-model-conversion.md)çakışma kafesi oluşturmayı devre dışı bırakmayı göz önünde bulundurun, çünkü bu birden çok şekilde etkiler:
 
-* [Model dönüştürme](../../how-tos/conversion/model-conversion.md) çok daha uzun sürer.
-* Dönüştürülmüş model dosya boyutları, indirme hızını etkileyen belirgin şekilde daha büyüktür.
-* Çalışma zamanı yükleme süreleri daha uzundur.
+* [Model dönüştürme](../../how-tos/conversion/model-conversion.md) oldukça uzun sürer.
+* Dönüştürülen model dosya boyutları, önemli ölçüde daha büyük olduğundan indirme hızını etkiler.
+* Çalışma zamanı yükleme süreleri daha uzun.
 * Çalışma zamanı CPU bellek tüketimi daha yüksektir.
-* Her model örneği için hafif bir çalışma zamanı performansı yükü vardır.
+* Her model örneği için hafif bir çalışma zamanı performans yükü vardır.
 
-## <a name="ray-casts"></a>Işın dökümleri
+## <a name="ray-casts"></a>Işın yayınları
 
-*Ray dökümü,* çalışma zamanının hangi nesnelerin bir ışınla kesiştiğini, belirli bir konumdan başlayıp belirli bir yöne işaret ettiğini denetlediği uzamsal bir sorgudur. Bir optimizasyon olarak, çok uzaktaki nesneleri aramamak için maksimum ışın mesafesi de verilir.
+Bir *Ray cast* , çalışma zamanının, belirli bir konumdan başlayıp belirli bir yöne işaret eden bir ışın tarafından hangi nesnelerin kesişen olduğunu denetlediğinde uzamsal bir sorgudur. Bir iyileştirme olarak, çok uzakta olan nesneleri aramak için bir en yüksek ışın uzaklığı de verilir.
 
 ````c#
 async void CastRay(AzureSession session)
@@ -56,11 +56,11 @@ async void CastRay(AzureSession session)
 
 Üç isabet toplama modu vardır:
 
-* **En yakın:** Bu modda, yalnızca en yakın isabet bildirilir.
-* **Herhangi bir:** Tüm bilmek istediğiniz bir ışın bir şey vurmak *olup olmadığını* bu modu tercih, ama tam olarak vuruldu ne umurumda değil. Bu sorguyu değerlendirmek çok daha ucuz olabilir, ancak yalnızca birkaç uygulaması vardır.
-* **Tümü:** Bu modda, ışın boyunca tüm isabetler bildirilir, mesafeye göre sıralanır. Gerçekten ilk hit daha fazla ihtiyacınız olmadıkça bu modu kullanmayın. Bildirilen isabet sayısını seçenekle `MaxHits` sınırlayın.
+* **En yakın:** Bu modda, yalnızca en yakın isabet raporlanır.
+* **Herhangi biri:** Tüm bilmeniz için bu modu tercih etmek istediğiniz zaman, bir ışın her şeyi vurmasına, ancak tam olarak isabet *duymadığını dikkate almamasını* sağlar. Bu sorgu, değerlendirmek için önemli ölçüde olabilir, ancak aynı zamanda yalnızca birkaç uygulama içerir.
+* **Tümü:** Bu modda, ışın üzerinde tüm isabetler raporlanır ve uzaklığa göre sıralanır. Gerçekten ilk isabetden daha fazlasına ihtiyaç duymadığınız takdirde bu modu kullanmayın. Bildirilen isabetlerin sayısını `MaxHits` seçeneğiyle sınırlayın.
 
-Nesneleri ışık dökümleri için seçikal olarak dikkate alınmaması için [Hiyerarşik StateOverrideComponent](override-hierarchical-state.md) bileşeni kullanılabilir.
+Nesneleri seçmeli bir şekilde kabul edilmeden dışlamak için, [HierarchicalStateOverrideComponent](override-hierarchical-state.md) bileşeni kullanılabilir.
 
 <!--
 The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
@@ -68,17 +68,17 @@ It is useful in case you want to ignore objects, for instance when setting an ob
 TODO : Add an API to make that possible.
 -->
 
-### <a name="hit-result"></a>Hit sonuç
+### <a name="hit-result"></a>İsabet sonucu
 
-Bir ışın döküm sorgusunun sonucu bir dizi isabetdir. Nesne isabet edilemeseydi dizi boştur.
+Bir Ray cast sorgusunun sonucu bir isabet dizisidir. Bir nesne isabet ettirilse dizi boştur.
 
-A Hit aşağıdaki özelliklere sahiptir:
+Bir Isabet aşağıdaki özelliklere sahiptir:
 
-* **HitEntity:** Hangi [varlık](../../concepts/entities.md) vuruldu.
-* **Subpartid:** Hangi *alt kafes* bir [MeshComponent](../../concepts/meshes.md)vuruldu. Bu noktada `MeshComponent.UsedMaterials` [malzemenin](../../concepts/materials.md) içine indekslemek ve bakmak için kullanılabilir.
-* **HitPosition:** Işın nesneyle kesiştiği dünya uzay pozisyonu.
-* **HitNormal:** Kesişme konumundaki kafesin dünya uzay yüzeyi normaldir.
-* **Distancetohit:** Ray başlangıç pozisyonundan vuruşa olan uzaklığı.
+* **Hitentity:** Hangi [varlığa](../../concepts/entities.md) ulaşıldı.
+* **Alt partid:** Bir [Meshcomponent](../../concepts/meshes.md)'ta hangi *alt kafesde* ulaşıldı. , İçinde `MeshComponent.UsedMaterials` dizin kurmak ve bu noktada [malzemenin](../../concepts/materials.md) aramak için kullanılabilir.
+* **Hitposition:** Ray 'un nesnenin kesişen bulunduğu dünya alanı konumu.
+* **Hitnormal:** Dünyanın her yerindeki Dünya alanı, kesişme konumunun normal yüzeyi.
+* **DistanceToHit:** Işın başlangıç konumundan isabetden uzaklığı.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

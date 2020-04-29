@@ -1,43 +1,43 @@
 ---
 title: Gökyüzü yansımaları
-description: Gökyüzü yansımaları için ortam haritalarının nasıl ayarlanır
+description: Sky yansımaları için ortam eşlemelerini ayarlamayı açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 7316df7bcf78e3a154510e69116c288b2b293d4c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680615"
 ---
 # <a name="sky-reflections"></a>Gökyüzü yansımaları
 
-Azure Uzaktan İşleme'de gökyüzü dokusu nesneleri gerçekçi bir şekilde aydınlatmak için kullanılır. Artırılmış gerçeklik uygulamaları için, bu doku nesneleri ikna edici görünmesi için, gerçek dünya çevrenize benzemeye karar vermelidir. Bu makalede, gökyüzü dokusunun nasıl değiştirilen açıklanmıştır.
+Azure uzaktan Işlemede, nesneleri gerçekçi bir şekilde hafif bir şekilde açmaya yönelik bir gök dokusu kullanılır. Genişletilmiş gerçeklik uygulamaları için bu doku, nesnelerin ikna edici görünmesini sağlamak için gerçek dünyaya benzer olmalıdır. Bu makalede, gök dokusunun nasıl değiştirileceği açıklanır.
 
 > [!NOTE]
-> Gökyüzü dokusu da bir *çevre haritası*olarak adlandırılır. Bu terimler birbirinin yerine kullanılır.
+> Gök dokusunu de *ortam Haritası*olarak adlandırılır. Bu terimler birbirinin yerine kullanılır.
 
-## <a name="object-lighting"></a>Nesne aydınlatması
+## <a name="object-lighting"></a>Nesne aydınlatma
 
-Azure Uzaktan İşlem, gerçekçi aydınlatma hesaplamaları için *fiziksel tabanlı görüntüleme* (PBR) kullanır. Sahnenize [ışık kaynakları](lights.md) ekleyebiliyor olabilirsiniz, ancak iyi bir gökyüzü dokusu kullanarak en büyük etkiye sahiptir.
+Azure uzaktan Işleme, gerçekçi aydınlatma hesaplamaları için *fiziksel tabanlı işleme* (PBR) kullanır. Sahneye [hafif kaynaklar](lights.md) ekleyebilseniz de, iyi bir gök dokusunun kullanılması en büyük etkiye sahiptir.
 
-Aşağıdaki resimler, yalnızca bir gökyüzü dokusu ile farklı yüzeyleraydınlatma sonuçlarını göstermektedir:
+Aşağıdaki görüntüler, farklı yüzeylerin yalnızca gök dokuyla aydınlatma sonuçlarını gösterir:
 
-| Pürüz  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
+| Kablık  | 0                                        | 0,25                                          | 0,5                                          | 0,75                                          | 1                                          |
 |:----------:|:----------------------------------------:|:---------------------------------------------:|:--------------------------------------------:|:---------------------------------------------:|:------------------------------------------:|
-| Metal Olmayan  | ![Dielektrik0](media/dielectric-0.png)   | ![GreenPointPark](media/dielectric-0.25.png)  | ![GreenPointPark](media/dielectric-0.5.png)  | ![GreenPointPark](media/dielectric-0.75.png)  | ![GreenPointPark](media/dielectric-1.png)  |
-| Metal      | ![GreenPointPark](media/metallic-0.png)  | ![GreenPointPark](media/metallic-0.25.png)    | ![GreenPointPark](media/metallic-0.5.png)    | ![GreenPointPark](media/metallic-0.75.png)    | ![GreenPointPark](media/metallic-1.png)    |
+| Metal olmayan  | ![Dielectric0](media/dielectric-0.png)   | ![Yeşilpointpark](media/dielectric-0.25.png)  | ![Yeşilpointpark](media/dielectric-0.5.png)  | ![Yeşilpointpark](media/dielectric-0.75.png)  | ![Yeşilpointpark](media/dielectric-1.png)  |
+| Metal      | ![Yeşilpointpark](media/metallic-0.png)  | ![Yeşilpointpark](media/metallic-0.25.png)    | ![Yeşilpointpark](media/metallic-0.5.png)    | ![Yeşilpointpark](media/metallic-0.75.png)    | ![Yeşilpointpark](media/metallic-1.png)    |
 
-Aydınlatma modeli hakkında daha fazla bilgi için [malzeme](../../concepts/materials.md) bölümüne bakın.
+Aydınlatma modeli hakkında daha fazla bilgi için bkz. [malzemeler](../../concepts/materials.md) bölümü.
 
 > [!IMPORTANT]
-> Azure Uzaktan İşlem, gökyüzü dokusunu yalnızca aydınlatma modelleri için kullanır. Artırılmış Gerçeklik uygulamaları zaten uygun bir arka plana sahip olduğundan, bir arka plan olarak gökyüzü işlemez - gerçek dünya.
+> Azure uzaktan Işleme, yalnızca aydınlatma modelleri için gök dokusunu kullanır. Genişletmüş olan gerçeklik uygulamalarının gerçek bir arka plana sahip olduğu için bir arka plan olarak Çarpıt olarak işlenmiyor.
 
-## <a name="changing-the-sky-texture"></a>Gökyüzü dokusunu değiştirme
+## <a name="changing-the-sky-texture"></a>Gök dokusunu değiştirme
 
-Ortam haritasını değiştirmek için tek yapmanız gereken [bir doku yüklemek](../../concepts/textures.md) `SkyReflectionSettings`ve oturumun:
+Ortam eşlemesini değiştirmek için, tek yapmanız gereken [bir doku yükler](../../concepts/textures.md) ve oturum şu şekilde değişir `SkyReflectionSettings`:
 
 ``` cs
 LoadTextureAsync _skyTextureLoad = null;
@@ -66,54 +66,54 @@ void ChangeEnvironmentMap(AzureSession session)
 }
 ```
 
-Yerleşik bir `LoadTextureFromSASAsync` doku yüklendiğinden, varyantın yukarıda kullanıldığını unutmayın. [Bağlantılı blob depolarından](../../how-tos/create-an-account.md#link-storage-accounts)yükleme durumunda, `LoadTextureAsync` varyantı kullanın.
+Yerleşik bir doku `LoadTextureFromSASAsync` yüklendiği için değişkenin yukarıda kullanıldığını unutmayın. [Bağlı BLOB depolama](../../how-tos/create-an-account.md#link-storage-accounts)alanından yükleme durumunda, `LoadTextureAsync` türevini kullanın.
 
-## <a name="sky-texture-types"></a>Gökyüzü doku türleri
+## <a name="sky-texture-types"></a>Sky doku türleri
 
-Hem küp *[eşlelerini](https://en.wikipedia.org/wiki/Cube_mapping)* hem de *2B dokuları* ortam haritaları olarak kullanabilirsiniz.
+Yalnızca *[cubemaps](https://en.wikipedia.org/wiki/Cube_mapping)* ve *2B dokuları* ortam haritaları olarak kullanabilirsiniz.
 
-Tüm dokular desteklenen doku [biçiminde](../../concepts/textures.md#supported-texture-formats)olmalıdır. Gökyüzü dokuları için mipmaps sağlamanız gerekmez.
+Tüm dokuların [desteklenen bir doku biçiminde](../../concepts/textures.md#supported-texture-formats)olması gerekir. Gök dokuları için msunucudan mfor haritaları sağlamanız gerekmez.
 
 ### <a name="cube-environment-maps"></a>Küp ortam haritaları
 
-Başvuru için, burada unwrapped küp haritası:
+Başvuru için sarmalanmamış bir cubemap aşağıda verilmiştir:
 
-![Paketlenmemiş bir küp haritası](media/Cubemap-example.png)
+![Sarmalanmamış bir küp harita](media/Cubemap-example.png)
 
-Küp `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` `TextureType.CubeMap` eşlemi dokularını yüklemek için kullanın.
+' İ kullanarak `AzureSession.Actions.LoadTextureAsync` /  `LoadTextureFromSASAsync` küp harita dokuları yükleyin. `TextureType.CubeMap`
 
-### <a name="sphere-environment-maps"></a>Küre ortamı haritaları
+### <a name="sphere-environment-maps"></a>Sphere ortam haritaları
 
-Bir ortam haritası olarak 2B doku kullanırken, görüntü [küresel koordinat alanında](https://en.wikipedia.org/wiki/Spherical_coordinate_system)olmalıdır.
+Bir 2B dokusunu ortam haritası olarak kullanırken, görüntünün [küresel koordinat](https://en.wikipedia.org/wiki/Spherical_coordinate_system)alanında olması gerekir.
 
-![Küresel koordinatlarda bir gökyüzü görüntüsü](media/spheremap-example.png)
+![Küresel koordinatlardaki gök resmi](media/spheremap-example.png)
 
-Küresel `AzureSession.Actions.LoadTextureAsync` `TextureType.Texture2D` ortam haritalarını yüklemek için kullanın.
+Küresel `AzureSession.Actions.LoadTextureAsync` ortam `TextureType.Texture2D` haritalarını yüklemek için ile kullanın.
 
 ## <a name="built-in-environment-maps"></a>Yerleşik ortam haritaları
 
-Azure Uzaktan İşleme, her zaman kullanılabilen birkaç yerleşik ortam eşlem sağlar. Tüm yerleşik ortam haritaları küp eşlemlerdir.
+Azure uzaktan Işleme, her zaman kullanılabilir olan birkaç yerleşik ortam haritası sağlar. Tüm yerleşik ortam haritaları cubemaps.
 
-|Tanımlayıcı                         | Açıklama                                              | Illüstrasyon                                                      |
+|Tanımlayıcı                         | Açıklama                                              | Göstermektedir                                                      |
 |-----------------------------------|:---------------------------------------------------------|:-----------------------------------------------------------------:|
-|builtin://Autoshop                 | Şerit ışıkları, parlak iç taban aydınlatma çeşitleri    | ![Otodükodükkanı](media/autoshop.png)
-|builtin://BoilerRoom               | Parlak iç mekan ışık ayarı, birden fazla pencere Lambası      | ![Kazan Odası](media/boiler-room.png)
-|builtin://ColorfulStudio           | Orta Hafif iç mekan ayarında değişen renkli ışıklar  | ![ColorfulStudio](media/colorful-studio.png)
-|builtin://Hangar                   | Orta derecede parlak ortam salonu ışığı                     | ![Küçük Hangar](media/hangar.png)
-|builtin://IndustrialPipeAndValve   | Açık-koyu kontrastlı loş iç mekan ayarı              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
+|builtin://Autoshop                 | Çeşitli Stripe ışıkları, parlak kapılı taban aydınlatma    | ![Oto Mağazası](media/autoshop.png)
+|builtin://BoilerRoom               | Parlak kapılı ışık ayarı, birden çok pencere ışıkları      | ![BoilerRoom](media/boiler-room.png)
+|builtin://ColorfulStudio           | Orta hafif inkapılı varyingly renkli ışıklar  | ![ColorfulStudio](media/colorful-studio.png)
+|builtin://Hangar                   | Orta parlak çevresel salonu ışığı                     | ![SmallHangar](media/hangar.png)
+|builtin://IndustrialPipeAndValve   | Açık Koyu karşıtlıklı karartma ınkapı ayarı              | ![IndustrialPipeAndValve](media/industrial-pipe-and-valve.png)
 |builtin://Lebombo                  | Gündüz ortam odası ışığı, parlak pencere alanı ışığı     | ![Lebombo](media/lebombo.png)
-|builtin://SataraNight              | Karanlık gece gökyüzü ve zemin birçok çevreleyen ışıklar ile   | ![SataraGece](media/satara-night.png)
-|builtin://SunnyVondelpark          | Parlak güneş ışığı ve gölge kontrastı                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
-|builtin://Syferfontein             | Orta yer aydınlatması ile açık gökyüzü ışığı            | ![Syferfontein](media/syferfontein.png)
-|builtin://TearsOfSteelBridge       | Orta derecede değişen güneş ve gölge                         | ![TearsOfSteelBridge](media/tears-of-steel-bridge.png)
-|builtin://VeniceSunset             | Akşam gün batımı ışık alacakaranlık yaklaşıyor                    | ![VenedikGünbatımı](media/venice-sunset.png)
-|builtin://WhippleCreekRegionalPark | Parlak, gür-yeşil ve beyaz ışık tonları, soluk zemin | ![WhippleCreekBölgeselPark](media/whipple-creek-regional-park.png)
-|builtin://WinterRiver              | Parlak ortam zemin ışığı ile gündüz                 | ![Kış Nehri](media/winter-river.png)
-|builtin://DefaultSky               | TearsOfSteelBridge ile aynı                               | ![Varsayılan Sky](media/tears-of-steel-bridge.png)
+|builtin://SataraNight              | Çok sayıda ışığı içeren koyu gece gök ve zemin   | ![SataraNight](media/satara-night.png)
+|builtin://SunnyVondelpark          | Parlak güneş ve gölge karşıtlığı                      | ![SunnyVondelpark](media/sunny-vondelpark.png)
+|builtin://Syferfontein             | Orta zemin aydınlatma ile gök ışığı temizle            | ![Syferfontein](media/syferfontein.png)
+|builtin://TearsOfSteelBridge       | Orta derecede değişen güneş ve gölge                         | ![Tearsofsteelköprüsü](media/tears-of-steel-bridge.png)
+|builtin://VeniceSunset             | Akşam günlü ışığı, alacak                    | ![VeniceSunset](media/venice-sunset.png)
+|builtin://WhippleCreekRegionalPark | Parlak, Lush-yeşil ve beyaz açık ton, soluk zemin | ![WhippleCreekRegionalPark](media/whipple-creek-regional-park.png)
+|builtin://WinterRiver              | Parlak çevresel zemin ışığı ile gündüz                 | ![WinterRiver](media/winter-river.png)
+|builtin://DefaultSky               | TearsOfSteelBridge ile aynı                               | ![DefaultSky](media/tears-of-steel-bridge.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Işıklar](../../overview/features/lights.md)
 * [Malzemeler](../../concepts/materials.md)
-* [Doku](../../concepts/textures.md)
+* [Dokular](../../concepts/textures.md)
 * [TexConv komut satırı aracı](../../resources/tools/tex-conv.md)

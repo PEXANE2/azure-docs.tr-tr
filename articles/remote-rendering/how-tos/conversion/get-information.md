@@ -1,24 +1,24 @@
 ---
-title: Dönüştürülmüş bir model hakkında bilgi alın
+title: Dönüştürülmüş bir model hakkında bilgi alma
 description: Tüm model dönüştürme parametrelerinin açıklaması
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
 ms.openlocfilehash: d5f843add0649682bae8c472bc50b6beea33bf93
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681525"
 ---
-# <a name="get-information-about-a-converted-model"></a>Dönüştürülmüş bir model hakkında bilgi alın
+# <a name="get-information-about-a-converted-model"></a>Dönüştürülmüş bir model hakkında bilgi alma
 
-Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketim için tasarlanmıştır. Ancak, bir işleme oturumu başlatmadan bir model hakkındaki bilgilere erişmek istediğiniz zamanlar olabilir. Bu nedenle, dönüştürme hizmeti çıktı kapsayıcısında arrAsset dosyasının yanına bir JSON dosyası yerleştirir. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıktı kapsayıcısı `buggy.info.json` dönüştürülen varlığın `buggy.arrAsset`yanında çağrılan bir dosya içerir. Kaynak model, dönüştürülen model ve dönüştürmenin kendisi hakkında bilgi içerir.
+Dönüştürme hizmeti tarafından üretilen arrAsset dosyası yalnızca işleme hizmeti tarafından tüketimine yöneliktir. Ancak, bir işleme oturumu başlatmadan bir modelle ilgili bilgilere erişmek istediğinizde bazı zamanlar olabilir. Bu nedenle, dönüştürme hizmeti çıkış kapsayıcısındaki arrAsset dosyasının yanına bir JSON dosyası koyar. Örneğin, bir dosya `buggy.gltf` dönüştürülürse, çıkış kapsayıcısı, dönüştürülmüş varlığın `buggy.info.json` `buggy.arrAsset`yanında adlı bir dosya içerir. Kaynak modeli, dönüştürülmüş model ve dönüştürmenin kendisi hakkında bilgiler içerir.
 
 ## <a name="example-info-file"></a>Örnek *bilgi* dosyası
 
-Burada adlı `buggy.gltf`bir dosya dönüştürerek üretilen bir örnek *bilgi* dosyası:
+Aşağıda adlı `buggy.gltf`bir dosya dönüştürülürken oluşturulan örnek bir *bilgi* dosyası verilmiştir:
 
 ```JSON
 {
@@ -77,55 +77,55 @@ Burada adlı `buggy.gltf`bir dosya dönüştürerek üretilen bir örnek *bilgi*
 
 ### <a name="the-files-section"></a>*Dosyalar* bölümü
 
-Bu bölümde sağlanan dosya adları içerir.
+Bu bölüm, belirtilen dosya adlarını içerir.
 
 * `input`: Kaynak dosyanın adı.
-* `output`: Kullanıcı varsayılan olmayan bir ad belirttiğinde çıktı dosyasının adı.
+* `output`: Kullanıcı varsayılan olmayan bir ad belirtmiştir, çıkış dosyasının adı.
 
-### <a name="the-conversionsettings-section"></a>*Dönüşüm Ayarları* bölümü
+### <a name="the-conversionsettings-section"></a>*Conversionsettings* bölümü
 
-Bu bölümde, model dönüştürüldüğünde belirtilen [Dönüşüm Ayarları'nın](configure-model-conversion.md#settings-file) bir kopyası yer almaktadır.
+Bu bölüm, model dönüştürüldüğünde belirtilen [Conversionsettings](configure-model-conversion.md#settings-file) 'in bir kopyasını içerir.
 
-### <a name="the-inputinfo-section"></a>*GirişBilgi* bölümü
+### <a name="the-inputinfo-section"></a>*Inputınfo* bölümü
 
-Bu bölümde kaynak dosya biçimi yle ilgili bilgiler kaydedilir.
+Bu bölüm, kaynak dosya biçimiyle ilgili bilgileri kaydeder.
 
 * `sourceAssetExtension`: Kaynak dosyanın dosya uzantısı.
 * `sourceAssetFormat`: Kaynak dosya biçiminin açıklaması.
 * `sourceAssetFormatVersion`: Kaynak dosya biçiminin sürümü.
 * `sourceAssetGenerator`: Varsa, kaynak dosyayı oluşturan aracın adı.
 
-### <a name="the-inputstatistics-section"></a>*Girişİstatistikler* bölümü
+### <a name="the-inputstatistics-section"></a>*Inputstatistics* bölümü
 
-Bu bölümde kaynak sahne hakkında bilgi sağlar. Genellikle bu bölümdeki değerler le kaynak modeli oluşturan araçtaki eşdeğer değerler arasında tutarsızlıklar olacaktır. Model dışa aktarma ve dönüştürme adımları sırasında değiştirildiğinden, bu tür farklılıklar beklenmektedir.
+Bu bölüm, kaynak sahneyi hakkında bilgi sağlar. Bu bölümdeki değerler ve kaynak modeli oluşturan araçtaki eşdeğer değerler arasında genellikle tutarsızlıklar olur. Bu farklar beklenmektedir, çünkü model dışa aktarma ve dönüştürme adımları sırasında değiştirilir.
 
-* `numMeshes`: Her parçanın tek bir malzemeye başvurulabileceği kafes parçalarının sayısı.
-* `numFaces`: Tüm modeldeki _toplam üçgen_ sayısı. Mesh in dönüştürme sırasında üçgenlenmiş olduğunu unutmayın.
-* `numVertices`: Tüm modeldeki toplam tepe sayısı.
-* `numMaterial`: Tüm modeldeki toplam malzeme sayısı.
-* `numFacesSmallestMesh`: Modelin en küçük örgüsündeki üçgen sayısı.
-* `numFacesBiggestMesh`: Modelin en büyük örgüsündeki üçgen sayısı.
+* `numMeshes`: Her parçanın tek bir malzemeye başvurmasına neden olan kafes bölümlerinin sayısı.
+* `numFaces`: Tüm modeldeki _üçgenin_ toplam sayısı. Ağ dönüştürme sırasında triangulated olduğunu unutmayın.
+* `numVertices`: Tüm modeldeki köşelerin toplam sayısı.
+* `numMaterial`: Tüm modeldeki Toplam malzeme sayısı.
+* `numFacesSmallestMesh`: Modelin en küçük ağı içindeki üçgenin sayısı.
+* `numFacesBiggestMesh`: Modelin en büyük kafesteki üçgenler sayısı.
 * `numNodes`: Modelin sahne grafiğindeki düğüm sayısı.
-* `numMeshUsagesInScene`: Düğümlerin kaç kez başvuru meshes sayısı. Birden fazla düğüm aynı kafese başvurabilir.
-* `maxNodeDepth`: Sahne grafiğindeki düğümlerin maksimum derinliği.
+* `numMeshUsagesInScene`: Düğümlerin kafeslerin kaç kez başvurulacağını. Birden fazla düğüm aynı kafesde başvurabilir.
+* `maxNodeDepth`: Sahne grafiği içindeki düğümlerin maksimum derinliği.
 
-### <a name="the-outputinfo-section"></a>*OutputInfo* bölümü
+### <a name="the-outputinfo-section"></a>*Outputınfo* bölümü
 
-Bu bölümde, oluşturulan çıktı hakkında genel bilgiler kaydedilir.
+Bu bölüm, oluşturulan çıkış hakkındaki genel bilgileri kaydeder.
 
-* `conversionToolVersion`: Model dönüştürücü sürümü.
-* `conversionHash`: ArrAsset içindeki verilerin bir karma render katkıda bulunabilir. Dönüşüm hizmetinin aynı dosyada yeniden çalıştırıldığında farklı bir sonuç üretip üretmediğini anlamak için kullanılabilir.
+* `conversionToolVersion`: Model dönüştürücünün sürümü.
+* `conversionHash`: ArrAsset içinde işleme katkıda bulunan verilerin karması. Aynı dosya üzerinde yeniden çalıştırıldığında, dönüştürme hizmetinin farklı bir sonuç üretmediğini anlamak için kullanılabilir.
 
-### <a name="the-outputstatistics-section"></a>*Çıktılarİstatistikbölümü*
+### <a name="the-outputstatistics-section"></a>*Outputstatistics* bölümü
 
-Bu bölümde dönüştürülen varlıktan hesaplanan bilgiler kaydedilir.
+Bu bölüm, dönüştürülmüş varlık tarafından hesaplanan bilgileri kaydeder.
 
-* `numMeshPartsCreated`: ArrAsset'deki meshesayısı. Instancing `numMeshes` dönüşüm `inputStatistics` işleminden etkilendiği için, bölümdekinden farklı olabilir.
-* `numMeshPartsInstanced`: ArrAsset'de yeniden kullanılan meshe sayısı.
-* `recenteringOffset`: Dönüşüm `recenterToOrigin` [Ayarları'ndaki](configure-model-conversion.md) seçenek etkinleştirildiğinde, bu değer dönüştürülen modeli özgün konumuna geri döndürecek çeviridir.
+* `numMeshPartsCreated`: ArrAsset içindeki kafeslerin sayısı. Örnek, dönüştürme işleminden `numMeshes` etkilendiğinden `inputStatistics` , bölümünde farklılık gösterebilir.
+* `numMeshPartsInstanced`: ArrAsset içinde yeniden kullanılan kafeslerin sayısı.
+* `recenteringOffset`: `recenterToOrigin` [Conversionsettings](configure-model-conversion.md) seçeneği etkin olduğunda, bu değer dönüştürülen modeli özgün konumuna geri taşıyabilecek çevirmadır.
 * `boundingBox`: Modelin sınırları.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Model dönüştürme](model-conversion.md)
-* [Model dönüşümyapılandırma](configure-model-conversion.md)
+* [Model dönüştürmeyi yapılandırma](configure-model-conversion.md)

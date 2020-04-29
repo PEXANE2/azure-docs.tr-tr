@@ -1,7 +1,7 @@
 ---
-title: Bing Autosuggest API ile arama terimleri önerme
+title: Bing Otomatik Öneri API'si ile arama koşullarını önerme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Bing Otomatik Öner API'sını kullanarak sorgu terimleri önerme kavramı ve sorgu uzunluğunun alaka düzeyi üzerindeki etkisi anlatılmaktadır.
+description: Bu makalede, Bing Otomatik Öneri API'si kullanarak sorgu koşullarını önerme kavramı ve sorgu uzunluğunun ilgi açısından etkisi ele alınmaktadır.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072884"
 ---
 # <a name="suggesting-query-terms"></a>Sorgu terimi önerme
 
-Genellikle, bir kullanıcı uygulamanızın arama kutusuna her yeni karakter yazdığında Bing Autosuggest API'sini çağırırsınız. Sorgu dizesinin eksiksiz olması, API’nin döndürdüğü önerilen sorgu terimlerinin alakasını etkiler. Sorgu dizesi ne kadar eksiksizse, önerilen sorgu terimlerinin listesi de o kadar alakalıdır. Örneğin, API'nin geri dönebileceği `s` öneriler, `sailing dinghies`'' için döndürdüğü sorgulardan daha az ilgili olabilir.
+Genellikle, bir kullanıcının uygulamanızın arama kutusuna yeni bir karakter her yazdığında Bing Otomatik Öneri API'si çağırır. Sorgu dizesinin eksiksiz olması, API’nin döndürdüğü önerilen sorgu terimlerinin alakasını etkiler. Sorgu dizesi ne kadar eksiksizse, önerilen sorgu terimlerinin listesi de o kadar alakalıdır. Örneğin, API 'nin döndürebilecek `s` önerilerin, döndürdüğü sorgulardan daha az ilgili olması olasıdır. `sailing dinghies`
 
 ## <a name="example-request"></a>Örnek istek
 
@@ -45,11 +45,11 @@ Aşağıdaki yanıt, önerilen sorgu terimlerini içeren [SearchAction](https://
 }, ...
 ```
 
-## <a name="using-suggested-query-terms"></a>Önerilen sorgu terimlerini kullanma
+## <a name="using-suggested-query-terms"></a>Önerilen sorgu koşullarını kullanma
 
 Her öneri, `displayText`, `query` ve `url` alanını içerir. `displayText` alanı, arama kutunuzun açılır listesini doldurmak için kullandığınız önerilen sorguyu içerir. Yanıtın içerdiği tüm önerileri, verilen sırada görüntülemeniz gerekir.
 
-Aşağıdaki örnekte, Bing Otomatik Öner API'sinden önerilen sorgu terimlerini içeren açılır bir arama kutusu gösterilmektedir.
+Aşağıdaki örnek, Bing Otomatik Öneri API'si önerilen sorgu koşullarına sahip bir açılan arama kutusunu gösterir.
 
 ![Otomatik öneri açılır arama kutusu listesi](../media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 

@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: glenga
 ms.openlocfilehash: 44969063765099d350e21abfbd07792891443911
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673200"
 ---
 ::: zone pivot="programming-language-python"  
 ## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Sanal ortam oluşturma ve etkinleştirme
 
-Uygun bir klasörde, ', adlı sanal bir ortam `.venv`oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure İşlevleri tarafından desteklenen Python 3.8, 3.7 veya 3.6'yı kullandığınızdan emin olun.
+Uygun bir klasörde, adlı `.venv`bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure Işlevleri tarafından desteklenen Python 3,8, 3,7 veya 3,6 kullandığınızdan emin olun.
 
-# <a name="bash"></a>[bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -26,7 +26,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-Python venv paketini Linux dağıtımınıza yüklemediyse aşağıdaki komutu çalıştırın:
+Python, venv paketini Linux dağıtımına yüklememediyse aşağıdaki komutu çalıştırın:
 
 ```bash
 sudo apt-get install python3-venv
@@ -54,5 +54,5 @@ py -m venv .venv
 
 ---
 
-Bu etkinleştirilen sanal ortamda sonraki tüm komutları çalıştırın. (Sanal ortamdan çıkmak `deactivate`için çalıştırın.)
+Bu etkinleştirilmiş sanal ortamda sonraki tüm komutları çalıştırırsınız. (Sanal ortamdan çıkmak için, öğesini çalıştırın `deactivate`.)
 ::: zone-end

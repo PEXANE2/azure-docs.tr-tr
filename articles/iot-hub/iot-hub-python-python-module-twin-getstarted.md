@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub modülü kimlik ve modül ikizi (Python)
-description: Python için IoT SDK'ları kullanarak modül kimliğini nasıl oluşturup modül ikizini nasıl güncelleştireceğimiz öğrenin.
+title: Azure IoT Hub modül kimliği ve modülü ikizi (Python)
+description: Python için IoT SDK 'larını kullanarak modül kimliği oluşturma ve modül ikizi güncelleştirme hakkında bilgi edinin.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
@@ -9,27 +9,27 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
 ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756973"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub modülü kimliği ve modül ikizi (Python) ile başlayın
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>IoT Hub Module kimliği ve modülü ikizi (Python) ile çalışmaya başlama
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modül kimlikleri ve modül ikizleri](iot-hub-devguide-module-twins.md) Azure IoT Hub aygıt kimliklerine ve aygıt ikizlerine benzer, ancak daha ince parçalılık sağlar. Azure IoT Hub aygıt kimlikleri ve aygıt ikizleri bir aygıtı yapılandırmak ve aygıtın koşullarında görünürlük sağlamak için bir arka uç uygulamasına olanak sağlarken, modül kimlikleri ve modül ikizleri bu özellikleri bir aygıtın tek tek bileşenleri için sağlar. İşletim sistemi tabanlı aygıtlar veya firmware aygıtları gibi birden çok bileşeni olan yetenekli aygıtlarda, her bileşen için yalıtılmış yapılandırma ve koşullara izin verirler.
+> [Modül kimlikleri ve modül TWINS](iot-hub-devguide-module-twins.md) , Azure IoT Hub cihaz kimliklerine ve cihaz TWINS 'e benzer, ancak daha ayrıntılı ayrıntı düzeyi sağlar. Azure IoT Hub cihaz kimlikleri ve cihaz TWINS 'i bir arka uç uygulamasını bir cihaz yapılandırmak ve cihazın koşullarına ilişkin görünürlük sağlamak için etkinleştirirken, modül kimlikleri ve modül TWINS, bir cihazın tek tek bileşenleri için bu özellikleri sağlar. İşletim sistemi tabanlı cihazlar veya bellenim cihazları gibi birden çok bileşeni olan uyumlu cihazlarda, her bileşen için yalıtılmış yapılandırma ve koşullara izin verir.
 >
 
-Bu eğitimin sonunda üç Python uygulamanız var:
+Bu öğreticinin sonunda üç Python uygulamanız vardır:
 
-* Aygıt ve modül istemcilerinizi bağlamak için aygıt kimliği, modül kimliği ve ilişkili güvenlik anahtarları oluşturan **CreateModule.**
+* Cihaz kimliği, modül kimliği ve cihaz ve modül istemcilerinizi bağlamak için ilişkili güvenlik anahtarları oluşturan **Createmodule**.
 
-* **GüncellemeModuleTwinDesiredProperties**, hangi ioT Hub için güncelleştirilmiş modül ikiz istenilen özellikleri gönderir.
+* **Updatemodületwindesiredproperties**, güncelleştirilmiş modül ikizi istenen özellikleri IoT Hub.
 
-* **ReceiveModuleTwinDesiredPropertiesPatch**, modülü ikiz istenilen özellikleri yama alır cihazınızda.
+* Modüle ikizi istenen özellikler yaması modülünü alan **Receivemodületwindesiredpropertiespatch**.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -41,31 +41,31 @@ Bu eğitimin sonunda üç Python uygulamanız var:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
+## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
 
-Bu makalede, kimlik kayıt defterine bir aygıt ekleyen ve sonra bu aygıta bir modül ekleyen bir arka uç hizmeti oluşturursunuz. Bu **hizmet, kayıt defteri yazma** izni gerektirir (kayıt **defteri okumayı**da içerir). Ayrıca, yeni oluşturulan modül için modül ikizine istenen özellikleri ekleyen bir hizmet oluşturursunuz. Bu hizmetin **hizmet bağlama** iznine ihtiyacı vardır. Bu izinleri tek tek veren varsayılan paylaşılan erişim ilkeleri olsa da, bu bölümde, bu izinlerin her ikisini de içeren özel bir paylaşılan erişim ilkesi oluşturursunuz.
+Bu makalede, kimlik kayıt defterine bir cihaz ekleyen bir arka uç hizmeti oluşturursunuz ve ardından bu cihaza bir modül eklenir. Bu hizmet, **kayıt defteri yazma** iznini (Ayrıca, **kayıt defteri okuma**de içerir) gerektirir. Ayrıca, yeni oluşturulan modülün ikizi modülüne istenen özellikleri ekleyen bir hizmet oluşturursunuz. Bu hizmet, **hizmet bağlantısı** iznine sahip olmalıdır. Bu izinleri ayrı ayrı veren varsayılan paylaşılan erişim ilkeleri olsa da, bu bölümde bu izinlerin her ikisini de içeren özel bir paylaşılan erişim ilkesi oluşturacaksınız.
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
-## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub'da aygıt kimliği ve modül kimliği oluşturma
+## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>IoT Hub bir cihaz kimliği ve modül kimliği oluşturma
 
-Bu bölümde, IoT hub'ınızdaki kimlik kayıt defterinde aygıt kimliği ve modül kimliği oluşturan bir Python hizmet uygulaması oluşturursunuz. Bir aygıt veya modül, kimlik kayıt defterinde bir giriş olmadığı sürece IoT hub'ına bağlayamaz. Daha fazla bilgi için Bkz. [IoT hub'ınızdaki kimlik kaydını anlayın.](iot-hub-devguide-identity-registry.md) Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül için benzersiz bir kimlik ve anahtar oluşturur. Cihazınız ve modülünüz, IoT Hub’ına cihazdan buluta iletileri gönderdiğinde kendisini tanımlamak için bu değerleri kullanır. Kimlikler büyük/küçük harfe duyarlıdır.
+Bu bölümde, IoT Hub 'ınızdaki kimlik kayıt defterinde bir cihaz kimliği ve bir modül kimliği oluşturan bir Python hizmeti uygulaması oluşturacaksınız. Kimlik kayıt defterinde bir girişi yoksa bir cihaz veya modül IoT Hub 'ına bağlanamaz. Daha fazla bilgi için bkz. [IoT Hub 'ınızdaki kimlik kayıt defterini anlama](iot-hub-devguide-identity-registry.md). Bu konsol uygulamasını çalıştırdığınızda, hem cihaz hem de modül için benzersiz bir kimlik ve anahtar oluşturur. Cihazınız ve modülünüz, IoT Hub’ına cihazdan buluta iletileri gönderdiğinde kendisini tanımlamak için bu değerleri kullanır. Kimlikler büyük/küçük harfe duyarlıdır.
 
-1. Komut isteminizde **azure-iot-hub** paketini yüklemek için aşağıdaki komutu çalıştırın:
+1. Komut istemindeki **Azure-IoT-Hub** paketini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. Komut **isteminizde, msrest** paketini yüklemek için aşağıdaki komutu çalıştırın. **HTTPOperationError** özel durumlarını yakalamak için bu pakete ihtiyacınız vardır.
+1. Komut istemindeki **msrest** paketini yüklemek için aşağıdaki komutu çalıştırın. **Httpoperationerror** özel durumlarını yakalamak için bu pakete ihtiyacınız vardır.
 
     ```cmd/sh
     pip install msrest
     ```
 
-1. Metin düzenleyicisi kullanarak, çalışma dizininizde **CreateModule.py** adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak çalışma dizininizde **CreateModule.py** adlı bir dosya oluşturun.
 
-1. Python dosyanıza aşağıdaki kodu ekleyin. *YourIoTHubConnectionString'i IoT* hub [bağlantı dizesini al'da](#get-the-iot-hub-connection-string)kopyala bağlantı dizesiyle değiştirin.
+1. Aşağıdaki kodu Python dosyanıza ekleyin. *Youriothubconnectionstring* öğesini [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde kopyaladığınız bağlantı dizesiyle değiştirin.
 
     ```python
     import sys
@@ -122,31 +122,31 @@ Bu bölümde, IoT hub'ınızdaki kimlik kayıt defterinde aygıt kimliği ve mod
         print("IoTHubRegistryManager sample stopped")
     ```
 
-1. Komut isteminizde aşağıdaki komutu çalıştırın:
+1. Komut isteminde aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     python CreateModule.py
     ```
 
-Bu uygulama kimliği **myFirstDevice** ile bir cihaz kimliği ve cihaz **myFirstDevice**altında kimliği **myFirstModule** ile bir modül kimliği oluşturur. (Aygıt veya modül kimliği kimlik kayıt defterinde zaten varsa, kod yalnızca varolan aygıt veya modül bilgilerini alır.) Uygulama, her kimlik için kimliği ve birincil anahtarı görüntüler.
+Bu uygulama, **MYFIRSTDEVICE** kimliği ile bir cihaz kimliği ve myfirstdevice **adlı cihaz**altında **myfirstmodule** kimliğiyle bir modül kimliği oluşturur. (Cihaz veya modül KIMLIĞI kimlik kayıt defterinde zaten varsa, kod yalnızca var olan cihazı veya modül bilgilerini alır.) Uygulama, her kimlik için KIMLIĞI ve birincil anahtarı görüntüler.
 
 > [!NOTE]
-> IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için Bkz. [IoT hub'ınızdaki kimlik kaydını anlayın.](iot-hub-devguide-identity-registry.md)
+> IoT Hub kimlik kayıt defteri yalnızca IoT hub'ına güvenli erişim sağlamak amacıyla cihaz ve modül kimliklerini depolar. Kimlik kayıt defteri, cihaz kimliklerini ve anahtarlarını güvenlik kimlik bilgileri olarak kullanmak için depolar. Kimlik kayıt defterinin her cihaz için depoladığı etkin/devre dışı bayrağını kullanarak, ilgili cihaza erişimi devre dışı bırakabilirsiniz. Uygulamanızın cihaza özgü diğer meta verileri depolaması gerekiyorsa uygulamaya özgü bir depo kullanması gerekir. Modül kimlikleri için etkin/devre dışı bayrağı yoktur. Daha fazla bilgi için bkz. [IoT Hub 'ınızdaki kimlik kayıt defterini anlama](iot-hub-devguide-identity-registry.md).
 >
 
-## <a name="update-the-module-twin-using-python-service-sdk"></a>Python hizmeti SDK kullanarak modül ikizini güncelleştirin
+## <a name="update-the-module-twin-using-python-service-sdk"></a>Python hizmeti SDK 'sını kullanarak modül ikizi güncelleştirme
 
-Bu bölümde, modülü ikiz istenen özellikleri güncelleyen bir Python hizmet uygulaması oluşturursunuz.
+Bu bölümde, istenen özellikleri ikizi modülünü güncelleştiren bir Python hizmeti uygulaması oluşturacaksınız.
 
-1. Komut isteminizde **azure-iot-hub** paketini yüklemek için aşağıdaki komutu çalıştırın. **Azure-iot-hub** paketini önceki bölüme yüklediyseniz bu adımı atlayabilirsiniz.
+1. Komut istemindeki **Azure-IoT-Hub** paketini yüklemek için aşağıdaki komutu çalıştırın. Önceki bölümde **Azure-IoT-Hub** paketini yüklediyseniz bu adımı atlayabilirsiniz.
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. Metin düzenleyicisi kullanarak, çalışma dizininizde **UpdateModuleTwinDesiredProperties.py** adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak çalışma dizininizde **UpdateModuleTwinDesiredProperties.py** adlı bir dosya oluşturun.
 
-1. Python dosyanıza aşağıdaki kodu ekleyin. *YourIoTHubConnectionString'i IoT* hub [bağlantı dizesini al'da](#get-the-iot-hub-connection-string)kopyala bağlantı dizesiyle değiştirin.
+1. Aşağıdaki kodu Python dosyanıza ekleyin. *Youriothubconnectionstring* öğesini [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)içinde kopyaladığınız bağlantı dizesiyle değiştirin.
 
     ```python
     import sys
@@ -182,23 +182,23 @@ Bu bölümde, modülü ikiz istenen özellikleri güncelleyen bir Python hizmet 
         print ( "IoTHubRegistryManager sample stopped" )
     ```
 
-## <a name="get-updates-on-the-device-side"></a>Cihaz tarafında güncellemeler alın
+## <a name="get-updates-on-the-device-side"></a>Cihaz tarafında güncelleştirmeleri al
 
-Bu bölümde, modülün istenen özelliklerin cihazınızda güncelliğini sağlamak için bir Python uygulaması oluşturursunuz.
+Bu bölümde, modülün ikizi istenen özellikler güncelleştirmesini sağlamak için bir Python uygulaması oluşturacaksınız.
 
-1. Modül bağlantı dizenizi alın. [Azure portalında,](https://portal.azure.com/)IoT Hub'ınıza gidin ve sol bölmedeki **IoT aygıtlarını** seçin. Aygıtlar listesinden **myFirstDevice'ı** seçin ve açın. **Modül kimlikleri** **altında, myFirstModule'i**seçin. Modül bağlantı dizesini kopyalayın. Bir sonraki adımda ihtiyacınız var.
+1. Modül Bağlantı dizenizi alın. [Azure Portal](https://portal.azure.com/)' de, IoT Hub gidin ve sol bölmedeki **IoT cihazları** ' nı seçin. Cihaz listesinden **Myfirstdevice** ' ı seçin ve açın. **Modül kimlikleri**altında **myfirstmodule**' ü seçin. Modül bağlantı dizesini kopyalayın. Aşağıdaki adımda yapmanız gerekir.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-1. Komut isteminizde **azure-iot-device** paketini yüklemek için aşağıdaki komutu çalıştırın:
+1. Komut istemindeki **Azure-IoT-Device** paketini yüklemek için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Metin düzenleyicisi kullanarak, çalışma dizininizde **ReceiveModuleTwinDesiredPropertiesPatch.py** adlı bir dosya oluşturun.
+1. Bir metin düzenleyicisi kullanarak çalışma dizininizde **ReceiveModuleTwinDesiredPropertiesPatch.py** adlı bir dosya oluşturun.
 
-1. Python dosyanıza aşağıdaki kodu ekleyin. *YourModuleConnectionString'i* adım 1'de kopyaladığınız modül bağlantı dizesiyle değiştirin.
+1. Aşağıdaki kodu Python dosyanıza ekleyin. *Yourmoduleconnectionstring* değerini, 1. adımda kopyaladığınız modül bağlantı dizesiyle değiştirin.
 
     ```python
     import time
@@ -239,15 +239,15 @@ Bu bölümde, modülün istenen özelliklerin cihazınızda güncelliğini sağl
 
 ## <a name="run-the-apps"></a>Uygulamaları çalıştırma
 
-Bu bölümde, **ReceiveModuleTwinDesiredPropertiesPatch** cihaz uygulamasını çalıştırın ve modülünüzün istenilen özelliklerini güncellemek için **UpdateModuleTwinDesiredProperties** hizmet uygulamasını çalıştırın.
+Bu bölümde, **Receivemodületwindesiredpropertiespatch** cihaz uygulamasını çalıştırır ve ardından modülünüzün istenen özelliklerini güncelleştirmek Için **Updatemodületwindesiredproperties** hizmet uygulamasını çalıştırırsınız.
 
-1. Komut istemini açın ve aygıt uygulamasını çalıştırın:
+1. Bir komut istemi açın ve cihaz uygulamasını çalıştırın:
 
     ```cmd/sh
     python ReceiveModuleTwinDesiredPropertiesPatch.py
     ```
 
-   ![Cihaz uygulaması ilk çıktısı](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
+   ![Cihaz uygulaması ilk çıkışı](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
 
 1. Ayrı bir komut istemi açın ve hizmet uygulamasını çalıştırın:
 
@@ -255,13 +255,13 @@ Bu bölümde, **ReceiveModuleTwinDesiredPropertiesPatch** cihaz uygulamasını �
     python UpdateModuleTwinDesiredProperties.py
     ```
 
-    **TelemetryInterval** istenilen özelliğin, hizmet uygulama çıktınızda güncelleştirilmiş modül ikizinde göründüğüne dikkat edin:
+    **Telemetryınterval** Desired özelliğinin, Service App çıktındaki ikizi güncelleştirilmiş modülünde göründüğünü unutmayın:
 
-   ![Hizmet uygulaması çıktısı](./media/iot-hub-python-python-module-twin-getstarted/service.png)
+   ![Hizmet uygulaması çıkışı](./media/iot-hub-python-python-module-twin-getstarted/service.png)
 
-    Aynı özellik, cihazınızın uygulama çıktısında alınan istenen özellikler yamasında görünür:
+    Aynı özellik, cihaz uygulama çıkışındaki istenen özellikler düzeltme ekinde görüntülenir:
 
-   ![Cihaz uygulaması çıktısı istenilen özellikleri gösterir yama](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
+   ![Cihaz uygulama çıktısı istenen özellikler düzeltme ekini gösterir](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: sqlcmd ile bağlan
-description: Synapse SQL havuzuna bağlanmak ve sorgulamak için sqlcmd command-line yardımcı programını kullanın.
+title: Sqlcmd ile bağlanma
+description: SYNAPSE SQL havuzuna bağlanmak ve sorgulamak için sqlcmd komut satırı yardımcı programını kullanın.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745191"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Sqlcmd ile Synapse SQL havuzuna bağlanın
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Sqlcmd ile SYNAPSE SQL Pool 'a bağlanma
 
 > [!div class="op_single_selector"]
 >
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Makine Öğrenimi](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
+> * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-SQL havuzuna bağlanmak ve sorgulamak için [sqlcmd][sqlcmd] komut satırı yardımcı programını kullanın.  
+Bir SQL havuzuna bağlanmak ve sorgu eklemek için [sqlcmd] [sqlcmd] komut satırı yardımcı programını kullanın.  
 
 ## <a name="1-connect"></a>1. Bağlan
 
-[sqlcmd][sqlcmd] ile başlamak için komut istemini açın ve SQL pool veritabanınızın bağlantı dizesini takip eden **sqlcmd** girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
+[Sqlcmd] [sqlcmd] ile çalışmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** yazıp SQL havuzu veritabanınızın bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
 
 * **Server (-S):**`<`Sunucu Adı`>`.database.windows.net biçiminde belirtilmiş sunucu
 * **Database (-d):** Veritabanı adı.
-* **Teklif Edilen Tanımlayıcıları Etkinleştir (-I):** Sql havuz örneğine bağlanmak için teklif edilen tanımlayıcıların etkinleştirilmesi gerekir.
+* **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Bir SQL havuzu örneğine bağlanmak için tırnak işareti tanımlayıcıları etkinleştirilmelidir.
 
 SQL Server Kimlik Doğrulamasını kullanmak için kullanıcı adı/parola parametrelerini eklemeniz gerekir:
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > Active Directory kullanarak kimlik doğrulaması yapmak için [Azure Active Directory Kimlik Doğrulamasını etkinleştirmeniz](sql-data-warehouse-authentication.md) gerekir.
 
-## <a name="2-query"></a>2. Sorgula
+## <a name="2-query"></a>2. sorgu
 
 Bağlantının ardından desteklenen herhangi bir Transact-SQL deyimini örnekte yayımlayabilirsiniz.  Bu örnekte sorgular etkileşimli modda gönderilir.
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-sqlcmd'de bulunan seçenekler hakkında daha fazla bilgi için [sqlcmd dokümantasyona](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
+Sqlcmd 'de kullanılabilen seçenekler hakkında daha fazla bilgi için bkz. [sqlcmd belgeleri](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).

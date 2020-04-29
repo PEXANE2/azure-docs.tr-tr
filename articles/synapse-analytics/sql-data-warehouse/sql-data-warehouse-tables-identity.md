@@ -1,6 +1,6 @@
 ---
-title: Vekil anahtarları oluşturmak için KİmLİk kullanma
-description: Synapse SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
+title: Vekil anahtarlar oluşturmak için KIMLIK kullanma
+description: SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanma önerileri ve örnekleri.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742646"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL havuzunda vekil anahtarları oluşturmak için KİmLİk kullanma
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda vekil anahtarlar oluşturmak için KIMLIK kullanma
 
-Synapse SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
+SYNAPSE SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KIMLIK özelliğini kullanma önerileri ve örnekleri.
 
-## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir
+## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir?
 
-Tablodaki vekil anahtarı, her satır için benzersiz bir tanımlayıcısı olan bir sütundur. Anahtar tablo verilerinden oluşturulmadı. Veri modelleyicileri, veri ambarı modellerini tasarlarken tablolarında vekil anahtarları oluşturmayı severler. Yük performansını etkilemeden bu amaca ulaşmak için KİmLİk özelliğini kullanabilirsiniz.  
+Tablodaki bir vekil anahtar, her satır için benzersiz bir tanımlayıcıya sahip bir sütundur. Anahtar Tablo verilerinden oluşturulmaz. Veri ambarı modellerini tasarlarken, tablolarında vekil anahtarlar oluşturmak gibi veri modelleri. KIMLIK özelliğini, yük performansını etkilemeden, bu hedefe basitçe ulaşmak için kullanabilirsiniz.  
 
-## <a name="creating-a-table-with-an-identity-column"></a>KİmLİk sütunu içeren tablo oluşturma
+## <a name="creating-a-table-with-an-identity-column"></a>KIMLIK sütunuyla tablo oluşturma
 
-IDENTITY özelliği, yük performansını etkilemeden Synapse SQL havuzundaki tüm dağıtımları ölçeklendirmek üzere tasarlanmıştır. Bu nedenle, KİmLİk uygulaması bu hedeflere ulaşmaya yöneliktir.
+IDENTITY özelliği, yük performansını etkilemeden SYNAPSE SQL havuzundaki tüm dağıtımların ölçeğini genişletmek için tasarlanmıştır. Bu nedenle, KIMLIK uygulanması, bu hedeflere ulaşılmaya yönelik olarak tasarlanmıştır.
 
-Aşağıdaki ifadeye benzer sözdizimi kullanarak tabloyu ilk oluşturduğunuzda, tabloyu KİmLİk özelliğine sahip olarak tanımlayabilirsiniz:
+Aşağıdaki ifadeye benzer bir sözdizimi kullanarak tabloyu ilk oluşturduğunuzda, KIMLIK özelliğine sahip olarak bir tablo tanımlayabilirsiniz:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -44,15 +44,15 @@ WITH
 ;
 ```
 
-Daha sonra `INSERT..SELECT` tabloyu doldurmak için kullanabilirsiniz.
+Daha sonra tabloyu doldurmak `INSERT..SELECT` için öğesini kullanabilirsiniz.
 
-Bu bölümün geri kalanı, bunları daha tam olarak anlamanıza yardımcı olmak için uygulamanın nüanslarını vurgular.  
+Bu bölümün geri kalanında, bunları daha fazla anlamanıza yardımcı olmak için uygulamanın nuslarını vurgular.  
 
-### <a name="allocation-of-values"></a>Değerlerin tahsisi
+### <a name="allocation-of-values"></a>Değerlerin ayrılması
 
-KİmLİk özelliği, SQL Server ve Azure SQL Veritabanı'nın davranışını yansıtan vekil değerlerinin ayrılma sırasını garanti etmez. Ancak, Synapse SQL havuzunda, bir garantinin yokluğu daha belirgindir.
+IDENTITY özelliği, SQL Server ve Azure SQL veritabanı 'nın davranışını yansıtan vekil değerlerinin ayrıldığı sırayı garanti etmez. Ancak, SYNAPSE SQL havuzunda, garanti olmaması daha fazla önemlidir.
 
-Aşağıdaki örnek bir örnektir:
+Aşağıdaki örnek bir çizimde verilmiştir:
 
 ```sql
 CREATE TABLE dbo.T1
@@ -77,34 +77,34 @@ FROM dbo.T1;
 DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
-Önceki örnekte, iki satır dağılım 1 indi. İlk satır sütunda `C1`1'in vekil değerine, ikinci satırın ise 61'in vekil değerine sahiptir. Bu değerlerin her ikisi de KİmLİk özelliği tarafından oluşturuldu. Ancak, değerlerin tahsisi bitişik değildir. Bu davranış tasarım gereğidir.
+Yukarıdaki örnekte, dağıtım 1 ' de iki satır oluşturulmuş. İlk satırda, sütununda `C1`1 vekil değeri bulunur ve ikinci satırda 61 yedek değeri bulunur. Bu değerlerin her ikisi de ıDENTITY özelliği tarafından oluşturulmuştur. Ancak, değerlerin ayrılması bitişik değildir. Bu davranış tasarım gereğidir.
 
-### <a name="skewed-data"></a>Çarpık veriler
+### <a name="skewed-data"></a>Eğilmiş veriler
 
-Veri türü için değer aralığı dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tabloda çarpık veriler varsa, veri türü için kullanılabilir değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtımda biterse, tablo etkili bir şekilde veri türünün değerlerinin yalnızca altıda birine erişebilir. Bu nedenle, KİmLİk özelliği `INT` `BIGINT` yalnızca veri türleri ile sınırlıdır.
+Veri türü için değer aralığı, dağıtımlar arasında eşit olarak yayılır. Dağıtılmış bir tablo, asimetrik verilerden bulunursa, veri türü için kullanılabilir olan değer aralığı zamanından önce tükenebilir. Örneğin, tüm veriler tek bir dağıtım içinde sona ererse, etkin şekilde tablo, veri türü değerlerinin yalnızca tek altılarına erişim sağlar. Bu nedenle, ıDENTITY özelliği yalnızca `INT` ve `BIGINT` veri türleriyle sınırlıdır.
 
-### <a name="selectinto"></a>Seçin.. INTO
+### <a name="selectinto"></a>Seç.. BIRLEŞTIRIN
 
-Varolan bir KİmLİk sütunu yeni bir tabloya seçildiğinde, aşağıdaki koşullardan biri doğru olmadığı sürece, yeni sütun KİmLİk özelliğini devralır:
+Varolan bir KIMLIK sütunu yeni bir tabloya seçildiğinde, aşağıdaki koşullardan biri doğru değilse yeni sütun KIMLIK özelliğini devralır:
 
-- SELECT deyimi bir birleştirme içerir.
-- Birden çok SELECT deyimleri UNION kullanılarak birleştirilir.
-- KİmLİk sütunu SELECT listesinde birden fazla kez listelenir.
-- KİmLİk sütunu bir ifadenin parçasıdır.
+- SELECT ifadesinde bir JOIN var.
+- Çoklu SELECT deyimleri UNıON kullanılarak birleştirilir.
+- KIMLIK sütunu, SEÇIM listesinde birden çok kez listelendi.
+- KIMLIK sütunu bir ifadenin parçasıdır.
 
-Bu koşullardan herhangi biri doğruysa, sütun KİmLİk özelliğini devralmak yerine NULL Değİl oluşturulur.
+Bu koşullardan herhangi biri doğru ise, sütun KIMLIK özelliğini devralma yerine NULL DEĞIL olarak oluşturulur.
 
 ### <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-CREATE TABLE AS SELECT (CTAS) SELECT için belgelenen aynı SQL Server davranışını izler... IÇINE. Ancak, deyimin `CREATE TABLE` sütun tanımında bir KİmLİk özelliği belirtemezsiniz. CTAS `SELECT` bölümünde ki KİmLİk işlevini de kullanamazsınız. Bir tabloyu doldurmak `CREATE TABLE` `INSERT..SELECT` için, tabloyu doldurmak için izleyen tabloyu tanımlamak için kullanmanız gerekir.
+SELECT (CTAS) olarak CREATE TABLE, SELECT için belgelenen aynı SQL Server davranışını izler. Birleştirin. Ancak, deyimin `CREATE TABLE` bölümünün sütun TANıMıNDA bir Identity özelliği belirtemezsiniz. CTAS 'nin `SELECT` bölümünde de Identity işlevini kullanamazsınız. Bir tabloyu doldurmak için, tabloyu ve ardından doldurmak `CREATE TABLE` `INSERT..SELECT` üzere öğesini tanımlamak için kullanmanız gerekir.
 
-## <a name="explicitly-inserting-values-into-an-identity-column"></a>Kimlik sütununa değerleri açıkça ekleme
+## <a name="explicitly-inserting-values-into-an-identity-column"></a>Bir KIMLIK sütununa açıkça değer ekleme
 
-Synapse SQL `SET IDENTITY_INSERT <your table> ON|OFF` havuzu sözdizimini destekler. Bu sözdizimini, kimlik sütununa açıkça değer eklemek için kullanabilirsiniz.
+SYNAPSE SQL havuzu sözdizimini `SET IDENTITY_INSERT <your table> ON|OFF` destekler. KIMLIK sütununa açıkça değer eklemek için bu sözdizimini kullanabilirsiniz.
 
-Birçok veri modelleyicisi, boyutlarındaki belirli satırlar için önceden tanımlanmış negatif değerleri kullanmayı sever. Örnek -1 veya "bilinmeyen üye" satırıdır.
+Birçok veri modu, boyutları içindeki belirli satırlar için önceden tanımlanmış negatif değerler kullanmak gibidir. Örnek,-1 veya "bilinmeyen üye" satırıdır.
 
-Sonraki komut dosyası, SET IDENTITY_INSERT kullanarak bu satırın nasıl açıkça eklendirilebildiğini gösterir:
+Sonraki komut dosyası, SET IDENTITY_INSERT kullanarak bu satırın açıkça nasıl ekleneceğini gösterir:
 
 ```sql
 SET IDENTITY_INSERT dbo.T1 ON;
@@ -125,11 +125,11 @@ FROM    dbo.T1
 
 ## <a name="loading-data"></a>Veri yükleme
 
-KİmLİk özelliğinin varlığı, veri yükleme kodunuz üzerinde bazı etkilere sahiptir. Bu bölümde, Identity kullanarak tablolara veri yüklemek için bazı temel desenler vurgulanır.
+IDENTITY özelliğinin varlığı, veri yükleme kodunuzda bazı etkileri vardır. Bu bölümde, KIMLIK kullanarak tablolara veri yüklemeye yönelik bazı temel desenler vurgulanmıştır.
 
-Bir tabloya veri yüklemek ve KİmLİk kullanarak bir vekil anahtarı oluşturmak için, tablo oluşturmak ve sonra INSERT kullanın... SELECT veya INSERT... YÜKÜ gerçekleştirmek için DEĞERLER.
+Bir tabloya veri yüklemek ve KIMLIK kullanarak bir yedek anahtar oluşturmak için tabloyu oluşturun ve ardından Ekle ' yi kullanın. Seç veya Ekle... Yüklemeyi gerçekleştirecek değerler.
 
-Aşağıdaki örnek, temel deseni vurgular:
+Aşağıdaki örnekte temel desenler vurgulanmıştır:
 
 ```sql
 --CREATE TABLE with IDENTITY
@@ -158,16 +158,16 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 ```
 
 > [!NOTE]
-> Kimlik sütunu olan `CREATE TABLE AS SELECT` bir tabloya veri yüklerken şu anda kullanmak mümkün değildir.
+> KIMLIK sütunu olan bir tabloya veri `CREATE TABLE AS SELECT` yüklerken şu anda kullanılamaz.
 >
 
-Veri yükleme hakkında daha fazla bilgi için, [Synapse SQL havuzu için Ekstresi, Yükleme ve Dönüştürme (ELT) Tasarlama](design-elt-data-loading.md) ve [en iyi uygulamaları yükleme](guidance-for-loading-data.md)bölümüne bakın.
+Verileri yükleme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL havuzu Için ayıklama, yükleme ve dönüştürme (ELT) tasarlama](design-elt-data-loading.md) ve [en iyi uygulamalar yükleme](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Sistem görünümleri
 
-KİmLİk özelliğine sahip bir sütunu tanımlamak için [sys.identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kataloğu görünümünü kullanabilirsiniz.
+IDENTITY özelliği olan bir sütunu belirlemek için [sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) katalog görünümünü kullanabilirsiniz.
 
-Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için, bu örnek, sys.identity_column'nin diğer sistem kataloğu görünümleriyle nasıl tümleştirilebildiğini gösterir:
+Veritabanı şemasını daha iyi anlamanıza yardımcı olmak için bu örnek, sys. identity_column ' nin diğer sistem Kataloğu görünümleriyle nasıl tümleştirileceğini gösterir:
 
 ```sql
 SELECT  sm.name
@@ -189,39 +189,39 @@ AND     tb.name = 'T1'
 
 ## <a name="limitations"></a>Sınırlamalar
 
-KİmLİk özelliği kullanılamaz:
+IDENTITY özelliği kullanılamaz:
 
 - Sütun veri türü INT veya BIGINT olmadığında
-- Sütun da dağıtım anahtarı olduğunda
-- Tablo harici bir tablo olduğunda
+- Sütun aynı zamanda dağıtım anahtarı olduğunda
+- Tablo bir dış tablo olduğunda
 
-Synapse SQL havuzunda aşağıdaki ilgili işlevler desteklenmez:
+Aşağıdaki ilgili işlevler SYNAPSE SQL havuzunda desteklenmez:
 
-- [KİmLİk()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENTITY ()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Scope_ıdentıty](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [ıdent_current](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_INCR](/sql/t-sql/functions/ident-incr-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_SEED](/sql/t-sql/functions/ident-seed-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="common-tasks"></a>Genel görevler
 
-Bu bölümde, KİmLİk sütunları ile çalışırken ortak görevleri gerçekleştirmek için kullanabileceğiniz bazı örnek kodlar bulunur.
+Bu bölümde, KIMLIK sütunlarıyla çalışırken ortak görevleri gerçekleştirmek için kullanabileceğiniz bazı örnek kodlar sağlanmaktadır.
 
-C1 sütunu, aşağıdaki tüm görevlerde kİmLİkTIR.
+C1 sütunu, aşağıdaki tüm görevlerdeki KIMLIKTIR.
 
-### <a name="find-the-highest-allocated-value-for-a-table"></a>Tablo için ayrılan en yüksek değeri bulma
+### <a name="find-the-highest-allocated-value-for-a-table"></a>Bir tablo için ayrılan en yüksek değeri bulma
 
-Dağıtılmış `MAX()` tablo için ayrılan en yüksek değeri belirlemek için işlevi kullanın:
+Dağıtılmış bir `MAX()` tablo için ayrılan en yüksek değeri öğrenmek için işlevini kullanın:
 
 ```sql
 SELECT MAX(C1)
 FROM dbo.T1
 ```
 
-### <a name="find-the-seed-and-increment-for-the-identity-property"></a>KİmLİk özelliği için tohum ve artış bulun
+### <a name="find-the-seed-and-increment-for-the-identity-property"></a>IDENTITY özelliği için çekirdek ve artışı bulma
 
-Aşağıdaki sorguyu kullanarak bir tablonun kimlik artışını ve tohum yapılandırma değerlerini keşfetmek için katalog görünümlerini kullanabilirsiniz:
+Aşağıdaki sorguyu kullanarak bir tablonun kimlik artışı ve çekirdek yapılandırma değerlerini öğrenmek için katalog görünümlerini kullanabilirsiniz:
 
 ```sql
 SELECT  sm.name
@@ -242,5 +242,5 @@ AND     tb.name = 'T1'
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Tabloya genel bakış](sql-data-warehouse-tables-overview.md)
-- [CREATE TABLE (Transact-SQL) KİmLİğİ (Özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [CREATE TABLE (Transact-SQL) KIMLIĞI (özellik)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC CHECKGIRINTILE](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

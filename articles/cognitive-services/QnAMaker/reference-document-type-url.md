@@ -1,58 +1,58 @@
 ---
-title: İthalat için desteklenen URL türleri - QnA Maker
-description: Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
+title: Import-Soru-Cevap Oluşturma için desteklenen URL türleri
+description: URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804325"
 ---
-# <a name="urls-supported-for-importing-documents"></a>Belge alma için desteklenen URL'ler
+# <a name="urls-supported-for-importing-documents"></a>Belgeleri içeri aktarmak için desteklenen URL 'Ler
 
-Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
+URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
 
-## <a name="faq-urls"></a>SSS URL'leri
+## <a name="faq-urls"></a>SSS URL 'Leri
 
-QnA Maker, SSS web sayfalarını 3 farklı şekilde destekleyebilir:
+Soru-Cevap Oluşturma, 3 farklı formda SSS Web sayfalarını destekleyebilir:
 
 * Düz SSS sayfaları
-* Bağlantıları olan SSS sayfaları
-* Konular Ana Sayfası olan SSS sayfaları
+* Bağlantılarla ilgili SSS sayfaları
+* Konular giriş sayfası ile SSS sayfaları
 
 ### <a name="plain-faq-pages"></a>Düz SSS sayfaları
 
-Bu, yanıtların soruları hemen aynı sayfadan takip ettiği en yaygın SSS sayfası türüdür.
+Bu en yaygın SSS sayfası türüdür ve burada, yanıtlar aynı sayfada soruları hemen izler.
 
-Aşağıda düz bir SSS sayfası örneği verilmiştir:
+Aşağıda, düz bir SSS sayfasına örnek verilmiştir:
 
-![Bilgi tabanı için düz SSS sayfası örneği](./media/qnamaker-concepts-datasources/plain-faq.png)
-
-
-### <a name="faq-pages-with-links"></a>Bağlantıları olan SSS sayfaları
-
-Bu tür SSS sayfasında, sorular bir araya toplanır ve aynı sayfanın farklı bölümlerinde veya farklı sayfalarda bulunan yanıtlara bağlanır.
-
-Aşağıda, aynı sayfada bulunan bölümlerdeki bağlantıların yer aldığı bir SSS sayfası örneği verilmiştir:
-
- ![Bilgi tabanı için Bölüm Bağlantısı SSS sayfası örneği](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
+![Bilgi Bankası için düz SSS sayfası örneği](./media/qnamaker-concepts-datasources/plain-faq.png)
 
 
-### <a name="parent-topics-page-links-to-child-answers-pages"></a>Alt Konular sayfa larını alt yanıt sayfalarına bağlar
+### <a name="faq-pages-with-links"></a>Bağlantılarla ilgili SSS sayfaları
 
-Bu sSS türünde, her konunun farklı bir sayfadaki karşılık gelen soru ve yanıt kümesiyle bağlantılı olduğu bir Konular sayfası vardır. QnA Maker, ilgili soruları & yanıtları ayıklamak için tüm bağlantılı sayfaları taramak için türünür.
+Bu tür bir SSS sayfasında, sorular birlikte toplanır ve aynı sayfanın farklı bölümlerinde ya da farklı sayfalarda bulunan yanıtlara bağlanır.
 
-Aşağıda, farklı sayfalardaki SSS bölümlerine bağlantılar içeren konular sayfasının bir örneği verilmiştir.
+Aşağıda, aynı sayfada bulunan bölümlerde bulunan bağlantılarla ilgili bir SSS sayfası örneği verilmiştir:
 
- ![Bilgi tabanı için derin bağlantı SSS sayfa örneği](./media/qnamaker-concepts-datasources/topics-faq.png)
+ ![Bilgi Bankası için bölüm bağlantısı SSS sayfası örneği](./media/qnamaker-concepts-datasources/sectionlink-faq.png)
 
-## <a name="support-urls"></a>Destek URL'leri
 
-QnA Maker, belirli bir görevin nasıl gerçekleştirileceğini, belirli bir sorunun nasıl tanılanacağını ve çözüleceğini ve belirli bir işlem için en iyi uygulamaların neler olduğunu açıklayan web makaleleri gibi yarı yapılandırılmış destek web sayfalarını işleyebilir. Çıkarma, hiyerarşik başlıklara sahip açık bir yapıya sahip içerik üzerinde en iyi şekilde çalışır.
+### <a name="parent-topics-page-links-to-child-answers-pages"></a>Üst konular sayfası alt yanıt sayfalarına bağlantılar
+
+Bu tür bir SSS, her konunun farklı bir sayfada ilgili soru ve yanıt kümesiyle bağlantılı olduğu konular sayfasına sahiptir. Soru-Cevap Oluşturma, karşılık gelen soruların & yanıtları ayıklamak için tüm bağlantılı sayfalara gezinir.
+
+Aşağıda, farklı sayfalardaki SSS bölümlerinin bağlantılarıyla ilgili konular sayfasına bir örnek verilmiştir.
+
+ ![Ayrıntılı bağlantı SSS sayfası bir Bilgi Bankası için örnek](./media/qnamaker-concepts-datasources/topics-faq.png)
+
+## <a name="support-urls"></a>Destek URL 'Leri
+
+Soru-Cevap Oluşturma, belirli bir görevin nasıl gerçekleştirileceğini, belirli bir sorunun nasıl tanılanacağı ve çözümleneceğini ve belirli bir işlem için en iyi uygulamaların hangileri olduğunu betimleyen web makaleleri gibi yarı yapılandırılmış destek Web sayfalarını işleyebilir. Ayıklama, hiyerarşik başlıkları olan açık bir yapıya sahip içerikte en iyi şekilde kullanılır.
 
 > [!NOTE]
-> Destek makaleleri için çıkarma yeni bir özelliktir ve erken aşamalarındadır. Bu iyi yapılandırılmış basit sayfalar için en iyi çalışır ve karmaşık üstbilgi / altbilgi içermez.
+> Destek makaleleri için ayıklama yeni bir özelliktir ve erken aşamalarındayken. İyi yapılandırılmış olan ve karmaşık üstbilgiler/altbilgiler içermeyen basit sayfalar için en iyi şekilde kullanılır.
 
-![QnA Maker, hiyerarşik başlıklarla açık bir yapının sunulduğu yarı yapılandırılmış web sayfalarından çıkarmayı destekler](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)
+![Soru-Cevap Oluşturma, açık bir yapının hiyerarşik başlıklarla sunulduğu yarı yapılandırılmış Web sayfalarından ayıklanmasını destekler](./media/qnamaker-concepts-datasources/support-web-pages-with-heirarchical-structure.png)

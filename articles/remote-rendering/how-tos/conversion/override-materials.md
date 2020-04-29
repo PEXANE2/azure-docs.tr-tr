@@ -1,28 +1,28 @@
 ---
 title: Model dönüştürme sırasında malzemeleri geçersiz kılma
-description: Dönüşüm zamanında ki iş akışını geçersiz kılan malzemeyi açıklar
+description: Dönüştürme sırasında iş akışını geçersiz kılan malzemeleri açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
 ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681486"
 ---
 # <a name="override-materials-during-model-conversion"></a>Model dönüştürme sırasında malzemeleri geçersiz kılma
 
 Dönüştürme sırasında, kaynak modeldeki malzeme ayarları, işleyici tarafından kullanılan [PBR malzemelerini](../../overview/features/pbr-materials.md) tanımlamak için kullanılır.
-Bazen [varsayılan dönüştürme](../../reference/material-mapping.md) istenilen sonuçları vermez ve değişiklik yapmanız gerekir.
-Bir model Azure Uzaktan İşleme'de kullanılmak üzere dönüştürüldüğünde, malzeme dönüştürmenin malzeme başına nasıl yapıldığını özelleştirmek için bir malzeme geçersiz kılma dosyası sağlayabilirsiniz.
-[Model dönüştürme yapılandırma](configure-model-conversion.md) bölümü, malzeme geçersiz dosyası nın dosya adını bildirmek için yönergeler vardır.
+Bazen [varsayılan dönüştürme](../../reference/material-mapping.md) istenen sonuçlara izin vermez ve değişiklik yapmanız gerekir.
+Bir model Azure uzaktan Işlemede kullanılmak üzere dönüştürüldüğünde, malzeme dönüştürmesinin malzeme başına olarak nasıl yapılacağını özelleştirmek için bir malzeme geçersiz kılma dosyası sağlayabilirsiniz.
+[Model dönüştürmeyi yapılandırma](configure-model-conversion.md) bölümünde malzeme geçersiz kılma dosya adını bildirmek için yönergeler vardır.
 
 ## <a name="the-override-file-used-during-conversion"></a>Dönüştürme sırasında kullanılan geçersiz kılma dosyası
 
-Basit bir örnek olarak, bir kutu modelinin "Varsayılan" adı verilen tek bir malzemeye sahip olduğunu varsayalım. Albedo rengi ARR kullanım için ayarlanması gerekir.
-Bu durumda, `box_materials_override.json` bir dosya aşağıdaki gibi oluşturulabilir:
+Basit bir örnek olarak, bir kutu modelinin "varsayılan" olarak adlandırılan tek bir malzemenin olduğunu varsayalım. Albedo renginin ARR 'de kullanılmak üzere ayarlanması gerekir.
+Bu durumda, bir `box_materials_override.json` dosya aşağıdaki gibi oluşturulabilir:
 
 ```json
 [
@@ -38,7 +38,7 @@ Bu durumda, `box_materials_override.json` bir dosya aşağıdaki gibi oluşturul
 ]
 ```
 
-Dosya `box_materials_override.json` giriş kapsayıcısına yerleştirilir ve `ConversionSettings.json` bir yanı, `box.fbx`dönüşüm geçersiz kılma dosyasını nerede bulacağını söyler (bkz. model dönüştürme [yapılandırma:](configure-model-conversion.md)
+`box_materials_override.json` Dosya, giriş kapsayıcısına yerleştirilir ve `ConversionSettings.json` `box.fbx`üzerine, geçersiz kılma dosyasını nerede bulacağını söyleyen dönüştürmeye bildirir (bkz [. model dönüştürmeyi yapılandırma](configure-model-conversion.md)):
 
 ```json
 {
@@ -46,13 +46,13 @@ Dosya `box_materials_override.json` giriş kapsayıcısına yerleştirilir ve `C
 }
 ```
 
-Model dönüştürüldüğünde, yeni ayarlar uygulanır.
+Model dönüştürüldüğünde yeni ayarlar uygulanır.
 
-### <a name="color-materials"></a>Renkli malzemeler
+### <a name="color-materials"></a>Renk malzemeleri
 
-[Renk malzemesi](../../overview/features/color-materials.md) modeli, aydınlatmadan bağımsız olarak sürekli gölgelenmiş bir yüzeyi tanımlar.
-Bu, örneğin Fotogrametri algoritmaları tarafından yapılan varlıklar için yararlıdır.
-Malzeme geçersiz kılma dosyalarında, bir malzeme ' ye `unlit` ayarlayarak renk malzemesi olarak ilan `true`edilebilir.
+[Renk malzemesi](../../overview/features/color-materials.md) modeli ışıklanmaya bağımsız olan sürekli gölgeli bir yüzey tanımlar.
+Bu, örneğin, Photogrammetri algoritmalarının yaptığı varlıklar için yararlıdır.
+Malzeme geçersiz kılma dosyalarında, bir malzeme, olarak `unlit` `true`ayarlanarak bir renk malzemesi olarak bildirilebilecek.
 
 ```json
 [
@@ -67,11 +67,11 @@ Malzeme geçersiz kılma dosyalarında, bir malzeme ' ye `unlit` ayarlayarak ren
 ]
 ```
 
-### <a name="ignore-specific-texture-maps"></a>Belirli doku eşlemlerini yoksay
+### <a name="ignore-specific-texture-maps"></a>Belirli doku eşlemelerini yoksay
 
-Bazen dönüştürme işleminin belirli doku eşlemlerini yok saymasını isteyebilirsiniz. Bu durum, modeliniz işleyici tarafından doğru anlaşılmayan özel haritalar oluşturan bir araç tarafından oluşturulduğunda olabilir. Örneğin, opaklık dışında bir şeyi tanımlamak için kullanılan bir "OpacityMap" veya "NormalMap"in "BumpMap" olarak depolandığı bir model. (İkinci durumda dönüştürücü "NormalMap" olarak "BumpMap" kullanmak neden olur "NormalMap", göz ardı etmek istiyorum.)
+Bazen dönüştürme işleminin belirli doku eşlemelerini yoksaymasını isteyebilirsiniz. Bu, modelinize göre doğru anlaşılmayan özel eşlemeler üreten bir araç tarafından oluşturulduysa, bu durum olabilir. Örneğin, opaklık dışında bir şeyi tanımlamak için kullanılan bir "OpacityMap" veya "NormalMap" in "Tampmap" olarak depolandığı bir model. (İkinci durumda, "NormalMap" olarak dönüştürücünün "NormalMap" olarak kullanılmasına neden olacak "NormalMap" öğesini yok sayabilirsiniz.)
 
-Prensip basittir. Sadece adlı `ignoreTextureMaps` bir özellik ekleyin ve yoksaymak istediğiniz herhangi bir doku eşlemi ekleyin:
+İlke basittir. Yalnızca adlı `ignoreTextureMaps` bir özellik ekleyin ve yoksaymak istediğiniz doku haritasını ekleyin:
 
 ```json
 [
@@ -82,11 +82,11 @@ Prensip basittir. Sadece adlı `ignoreTextureMaps` bir özellik ekleyin ve yoksa
 ]
 ```
 
-Yoksayabileceğiniz doku haritalarının tam listesi için aşağıdaki JSON şemasına bakın.
+Göz ardı ettiğiniz doku eşlemelerinin tam listesi için aşağıdaki JSON şemasına bakın.
 
-## <a name="json-schema"></a>JSON şema
+## <a name="json-schema"></a>JSON şeması
 
-Malzeme dosyaları için tam JSON şema burada verilmiştir. Renk malzemesi `unlit` ve `ignoreTextureMaps` [PBR](../../overview/features/pbr-materials.md) [malzeme](../../overview/features/color-materials.md) modellerinde bölümlerde açıklanan özelliklerin bir alt kümesi ve mevcut özellikleri dışında.
+Malzemeler dosyaları için tam JSON şeması burada verilmiştir. `unlit` Ve `ignoreTextureMaps`dışında, kullanılabilir özellikler, [renk malzemesi](../../overview/features/color-materials.md) ve [PBR malzeme](../../overview/features/pbr-materials.md) modelleriyle ilgili bölümlerde açıklanan özelliklerin bir alt kümesidir.
 
 ```json
 {
@@ -172,5 +172,5 @@ Malzeme dosyaları için tam JSON şema burada verilmiştir. Renk malzemesi `unl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Renkli malzemeler](../../overview/features/color-materials.md)
+* [Renk malzemeleri](../../overview/features/color-materials.md)
 * [PBR malzemeleri](../../overview/features/pbr-materials.md)

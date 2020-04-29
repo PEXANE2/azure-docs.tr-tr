@@ -6,10 +6,10 @@ ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: bb51a47efc7bcae5014d5ea004674fed7cb33fe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851822"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Hızlı başlangıç: Python kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
@@ -20,14 +20,14 @@ Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
 * [KB Oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
 * [İşlem Ayrıntılarını Alma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Referans belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python Örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
+[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Python örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.7](https://www.python.org/downloads/)
-* [Bir QnA Maker hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalı. Anahtar ve bitiş noktanızı (kaynak adını içerir) almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin.
+* Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
 
 ## <a name="create-a-knowledge-base-python-file"></a>Bilgi bankası Python dosyası oluşturma
 
@@ -40,14 +40,14 @@ Aşağıdaki satırları `create-new-knowledge-base-3x.py` adlı dosyanın en ü
 [!code-python[Add the required dependencies](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=1-1 "Add the required dependencies")]
 
 ## <a name="add-the-required-constants"></a>Gerekli sabitleri ekleme
-Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine erişmek için gerekli sabitleri ekleyin. Değerini `<your-qna-maker-subscription-key>` ve `<your-resource-name>` kendi QnA Maker anahtarınızı ve kaynak adınız ile değiştirin.
+Yukarıdaki gerekli bağımlılıklardan sonra Soru-Cevap Oluşturma hizmetine erişmek için gerekli sabitleri ekleyin. `<your-qna-maker-subscription-key>` Ve `<your-resource-name>` değerlerini kendi soru-cevap oluşturma anahtar ve kaynak adınızla değiştirin.
 
-Program sınıfının en üstünde, QnA Maker'a erişmek için gerekli sabitleri ekleyin.
+Program sınıfının en üstünde, Soru-Cevap Oluşturma erişmek için gereken sabitleri ekleyin.
 
 Aşağıdaki değerleri ayarlayın:
 
-* `<your-qna-maker-subscription-key>`- **Anahtar** 32 karakterli bir dizedir ve Azure portalında, QnA Maker kaynağında, Quickstart sayfasında mevcuttur. Bu, tahmin bitiş noktası anahtarıyla aynı değildir.
-* `<your-resource-name>`- **Kaynak adınız,** yazarlık için son nokta URL'sini `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`oluşturmak için kullanılır. Bu, tahmin bitiş noktasını sorgulamak için kullanılan URL ile aynı url değildir.
+* `<your-qna-maker-subscription-key>`- **Anahtar** , bir 32 karakter dizesidir ve hızlı başlangıç sayfasında Soru-Cevap Oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
+* `<your-resource-name>`- **Kaynak adınız** yazma için yazma uç noktası URL 'sini, biçiminde oluşturmak için kullanılır `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
 [!code-python[Add the required constants](~/samples-qnamaker-python/documentation-samples/quickstarts/create-knowledge-base/create-new-knowledge-base-3x.py?range=5-13 "Add the required constants")]
 

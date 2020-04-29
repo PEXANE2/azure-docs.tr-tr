@@ -1,6 +1,6 @@
 ---
-title: Tablo tasarlama
-description: Synapse SQL havuzunda tablo tasarlamaya giriş.
+title: Tabloları tasarlama
+description: SYNAPSE SQL havuzunda tablo tasarlamaya giriş.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742615"
 ---
-# <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tasarım tabloları
+# <a name="design-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tablo tasarlama
 
-Bu makalede, SQL havuzunda tablolar tasarlamak için anahtar giriş kavramları sağlar.
+Bu makalede, SQL havuzunda tablo tasarlamaya yönelik temel tanıtım kavramları sağlanmaktadır.
 
-## <a name="determine-table-category"></a>Tablo kategorilerini belirleme
+## <a name="determine-table-category"></a>Tablo kategorisini belirleme
 
-Bir [yıldız şeması](https://en.wikipedia.org/wiki/Star_schema) verileri olgu ve boyut tabloları na göre düzenler. Bazı tablolar, bir olgu veya boyut tablosuna geçmeden önce tümleştirme veya veri hazırlama için kullanılır. Bir tablo tasarlarken, tablo verilerinin bir gerçeğe, boyuta mı yoksa tümleştirme tablosuna mı ait olduğuna karar verin. Bu karar uygun tablo yapısını ve dağılımını bildirir.
+Bir [yıldız şeması](https://en.wikipedia.org/wiki/Star_schema) , verileri olgu ve boyut tablolarına düzenler. Bazı tablolar, bir olgu veya boyut tablosuna geçmeden önce tümleştirme veya hazırlama verileri için kullanılır. Bir tablo tasarlarken tablo verilerinin bir olgu, boyut veya tümleştirme tablosunda yer alıyor olup olmadığına karar verin. Bu karar, uygun tablo yapısına ve dağıtımına bildirir.
 
-- **Olgu tabloları,** genellikle bir işlem sisteminde oluşturulan ve sonra SQL havuzuna yüklenen nicel verileri içerir. Örneğin, bir perakende işletmesi her gün satış hareketleri oluşturur ve verileri çözümleme için bir SQL havuzu durum tablosuna yükler.
+- **Olgu tabloları** , genellikle bir işlem sisteminde oluşturulan ve sonra SQL havuzuna yüklenen nicel verilerini içerir. Örneğin, bir perakende iş her gün satış işlemleri oluşturur ve ardından verileri analiz için bir SQL havuzu olgu tablosuna yükler.
 
-- **Boyut tabloları** değişebilir ama genellikle seyrek olarak değişebilecek öznitelik verileri içerir. Örneğin, bir müşterinin adı ve adresi bir boyut tablosunda depolanır ve yalnızca müşterinin profili değiştiğinde güncelleştirilir. Büyük bir olgu tablosunun boyutunu en aza indirmek için, müşterinin adı ve adresinin bir olgu tablosunun her satırında olması gerekmez. Bunun yerine, olgu tablosu ve boyut tablosu bir müşteri kimliğini paylaşabilir. Bir sorgu, müşterinin profilini ve hareketlerini ilişkilendirmek için iki tabloyu biraraya getirebilir.
+- **Boyut tabloları** , değişebilir ancak genellikle seyrek olarak değişen öznitelik verilerini içerir. Örneğin, bir müşterinin adı ve adresi bir Boyut tablosunda depolanır ve yalnızca müşterinin profili değiştiğinde güncelleştirilir. Büyük olgu tablosunun boyutunu en aza indirmek için müşterinin adının ve adresinin bir olgu tablosunun her satırında olması gerekmez. Bunun yerine, olgu tablosu ve boyut tablosu bir müşteri KIMLIĞINI paylaşabilir. Bir sorgu, müşterinin profilini ve işlemlerini ilişkilendirmek için iki tabloya katılabilir.
 
-- **Tümleştirme tabloları,** verileri tümleştirme veya hazırlama için bir yer sağlar. Normal tablo, dış tablo veya geçici tablo olarak bir tümleştirme tablosu oluşturabilirsiniz. Örneğin, verileri bir hazırlama tablosuna yükleyebilir, evrelemedeki veriler üzerinde dönüşümler gerçekleştirebilir ve sonra verileri üretim tablosuna ekleyebilirsiniz.
+- **Tümleştirme tabloları** , verileri tümleştirmek veya hazırlamak için bir yer sağlar. Bir tümleştirme tablosunu normal tablo, dış tablo veya geçici bir tablo olarak oluşturabilirsiniz. Örneğin, hazırlama tablosuna veri yükleyebilir, hazırlama sırasında veriler üzerinde dönüşümler gerçekleştirebilir ve ardından verileri bir üretim tablosuna ekleyebilirsiniz.
 
 ## <a name="schema-and-table-names"></a>Şema ve tablo adları
 
-Şemalar, benzer bir şekilde birlikte kullanılan masaları gruplandırmak için iyi bir yoldur.  Bir ön hazırlık çözümünden SQL havuzuna birden çok veritabanı taşıyorsanız, tüm gerçeği, boyutu ve tümleştirme tablolarını SQL havuzundaki tek bir şemaya geçirmek en iyi sonucu kullanabiliyor.
+Şemaları, benzer bir biçimde, birlikte kullanılan tabloları gruplamak için iyi bir yoldur.  Şirket içi bir çözümden birden çok veritabanını SQL havuzuna geçiriyorsanız, olgu, boyut ve tümleştirme tablolarının tümünü SQL havuzunda tek bir şemaya geçirmek en iyi şekilde çalışmaktadır.
 
-Örneğin, [wideworldimportersDW](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) örnek SQL havuzundaki tüm tabloları wwi adı verilen bir şema içinde depolayabilirsiniz. Aşağıdaki kod, wwi adı verilen [kullanıcı tanımlı](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bir şema oluşturur.
+Örneğin, [Wideworldimportersdw](/sql/sample/world-wide-importers/database-catalog-wwi-olap?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) örnek SQL havuzundaki tüm tabloları WWI adlı bir şema içinde saklayabilirsiniz. Aşağıdaki kod, wwi adlı [Kullanıcı tanımlı bir şema](/sql/t-sql/statements/create-schema-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturur.
 
 ```sql
 CREATE SCHEMA wwi;
 ```
 
-SQL havuzundaki tabloların organizasyonunu göstermek için tablo adlarına önek olarak olgu, dim ve int kullanabilirsiniz. Aşağıdaki tablo, WideWorldImportersDW için şema ve tablo adlarından bazılarını gösterir.  
+SQL havuzundaki tabloların organizasyonunu göstermek için, tablo adlarına önek olarak olgu, Dim ve Int kullanabilirsiniz. Aşağıdaki tabloda, WideWorldImportersDW için şema ve tablo adlarından bazıları gösterilmektedir.  
 
 | WideWorldImportersDW tablosu  | Tablo türü | SQL havuzu |
 |:-----|:-----|:------|:-----|
-| Şehir | Boyut | Wwı. DimCity |
-| Sipariş verme | Fact | Wwı. FactOrder |
+| Şehir | Boyut | wwi. DimCity |
+| Sipariş verme | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
 
-Tablolar verileri kalıcı olarak Azure Depolama'da, geçici olarak Azure Depolama'da veya SQL havuzu nun dışındaki bir veri deposunda depolar.
+Tablolar, verileri kalıcı olarak Azure Storage 'da, Azure depolama 'da veya SQL havuzu harici bir veri deposunda depolar.
 
 ### <a name="regular-table"></a>Normal tablo
 
-Normal bir tablo, verileri SQL havuzunun bir parçası olarak Azure Depolama'da depolar. Tablo ve veriler, oturumun açık olup olmadığına bakılmaksızın devam ediyor.  Aşağıdaki örnekte iki sütunlu normal bir tablo oluşturulur.
+Normal bir tablo, verileri SQL havuzunun bir parçası olarak Azure Storage 'da depolar. Bir oturumun açık olup olmamasına bakılmaksızın tablo ve veriler korunur.  Aşağıdaki örnek, iki sütunlu bir normal tablo oluşturur.
 
 ```sql
 CREATE TABLE MyTable (col1 int, col2 int );  
@@ -63,55 +63,55 @@ CREATE TABLE MyTable (col1 int, col2 int );
 
 ### <a name="temporary-table"></a>Geçici tablo
 
-Geçici bir tablo yalnızca oturum süresince vardır. Diğer kullanıcıların geçici sonuçları görmesini önlemek ve ayrıca temizleme gereksinimini azaltmak için geçici bir tablo kullanabilirsiniz.  
+Geçici bir tablo yalnızca oturum süresince bulunur. Diğer kullanıcıların geçici sonuçları görmesini ve ayrıca Temizleme gereksinimini azaltmasını engellemek için geçici bir tablo kullanabilirsiniz.  
 
-Geçici tablolar, hızlı performans sunmak için yerel depolamayı kullanır.  Daha fazla bilgi için [Geçici tablolara](sql-data-warehouse-tables-temporary.md)bakın.
+Geçici tablolar, hızlı performans sunmak için yerel depolamayı kullanır.  Daha fazla bilgi için bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Dış tablo
 
-Harici bir tablo, Azure Depolama blob'unda veya Azure Veri Gölü Deposu'nda bulunan verilere işaret ediyor. CREATE TABLE AS SELECT deyimi ile birlikte kullanıldığında, harici bir tablodan seçim sql havuzuna veri aktarıyor.
+Dış tablo, Azure Depolama Blobu veya Azure Data Lake Store bulunan verilere işaret eder. CREATE TABLE SELECT ifadesiyle birlikte kullanıldığında, dış tablodan seçim yapmak, verileri SQL havuzuna aktarır.
 
-Bu nedenle, dış tablolar veri yüklemek için yararlıdır. Yükleme eğitimi için Azure [blob depolamasından veri yüklemek için PolyBase'i kullanın'a](load-data-from-azure-blob-storage-using-polybase.md)bakın.
+Bu nedenle, dış tablolar veri yüklemek için yararlıdır. Yükleme öğreticisi için bkz. [Azure Blob depolamadan veri yüklemek Için PolyBase kullanma](load-data-from-azure-blob-storage-using-polybase.md).
 
 ## <a name="data-types"></a>Veri türleri
 
-SQL havuzu en sık kullanılan veri türlerini destekler. Desteklenen veri türlerinin listesi için CREATE TABLE [deyimindeki CREATE TABLE başvurusundaki veri türlerine](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) bakın. Veri türlerini kullanma kılavuzu için [bkz.](sql-data-warehouse-tables-data-types.md)
+SQL havuzu en yaygın kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, CREATE TABLE deyimindeki [Create Table başvuru içindeki veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#DataTypes) bölümüne bakın. Veri türlerini kullanma hakkında yönergeler için bkz. [veri türleri](sql-data-warehouse-tables-data-types.md).
 
 ## <a name="distributed-tables"></a>Dağıtılmış tablolar
 
-SQL havuzunun temel bir özelliği, [dağıtımlar](massively-parallel-processing-mpp-architecture.md#distributions)arasında tablolarda depolayabildiği ve çalıştırabildiği yoldur.  SQL havuzu veri dağıtmak için üç yöntemi destekler: round-robin (varsayılan), karma ve çoğaltılır.
+SQL havuzunun temel bir özelliği, [dağıtımların](massively-parallel-processing-mpp-architecture.md#distributions)tamamında tablo üzerinde depolama ve çalışma yöntemidir.  SQL havuzu veri dağıtmaya yönelik üç yöntemi destekler: hepsini bir kez deneme (varsayılan), karma ve çoğaltılan.
 
 ### <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
 
-Karma dağıtılmış tablo, dağıtım sütunundaki değeri temel alan satırları dağıtır. Karma dağıtılmış tablo, büyük tablolardaki sorgular için yüksek performans elde etmek üzere tasarlanmıştır. Bir dağıtım sütunu seçerken göz önünde bulundurulması gereken çeşitli etkenler vardır.
+Karma olarak dağıtılan bir tablo, satırları dağıtım sütunundaki değere göre dağıtır. Karma Dağıtılmış bir tablo, büyük tablolardaki sorgular için yüksek performans elde etmek üzere tasarlanmıştır. Bir dağıtım sütunu seçerken göz önünde bulundurmanız gereken birkaç etken vardır.
 
-Daha fazla bilgi [için dağıtılan tablolar için Tasarım kılavuzuna](sql-data-warehouse-tables-distribute.md)bakın.
+Daha fazla bilgi için bkz. [Dağıtılmış tablolar Için tasarım kılavuzu](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="replicated-tables"></a>Çoğaltılmış tablolar
 
-Çoğaltılan tablo, her İşlem düğümünde kullanılabilir tablonun tam kopyasına sahiptir. Yinelenen tablolarda birleşenler veri hareketi gerektirmediğinden, sorgular çoğaltılan tablolarda hızlı çalışır. Çoğaltma, ancak ekstra depolama gerektirir ve büyük tablolar için pratik değildir.
+Çoğaltılan bir tablo, her Işlem düğümünde kullanılabilir olan tablonun tam kopyasına sahiptir. Çoğaltılan tablolardaki birleşimler veri hareketi gerektirmediğinden, sorgular çoğaltılan tablolarda hızlı çalışır. Çoğaltma, daha fazla depolama alanı gerektirir, ancak büyük tablolar için pratik değildir.
 
-Daha fazla bilgi için, [çoğaltılan tablolar için Tasarım kılavuzuna](design-guidance-for-replicated-tables.md)bakın.
+Daha fazla bilgi için bkz. [çoğaltılan tablolar Için tasarım kılavuzu](design-guidance-for-replicated-tables.md).
 
-### <a name="round-robin-tables"></a>Yuvarlak-robin tablolar
+### <a name="round-robin-tables"></a>Hepsini bir kez deneme tabloları
 
-Yuvarlak robin tablosu, tablo satırlarını tüm dağıtımlara eşit olarak dağıtır. Satırlar rasgele dağıtılır. Verileri yuvarlak-robin tablosuna yüklemek hızlıdır.  Sorguların diğer dağıtım yöntemlerine göre daha fazla veri hareketi gerektirebileceğini unutmayın.
+Hepsini bir kez deneme tablosu, tablo satırlarını tüm dağıtımların arasına eşit dağıtır. Satırlar rasgele dağıtılır. Hepsini bir kez deneme tablosuna veri yüklemek hızlıdır.  Sorguların diğer dağıtım yöntemlerinden daha fazla veri hareketi gerektirebileceğini aklınızda bulundurun.
 
-Daha fazla bilgi [için dağıtılan tablolar için Tasarım kılavuzuna](sql-data-warehouse-tables-distribute.md)bakın.
+Daha fazla bilgi için bkz. [Dağıtılmış tablolar Için tasarım kılavuzu](sql-data-warehouse-tables-distribute.md).
 
 ### <a name="common-distribution-methods-for-tables"></a>Tablolar için ortak dağıtım yöntemleri
 
-Tablo kategorisi genellikle tablodağıtmak için hangi seçeneği seçeceğinizi belirler.
+Tablo kategorisi genellikle tabloyu dağıtmak için hangi seçeneğin tercih verileceğini belirler.
 
 | Tablo kategorisi | Önerilen dağıtım seçeneği |
 |:---------------|:--------------------|
-| Fact           | Kümelenmiş sütun deposu dizini ile karma dağılım kullanın. Aynı dağıtım sütununda iki karma tablo birleştirildiğinde performans artar. |
-| Boyut      | Daha küçük tablolar için çoğaltılmış kullanın. Tablolar her İşlemçi düğümünde depolanamayacak kadar büyükse, karma dağıtılmış kullanın. |
-| Hazırlama        | Evreleme tablosu için yuvarlak-robin kullanın. CTAS ile yük hızlıdır. Veriler evreleme tablosuna girdiğinde INSERT'i kullanın... Verileri üretim tablolarına taşımak için SEÇIN. |
+| Fact           | Kümelenmiş columnstore diziniyle karma dağıtım kullanın. İki karma tablo aynı dağıtım sütununa katıldığında performans artar. |
+| Boyut      | Daha küçük tablolar için çoğaltılan kullanın. Tablolar her bir Işlem düğümünde depolamaya çok büyükse, karma dağıtılmış kullanın. |
+| Hazırlama        | Hazırlama tablosu için hepsini bir kez deneme kullanın. CTAS ile yük hızlıdır. Veriler hazırlama tablosundan olduktan sonra Insert... öğesini kullanın. Verileri üretim tablolarına taşımak için SEÇIN. |
 
 ## <a name="table-partitions"></a>Tablo bölümleri
 
-Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarındaki işlemleri depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Sorgu talanını bölüm içindeki verilerle sınırlayan bölüm eliminasyonu yoluyla sorgu performansını artırabilirsiniz. Ayrıca, bölüm geçişi yoluyla verileri koruyabilirsiniz. SQL Veri Ambarı'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için [Bölümleme kılavuzuna](sql-data-warehouse-tables-partition.md)bakın.  Bölüm boş olmayan tablo bölümlerine geçerken, varolan veriler kesilirse [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ekstrenizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerdeki anahtarları varolan verilerin üzerine yazma SalesFact'e dönüşür.
+Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarında işlem depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Bölüm içindeki verilerle bir sorgu taramasını sınırlayan, Bölüm eliminasyon aracılığıyla sorgu performansını artırabilirsiniz. Ayrıca, verileri bölüm değiştirme aracılığıyla da koruyabilirsiniz. SQL veri ambarı 'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için bkz. [bölümleme kılavuzu](sql-data-warehouse-tables-partition.md).  Bölüm boş olmayan tablo bölümlerine geçiş yaparken, var olan veriler kesilmişse [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyiminizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerde, mevcut verilerin üzerine yazarak Satışolgusuna geçiş yapar.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -119,68 +119,68 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 
 ## <a name="columnstore-indexes"></a>Columnstore dizinleri
 
-Varsayılan olarak, SQL havuzu bir tabloyu kümelenmiş sütun deposu dizini olarak depolar. Bu veri depolama biçimi, büyük tablolarda yüksek veri sıkıştırma ve sorgu performansı sağlar.  
+Varsayılan olarak, SQL havuzu bir tabloyu kümelenmiş bir columnstore dizini olarak depolar. Bu veri depolama alanı, büyük tablolardaki yüksek veri sıkıştırma ve sorgu performansına erişir.  
 
-Kümelenmiş sütun deposu dizini genellikle en iyi seçimdir, ancak bazı durumlarda kümelenmiş dizin veya yığın uygun depolama yapısıdır.  
+Kümelenmiş columnstore dizini genellikle en iyi seçenektir, ancak bazı durumlarda kümelenmiş bir dizin veya yığın uygun depolama yapısıdır.  
 
 > [!TIP]
-> Yığın tablo, özellikle son tabloya dönüştürülmüş bir hazırlama tablosu gibi geçici verileri yüklemek için yararlı olabilir.
+> Yığın tablosu, son tabloya dönüştürülen hazırlama tablosu gibi geçici verileri yüklemek için özellikle kullanışlı olabilir.
 
-Sütun mağazası özelliklerinin listesi [için, sütun mağazası dizinleri için yeniliklere](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın. Sütun deposu dizini performansını artırmak [için, sütun deposu dizinleri için satır grubu kalitesini en üst düzeye çıkarma'ya](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)bakın.
+Columnstore özelliklerinin bir listesi için bkz. [columnstore dizinleri yenilikleri](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Columnstore dizin performansını geliştirmek için bkz. [columnstore dizinleri için satır grubu kalitesini en üst düzeye çıkarma](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 
 ## <a name="statistics"></a>İstatistikler
 
-Sorgu en iyi duruma getirici, sorguyu yürütme planı oluştururken sütun düzeyindeki istatistikleri kullanır.
+Sorgu iyileştiricisi, bir sorgu yürütmek için plan oluşturduğunda sütun düzeyi istatistikleri kullanır.
 
-Sorgu performansını artırmak için, tek tek sütunlar, özellikle sorgu birleştirmelerinde kullanılan sütunlar istatistikleri olması önemlidir. [İstatistik oluşturma](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic) otomatik olarak gerçekleşir.  
+Sorgu performansını artırmak için, özel sütunlarda, özellikle de sorgu birleşimlerinde kullanılan sütunlarda istatistik olması önemlidir. [Istatistiklerin oluşturulması](sql-data-warehouse-tables-statistics.md#automatic-creation-of-statistic) otomatik olarak gerçekleşir.  
 
-İstatistikleri güncelleştirme otomatik olarak gerçekleşmez. Önemli sayıda satır eklendikten veya değiştirildikten sonra istatistikleri güncelleştirin. Örneğin, bir yükten sonra istatistikleri güncelleştirin. Daha fazla bilgi için [İstatistik kılavuzuna](sql-data-warehouse-tables-statistics.md)bakın.
+İstatistiklerin güncelleştirilmesi otomatik olarak gerçekleşmez. Önemli sayıda satır eklendikten veya değiştirildikten sonra istatistikleri güncelleştirin. Örneğin, bir yüklemeden sonra istatistikleri güncelleştirin. Daha fazla bilgi için bkz. [istatistik Kılavuzu](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="primary-key-and-unique-key"></a>Birincil anahtar ve benzersiz anahtar
 
-BIRINCIL ANAHTAR yalnızca CLUSTERED ve NOT ENFORCED her ikisi de kullanıldığında desteklenir.  BENZERSIZ kısıtlama yalnızca NOT ENFORCED ile desteklenir kullanılır.  SQL havuz Tablo Kısıtlamaları kontrol [edin.](sql-data-warehouse-table-constraints.md)
+BIRINCIL anahtar yalnızca KÜMELENMEMIŞ ve zorunlu KıLıNMAYAN her ikisi de kullanıldığında desteklenir.  UNIQUE kısıtlaması yalnızca ZORLANMAMıŞ ile desteklenir.  [SQL havuzu tablo kısıtlamalarını](sql-data-warehouse-table-constraints.md)denetleyin.
 
 ## <a name="commands-for-creating-tables"></a>Tablo oluşturma komutları
 
-Yeni boş tablo olarak bir tablo oluşturabilirsiniz. Ayrıca, seçili bir deyimin sonuçlarıyla bir tablo oluşturabilir ve doldurabilirsiniz. Tablo oluşturmak için T-SQL komutları aşağıda veda edileb'dir.
+Yeni bir boş tablo olarak tablo oluşturabilirsiniz. Ayrıca bir SELECT ifadesinin sonuçlarıyla bir tablo oluşturup doldurabilirsiniz. Aşağıda tablo oluşturmak için T-SQL komutları verilmiştir.
 
-| T-SQL Bildirimi | Açıklama |
+| T-SQL ekstresi | Açıklama |
 |:----------------|:------------|
-| [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
-| [DıŞ TABLO OLUŞTURMA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Harici bir tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolama veya Azure Veri Gölü Deposu'nda depolanır. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Seçili bir deyimin sonuçlarıyla birlikte yeni bir tabloyu doldurur. Tablo sütunları ve veri türleri, select deyimi sonuçlarına dayanır. Veri almak için bu deyim harici bir tablodan seçim yapabilir. |
-| [SEÇOLARAK HARICI TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Seçili bir deyimin sonuçlarını dış konuma dışa dışa dışa dışa dışa aktararak yeni bir dış tablo oluşturur.  Konumu, Azure Blob depolama alanı veya Azure Veri Gölü Deposu'dur. |
+| [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
+| [DıŞ TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Dış tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolamada veya Azure Data Lake Store depolanır. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Bir SELECT ifadesinin sonuçlarıyla yeni bir tablo doldurur. Tablo sütunları ve veri türleri SELECT ifadesinin sonuçlarını temel alır. Bu ifade, verileri içeri aktarmak için bir dış tablodan seçim yapabilir. |
+| [DıŞ TABLOYU SEÇ OLARAK OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Bir SELECT ifadesinin sonuçlarını dış konuma aktararak yeni bir dış tablo oluşturur.  Konum, Azure Blob depolama veya Azure Data Lake Store. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Kaynak verileri SQL havuzuyla hizalama
 
-SQL havuz tabloları başka bir veri kaynağından veri yükleyerek doldurulur. Başarılı bir yük gerçekleştirmek için, kaynak verilerdeki sütunların sayısı ve veri türleri SQL havuzundaki tablo tanımıyla hizalanmalıdır. Verilerin hizalanması, tablolarınızı tasarlamanın en zor kısmı olabilir.
+SQL havuzu tabloları, başka bir veri kaynağından veri yükleyerek doldurulur. Başarılı bir yük gerçekleştirmek için, kaynak verilerdeki sütunların sayısı ve veri türleri SQL havuzundaki tablo tanımıyla hizalanmalıdır. Hizalanacak verilerin alınması, tablolarınızın tasarlanmasına ait olabilir.
 
-Veriler birden çok veri deposundan geliyorsa, verileri SQL havuzuna yükler ve tümleştirme tablosunda saklarsınız. Veriler tümleştirme tablosuna girince, dönüştürme işlemleri gerçekleştirmek için SQL havuzunun gücünü kullanabilirsiniz. Veriler hazırlandıktan sonra üretim tablolarına ekleyebilirsiniz.
+Veriler birden fazla veri deposundan geliyorsa, verileri SQL havuzuna yükler ve bir tümleştirme tablosunda depoladığını görürsünüz. Veriler tümleştirme tablosundan olduktan sonra, dönüştürme işlemlerini gerçekleştirmek için SQL havuzunun gücünden yararlanabilirsiniz. Veriler hazırlandıktan sonra, bunu üretim tablolarına ekleyebilirsiniz.
 
 ## <a name="unsupported-table-features"></a>Desteklenmeyen tablo özellikleri
 
-SQL havuzu, diğer veritabanları tarafından sunulan tablo özelliklerinin çoğunu destekler, ancak tümü ne de tümüne destekler.  Aşağıdaki liste, SQL havuzunda desteklenmeyen tablo özelliklerinden bazılarını gösterir:
+SQL havuzu, diğer veritabanları tarafından sunulan tablo özelliklerinin çoğunu destekler, ancak tümünü desteklememektedir.  Aşağıdaki listede SQL havuzunda desteklenmeyen bazı tablo özellikleri gösterilmektedir:
 
-- Yabancı anahtar, [Tablo Kısıtlamalarını](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Kontrol Et
+- Yabancı anahtar, Denetim [tablosu kısıtlamaları](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Hesaplanan Sütunlar](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Dizine Eklenmiş Görünümler](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Dizinli görünümler](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Sequence](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Seyrek Sütunlar](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- Vekil Anahtarlar. [Kimlik](sql-data-warehouse-tables-identity.md)ile uygulayın.
+- [Seyrek sütunlar](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- Vekil anahtarlar. [Kimlik](sql-data-warehouse-tables-identity.md)ile uygulayın.
 - [Eş anlamlılar](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [Tetikleyiciler](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Benzersiz Dizinler](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Kullanıcı Tanımlı Türler](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Benzersiz dizinler](/sql/t-sql/statements/create-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Kullanıcı tanımlı türler](/sql/relational-databases/native-client/features/using-user-defined-types?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="table-size-queries"></a>Tablo boyutu sorguları
 
-60 dağıtımın her birinde bir tablo tarafından tüketilen alanı ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanmaktır.
+60 dağıtımların her birindeki bir tablo tarafından tüketilen boşluk ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanmaktır.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Ancak, DBCC komutları kullanarak oldukça sınırlayıcı olabilir.  Dinamik yönetim görünümleri (DMV'ler) DBCC komutlarından daha fazla ayrıntı gösterir. Bu görünümü oluşturarak başlayın:
+Ancak, DBCC komutlarının kullanılması oldukça kısıtlabilmektedir.  Dinamik yönetim görünümleri (DMVs), DBCC komutlarından daha fazla ayrıntı gösterir. Bu görünümü oluşturarak başlayın:
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -295,9 +295,9 @@ FROM size
 ;
 ```
 
-### <a name="table-space-summary"></a>Tablo alanı özeti
+### <a name="table-space-summary"></a>Tablo alanı Özeti
 
-Bu sorgu satırları ve alanı tabloya göre döndürür.  Hangi tabloların en büyük tablolarınız olduğunu ve bunların yuvarlak-robin, çoğaltılmış veya karma dağıtılmış olup olmadığını görmenizi sağlar.  Karma dağıtılmış tablolar için sorgu dağıtım sütununa gösterir.  
+Bu sorgu, tabloya göre satırları ve boşluğu döndürür.  Hangi tabloların en büyük tablolarınızı olduğunu ve hepsini bir kez deneme, çoğaltma veya karma olarak dağıtılıp dağıtılmadığını görmenizi sağlar.  Karma Dağıtılmış tablolar için, sorgu dağıtım sütununu gösterir.  
 
 ```sql
 SELECT
@@ -327,7 +327,7 @@ ORDER BY
 ;
 ```
 
-### <a name="table-space-by-distribution-type"></a>Dağılım türüne göre tablo alanı
+### <a name="table-space-by-distribution-type"></a>Dağıtım türüne göre tablo alanı
 
 ```sql
 SELECT
@@ -357,7 +357,7 @@ GROUP BY index_type_desc
 ;
 ```
 
-### <a name="distribution-space-summary"></a>Dağıtım alanı özeti
+### <a name="distribution-space-summary"></a>Dağıtım alanı Özeti
 
 ```sql
 SELECT
@@ -375,4 +375,4 @@ ORDER BY    distribution_id
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzunuz için tabloları oluşturduktan sonra, bir sonraki adım tabloya veri yüklemektir.  Yükleme eğitimi için [bkz.](load-data-wideworldimportersdw.md)
+SQL havuzunuzun tablolarını oluşturduktan sonra, bir sonraki adım tabloya veri yüklemek olur.  Yükleme öğreticisi için bkz. [SQL Pool 'a veri yükleme](load-data-wideworldimportersdw.md).

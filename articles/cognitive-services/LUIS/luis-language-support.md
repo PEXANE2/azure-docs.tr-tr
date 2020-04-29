@@ -1,7 +1,7 @@
 ---
-title: Dil desteği - LUIS
+title: Dil desteği-LUSıS
 titleSuffix: Azure Cognitive Services
-description: LUIS hizmet içinde çeşitli özelliklere sahiptir. Tüm özellikler aynı dil paritesi değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültüründe desteklendiğinden emin olun. LUIS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
+description: LUSıS, hizmet içindeki çeşitli özelliklere sahiptir. Tüm özellikler aynı dil eşliği değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültürüyle desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,28 +12,28 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80744155"
 ---
-# <a name="language-and-region-support-for-luis"></a>LUIS için dil ve bölge desteği
+# <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
-LUIS hizmet içinde çeşitli özelliklere sahiptir. Tüm özellikler aynı dil paritesi değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültüründe desteklendiğinden emin olun. LUIS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
+LUSıS, hizmet içindeki çeşitli özelliklere sahiptir. Tüm özellikler aynı dil eşliği değildir. İlgilendiğiniz özelliklerin hedeflediğiniz dil kültürüyle desteklendiğinden emin olun. Bir LUSıS uygulaması kültüre özgüdür ve ayarlandıktan sonra değiştirilemez.
 
-## <a name="multi-language-luis-apps"></a>Çok dilli LUIS uygulamaları
+## <a name="multi-language-luis-apps"></a>Çok dilli LUSıS uygulamaları
 
-Chatbot gibi çok dilli bir LUIS istemci uygulamasına ihtiyacınız varsa, birkaç seçeneğiniz vardır. LUIS tüm dilleri destekliyorsa, her dil için bir LUIS uygulaması geliştirirsiniz. Her LUIS uygulamasının benzersiz bir uygulama kimliği ve bitiş noktası günlüğü vardır. LUIS'in desteklemediği bir dil için dil bilgisi sağlamanız gerekiyorsa, söyleyiyi desteklenen bir dile çevirmek, söyleyiyi LUIS bitiş noktasına göndermek ve elde edilen puanları almak için [Microsoft Translator API'yi](../Translator/translator-info-overview.md) kullanabilirsiniz.
+Sohbet botu gibi çok dilli bir LUSıS istemci uygulamasına ihtiyacınız varsa, birkaç seçeneğiniz vardır. LUSıS tüm dilleri destekliyorsa, her dil için bir LUO uygulaması geliştirirsiniz. Her bir LUıN uygulamasının benzersiz bir uygulama KIMLIĞI ve uç nokta günlüğü vardır. Bir dil için dil desteği sağlamanız gerekiyorsa, bu bir dilin desteklenmeyen bir dile dönüştürülmesi için [Microsoft Translator API 'sini](../Translator/translator-info-overview.md) kullanabilir, UTTERANLIĞI, Halme uç noktasına gönderebilir ve elde edilen puanları alabilirsiniz.
 
 ## <a name="languages-supported"></a>Desteklenen diller
 
-LUIS aşağıdaki dillerdeki sözlerle anlar:
+LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 
-| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | İfade listesi önerileri | **[Metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Duygu ve<br>Anahtar Kelimeler)|
+| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
-| Amerikan İngilizcesi |`en-US` | ✔ | ✔  |✔|✔|
-| Arapça (önizleme - modern standart Arapça) |`ar-AR`|-|-|-|-|
+| Amerikan Ingilizcesi |`en-US` | ✔ | ✔  |✔|✔|
+| Arapça (Önizleme-modern Standart Arapça) |`ar-AR`|-|-|-|-|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Felemenkçe |`nl-NL` |✔|-|-|✔|
 | Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
@@ -42,49 +42,49 @@ LUIS aşağıdaki dillerdeki sözlerle anlar:
 | Gucerat dili | `gu-IN`|-|-|-|-|
 | Hintçe | `hi-IN`|-|✔|-|-|
 | İtalyanca |`it-IT` |✔| ✔ |✔|✔|
-| *[Japonca](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Yalnızca anahtar tümcecik|
-| Korece |`ko-KR` |✔|-|-|Yalnızca anahtar tümcecik|
+| *[Japonca](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Yalnızca anahtar tümceciği|
+| Korece |`ko-KR` |✔|-|-|Yalnızca anahtar tümceciği|
 | Marathi | `mr-IN`|-|-|-|-|
-| Portekizce (Brezilya) |`pt-BR` |✔| ✔ |✔ |tüm alt kültürler|
+| Portekizce (Brezilya) |`pt-BR` |✔| ✔ |✔ |tüm alt kültürler değil|
 | İspanyolca (İspanya) |`es-ES` |✔| ✔ |✔|✔|
 | İspanyolca (Meksika)|`es-MX` |-|-|✔|✔|
 | Tamil dili | `ta-IN`|-|-|-|-|
 | Telugu dili | `te-IN`|-|-|-|-|
-| Türkçe | `tr-TR` |✔|✔|-|Sadece duygusallık|
+| Türkçe | `tr-TR` |✔|✔|-|Yalnızca yaklaşım|
 
 
 
 
-Dil [desteği, önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) ve önceden oluşturulmuş etki [alanları](luis-reference-prebuilt-domains.md)için değişir.
+Dil desteği, [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) ve [önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md)için farklılık gösterir.
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]
 
-### <a name="japanese-support-notes"></a>*Japonca destek notları
+### <a name="japanese-support-notes"></a>* Japonca destek notları
 
- - LUIS sözdizimdizimi analizi sağlamadığından ve Keigo ile gayri resmi Japonca arasındaki farkı anlamadığından, farklı formalite düzeylerini uygulamalarınız için eğitim örneği olarak dahil etmiş olmanız gerekir.
-     - The 中中中中中 aynı değildir .
-     - Bu durum la aynı değildir.
+ - LUL, sözdizimsel analiz sağlamadığından, Keigo ve resmi olmayan Japonca arasındaki farkı anlayamayacak, farklı düzeylerde formlik düzeylerini uygulamalarınız için eğitim örnekleri olarak eklemeniz gerekir.
+     - でございます, です ile aynı değildir.
+     - です, だ ile aynı değildir.
 
 [!INCLUDE [Text Analytics support notes](includes/text-analytics-support-notes.md)]
 
-### <a name="speech-api-supported-languages"></a>Konuşma API desteklenen diller
-Konuşma dikte modu dilleri için Konuşma [Destekli dillere](../speech-service/speech-to-text.md) bakın.
+### <a name="speech-api-supported-languages"></a>Konuşma API 'SI desteklenen diller
+Konuşma dikte modu dilleri için bkz. konuşma tarafından [desteklenen diller](../speech-service/speech-to-text.md) .
 
-### <a name="bing-spell-check-supported-languages"></a>Bing Yazım Denetimi desteklenen diller
-Desteklenen diller ve durumların listesi için Bing Büyüsü Denetimi [Destekli dillere](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) bakın.
+### <a name="bing-spell-check-supported-languages"></a>Desteklenen Bing Yazım Denetimi diller
+Desteklenen dillerin ve durumun bir listesi için [desteklenen Bing yazım denetimi diller](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) bölümüne bakın.
 
-## <a name="rare-or-foreign-words-in-an-application"></a>Bir uygulamada nadir veya yabancı sözcükler
-Kültürde, `en-us` LUIS argo da dahil olmak üzere çoğu İngilizce kelimeyi ayırt etmeyi öğrenir. Kültürde, `zh-cn` LUIS çoğu Çince karakterleri ayırt etmeyi öğrenir. 'de `en-us` nadir bulunan bir sözcük veya karakter `zh-cn`kullanırsanız ve LUIS'in bu sözcüğü veya karakteri ayırt edemediğini görürseniz, bu sözcüğü veya karakteri bir ifade listesi [özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulama kültürünün dışındaki sözcükler -yani yabancı sözcükler- bir ifade listesi özelliğine eklenmelidir.
+## <a name="rare-or-foreign-words-in-an-application"></a>Bir uygulamadaki nadir veya yabancı sözcükler
+`en-us` Kültür IÇINDE, Lu, Slang dahil olmak üzere çoğu İngilizce sözcüğü ayırt edebilir. `zh-cn` Kültürde, Lu, en çok Çince karakteri ayırt etmek için öğrenir. İçinde nadir bir kelime `en-us` veya içinde `zh-cn`bır karakter kullanırsanız ve lubunun sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
-### <a name="hybrid-languages"></a>Hibrit diller
-Karma diller İngilizce ve Çince gibi iki kültürden gelen sözcükleri birleştirir. Bir uygulama tek bir kültüre dayandığı ndan bu diller LUIS'te desteklenmez.
+### <a name="hybrid-languages"></a>Karma diller
+Karma diller, Ingilizce ve Çince gibi iki kültürden kelimeleri birleştirir. Bu diller, bir uygulamanın tek bir kültürü temel aldığı için LUSıS 'de desteklenmez.
 
-## <a name="tokenization"></a>Tokenization
-Makine öğrenimini gerçekleştirmek için LUIS, kültüre dayalı [belirteçlere](luis-glossary.md#token) bir söz verir.
+## <a name="tokenization"></a>Simgeleştirme
+Makine öğrenimi yapmak için, Lua, kültürü temel alan [belirteçlere](luis-glossary.md#token) göre kesintiye karşı keser.
 
-|Dil|  her alan veya özel karakter | karakter düzeyi|bileşik sözcükler
+|Dil|  Her boşluk veya özel karakter | karakter düzeyi|bileşik sözcükler
 |--|:--:|:--:|:--:|
 |Arapça|✔|||
 |Çince||✔||
@@ -100,26 +100,26 @@ Makine öğrenimini gerçekleştirmek için LUIS, kültüre dayalı [belirteçle
 |Korece||✔||
 |Marathi|✔|||
 |Portekizce (Brezilya)|✔|||
-|İspanyolca (es-ES)|✔|||
+|İspanyolca (ES-ES)|✔|||
 |İspanyolca (es-MX)|✔|||
 |Tamil dili|✔|||
 |Telugu dili|✔|||
 |Türkçe|✔|||
 
 
-### <a name="custom-tokenizer-versions"></a>Özel belirteç sürümleri
+### <a name="custom-tokenizer-versions"></a>Özel Simgeleştirici sürümleri
 
-Aşağıdaki kültürlerin özel belirteç sürümleri vardır:
+Aşağıdaki kültürler özel belirteç Oluşturucu sürümlerine sahiptir:
 
-|Kültür|Sürüm|Amaç|
+|Culture (Kültür)|Sürüm|Amaç|
 |--|--|--|
-|Almanca<br>`de-de`|1.0.0|Sözcükleri, bileşik sözcükleri tek bileşenlerine ayırmaya çalışan makine öğrenimi tabanlı bir belirteç kullanarak bölerek sözcükleri tokenize eder.<br>Bir kullanıcı `Ich fahre einen krankenwagen` bir söz olarak girerse, `Ich fahre einen kranken wagen`bu. Farklı varlıklar olarak `kranken` `wagen` ve bağımsız olarak işaretlenmesine izin verir.|
-|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklara bölerek tokenize eder.<br> Bir kullanıcı `Ich fahre einen krankenwagen` bir söz olarak girerse, tek bir belirteç kalır. Böylece `krankenwagen` tek bir varlık olarak işaretlenir. |
-|Felemenkçe<br>`de-de`|1.0.0|Sözcükleri, bileşik sözcükleri tek bileşenlerine ayırmaya çalışan makine öğrenimi tabanlı bir belirteç kullanarak bölerek sözcükleri tokenize eder.<br>Bir kullanıcı `Ik ga naar de kleuterschool` bir söz olarak girerse, `Ik ga naar de kleuter school`bu. Farklı varlıklar olarak `kleuter` `school` ve bağımsız olarak işaretlenmesine izin verir.|
-|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklara bölerek tokenize eder.<br> Bir kullanıcı `Ik ga naar de kleuterschool` bir söz olarak girerse, tek bir belirteç kalır. Böylece `kleuterschool` tek bir varlık olarak işaretlenir. |
+|Almanca<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , özelliği olarak ayarlanır. `Ich fahre einen kranken wagen` Farklı varlıklar olarak `kranken` ve `wagen` bağımsız olarak işaretlemeye izin verme.|
+|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir utterance olarak girerse `Ich fahre einen krankenwagen` , tek bir belirteç kalır. Bu `krankenwagen` nedenle tek bir varlık olarak işaretlenir. |
+|Felemenkçe<br>`de-de`|1.0.0|Bileşik sözcüklerin tek bileşenlerine bölünmeye çalışan makine öğrenimi tabanlı bir belirteç Oluşturucu kullanarak onları bölerek sözcükleri simgeleştirir.<br>Bir Kullanıcı bir utterance olarak girerse `Ik ga naar de kleuterschool` , özelliği olarak ayarlanır. `Ik ga naar de kleuter school` Farklı varlıklar olarak `kleuter` ve `school` bağımsız olarak işaretlemeye izin verme.|
+|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklarla ayırarak simgeleştirir.<br> Bir Kullanıcı bir utterance olarak girerse `Ik ga naar de kleuterschool` , tek bir belirteç kalır. Bu `kleuterschool` nedenle tek bir varlık olarak işaretlenir. |
 
 
-### <a name="migrating-between-tokenizer-versions"></a>Tokenizer sürümleri arasında geçiş
+### <a name="migrating-between-tokenizer-versions"></a>Belirteç Oluşturucu sürümler arasında geçiş yapma
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
@@ -222,6 +222,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Belirteçleştirme uygulama düzeyinde gerçekleşir. Sürüm düzeyinde belirteç leştirme desteği yoktur.
+Belirteç seçme, uygulama düzeyinde gerçekleşir. Sürüm düzeyi simgeleştirme desteği yoktur.
 
-Dosyayı sürüm yerine [yeni bir uygulama olarak aktarın.](luis-how-to-start-new-app.md) Bu eylem, yeni uygulamanın farklı bir uygulama kimliğine sahip olduğu ancak dosyada belirtilen tokenizer sürümünü kullandığı anlamına gelir.
+[Dosyayı sürüm yerine yeni bir uygulama olarak Içeri aktarın](luis-how-to-start-new-app.md). Bu eylem, yeni uygulamanın farklı bir uygulama KIMLIĞINE sahip olduğu ancak dosyada belirtilen Simgeleştirici sürümünü kullandığı anlamına gelir.

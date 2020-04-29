@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Bir mikrofon, C# konuşma tanıma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: bir mikrofondan konuşmayı tanıma, C# konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: erhopf
@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
 ms.openlocfilehash: efa5e6d576f7bd2965353ce3493fda2e06567180
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658875"
 ---
 **Hedef ortamınızı seçin**

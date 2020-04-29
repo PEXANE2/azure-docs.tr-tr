@@ -1,38 +1,38 @@
 ---
 title: Varlıklar
-description: Azure Uzaktan İşleme API'si kapsamındaki varlıkların tanımı
+description: Azure uzaktan Işleme API 'sinin kapsamındaki varlıkların tanımı
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: d7b9ecd048b080ae0ec9fd3fb7a4fb35009551b8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681954"
 ---
 # <a name="entities"></a>Varlıklar
 
-*Varlık,* uzayda taşınabilir bir nesneyi temsil eder ve uzaktan işlenen içeriğin temel yapı taşıdır.
+Bir *varlık* , boşluk alanındaki taşınabilir bir nesneyi temsil eder ve uzaktan işlenmiş içeriğin temel yapı taşıdır.
 
 ## <a name="entity-properties"></a>Varlık özellikleri
 
-Varlıklar bir konum, döndürme ve ölçek tarafından tanımlanan bir dönüştürme var. Tek başlarına varlıkların herhangi bir gözlemlenebilir işlevselliği yoktur. Bunun yerine, davranış varlıklara bağlı bileşenler aracılığıyla eklenir. Örneğin, [Bir CutPlaneBileşeni](../overview/features/cut-planes.md) takmak varlığın konumunda bir kesme düzlemoluşturur.
+Varlıkların bir konum, döndürme ve ölçeğe göre tanımlanan bir dönüşümü vardır. Kendilerine ait varlıkların herhangi bir observable işlevselliği yoktur. Bunun yerine, davranış, varlıklara eklenen bileşenler aracılığıyla eklenir. Örneğin, bir [CutPlaneComponent](../overview/features/cut-planes.md) iliştirmek varlığın konumunda kesilmiş bir düzlem oluşturacaktır.
 
-Varlığın kendisinin en önemli yönü hiyerarşi ve ortaya çıkan hiyerarşik dönüşümdür. Örneğin, paylaşılan bir ana varlığa birden çok varlık alt öğe olarak eklendiğinde, bu varlıkların tümü üst varlığın dönüşümünün değiştirilmesiyle birlikte taşınabilir, döndürülebilir ve ölçeklenebilir.
+Varlığın kendisinin en önemli yönü hiyerarşinin ve sonuçta elde edilen sıradüzenli dönüşümüdür. Örneğin, birden çok varlık paylaşılan bir üst varlığa alt öğe olarak eklendiğinde, bu varlıkların tümü uyum içinde taşınabilir, döndürülebilir ve üst varlığın dönüşümü değiştirilerek ölçekleniyor.
 
-Bir varlık benzersiz bir üst tarafından sahip olunan, `Entity.Destroy()`yani üst ile yok olduğunda , böylece çocukları ve tüm bağlı [bileşenleri](components.md)vardır. Böylece, sahneden bir model kaldırma bir `Destroy` modelin kök düğümü çağırarak gerçekleştirilir, tarafından `AzureSession.Actions.LoadModelAsync()` döndürülen veya SAS varyantı `AzureSession.Actions.LoadModelFromSASAsync()`.
+Bir varlık kendi üst öğesine sahip olduğu anlamına gelir, yani üst öğe ile `Entity.Destroy()`yok edildiğinde, alt öğeleri ve tüm bağlı [Bileşenler](components.md). Bu nedenle, bir modelin sahne alanından kaldırılması, bir modelin kök `Destroy` düğümüne çağırarak veya bunun SAS varyantı `AzureSession.Actions.LoadModelAsync()` `AzureSession.Actions.LoadModelFromSASAsync()`tarafından döndürülen bir şekilde gerçekleştirilir.
 
-Varlıklar, sunucu içeriği yüklendiğinde veya kullanıcı sahneye bir nesne eklemek istediğinde oluşturulur. Örneğin, bir kullanıcı bir kafesin içini görselleştirmek için kesik bir düzlem eklemek isterse, kullanıcı düzlemin olması gereken bir varlık oluşturabilir ve ardından kesme düzlembileşenini buna ekleyebilir.
+Varlıklar, sunucu içerik yüklediğinde veya Kullanıcı sahneye nesne eklemek istediğinde oluşturulur. Örneğin, bir Kullanıcı bir kafesin iç kısmını görselleştirmek için kesilmiş bir düzlem eklemek isterse, Kullanıcı düzlemin mevcut olması gereken bir varlık oluşturabilir ve ardından bu nesneye kesilen düzlemi bileşenini ekler.
 
 ## <a name="query-functions"></a>Sorgu işlevleri
 
-Varlıklar üzerinde iki tür sorgu işlevi vardır: senkron ve eşzamanlı çağrılar. Senkron sorgular yalnızca istemcide bulunan ve çok fazla hesaplama içermeyen veriler için kullanılabilir. Örnekler bileşenleri, göreli nesne dönüşümleri veya üst/alt ilişkileri için sorgu vardır. Eşkenar dört bir hata, yalnızca sunucuda bulunan veya istemcide çalıştırılamayacak kadar pahalı olacak ekstra hesaplama içeren veriler için kullanılır. Örnekler uzamsal sınır sorguları veya meta veri sorgularıdır.
+Varlıklarda iki tür sorgu işlevi vardır: zaman uyumlu ve zaman uyumsuz çağrılar. Zaman uyumlu sorgular yalnızca istemcide bulunan ve çok fazla hesaplama içermeyen veriler için kullanılabilir. Örnekler, bileşenler, göreli nesne dönüştürmeleri veya üst/alt ilişkileri sorgular. Zaman uyumsuz sorgular yalnızca sunucuda bulunan veya istemcide çok pahalı olan ek hesaplamayı içeren veriler için kullanılır. Örnekler, uzamsal sınır sorguları veya meta veri sorgulardır.
 
-### <a name="querying-components"></a>Bileşenleri sorgulama
+### <a name="querying-components"></a>Bileşenler sorgulanıyor
 
-Belirli bir türdeki bir bileşeni `FindComponentOfType`bulmak için şunları kullanın:
+Belirli bir türün bileşenini bulmak için şunu kullanın `FindComponentOfType`:
 
 ```cs
 CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(ObjectType.CutPlaneComponent);
@@ -41,12 +41,12 @@ CutPlaneComponent cutplane = (CutPlaneComponent)entity.FindComponentOfType(Objec
 CutPlaneComponent cutplane = entity.FindComponentOfType<CutPlaneComponent>();
 ```
 
-### <a name="querying-transforms"></a>Dönüşümleri sorgulama
+### <a name="querying-transforms"></a>Dönüşümler sorgulanıyor
 
-Dönüştürme sorguları nesneüzerinde eşzamanlı çağrılardır. API'de sorgulandırılabilen dönüşümlerin nesnenin üst öğesine göre yerel alan dönüşümleri olduğunu belirtmek önemlidir. Özel durumlar, yerel alan ve dünya alanının aynı olduğu kök nesnelerdir.
+Dönüştürme sorguları nesnedeki zaman uyumlu çağrılardır. API aracılığıyla sorgulanan dönüşümlerinin, nesnenin üst öğesiyle ilişkili olan yerel alan dönüştürmelerini aklınızda olması önemlidir. Özel durumlar, yerel alan ve dünya alanının aynı olduğu kök nesnelerdir.
 
 > [!NOTE]
-> Rasgele nesnelerin dünya alanı dönüşümsorgulamak için özel bir API yoktur.
+> Rastgele nesnelerin dünya alanı dönüşümünü sorgulamak için adanmış bir API yok.
 
 ```cs
 // local space transform of the entity
@@ -56,13 +56,13 @@ Quaternion rotation = entity.Rotation;
 
 ### <a name="querying-spatial-bounds"></a>Uzamsal sınırları sorgulama
 
-Bounds sorguları, bir varlığı kök olarak kullanarak tam nesne hiyerarşisi üzerinde çalışan eşzamanlı çağrılardır. Nesne sınırları yla ilgili özel [bölüme](object-bounds.md)bakın.
+Sınır sorguları, bir varlığı kök olarak kullanan tam bir nesne hiyerarşisinde çalışan zaman uyumsuz çağrılardır. [Nesne sınırları](object-bounds.md)hakkında adanmış bölüme bakın.
 
-### <a name="querying-metadata"></a>Meta verileri sorgulama
+### <a name="querying-metadata"></a>Meta veriler sorgulanıyor
 
-Meta veriler, sunucu tarafından yoksayılabilen nesnelerüzerinde depolanan ek verilerdir. Nesne meta verileri aslında _değer_ sayısal, boolean veya dize türü olabilir (ad, değer) çiftleri kümesidir. Meta veriler modelle dışa aktarılabilir.
+Meta veriler, nesneler üzerinde depolanan ve sunucu tarafından yoksayılan ek verilere sahiptir. Nesne meta verileri aslında _değer_ sayısal, Boolean veya dize türünde olabilecek bir dizi (ad, değer) çiftleridir. Meta veriler modelle birlikte verilebilirler.
 
-Meta veri sorguları belirli bir varlık üzerinde eşzamanlı çağrılar vardır. Sorgu, bir alt grafiğin birleştirilmiş bilgilerini değil, yalnızca tek bir varlığın meta verilerini döndürür.
+Meta veri sorguları belirli bir varlıkta zaman uyumsuz çağrılardır. Sorgu, bir alt grafiğin birleştirilmiş bilgisini değil, yalnızca tek bir varlığın meta verilerini döndürür.
 
 ```cs
 MetadataQueryAsync metaDataQuery = entity.QueryMetaDataAsync();

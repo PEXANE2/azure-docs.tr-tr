@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Uzak görüntüyü analiz et - REST, JavaScript'
+title: 'Hızlı başlangıç: uzak görüntüyü çözümleme-REST, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıçta, JavaScript ile Görüntü İşleme API’si kullanarak bir görüntüyü analiz edeceksiniz.
 services: cognitive-services
@@ -12,32 +12,32 @@ ms.date: 03/26/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 1d77acf9f076bbb9a4f4da5c592a0443b8585299
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656116"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Hızlı Başlangıç: Görüntü İşleme’de REST API ve JavaScript kullanarak uzak görüntüyü analiz etme
 
-Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak görsel özellikleri ayıklamak için uzaktan depolanmış bir görüntüyü analiz eve verirsiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
+Bu hızlı başlangıçta, Görüntü İşleme REST API kullanarak görsel özellikleri ayıklamak için uzaktan depolanan bir görüntüyü analiz edersiniz. [Görüntü Analizi](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) yöntemiyle, görüntü içeriğini temel alarak görsel özellikleri ayıklayabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Abonelik anahtarınızı ve bitiş noktası URL'nizi geçici bir konuma kaydedin.
+Görüntü İşleme için bir abonelik anahtarınız olması gerekir. Deneme bilişsel [Hizmetler](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)'den ücretsiz bir deneme anahtarı edinebilirsiniz. Ya da Görüntü İşleme abone olmak ve anahtarınızı almak için bilişsel [Hizmetler oluşturma](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) ' daki yönergeleri izleyin. Abonelik anahtarınızı ve uç nokta URL 'nizi geçici bir konuma kaydedin.
 
 ## <a name="create-and-run-the-sample"></a>Örnek oluşturma ve çalıştırma
 
 Örneği oluşturup çalıştırmak için aşağıdaki adımları uygulayın:
 
-1. _Analyze-image.html_adlı bir dosya oluşturun, metin düzenleyicisinde açın ve aşağıdaki kodu kopyalayın.
+1. _Analyze-image. html_adlı bir dosya oluşturun, dosyayı bir metin düzenleyicisinde açın ve içine aşağıdaki kodu kopyalayın.
 1. İsteğe bağlı olarak `inputImage` denetimi için `value` özniteliğinin değerini, analiz etmek istediğiniz başka bir görüntünün URL’si ile değiştirin.
 1. Tarayıcı penceresini açın.
 1. Tarayıcıda dosyayı tarayıcı penceresine sürükleyip bırakın.
-1. Web sayfası tarayıcıda görüntülendiğinde, abonelik anahtarınızı ve bitiş noktası URL'nizi uygun giriş kutularına yapıştırın.
-1. Görüntüyü **Analiz Et** düğmesini seçin.
+1. Web sayfası tarayıcıda görüntülendiğinde, abonelik anahtarınızı ve uç nokta URL 'nizi uygun giriş kutularına yapıştırın.
+1. **Görüntüyü çözümle** düğmesini seçin.
 
 ```html
 <!DOCTYPE html>

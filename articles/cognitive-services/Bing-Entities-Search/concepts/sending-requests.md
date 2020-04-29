@@ -1,5 +1,5 @@
 ---
-title: Bing Entity Search API'sine arama istekleri gönderme
+title: Bing Varlık Arama API'si arama istekleri gönderiliyor
 titleSuffix: Azure cognitive Services
 description: Bing Varlık Arama API'si, Bing'e bir arama sorgusu gönderip varlıkları ve yerleri içeren sonuçlar alır.
 services: cognitive-services
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: f68429a75ddb141c9e42babde3faa9f93fe949cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072679"
 ---
-# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Entity Search API'sine arama istekleri gönderme
+# <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Bing Varlık Arama API'si arama istekleri gönderiliyor
 
-Bing Varlık Arama API'si, Bing'e bir arama sorgusu gönderip varlıkları ve yerleri içeren sonuçlar alır. Yer sonuçları restoranlar, oteller veya diğer yerel işletmeleri kapsar. Yerler için sorguda yerel işletmenin adı belirtilebilir veya liste isteği (yakınımdaki restoranlar gibi) gönderilebilir. Varlık sonuçları kişileri, yerleri veya nesneleri kapsar. Bu bağlamda yer turistik, devletler, ülkeler / bölgeler, vb.
+Bing Varlık Arama API'si, Bing'e bir arama sorgusu gönderip varlıkları ve yerleri içeren sonuçlar alır. Yer sonuçları restoranlar, oteller veya diğer yerel işletmeleri kapsar. Yerler için sorguda yerel işletmenin adı belirtilebilir veya liste isteği (yakınımdaki restoranlar gibi) gönderilebilir. Varlık sonuçları kişileri, yerleri veya nesneleri kapsar. Bu bağlamdaki yer, bir yerde, eyalet, ülke/bölge vb. için de kullanılır.
 
 ## <a name="the-endpoint"></a>Uç nokta
 
@@ -29,7 +29,7 @@ Varlık ve yer arama sonuçlarını almak için aşağıdaki uç noktaya bir GET
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
-İstekler HTTPS protokolünü kullanmalıdır.
+İsteklerin HTTPS protokolünü kullanması gerekir.
 
 Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci uygulamanın parçası olarak dağıtmak, kötü amaçlı bir üçüncü tarafa anahtara erişmek için daha fazla fırsat sunar. Ayrıca bir sunucudan çağrı yapmak API'nin gelecek sürümleri için tek bir yükseltme noktası sağlar.
 
@@ -41,8 +41,8 @@ Tüm isteklerin bir sunucudan gönderilmesini öneririz. Anahtarı bir istemci u
   
 -   [Kullanıcı Aracısı](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Arama Yeri](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [X-MSEdge-Clienentip](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-arama konumu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 İstemci IP'si ve konum üstbilgileri konuma duyarlı içerik döndürmek için önemlidir.  
 
@@ -134,5 +134,5 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bing Entity API'si olan varlıklar aranıyor](search-for-entities.md)
-* [Bing API Kullanımı ve Görüntüleme Gereksinimleri](../use-display-requirements.md)
+* [Bing varlık API 'SI ile varlıkları arama](search-for-entities.md)
+* [Bing API kullanımı ve görüntüleme gereksinimleri](../use-display-requirements.md)

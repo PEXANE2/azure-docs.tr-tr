@@ -1,6 +1,6 @@
 ---
 title: İş yükü yönetimi
-description: Azure Synapse Analytics'te iş yükü yönetimini uygulama kılavuzu.
+description: Azure SYNAPSE Analytics 'te iş yükü yönetimini uygulama kılavuzu.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,47 +12,47 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744227"
 ---
 # <a name="what-is-workload-management"></a>İş yükü yönetimi nedir?
 
-Karışık iş yüklerini çalıştırmak, meşgul sistemlerde kaynak zorlukları oluşturabilir.  Çözüm Mimarlar, SLA'ları vurmak için yeterli kaynağın olduğundan emin olmak için klasik veri depolama etkinliklerini (verileri yükleme, dönüştürme ve sorgulama gibi) ayırmanın yollarını arar.  
+Karışık iş yüklerini çalıştırmak, meşgul sistemlerdeki kaynak zorluklarını ortaya çıkarabilir.  Çözüm mimarları, turlar için yeterli kaynak olduğundan emin olmak için klasik veri ambarı etkinliklerini ayırmanın (verileri yükleme, dönüştürme ve sorgulama) yollarını arar.  
 
-Fiziksel sunucu yalıtımı, az kullanılan, fazla rezervasyonlu veya önbelleklerin sürekli olarak donanım başlatma ve durdurma ile astarlandığı bir durumda altyapı ceplerine yol açabilir.  Başarılı bir iş yükü yönetimi şeması kaynakları etkin bir şekilde yönetir, yüksek verimli kaynak kullanımını sağlar ve yatırım getirisini (YG) en üst düzeye çıkarır.
+Fiziksel sunucu yalıtımı, aşırı kullanılan, fazla kullanılabilir olan altyapının cep veya önbelleklerin donanım başlatma ve durdurma ile sürekli olarak bulunduğu bir durumda olmasına neden olabilir.  Başarılı bir iş yükü yönetim şeması, kaynakları etkili bir şekilde yönetir, verimli kaynak kullanımı sağlar ve yatırım getirisi (ROı) en üst düzeye çıkarır.
 
-Veri ambarı iş yükü, bir veri ambarıyla ilişkili olarak geçen tüm işlemleri ifade eder. Bu bileşenlerin derinliği ve genişliği veri ambarının olgunluk düzeyine bağlıdır.  Veri ambarı iş yükü aşağıdakileri kapsar:
+Veri ambarı iş yükü, transpire 'in bir veri ambarı ile ilişkili tüm işlemlerine başvurur. Bu bileşenlerin derinliği ve düzeyleri, veri ambarının vade düzeyine bağlıdır.  Veri ambarı iş yükü şunları kapsar:
 
 - Verileri ambara yükleme işleminin tamamı
-- Veri ambarı analizi ve raporlaması
+- Veri ambarı analizini ve raporlamayı gerçekleştirme
 - Veri ambarındaki verileri yönetme
-- Veri ambarından veri verme
+- Veri ambarından verileri dışarı aktarma
 
-Bir veri ambarının performans kapasitesi [veri ambarı birimleri](what-is-a-data-warehouse-unit-dwu-cdwu.md)tarafından belirlenir.
+Veri ambarının performans kapasitesi, [veri ambarı birimlerine](what-is-a-data-warehouse-unit-dwu-cdwu.md)göre belirlenir.
 
-- Tüm performans profilleri için ayrılan kaynakları görüntülemek için [Bellek ve eşzamanlılık sınırlarına](memory-concurrency-limits.md)bakın.
-- Kapasiteyi ayarlamak için [yukarı veya aşağı ölçeklendirebilirsiniz.](quickstart-scale-compute-portal.md)
+- Tüm performans profillerine ayrılan kaynakları görüntülemek için bkz. [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).
+- Kapasiteyi ayarlamak için [ölçeği değiştirebilir veya](quickstart-scale-compute-portal.md)azaltabilirsiniz.
 
 ## <a name="workload-management-concepts"></a>İş yükü yönetimi kavramları
 
-Geçmişte, Azure Synapse'deki SQL Analytics için sorgu performansını [kaynak sınıfları](resource-classes-for-workload-management.md)aracılığıyla yönetesiniz.  Rol üyeliğine dayalı bir sorguya bellek atanmasına izin verilen kaynak sınıfları.  Kaynak sınıfları ile birincil sorun, bir kez yapılandırıldıktan sonra, iş yükünü denetlemek için hiçbir yönetim veya yeteneği olmasıdır.  
+Geçmişte, Azure 'daki SQL Analytics SYNAPSE [kaynak sınıfları](resource-classes-for-workload-management.md)aracılığıyla sorgu performansını yönetiyordunuz.  Rol üyeliğine göre bir sorguya bellek atamaya izin verilen kaynak sınıfları.  Kaynak sınıflarıyla ilgili birincil zorluk, yapılandırıldıktan sonra iş yükünü denetlemek için bir idare veya özellik yoktu.  
 
-Örneğin, smallrc'e geçici bir kullanıcı rolü üyeliği vermek, bu kullanıcının sistemdeki belleğin %100'ünü kullanmasına olanak sağladı.  Kaynak sınıflarında, kaynakların kritik iş yükleri için kullanılabilir olmasını sağlamanın ve ayırmanın bir yolu yoktur.
+Örneğin, smallrc 'ye geçici bir kullanıcı rolü üyeliği verilmesi, kullanıcının sistemdeki belleğin %100 ' i kullanmasına izin verilir.  Kaynak sınıflarıyla birlikte, önemli iş yükleri için ayrılan kaynakları ayıracağından ve kaynakların kullanılabilir olduğundan emin olmanın bir yolu yoktur.
 
-Azure Synapse'deki Synapse SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [İş Yükü Sınıflandırması,](sql-data-warehouse-workload-classification.md)İş [Yükü Önemi](sql-data-warehouse-workload-importance.md) ve İş [Yükü Yalıtımı.](sql-data-warehouse-workload-isolation.md)  Bu özellikler, iş yükünüzün sistem kaynaklarını nasıl kullandığı üzerinde daha fazla denetim sağlar.
+Azure SYNAPSE 'de SYNAPSE SQL havuzu iş yükü yönetimi üç üst düzey kavramdan oluşur: [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md), [iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  Bu yetenekler, iş yükünüzün sistem kaynaklarını kullanma konusunda daha fazla denetim sağlar.
 
-İş yükü sınıflandırması, bir iş yükü grubuna istek atama ve önem düzeylerini ayarlama kavramıdır.  Tarihsel olarak, bu atama rol üyeliği yoluyla [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)kullanılarak yapıldı.  Bu artık [CREATE İŞ YÜKÜ SıNıFLANDıRıCısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)aracılığıyla yapılabilir.  Sınıflandırma özelliği, etiket, oturum ve istekleri sınıflandırma zamanı gibi daha zengin bir seçenek kümesi sağlar.
+İş yükü sınıflandırması, bir iş yükü grubuna istek atama ve önem düzeylerini ayarlama kavramıdır.  Tarihsel olarak, bu atama [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)kullanarak rol üyeliğiyle yapılır.  Bu artık [Iş yükü oluşturma CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)aracılığıyla yapılabilir.  Sınıflandırma özelliği, isteklerin sınıflandırılacağı etiket, oturum ve zaman gibi daha zengin bir seçenek kümesi sağlar.
 
-İş yükü önemi, bir isteğin kaynaklara erişim sırasını etkiler.  Yoğun bir sistemde, daha yüksek öneme sahip bir istek öncelikle kaynaklara erişebilir.  Önem de kilitlere düzenli erişim sağlayabilir.
+İş yükü önemi, bir isteğin kaynaklara erişim sırasındaki sırayı etkiler.  Yoğun bir sistemde, yüksek öneme sahip bir istek kaynaklara ilk kez erişebilir.  Önem derecesi Ayrıca, kilitler için sıralı erişim de sağlar.
 
-İş yükü yalıtımı, iş yükü grubu için kaynak ayırır.  İş yükü grubunda ayrılmış kaynaklar, yürütmeyi sağlamak için yalnızca bu iş yükü grubuna ait olarak tutulur.  İş yükü grupları, kaynak sınıfları gibi istek başına atanan kaynak miktarını da tanımlamanıza olanak tanır.  İş yükü grupları, bir dizi istek tenin tüketebileceği kaynak miktarını rezerve etme veya kapatma olanağı sağlar.  Son olarak, iş yükü grupları, sorgu zaman ası gibi kuralları isteklere uygulamak için bir mekanizmadır.  
+İş yükü yalıtımı, bir iş yükü grubu için kaynakları ayırır.  Bir iş yükü grubunda ayrılan kaynaklar, yürütmeyi sağlamak için özel olarak o iş yükü grubu için tutulur.  İş yükü grupları ayrıca, kaynak sınıfları gibi istek başına atanan kaynak miktarını tanımlamanızı sağlar.  İş yükü grupları bir istek kümesinin tüketebileceği kaynak miktarını ayırabilme veya üst sınır alma olanağı sağlar.  Son olarak, iş yükü grupları, isteklere sorgu zaman aşımı gibi kurallar uygulamak için bir mekanizmadır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş yükü sınıflandırması hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-classification.md)  
-- İş yükü yalıtımı hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-isolation.md)  
-- İş yükünün önemi hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-importance.md)  
-- İş yükü yönetimi izleme hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-management-portal-monitor.md)  
+- İş yükü sınıflandırması hakkında daha fazla bilgi için bkz. [Iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).  
+- İş yükü yalıtımı hakkında daha fazla bilgi için bkz. [Iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md).  
+- İş yükü önemi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md).  
+- İş yükü yönetimi izleme hakkında daha fazla bilgi için bkz. [Iş yükü yönetim portalı izleme](sql-data-warehouse-workload-management-portal-monitor.md).  

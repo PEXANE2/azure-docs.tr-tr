@@ -1,27 +1,27 @@
 ---
-title: Holografik Remoting ve Uzaktan İşlemi Birlikte Kullanma
-description: Holografik Remoting önizlemesi Azure Uzaktan İşleme ile birlikte nasıl kullanılabilir?
+title: Unity’de Holographic Remoting’i ve Remote Rendering’i kullanma
+description: Holographic Remoting Preview 'ın Azure uzaktan Işleme ile birlikte nasıl kullanılabileceği
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/23/2020
 ms.topic: how-to
 ms.openlocfilehash: ac47a2922e92233f0acabf75817a712671306bc1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681213"
 ---
-# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Holografik Remoting ve Uzaktan İşlemi Birlikte Kullanma
+# <a name="use-holographic-remoting-and-remote-rendering-in-unity"></a>Unity’de Holographic Remoting’i ve Remote Rendering’i kullanma
 
-[Holografik Remoting](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) ve Azure Uzaktan İşlem, tek bir uygulamada birbirini dışlar. Bu nedenle, [Unity oyun modu](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) da kullanılamaz.
+[Holographic Remoting](https://docs.microsoft.com/windows/mixed-reality/holographic-remoting-player) ve Azure uzaktan işleme, bir uygulama içinde birbirini dışlıyor. Bu nedenle, [Unity oynatma modu](https://docs.microsoft.com/windows/mixed-reality/unity-play-mode) da kullanılamaz.
 
-Unity düzenleyicisinin her çalışması için ikisinden yalnızca biri kullanılabilir. Diğerini kullanmak için önce Birlik'i yeniden başlatın.
+Unity düzenleyicisinin her çalışması için, bunlardan yalnızca biri kullanılabilir. Diğerini kullanmak için önce Unity 'yi yeniden başlatın.
 
-## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>Hololens 2'de önizleme yapmak için Unity oyun modunu kullanma
+## <a name="use-unity-play-mode-to-preview-on-hololens-2"></a>HoloLens 2 ' de önizleme yapmak için Unity Play modunu kullanma
 
- Örneğin uygulamanın kullanıcı arasını test etmek için unity oyun modu hala kullanılabilir. Ancak, ARR'ın hiçbir zaman baş harfe başlatılanmamış olması hayati önem taşımaktadır. Yoksa çökecek.
+ Unity oynatma modu, örneğin uygulamanın kullanıcı arabirimini test etmek için hala kullanılabilir. Ancak, ARR 'nin hiç başlatılmaması çok önemlidir. Aksi takdirde kilitlenme olur.
 
-## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Masaüstünde önizleme yapmak için WMR VR kulaklık kullanma
+## <a name="use-a-wmr-vr-headset-to-preview-on-desktop"></a>Masaüstünde önizleme yapmak için bir WMR VR kulaklık kullanın
 
-Windows Mixed Reality VR kulaklık varsa, Unity içinde önizleme yapmak için kullanılabilir. Bu durumda, ARR'ı başlatmada sorun yoktur, ancak WMR kulaklık kullanılırken bir oturuma bağlanmak mümkün olmayacaktır.
+Windows Mixed Reality VR kulaklığı varsa, Unity içinde önizleme yapmak için kullanılabilir. Bu durumda, ARR 'yi başlatmak iyi bir durumdur, ancak WMR kulaklık kullanıldığı sırada bir oturuma bağlanabilmek mümkün olmayacaktır.

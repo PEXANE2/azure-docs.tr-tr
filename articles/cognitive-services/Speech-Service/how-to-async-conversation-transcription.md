@@ -1,7 +1,7 @@
 ---
-title: Asynchronous Konuşma Transkripsiyon (Önizleme) - Konuşma hizmeti
+title: Zaman uyumsuz konuşma dökümü (Önizleme)-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma hizmetini kullanarak eşzamanlı Konuşma Transkripsiyon'u nasıl kullanacağınızı öğrenin. Yalnızca Java için kullanılabilir.
+description: Konuşma hizmetini kullanarak zaman uyumsuz konuşma dökümünü nasıl kullanacağınızı öğrenin. Yalnızca Java için kullanılabilir.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
 ms.openlocfilehash: 57543f4a3779145ce66259eec1abac195b63c7ba
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80384305"
 ---
-# <a name="asynchronous-conversation-transcription-preview"></a>Asynchronous Konuşma Transkripsiyon (Önizleme)
+# <a name="asynchronous-conversation-transcription-preview"></a>Zaman uyumsuz konuşma dökümü (Önizleme)
 
-Bu makalede, asynchronous Konuşma Transkripsiyon **RemoteConversationTranscriptionClient** API kullanılarak gösterilmiştir. Konuşma Transkripsiyon'u asynchronous transkripsiyon `conversationId`yapmak üzere yapılandırıldıysanız ve `conversationId` **RemoteConversationTranscriptionClient** API'yi kullanarak bununla ilişkili transkripsiyonu elde edebilirsiniz.
+Bu makalede, **Remotekonuşmayı Tiontranscriptionclient** API 'si kullanılarak zaman uyumsuz görüşme dökümü gösterilmektedir. Görüşme dökümünü zaman uyumsuz olarak yapılacak şekilde yapılandırdıysanız ve ' a `conversationId`sahipseniz, `conversationId` **Remotekonuşmayı tiontranscriptionclient** API 'sini kullanarak bununla ilişkili dökümü elde edebilirsiniz.
 
-## <a name="asynchronous-vs-real-time--asynchronous"></a>Asynchronous vs gerçek zamanlı + asynchronous
+## <a name="asynchronous-vs-real-time--asynchronous"></a>Zaman uyumsuz ile gerçek zamanlı + zaman uyumsuz
 
-Eşzamanlı transkripsiyon ile, konuşma ses akışı, ancak gerçek zamanlı olarak döndürülen bir transkripsiyon gerekmez. Bunun yerine, ses gönderildikten `conversationId` sonra, asynchronous transkripsiyon durumu için sorgu `Conversation` için kullanın. Asynchronous transkripsiyon hazır olduğunda, bir `RemoteConversationTranscriptionResult`alırsınız .
+Zaman uyumsuz döküm sayesinde, konuşma sesini akışa alırsınız ancak gerçek zamanlı olarak geri döndürülen bir döküm gerekmez. Bunun yerine, ses gönderildikten sonra, zaman uyumsuz döküm `conversationId` durumunu `Conversation` sorgulamak için öğesini kullanın. Zaman uyumsuz döküm hazırlandıktan sonra bir `RemoteConversationTranscriptionResult`ile karşılaşırsınız.
 
-Gerçek zamanlı artı asynchronous ile transkripsiyon gerçek zamanlı olarak olsun, ama aynı `conversationId` zamanda (asynchronous senaryoya benzer) ile sorgulayarak transkripsiyon olsun.
+Gerçek zamanlı ve zaman uyumsuz olarak, dökümü gerçek zamanlı olarak alır, ancak `conversationId` (zaman uyumsuz senaryoya benzer şekilde) ile sorgulama yaparak da bu işlemi gerçekleştirebilirsiniz.
 
-Asynchronous transkripsiyon gerçekleştirmek için iki adım gereklidir. İlk adım, yalnızca eşzamanlı veya gerçek zamanlı artı asynchronous seçerek, ses yüklemektir. İkinci adım transkripsiyon sonuçlarını elde etmektir.
+Zaman uyumsuz dökümü gerçekleştirmek için iki adım gerekir. İlk adım, yalnızca zaman uyumsuz veya gerçek zamanlı ve zaman uyumsuz olarak seçerek sesi karşıya yüklemedir. İkinci adım, döküm sonuçlarını almak için kullanılır.
 
-## <a name="upload-the-audio"></a>Sesi yükleyin
+## <a name="upload-the-audio"></a>Sesi karşıya yükle
 
-Eşkron transkripsiyon işlemi yapılmadan önce, Sesi Microsoft Bilişsel Konuşma istemcisi SDK'yı (sürüm 1.8.0 veya üzeri) kullanarak Konuşma Transkripsiyon Hizmetine göndermeniz gerekir.
+Zaman uyumsuz döküm gerçekleştirilmeden önce, Microsoft bilişsel konuşma istemci SDK 'sını (sürüm 1.8.0 veya üzeri) kullanarak konuşmayı konuşmaya dönüştürme hizmetine göndermeniz gerekir.
 
-Bu örnek kod, yalnızca eş zamanlı mod için konuşma çeviricinin nasıl oluşturulacak olduğunu gösterir. Transkripsiyöre ses akışı sağlamak için, [Konuşma SDK ile Transcribe konuşmalarından](how-to-use-conversation-transcription-service.md)türetilen ses akış kodunu gerçek zamanlı olarak eklemeniz gerekir. Desteklenen platformları ve dilleri görmek için bu konunun **Sınırlamalar** bölümüne bakın.
+Bu örnek kod, yalnızca zaman uyumsuz mod için görüşme dökümünü oluşturmayı gösterir. Bu şekilde ses akışını sağlamak için [konuşma SDK 'sı ile gerçek zamanlı olarak konuşmadan](how-to-use-conversation-transcription-service.md)elde edilen ses akışı kodunu eklemeniz gerekir. Desteklenen platformlar ve diller API 'Lerini görmek için ilgili konunun **sınırlamalar** bölümüne bakın.
 
 ```java
 // Create the speech config object
@@ -101,7 +101,7 @@ Future<?> future = transcriber.startTranscribingAsync();
 ...
 ```
 
-Gerçek zamanlı _artı_ eşzamanlı istiyorsanız, uygun kod satırlarını aşağıdaki gibi yorumlayın ve yorumsunuz:
+Gerçek zamanlı _artı_ zaman uyumsuz isterseniz, ilgili kod satırlarının açıklamasını aşağıdaki gibi kodlayın:
 
 ```java
 // Set the property for asynchronous transcription
@@ -111,17 +111,17 @@ Gerçek zamanlı _artı_ eşzamanlı istiyorsanız, uygun kod satırlarını aş
 speechConfig.setServiceProperty("transcriptionMode", "RealTimeAndAsync", ServicePropertyChannel.UriQueryParameter);
 ```
 
-## <a name="get-transcription-results"></a>Transkripsiyon sonuçlarını alın
+## <a name="get-transcription-results"></a>Dökümü alma sonuçları
 
-Bu adım, eşzamanlı transkripsiyon sonuçlarını alır, ancak gerekli olabilecek herhangi bir gerçek zamanlı işlemin başka bir yerde yapıldığını varsayar. Daha fazla bilgi için, [Konuşma SDK ile gerçek zamanlı olarak transkripsiyonu konuşmaları](how-to-use-conversation-transcription-service.md)bakın.
+Bu adım zaman uyumsuz döküm sonuçlarını alır, ancak gerekli olan gerçek zamanlı işlemleri başka bir yerde yerine getirir. Daha fazla bilgi için bkz. [KONUŞMAYı SDK ile gerçek zamanlı olarak konuşmaları dönüştürme](how-to-use-conversation-transcription-service.md).
 
-Burada gösterilen kod için, yalnızca Windows, Linux ve Android'de (yalnızca API düzeyi 26 veya üzeri) Java (1.8.0 veya üzeri) için desteklenen **uzaktan konuşma sürümü 1.8.0'a**ihtiyacınız vardır.
+Burada gösterilen kod için, yalnızca Windows, Linux ve Android (API düzeyi 26 veya üzeri) üzerinde Java (1.8.0 veya üzeri) için desteklenen **uzak konuşma sürümü 1.8.0**gerekir.
 
-### <a name="obtaining-the-client-sdk"></a>İstemci SDK'nın elde edilmesi
+### <a name="obtaining-the-client-sdk"></a>İstemci SDK 'sını alma
 
-Pom.xml dosyanızı aşağıdaki gibi düzenleyerek **uzaktan konuşma** elde edebilirsiniz.
+POM. XML dosyanızı aşağıdaki gibi düzenleyerek **uzak konuşmayı** elde edebilirsiniz.
 
-1. Dosyanın sonunda, kapanış etiketinden `</project>`önce, `repositories` Konuşma SDK için Maven deposuna atıfta bulunulan bir öğe oluşturun:
+1. Dosyanın sonunda, kapanış etiketinden `</project>`önce, konuşma SDK 'Sı Için Maven deposuna `repositories` başvuruya sahip bir öğe oluşturun:
 
    ```xml
    <repositories>
@@ -133,7 +133,7 @@ Pom.xml dosyanızı aşağıdaki gibi düzenleyerek **uzaktan konuşma** elde ed
    </repositories>
    ```
 
-2. Ayrıca, `dependencies` uzaktan konuşma istemcisi-sdk 1.8.0 bağımlılık olarak bir öğe ekleyin:
+2. Ayrıca, remoteconversation-Client-SDK 1.8.0 bağımlılık olarak bir `dependencies` öğesi ekleyin:
 
    ```xml
    <dependencies>
@@ -145,11 +145,11 @@ Pom.xml dosyanızı aşağıdaki gibi düzenleyerek **uzaktan konuşma** elde ed
    </dependencies>
    ```
 
-3. Değişiklikleri kaydetme
+3. Değişiklikleri Kaydet
 
-### <a name="sample-transcription-code"></a>Örnek transkripsiyon kodu
+### <a name="sample-transcription-code"></a>Örnek dökümü kodu
 
-Sonra `conversationId`, asynchronous transkripsiyon durumunu sorgulamak için istemci uygulamasında uzaktan konuşma transkripsiyon **istemciremoteConversationTranscriptionClient** oluşturun. [Bir PollerFlux](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) nesnesi almak için **RemoteConversationTranscriptionClient** **getTranscriptionOperation** yöntemini kullanın. PollerFlux nesne uzak çalışma durumu **RemoteConversationTranscriptionOperation** ve nihai sonuç **RemoteConversationTranscriptionResult**hakkında bilgi olacaktır. İşlem tamamlandıktan sonra, [bir SyncPoller'da](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java) **getFinalResult'ı** arayarak **RemoteConversationTranscriptionResult'ı** alın. Bu kodda biz sadece sistem çıktısı için sonuç içeriğini yazdırmak.
+`conversationId`Daha sonra, zaman uyumsuz döküm durumunu sorgulamak için istemci uygulamada bir uzak konuşma dökümü istemcisi **Remotetalk Tiontranscriptionclient** oluşturun. Bir [Pollerflox](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/PollerFlux.java) nesnesi almak Için **Remotetalk Tiontranscriptionclient** Içinde **gettranscriptionoperation** metodunu kullanın. Pollerflox nesnesi, uzak işlem durumu **Remotetalk Tiontranscriptionoperation** ve nihai sonuç **Remotetalk tiontranscriptionresult**hakkında bilgi sahibi olacaktır. İşlem tamamlandıktan sonra, bir [Syncpoller](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/core/azure-core/src/main/java/com/azure/core/util/polling/SyncPoller.java)üzerinde **getfinalresult** çağırarak **Remotetalk tiontranscriptionresult** alın. Bu kodda, sonuç içeriğini sistem çıktısına yazdırdık.
 
 ```java
 // Create the speech config object
@@ -202,4 +202,4 @@ System.out.println("Operation finished");
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Örneklerimizi GitHub'da keşfedin](https://aka.ms/csspeech/samples)
+> [GitHub 'da örneklerimizi keşfet](https://aka.ms/csspeech/samples)

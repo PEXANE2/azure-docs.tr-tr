@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: a060cd35bbb42d2c31e98bed4855b2d27bfcbada
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756636"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>İşlevleri kullanarak bir Azure Depolama kuyruğuna ileti ekleme
@@ -34,9 +34,9 @@ Bu bölümde, daha önce oluşturduğunuz işleve bir kuyruk depolama çıkış 
 
 1. Bu hızlı başlangıcın önceki kısımlarında oluşturduğunuz işlevi seçin.
 
-1. **Azure Queue Depolama> > Yeni Çıktı >yı Tümleştir'i**seçin.
+1. **Azure kuyruk depolaması > yeni çıktıyı > tümleştir**' i seçin.
 
-1. **Seç'i**tıklatın.
+1. **Seç**' e tıklayın.
 
     ![Azure portalındaki bir işleve Kuyruk depolama çıkış bağlaması ekleyin.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 

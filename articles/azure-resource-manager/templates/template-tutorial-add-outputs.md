@@ -1,56 +1,56 @@
 ---
-title: Öğretici - şablona çıktı ekleme
-description: Sözdizimini basitleştirmek için Azure Kaynak Yöneticisi şablonunuza çıktılar ekleyin.
+title: Öğretici-şablona çıktılar ekleme
+description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza çıktılar ekleyin.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 2ee1a2c7037bde68b7858b57a03c78bd2016ff1c
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80743557"
 ---
-# <a name="tutorial-add-outputs-to-your-arm-template"></a>Öğretici: ARM şablonunuza çıktı ekleme
+# <a name="tutorial-add-outputs-to-your-arm-template"></a>Öğretici: ARM şablonunuza çıktılar ekleme
 
-Bu eğitimde, Azure Kaynak Yöneticisi (ARM) şablonunuzdan bir değeri nasıl döndüreceklerini öğrenirsiniz. Dağıtılmış bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu eğitimin tamamlanması **7 dakika** sürer.
+Bu öğreticide, Azure Resource Manager (ARM) şablonınızdan bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[Değişkenler hakkındaki eğitimi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak gerekli değildir.
+[Değişkenler hakkında öğreticiyi](template-tutorial-add-variables.md)tamamlamanızı öneririz, ancak bu gerekli değildir.
 
-Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile Visual Studio Kodu'na sahip olmalısınız. Daha fazla bilgi için [şablon araçlarına](template-tutorial-create-first-template.md#get-tools)bakın.
+Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı ile Visual Studio Code olması gerekir. Daha fazla bilgi için bkz. [şablon araçları](template-tutorial-create-first-template.md#get-tools).
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
-Önceki öğreticinin sonunda, şablonunuzun aşağıdaki JSON'u vardı:
+Önceki öğreticinin sonunda, şablonunuz aşağıdaki JSON 'a sahipti:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json":::
 
-Bir depolama hesabı dağıtıyor, ancak depolama hesabı hakkında herhangi bir bilgi döndürmez. Özellikleri yeni bir kaynaktan yakalamanız gerekebilir, böylece daha sonra başvuru için kullanılabilir olurlar.
+Bir depolama hesabı dağıtır, ancak depolama hesabı hakkında herhangi bir bilgi döndürmez. Daha sonra başvuru için kullanılabilir olmaları için yeni bir kaynaktaki özellikleri yakalamanız gerekebilir.
 
-## <a name="add-outputs"></a>Çıktı ekleme
+## <a name="add-outputs"></a>Çıkış Ekle
 
-Şablondan değerleri döndürmek için çıktıları kullanabilirsiniz. Örneğin, yeni depolama hesabınız için uç noktaları almak yararlı olabilir.
+Şablondan değer döndürmek için çıktıları kullanabilirsiniz. Örneğin, yeni depolama hesabınız için uç noktaları almak faydalı olabilir.
 
-Aşağıdaki örnek, çıktı değeri eklemek için şablonunuzdayapılan değişikliği vurgular. Dosyanın tamamını kopyalayın ve şablonunuzu içeriğiyle değiştirin.
+Aşağıdaki örnek, bir çıkış değeri eklemek için şablonunuzda yapılan değişikliği vurgular. Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json" range="1-53" highlight="47-52":::
 
-Eklediğiniz çıktı değeri hakkında dikkat edilmesi gereken bazı önemli öğeler vardır.
+Eklediğiniz çıktı değeri hakkında dikkat etmeniz için bazı önemli öğeler vardır.
 
-Döndürülen değer türü **nesne**olarak ayarlanır, bu da json nesnesini döndürdettiği anlamına gelir.
+Döndürülen değerin türü **Object**olarak ayarlanır, yanı bir JSON nesnesi döndürür.
 
-Depolama hesabının çalışma zamanı durumunu almak için [başvuru](template-functions-resource.md#reference) işlevini kullanır. Bir kaynağın çalışma zamanı durumunu almak için, kaynağın adını veya kimliğini geçersiniz. Bu durumda, depolama hesabının adını oluşturmak için kullandığınız değişkeni kullanırsınız.
+Depolama hesabının çalışma zamanı durumunu almak için [başvuru](template-functions-resource.md#reference) işlevini kullanır. Bir kaynağın çalışma zamanı durumunu almak için bir kaynağın adını veya KIMLIĞINI geçirin. Bu durumda, depolama hesabının adını oluşturmak için kullandığınız değişkeni kullanırsınız.
 
-Son olarak, depolama hesabından **birincil Endpoints** özelliğidöndürür
+Son olarak, depolama hesabından en son eden **yenyenler** özelliğini döndürür
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
 Şablonu dağıtmaya ve döndürülen değere bakmaya hazırsınız.
 
-Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -65,7 +65,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bu dağıtım komutunu çalıştırmak için Azure CLI'nin [en son sürümüne](/cli/azure/install-azure-cli) sahip olmalısınız.
+Bu dağıtım komutunu çalıştırmak için [en son](/cli/azure/install-azure-cli) Azure CLI sürümüne sahip olmanız gerekir.
 
 ```azurecli
 az deployment group create \
@@ -77,7 +77,7 @@ az deployment group create \
 
 ---
 
-Dağıtım komutu çıktısında, yalnızca çıktı JSON biçimindeyse aşağıdaki örneğe benzer bir nesne görürsünüz:
+Dağıtım komutunun çıktısında, aşağıdaki örneğe benzer bir nesne görürsünüz ve yalnızca çıkış JSON biçimindedir:
 
 ```json
 {
@@ -91,23 +91,23 @@ Dağıtım komutu çıktısında, yalnızca çıktı JSON biçimindeyse aşağı
 ```
 
 > [!NOTE]
-> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
+> Dağıtım başarısız olursa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  **Ayrıntılı** anahtarı, tam hata ayıklama günlüklerini göstermek için de kullanabilirsiniz.
 
 ## <a name="review-your-work"></a>Çalışmanızı gözden geçirin
 
-Son altı derste çok şey yaptın. Yaptıklarınızı gözden geçirmek için bir dakikanızı ayıralım. Sağlaması kolay parametreleriçeren bir şablon oluşturdunuz. Şablon, özelleştirmeye izin verdiği ve dinamik olarak gerekli değerleri oluşturduğundan farklı ortamlarda yeniden kullanılabilir. Ayrıca komut dosyanızda kullanabileceğiniz depolama hesabı yla ilgili bilgileri de döndürür.
+Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden geçirmeniz biraz zaman atalım. Kolayca sağlanması gereken parametrelere sahip bir şablon oluşturdunuz. Şablon, özelleştirmeye izin verdiğinden ve gerekli değerleri dinamik olarak oluşturduğundan farklı ortamlarda yeniden kullanılabilir. Ayrıca, betiğinizdeki kullanabileceğiniz depolama hesabı hakkındaki bilgileri de döndürür.
 
-Şimdi kaynak grubuna ve dağıtım geçmişine bakalım.
+Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Sol menüden **Kaynak gruplarını**seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
-1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki de birkaç depolama hesabınız olmalıdır.
-1. Ayrıca, geçmişte listelenen birkaç başarılı dağıtımları olmalıdır. Bağlantıyı seçin.
+1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.
+1. Ayrıca, geçmişte listelenen birkaç başarılı dağıtıma da sahip olmanız gerekir. Bağlantıyı seçin.
 
    ![Dağıtımları seçin](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Tarihteki tüm konuşlandırmalarınızı görüyorsunuz. **Addoutputs**adlı dağıtımı seçin.
+1. Tüm dağıtımlarınızın geçmişini görürsünüz. **Addoutputs**adlı dağıtımı seçin.
 
    ![Dağıtım geçmişini göster](./media/template-tutorial-add-outputs/show-history.png)
 
@@ -115,9 +115,9 @@ Son altı derste çok şey yaptın. Yaptıklarınızı gözden geçirmek için b
 
    ![Girişleri göster](./media/template-tutorial-add-outputs/show-inputs.png)
 
-1. Çıktıları gözden geçirebilirsiniz.
+1. Çıkışları gözden geçirebilirsiniz.
 
-   ![Çıktıları göster](./media/template-tutorial-add-outputs/show-outputs.png)
+   ![Çıkışları göster](./media/template-tutorial-add-outputs/show-outputs.png)
 
 1. Şablonu gözden geçirebilirsiniz.
 
@@ -125,18 +125,18 @@ Son altı derste çok şey yaptın. Yaptıklarınızı gözden geçirmek için b
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bir sonraki öğreticiye geçiyorsanız, kaynak grubunu silmeniz gerekmez.
+Bir sonraki öğreticiye geçiş yapıyorsanız, kaynak grubunu silmeniz gerekmez.
 
-Şimdi duruyorsanız, kaynak grubunu silerek dağıttığınız kaynakları temizlemek isteyebilirsiniz.
+Şimdi duruyorsa, kaynak grubunu silerek dağıttığınız kaynakları temizlemeniz gerekebilir.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
+1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
 3. Kaynak grubu adını seçin.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şablona bir iade değeri eklediniz. Bir sonraki öğreticide, şablonu nasıl dışa aktaracağınız ve bu dışa aktarılan şablonun bölümlerini şablonunuzda nasıl kullanacağınızı öğreneceksiniz.
+Bu öğreticide, şablona bir dönüş değeri eklediniz. Sonraki öğreticide, bir şablonu dışarı aktarmayı ve şablonunuzda bu dışarı aktarılmış şablonun parçalarını kullanmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Dışa aktarılan şablonu kullanma](template-tutorial-export-template.md)
+> [Aktarılmış şablonu kullan](template-tutorial-export-template.md)

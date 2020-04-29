@@ -1,7 +1,7 @@
 ---
-title: RHEL/CentOS 7 nasıl yapılandırılır - Konuşma hizmeti
+title: RHEL/CentOS 7-konuşma hizmetini yapılandırma
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'sının kullanılabilması için RHEL/CentOS 7'yi nasıl yapılandırabileceğinizi öğrenin.
+description: RHEL/CentOS 7 ' yi konuşma SDK 'sının kullanılabilmesi için nasıl yapılandıracağınızı öğrenin.
 services: cognitive-services
 author: pankopon
 manager: jhakulin
@@ -11,51 +11,51 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: pankopon
 ms.openlocfilehash: dc09d517d95b5a3f2a88504a14f1451d1de5ffc9
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80639168"
 ---
-# <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konuşma SDK için RHEL/CentOS 7'yi yapılandırın
+# <a name="configure-rhelcentos-7-for-speech-sdk"></a>Konuşma SDK 'Sı için RHEL/CentOS 7 yapılandırma
 
-Red Hat Enterprise Linux (RHEL) 8 x64 ve CentOS 8 x64 resmi olarak Speech SDK sürüm 1.10.0 ve sonrası tarafından desteklenir. RHEL/CentOS 7 x64'teki Speech SDK'yı kullanmak da mümkündür, ancak bunun için C++ derleyicisinin (C++ geliştirme için) ve sisteminizdeki paylaşılan C++ çalışma zamanı kitaplığını günceller.
+Red Hat Enterprise Linux (RHEL) 8 x64 ve CentOS 8 x64, konuşma SDK sürümü 1.10.0 ve üzeri tarafından resmi olarak desteklenir. Ayrıca, RHEL/CentOS 7 x64 üzerinde konuşma SDK 'sını kullanmak da mümkündür, ancak bu C++ derleyicisinin (C++ geliştirme için) ve sisteminizde paylaşılan C++ çalışma zamanı kitaplığının güncelleştirilmesini gerektirir.
 
-C++ derleyici sürümünü denetlemek için çalıştırın:
+C++ derleyici sürümünü denetlemek için şunu çalıştırın:
 
 ```bash
 g++ --version
 ```
 
-Derleyici yüklüyse, çıktı aşağıdaki gibi görünmelidir:
+Derleyici yüklüyse, çıktının şöyle görünmesi gerekir:
 
 ```bash
 g++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
 ```
 
-Bu ileti, GCC ana sürüm 4 yüklü olduğunu bilmenizi sağlar. Bu sürüm, Konuşma SDK kullandığı C++ 11 standardı için tam destek yok. Bu GCC sürümü ve Konuşma SDK üstbilgileriyle bir C++ programı derlemeye çalışmak derleme hatalarına neden olur.
+Bu ileti, GCC ana sürüm 4 ' ün yüklü olduğunu bilmenizi sağlar. Bu sürüm, konuşma SDK 'sının kullandığı C++ 11 standardı için tam desteğe sahip değildir. Bu GCC sürümüyle bir C++ programı derlemeye çalışılması ve konuşma SDK başlıkları derleme hatalarına neden olur.
 
-Paylaşılan C++ çalışma zamanı kitaplığı (libstdc++) sürümünü denetlemek de önemlidir. Konuşma SDK'sının çoğu ana C++ kitaplıkları olarak uygulanır, yani uygulamaları geliştirmek için kullandığınız dilden bağımsız olarak libstdc++'ya bağlıdır.
+Paylaşılan C++ çalışma zamanı kitaplığının (libstdc + +) sürümünü denetlemek de önemlidir. Konuşma SDK 'sının çoğu yerel C++ kitaplıkları olarak uygulanır, yani uygulama geliştirmek için kullandığınız dilden bağımsız olarak lıbdc + + ' ye bağlıdır.
 
-Sisteminizde libstdc++ konumunu bulmak için çalıştırın:
+Sisteminizdeki libstdc + + konumunu bulmak için şunu çalıştırın:
 
 ```bash
 ldconfig -p | grep libstdc++
 ```
 
-Vanilya RHEL/CentOS 7 (x64) çıktısı:
+Vanilla RHEL/CentOS 7 (x64) çıkışı:
 
 ```
 libstdc++.so.6 (libc6,x86-64) => /lib64/libstdc++.so.6
 ```
 
-Bu iletiyi temel alan sürüm tanımlarını bu komutla denetlemek istersiniz:
+Bu iletiye bağlı olarak, sürüm tanımlarını bu komutla denetlemek isteyeceksiniz:
 
 ```bash
 strings /lib64/libstdc++.so.6 | egrep "GLIBCXX_|CXXABI_"
 ```
 
-Çıktı olmalıdır:
+Çıktının olması gerekir:
 
 ```
 ...
@@ -65,14 +65,14 @@ CXXABI_1.3.7
 ...
 ```
 
-Konuşma SDK **CXXABI_1.3.9** ve **GLIBCXX_3.4.21**gerektirir. Bu bilgileri Linux paketinden Konuşma SDK kitaplıklarında çalıştırarak `ldd libMicrosoft.CognitiveServices.Speech.core.so` bulabilirsiniz.
+Konuşma SDK 'Sı **CXXABI_1.3.9** ve **GLIBCXX_3.4.21**gerektirir. Bu bilgileri Linux paketindeki konuşma SDK kitaplıkları `ldd libMicrosoft.CognitiveServices.Speech.core.so` üzerinde çalıştırarak bulabilirsiniz.
 
 > [!NOTE]
-> Sisteme yüklenen GCC sürümünün çalışma zamanı kitaplıklarıyla eşleşen en az **5.4.0**olması önerilir.
+> Sistemde yüklü GCC sürümünün, eşleşen çalışma zamanı kitaplıklarıyla en az **5.4.0**olması önerilir.
 
 ## <a name="example"></a>Örnek
 
-Bu, RHEL/CentOS 7 x64'ün geliştirme için nasıl yapılandırılabildiğini (C++, C#, Java, Python) SDK 1.10.0 veya sonraki konuşmalarla nasıl yapılandırılabildiğini gösteren bir örnek komuttur:
+Bu, geliştirme için RHEL/CentOS 7 x64 (C++, C#, Java, Python) konuşma SDK 1.10.0 veya üzerini kullanarak nasıl yapılandırılacağını gösteren örnek bir komuttur:
 
 ```bash
 # Only run ONE of the following two commands

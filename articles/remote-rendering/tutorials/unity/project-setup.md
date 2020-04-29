@@ -1,56 +1,56 @@
 ---
-title: Sıfırdan BirBirlik projesi ayarlama
-description: Azure Uzaktan İşleme ile kullanım için boş bir Unity projesinin nasıl yapılandırılabildiğini açıklar.
+title: Sıfırdan Unity projesi ayarlama
+description: Azure uzaktan Işleme ile kullanılmak üzere boş bir Unity projesinin nasıl yapılandırılacağını açıklar.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
 ms.openlocfilehash: 33801316e4c0446865169560bb42f98052acba70
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80679600"
 ---
-# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Öğretici: Sıfırdan bir Birlik projesi kurma
+# <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Öğretici: sıfırdan Unity projesi ayarlama
 
 Bu öğreticide şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * ARR için bir çizik Birlik projesi yapılandırma.
-> * Oluşturma ve durdurma işleme oturumları.
-> * Varolan oturumları yeniden kullanma.
-> * Oturumlara bağlanma ve bağlantı kesme.
-> * Modelleri bir işleme oturumuna yükleme.
-> * Bağlantı istatistiklerini görüntüleme.
+> * ARR için bir karalama Unity projesi yapılandırma.
+> * İşleme oturumları oluşturuluyor ve durduruluyor.
+> * Mevcut oturumlar yeniden kullanılıyor.
+> * Oturumlarla bağlantı kuruluyor ve bağlantıları kesiliyor.
+> * Modeller bir işleme oturumuna yükleniyor.
+> * Bağlantı istatistikleri gösteriliyor.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğretici için ihtiyacınız olan:
+Bu öğreticide şunlar gerekir:
 
-* Hesap bilgileriniz (hesap kimliği, hesap anahtarı, abonelik kimliği). Hesabınız yoksa, bir hesap [oluşturun.](../../how-tos/create-an-account.md)
-* Windows SDK 10.0.18362.0 [(indir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Visual Studio 2019'un en son sürümü [(indir)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(indir)](https://git-scm.com/downloads)
-* Birlik 2019.3.1 [(indir)](https://unity3d.com/get-unity/download)
-  * Bu modülleri Birlik olarak yükleyin:
-    * **UWP** - Universal Windows Platform Build Desteği
-    * **IL2CPP** - Windows Yapı Desteği (IL2CPP)
+* Hesap bilgileriniz (Hesap KIMLIĞI, hesap anahtarı, abonelik KIMLIĞI). Hesabınız yoksa [hesap oluşturun](../../how-tos/create-an-account.md).
+* Windows SDK 10.0.18362.0 [(İndir)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* Visual Studio 2019 ' un en son sürümü [(indirme)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(İndir)](https://git-scm.com/downloads)
+* Unity 2019.3.1 [(indirme)](https://unity3d.com/get-unity/download)
+  * Bu modülleri Unity 'ye yükler:
+    * **UWP** -Evrensel Windows platformu derleme desteği
+    * **IL2CPP** -Windows derleme DESTEĞI (IL2CPP)
 
 > [!TIP]
-> [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) tüm öğreticiler için hazırlanmış Birlik projeleri içerir. Bu projeleri başvuru olarak kullanabilirsiniz.
+> [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) tüm öğreticiler Için hazırlanan Unity projelerini içerir. Bu projeleri başvuru olarak kullanabilirsiniz.
 
-## <a name="create-a-new-unity-project"></a>Yeni bir Birlik projesi oluşturun
+## <a name="create-a-new-unity-project"></a>Yeni bir Unity projesi oluştur
 
-Unity Hub'dan yeni bir proje oluşturun.
-Bu örnekte, projenin `RemoteRendering`.
+Unity hub 'ında yeni bir proje oluşturun.
+Bu örnekte, projenin adlı `RemoteRendering`bir klasörde oluşturulduğunu varsayacağız.
 
-![yeni proje penceresi](media/new-project.png)
+![Yeni Proje penceresi](media/new-project.png)
 
 ## <a name="configure-the-projects-manifest"></a>Projenin bildirimini yapılandırma
 
-Unity proje klasörünüzde bulunan dosyayı `Packages/manifest.json` değiştirmeniz gerekir. Dosyayı bir metin düzenleyicisinde açın ve aşağıda listelenen satırları ekleyin:
+Unity proje klasörünüzde bulunan dosyasını `Packages/manifest.json` değiştirmeniz gerekir. Dosyayı bir metin düzenleyicisinde açın ve aşağıda listelenen satırları ekleyin:
 
 ```json
 {
@@ -69,81 +69,81 @@ Unity proje klasörünüzde bulunan dosyayı `Packages/manifest.json` değiştir
 }
 ```
 
-Universal render ardışık ardışık paket isteğe bağlıdır, ancak performans nedenleriyle önerilir.
-Bildirimi değiştirip kaydettikten sonra Unity otomatik olarak yenilenir. Paketlerin *Proje* penceresine yüklendiğini onaylayın:
+Evrensel işleme işlem hattı paketi isteğe bağlıdır, ancak performans nedenleriyle önerilir.
+Bildirim değiştirildikten ve kaydedildikten sonra Unity otomatik olarak yenilenir. *Proje* penceresinde paketlerin yüklendiğini onaylayın:
 
-![paket ithalatı onaylamak](media/confirm-packages.png)
+![paket içeri aktarmaları Onayla](media/confirm-packages.png)
 
 ## <a name="ensure-you-have-the-latest-version-of-the-package"></a>Paketin en son sürümüne sahip olduğunuzdan emin olun
 
-Aşağıdaki adımlar, projenizin uzaktan işleme paketinin en son sürümünü kullandığından emin olun.
-1. Proje penceresindepaketi seçin ve paket simgesine ![tıklayın: Paket simgesini seçme](media/package-icons.png)
-1. Denetçi'de "Paket Yöneticisinde Görüntüle"yi tıklatın: ![paket denetçisi](media/package-properties.png)
-1. Uzaktan işleme paketi için paket yöneticisi sayfasında, güncelleştirme düğmesinin kullanılabilir olup olmadığını görün. Eğer öyleyse, o zaman tıklayarak en son kullanılabilir ![sürümü paketi günceller: paket yöneticisi ARR paketi](media/package-manager.png)
-1. Bazen paketin güncelleştirilmesi konsolda hatalara neden olabilir. Bu durumda, projeyi kapatmayı ve yeniden açmayı deneyin.
+Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümünü kullandığından emin olabilirsiniz.
+1. Proje penceresinde paketi seçin ve paket simgesine tıklayın: ![paket simgesini seçme](media/package-icons.png)
+1. Denetçisinde, "Paket Yöneticisi 'nde görünüm" ' e tıklayın: ![paket denetçisi](media/package-properties.png)
+1. Uzaktan işleme paketine ait Paket Yöneticisi sayfasında, Güncelleştir düğmesinin kullanılabilir olup olmadığını görün. Bu durumda, bunu tıklatmak, paketi paketin en son sürümüne güncelleştirir: ![paket yöneticisinde ARR paketi](media/package-manager.png)
+1. Bazen paketin güncelleştirilmesi konsolunda hatalara neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
 
 ## <a name="configure-the-camera"></a>Kamerayı yapılandırma
 
-Ana **Kamera** düğümünü seçin.
+**Ana kamera** düğümünü seçin.
 
-1. *Dönüşümünü*Sıfırla:
+1. *Dönüşümünü*sıfırlayın:
 
-    ![kamera dönüşümü sıfırlama](media/camera-reset-transform.png)
+    ![Kamera dönüşümünü Sıfırla](media/camera-reset-transform.png)
 
-1. Bayrakları Düz *Renk* olarak **ayarla**
+1. **Clear bayraklarını** *düz renge* ayarla
 
-1. **Arka Planı** *Siyaha* Ayarlama
+1. **Arka planı** *siyaha* ayarla
 
-1. Kırpma **Düzlemlerini** *Near = 0.3* ve *Far = 20*olarak ayarlayın. Bu, işlemenin 30 cm'den daha yakın veya 20 metreden daha uzak geometriyi keseceği anlamına gelir.
+1. **Kırpma düzlemleri** *Near = 0,3* ve *Far = 20*olarak ayarlayın. Bu, işlemenin 30 cm 'den daha yakın veya 20 ölçümden daha büyük olan bir geometriyi kırpmak anlamına gelir.
 
     ![Unity kamera özellikleri](media/camera-properties.png)
 
-## <a name="adjust-the-project-settings"></a>Proje ayarlarını ayarlama
+## <a name="adjust-the-project-settings"></a>Proje ayarlarını ayarla
 
-1. *Proje Ayarlarını > Edit'i Aç...*
-1. Soldaki listede Kalite'yi seçin.
-1. Varsayılan **Kalite Düzeyini** *Düşük* olarak değiştirme
+1. *> proje ayarlarını Düzenle 'yi aç...*
+1. Sol taraftaki listede kalite ' yi seçin.
+1. **Varsayılan kalite düzeyini** *düşük* olarak değiştirme
 
-    ![proje kalite ayarlarını değiştirme](media/settings-quality.png)
+    ![Proje kalitesi ayarlarını değiştir](media/settings-quality.png)
 
-1. Soldaki **Grafikler'i** seçin.
-1. Komut **Dosyası Oluşturma Boru Hattı** ayarını *HybridRenderingPipeline olarak değiştirin.* Evrensel render ardışık adı kullanılmazsa bu adımı atlayın.
+1. Sol taraftaki **grafikler** ' i seçin.
+1. **Komut dosyası oluşturma Işlem hattı** ayarını *Hybridrenderingpipeline*olarak değiştirin. Evrensel işleme işlem hattı kullanılmazsa bu adımı atlayın.
 
-    ![Proje grafik](media/settings-graphics-lwrp.png) ayarlarını değiştirme Bazen UI, paketlerden kullanılabilir ardışık hatlar listesinin doldurulmasını sağlamaz, bu durumda *HybridRenderingPipeline* kıymetinin alana el ile sürülmesi gerekir: ![proje grafik ayarlarını değiştirme](media/hybrid-rendering-pipeline.png)
-1. Soldaki **Player'ı** seçin.
-1. Evrensel **Windows Platformu ayarları** sekmesini seçin
-1. Windows Karışık Gerçeklik'i desteklemek için ![ **XR Ayarlarını** değiştirme: oyuncu ayarları](media/xr-player-settings.png)
-1. Yukarıdaki ekran görüntüsündeki ayarları seçin:
-    1. **Sanal Gerçekliği Desteklenebilmeyi Etkinleştirin**
-    1. **Derinlik Biçimini** *16 Bit Derinliğe* Ayarlama
-    1. **Derinlik Arabellek Paylaşımını** Etkinleştir
-    1. **Stereo İşleme Modunu** *Tek GeçişLi Örnek olarak* ayarlayın
+    ![Proje grafik ayarlarını](media/settings-graphics-lwrp.png) değiştirme bazen kullanıcı arabirimi, kullanılabilir işlem hattı türlerinin listesini paketlerden doldurmaz, bu durumda *Hybridrenderingpipeline* varlığı alanın el ile sürüklenmesi gerekir: ![proje grafik ayarlarını değiştirme](media/hybrid-rendering-pipeline.png)
+1. Sol taraftaki **oynatıcı** ' yı seçin.
+1. **Evrensel Windows platformu ayarları** sekmesini seçin
+1. **XR ayarlarını** Windows Mixed Reality 'yi destekleyecek şekilde değiştirin: ![oynatıcı ayarları](media/xr-player-settings.png)
+1. Yukarıdaki ekran görüntüsünde olduğu gibi ayarları seçin:
+    1. **Sanal Reality** 'Yi etkinleştirme destekleniyor
+    1. **Derinlik biçimini** *16 bit derinliğe* ayarla
+    1. **Derinlik arabelleği paylaşımını** etkinleştir
+    1. **Stereo Işleme modunu** tek bir *geçiş* için ayarla
 
-1. Aynı pencerede, *XR Ayarları'nın*üzerinde, **Yayımlama Ayarlarını** genişletin
-1. **Özellikler'e** gidin ve seçin:
+1. Aynı pencerede, *XR ayarları*' nda, **Yayımlama ayarları** ' nı genişletin.
+1. **Özellikleri** aşağı kaydırın ve şunları seçin:
     * **InternetClient**
-    * **InternetClientServer**
-    * **Mekansal Algı**
+    * **Internetclientserver**
+    * **SpatialPerception**
     * Geliştirme için isteğe bağlı: **PrivateNetworkClientServer**
 
-      Unity uzaktan hata ayıklama cihazını cihazınıza bağlamak istiyorsanız bu seçenek gereklidir.
+      Unity uzaktan hata ayıklayıcısını cihazınıza bağlamak istiyorsanız bu seçenek gereklidir.
 
-1. **Desteklenen Aygıt Ailelerinde,** **Holografik** ve **Masaüstü**
+1. **Desteklenen cihaz ailelerinde**, **holographic** ve **Desktop** 'ı etkinleştirin
 
-1. Karışık Gerçeklik Araç Kiti'ni kullanmak istiyorsanız, önerilen ayarlar ve yetenekler hakkında daha fazla bilgi için [MRTK belgelerine](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview)bakın.
+1. Karma Gerçeklik araç takımını kullanmak istiyorsanız, önerilen ayarlar ve yetenekler hakkında daha fazla bilgi için [mrtk belgelerine](https://docs.microsoft.com/windows/mixed-reality/unity-development-overview)bakın.
 
-## <a name="validate-project-setup"></a>Proje kurulumlarını doğrulama
+## <a name="validate-project-setup"></a>Proje kurulumunu doğrula
 
 Proje ayarlarının doğru olduğunu doğrulamak için aşağıdaki adımları gerçekleştirin.
 
-1. Unity düzenleyici araç çubuğundaki RemoteRendering menüsünden Project'i doğrula girişini seçin.
-1. Proje ayarlarını gerektiğinde denetlemek ve düzeltmek için Project'i doğrula penceresini kullanın.
+1. Unity Düzenleyicisi araç çubuğundaki RemoteRendering menüsünden ValidateProject girişini seçin.
+1. Gerektiğinde proje ayarlarını denetlemek ve onarmak için ValidateProject penceresini kullanın.
 
-    ![Unity editor proje doğrulama](media/arr-unity-validation.png)
+    ![Unity Düzenleyicisi proje doğrulaması](media/arr-unity-validation.png)
 
-## <a name="create-a-script-to-initialize-azure-remote-rendering"></a>Azure Uzaktan İşleme'yi başlatmayı sağlamak için bir komut dosyası oluşturma
+## <a name="create-a-script-to-initialize-azure-remote-rendering"></a>Azure uzaktan Işleme başlatmak için betik oluşturma
 
-Yeni bir [komut dosyası](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve ona **RemoteRendering**adını verin. Komut dosyası dosyasını açın ve tüm içeriğini aşağıdaki kodla değiştirin:
+Yeni bir [betik](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve **RemoteRendering**adını verin. Komut dosyasını açın ve tüm içeriğini aşağıdaki kodla değiştirin:
 
 ```csharp
 using System.Collections;
@@ -290,39 +290,39 @@ public class RemoteRendering : MonoBehaviour
 }
 ```
 
-Bu komut dosyası Azure Uzaktan İşleme'yi başlatılmasını, hangi kamera nesnesinin işlenme için kullanılacağını söyler ve *Oynatma Modu* etkinleştirildiğinde **Oturum Oluştur** düğmesini viewport'a yerleştirir.
+Bu betik, Azure uzaktan Işlemeyi başlatır, işleme için hangi kamera nesnesinin kullanılacağını, sonra da *oynatma modunun* etkinleştirildiği Görünüm penceresi 'Ne bir **oturum oluştur** düğmesi koyar.
 
 > [!CAUTION]
-> Komut dosyasının değiştirilmesi ve oyun modu Birlik'te etkinken kaydedilmesi Unity dondurulmasıyla sonuçlanabilir ve görev yöneticisi aracılığıyla komut dosyasını kapatmak zorunda kalırsınız. Bu nedenle, RemoteRendering komut dosyasını düzenlemeden önce oynatma modunu her zaman *durdurun.*
+> Kod değiştirme ve oynatma modu Unity 'de etkin durumdayken kaydetme, Unity 'nin donmasına neden olabilir ve Görev Yöneticisi aracılığıyla kapanmaya zorlanmıştır. Bu nedenle, *RemoteRendering* betiğini düzenlemeden önce her zaman oynat modunu durdurun.
 
-## <a name="test-azure-remote-rendering-session-creation"></a>Azure Uzaktan İşleme oturumu oluşturmayı test edin
+## <a name="test-azure-remote-rendering-session-creation"></a>Azure uzaktan Işleme oturumunun oluşturulmasını test etme
 
-Sahnede yeni bir GameObject oluşturun ve *Uzaktan Rendering* bileşenini ekleyin. Uzaktan İşleme hesabınız için uygun *Hesap Etki Alanı,* *Hesap Kimliği*ve *Hesap Anahtarını* doldurun:
+Sahnede yeni bir GameObject oluşturun ve *RemoteRendering* bileşenini buna ekleyin. Uzaktan Işleme hesabınız için uygun *hesap etki alanını*, *hesap kimliğini*ve *hesap anahtarını* girin:
 
-![Uzaktan görüntüleme bileşeni özellikleri](media/remote-rendering-component.png)
+![Uzaktan işleme bileşen özellikleri](media/remote-rendering-component.png)
 
-Uygulamayı editörden başlatın **(Oynat** veya CTRL+P'ye basın). **Oturum Oluştur** düğmesinin viewport'ta göründüğünü görmelisiniz. İlk ARR oturumunuzu başlatmak için tıklatın:
+Uygulamayı düzenleyicide başlatın (**oynat** veya CTRL + P). Görünüm penceresinin içinde **oturum oluştur** düğmesinin göründüğünü görmeniz gerekir. İlk ARR oturumunuzu başlatmak için tıklayın:
 
 ![İlk oturum oluşturma](media/test-create.png)
 
-Bu başarısız olursa, hesap bilgilerinizi RemoteRendering bileşen özelliklerine doğru girdiğinizden emin olun. Aksi takdirde, konsol penceresinde size atanan oturum kimliğini gösteren ve oturumun şu anda *Başlangıç* durumunda olduğunu belirten bir ileti görüntülenir:
+Bu başarısız olursa, RemoteRendering bileşeni özelliklerine hesap ayrıntılarınızı doğru girdiğinizden emin olun. Aksi halde, size atanan oturum KIMLIĞINI gösteren konsol penceresinde bir ileti görünür ve oturumun Şu anda *Başlangıç* durumunda olduğunu ifade eder:
 
-![Oturum başlangıç çıktısı](media/create-session-output.png)
+![Oturum başlatma çıkışı](media/create-session-output.png)
 
-Bu noktada Azure sizin için bir sunucu sağlar ve uzaktan işleme sanal makine başlatıyor. Bu genellikle **3 ila 5 dakika sürer.** VM hazır olduğunda, Unity komut `OnSessionStatusChanged` dosyasının geri araması yürütülür ve yeni oturum durumunu yazdırır:
+Bu noktada Azure, sizin için bir sunucu sağlıyor ve Uzaktan işleme sanal makinesini başlatıyor. Bu genellikle **3 ila 5 dakika sürer**. VM 'ye hazırsanız, Unity betiğinin `OnSessionStatusChanged` geri çağırması yürütülür ve yeni oturum durumunu yazdıracaktır:
 
-![Oturumhazır çıktı](media/create-session-output-2.png)
+![Oturum için hazırlanma çıkışı](media/create-session-output-2.png)
 
-İşte bu! Şimdilik başka bir şey olmayacak. Ücretleri önlemek için, artık gerekmediklerinde oturumları her zaman durdurmalısınız. Bu örnekte, oturumu **durdur** düğmesini tıklatarak veya Unity simülasyonunu durdurarak bunu yapabilirsiniz. Varsayılan olarak geçerli olan *ARRServiceUnity* bileşenindeki **Otomatik Durdurma Oturumu** özelliği nedeniyle, oturum sizin için otomatik olarak durdurulur. Çökmeler veya bağlantı sorunları nedeniyle her şey başarısız olursa, oturumunuz sunucu tarafından kapatılmadan önce *MaxLeaseTime'ınız* kadar uzun süre çalışabilir.
+Bu,! Daha fazla şey olmayacak. Ücretleri engellemek için, artık gerek duyulmadığında oturumları her zaman durdurmanız gerekir. Bu örnekte, **Oturumu Durdur** düğmesine tıklayarak ya da Unity simülasyonu durdurarak bunu yapabilirsiniz. Varsayılan olarak açık olan *ARRServiceUnity* bileşenindeki **otomatik durdurma oturumu** özelliği nedeniyle, oturum sizin için otomatik olarak durdurulur. Çökmeler veya bağlantı sorunları nedeniyle her şey başarısız olursa oturumunuz, sunucu tarafından kapatılmadan önce *Maxleasetime* olarak çalışabilir.
 
 > [!NOTE]
-> Oturumu durdurmak hemen etkili olur ve geri alınamaz. Durdurulduktan sonra, aynı başlangıç yükü yle yeni bir oturum oluşturmanız gerekir.
+> Bir oturumu durdurmak hemen etkili olur ve geri alınamaz. Durdurulduktan sonra, aynı başlangıç yüküyle yeni bir oturum oluşturmanız gerekir.
 
 ## <a name="reusing-sessions"></a>Oturumları yeniden kullanma
 
-Yeni bir oturum oluşturmak, ne yazık ki, zaman alıcı bir işlemdir. Bu nedenle, nadiren oturumları oluşturmak ve mümkün olduğunca bunları yeniden denemek gerekir.
+Yeni bir oturum oluşturma, saat tüketen bir işlemdir. Bu nedenle, oturum açmayı nadiren oluşturmayı denemeli ve mümkün olan her durumda yeniden kullanmalıdır.
 
-Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
+Aşağıdaki kodu *RemoteRendering* betiğe ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
 
 ```csharp
     public string SessionId = null;
@@ -413,24 +413,24 @@ Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlev
 ```
 
 > [!CAUTION]
-> Bu kodu çalıştırmadan önce, RemoteRendering bileşeninde **Otomatik Durdurma Oturumunu** devre dışı bıraktığından emin olun. Aksi takdirde, simülasyonu durduracağınız her oturum otomatik olarak durdurulur ve yeniden kullanmaya çalışırsanız başarısız olur.
+> Bu kodu çalıştırmadan önce, RemoteRendering bileşenindeki **otomatik durdurma oturumunu** devre dışı bıraktığınızdan emin olun. Aksi takdirde, benzetimi durdurduğunuzda oluşturduğunuz her oturum otomatik olarak durdurulur ve yeniden kullanılmaya çalışıldığında başarısız olur.
 
-*Play*tuşuna bastığınızda, artık viewport'ta üç düğme elde elabilirsiniz: **Oturum Oluştur**, Etkin **Oturumları Sorgula**ve **Varolan Oturumu Kullanın.** İlk düğme her zaman yeni bir oturum oluşturur. Etkin *oturumları* var olan ikinci düğme sorguları. Kullanmaya çalışmak üzere el ile oturum kimliği belirtmediyseniz, bu eylem ileride kullanmak üzere oturum kimliğini otomatik olarak seçer. Üçüncü düğme varolan bir oturuma bağlanmayı dener. *Oturum Kimliği* bileşeni özelliği nde el ile belirttiğiniz veya Sorgu *Etkin Oturumları*tarafından bulunan bir tane.
+*Oynat*'a bastığınızda artık görünüm penceresi: **oturum oluşturma**, **etkin oturumları sorgulama**ve **mevcut oturumu kullanma**gibi üç düğme alırsınız. İlk düğme her zaman yeni bir oturum oluşturur. İkinci düğme, hangi *etkin* oturumların mevcut olduğunu sorgular. Kullanmayı denemek için el ile bir oturum KIMLIĞI belirtmediyseniz, bu eylem ileride kullanılmak üzere bu oturum KIMLIĞINI otomatik olarak seçer. Üçüncü düğme mevcut bir oturuma bağlanmaya çalışır. *Oturum kimliği* bileşen özelliği aracılığıyla el ile belirlediğiniz veya *sorgu etkin oturumlar*tarafından bulunan bir tane.
 
-**AutoStartSessionAsync** işlevi, düzenleyicinin dışındaki düğmeye basan düğmeyi simüle etmek için kullanılır.
+**Automatic Startsessionasync** işlevi, düzenleyicinin dışında düğme basma işleminin benzetimini yapmak için kullanılır.
 
 > [!TIP]
-> Durdurulan, süresi dolmuş veya hata durumunda olan oturumları açmak mümkündür. Bunlar artık oluşturma için kullanılamasa da, etkin olmayan bir oturum açtıktan sonra ayrıntılarını sorgulayabilirsiniz. Yukarıdaki `ARRService_OnSessionStarted`kod, oturum kullanılamaz hale geldiğinde otomatik olarak durdurmak için bir oturumun durumunu denetler.
+> Durdurulmuş, zaman aşımına uğramış veya bir hata durumunda olan oturumları açmak mümkündür. Artık işleme için kullanılamazken, etkin olmayan bir oturumu açtıktan sonra ayrıntılarını sorgulayabilirsiniz. Yukarıdaki kod, oturum kullanılamaz duruma geldiğinde otomatik olarak `ARRService_OnSessionStarted`durdurmak için bir oturumun durumunu denetler.
 
-Bu işlevsellikle, geliştirme iş akışınızı önemli ölçüde artıracak oturumları oluşturabilir ve yeniden kullanabilirsiniz.
+Bu işlevle artık, geliştirme iş akışınızı önemli ölçüde iyileştirebilmeniz için oturumları oluşturabilir ve yeniden kullanabilirsiniz.
 
-Genellikle, sunucuyu döndürmek için gereken süre nedeniyle istemci uygulamasıdışında bir oturum oluşturma tetiklenir.
+Genellikle, bir oturum oluşturma, sunucuyu çalıştırmak için gereken süre nedeniyle istemci uygulaması dışında tetiklenir.
 
 ## <a name="connect-to-an-active-session"></a>Etkin bir oturuma bağlanma
 
-Şimdiye kadar oturumlar oluşturduk veya açtık. Bir sonraki adım bir oturuma *bağlanmaktır.* Bağlandıktan sonra, render sunucusu görüntü üretecek ve uygulamamıza bir video akışı gönderecektir.
+Şimdiye kadar oturum oluşturmuş veya açtık. Bir sonraki adım bir oturuma *bağlandır* . Bağlandıktan sonra, işleme sunucusu görüntü oluşturur ve uygulamamıza bir video akışı gönderir.
 
-Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
+Aşağıdaki kodu *RemoteRendering* betiğe ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
 
 ```csharp
     private bool isConnected = false;
@@ -553,23 +553,23 @@ Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlev
 #endif
 ```
 
-Bu işlevselliği sınamak için:
+Bu işlevi test etmek için:
 
-1. Unity **Play** tuşuna basın.
-1. Oturumu açın:
-    1. Zaten bir oturumunuz varsa, **Etkin Oturumları Sorgula'ya** ve ardından **Varolan oturumu kullanın.**
-    1. Aksi takdirde, **Oturum Oluştur'a**basın.
-1. **Bağlan'a**basın.
-1. Birkaç saniye sonra konsol çıktısı bağlı olduğunuzu yazdırmalıdır.
-1. Şimdilik başka bir şey olmamalı.
-1. Unity'nin oyun modunu **Durdur'a** basın veya durdurun.
+1. Unity 'de **oynat** ' a basın.
+1. Bir oturum açın:
+    1. Zaten bir oturumunuz varsa, **sorgu etkin oturumlar** ' a basın ve ardından **mevcut oturumu kullanın**.
+    1. Aksi halde, **oturum oluştur**' a basın.
+1. **Bağlan**' a basın.
+1. Birkaç saniye sonra, bağlı olduğunuz konsol çıkışının yazdırılması gerekir.
+1. Şimdilik başka hiçbir şey gerçekleşmemelidir.
+1. **Bağlantıyı kes** veya Unity 'nin yürütme modunu Durdur ' a basın.
 
 >[!NOTE]
-> Birden çok kullanıcı bilgilerini sorgulamak için bir oturum *açabilir,* ancak aynı anda bir oturuma yalnızca bir kullanıcı *bağlanabilir.* Başka bir kullanıcı zaten bağlıysa, bağlantı bir **el sıkışma hatasıyla**başarısız olur.
+> Birden çok Kullanıcı, bilgilerini sorgulamak için bir oturum *açabilir* , ancak aynı anda yalnızca bir Kullanıcı bir oturuma *bağlanabilir* . Başka bir kullanıcı zaten bağlıysa bağlantı, bir **el sıkışma hatasıyla**başarısız olur.
 
-## <a name="load-a-model"></a>Bir model yükleme
+## <a name="load-a-model"></a>Model yükleme
 
-Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
+Aşağıdaki kodu *RemoteRendering* betiğe ekleyin ve yinelenen işlevlerin eski sürümlerini kaldırın:
 
 ```csharp
 
@@ -724,20 +724,20 @@ Aşağıdaki kodu *RemoteRendering* komut dosyasına ekleyin ve yinelenen işlev
 #endif
 ```
 
-Şimdi oynat düğmesine bastığında, bir oturumu açtığınızda ve ona **bağlandığınızda, Yükle Modeli** düğmesi görüntülenir. Tıklattıktan sonra konsol çıkışı yükleme ilerlemesini gösterir ve %100'e ulaştığında bir motorun modelinin göründüğünü görmeniz gerekir:
+Şimdi oynat 'a bastığınızda bir oturum açıp bu sunucuya bağlandığınızda, **Yük modeli** düğmesi görünür. Tıkladıktan sonra, konsol çıktısı yükleme ilerlemesini gösterir ve %100 ' a ulaştığında bir altyapının modelinin görüntülendiğini görmeniz gerekir:
 
-![Editöre yüklenen model](media/model-loaded-replace-me.png)
+![Düzenleyicide yüklü olan model](media/model-loaded-replace-me.png)
 
-[WorldAnchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) [hologram stabilitesi](https://docs.microsoft.com/windows/mixed-reality/hologram-stability)için kullanılan önemli bir bileşendir. Ancak, yalnızca Karma Gerçeklik aygıtına dağıtıldığında etkili olacaktır.
+[Worldanchor](https://docs.unity3d.com/ScriptReference/XR.WSA.WorldAnchor.html) , [hologram kararlılığı](https://docs.microsoft.com/windows/mixed-reality/hologram-stability)için kullanılan önemli bir bileşendir. Ancak, yalnızca bir karma gerçeklik cihazına dağıtıldığında bu işlem yürürlüğe girer.
 
 > [!TIP]
-> [Quickstart'ı izlediyseniz: Oluşturma için bir modeli dönüştürün,](../../quickstarts/convert-model.md)kendi modellerinizi nasıl dönüştürersiniz zaten biliyorsunuz. Bunu işlemek için şimdi yapmanız gereken tek şey, *URI model adı* özelliği ne dönüştürülmüş bir model ekidir.
+> [Hızlı başlangıç: bir modeli işlemek Için dönüştürürseniz](../../quickstarts/convert-model.md), kendi modellerinizi nasıl dönüştürebileceğinizi zaten bilirsiniz. Şimdi bunu işlemek için yapmanız gereken, URI 'yi, dönüştürülen modele *model adı* özelliğine yerleştirmesidir.
 
-## <a name="display-frame-statistics"></a>Görüntü çerçevesi istatistikleri
+## <a name="display-frame-statistics"></a>Çerçeve istatistiklerini görüntüle
 
-Azure Uzaktan İşleme, bağlantının kalitesi yle ilgili çeşitli bilgileri izler. Bu bilgileri görüntülemek için hızlı bir yol için aşağıdakileri yapın:
+Azure uzaktan Işleme bağlantının kalitesi hakkında çeşitli bilgileri izler. Bu bilgileri görüntülemenin hızlı bir yolu için aşağıdakileri yapın:
 
-Yeni bir [komut dosyası](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve ona **RemoteFrameStats**adını verin. Komut dosyası dosyasını açın ve tüm içeriğini aşağıdaki kodla değiştirin:
+Yeni bir [komut dosyası](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun ve bu dosyayı **Remoteframestats**adına verin. Komut dosyasını açın ve tüm içeriğini aşağıdaki kodla değiştirin:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -778,29 +778,29 @@ public class RemoteFrameStats : MonoBehaviour
 }
 ```
 
-Bir GameObject oluşturun ve *framestats*adını. *Ana Kamera* nesnesine alt düğüm olarak takın ve konumunu x **= 0, y = 0, z = 0,325**olarak ayarlayın. **RemoteFrameStats** bileşenini nesneye ekleyin.
+Bir Oyunobject oluşturun ve *Framestats*olarak adlandırın. *Ana kamera* nesnesine bir alt düğüm olarak ekleyin ve konumunu **x = 0, y = 0, z = 0,325**olarak ayarlayın. **Remoteframestats** bileşenini nesnesine ekleyin.
 
-*FrameStats* nesnesine bir **Arama > Kanvas** alt nesnesi ekleyin ve özelliklerini şu şekilde ayarlayın:
+*Framestats* nesnesine bir **UI > tuval** alt nesnesi ekleyin ve özelliklerini şu şekilde ayarlayın:
 
 ![tuval özellikleri](media/framestats-canvas.png)
 
-Tuvalin alt bölümü olarak bir **Kullanıcı > Metin nesnesi** ekleyin ve özelliklerini şu şekilde ayarlayın:
+Tuvalin alt öğesi olarak bir **uı > metin** nesnesi ekleyin ve özelliklerini aşağıdaki gibi ayarlayın:
 
 ![metin özellikleri](media/framestats-text.png)
 
-*FrameStats* nesnesini seçin ve daire simgesine tıklayarak ve **Metin** nesnesini seçerek **FrameStats alanını** doldurun:
+*Framestats* nesnesini seçin ve daire simgesine tıklayıp **metin** nesnesini seçerek **framestats alanını** doldurun:
 
-![metin özelliğini ayarlama](media/framestats-set-text.png)
+![metin özelliği ayarlanıyor](media/framestats-set-text.png)
 
-Şimdi, uzak oturuma bağlandığında, metin akış istatistiklerini göstermelidir:
+Artık, uzak oturuma bağlanıldığında metin akış istatistiklerini göstermelidir:
 
-![çerçeve istatistikleri çıktı](media/framestats-output.png)
+![çerçeve istatistikleri çıkışı](media/framestats-output.png)
 
-Kod, baş kilitli bir metin kutusu dikkat dağıtıcı olacağından, istatistiklerin düzenleyicinin dışında güncelleştirmeyi devre dışı kılabilir. [Quickstart](../../quickstarts/render-model.md) projesinde daha karmaşık bir uygulama bulunur.
+Kod, bir baş kilitli metin kutusu olarak düzenleyici 'nin dışındaki istatistik güncelleştirmesini devre dışı bırakır. [Hızlı başlangıç](../../quickstarts/render-model.md) projesinde daha karmaşık bir uygulama bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, boş bir Unity projesi almak ve Azure Uzaktan İşleme ile çalışmasını sağlamak için gereken tüm adımları öğrendiniz. Bir sonraki öğreticide, uzak varlıklarla nasıl çalışabileceğimize daha yakından bakacağız.
+Bu öğreticide, boş bir Unity projesi almak için gereken tüm adımları öğrendiniz ve Azure uzaktan Işleme ile çalışmaya başlayın. Sonraki öğreticide, uzak varlıklarla nasıl çalıştığına daha yakından bakacağız.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Unity içinde uzak varlıklarla çalışma](working-with-remote-entities.md)
+> [Öğretici: Unity 'de uzak varlıklarla çalışma](working-with-remote-entities.md)

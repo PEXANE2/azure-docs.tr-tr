@@ -1,44 +1,44 @@
 ---
 title: Nesne ve kaynak ömrü
-description: Farklı türler için yaşam boyu yönetimini açıklar
+description: Farklı türler için ömür yönetimini açıklar
 author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: d031ff4a6ee86da2843f0f18ac428c50f7cfc121
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681876"
 ---
 # <a name="object-and-resource-lifetime"></a>Nesne ve kaynak ömrü
 
-Azure Uzaktan İşleme iki tür arasında ayrım sağlar: **nesneler** ve **kaynaklar.**
+Azure uzaktan Işleme iki tür arasında ayrım yapar: **nesneler** ve **kaynaklar**.
 
 ## <a name="object-lifetime"></a>Nesne ömrü
 
-*Nesneler,* kullanıcının kendi takdirine bağlı olarak oluşturabileceği, değiştirebileceği ve yok edebileceği şeyler olarak kabul edilir. Nesneler serbestçe çoğaltılabilir ve her örnek zaman içinde mutasyona uğrayabilir. Sonuç olarak [varlıklar](entities.md) ve [bileşenler](components.md) nesnelerdir.
+*Nesneler* , kullanıcının kendi takdirine göre oluşturabileceğiniz, değiştirebileceği ve yok edileceği şeyler olarak değerlendirilir. Nesneler serbestçe yinelenebilir ve her örnek zaman içinde zaman içinde olabilir. Sonuç olarak, [varlıklar](entities.md) ve [Bileşenler](components.md) nesnelerdir.
 
-Nesnelerin ömrü tamamen kullanıcı denetimi altındadır. Ancak, istemci tarafı temsil ömrü ile ilgili değildir. Uzak `Entity` işleme `Component` ana `Destroy` bilgisayarındaki nesneyi bulmak için çağrılması gereken bir işlev gibi ve sahip olunması gereken sınıflar. Ayrıca, `Entity.Destroy()` varlığı, onun çocuklarını ve bu hiyerarşideki tüm bileşenleri yok edecektir.
+Nesnelerin ömrü, Kullanıcı denetimi altında tamamen yapılır. Ancak, istemci tarafı gösteriminin yaşam süresi ile ilgili değildir. Ve `Entity` `Component` gibi sınıflar, uzak `Destroy` işleme konağındaki nesneyi serbest bırakmak için çağrılması gereken bir işleve sahiptir. Ayrıca, `Entity.Destroy()` varlığı, alt öğelerini ve söz konusu hiyerarşideki tüm bileşenleri yok eder.
 
 ## <a name="resource-lifetime"></a>Kaynak ömrü
 
-*Kaynaklar,* ömrü tamamen uzaktan görüntü ana bilgisayarı tarafından yönetilen şeylerdir. Kaynaklar dahili olarak sayılır. Artık kimse onlara atıfta bulunmadığında görevden alınmıyor.
+*Kaynaklar* , ömrü tamamen uzaktan işleme ana bilgisayarı tarafından yönetilmekte olan şeylerdir. Kaynaklar dahili olarak sayılır. Hiç kimse hiç başvurmuyorsa serbest bırakılır.
 
-Çoğu kaynak yalnızca dolaylı olarak, genellikle bir dosyadan yükleyerek oluşturulabilir. Aynı dosya birden çok kez yüklendiğinde, Azure Uzaktan İşleme aynı başvuruyu döndürecek ve verileri yeniden yüklemez.
+Kaynakların çoğu, genellikle bir dosyadan yükleyerek dolaylı olarak oluşturulabilir. Aynı dosya birden çok kez yüklendiğinde, Azure uzaktan Işleme aynı başvuruyu döndürür ve verileri tekrar yüklemez.
 
-Birçok kaynak değişmez, örneğin [meshes](meshes.md) ve [dokular.](textures.md) Bazı kaynaklar, örneğin [malzemeler](materials.md)için olsa da, mutable vardır. Kaynaklar sık sık paylaşıldığından, kaynağın değiştirilmesi birden çok nesneyi etkileyebilir. Örneğin, bir malzemenin rengini değiştirmek, meshes kullanan tüm nesnelerin rengini değiştirir ve bu da bu malzemeye başvurur.
+Örneğin, [kafesler](meshes.md) ve [dokular](textures.md)için çok sayıda kaynak sabittir. Bazı kaynaklar değişebilir, ancak örneğin [malzemeleridir](materials.md). Kaynaklar genellikle paylaşıldığından, bir kaynağı değiştirmek birden çok nesneyi etkileyebilir. Örneğin, bir malzemenin rengini değiştirmek, kafeslerin kullanıldığı tüm nesnelerin rengini değiştirecek ve bu da bu malzemeye başvuracaktır.
 
 ### <a name="built-in-resources"></a>Yerleşik kaynaklar
 
-Azure Uzaktan İşleme, `builtin://` `AzureSession.Actions.LoadXYZAsync()`''ye çağrı sırasında ilgili tanımlayıcıları önceden taranarak yüklenebilen bazı yerleşik kaynaklar içerir. Kullanılabilir yerleşik kaynaklar, ilgili her özellik için belgelerde listelenir. Örneğin, [gökyüzü bölümü](../overview/features/sky.md) yerleşik gökyüzü dokularını listeler.
+Azure uzaktan Işleme, çağrısı `builtin://` sırasında ilgili tanımlayıcılarını önceden bekleyen bir şekilde `AzureSession.Actions.LoadXYZAsync()`yüklenebilecek bazı yerleşik kaynaklar içerir. Kullanılabilir yerleşik kaynaklar ilgili her özellik için belgelerde listelenmiştir. Örneğin, [Sky bölümü](../overview/features/sky.md) yerleşik gök dokularını listeler.
 
-## <a name="general-lifetime"></a>Genel yaşam süresi
+## <a name="general-lifetime"></a>Genel ömür
 
-Tüm nesnelerin ve kaynakların ömrü bağlantıya bağlıdır. Bağlantıyı kesmek üzerine her şey atılır. Aynı oturuma yeniden bağlanırken, sahne grafiği boş olur ve tüm kaynaklar temizlenir.
+Tüm nesnelerin ve kaynakların yaşam süresi bağlantıya bağlanır. Her şeyin bağlantısını kesme sırasında atılır. Aynı oturuma yeniden bağlanırken, sahne grafiği boş olur ve tüm kaynaklar temizlenir.
 
-Uygulamada, aynı kaynağı bir oturuma yüklemek, bir bağlantı kesildikten sonra, genellikle ilk seferden daha hızlıdır. Bu durum, çoğu kaynağın ilk kez Azure Depolama'dan indirilmesi gerektiğinden ve ikinci kez gerekli olmadığı için önemli ölçüde zaman tasarrufu sağlar.
+Uygulamada, bir bağlantı kesildikten sonra bir oturum için aynı kaynağı yüklemek genellikle ilk kez daha hızlıdır. Bu durum, çoğu kaynağın Azure depolama 'dan ilk kez indirilmesi gerektiğinden, önemli ölçüde zaman tasarrufu gerektirdiğinden oluşan durumdur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,40 +1,40 @@
 ---
-title: Azure Uzaktan İşlem hesabı oluşturma
-description: Azure Uzaktan İşleme için hesap oluşturma adımlarını açıklar
+title: Azure Remote Rendering hesabı oluşturma
+description: Azure uzaktan Işleme için bir hesap oluşturma adımlarını açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: b9b72fb9e80c588eb3e6642d0228bffa50b35c6e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681304"
 ---
-# <a name="create-an-azure-remote-rendering-account"></a>Azure Uzaktan İşlem hesabı oluşturma
+# <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering hesabı oluşturma
 
-Bu bölümde, **Azure Uzaktan İşlem** hizmeti için bir hesap oluşturma adımları size yol gösterin. Hızlı başlatmaları veya öğreticileri tamamlamak için geçerli bir hesap zorunludur.
+Bu bölüm, **Azure uzaktan işleme** hizmeti için bir hesap oluşturma adımlarında size rehberlik eder. Hızlı başlangıç veya öğreticilerden herhangi birini tamamlamak için geçerli bir hesap zorunludur.
 
 ## <a name="create-an-account"></a>Hesap oluşturma
 
-Azure Uzaktan İşlem hizmeti için bir hesap oluşturmak için aşağıdaki adımlar gereklidir:
+Azure uzaktan Işleme hizmeti için bir hesap oluşturmak için aşağıdaki adımlar gereklidir:
 
-1. [Karışık Gerçeklik Önizleme sayfasına](https://aka.ms/MixedRealityPrivatePreview) gidin
-1. 'Kaynak oluştur' düğmesini tıklatın
-1. Arama alanında ("Pazar yerinde arama"), "Uzaktan İşleme" yazın ve 'enter' tuşuna basın.
-1. Sonuç listesinde , "Uzaktan İşleme" döşemesini tıklatın
-1. Bir sonraki ekranda "Oluştur" düğmesini tıklatın. Yeni bir Uzaktan Render hesabı oluşturmak için bir form açılır:
-    1. Hesabın adına 'Kaynak Adı' ayarlama
-    1. Gerekirse 'Abonelik'i güncelleştirme
-    1. 'Kaynak grubu'nı seçtiğiniz bir kaynak grubuna ayarlama
-1. Hesap oluşturulduktan sonra, hesap için gidin ve:
-    1. Genel *Bakış* sekmesinde, 'Hesap Kimliği'ni
-    1. Ayarlar *> Erişim Anahtarları* sekmesinde, 'Birincil anahtar' -bu hesabın gizli hesap anahtarıdır
+1. [Karma gerçeklik önizleme sayfasına](https://aka.ms/MixedRealityPrivatePreview) gidin
+1. ' Kaynak oluştur ' düğmesine tıklayın
+1. Arama alanında ("markette ara"), "uzaktan Işleme" yazın ve ' Enter ' tuşuna basın.
+1. Sonuç listesinde, "uzaktan Işleme" kutucuğuna tıklayın
+1. Sonraki ekranda, "Oluştur" düğmesine tıklayın. Yeni bir uzaktan Işleme hesabı oluşturmak için bir form açılır:
+    1. ' Kaynak adı ' nı hesabın adına ayarlayın
+    1. Gerekirse ' abonelik ' güncelleştirmesini Güncelleştir
+    1. ' Kaynak grubu ' nu tercih ettiğiniz bir kaynak grubuna ayarlayın
+1. Hesap oluşturulduktan sonra, bu hesaba gidin ve:
+    1. *Genel bakış* sekmesinde, ' hesap kimliği ' ' ne göz atın
+    1. *Ayarlar > erişim anahtarları* sekmesinde, ' birincil anahtar ' ' a, hesabın gizli hesap anahtarı ' na göz atalım
 
 ### <a name="retrieve-the-account-information"></a>Hesap bilgilerini alma
 
-Örnekler ve öğreticiler, hesap kimliği ve bir anahtar sağlamanızı gerektirir. Örneğin PowerShell örnek komut dosyaları için kullanılan **arrconfig.json** dosyasında:
+Örnekler ve öğreticiler, hesap KIMLIĞI ve bir anahtar sağlamanızı gerektirir. Örneğin, PowerShell örnek betikleri için kullanılan **ARRConfig. JSON** dosyasında:
 
 ```json
     "accountSettings": {
@@ -46,55 +46,55 @@ Azure Uzaktan İşlem hizmeti için bir hesap oluşturmak için aşağıdaki ad�
 
 *Bölge* seçeneğini doldurmak için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
 
-Aşağıdaki adımlarda **`arrAccountKey`** açıklandığı gibi portaldaki değerler **`arrAccountId`** ve değerler bulunabilir:
+**`arrAccountId`** Ve **`arrAccountKey`** değerlerini aşağıdaki adımlarda açıklandığı gibi portalda bulabilirsiniz:
 
-* [Azure portalına](https://www.portal.azure.com) gidin
-* **"Uzaktan İşleme Hesabınızı"** bulun - **"Son Kaynaklar"** listesinde olmalıdır. Ayrıca üst kısmında arama çubuğunda arayabilirsiniz. Bu durumda, kullanmak istediğiniz aboneliğin Varsayılan abonelik filtresinde (arama çubuğunun yanındaki filtre simgesi) seçildiğinden emin olun:
+* [Azure Portal](https://www.portal.azure.com) git
+* **"Uzaktan Işleme hesabınızı"** bulun; **"en son kaynaklar"** listesinde olması gerekir. Ayrıca, üstteki arama çubuğunda da arama yapabilirsiniz. Bu durumda, kullanmak istediğiniz aboneliğin varsayılan abonelik filtresi (arama çubuğu ' nun yanında bulunan filtre simgesi) seçildiğinden emin olun:
 
 ![Abonelik filtresi](./media/azure-subscription-filter.png)
 
-Hesabınıza tıkladığınızda, **Hesap Kimliğini** hemen gösteren bu ekrana gelir:
+Hesabınıza tıkladığınızda bu ekranda **hesap kimliği** hemen gösterilir:
 
-![Azure hesap kimliği](./media/azure-account-id.png)
+![Azure Hesap KIMLIĞI](./media/azure-account-id.png)
 
-Anahtar için soldaki panelde **Erişim Tuşları'nı** seçin. Sonraki sayfada birincil ve ikincil bir anahtar gösterilmektedir:
+Anahtar için sol taraftaki panelde **erişim tuşları** ' nı seçin. Bir sonraki sayfada, birincil ve ikincil anahtar gösterilmektedir:
 
-![Azure erişim anahtarları](./media/azure-account-primary-key.png)
+![Azure erişim tuşları](./media/azure-account-primary-key.png)
 
-Değer birincil **`arrAccountKey`** veya ikincil anahtar olabilir.
+Değeri **`arrAccountKey`** , birincil veya ikincil anahtar olabilir.
 
-## <a name="link-storage-accounts"></a>Bağlantı depolama hesapları
+## <a name="link-storage-accounts"></a>Depolama hesaplarını bağlama
 
-Bu paragraf, depolama hesaplarını Uzaktan İşlem hesabınıza nasıl bağladığını açıklar. Bir depolama hesabı bağlandığında, örneğin bir modeli yüklerken hesabınızdaki verilerle her etkileşimde kalmak istediğinizde bir SAS URI oluşturmanız gerekmez. Bunun yerine, depolama hesabı adlarını doğrudan [yükleme modeli bölümünde](../concepts/models.md#loading-models)açıklandığı gibi kullanabilirsiniz.
+Bu paragraf, depolama hesaplarını uzaktan Işleme hesabınıza bağlamayı açıklar. Bir depolama hesabı bağlandığında, hesabınızdaki verilerle etkileşim kurmak istediğiniz her seferinde bir SAS URI 'SI oluşturmak gerekli değildir. Örneğin, bir model yüklenirken. Bunun yerine, [bir model yükleme bölümünde](../concepts/models.md#loading-models)açıklandığı gibi, depolama hesabı adlarını doğrudan kullanabilirsiniz.
 
-Bu paragraftaki adımların, bu alternatif erişim yöntemini kullanması gereken her depolama hesabı için gerçekleştirilmesi gerekir. Henüz depolama hesapları oluşturmadıysanız, hızlı başlatma yı işlemek [için bir modeli dönüştürmede](../quickstarts/convert-model.md#storage-account-creation)ilgili adımda yürüyebilirsiniz.
+Bu paragraftaki adımların, bu alternatif erişim yöntemini kullanması gereken her depolama hesabı için gerçekleştirilmesi gerekir. Henüz depolama hesapları oluşturmadıysanız, [oluşturma hızlı başlangıcı için modeli dönüştürme](../quickstarts/convert-model.md#storage-account-creation)bölümünde ilgili adımı izleyebilirsiniz.
 
-Şimdi bir depolama hesabınız olduğu varsayılır. Portaldaki depolama hesabına gidin ve bu depolama hesabı için **Erişim Denetimi (IAM)** sekmesine gidin:
+Artık bir depolama hesabınız olduğunu varsaymıştır. Portalda depolama hesabına gidin ve bu depolama hesabı için **Access Control (IAM)** sekmesine gidin:
 
-![Depolama hesabı IAM](./media/azure-storage-account.png)
+![Depolama hesabı ıAM](./media/azure-storage-account.png)
 
- Rol atamaları ekleyebildiğinizden emin olmak için bu depolama hesabı üzerinde sahip iznine sahip olduğundan emin olun. Erişiminiz yoksa, **rol atama ekle** seçeneği devre dışı bırakılır.
+ Rol atamaları ekleyebilmeniz için bu depolama hesabı üzerinde sahip izinlerinizin olduğundan emin olun. Erişiminiz yoksa, **Rol Ekleme atama** seçeneği devre dışı bırakılır.
 
- Sonraki adımlarda açıklandığı gibi üç farklı rol eklemeniz gerekir. Üç erişim düzeyi nin de sağlamazsanız, depolama hesabına erişmeye çalışırken izin sorunları olacaktır.
+ Sonraki adımlarda açıklandığı gibi üç farklı rol eklemeniz gerekir. Üç erişim düzeyini sağlamazsanız, depolama hesabına erişmeye çalışırken izin sorunları olur.
 
- İlk rolü eklemek için "Rol ataması ekle" döşemesindeki **Ekle** düğmesine tıklayın:
+ İlk rolü eklemek için "rol ataması Ekle" kutucuğunda **Ekle** düğmesine tıklayın:
 
-![Depolama hesabı IAM](./media/azure-add-role-assignment.png)
+![Depolama hesabı ıAM](./media/azure-add-role-assignment.png)
 
-* Atamak için ilk rol Yukarıdaki ekran görüntüsünde gösterildiği gibi **Sahibidir.** 
-* * Açılır açılır**adak erişim atayın** **Uzaktan RenderIng Hesabı** seçin.
-* Son açılır da aboneliğinizi ve Uzaktan İşleme hesabınızı seçin.
+* Atanacak ilk rol, yukarıdaki ekran görüntüsünde gösterildiği gibi **sahibidir** . 
+* * **Uzaktan Işleme hesabını** , * açılan**listeye erişim ata** ' yı seçin.
+* Son açılan kutudan aboneliğinizi ve uzaktan Işleme hesabınızı seçin.
 
-**Role** açılır tarihinden ilgili seçimler için iki kez daha yeni roller eklemeyi yineleyin:
+**Rol** açılan listesinden ilgili seçimler için yeni roller eklemeyi iki kez daha yineleyin:
 * **Depolama Hesabı Katılımcısı**
-* **Depolama Blob Veri Katılımcısı**
+* **Depolama Blobu veri Katılımcısı**
 
-Diğer açılır lar ilk adımdaki gibi seçilir.
+Diğer açılan listeleri ilk adımda olarak seçilidir.
 
-Üç rolü de eklediyseniz, Azure Uzaktan İşlem hesabınız, Yönetilen Hizmet Kimlikleri atanan sistemi kullanarak depolama hesabınıza erişebilir.
+Üç rolü de eklediyseniz, Azure uzaktan Işleme hesabınız, sistem tarafından atanan yönetilen hizmet kimliklerini kullanarak depolama hesabınıza erişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kimlik Doğrulaması](authentication.md)
-* [Kimlik doğrulama için Azure Frontend API'lerini kullanma](frontend-apis.md)
-* [Örnek PowerShell komut dosyaları](../samples/powershell-example-scripts.md)
+* [Kimlik doğrulaması için Azure ön uç API 'Lerini kullanma](frontend-apis.md)
+* [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)

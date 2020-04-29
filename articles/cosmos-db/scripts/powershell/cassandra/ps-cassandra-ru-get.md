@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Cassandra API kaynakları için Throughput (RU/s) almak için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - Cassandra API için Azure Cosmos DB Get Throughput (RU/s)
+title: Azure Cosmos DB Cassandra API kaynakları için üretilen Iş (RU/s) almak için PowerShell betiği
+description: Azure PowerShell betiği-Azure Cosmos DB Get üretilen Iş (RU/s) Cassandra API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: f1cae958fce1de000ee4349a2fe8229d69f1a0ae
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80366160"
 ---
-# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB için bir anahtar alanı veya tablo için İş Metod (RU/lar) alın - Cassandra API
+# <a name="get-throughput-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB Cassandra API için anahtar uzayı veya tablo için üretilen Iş (RU/s) Al
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBCassandraKeyspaceThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Belirtilen Cassandra API Keyspace'in iş başına geçen değerini alır. |
-| [Al-AzCosmosDBCassandraTableThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Belirtilen Cassandra API Tablosunun iş başına geçen değerini alır. |
-|**Azure Kaynak Grupları**| |
+| [Get-Azcosmosdbcassandrakeyspaceverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandrakeyspacethroughput) | Belirtilen Cassandra API anahtar alanının üretilen iş değerini alır. |
+| [Get-Azcosmosdbcassandratableverimini](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbcassandratablethroughput) | Belirtilen Cassandra API tablosunun üretilen iş değerini alır. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Özel Bitiş Noktası'nı kullanarak bir Web Uygulamasına özel bağlanma
-description: Azure Özel Bitiş Noktası'nı kullanarak bir Web Uygulamasına özel bağlanma
+title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
@@ -10,72 +10,72 @@ ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756285"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web Uygulaması için Özel Uç Noktaları Kullanma (Önizleme)
+# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web App için özel uç noktaları kullanma (Önizleme)
 
 > [!Note]
-> Önizleme, tüm PremiumV2 Windows ve Linux Web Uygulamaları ve Elastik Premium Fonksiyonlar için Doğu ABD ve Batı ABD 2 bölgelerinde mevcuttur. 
+> Önizleme, tüm PremiumV2 Windows ve Linux Web Apps ve elastik Premium Işlevleri için Doğu ABD ve Batı ABD 2 bölgelerinde kullanılabilir. 
 
-Azure Web Uygulamanız için Özel Bitiş Noktası'nı kullanarak özel ağınızda bulunan istemcilerin özel bağlantı üzerinden uygulamaya güvenli bir şekilde erişmesine izin verebilirsiniz. Private Endpoint, Azure VNet adres alanınızdan bir IP adresi kullanır. Özel ağınızdaki bir istemci ile Web Uygulaması arasındaki ağ trafiği, Microsoft omurga ağındaki VNet ve Özel Bağlantı üzerinden geçerek genel Internet'ten açığa yayını ortadan kaldırır.
+Özel ağınızda bulunan istemcilerin uygulamaya özel bağlantı üzerinden güvenli bir şekilde erişmesini sağlamak için, Azure Web uygulamanız için özel uç nokta kullanabilirsiniz. Özel uç nokta, Azure VNet adres alanınızda bir IP adresi kullanır. Özel ağınızdaki bir istemci ile Web uygulaması arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel Internet 'ten etkilenme olasılığını ortadan kaldırır.
 
-Web Uygulamanız için Özel Bitiş Noktası'nı kullanmak şunları yapmanızı sağlar:
+Web uygulamanız için özel uç nokta kullanımı şunları yapmanızı sağlar:
 
-- Özel Bitiş Noktası'nı yapılandırarak ve herkese açık açığa çıkanları ortadan kaldırarak Web Uygulamanızı güvence altına alanın.
-- VPN veya ExpressRoute özel eşleme kullanarak VNet'e bağlanan şirket içi ağlardan Web App'e güvenli bir şekilde bağlanın.
+- Özel uç noktayı yapılandırarak Web uygulamanızın güvenliğini sağlayın ve genel pozlamayı ortadan kaldırın.
+- VPN veya ExpressRoute özel eşlemesi kullanarak VNet 'e bağlanan şirket içi ağlardan Web uygulamasına güvenli bir şekilde bağlanın.
 
-VNet'inizle Web Uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, Hizmet Bitiş Noktası en basit çözümdür. Web uygulamasına şirket içinde azure ağ geçidi, bölgesel olarak bakıldığında bir VNet veya küresel olarak bakıldığında bir VNet aracılığıyla da ulaşmanız gerekiyorsa, çözüm Private Endpoint'tir.  
+VNet ve Web uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, en basit çözüm bir hizmet uç noktasıdır. Ayrıca, bir Azure ağ geçidi aracılığıyla Şirket içinden Web uygulamasına erişmeniz gerekiyorsa, bölgesel olarak eşlenmiş VNet veya genel eşlenmiş VNet, Özel uç nokta çözümdür.  
 
-Daha fazla bilgi için [Hizmet Bitiş Noktaları'na][serviceendpoint]bakın.
+Daha fazla bilgi için bkz. [hizmet uç noktaları][serviceendpoint].
 
 ## <a name="conceptual-overview"></a>Kavramsal genel bakış
 
-Özel Bitiş Noktası, Sanal Ağınızdaki (VNet) bir Alt ağdaki Azure Web Uygulamanız için özel bir ağ arabirimidir (NIC).
-Web Uygulamanız için bir Özel Bitiş Noktası oluşturduğunuzda, özel ağınızdaki istemciler ile Web Uygulamanız arasında güvenli bağlantı sağlar. Özel Bitiş Noktası'na VNet'inizin IP adresi aralığından bir IP Adresi atanır.
-Özel Bitiş Noktası ve Web Uygulaması arasındaki bağlantı güvenli bir [Özel Bağlantı][privatelink]kullanır. Özel Bitiş Noktası yalnızca Web Uygulamanıza gelen akışlar için kullanılır. Giden akışlar bu Özel Bitiş Noktasını kullanmaz, ancak [VNet tümleştirme özelliği][vnetintegrationfeature]aracılığıyla giden akışları farklı bir alt ağda ağınıza enjekte edebilirsiniz.
+Özel uç nokta, sanal ağınızdaki (VNet) bir alt ağda bulunan Azure Web uygulamanız için özel bir ağ arabirimi (NIC).
+Web uygulamanız için özel bir uç nokta oluşturduğunuzda, özel ağınızdaki istemciler ve Web uygulamanız arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır.
+Özel uç nokta ve Web uygulaması arasındaki bağlantı güvenli bir [özel bağlantı][privatelink]kullanır. Özel uç nokta yalnızca Web uygulamanıza gelen akışlar için kullanılır. Giden akışlar bu özel uç noktayı kullanmaz, ancak giden akışları ağınıza [VNET tümleştirme özelliği][vnetintegrationfeature]aracılığıyla farklı bir alt ağda ekleyebilirsiniz.
 
-Özel Bitiş Noktası'nı taktığınız Alt ağ içinde başka kaynaklar olabilir, özel boş bir Alt ağa ihtiyacınız yoktur.
-Özel Bitiş Noktası'nı Web Uygulamasından farklı bir bölgede de dağıtabilirsiniz. 
+Özel uç noktayı taktığınız alt ağ, içindeki diğer kaynaklara sahip olabilir, ayrılmış boş bir alt ağa gerek kalmaz.
+Özel uç noktayı Web uygulamasından farklı bir bölgede da dağıtabilirsiniz. 
 
 > [!Note]
->VNet tümleştirme özelliği Özel Bitiş Noktası ile aynı alt ağı kullanamaz, bu VNet tümleştirme özelliğinin bir sınırlamasıdır.
+>VNet tümleştirme özelliği özel uç noktadan aynı alt ağı kullanamaz, bu, VNet tümleştirme özelliğinin bir sınırlamasıdır.
 
-Güvenlik açısından:
+Bir güvenlik perspektifinden:
 
-- Web Uygulamanıza Özel Uç Noktaları etkinleştirdiğinizde, tüm herkese açık erişimi devre dışı kılmış olursunuz.
-- Diğer bölgelerdeki VNets'ler de dahil olmak üzere diğer VNet'lerde ve Alt Ağlar'da birden çok Özel Uç Noktası etkinleştirebilirsiniz.
-- Private Endpoint NIC'nin IP adresi dinamik olmalıdır, ancak Siz Özel Bitiş Noktası'nı silene kadar aynı kalır.
-- Özel Bitiş Noktası'nın NIC'si ilişkili bir NSG'ye sahip olamaz.
-- Özel Bitiş Noktası'nı barındıran Alt Ağ ilişkili bir NSG'ye sahip olabilir, ancak Özel Bitiş Noktası için ağ ilkeleri zorlamasını devre dışı bmelisiniz: [özel uç noktaları için ağ ilkelerini devre dışı kaldır.][disablesecuritype] Sonuç olarak, Herhangi bir NSG tarafından Özel Bitiş Noktası erişimi filtre olamaz.
-- Web Uygulamanıza Özel Bitiş Noktası'nı etkinleştirdiğinizde, Web Uygulamasının [erişim kısıtlamaları][accessrestrictions] yapılandırması değerlendirilmez.
-- Hedefin Internet veya Azure hizmetlerinin etiketi olduğu tüm NSG kurallarını kaldırarak VNet'ten veri sızma riskini azaltabilirsiniz. Ancak alt ağınıza bir Web Uygulaması Özel Bitiş Noktası eklemek, aynı dağıtım damgasında barındırılan ve Internet'e maruz kalan herhangi bir Web Uygulamasına erişmenizi sağlar.
+- Web uygulamanıza özel uç noktaları etkinleştirdiğinizde, tüm genel erişimi devre dışı bırakabilirsiniz.
+- Diğer bölgelerde VNET 'ler de dahil olmak üzere, diğer ağlardaki ve alt ağlarda bulunan birden çok özel uç noktayı etkinleştirebilirsiniz.
+- Özel uç nokta NIC 'in IP adresi dinamik olmalıdır, ancak özel uç nokta silinene kadar aynı kalır.
+- Özel uç noktanın NIC 'inde ilişkili bir NSG olamaz.
+- Özel uç noktayı barındıran alt ağın ilişkili bir NSG 'si olabilir, ancak özel uç nokta için ağ ilkeleri zorlamayı devre dışı bırakmanız gerekir: bkz. [Özel uç noktalar için ağ Ilkelerini devre dışı bırakma][disablesecuritype]. Sonuç olarak, Özel uç noktanıza erişimi herhangi bir NSG 'ye göre filtreleyemezsiniz.
+- Web uygulamanıza özel uç noktayı etkinleştirdiğinizde, Web uygulamasının [erişim kısıtlamaları][accessrestrictions] yapılandırması değerlendirilmez.
+- Hedefin Internet veya Azure hizmetleri olduğu tüm NSG kurallarını kaldırarak VNet 'ten veri kaybı riskini azaltabilirsiniz. Ancak alt ağınızdaki bir Web uygulaması özel uç noktası eklemek, aynı dağıtım damgasında barındırılan ve Internet 'e açık olan herhangi bir Web uygulamasına ulaşmanıza imkan tanır.
 
-Web Uygulamanızın Web HTTP günlüklerinde istemci kaynağı IP'yi bulacaksınız. Bu, Istemci IP özelliğini Web Uygulamasına ileterek TCP Proxy protokolü kullanılarak uygulanır. Daha fazla bilgi için Bkz. [TCP Proxy v2 kullanarak bağlantı Bilgileri Alma.][tcpproxy]
+Web uygulamanızın Web HTTP günlüklerinde istemci kaynak IP 'sini bulacaksınız. Bu, istemci IP özelliğini Web uygulamasına ileten TCP proxy protokolü kullanılarak uygulanır. Daha fazla bilgi için bkz. [TCP proxy v2 kullanarak bağlantı bilgilerini alma][tcpproxy].
 
 
   > [!div class="mx-imgBorder"]
-  > ![Web App Private Endpoint global genel bakış](media/private-endpoint/global-schema-web-app.png)
+  > ![Web uygulaması özel uç nokta genel bakış](media/private-endpoint/global-schema-web-app.png)
 
 ## <a name="dns"></a>DNS
 
-Bu özellik önizlemede olduğundan, önizleme sırasında DNS girişini değiştirmeyiz. Özel DNS sunucunuzdaki veya Azure DNS özel bölgenizdeki DNS girişini kendiniz yönetmeniz gerekir.
-Özel bir DNS adı kullanmanız gerekiyorsa, Web Uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad, genel DNS çözünürlüğü kullanılarak herhangi bir özel ad gibi doğrulanmalıdır. Daha fazla bilgi için [özel DNS doğrulamaya][dnsvalidation] bakın.
+Bu özellik önizlemede olduğundan, önizleme sırasında DNS girişini değiştirmedik. Özel DNS sunucunuzdaki DNS girişini yönetmeniz veya özel bölge Azure DNS kendiniz yapmanız gerekir.
+Özel bir DNS adı kullanmanız gerekiyorsa, Web uygulamanıza özel adı eklemeniz gerekir. Önizleme sırasında, özel ad genel DNS çözümlemesi kullanılarak herhangi bir özel ad gibi doğrulanması gerekir. Daha fazla bilgi için bkz. [özel DNS doğrulaması][dnsvalidation] .
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Fiyatlandırma ayrıntıları için Azure [Özel Bağlantı fiyatlandırması'na][pricing]bakın.
+Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırması][pricing].
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Özel Bağlantı özelliğini ve Private Endpoint özelliğini düzenli olarak geliştiriyoruz, sınırlamalar hakkında güncel bilgiler için [bu makaleyi][pllimitations] kontrol ediyoruz.
+Özel bağlantı özelliğini ve özel uç noktayı düzenli olarak geliştirdik, sınırlamalar hakkında güncel bilgiler için [Bu makaleye][pllimitations] bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal üzerinden Web Uygulamanız için Özel bitiş noktasını dağıtmak [için bir Web Uygulamasına özel olarak nasıl bağlanabilirsiniz][howtoguide]
+Portal aracılığıyla Web uygulamanız için özel uç nokta dağıtmak için bkz. [Web uygulamasına özel olarak bağlanma][howtoguide]
 
 
 

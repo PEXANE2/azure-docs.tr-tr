@@ -1,20 +1,20 @@
 ---
-title: Azure'da zamanlamada çalışan bir işlev oluşturma
+title: Azure 'da bir zamanlamaya göre çalışan bir işlev oluşturma
 description: Azure’da nasıl tanımladığınız bir zamanlamaya göre çalışan bir işlev oluşturabileceğinizi öğrenin.
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: how-to
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: e100a2d3a3718b302a44cbdecf462a99d9c823e0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756502"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure’da bir zamanlayıcı tarafından tetiklenen bir işlev oluşturma
 
-Tanımladığınız bir zamanlamaya dayalı olarak çalışan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev oluşturmak için Azure İşlevlerini nasıl kullanacağınızı öğrenin.
+Azure Işlevleri 'ni kullanarak, tanımladığınız bir zamanlamaya göre çalışan [sunucusuz](https://azure.microsoft.com/solutions/serverless/) bir işlev oluşturma hakkında bilgi edinin.
 
 ![Azure portalında işlev uygulaması oluşturma](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -22,7 +22,7 @@ Tanımladığınız bir zamanlamaya dayalı olarak çalışan [sunucusuz](https:
 
 Bu öğreticiyi tamamlamak için:
 
-+ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
++ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="create-an-azure-function-app"></a>Azure İşlev uygulaması oluşturma
 
@@ -36,7 +36,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-a-timer-triggered-function"></a>Zamanlayıcı ile tetiklenen işlev oluşturma
 
-1. İşlev uygulamanızı genişletin ve **+** **Fonksiyonlar'ın**yanındaki düğmeyi tıklatın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde, adım 3 gidin.
+1. İşlev uygulamanızı genişletin ve **işlevler**' in **+** yanındaki düğmesine tıklayın. Bu, işlev uygulamanızdaki ilk işlevse **Portalda**'yı ve ardından **Devam**'ı seçin. Aksi takdirde 3. adıma gidin.
 
    ![Azure portalındaki İşlevler hızlı başlangıç sayfası](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
@@ -44,7 +44,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     ![İşlevler hızlı başlangıcı diğer şablonlar](./media/functions-create-scheduled-function/add-first-function.png)
 
-3. Arama alanında, yeni `timer` tetikleyiciyi görüntünün altındaki tabloda belirtildiği gibi ayarlarla yazın ve yapılandırın.
+3. Arama alanına, yeni tetikleyiciyi görüntünün `timer` altındaki tabloda belirtilen ayarlarla yazın ve yapılandırın.
 
     ![Azure portalında zamanlayıcı tarafından tetiklenen bir işlev oluşturun.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
@@ -53,7 +53,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | **Adı** | Varsayılan | Zamanlayıcı ile tetiklenen işlevinizin adını tanımlar. |
     | **Zamanlama** | 0 \*/1 \* \* \*\* | İşlevinizi her dakika çalışacak şekilde zamanlayan altı haneli bir [CRON ifadesi](functions-bindings-timer.md#ncrontab-expressions). |
 
-4. **Oluştur'u**tıklatın. Seçtiğiniz dilde, her dakika, dakika çalışan bir işlev oluşturulur.
+4. **Oluştur**' a tıklayın. Seçtiğiniz dilde, dakikada her dakikada bir çalışan bir işlev oluşturulur.
 
 5. Günlüklere yazılan izleme bilgilerini görüntüleyerek yürütmeyi doğrulayın.
 
@@ -69,7 +69,7 @@ Artık, işlevin zamanlamasını dakikada bir yerine saatte bir çalışacak şe
 
 ![İşlevler Azure portalındaki zamanlayıcı zamanlamasını güncelleştirir.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-Artık saatte bir, saatte bir çalışan bir işleviniz var.
+Artık saatte bir kez çalışan işleviniz var.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -77,6 +77,6 @@ Artık saatte bir, saatte bir çalışan bir işleviniz var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir zamanlamaya göre çalışan bir işlev oluşturdunuz. Zamanlayıcı tetikleyicileri hakkında daha fazla bilgi için [Azure İşlevleriyle Zamanla kodu yürütmesini zamanlayın'](functions-bindings-timer.md)a bakın.
+Bir zamanlamaya göre çalışan bir işlev oluşturdunuz. Zamanlayıcı Tetikleyicileri hakkında daha fazla bilgi için bkz. [Azure işlevleri ile kod yürütmeyi zamanlama](functions-bindings-timer.md).
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Veritabanı kaynak sınırları | Microsoft Dokümanlar
-description: Bu makalede, tek veritabanları ve esnek havuzlar için Azure SQL Veritabanı kaynak sınırlarına genel bir bakış sağlanmaktadır. Ayrıca, bu kaynak sınırları vurulduğunda veya aşıldığında ne olduğuna ilişkin bilgiler de sağlar.
+title: Azure SQL veritabanı kaynak sınırları | Microsoft Docs
+description: Bu makalede, tek veritabanları ve elastik havuzlar için Azure SQL veritabanı kaynak sınırlarına genel bir bakış sunulmaktadır. Ayrıca, bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı hakkında bilgi de sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,147 +12,147 @@ ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
 ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804835"
 ---
-# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Veritabanı kaynak sınırları ve kaynak yönetimi
+# <a name="sql-database-resource-limits-and-resource-governance"></a>SQL veritabanı kaynak sınırları ve kaynak İdaresi
 
-Bu makalede, tek veritabanları ve elastik havuzları yöneten bir SQL Veritabanı sunucusu için SQL Veritabanı kaynak sınırları genel bir bakış sağlar. Bu kaynak sınırları vurulduğunda veya aşıldığında ne olduğu hakkında bilgi sağlar ve bu sınırları uygulamak için kullanılan kaynak yönetim mekanizmalarını açıklar.
+Bu makalede, tek veritabanlarını ve elastik havuzları yöneten bir SQL veritabanı sunucusu için SQL veritabanı kaynak sınırlarına genel bir bakış sunulmaktadır. Bu kaynak limitleri isabet edildiğinde veya aşıldığında ne olacağı hakkında bilgi sağlar ve bu sınırları zorlamak için kullanılan kaynak idare mekanizmalarını açıklar.
 
 > [!NOTE]
-> Yönetilen Örnek sınırları [için, yönetilen örnekler için SQL Veritabanı kaynak sınırlarını](sql-database-managed-instance-resource-limits.md)görün.
+> Yönetilen örnek sınırları için bkz. [yönetilen örnekler Için SQL veritabanı kaynak sınırları](sql-database-managed-instance-resource-limits.md).
 
-## <a name="maximum-resource-limits"></a>Maksimum kaynak sınırları
+## <a name="maximum-resource-limits"></a>En fazla kaynak sınırı
 
 | Kaynak | Sınır |
 | :--- | :--- |
 | Sunucu başına veritabanları | 5000 |
 | Herhangi bir bölgedeki abonelik başına varsayılan sunucu sayısı | 20 |
-| Herhangi bir bölgedeki abonelik başına maksimum sunucu sayısı | 200 |  
-| Sunucu başına DTU / eDTU kotası | 54,000 |  
-| sunucu/örnek başına vCore kotası | 540 |
-| Sunucu başına maksimum havuzlar | DTUs veya vCore sayısı ile sınırlıdır. Örneğin, her havuz 1000 DUS ise, sunucu 54 havuzu destekleyebilir.|
+| Herhangi bir bölgedeki abonelik başına en fazla sunucu sayısı | 200 |  
+| Sunucu başına DTU/eDTU kotası | 54.000 |  
+| sunucu/örnek başına sanal çekirdek kotası | 540 |
+| Sunucu başına en fazla havuz | DTU sayısıyla veya sanal çekirdekler ile sınırlıdır. Örneğin, her havuz 1000 DTU ise, bir sunucu 54 havuzlarını destekleyebilir.|
 |||
 
 > [!IMPORTANT]
-> Veritabanı sayısı SQL Veritabanı sunucusu başına sınıra yaklaştıkça aşağıdakiler oluşabilir:
+> Veritabanlarının sayısı SQL veritabanı sunucusu başına sınıra yaklaşırsa, şunlar meydana gelebilir:
 >
-> - Ana veritabanına karşı sorguları çalıştırmada gecikme yitirme.  Bu, sys.resource_stats gibi kaynak kullanım istatistiklerinin görünümlerini içerir.
-> - Yönetim işlemlerinde gecikmenin artırılması ve sunucudaki veritabanlarının sayısallaştırılmasını içeren portal bakış açılarının işlenmesi.
+> - Ana veritabanına karşı sorguları çalıştırırken gecikme süresini artırma.  Bu, sys. resource_stats gibi kaynak kullanımı istatistiklerinin görünümlerini içerir.
+> - Sunucuda veritabanlarının listesini oluşturmayı içeren Yönetim işlemlerinde ve işleme portalı görüntüleme noktalarında gecikme süresini artırma.
 
 > [!NOTE]
-> Varsayılan tutardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu elde etmek için Azure portalında yeni bir destek isteği gönderin. Daha fazla bilgi için Azure [SQL Veritabanı için İstek kotası artışlarına](quota-increase-request.md)bakın.
+> Varsayılan miktardan daha fazla DTU/eDTU kotası, vCore kotası veya daha fazla sunucu almak için Azure portal yeni bir destek isteği gönderebilirsiniz. Daha fazla bilgi için bkz. [Azure SQL veritabanı Için istek kotası artışları](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Depolama boyutu
 
-Tek veritabanları kaynak depolama boyutları için, fiyatlandırma katmanı başına depolama boyutu sınırları için [DTU tabanlı kaynak sınırlarına](sql-database-dtu-resource-limits-single-databases.md) veya [vCore tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md) bakın.
+Tek veritabanı kaynak depolama boyutları için, fiyatlandırma katmanı başına depolama boyutu sınırları için [DTU tabanlı kaynak sınırlarına](sql-database-dtu-resource-limits-single-databases.md) veya [sanal çekirdek tabanlı kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md) bakın.
 
 ## <a name="what-happens-when-database-resource-limits-are-reached"></a>Veritabanı kaynak sınırlarına ulaşıldığında ne olur?
 
-### <a name="compute-dtus-and-edtus--vcores"></a>İşlem (DTUs ve eDTUs / vCores)
+### <a name="compute-dtus-and-edtus--vcores"></a>Hesaplama (DTU 'Lar ve eDTU 'lar/sanal çekirdekler)
 
-Veritabanı hesaplama kullanımı (DTUs ve eDTUs veya vCores ile ölçülen) yüksek olduğunda, sorgu gecikmesi artar ve sorgular zaman sonu bile olabilir. Bu koşullar altında, sorgular hizmet tarafından sıraya alınabilir ve kaynaklar özgür hale geldikçe yürütme için kaynaklar sağlanır.
-Yüksek işlem kullanımıyla karşılaştığında, azaltma seçenekleri şunlardır:
+Veritabanı işlem kullanımı (DTU 'lar ve eDTU 'lar ya da sanal çekirdekler) yüksek hale geldiğinde sorgu gecikmesi artar ve sorgular bile zaman aşımına uğrar. Bu koşullar altında, sorgular hizmet tarafından kuyruğa alınabilir ve kaynaklar ücretsiz hale geldiğinde yürütme için kaynaklar sağlanır.
+Yüksek işlem kullanımı ile karşılaşıldığında, risk azaltma seçenekleri şunlardır:
 
-- Veritabanına daha fazla bilgi işlem kaynağı sağlamak için veritabanının veya elastik havuzun işlem boyutunu artırma. Bkz. [Tek veritabanı kaynaklarını ölçeklendirin](sql-database-single-database-scale.md) ve esnek havuz kaynaklarını [ölçeklendirin.](sql-database-elastic-pool-scale.md)
-- Her sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirmek. Daha fazla bilgi için sorgu [aparat/ipucu](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Veritabanını daha fazla işlem kaynağı sağlamak için veritabanının veya elastik havuzun işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](sql-database-single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](sql-database-elastic-pool-scale.md).
+- Her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Depolama
 
-Kullanılan veritabanı alanı maksimum boyut sınırına ulaştığında, veri boyutunu artıran veritabanı ekler ve güncelleştirmeler başarısız olursa ve istemciler bir [hata iletisi](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)alırsınız. SELECT ve DELETE ifadeleri başarılı olmaya devam ediyor.
+Kullanılan veritabanı alanı en büyük boyut sınırına ulaştığında, veri boyutunu artıran veritabanı eklemeleri ve güncelleştirmeleri [hata iletisi](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md)alır. SELECT ve DELETE deyimleri başarılı olmaya devam eder.
 
-Yüksek alan kullanımıyla karşılaştığında azaltma seçenekleri şunlardır:
+Yüksek alan kullanımıyla karşılaşdığınızda, risk azaltma seçenekleri şunlardır:
 
-- Veritabanının veya elastik havuzun maksimum boyutunu artırma veya daha fazla depolama alanı ekleme. Bkz. [Tek veritabanı kaynaklarını ölçeklendirin](sql-database-single-database-scale.md) ve esnek havuz kaynaklarını [ölçeklendirin.](sql-database-elastic-pool-scale.md)
-- Veritabanı elastik bir havuzdaysa, alternatif olarak veritabanı havuzun dışına taşınarak depolama alanının diğer veritabanlarıyla paylaşılmaz.
-- Kullanılmayan alanı geri almak için veritabanını küçültün. Daha fazla bilgi için Azure [SQL Veritabanı'nda dosya alanını yönet'e](sql-database-file-space-management.md) bakın
+- Veritabanının veya elastik havuzun en büyük boyutunu artırma veya daha fazla depolama alanı ekleme. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](sql-database-single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](sql-database-elastic-pool-scale.md).
+- Veritabanı elastik bir havuztasa alternatif olarak, depolama alanı diğer veritabanlarıyla paylaşılmaması için veritabanı havuzun dışına taşınabilir.
+- Kullanılmayan alanı geri kazanmak için bir veritabanını daraltın. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda dosya alanını yönetme](sql-database-file-space-management.md)
 
 ### <a name="sessions-and-workers-requests"></a>Oturumlar ve çalışanlar (istekler)
 
-Maksimum oturum sayısı ve çalışan sayısı hizmet katmanı ve işlem boyutuna (DTUs/eDTUs veya vCores) göre belirlenir. Oturum veya alt sınıra ulaşıldığında yeni istekler reddedilir ve istemciler bir hata iletisi alır. Kullanılabilir bağlantı sayısı uygulama tarafından denetlenebilir ken, eşzamanlı çalışan sayısı genellikle tahmin etmek ve kontrol etmek zordur. Bu, özellikle veritabanı kaynak sınırlarına ulaşıldığı ve çalışanların daha uzun çalışan sorgular, büyük engelleme zincirleri veya aşırı sorgu paralelliği nedeniyle biriktisi en yoğun yük dönemlerinde geçerlidir.
+En fazla oturum ve çalışan sayısı, hizmet katmanı ve işlem boyutu (DTU/eDTU veya Vçekirdekler) tarafından belirlenir. Oturum veya çalışan sınırlarına ulaşıldığında yeni istekler reddedilir ve istemciler bir hata iletisi alır. Kullanılabilir bağlantı sayısı uygulama tarafından denetlenebileceği sürece, eşzamanlı çalışanların sayısı genellikle tahmine ve denetime göre daha zordur. Bu özellikle, veritabanı kaynak sınırlarına ulaşıldığında ve çalışanlar daha uzun süre çalışan sorgular, büyük blok zincirler veya aşırı sorgu paralelliği nedeniyle oluşturulan yoğun yük dönemlerinde geçerlidir.
 
-Yüksek oturum veya işçi kullanımı ile karşılaştığında, azaltma seçenekleri şunlardır:
+Yüksek oturum veya çalışan kullanımı ile karşılaşıldığında, risk azaltma seçenekleri şunlardır:
 
-- Veritabanının veya elastik havuzun hizmet katmanını veya bilgi işlem boyutunu artırma. Bkz. [Tek veritabanı kaynaklarını ölçeklendirin](sql-database-single-database-scale.md) ve esnek havuz kaynaklarını [ölçeklendirin.](sql-database-elastic-pool-scale.md)
-- Artan alt kullanım nedeni bilgi işlem kaynakları için çekişme nedeniyle ise her sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirmek. Daha fazla bilgi için sorgu [aparat/ipucu](sql-database-performance-guidance.md#query-tuning-and-hinting).
-- [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maksimum paralellik derecesi) ayarını azaltma.
-- Olay sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü en iyi duruma getirmek.
+- Veritabanı veya elastik havuzun hizmet katmanını veya işlem boyutunu artırma. Bkz. [tek veritabanı kaynaklarını ölçeklendirme](sql-database-single-database-scale.md) ve [elastik havuz kaynaklarını ölçeklendirme](sql-database-elastic-pool-scale.md).
+- Artan çalışan kullanımının nedeni, işlem kaynakları için çekişme nedeniyle, her bir sorgunun kaynak kullanımını azaltmak için sorguları en iyi duruma getirme. Daha fazla bilgi için bkz. [sorgu ayarlama/Ipuçcu](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (en fazla paralellik derecesi) ayarı azaltıyor.
+- Yineleme sayısını ve sorgu engelleme süresini azaltmak için sorgu iş yükünü iyileştirme.
 
-### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Kullanıcı iş yüklerine ve dahili işlemlere göre kaynak tüketimi
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Kullanıcı iş yükleri ve iç işlemlere göre kaynak tüketimi
 
-Her veritabanındaki kullanıcı iş yüklerine göre CPU ve bellek tüketimi [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) ve `avg_memory_usage_percent` [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) görünümlerinde, içinde `avg_cpu_percent` ve sütunlarında bildirilir. Elastik havuzlar için, havuz düzeyinde kaynak tüketimi [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümünde bildirilir. Kullanıcı iş yükü CPU tüketimi, havuz [düzeyindeki tek veritabanları](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) ve esnek [havuzlar](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) için `cpu_percent` Azure Monitor ölçümü aracılığıyla da bildirilir.
+Her bir veritabanındaki kullanıcı iş yükleri tarafından CPU ve bellek tüketimi, [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) ve [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) görünümlerinde, `avg_cpu_percent` ve `avg_memory_usage_percent` sütunlarında raporlanır. Elastik havuzlar için, [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümünde havuz düzeyi kaynak tüketimi raporlanır. Kullanıcı iş yükü CPU tüketimi, [tek veritabanları](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) ve `cpu_percent` havuz düzeyindeki [elastik havuzlar](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) için Azure izleyici ölçümü aracılığıyla da raporlanır.
 
-Azure SQL Veritabanı, yüksek kullanılabilirlik ve olağanüstü durum kurtarma, veritabanı yedekleme ve geri yükleme, izleme, Sorgu Deposu, Otomatik ayar, vb. gibi temel hizmet özelliklerini uygulamak için bilgi işlem kaynakları gerektirir. Sistem, [kaynak yönetim](#resource-governance) mekanizmalarını kullanarak bu iç işlemler için toplam kaynakların belirli bir bölümünü bir kenara ayırarak, kalan kaynakları kullanıcı iş yükleri için kullanılabilir hale getirir. İç işlemlerin işlem kaynaklarını kullanmadığı zamanlarda, sistem bunları kullanıcı iş yüklerine uygun hale getirir.
+Azure SQL veritabanı, yüksek kullanılabilirlik ve olağanüstü durum kurtarma, veritabanı yedekleme ve geri yükleme, izleme, sorgu deposu, otomatik ayarlama vb. gibi çekirdek hizmet özelliklerini uygulamak için işlem kaynakları gerektirir. Sistem, [kaynak idare](#resource-governance) mekanizmalarını kullanarak bu iç işlemlere ait belirli bir sınırlı kısmını, kaynakların geri kalanını Kullanıcı iş yükleri için kullanılabilir hale getirir. İç işlemlerin işlem kaynaklarını kullanmayan zamanlarda, sistem bunları Kullanıcı iş yükleri için kullanılabilir hale getirir.
 
-Tek bir veritabanıveya elastik bir havuz barındıran SQL Server örneğinde kullanıcı iş yüklerine ve dahili işlemlere göre toplam `avg_instance_cpu_percent` CPU `avg_instance_memory_percent` ve bellek tüketimi [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) ve [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) görünümlerinde, içinde ve sütunlarında bildirilir. Bu veriler, havuz `sqlserver_process_core_percent` [düzeyindeki tek veritabanları](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) ve [elastik havuzlar](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) için Azure Monitor ölçümleri ve `sqlserver_process_memory_percent` Azure Monitor ölçümleri aracılığıyla da raporlanır.
+Tek bir veritabanı veya elastik havuz barındıran SQL Server örneği üzerinde Kullanıcı iş yükleri ve iç işlemlere göre toplam CPU ve bellek tüketimi, [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) ve [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) görünümlerinde, `avg_instance_cpu_percent` ve `avg_instance_memory_percent` sütunlarında raporlanır. Bu veriler aynı `sqlserver_process_core_percent` zamanda ve `sqlserver_process_memory_percent` Azure izleyici ölçümleri aracılığıyla, [tek veritabanları](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) ve havuz düzeyindeki [elastik havuzlar](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) aracılığıyla da raporlanır.
 
-[Sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) ve [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) görünümlerinde, son kaynak tüketiminin kullanıcı iş yüklerine ve dahili işlemlere göre daha ayrıntılı bir dökümü bildirilir. Bu görünümlerde başvurulan kaynak havuzları ve iş yükü grupları yla ilgili ayrıntılar için kaynak [yönetimi'ne](#resource-governance)bakın. Bu görünümler, ilişkili kaynak havuzları ve iş yükü gruplarında kullanıcı iş yüklerine ve belirli iç işlemlere göre kaynak kullanımı hakkında rapor verir.
+Kullanıcı iş yükleri ve iç işlemlere göre son kaynak tüketiminin daha ayrıntılı bir dökümü, [sys. dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) ve [sys. dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database) görünümlerinde raporlanır. Bu görünümlerde başvurulan kaynak havuzlarıyla ve iş yükü gruplarıyla ilgili ayrıntılar için bkz. [Resource idare](#resource-governance). Bu görünümler, Kullanıcı iş yükleri ve ilişkili kaynak havuzları ve iş yükü gruplarındaki belirli iç süreçler tarafından kaynak kullanımını raporlar.
 
-Performans izleme ve sorun giderme bağlamında, hem **kullanıcı CPU** tüketimini`avg_cpu_percent` `cpu_percent`hem de toplam CPU **tüketimini** kullanıcı iş`avg_instance_cpu_percent``sqlserver_process_core_percent`yüklerine ve dahili işlemlere göre dikkate almak önemlidir.
+Performans izleme ve sorun giderme bağlamında, Kullanıcı iş yükleri ve iç işlemlere (`avg_instance_cpu_percent`,`sqlserver_process_core_percent`) göre hem **Kullanıcı CPU kullanımını** (`avg_cpu_percent`, `cpu_percent`) hem de **toplam CPU tüketimini** göz önünde bulundurmanız önemlidir.
 
-**Kullanıcı CPU tüketimi,** her hizmet hedefindeki kullanıcı iş yükü sınırlarının yüzdesi olarak hesaplanır. **%100 kullanıcı CPU kullanımı,** kullanıcı iş yükünün hizmet hedefinin sınırına ulaştığını gösterir. Ancak, **toplam CPU tüketimi** %70-100 aralığına ulaştığında, bildirilen **kullanıcı CPU tüketimi** %100'ün önemli ölçüde altında kalsa bile, kullanıcı iş yükünün iş yükünün düzleşerek ve sorgu gecikmesinin arttığını görmek mümkündür. Bu, bilgi işlem kaynaklarının orta düzeyde tahsisi ile daha küçük hizmet hedefleri kullanırken, ancak [yoğun elastik havuzlar](sql-database-elastic-pool-resource-management.md)gibi nispeten yoğun kullanıcı iş yükleri kullanırken daha olasıdır. Bu, iç işlemler geçici olarak ek kaynaklar gerektirdiğinde(örneğin veritabanının yeni bir kopyasını oluştururken) daha küçük hizmet hedefleri yle de oluşabilir.
+**Kullanıcı CPU tüketimi** , her hizmet hedefi için Kullanıcı iş yükü sınırlarının yüzdesi olarak hesaplanır. %100 ' deki **Kullanıcı CPU kullanımı** , Kullanıcı iş yükünün hizmet hedefi sınırına ulaşmış olduğunu gösterir. Ancak, **toplam CPU tüketimi** % 70-100 aralığına ulaştığında, BILDIRILEN **Kullanıcı CPU tüketimi** %100 ' nin altında önemli olmaya devam ediyor olsa da, Kullanıcı iş yükü aktarım hızını genişletme ve sorgu gecikme süresinin artabilmesi mümkündür. Bu durum, yoğun bir işlem kaynakları ayırması ile daha küçük hizmet hedefleri kullanılırken oluşma olasılığını daha yüksektir, ancak [yoğun elastik havuzlarda](sql-database-elastic-pool-resource-management.md)olduğu gibi nispeten daha yoğun Kullanıcı iş yükleri. Bu, örneğin, veritabanının yeni bir çoğaltmasını oluştururken, iç süreçler geçici olarak ek kaynaklar gerektirdiğinde daha küçük hizmet hedefleriyle da oluşabilir.
 
-**Toplam CPU tüketimi** yüksek olduğunda, azaltma seçenekleri daha önce belirtildiği gibi aynıdır ve hizmet hedefi artış ını ve/veya kullanıcı iş yükünü en iyi duruma getirilmesini içerir.
+**Toplam CPU tüketimi** yüksek olduğunda, risk azaltma seçenekleri daha önce belirtilen şekilde belirtilmiştir ve hizmet hedefi artışı ve/veya Kullanıcı iş yükü iyileştirmesi dahil değildir.
 
 ## <a name="resource-governance"></a>Kaynak idaresi
 
-Azure SQL Veritabanı, kaynak sınırlarını zorlamak için, Azure'da bir SQL Server veritabanı hizmetini çalıştırmak üzere değiştirilen ve genişletilmiş SQL Server [Resource Governor'i](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor)temel alan bir kaynak yönetimi uygulaması kullanır. Hizmetteki her SQL Server örneğinde, dengeli bir [Hizmet Veritabanı](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)sağlamak için hem havuz hem de grup düzeylerinde kaynak sınırları ayarlanan birden çok [kaynak havuzu](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) ve iş [yükü grubu](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)vardır. Kullanıcı iş yükü ve iç iş yükleri ayrı kaynak havuzları ve iş yükü grupları olarak sınıflandırılır. Coğrafi yinelemeler de dahil olmak üzere birincil ve okunabilir ikincil yinelemelerde `SloSharedPool1` kullanıcı `UserPrimaryGroup.DBId[N]` iş yükü, `N` veritabanı kimliği değerini temsil eden kaynak havuzu ve iş yükü grubuna sınıflandırılır. Buna ek olarak, çeşitli iç iş yükleri için birden çok kaynak havuzu ve iş yükü grupları vardır.
+Azure SQL veritabanı, kaynak sınırlarını zorlamak için, Azure 'da bir SQL Server veritabanı hizmetini çalıştırmak üzere SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor), değiştirilme ve uzatılmayı temel alan bir kaynak idare uygulamasını kullanır. Hizmette her bir SQL Server örneğinde, [bir hizmet olarak dengeli bir veritabanı](https://azure.microsoft.com/blog/resource-governance-in-azure-sql-database/)sağlamak için her iki havuzda ve grup düzeyinde ayarlanmış kaynak limitleriyle birden fazla [kaynak havuzu](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-resource-pool) ve [iş yükü grubu](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor-workload-group)vardır. Kullanıcı iş yükü ve iç iş yükleri ayrı kaynak havuzları ve iş yükü grupları halinde sınıflandırılır. Coğrafi çoğaltmalar dahil olmak üzere birincil ve okunabilir ikincil çoğaltmalarda Kullanıcı iş yükü, veritabanı KIMLIĞI değerini `SloSharedPool1` `UserPrimaryGroup.DBId[N]` `N` temsil eden kaynak havuzu ve iş yükü grubu olarak sınıflandırılmaktadır. Ayrıca, çeşitli iç iş yükleri için birden fazla kaynak havuzu ve iş yükü grubu vardır.
 
-Azure SQL Veritabanı, SQL Server işlemindeki kaynakları yönetmek için Kaynak Yöneticisi'ni kullanmanın yanı sıra, işlem düzeyi kaynak yönetimi için Windows [İş Nesneleri'ni](https://docs.microsoft.com/windows/win32/procthread/job-objects) ve depolama kotası yönetimi için Windows [File Server Resource Manager'ı (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) de kullanır.
+Azure SQL veritabanı, SQL Server işlemindeki kaynakları yönetmek için Resource Governor kullanmanın yanı sıra işlem düzeyi kaynak idaresi için Windows [Iş nesnelerini](https://docs.microsoft.com/windows/win32/procthread/job-objects) ve depolama kotası yönetimi Için Windows [dosya sunucusu Kaynak Yöneticisi (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) kullanır.
 
-Azure SQL Veritabanı kaynak yönetimi doğası gereği hiyerarşiktir. Yukarıdan aşağıya doğru, sınırlar işletim sistemi kaynak yönetim mekanizmaları ve Kaynak Yöneticisi, daha sonra Kaynak Valisi kullanarak kaynak havuzu düzeyinde ve daha sonra Kaynak Valisi kullanarak iş yükü grup düzeyinde kullanarak işletim sistemi düzeyinde ve depolama hacmi düzeyinde uygulanır. Geçerli veritabanı veya elastik havuz için geçerli olan kaynak yönetim sınırları [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde su yüzüne çıkar. 
+Azure SQL veritabanı kaynak İdaresi, doğası gereği hiyerarşik bir şekilde yapılır. Üstten alta kadar, işletim sistemi kaynak idare mekanizmaları ve Resource Governor ve ardından Resource Governor kullanılarak kaynak havuzu düzeyinde ve sonra da Resource Governor kullanarak iş yükü grubu düzeyinde, sınırlar işletim sistemi düzeyinde ve depolama birimi düzeyinde zorlanır. Geçerli veritabanı veya elastik havuz için yürürlükte olan kaynak idare limitleri, [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde ortaya çıkmış. 
 
-### <a name="data-io-governance"></a>Veri IO yönetimi
+### <a name="data-io-governance"></a>Veri GÇ yönetimi
 
-Veri IO yönetişimi, Azure SQL Veritabanı'nda bir veritabanının veri dosyalarına karşı hem okuma hem de yazma fiziksel IO'su sınırlamak için kullanılan bir işlemdir. "Gürültülü komşu" etkisini en aza indirmek, çok kiracılı hizmette kaynak ayırma adaleti sağlamak ve temel donanım ve depolama nın yetenekleri içinde kalmak için her hizmet düzeyi için IOPS sınırları ayarlanır.
+Veri GÇ yönetimi, Azure SQL veritabanı 'nda, hem okuma hem de yazma fiziksel GÇ 'yi bir veritabanının veri dosyalarına göre sınırlandırmak için kullanılan bir işlemdir. "Gürültülü komşu" efektini en aza indirmek, çok kiracılı hizmette kaynak ayırma eşitliği sağlamak ve temel alınan donanımın ve depolamanın özellikleri dahilinde kalmak için her bir hizmet düzeyi için ıOPS sınırları ayarlanır.
 
-Tek veritabanları için iş yükü grubu sınırları veritabanına karşı tüm depolama IO'larına uygulanırken, `tempdb` kaynak havuzu sınırları veritabanı da dahil olmak üzere aynı SQL Server örneğindeki tüm veritabanlarına karşı tüm depolama IO'larına uygulanır. Esnek havuzlar için iş yükü grubu sınırları havuzdaki her veritabanıiçin geçerlidir, kaynak havuzu sınırı `tempdb` ise havuzdaki tüm veritabanları arasında paylaşılan veritabanı da dahil olmak üzere tüm esnek havuz için geçerlidir. İş yükü grubu sınırları kaynak havuzu sınırlarından daha düşük olduğundan ve IOPS/iş kaynağını daha erken sınırladığından, genel olarak kaynak havuzu sınırları veritabanına (tek veya havuzlu) karşı iş yükü yle elde edilemeyebilir. Ancak, havuz sınırlarına, aynı SQL Server örneğinde birden çok veritabanına karşı birleştirilmiş iş yükü tarafından ulaşılabilir.
+Tek veritabanları için, iş yükü grubu sınırları veritabanına göre tüm depolama GÇ kaynaklarına uygulanır, ancak kaynak havuzu limitleri, `tempdb` veritabanı dahil olmak üzere aynı SQL Server örneğindeki tüm veritabanlarına karşı tüm depolama IO 'larda geçerlidir. Elastik havuzlar için iş yükü grubu sınırları havuzdaki her bir veritabanı için geçerlidir, ancak kaynak havuzu sınırı, havuzdaki tüm veritabanları arasında paylaşılan `tempdb` veritabanı da dahil olmak üzere tüm elastik havuz için geçerlidir. Genel olarak, kaynak havuzu limitleri bir veritabanında (tek veya havuza alınmış) iş yükü tarafından ulaşılabilir olamaz, çünkü iş yükü grubu sınırları kaynak havuzu limitinden daha düşüktür ve ıOPS/aktarım hızını daha erken sınırlayın. Ancak, aynı SQL Server örneğindeki birden çok veritabanına karşı, havuz sınırlarına, Birleşik iş yükü tarafından ulaşılmış olabilir.
 
-Örneğin, bir sorgu herhangi bir IO kaynak yönetimi olmadan 1000 IOPS oluşturur, ancak iş yükü grubu maksimum IOPS sınırı 900 IOPS olarak ayarlanırsa, sorgu 900 IOPS'den fazla oluşturamaz. Ancak, kaynak havuzu maksimum IOPS sınırı 1500 IOPS olarak ayarlanırsa ve kaynak havuzuyla ilişkili tüm iş yükü gruplarından toplam IO 1500 IOPS'yi aşarsa, aynı sorgunun IO'su 900 IOPS çalışma grubu sınırının altına indirilebilir.
+Örneğin, bir sorgu herhangi bir GÇ kaynak İdaresi olmadan 1000 ıOPS oluşturursa, ancak iş yükü grubu maksimum ıOPS sınırı 900 ıOPS olarak ayarlanırsa, sorgu en fazla 900 ıOPS oluşturamayacak. Ancak, kaynak havuzu maksimum ıOPS sınırı 1500 ıOPS olarak ayarlanmışsa ve kaynak havuzuyla ilişkili tüm iş yükü gruplarından gelen toplam GÇ 1500 ıOPS 'yi aşarsa, aynı sorgunun GÇ değeri, 900 ıOPS çalışma grubu sınırının altında azaltılabilir.
 
-[Sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) tarafından döndürülen IOPS ve iş yapma min/max değerleri garanti olarak değil, limit/kapak olarak hareket eder. Ayrıca, kaynak yönetimi belirli bir depolama gecikmesi garanti etmez. Belirli bir kullanıcı iş yükü için en iyi ulaşılabilir gecikme, IOPS ve iş yükü yalnızca IO kaynak yönetim sınırlarına değil, aynı zamanda kullanılan IO boyutlarının karışımına ve temel depolamanın yeteneklerine de bağlıdır. SQL Server boyutu 512 KB ile 4 MB arasında değişen iOs kullanır. IOPS sınırlarını zorlamak amacıyla, Azure Depolama'daki veri dosyaları olan veritabanları hariç olmak üzere, her IO boyutuna bakılmaksızın muhasebelenir. Bu durumda, Azure Depolama IO muhasebesiyle uyumlu hale getirmek için 256 KB'den büyük iO'lar birden çok 256 KB IO olarak muhasebelenir.
+[Sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümü tarafından döndürülen IOPS ve aktarım hızı/maksimum değerleri, garanti olarak değil, limit/Caps olarak davranır. Ayrıca, kaynak İdaresi belirli bir depolama gecikmesini garanti etmez. Belirli bir kullanıcı iş yükü için en iyi ulaşılabilir gecikme süresi, ıOPS ve aktarım hızı yalnızca GÇ kaynak idare sınırlarına, ayrıca kullanılan GÇ boyutlarının karışımına ve temel depolamanın özelliklerine göre değişir. SQL Server, 512 KB ve 4 MB arasında bir boyut farklılık gösteren IOs kullanır. IOPS sınırlarını zorlama amaçları doğrultusunda, Azure Storage 'da veri dosyaları olan veritabanlarının dışında, her GÇ boyutundan bağımsız olarak hesaba katılmaz. Bu durumda, Azure Storage ıO Accounting ile hizalamak için 256 KB 'den büyük olan IOs birden fazla 256 KB IOs olarak hesaba katılmaz.
 
-Azure Depolama'da veri dosyalarını kullanan Temel, Standart ve `primary_group_max_io` Genel Amaçlı veritabanlarında, bir veritabanında bu IOPS sayısını toplu olarak sağlamak için yeterli veri dosyası yoksa veya veriler dosyalar arasında eşit olarak dağıtılmamışsa veya temel lekelerin performans katmanı kaynak yönetim sınırının altında IOPS/iş başına kadar sınırlanıyorsa, bu değer elde edilemeyebilir. Benzer şekilde, sık sık işlem işlemek tarafından `primary_max_log_rate` oluşturulan küçük günlük IOs ile, değer temel Azure depolama blob Üzerinde IOPS sınırı nedeniyle bir iş yükü tarafından elde olmayabilir.
+Azure Storage 'da veri dosyaları kullanan temel, standart ve Genel Amaçlı veritabanları için, bir veritabanında bu ıOPS `primary_group_max_io` sayısını birikecek yeterli veri dosyası yoksa veya veriler dosyalar arasında eşit olarak dağıtılmıyorsa veya temeldeki Blobların performans katmanı kaynak idare SıNıRıNıN altındaki IOPS/aktarım hızını sınırlıyorsa, değer ulaşılabilir olmayabilir. Benzer şekilde, sık işlem işleme tarafından oluşturulan küçük günlük IOs ile, `primary_max_log_rate` temel Azure depolama BLOBUNUN IOPS sınırı nedeniyle değer bir iş yükü tarafından ulaşılabilir olmayabilir.
 
-[sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümleri gibi `avg_data_io_percent` kaynak `avg_log_write_percent`kullanım değerleri, maksimum kaynak yönetim sınırlarının yüzdeleri olarak hesaplanır. Bu nedenle, kaynak yönetimi limiti IOPS/iş üretimi dışındaki faktörler olduğunda, bildirilen kaynak kullanımı %100'ün altında kalsa da, iş yükü arttıkça IOPS/iş üretimi düzleşme ve gecikmelerin arttığını görmek mümkündür. 
+`avg_data_io_percent` [Sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)ve [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) görünümlerinde bildirilen ve `avg_log_write_percent`gibi kaynak kullanımı değerleri, maksimum kaynak idare limitlerinin yüzdesi olarak hesaplanır. Bu nedenle, kaynak İdaresi, ıOPS/aktarım hızı dışındaki faktörler olduğunda, bildirilen kaynak kullanımı %100 altında kalsa da, iş yükünün arttığı sırada ıOPS/üretilen iş düzleştirme ve gecikme sürelerini görmek mümkündür. 
 
-IOPS dosyasını okuma ve yazma, iş başı ve gecikme yi görmek için [sys.dm_io_virtual_file_stats()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, veritabanına karşı `avg_data_io_percent`tüm IO'yu yüzeye çıkarmaktadır, arka plan IO'su da dahil olmak üzere, iops ve temel depolamanın veri metotunu kullanır ve gözlenen depolama gecikmesini etkileyebilir. İşlev ayrıca, sırasıyla ve `io_stall_queued_read_ms` `io_stall_queued_write_ms` sütunlarda okuma ve yazma için IO kaynak yönetişimi tarafından tanıtılabilecek ek gecikme yitirme yüzeyi.
+Veritabanı dosyası başına okuma ve yazma ıOPS, aktarım hızı ve gecikme süresini görmek için [sys. dm_io_virtual_file_stats ()](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) işlevini kullanın. Bu işlev, üzerinde hesaba katılmaz `avg_data_io_percent`olmayan arka plan GÇ da dahil olmak üzere veritabanına göre tüm GÇ işlemlerini, ancak TEMELDEKI depolamanın IOPS ve aktarım hızını kullanır ve gözlemlenen depolama gecikmesini etkileyebilir. İşlevi, sırasıyla `io_stall_queued_read_ms` ve `io_stall_queued_write_ms` sütunlarında, okuma ve yazma işlemleri için GÇ kaynak İdaresi tarafından kullanıma sunulmuş ek gecikme süresini de yüzey halinde gösterir.
 
-### <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı yönetimi
+### <a name="transaction-log-rate-governance"></a>İşlem günlüğü oranı idare
 
-İşlem günlüğü oranı yönetimi, Azure SQL Veritabanı'nda toplu ekleme, SELECT INTO ve dizin oluşturma gibi iş yükleri için yüksek alım oranlarını sınırlamak için kullanılan bir işlemdir. Bu sınırlar, veri dosyalarına karşı kaç iOs verilebilir bakılmaksızın iş verisi oluşturma hızına göre ikinci alt düzeyde izlenir ve uygulanır.  İşlem günlüğü oluşturma oranları şu anda donanıma bağımlı bir noktaya kadar doğrusal olarak ölçeklendirilir ve maksimum günlük oranı vCore satın alma modeliyle 96 MB/s olarak izin verilir. 
+İşlem günlüğü oranı yönetimi, toplu ekleme, seçme ve dizin oluşturma gibi iş yüklerinin yüksek alım tarifelerinin sınırlandırılmasına yönelik Azure SQL veritabanı 'nda kullanılan bir işlemdir. Bu sınırlar, veri dosyalarına göre kaç IOs yayımlanabileceğine bakılmaksızın iş verimini sınırlayan, alt ikinci düzeyde günlük kaydı oluşturma hızına göre izlenir ve zorlanır.  İşlem günlüğü oluşturma ücretleri Şu anda, sanal çekirdek satın alma modeliyle maksimum günlük hızı 96 MB/sn olmasına izin verilen, donanıma bağımlı olan bir noktaya göre ölçeklendirilmeye göre ölçeklenebilir. 
 
 > [!NOTE]
-> Hareket günlüğü dosyalarına gerçek fiziksel IO'lar yönetilmez veya sınırlı değildir.
+> Gerçek fiziksel IOs işlem günlüğü dosyalarına yönetilmez veya sınırlı değildir.
 
-Günlük oranları, çeşitli senaryolarda elde edilebilen ve sürdürülebilecek şekilde ayarlanırken, genel sistem kullanıcı yüküne en aza indirgenmiş etkiyle işlevselliğini koruyabilir. Günlük oranı yönetimi, işlem günlüğü yedeklemelerinin yayımlanmış kurtarılabilirlik SLA'ları içinde kalmasını sağlar.  Bu yönetim, ikincil yinelemeler üzerinde aşırı biriktirme listesini de önler.
+Günlük ücretleri, çeşitli senaryolarda elde edilebilecekleri ve sürekli olarak kullanılabilir, ancak genel sistem kendi işlevlerini Kullanıcı yüküne en aza indirilerek koruyabileceğinden bu şekilde ayarlanır. Günlük hızı yönetimi, işlem günlüğü yedeklemelerinin yayımlanan kurtarmalar içinde kalmasını sağlar.  Bu idare, ikincil çoğaltmalarda aşırı biriktirme listesini de önler.
 
-Günlük kayıtları oluşturulduğunda, her işlem, istenilen maksimum günlük hızını (saniyede MB/sn) korumak için geciktirilip geciktirilmeyeceği değerlendirilerek değerlendirilir. Günlük kayıtları depoya atıldığında gecikmeler eklenmez, daha çok günlük oranı yönetimi, günlük oranı oluşturma sırasında uygulanır.
+Günlük kayıtları üretildiğinden, her işlem değerlendirilir ve en fazla istenen günlük hızının (saniyede MB/s) korunması için geciktirilmesi gerekip gerekmediğini değerlendirirler. Günlük kayıtları depoya boşaltıldığınızda gecikmeler eklenmez, bunun yerine günlük hızı oluşturma sırasında günlük hızı Yönetimi uygulanır.
 
-Çalışma zamanında uygulanan gerçek günlük oluşturma oranları da geri bildirim mekanizmalarından etkilenerek, sistemin stabilize edilebilmesi için izin verilen günlük oranlarını geçici olarak azaltabilir. Günlük alanı yönetimi, günlük alanı koşulları ve Kullanılabilirlik Grubu çoğaltma mekanizmaları dışında çalışan kaçınarak geçici olarak genel sistem sınırlarını azaltabilir.
+Çalışma zamanında uygulanan gerçek günlük oluşturma ücretleri ayrıca, geri bildirim mekanizmalarından etkilenerek, sistemin sabitlenebilmesi için izin verilen günlük hızlarını geçici olarak azaltabilirsiniz. Günlük dosyası alanı yönetimi, oturum açma alanı koşullarını ve kullanılabilirlik grubu çoğaltma mekanizmalarını çalıştırmanın genel sistem sınırlarını geçici olarak azalmasını önleme.
 
-Günlük oranı vali trafik aşağıdaki bekleme türleri [(sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) görünümlerde maruz) ile su yüzüne çıkar:
+Günlük hızı idarecisi trafik şekillendirme, aşağıdaki bekleme türleri aracılığıyla ortaya çıkarılır ( [sys. dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) görünümlerinde gösterilir):
 
-| Bekleme Türü | Notlar |
+| Bekleme türü | Notlar |
 | :--- | :--- |
-| LOG_RATE_GOVERNOR | Veritabanı sınırlaması |
-| POOL_LOG_RATE_GOVERNOR | Havuz sınırlaması |
-| INSTANCE_LOG_RATE_GOVERNOR | Örnek düzeyi sınırlayıcı |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Geri bildirim kontrolü, Premium/Business Critical'te kullanılabilirlik grubu fiziksel çoğaltma |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Geri bildirim kontrolü, günlük dışı alan durumunu önlemek için oranları sınırlama |
-| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Coğrafi çoğaltma geri bildirim kontrolü, yüksek veri gecikmesi ve coğrafi-saniyelerin kullanılamamasını önlemek için günlük hızını sınırlayan|
+| LOG_RATE_GOVERNOR | Veritabanı sınırlandırma |
+| POOL_LOG_RATE_GOVERNOR | Havuz sınırlandırma |
+| INSTANCE_LOG_RATE_GOVERNOR | Örnek düzeyi sınırlandırma |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Geri bildirim denetimi, Premium 'da kullanılabilirlik grubu fiziksel çoğaltma ve İş Açısından Kritik güncel değil |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | Bir günlük alanı koşulunu önlemek için geri bildirim denetimi, oranları sınırlandırma |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Coğrafi çoğaltma geri bildirim denetimi, yüksek veri gecikmesini önlemek ve coğrafi ikincil öğeler kullanılamamak için günlük hızını sınırlandırma|
 |||
 
-İstenilen ölçeklenebilirliği engelleyen bir günlük hızı sınırıyla karşılaştığında aşağıdaki seçenekleri göz önünde bulundurun:
-- Maksimum 96 MB/s günlük ücretini almak veya farklı bir hizmet katmanına geçmek için daha yüksek bir hizmet düzeyine kadar ölçeklendirin. [Hyperscale](sql-database-service-tier-hyperscale.md) hizmet katmanı, seçilen hizmet düzeyine bakılmaksızın 100 MB/s günlük hızı sağlar.
-- Yüklenen veriler, ETL işleminde veri hazırlama gibi geçiciyse, tempdb'ye yüklenebilir (en az günlüğe kaydedilir). 
-- Analitik senaryolar için, kümelenmiş sütun deposu kapsamındaki tabloya yükleyin. Bu sıkıştırma nedeniyle gerekli günlük hızını azaltır. Bu teknik CPU kullanımını artırır ve yalnızca kümelenmiş sütun deposu dizinlerinden yararlanan veri kümeleri için geçerlidir. 
+İstenen ölçeklenebilirliği gösteren bir günlük hızı sınırı ile karşılaşıldığında, aşağıdaki seçenekleri göz önünde bulundurun:
+- En yüksek 96 MB/sn günlük hızını almak veya farklı bir hizmet katmanına geçiş yapmak için daha yüksek bir hizmet düzeyine kadar ölçeklendirin. [Hiper ölçek](sql-database-service-tier-hyperscale.md) hizmeti katmanı, seçilen hizmet düzeyinden bağımsız olarak 100 MB/s günlük hızı sağlar.
+- Yüklenen veriler geçici ise (örneğin, bir ETL işleminde veri hazırlama gibi), tempdb 'ye yüklenebilir (en az bir şekilde günlüğe kaydedilir). 
+- Analitik senaryolar için, kümelenmiş bir columnstore kapsamına alınmış bir tabloya yükleyin. Bu, sıkıştırma nedeniyle gerekli günlük oranını azaltır. Bu teknik, CPU kullanımını artırır ve yalnızca kümelenmiş columnstore dizinlerinden faydalan veri kümelerine uygulanabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Genel Azure sınırları hakkında bilgi için Azure [abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md)abakın.
-- DTUs ve eDTUs hakkında bilgi için [DTÜ ve eDTUs'a](sql-database-purchase-models.md#dtu-based-purchasing-model)bakın.
-- Tempdb boyut sınırları hakkında daha fazla bilgi için [Azure SQL Veritabanı'nda TempDB'ye](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)bakın.
+- Genel Azure limitleri hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
+- DTU 'Lar ve eDTU 'lar hakkında daha fazla bilgi için bkz. [DTU ve eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model).
+- Tempdb boyut limitleri hakkında daha fazla bilgi için bkz. [Azure SQL veritabanı 'Nda tempdb](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database).

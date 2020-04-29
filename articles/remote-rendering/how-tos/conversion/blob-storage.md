@@ -1,86 +1,86 @@
 ---
-title: Model dönüştürme için Azure Blob Depolama'yı kullanma
-description: Model dönüştürme için blob depolamasını kurmak ve kullanmak için ortak adımları açıklar.
+title: Model dönüştürmesi için Azure Blob depolamayı kullanma
+description: Model dönüştürmesi için blob depolamayı ayarlamaya ve kullanmaya yönelik yaygın adımları açıklar.
 author: jakrams
 ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681655"
 ---
-# <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürme için Azure Blob Depolama'yı kullanma
+# <a name="use-azure-blob-storage-for-model-conversion"></a>Model dönüştürmesi için Azure Blob depolamayı kullanma
 
-[Model dönüştürme](model-conversion.md) hizmeti, giriş verilerini alabilmek ve çıktı verilerini depolamak için Azure blob depolamasına erişim gerektirir. Bu makalede, en yaygın adımların nasıl yapılacağını açıklanmaktadır.
+[Model dönüştürme](model-conversion.md) hizmeti, giriş verilerini almak ve çıkış verilerini depolamak için Azure Blob depolama alanına erişim gerektirir. Bu makalede en sık kullanılan adımların nasıl yapılacağı açıklanır.
 
-## <a name="prepare-azure-storage-accounts"></a>Azure Depolama hesapları hazırlama
+## <a name="prepare-azure-storage-accounts"></a>Azure depolama hesaplarını hazırlama
 
 - Depolama hesabı oluşturma (StorageV2)
-- Depolama hesabında bir giriş blob kapsayıcısı oluşturma (örneğin"arrinput" adlı)
-- Depolama hesabında bir çıktı blob kapsayıcısı oluşturma (örneğin"arroutput" olarak adlandırılır)
+- Depolama hesabında bir giriş blobu kapsayıcısı oluşturun (örneğin, "arrinput" adlı)
+- Depolama hesabında bir çıkış blobu kapsayıcısı oluşturun (örneğin, "arroutput" adlı)
 
 > [!TIP]
-> Depolama hesabınızı nasıl ayarlayabilirsiniz adım adım talimatlar [için Quickstart:Render için bir modeli dönüştürün](../../quickstarts/convert-model.md)
+> Depolama hesabınızı ayarlama hakkında adım adım yönergeler için [hızlı başlangıç: bir modeli işleme Için dönüştürme](../../quickstarts/convert-model.md) bölümüne bakın
 
-Depolama hesabı nın ve blob kaplarının oluşturulması aşağıdaki araçlardan biriyle yapılabilir:
+Depolama hesabı ve BLOB kapsayıcıları oluşturma, aşağıdaki araçlardan biriyle yapılabilir:
 
 - [Azure portal](https://portal.azure.com)
 - [az komut satırı](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
-- SDK'lar (C#, Python ... )
+- SDK 'lar (C#, Python...)
 
-## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure Uzaktan İşleme'nin depolama hesabınıza erişebilmesini sağlayın
+## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure uzaktan Işleme 'nin depolama hesabınıza erişebildiğinden emin olun
 
-Azure Remote Rending'in depolama hesabınızdan model verileri alması ve verileri ona geri yazması gerekir.
+Azure uzaktan saklama 'nın, depolama hesabınızdan model verilerini alması ve verileri buna geri yazması gerekir.
 
-Azure Uzaktan İşleme'ye depolama hesabınıza aşağıdaki iki şekilde erişim izni verebilirsiniz:
+Aşağıdaki iki yolla depolama hesabınıza Azure uzaktan Işleme erişimi verebilirsiniz:
 
-### <a name="connect-your-azure-storage-account-with-your-azure-remote-rendering-account"></a>Azure Depolama hesabınızı Azure Uzaktan İşlem Eki hesabınıza bağlayın
+### <a name="connect-your-azure-storage-account-with-your-azure-remote-rendering-account"></a>Azure depolama hesabınızı Azure uzaktan Işleme hesabınızla bağlama
 
-[Hesap Oluştur](../create-an-account.md#link-storage-accounts) bölümünde verilen adımları izleyin.
+[Hesap oluşturma](../create-an-account.md#link-storage-accounts) bölümünde verilen adımları izleyin.
 
-### <a name="retrieve-sas-for-the-storage-containers"></a>Depolama kapları için SAS'ı alın
+### <a name="retrieve-sas-for-the-storage-containers"></a>Depolama kapsayıcıları için SAS alma
 
-Depolanan erişim imzaları (SAS), giriş için okuma erişimi sağlamak ve çıktı için erişim yazmak için kullanılır. Bir model her dönüştürüldüğünde yeni URI'ler oluşturmanızı öneririz. URI'ler bir süre sonra sona erdiğinden, bunları daha uzun süre devam etmek uygulamanızı beklenmedik bir şekilde bozabilir.
+Depolanan erişim imzaları (SAS), giriş için okuma erişimi sağlamak ve çıkış için yazma erişimi sağlamak üzere kullanılır. Her model dönüştürülürken yeni URI 'Ler oluşturmanızı öneririz. URI 'Lerin süresi bir süre sonra sona erdiğinden, daha uzun bir süre boyunca kalıcı hale getirerek uygulamanızı beklenmedik şekilde bozabilir.
 
-SAS ile ilgili ayrıntılar [SAS belgelerinde](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)bulunabilir.
+SAS hakkındaki ayrıntılar [SAS belgelerinde](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)bulunabilir.
 
-Bir SAS URI biri kullanılarak oluşturulabilir:
+Bir SAS URI 'SI aşağıdakilerden biri kullanılarak oluşturulabilir:
 
 - az PowerShell modülü
-  - örnek [PowerShell komut dosyasına](../../samples/powershell-example-scripts.md) bakın
+  - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
 - [az komut satırı](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)
-  - "Paylaşılan Erişim İmzası Al" konteynerine sağ tıklayın (okuma, giriş kapsayıcısı için liste erişimi, çıkış kapsayıcısı için erişim yazın)
-- SDK'lar (C#, Python ... )
+  - "paylaşılan erişim Imzasını al" kapsayıcısına sağ tıklama (okuma, giriş kapsayıcısı için erişimi listeleme, çıkış kapsayıcısı için yazma erişimi)
+- SDK 'lar (C#, Python...)
 
-Varlık dönüştürmede Paylaşılan Erişim İmzalarını kullanmanın bir örneği [Powershell Örnek Komut Dosyalarının](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1'inde gösterilir.
+Varlık dönüştürmesinde paylaşılan erişim Imzalarının kullanılmasına bir örnek, [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)dönüştürme. ps1 içinde gösterilir.
 
-## <a name="upload-an-input-model"></a>Giriş modeli yükleme
+## <a name="upload-an-input-model"></a>Giriş modelini karşıya yükleme
 
-Bir modeli dönüştürmeye başlamak için, aşağıdaki seçeneklerden birini kullanarak modeli yüklemeniz gerekir:
+Bir modeli dönüştürmeye başlamak için, aşağıdaki seçeneklerden birini kullanarak karşıya yüklemeniz gerekir:
 
-- [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) - azure blob depolamada dosyaları yüklemek/indirmek/yönetmek için kullanışlı bir kullanıcı arabirimi
+- [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) -Azure Blob Storage 'da dosyaları karşıya yüklemek/indirmek/yönetmek için uygun bir kullanıcı arabirimi
 - [Azure komut satırı](https://docs.microsoft.com/azure/storage/common/storage-azure-cli)
 - [Azure PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.2.0)
-  - Örnek [PowerShell komut dosyalarına](../../samples/powershell-example-scripts.md) bakın
-- [Depolama SDK kullanma (Python, C# ... )](https://docs.microsoft.com/azure/storage/)
-- [Azure Depolama REST API'lerini kullanma](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
+  - [örnek PowerShell betiklerine](../../samples/powershell-example-scripts.md) bakın
+- [Depolama SDK 'sını kullanma (Python, C#...)](https://docs.microsoft.com/azure/storage/)
+- [Azure depolama REST API 'Lerini kullanma](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)
 
-Dönüşüm için veri yükleme nin nasıl yüklendiğine bir örnek için [Powershell Örnek Komut Dosyalarının](../../samples/powershell-example-scripts.md#script-conversionps1)Conversion.ps1 bölümüne bakın.
+Dönüştürme için verileri karşıya yükleme hakkında bir örnek için [PowerShell örnek betiklerinin](../../samples/powershell-example-scripts.md#script-conversionps1)dönüştürme. ps1 adresine bakın.
 
-## <a name="get-a-sas-uri-for-the-converted-model"></a>Dönüştürülmüş model için bir SAS URI alın
+## <a name="get-a-sas-uri-for-the-converted-model"></a>Dönüştürülen model için SAS URI 'SI al
 
-Bu adım, [depolama kapları için SAS almaya](#retrieve-sas-for-the-storage-containers)benzer. Ancak, bu kez çıkış kapsayıcısına yazılmış model dosyası için bir SAS URI almanız gerekir.
+Bu adım, [depolama kapsayıcıları IÇIN SAS almaya](#retrieve-sas-for-the-storage-containers)benzer. Ancak, bu süre, çıkış kapsayıcısına yazılmış olan model dosyası için bir SAS URI 'SI almanız gerekir.
 
-Örneğin, [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)üzerinden bir SAS URI almak için model dosyasına sağ tıklayın ve "Paylaşılan Erişim İmzasını Al"ı seçin.
+Örneğin, [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)aracılığıyla SAS URI 'sini almak için model dosyasına sağ tıklayın ve "paylaşılan erişim imzasını al" seçeneğini belirleyin.
 
-Depolama hesabınızı Azure Uzaktan İşleme hesabınıza bağlamadıysanız, modelleri yüklemek için Paylaşılan Erişim İmzası (SAS) gereklidir. [Hesap Oluştur'da](../create-an-account.md#link-storage-accounts)hesabınızı nasıl bağlayabileceğinizi öğrenebilirsiniz.
+Depolama hesabınızı Azure uzaktan Işleme hesabınıza eklemediğiniz takdirde yük modelleriyle paylaşılan erişim Imzası (SAS) gereklidir. [Hesap oluşturma](../create-an-account.md#link-storage-accounts)bölümünde hesabınızı nasıl bağlayabileceğinizi öğrenebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Model dönüşümyapılandırma](configure-model-conversion.md)
+- [Model dönüştürmeyi yapılandırma](configure-model-conversion.md)
 - [Model dönüştürme REST API](conversion-rest-api.md)

@@ -1,103 +1,103 @@
 ---
-title: PostgreSQL için Azure Active Directory - Azure Veritabanı 'nı kullanın - Tek Sunucu
-description: PostgreSQL - Single Server için Azure Veritabanı ile kimlik doğrulama için Azure Active Directory 'i (AAD) nasıl ayarlayabilirsiniz hakkında bilgi edinin
+title: Azure Active Directory kullanın-PostgreSQL için Azure veritabanı-tek sunucu
+description: PostgreSQL için Azure veritabanı-tek sunucu ile kimlik doğrulaması için Azure Active Directory (AAD) ayarlama hakkında bilgi edinin
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f5588503825281f407ddbbc2c1c57cd94a9c7ee6
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804716"
 ---
-# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Etkin Dizini'ni kullanın
+# <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL ile kimlik doğrulaması için Azure Active Directory kullanma
 
-Bu makale, PostgreSQL için Azure Veritabanı ile Azure Active Directory erişimini nasıl yapılandıracağınız ve Azure AD belirteci kullanarak nasıl bağlanabileceğiniz adımlarını gözden geçirecektir.
+Bu makale, PostgreSQL için Azure veritabanı ile Azure Active Directory erişimi yapılandırma ve Azure AD belirteci kullanarak bağlanma adımlarında size yol gösterecektir.
 
 > [!IMPORTANT]
-> PostgreSQL için Azure Veritabanı için Azure AD kimlik doğrulaması şu anda genel önizlemededir.
+> PostgreSQL için Azure veritabanı Azure AD kimlik doğrulaması şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="setting-the-azure-ad-admin-user"></a>Azure AD Yöneticisi kullanıcısını ayarlama
+## <a name="setting-the-azure-ad-admin-user"></a>Azure AD yönetici kullanıcısını ayarlama
 
-Azure AD tabanlı kimlik doğrulaması için yalnızca Azure AD yöneticisi kullanıcılar kullanıcıları oluşturabilir/etkinleştirebilir. Azure AD yöneticisini, kullanıcı izinlerini yükselttikginden (örneğin CREATEDB) normal veritabanı işlemleri için kullanmamanızı öneririz.
+Yalnızca Azure AD yöneticisi kullanıcıları Azure AD tabanlı kimlik doğrulaması için Kullanıcı oluşturabilir/etkinleştirebilir. Yükseltilmiş kullanıcı izinleri (ör. CREATEDB) olduğundan, normal veritabanı işlemleri için Azure AD yöneticisi 'ni kullanmaktan önermiyoruz.
 
 Azure AD yöneticisini ayarlamak için (bir kullanıcı veya grup kullanabilirsiniz), lütfen aşağıdaki adımları izleyin
 
-1. Azure portalında, Azure AD için etkinleştirmek istediğiniz PostgreSQL için Azure Veritabanı örneğini seçin.
-2. Ayarlar altında Active Directory Admin'i seçin:
+1. Azure portal Azure AD için etkinleştirmek istediğiniz PostgreSQL için Azure veritabanı örneğini seçin.
+2. Ayarlar altında yönetici Active Directory ' yi seçin:
 
-![azure reklam yöneticisi ayarlama][2]
+![Azure AD yöneticisini ayarlama][2]
 
-3. Azure AD yöneticisi olmak için müşteri kiracısında geçerli bir Azure AD kullanıcısı seçin.
+3. Müşteri kiracısında Azure AD yöneticisi olacak geçerli bir Azure AD kullanıcısı seçin.
 
 > [!IMPORTANT]
-> Yöneticiyi ayarlarken, tam yönetici izinleriyle PostgreSQL sunucusu için Azure Veritabanına yeni bir kullanıcı eklenir. PostgreSQL için Azure Veritabanı'ndaki Azure AD `azure_ad_admin`Yöneticisi kullanıcısı bu role sahip olacaktır.
+> Yönetici ayarlanırken, PostgreSQL için Azure veritabanı sunucusuna tam yönetici izinleriyle yeni bir Kullanıcı eklenir. PostgreSQL için Azure veritabanı 'nda Azure AD yönetici kullanıcısının rolü `azure_ad_admin`olacaktır.
 
-PostgreSQL sunucusu başına yalnızca bir Azure AD yöneticisi oluşturulabilir ve başka bir sunucu seçimi sunucu için yapılandırılan mevcut Azure AD yöneticisinin üzerine yazar. Birden çok yöneticiye sahip olmak için tek bir kullanıcı yerine bir Azure REKLAM grubu belirtebilirsiniz. Daha sonra yönetim amacıyla grup adı ile oturum açacağınızı unutmayın.
+Her PostgreSQL sunucusu için yalnızca bir Azure AD yöneticisi oluşturulabilir ve başka bir tane seçilebilir, sunucu için yapılandırılmış mevcut Azure AD yöneticisinin üzerine yazılır. Tek bir kullanıcı yerine birden çok yönetici olmak üzere bir Azure AD grubu belirtebilirsiniz. Daha sonra yönetim amaçları için grup adıyla oturum açacaksınız.
 
-## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Azure AD'yi kullanarak PostgreSQL için Azure Veritabanına bağlanma
+## <a name="connecting-to-azure-database-for-postgresql-using-azure-ad"></a>Azure AD 'yi kullanarak PostgreSQL için Azure veritabanı 'na bağlanma
 
-Aşağıdaki üst düzey diyagram, PostgreSQL için Azure Veritabanı ile Azure AD kimlik doğrulamasını kullanmanın iş akışını özetler:
+Aşağıdaki üst düzey diyagram, PostgreSQL için Azure veritabanı ile Azure AD kimlik doğrulaması kullanma iş akışını özetler:
 
 ![kimlik doğrulama akışı][1]
 
-Azure AD tümleştirmesini, Azure AD farkında olmayan ve yalnızca PostgreSQL'e bağlanırken kullanıcı adı ve parola belirtmeyi destekleyen psql gibi yaygın PostgreSQL araçlarıyla çalışacak şekilde tasarladık. Yukarıdaki resimde gösterildiği gibi Azure AD belirteci'ni parola olarak geçiyoruz.
+Azure AD tümleştirmesini, Azure AD Aware olmayan ve yalnızca PostgreSQL 'e bağlanırken Kullanıcı adı ve parola belirtmeyi destekleyen psql gibi ortak PostgreSQL araçlarıyla çalışacak şekilde tasarladık. Yukarıdaki resimde gösterildiği gibi Azure AD belirtecini parola olarak geçiyoruz.
 
 Şu anda aşağıdaki istemcileri test ettik:
 
-- psql commandline (belirteci geçmek için PGPASSWORD değişkenini kullanmak, aşağıya bakın)
-- Azure Veri Stüdyosu (PostgreSQL uzantısını kullanarak)
-- Diğer libpq tabanlı istemciler (örn. ortak uygulama çerçeveleri ve ORM'ler)
+- psql CommandLine (belirteci geçirmek için PGPASSWORD değişkenini kullanın, aşağıya bakın)
+- Azure Data Studio (PostgreSQL uzantısını kullanarak)
+- Diğer libpq tabanlı istemciler (örneğin, yaygın uygulama çerçeveleri ve ORMs)
 
 > [!NOTE]
-> PgAdmin ile Azure AD belirteci kullanmanın şu anda desteklenmediğini, parolalar için 256 karakter (belirteç aşıldığında) için sabit kodlu bir sınırlamaya sahip olduğunu lütfen unutmayın.
+> Parola için 256 karakterlik sabit kodlanmış bir sınırlamaya sahip olduğundan, lütfen pgAdmin ile Azure AD belirtecini kullanmanın şu anda desteklenmediğini unutmayın (belirtecin sonunda).
 
-Aşağıda açıklanan Azure AD ile bir kullanıcının/uygulamanın kimlik doğrulaması yapması gereken adımlar şunlardır:
+Bu adımlar, bir kullanıcı/uygulamanın, aşağıda açıklanan Azure AD ile kimlik doğrulaması yapmak için gereken adımlardır:
 
-### <a name="step-1-authenticate-with-azure-ad"></a>Adım 1: Azure AD ile kimlik doğrulaması
+### <a name="step-1-authenticate-with-azure-ad"></a>1. Adım: Azure AD ile kimlik doğrulama
 
-[Azure CLI'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
+[Azure CLI 'nin yüklü](/cli/azure/install-azure-cli)olduğundan emin olun.
 
-Azure AD ile kimlik doğrulaması yapmak için Azure CLI aracını çağırın. Azure AD kullanıcı kimliğinizi ve parolanızı vermenizi gerektirir.
+Azure AD ile kimlik doğrulaması gerçekleştirmek için Azure CLı aracını çağırın. Azure AD Kullanıcı KIMLIĞINIZ ve parolanızı sağlamanız gerekir.
 
 ```azurecli-interactive
 az login
 ```
 
-Bu komut, Azure AD kimlik doğrulama sayfasına bir tarayıcı penceresi başlatacaktır.
+Bu komut, Azure AD kimlik doğrulama sayfasında bir tarayıcı penceresi başlatır.
 
 > [!NOTE]
-> Bu adımları gerçekleştirmek için Azure Bulut Su Toplarını da kullanabilirsiniz.
-> Azure Bulut Su Ağıtı'nda Azure AD erişim jetonunu alırken açıkça `az login` aramanız ve yeniden oturum açmanız gerekeceğini lütfen unutmayın (kodlu ayrı pencerede). Bu işaretten `get-access-token` sonra komut beklendiği gibi çalışacaktır.
+> Bu adımları gerçekleştirmek için Azure Cloud Shell de kullanabilirsiniz.
+> Lütfen Azure Cloud Shell Azure AD erişim belirtecini alırken, açıkça çağırmanız `az login` ve yeniden oturum açmanız (bir kodla ayrı pencerede) gerektiğini unutmayın. `get-access-token` Komutun bu oturum açma işleminden sonra beklendiği gibi çalışacaktır.
 
-### <a name="step-2-retrieve-azure-ad-access-token"></a>Adım 2: Azure AD erişim jetonunu alın
+### <a name="step-2-retrieve-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirtecini alma
 
-PostgreSQL için Azure Veritabanı'na erişmek için 1 adımdan Azure AD kimlik doğrulaması yapılan kullanıcıiçin bir erişim jetonu edinmek için Azure CLI aracını çağırın.
+Azure AD kimliği doğrulanmış kullanıcı için adım 1 ' den PostgreSQL için Azure veritabanı 'na erişim için bir erişim belirteci almak üzere Azure CLı aracını çağırın.
 
-Örnek (Genel Bulut için):
+Örnek (genel bulut için):
 
 ```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
-Yukarıdaki kaynak değeri tam olarak gösterildiği gibi belirtilmelidir. Diğer bulutlar için kaynak değeri aşağıdakileri kullanarak aranabilir:
+Yukarıdaki kaynak değeri tam olarak gösterildiği gibi belirtilmelidir. Diğer bulutlarda, kaynak değeri şu kullanılarak aranabilir:
 
 ```azurecli-interactive
 az cloud show
 ```
 
-Azure CLI sürüm 2.0.71 ve sonrası için komut tüm bulutlar için aşağıdaki daha kullanışlı sürümde belirtilebilir:
+Azure CLı sürüm 2.0.71 ve üzeri için, komut tüm bulutlar için aşağıdaki daha uygun sürümde belirtilebilir:
 
 ```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
-Kimlik doğrulama başarılı olduktan sonra, Azure AD bir erişim jetonu döndürecek:
+Kimlik doğrulaması başarılı olduktan sonra Azure AD, bir erişim belirteci döndürür:
 
 ```json
 {
@@ -109,103 +109,103 @@ Kimlik doğrulama başarılı olduktan sonra, Azure AD bir erişim jetonu dönd�
 }
 ```
 
-Belirteç, kimliği doğrulanan kullanıcı hakkındaki tüm bilgileri kodlayan ve PostgreSQL hizmeti için Azure Veritabanı'nı hedefleyen bir Base 64 dizesidir.
+Belirteç, kimliği doğrulanmış kullanıcıyla ilgili tüm bilgileri kodlayan ve PostgreSQL için Azure veritabanı hizmetine hedeflenen bir temel 64 dizesidir.
 
 > [!NOTE]
-> Erişim belirteci geçerliliği 5 dakika ile 60 dakika arasındadır. PostgreSQL için Azure Veritabanı'na giriş başlatmadan hemen önce erişim jetonuna ulaşmanızı öneririz.
+> Erişim belirteci geçerliliği, 5 dakikadan 60 dakika arasında bir süre sürer. PostgreSQL için Azure veritabanı 'nda oturum açmayı başlatmadan önce erişim belirtecini almanızı öneririz.
 
-### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>Adım 3: PostgreSQL ile oturum açmak için parola olarak belirteç kullanın
+### <a name="step-3-use-token-as-password-for-logging-in-with-postgresql"></a>3. Adım: PostgreSQL ile oturum açmak için belirteci parola olarak kullanın
 
-Bağlanırken postgreSQL kullanıcı parolası olarak erişim belirteci kullanmanız gerekir.
+Bağlantı sırasında, PostgreSQL Kullanıcı parolası olarak erişim belirtecini kullanmanız gerekir.
 
-Komut satırı `psql` istemcisi kullanırken, erişim belirteci `PGPASSWORD` doğrudan kabul `psql` edebilirsiniz parola uzunluğunu aştığından, erişim belirteci ortam değişkeninden geçirilmesi gerekir:
+`psql` Komut satırı istemcisini kullanırken, erişim belirteci doğrudan kabul edebilecek parola uzunluğunu `psql` aştığından, erişim belirtecinin `PGPASSWORD` ortam değişkenine geçirilmesi gerekir:
 
-Windows Örneği:
+Windows örneği:
 
 ```shell
 set PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Linux/macOS Örneği:
+Linux/macOS örneği:
 
 ```shell
 export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 ```
 
-Artık, normalde yaptığınız gibi PostgreSQL için Azure Veritabanı ile bağlantı başlatabilirsiniz:
+Artık şu şekilde, PostgreSQL için Azure veritabanı ile bir bağlantı başlatabilirsiniz:
 
 ```shell
 psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
-Azure AD kimlik doğrulamasını kullanarak artık PostgreSQL sunucunuza kimlik doğrulaması yapılır.
+Artık Azure AD kimlik doğrulaması kullanarak PostgreSQL sunucunuza kimlik doğrulamış olursunuz.
 
-## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı'nda Azure AD kullanıcıları oluşturma
+## <a name="creating-azure-ad-users-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure AD kullanıcıları oluşturma
 
-PostgreSQL veritabanı için Azure Veritabanınıza bir Azure AD kullanıcısı eklemek için bağlandıktan sonra aşağıdaki adımları gerçekleştirin (nasıl bağlanılabağlanınız la ilgili sonraki bölüme bakın):
+PostgreSQL için Azure veritabanı veritabanınıza bir Azure AD kullanıcısı eklemek için, bağlandıktan sonra aşağıdaki adımları gerçekleştirin (bkz. bağlanma hakkında sonraki bölüm):
 
-1. Öncelikle Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
-2. Azure AD Yöneticisi kullanıcısı olarak PostgreSQL örneği için Azure Veritabanınızda oturum açın.
-3. PostgreSQL için Azure Veritabanı'nda rol `<user>@yourtenant.onmicrosoft.com` oluşturun.
-4. Rol `<user>@yourtenant.onmicrosoft.com` azure_ad_user bir üyesi olun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
+1. İlk olarak Azure AD kullanıcısının `<user>@yourtenant.onmicrosoft.com` Azure AD kiracısında geçerli bir kullanıcı olduğundan emin olun.
+2. PostgreSQL için Azure veritabanı örneğiniz için Azure AD Yönetici kullanıcısı olarak oturum açın.
+3. PostgreSQL için Azure veritabanı 'nda rol `<user>@yourtenant.onmicrosoft.com` oluştur.
+4. Azure_ad_user `<user>@yourtenant.onmicrosoft.com` rolün bir üyesini oluşturun. Bu yalnızca Azure AD kullanıcılarına verilmelidir.
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
 > [!NOTE]
-> Bir kullanıcının Azure AD aracılığıyla kimliğini doğrulamak, kullanıcıya PostgreSQL veritabanı için Azure Veritabanı'ndaki nesnelere erişme izni vermez. Kullanıcıya gerekli izinleri el ile vermelisiniz.
+> Azure AD ile bir kullanıcının kimlik doğrulaması, kullanıcıya PostgreSQL için Azure veritabanı veritabanı içindeki nesnelere erişim izni vermez. Kullanıcıya gerekli izinleri el ile vermeniz gerekir.
 
-## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>PostgreSQL için Azure Veritabanı'nda Azure REKLAM grupları oluşturma
+## <a name="creating-azure-ad-groups-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda Azure AD grupları oluşturma
 
-Veritabanınıza erişmek için bir Azure REKLAM grubunu etkinleştirmek için, kullanıcılarla aynı mekanizmayı kullanın, ancak bunun yerine grup adını belirtin:
+Veritabanınıza erişim için bir Azure AD grubunu etkinleştirmek üzere, kullanıcılar için aynı mekanizmayı kullanın, bunun yerine grup adını belirtin:
 
-**Örnek:**
+**Örneğinde**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;
 ```
 
-Oturum açarken, grup üyeleri kişisel erişim belirteçlerini kullanır, ancak kullanıcı adı olarak belirtilen grup adı ile imzalar.
+Oturum açarken, grubun üyeleri kendi kişisel erişim belirteçlerini kullanır, ancak Kullanıcı adı olarak belirtilen grup adıyla oturum açılır.
 
-## <a name="token-validation"></a>Belirteç Doğrulama
+## <a name="token-validation"></a>Belirteç doğrulama
 
-PostgreSQL için Azure Veritabanı'ndaki Azure AD kimlik doğrulaması, kullanıcının PostgreSQL sunucusunda bulunmasını sağlar ve belirteciiçeriğini doğrulayarak belirteci geçerliliğini denetler. Aşağıdaki belirteç doğrulama adımları gerçekleştirilir:
+PostgreSQL için Azure veritabanı 'nda Azure AD kimlik doğrulaması, kullanıcının PostgreSQL sunucusunda mevcut olmasını sağlar ve belirtecin içeriğini doğrulayarak belirtecin geçerliliğini denetler. Aşağıdaki belirteç doğrulama adımları gerçekleştirilir:
 
-- Belirteç Azure AD tarafından imzalanmıştır ve kurcalanmamıştır
+- Belirteç Azure AD tarafından imzalanmış ve bu değişiklik yapılmamıştır
 - Belirteç, sunucuyla ilişkili kiracı için Azure AD tarafından verildi
-- Belirteci'nin süresi dolmadı
-- Belirteç, PostgreSQL kaynağı için Azure Veritabanı içindir (başka bir Azure kaynağı için değil)
+- Belirtecin süresi sona ermedi
+- Belirteç, PostgreSQL için Azure veritabanı kaynağına (başka bir Azure kaynağı değil) yöneliktir
 
-## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Varolan PostgreSQL kullanıcılarını Azure AD tabanlı kimlik doğrulamasına geçirme
+## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Mevcut PostgreSQL kullanıcılarını Azure AD tabanlı kimlik doğrulamasına geçirme
 
-Varolan kullanıcılar için Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Göz önünde bulundurulması gereken iki durum vardır:
+Mevcut kullanıcılar için Azure AD kimlik doğrulamasını etkinleştirebilirsiniz. Dikkate alınması gereken iki durum vardır:
 
-### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Örnek 1: PostgreSQL kullanıcı adı Azure AD Kullanıcı Adı ile eşleşir
+### <a name="case-1-postgresql-username-matches-the-azure-ad-user-principal-name"></a>Durum 1: PostgreSQL Kullanıcı adı, Azure AD Kullanıcı asıl adıyla eşleşiyor
 
-Mevcut kullanıcılarınızın Azure AD kullanıcı adlarıyla zaten eşleşmeolasılığı düşük `azure_ad_user` olması durumunda, azure AD kimlik doğrulaması için bunları etkinleştirmek için bu rolü onlara verebilirsiniz:
+Mevcut kullanıcılarınızın Azure AD kullanıcı adlarıyla zaten eşleştiği durumlarda, bu `azure_ad_user` rolü Azure AD kimlik doğrulaması için etkinleştirmek üzere rol verebilirsiniz:
 
 ```sql
 GRANT azure_ad_user TO "existinguser@yourtenant.onmicrosoft.com";
 ```
 
-Artık daha önce yapılandırılmış PostgreSQL kullanıcı parolalarını kullanmak yerine Azure AD kimlik bilgileriyle oturum açabilecekler.
+Artık, daha önce yapılandırılmış olan PostgreSQL Kullanıcı parolasını kullanmak yerine Azure AD kimlik bilgileriyle oturum açabiliyor.
 
-### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Örnek 2: PostgreSQL kullanıcı adı Azure AD Kullanıcı Adı'ndan farklıdır
+### <a name="case-2-postgresql-username-is-different-than-the-azure-ad-user-principal-name"></a>Durum 2: PostgreSQL Kullanıcı adı, Azure AD Kullanıcı asıl adından farklı
 
-Bir PostgreSQL kullanıcısı Azure AD'de yoksa veya farklı bir kullanıcı adı varsa, bu PostgreSQL kullanıcısı olarak kimlik doğrulaması yapmak için Azure AD gruplarını kullanabilirsiniz. PostgreSQL kullanıcıları için varolan Azure Veritabanını, PostgreSQL kullanıcısıyla eşleşen bir ada sahip bir Azure REKLAM grubu oluşturarak ve ardından mevcut PostgreSQL kullanıcısına rol azure_ad_user vererek Azure AD'ye geçirebilirsiniz:
+Bir PostgreSQL kullanıcısı Azure AD 'de yoksa veya farklı bir kullanıcı adına sahipse, bu PostgreSQL kullanıcısı olarak kimlik doğrulaması yapmak için Azure AD gruplarını kullanabilirsiniz. PostgreSQL kullanıcısına eşleşen bir ada sahip bir Azure AD grubu oluşturarak ve ardından mevcut PostgreSQL kullanıcısına rol azure_ad_user vererek, PostgreSQL için mevcut Azure veritabanı kullanıcılarını Azure AD 'ye geçirebilirsiniz.
 
 ```sql
 GRANT azure_ad_user TO "DBReadUser";
 ```
 
-Bu, Azure REKLAM'ınızda "DBReadUser" grubu oluşturduğunuzu varsayar. Bu gruba ait kullanıcılar artık bu kullanıcı olarak veritabanında oturum açabilecek.
+Bu, Azure AD 'de "DBReadUser" grubunu oluşturmuş olduğunuzu varsayar. Bu gruba ait kullanıcılar artık bu kullanıcı olarak veritabanında oturum açabiliyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PostgreSQL için Azure Veritabanı ile Azure Active Directory kimlik doğrulaması için](concepts-aad-authentication.md) genel kavramları gözden geçirin - Tek Sunucu
+* [PostgreSQL Için Azure veritabanı ile Azure Active Directory kimlik doğrulaması](concepts-aad-authentication.md) için genel kavramları gözden geçirin-tek sunucu
 
 <!--Image references-->
 

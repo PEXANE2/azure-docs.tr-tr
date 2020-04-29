@@ -9,30 +9,30 @@ ms.date: 04/03/2020
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 1a0502568c1673bcd7f57d3e9bc9c95ed90bbefa
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756937"
 ---
 <!-- This tells how to create a custom shared access policy that has service connect and registry RW permissions for your IoT hub and get the connection string for it-->
 
-**Hizmet bağlantısı** ve kayıt **defteri yazma** izinleri veren paylaşılan bir erişim ilkesi oluşturmak ve bu ilke için bağlantı dizesi almak için aşağıdaki adımları izleyin:
+**Hizmet Connect** ve **kayıt defteri yazma** izinleri veren bir paylaşılan erişim ilkesi oluşturmak ve bu ilke için bir bağlantı dizesi almak için aşağıdaki adımları izleyin:
 
-1. Azure [portalında](https://portal.azure.com) **Kaynak gruplarını**seçin. Hub'ınızın bulunduğu kaynak grubunu seçin ve ardından kaynak listesinden hub'ınızı seçin.
+1. [Azure Portal](https://portal.azure.com) **kaynak grupları**' nı seçin. Hub 'ınızın bulunduğu kaynak grubunu seçin ve ardından kaynak listesinden hub 'ınızı seçin.
 
-1. Hub'ınızın sol tarafındaki bölmede **Paylaşılan erişim ilkeleri'ni**seçin.
+1. Hub 'ınızın sol tarafındaki bölmede **paylaşılan erişim ilkeleri**' ni seçin.
 
-1. İlkeler listesinin üst menüsünden **Ekle'yi**seçin.
+1. İlke listesinin üstündeki en üstteki menüden **Ekle**' yi seçin.
 
-1. **Paylaşılan erişim ilkesi ekle**altında, *hizmetAndRegistryReadWrite*gibi ilkeniz için açıklayıcı bir ad girin. **İzinler** **altında, Kayıt Defteri yaz** ve Hizmet **bağlan'ı**seçin ve sonra **Oluştur'u**seçin. (Kayıt Defteri **yazma**seçeneğini seçtiğinizde **Kayıt Defteri okuma** izni otomatik olarak dahil edilir.)
+1. **Paylaşılan erişim Ilkesi Ekle**' nin altında, Ilkeniz Için *Serviceandregistryreadwrite*gibi açıklayıcı bir ad girin. **İzinler**altında, **kayıt defteri yazma** ve **hizmet Connect**' i seçin ve ardından **Oluştur**' u seçin. (Kayıt defteri **okuma** Izni, **kayıt defteri yazma**seçeneğini belirlediğinizde otomatik olarak eklenir.)
 
-    ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleyeceğini göster](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png)
+    ![Yeni bir paylaşılan erişim ilkesinin nasıl ekleneceğini göster](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-add-svc-regrw-policy.png)
 
-1. İlkeler listesinden yeni ilkenizi seçin.
+1. İlke listesinden yeni ilkenizi seçin.
 
-1. **Paylaşılan erişim tuşları**altında, Bağlantı **dizesi** için kopya simgesini seçin -- birincil anahtar ve değeri kaydedin.
+1. **Paylaşılan erişim anahtarları**altında, **bağlantı dizesi--birincil anahtar** için Kopyala simgesini seçin ve değeri kaydedin.
 
-    ![Bağlantı dizesinin nasıl alınır göster](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
+    ![Bağlantı dizesinin nasıl alınacağını göster](./media/iot-hub-include-find-service-regrw-connection-string/iot-hub-get-connection-string.png)
 
-IoT Hub paylaşılan erişim ilkeleri ve izinleri hakkında daha fazla bilgi için [Erişim denetimi ve izinleri](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions)bkz.
+IoT Hub paylaşılan erişim ilkeleri ve izinleri hakkında daha fazla bilgi için bkz. [erişim denetimi ve izinleri](../articles/iot-hub/iot-hub-devguide-security.md#access-control-and-permissions).

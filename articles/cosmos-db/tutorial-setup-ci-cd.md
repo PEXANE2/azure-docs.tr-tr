@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB emülatörü oluşturma göreviyle CI/CD ardışık hattını ayarlama
+title: Azure Cosmos DB öykünücü derleme göreviyle CI/CD işlem hattı ayarlama
 description: Azure DevOps'ta Cosmos DB öykünücüsü derleme görevini kullanarak derleme ve yayın iş yükü ayarlama öğreticisi
 author: deborahc
 ms.service: cosmos-db
@@ -8,10 +8,10 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 521d5d8d587b39cf573dedc37ea9f6fd53646e66
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80410960"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps'ta Azure Cosmos DB öykünücüsü derleme göreviyle CI/CD işlem hattı oluşturma
@@ -20,7 +20,7 @@ Azure Cosmos DB öykünücüsü, geliştirme amaçlı olarak Azure Cosmos DB hiz
 
 Azure DevOps için Azure Cosmos DB öykünücüsü derleme görevi, bu işlemi bir CI ortamında da gerçekleştirmenizi sağlar. Derleme göreviyle derleme ve yayın iş yüklerinizin bir parçası olarak öykünücüyle test çalıştırabilirsiniz. Bu görev öykünücünün çalıştığı bir Docker kapsayıcı başlatır ve derleme tanımının kalanı tarafından kullanılabilecek bir uç nokta sunar. İstediğiniz sayıda öykünücü örneği oluşturup başlatabilirsiniz ve oluşturduğunuz her örnek ayrı bir kapsayıcıda çalışır. 
 
-Bu makalede Azure DevOps'ta test çalıştırmak için Cosmos DB öykünücüsü derleme görevini kullanan bir ASP.NET uygulaması için CI işlem hattı ayarlama adımları gösterilmektedir. Bir Düğüm.js veya Python uygulaması için BIR CI ardışık ayar yapmak için benzer bir yaklaşım kullanabilirsiniz. 
+Bu makalede Azure DevOps'ta test çalıştırmak için Cosmos DB öykünücüsü derleme görevini kullanan bir ASP.NET uygulaması için CI işlem hattı ayarlama adımları gösterilmektedir. Bir Node. js veya Python uygulaması için CI işlem hattı ayarlamak için benzer bir yaklaşım kullanabilirsiniz. 
 
 ## <a name="install-the-emulator-build-task"></a>Öykünücü derleme görevini yükleme
 
@@ -31,9 +31,9 @@ Derleme görevini kullanmak için öncelikle Azure DevOps kuruluşunuza yükleme
 Ardından uzantının yükleneceği kuruluşu seçin. 
 
 > [!NOTE]
-> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmalısınız. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
+> Bir Azure DevOps kuruluşuna uzantı yüklemek için bir hesap sahibi veya proje koleksiyonu yöneticisi olmanız gerekir. Gerekli izinlere sahip değilseniz ancak hesap üyesiyseniz uzantı isteyebilirsiniz. [Daha fazla bilgi edinin.](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts)
 
-![Uzantı yüklemek için bir Azure DevOps kuruluşu seçin](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Uzantı yüklemek için bir Azure DevOps organizasyonu seçin](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Derleme tanımı oluşturma
 
@@ -47,12 +47,12 @@ Artık uzantı yüklendiğine göre Azure DevOps hesabınızda oturum açın ve 
 
    ![Derleme işlem hattı için takım projesini, depoyu ve dalı seçme](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB emülatörü oluşturma görevini kullanmak üzere ayarlayabileceğiniz bir yapı ardışık hattınız var. 
+3. Son olarak derleme işlem hattı için kullanmak istediğiniz şablonu belirleyin. Bu öğreticide **ASP.NET** şablonunu seçeceğiz. Artık Azure Cosmos DB öykünücü derleme görevini kullanacak şekilde ayarlayabileceğiniz bir yapı ardışık düzeni vardır. 
 
 > [!NOTE]
-> Bu CI için seçilecek aracı havuzu, yükleme CI'nin bir parçası olarak önceki bir görevde el ile yapılmadığı sürece Windows için Docker yüklü olmalıdır. Temsilci havuzları seçimi için [Microsoft barındırılan aracılar](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) makalesine bakın; ile `Hosted VS2017`başlamanızı öneririz.
+> Yükleme, CI 'nin bir parçası olarak önceki bir görevde el ile yapılmazsa, bu CI için seçilecek aracı havuzunun Docker for Windows yüklü olması gerekir. Aracı havuzlarının seçimi için bkz. [Microsoft barındırılan aracılar](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) makalesi. ' i kullanmaya `Hosted VS2017`başlamanız önerilir.
 
-Azure Cosmos DB emülatörü şu anda barındırılan VS2019 aracı havuzuna destek vermiyor. Ancak, emülatör zaten VS2019 yüklü ile birlikte gelir ve aşağıdaki PowerShell cmdlets ile emülatör başlatarak kullanabilirsiniz. VS2019'u kullanırken herhangi bir sorunla karşılaştıysanız, yardım için [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) ekibine ulaşın:
+Azure Cosmos DB öykünücü Şu anda barındırılan VS2019 Aracısı havuzunu desteklemiyor. Ancak, öykünücü zaten VS2019 yüklendi ve öykünücü, aşağıdaki PowerShell cmdlet 'leri ile başlatılarak bunu kullanıyorsunuz. VS2019 kullanırken herhangi bir sorunla karşılaşırsanız, yardım için [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) ekibine ulaşın:
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -63,7 +63,7 @@ Start-CosmosDbEmulator
 
 1. Derleme işlem hattına görev eklemeden önce aracı işi eklemelisiniz. Derleme işlem hattınıza gidin **...** öğesini ve **Aracı işi ekle**’yi seçin.
 
-1. Sonra emülatör oluşturma görevi eklemek için aracı iş yanındaki **+** sembolü seçin. Arama kutusundan **cosmos** araması yapın, **Azure Cosmos DB Öykünücüsünü** seçin ve aracı işine ekleyin. Derleme görevi, üzerinde Cosmos DB öykünücüsünün bir örneğinin çalıştığı bir kapsayıcı başlatır. Azure Cosmos DB Öykünücüsü görevi, öykünücünün çalışır durumda olmasını gerektiren diğer görevlerden önce yerleştirilmelidir.
+1. Ardından, öykünücü **+** derleme görevini eklemek için aracı işinin yanındaki simgeyi seçin. Arama kutusundan **cosmos** araması yapın, **Azure Cosmos DB Öykünücüsünü** seçin ve aracı işine ekleyin. Derleme görevi, üzerinde Cosmos DB öykünücüsünün bir örneğinin çalıştığı bir kapsayıcı başlatır. Azure Cosmos DB Öykünücüsü görevi, öykünücünün çalışır durumda olmasını gerektiren diğer görevlerden önce yerleştirilmelidir.
 
    ![Öykünücü derleme görevini derleme tanımına ekleme](./media/tutorial-setup-ci-cd/addExtension_3.png)
 
@@ -73,7 +73,7 @@ Bu öğreticide, testlerimiz çalıştırmadan önce öykünücünün kullanıla
 
 Şimdi testlerimizi öykünücüyü kullanacak şekilde yapılandıracağız. Öykünücü derleme görevi, derleme işlem hattındaki diğer görevlerin istek düzenleyebileceği "CosmosDbEmulator.Endpoint" ortam değişkenini dışarı aktarır. 
 
-Bu öğreticide [Visual Studio Test görevini](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) kullanarak **.runsettings** dosyasıyla yapılandırılmış birim testlerini çalıştıracağız. Birim testi kurulumu hakkında daha fazla bilgi edinmek için [belgeleri](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) inceleyin. Bu belgede kullandığınız tam Todo uygulama kodu örneği [GitHub'da](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) kullanılabilir
+Bu öğreticide [Visual Studio Test görevini](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) kullanarak **.runsettings** dosyasıyla yapılandırılmış birim testlerini çalıştıracağız. Birim testi kurulumu hakkında daha fazla bilgi edinmek için [belgeleri](https://docs.microsoft.com/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?view=vs-2017) inceleyin. Bu belgede kullandığınız tüm Todo uygulama kodu örneği [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) 'da kullanılabilir
 
 Uygulamanın birim testlerine iletilecek parametreleri tanımlayan örnek **.runsettings** dosyasını aşağıda görebilirsiniz. Kullanılan `authKey` değişkeninin öykünücü için [iyi bilinen anahtar](https://docs.microsoft.com/azure/cosmos-db/local-emulator#authenticating-requests) olduğuna dikkat edin. Bu `authKey`, öykünücü derleme görevi tarafından beklenen anahtardır ve **.runsettings** dosyanızda tanımlanmalıdır.
 
@@ -88,7 +88,7 @@ Uygulamanın birim testlerine iletilecek parametreleri tanımlayan örnek **.run
 </RunSettings>
 ```
 
-Azure Cosmos DB'nin MongoDB apisini kullanan bir uygulama için bir CI/CD ardışık noktası kuruyorsanız, bağlantı dizesi varsayılan olarak 10255 bağlantı noktasını içerir. Ancak, bu bağlantı noktası şu anda açık değil, alternatif olarak, bağlantı kurmak için bağlantı 10250 kullanmanız gerekir. Desteklenen bağlantı noktası numarası 10255 yerine 10250 olması dışında Azure Cosmos DB'nin MongoDB bağlantı dizesi için API'si aynı kalır.
+MongoDB için Azure Cosmos DB API 'sini kullanan bir uygulama için bir CI/CD işlem hattı ayarlıyorsanız, bağlantı dizesi varsayılan olarak 10255 numaralı bağlantı noktası numarasını içerir. Ancak, bu bağlantı noktası şu anda açık değildir, alternatif olarak bağlantıyı kurmak için 10250 numaralı bağlantı noktasını kullanmanız gerekir. Azure Cosmos DB MongoDB bağlantı dizesi için API, desteklenen bağlantı noktası numarası 10255 yerine 10250 olur.
 
 `TestRunParameters` parametrelerine uygulamanın test projesindeki bir `TestContext` özelliği aracılığıyla başvurulur. Burada Cosmos DB ile çalışan örnek bir testi görebilirsiniz.
 
@@ -144,7 +144,7 @@ Visual Studio Test görevindeki Execution Options (Yürütme Seçenekleri) böl�
 
 ## <a name="run-the-build"></a>Derlemeyi çalıştırma
 
-Şimdi, kaydet ve yapı **yı sıraya.** 
+Şimdi, derlemeyi **kaydedin ve kuyruğa** alın. 
 
 ![Derlemeyi kaydetme ve çalıştırma](./media/tutorial-setup-ci-cd/runBuild_1.png)
 
@@ -158,7 +158,7 @@ Derleme tamamlandıktan sonra testlerinizin iletildiğinden ve tümünün derlem
 
 ## <a name="set-up-using-yaml"></a>YAML kullanarak ayarlama
 
-YAML görevi kullanarak CI/CD ardışık hattını ayarlıyorsanız, YAML görevini aşağıdaki kodda gösterildiği gibi tanımlayabilirsiniz:
+Bir YAML görevi kullanarak CI/CD işlem hattını ayarlıyorsanız, YAML görevini aşağıdaki kodda gösterildiği gibi tanımlayabilirsiniz:
 
 ```yml
 - task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
@@ -178,4 +178,4 @@ YAML görevi kullanarak CI/CD ardışık hattını ayarlıyorsanız, YAML görev
 
 Yerel geliştirme ve test için öykünücü kullanımı hakkında daha fazla bilgi edinmek için bkz. [Yerel geliştirme ve test için Azure Cosmos DB Öykünücüsünü kullanma](https://docs.microsoft.com/azure/cosmos-db/local-emulator).
 
-Emülatör TLS/SSL sertifikaları dışa aktarmak [için](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates) bkz.
+Öykünücü TLS/SSL sertifikalarını dışarı aktarmak için bkz [. Java, Python ve Node. js ile kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarma](https://docs.microsoft.com/azure/cosmos-db/local-emulator-export-ssl-certificates)

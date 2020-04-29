@@ -1,6 +1,6 @@
 ---
-title: Visual Studio 2019'u Yükle
-description: Synapse SQL için Visual Studio ve SQL Server Geliştirme Araçları (SSDT) yükleyin
+title: Visual Studio 2019 'yi yükler
+description: SYNAPSE SQL için Visual Studio ve SQL Server geliştirme araçları 'nı (SSDT) yükler
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
@@ -13,41 +13,41 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f83ae9c8290a52381c8087b46da959d4723d7f4e
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745159"
 ---
-# <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 ile başlarken
+# <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 ile çalışmaya başlama
 
-Visual Studio **2019** SQL Server Data Tools (SSDT), aşağıdakileri yapmanıza olanak tanıyan tek bir araçtır:
+Visual Studio **2019** SQL Server veri araçları (SSDT), aşağıdakileri yapabilmenizi sağlayan tek bir araçtır:
 
-- Uygulamaları bağlayın, sorgulayın ve geliştirin
-- Tablolar, görünümler, depolanan yordamlar vb. dahil olmak üzere veri modelinizdeki tüm nesneleri görsel olarak keşfetmek için nesne gezgininden yararlanın.
-- Nesneleriniz için T-SQL veri tanım dili (DDL) komut dosyaları oluşturma
-- SSDT Veritabanı Projeleri ile devlet tabanlı bir yaklaşım kullanarak veri ambarınızı geliştirin
-- Veritabanı projenizi Azure Depoları ile Git gibi kaynak denetim sistemleriyle tümleştirin
-- Azure DevOps gibi otomasyon sunucularıyla sürekli tümleştirme ve dağıtım ardışık hatları ayarlama
+- Uygulamaları bağlama, sorgulama ve geliştirme
+- Tablolar, görünümler, saklı yordamlar ve vb. dahil olmak üzere veri modelinizdeki tüm nesneleri görsel olarak araştırmak için Nesne Gezgini 'nden yararlanın.
+- Nesneleriniz için T-SQL veri tanımlama dili (DDL) betikleri oluşturun
+- SSDT veritabanı projeleriyle durum tabanlı bir yaklaşım kullanarak veri Ambarınızı geliştirme
+- Veritabanı projenizi git gibi kaynak denetim sistemleriyle tümleştirin Azure Repos
+- Azure DevOps gibi Otomasyon sunucularıyla sürekli tümleştirme ve dağıtım işlem hatları ayarlama
 
-## <a name="install-visual-studio-2019"></a>Visual Studio 2019'u Yükle
+## <a name="install-visual-studio-2019"></a>Visual Studio 2019 'yi yükler
 
-Visual Studio **16.3 ve üzerini**indirmek ve yüklemek için [Visual Studio 2019'u indirin](https://visualstudio.microsoft.com/downloads/) ve yükleyin. Yükleme sırasında, veri depolama ve işleme iş yükünü seçin. Visual Studio 2019'da bağımsız SSDT kurulumuna artık gerek yok.
+Visual Studio **16,3 ve üstünü**indirmek ve yüklemek için bkz. [Visual Studio 2019 'yi indirme](https://visualstudio.microsoft.com/downloads/) . Yüklemesi sırasında veri depolama ve işleme iş yükünü seçin. Visual Studio 2019 için tek başına SSDT yüklemesi artık gerekli değildir.
 
-## <a name="unsupported-features-in-ssdt"></a>SSDT'de desteklenmeyen özellikler
+## <a name="unsupported-features-in-ssdt"></a>SSDT 'de desteklenmeyen özellikler
 
-Synapse SQL için özellik sürümlerisssSSDT desteği içermeyebilir zamanlar vardır. Aşağıdaki özellikler şu anda desteklenmeyen:
+SYNAPSE SQL için özellik sürümlerinin SSDT desteğinin olmadığı durumlar vardır. Şu özellikler Şu anda desteklenmiyor:
 
-- [Somutlaştırılmış görünümler](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [Sıralı Kümelenmiş Sütunlu Mağaza Dizinleri](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
-- [COPY deyimi](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [İş yükü yönetimi](sql-data-warehouse-workload-management.md) - iş yükü grupları ve sınıflandırıcılar
+- [Gerçekleştirilmiş görünümler](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Sıralı kümelenmiş columnstore dizinleri](/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#examples--and-)
+- [COPY ifadesi](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [Iş yükü yönetimi](sql-data-warehouse-workload-management.md) -iş yükü grupları ve sınıflandırıcılar
 - [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-  - Özelliğin desteklenmesi için bir destek bileti gönderin [veya oy verin.](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)
+  - Desteklenen özelliği almak için bir [destek bileti veya oy](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) verin.
 - [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-   - Özelliğin desteklenmesi için bir destek bileti gönderin [veya oy verin.](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)
-- [Kısıtlamaları olan tablolar](sql-data-warehouse-table-constraints.md#table-constraints) desteklenmez. Bu tablo nesneleri için yapı eylemini "Yok" olarak ayarlayın.
+   - Desteklenen özelliği almak için bir [destek bileti veya oy](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) verin.
+- [Kısıtlamaları olan tablolar](sql-data-warehouse-table-constraints.md#table-constraints) desteklenmiyor. Bu tablo nesneleri için, oluşturma eylemini "none" olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SSDT'nin en son sürümüne sahip olduğunuza göre, SQL havuzunuza [bağlanmaya](sql-data-warehouse-query-visual-studio.md) hazırsınız.
+SSDT 'nin en son sürümüne sahip olduğunuza göre, SQL havuzunuza [bağlanmaya](sql-data-warehouse-query-visual-studio.md) hazırsınız demektir.

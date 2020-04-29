@@ -1,26 +1,26 @@
 ---
-title: Model dönüşümyapılandırma
+title: Model dönüştürmeyi yapılandırma
 description: Tüm model dönüştürme parametrelerinin açıklaması
 author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
 ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681577"
 ---
-# <a name="configure-the-model-conversion"></a>Model dönüşümyapılandırma
+# <a name="configure-the-model-conversion"></a>Model dönüştürmeyi yapılandırma
 
-Bu bölümde, model dönüştürme seçenekleri belgelenmiştir.
+Bu bölüm, model dönüştürme seçeneklerini belgeler.
 
 ## <a name="settings-file"></a>Ayarlar dosyası
 
-Giriş modelinin `ConversionSettings.json` yanında giriş kapsayıcısında adı verilen bir dosya bulunursa, model dönüştürme işlemi için ek yapılandırma sağlamak için kullanılır.
+Adlandırılmış `ConversionSettings.json` bir dosya giriş modelinin yanındaki giriş kapsayıcısında bulunursa, model dönüştürme işlemi için ek yapılandırma sağlamak üzere kullanılır.
 
-Dosyanın içeriği aşağıdaki json şema karşılamak gerekir:
+Dosyanın içeriği aşağıdaki JSON şemasını karşılamalıdır:
 
 ```json
 {
@@ -53,7 +53,7 @@ Dosyanın içeriği aşağıdaki json şema karşılamak gerekir:
 }
 ```
 
-Örnek `ConversionSettings.json` bir dosya şu olabilir:
+Örnek `ConversionSettings.json` bir dosya olabilir:
 
 ```json
 {
@@ -65,76 +65,76 @@ Dosyanın içeriği aşağıdaki json şema karşılamak gerekir:
 
 ### <a name="geometry-parameters"></a>Geometri parametreleri
 
-* `scaling`- Bu parametre bir modeli düzgün ölçekler. Ölçekleme, örneğin bir tablo nun üzerinde bir yapı modelini görüntülemek için bir modeli büyütmek veya küçültmek için kullanılabilir. İşleyici motor uzunlukların metre cinsinden belirtilmesini beklediğinden, bir model farklı birimlerde tanımlandığında bu parametrenin bir diğer önemli kullanımı ortaya çıkar. Örneğin, bir model santimetre olarak tanımlanırsa, 0,01 ölçeğini uygulamak modeli doğru boyutta işlemelidir.
-Bazı kaynak veri biçimleri (örneğin .fbx), dönüştürmenin modeli metre birimlerine dolaylı olarak ölçeklediği bir birim ölçeklendirme ipucu sağlar. Kaynak biçimi tarafından sağlanan örtük ölçekleme ölçekleme parametresinin üstüne uygulanır.
-Son ölçekleme faktörü geometri tepelerine ve sahne grafiği düğümlerinin yerel dönüşümlerine uygulanır. Kök varlığın dönüşümü için ölçekleme değiştirilmemiş kalır.
+* `scaling`-Bu parametre bir modeli bir arada ölçeklendirir. Ölçek, bir modeli büyütmek veya küçültmek için kullanılabilir, örneğin, bir tablo üst kısmında bir yapı modeli görüntüler. İşleme altyapısı, ölçü birimi cinsinden uzunluklara izin beklediği için, bir model farklı birimlerde tanımlandığında bu parametrenin başka bir önemli kullanımı ortaya çıkar. Örneğin, bir model santimetre cinsinden tanımlanmışsa, 0,01 ölçeğini uygulamak modeli doğru boyutta işlemelidir.
+Bazı kaynak veri biçimleri (örneğin,. fbx) bir birim ölçekleme ipucu sağlar ve bu durumda dönüştürme, modeli ölçüm birimlerine dolaylı olarak ölçeklendirir. Kaynak biçimi tarafından sunulan örtük ölçekleme, ölçekleme parametresinin üzerine uygulanır.
+Son ölçeklendirme faktörü, geometri köşelerine ve sahne grafiği düğümlerinin yerel dönüşümlerine uygulanır. Kök varlığın dönüştürmesinin ölçeklendirilmesi değiştirilmemiş olarak kalır.
 
-* `recenterToOrigin`- Bir modelin, sınırlayıcı kutusunun kaynağında ortalanacak şekilde dönüştürülmesi gerektiğini belirtir.
-Kaynak model kaynaktan çok uzaksa merkezleme önemlidir, çünkü bu durumda kayan nokta hassas sorunları yapıoluşturma eserlerine neden olabilir.
+* `recenterToOrigin`-Bir modelin, sınırlayıcı kutusunun kaynaktan ortalanmasını sağlamak için dönüştürülmesi gerektiğini belirtir.
+Kaynak modelin kaynağı kaynaktan uzakta olması durumunda ortalama, bu durumda kayan nokta duyarlık sorunları işleme yapıtlarına neden olabileceğinden önemlidir.
 
-* `opaqueMaterialDefaultSidedness`- Render motor opak malzemelerin çift taraflı olduğunu varsayar.
-Amaçlanan davranış bu değilse, bu parametre "SingleSided" olarak ayarlanmalıdır. Daha fazla bilgi için [tek taraflı işleme](../../overview/features/single-sided-rendering.md)ye bakın.
+* `opaqueMaterialDefaultSidedness`-İşleme altyapısı, donuk malzemelerin çift taraflı olduğunu varsayar.
+Bu, amaçlanan davranış değilse, bu parametre "Singleyüzlü" olarak ayarlanmalıdır. Daha fazla bilgi için bkz. [tek taraflı işleme](../../overview/features/single-sided-rendering.md).
 
-### <a name="material-overrides"></a>Malzeme geçersiz kılar
+### <a name="material-overrides"></a>Malzeme geçersiz kılmaları
 
-* `material-override`- Bu [parametre, dönüştürme sırasında](override-materials.md)malzemelerin işlenmesini sağlar.
+* `material-override`-Bu parametre, maddelerin işlenmesine [dönüştürme sırasında özelleştirilmeye](override-materials.md)olanak tanır.
 
 ### <a name="color-space-parameters"></a>Renk alanı parametreleri
 
-İşleme motoru renk değerlerinin doğrusal uzayda olmasını bekler.
-Bir model gama alanı kullanılarak tanımlanırsa, bu seçenekler doğru ayarlanmalıdır.
+İşleme altyapısı, renk değerlerinin doğrusal alanda olmasını bekler.
+Bir model gama alanı kullanılarak tanımlanmışsa, bu seçenekler true olarak ayarlanmalıdır.
 
-* `gammaToLinearMaterial`- Malzeme renklerini gama uzayından doğrusal uzaya dönüştürün
-* `gammaToLinearVertex`- Vertex renklerini gama uzayından doğrusal uzaya dönüştürün
+* `gammaToLinearMaterial`-Gama alanından doğrusal alana malzeme renkleri dönüştürün
+* `gammaToLinearVertex`-Gama alanından doğrusal alana köşe renklerini dönüştürür
 
 > [!NOTE]
-> FBX dosyaları için bu `true` ayarlar varsayılan olarak ayarlanır. Diğer tüm dosya türleri için `false`varsayılan değer.
+> FBX dosyaları için bu ayarlar varsayılan olarak olarak `true` ayarlanır. Tüm diğer dosya türleri için varsayılan olarak ' dir `false`.
 
 ### <a name="scene-parameters"></a>Sahne parametreleri
 
-* `sceneGraphMode`- Kaynak dosyadaki sahne grafiğinin nasıl dönüştürüldüğünü tanımlar:
-  * `dynamic`(varsayılan): Dosyadaki tüm nesneler API'de [varlık](../../concepts/entities.md) olarak açıklanır ve bağımsız olarak dönüştürülebilir. Çalışma zamanındaki düğüm hiyerarşisi kaynak dosyadaki yapıyla aynıdır.
-  * `static`: Tüm nesneler API'de açıktadır, ancak bağımsız olarak dönüştürülemez.
-  * `none`: Sahne grafiği tek bir nesneye çökertilir.
+* `sceneGraphMode`-Kaynak dosyadaki sahne grafiğinin nasıl dönüştürüleceğini tanımlar:
+  * `dynamic`(varsayılan): dosyadaki tüm nesneler, API 'de [varlık](../../concepts/entities.md) olarak sunulur ve bağımsız olarak dönüştürülebilir. Çalışma zamanındaki düğüm hiyerarşisi, kaynak dosyadaki yapıyla aynı.
+  * `static`: Tüm nesneler API 'de kullanıma sunuldu ancak bağımsız olarak dönüştürülemez.
+  * `none`: Sahne grafiği bir nesne olarak daraltılır.
 
-Her mod farklı çalışma zamanı performansına sahiptir. Modda, `dynamic` performans maliyeti, hiçbir parça taşınmasa bile grafikteki [varlık](../../concepts/entities.md) sayısıyla doğrusal ölçeklenir. Yalnızca, örneğin bir 'patlama görünümü' animasyonu için, uygulama için parçaları tek tek hareket ettirdiğinizde kullanılmalıdır.
+Her mod farklı çalışma zamanı performansına sahiptir. `dynamic` Modunda, hiçbir bölüm taşınmasa bile, performans maliyeti grafikteki [varlıkların](../../concepts/entities.md) sayısıyla doğrusal şekilde ölçeklendirilir. Uygulama için yalnızca parçalar ayrı olarak taşınırken kullanılmalıdır, örneğin ' Açılım görünümü ' animasyonu için.
 
-`static` Mod tam sahne grafiğini dışa aktarır, ancak bu grafiğin içindeki parçalar kök parçasına göre sabit bir dönüşüme sahiptir. Ancak nesnenin kök düğümü önemli bir performans maliyeti olmadan yine de taşınabilir, döndürülebilir veya ölçeklenebilir. Ayrıca, [uzamsal sorgular](../../overview/features/spatial-queries.md) tek tek parçaları döndürecek ve her parça [durum geçersiz kılmaları](../../overview/features/override-hierarchical-state.md)ile değiştirilebilir. Bu modda, nesne başına çalışma süresi yükü ihmal edilebilir. Nesne başına denetime hala ihtiyaç duyduğunuz ancak nesne başına dönüşüm değişikliklerinin olmadığı büyük sahneler için idealdir.
+`static` Mod tam sahne grafiğini dışa aktarır, ancak bu grafiğin içindeki bölümlerin kök parçasına göre sabit bir dönüştürmesi vardır. Ancak, nesnenin kök düğümü, önemli bir performans maliyeti olmadan taşınabilir, döndürülebilir veya ölçeklenmeye devam edebilir. Ayrıca, [uzamsal sorgular](../../overview/features/spatial-queries.md) tek tek bölümler döndürür ve her bölüm [durum geçersiz kılmaları](../../overview/features/override-hierarchical-state.md)aracılığıyla değiştirilebilir. Bu modda, nesne başına çalışma zamanı ek yükü göz ardı edilebilir değildir. Nesne başına incelemeden hala ihtiyacınız olan ancak nesne başına dönüşüm değişikliği olmadığında büyük sahneler için idealdir.
 
-Mod, `none` en az çalışma süresi ne yüküne ve aynı zamanda biraz daha iyi yükleme süreye sahiptir. Bu modda tek nesnelerin incelenmesi veya dönüştürülmesi mümkün değildir. Kullanım örnekleri, örneğin, ilk etapta anlamlı bir sahne grafiği olmayan fotogrametri modelleridir.
+`none` Mod en az çalışma zamanı ek yüküne ve çok daha iyi yükleme zamanına sahiptir. Tek nesnelerin denetimi veya dönüşümü bu modda mümkün değildir. Kullanım örnekleri, örneğin, ilk yerinde anlamlı bir sahne grafiğine sahip olmayan photogrammetri modelleridir.
 
 > [!TIP]
-> Birçok uygulama birden çok model yükler. Nasıl kullanılacağına bağlı olarak her model için dönüşüm parametrelerini optimize etmeniz gerekir. Örneğin, kullanıcının parçalayıp ayrıntılı olarak incelemesi için bir otomobilin modelini görüntülemek istiyorsanız, `dynamic` onu modile dönüştürmeniz gerekir. Ancak, ayrıca bir gösteri odası ortamında araba yerleştirmek istiyorsanız, bu model `sceneGraphMode` ayarlanmış `static` veya `none`hatta dönüştürülebilir.
+> Birçok uygulama birden çok modeli yükler. Her model için dönüştürme parametrelerini, nasıl kullanılacağına bağlı olarak iyileştirmelisiniz. Örneğin, kullanıcının, ayrıntılı bir şekilde ele geçirmesine ve inceleneceği bir otomobil modelini göstermek istiyorsanız, bunu `dynamic` moduyla dönüştürmeniz gerekir. Bununla birlikte, arabayı bir göster odası ortamına eklemek isterseniz, bu model, veya hatta `sceneGraphMode` `static` `none`olarak ayarlanmış şekilde dönüştürülebilir.
 
 ### <a name="physics-parameters"></a>Fizik parametreleri
 
-* `generateCollisionMesh`- Bir modelde [uzamsal sorgular](../../overview/features/spatial-queries.md) için desteğe ihtiyacınız varsa, bu seçeneğin etkinleştirilmesi gerekir. En kötü durumda, bir çakışan kafes oluşturulması dönüşüm süresini iki katına çıkarabilir. Çakışma meshes ile modeller yüklemek `dynamic` için daha uzun sürer ve bir sahne grafiği kullanırken, onlar da daha yüksek bir çalışma zamanı performansı yükü var. Genel en iyi performans için, uzamsal sorgulara gerek duymadığınız tüm modellerde bu seçeneği devre dışı bmelisiniz.
+* `generateCollisionMesh`-Bir modelde [uzamsal sorgular](../../overview/features/spatial-queries.md) için desteğe ihtiyacınız varsa, bu seçeneğin etkinleştirilmesi gerekir. En kötü durumda, bir çakışma ağı oluşturma, dönüştürme süresini iki katına alabilir. Çakışma kafesleri olan modellerin yüklenmesi daha uzun sürer ve bir `dynamic` sahne grafiği kullanılırken, ayrıca daha yüksek bir çalışma zamanı performans yükü vardır. Genel en iyi performans için, bu seçeneği, uzamsal sorgular gerektirmeyen tüm modeller üzerinde devre dışı bırakmanız gerekir.
 
-### <a name="unlit-materials"></a>Yanmamış malzemeler
+### <a name="unlit-materials"></a>Aydınlatılmamış malzemeler
 
-* `unlitMaterials`- Varsayılan olarak dönüştürme [PBR malzemeleri](../../overview/features/pbr-materials.md)oluşturmak için tercih edecektir. Bu seçenek, dönüştürücüye tüm malzemeleri [renk malzemesi](../../overview/features/color-materials.md) olarak ele alamasını söyler. Fotogrametri yoluyla oluşturulan modeller gibi aydınlatmayı zaten içeren verileriniz varsa, bu [seçenek, her malzemeyi](override-materials.md) ayrı ayrı geçersiz kılmaya gerek kalmadan tüm malzemeler için doğru dönüştürmeyi hızlı bir şekilde zorlamanızı sağlar.
+* `unlitMaterials`-Varsayılan olarak dönüştürme, [PBR malzemeleri](../../overview/features/pbr-materials.md)oluşturmayı tercih edecektir. Bu seçenek, dönüştürücünün tüm malzemeleri [renk malzemeleri](../../overview/features/color-materials.md) olarak görmesini söyler. Photogrammetri aracılığıyla oluşturulan modeller gibi, zaten aydınlatma içeren verileriniz varsa, bu seçenek her bir malzemenin tek tek [geçersiz kılınmasına](override-materials.md) gerek kalmadan, tüm malzemelerde doğru dönüştürmeyi hızlı bir şekilde zorlamanıza olanak sağlar.
 
-### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Phong malzeme modeliyle eski FBX biçimlerinden dönüştürme
+### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Bir Phong malzeme modeliyle eski FBX biçimlerinden dönüştürme
 
-* `fbxAssumeMetallic`- FBX formatının eski sürümleri bir Phong malzeme modeli kullanarak malzemelerini tanımlar. Dönüştürme işlemi, bu malzemelerin renderörün [PBR modeline](../../overview/features/pbr-materials.md)nasıl eşlenebildiğini ortaya çıkarmıştır. Genellikle bu iyi çalışır, ancak bir malzeme hiçbir dokular, yüksek aynasal değerler ve gri olmayan albedo renk olduğunda bir belirsizlik ortaya çıkabilir. Bu durumda, dönüşüm yüksek aynasal değerleri öncelik arasında seçim yapmak zorunda, albedo renk çözülür son derece yansıtıcı, metalik malzeme tanımlayan, ya da albedo renk öncelik, parlak renkli plastik gibi bir şey tanımlayan. Varsayılan olarak, dönüştürme işlemi, belirsizliğin geçerli olduğu durumlarda yüksek aynasal değerlerin metalik bir malzeme anlamına geldiğini varsayar. Bu parametre tam `false` tersi geçmek için ayarlanabilir.
+* `fbxAssumeMetallic`-FBX biçiminin daha eski sürümleri, bir Phong malzeme modeli kullanarak materyalleri tanımlar. Dönüştürme işleminin, bu malzemelerin oluşturucunun [PBR modeliyle](../../overview/features/pbr-materials.md)nasıl eşlendiğini çıkarması gerekebilir. Genellikle bu iyi işe yarar, ancak bir malzemenin dokuya, yüksek yansımalı değerler ve gri olmayan bir Albedo rengine sahip olmadığı durumlarda belirsizlik ortaya çıkabilir. Bu durumda, dönüştürmenin yüksek yansımalı değerlerin önceliklerini belirleme, Albedo renginin çıkaran, yüksek oranda yansıtmalı, metalik bir malzeme tanımlama veya Albedo renginin ayırt ettiği, parçalı renkli plastik gibi bir şey tanımlama arasında seçim yapması gerekir. Varsayılan olarak, dönüştürme işlemi, yüksek oranda yansımalı değerlerin belirsizlik 'in uygulandığı durumlarda metalik bir malzeme olduğunu varsayar. Bu parametre, ters geçiş için `false` olarak ayarlanabilir.
 
 ### <a name="coordinate-system-overriding"></a>Koordinat sistemi geçersiz kılma
 
-* `axis`- Koordinat sistemi birim vektörlerini geçersiz kılmak için. Varsayılan değerler. `["+x", "+y", "+z"]` Teorik olarak, FBX biçimi, bu vektörlerin tanımlandığı ve dönüştürmenin sahneyi dönüştürmek için bu bilgileri kullandığı bir üstbilgiye sahiptir. glTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların üstbilgilerinde yanlış bilgiler vardır veya farklı bir koordinat sistemi kuralıyla kaydedilir. Bu seçenek, telafi etmek için koordinat sistemini geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve Y eksenini değiştirir ve Y ekseni yönünü ters çevirerek koordinat sistemini tutar.
+* `axis`-Koordinat sistem birimi vektörlerini geçersiz kılmak için. Varsayılan değerler şunlardır `["+x", "+y", "+z"]`. Teorik olarak, FBX biçiminde bu vektörler tanımlanmış ve dönüştürme söz konusu bilgileri sahneyi dönüştürmek için kullandığı bir üst bilgi vardır. GlTF biçimi de sabit bir koordinat sistemi tanımlar. Uygulamada, bazı varlıkların başlığında yanlış bilgiler var veya farklı bir koordinat sistemi kuralıyla kaydedilmiş. Bu seçenek, telafi sistemini dengelemek için geçersiz kılmanızı sağlar. Örneğin: `"axis" : ["+x", "+z", "-y"]` Z ekseni ve y eksenini değiş tokuş eder ve y ekseni yönünü tersine getirerek koordinat sistem hanliðini koruyun.
 
-### <a name="vertex-format"></a>Tepe noktası biçimi
+### <a name="vertex-format"></a>Köşe biçimi
 
-Bellek tasarrufu için hassas ticaret, bir kafes için vertex biçimini ayarlamak mümkündür. Daha düşük bellek ayak izi, daha büyük modelleri yüklemenize veya daha iyi performans elde etmenizi sağlar. Ancak, verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
+Bir kafesin köşe biçimini, bellek tasarrufları için bir hassaslığına ayarlamak mümkündür. Daha düşük bir bellek kaplama daha büyük modeller yüklemenize veya daha iyi performans elde etmenize olanak tanır. Ancak verilerinize bağlı olarak, yanlış biçim işleme kalitesini önemli ölçüde etkileyebilir.
 
 > [!CAUTION]
-> Vertex biçimini değiştirmek, modeller artık belleğe sığmıyorsa veya mümkün olan en iyi performansı optimize ederken son çare olmalıdır. Değişiklikler kolayca render eserler, hem bariz olanlar ve ince olanları tanıtmak olabilir. Nelere dikkat edeceğinibilmiyorsanız, varsayılanı değiştirmemelisiniz.
+> Modeller artık belleğe sığmıyor veya mümkün olan en iyi performansı elde etmek için köşe biçiminin değiştirilmesi son çare olmalıdır. Değişiklikler, hem açık hem de hafif olan işleme yapıtları kolayca ortaya çıkarabilir. Ne bakabileceğinizi bilmiyorsanız, Varsayılanı değiştirmemelisiniz.
 
 Bu ayarlamalar mümkündür:
 
-* Belirli veri akışları açıkça dahil edilebilir veya dışlanabilir.
-* Bellek ayak izini azaltmak için veri akışlarının doğruluğu azaltılabilir.
+* Belirli veri akışları açıkça dahil edilebilir veya hariç tutulabilir.
+* Veri akışlarının doğruluğu, bellek ayak izini azaltmak için azaltılabilir.
 
-Dosyadaki `vertex` `.json` aşağıdaki bölüm isteğe bağlıdır. Açıkça belirtilmeyen her bölüm için dönüştürme hizmeti varsayılan ayarına geri döner.
+`.json` Dosyadaki aşağıdaki `vertex` bölüm isteğe bağlıdır. Açıkça belirtilmeyen her bir bölüm için, dönüştürme hizmeti varsayılan ayarına geri döner.
 
 ```json
 {
@@ -152,86 +152,86 @@ Dosyadaki `vertex` `.json` aşağıdaki bölüm isteğe bağlıdır. Açıkça b
     ...
 ```
 
-Bir bileşeni `NONE`zorlayarak, çıktı kafesinin ilgili akışa sahip olmadığı garanti edilir.
+Bir bileşeni uygulamasına `NONE`zorlayarak, çıkış kafesinin ilgili akışa sahip olmadığı garanti edilir.
 
-#### <a name="component-formats-per-vertex-stream"></a>Vertex akışı başına bileşen biçimleri
+#### <a name="component-formats-per-vertex-stream"></a>Köşe akışı başına bileşen biçimleri
 
-Bu biçimlere ilgili bileşenler için izin verilir:
+İlgili bileşenler için bu biçimlere izin verilir:
 
-| Vertex bileşeni | Desteklenen biçimler (bold = varsayılan) |
+| Köşe bileşeni | Desteklenen biçimler (kalın = varsayılan) |
 |:-----------------|:------------------|
 |konum| **32_32_32_FLOAT**, 16_16_16_16_FLOAT |
-|renkli 0| **8_8_8_8_UNSIGNED_NORMALIZED**, YOK |
-|renk1| 8_8_8_8_UNSIGNED_NORMALIZED, **YOK**|
-|Normal| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, YOK |
-|Teğet| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, YOK |
-|binormal| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, YOK |
-|texcoord0| **32_32_FLOAT**, 16_16_FLOAT, YOK |
-|texcoord1| **32_32_FLOAT**, 16_16_FLOAT, YOK |
+|color0| **8_8_8_8_UNSIGNED_NORMALIZED**, yok |
+|color1| 8_8_8_8_UNSIGNED_NORMALIZED, **yok**|
+|olağan| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, yok |
+|Tanjant| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, yok |
+|binormal| **8_8_8_8_SIGNED_NORMALIZED**, 16_16_16_16_FLOAT, yok |
+|texcoord0| **32_32_FLOAT**, 16_16_FLOAT, yok |
+|texcoord1| **32_32_FLOAT**, 16_16_FLOAT, yok |
 
 #### <a name="supported-component-formats"></a>Desteklenen bileşen biçimleri
 
-Biçimlerin bellek ayak izleri aşağıdaki gibidir:
+Biçimlerin bellek yazmalar aşağıdaki gibidir:
 
-| Biçimlendir | Açıklama | Tepe noktası başına bayt |
+| Biçimlendir | Açıklama | Köşe başına bayt |
 |:-------|:------------|:---------------|
-|32_32_FLOAT|iki bileşenli tam kayan nokta hassasiyeti|8
-|16_16_FLOAT|iki bileşenli yarım kayan nokta hassasiyeti|4
-|32_32_32_FLOAT|üç bileşenli tam yüzer nokta hassasiyeti|12
-|16_16_16_16_FLOAT|dört bileşenli yarım kayan nokta hassasiyeti|8
-|8_8_8_8_UNSIGNED_NORMALIZED|dört bileşenli bayt, `[0; 1]` aralık normalleştirilmiş|4
-|8_8_8_8_SIGNED_NORMALIZED|dört bileşenli bayt, `[-1; 1]` aralık normalleştirilmiş|4
+|32_32_FLOAT|iki bileşen tam kayan nokta duyarlığı|8
+|16_16_FLOAT|iki bileşenden oluşan yarı kayan nokta duyarlığı|4
+|32_32_32_FLOAT|üç bileşen tam kayan nokta duyarlığı|12
+|16_16_16_16_FLOAT|dört bileşen yarım kayan nokta duyarlığı|8
+|8_8_8_8_UNSIGNED_NORMALIZED|dört bileşen bayt, `[0; 1]` aralığa normalleştirilmiş|4
+|8_8_8_8_SIGNED_NORMALIZED|dört bileşen bayt, `[-1; 1]` aralığa normalleştirilmiş|4
 
-#### <a name="best-practices-for-component-format-changes"></a>Bileşen biçimi değişiklikleri için en iyi uygulamalar
+#### <a name="best-practices-for-component-format-changes"></a>Bileşen biçimi değişiklikleri için en iyi yöntemler
 
-* `position`: Azaltılmış doğruluğun yeterli olması nadirdir. **16_16_16_16_FLOAT** küçük modeller için bile, fark niceliksel eserler tanıttı.
-* `normal`, `tangent` `binormal`, : Genellikle bu değerler birlikte değiştirilir. Normal niceleme sonucu fark aydınlatma yapıları olmadığı sürece, bunların doğruluğunu artırmak için bir neden yoktur. Ancak bazı durumlarda, bu bileşenler **NONE**olarak ayarlanabilir:
-  * `normal`, `tangent`ve `binormal` yalnızca modeldeki en az bir malzeme yakılması gerektiğinde gereklidir. ARR'da bu durum, modelde herhangi bir zamanda bir [PBR malzemesi](../../overview/features/pbr-materials.md) kullanıldığında geçerlidir.
-  * `tangent`ve `binormal` yalnızca aydınlatılmış malzemelerden herhangi biri normal bir harita dokusu kullandığında gereklidir.
-* `texcoord0`, `texcoord1` : Doku koordinatları, değerleri `[0; 1]` aralıkta kaldığında ve adreslenen dokuların maksimum boyutu 2048 x 2048 piksel olduğunda azaltılmış doğruluk **(16_16_FLOAT)** kullanabilir. Bu sınırlar aşılırsa, doku eşleme kalitesi zarar görecektir.
+* `position`: Azaltılmış doğruluk yeterlidir. **16_16_16_16_FLOAT** , küçük modeller için bile fark edilebilir quantileştirme yapıtları sunar.
+* `normal`, `tangent`, `binormal`: Genellikle bu değerler birlikte değiştirilir. Normal bir quantiktan kaynaklanan fark edilebilir ışık yapıtları olmadığı için, doğruluğunu arttırmanın bir nedeni yoktur. Ancak bazı durumlarda, bu bileşenler **none**olarak ayarlanabilir:
+  * `normal`, `tangent`ve `binormal` yalnızca modeldeki en az bir malzemenin aydınlatılmış olması durumunda gereklidir. ARR 'de, modelde herhangi bir zamanda bir [PBR malzemesi](../../overview/features/pbr-materials.md) kullanıldığında bu durum söz konusu olur.
+  * `tangent`ve `binormal` yalnızca herhangi bir aydınlatma malzemelerinden biri normal harita dokusunu kullandığında gereklidir.
+* `texcoord0`: `texcoord1` Doku koordinatları, değerleri `[0; 1]` aralıkta kaladığında ve bahsedilen dokuların 2048 x 2048 piksellik en büyük boyuta sahip olduğunda, daha az doğruluk (**16_16_FLOAT**) kullanabilir. Bu sınırlar aşılırsa, doku eşlemenin kalitesi de düşer.
 
 #### <a name="example"></a>Örnek
 
-Eğer dokular içine pişmiş aydınlatma olan bir fotogrametri modeli varyalım. Modeli işlemek için gereken tek şey tepe noktası konumları ve doku koordinatlarıdır.
+Dokularla aydınlatma sağlayan bir photogrammetri modeliniz olduğunu varsayalım. Modeli işlemek için gerekli olan tüm köşe konumları ve doku koordinatları.
 
-Varsayılan olarak dönüştürücü bir zaman bir model üzerinde PBR malzemeleri kullanmak isteyebilirsiniz varsaymak zorundadır, bu yüzden sizin için , `normal` `tangent`ve `binormal` veri üretecek. Sonuç olarak, tepe noktası başına `position` bellek kullanımı (12 `texcoord0` bayt) + `normal` (8 bayt) `tangent` + (4 bayt) + (4 bayt) + `binormal` (4 bayt) = 32 bayt' tir. Bu tür büyük modeller kolayca bellek birden fazla gigabayt sürebilir modelleri sonuçlanan vertices milyonlarca olabilir. Bu kadar büyük miktarda veri performansı etkiler ve hatta bellek tükenebilir.
+Varsayılan olarak, dönüştürücünün her zaman bir modelde PBR malzemeleri kullanmak isteyebileceğiniz varsayımında, bu nedenle sizin için, `normal` `tangent`ve `binormal` verileri üretecektir. Sonuç olarak, köşe başına bellek `position` kullanımı (12 bayt `texcoord0` ) + (8 `normal` `tangent` bayt) + (4 bayt) + (4 bayt) + `binormal` (4 bayt) = 32 bayttır. Bu türden daha büyük modeller kolayca birçok sayıda köşe içerebilir ve bu da birden çok gigabayt belleği elde edebilir. Bu çok büyük miktarlarda veri performansı etkiler ve hatta belleğiniz tükenmez.
 
-Modelde dinamik aydınlatmaya asla ihtiyacınız olmadığını bilmek ve tüm `[0; 1]` doku koordinatlarının `normal`aralıkta olduğunu `texcoord0` bilerek, tepe`16_16_FLOAT`noktası başına sadece 16 bayt la sonuçlanan , `tangent`ve `binormal` `NONE` yarı hassasiyete () ayarlayabilirsiniz. Kafes verilerinin yarıya inmesini sağlamak, daha büyük modeller yüklemenize olanak tanır ve performansı potansiyel olarak artırır.
+Model üzerinde hiçbir şey dinamik aydınlatma gerektirmez `[0; 1]` ve tüm doku koordinatlarının aralıkta olduğunu bilmenin yanı sıra,,, ve `normal` `tangent` `binormal` `NONE` `texcoord0` ' ı yarı duyarlık (`16_16_FLOAT`) olarak ayarlayabilir, bu, köşe başına yalnızca 16 bayt elde edebilir. Ağ verilerini yarı bir şekilde kesmek, daha büyük modeller yüklemeniz ve potansiyel olarak performansı artırmanızı sağlar.
 
 ## <a name="typical-use-cases"></a>Tipik kullanım örnekleri
 
-Belirli bir kullanım örneği için iyi alma ayarları bulmak sıkıcı bir işlem olabilir. Diğer taraftan, dönüşüm ayarlarının çalışma zamanı performansı üzerinde önemli bir etkisi olabilir.
+Belirli bir kullanım durumu için iyi içeri aktarma ayarlarını bulma sıkıcı bir işlem olabilir. Diğer yandan, dönüştürme ayarları çalışma zamanı performansı üzerinde önemli bir etkiye sahip olabilir.
 
-Belirli optimizasyonlar için uygun kullanım örnekleri belirli sınıflar vardır. Bazı örnekler aşağıda verilmiştir.
+Belirli iyileştirmeler için uygun olan bazı kullanım örneği sınıfları vardır. Bazı örnekler aşağıda verilmiştir.
 
-### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Kullanım örneği: Mimari görselleştirme / büyük dış mekan haritaları
+### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Kullanım örneği: mimari görselleştirme/büyük dış mekharitaları
 
-* Bu tür sahneler statik olma eğilimindedir, yani hareketli parçalara ihtiyaç duymaz. Buna göre, `sceneGraphMode` çalışma zamanı `static` performansını `none`artıran, hatta ayarlanabilir. Mod `static` ile, sahnenin kök düğümü yine de taşınabilir, döndürülebilir ve ölçeklenebilir, örneğin 1:1 ölçeği (birinci kişi görünümü için) ve tablo üstü görünümü arasında dinamik olarak geçiş yapmak için.
+* Bu tür sahneler statik olmaya eğilimlidir, yani taşınabilir parçalar gerekmez. `sceneGraphMode` Buna uygun olarak, çalışma zamanı performansını `static` artıran veya `none`hatta olarak ayarlanabilir. `static` Modunda, sahnenin kök düğümü taşınabilir, döndürülebilir ve ölçeklenebilir olabilir. örneğin, 1:1 ölçek (ilk kişi görünümü için) ve tablo üst görünümü arasında dinamik geçiş yapabilirsiniz.
 
-* Parçaları hareket ettirmeniz gerektiğinde, bu genellikle ray yayınları veya diğer [uzamsal sorgular](../../overview/features/spatial-queries.md)için desteğe ihtiyacınız olduğu anlamına gelir, böylece bu parçaları ilk etapta seçebilirsiniz. Öte yandan, bir şeyi hareket ettirmeyi düşünmüyorsanız, uzamsal sorgulara katılmak için buna da gerek duymama nız `generateCollisionMesh` ve bu nedenle bayrağı kapatabilmeniz olasılığı yüksektir. Bu anahtarın dönüşüm süreleri, yükleme süreleri ve ayrıca çerçeve başına çalışma süresi güncelleştirme maliyetleri üzerinde önemli bir etkisi vardır.
+* Parçaları taşımaya ihtiyacınız olduğunda, genellikle bu bölümleri ilk yerde seçebilmeniz için raylara veya diğer [uzamsal sorgulara](../../overview/features/spatial-queries.md)yönelik desteğe ihtiyacınız olduğu anlamına gelir. Öte yandan, bir şeyi hareket ettirmek istemiyorsanız, bunun da uzamsal sorgulara katılmasını gerektirmez ve bu nedenle `generateCollisionMesh` bayrağı kapatabilir. Bu anahtar, dönüştürme sürelerini, yükleme sürelerini ve ayrıca kare başına güncelleştirme maliyetlerini önemli ölçüde etkiler.
 
-* Uygulama [kesme düzlemleri](../../overview/features/cut-planes.md)kullanmıyorsa, `opaqueMaterialDefaultSidedness` bayrak kapatılmalıdır. Performans artışı genellikle %20-%30'dur. Kesme düzlemleri hala kullanılabilir, ancak nesnelerin iç kısımlarına bakarken arka yüzler olmaz, bu da sezgisel olmayan bir görünüme sahip olur. Daha fazla bilgi için [tek taraflı işleme](../../overview/features/single-sided-rendering.md)ye bakın.
+* Uygulama [kesme düzlemleri](../../overview/features/cut-planes.md)kullanmıyorsa, `opaqueMaterialDefaultSidedness` bayrağın kapalı olması gerekir. Performans kazancı genellikle %20-%30 ' dur. Kesme düzlemleri hala kullanılabilir, ancak sayaç kullanımı kolay olan nesnelerin iç bölümlerine baktığı sırada arka yüz kalmaz. Daha fazla bilgi için bkz. [tek taraflı işleme](../../overview/features/single-sided-rendering.md).
 
-### <a name="use-case-photogrammetry-models"></a>Kullanım örneği: Fotogrametri modelleri
+### <a name="use-case-photogrammetry-models"></a>Kullanım örneği: Photogrammetri modelleri
 
-Fotogrametri modellerini işlerken genellikle bir sahne grafiğine gerek yoktur, `sceneGraphMode` `none`böylece . Bu modeller nadiren başlangıçta karmaşık bir sahne grafiği içerdiğinden, bu seçeneğin etkisi önemsiz olmalıdır.
+Photogrammetri modellerini işlerken genellikle bir sahne grafiğine gerek yoktur, bu nedenle öğesini `sceneGraphMode` olarak `none`ayarlayabilirsiniz. Bu modeller ile başlamak için nadiren karmaşık bir sahne grafiği içerdiğinden, bu seçeneğin etkisi, ancak önemli olmalıdır.
 
-Aydınlatma zaten dokular içine pişmiş olduğundan, hiçbir dinamik aydınlatma gereklidir. Bu nedenle:
+Işıklandırma dokuya zaten bakdığı için dinamik aydınlatma gerekmez. Bu nedenle:
 
-* Tüm `unlitMaterials` malzemeleri `true` ışıksız [renkli malzemelere](../../overview/features/color-materials.md)dönüştürmek için bayrağı ayarlayın.
-* Vertex biçiminden gereksiz verileri kaldırın. Yukarıdaki [örneğe](#example) bakın.
+* Tüm malzemeleri `unlitMaterials` açılmamış `true` [renk malzemelere](../../overview/features/color-materials.md)açmak için bayrağını ayarlayın.
+* Gereksiz verileri köşe biçiminden kaldırın. Yukarıdaki [örneğe](#example) bakın.
 
-### <a name="use-case-visualization-of-compact-machines-etc"></a>Kullanım örneği: Kompakt makinelerin görselleştirilmesi, vb.
+### <a name="use-case-visualization-of-compact-machines-etc"></a>Kullanım örneği: kompakt makinelerin görselleştirilmesi vb.
 
-Bu kullanım durumlarında, modeller genellikle küçük bir hacim içinde çok yüksek ayrıntıya sahiptir. İşleyici, bu gibi durumları iyi işlemek için yoğun olarak optimize edicisidir. Ancak, önceki kullanım örneğinde belirtilen optimizasyonların çoğu burada geçerli değildir:
+Bu kullanım durumlarında, modeller genellikle küçük bir birim içinde çok yüksek ayrıntılara sahiptir. İşleyici, bu tür örnekleri de işlemek için yoğun bir şekilde iyileştirilir. Ancak, önceki kullanım durumunda bahsedilen iyileştirmelerin çoğu burada uygulanmaz:
 
-* Tek tek parçalar seçilebilir ve taşınabilir `sceneGraphMode` olmalıdır, bu `dynamic`nedenle .
-* Işın dökümleri genellikle uygulamanın ayrılmaz bir parçasıdır, bu nedenle çarpışma meshes oluşturulmalıdır.
-* Kesme düzlemleri `opaqueMaterialDefaultSidedness` bayrak etkinken daha iyi görünür.
+* Tek parçaların seçilebilir ve taşınabilir olması gerekir, bu nedenle `sceneGraphMode` sol tarafta olmalıdır `dynamic`.
+* Işın genellikle uygulamanın ayrılmaz bir parçası olduğundan, çakışma kafeslerinin oluşturulması gerekir.
+* Kesin olmayan düzlemleri, `opaqueMaterialDefaultSidedness` bayrağın etkin olduğunu daha iyi görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Model dönüştürme](model-conversion.md)
-* [Renkli malzemeler](../../overview/features/color-materials.md)
+* [Renk malzemeleri](../../overview/features/color-materials.md)
 * [PBR malzemeleri](../../overview/features/pbr-materials.md)
 * [Model dönüştürme sırasında malzemeleri geçersiz kılma](override-materials.md)

@@ -1,7 +1,7 @@
 ---
-title: Örnekleri hesaplamak için modelleri dağıtma
+title: İşlem örneklerine model dağıtma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning modellerinizi bilgi işlem örneklerini kullanarak web hizmeti olarak nasıl dağıtılayarak dağıtılamayı öğrenin.
+description: İşlem örnekleri kullanarak Azure Machine Learning modellerinizi Web hizmeti olarak dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,58 +11,58 @@ author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
 ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756583"
 ---
-# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning bilgi işlem örneklerine bir model dağıtma
+# <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Azure Machine Learning işlem örneklerine model dağıtma
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning bilgi işlem örneğinde bir modeli web hizmeti olarak dağıtmak için Azure Machine Learning'i nasıl kullanacağınızı öğrenin. Aşağıdaki koşullardan biri doğruysa, işlem örneklerini kullanın:
+Azure Machine Learning kullanarak bir modeli Azure Machine Learning işlem örneğiniz üzerinde Web hizmeti olarak dağıtma hakkında bilgi edinin. Aşağıdaki koşullardan biri doğru ise, işlem örnekleri kullanın:
 
-- Modelinizi hızla dağıtmanız ve doğrulamanız gerekir.
-- Geliştirilmekte olan bir modeli test emlıyorsun.
+- Modelinizi hızlıca dağıtmanız ve doğrulamanız gerekir.
+- Geliştirme aşamasındaki bir modeli test edersiniz.
 
 > [!TIP]
-> Bir jupyter Not Defteri'nden bir modeli bir işlem örneğinde, aynı VM'deki bir web hizmetine dağıtmak yerel bir _dağıtımdır._ Bu durumda, 'yerel' bilgisayar bilgi işlem örneğidir. Dağıtımlar hakkında daha fazla bilgi için Azure [Machine Learning ile modelleri dağıt'a](how-to-deploy-and-where.md)bakın.
+> Bir işlem örneğindeki Jupyter Notebook bir modeli aynı VM 'deki bir Web hizmetine dağıtmak _yerel bir dağıtımdır_. Bu durumda, ' yerel ' bilgisayar işlem örneğidir. Dağıtımlar hakkında daha fazla bilgi için bkz. [Azure Machine Learning modelleri dağıtma](how-to-deploy-and-where.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Bir bilgi işlem örneği çalışan bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için [Kurulum ortamı ve çalışma alanı'na](tutorial-1st-experiment-sdk-setup.md)bakın.
+- İşlem örneği çalıştıran bir Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Kurulum ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md).
 
-## <a name="deploy-to-the-compute-instances"></a>İşlem örneklerine dağıtma
+## <a name="deploy-to-the-compute-instances"></a>İşlem örneklerine dağıtın
 
-Yerel dağıtımları gösteren örnek bir not defteri, işlem örneğinize dahildir. Not defterini yüklemek ve modeli VM'de bir web hizmeti olarak dağıtmak için aşağıdaki adımları kullanın:
+Yerel dağıtımları gösteren örnek bir not defteri, işlem örneğinize dahil edilmiştir. Not defterini yüklemek ve modeli bir Web hizmeti olarak sanal makineye dağıtmak için aşağıdaki adımları kullanın:
 
-1. [Azure Machine Learning stüdyosundan](https://ml.azure.com)Azure Machine Learning bilgi işlem örneklerinizi seçin.
+1. [Azure Machine Learning Studio](https://ml.azure.com)'dan Azure Machine Learning işlem örneklerinizi seçin.
 
-1. Alt `samples-*` dizini açın ve `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`sonra açın. Açıldıktan sonra, not defterini çalıştırın.
+1. `samples-*` Alt dizini açın ve açın `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Açıldığında, Not defterini çalıştırın.
 
-    ![Not defterinde çalışan yerel hizmetin ekran görüntüsü](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
+    ![Not defterindeki çalışan yerel hizmetin ekran görüntüsü](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
-1. Not defteri, hizmetin üzerinde çalıştığının URL'sini ve bağlantı noktasını görüntüler. Örneğin, `https://localhost:6789`. Bağlantı noktasını görüntülemek için `print('Local service port: {}'.format(local_service.port))` içeren hücreyi de çalıştırabilirsiniz.
+1. Not defteri, hizmetin üzerinde çalıştığı URL 'YI ve bağlantı noktasını görüntüler. Örneğin, `https://localhost:6789`. Ayrıca, bağlantı noktasını göstermek için içeren `print('Local service port: {}'.format(local_service.port))` hücreyi de çalıştırabilirsiniz.
 
     ![Çalışan yerel hizmet bağlantı noktasının ekran görüntüsü](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
-1. Hizmeti bir bilgi işlem örneğinden sınamak `https://localhost:<local_service.port>` için URL'yi kullanın. Uzak bir istemciden sınama yapmak için, bilgi işlem örneğinde çalışan hizmetin genel URL'sini alın. Genel URL aşağıdaki formülü kullanarak belirlenebilir; 
-    * Dizüstü VM: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
+1. Hizmeti bir işlem örneğinden test etmek için `https://localhost:<local_service.port>` URL 'yi kullanın. Uzak bir istemciden test etmek için, işlem örneğinde çalışan hizmetin genel URL 'sini alın. Ortak URL belirlenebilir ve şu formülü kullanın; 
+    * Not defteri VM `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`'si:. 
     * İşlem örneği: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
 
     Örneğin, 
-    * Dizüstü VM:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
+    * Not defteri VM 'si:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * İşlem örneği:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
 ## <a name="test-the-service"></a>Hizmeti test etme
 
-Örnek verileri çalışan hizmete göndermek için aşağıdaki kodu kullanın. Önceki adımdaki `service_url` URL ile değerini değiştirin:
+Çalışan hizmete örnek veri göndermek için aşağıdaki kodu kullanın. Değerini önceki adımdan URL `service_url` 'si ile değiştirin:
 
 > [!NOTE]
-> Kimlik doğrulama, işlem örneğinde bir dağıtıma kimlik doğrulaması yaparken, kimlik doğrulaması Azure Etkin Dizini kullanılarak yapılır. Örnek `interactive_auth.get_authentication_header()` kodundaki arama, AAD'yi kullanarak kimliğinizi doğrular ve daha sonra bilgi işlem örneğindeki hizmete kimlik doğrulamak için kullanılabilecek bir üstbilgi döndürür. Daha fazla bilgi için bkz. Azure [Machine Learning kaynakları ve iş akışları için kimlik doğrulaması ayarlama.](how-to-setup-authentication.md#interactive-authentication)
+> İşlem örneğindeki bir dağıtımda kimlik doğrulanırken, Azure Active Directory kullanılarak kimlik doğrulaması yapılır. Örnek kodda öğesine `interactive_auth.get_authentication_header()` yapılan çağrı, AAD 'yi kullanarak kimlik doğrular ve daha sonra işlem örneğindeki hizmette kimlik doğrulaması yapmak için kullanılabilecek bir üst bilgi döndürür. Daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](how-to-setup-authentication.md#interactive-authentication).
 >
-> Azure Kubernetes Hizmeti veya Azure Kapsayıcı Örnekleri'nde dağıtımın kimliğini doğrularken farklı bir kimlik doğrulama yöntemi kullanılır. Hakkında daha fazla bilgi için bkz: [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulaması ayarlama.](how-to-setup-authentication.md#web-service-authentication)
+> Azure Kubernetes hizmetinde veya Azure Container Instances bir dağıtımda kimlik doğrulanırken, farklı bir kimlik doğrulama yöntemi kullanılır. Hakkında daha fazla bilgi için bkz. [Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama](how-to-setup-authentication.md#web-service-authentication).
 
 ```python
 import requests
@@ -94,9 +94,9 @@ print("prediction:", resp.text)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel Docker görüntüsünü kullanarak bir model dağıtma](how-to-deploy-custom-docker-image.md)
-* [Dağıtım sorun giderme](how-to-troubleshoot-deployment.md)
-* [Azure Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın](how-to-secure-web-service.md)
-* [Web hizmeti olarak dağıtılan bir ML Modelini tüketin](how-to-consume-web-service.md)
-* [Azure Machine Learning modellerinizi Uygulama Öngörüleri ile izleyin](how-to-enable-app-insights.md)
-* [Üretimdeki modeller için veri toplama](how-to-enable-data-collection.md)
+* [Özel bir Docker görüntüsü kullanarak model dağıtma](how-to-deploy-custom-docker-image.md)
+* [Dağıtım sorunlarını giderme](how-to-troubleshoot-deployment.md)
+* [Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma](how-to-secure-web-service.md)
+* [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)
+* [Application Insights Azure Machine Learning modellerinizi izleyin](how-to-enable-app-insights.md)
+* [Üretimde modeller için veri toplama](how-to-enable-data-collection.md)

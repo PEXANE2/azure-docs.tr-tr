@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB SQL API kaynaklarını listelemek ve almak için PowerShell komut dosyası
-description: Azure PowerShell komut dosyası - Azure Cosmos DB listesi ve SQL API işlemleri olsun
+title: Azure Cosmos DB SQL API kaynakları listelemek ve almak için PowerShell betiği
+description: SQL API için Azure PowerShell betiği Azure Cosmos DB listesi ve Get işlemleri
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/17/2020
 ms.author: mjbrown
 ms.openlocfilehash: 51880e12f5f422acc0df05fa40da5f40f0ede3d3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80365962"
 ---
-# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB - SQL (Core) API için veritabanlarını ve kapsayıcıları listeleyin ve alın
+# <a name="list-and-get-databases-and-containers-for-azure-cosmos-db---sql-core-api"></a>Azure Cosmos DB-SQL (Core) API 'SI için veritabanları ve kapsayıcılar listeleme ve edinme
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,10 +39,10 @@ Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü b
 | Komut | Notlar |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB Hesaplarını listeler veya belirli bir Cosmos DB Hesabı alır. |
-| [Get-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Bir Hesaptaki Cosmos DB Veritabanlarını listeler veya bir Hesapta belirli bir Cosmos DB Veritabanı alır. |
-| [Al-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Veritabanındaki Cosmos DB Kapsayıcılarını listeler veya veritabanında belirli bir Cosmos DB Kapsayıcısı alır. |
-|**Azure Kaynak Grupları**| |
+| [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Cosmos DB hesaplarını listeler veya belirtilen bir Cosmos DB hesabı alır. |
+| [Get-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabase) | Bir hesapta Cosmos DB veritabanlarını listeler veya bir hesapta belirtilen Cosmos DB veritabanını alır. |
+| [Get-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainer) | Bir veritabanındaki Cosmos DB kapsayıcıları listeler veya bir veritabanında belirtilen Cosmos DB kapsayıcısını alır. |
+|**Azure Kaynak grupları**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 |||
 

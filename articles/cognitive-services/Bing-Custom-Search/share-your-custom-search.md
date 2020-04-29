@@ -1,7 +1,7 @@
 ---
-title: Özel aramanızı paylaşın - Bing Özel Arama
+title: Özel aramanızı paylaşma-Bing Özel Arama
 titleSuffix: Azure Cognitive Services
-description: Ekibinizin üyeleriyle paylaşarak örneğinizin ortak olarak düzenlenmesine ve test edilmesine kolayca izin verin.
+description: Takımınızın üyeleriyle paylaşarak örneğinizin işbirliğine dayalı olarak düzenlenmesine ve test edilmesine kolayca izin verin.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 5a08ee7f5ea3d5e8c393ea4c1a64c353e24777e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072705"
 ---
-# <a name="share-your-custom-search-instance"></a>Özel Arama örneğini paylaşma
+# <a name="share-your-custom-search-instance"></a>Özel arama örneğinizi paylaşma
 
-Örneğinizi ekibinizin diğer üyeleriyle paylaşarak ortak düzenleme ve test gerçekleştirilmesini sağlayabilirsiniz. Örneğini, sadece e-posta adresini kullanan herkesle paylaşabilirsiniz. Bir örneği paylaşmak için:
+Örneğinizi ekibinizin diğer üyeleriyle paylaşarak ortak düzenleme ve test gerçekleştirilmesini sağlayabilirsiniz. Yalnızca e-posta adreslerini kullanarak örneğinizi sizinle paylaşabilirsiniz. Bir örneği paylaşmak için:
 
-- [Özel Arama'da](https://customsearch.ai) Oturum Aç
-- Özel Arama örneği seçin
-- Ayarlar simgesini tıklatın (dişli olarak görünür). 
-- **Örneğini Paylaş'ın**altında, örneğini paylaşmak için kişinin e-posta adresini girin ve **Paylaş'ı**tıklatın. 
+- [Özel aramada](https://customsearch.ai) oturum açın
+- Özel bir arama örneği seçin
+- Ayarlar simgesine tıklayın (dişli olarak görünür). 
+- **Örneğinizi paylaşma**altında, örneğinizi paylaşmak istediğiniz kişinin e-posta adresini girin ve **paylaşma**' ya tıklayın. 
 
-E-posta adresini ekledikten sonra, **listeyle paylaşılan Örnek'e** eklenir. Örneğini paylaşmak istediğiniz her kişi için işlemi yineleyin. 
+E-posta adresi eklendikten sonra, bu, **ile paylaşılan örneğe** eklenir. Örneğinizi paylaşmak istediğiniz her kişi için bu işlemi tekrarlayın. 
 
-Birinin e-postasını listeye eklemek için özel arama hesabına sahip olması gerekmez. Yapılandırma değişiklikleri yapmadan önce Özel Arama'ya kaydolmaları gerekir. Bir örneği biriyle paylaştıktan sonra, bu örneği Özel Arama örnekleri listesinde görür. Bir örneği aynı anda yalnızca bir kişi değiştirebilir. Başka birinin düzenlediği bir örneği değiştirmeye çalışırsanız, bir uyarı gösterilir. Bir örnek en fazla 10 kullanıcıyla paylaşılabilir.
+Bir kişinin e-postasını listeye eklemek için, özel bir arama hesabına sahip olması gerekmez. Ancak, yapılandırma değişiklikleri yapmadan önce özel aramaya kaydolmaları gerekir. Bir örneği sizinle paylaştıktan sonra, özel arama örnekleri listesinde onları görürler. Bir örneği tek seferde yalnızca bir kişi değiştirebilir. Başka birinin düzenlemekte olduğu bir örneği değiştirmeye çalışırsanız bir uyarı gösterilir. Bir örnek, en fazla 10 kullanıcıyla paylaşılabilir.
 
 ## <a name="stop-sharing"></a>Paylaşmayı durdur
 
-Bir örneği biriyle paylaşmayı durdurmak için, e-posta adresini listeden kaldırmak için kaldır simgesini kullanın. Bu, örneği örnek listesinden de kaldırır.
+Bir örneği bir başkasıyla paylaşmayı durdurmak için Kaldır simgesini kullanarak e-posta adreslerini listeden kaldırın. Bu, örneği örnek listesinden de kaldırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Özel Otomatik Önerme deneyiminizi yapılandırın](define-custom-suggestions.md)
+- [Özel otomatik öneri deneyiminizi yapılandırın](define-custom-suggestions.md)

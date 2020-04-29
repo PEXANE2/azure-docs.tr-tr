@@ -1,6 +1,6 @@
 ---
-title: Bölümleme tabloları
-description: Synapse SQL havuzunda tablo bölümlerini kullanmak için öneriler ve örnekler
+title: Tabloları bölümleme
+description: SYNAPSE SQL havuzunda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,43 +12,43 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742679"
 ---
-# <a name="partitioning-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tabloları bölümleme
+# <a name="partitioning-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda tabloları bölümleme
 
-Synapse SQL havuzunda tablo bölümlerini kullanmak için öneriler ve örnekler.
+SYNAPSE SQL havuzunda tablo bölümlerinin kullanılmasına yönelik öneriler ve örnekler.
 
-## <a name="what-are-table-partitions"></a>Tablo bölümleri nedir?
+## <a name="what-are-table-partitions"></a>Tablo bölümleri nelerdir?
 
-Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenize olanak tanır. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Bölümleme tüm Synapse SQL bilardo tablosu türlerinde desteklenir; kümelenmiş sütun deposu, kümelenmiş dizin ve yığın dahil. Bölümleme, karma veya yuvarlak robin dağıtılan her ikisi de dahil olmak üzere tüm dağıtım türlerinde de desteklenir.  
+Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenizi sağlar. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Tüm SYNAPSE SQL havuzu tablo türlerinde bölümlendirme desteklenir; kümelenmiş columnstore, kümelenmiş dizin ve yığın dahil. Hem karma hem de hepsini bir kez deneme dağıtımı dahil olmak üzere tüm dağıtım türlerinde bölümlendirme de desteklenir.  
 
-Bölümleme, veri bakımı ve sorgu performansından yararlanabilir. Her ikisine de veya yalnızca bir sütuna yarar sağlayıp sağlamadığı, verilerin nasıl yüklendiğine ve aynı sütunun her iki amaç için de kullanılıp kullanılamayacağına bağlıdır, çünkü bölümleme yalnızca bir sütunda yapılabilir.
+Bölümlendirme, veri bakımı ve sorgu performansı avantajına sahip olabilir. Yalnızca bir sütundan yalnızca bir sütunda yapılabileceğinizden, verilerin nasıl yüklenedüğüne ve aynı sütunun her iki amaçla de kullanılıp kullanılamayacağını belirtir.
 
-### <a name="benefits-to-loads"></a>Yüklerin faydaları
+### <a name="benefits-to-loads"></a>Yüklerin avantajları
 
-Synapse SQL havuzunda bölümlemenin birincil yararı, bölüm silme, anahtarlama ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklenme sırasına yakından bağlı bir tarih sütununa bölümlenir. Verileri korumak için bölümleri kullanmanın en büyük avantajlarından biri de işlem günlüğe kaydetmenin kaçınılmasıdır. Yalnızca veri ekleme, güncelleme veya silme, biraz düşünce ve çabayla en basit yaklaşım olabilirken, yükleme işleminiz sırasında bölümleme kullanmak performansı önemli ölçüde artırabilir.
+SYNAPSE SQL havuzunda bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Bölüm kullanmanın en büyük avantajlarından biri, verileri işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
 
-Bölüm geçişi, tablonun bir bölümünü hızla kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir satış olgu tablosu son 36 ay için yalnızca veri içerebilir. Her ayın sonunda, en eski satış ayı verileri tablodan silinir.  Bu veriler, en eski ay için verileri silmek için bir silme deyimi kullanılarak silinebilir. Ancak, büyük miktarda veriyi silme deyimiyle satır satır silmek çok fazla zaman alabilir ve bir şeyler ters giderse geri almak için uzun zaman alan büyük işlemler riski oluşturabilir. Daha iyi bir yaklaşım, en eski veri bölmesini bırakmaktır. Tek tek satırları silmenin saatler sürebileceği durumlarda, tüm bir bölümü silmesi saniyeler sürebilir.
+Bölüm değiştirme, bir tablonun bir bölümünü hızlıca kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir Sales olgu tablosu yalnızca son 36 aya ait verileri içerebilir. Her ayın sonunda, satış verilerinin en eski ayı tablodan silinir.  Bu veriler, en eski aya ilişkin verileri silmek için bir Delete ifadesiyle silinebilir. Ancak, bir Delete ifadesiyle büyük miktarda veri satırını satır içinde silmek çok fazla zaman alabilir ve bir şeyler yanlış olursa geri alınması uzun zaman alan büyük işlemler riskini oluşturabilir. En iyi yöntem, en eski veri bölümünü düşürülemedir. Tek tek satırları silmenin saat sürebileceği durumlarda, bölümün tamamının silinmesi saniye sürebilir.
 
-### <a name="benefits-to-queries"></a>Sorguların yararları
+### <a name="benefits-to-queries"></a>Sorguların avantajları
 
-Bölümleme, sorgu performansını artırmak için de kullanılabilir. Bölümlenmiş verilere filtre uygulayan bir sorgu, tarakı yalnızca uygun bölümlerle sınırlayabilir. Bu filtreleme yöntemi tam tablo tonuönlemek ve sadece daha küçük bir veri alt kümesini tarayıp tarayıp, yalnızca. Kümelenmiş sütun deposu dizinlerinin getirilmesiyle, yüklem eliminasyon performansı yararları daha az yararlıdır, ancak bazı durumlarda sorguların bir yararı olabilir. Örneğin, satış tarihi tablosu satış tarihi alanını kullanarak 36 aya bölünürse, satış tarihinde filtre yi filtreleyen sorgular, filtreyle eşleşmez bölümlerde arama yapmayı atlayabilir.
+Sorgu performansını artırmak için bölümleme de kullanılabilir. Bölümlenmiş verilere filtre uygulayan bir sorgu, taramayı yalnızca uygun bölümlerle sınırlayabilir. Bu filtreleme yöntemi bir tam tablo taramasını önleyebilir ve yalnızca daha küçük bir veri alt kümesini tarayabilir. Kümelenmiş columnstore dizinlerinin tanıtılmasıyla, koşulun eleme performansı avantajları daha az faydalıdır, ancak bazı durumlarda sorgulara bir avantaj olabilir. Örneğin, Sales olgu tablosu satış tarihi alanı kullanılarak 36 ay içinde bölümleniyorsa, satış tarihini filtreleyen sorgular filtreyle eşleşmeyen bölümlerde aramayı atlayabilir.
 
-## <a name="sizing-partitions"></a>Boyutlandırma bölümleri
+## <a name="sizing-partitions"></a>Bölümleri boyutlandırma
 
-Bölümleme bazı senaryoların performansını artırmak için kullanılabilirken, **çok fazla** bölümiçeren bir tablo oluşturmak bazı durumlarda performansa zarar verebilir.  Bu endişeler özellikle kümelenmiş sütun deposu tabloları için geçerlidir. Bölümlemenin yararlı oltaması için, bölümlemenin ne zaman kullanılacağını ve oluşturulacak bölüm sayısını anlamak önemlidir. Kaç bölüm çok fazla olduğu gibi sabit bir hızlı kural yoktur, bu verilerinize bağlıdır ve aynı anda yükleme kaç bölüm. Başarılı bir bölümleme şeması genellikle binlerce değil, yüzlerce bölüm onlarca vardır.
+Bölümleme performansı artırmak için, bazı senaryolarda **çok fazla** bölüm içeren bir tablo oluşturmak, bazı koşullarda performansı etkileyebilir.  Bu sorunlar özellikle kümelenmiş columnstore tabloları için geçerlidir. Bölümlemenin yararlı olması için bölümleme ve oluşturulacak bölüm sayısının ne zaman kullanılacağını anlamak önemlidir. Birçok bölüm çok fazla olan bir sabit hızlı kural yoktur, bu, verilerinize ve aynı anda kaç bölümden fazla yükleme yapadığınıza bağlıdır. Başarılı bir bölümlendirme şeması genellikle binlerce bölüm olan binlerce bölümden oluşur.
 
-**Kümelenmiş sütun deposu** tablolarında bölümler oluştururken, her bölüme kaç satır ait olduğunu göz önünde bulundurmak önemlidir. Kümelenmiş sütun deposu tablolarının en iyi sıkıştırma ve performansı için, dağıtım ve bölüm başına en az 1 milyon satır gerekir. Bölümler oluşturulmadan önce, Synapse SQL havuzu zaten her tabloyu 60 dağıtılmış veritabanına böler. Tabloya eklenen tüm bölümler, arka planda oluşturulan dağıtımlara ek olarak gelir. Bu örneği kullanarak, satış olgu tablosunda 36 aylık bölüm varsa ve bir Synapse SQL havuzunun 60 dağıtıma sahip olduğu göz önüne alındığında, satış olgu tablosuayda 60 milyon satır veya tüm aylar doldurulduğunda 2,1 milyar satır içermelidir. Bir tablo, bölüm başına önerilen minimum satır sayısından daha az satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı düşünün. Daha fazla bilgi için, küme sütun deposu dizinlerinin kalitesini değerlendirebilecek sorguları içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
+**Kümelenmiş columnstore** tablolarında bölümler oluştururken, her bölüme ait kaç satır olduğunu göz önünde bulundurmanız önemlidir. Kümelenmiş columnstore tablolarının en iyi sıkıştırması ve performansı için, dağıtım ve bölüm başına en az 1.000.000 satır gerekir. Bölümler oluşturulmadan önce, SYNAPSE SQL havuzu, her bir tabloyu zaten 60 dağıtılmış veritabanına böler. Bir tabloya eklenen herhangi bir bölümleme, arka planda oluşturulan dağıtımların yanı sıra. Bu örneği kullanarak, Sales olgu tablosu 36 aylık bölümler içeriyorsa ve bir Synapse SQL havuzunun 60 dağıtımları varsa, Sales olgu tablosu ayda 60.000.000 satır veya tüm aylar doldurulduğunda 2.100.000.000 satır içermelidir. Bir tablo, bölüm başına önerilen en az sayıda satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı göz önünde bulundurun. Daha fazla bilgi için, küme columnstore dizinlerinin kalitesini değerlendirebilen sorgular içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
 
-## <a name="syntax-differences-from-sql-server"></a>SQL Server'dan sözdizimi farklılıkları
+## <a name="syntax-differences-from-sql-server"></a>SQL Server söz dizimi farklılıkları
 
-Synapse SQL havuzu, SQL Server'dan daha basit bölümleri tanımlamanın bir yolunu sunar. Bölümleme işlevleri ve düzenleri, SQL Server'da olduğu gibi Synapse SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütun ve sınır noktalarını tanımlamaktır. Bölümleme sözdizimi SQL Server'dan biraz farklı olsa da, temel kavramlar aynıdır. SQL Server ve Synapse SQL havuzu, tablo başına bölüm aralığı na sahip bir bölüm sütununa destek sağlar. Bölümleme hakkında daha fazla bilgi edinmek için [Bölümlenmiş Tablolar ve Dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bölümüne bakın.
+SYNAPSE SQL havuzu SQL Server ' den daha basit olan bölümleri tanımlamak için bir yol sunar. Bölümlendirme işlevleri ve şemaları, SQL Server olduklarından SYNAPSE SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütunu ve sınır noktalarını belirlemektir. Bölümleme sözdizimi SQL Server biraz farklı olabilir, ancak temel kavramlar aynıdır. SQL Server ve SYNAPSE SQL havuzu, her tablo için bir bölüm sütununu destekler ve bu bölüm, sıralaştırılmış bölümdür. Bölümlendirme hakkında daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölmek için [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini kullanır:
+Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölümlemek için [Create Table](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesini kullanır:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -74,14 +74,14 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>SQL Server'dan bölümleme
+## <a name="migrating-partitioning-from-sql-server"></a>SQL Server bölümleme geçiriliyor
 
-SQL Server bölüm tanımlarını Synapse SQL havuzuna geçirmek için:
+SQL Server bölüm tanımlarını yalnızca SYNAPSE SQL Pool 'a geçirmek için:
 
-- SQL Server [bölümşemasını](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ortadan kaldırın.
-- CREATE TABLONUZA [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tanımını ekleyin.
+- SQL Server [bölüm düzenini](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kaldırın.
+- [Bölüm işlev](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tanımını Create Table ekleyin.
 
-Bir SQL Server örneğinden bölümlenmiş bir tabloyu geçişiyorsanız, aşağıdaki SQL her bölümdeki satır sayısını belirlemenize yardımcı olabilir. Synapse SQL havuzunda aynı bölümleme parçalı lık kullanılırsa, bölüm başına satır sayısının 60 kat azaldığını unutmayın.  
+Bölümlenmiş bir tabloyu SQL Server örneğinden geçiriyorsanız, aşağıdaki SQL her bölümde bulunan satır sayısını bulmanıza yardımcı olabilir. SYNAPSE SQL havuzunda aynı bölümleme ayrıntı düzeyi kullanılıyorsa, bölüm başına satır sayısı 60 faktörüyle azaldığını aklınızda bulundurun.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -119,15 +119,15 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Bölüm değiştirme
 
-Synapse SQL havuzu bölme, birleştirme ve geçiş desteklemektedir. Bu işlevlerin her biri [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimi kullanılarak yürütülür.
+SYNAPSE SQL havuzu bölüm bölmeyi, birleştirmeyi ve değiştirmeyi destekler. Bu işlevlerin her biri [alter table](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ifadesi kullanılarak yürütülür.
 
-Bölümleri iki tablo arasında değiştirmek için, bölümlerin kendi sınırlarında hizalandığından ve tablo tanımlarının eşleştirdiğinden emin olmalısınız. Bir tablodaki değer aralığını zorlamak için denetim kısıtlamaları kullanılamadığından, kaynak tablonun hedef tabloyla aynı bölüm sınırlarını içermesi gerekir. Bölüm sınırları aynı değilse, bölüm meta verileri eşitlenmeyeceği için bölüm anahtarı başarısız olur.
+Bölümleri iki tablo arasında değiştirmek için bölümlerin ilgili sınırlarına göre hizalanmasına ve tablo tanımlarının eşleştiğinden emin olmanız gerekir. Denetim kısıtlamaları tablodaki değer aralığını zorlamak için kullanılabilir olmadığından, kaynak tablo hedef tabloyla aynı bölüm sınırlarını içermelidir. Bölüm sınırları aynı değilse, Bölüm meta verileri eşitlenmediği için bölüm anahtarı başarısız olur.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Veri içeren bir bölümü bölme
 
-Zaten veri içeren bir bölümü bölmek için en `CTAS` etkili yöntem bir deyim kullanmaktır. Bölümlenmiş tablo kümelenmiş bir sütun deposuysa, bölünemeden önce tablo bölmesinin boş olması gerekir.
+Zaten veri içeren bir bölümü bölmek için en verimli yöntem bir `CTAS` ifade kullanmaktır. Bölümlenmiş tablo kümelenmiş bir columnstore ise, bölünebilmesi için tablo bölümünün boş olması gerekir.
 
-Aşağıdaki örnek, bölümlenmiş bir sütun mağazası tablosu oluşturur. Her bölüme bir satır ekler:
+Aşağıdaki örnek bölümlenmiş bir columnstore tablosu oluşturur. Her bölüme bir satır ekler:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -157,7 +157,7 @@ INSERT INTO dbo.FactInternetSales
 VALUES (1,20000101,1,1,1,1,1,1);
 ```
 
-Aşağıdaki `sys.partitions` sorgu, katalog görünümünü kullanarak satır sayısını bulur:
+Aşağıdaki sorgu, `sys.partitions` katalog görünümünü kullanarak satır sayısını bulur:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -174,15 +174,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Aşağıdaki bölme komutu bir hata iletisi alır:
+Aşağıdaki Split komutu bir hata iletisi alır:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Düzey 15, Durum 1, ALTER PARTITION deyiminin Satır 44 SPLIT yan tümcesi boş olmadığı için başarısız oldu. Tabloda bir sütun mağazası dizini olduğunda yalnızca boş bölümler ayrılabilir. ALTER PARTITION deyimini vermeden önce sütun deposu dizinini devre dışı bırakmayı ve ALTER PARTITION tamamlandıktan sonra sütun deposu dizinini yeniden oluşturmayı düşünün.
+Bölüm boş olmadığından, # 35346, düzey 15, durum 1, ALTER PARTITION ifadesinin Line 44 SPLIT yan tümcesi başarısız oldu. Tabloda bir columnstore dizini mevcut olduğunda yalnızca boş bölümler bölünebilir. ALTER PARTıTıON deyimini yürütmeden önce columnstore dizinini devre dışı bırakmayı, ardından ALTER PARTıTıON tamamlandıktan sonra columnstore dizinini yeniden oluşturmayı düşünün.
 
-Ancak, verileri `CTAS` tutmak için yeni bir tablo oluşturmak için kullanabilirsiniz.
+Ancak, verileri tutmak üzere `CTAS` yeni bir tablo oluşturmak için kullanabilirsiniz.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -200,7 +200,7 @@ WHERE   1=2
 ;
 ```
 
-Bölüm sınırları hizalandığından, geçişe izin verilir. Bu, kaynak tabloyu daha sonra bölebileceğiniz boş bir bölümle bırakır.
+Bölüm sınırları hizalandığı için bir anahtara izin verilir. Böylece kaynak tablo, daha sonra bölünebileceğiniz boş bir bölüm ile bırakılır.
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -208,7 +208,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Geriye kalan tek şey, verileri yeni bölüm sınırlarına hizalamak `CTAS`ve verileri ana tabloya geri dönüştürmektir.
+Her şey, verileri kullanarak `CTAS`yeni bölüm sınırlarına hizalamak ve sonra verileri ana tabloya geri geçirmek için kullanılır.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -229,15 +229,15 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Verilerin hareketini tamamladıktan sonra, hedef tablodaki istatistikleri yenilemek iyi bir fikirdir. İstatistikleri güncelleştirmek, istatistiklerin verilerin ilgili bölümlerindeki yeni dağıtımını doğru bir şekilde yansıtmasını sağlar.
+Verilerin hareketini tamamladıktan sonra, hedef tablodaki istatistikleri yenilemek iyi bir fikirdir. İstatistiklerin güncelleştirilmesi, istatistiklerin ilgili bölümlerinde verilerin yeni dağıtımını doğru şekilde yansıtmasını sağlar.
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Tek adımda veri içeren bölümlere yeni veriler yükleme
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Verileri tek bir adımda içeren bölümlere yeni verileri yükleme
 
-Bölüm anahtarlama ile bölümlere veri yükleme, kullanıcılar tarafından yeni veri anahtarı görülemez bir tabloda yeni veri aşaması uygun bir yoldur.  Bu bölüm anahtarlama ile ilişkili kilitleme çekişme ile başa çıkmak için meşgul sistemlerde zor olabilir.  Bir bölümdeki varolan verileri temizlemek `ALTER TABLE` için, verileri değiştirmek için kullanılan bir  Sonra `ALTER TABLE` başka bir yeni veri geçiş için gerekli oldu.  Synapse SQL havuzunda `TRUNCATE_TARGET` seçenek komutta `ALTER TABLE` desteklenir.  `ALTER TABLE` Komut ile `TRUNCATE_TARGET` yeni verilerle bölmede varolan verileri üzerine yazar.  Aşağıda, varolan `CTAS` verilerle yeni bir tablo oluşturmak için kullanan, yeni veri ekler, sonra tüm verileri hedef tabloya geri döndürerek varolan verilerin üzerine yazmak için bir örnektir.
+Bölüm değiştirme ile verileri bölümlere yükleme, kullanıcıların yeni verilerde anahtara görünmeyen bir tabloda yeni verileri aşamalandırmaya uygun bir yoldur.  Bölüm geçişle ilişkili kilitleme çekişmesiyle uğraşmak için meşgul sistemler zor olabilir.  Bir bölümdeki mevcut verileri temizlemek için, verileri değiştirmek için `ALTER TABLE` kullanılması gerekir.  Yeni verilerde `ALTER TABLE` geçiş yapmak için başka bir tane gerekiyordu.  SYNAPSE SQL havuzunda `TRUNCATE_TARGET` seçeneği, `ALTER TABLE` komutunda desteklenir.  `TRUNCATE_TARGET` Komutuyla, yeni verilerle bölümdeki mevcut verilerin üzerine `ALTER TABLE` yazar.  Aşağıda, var olan verileri içeren `CTAS` yeni bir tablo oluşturmak, yeni veriler eklemek ve ardından tüm verileri yeniden hedef tabloya dönüştürmek, varolan verilerin üzerine yazmak için kullanılan bir örnek verilmiştir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -263,9 +263,9 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 
 ### <a name="table-partitioning-source-control"></a>Tablo bölümleme kaynak denetimi
 
-Kaynak kontrol sisteminizde tablo tanımınızın **paslanmamasını** önlemek için aşağıdaki yaklaşımı göz önünde bulundurmak isteyebilirsiniz:
+Kaynak denetim sisteminizde tablo tanımınızın **rusting** bir engel olmasını önlemek için aşağıdaki yaklaşımı göz önünde bulundurmanız gerekebilir:
 
-1. Tabloyu bölümlenmiş tablo olarak oluşturma, ancak bölüm değerleri olmadan
+1. Tabloyu bölümlenmiş tablo olarak oluştur, ancak bölüm değeri yok
 
     ```sql
     CREATE TABLE [dbo].[FactInternetSales]
@@ -287,7 +287,7 @@ Kaynak kontrol sisteminizde tablo tanımınızın **paslanmamasını** önlemek 
     ;
     ```
 
-1. `SPLIT`dağıtım işleminin bir parçası olarak tablo:
+1. `SPLIT`dağıtım sürecinin bir parçası olarak tablo:
 
     ```sql
      -- Create a table containing the partition boundaries
@@ -339,8 +339,8 @@ Kaynak kontrol sisteminizde tablo tanımınızın **paslanmamasını** önlemek 
     DROP TABLE #partitions;
     ```
 
-Bu yaklaşımla kaynak denetimindeki kod sabit kalır ve bölümleme sınır değerlerinin dinamik olması için izin verilir; zaman içinde veritabanı ile gelişen.
+Bu yaklaşımla kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; veritabanıyla zaman içinde gelişiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tablo geliştirme hakkında daha fazla bilgi için [Tablogenel Bakış'taki](sql-data-warehouse-tables-overview.md)makalelere bakın.
+Tablo geliştirme hakkında daha fazla bilgi için bkz. makaleye [genel bakış](sql-data-warehouse-tables-overview.md).

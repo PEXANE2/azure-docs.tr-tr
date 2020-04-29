@@ -1,7 +1,7 @@
 ---
-title: Kullanıcı verilerini dışa aktarma veya silme - İçerik Moderatör
+title: Kullanıcı verilerini dışarı aktarma veya silme-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Verileriniz üzerinde tam kontrole sahipsiniz. İçerik Moderatör'ünde verilerinizi nasıl görüntüleyecek, dışa aktarın veya silenleri öğrenin.
+description: Verileriniz üzerinde tam denetim sahibi olursunuz. Content Moderator verilerinizi görüntüleme, dışarı aktarma veya silme hakkında bilgi edinin.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73744799"
 ---
-# <a name="export-or-delete-user-data-in-content-moderator"></a>İçerik Moderatör'ünde kullanıcı verilerini dışa aktarma veya silme
+# <a name="export-or-delete-user-data-in-content-moderator"></a>Content Moderator Kullanıcı verilerini dışarı aktarma veya silme
 
-İçerik Moderatör hizmeti çalıştırmak için kullanıcı verileri toplar, ancak müşteriler [gözden geçirme aracı](https://contentmoderator.cognitive.microsoft.com/) ve [Moderasyon ve İnceleme API'leri](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference)kullanarak verilerini görüntülemek, dışa aktarma ve silmek için tam denetime sahiptir.
+Content Moderator, hizmeti çalıştırmak için Kullanıcı verilerini toplar, ancak müşteriler [İnceleme aracını](https://contentmoderator.cognitive.microsoft.com/) ve [denetleme ve gözden geçirme API 'lerini](https://docs.microsoft.com/azure/cognitive-services/content-moderator/api-reference)kullanarak verilerini görüntülemek, dışarı aktarmak ve silmek için tam denetime sahiptir.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-İçerik Moderatör'ünde kullanıcı verilerinin nasıl dışa aktarılabildiğini ve silinmeniz hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
+Content Moderator Kullanıcı verilerini dışarı aktarma ve silme hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 
-| Veri | İhracat Operasyonu | Silme İşlemi |
+| Veriler | Dışarı aktarma Işlemi | Silme Işlemi |
 | ---- | ---------------- | ---------------- |
-| Hesap Bilgileri (Abonelik Anahtarları) | Yok | Azure portalını (Azure Abonelikleri) kullanarak silin. Veya [Kullanıcı BirE Ekibi](https://contentmoderator.cognitive.microsoft.com/) Ayarlarını İncele sayfasındaki Ekibi **Sil** düğmesini kullanın. |
-| Özel eşleştirme için görüntüler | Görüntü [II'leri Al'ı arayın.](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676) Görüntüler tek yönlü özel karma biçimde depolanır ve gerçek görüntüleri ayıklamanın bir yolu yoktur. | Tüm [Görüntüleri Sil API'yi](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686)arayın. Veya Azure portalını kullanarak İçerik Moderatörü kaynağını silin. |
-| Özel eşleştirme terimleri | Cal [tüm terimler API alın](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | Tüm [terimleri Sil API'yi](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d)arayın. Veya Azure portalını kullanarak İçerik Moderatörü kaynağını silin. |
-| Etiketler | Yok | Kullanıcı Arasını Etiketini İncele sayfasındaki her etiket için kullanılabilir **Sil** simgesini kullanın. Veya [Kullanıcı BirE Ekibi](https://contentmoderator.cognitive.microsoft.com/) Ayarlarını İncele sayfasındaki Ekibi **Sil** düğmesini kullanın. |
-| İncelemeler | İnceleme [API'sini Al'ı](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) arayın | [Kullanıcı Bire-ge](https://contentmoderator.cognitive.microsoft.com/) Ekibi ayarlarını gözden geçir sayfasında **Ekibi Sil** düğmesini kullanın.
-| Kullanıcılar | Yok | [Kullanıcı Arabirimi](https://contentmoderator.cognitive.microsoft.com/) Ekibi ayarlarını gözden geçir sayfasındaki her kullanıcı için kullanılabilir **Sil** simgesini kullanın. Veya [Kullanıcı BirE Ekibi](https://contentmoderator.cognitive.microsoft.com/) Ayarlarını İncele sayfasındaki Ekibi **Sil** düğmesini kullanın. |
+| Hesap bilgileri (abonelik anahtarları) | Yok | Azure portal (Azure abonelikleri) kullanarak silin. Ya da UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında **takımı Sil** düğmesini kullanın. |
+| Özel eşleştirme için görüntüler | [Görüntü kimliklerini al API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f676)'sini çağırın. Görüntüler tek yönlü bir özel karma biçiminde depolanır ve gerçek görüntüleri ayıklamanın bir yolu yoktur. | [Tüm görüntüleri SILME API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f686)'sini çağırın. Veya Azure portal kullanarak Content Moderator kaynağını silebilirsiniz. |
+| Özel eşleştirme koşulları | Cal [tüm terimleri al API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67e) | [Tüm terimleri SILME API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67d)'sini çağırın. Veya Azure portal kullanarak Content Moderator kaynağını silebilirsiniz. |
+| Etiketler | Yok | UI etiketi ayarlarını gözden geçir sayfasında her etiket için kullanılabilir **Sil** simgesini kullanın. Ya da UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında **takımı Sil** düğmesini kullanın. |
+| İncelemeler | [Inceleme al API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) 'sini çağırma | UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasındaki **takımı Sil** düğmesini kullanın.
+| Kullanıcılar | Yok | UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında her bir Kullanıcı Için kullanılabilen **Sil** simgesini kullanın. Ya da UI ekip ayarlarını [gözden geçir](https://contentmoderator.cognitive.microsoft.com/) sayfasında **takımı Sil** düğmesini kullanın. |
 

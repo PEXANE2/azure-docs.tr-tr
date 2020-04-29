@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 92fc7aeec87015a9ddbe4e52f870334582e28c14
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671271"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma kaynağı oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
+> * [Azure konuşma kaynağı oluşturma](../../../../get-started.md)
+> * [Geliştirme ortamınızı kurun ve boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. **Program.cs**açın ve tüm kodu aşağıdaki kodla değiştirin:
+1. **Program.cs**açın ve içindeki tüm kodu aşağıdaki kodla değiştirin:
 
     ```csharp
     using Microsoft.CognitiveServices.Speech;
@@ -199,26 +199,26 @@ Başlamadan önce şunları unutmayın:
     }
     ```
 
-1. Aynı dosyada, dizeyi `YourSubscriptionKey` Bilişsel Konuşma abonelik anahtarınızla değiştirin.
+1. Aynı dosyada, dizeyi `YourSubscriptionKey` bilişsel konuşma abonelik anahtarınızla değiştirin.
 
 1. `YourServiceRegion` dizesini, aboneliğinizle ilişkili [bölge](~/articles/cognitive-services/Speech-Service/regions.md) ile (örneğin, ücretsiz deneme aboneliği için `westus`) değiştirin.
 
-1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
+1. Menü çubuğundan **Dosya** > **Tümünü Kaydet**' i seçin.
 
-## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı oluşturma ve çalıştırma
+## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>Yeni bir konuşma oluşturmak için uygulamayı derleyin ve çalıştırın
 
-1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+1. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
+1.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
 
-1. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
-    - Konuşma kodunu diğerleriyle paylaşırsanız ve onlar konuşmaya katılırsa, onların transkripsiyonlarını da görürsünüz.
+1. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+    - Konuşma kodunu diğer kişilerle paylaşırsanız ve konuşmaya katılırsanız, bu kişilerin de onların dökümünü görürsünüz.
 
-1. Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak ve konuşmayı sonlamak için <kbd>Ctrl+C</kbd> tuşuna basın.
+1. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
 
-## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Varolan bir konuşmaya katılmak için uygulamayı oluşturma ve çalıştırma
+## <a name="build-and-run-the-application-to-join-an-existing-conversation"></a>Mevcut bir konuşmaya katmak için uygulamayı derleyin ve çalıştırın
 
-1. Aşağıdaki işlevi **kopyalayıp Program.cs:**
+1. Aşağıdaki işlevi kopyalayıp **program.cs**yapıştırın:
 
     ```csharp
     static async Task JoinConversationAsync(string conversationId)
@@ -294,7 +294,7 @@ Başlamadan önce şunları unutmayın:
     }
     ```
 
-2. İşlevinizi `public static async Task Main(string[] args)` şu şekilde değiştirin: `CreateConversationAsync();`
+2. İşlevinizdeki `CreateConversationAsync();` `public static async Task Main(string[] args)` ile değiştirin:
 
     ```csharp
     // Set this to the conversation you want to join
@@ -303,18 +303,18 @@ Başlamadan önce şunları unutmayın:
 
 [!INCLUDE [create-from-web](../create-from-web.md)]
 
-4. Visual Studio'ya geri dön `YourConversationId` ve dizeyi önceki adımda oluşturduğunuz konuşma kimliğiyle değiştirin.
+4. Visual Studio 'ya geri dönün ve dizeyi `YourConversationId` , önceki adımda oluşturduğunuz konuşma kimliğiyle değiştirin.
 
-5. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
+5. Menü çubuğundan uygulamayı derlemek için derleme**Build Solution** ' **ı seçin.** >  Kodun artık hatasız derlenmesi gerekir.
 
-6. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
+6.  >  **HelloWorld** uygulamasını başlatmak için hata**ayıklamayı Başlat** ' **ı seçin (** veya **F5**tuşuna basın).
 
-7. İletinin `Started transcribing` göründüğünü gördüğünüzde konuşmaya başlayabilirsiniz. Siz konuşurken transkripsiyonların göründüğünü göreceksiniz.
-    - Tarayıcınıza geri dönerseniz, siz konuşurken transkripsiyonlarınızın orada da göründüğünü görmeniz gerekir.
+7. `Started transcribing` İletinin göründüğünü gördüğünüzde konuşmayı başlatabilirsiniz. Konuştuğunuz olarak görünmeler görüntülenir.
+    - Tarayıcınıza geri giderseniz, yaptığınız gibi, yaptığınız gibi görünmeler burada görünür.
 
-8. Konuşmayı bitirdikten sonra, ses yakalamayı durdurmak ve konuşmayı sonlamak için <kbd>Ctrl+C</kbd> tuşuna basın.
+8. Konuşmayı tamamladıktan sonra, ses yakalamayı durdurmak için <kbd>CTRL + C</kbd> tuşlarına basın ve konuşmayı sonlandırın.
 
-9. Tarayıcınıza geri dönün ve sağ üst köşedeki çıkış düğmesini kullanarak konuşmaçıkın.
+9. Tarayıcınıza geri dönün ve sağ üst köşedeki Çıkış düğmesini kullanarak konuşmadan çıkın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

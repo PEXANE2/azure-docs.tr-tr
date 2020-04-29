@@ -1,19 +1,19 @@
 ---
-title: İthalat ve ihracat veri referansı - QnA Maker
-description: Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
+title: Veri başvurusunu içeri ve dışarı aktarma-Soru-Cevap Oluşturma
+description: URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
 ms.topic: reference
 ms.date: 01/02/2020
 ms.openlocfilehash: e4a423ef9478cd39181c6440801f9fe954dc896c
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804252"
 ---
-# <a name="import-and-export-data-reference"></a>İçe aktarma ve verme veri referansı
+# <a name="import-and-export-data-reference"></a>Veri başvurusunu içeri ve dışarı aktarma
 
-Bilgi tabanı yedekleme, depolama ve değiştirme için en iyi sonuçları almak için bu alma ve dışa aktarma referansını gözden geçirin.
+Bilgi Bankası yedeğiniz, depolama ve değiştirme için en iyi sonuçları elde etmek için bu içeri ve dışarı aktarma başvurusunu gözden geçirin.
 
-## <a name="import-and-export-knowledge-base"></a>İthalat ve ihracat bilgi tabanı
+## <a name="import-and-export-knowledge-base"></a>Bilgi bankasını içeri ve dışarı aktarma
 
-**TSV ve XLS dosyaları**, dışa aktarılan bilgi tabanlarından, yalnızca QnA Maker portalındaki **Ayarlar** sayfasından dosyaları içeri aktararak kullanılabilir. Bilgi tabanı oluşturma sırasında veya Ayarlar sayfasındaki **+ Ekle dosyası** veya + **URL** ekle özelliğinden veri kaynağı olarak **kullanılamazlar.**
+Aktarılan bilgi tabanlarından **TSV ve xls dosyaları**yalnızca soru-cevap oluşturma portalındaki **Ayarlar** sayfasından dosyaları içeri aktarılarak kullanılabilir. Bunlar Bilgi Bankası oluşturma sırasında veya **Ayarlar** sayfasındaki **+ Dosya Ekle** veya **+ URL Ekle** özelliğinden veri kaynağı olarak kullanılamaz.

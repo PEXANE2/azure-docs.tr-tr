@@ -1,6 +1,6 @@
 ---
-title: En son nesle yükseltin
-description: Azure Synapse Analytics SQL havuzunun en son nesil Azure donanım ve depolama mimarisine yükseltin.
+title: En son oluşturmaya yükselt
+description: Azure SYNAPSE Analytics SQL havuzunu en son nesil Azure donanım ve depolama mimarisine yükseltin.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,33 +12,33 @@ ms.author: martinle
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 13b1f33ffe653627bcf45f6c995e82e741de32ea
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742742"
 ---
-# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL havuzuna yükselterek performansı optimize edin
+# <a name="optimize-performance-by-upgrading-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzunu yükselterek performansı iyileştirin
 
 SQL havuzunu en son nesil Azure donanım ve depolama mimarisine yükseltin.
 
-## <a name="why-upgrade"></a>Neden yükseltme?
+## <a name="why-upgrade"></a>Neden yükseltirsiniz?
 
-Artık [desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)için Azure portalındaki SQL havuzu Compute Optimize Gen2 katmanına sorunsuz bir şekilde yükseltebilirsiniz. Bölgeniz kendi kendini yükseltmeyi desteklemiyorsa, desteklenen bir bölgeye yükseltebilir veya kendi kendine yükseltmenin bölgenizde kullanılabilir olmasını bekleyebilirsiniz. Daha hızlı performans, daha yüksek ölçeklenebilirlik ve sınırsız sütun depolama gibi en son nesil Azure donanımı ve gelişmiş depolama mimarisinden yararlanmak için şimdi yükseltin.
+Artık [Desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)IÇIN Azure Portal SQL havuzu Işlem Için iyileştirilmiş Gen2 katmanına sorunsuz bir şekilde yükseltebilirsiniz. Bölgeniz kendi kendine yükseltmeyi desteklemiyorsa, desteklenen bir bölgeye yükseltebilirsiniz veya kendi bölgenizde kendi kendine yükseltmenin kullanılabilmesini bekleyebilirsiniz. Daha hızlı performans, daha yüksek ölçeklenebilirlik ve sınırsız sütunlu depolama gibi en yeni nesil Azure donanım ve gelişmiş depolama mimarisinin avantajlarından yararlanmak için hemen yükseltin.
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 > [!IMPORTANT]
-> Bu yükseltme, [desteklenen bölgelerdeki](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)En İyi Duruma Getirilmiş Gen1 tier SQL havuzları için geçerlidir.
+> Bu yükseltme, [desteklenen bölgelerde](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)Işlem Için iyileştirilmiş Gen1 katman SQL havuzları için geçerlidir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-1. [BÖLGEnizin](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) GEN1-GEN2 geçişi için desteklenilip desteklenmeyip desteklenmeyolup olmadığını kontrol edin. Otomatik geçiş tarihlerine dikkat edin. Otomatik işlemle çakışmayı önlemek için, el ile geçişinizi otomatik işlem başlangıç tarihinden önce planlayın.
-2. Henüz desteklenmeyen bir bölgedeyseniz, desteklenen bölgeye [geri yükleme kullanarak](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) bölgenizin eklenmesini veya yükseltilmeyeceğini denetlemeye devam edin.
-3. Bölgeniz [desteklenirse, Azure portalı üzerinden yükseltme](#upgrade-in-a-supported-region-using-the-azure-portal)
-4. Aşağıdaki eşlemi kullanarak, İşlem Optimize Edilmiş Gen1 katmanındaki geçerli performans düzeyini temel alarak SQL havuzu için **önerilen performans düzeyini seçin:**
+1. GEN1 to GEN2 Migration için [bölgenizin](gen2-migration-schedule.md#automated-schedule-and-region-availability-table) desteklenip desteklenmediğini denetleyin. Otomatik geçiş tarihlerini aklınızda edin. Otomatikleştirilmiş işlemle ilgili çakışmaları önlemek için, otomatik işlem başlangıç tarihinden önce el ile geçişinizi planlayın.
+2. Henüz desteklenmeyen bir bölgedeyse, desteklenen bir bölgeye [geri yükleme kullanarak](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal) bölgenizin eklenmesini veya yükseltilmesi için denetlemeye devam edin.
+3. Bölgeniz destekleniyorsa [Azure Portal aracılığıyla yükseltin](#upgrade-in-a-supported-region-using-the-azure-portal)
+4. Aşağıdaki eşlemeyi kullanarak, Işlem için Iyileştirilmiş Gen1 katmanında geçerli performans düzeyinizi temel alarak SQL havuzu için **Önerilen performans düzeyini seçin** :
 
-   | İşlem Optimize Edilmiş Gen1 katmanı | İşlem Optimize Gen2 katmanı |
+   | İşlem için Iyileştirilmiş Gen1 katmanı | İşlem için Iyileştirilmiş Gen2 katmanı |
    | :-------------------------: | :-------------------------: |
    |            DW100            |           DW100c            |
    |            DW200            |           DW200c            |
@@ -54,86 +54,86 @@ Artık [desteklenen bölgeler](gen2-migration-schedule.md#automated-schedule-and
    |           DW6000            |           DW6000c           |
 
 > [!NOTE]
-> Önerilen performans düzeyleri doğrudan dönüştürme değildir. Örneğin, DW600'den DW500c'ye gitmenizi öneririz.
+> Önerilen performans düzeyleri doğrudan dönüştürme değildir. Örneğin, DW600 ' den DW500c ' e gitmenizi öneririz.
 
-## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Azure portalını kullanarak desteklenen bir bölgede yükseltme
+## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Azure portal kullanarak desteklenen bir bölgede yükseltme
 
-- Azure portalı üzerinden Gen1'den Gen2'ye geçiş kalıcıdır. Gen1'e dönmek için bir süreç yoktur.
-- SQL havuzu Gen2'ye geçiş için çalışıyor olmalıdır
+- Azure portal aracılığıyla Gen1 'den Gen2 'e geçiş kalıcıdır. Gen1 öğesine dönmek için bir işlem yoktur.
+- Gen2 'e geçmek için SQL havuzunun çalışıyor olması gerekir
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- [Azure portalında](https://portal.azure.com/)oturum açın.
-- SQL havuzunun çalıştığını emin olun - Gen2'ye geçiş yapmak gerekir
+- [Azure Portal](https://portal.azure.com/) oturum açın.
+- SQL havuzunun çalıştığından emin olun; Gen2 'e geçirilmesi gerekir
 
 ### <a name="powershell-upgrade-commands"></a>PowerShell yükseltme komutları
 
-1. Yükseltilecek İşlem Optimize Edilen Gen1 tier SQL havuzu duraklatılırsa, [SQL havuzunu devam ettirin.](pause-and-resume-compute-portal.md)
+1. Yükseltilecek Işlem için Iyileştirilmiş Gen1 katman SQL havuzu duraklatıldığında, [SQL havuzunu sürdürür](pause-and-resume-compute-portal.md).
 
-2. Birkaç dakikalık kapalı kalma süresine hazırlıklı olun.
+2. Birkaç dakika kapalı kalma süresi için hazırlıklı olun.
 
-3. İşlem Optimize Edilmiş Gen1 performans düzeylerine yapılan kod başvurularını belirleyin ve bunları eşdeğer İşlem Optimize Edilmiş Gen2 performans düzeyine değiştirin. Yükseltmeden önce kod başvurularını güncelleştirmeniz gereken iki örnek aşağıda verilmiştir:
+3. Işlem için Iyileştirilmiş Gen1 performans düzeylerine yönelik kod başvurularını belirleyip bunları eşdeğer Işlem için Iyileştirilmiş Gen2 performans düzeyiyle değiştirin. Yükseltmeden önce kod başvurularını güncelleştirmeniz gereken iki örnek aşağıda verilmiştir:
 
-   Orijinal Gen1 PowerShell komutu:
+   Özgün Gen1 PowerShell komutu:
 
    ```powershell
    Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
-   Şu şekilde değiştirilmiştir:
+   Değiştirme tarihi:
 
    ```powershell
    Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE]
-   > -RequestedServiceObjectiveName "DW300" olarak değiştirilir - RequestedServiceObjectiveName "DW300**c**"
+   > -RequestedServiceObjectiveName "DW300",-RequestedServiceObjectiveName "DW300**c**" olarak değiştirildi
    >
 
-   Orijinal Gen1 T-SQL komutu:
+   Özgün Gen1 T-SQL komutu:
 
    ```SQL
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300') ;
    ```
 
-   Şu şekilde değiştirilmiştir:
+   Değiştirme tarihi:
 
    ```sql
    ALTER DATABASE mySampleDataWarehouse MODIFY (SERVICE_OBJECTIVE = 'DW300c') ;
    ```
 
    > [!NOTE]
-   > SERVICE_OBJECTIVE = 'DW300' SERVICE_OBJECTIVE = 'DW300**c**' olarak değiştirilir
+   > SERVICE_OBJECTIVE = ' DW300 ' SERVICE_OBJECTIVE = ' DW300**c**' olarak değiştirildi
 
-## <a name="start-the-upgrade"></a>Yükseltmeyi başlatın
+## <a name="start-the-upgrade"></a>Yükseltmeyi Başlat
 
-1. Azure portalındaki İşlem Optimize Gen1 SQL havuzuna gidin. Yükseltilecek İşlem Optimize Edilen Gen1 tier SQL havuzu duraklatılırsa, [SQL havuzunu devam ettirin.](pause-and-resume-compute-portal.md)
-2. Görevler sekmesi altında **Gen2 kartına Yükseltme'yi** seçin: ![Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
+1. Azure portal, Işlem için Iyileştirilmiş Gen1 SQL havuzunuza gidin. Yükseltilecek Işlem için Iyileştirilmiş Gen1 katman SQL havuzu duraklatıldığında, [SQL havuzunu sürdürür](pause-and-resume-compute-portal.md).
+2. Görevler sekmesinin altında **Gen2 kartına Yükselt** ' i seçin: ![Upgrade_1](./media/upgrade-to-latest-generation/upgrade-to-gen2-1.png)
 
    > [!NOTE]
-   > Görevler sekmesi altında **Gen2 kartına Yükseltme'yi** görmüyorsanız, abonelik türünüz geçerli bölgede sınırlıdır.
-   > Aboneliğinizin beyaz listeye alınması için [bir destek bileti gönderin.](sql-data-warehouse-get-started-create-support-ticket.md)
+   > Görevler sekmesinde **Gen2 kartına yükseltme** seçeneğini görmüyorsanız, abonelik türü geçerli bölgede sınırlandırılır.
+   > Aboneliğinizi beyaz listeye almak için [bir destek bileti gönderebilirsiniz](sql-data-warehouse-get-started-create-support-ticket.md) .
 
-3. Yükseltmeden önce iş yükünüzün çalışmasını ve titremeyi tamamladığından emin olun. SQL havuzunuz Compute Optimize Gen2 tier SQL pool olarak tekrar çevrimiçi olmadan önce birkaç dakika kapalı kalma süresi yaşayacaksınız. **Yükseltme'yi seçin**:
+3. Yükseltmeden önce iş yükünüzün çalıştığından ve sessiz bir şekilde tamamlandığından emin olun. SQL havuzunuz, Işlem için Iyileştirilmiş Gen2 katman SQL havuzu olarak yeniden çevrimiçi hale gelmeden birkaç dakika boyunca kapalı kalma süresi ile karşılaşırsınız. **Yükseltme seçin**:
 
    ![Upgrade_2](./media/upgrade-to-latest-generation/upgrade-to-gen2-2.png)
 
-4. Azure portalındaki durumu kontrol ederek **yükseltmenizi izleyin:**
+4. Azure portal durumunu denetleyerek **yükseltmeniz izleyin** :
 
-   ![Yükseltme3](./media/upgrade-to-latest-generation/upgrade-to-gen2-3.png)
+   ![Upgrade3](./media/upgrade-to-latest-generation/upgrade-to-gen2-3.png)
 
-   Yükseltme işleminin ilk adımı, tüm oturumların öldürüleceği ve bağlantıların bırakılabildiği ölçek işleminden ("Yükseltme - Çevrimdışı") geçer.
+   Yükseltme işleminin ilk adımı, tüm oturumların sonlandırdığı ölçek işlemi ("yükseltme-çevrimdışı") ile geçer ve bağlantılar bırakılır.
 
-   Yükseltme işleminin ikinci adımı veri geçişidir ("Yükseltme - Çevrimiçi"). Veri geçişi çevrimiçi bir arka plan işlemidir. Bu işlem, sütun verilerini yerel bir SSD önbelleği kullanarak eski depolama mimarisinden yeni depolama mimarisine yavaşça taşır. Bu süre zarfında, SQL havuzunuz sorgulama ve yükleme için çevrimiçi olacaktır. Verileriniz, geçirilip geçirilmediğine bakılmaksızın sorgulanabilir. Veri geçişi, veri boyutunuza, performans düzeyinize ve sütun mağazanızın segmentlerinin sayısına bağlı olarak değişen oranlarda gerçekleşir.
+   Yükseltme işleminin ikinci adımı veri geçişidir ("yükseltiliyor-online"). Veri geçişi, çevrimiçi bir Trickle arka plan işlemidir. Bu işlem, yerel bir SSD Önbelleği kullanarak eski depolama mimarisinden yeni depolama mimarisine veri sütunlu verileri yavaş bir şekilde taşır. Bu süre boyunca, sorgulama ve yükleme için SQL havuzunuz çevrimiçi olacak. Verileriniz, TAŞINMADIĞINA bakılmaksızın sorgu için kullanılabilir olacaktır. Veri geçişi, veri boyutunuza, performans düzeyinize ve columnstore segmentlerinizin sayısına bağlı olarak değişen oranlarda meydana gelir.
 
-5. **İsteğe Bağlı Öneri:** Ölçekleme işlemi tamamlandıktan sonra, veri geçişi arka plan işlemini hızlandırabilirsiniz. Daha büyük bir SLO ve kaynak sınıfında sorgulayacağınız tüm birincil sütun deposu tablolarında [Alter Index yeniden oluşturmayı](sql-data-warehouse-tables-index.md) çalıştırarak veri hareketini zorlayabilirsiniz. Bu işlem, tablolarınızın sayısına ve boyutlarına bağlı olarak tamamlanması saatler süren damla arka plan işlemiyle karşılaştırıldığında **çevrimdışıdır.** Ancak, tamamlandığında, yüksek kaliteli satır gruplarına sahip yeni gelişmiş depolama mimarisi sayesinde veri geçişi çok daha hızlı olacaktır.
+5. **Isteğe bağlı öneri:** Ölçeklendirme işlemi tamamlandıktan sonra, veri geçişi arka plan sürecini hızlandırabilirsiniz. Daha büyük bir SLO ve kaynak sınıfında sorguladığınız tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri hareketini zorlayabilirsiniz. Bu işlem, tablolarınızın sayısına ve boyutlarına göre tamamlanması saat sürebilen, Trickle arka plan işlemiyle karşılaştırıldığında **çevrimdışı** . Ancak, işlem tamamlandıktan sonra, yüksek kaliteli satır grupları olan yeni Gelişmiş depolama mimarisi nedeniyle veri geçişi çok daha hızlı olur.
 
 > [!NOTE]
-> Alter Index yeniden oluşturma çevrimdışı bir işlemdir ve yeniden oluşturma tamamlanana kadar tablolar kullanılamaz.
+> Alter INDEX REBUILD çevrimdışı bir işlemdir ve tablolar yeniden oluşturma tamamlanana kadar kullanılamaz.
 
-Aşağıdaki sorgu, veri geçişini hızlandırmak için gerekli Alter Index Rebuild komutlarını oluşturur:
+Aşağıdaki sorgu, veri geçişini hızlandırmak için gereken alter INDEX yeniden oluşturma komutlarını üretir:
 
 ```sql
 SELECT 'ALTER INDEX [' + idx.NAME + '] ON ['
@@ -178,48 +178,48 @@ FROM   sys.indexes idx
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ```
 
-## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Azure portalı üzerinden geri yükleme yi kullanarak Azure coğrafi bölgesinden yükseltme
+## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Azure portal aracılığıyla geri yükleme kullanarak bir Azure coğrafi bölgesinden yükseltme
 
-## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portalını kullanarak kullanıcı tanımlı bir geri yükleme noktası oluşturma
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tanımlı geri yükleme noktası oluşturma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. Geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
+2. İçin geri yükleme noktası oluşturmak istediğiniz SQL havuzuna gidin.
 
-3. Genel Bakış bölümünün üst kısmında **+Yeni Geri Yükleme Noktası'nı**seçin.
+3. Genel Bakış bölümünün en üstünde **+ Yeni geri yükleme noktası**' nı seçin.
 
-    ![Yeni Geri Yükleme Noktası](./media/upgrade-to-latest-generation/creating_restore_point_0.png)
+    ![Yeni geri yükleme noktası](./media/upgrade-to-latest-generation/creating_restore_point_0.png)
 
 4. Geri yükleme noktanız için bir ad belirtin.
 
-    ![Geri Yükleme Noktasının Adı](./media/upgrade-to-latest-generation/creating_restore_point_1.png)
+    ![Geri yükleme noktasının adı](./media/upgrade-to-latest-generation/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portalını kullanarak etkin veya duraklatılmış bir veritabanını geri yükleme
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal kullanarak etkin veya duraklatılmış bir veritabanını geri yükleme
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Geri yüklemek istediğiniz SQL havuzuna gidin.
-3. Genel Bakış bölümünün üst kısmında Geri **Yükle'yi**seçin.
+3. Genel Bakış bölümünün en üstünde **geri yükle**' yi seçin.
 
     ![ Geri Yüklemeye Genel Bakış](./media/upgrade-to-latest-generation/restoring_0.png)
 
-4. Otomatik **geri yükleme noktalarını** veya **kullanıcı tanımlı geri yükleme noktalarını**seçin. Kullanıcı tanımlı geri yükleme noktaları **için, kullanıcı tanımlı bir geri yükleme noktası seçin** veya kullanıcı **tanımlı yeni bir geri yükleme noktası oluşturun.** Sunucu için **yeni oluştur'u** seçin ve Gen2 destekli coğrafi bölgede bir sunucu seçin.
+4. **Otomatik geri yükleme noktaları** veya **Kullanıcı tanımlı geri yükleme noktaları**seçeneklerinden birini belirleyin. Kullanıcı tanımlı geri yükleme noktaları için, **Kullanıcı tanımlı bir geri yükleme noktası seçin** veya **Yeni bir Kullanıcı tanımlı geri yükleme noktası oluşturun**. Sunucu için **Yeni oluştur** ' u seçin ve Gen2 tarafından desteklenen bir coğrafi bölgede sunucu seçin.
 
     ![Otomatik Geri Yükleme Noktaları](./media/upgrade-to-latest-generation/restoring_1.png)
 
-## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>PowerShell'i kullanarak Azure coğrafi bölgesinden geri yükleme
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>PowerShell kullanarak bir Azure coğrafi bölgesinden geri yükleme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bir veritabanını kurtarmak için [Geri Yükleme-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet'ini kullanın.
+Bir veritabanını kurtarmak için [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın.
 
 > [!NOTE]
-> Gen2'ye coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için isteğe bağlı bir parametre olarak Gen2 ServiceObjectiveName (örneğin DW1000**c)** belirtin.
+> Gen2 'e coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için, isteğe bağlı bir parametre olarak bir Gen2 ServiceObjectiveName (ör. DW1000**c**) belirtin.
 
 1. Windows PowerShell'i açın.
-2. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
+2. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
 3. Geri yüklenecek veritabanını içeren aboneliği seçin.
 4. Kurtarmak istediğiniz veritabanını alın.
-5. Gen2 ServiceObjectiveName belirterek veritabanı için kurtarma isteğini oluşturun.
+5. Bir Gen2 ServiceObjectiveName belirterek veritabanı için kurtarma isteği oluşturun.
 6. Coğrafi olarak geri yüklenen veritabanının durumunu doğrulayın.
 
 ```Powershell
@@ -238,12 +238,12 @@ $GeoRestoredDatabase.status
 ```
 
 > [!NOTE]
-> Geri yükleme tamamlandıktan sonra veritabanınızı yapılandırmak için [bkz.](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
+> Geri yükleme tamamlandıktan sonra veritabanınızı yapılandırmak için, [kurtarma sonrasında veritabanınızı yapılandırma](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)konusuna bakın.
 
-Kurtarılan veritabanı, kaynak veritabanı TDE etkinse TDE etkin olur.
+Kaynak veritabanı TDE etkinse Kurtarılan veritabanı TDE etkinleştirilir.
 
-SQL havuzunuzla ilgili herhangi bir sorun la karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve "Gen2 yükseltmesi" referansı oluşturun.
+SQL havuzunuz ile ilgili herhangi bir sorunla karşılaşırsanız, bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve olası neden olarak "Gen2 Upgrade" başvurusu yapın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yükseltilmiş SQL havuzunuz çevrimiçi. Gelişmiş mimariden yararlanmak için [İş Yükü Yönetimi için Kaynak sınıflarına](resource-classes-for-workload-management.md)bakın.
+Yükseltilen SQL havuzunuz çevrimiçi. Gelişmiş mimariden yararlanmak için bkz. [Iş yükü yönetimi Için kaynak sınıfları](resource-classes-for-workload-management.md).

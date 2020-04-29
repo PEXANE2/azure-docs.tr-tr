@@ -1,6 +1,6 @@
 ---
-title: Azure'da yük dengeleme hizmetlerini kullanma | Microsoft Dokümanlar
-description: 'Bu öğretici, Azure yük dengeleme portföyünü kullanarak nasıl bir senaryo oluşturabileceğinizi gösterir: Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyici.'
+title: Azure 'da Yük Dengeleme hizmetlerini kullanma | Microsoft Docs
+description: 'Bu öğreticide, Azure Yük Dengeleme portföyünü kullanarak nasıl senaryo oluşturacağınız gösterilmektedir: Traffic Manager, Application Gateway ve Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -13,202 +13,202 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
 ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757197"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
 ## <a name="introduction"></a>Giriş
 
-Microsoft Azure, ağ trafiğinin nasıl dağıtıldığını ve yük dengeli olarak dağıtıldığını yönetmek için birden çok hizmet sağlar. En uygun çözümü oluşturmak için bu hizmetleri tek tek kullanabilir veya ihtiyaçlarınıza bağlı olarak yöntemlerini birleştirebilirsiniz.
+Microsoft Azure, ağ trafiğinin nasıl dağıtıldığını ve yük dengeli şekilde yönetilmesine yönelik birden çok hizmet sağlar. Gereksinimlerinize bağlı olarak, en iyi çözümü oluşturmak için bu hizmetleri ayrı ayrı kullanabilir veya yöntemlerini birleştirebilirsiniz.
 
-Bu öğreticide, öncelikle bir müşteri kullanım örneğini tanımlıyoruz ve aşağıdaki Azure yük dengeleme portföyü olan Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyicisi'ni kullanarak nasıl daha sağlam ve performanslı hale getirilebildiğini görüyoruz. Daha sonra, coğrafi olarak gereksiz olan, trafiği VM'lere dağıtan ve farklı istek türlerini yönetmenize yardımcı olan bir dağıtım oluşturmak için adım adım yönergeler sağlarız.
+Bu öğreticide, ilk olarak bir müşteri kullanım örneği tanımlar ve aşağıdaki Azure Yük Dengeleme portföyünü kullanarak nasıl daha sağlam ve performans sunduğumuz hakkında bilgi alabilirsiniz: Traffic Manager, Application Gateway ve Load Balancer. Daha sonra coğrafi olarak yedekli bir dağıtım oluşturmaya, trafiği VM 'lere dağıtmanıza ve farklı istek türlerini yönetmenize yardımcı olacak adım adım yönergeler sağlıyoruz.
 
-Kavramsal düzeyde, bu hizmetlerin her biri yük dengeleme hiyerarşisinde ayrı bir rol oynar.
+Kavramsal düzeyde, bu hizmetlerin her biri, Yük Dengeleme hiyerarşisinde ayrı bir rol oynar.
 
-* **Trafik Yöneticisi** küresel DNS yük dengeleme sağlar. Gelen DNS isteklerini bakar ve müşterinin seçtiği yönlendirme ilkesine uygun olarak sağlıklı bir bitiş noktasıyla yanıt verir. Yönlendirme yöntemleri için seçenekler şunlardır:
-  * İstekvereni gecikme sonu açısından en yakın uç noktaya göndermek için performans yönlendirmesi.
-  * Tüm trafiği yedekleme olarak diğer uç noktalarla birlikte bir bitiş noktasına yönlendirmek için öncelik yönlendirmesi.
-  * Trafiği her bitiş noktasına atanan ağırlıklandırmaya göre dağıtan ağırlıklı yuvarlak-robin yönlendirme.
-  * Trafiğin kullanıcının coğrafi konumuna bağlı olarak uygulama uç noktalarına dağıtılması için coğrafya tabanlı yönlendirme.
-  * Trafiğin kullanıcının alt ağına (IP adresi aralığı) dayalı olarak uygulama uç noktalarınıza dağıtılması için alt ağ tabanlı yönlendirme.
-  * Tek bir DNS yanıtında birden fazla uygulama uç noktasının IP adreslerini göndermenizi sağlayan Çok Değerli yönlendirme.
+* **Traffic Manager** genel DNS yük dengelemesi sağlar. Müşterinin seçtiği yönlendirme ilkesine uygun olarak, gelen DNS isteklerine bakar ve sağlıklı bir uç nokta ile yanıt verir. Yönlendirme yöntemleri seçenekleri şunlardır:
+  * İstek sahibinin gecikme süresi bakımından en yakın uç noktaya gönderilmesi için performans yönlendirme.
+  * Tüm trafiği bir uç noktaya yönlendirmek için öncelik yönlendirme ve diğer uç noktalar yedekleme olarak.
+  * Her bir uç noktaya atanan ağırlığa göre trafiği dağıtan ağırlıklı hepsini bir kez deneme yönlendirmesi.
+  * Kullanıcının coğrafi konumunu temel alarak trafiği uygulama uç noktalarına dağıtmak için coğrafya tabanlı yönlendirme.
+  * Kullanıcının alt ağına (IP adres aralığı) bağlı olarak trafiği uygulama uç noktalarınıza dağıtmak için alt ağa dayalı yönlendirme.
+  * Tek bir DNS yanıtında birden fazla uygulama uç noktasına ait IP adresleri göndermenizi sağlayan çoklu değerli yönlendirme.
 
-  İstemci doğrudan Trafik Yöneticisi tarafından döndürülen bitiş noktasına bağlanır. Azure Trafik Yöneticisi, bir bitiş noktasının sağlıksız olduğunu algılar ve istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Trafik Yöneticisi belgelerine](traffic-manager-overview.md) bakın.
-* **Uygulama Ağ Geçidi,** uygulamanız için çeşitli Katman 7 yük dengeleme özellikleri sunan uygulama dağıtım denetleyicisi (ADC) hizmeti sağlar. Cpu yoğun TLS sonlandırmayı uygulama ağ geçidine boşaltarak müşterilerin web farm üretkenliğini optimize etmesini sağlar. Diğer Katman 7 yönlendirme yetenekleri arasında gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden çok web sitesini barındırma olanağı yer almaktadır. Uygulama Ağ Geçidi, Internet'e bakan bir ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin birleşimi olarak yapılandırılabilir. Uygulama Ağ Geçidi tamamen Azure tarafından yönetilir, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
-* **Yük Dengeleyici,** tüm UDP ve TCP protokolleri için yüksek performanslı, düşük gecikmeli Katman 4 yük dengeleme hizmetleri sağlayan Azure SDN yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
+  İstemci, Traffic Manager tarafından döndürülen uç noktaya doğrudan bağlanır. Azure Traffic Manager, bir uç noktanın sağlıksız olduğunu algılar ve sonra istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Traffic Manager belgelerine](traffic-manager-overview.md) bakın.
+* **Application Gateway** , uygulamanız Için çeşitli katman 7 yük dengeleme özellikleri sunan bir hizmet olarak uygulama teslim DENETLEYICISI (ADC) sağlar. Müşterilerin, CPU yoğun TLS sonlandırmasını uygulama ağ geçidine devrederek, Web grubu üretkenliğini iyileştirmelerine olanak tanır. Diğer katman 7 yönlendirme özellikleri, gelen trafik, tanımlama bilgisi tabanlı oturum benzeşimi, URL yolu tabanlı Yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden fazla Web sitesini barındırma olanağı içerir. Application Gateway, Internet 'e yönelik ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin bir birleşimi olarak yapılandırılabilir. Application Gateway tamamen Azure tarafından yönetilen, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
+* **Load Balancer** , tüm UDP ve TCP protokolleri için yüksek performanslı ve düşük gecikmeli katman 4 Yük Dengeleme hizmetleri sunan Azure Sdn yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu örnek senaryoda, iki tür içeriğe hizmet veren basit bir web sitesi kullanıyoruz: resimler ve dinamik olarak işlenmiş web sayfaları. Web sitesi coğrafi olarak gereksiz olmalıdır ve kullanıcılarına en yakın (en düşük gecikme) konumdan hizmet etmelidir. Uygulama geliştiricisi, desen/görüntülerle/* eşleşen tüm URL'lerin, web çiftliğinin geri kalanından farklı özel bir VM havuzundan sunulduğuna karar vermiştir.
+Bu örnek senaryoda, iki tür içerik sunan basit bir Web sitesi kullanıyoruz: görüntüler ve dinamik olarak işlenmiş Web sayfaları. Web sitesi coğrafi olarak yedekli olmalıdır ve kullanıcılara en yakın (en düşük gecikme süresi) konumundan sahip olması gerekir. Uygulama geliştiricisi,/images/* düzeniyle eşleşen tüm URL 'Lerin, Web grubunun geri kalanından farklı olan adanmış bir VM havuzundan sunulduğunu kararmıştır.
 
-Ayrıca, dinamik içeriğe hizmet veren varsayılan VM havuzunun yüksek kullanılabilirlik kümesinde barındırılan bir arka uç veritabanıyla konuşması gerekir. Dağıtımın tamamı Azure Kaynak Yöneticisi aracılığıyla ayarlanır.
+Ayrıca, dinamik içeriğe hizmet veren varsayılan VM havuzunun, yüksek kullanılabilirlik kümesinde barındırılan bir arka uç veritabanıyla iletişim sağlaması gerekir. Tüm dağıtım Azure Resource Manager ile ayarlanır.
 
-Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyici kullanarak bu web sitesi bu tasarım hedeflerine ulaşmak için izin verir:
+Traffic Manager, Application Gateway ve Load Balancer kullanımı, bu Web sitesinin bu tasarım hedeflerini elde etmesine izin verir:
 
-* **Çok coğrafi artıklık**: Bir bölge çökerse, Trafik Yöneticisi, uygulama sahibinin herhangi bir müdahalesi olmaksızın trafiği sorunsuz bir şekilde en yakın bölgeye yönlendirir.
-* **Azaltılmış gecikme :** Trafik Yöneticisi müşteriyi otomatik olarak en yakın bölgeye yönlendirdiği için, müşteri web sayfası içeriğini talep ederken daha düşük gecikme gecikmesi yle karşılar.
-* **Bağımsız ölçeklenebilirlik**: Web uygulaması iş yükü içerik türüne göre ayrıldığından, uygulama sahibi istek iş yüklerini birbirinden bağımsız ölçeklendirebilir. Uygulama Ağ Geçidi, belirtilen kurallara ve uygulamanın durumuna göre trafiğin doğru havuzlara yönlendirilmesini sağlar.
-* **Dahili yük dengelemesi**: Yük Dengeleyicisi yüksek kullanılabilirlik kümesinin önünde olduğundan, yalnızca bir veritabanı için etkin ve sağlıklı bitiş noktası uygulamaya maruz kalır. Ayrıca, bir veritabanı yöneticisi, ön uç uygulamasından bağımsız olarak kümeye etkin ve pasif yinelemeler dağıtarak iş yükünü en iyi duruma getirebilir. Load Balancer, yüksek kullanılabilirlik kümesine bağlantılar sağlar ve yalnızca sağlıklı veritabanlarının bağlantı istekleri almasını sağlar.
+* **Çoklu coğrafi yedeklilik**: bir bölge kapalıysa, uygulama sahibinden herhangi bir müdahale olmadan trafiği en yakın bölgeye sorunsuzca yönlendirir Traffic Manager.
+* **Azaltılan gecikme**: Traffic Manager, müşteriyi en yakın bölgeye otomatik olarak yönlendirtiğinden, müşteri, Web sayfası içeriğini istenirken daha düşük gecikme süresine sahiptir.
+* **Bağımsız ölçeklenebilirlik**: Web uygulaması iş yükü içerik türüne göre ayrıldığından, uygulama sahibi, istek iş yüklerini birbirinden bağımsız olarak ölçeklendirebilirler. Application Gateway, trafiğin belirtilen kurallara ve uygulamanın sistem durumuna göre doğru havuzlara yönlendirilmesini sağlar.
+* **İç Yük Dengeleme**: Load Balancer yüksek kullanılabilirlik kümesinin önünde olduğundan, yalnızca bir veritabanının etkin ve sağlıklı uç noktası uygulamaya sunulur. Ayrıca, bir veritabanı yöneticisi, etkin ve pasif çoğaltmaları küme genelinde ön uç uygulamadan bağımsız olarak dağıtarak iş yükünü iyileştirebilirler. Load Balancer, yüksek kullanılabilirlik kümesine bağlantı sağlar ve yalnızca sağlıklı veritabanlarının bağlantı isteklerini almasını sağlar.
 
-Aşağıdaki diyagram, bu senaryonun mimarisini gösterir:
+Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
-![Yük dengeleme mimarisinin diyagramı](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
+![Yük Dengeleme mimarisinin diyagramı](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Bu örnek, Azure'un sunduğu yük dengeleme hizmetlerinin birçok olası yapılandırmalarından yalnızca biridir. Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyicisi karıştırılabilir ve yük dengeleme ihtiyaçlarınıza en uygun şekilde eşlenebilir. Örneğin, TLS boşaltma veya Katman 7 işlemi gerekli değilse, Yük Dengeleyici Sİstem Ağ Geçidi yerine kullanılabilir.
+> Bu örnek, Azure tarafından sunulan Yük Dengeleme hizmetlerinin olası birçok yapılandırmasından yalnızca biridir. Traffic Manager, Application Gateway ve Load Balancer, Yük Dengeleme gereksinimlerinize en iyi şekilde karışabilir ve eşleştirilebilir. Örneğin, TLS yük boşaltma veya katman 7 işleme gerekli değilse, Load Balancer Application Gateway yerine kullanılabilir.
 
-## <a name="setting-up-the-load-balancing-stack"></a>Yük dengeleme yığınını ayarlama
+## <a name="setting-up-the-load-balancing-stack"></a>Yük Dengeleme yığınını ayarlama
 
-### <a name="step-1-create-a-traffic-manager-profile"></a>Adım 1: Trafik Yöneticisi profili oluşturma
+### <a name="step-1-create-a-traffic-manager-profile"></a>1. Adım: Traffic Manager profili oluşturma
 
-1. Azure portalında, **kaynak** > **Oluşturma** > **Trafik Yöneticisi Profili** > **Oluştur'u**tıklatın.
+1. Azure Portal, **kaynak** > **ağı** > oluştur**Traffic Manager profil** > **Oluştur**' a tıklayın.
 2. Aşağıdaki temel bilgileri girin:
 
-   * **Adı**: Trafik Yöneticisi profilinize DNS öneki adı verin.
-   * **Yönlendirme yöntemi**: Trafik yönlendirme yöntemi ilkesini seçin. Yöntemler hakkında daha fazla bilgi için [Trafik Yöneticisi trafik yönlendirme yöntemleri hakkında](traffic-manager-routing-methods.md)bilgi.
-   * **Abonelik**: Profili içeren aboneliği seçin.
-   * **Kaynak grubu**: Profili içeren kaynak grubunu seçin. Yeni veya varolan bir kaynak grubu olabilir.
-   * **Kaynak grubu konumu**: Trafik Yöneticisi hizmeti geneldir ve bir konuma bağlı değildir. Ancak, Trafik Yöneticisi profiliyle ilişkili meta verilerin bulunduğu grup için bir bölge belirtmeniz gerekir. Bu konumun profilin çalışma zamanı kullanılabilirliği üzerinde hiçbir etkisi yoktur.
+   * **Ad**: Traffic Manager PROFILINIZE bir DNS ön eki adı verin.
+   * **Yönlendirme yöntemi**: trafik yönlendirme yöntemi ilkesini seçin. Yöntemler hakkında daha fazla bilgi için bkz. [Traffic Manager trafik yönlendirme yöntemleri hakkında](traffic-manager-routing-methods.md).
+   * **Abonelik**: profili içeren aboneliği seçin.
+   * **Kaynak grubu**: profili içeren kaynak grubunu seçin. Yeni veya mevcut bir kaynak grubu olabilir.
+   * **Kaynak grubu konumu**: Traffic Manager hizmeti geneldir ve bir konum ile bağlantılı değildir. Ancak, Traffic Manager profiliyle ilişkili meta verilerin bulunduğu grup için bir bölge belirtmeniz gerekir. Bu konum, profilin çalışma zamanı kullanılabilirliğini etkilemez.
 
-3. Trafik Yöneticisi profilini oluşturmak için **Oluştur'u** tıklatın.
+3. Traffic Manager profili oluşturmak için **Oluştur** ' a tıklayın.
 
-   !["Trafik Yöneticisi Oluştur" bıçağı](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   !["Traffic Manager oluştur" dikey penceresi](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
-### <a name="step-2-create-the-application-gateways"></a>Adım 2: Uygulama ağ geçitlerini oluşturma
+### <a name="step-2-create-the-application-gateways"></a>2. Adım: uygulama ağ geçitlerini oluşturma
 
-1. Azure portalında, sol bölmede, **kaynak** > **Ağ** > **Uygulaması Ağ Geçidi**Oluştur'u tıklatın.
+1. Azure Portal, sol bölmedeki **kaynak** > **ağı** > oluştur**Application Gateway**' a tıklayın.
 2. Uygulama ağ geçidi hakkında aşağıdaki temel bilgileri girin:
 
-   * **Adı**: Uygulama ağ geçidinin adı.
-   * **SKU boyutu**: Küçük, Orta veya Büyük olarak kullanılabilen uygulama ağ geçidinin boyutu.
-   * **Örnek sayısı**: Örnek sayısı, 2 ile 10 arasında bir değer.
-   * **Kaynak grubu**: Uygulama ağ geçidini tutan kaynak grubu. Varolan bir kaynak grubu veya yeni bir kaynak grubu olabilir.
-   * **Konum**: Kaynak grubuyla aynı konumolan uygulama ağ geçidinin bulunduğu bölge. Sanal ağ ve genel IP ağ geçidi yle aynı konumda olması gerektiğinden, konum önemlidir.
+   * **Ad**: uygulama ağ geçidinin adı.
+   * **SKU boyutu**: küçük, orta veya büyük olarak kullanılabilen uygulama ağ geçidinin boyutu.
+   * **Örnek sayısı**: 2 ile 10 arasında bir değer olan örnek sayısı.
+   * **Kaynak grubu**: Application Gateway 'i tutan kaynak grubu. Mevcut bir kaynak grubu veya yeni bir kaynak olabilir.
+   * **Konum**: kaynak grubuyla aynı konum olan uygulama ağ geçidinin bölgesi. Sanal ağ ve genel IP ağ geçidiyle aynı konumda olması gerektiğinden konum önemlidir.
 3. **Tamam**'a tıklayın.
-4. Uygulama ağ geçidi için sanal ağı, alt ağı, ön uç IP'sini ve dinleyici yapılandırmalarını tanımlayın. Bu senaryoda, ön uç IP **adresi,** daha sonra Trafik Yöneticisi profiline bir bitiş noktası olarak eklenmesini sağlayan Geneldir.
+4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel**hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
 5. Dinleyiciyi aşağıdaki seçeneklerden biriyle yapılandırın:
-    * HTTP kullanıyorsanız, yapılandırmak için hiçbir şey yoktur. **Tamam**'a tıklayın.
-    * HTTPS kullanıyorsanız, daha fazla yapılandırma gereklidir. 9. adımdan başlayarak [bir uygulama ağ geçidi oluşturma'ya](../application-gateway/application-gateway-create-gateway-portal.md)bakın. Yapılandırmayı tamamladığınızda **Tamam'ı**tıklatın.
+    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**'a tıklayın.
+    * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/application-gateway-create-gateway-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma
 
-Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılan bir uygulama ağ geçidi, round-robin dağıtımına ek olarak istek URL'sinin yol deseni alır. Bu senaryoda, herhangi bir URL'yi "/images/\*" ile görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz. Bir uygulama ağ geçidi için URL yol tabanlı yönlendirme yapılandırma hakkında daha fazla bilgi için, [bir uygulama ağ geçidi için yol tabanlı bir kural oluştur'a](../application-gateway/application-gateway-create-url-route-portal.md)bakın.
+Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmış bir uygulama ağ geçidi, hepsini bir kez deneme dağıtımına ek olarak istek URL 'sinin yol modelini alır. Bu senaryoda, "/images/\*" ile herhangi bir URL 'yi görüntü sunucusu havuzuna yönlendirmek için yol tabanlı bir kural ekliyoruz. Uygulama ağ geçidi için URL yolu tabanlı yönlendirmeyi yapılandırma hakkında daha fazla bilgi için, bkz. [uygulama ağ geçidi için yol tabanlı bir kural oluşturma](../application-gateway/application-gateway-create-url-route-portal.md).
 
-![Uygulama Ağ Geçidi web katmanı diyagramı](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
+![Application Gateway Web katmanı diyagramı](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
-1. Kaynak grubunuzdan, önceki bölümde oluşturduğunuz uygulama ağ geçidi örneğine gidin.
-2. **Ayarlar**altında, **Arka Uç havuzlarını**seçin ve ardından web katmanı arka uç havuzlarıyla ilişkilendirmek istediğiniz VM'leri eklemek için **Ekle'yi** seçin.
-3. Arka uç havuzunun adını ve havuzda bulunan makinelerin tüm IP adreslerini girin. Bu senaryoda, sanal makinelerin iki arka uç sunucu havuzubağlıyoruz.
+1. Kaynak grubunuzda, önceki bölümde oluşturduğunuz uygulama ağ geçidinin örneğine gidin.
+2. **Ayarlar**altında, **arka uç havuzları**' nı seçin ve ardından Web katmanı arka uç havuzlarıyla ilişkilendirmek istediğiniz VM 'leri eklemek için **Ekle** ' yi seçin.
+3. Arka uç havuzunun adını ve havuzda bulunan makinelerin tüm IP adreslerini girin. Bu senaryoda, sanal makinelerin iki arka uç sunucu havuzunu bağlanıyoruz.
 
-   ![Uygulama Ağ Geçidi "Arka uç havuzu ekle"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   !["Arka uç Havuzu Ekle" Application Gateway](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
-4. Uygulama ağ geçidinin **Ayarları'nda** **Kurallar'ı**seçin ve ardından kural eklemek için **Yol tabanlı** düğmesini tıklatın.
+4. Uygulama ağ geçidinin **Ayarlar** bölümünde **kurallar**' ı seçin ve ardından bir kural eklemek için **yol tabanlı** düğmesine tıklayın.
 
-   ![Uygulama Ağ Geçidi Kuralları "Yol tabanlı" düğmesi](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Application Gateway kuralları "yol tabanlı" düğmesi](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. Aşağıdaki bilgileri sağlayarak kuralı yapılandırın.
 
    Temel ayarlar:
 
-   + **Adı**: Portalda erişilebilen kuralın dostu adıdır.
-   + **Dinleyici**: Kural için kullanılan dinleyici.
-   + **Varsayılan arka uç havuzu**: Varsayılan kuralla kullanılacak arka uç havuzu.
-   + **Varsayılan HTTP ayarları**: Varsayılan kuralla kullanılacak HTTP ayarları.
+   + **Ad**: portalda erişilebilen kuralın kolay adı.
+   + **Dinleyici**: kural için kullanılan dinleyici.
+   + **Varsayılan arka uç havuzu**: varsayılan kuralla kullanılacak arka uç Havuzu.
+   + **Varsayılan http ayarları**: varsayılan KURALLA kullanılacak http ayarları.
 
    Yol tabanlı kurallar:
 
-   + **Adı**: Yol tabanlı kuralın dostu adı.
-   + **Yollar**: Trafiği iletmek için kullanılan yol kuralı.
-   + **Arka uç havuzu**: Bu kuralla kullanılacak arka uç havuzu.
-   + **HTTP Ayarı**: Bu kuralla kullanılacak HTTP ayarları.
+   + **Ad**: yol tabanlı kuralın kolay adı.
+   + **Yollar**: trafiği iletmek için kullanılan yol kuralı.
+   + **Arka uç havuzu**: bu kuralla kullanılacak arka uç Havuzu.
+   + **Http ayarı**: Bu KURALLA kullanılacak http ayarları.
 
    > [!IMPORTANT]
-   > Yollar: Geçerli yollar "/" ile başlamalıdır. Joker "\*" " yalnızca sonunda izin verilir. Geçerli örnekler /xyz, /xyz\*, veya\*/xyz/ .
+   > Yollar: geçerli yollar "/" ile başlamalıdır. "\*" Joker karakterine yalnızca sonda izin verilir. Geçerli örnekler;/xaçıklık,\*/x, veya/xyız/.\*
 
-   ![Uygulama Ağ Geçidi "Yol tabanlı kural ekle" bıçak](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
+   ![Application Gateway "yol tabanlı kural ekle" dikey penceresi](./media/traffic-manager-load-balancing-azure/s2-appgw-pathrule-blade.png)
 
-### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>Adım 3: Trafik Yöneticisi uç noktalarına uygulama ağ geçitleri ekleme
+### <a name="step-3-add-application-gateways-to-the-traffic-manager-endpoints"></a>3. Adım: Traffic Manager uç noktalarına uygulama ağ geçitleri ekleme
 
-Bu senaryoda, Trafik Yöneticisi farklı bölgelerde bulunan uygulama ağ geçitlerine (önceki adımlarda yapılandırıldığı gibi) bağlanır. Artık uygulama ağ geçitleri yapılandırıldığına göre, bir sonraki adım bunları Trafik Yöneticisi profilinize bağlamaktır.
+Bu senaryoda Traffic Manager, farklı bölgelerde bulunan uygulama ağ geçitlerine (önceki adımlarda yapılandırıldığı gibi) bağlıdır. Artık uygulama ağ geçitleri yapılandırıldıktan sonra, bir sonraki adım bunları Traffic Manager profilinize bağlayayöneliktir.
 
-1. Trafik Yöneticisi profilinizi açın. Bunu yapmak için kaynak grubunuza bakın veya **Tüm Kaynaklar'dan**Trafik Yöneticisi profilinin adını arayın.
-2. Sol bölmede, **Bitiş Noktaları'nı**seçin ve ardından bitiş noktası eklemek için **Ekle'yi** tıklatın.
+1. Traffic Manager profilinizi açın. Bunu yapmak için, kaynak grubunuza bakın veya **tüm kaynaklardaki**Traffic Manager profilinin adını arayın.
+2. Sol bölmede **uç noktalar**' ı seçin ve sonra bir uç nokta eklemek için **Ekle** ' ye tıklayın.
 
-   ![Trafik Yöneticisi Uç Noktaları "Ekle" düğmesi](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Traffic Manager uç noktaları "Ekle" düğmesi](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. Aşağıdaki bilgileri girerek bir bitiş noktası oluşturun:
+3. Aşağıdaki bilgileri girerek bir uç nokta oluşturun:
 
-   * **Türü**: Yük dengesi için uç nokta türünü seçin. Bu senaryoda, azure **bitiş noktasını** seçin, çünkü daha önce yapılandırılan uygulama ağ geçidi örneklerine bağlıyoruz.
-   * **Adı**: Bitiş noktasının adını girin.
-   * **Hedef kaynak türü**: **Ortak IP adresini** seçin ve ardından Hedef **kaynağının**altında, daha önce yapılandırılan uygulama ağ geçidinin genel IP'sini seçin.
+   * **Tür**: yük dengelemeye yönelik uç nokta türünü seçin. Bu senaryoda, daha önce yapılandırılmış uygulama ağ geçidi örneklerine bağlandığımız için **Azure uç noktası** ' nı seçin.
+   * **Ad**: uç noktanın adını girin.
+   * **Hedef kaynak türü**: **genel IP adresi** ' ni seçin ve ardından **hedef kaynak**altında, daha önce yapılandırılan uygulama ağ geçidinin genel IP 'sini seçin.
 
-   ![Trafik Yöneticisi "Bitiş Noktası Ekle"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   !["Uç nokta Ekle" Traffic Manager](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
-4. Artık kurulumunuzu Trafik Yöneticisi profilinizin DNS'si ile erişerek test edebilirsiniz (bu örnekte: TrafficManagerScenario.trafficmanager.net). İstekleri yeniden gönderebilir, farklı bölgelerde oluşturulan VM'leri ve web sunucularını gündeme getirebilir veya kaldırabilir ve kurulumunuzu test etmek için Trafik Yöneticisi profil ayarlarını değiştirebilirsiniz.
+4. Artık, Traffic Manager profilinizin DNS 'sini kullanarak kurulumunuzu test edebilirsiniz (Bu örnekte: TrafficManagerScenario.trafficmanager.net). İstekleri yeniden gönderebilirsiniz, farklı bölgelerde oluşturulan VM 'Leri ve Web sunucularını alabilir ve bu ayarları, ayarlarınızı test etmek için Traffic Manager profil ayarlarını değiştirebilirsiniz.
 
-### <a name="step-4-create-a-load-balancer"></a>Adım 4: Yük dengeleyicisi oluşturma
+### <a name="step-4-create-a-load-balancer"></a>4. Adım: yük dengeleyici oluşturma
 
-Bu senaryoda, Load Balancer bağlantıları web katmanından yüksek kullanılabilirlik kümesi içindeki veritabanlarına dağıtır.
+Bu senaryoda, Load Balancer Web katmanından yüksek kullanılabilirlik kümesi içindeki veritabanlarına bağlantı dağıtır.
 
-Yüksek kullanılabilirlik içeren veritabanı kümeniz SQL Server AlwaysOn kullanıyorsa, adım adım talimatlar için [bir veya daha fazla Always On Availability Group Dinleyicisini Yapılandırmaya](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) bakın.
+Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyorsa, adım adım yönergeler için [bir veya daha fazla Always on kullanılabilirlik grubu dinleyicilerini yapılandırma](../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) bölümüne bakın.
 
-Dahili yük dengeleyicisi yapılandırma hakkında daha fazla bilgi için Azure [portalında Dahili yük dengeleyicisi oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)konusuna bakın.
+İç yük dengeleyiciyi yapılandırma hakkında daha fazla bilgi için, [Azure Portal iç yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)bölümüne bakın.
 
-1. Azure portalında, sol bölmede, **kaynak** > **Ağ** > **Yük bakiyesi**oluştur'u tıklatın.
-2. Yük bakiyeniz için bir ad seçin.
-3. **Türü** **İçe**ayarlayın ve yük dengeleyicisinin ikamet etmesi için uygun sanal ağı ve alt ağı seçin.
-4. **IP adresi ataması**altında Dinamik **veya** **Statik'i**seçin.
-5. **Kaynak grubu**altında, yük dengeleyicisi için kaynak grubunu seçin.
-6. **Konum**altında, yük dengeleyicisi için uygun bölgeyi seçin.
-7. Yük bakiyesini oluşturmak için **Oluştur'u** tıklatın.
+1. Azure Portal, sol bölmedeki **kaynak** > **ağ** > **yükü dengeleyici**oluştur ' a tıklayın.
+2. Yük dengeleyiciniz için bir ad seçin.
+3. **Türü** **iç**olarak ayarlayın ve yük dengeleyicinin içinde bulunacağı uygun sanal ağı ve alt ağı seçin.
+4. **IP adresi ataması**altında **dinamik** veya **statik**' ı seçin.
+5. **Kaynak grubu**altında yük dengeleyici için kaynak grubunu seçin.
+6. **Konum**' un altında, yük dengeleyici için uygun bölgeyi seçin.
+7. Yük dengeleyiciyi oluşturmak için **Oluştur** ' a tıklayın.
 
-#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Bir arka uç veritabanı katmanını yük bakiyesine bağlama
+#### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Arka uç veritabanı katmanını yük dengeleyiciye bağlama
 
-1. Kaynak grubunuzdan, önceki adımlarda oluşturulan yük dengeleyicisini bulun.
-2. **Ayarlar'ın** **altında, Arka Uç havuzları'nı**tıklatın ve sonra arka uç havuzu eklemek için **Ekle'yi** tıklatın.
+1. Kaynak grubunuzda, önceki adımlarda oluşturulan yük dengeleyiciyi bulun.
+2. **Ayarlar**altında arka uç **havuzları**' na tıklayın ve ardından **Ekle** ' ye tıklayarak bir arka uç havuzu ekleyin.
 
-   ![Yük Dengeleyici "Arka uç havuzu ekle"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   !["Arka uç Havuzu Ekle" Load Balancer](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. Arka uç havuzunun adını girin.
-4. Tek tek makineleri veya arka uç havuzuna bir kullanılabilirlik kümesi ekleyin.
+4. Arka uç havuzuna ayrı makineler veya kullanılabilirlik kümesi ekleyin.
 
-#### <a name="configure-a-probe"></a>Sondayı yapılandırma
+#### <a name="configure-a-probe"></a>Araştırma yapılandırma
 
-1. Yük bakiyenizde, **Ayarlar**altında, **Problar'ı**seçin ve ardından sonda eklemek için **Ekle'yi** tıklatın.
+1. Yük dengeleyicinizdeki **Ayarlar**altında, **yoklamalar**' ı seçin ve ardından **Ekle** ' ye tıklayarak bir araştırma ekleyin.
 
-   ![Yük Dengeleyici "Prob ekle"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   !["Araştırma ekle" Load Balancer](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. Sondanın adını girin.
-3. Sonda için **Protokol'u** seçin. Bir veritabanı için, http sondası yerine bir TCP sondası isteyebilirsiniz. Yük dengeleyici probları hakkında daha fazla bilgi edinmek için [yük dengeleyici problarını anlayın'a](../load-balancer/load-balancer-custom-probe-overview.md)bakın.
-4. Sondaya erişmek için veritabanınızın **bağlantı noktasını** girin.
-5. **Aralık**altında, uygulamayı ne sıklıkta sondalamak için belirtin.
-6. **Sağlıksız eşik**altında, arka uç VM sağlıksız olarak kabul edilmesi için oluşması gereken sürekli sonda hatalarının sayısını belirtin.
-7. Sondayı oluşturmak için **Tamam'ı** tıklatın.
+2. Araştırmanın adını girin.
+3. Araştırmanın **protokolünü** seçin. Bir veritabanı için, HTTP araştırması yerine bir TCP araştırmasını isteyebilirsiniz. Yük dengeleyici araştırmaları hakkında daha fazla bilgi edinmek için [yük dengeleyici araştırmalarını anlama](../load-balancer/load-balancer-custom-probe-overview.md)bölümüne bakın.
+4. Araştırmayla ilgili olarak kullanılacak veritabanınızın **bağlantı noktasını** girin.
+5. **Aralık**altında, uygulamanın ne sıklıkta araştırılıp araştıralınacağını belirtin.
+6. **Sağlıksız eşik**altında, arka uç VM 'sinin sağlıksız olarak kabul edilmesi için gerçekleşmesi gereken sürekli araştırma hatası sayısını belirtin.
+7. Araştırmayı oluşturmak için **Tamam** ' ı tıklatın.
 
-#### <a name="configure-the-load-balancing-rules"></a>Yük dengeleme kurallarını yapılandırma
+#### <a name="configure-the-load-balancing-rules"></a>Yük Dengeleme kurallarını yapılandırma
 
-1. Yük **Settings** bakiyenizin Ayarları'nda, **Yük dengeleme kurallarını**seçin ve ardından kural oluşturmak için **Ekle'yi** tıklatın.
-2. Yük dengeleme kuralı için **Adı** girin.
-3. Yük dengeleyicisinin, **Protokol'ün**ve Bağlantı **Noktasının** **Frontend IP Adresini** seçin.
-4. **Backend bağlantı noktasıaltında,** arka uç havuzunda kullanılacak bağlantı noktasını belirtin.
-5. Kuralı uygulamak için önceki adımlarda oluşturulan **Arka Uç havuzunu** ve **Sonda'yı** seçin.
-6. **Oturum kalıcılığı**altında, oturumların nasıl devam etmesini istediğinizi seçin.
-7. **Boşta zaman zaman ları**altında, boşta kalma zaman aramadan önceki dakika sayısını belirtin.
-8. **Kayan IP**altında, **Devre Dışı veya** **Etkin'i**seçin.
+1. Yük dengeleyicinizin **ayarları** bölümünde **Yük Dengeleme kuralları**' nı seçin ve ardından **Ekle** ' ye tıklayarak bir kural oluşturun.
+2. Yük Dengeleme kuralı için bir **ad** girin.
+3. Yük dengeleyici, **protokol**ve **bağlantı NOKTASıNıN** **ön uç IP adresini** seçin.
+4. **Arka uç bağlantı noktası**altında arka uç havuzunda kullanılacak bağlantı noktasını belirtin.
+5. Kuralı uygulamak için önceki adımlarda oluşturulan **arka uç havuzunu** ve **araştırmayı** seçin.
+6. **Oturum kalıcılığı**altında, oturumların nasıl kalıcı olmasını istediğinizi seçin.
+7. **Boşta kalma zaman aşımları**altında, boşta kalma zaman aşımından önceki dakika sayısını belirtin.
+8. **Kayan IP**altında **devre dışı** ya da **etkin**' i seçin.
 9. Kuralı oluşturmak için **Tamam**'a tıklayın.
 
-### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>Adım 5: Web katmanındaki VM'leri yük dengeleyicisine bağlayın
+### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>5. Adım: Web katmanı VM 'lerini yük dengeleyiciye bağlama
 
-Artık, herhangi bir veritabanı bağlantısı için web katmanı VM'lerinizde çalışan uygulamalarda IP adresini ve yük dengeleyici ön uç bağlantı noktasını yapılandırıyoruz. Bu yapılandırma, bu VM'lerde çalışan uygulamalara özgüdür. Hedef IP adresini ve bağlantı noktasını yapılandırmak için uygulama belgelerine bakın. Azure portalında ön uçTAKI IP adresini bulmak için **Yük bakiyesi ayarlarındaki**ön uç IP havuzuna gidin.
+Artık, herhangi bir veritabanı bağlantısı için Web katmanı sanal makinelerinizdeki çalışan uygulamalarda IP adresini ve yük dengeleyici ön uç bağlantı noktasını yapılandıracağız. Bu yapılandırma, bu VM 'lerde çalışan uygulamalara özeldir. Hedef IP adresini ve bağlantı noktasını yapılandırmak için uygulama belgelerine bakın. Ön ucun IP adresini bulmak için, Azure portal, **yük dengeleyici ayarlarındaki**ön uç IP havuzuna gidin.
 
-![Yük Dengeleyici "Frontend IP havuzu" navigasyon bölmesi](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
+!["Ön uç IP havuzu" gezinti bölmesi Load Balancer](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Traffic Manager'a Genel Bakış](traffic-manager-overview.md)
 * [Application Gateway’e genel bakış](../application-gateway/application-gateway-introduction.md)
-* [Azure Yük Dengeleyicisi'ne genel bakış](../load-balancer/load-balancer-overview.md)
+* [Azure Load Balancer genel bakış](../load-balancer/load-balancer-overview.md)

@@ -1,43 +1,43 @@
 ---
-title: Doku
+title: Dokular
 description: Doku kaynağı iş akışı
 author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09fa22d33377dfcbafd84f0caeb5f33a575b1bce
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681668"
 ---
-# <a name="textures"></a>Doku
+# <a name="textures"></a>Dokular
 
-Dokular değişmez paylaşılan [bir kaynaktır.](../concepts/lifetime.md) Dokular [blob depolama](../how-tos/conversion/blob-storage.md) yüklenebilir ve doğrudan modellere uygulanabilir, Öğretici gösterildiği [gibi: Çevre ve malzeme değiştirme](../tutorials/unity/changing-environment-and-materials.md). En yaygın olsa da, dokular dönüştürülmüş bir [modelin](../how-tos/conversion/model-conversion.md)bir parçası olacak , onlar [malzemeleri](materials.md)ile başvurulan nerede .
+Dokular, sabit bir [paylaşılan kaynaktır](../concepts/lifetime.md). Dokular, [öğretici: ortamı ve malzemeleri değiştirme](../tutorials/unity/changing-environment-and-materials.md)bölümünde gösterildiği gibi [BLOB depolamadan](../how-tos/conversion/blob-storage.md) yüklenebilir ve doğrudan modellere uygulanabilir. En yaygın olarak, dokular, kendi [malzemeleri](materials.md)tarafından başvurulduğu [dönüştürülmüş bir modelin](../how-tos/conversion/model-conversion.md)bir parçası olur.
 
 ## <a name="texture-types"></a>Doku türleri
 
-Farklı doku türlerinin farklı kullanım örnekleri vardır:
+Farklı doku türlerinde farklı kullanım durumları vardır:
 
-* **2D Dokular** ağırlıklı olarak [malzemelerde](materials.md)kullanılır.
-* **Küpler** [gökyüzü](../overview/features/sky.md)için kullanılabilir.
+* **2B dokular** genellikle [malzemelerde](materials.md)kullanılır.
+* [Gök](../overview/features/sky.md) **haritaları için cubemaps** kullanılabilir.
 
 ## <a name="supported-texture-formats"></a>Desteklenen doku biçimleri
 
-ARR'a verilen tüm dokular [DDS formatında](https://en.wikipedia.org/wiki/DirectDraw_Surface)olmalıdır. Tercihen mipmaps ve doku sıkıştırma ile. Dönüştürme işlemini otomatikleştirmek istiyorsanız [TexConv komut satırı aracına](../resources/tools/tex-conv.md) bakın.
+ARR 'ye verilen tüm dokuların [DDS biçiminde](https://en.wikipedia.org/wiki/DirectDraw_Surface)olması gerekir. Tercihen, msunucudan haritalar ve doku sıkıştırması vardır. Dönüştürme işlemini otomatikleştirmek istiyorsanız, bkz. [TexConv komut satırı aracı](../resources/tools/tex-conv.md) .
 
-## <a name="loading-textures"></a>Dokuları yükleme
+## <a name="loading-textures"></a>Dokular yükleniyor
 
-Bir doku yüklerken, beklenen türünü belirtmeniz gerekir. Tür uyuşmazlıkları varsa, doku yükü başarısız olur.
-Aynı URI ile bir doku yüklemek paylaşılan bir [kaynak](../concepts/lifetime.md)olduğu gibi, aynı doku nesnesi döndürür.
+Bir doku yüklerken, beklenen türünü belirtmeniz gerekir. Tür uyuşmazlıkları varsa doku yükleme başarısız olur.
+Aynı URI 'yi iki kez içeren bir doku yüklemek, [paylaşılan bir kaynak](../concepts/lifetime.md)olduğundan aynı doku nesnesini döndürür.
 
-Yükleme modellerine benzer şekilde, kaynak blob depolamasında bir doku kıymetini ele almanın iki çeşidi vardır:
+Model yüklemeye benzer şekilde, kaynak blob depolamada bir doku varlığını ele almak için iki çeşit vardır:
 
-* Doku varlığı, SAS URI tarafından ele alınabilir. İlgili yükleme `LoadTextureFromSASAsync` işlevi parametre `LoadTextureFromSASParams`ile. [Yerleşik dokuları](../overview/features/sky.md#built-in-environment-maps)yüklerken de bu varyantı kullanın.
-* Doku blob depolama doğrudan blob depolama parametreleri tarafından ele alınabilir, durumda [blob depolama hesaba bağlı .](../how-tos/create-an-account.md#link-storage-accounts) Bu durumda ilgili yükleme `LoadTextureAsync` işlevi `LoadTextureParams`parametre ile.
+* Doku varlığı, SAS URI 'SI tarafından çözülebilir. İlgili yükleme işlevi parametresi `LoadTextureFromSASAsync` `LoadTextureFromSASParams`ile. [Yerleşik dokuları](../overview/features/sky.md#built-in-environment-maps)yüklerken bu değişkeni de kullanın.
+* Bu doku, BLOB depolama alanı parametreleri ile doğrudan çözülebilir ve bu da [BLOB depolamanın Hesapla bağlantılı](../how-tos/create-an-account.md#link-storage-accounts)olması durumunda olabilir. Bu durumda ilgili yükleme işlevi parametresiyle `LoadTextureAsync` `LoadTextureParams`birlikte.
 
-Aşağıdaki örnek kod, bir dokunun SAS URI (veya yerleşik doku) üzerinden nasıl yüklendiğini gösterir - yalnızca yükleme işlevinin/parametresinin diğer servis talebi için farklılık gösterdiğini unutmayın:
+Aşağıdaki örnek kod, bir dokunun SAS URI 'SI (veya yerleşik doku) aracılığıyla nasıl yükleneceğini göstermektedir-diğer bir durum için yalnızca yükleme işlevi/parametresinin farklı olduğunu unutmayın:
 
 ``` cs
 LoadTextureAsync _textureLoad = null;
@@ -60,12 +60,12 @@ void LoadMyTexture(AzureSession session, string textureUri)
 }
 ```
 
-Dokunun ne için kullanılması gerektiğine bağlı olarak, doku türü ve içeriği için kısıtlamalar olabilir. Örneğin, bir [PBR malzemenin](../overview/features/pbr-materials.md) pürüzlülük haritası gri tonlama olmalıdır.
+Dokuya yönelik olarak kullanılması beklenen değere bağlı olarak, doku türü ve içeriği için kısıtlamalar olabilir. Örneğin, bir [PBR malzemelerinin](../overview/features/pbr-materials.md) kablık eşlemesi gri tonlamalı olmalıdır.
 
 > [!CAUTION]
-> ARR'daki tüm *Async* işlevleri eşsenkronize işlem nesnelerini döndürer. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi takdirde C# çöp toplayıcı işlemi erken silebilir ve asla bitiremez. Yukarıdaki örnek kodda üye değişken '_textureLoad' *tamamlanan* olay gelene kadar bir referans tutmak için kullanılır.
+> ARR 'deki tüm *zaman uyumsuz* işlevler zaman uyumsuz işlem nesneleri döndürüyor. İşlem tamamlanana kadar bu nesnelere bir başvuru depolamanız gerekir. Aksi halde, C# çöp toplayıcı işlemi erken silebilir ve hiçbir şekilde bitmeyebilir. ' _TextureLoad ' üye değişkeninin yukarıdaki örnek kodda, *Tamamlanan* olay gelene kadar bir başvuruyu tutmak için kullanılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Malzemeler](materials.md)
-* [Gök -yüzü](../overview/features/sky.md)
+* [Çat](../overview/features/sky.md)

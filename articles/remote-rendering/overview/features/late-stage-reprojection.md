@@ -1,56 +1,56 @@
 ---
 title: Geç aşama yeniden projeksiyonu
-description: Geç Aşama Yeniden Projeksiyonu ve nasıl kullanılacağı hakkında bilgi.
+description: Geç aşama yeniden projeksiyonu ve nasıl kullanılacağı hakkında bilgi.
 author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680992"
 ---
 # <a name="late-stage-reprojection"></a>Geç aşama yeniden projeksiyonu
 
-*Geç Aşama Yeniden Projeksiyonu* (LSR), kullanıcı hareket ettiğinde hologramların dengelenmesine yardımcı olan bir donanım özelliğidir.
+*Geç aşama yeniden projeksiyonu* (LSR), Kullanıcı taşırken hologragram sabitlemeye yardımcı olan bir donanım özelliğidir.
 
-Statik modellerin, hareket ettiğinizde konumlarını görsel olarak korumaları beklenir. Kararsız görünüyorlarsa, bu davranış LSR sorunlarına işaret edebilir. Animasyonlar veya patlama görünümleri gibi ek dinamik dönüşümlerin bu davranışı maskeleyebileceğini unutmayın.
+Statik modellerin, çevresinde taşırken konumlarını görsel olarak korumaları beklenir. Bu davranış kararsız şekilde görünüyorsa, LSR sorunları hakkında ipucu olabilir. Animasyonlar veya açılım görünümleri gibi ek dinamik dönüşümlerinin bu davranışı maskeleyebilir olduğunu unutmayın.
 
-İki farklı LSR modu arasında seçim yapabilirsiniz, yani **Düzlemsel LSR** veya **Derinlik LSR.** Hangisinin etkin olduğu, istemci başvurusunun bir derinlik arabelleği gönderip göndermediğine göre belirlenir.
+İki farklı LSR modu arasından seçim yapabilirsiniz, yani **planar LSR** veya **derinlik LSR**. Etkin olanı, istemci uygulamanın bir derinlik arabelleği göndermediği tarafından belirlenir.
 
-Her iki LSR modu da hologram kararlılığını artırır, ancak farklı sınırlamaları vardır. Çoğu durumda daha iyi sonuçlar verdiği için Depth LSR'yi deneyerek başlayın.
+Her iki LSR modu, farklı sınırlamalara sahip olsa da hologram kararlılığını geliştirir. Çoğu durumda daha iyi sonuçlar elde etmek için derinlik LSR 'ı deneyerek başlayın.
 
-## <a name="choose-lsr-mode-in-unity"></a>Unity'de LSR modunu seçin
+## <a name="choose-lsr-mode-in-unity"></a>Unity 'de LSR modunu seçme
 
-Unity düzenleyicisinde, *Yapı Ayarları > Dosya'ya*gidin. Sol alttaki *Oyuncu Ayarlarını* seçin, ardından *Player > XR Ayarları* > Windows Mixed Reality > Derinlik **Arabelleği Paylaşımını Etkinleştir'in** denetlenip denetlenmediğini kontrol edin:
+Unity düzenleyicisinde *dosya > derleme ayarları*' na gidin. Sol alt köşedeki *oynatıcı ayarları* ' nı seçin ve ardından *Player > xr ayarları > sanal gerçeklik SDK 'Ları >* , **derinlik arabelleği paylaşımının** etkinleştirilip etkinleştirilmeyeceğini belirleyin:
 
-![Derinlik Arabellek Paylaşımı Etkin bayrak](./media/unity-depth-buffer-sharing-enabled.png)
+![Derinlik arabelleği paylaşımı etkin bayrağı](./media/unity-depth-buffer-sharing-enabled.png)
 
-Eğer varsa, uygulamanız Depth LSR kullanır, aksi takdirde Düzlemsel LSR kullanır.
+Bu durumda, uygulamanız derinlik LSR kullanır, aksi takdirde planar LSR kullanır.
 
 ## <a name="depth-lsr"></a>Derinlik LSR
 
-Derinlik LSR çalışması için istemci uygulaması, LSR sırasında göz önünde bulundurulması gereken tüm ilgili geometriyi içeren geçerli bir derinlik arabelleği sağlaması gerekir.
+Derinlik LSR 'nin çalışması için, istemci uygulamanın LSR sırasında göz önünde bulundurulması gereken tüm geometriyi içeren geçerli bir derinlik arabelleği sağlaması gerekir.
 
-Derinlik LSR, sağlanan derinlik arabelleği içeriğine göre video çerçevesini sabitlemeye çalışır. Sonuç olarak, saydam nesneler gibi ona işlenmemiş içerik LSR tarafından ayarlanamaz ve kararsızlık ve yeniden yansıtma yapıları gösterebilir.
+Derinlik LSR, sağlanan derinlik arabelleğinin içeriğine göre video çerçevesini sabitkurmaya çalışır. Sonuç olarak, saydam nesneler gibi, kendisine işlenen içerik LSR tarafından ayarlanamaz ve kararsızlık ve yeniden projeksiyon yapıtları gösterilebilir.
 
-## <a name="planar-lsr"></a>Düzlemsel LSR
+## <a name="planar-lsr"></a>Planar LSR
 
-Düzlemsel LSR, Derinlik LSR'ı gibi piksel başına derinlik bilgisine sahip değildir. Bunun yerine, her kareyi sağlamanız gereken bir düzleme göre tüm içeriği yeniden projelendirin.
+Planar LSR, derinlik LSR gibi piksel başına derinlik bilgisine sahip değildir. Bunun yerine, her bir çerçeveyi sağlamanız gereken bir düzlemi temel alarak tüm içeriği yeniden projelerini sağlar.
 
-Düzlemsel LSR, sağlanan düzleme en yakın olan nesneleri yeniden yeniden düzenler. Bir nesne ne kadar uzaksa, o kadar kararsız görünür. Derinlik LSR farklı derinliklerde nesneleri yeniden projeleme daha iyi olsa da, Düzlemsel LSR bir düzlem ile iyi hizalama içeriği için daha iyi çalışabilir.
+Planar LSR, sağlanan düzleme yakın olan nesneleri en iyi şekilde yeniden projeler. Bir nesne daha fazla olduğunda, daha fazla kararsız hale gelir. Derinlik LSR, farklı derinlikler üzerinde yeniden yansıtılarken daha iyi olsa da, Planar LSR, içerik hizalamak için bir düzlemde daha iyi çalışabilir.
 
-### <a name="configure-planar-lsr-in-unity"></a>Düzlemsel LSR'yi Birlik Içinde Yapılandır
+### <a name="configure-planar-lsr-in-unity"></a>Unity 'de planar LSR yapılandırma
 
-Düzlem parametreleri, her çerçeveyi sağlamanız gereken *odak noktası* `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`olarak adlandırılan bir noktadan türetilmiştir. Ayrıntılar için [Unity Focus Point API'ye](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) bakın. Bir odak noktası belirlemezseniz, sizin için bir geri dönüş seçilecektir. Ancak bu otomatik geri dönüş genellikle suboptimal sonuçlara yol açar.
+Düzlem parametreleri, her kareyi ile `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`sağlamanız gereken *odak noktası*olarak adlandırılan bir öğesinden türetilir. Ayrıntılar için bkz. [Unity Focus POINT API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) . Bir odak noktası ayarlamazsanız, sizin için bir geri dönüş seçilir. Ancak otomatik geri dönüş, genellikle sonuçları daha iyi halleyen sonuçlara yol açar.
 
-Odak noktasını kendiniz hesaplayabilirsiniz, ancak uzaktan render ana bilgisayarı tarafından hesaplanan noktaya dayandırmak mantıklı olabilir. Bunu `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` elde etmek için ara. Odak noktasını ifade etmek için bir koordinat çerçevesi sağlamanız istenir. Çoğu durumda, sadece `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` buradan sonucu sağlamak isteyeceksiniz.
+Odak noktasını kendiniz hesaplayabilirsiniz, ancak bu işlem, uzak Işleme ana bilgisayarı tarafından hesaplanabilecek şekilde mantıklı olabilir. Bunu `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` elde etmek için çağırın. Odak noktasını ifade etmek için bir koordinat çerçevesi sağlamanız istenir. Çoğu durumda, sonucu yalnızca `UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` buradan sağlamak isteyeceksiniz.
 
-Genellikle hem istemci hem de ana bilgisayar, istemcideki Kullanıcı Arabirimi öğeleri gibi diğer tarafın farkında olmadığı içeriği işler. Bu nedenle, uzak odak noktası ile yerel olarak hesaplanan bir birleştirme mantıklı olabilir.
+Genellikle hem istemci hem de konak oluşturma içeriği diğer tarafın, istemci üzerindeki UI öğeleri gibi farkında değildir. Bu nedenle, uzak odak noktasını yerel olarak hesaplanan bir şekilde birleştirmek mantıklı olabilir.
 
-Ardışık iki karede hesaplanan odak noktaları oldukça farklı olabilir. Sadece onları olduğu gibi kullanmak hologramların etrafta zıplamaya yol açabilir. Bu davranışı önlemek için, önceki ve geçerli odak noktaları arasında enterpolasyon tavsiye edilir.
+Art arda iki karede hesaplanan odak noktaları oldukça farklı olabilir. Bunları olduğu gibi kullanmak, bu yana atlama gibi görünen hologramlar için yol açabilir. Bu davranışı engellemek için, önceki ve geçerli odak noktaları arasına enterpolasyon önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

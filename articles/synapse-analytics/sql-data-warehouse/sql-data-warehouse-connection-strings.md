@@ -1,6 +1,6 @@
 ---
 title: Bağlantı dizeleri
-description: Synapse SQL havuzu için bağlantı dizeleri
+description: SYNAPSE SQL havuzu için bağlantı dizeleri
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: aad65c112bfc5a6a80f481fe3748e0f4d5c52f74
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745277"
 ---
-# <a name="connection-strings-for-synapse-sql-pool"></a>Synapse SQL havuzu için bağlantı dizeleri
+# <a name="connection-strings-for-synapse-sql-pool"></a>SYNAPSE SQL havuzu için bağlantı dizeleri
 
-[ADO.NET,](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) [ODBC,](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi birkaç farklı uygulama protokolü ile SQL havuzuna bağlanabilirsiniz. Aşağıda her protokol için bağlantı dizeleri bazı örnekler verilmiştir.  Bağlantı dizenizi oluşturmak için Azure portalını da kullanabilirsiniz.  
+SQL havuzuna, [ADO.net](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [php](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi çeşitli farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir.  Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  
 
-Azure portalını kullanarak bağlantı dizenizi oluşturmak *için, Temel Bilgiler* altında *veritabanı bağlantı dizelerini göster'i*tıklatın.
+Azure portal kullanarak Bağlantı dizenizi derlemek için, veritabanı dikey pencerenize gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' e tıklayın.
 
 ## <a name="sample-adonet-connection-string"></a>Örnek ADO.NET bağlantı dizesi
 
@@ -49,8 +49,8 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Bağlantının kısa süreler kullanılamaz durumda kalması için bağlantı zaman süresini 300 saniyeye ayarlamayı düşünün.
+> Bağlantı zaman aşımı süresini 300 saniye olarak ayarlamayı göz önünde bulundurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzunuzu Visual Studio ve diğer uygulamalarla sorgulamaya başlamak için [Visual Studio ile Sorgula'ya](sql-data-warehouse-query-visual-studio.md)bakın.
+Visual Studio ve diğer uygulamalarla SQL havuzunuzu sorgulamaya başlamak için bkz. [Visual Studio Ile sorgulama](sql-data-warehouse-query-visual-studio.md).

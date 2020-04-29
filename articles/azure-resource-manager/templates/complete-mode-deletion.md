@@ -1,1816 +1,1816 @@
 ---
 title: Tam modda silme
-description: Kaynak türlerinin Azure Kaynak Yöneticisi şablonlarında tam mod silme işlemini nasıl ele düzeye bildiğini gösterir.
+description: Azure Resource Manager şablonlarda kaynak türlerinin tamamlanma modu silme işlemini nasıl işleyeceğini gösterir.
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: e0250b289ce7a228d844023c3e1d1110438b3afc
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802578"
 ---
-# <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tam mod dağıtımları için Azure kaynaklarının silinmesi
+# <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tüm mod dağıtımları için Azure kaynaklarını silme
 
-Bu makalede, tam modda dağıtılan bir şablon da değilken kaynak türlerinin silme işlemini nasıl işlediği açıklanmaktadır.
+Bu makalede, kaynak türlerinin, tamamlanmış modda dağıtılan bir şablonda olmadığında silinme işleminin nasıl işleneceği açıklanır.
 
-Tür tam modla dağıtılan şablonda olmadığında **Evet** ile işaretlenmiş kaynak türleri silinir.
+Türü, tamamlanmış modla dağıtılan şablonda olmadığında, **Evet** ile işaretlenen kaynak türleri silinir.
 
-**Hayır** ile işaretlenmiş kaynak türleri şablonda olmadığında otomatik olarak silinmez; ancak, üst kaynak silinirse silinirler. Davranışın tam açıklaması için [Azure Kaynak Yöneticisi dağıtım modlarına](deployment-modes.md)bakın.
+**Hayır** ile işaretlenen kaynak türleri, şablonda olmadığında otomatik olarak silinmez; Ancak, üst kaynak silinirse bunlar silinir. Davranışın tam açıklaması için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
 
 [Bir şablonda birden fazla kaynak grubuna](cross-resource-group-deployment.md)dağıtırsanız, dağıtım işleminde belirtilen kaynak grubundaki kaynaklar silinebilir. İkincil kaynak gruplarındaki kaynaklar silinmez.
 
-Kaynak sağlayıcı ad alanına atla:
+Kaynak sağlayıcısı ad alanına atlayın:
 > [!div class="op_single_selector"]
-> - [Microsoft.AAD](#microsoftaad)
-> - [Microsoft.Addons](#microsoftaddons)
-> - [Microsoft.ADHybridHealthService](#microsoftadhybridhealthservice)
-> - [Microsoft.Advisor](#microsoftadvisor)
-> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
-> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
-> - [Microsoft.ApiManagement](#microsoftapimanagement)
-> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
-> - [Microsoft.AppPlatform](#microsoftappplatform)
-> - [Microsoft.Attestation](#microsoftattestation)
+> - [Microsoft. AAD](#microsoftaad)
+> - [Microsoft. addons](#microsoftaddons)
+> - [Microsoft. ADHybridHealthService](#microsoftadhybridhealthservice)
+> - [Microsoft. Advisor](#microsoftadvisor)
+> - [Microsoft. AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft. AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft. Apimanane](#microsoftapimanagement)
+> - [Microsoft. AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft. AppPlatform](#microsoftappplatform)
+> - [Microsoft. kanıtlama](#microsoftattestation)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Microsoft.Automation](#microsoftautomation)
-> - [Microsoft.Azconfig](#microsoftazconfig)
-> - [Microsoft.Azure.Cenevre](#microsoftazuregeneva)
-> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
-> - [Microsoft.AzureVerileri](#microsoftazuredata)
-> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft. Automation](#microsoftautomation)
+> - [Microsoft. Azconfig](#microsoftazconfig)
+> - [Microsoft. Azure. Genfiliz](#microsoftazuregeneva)
+> - [Microsoft. AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft. AzureData](#microsoftazuredata)
+> - [Microsoft. AzureStack](#microsoftazurestack)
 > - [Microsoft.Batch](#microsoftbatch)
-> - [Microsoft.Faturalandırma](#microsoftbilling)
-> - [Microsoft.BingHaritalar](#microsoftbingmaps)
-> - [Microsoft.Blockchain](#microsoftblockchain)
-> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
-> - [Microsoft.Blueprint](#microsoftblueprint)
-> - [Microsoft.BotService](#microsoftbotservice)
-> - [Microsoft.Önbellek](#microsoftcache)
-> - [Microsoft.Capacity](#microsoftcapacity)
-> - [Microsoft.Cdn](#microsoftcdn)
-> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft. Faturalandırma](#microsoftbilling)
+> - [Microsoft. BingMaps](#microsoftbingmaps)
+> - [Microsoft. Blockzinciri](#microsoftblockchain)
+> - [Microsoft. BlockchainTokens](#microsoftblockchaintokens)
+> - [Microsoft. Blueprint](#microsoftblueprint)
+> - [Microsoft. BotService](#microsoftbotservice)
+> - [Microsoft. Cache](#microsoftcache)
+> - [Microsoft. Capacity](#microsoftcapacity)
+> - [Microsoft. CDN](#microsoftcdn)
+> - [Microsoft. CertificateRegistration](#microsoftcertificateregistration)
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
-> - [Microsoft.ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
-> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
-> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
-> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
-> - [Microsoft.Commerce](#microsoftcommerce)
+> - [Microsoft. ClassicInfrastructureMigrate](#microsoftclassicinfrastructuremigrate)
+> - [Microsoft. ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft. ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft. Biliveservices](#microsoftcognitiveservices)
+> - [Microsoft. Commerce](#microsoftcommerce)
 > - [Microsoft.Compute](#microsoftcompute)
-> - [Microsoft.Consumption](#microsoftconsumption)
-> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
-> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
-> - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CostManagement](#microsoftcostmanagement)
-> - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
-> - [Microsoft.CustomProviders](#microsoftcustomproviders)
-> - [Microsoft.DataBox](#microsoftdatabox)
-> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
-> - [Microsoft.Databricks](#microsoftdatabricks)
-> - [Microsoft.DataCatalog](#microsoftdatacatalog)
-> - [Microsoft.DataFactory](#microsoftdatafactory)
-> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
-> - [Microsoft.DataMigration](#microsoftdatamigration)
-> - [Microsoft.DataShare](#microsoftdatashare)
-> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
-> - [Microsoft.DBforMySQL](#microsoftdbformysql)
-> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
-> - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
-> - [Microsoft.Devices](#microsoftdevices)
-> - [Microsoft.Devops](#microsoftdevops)
-> - [Microsoft.DevSpaces](#microsoftdevspaces)
-> - [Microsoft.DevTestLab](#microsoftdevtestlab)
-> - [Microsoft.DocumentDB](#microsoftdocumentdb)
-> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
-> - [Microsoft.DynamicsLcs](#microsoftdynamicslcs)
-> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Microsoft.EventGrid](#microsofteventgrid)
-> - [Microsoft.EventHub](#microsofteventhub)
-> - [Microsoft.Falcon](#microsoftfalcon)
-> - [Microsoft.Özellikler](#microsoftfeatures)
-> - [Microsoft.Gallery](#microsoftgallery)
-> - [Microsoft.Genomik](#microsoftgenomics)
-> - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
-> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
-> - [Microsoft.HardwareSecurityModules](#microsofthardwaresecuritymodules)
-> - [Microsoft.HDInsight](#microsofthdinsight)
-> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
-> - [Microsoft.HybridCompute](#microsofthybridcompute)
-> - [Microsoft.HybridData](#microsofthybriddata)
-> - [Microsoft.Hydra](#microsofthydra)
-> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft. tüketim](#microsoftconsumption)
+> - [Microsoft. Containerınstance](#microsoftcontainerinstance)
+> - [Microsoft. ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft. ContainerService](#microsoftcontainerservice)
+> - [Microsoft. CostManagement](#microsoftcostmanagement)
+> - [Microsoft. Customerkasası](#microsoftcustomerlockbox)
+> - [Microsoft. CustomProviders](#microsoftcustomproviders)
+> - [Microsoft. DataBox](#microsoftdatabox)
+> - [Microsoft. DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft. Databricks](#microsoftdatabricks)
+> - [Microsoft. DataCatalog](#microsoftdatacatalog)
+> - [Microsoft. DataFactory](#microsoftdatafactory)
+> - [Microsoft. DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft. DataLakeStore](#microsoftdatalakestore)
+> - [Microsoft. DataMigration](#microsoftdatamigration)
+> - [Microsoft. DataShare](#microsoftdatashare)
+> - [Microsoft. Dbformarıdb](#microsoftdbformariadb)
+> - [Microsoft. Dbformyısql](#microsoftdbformysql)
+> - [Microsoft. DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft. DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft. DesktopVirtualization](#microsoftdesktopvirtualization)
+> - [Microsoft. Devices](#microsoftdevices)
+> - [Microsoft. DevOps](#microsoftdevops)
+> - [Microsoft. DevSpaces](#microsoftdevspaces)
+> - [Microsoft. DevTestLab](#microsoftdevtestlab)
+> - [Microsoft. DocumentDB](#microsoftdocumentdb)
+> - [Microsoft. DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft. DynamicsLcs](#microsoftdynamicslcs)
+> - [Microsoft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft. EventGrid](#microsofteventgrid)
+> - [Microsoft. EventHub](#microsofteventhub)
+> - [Microsoft. Falcon](#microsoftfalcon)
+> - [Microsoft. Features](#microsoftfeatures)
+> - [Microsoft. Gallery](#microsoftgallery)
+> - [Microsoft. Genomiks](#microsoftgenomics)
+> - [Microsoft. GuestConfiguration](#microsoftguestconfiguration)
+> - [Microsoft. HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft. HardwareSecurityModules](#microsofthardwaresecuritymodules)
+> - [Microsoft. HDInsight](#microsofthdinsight)
+> - [Microsoft. Healthgelişme API 'leri](#microsofthealthcareapis)
+> - [Microsoft. HybridCompute](#microsofthybridcompute)
+> - [Microsoft. HybridData](#microsofthybriddata)
+> - [Microsoft. Hydra](#microsofthydra)
+> - [Microsoft. ımportexport](#microsoftimportexport)
 > - [Microsoft.Intune](#microsoftintune)
-> - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTSpaces](#microsoftiotspaces)
-> - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kubernetes](#microsoftkubernetes)
+> - [Microsoft. ıotcentral](#microsoftiotcentral)
+> - [Microsoft. ıotspaces](#microsoftiotspaces)
+> - [Microsoft. Keykasası](#microsoftkeyvault)
+> - [Microsoft. Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
-> - [Microsoft.LabServices](#microsoftlabservices)
-> - [Microsoft.Logic](#microsoftlogic)
-> - [Microsoft.MachineLearning](#microsoftmachinelearning)
+> - [Microsoft. LabServices](#microsoftlabservices)
+> - [Microsoft. Logic](#microsoftlogic)
+> - [Microsoft. Machinöğrenim](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
-> - [Microsoft.Maintenance](#microsoftmaintenance)
-> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
-> - [Microsoft.ManagedServices](#microsoftmanagedservices)
-> - [Microsoft.Management](#microsoftmanagement)
-> - [Microsoft.Haritalar](#microsoftmaps)
-> - [Microsoft.Marketplace](#microsoftmarketplace)
-> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
-> - [Microsoft.MarketplaceSipariş](#microsoftmarketplaceordering)
-> - [Microsoft.Media](#microsoftmedia)
-> - [Microsoft.Microservices4Bahar](#microsoftmicroservices4spring)
-> - [Microsoft.Migrate](#microsoftmigrate)
-> - [Microsoft.MixedReality](#microsoftmixedreality)
-> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft. Maintenance](#microsoftmaintenance)
+> - [Microsoft. Managedıdentity](#microsoftmanagedidentity)
+> - [Microsoft. ManagedServices](#microsoftmanagedservices)
+> - [Microsoft. Management](#microsoftmanagement)
+> - [Microsoft. Maps](#microsoftmaps)
+> - [Microsoft. Market](#microsoftmarketplace)
+> - [Microsoft. MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft. Marketplacesıralaması](#microsoftmarketplaceordering)
+> - [Microsoft. Media](#microsoftmedia)
+> - [Microsoft. Microservices4Spring](#microsoftmicroservices4spring)
+> - [Microsoft. Migrate](#microsoftmigrate)
+> - [Microsoft. MixedReality](#microsoftmixedreality)
+> - [Microsoft. NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
-> - [Microsoft.Notebook'lar](#microsoftnotebooks)
-> - [Microsoft.NotificationHub'lar](#microsoftnotificationhubs)
-> - [Microsoft.ObjectStore](#microsoftobjectstore)
-> - [Microsoft.OffAzure](#microsoftoffazure)
-> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
-> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
-> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft. Not defterleri](#microsoftnotebooks)
+> - [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs)
+> - [Microsoft. ObjectStore](#microsoftobjectstore)
+> - [Microsoft. OffAzure](#microsoftoffazure)
+> - [Microsoft. Operationalınsights](#microsoftoperationalinsights)
+> - [Microsoft. OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft. eşleme](#microsoftpeering)
 > - [Microsoft.PolicyInsights](#microsoftpolicyinsights)
-> - [Microsoft.Portal](#microsoftportal)
-> - [Microsoft.PowerBI](#microsoftpowerbi)
-> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
-> - [Microsoft.Quantum](#microsoftquantum)
-> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
-> - [Microsoft.Relay](#microsoftrelay)
-> - [Microsoft.RemoteApp](#microsoftremoteapp)
-> - [Microsoft.ResourceGraph](#microsoftresourcegraph)
-> - [Microsoft.ResourceHealth](#microsoftresourcehealth)
-> - [Microsoft.Resources](#microsoftresources)
-> - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Search](#microsoftsearch)
+> - [Microsoft. Portal](#microsoftportal)
+> - [Microsoft. PowerBI](#microsoftpowerbi)
+> - [Microsoft. Powerbiadanmış](#microsoftpowerbidedicated)
+> - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft. hisse](#microsoftquantum)
+> - [Microsoft. RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft. Relay](#microsoftrelay)
+> - [Microsoft. RemoteApp](#microsoftremoteapp)
+> - [Microsoft. ResourceGraph](#microsoftresourcegraph)
+> - [Microsoft. ResourceHealth](#microsoftresourcehealth)
+> - [Microsoft. resources](#microsoftresources)
+> - [Microsoft. SaaS](#microsoftsaas)
+> - [Microsoft. Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
-> - [Microsoft.SecurityGraph](#microsoftsecuritygraph)
-> - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
+> - [Microsoft. SecurityGraph](#microsoftsecuritygraph)
+> - [Microsoft. Securityınsights](#microsoftsecurityinsights)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Microsoft.ServiceFabric](#microsoftservicefabric)
-> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
-> - [Microsoft.Services](#microsoftservices)
-> - [Microsoft.SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SiteKurtarma](#microsoftsiterecovery)
-> - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
-> - [Microsoft.Solutions](#microsoftsolutions)
-> - [Microsoft.SpoolService](#microsoftspoolservice)
-> - [Microsoft.SQL](#microsoftsql)
-> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft. ServiceFabric](#microsoftservicefabric)
+> - [Microsoft. Servicefabrickafesi](#microsoftservicefabricmesh)
+> - [Microsoft. Services](#microsoftservices)
+> - [Microsoft. SignalRService](#microsoftsignalrservice)
+> - [Microsoft. Sıterecovery](#microsoftsiterecovery)
+> - [Microsoft. SoftwarePlan](#microsoftsoftwareplan)
+> - [Microsoft. Solutions](#microsoftsolutions)
+> - [Microsoft. SpoolService](#microsoftspoolservice)
+> - [Microsoft. SQL](#microsoftsql)
+> - [Microsoft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
-> - [Microsoft.StorageÖnbellek](#microsoftstoragecache)
-> - [Microsoft.StorageÇoğaltma](#microsoftstoragereplication)
-> - [Microsoft.StorageSync](#microsoftstoragesync)
-> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
-> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
-> - [Microsoft.StorSimple](#microsoftstorsimple)
-> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
-> - [Microsoft.Abonelik](#microsoftsubscription)
-> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Microsoft.VMwareCloudBasit](#microsoftvmwarecloudsimple)
-> - [Microsoft.VnfManager](#microsoftvnfmanager)
-> - [Microsoft.Web](#microsoftweb)
-> - [Microsoft.WindowsDefenderATP](#microsoftwindowsdefenderatp)
-> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
-> - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
+> - [Microsoft. StorageCache](#microsoftstoragecache)
+> - [Microsoft. Storagerepce](#microsoftstoragereplication)
+> - [Microsoft. Storagessync](#microsoftstoragesync)
+> - [Microsoft. StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft. Storagesyncınt](#microsoftstoragesyncint)
+> - [Microsoft. StorSimple](#microsoftstorsimple)
+> - [Microsoft. StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft. Subscription](#microsoftsubscription)
+> - [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights)
+> - [Microsoft. Vmwarechoparlör basit](#microsoftvmwarecloudsimple)
+> - [Microsoft. VnfManager](#microsoftvnfmanager)
+> - [Microsoft. Web](#microsoftweb)
+> - [Microsoft. Windowssavunma Deratp](#microsoftwindowsdefenderatp)
+> - [Microsoft. Windowsıot](#microsoftwindowsiot)
+> - [Microsoft. WorkloadMonitor](#microsoftworkloadmonitor)
 
-## <a name="microsoftaad"></a>Microsoft.AAD
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | DomainServices | Evet |
-> | DomainServices / oucontainer | Hayır |
-
-## <a name="microsoftaddons"></a>Microsoft.Addons
+## <a name="microsoftaad"></a>Microsoft. AAD
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | destekSağlayıcılar | Hayır |
+> | DomainServices | Yes |
+> | DomainServices/oucontainer | Hayır |
 
-## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
+## <a name="microsoftaddons"></a>Microsoft. addons
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Destek sağlayıcıları | Hayır |
+
+## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | aadsupportcases | Hayır |
-> | hizmetler ekler | Hayır |
-> | Ajan | Hayır |
-> | anonimapiusers | Hayır |
+> | addsservices | Hayır |
+> | aracısını | Hayır |
+> | anonymousapiusers | Hayır |
 > | yapılandırma | Hayır |
 > | günlükler | Hayır |
 > | reports | Hayır |
-> | servicehealthmetrics | Hayır |
+> | servicehealthölçümleri | Hayır |
 > | services | Hayır |
 
-## <a name="microsoftadvisor"></a>Microsoft.Advisor
+## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Yapılandırma | Hayır |
-> | öneriler oluşturur | Hayır |
+> | konfigürasyonları | Hayır |
+> | Generatereyorumgeçişleri | Hayır |
 > | meta veriler | Hayır |
 > | Öneriler | Hayır |
-> | bastırma | Hayır |
+> | gizlemeleri | Hayır |
 
-## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | actionKurallar | Evet |
+> | actionRules | Yes |
 > | alerts | Hayır |
 > | alertsList | Hayır |
-> | uyarılarıMetaData | Hayır |
+> | alertsMetaData | Hayır |
 > | alertsSummary | Hayır |
 > | alertsSummaryList | Hayır |
-> | smartDetectorAlertRules | Evet |
+> | smartDetectorAlertRules | Yes |
 > | smartGroups | Hayır |
 
-## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
+## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Sunucu | Evet |
+> | larý | Yes |
 
-## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
+## <a name="microsoftapimanagement"></a>Microsoft. Apimanane
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | reportFeedback | Hayır |
-> | hizmet | Evet |
-> | doğrulaServiceName | Hayır |
+> | hizmet | Yes |
+> | validateServiceName | Hayır |
 
-## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | configurationMağazalar | Evet |
-> | configurationStores / eventGridFilters | Hayır |
-
-## <a name="microsoftappplatform"></a>Microsoft.AppPlatform
+## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Spring | Evet |
+> | Configurationmağazaların | Yes |
+> | Configurationmağazaların/eventGridFilters | Hayır |
 
-## <a name="microsoftattestation"></a>Microsoft.Attestation
+## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | attestationSağlayıcıları | Hayır |
+> | Spring | Yes |
+
+## <a name="microsoftattestation"></a>Microsoft. kanıtlama
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | attestationProviders | Hayır |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | klasikYöneticiler | Hayır |
-> | dataAliases | Hayır |
-> | denyAtamaları | Hayır |
-> | Access'i yükseltme | Hayır |
-> | findOrphanRoleAssignments | Hayır |
-> | Kilit | Hayır |
-> | Izin | Hayır |
-> | ilkeAtamalar | Hayır |
-> | policyTanımlar | Hayır |
-> | politikaSetDefinitions | Hayır |
-> | sağlayıcıİşlemler | Hayır |
-> | roleAtamaları | Hayır |
-> | roleAssignmentsUsageMetrics | Hayır |
+> | classicAdministrators | Hayır |
+> | Datatakma adlar | Hayır |
+> | Denyasatamaları | Hayır |
+> | Erişimi yükseltme | Hayır |
+> | Findorphanroleatamalar | Hayır |
+> | kaynaktaki | Hayır |
+> | izinleri | Hayır |
+> | Poliyasatamaları | Hayır |
+> | policyDefinitions | Hayır |
+> | policySetDefinitions | Hayır |
+> | providerOperations | Hayır |
+> | roleAssignments | Hayır |
+> | Roleatamasussusageölçümleri | Hayır |
 > | roleDefinitions | Hayır |
 
-## <a name="microsoftautomation"></a>Microsoft.Automation
+## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | otomasyonHesaplar | Evet |
-> | otomasyonHesaplar / yapılandırmalar | Evet |
-> | automationAccounts / jobs | Hayır |
-> | automationAccounts / privateEndpointConnectionProxies | Hayır |
-> | automationAccounts / privateEndpointConnections | Hayır |
-> | automationAccounts / privateLinkResources | Hayır |
-> | automationAccounts / runbooks | Evet |
-> | automationAccounts / softwareUpdateConfigurations | Hayır |
-> | automationAccounts / webhooks | Hayır |
+> | automationAccounts | Yes |
+> | automationAccounts/Configurations | Yes |
+> | automationAccounts/Jobs | Hayır |
+> | automationAccounts/Privateendpointconnectionproxy 'Leri | Hayır |
+> | automationAccounts/privateEndpointConnections | Hayır |
+> | automationAccounts/privateLinkResources | Hayır |
+> | automationAccounts/runbook 'lar | Yes |
+> | automationAccounts/softwareUpdateConfigurations | Hayır |
+> | automationAccounts/Web kancaları | Hayır |
 
-## <a name="microsoftazconfig"></a>Microsoft.Azconfig
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | configurationMağazalar | Evet |
-> | configurationStores / eventGridFilters | Hayır |
-
-## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Cenevre
+## <a name="microsoftazconfig"></a>Microsoft. Azconfig
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Ortam | Hayır |
-> | ortamlar / hesaplar | Hayır |
-> | ortamlar / hesaplar / ad alanları | Hayır |
-> | ortamlar / hesaplar / ad alanları / yapılandırmalar | Hayır |
+> | Configurationmağazaların | Yes |
+> | Configurationmağazaların/eventGridFilters | Hayır |
 
-## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
+## <a name="microsoftazuregeneva"></a>Microsoft. Azure. Genfiliz
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | b2cDirectories | Evet |
+> | lý | Hayır |
+> | ortamlar/hesaplar | Hayır |
+> | ortamlar/hesaplar/ad alanları | Hayır |
+> | ortamlar/hesaplar/ad alanları/yapılandırma | Hayır |
+
+## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | b2cDirectories | Yes |
 > | b2ctenants | Hayır |
 
-## <a name="microsoftazuredata"></a>Microsoft.AzureVerileri
+## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | hibridDataManagers | Evet |
-> | postgresÖrnekleri | Evet |
-> | sqlInstances | Evet |
-> | Sqlserverregistrations | Evet |
-> | sqlServerRegistrations / sqlServers | Hayır |
+> | Hybriddatayöneticileri | Yes |
+> | Postgresınstances | Yes |
+> | SQLInstances | Yes |
+> | Sqlserverkayıtları | Yes |
+> | Sqlserverkayıtları/sqlServers | Hayır |
 
-## <a name="microsoftazurestack"></a>Microsoft.AzureStack
+## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | cloudManifestFiles | Hayır |
-> | Kayıt | Evet |
-> | kayıtlar / müşteriAbonelikleri | Hayır |
-> | kayıtlar / ürünler | Hayır |
+> | kayıtlarında | Yes |
+> | kayıt/müşteri abonelikleri | Hayır |
+> | kayıtlar/ürünler | Hayır |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | toplu Hesaplar | Evet |
+> | batchAccounts | Yes |
 
-## <a name="microsoftbilling"></a>Microsoft.Faturalandırma
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | faturahesapları | Hayır |
-> | faturahesapları / anlaşmaları | Hayır |
-> | faturahesapları / faturalamaİzinler | Hayır |
-> | faturahesapları / faturaprofilleri | Hayır |
-> | faturahesapları / faturalamaProfiller / faturalamaİzinler | Hayır |
-> | faturalamaHesapları / faturalamaProfiller / faturalamaRol Atamaları | Hayır |
-> | faturahesapları / faturalamaProfiller / faturalamaRol Tanımları | Hayır |
-> | faturahesapları / faturalamaProfiller / faturalamaAbonelikler | Hayır |
-> | faturahesapları / faturalamaProfiller / createBillingRoleAssignment | Hayır |
-> | faturahesapları / faturalamaProfiller / müşteriler | Hayır |
-> | faturahesapları / faturalamaProfiller / talimatlar | Hayır |
-> | faturahesapları / faturalarProfiller / faturalar | Hayır |
-> | faturahesapları / faturalamaProfiller / faturalar / fiyat sayfası | Hayır |
-> | faturahesapları / faturalamaProfiller / faturalar / işlemler | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümleri | Hayır |
-> | faturahesapları / faturalamaProfiller / faturaBölümler / faturalamaİzinler | Hayır |
-> | faturalamaHesapları / faturalamaProfiller / faturaBölümler / faturalamaRol Atamaları | Hayır |
-> | faturahesapları / faturalamaProfiller / faturaBölümler / faturalamaRol Tanımları | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümleri / faturalamaAbonelikler | Hayır |
-> | faturalamaHesapları / faturaprofilleri / faturaBölümleri / createBillingRoleAssignment | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümler / başlatTransfer | Hayır |
-> | faturahesapları / faturalamaProfiller / faturaBölümler / ürünler | Hayır |
-> | faturahesapları / faturalamaProfiller / faturaBölümler / ürünler / transfer | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümler / ürünler / updateAutoRenew | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümleri / işlemleri | Hayır |
-> | faturahesapları / faturaprofilleri / faturaBölümleri / transferleri | Hayır |
-> | faturahesapları / Faturaprofilleri / patchİşlemleri | Hayır |
-> | faturahesapları / faturalamaProfiller / ödeme Yöntemleri | Hayır |
-> | faturahesapları / faturalamaProfiller / politikalar | Hayır |
-> | faturahesapları / faturalamaProfiller / fiyat sayfası | Hayır |
-> | faturahesapları / faturalamaProfiller / pricesheetDownloadOperations | Hayır |
-> | faturahesapları / faturalamaProfiller / ürünler | Hayır |
-> | faturahesapları / faturalamaProfiller / işlemler | Hayır |
-> | faturahesapları / faturalamaRol Atamaları | Hayır |
-> | faturahesapları / faturalamaRolTanımları | Hayır |
-> | faturahesapları / faturaabonelikleri | Hayır |
-> | faturahesapları / faturalarAbonelikler / faturalar | Hayır |
-> | faturalamaHesapları / createBillingRoleAssignment | Hayır |
-> | faturahesapları / createInvoiceSectionOperations | Hayır |
-> | faturahesapları / müşteriler | Hayır |
-> | faturahesapları / müşteriler / faturalamaİzinler | Hayır |
-> | faturahesapları / müşteriler / faturaabonelikleri | Hayır |
-> | faturahesapları / müşteriler / başlatTransfer | Hayır |
-> | faturahesapları / müşteriler / poliçeler | Hayır |
-> | faturahesapları / müşteriler / ürünler | Hayır |
-> | faturahesapları / müşteriler / işlemler | Hayır |
-> | faturahesapları / müşteriler / transferler | Hayır |
-> | faturahesapları / bölümleri | Hayır |
-> | faturalamaHesapları / kayıtHesapları | Hayır |
-> | faturahesapları / faturaları | Hayır |
-> | faturahesapları / faturaBölümleri | Hayır |
-> | faturahesapları / faturaBölümleri / faturalamaAbonelikİşlemleri | Hayır |
-> | faturahesapları / faturaBölümleri / faturaabonelikleri | Hayır |
-> | faturahesapları / faturaBölümler / faturalamaAbonelikler / transfer | Hayır |
-> | faturahesapları / faturaBölümler / yükseltme | Hayır |
-> | faturahesapları / faturaBölümler / başlatTransfer | Hayır |
-> | faturahesapları / faturaBölümler / yamaİşlemleri | Hayır |
-> | faturahesapları / faturaBölümler / productMoveOperations | Hayır |
-> | faturahesapları / faturaBölümler / ürünler | Hayır |
-> | faturahesapları / faturaBölümler / ürünler / transfer | Hayır |
-> | faturahesapları / faturaBölümler / ürünler / updateAutoRenew | Hayır |
-> | faturahesapları / faturaBölümler / işlemler | Hayır |
-> | faturahesapları / faturaBölümler / transferler | Hayır |
-> | faturaHesapları / lineOfCredit | Hayır |
-> | faturahesapları / yamaİşlemleri | Hayır |
-> | faturahesapları / ödeme Yöntemleri | Hayır |
-> | faturahesapları / ürünleri | Hayır |
-> | faturahesapları / işlemleri | Hayır |
-> | faturalamaDönemleri | Hayır |
-> | faturalamaİzinler | Hayır |
-> | faturalamaEmlak | Hayır |
-> | faturalandırmaRol Atamaları | Hayır |
-> | faturalamaRolTanımlar | Hayır |
-> | createBillingRoleAssignment | Hayır |
-> | Bölüm | Hayır |
-> | enrollmentHesapları | Hayır |
-> | Fatura | Hayır |
-> | Transfer | Hayır |
-> | transferler / acceptTransfer | Hayır |
-> | transferler / düşüşTransfer | Hayır |
-> | transferler / operationStatus | Hayır |
-> | transferler / doğrulaTransfer | Hayır |
-> | doğrulayan Adres | Hayır |
-
-## <a name="microsoftbingmaps"></a>Microsoft.BingHaritalar
+## <a name="microsoftbilling"></a>Microsoft. Faturalandırma
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | mapApis | Evet |
-> | updateİletişimTercihi | Hayır |
+> | billingAccounts | Hayır |
+> | billingAccounts/anlaşmalar | Hayır |
+> | billingAccounts/billingPermissions | Hayır |
+> | billingAccounts/billingProfiles | Hayır |
+> | billingAccounts/Billingprofiller/billingPermissions | Hayır |
+> | billingAccounts/billingProfiles/Billingroleatamaları | Hayır |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | Hayır |
+> | billingAccounts/billingProfiles/Billingabonelikleri | Hayır |
+> | billingAccounts/billingProfiles/Createbillingroleatama | Hayır |
+> | billingAccounts/billingProfiles/müşteriler | Hayır |
+> | billingAccounts/billingProfiles/yönergeler | Hayır |
+> | billingAccounts/billingProfiles/faturalar | Hayır |
+> | billingAccounts/billingProfiles/faturalar/fiyat listesi | Hayır |
+> | billingAccounts/billingProfiles/faturalar/işlemler | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/billingPermissions | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Billingroleatamaları | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/billingRoleDefinitions | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Billingabonelikleri | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/Createbillingroleatama | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ınitiatetransfer | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler/aktarım | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/ürünler/updateAutoRenew | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/işlemler | Hayır |
+> | billingAccounts/billingProfiles/ınvoicesections/aktarımlar | Hayır |
+> | billingAccounts/BillingProfiles/patchOperations | Hayır |
+> | billingAccounts/billingProfiles/paymentMethods | Hayır |
+> | billingAccounts/billingProfiles/ilkeler | Hayır |
+> | billingAccounts/billingProfiles/fiyat listesi | Hayır |
+> | billingAccounts/billingProfiles/pricesheetDownloadOperations | Hayır |
+> | billingAccounts/billingProfiles/ürünler | Hayır |
+> | billingAccounts/billingProfiles/işlemler | Hayır |
+> | billingAccounts/Billingroleatamaları | Hayır |
+> | billingAccounts/billingRoleDefinitions | Hayır |
+> | billingAccounts/Billingabonelikleri | Hayır |
+> | billingAccounts/Billingabonelikleri/faturalar | Hayır |
+> | billingAccounts/Createbillingroleatama | Hayır |
+> | billingAccounts/Createınvoicesectionoperations | Hayır |
+> | billingAccounts/müşteriler | Hayır |
+> | billingAccounts/müşteriler/billingPermissions | Hayır |
+> | billingAccounts/müşteriler/Billingabonelikleri | Hayır |
+> | billingAccounts/müşteriler/ınitiatetransfer | Hayır |
+> | billingAccounts/müşteriler/ilkeler | Hayır |
+> | billingAccounts/müşteriler/ürünler | Hayır |
+> | billingAccounts/müşteriler/işlemler | Hayır |
+> | billingAccounts/müşteriler/aktarımlar | Hayır |
+> | billingAccounts/departmanlar | Hayır |
+> | billingAccounts/KayıtSayısı | Hayır |
+> | billingAccounts/faturalar | Hayır |
+> | billingAccounts/ınvoicesections | Hayır |
+> | billingAccounts/ınvoicesections/billingSubscriptionMoveOperations | Hayır |
+> | billingAccounts/ınvoicesections/Billingabonelikleri | Hayır |
+> | billingAccounts/ınvoicesections/Billingabonelikleri/aktarımı | Hayır |
+> | billingAccounts/ınvoicesections/yükselt | Hayır |
+> | billingAccounts/ınvoicesections/ınitiatetransfer | Hayır |
+> | billingAccounts/ınvoicesections/patchOperations | Hayır |
+> | billingAccounts/ınvoicesections/productMoveOperations | Hayır |
+> | billingAccounts/Ürünler/Ürünler | Hayır |
+> | billingAccounts/ınvoicesections/ürünler/transfer | Hayır |
+> | billingAccounts/ınvoicesections/ürünler/updateAutoRenew | Hayır |
+> | billingAccounts/ınvoicesections/işlemler | Hayır |
+> | billingAccounts/ınvoicesections/aktarımlar | Hayır |
+> | billingAccounts/Lineofkredisi | Hayır |
+> | billingAccounts/patchOperations | Hayır |
+> | billingAccounts/paymentMethods | Hayır |
+> | billingAccounts/ürünler | Hayır |
+> | billingAccounts/işlemler | Hayır |
+> | Billingdönemler | Hayır |
+> | billingPermissions | Hayır |
+> | billingProperty | Hayır |
+> | Billingroleatamaları | Hayır |
+> | billingRoleDefinitions | Hayır |
+> | Createbillingroleatama | Hayır |
+> | bölümlerinin | Hayır |
+> | kayıt sayısı | Hayır |
+> | faturalardan | Hayır |
+> | girişinde | Hayır |
+> | aktarımlar/acceptTransfer | Hayır |
+> | aktarımlar/declineTransfer | Hayır |
+> | aktarımlar/operationStatus | Hayır |
+> | aktarımlar/validateTransfer | Hayır |
+> | validateAddress | Hayır |
 
-## <a name="microsoftblockchain"></a>Microsoft.Blockchain
+## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | blockchainÜyeler | Evet |
-> | cordaÜyeler | Evet |
-> | Watchers | Evet |
+> | Mapapsıs | Yes |
+> | updateCommunicationPreference | Hayır |
 
-## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | TokenServices | Evet |
-> | TokenServices / BlockchainNetworks | Hayır |
-> | TokenServices / Gruplar | Hayır |
-> | TokenServices / Gruplar / Hesaplar | Hayır |
-> | TokenServices / TokenTemplates | Hayır |
-
-## <a name="microsoftblueprint"></a>Microsoft.Blueprint
+## <a name="microsoftblockchain"></a>Microsoft. Blockzinciri
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | blueprintAtamaları | Hayır |
-> | blueprintAtamaları / atamaİşlemleri | Hayır |
-> | blueprintAtamaları / işlemleri | Hayır |
-> | Plan | Hayır |
-> | planlar / eserler | Hayır |
-> | planları / sürümleri | Hayır |
-> | planları / sürümleri / eserler | Hayır |
+> | blockchainMembers | Yes |
+> | Cordadmembers | Yes |
+> | izleyicileri | Yes |
 
-## <a name="microsoftbotservice"></a>Microsoft.BotService
+## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | botServices | Evet |
-> | botServices / kanallar | Hayır |
-> | botServices / bağlantılar | Hayır |
+> | TokenServices | Yes |
+> | TokenServices/BlockchainNetworks | Hayır |
+> | TokenServices/Groups | Hayır |
+> | TokenServices/gruplar/hesaplar | Hayır |
+> | TokenServices/TokenTemplates | Hayır |
+
+## <a name="microsoftblueprint"></a>Microsoft. Blueprint
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Şema tasmi | Hayır |
+> | Blueprintasbir/Atamaperations | Hayır |
+> | Blueprintasbir/işlemleri | Hayır |
+> | Blueprint | Hayır |
+> | planlar/yapıtlar | Hayır |
+> | planlar/sürümler | Hayır |
+> | planlar/sürümler/yapılar | Hayır |
+
+## <a name="microsoftbotservice"></a>Microsoft. BotService
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | botServices | Yes |
+> | botServices/kanallar | Hayır |
+> | botServices/Connections | Hayır |
 > | diller | Hayır |
 > | templates | Hayır |
 
-## <a name="microsoftcache"></a>Microsoft.Önbellek
+## <a name="microsoftcache"></a>Microsoft. Cache
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Redis | Evet |
+> | Redis | Yes |
 
-## <a name="microsoftcapacity"></a>Microsoft.Capacity
+## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamalı Rezervasyonlar | Hayır |
-> | autoQuotaIncrease | Hayır |
+> | appliedReservations | Hayır |
+> | Oto Kotaartışı | Hayır |
 > | calculateExchange | Hayır |
-> | hesaplamaFiyatı | Hayır |
-> | hesaplamaPurchasePrice | Hayır |
-> | Katalog | Hayır |
-> | commercialReservationOrders | Hayır |
-> | Exchange | Hayır |
+> | calculatePrice | Hayır |
+> | calculatePurchasePrice | Hayır |
+> | larına | Hayır |
+> | Ticari Vaalrezervler | Hayır |
+> | değişimi | Hayır |
 > | placePurchaseOrder | Hayır |
-> | rezervasyonSiparişler | Hayır |
-> | rezervasyonSiparişler / calculateRefund | Hayır |
-> | reservationSiparişler / birleştirme | Hayır |
-> | rezervasyonSiparişler / rezervasyonlar | Hayır |
-> | rezervasyonSiparişler / rezervasyonlar / revizyonlar | Hayır |
-> | reservationSiparişler / iade | Hayır |
-> | reservationOrders / split | Hayır |
-> | reservationSiparişler / takas | Hayır |
-> | Rezervasyonlar | Hayır |
-> | kaynakSağlayıcılar | Hayır |
+> | Rezervler | Hayır |
+> | Rezervler/Hesaplaizterefund | Hayır |
+> | Rezervler/Birleştir | Hayır |
+> | Rezervler/rezervasyonlar | Hayır |
+> | Rezervler/rezervasyonlar/düzeltmeler | Hayır |
+> | Rezervler/geri dönüş | Hayır |
+> | Rezervler/Böl | Hayır |
+> | Rezervler/takas | Hayır |
+> | oluşturamaz | Hayır |
+> | resourceProviders | Hayır |
 > | kaynaklar | Hayır |
-> | doğrulamaReservationOrder | Hayır |
+> | validateReservationOrder | Hayır |
 
-## <a name="microsoftcdn"></a>Microsoft.Cdn
+## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | CdnWebApplicationFirewallManagedRuleSets | Hayır |
-> | CdnWebApplicationFirewallPolicies | Evet |
-> | kenar düğümleri | Hayır |
-> | Profil | Evet |
-> | profiller / uç noktalar | Evet |
-> | profiller / uç noktalar / özel etki alanları | Hayır |
-> | profiller / uç noktalar / origingroups | Hayır |
-> | profiller / uç noktalar / origins | Hayır |
-> | validateProbe | Hayır |
+> | CdnWebApplicationFirewallPolicies | Yes |
+> | edgenodes | Hayır |
+> | lerinize | Yes |
+> | Profiller/uç noktalar | Yes |
+> | Profiller/uç noktalar/customdomains | Hayır |
+> | Profiller/uç noktalar/origingroups | Hayır |
+> | Profiller/uç noktalar/kaynaklar | Hayır |
+> | Validatearaştırması | Hayır |
 
-## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
+## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | sertifikaSiparişler | Evet |
-> | sertifikaSiparişler / sertifikalar | Hayır |
-> | doğrulamaSertifikaRegistrationInformation | Hayır |
+> | Sertifikadüzenleri | Yes |
+> | certificateOrders/Certificates | Hayır |
+> | Validatecertificateregistrationınformation | Hayır |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Yetenek -lerini | Hayır |
-> | alan Adları | Evet |
-> | domainNames / yetenekleri | Hayır |
-> | domainNames / internalLoadBalancers | Hayır |
-> | domainNames / serviceCertificates | Hayır |
-> | alan Adları / yuvaları | Hayır |
-> | alan Adları / yuvaları / rolleri | Hayır |
-> | alan Adları / yuvalar / roller / metricDefinitions | Hayır |
-> | alan Adları / yuvalar / roller / ölçümler | Hayır |
+> | Yetenek | Hayır |
+> | domainNames | Yes |
+> | domainNames/yetenekleri | Hayır |
+> | domainNames/internalLoadBalancers | Hayır |
+> | domainNames/serviceCertificates | Hayır |
+> | domainNames/Yuvaları | Hayır |
+> | domainNames/yuvalar/roller | Hayır |
+> | domainNames/yuvalar/roller/metricDefinitions | Hayır |
+> | domainNames/yuvalar/roller/ölçümler | Hayır |
 > | moveSubscriptionResources | Hayır |
-> | işletimSistemiAileler | Hayır |
-> | işletim Sistemleri | Hayır |
+> | operatingSystemFamilies | Hayır |
+> | operatingSystems | Hayır |
 > | quotas | Hayır |
 > | resourceTypes | Hayır |
-> | doğrulamaAbonelikMoveAvailability | Hayır |
-> | virtualMachines | Evet |
-> | virtualMachines / diagnosticSettings | Hayır |
-> | virtualMachines / metricDefinitions | Hayır |
-> | virtualMachines / ölçümler | Hayır |
+> | Validatesubscriptionmoveavaılabılıty | Hayır |
+> | virtualMachines | Yes |
+> | virtualMachines/diagnosticSettings | Hayır |
+> | virtualMachines/metricDefinitions | Hayır |
+> | virtualMachines/ölçümler | Hayır |
 
-## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | klasikAltyapıKaynakları | Hayır |
-
-## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
+## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Yetenek -lerini | Hayır |
+> | classicInfrastructureResources | Hayır |
+
+## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Yetenek | Hayır |
 > | expressRouteCrossConnections | Hayır |
-> | expressRouteCrossConnections / peerings | Hayır |
-> | ağ geçidiDesteklenen Cihazlar | Hayır |
-> | ağSecurityGroups | Evet |
+> | expressRouteCrossConnections/peerler | Hayır |
+> | gatewaySupportedDevices | Hayır |
+> | networkSecurityGroups | Yes |
 > | quotas | Hayır |
-> | ayrılmışIps | Evet |
-> | sanalAğlar | Evet |
-> | virtualNetworks / remoteVirtualNetworkPeeringProxies | Hayır |
-> | virtualNetworks / virtualNetworkPeerings | Hayır |
+> | Rezervler | Yes |
+> | virtualNetworks | Yes |
+> | virtualNetworks/Remotevirtualnetworkpeeringproxy 'Leri | Hayır |
+> | virtualNetworks/Virtualnetworkpeerler | Hayır |
 
-## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Yetenek -lerini | Hayır |
-> | Disk | Hayır |
+> | Yetenek | Hayır |
+> | disklerinden | Hayır |
 > | images | Hayır |
 > | osImages | Hayır |
-> | osPlatformImages | Hayır |
-> | publicImages | Hayır |
+> | Osplatformımages | Hayır |
+> | Publicımages | Hayır |
 > | quotas | Hayır |
-> | depolamaHesapları | Evet |
-> | storageAccounts / blobServices | Hayır |
-> | storageAccounts / fileServices | Hayır |
-> | storageAccounts / metricDefinitions | Hayır |
-> | storageAccounts / ölçümler | Hayır |
-> | storageAccounts / queueServices | Hayır |
-> | storageAccounts / hizmetleri | Hayır |
-> | storageAccounts / services / diagnosticAyarlar | Hayır |
-> | storageAccounts / hizmetler / metricDefinitions | Hayır |
-> | storageAccounts / hizmetler / ölçümler | Hayır |
-> | storageAccounts / tableServices | Hayır |
-> | storageAccounts / vmImages | Hayır |
-> | vmImages | Hayır |
+> | storageAccounts | Yes |
+> | storageAccounts/blobServices | Hayır |
+> | storageAccounts/fileServices | Hayır |
+> | storageAccounts/metricDefinitions | Hayır |
+> | storageAccounts/ölçümler | Hayır |
+> | storageAccounts/queueServices | Hayır |
+> | storageAccounts/Services | Hayır |
+> | storageAccounts/Services/diagnosticSettings | Hayır |
+> | storageAccounts/Services/metricDefinitions | Hayır |
+> | storageAccounts/Services/ölçümler | Hayır |
+> | storageAccounts/tableServices | Hayır |
+> | storageAccounts/Vmımages | Hayır |
+> | Vmımages | Hayır |
 
-## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
+## <a name="microsoftcognitiveservices"></a>Microsoft. Biliveservices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | accounts | Evet |
+> | accounts | Yes |
 
-## <a name="microsoftcommerce"></a>Microsoft.Commerce
+## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | RateCard | Hayır |
-> | KullanımA Göre Toplamlar | Hayır |
+> | Usagetoplamaları | Hayır |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | availabilitySets | Evet |
-> | diskŞifreleme Setleri | Evet |
-> | Disk | Evet |
-> | Galerileri | Evet |
-> | galeriler / uygulamalar | Hayır |
-> | galeriler / uygulamalar / sürümler | Hayır |
-> | galeriler / resimler | Hayır |
-> | galeriler / resimler / sürümler | Hayır |
-> | hostGroups | Evet |
-> | hostGroups / hosts | Evet |
-> | images | Evet |
-> | yakınlıkPlacementGroups | Evet |
-> | restorePointCollections | Evet |
-> | restorePointCollections / restorePoints | Hayır |
-> | paylaşılanVMExtensions | Evet |
-> | sharedVMExtensions / sürümleri | Hayır |
-> | paylaşılanVMImages | Evet |
-> | paylaşılanVMImages / sürümleri | Hayır |
-> | anlık görüntüler | Evet |
-> | sshPublicKeys | Evet |
-> | virtualMachines | Evet |
-> | virtualMachines / uzantıları | Evet |
-> | virtualMachines / metricDefinitions | Hayır |
-> | virtualMachineScaleSets | Evet |
-> | virtualMachineScaleSets / uzantıları | Hayır |
-> | virtualMachineScaleSets / ağArayüzler | Hayır |
-> | virtualMachineScaleSets / publicIPAddresses | Hayır |
-> | virtualMachineScaleSets / virtualMachines | Hayır |
-> | virtualMachineScaleSets / virtualMachines / networkInterfaces | Hayır |
+> | availabilitySets | Yes |
+> | diskEncryptionSets | Yes |
+> | disklerinden | Yes |
+> | Galeriler | Yes |
+> | Galeriler/uygulamalar | Hayır |
+> | Galeriler/uygulamalar/sürümler | Hayır |
+> | Galeriler/görüntüler | Hayır |
+> | Galeriler/resimler/sürümler | Hayır |
+> | hostGroups | Yes |
+> | hostGroups/konaklar | Yes |
+> | images | Yes |
+> | proximityPlacementGroups | Yes |
+> | restorePointCollections | Yes |
+> | restorePointCollections/restorePoints | Hayır |
+> | sharedVMExtensions | Yes |
+> | sharedVMExtensions/sürümler | Hayır |
+> | Sharedvmımages | Yes |
+> | Sharedvmımages/sürümler | Hayır |
+> | anlık görüntüler | Yes |
+> | sshPublicKeys | Yes |
+> | virtualMachines | Yes |
+> | virtualMachines/uzantıları | Yes |
+> | virtualMachines/metricDefinitions | Hayır |
+> | virtualMachineScaleSets | Yes |
+> | virtualMachineScaleSets/uzantılar | Hayır |
+> | virtualMachineScaleSets/NetworkInterfaces | Hayır |
+> | virtualMachineScaleSets/Publicıpaddresses | Hayır |
+> | virtualMachineScaleSets/virtualMachines | Hayır |
+> | virtualMachineScaleSets/virtualMachines/NetworkInterfaces | Hayır |
 
-## <a name="microsoftconsumption"></a>Microsoft.Consumption
+## <a name="microsoftconsumption"></a>Microsoft. tüketim
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Toplu Maliyet | Hayır |
+> | Aggregmalyt maliyeti | Hayır |
 > | Bakiyeler | Hayır |
 > | Bütçeler | Hayır |
 > | Ücretler | Hayır |
-> | MaliyetEtiketleri | Hayır |
-> | Kredi | Hayır |
+> | CostTags | Hayır |
+> | iler | Hayır |
 > | etkinlikler | Hayır |
 > | Tahminler | Hayır |
-> | Çok | Hayır |
-> | Pazaryerleri | Hayır |
+> | oluş | Hayır |
+> | Marketlerinden | Hayır |
 > | Fiyat listeleri | Hayır |
-> | Ürünler | Hayır |
-> | Rezervasyon Detayları | Hayır |
-> | Rezervasyon Önerileri | Hayır |
-> | Rezervasyon Özetleri | Hayır |
-> | Rezervasyon İşlemleri | Hayır |
+> | ürün | Hayır |
+> | Rezervde ayrıntıları | Hayır |
+> | Rezervationönerilere | Hayır |
+> | Rezervlerin Özeti | Hayır |
+> | Rezervlik Işlemleri | Hayır |
 > | Etiketler | Hayır |
-> | Kiracı | Hayır |
+> | Kira | Hayır |
 > | Koşullar | Hayır |
-> | Kullanım Detayları | Hayır |
+> | UsageDetails | Hayır |
 
-## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | konteynerGruplar | Evet |
+> | Kapsayıcı grupları | Yes |
 > | serviceAssociationLinks | Hayır |
 
-## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
+## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Kayıt | Evet |
-> | kayıt defterleri / agentPools | Evet |
-> | kayıt defterleri / oluşturur | Hayır |
-> | kayıt defterleri / oluşturur / iptal | Hayır |
-> | kayıt defteri / oluşturur / getLogLink | Hayır |
-> | kayıt defterleri / buildTasks | Evet |
-> | kayıt defterleri / buildGörevler / adımlar | Hayır |
-> | kayıt defterleri / eventGridFilters | Hayır |
-> | kayıt defterleri / oluşturmak Kimlik Bilgileri | Hayır |
-> | kayıt defteri / getBuildSourceUploadUrl | Hayır |
-> | kayıt defterleri / GetCredentials | Hayır |
-> | kayıt defteri / importImage | Hayır |
-> | kayıt defterleri / privateEndpointConnectionProxies | Hayır |
-> | kayıt defterleri / privateEndpointConnectionProxies / doğrulamak | Hayır |
-> | kayıt defterleri / privateEndpointConnections | Hayır |
-> | kayıt defterleri / privateLinkResources | Hayır |
-> | kayıt defterleri / queueYapı | Hayır |
-> | kayıt defteri / rejenereCredential | Hayır |
-> | kayıt defterleri / rejenere Credentials | Hayır |
-> | kayıt defterleri / çoğaltmalar | Evet |
-> | kayıt defterleri / çalışır | Hayır |
-> | kayıt defterleri / çalışır / iptal | Hayır |
-> | kayıt defteri / programRun | Hayır |
-> | kayıt defteri / scopeMaps | Hayır |
-> | kayıt defterleri / taskRuns | Evet |
-> | kayıt defterleri / görevleri | Evet |
-> | kayıt defterleri / belirteçleri | Hayır |
-> | kayıt defterleri / updatePolitikalar | Hayır |
-> | kayıt defterleri / webhooks | Evet |
-> | kayıt defteri / webhooks / getCallbackConfig | Hayır |
-> | kayıt defteri / webhooks / ping | Hayır |
+> | kayıt | Yes |
+> | kayıt defterleri/agentPools | Yes |
+> | kayıt defterleri/derlemeler | Hayır |
+> | kayıt defterleri/derlemeler/iptal | Hayır |
+> | kayıt defterleri/derlemeler/getLogLink | Hayır |
+> | kayıt defterleri/buildTasks | Yes |
+> | kayıt defterleri/buildTasks/Steps | Hayır |
+> | kayıt defterleri/eventGridFilters | Hayır |
+> | kayıt defterleri/generateCredentials | Hayır |
+> | kayıt defterleri/getBuildSourceUploadUrl 'Si | Hayır |
+> | kayıt defterleri/GetCredentials | Hayır |
+> | kayıt defterleri/ımportımage | Hayır |
+> | kayıt defterleri/Privateendpointconnectionproxy 'Leri | Hayır |
+> | kayıt defterleri/Privateendpointconnectionproxy/doğrulama | Hayır |
+> | kayıt defterleri/privateEndpointConnections | Hayır |
+> | kayıt defterleri/privateLinkResources | Hayır |
+> | kayıt defterleri/queueBuild | Hayır |
+> | kayıt defterleri/regenerateCredential | Hayır |
+> | kayıt defterleri/regenerateCredentials | Hayır |
+> | kayıt defterleri/çoğaltmalar | Yes |
+> | kayıt defterleri/çalıştırmalar | Hayır |
+> | kayıt defterleri/çalıştırmalar/iptal | Hayır |
+> | kayıt defterleri/scheduleRun | Hayır |
+> | kayıt defterleri/Kapsameşlemler | Hayır |
+> | kayıt defterleri/Taskçalıştırmaları | Yes |
+> | kayıt defterleri/görevler | Yes |
+> | kayıt defterleri/belirteçler | Hayır |
+> | kayıt defterleri/updatePolicies | Hayır |
+> | kayıt defterleri/Web kancaları | Yes |
+> | kayıt defterleri/Web kancaları/getCallbackConfig | Hayır |
+> | kayıt defterleri/Web kancaları/ping | Hayır |
 
-## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
+## <a name="microsoftcontainerservice"></a>Microsoft. ContainerService
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | konteynerHizmetleri | Evet |
-> | yönetilen Kümeler | Evet |
-> | openShiftManagedClusters | Evet |
+> | containerServices | Yes |
+> | Managedkümeler | Yes |
+> | openShiftManagedClusters | Yes |
 
-## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
+## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Uyarılar | Hayır |
-> | Faturahesapları | Hayır |
+> | BillingAccounts | Hayır |
 > | Bütçeler | Hayır |
-> | CloudConnectors | Hayır |
-> | Bağlayıcılar | Evet |
+> | Cloudbağlayıcıları | Hayır |
+> | Bağlayıcılar | Yes |
 > | Departmanlar | Hayır |
 > | Boyutlar | Hayır |
-> | Kayıt Hesapları | Hayır |
-> | Ihracat | Hayır |
-> | Dış Fatura hesapları | Hayır |
-> | Dış Faturahesapları / Uyarılar | Hayır |
-> | Dış Faturahesapları / Boyutlar | Hayır |
-> | Dış Faturahesapları / Tahmin | Hayır |
-> | Dış Fatura hesapları / Sorgu | Hayır |
-> | Harici Abonelikler | Hayır |
-> | Harici Abonelikler / Uyarılar | Hayır |
-> | Harici Abonelikler / Boyutlar | Hayır |
-> | ExternalSubscriptions / Tahmin | Hayır |
-> | Harici Abonelikler / Sorgu | Hayır |
+> | Kayıt sayısı | Hayır |
+> | Aktarımları | Hayır |
+> | ExternalBillingAccounts | Hayır |
+> | ExternalBillingAccounts/uyarılar | Hayır |
+> | ExternalBillingAccounts/Boyutlar | Hayır |
+> | ExternalBillingAccounts/tahmin | Hayır |
+> | ExternalBillingAccounts/sorgu | Hayır |
+> | Externalabonelikleri | Hayır |
+> | Externalabonelikleri/uyarıları | Hayır |
+> | Externalabonelikler/Boyutlar | Hayır |
+> | Externalabonelikler/tahmin | Hayır |
+> | Externalabonelikler/sorgu | Hayır |
 > | Tahmin | Hayır |
 > | Sorgu | Hayır |
 > | register | Hayır |
 > | Reportconfigs | Hayır |
 > | Raporlar | Hayır |
 > | Ayarlar | Hayır |
-> | showbackKurallar | Hayır |
+> | showbackRules | Hayır |
 > | Görünümler | Hayır |
 
-## <a name="microsoftcustomerlockbox"></a>Microsoft.CustomerLockbox
+## <a name="microsoftcustomerlockbox"></a>Microsoft. Customerkasası
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Istek | Hayır |
+> | istekleri | Hayır |
 
-## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Dernek | Hayır |
-> | kaynakSağlayıcılar | Evet |
-
-## <a name="microsoftdatabox"></a>Microsoft.DataBox
+## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Işleri | Evet |
+> | içermektedir | Hayır |
+> | resourceProviders | Yes |
 
-## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | DataBoxEdgeCihazlar | Evet |
-
-## <a name="microsoftdatabricks"></a>Microsoft.Databricks
+## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | çalışma alanı | Evet |
-> | çalışma alanları / dbWorkspaces | Hayır |
-> | çalışma alanları / depolamaŞifreleme | Hayır |
-> | çalışma alanları / virtualNetworkPeerings | Hayır |
+> | Çizelge | Yes |
 
-## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
+## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Katalog | Evet |
-> | veri katalogları | Evet |
-> | veri katalogları / veri kaynakları | Hayır |
-> | datacatalogs / datasources / taramaları | Hayır |
-> | datacatalogs / datasources / taramaları / veri kümeleri | Hayır |
-> | datacatalogs / datasources / taramaları / tetikler | Hayır |
+> | DataBoxEdgeDevices | Yes |
 
-## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
+## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | dataFabrikalar | Evet |
-> | dataFactorys / diagnosticSettings | Hayır |
-> | dataFabrikalar / metricDefinitions | Hayır |
+> | çalışma alanı | Yes |
+> | çalışma alanları/dbWorkspaces | Hayır |
+> | çalışma alanları/storageEncryption | Hayır |
+> | çalışma alanları/Virtualnetworkpeerler | Hayır |
+
+## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | larına | Yes |
+> | veri katalogları | Yes |
+> | veri katalogları/veri kaynakları | Hayır |
+> | veri katalogları/veri kaynakları/taramalar | Hayır |
+> | veri katalogları/veri kaynakları/taramalar/veri kümeleri | Hayır |
+> | veri katalogları/veri kaynakları/taramalar/Tetikleyiciler | Hayır |
+
+## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Veri fabrikaları | Yes |
+> | DataFactory/diagnosticSettings | Hayır |
+> | DataFactory/metricDefinitions | Hayır |
 > | dataFactorySchema | Hayır |
-> | Fabrika | Evet |
-> | fabrikalar / integrationRuntimes | Hayır |
+> | larının | Yes |
+> | Fabrika/tümleştirme çalışma zamanları | Hayır |
 
-## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | accounts | Evet |
-> | hesaplar / dataLakeStoreAccounts | Hayır |
-> | hesaplar / depolamaHesapları | Hayır |
-> | hesaplar / depolamaHesapları / konteynerler | Hayır |
-> | hesaplar / transferAnalyticsUnits | Hayır |
-
-## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
+## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | accounts | Evet |
-> | hesaplar / eventGridFilters | Hayır |
-> | hesaplar / firewallRules | Hayır |
+> | accounts | Yes |
+> | hesaplar/dataLakeStoreAccounts | Hayır |
+> | hesaplar/storageAccounts | Hayır |
+> | hesaplar/storageAccounts/kapsayıcılar | Hayır |
+> | hesaplar/Transferanaliz tici | Hayır |
 
-## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | services | Evet |
-> | hizmetler / projeler | Evet |
-
-## <a name="microsoftdatashare"></a>Microsoft.DataShare
+## <a name="microsoftdatalakestore"></a>Microsoft. DataLakeStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | accounts | Evet |
-> | hesaplar / hisse | Hayır |
-> | hesaplar / paylaşımlar / veri kümeleri | Hayır |
-> | hesaplar / hisse / davetiyeler | Hayır |
-> | hesaplar / hisse / providersharesubscriptions | Hayır |
-> | hesaplar / paylaşımlar / senkronizasyonAyarları | Hayır |
-> | hesaplar / sharesubscriptions | Hayır |
-> | hesaplar / sharesubscriptions / consumerSourceDataSets | Hayır |
-> | hesaplar / sharesubscriptions / datasetmappings | Hayır |
-> | hesaplar / sharesubscriptions / tetikleyiciler | Hayır |
+> | accounts | Yes |
+> | hesaplar/eventGridFilters | Hayır |
+> | hesaplar/firewallRules | Hayır |
 
-## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
+## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Sunucu | Evet |
-> | sunucular / danışmanlar | Hayır |
-> | sunucular / anahtarlar | Hayır |
-> | sunucular / privateEndpointConnectionProxies | Hayır |
-> | sunucular / privateEndpointConnections | Hayır |
-> | sunucular / privateLinkResources | Hayır |
-> | sunucular / queryTexts | Hayır |
-> | sunucular / recoverableServers | Hayır |
-> | sunucular / topQueryStatistics | Hayır |
-> | sunucular / virtualNetworkRules | Hayır |
-> | sunucular / waitStatistics | Hayır |
+> | services | Yes |
+> | Hizmetler/Projeler | Yes |
 
-## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
+## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Sunucu | Evet |
-> | sunucular / danışmanlar | Hayır |
-> | sunucular / anahtarlar | Hayır |
-> | sunucular / privateEndpointConnectionProxies | Hayır |
-> | sunucular / privateEndpointConnections | Hayır |
-> | sunucular / privateLinkResources | Hayır |
-> | sunucular / queryTexts | Hayır |
-> | sunucular / recoverableServers | Hayır |
-> | sunucular / topQueryStatistics | Hayır |
-> | sunucular / virtualNetworkRules | Hayır |
-> | sunucular / waitStatistics | Hayır |
+> | accounts | Yes |
+> | hesaplar/paylaşımlar | Hayır |
+> | hesaplar/paylaşımlar/veri kümeleri | Hayır |
+> | hesaplar/paylaşımlar/davetler | Hayır |
+> | hesaplar/paylaşımlar/providersharesubscriptions | Hayır |
+> | hesaplar/paylaşımlar/synchronizationSettings | Hayır |
+> | hesaplar/parçalar esubscriptions | Hayır |
+> | hesaplar/parçalar esubscriptions/Consumersourcedataset 'ler | Hayır |
+> | hesaplar/parçalar esubscriptions/datasetmappings | Hayır |
+> | hesaplar/parçalar esubscriptions/Tetikleyiciler | Hayır |
 
-## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Servergroups | Evet |
-> | Sunucu | Evet |
-> | sunucular / danışmanlar | Hayır |
-> | sunucular / anahtarlar | Hayır |
-> | sunucular / privateEndpointConnectionProxies | Hayır |
-> | sunucular / privateEndpointConnections | Hayır |
-> | sunucular / privateLinkResources | Hayır |
-> | sunucular / queryTexts | Hayır |
-> | sunucular / recoverableServers | Hayır |
-> | sunucular / topQueryStatistics | Hayır |
-> | sunucular / virtualNetworkRules | Hayır |
-> | sunucular / waitStatistics | Hayır |
-> | sunucularv2 | Evet |
-> | singleServers | Evet |
-
-## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+## <a name="microsoftdbformariadb"></a>Microsoft. Dbformarıdb
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | artifactSources | Evet |
-> | kullanıma sunulması | Evet |
-> | hizmetTopçular | Evet |
-> | serviceTopolojiler / hizmetler | Evet |
-> | serviceTopolojiler / hizmetler / serviceUnits | Evet |
-> | adımlar | Evet |
+> | larý | Yes |
+> | sunucular/danışmanları | Hayır |
+> | sunucular/anahtarlar | Hayır |
+> | sunucular/Privateendpointconnectionproxy 'Leri | Hayır |
+> | sunucular/privateEndpointConnections | Hayır |
+> | sunucular/privateLinkResources | Hayır |
+> | sunucular/Querymetinmetinleri | Hayır |
+> | sunucular/recoverableServers | Hayır |
+> | sunucular/topQueryStatistics | Hayır |
+> | sunucular/virtualNetworkRules | Hayır |
+> | sunucular/waitStatistics | Hayır |
 
-## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | uygulama grupları | Evet |
-> | uygulama grupları / uygulamalar | Hayır |
-> | uygulama grupları / masaüstü bilgisayarlar | Hayır |
-> | uygulama grupları / startmenuitems | Hayır |
-> | hostpools | Evet |
-> | hostpools / sessionhosts | Hayır |
-> | hostpools / sessionhosts / usersessions | Hayır |
-> | hostpools / usersessions | Hayır |
-> | çalışma alanı | Evet |
-
-## <a name="microsoftdevices"></a>Microsoft.Devices
+## <a name="microsoftdbformysql"></a>Microsoft. Dbformyısql
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Elastik Havuzlar | Evet |
-> | ElasticPools / IotHubTenants | Evet |
-> | ElasticPools / IotHubTenants / securityAyarlar | Hayır |
-> | IotHub'lar | Evet |
-> | IotHubs / olayGridFilters | Hayır |
-> | IotHubs / securityAyarlar | Hayır |
-> | Tedarik Hizmetleri | Evet |
-> | Kullanım | Hayır |
+> | larý | Yes |
+> | sunucular/danışmanları | Hayır |
+> | sunucular/anahtarlar | Hayır |
+> | sunucular/Privateendpointconnectionproxy 'Leri | Hayır |
+> | sunucular/privateEndpointConnections | Hayır |
+> | sunucular/privateLinkResources | Hayır |
+> | sunucular/Querymetinmetinleri | Hayır |
+> | sunucular/recoverableServers | Hayır |
+> | sunucular/topQueryStatistics | Hayır |
+> | sunucular/virtualNetworkRules | Hayır |
+> | sunucular/waitStatistics | Hayır |
 
-## <a name="microsoftdevops"></a>Microsoft.Devops
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Boru hattı | Evet |
-
-## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
+## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | denetleyiciler | Evet |
+> | Sunucu grupları | Yes |
+> | larý | Yes |
+> | sunucular/danışmanları | Hayır |
+> | sunucular/anahtarlar | Hayır |
+> | sunucular/Privateendpointconnectionproxy 'Leri | Hayır |
+> | sunucular/privateEndpointConnections | Hayır |
+> | sunucular/privateLinkResources | Hayır |
+> | sunucular/Querymetinmetinleri | Hayır |
+> | sunucular/recoverableServers | Hayır |
+> | sunucular/topQueryStatistics | Hayır |
+> | sunucular/virtualNetworkRules | Hayır |
+> | sunucular/waitStatistics | Hayır |
+> | serversv2 | Yes |
+> | Teksunucular | Yes |
 
-## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | laboratuvar merkezleri | Evet |
-> | Labs | Evet |
-> | laboratuvarlar / ortamlar | Evet |
-> | laboratuvarlar / serviceRunners | Evet |
-> | laboratuvarlar / virtualMachines | Evet |
-> | Zamanlama | Evet |
-
-## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | veritabanıHesap Adları | Hayır |
-> | veritabanıHesapları | Evet |
-
-## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
+## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Etki alanları | Evet |
-> | etki alanları / domainOwnershipIdentifiers | Hayır |
-> | oluştururSsoRequest | Hayır |
+> | artifactSources | Yes |
+> | piyasaya çıkarma | Yes |
+> | Servicetopolojileri | Yes |
+> | Servicetopolojileri/hizmetler | Yes |
+> | Servicetopolojileri/hizmetler/serviceUnits | Yes |
+> | adımlar | Yes |
+
+## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | applicationgroups | Yes |
+> | applicationgroups/uygulamalar | Hayır |
+> | applicationgroups/masaüstleri | Hayır |
+> | applicationgroups/startmenuıtems | Hayır |
+> | Ana bilgisayar havuzları | Yes |
+> | hostpools/oturumkonakları | Hayır |
+> | hostpools/sessionkonakları/usersessions | Hayır |
+> | hosthavuzlar/usersessions | Hayır |
+> | çalışma alanı | Yes |
+
+## <a name="microsoftdevices"></a>Microsoft. Devices
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Elaun havuzları | Yes |
+> | Elaun havuzları/ıothubkiracılar | Yes |
+> | Elaor havuzları/ıothubkiracılar/securitySettings | Hayır |
+> | Iothubs | Yes |
+> | IotHubs/eventGridFilters | Hayır |
+> | IotHubs/securitySettings | Hayır |
+> | ProvisioningServices | Yes |
+> | vardır | Hayır |
+
+## <a name="microsoftdevops"></a>Microsoft. DevOps
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | düzenler | Yes |
+
+## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | denetleyiciler | Yes |
+
+## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | labcenters | Yes |
+> | larda | Yes |
+> | Laboratuvarlar/ortamlar | Yes |
+> | Labs/Servicerunanlar | Yes |
+> | Labs/virtualMachines | Yes |
+> | cağını | Yes |
+
+## <a name="microsoftdocumentdb"></a>Microsoft. DocumentDB
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | databaseAccountNames | Hayır |
+> | Veritabanı hesapları | Yes |
+
+## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | etki alanları | Yes |
+> | Domains/Domainownershiptanýmlayýcýlarý | Hayır |
+> | generateSsoRequest | Hayır |
 > | topLevelDomains | Hayır |
-> | doğrulanmasıDomainRegistrationInformation | Hayır |
+> | Validatedomainregistrationınformation | Hayır |
 
-## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
+## <a name="microsoftdynamicslcs"></a>Microsoft. DynamicsLcs
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | lcsprojects | Hayır |
-> | lcsprojects / clouddeployments | Hayır |
-> | lcsprojects / konektörler | Hayır |
+> | lcsprojects/clouddağıtımları | Hayır |
+> | lcsprojects/bağlayıcılar | Hayır |
 
-## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | services | Evet |
-
-## <a name="microsofteventgrid"></a>Microsoft.EventGrid
+## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Etki alanları | Evet |
-> | etki alanları / konular | Hayır |
-> | eventAbonelikler | Hayır |
-> | uzantıKonular | Hayır |
-> | partnerNamespaces | Evet |
-> | partnerNamespaces / eventChannels | Hayır |
-> | partnerKayıtlar | Evet |
-> | partnerKonular | Evet |
-> | partnerKonular / eventSubscriptions | Hayır |
-> | systemTopics | Evet |
-> | systemKonular / eventSubscriptions | Hayır |
-> | konuları | Evet |
+> | services | Yes |
+
+## <a name="microsofteventgrid"></a>Microsoft. EventGrid
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | etki alanları | Yes |
+> | etki alanları/konular | Hayır |
+> | Eventabonelikleri | Hayır |
+> | Extensionkonuları | Hayır |
+> | partnerNamespaces | Yes |
+> | partnerNamespaces/eventChannels | Hayır |
+> | iş ortağı kayıtları | Yes |
+> | iş ortağı konuları | Yes |
+> | iş ortağı konuları/Eventabonelikleri | Hayır |
+> | Sistem konuları | Yes |
+> | Sistem konuları/Eventabonelikler | Hayır |
+> | konuları | Yes |
 > | topicTypes | Hayır |
 
-## <a name="microsofteventhub"></a>Microsoft.EventHub
+## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Küme | Evet |
-> | Ad alanları | Evet |
-> | namespaces / yetkilendirme kuralları | Hayır |
-> | ad alanları / disasterrecoveryconfigs | Hayır |
-> | ad alanları / eventhubs | Hayır |
-> | ad alanları / eventhubs / yetkilendirme kuralları | Hayır |
-> | ad alanları / eventhubs / tüketici grupları | Hayır |
-> | ad alanları / networkrulesets | Hayır |
+> | leriniz | Yes |
+> | öznitelikleri | Yes |
+> | ad alanları/authorizationrules | Hayır |
+> | ad alanları/diskalrecoveryconfigs | Hayır |
+> | ad alanları/eventhubs | Hayır |
+> | ad alanları/eventhubs/authorizationrules | Hayır |
+> | ad alanları/eventhubs/consumergroups | Hayır |
+> | ad alanları/networkrulesets | Hayır |
 
-## <a name="microsoftfalcon"></a>Microsoft.Falcon
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Ad alanları | Evet |
-
-## <a name="microsoftfeatures"></a>Microsoft.Özellikler
+## <a name="microsoftfalcon"></a>Microsoft. Falcon
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | özellikSağlayıcılar | Hayır |
+> | öznitelikleri | Yes |
+
+## <a name="microsoftfeatures"></a>Microsoft. Features
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Özellik sağlayıcıları | Hayır |
 > | özellikler | Hayır |
-> | Sağlayıcı | Hayır |
-> | abonelikÖzellik Kayıtları | Hayır |
+> | sağlayıcılarla | Hayır |
+> | subscriptionFeatureRegistrations | Hayır |
 
-## <a name="microsoftgallery"></a>Microsoft.Gallery
+## <a name="microsoftgallery"></a>Microsoft. Gallery
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Kayıt | Hayır |
-> | galeri öğeleri | Hayır |
-> | artifactaccessuri oluşturmak | Hayır |
-> | myareas | Hayır |
-> | myareas / alanları | Hayır |
-> | myareas / alanlar / alanlar | Hayır |
-> | myareas / alanlar / alanlar / galeri öğeleri | Hayır |
-> | myareas / alanlar / galeri öğeleri | Hayır |
-> | myareas / galeri öğeleri | Hayır |
+> | kaydedemez | Hayır |
+> | gallergıtems | Hayır |
+> | generateartifactaccessuri | Hayır |
+> | myarea | Hayır |
+> | myarea/alan | Hayır |
+> | myarea/alan/alan | Hayır |
+> | myareas/Areas/Areas/gallergıtems | Hayır |
+> | myareas/Areas/gallergıtems | Hayır |
+> | myarea/gallergıtems | Hayır |
 > | register | Hayır |
 > | kaynaklar | Hayır |
-> | retrieveresourcesbyid | Hayır |
+> | elde edilecek esourcesbyıd | Hayır |
 
-## <a name="microsoftgenomics"></a>Microsoft.Genomik
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | accounts | Evet |
-
-## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
+## <a name="microsoftgenomics"></a>Microsoft. Genomiks
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | otomatikYönetilen Hesaplar | Evet |
-> | otomatikManagedVmConfigurationProfiles | Evet |
-> | configurationProfileAtamaları | Hayır |
-> | guestConfigurationAssignments | Hayır |
-> | Yazılım | Hayır |
+> | accounts | Yes |
+
+## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Oto Managedaccounts | Yes |
+> | Oto Managedvmconfigurationprofiles | Yes |
+> | Configurationprofileatamalar | Hayır |
+> | Guestconfigurationatamaları | Hayır |
+> | yazılımıdır | Hayır |
 > | softwareUpdateProfile | Hayır |
 > | softwareUpdates | Hayır |
 
-## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
+## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | hanaInstances | Evet |
-> | sapMonitörler | Evet |
+> | Hanaınstances | Yes |
+> | Sapizleyicileri | Yes |
 
-## <a name="microsofthardwaresecuritymodules"></a>Microsoft.HardwareSecurityModules
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | adanmışHSMs | Evet |
-
-## <a name="microsofthdinsight"></a>Microsoft.HDInsight
+## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Küme | Evet |
-> | kümeler / uygulamalar | Hayır |
+> | ayrılmış Atedhsms | Yes |
 
-## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | services | Evet |
-
-## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Makine | Evet |
-> | makineler / uzantılar | Evet |
+> | leriniz | Yes |
+> | kümeler/uygulamalar | Hayır |
 
-## <a name="microsofthybriddata"></a>Microsoft.HybridData
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | dataYöneticiler | Evet |
-
-## <a name="microsofthydra"></a>Microsoft.Hydra
+## <a name="microsofthealthcareapis"></a>Microsoft. Healthgelişme API 'leri
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Bileşen | Evet |
-> | ağScopes | Evet |
+> | services | Yes |
 
-## <a name="microsoftimportexport"></a>Microsoft.ImportExport
+## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Işleri | Evet |
+> | larla | Yes |
+> | makineler/uzantılar | Yes |
+
+## <a name="microsofthybriddata"></a>Microsoft. HybridData
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Veri yöneticileri | Yes |
+
+## <a name="microsofthydra"></a>Microsoft. Hydra
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | bileşenleri | Yes |
+> | networkScopes | Yes |
+
+## <a name="microsoftimportexport"></a>Microsoft. ımportexport
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Çizelge | Yes |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | tanıAyarları | Hayır |
+> | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
 
-## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
+## <a name="microsoftiotcentral"></a>Microsoft. ıotcentral
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | appTemplates | Hayır |
-> | IoTApps | Evet |
+> | Iotapps | Yes |
 
-## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Graf | Evet |
-
-## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
+## <a name="microsoftiotspaces"></a>Microsoft. ıotspaces
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | silinmiş Vaults | Hayır |
-> | hsmPools | Evet |
-> | Tonoz | Evet |
-> | tonozlar / erişimPolitikaları | Hayır |
-> | kasalar / olayGridFilters | Hayır |
-> | kasalar / sırlar | Hayır |
+> | Graf | Yes |
 
-## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+## <a name="microsoftkeyvault"></a>Microsoft. Keykasası
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | bağlıKümeler | Evet |
+> | Silinkaults | Hayır |
+> | hsmPools | Yes |
+> | kasaları | Yes |
+> | kasa/erişim Ilkeleri | Hayır |
+> | kasa/eventGridFilters | Hayır |
+> | kasa/gizlilikler | Hayır |
+
+## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Connectedkümeler | Yes |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Küme | Evet |
-> | kümeler / ekli veritabanı yapılandırmaları | Hayır |
-> | kümeler / veritabanları | Hayır |
-> | kümeleri / veritabanları / veri bağlantıları | Hayır |
-> | kümeleri / veritabanları / eventhubconnections | Hayır |
-> | kümeleri / veritabanları / ilkeler atamaları | Hayır |
-> | kümeler / veri bağlantıları | Hayır |
-> | kümeler / ilkeler atamaları | Hayır |
-> | kümeler / paylaşılan kimlikler | Hayır |
+> | leriniz | Yes |
+> | kümeler/attacheddatabaseconfigurations | Hayır |
+> | kümeler/veritabanları | Hayır |
+> | kümeler/veritabanları/veri bağlantıları | Hayır |
+> | kümeler/veritabanları/eventhubconnections | Hayır |
+> | kümeler/veritabanları/princıpalasbir | Hayır |
+> | kümeler/veri bağlantıları | Hayır |
+> | kümeler/princıpalasbir | Hayır |
+> | kümeler/parçalar | Hayır |
 
-## <a name="microsoftlabservices"></a>Microsoft.LabServices
+## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | laboratuvar hesapları | Evet |
+> | labaccounts | Yes |
 > | kullanıcılar | Hayır |
 
-## <a name="microsoftlogic"></a>Microsoft.Logic
+## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | hostingOrtamlar | Evet |
-> | entegrasyonHesapları | Evet |
-> | entegrasyonServiceOrtamlar | Evet |
-> | entegrasyonServiceEnvironments / managedApis | Evet |
-> | izole Ortamlar | Evet |
-> | Iş akışı | Evet |
+> | hostingEnvironments | Yes |
+> | Tümleştirme hesapları | Yes |
+> | ıntegrationserviceortamortamları | Yes |
+> | ıntegrationserviceortamortamları/managedap | Yes |
+> | ısotedenvironments | Yes |
+> | sürdürülen | Yes |
 
-## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
+## <a name="microsoftmachinelearning"></a>Microsoft. Machinöğrenim
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | taahhütPlanlar | Evet |
-> | Webservices | Evet |
-> | Çalışma Alanları | Evet |
+> | Commitmentplanlar | Yes |
+> | Hizmetleri | Yes |
+> | Çalışma Alanları | Yes |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | çalışma alanı | Evet |
-> | çalışma alanları / hesaplamalar | Hayır |
-> | çalışma alanları / eventGridFilters | Hayır |
+> | çalışma alanı | Yes |
+> | çalışma alanları/hesaplar | Hayır |
+> | çalışma alanları/eventGridFilters | Hayır |
 
-## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamaGüncellemeler | Hayır |
-> | yapılandırmaAtamaları | Hayır |
-> | maintenanceYapılandırmalar | Evet |
+> | applyUpdates | Hayır |
+> | Configurationatamalar | Hayır |
+> | maintenanceConfigurations | Yes |
 > | güncelleştirmeler | Hayır |
 
-## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
+## <a name="microsoftmanagedidentity"></a>Microsoft. Managedıdentity
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Kimlik | Hayır |
-> | kullanıcıAssignedIdentities | Evet |
+> | Kimlikler | Hayır |
+> | Userassignedıdentities | Yes |
 
-## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | marketplaceRegistrationDefinitions | Hayır |
-> | kayıtAtamaları | Hayır |
-> | kayıtTanımlar | Hayır |
-
-## <a name="microsoftmanagement"></a>Microsoft.Management
+## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | kuruluşlar | Hayır |
-> | managementGroups | Hayır |
-> | managementGroups / ayarlar | Hayır |
+> | Pazar Placeryumuristrationdefinitions | Hayır |
+> | Registrationatamaları | Hayır |
+> | registrationDefinitions | Hayır |
+
+## <a name="microsoftmanagement"></a>Microsoft. Management
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | getEntities | Hayır |
+> | Yönetim grupları | Hayır |
+> | managementGroups/Settings | Hayır |
 > | kaynaklar | Hayır |
-> | başlangıçTenantBackfill | Hayır |
+> | startTenantBackfill | Hayır |
 > | tenantBackfillStatus | Hayır |
 
-## <a name="microsoftmaps"></a>Microsoft.Haritalar
+## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | accounts | Evet |
-> | hesaplar / eventGridFilters | Hayır |
-> | hesaplar / privateAtlases | Evet |
+> | accounts | Yes |
+> | hesaplar/eventGridFilters | Hayır |
+> | hesaplar/privateAtlases | Yes |
 
-## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
+## <a name="microsoftmarketplace"></a>Microsoft. Market
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Sunmaktadır | Hayır |
+> | sunar | Hayır |
 > | offerTypes | Hayır |
-> | offerTypes / yayıncılar | Hayır |
-> | offerTypes / yayıncılar / teklifler | Hayır |
-> | offerTypes / yayıncılar / teklifler / planlar | Hayır |
-> | offerTypes / yayıncılar / teklifler / planlar / anlaşmalar | Hayır |
-> | offerTypes / yayıncılar / teklifler / planlar / configs | Hayır |
-> | offerTypes / yayıncılar / teklifler / planlar / configs / importImage | Hayır |
-> | privategalleryitems | Hayır |
+> | offerTypes/yayımcılar | Hayır |
+> | offerTypes/yayımcılar/teklifler | Hayır |
+> | offerTypes/yayımcılar/teklifler/planlar | Hayır |
+> | offerTypes/yayımcılar/teklifler/planlar/anlaşmalar | Hayır |
+> | offertypes/yayımcılar/teklifler/planlar/yapılandırmalarını | Hayır |
+> | offertypes/yayımcılar/teklifler/planlar/yapılandırmalarını/ımportımage | Hayır |
+> | privategallergıtems | Hayır |
 > | privateStoreClient | Hayır |
-> | privateMağazalar | Hayır |
-> | privateStores / teklifler | Hayır |
-> | Ürünler | Hayır |
-> | Yayıncı | Hayır |
-> | yayıncılar / teklifler | Hayır |
-> | yayıncılar / teklifler / değişiklikler | Hayır |
+> | Privatemağazaların | Hayır |
+> | Privatemağazaların/tekliflerin | Hayır |
+> | ürün | Hayır |
+> | Publishers | Hayır |
+> | Yayımcılar/teklifler | Hayır |
+> | Yayımcılar/teklifler/Düzeltme | Hayır |
 > | register | Hayır |
 
-## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
+## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | klasikDevServices | Evet |
-> | updateİletişimTercihi | Hayır |
+> | classicDevServices | Yes |
+> | updateCommunicationPreference | Hayır |
 
-## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceSipariş
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Anlaşma | Hayır |
-> | teklif türleri | Hayır |
-
-## <a name="microsoftmedia"></a>Microsoft.Media
+## <a name="microsoftmarketplaceordering"></a>Microsoft. Marketplacesıralaması
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | medya hizmetleri | Evet |
-> | mediaservices / accountFilters | Hayır |
-> | mediaservices / varlıklar | Hayır |
-> | mediaservices / varlıklar / varlıkFiltreler | Hayır |
-> | mediaservices / contentKeyPolicies | Hayır |
-> | mediaservices / eventGridFilters | Hayır |
-> | mediaservices / liveEventOperations | Hayır |
-> | mediaservices / liveEvents | Evet |
-> | mediaservices / liveEvents / liveOutputs | Hayır |
-> | mediaservices / liveOutputOperations | Hayır |
-> | mediaservices / mediaGraphs | Hayır |
-> | mediaservices / streamingEndpointOperations | Hayır |
-> | mediaservices / streamingEndpoints | Evet |
-> | mediaservices / streamingLocators | Hayır |
-> | mediaservices / streamingPolitikalar | Hayır |
-> | mediaservices / dönüştürür | Hayır |
-> | mediaservices / dönüşümler / işler | Hayır |
+> | anlaşmalar | Hayır |
+> | offertypes | Hayır |
 
-## <a name="microsoftmicroservices4spring"></a>Microsoft.Microservices4Bahar
+## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | appClusters | Evet |
+> | mediaservices | Yes |
+> | mediaservices/accountFilters | Hayır |
+> | mediaservices/varlıklar | Hayır |
+> | mediaservices/varlıklar/assetFilters | Hayır |
+> | mediaservices/contentKeyPolicies | Hayır |
+> | mediaservices/eventGridFilters | Hayır |
+> | mediaservices/liveEventOperations | Hayır |
+> | mediaservices/liveEvents | Yes |
+> | mediaservices/liveEvents/Liveçıktılar | Hayır |
+> | mediaservices/liveOutputOperations | Hayır |
+> | mediaservices/Mediagraf | Hayır |
+> | mediaservices/streamingEndpointOperations | Hayır |
+> | mediaservices/streamingEndpoints | Yes |
+> | mediaservices/Streamingkonumlandırıcı | Hayır |
+> | mediaservices/streamingPolicies | Hayır |
+> | mediaservices/dönüşümler | Hayır |
+> | mediaservices/dönüşümler/işler | Hayır |
 
-## <a name="microsoftmigrate"></a>Microsoft.Migrate
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | değerlendirmeProjeler | Evet |
-> | göç projeleri | Evet |
-> | moveCollections | Evet |
-> | Proje | Evet |
-
-## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | holographicsYayın Hesapları | Evet |
-> | objectUnderstandingAccounts | Evet |
-> | remoteRenderingHesapları | Evet |
-> | mekansalÇapaLarHesapları | Evet |
-
-## <a name="microsoftnetapp"></a>Microsoft.NetApp
+## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | netAppHesapları | Evet |
-> | netAppAccounts / hesapYedekler | Hayır |
-> | netAppAccounts / capacityPools | Evet |
-> | netAppAccounts / capacityPools / volumes | Evet |
-> | netAppAccounts / capacityPools / hacimler / anlık görüntüler | Evet |
+> | Appkümeler | Yes |
+
+## <a name="microsoftmigrate"></a>Microsoft. Migrate
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | assessmentProjects | Yes |
+> | migrateprojects | Yes |
+> | moveCollections | Yes |
+> | projeyle | Yes |
+
+## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | holographicsBroadcastAccounts | Yes |
+> | objectUnderstandingAccounts | Yes |
+> | remoteRenderingAccounts | Yes |
+> | spatialAnchorsAccounts | Yes |
+
+## <a name="microsoftnetapp"></a>Microsoft. NetApp
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | netAppAccounts | Yes |
+> | netAppAccounts/accountBackups | Hayır |
+> | netAppAccounts/Capacityhavuzları | Yes |
+> | netAppAccounts/Capacityhavuzları/birimleri | Yes |
+> | netAppAccounts/Capacityhavuzlar/birimler/anlık görüntüler | Yes |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamaAğ Ağ Geçitleri | Evet |
-> | uygulamaGatewayWebApplicationFirewallPolicies | Evet |
-> | uygulamaGüvenlikGrupları | Evet |
-> | azureFirewallFqdnEtiketler | Hayır |
-> | azureFirewalls | Evet |
-> | burcuHosts | Evet |
-> | bgpServiceTopluluklar | Hayır |
-> | Bağlantı | Evet |
-> | ddosCustomPolicies | Evet |
-> | ddosProtectionPlans | Evet |
-> | dnsOperationStatuses | Hayır |
-> | dnszones | Evet |
-> | dnszones / A | Hayır |
-> | dnszones / AAAA | Hayır |
-> | dnszones / tüm | Hayır |
-> | dnszones / CAA | Hayır |
-> | dnszones / CNAME | Hayır |
-> | dnszones / MX | Hayır |
-> | dnszones / NS | Hayır |
-> | dnszones / PTR | Hayır |
-> | dnszones / kayıt setleri | Hayır |
-> | dnszones / SOA | Hayır |
-> | dnszones / SRV | Hayır |
-> | dnszones / TXT | Hayır |
-> | expressRouteCircuits | Evet |
-> | expressRouteCrossConnections | Evet |
-> | expressRouteGateways | Evet |
-> | expressRoutePorts | Evet |
+> | Applicationgateway 'ler | Yes |
+> | applicationGatewayWebApplicationFirewallPolicies | Yes |
+> | applicationSecurityGroups | Yes |
+> | azureFirewallFqdnTags | Hayır |
+> | azureFirewalls | Yes |
+> | Savunma Konakları | Yes |
+> | bgpServiceCommunities | Hayır |
+> | bağlantının | Yes |
+> | ddosCustomPolicies | Yes |
+> | Ddosprotectionplanlar | Yes |
+> | Dnsoperationdurumları | Hayır |
+> | dnszones | Yes |
+> | dnszones/A | Hayır |
+> | dnszones/AAAA | Hayır |
+> | dnszones/tümü | Hayır |
+> | dnszones/CAA | Hayır |
+> | dnszones/CNAME | Hayır |
+> | dnszones/MX | Hayır |
+> | dnszones/NS | Hayır |
+> | dnszones/PTR | Hayır |
+> | dnszones/kayıt kümeleri | Hayır |
+> | dnszones/SOA | Hayır |
+> | dnszones/SRV | Hayır |
+> | dnszones/TXT | Hayır |
+> | Expressroutedevreleri | Yes |
+> | expressRouteCrossConnections | Yes |
+> | Expressroutegateway 'ler | Yes |
+> | expressRoutePorts | Yes |
 > | expressRouteServiceProviders | Hayır |
-> | güvenlik duvarıPolitikalar | Evet |
-> | ön kapılar | Evet |
+> | firewallPolicies | Yes |
+> | frontkapıların | Yes |
 > | frontdoorWebApplicationFirewallManagedRuleSets | Hayır |
-> | frontdoorWebApplicationFirewallPolicies | Evet |
+> | frontdoorWebApplicationFirewallPolicies | Yes |
 > | getDnsResourceReference | Hayır |
-> | internalNotify | Hayır |
-> | yükDengeleyiciler | Evet |
-> | yerelAğ Ağ Geçitleri | Evet |
-> | natGateways | Evet |
-> | ağNiyet Politikaları | Evet |
-> | ağArayüzler | Evet |
-> | ağProfilleri | Evet |
-> | ağSecurityGroups | Evet |
-> | ağ Watchers | Evet |
-> | ağWatchers / bağlantıMonitörler | Evet |
-> | ağ Watchers / lensler | Evet |
-> | ağWatchers / pingMeshes | Evet |
-> | p2sVpnAğ Geçitleri | Evet |
+> | ınternalnotify | Hayır |
+> | loadBalancers | Yes |
+> | Localnetworkgateway 'ler | Yes |
+> | Natgateway 'ler | Yes |
+> | Networkıntpolicies Ilkeleri | Yes |
+> | NetworkInterfaces | Yes |
+> | networkProfiles | Yes |
+> | networkSecurityGroups | Yes |
+> | networkWatchers | Yes |
+> | networkWatchers/Connectionmonitörleri | Yes |
+> | networkWatchers/uzunluler | Yes |
+> | networkWatchers/Pingkafesler | Yes |
+> | p2sVpnGateways | Yes |
 > | privateDnsOperationStatuses | Hayır |
-> | privateDnsZones | Evet |
-> | privateDnsZones / A | Hayır |
-> | privateDnsZones / AAAA | Hayır |
-> | privateDnsZones / tüm | Hayır |
-> | privateDnsZones / CNAME | Hayır |
-> | privateDnsZones / MX | Hayır |
-> | privateDnsZones / PTR | Hayır |
-> | privateDnsZones / SOA | Hayır |
-> | privateDnsZones / SRV | Hayır |
-> | privateDnsZones / TXT | Hayır |
-> | privateDnsZones / virtualNetworkLinks | Evet |
-> | privateEndpoints | Evet |
-> | privateLinkServices | Evet |
-> | publicIPAdresleri | Evet |
-> | publicIPPrefixes | Evet |
-> | rotaFiltreler | Evet |
-> | routeTablolar | Evet |
-> | serviceEndpointPolitikalar | Evet |
-> | trafficManagerCoğrafi Hiyerarşileri | Hayır |
-> | trafik yöneticisi profilleri | Evet |
-> | trafficmanagerprofiles / heatMaps | Hayır |
+> | privateDnsZones | Yes |
+> | privateDnsZones/A | Hayır |
+> | privateDnsZones/AAAA | Hayır |
+> | privateDnsZones/tümü | Hayır |
+> | privateDnsZones/CNAME | Hayır |
+> | privateDnsZones/MX | Hayır |
+> | privateDnsZones/PTR | Hayır |
+> | privateDnsZones/SOA | Hayır |
+> | privateDnsZones/SRV | Hayır |
+> | privateDnsZones/TXT | Hayır |
+> | privateDnsZones/virtualNetworkLinks | Yes |
+> | privateEndpoints | Yes |
+> | privateLinkServices | Yes |
+> | Publicıpaddresses | Yes |
+> | Publicıpöneklerini | Yes |
+> | routeFilters | Yes |
+> | routeTables | Yes |
+> | serviceEndpointPolicies | Yes |
+> | trafficManagerGeographicHierarchies | Hayır |
+> | trafficmanagerprofiles | Yes |
+> | trafficmanagerprofiles/heatMaps | Hayır |
 > | trafficManagerUserMetricsKeys | Hayır |
-> | virtualHub'lar | Evet |
-> | virtualNetworkGateways | Evet |
-> | sanalAğlar | Evet |
-> | virtualNetworkTaps | Evet |
-> | sanalWans | Evet |
-> | vpnAğ Geçitleri | Evet |
-> | vpnSiteler | Evet |
-> | webApplicationFirewallPolitikalar | Evet |
+> | Virtualhub 'Lar | Yes |
+> | virtualNetworkGateways | Yes |
+> | virtualNetworks | Yes |
+> | virtualNetworkTaps | Yes |
+> | Virtualwan | Yes |
+> | Vpngateway 'ler | Yes |
+> | vpnSites | Yes |
+> | webApplicationFirewallPolicies | Yes |
 
-## <a name="microsoftnotebooks"></a>Microsoft.Notebook'lar
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | NotebookProxies | Hayır |
-
-## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHub'lar
+## <a name="microsoftnotebooks"></a>Microsoft. Not defterleri
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Ad alanları | Evet |
-> | ad alanları / notificationHubs | Evet |
+> | Not defteri proxy 'leri | Hayır |
 
-## <a name="microsoftobjectstore"></a>Microsoft.ObjectStore
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | osNamespaces | Evet |
-
-## <a name="microsoftoffazure"></a>Microsoft.OffAzure
+## <a name="microsoftnotificationhubs"></a>Microsoft. Notificationhub 'Lar
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | HyperVSites | Evet |
-> | İthalat Siteleri | Evet |
-> | Sunucu Siteleri | Evet |
-> | VMwareSiteleri | Evet |
+> | öznitelikleri | Yes |
+> | ad alanları/Notificationhub 'Lar | Yes |
 
-## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
+## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Küme | Evet |
-> | bağlantıHedefleri | Hayır |
-> | depolamaInsightConfigs | Hayır |
-> | çalışma alanı | Evet |
-> | çalışma alanları / dataExports | Hayır |
-> | çalışma alanları / dataSources | Hayır |
-> | çalışma alanları / linkedServices | Hayır |
-> | çalışma alanları / linkedStorageAccounts | Hayır |
-> | çalışma alanları / sorgu | Hayır |
-> | çalışma alanları / scopedPrivateLinkProxies | Hayır |
+> | osNamespaces | Yes |
 
-## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | yönetim dernekleri | Hayır |
-> | yönetim yapılandırmaları | Evet |
-> | çözümler | Evet |
-> | görünümler | Evet |
+> | Hiper sanal siteler | Yes |
+> | Importsites | Yes |
+> | Sunucusiteleri | Yes |
+> | VMwareSites | Yes |
 
-## <a name="microsoftpeering"></a>Microsoft.Peering
+## <a name="microsoftoperationalinsights"></a>Microsoft. Operationalınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | legacyPeerings | Hayır |
+> | leriniz | Yes |
+> | Bağlantı hedefleri | Hayır |
+> | Storageınsii configs | Hayır |
+> | çalışma alanı | Yes |
+> | çalışma alanları/veri dışarı aktarmaları | Hayır |
+> | çalışma alanları/veri kaynakları | Hayır |
+> | çalışma alanları/linkedServices | Hayır |
+> | çalışma alanları/linkedStorageAccounts | Hayır |
+> | çalışma alanları/sorgu | Hayır |
+> | çalışma alanları/Scopedprivatelinkproxy 'Leri | Hayır |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | managementassociations | Hayır |
+> | managementconfigurations | Yes |
+> | çözümler | Yes |
+> | görünümler | Yes |
+
+## <a name="microsoftpeering"></a>Microsoft. eşleme
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Yasallıklar | Hayır |
 > | peerAsns | Hayır |
-> | akranlar | Evet |
-> | peeringServiceCountries | Hayır |
+> | eşlemeleri | Yes |
+> | Peeringserviceülkeleriyle | Hayır |
 > | peeringServiceProviders | Hayır |
-> | peeringServices | Evet |
+> | peeringServices | Yes |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | politikaEtkinlikler | Hayır |
-> | politikaMeta veriler | Hayır |
+> | Poliyevents | Hayır |
+> | policyMetadata | Hayır |
 > | policyStates | Hayır |
 > | policyTrackedResources | Hayır |
 > | düzeltmeler | Hayır |
 
-## <a name="microsoftportal"></a>Microsoft.Portal
+## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > |  konsolları | Hayır |
-> | panolar | Evet |
+> | panolar | Yes |
 > | userSettings | Hayır |
 
-## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | çalışma alanıKoleksiyonlar | Evet |
+> | workspaceCollections | Yes |
 
-## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Kapasite | Evet |
-
-## <a name="microsoftprojectbabylon"></a>Microsoft.ProjectBabylon
+## <a name="microsoftpowerbidedicated"></a>Microsoft. Powerbiadanmış
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | accounts | Evet |
+> | kapasiteler | Yes |
 
-## <a name="microsoftquantum"></a>Microsoft.Quantum
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Çalışma Alanları | Evet |
-
-## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
+## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | backupProtectedItems | Hayır |
-> | Tonoz | Evet |
+> | accounts | Yes |
 
-## <a name="microsoftrelay"></a>Microsoft.Relay
+## <a name="microsoftquantum"></a>Microsoft. hisse
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Ad alanları | Evet |
-> | namespaces / yetkilendirme kuralları | Hayır |
-> | ad alanları / melez bağlantılar | Hayır |
-> | ad alanları / hibrit bağlantılar / yetkilendirme kuralları | Hayır |
-> | isim boşlukları / wcfrelays | Hayır |
-> | namespaces / wcfrelays / yetkilendirme kuralları | Hayır |
+> | Çalışma Alanları | Yes |
 
-## <a name="microsoftremoteapp"></a>Microsoft.RemoteApp
+## <a name="microsoftrecoveryservices"></a>Microsoft. RecoveryServices
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Backupkorunabilir | Hayır |
+> | kasaları | Yes |
+
+## <a name="microsoftrelay"></a>Microsoft. Relay
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | öznitelikleri | Yes |
+> | ad alanları/authorizationrules | Hayır |
+> | ad alanları/hybridconnections | Hayır |
+> | ad alanları/hybridconnections/authorizationrules | Hayır |
+> | ad alanları/wcfreyerleştiri | Hayır |
+> | ad alanları/wcfreyerleştirme/authorizationrules | Hayır |
+
+## <a name="microsoftremoteapp"></a>Microsoft. RemoteApp
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | accounts | Hayır |
-> | Koleksiyon | Evet |
-> | koleksiyonlar / uygulamalar | Hayır |
-> | koleksiyonlar / güvenlik müdürleri | Hayır |
-> | templateImages | Hayır |
+> | koleksiyonlarıyla | Yes |
+> | Koleksiyonlar/uygulamalar | Hayır |
+> | Koleksiyonlar/SecurityPrincipals | Hayır |
+> | Templateımages | Hayır |
 
-## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
+## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Sorgu | Evet |
-> | kaynakChangeDetails | Hayır |
-> | kaynak Değişiklikler | Hayır |
+> | lardır | Yes |
+> | resourceChangeDetails | Hayır |
+> | resourceChanges | Hayır |
 > | kaynaklar | Hayır |
-> | kaynaklarTarih | Hayır |
-> | aboneliklerDurum | Hayır |
+> | resourcesHistory | Hayır |
+> | subscriptionsStatus | Hayır |
 
-## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
+## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | availabilityStatuses | Hayır |
-> | childAvailabilityStatuses | Hayır |
+> | Kullanılabilirlik durumları | Hayır |
+> | Childadvailabilitydurumlar | Hayır |
 > | childResources | Hayır |
-> | ortaya çıkan sorunlar | Hayır |
+> | acil sorun sorunları | Hayır |
 > | etkinlikler | Hayır |
-> | etkilenen Kaynaklar | Hayır |
+> | ımpactedresources | Hayır |
 > | meta veriler | Hayır |
 > | bildirimler | Hayır |
 
-## <a name="microsoftresources"></a>Microsoft.Resources
+## <a name="microsoftresources"></a>Microsoft. resources
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Dağıtım | Hayır |
-> | dağıtımlar / işlemler | Hayır |
-> | dağıtımScripts | Evet |
-> | DeploymentScripts / günlükleri | Hayır |
-> | Bağlantı | Hayır |
-> | bildirmeResourceJobs | Hayır |
-> | Sağlayıcı | Hayır |
+> | dağıtımlar | Hayır |
+> | dağıtımlar/işlemler | Hayır |
+> | deploymentScripts | Yes |
+> | deploymentScripts/Günlükler | Hayır |
+> | Köprü | Hayır |
+> | notifyResourceJobs | Hayır |
+> | sağlayıcılarla | Hayır |
 > | resourceGroups | Hayır |
-> | Abonelik | Hayır |
-> | Kiracı | Hayır |
+> | Aboneliklerin | Hayır |
+> | Kira | Hayır |
 
-## <a name="microsoftsaas"></a>Microsoft.SaaS
+## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamalar | Evet |
+> | uygulamalar | Yes |
 > | saasresources | Hayır |
 
-## <a name="microsoftsearch"></a>Microsoft.Search
+## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | kaynakSağlıkMetadata | Hayır |
-> | aramaHizmetleri | Evet |
+> | resourceHealthMetadata | Hayır |
+> | searchServices | Yes |
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | adaptifNetworkHardenings | Hayır |
-> | gelişmişThreatProtectionSettings | Hayır |
+> | adaptiveNetworkHardenings | Hayır |
+> | advancedThreatProtectionSettings | Hayır |
 > | alerts | Hayır |
-> | izin Verilen Bağlantılar | Hayır |
-> | uygulamaBeyaz listeler | Hayır |
-> | değerlendirmeMeta veriler | Hayır |
+> | allowedConnections | Hayır |
+> | Applicationwhitedökümler | Hayır |
+> | assessmentMetadata | Hayır |
 > | değerlendirme | Hayır |
-> | autoDismissAlertsRules | Hayır |
-> | otomasyon | Evet |
-> | Otomatik Sağlama Ayarları | Hayır |
-> | Uyumluluklar | Hayır |
+> | Oto Dissalertsrules | Hayır |
+> | akışlarını otomatikleştirin | Yes |
+> | Oto Provisioningsettings | Hayır |
+> | Uyumluluklarına | Hayır |
 > | dataCollectionAgents | Hayır |
 > | deviceSecurityGroups | Hayır |
-> | keşfedilenSecuritySolutions | Hayır |
-> | hariciSecuritySolutions | Hayır |
-> | BilgiKoruma Politikaları | Hayır |
-> | iotSecuritySolutions | Evet |
-> | iotSecuritySolutions / analitikModeller | Hayır |
-> | iotSecuritySolutions / analitikModeller / topluuyarılar | Hayır |
-> | iotSecuritySolutions / analyticsModeller / topluöneriler | Hayır |
-> | jitNetworkAccessPolicies | Hayır |
-> | ağData | Hayır |
+> | discoveredSecuritySolutions | Hayır |
+> | externalSecuritySolutions | Hayır |
+> | Informationprotectionpolicies | Hayır |
+> | ıotsecuritysolutions | Yes |
+> | ıotsecuritysolutions/analiz Ticsmodeller | Hayır |
+> | ıotsecuritysolutions/Analticsmodeller/Aggreggıt uyarıları | Hayır |
+> | ıotsecuritysolutions/analiz Ticsmodeller/Aggreg, öneriler | Hayır |
+> | Jağaccesspolicies | Hayır |
+> | networkData | Hayır |
 > | ilkeler | Hayır |
-> | fiyatlandırma | Hayır |
-> | mevzuatUyumStandartları | Hayır |
-> | düzenlemeUyumlulukStandartları / regulatoryComplianceControls | Hayır |
-> | düzenlemeUyumlulukStandartlar / düzenleyiciUygunlukDenetimler / düzenleyiciUygunlukDeğerlendirmeleri | Hayır |
+> | fiyatlandırmalar | Hayır |
+> | Reve daha karmaşık bakım standartları | Hayır |
+> | Rekontrol ve Re, | Hayır |
+> | Rekontrol ve Re, Re, Re, | Hayır |
 > | secureScoreControlDefinitions | Hayır |
 > | secureScoreControls | Hayır |
-> | secureScores | Hayır |
-> | secureScores / secureScoreControls | Hayır |
-> | securityKişiler | Hayır |
+> | Securesçekirdekler | Hayır |
+> | Securesçekirdekler/secureScoreControls | Hayır |
+> | securityContacts | Hayır |
 > | securitySolutions | Hayır |
 > | securitySolutionsReferenceData | Hayır |
-> | securityDurumlar | Hayır |
-> | securityStatusesÖzetler | Hayır |
-> | serverVulnerabilityAssessments | Hayır |
+> | Securitydurumlardan | Hayır |
+> | securityStatusesSummaries | Hayır |
+> | Sunucukullanılabilirliği | Hayır |
 > | ayarlar | Hayır |
-> | alt Değerlendirmeler | Hayır |
+> | subAssessments | Hayır |
 > | Görevler | Hayır |
-> | Topoloji | Hayır |
-> | çalışma alanıAyarlar | Hayır |
+> | anlatır | Hayır |
+> | çalışma alanı ayarları | Hayır |
 
-## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
+## <a name="microsoftsecuritygraph"></a>Microsoft. SecurityGraph
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | tanıAyarları | Hayır |
+> | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
 
-## <a name="microsoftsecurityinsights"></a>Microsoft.SecurityInsights
+## <a name="microsoftsecurityinsights"></a>Microsoft. Securityınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Toplamalardan | Hayır |
-> | alertKurallar | Hayır |
-> | alertRuleTemplates | Hayır |
+> | toplamaları | Hayır |
+> | alertRules | Hayır |
+> | Alertrutatemplates | Hayır |
 > | yer işaretleri | Hayır |
-> | Durumda | Hayır |
-> | dataConnectors | Hayır |
+> | çalışmaların | Hayır |
+> | Veri bağlayıcıları | Hayır |
 > | dataConnectorsCheckRequirements | Hayır |
-> | Varlık | Hayır |
+> | varlıklar | Hayır |
 > | entityQueries | Hayır |
-> | Olay | Hayır |
-> | ofisOnay | Hayır |
+> | olaylara | Hayır |
+> | officeConsents | Hayır |
 > | ayarlar | Hayır |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
@@ -1818,334 +1818,334 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Ad alanları | Evet |
-> | namespaces / yetkilendirme kuralları | Hayır |
-> | ad alanları / disasterrecoveryconfigs | Hayır |
-> | ad alanları / eventgridfilters | Hayır |
-> | ad alanları / networkrulesets | Hayır |
-> | ad alanları / kuyruklar | Hayır |
-> | ad alanları / kuyruklar / yetkilendirme kuralları | Hayır |
-> | namespaces / konular | Hayır |
-> | namespaces / konular / yetkilendirme kuralları | Hayır |
-> | ad alanları / konular / abonelikler | Hayır |
-> | namespaces / konular / abonelikler / kurallar | Hayır |
-> | premiumMesajlaşmaBölgeler | Hayır |
+> | öznitelikleri | Yes |
+> | ad alanları/authorizationrules | Hayır |
+> | ad alanları/diskalrecoveryconfigs | Hayır |
+> | ad alanları/eventgridfilters | Hayır |
+> | ad alanları/networkrulesets | Hayır |
+> | ad alanları/kuyruklar | Hayır |
+> | ad alanları/kuyruklar/authorizationrules | Hayır |
+> | ad alanları/konular | Hayır |
+> | ad alanları/konular/authorizationrules | Hayır |
+> | ad alanları/konular/abonelikler | Hayır |
+> | ad alanları/konular/abonelikler/kurallar | Hayır |
+> | premiumMessagingRegions | Hayır |
 
-## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | uygulamalar | Evet |
-> | Küme | Evet |
-> | kümeler / uygulamalar | Hayır |
-> | konteynerGruplar | Evet |
-> | konteynerGroupSets | Evet |
-> | kenar kümeleri | Evet |
-> | kenarlı kümeleri / uygulamaları | Hayır |
-> | yönetilen kümeler | Evet |
-> | yönetilen kümeler / düğüm tipleri | Hayır |
-> | Ağlar | Evet |
-> | gizli mağazalar | Evet |
-> | gizli mağazalar / sertifikalar | Hayır |
-> | gizli mağazalar / sırlar | Hayır |
-> | volumes | Evet |
-
-## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamalar | Evet |
-> | konteynerGruplar | Evet |
-> | Ağ geçit -leri | Evet |
-> | Ağlar | Evet |
-> | Sır -larını | Evet |
-> | volumes | Evet |
+> | uygulamalar | Yes |
+> | leriniz | Yes |
+> | kümeler/uygulamalar | Hayır |
+> | Kapsayıcı grupları | Yes |
+> | containerGroupSets | Yes |
+> | edgeclusters | Yes |
+> | edgeclusters/uygulamalar | Hayır |
+> | managedkümeler | Yes |
+> | managedkümeler/nodetypes | Hayır |
+> | Mamak | Yes |
+> | secretmağazaları | Yes |
+> | secretmağazaları/sertifikaları | Hayır |
+> | secretmağazaları/gizli dizileri | Hayır |
+> | volumes | Yes |
 
-## <a name="microsoftservices"></a>Microsoft.Services
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | sağlayıcıKayıtlar | Hayır |
-> | sağlayıcıKayıtlar / resourceTypeRegistrations | Hayır |
-> | kullanıma sunulması | Evet |
-
-## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | SignalR | Evet |
-> | SignalR / eventGridFilters | Hayır |
-
-## <a name="microsoftsiterecovery"></a>Microsoft.SiteKurtarma
+## <a name="microsoftservicefabricmesh"></a>Microsoft. Servicefabrickafesi
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | SiteRecoveryVault | Evet |
+> | uygulamalar | Yes |
+> | Kapsayıcı grupları | Yes |
+> | geçidinin | Yes |
+> | Mamak | Yes |
+> | kaynaklanır | Yes |
+> | volumes | Yes |
 
-## <a name="microsoftsoftwareplan"></a>Microsoft.SoftwarePlan
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | hybridUseBenefits | Hayır |
-
-## <a name="microsoftsolutions"></a>Microsoft.Solutions
+## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | uygulamaTanımlar | Evet |
-> | uygulamalar | Evet |
-> | jitRequests | Evet |
+> | Providerkayıtları | Hayır |
+> | Providerkayıtlarıyla/resourceTypeRegistrations | Hayır |
+> | piyasaya çıkarma | Yes |
 
-## <a name="microsoftspoolservice"></a>Microsoft.SpoolService
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | kayıtlıAbonelikler | Hayır |
-> | Biriktirici | Evet |
-
-## <a name="microsoftsql"></a>Microsoft.SQL
+## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | yönetilen Örnekler | Evet |
-> | yönetilen Örnekler / veritabanları | Evet |
-> | yönetilenInstances / veritabanları / yedeklemeShortTermRetentionPolicies | Hayır |
-> | yönetilenInstances / veritabanları / şemalar / tablolar / sütunlar / sensitivityLabels | Hayır |
-> | yönetilenÖrnekler / veritabanları / güvenlik açığıDeğerlendirmeleri | Hayır |
-> | yönetilenInstances / veritabanları / güvenlik açığıDeğerlendirmeler / kurallar / taban çizgileri | Hayır |
-> | yönetilenInstances / şifrelemeProtector | Hayır |
-> | yönetilenInstances / anahtarlar | Hayır |
-> | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | Hayır |
-> | yönetilenInstances / güvenlik açığıDeğerlendirmeler | Hayır |
-> | Sunucu | Evet |
-> | sunucular / yöneticiler | Hayır |
-> | sunucular / iletişimLinkler | Hayır |
-> | sunucular / veritabanları | Evet |
-> | sunucular / şifrelemeProtector | Hayır |
-> | sunucular / firewallRules | Hayır |
-> | sunucular / anahtarlar | Hayır |
-> | sunucular / restorableDroppedDatabases | Hayır |
-> | sunucular / hizmet hedefleri | Hayır |
-> | sunucular / tdeCertificates | Hayır |
-> | virtualClusters | Hayır |
+> | SignalR | Yes |
+> | SignalR/eventGridFilters | Hayır |
 
-## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
+## <a name="microsoftsiterecovery"></a>Microsoft. Sıterecovery
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | SqlVirtualMachineGroups | Evet |
-> | SqlVirtualMachineGroups / AvailabilityGroupListeners | Hayır |
-> | SqlVirtualMachines | Evet |
+> | SiteRecoveryVault | Yes |
+
+## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Hybriduseavantajlar | Hayır |
+
+## <a name="microsoftsolutions"></a>Microsoft. Solutions
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | applicationDefinitions | Yes |
+> | uygulamalar | Yes |
+> | Jistekleri | Yes |
+
+## <a name="microsoftspoolservice"></a>Microsoft. SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | registeredSubscriptions | Hayır |
+> | spoir | Yes |
+
+## <a name="microsoftsql"></a>Microsoft. SQL
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | ManagedInstances | Yes |
+> | ManagedInstances/veritabanları | Yes |
+> | ManagedInstances/veritabanları/backupShortTermRetentionPolicies | Hayır |
+> | ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels | Hayır |
+> | ManagedInstances/veritabanları/ | Hayır |
+> | ManagedInstances/veritabanları/ek | Hayır |
+> | ManagedInstances/encryptionProtector | Hayır |
+> | ManagedInstances/anahtarlar | Hayır |
+> | ManagedInstances/Restokbledroppeddatabases/backupShortTermRetentionPolicies | Hayır |
+> | ManagedInstances/ | Hayır |
+> | larý | Yes |
+> | sunucular/Yöneticiler | Hayır |
+> | sunucular/communicationLinks | Hayır |
+> | sunucular/veritabanları | Yes |
+> | sunucular/encryptionProtector | Hayır |
+> | sunucular/firewallRules | Hayır |
+> | sunucular/anahtarlar | Hayır |
+> | sunucular/Restokbledroppeddatabases | Hayır |
+> | Sunucu/hizmet hedefleri | Hayır |
+> | sunucular/tdeCertificates | Hayır |
+> | Virtualkümeler | Hayır |
+
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | SqlVirtualMachineGroups | Yes |
+> | SqlVirtualMachineGroups/kullanılabilirliği Bilitygrouplisteners | Hayır |
+> | SqlVirtualMachines | Yes |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | depolamaHesapları | Evet |
-> | storageAccounts / blobServices | Hayır |
-> | storageAccounts / fileServices | Hayır |
-> | storageAccounts / queueServices | Hayır |
-> | storageAccounts / hizmetleri | Hayır |
-> | storageAccounts / hizmetler / metricDefinitions | Hayır |
-> | storageAccounts / tableServices | Hayır |
-> | Kullanım | Hayır |
+> | storageAccounts | Yes |
+> | storageAccounts/blobServices | Hayır |
+> | storageAccounts/fileServices | Hayır |
+> | storageAccounts/queueServices | Hayır |
+> | storageAccounts/Services | Hayır |
+> | storageAccounts/Services/metricDefinitions | Hayır |
+> | storageAccounts/tableServices | Hayır |
+> | vardır | Hayır |
 
-## <a name="microsoftstoragecache"></a>Microsoft.StorageÖnbellek
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Önbellek | Evet |
-> | önbellekler / depolamaHedefler | Hayır |
-> | kullanımModeller | Hayır |
-
-## <a name="microsoftstoragereplication"></a>Microsoft.StorageÇoğaltma
+## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | çoğaltmaGrupları | Hayır |
+> | önbelleklerinde | Yes |
+> | önbellekler/Storagetaral | Hayır |
+> | Usagemodeller | Hayır |
 
-## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | depolamaSyncServices | Evet |
-> | storageSyncServices / kayıtlıSunucular | Hayır |
-> | storageSyncServices / syncGroups | Hayır |
-> | storageSyncServices / syncGroups / cloudEndpoints | Hayır |
-> | storageSyncServices / syncGroups / serverEndpoints | Hayır |
-> | storageSyncServices / iş akışları | Hayır |
-
-## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
+## <a name="microsoftstoragereplication"></a>Microsoft. Storagerepce
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | depolamaSyncServices | Evet |
-> | storageSyncServices / kayıtlıSunucular | Hayır |
-> | storageSyncServices / syncGroups | Hayır |
-> | storageSyncServices / syncGroups / cloudEndpoints | Hayır |
-> | storageSyncServices / syncGroups / serverEndpoints | Hayır |
-> | storageSyncServices / iş akışları | Hayır |
+> | replicationGroups | Hayır |
 
-## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
+## <a name="microsoftstoragesync"></a>Microsoft. Storagessync
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | depolamaSyncServices | Evet |
-> | storageSyncServices / kayıtlıSunucular | Hayır |
-> | storageSyncServices / syncGroups | Hayır |
-> | storageSyncServices / syncGroups / cloudEndpoints | Hayır |
-> | storageSyncServices / syncGroups / serverEndpoints | Hayır |
-> | storageSyncServices / iş akışları | Hayır |
+> | storageSyncServices | Yes |
+> | storageSyncServices/registeredServers | Hayır |
+> | storageSyncServices/syncGroups | Hayır |
+> | storageSyncServices/syncGroups/cloudEndpoints | Hayır |
+> | storageSyncServices/syncGroups/serverEndpoints | Hayır |
+> | storageSyncServices/iş akışları | Hayır |
 
-## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Yöneticileri | Evet |
-
-## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
+## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | akış işleri | Evet |
+> | storageSyncServices | Yes |
+> | storageSyncServices/registeredServers | Hayır |
+> | storageSyncServices/syncGroups | Hayır |
+> | storageSyncServices/syncGroups/cloudEndpoints | Hayır |
+> | storageSyncServices/syncGroups/serverEndpoints | Hayır |
+> | storageSyncServices/iş akışları | Hayır |
 
-## <a name="microsoftsubscription"></a>Microsoft.Abonelik
+## <a name="microsoftstoragesyncint"></a>Microsoft. Storagesyncınt
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | storageSyncServices | Yes |
+> | storageSyncServices/registeredServers | Hayır |
+> | storageSyncServices/syncGroups | Hayır |
+> | storageSyncServices/syncGroups/cloudEndpoints | Hayır |
+> | storageSyncServices/syncGroups/serverEndpoints | Hayır |
+> | storageSyncServices/iş akışları | Hayır |
+
+## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | ilerinde | Yes |
+
+## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | streammingjobs | Yes |
+
+## <a name="microsoftsubscription"></a>Microsoft. Subscription
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | iptal | Hayır |
-> | Createsubscription | Hayır |
+> | CreateSubscription | Hayır |
 > | seçin | Hayır |
 > | yeniden adlandır | Hayır |
-> | AbonelikTanımlar | Hayır |
-> | Abonelik İşlemleri | Hayır |
-> | Abonelik | Hayır |
+> | SubscriptionDefinitions | Hayır |
+> | SubscriptionOperations | Hayır |
+> | Aboneliklerin | Hayır |
 
-## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | Ortam | Evet |
-> | ortamlar / accessPolitikalar | Hayır |
-> | ortamlar / olay kaynakları | Evet |
-> | ortamlar / referenceDataSets | Evet |
-
-## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudBasit
+## <a name="microsofttimeseriesinsights"></a>Microsoft. Timeseriesınsights
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | adanmışCloudNodes | Evet |
-> | özelCloudServices | Evet |
-> | virtualMachines | Evet |
+> | lý | Yes |
+> | ortamlar/accessPolicies | Hayır |
+> | ortamlar/EventSources | Yes |
+> | ortamlar/Referencedataset 'ler | Yes |
 
-## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | cihazlar | Evet |
-> | kayıtlıAbonelikler | Hayır |
-> | Satıcı | Hayır |
-> | satıcılar / skus | Hayır |
-> | satıcılar / vnfs | Hayır |
-> | sanalNetworkFunctionSkus | Hayır |
-> | vnfs | Evet |
-
-## <a name="microsoftweb"></a>Microsoft.Web
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft. Vmwarechoparlör basit
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | apiManagementHesapları | Hayır |
-> | apiManagementAccounts / apiAcls | Hayır |
-> | apiManagementAccounts / apis | Hayır |
-> | apiManagementAccounts / apis / apiAcls | Hayır |
-> | apiManagementAccounts / apis / bağlantıAcls | Hayır |
-> | apiManagementAccounts / apis / bağlantılar | Hayır |
-> | apiManagementAccounts / apis / bağlantılar / bağlantılarAcls | Hayır |
-> | apiManagementAccounts / apis / localizedDefinitions | Hayır |
-> | apiManagementAccounts / bağlantıAcls | Hayır |
-> | apiManagementAccounts / bağlantılar | Hayır |
-> | faturalamaÖlçerler | Hayır |
-> | sertifikalar | Evet |
-> | bağlantıAğ Geçitleri | Evet |
-> | Bağlantı | Evet |
-> | customApis | Evet |
-> | silinen Siteler | Hayır |
-> | hostingOrtamlar | Evet |
-> | hostingOrtamlar / olayGridFilters | Hayır |
-> | hostingOrtamlar / multiRolePools | Hayır |
-> | hostingOrtamlar / işçiHavuzları | Hayır |
-> | kubeOrtamlar | Evet |
-> | publishingKullanıcılar | Hayır |
+> | ayrılmış Cloudnodes | Yes |
+> | ayrılmış CloudService | Yes |
+> | virtualMachines | Yes |
+
+## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | cihazlar | Yes |
+> | registeredSubscriptions | Hayır |
+> | larını | Hayır |
+> | satıcılar/SKU 'lar | Hayır |
+> | satıcılar/vnfs | Hayır |
+> | Virtualnetworkfunctionsku 'Ları | Hayır |
+> | vnfs | Yes |
+
+## <a name="microsoftweb"></a>Microsoft. Web
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | apiManagementAccounts | Hayır |
+> | apiManagementAccounts/Apiacl 'Ler | Hayır |
+> | apiManagementAccounts/API 'ler | Hayır |
+> | apiManagementAccounts/API/Apiacl 'Ler | Hayır |
+> | apiManagementAccounts/API/Connectionacl 'Ler | Hayır |
+> | apiManagementAccounts/API/bağlantı | Hayır |
+> | apiManagementAccounts/API/Connections/Connectionacl 'Ler | Hayır |
+> | apiManagementAccounts/API/localizedDefinitions | Hayır |
+> | apiManagementAccounts/Connectionacl 'Ler | Hayır |
+> | apiManagementAccounts/bağlantılar | Hayır |
+> | billingMeters | Hayır |
+> | sertifikalar | Yes |
+> | Connectiongateway 'ler | Yes |
+> | bağlantının | Yes |
+> | Customapsıs | Yes |
+> | Silinmi siteleri | Hayır |
+> | hostingEnvironments | Yes |
+> | hostingEnvironments/eventGridFilters | Hayır |
+> | hostingEnvironments/multiRolePools | Hayır |
+> | hostingEnvironments/workerPools | Hayır |
+> | Kubeortamları | Yes |
+> | publishingUsers | Hayır |
 > | Öneriler | Hayır |
-> | kaynakSağlıkMetadata | Hayır |
-> | Çalıştırma | Hayır |
-> | serverFarms | Evet |
-> | serverFarms / eventGridFilters | Hayır |
-> | Siteler | Evet |
-> | siteler/config  | Hayır |
-> | siteler / eventGridFilters | Hayır |
-> | siteler / hostNameBindings | Hayır |
-> | siteler / ağConfig | Hayır |
-> | siteler / premieraddons | Evet |
-> | siteler / yuvalar | Evet |
-> | siteler / yuvalar / eventGridFilters | Hayır |
-> | siteler / yuvalar / hostNameBindings | Hayır |
-> | siteler / yuvalar / networkConfig | Hayır |
+> | resourceHealthMetadata | Hayır |
+> | zamanları | Hayır |
+> | serverFarms | Yes |
+> | Sunucugrupları/eventGridFilters | Hayır |
+> | Siteler | Yes |
+> | siteler/yapılandırma  | Hayır |
+> | siteler/eventGridFilters | Hayır |
+> | siteler/hostNameBindings | Hayır |
+> | Sites/networkConfig | Hayır |
+> | siteler/premieraddons | Yes |
+> | siteler/yuvalar | Yes |
+> | siteler/yuvalar/eventGridFilters | Hayır |
+> | siteler/yuvalar/hostNameBindings | Hayır |
+> | siteler/yuvalar/networkConfig | Hayır |
 > | sourceControls | Hayır |
-> | staticSites | Evet |
-> | Doğrulamak | Hayır |
+> | staticSites | Yes |
+> | doğrulamalısınız | Hayır |
 > | verifyHostingEnvironmentVnet | Hayır |
 
-## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
+## <a name="microsoftwindowsdefenderatp"></a>Microsoft. Windowssavunma Deratp
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | tanıAyarları | Hayır |
+> | diagnosticSettings | Hayır |
 > | diagnosticSettingsCategories | Hayır |
 
-## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
+## <a name="microsoftwindowsiot"></a>Microsoft. Windowsıot
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Cihaz Hizmetleri | Evet |
+> | DeviceServices | Yes |
 
-## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
+## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
-> | Bileşen | Hayır |
+> | bileşenleri | Hayır |
 > | componentsSummary | Hayır |
-> | monitorInstances | Hayır |
-> | monitorInstancesSummary | Hayır |
-> | Monitör | Hayır |
-> | bildirimAyarlar | Hayır |
+> | Izleme örnekleri | Hayır |
+> | Izleme ınstancessummary | Hayır |
+> | monitörün | Hayır |
+> | notificationSettings | Hayır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Virgülle ayrılmış değerler dosyasıyla aynı verileri almak için [tam mod-silme.csv'yi](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv)indirin.
+Aynı verileri bir virgülle ayrılmış değerler dosyası ile almak için, [Complete-Mode-Deletion. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv)dosyasını indirin.

@@ -1,58 +1,58 @@
 ---
-title: Belge biçim yönergelerini içe aktarma - QnA Maker
-description: Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
+title: Belge biçimini içeri aktarma yönergeleri-Soru-Cevap Oluşturma
+description: URL türlerinin QnA çiftlerini içeri ve dışarı aktarmak için nasıl kullanılacağını anlayın.
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804342"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>İthal edilen belgeler ve URL'ler için biçimlendirme yönergeleri
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>İçeri aktarılan belgeler ve URL 'Ler için biçimlendirme yönergeleri
 
-İçeriğiniz için en iyi sonuçları almak için bu biçimlendirme yönergelerini gözden geçirin.
+İçeriğiniz için en iyi sonuçları elde etmek üzere bu biçimlendirme kılavuzlarını gözden geçirin.
 
-## <a name="formatting-considerations"></a>Konuları biçimlendirme
+## <a name="formatting-considerations"></a>Biçimlendirme konuları
 
-Bir dosya veya URL aldıktan sonra, QnA Maker içeriğinizi [işaretleme biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve saklar. Dönüştürme işlemi metne yeni satırlar `\n\n`ekler, örneğin. İşaretle biçimi hakkında bilgi sahibi olmak, dönüştürülen içeriği anlamanıza ve bilgi tabanı içeriğinizi yönetmenize yardımcı olur.
+Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğinizi [markı biçiminde](https://en.wikipedia.org/wiki/Markdown)dönüştürür ve depolar. Dönüştürme işlemi, metinde gibi yeni satırlar ekler `\n\n`. Markaşağı biçimi hakkında bilgi, dönüştürülen içeriği anlamanıza ve Bilgi Bankası içeriğinizi yönetmenize yardımcı olur.
 
-İçeriğinizi doğrudan bilgi tabanınıza ekler veya değiştirirseniz, zengin metin içeriği oluşturmak veya yanıtta bulunan işaretleme biçimi içeriğini değiştirmek için **işaretleme biçimlendirmesini** kullanın. QnA Maker, içeriğinize zengin metin özellikleri getirmek için işaretleme biçiminin çoğunu destekler. Ancak, sohbet botu gibi istemci uygulaması aynı işaretleme biçimleri kümesini desteklemeyebilir. İstemci uygulamasının yanıt ları görüntülemesini sınamak önemlidir.
+İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir.
 
-[İçerik türlerinin ve örneklerin](./Concepts/content-types.md#file-and-url-data-types)tam listesine bakın.
+[İçerik türlerinin tam listesi ve örnekleri](./Concepts/content-types.md#file-and-url-data-types)için bkz..
 
-## <a name="basic-document-formatting"></a>Temel belge biçimlendirme
+## <a name="basic-document-formatting"></a>Temel belge biçimlendirmesi
 
-QnA Maker gibi görsel ipuçlarıdayalı dosyada bölümleri ve alt bölümleri ve ilişkileri tanımlar:
+Soru-Cevap Oluşturma, dosyadaki görsel ipuçlarına göre bölümleri ve alt bölümleri ve ilişkileri tanımlar:
 
 * yazı tipi boyutu
 * yazı tipi stili
-* Numaralandırma
+* numaralandırmasının
 * Renkler
 
 ## <a name="product-manuals"></a>Ürün kılavuzları
 
-Kılavuz genellikle bir ürüne eşlik eden kılavuz malzemesidir. Kullanıcının ürünü ayarlamasına, kullanmasına, bakımına ve sorun gidermesine yardımcı olur. QnA Maker bir kılavuzu işlediğinde, başlıkları ve alt başlıkları soru olarak ayıklar ve sonraki içeriği yanıt olarak ayıklar. [Burada](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)bir örnek bakın.
+Bir el ile, genellikle bir ürüne eşlik eden rehberlik malzemeleridir. Kullanıcının ürünü ayarlama, kullanma, bakımını yapma ve sorun giderme konusunda yardımcı olur. Soru-Cevap Oluşturma bir el ile işlediğinde, başlıkları ve alt başlıkları sorular olarak ve sonraki içeriği yanıt olarak ayıklar. [Buraya](https://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf)bir örnek bakın.
 
-Aşağıda, dizin sayfası ve hiyerarşik içeriğe sahip bir kılavuz örneği ve
+Aşağıda Dizin sayfası ve hiyerarşik içerik içeren bir el ile örnek verilmiştir
 
- ![Bilgi tabanı için Ürün El Kitabı örneği](./media/qnamaker-concepts-datasources/product-manual.png)
+ ![Bilgi Bankası için ürün el Ile örnek](./media/qnamaker-concepts-datasources/product-manual.png)
 
 > [!NOTE]
-> Çıkarma işlemi, içindekiler tablosu na ve/veya dizin sayfasına ve hiyerarşik başlıklara sahip net bir yapıya sahip kılavuzlarda en iyi şekilde çalışır.
+> Ayıklama, içindekiler tablosu ve/veya dizin sayfası ve hiyerarşik başlıkları olan açık bir yapı içeren el ile en iyi şekilde kullanılır.
 
-## <a name="brochures-guidelines-papers-and-other-files"></a>Broşürler, kılavuzlar, kağıtlar ve diğer dosyalar
+## <a name="brochures-guidelines-papers-and-other-files"></a>Broşürler, yönergeler, incelemeler ve diğer dosyalar
 
-Diğer birçok belge türü, net bir yapı ve düzene sahip olmaları koşuluyla, QA çiftleri oluşturmak için de işlenebilir. Bunlar şunlardır: Broşürler, kılavuzlar, raporlar, teknik incelemeler, bilimsel makaleler, politikalar, kitaplar, vb. [Burada](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)bir örnek bakın.
+Diğer birçok belge türü, bir açık yapıya ve düzene sahip olmaları şartıyla QA çiftleri oluşturmak için de işlenebilir. Bunlar arasında şunlar yer alır: Broşürler, yönergeler, raporlar, teknik incelemeler, bilimsel incelemeler, ilkeler, kitaplar vb. [Buraya](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)bir örnek bakın.
 
-Aşağıda, dizin içermeyen yarı yapılandırılmış bir doküman örneği verilmiştir:
+Bir dizin olmadan yarı yapılandırılmış bir belge örneği aşağıda verilmiştir:
 
- ![Azure Blob depolama yarı yapılandırılmış Doc](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
+ ![Azure Blob depolama yarı yapılandırılmış belge](./media/qnamaker-concepts-datasources/semi-structured-doc.png)
 
-## <a name="structured-qna-document"></a>Yapılandırılmış QnA Belgesi
+## <a name="structured-qna-document"></a>Yapılandırılmış QnA belgesi
 
-DOC dosyalarında yapılandırılmış Soru-Cevaplar biçimi, satır başına alternatif Sorular ve Yanıtlar şeklindedir, satır başına bir soru ve aşağıdaki satırda cevap takip, aşağıda gösterildiği gibi:
+Belge dosyalarında yapılandırılmış soru-cevap biçimi, her satırda değişen sorular ve yanıtlar biçiminde, satır başına bir soru ve aşağıdaki satırdaki yanıtı aşağıda gösterildiği gibi bir şekilde oluşturulur:
 
 ```text
 Question1
@@ -64,56 +64,56 @@ Question2
 Answer2
 ```
 
-Aşağıda yapılandırılmış bir QnA word belgesi örneği verilmiştir:
+Aşağıda bir yapılandırılmış QnA Word belgesi örneği verilmiştir:
 
- ![Bir bilgi tabanı için yapılandırılmış QnA belge örneği](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
+ ![Bilgi Bankası için yapılandırılmış QnA belgesi örneği](./media/qnamaker-concepts-datasources/structured-qna-doc.png)
 
-## <a name="structured-txt-tsv-and-xls-files"></a>Yapılandırılmış *TXT*, *TSV* ve *XLS* Dosyaları
+## <a name="structured-txt-tsv-and-xls-files"></a>Yapılandırılmış *txt*, *TSV* ve *xls* dosyaları
 
-Yapılandırılmış *.txt*, *.tsv* veya *.xls* dosyaları şeklindeki QnA'lar da bilgi tabanı oluşturmak veya güçlendirmek için QnA Maker'a yüklenebilir.  Bunlar düz metin olabilir veya RTF veya HTML içeriğine sahip olabilir.
+Bir Bilgi Bankası oluşturmak veya genişletmek için yapılandırılmış *. txt*, *. tsv* veya *. xls* dosyaları biçimindeki qnas de soru-cevap oluşturma yüklenebilir.  Bunlar düz metin olabilir veya RTF ya da HTML 'de içeriğe sahip olabilir.
 
 | Soru  | Yanıt  | Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|-------------------------|
-| Soru1 | Cevap1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Soru2 | Cevap2 |      `Key:Value`           |
+| Question1 | Answer1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 |      `Key:Value`           |
 
-Kaynak dosyadaki ek sütunlar yoksayılır.
+Kaynak dosyadaki tüm ek sütunlar yok sayılır.
 
 ### <a name="example-of-structured-excel-file"></a>Yapılandırılmış Excel dosyası örneği
 
-Aşağıda HTML içeriği ile yapılandırılmış bir QnA *.xls* dosyası, bir örnektir:
+Aşağıda, bir yapılandırılmış QnA *. xls* dosyası olan HTML içeriğiyle ilgili bir örnek verilmiştir:
 
- ![Bir bilgi tabanı için yapılandırılmış QnA excel örneği](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
+ ![Bilgi Bankası için yapılandırılmış QnA Excel örneği](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
-### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel dosyasında tek cevapiçin alternatif soru örneği
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel dosyasında tek yanıt için alternatif soruların örneği
 
-Aşağıda, tek bir yanıt için birkaç alternatif soru içeren yapılandırılmış bir QnA *.xls* dosyası örneği verilmiştir:
+Aşağıda, tek bir yanıt için çeşitli alternatif sorulara sahip bir yapılandırılmış QnA *. xls* dosyası örneği verilmiştir:
 
- ![Excel dosyasında tek cevapiçin alternatif soru örneği](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+ ![Excel dosyasında tek yanıt için alternatif soruların örneği](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-Dosya alındıktan sonra, soru-cevap çifti aşağıda gösterildiği gibi bilgi tabanındadır:
+Dosya alındıktan sonra, soru-cevap çifti aşağıda gösterildiği gibi Bilgi Bankası 'nda bulunur:
 
- ![Bilgi tabanına aktarılan tek yanıt için alternatif soruların ekran görüntüsü](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+ ![Bilgi Bankası 'na aktarılan tek yanıt için alternatif soruların ekran görüntüsü](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
-## <a name="structured-data-format-through-import"></a>Alma yoluyla yapılandırılmış veri biçimi
+## <a name="structured-data-format-through-import"></a>İçeri aktarma yoluyla yapılandırılmış veri biçimi
 
-Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin yerini alır. Alma, veri kaynağı bilgilerini içeren yapılandırılmış bir .tsv dosyası gerektirir. Bu bilgiler, QnA Maker'ın soru-yanıt çiftlerini gruplandırmasına ve bunları belirli bir veri kaynağına bağlamasına yardımcı olur.
+Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini alır. İçeri aktarma, veri kaynağı bilgilerini içeren bir yapılandırılmış. tsv dosyası gerektirir. Bu bilgiler, soru-cevap çiftlerini ve onları belirli bir veri kaynağına göre gruplamak Soru-Cevap Oluşturma yardımcı olur.
 
 | Soru  | Yanıt  | Kaynak| Meta veriler (1 anahtar: 1 değer) |
 |-----------|---------|----|---------------------|
-| Soru1 | Cevap1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
-| Soru2 | Cevap2 | Editoryal|    `Key:Value`       |
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Düzenleme|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-## <a name="multi-turn-document-formatting"></a>Çok döndürme belge biçimlendirmesi
+## <a name="multi-turn-document-formatting"></a>Belge biçimlendirmesini çoklu aç
 
-* Hiyerarşiyi belirtmek için başlıkları ve alt başlıkları kullanın. Örneğin, hızlı olarak alınması gereken QnA'yı belirtmek için üst QnA ve h2'yi belirtmek için h1 yapabilirsiniz. Sonraki hiyerarşiyi belirtmek için küçük başlık boyutunu kullanın. Belgenizdeki yapıyı ima etmek için stil, renk veya başka bir mekanizma kullanmayın, QnA Maker çok döndürülme istemlerini ayıklamaz.
-* Başlığın ilk karakteri büyük harfle yazılmalı.
-* Bir başlığı soru işaretiyle bitirmeyin. `?`
+* Hiyerarşiyi göstermek için başlıklar ve alt başlıklar kullanın. Örneğin, komut istemi olarak alınması gereken QnA 'yi göstermek için üst QnA ve H2 'yi belirtmek üzere H1 'yi belirtebilirsiniz. Sonraki hiyerarşiyi göstermek için küçük başlık boyutunu kullanın. Belgenizde yapıyı daha fazla yapmak için stil, renk veya başka bir mekanizma kullanmayın, Soru-Cevap Oluşturma çoklu açma istemlerini ayıklamaz.
+* Başlığın ilk karakteri büyük harfle yazılmalıdır.
+* Bir başlığı soru işaretiyle sonlandırmayın `?`.
 
-**Örnek belgeler**:<br>[Yüzey Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Faydaları (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Faydaları (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
+**Örnek belgeler**:<br>[Surface Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso avantajları (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso avantajları (PDF)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İçerik türlerinin ve örneklerin](./Concepts/content-types.md#file-and-url-data-types) tam listesini görün
+[İçerik türlerinin tam listesi ve örnekleri](./Concepts/content-types.md#file-and-url-data-types) için bkz.

@@ -1,6 +1,6 @@
 ---
-title: Azure Blob depolama etkinliklerini web bitiş noktasına gönderme - Azure CLI | Microsoft Dokümanlar
-description: Blob depolama olaylarına abone olmak için Azure Event Grid’i kullanın. Olayları bir Webhook'a gönderin. Olayları bir web uygulamasında ele alın.
+title: Azure Blob Depolama olaylarını Web uç noktasına gönderme-Azure CLı | Microsoft Docs
+description: Blob depolama olaylarına abone olmak için Azure Event Grid’i kullanın. Olayları bir Web kancasına gönderin. Bir Web uygulamasındaki olayları işleyin.
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: ad5662a722db764d09c1ead528a98c09c1d3df7f
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745520"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLI ile depolama etkinliklerini web bitiş noktasına yönlendirin
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Depolama olaylarını Web uç noktasına yönlendirme
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede, Azure CLI aracını kullanarak Blob depolama olaylarına abone olur ve sonucu görüntülemek için olayı tetiklersiniz.
 
@@ -29,7 +29,7 @@ Bu makalede açıklanan adımları tamamladıktan sonra olay verilerinin web uyg
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI'nin en son sürümünü (2.0.70 veya sonraki) çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı 'nın en son sürümünü (2.0.70 veya üzeri) kullanmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 Cloud Shell kullanmıyorsanız önce `az login` kullanarak oturum açmanız gerekir.
 

@@ -1,6 +1,6 @@
 ---
 title: Mevcut bir veri ambarını geri yükleme
-description: Varolan bir SQL havuzunu geri getirmek için nasıl yapılır kılavuzu.
+description: Mevcut bir SQL havuzunu geri yüklemek için nasıl yapılır Kılavuzu.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -12,46 +12,46 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745219"
 ---
-# <a name="restore-an-existing-sql-pool"></a>Varolan bir SQL havuzunun geri yüklemesi
+# <a name="restore-an-existing-sql-pool"></a>Mevcut bir SQL havuzunu geri yükleme
 
-Bu makalede, Azure portalı ve PowerShell'i kullanarak Azure Synapse Analytics'te varolan bir SQL havuzunu nasıl geri yükleyebilirsiniz.
+Bu makalede, Azure portal ve PowerShell kullanarak Azure SYNAPSE Analytics 'te var olan bir SQL havuzunu geri yüklemeyi öğreneceksiniz.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU kapasitenizi doğrulayın.** Her havuz, varsayılan DTU kotası olan bir SQL sunucusu (örneğin, myserver.database.windows.net) tarafından barındırılır. SQL sunucusunun veritabanının geri yüklenmesi için yeterli DTU kotası kaldığını doğrulayın. DTU'nun gerekli hesaplamasını öğrenmek veya daha fazla DTU istemek için [bkz.](sql-data-warehouse-get-started-create-support-ticket.md)
+**DTU kapasitenizi doğrulayın.** Her havuz, varsayılan DTU kotasına sahip bir SQL Server (örneğin, myserver.database.windows.net) tarafından barındırılır. SQL Server 'ın geri yüklenmekte olan veritabanının kalan DTU kotasına sahip olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-1. [Azure PowerShell'i yüklediğinizden](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)emin olun.
-2. Geri yüklemek istediğiniz varolan bir geri yükleme noktasına sahip. Yeni bir geri yükleme oluşturmak istiyorsanız, [yeni bir kullanıcı tanımlı geri yükleme noktası oluşturmak için öğreticiye](sql-data-warehouse-restore-points.md)bakın.
+1. [Azure PowerShell yüklediğinizden](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)emin olun.
+2. Geri yüklemek istediğiniz mevcut bir geri yükleme noktasına sahip olabilirsiniz. Yeni bir geri yükleme oluşturmak isterseniz, [Kullanıcı tanımlı yeni bir geri yükleme noktası oluşturmak için öğreticiye](sql-data-warehouse-restore-points.md)bakın.
 
-## <a name="restore-an-existing-sql-pool-through-powershell"></a>PowerShell üzerinden varolan bir SQL havuzunu geri yükleme
+## <a name="restore-an-existing-sql-pool-through-powershell"></a>Mevcut bir SQL havuzunu PowerShell aracılığıyla geri yükleme
 
-Varolan bir SQL havuzunu geri yükleme noktasından geri yüklemek için [Geri Yükleme-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet'ini kullanın.
+Mevcut bir SQL havuzunu geri yükleme noktasından geri yüklemek için [restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın.
 
 1. PowerShell’i açın.
 
-2. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
+2. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listeleyin.
 
 3. Geri yüklenecek veritabanını içeren aboneliği seçin.
 
-4. SQL havuzu için geri yükleme noktalarını listele.
+4. SQL havuzunun geri yükleme noktalarını listeleyin.
 
-5. RestorePointCreationDate'i kullanarak istediğiniz geri yükleme noktasını seçin.
+5. RestorePointCreationDate kullanarak istenen geri yükleme noktasını seçin.
 
-6. [Geri Yükleme-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet kullanarak SQL havuzunu istenilen geri yükleme noktasına geri yükleyin.
-        1. SQL havuzunu farklı bir mantıksal sunucuya geri yüklemek için diğer mantıksal sunucu adını belirttiğinden emin olun.  Bu mantıksal sunucu farklı bir kaynak grubu ve bölgede de olabilir.
-        2. Farklı bir aboneye geri yüklemek için, mantıksal sunucuyu başka bir aboneye taşımak için 'Taşı' düğmesini kullanın.
+6. [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'INI kullanarak SQL havuzunu istenen geri yükleme noktasına geri yükleyin.
+        1. SQL havuzunu farklı bir mantıksal sunucuya geri yüklemek için diğer mantıksal sunucu adını belirttiğinizden emin olun.  Bu mantıksal sunucu, farklı bir kaynak grubunda ve bölgede de olabilir.
+        2. Farklı bir aboneliğe geri yüklemek için ' Taşı ' düğmesini kullanarak mantıksal sunucuyu başka bir aboneliğe taşıyın.
 
 7. Geri yüklenen SQL havuzunun çevrimiçi olduğunu doğrulayın.
 
-8. Geri yükleme tamamlandıktan sonra, kurtarma sonra [veritabanınızı yapılandırmayı](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)izleyerek kurtarılan SQL havuzu nu yapılandırabilirsiniz.
+8. Geri yükleme tamamlandıktan sonra, [kurtarma sonrasında veritabanınızı Yapılandır](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)' ı IZLEYEREK kurtarılan SQL havuzdan yapılandırma yapabilirsiniz.
 
 ```Powershell
 
@@ -87,19 +87,19 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Azure portalı üzerinden varolan bir SQL havuzunu geri yükleme
+## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Mevcut bir SQL havuzunu Azure portal aracılığıyla geri yükleme
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Geri yüklemek istediğiniz SQL havuzuna gidin.
-3. Genel Bakış bıçağının üst kısmında Geri **Yükle'yi**seçin.
+3. Genel Bakış dikey penceresinin en üstünde **geri yükle**' yi seçin.
 
     ![ Geri Yüklemeye Genel Bakış](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Otomatik **Geri Yükleme Noktaları** veya **Kullanıcı Tanımlı Geri Yükleme Noktaları'nı**seçin. SQL havuzunda otomatik geri yükleme noktası yoksa, geri yüklemeden önce birkaç saat bekleyin veya kullanıcı tanımlı bir geri yükleme noktası oluşturun. Kullanıcı Tanımlı Geri Yükleme Noktaları için varolan bir nokta seçin veya yeni bir nokta oluşturun. **Sunucu**için, farklı bir kaynak grubunda ve bölgesinde mantıksal bir sunucu seçebilir veya yeni bir sunucu oluşturabilirsiniz. Tüm parametreleri sağladıktan sonra **Gözden Geçir + Geri Yükle'yi**tıklatın.
+4. **Otomatik geri yükleme noktaları** veya **Kullanıcı tanımlı geri yükleme noktaları**seçeneklerinden birini belirleyin. SQL havuzunda otomatik geri yükleme noktaları yoksa, birkaç saat bekleyin veya geri yüklemeden önce Kullanıcı tanımlı geri yükleme noktası oluşturun. Kullanıcı tanımlı geri yükleme noktaları için, mevcut bir tane seçin veya yeni bir tane oluşturun. **Sunucu**için, farklı bir kaynak grubunda ve bölgede bir mantıksal sunucu seçebilir veya yeni bir tane oluşturabilirsiniz. Tüm parametreleri sağladıktan sonra, **gözden geçir + geri yükle**' ye tıklayın.
 
     ![Otomatik Geri Yükleme Noktaları](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Silinen bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-deleted-dw.md)
+- [Silinen bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
 - [Coğrafi yedekleme SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)

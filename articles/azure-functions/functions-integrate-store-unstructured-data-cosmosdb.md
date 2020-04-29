@@ -1,19 +1,19 @@
 ---
-title: Azure Cosmos DB ve Fonksiyonlar kullanarak yapılandırılmamış verileri depolama
+title: Azure Cosmos DB ve Işlevleri kullanarak yapılandırılmamış verileri depolama
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc
 ms.openlocfilehash: d11b7e7d55d0327bdec0a8bd6c73571cf846fd3c
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80756659"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
-[Azure Cosmos DB,](https://azure.microsoft.com/services/cosmos-db/) yapılandırılmamış ve JSON verilerini depolamak için harika bir yoldur. Cosmos DB, Azure İşlevleri ile birlikte kullanıldığında verilerin ilişkisel bir veritabanında depolanmasına göre çok daha az kodla verileri hızlı ve kolay bir şekilde depolar.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) YAPıLANDıRıLMAMıŞ ve JSON verilerini depolamanın harika bir yoludur. Cosmos DB, Azure İşlevleri ile birlikte kullanıldığında verilerin ilişkisel bir veritabanında depolanmasına göre çok daha az kodla verileri hızlı ve kolay bir şekilde depolar.
 
 > [!NOTE]
 > Şu anda Azure Cosmos DB tetikleyicisi, giriş bağlamaları ve çıkış bağlamaları yalnızca SQL API ve Graph API hesaplarıyla çalışır.
@@ -65,7 +65,7 @@ Bu öğreticiyi tamamlamak için:
 
 Mevcut işlev kodunu aşağıdan seçtiğiniz dildeki kodla değiştirin:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[, #](#tab/csharp)
 
 Mevcut C# işlevini aşağıdaki kodla değiştirin:
 

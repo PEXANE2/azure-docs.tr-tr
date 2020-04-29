@@ -1,20 +1,20 @@
 ---
 title: Şablonlarda alt kaynaklar
-description: Azure Kaynak Yöneticisi şablonunda alt kaynaklar için ad ve yazının nasıl ayarlanır olduğunu açıklar.
+description: Bir Azure Resource Manager şablonunda alt kaynaklar için ad ve tür ayarlamayı açıklar.
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743846"
 ---
-# <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür belirleme
+# <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 
-Alt kaynaklar yalnızca başka bir kaynak bağlamında var olan kaynaklardır. Örneğin, [sanal makine uzantısı](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) sanal bir [makine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)olmadan var olamaz. Uzantı kaynağı sanal makinenin bir alt alanıdır.
+Alt kaynaklar yalnızca başka bir kaynağın bağlamında bulunan kaynaklardır. Örneğin, sanal makine [Uzantısı](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) bir [sanal makine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)olmadan mevcut olamaz. Uzantı kaynağı, sanal makinenin bir alt öğesidir.
 
-Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnekte, üst kaynağın kaynak özelliği içinde yer alan alt kaynak gösterilmektedir.
+Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnek, üst kaynağın Resources özelliği içinde yer alan alt kaynağı gösterir.
 
 ```json
 "resources": [
@@ -27,7 +27,7 @@ Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kayn
 ]
 ```
 
-Sonraki örnek, alt kaynağı üst kaynağın dışında gösterir. Üst kaynak aynı şablonda dağıtılmıyorsa veya birden fazla alt kaynak oluşturmak için [kopya](copy-resources.md) kullanmak istiyorsanız bu yaklaşımı kullanabilirsiniz.
+Sonraki örnekte alt kaynak, üst kaynağın dışında gösterilmektedir. Üst kaynak aynı şablonda dağıtılmamışsa veya birden fazla alt kaynak oluşturmak için [kopyalama](copy-resources.md) kullanmak istiyorsanız bu yaklaşımı kullanabilirsiniz.
 
 ```json
 "resources": [
@@ -40,18 +40,18 @@ Sonraki örnek, alt kaynağı üst kaynağın dışında gösterir. Üst kaynak 
 ]
 ```
 
-Kaynak adı ve türü için sağladığınız değerler, alt kaynağın ana kaynağın içinde veya dışında tanımlanıp tanımlanmadığına bağlı olarak değişir.
+Kaynak adı ve türü için sağladığınız değerler, alt kaynağın üst kaynağın içinde mi yoksa dışında mı tanımlandığına göre değişir.
 
 ## <a name="within-parent-resource"></a>Üst kaynak içinde
 
-Üst kaynak türü içinde tanımlandığında, tür ve ad değerlerini kesikler olmadan tek bir sözcük olarak biçimlendirin.
+Üst kaynak türü içinde tanımlandığında, tür ve ad değerlerini eğik çizgiler olmadan tek bir sözcük olarak biçimlendirin.
 
 ```json
 "type": "{child-resource-type}",
 "name": "{child-resource-name}",
 ```
 
-Aşağıdaki örnekte sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın sanal ağ için kaynak dizisine dahil edildiğine dikkat edin. Ad **Subnet1** olarak ayarlanır ve tür **alt ağlara**ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın bulunması gerektiğinden, alt kaynak ana kaynağa bağımlı olarak işaretlenir.
+Aşağıdaki örnekte bir sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edildiğini unutmayın. Ad **Subnet1** olarak ayarlanır ve tür **alt ağlar**olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
 
 ```json
 "resources": [
@@ -85,20 +85,20 @@ Aşağıdaki örnekte sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın san
 ]
 ```
 
-Tam kaynak türü hala **Microsoft.Network/virtualNetworks/subnets**olduğunu. **Microsoft.Network/virtualNetworks/** sağlamazsınız, çünkü üst kaynak türünden kabul edilir.
+Tam kaynak türü hala **Microsoft. Network/virtualNetworks/altağlardır**. **Microsoft. Network/virtualNetworks** , üst kaynak türünden olduğu için sağlamamazsınız.
 
-Alt kaynak adı **Subnet1** olarak ayarlanır, ancak tam ad üst adı içerir. **VNet1'i** ana kaynaktan kabul ettiği için sağlamazsınız.
+Alt kaynak adı **Subnet1** olarak ayarlanır ancak tam ad üst adı içerir. Üst kaynaktan varsaydığı için **VNet1** sağlamamazsınız.
 
-## <a name="outside-parent-resource"></a>Dış üst kaynak
+## <a name="outside-parent-resource"></a>Üst kaynak dışında
 
-Ana kaynağın dışında tanımlandığında, türü ve kesikleri üst türü ve adı içerecek şekilde biçimlendirin.
+Üst kaynağın dışında tanımlandığında, üst tür ve adı içerecek şekilde türü ve eğik çizgileri biçimlendirin.
 
 ```json
 "type": "{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}",
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-Aşağıdaki örnekte, her ikisi de kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gösterilmektedir. Alt ağın sanal ağ için kaynak dizisine dahil olmadığına dikkat edin. Ad **VNet1/Subnet1** olarak ayarlanır ve türü **Microsoft.Network/virtualNetworks/subnets**olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın bulunması gerektiğinden, alt kaynak ana kaynağa bağımlı olarak işaretlenir.
+Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edilmediğini unutmayın. Ad **VNet1/Subnet1** olarak ayarlanır ve tür **Microsoft. Network/virtualnetworks/alt ağları**olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
 
 ```json
 "resources": [
@@ -132,6 +132,6 @@ Aşağıdaki örnekte, her ikisi de kök düzeyinde tanımlanan bir sanal ağ ve
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Kaynak Yöneticisi şablonları oluşturma hakkında bilgi edinmek için [bkz.](template-syntax.md)
+* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
 
 * Kaynağa başvururken kaynak adının biçimi hakkında bilgi edinmek için [başvuru işlevine](template-functions-resource.md#reference)bakın.

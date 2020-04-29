@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Change Feed ile uçdan uca Async Java SQL API uygulama örneği
-description: Bu öğretici, Belgeleri Bir Azure Cosmos DB kapsayıcısına eklerken, Değişiklik Akışı'nı kullanarak kapsayıcının somutlaştırılmış görünümünü koruyan basit bir Java SQL API uygulamasında size yol sunar.
+title: Öğretici-değişiklik akışı ile uçtan uca zaman uyumsuz Java SQL API uygulaması örneği
+description: Bu öğreticide, değişiklik akışını kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü koruyarak Azure Cosmos DB kapsayıcısına belge ekleyen basit bir Java SQL API uygulaması adım adım gösterilmektedir.
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: anfeldma
 ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80586704"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Öğretici - Change Feed ile uçdan uca Async Java SQL API uygulama örneği
+# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Öğretici-değişiklik akışı ile uçtan uca zaman uyumsuz Java SQL API uygulaması örneği
 
-Bu öğretici kılavuz, Belgeleri Bir Azure Cosmos DB kapsayıcısına eklerken, Değişiklik Akışı'nı kullanarak kapsayıcının somutlaştırılmış görünümünü koruyan basit bir Java SQL API uygulamasında size yol göstermektedir.
+Bu öğretici Kılavuzu, bir Azure Cosmos DB kapsayıcısına belge ekleyen basit bir Java SQL API uygulamasında, değişiklik akışını kullanarak kapsayıcının gerçekleştirilmiş bir görünümünü sürdürirken size rehberlik eder.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -31,23 +31,23 @@ Bu öğretici kılavuz, Belgeleri Bir Azure Cosmos DB kapsayıcısına eklerken,
 
 ## <a name="background"></a>Arka plan
 
-Azure Cosmos DB Değişiklik Yayını, belge eklemeye yanıt olarak eylemleri tetiklemek için olay odaklı bir arabirim sağlar. Bunun birçok faydası vardır. Örneğin, hem okunan hem de ağır yazan uygulamalarda, Change Feed'in baş kullanımı, belgeleri sindirirken bir kapsayıcının gerçek zamanlı **olarak gerçek zamanlı olarak somutlaştırılmış görünümünü** oluşturmaktır. Maddeleştirilmiş görünüm kapsayıcısı aynı verileri tutar, ancak verimli okumalar için bölümlenir, bu da uygulamanın hem okuma hem de yazma verimli hale getirilmesini sağlar.
+Azure Cosmos DB değişiklik akışı, belge eklemeye yanıt olarak eylemleri tetiklemeye yönelik olay odaklı bir arabirim sağlar. Bunun birçok kullanımı vardır. Örneğin, hem okuma hem de yazma bilgisi olan uygulamalarda, değişiklik akışı kullanımı, belge alındığı sırada bir kapsayıcının gerçek zamanlı **gerçekleştirilmiş bir görünümünü** oluşturmaktır. Gerçekleştirilmiş görünüm kapsayıcısı aynı verileri tutar, ancak etkili okuma için bölümlenmiş, uygulamayı hem okuma hem de yazma verimli hale getirir.
 
-Özet Akışı etkinliklerini yönetme çalışmaları büyük ölçüde SDK'da yerleşik Olan Değişim Akışı İşlemci kitaplığı tarafından halledilir. Bu kitaplık, istenirse, Özet Akışı olaylarını birden çok çalışan arasında dağıtacak kadar güçlüdür. Tek yapmanız gereken, Özet Akışı kitaplığını değiştir'e bir geri arama sağlamaktır.
+Değişiklik akışı olaylarının yönetilmesi işi, SDK 'da yerleşik olarak bulunan değişiklik akışı Işlemci kitaplığı tarafından büyük ölçüde dikkate alınmıştır. Bu kitaplık, değişiklik akışı olaylarını birden çok çalışan arasında dağıtmak için yeterince güçlü bir değer vardır. Tek yapmanız gerekir değişiklik akışı kitaplığı bir geri çağırma işlemi sağlar.
 
-Bu basit örnek, tek bir çalışanın belgeleri somutlaştırılmış bir görünümden oluşturması ve silmesiyle Özet Akışı İşlemci kitaplığını değiştir'i gösterir.
+Bu basit örnek, bir gerçekleştirilmiş görünümden belge oluşturma ve silme adlı tek bir çalışan akış Işlemcisi kitaplığı değişikliğini gösterir.
 
 ## <a name="setup"></a>Kurulum
 
-Bunu daha önce yapmadıysanız, uygulama örneği repo'yu kopyala:
+Daha önce yapmadıysanız, uygulama örneği deposunu kopyalayın:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> Java SDK 4.0 veya Java SDK 3.7.0 ile bu Quickstart üzerinden çalışmak için bir seçim var. **Java SDK 3.7.0 kullanmak istiyorsanız, terminal türünde. ```git checkout SDK3.7.0``` ** Aksi takdirde, ```master``` Java SDK 4.0 varsayılan şube, kalmak.
+> Java SDK 4,0 veya Java SDK 3.7.0 ile bu hızlı başlangıç aracılığıyla çalışma seçeneğiniz vardır. **Java SDK 3.7.0 kullanmak istiyorsanız, Terminal ```git checkout SDK3.7.0```türü ' nde **. Aksi takdirde, varsayılan olarak ```master``` Java SDK 4,0 ' i olan dalda kalın.
 
-Repo dizininde bir terminal açın. Çalıştırarak uygulamayı oluşturun
+Depo dizininde bir Terminal açın. Çalıştırarak uygulamayı oluşturun
 
 ```bash
 mvn clean package
@@ -55,42 +55,42 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Kılavuz
 
-1. İlk denetim olarak, bir Azure Cosmos DB hesabınız olmalıdır. Tarayıcınızda **Azure Portalı'nı** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmede **Veri Gezgini'ne**gidin.
+1. İlk denetim olarak bir Azure Cosmos DB hesabınızın olması gerekir. Tarayıcınızda **Azure portalını** açın, Azure Cosmos DB hesabınıza gidin ve sol bölmedeki **Veri Gezgini**' a gidin.
 
     ![Azure Cosmos DB hesabı](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
-1. Aşağıdaki komutu kullanarak uygulamayı terminalde çalıştırın:
+1. Uygulamayı terminalde aşağıdaki komutu kullanarak çalıştırın:
 
     ```bash
     mvn exec:java -Dexec.mainClass="com.azure.cosmos.workedappexample.SampleGroceryStore" -DACCOUNT_HOST="your-account-uri" -DACCOUNT_KEY="your-account-key" -Dexec.cleanupDaemonThreads=false
     ```
 
-1. Gördüğünüzde enter tuşuna basın
+1. Gördüğünüz zaman ENTER tuşuna basın
 
     ```bash
     Press enter to create the grocery store inventory system...
     ```
 
-    ardından tarayıcınızdaki Azure Portal Veri Gezgini'ne geri dönün. Bir veritabanı **BakkalStoreDatabase** üç boş kapsayıcılar ile eklenmiştir göreceksiniz: 
+    daha sonra tarayıcınızda Veri Gezgini Azure portalına geri dönün. Üç boş kapsayıcıyla bir **Market veritabanı** eklendiğini göreceksiniz: 
 
-    * **InventoryContainer** - Örnek bakkal, bir UUID olan ```id``` madde üzerinde bölümlenmiş için stok kaydı.
-    * **InventoryContainer-pktype** - Madde üzerindeki sorgular için optimize edilmiş stok kaydının maddesel görünümü```type```
-    * **InventoryContainer-leases** - Değişim Akışı için her zaman bir kiralama konteyneri gereklidir; kiralama, uygulamanın Değişiklik Akışı'nı okumadaki ilerlemesini izler.
-
-
-    ![Boş kaplar](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
+    * **Inventorycontainer** -bir UUID olan öğe ```id``` üzerinde bölümlenen, bizim örnek Market depomız için Envanter kaydı.
+    * **Inventorycontainer-pktype** -stok kaydının gerçekleştirilmiş bir görünümü, öğe üzerindeki sorgular için iyileştirilmiştir```type```
+    * **Inventorycontainer-kiralamalar** -her zaman değişiklik akışı için bir kiralama kapsayıcısı gereklidir; kiralamalar değişiklik akışını okurken uygulamanın ilerlemesini izler.
 
 
-1. Terminalde, şimdi bir istemi görmeniz gerekir
+    ![Boş kapsayıcılar](media/create-sql-api-java-changefeed/cosmos_account_resources_lease_empty.JPG)
+
+
+1. Terminalde, şimdi bir istem görmeniz gerekir
 
     ```bash
     Press enter to start creating the materialized view...
     ```
 
-    Enter tuşuna basın. Şimdi aşağıdaki kod bloğu, Başka bir iş parçacığı üzerinde Feed işlemcideğiştir'i çalıştıracak ve başharfünü çalıştıracaktır: 
+    ENTER tuşuna basın. Aşağıdaki kod bloğu, başka bir iş parçacığında değişiklik akışı işlemcisini yürütecektir ve başlatacak: 
 
 
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -116,15 +116,15 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
     ```
 
-    ```"SampleHost_1"```Feed işlemci sini değiştir işlemci sicisinin adıdır. ```changeFeedProcessorInstance.start()```Aslında Feed işlemcideğiştir'i başlatan şeydir.
+    ```"SampleHost_1"```, değişiklik akışı işlemci çalışanının adıdır. ```changeFeedProcessorInstance.start()```Değişiklik akışı işlemcisini asıl olarak başlatır.
 
-    Tarayıcınızdaki Azure Portal Veri Gezgini'ne geri dönün. **InventoryContainer-leases** kapsayıcısının altında, içeriğini görmek için **maddeleri** tıklatın. Feed İşlemcisi'ni değiştirin, kira kapsayıcısını doldurmuş, yani işlemcinin işçiye ```SampleHost_1``` **InventoryContainer'ın**bazı bölümleri üzerinde kira atadığını göreceksiniz.
+    Tarayıcınızda Azure portalına Veri Gezgini geri dönün. **Inventorycontainer-kiralamalar** kapsayıcısının altında, içeriğini görmek için **öğeler** ' e tıklayın. Değişiklik akışı Işlemcisinin kira kapsayıcısını doldurduğuna, yani işlemcinin bir ```SampleHost_1``` çalışan tarafından **ınventorycontainer**'in bazı bölümlerinde bir kira atamasıyla karşılaşırsınız.
 
     ![Kiralamalar](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
-1. Terminale tekrar girin tuşuna basın. Bu, **InventoryContainer'a**eklenecek 10 belgeyi tetikler. Her belge ekleme JSON olarak Değişiklik Akışı görünür; Aşağıdaki geri arama kodu, JSON belgelerini somutlaştırılmış bir görünüme yansıtarak bu olayları işler:
+1. Terminalde ENTER tuşuna basın. Bu işlem, 10 belgeyi **ınventorycontainer**içine eklenecek şekilde tetikler. Her belge ekleme, değişiklik akışında JSON olarak görünür; Aşağıdaki geri çağırma kodu, JSON belgelerini gerçekleştirilmiş bir görünüme yansıtarak bu olayları işler:
 
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -176,21 +176,21 @@ mvn clean package
     }    
     ```
 
-1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure Portal Veri Gezgini'ne dönün ve **> öğeleriyle InventoryContainer'a**gidin. Maddelerin stok kapsayıcısına eklendiğini görmeniz gerekir; bölüm anahtarını```id```not edin ( ).
+1. Kodun 5-10sn çalışmasına izin verin. Ardından Azure portalına Veri Gezgini dönüp, **ınventorycontainer > öğelerine**gidin. Öğelerin envanter kapsayıcısına eklenmekte olduğunu görmeniz gerekir; bölüm anahtarına (```id```) göz önünde.
 
-    ![Besleme kabı](media/create-sql-api-java-changefeed/cosmos_items.JPG)
+    ![Akış kapsayıcısı](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
-1. Şimdi, Veri Gezgini'nde **InventoryContainer-pktype > öğelerine**gidin. Bu maddeleşmiş görünümdür - Bu kapsayıcı **aynası InventoryContainer'taki** maddeler, Değişim Akışı tarafından programlı olarak takıldıkları için. Bölüm tuşuna```type```dikkat edin ( ). Yani bu somutlaştırılmış görünüm üzerinde bölümlenmiş ```type```çünkü **InventoryContainer** üzerinde verimsiz olurdu, üzerinde filtreleme sorguları için optimize ```id```edilmiştir.
+1. Şimdi Veri Gezgini ' de, **ınventorycontainer-pktype > öğelerine**gidin. Bu, bu kapsayıcıdaki öğeler, değişiklik akışı tarafından program aracılığıyla eklendiklerinden, bu kapsayıcıdaki öğelerin, **ınventorycontainer** yansıtmasının gerçekleştirilmiş görünümüdür. Bölüm anahtarına (```type```) göz önünde. Bu gerçekleştirilmiş görünüm ```type```, üzerinde bölümlenmiş olduğundan **ınventorycontainer** üzerinde verimsiz olacak sorgular üzerinde filtreleme için en iyi duruma getirilmiştir ```id```.
 
     ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. Bir belgeyi hem InventoryContainer hem de ```upsertItem()``` **InventoryContainer-pktype'tan** tek bir çağrı kullanarak sileceğiz. **InventoryContainer** İlk olarak, Azure Portal Veri Gezgini'ne bir göz atın. Belgeyi sileceğiz; ```/type == "plums"``` aşağıda kırmızı ile çevrilidir
+1. Yalnızca tek ```upsertItem()``` bir çağrı kullanarak hem **ınventorycontainer** hem de **ınventorycontainer-pktype** öğesinden bir belgeyi silelim. İlk olarak, Azure Portal Veri Gezgini göz atın. Belgeyi sileceğiz ```/type == "plums"```; Aşağıda kırmızı renkle şifreli
 
     ![Gerçekleştirilmiş görünüm](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
-    Örnek koddaki işlevi ```deleteDocument()``` aramak için yeniden girin'e basın. Aşağıda gösterilen bu işlev, belgenin ```/ttl == 5```Canlı Yayın (TTL) ile 5 sn'ye ayarladığı yeni bir sürümünü ekler. 
+    Örnek kodda işlevi ```deleteDocument()``` çağırmak için yeniden ENTER tuşuna basın. Aşağıda gösterilen bu işlev, belge yaşam süresi (TTL) ile 5 sn arasında olan ```/ttl == 5```belgenin yeni bir sürümünü kaplamıştır. 
     
-    **Java SDK 4.0**
+    **Java SDK 4,0**
     ```java
     public static void deleteDocument() {
 
@@ -246,10 +246,10 @@ mvn clean package
     }    
     ```
 
-    Değişiklik Akışı ```feedPollDelay``` 100ms olarak ayarlanır; bu nedenle, Change Feed bu güncelleştirmeye ```updateInventoryTypeMaterializedView()``` neredeyse anında yanıt verir ve yukarıda gösterilen çağrılara yanıt verir. Bu son işlev çağrısı, yeni belgeyi 5 sn'lik TTL ile **InventoryContainer-pktype'a**ekler.
+    Değişiklik akışı ```feedPollDelay``` 100 ms olarak ayarlanır; Bu nedenle, değişiklik akışı bu güncelleştirmeyi neredeyse anında ve yukarıda gösterilen ```updateInventoryTypeMaterializedView()``` çağrılara yanıt verir. Bu son işlev çağrısı, 5 San TTL ile yeni belgeyi **ınventorycontainer-pktype**olarak kaplacaktır.
 
-    Etkisi, yaklaşık 5 saniye sonra belgenin süresidin dolması ve her iki kapsayıcıdan silineceğidir.
+    Bu, yaklaşık 5 saniye sonra, belgenin süresi dolduğunda ve her iki kapsayıcıdan da silinmeyecektir.
 
-    Özet Akışını Değiştir, madde silme de değil, yalnızca madde ekleme veya güncelleştirme yle ilgili olayları sorunlattığı için bu yordam gereklidir.
+    Değişiklik akışı, öğe silme işlemi sırasında değil yalnızca öğe ekleme veya güncelleştirme üzerindeki olayları verdiği için bu yordam gereklidir.
 
-1. Programı kapatmak ve kaynaklarını temizlemek için bir kez daha basın.
+1. Programı kapatmak ve kaynaklarını temizlemek için bir kez daha ENTER tuşuna basın.

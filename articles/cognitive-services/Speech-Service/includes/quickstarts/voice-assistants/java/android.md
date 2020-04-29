@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Özel bir ses asistanı, Java (Android) oluşturma - Konuşma hizmeti'
+title: 'Hızlı başlangıç: özel bir ses Yardımcısı oluşturma, Java (Android)-konuşma hizmeti'
 titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'yı kullanarak Android'de Java'da nasıl özel bir sesli asistan oluşturabilirsiniz öğrenin.
+description: Konuşma SDK 'sını kullanarak Android 'de Java 'da özel bir ses Yardımcısı oluşturmayı öğrenin.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80671043"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce şunları unutmayın:
+Başlamadan önce şunları yaptığınızdan emin olun:
 
 > [!div class="checklist"]
-> * [Azure Konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Geliştirme ortamınızı ayarlayın ve boş bir proje oluşturun](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Doğrudan Satır Konuşma [kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
-> * Ses çekimi için mikrofona erişebildiğinizden emin olun
+> * [Azure konuşma kaynağı oluşturma](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Geliştirme ortamınızı ayarlama ve boş bir proje oluşturma](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
+> * [Doğrudan hat konuşma kanalına](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) bağlı bir bot oluşturma
+> * Ses yakalama için bir mikrofona erişiminizin olduğundan emin olun
 
   > [!NOTE]
-  > Lütfen [sesli asistanlar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) bakın ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
+  > Lütfen [sesli Yardımcılar için desteklenen bölgeler listesine](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) başvurun ve kaynaklarınızın bu bölgelerden birinde dağıtıldığından emin olun.
 
 ## <a name="create-and-configure-a-project"></a>Projeyi oluşturma ve yapılandırma
 
@@ -36,9 +36,9 @@ Başlamadan önce şunları unutmayın:
 
 ## <a name="create-user-interface"></a>Kullanıcı arabirimi oluşturma
 
-Bu bölümde, uygulama için temel bir kullanıcı arabirimi (UI) oluşturacağız. Ana etkinliği açarak başlayalım: `activity_main.xml`. Temel şablon, uygulamanın adını içeren bir başlık `TextView` çubuğu ve "Merhaba dünya!" iletisini içerir.
+Bu bölümde, uygulama için temel bir kullanıcı arabirimi (UI) oluşturacağız. Ana etkinliği açıp başlatalım: `activity_main.xml`. Temel şablon, uygulamanın adına sahip bir başlık çubuğu ve "Hello World!" `TextView` iletisiyle birlikte bulunur.
 
-Ardından, aşağıdaki kodun `activity_main.xml` içeriğini değiştirin:
+Sonra, öğesinin `activity_main.xml` içeriğini aşağıdaki kodla değiştirin:
 
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
@@ -87,19 +87,19 @@ Ardından, aşağıdaki kodun `activity_main.xml` içeriğini değiştirin:
    </LinearLayout>
    ```
 
-Bu XML, botunuzun etkileşimini sağlamak için basit bir kullanıcı arama birimi tanımlar.
+Bu XML, bot 'unuzla etkileşim kurmak için basit bir kullanıcı arabirimi tanımlar.
 
-- Öğe `button` bir etkileşim başlatır ve `onBotButtonClicked` tıklatıldığında yöntemi çağırır.
-- Öğe, `recoText` siz botunuzla konuşurken konuşma metni sonuçlarını görüntüler.
-- Öğe, `activityText` botunuzdan en son Bot Framework etkinliği için JSON yükünü görüntüler.
+- `button` Öğesi bir etkileşim başlatır ve tıklandığında `onBotButtonClicked` yöntemi çağırır.
+- `recoText` Öğesi, bot 'unuzla konuşurken konuşmadan metne sonuçları görüntüler.
+- `activityText` Öğesi, bot 'ınızdan en son bot Framework etkinliğinin JSON yükünü görüntüler.
 
-Kullanıcı arabiriminizin metin ve grafik gösterimi şimdi şu şekilde görünmelidir:
+UI 'nizin metin ve grafik gösterimi şu şekilde görünmelidir:
 
 ![](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-designer-ui.png)
 
 ## <a name="add-sample-code"></a>Örnek kod ekleme
 
-1. İçeriği `MainActivity.java`aşağıdaki kodla açın ve değiştirin:
+1. Öğesini `MainActivity.java`açın ve içeriğini şu kodla değiştirin:
 
    ```java
     package samples.speech.cognitiveservices.microsoft.com;
@@ -241,31 +241,31 @@ Kullanıcı arabiriminizin metin ve grafik gösterimi şimdi şu şekilde görü
     }
    ```
 
-   * Yöntem, `onCreate` mikrofon ve internet izinleri isteyen kod içerir.
+   * Yöntemi `onCreate` , mikrofon ve internet izinleri isteyen kodu içerir.
 
-   * `onBotButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Bir düğmeye basmak, botunuzun izle tek bir etkileşimini ("dönüş") tetikler.
+   * `onBotButtonClicked` yöntemi daha önce de belirtildiği gibi düğme tıklama işleyicisidir. Düğme, bot ile tek bir etkileşimi ("Aç") tetikler.
 
-   * Yöntem, `registerEventListeners` gelen etkinliklerin `DialogServiceConnector` temel olarak işlenmesinde kullanılan olayları gösterir.
+   * `registerEventListeners` Yöntemi, gelen etkinliklerin `DialogServiceConnector` ve temel işlenmesi tarafından kullanılan olayları gösterir.
 
-1. Aynı dosyada, kaynaklarınızla eşleşecek şekilde yapılandırma dizelerini değiştirin:
+1. Aynı dosyada, yapılandırma dizelerini kaynaklarla eşleşecek şekilde değiştirin:
 
     * `YourSpeechSubscriptionKey` değerini abonelik anahtarınızla değiştirin.
 
-    * Aboneliğinizle ilişkili `YourServiceRegion` [bölgeyle](~/articles/cognitive-services/speech-service/regions.md) değiştirin Yalnızca Konuşma hizmet bölgelerinin bir alt kümesi şu anda Doğrudan Satır Konuşması ile desteklenir. Daha fazla bilgi için [bölgelere](~/articles/cognitive-services/speech-service/regions.md#voice-assistants)bakın.
+    * Aboneliğiniz `YourServiceRegion` ile ilişkili [bölge](~/articles/cognitive-services/speech-service/regions.md) Ile değiştirin yalnızca bir konuşma hizmeti bölgesi alt kümesi şu anda doğrudan hat konuşma ile desteklenmektedir. Daha fazla bilgi için bkz. [bölgeler](~/articles/cognitive-services/speech-service/regions.md#voice-assistants).
 
 ## <a name="build-and-run-the-app"></a>Uygulamayı derleme ve çalıştırma
 
 1. Android cihazınızı geliştirme bilgisayarınıza bağlayın. Cihazda [geliştirme modunu ve USB hata ayıklamasını](https://developer.android.com/studio/debug/dev-options) etkinleştirdiğinizden emin olun.
 
-1. Uygulamayı oluşturmak için Ctrl+F9 tuşuna basın veya menü çubuğundan **Yapı** > **Projesi'ni** seçin.
+1. Uygulamayı derlemek için CTRL + F9 tuşlarına basın veya menü çubuğunda projeyi **Oluştur ' u seçin.** > **Make Project**
 
-1. Uygulamayı başlatmak için Shift+F10'a basın veya **Çalıştır** > **'uygulamasını'** seçin.
+1. Uygulamayı başlatmak için SHIFT + F10 tuşlarına basın **veya çalıştırmayı Çalıştır** > **' uygulama '** yı seçin.
 
 1. Görüntülenen dağıtım hedefi penceresinde Android cihazınızı seçin.
 
    ![Dağıtım Hedefi Seç penceresinin ekran görüntüsü](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-12-deploy.png)
 
-Uygulama ve etkinliği başladıktan sonra, botunuzla konuşmaya başlamak için düğmeye tıklayın. Siz konuşurken transkripsiyonlu metin görünür ve botunuzdan aldığınız en son etkinlik, yapıldığında görünür. Botunuzun sözlü yanıtları sağlayacak şekilde yapılandırılırsa, konuşma metni otomatik olarak oynanır.
+Uygulama ve etkinliği başlatıldıktan sonra, bot 'unuza konuşmaya başlamak için düğmeye tıklayın. Metin, konuştuğunuz olarak görünür ve bot 'tan aldığınız son etkinlik alındığında görüntülenir. Bot, konuşulan yanıtları sunacak şekilde yapılandırıldıysa, konuşmayı metne dönüştürme işlemi otomatik olarak oynatılır.
 
 ![Android uygulamasının ekran görüntüsü](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-completed-turn.png)
 

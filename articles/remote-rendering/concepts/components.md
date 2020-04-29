@@ -1,28 +1,28 @@
 ---
 title: Bileşenler
-description: Azure Uzaktan İşlem kapsamında bileşenlerin tanımı
+description: Azure uzaktan Işleme kapsamındaki bileşenlerin tanımı
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: cb8b38addef736914a8627971e57ea2b173293d6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681902"
 ---
 # <a name="components"></a>Bileşenler
 
-Azure Uzaktan [İşleme, Varlık Bileşen Sistemi](https://en.wikipedia.org/wiki/Entity_component_system) modelini kullanır. [Varlıklar](entities.md) nesnelerin konumunu ve hiyerarşik bileşimini temsil ederken, bileşenler davranışı uygulamaktan sorumludur.
+Azure uzaktan Işleme, [varlık bileşeni sistem](https://en.wikipedia.org/wiki/Entity_component_system) modelini kullanır. [Varlıklar](entities.md) , nesnelerin konumunu ve hiyerarşik birleşimini temsil ederken, davranış uygulamaktan bileşenler sorumludur.
 
-En sık kullanılan bileşen türleri, işleme ardışık bölümüne kafes ekleyen [kafes bileşenleridir.](meshes.md) Benzer şekilde, [ışık bileşenleri](../overview/features/lights.md) aydınlatma eklemek ve [düzlem bileşenleri açık](../overview/features/cut-planes.md) meshes kesmek için kullanılır.
+En sık kullanılan bileşen türleri, işleme işlem hattına kafesler ekleyen [kafes bileşenleridir](meshes.md). Benzer şekilde, açık kafesler eklemek için aydınlatma ve [kesilen düzlem bileşenleri](../overview/features/cut-planes.md) eklemek için de [hafif bileşenler](../overview/features/lights.md) kullanılır.
 
-Tüm bu bileşenler, referans noktası olarak bağlı oldukları varlığın dönüşümunu (konum, döndürme, ölçek) kullanır.
+Tüm bu bileşenler, bağlı oldukları varlığın başvuru noktası olarak dönüşümünü (konum, döndürme, ölçek) kullanır.
 
 ## <a name="working-with-components"></a>Bileşenlerle çalışma
 
-Bileşenleri kolayca ekleyebilir, kaldırabilir ve işleyebilirsiniz:
+Programlı olarak bileşenleri kolayca ekleyebilir, kaldırabilir ve yönetebilirsiniz:
 
 ```cs
 // create a point light component
@@ -39,15 +39,15 @@ lightComponent.Destroy();
 lightComponent = null;
 ```
 
-Bir bileşen oluşturma zamanında bir varlığa eklenir. Daha sonra başka bir varlığa taşınamaz. Bileşenler, bileşenin `Component.Destroy()` sahibi varlığı yok edildiğinde veya otomatik olarak silinir.
+Bir bileşen, oluşturma zamanında bir varlığa eklenir. Daha sonra başka bir varlığa taşınamaz. Bileşenler, bileşenin sahip varlığı `Component.Destroy()` yok edildiğinde açıkça veya otomatik olarak silinir.
 
-Bir varlığa aynı anda her bileşen türünün yalnızca bir örneği eklenebilir.
+Her bir bileşen türünün yalnızca bir örneği bir varlığa bir seferde eklenebilir.
 
-## <a name="unity-specific"></a>Birliğe özel
+## <a name="unity-specific"></a>Unity 'ye özgü
 
-Birletümleştirme, bileşenlerle etkileşim kurmak için ek uzatma işlevlerine sahiptir. Bkz. [Unity oyun nesneleri ve bileşenleri.](../how-tos/unity/objects-components.md)
+Unity tümleştirmesinde bileşenlerle etkileşim kurmak için ek uzantı işlevleri bulunur. Bkz. [Unity oyun nesneleri ve bileşenleri](../how-tos/unity/objects-components.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Nesne sınırları](object-bounds.md)
-* [Kafes](meshes.md)
+* [Ağ yapıları](meshes.md)
