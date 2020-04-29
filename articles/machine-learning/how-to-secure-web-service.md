@@ -1,7 +1,7 @@
 ---
-title: TLS kullanarak güvenli web hizmetleri
+title: TLS kullanarak güvenli Web Hizmetleri
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning aracılığıyla dağıtılan bir web hizmetini güvence altına almak için HTTPS'yi nasıl etkinleştireceklerini öğrenin. Azure Machine Learning, web hizmetleri olarak dağıtılan modelleri güvenli hale getirmek için TLS sürüm 1.2'yi kullanır.
+description: Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlamak için HTTPS 'yi nasıl etkinleştireceğinizi öğrenin. Azure Machine Learning, Web Hizmetleri olarak dağıtılan modellerin güvenliğini sağlamak için TLS 1,2 sürümünü kullanır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,89 +12,89 @@ author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287348"
 ---
-# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın
+# <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Azure Machine Learning aracılığıyla bir Web hizmetinin güvenliğini sağlamak için TLS kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir web hizmetinin nasıl güvence altına alabileceğiniz gösterilmektedir.
+Bu makalede, Azure Machine Learning aracılığıyla dağıtılan bir Web hizmetinin güvenliğini sağlama gösterilmektedir.
 
-WEB hizmetlerine erişimi kısıtlamak ve istemcilerin gönderdiği verileri güvence altına almak için [HTTPS'yi](https://en.wikipedia.org/wiki/HTTPS) kullanırsınız. HTTPS, ikisi arasındaki iletişimi şifreleyerek bir istemci ve bir web hizmeti arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği 'ni (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS bazen hala TLS selefi olan *Güvenli Soketler Katmanı* (SSL) olarak adlandırılır.
+Web hizmetlerine erişimi kısıtlamak ve istemcilerin gönderebileceği verileri güvenli hale getirmek için [https](https://en.wikipedia.org/wiki/HTTPS) 'yi kullanırsınız. HTTPS, iki arasındaki iletişimleri şifreleyerek bir istemci ve Web hizmeti arasındaki iletişimin güvenliğini sağlamaya yardımcı olur. Şifreleme, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security)kullanır. TLS, bazen TLS 'nin öncülü olan *Güvenli Yuva Katmanı* (SSL) olarak adlandırılır.
 
 > [!TIP]
-> Azure Machine Learning SDK, güvenli iletişimle ilgili özellikler için "SSL" terimini kullanır. Bu, web hizmetinizin *TLS*kullanmadığı anlamına gelmez. SSL sadece daha yaygın olarak tanınan bir terimdir.
+> Azure Machine Learning SDK, güvenli iletişimlerle ilgili özellikler için "SSL" terimini kullanır. Bu, Web hizmetinizin *TLS*kullanmayacağınız anlamına gelmez. SSL yalnızca daha yaygın olarak tanınan bir terimdir.
 >
-> Özellikle, Azure Machine Learning aracılığıyla dağıtılan web hizmetleri yalnızca TLS sürüm 1.2'yi destekler.
+> Özellikle Azure Machine Learning aracılığıyla dağıtılan Web Hizmetleri yalnızca TLS sürüm 1,2 ' i destekler.
 
-TLS ve SSL, şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikalara*güvenir. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi konusu [Ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
+TLS ve SSL her ikisi de şifreleme ve kimlik doğrulamaya yardımcı olan *dijital sertifikaları*kullanır. Dijital sertifikaların nasıl çalıştığı hakkında daha fazla bilgi için Vikipedi topic [ortak anahtar altyapısına](https://en.wikipedia.org/wiki/Public_key_infrastructure)bakın.
 
 > [!WARNING]
-> HTTPS'yi web hizmetiniz için kullanmıyorsanız, hizmete gönderilen ve hizmetten gönderilen veriler internetteki diğer kişiler tarafından görülebilir.
+> Web hizmetiniz için HTTPS kullanmıyorsanız, hizmete gönderilen ve hizmetten gönderilen veriler Internet 'te başkaları tarafından görülebilir.
 >
-> HTTPS ayrıca istemcinin bağlandığı sunucunun orijinalliğini doğrulamasını da sağlar. Bu özellik, istemcileri [ortadaki adam](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) saldırılarına karşı korur.
+> HTTPS Ayrıca istemcinin bağlandığı sunucunun orijinalliğini doğrulamasını sağlar. Bu özellik [, istemcileri ortadaki adam](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) saldırılarına karşı korur.
 
-Bu, bir web hizmetini güvence altına almak için genel bir işlemdir:
+Bu, bir Web hizmetinin güvenliğini sağlamaya yönelik genel bir işlemdir:
 
 1. Bir etki alanı adı alın.
 
-2. Dijital sertifika alın.
+2. Dijital bir sertifika alın.
 
-3. TLS etkinken web hizmetini dağıtın veya güncelleyin.
+3. Web hizmetini TLS etkin olarak dağıtın veya güncelleştirin.
 
-4. Web hizmetini işaret etmek için DNS'nizi güncelleştirin.
+4. DNS 'nizi Web hizmetine işaret etmek üzere güncelleştirin.
 
 > [!IMPORTANT]
-> Azure Kubernetes Hizmeti'ne (AKS) dağıtım yapıyorsanız, kendi sertifikanızı satın alabilir veya Microsoft tarafından sağlanan bir sertifikayı kullanabilirsiniz. Microsoft'tan bir sertifika kullanıyorsanız, bir etki alanı adı veya TLS/SSL sertifikası almanız gerekmez. Daha fazla bilgi için [TLS'yi etkinleştir ve](#enable) bu makalenin dağıt bölümüne bakın.
+> Azure Kubernetes Service 'e (AKS) dağıtım yapıyorsanız, kendi sertifikanızı satın alabilir veya Microsoft tarafından sağlanmış bir sertifikayı kullanabilirsiniz. Microsoft 'tan bir sertifika kullanıyorsanız, bir etki alanı adı veya TLS/SSL sertifikası almanız gerekmez. Daha fazla bilgi için bu makalenin [TLS ve dağıtımı etkinleştirme](#enable) bölümüne bakın.
 
-[Dağıtım hedefleri](how-to-deploy-and-where.md)arasında s'yi güvenli hale aldığınızda küçük farklar vardır.
+[Dağıtım hedefleri](how-to-deploy-and-where.md)genelinde güvenli hale getirilçalışırken küçük farklılıklar vardır.
 
-## <a name="get-a-domain-name"></a>Etki alanı adı alma
+## <a name="get-a-domain-name"></a>Etki alanı adı Al
 
-Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kayıt şirketinden*satın alın. Süreç ve fiyat kayıt şirketleri arasında farklılık gösterir. Kayıt şirketi etki alanı adını yönetmek için araçlar sağlar. Bu araçları, tam nitelikli bir alan adı (FQDN)\.(www contoso.com gibi) web hizmetinizi barındıran IP adresiyle eşlemek için kullanırsınız.
+Zaten bir etki alanı adınız yoksa, bir *etki alanı adı kaydedicisinde*bir tane satın alın. İşlem ve fiyat kayıt şirketlerinde arasında farklılık gösterir. Kaydedici, etki alanı adını yönetmek için araçlar sağlar. Tam etki alanı adını (FQDN) (örneğin, www\.contoso.com) Web HIZMETINIZI barındıran IP adresine eşlemek için bu araçları kullanabilirsiniz.
 
-## <a name="get-a-tlsssl-certificate"></a>TLS/SSL sertifikası alın
+## <a name="get-a-tlsssl-certificate"></a>Bir TLS/SSL sertifikası alın
 
-TLS/SSL sertifikası (dijital sertifika) almanın birçok yolu vardır. En yaygın olanı bir *sertifika yetkilisinden* (CA) satın almaktır. Sertifikayı nereden aldığınızdan bağımsız olarak, aşağıdaki dosyalara ihtiyacınız var:
+Bir TLS/SSL sertifikası (dijital sertifika) almanın birçok yolu vardır. En yaygın olarak, bir *sertifika yetkilisinden* (CA) bir sertifika satın alımdır. Sertifikayı nereden alacağınız bağımsız olarak, aşağıdaki dosyalar gereklidir:
 
-* Bir **sertifika**. Sertifikanın tam sertifika zincirini içermesi ve "PEM kodlanmış" olması gerekir.
-* Bir **anahtar.** Anahtar da PEM kodlanmış olmalıdır.
+* Bir **sertifika**. Sertifika, tam sertifika zincirini içermelidir ve "pek-Encoded" olmalıdır.
+* Bir **anahtar**. Anahtar Ayrıca pek kodlu olmalıdır.
 
-Sertifika istediğinizde, web hizmeti için kullanmayı planladığınız adresin FQDN'sini sağlamanız gerekir\.(örneğin, www contoso.com). Sertifikaya damgalanan adres ve istemcilerin kullandığı adres, web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmiyorsa, istemci bir hata iletisi alır.
+Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız adresin FQDN 'sini sağlamanız gerekir (örneğin, www\.contoso.com). Sertifikaya atılabilecek adres ve istemcilerin kullandığı adres, Web hizmetinin kimliğini doğrulamak için karşılaştırılır. Bu adresler eşleşmezse istemci bir hata iletisi alır.
 
 > [!TIP]
-> Sertifika yetkilisi sertifikayı ve anahtarı PEM kodlanmış dosyalar olarak sağlayamazsa, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
+> Sertifika yetkilisi sertifikayı ve anahtarı pek kodlu dosyalar olarak sağlayamıyorum, biçimi değiştirmek için [OpenSSL](https://www.openssl.org/) gibi bir yardımcı program kullanabilirsiniz.
 
 > [!WARNING]
-> Yalnızca geliştirme için *kendi imzalı* sertifikaları kullanın. Bunları üretim ortamlarında kullanmayın. Kendi imzalı sertifikalar istemci uygulamalarınızda sorunlara neden olabilir. Daha fazla bilgi için istemci uygulamanızın kullandığı ağ kitaplıkları için belgelere bakın.
+> *Otomatik olarak imzalanan* sertifikaları yalnızca geliştirme amacıyla kullanın. Bunları üretim ortamlarında kullanmayın. Otomatik olarak imzalanan sertifikalar, istemci uygulamalarınızda sorunlara yol açabilir. Daha fazla bilgi için, istemci uygulamanızın kullandığı ağ kitaplıklarının belgelerine bakın.
 
-## <a name="enable-tls-and-deploy"></a><a id="enable"></a>TLS'yi etkinleştirin ve dağıtın
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a>TLS ve dağıtımı etkinleştirme
 
-TLS etkinleştirilmiş hizmeti dağıtmak (veya yeniden dağıtmak için, *ssl_enabled* parametresini uygun olduğu her yerde "True" olarak ayarlayın. *ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *ssl_key* *anahtar* dosyasının değerine ayarlayın.
+Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS ve alan programlanabilir geçit dizisinde (FPGA) dağıtma
+### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS ve Field üzerinde dağıtma-programlanabilir kapı dizisi (FPGA)
 
   > [!NOTE]
-  > Bu bölümdeki bilgiler, tasarımcı için güvenli bir web hizmeti dağıttığınızda da geçerlidir. Python SDK'yı kullanmaya aşina değilseniz, [Python için Azure Machine Learning SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+  > Bu bölümdeki bilgiler, tasarımcı için güvenli bir Web hizmeti dağıttığınızda de geçerlidir. Python SDK 'yı kullanmayı bilmiyorsanız bkz. [Python için Azure MACHINE LEARNING SDK nedir?](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
-AKS'ye dağıtırken, yeni bir AKS kümesi oluşturabilir veya varolan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için [bkz.](how-to-deploy-azure-kubernetes-service.md)
+AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
   
--  Yeni bir küme oluşturursanız, **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** kullanın.
-- Varolan bir küme yi bağlarsanız, **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanın. Her ikisi de **enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürün.
+-  Yeni bir küme oluşturursanız, **[Akscompute. provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#provisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** kullanılır.
+- Var olan bir kümeyi eklerseniz, **[Akscompute. attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#attach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanırsınız. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
 
-**enable_ssl** yöntemi, Microsoft tarafından sağlanan bir sertifikayı veya satın aldığınız bir sertifikayı kullanabilir.
+**Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
 
-  * Microsoft'tan bir sertifika kullandığınızda, *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetiçin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso\<altı-rasgele karakterler> bir etki alanı adı oluşturur. \<azureregion>.cloudapp.azure.com", azureregion> hizmeti içeren bölgedir. \< İsteğe bağlı olarak, varolan *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
+  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso\<altı-rastgele-karakter> bir etki alanı adı oluşturur. \<azureregion>. cloudapp.Azure.com ", \<azureregion>, hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label*üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
 
-    TLS etkinleştirilmiş hizmeti dağıtmak (veya yeniden dağıtmak için, *ssl_enabled* parametresini uygun olduğu her yerde "True" olarak ayarlayın. *ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *ssl_key* *anahtar* dosyasının değerine ayarlayın.
+    Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
     > [!IMPORTANT]
-    > Microsoft'tan bir sertifika kullandığınızda, kendi sertifikanızı veya etki alanı adınızı satın almanız gerekmez.
+    > Microsoft 'tan bir sertifika kullandığınızda, kendi sertifikanızı veya etki alanı adınızı satın almanız gerekmez.
 
-    Aşağıdaki örnek, Microsoft'tan TLS/SSL sertifikası sağlayan bir yapılandırmanın nasıl oluşturulabildiğini gösterir:
+    Aşağıdaki örnek, Microsoft 'tan bir TLS/SSL sertifikası sağlayan bir yapılandırmanın nasıl oluşturulacağını gösterir:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -115,7 +115,7 @@ AKS'ye dağıtırken, yeni bir AKS kümesi oluşturabilir veya varolan bir küme
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * *Satın aldığınız bir sertifikayı*kullandığınızda, *ssl_cert_pem_file*, *ssl_key_pem_file*ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız TLS/SSL sertifikasını kullanan bir yapılandırma oluşturmak için *.pem* dosyalarının nasıl kullanılacağını gösterir:
+  * *Satın aldığınız bir sertifikayı*kullandığınızda *ssl_cert_pem_file*, *ssl_key_pem_file*ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -130,11 +130,11 @@ AKS'ye dağıtırken, yeni bir AKS kümesi oluşturabilir veya varolan bir küme
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-*enable_ssl*hakkında daha fazla bilgi için [AksProvisioningConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) ve [AksAttachConfiguration.enable_ssl()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-)konusuna bakın.
+*Enable_ssl*hakkında daha fazla bilgi için bkz. [aksprovisioningconfiguration. Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksprovisioningconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-) ve [aksattachconfiguration. Enable_ssl ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksattachconfiguration?view=azure-ml-py#enable-ssl-ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--leaf-domain-label-none--overwrite-existing-domain-false-).
 
-### <a name="deploy-on-azure-container-instances"></a>Azure Kapsayıcı Örneklerinde Dağıtma
+### <a name="deploy-on-azure-container-instances"></a>Azure Container Instances dağıtma
 
-Azure Kapsayıcı Örnekleri'ne dağıttığınızda, aşağıdaki kod parçacığının gösterdiği gibi TLS ile ilgili parametreler için değerler sağlarsınız:
+Azure Container Instances ' a dağıtırken, aşağıdaki kod parçacığı gösterdiği gibi TLS ile ilgili parametrelerin değerlerini sağlarsınız:
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -143,36 +143,36 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-Daha fazla bilgi için [Bkz. AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-).
+Daha fazla bilgi için bkz. [Aciwebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-).
 
-## <a name="update-your-dns"></a>DNS'nizi güncelleştirin
+## <a name="update-your-dns"></a>DNS 'nizi güncelleştirme
 
-Ardından, web hizmetini işaret etmek için DNS'nizi güncelleştirmeniz gerekir.
+Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
 
-+ **Konteyner Örnekleri için:**
++ **Container Instances için:**
 
-  Etki alanı adınız için DNS kaydını güncelleştirmek için alan adı kayıt şirketinizdeki araçları kullanın. Kayıt, hizmetin IP adresini işaret etmelidir.
+  Etki alanı adınız için DNS kaydını güncelleştirmek üzere etki alanı ad kaydedicinizden araçları kullanın. Kayıt, hizmetin IP adresini göstermelidir.
 
-  İstemcilerin, kayıt şirketine ve alan adı için yapılandırılan "yaşama süresine" (TTL) bağlı olarak alan adını çözmesi için dakikalar veya saatler gecikebilir.
+  İstemci, kayıt alanına ve etki alanı adı için yapılandırılmış "yaşam süresi" (TTL) değerine bağlı olarak, etki alanı adını çözebilmek için dakika veya saat gecikme süresi olabilir.
 
 + **AKS için:**
 
   > [!WARNING]
-  > Hizmeti Microsoft'tan bir sertifika kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirmeyin. Değer otomatik olarak ayarlanmalıdır.
+  > Hizmeti Microsoft 'un bir sertifikası kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
 
-  Aks kümesinin Genel IP Adresinin DNS'sini sol bölmedeki **Ayarlar** altında **Yapılandırma** sekmesinde güncelleştirin. (Aşağıdaki resme bakın.) Ortak IP Adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
+  Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
 
-  [![Azure Machine Learning: TLS ile web hizmetlerinin güvenliğini sağlamak](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: TLS ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
-## <a name="update-the-tlsssl-certificate"></a>TLS/SSL sertifikasını güncelleştirin
+## <a name="update-the-tlsssl-certificate"></a>TLS/SSL sertifikasını güncelleştirme
 
-TLS/SSL sertifikalarının süresi doluyor ve yenilenmesi gerekiyor. Genellikle bu her yıl olur. Azure Kubernetes Hizmeti'ne dağıtılan modeller için sertifikanızı güncelleştirmek ve yenilemek için aşağıdaki bölümlerdeki bilgileri kullanın:
+TLS/SSL sertifikalarının kullanım süreleri ve yenilenmesi gerekiyor. Genellikle bu her yıl gerçekleşir. Azure Kubernetes hizmetine dağıtılan modellerle ilgili sertifikanızı güncelleştirmek ve yenilemek için aşağıdaki bölümlerdeki bilgileri kullanın:
 
-### <a name="update-a-microsoft-generated-certificate"></a>Microsoft tarafından oluşturulan sertifikayı güncelleştirme
+### <a name="update-a-microsoft-generated-certificate"></a>Microsoft tarafından oluşturulan bir sertifikayı güncelleştirme
 
-Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanırken), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
+Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanılırken), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
 
-**SDK'yı kullan**
+**SDK 'Yı kullanma**
 
 ```python
 from azureml.core.compute import AksCompute
@@ -194,20 +194,20 @@ aks_target.update(update_config)
 az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
 ```
 
-Daha fazla bilgi için aşağıdaki başvuru dokümanlarına bakın:
+Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
 
 * [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
-### <a name="update-custom-certificate"></a>Özel sertifikayı güncelleştirme
+### <a name="update-custom-certificate"></a>Özel sertifikayı Güncelleştir
 
 Sertifika ilk olarak bir sertifika yetkilisi tarafından oluşturulduysa, aşağıdaki adımları kullanın:
 
-1. Sertifikayı yenilemek için sertifika yetkilisi tarafından sağlanan belgeleri kullanın. Bu işlem yeni sertifika dosyaları oluşturur.
+1. Sertifikayı yenilemek için sertifika yetkilisi tarafından verilen belgeleri kullanın. Bu işlem yeni sertifika dosyaları oluşturur.
 
-1. Hizmeti yeni sertifikayla güncelleştirmek için SDK veya CLI'yi kullanın:
+1. Hizmeti yeni sertifikayla güncelleştirmek için SDK veya CLı kullanın:
 
-    **SDK'yı kullan**
+    **SDK 'Yı kullanma**
 
     ```python
     from azureml.core.compute import AksCompute
@@ -234,14 +234,14 @@ Sertifika ilk olarak bir sertifika yetkilisi tarafından oluşturulduysa, aşağ
     az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-cname "myaks"--ssl-cert-file "cert.pem" --ssl-key-file "key.pem"
     ```
 
-Daha fazla bilgi için aşağıdaki başvuru dokümanlarına bakın:
+Daha fazla bilgi için aşağıdaki başvuru belgelerine bakın:
 
 * [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
-## <a name="disable-tls"></a>TLS'yi devre dışı
+## <a name="disable-tls"></a>TLS 'yi devre dışı bırak
 
-Azure Kubernetes Hizmetine dağıtılan bir model için TLS'yi devre dışı kılmış olmak için, bir `SslConfiguration` güncelleştirme `status="Disabled"`gerçekleştirin:
+Azure Kubernetes hizmetine dağıtılan bir model için TLS 'yi devre dışı bırakmak için, `SslConfiguration` bir `status="Disabled"`ile oluşturun ve sonra bir güncelleştirme gerçekleştirin:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -259,5 +259,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Şunları nasıl yapacağınızı öğrenin:
-+ [Web hizmeti olarak dağıtılan bir makine öğrenme modelini tüketin](how-to-consume-web-service.md)
-+ [Bir Azure sanal ağında denemeleri ve çıkarımları güvenli bir şekilde çalıştırın](how-to-enable-virtual-network.md)
++ [Bir Web hizmeti olarak dağıtılan makine öğrenimi modelini kullanma](how-to-consume-web-service.md)
++ [Bir Azure sanal ağı içinde denemeleri ve çıkarımı güvenle çalıştırın](how-to-enable-virtual-network.md)

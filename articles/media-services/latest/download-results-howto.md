@@ -1,6 +1,6 @@
 ---
-title: İşin sonuçlarını indirin - Azure Medya Hizmetleri
-description: Bu makalede, bir işin sonuçları nasıl indirilir gösterilebilir.
+title: Bir işin sonuçlarını indir-Azure Media Services
+description: Bu makalede bir işin sonuçlarının nasıl indirileceği gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80346312"
 ---
-# <a name="download-the-results-of-a-job"></a>Bir işin sonuçlarını indirin
+# <a name="download-the-results-of-a-job"></a>Bir işin sonuçlarını indir
 
-Azure Medya Hizmetleri'nde, videolarınızı işlerken (örneğin, kodlama veya analiz) [işinizin](transforms-jobs-concept.md)sonucunu depolamak için bir çıktı [varlığı](assets-concept.md) oluşturmanız gerekir. Daha sonra, Medya Hizmeti ve Depolama API'lerini kullanarak bu sonuçları yerel bir klasöre indirebilirsiniz. 
+Azure Media Services, videolarınızı işlerken (örneğin, kodlama veya çözümleme), [işinizin](transforms-jobs-concept.md)sonucunu depolamak için bir çıktı [varlığı](assets-concept.md) oluşturmanız gerekir. Daha sonra bu sonuçları medya hizmeti ve depolama API 'Leri kullanarak yerel bir klasöre indirebilirsiniz. 
 
-Bu makalede, Java ve .NET SDK'ları kullanarak sonuçların nasıl indirilen nasıl gösterildiği gösterilmiştir.
+Bu makalede, Java ve .NET SDK 'Ları kullanılarak sonuçların nasıl indirileceği gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
-Varlıkları yönetmeyi gözden [geçirin.](manage-asset-concept.md)
+[Varlıkları Yönet](manage-asset-concept.md)' i gözden geçirin.
 
 ## <a name="java"></a>Java
 
@@ -124,4 +124,4 @@ Tam kod örneğine bakın: [EncodingWithMESPredefinedPreset](https://github.com/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[HTTPS URL'sinden iş girişi oluşturun.](job-input-from-http-how-to.md)
+[BIR https URL 'sinden iş girişi oluşturun](job-input-from-http-how-to.md).

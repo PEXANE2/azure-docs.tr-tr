@@ -1,6 +1,6 @@
 ---
-title: Azure Özel Bitiş Noktası'nı kullanarak bir Web Uygulamasına özel bağlanma
-description: Azure Özel Bitiş Noktası'nı kullanarak bir Web Uygulamasına özel bağlanma
+title: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
+description: Azure özel uç noktasını kullanarak bir Web uygulamasına özel olarak bağlanma
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
@@ -9,169 +9,169 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80287824"
 ---
-# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure Özel Bitiş Noktası'nı kullanarak bir Web Uygulamasına özel bağlanma (Önizleme)
+# <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Azure özel uç noktası (Önizleme) kullanarak bir Web uygulamasına özel olarak bağlanma
 
-Azure Private Endpoint, Azure'daki Özel Bağlantı'nın temel yapı taşıdır. Web Uygulamanıza özel olarak bağlanmanızı sağlar.
-Bu Quickstart'ta, Özel Bitiş Noktası olan bir Web Uygulamasını nasıl dağıtacağınızı ve Sanal Makine'den bu Web Uygulamasına nasıl bağlanacağınızı öğreneceksiniz.
+Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Web uygulamanıza özel olarak bağlanmanızı sağlar.
+Bu hızlı başlangıçta, bir Web uygulamasını özel uç nokta ile dağıtmayı ve bir sanal makineden bu Web uygulamasına bağlanmayı öğreneceksiniz.
 
-Daha fazla bilgi için Azure [Web Uygulaması için Özel Bitiş Noktalarını Kullanma'ya][privatenedpointwebapp]bakın.
+Daha fazla bilgi için bkz. [Azure Web uygulaması Için özel uç noktaları kullanma][privatenedpointwebapp].
 
 > [!Note]
->Önizleme, tüm PremiumV2 Windows ve Linux Web Uygulamaları için Doğu ABD ve Batı ABD 2 bölgelerinde mevcuttur. 
+>Önizleme, tüm PremiumV2 Windows ve Linux Web Apps için Doğu ABD ve Batı ABD 2 bölgelerinde kullanılabilir. 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-## <a name="virtual-network-and-virtual-machine"></a>Sanal ağ ve Sanal Makine
+## <a name="virtual-network-and-virtual-machine"></a>Sanal ağ ve sanal makine
 
-Bu bölümde, Web Uygulamanıza Özel Bitiş Noktası üzerinden erişmek için kullanılan VM'yi barındırmak için sanal ağ ve alt ağ oluşturursunuz.
+Bu bölümde, Özel uç nokta aracılığıyla Web uygulamanıza erişmek için kullanılan VM 'yi barındırmak için sanal ağ ve alt ağ oluşturacaksınız.
 
-### <a name="create-the-virtual-network"></a>Sanal ağ oluşturma
+### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 
-Bu bölümde, sanal bir ağ ve alt ağ oluşturursunuz.
+Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst tarafında, > sanal**ağ** **ağı** >  **oluştur'u**veya arama kutusunda **Sanal ağ** aramasını seçin.
+1. Ekranın sol üst tarafında, **kaynak** > oluştur**ağ** > **sanal ağı** ' nı veya arama kutusunda **sanal ağ** ara ' yı seçin.
 
-1. **Sanal ağ oluştur'da**TemelLer sekmesine bu bilgileri girin veya seçin:
-
-   > [!div class="mx-imgBorder"]
-   > ![Sanal Ağ Oluşturma][1]
-
-1. **"Sonraki: IP Adresleri >"** seçeneğini tıklayın ve bu bilgileri girin veya seçin:
+1. **Sanal ağ oluştur**' da, temel bilgiler sekmesinde bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![IP Adreslerini Yapılandırma][2]
+   > ![Sanal ağ oluştur][1]
 
-1. Alt ağ bölümünde **"+ Alt Ağ Ekle"ye** tıklayın ve aşağıdaki bilgileri girin ve **"Ekle"ye** tıklayın
+1. **"İleri: IP adresleri >"** düğmesine tıklayın ve bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![Alt Ağ Ekle][3]
+   >![IP adreslerini yapılandırma][2]
 
-1. **"Gözden Geçir + oluştur" seçeneğini** tıklayın
+1. Alt ağ bölümünde **"+ alt ağ ekle"** ye tıklayın ve aşağıdaki bilgileri girip **"Ekle"** ye tıklayın
 
-1. Doğrulama geçtikten sonra **"Oluştur"** seçeneğini tıklayın
+   > [!div class="mx-imgBorder"]
+   >![Alt ağ ekle][3]
+
+1. **"Gözden geçir + oluştur"** seçeneğine tıklayın
+
+1. Doğrulama başarılı olduktan sonra **"Oluştur"** düğmesine tıklayın.
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portalında ekranın sol üst tarafında, > kaynak**Oluştur** > **Sanal makine** **oluştur'u**seçin
+1. Azure Portal ekranın sol üst kısmında **kaynak** > oluştur**işlem** > **sanal makinesi** ' ni seçin.
 
-1. Sanal makine Oluştur'da - Temel bilgiler, bu bilgileri girin veya seçin:
+1. Sanal makine oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![Sanal Makine temel][4]
+   >![Sanal makine temel][4]
 
-1. **"Sonraki: Diskler"i** seçin
+1. **"İleri: diskler"** i seçin
 
    Varsayılan ayarları koruyun.
 
-1. **"Next: Networking" seçeneğini belirleyin,** şu bilgileri seçin:
+1. **"İleri: ağ"** seçeneğini belirleyin, bu bilgileri seçin:
 
    > [!div class="mx-imgBorder"]
    >![Ağ ][5]
 
-1. **"Gözden Geçir + Oluştur" seçeneğini** tıklayın
+1. **"Gözden geçir + oluştur"** seçeneğine tıklayın
 
-1. Doğrulama iletiyi geçtiğinde **"Oluştur" seçeneğini** tıklayın
+1. Doğrulama geçtiğinde ileti **"Oluştur"** düğmesine tıklayın.
 
-## <a name="create-your-web-app-and-private-endpoint"></a>Web Uygulamanızı ve Özel Bitiş Noktasını Oluşturun
+## <a name="create-your-web-app-and-private-endpoint"></a>Web uygulamanızı ve özel uç noktayı oluşturma
 
-Bu bölümde, özel bir Bitiş Noktası kullanarak özel bir Web Uygulaması oluşturursunuz.
+Bu bölümde özel bir uç nokta kullanarak özel bir Web uygulaması oluşturacaksınız.
 
 > [!Note]
->Özel Bitiş Noktası özelliği yalnızca Premium V2 SKU için kullanılabilir.
+>Özel uç nokta özelliği yalnızca Premium v2 SKU 'SU için kullanılabilir.
 
 ### <a name="web-app"></a>Web App
 
-1. Azure portalında ekranın sol üst tarafında > kaynak**Web** > **Uygulaması** **Oluştur'u**seçin
+1. Azure Portal ekranın sol üst tarafında, **kaynak** > oluştur**Web** > **Web uygulaması** ' nı seçin.
 
-1. Web App Oluştur - Temel Bilgiler'de bu bilgileri girin veya seçin:
-
-   > [!div class="mx-imgBorder"]
-   >![Web App temel][6]
-
-1. **"Gözden Geçir + oluştur" seçeneğini belirleyin**
-
-1. Doğrulama iletiyi geçtiğinde **"Oluştur" seçeneğini** tıklayın
-
-### <a name="create-the-private-endpoint"></a>Özel bitiş noktasını oluşturma
-
-1. Web App özelliklerinde **Ayarlar** > **Ağı'nı** seçin ve **"Özel uç nokta bağlantılarınızı yapılandırın"a** tıklayın
+1. Web uygulaması oluşturma-temel bilgiler bölümünde, bu bilgileri girin veya seçin:
 
    > [!div class="mx-imgBorder"]
-   >![Web Uygulaması ağ][7]
+   >![Web uygulaması temel][6]
 
-1. Sihirbazda **"+ ekle"ye** tıklayın
+1. **"Gözden geçir + oluştur"** u seçin
+
+1. Doğrulama geçtiğinde ileti **"Oluştur"** düğmesine tıklayın.
+
+### <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
+
+1. Web uygulaması özelliklerinde **Ayarlar** > **ağ** ' ı seçin ve **"özel uç nokta bağlantılarınızı yapılandırın"** seçeneğine tıklayın.
 
    > [!div class="mx-imgBorder"]
-   >![Web App Özel Bitiş Noktası][8]
+   >![Web uygulaması ağı][7]
 
-1. Abonelik, VNet ve Subnet bilgilerini doldurun ve **"Tamam"ı** tıklayın
+1. Sihirbazda, **"+ Ekle"** ye tıklayın
 
    > [!div class="mx-imgBorder"]
-   >![Web App Ağ][9]
+   >![Web uygulaması özel uç noktası][8]
 
-1. Özel bitiş noktasının oluşturulmasını gözden geçirme
+1. Abonelik, VNet ve alt ağ bilgilerini doldurup **"Tamam"** a tıklayın
+
+   > [!div class="mx-imgBorder"]
+   >![Web uygulaması ağı][9]
+
+1. Özel uç noktanın oluşturulmasını gözden geçirin
 
    > [!div class="mx-imgBorder"]
    >![Özel][10]
-   >![bitiş noktasının son görünümünü gözden geçirme][11]
+   >![uç noktanın son görünümünü gözden geçirin][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>İnternet'ten bir sanal makineye bağlanma
 
-1. Portalın arama çubuğuna **myVm** girin
-1. Bağlan **düğmesini**seçin. Bağlan düğmesini seçtikten sonra, sanal makineye bağlan açılır, **RDP'yi** seçin
+1. Portalın arama çubuğunda **Myvm** yazın
+1. **Bağlan düğmesini**seçin. Bağlan düğmesini seçtikten sonra sanal makineye bağlan açılır, **RDP** 'yi seçin
 
    > [!div class="mx-imgBorder"]
    >![RDP düğmesi][12]
 
-1. Azure bir Uzak Masaüstü Protokolü (.rdp) dosyası oluşturur ve **RDP dosyasını İndir'i** tıklattıktan sonra bilgisayarınıza indirir
+1. Azure, Uzak Masaüstü Protokolü (. rdp) dosyası oluşturur ve **RDP dosyasını indir** ' e tıkladıktan sonra bilgisayarınıza indirir
 
    > [!div class="mx-imgBorder"]
-   >![RDP dosyasını indirin][13]
+   >![RDP dosyasını indir][13]
 
-1. İndirilen.rdp dosyasını açın.
+1. İndirilen. rdp dosyasını açın.
 
 - İstendiğinde Bağlan’ı seçin.
-- VM oluştururken belirttiğiniz kullanıcı adı ve parolayı girin.
+- VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
 > [!Note]
-> VM'yi oluşturduğunuzda girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap > daha fazla seçenek seçmeniz gerekebilir.
+> VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için farklı bir hesap kullanmak > daha fazla seçenek belirlemeniz gerekebilir.
 
 - Tamam'ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Sertifika uyarısı alırsanız Evet veya Devam et'i seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız Evet ' i veya devam et ' i seçin.
 
-1. VM masaüstü göründükten sonra, yerel masaüstünüze geri dönmek için en aza indirin.
+1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 
-## <a name="access-web-app-privately-from-the-vm"></a>Web App'e VM'den özel olarak erişin
+## <a name="access-web-app-privately-from-the-vm"></a>Web uygulamasına özel olarak VM 'den erişin
 
-Bu bölümde, Özel Bitiş Noktası'nı kullanarak Web Uygulamasına özel olarak bağlanabilirsiniz.
+Bu bölümde özel uç nokta kullanarak Web uygulamasına özel olarak bağlanırsınız.
 
-1. Arama çubuğundaki **Özel Bağlantı**türünde Private Endpoint'inizin özel IP'sini alın ve Özel Bağlantı'yı seçin
+1. Özel uç noktanızın özel IP 'sini, arama çubuğu türü **özel bağlantısı**' na ve özel bağlantı ' yı seçin.
 
    > [!div class="mx-imgBorder"]
    >![Özel Bağlantı][14]
 
-1. Özel Bağlantı Merkezi'nde, tüm Özel Uç Noktalarınızı listelemek için **Özel Uç Noktaları'nı** seçin
+1. Özel bağlantı merkezinde özel **uç noktalar** ' ı seçerek tüm özel uç noktalarınızı listeleyin
 
    > [!div class="mx-imgBorder"]
-   >![Özel Bağlantı merkezi][15]
+   >![Özel bağlantı merkezi][15]
 
-1. Web Uygulamanızın ve alt ağınızın Özel Bitiş Noktası bağlantısını seçin
+1. Web uygulamanız ve alt ağınız için özel uç nokta bağlantısını seçin
 
    > [!div class="mx-imgBorder"]
-   >![Özel bitiş noktası özellikleri][16]
+   >![Özel uç nokta özellikleri][16]
 
-1. Bizim durumumuzda 10.10.2.4 webappdemope.azurewebsites.net Özel Bitiş Noktanızın Özel IP'sini ve Web Uygulamanızın FQDN'sini kopyalayın
+1. Özel uç noktanızın özel IP 'sini ve Web uygulamanızın FQDN 'sini webappdemope.azurewebsites.net 10.10.2.4 ' de kopyalayın
 
-1. myVM'de, Web Uygulamasına genel IP üzerinden erişilmediğini doğrulayın. Bir tarayıcı açın ve Web App adını yapıştırın, 403 yasak hata sayfası olmalıdır
+1. MyVM 'de, Web uygulamasına genel IP aracılığıyla erişilebildiğini doğrulayın. Bir tarayıcı açın ve Web uygulaması adını yapıştırın, 403 yasaklanmış bir hata sayfasına sahip olmanız gerekir
 
    > [!div class="mx-imgBorder"]
    >![Yasak][17]
@@ -179,36 +179,36 @@ Bu bölümde, Özel Bitiş Noktası'nı kullanarak Web Uygulamasına özel olara
 > [!Important]
 > Bu özellik önizlemede olduğundan, DNS girişini el ile yönetmeniz gerekir.
 
-1. Ana bilgisayar girişini oluşturun, dosya gezginini açın ve ana bilgisayar dosyasını bulun
+1. Konak girişini oluşturun, dosya Gezgini 'ni açın ve Hosts dosyasını bulun
 
    > [!div class="mx-imgBorder"]
-   >![Ana bilgisayarları dosyası][18]
+   >![Hosts dosyası][18]
 
-1. Ev sahipleri dosyasını not defteriyle düzenleyerek özel IP adresi ve Web Uygulamanızın genel adını içeren bir giriş ekleme
+1. Hosts dosyasını Notepad ile düzenleyerek Web uygulamanızın özel IP adresine ve genel adına sahip bir giriş ekleyin
 
    > [!div class="mx-imgBorder"]
-   >![İçerik barındıran][19]
+   >![İçerik barındırır][19]
 
 1. Dosyayı kaydetme
 
-1. Bir tarayıcı açın ve web uygulamanızın url'sini yazın
+1. Bir tarayıcı açın ve Web uygulamanızın URL 'sini yazın
 
    > [!div class="mx-imgBorder"]
    >![PE ile Web sitesi][20]
 
-1. Web Uygulamanıza Özel Bitiş Noktası üzerinden erişiyorsunuz
+1. Web uygulamanıza özel uç nokta aracılığıyla erişiyorsunuz
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Özel Bitiş Noktası, Web Uygulaması ve VM'yi kullanmayı bitirdiğinizde, kaynak grubunu ve içerdiği tüm kaynakları silin:
+Özel uç nokta, Web uygulaması ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
-1. Portalın üst kısmındaki Arama kutusuna ready-rg girin ve arama sonuçlarından ready-rg'yi seçin.
+1. Portalın üst kısmındaki arama kutusuna Ready-RG yazın ve arama sonuçlarından Ready-RG seçeneğini belirleyin.
 1. Kaynak grubunu sil'i seçin.
-1. KAYNAK GRUBU ADINI Tİp İBİn'e hazır rg girin ve Sil'i seçin.
+1. KAYNAK grubu adını yazmak için Ready-RG girin ve Sil ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu Quickstart'ta, sanal ağda bir VM, bir Web Uygulaması ve Özel Bitiş Noktası oluşturdunuz. Internet'ten bir VM'ye bağlandınız ve Özel Bağlantı'yı kullanarak Web Uygulamasına güvenli bir şekilde iletişim kurdunuz. Özel Bitiş Noktası hakkında daha fazla bilgi edinmek için [Azure Özel Bitiş Noktası nedir'e][privateendpoint]bakın.
+Bu hızlı başlangıçta, bir sanal ağ, bir Web uygulaması ve özel bir uç nokta üzerinde bir VM oluşturdunuz. Internet 'ten bir VM 'ye bağlanırsınız ve özel bağlantı kullanarak Web uygulamasına güvenli bir şekilde iletilecaksınız. Özel uç nokta hakkında daha fazla bilgi için bkz. [Azure özel uç noktası nedir?][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png

@@ -1,27 +1,27 @@
 ---
-title: Mevcut bir Azure Yük Bakiyesi ile sanal makine ölçeği ayarlarını yapılandırın - Azure PowerShell
-description: Varolan bir Azure Yük Dengeleyicisi ile sanal makine ölçeği kümesini nasıl yapılandıracağımız öğrenin.
+title: Sanal makine ölçek kümesini mevcut bir Azure Load Balancer Yapılandırma Azure PowerShell
+description: Bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğrenin.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/26/2020
 ms.openlocfilehash: 0db09083a2197ce72e6d6eed2381b0308239586e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349986"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Azure PowerShell'i kullanarak mevcut bir Azure Yük Bakiyeleyicisiyle sanal makine ölçeği kümesini yapılandırın
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Azure PowerShell kullanarak var olan bir Azure Load Balancer sanal makine ölçek kümesi yapılandırma
 
-Bu makalede, varolan bir Azure Yük Dengeleyicisi ile ayarlanmış sanal makine ölçeğini nasıl yapılandıracağınız öğrenilir. 
+Bu makalede, bir sanal makine ölçek kümesini mevcut bir Azure Load Balancer nasıl yapılandıracağınızı öğreneceksiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği.
-- Sanal makine ölçeği kümesinin dağıtılanacağı abonelikteki mevcut standart sku yük dengeleyicisi.
-- Sanal makine ölçeği kümesi için bir Azure Sanal Ağı.
+- Abonelikte sanal makine ölçek kümesinin dağıtılacağı mevcut bir standart SKU yük dengeleyici.
+- Sanal makine ölçek kümesi için bir Azure sanal ağı.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -29,15 +29,15 @@ Bu makalede, varolan bir Azure Yük Dengeleyicisi ile ayarlanmış sanal makine 
 
 ## <a name="sign-in-to-azure-cli"></a>Azure CLI'da oturum açma
 
-Azure'da oturum açın.
+Azure 'da oturum açın.
 
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Mevcut yük dengeleyicisi ile ayarlanmış sanal makine ölçeğini dağıtma
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>Mevcut yük dengeleyiciye sahip bir sanal makine ölçek kümesi dağıtma
 
-Parantez içinde değerleri yapılandırmanızdaki kaynakların adlarıyla değiştirin.
+Köşeli ayraçlar içindeki değerleri, yapılandırmanızda bulunan kaynakların adlarıyla değiştirin.
 
 ```azurepowershell-interactive
 
@@ -55,14 +55,14 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 
 ```
 
-Aşağıdaki örnekte, aşağıdakilerle ayarlanmış sanal bir makine ölçeği dağıtılır:
+Aşağıdaki örnek, ile bir sanal makine ölçek kümesi dağıtır:
 
-- **MyVMSS** adlı sanal makine ölçeği kümesi
-- Azure Yük **DengeleyicimyLoadBalancer** adlı
-- **MyBackendPool** adlı yük dengeleyici arka uç havuzu
-- Azure Sanal Ağı **myVnet** adlı
-- Subnet **mySubnet** adlı
-- **myResourceGroup** adlı kaynak grubu
+- **Myvmss** adlı sanal makine ölçek kümesi
+- **Myloadbalancer** adlı Azure Load Balancer
+- **Mybackendpool** adlı yük dengeleyici arka uç havuzu
+- **Myvnet** adlı Azure sanal ağı
+- **Mysubnet** adlı alt ağ
+- **Myresourcegroup** adlı kaynak grubu
 
 ```azureppowershell-interactive
 
@@ -79,11 +79,11 @@ $lb = Get-AzLoadBalancer -ResourceGroupName $rsg -Name $lbn
 New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualNetworkName $vnt -SubnetName $sub -LoadBalancerName $lb -UpgradePolicyMode $pol
 ```
 > [!NOTE]
-> Ölçek kümesi oluşturulduktan sonra, arka uç bağlantı noktası yük dengeleyicisinin sistem durumu sondası tarafından kullanılan bir yük dengeleme kuralı için değiştirilemez. Bağlantı noktasını değiştirmek için, Azure sanal makine ölçeği kümesini güncelleştirerek sistem durumu sondasını kaldırabilir, bağlantı noktasını güncelleyebilir ve sistem durumu sondasını yeniden yapılandırabilirsiniz.
+> Ölçek kümesi oluşturulduktan sonra, yük dengeleyicinin bir sistem durumu araştırması tarafından kullanılan bir yük dengeleme kuralı için arka uç bağlantı noktası değiştirilemez. Bağlantı noktasını değiştirmek için Azure sanal makine ölçek kümesini güncelleştirerek sistem durumu araştırmasını kaldırabilir, bağlantı noktasını güncelleştirebilir ve ardından sistem durumu araştırmasını yeniden yapılandırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, varolan bir Azure Yük Dengeleyicisi ile ayarlanmış sanal bir makine ölçeği dağıttınız.  Sanal makine ölçek kümeleri ve yük dengeleyicisi hakkında daha fazla bilgi edinmek için bkz:
+Bu makalede, mevcut bir Azure Load Balancer bir sanal makine ölçek kümesi dağıttınız.  Sanal Makine Ölçek Kümeleri ve yük dengeleyici hakkında daha fazla bilgi edinmek için bkz.:
 
 - [Azure Load Balancer nedir?](load-balancer-overview.md)
 - [Sanal makine ölçek kümeleri nedir?](../virtual-machine-scale-sets/overview.md)

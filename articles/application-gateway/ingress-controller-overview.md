@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi Giriş Denetleyicisi nedir?
-description: Bu makalede, Uygulama Ağ Geçidi Giriş Denetleyicisi ne bir giriş sağlar.
+title: Azure Application Gateway giriş denetleyicisi nedir?
+description: Bu makalede Application Gateway giriş denetleyicisinin ne olduğuna ilişkin bir giriş sunulmaktadır.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,38 +8,38 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: d6a63b6276c07b1fe6487b97f5c7fc255b6d3411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335809"
 ---
-# <a name="what-is-application-gateway-ingress-controller"></a>Uygulama Ağ Geçidi Giriş Denetleyicisi Nedir?
-Uygulama Ağ Geçidi Giriş Denetleyicisi (AGIC), [Azure Kubernetes Hizmeti (AKS)](https://azure.microsoft.com/services/kubernetes-service/) müşterilerinin bulut yazılımını Internet'e çıkarmak için Azure'un yerel [Uygulama Ağ Geçidi](https://azure.microsoft.com/services/application-gateway/) L7 yük bakiyesini kullanmasını mümkün kılan bir Kubernetes uygulamasıdır. AGIC, barındırdığı Kubernetes kümesini izler ve seçili hizmetlerin Internet'e açık olması için bir Uygulama Ağ Geçidi'ni sürekli güncelleştirir.
+# <a name="what-is-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisi nedir?
+Application Gateway giriş denetleyicisi (AGIC), [Azure Kubernetes hizmeti (AKS](https://azure.microsoft.com/services/kubernetes-service/) ) müşterilerinin, bulut yazılımlarını Internet 'e sunmak için Azure 'un yerel [Application Gateway](https://azure.microsoft.com/services/application-gateway/) L7 yük dengeleyicisinden yararlanmasını sağlayan bir Kubernetes uygulamasıdır. AGIC, üzerinde barındırdığı Kubernetes kümesini izler ve bir Application Gateway sürekli olarak güncelleştirir, böylece seçili hizmetler Internet 'e sunulur.
 
-Giriş Denetleyicisi müşterinin AKS üzerinde kendi bölmesinde çalışır. AGIC, değişiklikler için Kubernetes Kaynakları'nın bir alt kümesini izler. AKS kümesinin durumu Uygulama Ağ Geçidi'ne özgü yapılandırmaya çevrilir ve [Azure Kaynak Yöneticisi'ne (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)uygulanır.
+Giriş denetleyicisi, müşterinin AKS 'i üzerinde kendi Pod 'iyle çalışır. AGIC, değişiklikler için Kubernetes kaynaklarının bir alt kümesini izler. AKS kümesinin durumu belirli bir yapılandırmaya Application Gateway çevrilir ve [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)uygulanır.
 
-## <a name="benefits-of-application-gateway-ingress-controller"></a>Uygulama Ağ Geçidi Denetleyicisinin Faydaları
-AGIC, dağıtımınızın tek bir Uygulama Ağ Geçidi Giriş Denetleyicisi ile birden fazla AKS kümesini denetlemesine olanak tanır. AGIC ayrıca AKS kümesinin önünde başka bir yük dengeleyicisi/genel IP'ye sahip olması gereksinimini ortadan kaldırmaya yardımcı olur ve istekler AKS kümesine ulaşmadan önce veri yolunızda birden fazla atlamayı önler. Uygulama Ağ Geçidi, özel IP'lerini doğrudan kullanarak bölmelere konuşur ve NodePort veya KubeProxy hizmetlerini gerektirmez. Bu, dağıtımlarınıza daha iyi performans da getirir.
+## <a name="benefits-of-application-gateway-ingress-controller"></a>Application Gateway giriş denetleyicisinin avantajları
+AGIC, dağıtımınızın tek bir Application Gateway giriş denetleyicisiyle birden çok AKS kümesini denetlemesine olanak tanır. AGIC Ayrıca AKS kümesinin önünde başka bir yük dengeleyici/genel IP 'si olması gereğini ortadan kaldırmaya yardımcı olur ve isteklerin AKS kümesine ulaşması için veri yolunuzda birden çok sıçramayı önler. Application Gateway, özel IP 'leri doğrudan kullanarak ve NodePort ya da KubeProxy Hizmetleri gerektirmeyen bir düğüm ile iletişim yapmaz. Bu, dağıtımlarınız için daha iyi performans da getirir.
 
-Giriş Denetleyicisi yalnızca Standard_v2 ve WAF_v2 SUS'lar tarafından desteklenir ve bu da size otomatik ölçekleme avantajları da sağlar. Uygulama Ağ Geçidi, AKS kümenizden herhangi bir kaynak tüketmeden trafik yükündeki artışa veya azalmaya tepki olarak tepki verebilir ve buna göre ölçeklenebilir.
+Giriş denetleyicisi yalnızca Standard_v2 ve WAF_v2 SKU 'Ları tarafından desteklenir ve bu da otomatik ölçeklendirme avantajları sağlar. Application Gateway, AKS kümenizdeki kaynakları tüketmeksizin trafik yüküyle ilgili bir artış veya azalmaya yanıt verebilir.
 
-AGIC'e ek olarak Uygulama Ağ Geçidi'ni kullanmak, TLS ilkesi ve Web Uygulaması Güvenlik Duvarı (WAF) işlevselliği sağlayarak AKS kümenizi korumaya da yardımcı olur.
+AGIC 'e ek olarak Application Gateway kullanmak, TLS ilkesi ve Web uygulaması güvenlik duvarı (WAF) işlevselliği sağlayarak AKS kümenizi korumanıza de yardımcı olur.
 
-![Azure Uygulama Ağ Geçidi + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
+![Azure Application Gateway + AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC, Hizmet ve Dağıtımlar/Pod'larla birlikte Kubernetes [Ingress kaynağı](https://kubernetes.io/docs/user-guide/ingress/)üzerinden yapılandırılır. Azure'un yerel Application Gateway L7 yük dengeleyicisini yararlanarak bir dizi özellik sağlar. Birkaç isim:
+AGIC, hizmet ve dağıtımlar/pods ile birlikte Kubernetes giriş [kaynağı](https://kubernetes.io/docs/user-guide/ingress/)aracılığıyla yapılandırılır. Azure 'un yerel Application Gateway L7 yük dengeleyicisinden yararlanarak birçok özellik sağlar. Birkaç ad vermek için:
   - URL yönlendirme
   - Tanımlama bilgisi tabanlı benzeşim
   - TLS sonlandırma
-  - Uçuca TLS
-  - Genel, özel ve hibrit web siteleri için destek
-  - Entegre web uygulaması güvenlik duvarı
+  - Uçtan uca TLS
+  - Ortak, özel ve karma Web siteleri için destek
+  - Tümleşik Web uygulaması güvenlik duvarı
 
-AGIC birden çok ad alanı işleyebilir ve Agic diğer mevcut arka uçları etkilemeden AKS kümeleri için özel Olarak Uygulama Ağ Geçidi yapılandırabilirsiniz anlamına gelir Yasak Hedefler vardır. 
+AGIC, birden çok ad alanını işleyebilir ve ProhibitedTargets sahiptir; bu da AGIC, diğer mevcut arka uçları etkilemeden AKS kümelerinde özel olarak Application Gateway yapılandırabilir. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [**Greenfield Deployment**](ingress-controller-install-new.md): Boş alan altyapısına AGIC, AKS ve Application Gateway yükleme yönergeleri.
-- [**Brownfield Dağıtım**](ingress-controller-install-existing.md): AGIC'i varolan bir AKS ve Uygulama Ağ Geçidine yükleyin.
+- [**Doğa alanı dağıtımı**](ingress-controller-install-new.md): boş-kurşun altyapısına AGIC, aks ve Application Gateway yükleme yönergeleri.
+- [**Brownfield dağıtımı**](ingress-controller-install-existing.md): mevcut aks ve Application Gateway için agic 'yi yükler.
 

@@ -1,6 +1,6 @@
 ---
-title: StorSimple 8000 serisi sistem gereksinimleri | Microsoft Dokümanlar
-description: Microsoft Azure StorSimple çözümü için yazılım, ağ oluşturma ve yüksek kullanılabilirlik gereksinimlerini ve en iyi uygulamaları açıklar.
+title: StorSimple 8000 serisi Sistem gereksinimleri | Microsoft Docs
+description: Microsoft Azure StorSimple çözümü için yazılım, ağ ve yüksek kullanılabilirlik gereksinimlerini ve en iyi uygulamaları açıklar.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297717"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 serisi yazılım, yüksek kullanılabilirlik ve ağ gereksinimleri
@@ -27,109 +27,109 @@ ms.locfileid: "80297717"
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-Microsoft Azure StorSimple'a hoş geldiniz. Bu makalede, StorSimple aygıtınız ve aygıta erişen depolama istemcileri için önemli sistem gereksinimleri ve en iyi uygulamalar açıklanmaktadır. StorSimple sisteminizi dağıtmadan önce bilgileri dikkatle gözden geçirmenizi ve dağıtım ve sonraki işlem sırasında gerekli olduğu şekilde geri başvurmanızı öneririz.
+Microsoft Azure StorSimple hoş geldiniz. Bu makalede, StorSimple cihazınız ve cihaza erişen depolama istemcileri için önemli sistem gereksinimleri ve en iyi uygulamalar açıklanmaktadır. StorSimple sisteminizi dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
 
-Sistem gereksinimleri şunlardır:
+Sistem gereksinimleri şunları içerir:
 
-* **Depolama istemcileri için yazılım gereksinimleri** - desteklenen işletim sistemlerini ve bu işletim sistemleri için ek gereksinimleri açıklar.
-* **StorSimple aygıtıiçin ağ gereksinimleri** - iSCSI, bulut veya yönetim trafiğine izin vermek için güvenlik duvarınızda açık olması gereken bağlantı noktaları hakkında bilgi sağlar.
-* **StorSimple için yüksek kullanılabilirlik gereksinimleri** - StorSimple aygıtınız ve ana bilgisayarınız için yüksek kullanılabilirlik gereksinimlerini ve en iyi uygulamaları açıklar.
+* **Depolama istemcileri Için yazılım gereksinimleri** -bu işletim sistemleri için desteklenen işletim sistemlerini ve ek gereksinimleri açıklar.
+* **StorSimple cihazı Için ağ gereksinimleri** -iSCSI, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızdaki açık olması gereken bağlantı noktaları hakkında bilgi sağlar.
+* **StorSimple Için yüksek kullanılabilirlik gereksinimleri** -StorSimple cihazınız ve ana bilgisayarınız için yüksek kullanılabilirlik gereksinimlerini ve en iyi uygulamaları açıklar.
 
 ## <a name="software-requirements-for-storage-clients"></a>Depolama istemcileri için yazılım gereksinimleri
 
-Aşağıdaki yazılım gereksinimleri, StorSimple cihazınıza erişen depolama istemcileri içindir.
+Aşağıdaki yazılım gereksinimleri, StorSimple cihazınıza erişen depolama istemcilerine yöneliktir.
 
 | Desteklenen işletim sistemleri | Sürüm gerekli | Ek gereksinimler/notlar |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple iSCSI birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit hacim</li><li>Dinamik diskte basit ve yansıtılmış ses düzeyi</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım iSCSI başlatıcıları desteklenir. Donanım iSCSI başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ince sağlama ve ODX özellikleri, StorSimple iSCSI birimi kullanıyorsanız desteklenir.<br><br>StorSimple ince ve tam olarak sağlanan hacimler oluşturabilirsiniz. Kısmen sağlanan hacimler oluşturamaz.<br><br>İnce bir şekilde sağlanan bir hacmin yeniden biçimlendirmesi uzun zaman alabilir. Sesi silmenizi ve yeniden biçimlendirmek yerine yeni bir ses oluşturmanızı öneririz. Ancak, yine de bir birimde yeniden biçim vermeyi tercih ediyorsanız:<ul><li>Run the following command before the reformat to avoid space reclamation delays: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Biçimlendirme tamamlandıktan sonra, alan ıslahı yeniden etkinleştirmek için aşağıdaki komutu kullanın:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>[KB 2878635'te](https://support.microsoft.com/kb/2870270) açıklandığı gibi Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Adapter'ı yapılandırıyorsanız, [isteğe bağlı bileşenler için Yazılım gereksinimlerine](#software-requirements-for-optional-components)gidin. |
-| VMware ESX |5.5 ve 6.0 |iSCSI istemcisi olarak VMware vSphere ile desteklenir. VAAI-blok özelliği StorSimple cihazlarda VMware vSphere ile desteklenir. |
-| Linux RHEL/CentOS |5, 6 ve 7 |Open-iSCSI başlatıcı sürümleri 5, 6 ve 7 ile Linux iSCSI istemcileri için destek. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |StorSimple Iscsı birimleri yalnızca aşağıdaki Windows disk türlerinde kullanılmak üzere desteklenir:<ul><li>Temel diskte basit birim</li><li>Dinamik diskte basit ve yansıtılmış birim</li></ul>Yalnızca işletim sisteminde yerel olarak bulunan yazılım Iscsı başlatıcıları desteklenir. Donanım Iscsı başlatıcıları desteklenmez.<br></br>Windows Server 2012 ve 2016 ölçülü kaynak sağlama ve ODX özellikleri, StorSimple Iscsı birimi kullanıyorsanız desteklenir.<br><br>StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz.<br><br>Ölçülü kaynak sağlanmış bir birimi yeniden biçimlendirme uzun zaman alabilir. Birimi silmenizi ve sonra yeniden biçimlendirme yerine yeni bir tane oluşturmayı öneririz. Ancak, yine de bir birimi yeniden biçimlendirmeyi tercih ediyorsanız:<ul><li>Boşluk geri kazanma gecikmelerini önlemek için yeniden biçimlendirmeye başlamadan önce aşağıdaki komutu çalıştırın: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>Biçimlendirme işlemi tamamlandıktan sonra, geri kazanma alanını yeniden etkinleştirmek için aşağıdaki komutu kullanın:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Windows Server 2012 düzeltmesini Windows Server bilgisayarınıza [bb 2878635](https://support.microsoft.com/kb/2870270) ' de açıklandığı gibi uygulayın.</li></ul></li></ul></ul> SharePoint için StorSimple Snapshot Manager veya StorSimple Bağdaştırıcısı yapılandırıyorsanız, [isteğe bağlı bileşenler Için yazılım gereksinimleri](#software-requirements-for-optional-components)' ne gidin. |
+| VMware ESX |5,5 ve 6,0 |Iscsı istemcisi olarak VMware vSphere desteklenir. VAAı-Block özelliği, StorSimple cihazlarında VMware vSphere desteklenir. |
+| Linux RHEL/CentOS |5, 6 ve 7 |Open-Iscsı Başlatıcısı sürüm 5, 6 ve 7 olan Linux Iscsı istemcileri için destek. |
 | Linux |SUSE Linux 11 | |
 
 > [!NOTE]
-> IBM AIX şu anda StorSimple ile desteklenmez.
+> IBM AıX Şu anda StorSimple ile desteklenmiyor.
 
 
 ## <a name="software-requirements-for-optional-components"></a>İsteğe bağlı bileşenler için yazılım gereksinimleri
 
-Aşağıdaki yazılım gereksinimleri isteğe bağlı StorSimple bileşenleri (StorSimple Snapshot Manager ve SharePoint için StorSimple Adaptörü) içindir.
+Aşağıdaki yazılım gereksinimleri isteğe bağlı StorSimple bileşenleri için (StorSimple Snapshot Manager ve SharePoint için StorSimple Bağdaştırıcısı) yöneliktir.
 
-| Bileşen | Ana bilgisayar platformu | Ek gereksinimler/notlar |
+| Bileşen | Konak platformu | Ek gereksinimler/notlar |
 | --- | --- | --- |
-| StorSimple Snapshot Manager |Windows Server 2008 R2 SP1, 2012, 2012 R2 |Windows Server'da StorSimple Snapshot Manager'ın kullanılması, aynalı dinamik disklerin yedeklenme/geri yüklenme leri ve uygulama tutarlı yedeklemeler için gereklidir.<br> StorSimple Snapshot Manager yalnızca Windows Server 2008 R2 SP1 (64 bit), Windows Server 2012 R2 ve Windows Server 2012'de desteklenir.<ul><li>Window Server 2012 kullanıyorsanız, StorSimple Snapshot Manager'ı yüklemeden önce .NET 3.5-4.5 yüklemeniz gerekir.</li><li>Windows Server 2008 R2 SP1 kullanıyorsanız, StorSimple Snapshot Manager'ı yüklemeden önce Windows Management Framework 3.0'ı yüklemeniz gerekir.</li></ul> |
-| SharePoint için StorSimple Bağdaştırıcısı |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>SharePoint için StorSimple Adaptörü yalnızca SharePoint 2010 ve SharePoint 2013'te desteklenir.</li><li>RBS SQL Server Enterprise Edition, sürüm 2008 R2 veya 2012 gerektirir.</li></ul> |
+| StorSimple Snapshot Manager |Windows Server 2008 R2 SP1, 2012, 2012 R2 |Windows Server üzerinde StorSimple Snapshot Manager kullanımı, yansıtılmış dinamik disklerin yedeklenmesi/geri yüklenmesi ve uygulamayla tutarlı yedeklemeler için gereklidir.<br> StorSimple Snapshot Manager yalnızca Windows Server 2008 R2 SP1 (64-bit), Windows Server 2012 R2 ve Windows Server 2012 üzerinde desteklenir.<ul><li>Windows Server 2012 kullanıyorsanız, StorSimple Snapshot Manager yüklemeden önce .NET 3.5 – 4.5 ' i yüklemelisiniz.</li><li>Windows Server 2008 R2 SP1 kullanıyorsanız, StorSimple Snapshot Manager yüklemeden önce Windows Management Framework 3,0 ' ü yüklemelisiniz.</li></ul> |
+| SharePoint için StorSimple Bağdaştırıcısı |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>SharePoint için StorSimple Bağdaştırıcısı yalnızca SharePoint 2010 ve SharePoint 2013 ' de desteklenir.</li><li>KÇY SQL Server Enterprise sürümü, sürüm 2008 R2 veya 2012 gerektirir.</li></ul> |
 
 ## <a name="networking-requirements-for-your-storsimple-device"></a>StorSimple cihazınız için ağ gereksinimleri
 
-StorSimple aygıtınız kilitli bir aygıttır. Ancak, iSCSI, bulut ve yönetim trafiğine izin vermek için güvenlik duvarınızda bağlantı noktalarının açılması gerekir. Aşağıdaki tabloda güvenlik duvarınızda açılması gereken bağlantı noktaları listelenir. Bu tabloda, *gelen* *istemci* isteklerinin cihazınıza eriştikleri yönü ifade eder. *Giden* veya *giden,* StorSimple cihazınızın verileri dağıtımın ötesinde harici olarak gönderdiği yönü ifade eder: örneğin, Internet'e giden.
+StorSimple cihazınız kilitli bir cihazdır. Ancak, Iscsı, bulut ve Yönetim trafiğine izin vermek için güvenlik duvarınızdaki bağlantı noktalarının açılması gerekir. Aşağıdaki tabloda güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *, gelen istemci* tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
 
-| Bağlantı Noktası No:<sup>1,2</sup> | Veya dışarıda | Bağlantı noktası kapsamı | Gerekli | Notlar |
+| Bağlantı noktası No.<sup>1, 2</sup> | Dışarı veya dışarı | Bağlantı noktası kapsamı | Gerekli | Notlar |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |Hayır |<ul><li>Giden bağlantı noktası güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden web proxy kullanıcı yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için bu bağlantı noktasının denetleyici sabit IP'ler için de açık olması gerekir.</li></ul> |
-| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Evet |<ul><li>Giden bağlantı noktası buluttaki verilere erişmek için kullanılır.</li><li>Giden web proxy kullanıcı yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için bu bağlantı noktasının denetleyici sabit IP'ler için de açık olması gerekir.</li><li>Bu bağlantı noktası, çöp toplama için her iki denetleyicide de kullanılır.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |Out |WAN |Hayır |<ul><li>Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li></ul> |
+| TCP 443 (HTTPS)<sup>3</sup> |Out |WAN |Yes |<ul><li>Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır.</li><li>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir.</li><li>Sistem güncelleştirmelerine izin vermek için, bu bağlantı noktasının denetleyici sabit IP 'Leri için de açık olması gerekir.</li><li>Bu bağlantı noktası, her iki çöp toplama denetleyicisinde de kullanılır.</li></ul> |
 | UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. |
 | UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir. |
-| TCP 9354 |Out |WAN |Evet |Giden bağlantı noktası StorSimple Aygıt Yöneticisi hizmeti ile iletişim kurmak için StorSimple aygıtı tarafından kullanılır. |
-| 3260 (iSCSI) |İçindeki |LAN |Hayır |Bu bağlantı noktası iSCSI üzerinden verilere erişmek için kullanılır. |
-| 5985 |İçindeki |LAN |Hayır |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell'e uzaktan bağlandığınızda da kullanılır. |
-| 5986 |İçindeki |LAN |Hayır |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell'e uzaktan bağlandığınızda kullanılır. |
+| TCP 9354 |Out |WAN |Yes |Giden bağlantı noktası StorSimple cihaz tarafından StorSimple Aygıt Yöneticisi hizmetiyle iletişim kurmak için kullanılır. |
+| 3260 (Iscsı) |İçindeki |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
+| 5985 |İçindeki |LAN |Hayır |Gelen bağlantı noktası, StorSimple aygıtıyla iletişim kurmak için StorSimple Snapshot Manager tarafından kullanılır.<br>Bu bağlantı noktası, HTTP üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda da kullanılır. |
+| 5986 |İçindeki |LAN |Hayır |Bu bağlantı noktası, HTTPS üzerinden StorSimple için Windows PowerShell uzaktan bağlandığınızda kullanılır. |
 
-<sup>1</sup> Gelen bağlantı noktalarının genel Internet'te açılması gerekmez.
+<sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.
 
-<sup>2</sup> Birden çok bağlantı noktası bir ağ geçidi yapılandırması taşıyorsa, giden yönlendirilmiş trafik sırası, [Aşağıdaki Bağlantı Noktası yönlendirmesinde](#routing-metric)açıklanan bağlantı noktası yönlendirme sırasına göre belirlenir.
+<sup>2</sup> birden çok bağlantı noktası ağ geçidi yapılandırması içeriyorsa, giden yönlendirilen trafik sırası aşağıdaki [bağlantı noktası yönlendirmesinde](#routing-metric)açıklanan bağlantı noktası yönlendirme sırasına göre belirlenir.
 
-<sup>3</sup> StorSimple cihazınızdaki denetleyici sabit IP'ler, doğrudan veya yapılandırılmış web proxy'si aracılığıyla Internet'e bağlanabilmeli ve bağlanabilmeli. Sabit IP adresleri, aygıttaki güncelleştirmelere servis yapmak ve çöp toplama için kullanılır. Aygıt denetleyicileri sabit IP'ler aracılığıyla Internet'e bağlanamıyorsa, StorSimple cihazınızı güncelleyemezsiniz ve çöp toplama düzgün çalışmaz.
+<sup>3</sup> StorSimple cihazınızdaki denetleyici sabit IP 'leri yönlendirilebilir ve doğrudan veya yapılandırılmış Web proxy aracılığıyla Internet 'e bağlanabilir olmalıdır. Sabit IP adresleri, cihazdaki güncelleştirmelere ve çöp toplamaya hizmet vermek için kullanılır. Cihaz denetleyicileri, sabit IP 'Ler aracılığıyla Internet 'e bağlanamıyorsa, StorSimple cihazınızı güncellenemez ve çöp toplama işlemi düzgün çalışmayacaktır.
 
 > [!IMPORTANT]
-> Güvenlik duvarının StorSimple aygıtı ile Azure arasındaki TLS trafiğini değiştirmediğinden veya şifresini çözmediğinden emin olun.
+> Güvenlik duvarının StorSimple cihazı ve Azure arasındaki TLS trafiğini değiştirmediğinden veya şifresini çözmediğinden emin olun.
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Güvenlik duvarı kuralları için URL desenleri
 
-Ağ yöneticileri genellikle gelen ve giden trafiği filtrelemek için URL desenlerini temel alan gelişmiş güvenlik duvarı kurallarını yapılandırabilir. StorSimple aygıtınız ve StorSimple Aygıt Yöneticisi hizmetiniz Azure Hizmet Veri Yolundaki Diğer Microsoft uygulamalarına, Azure Active Directory Access Control,depolama hesapları ve Microsoft Update sunucularına bağlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değişebileceğini anlamak önemlidir. Bu da ağ yöneticisinin StorSimple'ınız için güvenlik duvarı kurallarını gerektiği gibi ve gerektiğinde izlemesi ve güncelleştirmesini gerektirir.
+Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. StorSimple cihazınız ve StorSimple Aygıt Yöneticisi hizmeti, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu işlem, ağ yöneticisinin StorSimple için güvenlik duvarı kurallarını ve gerektiğinde izlemesini ve güncelleştirmesini gerektirir.
 
-Çoğu durumda, StorSimple sabit IP adreslerine göre, giden trafik için güvenlik duvarı kurallarınızı belirlemenizi öneririz. Ancak, güvenli ortamlar oluşturmak için gereken gelişmiş güvenlik duvarı kuralları ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
+Çoğu durumda, StorSimple sabit IP adreslerine bağlı olarak, giden trafik için güvenlik duvarı kurallarınızı ayarlamanızı öneririz. Bununla birlikte, güvenli ortamlar oluşturmak için gerekli olan gelişmiş güvenlik duvarı kurallarını ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
 
 > [!NOTE]
-> Aygıt (kaynak) IP'leri her zaman tüm etkin ağ arabirimleri için ayarlanmalıdır. Hedef IP'ler Azure [veri merkezi IP aralıklarına](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)ayarlanmalıdır.
+> Cihaz (kaynak) IP 'Leri her zaman etkinleştirilmiş tüm ağ arabirimlerine ayarlanmalıdır. Hedef IP 'Ler, [Azure veri MERKEZI IP aralıkları](https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653)olarak ayarlanmalıdır.
 
 
-#### <a name="url-patterns-for-azure-portal"></a>Azure portalı için URL desenleri
+#### <a name="url-patterns-for-azure-portal"></a>Azure portal için URL desenleri
 
-| URL deseni | Bileşen/İşlevsellik | Cihaz IP'leri |
+| URL kalıbı | Bileşen/Işlevsellik | Cihaz IP 'Leri |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti |Bulut özellikli ağ arabirimleri |
-| `https://*.backup.windowsazure.com` |Cihaz kaydı |Yalnızca DATA 0 |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti |Bulut özellikli ağ arabirimleri |
+| `https://*.backup.windowsazure.com` |Cihaz kaydı |Yalnızca VERI 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |Bulut özellikli ağ arabirimleri |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |Bulut özellikli ağ arabirimleri |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update sunucuları<br> |Denetleyici sabit IP'ler yalnızca |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Denetleyici sabit IP'ler yalnızca |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update sunucuları<br> |Denetleyici yalnızca IP 'Leri düzeltildi |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Denetleyici yalnızca IP 'Leri düzeltildi |
 | `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Destek paketi |Bulut özellikli ağ arabirimleri |
 
-#### <a name="url-patterns-for-azure-government-portal"></a>Azure Resmi portalı için URL desenleri
+#### <a name="url-patterns-for-azure-government-portal"></a>Azure Kamu portalı için URL desenleri
 
-| URL deseni | Bileşen/İşlevsellik | Cihaz IP'leri |
+| URL kalıbı | Bileşen/Işlevsellik | Cihaz IP 'Leri |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti |Bulut özellikli ağ arabirimleri |
-| `https://*.backup.windowsazure.us` |Cihaz kaydı |Yalnızca DATA 0 |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login.microsoftonline.us` |StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti |Bulut özellikli ağ arabirimleri |
+| `https://*.backup.windowsazure.us` |Cihaz kaydı |Yalnızca VERI 0 |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |Bulut özellikli ağ arabirimleri |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |Bulut özellikli ağ arabirimleri |
-| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update sunucuları<br> |Denetleyici sabit IP'ler yalnızca |
-| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Denetleyici sabit IP'ler yalnızca |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update sunucuları<br> |Denetleyici yalnızca IP 'Leri düzeltildi |
+| `http://*.deploy.akamaitechnologies.com` |Akamai CDN |Denetleyici yalnızca IP 'Leri düzeltildi |
 | `https://*.partners.extranet.microsoft.com/*`<br>`https://dcupload.microsoft.com/`<br>`https://*.support.microsoft.com/` |Destek paketi |Bulut özellikli ağ arabirimleri |
 
 ### <a name="routing-metric"></a>Yönlendirme ölçümü
 
-Yönlendirme ölçümü, verileri belirtilen ağlara yönlendiren arabirimler ve ağ geçidiyle ilişkilidir. Yönlendirme ölçümü, aynı hedefe birden çok yolun bulunduğunu öğrenirse, belirli bir hedefe giden en iyi yolu hesaplamak için yönlendirme protokolü tarafından kullanılır. Yönlendirme ölçütü ne kadar düşükse, tercih de o kadar yüksek.
+Yönlendirme ölçümü, verileri belirtilen ağlara yönlendiren arabirimler ve ağ geçidi ile ilişkilendirilir. Yönlendirme ölçümü, birden çok yolun aynı hedefe varolduğunu öğrenirse, belirli bir hedefin en iyi yolunu hesaplamak için yönlendirme protokolü tarafından kullanılır. Yönlendirme ölçümü ne kadar düşükse tercih daha yüksektir.
 
-StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi kanal trafiğine yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı belirlemek için yönlendirme ölçümleri devreye girer. Yönlendirme ölçümleri kullanıcı tarafından değiştirilemez. Ancak, StorSimple `Get-HcsRoutingTable` cihazınızdaki yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet'i kullanabilirsiniz. [Sorun Giderme StorSimple dağıtım](storsimple-troubleshoot-deployment.md)Get-HcsRoutingTable cmdlet hakkında daha fazla bilgi.
+StorSimple bağlamında, birden çok ağ arabirimi ve ağ geçidi Kanal trafiği olarak yapılandırılırsa, arabirimlerin kullanılacağı göreli sırayı öğrenmek için yönlendirme ölçümleri yürütmeye gelir. Yönlendirme ölçümleri Kullanıcı tarafından değiştirilemez. Bununla birlikte, `Get-HcsRoutingTable` StorSimple cihazınızda yönlendirme tablosunu (ve ölçümleri) yazdırmak için cmdlet 'ini kullanabilirsiniz. [StorSimple dağıtımında sorun gidermeye](storsimple-troubleshoot-deployment.md)yönelik Get-HcsRoutingTable cmdlet 'i hakkında daha fazla bilgi.
 
-Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme metrik algoritması aşağıdaki gibi açıklanabilir.
+Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme ölçüm algoritması aşağıdaki gibi açıklanabilir.
 
-* Ağ arabirimlerine önceden belirlenmiş bir dizi değer atanmıştır.
-* Bulut etkin olduğunda veya bulut devre dışı bırakıldığında ancak yapılandırılmış bir ağ geçidiyle çeşitli ağ arabirimlerine atanan değerlerle aşağıda gösterilen bir örnek tablo düşünün. Burada atanan değerlerin yalnızca örnek değerler olduğunu unutmayın.
+* Önceden tanımlanmış değerler kümesi ağ arabirimlerine atandı.
+* Bulut etkin veya bulut devre dışı olduğunda, ancak yapılandırılmış bir ağ geçidiyle, çeşitli ağ arabirimlerine atanan değerlerin aşağıda gösterildiği örnek bir tablo düşünün. Burada atanan değerler yalnızca örnek değerlerdir.
 
-    | Ağ arabirimi | Bulut özellikli | Ağ geçidi ile bulut devre dışı |
+    | Ağ arabirimi | Bulutta etkin | Bulut-ağ geçidi ile devre dışı |
     |-----|---------------|---------------------------|
     | Veri 0  | 1            | -                        |
     | Veri 1  | 2            | 20                       |
@@ -139,115 +139,115 @@ Güncelleştirme 2 ve sonraki sürümler için kullanılan yönlendirme metrik a
     | Veri 5  | 6            | 60                       |
 
 
-* Bulut trafiğinin ağ arabirimleri üzerinden yönlendirilme sırası:
+* Bulut trafiğinin ağ arabirimleri üzerinden yönlendirileceği sıra:
   
-    *Veri 0 > Veri 1 > Tarih 2 > Veri 3 > Veri 4 > Veri 5*
+    *Veri 0 > veri 1 > Tarih 2 > veri 3 > veri 4 > veri 5*
   
-    Bu aşağıdaki örnekle açıklanabilir.
+    Bu, aşağıdaki örnek tarafından açıklanabilir.
   
-    İki bulut özellikli ağ arabirimi olan Veri 0 ve Veri 5'e sahip bir StorSimple aygıtı düşünün. Veri 1'den Data 4'e kadar bulut devre dışı bırakılmış, ancak yapılandırılmış bir ağ geçidi vardır. Bu aygıt için trafiğin yönlendirilme sırası:
+    Bulut özellikli iki ağ arabirimi, veri 0 ve veri 5 ile bir StorSimple cihazı düşünün. Veri 4 üzerinden veri 1, bulut devre dışı, ancak yapılandırılmış bir ağ geçidine sahip. Bu cihaz için trafiğin yönlendirileceği sıralama şu şekilde olacaktır:
   
-    *Veri 0 (1) > Veri 5 (6) > Veri 1 (20) > Veri 2 (30) > Veri 3 (40) > Veri 4 (50)*
+    *Veri 0 (1) > veri 5 (6) > veri 1 (20) > veri 2 (30) > veri 3 (40) > veri 4 (50)*
   
-    *Parantez içinde sayılar ilgili yönlendirme ölçümlerini gösterir.*
+    *Parantez içindeki sayılar ilgili yönlendirme ölçümlerini gösterir.*
   
-    Veri 0 başarısız olursa, bulut trafiği Veri 5 üzerinden yönlendirilecek. Bir ağ geçidinin diğer tüm ağda yapılandırıldığı göz önüne alındığında, hem Veri 0 hem de Veri 5 başarısız olursa, bulut trafiği Veri 1'den geçer.
-* Bulut özellikli bir ağ arabirimi başarısız olursa, arabirime bağlanmak için 30 saniye gecikmeyle 3 yeniden deneme yapılır. Tüm yeniden denemeler başarısız olursa, trafik yönlendirme tablosu tarafından belirlenen bir sonraki kullanılabilir bulut etkin arabirimine yönlendirilir. Bulut özellikli tüm ağ arabirimleri başarısız olursa, aygıt diğer denetleyiciye geçmezse (bu durumda yeniden başlatma olmaz).
-* iSCSI özellikli bir ağ arabirimi için VIP hatası varsa, 2 saniye gecikmeli 3 yeniden deneme olacaktır. Bu davranış, önceki sürümlerden aynı kaldı. Tüm iSCSI ağ arabirimleri başarısız olursa, bir denetleyici failover (yeniden başlatma eşliğinde) oluşur.
-* VIP arızası olduğunda StorSimple cihazınızda da bir uyarı yükseltilir. Daha fazla bilgi [için, hızlı başvuru uyarısı](storsimple-8000-manage-alerts.md)gidin.
-* Yeniden denemeler açısından, iSCSI buluttan önce gelecektir.
+    Veriler 0 başarısız olursa, bulut trafiği veri 5 üzerinden yönlendirilir. Ağ geçidinin diğer tüm ağlar üzerinde yapılandırıldığı, hem veri 0 hem de veri 5 ' i başarısız olursa, bulut trafiği veri 1 ' den geçer.
+* Bulut özellikli bir ağ arabirimi başarısız olursa, arabirime bağlanmak için 30 saniyelik bir gecikmeyle 3 yeniden deneme olur. Tüm yeniden denemeler başarısız olursa trafik, yönlendirme tablosu tarafından belirlendiği şekilde, bir sonraki kullanılabilir bulut etkin arabirimine yönlendirilir. Bulut özellikli tüm ağ arabirimleri başarısız olursa, cihaz diğer denetleyiciye yük devreder (Bu durumda yeniden başlatma yok).
+* Iscsı özellikli bir ağ arabirimi için bir VIP hatası varsa 2 saniyelik bir gecikmeyle 3 yeniden deneme olur. Bu davranış önceki sürümlerden de aynı şekilde ifade etti. Tüm Iscsı ağ arabirimleri başarısız olursa, bir denetleyici yük devretmesi oluşur (bir yeniden başlatma ile birlikte).
+* Bir VIP hatası olduğunda StorSimple cihazınızda da bir uyarı oluşturulur. Daha fazla bilgi için [Uyarı hızlı başvuru](storsimple-8000-manage-alerts.md)' ya gidin.
+* Yeniden denemeler açısından Iscsı, buluta göre önceliklidir.
   
-    Aşağıdaki örneği göz önünde bulundurun: Bir StorSimple aygıtının iki ağ arabirimi etkindir: Veri 0 ve Veri 1. Veri 0 bulut etkinken, Veri 1 hem bulut hem de iSCSI özelliklidir. Bulut veya iSCSI için bu aygıttaki başka ağ arabirimleri etkinleştirildi.
+    Aşağıdaki örneği göz önünde bulundurun: StorSimple cihazında iki ağ arabirimi etkindir, veri 0 ve veri 1. Veri 0 bulutu etkindir, veri 1 hem bulut hem de Iscsı özellikli olur. Bu cihazdaki başka bir ağ arabirimi bulut veya Iscsı için etkin değil.
   
-    Veri 1 başarısız olursa, son iSCSI ağ arabirimi olduğu göz önüne alındığında, bu bir denetleyici diğer denetleyici veri 1 için başarısız sonuçlanır.
+    Veri 1 başarısız olursa, son Iscsı ağ arabirimi olduğunda, bu, diğer denetleyicideki veri 1 ' e bir denetleyicinin yük devretmesine neden olur.
 
-### <a name="networking-best-practices"></a>Ağ en iyi uygulamaları
+### <a name="networking-best-practices"></a>En iyi ağ uygulamaları
 
-Yukarıdaki ağ gereksinimlerine ek olarak, StorSimple çözümünüzün en iyi performansı için lütfen aşağıdaki en iyi uygulamalara uyun:
+Yukarıdaki ağ gereksinimlerine ek olarak, StorSimple çözümünüzün en iyi performansı için lütfen aşağıdaki en iyi yöntemlere uyun:
 
-* StorSimple cihazınızın her zaman kullanılabilen 40 Mbps bant genişliğine (veya daha fazlası) sahip olduğundan emin olun. Bu bant genişliği diğer uygulamalarla paylaşılmamalıdır (veya QoS ilkelerinin kullanımı yoluyla tahsisat garanti edilmelidir).
-* Internet'e ağ bağlantısının her zaman kullanılabilir olduğundan emin olun. Hiçbir Internet bağlantısı da dahil olmak üzere aygıtlara düzensiz veya güvenilmez Internet bağlantıları, desteklenmeyen bir yapılandırmaya neden olur.
-* iSCSI ve bulut erişimi için cihazınızda özel ağ arabirimleri oluşturarak iSCSI ve bulut trafiğini yalıtın. Daha fazla bilgi için StorSimple cihazınızdaki [ağ arabirimlerini](storsimple-8000-modify-device-config.md#modify-network-interfaces) nasıl değiştirebilirsiniz.
-* Ağ arabirimleriniz için Bağlantı Toplama Denetim Protokolü (LACP) yapılandırması kullanmayın. Bu, desteklenmeyen bir yapılandırmadır.
+* StorSimple cihazınızın, her zaman ayrılmış bir 40 Mbps bant genişliğine (veya daha fazlasına) sahip olduğundan emin olun. Bu bant genişliğinin diğer uygulamalarla paylaşılmaması gerekir (veya QoS ilkelerinin kullanılması aracılığıyla ayrılması gerekir).
+* Internet 'e ağ bağlantısının her zaman kullanılabilir olduğundan emin olun. Internet bağlantısı dahil olmak üzere cihazlara bağımsız veya güvenilir olmayan Internet bağlantıları, desteklenmeyen bir yapılandırmaya neden olur.
+* İSCSI ve bulut erişimi için cihazınızda adanmış ağ arabirimleri bulundurarak Iscsı ve bulut trafiğini yalıtın. Daha fazla bilgi için bkz. StorSimple cihazınızda [ağ arabirimlerini değiştirme](storsimple-8000-modify-device-config.md#modify-network-interfaces) .
+* Ağ arabirimlerinizde bağlantı toplama Denetim Protokolü (LACP) yapılandırması kullanmayın. Bu, desteklenmeyen bir yapılandırmadır.
 
 ## <a name="high-availability-requirements-for-storsimple"></a>StorSimple için yüksek kullanılabilirlik gereksinimleri
 
-StorSimple çözümüne dahil olan donanım platformu, veri merkezinizde yüksek oranda kullanılabilir, hataya dayanıklı depolama altyapısı için temel sağlayan kullanılabilirlik ve güvenilirlik özelliklerine sahiptir. Ancak, StorSimple çözümünüzün kullanılabilirliğini sağlamaya yardımcı olmak için uymanız gereken gereksinimler ve en iyi uygulamalar vardır. StorSimple'ı dağıtmadan önce, StorSimple aygıtı ve bağlı ana bilgisayarları için aşağıdaki gereksinimleri ve en iyi uygulamaları dikkatle gözden geçirin.
+StorSimple çözümüne dahil olan donanım platformunun, veri merkezinizde yüksek düzeyde kullanılabilir, hataya dayanıklı bir depolama altyapısı için bir temel sağlayan kullanılabilirlik ve güvenilirlik özellikleri vardır. Ancak, StorSimple çözümünüzün kullanılabilirliğini sağlamaya yardımcı olmak için uymanız gereken gereksinimler ve en iyi uygulamalar vardır. StorSimple 'ı dağıtmadan önce, StorSimple cihazı ve bağlı konak bilgisayarları için aşağıdaki gereksinimleri ve en iyi yöntemleri dikkatle gözden geçirin.
 
-StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve bakımı hakkında daha fazla bilgi için donanım bileşenlerini ve durumunu ve [StorSimple donanım bileşen değiştirmesini](storsimple-8000-hardware-component-replacement.md) [izlemek için StorSimple Device Manager hizmetini kullanın.](storsimple-8000-monitor-hardware-status.md)
+StorSimple cihazınızın donanım bileşenlerinin izlenmesi ve saklanması hakkında daha fazla bilgi için, bkz. [storsimple Aygıt Yöneticisi hizmetini kullanarak donanım bileşenlerini ve durum](storsimple-8000-monitor-hardware-status.md) ve [StorSimple donanım bileşeni değişimini](storsimple-8000-hardware-component-replacement.md)izleyin.
 
-### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>StorSimple cihazınız için yüksek kullanılabilirlik gereksinimleri ve prosedürleri
+### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>StorSimple cihazınız için yüksek kullanılabilirlik gereksinimleri ve yordamları
 
-StorSimple cihazınızın yüksek kullanılabilirliğini sağlamak için aşağıdaki bilgileri dikkatle inceleyin.
+StorSimple cihazınızın yüksek oranda kullanılabilirliğini sağlamak için aşağıdaki bilgileri dikkatle gözden geçirin.
 
-#### <a name="pcms"></a>PCM'ler
+#### <a name="pcms"></a>PCMs
 
-StorBasit cihazlar gereksiz, sıcak değiştirilebilir güç ve soğutma modülleri (PCMs) içerir. Her PCM, tüm şasiiçin servis sağlamak için yeterli kapasiteye sahiptir. Yüksek kullanılabilirlik sağlamak için her iki PCM'nin de yüklenmesi gerekir.
+StorSimple cihazları, yedekli, etkin, değiştirilebilir güç ve soğutma modülleri (PCMs) içerir. Her PCM, kasa genelinde hizmet sağlamak için yeterli kapasiteye sahiptir. Yüksek kullanılabilirlik sağlamak için hem PCMs 'nin yüklenmesi gerekir.
 
-* Bir güç kaynağı arızalanırsa kullanılabilirliği sağlamak için PCM'lerinizi farklı güç kaynaklarına bağlayın.
-* Bir PCM başarısız olursa, hemen bir değiştirme isteyin.
-* Yalnızca değiştirme niz olduğunda ve yüklemeye hazır olduğunuzda başarısız bir PCM'yi çıkarın.
-* Her iki PCM'yi de aynı anda çıkarmayın. PCM modülü yedek pil modüllerini içerir. PcM'lerin her ikisinin de kaldırılması pil koruması olmadan kapanmaya neden olur ve aygıt durumu kaydedilmez. Pil hakkında daha fazla bilgi için [yedek pil modüllerini koru'ya](storsimple-8000-battery-replacement.md#maintain-the-backup-battery-module)gidin.
+* Bir güç kaynağı başarısız olursa kullanılabilirlik sağlamak için PCMs 'nizi farklı güç kaynaklarına bağlayın.
+* PCM başarısız olursa, hemen bir değiştirme isteyin.
+* Hatalı bir PCM 'yi yalnızca değiştirme ve yüklemeye hazırlanma durumunda kaldırın.
+* Her iki PCMs 'yi eşzamanlı olarak kaldırmayın. PCM modülü, yedekleme pili modülünü içerir. PCMs 'nin her ikisinin de kaldırılması, pil koruması olmadan kapanmaya neden olur ve cihaz durumu kaydedilmez. Pil hakkında daha fazla bilgi için [Yedekleme Pil modülünü koruyun](storsimple-8000-battery-replacement.md#maintain-the-backup-battery-module)sayfasına gidin.
 
 #### <a name="controller-modules"></a>Denetleyici modülleri
 
-StorBasit aygıtlar gereksiz, sıcak değiştirilebilir denetleyici modülleri içerir. Denetleyici modülleri aktif/pasif bir şekilde çalışır. Herhangi bir zamanda, bir denetleyici modülü etkindir ve hizmet sunarken, diğer denetleyici modülü pasiftir. Pasif denetleyici modülü çalışır ve etkin denetleyici modülü başarısız olursa veya kaldırılırsa çalışır hale gelir. Her denetleyici modülü, tüm şasiye hizmet verecek kapasiteye sahiptir. Yüksek kullanılabilirlik sağlamak için her iki denetleyici modülü de yüklenmelidir.
+StorSimple cihazları, yedekli, Hot-swapcontroller modülleri içerir. Denetleyici modülleri etkin/Pasif bir şekilde çalışır. Herhangi bir zamanda, bir denetleyici modülü etkindir ve hizmet sağlarken diğer denetleyici modülü pasif olur. Pasif denetleyici modülü açık olur ve etkin denetleyici modülü başarısız olursa veya kaldırılırsa çalışır duruma gelir. Her denetleyici modülünün, kasa genelinde hizmet sağlamak için yeterli kapasitesi vardır. Yüksek kullanılabilirlik sağlamak için hem denetleyici modüllerinin yüklenmesi gerekir.
 
-* Her iki denetleyici modülün de her zaman yüklü olduğundan emin olun.
-* Denetleyici modülü başarısız olursa, hemen bir değiştirme isteyin.
-* Yalnızca değiştirme niz olduğunda ve yüklemeye hazır olduğunuzda başarısız bir denetleyici modüllerini çıkarın. Bir modülün uzun süre kaldırılması hava akışını ve dolayısıyla sistemin soğumasını etkileyecektir.
-* Her iki denetleyici modülüne bağlı ağ bağlantılarının aynı olduğundan ve bağlı ağ arabirimlerinin aynı ağ yapılandırmasına sahip olduğundan emin olun.
-* Bir denetleyici modülü başarısız olursa veya değiştirilmesi gerekiyorsa, başarısız denetleyici modüldeğiştirmeden önce diğer denetleyici modülü etkin durumda olduğundan emin olun. Denetleyicinin etkin olduğunu doğrulamak için [cihazınızdaki etkin denetleyiciyi tanımlayın'](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)a gidin.
-* Her iki denetleyici modüllerini de aynı anda çıkarmayın. Bir denetleyici arıza devam ediyorsa, bekleme denetleyici modüllerini kapatmayın veya şasiden çıkarmayın.
-* Denetleyici başarısız olduktan sonra, her iki denetleyici modüllerini çıkarmadan önce en az beş dakika bekleyin.
+* Her iki denetleyici modüllerinin de her zaman yüklü olduğundan emin olun.
+* Bir denetleyici modülü başarısız olursa, hemen bir değiştirme isteyin.
+* Başarısız bir denetleyici modülünü yalnızca değişiklik yaptığınız ve yüklemeye hazırsanız kaldırın. Genişletilmiş dönemler için bir modülün kaldırılması, Airflow 'u ve dolayısıyla sistemin soğutma olduğunu etkiler.
+* Her iki denetleyici modülle ağ bağlantılarının aynı olduğundan ve bağlı ağ arabirimlerinin aynı ağ yapılandırmasına sahip olduğundan emin olun.
+* Bir denetleyici modülü başarısız olursa veya değişiklik gerekiyorsa, başarısız denetleyici modülünü değiştirmeden önce diğer denetleyici modülünün etkin durumda olduğundan emin olun. Bir denetleyicinin etkin olduğunu doğrulamak için [cihazınızda etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)' ya gidin.
+* Her iki denetleyici modülünü aynı anda kaldırmayın. Bir denetleyici yük devretmesi devam ediyorsa, bekleme denetleyicisi modülünü kapatmayın veya gövdeden kaldırmayın.
+* Denetleyici yük devretmesinin ardından, denetleyici modülünü kaldırmadan önce en az beş dakika bekleyin.
 
 #### <a name="network-interfaces"></a>Ağ arabirimleri
 
-StorSimple cihaz denetleyici modüllerinin her birinde dört adet 1 Gigabit ve iki adet 10 Gigabit Ethernet ağ arabirimi bulunur.
+StorSimple cihaz denetleyicisi modüllerinin her biri dört adet 1 Gigabit ve 2 10 Gigabit Ethernet ağ arabirimine sahiptir.
 
-* Her iki denetleyici modülüne olan ağ bağlantılarının aynı olduğundan ve denetleyici modülü arabirimlerinin aynı ağ yapılandırmasına sahip olarak bağlı olduğu ağ arabirimlerinden emin olun.
-* Mümkün olduğunda, ağ aygıtı nın arızası durumunda hizmet kullanılabilirliğini sağlamak için ağ bağlantılarını farklı anahtarlar arasında dağıtın.
-* Kalan tek veya son iSCSI etkin arabiriminin (IP'ler atanmış) fişini çekerken, önce arabirimi devre dışı bırakıp kabloları çıkarın. Arabirim ilk olarak çıkarılırsa, etkin denetleyicinin pasif denetleyicide başarısız olmasına neden olur. Pasif denetleyicide karşılık gelen arabirimler de varsa, her iki denetleyici de tek bir denetleyiciye yerleşmeden önce birden çok kez yeniden başlatılır.
-* Her denetleyici modülünden ağa en az iki DATA arabirimi bağlayın.
-* İki 10 GbE arabirimini etkinleştirdiyseniz, bunları farklı anahtarlar arasında dağıtın.
-* Mümkün olduğunda, sunucuların bir bağlantı, ağ veya arabirim hatasına tolerans gösterebilmesini sağlamak için sunucularda MPIO kullanın.
+* Her iki denetleyici modülüne yönelik ağ bağlantılarının aynı olduğundan ve denetleyici modülü arabirimlerinin bağlandığı ağ arabirimlerinin aynı ağ yapılandırmasına sahip olduğundan emin olun.
+* Mümkün olduğunda, bir ağ aygıtı arızası durumunda hizmet kullanılabilirliğini sağlamak için ağ bağlantılarını farklı anahtarlar arasında dağıtın.
+* Yalnızca veya kalan en son Iscsı etkin arabirimini çıkarırken (IP atanmış olarak), önce arabirimi devre dışı bırakıp kabloları sökün. Arabirim önce söküme, etkin denetleyicinin pasif denetleyiciye yük devredememesine neden olur. Pasif denetleyicinin karşılık gelen arabirimleri de varsa, her iki denetleyici de bir denetleyicide kapatmadan önce birden çok kez yeniden başlatılır.
+* Her denetleyici modülünden ağa en az iki VERI arabirimi bağlayın.
+* 2 10 GbE arabirimlerini etkinleştirdiyseniz, bunları farklı anahtarlar genelinde dağıtın.
+* Mümkün olduğunda, sunucuların bir bağlantı, ağ veya arabirim hatasına karşı tolerans sağlamak için sunucularda MPIO kullanın.
 
-Yüksek kullanılabilirlik ve performans için cihazınızı ağlandırma hakkında daha fazla bilgi için [StorSimple 8100 cihazınızı yükleyin](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) veya [StorSimple 8600 cihazınızı yükleyin.](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)
+Cihazınızın yüksek kullanılabilirlik ve performans için ağ oluşturma hakkında daha fazla bilgi için, [storsimple 8100 cihazınızı yüklemeye](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) veya [StorSimple 8600 cihazınızı yüklemenize](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device)gidin.
 
-#### <a name="ssds-and-hdds"></a>SSD'ler ve HDD'ler
+#### <a name="ssds-and-hdds"></a>SSD 'Ler ve HDD 'Ler
 
-StorSimple aygıtları, aynalı boşluklar kullanılarak korunan katı hal diskleri (SSD'ler) ve sabit disk sürücüleri (HDD'ler) içerir. Aynalı alanların kullanımı, aygıtın bir veya daha fazla SSD veya HDD'nin arızalanmasına tahammül edebilmesini sağlar.
+StorSimple cihazları, yansıtılmış boşluklar kullanılarak korunan katı hal diskleri (SSD 'Ler) ve sabit disk sürücüleri (HDD 'Ler) içerir. Yansıtılmış boşlukların kullanılması, cihazın bir veya daha fazla SSD veya HDD hatası olduğunu garanti edebilmesini sağlar.
 
 * Tüm SSD ve HDD modüllerinin yüklü olduğundan emin olun.
 * Bir SSD veya HDD başarısız olursa, hemen bir değiştirme isteyin.
-* Bir SSD veya HDD başarısız olursa veya değiştirme gerektiriyorsa, yalnızca değiştirilmesi gereken SSD veya HDD'yi kaldırdığınızdan emin olun.
-* Herhangi bir anda birden fazla SSD veya HDD'yi sistemden çıkarmayın.
-  Belirli tipte (HDD, SSD) 2 veya daha fazla diskin kısa bir süre içinde arızalanması veya ardışık bir arıza sistem arızalarına ve olası veri kaybına neden olabilir. Bu durumda, yardım için [Microsoft Destek'e başvurun.](storsimple-8000-contact-microsoft-support.md)
-* Değiştirme sırasında, SSD'lerde ve HDD'lerde sürücüler için **Donanım sağlık** bıçaklarında **Paylaşılan bileşenleri** izleyin. Yeşil denetim durumu disklerin sağlıklı veya tamam olduğunu gösterirken, kırmızı ünlem işareti başarısız bir SSD veya HDD'yi gösterir.
+* Bir SSD veya HDD başarısız olursa veya değişiklik gerektiriyorsa, yalnızca değiştirme gerektiren SSD veya HDD 'yi kaldırdığınızdan emin olun.
+* Herhangi bir zamanda sistemden birden fazla SSD veya HDD kaldırmayın.
+  Belirli türde (HDD, SSD) veya bir kısa zaman çerçevesinde ardışık hata 2 veya daha fazla disk arızası sistem arızası ve olası veri kaybına neden olabilir. Bu durumda yardım için [Microsoft desteği başvurun](storsimple-8000-contact-microsoft-support.md) .
+* Değiştirme sırasında, SSD 'Ler ve HDD 'lerde bulunan sürücüler için **donanım sistem durumu** dikey penceresinde **paylaşılan bileşenleri** izleyin. Yeşil bir denetim durumu, disklerin sağlıklı veya Tamam olduğunu, ancak kırmızı bir ünlem işareti başarısız bir SSD veya HDD olduğunu gösterir.
 * Bir sistem hatası durumunda korumanız gereken tüm birimler için bulut anlık görüntülerini yapılandırmanızı öneririz.
 
-#### <a name="ebod-enclosure"></a>EBOD muhafazası
+#### <a name="ebod-enclosure"></a>EBOD Kasası
 
-StorSimple cihaz modeli 8600, birincil kasaya ek olarak Genişletilmiş Disk Demeti (EBOD) muhafazası içerir. EBOD, aynalı boşluklar kullanılarak korunan EBOD denetleyicileri ve sabit disk sürücüleri (HDD' ler) içerir. Aynalı boşlukların kullanılması, aygıtın bir veya daha fazla HDD'nin arızalanmasına tahammül edebilmesini sağlar. EBOD kasası, yedek SAS kabloları ile birincil kasaya bağlanır.
+StorSimple cihaz modeli 8600, birincil kutunun yanı sıra genişletilmiş bir dizi disk (EBOD) Kasası içerir. Bir EBOD, yansıtılmış boşluklar kullanılarak korunan EBOD denetleyicileri ve sabit disk sürücüleri (HDD 'Ler) içerir. Yansıtılmış boşlukların kullanılması, cihazın bir veya daha fazla HDD 'nin hatasını kabul edebilmesini sağlar. EBOD Kasası, yedekli SAS kabloları aracılığıyla birincil muhafaza ile bağlanır.
 
-* Hem EBOD muhafaza denetleyici modüllerinin, hem SAS kablolarının hem de tüm sabit disk sürücülerinin her zaman takılı olduğundan emin olun.
-* EBOD muhafaza denetleyici modülü başarısız olursa, derhal bir değiştirme isteyin.
-* EBOD muhafaza denetleyici modülü başarısız olursa, başarısız modülü değiştirmeden önce diğer denetleyici modülünün etkin olduğundan emin olun. Denetleyicinin etkin olduğunu doğrulamak için [cihazınızdaki etkin denetleyiciyi tanımlayın'](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)a gidin.
-* EBOD denetleyici modülü değişimi sırasında, **Monitör** > **Donanımı durumuna**erişerek StorSimple Device Manager hizmetindeki bileşenin durumunu sürekli olarak izleyin.
-* Bir SAS kablosu arızalanırsa veya değiştirilmesi gerekiyorsa (böyle bir belirleme yapmak için Microsoft Desteği dahil edilmelidir), yalnızca değiştirilmesi gereken SAS kablosunu kaldırdığınızdan emin olun.
-* Aynı anda her iki SAS kablosunu da herhangi bir zamanda sistemden çıkarmayın.
+* Hem cbod Kasası denetleyici modüllerinin hem de SAS kablolarının ve tüm sabit disk sürücülerinin her zaman yüklü olduğundan emin olun.
+* Bir EBOD Kasası denetleyicisi modülü başarısız olursa, hemen bir değiştirme isteyin.
+* Bir EBOD Kasası denetleyicisi modülü başarısız olursa, başarısız modülün yerine geçmeden önce diğer denetleyici modülünün etkin olduğundan emin olun. Bir denetleyicinin etkin olduğunu doğrulamak için [cihazınızda etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device)' ya gidin.
+* Ebod denetleyicisi modül değişikliği sırasında,**donanım sistem durumunu** **izlemeye** > erişerek StorSimple aygıt yöneticisi hizmetinde bileşenin durumunu sürekli olarak izleyin.
+* SAS kablosu başarısız olursa veya değişiklik gerektiriyorsa (Bu tür bir belirleme yapmak için Microsoft Desteği dahil edilmelidir), yalnızca değiştirme gerektiren SAS kablosunu kaldırdığınızdan emin olun.
+* Her zaman bir noktada, her iki SAS kablolarını sistemden eşzamanlı olarak kaldırmayın.
 
 ### <a name="high-availability-recommendations-for-your-host-computers"></a>Ana bilgisayarlarınız için yüksek kullanılabilirlik önerileri
 
-StorSimple cihazınıza bağlı ana bilgisayarların yüksek kullanılabilirliğini sağlamak için bu en iyi uygulamaları dikkatle inceleyin.
+StorSimple cihazınıza bağlı olan konaklara yüksek kullanılabilirlik sağlamak için bu en iyi uygulamaları dikkatle gözden geçirin.
 
-* StorSimple'ı [iki düğümlü dosya sunucusu küme yapılandırmalarıyla][1]yapılandırın. Tek hata noktalarını kaldırarak ve ev sahibi tarafta artıklık la inşa ederek, tüm çözüm son derece kullanılabilir hale gelir.
-* Depolama denetleyicilerinin üzerinde başarısız lık sırasında yüksek kullanılabilirlik için Windows Server 2012 (SMB 3.0) ile kullanılabilir sürekli kullanılabilir (CA) paylaşımları kullanın. Dosya sunucusu kümelerini yapılandırmak ve Windows Server 2012 ile sürekli kullanılabilir paylaşımlar yapılandırmak için ek bilgi için bu [video demosu'na](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)bakın.
+* [İki düğümlü dosya sunucusu kümesi yapılandırmasıyla][1]StorSimple 'ı yapılandırın. Tek hata noktalarını kaldırıp konak tarafında yedeklilik halinde derleme yaparak tüm çözüm yüksek oranda kullanılabilir hale gelir.
+* Depolama denetleyicilerinin yük devretmesi sırasında yüksek kullanılabilirlik için Windows Server 2012 (SMB 3,0) ile kullanılabilen sürekli kullanılabilir (CA) paylaşımları kullanın. Windows Server 2012 ile dosya sunucusu kümelerini ve sürekli olarak kullanılabilir paylaşımları yapılandırma hakkında daha fazla bilgi için bu [video tanıtımı](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [StorSimple sistem limitleri hakkında bilgi edinin.](storsimple-8000-limits.md)
-* [StorSimple çözümünüzü nasıl dağıtılayınızı öğrenin.](storsimple-8000-deployment-walkthrough-u2.md)
+* [StorSimple sistem sınırları hakkında bilgi edinin](storsimple-8000-limits.md).
+* [StorSimple çözümünüzü dağıtmayı öğrenin](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx

@@ -1,6 +1,6 @@
 ---
-title: Haritaya çizim araç çubuğu ekleme | Microsoft Azure Haritaları
-description: Azure Haritalar Web SDK'yı kullanarak haritaya çizim araç çubuğu ekleme
+title: Haritaya Çizim araç çubuğu ekleme | Microsoft Azure haritaları
+description: Azure Haritalar Web SDK 'sını kullanarak bir haritaya Çizim araç çubuğu ekleme
 author: philmea
 ms.author: philmea
 ms.date: 09/04/2019
@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334495"
 ---
-# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Haritaya çizim araçları araç çubuğu ekleme
+# <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Haritaya bir çizim araçları araç çubuğu ekleme
 
-Bu makalede, Çizim Araçları modülünün nasıl kullanılacağı ve çizim araç çubuğunun haritaüzerinde nasıl görüntülenebildiğiniz gösterilmektedir. [DrawingToolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) denetimi haritaya çizim araç çubuğunu ekler. Yalnızca bir ve tüm çizim araçlarıyla harita oluşturmayı ve çizim yöneticisindeki çizim şekillerinin işlenmesini nasıl özelleştireceğinizi öğreneceksiniz.
+Bu makalede, çizim araçları modülünü nasıl kullanabileceğiniz ve Çizim araç çubuğunun haritada nasıl görüntüleneceği gösterilmektedir. [Drawingtoolbar](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest) denetimi harita üzerine çizim araç çubuğunu ekler. Yalnızca bir ve tüm çizim araçlarıyla eşlemeler oluşturmayı ve çizim şekillerinin çizim şekillerini oluşturmayı nasıl özelleştireceğinizi öğreneceksiniz.
 
 ## <a name="add-drawing-toolbar"></a>Çizim araç çubuğu ekleme
 
-Aşağıdaki kod çizim yöneticisinin bir örneğini oluşturur ve araç çubuğunu haritada görüntüler.
+Aşağıdaki kod, çizim Yöneticisi 'nin bir örneğini oluşturur ve araç çubuğunu haritada görüntüler.
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
@@ -33,18 +33,18 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir:
+Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araç çubuğu ekleme" src="//codepen.io/azuremaps/embed/ZEzLeRg/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Ekleme çizim araç <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>çubuğuna</a> bakın ( )
+<a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile kalem <a href='https://codepen.io/azuremaps/pen/ZEzLeRg/'>Çizim araç çubuğu ekleme</a> bölümüne bakın.
 </iframe>
 
 
-## <a name="limit-displayed-toolbar-options"></a>Görüntülenen araç çubuğu seçeneklerini sınırlama
+## <a name="limit-displayed-toolbar-options"></a>Görünen araç çubuğu seçeneklerini sınırla
 
-Aşağıdaki kod çizim yöneticisinin bir örneğini oluşturur ve araç çubuğunu haritada sadece çokgen çizim aracıyla görüntüler. 
+Aşağıdaki kod, çizim Yöneticisi 'nin bir örneğini oluşturur ve araç çubuğunu haritada yalnızca bir çokgen çizim aracıyla görüntüler. 
 
 ```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
@@ -57,20 +57,20 @@ drawingManager = new atlas.drawing.DrawingManager(map, {
     });
 ```
 
-Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir:
+Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen çizim aracı ekleme" src="//codepen.io/azuremaps/embed/OJLWWMy/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Bkz. Kalem <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar<a href='https://codepen.io/azuremaps'>@azuremaps</a>'a göre <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>çokgen çizim aracı ekleyin</a> ( )
+<a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/OJLWWMy/'>bir çokgen çizim aracı ekleme</a> kalemine bakın.
 </iframe>
 
 
-## <a name="change-drawing-rendering-style"></a>Çizim oluşturma stilini değiştirme
+## <a name="change-drawing-rendering-style"></a>Çizim işleme stilini değiştir
 
-Çizilen şekillerin `drawingManager.getLayers()` stili, işlevi kullanarak çizim yöneticisinin temel katmanları alınarak ve daha sonra tek tek katmanlarda seçenekler ayarlayarak özelleştirilebilir. Bir şekli düzenlerken koordinatlar için görünen sürükleme tutamaçları HTML işaretçileridir. Sürükleme tutamaçlarının stili, HTML işaretçisi seçeneklerini `dragHandleStyle` çizim `secondaryDragHandleStyle` yöneticisinin seçeneklerine ve seçeneklerine geçirerek özelleştirilebilir.  
+Çizilen şekillerin stili, `drawingManager.getLayers()` işlevi kullanılarak çizim yöneticisinin temel katmanları alınarak özelleştirilebilir ve tek tek katmanlarda seçenekler ayarlanarak özelleştirilebilir. Şekil düzenlenirken, koordinat için görüntülenen sürükleme tutamaçları HTML işaretçilerine sahiptir. Sürükleme tutamaçlarının stili, çizim yöneticisinin `dragHandleStyle` ve `secondaryDragHandleStyle` seçeneklerine HTML işaret seçenekleri geçirerek özelleştirilebilir.  
 
-Aşağıdaki kod çizim yöneticisinden işleme katmanları alır ve çizim için render stilini değiştirmek için seçeneklerini değiştirir. Bu durumda, noktalar mavi bir işaretçi simgesiyle işlenir. Çizgiler kırmızı ve dört piksel genişliğinde olacaktır. Çokgenler yeşil dolgu rengi ve turuncu bir anahat olacaktır. Daha sonra, sürükleme tutamaçlarının stillerini kare simgeler olarak değiştirir. 
+Aşağıdaki kod, çizim yöneticisinden işleme katmanlarını alır ve çizim için işleme stilini değiştirecek seçeneklerini değiştirir. Bu durumda, işaret mavi bir işaret simgesiyle işlenir. Satırlar kırmızı ve dört piksel genişliğinde olur. Çokgenler yeşil bir Fill rengine ve turuncu bir anahatta sahip olur. Daha sonra Sürükle tutamaçlarının stillerini kare simgeleri olacak şekilde değiştirir. 
 
 ```javascript
 //Get rendering layers of drawing manager.
@@ -117,18 +117,18 @@ drawingManager.setOptions({
 });  
 ```
 
-Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir:
+Yukarıdaki işlevlerin tamamen çalışan kod örneği aşağıda verilmiştir:
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim oluşturma stilini değiştirme" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-<a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Değişikliği çizim oluşturma <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>stiline</a> bakın .
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim işleme stilini değiştir" src="//codepen.io/azuremaps/embed/OJLWpyj/?height=265&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Bkz. Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io'>codepen</a>'Da <a href='https://codepen.io/azuremaps/pen/OJLWpyj/'>Çizim işleme stilini değiştirme</a> .
 </iframe>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Çizim araçları modülünün ek özelliklerini nasıl kullanacağınızı öğrenin:
+Çizim araçları modülünün ek özelliklerini kullanmayı öğrenin:
 
 > [!div class="nextstepaction"]
 > [Şekil verilerini alma](map-get-shape-data.md)
@@ -148,4 +148,4 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [Çizim araç çubuğu](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [Çizim yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [Çizim Yöneticisi](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)

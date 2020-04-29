@@ -1,6 +1,6 @@
 ---
 title: Önyükleme hatası – "Bu önyüklenebilir bir disk değil"
-description: Bu makalede, bir Azure Sanal Makine'de diskin önyüklenmediği sorunları gidermek için adımlar
+description: Bu makalede, bir Azure sanal makinesinde diskin önyüklenebilir olmadığı sorunları çözümlemek için adımlar sağlanmaktadır
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,118 +15,118 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300985"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>Önyükleme Hatası – Bu Önyükleme Diski değildir
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>Önyükleme hatası – bu önyüklenebilir bir disk değil
 
-Bu makalede, diskin Azure Sanal Makine'de (VM) önyüklenmediği sorunları gidermek için adımlar bulunur.
+Bu makalede, diskin bir Azure sanal makinesinde (VM) önyüklenebilir olmadığı sorunları gidermek için gereken adımlar sağlanmaktadır.
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM ekran görüntüsünü görüntülemek için [Önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsü 'Bu başlatılabilir bir disk değildir' iletisi ile bir istemi görüntüler görürsünüz. Lütfen önyüklenebilir bir disket takın ve yeniden denemek için herhangi bir tuşa basın...'.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) kullandığınızda, ekran görüntüsünde, ' this önyüklenebilir disk değil ' iletisi ile bir istem görüntülediğini görürsünüz. Lütfen bir önyüklenebilir disket yerleştirip yeniden denemek için herhangi bir tuşa basın... '.
 
    Şekil 1
 
-   ![Şekil 1 iletiyi gösterir *"Bu önyüklenebilir bir disk değildir. Lütfen önyüklenebilir bir disket takın ve yeniden denemek için herhangi bir tuşa basın..."*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![Şekil 1, "Bu önyüklenebilir bir disk değil" iletisini gösterir. Lütfen bir önyüklenebilir disket yerleştirip yeniden denemek için herhangi bir tuşa basın... "*](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>Nedeni
 
-Bu hata iletisi, işletim sistemi önyükleme işleminin etkin bir sistem bölümü bulamadığı anlamına gelir. Bu hata, Önyükleme Yapılandırma Verileri (BCD) deposunda eksik bir başvuru olduğu ve Windows bölümü bulunmasını engellediği anlamına da gelebilir.
+Bu hata iletisi, IŞLETIM sistemi önyükleme işleminin etkin bir sistem bölümü bulamadı anlamına gelir. Bu hata, Önyükleme Yapılandırma Verileri (BCD) deposunda eksik bir başvurunun, Windows bölümünün yerini bulmasına karşı bir başvuru olduğunu da ifade ediyor.
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="process-overview"></a>İşleme Genel Bakış
+### <a name="process-overview"></a>İşleme genel bakış
 
-1. Onarım VM'si oluşturma ve erişme.
-2. Bölüm Durumunu Etkin olarak ayarlayın.
-3. Disk Bölümlerini düzeltin.
-4. **Önerilen**: VM'yi yeniden oluşturmadan önce seri konsol ve bellek dökümü koleksiyonunu etkinleştirin.
-5. Orijinal VM'yi yeniden oluştur.
+1. Bir onarım VM 'si oluşturun ve erişin.
+2. Bölüm durumunu etkin olarak ayarlayın.
+3. Disk bölümünü onarın.
+4. **Önerilir**: VM 'yi yeniden oluşturmadan önce, seri konsolu ve bellek dökümü toplamayı etkinleştirin.
+5. Özgün VM 'yi yeniden derleyin.
 
    > [!NOTE]
-   > Bu önyükleme hatasıyla karşılaştığında, Konuk Işletim Sistemi çalışmıyor. Bu sorunu gidermek için çevrimdışı modda sorun giderme olacak.
+   > Bu önyükleme hatasıyla karşılaşdığınızda, Konuk işletim sistemi çalışır durumda değildir. Bu sorunu çözmek için çevrimdışı modda sorun gidermeye başlayacaksınız.
 
-### <a name="create-and-access-a-repair-vm"></a>Onarım VM Oluşturma ve Eriş
+### <a name="create-and-access-a-repair-vm"></a>Bir onarım VM 'si oluşturma ve erişme
 
-1. Onarım VM'i hazırlamak için [VM Onarım Komutları'nın](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
-2. Uzak Masaüstü Bağlantısını Kullanarak Onarım VM'sine bağlanın.
+1. Bir onarım VM 'si hazırlamak için [VM onarım komutlarının](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) 1-3 adımlarını kullanın.
+2. Uzak Masaüstü Bağlantısı kullanarak, onarım VM 'ye bağlanın.
 
-### <a name="set-partition-status-to-active"></a>Bölüm Durumunu Etkin olarak ayarlama
+### <a name="set-partition-status-to-active"></a>Bölüm durumunu etkin olarak ayarla
 
-Nesil 1 VM'ler öncelikle BCD deposunu tutan işletim sistemi bölümü *etkin*olarak işaretlendiğini doğrulamalıdır. Bir Generation 2 VM'iniz varsa, *Durum* bayrağı sonraki nesilde amortismana götürüldüği için [Disk Bölüm'ü düzelt'e](#fix-the-disk-partition)doğru atlayın.
+1. nesil sanal makineler önce, BCD deposunu tutan işletim sistemi bölümünün *etkin*olarak işaretlendiğinden emin olmalıdır. 2. nesil bir sanal makinenize sahipseniz, sonraki nesil *durum* bayrağı kullanım dışı olduğundan, [disk bölümünü düzelten](#fix-the-disk-partition)önce atlayın.
 
-1. Yükseltilmiş komut *istemini açın (cmd.exe)*.
-2. DISKPART aracını başlatmak için *diskbölümü* girin.
-3. Sistemdeki diskleri listelemek ve bağlı OS VHD'yi tanımlamak için *liste diskini* girin.
-4. Bağlı OS VHD bulunduğunda, diski seçmek için *sel disk #* girin.  Bkz. Disk 1'in bağlı OS VHD olduğu Şekil 2'ye bakın.
+1. Yükseltilmiş bir komut istemi açın *(cmd. exe)*.
+2. DISKPART aracını başlatmak için *DiskPart* girin.
+3. Sistemdeki diskleri listelemek ve bağlı işletim sistemi VHD 'sini tanımlamak için *liste diski* girin.
+4. Bağlı işletim sistemi VHD 'SI konumlandırıldıktan sonra, diski seçmek için *sel disk #* girin.  Bkz. Şekil 2, disk 1, bağlı işletim sistemi VHD 'si.
 
    Şekil 2
 
-   ![Şekil 2 tabloda görüntülenen liste disk komutu, Disk 0 ve Disk 1 çıktısını gösteren *DISKPART* penceresini gösterir.  Ayrıca sel disk 1 komutunun çıktısını gösterir, Disk 1 seçili disktir](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![Şekil 2 ' de, tabloda gösterilen List disk komutu, disk 0 ve disk 1 çıktısını gösteren * DISKPART * penceresi gösterilmektedir.  Ayrıca, sel disk 1 komutunun çıkışını gösterir, disk 1 seçilen disktir](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. Disk seçildikten sonra, seçili diskin bölümlerini listelemek için *liste bölümüne* girin.
-6. Önyükleme bölümü tanımlandıktan sonra, bölümü seçmek için *sel partition #* girin.  Genellikle önyükleme bölümü boyutu 350 MB civarında olacaktır.  Bkz. Bölüm 1'in önyükleme bölümü olduğu Şekil 3'e bakın.
+5. Disk seçildikten sonra Seçili diskin bölümlerini listelemek için *liste bölümü* girin.
+6. Önyükleme bölümü tanımlandıktan sonra, bölümü seçmek için *sel bölüm #* girin.  Genellikle önyükleme bölümü 350 MB boyutunda olacaktır.  Bölüm 1 ' in önyükleme bölümü olduğu Şekil 3 ' ü inceleyin.
 
    Şekil 3
 
-   ![Şekil 3 *list partition* komutunun çıktısı ile *DISKPART* penceresini gösterir. Bölüm 1 ve Bölüm 2 tabloda görüntülenir. Ayrıca* sel bölüm 1* komutunun çıktısını, Bölüm 1 seçili disk olduğunda gösterir.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![Şekil 3 * liste bölümü * komutunun çıkışıyla * DISKPART * penceresini gösterir. Bölüm 1 ve Bölüm 2 tabloda görüntülenir. Ayrıca Bölüm 1 seçili diskse, * sel Bölüm 1 * komutunun çıkışını gösterir.](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. Bölümün durumunu denetlemek için 'ayrıntı bölümü' girin. Bkz. Şekil 4, bölümün Etkin olduğu *yer: Hayır*veya Şekil 5, bölümün 'Etkin: Evet' olduğu yer.
+7. Bölümün durumunu denetlemek için ' ayrıntı bölümü ' girin. Bkz. Şekil 4, bölüm *etkin: Hayır*veya şekil 5, burada Bölüm ' aktif: Yes '.
 
    Şekil 4
 
-   ![Şekil 4*DETAIL partition* komutunun çıktısıyla *DISKPART* penceresini gösterir, Bölüm 1 *Active olarak ayarlandığında: Hayır*](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![Şekil 4 ' te * ayrıntı bölümü * komutunun çıkışıyla *, Bölüm 1 * etkin: Hayır * olarak ayarlandığında * DISKPART * penceresi gösterilmektedir.](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    Şekil 5
 
-   ![Şekil 5, *detay bölümü* komutunun çıktısıyla *DISKPART* penceresini gösterir, Bölüm 1 *Active: Yes* olarak ayarlandığında.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![Şekil 5, Bölüm 1 * etkin: Evet * olarak ayarlandığında * ayrıntı bölümü * komutunun çıkışıyla * DISKPART * penceresini gösterir.](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. Bölüm Etkin **değilse,** *Etkin* bayrağı değiştirmek için *etkin* girin.
-9. Durum değişikliğinin *ayrıntı bölümü*yazarak düzgün şekilde yapılabileceğini denetleyin.
+8. Bölüm **etkin değilse** *, etkin bayrağını değiştirmek* için *etkin* ' i girin.
+9. *Ayrıntı bölümü*yazarak durum değişikliğinin düzgün şekilde yapıldığından emin olun.
 
    Şekil 6
 
-   ![Şekil 6, Bölüm 1 *Active olarak ayarlandığında *detay bölümü* komutunun çıktısıyla diskbölümü penceresini gösterir: Evet*](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![Şekil 6, Bölüm 1 * etkin: Evet * olarak ayarlandığında, * ayrıntı bölümü * komutunun çıkışıyla DiskPart penceresini gösterir.](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. DISKPART aracını kapatmak ve yapılandırma değişikliklerinizi kaydetmek için *çıkışgirin.*
+10. DISKPART aracını kapatmak ve yapılandırma değişikliklerinizi kaydetmek için *Çıkış* girin.
 
-### <a name="fix-the-disk-partition"></a>Disk Bölmesini Düzeltme
+### <a name="fix-the-disk-partition"></a>Disk bölümünü çözme
 
-1. Yükseltilmiş bir komut istemi (cmd.exe) açın.
-2. *CHKDSK'yi* diskte çalıştırmak ve hataları düzeltmek için aşağıdaki komutu kullanın:
+1. Yükseltilmiş bir komut istemi açın (cmd. exe).
+2. Disk (ler) de *Chkdsk* çalıştırmak ve hataları onarmak için aşağıdaki komutu kullanın:
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   '/f' komutu seçeneğinin eklenmesi diskteki hataları düzeltecektir. Ekli OS <DRIVE LETTER> VHD harfi ile değiştirmek için emin olun.
+   '/F ' komut seçeneğinin eklenmesi diskteki tüm hataları düzeltir. Bağlı işletim sistemi VHD <DRIVE LETTER> 'sinin harfiyle değiştirdiğinizden emin olun.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Önerilen: VM'yi yeniden oluşturmadan önce seri konsol ve bellek dökümü koleksiyonunu etkinleştirin
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Önerilir: VM 'yi yeniden oluşturmadan önce, seri konsolu ve bellek dökümü toplamayı etkinleştirin
 
-Bellek dökümü toplama ve Seri Konsol'u etkinleştirmek için aşağıdaki komut dosyasını çalıştırın:
+Bellek dökümü toplamayı ve seri konsolunu etkinleştirmek için aşağıdaki betiği çalıştırın:
 
-1. Yükseltilmiş bir komut istemi oturumu açın (Yönetici olarak çalıştırın).
+1. Yükseltilmiş bir komut istemi oturumu açın (yönetici olarak çalıştır).
 2. Aşağıdaki komutları çalıştırın:
 
-   Seri Konsolu Etkinleştir
+   Seri konsolunu etkinleştir
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. Os diskindeki boş alanın VM'deki bellek boyutu (RAM) kadar olduğunu doğrulayın.
+3. İşletim sistemi diskindeki boş alanın, VM 'deki bellek boyutu (RAM) kadar olduğundan emin olun.
 
-   Os diskinde yeterli alan yoksa, bellek dökümü dosyasının oluşturulacağı konumu değiştirmeli ve bunu Yeterli boş alana sahip VM'ye bağlı herhangi bir veri diskine yönlendirmelisiniz. Konumu değiştirmek için, aşağıdaki komutlarda veri diskinin sürücü harfiyle "%SystemRoot%" (örneğin, "F:") değiştirin.
+   İşletim sistemi diskinde yeterli alan yoksa, bellek dökümü dosyasının oluşturulacağı konumu değiştirmeniz ve yeterli boş alana sahip olan VM 'ye bağlı tüm veri diskine başvurmanız gerekir. Konumu değiştirmek için, "% SystemRoot%" değerini aşağıdaki komutlarda bulunan veri diskinin sürücü harfiyle (örneğin, "F:") değiştirin.
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>İşletim Sistemi Döküm'ü etkinleştirmek için önerilen yapılandırma
+#### <a name="suggested-configuration-to-enable-os-dump"></a>İşletim sistemi dökümünü etkinleştirmek için önerilen yapılandırma
 
-**Yük Kırık İşletim Sistemi Diski**:
+**Bozuk işletim sistemi diski yükle**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**ControlSet001'de etkinleştirin:**
+**ControlSet001 üzerinde etkinleştir:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -134,7 +134,7 @@ Bellek dökümü toplama ve Seri Konsol'u etkinleştirmek için aşağıdaki kom
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**ControlSet002'de etkinleştirin:**
+**ControlSet002 üzerinde etkinleştir:**
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -142,10 +142,10 @@ Bellek dökümü toplama ve Seri Konsol'u etkinleştirmek için aşağıdaki kom
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Bozuk Işletim Sistemi Diskini Boşaltın:**
+**Bozuk işletim sistemi diskini kaldır:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Orijinal VM'yi yeniden oluşturma
+### <a name="rebuild-the-original-vm"></a>Özgün VM 'yi yeniden oluşturma
 
-VM'yi yeniden birleştirmek için [VM Onarım Komutlarının adım](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) 5'ini kullanın.
+VM 'yi yeniden birleştirmek için [VM onarım komutlarının 5. adımını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) kullanın.

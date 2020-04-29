@@ -1,6 +1,6 @@
 ---
-title: Fstab hataları nedeniyle Linux VM başlangıç sorunları | Microsoft Dokümanlar
-description: Linux VM'nin neden başlayamadığını ve sorunu nasıl çözeceğini açıklar.
+title: Fstab hataları nedeniyle Linux sanal makinesi sorunlarını giderme | Microsoft Docs
+description: Linux VM 'nin neden başlayabileceğini ve sorunun nasıl çözüleceğini açıklar.
 services: virtual-machines-linux
 documentationcenter: ''
 author: v-miegge
@@ -15,21 +15,21 @@ ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
 ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80351145"
 ---
-# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Fstab hataları nedeniyle Linux VM başlangıç sorunları gidermek
+# <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Fstab hataları nedeniyle Linux sanal makinesi sorunlarını giderme
 
-Güvenli Kabuk (SSH) bağlantısını kullanarak Bir Azure Linux Sanal Makinesine (VM) bağlanamazsınız. [Azure portalında](https://portal.azure.com/) [Önyükleme Tanılama](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) özelliğini çalıştırdığınızda, aşağıdaki örneklere benzeyen günlük girişleri görürsünüz:
+Bir Azure Linux sanal makinesine (VM) Secure Shell (SSH) bağlantısı kullanarak bağlanamazsınız. [Azure Portal](https://portal.azure.com/) [önyükleme tanılama](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) özelliğini çalıştırdığınızda aşağıdaki örneklere benzeyen günlük girdileri görürsünüz:
 
 ## <a name="examples"></a>Örnekler
 
-Aşağıda olası hatalara örnekler verilmiştir.
+Olası hataların örnekleri aşağıda verilmiştir.
 
-### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Örnek 1: Bir disk, evrensel olarak benzersiz tanımlayıcı (UUID) yerine SCSI Kimliği ile monte edilir
+### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Örnek 1: bir disk, evrensel benzersiz tanımlayıcı (UUID) yerine SCSI KIMLIĞI tarafından bağlanır
 
 ```
 [K[[1;31m TIME [0m] Timed out waiting for device dev-incorrect.device.
@@ -41,7 +41,7 @@ Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Örnek 2: CentOS'ta ilişmemiş bir aygıt eksik
+### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Örnek 2: CentOS üzerinde eklenmemiş bir cihaz eksik
 
 ```
 Checking file systems…
@@ -67,14 +67,14 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Örnek 3: Bir VM fstab yanlış yapılandırması nedeniyle veya disk artık bağlı olmadığından başlatılamaz
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Örnek 3: bir fstab yanlış yapılandırma nedeniyle veya disk artık eklenmediğinden bir VM başlatılamaz
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
 Continue to wait, or Press S to skip mounting or M for manual recovery
 ```
 
-### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>Örnek 4: Seri günlük girişi yanlış bir UUID gösterir
+### <a name="example-4-a-serial-log-entry-shows-an-incorrect-uuid"></a>Örnek 4: bir seri günlüğü girdisi yanlış bir UUID gösterir
 
 ```
 Checking filesystems
@@ -96,57 +96,57 @@ Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-Bu sorun, dosya sistemleri tablosu (fstab) sözdizimi yanlışsa veya "/etc/fstab" dosyasındaki bir girişe eşlenen gerekli bir veri diski VM'ye eklenmemişse oluşabilir.
+Bu sorun, dosya sistemi tablosu (fstab) sözdizimi yanlışsa veya "/etc/fstab" dosyasındaki bir girdiyle eşlenen gerekli bir veri diski VM 'ye bağlı değilse oluşabilir.
 
 ## <a name="resolution"></a>Çözüm
 
-Bu sorunu gidermek için, Azure Sanal Makineler için seri konsolu kullanarak VM'yi acil durum modunda başlatın. Ardından dosya sistemini onarmak için aracı kullanın. VM'nizde seri konsol etkinleştirilemiyorsa, [VM çevrimdışı](#repair-the-vm-offline) onarım bölümüne gidin.
+Bu sorunu çözmek için, Azure sanal makineler için seri konsol kullanarak VM 'yi acil modda başlatın. Ardından, dosya sistemini onarmak için aracını kullanın. VM 'niz üzerinde seri konsol etkinleştirilmemişse, [VM çevrimdışına Onar](#repair-the-vm-offline) bölümüne gidin.
 
 ## <a name="use-the-serial-console"></a>Seri konsolu kullanma
 
-### <a name="using-single-user-mode"></a>Tek Kullanıcı Modunu Kullanma
+### <a name="using-single-user-mode"></a>Tek Kullanıcı modunu kullanma
 
-1. Seri [konsola bağlanın.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
-2. Tek kullanıcı modu tek [kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) almak için seri konsolu kullanın
-3. Bir kez vm tek kullanıcı moduna önyükleme vardır. Fstab dosyasını açmak için en sevdiğiniz metin düzenleyicisini kullanın. 
+1. [Seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)bağlanın.
+2. Tek kullanıcılı mod [Tek Kullanıcı modu](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode) almak için seri konsol kullanın
+3. VM, tek kullanıcı modunda önyüklendikten sonra. En sevdiğiniz metin düzenleyiciyi kullanarak fstab dosyasını açın. 
 
    ```
    # nano /etc/fstab
    ```
 
-4. Listelenen dosya sistemlerini gözden geçirin. fstab dosyasındaki her satır, VM başlatıldığında monte edilen bir dosya sistemini gösterir. fstab dosyasının sözdizimi hakkında daha fazla bilgi için, adam fstab komutunu çalıştırın. Bir başlangıç hatasını gidermek için, hem yapıda hem de içerikte doğru olduğundan emin olmak için her satırı gözden geçirin.
+4. Listelenen dosya sistemlerini gözden geçirin. Fstab dosyasındaki her satır, VM başlatıldığında bağlanan bir dosya sistemini gösterir. Fstab dosyasının sözdizimi hakkında daha fazla bilgi için Man fstab komutunu çalıştırın. Bir başlatma başarısızlığının sorunlarını gidermek için her bir satırı gözden geçirerek her iki yapıda ve içerikte doğru olduğundan emin olun.
 
    > [!Note]
-   > * Her satırdaki alanlar sekmelerle veya boşluklarla ayrılır. Boş satırlar yoksayılır. İlk karakter olarak sayı işareti (#) olan satırlar yorumdur. Yorumlanan satırlar fstab dosyasında kalabilir, ancak bunlar işlenmez. Satırları kaldırmak yerine emin olmadığınız fstab satırlarına yorum yapmanızı öneririz.
-   > * VM kurtarmak ve başlatmak için, dosya sistemi bölümleri gerekli tek bölümler olmalıdır. VM, yorumlanan ek bölümlerle ilgili uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Daha sonra yorumlanan satırların yorumlarını uncomment edebilirsiniz.
-   > * Dosya sistemi bölümü UUID'sini kullanarak Azure VM'lerine veri diskleri takmanızı öneririz. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Dosya sisteminin UUID'sini belirlemek için blkid komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için, adam blkid komutunu çalıştırın.
-   > * Nofail seçeneği, dosya sistemi bozuk olsa veya dosya sistemi başlangıçta yok olsa bile VM'nin başlatılmasını sağlamaya yardımcı olur. VM'nin başlaması için gerekli olmayan bölümlerde hatalar oluştuktan sonra başlatmanın devam etmesini sağlamak için fstab dosyasındaki nofail seçeneğini kullanmanızı öneririz.
+   > * Her satırdaki alanlar sekme veya boşluk ile ayrılır. Boş satırlar yok sayılır. İlk karakter olarak numara işareti (#) olan satırlar açıklamalardır. Açıklamalı çizgiler fstab dosyasında kalabilir, ancak işlenmeyecektir. Satırları kaldırmak yerine, emin olduğunuz fstab satırlarını açıklamanızı öneririz.
+   > * VM 'nin kurtarılmasına ve başlaması için, dosya sistemi bölümlerinin yalnızca gerekli bölümler olması gerekir. VM, ek açıklamalı bölümler hakkında uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Açıklamalı tüm çizgileri daha sonra açıklama ekleyebilirsiniz.
+   > * Dosya sistemi bölümünün UUID 'sini kullanarak Azure VM 'lerine veri diskleri bağlamanız önerilir. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Dosya sisteminin UUID 'sini öğrenmek için blkıd komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için Man blkıd komutunu çalıştırın.
+   > * NOFAIL seçeneği, dosya sistemi bozuksa veya dosya sistemi başlangıçta mevcut olmasa bile VM 'nin başlamasını sağlar. Sanal makinenin başlaması gerekmeyen bölümlerde hata oluşması durumunda başlatma işleminin devam etmesini sağlamak için fstab dosyasında NOFAIL seçeneğini kullanmanızı öneririz.
 
-5. VM'nin doğru şekilde başlatılmasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya yorum yapın.
+5. VM 'nin doğru şekilde başlamasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya not edin.
 
 6. Değişiklikleri fstab dosyasına kaydedin.
 
-7. Aşağıdaki komutu kullanarak vm yeniden başlatın.
+7. Aşağıdaki komutu kullanarak VM 'yi yeniden başlatın.
    
    ```
    # reboot -f
    ```
 > [!Note]
-   > VM'yi yeniden başlatacak "ctrl+x" komutunu da kullanabilirsiniz.
+   > Ayrıca, VM 'yi yeniden başlatacak olan "Ctrl + x" komutunu da kullanabilirsiniz.
 
 
-8. Girişler yorum veya düzeltme başarılı olduysa, sistem portalda bir bash istemi ne ulaşmalıdır. VM'ye bağlanıp bağlanamayacağınızı kontrol edin.
+8. Giriş yorumu veya düzeltilmesi başarılı olduysa, sistem portalda bir bash istemine ulaşmalıdır. VM 'ye bağlanıp bağlanamaıp bağlanamayacağını denetleyin.
 
-### <a name="using-root-password"></a>Kök Parola Kullanma
+### <a name="using-root-password"></a>Kök parola kullanma
 
-1. Seri [konsola bağlanın.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
-2. Yerel bir kullanıcı ve parola kullanarak sisteme oturum açın.
+1. [Seri konsoluna](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)bağlanın.
+2. Yerel bir Kullanıcı ve parola kullanarak sistemde oturum açın.
 
    > [!Note]
-   > Seri konsoldaki sistemde oturum açabilmek için SSH tuşu kullanamazsınız.
+   > Seri konsolundaki sistemde oturum açmak için bir SSH anahtarı kullanamazsınız.
 
-3. Diskin monte olmadığını gösteren hatayı arayın. Aşağıdaki örnekte, sistem artık mevcut olmayan bir disk eklemeye çalışıyordu:
+3. Diskin takılmadığını belirten hatayı arayın. Aşağıdaki örnekte, sistem artık mevcut olmayan bir diski eklemeye çalışıyor:
 
    ```
    [DEPEND] Dependency failed for /datadisk1.
@@ -159,40 +159,40 @@ Bu sorunu gidermek için, Azure Sanal Makineler için seri konsolu kullanarak VM
    (or type Control-D to continue):
    ```
 
-4. Kök parolayı (Red Hat tabanlı VM) kullanarak VM'ye bağlanın.
+4. Kök parolayı (Red Hat tabanlı VM 'Ler) kullanarak VM 'ye bağlanın.
 
-5. Fstab dosyasını açmak için en sevdiğiniz metin düzenleyicisini kullanın. Disk monte ediletıldıktan sonra Nano için aşağıdaki komutu çalıştırın:
+5. En sevdiğiniz metin düzenleyiciyi kullanarak fstab dosyasını açın. Disk bağlandıktan sonra nano için aşağıdaki komutu çalıştırın:
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. Listelenen dosya sistemlerini gözden geçirin. fstab dosyasındaki her satır, VM başlatıldığında monte edilen bir dosya sistemini gösterir. fstab dosyasının sözdizimi hakkında daha fazla bilgi için, adam fstab komutunu çalıştırın. Bir başlangıç hatasını gidermek için, hem yapıda hem de içerikte doğru olduğundan emin olmak için her satırı gözden geçirin.
+6. Listelenen dosya sistemlerini gözden geçirin. Fstab dosyasındaki her satır, VM başlatıldığında bağlanan bir dosya sistemini gösterir. Fstab dosyasının sözdizimi hakkında daha fazla bilgi için Man fstab komutunu çalıştırın. Bir başlatma başarısızlığının sorunlarını gidermek için her bir satırı gözden geçirerek her iki yapıda ve içerikte doğru olduğundan emin olun.
 
    > [!Note]
-   > * Her satırdaki alanlar sekmelerle veya boşluklarla ayrılır. Boş satırlar yoksayılır. İlk karakter olarak sayı işareti (#) olan satırlar yorumdur. Yorumlanan satırlar fstab dosyasında kalabilir, ancak bunlar işlenmez. Satırları kaldırmak yerine emin olmadığınız fstab satırlarına yorum yapmanızı öneririz.
-   > * VM kurtarmak ve başlatmak için, dosya sistemi bölümleri gerekli tek bölümler olmalıdır. VM, yorumlanan ek bölümlerle ilgili uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Daha sonra yorumlanan satırların yorumlarını uncomment edebilirsiniz.
-   > * Dosya sistemi bölümü UUID'sini kullanarak Azure VM'lerine veri diskleri takmanızı öneririz. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Dosya sisteminin UUID'sini belirlemek için blkid komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için, adam blkid komutunu çalıştırın.
-   > * Nofail seçeneği, dosya sistemi bozuk olsa veya dosya sistemi başlangıçta yok olsa bile VM'nin başlatılmasını sağlamaya yardımcı olur. VM'nin başlaması için gerekli olmayan bölümlerde hatalar oluştuktan sonra başlatmanın devam etmesini sağlamak için fstab dosyasındaki nofail seçeneğini kullanmanızı öneririz.
+   > * Her satırdaki alanlar sekme veya boşluk ile ayrılır. Boş satırlar yok sayılır. İlk karakter olarak numara işareti (#) olan satırlar açıklamalardır. Açıklamalı çizgiler fstab dosyasında kalabilir, ancak işlenmeyecektir. Satırları kaldırmak yerine, emin olduğunuz fstab satırlarını açıklamanızı öneririz.
+   > * VM 'nin kurtarılmasına ve başlaması için, dosya sistemi bölümlerinin yalnızca gerekli bölümler olması gerekir. VM, ek açıklamalı bölümler hakkında uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Açıklamalı tüm çizgileri daha sonra açıklama ekleyebilirsiniz.
+   > * Dosya sistemi bölümünün UUID 'sini kullanarak Azure VM 'lerine veri diskleri bağlamanız önerilir. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Dosya sisteminin UUID 'sini öğrenmek için blkıd komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için Man blkıd komutunu çalıştırın.
+   > * NOFAIL seçeneği, dosya sistemi bozuksa veya dosya sistemi başlangıçta mevcut olmasa bile VM 'nin başlamasını sağlar. Sanal makinenin başlaması gerekmeyen bölümlerde hata oluşması durumunda başlatma işleminin devam etmesini sağlamak için fstab dosyasında NOFAIL seçeneğini kullanmanızı öneririz.
 
-7. VM'nin doğru şekilde başlatılmasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya yorum yapın.
+7. VM 'nin doğru şekilde başlamasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya not edin.
 
 8. Değişiklikleri fstab dosyasına kaydedin.
 
 9. Sanal makineyi yeniden başlatın.
 
-10. Girişler yorum veya düzeltme başarılı olduysa, sistem portalda bir bash istemi ne ulaşmalıdır. VM'ye bağlanıp bağlanamayacağınızı kontrol edin.
+10. Giriş yorumu veya düzeltilmesi başarılı olduysa, sistem portalda bir bash istemine ulaşmalıdır. VM 'ye bağlanıp bağlanamaıp bağlanamayacağını denetleyin.
 
-11. Montaj -bir komut çalıştırarak herhangi bir fstab değişikliği test ederken montaj noktaları kontrol edin. Herhangi bir hata yoksa, montaj noktaları iyi olmalıdır.
+11. Bağlama – bir komut çalıştırarak herhangi bir fstab değişikliğini test ettiğinizde bağlama noktalarınızı kontrol edin. Hata yoksa bağlama noktalarınız iyi olmalıdır.
 
-## <a name="repair-the-vm-offline"></a>VM'yi çevrimdışı onar
+## <a name="repair-the-vm-offline"></a>VM 'yi çevrimdışı onarma
 
-1. VM'nin sistem diskini bir kurtarma VM'ine (çalışan herhangi bir Linux VM) veri diski olarak takın. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM'ini ayarlamayı otomatikleştirebilirsiniz.
+1. VM 'nin sistem diskini bir kurtarma VM 'sine (çalışmakta olan herhangi bir Linux VM) veri diski olarak ekleyin. Bunu yapmak için [CLI komutlarını](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux) kullanabilir veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md)kullanarak kurtarma VM 'sinin kurulumunu otomatik hale getirebilirsiniz.
 
-2. Sistem diskini kurtarma VM'ine veri diski olarak monte ettikten sonra, değişiklik yapmadan önce fstab dosyasını yedekleyip fstab dosyasını düzeltmek için sonraki adımları izleyin.
+2. Sistem diskini kurtarma sanal makinesine bir veri diski olarak bağladığınızda, değişiklik yapmadan önce fstab dosyasını yedekleyin ve ardından fstab dosyasını düzeltmek için sonraki adımları uygulayın.
 
-3.    Diskin monte edilmemiş olduğunu gösteren hatayı arayın. Aşağıdaki örnekte, sistem artık mevcut olmayan bir disk eklemeye çalışıyordu:
+3.    Diskin takılmadığını belirten hatayı arayın. Aşağıdaki örnekte, sistem artık mevcut olmayan bir diski eklemeye çalışıyor:
 
     ```
     [DEPEND] Dependency failed for /datadisk1.
@@ -203,43 +203,43 @@ Bu sorunu gidermek için, Azure Sanal Makineler için seri konsolu kullanarak VM
     Give root password for maintenance (or type Control-D to continue):
     ```
 
-4. Kök parolayı (Red Hat tabanlı VM) kullanarak VM'ye bağlanın.
+4. Kök parolayı (Red Hat tabanlı VM 'Ler) kullanarak VM 'ye bağlanın.
 
-5. Fstab dosyasını açmak için en sevdiğiniz metin düzenleyicisini kullanın. Disk monte ediletıldıktan sonra Nano için aşağıdaki komutu çalıştırın. Kurtarma VM'indeki fstab dosyası nda değil, monte edilmiş diskte bulunan fstab dosyası üzerinde çalıştığınızdan emin olun.
+5. En sevdiğiniz metin düzenleyiciyi kullanarak fstab dosyasını açın. Disk bağlandıktan sonra nano için aşağıdaki komutu çalıştırın. Bağlı diskte bulunan fstab dosyasında, kurtarma sanal makinesinde bulunan fstab dosyasında çalıştığınızdan emin olun.
 
    ```
    $ nano /mnt/troubleshootingdisk/etc/fstab
    ```
 
-6. Listelenen dosya sistemlerini gözden geçirin. fstab dosyasındaki her satır, VM başlatıldığında monte edilen bir dosya sistemini gösterir. fstab dosyasının sözdizimi hakkında daha fazla bilgi için, adam fstab komutunu çalıştırın. Bir başlangıç hatasını gidermek için, hem yapıda hem de içerikte doğru olduğundan emin olmak için her satırı gözden geçirin.
+6. Listelenen dosya sistemlerini gözden geçirin. Fstab dosyasındaki her satır, VM başlatıldığında bağlanan bir dosya sistemini gösterir. Fstab dosyasının sözdizimi hakkında daha fazla bilgi için Man fstab komutunu çalıştırın. Bir başlatma başarısızlığının sorunlarını gidermek için her bir satırı gözden geçirerek her iki yapıda ve içerikte doğru olduğundan emin olun.
 
    > [!Note]
-   > * Her satırdaki alanlar sekmelerle veya boşluklarla ayrılır. Boş satırlar yoksayılır. İlk karakter olarak sayı işareti (#) olan satırlar yorumdur. Yorumlanan satırlar fstab dosyasında kalabilir, ancak bunlar işlenmez. Satırları kaldırmak yerine emin olmadığınız fstab satırlarına yorum yapmanızı öneririz.
-   > * VM kurtarmak ve başlatmak için, dosya sistemi bölümleri gerekli tek bölümler olmalıdır. VM, yorumlanan ek bölümlerle ilgili uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Daha sonra yorumlanan satırların yorumlarını uncomment edebilirsiniz.
-   > * Dosya sistemi bölümü UUID'sini kullanarak Azure VM'lerine veri diskleri takmanızı öneririz. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
-   > * Dosya sisteminin UUID'sini belirlemek için blkid komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için, adam blkid komutunu çalıştırın. Kurtarmak istediğiniz diskin artık yeni bir VM'ye monte edilmiş olduğuna dikkat edin. UUIEds tutarlı olması gerekir, ancak aygıt bölüm disme (örneğin, "/ dev / sda1") bu VM farklıdır. Sistem dışı bir VHD üzerinde bulunan orijinal başarısız VM dosya sistemi bölümleri [CLI komutları kullanarak](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)kurtarma VM için kullanılamaz.
-   > * Nofail seçeneği, dosya sistemi bozuk olsa veya dosya sistemi başlangıçta yok olsa bile VM'nin başlatılmasını sağlamaya yardımcı olur. VM'nin başlaması için gerekli olmayan bölümlerde hatalar oluştuktan sonra başlatmanın devam etmesini sağlamak için fstab dosyasındaki nofail seçeneğini kullanmanızı öneririz.
+   > * Her satırdaki alanlar sekme veya boşluk ile ayrılır. Boş satırlar yok sayılır. İlk karakter olarak numara işareti (#) olan satırlar açıklamalardır. Açıklamalı çizgiler fstab dosyasında kalabilir, ancak işlenmeyecektir. Satırları kaldırmak yerine, emin olduğunuz fstab satırlarını açıklamanızı öneririz.
+   > * VM 'nin kurtarılmasına ve başlaması için, dosya sistemi bölümlerinin yalnızca gerekli bölümler olması gerekir. VM, ek açıklamalı bölümler hakkında uygulama hatalarıyla karşılaşabilir. Ancak, VM ek bölümler olmadan başlamalıdır. Açıklamalı tüm çizgileri daha sonra açıklama ekleyebilirsiniz.
+   > * Dosya sistemi bölümünün UUID 'sini kullanarak Azure VM 'lerine veri diskleri bağlamanız önerilir. Örneğin, aşağıdaki komutu çalıştırın:``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Dosya sisteminin UUID 'sini öğrenmek için blkıd komutunu çalıştırın. Sözdizimi hakkında daha fazla bilgi için Man blkıd komutunu çalıştırın. Kurtarmak istediğiniz diskin artık yeni bir VM 'ye bağlı olduğuna dikkat edin. UUID 'ler tutarlı olmalıdır, ancak cihaz bölüm kimlikleri (örneğin, "/dev/sda1") bu VM 'de farklı. Sistem dışı bir VHD 'de bulunan özgün başarısız VM 'nin dosya sistemi bölümleri, [CLI komutları kullanılarak](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-recovery-disks-linux)kurtarma sanal makinesi için kullanılamaz.
+   > * NOFAIL seçeneği, dosya sistemi bozuksa veya dosya sistemi başlangıçta mevcut olmasa bile VM 'nin başlamasını sağlar. Sanal makinenin başlaması gerekmeyen bölümlerde hata oluşması durumunda başlatma işleminin devam etmesini sağlamak için fstab dosyasında NOFAIL seçeneğini kullanmanızı öneririz.
 
-7. VM'nin doğru şekilde başlatılmasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya yorum yapın.
+7. VM 'nin doğru şekilde başlamasını sağlamak için fstab dosyasındaki yanlış veya gereksiz satırları değiştirin veya not edin.
 
 8. Değişiklikleri fstab dosyasına kaydedin.
 
-9. Sanal makineyi yeniden başlatın veya orijinal VM'yi yeniden yeniden başlatın.
+9. Sanal makineyi yeniden başlatın veya orijinal VM 'yi yeniden derleyin.
 
-10. Girişler yorum veya düzeltme başarılı olduysa, sistem portalda bir bash istemi ne ulaşmalıdır. VM'ye bağlanıp bağlanamayacağınızı kontrol edin.
+10. Giriş yorumu veya düzeltilmesi başarılı olduysa, sistem portalda bir bash istemine ulaşmalıdır. VM 'ye bağlanıp bağlanamaıp bağlanamayacağını denetleyin.
 
-11. Montaj -bir komut çalıştırarak herhangi bir fstab değişikliği test ederken montaj noktaları kontrol edin. Herhangi bir hata yoksa, montaj noktaları iyi olmalıdır.
+11. Bağlama – bir komut çalıştırarak herhangi bir fstab değişikliğini test ettiğinizde bağlama noktalarınızı kontrol edin. Hata yoksa bağlama noktalarınız iyi olmalıdır.
 
-12. Özgün sanal sabit diski söküp ayırın ve sonra orijinal sistem diskinden bir VM oluşturun. Bunu yapmak için, kurtarma VM oluşturmak için bunları kullandıysanız [CLI komutları](troubleshoot-recovery-disks-linux.md) veya [VM onarım komutları](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) kullanabilirsiniz.
+12. Özgün sanal sabit diski çıkarın ve kullanımdan çıkarın ve ardından özgün sistem diskinden bir VM oluşturun. Bunu yapmak için, onları kurtarma VM 'sini oluşturmak üzere kullandıysanız [CLI komutlarını](troubleshoot-recovery-disks-linux.md) veya [VM onarım komutlarını](repair-linux-vm-using-azure-virtual-machine-repair-commands.md) kullanabilirsiniz.
 
-13. VM'yi yeniden oluşturduktan ve SSH üzerinden bağlanabildiğinizden sonra aşağıdaki işlemleri yapabilirsiniz:
-    * Kurtarma sırasında değiştirilen veya yorumlanan fstab satırlarından herhangi birini gözden geçirin.
-    * UUID ve nofail seçeneğini uygun şekilde kullandığınızdan emin olun.
-    * VM'yi yeniden başlatmadan önce fstab değişikliklerini test edin. Bunu yapmak için aşağıdaki komutu kullanın:``$ sudo mount -a``
-    * Gelecekteki kurtarma senaryolarında kullanılmak üzere düzeltilen fstab dosyasının ek bir kopyasını oluşturun.
+13. VM 'yi yeniden oluşturduktan sonra SSH aracılığıyla buna bağlanabilirsiniz, aşağıdaki işlemleri gerçekleştirin:
+    * Kurtarma sırasında değiştirilen veya açıklama eklenen fstab satırlarından herhangi birini gözden geçirin.
+    * UUID ve NOFAIL seçeneğini uygun şekilde kullandığınızdan emin olun.
+    * VM 'yi yeniden başlatmadan önce fstab değişikliklerini test edin. Bunu yapmak için aşağıdaki komutu kullanın:``$ sudo mount -a``
+    * Gelecekteki kurtarma senaryolarında kullanılmak üzere düzeltilmiş fstab dosyasının ek bir kopyasını oluşturun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure CLI 2.0 ile işletim sistemi diskini kurtarma VM'ine takarak bir Linux VM sorun giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
-* [Azure portalını kullanarak işletim sistemi diskini kurtarma VM'ine takarak bir Linux VM sorun giderme](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
+* [Azure CLı 2,0 ile işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux sanal makinesi sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-troubleshoot-recovery-disks)
+* [Azure portal kullanarak işletim sistemi diskini bir kurtarma sanal makinesine ekleyerek bir Linux VM sorunlarını giderme](https://docs.microsoft.com/azure/virtual-machines/linux/troubleshoot-recovery-disks-portal)
 

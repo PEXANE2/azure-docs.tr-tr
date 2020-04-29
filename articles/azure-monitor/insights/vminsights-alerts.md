@@ -1,47 +1,47 @@
 ---
-title: VM'ler için Azure Monitör'den uyarılar
-description: Azure Monitor tarafından VM'ler için toplanan performans verilerinden uyarı kurallarının nasıl oluşturulutamamgerektiğini açıklar.
+title: VM'ler için Azure İzleyici uyarılar
+description: VM'ler için Azure İzleyici tarafından toplanan performans verilerinden uyarı kuralları oluşturmayı açıklar.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/23/2020
 ms.openlocfilehash: 987537d8497b3d8f2728941334d8328320ec6997
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289608"
 ---
-# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>VM'ler için Azure Monitor'dan uyarı oluşturma
-[Azure Monitor'daki uyarılar,](../platform/alerts-overview.md) izleme verilerinizdeki ilginç verileri ve desenleri proaktif olarak size bildirir. Sanal Taşıtlar için Azure Monitörü önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verilere dayanarak kendi uyarı kurallarınızı oluşturabilirsiniz. Bu makalede, örnek sorgular kümesi de dahil olmak üzere uyarı kuralları oluşturma konusunda rehberlik sağlar.
+# <a name="how-to-create-alerts-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici uyarılar oluşturma
+[Azure izleyici 'Deki uyarılar](../platform/alerts-overview.md) , izleme verilerinizde ilgi çekici veriler ve desenler konusunda size bir bildirim gönderir. VM'ler için Azure İzleyici önceden yapılandırılmış uyarı kuralları içermez, ancak topladığı verilere göre kendi kendinize de oluşturabilirsiniz. Bu makale, örnek sorgu kümesi de dahil olmak üzere uyarı kuralları oluşturma hakkında rehberlik sağlar.
 
 
 ## <a name="alert-rule-types"></a>Uyarı kuralı türleri
-Azure Monitor, uyarıyı oluşturmak için kullanılan verilere dayalı [olarak farklı türde uyarı kurallarına](../platform/alerts-overview.md#what-you-can-alert-on) sahiptir. Azure Monitor tarafından Sanal Taşıtlar için toplanan tüm veriler, [günlük uyarılarını](../platform/alerts-log.md)destekleyen Azure Monitor Günlükleri'nde depolanır. Veriler Azure Monitör Ölçümleri'nde toplanmadığından, VM'ler için Azure Monitor'dan toplanan performans verileriyle şu anda [metrik uyarıları](../platform/alerts-log.md) kullanamazsınız. Metrik uyarılar için veri toplamak için, Performans verilerini Ölçümlere toplamak [için](../platform/diagnostics-extension-overview.md) Windows VM'leri veya Linux VM'leri için [Telegraf aracısını](../platform/collect-custom-metrics-linux-telegraf.md) yükleyin.
+Azure Izleyici, uyarı oluşturmak için kullanılan verileri temel alan [farklı tür uyarı kuralları](../platform/alerts-overview.md#what-you-can-alert-on) içerir. VM'ler için Azure İzleyici tarafından toplanan tüm veriler, [günlük uyarılarını](../platform/alerts-log.md)destekleyen Azure izleyici günlüklerinde depolanır. Veriler Azure Izleyici ölçümlerine toplanmadığından, şu anda [ölçüm uyarılarını](../platform/alerts-log.md) VM'ler için Azure izleyici tarafından toplanan performans verileriyle kullanamazsınız. Ölçüm uyarıları için veri toplamak üzere Windows VM 'Ler için [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) veya Linux sanal makineleri için [telegraf aracısını](../platform/collect-custom-metrics-linux-telegraf.md) , performans verilerini ölçümlere toplamak üzere yükler.
 
-Azure Monitor'da iki tür günlük uyarısı vardır:
+Azure Izleyici 'de iki tür günlük uyarısı vardır:
 
-- Bir sorgu en az belirli sayıda kayıt döndürdüğünde [sonuç uyarılarının sayısı](../platform/alerts-unified-log.md#number-of-results-alert-rules) tek bir uyarı oluşturur. Bunlar, [Log Analytics aracısı](../platform/log-analytics-agent.md) tarafından toplanan Windows ve Syslog etkinlikleri gibi sayısal olmayan veriler veya birden çok bilgisayardaki performans eğilimlerini analiz etmek için idealdir.
-- [Metrik ölçüm uyarıları,](../platform/alerts-unified-log.md#metric-measurement-alert-rules) uyarı kuralında tanımlanan eşiği aşan bir değere sahip bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturabildiklerinden, Sanal Taşıtlar için Azure Monitor tarafından toplanan performans verileri için idealdir.
-
-
-## <a name="alert-rule-walkthrough"></a>Uyarı kuralı gözden geçirme
-Bu bölüm, VM'ler için Azure Monitor'dan alınan performans verilerini kullanarak bir metrik ölçüm uyarı kuralı oluşturulmasından geçer. Bu temel işlemi, farklı performans sayaçlarında uyarmak için çeşitli günlük sorgularıyla kullanabilirsiniz.
-
-[Azure Monitor'u kullanarak günlük uyarılarını oluştur, görüntüle ve yönet](../platform/alerts-log.md)yordamını izleyerek yeni bir uyarı kuralı oluşturarak başlayın. **Kaynak**için, Azure Monitor VM'lerinin aboneliğinizde kullandığı Günlük Analizi çalışma alanını seçin. Günlük uyarı kuralları için hedef kaynak her zaman bir Log Analytics çalışma alanı olduğundan, günlük sorgusu belirli sanal makineler veya sanal makine ölçek kümeleri için herhangi bir filtre içermelidir. 
-
-Uyarı kuralının **durumu** için, [aşağıdaki bölümdeki](#sample-alert-queries) sorgulardan birini **Arama sorgusu**olarak kullanın. Sorgu, *AggregatedValue*adlı sayısal bir özellik döndürmelidir. Eşiği aşan her sanal makine için ayrı bir uyarı oluşturabilmeniz için verileri bilgisayar tarafından özetlemelidir.
-
-Uyarı **mantığında**Metrik **ölçümü** seçin ve ardından **bir Eşik değeri**sağlayın. **Tetikleyici Uyarı Tabanlı'da,** bir uyarı oluşturulmadan önce eşiğin kaç kez aşılması gerektiğini belirtin. Örneğin, işlemcinin bir eşiği bir kez aşıp sonra normale dönmesi büyük olasılıkla umurunda değildir, ancak birden çok ardışık ölçümde eşiği aşmaya devam ederse umursamış olursunuz.
-
-**Bölüme göre değerlendirilen,** sorgunun ne sıklıkta çalıştırıldığını ve sorgunun zaman penceresini tanımlar. Aşağıda gösterilen örnekte, sorgu her 15 dakikada bir çalışır ve önceki 15 dakika boyunca toplanan performans değerlerini değerlendirir.
+- Sorgu en az belirtilen sayıda kayıt döndürdüğünde, [sonuç uyarıları sayısı](../platform/alerts-unified-log.md#number-of-results-alert-rules) tek bir uyarı oluşturur. Bunlar, [Log Analytics Aracısı](../platform/log-analytics-agent.md) tarafından toplanan sayısal olmayan veriler ve Windows ve Syslog olayları için veya birden çok bilgisayardaki performans eğilimlerini analiz etmek için idealdir.
+- [Ölçüm ölçüm uyarıları](../platform/alerts-unified-log.md#metric-measurement-alert-rules) , uyarı kuralında tanımlanan bir eşiği aşan bir değer içeren bir sorgudaki her kayıt için ayrı bir uyarı oluşturur. Bu uyarı kuralları, her bilgisayar için ayrı uyarılar oluşturduklarında VM'ler için Azure İzleyici tarafından toplanan performans verileri için idealdir.
 
 
-![Metrik ölçüm uyarı kuralı](media/vminsights-alerts/metric-measurement-alert.png)
+## <a name="alert-rule-walkthrough"></a>Uyarı kuralı Kılavuzu
+Bu bölüm, VM'ler için Azure İzleyici performans verilerini kullanarak bir ölçüm ölçümü uyarı kuralının oluşturulmasını açıklar. Bu temel işlemi, farklı performans sayaçlarıyla uyarı vermek için çeşitli günlük sorgularıyla kullanabilirsiniz.
+
+[Azure izleyici 'yi kullanarak günlük uyarılarını oluşturma, görüntüleme ve yönetme](../platform/alerts-log.md)bölümündeki yordamı izleyerek yeni bir uyarı kuralı oluşturarak başlayın. **Kaynak**Için, Azure izleyici VM 'lerinin aboneliğinizde kullandığı Log Analytics çalışma alanını seçin. Günlük uyarısı kuralları için hedef kaynak her zaman bir Log Analytics çalışma alanı olduğundan, günlük sorgusunun belirli sanal makineler veya sanal makine ölçek kümeleri için herhangi bir filtre içermesi gerekir. 
+
+Uyarı kuralının **koşulu** Için, **arama sorgusu**olarak [aşağıdaki bölümdeki](#sample-alert-queries) sorgulardan birini kullanın. Sorgu, *aggregdbulunan değeri*adlı bir sayısal Özellik döndürmelidir. Eşiği aşan her bir sanal makine için ayrı bir uyarı oluşturabilmeniz için verileri bilgisayara göre özetlemelidir.
+
+**Uyarı mantığındaki** **ölçüm ölçümü** ' ni seçin ve ardından bir **eşik değeri**belirtin. **Tetikleyici uyarısı temelinde**, bir uyarı oluşturulmadan önce eşiğin kaç kez aşılacağı belirtin. Örneğin, işlemcinin bir eşiği bir kez aşıp daha sonra normal 'e geri döndürdüğünü de dikkate almamanız gerekir, ancak birden çok ardışık ölçüm üzerinden eşiği aşmaya devam ederse dikkatli olursunuz.
+
+Bölüm **temelinde değerlendirilen** , sorgunun ne sıklıkta çalıştırılacağını ve sorgu için zaman penceresini tanımlar. Aşağıda gösterilen örnekte, sorgu 15 dakikada bir çalışacaktır ve önceki 15 dakika içinde toplanan performans değerlerini değerlendirmeyecektir.
+
+
+![Ölçüm ölçümü uyarı kuralı](media/vminsights-alerts/metric-measurement-alert.png)
 
 ## <a name="sample-alert-queries"></a>Örnek uyarı sorguları
-Aşağıdaki sorgular, Azure Monitor tarafından VM'ler için toplanan performans verilerini kullanarak metrik ölçüm uyarı kuralıyla kullanılabilir. Her biri, eşiği aşan bir değere sahip her bilgisayar için bir uyarı oluşturulacak şekilde verileri bilgisayar tarafından özetler.
+Aşağıdaki sorgular, VM'ler için Azure İzleyici tarafından toplanan performans verilerini kullanan bir ölçüm ölçümü uyarı kuralıyla birlikte kullanılabilir. Her biri, eşiği aşan bir değere sahip her bilgisayar için bir uyarının oluşturulması için verileri bilgisayara göre özetler.
 
 ### <a name="cpu-utilization"></a>CPU kullanımı
 
@@ -52,7 +52,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="available-memory-in-mb"></a>MB'de Kullanılabilir Bellek
+### <a name="available-memory-in-mb"></a>MB cinsinden kullanılabilir bellek
 
 ```kusto
 InsightsMetrics
@@ -61,7 +61,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="available-memory-in-percentage"></a>Kullanılabilir Bellek yüzde olarak
+### <a name="available-memory-in-percentage"></a>Kullanılabilir bellek yüzdesi
 
 ```kusto
 InsightsMetrics 
@@ -72,7 +72,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---all-disks-on-each-computer"></a>Kullanılan mantıksal disk - her bilgisayardaki tüm diskler
+### <a name="logical-disk-used---all-disks-on-each-computer"></a>Kullanılan mantıksal disk-her bilgisayardaki tüm diskler
 
 ```kusto
 InsightsMetrics
@@ -81,7 +81,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="logical-disk-used---individual-disks"></a>Kullanılan mantıksal disk - tek tek diskler
+### <a name="logical-disk-used---individual-disks"></a>Kullanılan mantıksal disk-ayrı diskler
 
 ```kusto
 InsightsMetrics
@@ -91,7 +91,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk
 ```
 
-### <a name="logical-disk-iops"></a>Mantıksal disk IOPS
+### <a name="logical-disk-iops"></a>Mantıksal disk ıOPS 'si
 
 ```kusto
 InsightsMetrics
@@ -111,7 +111,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m) , Computer, _ResourceId, Disk
 ```
 
-### <a name="network-interfaces-bytes-received---all-interfaces"></a>Alınan ağ arabirimleri bayt - tüm arayüzler
+### <a name="network-interfaces-bytes-received---all-interfaces"></a>Ağ arabirimleri alınan bayt-tüm arabirimler
 
 ```kusto
 InsightsMetrics
@@ -120,7 +120,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId 
 ```
 
-### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Alınan ağ arabirimleri bayt - bireysel arabirimler
+### <a name="network-interfaces-bytes-received---individual-interfaces"></a>Ağ arabirimleri alınan bayt-tek arabirimler
 
 ```kusto
 InsightsMetrics
@@ -130,7 +130,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, NetworkInterface
 ```
 
-### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Gönderilen ağ arabirimleri bayt - tüm arayüzler
+### <a name="network-interfaces-bytes-sent---all-interfaces"></a>Ağ arabirimleri gönderilen bayt-tüm arabirimler
 
 ```kusto
 InsightsMetrics
@@ -139,7 +139,7 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId
 ```
 
-### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Gönderilen ağ arabirimleri bayt - tek tek arabirimler
+### <a name="network-interfaces-bytes-sent---individual-interfaces"></a>Ağ arabirimleri gönderilen bayt-tek arabirimler
 
 ```kusto
 InsightsMetrics
@@ -150,7 +150,7 @@ InsightsMetrics
 ```
 
 ### <a name="virtual-machine-scale-set"></a>Sanal makine ölçek kümesi
-Abonelik kimliğiniz, kaynak grubunuz ve sanal makine ölçeği kümesi adınız ile değiştirin.
+Abonelik KIMLIĞINIZ, kaynak grubunuz ve sanal makine ölçek kümesi adınızla değiştirin.
 
 ```kusto
 InsightsMetrics
@@ -160,8 +160,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
-### <a name="specific-virtual-machine"></a>Özel sanal makine
-Abonelik kimliğiniz, kaynak grubunuz ve VM adınız ile değiştirin.
+### <a name="specific-virtual-machine"></a>Belirli bir sanal makine
+Abonelik KIMLIĞINIZ, kaynak grubunuz ve VM adınızla değiştirin.
 
 ```kusto
 InsightsMetrics
@@ -171,8 +171,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m)
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>Abonelikteki tüm işlem kaynakları için CPU kullanımı
-Abonelik kimliğinizle değiştirin.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-subscription"></a>Bir abonelikteki tüm işlem kaynakları için CPU kullanımı
+Abonelik KIMLIĞINIZLE değiştirin.
 
 ```kusto
 InsightsMetrics
@@ -182,8 +182,8 @@ InsightsMetrics
 | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
-### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>Kaynak grubundaki tüm bilgi işlem kaynakları için CPU kullanımı
-Abonelik kimliğiniz ve kaynak grubunuzla değiştirin.
+### <a name="cpu-utilization-for-all-compute-resources-in-a-resource-group"></a>Bir kaynak grubundaki tüm işlem kaynakları için CPU kullanımı
+Abonelik KIMLIĞINIZ ve kaynak grubuyla değiştirin.
 
 ```kusto
 InsightsMetrics
@@ -197,5 +197,5 @@ or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/r
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Monitor'daki uyarılar](../platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
-- [Sanal Veriler için Azure Monitor'dan](vminsights-log-search.md)gelen verileri kullanarak günlük sorguları hakkında daha fazla bilgi edinin.
+- [Azure izleyici 'de uyarılar](../platform/alerts-overview.md)hakkında daha fazla bilgi edinin.
+- [VM'ler için Azure izleyici verileri kullanarak günlük sorguları](vminsights-log-search.md)hakkında daha fazla bilgi edinin.

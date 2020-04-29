@@ -1,138 +1,138 @@
 ---
-title: Ticari pazar fatura | Azure Marketi
-description: Bu makale, ticari pazar için ticaretle ilgili konuları kapsamaktadır.
+title: Ticari Market faturalandırma | Azure Marketi
+description: Bu makalede, ticari Market için ticaret ile ilgili konular ele alınmaktadır.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
 ms.openlocfilehash: a0912e1dca63fabfe6bc546305824a1c582b9a2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279751"
 ---
-# <a name="commercial-marketplace-billing"></a>Ticari pazar yeri faturalandırma
+# <a name="commercial-marketplace-billing"></a>Ticari market faturalaması
 
-Bu makalede, ticari pazar için ticaretle ilgili konular ele ait:
+Bu makalede ticari Market 'e yönelik ticaret ile ilgili konular ele alınmaktadır:
 
-- [Pazar yeri yayımlama seçenekleri](#marketplace-publishing-options)
-- [İşlemgenel genel bakış](#transact-general-overview)
-- [Transact fatura modelleri](#transact-billing-models)
+- [Market Yayımlama seçenekleri](#marketplace-publishing-options)
+- [Transact genel bakış](#transact-general-overview)
+- [Transact faturalandırma modelleri](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Pazar yeri yayımlama seçenekleri
+## <a name="marketplace-publishing-options"></a>Market Yayımlama seçenekleri
 
-Ticari pazar yayıncılar için çeşitli yayımlama seçenekleri sunar.
+Ticari Market, yayımcılar için birkaç yayımlama seçeneği sunar.
 
 ### <a name="list-and-trial-publishing-options"></a>Liste ve deneme yayımlama seçenekleri
 
-Yayıncılar, tanıtım ve kullanıcı edinme amacıyla listeyi kullanabilir, deneme yapabilir ve kendi lisans (BYOL) yayımlama seçeneklerinizi getirebilir. Bu seçeneklerle Microsoft, yayımcının yazılım lisans işlemlerine doğrudan katılmaz ve ilişkili işlem ücreti yoktur. Yayıncılar, sipariş, karşılama, ölçüm, faturalama, faturalama, ödeme ve tahsilat dahil ancak bunlarla sınırlı olmamak üzere yazılım lisansı işleminin tüm yönlerini desteklemekten sorumludur. Liste ve deneme yayımlama seçenekleriyle yayıncılar, müşteriden toplanan yayıncı yazılım lisans lama ücretlerinin %100'ünü saklar.
+Yayımcılar, promosyon ve Kullanıcı alma amaçları için liste, deneme ve kendi lisansını getir (KLG) yayımlama seçeneklerinden yararlanabilir. Bu seçeneklerle, Microsoft doğrudan yayımcının yazılım lisansı işlemlerine katılmaz ve ilişkili işlem ücreti yoktur. Yayımcılar, sipariş, karşılama, ölçüm, faturalandırma, faturalama, ödeme ve koleksiyon dahil olmak üzere, yazılım lisans işleminin tüm yönlerini desteklemekten sorumludur. Liste ve deneme yayımlama seçenekleriyle, yayımcılar, müşteriden toplanan yayımcı yazılım lisansı ücretleri %100 ' i tutar.
 
-### <a name="transact-publishing-option"></a>İşleme yayımlama seçeneği
+### <a name="transact-publishing-option"></a>Transact yayımlama seçeneği
 
-Liste ve deneme yayımlama seçeneklerine ek olarak, işlem yayımlama seçeneği yayıncılar tarafından kullanılabilir. Bu seçenek, Microsoft'un genel olarak kullanılabilen ticaret özelliklerinden yararlanır ve Microsoft'un bulut pazarı işlemlerini yayımcı adına barındırmasına olanak tanır.
+Liste ve deneme yayımlama seçeneklerine ek olarak, Transact yayımlama seçeneği yayımcılar tarafından kullanılabilir. Bu seçenek Microsoft 'un küresel olarak kullanılabilir ticari olanaklarından yararlanır ve Microsoft 'un bulut Market işlemlerini yayımcı adına barındırmasına imkan tanır.
 
-## <a name="transact-general-overview"></a>İşlemgenel genel bakış
+## <a name="transact-general-overview"></a>Transact genel bakış
 
-Microsoft, işlem yayımlama seçeneğini kullanırken, üçüncü taraf yazılımlarının satılmasını ve bazı teklif türlerinin müşterinin Azure aboneliğine dağıtılmasını sağlar. Yayıncı, bir faturalandırma modeli ve teklif türü seçerken altyapı ücretlerinin faturalandırmasını ve yayıncının kendi yazılım lisanslama ücretlerini göz önünde bulundurmalıdır.
+Transact yayımlama seçeneği kullanılırken, Microsoft üçüncü taraf yazılımlarının satışı ve bazı teklif türlerinin müşterinin Azure aboneliğine dağıtılması için bir satış sağlar. Yayımcı, bir faturalandırma modeli ve teklif türü seçerken, altyapı ücretlerinin ve yayımcının kendi yazılım lisanslama ücretlerine ilişkin faturalandırmayı göz önünde bulundurmalıdır.
 
-Transact yayımlama seçeneği şu anda aşağıdaki teklif türleri için desteklenir: sanal makineler, Azure uygulamaları ve SaaS uygulamaları.
+Aşağıdaki teklif türleri için Transact Publishing seçeneği şu anda destekleniyor: sanal makineler, Azure uygulamaları ve SaaS uygulamaları.
 
-![Azure Marketinde İşleme](./media/transact-amp.png)
+![Azure Marketi 'nde Transact](./media/transact-amp.png)
 
-### <a name="billing-infrastructure-costs"></a>Altyapı maliyetlerini faturalandırma
+### <a name="billing-infrastructure-costs"></a>Faturalandırma altyapısı maliyetleri
 
 #### <a name="for-virtual-machines-and-azure-applications"></a>Sanal makineler ve Azure uygulamaları için
 
-Sanal makineler ve Azure uygulamaları için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine fatura edilir. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasındaki yazılım sağlayıcısının lisans ücretlerinden ayrı olarak sunulur.
+Sanal makineler ve Azure uygulamaları için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine faturalandırılır. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasında yazılım sağlayıcısının lisanslama ücretlerinden ayrı olarak sunulur.
 
 #### <a name="for-saas-apps"></a>SaaS uygulamaları için
 
-SaaS Apps için yayımcının Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba katması gerekir. Bu müşteri için sabit bir ücret olarak temsil edilir. Azure altyapı kullanımı yönetilir ve doğrudan iş ortağına faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayıncılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmalarına dahil etmeyi tercih eder. Yazılım lisans ücretleri ölçülü veya tüketime dayalı değildir.
+SaaS uygulamaları için yayımcı, Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba malıdır. Müşteriye yönelik bir sabit ücret olarak gösterilir. Azure altyapı kullanımı, doğrudan iş ortağı tarafından yönetilir ve faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayımcılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmasına paketlendirmeyi tercih edebilir. Yazılım Lisanslama ücretleri tarifeli veya tüketim temelli değildir.
 
-## <a name="transact-billing-models"></a>Transact fatura modelleri
+## <a name="transact-billing-models"></a>Transact faturalandırma modelleri
 
-Kullanılan işlem seçeneğine bağlı olarak, yayıncının yazılım lisans ücretleri aşağıdaki gibi sunulabilir:
+Kullanılan işlem seçeneğine bağlı olarak, yayımcının yazılım lisansı ücretleri aşağıdaki gibi gösterilebilir:
 
-- *Ücretsiz*: Yazılım lisansları için ücretsizdir.
-- *Kendi lisansınızı getirin (BYOL)*: Yazılım lisansları için geçerli olan tüm ücretler doğrudan yayıncı ve müşteri arasında yönetilir. Microsoft yalnızca Azure altyapı kullanım ücretlerinden geçer. (Yalnızca Sanal Makineler ve Azure Uygulamaları.)
-- *Kullandıkça Öde*: Yazılım lisans ücretleri, kullanılan Azure altyapısına dayalı olarak saat başına, çekirdek başına (vCPU) fiyatlandırma oranı olarak sunulur. Bu model yalnızca sanal makineler ve Azure uygulamaları için geçerlidir.
-- *Abonelik fiyatlandırması*: Yazılım lisans ücretleri aylık veya yıllık olarak sunulur, yinelenen ücret sabit oranlı veya koltuk başına faturalandırılır. Bu model yalnızca SaaS Uygulamaları ve Azure Uygulamaları - Yönetilen Uygulamalar için geçerlidir.
-- *Ücretsiz yazılım deneme*: 30 gün veya 90 gün boyunca yazılım lisansları için ücretsizdir.
+- *Ücretsiz*: yazılım lisansları için ücret alınmaz.
+- *Kendi lisansınızı getirin (KLG)*: yazılım lisansları için geçerli ücretler, doğrudan yayımcı ile müşteri arasında yönetilir. Microsoft yalnızca Azure altyapı kullanım ücretleri üzerinden geçer. (Yalnızca sanal makineler ve Azure uygulamaları.)
+- *Kullandıkça Öde*: yazılım lisansı ücretleri, kullanılan Azure altyapısına bağlı olarak saat başına, çekirdek başına (vCPU) fiyatlandırma ücreti olarak sunulur. Bu model yalnızca sanal makineler ve Azure uygulamaları için geçerlidir.
+- *Abonelik fiyatlandırması*: yazılım lisansı ücretleri aylık veya yıllık olarak, sabit bir fiyat veya bilgisayar başına faturalandırılan yinelenen ücret olarak sunulur. Bu model yalnızca SaaS uygulamaları ve Azure uygulamaları tarafından yönetilen uygulamalar için geçerlidir.
+- *Ücretsiz yazılım deneme sürümü*: 30 günlük veya 90 gün için yazılım lisansları için ücret alınmaz.
 
-### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ücretsiz ve getir-your-own-lisans (BYOL) fiyatlandırma
+### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ücretsiz ve kendi lisansını getir (KLG) fiyatlandırması
 
-Ücretsiz veya kendi lisansını getir işlem teklifi yayımlarken, Microsoft yazılım lisans ücretleriniz için satış işlemini kolaylaştırmada rol oynamaz. Liste ve deneme yayımlama seçenekleri gibi, yayıncı yazılım lisans ücretlerinin %100'ünü tutar.
+Ücretsiz veya kendi lisans işlem teklifini yayımlarken, Microsoft, yazılım lisans ücretlerinizin satış işlemini kolaylaştırmaya yönelik bir rol oynamaz. Yayımcı, liste ve deneme yayımlama seçenekleri gibi yazılım lisansı ücretlerine %100 oranında devam eder.
 
-### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Gidilen ödeme ve abonelik (site tabanlı) fiyatlandırması
+### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Kullandıkça öde ve abonelik (site tabanlı) fiyatlandırması
 
-Microsoft, istediğiniz kadar öde veya abonelik işlemi teklifi yayımlarken, yazılım lisansı satın alma işlemlerini, iadeleri ve geri ödemeleri işlemek için gereken teknolojiyi ve hizmetleri sağlar. Bu senaryoda, yayımcı Microsoft'a bu amaçlar için aracı olarak hareket etmesi için yetki verebilmiştir. Yayımcı, Microsoft'un yazılım lisanslama işlemini kolaylaştırmasına izin verirken, satıcı, sağlayıcı, dağıtıcı ve lisansveren olarak atanmasını sağlar.
+Kullandıkça Öde veya abonelik işlemi teklifi yayımlandığında, Microsoft yazılım lisansı satın alma, iade ve geri ödeme işlemlerini işleyecek teknoloji ve hizmetler sağlar. Bu senaryoda, yayımcı Microsoft 'un bu amaçlar için bir aracı görevi görmesini yetkilendirir. Yayımcı, Microsoft 'un yazılım lisanslama işlemini kolaylaştırmasına olanak sağlarken satıcı, sağlayıcı, dağıtıcı ve lisans verme özelliklerini korur.
 
-Microsoft, hem Microsoft'un ticari Pazarı'nın hem de yayıncının son kullanıcı lisans sözleşmesinin hüküm ve koşullarına tabi olarak müşterilerin yayımcı yazılımlarını sipariş etmesini, lisanslanmasını ve kullanmasını sağlar. Yayıncılar, son kullanıcı lisans sözleşmelerini sağlamalı veya teklifi oluştururken [Standart Sözleşme'yi](https://docs.microsoft.com/azure/marketplace/standard-contract) seçmelidir.
+Microsoft, müşterilerin, Microsoft 'un ticari marketi ve yayımcısının Son Kullanıcı lisanslama sözleşmesinin hüküm ve koşullarına subjecting, yayımcı yazılımını sipariş etmesini, lisanslamasını ve kullanmasına olanak sağlar. Yayımcılar, Son Kullanıcı lisanslama anlaşmasını sağlamalıdır veya teklifi oluştururken [Standart sözleşmeyi](https://docs.microsoft.com/azure/marketplace/standard-contract) seçmelidir.
 
-### <a name="free-software-trials"></a>Özgür yazılım denemeleri
+### <a name="free-software-trials"></a>Ücretsiz yazılım denemeleri
 
-Yayımlama senaryolarını işleyiş için yayımcı, bir yazılım lisansını 30 gün veya 90 gün boyunca ücretsiz olarak kullanılabilir hale getirebilir. Bu indirim yeteneği, iş ortağı çözümünün kullanımıyla yönlendirilen Azure altyapı kullanım maliyetini içermez.
+Transact yayımlama senaryolarında, Yayımcı, yazılım lisansını 30 gün veya 90 gün boyunca ücretsiz kullanılabilir hale getirir. Bu ayırma özelliği, iş ortağı çözümü kullanılarak yönlendirilen Azure altyapı kullanımının maliyetini içermez.
 
 ### <a name="private-offers"></a>Özel teklifler
 
-Yayıncılar, teklif türlerinden ve faturalandırma modellerinden para kazanmak için kullanmanın yanı sıra, anlaşmalı ve anlaşmaya özgü fiyatlandırma veya özel yapılandırmalarla birlikte özel bir teklif sunabilir. Özel teklifler, 3 işlem yayımlama seçeneğinin tümü tarafından desteklenir.
+Bir teklifi ayırmak için teklif türlerini ve faturalandırma modellerini kullanmanın yanı sıra, yayımcılar özel bir teklif elde edebilir, anlaşmalı ve anlaşmaya özgü fiyatlandırmayla veya özel yapılandırmalara sahip olabilir. Özel teklifler, tüm 3 Transact yayımlama seçenekleri tarafından desteklenir.
 
-Bu seçenek, herkese açık tekliften daha yüksek veya daha düşük fiyatlandırma sağlar. Özel teklifler indirim yapmak veya bir teklif için prim eklemek için kullanılabilir. Azure aboneliklerini teklif düzeyinde beyaz listeleyerek bir veya daha fazla müşterinin özel teklifleri kullanılabilir.
+Bu seçenek, genel kullanıma sunulan teklife göre daha yüksek veya daha düşük fiyatlandırmayı sağlar. Özel teklifler, bir teklif için bir Premium için indirim veya bir Premium eklemek üzere kullanılabilir. Özel teklifler, Azure aboneliklerini teklif düzeyinde listeleyerek beyaz bir veya daha fazla müşterinin kullanımına sunulabilir.
 
 ### <a name="examples"></a>Örnekler
 
 #### <a name="pay-as-you-go"></a>Kullandıkça öde
 
-* Çünkü'e Git seçeneğini etkinleştiriseniz, aşağıdaki maliyet yapısına sahip olursunuz.
+* Kullandıkça Öde seçeneğini etkinleştirirseniz, aşağıdaki maliyet yapısına sahip olursunuz.
 
-|Lisans maliyetiniz  | $1.00 /saat  |
+|Lisans maliyetiniz  | $1,00/saat  |
 |---------|---------|
-|Azure kullanım maliyeti (D1/1-Core)    |   $0.14 /saat     |
-|*Müşteri Microsoft tarafından faturalandırılır*    |  *$1.14 /saat*       |
+|Azure kullanım maliyeti (D1/1-çekirdek)    |   $0,14/saat     |
+|*Müşteri Microsoft tarafından faturalandırılır*    |  *$1,14/saat*       |
 
-* Bu senaryoda, Microsoft yayınlanan VM resminizin kullanımı için saat başına 1,14 TL faturalar.
+* Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için saat başına $1,14.
 
-|Microsoft faturaları  | $1.14 /saat  |
+|Microsoft faturaları  | $1,14/saat  |
 |---------|---------|
-|Microsoft, lisans maliyetinizin %80'ini size öder|   $0.80 /saat     |
-|Microsoft, lisans maliyetinizin %20'sini tutar  |  $0.20 /saat       |
-|Microsoft, Azure kullanım maliyetinin %100'ünü tutar | $0.14 /saat |
+|Microsoft, lisans maliyetinizi %80 oranında ödetir|   $0,80/saat     |
+|Microsoft, lisans maliyetlerinizin %20 ' sini tutar  |  $0,20/saat       |
+|Microsoft, Azure kullanım maliyetinin %100 ' ünü tutar | $0,14/saat |
 
-### <a name="bring-your-own-license-byol"></a>Kendi Lisansını Getir (BYOL)
+### <a name="bring-your-own-license-byol"></a>Kendi lisansınızı getirin (KLG)
 
-* BYOL seçeneğini etkinleştirirseniz, aşağıdaki maliyet yapısına sahip olursunuz.
+* KLG seçeneğini etkinleştirirseniz, aşağıdaki maliyet yapısına sahip olursunuz.
 
-|Lisans maliyetiniz  | Lisans ücreti sizin yerinizle görüşülüp faturalandırılır  |
+|Lisans maliyetiniz  | Lisans ücreti size anlaştı ve sizin tarafınızdan faturalandırılır  |
 |---------|---------|
-|Azure kullanım maliyeti (D1/1-Core)    |   $0.14 /saat     |
-|*Müşteri Microsoft tarafından faturalandırılır*    |  *$0.14 /saat*       |
+|Azure kullanım maliyeti (D1/1-çekirdek)    |   $0,14/saat     |
+|*Müşteri Microsoft tarafından faturalandırılır*    |  *$0,14/saat*       |
 
-* Bu senaryoda, Microsoft yayınlanan VM resminizin kullanımı için saat başına 0,14 TL faturalar.
+* Bu senaryoda, Microsoft, yayımlanmış VM Görüntünüzün kullanımı için saat başına $0,14.
 
-|Microsoft faturaları  | $0.14 /saat  |
+|Microsoft faturaları  | $0,14/saat  |
 |---------|---------|
-|Microsoft Azure kullanım maliyetini korur    |   $0.14 /saat     |
-|Microsoft lisans maliyetinin %0'ını tutar   |  $0.00 /saat       |
+|Microsoft, Azure kullanım maliyetini korur    |   $0,14/saat     |
+|Microsoft, lisans maliyetinizi %0 oranında tutar   |  $0,00/saat       |
 
-### <a name="saas-app-subscription"></a>SaaS Uygulama aboneliği
+### <a name="saas-app-subscription"></a>SaaS uygulama aboneliği
 
-Bu seçenek Microsoft üzerinden satış yapacak şekilde yapılandırılmalıdır ve aylık veya yıllık bazda sabit bir oranda veya kullanıcı başına fiyatlandırılabilir.
+Bu seçenek, Microsoft üzerinden satış için yapılandırılmış olmalıdır ve aylık veya yıllık olarak, sabit bir hızda veya Kullanıcı başına fiyatlandırılabilecek.
 
-• SaaS teklifi için Microsoft üzerinden Sat seçeneğini etkinleştiriseniz, aşağıdaki maliyet yapısına sahip olursunuz.
+• SaaS teklifi için Microsoft 'tan satışı etkinleştir seçeneğini etkinleştirirseniz, aşağıdaki maliyet yapısına sahip olursunuz.
 
-|Lisans maliyetiniz       | $100.00 /ay  |
+|Lisans maliyetiniz       | $100,00/ay  |
 |--------------|---------|
-|Azure kullanım maliyeti (D1/1-Core)    | Müşteriye değil, doğrudan yayımcıya faturalandırılır |
-|*Müşteri Microsoft tarafından faturalandırılır*    |  *Ayda $100.00 (not: yayıncı lisans ücretinde tahakkuk eden veya geçiş yapan altyapı maliyetlerini hesaba katmalıdır)*  |
+|Azure kullanım maliyeti (D1/1-çekirdek)    | Müşteriye değil doğrudan yayımcıya faturalandırılır |
+|*Müşteri Microsoft tarafından faturalandırılır*    |  *ayda $100,00 (Note: Yayımcı, lisans ücretindeki herhangi bir tahakkuk eden veya doğrudan altyapı maliyeti için hesaba başvurmalıdır)*  |
 
-* Bu senaryoda, Microsoft yazılım lisansınız için 100,00 TL fatura eder ve yayımcıya 80,00 TL öder.
-* İndirimli Pazar Yeri Hizmet Ücreti'ne hak kazanan iş ortakları, Mayıs 2019'dan Haziran 2020'ye kadar SaaS tekliflerinde indirimli işlem ücreti görebilecektir. Bu senaryoda, Microsoft yazılım lisansınız için 100,00 TL fatura eder ve yayımcıya 90,00 TL öder.
+* Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $80,00 ' i ödeder.
+* Azaltılmış Market hizmet ücreti için uygun olan iş ortakları, 2019 2020 Haziran 'a kadar Mayıs 'a kadar olan SaaS teklifleriyle daha düşük bir işlem ücreti görür. Bu senaryoda, Microsoft, yazılım lisansınızın $100,00 ' i faturalandırır ve Yayımcı için $90,00 ' i ödeder.
 
-|Microsoft faturaları  | $100.00 /ay  |
+|Microsoft faturaları  | $100,00/ay  |
 |---------|---------|
-|Microsoft, lisans maliyetinizin %80'ini size öder <br> \*Microsoft, herhangi bir nitelikli SaaS uygulaması için lisans maliyetinizin %90'ını öder   |   $80.00 /ay <br> \*$90.00 /ay    |
-|Microsoft, lisans maliyetinizin %20'sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinin %10'unu tutar.  |  $20.00 /ay <br> \*10,00 $     |
+|Microsoft, lisans maliyetinizi %80 oranında ödetir <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %90 oranında ödetir   |   $80,00/ay <br> \*$90,00/ay    |
+|Microsoft, lisans maliyetlerinizin %20 ' sini tutar <br> \*Microsoft, tüm nitelikli SaaS uygulamaları için lisans maliyetinizi %10 oranında tutar.  |  $20,00/ay <br> \*$10,00     |
 
-**İndirimli Pazar Yeri Hizmet Ücreti:** Ticari Pazarımızda yayınladığınız belirli SaaS Ürünleri için Microsoft, Pazar Yeri Hizmet Ücretini %20'den (Microsoft Publisher Anlaşması'nda açıklandığı gibi) %10'a düşürecektir.  Ürününüzün hak kazanabilmesi için, ürünlerinizden en az birinin Microsoft tarafından IP ortak satış hazır veya IP ortak satışı öncelikli olarak belirtilmesi gerekir. Bu indirimli Market Hizmet Ücretini aya alabilmek için, uygunluğun bir önceki takvim ayının bitiminden en az beş (5) iş günü önce karşılanması gerekir. İndirimli Pazar Yeri Hizmeti ücreti, Ticari Pazar Yeri miz aracılığıyla sunulan VM'ler, Yönetilen Uygulamalar veya diğer ürünler için geçerli olmayacaktır.  Bu İndirimli Pazar Yeri Hizmet Ücreti, Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 tarihleri arasında tahsil edilen lisans ücretleriyle nitelikli tekliflere sunulacaktır.  Bu süre sonunda, Market Servis Ücreti normal tutarına geri dönecektir.
+**Daha az Market hizmeti ücreti:** Ticari marketi 'nde yayımladığınız belirli SaaS ürünleri için Microsoft, Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 oranında azaltacak.  Ürününüzün uygun olabilmesi için, ürünlerinizin en az birinin, Microsoft tarafından IP ortak satışı için ayrılan veya IP ortak satışı için tasarlanmış olması gerekir. Bu ay için daha düşük olan bu Market hizmeti ücretini almak için, uygunluk önceki takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha az Market hizmeti ücreti, sanal makineler, yönetilen uygulamalar veya ticari Market 'ten sunulan diğer ürünlerden hiçbiri için uygulanmaz.  Bu azaltılan Market hizmet ücreti, Microsoft tarafından 1 Mayıs 2019 ile 30 Haziran 2020 arasında toplanan lisans ücretleri sayesinde nitelikli tekliflerle kullanılabilir.  Bu süreden sonra Market hizmeti ücreti normal miktarına geri döner.

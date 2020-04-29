@@ -1,6 +1,6 @@
 ---
-title: Azure Blobs'tan veri aktarmak için Azure İçe Aktarma/Verme kullanma | Microsoft Dokümanlar
-description: Azure Blobs'tan veri aktarmak için Azure portalında dışa aktarma işleri oluşturmayı öğrenin.
+title: Azure Bloblarından verileri dışarı aktarmak için Azure Içeri/dışarı aktarma kullanma | Microsoft Docs
+description: Azure Bloblarından veri aktarmak için Azure portal ' de dışarı aktarma işleri oluşturmayı öğrenin.
 author: alkohli
 services: storage
 ms.service: storage
@@ -9,143 +9,143 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282520"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Azure Blob depolamadan verileri dışarı aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
-Bu makalede, Azure Blob depolamadan büyük miktarda veriyi güvenli bir şekilde dışa aktarmak için Azure İçe Alma/Dışa Aktarma hizmetinin nasıl kullanılacağına ilişkin adım adım yönergeler verilmektedir. Hizmet, boş sürücüleri Azure veri merkezine göndermenizi gerektirir. Hizmet, depolama hesabınızdaki verileri sürücülere aktarır ve sürücüleri geri yönlendirir.
+Bu makalede, Azure Blob depolama alanındaki büyük miktarlarda verileri güvenli bir şekilde aktarmak için Azure Içeri/dışarı aktarma hizmeti 'nin nasıl kullanılacağına ilişkin adım adım yönergeler sağlanmaktadır. Hizmet, Azure veri merkezine boş sürücüler sevk etmeniz gerekir. Hizmet, depolama hesabınızdan sürücülere veri aktarır ve sonra sürücüleri geri gönderir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Verileri Azure Blob Depolama'dan aktarmak için bir dışa aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki ön koşullar listesini dikkatle gözden geçirin ve tamamlayın.
-Şunları yapmalısın:
+Azure Blob depolama 'dan verileri aktarmak üzere bir dışarı aktarma işi oluşturmadan önce, bu hizmet için aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun.
+Şunları yapmanız gerekir:
 
-- İçe Aktarma/Dışa Aktarma hizmeti için kullanılabilecek etkin bir Azure aboneliğine sahip olun.
-- En az bir Azure Depolama hesabınız var. [İçe Aktarma/Dışa Aktarma hizmeti için Desteklenen depolama hesapları nın ve depolama türlerinin listesine](storage-import-export-requirements.md)bakın. Yeni bir depolama hesabı oluşturma hakkında daha fazla bilgi için [bkz.](storage-account-create.md)
-- [Desteklenen türlerin](storage-import-export-requirements.md#supported-disks)disksayısı yeterli sayıda var.
-- Bir FedEx/DHL hesabınız var. FedEx/DHL dışında bir operatör kullanmak istiyorsanız, 'den Azure `adbops@microsoft.com`Veri Kutusu İşlemleri ekibine başvurun.
-  - Hesap geçerli olmalı, bakiyeye sahip olmalı ve sevkiyat alabilmeli.
-  - Dışa aktarma işi için bir izleme numarası oluşturun.
+- Içeri/dışarı aktarma hizmeti için kullanılabilen etkin bir Azure aboneliğine sahip olun.
+- En az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
+- [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır.
+- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, ' de `adbops@microsoft.com`Azure Data Box işlemler ekibine başvurun.
+  - Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
+  - Dışarı aktarma işi için bir izleme numarası oluştur.
   - Her işin ayrı bir izleme numarası olmalıdır. Aynı izleme numarasına sahip birden çok iş desteklenmez.
-  - Operatör hesabınız yoksa, şu na gidin:
-    - [Bir FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
-    - [Bir DHL hesabı oluşturun.](http://www.dhl-usa.com/en/express/shipping/open_account.html)
+  - Bir taşıyıcı hesabınız yoksa şuraya gidin:
+    - [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
+    - [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
-## <a name="step-1-create-an-export-job"></a>Adım 1: Bir dışa aktarma işi oluşturma
+## <a name="step-1-create-an-export-job"></a>1. Adım: dışarı aktarma işi oluşturma
 
-Azure portalında bir dışa aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
+Azure portal bir dışarı aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
 
-1. Oturum https://portal.azure.com/aç.
-2. Tüm **hizmetlere gidin > Depolama > İthalat/Dışa Aktarma işleri.**
+1. Oturum açın https://portal.azure.com/.
+2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
 
-    ![Alma/dışa aktarma işlerine gitme](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
+    ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
 
-3. **İçe Alma/Dışa Aktar İşi Oluştur'u**tıklatın.
+3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
 
-    ![İçe/Dışa Aktar/Dışa Aktarma işini tıklatın](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
+    ![Içeri/dışarı aktarma işi ' ne tıklayın](./media/storage-import-export-data-from-blobs/export-from-blob2.png)
 
-4. **Temel olarak:**
+4. **Temel bilgiler**:
 
-    - **Azure'dan Dışa Aktar'ı**seçin.
-    - Dışa aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için seçtiğiniz adı kullanın.
-        - Ad yalnızca küçük harfler, sayılar, tireler ve alt çizerler içerebilir.
-        - Ad bir harfle başlamalı ve boşluk içermeyebilir.
+    - **Azure 'Dan dışarı aktar**' ı seçin.
+    - Dışarı aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için seçtiğiniz adı kullanın.
+        - Ad yalnızca küçük harf, sayı, kısa çizgi ve alt çizgi içerebilir.
+        - Ad bir harfle başlamalı ve boşluk içermemelidir.
     - Bir abonelik seçin.
     - Bir kaynak grubu girin veya seçin.
 
         ![Temel Bilgiler](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
-5. **İş ayrıntıları:**
+5. **İş için Ayrıntılar**:
 
-    - Dışa aktarılacak verilerin bulunduğu depolama hesabını seçin. Bulunduğunuz yere yakın bir depolama hesabı kullanın.
-    - Açılan konumu, seçilen depolama hesabının bölgesine bağlı olarak otomatik olarak doldurulur.
-    - Depolama hesabınızdan boş sürücünüze veya sürücülerinize aktarmak istediğiniz blob verilerini belirtin.
-    - Depolama hesabındaki tüm blob verilerini **dışa** aktarmayı seçin.
+    - Aktarılacağı verilerin bulunduğu depolama hesabını seçin. Bir depolama hesabını, bulunduğu yere yakın bir şekilde kullanın.
+    - Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
+    - Depolama hesabınızdan, boş sürücünüze veya sürücülere dışarı aktarmak istediğiniz blob verilerini belirtin.
+    - Depolama hesabındaki **tüm blob verilerini dışa aktarmayı** seçin.
 
-         ![Tümlerini dışa aktar](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
+         ![Tümünü dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob4.png)
 
-    - Hangi kapların ve lekelerin dışa aktarılamasını belirtebilirsiniz.
-        - **Dışa aktarmak için bir blob belirtmek için**: **Eşit To** seçiciyi kullanın. Kapsayıcı adı ile başlayan blob göreli yolu belirtin. Kök kapsayıcısını belirtmek için *$root* kullanın.
-        - **Önek ile başlayan tüm lekeleri belirtmek için**: Seçici **ile Başlar'ı** kullanın. Öne eğik çizgi '/' ile başlayan önek belirtin. Önek, kapsayıcı adının öneki, tam kapsayıcı adı veya blob adının önekinin ardından gelen tam kapsayıcı adı olabilir. Bu ekran görüntüsünde gösterildiği gibi, işleme sırasında hataları önlemek için geçerli biçiminde blob yolları sağlamanız gerekir. Daha fazla bilgi için geçerli [blob yolları örneklerine](#examples-of-valid-blob-paths)bakın.
+    - Hangi kapsayıcıları ve Blobların dışarı aktarılacağını belirtebilirsiniz.
+        - **Dışarı aktarılacak bir blob belirtmek için**: **eşittir** seçiciyi kullanın. Kapsayıcının adından başlayarak, Blobun göreli yolunu belirtin. Kök kapsayıcıyı belirtmek için *$root* kullanın.
+        - **Önekle başlayan tüm Blobları belirtmek için**: **ile başlar** seçiciyi kullanın. '/' Eğik çizgiyle başlayan öneki belirtin. Ön ek, kapsayıcı adının ön eki, tüm kapsayıcı adı ya da tüm kapsayıcı adı ve ardından blob adının öneki olabilir. İşlem sırasında hataları önlemek için, bu ekran görüntüsünde gösterildiği gibi BLOB yollarını geçerli biçimde sağlamanız gerekir. Daha fazla bilgi için bkz. [geçerli blob yolları örnekleri](#examples-of-valid-blob-paths).
 
-           ![Seçili kapları ve lekeleri dışa aktarma](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
+           ![Seçili kapsayıcıları ve Blobları dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob5.png)
 
     - Blob listesi dosyasından dışa aktarabilirsiniz.
 
-        ![Blob listesi dosyasından dışa aktarma](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
+        ![Blob listesi dosyasından dışarı aktar](./media/storage-import-export-data-from-blobs/export-from-blob6.png)  
 
    > [!NOTE]
-   > Dışa aktarılacak blob veri kopyalama sırasında kullanılıyorsa, Azure İçe Alma/Dışa Aktarma hizmeti blob'un anlık görüntüsünü alır ve anlık görüntünün kopyalanır.
+   > Dışarı aktarılacak blob veri kopyalama sırasında kullanılıyorsa, Azure Içeri/dışarı aktarma hizmeti Blobun anlık görüntüsünü alır ve anlık görüntüyü kopyalar.
 
-6. **Karşılığında nakliye bilgileri**:
+6. **İade gönderimi bilgileri**:
 
-    - Açılan listeden taşıyıcıyı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılır yerden mevcut bir seçenek seçin. Kullanmayı planladığınız `adbops@microsoft.com` operatörle ilgili bilgilerle birlikte Azure Veri Kutusu İşlemleri ekibine başvurun.
-    - Bu taşıyıcıyla oluşturduğunuz geçerli bir taşıyıcı hesap numarasını girin. Microsoft, dışa aktarma işiniz tamamlandıktan sonra sürücüleri size geri sevk etmek için bu hesabı kullanır.
-    - Tam ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, zip, eyalet/ il ve ülke/bölge sağlayın.
+    - Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. Kullanmayı planladığınız taşıyıcı ile ilgili `adbops@microsoft.com` bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
+    - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft bu hesabı, dışa aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için kullanır.
+    - Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
 
         > [!TIP]
-        > Tek bir kullanıcı için e-posta adresi belirtmek yerine, grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirim almanızı sağlar.
+        > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
 
-7. **Özetle**:
+7. **Özet**:
 
     - İşin ayrıntılarını gözden geçirin.
-    - İş adını not alın ve diskleri Azure'a sevk etmek için Azure veri merkezi gönderi adresi sağladı.
+    - Azure 'a disklerin gönderimi için iş adını ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın.
 
         > [!NOTE]
-        > Diskleri her zaman Azure portalında belirtilen veri merkezine gönderin. Diskler yanlış veri merkezine gönderilirse, iş işlenmez.
+        > Diskleri Azure portal belirtilen veri merkezine her zaman gönderin. Diskler yanlış veri merkezine sevk edildiğinde iş işlenmez.
 
-    - Dışa aktarma iş oluşturmayı tamamlamak için **Tamam'ı** tıklatın.
+    - Dışarı aktarma işi oluşturmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
 
 <!--## (Optional) Step 2: -->
 
-## <a name="step-2-ship-the-drives"></a>Adım 2: Sürücüleri gönderme
+## <a name="step-2-ship-the-drives"></a>2. Adım: sürücüleri gönderme
 
-İhtiyacınız olan sürücü sayısını bilmiyorsanız, sürücü [sayısını kontrol](#check-the-number-of-drives)edin. Sürücülerin sayısını biliyorsanız, sürücüleri sevk etmeye devam edin.
+İhtiyaç duyduğunuz sürücü sayısını görmüyorsanız, [sürücü sayısını kontrol](#check-the-number-of-drives)edin. Sürücü sayısını biliyorsanız, sürücüleri teslim edin.
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-3-update-the-job-with-tracking-information"></a>Adım 3: İzleme bilgileriyle işi güncelleştirin
+## <a name="step-3-update-the-job-with-tracking-information"></a>3. Adım: işi izleme bilgileriyle güncelleştirme
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-4-receive-the-disks"></a>Adım 4: Diskleri alma
+## <a name="step-4-receive-the-disks"></a>4. Adım: diskleri alma
 
-Pano iş tamamlandığında, diskler size gönderilir ve gönderinin takip numarası portalda bulunur.
+Pano işi tamamladıktan sonra, diskler size gönderilir ve sevkıyatın izleme numarası portalda kullanılabilir.
 
-1. Dışa aktarılan verileri içeren sürücüleri aldıktan sonra, sürücülerin kilidini açmak için BitLocker anahtarlarını almanız gerekir. Azure portalındaki dışa aktarma işine gidin. **İçe/Aktar sekmesini** tıklatın.
-2. Listeden dışa aktarma işinizi seçin ve tıklatın. **Şifreleme'ye** git ve anahtarları kopyala.
+1. İçe aktarılmış verileri olan sürücüleri aldıktan sonra, sürücülerin kilidini açmak için BitLocker anahtarlarını almanız gerekir. Azure portal dışarı aktarma işine gidin. **İçeri/dışarı aktarma** sekmesine tıklayın.
+2. Listeden dışarı aktarma işinizi seçin ve tıklayın. **Şifrelemeye** gidin ve anahtarları kopyalayın.
 
-   ![Dışa aktarma işi için BitLocker anahtarlarını görüntüleme](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
+   ![Dışarı aktarma işi için BitLocker anahtarlarını görüntüle](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
 
-3. Disklerin kilidini açmak için BitLocker tuşlarını kullanın.
+3. Disklerin kilidini açmak için BitLocker anahtarlarını kullanın.
 
-İhracat tamamlandı.
+Dışarı aktarma işlemi tamamlanmıştır.
 
-## <a name="step-5-unlock-the-disks"></a>Adım 5: Disklerin kilidini açın
+## <a name="step-5-unlock-the-disks"></a>5. Adım: disklerin kilidini açma
 
-WAImportExport aracının 1.4.0.300 sürümünü kullanıyorsanız, sürücünün kilidini açmak için aşağıdaki komutu kullanın:
+Waımportexport aracının sürüm 1.4.0.300 kullanıyorsanız, sürücünün kilidini açmak için aşağıdaki komutu kullanın:
 
     `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
-Aracın önceki sürümlerini kullanıyorsanız, sürücünün kilidini açmak için BitLocker iletişim kutusunu kullanın.
+Aracın önceki sürümlerini kullanıyorsanız sürücünün kilidini açmak için BitLocker iletişim kutusunu kullanın.
 
-Şu anda, işi silebilir veya bırakabilirsiniz. İşler 90 gün sonra otomatik olarak silinir.
+Şu anda işi silebilir veya bırakabilirsiniz. İşler 90 gün sonra otomatik olarak silinir.
 
-## <a name="check-the-number-of-drives"></a>Sürücülerin sayısını kontrol edin
+## <a name="check-the-number-of-drives"></a>Sürücü sayısını denetleyin
 
-Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısını belirlemenize yardımcı olur. Desteklenen işletim sistemi sürümünü çalıştıran bir Windows sisteminde bu adımı [gerçekleştirin.](storage-import-export-requirements.md#supported-operating-systems)
+Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısını belirlemenize yardımcı olur. [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sisteminde bu adımı gerçekleştirin.
 
-1. [WAImportExport sürüm 1'i](https://www.microsoft.com/download/details.aspx?id=42659) Windows sisteminden indirin.
-2. Varsayılan klasöre `waimportexportv1`unzip . Örneğin, `C:\WaImportExportV1`.
-3. Yönetim ayrıcalıklarına sahip bir PowerShell veya komut satırı penceresi açın. Dizini gün önce gün önce gün önce gün önce pişmemiş klasöre değiştirmek için aşağıdaki komutu çalıştırın:
+1. Windows sisteminde [Waımportexport sürüm 1 ' i indirin](https://www.microsoft.com/download/details.aspx?id=42659) .
+2. Varsayılan klasöre `waimportexportv1`ayıklayın. Örneğin, `C:\WaImportExportV1`.
+3. Yönetici ayrıcalıklarına sahip bir PowerShell veya komut satırı penceresi açın. Dizini sıkıştırılmış klasöre dönüştürmek için aşağıdaki komutu çalıştırın:
 
     `cd C:\WaImportExportV1`
 
-4. Seçili lekeler için gereken disk sayısını denetlemek için aşağıdaki komutu çalıştırın:
+4. Seçili Bloblar için gereken disk sayısını denetlemek için şu komutu çalıştırın:
 
     `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
@@ -153,26 +153,26 @@ Bu *isteğe bağlı* adım, dışa aktarma işi için gereken sürücü sayısı
 
     |Komut satırı parametresi|Açıklama|  
     |--------------------------|-----------------|  
-    |**/logdir:**|İsteğe bağlı. Günlük dizini. Verbose günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
-    |**/sn:**|Gereklidir. Dışa aktarma işi için depolama hesabının adı.|  
-    |**/sk:**|Yalnızca bir kapsayıcı SAS belirtilmemişse gereklidir. Dışa aktarma işinin depolama hesabının hesap anahtarı.|  
-    |**/csas:**|Yalnızca bir depolama hesabı anahtarı belirtilmemişse gereklidir. İhracat işinde dışa aktarılacak lekeleri listelemek için konteyner SAS.|  
-    |**/İhracatBlobListFile:**|Gereklidir. Dışa aktarılacak blob sevesleri veya blob yolu önekleri listesini içeren XML dosyasına giden yol. Alma/Dışa Aktar `BlobListBlobPath` hizmeti REST API'nin İş Icabı'nda öğede kullanılan dosya biçimi. [Put Job](/rest/api/storageimportexport/jobs)|  
-    |**/DriveSize:**|Gereklidir. Bir dışa aktarma işi için kullanılacak sürücülerin boyutu, *örneğin,* 500 GB, 1,5 TB.|  
+    |**/logdir:**|İsteğe bağlı. Günlük dizini. Ayrıntılı günlük dosyaları bu dizine yazılır. Belirtilmemişse, geçerli dizin günlük dizini olarak kullanılır.|  
+    |**sn**|Gereklidir. Dışarı aktarma işi için depolama hesabının adı.|  
+    |**sor**|Yalnızca bir kapsayıcı SAS belirtilmemişse gereklidir. Dışarı aktarma işi için depolama hesabının hesap anahtarı.|  
+    |**/csas:**|Yalnızca bir depolama hesabı anahtarı belirtilmemişse gereklidir. Dışarı aktarma işine verilecek Blobları listelemek için kapsayıcı SAS.|  
+    |**/ExportBlobListFile:**|Gereklidir. Dışarı aktarılacak Bloblar için blob yollarının listesini veya blob yolu öneklerini içeren XML dosyasının yolu. Içeri/dışarı aktarma hizmetinin REST API `BlobListBlobPath` [İş yerleştirme](/rest/api/storageimportexport/jobs) işlemindeki öğesinde kullanılan dosya biçimi.|  
+    |**/DriveSize:**|Gereklidir. Bir dışa aktarma işi için kullanılacak sürücülerin boyutu, *örn.* 500 GB, 1,5 TB.|  
 
-    [PreviewExport komutunun](#example-of-previewexport-command)bir örneğine bakın.
+    [Önizleme dışa aktarma komutuna bir örnek](#example-of-previewexport-command)görüntüleyin.
 
-5. Dışa aktarma işi için sevk edilecek sürücülere okuma/yazma yapabileceğinizden kontrol edin.
+5. Dışa aktarma işi için sevk edilecek sürücüleri okuyup yazverecağınızı kontrol edin.
 
 ### <a name="example-of-previewexport-command"></a>PreviewExport komutu örneği
 
-Aşağıdaki örnek komutu `PreviewExport` gösterir:  
+Aşağıdaki örnek, `PreviewExport` komutunu göstermektedir:  
 
 ```powershell
     WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
 ```  
 
-Dışa aktarma blob listesi dosyası, burada gösterildiği gibi blob adları ve blob önekleri içerebilir:  
+Dışarı aktarma blobu liste dosyası, burada gösterildiği gibi BLOB adlarını ve BLOB öneklerini içerebilir:  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>  
@@ -183,9 +183,9 @@ Dışa aktarma blob listesi dosyası, burada gösterildiği gibi blob adları ve
 </BlobList>  
 ```
 
-Azure İçe Alma/Dışa Aktarma Aracı, dışa aktarılacak tüm lekeleri listeler ve gerekli ek yükü dikkate alarak bunları belirtilen boyuttaki sürücülere nasıl paketleeceğini hesaplar, ardından lekeleri tutmak ve kullanım bilgilerini kullanmak için gereken sürücü sayısını tahmin eder.  
+Azure Içeri/dışarı aktarma aracı, dışarı aktarılacak tüm Blobları listeler ve gerekli ek yükü hesaba katarak bu dosyaları belirtilen boyuttaki sürücülere paketlerinizi hesaplar ve ardından blob 'ları ve sürücü kullanım bilgilerini tahmin etmek için gereken sürücü sayısını tahmin eder.  
 
-Aşağıda, bilgi günlüklerinin atlanan çıktıya bir örneği verilmiştir:  
+Bilgi günlüklerinin atlanmasıyla birlikte çıktının bir örneği aşağıda verilmiştir:  
 
 ```powershell
 Number of unique blob paths/prefixes:   3  
@@ -203,19 +203,19 @@ Number of drives needed:        3
 
 ## <a name="examples-of-valid-blob-paths"></a>Geçerli blob yolları örnekleri
 
-Aşağıdaki tablo, geçerli blob yollarının örneklerini gösterir:
+Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob Yolu | Açıklama |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
-   | Ile Başlar |/ |Depolama hesabındaki tüm lekeleri dışa aktarma |
-   | Ile Başlar |/$root/ |Kök kabındaki tüm lekeleri dışa aktarma |
-   | Ile Başlar |/kitap |Önek **defteriyle** başlayan herhangi bir kaptaki tüm lekeleri dışa aktarma |
-   | Ile Başlar |/müzik/ |Konteyner **müzikteki** tüm lekeleri dışa aktarma |
-   | Ile Başlar |/müzik/aşk |Önek **aşk** ile başlayan konteyner **müzik** tüm lekeler ihrac |
-   | Eşit |$root/logo.bmp |Kök konteyneriçinde blob **logo.bmp** dışa aktarma |
-   | Eşit |videolar/hikaye.mp4 |Konteyner **videoları** damla **hikaye.mp4** İhracat |
+   | Ile başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
+   | Ile başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |
+   | Ile başlar |/Book |Önek **defteriyle** başlayan herhangi bir kapsayıcıdaki tüm Blobları dışa aktarır |
+   | Ile başlar |öğelerini |Kapsayıcı **müziindeki** tüm Blobları dışa aktarır |
+   | Ile başlar |/Music/aşk |Ön ek **sevimle** başlayan **kapsayıcıdaki** tüm Blobları dışa aktarır |
+   | Eşittir |$root/logo.exe |Kök kapsayıcıda blob **logo. bmp** dışa aktarır |
+   | Eşittir |Videolar/öykü. mp4 |Kapsayıcı **videolarında** blob **öykü. mp4** dışa aktarır |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [İş ve sürücü durumunu görüntüleme](storage-import-export-view-drive-status.md)
-- [İthalat/İhracat gereksinimlerini gözden geçirin](storage-import-export-requirements.md)
+- [İşi ve sürücü durumunu görüntüleme](storage-import-export-view-drive-status.md)
+- [Içeri/dışarı aktarma gereksinimlerini gözden geçirme](storage-import-export-requirements.md)

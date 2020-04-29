@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile Azure VM'lerine şirket içinde başarısız olun
-description: Azure Site Kurtarma'yı kullanarak şirket içinde Azure'a geçilemeyip Azure'a bağlandıktan sonra Azure VM'lerine nasıl bağlanıştırılanın açıklanır
+title: Azure Site Recovery ile Azure VM 'lerini şirket içi yük devretmeye bağlama
+description: Şirket içinden Azure 'a yük devretmeden sonra Azure Site Recovery kullanarak Azure VM 'lerine nasıl bağlanabileceğinizi açıklar
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
@@ -8,152 +8,152 @@ ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
 ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281996"
 ---
-# <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinde başarısız olduktan sonra Azure VM'lerine bağlanın 
+# <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Şirket içinden yük devretmeden sonra Azure VM 'lerine bağlanma 
 
 
-Bu makalede, başarısız olduktan sonra Azure VM'lere başarılı bir şekilde bağlanabilmeniz için bağlantının nasıl ayarlandığı açıklanmaktadır.
+Bu makalede, yük devretmeden sonra Azure VM 'lerine başarıyla bağlanabilmek için bağlantının nasıl ayarlanacağı açıklanır.
 
-Azure'da şirket içi sanal makinelerin (VM'ler) ve fiziksel sunucuların olağanüstü kurtarma sını ayarladığınızda, [Azure Site Kurtarma](site-recovery-overview.md) makineleri Azure'a çoğaltmaya başlar. Daha sonra, kesintiler oluştuğunda, şirket içi sitenizden Azure'a geçemezsiniz. Başarısız olduğunda, Site Kurtarma, çoğaltılan şirket içi verileri kullanarak Azure Sanal M'leri oluşturur. Olağanüstü durum kurtarma planlamasının bir parçası olarak, başarısız olduktan sonra bu Azure VM'lerde çalışan uygulamalara nasıl bağlanabileceğinizi bulmanız gerekir.
+Şirket içi sanal makinelerin (VM 'Ler) ve fiziksel sunucuların Azure 'a olağanüstü durum kurtarması ayarladığınızda [Azure Site Recovery](site-recovery-overview.md) makineleri Azure 'a çoğaltmaya başlar. Daha sonra, kesintiler gerçekleştiğinde şirket içi sitenizde Azure 'a yük devretmek için yük devretme yapabilirsiniz. Yük devretme gerçekleştiğinde Site Recovery, çoğaltılan şirket içi verileri kullanarak Azure VM 'Ler oluşturur. Olağanüstü durum kurtarma planlaması kapsamında, yük devretmeden sonra bu Azure VM 'lerinde çalışan uygulamalara nasıl bağlanacağınızı belirlemeniz gerekir.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Başarısız olmadan önce tesis içi makineleri hazırlayın.
-> * Başarısız olduktan sonra Azure VM'leri hazırlayın. 
-> * Başarısız olduktan sonra Azure VM'lerinde IP adreslerini koruyun.
-> * Başarısız olduktan sonra Azure VM'lerine yeni IP adresleri atayın.
+> * Yük devretmeden önce şirket içi makineleri hazırlayın.
+> * Yük devretmeden sonra Azure VM 'Leri hazırlayın. 
+> * Yük devretmeden sonra Azure VM 'lerinde IP adreslerini koruyun.
+> * Yük devretmeden sonra Azure VM 'lerine yeni IP adresleri atayın.
 
-## <a name="prepare-on-premises-machines"></a>Şirket içi makineleri hazırlayın
+## <a name="prepare-on-premises-machines"></a>Şirket içi makineleri hazırlama
 
-Azure VM'lere bağlantı sağlamak için, şirket içi makinelerinizi başarısız olmadan önce hazırlayın.
+Azure VM 'lerine bağlantı sağlamak için, yük devretmeden önce şirket içi makinelerinizi hazırlayın.
 
-### <a name="prepare-windows-machines"></a>Windows makinelerini hazırlayın
+### <a name="prepare-windows-machines"></a>Windows makinelerini hazırlama
 
-Şirket içi Windows makinelerinde aşağıdakileri yapın:
+Şirket içi Windows makinelerde şunları yapın:
 
-1. Windows ayarlarını yapılandırın. Bunlar arasında statik kalıcı yolları veya WinHTTP proxy'sini kaldırmak ve disk SAN ilkesini **OnlineTümü'ne**ayarlamak yer alır. Bu talimatları [izleyin.](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)
+1. Windows ayarlarını yapılandırın. Bunlar, statik kalıcı yolların veya WinHTTP proxy 'nin kaldırılmasını ve disk SAN ilkesinin **OnlineAll**olarak ayarlanmasını içerir. Bu yönergeleri [izleyin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure) .
 
-2. Bu [hizmetlerin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) çalıştığını unutmayın.
+2. [Bu hizmetlerin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) çalıştığından emin olun.
 
-3. Şirket içi makineye uzaktan bağlantı sağlamak için uzak masaüstünü (RDP) etkinleştirin. PowerShell ile RDP'yi nasıl etkinleştireceklerini [öğrenin.](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)
+3. Uzak Masaüstü 'nü (RDP) Şirket içi makineye uzak bağlantılara izin verecek şekilde etkinleştirin. RDP 'yi PowerShell ile etkinleştirmeyi [öğrenin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings) .
 
-4. Bir Azure VM'ye başarısız olduktan sonra internet üzerinden erişmek için, şirket içi makinedeki Windows Güvenlik Duvarı'nda TCP ve UDP'ye Genel profilde izin verin ve RDP'yi tüm profiller için izin verilen bir uygulama olarak ayarlayın.
+4. Yük devretmeden sonra Internet üzerinden bir Azure VM 'sine erişmek için, şirket içi makinedeki Windows Güvenlik Duvarı 'nda ortak profilde TCP ve UDP 'ye izin verin ve RDP 'yi tüm profiller için izin verilen bir uygulama olarak ayarlayın.
 
-5. Bir Azure VM'ine, şirket içi makinedeki Windows Güvenlik Duvarı'nda, siteden siteye VPN üzerinden erişmek istiyorsanız, Etki Alanı ve Özel profiller için RDP'ye izin verin. RDP trafiğine nasıl izin verebilirsiniz [öğrenin.](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)
-6. Bir arızayı tetiklediğinde şirket içi VM'de bekleyen Windows güncelleştirmeleri olmadığından emin olun. Varsa, güncellemeler başarısız olduktan sonra Azure VM'de yüklenmeye başlayabilir ve güncelleştirmeler bitene kadar VM'de oturum açamazsınız.
+5. Yük devretmeden sonra siteden siteye VPN üzerinden bir Azure VM 'ye erişmek istiyorsanız, şirket içi makinedeki Windows Güvenlik Duvarı 'nda etki alanı ve özel profiller için RDP 'ye izin verin. RDP trafiğine nasıl izin [vereceğinizi öğrenin](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules) .
+6. Yük devretme tetiklemeniz sırasında şirket içi VM 'de bekleyen bir Windows güncelleştirmesi olmadığından emin olun. Varsa, güncelleştirmeler yük devretmeden sonra Azure VM 'ye yüklenmeye başlayabilir ve güncelleştirmeler tamamlanana kadar VM 'de oturum açamazsınız.
 
-### <a name="prepare-linux-machines"></a>Linux makinelerini hazırlayın
+### <a name="prepare-linux-machines"></a>Linux makinelerini hazırlama
 
-Şirket içi Linux makinelerinde aşağıdakileri yapın:
+Şirket içi Linux makinelerinde şunları yapın:
 
-1. Secure Shell hizmetinin sistem önyüklemede otomatik olarak başlayıp başlatılmaya ayarlı olduğundan kontrol edin.
+1. Secure Shell hizmetinin sistem önyüklemesi sırasında otomatik olarak başlayacak şekilde ayarlandığından emin olun.
 2. Güvenlik duvarı kurallarının SSH bağlantısına izin verdiğinden emin olun.
 
 
-## <a name="configure-azure-vms-after-failover"></a>Azure VM'lerini başarısız olduktan sonra yapılandırma
+## <a name="configure-azure-vms-after-failover"></a>Yük devretmeden sonra Azure VM 'lerini yapılandırma
 
-Başarısız olduktan sonra, oluşturulan Azure VM'lerinde aşağıdakileri yapın.
+Yük devretmeden sonra, oluşturulan Azure VM 'lerinde aşağıdakileri yapın.
 
-1. VM'ye internet üzerinden bağlanmak için VM'ye genel bir IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazlasını öğrenin](../virtual-network/virtual-network-public-ip-address.md)
-2. VM'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verdiğini denetleyin.
-3. VM'yi görüntülemek için [Önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
+1. SANAL makineye internet üzerinden bağlanmak için, VM 'ye bir genel IP adresi atayın. Şirket içi makineniz için kullandığınız Azure VM için aynı genel IP adresini kullanamazsınız. [Daha fazlasını öğrenin](../virtual-network/virtual-network-public-ip-address.md)
+2. VM 'deki ağ güvenlik grubu (NSG) kurallarının RDP veya SSH bağlantı noktasına gelen bağlantılara izin verin.
+3. VM 'yi görüntülemek için [önyükleme tanılamalarını](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) denetleyin.
 
 
 > [!NOTE]
-> Azure Bastion hizmeti, Azure VM'lerine özel RDP ve SSH erişimi sunar. Bu hizmet hakkında [daha fazla bilgi edinin.](../bastion/bastion-overview.md)
+> Azure savunma hizmeti, Azure VM 'lerine özel RDP ve SSH erişimi sağlar. Bu hizmet hakkında [daha fazla bilgi edinin](../bastion/bastion-overview.md) .
 
-## <a name="set-a-public-ip-address"></a>Genel bir IP adresi ayarlama
+## <a name="set-a-public-ip-address"></a>Genel IP adresi ayarlama
 
-Genel bir IP adresini azure VM'e el ile atamaya alternatif olarak, site [kurtarma kurtarma planında](site-recovery-create-recovery-plans.md)komut dosyası veya Azure otomasyon runbook'u kullanarak başarısız olma sırasında adresi atayabilir veya Azure Trafik Yöneticisi'ni kullanarak DNS düzeyinde yönlendirme ayarlayabilirsiniz. Herkese açık bir adres ayarlama hakkında [daha fazla bilgi edinin.](concepts-public-ip-address-with-site-recovery.md)
-
-
-## <a name="assign-an-internal-address"></a>Dahili bir adres atama
-
-Bir Azure VM'nin dahili IP adresini başarısız olduktan sonra ayarlamak için birkaç seçeneğiniz var:
-
-- **Aynı IP adresini koruyun**: Azure VM'de şirket içi makineye ayrılan IP adresiyle aynı IP adresini kullanabilirsiniz.
-- **Farklı IP adresi kullanın**: Azure VM için farklı bir IP adresi kullanabilirsiniz.
+Bir Azure VM 'ye el ile genel bir IP adresi atamaya alternatif olarak, Site Recovery [kurtarma planında](site-recovery-create-recovery-plans.md)bir betik veya Azure Otomasyonu runbook 'u kullanarak yük devretme sırasında adresi atayabilir veya Azure TRAFFIC Manager kullanarak DNS düzeyinde yönlendirme ayarlayabilirsiniz. Ortak adres ayarlama hakkında [daha fazla bilgi edinin](concepts-public-ip-address-with-site-recovery.md) .
 
 
-## <a name="retain-ip-addresses"></a>IP adreslerini koruyun
+## <a name="assign-an-internal-address"></a>İç adres ata
 
-Site Kurtarma, Azure'da başarısız olduğunuzda aynı IP adreslerini korumanızı sağlar. Aynı IP adresini korumak, başarısız olduktan sonra olası ağ sorunlarını önler, ancak bazı karmaşıklıklar ortaya çıkarmaz.
+Yük devretmeden sonra bir Azure VM 'sinin iç IP adresini ayarlamak için birkaç seçeneğiniz vardır:
 
-- Hedef Azure VM, şirket içi sitenizle aynı IP adresini/alt netini kullanıyorsa, adresçileççle çakıştığı için siteden siteye VPN bağlantısı veya ExpressRoute kullanarak aralarında bağlantı kuramazsınız. Alt ağlar benzersiz olmalıdır.
-- Uygulamaların Azure VM'lerinde kullanılabilmesi için, başarısız olduktan sonra şirket içinde Azure'a bağlantı kurmanız gerekir. Azure uzatılmış VN'leri desteklemez, bu nedenle IP adreslerini korumak istiyorsanız, şirket içi makineye ek olarak tüm alt ağ üzerinde başarısız olarak IP alanını Azure'a götürmeniz gerekir.
-- Alt ağ başarısız olması, belirli bir alt ağın şirket içinde ve Azure'da aynı anda kullanılmamasından emin dir.
+- **Aynı IP adresini sakla**: Azure VM 'de şirket içi MAKINEYE ayrılan IP adresini de kullanabilirsiniz.
+- **Farklı IP adresi kullan**: Azure VM için farklı bir IP adresi kullanabilirsiniz.
 
-IP adreslerinin istinat için aşağıdaki adımlar gerektirir:
 
-- Yinelenen öğenin & Ağı'nın İşlem özelliğinde, hedef Azure VM'nin şirket içi ayarı yansıtması için ağ ve IP adresleme ayarlayın.
-- Alt ağlar olağanüstü durum kurtarma sürecinin bir parçası olarak yönetilmelidir. Şirket içi ağa eşleşecek bir Azure VNet'e ihtiyacınız vardır ve başarısız ağ rotalarından sonra alt ağın Azure'a ve yeni IP adresi konumlarına taşındığını yansıtacak şekilde değiştirilmelidir.  
+## <a name="retain-ip-addresses"></a>IP adreslerini sakla
 
-### <a name="failover-example"></a>Failover örneği
+Site Recovery, Azure 'a yük devrettikten sonra aynı IP adreslerini korumanızı sağlar. Aynı IP adresini saklamak, yük devretmeden sonra olası ağ sorunlarını önler, ancak bazı karmaşıklıklar getirir.
+
+- Hedef Azure VM, şirket içi siteniz ile aynı IP adresini veya alt ağı kullanıyorsa, adres çakışması nedeniyle siteden siteye VPN bağlantısı veya ExpressRoute kullanarak bunlarla bağlantı oluşturamazsınız. Alt ağlar benzersiz olmalıdır.
+- Yük devretmeden sonra Şirket içinden Azure 'a bağlantı gerekir, böylece uygulamalar Azure VM 'lerde kullanılabilir. Azure, uzatılmış VLAN 'Ları desteklemez, bu nedenle IP adreslerini sürdürmek istiyorsanız, alt ağın tamamında, şirket içi makineye ek olarak, IP alanını Azure 'a almanız gerekir.
+- Alt ağ yük devretmesi, belirli bir alt ağın aynı anda şirket içinde ve Azure 'da kullanılabilir olmamasını sağlar.
+
+IP adreslerini koruma aşağıdaki adımları gerektirir:
+
+- Çoğaltılan öğenin Işlem & ağ özelliklerinde, hedef Azure sanal makinesi için ağ ve IP adresini şirket içi ayarını yansıtacak şekilde ayarlayın.
+- Alt ağlar olağanüstü durum kurtarma sürecinin bir parçası olarak yönetilmelidir. Şirket içi ağla eşleşmesi için bir Azure sanal ağı gerekir ve yük devretme ağ yollarının, alt ağın Azure 'a taşındığını ve yeni IP adresi konumlarını yansıtacak şekilde değiştirilmesi gerekir.  
+
+### <a name="failover-example"></a>Yük devretme örneği
 
 Şimdi örneği inceleyelim.
 
-- Hayali şirket Woodgrove Bank, iş uygulamalarını şirket içinde barındırır Mobil uygulamalarını Azure'da barındırır.
-- Siteden siteye VPN üzerinden şirket içinde Azure'a bağlanır. 
-- Woodgrove, şirket içi makineleri Azure'a çoğaltmak için Site Kurtarma'yı kullanıyor.
-- Şirket içi uygulamaları sabit kodlu IP adresleri kullanır, bu nedenle Azure'da aynı IP adreslerini saklamak isterler.
-- Uygulamaları çalıştıran makineler şirket içinde üç alt ağda çalışır:
+- Kurgusal şirket Woodgrove Bank, mobil uygulamalarını Azure 'da barındırdıkları kurumsal uygulamaları barındırır.
+- Şirket içinden siteden siteye VPN üzerinden Azure 'a bağlanır. 
+- Woodgrove, şirket içi makineleri Azure 'a çoğaltmak için Site Recovery kullanıyor.
+- Şirket içi uygulamaları sabit kodlanmış IP adresleri kullanır, bu nedenle Azure 'da aynı IP adreslerini sürdürmek ister.
+- Şirket içi uygulamaları çalıştıran makineler üç alt ağda çalışmaktadır:
     - 192.168.1.0/24.
     - 192.168.2.0/24
     - 192.168.3.0/24
-- Azure'da çalışan uygulamaları Azure VNet **Azure Ağı'nda** iki alt ağda bulunur:
+- Azure 'da çalışan uygulamaları, Azure VNet **Azure ağında** iki alt ağda bulunur:
 - 172.16.1.0/24
 - 172.16.2.0/24.
 
-Adresleri korumak için, işte yaptıkları şey.
+Adresleri bekletmek için şu şekilde yapılır.
 
-1. Çoğaltmayı etkinleştirdiklerinde, makinelerin **Azure Ağı'nda**çoğaltılması gerektiğini belirtirler.
-2. Azure'da **Kurtarma Ağı** oluştururlar. Bu VNet, 192.168.1.0/24 alt netini şirket içi ağlarında yansıttır.
-3. Woodgrove iki ağ arasında [VNet-to-VNet bağlantısı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) kurar. 
+1. Çoğaltma etkinleştirildiklerinde, makinelerin **Azure ağına**çoğaltılması gerektiğini belirtir.
+2. Azure 'da **Kurtarma ağı** oluşturur. Bu sanal ağ, şirket içi ağındaki 192.168.1.0/24 alt ağını yansıtır.
+3. Woodgrove iki ağ arasında [VNET-VNet bağlantısı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) kurar. 
 
     > [!NOTE]
-    > Uygulama gereksinimlerine bağlı olarak, bir Site Kurtarma [kurtarma planında](site-recovery-create-recovery-plans.md)veya başarısız olduktan sonra el ile adım/komut dosyası adımı/Azure otomasyon runbook'u olarak, başarısız olmadan önce bir VNet-to-VNet bağlantısı ayarlanabilir.
+    > Uygulama gereksinimlerine bağlı olarak, bir sanal ağdan sanal ağa bağlantı yük devretme işleminden önce, bir Site Recovery [Recovery planında](site-recovery-create-recovery-plans.md)el ile gerçekleştirilen adım/komut dosyalı adım/Azure Otomasyonu runbook 'u veya yük devretme işlemi tamamlandıktan sonra ayarlanabilir.
 
-4. Başarısız olmadan önce, Site Kurtarma'daki makine özelliklerinde, hedef IP adresini bir sonraki yordamda açıklandığı gibi şirket içi makinenin adresine ayarlarlar.
-5. Azure VM'ler aynı IP adresiyle oluşturulur. Woodgrove, VNet eşlemesi (aktarım bağlantısı etkin) kullanarak **Azure Ağı'ndan** Recovery **Network** VNet'e bağlanır.
-6. Woodgrove'un, 192.168.1.0/24'ün Azure'a taşındığını yansıtacak şekilde rotaları değiştirmek de dahil olmak üzere ağ değişiklikleri yapması gerekir.  
+4. Yük devretmeden önce, Site Recovery makine özelliklerinde, sonraki yordamda açıklandığı gibi, hedef IP adresini şirket içi makinenin adresine ayarlar.
+5. Yük devretmeden sonra Azure VM 'Leri aynı IP adresiyle oluşturulur. Woodgrove, VNet eşlemesi (geçiş bağlantısı etkin) kullanılarak **Azure ağından** **Kurtarma ağı** VNET 'e bağlanır.
+6. Şirket içi, Woodgrove, 192.168.1.0/24 ' ün Azure 'a taşındığını yansıtmak için yolları değiştirme dahil ağ değişiklikleri yapması gerekir.  
 
-**Başarısız olmadan önce altyapı**
+**Yük devretmeden önce altyapı**
 
-![Subnet başarısız olmadan önce](./media/site-recovery-network-design/network-design7.png)
-
-
-**Başarısız olduktan sonra altyapı**
-
-![Subnet failover sonra](./media/site-recovery-network-design/network-design9.png)
+![Alt ağ yük devretmeden önce](./media/site-recovery-network-design/network-design7.png)
 
 
-### <a name="set-target-network-settings"></a>Hedef ağ ayarlarını ayarlama
+**Yük devretmeden sonra altyapı**
 
-Başarısız olmadan önce, hedef Azure VM'nin ağ ayarlarını ve IP adresini belirtin.
-
-1.  Kurtarma Hizmetleri kasasında -> **Çoğaltılan öğeler,** şirket içi makineyi seçin.
-2. Makinenin **Bilgi İşlem ve Ağ** sayfasında, hedef Azure VM için ağ ve bağdaştırıcı ayarlarını yapılandırmak için **Edit'i**tıklatın.
-3. **Ağ özelliklerinde,** Azure VM'nin başarısız olduktan sonra oluşturulduğunda bulunacağı hedef ağı seçin.
-4. **Ağ arabirimlerinde,** hedef ağdaki ağ bağdaştırıcılarını yapılandırın. Varsayılan olarak Site Kurtarma, şirket içi makinede algılanan tüm NIC'leri gösterir.
-    - **Hedef ağ arabirimi türünde,** her NIC'i **Birincil**, **İkincil**olarak ayarlayabilirsiniz veya hedef ağda belirli bir NIC'ye ihtiyacınız yoksa **oluşturmayın.** Bir ağ bağdaştırıcısı, başarısız olmak için birincil olarak ayarlanmalıdır. Hedef ağı değiştirmenin Azure VM için tüm NIC'leri etkilediğini unutmayın.
-    - Azure VM'nin dağıtılanacağı alt ağı belirtmek için NIC adını tıklatın.
-    - Azure VM'yi hedeflemek için atamak istediğiniz özel IP adresiyle **Dinamik'in** üzerine yazın. Bir IP adresi belirtilmemişse Site Kurtarma, alt ağdaki bir sonraki kullanılabilir IP adresini başarısız olduğu anda NIC'ye atar.
-    - Şirket içi Azure'da başarısız olmak için NIC'leri yönetme hakkında [daha fazla bilgi edinin.](site-recovery-manage-network-interfaces-on-premises-to-azure.md)
+![Alt ağ yük devretmeden sonra](./media/site-recovery-network-design/network-design9.png)
 
 
-## <a name="get-new-ip-addresses"></a>Yeni IP adresleri alın
+### <a name="set-target-network-settings"></a>Hedef ağ ayarlarını ayarla
 
-Bu senaryoda, Azure VM başarısız olduktan sonra yeni bir IP adresi alır. Azure VM'nin IP adresine işaret eden makineler üzerinde başarısız olan kayıtları güncelleştirmek için bir DNS güncelleştirmesi.
+Yük devretmeden önce, hedef Azure VM için ağ ayarlarını ve IP adresini belirtin.
+
+1.  Kurtarma Hizmetleri Kasası- **çoğaltılan öğeleri**>, şirket içi makineyi seçin.
+2. Makinenin **işlem ve ağ** sayfasında, hedef Azure VM 'nin ağ ve bağdaştırıcı ayarlarını yapılandırmak için **Düzenle**' ye tıklayın.
+3. **Ağ özellikleri**' nde, yük devretmeden sonra oluşturulduğu zaman Azure VM 'nin konum olarak bulunduğu hedef ağı seçin.
+4. **Ağ arabirimleri**' nde, hedef ağdaki ağ bağdaştırıcılarını yapılandırın. Varsayılan olarak Site Recovery, şirket içi makinede algılanan tüm NIC 'Leri gösterir.
+    - Hedef ağ **arabirim türü** ' nde, hedef ağda belirli NIC 'ye ihtiyacınız yoksa her bir NIC 'yi **birincil**, **İkincil**veya **oluşturma** ' ya ayarlayabilirsiniz. Yük devretme için bir ağ bağdaştırıcısının birincil olarak ayarlanması gerekir. Hedef ağın değiştirilmesi, Azure VM için tüm NIC 'Leri etkilediğini unutmayın.
+    - Azure VM 'nin dağıtılacağı alt ağı belirtmek için NIC adına tıklayın.
+    - Hedef Azure VM 'sine atamak istediğiniz özel IP adresi ile **dinamik** olarak üzerine yazın. Bir IP adresi belirtilmezse Site Recovery yük devretmede alt ağdaki bir sonraki kullanılabilir IP adresini NIC 'ye atayacaktır.
+    - Şirket içi Azure 'a yük devretme için NIC 'Leri yönetme hakkında [daha fazla bilgi edinin](site-recovery-manage-network-interfaces-on-premises-to-azure.md) .
+
+
+## <a name="get-new-ip-addresses"></a>Yeni IP adresleri Al
+
+Bu senaryoda, yük devretmeden sonra Azure VM yeni bir IP adresi alır. Yük devredilen makinelerin Azure VM 'nin IP adresini işaret eden kayıtlarını güncelleştirmek için bir DNS güncelleştirmesi.
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Şirket içi Active Directory ve DNS'yi Azure'da çoğaltma [hakkında bilgi edinin.](site-recovery-active-directory.md)
+Şirket içi Active Directory ve DNS 'yi Azure 'a çoğaltma [hakkında bilgi edinin](site-recovery-active-directory.md) .
 
 

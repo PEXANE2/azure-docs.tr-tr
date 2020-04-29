@@ -1,7 +1,7 @@
 ---
-title: Depolama hesabının çoğaltılmasını değiştirme
+title: Depolama hesabının nasıl çoğaltıldığını değiştirme
 titleSuffix: Azure Storage
-description: Varolan bir depolama hesabındaki verilerin nasıl çoğaltılacağını nasıl değiştireceğinizi öğrenin.
+description: Mevcut bir depolama hesabındaki verilerin nasıl çoğaltılacağı nasıl değiştirileceğini öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,62 +11,62 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337086"
 ---
-# <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının çoğaltılmasını değiştirme
+# <a name="change-how-a-storage-account-is-replicated"></a>Depolama hesabının nasıl çoğaltıldığını değiştirme
 
-Azure Depolama, geçici donanım arızaları, ağ veya elektrik kesintileri ve büyük doğal afetler de dahil olmak üzere planlanmış ve planlanmamış olaylara karşı korunacak şekilde verilerinizin birden çok kopyasını her zaman depolar. Artıklık, depolama hesabınızın hatalar karşısında bile [Azure Depolama için Hizmet Düzeyi Sözleşmesi'ni (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşılamasını sağlar.
+Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Yedeklilik, depolama hesabınızın, başarısızlık durumunda bile [Azure depolama Için hizmet düzeyi sözleşmesini (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşıladığından emin olmanızı sağlar.
 
-Azure Depolama aşağıdaki çoğaltma türlerini sunar:
+Azure Storage aşağıdaki çoğaltma türlerini sunar:
 
 - Yerel olarak yedekli depolama (LRS)
 - Alanlar arası yedekli depolama (ZRS)
-- Coğrafi yedekli depolama (GRS) veya okuma erişimi coğrafi yedekli depolama (RA-GRS)
-- Coğrafi bölge yedekli depolama (GZRS) veya okuma-erişim coğrafi bölge yedekli depolama (RA-GZRS) (önizleme)
+- Coğrafi olarak yedekli depolama (GRS) veya Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS)
+- Coğrafi bölge yedekli depolama (GZRS) veya Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS) (Önizleme)
 
-Bu seçeneklerin her birine genel bakış için Azure [Depolama artıklığına](storage-redundancy.md)bakın.
+Bu seçeneklerin her birine genel bir bakış için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
-## <a name="switch-between-types-of-replication"></a>Çoğaltma türleri arasında geçiş
+## <a name="switch-between-types-of-replication"></a>Çoğaltma türleri arasında geçiş yap
 
-Bir depolama hesabını bir çoğaltma türünden başka bir türe değiştirebilirsiniz, ancak bazı senaryolar diğerlerinden daha basittir. Coğrafi çoğaltma eklemek veya kaldırmak veya ikincil bölgeye erişimi okumak istiyorsanız, çoğaltma ayarını güncelleştirmek için Azure portalını, PowerShell'i veya Azure CLI'yi kullanabilirsiniz. Ancak, lrs'den ZRS'ye veya tam tersi bir geçiş yaparak, verilerin birincil bölgede nasıl çoğaltıldığını değiştirmek istiyorsanız, el ile geçiş gerçekleştirmeniz gerekir.
+Bir depolama hesabını bir çoğaltma türünden başka bir türe geçirebilirsiniz, ancak bazı senaryolar diğerlerinden daha basittir. Coğrafi çoğaltma eklemek veya kaldırmak istiyorsanız, çoğaltma ayarını güncelleştirmek için Azure portal, PowerShell veya Azure CLı ' yi kullanabilirsiniz. Ancak, birincil bölgede verilerin nasıl çoğaltıldığını değiştirmek istiyorsanız, LRS 'den ZRS 'ye geçerek veya bunun tersini yaparak el ile geçiş gerçekleştirmeniz gerekir.
 
-Aşağıdaki tablo, her çoğaltma türünden diğerine nasıl geçilene ilgili genel bir bakış sağlar:
+Aşağıdaki tabloda, her bir çoğaltma türünden diğerine nasıl geçkullanılacağına ilişkin bir genel bakış sunulmaktadır:
 
-| Geçiş | ... LRS için | ... için GRS/RA-GRS | ... için ZRS | ... için GZRS/RA-GZRS |
+| Geçiş | ... LRS 'ye | ... GRS/RA-GRS 'ye | ... ZRS 'ye | ... GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... lrs gönderen</b> | Yok | Çoğaltma<sup>ayarını</sup> değiştirmek için Azure portalını, PowerShell veya CLI'yi kullanma | El ile geçiş yapma <br /><br />Canlı geçiş isteği | El ile geçiş yapma <br /><br /> OR <br /><br /> Önce GRS/RA-GRS'ye geçin ve ardından canlı geçiş isteyin<sup>1</sup> |
-| <b>... kaynak: GRS/RA-GRS</b> | Çoğaltma ayarını değiştirmek için Azure portalı, PowerShell veya CLI'yi kullanma | Yok | El ile geçiş yapma <br /><br /> OR <br /><br /> Önce LRS'ye geçin ve ardından canlı geçiş isteğinde bulunun | El ile geçiş yapma <br /><br /> Canlı geçiş isteği |
-| <b>... gönderen ZRS</b> | El ile geçiş yapma | El ile geçiş yapma | Yok | Çoğaltma<sup>ayarını</sup> değiştirmek için Azure portalını, PowerShell veya CLI'yi kullanma |
-| <b>... tarafından GZRS/RA-GZRS</b> | El ile geçiş yapma | El ile geçiş yapma | Çoğaltma ayarını değiştirmek için Azure portalı, PowerShell veya CLI'yi kullanma | Yok |
+| <b>... LRS 'den</b> | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> | El ile geçiş gerçekleştirme <br /><br />Dinamik geçiş isteme | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce GRS/RA-GRS ' y e geçin ve ardından dinamik geçiş isteyin<sup>1</sup> |
+| <b>... GRS/RA-GRS 'den</b> | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok | El ile geçiş gerçekleştirme <br /><br /> OR <br /><br /> Önce LRS 'ye geçin ve ardından dinamik geçiş isteyin | El ile geçiş gerçekleştirme <br /><br /> Dinamik geçiş isteme |
+| <b>... ZRS 'den</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Yok | Azure portal, PowerShell veya CLı kullanarak çoğaltma ayarını değiştirme<sup>1</sup> |
+| <b>... GZRS/RA-GZRS öğesinden</b> | El ile geçiş gerçekleştirme | El ile geçiş gerçekleştirme | Çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya CLı kullanın | Yok |
 
-<sup>1</sup> Bir kerelik çıkış ücreti ne redeler.
+<sup>1</sup> bir kerelik çıkış ücreti doğurur.
 
 > [!CAUTION]
-> (RA-)GRS veya (RA-)GZRS hesabınız için bir [hesap başarısızlığı](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) gerçekleştirdiyseniz, bu hesap yeni birincil bölgede yerel olarak gereksiz olacak şekilde yapılandırılır. Bu tür LRS hesapları için ZRS veya GZRS'ye canlı geçiş desteklenmez. [El ile geçiş](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)gerçekleştirmeniz gerekir.
+> (RA-) GRS veya (RA-) GZRS hesabınız için bir [Hesap yük devretmesi](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) gerçekleştirdiyseniz, yeni birincil bölgede yerel olarak yedekli olacak şekilde yapılandırılır. Bu tür LRS hesapları için ZRS veya GZRS 'e dinamik geçiş desteklenmez. [El ile geçiş](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)gerçekleştirmeniz gerekir.
 
-## <a name="change-the-replication-setting"></a>Çoğaltma ayarını değiştirme
+## <a name="change-the-replication-setting"></a>Çoğaltma ayarını değiştir
 
-Birincil bölgede verilerin çoğaltılma şeklini değiştirmediğiniz sürece, bir depolama hesabının çoğaltma ayarını değiştirmek için Azure portalını, PowerShell'i veya Azure CLI'yi kullanabilirsiniz. Birincil bölgedeki LRS'den birincil bölgedeki ZRS'ye geçiş iyorsanız veya bunun tersi, [el ile geçiş](#perform-a-manual-migration-to-zrs) veya canlı [geçiş](#request-a-live-migration-to-zrs)gerçekleştirmeniz gerekir.
+Bir depolama hesabının çoğaltma ayarını değiştirmek için Azure portal, PowerShell veya Azure CLı ' yi kullanarak, verilerin birincil bölgede nasıl çoğaltılabileceğini değiştirirsiniz. Birincil bölgedeki LRS 'den birincil bölgedeki ZRS 'ye geçiş yapıyorsanız veya bunun tersini yaparsanız, [el ile geçiş](#perform-a-manual-migration-to-zrs) ya da [dinamik geçiş](#request-a-live-migration-to-zrs)gerçekleştirmeniz gerekir.
 
-Depolama hesabınızın nasıl çoğaltıldığını değiştirmek, uygulamalarınız için çalışma madayetine neden olmaz.
+Depolama hesabınızın nasıl çoğaltılacağı, uygulamalarınız için zaman kaybına neden olmaz.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Azure portalındaki depolama hesabınız için artıklık seçeneğini değiştirmek için aşağıdaki adımları izleyin:
+Azure portal depolama hesabınızın artıklık seçeneğini değiştirmek için şu adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
 1. **Yapılandırma** ayarını seçin.
 1. **Çoğaltma** ayarını güncelleştirin.
 
-![Portalda çoğaltma seçeneğinin nasıl değiştirilebildiğini gösteren ekran görüntüsü](media/redundancy-migration/change-replication-option.png)
+![Portalda çoğaltma seçeneğinin nasıl değiştirileceğini gösteren ekran görüntüsü](media/redundancy-migration/change-replication-option.png)
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell ile depolama hesabınız için artıklık seçeneğini değiştirmek için [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu arayın ve parametreyi belirtin: `-SkuName`
+PowerShell ile depolama hesabınızın artıklık seçeneğini değiştirmek için [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) komutunu çağırın ve `-SkuName` parametresini belirtin:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -76,7 +76,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI ile depolama hesabınız için artıklık seçeneğini değiştirmek için az depolama hesabı `--sku` [güncelleştirme](/cli/azure/storage/account#az-storage-account-update) komutunu arayın ve parametreyi belirtin:
+Azure CLı ile depolama hesabınızın artıklık seçeneğini değiştirmek için [az Storage Account Update](/cli/azure/storage/account#az-storage-account-update) komutunu çağırın ve `--sku` parametresini belirtin:
 
 ```azurecli-interactive
 az storage account update \
@@ -87,84 +87,84 @@ az storage account update \
 
 ---
 
-## <a name="perform-a-manual-migration-to-zrs"></a>ZRS'ye el ile geçiş yapma
+## <a name="perform-a-manual-migration-to-zrs"></a>ZRS 'ye el ile geçiş gerçekleştirme
 
-Depolama hesabınızdaki verilerin birincil bölgede nasıl çoğaltıldığını, LRS'den ZRS'ye veya tam tersi bir geçiş yaparak değiştirmek isterseniz, el ile geçiş yapmayı tercih edebilirsiniz. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçişin zamanlamasını denetlersiniz, bu nedenle geçişin belirli bir tarihe kadar tamamlanması gerekiyorsa bu seçeneği kullanın.
+LRS 'den ZRS 'ye geçerek veya bunun tersini yaparak Depolama hesabınızdaki verilerin birincil bölgede çoğaltılmasını değiştirmek istiyorsanız el ile geçiş yapmayı tercih edebilirsiniz. El ile geçiş, dinamik geçişten daha fazla esneklik sağlar. El ile geçişin zamanlamasını kontrol edersiniz, bu nedenle geçişin belirli bir tarihten sonra tamamlanmasını istiyorsanız bu seçeneği kullanın.
 
-Birincil bölgede LRS'den ZRS'ye el ile geçiş yaptığınızda veya tam tersi, hedef depolama hesabı coğrafi yedekli olabilir ve ikincil bölgeye okuma erişimi için de yapılandırılabilir. Örneğin, bir LRS hesabını tek adımda bir GZRS veya RA-GZRS hesabına geçirebilirsiniz.
+LRS 'den birincil bölgedeki ZRS 'ye el ile geçiş gerçekleştirdiğinizde veya bunun tersini yaptığınızda, hedef depolama hesabı coğrafi olarak yedekli olabilir ve ayrıca ikincil bölgeye okuma erişimi için de yapılandırılabilir. Örneğin, bir LRS hesabını bir adımda GZRS veya RA-GZRS hesabına geçirebilirsiniz.
 
-El ile geçiş uygulama nın kapalı kalma süresine neden olabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir.
+El ile geçiş, uygulama kapalı kalma süresine yol açabilir. Uygulamanız yüksek kullanılabilirlik gerektiriyorsa, Microsoft dinamik geçiş seçeneği de sağlar. Dinamik geçiş, kapalı kalma süresi olmayan bir yerinde geçiş işlemidir.
 
-El ile geçişle, varolan depolama hesabınızdaki verileri birincil bölgede ZRS kullanan yeni bir depolama hesabına kopyalarsınız. El ile geçiş gerçekleştirmek için aşağıdaki seçeneklerden birini kullanabilirsiniz:
+El ile geçişle, mevcut depolama hesabınızdan verileri birincil bölgede ZRS kullanan yeni bir depolama hesabına kopyalayabilirsiniz. El ile geçiş yapmak için aşağıdaki seçeneklerden birini kullanabilirsiniz:
 
-- Azure Depolama istemci kitaplıklarından biri olan AzCopy veya güvenilir bir üçüncü taraf aracı gibi varolan bir aracı kullanarak verileri kopyalayın.
-- Hadoop veya HDInsight'ı biliyorsanız, hem kaynak depolama hesabını hem de hedef depolama hesabını kümenize ekleyebilirsiniz. Ardından, veri kopyalama işlemini DistCp gibi bir araçla paralelleştirin.
+- AzCopy gibi mevcut bir aracı kullanarak, Azure Storage istemci kitaplıklarından biri veya güvenilir bir üçüncü taraf aracından verileri kopyalayın.
+- Hadoop veya HDInsight hakkında bilginiz varsa, hem kaynak depolama hesabı hem de hedef depolama hesabı hesabını kümenize ekleyebilirsiniz. Daha sonra, paralel hale getirmek gibi bir araçla veri kopyalama işlemini yapın.
 
-## <a name="request-a-live-migration-to-zrs"></a>ZRS'ye canlı geçiş isteğinde bulunun
+## <a name="request-a-live-migration-to-zrs"></a>ZRS 'ye dinamik geçiş isteği isteme
 
-Depolama hesabınızı uygulama kapalı kalmadan birincil bölgedeki LRS veya GRS'den ZRS'ye geçirmeniz gerekiyorsa, Microsoft'tan canlı geçiş isteyebilirsiniz. Canlı geçiş sırasında, depolama hesabınızdaki verilere erişebilir ve dayanıklılık veya kullanılabilirlik kaybı olmadan erişebilirsiniz. Azure Depolama SLA'sı geçiş işlemi sırasında korunur. Canlı geçişle ilişkili veri kaybı yok. Hizmet bitiş noktaları, erişim anahtarları, paylaşılan erişim imzaları ve diğer hesap seçenekleri geçişten sonra değişmeden kalır.
+Depolama hesabınızı LRS veya GRS 'den, uygulama kapalı kalma süresi olmadan birincil bölgedeki ZRS 'ye geçirmeniz gerekiyorsa, Microsoft 'tan Canlı geçiş isteğinde bulunabilir. Dinamik geçiş sırasında depolama hesabınızdaki verilere ve dayanıklılık veya kullanılabilirlik kaybı olmadan erişebilirsiniz. Azure Storage SLA, geçiş işlemi sırasında sürdürülür. Dinamik geçişle ilişkili bir veri kaybı yok. Hizmet uç noktaları, erişim anahtarları, paylaşılan erişim imzaları ve diğer hesap seçenekleri geçişten sonra değişmeden kalır.
 
-ZRS yalnızca genel amaçlı v2 hesaplarını destekler, bu nedenle ZRS'ye canlı geçiş isteği göndermeden önce depolama hesabınızı yükselttiğinden emin olun. Daha fazla bilgi için genel [amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md)konusuna bakın. Bir depolama hesabı, canlı geçiş yoluyla geçirilecek verileri içermelidir.
+ZRS yalnızca genel amaçlı v2 hesaplarını destekler, bu nedenle ZRS 'ye dinamik geçiş isteği göndermeden önce depolama hesabınızı yükseltdiğinizden emin olun. Daha fazla bilgi için bkz. [genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md). Depolama hesabı, dinamik geçiş yoluyla geçirilecek verileri içermelidir.
 
-Canlı geçiş yalnızca LRS veya GRS çoğaltma kullanan depolama hesapları için desteklenir. HesabınızDA RA-GRS kullanıyorsa, devam etmeden önce hesabınızın çoğaltma türünü lrs veya GRS olarak değiştirmeniz gerekir. Bu ara adım, geçişten önce RA-GRS tarafından sağlanan ikincil salt okunur bitiş noktasını kaldırır.
+Dinamik geçiş yalnızca LRS veya GRS çoğaltmasını kullanan depolama hesapları için desteklenir. Hesabınız RA-GRS kullanıyorsa, önce devam etmeden önce hesabınızın çoğaltma türünü LRS veya GRS olarak değiştirmeniz gerekir. Bu ara adım, geçişten önce RA-GRS tarafından sunulan ikincil salt okuma uç noktasını kaldırır.
 
 Microsoft canlı geçiş isteğinizi anında işler ama canlı bir geçişin ne zaman tamamlanacağı garanti edilemez. Verilerinizin belirli bir tarihe kadar ZRS'ye geçirilmesi gerekiyorsa, Microsoft bunun yerine el ile geçiş yapmanızı önerir. Genel olarak hesabınızda ne kadar çok veri varsa bu verilerin geçişi de o kadar uzun sürer.
 
-Şu larsa el ile geçiş yapmalısınız:
+Şu durumlarda el ile geçiş gerçekleştirmeniz gerekir:
 
-- Verilerinizi kaynak hesaptan farklı bir bölgede bulunan bir ZRS depolama hesabına geçirmek istiyorsunuz.
-- Depolama hesabınız premium bir sayfa blob veya blok blob hesabıdır.
-- Verileri ZRS'den LRS, GRS veya RA-GRS'ye geçirmek istiyorsunuz.
-- Depolama hesabınız arşiv katmanındaki verileri içerir.
+- Verilerinizi, kaynak hesaptan farklı bir bölgede bulunan bir ZRS depolama hesabına geçirmek istiyorsunuz.
+- Depolama hesabınız bir Premium Sayfa Blobu veya Blok Blobu hesabıdır.
+- ZRS 'den LRS, GRS veya RA-GRS 'ye veri geçirmek istiyorsunuz.
+- Depolama Hesabınız arşiv katmanındaki verileri içerir.
 
-[Azure Destek portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)üzerinden canlı geçiş isteğinde bulunabilirsiniz. Portaldan, ZRS'ye dönüştürmek istediğiniz depolama hesabını seçin.
+[Azure Destek Portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)aracılığıyla dinamik geçiş isteğinde bulunabilir. Portaldan ZRS 'ye dönüştürmek istediğiniz depolama hesabını seçin.
 
-1. **Yeni Destek İsteği'ni** Seçin
-2. Hesap bilgilerinize dayalı **Temel Bilgileri** tamamlayın. **Hizmet** bölümünde, **Depolama Hesabı Yönetimi'ni** ve ZRS'ye dönüştürmek istediğiniz kaynağı seçin.
-3. **Sonraki'ni**seçin.
-4. **Sorun** bölümünü aşağıdaki değerleri belirtin:
-    - **Önem :** Varsayılan değeri olduğu gibi bırakın.
-    - **Sorun Türü**: **Veri Geçişi'ni**seçin.
-    - **Kategori**: **ZRS'ye Geçir'i**seçin.
-    - **Başlık**: Örneğin, **ZRS hesap geçişi**gibi açıklayıcı bir başlık yazın.
-    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ \_ bölgedeki [LRS, GRS] zrs'ye geçirmek istiyorum.
-5. **Sonraki'ni**seçin.
-6. **İletişim bilgileri** bıçak üzerinde iletişim bilgilerinin doğru olduğunu doğrulayın.
-7. **Oluştur'u**seçin.
+1. **Yeni destek isteği** seçin
+2. Hesap bilgilerinizi temel alan **temel bilgileri** doldurun. **Hizmet** bölümünde **depolama hesabı yönetimi** ' ni ve ZRS 'ye dönüştürmek istediğiniz kaynağı seçin.
+3. **İleri**’yi seçin.
+4. **Sorun** bölümünün aşağıdaki değerlerini belirtin:
+    - **Önem derecesi**: varsayılan değeri olduğu gibi bırakın.
+    - **Sorun türü**: **veri geçişini**seçin.
+    - **Kategori**: **ZRS 'ye geçir**' i seçin.
+    - **Başlık**: Örneğin, **ZRS hesabı geçişi**gibi açıklayıcı bir başlık yazın.
+    - **Ayrıntılar**: **Ayrıntılar** kutusuna ek ayrıntılar yazın, örneğin, \_ \_ bölgedeki [LRS, GRS] öğesinden ZRS 'ye geçiş yapmak istiyorum.
+5. **İleri**’yi seçin.
+6. İletişim bilgilerinin **iletişim bilgileri** dikey penceresinde doğru olduğunu doğrulayın.
+7. **Oluştur**’u seçin.
 
-Bir destek kişi sizinle irtibata geçecektir ve ihtiyacınız olan her türlü yardımı sağlayacaktır.
+Bir destek kişisi sizinle iletişim kuracaktır ve ihtiyacınız olan herhangi bir yardımı sağlar.
 
 > [!NOTE]
-> Canlı geçiş şu anda premium dosya paylaşımları için desteklenmez. Verileri yalnızca el ile kopyalama veya taşıma şu anda desteklenir.
+> Dinamik geçiş, Premium dosya paylaşımları için şu anda desteklenmiyor. Şu anda yalnızca el ile kopyalama veya taşıma işlemi destekleniyor.
 >
-> GZRS depolama hesapları şu anda arşiv katmanını desteklemiyor. Daha fazla ayrıntı için [Azure Blob depolama alanına bakın: sıcak, serin ve arşiv erişim katmanları.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)
+> GZRS depolama hesapları Şu anda arşiv katmanını desteklemez. Daha fazla ayrıntı için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) .
 >
-> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS'ye geçirilemez. Standart SSD yönetilen diskler için anlık görüntüleri ve görüntüleri standart HDD depolama da saklayabilir ve [LRS ve ZRS seçenekleri arasında seçim yapabilirsiniz.](https://azure.microsoft.com/pricing/details/managed-disks/) Kullanılabilirlik kümeleriyle tümleştirme hakkında bilgi için [azure'a giriş yönetilen disklere](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)bakın.
+> Yönetilen diskler yalnızca LRS için kullanılabilir ve ZRS 'ye geçirilemez. Standart HDD 'de standart SSD ile yönetilen diskler için anlık görüntüler ve görüntüler saklayabilir ve [LRS ve ZRS seçenekleri arasından seçim](https://azure.microsoft.com/pricing/details/managed-disks/)yapabilirsiniz. Kullanılabilirlik kümeleriyle tümleştirme hakkında daha fazla bilgi için bkz. [Azure yönetilen disklere giriş](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets).
 
-## <a name="switch-from-zrs-classic"></a>ZRS Classic'ten geçiş
+## <a name="switch-from-zrs-classic"></a>ZRS klasik 'den geçiş
 
 > [!IMPORTANT]
-> Microsoft, 31 Mart 2021'de ZRS Classic hesaplarını amortismana katacak ve geçirecektir. Amortismandan önce ZRS Classic müşterilerine daha fazla ayrıntı verilecektir.
+> Microsoft, ZRS klasik hesaplarını 31 Mart 2021 ' de kullanımdan kaldırır ve geçirebilir. Kullanım dışı bırakmadan önce ZRS klasik müşterilerine daha fazla ayrıntı sunulacaktır.
 >
-> ZRS belirli bir bölgede genel kullanıma sunulduktan sonra, müşteriler artık o bölgedeki Azure portalından ZRS Classic hesapları oluşturamaz. ZRS Classic hesapları oluşturmak için Microsoft PowerShell ve Azure CLI'yi kullanmak, ZRS Classic amortismana dahil edilene kadar bir seçenektir. ZRS'nin nerede kullanılabilir olduğu hakkında daha fazla bilgi için Azure [Depolama artıklığı'na](storage-redundancy.md)bakın.
+> ZRS 'nin belirli bir bölgede genel kullanıma açık hale gelmesi durumunda müşteriler artık bu bölgedeki Azure portal ZRS klasik hesapları oluşturamayacak. ZRS klasik hesapları oluşturmak için Microsoft PowerShell ve Azure CLı kullanmak, ZRS klasik kullanım dışı olana kadar bir seçenektir. ZRS 'nin kullanılabildiği durumlar hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
 
-ZRS Classic, bir ila iki bölge içindeki veri merkezleri arasında verileri eşzamanlı olarak çoğaltır. Microsoft ikincil verilerde başarısız lık başlatmadıkça çoğaltılan veriler kullanılamayabilir. ZRS Classic hesabı LRS, GRS veya RA-GRS'ye dönüştürülemez. ZRS Classic hesapları da ölçümleri veya günlüğe kaydetmeyi desteklemez.
+ZRS klasik, verileri bir veya iki bölge içindeki veri merkezlerinde zaman uyumsuz olarak çoğaltır. Microsoft ikinciye yük devretmeyi başlatmadığı müddetçe çoğaltılan veriler kullanılamayabilir. ZRS klasik hesabı LRS, GRS veya RA-GRS ' y e veya bu bilgisayarlardan dönüştürülemez. ZRS klasik hesapları, ölçümleri veya günlüğe kaydetmeyi de desteklemez.
 
-ZRS Classic yalnızca genel amaçlı V1 (GPv1) depolama hesaplarında **blok lekeleri** için kullanılabilir. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
+ZRS klasik, yalnızca genel amaçlı v1 (GPv1) depolama hesaplarında **blok Bloblar** için kullanılabilir. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md).
 
-ZRS hesap verilerini bir LRS, GRS, RA-GRS veya ZRS Classic hesabına el ile geçirmek için aşağıdaki araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, PowerShell veya Azure CLI. Azure Depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü de oluşturabilirsiniz.
+ZRS hesabı verilerini LRS, GRS, RA-GRS veya ZRS klasik hesabına el ile geçirmek için aşağıdaki araçlardan birini kullanın: AzCopy, Azure Depolama Gezgini, PowerShell veya Azure CLı. Ayrıca, Azure depolama istemci kitaplıklarından biriyle kendi geçiş çözümünüzü oluşturabilirsiniz.
 
-ZRS'nin kullanılabildiği bölgelerde Azure portalını, PowerShell'i veya Azure CLI'yi kullanarak ZRS Classic depolama hesabınızı ZRS'ye yükseltebilirsiniz.
+ZRS klasik depolama hesabınızı, ZRS 'nin kullanılabildiği bölgelerde Azure portal, PowerShell veya Azure CLı kullanarak da ZRS 'ye yükseltebilirsiniz.
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Azure portalında ZRS'ye yükseltmek için hesabın **Yapılandırma** ayarlarına gidin ve **Yükseltme'yi**seçin:
+Azure portal ZRS 'ye yükseltmek için hesabın **yapılandırma** ayarlarına gidin ve **Yükselt**' i seçin:
 
-![Portalda ZRS Classic'i ZRS'ye yükseltin](media/redundancy-migration/portal-zrs-classic-upgrade.png)
+![Portalda ZRS Classic 'i ZRS 'ye yükseltme](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell kullanarak ZRS'ye yükseltmek için aşağıdaki komutu arayın:
+PowerShell kullanarak ZRS 'ye yükseltmek için aşağıdaki komutu çağırın:
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_account> -UpgradeToStorageV2
@@ -172,7 +172,7 @@ Set-AzStorageAccount -ResourceGroupName <resource_group> -AccountName <storage_a
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI kullanarak ZRS'ye yükseltmek için aşağıdaki komutu arayın:
+Azure CLı kullanarak ZRS 'ye yükseltme yapmak için aşağıdaki komutu çağırın:
 
 ```cli
 az storage account update -g <resource_group> -n <storage_account> --set kind=StorageV2
@@ -180,19 +180,19 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 ---
 
-## <a name="costs-associated-with-changing-how-data-is-replicated"></a>Verilerin çoğaltılışeklini değiştirmeyle ilişkili maliyetler
+## <a name="costs-associated-with-changing-how-data-is-replicated"></a>Verilerin nasıl çoğaltıldığını değiştirmekle ilişkili maliyetler
 
-Verilerin nasıl çoğaltıldığını değiştirmeyle ilişkili maliyetler dönüşüm yolunuza bağlıdır. En ucuzdan en pahalıya sipariş veren Azure Depolama artıklığı teklifleri arasında LRS, ZRS, GRS, RA-GRS, GZRS ve RA-GZRS yer almaktadır.
+Verilerin nasıl çoğaltıldığına ilişkin maliyet, dönüştürme yolunuza göre değişir. En az pahalı olan Azure depolama yedekliliği teklifleri, LRS, ZRS, GRS, RA-GRS, GZRS ve RA-GZRS ' yi içerir.
 
-Örneğin, *LRS'den* başka bir çoğaltma türüne geçmek, daha karmaşık bir artıklık düzeyine taşındığınızdan ek ücrete tabi olacaktır. Verileriniz *to* (birincil bölgenizde) uzak ikincil bölgenize çoğaltıldığından GRS veya RA-GRS'ye geçiş çıkış bant genişliği yüküne neden olur. Bu ücret, ilk kurulumda tek seferlik bir ücrettir. Veriler kopyalandıktan sonra başka geçiş ücreti yoktur. Bant genişliği ücretleri yle ilgili ayrıntılar için [Azure Depolama Fiyatlandırması sayfasına](https://azure.microsoft.com/pricing/details/storage/blobs/)bakın.
+Örneğin, LRS *'den* başka bir çoğaltma türüne geçmek, daha ayrıntılı bir artıklık düzeyine taşıdığınız için ek ücretler doğurur. GRS veya RA-GRS ' *e* geçiş, verileriniz (birincil bölgenizde) uzak ikincil bölgenize çoğaltıldığı için çıkış bant genişliği ücretine neden olur. Bu ücret, ilk kurulumda tek seferlik bir maliyettir. Veriler kopyalandıktan sonra başka geçiş ücretleri yoktur. Bant genişliği ücretleri hakkında daha fazla bilgi için bkz. [Azure Depolama fiyatlandırması sayfası](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Depolama hesabınızı GRS'den LRS'ye aktarırsanız, ek bir ücret yoktur, ancak çoğaltılan verileriniz ikincil konumdan silinir.
+GRS 'den LRS 'ye depolama hesabınızı geçirirseniz, ek bir maliyet yoktur, ancak çoğaltılan verileriniz ikincil konumdan silinir.
 
 > [!IMPORTANT]
-> Depolama hesabınızı RA-GRS'den GRS veya LRS'ye geçiriyorsanız, bu hesap dönüştürüldüğü tarihten sonraki 30 gün boyunca RA-GRS olarak faturalandırılır.
+> Depolama hesabınızı RA-GRS ' d e veya LRS 'ye geçirirseniz, bu hesap, dönüştürülen tarihin ötesinde 30 gün boyunca RA-GRS olarak faturalandırılır.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Azure Depolama artıklığı](storage-redundancy.md)
-- [Depolama hesabı için Son Eşitleme Zamanı özelliğini denetleme](last-sync-time-get.md)
-- [Okuma erişimi coğrafi yedekli depolama yı kullanarak yüksek kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)
+- [Azure depolama artıklığı](storage-redundancy.md)
+- [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
+- [Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md)

@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim ilkesinde hibe denetimleri - Azure Etkin Dizini
-description: Azure AD Koşullu Erişim ilkesinde hibe denetimleri nelerdir
+title: Koşullu erişim ilkesinde denetim verme-Azure Active Directory
+description: Azure AD koşullu erişim ilkesinde izin verme denetimleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,82 +12,82 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331848"
 ---
-# <a name="conditional-access-grant"></a>Koşullu Erişim: Hibe
+# <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
-Koşullu Erişim ilkesi içinde, yönetici kaynaklara erişimi vermek veya engellemek için erişim denetimlerinden yararlanabilir.
+Bir yönetici, koşullu erişim ilkesinde, kaynaklara erişim izni vermek veya erişimi engellemek için erişim denetimlerini kullanabilir.
 
-![Çok faktörlü kimlik doğrulaması gerektiren hibe denetimine sahip Koşullu Erişim ilkesi](./media/concept-conditional-access-grant/conditional-access-grant.png)
+![Multi-Factor Authentication gerektiren bir izin denetimi olan koşullu erişim ilkesi](./media/concept-conditional-access-grant/conditional-access-grant.png)
 
-## <a name="block-access"></a>Hizmete erişimi
+## <a name="block-access"></a>Erişimi engelleme
 
-Blok, tüm atamaları dikkate alır ve Koşullu Erişim ilkesi yapılandırmasına dayalı erişimi engeller.
+Blok tüm atamaları hesaba ayırır ve koşullu erişim ilkesi yapılandırmasına bağlı olarak erişimi engeller.
 
-Blok uygun bilgi ile wielded gereken güçlü bir kontroldür. Bu, yöneticilerin etkinleştirmeden önce sınamak için [yalnızca Rapor modunu](concept-conditional-access-report-only.md) kullanmaları gereken bir şeydir.
+Blok, uygun bilgilerle silinmeli güçlü bir denetimdir. Bir yönetici, etkinleştirmeden önce test etmek için [yalnızca rapor modunu](concept-conditional-access-report-only.md) kullanmalıdır.
 
 ## <a name="grant-access"></a>Erişim verme
 
-Yöneticiler erişim verirken bir veya daha fazla denetim uygulamayı seçebilir. Bu denetimler aşağıdaki seçenekleri içerir: 
+Yöneticiler, erişim izni verirken bir veya daha fazla denetimi zorlamayı tercih edebilir. Bu denetimler aşağıdaki seçenekleri içerir: 
 
-- [Çok faktörlü kimlik doğrulama (Azure Çok Faktörlü Kimlik Doğrulama) gerektirir](../authentication/concept-mfa-howitworks.md)
-- [Aygıtın uyumlu olarak işaretlemesi gerekir (Microsoft Intune)](/intune/protect/device-compliance-get-started)
-- [Karma Azure AD'nin birleştirilmiş aygıta katılmasını gerektirin](../devices/concept-azure-ad-join-hybrid.md)
-- [Onaylı istemci uygulaması gerektirir](app-based-conditional-access.md)
+- [Multi-Factor Authentication gerektir (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
+- [Cihazın uyumlu olarak işaretlenmesini gerektir (Microsoft Intune)](/intune/protect/device-compliance-get-started)
+- [Karma Azure AD 'ye katılmış cihaz gerektir](../devices/concept-azure-ad-join-hybrid.md)
+- [Onaylanan istemci uygulaması gerektir](app-based-conditional-access.md)
 - [Uygulama koruma ilkesi gerektir](app-protection-based-conditional-access.md)
 
-Yöneticiler bu seçenekleri birleştirmeyi seçtiklerinde aşağıdaki yöntemleri seçebilirler:
+Yöneticiler bu seçenekleri birleştirmeyi seçerken, aşağıdaki yöntemleri seçebilirler:
 
-- Seçili tüm denetimleri (kontrol **ve** kontrol) gerektirir
-- Seçili denetimlerden birini (kontrol **VEYA** denetim) gerektirir
+- Seçili tüm denetimleri gerektir (Denetim **ve** denetim)
+- Seçili denetimlerden birini gerektir (Denetim **veya** denetim)
 
-Varsayılan olarak Koşullu Erişim tüm seçili denetimleri gerektirir.
+Varsayılan olarak, koşullu erişim tüm seçili denetimleri gerektirir.
 
-### <a name="require-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama gerektirir
+### <a name="require-multi-factor-authentication"></a>Multi-Factor Authentication gerektir
 
-Bu onay kutusunun seçilmesi, kullanıcıların Azure Çok Faktörlü Kimlik Doğrulaması gerçekleştirmesini gerektirir. Azure Çok Faktörlü Kimlik Doğrulama'yı dağıtma hakkında daha fazla bilgiyi [bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulama dağıtımını Planlama](../authentication/howto-mfa-getstarted.md)makalesinde bulabilirsiniz.
+Bu onay kutusunun belirlenmesi, kullanıcıların Azure Multi-Factor Authentication gerçekleştirmesini gerektirir. Azure Multi-Factor Authentication dağıtımı hakkında daha fazla bilgi, [bulut tabanlı Azure Multi-Factor Authentication dağıtımını planlama](../authentication/howto-mfa-getstarted.md)makalesinde bulunabilir.
 
-### <a name="require-device-to-be-marked-as-compliant"></a>Aygıtın uyumlu olarak işaretlemesi
+### <a name="require-device-to-be-marked-as-compliant"></a>Cihazın uyumlu olarak işaretlenmesini gerektir
 
-Microsoft Intune'u dağıtan kuruluşlar, aygıtlarından döndürülen bilgileri, belirli uyumluluk gereksinimlerini karşılayan aygıtları tanımlamak için kullanabilir. Bu ilke uyumluluk bilgileri, Koşullu Erişim'in kaynaklara erişim izni vermek veya engellemek için kararlar alabilmesi için Intune'dan Azure AD'ye iletilir. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune'u kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek için aygıtlarda kuralları ayarla makalesine](/intune/protect/device-compliance-get-started)bakın.
+Microsoft Intune dağıtılan kuruluşlar, belirli uyumluluk gereksinimlerini karşılayan cihazları tanımlamak için cihazlarından döndürülen bilgileri kullanabilir. Bu ilke uyumluluk bilgileri, Intune 'dan Azure AD 'ye iletilir ve Koşullu erişimin kaynaklara erişim izni vermek veya erişimi engellemek için kararlar verebilecekleri bir karardır. Uyumluluk ilkeleri hakkında daha fazla bilgi için, [Intune kullanarak kuruluşunuzdaki kaynaklara erişime izin vermek üzere cihazlarda kuralları ayarlama](/intune/protect/device-compliance-get-started)makalesine bakın.
 
-Aygıt, Intune (herhangi bir aygıt işletim sistemi için) veya Windows 10 aygıtları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. Jamf pro desteklenen tek üçüncü taraf MDM sistemidir. Entegrasyon hakkında daha fazla bilgi makalede bulunabilir, [Uyum için Intune ile Jamf Pro Entegre](/intune/protect/conditional-access-integrate-jamf).
+Bir cihaz, Intune (herhangi bir cihaz işletim sistemi için) veya Windows 10 cihazları için üçüncü taraf MDM sistemi tarafından uyumlu olarak işaretlenebilir. JAMF Pro yalnızca desteklenen üçüncü taraf MDM sistemidir. Tümleştirme hakkında daha fazla bilgi için bkz. Bu makalede, [Uyumluluk Için JAMF Pro 'Yu Intune Ile tümleştirin](/intune/protect/conditional-access-integrate-jamf).
 
-Aygıtların uyumlu olarak işaretlenebilmeleri için Azure AD'ye kaydedilmesi gerekir. Cihaz kaydı hakkında daha fazla bilgi makalede bulunabilir, [Bir cihaz kimliği nedir](../devices/overview.md).
+Cihazların uyumlu olarak işaretlenmeleri için önce Azure AD 'de kayıtlı olmaları gerekir. Cihaz kaydı hakkında daha fazla bilgi, makalesinde [cihaz kimliği nedir?](../devices/overview.md)makalesinde bulunabilir.
 
-### <a name="require-hybrid-azure-ad-joined-device"></a>Karma Azure AD'nin birleştirilmiş aygıta katılmasını gerektirin
+### <a name="require-hybrid-azure-ad-joined-device"></a>Karma Azure AD 'ye katılmış cihaz gerektir
 
-Kuruluşlar, Koşullu Erişim ilkesinin bir parçası olarak aygıt kimliğini kullanmayı seçebilir. Kuruluşlar, aygıtların bu onay kutusunu kullanarak birleştirilmiş karma Azure AD'sı olduğunu gerektirebilir. Aygıt kimlikleri hakkında daha fazla bilgi için makaleye bakın [Aygıt kimliği nedir?](../devices/overview.md)
+Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini kullanmayı seçebilir. Kuruluşlar, bu onay kutusu kullanılarak cihazların karma Azure AD 'ye katılmış olmasını gerektirebilir. Cihaz kimlikleri hakkında daha fazla bilgi için, [cihaz kimliği nedir?](../devices/overview.md)makalesine bakın.
 
-### <a name="require-approved-client-app"></a>Onaylı istemci uygulaması gerektirir
+### <a name="require-approved-client-app"></a>Onaylanan istemci uygulaması gerektir
 
-Kuruluşlar, seçili bulut uygulamalarına erişim girişiminin onaylanmış bir istemci uygulamasından yapılmasını gerektirebilir. Bu onaylı istemci uygulamaları, herhangi bir mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
+Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Bu hibe denetiminden yararlanmak için Koşullu Erişim, aygıtın bir broker uygulamasının kullanılmasını gerektiren Azure Etkin Dizini'ne kaydolmasını gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulaması yapmaya çalıştığında cihaza bir broker uygulaması yüklenmezse, kullanıcı broker uygulamasını yüklemek için uygulama mağazasına yönlendirilir.
+Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihazda bir aracı uygulaması yüklü değilse, aracı uygulamasını yüklemek için Kullanıcı App Store 'a yönlendirilir.
 
-Bu ayar aşağıdaki iOS ve Android uygulamaları için geçerlidir:
+Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 
-- Microsoft Azure Bilgi Koruması
-- Microsoft Rezervasyonları
+- Microsoft Azure Information Protection
+- Microsoft kayıtları
 - Microsoft Cortana
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
 - Microsoft Flow
 - Microsoft Intune Yönetilen Tarayıcı
-- Microsoft Faturalama
+- Microsoft faturalandırma
 - Microsoft Kaizala
-- Microsoft Başlatıcısı
+- Microsoft başlatıcısı
 - Microsoft Office
-- Microsoft Office Hub
+- Microsoft Office Hub 'ı
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
-- Microsoft Planlayıcısı
+- Microsoft Planner
 - Microsoft PowerApps
 - Microsoft Power BI
 - Microsoft PowerPoint
@@ -100,48 +100,48 @@ Bu ayar aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 - Microsoft Visio
 - Microsoft Word
 - Microsoft Yammer
-- Microsoft Beyaz Tahta
+- Microsoft beyaz tahta
 
 **Açıklamalar**
 
-- Onaylanan istemci uygulamaları Intune mobil uygulama yönetimi özelliğini destekler.
-- Onaylı istemci uygulaması gereksinimi **gerektirir:**
-   - Yalnızca aygıt platformu durumu için iOS ve Android'i destekler.
-   - Cihazı kaydetmek için bir broker uygulaması gereklidir. iOS'ta, broker uygulaması Microsoft Authenticator ve Android, bu Intune Company Portal uygulamasıdır.
-- Koşullu Erişim, InPrivate modunda Microsoft Edge'i onaylanmış bir istemci uygulaması olarak kabul edemez.
+- Onaylanan istemci uygulamaları, Intune mobil uygulama yönetimi özelliğini destekler.
+- **Onaylanan istemci uygulaması gereksinimini gerektir** :
+   - Yalnızca iOS ve Android for Device platform koşulunu destekler.
+   - Cihazı kaydetmek için bir aracı uygulaması gereklidir. İOS 'ta, aracı uygulaması Microsoft Authenticator ve Android üzerinde Intune Şirket Portalı uygulamasıdır.
+- Koşullu erişim, onaylanan bir istemci uygulamasında Microsoft Edge 'i InPrivate modunda kabul edemez.
 
-Makaleye bakın, Nasıl Yapılışı: Yapılandırma örnekleri [için Koşullu Erişim ile bulut uygulaması erişimi için onaylı istemci uygulamalarını zorunlu kılmasını sağlayın.](app-based-conditional-access.md)
+Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: Cloud App Access için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md) .
 
 ### <a name="require-app-protection-policy"></a>Uygulama koruma ilkesi gerektir
 
-Koşullu Erişim politikanızda, seçili bulut uygulamalarına erişilmeden önce istemci uygulamasında bir [Intune uygulaması koruma ilkesinin](/intune/app-protection-policy) bulunmasını talep edebilirsiniz. 
+Koşullu erişim ilkenizde, seçili bulut uygulamalarına erişim izni vermeden önce istemci uygulamada bir [Intune uygulama koruma ilkesinin](/intune/app-protection-policy) mevcut olmasını zorunlu kılabilirsiniz. 
 
-Bu hibe denetiminden yararlanmak için Koşullu Erişim, aygıtın bir broker uygulamasının kullanılmasını gerektiren Azure Etkin Dizini'ne kaydolmasını gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulaması yapmaya çalıştığında cihaza bir broker uygulaması yüklenmezse, kullanıcı broker uygulamasını yüklemek için uygulama mağazasına yönlendirilir.
+Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulama, iOS için Microsoft Authenticator ya da Android cihazlar için Microsoft Şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihazda bir aracı uygulaması yüklü değilse, aracı uygulamasını yüklemek için Kullanıcı App Store 'a yönlendirilir.
 
-Bu ayar aşağıdaki istemci uygulamaları için geçerlidir:
+Bu ayar, aşağıdaki istemci uygulamaları için geçerlidir:
 
 - Microsoft Cortana
 - Microsoft OneDrive
 - Microsoft Outlook
-- Microsoft Planlayıcısı
+- Microsoft Planner
 
 **Açıklamalar**
 
-- Uygulama koruma ilkesi ne yönelik uygulamalar, intune mobil uygulama yönetimi özelliğini politika korumasıyla destekler.
-- Uygulama koruma ilkesi gereksinimleri **gerektirir:**
-    - Yalnızca aygıt platformu durumu için iOS ve Android'i destekler.
-    - Cihazı kaydetmek için bir broker uygulaması gereklidir. iOS'ta, broker uygulaması Microsoft Authenticator ve Android, bu Intune Company Portal uygulamasıdır.
+- Uygulama koruma ilkesi için uygulamalar, ilke korumasıyla Intune mobil uygulama yönetimi özelliğini destekler.
+- **Uygulama koruma ilkesi gereksinimlerini gerektir** :
+    - Yalnızca iOS ve Android for Device platform koşulunu destekler.
+    - Cihazı kaydetmek için bir aracı uygulaması gereklidir. İOS 'ta, aracı uygulaması Microsoft Authenticator ve Android üzerinde Intune Şirket Portalı uygulamasıdır.
 
-Makaleye bakın, [Nasıl YapılSın: Yapılandırma örnekleri için Koşullu Erişim ile bulut uygulamasıerişimi için uygulama koruma ilkesini ve onaylı bir istemci uygulamasını zorunlu kılmasını sağlayın.](app-protection-based-conditional-access.md)
+Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: uygulama koruma Ilkesi gerektirme ve bulut uygulaması erişimi için onaylanan bir istemci uygulaması](app-protection-based-conditional-access.md) .
 
 ### <a name="terms-of-use"></a>Kullanım koşulları
 
-Kuruluşunuz kullanım koşulları oluşturduysa, hibe denetimleri altında ek seçenekler görülebilir. Bu seçenekler, yöneticilerin ilke tarafından korunan kaynaklara erişim koşulu olarak kullanım koşullarının kabul edilmesini gerektirmesine olanak sağlar. Kullanım koşulları hakkında daha fazla bilgi makalede bulunabilir, [Azure Active Directory kullanım koşulları](terms-of-use.md).
+Kuruluşunuz kullanım koşulları oluşturmışsa, denetim ver altında ek seçenekler görünür olabilir. Bu seçenekler, yöneticilerin ilke tarafından korunan kaynaklara erişme koşulu olarak kullanım koşulları onayını gerektirmesini sağlar. Kullanım koşulları hakkında daha fazla bilgi makalesinde [Azure Active Directory kullanım koşulları](terms-of-use.md)' nda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu Erişim: Oturum denetimleri](concept-conditional-access-session.md)
+- [Koşullu erişim: oturum denetimleri](concept-conditional-access-session.md)
 
-- [Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+- [Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
 - [Yalnızca rapor modu](concept-conditional-access-report-only.md)

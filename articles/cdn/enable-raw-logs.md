@@ -1,6 +1,6 @@
 ---
-title: Azure CDN HTTP ham günlükleri
-description: Bu makalede, Azure CDN HTTP ham günlükleri açıklanmaktadır.
+title: HTTP ham günlüklerini Azure CDN
+description: Bu makalede HTTP ham günlükleri Azure CDN açıklanmaktadır.
 services: cdn
 author: sohamnchatterjee
 manager: danielgi
@@ -11,91 +11,91 @@ ms.topic: article
 ms.date: 03/23/2020
 ms.author: sohamnc
 ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371627"
 ---
-# <a name="azure-cdn-http-raw-logs"></a>Azure CDN HTTP ham günlükleri
-Ham günlükler, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Ham günlükleri etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynaklarında yapılan işlemlerde görünürlük sağlar. Ham günlükler, kaynağınızın işlemlerinin kaydını sağlar.
+# <a name="azure-cdn-http-raw-logs"></a>HTTP ham günlüklerini Azure CDN
+Ham Günlükler, denetim ve sorun giderme için önemli olan işlemler ve hatalar hakkında zengin bilgiler sağlar. Ham Günlükler etkinlik günlüklerinden farklıdır. Etkinlik günlükleri, Azure kaynakları üzerinde gerçekleştirilen işlemlere görünürlük sağlar. Ham Günlükler, kaynağınızın bir işlem kaydını sağlar.
 
 > [!IMPORTANT]
-> HTTP ham günlükleri özelliği Microsoft'tan Azure CDN için kullanılabilir.
+> HTTP ham günlükleri özelliği, Microsoft 'tan Azure CDN için kullanılabilir.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="configuration"></a>Yapılandırma
 
-Azure CDN'niz için Raw günlüklerini Microsoft profilinden yapılandırmak için: 
+Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için: 
 
-1. Azure portalı menüsünden TÜM **Kaynaklar** >> **\<CDN profiliniz>. **
+1. Azure Portal menüsünde **tüm kaynaklar** >> **\<-CDN-profile>**' i seçin.
 
-2. **İzleme**altında, **Tanılama ayarlarını**seçin.
+2. **İzleme**altında **Tanılama ayarları**' nı seçin.
 
-3. Select **+ Tanılama ayarı ekle.**
+3. **+ Tanılama ayarı Ekle**' yi seçin.
 
-    ![CDN tanıalı ayar](./media/cdn-raw-logs/raw-logs-01.png)
+    ![CDN tanılama ayarı](./media/cdn-raw-logs/raw-logs-01.png)
 
     > [!IMPORTANT]
-    > Ham günlükler yalnızca profil düzeyinde kullanılabilirken, toplanmış http durum kodu günlükleri bitiş noktası düzeyinde kullanılabilir.
+    > Ham Günlükler yalnızca profil düzeyinde kullanılabilir, ancak toplu http durum kodu günlükleri uç nokta düzeyinde kullanılabilir.
 
-4. **Tanılama ayarları**altında, **Tanılama ayarları adı**altında tanılama ayarı için bir ad girin.
+4. **Tanılama ayarları**' nın altında, tanılama **ayarları adı**altında tanılama ayarı için bir ad girin.
 
-5. **Günlüğü** seçin ve bekletme gün içinde ayarlayın.
+5. **Günlüğü** seçin ve bekletme süresini gün olarak ayarlayın.
 
-6. Hedef **ayrıntılarını**seçin. Hedef seçenekleri şunlardır:
+6. **Hedef ayrıntılarını**seçin. Hedef seçenekleri şunlardır:
     * **Log Analytics’e gönderme**
-        * **Abonelik** ve **Günlük Analizi çalışma alanını**seçin.
-    * **Depolama hesabına arşivleme**
-        * **Abonelik** ve **Depolama Hesabı'nı**seçin.
-    * **Olay merkezine akış**
-        * **Abonelik,** **Olay hub ad alanı,** Olay hub adı **(isteğe bağlı)** ve **Olay hub ilke adını**seçin.
+        * **Aboneliği** ve **Log Analytics çalışma alanını**seçin.
+    * **Bir depolama hesabına Arşivle**
+        * **Aboneliği** ve **Depolama hesabını**seçin.
+    * **Bir olay hub 'ına akış**
+        * **Abonelik**, **Olay Hub 'ı ad alanı**, **Olay Hub 'ı adı (isteğe bağlı)** ve **Olay Hub 'ı ilke adı**' nı seçin.
 
-    ![CDN tanıalı ayar](./media/cdn-raw-logs/raw-logs-02.png)
+    ![CDN tanılama ayarı](./media/cdn-raw-logs/raw-logs-02.png)
 
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 
-## <a name="raw-logs-properties"></a>Ham günlüközellikleri
+## <a name="raw-logs-properties"></a>Ham Günlükler özellikleri
 
-Microsoft Service'in Azure CDN'si şu anda Raw günlükleri sağlar. Ham günlükler, her girişte aşağıdaki şemaiçeren ayrı API istekleri sağlar: 
+Microsoft Service Azure CDN Şu anda ham Günlükler sağlıyor. Ham Günlükler her bir girdiyle aşağıdaki şemaya sahip API istekleri sağlar: 
 
 | Özellik              | Açıklama                                                                                                                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| İzlemeReferans     | Ön Kapı tarafından sunulan bir isteği tanımlayan ve istemciye X-Azure-Ref üstbilgisi olarak gönderilen benzersiz başvuru dizesi. Belirli bir istek için erişim günlüklerinde arama ayrıntıları için gereklidir. |
-| Http Yöntemi            | İstek tarafından kullanılan HTTP yöntemi.                                                                                                                                                                     |
-| httpVersion           | İstek veya bağlantı türü.                                                                                                                                                                   |
-| Requesturi            | Uri alınan istek.                                                                                                                                                                         |
-| İstekBaytlar          | İstek üstbilgisi ve istek gövdesi de dahil olmak üzere baytlar daki HTTP istek iletisinin boyutu.                                                                                                   |
-| YanıtBayt         | Yanıt olarak arka uç sunucusu tarafından gönderilen baytlar.                                                                                                                                                    |
-| Useragent             | İstemcinin kullandığı tarayıcı türü.                                                                                                                                                               |
-| ClientIp              | İstekte bulundu müşterinin IP adresi.                                                                                                                                                  |
-| Zaman Dilimi             | Eylemin milisaniye cinsinden aldığı süre.                                                                                                                                            |
-| Securityprotocol      | İstek tarafından kullanılan TLS/SSL protokol sürümü veya şifreleme yoksa null.                                                                                                                           |
-| Uç Nokta              | CDN uç nokta ana bilgisayar üst CDN profili altında yapılandırıldı.                                                                                                                                   |
-| Arka uç Ana Bilgisayar adı     | Geri uç ana bilgisayarının adı veya isteklerin gönderildiği kaynak.                                                                                                                                |
-| Menşe kalkanına gönderildi | Doğruysa, bu istek kenar pop yerine başlangıç kalkanı önbelleğinden yanıtlandı anlamına gelir. Başlangıç kalkanı, önbellek isabet oranını iyileştirmek için kullanılan bir üst önbellektir.                                       |
-| httpstatuscode        | HTTP durum kodu proxy'den döndürülür.                                                                                                                                                        |
-| httpStatusDetails     | İstek te ortaya çıkan durum. Bu dize değerinin anlamı durum başvuru tablosunda bulunabilir.                                                                                              |
-| Pop                   | Kullanıcı isteğine yanıt veren kenar pop. POP'ların kısaltmaları kendi metrolarının havaalanı kodlarıdır.                                                                                   |
-| Önbellek Durumu          | Nesnenin önbellekten döndürülmüş mü yoksa kaynaktan mı geldiğini belirtir.                                                                                                             |
+| TrackingReference     | Ön kapıya yönelik olarak sunulan ve istemciye X-Azure-ref üst bilgisi olarak gönderilen bir isteği tanımlayan benzersiz başvuru dizesi. Belirli bir istek için erişim günlüklerindeki ayrıntıları aramak için gereklidir. |
+| HttpMethod            | İstek tarafından kullanılan HTTP yöntemi.                                                                                                                                                                     |
+| HttpVersion           | İstek veya bağlantı türü.                                                                                                                                                                   |
+| RequestUri            | Alınan isteğin URI 'SI.                                                                                                                                                                         |
+| RequestBytes          | İstek üst bilgileri ve istek gövdesi dahil olmak üzere HTTP isteği iletisinin bayt cinsinden boyutu.                                                                                                   |
+| ResponseBytes         | Yanıt olarak arka uç sunucusu tarafından gönderilen bayt.                                                                                                                                                    |
+| Kullanıcı             | İstemcinin kullandığı tarayıcı türü.                                                                                                                                                               |
+| ClientIp              | İsteği yapan istemcinin IP adresi.                                                                                                                                                  |
+| TimeTaken             | İşlemin gerçekleştiği sürenin milisaniye cinsinden uzunluğu.                                                                                                                                            |
+| SecurityProtocol      | İstek tarafından kullanılan TLS/SSL protokol sürümü veya şifreleme yoksa null.                                                                                                                           |
+| Uç Nokta              | CDN uç noktası Konağı, üst CDN profili altında yapılandırıldı.                                                                                                                                   |
+| Arka uç konak adı     | İsteklerin gönderildiği arka uç konağın veya başlangıcının adı.                                                                                                                                |
+| Kaynak Shield 'a gönderildi | True ise, isteğin kenar pop 'u yerine kaynak kalkan önbelleğinden yanıtlandığını gösterir. Kaynak kalkan, önbellek isabet oranını artırmak için kullanılan bir üst önbelleğidir.                                       |
+| HttpStatusCode        | Proxy 'den döndürülen HTTP durum kodu.                                                                                                                                                        |
+| HttpStatusDetails     | İstek üzerine sonuçtaki durum. Bu dize değerinin anlamı, bir durum başvuru tablosunda bulunabilir.                                                                                              |
+| Cağımız                   | Kullanıcı isteğine yanıt veren kenar açılır. Pop 'Ların kısaltmaları ilgili Metros Havaalanı kodlarıdır.                                                                                   |
+| Önbellek durumu          | Nesnenin önbellekten döndürülüp döndürülmeyeceğini veya kaynaktan geldiğini belirtir.                                                                                                             |
 > [!IMPORTANT]
-> HTTP Raw günlükleri **özelliği, 25 Şubat 2020**tarihinden sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, günlük günlüğe kaydetmeyi ayarladıktan sonra CDN bitiş noktasını güncelleştirmek gerekir. Örneğin, CDN uç noktaları altında coğrafi filtreleme için gezinmek ve iş yükü ile ilgili olmayan herhangi bir ülkeyi engellemek ve kaydet tuşuna basmak. 
+> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altındaki coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi engelleyebilir ve Kaydet ' e gidebilirsiniz. 
 
 > [!NOTE]
-> Günlükler, bir sorgu çalıştırarak Log Analytics profiliniz altında görüntülenebilir. Örnek bir sorgu AzureDiagnostics | nerede Kategori == "AzureCdnAccessLog"
+> Günlükler, bir sorgu çalıştırılarak Log Analytics profiliniz altında görüntülenebilir. Örnek bir sorgu AzureDiagnostics gibi görünür WHERE kategorisi = = "AzureCdnAccessLog"
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-Bu makalede, Microsoft CDN hizmeti için HTTP ham günlüklerini etkinleştirdin.
+Bu makalede, Microsoft CDN hizmeti için HTTP RAW günlüklerini etkinleştirdiniz.
 
-Azure CDN ve bu makalede bahsedilen diğer Azure hizmetleri hakkında daha fazla bilgi için bkz:
+Azure CDN ve bu makalede bahsedilen diğer Azure hizmetleri hakkında daha fazla bilgi için bkz.:
 
-* [Analiz et](cdn-log-analysis.md) Azure CDN kullanım desenleri.
+* [Çözümle](cdn-log-analysis.md) Kullanım desenlerini Azure CDN.
 
-* [Azure Monitör](https://docs.microsoft.com/azure/azure-monitor/overview)hakkında daha fazla bilgi edinin.
+* [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)hakkında daha fazla bilgi edinin.
 
-* Azure [Monitör'de Günlük Analizini](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)Yapılandırın.
+* [Azure izleyici 'de Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)yapılandırın.

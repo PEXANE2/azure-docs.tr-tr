@@ -1,6 +1,6 @@
 ---
-title: Coğrafi kodlama kapsamı | Microsoft Azure Haritaları
-description: Konum adresini enlem ve boylam koordinatlarına dönüştürme işlemi coğrafi kodlama olarak bilinir. Bu makalede, Microsoft Azure Haritalar'da Coğrafi Kodlama Kapsamı olan bölgeler hakkında bilgi edineceksiniz.
+title: Coğrafi kodlama kapsamı | Microsoft Azure haritaları
+description: Konum adresini Enlem ve boylam koordinatları olarak dönüştürme işlemi, coğrafi kodlama olarak bilinir. Bu makalede, Microsoft Azure Eşlemlerde coğrafi kodlama kapsamına sahip bölgeler hakkında bilgi edineceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 12/31/2019
@@ -9,25 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335643"
 ---
-# <a name="azure-maps-geocoding-coverage"></a>Azure Haritalar coğrafi kodlama kapsamı
+# <a name="azure-maps-geocoding-coverage"></a>Azure haritalar coğrafi kodlama kapsamı
 
-Azure Haritalar'da bir konum aradığınızda, arama hizmeti [(Örneğin Arama Adresi Al),](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)arama terimlerinizi alır ve enlem ve boylam koordinatlarını döndürür. Bu işleme coğrafi kodlama denir. Ancak, Azure Haritalar tüm bölgeler ve ülkeler için aynı bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde ne tür konumlar arayabilirsiniz belirlemek için bu makaleyi kullanın. 
+Azure haritalar ile bir konum aradığınızda Arama hizmeti, örneğin [arama adresi al](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress), arama terimlerinizi alır ve enlem ve boylam koordinatlarını döndürür. Bu işleme geokodlamaya denir. Ancak, Azure Maps tüm bölgeler ve ülkeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir. Her bölgede güvenilir bir şekilde arama yapmak istediğiniz konum türlerini belirlemek için bu makaleyi kullanın. 
 
-Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğrafi kodlama hizmetinin jeokodlama hassasiyetine bağlıdır. Aşağıdaki kategoriler, her ülke/bölgedeki coğrafi kodlama desteğinin düzeyini belirtir.
-* **Adres noktaları** - Adres verileri adres parseli (mülkiyet sınırı) içinde enlem/boylam koordinatı olarak çözülebilir. Bazen 'Rooftop' doğru olarak anılacaktır. Bu, adresler için kullanılabilen en yüksek doğruluk düzeyidir. 
-* **Ev numaraları** - Adresler sokaktaki enlem/boylam koordinatlarına enterpolasyonludur.
-* **Sokak düzeyi** - Adresler, adresi içeren sokağın enlem/boylam koordinatına göre çözülür. Ev numarası işlenmeyebilir.
-* **Şehir seviyesi** - Şehir yeri adları desteklenir.
+Bir ülkede/bölgede kodlamayı özelliği, yol veri kapsamına ve coğrafi kodlama hizmetinin coğrafi kodlama duyarlığına bağımlıdır. Aşağıdaki sınıflandırmalar, her ülkede/bölgede coğrafi kodlama desteğinin düzeyini belirler.
+* **Adres noktaları** -adresler verileri, adres alanı (özellik sınırı) içindeki bir Enlem/Boylam koordinatına çözümlenebilirler. Bazen ' Rooftop ' doğru olarak adlandırılır. Bu, adresler için kullanılabilen en yüksek doğruluk düzeyidir. 
+* **Ev numaraları** -adresler cadde üzerinde bir enlem/boylam koordinatı ile yapılır.
+* **Cadde düzeyi** -adresler, adresi içeren sokak 'nin Enlem/Boylam koordinatı olarak çözümlenir. Evin numarası işlenemiyor olabilir.
+* **Şehir düzeyi** -şehir yeri adları desteklenir.
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-| Ülke/Bölge                                       | Adres noktaları | Ev numaraları | Sokak seviyesi | Şehir seviyesi | İlgi çekici noktalar |
+| Ülke/Bölge                                       | Adres noktaları | Ev numaraları | Cadde düzeyi | Şehir düzeyi | İlgi çekici noktaları |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Anguilla                                            |                 |                |              |      ✓     |          ✓         |
 | Antarktika                                          |                 |                |              |      ✓     |          ✓         |
@@ -69,26 +69,26 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Paraguay                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Peru                                                |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Porto Riko                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Aziz Barthélemy                                    |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Barthélimy                                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Kitts ve Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Aziz Pierre ve Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Pierre ve Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent ve Grenadinler                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Güney Georgia ve Güney Sandwich Adaları        |                 |                |              |      ✓     |          ✓         |
 | Surinam                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad ve Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Amerika Birleşik Devletleri Küçük Dış Adalar                |                 |                |              |      ✓     |          ✓         |
-| Amerika Birleşik Devletleri                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Birleşik Devletler küçük harici Adaları                |                 |                |              |      ✓     |          ✓         |
+| Amerika Birleşik Devletler                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Britanya Virjin Adaları                              |                 |                |              |      ✓     |          ✓         |
-| ABD Virjin Adaları                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| ABD Virgin Adaları                                 |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Sokak seviyesi | Şehir seviyesi | İlgi çekici noktalar |
+| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Cadde düzeyi | Şehir düzeyi | İlgi çekici noktaları |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Amerikan Samoası                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Avustralya                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -133,7 +133,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Senkaku Adaları                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Singapur                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Solomon Adaları                                     |                 |                |              |      ✓     |          ✓         |
-| Güney Kurils                                     |        ✓        |                |              |      ✓     |          ✓         |
+| Güney Küıls                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Sri Lanka                                           |                 |                |              |      ✓     |          ✓         |
 | Tayvan                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Tayland                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -147,7 +147,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 
 ## <a name="europe"></a>Avrupa
 
-| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Sokak seviyesi | Şehir seviyesi | İlgi çekici noktalar |
+| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Cadde düzeyi | Şehir düzeyi | İlgi çekici noktaları |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Arnavutluk                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Andorra                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -175,7 +175,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Macaristan                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | İzlanda                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | İrlanda                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Isle Of Man                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Man Adası                                         |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | İtalya                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Jan Mayen                                           |        ✓        |                |              |      ✓     |          ✓         |
 | Jersey                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -195,7 +195,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Norveç                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Polonya                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Portekiz                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| +Azores ve Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
+| + Azor Adaları ve Madeira                                 |                 |                |       ✓      |      ✓     |          ✓         |
 | Romanya                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rusya Federasyonu                                  |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | San Marino                                          |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -212,12 +212,12 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Ukrayna                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Birleşik Krallık                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Özbekistan                                          |                 |                |              |      ✓     |          ✓         |
-| Vatikan                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vatikan şehri                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Sokak seviyesi | Şehir seviyesi | İlgi çekici noktalar |
+| Ülke/Bölge                                      | Adres noktaları |Ev numaraları | Cadde düzeyi | Şehir düzeyi | İlgi çekici noktaları |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
 | Afganistan                                         |                 |                |              |      ✓     |          ✓         |
 | Cezayir                                             |                 |                |       ✓      |      ✓     |          ✓         |
@@ -274,7 +274,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Katar                                               |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Reunion                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Rwanda                                              |                 |                |       ✓      |      ✓     |          ✓         |
-| Aziz Helena                                        |                 |                |              |      ✓     |          ✓         |
+| Saint Helena                                        |                 |                |              |      ✓     |          ✓         |
 | Suudi Arabistan                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Senegal                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Seyşeller                                          |                 |                |       ✓      |      ✓     |          ✓         |
@@ -285,7 +285,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 | Sudan                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Svaziland                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Suriye                                               |                 |                |              |      ✓     |          ✓         |
-| São Tomé ve Príncipe                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Sao Tome ve Principe                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzanya                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunus                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -299,7 +299,7 @@ Bir ülkede/bölgede coğrafi kod yapma yeteneği, yol veri kapsamına ve coğra
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Haritalar coğrafi kodlaması hakkında daha fazla bilgi için [Arama](https://docs.microsoft.com/rest/api/maps/search) başvuru sayfalarına bakın.
+Azure haritalar coğrafi kodlama hakkında daha fazla bilgi için bkz. [arama](https://docs.microsoft.com/rest/api/maps/search) başvuru sayfaları.
 
-[Haritalar trafik hizmetinin kapsama alanları](traffic-coverage.md)hakkında bilgi edinin. 
+[Haritalar trafik hizmeti için kapsam bölgeleri](traffic-coverage.md)hakkında bilgi edinin. 
 

@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim - Eski kimlik doğrulamasını engelleme - Azure Etkin Dizini
-description: Eski kimlik doğrulama protokollerini engellemek için özel bir Koşullu Erişim ilkesi oluşturma
+title: Koşullu erişim-blok eski kimlik doğrulaması-Azure Active Directory
+description: Eski kimlik doğrulama protokollerini engellemek için özel bir koşullu erişim ilkesi oluşturma
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,42 +12,42 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a868c8199ac34a498a280e2522d6b1e4c7ec370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295224"
 ---
-# <a name="conditional-access-block-legacy-authentication"></a>Koşullu Erişim: Eski kimlik doğrulamasını engelleme
+# <a name="conditional-access-block-legacy-authentication"></a>Koşullu erişim: eski kimlik doğrulamasını engelle
 
-Eski kimlik doğrulama protokolleriyle ilişkili artan risk nedeniyle Microsoft, kuruluşların bu protokolleri kullanarak kimlik doğrulama isteklerini engellemesini ve modern kimlik doğrulamasına ihtiyaç duymasını önerir.
+Eski kimlik doğrulama protokolleriyle ilişkili risk artışı nedeniyle, Microsoft kuruluşların bu protokolleri kullanarak kimlik doğrulama isteklerini engellemesini ve modern kimlik doğrulaması gerektirmesini önerir.
 
-## <a name="create-a-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
+## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için Koşullu Erişim ilkesi oluşturulmasına yardımcı olur. Bu ilke, yöneticilerin varolan kullanıcılar üzerindeki etkilerini belirleyebilmeleri için yalnızca [Şikayet moduna](howto-conditional-access-report-only.md) konur. Yöneticiler, iidinin istedikleri gibi uygulandığından memnun olduklarında, belirli gruplar ekleyerek ve diğerlerini hariç tutarak **devreyi Aç'a** veya aşamalı olarak açabilirler.
+Aşağıdaki adımlar, eski kimlik doğrulama isteklerini engellemek için bir koşullu erişim ilkesi oluşturmanıza yardımcı olur. Bu ilke, yöneticilerin var olan kullanıcılar üzerinde sahip olacağı etkiyi belirleyebilmeleri için, [yalnızca rapor moduna](howto-conditional-access-report-only.md) konur. Yöneticiler ilkenin bu şekilde uygulanmaları konusunda rahatsızsa, belirli gruplar ekleyerek ve diğerlerini dışlayarak dağıtımı **Açık** veya aşamalı olarak değiştirebilir.
 
-1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
-1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
-1. **Yeni ilke**yi seçin.
-1. Poliçenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmalarını öneririz.
-1. **Atamalar**altında, **Kullanıcıları ve grupları** seçin
-   1. **Altında Ekle**, **Tüm kullanıcıları**seçin.
-   1. **Dışla'nın**altında, **Kullanıcıları ve grupları** seçin ve eski kimlik doğrulamasını kullanma yeteneğini koruması gereken hesapları seçin. Kilitlenmeyi önlemek için en az bir hesabı hariç taçıklayın. Herhangi bir hesabı hariç tutmazsanız, bu ilkeyi oluşturamazsınız.
+1. **Azure Portal** genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
+1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+1. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
+1. **Atamalar**altında **Kullanıcılar ve gruplar** ' ı seçin.
+   1. **Ekle**' nin altında **tüm kullanıcılar**' ı seçin.
+   1. **Hariç tut**' un altında, **Kullanıcılar ve gruplar** ' ı seçin ve eski kimlik doğrulamasını kullanma yeteneğinin korunması gereken tüm hesapları seçin. Kendinizi kilitlenmesini engellemek için en az bir hesabı dışlayın. Herhangi bir hesabı dışlayamazsınız, bu ilkeyi oluşturabileceksiniz.
    1. **Done** (Bitti) öğesini seçin.
-1. **Bulut uygulamaları veya eylemleri**altında, Tüm bulut **uygulamalarını**seçin.
+1. **Bulut uygulamaları veya eylemler**altında **tüm bulut uygulamaları**' nı seçin.
    1. **Done** (Bitti) öğesini seçin.
-1. **Koşullar** > **Altında İstemci uygulamaları (önizleme)**, **Evet** **yapılaşı** ayarlayın.
-   1. Yalnızca kutuları kontrol **edin Mobil uygulamalar ve masaüstü istemcileri** > **Diğer istemciler**.
+1. **İstemci uygulamaları (Önizleme)** **Koşulları** > altında **Yapılandır** ' ı **Evet**olarak ayarlayın.
+   1. Yalnızca **mobil uygulamalar ve Masaüstü istemcileri** > **diğer istemcileri**onay kutularını işaretleyin.
    1. **Done** (Bitti) öğesini seçin.
-1. **Access denetimleri** > altında**Hibe**, **erişimi engelle'yi**seçin.
+1. **Erişim denetimleri** > **izni**' nın altında, **erişimi engelle**' yi seçin.
    1. **Seç**’i seçin.
-1. Ayarlarınızı onaylayın ve yalnızca **Rapor'a** **etkinleştir ilkesini** ayarlayın.
-1. İlkinizi etkinleştirmek için **Oluştur'u** seçin.
+1. Ayarlarınızı onaylayın ve **ilkeyi** **yalnızca rapor**olarak ayarlayın.
+1. İlkenizi etkinleştirmek için oluşturmak **için Oluştur ' u seçin.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-[Koşullu Erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
+[Koşullu erişim yalnızca rapor modunu kullanarak etkiyi belirleme](howto-conditional-access-report-only.md)
 
-[Koşullu Erişim Ne Varsa aracını kullanarak oturum açma davranışını simüle edin](troubleshoot-conditional-access-what-if.md)
+[Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapma](troubleshoot-conditional-access-what-if.md)

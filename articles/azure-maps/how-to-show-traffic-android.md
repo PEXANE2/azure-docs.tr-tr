@@ -1,6 +1,6 @@
 ---
-title: Trafik verilerini android haritasında göster | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar Android SDK'yı kullanarak trafik verilerinin haritaüzerinde nasıl görüntülenecek olduğunu öğreneceksiniz.
+title: Android eşlemesindeki trafik verilerini göster | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir Haritada trafik verileri görüntüleme hakkında bilgi edineceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 02/27/2020
@@ -9,29 +9,29 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: e5611eeb08ac370e12cf452d57a87e449fbd80da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335384"
 ---
-# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure Haritalar Android SDK'yı kullanarak trafik verilerini haritada göster
+# <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
-Akış verileri ve olay verileri, haritada görüntülenebilen iki tür trafik verisidir. Bu kılavuz, her iki trafik veritinin nasıl görüntülenebildiğini gösterir. Olay verileri, inşaatlar, yol kapatmalar ve kazalar gibi şeyler için nokta ve çizgi tabanlı verilerden oluşur. Akış verileri, yoldaki trafik akışıyla ilgili ölçümleri gösterir.
+Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi türüdür. Bu kılavuzda her iki trafik verisi türünün nasıl görüntüleneceği gösterilmektedir. Olaylar verileri, kurulumlarını, yol kapanışları ve kazalardan dolayı gibi şeyler için nokta ve hat tabanlı verilerden oluşur. Akış verileri, yolda trafik akışı hakkında ölçümleri gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Haritada trafiği gösterebilmeniz için [bir Azure Hesabı oluşturup](quick-demo-map-app.md#create-an-account-with-azure-maps)bir abonelik anahtarı [edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, Azure Haritalar [Android SDK'sını](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
+Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-account-with-azure-maps)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz ve bir harita yüklemeniz gerekir.
 
 ## <a name="incidents-traffic-data"></a>Olaylar trafik verileri 
 
-Aramak `setTraffic` için aşağıdaki kitaplıkları almanız `incidents`gerekir:
+' İ `setTraffic` `incidents`çağırmak için aşağıdaki kitaplıkları içeri aktarmanız gerekir:
 
 ```java
 import static com.microsoft.com.azure.maps.mapcontrol.options.TrafficOptions.incidents;
 ```
 
- Aşağıdaki kod parçacığı, trafik verilerini haritada nasıl görüntülediğinizi gösterir. `incidents` Metoda boolean değerini geçiyoruz ve `setTraffic` bunu yönteme aktarıyoruz. 
+ Aşağıdaki kod parçacığı, Haritada trafik verilerinin nasıl görüntüleneceğini gösterir. `incidents` Yöntemine bir Boole değeri geçiririz ve bu yöntemi `setTraffic` yöntemine geçiyoruz. 
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +44,21 @@ protected void onCreate(Bundle savedInstanceState) {
 
 ## <a name="flow-traffic-data"></a>Akış trafiği verileri
 
-Öncelikle aramak `setTraffic` için aşağıdaki kitaplıkları almanız gerekir: `flow`
+Çağırmak `setTraffic` için öncelikle aşağıdaki kitaplıkları içeri aktarmanız gerekir `flow`:
 
 ```java
 import com.microsoft.azure.maps.mapcontrol.options.TrafficFlow;
 import static com.microsoft.azure.maps.mapcontrol.options.TrafficOptions.flow;
 ```
 
-Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacıklarını kullanın. Önceki bölümdeki koda benzer şekilde, yöntemin `flow` geri dönüş `setTraffic` değerini yönteme aktarıyoruz. 'ye `flow`geçirilebilen dört değer vardır ve `flow` her değer ilgili değeri döndürmek için tetiklenir. İade değeri `flow` daha sonra bağımsız değişken `setTraffic`olarak geçirilir. Bu dört değer için aşağıdaki tabloya bakın:
+Trafik akışı verilerini ayarlamak için aşağıdaki kod parçacığını kullanın. Önceki bölümde bulunan koda benzer şekilde, `flow` yöntemin dönüş değerini `setTraffic` yöntemine geçiyoruz. Öğesine `flow`geçirilebilecek dört değer vardır ve her bir değer ilgili değeri döndürecek şekilde tetiklenebilir `flow` . Dönüş değeri `flow` daha sonra öğesine `setTraffic`bağımsız değişken olarak geçirilir. Şu dört değer için aşağıdaki tabloya bakın:
 
 | | |
 | :-- | :-- |
-| TrafficFlow.NONE | Trafik verilerini haritada görüntülemez |
-| Trafik Akışı.GÖRECELİ | Yolun serbest akış hızına göre trafik verilerini gösterir |
-| TrafficFlow.RELATIVE_DELAY | Beklenen ortalama gecikmeden daha yavaş alanları görüntüler |
-| TrafficFlow.ABSOLUTE | Yoldaki tüm araçların mutlak hızını gösterir |
+| TrafficFlow. NONE | Harita üzerinde trafik verilerini görüntülemiyor |
+| TrafficFlow. GÖRELI | Yolun serbest akış hızına göre trafik verilerini gösterir |
+| TrafficFlow. RELATIVE_DELAY | Beklenen ortalama gecikmeden daha yavaş olan bölgeleri görüntüler |
+| TrafficFlow. ABSOLUTE | Yolda tüm taşıtın mutlak hızını gösterir |
 
 ```java
 protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +69,11 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Bir özelliği tıklatarak olay trafiği verilerini gösterme
+## <a name="show-incident-traffic-data-by-clicking-a-feature"></a>Bir özelliğe tıklayarak olay trafiği verilerini göster
 
-Belirli bir özellik için olayları elde etmek için aşağıdaki kodu kullanabilirsiniz. Bir özellik tıklatıldığında, kod mantığı olayları denetler ve olay hakkında bir ileti oluşturur. Ayrıntıları içeren ekranın alt kısmında bir ileti belirir.
+Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirsiniz. Bir özelliğe tıklandığında, kod mantığı olayları denetler ve olay hakkında bir ileti oluşturur. Ayrıntılar ile ekranın alt kısmında bir ileti görüntülenir.
 
-1. İlk olarak, **activity_main.xml > > düzen res**düzenlerini düzenlemek gerekir , böylece aşağıdaki gibi görünüyor. 'yi `mapcontrol_centerLat` `mapcontrol_centerLng`ve `mapcontrol_zoom` istediğiniz değerleri değiştirebilirsiniz. Geri çağırma, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Zum seviyesi 0'da, tüm dünya tek bir karoya uyar.
+1. İlk olarak, aşağıdaki gibi görünmesi için **res > düzeni activity_main. xml >** düzenlemeniz gerekir. , Ve `mapcontrol_zoom` değerlerini istediğiniz `mapcontrol_centerLat`değerlerle `mapcontrol_centerLng`değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -96,7 +96,7 @@ Belirli bir özellik için olayları elde etmek için aşağıdaki kodu kullanab
    </FrameLayout>
    ```
 
-2. **MainActivity.java** dosyanıza aşağıdaki kodu ekleyin. Paket varsayılan olarak dahildir, bu nedenle paketinizi en üstte tuttuğunızdan emin olun.
+2. Aşağıdaki kodu **MainActivity. Java** dosyanıza ekleyin. Paket varsayılan olarak dahil edilmiştir, bu nedenle paketinizi en üstte tutduğunuzdan emin olun.
 
    ```java
    package <yourpackagename>;
@@ -221,17 +221,17 @@ Belirli bir özellik için olayları elde etmek için aşağıdaki kodu kullanab
    }
    ```
 
-3. Yukarıdaki kodu uygulamanıza dahil ettikten sonra, bir özelliği tıklatabilir ve trafik olaylarının ayrıntılarını görebilirsiniz. **activity_main.xml** dosyanızda kullandığınız enlem, boylam ve zum düzeyi değerlerine bağlı olarak aşağıdaki resme benzer sonuçlar görürsünüz:
+3. Uygulamanızda yukarıdaki kodu ekledikten sonra, bir özelliğe tıklayabilir ve trafik olaylarının ayrıntılarını görebilirsiniz. **Activity_main. xml** dosyanızda kullandığınız enlem, boylam ve yakınlaştırma düzeyi değerlerine bağlı olarak, aşağıdaki görüntüye benzer sonuçlar görürsünüz:
 
    <center>
 
-   ![Olay-trafik-on-the-harita](./media/how-to-show-traffic-android/android-traffic.png)
+   ![Olay-eşleme-giden trafik](./media/how-to-show-traffic-android/android-traffic.png)
 
    </center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Haritanıza nasıl daha fazla veri ekleyeceğinizi öğrenmek için aşağıdaki kılavuzları görüntüleyin:
+Haritanızda daha fazla veri eklemeyi öğrenmek için aşağıdaki kılavuzlara bakın:
 
 > [!div class="nextstepaction"]
 > [Sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)

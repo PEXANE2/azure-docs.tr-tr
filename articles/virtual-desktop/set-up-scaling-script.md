@@ -1,6 +1,6 @@
 ---
-title: Ölçek oturumu Azure Otomasyonu 'na ev sahipliği yapıyor - Azure
-description: Azure Otomasyonu ile Windows Sanal Masaüstü oturum ana bilgisayarlarını otomatik olarak ölçeklendirme.
+title: Ölçek oturumu Azure Otomasyonu 'Nu barındırır-Azure
+description: Windows sanal masaüstü oturumu konaklarının Azure Otomasyonu ile otomatik olarak ölçeklendirilmesi.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,79 +9,79 @@ ms.date: 03/26/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 3a853dc32f8716f3f2ba32896a7a4a239efcc5bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349874"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu'ni kullanarak oturum ana bilgisayarlarını ölçeklendirin
+# <a name="scale-session-hosts-using-azure-automation"></a>Azure Otomasyonu 'Nu kullanarak oturum ana bilgisayarlarını ölçeklendirme
 
-Sanal makinelerinizi (VM) ölçekleyerek toplam Windows Sanal Masaüstü dağıtım maliyetinizi azaltabilirsiniz. Bu, oturum ana bilgisayar VM'lerini yoğun olmayan kullanım saatlerinde kapatıp devre dışı bırakarak, daha sonra bunları yeniden açıp yoğun saatlerde yeniden tahsis etmek anlamına gelir.
+Sanal makinelerinizi (VM 'Ler) ölçeklendirerek toplam Windows sanal masaüstü dağıtım maliyetinizi azaltabilirsiniz. Bu, yoğun olmayan kullanım saatlerinde oturum ana bilgisayar VM 'lerinin kapatılması ve serbest bir şekilde çıkarılması, daha sonra yeniden açılması ve yoğun saatlerde yeniden bulunması anlamına gelir.
 
-Bu makalede, Windows Sanal Masaüstü ortamınızda oturum barındırma sanal makinelerini otomatik olarak ölçeklendirecek Azure Otomasyonu ve Azure Mantık Uygulamaları ile oluşturulmuş ölçeklendirme aracı hakkında bilgi edineceksiniz. Ölçekleme aracını nasıl kullanacağınızı öğrenmek için [Önkoşullar'a](#prerequisites)geçin.
+Bu makalede, Azure Otomasyonu ile derlenen ve Windows sanal masaüstü ortamınızdaki oturum ana bilgisayarı sanal makinelerini otomatik olarak ölçeklendirecek Azure Logic Apps ölçeklendirme aracı hakkında bilgi edineceksiniz. Ölçeklendirme aracının nasıl kullanılacağını öğrenmek için [önkoşulların](#prerequisites)önüne atlayın.
 
-## <a name="how-the-scaling-tool-works"></a>Ölçekleme aracı nasıl çalışır?
+## <a name="how-the-scaling-tool-works"></a>Ölçeklendirme aracının çalışması
 
-Ölçekleme aracı, oturum ana bilgisayar VM maliyetlerini optimize etmek isteyen müşteriler için düşük maliyetli bir otomasyon seçeneği sağlar.
+Ölçeklendirme Aracı, oturum ana makinesi maliyetlerini iyileştirmek isteyen müşteriler için düşük maliyetli bir Otomasyon seçeneği sağlar.
 
-Ölçekleme aracını aşağıdakiler için kullanabilirsiniz:
+Ölçeklendirme aracını kullanarak şunları yapabilirsiniz:
  
-- Peak ve Off-Peak çalışma saatlerine göre vm'leri başlatmak ve durdurmak için zamanlayın.
-- CPU çekirdeği başına oturum sayısına göre VM'leri ölçeklendirin.
-- Yoğun olmayan saatlerde VM'lerde ölçeklendirin ve minimum oturum ana bilgisayar VM sayısını çalışır durumda bırakın.
+- VM 'Leri en yüksek ve en yoğun iş saatlerine göre başlatılacak ve durdurulacak şekilde zamanlayın.
+- CPU çekirdeği başına oturum sayısına göre VM 'Leri ölçeklendirin.
+- Yoğun olmayan saatlerde sanal makinelerin ölçeğini, çalışan en az sayıda oturum ana makinesi VM 'sini bırakarak ölçeklendirin.
 
-Ölçekleme aracı, çalışması için Azure Automation PowerShell runbook'lar, web hook'lar ve Azure Logic Apps'ın bir birleşimini kullanır. Araç çalıştığında, Azure Logic Apps Azure Otomasyon runbook'u başlatmak için bir webhook çağırır. Runbook sonra bir iş oluşturur.
+Ölçeklendirme Aracı, Azure Otomasyonu PowerShell runbook 'ları, Web kancaları ve Azure Logic Apps işlev birleşimini kullanır. Araç çalıştırıldığında, Azure Otomasyonu runbook 'u başlatmak için bir Web kancası çağırır Azure Logic Apps. Runbook daha sonra bir iş oluşturur.
 
-En yoğun kullanım süresi boyunca, iş geçerli oturum sayısını ve her ana bilgisayar havuzu için geçerli çalışan oturum ana bilgisayarının VM kapasitesini denetler. Bu, çalışan oturum ana bilgisayarı VM'lerin **createazurelogicapp.ps1** dosyası için tanımlanan *SessionThresholdPerCPU* parametresini temel alan varolan oturumları destekletip destekleyemeyebileceğini hesaplamak için bu bilgileri kullanır. Oturum ana bilgisayar VM'leri varolan oturumları desteklenemezse, iş ana bilgisayar havuzunda ek oturum ana bilgisayar VM'leri başlatır.
-
->[!NOTE]
->*SessionThresholdPerCPU* VM'deki oturum sayısını kısıtlamaz. Bu parametre, bağlantıları yüklemek için yalnızca yeni VM'lerin ne zaman başlatılması gerektiğini belirler. Oturum sayısını kısıtlamak için, *MaxSessionLimit* parametresini buna göre yapılandırmak için [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) yönergelerini izlemeniz gerekir.
-
-Yoğun olmayan kullanım süresi boyunca, iş hangi oturum ana bilgisayar VM'lerinin *MinimumNumberOfRDSH* parametreye göre kapatılması gerektiğini belirler. İş, yeni oturumların ana bilgisayarlara bağlanmasını önlemek için oturum ana bilgisayar VM'lerini boşalacak şekilde ayarlar. *LimitSecondsToForceLogOffUser* parametresini sıfır olmayan pozitif bir değere ayarlarsanız, iş, şu anda oturum açmış olan kullanıcıları işlerini kaydetmeleri, yapılandırılan süreyi beklemeleri ve ardından kullanıcıları oturumu kapatmaya zorlayacak. Oturum ana bilgisayar VM'deki tüm kullanıcı oturumları kapatıldıktan sonra, iş VM'yi kapatır.
-
-*LimitSecondsToForceLogOffUser* parametresini sıfıra ayarlarsanız, iş kullanıcı oturumlarını imzalamayı işlemek için belirtilen grup ilkelerinde oturum yapılandırma ayarı sağlar. Bu grup ilkelerini görmek için **Bilgisayar Yapılandırma** > **İlkeleri** > Yönetim**Şablonları** > Windows**Bileşenleri** > **Terminal Hizmetleri** > **TerminalI Sunucu** > **Oturum Zaman Sınırları'na**gidin. Oturum ana bilgisayar VM'de etkin oturum varsa, iş oturum ana bilgisayar VM'yi çalışır durumda bırakır. Etkin oturum yoksa, iş oturum ana bilgisayar VM'yi kapatır.
-
-İş, ayarlanmış yineleme aralığını temel alan düzenli aralıklarla çalışır. Bu aralığı Windows Sanal Masaüstü ortamınızın boyutuna göre değiştirebilirsiniz, ancak sanal makineleri başlatmanın ve kapatmanın biraz zaman alacağını unutmayın, bu nedenle gecikmeyi hesaba kattığınızı unutmayın. Yineleme aralığını her 15 dakikada bir ayarlamanızı öneririz.
-
-Ancak, araç da aşağıdaki sınırlamalar vardır:
-
-- Bu çözüm yalnızca havuza alan oturum ana bilgisayar VM'leri için geçerlidir.
-- Bu çözüm, herhangi bir bölgedeki VM'leri yönetir, ancak yalnızca Azure Otomasyon hesabınız ve Azure Mantıksal Uygulamalarınızla aynı abonelikte kullanılabilir.
+En yüksek kullanım süresi boyunca iş, her konak havuzu için geçerli çalışan oturum ana bilgisayarının geçerli oturum sayısını ve VM kapasitesini denetler. Çalışan oturum ana bilgisayar VM 'lerinin, **createazurelogicapp. ps1** dosyası Için tanımlanan *Sessionthresholdpercpu* parametresine göre mevcut oturumları destekleyebiliyor olup olmadığını hesaplamak için bu bilgileri kullanır. Oturum Ana bilgisayar VM 'Leri mevcut oturumları destekleyemiyorum, iş konak havuzundaki ek oturum ana bilgisayar VM 'lerini başlatır.
 
 >[!NOTE]
->Ölçekleme aracı, ölçekletittiyi barındıran havuzun yük dengeleme modunu kontrol eder. Hem yoğun hem de yoğun olmayan saatler için ilk yük dengelemesine ayarlar.
+>*Sessionthresholdpercpu* , sanal makine üzerindeki oturum sayısını kısıtlamaz. Bu parametre yalnızca yeni VM 'Lerin, bağlantıların yük dengelenmesi için ne zaman başlatılması gerektiğini belirler. Oturum sayısını kısıtlamak için, *Maxsessionlimit* parametresini uygun şekilde yapılandırmak için [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) yönergelerini izlemeniz gerekir.
+
+En yoğun kullanım süresi boyunca, iş, hangi oturum ana bilgisayar VM 'lerinin *Minimumnumberofrdsh* parametresine bağlı olarak kapanması gerektiğini belirler. İş, konaklara bağlanan yeni oturumları engellemek için oturum ana bilgisayarları 'nı boşalt moduna ayarlar. *Limitsecondstoforcelogoffuser* parametresini sıfır olmayan pozitif bir değere ayarlarsanız, iş, oturum açmış olan tüm kullanıcılara, çalışmalarını kaydetmesi, yapılandırılan süreyi beklemesi ve ardından kullanıcıları oturumu kapatmaya zorlayacaktır. Oturum Ana bilgisayar VM 'si üzerindeki tüm Kullanıcı oturumları oturumu kapatıldıktan sonra, iş sanal makineyi kapatır.
+
+*Limitsecondstoforcelogoffuser* parametresini sıfır olarak ayarlarsanız, iş, belirtilen grup ilkelerindeki oturum yapılandırma ayarının kullanıcı oturumlarını kapatmayı işlemesine izin verir. Bu grup ilkelerini görmek için**Windows bileşenleri** > **Terminal Hizmetleri** > **Terminal sunucusu** > **oturumu süre sınırları****Yönetim Şablonları** >  **bilgisayar yapılandırma** > **ilkeleri** > ' ne gidin. Bir oturum ana bilgisayar VM 'sinde etkin bir oturum varsa, iş, oturum ana bilgisayar VM 'sini çalışır durumda bırakır. Etkin oturum yoksa, iş, oturum ana bilgisayarı sanal makinesini kapatır.
+
+İş düzenli aralıklarla ayarlanan yineleme aralığına göre çalışır. Windows sanal masaüstü ortamınızın boyutuna bağlı olarak bu aralığı değiştirebilirsiniz, ancak sanal makinelerin başlatılması ve kapatılması biraz zaman alabilir, bu nedenle gecikmeyi hesaba erteleyebilirsiniz. Yinelenme aralığını her 15 dakikada bir ayarlamanız önerilir.
+
+Ancak, araç aşağıdaki sınırlamalara de sahiptir:
+
+- Bu çözüm yalnızca havuza alınmış oturum ana bilgisayar VM 'Leri için geçerlidir.
+- Bu çözüm, herhangi bir bölgedeki VM 'Leri yönetir, ancak yalnızca Azure Otomasyonu hesabınızla aynı abonelikte ve Azure Logic Apps kullanılabilir.
+
+>[!NOTE]
+>Ölçeklendirme Aracı, ölçeklendirildiği konak havuzunun yük dengeleme modunu denetler. Bu, hem yoğun hem de yoğun olmayan saatlerde, ilk yük dengeleyiciyi belirler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Ölçekleme aracını ayarlamaya başlamadan önce, aşağıdaki şeylerin hazır olduğundan emin olun:
+Ölçeklendirme aracı 'nı ayarlamaya başlamadan önce, aşağıdaki şeyleri hazırlamış olduğunuzdan emin olun:
 
-- [Windows Sanal Masaüstü kiracı ve ana bilgisayar havuzu](create-host-pools-arm-template.md)
-- Oturum ana bilgisayar havuzu VM'ler Windows Sanal Masaüstü hizmetine yapılandırıldı ve kaydedildi
-- Azure aboneliğinde [Katılımcı erişimi](../role-based-access-control/role-assignments-portal.md) olan bir kullanıcı
+- Bir [Windows sanal masaüstü kiracısı ve konak havuzu](create-host-pools-arm-template.md)
+- Windows sanal masaüstü hizmeti ile yapılandırılan ve kaydettirilen oturum ana bilgisayar havuzu VM 'Leri
+- Azure aboneliğinde [katkıda bulunan erişimi](../role-based-access-control/role-assignments-portal.md) olan bir Kullanıcı
 
-Aracı dağıtmak için kullandığınız makinede aşağıdakiler olmalıdır: 
+Aracı dağıtmak için kullandığınız makine şunları içermelidir: 
 
-- Windows PowerShell 5.1 veya sonrası
-- Microsoft Az PowerShell modülü
+- Windows PowerShell 5,1 veya üzeri
+- Microsoft az PowerShell modülü
 
-Her şey hazırsa, başlayalım.
+Her şeyi hazırlayın ve kullanmaya başlayın.
 
 ## <a name="create-an-azure-automation-account"></a>Azure Otomasyonu hesabı oluşturma
 
-İlk olarak, PowerShell runbook'u çalıştırmak için bir Azure Otomasyon uyrması gerekir. Hesabınızı şu şekilde ayarlayabilirsiniz:
+İlk olarak, PowerShell runbook 'unu çalıştırmak için bir Azure Otomasyonu hesabınızın olması gerekir. Hesabınızı nasıl ayarlayaöğreneceksiniz:
 
 1. Windows PowerShell'i yönetici olarak açın.
-2. Azure Hesabınızda oturum açabilmek için aşağıdaki cmdlet'i çalıştırın.
+2. Azure hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın.
 
      ```powershell
      Login-AzAccount
      ```
 
      >[!NOTE]
-     >Hesabınız, ölçekleme aracını dağıtmak istediğiniz Azure aboneliğinde katkıda bulunma haklarına sahip olmalıdır.
+     >Hesabınız, ölçeklendirme aracını dağıtmak istediğiniz Azure aboneliğinde katılımcı haklarına sahip olmalıdır.
 
-3. Azure Otomasyon uyrama komut dosyasını indirmek için aşağıdaki cmdlet'i çalıştırın:
+3. Azure Otomasyonu hesabını oluşturmak için betiği indirmek üzere aşağıdaki cmdlet 'i çalıştırın:
 
      ```powershell
      Set-Location -Path "c:\temp"
@@ -89,47 +89,47 @@ Her şey hazırsa, başlayalım.
      Invoke-WebRequest -Uri $uri -OutFile ".\createazureautomationaccount.ps1"
      ```
 
-4. Komut dosyasını çalıştırmak ve Azure Otomasyon uyrama hesabını oluşturmak için aşağıdaki cmdlet'i çalıştırın:
+4. Betiği yürütmek ve Azure Otomasyonu hesabını oluşturmak için aşağıdaki cmdlet 'i çalıştırın:
 
      ```powershell
      .\createazureautomationaccount.ps1 -SubscriptionID <azuresubscriptionid> -ResourceGroupName <resourcegroupname> -AutomationAccountName <name of automation account> -Location "Azure region for deployment"
      ```
 
-5. Cmdlet çıkış bir webhook URI içerecektir. Azure Logic uygulamalarının yürütme zamanlamasını ayarlarken parametre olarak kullanacağınız için URI'nin kaydını sakladığından emin olun.
+5. Cmdlet 'in çıktısı, bir Web kancası URI 'sini içerir. Azure Logic Apps için yürütme zamanlamasını ayarlarken bu parametreyi bir parametre olarak kullanacağınız için URI kaydını kaydettiğinizden emin olun.
 
-6. Azure Otomasyon hesabınızı kurduktan sonra Azure aboneliğinizde oturum açın ve Azure Otomasyon hesabınızın ve ilgili runbook'unuzun aşağıdaki resimde gösterildiği gibi belirtilen kaynak grubunda göründüğünden emin olun:
+6. Azure Otomasyonu hesabınızı ayarladıktan sonra Azure aboneliğinizde oturum açın ve aşağıdaki görüntüde gösterildiği gibi Azure Otomasyonu hesabınızın ve ilgili runbook 'un belirtilen kaynak grubunda göründüğünden emin olun:
 
-   ![Yeni oluşturulan otomasyon hesabını ve runbook'u gösteren Azure genel bakış sayfasının görüntüsü.](media/automation-account.png)
+   ![Yeni oluşturulan Otomasyon hesabını ve Runbook 'u gösteren Azure genel bakış sayfasının bir görüntüsü.](media/automation-account.png)
 
-  Webhook'unuzun olması gereken yerde olup olmadığını kontrol etmek için runbook'unuzun adını seçin. Ardından, runbook'unuzun Kaynaklar bölümüne gidin ve **Webhooks'u**seçin.
+  Web kancası 'nizin nerede olması gerektiğini denetlemek için Runbook 'un adını seçin. Sonra, runbook 'un kaynaklar bölümüne gidin ve **Web kancaları**' nı seçin.
 
-## <a name="create-an-azure-automation-run-as-account"></a>Hesap Olarak Azure Otomasyon Çalıştır Oluşturma
+## <a name="create-an-azure-automation-run-as-account"></a>Azure Otomasyonu farklı çalıştır hesabı oluşturma
 
-Artık bir Azure Otomasyon hesabınız olduğuna göre, Azure kaynaklarına erişmek için bir Azure Otomasyon Çalıştır hesabı da oluşturmanız gerekir.
+Artık bir Azure Otomasyonu hesabınız olduğuna göre, Azure kaynaklarınıza erişmek için bir Azure Otomasyonu farklı çalıştır hesabı da oluşturmanız gerekir.
 
-[Azure Otomasyon Çalıştır Hesabı,](../automation/manage-runas-account.md) Azure cmdlets ile Azure'daki kaynakları yönetmek için kimlik doğrulaması sağlar. Bir Run As hesabı oluşturduğunuzda, Azure Etkin Dizini'nde yeni bir hizmet yöneticisi kullanıcı oluşturur ve Katılımcı rolünü abonelik düzeyinde hizmet yöneticisi kullanıcıya atar, Azure Run As Hesabı güvenli bir şekilde kimlik doğrulaması yapmanın harika bir yoludur bir kimlik bilgisi nesnesinde bir kullanıcı adı ve parola depolamak gerek kalmadan sertifikaları ve hizmet ana adı. Kimlik doğrulaması olarak çalıştır hakkında daha fazla bilgi edinmek için, [Hesap İzinleri Olarak Çalıştır'ı Sınırlama'ya](../automation/manage-runas-account.md#limiting-run-as-account-permissions)bakın.
+Azure [Otomasyonu farklı çalıştır hesabı](../automation/manage-runas-account.md) , Azure 'da Azure cmdlet 'leriyle kaynakları yönetmeye yönelik kimlik doğrulaması sağlar. Farklı Çalıştır hesabı oluşturduğunuzda, Azure Active Directory yeni bir hizmet sorumlusu kullanıcısı oluşturur ve katılımcı rolünü abonelik düzeyinde hizmet sorumlusu kullanıcısına atar; Azure farklı çalıştır hesabı, bir kimlik bilgisi nesnesinde Kullanıcı adı ve parola depolamaya gerek kalmadan sertifikalar ve hizmet sorumlusu adıyla güvenli kimlik doğrulaması yapmanın harika bir yoludur. Farklı çalıştır kimlik doğrulaması hakkında daha fazla bilgi edinmek için bkz. [Farklı Çalıştır hesabı Izinlerini sınırlandırma](../automation/manage-runas-account.md#limiting-run-as-account-permissions).
 
-Abonelik Yöneticileri rolünün üyesi ve aboneliğin yardımcı yöneticisi olan herhangi bir kullanıcı, sonraki bölümün yönergelerini izleyerek Bir Run As hesabı oluşturabilir.
+Abonelik yöneticileri rolü ve aboneliğin ortak Yöneticisi üyesi olan herhangi bir Kullanıcı, sonraki bölümde yer alan yönergeleri izleyerek bir farklı çalıştır hesabı oluşturabilir.
 
-Azure hesabınızda Bir Run As hesabı oluşturmak için:
+Azure hesabınızda bir farklı çalıştır hesabı oluşturmak için:
 
-1. Azure portalında **Tüm hizmetler'i**seçin. Kaynaklar listesinde Otomasyon **Hesapları'na**girin ve seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon hesapları**girin ve seçin.
 
-2. Otomasyon **Hesapları** sayfasında, Otomasyon hesabınızın adını seçin.
+2. **Otomasyon hesapları** sayfasında, Otomasyon hesabınızın adını seçin.
 
-3. Pencerenin sol tarafındaki bölmede, Hesap Ayarları bölümünde **Hesap Olarak Çalıştır'ı** seçin.
+3. Pencerenin sol tarafındaki bölmede hesap ayarları bölümünde **Farklı Çalıştır hesapları** ' nı seçin.
 
-4. **Hesap Olarak Azure Çalıştır'ı**seçin. Azure **Hesabı Olarak Çalıştır** bölmesi göründüğünde, genel bakış bilgilerini gözden geçirin ve ardından hesap oluşturma işlemini başlatmak için **Oluştur'u** seçin.
+4. **Azure farklı çalıştır hesabı**' nı seçin. **Azure farklı çalıştır hesabı ekle** bölmesi göründüğünde, genel bakış bilgilerini gözden geçirin ve ardından **Oluştur** ' u seçerek hesap oluşturma işlemini başlatın.
 
-5. Azure'un Çalıştır Hesabı'nı oluşturması için birkaç dakika bekleyin. Bildirimler altında menüde oluşturma ilerleme izleyebilirsiniz.
+5. Azure 'un farklı çalıştır hesabını oluşturması için birkaç dakika bekleyin. Oluşturma ilerleme durumunu menüdeki Bildirimler bölümünde izleyebilirsiniz.
 
-6. İşlem bittiğinde, belirtilen Otomasyon hesabında AzureRunAsConnection adında bir varlık oluşturur. Bağlantı varlığı uygulama kimliğini, kiracı kimliğini, abonelik kimliğini ve sertifika parmak izini tutar. Uygulama kimliğini hatırlayın, çünkü daha sonra kullanacaksınız.
+6. İşlem tamamlandığında, belirtilen Otomasyon hesabında AzureRunAsConnection adlı bir varlık oluşturur. Bağlantı varlığı uygulama KIMLIĞI, kiracı KIMLIĞI, abonelik KIMLIĞI ve sertifika parmak izini barındırır. Daha sonra kullanacağınız için uygulama KIMLIĞINI unutmayın.
 
-### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows Sanal Masaüstünde rol ataması oluşturma
+### <a name="create-a-role-assignment-in-windows-virtual-desktop"></a>Windows sanal masaüstünde rol ataması oluşturma
 
-Ardından, AzureRunAsConnection'ın Windows Sanal Masaüstü ile etkileşim kurabilmesi için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izni olan bir hesapla oturum açmak için PowerShell'i kullandığınızdan emin olun.
+Daha sonra, AzureRunAsConnection 'un Windows sanal masaüstü ile etkileşime girebilmesi için bir rol ataması oluşturmanız gerekir. Rol atamaları oluşturma izinlerine sahip bir hesapla oturum açmak için PowerShell 'i kullandığınızdan emin olun.
 
-İlk olarak, PowerShell oturumunuzda kullanmak üzere [Windows Virtual Desktop PowerShell modülünü](/powershell/windows-virtual-desktop/overview/) indirin ve içe aktarın. Windows Sanal Masaüstü'ne bağlanmak ve kiracılarınızı görüntülemek için aşağıdaki PowerShell cmdletlerini çalıştırın.
+İlk olarak, henüz yapmadıysanız PowerShell oturumunuzda kullanmak üzere [Windows sanal masaüstü PowerShell modülünü](/powershell/windows-virtual-desktop/overview/) indirip içeri aktarın. Windows sanal masaüstüne bağlanmak ve Kiracılarınızı göstermek için aşağıdaki PowerShell cmdlet 'lerini çalıştırın.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -137,37 +137,37 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Get-RdsTenant
 ```
 
-Ölçeklendirmek istediğiniz ana bilgisayar havuzlarıolan kiracıyı bulduğunuzda, [Azure Otomasyonu hesabı oluşturma'daki](#create-an-azure-automation-account) yönergeleri izleyin ve rol atamasını oluşturmak için aşağıdaki cmdlet'teki önceki cmdlet'ten aldığınız kiracı adını kullanın:
+Ölçeklendirmek istediğiniz konak havuzlarıyla kiracıyı bulduğunuzda, [Azure Otomasyonu hesabı oluşturma](#create-an-azure-automation-account) ' daki yönergeleri izleyin ve rol atamasını oluşturmak için aşağıdaki cmdlet 'teki önceki cmdlet 'ten aldığınız kiracı adını kullanın:
 
 ```powershell
 New-RdsRoleAssignment -RoleDefinitionName "RDS Contributor" -ApplicationId <applicationid> -TenantName <tenantname>
 ```
 
-## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Mantık Uygulaması ve yürütme takvimioluşturma
+## <a name="create-the-azure-logic-app-and-execution-schedule"></a>Azure Logic App ve yürütme zamanlaması oluşturma
 
-Son olarak, Azure Mantık Uygulaması'nı oluşturmanız ve yeni ölçekleme aracınız için bir yürütme çizelgesi ayarlamanız gerekir.
+Son olarak, Azure Logic App 'i oluşturmanız ve yeni ölçeklendirme aracınız için bir yürütme zamanlaması ayarlamanız gerekir.
 
-1.  Windows PowerShell'i Yönetici Olarak Açma
+1.  Windows PowerShell 'i yönetici olarak açın
 
-2.  Azure Hesabınızda oturum açabilmek için aşağıdaki cmdlet'i çalıştırın.
+2.  Azure hesabınızda oturum açmak için aşağıdaki cmdlet 'i çalıştırın.
 
      ```powershell
      Login-AzAccount
      ```
 
-3. Createazurelogicapp.ps1 komut dosyası dosyasını yerel makinenize indirmek için aşağıdaki cmdlet'i çalıştırın.
+3. Createazurelogicapp. ps1 komut dosyasını yerel makinenize indirmek için aşağıdaki cmdlet 'i çalıştırın.
 
      ```powershell
      Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/wvd-scaling-script/createazurelogicapp.ps1" -OutFile "your local machine path\ createazurelogicapp.ps1"
      ```
 
-4. RDS Sahibi veya RDS Katılımcısı izinleri olan bir hesapla Windows Sanal Masaüstünde oturum açabilmek için aşağıdaki cmdlet'i çalıştırın.
+4. RDS sahibi veya RDS katkıda bulunan izinleri olan bir hesapla Windows sanal masaüstü 'nde oturum açmak için aşağıdaki cmdlet 'i çalıştırın.
 
      ```powershell
      Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
      ```
 
-5. Azure Logic uygulamasını ve yürütme zamanlamasını oluşturmak için aşağıdaki PowerShell komut dosyasını çalıştırın.
+5. Azure Logic App ve yürütme zamanlamasını oluşturmak için aşağıdaki PowerShell betiğini çalıştırın.
 
      ```powershell
      $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group for the new Azure Logic App"
@@ -229,34 +229,34 @@ Son olarak, Azure Mantık Uygulaması'nı oluşturmanız ve yeni ölçekleme ara
        -MaintenanceTagName $maintenanceTagName
      ```
 
-     Komut dosyasını çalıştırdıktan sonra, Mantık Uygulaması aşağıdaki resimde gösterildiği gibi bir kaynak grubunda görünmelidir.
+     Betiği çalıştırdıktan sonra, aşağıdaki görüntüde gösterildiği gibi mantıksal uygulamanın bir kaynak grubunda görünmesi gerekir.
 
-     ![Örnek bir Azure Mantık Uygulaması için genel bakış sayfasının görüntüsü.](media/logic-app.png)
+     ![Örnek bir Azure mantıksal uygulaması için genel bakış sayfasının bir görüntüsü.](media/logic-app.png)
 
-Yineleme aralığını veya saat dilimini değiştirme gibi yürütme zamanlamasında değişiklik yapmak için Otomatik Ölçeklendirme zamanlayıcısına gidin ve Logic Apps Tasarımcısı'na gitmek için **Edit'i** seçin.
+Yineleme zaman dilimini veya saat dilimini değiştirme gibi yürütme zamanlamasında değişiklik yapmak için otomatik ölçeklendirme Scheduler ' a gidin ve Logic Apps tasarımcısına gitmek için **Düzenle** ' yi seçin.
 
-![Logic Apps Tasarımcısı'nın bir resmi. Kullanıcının yineleme sürelerini ve webhook dosyasını yeniden de leten menüleri açılır.](media/logic-apps-designer.png)
+![Logic Apps tasarımcısının bir görüntüsü. Kullanıcının yineleme sürelerini ve Web kancası dosyasını düzenlemesini sağlayan yineleme ve Web kancası menüleri.](media/logic-apps-designer.png)
 
-## <a name="manage-your-scaling-tool"></a>Ölçekleme aracınızı yönetme
+## <a name="manage-your-scaling-tool"></a>Ölçeklendirme aracınızı yönetme
 
-Ölçekleme aracınızı oluşturduğunuza göre, çıktısına erişebilirsiniz. Bu bölümde yararlı bulabileceğiniz birkaç özellik açıklanmaktadır.
+Ölçeklendirme aracınızı oluşturdığınıza göre, çıktısına erişebilirsiniz. Bu bölümde yararlı bulabileceğiniz bazı özellikler açıklanmaktadır.
 
 ### <a name="view-job-status"></a>İş durumunu görüntüleme
 
-Tüm runbook işlerinin özet durumunu görüntüleyebilir veya Azure portalındaki belirli bir runbook işinin daha ayrıntılı durumunu görüntüleyebilirsiniz.
+Tüm runbook işlerinin özetlenen durumunu görüntüleyebilir veya Azure portal belirli bir runbook işinin daha ayrıntılı bir durumunu görüntüleyebilirsiniz.
 
-Seçili Otomasyon hesabınızın sağında, "İş İstatistikleri" altında, tüm runbook işlerinin özetlistesini görüntüleyebilirsiniz. Pencerenin sol tarafındaki **İşler** sayfasını açmak, geçerli iş durumlarını, başlangıç saatlerini ve tamamlanma saatlerini gösterir.
+Seçtiğiniz Otomasyon hesabınızın sağ tarafındaki "Iş Istatistikleri" bölümünde, tüm runbook işlerinin özetlerinin bir listesini görüntüleyebilirsiniz. Pencerenin sol tarafındaki **işler** sayfasını açmak geçerli iş durumlarını, başlangıç zamanlarını ve tamamlanma zamanlarını gösterir.
 
 ![İş durumu sayfasının ekran görüntüsü.](media/jobs-status.png)
 
-### <a name="view-logs-and-scaling-tool-output"></a>Günlükleri ve ölçekleme aracı çıktısını görüntüleme
+### <a name="view-logs-and-scaling-tool-output"></a>Günlükleri görüntüleme ve ölçeklendirme aracı çıktısı
 
-Runbook'unuzu açarak ve işinizin adını seçerek ölçeklendirme ve ölçeklendirme işlemlerinin günlüklerini görüntüleyebilirsiniz.
+Runbook 'unuzu açıp işinizin adını seçerek genişleme ve ölçek işlemleri işlemlerini izleyebilirsiniz.
 
-Azure Otomasyon hesabını barındıran kaynak grubunuzdaki runbook'a (varsayılan ad WVDAutoScaleRunbook) gidin ve **Genel Bakış'ı**seçin. Genel bakış sayfasında, aşağıdaki resimde gösterildiği gibi ölçekleme aracı çıktısını görüntülemek için Son İşler altında bir iş seçin.
+Azure Otomasyonu hesabını barındıran kaynak grubunuzda runbook 'a gidin (varsayılan ad WVDAutoScaleRunbook) ve **genel bakış**' ı seçin. Genel Bakış sayfasında, aşağıdaki görüntüde gösterildiği gibi, ölçek aracı çıktısını görüntülemek için son Işler altında bir iş seçin.
 
-![Ölçekleme aracı için çıkış penceresinin görüntüsü.](media/tool-output.png)
+![Ölçeklendirme aracı için çıkış penceresinin bir görüntüsü.](media/tool-output.png)
 
 ## <a name="report-issues"></a>Sorun bildirme
 
-Ölçekleme aracıyla ilgili herhangi bir sorunla karşılaşırsanız, bunları [RDS GitHub sayfasından](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)bildirebilirsiniz.
+Ölçeklendirme aracıyla ilgili herhangi bir sorunla karşılaşırsanız, bunları [RDS GitHub sayfasından](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)rapor edebilirsiniz.

@@ -1,7 +1,7 @@
 ---
-title: Varlık Tanıma bilişsel beceri
+title: Varlık tanıma Bilişsel Beceri
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'da zenginleştirme ardışık bir ardışık alandaki metinden farklı türde varlıklar ayıklayın.
+description: Azure Bilişsel Arama 'de bir zenginleştirme ardışık düzeninde bulunan metinden farklı varlık türlerini ayıklayın.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,65 +9,65 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297807"
 ---
-#    <a name="entity-recognition-cognitive-skill"></a>Varlık Tanıma bilişsel beceri
+#    <a name="entity-recognition-cognitive-skill"></a>Varlık tanıma Bilişsel Beceri
 
-**Varlık Tanıma** becerisi metinden farklı türde varlıkları ayıklar. Bu beceri, Bilişsel Hizmetlerde [Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sağlanan makine öğrenimi modellerini kullanır.
+**Varlık tanıma** yeteneği, metinden farklı türlerdeki varlıkları ayıklar. Bu beceri bilişsel hizmetler 'de [metin analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) tarafından sunulan makine öğrenimi modellerini kullanır.
 
 > [!NOTE]
-> İşleme sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla Bilgi Al algoritması ekleyerek kapsamı genişlettikçe, [faturalandırılabilir Bilişsel Hizmetler kaynağı eklemeniz](cognitive-search-attach-cognitive-services.md)gerekir. Bilişsel Hizmetler'de API'leri ararken ve Azure Bilişsel Arama'da belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk ettirilir. Belgelerden metin çıkarma için herhangi bir ücret yoktur.
+> İşlem sıklığını artırarak, daha fazla belge ekleyerek veya daha fazla AI algoritması ekleyerek kapsamı genişlettikten sonra faturalandırılabilir bilişsel [Hizmetler kaynağı](cognitive-search-attach-cognitive-services.md)eklemeniz gerekir. Bilişsel hizmetlerde API 'Leri çağırırken ve Azure Bilişsel Arama belge çözme aşamasının bir parçası olarak görüntü ayıklama için ücretler tahakkuk eder. Belgelerden metin ayıklama için herhangi bir ücret alınmaz.
 >
-> Yerleşik becerilerin yürütülmesi, mevcut [Bilişsel Hizmetler ödeme-as-you gitmek fiyat](https://azure.microsoft.com/pricing/details/cognitive-services/)tahsil edilir. Görüntü çıkarma fiyatlandırması [Azure Bilişsel Arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmıştır.
+> Yerleşik yeteneklerin yürütülmesi, mevcut bilişsel [Hizmetler Kullandıkça Öde fiyatı](https://azure.microsoft.com/pricing/details/cognitive-services/)üzerinden ücretlendirilir. Görüntü ayıklama fiyatlandırması, [Azure bilişsel arama fiyatlandırma sayfasında](https://go.microsoft.com/fwlink/?linkid=2042400)açıklanmaktadır.
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Text.EntityTanıma Beceri
+Microsoft. yetenekler. Text. Entityrecognitionbeceri
 
 ## <a name="data-limits"></a>Veri sınırları
-Bir kaydın maksimum boyutu 50.000 karakter olarak [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçüldü. Verilerinizi anahtar tümcecik çıkarıcıya göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
+Bir kaydın en büyük boyutu, tarafından [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)ölçülen 50.000 karakter olmalıdır. Anahtar ifade ayıklayıcıya göndermeden önce verilerinizi kesmeniz gerekiyorsa, [metin bölme becerinizi](cognitive-search-skill-textsplit.md)kullanmayı göz önünde bulundurun.
 
-## <a name="skill-parameters"></a>Beceri parametreleri
+## <a name="skill-parameters"></a>Yetenek parametreleri
 
-Parametreler büyük/küçük harf duyarlıdır ve tüm isteğe bağlıdır.
+Parametreler büyük/küçük harfe duyarlıdır ve tümü isteğe bağlıdır.
 
 | Parametre adı     | Açıklama |
 |--------------------|-------------|
-| kategoriler    | Ayıklanması gereken kategoriler dizisi.  Olası kategori `"Person"`türleri: `"Quantity"`, `"Datetime"` `"URL"`, `"Email"` `"Location"` `"Organization"`, , , . Kategori sağlanmadıysa, tüm türler döndürülür.|
-|defaultLanguageCode |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Tüm varlık kategorileri tüm diller için desteklenmez; aşağıdaki nota bakın.|
-|minimum Hassasiyet | 0 ile 1 arasında bir değer. Güven puanı `namedEntities` (çıktıdaki) bu değerden daha düşükse, varlık döndürülmez. Varsayılan değer, 0'dur. |
-|includeTypelessEntities | Geçerli `true` kategorilere uymayan tanınmış varlıkları tanımak istiyorsanız ayarlayın. Tanınan varlıklar `entities` karmaşık çıktı alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlıklar çıktı alanına dahil edilir. Varsayılan değer,`false` |
+| kategoriler    | Ayıklanmak zorunda olan kategorilerin dizisi.  Olası kategori türleri: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Hiçbir kategori sağlanmazsa, tüm türler döndürülür.|
+|defaultLanguageCode |    Giriş metninin dil kodu. Aşağıdaki diller desteklenir: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Tüm diller için tüm varlık kategorileri desteklenmez; Aşağıdaki nota bakın.|
+|minimumPrecision | 0 ile 1 arasında bir değer. Güven puanı ( `namedEntities` çıktıda) bu değerden düşükse varlık döndürülmez. Varsayılan değer, 0'dur. |
+|ıncludetypelessentities | Geçerli kategorilere `true` uymayan iyi bilinen varlıkları tanımak istiyorsanız olarak ayarlayın. Tanınan varlıklar `entities` karmaşık çıkış alanında döndürülür. Örneğin, "Windows 10" iyi bilinen bir varlıktır (bir ürün), ancak "Ürünler" desteklenen bir kategori olmadığından, bu varlık varlık çıktısı alanına dahil edilir. Varsayılan değer`false` |
 
 
-## <a name="skill-inputs"></a>Beceri girdileri
+## <a name="skill-inputs"></a>Beceri girişleri
 
 | Giriş adı      | Açıklama                   |
 |---------------|-------------------------------|
 | languageCode    | İsteğe bağlı. `"en"` varsayılan değerdir.  |
-| metin          | Çözümlemek için metin.          |
+| metin          | Çözümlenecek metin.          |
 
-## <a name="skill-outputs"></a>Beceri çıktıları
+## <a name="skill-outputs"></a>Yetenek çıkışları
 
 > [!NOTE]
-> Tüm varlık kategorileri tüm diller için desteklenmez. , `"Person"` `"Location"`ve `"Organization"` varlık kategori türleri yukarıdaki dillerin tam listesi için desteklenir. Sadece _de_, _en_, _es_, _fr_, `"Datetime"`ve `"URL"` _zh-hans_ destek çıkarma `"Quantity"`, , , ve `"Email"` türleri. Daha fazla bilgi için [Metin Analizi API'si için Dil ve bölge desteğine](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)bakın.  
+> Tüm diller için varlık kategorilerinin hepsi desteklenmez. `"Person"`, `"Location"`, Ve `"Organization"` varlık kategorisi türleri yukarıdaki dillerin tam listesi için desteklenir. Yalnızca _de_, _en_, _es_, _fr_ve _zh-Hans_ `"Quantity"`, `"Datetime"` `"URL"`,, ve `"Email"` türlerinin ayıklanmasını destekler. Daha fazla bilgi için bkz. [Metin Analizi API'si Için dil ve bölge desteği](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Çıktı adı      | Açıklama                   |
+| Çıkış adı      | Açıklama                   |
 |---------------|-------------------------------|
-| Kişi       | Her dize bir kişinin adını temsil dizeleri bir dizi. |
-| Konum  | Her dize bir konumu temsil eder dizeleri bir dizi. |
-| organizations  | Her dize bir organizasyonu temsil eden dizeleri dizisi. |
-| Miktar  | Her dize bir miktar temsil dizeleri bir dizi. |
-| dateTimes  | Her dize bir DateTime (metinde göründüğü gibi) değerini temsil eden dizeleri dizisi. |
-| Url 'leri | Her dize bir URL temsil dizeleri bir dizi |
-| Emails | Her dize bir e-postayı temsil eden dizeleri bir dizi |
-| adlandırılmış Varlıklar | Aşağıdaki alanları içeren karmaşık türleri dizisi: <ul><li>category</li> <li>değeri (Gerçek varlık adı)</li><li>ofset (Metinde bulunduğu yer)</li><li>güven (Yüksek değer gerçek bir varlık olmak daha fazla olduğu anlamına gelir)</li></ul> |
-| Varlık | Aşağıdaki alanları içeren metinden çıkarılan varlıklar hakkında zengin bilgiler içeren karmaşık türler dizisi <ul><li> adı (gerçek varlık adı. Bu bir "normalleştirilmiş" formu temsil eder)</li><li> wikipediaId</li><li>vikipediDil</li><li>wikipediaUrl (varlık için Vikipedi sayfasına bir bağlantı)</li><li>bingId</li><li>türü (tanınan varlığın kategorisi)</li><li>subType (yalnızca belirli kategoriler için kullanılabilir, bu varlık türünün daha ayrıntılı bir görünüm verir)</li><li> eşleşmeleri (içeren karmaşık bir koleksiyon)<ul><li>metin (varlık için ham metin)</li><li>ofset (bulunduğu yer)</li><li>uzunluk (ham varlık metninin uzunluğu)</li></ul></li></ul> |
+| elemanları       | Her bir dizenin bir kişinin adını temsil ettiği dizeler dizisi. |
+| yerlerini  | Her bir dizenin bir konumu temsil ettiği dizeler dizisi. |
+| organizations  | Her bir dizenin bir kuruluşu temsil ettiği dizeler dizisi. |
+| miktarlara  | Her bir dizenin bir miktarı temsil ettiği dizeler dizisi. |
+| Tarih saat  | Her bir dizenin bir tarih/saat değerini temsil ettiği dizeler dizisi (metin içinde göründüğü gibi). |
+| adresleri | Her bir dizenin bir URL 'YI temsil ettiği dizelerin dizisi |
+| - | Her bir dizenin bir e-postayı temsil ettiği dizelerin dizisi |
+| namedEntities | Aşağıdaki alanları içeren karmaşık türlerin dizisi: <ul><li>category</li> <li>değer (gerçek varlık adı)</li><li>fark (metinde bulunduğu konum)</li><li>güvenirlik (daha yüksek değer gerçek bir varlık olması anlamına gelir)</li></ul> |
+| varlıklar | Aşağıdaki alanlarla metinden ayıklanan varlıklar hakkında zengin bilgiler içeren karmaşık türlerin dizisi <ul><li> ad (gerçek varlık adı. Bu bir "normalleştirilmiş" formu temsil eder)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (varlık için Vikipedi sayfasına bağlantı)</li><li>Bingıd</li><li>tür (tanınan varlığın kategorisi)</li><li>Alt tür (yalnızca belirli kategoriler için kullanılabilir, bu varlık türünün daha ayrıntılı bir görünümünü sağlar)</li><li> Eşleşmeler (içeren karmaşık bir koleksiyon)<ul><li>metin (varlık için ham metin)</li><li>fark (konumun bulunduğu konum)</li><li>Uzunluk (ham varlık metninin uzunluğu)</li></ul></li></ul> |
 
-##    <a name="sample-definition"></a>Örnek tanımı
+##    <a name="sample-definition"></a>Örnek tanım
 
 ```json
   {
@@ -187,12 +187,12 @@ Parametreler büyük/küçük harf duyarlıdır ve tüm isteğe bağlıdır.
 }
 ```
 
-Bu becerinin çıktısındaki varlıklar için döndürülen uzaklıkların doğrudan [Text Analytics API'sinden](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)döndürüldİğİni unutmayın , yani bunları özgün dizeiçin kullanıyorsanız, doğru içeriği ayıklamak için [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını .NET'te kullanmanız gerekir.  [Daha fazla bilgi burada bulabilirsiniz.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Bu yeteneğin çıktılarındaki varlıklar için döndürülen uzaklıklardan doğrudan [Metin Analizi API'si](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)döndürüldüğünü unutmayın. Bu, özgün dizede dizin haline getirmek için kullanıyorsanız, doğru içeriği ayıklamak üzere .net Içindeki [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) sınıfını kullanmanız gerekir.  [Daha fazla ayrıntı burada bulunabilir.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
-## <a name="error-cases"></a>Hata örnekleri
-Belgenin dil kodu desteklenmezse, bir hata döndürülür ve hiçbir varlık ayıklanır.
+## <a name="error-cases"></a>Hata durumları
+Belge için dil kodu desteklenmiyorsa bir hata döndürülür ve hiçbir varlık ayıklanmaz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-+ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Beceri tanımlama](cognitive-search-defining-skillset.md)

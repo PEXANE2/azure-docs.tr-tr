@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile Azure VM olağanüstü durum kurtarma ağ hakkında
-description: Azure Site Kurtarma'yı kullanarak Azure VM'lerinin çoğaltılması için ağ ağına genel bir bakış sağlar.
+title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
+description: Azure Site Recovery kullanarak Azure VM 'lerinin çoğaltılmasına yönelik ağa genel bir bakış sağlar.
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -9,121 +9,121 @@ ms.topic: article
 ms.date: 3/13/2020
 ms.author: sutalasi
 ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80283268"
 ---
-# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma da ağ hakkında
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da ağ iletişimi hakkında
 
 
 
-Bu makale, [Azure Site Kurtarma'yı](site-recovery-overview.md)kullanarak Azure VM'lerini bir bölgeden diğerine çoğaltırken ve kurtarırken ağ kılavuzu sağlar.
+Bu makalede, Azure VM 'lerini bir bölgeden diğerine çoğaltırken ve kurtarırken, [Azure Site Recovery](site-recovery-overview.md)kullanarak Ağ Kılavuzu sağlanmaktadır.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Site [Kurtarma'nın bu senaryo](azure-to-azure-architecture.md)için olağanüstü durum kurtarmayı nasıl sağladığını öğrenin.
+Site Recovery [Bu senaryo](azure-to-azure-architecture.md)için olağanüstü durum kurtarma nasıl sağladığını öğrenin.
 
 ## <a name="typical-network-infrastructure"></a>Tipik ağ altyapısı
 
-Aşağıdaki diyagram, Azure VM'lerde çalışan uygulamalar için tipik bir Azure ortamını göstermektedir:
+Aşağıdaki diyagramda, Azure VM 'lerde çalışan uygulamalar için tipik bir Azure ortamı gösterilmektedir:
 
-![müşteri-çevre](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
+![müşteri-ortam](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-Azure ExpressRoute kullanıyorsanız veya şirket içi ağınızdan Azure'a VPN bağlantısı kullanıyorsanız, ortam aşağıdaki gibidir:
+Azure ExpressRoute veya şirket içi ağınızdan Azure 'a bir VPN bağlantısı kullanıyorsanız, ortam aşağıdaki gibidir:
 
-![müşteri-çevre](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
+![müşteri-ortam](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
-Genellikle, ağlar güvenlik duvarları ve ağ güvenlik grupları (NSG'ler) kullanılarak korunur. Güvenlik duvarları, ağ bağlantısını denetlemek için URL veya IP tabanlı beyaz liste kullanır. NSG'ler ağ bağlantısını denetlemek için IP adres aralıklarını kullanan kurallar sağlar.
+Genellikle, ağlar güvenlik duvarları ve ağ güvenlik grupları (NSG 'ler) kullanılarak korunur. Güvenlik duvarları, ağ bağlantısını denetlemek için URL veya IP tabanlı beyaz liste kullanır. NSG 'ler, ağ bağlantısını denetlemek için IP adresi aralıklarını kullanan kurallar sağlar.
 
 >[!IMPORTANT]
-> Ağ bağlantısını denetlemek için kimlik doğrulaması yapılan bir proxy kullanmak Site Kurtarma tarafından desteklenmez ve çoğaltma etkinleştirilemiyor.
+> Ağ bağlantısını denetlemek için kimliği doğrulanmış bir proxy kullanmak Site Recovery tarafından desteklenmez ve çoğaltma etkinleştirilemez.
 
 
 ## <a name="outbound-connectivity-for-urls"></a>URL'ler için giden bağlantı
 
-Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy'si kullanıyorsanız, şu Site Kurtarma URL'lerine izin verin:
+Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, bu Site Recovery URL 'Lerine izin verin:
 
 
-**URL** | **Şey**
+**URL** | **Bilgileri**
 --- | ---
-*.blob.core.windows.net | Verilerin VM'den kaynak bölgedeki önbellek depolama hesabına yazılabilmesi için gereklidir. VM'lerinizin tüm önbellek depolama hesaplarını biliyorsanız, *.blob.core.windows.net yerine belirli depolama hesabı URL'lerine (Ör: cache1.blob.core.windows.net ve cache2.blob.core.windows.net) erişime izin verebilirsiniz
-login.microsoftonline.com | Site Kurtarma hizmet URL'lerine yetkilendirme ve kimlik doğrulama için gereklidir.
-*.hypervrecoverymanager.windowsazure.com | VM'den Site Kurtarma hizmeti iletişiminin gerçekleşebilmeleri için gereklidir.
-*.servicebus.windows.net | Site Kurtarma izleme ve tanılama verilerinin VM'den yazılabilmesi için gereklidir.
-*.vault.azure.net | Portal üzerinden ADE özellikli sanal makineler için çoğaltmayı etkinleştirme olanağı sağlar
-*.automation.ext.azure.com | Portal üzerinden çoğaltılan bir öğe için mobilite aracısının otomatik olarak yükseltilmesine olanak sağlar
+*.blob.core.windows.net | Verilerin, VM 'den kaynak bölgedeki önbellek depolama hesabına yazılabilmeleri için gereklidir. Sanal makinelerinize yönelik tüm önbellek depolama hesaplarını biliyorsanız, *. blob.core.windows.net yerine belirli depolama hesabı URL 'Lerine (örn: cache1.blob.core.windows.net ve cache2.blob.core.windows.net) erişime izin verebilirsiniz
+login.microsoftonline.com | Site Recovery hizmeti URL 'Lerinde yetkilendirme ve kimlik doğrulaması için gereklidir.
+*.hypervrecoverymanager.windowsazure.com | Site Recovery hizmeti iletişiminin sanal makineden gerçekleşebilmesi için gereklidir.
+*.servicebus.windows.net | Site Recovery izleme ve tanılama verilerinin VM 'den yazılabilmesini sağlamak için gereklidir.
+*.vault.azure.net | Portal aracılığıyla ADE özellikli sanal makineler için çoğaltmayı etkinleştirme erişimine izin verir
+*. automation.ext.azure.com | Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik olarak yükseltilmelerini olanaklı bir şekilde etkinleştirir
 
-## <a name="outbound-connectivity-using-service-tags"></a>Hizmet Etiketleri kullanarak giden bağlantı
+## <a name="outbound-connectivity-using-service-tags"></a>Hizmet etiketlerini kullanarak giden bağlantı
 
-Giden bağlantımı denetlemek için bir NSG kullanıyorsanız, bu hizmet etiketlerine izin verilmesi gerekir.
+Giden bağlantıyı denetlemek için bir NSG kullanıyorsanız, bu hizmet etiketlerine izin verilmesi gerekir.
 
-- Kaynak bölgedeki depolama hesapları için:
-    - Kaynak bölge için [Depolama hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
-    - Verilerin VM'den önbellek depolama hesabına yazılabilmesi için bu adreslere izin verin.
-- AAD'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun
-- Hedef bölge için Site Kurtarma izlemesine erişim sağlayan EventsHub hizmet etiketi tabanlı NSG kuralı oluşturun.
-- Herhangi bir bölgedeki Site Kurtarma hizmetine erişime izin vermek için AzureSiteRecovery hizmet etiketi tabanlı NSG kuralı oluşturun.
-- AzureKeyVault hizmet etiketi tabanlı NSG kuralı oluşturun. Bu yalnızca portal üzerinden ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir.
-- GuestAndHybridManagement hizmet etiketi tabanlı NSG kuralı oluşturun. Bu yalnızca portal üzerinden çoğaltılan bir öğe için mobilite aracısının otomatik olarak yükseltilen etkinleştirilmesi için gereklidir.
-- Bir test NSG'de gerekli NSG kurallarını oluşturmanızı ve üretim NSG'si ile ilgili kuralları oluşturmadan önce herhangi bir sorun olmadığını doğrulamanızı öneririz.
+- Kaynak bölgesindeki depolama hesapları için:
+    - Kaynak bölge için bir [depolama hizmeti etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturun.
+    - Bu adreslere, verilerin VM 'den önbellek depolama hesabına yazılabilmeleri için izin verin.
+- AAD 'ye karşılık gelen tüm IP adreslerine erişime izin vermek için [Azure Active Directory (AAD) hizmet etiketi](../virtual-network/security-overview.md#service-tags) tabanlı NSG kuralı oluşturma
+- Hedef bölge için Site Recovery izlemeye erişime izin veren bir EventsHub hizmet etiketi tabanlı NSG kuralı oluşturun.
+- Herhangi bir bölgedeki Site Recovery hizmetine erişime izin vermek için bir Azuresterecovery hizmet etiketi tabanlı NSG kuralı oluşturun.
+- Bir AzureKeyVault Service etiketi tabanlı NSG kuralı oluşturun. Bu, yalnızca Portal aracılığıyla ADE özellikli sanal makinelerin çoğaltılmasını etkinleştirmek için gereklidir.
+- GuestAndHybridManagement hizmet etiketi tabanlı NSG kuralı oluşturun. Bu yalnızca Portal aracılığıyla çoğaltılan bir öğe için Mobility aracısının otomatik yükseltmesini etkinleştirmek için gereklidir.
+- Gerekli NSG kurallarını bir test NSG üzerinde oluşturmanızı ve bir üretim NSG 'de kuralları oluşturmadan önce hiçbir sorun olmadığını doğrulamanızı öneririz.
 
 ## <a name="example-nsg-configuration"></a>Örnek NSG yapılandırması
 
-Bu örnek, bir VM'nin çoğaltması için NSG kurallarının nasıl yapılandırılabildiğini gösterir.
+Bu örnek, bir VM 'nin yinelenmesi için NSG kurallarının nasıl yapılandırılacağını gösterir.
 
-- Giden bağlantıyı kontrol etmek için NSG kurallarını kullanıyorsanız, gerekli tüm IP adres aralıkları için "HTTPS giden gidene izin ver" kurallarını bağlantı noktasına:443'ü kullanın.
-- Örnek, VM kaynak konumunun "Doğu ABD" ve hedef konumun "Orta ABD" olduğunu varsayılr.
+- Giden bağlantıyı denetlemek için NSG kuralları kullanıyorsanız, tüm gerekli IP adresi aralıkları için bağlantı noktası: 443 ' e Izin ver (HTTPS giden) kuralları ' nı kullanın.
+- Örnek, VM kaynak konumunun "Doğu ABD" ve hedef konumun "Orta ABD" olduğunu varsayar.
 
-### <a name="nsg-rules---east-us"></a>NSG kuralları - Doğu ABD
+### <a name="nsg-rules---east-us"></a>NSG kuralları-Doğu ABD
 
-1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG'deki "Storage.EastUS" için giden HTTPS (443) güvenlik kuralı oluşturun.
+1. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG 'de "Storage. EastUS" için giden bir HTTPS (443) güvenlik kuralı oluşturun.
 
       ![depolama etiketi](./media/azure-to-azure-about-networking/storage-tag.png)
 
-2. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG'deki "AzureActiveDirectory" için giden HTTPS (443) güvenlik kuralı oluşturun.
+2. Aşağıdaki ekran görüntüsünde gösterildiği gibi NSG 'de "AzureActiveDirectory" için giden HTTPS (443) güvenlik kuralı oluşturun.
 
       ![aad etiketi](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Yukarıdaki güvenlik kurallarına benzer şekilde, NSG'de hedef konuma karşılık gelen "EventHub.CentralUS" için giden HTTPS (443) güvenlik kuralını oluşturun. Bu, Site Kurtarma izleme erişimi sağlar.
+3. Yukarıdaki güvenlik kurallarına benzer şekilde, hedef konuma karşılık gelen NSG 'de "EventHub. Merkezileştirus" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
 
-4. NSG'de "AzureSiteRecovery" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Kurtarma Hizmetine erişim sağlar.
+4. NSG 'de "Azuresterecovery" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
 
-### <a name="nsg-rules---central-us"></a>NSG kuralları - Orta ABD
+### <a name="nsg-rules---central-us"></a>NSG kuralları-Orta ABD
 
-Çoğaltmanın hedef bölgeden kaynak bölgeye geçemedisonrası etkinleştirilebilmek için bu kurallar gereklidir:
+Bu kurallar, çoğaltmanın hedef bölgeden kaynak bölgeye yük devretme sonrası etkinleştirilebilmesi için gereklidir:
 
-1. NSG'de "Storage.CentralUS" için giden HTTPS (443) güvenlik kuralı oluşturun.
+1. NSG 'de "Storage. Merkezileştirus" için giden bir HTTPS (443) güvenlik kuralı oluşturun.
 
-2. NSG'de "AzureActiveDirectory" için giden HTTPS (443) güvenlik kuralı oluşturun.
+2. NSG 'de "AzureActiveDirectory" için giden HTTPS (443) güvenlik kuralı oluşturun.
 
-3. Yukarıdaki güvenlik kurallarına benzer şekilde, NSG'de kaynak konuma karşılık gelen "EventHub.EastUS" için giden HTTPS (443) güvenlik kuralını oluşturun. Bu, Site Kurtarma izleme erişimi sağlar.
+3. Yukarıdaki güvenlik kurallarına benzer şekilde, kaynak konuma karşılık gelen NSG 'de "EventHub. EastUS" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, Site Recovery izlemeye erişim sağlar.
 
-4. NSG'de "AzureSiteRecovery" için giden HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Kurtarma Hizmetine erişim sağlar.
+4. NSG 'de "Azuresterecovery" için giden bir HTTPS (443) güvenlik kuralı oluşturun. Bu, herhangi bir bölgedeki Site Recovery hizmetine erişim sağlar.
 
-## <a name="network-virtual-appliance-configuration"></a>Ağ sanal cihaz yapılandırması
+## <a name="network-virtual-appliance-configuration"></a>Ağ sanal gereç yapılandırması
 
-VM'lerden giden ağ trafiğini kontrol etmek için ağ sanal cihazları (NVAs) kullanıyorsanız, tüm çoğaltma trafiği NVA'dan geçerse cihaz daraltılmış olabilir. Çoğaltma trafiğinin NVA'ya gitmemesi için sanal ağımızda "Depolama" için bir ağ hizmeti bitiş noktası oluşturmanızı öneririz.
+VM 'lerden giden ağ trafiğini denetlemek için ağ sanal gereçlerini (NVA 'lar) kullanıyorsanız, tüm çoğaltma trafiği NVA üzerinden geçerse gereç azalmasıyla karşılaşabilirsiniz. Çoğaltma trafiğinin NVA 'ya gitmemesi için, sanal ağınızda "depolama" için bir ağ hizmeti uç noktası oluşturmanız önerilir.
 
-### <a name="create-network-service-endpoint-for-storage"></a>Depolama için ağ hizmeti bitiş noktası oluşturma
-Çoğaltma trafiğinin Azure sınırını terk etmeyecek şekilde sanal ağınızda "Depolama" için bir ağ hizmeti bitiş noktası oluşturabilirsiniz.
+### <a name="create-network-service-endpoint-for-storage"></a>Depolama için ağ hizmeti uç noktası oluşturma
+Çoğaltma trafiğinin Azure sınırından çıkmadan, sanal ağınızda "depolama" için bir ağ hizmeti uç noktası oluşturabilirsiniz.
 
-- Azure sanal ağınızı seçin ve 'Hizmet bitiş noktaları'na tıklayın
+- Azure Sanal ağınızı seçin ve ' hizmet uç noktaları ' seçeneğine tıklayın
 
-    ![depolama bitiş noktası](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+    ![depolama uç noktası](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
 
-- 'Ekle' ve 'Hizmet uç noktaları ekle' sekmesi açılır
-- 'Hizmet' altında 'Microsoft.Storage'ı ve 'Alt Ağlar' alanı altında gerekli alt ağları seçin ve 'Ekle'ye tıklayın
+- ' Ekle ' seçeneğine tıklayın ve ' hizmet uç noktaları Ekle ' sekmesi açılır
+- ' Hizmet ' altında ' Microsoft. Storage ' ve ' alt ağlar ' alanı altında gerekli alt ağlar ' ı seçin ve ' Ekle ' seçeneğine tıklayın
 
 >[!NOTE]
->ASR için kullanılan depolama hesaplarınıza sanal ağ erişimini kısıtlamayın. 'Tüm ağlardan' erişime izin vermelisiniz
+>ASR için kullanılan depolama hesaplarınıza sanal ağ erişimini kısıtlamayın. ' Tüm ağlar 'dan erişime izin vermeniz gerekir
 
 ### <a name="forced-tunneling"></a>Zorlamalı tünel oluşturma
 
-Azure'un varsayılan sistem rotasını özel bir [rotayla](../virtual-network/virtual-networks-udr-overview.md#custom-routes) 0.0.0.0/0 adres öneki için geçersiz kılabilir ve VM trafiğini şirket içi bir ağ sanal cihazına (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Kurtarma çoğaltmaiçin önerilmez. Özel rotalar kullanıyorsanız, çoğaltma trafiğinin Azure sınırını terk etmesin diye sanal ağınızda "Depolama" için [bir sanal ağ hizmeti bitiş noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
+[Özel bir rota](../virtual-network/virtual-networks-udr-overview.md#custom-routes) ile 0.0.0.0/0 adres ön eki için Azure 'un varsayılan sistem yolunu geçersiz KıLABILIR ve VM trafiğini şirket içi ağ sanal gerecine (NVA) yönlendirebilirsiniz, ancak bu yapılandırma Site Recovery çoğaltma için önerilmez. Özel yollar kullanıyorsanız, çoğaltma trafiğinin Azure sınırından ayrılmaması için sanal ağınızda "depolama" için [bir sanal ağ hizmet uç noktası oluşturmanız](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure sanal makinelerini çoğaltarak](site-recovery-azure-to-azure.md)iş yüklerinizi korumaya başlayın.
-- Azure sanal makine başarısız olmak için [IP adresi tutma](site-recovery-retain-ip-azure-vm-failover.md) hakkında daha fazla bilgi edinin.
-- [ExpressRoute ile Azure sanal makinelerinin](azure-vm-disaster-recovery-with-expressroute.md)olağanüstü durum kurtarma hakkında daha fazla bilgi edinin.
+- Azure sanal makine yük devretmesi için [IP adresi saklama](site-recovery-retain-ip-azure-vm-failover.md) hakkında daha fazla bilgi edinin.
+- [ExpressRoute Ile Azure sanal makinelerinin](azure-vm-disaster-recovery-with-expressroute.md)olağanüstü durum kurtarması hakkında daha fazla bilgi edinin.

@@ -1,93 +1,93 @@
 ---
-title: Azure VM'lerde SQL Server Backup için Azure Yedekleme destek matrisi
-description: Azure Yedekleme hizmetiyle Azure VM'lerde SQL Server'ı yedeklerken destek ayarlarının ve sınırlamaların bir özetini sağlar.
+title: Azure VM 'lerinde SQL Server yedekleme için Azure Backup destek matrisi
+description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken destek ayarlarının ve sınırlamaların özetini sağlar.
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.openlocfilehash: 79a7e30ab9240c489a66b547ff85bea7887131b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79410005"
 ---
-# <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM'lerde SQL Server Backup için destek matrisi
+# <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
-Azure Yedekleme'yi, Microsoft Azure bulut platformunda barındırılan Azure VM'lerde SQL Server veritabanlarını yedeklemek için kullanabilirsiniz. Bu makalede, Azure VM'lerde SQL Server Backup senaryoları ve dağıtımları için genel destek ayarları ve sınırlamaları özetlenmiştir.
+Azure Backup, Microsoft Azure bulut platformunda barındırılan Azure VM 'lerinde SQL Server veritabanlarını yedeklemek için kullanabilirsiniz. Bu makalede, Azure VM 'lerinde SQL Server yedekleme senaryoları ve dağıtımları için genel destek ayarları ve sınırlamaları özetlenmektedir.
 
 ## <a name="scenario-support"></a>Senaryo desteği
 
-**Destek** | **Şey**
+**Destek** | **Bilgileri**
 --- | ---
-**Desteklenen dağıtımlar** | SQL Marketplace Azure VM'ler ve Market dışı (SQL Server el ile yüklenir) VM'ler desteklenir.
-**Desteklenen geos** | Avustralya Güney Doğu (ASE), Doğu Avustralya (AE), Avustralya Merkez (AC), Avustralya Merkez 2 (AC) <br> Güney Brezilya (BRS)<br> Kanada Merkez (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Batı Orta ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Kuzey Orta ABD (NCUS) Orta ABD (CUS) Güney Orta ABD (SCUS) <br> Hindistan Merkez (INC), Hindistan Güney (INS), Hindistan Batı <br> Japonya Doğu (JPE), Batı Japonya (JPW) <br> Kore Merkez (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> İngiltere Güney (UKS), İngiltere Batı (UKW) <br> ABD Gov Arizona, ABD Gov Virginia, ABD Gov Texas, ABD DoD Merkez, ABD DoD Doğu <br> Almanya Kuzey, Almanya Batı Orta <br> İsviçre Kuzey, İsviçre Batı <br> Orta Fransa <br> Çin Doğu, Çin Doğu 2, Çin Kuzey, Çin Kuzey 2
-**Desteklenen işletim sistemleri** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux şu anda desteklenmez.
-**Desteklenen SQL Server sürümleri** | SQL Server 2019, SQL Server 2017, [Arama ürün yaşam döngüsü sayfasında](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)ayrıntılı olarak , SQL Server 2016 ve SPs olarak arama ürün yaşam döngüsü [sayfasında](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)ayrıntılı olarak , SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Kurumsal, Standart, Web, Geliştirici, Express.
-**Desteklenen .NET sürümleri** | .NET Framework 4.5.2 veya daha sonra VM yüklü
+**Desteklenen dağıtımlar** | SQL Market Azure VM 'Leri ve Market olmayan (SQL Server el ile yüklenmiş) VM 'Ler desteklenir.
+**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE), Avustralya Orta (AC), Avustralya Orta 2 (AC) <br> Güney Brezilya (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS), Hindistan Batı <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu <br> Almanya Kuzey, Almanya Orta Batı <br> İsviçre Kuzey, İsviçre Batı <br> Orta Fransa <br> Çin Doğu, Çin Doğu 2, Çin Kuzey, Çin Kuzey 2
+**Desteklenen işletim sistemleri** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux Şu anda desteklenmiyor.
+**Desteklenen SQL Server sürümleri** | SQL Server 2019, [ürün yaşam döngüsünü ara](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)sayfasında SQL Server 2017 SQL Server 2016 ve SPS 'yi [ürün yaşam döngüsünü ara sayfasında](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)ayrıntılı olarak SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, geliştirici, Express.
+**Desteklenen .NET sürümleri** | VM 'de yüklü .NET Framework 4.5.2 veya üzeri
 
-## <a name="feature-consideration-and-limitations"></a>Özellik dikkate alınması ve sınırlamalar
+## <a name="feature-consideration-and-limitations"></a>Özellik değerlendirmesi ve sınırlamaları
 
-* SQL Server yedeklemesi Azure portalında veya **PowerShell'de**yapılandırılabilir. CLI'yi destekliyoruz.
-* Çözüm, azure kaynak yöneticisi [vm'leri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) ve klasik VM'ler olmak gibi her iki dağıtım türünde de desteklenir.
-* VM running SQL Server, Azure genel IP adreslerine erişmek için Internet bağlantısı gerektirir.
-* SQL Server **Failover Cluster Instance (FCI)** desteklenmez.
-* Ayna veritabanları ve veritabanı anlık görüntüleri için işlemleri yedekleme ve geri yükleme desteklenmez.
-* Tek başına SQL Server örneğini veya SQL Her zaman kullanılabilirlik grubunda yedekleme hatanızı yedeklemek için birden fazla yedekleme çözümü kullanmak; bunu yapmaktan kaçının.
-* Aynı veya farklı çözümlerle bir kullanılabilirlik grubunun iki düğümünün tek tek yedeklemesi de yedekleme hatasına yol açabilir.
-* Azure Yedekleme yalnızca **Okunur** veritabanları için yalnızca Tam ve Kopyala Tam yedekleme türlerini destekler
-* Çok sayıda dosyaiçeren veritabanları korunamıyor. Desteklenen dosyaların maksimum sayısı ~ **1000**olduğunu.  
-* Bir kasada **~2000** SQL Server veritabanlarını yedekleyebilirsiniz. Daha fazla sayıda veritabanınız olması durumunda birden çok kasa oluşturabilirsiniz.
-* Yedeklemeyi tek bir çekimde en fazla **50** veritabanları için yapılandırabilirsiniz; bu kısıtlama yedekleme yüklerini optimize etmesine yardımcı olur.
-* **2 TB** boyutuna kadar veritabanlarını destekliyoruz; bu performans sorunları daha büyük boyutlarda için gelebilir.
-* Sunucu başına kaç veritabanının korunabileceği konusunda bir anlayışa sahip olmak için bant genişliği, VM boyutu, yedekleme frekansı, veritabanı boyutu gibi faktörleri göz önünde bulundurun. VM kaynaklarını ve yedekleme ilkesini temel alarak sunucu başına sahip olabileceğiniz yaklaşık veritabanları sayısını hesaplamak için kaynak planlayıcısını [indirin.](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)
-* Kullanılabilirlik grupları yapılandırıldığında, yedeklemeler birkaç etkene bağlı olarak farklı düğümlerden alınır. Kullanılabilirlik grubunun yedekleme davranışı aşağıda özetlenmiştir.
+* SQL Server yedekleme Azure portal veya **PowerShell**içinde yapılandırılabilir. CLı 'yi desteklemiyoruz.
+* Çözüm her iki tür [dağıtım](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) için de desteklenir-Azure Resource Manager VM 'ler ve klasik VM 'ler.
+* SQL Server çalıştıran VM, Azure genel IP adreslerine erişmek için internet bağlantısı gerektirir.
+* SQL Server **Yük devretme kümesi örneği (FCı)** desteklenmez.
+* Yansıtma veritabanları ve veritabanı anlık görüntüleri için yedekleme ve geri yükleme işlemleri desteklenmez.
+* Tek başına SQL Server örneğinizi veya SQL Always on kullanılabilirlik grubunu yedeklemek için birden fazla yedekleme çözümü kullanmak yedekleme hatasına neden olabilir; Bunu yapmaktan kaçının.
+* Bir kullanılabilirlik grubunun iki düğümünü aynı veya farklı çözümlerle tek tek yedeklemek, yedekleme hatasına da neden olabilir.
+* Azure Backup **salt okunurdur** veritabanları Için yalnızca tam ve salt kopya tam yedekleme türlerini destekler
+* Çok sayıda dosya içeren veritabanları korunamaz. Desteklenen en fazla dosya sayısı **~ 1000**' dir.  
+* Bir kasadaki **~ 2000** SQL Server veritabanlarını yedekleyebilirsiniz. Daha fazla veritabanınız olması durumunda birden çok kasa oluşturabilirsiniz.
+* Yedeklemeyi tek bir go 'da en fazla **50** veritabanına yapılandırabilirsiniz; Bu kısıtlama, yedekleme yüklerini iyileştirmenize yardımcı olur.
+* Boyutu **2 TB** 'a kadar olan veritabanlarını destekliyoruz; performans sorunlarından daha büyük boyutlarda olabilir.
+* Sunucu başına kaç tane veritabanı korunduğuna ilişkin bir fikir sahibi olmak için bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu vb. gibi faktörleri göz önünde bulundurun. VM kaynaklarına ve yedekleme ilkesine göre sunucu başına sahip olduğunuz birçok veritabanı sayısını hesaplamak için kaynak Planlayıcısı ' nı [indirin](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) .
+* Kullanılabilirlik grupları yapılandırıldığında, yedeklemeler, birkaç etkene göre farklı düğümlerden alınır. Bir kullanılabilirlik grubu için yedekleme davranışı aşağıda özetlenmiştir.
 
-### <a name="back-up-behavior-with-always-on-availability-groups"></a>Kullanılabilirlik gruplarında Her Zaman ile davranışı yedekleme
+### <a name="back-up-behavior-with-always-on-availability-groups"></a>Always on kullanılabilirlik gruplarıyla yedekleme davranışı
 
-Yedeklemenin kullanılabilirlik grubunun (AG) yalnızca bir düğümünde yapılandırılmalarını öneririz. Yedeklemeyi her zaman birincil düğümle aynı bölgede yapılandırın. Başka bir deyişle, yedeklemeyi yapılandırdığınız bölgede birincil düğümün bulunması her zaman gerekir. AG'nin tüm düğümleri yedeklemenin yapılandırıldığı aynı bölgedeyse, herhangi bir sorun yoktur.
+Yedeklemenin, bir kullanılabilirlik grubunun (AG) yalnızca bir düğümünde yapılandırılmasını öneririz. Her zaman yedeklemeyi birincil düğümle aynı bölgede yapılandırın. Diğer bir deyişle, her zaman yedeklemeyi yapılandırdığınız bölgede birincil düğümün bulunması gerekir. AG 'nin tüm düğümleri yedeklemenin yapılandırıldığı bölgede ise sorun yoktur.
 
 #### <a name="for-cross-region-ag"></a>Bölgeler arası AG için
 
-* Yedekleme tercihinden bağımsız olarak, yedeklemeler yalnızca yedeklemenin yapılandırıldığı aynı bölgede bulunan düğümlerden çalışır. Bunun nedeni, bölgeler arası yedeklemelerin desteklenmemiş olmasıdır. Yalnızca iki düğümünüz varsa ve ikincil düğüm diğer bölgedeyse, yedeklemeler birincil düğümden çalışmaya devam eder (yedekleme tercihiniz 'yalnızca ikincil' değilse).
-* Bir düğüm, yedeklemenin yapılandırıldığı bölgeden farklı bir bölgeye geçmezse, yedekler başarısız olan bölgedeki düğümlerde başarısız olur.
+* Yedekleme tercihinden bağımsız olarak, yedeklemeler yalnızca yedeklemenin yapılandırıldığı bölgedeki düğümlerden çalıştırılır. Bunun nedeni, bölgeler arası yedeklemelerin desteklenmemektedir. Yalnızca iki düğümünüz varsa ve ikincil düğüm diğer bölgedeyse, yedeklemeler birincil düğümden çalışmaya devam eder (yedekleme tercihiniz ' ikincil yalnızca ' değilse).
+* Bir düğüm, yedeklemenin yapılandırıldığı noktadan farklı bir bölgeye yük devreder, yedeklemeler başarısız olan bölgedeki düğümlerde başarısız olur.
 
-Yedekleme tercihine ve yedekleme türlerine (tam/diferansiyel/log/copy-only full) bağlı olarak, yedeklemeler belirli bir düğümden (birincil/ikincil) alınır.
+Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt kopya) bağlı olarak, yedeklemeler belirli bir düğümden alınır (birincil/ikincil).
 
-#### <a name="backup-preference-primary"></a>Yedekleme tercihi: Birincil
+#### <a name="backup-preference-primary"></a>Yedekleme tercihi: birincil
 
 **Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
-Fark | Birincil
+Di | Birincil
 Günlük |  Birincil
-Yalnızca Tam Kopyala |  Birincil
+Salt kopya tam |  Birincil
 
-#### <a name="backup-preference-secondary-only"></a>Yedekleme tercihi: Yalnızca İkincil
-
-**Yedekleme Türü** | **Node**
---- | ---
-Tam | Birincil
-Fark | Birincil
-Günlük |  İkincil
-Yalnızca Tam Kopyala |  İkincil
-
-#### <a name="backup-preference-secondary"></a>Yedekleme tercihi: İkincil
+#### <a name="backup-preference-secondary-only"></a>Yedekleme tercihi: yalnızca Ikincil
 
 **Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
-Fark | Birincil
+Di | Birincil
 Günlük |  İkincil
-Yalnızca Tam Kopyala |  İkincil
+Salt kopya tam |  İkincil
+
+#### <a name="backup-preference-secondary"></a>Yedekleme tercihi: Ikincil
+
+**Yedekleme Türü** | **Node**
+--- | ---
+Tam | Birincil
+Di | Birincil
+Günlük |  İkincil
+Salt kopya tam |  İkincil
 
 #### <a name="no-backup-preference"></a>Yedekleme tercihi yok
 
 **Yedekleme Türü** | **Node**
 --- | ---
 Tam | Birincil
-Fark | Birincil
+Di | Birincil
 Günlük |  İkincil
-Yalnızca Tam Kopyala |  İkincil
+Salt kopya tam |  İkincil
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure VM'de çalışan [bir SQL Server veritabanını](backup-azure-sql-database.md) nasıl yedekleyeceğimiz öğrenin.
+Azure VM 'de çalışan [SQL Server bir veritabanını nasıl yedekleyeceğinizi](backup-azure-sql-database.md) öğrenin.

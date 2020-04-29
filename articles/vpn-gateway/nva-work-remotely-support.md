@@ -1,6 +1,6 @@
 ---
-title: 'Uzaktan çalışma: Ağ Sanal Cihaz (NVA) uzaktan çalışma için hususlar | Azure VPN Ağ Geçidi'
-description: Bu makale, COVID-19 salgını sırasında Azure'daki Ağ Sanal Cihazları (NVAs) ile çalışırken göz önünde bulundurmanız gereken şeyleri anlamanıza yardımcı olur.
+title: 'Uzaktan çalışma: uzaktan çalışma için ağ sanal gereci (NVA) konuları | Azure VPN Gateway'
+description: Bu makale, COVıN-19 pandemıc sırasında Azure 'da ağ sanal gereçlerinde (NVA 'lar) çalışmayı dikkate almanız gereken şeyleri anlamanıza yardımcı olur.
 services: vpn-gateway
 author: scottnap
 ms.service: vpn-gateway
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 03/21/2020
 ms.author: scottnap
 ms.openlocfilehash: 8a22e8f0bde2d13b4055566d96680fadc2db6e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337102"
 ---
-# <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Uzaktan çalışma: Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar
+# <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Uzaktan çalışma: uzak çalışma için ağ sanal gereci (NVA) konuları
 
 >[!NOTE]
->Bu makalede, COVID-19 krizi nedeniyle karşılaştığınız ağ sorunlarını uzaktan çalışmak ve ağ sorunlarını azaltmak için Ağ Sanal Cihazları, Azure, Microsoft ağı ve Azure iş ortağı ekosisteminden nasıl yararlanabileceğiniz açıklanmaktadır.
+>Bu makalede, ağ sanal gereçlerinin, Azure 'un, Microsoft ağının ve Azure iş ortağı ekosisteminden yararlanarak uzaktan nasıl çalışabileceğinizi ve COVı-19 çapraz olduğu için kullanıma sunulacak ağ sorunlarını azaltabilirsiniz.
 >
 
-Bazı Azure müşterileri, COVID-19 salgını sırasında evden çalışan çalışanları için siteden noktaya VPN gibi kritik hizmetler sağlamak için Azure Marketi'nden üçüncü taraf Ağ Sanal Cihazları 'nı (NV'ler) kullanır. Bu makalede, uzaktan erişim çözümleri sağlamak için Azure'da NV'ler kullanılırken dikkate alınması gereken bazı üst düzey kılavuzlar sıralanmaktadır.
+Bazı Azure müşterileri, COVıD-19 epidemıc sırasında evden çalışan çalışanları için Noktadan siteye VPN gibi kritik hizmetler sağlamak üzere Azure Marketi 'nden üçüncü taraf ağ sanal gereçlerini (NVA 'lar) kullanır. Bu makalede, uzaktan erişim çözümleri sağlamak üzere Azure 'da NVA 'lar 'i kullanırken dikkate alınması gereken bazı üst düzey rehberlik özetlenmektedir.
 
-## <a name="nva-performance-considerations"></a>NVA performans hususları
+## <a name="nva-performance-considerations"></a>NVA performansı konuları
 
-Azure Marketi'ndeki tüm büyük NVA satıcılarının VM Boyutu ve çözümlerini dağıtırken kullanılacak örnek sayısı hakkında önerileri olmalıdır.  Neredeyse tüm NVA satıcıları belirli bir Bölgede kullanabileceğiniz herhangi bir boyutu seçmenize izin verirken, bu öneriler satıcının performans yaptığı VM boyutları olduğundan, Azure VM örnek boyutları için satıcı önerilerini izlemeniz çok önemlidir Azure ile test edin.  
+Azure Marketi 'ndeki tüm büyük NVA satıcıları, çözümlerini dağıttığınızda kullanılacak VM boyutu ve örnek sayısı üzerinde önerilere sahip olmalıdır.  Neredeyse tüm NVA satıcıları belirli bir bölgede sizin için kullanılabilir olan herhangi bir boyutu seçmenize izin verince, bu öneriler, satıcının Azure 'da performans testini gerçekleştirmesini sağlayan sanal makine boyutları olduğundan, Azure VM örnek boyutları için satıcı önerilerini izlemeniz çok önemlidir.  
 
 ### <a name="consider-the-following"></a>Aşağıdakileri göz önünde bulundurun
 
-- **Kapasite ve eşzamanlı kullanıcı sayısı** - Her bağlı kullanıcı bir şifreli (IPSec veya SSL VPN) tünel oluşturacak gibi bu sayı özellikle Point-to-Site VPN kullanıcıları için önemlidir.  
-- **Toplam iş ortası** - Uzaktan erişim sağlamanız gereken kullanıcı sayısını karşılamak için ihtiyacınız olan toplam bant genişliği nedir.
-- **İhtiyacınız olacak VM boyutu** - Her zaman NVA satıcı tarafından önerilen VM boyutları kullanmalısınız.  Noktadan siteye VPN için, çok eşzamanlı kullanıcı bağlantıları olacaksa, [Dv2 ve DSv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2 ve Dsv2 Serisi") VM'ler gibi daha büyük VM boyutlarını kullanıyor olmalısınız. Bu VMs daha fazla vCPUs sahip olma eğilimindedir ve daha eşzamanlı VPN oturumları işleyebilir.  Azure'daki daha büyük VM boyutları, daha fazla sanal çekiye sahip olmanın yanı sıra, daha küçük VM boyutlarına göre daha fazla toplam bant genişliği kapasitesine sahiptir.
-    > **Önemli:** Her satıcı kaynakları farklı kullanır.  Tahmini kullanıcı yükünüzü karşılamak için hangi örnek boyutlarını kullanmanız gerektiği açık değilse, doğrudan yazılım satıcısına başvurmalı ve onlardan bir öneri istemeniz gerekir.
-- **Örnek sayısı** - Çok sayıda kullanıcı ve bağlantı olmasını bekliyorsanız, NVA örnek boyutlarınızın ölçekletilmesinin neler başarabileceğinin sınırları vardır.  Birden çok VM örneğini dağıtmayı düşünün.
-- **IPSec VPN vs SSL VPN** - Genel olarak IPSec VPN uygulamaları SSL VPN uygulamalarından daha iyi performans gösterir.  
-- **Lisanslama** - NVA çözümü için satın aldığınız yazılım lisanslarının COVID-19 salgını sırasında karşılaşabileceğiniz ani büyümeyi kapsadığından emin olun.  Birçok NVA lisans programı, çözümün yapabildiği bağlantı veya bant genişliği sayısını sınırlar.
-- **Hızlandırılmış Ağ** - Hızlandırılmış Ağ için desteği olan bir NVA çözümdüşünün.  Hızlandırılmış ağ, tek kök G/Ç sanallaştırmasını (SR-IOV) VM'ye sağlayarak ağ performansını büyük ölçüde artırır. Bu yüksek performanslı yol, desteklenen VM türlerinde en zorlu ağ iş yükleriyle kullanım için gecikme, gerginlik ve CPU kullanımını azaltarak ana bilgisayarı veri yolundan atlar. Hızlandırılmış ağ, en genel amaç ve bilgi işlem için optimize edilmiş örnek boyutlarında iki veya daha fazla vCPU ile desteklenir.
+- **Eş zamanlı kullanıcıların kapasitesi ve sayısı** -bu sayı özellikle Noktadan siteye VPN kullanıcıları için, her bağlantılı Kullanıcı bir şifrelenmiş (ıPSEC veya SSL VPN) tüneli oluşturacak şekilde önemlidir.  
+- **Toplam aktarım hızı** -uzaktan erişim sağlamanız gereken kullanıcı sayısını karşılamak için gereken toplam bant genişliğidir.
+- **İhtiyaç duyduğunuz VM boyutu** -NVA satıcısı tarafından önerilen VM boyutlarını her zaman kullanmanız gerekir.  Noktadan siteye VPN için, çok sayıda eşzamanlı kullanıcı bağlantınız varsa, [dv2 ve DSv2 serisi](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2 ve Dsv2 serisi") VM 'ler gibi daha büyük VM boyutlarını kullanmanız gerekir. Bu VM 'Ler daha fazla vCPU 'ya sahip olmaya eğilimlidir ve daha fazla eşzamanlı VPN oturumu işleyebilir.  Daha fazla sanal çekirdeğe sahip olmanın yanı sıra, Azure 'da daha büyük VM boyutları daha küçük VM boyutundan daha fazla toplam bant genişliği kapasitesine sahiptir.
+    > **Önemli:** Her satıcı, kaynakları farklı kullanır.  Tahmin edilen Kullanıcı yüküne uyum sağlamak için kullanmanız gereken örnek boyutları net değilse, yazılım satıcısıyla doğrudan iletişim kurmanız ve önerisine danışmanız gerekir.
+- **Örnek sayısı** -çok sayıda kullanıcı ve bağlantınız olması beklendiğinde, NVA örnek boyutlarınızın ne kadar ölçeklendirdiğini elde etmeniz için sınırlamalar vardır.  Birden çok VM örneği dağıtmak isteyebilirsiniz.
+- **IPSEC VPN vs SSL VPN** -genel IPSec VPN UYGULAMALARıNDA, SSL VPN uygulamalarından daha iyi bir uygulama gerçekleştirir.  
+- **Lisanslama** -NVA çözümü için satın aldığınız yazılım lisanslarının covıd-19 epidemıc sırasında karşılaşabileceğiniz ani büyümeyi kapsadığına emin olun.  Birçok NVA lisanslama programı, çözümün sahip olduğu bağlantı sayısını veya bant genişliğini sınırlar.
+- **Hızlandırılmış ağ** -hızlandırılmış ağ desteği olan bir NVA çözümü düşünün.  Hızlandırılmış ağ, bir VM 'ye tek köklü g/ç Sanallaştırması (SR-ıOV) sağlar ve ağ performansını büyük ölçüde geliştirir. Bu yüksek performanslı yol, desteklenen VM türlerindeki en zorlu ağ iş yükleri ile kullanım için gecikme süresi, değişim ve CPU kullanımını azaltan veri yolundan Konağı atlar. Hızlandırılmış ağ, iki veya daha fazla vCPU ile en genel amaçlı ve işlem için iyileştirilmiş örnek boyutlarında desteklenir.
 
-## <a name="monitoring-resources"></a>Kaynakların izlenmesi
+## <a name="monitoring-resources"></a>İzleme kaynakları
 
-Her NVA çözümünün NVA performansını izlemek için kendi araçları ve kaynakları vardır.  Performans sınırlamalarını anladığınızdan ve NVA'nızın kapasiteye yaklaştığını veya kapasiteye ulaştığını tespit edebileceğinizden emin olmak için satıcılarınızın belgelerine başvurun.  Buna ek olarak Azure Monitor Ağ İstatistikleri'ne bakabilir ve Ağ Sanal Cihazlarınız hakkındaki temel performans bilgilerini görebilirsiniz:
+Her NVA çözümünün, NVA 'nın performansını izlemeye yönelik kendi araçları ve kaynakları vardır.  Performans sınırlamalarını anladığınızdan ve NVA 'nın kapasiteye yaklaşmakta veya bu kapasiteyi öğrendiğinizden emin olmak için satıcı belgelerinize başvurun.  Buna ek olarak, Azure Izleyici ağ öngörülerine bakabilir ve aşağıdaki gibi ağ sanal Geremleriniz hakkında temel performans bilgilerini görebilirsiniz:
 
 - CPU Kullanımı
 - Ağ Girişi
 - Ağ Çıkışı
 - Gelen Akışlar
-- Giden Akışlar
+- Giden akışlar
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-En büyük NVA ortakları COVID-19 sırasında ani, beklenmedik büyüme için ölçekleme etrafında rehberlik gönderdik. İş ortağı kaynaklarına birkaç yararlı bağlantı aşağıda verebistir.
+Çoğu büyük NVA iş ortakları, COVıD-19 sırasında ani, beklenmeyen büyüme için ölçeklendirmeyle ilgili rehberlik ister. İş ortağı kaynaklarına yönelik birkaç faydalı bağlantı aşağıda verilmiştir.
 
-[Barracuda COVID-19 sırasında verilerinizi güvence altına alırken evden çalışmayı etkinleştirin](https://www.barracuda.com/covid-19/work-from-home "COVID-19 sırasında verilerinizi güvence altına alırken Evden İş'i etkinleştirin")
+[Barbcuda, COVıD sırasında verilerinizi güvenli hale getirirken evden çalışmayı etkinleştir-19](https://www.barracuda.com/covid-19/work-from-home "COVıD sırasında verilerinizi güvenli hale getirirken evden çalışmayı etkinleştirme-19")
 
-[COVID-19 Hazırlığı için Cisco AnyConnect Uygulama ve Performans/Ölçekleme Referansı](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "COVID-19 Hazırlığı için Cisco AnyConnect Uygulama ve Performans/Ölçekleme Referansı")
+[COVıD-19 hazırlığı için Cisco AnyConnect uygulama ve performans/ölçeklendirme başvurusu](https://www.cisco.com/c/en/us/support/docs/security/anyconnect-secure-mobility-client/215331-anyconnect-implementation-and-performanc.html "COVıD-19 hazırlığı için Cisco AnyConnect uygulama ve performans/ölçeklendirme başvurusu")
 
-[Citrix COVID-19 Mukabele Destek Merkezi](https://www.citrix.com/support/covid-19-coronavirus.html "Citrix COVID-19 Mukabele Destek Merkezi")
+[Citrix COVıD-19 yanıt Destek Merkezi](https://www.citrix.com/support/covid-19-coronavirus.html "Citrix COVıD-19 yanıt Destek Merkezi")
 
-[F5 Rehberlik Uzak Çalışanlarda Dramatik Artış Adrese](https://www.f5.com/business-continuity "F5 Rehberlik Uzak Çalışanlarda Dramatik Artış Adrese")
+[Uzak çalışanlarında çarpıcı artışı karşılamak için F5 Kılavuzu](https://www.f5.com/business-continuity "Uzak çalışanlarında çarpıcı artışı karşılamak için F5 Kılavuzu")
 
-[Fortinet COVID-19 Müşteriler ve İş Ortakları için Güncellemeler](https://www.fortinet.com/covid-19.html "Müşteriler ve İş Ortakları için COVID-19 Güncellemeleri")
+[Fortinet COVıD-müşteriler ve Iş ortakları için 19 güncelleştirme](https://www.fortinet.com/covid-19.html "COVıD-müşteriler ve Iş ortakları için 19 güncelleştirme")
 
-[Palo Alto Networks COVID-19 Yanıt Merkezi](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVID-19 Yanıt Merkezi")
+[Palo Alto Networks COVıD-19 yanıt Merkezi](https://live.paloaltonetworks.com/t5/COVID-19-Response-Center/ct-p/COVID-19_Response_Center "Palo Alto Networks COVıD-19 yanıt Merkezi")

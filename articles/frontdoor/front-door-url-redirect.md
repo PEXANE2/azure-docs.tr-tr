@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - URL Yönlendirme | Microsoft Dokümanlar
-description: Bu makale, Azure Ön Kapı'nın yapılandırıldırıldığında rotaları için URL yeniden yönlendirmeyi nasıl desteklediğini anlamanıza yardımcı olur.
+title: Azure ön kapısı-URL yeniden yönlendirme | Microsoft Docs
+description: Bu makale, yapılandırıldıysa, Azure ön kapısının rotalar için URL yeniden yönlendirmeyi nasıl desteklediğini anlamanıza yardımcı olur.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -12,44 +12,44 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: sharadag
 ms.openlocfilehash: 5e3e44c4aee84fe9e2e21174a1d65fdf26b765a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295469"
 ---
 # <a name="url-redirect"></a>URL yeniden yönlendirme
-Trafiği yeniden yönlendirmek için Azure Ön Kapı'yı kullanabilirsiniz. Trafiği birden çok düzeyde (iletişim kuralı, ana bilgisayar adı, yol, sorgu dizesi) yeniden yönlendirebilirsiniz ve yeniden yönlendirme yol tabanlı olduğundan tüm işlevler tek tek mikro hizmetler için yapılandırılabilir. Bu, uygulama yapılandırmasını basitleştirir, kaynak kullanımını en iyi duruma getirtir ve genel ve yol tabanlı yeniden yönlendirme de dahil olmak üzere yeni yeniden yönlendirme senaryolarını destekler.
+Trafiği yeniden yönlendirmek için Azure ön kapısına yararlanabilirsiniz. Trafiği birden çok düzeyde (protokol, ana bilgisayar adı, yol, sorgu dizesi) yeniden yönlendirebilir ve yeniden yönlendirme yol tabanlı olduğundan bağımsız mikro hizmetler için tüm işlevleri yapılandırabilirsiniz. Bu, uygulama yapılandırmasını basitleştirir, kaynak kullanımını iyileştirir ve genel ve yol tabanlı yeniden yönlendirme dahil yeni yeniden yönlendirme senaryolarını destekler.
 </br>
 
-![Azure Ön Kapı URL Yönlendirme][1]
+![Azure ön kapı URL 'SI yönlendirmesi][1]
 
 ## <a name="redirection-types"></a>Yeniden yönlendirme türleri
-Yeniden yönlendirme türü, istemcilerin yönlendirmenin amacını anlaması için yanıt durum kodunu ayarlar. Aşağıdaki yeniden yönlendirme türleri desteklenir:
+Yeniden yönlendirme türü, istemcilerin yeniden yönlendirmenin amacını anlaması için yanıt durum kodunu ayarlar. Aşağıdaki yeniden yönlendirme türleri desteklenir:
 
-- **301 (Kalıcı olarak taşınır)**: Hedef kaynağa yeni bir kalıcı URI atandığını ve bu kaynağa gelecekteki başvuruların ekteki URL'lerden birini kullanması gerektiğini gösterir. HTTP için HTTPS yeniden yönlendirme için 301 durum kodunu kullanın. 
-- **302 (Bulundu)**: Hedef kaynağın geçici olarak farklı bir URI altında bulunduğunu gösterir. Yeniden yönlendirme zaman zaman değiştirilebileceğinden, istemci gelecekteki istekler için etkili istek URI'yi kullanmaya devam etmeli.
-- **307 (Geçici yönlendirme)**: Hedef kaynağın geçici olarak farklı bir URI altında bulunduğunu ve kullanıcı aracısının, bu URI'ye otomatik yönlendirme gerçekleştirirse istek yöntemini değiştirmemesi gerektiğini gösterir. Yeniden yönlendirme zaman içinde değişebildiği için, istemci gelecekteki istekler için özgün etkili istek URI'yi kullanmaya devam etmeli.
-- **308 (Kalıcı yönlendirme)**: Hedef kaynağa yeni bir kalıcı URI atandığını ve bu kaynağa gelecekteki başvuruların ekteki URL'lerden birini kullanması gerektiğini gösterir. Bağlantı düzenleme özelliklerine sahip istemciler, etkili istek URI'ye yapılan başvuruları mümkün olduğunca sunucu tarafından gönderilen yeni başvurulardan birine veya daha fazlasına otomatik olarak yeniden bağlamalı.
+- **301 (kalıcı olarak taşındı)**: hedef kaynağa yeni BIR kalıcı URI atandığını ve bu kaynağa gelecek tüm başvuruları, iliştirilmiş URI 'lerden birini kullanmak üzere atandığını gösterir. HTTP-HTTPS yönlendirmesi için 301 durum kodu kullanın. 
+- **302 (bulunan)**: hedef kaynağın geçici olarak farklı bir URI altında bulunduğunu gösterir. Yeniden yönlendirme, zaman içinde değiştirilediğinden, istemci gelecekteki istekler için geçerli istek URI 'sini kullanmaya devam etmeyi bir kez daha ertir.
+- **307 (geçici yeniden yönlendirme)**: hedef kaynağın geçici olarak farklı bir URI altında yer aldığını ve bu URI 'ye otomatik yeniden yönlendirme gerçekleştiriyorsa Kullanıcı aracısının istek YÖNTEMINI değiştirmemelidir. Yeniden yönlendirme zaman içinde değişebileceğinizden, istemci, gelecekteki istekler için özgün etkin istek URI 'sini kullanmaya devam etmeyi uygun şekilde gösterir.
+- **308 (kalıcı yeniden yönlendirme)**: hedef kaynağa yeni BIR kalıcı URI atandığını ve bu kaynağa gelecek tüm başvuruları, iliştirilmiş URI 'lerden birini kullanmak üzere atandığını gösterir. Bağlantı düzenlemesi özelliklerine sahip istemciler, etkin istek URI 'sine yapılan başvuruları, sunucu tarafından gönderilen yeni başvuruların bir veya daha fazlasına otomatik olarak yeniden bağlamayı (mümkün olduğunda) sağlar.
 
 ## <a name="redirection-protocol"></a>Yeniden yönlendirme protokolü
-Yeniden yönlendirme için kullanılacak protokolü ayarlayabilirsiniz. Bu, HTTP'yi HTTPS yeniden yönlendirmesine ayarlamak için en yaygın yeniden yönlendirme özelliği nin en yaygın kullanım örneklerinden birine olanak tanır.
+Yönlendirme için kullanılacak protokolü ayarlayabilirsiniz. Bu, yeniden yönlendirme özelliğinin en yaygın kullanım çalışmalarından birine izin verir, yani HTTP olarak HTTPS yönlendirmesi ayarlanır.
 
-- **Yalnızca HTTPS**: Trafiği HTTP'den HTTPS'ye yönlendirmek istiyorsanız protokolü yalnızca HTTPS olarak ayarlayın. Azure Ön Kapı, yeniden yönlendirmeyi her zaman yalnızca HTTPS'ye ayarlamanızı önerir.
-- **Yalnızca HTTP**: Bu, gelen isteği HTTP'ye yönlendirir. Bu değeri yalnızca trafiğinizi şifrelemesiz http tutmak istiyorsanız kullanın.
-- **Maç isteği**: Bu seçenek, gelen istek tarafından kullanılan protokolü korur. Bu nedenle, bir HTTP isteği HTTP olarak kalır ve bir HTTPS isteği https sonrası yeniden yönlendirme kalır.
+- **Yalnızca https**: trafiği http 'den https 'ye yönlendirmek istiyorsanız, protokolü yalnızca https olarak ayarlayın. Azure ön kapısının her zaman yeniden yönlendirmeyi yalnızca HTTPS olarak ayarlamanız önerilir.
+- **Yalnızca http**: Bu, gelen isteği http 'ye yönlendirir. Bu değeri yalnızca, trafik HTTP 'nizi, şifreli olmayan HTTP 'yi tutmak istiyorsanız kullanın.
+- **Eşleştirme isteği**: Bu seçenek, gelen istek tarafından kullanılan protokolü korur. Bu nedenle, HTTP isteği HTTP olarak kalır ve HTTPS isteği HTTPS Post yeniden yönlendirmesi kalır.
 
-## <a name="destination-host"></a>Hedef ana bilgisayar
-Yeniden yönlendirme yapılandırmanın bir parçası olarak, yeniden yönlendirme isteğiiçin ana bilgisayar adını veya etki alanını da değiştirebilirsiniz. Bu alanı, yeniden yönlendirme için URL'deki ana bilgisayar adını değiştirecek veya gelen istekteki ana bilgisayar adını koruyacak şekilde ayarlayabilirsiniz. Bu nedenle, bu alanı kullanarak gönderilen `https://www.contoso.com/*` tüm `https://www.fabrikam.com/*`istekleri yeniden yönlendirebilirsiniz.
+## <a name="destination-host"></a>Hedef konak
+Yeniden yönlendirme yönlendirmesi yapılandırmanın bir parçası olarak, yeniden yönlendirme isteği için ana bilgisayar adı veya etki alanını da değiştirebilirsiniz. Bu alanı, yeniden yönlendirmenin URL 'sindeki ana bilgisayar adını değiştirmek ya da başka bir şekilde gelen istekten ana bilgisayar adını korumak için ayarlayabilirsiniz. Bu nedenle, bu alanı kullanarak üzerinde `https://www.contoso.com/*` gönderilen tüm istekleri öğesine `https://www.fabrikam.com/*`yeniden yönlendirebilirsiniz.
 
 ## <a name="destination-path"></a>Hedef yol
-Yeniden yönlendirmenin bir parçası olarak bir URL'nin yol kesimini değiştirmek istediğiniz durumlar için, bu alanı yeni yol değeriyle ayarlayabilirsiniz. Aksi takdirde, yeniden yönlendirmenin bir parçası olarak yol değerini korumayı seçebilirsiniz. Bu nedenle, bu alanı kullanarak, gönderilen `https://www.contoso.com/\*` tüm `https://www.contoso.com/redirected-site`istekleri ' ye yönlendirebilirsiniz.
+Yeniden yönlendirmenin bir parçası olarak bir URL 'nin yol segmentini değiştirmek istediğiniz durumlarda, bu alanı yeni yol değeri ile ayarlayabilirsiniz. Aksi takdirde, yol değerini yeniden yönlendirmenin bir parçası olarak korumayı seçebilirsiniz. Bu nedenle, bu alanı kullanarak öğesine `https://www.contoso.com/\*` gönderilen tüm istekleri öğesine `https://www.contoso.com/redirected-site`yeniden yönlendirebilirsiniz.
 
-## <a name="query-string-parameters"></a>Sorgu dize parametreleri
-Yeniden yönlendirilen URL'deki sorgu dize parametrelerini de değiştirebilirsiniz. Gelen istek URL'sinden varolan sorgu dizesini değiştirmek için bu alanı 'Değiştir' olarak ayarlayın ve ardından uygun değeri ayarlayın. Aksi takdirde, alanı 'Koru' olarak ayarlayarak özgün sorgu dizeleri kümesini koruyabilirsiniz. Örnek olarak, bu alanı kullanarak, gönderilen `https://www.contoso.com/foo/bar` tüm trafiği `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`. 
+## <a name="query-string-parameters"></a>Sorgu dizesi parametreleri
+Ayrıca, yeniden yönlendirilen URL 'deki sorgu dizesi parametrelerini de değiştirebilirsiniz. Gelen istek URL 'sindeki mevcut Sorgu dizelerini değiştirmek için, bu alanı ' replace ' olarak ayarlayın ve uygun değeri ayarlayın. Aksi halde, alanı ' koru ' olarak ayarlayarak özgün sorgu dizeleri kümesini koruyabilirsiniz. Örnek olarak, bu alanı kullanarak öğesine `https://www.contoso.com/foo/bar` gönderilen tüm trafiği öğesine `https://www.contoso.com/foo/bar?&utm_referrer=https%3A%2F%2Fwww.bing.com%2F`yeniden yönlendirebilirsiniz. 
 
-## <a name="destination-fragment"></a>Hedef parçası
-Hedef parça, URL'nin normalde tarayıcılar tarafından bir sayfadaki belirli bir bölüme inmek için kullanılan '#'dan sonraki bölümüdür. Bu alanı yeniden yönlendirme URL'sine bir parça ekleyecek şekilde ayarlayabilirsiniz.
+## <a name="destination-fragment"></a>Hedef parça
+Hedef parça, genellikle tarayıcılar tarafından bir sayfadaki belirli bir bölüme kara olarak kullanılan ' # ' öğesinden sonra URL 'nin bölümüdür. Bu alanı yeniden yönlendirme URL 'sine bir parça eklemek için ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

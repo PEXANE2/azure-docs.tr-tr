@@ -1,53 +1,53 @@
 ---
-title: Azure İşlevler özel işleyicileri (önizleme)
-description: Azure Fonksiyonlarını herhangi bir dilde veya çalışma zamanı sürümünde kullanmayı öğrenin.
+title: Azure Işlevleri özel işleyiciler (Önizleme)
+description: Herhangi bir dil veya çalışma zamanı sürümü ile Azure Işlevleri 'ni kullanmayı öğrenin.
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479260"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure İşlevler özel işleyicileri (önizleme)
+# <a name="azure-functions-custom-handlers-preview"></a>Azure Işlevleri özel işleyiciler (Önizleme)
 
-Her İşlevler uygulaması, dile özgü bir işleyici tarafından yürütülür. Azure İşlevleri varsayılan olarak birçok [dil işleyicisini](./supported-languages.md) desteklerken, uygulama yürütme ortamı üzerinde ek denetim isteyebileceğiniz durumlar vardır. Özel işleyiciler bu ek denetim verir.
+Her Işlevler uygulaması dile özgü bir işleyici tarafından yürütülür. Azure Işlevleri varsayılan olarak birçok [dil işleyicisini](./supported-languages.md) desteklese de, uygulama yürütme ortamı üzerinde ek denetim isteyebileceğiniz durumlar vardır. Özel işleyiciler size bu ek denetim sağlar.
 
-Özel işleyiciler, İşlevler ana bilgisayardan olay alan hafif web sunucularıdır. HTTP ilkel destekleyen herhangi bir dil özel bir işleyici uygulayabilirsiniz.
+Özel işleyiciler, Işlevler konaktan olayları alan hafif Web sunucularıdır. HTTP temel öğelerini destekleyen herhangi bir dil, özel bir işleyici uygulayabilir.
 
-Özel işleyiciler en iyi istediğiniz durumlar için uygundur:
+Özel işleyiciler şunları yapmak istediğiniz durumlar için idealdir:
 
-- Resmi olarak desteklenen dillerin ötesinde bir dilde İşlevler uygulaması uygulama
-- Varsayılan olarak desteklenmeyen bir dil sürümünde veya çalışma zamanında Bir İşlevler uygulaması uygulama
-- Uygulama yürütme ortamı üzerinde parçalı denetime sahip
+- Resmi olarak desteklenen dillerin ötesinde bir dilde Işlevler uygulaması uygulama
+- Bir dil sürümünde veya çalışma zamanında bir Işlevler uygulamasını varsayılan olarak desteklenmez
+- Uygulama yürütme ortamı üzerinde ayrıntılı denetim sahibi olmak
 
-Özel işleyiciler ile, tüm [tetikleyiciler ve giriş ve çıkış ciltleri](./functions-triggers-bindings.md) [uzantı demetleri](./functions-bindings-register.md)ile desteklenir.
+Özel işleyicilerle, tüm [Tetikleyiciler ve giriş ve çıkış bağlamaları](./functions-triggers-bindings.md) [uzantı paketleri](./functions-bindings-register.md)aracılığıyla desteklenir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Aşağıdaki diyagram, İşlevler ana bilgisayar ile özel işleyici olarak uygulanan bir web sunucusu arasındaki ilişkiyi gösterir.
+Aşağıdaki diyagramda, Işlevler ana bilgisayarı ile özel işleyici olarak uygulanan bir Web sunucusu arasındaki ilişki gösterilmektedir.
 
-![Azure İşlevler özel işleyicisi genel bakış](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Azure Işlevleri özel işleyicisine genel bakış](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- Olaylar, İşlevler ana bilgisayara gönderilen bir isteği tetikler. Olay ya ham bir HTTP yükü taşır (bağlamasız HTTP tetiklenen işlevler için) veya işlev için giriş bağlayıcı verileri tutan bir yük.
-- İşlevler ana bilgisayar daha sonra bir [istek yükü](#request-payload)vererek isteği web sunucusuna iliştirir.
-- Web sunucusu tek tek işlevi yürütür ve Işlevler ana bilgisayara bir [yanıt yükü](#response-payload) döndürür.
-- İşlevler ana bilgisayar yanıtı, yanıtı hedefe bir çıktı bağlama yükü olarak ilişer.
+- Olaylar, Işlevler ana bilgisayarına gönderilen bir isteği tetikler. Olay, ham bir HTTP yükü (bağlama olmayan HTTP ile tetiklenen işlevler için) veya işlev için giriş bağlama verilerini tutan bir yük taşır.
+- Sonra Işlevler, bir [istek yükü](#request-payload)vererek Web sunucusuna istek yükünü barındırır.
+- Web sunucusu bağımsız işlevi yürütür ve Işlevler ana bilgisayarına bir [Yanıt yükü](#response-payload) döndürür.
+- Işlevler, yanıtı hedefe çıkış bağlama yükü olarak barındırır.
 
-Özel işleyici olarak uygulanan bir Azure İşlevleri uygulaması, *ana bilgisayar.json* ve *function.json* dosyalarını birkaç kurala göre yapılandırmalıdır.
+Özel işleyici olarak uygulanan bir Azure Işlevleri uygulamasının, *Host. JSON* ve *function. JSON* dosyalarını birkaç kurallara göre yapılandırması gerekir.
 
 ## <a name="application-structure"></a>Uygulama yapısı
 
-Özel bir işleyici uygulamak için uygulamanız için aşağıdaki yönleri gerekir:
+Özel bir işleyici uygulamak için, uygulamanız için aşağıdaki yönlere ihtiyacınız vardır:
 
-- Uygulamanızın kökünde bir *host.json* dosyası
-- Her işlev için bir *function.json* dosyası (işlev adı ile eşleşen bir klasör içinde)
-- Bir web sunucusu çalıştıran bir komut, komut dosyası veya çalıştırılabilir
+- Uygulamanızın kökündeki bir *Host. JSON* dosyası
+- Her işlev için bir *function. JSON* dosyası (işlev adıyla eşleşen bir klasör içinde)
+- Bir Web sunucusu çalıştıran bir komut, betik veya yürütülebilir dosya
 
-Aşağıdaki diyagram, "sipariş" adlı bir işlev için bu dosyaların dosya sisteminde nasıl göründüğünü gösterir.
+Aşağıdaki diyagramda, bu dosyaların "Order" adlı bir işlevin dosya sistemine nasıl bulunduğu gösterilmektedir.
 
 ```bash
 | /order
@@ -58,9 +58,9 @@ Aşağıdaki diyagram, "sipariş" adlı bir işlev için bu dosyaların dosya si
 
 ### <a name="configuration"></a>Yapılandırma
 
-Uygulama *host.json* dosyası üzerinden yapılandırılır. Bu dosya, HTTP olaylarını işleyebilen bir web sunucusuna işaret ederek isteklerinereye gönderebileceğini Işlevler ana bilgisayara bildirir.
+Uygulama, *Host. JSON* dosyası aracılığıyla yapılandırılır. Bu dosya, Işlevleri HTTP olaylarını işleyebilen bir Web sunucusuna işaret ederek istekleri nereye göndereceğini belirtir.
 
-Özel işleyici, *ana bilgisayar.json* dosyasını `httpWorker` bölüm üzerinden web sunucusunun nasıl çalıştırılalalaaçıklaşdırılabildiğini niçin yapılandırarak tanımlanır.
+Özel bir işleyici, *Host. JSON* dosyası, `httpWorker` bölümünde Web sunucusunun nasıl çalıştırılacağı hakkındaki ayrıntılarla yapılandırılarak tanımlanır.
 
 ```json
 {
@@ -73,9 +73,9 @@ Uygulama *host.json* dosyası üzerinden yapılandırılır. Bu dosya, HTTP olay
 }
 ```
 
-Bölüm, `httpWorker` `defaultExecutablePath`bir hedefe işaret etti. Yürütme hedefi, bir komut, yürütülebilir veya web sunucusunun uygulandığı dosya olabilir.
+`httpWorker` Bölümü tarafından tanımlanan bir hedefe işaret eder `defaultExecutablePath`. Yürütme hedefi, Web sunucusunun uygulandığı bir komut, yürütülebilir dosya ya da dosya olabilir.
 
-Komut dosyası uygulamaları `defaultExecutablePath` için komut dosyası dilinin `defaultWorkerPath` çalışma zamanını ve komut dosyası dosyası konumunu işaret eder. Aşağıdaki örnek, Düğüm.js'deki bir JavaScript uygulamasının özel işleyici olarak nasıl yapılandırıldığı gösterilmektedir.
+Betikleştirilmiş uygulamalar için `defaultExecutablePath` , komut dosyası dilinin çalışma zamanını işaret eder `defaultWorkerPath` ve betik dosyası konumunu işaret eder. Aşağıdaki örnek, Node. js içindeki bir JavaScript uygulamasının özel bir işleyici olarak nasıl yapılandırıldığını gösterir.
 
 ```json
 {
@@ -89,7 +89,7 @@ Komut dosyası uygulamaları `defaultExecutablePath` için komut dosyası dilini
 }
 ```
 
-Ayrıca diziyi kullanarak `arguments` bağımsız değişkenleri geçirebilirsiniz:
+Ayrıca, `arguments` diziyi kullanarak bağımsız değişkenleri geçirebilirsiniz:
 
 ```json
 {
@@ -104,32 +104,32 @@ Ayrıca diziyi kullanarak `arguments` bağımsız değişkenleri geçirebilirsin
 }
 ```
 
-Bağımsız değişkenler birçok hata ayıklama kurulumları için gereklidir. Daha fazla ayrıntı için [Hata Ayıklama](#debugging) bölümüne bakın.
+Birçok hata ayıklama kurulumu için bağımsız değişkenler gereklidir. Daha fazla ayrıntı için [hata ayıklama](#debugging) bölümüne bakın.
 
 > [!NOTE]
-> *Host.json* dosyası, çalışan web sunucusuyla dizin yapısında aynı düzeyde olmalıdır. Bazı diller ve araç zincirleri varsayılan olarak bu dosyayı uygulama köküne yerleştirmeyebilir.
+> *Host. JSON* dosyası, çalışan Web sunucusuyla dizin yapısında aynı düzeyde olmalıdır. Bazı diller ve araç zincirler, bu dosyayı varsayılan olarak uygulama köküne yerleştirmeyebilir.
 
 #### <a name="bindings-support"></a>Bağlama desteği
 
-Giriş ve çıktı bağlamaları ile birlikte standart *tetikleyiciler, ana bilgisayar.json* dosyanızda [uzantı paketlerine](./functions-bindings-register.md) başvurarak kullanılabilir.
+Giriş ve çıkış bağlamalarıyla birlikte standart Tetikleyiciler, *Host. JSON* dosyanızdaki [uzantı](./functions-bindings-register.md) paketleriyle bağlantı yoluyla kullanılabilir.
 
 ### <a name="function-metadata"></a>İşlev meta verileri
 
-Özel bir işleyiciyle kullanıldığında, *function.json* içeriği, başka bir bağlam altında bir işlevi nasıl tanımlayacağınız dan farklı değildir. Tek *gereksinim, function.json* dosyalarının işlev adı ile eşleşen bir klasörde olması gerektiğidir.
+Özel bir işleyici ile kullanıldığında, *function. JSON* içerikleri başka bir bağlam altında bir işlevi nasıl tanımlayacağınızdan farklı değildir. Tek gereksinim, *function. JSON* dosyalarının işlev adıyla eşleşecek şekilde adında bir klasörde olması gerekir.
 
-### <a name="request-payload"></a>Taşıma isteği
+### <a name="request-payload"></a>İstek yükü
 
-Saf HTTP işlevleri için istek yükü ham HTTP istek yüküdür. Saf HTTP işlevleri, giriş veya çıkış bağlayıcısı olmayan ve BIR HTTP yanıtını döndüren işlevler olarak tanımlanır.
+Saf HTTP işlevlerine yönelik istek yükü ham HTTP istek yükleridir. Saf HTTP işlevleri, giriş veya çıkış bağlamaları olmayan, bir HTTP yanıtı döndüren işlevler olarak tanımlanır.
 
-Giriş, çıktı bağlamaları içeren veya HTTP dışındaki bir olay kaynağı üzerinden tetiklenen başka bir işlev türü özel istek yüküne sahiptir.
+Giriş, çıkış bağlamaları veya HTTP dışında bir olay kaynağı aracılığıyla tetiklenen diğer işlev türleri özel bir istek yüküne sahiptir.
 
-Aşağıdaki kod örnek istek yükünü temsil eder. Yük iki üyesi olan bir JSON `Data` `Metadata`yapısı içerir: ve .
+Aşağıdaki kod bir örnek istek yükünü temsil eder. Yük, iki üyeye sahip bir JSON yapısı içerir: `Data` ve `Metadata`.
 
-Üye, `Data` *function.json* dosyasındaki bağlama dizisinde tanımlandığı gibi giriş ve tetikleyici adlarla eşleşen anahtarlar içerir.
+Üye `Data` , *function. JSON* dosyasındaki Bindings dizisinde tanımlanan giriş ve tetikleyici adlarıyla eşleşen anahtarlar içerir.
 
 `Metadata` Üye, [olay kaynağından oluşturulan meta verileri](./functions-bindings-expressions-patterns.md#trigger-metadata)içerir.
 
-Aşağıdaki *function.json* dosyasında tanımlanan bağlamalar göz önüne alındığında:
+Aşağıdaki *function. JSON* dosyasında tanımlanan bağlamalar verildi:
 
 ```json
 {
@@ -177,28 +177,28 @@ Bu örneğe benzer bir istek yükü döndürülür:
 
 ### <a name="response-payload"></a>Yanıt yükü
 
-Kural kuralına göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirilir. Desteklenen tuşlar şunlardır:
+Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirilir. Desteklenen anahtarlar şunlardır:
 
 | <nobr>Yük anahtarı</nobr>   | Veri türü | Açıklamalar                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | `bindings` *Array.json* dosyası tarafından tanımlanan yanıt değerlerini tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir blob depolama çıkışı `Outputs` bağlama ile `blob`yapılandırılırsa, blob değerine ayarlanmış bir anahtar içerir. |
-| `Logs`        | array     | İletiler, İşlevler çağırma günlüklerinde görünür.<br /><br />Azure'da çalışırken, iletiler Uygulama Öngörüleri'nde görünür. |
-| `ReturnValue` | string    | Bir çıktı *function.json* dosyasındaki `$return` gibi yapılandırıldığında yanıt vermek için kullanılır. |
+| `Outputs`     | JSON      | Response değerlerini, `bindings` Array tarafından *function. JSON* dosyası tarafından tanımlanan şekilde tutar.<br /><br />Örneğin, bir işlev "blob" adlı bir BLOB depolama çıkış bağlaması ile yapılandırıldıysa, blob 'un değerine ayarlanan `Outputs` adlı `blob`bir anahtar içerir. |
+| `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
+| `ReturnValue` | string    | Bir çıktı, `$return` *function. JSON* dosyasında olarak yapılandırıldığında bir yanıt sağlamak için kullanılır. |
 
-Örnek [yük için örneğe](#bindings-implementation)bakın.
+[Örnek yük için örneğe](#bindings-implementation)bakın.
 
 ## <a name="examples"></a>Örnekler
 
-Özel işleyiciler, HTTP olaylarını destekleyen herhangi bir dilde uygulanabilir. Azure İşlevleri [JavaScript ve Node.js'i tam olarak desteklerken,](./functions-reference-node.md)aşağıdaki örnekler, öğretim amacıyla Düğüm.js'de JavaScript'i kullanarak özel bir işleyicinin nasıl uygulanacağını gösterir.
+Özel işleyiciler, HTTP olaylarını destekleyen herhangi bir dilde uygulanabilir. Azure Işlevleri [JavaScript ve Node. js ' yi tam olarak desteklese](./functions-reference-node.md)de aşağıdaki örneklerde, yöntemi için Node. js ' de JavaScript kullanılarak özel işleyicinin nasıl uygulanacağı gösterilmektedir.
 
 > [!TIP]
-> Diğer dillerde özel bir işleyicinin nasıl uygulanacağını öğrenmek için bir rehber olmakla birlikte, burada gösterilen Düğüm.js tabanlı örnekler, Bir Işlevler uygulamasını Node.js'nin desteklenmeyen bir sürümünde çalıştırmak isterseniz de yararlı olabilir.
+> Diğer dillerde özel bir işleyicinin nasıl uygulanacağını öğrenirken, burada gösterilen Node. js tabanlı örnekler, Node. js ' nin desteklenmeyen bir sürümünde bir Işlevler uygulamasını çalıştırmak istediğinizde de yararlı olabilir.
 
-## <a name="http-only-function"></a>YALNıZCA HTTP işlevi
+## <a name="http-only-function"></a>Yalnızca HTTP işlevi
 
-Aşağıdaki örnek, ek bağlama veya çıktı olmadan HTTP tarafından tetiklenen bir işlevin nasıl yapılandırılabildiğini gösterir. Bu örnekte `http` uygulanan senaryoda a `GET` veya `POST` .
+Aşağıdaki örnek, HTTP ile tetiklenen bir işlevin ek bağlama veya çıkış olmadan nasıl yapılandırılacağını gösterir. Bu örnekte uygulanan senaryo, `http` `GET` veya `POST` kabul eden adlı bir işlevi sunar.
 
-Aşağıdaki snippet, işleve istek bir istek nasıl oluşur gösterir.
+Aşağıdaki kod parçacığı, işleve yapılan bir isteğin nasıl oluştuğunu temsil eder.
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Uygulama
 
-*http*adlı bir klasörde, *function.json* dosyası HTTP tarafından tetiklenen işlevi yapılandırır.
+*Http*adlı bir klasörde, *function. JSON* dosyası http ile tetiklenen işlevi yapılandırır.
 
 ```json
 {
@@ -233,9 +233,9 @@ content-type: application/json
 }
 ```
 
-İşlev hem de `GET` `POST` istekleri kabul etmek için yapılandırılır ve `res`sonuç değeri adlı bir bağımsız değişken aracılığıyla sağlanır.
+İşlevi hem hem de `GET` `POST` isteklerini kabul edecek şekilde yapılandırılmıştır ve sonuç değeri adlı `res`bir bağımsız değişken aracılığıyla sağlanır.
 
-Uygulamanın *kökünde, host.json* dosyası Node.js'i çalıştıracak ve `server.js` dosyayı işaret edecek şekilde yapılandırılır.
+Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde yapılandırılır ve `server.js` dosyayı işaret.
 
 ```json
 {
@@ -249,7 +249,7 @@ Uygulamanın *kökünde, host.json* dosyası Node.js'i çalıştıracak ve `serv
 }
 ```
 
-Dosya *server.js* dosyası bir web sunucusu ve HTTP işlevini uygular.
+File *Server. js* dosyası bir Web sunucusu ve http işlevi uygular.
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-Bu örnekte, Express, HTTP olaylarını işlemek için bir web sunucusu oluşturmak `FUNCTIONS_HTTPWORKER_PORT`için kullanılır ve istekleri .
+Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT`.
 
-İşlev. `/hello` `GET`istekleri basit bir JSON nesnesi `POST` döndürülerek işlenir ve `req.body`istekler üzerinden istek gövdesine erişebilir.
+İşlevi, yolunda tanımlanmıştır `/hello`. `GET`istekler basit bir JSON nesnesi döndürerek işlenir ve `POST` istekler aracılığıyla `req.body`istek gövdesine erişimi vardır.
 
-Burada sipariş işlevi için `/hello` rota `/api/hello` ve Işlevler ana bilgisayar özel işleyici için istek proxy çünkü değil.
+Burada `/hello` Order işlevinin yolu, işlevler ana bilgisayarı özel işleyiciye `/api/hello` isteği proxy olarak oluşturduğundan değildir.
 
 >[!NOTE]
->İşlev `FUNCTIONS_HTTPWORKER_PORT` aramak için kullanılan kamu bakan bağlantı noktası değildir. Bu bağlantı noktası, özel işleyiciyi çağırmak için İşderler ana bilgisayar tarafından kullanılır.
+>, `FUNCTIONS_HTTPWORKER_PORT` İşlevi çağırmak için kullanılan genel kullanıma yönelik bağlantı noktasıdır. Bu bağlantı noktası, Işlevler ana bilgisayarı tarafından özel işleyiciyi çağırmak için kullanılır.
 
-## <a name="function-with-bindings"></a>Bağlamalı fonksiyon
+## <a name="function-with-bindings"></a>Bağlamalarla işlev
 
-Bu örnekte uygulanan senaryo, ürün `order` siparişini `POST` temsil eden bir yükü olan bir işi kabul eden adlı bir işlev özelliğine sahiptir. Bir sipariş işleve nakledilirken, Bir Sıra Depolama iletisi oluşturulur ve bir HTTP yanıtı döndürülür.
+Bu örnekte uygulanan senaryo, bir ürün sırasını temsil eden `order` bir `POST` yük ile birlikte kabul eden adlı bir işlevi sunar. İşleve bir sipariş gönderildiğinde, bir kuyruk depolama iletisi oluşturulur ve bir HTTP yanıtı döndürülür.
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>Uygulama
 
-*Sıra*adlı bir klasörde, *function.json* dosyası HTTP tarafından tetiklenen işlevi yapılandırır.
+*Order*adlı bir klasörde, *function. JSON* dosyası http ile tetiklenen işlevi yapılandırır.
 
 ```json
 {
@@ -331,9 +331,9 @@ content-type: application/json
 
 ```
 
-Bu işlev, bir [HTTP yanıtı](./functions-bindings-http-webhook-output.md) döndüren ve Bir [Sıra depolama](./functions-bindings-storage-queue-output.md) iletisi çıktısı bir HTTP [tetiklenen işlev](./functions-bindings-http-webhook-trigger.md) olarak tanımlanır.
+Bu işlev, [http yanıtı](./functions-bindings-http-webhook-output.md) döndüren ve [kuyruk depolama](./functions-bindings-storage-queue-output.md) iletisini veren bir [http tetiklenen işlev](./functions-bindings-http-webhook-trigger.md) olarak tanımlanır.
 
-Uygulamanın *kökünde, host.json* dosyası Node.js'i çalıştıracak ve `server.js` dosyayı işaret edecek şekilde yapılandırılır.
+Uygulamanın kökünde, *Host. JSON* dosyası Node. js çalıştıracak şekilde yapılandırılır ve `server.js` dosyayı işaret.
 
 ```json
 {
@@ -347,7 +347,7 @@ Uygulamanın *kökünde, host.json* dosyası Node.js'i çalıştıracak ve `serv
 }
 ```
 
-Dosya *server.js* dosyası bir web sunucusu ve HTTP işlevini uygular.
+File *Server. js* dosyası bir Web sunucusu ve http işlevi uygular.
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-Bu örnekte, Express, HTTP olaylarını işlemek için bir web sunucusu oluşturmak `FUNCTIONS_HTTPWORKER_PORT`için kullanılır ve istekleri .
+Bu örnekte, Express HTTP olaylarını işlemek üzere bir Web sunucusu oluşturmak için kullanılır ve aracılığıyla istekleri dinlemek üzere ayarlanır `FUNCTIONS_HTTPWORKER_PORT`.
 
-İşlev. `/order`  Burada sipariş işlevi için `/order` rota `/api/order` ve Işlevler ana bilgisayar özel işleyici için istek proxy çünkü değil.
+İşlevi, yolunda tanımlanmıştır `/order` .  Burada `/order` Order işlevinin yolu, işlevler ana bilgisayarı özel işleyiciye `/api/order` isteği proxy olarak oluşturduğundan değildir.
 
-İstekler bu işleve gönderildikçe, `POST` veriler birkaç nokta yla açığa alınır:
+Bu `POST` işleve istekler gönderildiğinde, veriler birkaç noktayla gösterilir:
 
-- İstek gövdesi,`req.body`
-- İşlev için gönderilen veriler,`req.body.Data.req.Body`
+- İstek gövdesi ile kullanılabilir`req.body`
+- İşleve gönderilen veriler ile kullanılabilir`req.body.Data.req.Body`
 
-İşlevin yanıtı, üyenin, `Outputs` anahtarların *function.json* dosyasında tanımlandığı şekilde çıktılarla eşleştiği bir JSON değeri tuttuğu bir anahtar/değer çiftine biçimlendirilir.
+İşlevin yanıtı, `Outputs` üyenin *function. JSON* dosyasında tanımlanan ÇıKıŞLARLA eşleştiği bir JSON değeri tutulduğu bir anahtar/değer çiftine biçimlendirilir.
 
-İstekten `message` gelen iletiye ve `res` beklenen HTTP yanıtına eşit ayaryaparak, bu işlev Sıra Depolama'ya bir ileti verir ve bir HTTP yanıtı döndürür.
+Bu işlev `message` , istekten gelen iletiye ve `res` beklenen HTTP yanıtına eşit olarak ayarlanarak bir ILETI verir ve bir http yanıtı döndürür.
 
 ## <a name="debugging"></a>Hata Ayıklama
 
-İşlevler özel işleyici uygulamanızı hata ayıklamak için, hata ayıklamayı etkinleştirmek için dile ve çalışma süresine uygun bağımsız değişkenler eklemeniz gerekir.
+Işlevlerinizin özel işleyici uygulamasında hata ayıklaması yapmak için, hata ayıklamayı etkinleştirmek üzere dile ve çalışma zamanına uygun bağımsız değişkenler eklemeniz gerekir.
 
-Örneğin, bir Düğüm.js uygulamasını hata ayıklamak `--inspect` için, bayrak ana *bilgisayar.json* dosyasında bağımsız değişken olarak geçirilir.
+Örneğin, bir Node. js uygulamasında hata ayıklamak için, `--inspect` bayrak *Host. JSON* dosyasına bir bağımsız değişken olarak geçirilir.
 
 ```json
 {
@@ -412,21 +412,21 @@ Bu örnekte, Express, HTTP olaylarını işlemek için bir web sunucusu oluştur
 ```
 
 > [!NOTE]
-> Hata ayıklama yapılandırması ana *bilgisayar.json* dosyanızın bir parçasıdır, bu da üretime dağıtmadan önce bazı bağımsız değişkenleri kaldırmanız gerekebileceği anlamına gelir.
+> Hata ayıklama yapılandırması *Host. JSON* dosyanızın bir parçasıdır. Bu, üretime dağıtım yapmadan önce bazı bağımsız değişkenleri kaldırmanız gerekebilecek anlamına gelir.
 
-Bu yapılandırma ile, aşağıdaki komutu kullanarak İşlev'in ana bilgisayar işlemini başlatabilirsiniz:
+Bu yapılandırmayla, aşağıdaki komutu kullanarak Işlevin konak işlemini başlatabilirsiniz:
 
 ```bash
 func host start
 ```
 
-İşlem başlatıldıktan sonra hata ayıklama ve isabet kesme noktaları ekleyebilirsiniz.
+İşlem başlatıldıktan sonra, bir hata ayıklayıcı ve isabet kesme noktaları ekleyebilirsiniz.
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-Aşağıdaki örnek, uygulamanızı Visual Studio Code hata ayıklayıcısına bağlamak için *launch.json* dosyanızı nasıl ayarlayabileceğinizi gösteren örnek bir yapılandırmadır.
+Aşağıdaki örnek, uygulamanızı Visual Studio Code hata ayıklayıcıya bağlamak için *Launch. JSON* dosyanızı nasıl ayarlayabileceğinizi gösteren örnek bir yapılandırmadır.
 
-Bu örnek Düğüm.js içindir, bu nedenle bu örneği diğer diller veya çalışma saatleri için değiştirmeniz gerekebilir.
+Bu örnek Node. js içindir, bu nedenle diğer diller veya çalışma zamanları için bu örneği değiştirmeniz gerekebilir.
 
 ```json
 {
@@ -443,15 +443,15 @@ Bu örnek Düğüm.js içindir, bu nedenle bu örneği diğer diller veya çalı
 }
 ```
 
-## <a name="deploying"></a>Dağıtma
+## <a name="deploying"></a>Dağıtılmasını
 
-Özel işleyici, neredeyse her Azure İşlevbarındırma seçeneğine dağıtılabilir [(kısıtlamalara](#restrictions)bakın). İşleyiciniz özel bağımlılıklar gerektiriyorsa (dil çalışma zamanı gibi), özel bir [kapsayıcı](./functions-create-function-linux-custom-image.md)kullanmanız gerekebilir.
+Özel bir işleyici, neredeyse her Azure Işlevleri barındırma seçeneği (bkz. [kısıtlamalar](#restrictions)) için dağıtılabilir. İşleyiciniz özel bağımlılıklar (örneğin, dil çalışma zamanı) gerektiriyorsa, [özel bir kapsayıcı](./functions-create-function-linux-custom-image.md)kullanmanız gerekebilir.
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
-- Özel işleyiciler Linux tüketim planlarında desteklenmez.
-- Web sunucusunun 60 saniye içinde başlaması gerekiyor.
+- Linux tüketim planlarında özel işleyiciler desteklenmez.
+- Web sunucusunun 60 saniye içinde başlaması gerekir.
 
 ## <a name="samples"></a>Örnekler
 
-Çeşitli dillerde işlevlerin nasıl uygulanacağı yla ilgili örnekler için [özel işleyici örnekleri GitHub repo'ya](https://github.com/Azure-Samples/functions-custom-handlers) bakın.
+Çeşitli farklı dillerde işlevlerin nasıl uygulanacağı hakkında örnekler için [GitHub deposunun özel işleyici örneklerine](https://github.com/Azure-Samples/functions-custom-handlers) bakın.

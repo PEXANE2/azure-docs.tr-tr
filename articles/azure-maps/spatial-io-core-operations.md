@@ -1,6 +1,6 @@
 ---
-title: Çekirdek IO operasyonları | Microsoft Azure Haritaları
-description: Uzamsal IO modülünden çekirdek kitaplıkları kullanarak XML'i verimli bir şekilde nasıl okuyup yazarak verileri sınırlandırmayı öğrenin.
+title: Çekirdek GÇ işlemleri | Microsoft Azure haritaları
+description: Uzamsal GÇ modülündeki temel kitaplıkları kullanarak XML ve sınırlandırılmış verileri verimli bir şekilde okumayı ve yazmayı öğrenin.
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,54 +9,54 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371452"
 ---
-# <a name="core-io-operations"></a>Çekirdek IO operasyonları
+# <a name="core-io-operations"></a>Çekirdek GÇ işlemleri
 
-Uzamsal veri dosyalarını okumak için araçlar sağlamanın yanı sıra, uzamsal IO modülü XML okumak ve yazmak için temel temel kitaplıkları ortaya çıkarır ve verileri hızlı ve verimli bir şekilde sınırlandırır.
+Uzamsal GÇ modülü, uzamsal veri dosyalarını okumak için Araçlar sağlamaya ek olarak, temel temel kitaplıkların XML ve sınırlandırılmış verileri hızlı ve verimli bir şekilde okuyup yazabilmesini sağlar.
 
-Ad `atlas.io.core` alanı, CSV ve XML verilerini hızla okuyup yazabilen iki alt düzey sınıf içerir. Bu temel sınıflar, Uzamsal IO modülündeki uzamsal veri okuyucularına ve yazarlara güç sağlar. CSV veya XML dosyaları için ek okuma ve yazma desteği eklemek için bunları kullanmaktan çekinmeyin.
+Ad `atlas.io.core` alanı, CSV ve XML verilerini hızlı bir şekilde okuyabilen ve yazabilmesi için iki alt düzey sınıf içerir. Bu temel sınıflar, uzamsal GÇ modülündeki uzamsal veri okuyucularını ve yazarları güçlendirin. Bunları kullanarak CSV veya XML dosyaları için ek okuma ve yazma desteği ekleyebilirsiniz.
  
-## <a name="read-delimited-files"></a>Sınırlı dosyaları okuma
+## <a name="read-delimited-files"></a>Ayrılmış dosyaları oku
 
-Sınıf, `atlas.io.core.CsvReader` sınırlı veri kümeleri içeren dizeleri okur. Bu sınıf verileri okumak için iki yöntem sağlar:
+Sınıfı `atlas.io.core.CsvReader` , sınırlandırılmış veri kümeleri içeren dizeleri okur. Bu sınıf, verileri okumak için iki yöntem sunar:
 
-- İşlev `read` tam veri kümesini okur ve sınırlı veri kümesinin tüm hücrelerini temsil eden iki boyutlu bir dize dizisini döndürür.
-- İşlev, `getNextRow` sınırlı bir veri kümesindeki her metin satırını okur ve bu veri kümesi satırındaki tüm hücreleri temsil eden bir dize dizisini döndürür. Kullanıcı satırı işleyebilir ve bir sonraki satırı işlemeden önce bu satırdan herhangi bir gereksiz bellek atabilir. Yani, fonksiyon daha fazla bellek verimlidir.
+- `read` İşlevi, tam veri kümesini okur ve ayrılmış veri kümesinin tüm hücrelerini temsil eden iki boyutlu bir dize dizisi döndürür.
+- İşlevi `getNextRow` , sınırlandırılmış bir veri kümesindeki her metin satırını okur ve bu veri kümesi satırındaki tüm hücreleri temsil eden bir dize dizisi döndürür. Kullanıcı, sonraki satırı işlemeden önce satırı işleyebilir ve bu satırdan gereksiz belleği atabilirsiniz. Bu nedenle, işlev daha fazla bellek verimlidir.
 
-Varsayılan olarak, okuyucu delimiter olarak virgül karakterini kullanır. Ancak, sınırlayıcı herhangi bir tek karakter veya `'auto'`ayarlanabilir. `'auto'`Ayarlandığında, okuyucu dizedeki ilk metin satırını analiz edecektir. Daha sonra, delimiter olarak kullanmak için aşağıdaki tablodan en yaygın karakteri seçecektir.
+Varsayılan olarak, okuyucu ayırıcı olarak virgül karakterini kullanır. Ancak, sınırlayıcı herhangi bir tek karakter olarak değiştirilebilir veya olarak `'auto'`ayarlanabilir. Olarak `'auto'`ayarlandığında, okuyucu dizedeki metnin ilk satırını analiz eder. Daha sonra, sınırlayıcı olarak kullanmak için aşağıdaki tablodan en sık kullanılan karakteri seçer.
 
 | | |
 | :-- | :-- |
 | Virgül | `,` |
 | Tab | `\t` |
-| Boru | `|` |
+| Kapatıldığı | `|` |
 
-Bu okuyucu, sınırlayıcı karakterini içeren hücreleri işlemek için kullanılan metin niteleyicilerini de destekler. Teklif (`'"'`) karakteri varsayılan metin niteleyicisidir, ancak herhangi bir tek karakterle değiştirilebilir.
+Bu okuyucu Ayrıca sınırlayıcı karakteri içeren hücreleri işlemek için kullanılan metin niteleyicilerini destekler. Quote (`'"'`) karakteri varsayılan metin niteleyicidir, ancak herhangi bir tek karakterle değiştirilebilir.
 
-## <a name="write-delimited-files"></a>Sınırlı dosyaları yazma
+## <a name="write-delimited-files"></a>Ayrılmış dosyaları yaz
 
-Bir `atlas.io.core.CsvWriter` dizi nesne sınırlı bir dize olarak yazar. Herhangi bir tek karakter bir sınırlayıcı veya metin niteleyici olarak kullanılabilir. Varsayılan delimiter virgül`','`( ) ve varsayılan metin`'"'`niteleyici teklif ( ) karakteridir.
+Bir `atlas.io.core.CsvWriter` nesne dizisini ayrılmış bir dize olarak yazar. Herhangi bir tek karakter, sınırlayıcı veya metin niteleyicisi olarak kullanılabilir. Varsayılan sınırlayıcı virgül (`','`), varsayılan metin niteleyicisi ise quote (`'"'`) karakteridir.
 
 Bu sınıfı kullanmak için aşağıdaki adımları izleyin:
 
-- Sınıfın bir örneğini oluşturun ve isteğe bağlı olarak özel bir sınırlayıcı veya metin niteleyici ayarlayın.
-- `write` İşlev veya `writeRow` işlevi kullanarak sınıfa veri yazın. `write` İşlev için, birden çok satırı ve hücreyi temsil eden iki boyutlu bir nesne dizisini geçirin. `writeRow` İşlevi kullanmak için, birden çok sütunlu bir veri satırını temsil eden bir dizi nesne geçirin.
-- Sınırlı `toString` dize almak için işlevi çağırın. 
-- İsteğe bağlı `clear` olarak, yazarı yeniden kullanılabilir hale getirmek ve kaynak `delete` tahsisini azaltmak için yöntemi arayın veya yazar örneğini elden çıkarmak için yöntemi arayın.
+- Sınıfının bir örneğini oluşturun ve isteğe bağlı olarak özel bir sınırlayıcı veya metin niteleyicisi ayarlayın.
+- `write` İşlevini veya `writeRow` işlevini kullanarak sınıfa veri yazma. `write` İşlevi için birden çok satır ve hücreyi temsil eden iki boyutlu bir nesne dizisi geçirin. `writeRow` İşlevini kullanmak için, birden çok sütunlu bir veri satırını temsil eden bir nesne dizisi geçirin.
+- Ayrılmış dizeyi `toString` almak için işlevi çağırın. 
+- İsteğe bağlı olarak, `clear` yazıcıyı yeniden kullanılabilir hale getirmek ve kaynak ayırmayı azaltmak için yöntemini çağırın veya yazıcı örneğini `delete` atmak için yöntemini çağırın.
 
 > [!Note]
-> Yazılan sütun sayısı, yazara aktarılan verilerin ilk satırındaki hücre sayısıyla sınırlandırılacaktır.
+> Yazılan sütunların sayısı, yazıcıya geçirilen verilerin ilk satırındaki hücre sayısıyla sınırlandıralınacaktır.
 
-## <a name="read-xml-files"></a>XML dosyalarını okuma
+## <a name="read-xml-files"></a>XML dosyalarını oku
 
-Sınıf, `atlas.io.core.SimpleXmlReader` XML dosyalarını ayrıştırmada .'dan daha `DOMParser`hızlıdır. Ancak, `atlas.io.core.SimpleXmlReader` sınıf XML dosyalarının iyi biçimlendirilmiş olmasını gerektirir. İyi biçimlendirilmemiş XML dosyaları (örneğin kapanış etiketlerinin eksik olması) büyük olasılıkla bir hataya neden olur.
+Sınıfı `atlas.io.core.SimpleXmlReader` , XML dosyaları ayrıştırılırken daha hızlıdır `DOMParser`. Ancak, `atlas.io.core.SimpleXmlReader` sınıfı XML dosyalarının düzgün biçimlendirilmiş olmasını gerektirir. Düzgün biçimlendirilmeyen XML dosyaları, örneğin kapanış etiketleri eksik olabilir.
 
-Aşağıdaki kod, bir XML `SimpleXmlReader` dizesini Bir JSON nesnesine ayrıştmak ve istenilen biçimde seri hale getirmek için sınıfın nasıl kullanılacağını gösterir.
+Aşağıdaki kod, `SimpleXmlReader` SıNıFıNıN bir JSON NESNESINE bir XML dizesini ayrıştırmak ve istenen biçimde serileştirmek için nasıl kullanılacağını gösterir.
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -78,11 +78,11 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 }
 ```
 
-## <a name="write-xml-files"></a>XML dosyalarını yazma
+## <a name="write-xml-files"></a>XML dosyalarını yaz
 
-Sınıf `atlas.io.core.SimpleXmlWriter` iyi biçimlendirilmiş XML'i bellek etkin bir şekilde yazar.
+`atlas.io.core.SimpleXmlWriter` Sınıfı düzgün biçimlendirilmiş XML 'i bellek verimli bir şekilde yazar.
 
-Aşağıdaki kod, iyi biçimlendirilmiş `SimpleXmlWriter` bir XML dizesi oluşturmak için sınıfın nasıl kullanılacağını gösterir.
+Aşağıdaki kod, `SimpleXmlWriter` sınıfının iyi BIÇIMLENDIRILMIŞ bir XML dizesi oluşturmak için nasıl kullanılacağını gösterir.
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -134,7 +134,7 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [CsvReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvreader)
 
 > [!div class="nextstepaction"]
-> [CsvYazar](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
+> [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
 > [!div class="nextstepaction"]
 > [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)

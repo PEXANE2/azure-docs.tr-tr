@@ -1,6 +1,6 @@
 ---
-title: Geçiş verilerini isteme | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar Mobilite Hizmeti'ni kullanarak toplu taşıma verilerini nasıl isteyeceğinizi öğreneceksiniz.
+title: İstek aktarma verileri | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Mobility hizmetini kullanarak genel aktarım verileri isteme hakkında bilgi edineceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 09/06/2019
@@ -10,45 +10,45 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: f60b66790342874620971c8f15a1e8ace9a3c7cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335464"
 ---
-# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Haritalar Mobilite Hizmeti'ni kullanarak toplu taşıma verilerini isteyin 
+# <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak genel aktarım verileri isteme 
 
-Bu makalede, toplu taşıma verileri istemek için Azure Haritalar [Mobilite Hizmeti'ni](https://aka.ms/AzureMapsMobilityService) nasıl kullanacağınızı gösterilmektedir. Geçiş verileri transit durakları, rota bilgilerini ve seyahat süresi tahminlerini içerir.
+Bu makalede, Azure Maps [Mobility hizmetini](https://aka.ms/AzureMapsMobilityService) kullanarak genel aktarım verileri isteme hakkında yönergeler verilmektedir. Transit verileri aktarım duraklarını, rota bilgilerini ve seyahat süresi tahminleri içerir.
 
-Bu makalede öğreneceksiniz, nasıl:
+Bu makalede şunları öğreneceksiniz:
 
-* [Get Metro Area API'yi](https://aka.ms/AzureMapsMobilityMetro) kullanarak metro alanı kimliği alın
-* Yakındaki Transit hizmeti [ne](https://aka.ms/AzureMapsMobilityNearbyTransit) zaman dursa onu talep edin.
-* Toplu taşımayı kullanarak bir rota planlamak için [Transit Rotalar API'sini sorgula.](https://aka.ms/AzureMapsMobilityTransitRoute)
-* Transit Güzergah ı API'sini kullanarak rota için geçiş rotası [geometrisi](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)ve ayrıntılı zamanlama isteyin.
+* [Metro alanını al API](https://aka.ms/AzureMapsMobilityMetro) 'sini kullanarak bir metro alanı kimliği alın
+* Yakın transit isteği [Al](https://aka.ms/AzureMapsMobilityNearbyTransit) hizmetini kullanarak yakında geçiş durduruluyor.
+* Ortak aktarım kullanarak bir rota planlamak için [Get transit yollarını sorgula API](https://aka.ms/AzureMapsMobilityTransitRoute) .
+* [Get transit programı API](https://aka.ms/https://azure.microsoft.com/services/azure-maps/)'sini kullanarak rota için geçiş rotası geometrisi ve ayrıntılı zamanlama isteyin.
 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure Haritalar toplu taşıma API'lerine herhangi bir arama yapmak için öncelikle bir Azure Haritalar hesabınız ve abonelik anahtarınız olması gerekir. Daha fazla bilgi için, Azure Haritalar hesabı oluşturmak için [hesap oluştur'daki](quick-demo-map-app.md#create-an-account-with-azure-maps) yönergeleri izleyin. Hesabınızın birincil anahtarını almak için [birincil anahtarı al](quick-demo-map-app.md#get-the-primary-key-for-your-account) adımlarını izleyin. Azure Haritalar'da kimlik doğrulama hakkında daha fazla bilgi için Azure [Haritalar'da kimlik doğrulamayı yönet'e](./how-to-manage-authentication.md)bakın.
+Azure Maps ortak Aktarma API 'Lerine herhangi bir çağrı yapmak için önce bir Azure Maps hesabına ve bir abonelik anahtarına sahip olmanız gerekir. Daha fazla bilgi için, [Hesap oluşturma](quick-demo-map-app.md#create-an-account-with-azure-maps) ' daki yönergeleri Izleyerek Azure Maps hesabı oluşturun. Hesabınız için birincil anahtarı almak üzere [birincil anahtar al](quick-demo-map-app.md#get-the-primary-key-for-your-account) bölümündeki adımları izleyin. Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
 
-Bu makalede, REST aramaları oluşturmak için [Postacı uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
+Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https://www.getpostman.com/apps) kullanır. Tercih ettiğiniz herhangi bir API geliştirme ortamını kullanabilirsiniz.
 
 
-## <a name="get-a-metro-area-id"></a>Metro alanı kimliği alın
+## <a name="get-a-metro-area-id"></a>Metro alanı KIMLIĞI al
 
-Belirli bir metropol alanı için transit bilgilerini istemek için, `metroId` o alanın gerekir. [Metro Alanı Al API,](https://aka.ms/AzureMapsMobilityMetro) Azure Haritalar Mobilite Hizmetinin kullanılabildiği metro alanlarını talep etmenizi sağlar. `metroId`Yanıt, `metroName`metro alanı geometrisinin GeoJSON formatında temsili ve temsili gibi ayrıntıları içerir.
+Belirli bir metropol alanı için aktarım bilgilerini istemek üzere, bu alanın bir bölümünde olması gerekir `metroId` . [Metro alanını al API 'si](https://aka.ms/AzureMapsMobilityMetro) , Azure Maps Mobility hizmetinin kullanılabildiği Metro alanlarına izin verir. Yanıt, ve coğrafi JSON biçimindeki Metro `metroId`alanı `metroName`geometrisinin temsili gibi ayrıntıları içerir.
 
-Seattle-Tacoma metro bölgesi kimliği için metro bölgesini almak için bir istekte bulunalım. Metro alanı için kimlik istemek için aşağıdaki adımları tamamlayın:
+Seattle-Tacoma Metro alanı KIMLIĞI için Metro alanını almak için bir istek oluşturalım. Bir metro alanı için KIMLIK istemek için aşağıdaki adımları izleyin:
 
-1. Postacı uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postacı uygulamasının üst kısmında **Yeni'yi**seçin. Yeni **Oluştur** penceresinde **Koleksiyon'u**seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
+1. Postman uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
 
-2. İstek oluşturmak için Yeniden **Yeni'yi** seçin. Yeni **Oluştur** penceresinde **İstek'i**seçin. İstek için bir **İstek adı** girin. İsteği kaydetmek için önceki adımda oluşturduğunuz koleksiyonu konum olarak seçin. Ardından **Kaydet**’i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Ardından **Kaydet**’i seçin.
     
-    ![Postacı'da istek oluşturma](./media/how-to-request-transit-data/postman-new.png)
+    ![Postman 'da istek oluşturma](./media/how-to-request-transit-data/postman-new.png)
 
-3. Oluşturucu sekmesinde **HTTP'yi AL** yöntemini seçin ve GET isteği oluşturmak için aşağıdaki URL'yi girin. Azure `{subscription-key}`Haritalar birincil anahtarınızla değiştirin.
+3. Oluşturucu sekmesinde http **Al** metodunu seçin ve bir get isteği oluşturmak için aşağıdaki URL 'yi girin. Azure `{subscription-key}`haritalar birincil anahtarınızla değiştirin.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/metroArea/id/json?subscription-key={subscription-key}&api-version=1.0&query=47.63096,-122.126
@@ -111,23 +111,23 @@ Seattle-Tacoma metro bölgesi kimliği için metro bölgesini almak için bir is
     }
     ```
 
-5. Kopyalayın `metroId`, biz daha sonra kullanmak gerekir.
+5. `metroId`' Yi, daha sonra kullanmanız gerekecektir.
 
-## <a name="request-nearby-transit-stops"></a>Yakındaki transit duraklarını talep etme
+## <a name="request-nearby-transit-stops"></a>Yakın ulaşım isteği durduruluyor
 
-Azure Haritalar [Yakın Geçiş](https://aka.ms/AzureMapsMobilityNearbyTransit) olsun hizmeti, geçiş nesnelerinde arama yapmanızı sağlar.  API, toplu taşıma durakları ve belirli bir konumun etrafında paylaşılan bisikletler gibi geçiş nesnesi ayrıntılarını döndürür. Daha sonra, verilen yerin etrafındaki 300 metre yarıçap içinde yakındaki toplu taşıma duraklarını aramak için servise bir istekte bulunacağız. İstek, biz daha önce `metroId` alınan eklememiz gerekir.
+Azure haritalar [yakında ulaşım hizmeti edinme](https://aka.ms/AzureMapsMobilityNearbyTransit) , geçiş nesnelerinde arama yapmanıza olanak tanır.  API, genel aktarım ve belirli bir konum etrafında paylaşılan bisiklet gibi aktarım nesnesi ayrıntılarını döndürür. Daha sonra, belirli bir konum etrafında 300 ölçüm yarıçapı dahilinde, yakın ortak aktarım için arama yapmak üzere hizmete bir istek göndereceğiz. İstekte, daha önce `metroId` alınan ' i dahil etmemiz gerekiyor.
 
-[Yakındaki Geçişi Al'a](https://aka.ms/AzureMapsMobilityNearbyTransit)bir istekte bulunmak için aşağıdaki adımları izleyin:
+[Yakında yer almaya](https://aka.ms/AzureMapsMobilityNearbyTransit)yönelik bir istek oluşturmak için aşağıdaki adımları izleyin:
 
-1. Postacı'da **Yeni İstek** | **GET isteğini** tıklatın ve yakındaki **durakları alın**adını alın.
+1. Postman 'da **yeni istek** | **get isteği** ve adına **yakın duraklara ulaşın**' a tıklayın.
 
-2. Oluşturucu sekmesinde, **HTTP'yi AL** yöntemini seçin, API bitiş noktanız için aşağıdaki istek URL'sini girin ve **Gönder'i**tıklatın.
+2. Oluşturucu sekmesinde http **Al** metodunu SEÇIN, API uç noktanız için AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/nearby/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&query=47.63096,-122.126&radius=300&objectType=stop
     ```
 
-3. Başarılı bir istekten sonra yanıt yapısı aşağıdaki gibi görünmelidir:
+3. Başarılı bir istekten sonra, yanıt yapısı aşağıdaki gibi görünmelidir:
 
     ```JSON
     {
@@ -214,30 +214,30 @@ Azure Haritalar [Yakın Geçiş](https://aka.ms/AzureMapsMobilityNearbyTransit) 
     }   
     ```
 
-Yanıt yapısını dikkatle gözlemlerseniz, her aktarım nesnesi için parametreler içerdiğini görürsünüz. Her `id`aktarım nesnesinin, `type` `stopName`, `mainTransitType` `mainAgencyName`, , , ve konum, koordinatlar, nesnenin gibi parametreleri vardır.
+Yanıt yapısını dikkatle gözlemlerseniz, her bir aktarma nesnesi için parametreler içerdiğini görürsünüz. Her transit nesnesi `id`, `type` `stopName` `mainTransitType` `mainAgencyName`,,, ve gibi parametrelere sahiptir.
 
-Öğrenmek için, bir sonraki bölümde `id` rotamız için, başlangıç olarak bir otobüs durağı kullanacağız.  
+Öğrenme `id` amacıyla, sonraki bölümde yer aldığı Rotamız için bir veri yolu, kaynak olarak duraklar.  
 
 
-## <a name="request-a-transit-route"></a>Transit rota isteme
+## <a name="request-a-transit-route"></a>Geçiş rotası isteme
 
-Azure Haritalar [Geçiş Rotaları API'si](https://aka.ms/AzureMapsMobilityTransitRoute) yolculuk planlamasına izin verir. Bir kaynaktan hedefe mümkün olan en iyi rota seçeneklerini döndürür. Hizmet, yürüyüş, bisiklet ve toplu taşıma gibi farklı türde seyahat modları sunmaktadır. Sonra, seattle'daki Space Needle kulesine en yakın otobüs durağından bir rota yı arayacağız.
+Azure haritalar [Get transit rotaları API 'si](https://aka.ms/AzureMapsMobilityTransitRoute) Seyahat planlamasına izin verir. Bir kaynaktan hedefe en iyi olası yol seçeneklerini döndürür. Hizmet, yürüyen, biking ve genel aktarım gibi farklı türde seyahat modları sağlar. Daha sonra, en yakın veri yolundan bir yol ile Seattle 'daki Iğne kulede
 
-### <a name="get-location-coordinates-for-destination"></a>Hedef için konum koordinatlarını alma
+### <a name="get-location-coordinates-for-destination"></a>Hedefin Konum koordinatlarını al
 
-Space Needle kulesinin konum koordinatlarını elde etmek için Azure Haritalar [Bulanık Arama Hizmeti'ni](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)kullanalım.
+Alan Iğne kulelerinin Konum koordinatlarını elde etmek için Azure Maps 'un [belirsiz arama hizmeti](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)kullanmasına izin verir.
 
-Bulanık arama hizmetine istekte bulunmak için aşağıdaki adımları izleyin:
+Benzer arama hizmetine bir istek yapmak için aşağıdaki adımları izleyin:
 
-1. Postacı'da **Yeni İstek** | **GET isteğini** tıklatın ve konum **koordinatlarını alın**adını alın.
+1. Postman 'da **yeni istek** | **Al** isteği ' ne tıklayın ve **Konum koordinatlarını alın**.
 
-2.  Oluşturucu sekmesinde, **HTTP'yi AL** yöntemini seçin, aşağıdaki istek URL'sini girin ve **Gönder'i**tıklatın.
+2.  Oluşturucu sekmesinde, http **Al** metodunu seçin, AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
  
     ```HTTP
     https://atlas.microsoft.com/search/fuzzy/json?subscription-key={subscription-key}&api-version=1.0&query=space needle
     ```
     
-3. Yanıta dikkatlice bakarsanız, Space Needle aramasının sonuçlarında birden çok konum içerir. Her sonuç **konumu**altında konum koordinatları içerir. İlk `lat` sonucun `lon` **konumunu** ve altında kopyalayın.
+3. Yanıta dikkatle bakarsanız, alan Iğne aramasının sonuçlarında birden çok konum bulunur. Her sonuç **, konum altındaki**Konum koordinatlarını içerir. İlk sonucun `lat` konumunu `lon` ve altına **position** kopyalayın.
     
    ```JSON
    {
@@ -333,23 +333,23 @@ Bulanık arama hizmetine istekte bulunmak için aşağıdaki adımları izleyin:
     ``` 
     
 
-### <a name="request-route"></a>İstek rotası
+### <a name="request-route"></a>İstek yolu
 
-Rota isteğinde bulunmak için aşağıdaki adımları tamamlayın:
+Bir yol isteği oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Postacı'da, **Yeni İstek** | **GET isteğini** tıklatın ve rota **bilgilerini alın**adını alın.
+1. Postman 'da **yeni istek** | **Al** isteği ' ne tıklayın ve **yol bilgilerini alın**.
 
-2. Oluşturucu sekmesinde, **HTTP'yi AL** yöntemini seçin, API bitiş noktanız için aşağıdaki istek URL'sini girin ve **Gönder'i**tıklatın.
+2. Oluşturucu sekmesinde http **Al** metodunu SEÇIN, API uç noktanız için AŞAĞıDAKI istek URL 'sini girin ve **Gönder**' e tıklayın.
 
-    Parametreleri `modeType` ve parametreleri `transitType` belirterek otobüs için toplu taşıma güzergahları talep edeceğiz. İstek URL'si, önceki bölümlerde alınan konumları içerir. `originType`Artık bir **stopid**imiz var. Ve bunun `destionationType`için, **biz pozisyon**var .
+    `modeType` Ve `transitType` parametrelerini belirterek bir veri yolu için ortak geçiş rotaları isteyeceğiz. İstek URL 'SI, önceki bölümlerde alınan konumları içerir. `originType`İçin artık bir **stopid**sunuyoruz. Ve için `destionationType`, **konumu**sunuyoruz.
 
-    Transit [Rotaları](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters) AL API'ye isteğinizde kullanabileceğiniz URI [parametrelerinin](https://aka.ms/AzureMapsMobilityTransitRoute)listesine bakın. 
+    İsteğiniz içinde kullanabileceğiniz [URI parametrelerinin listesine](https://aka.ms/AzureMapsMobilityTransitRoute#uri-parameters) bkz. [transit yolları al API 'si](https://aka.ms/AzureMapsMobilityTransitRoute). 
   
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/route/json?subscription-key={subscription-key}&api-version=1.0&metroId=522&originType=stopId&origin=522---2060603&destionationType=position&destination=47.62039,-122.34928&modeType=publicTransit&transitType=bus
     ```
 
-3. Başarılı bir istek üzerine, yanıt yapısı aşağıdaki gibi görünmelidir:
+3. Başarılı bir istek olduğunda, yanıt yapısı aşağıdaki gibi görünmelidir:
 
     ```JSON
     {
@@ -494,23 +494,23 @@ Rota isteğinde bulunmak için aşağıdaki adımları tamamlayın:
     }
     ```
 
-4. Dikkatlice gözlemlerseniz, yanıtta birden fazla **otobüs** güzergahı vardır. Her rotanın benzersiz bir **güzergah kimliği** ve rotanın her bacağını açıklayan bir özeti vardır. Rota bacağı, rotanın iki durak yol noktası arasındaki bölümüdür. Ardından, yanıtı kullanarak `itineraryId` en hızlı rota için ayrıntılar isteyeceğiz.
+4. Dikkatle gözlemlerseniz, yanıtta birden çok **veri yolu** rotası vardır. Her rotada benzersiz bir **gezı kimliği** ve yolun her bir bayı açıklayan bir Özet vardır. Rota baları iki dur waypoints arasındaki yolun parçasıdır. Daha sonra, yanıttaki ' ı kullanarak `itineraryId` en hızlı rota için Ayrıntılar isteyeceğiz.
 
-## <a name="request-fastest-route-itinerary"></a>En hızlı rota güzergahı nı isteyin
+## <a name="request-fastest-route-itinerary"></a>En hızlı rota programı isteyin
 
-Azure Haritalar [Transit Güzergah](https://aka.ms/AzureMapsMobilityTransitItinerary) al hizmeti, Geçiş Yolları [API](https://aka.ms/AzureMapsMobilityTransitRoute) hizmeti tarafından döndürülen rotanın **güzergah kimliğini** kullanarak belirli bir rota için veri istemenize olanak tanır. Bir istekte bulunmak için aşağıdaki adımları tamamlayın:
+Azure haritalar [Get aktarma programı](https://aka.ms/AzureMapsMobilityTransitItinerary) hizmeti, belirli bir rota için verileri, [Get transit rotaları API](https://aka.ms/AzureMapsMobilityTransitRoute) hizmeti tarafından döndürülen yolun **gezi kimliğini** kullanarak isteyemenize olanak tanır. Bir istek yapmak için aşağıdaki adımları uygulayın:
 
-1. Postacı'da, **Yeni İstek** | **GET isteğini** tıklatın ve geçiş **bilgilerini alın**adını alın.
+1. Postman 'da **yeni istek** | **Al** isteği ' ne tıklayın ve **Aktarım bilgilerini alın**.
 
-2. Oluşturucu sekmesinde, **HTTP'yi AL** yöntemini seçin. API bitiş noktanız için aşağıdaki istek URL'sini girin ve **Gönder'i**tıklatın.
+2. Oluşturucu sekmesinde http **Al** yöntemini seçin. API uç noktanız için aşağıdaki istek URL 'sini girin ve **Gönder**' e tıklayın.
 
-    Yanıtın toplu `detailType` taşıma için dur bilgilerini ve rotanın yürüyüş ve bisiklet ayakları için turn-by-turn navigasyon bilgilerini içerecek şekilde parametreyi **geometriye** ayarlayacağız.
+    Yanıtın ortak geçiş için `detailType` durma bilgilerini içermesi ve yolun ilerleme ve bisiklet bisikletleri için açık gezinmesi için parametreyi **geometri** olarak ayarlayacağız.
 
     ```HTTP
     https://atlas.microsoft.com/mobility/transit/itinerary/json?api-version=1.0&subscription-key={subscription-key}&query={itineraryId}&detailType=geometry
     ```
     
-3. Başarılı bir istek üzerine, yanıt yapısı aşağıdaki gibi görünmelidir:
+3. Başarılı bir istek olduğunda, yanıt yapısı aşağıdaki gibi görünmelidir:
 
     ```JSON
     {
@@ -781,13 +781,13 @@ Azure Haritalar [Transit Güzergah](https://aka.ms/AzureMapsMobilityTransitItine
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mobilite Hizmeti'ni kullanarak gerçek zamanlı verileri nasıl isteyeceğizi öğrenin:
+Mobility hizmetini kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Gerçek zamanlı veri isteme](how-to-request-real-time-data.md)
+> [Gerçek zamanlı veriler isteme](how-to-request-real-time-data.md)
 
-Azure Haritalar Mobilite Hizmeti API belgelerini keşfedin
+Azure haritalar Mobility hizmeti API 'SI belgelerini inceleyin
 
 > [!div class="nextstepaction"]
-> [Mobilite Hizmeti API belgeleri](https://aka.ms/AzureMapsMobilityService)
+> [Mobility hizmeti API 'SI belgeleri](https://aka.ms/AzureMapsMobilityService)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Yapılandırma SSS
-description: Azure Uygulama Yapılandırması hakkında sık sorulan sorular
+title: Azure uygulama yapılandırma hakkında SSS
+description: Azure Uygulama yapılandırması hakkında sık sorulan sorular
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,123 +8,123 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348782"
 ---
-# <a name="azure-app-configuration-faq"></a>Azure Uygulama Yapılandırma SSS
+# <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
-Bu makalede, Azure Uygulama Yapılandırması hakkında sık sorulan sorular yanıtlanmaktadır.
+Bu makalede, Azure Uygulama yapılandırması hakkında sık sorulan sorular yanıtlanmaktadır.
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Uygulama Yapılandırması'nın Azure Key Vault'tan farkı nedir?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Uygulama yapılandırması Azure Key Vault nasıl farklıdır?
 
-Uygulama Yapılandırması, geliştiricilerin uygulama ayarlarını yönetmesine ve özellik kullanılabilirliğini denetlemesine yardımcı olur. Karmaşık yapılandırma verileriyle çalışma görevlerinin çoğunu basitleştirmeyi amaçlamaktadır.
+Uygulama yapılandırması, geliştiricilerin uygulama ayarlarını yönetmesine ve özellik kullanılabilirliğini denetlemesine yardımcı olur. Karmaşık yapılandırma verileriyle çalışan pek çok görevi basitleştirecek.
 
-Uygulama Yapılandırması destekler:
+Uygulama yapılandırması şunları destekler:
 
 - Hiyerarşik ad alanları
-- Etiketleme
+- Kapatma
 - Kapsamlı sorgular
-- Toplu alma
-- Özel yönetim operasyonları
-- Özellik yönetimi kullanıcı arabirimi
+- Toplu iş alımı
+- Özel yönetim işlemleri
+- Özellik yönetimi Kullanıcı arabirimi
 
-Uygulama Yapılandırması Key Vault'u tamamlar ve bu iki uygulama dağıtımında yan yana kullanılmalıdır.
+Uygulama yapılandırması Key Vault tamamlar ve iki uygulama dağıtımında yan yana kullanılmalıdır.
 
-## <a name="should-i-store-secrets-in-app-configuration"></a>Sırları App Configuration'da saklamalı mıyım?
+## <a name="should-i-store-secrets-in-app-configuration"></a>Gizli dizileri uygulama yapılandırmasında depolamam gerekir mi?
 
-App Configuration sertleştirilmiş güvenlik sağlasa da, Key Vault uygulama sırlarını depolamak için hala en iyi yerdir. Key Vault donanım düzeyinde şifreleme, parçalı erişim ilkeleri ve sertifika döndürme gibi yönetim işlemleri sağlar.
+Uygulama yapılandırması sıkı güvenlik sağlar, ancak Key Vault uygulama gizli dizileri depolamak için de en iyi yerdir. Key Vault, donanım düzeyinde şifreleme, ayrıntılı erişim ilkeleri ve sertifika döndürme gibi yönetim işlemleri sağlar.
 
-Key Vault'ta saklanan sırlara başvuran Uygulama Yapılandırma değerleri oluşturabilirsiniz. Daha fazla bilgi için, [ASP.NET Core uygulamasında Anahtar Kasası başvurularını kullanın'](./use-key-vault-references-dotnet-core.md)a bakın.
+Key Vault depolanan gizli dizileri referans eden uygulama yapılandırma değerleri oluşturabilirsiniz. Daha fazla bilgi için bkz. [ASP.NET Core uygulamasında Key Vault başvurularını kullanma](./use-key-vault-references-dotnet-core.md).
 
-## <a name="does-app-configuration-encrypt-my-data"></a>Uygulama Yapılandırması verilerimi şifreler mi?
+## <a name="does-app-configuration-encrypt-my-data"></a>Uygulama yapılandırması verilerimi şifreliyor mu?
 
-Evet. App Configuration sahip olduğu tüm temel değerleri ve ağ iletişimini şifreler. Anahtar adları ve etiketler yapılandırma verilerini almak için dizin olarak kullanılır ve şifrelenmez.
+Evet. Uygulama yapılandırması, tuttuğu tüm anahtar değerlerini şifreler ve ağ iletişimini şifreler. Anahtar adları ve Etiketler, yapılandırma verilerini almak için dizinler olarak kullanılır ve şifrelenmez.
 
-## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Uygulama Yapılandırması'nın Azure Uygulama Hizmeti ayarlarından farkı nedir?
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Uygulama yapılandırması Azure App Service ayarlarından farklı midir?
 
-Azure Uygulama Hizmeti, her Uygulama Hizmeti örneği için uygulama ayarlarını tanımlamanıza olanak tanır. Bu ayarlar uygulama koduna ortam değişkeni olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvasıyla ilişkilendirebilirsiniz. Daha fazla bilgi için uygulama [ayarlarını yapılandır'a](/azure/app-service/configure-common#configure-app-settings)bakın.
+Azure App Service, her bir App Service örneği için uygulama ayarlarını tanımlamanızı sağlar. Bu ayarlar, uygulama koduna ortam değişkenleri olarak geçirilir. İsterseniz bir ayarı belirli bir dağıtım yuvası ile ilişkilendirebilirsiniz. Daha fazla bilgi için bkz. [uygulama ayarlarını yapılandırma](/azure/app-service/configure-common#configure-app-settings).
 
-Buna karşılık, Azure Uygulama Yapılandırması, birden çok uygulama arasında paylaşılabilen ayarları tanımlamanıza olanak tanır. Buna, Uygulama Hizmeti'nde çalışan uygulamaların yanı sıra diğer platformlar da dahildir. Uygulama kodunuz bu ayarlara .NET ve Java yapılandırma sağlayıcıları, Azure SDK aracılığıyla veya doğrudan REST API'leri aracılığıyla erişir.
+Buna karşılık, Azure Uygulama yapılandırması, birden çok uygulama arasında paylaşılabilen ayarları tanımlamanızı sağlar. Bu, App Service çalıştıran uygulamaları ve diğer platformları da içerir. Uygulama kodunuz, bu ayarlara .NET ve Java için yapılandırma sağlayıcıları aracılığıyla, Azure SDK aracılığıyla veya doğrudan REST API 'Leri aracılığıyla erişir.
 
-Ayrıca, Uygulama Hizmeti ve Uygulama Yapılandırması arasında ayarları içe aktarıp dışa aktarabilirsiniz. Bu özellik, mevcut Uygulama Hizmeti ayarlarını temel alan yeni bir Uygulama Yapılandırma mağazası kurmanızı sağlar. Yapılandırmayı, Uygulama Hizmeti ayarlarına dayanan mevcut bir uygulamayla da paylaşabilirsiniz.
+Ayrıca, App Service ile uygulama yapılandırması arasında ayarları içeri ve dışarı aktarabilirsiniz. Bu özellik, mevcut App Service ayarlarını temel alarak yeni bir uygulama yapılandırma deposu ayarlamanıza olanak sağlar. Ayrıca, yapılandırmayı App Service ayarlarını kullanan mevcut bir uygulamayla paylaşabilirsiniz.
 
-## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Uygulama Yapılandırması'nda depolanan anahtarlar ve değerler üzerinde boyut sınırlaması var mı?
+## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Uygulama yapılandırmasında saklanan anahtarlar ve değerler üzerinde herhangi bir boyut sınırlaması var mı?
 
-Tek bir anahtar değeri öğesi için 10 KB sınırı vardır.
+Tek bir anahtar-değer öğesi için 10 KB sınırı vardır.
 
-## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Yapılandırmaları birden çok ortam (test, evreleme, üretim vb.) için nasıl depolamalıyım?
+## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Birden çok ortam için yapılandırma (test, hazırlama, üretim vb.) nasıl depolamalıyım?
 
-Uygulama Yapılandırması'na mağaza başına kimler erişebilir denetime siz siz. Farklı izinler gerektiren her ortam için ayrı bir mağaza kullanın. Bu yaklaşım en iyi güvenlik yalıtımı sağlar.
+Uygulama yapılandırmasına kimin bir mağaza düzeyinde erişebileceğini denetlersiniz. Farklı izinler gerektiren her ortam için ayrı bir depo kullanın. Bu yaklaşım, en iyi güvenlik yalıtımını sağlar.
 
-Ortamlar arasında güvenlik yalıtımına ihtiyacınız yoksa, yapılandırma değerleri arasında ayrım yapmak için etiketleri kullanabilirsiniz. [Farklı ortamlar için farklı yapılandırmaları etkinleştirmek için etiketleri kullanmak](./howto-labels-aspnet-core.md) tam bir örnek sağlar.
+Ortamlar arasında güvenlik yalıtımına ihtiyacınız yoksa, yapılandırma değerlerini ayırt etmek için etiketleri kullanabilirsiniz. [Farklı ortamlara yönelik farklı yapılandırmaların etkinleştirilmesi için etiketleri kullanın](./howto-labels-aspnet-core.md) , tüm bir örnek sağlar.
 
-## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Uygulama Yapılandırması'nı kullanmanın önerilen yolları nelerdir?
+## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Uygulama yapılandırmasını kullanmanın önerilen yolları nelerdir?
 
-[En iyi uygulamalara](./howto-best-practices.md)bakın.
+Bkz. [en iyi uygulamalar](./howto-best-practices.md).
 
-## <a name="how-much-does-app-configuration-cost"></a>Uygulama Yapılandırması ne kadartutar?
+## <a name="how-much-does-app-configuration-cost"></a>Uygulama yapılandırma maliyeti ne kadar?
 
 İki fiyatlandırma katmanı vardır:
 
 - Ücretsiz katmanı
 - Standart katman.
 
-Standart katmanın piyasaya sürülmesinden önce bir mağaza oluşturduysanız, genel kullanılabilirlik nedeniyle otomatik olarak Free katmanına taşınır. Standart katmana yükseltmeyi seçebilir veya Serbest katmanda kalabilirsiniz.
+Standart katmanın sunumundan önce bir mağaza oluşturduysanız, genel kullanıma sunulmadan otomatik olarak ücretsiz katmana taşınır. Standart katmana yükseltmeyi seçebilir veya ücretsiz katmanda kalabilirler.
 
-Bir mağazayı Standart katmandan Serbest katmana indiremezsiniz. Serbest katmanda yeni bir mağaza oluşturabilir ve ardından yapılandırma verilerini bu mağazaya aktarabilirsiniz.
+Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz katmanda yeni bir mağaza oluşturup bu depoya yapılandırma verilerini içeri aktarabilirsiniz.
 
-## <a name="which-app-configuration-tier-should-i-use"></a>Hangi Uygulama Yapılandırma katmanını kullanmalıyım?
+## <a name="which-app-configuration-tier-should-i-use"></a>Hangi uygulama yapılandırma katmanını kullanmalıyım?
 
-Her iki Uygulama Yapılandırma katmanı da config ayarları, özellik bayrakları, Key Vault başvuruları, temel yönetim işlemleri, ölçümler ve günlükler dahil olmak üzere temel işlevsellik sunar.
+Her iki uygulama yapılandırma katmanı da yapılandırma ayarları, özellik bayrakları, Key Vault başvuruları, temel yönetim işlemleri, ölçümler ve günlükler dahil olmak üzere çekirdek işlevler sunar.
 
-Bir katman seçmek için göz önünde bulundurulması gereken hususlar şunlardır.
+Katman seçme konusunda dikkate alınması gereken noktalar aşağıda verilmiştir.
 
-- **Abonelik başına kaynaklar**: Kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma mağazasıyla sınırlıdır. Aboneliklerde standart katmanda sınırsız sayıda yapılandırma mağazası olabilir.
-- **Kaynak başına depolama**: Serbest katmanda, her yapılandırma deposu 10 MB depolama alanıyla sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama alanı kullanabilir.
-- **Anahtar geçmişi**: App Configuration tuşlarda yapılan tüm değişikliklerin geçmişini saklar. Serbest katmanda, bu tarih yedi gün boyunca saklanır. Standart katmanda, bu geçmiş 30 gün boyunca saklanır.
-- **Günlük istekler**: Ücretsiz mağaza sayısı günlük 1.000 istekle sınırlıdır. Bir mağaza 1.000 isteklere ulaştığında, gece yarısı UTC'ye kadar tüm istekler için HTTP durum kodu 429'u döndürür.
+- **Abonelik başına kaynaklar**: bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
+- **Kaynak başına depolama**: Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
+- **Anahtar geçmişi**: uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
+- **Gün başına istek**: ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC tarihine kadar tüm istekler için 429 HTTP durum kodunu döndürür.
 
-    Standart katman mağazalar için, her gün ilk 200.000 istek günlük ücrete dahildir. Ek istekler fazlalık olarak faturalandırılır.
+    Standart katman depoları için her gün ilk 200.000 istek günlük ücretine dahil edilir. Ek istekler fazla kullanım olarak faturalandırılır.
 
-- **Hizmet düzeyi sözleşmesi**: Standart katman %99,9 kullanılabilirlik SLA'ya sahiptir. Serbest katmanda SLA yok.
-- **Güvenlik özellikleri**: Her iki katman da Microsoft tarafından yönetilen anahtarlarla şifreleme, HMAC veya Azure Active Directory üzerinden kimlik doğrulama, RBAC desteği ve yönetilen kimlik gibi temel güvenlik işlevlerini içerir. Standart katman, Özel Bağlantı desteği ve müşteri tarafından yönetilen anahtarlarla şifreleme gibi daha gelişmiş güvenlik işlevleri sunar.
-- **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Ayrıca günlük tahsisat geçmiş istekleri için bir fazlalık ücreti var. Ücretsiz bir mağaza kullanmak için hiçbir ücret yoktur.
+- **Hizmet düzeyi sözleşmesi**: Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
+- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure ACTIVE DIRECTORY, RBAC desteği ve yönetilen kimlik aracılığıyla kimlik doğrulaması dahil temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
+- **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
 
-## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı Ücretsiz katmandan Standart katmana yükseltebilir miyim? Bir mağazayı Standart katmandan Serbest katmana düşürebilir miyim?
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı ücretsiz katmandan Standart katmana yükseltebilir miyim? Standart katmandaki bir deponun ücretsiz katmana indirgenmesini sağlayabilir miyim?
 
-Ücretsiz katmandan Standart katmana istediğiniz zaman yükseltebilirsiniz.
+Ücretsiz katmandan Standart katmana dilediğiniz zaman yükseltebilirsiniz.
 
-Bir mağazayı Standart katmandan Serbest katmana indiremezsiniz. Serbest katmanda yeni bir mağaza oluşturabilir ve ardından [yapılandırma verilerini bu mağazaya aktarabilirsiniz.](howto-import-export-data.md)
+Standart katmandan bir depoyu ücretsiz katmana indirgeyemezsiniz. Ücretsiz katmanda yeni bir mağaza oluşturup [Bu depoya yapılandırma verilerini içeri aktarabilirsiniz](howto-import-export-data.md).
 
-## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>App Configuration'a yapılan istek sayısında herhangi bir sınırlama var mı?
+## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Uygulama yapılandırmasına yapılan istek sayısına yönelik herhangi bir sınırlama var mı?
 
-Ücretsiz katmandaki yapılandırma mağazaları günde 1.000 istekle sınırlıdır. Standart katmandaki yapılandırma depoları, istek oranı saatte 20.000 isteği aştığında geçici olarak azaltma yla karşılaşabilir.
+Ücretsiz katmandaki yapılandırma depoları, günde 1.000 istek ile sınırlıdır. Standart katmandaki yapılandırma depoları, istek oranı saat başına 20.000 isteği aştığında geçici azaltmasına karşılaşabilir.
 
-Bir mağaza sınırına ulaştığında, süre sona erene kadar yapılan tüm istekler için HTTP durum kodu 429'u döndürecektir. Yanıttaki `retry-after-ms` üstbilgi, isteği yeniden denemeden önce önerilen bekleme süresini (milisaniye cinsinden) verir.
+Bir depo sınıra ulaştığında, zaman aralığı sona erene kadar yapılan tüm istekler için 429 HTTP durum kodunu döndürür. Yanıttaki `retry-after-ms` üst bilgi, isteği yeniden denemeden önce önerilen bir bekleme süresi (milisaniye cinsinden) verir.
 
-Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtları ile karşılanırsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için [bkz.](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
+Uygulamanız düzenli olarak HTTP durum kodu 429 yanıtlarını yaşıyorsa, yapılan istek sayısını azaltmak için yeniden tasarlamayı düşünün. Daha fazla bilgi için bkz. [uygulama yapılandırmasına yapılan Istekleri azaltma](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtları alır. Neden?
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Uygulamam HTTP durum kodu 429 yanıtlarını alıyor. Neden?
 
-Bu koşullar altında bir HTTP durum kodu 429 yanıtı alırsınız:
+Şu koşullarda bir HTTP durum kodu 429 yanıtı alacaksınız:
 
-* Ücretsiz katmandaki bir mağaza için günlük istek sınırını aşmak.
+* Ücretsiz katmandaki bir mağaza için günlük istek sınırı aşılıyor.
 * Standart katmandaki bir mağaza için yüksek istek oranı nedeniyle geçici azaltma.
 * Aşırı bant genişliği kullanımı.
-* Depolama teklifi aşıldığında bir anahtar oluşturmaya veya değiştirmeye çalışmak.
+* Depolama teklifi aşıldığında bir anahtar oluşturulmaya veya değiştirmeye çalışılıyor.
 
-İsteğin neden başarısız olduğunu belirli bir nedenle 429 yanıtının gövdesini kontrol edin.
+İsteğin neden başarısız olduğuna ilişkin belirli bir nedenden dolayı 429 yanıtının gövdesini kontrol edin.
 
-## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Yeni sürümler ve Uygulama Yapılandırması ile ilgili diğer bilgiler le ilgili duyuruları nasıl alabiliyorum?
+## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Yeni yayınlar ve uygulama yapılandırmasıyla ilgili diğer bilgiler hakkında duyurular nasıl alabilirim?
 
-[Bizim GitHub duyurular repo](https://github.com/Azure/AppConfiguration-Announcements)abone olun.
+[GitHub duyuruları](https://github.com/Azure/AppConfiguration-Announcements)depolarımıza abone olun.
 
-## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Bir sorunu nasıl bildirebilirim veya öneride bulunabilirim?
+## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>Bir sorunu nasıl bildirebilirim veya öneride bulunmak için ne yapabilirim?
 
-Bize doğrudan [GitHub'dan](https://github.com/Azure/AppConfiguration/issues)ulaşabilirsiniz.
+Doğrudan [GitHub](https://github.com/Azure/AppConfiguration/issues)üzerinde bizimle iletişime ulaşabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

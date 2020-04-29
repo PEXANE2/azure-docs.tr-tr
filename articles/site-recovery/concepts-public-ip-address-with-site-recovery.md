@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile başarısız olduktan sonra genel IP adresleri atama
-description: Olağanüstü durum kurtarma ve geçiş için Azure Site Kurtarma ve Azure Trafik Yöneticisi ile ortak IP adreslerinin nasıl ayarlanır açıklanır
+title: Azure Site Recovery ile yük devretmeden sonra genel IP adresleri atama
+description: Olağanüstü durum kurtarma ve geçiş için Azure Site Recovery ve Azure Traffic Manager ile genel IP adreslerini ayarlamayı açıklar
 services: site-recovery
 author: mayurigupta13
 manager: rochakm
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: b1f3ffa6fc90fc0cab0217d1b71907342f2dbd0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281957"
 ---
-# <a name="set-up-public-ip-addresses-after-failover"></a>Başarısız olduktan sonra genel IP adreslerini ayarlama
+# <a name="set-up-public-ip-addresses-after-failover"></a>Yük devretmeden sonra genel IP adreslerini ayarlama
 
 Genel IP adresleri, İnternet kaynaklarının Azure kaynakları ile gelen iletişimi kurmasına izin verir. Genel IP adresleri ayrıca Azure kaynaklarının İnternet ve kaynağa atanmış bir IP adresi ile genel kullanıma yönelik Azure hizmetleri ile giden iletişimi kurmasını sağlar.
-- Azure Sanal Makineler (VM), Azure Uygulama Ağ Geçitleri, Azure Yük Dengeleyicileri, Azure VPN Ağ Geçitleri ve diğerleri gibi Internet'ten kaynağa gelen iletişim. VM yük dengeleyici arka uç havuzunun bir parçası olduğu ve yük bakiyeleyiciye ortak bir IP adresi atandığı sürece, VM'nin kendisine atanmış genel bir IP adresi yoksa, Internet'ten VM'ler gibi bazı kaynaklarla iletişim kurmaya devam edebilirsiniz.
-- Öngörülebilir bir IP adresi kullanarak Internet'e giden bağlantı. Örneğin, sanal bir makine internete giden, herkese açık bir IP adresi olmadan iletişim kurabilir, ancak adresi varsayılan olarak Azure tarafından öngörülemeyen bir genel adrese çevrilen ağ adresidir. Bir kaynağa ortak bir IP adresi atamak, giden bağlantı için hangi IP adresinin kullanıldığını bilmenizi sağlar. Tahmin edilebilir olsa da, seçilen atama yöntemine bağlı olarak adres değişebilir. Daha fazla bilgi için [bkz.](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) Azure kaynaklarından giden bağlantılar hakkında daha fazla bilgi edinmek için [bkz.](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Azure sanal makineler (VM), Azure uygulama ağ geçitleri, Azure yük dengeleyiciler, Azure VPN ağ geçitleri ve diğerleri gibi Internet 'ten kaynağa gelen iletişim. VM, bir yük dengeleyici arka uç havuzunun parçası olduğu ve Yük Dengeleyiciye genel bir IP adresi atandığında, bir VM 'nin kendisine atanmış bir genel IP adresi yoksa, Internet 'ten de sanal makineler gibi bazı kaynaklarla iletişim kurabilirsiniz.
+- Öngörülebilir bir IP adresi kullanarak Internet 'e giden bağlantı. Örneğin, bir sanal makine, kendisine atanmış bir genel IP adresi olmadan giden Internet ile iletişim kurabilir, ancak adresi varsayılan olarak Azure tarafından öngörülemeyen bir genel adrese çevrilmiş ağ adresidir. Bir kaynağa genel IP adresi atamak, giden bağlantı için hangi IP adresinin kullanıldığını bilmenizi sağlar. Tahmin edilebilir olsa da, seçilen atama yöntemine bağlı olarak adres değişebilir. Daha fazla bilgi için bkz. [genel IP adresi oluşturma](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address). Azure kaynaklarından giden bağlantılar hakkında daha fazla bilgi edinmek için bkz. [giden bağlantıları anlama](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-Azure Kaynak Yöneticisi'nde, Genel IP adresi kendi özellikleri olan bir kaynaktır. Genel bir IP adresini ilişkilendirebileceğiniz kaynakların bazıları şunlardır:
+Azure Resource Manager, genel IP adresi kendi özelliklerine sahip bir kaynaktır. Genel bir IP adresini ilişkilendirebileceğiniz kaynakların bazıları şunlardır:
 
 * Sanal makine ağ arabirimleri
 * İnternet'e yönelik yük dengeleyiciler
 * VPN ağ geçitleri
 * Uygulama ağ geçitleri
 
-Bu makalede, Site Kurtarma ile Ortak IP adreslerini nasıl kullanabileceğiniz açıklanmaktadır.
+Bu makalede, Site Recovery ile genel IP adreslerini nasıl kullanabileceğiniz açıklanır.
 
-## <a name="public-ip-address-assignment-using-recovery-plan"></a>Kurtarma Planı'nı kullanarak genel IP adresi ataması
+## <a name="public-ip-address-assignment-using-recovery-plan"></a>Kurtarma planı kullanılarak genel IP adresi ataması
 
-Üretim uygulamasının genel IP adresi **başarısız lıkta tutulamaz.** Başarısız olma işleminin bir parçası olarak gündeme getirilen iş yüklerine hedef bölgede kullanılabilen bir Azure Genel IP kaynağı atanmalıdır. Bu adım el ile yapılabilir veya kurtarma planları ile otomatikleştirilir. Kurtarma planı makineleri kurtarma gruplarına toplar. Sistematik bir kurtarma işlemini tanımlamanıza yardımcı olur. Azure'da veya komut dosyasına başarısız olmak için Azure Otomasyon runbook'larını kullanarak sipariş vermek ve her adımda gereken eylemleri otomatikleştirmek için bir kurtarma planı kullanabilirsiniz.
+Üretim uygulamasının genel IP adresi, **Yük devretmede bekletilemez**. Yük devretme işleminin bir parçası olarak getirilen iş yükleri, hedef bölgede kullanılabilir bir Azure genel IP kaynağı atanmalıdır. Bu adım el ile yapılabilir veya kurtarma planlarıyla otomatik hale getirilebilir. Kurtarma planı, makineleri kurtarma gruplarına toplar. Sistematik bir kurtarma işlemi tanımlamanıza yardımcı olur. Azure 'da yük devretme için Azure Otomasyonu runbook 'larını kullanarak her adımda sipariş getirmek ve gereken eylemleri otomatikleştirmek için bir kurtarma planı kullanabilirsiniz.
 
 Kurulum aşağıdaki gibidir:
-- Bir [kurtarma planı](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) oluşturun ve iş yüklerinizi planlandığı gibi gruplandırın.
-- [Azure Automation runbooks](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) komut dosyalarını kullanarak ortak bir IP adresi eklemek için bir adım ekleyerek planı özelleştirin.
+- Bir [kurtarma planı](../site-recovery/site-recovery-create-recovery-plans.md#create-a-recovery-plan) oluşturun ve iş yüklerinizi plana gereken şekilde gruplayın.
+- Yük devredilen VM 'ye [Azure Otomasyonu runbook 'ları](../site-recovery/site-recovery-runbook-automation.md#customize-the-recovery-plan) kullanarak genel IP adresi ekleme adımı ekleyerek planı özelleştirin.
 
  
-## <a name="public-endpoint-switching-with-dns-level-routing"></a>DNS düzeyi Yönlendirme ile ortak uç nokta geçişi
+## <a name="public-endpoint-switching-with-dns-level-routing"></a>DNS düzeyinde yönlendirme ile genel uç nokta değiştirme
 
-Azure Trafik Yöneticisi, uç noktalar arasında DNS düzeyinde yönlendirmeyi sağlar ve DR senaryosu için [RTO'larınızı düşürmeye](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) yardımcı olabilir. 
+Azure Traffic Manager, uç noktalar arasında DNS düzeyinde yönlendirmeyi mümkün ve bir DR senaryosunda [RTOs](../site-recovery/concepts-traffic-manager-with-site-recovery.md#recovery-time-objective-rto-considerations) 'ı yönlendirmeye yardımcı olabilir. 
 
-Trafik Yöneticisi ile başarısız senaryolar hakkında daha fazla bilgi edinin:
-1. Trafik Yöneticisi ile [Azure'a şirket içi başarısız](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
-2. [Azure'dan Azure'a trafik](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) yöneticisi ile başarısız 
+Traffic Manager ile yük devretme senaryoları hakkında daha fazla bilgi edinin:
+1. Traffic Manager ile [Şirket Içinde Azure yük devretmesi](../site-recovery/concepts-traffic-manager-with-site-recovery.md#on-premises-to-azure-failover) 
+2. [Azure 'dan Azure 'a yük devretme](../site-recovery/concepts-traffic-manager-with-site-recovery.md#azure-to-azure-failover) Traffic Manager 
 
 Kurulum aşağıdaki gibidir:
-- Trafik [Yöneticisi profili](../traffic-manager/traffic-manager-create-profile.md)oluşturun.
-- **Öncelik** yönlendirme yöntemini kullanarak, kaynak için **birincil** ve Azure için **Failover** olmak üzere iki uç nokta oluşturun. **Birincil** Öncelik 1 atanır ve **Failover** Öncelik 2 atanır.
-- **Birincil** bitiş noktası, kaynak ortamınızın Azure içinde veya dışında olup olmadığına bağlı olarak [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) veya [Dış](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) olabilir.
-- **Failover** bitiş noktası **Azure** bitiş noktası olarak oluşturulur. Bu durum felaket durumunda Trafik Yöneticisi için dış bakan uç noktası olacak gibi statik bir **ortak IP adresi** kullanın.
+- [Traffic Manager profili](../traffic-manager/traffic-manager-create-profile.md)oluşturun.
+- **Öncelik** yönlendirme yönteminden yararlanarak, Azure için kaynak ve **Yük devretme** için **birincil** olan iki uç nokta oluşturun. **Birincil** öncelik 1 olarak atanır ve **yük devretmeye** öncelik 2 atanır.
+- **Birincil** uç nokta, kaynak ortamınızın Azure içinde veya dışında olmasına bağlı olarak [Azure](../traffic-manager/traffic-manager-endpoint-types.md#azure-endpoints) veya [Harici](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints) olabilir.
+- **Yük devretme** uç noktası bir **Azure** uç noktası olarak oluşturulur. Bir **statik genel IP adresi** kullanın çünkü bu, olağanüstü durum olayında Traffic Manager için dış uç nokta olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Site Kurtarma ile Trafik Yöneticisi](../site-recovery/concepts-traffic-manager-with-site-recovery.md) hakkında daha fazla bilgi edinin
-- Trafik Yöneticisi [yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
-- Uygulama başarısızlığını otomatikleştirmek için [kurtarma planları](site-recovery-create-recovery-plans.md) hakkında daha fazla bilgi edinin.
+- [Azure Site Recovery Traffic Manager](../site-recovery/concepts-traffic-manager-with-site-recovery.md) hakkında daha fazla bilgi edinin
+- Traffic Manager [yönlendirme yöntemleri](../traffic-manager/traffic-manager-routing-methods.md)hakkında daha fazla bilgi edinin.
+- Uygulama yük devretmesini otomatikleştirmek için [kurtarma planları](site-recovery-create-recovery-plans.md) hakkında daha fazla bilgi edinin.

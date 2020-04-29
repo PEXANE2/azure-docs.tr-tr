@@ -1,6 +1,6 @@
 ---
-title: Rota yönlerini haritada göster | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak bir haritada iki konum arasındaki yol tariflerini nasıl görüntülediğinizi öğreneceksiniz.
+title: Harita üzerindeki rota yönlerini göster | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritadaki iki konum arasındaki yönleri görüntülemeyi öğreneceksiniz.
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -10,66 +10,66 @@ services: azure-maps
 manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: dde9264d0cb65726b624b918982cfa01985b63ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371418"
 ---
 # <a name="show-directions-from-a-to-b"></a>A'dan B'ye yönleri gösterme
 
-Bu makalede, rota isteğinasıl yapacağınızı ve rotayı haritada nasıl gösterilebilirsiniz.
+Bu makalede yol isteği oluşturma ve Haritayı haritada gösterme gösterilmektedir.
 
-Bunu yapmanın iki yolu vardır. İlk yol, Bir hizmet modülü üzerinden [Azure Haritalar Rota API'sini](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) sorgulamaktır. İkinci yol, [Azure Haritalar Rota API'sinde](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)arama isteği nde bulunmak için [API'yi getir'i](https://fetch.spec.whatwg.org/) kullanmaktır. Her iki yol da aşağıda tartışılmıştır.
+Bunu iki şekilde yapabilirsiniz. İlk yöntem, [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) 'sini bir hizmet modülü aracılığıyla sorgulamanızı sağlar. İkinci yol, [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)'sine bir arama isteği yapmak IÇIN [getirme API](https://fetch.spec.whatwg.org/) 'sini kullanmaktır. Her iki yol da aşağıda ele alınmıştır.
 
-## <a name="query-the-route-via-service-module"></a>Servis modülü üzerinden rotayı sorgula
+## <a name="query-the-route-via-service-module"></a>Yönlendirme hizmetini hizmet modülü aracılığıyla sorgulama
 
-<iframe height='500' scrolling='no' title='Haritada A'dan B'ye yol tariflerini göster (Servis Modülü)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'de</a><a href='https://codepen.io/azuremaps'>@azuremaps</a>() Azure Haritalar tarafından <a href='https://codepen.io/azuremaps/pen/RBZbep/'>yapılan bir haritada (Hizmet Modülü) A'dan B'ye yol tariflerini göster'e</a> bakın.
+<iframe height='500' scrolling='no' title='Bir haritadaki A 'dan B 'ye yönlendirmeler göster (hizmet modülü)' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile <a href='https://codepen.io/azuremaps/pen/RBZbep/'>haritada (hizmet modülü) bir haritadaki a 'dan B 'ye yönlendirmeler göster</a> bölümüne bakın.
 </iframe>
 
-Yukarıdaki kodda, ilk blok bir harita nesnesi oluşturur ve erişim belirteci kullanmak için kimlik doğrulama mekanizmasını ayarlar. Talimatlar için [bir harita oluşturduğunu](./map-create.md) görebilirsiniz.
+Yukarıdaki kodda, ilk blok bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu, erişim `TokenCredential` belirteciyle Azure Haritalar'daki HTTP isteklerini doğrulamak için bir kod oluşturur. Daha sonra `TokenCredential` geçer `atlas.service.MapsURL.newPipeline()` ve bir [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) örneği oluşturur. Azure `routeURL` Haritalar [Rotası](https://docs.microsoft.com/rest/api/maps/route) işlemlerinin URL'sini temsil eder.
+İkinci kod bloğu, erişim belirteciyle Azure `TokenCredential` Maps 'a http isteklerinin kimliğini doğrulamak için bir oluşturur. Ardından `atlas.service.MapsURL.newPipeline()` ' a geçirir `TokenCredential` ve bir işlem [hattı](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest) örneği oluşturur. , `routeURL` Azure Maps [yönlendirme](https://docs.microsoft.com/rest/api/maps/route) işlemlerine yönelik bir URL 'yi temsil eder.
 
 Üçüncü kod bloğu, haritaya bir [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) nesnesi oluşturur ve ekler.
 
-Dördüncü kod bloğu başlangıç ve bitiş [noktaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) nesneleri oluşturur ve bunları dataSource nesnesine ekler.
+Dördüncü kod bloğu başlangıç ve bitiş [noktaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) nesneleri oluşturur ve bunları DataSource nesnesine ekler.
 
-Çizgi LineString için bir [özelliktir.](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) [LineLayer,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) [DataSource'a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sarılmış çizgi nesnelerini haritadaki satırlar olarak işler. Dördüncü kod bloğu oluşturur ve eşmeye bir çizgi katmanı ekler. [LinestringLayerOptions'da](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)bir satır katmanının özelliklerini görün.
+Çizgi, LineString için bir [özelliktir](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) . Bir [Linelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan satır nesnelerini haritada satırlar olarak işler. Dördüncü kod bloğu oluşturur ve haritaya bir çizgi katmanı ekler. [Linestringlayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)içindeki bir çizgi katmanının özelliklerine bakın.
 
-Sembol [katmanı,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) [DataSource'a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)sarılmış nokta tabanlı verileri işlemek için metinleri veya simgeleri kullanır. Metinler veya simgeler haritada sembol olarak işlenir. Beşinci kod bloğu oluşturur ve haritaya bir sembol katmanı ekler.
+Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)Sarmalanan nokta tabanlı verileri işlemek için metinleri veya simgeleri kullanır. Metinler veya simgeler haritada semboller olarak işlenir. Beşinci kod bloğu oluşturur ve haritaya bir sembol katmanı ekler.
 
-Altıncı kod bloğu, [hizmet modülünün](how-to-use-services-module.md)bir parçası olan Azure Haritalar yönlendirme hizmetini sorgular. RouteURL'nin [hesaplayan RouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) yöntemi, başlangıç ve bitiş noktaları arasında bir rota elde etmek için kullanılır. Yanıttan bir GeoJSON özellik koleksiyonu daha `geojson.getFeatures()` sonra yöntem kullanılarak ayıklanır ve veri kaynağına eklenir. Daha sonra yanıtı haritaüzerinde bir rota olarak işler. Haritaya satır ekleme hakkında daha fazla bilgi için [bkz.](map-add-line-layer.md)
+Altıncı kod bloğu, [hizmet modülünün](how-to-use-services-module.md)bir parçası olan Azure Maps yönlendirme hizmeti 'ni sorgular. RouteURL 'nin [Hesaplayısınuyönleri](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) yöntemi başlangıç ve bitiş noktaları arasında bir yol almak için kullanılır. Yanıttan bir GeoJSON Özellik koleksiyonu daha sonra `geojson.getFeatures()` yöntemi kullanılarak ayıklanır ve veri kaynağına eklenir. Ardından yanıtı haritada bir yol olarak işler. Haritaya satır ekleme hakkında daha fazla bilgi için bkz. [haritaya satır ekleme](map-add-line-layer.md).
 
-Son kod bloğu, Haritanın [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
+Son kod bloğu haritanın [Setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
 
-Olay [dinleyicisinin](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)içinde rota sorgusu, veri kaynağı, sembol, çizgi katmanları ve kamera sınırları oluşturulur. Bu kod yapısı, sonuçların yalnızca harita tamamen yüklendikten sonra görüntülenmesini sağlar.
+Rota sorgusu, veri kaynağı, simge, çizgi katmanları ve kamera sınırları [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)içinde oluşturulur. Bu kod yapısı, sonuçların yalnızca haritanın tamamen yüklenmesi durumunda görüntülenmesini sağlar.
 
-## <a name="query-the-route-via-fetch-api"></a>Rotayı Getir API üzerinden sorgula
+## <a name="query-the-route-via-fetch-api"></a>Fetch API aracılığıyla rotayı sorgulama
 
-<iframe height='500' scrolling='no' title='Haritada A'dan B'ye yol tariflerini göster' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>ile haritada A'dan B'ye yol tariflerini</a> görün.
+<iframe height='500' scrolling='no' title='Haritada A 'dan B 'ye yönlendirmeler gösterme' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) ile <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>haritada bir harita üzerinde a 'dan B 'ye yönlendirmeler göster</a> bölümüne bakın.
 </iframe>
 
-Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve erişim belirteci kullanmak için kimlik doğrulama mekanizmasını ayarlar. Talimatlar için [bir harita oluşturduğunu](./map-create.md) görebilirsiniz.
+Yukarıdaki kodda, ilk kod bloğu bir harita nesnesi oluşturur ve kimlik doğrulama mekanizmasını erişim belirtecini kullanacak şekilde ayarlar. Yönergeler için [bir harita oluşturma](./map-create.md) ' ya bakabilirsiniz.
 
-İkinci kod bloğu, haritaya bir [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) nesnesi oluşturur ve ekler.
+İkinci kod bloğu oluşturur ve haritaya bir [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) nesnesi ekler.
 
-Üçüncü kod bloğu, rotanın başlangıç ve hedef noktalarını oluşturur. Daha sonra, bunları veri kaynağına ekler. [AddPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)kullanma ile ilgili talimatlar için [haritaüzerinde bir pin eklemek](map-add-pin.md) görebilirsiniz.
+Üçüncü kod bloğu, yol için başlangıç ve hedef noktaları oluşturur. Ardından, bunları veri kaynağına ekler. [Addpın](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)'leri kullanma hakkında yönergeler için [haritada PIN ekleme '](map-add-pin.md) ye bakabilirsiniz.
 
-[LineLayer,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) [DataSource'a](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sarılmış çizgi nesnelerini haritadaki satırlar olarak işler. Dördüncü kod bloğu oluşturur ve eşmeye bir çizgi katmanı ekler. [LineLayerOptions'da](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)bir satır katmanının özelliklerini görün.
+Bir [Linelayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan satır nesnelerini haritada satırlar olarak işler. Dördüncü kod bloğu oluşturur ve haritaya bir çizgi katmanı ekler. [Linelayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)'da bir çizgi katmanının özelliklerine bakın.
 
-[Sembol katmanı,](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) [Veri Kaynağı'na](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) sarılmış nokta tabanlı verileri haritadaki semboller olarak işlemek için metin veya simgeler kullanır. Beşinci kod bloğu oluşturur ve haritaya bir sembol katmanı ekler. [SymbolLayerOptions'da](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)bir sembol katmanının özelliklerini görün.
+Bir [sembol katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) , [veri kaynağında](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) kaydırılan nokta tabanlı verileri haritada semboller olarak oluşturmak için metin veya simgeleri kullanır. Beşinci kod bloğu oluşturur ve haritaya bir sembol katmanı ekler. Bkz. [Symbollayeroptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)'da bir sembol katmanının özelliklerine bakın.
 
-Bir sonraki kod `SouthWest` bloğu, başlangıç ve hedef noktalarından gelir ve `NorthEast` haritanın [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
+Sonraki kod bloğu, Başlangıç `SouthWest` ve `NorthEast` hedef noktalarından oluşur ve bu noktaları oluşturur ve haritanın [setcamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) özelliğini kullanarak haritanın sınırlarını ayarlar.
 
-Son kod bloğu, [Azure Haritalar Rota API'sine](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)arama isteği nde bulunmak için [API'yi getir'i](https://fetch.spec.whatwg.org/) kullanır. Yanıt daha sonra ayrıştırılır. Yanıt başarılı olduysa, enlem ve boylam bilgileri, bu noktaları bağlayarak bir dizi oluşturmak için kullanılır. Satır verileri daha sonra haritaüzerinde rota işlemek için veri kaynağına eklenir. Talimatlar için [haritada bir satır ekle'yi](map-add-line-layer.md) görebilirsiniz.
+Son kod bloğu, [Azure Maps Route API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)'sine bir arama isteği yapmak IÇIN [getirme API](https://fetch.spec.whatwg.org/) 'sini kullanır. Yanıt daha sonra ayrıştırılır. Yanıt başarılı olduysa, enlem ve boylam bilgileri, bu noktaları bağlayarak bir satırı dizi oluşturmak için kullanılır. Daha sonra, satır verileri haritada yolu işlemek için veri kaynağına eklenir. Yönergeler için [haritada satır ekleme '](map-add-line-layer.md) ye bakabilirsiniz.
 
-Olay [dinleyicisinin](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)içinde rota sorgusu, veri kaynağı, sembol, çizgi katmanları ve kamera sınırları oluşturulur. Yine, harita tamamen yüklendikten sonra sonuçların görüntülendiğinden emin olmak istiyoruz.
+Rota sorgusu, veri kaynağı, simge, çizgi katmanları ve kamera sınırları [olay dinleyicisi](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)içinde oluşturulur. Yine, eşlemenin tam olarak yüklendikten sonra sonuçların görüntülendiğinden emin olmak istiyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Yönlendirme hizmetini kullanmak için en iyi uygulamalar](how-to-use-best-practices-for-search.md)
+> [Yönlendirme hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
 
 Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edinin:
 
@@ -82,4 +82,4 @@ Tam kod örnekleri için aşağıdaki makalelere bakın:
 > [Haritada trafiği göster](./map-show-traffic.md)
 
 > [!div class="nextstepaction"]
-> [Harita ile etkileşim - fare olayları](./map-events.md)
+> [Harita-fare olaylarıyla etkileşim kurma](./map-events.md)

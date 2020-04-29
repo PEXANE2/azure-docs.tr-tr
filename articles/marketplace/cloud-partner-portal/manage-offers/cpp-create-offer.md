@@ -1,6 +1,6 @@
 ---
-title: Pazar Teklifleri Oluşturun | Azure Marketi
-description: Bulut İş Ortağı Portalını kullanarak Azure ve AppSource Pazar Yerlerinde teklifler oluşturun
+title: Market teklifleri oluştur | Azure Marketi
+description: Bulut İş Ortağı Portalı kullanarak Azure ve AppSource marketlerine yönelik teklifler oluşturun
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: dsindona
 ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286481"
 ---
-# <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketi ve AppSource teklifleri oluşturun
+# <a name="create-azure-marketplace-and-appsource-offers"></a>Azure Marketi ve AppSource teklifleri oluşturma
 
-Bulut İş Ortağı Portalı'nın temel amaçlarından biri, yayıncıların Microsoft Azure ve AppSource Pazar Yerleri'nde teklifler oluşturmasını (ve yayımlamasını) sağlamaktır.  Bu işlem her zaman [Yeni teklif menüsünden](../portal-tour/cpp-new-offer-menu.md)istenilen teklif türünü seçmekle başlar.  Buna karşılık, bu teklif türü için uygun **Yeni Teklif** sayfası görüntülenir.  Örneğin, aşağıdaki resimde Azure uygulama türü için varsayılan **Yeni Teklif** sayfası gösterilmektedir.
+Bulut İş Ortağı Portalı temel amacı, yayımcıların Microsoft Azure ve AppSource marketlerine teklifleri oluşturma (ve daha sonra yayımlama) olanağı sağlamaktır.  Bu işlem her zaman [yeni teklif menüsünden](../portal-tour/cpp-new-offer-menu.md)istenen teklif türünü seçerek başlar.  Yanıt ' da, bu teklif türü için uygun **yeni teklif** sayfası görüntülenir.  Örneğin, aşağıdaki görüntüde bir Azure Uygulama türü için varsayılan **yeni teklif** sayfası gösterilmektedir.
 
-![Yeni Teklif varsayılan sayfası](./media/new-offer-page.png)
+![Yeni teklif varsayılan sayfası](./media/new-offer-page.png)
 
-Bu sayfanın üst kısmında görüntülenen yatay menü çubuğunda iki sekme seçimi vardır: 
-- **Düzenleyici** sekmesi - Yeni teklif örneği için bilgi girişini ve varlıkların yüklenmesini sağlar.  Bu sekme varsayılan olarak görüntülenir.
-- **Durum** sekmesi - Yayımlama durumunu sağlar ve doğrulama ve gözden geçirme sorunlarını listeler. 
+Bu sayfanın üst kısmında görüntülenen yatay menü çubuğunda iki sekme seçimi bulunur: 
+- **Düzenleyici** sekmesi-yeni teklif örneği için bilgi girişi ve varlıkların karşıya yüklenmesine izin sağlar.  Bu sekme varsayılan olarak görüntülenir.
+- **Durum** sekmesi-yayımlama durumunu sağlar ve tüm doğrulama ve İnceleme sorunlarını listeler. 
 
-Bir teklif oluşturduğunuzda, söz le ilgili bilgileri girmek için **Düzenleyici** sekmesini kullanırsınız. 
+Bir teklif oluşturduğunuzda, bu teklif hakkında bilgi girmek için **Düzenleyici** sekmesini kullanırsınız. 
 
-## <a name="editing-operations"></a>Düzenleme işlemleri
+## <a name="editing-operations"></a>İşlemleri Düzenle
 
-Veri giriş alanının üzerinde bulunan yatay araç çubuğu aşağıdaki düğmeleri görüntüler:
+Veri giriş alanının üzerinde bulunan yatay araç çubuğunda aşağıdaki düğmeler görüntülenir:
 
 |   Düğme    |   Amaç                                                          |
 |   ------    |  --------                                                          |
-| **Kaydet**    | Son veri girişi değişikliklerini kaydeder.  Sayfadan uzaklaşmadan veya değişiklikleriniz kaybolmadan önce değişiklikleri el ile kaydetmeniz gerekir. | 
-| **At** | Son veri girişi değişikliklerini atar (son kaydeden itibaren)             |
-| **Karşılaştır** | Geçerli teklifin durumunu yayınlanan teklifle karşılaştırır.  Yalnızca bir teklif başarıyla yayımlandıktan sonra etkinleştirilir.  |
-| **Yayımlamak** | Bu teklif için yayımlama sürecini başla                       |
-| **Sil**  | Bu teklifi oluşturulduktan sonra ancak yayımlanmadan önce siler. |
+| **Kaydet**    | Son kullanılan veri girişi değişikliklerini kaydeder.  Sayfadan uzaklaşmadan önce değişiklikleri el ile kaydetmeniz gerekir, aksi, değişiklikler kaybolur. | 
+| **At** | Son veri girişi değişikliklerini (son kaydetme işleminden beri) atar             |
+| **Karşılaştır** | Yayınlanan teklifle geçerli teklifin durumunu karşılaştırır.  Yalnızca bir teklif başarıyla yayımlandıktan sonra etkinleştirilir.  |
+| **Yayımlama** | Bu teklif için yayımlama işlemini başlatır                       |
+| **Sil**  | Oluşturulduktan sonra, ancak yayımlanmadan önce bu teklifi siler. |
 |   |   |
 
 
-## <a name="editing-tabs"></a>Sekmeleri düzenleme
+## <a name="editing-tabs"></a>Sekmeleri Düzenle
 
-Bir teklif oluştururken, **Yeni Teklif** sayfasının sol dikey sütununda bulunan her sekmede gerekli ve isteğe bağlı verileri tedarik esiniz.  Veri toplama için metin kutuları, açılır menüler ve onay kutuları gibi standart kullanıcı arabirimi denetimleri görüntülenir.  Düzenleme sekmelerinin belirli koleksiyonu teklif türüne bağlı olsa da, aşağıdaki tablo ortak sekmelerden bazılarını listeler.
+Teklif oluştururken, **yeni teklif** sayfasının sol tarafındaki düşey sütununda bulunan her bir sekmede gerekli ve isteğe bağlı verileri sağlarsınız.  Metin kutuları, açılan menüler ve onay kutuları gibi standart Kullanıcı arabirimi denetimleri, veri toplama için görüntülenir.  Belirli bir düzen sekmesi koleksiyonu, teklif türüne bağlı olsa da, aşağıdaki tabloda bazı ortak sekmeler listelenmektedir.
 
 |      Sekme adı       |   Amaç                                                            |
 |      --------       |   -------                                                            |
-| **Teklif Ayarları**  | Teklif ve yayımcı kimlik bilgilerini toplar.                    |
-| **SKU'lar**            | Teklifinizin her bir stok tutma birimi (SKU) sürümü için teknik ve iş özelliklerini tanımlar |
-| **Test Sürüşü**      | Bu isteğe bağlı özelliği destekleyen türler için teklifiniz için bir gösteri tanımlanır.  Daha fazla bilgi için test [sürüşü nedir?](../test-drive/what-is-test-drive.md)  |
-| **Pazar Yeri** veya **Storefront** | Teklifi pazarda listelemek için kullanılan metin dizelerini, belgeleri ve görüntüleri toplar |
+| **Teklif ayarları**  | Teklif ve Yayımcı kimlik bilgilerini toplar.                    |
+| **SKU'lar**            | Teklifinizin her stok koruma birimi (SKU) sürümü için teknik ve iş özelliklerini tanımlar |
+| **Test Sürüşü**      | Bu isteğe bağlı özelliği destekleyen türler için teklifiniz için bir tanıtım tanımlar.  Daha fazla bilgi için bkz. [test sürücüsü nedir?](../test-drive/what-is-test-drive.md)  |
+| **Market** veya **storefront** | Market 'teki teklifi listelemek için kullanılan metin dizelerini, belgeleri ve görüntüleri toplar |
 | **Destek**         | Müşteri, mühendislik ve çevrimiçi destek için iletişim bilgilerini toplar  |
 |  |  |
 
-Benzer şekilde adlandırılmış sekmelerin içeriği farklı teklif türleri arasında farklılık gösterebilir.  Bu sekmelerin teklife özel ayrıntıları, her teklif türü için "Teklif Oluştur" bölümünde sağlanır.
+Benzer adlandırılmış sekmelerin içeriği farklı teklif türleri arasında farklılık gösterebilir.  Bu sekmelerin teklifine özgü ayrıntıları, her teklif türü için "teklif oluştur" bölümünde verilmiştir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir teklifi oluşturup kaydettikten ve yayımladıktan önce veya [sonra, teklifi görüntüleyebilirsiniz.](./cpp-view-status-offer.md)
+Bir teklif oluşturup kaydettikten sonra ve yayımlamadan önce veya sonra, [durumunu görüntüleyebilirsiniz](./cpp-view-status-offer.md).

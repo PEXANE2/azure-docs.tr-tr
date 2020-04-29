@@ -1,86 +1,86 @@
 ---
-title: az bahar bulutu
-description: Azure CLI'yi kullanarak Azure İlke Bulutu'nu yönetme
+title: az yay bulutu
+description: Azure CLı kullanarak Azure yay bulutu 'nı yönetme
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
 ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298788"
 ---
-# <a name="az-spring-cloud"></a>az bahar bulutu
+# <a name="az-spring-cloud"></a>az yay-bulut
 
-## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Azure CLI'yi kullanarak Azure İlke Bulutu'nu yönetme
+## <a name="manage-azure-spring-cloud-using-the-azure-cli"></a>Azure CLı kullanarak Azure yay bulutu 'nı yönetme
 
 >[!Note]
-> Azure İlkbahar Bulutu şu anda önizlemede.  Bu komutlar gelecekteki bir sürümde değiştirilebilir veya kaldırılabilir.
+> Azure yay bulutu Şu anda önizleme aşamasındadır.  Bu komutlar sonraki bir sürümde değiştirilebilir veya kaldırılabilir.
 
-| az bahar bulutu |  |
+| az yay-bulut |  |
 |------|------:|
-| [az bahar-bulut oluşturmak](#az-spring-cloud-create) | Bir Azure İlkbahar Bulutu örneği oluşturun. |
-| [az bahar-bulut silme](#az-spring-cloud-delete) | Azure İlkbahar Bulutörneğini silin. |
-| [az bahar bulutu listesi](#az-spring-cloud-list) | Verilen kaynak grubundaki tüm Azure İlkbahar Bulutörneklerini listele, aksi takdirde abonelik adlarını listele. |
-| [az bahar bulutgösterisi](#az-spring-cloud-show) | Azure İlkbahar Bulutu'nun ayrıntılarını gösterin. |
+| [az yay-bulut oluşturma](#az-spring-cloud-create) | Azure yay bulutu örneği oluşturun. |
+| [az yay-Cloud Delete](#az-spring-cloud-delete) | Azure yay bulutu örneğini silin. |
+| [az yay-bulut listesi](#az-spring-cloud-list) | Belirtilen kaynak grubundaki tüm Azure yay bulutu örneklerini listeleyin, aksi takdirde abonelik kimliklerini listeleyin. |
+| [az yay-bulut göster](#az-spring-cloud-show) | Azure Spring Cloud 'ın ayrıntılarını görüntüleyin. |
 
-| az bahar bulutu uygulaması | Azure İlkbahar Bulutu'ndaki uygulamaları yönetme komutları.  |
+| az Spring-Cloud App | Azure Spring Cloud 'da uygulamaları yönetmeye yönelik komutlar.  |
 | ---- | ----: |
-| [az bahar-bulut uygulaması oluşturmak](#az-spring-cloud-app-create) | Azure İlkbahar Bulutu'nda varsayılan dağıtımla yeni bir uygulama oluşturun. |
-| [az bahar-bulut uygulaması silme](#az-spring-cloud-app-delete) | Azure İlkbahar Bulutu'ndaki bir uygulamayı silin. |
-| [az bahar-bulut uygulaması dağıtmak](#az-spring-cloud-app-deploy) | Kaynak kodundan veya önceden oluşturulmuş bir ikiliden bir uygulamaya dağıtın ve ilgili yapılandırmaları güncelleyin. |
-| [az bahar-bulut uygulama listesi](#az-spring-cloud-app-list) | Azure Bahar Bulutu'ndaki tüm uygulamaları listeleyin. |
-| [az bahar-bulut uygulaması yeniden başlat](#az-spring-cloud-app-restart) | Üretim dağıtım varsayılanlarını kullanarak uygulamanın örneklerini yeniden başlatın. |
-| [az bahar-bulut uygulama ölçeği](#az-spring-cloud-app-scale) | Bir uygulamayı veya dağıtımlarını el ile ölçeklendirin. |
-| [az yay-bulut uygulaması set-dağıtım](#az-spring-cloud-app-set-deployment) | Bir uygulamanın üretim dağıtımını ayarlayın. |
-| [az bahar-bulut uygulaması gösterisi](#az-spring-cloud-app-show) | Azure İlkbahar Bulutu'nda bir uygulamanın ayrıntılarını gösterin. |
-| [az spring-cloud uygulaması show-deploy-log](#az-spring-cloud-app-show-deploy-log) | Kaynaktan en son dağıtım için yapı günlüklerini göster. Varsayılan olarak üretim dağıtımı için. |
-| [az bahar-bulut uygulaması başlangıç](#az-spring-cloud-app-start) | Üretim dağıtım varsayılanlarını kullanarak uygulamanın örneklerini başlatın. |
-| [az bahar-bulut uygulaması durdurmak](#az-spring-cloud-app-stop) | Üretim dağıtım varsayılanlarını kullanarak uygulama örneklerini durdurun. |
-| [az spring-cloud uygulaması güncellemesi](#az-spring-cloud-app-update) | Belirtilen uygulamanın yapılandırmasını güncelleştirin. |
+| [az yay-bulut uygulaması oluşturma](#az-spring-cloud-app-create) | Azure yay bulutu 'nda varsayılan bir dağıtıma sahip yeni bir uygulama oluşturun. |
+| [az yay-Cloud App Delete](#az-spring-cloud-app-delete) | Azure Spring Cloud 'da bir uygulamayı silin. |
+| [az yay-Cloud App Deploy](#az-spring-cloud-app-deploy) | Kaynak koddan veya önceden oluşturulmuş ikiliden bir uygulamaya dağıtın ve ilgili konfigürasyonları güncelleştirin. |
+| [az Spring-Cloud App List](#az-spring-cloud-app-list) | Azure Spring Cloud 'daki tüm uygulamaları listeleyin. |
+| [az Spring-Cloud App restart](#az-spring-cloud-app-restart) | Üretim dağıtım varsayılanlarını kullanarak uygulamanın örneklerini yeniden başlatın. |
+| [az yay-bulut uygulaması ölçeği](#az-spring-cloud-app-scale) | Bir uygulamayı veya dağıtımlarını el ile ölçeklendirin. |
+| [az yay-Cloud App Set-Deployment](#az-spring-cloud-app-set-deployment) | Uygulamanın üretim dağıtımını ayarlayın. |
+| [az yay-Cloud App Show](#az-spring-cloud-app-show) | Azure Spring Cloud 'da bir uygulamanın ayrıntılarını görüntüleyin. |
+| [az yay-Cloud App Show-Deploy-log](#az-spring-cloud-app-show-deploy-log) | Kaynaktan en son dağıtım için derleme günlüklerini göster. Varsayılan olarak üretim dağıtımı. |
+| [az Spring-Cloud app start](#az-spring-cloud-app-start) | Üretim dağıtım varsayılanlarını kullanarak uygulamanın örneklerini başlatın. |
+| [az yay-Cloud App durdur](#az-spring-cloud-app-stop) | Üretim dağıtım varsayılanlarını kullanarak uygulamanın örneklerini durdurun. |
+| [az Spring-Cloud App Update](#az-spring-cloud-app-update) | Belirtilen uygulamanın yapılandırmasını güncelleştirin. |
 
-| az bahar-bulut uygulaması bağlama | Azure Veri Hizmetleri ile bağlamaları yönetme komutları.  Bu ayarlar yürürlüğe girmeden önce uygulamanın yeniden başlatılması gerekir. |
+| az yay-bulut uygulaması bağlama | Azure veri Hizmetleri ile bağlamaları yönetme komutları.  Bu ayarların etkili olabilmesi için önce uygulamanın yeniden başlatılması gerekiyor. |
 | --- | ---: |
-| [az spring-cloud uygulaması bağlama listesi](#az-spring-cloud-app-binding-list) | Bir uygulamadaki tüm hizmet bağlamalarını listele. |
-| [az spring-cloud uygulaması bağlama kaldırmak](#az-spring-cloud-app-binding-remove) | Uygulamadan bir hizmet bağlama kaldırın. |
-| [az bahar-bulut uygulaması bağlama gösterisi](#az-spring-cloud-app-binding-show) | Hizmet bağlama ayrıntılarını göster. |
-| [az bahar-bulut uygulaması bağlama cosmos eklemek](#az-spring-cloud-app-binding-cosmos-add) | Azure CosmosDB'yi uygulamayla bağdın. |
-| [az spring-cloud uygulaması bağlama kozmos güncelleme](#az-spring-cloud-app-binding-cosmos-update) | Azure CosmosDB hizmet bağlamayı güncelleştirin. |
-| [az spring-cloud uygulaması bağlama mysql ekle](#az-spring-cloud-app-binding-mysql-add) | MySQL için bir Azure Veritabanını uygulamayla bağdın. |
-| [az spring-cloud uygulaması bağlama mysql güncellemesi](#az-spring-cloud-app-binding-mysql-update) | MySQL hizmet bağlama için bir Azure Veritabanı güncelleştirme. |
-| [az bahar-bulut uygulaması bağlayıcı redis eklemek](#az-spring-cloud-app-binding-redis-add) | Redis için bir Azure Önbelleği'ni uygulamayla birlikte bağdatın. |
-| [az spring-cloud uygulaması bağlayıcı redis güncelleme](#az-spring-cloud-app-binding-redis-update) | Redis hizmet bağlama için bir Azure Önbelleği güncelleştirme. |
+| [az yay-bulut uygulaması bağlama listesi](#az-spring-cloud-app-binding-list) | Bir uygulamadaki tüm hizmet bağlamalarını listeleyin. |
+| [az yay-bulut uygulaması bağlama kaldırma](#az-spring-cloud-app-binding-remove) | Uygulamadan bir hizmet bağlamasını kaldırın. |
+| [az yay-bulut uygulaması bağlama göster](#az-spring-cloud-app-binding-show) | Bir hizmet bağlamasının ayrıntılarını gösterin. |
+| [az yay-bulut uygulaması bağlama Cosmos Add](#az-spring-cloud-app-binding-cosmos-add) | Bir Azure CosmosDB 'yi uygulamayla bağlayın. |
+| [az yay-bulut uygulaması bağlama Cosmos güncelleştirmesi](#az-spring-cloud-app-binding-cosmos-update) | Azure CosmosDB hizmeti bağlamasını güncelleştirin. |
+| [az yay-bulut uygulaması bağlama MySQL Add](#az-spring-cloud-app-binding-mysql-add) | Uygulamayla bir MySQL için Azure veritabanı bağlayın. |
+| [az yay-bulut uygulaması bağlama MySQL güncelleştirmesi](#az-spring-cloud-app-binding-mysql-update) | MySQL için Azure veritabanı hizmeti bağlamayı güncelleştirin. |
+| [az yay-bulut uygulaması bağlama Red, Add](#az-spring-cloud-app-binding-redis-add) | Reda için Azure önbelleğini uygulamayla bağlayın. |
+| [az Spring-Cloud App Binding redsıs Update](#az-spring-cloud-app-binding-redis-update) | Redsıs hizmeti bağlaması için bir Azure önbelleğini güncelleştirin. |
 
-| az yay-bulut uygulaması dağıtımı | Azure Bahar Bulutu'nda bir uygulamanın dağıtım yaşam döngüsünü yönetme komutları. |
+| az yay-bulut uygulaması dağıtımı | Azure Spring Cloud 'da bir uygulamanın dağıtım yaşam döngüsünü yönetmeye yönelik komutlar. |
 | --- | ---: |
-| [az yay-bulut uygulaması dağıtım oluşturmak](#az-spring-cloud-app-deployment-create) | Uygulama için bir hazırlama dağıtımı oluşturun. |
-| [az yay-bulut uygulaması dağıtım silme](#az-spring-cloud-app-deployment-delete) | Uygulamanın dağıtımını silin. |
-| [az yay-bulut uygulaması dağıtım listesi](#az-spring-cloud-app-deployment-list) | Bir uygulamadaki tüm dağıtımları listele. |
-| [az bahar-bulut uygulaması dağıtım gösterisi](#az-spring-cloud-app-deployment-show) | Dağıtımın ayrıntılarını göster. |
+| [az yay-Cloud App Deployment oluşturma](#az-spring-cloud-app-deployment-create) | Uygulama için bir hazırlama dağıtımı oluşturun. |
+| [az yay-bulut uygulaması dağıtımı silme](#az-spring-cloud-app-deployment-delete) | Uygulamanın dağıtımını silin. |
+| [az yay-bulut uygulaması dağıtım listesi](#az-spring-cloud-app-deployment-list) | Bir uygulamadaki tüm dağıtımları listeleyin. |
+| [az yay-bulut uygulaması dağıtım göster](#az-spring-cloud-app-deployment-show) | Dağıtımın ayrıntılarını gösterin. |
 
-| az yay-bulut config-server | Azure Yay BulutConfig Server'ı yönetme komutları. |
+| az yay-bulut yapılandırması-sunucu | Azure Spring Cloud config Server 'ı yönetmeye yönelik komutlar. |
 | --- | ---: |
-| [az yay-bulut config-server net](#az-spring-cloud-config-server-clear) | Config Server'daki tüm ayarları silin. |
-| [az yay-bulut config-sunucu seti](#az-spring-cloud-config-server-set) | Config Server'ı bir YAML dosyasından tanımlayın. |
-| [az yay-bulut config-server göstermek](#az-spring-cloud-config-server-show) | Config Server yapılandırmayı göster. |
-| [az yay-bulut config sunucu git seti](#az-spring-cloud-config-server-git-set) | Config Server için git özelliklerini tanımlayın.  Önceki değerler üzerine yazılır. |
-| [az spring-cloud config server git repo ekle](#az-spring-cloud-config-server-git-repo-add) | Config Server'a yeni bir git deposu config ekleyin. |
-| [az spring-cloud config server git repo listesi](#az-spring-cloud-config-server-git-repo-list) | Config Server için tüm git deposu configs listeleyin. |
-| [az spring-cloud config server git repo kaldır](#az-spring-cloud-config-server-git-repo-remove) | Belirtilen git deposunu Config Server'dan kaldırın. |
+| [az yay-bulut yapılandırması-sunucu temizle](#az-spring-cloud-config-server-clear) | Yapılandırma sunucusundaki tüm ayarları silin. |
+| [az yay-bulut yapılandırması-sunucu kümesi](#az-spring-cloud-config-server-set) | Bir YAML dosyasından yapılandırma sunucusu tanımlayın. |
+| [az yay-bulut yapılandırması-sunucu göster](#az-spring-cloud-config-server-show) | Yapılandırma sunucusu yapılandırmasını göster. |
+| [az Spring-Cloud config Server git kümesi](#az-spring-cloud-config-server-git-set) | Yapılandırma sunucusu için git özelliklerini tanımlayın.  Önceki değerlerin üzerine yazılacak. |
+| [az Spring-Cloud config Server git deposu ekleme](#az-spring-cloud-config-server-git-repo-add) | Yapılandırma sunucusuna yeni bir git deposu yapılandırması ekleyin. |
+| [az Spring-Cloud config Server git deposu listesi](#az-spring-cloud-config-server-git-repo-list) | Yapılandırma sunucusu için tüm git deposu yapılandırmaları listesini listeleyin. |
+| [az Spring-Cloud config Server git deposu kaldır](#az-spring-cloud-config-server-git-repo-remove) | Belirtilen Git deposunu yapılandırma sunucusundan kaldırın. |
 
-| az yay-bulut test-endpoint | Azure İlkbahar Bulutu'nda uç nokta testini yönetme komutları |
+| az Spring-Cloud test-Endpoint | Azure Spring Cloud 'da Endpoint Testing 'i yönetmeye yönelik komutlar |
 | --- | ---: |
-| [az yay-bulut test-endpoint devre dışı](#az-spring-cloud-test-endpoint-disable) | Test bitiş noktasını devre dışı. |
-| [az yay-bulut test-endpoint etkinleştirmek](#az-spring-cloud-test-endpoint-enable) | Test bitiş noktasını etkinleştirin. |
-| [az yay-bulut test-endpoint listesi](#az-spring-cloud-test-endpoint-list) | Test bitiş noktası anahtarlarını listele. |
-| [az yay-bulut test-endpoint yenileme-anahtar](#az-spring-cloud-test-endpoint-renew-key) | Bir test bitiş noktası anahtarını yeniden oluşturun. |
+| [az yay-bulut testi-uç nokta devre dışı](#az-spring-cloud-test-endpoint-disable) | Test uç noktasını devre dışı bırakın. |
+| [az yay-bulut testi-uç nokta etkinleştir](#az-spring-cloud-test-endpoint-enable) | Test uç noktasını etkinleştirin. |
+| [az yay-bulut testi-uç nokta listesi](#az-spring-cloud-test-endpoint-list) | Test uç noktası anahtarlarını listeleyin. |
+| [az yay-bulut testi-uç nokta yenileme-anahtar](#az-spring-cloud-test-endpoint-renew-key) | Test-Endpoint anahtarını yeniden oluşturun. |
 
-## <a name="az-spring-cloud-create"></a>az bahar-bulut oluşturmak
+## <a name="az-spring-cloud-create"></a>az yay-bulut oluşturma
 
-Azure İlkbahar Bulutu'nda varsayılan dağıtımla yeni bir uygulama oluşturun.
+Azure yay bulutu 'nda varsayılan bir dağıtıma sahip yeni bir uygulama oluşturun.
 
 ```azurecli
 az spring-cloud create  --name -n
@@ -91,25 +91,25 @@ az spring-cloud create  --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Bu Azure İlkbahar Bulutu örneğinin adı. |
-| --kaynak grubu -g | Bu uygulama için kaynak grubunu belirtir.  Varsayılan grubu kullanarak yapılandırma`az configure --defaults group=<name>` |
+| --ad-n | Bu Azure yay bulutu örneğinin adı. |
+| --Resource-Group-g | Bu uygulama için kaynak grubunu belirtir.  Varsayılan grubu kullanarak yapılandırma`az configure --defaults group=<name>` |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --yer -l | Bu uygulama için sunucu konumunu belirtir.  Kullanarak geçerli konumları bulma`az account list-locations` |
-| --bekleme | Uzun süren işlemlerin tamamlanması için yapmayın.
+| --Location-l | Bu uygulama için sunucu konumunu belirtir.  Kullanarak geçerli konumlar bulma`az account list-locations` |
+| --No-wait | Uzun süre çalışan işlemlerin tamamlanmasını kullanmayın.
 
 ### <a name="examples"></a>Örnekler
 
-WestUS'ta yeni bir Azure Bahar Bulutu oluşturun
+WestUS 'te yeni bir Azure yay bulutu oluşturun
 
 ```azurecli
 az spring-cloud create -n MyService -g MyResourceGroup -l westus
 ```
 
-## <a name="az-spring-cloud-delete"></a>az bahar-bulut silme
+## <a name="az-spring-cloud-delete"></a>az yay-Cloud Delete
 
-Azure İlkbahar Bulutörneğini silin.
+Azure yay bulutu örneğini silin.
 
 ```azurecli
 az spring cloud --name -n
@@ -119,24 +119,24 @@ az spring cloud --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Silinecek Azure İlkbahar Bulutu örneğinin adı. |
-| --kaynak grubu -g | Azure İlkbahar Bulutu'nun ait olduğu kaynak grubunun adı. |
+| --ad-n | Silinecek Azure Spring Cloud örneğinin adı. |
+| --Resource-Group-g | Azure Spring Cloud 'ın ait olduğu kaynak grubunun adı. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| -beklememe | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| -No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
 ### <a name="example"></a>Örnek
 
-'MyResourceGroup'tan 'MyService' adlı bir Azure İlkbahar Bulutu örneğini silin.
+' MyResourceGroup ' öğesinden ' hizmetim ' adlı bir Azure yay bulutu örneğini silin.
 
 ```azurecli
 az spring-cloud delete -n MyService -g MyResourceGroup
 ```
 
-## <a name="az-spring-cloud-list"></a>az bahar bulutu listesi
+## <a name="az-spring-cloud-list"></a>az yay-bulut listesi
 
-Verilen kaynak grubuyla ilişkili tüm Azure İlkbahar Bulut örneklerini listele. Kaynak grubu belirtilmemişse, abonelik tanımlarını listele.
+Belirtilen kaynak grubuyla ilişkili tüm Azure yay bulutu örneklerini listeleyin. Kaynak grubu belirtilmemişse, abonelik kimliklerini listeleyin.
 
 ```azurecli
 az spring-cloud list --resource-group -g
@@ -144,11 +144,11 @@ az spring-cloud list --resource-group -g
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --kaynak grubu -g | Kaynak grubunun adı. |
+| --Resource-Group-g | Kaynak grubunun adı. |
 
-## <a name="az-spring-cloud-show"></a>az bahar bulutgösterisi
+## <a name="az-spring-cloud-show"></a>az yay-bulut göster
 
-Belirtilen Azure İlkbahar Bulutu örneğinin ayrıntılarını gösterin.
+Belirtilen Azure yay bulutu örneğinin ayrıntılarını göster.
 
 ```azurecli
 az spring-cloud show --name -n
@@ -157,12 +157,12 @@ az spring-cloud show --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Azure İlkbahar Bulutu örneğinin adı. |
-| --kaynak grubu -g | Azure İlkbahar Bulutu örneğinin ait olduğu Kaynak Grubu'nun adı.
+| --ad-n | Azure Spring Cloud örneğinin adı. |
+| --Resource-Group-g | Azure Spring Cloud örneğinin ait olduğu kaynak grubunun adı.
 
-## <a name="az-spring-cloud-app-create"></a>az bahar-bulut uygulaması oluşturmak
+## <a name="az-spring-cloud-app-create"></a>az yay-bulut uygulaması oluşturma
 
-Azure Yay Bulutu'nda yeni bir uygulama oluşturun.
+Azure yay bulutu 'nda yeni bir uygulama oluşturun.
 
 ```azurecli
 az spring-cloud app create --name -n
@@ -177,35 +177,35 @@ az spring-cloud app create --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --cpu | Örnek başına sanal çekirdek sayısı.  Varsayılan: 1. |
-| --enable-persistent-depolama | Boolean değeri.  Doğruysa, varsayılan yola sahip bir 50GB disk bağlar. |
-| --örnek sayısı | Örnek sayısı.  Varsayılan: 1. |
-| --is-kamu | Boolean değeri.  Doğruysa, bir kamu malı atar. |
+| --CPU | Örnek başına sanal çekirdek sayısı.  Varsayılan: 1. |
+| --Enable-kalıcı-depolama | Boolean değeri.  Doğru ise, varsayılan yol ile bir 50 disk bağlar. |
+| --örnek-sayısı | Örnek sayısı.  Varsayılan: 1. |
+| --,-public | Boolean değeri.  Doğru ise, ortak bir etki alanı atar. |
 | --bellek | Örnek başına GB bellek sayısı.  Varsayılan: 1. |
 
 ### <a name="examples"></a>Örnekler
 
-Varsayılan yapılandırmaya sahip bir uygulama oluşturun.
+Varsayılan yapılandırmayla bir uygulama oluşturun.
 
 ```azurecli
 az spring-cloud app create -n MyApp -s MyService
 ```
 
-3 örnekle herkese açık bir uygulama oluşturun.  Her örnekte 3 GB bellek ve 2 CPU çekirdeği vardır.
+3 örneğe sahip genel olarak erişilebilir bir uygulama oluşturun.  Her örnekte 3 GB bellek ve 2 CPU çekirdeği bulunur.
 
 ```azurecli
 az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memory 3
 ```
 
-## <a name="az-spring-cloud-app-delete"></a>az bahar-bulut uygulaması silme
+## <a name="az-spring-cloud-app-delete"></a>az yay-Cloud App Delete
 
-Azure İlkbahar Bulutu'ndaki bir uygulamayı siler.
+Azure Spring Cloud 'da bir uygulamayı siler.
 
 ```azurecli
 az spring cloud app delete  --name -n
@@ -215,13 +215,13 @@ az spring cloud app delete  --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-deploy"></a>az bahar-bulut uygulaması dağıtmak
+## <a name="az-spring-cloud-app-deploy"></a>az yay-Cloud App Deploy
 
-Kaynak kodundan veya önceden oluşturulmuş bir ikiliden Bir uygulamayı Azure Bahar Bulutu'na dağıtın ve ilgili yapılandırmaları güncelleyin.
+Kaynak koddan veya önceden oluşturulmuş bir ikiliden Azure Spring buluta bir uygulama dağıtın ve ilgili konfigürasyonları güncelleştirin.
 
 ```azurecli
 az spring cloud app deploy  --name -n
@@ -242,47 +242,47 @@ az spring cloud app deploy  --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --cpu | Örnek başına sanal CPI çekirdeği sayısı. |
-| --dağıtım -d | Varolan bir uygulama dağıtımının adı.  Belirtilmemişse üretim dağıtımı varsayılan. |
-| --env | 'Key[=value]' biçiminde boşluk ayrılmış ortam değişkenleri. |
-| --örnek sayısı | Örnek sayısı. |
-| --jar-yolu | Sağlanırsa, kavanozu verilen yoldan dağıtın. Aksi takdirde, geçerli klasörü katran olarak dağıtın. |
-| --jvm seçenekleri | JVM seçenekleri içeren bir dize.  Kabuk ayrıştma hatalarını önlemek için ' ' yerine '=' kullanın. Örneğin, `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --CPU | Örnek başına sanal CPı çekirdeği sayısı. |
+| --Deployment-d | Var olan bir uygulama dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
+| --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
+| --örnek-sayısı | Örnek sayısı. |
+| --jar-yol | Sağlanmışsa, belirtilen yoldan jar dağıtın. Aksi takdirde, geçerli klasörü bir tar olarak dağıtın. |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m`. |
 | --bellek | Örnek başına GB bellek sayısı. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
-| --runtime-version | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen `Java_11` `Java_8`değerler: , . |
-| --hedef modülü | Çocuk modülü dağıtılacak.  Kaynak kodundan birden çok kavanoz paketi oluşturulduğunda gereklidir. |
-| --sürüm | Dağıtım sürümü.  Ayarlanmamışsa değişmeden. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
+| --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler `Java_11`: `Java_8`,. |
+| --Target-Module | Dağıtılacak alt modül.  Kaynak koddan birden çok jar paketi oluşturulduğunda gereklidir. |
+| --sürüm | Dağıtım sürümü.  Ayarlanmamışsa değiştirilmez. |
 
 ### <a name="examples"></a>Örnekler
 
-Kaynak kodu bir uygulamaya dağıtın. Bu, geçerli dizini paketleyecek, Pivotal Build Service'i kullanarak bir ikili oluşturacak ve ardından uygulamaya dağıtılacaktır.
+Kaynak kodunu bir uygulamaya dağıtın. Bu, geçerli dizini paketleyebilir, özetleme derleme hizmetini kullanarak bir ikili oluşturur ve ardından uygulamaya dağıtır.
 
 ```azurecli
 az spring-cloud app deploy -n MyApp -s MyService
 ```
 
-JVM seçeneklerini ve ortam değişkenlerini kullanarak önceden oluşturulmuş bir kavanozu bir uygulamaya dağıtın.
+JVM seçeneklerini ve ortam değişkenlerini kullanarak bir uygulamaya önceden oluşturulmuş bir jar dağıtın.
 
 ```azurecli
 az spring-cloud app deploy -n MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseG1GC -XX:+UseStringDeduplication" --env foo=bar
 ```
 
-Kaynak kodu bir uygulamanın belirli bir dağıtımına dağıtın.
+Kaynak kodunu bir uygulamanın belirli bir dağıtımına dağıtın.
 
 ```azurecli
 az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 ```
 
-## <a name="az-spring-cloud-app-list"></a>az bahar-bulut uygulama listesi
+## <a name="az-spring-cloud-app-list"></a>az Spring-Cloud App List
 
-Azure Bahar Bulutu örneğindeki tüm uygulamaları listeleyin.
+Azure yay bulutu örneğindeki tüm uygulamaları listeleyin.
 
 ```azurecli
 az spring-cloud app list --resource-group -g
@@ -291,12 +291,12 @@ az spring-cloud app list --resource-group -g
 
 |Gerekli Parametreler | |
 | --- | ---: |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-restart"></a>az bahar-bulut uygulaması yeniden başlat
+## <a name="az-spring-cloud-app-restart"></a>az Spring-Cloud App restart
 
-Uygulamanın örneklerini yeniden başlatın.  Varsayılan olarak üretim dağıtımı için.
+Uygulamanın örneklerini yeniden başlatın.  Üretim dağıtımı varsayılan olarak belirlenmiştir.
 
 ```azurecli
 az spring-cloud app restart --name -n
@@ -308,16 +308,16 @@ az spring-cloud app restart --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan dağıtımının adı.  Belirtilmemişse üretim dağıtımı varsayılan. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
-## <a name="az-spring-cloud-app-scale"></a>az bahar-bulut uygulama ölçeği
+## <a name="az-spring-cloud-app-scale"></a>az yay-bulut uygulaması ölçeği
 
 Bir uygulamayı veya dağıtımlarını el ile ölçeklendirin.
 
@@ -334,33 +334,33 @@ az spring-cloud app scale --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --cpu | Uygulama örneği başına sanal CPU çekirdeği sayısı. |
-| --dağıtım -d | Uygulamanın varolan dağıtımının adı.  Belirtilmemişse üretim dağıtımı varsayılan. |
-| --örnek sayısı | Bu uygulamanın örneklerinin sayısı. |
-| --bellek | Uygulama örneği başına GB bellek sayısı. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| --CPU | Uygulama örneği başına sanal CPU çekirdeği sayısı. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretim dağıtımı yapılır. |
+| --örnek-sayısı | Bu uygulamanın örneklerinin sayısı. |
+| --bellek | Uygulama örneği başına GB bellek miktarı. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
 ### <a name="examples"></a>Örnekler
 
-Bir uygulamayı örnek başına 4 CPU çekirdeği ve 8 GB bellek olarak ölçeklendirin.
+Bir uygulamayı, örnek başına 4 CPU çekirdeği ve 8 GB bellek ile ölçeklendirin.
 
 ```azurecli
 az spring-cloud app scale -n MyApp -s MyService --cpu 3 --memory 8
 ```
 
-Uygulamanın dağıtımını 5 örneğe ölçeklendirin.
+Uygulamanın bir dağıtımını 5 örneğe ölçeklendirin.
 
 ```azurecli
 az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-count 5
 ```
 
-## <a name="az-spring-cloud-app-set-deployment"></a>az yay-bulut uygulaması set-dağıtım
+## <a name="az-spring-cloud-app-set-deployment"></a>az yay-Cloud App Set-Deployment
 
 Uygulamanın üretim dağıtımı için yapılandırma seçeneklerini ayarlayın.
 
@@ -374,26 +374,26 @@ az spring-cloud app set-deployment --deployment -d
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı. |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
 ### <a name="examples"></a>Örnekler
 
-Uygulamanın bir hazırlama dağıtımını üretime değiştirin.
+Uygulamanın hazırlama dağıtımını üretime değiştirme.
 
 ```azurecli
 az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 ```
 
-## <a name="az-spring-cloud-app-show"></a>az bahar-bulut uygulaması gösterisi
+## <a name="az-spring-cloud-app-show"></a>az yay-Cloud App Show
 
-Azure İlkbahar Bulutu'nda bir uygulamanın ayrıntılarını gösterin.
+Azure Spring Cloud 'da bir uygulamanın ayrıntılarını görüntüleyin.
 
 ```azurecli
 az spring-cloud app show --name -n
@@ -403,13 +403,13 @@ az spring-cloud app show --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-show-deploy-log"></a>az spring-cloud uygulaması show-deploy-log
+## <a name="az-spring-cloud-app-show-deploy-log"></a>az yay-Cloud App Show-Deploy-log
 
-Kaynak koddan son dağıtımın yapı günlüğünü gösterin.  Varsayılan olarak üretim ortamına.
+Kaynak koddan son dağıtımın Derleme günlüğünü göster.  Varsayılan değer üretim ortamıdır.
 
 ```azurecli
 az spring-cloud app show-deploy-log --name -n
@@ -420,17 +420,17 @@ az spring-cloud app show-deploy-log --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı.  Varsayılan olarak üretim ortamına. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
 
-## <a name="az-spring-cloud-app-start"></a>az bahar-bulut uygulaması başlangıç
+## <a name="az-spring-cloud-app-start"></a>az Spring-Cloud app start
 
-Uygulamanın örneklerini başlatır.  Varsayılan olarak üretim ortamına.
+Uygulamanın örneklerini başlatır.  Varsayılan değer üretim ortamıdır.
 
 ```azurecli
 az spring-cloud app start --name -n
@@ -442,18 +442,18 @@ az spring-cloud app start --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı.  Varsayılan olarak üretim ortamına. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
-## <a name="az-spring-cloud-app-stop"></a>az bahar-bulut uygulaması durdurmak
+## <a name="az-spring-cloud-app-stop"></a>az yay-Cloud App durdur
 
-Uygulamaörneklerini durdurun.  Varsayılan olarak üretim ortamına.
+Uygulamanın örneklerini durdurun.  Varsayılan değer üretim ortamıdır.
 
 ```azurecli
 az spring-cloud app stop --name -n
@@ -465,18 +465,18 @@ az spring-cloud app stop --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı.  Varsayılan olarak üretim ortamına. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
 
-## <a name="az-spring-cloud-app-update"></a>az spring-cloud uygulaması güncellemesi
+## <a name="az-spring-cloud-app-update"></a>az Spring-Cloud App Update
 
-Bir uygulamanın depolanan yapılandırmasını güncelleştirin.
+Uygulamanın depolanan yapılandırmasını güncelleştirin.
 
 ```azurecli
 az spring-cloud app update --name -n
@@ -493,19 +493,19 @@ az spring-cloud app update --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim -n | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad-n | Uygulamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı.  Varsayılan olarak üretim ortamına. |
-| --enable-persistent-depolama | Boolean.  Doğruysa, varsayılan yola sahip bir 50GB disk takın. |
-| --env | 'Key[=value]' biçiminde boşluk ayrılmış ortam değişkenleri. |
-| --is-kamu | Boolean.  Doğruysa, uygulamaya bir kamu malı atayın. |
-| --jvm seçenekleri | JVM seçenekleri içeren bir dize.  Kabuk ayrıştma hatalarını önlemek için ' ' yerine '=' kullanın. Örneğin, `--jvm-options='-Xms1024m -Xmx2048m`. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
-| --runtime-version | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen `Java_11` `Java_8`değerler: , . |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Varsayılan değer üretim ortamıdır. |
+| --Enable-kalıcı-depolama | Boolean.  Doğru ise, varsayılan yolla bir 50 disk bağlayın. |
+| --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
+| --,-public | Boolean.  Doğru ise, uygulamaya ortak bir etki alanı atayın. |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
+| --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler `Java_11`: `Java_8`,. |
 
 ### <a name="example"></a>Örnek
 
@@ -515,9 +515,9 @@ Uygulama için bir ortam değişkeni ekleyin.
 az spring-cloud app update --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-binding-list"></a>az spring-cloud uygulaması bağlama listesi
+## <a name="az-spring-cloud-app-binding-list"></a>az yay-bulut uygulaması bağlama listesi
 
-Bir uygulamadaki tüm hizmet bağlamalarını listele.
+Bir uygulamadaki tüm hizmet bağlamalarını listeleyin.
 
 ```azurecli
 az spring-cloud app binding list --app
@@ -528,12 +528,12 @@ az spring-cloud app binding list --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-binding-remove"></a>az spring-cloud uygulaması bağlama kaldırmak
+## <a name="az-spring-cloud-app-binding-remove"></a>az yay-bulut uygulaması bağlama kaldırma
 
-Uygulamadan bir hizmet bağlama kaldırın.
+Uygulamadan bir hizmet bağlamasını kaldırın.
 
 ```azurecli
 az spring-cloud app binding list --app
@@ -545,13 +545,13 @@ az spring-cloud app binding list --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Kaldırılacak hizmet in adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Kaldırılacak hizmet bağlamasının adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-binding-show"></a>az bahar-bulut uygulaması bağlama gösterisi
+## <a name="az-spring-cloud-app-binding-show"></a>az yay-bulut uygulaması bağlama göster
 
-Hizmet bağlama ayrıntılarını göster.
+Bir hizmet bağlamasının ayrıntılarını gösterin.
 
 ```azurecli
 az spring-cloud app binding show --app
@@ -563,13 +563,13 @@ az spring-cloud app binding show --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az bahar-bulut uygulaması bağlama cosmos eklemek
+## <a name="az-spring-cloud-app-binding-cosmos-add"></a>az yay-bulut uygulaması bağlama Cosmos Add
 
-Azure Cosmos DB'yi uygulamayla bağdın.
+Azure Cosmos DB uygulamayla bağlayın.
 
 ```azurecli
 az spring-cloud app binding cosmos add --api-type
@@ -592,19 +592,19 @@ az spring-cloud app binding list --app
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --api tipi | Aşağıdaki değerlerden birini kullanarak API türünü belirtin: cassandra, gremlin, mongo, sql, tablo. |
+| --api-Type | Şu değerlerden birini kullanarak API türünü belirtin: Cassandra, Gremlin, Mongo, SQL, Table. |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 |İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --koleksiyon adı | Koleksiyonun adı.  Gremlin kullanırken gereklidir. |
-| --veritabanı adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanırken gereklidir. |
-| --anahtar alanı | Cassandra anahtar alanı.  Cassandra kullanırken gereklidir. |
+| --koleksiyon-adı | Koleksiyonun adı.  Gremlin kullanılırken gereklidir. |
+| --veritabanı-adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanılırken gereklidir. |
+| --anahtar-boşluk | Cassandra anahtarı-boşluk.  Cassandra kullanılırken gereklidir. |
 
-## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az spring-cloud uygulaması bağlama kozmos güncelleme
+## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az yay-bulut uygulaması bağlama Cosmos güncelleştirmesi
 
 ```azurecli
 az spring-cloud app binding cosmos update --app
@@ -619,17 +619,17 @@ az spring-cloud app binding cosmos update --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 |İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --koleksiyon adı | Koleksiyonun adı.  Gremlin kullanırken gereklidir. |
-| --veritabanı adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanırken gereklidir. |
-| --anahtar alanı | Cassandra anahtar alanı.  Cassandra kullanırken gereklidir. |
+| --koleksiyon-adı | Koleksiyonun adı.  Gremlin kullanılırken gereklidir. |
+| --veritabanı-adı | Veritabanının adı.  Mongo, SQL ve Gremlin kullanılırken gereklidir. |
+| --anahtar-boşluk | Cassandra anahtarı-boşluk.  Cassandra kullanılırken gereklidir. |
 
-## <a name="az-spring-cloud-app-binding-mysql-add"></a>az spring-cloud uygulaması bağlama mysql ekle
+## <a name="az-spring-cloud-app-binding-mysql-add"></a>az yay-bulut uygulaması bağlama MySQL Add
 
 ```azurecli
 az spring-cloud app binding mysql add --app
@@ -644,17 +644,17 @@ az spring-cloud app binding mysql add --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --veritabanı adı | Veritabanının adı. |
+| --veritabanı-adı | Veritabanının adı. |
 | --anahtar | Hizmetin API anahtarı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --kaynak-id | Bağlatılabilmek için hizmetin Azure kaynak kimliği. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
-| --username | Veritabanı erişimi için kullanıcı adı. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --kaynak kimliği | Bağlanacak hizmetin Azure Kaynak KIMLIĞI. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
+| --username | Veritabanı erişimi için Kullanıcı adı. |
 
-## <a name="az-spring-cloud-app-binding-mysql-update"></a>az spring-cloud uygulaması bağlama mysql güncellemesi
+## <a name="az-spring-cloud-app-binding-mysql-update"></a>az yay-bulut uygulaması bağlama MySQL güncelleştirmesi
 
-Hizmet bağlama bağlantısını uygulamanın MySQL için bir Azure Veritabanına güncelleştirin.
+Uygulamayı bir MySQL için Azure veritabanı ile bağlantılı hizmet bağlamayı güncelleştirin.
 
 ```azurecli
 az spring-cloud app binding mysql update --add
@@ -669,19 +669,19 @@ az spring-cloud app binding mysql update --add
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --veritabanı adı | Veritabanının adı. |
+| --veritabanı-adı | Veritabanının adı. |
 | --anahtar | Hizmetin API anahtarı. |
-| --username | Veritabanı erişimi için kullanıcı adı. |
+| --username | Veritabanı erişimi için Kullanıcı adı. |
 
-## <a name="az-spring-cloud-app-binding-redis-add"></a>az bahar-bulut uygulaması bağlayıcı redis eklemek
+## <a name="az-spring-cloud-app-binding-redis-add"></a>az yay-bulut uygulaması bağlama Red, Add
 
-Redis için bir Azure Önbelleği'ni uygulamayla birlikte bağdatın.
+Reda için Azure önbelleğini uygulamayla bağlayın.
 
 ```azurecli
 az spring-cloud app binding redis add --app
@@ -695,72 +695,72 @@ az spring-cloud app binding redis add --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --kaynak-id | Bağlamak istediğiniz hizmetin Azure kaynak kimliği. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --kaynak kimliği | Bağlamak istediğiniz hizmetin Azure Kaynak KIMLIĞI. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --devre dışı-ssl | TLS'yi devre dışı kındırın. |
+| --Disable-SSL | TLS 'yi devre dışı bırakın. |
 
-## <a name="az-spring-cloud-app-binding-redis-update"></a>az spring-cloud uygulaması bağlayıcı redis güncelleme
+## <a name="az-spring-cloud-app-binding-redis-update"></a>az Spring-Cloud App Binding redsıs Update
 
-Redis için Azure Önbelleği için bir hizmet bağlamayı güncelleştirin.
+Redsıs için Azure önbelleği için bir hizmet bağlamayı güncelleştirin.
 
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --devre dışı-ssl | TLS'yi devre dışı kındırın. |
+| --Disable-SSL | TLS 'yi devre dışı bırakın. |
 
-## <a name="az-spring-cloud-app-deployment-create"></a>az yay-bulut uygulaması dağıtım oluşturmak
+## <a name="az-spring-cloud-app-deployment-create"></a>az yay-Cloud App Deployment oluşturma
 
 Uygulama için bir hazırlama dağıtımı oluşturun.
 
-Kodu dağıtmak veya ayarları varolan bir `az spring-cloud app deploy --deployment <staging-deployment>` dağıtımda güncellemek için, 'az yay bulutu uygulaması güncelleştirmesi --dağıtım. <staging deployment>
+Kodu dağıtmak veya mevcut bir dağıtıma ayarları güncelleştirmek için veya ' az Spring `az spring-cloud app deploy --deployment <staging-deployment>` -Cloud App Update--Deployment <staging deployment>' ı kullanın.
 
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Hizmet bağlama adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Hizmet bağlamanın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --cpu | Örnek başına sanal CPU çekirdeği sayısı.  Varsayılan değer: 1 |
-| --env | 'Key[=value]' biçiminde boşluk ayrılmış ortam değişkenleri. |
-| --örnek sayısı | Örnek sayısı. Varsayılan: 1. |
-| --jar-yolu | Eğer sağlanırsa, kavanozu dağıtın.  Aksi takdirde, geçerli klasörü katran olarak dağıtın. |
-| --jvm seçenekleri | JVM seçenekleri içeren bir dize.  Kabuk ayrıştma hatalarını önlemek için ' ' yerine '=' kullanın. Örneğin, `--jvm-options='-Xms1024m -Xmx2048m`. |
+| --CPU | Örnek başına sanal CPU çekirdeği sayısı.  Varsayılan: 1 |
+| --env | ' Key [= Value] ' biçiminde boşlukla ayrılmış ortam değişkenleri. |
+| --örnek-sayısı | Örnek sayısı. Varsayılan: 1. |
+| --jar-yol | Sağlanmışsa, jar dağıtın.  Aksi takdirde, geçerli klasörü bir tar olarak dağıtın. |
+| --JVM-seçenekler | JVM seçeneklerini içeren bir dize.  Kabuk ayrıştırma hatalarını önlemek için ' ' yerine ' = ' kullanın. Ör., `--jvm-options='-Xms1024m -Xmx2048m`. |
 | --bellek | Örnek başına GB bellek sayısı. |
-| --bekleme | Uzun süren işlemlerin tamamlanmasını beklemeyin. |
-| --runtime-version | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen `Java_11` `Java_8`değerler: , . |
-| --atlama-klon ayarları | Geçerli üretim dağıtım ayarlarını klonlayarak bir hazırlama dağıtımı oluşturun. |
-| --hedef modülü | Çocuk modülü dağıtılacak.  Kaynak kodundan birden çok kavanoz paketi oluşturulduğunda gereklidir. |
-| --sürüm | Dağıtım sürümü.  Ayarlanmamışsa değişmeden. |
+| --No-wait | Uzun süre çalışan işlemlerin bitmesini beklememe. |
+| --Runtime-sürümü | Uygulamada kullanılan dilin çalışma zamanı sürümü.  İzin verilen değerler `Java_11`: `Java_8`,. |
+| --Skip-Clone-Settings | Geçerli üretim dağıtım ayarlarını kopyalayarak bir hazırlama dağıtımı oluşturun. |
+| --Target-Module | Dağıtılacak alt modül.  Kaynak koddan birden çok jar paketi oluşturulduğunda gereklidir. |
+| --sürüm | Dağıtım sürümü.  Ayarlanmamışsa değiştirilmez. |
 
 ### <a name="examples"></a>Örnekler
 
-Uygulamanın yeni dağıtımına kaynak kodu dağıtın.  Bu, geçerli dizini paketleyecek, Pivotal Build System'i kullanarak bir ikili oluşturacak ve sonra dağıtacaktır.
+Kaynak kodunu uygulamanın yeni bir dağıtımına dağıtın.  Bu, geçerli dizini paketleyebilir, özetleme yapı sistemini kullanarak bir ikili oluşturur ve ardından dağıtır.
 
 ```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService
 ```
 
-JVM seçenekleri ve ortam değişkenleri içeren bir uygulamaya önceden oluşturulmuş bir kavanoz dağıtın.
+JVM seçenekleri ve ortam değişkenleri içeren bir uygulamaya önceden oluşturulmuş bir jar dağıtımı yapın.
 
 ```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseStringDeDuplication" --env foo=bar
 ```
 
-## <a name="az-spring-cloud-app-deployment-delete"></a>az yay-bulut uygulaması dağıtım silme
+## <a name="az-spring-cloud-app-deployment-delete"></a>az yay-bulut uygulaması dağıtımı silme
 
 Uygulamanın dağıtımını silin.
 
@@ -774,13 +774,13 @@ az spring-cloud app deployment delete --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Dağıtımın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Dağıtımın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
 ## <a name="az-spring-cloud-app-deployment-list"></a>az yay-bulut uygulaması dağıtım listesi
 
-Bir uygulamadaki tüm dağıtımları listele.
+Bir uygulamadaki tüm dağıtımları listeleyin.
 
 ```azurecli
 az spring-cloud app deployment list --app
@@ -791,12 +791,12 @@ az spring-cloud app deployment list --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-app-deployment-show"></a>az bahar-bulut uygulaması dağıtım gösterisi
+## <a name="az-spring-cloud-app-deployment-show"></a>az yay-bulut uygulaması dağıtım göster
 
-Dağıtımın ayrıntılarını göster.
+Bir dağıtımın ayrıntılarını göster.
 
 ```azurecli
 az spring-cloud app deployment show --app
@@ -808,13 +808,13 @@ az spring-cloud app deployment show --app
 | Gerekli Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --isim | Dağıtımın adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --hizmet -s | Azure Bahar Bulutu'nun adı.  Varsayılan hizmeti kullanarak `az configure --defaults spring-cloud=<name>`yapılandırabilirsiniz. |
+| --ad | Dağıtımın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --hizmet-s | Azure Spring Cloud 'ın adı.  Kullanarak `az configure --defaults spring-cloud=<name>`varsayılan hizmeti yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-config-server-clear"></a>az yay-bulut config-server net
+## <a name="az-spring-cloud-config-server-clear"></a>az yay-bulut yapılandırması-sunucu temizle
 
-Config Server'daki tüm yapılandırma ayarlarını silin.
+Yapılandırma sunucusundaki tüm yapılandırma ayarlarını silin.
 
 ```azurecli
 az spring-cloud config-server clear --name
@@ -823,12 +823,12 @@ az spring-cloud config-server clear --name
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-config-server-set"></a>az yay-bulut config-sunucu seti
+## <a name="az-spring-cloud-config-server-set"></a>az yay-bulut yapılandırması-sunucu kümesi
 
-Yaml dosyasını kullanarak Config Server'daki yapılandırma ayarlarını ayarlayın.
+Bir YAML dosyası kullanarak yapılandırma sunucusu üzerindeki yapılandırma ayarlarını belirleyin.
 
 ```azurecli
 az spring-cloud config-server set --config-file
@@ -839,17 +839,17 @@ az spring-cloud config-server set --config-file
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --config-dosya | Config Server yapılandırması için bir YAML bildirimine dosya yolu. |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --config-File | Yapılandırma sunucusunun yapılandırması için bir YAML bildiriminin dosya yolu. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --bekleme | Uzun süren işlemlerin tamamlanması için yapmayın.
+| --No-wait | Uzun süre çalışan işlemlerin tamamlanmasını kullanmayın.
 
-## <a name="az-spring-cloud-config-server-show"></a>az yay-bulut config-server göstermek
+## <a name="az-spring-cloud-config-server-show"></a>az yay-bulut yapılandırması-sunucu göster
 
-Config Server ayarlarını göster.
+Yapılandırma sunucusu ayarlarını görüntüleyin.
 
 ```azurecli
 az spring-cloud config-server show --name -n
@@ -858,12 +858,12 @@ az spring-cloud config-server show --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-config-server-git-set"></a>az yay-bulut config-server git seti
+## <a name="az-spring-cloud-config-server-git-set"></a>az yay-bulut yapılandırması-sunucu git kümesi
 
-Config Server için git özelliklerini ayarlayın.  Bu, varolan tüm git özelliklerinin üzerine yazılır.
+Yapılandırma sunucusu için git özelliklerini ayarlayın.  Bu, var olan tüm git özelliklerinin üzerine yazar.
 
 ```azurecli
 az spring-cloud config-server git set --name -n
@@ -882,23 +882,23 @@ az spring-cloud config-server git set --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --uri | Uri ekconfig. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --URI | Eklenen yapılandırmaya ait URI. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --erteleme | Nesneyi Azure'a göndermek yerine geçici olarak yerel önbellekte saklayın.  Görüntülemek `az cache` için kullanın / temizleyin. |
-| --ana bilgisayar anahtarı | Eklenen config için ana bilgisayar anahtarı. |
-| --ana bilgisayar-anahtar algoritması | Eklenen config için ana bilgisayar anahtar algoritması. |
-| --etiket | Eklenen config etiketi. |
-| --parola | Eklenen config'in şifresi. |
-| --özel anahtar | Eklenen config özel anahtarı. |
-| --arama yolları | Eklenen config arama yolları.  Birden çok yol için virgül sınırlayıcıları kullanın. |
-| --sıkı-host-anahtar denetimi | Eklenen config'in sıkı ana bilgisayar anahtarı denetimini sağlar. |
-| --username | Eklenen config kullanıcı adı. |
+| --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek `az cache` /temizlemek için kullanın. |
+| --Ana bilgisayar-anahtar | Eklenen yapılandırma için ana bilgisayar anahtarı. |
+| --Host-anahtar algoritması | Eklenen yapılandırma için konak anahtar algoritması. |
+| --Etiket | Eklenen yapılandırma etiketi. |
+| --parola | Eklenen yapılandırmaya ait parola. |
+| --özel-anahtar | Eklenen yapılandırmaya ait özel anahtar. |
+| --Arama-yollar | Eklenen yapılandırmaya ait arama yolları.  Birden çok yol için virgül sınırlayıcılarını kullanın. |
+| --katı-konak-anahtar denetimi | Eklenen yapılandırmaya katı ana bilgisayar anahtarı denetimini sunar. |
+| --username | Eklenen yapılandırmaya ait Kullanıcı adı. |
 
-## <a name="az-spring-cloud-config-server-git-repo-add"></a>az yay-bulut config-server git repo eklemek
+## <a name="az-spring-cloud-config-server-git-repo-add"></a>az yay-bulut yapılandırması-sunucu git deposu ekleme
 
 ```azurecli
 az spring-cloud config-server git repo add --name -n
@@ -919,27 +919,27 @@ az spring-cloud config-server git repo add --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --repo adı | Repo'nun URI'si. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --uri | Uri ekconfig. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Repo adı | Deponun URI 'SI. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --URI | Eklenen yapılandırmaya ait URI. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --erteleme | Nesneyi Azure'a göndermek yerine geçici olarak yerel önbellekte saklayın.  Görüntülemek `az cache` için kullanın / temizleyin. |
-| --ana bilgisayar anahtarı | Eklenen config için ana bilgisayar anahtarı. |
-| --ana bilgisayar-anahtar algoritması | Eklenen config için ana bilgisayar anahtar algoritması. |
-| --etiket | Eklenen config etiketi. |
-| --parola | Eklenen config'in şifresi. |
-| --desen | Repo için desen.  Birden çok yol için virgül sınırlayıcıları kullanın.|
-| --özel anahtar | Eklenen config özel anahtarı. |
-| --arama yolları | Eklenen config arama yolları.  Birden çok yol için virgül sınırlayıcıları kullanın. |
-| --sıkı-host-anahtar denetimi | Eklenen config'in sıkı ana bilgisayar anahtarı denetimini sağlar. |
-| --username | Eklenen config kullanıcı adı. |
+| --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek `az cache` /temizlemek için kullanın. |
+| --Ana bilgisayar-anahtar | Eklenen yapılandırma için ana bilgisayar anahtarı. |
+| --Host-anahtar algoritması | Eklenen yapılandırma için konak anahtar algoritması. |
+| --Etiket | Eklenen yapılandırma etiketi. |
+| --parola | Eklenen yapılandırmaya ait parola. |
+| --Model | Depo için model.  Birden çok yol için virgül sınırlayıcılarını kullanın.|
+| --özel-anahtar | Eklenen yapılandırmaya ait özel anahtar. |
+| --Arama-yollar | Eklenen yapılandırmaya ait arama yolları.  Birden çok yol için virgül sınırlayıcılarını kullanın. |
+| --katı-konak-anahtar denetimi | Eklenen yapılandırmaya katı ana bilgisayar anahtarı denetimini sunar. |
+| --username | Eklenen yapılandırmaya ait Kullanıcı adı. |
 
-## <a name="az-spring-cloud-config-server-git-repo-list"></a>az yay-bulut config-server git repo listesi
+## <a name="az-spring-cloud-config-server-git-repo-list"></a>az yay-bulut yapılandırması-sunucu git deposu listesi
 
-Config Server'da tanımlanan tüm git depolarını listele
+Yapılandırma sunucusunda tanımlanan tüm Git depolarını listeleme
 
 ```azurecli
 az spring-cloud config-server git repo list --name -n
@@ -949,16 +949,16 @@ az spring-cloud config-server git repo list --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --erteleme | Nesneyi Azure'a göndermek yerine geçici olarak yerel önbellekte saklayın.  Görüntülemek `az cache` için kullanın / temizleyin. |
+| --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek `az cache` /temizlemek için kullanın. |
 
-## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az yay-bulut config-server git repo kaldırmak
+## <a name="az-spring-cloud-config-server-git-repo-remove"></a>az yay-bulut yapılandırması-sunucu git deposu kaldır
 
-Varolan bir git repo yapılandırmasını Config Server'dan kaldırın.
+Yapılandırma sunucusundan var olan bir git deposu yapılandırmasını kaldırın.
 
 ```azurecli
 az spring-cloud config-server git repo remove --name -n
@@ -969,17 +969,17 @@ az spring-cloud config-server git repo remove --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --repo adı | Repo'nun URI'si. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Repo adı | Deponun URI 'SI. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
-| --erteleme | Nesneyi Azure'a göndermek yerine geçici olarak yerel önbellekte saklayın.  Görüntülemek `az cache` için kullanın / temizleyin. |
+| --ertele | Azure 'a göndermek yerine, nesneyi yerel önbellekte geçici olarak depolayın.  Görüntülemek `az cache` /temizlemek için kullanın. |
 
-## <a name="az-spring-cloud-test-endpoint-disable"></a>az yay-bulut test-endpoint devre dışı
+## <a name="az-spring-cloud-test-endpoint-disable"></a>az yay-bulut testi-uç nokta devre dışı
 
-Azure İlkbahar Bulutu'nun test bitiş noktasını devre dışı
+Azure Spring Cloud 'ın test uç noktasını devre dışı bırak
 
 ```azurecli
 az spring-cloud test-endpoint disable --name -n
@@ -988,12 +988,12 @@ az spring-cloud test-endpoint disable --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-test-endpoint-enable"></a>az yay-bulut test-endpoint etkinleştirmek
+## <a name="az-spring-cloud-test-endpoint-enable"></a>az yay-bulut testi-uç nokta etkinleştir
 
-Azure İlkbahar Bulutu için test bitiş noktasını etkinleştirin. 
+Azure yay bulutu için test uç noktasını etkinleştirin. 
 
 ```azurecli
 az spring-cloud test-endpoint enable --name -n
@@ -1002,12 +1002,12 @@ az spring-cloud test-endpoint enable --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
-## <a name="az-spring-cloud-test-endpoint-list"></a>az yay-bulut test-endpoint listesi 
+## <a name="az-spring-cloud-test-endpoint-list"></a>az yay-bulut testi-uç nokta listesi 
 
-Azure İlkbahar Bulutu için kullanılabilir test bitiş noktası anahtarlarını listele.
+Azure yay bulutu için kullanılabilir test uç noktası anahtarlarını listeleyin.
 
 ```azurecli
 az spring-cloud test-endpoint list --name -n
@@ -1018,17 +1018,17 @@ az spring-cloud test-endpoint list --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
 
 | İsteğe Bağlı Parametreler | |
 | --- | ---: |
 | --uygulama | Uygulamanın adı. |
-| --dağıtım -d | Uygulamanın varolan bir dağıtımının adı.  Belirtilmemişse varsayılan üretim. |
+| --Deployment-d | Uygulamanın var olan dağıtımının adı.  Belirtilmemişse, varsayılan olarak üretime yapılır. |
 
-## <a name="az-spring-cloud-test-endpoint-renew-key"></a>az yay-bulut test-endpoint yenileme-anahtar
+## <a name="az-spring-cloud-test-endpoint-renew-key"></a>az yay-bulut testi-uç nokta yenileme-anahtar
 
-Azure Bahar Bulutu için bir test bitiş noktası anahtarını yeniden oluşturun.
+Azure yay bulutu için bir test uç noktası anahtarı oluşturun.
 
 ```azurecli
 az spring-cloud test-endpoint renew-key --name -n
@@ -1038,6 +1038,6 @@ az spring-cloud test-endpoint renew-key --name -n
 
 | Gerekli Parametreler | |
 | --- | ---: |
-| --isim | Azure Bahar Bulutu'nun adı. |
-| --kaynak grubu -g | Kaynak grubunun adı.  Varsayılan grubu kullanarak `az configure --defaults group=<name>`yapılandırabilirsiniz. |
-| --türü | Test bitiş noktası anahtarı türü.  İzin verilen değerler: Birincil, İkincil. |
+| --ad | Azure Spring Cloud 'ın adı. |
+| --Resource-Group-g | Kaynak grubunun adı.  Kullanarak `az configure --defaults group=<name>`varsayılan grubu yapılandırabilirsiniz. |
+| --tür | Test uç noktası anahtarının türü.  İzin verilen değerler: birincil, Ikincil. |

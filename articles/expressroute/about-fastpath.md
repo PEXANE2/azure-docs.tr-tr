@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute FastPath Hakkında
+title: Azure ExpressRoute FastPath hakkında
 description: Ağ geçidini atlayarak ağ trafiğini göndermek için Azure ExpressRoute FastPath hakkında bilgi edinin
 services: expressroute
 author: cherylmc
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: cherylmc
 ms.openlocfilehash: 265004b1171d1df95b3090676d5836b951c28a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80282860"
 ---
 # <a name="about-expressroute-fastpath"></a>ExpressRoute FastPath hakkında
 
-ExpressRoute sanal ağ ağ geçidi, ağ yollarını ve ağ trafiğini yönlendirmek için tasarlanmıştır. FastPath, şirket içi ağınızla sanal ağınız arasındaki veri yolu performansını artırmak için tasarlanmıştır. FastPath etkinleştirildiğinde ağ trafiğini doğrudan sanal ağdaki sanal makinelere göndererek ağ geçidini atlar.
+ExpressRoute sanal ağ geçidi, ağ yollarını Exchange ve ağ trafiğini yönlendirme için tasarlanmıştır. FastPath, şirket içi ağınız ve sanal ağınız arasındaki veri yolu performansını geliştirmek için tasarlanmıştır. Etkin olduğunda, FastPath ağ trafiğini, ağ geçidini atlayarak sanal ağdaki sanal makinelere doğrudan gönderir.
 
 ## <a name="requirements"></a>Gereksinimler
 
-### <a name="circuits"></a>Devre
+### <a name="circuits"></a>Uygulanıp
 
-FastPath tüm ExpressRoute devrelerinde kullanılabilir.
+FastPath tüm ExpressRoute devrelerinin üzerinde kullanılabilir.
 
 ### <a name="gateways"></a>Ağ geçitleri
 
-FastPath, sanal ağ ve şirket içi ağ arasında yol alışverişi yapmak için bir sanal ağ ağ geçidi oluşturulmasını gerektirir. Performans bilgileri ve ağ geçidi SUS'ları da dahil olmak üzere sanal ağ ağ geçitleri ve ExpressRoute hakkında daha fazla bilgi için [ExpressRoute sanal ağ ağ ağ geçitlerine](expressroute-about-virtual-network-gateways.md)bakın.
+FastPath, sanal ağ ile şirket içi ağ arasındaki yolların değişimi için bir sanal ağ geçidinin oluşturulmasını gerektirir. Performans bilgileri ve ağ geçidi SKU 'Ları dahil sanal ağ geçitleri ve ExpressRoute hakkında daha fazla bilgi için bkz. [ExpressRoute sanal ağ geçitleri](expressroute-about-virtual-network-gateways.md).
 
-FastPath'i yapılandırmak için sanal ağ ağ ağ geçidinin aşağıdakilerden biri olması gerekir:
+FastPath 'i yapılandırmak için sanal ağ geçidi şunlardan biri olmalıdır:
 
-* Ultra Performans
-* Ergw3AZ
+* Ultra performans
+* ErGw3AZ
 
 ## <a name="supported-features"></a>Desteklenen özellikler
 
-FastPath çoğu yapılandırmayı desteklerken, aşağıdaki özellikleri desteklemez:
+FastPath çoğu yapılandırmayı desteklese de, aşağıdaki özellikleri desteklemez:
 
-* Ağ geçidi alt ağındaki UDR: Sanal ağınızın ağ geçidi alt ağına bir UDR uygularsanız, şirket içi ağınızdaki ağ trafiği sanal ağ ağ geçidine gönderilmeye devam edecektir.
+* Ağ geçidi alt ağında UDR: sanal ağınızın ağ geçidi alt ağına UDR uygularsanız, şirket içi ağınızdan gelen ağ trafiği sanal ağ geçidine gönderilmeye devam edecektir.
 
-* VNet Peering: ExpressRoute'a bağlı olana bakan diğer sanal ağlarınız varsa, şirket içi ağınızdaki ağ trafiği diğer sanal ağlara (yani "Spoke" VNets) sanal ağa gönderilmeye devam edecektir Ağ geçidi. Geçici çözüm, tüm sanal ağları doğrudan ExpressRoute devresine bağlamaktır.
+* VNet eşlemesi: ExpressRoute 'a bağlanan başka sanal ağlarınız varsa, şirket içi ağınızdan diğer sanal ağlara (yani "bağlı bileşen" sanal ağları) ağ trafiği, sanal ağ geçidine gönderilmeye devam edecektir. Geçici çözüm tüm sanal ağları ExpressRoute devresine doğrudan bağlamak olur.
 
-* Temel Yük Dengeleyicisi: Sanal ağınızda bir Temel dahili yük dengeleyicisi dağıtırsanız veya sanal ağınızda dağıttığınız Azure PaaS hizmeti temel dahili yük dengeleyicisi kullanırsa, şirket içi ağınızdan, ağ trafiğinden, barındırılan sanal IP'lere kadar olan ağ trafiği Temel yük dengeleyicisi sanal ağ ağ geçidine gönderilir. Çözüm, Temel yük dengeleyicisini [Standart yük dengeleyicisine](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)yükseltmektir.
+* Temel Load Balancer: sanal ağınızda temel bir iç yük dengeleyici dağıtırsanız veya sanal ağınızda dağıttığınız Azure PaaS hizmeti temel bir iç yük dengeleyici kullanıyorsa, şirket içi ağınızdan temel yük dengeleyicide barındırılan sanal IP 'lere olan ağ trafiği sanal ağ geçidine gönderilir. Çözüm, temel yük dengeleyiciyi [Standart yük dengeleyiciye](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)yükseltmeye yönelik bir çözümdür.
 
-* Özel Bağlantı: Şirket içi ağınızdan sanal ağınızdaki özel bir [bitiş noktasına](../private-link/private-link-overview.md) bağlanırsanız, bağlantı sanal ağ ağ geçidinden geçer.
+* Özel bağlantı: şirket içi ağınızdan sanal ağınızdaki [özel bir uç noktaya](../private-link/private-link-overview.md) bağlanırsanız bağlantı, sanal ağ geçidi üzerinden geçer.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-FastPath'i etkinleştirmek [için, expressroute'a sanal ağ bağlayın'a](expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)bakın.
+FastPath 'i etkinleştirmek için bkz. [sanal ağı ExpressRoute 'A bağlama](expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).

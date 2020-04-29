@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Ağ Geçidi için TLS ilkesine genel bakış
-description: Azure Uygulama Ağ Geçidi için TLS ilkesini nasıl yapılandıracak ve arka uçtaki bir sunucu çiftliğinden şifreleme ve şifre çözme yükünü nasıl azalttınız öğrenin.
+title: Azure Application Gateway için TLS ilkesine genel bakış
+description: Azure Application Gateway TLS ilkesini yapılandırmayı ve arka uç sunucu grubundan şifreleme ve şifre çözme ek yükünü azaltmayı öğrenin.
 services: application gateway
 author: amsriva
 ms.service: application-gateway
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 871cb930e867002d8af1e7755de27d4873327543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80257385"
 ---
-# <a name="application-gateway-tls-policy-overview"></a>Uygulama Ağ Geçidi TLS ilkesine genel bakış
+# <a name="application-gateway-tls-policy-overview"></a>Application Gateway TLS ilkesine genel bakış
 
-TLS/SSL sertifika yönetimini merkezileştirmek ve arka uçtaki bir sunucu çiftliğinden şifreleme ve şifre çözme yükünü azaltmak için Azure Application Gateway'i kullanabilirsiniz. Bu merkezi TLS işleme, kuruluş güvenlik gereksinimlerinize uygun merkezi bir TLS ilkesi belirtmenize de olanak tanır. Bu, uyumluluk gereksinimlerinin yanı sıra güvenlik yönergelerini ve önerilen uygulamaları karşılamanıza yardımcı olur.
+Azure Application Gateway kullanarak TLS/SSL sertifika yönetimini merkezileştirmek ve bir arka uç sunucu grubundan şifreleme ve şifre çözme yükünü azaltmak için kullanabilirsiniz. Bu merkezi TLS işleme, kurumsal güvenlik gereksinimlerinize uygun bir merkezi TLS ilkesi belirtmenize de olanak tanır. Bu, uyumluluk gereksinimlerini ve güvenlik yönergelerini ve önerilen uygulamaları karşılamanıza yardımcı olur.
 
-TLS politikası, TLS protokol sürümünün yanı sıra şifre paketlerinin denetimini ve TLS el sıkışmasırasında şifrelerin kullanıldığı sırayı içerir. Application Gateway, TLS ilkesini denetlemek için iki mekanizma sunar. Önceden tanımlanmış bir ilke veya özel bir ilke kullanabilirsiniz.
+TLS ilkesi TLS protokol sürümünün ve şifreleme paketlerinin yanı sıra bir TLS el sıkışması sırasında şifrelemelerin kullanıldığı sırayı da içerir. Application Gateway, TLS ilkesini denetlemek için iki mekanizma sunar. Önceden tanımlanmış bir ilke ya da özel ilke kullanabilirsiniz.
 
 ## <a name="predefined-tls-policy"></a>Önceden tanımlanmış TLS ilkesi
 
-Uygulama Ağ Geçidi'nin önceden tanımlanmış üç güvenlik ilkeleri vardır. Uygun güvenlik düzeyini elde etmek için ağ geçidinizi bu ilkelerden herhangi biriyle yapılandırabilirsiniz. İlke adları, yapılandırıldıkları yıl ve aya göre açıklamalı olarak açıklanır. Her poliçe farklı TLS protokol sürümleri ve şifre paketleri sunar. En iyi TLS güvenliğini sağlamak için en yeni TLS ilkelerini kullanmanızı öneririz.
+Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun güvenlik düzeyini almak için ağ geçidinizi bu ilkelerden herhangi biriyle yapılandırabilirsiniz. İlke adlarına, yapılandırıldığı yıl ve aya göre açıklama eklenir. Her ilke farklı TLS protokol sürümleri ve şifre paketleri sunar. En iyi TLS güvenliğini sağlamak için en yeni TLS ilkelerini kullanmanızı öneririz.
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -53,17 +53,17 @@ Uygulama Ağ Geçidi'nin önceden tanımlanmış üç güvenlik ilkeleri vardır
 
 ## <a name="custom-tls-policy"></a>Özel TLS ilkesi
 
-Gereksinimleriniz için önceden tanımlanmış bir TLS ilkesinin yapılandırılması gerekiyorsa, kendi özel TLS ilkenizi tanımlamanız gerekir. Özel bir TLS ilkesiyle, destekiçin minimum TLS protokol sürümü, desteklenen şifreleme paketleri ve öncelik sırası üzerinde tam denetime sahip olursunuz.
+Gereksinimlerinize göre önceden tanımlanmış bir TLS ilkesinin yapılandırılması gerekiyorsa, kendi özel TLS ilkenizi tanımlamanız gerekir. Özel bir TLS ilkesiyle, desteklenecek en düşük TLS protokol sürümü ve desteklenen şifre paketleri ve bunların öncelik sıralaması üzerinde tüm denetiminiz vardır.
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL protokol sürümleri
 
-* SSL 2.0 ve 3.0 varsayılan olarak tüm uygulama ağ geçitleri için devre dışı bırakılır. Bu protokol sürümleri yapılandırılamaz.
-* Özel bir TLS ilkesi, ağ geçidiniz için aşağıdaki üç protokolden herhangi birini seçme seçeneği sunar: TLSv1_0, TLSv1_1 ve TLSv1_2.
-* TLS ilkesi tanımlanmamışsa, üç protokol (TLSv1_0, TLSv1_1 ve TLSv1_2) etkinleştirilir.
+* SSL 2,0 ve 3,0 tüm uygulama ağ geçitleri için varsayılan olarak devre dışıdır. Bu protokol sürümleri yapılandırılamaz.
+* Özel bir TLS ilkesi, ağ geçidinizin için en düşük TLS protokolü sürümü olarak aşağıdaki üç protokolden birini seçme seçeneği sunar: TLSv1_0, TLSv1_1 ve TLSv1_2.
+* Hiçbir TLS ilkesi tanımlanmamışsa, üç protokol (TLSv1_0, TLSv1_1 ve TLSv1_2) etkinleştirilir.
 
-### <a name="cipher-suites"></a>Cipher süitleri
+### <a name="cipher-suites"></a>Şifre paketleri
 
-Uygulama Ağ Geçidi, özel politikanızı seçebileceğiniz aşağıdaki şifreleme paketlerini destekler. Şifre paketlerinin sıralanması TLS müzakeresi sırasında öncelik sırasını belirler.
+Application Gateway, özel ilkenizi seçebileceğiniz aşağıdaki şifre paketlerini destekler. Şifreleme paketlerinin sıralaması, TLS anlaşması sırasında öncelik sırasını belirler.
 
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -96,10 +96,10 @@ Uygulama Ağ Geçidi, özel politikanızı seçebileceğiniz aşağıdaki şifre
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
 > [!NOTE]
-> Bağlantı için kullanılan TLS şifre paketleri de kullanılan sertifikanın türüne bağlıdır. İstemciden uygulama ağ geçidi bağlantılarına, kullanılan şifreleme paketleri, uygulama ağ geçidi dinleyicisindeki sunucu sertifikalarının türüne dayanır. Arka uç havuz bağlantılarına uygulama ağ geçidinde, kullanılan şifreleme paketleri arka uç havuz sunucularında sunucu sertifikalarının türüne dayanır.
+> Bağlantı için kullanılan TLS şifre paketleri, kullanılan sertifikanın türüne de bağlıdır. İstemciden uygulama ağ geçidi bağlantılarında, kullanılan şifre paketleri uygulama ağ geçidi dinleyicisinde sunucu sertifikalarının türünü temel alır. Uygulama ağ geçidinde arka uç havuzu bağlantılarına, kullanılan şifre paketleri, arka uç havuzu sunucularındaki sunucu sertifikalarının türünü temel alır.
 
 ## <a name="known-issue"></a>Bilinen sorun
-Uygulama Ağ Geçidi v2 şu anda aşağıdaki şifreleri desteklemez:
+Application Gateway v2 Şu anda aşağıdaki şifrelemeleri desteklemez:
 - DHE-RSA-AES128-GCM-SHA256
 - DHE-RSA-AES128-SHA
 - DHE-RSA-AES256-GCM-SHA384
@@ -111,4 +111,4 @@ Uygulama Ağ Geçidi v2 şu anda aşağıdaki şifreleri desteklemez:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-BIR TLS ilkesi yapılandırmayı öğrenmek istiyorsanız, [Uygulama Ağ Geçidi'nde TLS ilke sürümlerini ve şifreleme paketlerini yapılandırın'](application-gateway-configure-ssl-policy-powershell.md)a bakın.
+Bir TLS ilkesi yapılandırmayı öğrenmek istiyorsanız, bkz. [APPLICATION Gateway TLS ilkesi sürümlerini ve şifre paketlerini yapılandırma](application-gateway-configure-ssl-policy-powershell.md).

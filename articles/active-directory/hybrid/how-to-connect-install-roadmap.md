@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331436"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect ve Azure AD Connect Health yükleme yol haritası
@@ -25,14 +25,14 @@ ms.locfileid: "80331436"
 ## <a name="install-azure-ad-connect"></a>Azure AD Connect'i yükleme
 
 > [!IMPORTANT]
-> Microsoft, resmi olarak belgelenen eylemler dışında Azure AD Connect eşitlemesinin değiştirilmesini veya çalıştırılmasını desteklemez. Bu eylemlerden herhangi biri, Azure AD Connect eşitlemesinde tutarsız veya desteklenmeyen bir duruma neden olabilir. Sonuç olarak, Microsoft bu tür dağıtımlar için teknik destek sağlayamaz.
+> Microsoft, resmi olarak belgelenen eylemler dışında Azure AD Connect eşitlemesinin değiştirilmesini veya çalıştırılmasını desteklemez. Bu eylemlerden herhangi biri tutarsız veya Azure AD Connect eşitlemeye neden olabilecek bir durum oluşabilir. Sonuç olarak, Microsoft bu tür dağıtımlar için teknik destek sağlayamaz.
 
 Azure AD Connect'i [Microsoft İndirme Merkezi](https://go.microsoft.com/fwlink/?LinkId=615771)'nden indirebilirsiniz.
 
 | Çözüm | Senaryo |
 | --- | --- |
 | Başlamadan önce - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) |<li>Azure AD Connect'i yüklemeye başlamadan önce tamamlamanız gereken adımlar.</li> |
-| [Ekspres ayarlar](how-to-connect-install-express.md) |<li>Tek bir AD ormanınız varsa bu seçeneği kullanmanız önerilir. </li> <li>Parola eşitleme özelliğini kullanarak aynı parola ile kullanıcı oturumu açma.</li> |
+| [Hızlı ayarlar](how-to-connect-install-express.md) |<li>Tek bir AD ormanınız varsa bu seçeneği kullanmanız önerilir. </li> <li>Parola eşitleme özelliğini kullanarak aynı parola ile kullanıcı oturumu açma.</li> |
 | [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md) |<li>Birden çok ormanınız olduğunda kullanılır. Birçok şirket içi [topolojiyi](plan-connect-topologies.md) destekler.</li> <li>Oturum açma seçeneğinizi özelleştirin (örneğin, doğrudan kimlik doğrulaması veya federasyon için ADFS) veya 3. taraf bir kimlik sağlayıcısı kullanın.</li> <li>Eşitleme özelliklerini özelleştirin (örneğin, filtreleme ve geri yazma).</li> |
 | [DirSync’ten yükseltme](how-to-dirsync-upgrade-get-started.md) |<li>Zaten çalışmakta olan bir DirSync sunucunuz varsa kullanılır.</li> |
 | [Azure AD Eşitleme veya Azure AD Connect’ten yükseltme](how-to-upgrade-previous-version.md) |<li>Tercihinize bağlı olarak birkaç farklı yöntem vardır.</li> |
@@ -46,7 +46,7 @@ Azure AD Connect'i [Microsoft İndirme Merkezi](https://go.microsoft.com/fwlink/
 |Hızlı ayarları kullanarak yükleme | [Azure AD Connect'i hızlı yükleme](./how-to-connect-install-express.md)|
 |Özelleştirilmiş ayarları kullanarak yükleme | [Azure AD Connect özel yüklemesi](./how-to-connect-install-custom.md)|
 |DirSync'ten yükseltme | [Azure AD eşitleme aracından (DirSync) yükseltme](./how-to-dirsync-upgrade-get-started.md)|
-|Yükleme işleminden sonra | [Yüklemeyi doğrulama ve lisans atama](how-to-connect-post-installation.md)|
+|Yükleme işleminden sonra | [Yüklemeyi doğrulama ve lisansları atama](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Azure AD Connect'i yükleme hakkında daha fazla bilgi edinin
 [İşletimsel](how-to-connect-sync-operations.md) sorunlara karşı hazırlıksız olmak istemezsiniz. [Olağanüstü bir durumla](how-to-connect-sync-staging-server.md#disaster-recovery) karşılaştığınızda kolayca üstesinden gelebilmek için yedekte bir sunucu bulundurmak isteyebilirsiniz. Sık sık yapılandırma değişiklikleri yapmayı düşünüyorsanız [hazırlama modu](how-to-connect-sync-staging-server.md) sunucusunu göz önünde bulundurmanız gerekir.
@@ -68,7 +68,7 @@ Azure AD Connect, isteğe bağlı olarak açabileceğiniz veya varsayılan olara
 
 [Parola geri yazma](../authentication/quickstart-sspr.md) özelliği, kullanıcılarınızın buluttaki parolalarını değiştirmelerine ve sıfırlamalarına olanak sağlamanın yanı sıra şirket içi parola ilkenizi uygular.
 
-[Aygıt geri yüklemesi,](how-to-connect-device-writeback.md) Azure AD'ye kayıtlı bir aygıtın Koşullu Erişim için kullanılabilebilmesi için şirket içi Active Directory'ye geri yazılmasına olanak tanır.
+[Cihaz geri yazma](how-to-connect-device-writeback.md) özelliği, Azure AD 'de kayıtlı bir cihazın, koşullu erişim için kullanılabilmesi amacıyla şirket içi Active Directory geri yazılmasına izin verir.
 
 [Yanlışlıkla silmeleri engelle](how-to-connect-sync-feature-prevent-accidental-deletes.md) özelliği, varsayılan olarak açıktır ve bulut dizininizi aynı anda gerçekleştirilen çoklu silme işlemlerine karşı korur. Varsayılan olarak, her çalıştırma sırasında 500 silme işlemine izin verir. Kuruluşunuzun büyüklüğüne bağlı olarak bu ayarı değiştirebilirsiniz.
 
@@ -80,7 +80,7 @@ Azure AD Connect, isteğe bağlı olarak açabileceğiniz veya varsayılan olara
 |Filtrelemeyi yapılandırma | [Azure AD Connect eşitleme: Filtrelemeyi yapılandırma](how-to-connect-sync-configure-filtering.md)|
 |Parola karması eşitleme | [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
 |Doğrudan Kimlik Doğrulama | [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
-|Parola geri yazma | [Parola yönetimine başlama](../authentication/quickstart-sspr.md)|
+|Parola geri yazma | [Parola yönetimine Başlarken](../authentication/quickstart-sspr.md)|
 |Cihaz geri yazma | [Azure AD Connect’te cihaz geri yazma özelliğini etkinleştirme](how-to-connect-device-writeback.md)|
 |Yanlışlıkla silmeleri engelleme | [Azure AD Connect eşitleme: Yanlışlıkla Silmeleri Engelleme](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |Otomatik yükseltme | [Azure AD Connect: Otomatik yükseltme](how-to-connect-install-automatic-upgrade.md)|
@@ -98,17 +98,17 @@ Eşitlemedeki yapılandırma modeli, [bildirim temelli hazırlama](concept-azure
 |Konu başlığı |Bağlantı|  
 | --- | --- |
 |Tüm Azure AD Connect Eşitleme makaleleri | [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)|
-|Teknik kavramlar | [Azure AD Connect eşitleme: Teknik Kavramlar](how-to-connect-sync-technical-concepts.md)|
+|Teknik kavramlar | [Azure AD Connect eşitleme: teknik kavramlar](how-to-connect-sync-technical-concepts.md)|
 |Varsayılan yapılandırmayı anlama | [Azure AD Connect eşitleme: Varsayılan yapılandırmayı anlama](concept-azure-ad-connect-sync-default-configuration.md)|
 |Kullanıcıları ve kişileri anlama | [Azure AD Connect eşitleme: Kullanıcıları ve Kişileri Anlama](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |Bildirim temelli hazırlama | [Azure AD Connect eşitleme: Bildirim Temelli Sağlama İfadelerini Anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
-|Varsayılan yapılandırmayı değiştirme | [Varsayılan yapılandırmanın değiştirilmesine ilişkin önerilen yöntemler](how-to-connect-sync-best-practices-changing-default-configuration.md)|
+|Varsayılan yapılandırmayı değiştirme | [Varsayılan yapılandırmanın değiştirilmesine ilişkin en iyi yöntemler](how-to-connect-sync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>Federasyon özelliklerini yapılandırma
 
 Azure AD Connect, AD FS kullanarak Azure AD federasyonu yapılandırmayı ve federasyon güveninizi yönetmeyi kolaylaştıran birçok özellik sunar. Azure AD Connect, Windows Server 2012R2 veya üzeri için AD FS desteği sunar.
 
-Federasyon güveninizi yönetmek için Azure AD Connect'i kullanmıyorsanız bile [AD FS çiftliğinin TLS/SSL sertifikasını güncelleştirin.](how-to-connect-fed-ssl-update.md)
+Federasyon güveninizi yönetmek için Azure AD Connect kullanmıyor olsanız bile [AD FS grubunun TLS/SSL sertifikasını güncelleştirin](how-to-connect-fed-ssl-update.md) .
 
 Grubu gereken şekilde genişletmek için grubunuza [AD FS sunucusu](how-to-connect-fed-management.md#addadfsserver) ekleyin.
 
@@ -116,12 +116,12 @@ Birkaç tıklamayla Azure AD ile [güveni onarın](how-to-connect-fed-management
 
 ADFS, [birden çok etki alanını](how-to-connect-install-multiple-domains.md) destekleyecek şekilde yapılandırılabilir. Örneğin, federasyon için kullanmanız gereken birden çok üst etki alanınız olabilir.
 
-ADFS sunucunuz Sertifikaları Azure AD'den otomatik olarak güncelleştirmek üzere yapılandırılmamışsa veya ADFS olmayan bir çözüm kullanıyorsanız, [sertifikaları güncelleştirmeniz](how-to-connect-fed-o365-certs.md)gerektiğinde size bildirilir.
+ADFS sunucunuz sertifikaları Azure AD 'den otomatik olarak güncelleştirmek üzere yapılandırılmamışsa veya ADFS olmayan bir çözüm kullanıyorsanız, [sertifikaları güncelleştirmeniz](how-to-connect-fed-o365-certs.md)gerektiğinde size bildirilir.
 
 ### <a name="next-steps-to-configure-federation-features"></a>Federasyon özelliklerini yapılandırmak için sonraki adımlar
 |Konu başlığı |Bağlantı|  
 | --- | --- |
-|Tüm AD FS makaleleri | [Azure AD Connect ve federasyon](how-to-connect-fed-whatis.md)|
+|Tüm AD FS makaleleri | [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)|
 |Alt etki alanları bulunan ADFS'yi yapılandırma | [Azure AD ile Federasyon için Çoklu Etki Alanı Desteği](how-to-connect-install-multiple-domains.md)|
 |AD FS grubunu yönetme | [Azure AD Connect ile AD FS yönetimi ve özelleştirmesi](how-to-connect-fed-management.md)|
 |Federasyon sertifikalarını el ile güncelleştirme | [Office 365 ve Azure AD için Federasyon Sertifikalarını Yenileme](how-to-connect-fed-o365-certs.md)|
@@ -132,7 +132,7 @@ Azure AD Connect Health ile çalışmaya başlamak için aşağıdaki adımları
 
 1. [Azure AD Premium alın](../fundamentals/active-directory-get-started-premium.md) veya [deneme sürümünü başlatın](https://azure.microsoft.com/trial/get-started-active-directory/).
 2. Kimlik sunucularınıza [Azure AD Connect Health Aracılarını indirin ve yükleyin](#download-and-install-azure-ad-connect-health-agent).
-3. Azure AD Bağlantı Durumu [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)panosunu görüntüleyin.
+3. Azure AD Connect Health panosunu üzerinde [https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)görüntüleyin.
 
 > [!NOTE]
 > Azure AD Connect Health panonuzda veri görmeden önce hedeflenen sunucularınıza Azure Connect Health Aracıları yüklemeniz gerektiğini unutmayın.
@@ -165,17 +165,17 @@ Azure AD Connect Health portalı; uyarıları, performans izlemeyi ve kullanım 
 * **Active Directory Domain Services**: Bu seçenek, Azure AD Connect Health'in o anda izlediği tüm AD DS ormanlarını gösterir. Ormanlardan birini seçtiğinizde açılan dikey pencerede seçtiğiniz ormanla ilgili bilgiler gösterilir. Bu bilgiler; temel bilgiler, Etki Alanı Denetleyicileri panosu, Çoğaltma Durumu panosu, uyarılar ve izlemeye genel bakış içerir. Özellikler hakkında daha fazla bilgi için bkz. [Azure AD Connect Health'i AD DS ile kullanma](how-to-connect-health-adds.md).
 * **Yapılandırma**: Bu bölümde aşağıdakileri açma veya kapatma seçenekleri bulunur:
 
-   - Azure AD Connect Health aracısının en son sürüme **otomatik olarak güncellenmesi:** Azure AD Connect Health aracısı, yeni sürümler kullanılabilir olduğunda otomatik olarak güncelleştirilir. Bu seçenek varsayılan olarak etkindir.
-   - Microsoft tarafından Azure REKLAM dizin bütünlüğünden verilere yalnızca sorun giderme amacıyla **erişim:** bu seçenek etkinleştirilirse, Microsoft kullanıcı tarafından görüntülenen aynı verilere erişebilir. Bu bilgiler sorun giderme ve gerekli yardımı sağlamak için yararlı olabilir. Bu seçenek varsayılan olarak devre dışı bırakılır
+   - Azure AD Connect Health aracısının en son sürüme **otomatik olarak güncelleştirilmesi** : yeni sürümler kullanılabilir olduğunda Azure AD Connect Health Aracısı otomatik olarak güncelleştirilir. Bu seçenek varsayılan olarak etkindir.
+   - Microsoft tarafından yalnızca sorun giderme amacıyla Azure AD dizini bütünlüğünden **verilere erişim** : Bu seçenek etkinleştirilirse, Microsoft Kullanıcı tarafından görüntülenen verilere erişebilir. Bu bilgiler, sorun giderme ve gerekli yardımı sağlamak için yararlı olabilir. Bu seçenek varsayılan olarak devre dışıdır
 * **Rol tabanlı erişim denetimi (IAM)**, Connect Health verilerine erişimi rol tabanlı olarak yönetebileceğiniz bölümdür. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
-- [Ekspres ayarlar](how-to-connect-install-express.md)
+- [Hızlı ayarlar](how-to-connect-install-express.md)
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-- [Parola karma senkronizasyonu](how-to-connect-password-hash-synchronization.md)|
+- [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md)|
 - [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
-- [Azure AD Connect ve federasyon](how-to-connect-fed-whatis.md)
+- [Azure AD Connect ve Federasyon](how-to-connect-fed-whatis.md)
 - [Azure AD Connect Health aracılarını yükleme](how-to-connect-health-agent-install.md) 
 - [Azure AD Connect eşitleme](how-to-connect-sync-whatis.md)

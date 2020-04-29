@@ -1,6 +1,6 @@
 ---
-title: Yedekleme ve geri yükleme - Azure CLI - MariaDB için Azure Veritabanı
-description: Azure CLI'yi kullanarak MariaDB için Azure Veritabanı'ndaki bir sunucuyu nasıl yedekleyip geri yükleyin öğrenin.
+title: Yedekleme ve geri yükleme-Azure CLı-MariaDB için Azure veritabanı
+description: Azure CLı kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu yedeklemeyi ve geri yüklemeyi öğrenin.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -8,125 +8,125 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 6faae80c78fe07d33579cc3fb7c76ce668969992
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369263"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLI'yi kullanarak MariaDB için Azure Veritabanı'ndaki bir sunucuyu yedekleme ve geri yükleme
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-cli"></a>Azure CLı kullanarak MariaDB için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme
 
-MariaDB sunucuları için Azure Veritabanı, Geri Yükleme özelliklerini etkinleştirmek için düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman diliminde geri yükleyebilirsiniz.
+MariaDB sunucuları için Azure veritabanı, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
+Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
 
-- [MariaDB sunucusu ve veritabanı için](quickstart-create-mariadb-server-database-using-azure-cli.md) bir Azure Veritabanı
+- [MariaDB sunucusu ve veritabanı Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 > [!IMPORTANT]
-> Bu nasıl yapılsa kılavuzu, Azure CLI sürüm 2.0 veya sonrası kullanmanızı gerektirir. Sürümü onaylamak için Azure CLI komut istemine girin. `az --version` Yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye]( /cli/azure/install-azure-cli)bakın.
+> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde, girin `az --version`. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
 
-## <a name="set-backup-configuration"></a>Yedekleme yapılandırması ayarlama
+## <a name="set-backup-configuration"></a>Yedekleme yapılandırmasını ayarla
 
-Sunucunuzu yerel olarak yedekli yedeklemeler veya sunucu oluşturmada coğrafi olarak yedek yedeklemeler için yapılandırmak arasında seçim yaparsınız.
+Sunucu oluşturma sırasında sunucunuzu yerel olarak yedekli yedeklemeler veya coğrafi olarak yedekli yedeklemeler için yapılandırma arasında seçim yaparsınız.
 
 > [!NOTE]
-> Bir sunucu oluşturulduktan sonra, sahip olduğu artıklık türü, coğrafi olarak gereksiz vs yerel gereksiz, değiştirilemez.
+> Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
 >
 
-`az mariadb server create` Komut aracılığıyla bir sunucu oluştururken, `--geo-redundant-backup` parametre Yedek Artıklık Seçeneği'ne karar verir. , `Enabled`coğrafi yedek yedekler alınırsa. Veya `Disabled` yerel olarak gereksiz yedeklemeler alınırsa.
+`az mariadb server create` Komutu aracılığıyla bir sunucu oluştururken, `--geo-redundant-backup` parametresi yedekleme yedeklilik seçeneğine karar verir. İse `Enabled`, coğrafi olarak yedekli yedeklemeler alınır. Ya da `Disabled` yerel olarak yedekli yedeklemeler alınırsa.
 
-Yedekleme bekletme süresi parametre `--backup-retention`tarafından ayarlanır.
+Yedekleme saklama süresi parametresi `--backup-retention`tarafından ayarlanır.
 
-Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için [MariaDB sunucusu CLI Quickstart için Azure Veritabanı'na](quickstart-create-mariadb-server-database-using-azure-cli.md)bakın.
+Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için, bkz. [MariaDB Server CLI hızlı başlangıç Için Azure veritabanı](quickstart-create-mariadb-server-database-using-azure-cli.md).
 
-Bir sunucunun yedekleme bekletme süresi aşağıdaki gibi değiştirilebilir:
+Bir sunucunun yedekleme saklama süresi şu şekilde değiştirilebilir:
 
 ```azurecli-interactive
 az mariadb server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
-Önceki örnek, mydemoserver yedekleme bekletme süresini 10 güne değiştirir.
+Yukarıdaki örnek, demosunucum yedekleme bekletme süresini 10 gün olarak değiştirir.
 
-Yedekleme bekletme süresi, kullanılabilir yedeklemelere dayandığı için zaman içinde bir geri yüklemenin ne kadar geri alınabileceğini yönetir. Zaman içinde geri yükleme sonraki bölümde daha ayrıntılı olarak açıklanmıştır.
+Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Zaman içinde geri yükleme sonraki bölümde daha ayrıntılı olarak açıklanmıştır.
 
-## <a name="server-point-in-time-restore"></a>Sunucu zamanında geri yükleme
+## <a name="server-point-in-time-restore"></a>Sunucu zaman içinde geri yükleme
 
-Sunucuyu önceki bir noktaya geri yükleyebilirsiniz. Geri yüklenen veriler yeni bir sunucuya kopyalanır ve varolan sunucu olduğu gibi bırakılır. Örneğin, bugün öğlen yanlışlıkla bir tablo düşerse, öğlenden hemen önce zamangeri yükleyebilirsiniz. Ardından, eksik tabloyu ve verileri sunucunun geri yüklenen kopyasından alabilirsiniz.
+Sunucuyu zaman içinde önceki bir noktaya geri yükleyebilirsiniz. Geri yüklenen veriler yeni bir sunucuya kopyalanır ve var olan sunucu olduğu gibi bırakılır. Örneğin, bir tablo yanlışlıkla öğleden sonra bırakılırsa, gece ' e kadar olan saate geri yükleyebilirsiniz. Daha sonra, eksik tablo ve verileri, sunucunun geri yüklenen kopyasından elde edebilirsiniz.
 
-Sunucuyu geri yüklemek için Azure CLI [az mariadb sunucu geri yükleme](/cli/azure/mariadb/server#az-mariadb-server-restore) komutunu kullanın.
+Sunucuyu geri yüklemek için Azure CLı [az MariaDB Server restore](/cli/azure/mariadb/server#az-mariadb-server-restore) komutunu kullanın.
 
-### <a name="run-the-restore-command"></a>Geri yükleme komutunu çalıştırın
+### <a name="run-the-restore-command"></a>Restore komutunu çalıştırın
 
-Sunucuyu geri yüklemek için Azure CLI komut isteminde aşağıdaki komutu girin:
+Sunucuyu geri yüklemek için, Azure CLı komut isteminde aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az mariadb server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-Komut `az mariadb server restore` aşağıdaki parametreleri gerektirir:
+`az mariadb server restore` Komut aşağıdaki parametreleri gerektirir:
 
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
+| resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
 | ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklemek için zaman içinde bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi kullanabilirsiniz, örneğin. `2018-03-13T05:59:00-08:00` UtC Zulu biçimini de kullanabilirsiniz, `2018-03-13T13:59:00Z`örneğin. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi (gibi) kullanabilirsiniz `2018-03-13T05:59:00-08:00`. UTC Zulu dili biçimini de kullanabilirsiniz. Örneğin, `2018-03-13T13:59:00Z`. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 
-W Sunucuydan daha önceki bir noktaya geri yüklediğinizde, yeni bir sunucu oluşturulur. Zaman içinde belirtilen noktadan orijinal sunucu ve veritabanları yeni sunucuya kopyalanır.
+Wbir sunucuyu zaman içinde önceki bir noktaya geri yüklediğinizde yeni bir sunucu oluşturulur. Özgün sunucu ve belirtilen zaman içindeki veritabanları yeni sunucuya kopyalanır.
 
-Geri yüklenen sunucunun konum ve fiyatlandırma katmanı değerleri özgün sunucuyla aynı kalır. 
+Geri yüklenen sunucu için konum ve fiyatlandırma katmanı değerleri, özgün sunucu ile aynı kalır. 
 
-Geri yükleme işlemi bittikten sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklenmiş olduğundan doğrulayın. Yeni sunucu, geri yüklemenin başlatıldığı sırada varolan sunucu için geçerli olan sunucu yöneticisi giriş adı ve parolaya sahiptir. Parola, yeni sunucunun **Genel Bakış** sayfasından değiştirilebilir.
+Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucuda özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir. Orijinal sunucudan gelen güvenlik duvarı kuralları geri yüklenir.
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 
-Sunucunuzu coğrafi olarak gereksiz yedeklemeler için yapılandıysanız, varolan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MariaDB için Azure Veritabanı'nın kullanılabilen herhangi bir bölgesinde oluşturulabilir.  
+Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, MariaDB için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
 
-Coğrafi yedek liyedek için bir sunucu oluÅ `az mariadb server georestore` mak için Azure CLI komutunu kullanın.
+Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için Azure CLı `az mariadb server georestore` komutunu kullanın.
 
 > [!NOTE]
-> Bir sunucu ilk oluşturulduğunda, coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
+> Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
 >
 
-Sunucuyu coğrafi olarak geri yüklemek için Azure CLI komut isteminde aşağıdaki komutu girin:
+Sunucuyu coğrafi olarak geri yüklemek için, Azure CLı komut isteminde aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8
 ```
 
-Bu komut, Doğu ABD'de *mydemoserver-georestored* adlı yeni bir sunucu oluşturur ve *bu sunucu myresourcegroup'a*ait olacaktır. Bu genel amaçlı, 8 vCores ile Gen 5 sunucu. Sunucu *mydemoserver*coğrafi yedekli yedekleme oluşturulur , aynı zamanda kaynak grubu *myresourcegrubunda*
+Bu komut, *myresourcegroup*öğesine ait olacak Doğu ABD *mydemoserver-geogeri yüklenen* adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, Gen 5 sunucusudur. Sunucu, *myresourcegroup* kaynak grubunda de olan, coğrafi olarak yedekli olan *demosunucum*yedeğinden oluşturulur.
 
-Yeni sunucuyu varolan sunucudan farklı bir kaynak grubunda oluşturmak `--source-server` istiyorsanız, parametrede sunucu adını aşağıdaki örnekte olduğu gibi nitelendirebilirsiniz:
+Yeni sunucuyu var olan sunucudan farklı bir kaynak grubunda oluşturmak isterseniz, aşağıdaki örnekte olduğu gibi `--source-server` parametresi için sunucu adını niteleyebilirsiniz:
 
 ```azurecli-interactive
 az mariadb server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMariaDB/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
-Komut `az mariadb server georestore` aşağıdaki parametreleri gerektirir:
+`az mariadb server georestore` Komut aşağıdaki parametreleri gerektirir:
 
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
-|ad | mydemoserver-georestored | Yeni sunucunun adı. |
-|source-server | mydemoserver | Coğrafi yedek li yedekleri kullanılan varolan sunucunun adı. |
+|ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
+|source-server | mydemoserver | Coğrafi olarak yedekli yedeklemeleri kullanılan mevcut sunucunun adı. |
 |location | eastus | Yeni sunucunun konumu. |
-|sku-name| GP_Gen5_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem oluşturmayı ve vCore sayısını ayarlar. Genel Amaçlı, 8 vCores ile Gen 5 sunucu için GP_Gen5_8 haritalar.|
+|sku-name| GP_Gen5_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen5_8, 8 sanal çekirdekte bir Genel Amaçlı, Gen 5 sunucusuyla eşlenir.|
 
-Coğrafi yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra depolama boyutu büyütülebilir.
+Coğrafi geri yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutunu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra, depolama boyutu yukarı ölçeklendirilebilir.
 
-Geri yükleme işlemi bittikten sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklenmiş olduğundan doğrulayın. Yeni sunucu, geri yüklemenin başlatıldığı sırada varolan sunucu için geçerli olan sunucu yöneticisi giriş adı ve parolaya sahiptir. Parola, yeni sunucunun **Genel Bakış** sayfasından değiştirilebilir.
+Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucuda özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir. Orijinal sunucudan gelen güvenlik duvarı kuralları geri yüklenir.
+Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda var olan VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir. Özgün sunucudan gelen güvenlik duvarı kuralları geri yüklendi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hizmetin [yedekleri](concepts-backup.md) hakkında daha fazla bilgi edinin
-- [Yinelemeler](concepts-read-replicas.md) hakkında bilgi edinin
+- Hizmetin [yedeklemeleri](concepts-backup.md) hakkında daha fazla bilgi edinin
+- [Çoğaltmalar](concepts-read-replicas.md) hakkında bilgi edinin
 - [İş sürekliliği](concepts-business-continuity.md) seçenekleri hakkında daha fazla bilgi edinin

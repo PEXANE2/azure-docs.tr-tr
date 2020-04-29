@@ -1,6 +1,6 @@
 ---
-title: Android haritalara şekil ekleme | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar Android SDK'yı kullanarak haritada farklı şekilleri nasıl işeceğinizi öğreneceksiniz.
+title: Android Maps 'a şekil ekleme | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak haritada farklı şekillerin nasıl işleneceğini öğreneceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 7a793ff35675c876dc429976ebee96887b12735a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335602"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure Haritalar Android SDK'yı kullanarak haritaya şekil ekleme
+# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
 
-Bu makalede, Azure Haritalar Android SDK kullanarak haritaüzerinde şekilleri nasıl işleyin izlenecek şekilde gösterilmektedir.
+Bu makalede, Azure Maps Android SDK kullanarak bir haritada şekillerin nasıl işleneceğini gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Haritalar Android SDK'yı](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
 
 
-## <a name="add-a-line-to-the-map"></a>Haritaya satır ekleme
+## <a name="add-a-line-to-the-map"></a>Haritaya bir satır ekleyin
 
-**Bir Çizgi Katmanı**kullanarak haritaya bir çizgi ekleyebilirsiniz, haritaya bir çizgi eklemek için aşağıdaki adımları takip edin.
+Bir çizgi **katmanını**kullanarak haritaya bir satır ekleyebilirsiniz, haritada bir satır eklemek için aşağıdaki adımları izleyin.
 
-1. Aşağıdaki gibi görünüyor böylece **activity_main.xml > > düzen reit** edin:
+1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Harita
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacıklarını sınıfınızın `MainActivity.java` **onCreate()** yöntemine kopyalayın.
+2. Aşağıdaki kod parçacığını, `MainActivity.java` sınıfınızın **OnCreate ()** metoduna kopyalayın.
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,9 +76,9 @@ Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Harita
 
     ```
     
-    Yukarıdaki kod snippet, **onReady()** geri arama yöntemini kullanarak bir Azure Haritalar harita denetimi örneği alır. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve eşe ekler. Sonra **Nokta** nesnelerin bir listesini oluşturur. **Bir LineString** noktaları listesinden oluşturulur ve veri kaynağına eklenir. **Çizgi Katmanı,** haritadaki bir veri kaynağına sarılmış çizgi nesnelerini işler. Daha sonra bir satır katmanı oluşturulur ve veri kaynağı eklenir.
+    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Sonra, **nokta** nesnelerinin bir listesini oluşturur. İşaret listesinden bir **LineString** oluşturulur ve veri kaynağına eklenir. **Çizgi katmanı** , harita üzerindeki bir veri kaynağında kaydırılan çizgi nesnelerini işler. Daha sonra bir çizgi katmanı oluşturulur ve veri kaynağı buna eklenir.
 
-    Yukarıdaki kod parçacığı ekledikten sonra, `MainActivity.java` aşağıdaki gibi görünmelidir:
+    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
     
     ```Java
     package com.example.myapplication;
@@ -174,18 +174,18 @@ Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Harita
     }
     ```
 
-Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
+Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
 
 <center>
 
-![Android haritasında işlenen bir çizgi](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![Android haritasında işlenen bir satır](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
-## <a name="add-a-polygon-to-the-map"></a>Haritaya çokgen ekleme
+## <a name="add-a-polygon-to-the-map"></a>Haritaya Çokgen ekleme
 
-**Çokgen Katmanı,** çokgenin alanını haritaya işlemenizi sağlar. Haritaya çokgen eklemek için aşağıdaki adımları izleyin.
+**Çokgen katmanı** , çokgenin alanını haritaya işlemenizi sağlar. Haritada bir çokgen eklemek için aşağıdaki adımları izleyin.
 
-1. Aşağıdaki gibi görünüyor böylece **activity_main.xml > > düzen reit** edin:
+1. **Kaynak > düzeni > activity_main. xml** ' i düzenleyerek aşağıdaki gibi görünmesini sağlayın:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğ�
     </FrameLayout>
     ```
 
-2. Aşağıdaki kod parçacıklarını sınıfınızın `MainActivity.java` **onCreate()** yöntemine kopyalayın.
+2. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın.
 
     ```Java
     mapControl.onReady(map -> {
@@ -238,9 +238,9 @@ Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğ�
     });
     ```
 
-    Yukarıdaki kod snippet, **onReady()** geri arama yöntemini kullanarak bir Azure Haritalar harita denetimi örneği alır. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve eşe ekler. **Çokgen** nesnesi daha sonra **Point** nesneleri listesinden oluşturulur ve veri kaynağına eklenir. **Çokgen Katmanı,** haritaüzerinde veri kaynağına sarılmış verileri işler. Daha sonra çokgen alanını işlemek için bir çokgen katmanı oluşturur ve veri kaynağını buna ekler. **Çizgi Katmanı,** veri kaynağına sarılmış çizgi nesnelerini işler. Kod snippet'in son bölümü, çokgenin anahatlarını işlemek için bir satır katmanı oluşturur ve veri kaynağını buna ekler.
+    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Daha sonra bir **nokta** nesneleri listesinden bir **Çokgen** nesnesi oluşturulur ve veri kaynağına eklenir. **Çokgen katman** , haritadaki veri kaynağında kaydırılan verileri işler. Daha sonra Çokgen alanını işlemek için bir Çokgen katman oluşturur ve veri kaynağını buna ekler. **Çizgi katmanı** , bir veri kaynağında kaydırılan çizgi nesnelerini işler. Kod parçacığının son bölümü, çokgenin ana hattını işlemek için bir çizgi katmanı oluşturur ve veri kaynağını buna ekler.
 
-    Yukarıdaki kod parçacığı ekledikten sonra, `MainActivity.java` aşağıdaki gibi görünmelidir:
+    Yukarıdaki `MainActivity.java` kod parçacığını ekledikten sonra aşağıdaki gibi görünmelidir:
 
     ```Java
     package com.example.myapplication;
@@ -346,16 +346,16 @@ Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğ�
     }
     ```
 
-Uygulamanızı şimdi çalıştırıyorsanız, haritada aşağıda görüldüğü gibi bir çokgen görmeniz gerekir:
+Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü gibi bir çokgen görmeniz gerekir:
 
 <center>
 
-![Android haritasında işlenen çokgen](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![Android haritasında işlenen bir çokgen](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Haritanıza daha fazla veri eklemek için:
+Haritanızda daha fazla veri eklemek için:
 
 > [!div class="nextstepaction"]
 > [Sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)

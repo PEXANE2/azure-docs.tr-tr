@@ -1,6 +1,6 @@
 ---
-title: Azure Marketi ve AppSource yayıncı profilini yönetin | Azure Marketi
-description: DEPRECATED CPP makale, PC makaleile bağlantılı; "Azure Marketi ve AppSource yayıncı profillerinin nasıl yönetilen" oldu
+title: Azure Marketi ve AppSource yayımcı profilini yönetme | Azure Marketi
+description: Kullanım dışı olan CPP makalesi, bılgısayar makalesine bağlı; "Azure Marketi ve AppSource yayımcı profillerinin nasıl yönetileceği açıklanmaktadır" idi
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2019
 ms.author: dsindona
 ms.openlocfilehash: bc75ebbba807aa981e8de29c40947516fea6638d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288504"
 ---
-# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Azure Marketi ve AppSource yayıncı profilinizi yönetme
+# <a name="manage-your-azure-marketplace-and-appsource-publisher-profile"></a>Azure Market ve AppSource yayımcı profilinizi yönetme
 
-Bu işlev Microsoft İş [Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için, [İş Merkezi'ndeki Ticari Pazar Hesabınızı nasıl yönetebilirsiniz'](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)e bakın.
+Bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabınızı yönetme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).

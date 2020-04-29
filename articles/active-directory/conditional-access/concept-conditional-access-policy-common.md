@@ -1,6 +1,6 @@
 ---
-title: Ortak Koşullu Erişim ilkeleri - Azure Etkin Dizini
-description: Kuruluşlar için yaygın olarak kullanılan Koşullu Erişim ilkeleri
+title: Genel koşullu erişim ilkeleri-Azure Active Directory
+description: Kuruluşlar için yaygın olarak kullanılan koşullu erişim ilkeleri
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,33 +12,33 @@ manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295300"
 ---
 # <a name="common-conditional-access-policies"></a>Sık kullanılan Koşullu Erişim İlkeleri
 
-[Güvenlik varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) bazıları için harikadır, ancak birçok kuruluş sunduklarından daha fazla esnekliğe ihtiyaç duyar. Örneğin, birçok kişi, çok faktörlü kimlik doğrulaması gerektiren Koşullu Erişim ilkelerinden acil erişim veya kesme cam yönetim hesapları gibi belirli hesapları hariç tutma yeteneğine ihtiyaç duyar. Bu kuruluşlar için, bu makalede başvurulan ortak ilkeler kullanılabilir.
+[Güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md) , bazı bazı kuruluşlar için çok daha fazla esneklik sağlar. Örneğin, birçok, çok faktörlü kimlik doğrulaması gerektiren koşullu erişim ilkelerinden acil erişim veya kesme camı yönetim hesapları gibi belirli hesapları dışlayabilir. Bu kuruluşlar için, bu makalede başvurulan ortak ilkeler kullanılabilir.
 
-![Azure portalında Koşullu Erişim ilkeleri](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
+![Azure portal koşullu erişim ilkeleri](./media/concept-conditional-access-policy-common/conditional-access-policies-azure-ad-listing.png)
 
-## <a name="emergency-access-accounts"></a>Acil erişim hesapları
+## <a name="emergency-access-accounts"></a>Acil durum erişim hesapları
 
-Acil erişim hesapları ve bunların neden önemli olduğu hakkında daha fazla bilgiyi aşağıdaki makalelerde bulabilirsiniz: 
+Acil durum erişim hesapları ve neden önemli oldukları hakkında daha fazla bilgi aşağıdaki makalelerde bulunabilir: 
 
-* [Azure AD'de acil erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)
-* [Azure Active Directory ile esnek bir erişim denetimi yönetimi stratejisi oluşturun](../authentication/concept-resilient-controls.md)
+* [Azure AD 'de acil durum erişim hesaplarını yönetme](../users-groups-roles/directory-emergency-access.md)
+* [Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma](../authentication/concept-resilient-controls.md)
 
 ## <a name="typical-policies-deployed-by-organizations"></a>Kuruluşlar tarafından dağıtılan tipik ilkeler
 
-* [Eski kimlik doğrulamasını engelleme](howto-conditional-access-policy-block-legacy.md)\*
-* [Yöneticiler için MFA gerektirir](howto-conditional-access-policy-admin-mfa.md)\*
-* [Azure yönetimi için MFA gerektirir](howto-conditional-access-policy-azure-management.md)\*
-* [Tüm kullanıcılar için MFA gerektirir](howto-conditional-access-policy-all-users-mfa.md)\*
+* [Eski kimlik doğrulamasını engelle](howto-conditional-access-policy-block-legacy.md)\*
+* [Yöneticiler için MFA gerektir](howto-conditional-access-policy-admin-mfa.md)\*
+* [Azure yönetimi için MFA gerektir](howto-conditional-access-policy-azure-management.md)\*
+* [Tüm kullanıcılar için MFA gerektir](howto-conditional-access-policy-all-users-mfa.md)\*
 
-\*Bu dört ilke birlikte yapılandırıldığında, [güvenlik varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit eder.
+\*Birlikte yapılandırıldığında bu dört ilke, [güvenlik Varsayılanları](../fundamentals/concept-fundamentals-security-defaults.md)tarafından etkinleştirilen işlevselliği taklit edecektir.
 
 ## <a name="additional-policies"></a>Ek ilkeler
 
@@ -46,10 +46,10 @@ Acil erişim hesapları ve bunların neden önemli olduğu hakkında daha fazla 
 * [MFA kaydı için güvenilen konum gerektirme](howto-conditional-access-policy-registration.md)
 * [Erişimi konuma göre engelleme](howto-conditional-access-policy-location.md)
 * [Uyumlu cihaz gerektirme](howto-conditional-access-policy-compliant-device.md)
-* [Belirli uygulamalar dışında erişimi engelleme](howto-conditional-access-policy-block-access.md)
+* [Belirli uygulamalar haricinde erişimi engelle](howto-conditional-access-policy-block-access.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Koşullu Erişim Ne Olursa Aracı'nı kullanarak oturum açma davranışını simüle edin.](troubleshoot-conditional-access-what-if.md)
+- [Koşullu erişim What If aracını kullanarak oturum açma davranışının benzetimini yapın.](troubleshoot-conditional-access-what-if.md)
 
-- [Yeni ilke kararlarının etkisini belirlemek için Koşullu Erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)
+- [Yeni ilke kararlarının etkisini öğrenmek için koşullu erişim için yalnızca rapor modunu kullanın.](concept-conditional-access-report-only.md)

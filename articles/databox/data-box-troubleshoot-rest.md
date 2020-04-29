@@ -1,6 +1,6 @@
 ---
-title: REST arabirimini kullanmak için Azure Veri Kutusu sorun giderme| Microsoft Dokümanlar
-description: Veri kopyalama, REST arabirimi üzerinden yken Azure Veri Kutusu'nda görülen sorunları nasıl gidereceğinizi açıklar.
+title: REST arabirimini kullanarak sorun giderme Azure Data Box | Microsoft Docs
+description: Veri kopyalama işlemi REST arabirimi aracılığıyla olduğunda Azure Data Box görülen sorunların nasıl giderileceği açıklanmaktadır.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,53 +9,53 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80297135"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Veri Kutusu Blob depolama yla ilgili sorun giderme sorunları
+# <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box blob depolamayla ilgili sorunları giderme
 
-Bu makalede, verileri kopyalamak için Veri Kutusu'ndaki REST arabirimi üzerinden Veri Kutusu Blob depolamasını kullanırken görebileceğiniz sorunları nasıl giderebileceğiniz hakkında ayrıntılar. Bu sorunlar, Python için Azure Depolama Gezgini, AzCopy veya Azure Depolama kitaplığı gibi diğer uygulamalarla veya istemci kitaplıklarıyla Birlikte Veri Kutusu Blob depolama alanını kullanırken ortaya çıkar.
+Bu makalede, verileri kopyalamak için Data Box REST arabirimi aracılığıyla Data Box blob depolamayı kullanırken görebileceğiniz sorunları giderme hakkında bilgi bulabilirsiniz. Bu sorunlar, diğer uygulamalarla Data Box BLOB depolama alanı veya Python için Azure Depolama Gezgini, AzCopy veya Azure depolama kitaplığı gibi istemci kitaplıkları kullanırken ortaya çıkan bir yüzey vardır.
 
-## <a name="errors-seen-in-azure-storage-explorer"></a>Azure Depolama Gezgini'nde görülen hatalar
+## <a name="errors-seen-in-azure-storage-explorer"></a>Azure Depolama Gezgini görülen hatalar
 
-Bu bölümde, Veri Kutusu Blob depolama alanı ile Azure Depolama Gezgini kullanılırken karşılaşılan bazı sorunlar ayrıntıları.
-
-|Hata iletisi  |Önerilen eylem |
-|---------|---------|
-|Alt kaynaklar alınamıyor. HTTP üstbilgilerinden birinin değeri doğru biçimde değildir.|**Edit** menüsünden **Hedef Azure Yığını API'lerini**seçin. <br>Azure Depolama Gezgini'ni yeniden başlatın.|
-|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Bu yolda ana `<accountname>.blob.<serialnumber>.microsoftdatabox.com` bilgisayar dosyasına uç nokta adının eklenmediğini denetleyin: <li>`C:\Windows\System32\drivers\etc\hosts`Windows'da veya </li><li> `/etc/hosts`Linux üzerinde.</li>|
-|Alt kaynaklar alınamıyor. <br>Ayrıntılar: kendi imzalı sertifika |Cihazınızın TLS/SSL sertifikasını Azure Depolama Gezgini'ne taşıyın: <li>Sertifikayı Azure portalından indirin. Daha fazla bilgi için [sertifikayı karşıdan yükleyin.](data-box-deploy-copy-data-via-rest.md#download-certificate)</li><li>**Edit** menüsünden **SSL Sertifikalarını** seçin ve ardından **Sertifikaları İçe Aktar'ı**seçin.</li>|
-
-## <a name="errors-seen-in-azcopy-for-windows"></a>Windows için AzCopy'de görülen hatalar
-
-Bu bölümde, Veri Kutusu Blob depolama alanı ile Windows için AzCopy kullanırken karşılaşılan bazı sorunlar ayrıntıları.
+Bu bölümde Data Box blob depolamayla Azure Depolama Gezgini kullanırken ortaya çıkan sorunlardan bazıları ayrıntılı olarak ele verilebilir.
 
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
-|AzCopy komutu bu hatayı görüntülemeden önce bir dakika asılı görünüyor: <br>Https:// dizin leri sayısala uğratmakta başarısız oldu... Uzak ad çözülemedi`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Son nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` ana bilgisayar dosyasına şu `C:\Windows\System32\drivers\etc\hosts`anda eklenmediğini denetleyin: .|
-|AzCopy komutu bu hatayı görüntülemeden önce bir dakika asılı görünüyor: <br>Kaynak konumunu ayrışdırma hatası. Altta yatan bağlantı kapatıldı: SSL/TLS güvenli kanal için güven ilişkisi kurulamadı.|Cihazınızın TLS/SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için [sertifikayı karşıdan yükleyin.](data-box-deploy-copy-data-via-rest.md#download-certificate)|
+|Alt kaynaklar alınamıyor. HTTP başlıklarındaki bir değer doğru biçimde değil.|**Düzenle** menüsünde **hedef Azure Stack API 'leri**' ni seçin. <br>Azure Depolama Gezgini yeniden başlatın.|
+|`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` bu yoldaki Hosts dosyasına eklendiğinden emin olun: <li>`C:\Windows\System32\drivers\etc\hosts`Windows veya </li><li> `/etc/hosts`Linux üzerinde.</li>|
+|Alt kaynaklar alınamıyor. <br>Ayrıntılar: otomatik olarak imzalanan sertifika |Cihazınız için TLS/SSL sertifikasını Azure Depolama Gezgini içine aktarın: <li>Azure portal sertifikayı indirin. Daha fazla bilgi için [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)bölümüne gidin.</li><li>**Düzenle** menüsünde **SSL sertifikaları** ' nı seçin ve ardından **sertifikaları içeri aktar**' ı seçin.</li>|
 
+## <a name="errors-seen-in-azcopy-for-windows"></a>Windows için AzCopy 'da görülen hatalar
 
-## <a name="errors-seen-in-azcopy-for-linux"></a>Linux için AzCopy'de görülen hatalar
-
-Bu bölümde, Veri Kutusu Blob depolama ile Linux için AzCopy kullanırken karşılaşılan bazı sorunlar ayrıntıları.
-
-|Hata iletisi  |Önerilen eylem |
-|---------|---------|
-|AzCopy komutu bu hatayı görüntülemeden önce 20 dakika asılı görünüyor: <br>Hata ayrışdırma `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`kaynak konumu . Böyle bir cihaz veya adres yok|Son nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` ana bilgisayar dosyasına şu `/etc/hosts`anda eklenmediğini denetleyin: .|
-|AzCopy komutu bu hatayı görüntülemeden önce 20 dakika asılı görünüyor: <br>Hata ayrışdırma kaynak konumu... SSL bağlantısı kurulamadı.|Cihazınızın TLS/SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için [sertifikayı karşıdan yükleyin.](data-box-deploy-copy-data-via-rest.md#download-certificate)|
-
-## <a name="errors-seen-in-azure-storage-library-for-python"></a>Python için Azure Depolama kitaplığında görülen hatalar
-
-Bu bölümde, veri kopyalama için bir Linux istemcisi kullanılırken Veri Kutusu Diskdağıtımı sırasında karşılaşılan en önemli sorunlardan bazıları ayrıntılı olarak açıklanmaz.
+Bu bölümde, Windows için AzCopy Data Box blob depolamayla kullanılırken ortaya çıkan sorunlardan bazıları ayrıntılı olarak ele verilebilir.
 
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
-|HTTP üstbilgilerinden birinin değeri doğru biçimde değildir. |Python için Microsoft Azure Depolama Kitaplığı'nın yüklenen sürümü Veri Kutusu tarafından desteklenmez. Desteklenen sürümler için Azure Veri Kutusu Blob depolama gereksinimlerine bakın.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED] ...|Python'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortamı değişkenini Base64 kodlanmış TLS sertifika dosyasının yoluna ayarlayın [(sertifikayı nasıl karşıdan yükleyin'](data-box-deploy-copy-data-via-rest.md#download-certificate)e bakın). <br>Örnek:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu mağazanın yoluna ayarlayın. <br> Örneğin, Ubuntu üzerinde: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca askıda kalıyor gibi görünüyor: <br>Dizin https://numaralandırılamadı... Uzak ad çözümlenemedi`<accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts`.|
+|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca askıda kalıyor gibi görünüyor: <br>Kaynak konumu ayrıştırılırken hata oluştu. Temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı.|Cihazınızın TLS/SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)bölümüne gidin.|
+
+
+## <a name="errors-seen-in-azcopy-for-linux"></a>Linux için AzCopy 'da görülen hatalar
+
+Bu bölümde, Data Box BLOB depolama ile Linux için AzCopy kullanılırken ortaya çıkan sorunlardan bazıları ayrıntılı olarak ele verilebilir.
+
+|Hata iletisi  |Önerilen eylem |
+|---------|---------|
+|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca askıda kalıyor gibi görünüyor: <br>Kaynak konumu `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`ayrıştırılırken hata oluştu. Böyle bir cihaz veya adres yok|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts`.|
+|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca askıda kalıyor gibi görünüyor: <br>Kaynak konumu ayrıştırılırken hata oluştu... SSL bağlantısı kurulamadı.|Cihazınızın TLS/SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)bölümüne gidin.|
+
+## <a name="errors-seen-in-azure-storage-library-for-python"></a>Python için Azure depolama kitaplığı 'nda görülen hatalar
+
+Bu bölümde, veri kopyalama için bir Linux istemcisi kullanılırken Data Box Disk dağıtımı sırasında ortaya çıkan başlıca sorunlardan bazıları ayrıntılı olarak ele verilebilir.
+
+|Hata iletisi  |Önerilen eylem |
+|---------|---------|
+|HTTP başlıklarındaki bir değer doğru biçimde değil. |Python için Microsoft Azure Depolama kitaplığının yüklü sürümü Data Box tarafından desteklenmiyor. Desteklenen sürümler için Azure Data Box BLOB depolama gereksinimleri bölümüne bakın.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...|Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı TLS sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](data-box-deploy-copy-data-via-rest.md#download-certificate)). <br>Örneğin:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. <br> Örneğin, Ubuntu üzerinde: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Sık karşılaşılan hatalar
@@ -64,8 +64,8 @@ Bu hatalar herhangi bir uygulamaya özgü değildir.
 
 |Hata iletisi  |Önerilen eylem |
 |---------|---------|
-|Bağlantı zamanları doldu. |Veri Kutusu aygıtında oturum açın ve kilidiolup olmadığını kontrol edin. Cihaz yeniden başlatılsa, birisi gelene kadar kilitli kalır.|
+|Bağlantı zaman aşımına uğrar. |Data Box cihazda oturum açın ve kilidinin açık olup olmadığını denetleyin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Veri Kutusu Blob depolama sistemi gereksinimleri](data-box-system-requirements-rest.md)hakkında bilgi edinin.
+- [Data Box BLOB depolama sistem gereksinimleri](data-box-system-requirements-rest.md)hakkında bilgi edinin.

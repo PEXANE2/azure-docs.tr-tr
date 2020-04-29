@@ -1,6 +1,6 @@
 ---
 title: Müşteri müşteri adaylarını yapılandırma | Azure Marketi
-description: Bulut İş Ortağı Portalı'ndaki müşteri müşteri adaylarını yapılandırın.
+description: Bulut İş Ortağı Portalı müşteri adaylarını yapılandırın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,111 +8,111 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280329"
 ---
 <a name="get-customer-leads"></a>Müşteri adayları alma
 ==================
 
-Bu makalede, Bulut İş Ortağı Portalı'nı kullanarak müşteri müşteri adaylarının nasıl oluşturulacakları açıklanmaktadır. Bu müşteri adaylarını CRM sisteminize bağlayabilir ve satış ardınıza entegre edebilirsiniz.
+Bu makalede, Bulut İş Ortağı Portalı kullanarak müşteri adaylarının nasıl oluşturulacağı açıklanmaktadır. Bu müşteri adaylarını CRM sisteminize bağlayabilirsiniz ve bunları satış işlem hattınızla tümleştirebilirsiniz.
 
 ## <a name="leads"></a>Leads
 
-Müşteri adayları, ürünlerinizi Azure Marketi'nden veya [Azure Marketplace](https://azuremarketplace.microsoft.com/) [AppSource'dan](https://appsource.microsoft.com)ilgilenen veya dağıtan müşterilerdir.
+Müşteri adayları, ilgilendiğiniz veya ürünlerinizi [Azure Marketi](https://azuremarketplace.microsoft.com/) 'Nden veya [appsource](https://appsource.microsoft.com)'tan dağıtmakta olan müşterilerdir.
 
 ### <a name="azure-marketplace"></a>Azure Market
 
-1.  Müşteri teklifinizin bir "Test Sürüşü" alır. Test Sürüşleri, herhangi bir giriş engeli olmaksızın işinizi potansiyel müşterilerle anında paylaşmanız için hızlandırılmış bir fırsat. Tüm Test Sürücüleri, ürününüzün daha fazla bilgi edinimi denemek isteyen bir müşteri için bir müşteri adayı oluşturur. [Azure Marketi Test Sürüşü'nde](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)Test Sürücüleri hakkında daha fazla bilgi edinin.
+1.  Müşteri teklifinizin bir "test sürücüsü" alır. Sınama sürücüleri, girişte herhangi bir engelleri olmadan işletmenizin potansiyel müşterilerle anında paylaşılması için hızlandırılmış bir fırsattır. Tüm test sürücüleri, daha fazla bilgi edinmek için ürününüzü deneme konusunda ilgilendiğiniz müşteri için bir müşteri adayı oluşturur. [Azure Marketi test sürücüsünde](https://azuremarketplace.azureedge.net/documents/azure-marketplace-test-drive-program.pdf)test sürücüleri hakkında daha fazla bilgi edinin.
 
-    ![Pazar yeri test sürüşü örnekleri](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
+    ![Market test sürücüsü örnekleri](./media/cloud-partner-portal-get-customer-leads/test-drive-offer.png)
  
 
 <!-- -->
 
-1. Müşteri ,"Hemen alın" seçeneğini seçtikten sonra bilgilerini paylaşmayı kabul eder. Bu müşteri, ürününüzü almakla ilgilendiğini ifade eden müşteri hakkındaki bilgileri paylaştığımız bir **başlangıç müşteri** adayıdır. Kurşun, satın alma hunisinin en üst kısmıdır.
+1. Müşteri, bilgilerini "Şimdi al" seçeneğini belirledikten sonra paylaşıyoruz. Bu müşteri adayı, ürününüzü alma konusunda sizi ifade eden müşteri hakkındaki bilgileri paylaşdığımız bir **ilk ilgi çekici** liderdir. Müşteri adayı, Alım huninin en üstü.
 
-   ![Şimdi alın seçeneği](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
+   ![Şimdi al seçeneği](./media/cloud-partner-portal-get-customer-leads/get-it-now-button.png)
 
-1. Müşteri, ürününüzü almak için [Azure Portalı'nda](https://portal.azure.com/) "Satın Alma"yı seçer. Bu müşteri adayı, ürününüzü dağıtmaya başlayan bir müşteri hakkında bilgi paylaştığımız **etkin** bir müşteri dir.
+1. Müşteri, ürününüzü almak için [Azure portalında](https://portal.azure.com/) "satın al" öğesini seçer. Bu müşteri adayı, ürününüzü dağıtmaya başlamış bir müşteri hakkındaki bilgileri paylaşdığımız **etkin** bir lider.
 
    ![Satın alma seçeneği](./media/cloud-partner-portal-get-customer-leads/purchase-button.png)
 
 
 ### <a name="appsource"></a>AppSource
 
-1.  Müşteri teklifiniz için bir "Test Sürüşü" aldı. Test Sürüşleri, herhangi bir giriş engeli olmaksızın işinizi potansiyel müşterilerle anında paylaşmanız için hızlandırılmış bir fırsat. Tüm Test Sürücüleri, ürününüzü daha fazla bilgi edinmek için denemek isteyen bir müşterinin müşteri adayını oluşturur. [AppSource Test Drive'da](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive)Test Sürüşleri hakkında daha fazla bilgi edinin.
+1.  Müşteri teklifiniz için bir "test sürücüsü" sürdü. Sınama sürücüleri, girişte herhangi bir engelleri olmadan işletmenizin potansiyel müşterilerle anında paylaşılması için hızlandırılmış bir fırsattır. Tüm test sürücüleri, daha fazla bilgi edinmek için ürününüzü denemeye ilgilenen bir müşteri lideri oluşturacaktır. [Appsource test sürücüsünde](https://appsource.microsoft.com/blogs/want-to-try-an-app-take-a-test-drive)test sürücüleri hakkında daha fazla bilgi edinin.
 
-    ![Test sürüşü örneği](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
+    ![Test sürücüsü örneği](./media/cloud-partner-portal-get-customer-leads/test-drive-offer-2.png)
 
-2.  Müşteri ,"Hemen alın" seçeneğini seçtikten sonra bilgilerini paylaşmayı kabul eder. Bu müşteri, ürününüzü almakla ilgilendiğini ifade eden müşteri hakkındaki bilgileri paylaştığımız bir **başlangıç müşteri** adayıdır. Kurşun, satın alma hunisinin en üst kısmıdır.
+2.  Müşteri, bilgilerini "Şimdi al" seçeneğini belirledikten sonra paylaşıyoruz. Bu müşteri adayı, ürününüzü alma hakkında bilgi veren müşteriyle ilgili bilgileri paylaşdığımız bir **ilk ilgi çekici** liderdir. Müşteri adayı, Alım huninin en üstü.
 
-      ![Şimdi alın seçeneği](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
+      ![Şimdi al seçeneği](./media/cloud-partner-portal-get-customer-leads/get-it-now-button-2.png)
 
 
-3.  Müşteri teklifinizde "Bana Ulaşın" seçeneğini seçer. Bu müşteri, ürününuz hakkında takip edilmeyi isteyen bir müşteri hakkında bilgi paylaştığımız **etkin** bir müşteri dir.
+3.  Müşteri teklifiniz üzerinde "benimle Iletişim kurun" öğesini seçer. Bu müşteri adayı, ürününüzle ilgili olarak takip etmek isteyen bir müşteri hakkındaki bilgileri paylaşdığımız **etkin** bir lider.
 
-    ![Bana ulaşın seçeneği](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
+    ![Benimle iletişim kurma seçeneği](./media/cloud-partner-portal-get-customer-leads/contact-me-image.png)
 
-<a name="lead-data"></a>Müşteri Adayı Verileri
+<a name="lead-data"></a>Müşteri adayı verileri
 ---------
 
-Müşteri edinme işlemi sırasında aldığınız her müşteri adayının belirli alanlarda verileri vardır. Birden çok adımdan müşteri adayları alacağınızdan, müşteri adaylarını işlemenin en iyi yolu, sonraki yanıtları çoğaltmak ve kişiselleştirmektir. Bu şekilde her müşteri uygun bir ileti alıyor ve siz benzersiz bir ilişki oluşturuyorsunuz.
+Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. Birden çok adımdan müşteri adaylarını alacağınız için, müşteri adaylarını işlemenin en iyi yolu, takip eden pencereleri yinelemek ve kişiselleştirmenizi sağlar. Bu şekilde, her müşteri uygun bir ileti almaya ve benzersiz bir ilişki oluşturuyoruz.
 
-### <a name="lead-source"></a>Müşteri Adayı Kaynağı
+### <a name="lead-source"></a>Müşteri adayı kaynağı
 
-Bir müşteri adayı kaynağının biçimi **Kaynak**-**Eylem** |  **Teklifi'dir**
+Bir müşteri adayı kaynağının biçimi **kaynak**-**eylem** |  **teklifidir**
 
-**Kaynaklar**: "AzureMarket", "AzurePortal", "TestDrive" ve "AppSource (SPZA)"
+**Kaynaklar**: "AzureMarketplace", "AzurePortal", "testdrive" ve "appsource (spza)"
 
 **Eylemler**:
-- "INS" -- Kurulum. Bu eylem, bir müşteri ürününüzü satın aldığında Azure Marketi veya AppSource'da yapılır.
-- "PLT" -- Ortak Led Trial anlamına gelir. Bu eylem, bir müşteri Bana Ulaşın seçeneğini kullandığında AppSource'ta dır.
-- "DNC" -- Temas etmeyin. Bu eylem, uygulama sayfanızda çapraz listelenen bir İş Ortağıyla iletişime geçilmesi istendiğinde AppSource'da yer alır. Bu müşterinin uygulamanızda çapraz listeye alındığına dair kafaları paylaşıyoruz, ancak bunlarla iletişime geçmelerine gerek yok.
-- "Oluştur" -- Bu eylem yalnızca Azure Portalı'nın içindedir ve bir müşteri teklifinizi kendi hesabına satın aldığında oluşturulur.
-- "StartTestDrive" -- Bu eylem yalnızca Test Sürücüleri içindir ve bir müşteri test sürüşüne başladığında oluşturulur.
+- "INS"--yükleme. Bu eylem, bir müşteri ürününüzü satın aldığında Azure Market veya AppSource 'ta bulunur.
+- "PLT"--Iş ortağı LED deneme sürümünü temsil eder. Bu eylem, bir müşteri benimle Iletişim kurma seçeneğini kullandığında AppSource 'ta bulunur.
+- "DNC"--Iletişim kurulamadı. Bu eylem, uygulama sayfanızda çapraz olarak listelenen bir Iş ortağı ile iletişim kurulması istendiğinde AppSource 'ta bulunur. Bu müşterinin uygulamanızda çapraz olarak listelenme kafalarını paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
+- "Oluştur"--Bu eylem yalnızca Azure portalının içindedir ve bir müşteri, teklifinizi kendi hesaplarına satın aldığında üretilir.
+- "StartTestDrive"--Bu eylem yalnızca test sürücüleri için geçerlidir ve bir müşteri test sürücüsünü başlattığında oluşturulur.
 
 **Teklifler**
 
-Aşağıdaki örnekler, bir yayımcıya ve belirli bir teklife atanan benzersiz tanımlayıcıları gösterir: checkpoint.check-point-r77-10sg-byol, bitnami.openedxcypress ve docusign.3701c77e-1cfa-4c56-91e6-3ed0b62145a.
+Aşağıdaki örneklerde, bir yayımcıya atanan benzersiz tanımlayıcılar ve belirli bir teklif gösterilmektedir: kontrol noktası. Check-Point-r77-10sg-KLG, bitnamı. openedxcypress ve Docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a.
 
 
-### <a name="customer-info"></a>Müşteri Bilgileri
+### <a name="customer-info"></a>Müşteri bilgileri
 
-Aşağıdaki örnekteki alanlar, müşteri adayında bulunan müşteri bilgilerini gösterir.
-- Ad soyad: John
+Aşağıdaki örnekteki alanlar, bir müşteri adayıyla bulunan müşteri bilgilerini gösterir.
+- FirstName: John
 - Soyadı: Smith
-- E-posta:\@jsmith microsoft.com
-- Telefon numarası: 1234567890
+- E-posta:\@jsmith Microsoft.com
+- Telefon: 1234567890
 - Ülke: ABD
 - Şirket: Microsoft
 - Başlık: CTO
 
 >[!Note]
->Önceki örnekteki tüm veriler her müşteri adayı için her zaman kullanılabilir değildir.
+>Önceki örnekteki verilerin hepsi her bir müşteri adayı için her zaman kullanılabilir değildir.
 
-Müşteri adaylarını geliştirmek için aktif olarak çalışıyoruz, bu nedenle burada görmediğiniz ancak sahip olmak istediğiniz bir veri alanı varsa, lütfen [geri bildiriminizi bize gönderin.](mailto:AzureMarketOnboard@microsoft.com)
+Müşteri adaylarını geliştirmek için etkin bir şekilde çalışıyoruz, bu nedenle burada görmediğiniz ancak sahip olmak istediğiniz bir veri alanı varsa lütfen [görüşlerinizi bize gönderin](mailto:AzureMarketOnboard@microsoft.com).
 
-<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>CRM sisteminizi Bulut İş Ortağı Portalı'na bağlama
+<a name="how-to-connect-your-crm-system-with-the-cloud-partner-portal"></a>CRM sisteminizi Bulut İş Ortağı Portalı bağlama
 ------------------------------------------------------------
 
-Müşteri adayları almaya başlamak için, CrM bilgilerinizi kolayca takabilmeniz için Bulut İş Ortağı Portalı'nda Müşteri Adayı Yönetimi bağlayıcımızı kurduk ve bağlantıyı sizin için yapacağız. Artık, harici bir sistemle entegre olmak için önemli bir mühendislik çabası olmadan pazar tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
+Müşteri adaylarını almaya başlamak için, Bulut İş Ortağı Portalı için lider yönetimi bağlayıcımızı geliştirdik. böylece, CRM bilgilerinizi kolayca takabilirsiniz ve bağlantıyı sizin için yapacağız. Artık, bir dış sistemle tümleştirme için önemli bir mühendislik çabası olmadan Market tarafından oluşturulan müşteri adaylarını kolayca kullanabilirsiniz.
 
-![Müşteri adayı yönetimi konektörü](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
+![Lider yönetimi Bağlayıcısı](./media/cloud-partner-portal-get-customer-leads/lead-management-connector.png)
 
-Müşteri adaylarını çeşitli CRM sistemlerine veya doğrudan müşteri adaylarını istediğiniz gibi yönetebileceğiniz bir Azure Depolama Tablosuna yazabiliriz. Aşağıdaki bağlantıların her biri olası müşteri adayı hedeflerine bağlanmak için yönergeler sağlar:
+Müşteri adaylarını çeşitli CRM sistemlerine veya doğrudan, istediğiniz müşteri adaylarını yönetebileceğiniz bir Azure depolama tablosuna yazalım. Aşağıdaki bağlantıların her biri olası müşteri hedeflerine bağlanmak için yönergeler sağlar:
 
--   [Dynamics CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) müşteri adayları almak için Dynamics CRM Online'ı yapılandırmak için nasıl talimatlar alırsınız.
--   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) müşteri adayları almak için Marketo Kurşun Yapılandırma kurmak için talimatları almak için.
--    [Satış Gücü](./cloud-partner-portal-lead-management-instructions-salesforce.md) müşteri adaylarını almak için Salesforce örneğini ayarlamak için yönergeler almak için.
--    [Azure depolama](./cloud-partner-portal-lead-management-instructions-azure-table.md) hesabınızı bir Azure tablosunda müşteri adayları almak için ayarlama yönergelerini almak için Azure Tablosu.
--   [Https Endpoint](./cloud-partner-portal-lead-management-instructions-https.md) müşteri adayları almak için Https Endpoint'inizi ayarlama yönergelerini almak için.
+-   Dynamics [CRM Online](./cloud-partner-portal-lead-management-instructions-dynamics.md) 'ı, müşteri adaylarını almak IÇIN Dynamics CRM Online 'ın nasıl yapılandırılacağı hakkında yönergeler almak için.
+-   Müşteri adaylarını almak üzere Marketo lider yapılandırmasını ayarlamaya yönelik yönergeleri almak için [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md) .
+-    Salesforce, müşteri adaylarını almak için Salesforce örneğinizi ayarlamaya yönelik yönergeler almak için [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md) .
+-    Azure tablosu 'nda müşteri adaylarını almak için Azure depolama hesabınızı ayarlamaya yönelik yönergeleri almak için [Azure tablosu](./cloud-partner-portal-lead-management-instructions-azure-table.md) .
+-   HTTPS uç [noktasını](./cloud-partner-portal-lead-management-instructions-https.md) , müşteri adaylarını almak için ayarlama yönergelerini almak için
 
-Müşteri adayı hedefinizi yapılandırdıktan ve teklifinizi yayımladıktan sonra bağlantıyı doğrular ve size bir test müşteri adayı göndeririz. Canlı yayına çıkmadan önce teklifi görüntülerken, teklifi önizleme ortamında kendiniz elde etmeye çalışarak müşteri adayı bağlantınızı da test edebilirsiniz. Müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir, böylece müşteri adayı kaybetmeyin, bu nedenle bir şey değiştiğinde bu bağlantıları güncelleştirdiğinizden emin olun.
+Lider hedefini yapılandırdıktan ve teklifinizi yayımladıktan sonra, bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Teklifi, canlı çalışmadan önce görüntülerken, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz. Müşteri adaylarını kaybetmemeniz için müşteri adayı ayarlarınızın güncel kalmasını sağlamak önemlidir. bu nedenle, bu bağlantıları sonunda her değişiklik yapıldığında güncelleştirdiğinizden emin olun.
 
-<a name="what-next"></a>Sırada ne var?
+<a name="what-next"></a>Ne kadar ileri?
 ----------
 
-Teknik kurulum yapıldıktan sonra, bu müşteri adaylarını mevcut satış & pazarlama stratejinize ve operasyonel süreçlerinize dahil etmelidir. Genel satış sürecinizi daha iyi anlamak la çok ilgileniyoruz ve başarılı olmak için yüksek kaliteli müşteri adayları ve yeterli veri sağlama konusunda sizinle yakın bir şekilde çalışmak istiyoruz. Bu müşterilerin başarılı olması için size gönderdiğimiz müşteri adaylarını nasıl optimize edebileceğimiz ve geliştirebileceğimiz hakkındaki görüşlerinizi memnuniyetle karşılıyoruz. Satış ekibinizin Market Müşteri Adayları ile daha başarılı olabilmesi için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sunmak istiyorsanız lütfen bize bildirin.
+Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size başarılı olmak için yeterli veri sağlamak için sizinle yakından çalışmak istiyoruz. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sağlamayı öğrenmek istiyorsanız lütfen bize bildirin.

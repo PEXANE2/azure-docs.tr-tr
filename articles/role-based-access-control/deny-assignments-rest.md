@@ -1,6 +1,6 @@
 ---
 title: REST API ile Azure kaynakları için atamaları reddetme listesi
-description: Azure kaynakları ve REST API için rol tabanlı erişim denetimi (RBAC) kullanarak kullanıcılar, gruplar ve uygulamalar için reddedilen atamaları nasıl listeleyeceğimiz öğrenin.
+description: Azure kaynakları ve REST API için rol tabanlı erişim denetimi (RBAC) kullanarak kullanıcılara, gruplara ve uygulamalara yönelik reddetme atamalarını nasıl listeleyeceğinizi öğrenin.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -16,26 +16,26 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063027"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>REST API'sini kullanarak Azure kaynakları için atamaları reddetme listesi
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>REST API kullanarak Azure kaynakları için atamaları reddetme listesi
 
-[Atamaları reddetme,](deny-assignments.md) bir rol ataması onlara erişim izni verse bile kullanıcıların belirli Azure kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, REST API kullanarak reddi atamaları nasıl listelenir.
+Bir rol ataması erişime izin verirse, [atamaları Reddet](deny-assignments.md) , kullanıcıların belirli Azure Kaynak eylemlerini gerçekleştirmesini engeller. Bu makalede, REST API kullanarak reddedilen atamaları listeleme açıklanmaktadır.
 
 > [!NOTE]
-> Doğrudan kendi reddi atamaları oluşturamaz. Reddet atamalarının nasıl oluşturulduğu hakkında bilgi için [bkz.](deny-assignments.md)
+> Kendi reddetme atamalarınızı doğrudan oluşturamazsınız. Atamaları reddetme hakkında daha fazla bilgi için bkz. [atamaları reddetme](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
+Reddetme atama hakkında bilgi almak için, şunları yapmanız gerekir:
 
-- `Microsoft.Authorization/denyAssignments/read`Azure kaynakları için en [yerleşik rollere](built-in-roles.md)dahil olan izin.
+- `Microsoft.Authorization/denyAssignments/read`[Azure kaynakları için en yerleşik rollerde](built-in-roles.md)bulunan izin.
 
-## <a name="list-a-single-deny-assignment"></a>Tek bir reddet atamayı listele
+## <a name="list-a-single-deny-assignment"></a>Tek bir reddetme ataması listeleyin
 
 1. Aşağıdaki istekle başlayın:
 
@@ -43,7 +43,7 @@ Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments/{deny-assignment-id}?api-version=2018-07-01-preview
     ```
 
-1. URI *içinde{ scope}* yerine, reddet atamalarını listelemek istediğiniz kapsamla değiştirin.
+1. URI içinde, *{scope}* değerini reddetme atamalarını listelemek istediğiniz kapsamla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -52,9 +52,9 @@ Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
 
-1. *{reddet atama-id}* ile almak istediğiniz reddet atama tanımlayıcısını değiştirin.
+1. *{Deny-atama-kimliği}* değerini almak istediğiniz reddetme atama tanımlayıcısı ile değiştirin.
 
-## <a name="list-multiple-deny-assignments"></a>Birden çok reddet atamalarını listele
+## <a name="list-multiple-deny-assignments"></a>Birden çok reddetme atamasını listeleme
 
 1. Aşağıdaki isteklerden biriyle başlayın:
 
@@ -68,7 +68,7 @@ Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. URI *içinde{ scope}* yerine, reddet atamalarını listelemek istediğiniz kapsamla değiştirin.
+1. URI içinde, *{scope}* değerini reddetme atamalarını listelemek istediğiniz kapsamla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Kapsam | Tür |
@@ -77,21 +77,21 @@ Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
 
-1. *{filter}* atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
+1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
     > | Filtre | Açıklama |
     > | --- | --- |
-    > | (filtre yok) | Belirtilen kapsamdaki, yukarıda ve altındaki atamaları reddeden tüm leri listeler. |
-    > | `$filter=atScope()` | Listeler yalnızca belirtilen kapsam ve üzeri için atamaları reddeder. Alt skoplarda reddet atamalarını içermez. |
-    > | `$filter=assignedTo('{objectId}')` | Listeler, belirtilen kullanıcı veya hizmet sorumlusunun atamalarını reddeder.<br/>Kullanıcı, reddet ataması olan bir grubun üyesiyse, atamayı reddeden de listelenir. Bu filtre gruplar için geçişli dir, bu da kullanıcı bir grubun üyesiyse ve bu grup reddet ataması olan başka bir grubun üyesiyse, atamayı reddeden inkâr da listelenir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne kimliği kabul eder. Bir grup için nesne kimliği geçemezsiniz. |
-    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Listeler, belirtilen kullanıcı veya hizmet sorumlusuiçin ve belirtilen kapsamda atamaları reddeder. |
-    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Listeler belirtilen ada sahip atamaları reddeder. |
-    > | `$filter=principalId+eq+'{objectId}'` | Listeler belirtilen kullanıcı, grup veya hizmet sorumlusuiçin atamaları reddeder. |
+    > | (filtre yok) | Belirtilen kapsamın üzerinde, üzerinde ve altında tüm reddetme atamalarını listeler. |
+    > | `$filter=atScope()` | Yalnızca belirtilen kapsam ve yukarıya yönelik atamaları Reddet listeler. , Alt kapsamlardaki reddetme atamalarını içermez. |
+    > | `$filter=assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için atamaları Reddet listeler.<br/>Kullanıcı reddetme ataması olan bir grubun üyesiyse, bu reddetme atamasını de listelenir. Bu filtre, Kullanıcı bir grubun üyesiyse ve bu grubun reddetme ataması olan başka bir grubun üyesi olduğu durumlarda, bu filtre, reddetme atamasını de listelenmiş olduğu anlamına gelen gruplar için geçişlidir.<br/>Bu filtre yalnızca bir kullanıcı veya hizmet sorumlusu için bir nesne KIMLIĞI kabul eder. Bir grup için nesne KIMLIĞI geçirilemez. |
+    > | `$filter=atScope()+and+assignedTo('{objectId}')` | Belirtilen kullanıcı veya hizmet sorumlusu için ve belirtilen kapsamda atamaları Reddet ' i listeler. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Belirtilen ada sahip atamaları Reddet listeler. |
+    > | `$filter=principalId+eq+'{objectId}'` | Belirtilen kullanıcı, Grup veya hizmet sorumlusu için atamaları Reddet ' i listeler. |
 
-## <a name="list-deny-assignments-at-the-root-scope-"></a>Temel kapsamdaki atamaları listele (/)
+## <a name="list-deny-assignments-at-the-root-scope-"></a>Kök kapsamda (/) atamaları Reddet listesi
 
-1. [Azure Etkin Dizini'nde Bir Global Administrator için Erişimi Yükselt'te](elevate-access-global-admin.md)açıklandığı gibi erişiminizi yükseltin.
+1. [Azure Active Directory, genel yönetici için erişimi yükseltme](elevate-access-global-admin.md)bölümünde açıklandığı gibi erişiminizi yükseltin.
 
 1. Aşağıdaki isteği kullanın:
 
@@ -99,18 +99,18 @@ Reddet ataması hakkında bilgi almak için şunları yapmış olmalısınız:
     GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter={filter}
     ```
 
-1. *{filter}* atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin. Bir filtre gereklidir.
+1. *{Filter}* öğesini reddetme atama listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin. Filtre gerekiyor.
 
     > [!div class="mx-tableFixed"]
     > | Filtre | Açıklama |
     > | --- | --- |
-    > | `$filter=atScope()` | Yalnızca kök kapsamı için atamaları reddetmeyi listele. Alt skoplarda reddet atamalarını içermez. |
-    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Belirtilen ada sahip atamaları listele. |
+    > | `$filter=atScope()` | Yalnızca kök kapsamı için atamaları Reddet listesini listeleyin. , Alt kapsamlardaki reddetme atamalarını içermez. |
+    > | `$filter=denyAssignmentName+eq+'{deny-assignment-name}'` | Belirtilen ada sahip atamaları Reddet listesini listeleyin. |
 
 1. Yükseltilmiş erişimi kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure kaynakları için atamaları reddetmeyi anlama](deny-assignments.md)
+- [Azure kaynakları için reddedilen atamaları anlama](deny-assignments.md)
 - [Azure Active Directory'de Genel Yönetici erişimini yükseltme](elevate-access-global-admin.md)
 - [Azure REST API Başvurusu](/rest/api/azure/)

@@ -1,6 +1,6 @@
 ---
-title: Azure Hizmet Veri Servisi Uçtan Uca Izleme ve Tanılama | Microsoft Dokümanlar
-description: Hizmet Veri Servisi istemci tanılama ve uçtan uca izleme genel bakış (işleme dahil olan tüm hizmetler aracılığıyla istemci.)
+title: Uçtan uca izlemeyi ve tanılamayı Azure Service Bus | Microsoft Docs
+description: İstemci tanılama ve uçtan uca izlemeye (işleme dahil olan tüm hizmetler aracılığıyla istemci) genel Service Bus bakış.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,44 +14,44 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7c2efc9c736097873201505f280af5d47bed4847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294162"
 ---
-# <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Servis Veri Servisi mesajlaşması ile dağıtılmış izleme ve korelasyon
+# <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
 
-Mikro hizmet geliştirmede sık karşılaşılan sorunlardan biri, işleme de dahil olan tüm hizmetler aracılığıyla bir istemciden çalışma izleme yeteneğidir. Hata ayıklama, performans analizi, A/B testi ve diğer tipik tanılama senaryoları için yararlıdır.
-Bu sorunun bir parçası işin mantıksal parçalarını izlemektir. İleti işleme sonucu ve gecikme ve dış bağımlılık çağrıları içerir. Başka bir parçası süreç sınırları ötesinde bu tanılama olaylarıkoredir.
+Mikro hizmetler geliştirmenin yaygın sorunlarından biri, işleme dahil olan tüm hizmetler aracılığıyla bir istemciden işlem izleme yeteneğidir. Hata ayıklama, performans analizi, A/B testi ve diğer tipik tanılama senaryolarında yararlı olur.
+Bu sorunun bir parçası mantıksal iş parçalarını izlemektir. İleti işleme sonucu ve gecikme ve dış bağımlılık çağrılarını içerir. Diğer bir bölüm, işlem sınırlarının ötesinde bu tanılama olaylarının bağıntısı olur.
 
-Bir üretici bir sıra üzerinden ileti gönderdiğinde, genellikle başka bir istemci veya hizmet tarafından başlatılan başka bir mantıksal işlem kapsamında gerçekleşir. Aynı işlem, bir ileti aldıktan sonra tüketici tarafından devam edilir. Hem üretici hem de tüketici (ve işlemi işleyen diğer hizmetler), muhtemelen operasyon akışını ve sonucunu izlemek için telemetri olayları yontmaktadır. Bu tür olayları ilişkilendirmek ve işlemi uçuça izlemek için, telemetri raporlayan her hizmetin her olayı izleme bağlamıyla damgasıye basması zorundadır.
+Bir üretici kuyruk aracılığıyla bir ileti gönderdiğinde, genellikle başka bir istemci veya hizmet tarafından başlatılan başka bir mantıksal işlem kapsamında gerçekleşir. Aynı işlem tüketici tarafından bir ileti aldıktan sonra devam eder. Hem üretici hem de tüketici (ve işlemi işleyen diğer hizmetler), işlem akışını ve sonucu izlemek için telemetri olaylarını kabul edin. Bu tür olayları ve izleme işlemini uçtan uca ilişkilendirmek için telemetri raporlayan her hizmetin her olayı bir izleme bağlamıyla damgasına sahip olması gerekir.
 
-Microsoft Azure Hizmet Veri Servisi iletisi, üreticilerin ve tüketicilerin bu izleme bağlamından geçmek için kullanmaları gereken yük özelliklerini tanımlamıştır.
-Protokol [HTTP Korelasyon protokolüne](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)dayanır.
+Microsoft Azure Service Bus mesajlaşması, üreticileri ve tüketicilerin bu tür izleme bağlamını iletmek için kullanması gereken yük özelliklerini tanımladı.
+Protokol, [http bağıntı protokolünü](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)temel alır.
 
 | Özellik Adı        | Açıklama                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Tanı-Id       | Üreticiden kuyruğa harici bir aramanın benzersiz tanımlayıcısı. Gerekçe, değerlendirme ve biçim için [HTTP protokolündeki Request-Id'ye](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) bakın |
-|  Korelasyon-Bağlam | Operasyon işleme ile ilgili tüm hizmetler arasında yayılan çalışma bağlamı. Daha fazla bilgi için [HTTP protokolündeki Korelasyon-Bağlam](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
+|  Tanılama kimliği       | Bir üreticinin bir dış çağrısının sıraya özgü tanıtıcısı. [Http protokolündeki Istek kimliği](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) , dikkat edilecek noktalar ve biçim için bkz. |
+|  Bağıntı bağlamı | İşlem işleme dahil olmak üzere tüm hizmetlere yayılan işlem bağlamı. Daha fazla bilgi için bkz. [http protokolünde bağıntı bağlamı](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context) |
 
-## <a name="service-bus-net-client-autotracing"></a>Servis Veri Servisi .NET İstemci otomatik izleme
+## <a name="service-bus-net-client-autotracing"></a>Service Bus .NET Client 'ı oto izleme
 
-.NET için sürüm 3.0.0 [Microsoft Azure ServiceBus Client](/dotnet/api/microsoft.azure.servicebus.queueclient) ile başlayarak izleme sistemleri veya istemci kodu parçası tarafından kanca olabilir izleme araçları sağlar.
-Enstrümantasyon, istemci tarafından Servis Veri Servisi mesajlaşma hizmetine yapılan tüm çağrıları izlemenize olanak tanır. İleti işleme [ileti işleyicisi deseni](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)ile yapılırsa, ileti işleme de
+[.NET için Microsoft Azure 3.0.0 Service Bus Client](/dotnet/api/microsoft.azure.servicebus.queueclient) sürümünden itibaren, izleme sistemleri veya istemci kodu parçası tarafından bağlanabilen izleme noktaları sağlar.
+Bu izleme, istemci tarafında Service Bus mesajlaşma hizmetine yapılan tüm çağrıların izlenmesini sağlar. İleti işleme, ileti [işleyicisi düzeniyle](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler)yapıldığında ileti işleme de işaretlenir
 
-### <a name="tracking-with-azure-application-insights"></a>Azure Uygulama Öngörüleri ile İzleme
+### <a name="tracking-with-azure-application-insights"></a>Azure Application Insights izleme
 
-[Microsoft Application Insights,](https://azure.microsoft.com/services/application-insights/) otomatik büyüleme isteği ve bağımlılık izleme gibi zengin performans izleme özellikleri sağlar.
+[Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) , automagical isteği ve bağımlılık izleme dahil zengin performans izleme olanakları sağlar.
 
-Proje türünüze bağlı olarak Uygulama Öngörüleri SDK'yı yükleyin:
-- [ASP.NET](../azure-monitor/app/asp-net.md) - sürüm 2.5-beta2 veya daha yüksek yükleyin
-- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) - sürüm 2.2.0-beta2 veya daha yüksek yükleyin.
-Bu bağlantılar, SDK'nın yüklenmesi, kaynak oluşturma ve SDK'nın (gerekirse) yapılandırılması hakkında ayrıntılı bilgi sağlar. non-ASP.NET uygulamalar [için Konsol Uygulamaları için Azure Uygulama Öngörüleri](../azure-monitor/app/console.md) makalesine bakın.
+Proje türüne bağlı olarak Application Insights SDK 'Yı yüklemelisiniz:
+- [ASP.net](../azure-monitor/app/asp-net.md) -ınstall sürüm 2,5-beta2 veya üzeri
+- [ASP.NET Core](../azure-monitor/app/asp-net-core.md) -Version 2.2.0-Beta2 veya üstünü yükler.
+Bu bağlantılar SDK yükleme, kaynak oluşturma ve SDK 'Yı yapılandırma (gerekirse) hakkında ayrıntılar sağlar. Non-ASP.NET uygulamalar için, [konsol uygulamaları Için Azure Application Insights](../azure-monitor/app/console.md) makalesine başvurun.
 
-İletileri işlemek için [ileti işleyicisi deseni](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) kullanırsanız, işlem yapılır: hizmetiniz tarafından yapılan tüm Servis Veri Yolu çağrıları otomatik olarak izlenir ve diğer telemetri öğeleriyle ilişkilendirilir. Aksi takdirde el ilemesaj işleme izleme için aşağıdaki örneğe bakın.
+İletileri işlemek için [ileti işleyici modelini](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) kullanırsanız, işiniz bitti: hizmetiniz tarafından gerçekleştirilen tüm Service Bus çağrıları otomatik olarak izlenir ve diğer telemetri öğeleriyle bağıntılı yapılır. Aksi takdirde, el ile ileti işleme izleme için aşağıdaki örneğe bakın.
 
-#### <a name="trace-message-processing"></a>İleti işlemeyi izleme
+#### <a name="trace-message-processing"></a>İleti işlemeyi izle
 
 ```csharp
 private readonly TelemetryClient telemetryClient;
@@ -80,33 +80,33 @@ async Task ProcessAsync(Message message)
 }
 ```
 
-Bu örnekte, `RequestTelemetry` her işlenmiş ileti için, bir zaman damgası, süre ve sonuç (başarı) olan bildirilir. Telemetri de korelasyon özellikleri kümesi vardır.
-İleti işleme sırasında bildirilen iç içe geçen izlemeler ve özel durumlar da onları `RequestTelemetry`'alt' olarak temsil eden korelasyon özellikleriyle damgalanır.
+Bu örnekte, `RequestTelemetry` işlenen her ileti için bir zaman damgası, süre ve sonuca (başarılı) sahip olan raporlanır. Telemetride bir bağıntı özellikleri kümesi de vardır.
+İleti işleme sırasında bildirilen iç içe izlemeler ve özel durumlar, `RequestTelemetry`bunları ' alt öğeleri ' olarak temsil eden bağıntı özellikleriyle da damgalı.
 
-İleti işleme sırasında desteklenen dış bileşenlere arama yaparsanız, bunlar otomatik olarak izlenir ve ilişkilendirilir. Manuel izleme ve korelasyon için [Application Insights .NET SDK ile özel işlemleri izleyin'e](../azure-monitor/app/custom-operations-tracking.md) bakın.
+İleti işleme sırasında desteklenen dış bileşenlere çağrılar yaparsanız, bunlar otomatik olarak izlenir ve bağıntılı bir durumdur. El ile izleme ve bağıntı için [Application Insights .NET SDK ile özel Işlemleri izleme](../azure-monitor/app/custom-operations-tracking.md) bölümüne bakın.
 
-Application Insights SDK'ya ek olarak herhangi bir harici kod çalıştırıyorsanız, Application Insights günlüklerini görüntülerken daha uzun **süre** görmeyi bekleyin. 
+Application Insights SDK 'ya ek olarak herhangi bir dış kod çalıştırıyorsanız, Application Insights günlüklerini görüntülerken daha uzun **süre** görmeyi bekler. 
 
-![Uygulama Öngörüleri günlüğünde daha uzun süre](./media/service-bus-end-to-end-tracing/longer-duration.png)
+![Application Insights günlüğünde uzun süre](./media/service-bus-end-to-end-tracing/longer-duration.png)
 
-Bu, iletiyi almada bir gecikme olduğu anlamına gelmez. Bu senaryoda, ileti SDK koduna parametre olarak iletildiği için ileti zaten alınmıştır. Ayrıca, App Insights günlüklerinde **(İşlem)** **ad** etiketi, iletinin artık harici olay işleme kodunuz tarafından işlendiğini gösterir. Bu sorun Azure ile ilgili değildir. Bunun yerine, bu ölçümler, iletinin Hizmet Veri Servisi'nden zaten alınmış olması nedeniyle dış kodunuzun verimliliğini ifade eder. İleti Hizmet Veri Yolundan alındıktan sonra **İşlem** etiketinin nerede oluşturulduğunu ve atandığını görmek için [GitHub'daki bu dosyaya](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs) bakın. 
+İletiyi alırken bir gecikme olduğu anlamına gelmez. Bu senaryoda, ileti SDK koduna parametre olarak geçirildiğinden ileti zaten alındı. Uygulama öngörüleri günlüklerinde (**işlem**) **ad** etiketi, iletinin artık dış olay işleme kodunuz tarafından işlendiğini gösterir. Bu sorun Azure ile ilgili değildir. Bunun yerine, bu ölçümler, iletinin Service Bus zaten alındığını belirten dış kodunuzun verimliliğini ifade eder. İleti Service Bus alındıktan sonra **işlem** etiketinin nerede oluşturulduğunu ve atandığını görmek için [bu dosyayı GitHub '](https://github.com/Azure/azure-sdk-for-net/blob/4bab05144ce647cc9e704d46d3763de5f9681ee0/sdk/servicebus/Microsoft.Azure.ServiceBus/src/ServiceBusDiagnosticsSource.cs) da görebilirsiniz. 
 
-### <a name="tracking-without-tracing-system"></a>Sistemi izlemeden izleme
-Takip sisteminizin otomatik Servis Veri Mes'i aramalarını desteklememesi durumunda, bu tür bir desteği bir izleme sistemine veya uygulamanıza eklemeyi araştırabilirsiniz. Bu bölümde Service Bus .NET istemcisi tarafından gönderilen tanılama olayları açıklanmaktadır.  
+### <a name="tracking-without-tracing-system"></a>İzleme sistemi olmadan izleme
+İzleme sisteminizin otomatik Service Bus çağrıları izlemeyi desteklememesi durumunda, bu tür desteği bir izleme sistemine veya uygulamanıza eklemeyi düşünüyorsunuz. Bu bölümde, Service Bus .NET istemcisi tarafından gönderilen tanılama olayları açıklanmaktadır.  
 
-Service Bus .NET Client ,NET izleme ilkel [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) and [System.Diagnostics.Diagnosticsource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)kullanılarak araçlandırılır.
+Service Bus .NET Client, .NET izleme temelleri [System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve [System. Diagnostics. diagnosticsource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md)kullanılarak işaretlendi.
 
-`Activity`bir bildirim mekanizması `DiagnosticSource` iken bir izleme bağlamı olarak hizmet vermektedir. 
+`Activity`bir bildirim mekanizması iken `DiagnosticSource` bir izleme bağlamı işlevi görür. 
 
-DiagnosticSource olayları için dinleyici yoksa, enstrümantasyon kapalıdır ve enstrümantasyon maliyeti sıfırdır. DiagnosticSource tüm kontrolü dinleyiciye verir:
-- dinleyici hangi kaynakları ve olayları dinlemek için kontrol
-- dinleyici olay hızını ve örneklemeyi kontrol eder
-- olaylar sırasında İleti nesnesi'ne erişebilmeniz ve değiştirebilmeniz için tam bağlam sağlayan bir yük ile gönderilir
+DiagnosticSource olayları için dinleyici yoksa, izleme devre dışı, sıfır izleme maliyetlerine sahip olur. DiagnosticSource tüm denetimi dinleyiciye verir:
+- dinleyici, hangi kaynak ve olayların dinleneceğini denetler
+- dinleyici, olay hızını ve örneklemesi denetler
+- olaylar, olay sırasında Ileti nesnesine erişip değiştirebilmeniz için tam bağlam sağlayan bir yük ile gönderilir
 
-Uygulamaya geçmeden önce [DiagnosticSource Kullanım Kılavuzu'nu](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) tanıyın.
+Uygulamayla devam etmeden önce [Diagnosticsource Kullanıcı kılavuzuyla](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) ilgili bilgi edinin.
 
-Microsoft.Extension.Logger ile günlük ler yazan ASP.NET Core uygulamasında Hizmet Veri Servisi etkinlikleri için bir dinleyici oluşturalım.
-Bu DiagnosticSource abone [system.Reactive.Core](https://www.nuget.org/packages/System.Reactive.Core) kütüphane kullanır (aynı zamanda onsuz DiagnosticSource abone olmak kolaydır)
+Microsoft. Extension. günlükçü ile günlükleri yazan ASP.NET Core uygulamasındaki Service Bus olayları için bir dinleyici oluşturalım.
+DiagnosticSource 'a abone olmak için [System. reak. Core](https://www.nuget.org/packages/System.Reactive.Core) kitaplığını kullanır (Ayrıca, diagnosticsource 'a bu olmadan abone olmak da kolaydır)
 
 ```csharp
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory factory, IApplicationLifetime applicationLifetime)
@@ -143,57 +143,57 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 ```
 
-Bu örnekte, dinleyici her Hizmet Veri Servisi işlemi için süre, sonuç, benzersiz tanımlayıcı ve başlangıç saatini günlüğe kaydeder.
+Bu örnekte, dinleyici günlük süre, sonuç, benzersiz tanımlayıcı ve her Service Bus işlemi için başlangıç zamanı.
 
 #### <a name="events"></a>Olaylar
 
-Her işlem için iki olay gönderilir: 'Başlat' ve 'Durdur'. Büyük olasılıkla, sadece 'Stop' etkinlikleri ile ilgileniyorsunuz. Etkinlik özellikleri olarak çalışma sonucunun yanı sıra başlangıç saatini ve süresini de sağlarlar.
+Her işlem için, iki olay gönderilir: ' Başlat ' ve ' Durdur '. Büyük olasılıkla, yalnızca ' Durdur ' olayları ile ilgileniyorsunuz. İşlem sonucunu ve etkinlik özellikleri olarak başlangıç saatini ve süresini sağlarlar.
 
-Olay yükü işlem bağlamı ile bir dinleyici sağlar, api gelen parametreleri ve iade değeri çoğaltıyor. 'Durdur' olay yükü 'Başlat' olay yükünün tüm özelliklerine sahiptir, böylece 'Başlat' olayını tamamen yok sayabilirsiniz.
+Olay yükü işlemin bağlamına sahip bir dinleyici sağlar, API gelen parametrelerini ve dönüş değerini çoğaltır. ' Stop ' olay yükü, ' Start ' olay yükünün tüm özelliklerine sahiptir, bu nedenle ' Start ' olayını tamamen yoksayabilirsiniz.
 
-Tüm olaylar da 'Varlık' ve 'Bitiş Noktası' özellikleri var, onlar aşağıdaki tabloda atlanır
-  * `string Entity`- - Varlığın adı (sıra, konu, vb.)
-  * `Uri Endpoint`- Servis Veri Günü bitiş noktası URL'si
+Tüm olaylarda Ayrıca ' Entity ' ve ' Endpoint ' özellikleri bulunur, bunlar aşağıdaki tabloda atlanır
+  * `string Entity`--Varlığın adı (kuyruk, konu, vb.)
+  * `Uri Endpoint`-Service Bus uç nokta URL 'SI
 
-Her 'Durdur' `Status` olayı, `TaskStatus` basitlik için aşağıdaki tabloda atlanan async işlemi ile tamamlanmış bir özelliğe sahiptir.
+Her bir ' Stop ' olayının `Status` , `TaskStatus` zaman uyumsuz işlem ile tamamlandı ve bu, basitlik için aşağıdaki tabloda da atlanmıştır.
 
-İşletilmiş operasyonların tam listesi aşağıda veda edilmiştir:
+Aşağıda, Araçlı işlemlerin tam listesi verilmiştir:
 
-| Operasyon Adı | İzlenen API | Belirli Taşıma Kapasitesi Özellikleri|
+| İşlem adı | İzlenen API | Belirli yük özellikleri|
 |----------------|-------------|---------|
-| Microsoft.Azure.ServiceBus.Gönder | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`- Gönderilen iletilerin listesi |
-| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`- İleti işleniyor<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`- Zamanlanmış ileti mahsup<br/>`long SequenceNumber`- Zamanlanan iletinin sıra numarası ('Stop' olay yükü) |
-| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`- İptal edilecek te iletisinin sıra numarası | 
-| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`- Alınabilecek en fazla ileti sayısı.<br/>`IList<Message> Messages`- Alınan iletilerin listesi ('Stop' olay yükü) |
-| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`- Bir dizi iletiye göz atmak için başlangıç noktası.<br/>`int RequestedMessageCount`- Alınacak ileti sayısı.<br/>`IList<Message> Messages`- Alınan iletilerin listesi ('Stop' olay yükü) |
-| Microsoft.Azure.ServiceBus.ReceiveErtelenmiş | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`- Alacak sıra numaralarını içeren liste.<br/>`IList<Message> Messages`- Alınan iletilerin listesi ('Stop' olay yükü) |
-| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`- Tamamlamak için ilgili iletilerin kilit belirteçleri içeren liste.|
-| Microsoft.Azure.ServiceBus.Terk | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`- Terk etmek için ilgili iletinin kilit belirteci. |
-| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`- Ertelemek için ilgili iletinin kilit belirteci. | 
-| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`- Ölü harfe karşılık gelen mesajın kilit belirteci. | 
-| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`- Kilitlemeyi yenilemek için ilgili iletinin kilit belirteci.<br/>`DateTime LockedUntilUtc`- UTC formatında yeni kilit belirteci son kullanma tarihi ve saati. ('Dur' olay yükü)|
-| Microsoft.Azure.ServiceBus.Process | [IReceiverClient.RegisterMessageHandler'da](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) sağlanan İleti İşleyicisi lambda işlevi | `Message Message`- İleti işleniyor. |
-| Microsoft.Azure.ServiceBus.ProcessSession | [IQueueClient.RegisterSessionHandler'da](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) sağlanan İleti Oturum Handleyici lambda işlevi | `Message Message`- İleti işleniyor.<br/>`IMessageSession Session`- Oturum işleniyor |
-| Microsoft.Azure.ServiceBus.AddRule | [AbonelikClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`- Eklenecek kuralı sağlayan kural açıklaması. |
-| Microsoft.Azure.ServiceBus.RemoveRule | [AbonelikClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`- Kaldırılacak kuralın adı. |
-| Microsoft.Azure.ServiceBus.GetRules | [AbonelikClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`- Abonelikle ilgili tüm kurallar. ('Stop' yükü yalnızca) |
-| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`- İletilerde sessionId bulunur. |
-| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`- İletilerde sessionId bulunur.<br/>`byte [] State`- Oturum durumu ('Durdur' olay yükü) |
-| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`- İletilerde sessionId bulunur.<br/>`byte [] State`- Oturum durumu |
-| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`- İletilerde sessionId bulunur. |
-| Microsoft.Azure.ServiceBus.Exception | herhangi bir enstrümantif API| `Exception Exception`- Özel durum örneği |
+| Microsoft. Azure. ServiceBus. Send | [Iletileyici. Sendadsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | `IList<Message> Messages`-Gönderilen iletilerin listesi |
+| Microsoft. Azure. ServiceBus. ScheduleMessage | [Iletileyici. ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | `Message Message`-İleti işlendi<br/>`DateTimeOffset ScheduleEnqueueTimeUtc`-Zamanlanan ileti kayması<br/>`long SequenceNumber`-Zamanlanmış iletinin sıra sayısı (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Cancel | [Iletileyici. CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | `long SequenceNumber`-İptal edilecek te iletisinin sıra numarası | 
+| Microsoft. Azure. ServiceBus. Receive | [MessageReceiver. ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) | `int RequestedMessageCount`-Alınabilecek en fazla ileti sayısı.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | `int FromSequenceNumber`-Bir ileti toplu işlemine gözatabileceği başlangıç noktası.<br/>`int RequestedMessageCount`-Alınacak ileti sayısı.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. Receiveertelenmiş | [MessageReceiver. ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | `IEnumerable<long> SequenceNumbers`-Alacak sıra numaralarını içeren liste.<br/>`IList<Message> Messages`-Alınan iletilerin listesi (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. tamamlanmış | [MessageReceiver. tamamlana eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | `IList<string> LockTokens`-Tamamlanacak karşılık gelen iletilerin kilit belirteçlerini içeren liste.|
+| Microsoft. Azure. ServiceBus. Abandon | [MessageReceiver. bırakma zaman uyumsuz](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | `string LockToken`-İptal edilecek karşılık gelen iletinin kilit belirteci. |
+| Microsoft. Azure. ServiceBus. erteleme | [MessageReceiver. Defsilinebilir eşitleme](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | `string LockToken`-Erteleyecek karşılık gelen iletinin kilit belirteci. | 
+| Microsoft. Azure. ServiceBus. Deadmektup | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | `string LockToken`-Karşılık gelen iletinin yok sayılma harfine kilit belirteci. | 
+| Microsoft. Azure. ServiceBus. RenewLock | [MessageReceiver. RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | `string LockToken`-Kilidi yenilemek için ilgili iletinin kilit belirteci.<br/>`DateTime LockedUntilUtc`-UTC biçiminde yeni kilit belirteci bitiş tarihi ve saati. (' Durdur ' olay yükü)|
+| Microsoft. Azure. ServiceBus. Process | [IReceiverClient. RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) içinde sunulan ileti işleyici Lambda işlevi | `Message Message`-İleti işlendi. |
+| Microsoft. Azure. ServiceBus. ProcessSession | [Iqueueclient. RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) içinde sunulan Ileti oturumu işleyicisi Lambda işlevi | `Message Message`-İleti işlendi.<br/>`IMessageSession Session`-Oturum işleniyor |
+| Microsoft. Azure. ServiceBus. AddRule | [SubscriptionClient. AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | `RuleDescription Rule`-Eklenecek kuralı sağlayan kural açıklaması. |
+| Microsoft. Azure. ServiceBus. RemoveRule | [SubscriptionClient. RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | `string RuleName`-Kaldırılacak kuralın adı. |
+| Microsoft. Azure. ServiceBus. GetRules | [SubscriptionClient. GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | `IEnumerable<RuleDescription> Rules`-Abonelikle ilişkili tüm kurallar. (Yalnızca ' Durdur ' yük) |
+| Microsoft. Azure. ServiceBus. AcceptMessageSession | [Isessionclient. AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | `string SessionId`-İletilerde SessionID var. |
+| Microsoft. Azure. ServiceBus. GetSessionState | [Imessagesession. GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | `string SessionId`-İletilerde SessionID var.<br/>`byte [] State`-Oturum durumu (' Durdur ' olay yükü) |
+| Microsoft. Azure. ServiceBus. SetSessionState | [Imessagesession. SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | `string SessionId`-İletilerde SessionID var.<br/>`byte [] State`-Oturum durumu |
+| Microsoft. Azure. ServiceBus. RenewSessionLock | [Imessagesession. RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | `string SessionId`-İletilerde SessionID var. |
+| Microsoft. Azure. ServiceBus. Exception | Tüm belgelenmiş API 'leri| `Exception Exception`-Özel durum örneği |
 
-Her olayda, geçerli `Activity.Current` çalışma bağlamına sahip olana erişebilirsiniz.
+Her olayda geçerli işlem bağlamını tutan erişim `Activity.Current` sağlayabilirsiniz.
 
 #### <a name="logging-additional-properties"></a>Ek özellikleri günlüğe kaydetme
 
-`Activity.Current`mevcut operasyonun ve ebeveynlerinin ayrıntılı bağlamını sağlar. Daha fazla bilgi için daha fazla ayrıntı için [Etkinlik belgelerine](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) bakın.
-Service Bus instrumentation , `Activity.Current.Tags` tutun `MessageId` ve `SessionId` ne zaman kullanılabilir ek bilgi sağlar.
+`Activity.Current`geçerli işlemin ve üst öğelerinin ayrıntılı bağlamını sağlar. Daha fazla bilgi için bkz. [etkinlik belgeleri](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) .
+Service Bus izleme, `Activity.Current.Tags` içinde bulunan `MessageId` ve `SessionId` her seferinde ek bilgi sağlar.
 
-'Receive', 'Peek' ve 'ReceiveDeferred' olayını izleyen `RelatedTo` etkinliklerde de etiket olabilir. Sonuç olarak alınan `Diagnostic-Id`iletilerin (ler) ayrı bir listesini tutar.
-Bu tür bir işlem, birkaç ilgisiz iletinin alınmasına neden olabilir. Ayrıca, `Diagnostic-Id` işlemin ne zaman başladığı bilinmemektedir, bu nedenle 'Receive' işlemleri yalnızca bu Etiketi kullanarak 'İşlem' işlemleriyle ilişkilendirilebilir. İletiyi almanın ne kadar sürdüğünü denetlemek için performans sorunlarını çözümlerken kullanışlıdır.
+' Receive ', ' Peek ' ve ' Receiveertelenmiş ' olaylarını izleyen etkinliklerin `RelatedTo` etiketi de olabilir. Sonuç olarak alınan iletilerin ayrı `Diagnostic-Id`listesini barındırır.
+Bu tür bir işlem, ilgisiz birçok iletinin alınmasına neden olabilir. `Diagnostic-Id` Ayrıca, işlem başladığında bilinmiyor, bu nedenle ' Receive ' işlemleri yalnızca bu etiketi kullanan ' Process ' işlemleriyle bağıntılı olabilir. İletiyi almak için geçen süreyi denetlemek üzere performans sorunlarını analiz etmek yararlı olur.
 
-Etiketleri kaydetmenin etkili yolu, etiketleri üzerlerinde yinelemektir, bu nedenle önceki örneğe Etiketler eklemek aşağıdaki gibi görünür 
+Etiketleri günlüğe kaydetmek için etkili bir yol, bunları yinelemek ve önceki örneğe etiket eklemek gibi görünüyor 
 
 ```csharp
 Activity currentActivity = Activity.Current;
@@ -210,29 +210,29 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 #### <a name="filtering-and-sampling"></a>Filtreleme ve örnekleme
 
-Bazı durumlarda, performans ek yükü veya depolama tüketimini azaltmak için olayların yalnızca bir kısmını günlüğe kaydetmek istenir. 'Durdur' olaylarını yalnızca (önceki örnekte olduğu gibi) veya olayların örnek yüzdesini günlüğe kaydedebilirsiniz. 
-`DiagnosticSource`yüklem ile `IsEnabled` elde etmek için yol sağlar. Daha fazla bilgi için [DiagnosticSource'da Bağlam Tabanlı Filtreleme'ye](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering)bakın.
+Bazı durumlarda, performans yükünü veya depolama tüketimini azaltmak için olayların yalnızca bir kısmını günlüğe kaydetmek tercih edilir. Yalnızca ' Durdur ' olaylarını (önceki örnekte olduğu gibi) veya olayların örnek yüzdesini günlüğe yazabilirsiniz. 
+`DiagnosticSource`koşul ile `IsEnabled` elde etmenin yolunu sağlayın. Daha fazla bilgi için bkz. [DiagnosticSource 'Ta bağlam tabanlı filtreleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
 
-`IsEnabled`performans etkisini en aza indirmek için tek bir işlem için birden çok kez çağrılabilir.
+`IsEnabled`, performans etkisini en aza indirmek için tek bir işlem için birden çok kez çağrılabilir.
 
-`IsEnabled`aşağıdaki sırayla çağrılır:
+`IsEnabled`Şu sırada çağrılır:
 
-1. `IsEnabled(<OperationName>, string entity, null)`örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Sonunda 'Başlat' veya 'Dur' olmadığını unutmayın. Belirli işlemleri veya kuyrukları filtrelemek için kullanın. Geri arama `false`geri dönerse, işlem için olaylar gönderilmez
+1. `IsEnabled(<OperationName>, string entity, null)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Sonunda ' Start ' veya ' Stop ' yok. Belirli işlemleri veya kuyrukları filtrelemek için bu uygulamayı kullanın. Geri çağırma döndürürse `false`, işlem için olaylar gönderilmez
 
-   * 'İşlem' ve 'İşlem Oturumu' işlemleri için `IsEnabled(<OperationName>, string entity, Activity activity)` de geri çağrı alırsınız. Olayları `activity.Id` veya Etiketler özelliklerine göre filtrelemek için kullanın.
+   * ' Process ' ve ' ProcessSession ' işlemleri için geri çağırma de alırsınız `IsEnabled(<OperationName>, string entity, Activity activity)` . Olayları `activity.Id` ya da Etiketler özelliklerine göre filtrelemek için kullanın.
   
-2. `IsEnabled(<OperationName>.Start)`örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. 'Başlat' olayının başlatılıp başlatılmayacağını denetler. Sonuç yalnızca 'Başlat' olayını etkiler, ancak daha fazla enstrümantasyon buna bağlı değildir.
+2. `IsEnabled(<OperationName>.Start)`Örneğin, `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. ' Start ' olayının tetiklenip tetiklenmeyeceğini denetler. Sonuç yalnızca ' Başlat ' olayını etkiler, ancak daha fazla izleme buna bağlı değildir.
 
-'Dur' `IsEnabled` olayı için bir şey yoktur.
+' Durdur ' `IsEnabled` olayı yok.
 
-Bazı işlem sonucu özel `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` ise, çağrılır. Yalnızca 'Özel Durum' olaylarına abone olabilir ve enstrümantasyonun geri kalanını engelleyebilirsiniz. Bu durumda, yine de bu tür özel durumları işlemek zorunda. Diğer enstrümantasyon devre dışı bırakıldığından, izleme bağlamının tüketiciden üreticiye gelen iletilerle akmasını beklememelisiniz.
+Eğer bir işlem sonucu özel durum ise `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` , çağırılır. Yalnızca ' özel durum ' olaylarına abone olabilir ve izleme geri kalanını önleyebilirsiniz. Bu durumda, bu tür özel durumları yine de işlemeniz gerekir. Diğer izleme devre dışı olduğundan, izleme bağlamını tüketiciden üretici ile olan iletilerle akışa almayı beklememelisiniz.
 
-Örnekleme stratejilerini de uygulayabilirsiniz. `IsEnabled` Örnekleme, `Activity.Id` `Activity.RootId` tüm lastiklerde tutarlı örnekleme sağlar (izleme sistemi veya kendi kodunuzla yayLımit ettiği sürece).
+Ayrıca, örnekleme `IsEnabled` stratejilerini de kullanabilirsiniz. `Activity.Id` Veya `Activity.RootId` temel alınarak tutarlı örnekleme sağlar (izleme sistemine veya kendi kodunuz tarafından yayıldığında).
 
-Aynı kaynak `DiagnosticSource` için birden fazla dinleyicinin varlığında, sadece bir dinleyicinin olayı `IsEnabled` kabul etmesi yeterlidir, bu nedenle çağrılması garanti edilmez,
+Aynı kaynak için birden `DiagnosticSource` fazla dinleyici olması halinde, olayı kabul etmek için yalnızca bir dinleyicinin olması yeterlidir, bu nedenle `IsEnabled` çağrılması garanti edilmez,
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Uygulama Öngörüleri Korelasyon](../azure-monitor/app/correlation.md)
-* [Application Insights,](../azure-monitor/app/asp-net-dependencies.md) REST, SQL veya diğer dış kaynakların sizi yavaşlatıp yavaşlatıp yavaşlatmamasını görmek için Bağımlılıkları izler.
-* [Uygulama Öngörüleri .NET SDK ile özel işlemleri izleyin](../azure-monitor/app/custom-operations-tracking.md)
+* [Application Insights bağıntı](../azure-monitor/app/correlation.md)
+* REST, SQL veya diğer dış kaynakların sizi yavaşlatıyor olup olmadığını görmek için [Application Insights bağımlılıkları izleyin](../azure-monitor/app/asp-net-dependencies.md) .
+* [.NET SDK Application Insights özel işlemleri izleme](../azure-monitor/app/custom-operations-tracking.md)

@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim ilkesini yalnızca rapor modunda yapılandırma - Azure Etkin Dizini
-description: Koşullu Erişim'de yalnızca rapor modunu kullanma
+title: Yalnızca rapor modunda bir koşullu erişim ilkesi Yapılandırma-Azure Active Directory
+description: Benimseme yardımcı olması için koşullu erişimde yalnızca rapor modunu kullanma
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,81 +12,81 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295123"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Yalnızca rapor modunda Koşullu Erişim ilkesini yapılandırma (Önizleme)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırma (Önizleme)
 
-Koşullu Erişim ilkesini yalnızca rapor modunda yapılandırmak için:
+Yalnızca rapor modunda bir koşullu erişim ilkesi yapılandırmak için:
 
 > [!IMPORTANT]
-> Kuruluşunuz zaten yapmadıysa, [Azure Monitor tümleştirmesi ile Azure AD'yi ayarlayın.](#set-up-azure-monitor-integration-with-azure-ad) Verilerin gözden geçirilen kullanıma sunulmadan önce bu işlem yapılmalıdır.
+> Kuruluşunuz henüz yoksa Azure [ad ile Azure izleyici tümleştirmesini kurun](#set-up-azure-monitor-integration-with-azure-ad). Verilerin incelenmek üzere kullanılabilmesi için bu işlemin gerçekleşmesi gerekir.
 
-1. Koşullu Erişim yöneticisi, güvenlik yöneticisi veya genel yönetici olarak **Azure portalında** oturum açın.
-1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.
-1. **Yeni ilke**yi seçin.
-1. İlke koşullarını ve gerekli hibe denetimlerini gerektiği gibi yapılandırın.
-1. **Etkinleştir ilkesi** altında yalnızca **Rapor** moduna geçiş ayarlayın.
-1. **Kaydet**’i seçin
+1. **Azure Portal** , koşullu erişim Yöneticisi, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
+1. **Azure Active Directory** > **Security**güvenlik > **koşullu erişimi**'ne gidin.
+1. **Yeni ilke**' yi seçin.
+1. İlke koşullarını ve gereken izin denetimlerini gerekli şekilde yapılandırın.
+1. **Ilkeyi etkinleştir** altında, değiştirme modunu **yalnızca rapor** moduna ayarlayın.
+1. **Kaydet** 'i seçin
 
 > [!TIP]
-> Varolan bir **ilkenin Etkinleştir ilke** durumunu **Yalnızca** **Rapor'a** kadar etkinleştirme durumunu ancak bunu yapmak ilke yürütmeyi devre dışı kağınızda bulabilirsiniz. 
+> Mevcut bir ilkenin **ilke** durumunu **Açık** iken **yalnızca rapor** olarak düzenleyebilirsiniz ancak bunu yaptığınızda ilke zorlaması devre dışı bırakılır. 
 
-Yalnızca rapor sonucunu Azure AD oturum açma günlüklerinde görüntüleyin.
+Yalnızca raporu görüntüle-Azure AD oturum açma günlüklerinde yalnızca sonuç elde edin.
 
 Belirli bir oturum açma için yalnızca rapor ilkesinin sonucunu görüntülemek için:
 
-1. Rapor okuyucusu, güvenlik okuyucusu, güvenlik yöneticisi veya genel yönetici olarak **Azure portalında** oturum açın.
-1. **Azure Etkin Dizin** > **Oturum Açma'ya**göz atın.
-1. Sonuçları daraltmak için oturum açma veya filtre ekleme seçeneğini belirleyin.
-1. **Ayrıntılar** çekmecesinde, oturum açma sırasında değerlendirilen ilkeleri görüntülemek için **yalnızca Rapor (Önizleme)** sekmesini seçin.
+1. **Azure Portal** bir rapor okuyucu, güvenlik okuyucusu, güvenlik yöneticisi veya genel yönetici olarak oturum açın.
+1. **Azure Active Directory** > **oturum açma**işlemlerini inceleyin.
+1. Bir oturum açma seçin veya dar sonuçlara filtre ekleyin.
+1. **Ayrıntılar** çekmecede, oturum açma sırasında değerlendirilen ilkeleri görüntülemek Için **yalnızca rapor (Önizleme)** sekmesini seçin.
 
 > [!NOTE]
-> Oturum Açma günlüklerini indirirken, Koşullu Erişim raporu sonuç verilerini eklemek için JSON biçimini seçin.
+> Oturum açma günlüklerini karşıdan yüklerken, yalnızca koşullu erişim rapor sonuç verilerini dahil etmek için JSON biçimini seçin.
 
-## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure AD ile Azure Monitör tümleştirmesi ayarlama
+## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Azure AD ile Azure Izleyici tümleştirmesini ayarlama
 
-Yeni Koşullu Erişim Öngörüleri çalışma kitabını kullanarak Koşullu Erişim ilkelerinin toplam etkisini görüntülemek için Azure Monitor'u Azure AD ile tümleştirmeniz ve oturum açma günlüklerini dışa aktarmanız gerekir. Bu tümleştirmeyi ayarlamak için iki adım vardır: 
+Koşullu erişim ilkelerinin yeni koşullu erişim öngörüleri çalışma kitabını kullanarak toplam etkisini görüntülemek için Azure Izleyici 'yi Azure AD ile tümleştirmeli ve oturum açma günlüklerini dışarı aktarmanız gerekir. Bu tümleştirmeyi kurmak için iki adım vardır: 
 
-1. [Azure Monitör aboneliği için kaydolun ve bir çalışma alanı oluşturun.](/azure/azure-monitor/learn/quick-create-workspace)
-1. [Oturum açma günlüklerini Azure AD'den Azure Monitor'a dışa aktarın.](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+1. [Azure izleyici aboneliğine kaydolun ve bir çalışma alanı oluşturun](/azure/azure-monitor/learn/quick-create-workspace).
+1. [Azure AD 'de oturum açma günlüklerini Azure izleyici 'ye aktarın](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
 
-Azure Monitor [fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgiyi Azure Monitor fiyatlandırma sayfasında bulabilirsiniz. Maliyetleri tahmin etmek, günlük kap ayarlamak veya veri saklama süresini özelleştirmek için kaynaklar makalede bulunabilir, [Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönet.](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)
+Azure Izleyici fiyatlandırması hakkında daha fazla bilgi için [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)bulabilirsiniz. Maliyetleri tahmin etme, günlük üst sınır ayarlama veya veri saklama süresini özelleştirme için kaynaklar, [Azure Izleyici günlükleri ile kullanım ve maliyetleri yönetme](../../azure-monitor/platform/manage-cost-storage.md#estimating-the-costs-to-manage-your-environment)makalesinde bulunabilir.
 
-## <a name="view-conditional-access-insights-workbook"></a>Koşullu Erişim Öngörüleri çalışma kitabını görüntüleme
+## <a name="view-conditional-access-insights-workbook"></a>Koşullu erişim öngörüleri çalışma kitabını görüntüle
 
-Azure AD günlüklerinizi Azure Monitor ile tümleştirdikten sonra, yeni Koşullu Erişim öngörüleri çalışma kitaplarını kullanarak Koşullu Erişim ilkelerinin etkisini izleyebilirsiniz.
+Azure AD günlüklerinizi Azure Izleyici ile tümleştirdikten sonra, koşullu erişim ilkelerinin etkilerini yeni koşullu erişim öngörüleri çalışma kitaplarını kullanarak izleyebilirsiniz.
 
-1. **Azure portalında** güvenlik yöneticisi veya genel yönetici olarak oturum açın.
-1. **Azure Etkin Dizin** > **Çalışma Kitaplarına**göz atın.
-1. **Koşullu Erişim Öngörüleri (Önizleme)** seçeneğini belirleyin.
-1. **Koşullu Erişim İlkesi** açılır tarihinden bir veya daha fazla ilke seçin. Etkinleştirilmiş tüm ilkeler varsayılan olarak seçilir.
-1. Bir zaman aralığı seçin (zaman aralığı kullanılabilir veri kümesini aşıyorsa, rapor kullanılabilir tüm verileri gösterir). **Koşullu Erişim İlkesi** ve **Zaman Aralığı** parametrelerini ayarladıktan sonra rapor yüklenir.
-   1. İsteğe bağlı olarak, raporun kapsamını daraltmak için tek tek **Kullanıcıları** veya **Uygulamaları** arayın.
-1. Zaman aralığındaki verileri kullanıcı sayısına veya oturum açma sayısına göre görüntüleme arasında seçim yaparak seçim yaptı.
-1. **Veri görünümüne**bağlı olarak, **Etki Özeti** seçilen parametreler kapsamında kullanıcı veya oturum açma sayısını görüntüler, Toplam sayı, **Başarı**, **Başarısızlık**, Kullanıcı **eylemi gerekli**ve **uygulanmadı.** Belirli bir sonuç türünün oturum açmalarını incelemek için bir döşeme seçin. 
-   1. Çalışma kitabı parametrelerini değiştirdiyseniz, bir kopyasını ileride kullanmak üzere kaydetmeyi seçebilirsiniz. Raporun üst kısmındaki kaydet simgesini seçin ve kaydetmek için bir ad ve konum sağlayın.
-1. Her koşul için oturum açma çözümünü görüntülemek için aşağı kaydırın.
-1. Yukarıdaki seçimlere göre filtrelenen tek tek oturum açma olaylarını araştırmak için raporun altındaki Oturum Açma **Ayrıntılarını** görüntüleyin.
+1. **Azure Portal** bir güvenlik yöneticisi veya genel yönetici olarak oturum açın.
+1. **Azure Active Directory** > **çalışma kitaplarına**gidin.
+1. **Koşullu erişim öngörülerini (Önizleme)** seçin.
+1. **Koşullu erişim ilkesi** açılan listesinden bir veya daha fazla ilke seçin. Etkinleştirilen tüm ilkeler varsayılan olarak seçilidir.
+1. Bir zaman aralığı seçin (zaman aralığı kullanılabilir veri kümesini aşarsa, rapor tüm kullanılabilir verileri gösterir). **Koşullu erişim ilkesini** ve **zaman aralığı** parametrelerini ayarladıktan sonra rapor yüklenir.
+   1. İsteğe bağlı olarak, rapor kapsamını daraltmak için bireysel **kullanıcıları** veya **uygulamaları** arayın.
+1. Zaman aralığındaki verileri kullanıcı sayısına veya oturum açma sayısına göre görüntüleme arasında seçim yapın.
+1. **Veri görünümüne**bağlı olarak, **etki Özeti** seçilen parametrelerin kapsamındaki Kullanıcı veya oturum açma sayısını, toplam sayı, **başarı**, **hata**, **Kullanıcı eylemi gerekli**ve **uygulanmamış**olarak gruplanmış şekilde görüntüler. Belirli bir sonuç türünün oturum açma işlemlerini incelemek için bir kutucuk seçin. 
+   1. Çalışma kitabı parametrelerini değiştirdiyseniz, daha sonra kullanılmak üzere bir kopyasını kaydetmeyi seçebilirsiniz. Raporun üst kısmındaki Kaydet simgesini seçin ve kaydedilecek bir ad ve konum belirtin.
+1. Her koşul için oturum açma dökümlerinin dökümünü görüntülemek için aşağı kaydırın.
+1. Yukarıdaki seçimlere göre filtrelenmiş tek tek oturum açma olaylarını araştırmak için raporun altındaki **oturum açma ayrıntılarını** görüntüleyin.
 
 > [!TIP] 
-> Belirli bir sorguyu detaylandırmanız veya oturum açma ayrıntılarını aktarmanız mı gerekiyor? Log Analytics'te sorguyu açmak için herhangi bir sorgunun sağındaki düğmeyi seçin. CSV veya Power BI'ye dışa aktarmak için Dışa Aktar'ı seçin.
+> Belirli bir sorguda detaya gitme veya oturum açma ayrıntılarını dışarı aktarma gerekiyor mu? Sorguyu Log Analytics açmak için herhangi bir sorgunun sağındaki düğmeyi seçin. CSV veya Power BI dışarı aktarmak için dışarı aktar ' ı seçin.
 
-## <a name="common-problems-and-solutions"></a>Sık karşılaşılan sorunlar ve çözümler
+## <a name="common-problems-and-solutions"></a>Yaygın sorunlar ve çözümleri
 
 ### <a name="why-are-the-queries-in-the-workbook-failing"></a>Çalışma kitabındaki sorgular neden başarısız oluyor?
 
-Müşteriler, yanlış veya birden çok çalışma alanı çalışma kitabıyla ilişkiliyse sorguların bazen başarısız olduğunu fark etmişolur. Bu sorunu gidermek için çalışma kitabının üst kısmındaki **Edit'i** ve ardından Ayarlar dişlisini tıklatın. Çalışma kitabıyla ilişkili olmayan çalışma alanlarını seçin ve kaldırın. Her çalışma kitabıyla ilişkili yalnızca bir çalışma alanı olmalıdır.
+Müşteriler, çalışma kitabıyla yanlış veya birden çok çalışma alanı ilişkilendirilirse sorguların bazen başarısız olduğunu fark etmiş olur. Bu sorunu gidermek için, çalışma kitabının en üstünde **Düzenle** ' ye ve ardından ayarlar dişli ' a tıklayın. Çalışma kitabıyla ilişkilendirilmemiş çalışma alanlarını seçin ve kaldırın. Her çalışma kitabıyla ilişkili yalnızca bir çalışma alanı olmalıdır.
 
-### <a name="why-doesnt-the-conditional-access-policies-dropdown-parameter-contain-my-policies"></a>Koşullu Erişim İlkeleri açılır parametresi neden ilkelerimi içermiyor?
+### <a name="why-doesnt-the-conditional-access-policies-dropdown-parameter-contain-my-policies"></a>Koşullu erişim Ilkeleri açılan parametresi neden ilkelerime sahip değil?
 
-Koşullu Erişim İlkeleri açılır, en son oturum açma ları 4 saatlik bir süre içinde sorgulayarak doldurulur. Kiracının son 4 saat içinde herhangi bir oturum açma ması yoksa, açılan süre boş olabilir. Bu gecikme, sık oturum açma ları olan küçük kiracılar gibi kalıcı bir sorunsa, yöneticiler Koşullu Erişim İlkeleri açılır kaydı için sorguyu güncelleyebilir ve sorgunun süresini 4 saatten uzun bir süreye kadar uzatabilir.
+Koşullu erişim Ilkeleri açılan menüsü, en son oturum açma işlemlerinin 4 saat boyunca sorgulanarak doldurulur. Bir kiracının son 4 saat içinde oturum açma işlemleri yoksa, açılan menü boş olur. Bu gecikme, seyrek erişimli oturum açma işlemleri içeren küçük kiracılar gibi kalıcı bir sorun ise, Yöneticiler koşullu erişim Ilkeleri açılan listesini düzenleyebilir ve sorgu süresini 4 saatten uzun bir süre uzatır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu Erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
+[Koşullu erişim ortak ilkeleri](concept-conditional-access-policy-common.md)
 
-Azure AD çalışma kitapları hakkında daha fazla bilgi için makaleye bakın, [Azure Etkin Dizin raporları için Azure Monitor çalışma kitapları nasıl kullanılır.](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
+Azure AD çalışma kitapları hakkında daha fazla bilgi için [Azure izleyici çalışma kitaplarını Azure Active Directory raporları için kullanma](../reports-monitoring/howto-use-azure-monitor-workbooks.md)makalesine bakın.

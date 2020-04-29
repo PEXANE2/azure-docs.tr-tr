@@ -1,78 +1,78 @@
 ---
-title: Azure VM'lerde SAP HANA veritabanı yedeklemesi hakkında
+title: Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 52c235c95cea73a0c51c62fcb55f7f711d2eff21
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476466"
 ---
-# <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM'lerde SAP HANA veritabanı yedeklemesi hakkında
+# <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 
-SAP HANA veritabanları, düşük kurtarma noktası hedefi (RPO) ve hızlı kurtarma süresi hedefi (RTO) gerektiren kritik görev yükleridir. Azure [Yedekleme'yi](https://docs.microsoft.com/azure/backup/backup-overview)kullanarak [Azure VM'lerde çalışan SAP HANA veritabanlarını](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) artık yedekleyebilirsiniz.
+SAP HANA veritabanları, düşük kurtarma noktası hedefi (RPO) ve hızlı kurtarma süresi hedefi (RTO) gerektiren görev açısından kritik iş yükleridir. Artık, [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)kullanarak [Azure vm 'lerinde çalışan SAP HANA veritabanlarını yedekleyebilirsiniz](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) .
 
-Azure Yedekleme, SAP HANA'nın yerel API'lerinden yararlanarak yerel yedekleme desteği sağlamak için SAP tarafından [Backint sertifikasına](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) işlenmiştir. Azure Yedekleme'nin bu teklifi, Azure Yedekleme'nin **sıfır altyapı** yedeklemeleri mantrasıyla aynı hizaya geliyor ve yedekleme altyapısını dağıtma ve yönetme ihtiyacını ortadan kaldırıyor. Artık Azure VM'lerde çalışan SAP HANA veritabanlarını[(M serisi VM'ler](../virtual-machines/m-series.md) de şimdi de desteklendi!) sorunsuz bir şekilde yedekleyebilir ve Azure Yedekleme'nin sağladığı kurumsal yönetim özelliklerinden yararlanabilirsiniz.
+Azure Backup, SAP tarafından, SAP HANA 'ın yerel API 'Lerinden yararlanarak yerel yedekleme desteği sağlamak için [biriktirme tarafından sertifikalandırilmiştir](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) . Azure Backup bu teklif, **sıfır altyapı** yedeklemelerinin Azure Backup mantarafıyla hizalanır, yedekleme altyapısını dağıtma ve yönetme ihtiyacını ortadan kaldırır. Artık Azure VM 'lerinde çalışan SAP HANA veritabanlarını sorunsuz bir şekilde yedekleyebilir ve geri yükleyebilirsiniz (artık[d serisi VM 'ler](../virtual-machines/m-series.md) de desteklenir!) ve Azure Backup sağladığı kurumsal yönetim özelliklerinden yararlanabilirsiniz.
 
-## <a name="added-value"></a>Katma değer
+## <a name="added-value"></a>Değer eklendi
 
-SAP HANA veritabanlarını yedeklemek ve geri yüklemek için Azure Yedekleme'yi kullanmak aşağıdaki avantajları sağlar:
+SAP HANA veritabanlarını yedeklemek ve geri yüklemek için Azure Backup kullanarak aşağıdaki avantajları sağlar:
 
-* **15 dakikalık Kurtarma Noktası Hedefi (RPO)**: Kritik verilerin 15 dakikaya kadar kurtarılması artık mümkündür.
-* **Tek tıklatma, zaman içinde geri yükleme:** Üretim verilerinin alternatif HANA sunucularına geri yüklenir. Geri yüklemeleri gerçekleştirmek için yedekleme ve katalog zincirleme tüm sahne arkasında Azure tarafından yönetilir.
-* **Uzun süreli saklama**: Sıkı uyumluluk ve denetim ihtiyaçları için. Yedekleme noktalarının yerleşik yaşam döngüsü yönetimi yeteneği tarafından otomatik olarak budanacağı bekletme süresine bağlı olarak yedeklemelerinizi yıllarca saklar.
-* **Azure'dan Yedekleme Yönetimi**: Gelişmiş yönetim deneyimi için Azure Yedekleme'nin yönetim ve izleme özelliklerini kullanın. Azure CLI de desteklenir.
+* **15 dakikalık kurtarma noktası hedefi (RPO)**: en fazla 15 dakikalık kritik verilerin kurtarılması artık mümkündür.
+* **Tek tıklamayla, bir noktadan sonra geri yüklemeler**: üretim VERILERININ alternatif Hana sunucularına geri yüklenmesi kolay hale getirilir. Yedeklemenin ve katalogların yedeklenme zincirlerinin yedeklenme işlemi, Azure tarafından arka planda yönetilir.
+* **Uzun süreli saklama**: sıkı uyumluluk ve denetim ihtiyaçları için. Kurtarma noktalarının yerleşik yaşam döngüsü yönetimi özelliği tarafından otomatik olarak ayıklanacağı saklama süresine bağlı olarak, yedeklemelerinizi yıllarca koruyun.
+* **Azure 'Dan yedekleme yönetimi**: gelişmiş yönetim deneyimi için Azure Backup yönetim ve izleme yeteneklerini kullanın. Azure CLı de desteklenir.
 
-Bugün desteklediğimiz yedekleme ve geri yükleme senaryolarını görüntülemek için [SAP HANA senaryo destek matrisine](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın.
+Günümüzde destekdiğimiz yedekleme ve geri yükleme senaryolarını görüntülemek için [SAP HANA senaryo desteği matrisine](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)bakın.
 
 ## <a name="backup-architecture"></a>Backup mimarisi
 
-![Yedek mimari diyagramı](./media/sap-hana-db-about/backup-architecture.png)
+![Yedekleme mimarisi diyagramı](./media/sap-hana-db-about/backup-architecture.png)
 
-* Yedekleme işlemi, Azure'da [bir Kurtarma hizmetleri kasası oluşturarak](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) başlar. Bu kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolamak için kullanılacaktır.
-* SAP HANA sunucusunu çalıştıran Azure VM kasasına kaydedilir ve yedeklenecek veritabanları [keşfedilir.](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases) Azure Yedekleme hizmetinin veritabanlarını keşfetmesini sağlamak için, HANA sunucusunda kök kullanıcı olarak bir [ön kayıt komut dosyası](https://aka.ms/scriptforpermsonhana) çalıştırılması gerekir.
-* Bu komut dosyası **AZUREWLBACKUPHANAUSER** DB kullanıcı ve **hdbuserstore**aynı ada sahip karşılık gelen bir anahtar oluşturur. Komut dosyasının ne yaptığı hakkında daha fazla bilgi almak için [ön kayıt komut dosyasının yaptıkları](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) bölümüne bakın.
-* Azure Yedekleme Hizmeti artık **HANA için Azure Yedekleme Eklentisini** kayıtlı SAP HANA sunucusuna yüklüyor.
-* Ön kayıt komut dosyası tarafından oluşturulan **AZUREWLBACKUPHANAUSER** DB kullanıcısı, **HANA için Azure Yedekleme Eklentisi** tarafından tüm yedekleme ve geri yükleme işlemlerini gerçekleştirmek için kullanılır. Bu komut dosyasını çalıştırmadan SAP HANA DB'leri için yedekleme yapılandırmaya çalışırsanız, aşağıdaki hatayı alabilirsiniz: **UserErrorHanaScriptNotRun**.
-* Keşfedilen veritabanlarında [yedekleme yapılandırmak](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) için gerekli yedekleme ilkesini seçin ve yedeklemeleri etkinleştirin.
+* Yedekleme işlemi, Azure 'da [bir kurtarma hizmetleri Kasası oluşturarak](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) başlar. Bu kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolamak için kullanılacaktır.
+* SAP HANA Server çalıştıran Azure VM kasayla kaydedilir ve yedeklenecek veritabanları [bulunur.](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases) Azure Backup hizmetinin veritabanlarını bulmasına olanak tanımak için, bir [preregistration betiğinin](https://aka.ms/scriptforpermsonhana) , bir kök kullanıcı olarak Hana sunucusunda çalıştırılması gerekir.
+* Bu betik, **AZUREWLBACKUPHANAUSER** DB kullanıcısı ve **hdbuserstore**'da aynı ada sahip karşılık gelen bir anahtar oluşturur. Betiğin ne yaptığını hakkında daha fazla bilgi edinmek için [ön kayıt betiğinin ne olduğunu](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) öğrenin bölümüne bakın.
+* Azure Backup hizmeti artık, kayıtlı SAP HANA sunucusuna **Hana için Azure Backup eklentisini** yüklüyor.
+* Preregistration betiği tarafından oluşturulan **AZUREWLBACKUPHANAUSER** DB kullanıcısı, tüm yedekleme ve geri yükleme işlemlerini GERÇEKLEŞTIRMEK üzere **Hana için Azure Backup eklentisi** tarafından kullanılır. Bu betiği çalıştırmadan SAP HANA DBs için yedeklemeyi yapılandırmaya çalışırsanız, şu hatayı alabilirsiniz: **Usererrorhanascriptnotrun**.
+* Bulunan veritabanlarında [yedeklemeyi yapılandırmak](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) için gerekli yedekleme ilkesini seçin ve yedeklemeleri etkinleştirin.
 
-* Yedekleme yapılandırıldıktan sonra Azure Yedekleme hizmeti, korumalı SAP HANA sunucusunda VERITABANı düzeyinde aşağıdaki Backint parametrelerini ayarlar:
-  * [catalog_backup_using_backint:true]
-  * [enable_accumulated_catalog_backup:yanlış]
-  * [parallel_data_backup_backint_channels:1]
-  * [log_backup_timeout_s:900)]
-  * [backint_response_timeout:7200]
+* Yedekleme yapılandırıldıktan sonra Azure Backup hizmeti, korunan SAP HANA sunucusundaki VERITABANı düzeyinde aşağıdaki Backınt parametrelerini ayarlar:
+  * [catalog_backup_using_backint: true]
+  * [enable_accumulated_catalog_backup: false]
+  * [parallel_data_backup_backint_channels: 1]
+  * [log_backup_timeout_s: 900)]
+  * [backint_response_timeout: 7200]
 
 >[!NOTE]
->Bu parametrelerin HOST düzeyinde *bulunmadığından* emin olun. Ana bilgisayar düzeyi parametreleri bu parametreleri geçersiz kılar ve beklenmeyen davranışlara neden olabilir.
+>Bu parametrelerin konak düzeyinde mevcut *olmadığından* emin olun. Ana bilgisayar düzeyindeki Parametreler bu parametreleri geçersiz kılacak ve beklenmeyen davranışlara neden olabilir.
 >
 
-* **HANA için Azure Yedekleme Eklentisi** tüm yedekleme zamanlamalarını ve ilke ayrıntılarını korur. Zamanlanmış yedeklemeleri tetikler ve Backint API'leri aracılığıyla **HANA Yedekleme Motoru** ile iletişim kurar.
-* **HANA Yedekleme Motoru,** yedeklenecek verilerle birlikte bir Backint akışı döndürür.
-* Tam veya diferansiyel olan tüm zamanlanmış yedeklemeler ve isteğe bağlı yedeklemeler (Azure portalından tetiklenir) **HANA için Azure Yedekleme Eklentisi**tarafından başlatılır. Ancak, günlük yedeklemeleri **HANA Yedekleme Motoru** tarafından yönetilir ve tetiklenir.
-* BackInt sertifikalı bir çözüm olan SAP HANA için Azure Yedekleme, temel disk veya VM türlerine bağlı değildir. Yedekleme HANA tarafından oluşturulan akışlar tarafından gerçekleştirilir.
+* **Hana için Azure Backup eklentisi** tüm yedekleme zamanlamalarını ve ilke ayrıntılarını saklar. Zamanlanan yedeklemeleri tetikler ve Backınt API 'Leri aracılığıyla **Hana yedekleme altyapısıyla** iletişim kurar.
+* **Hana yedekleme altyapısı** , yedeklenecek verilerle birlikte bir backınt akışı döndürür.
+* Tam veya fark olan tüm zamanlanmış yedeklemeler ve isteğe bağlı yedeklemeler (Azure portal tetiklenir), **Hana için Azure Backup eklentisi**tarafından başlatılır. Ancak, günlük yedeklemeleri **Hana yedekleme altyapısının** kendisi tarafından yönetilir ve tetiklenir.
+* SAP HANA için Azure Backup, bir BackInt sertifikalı çözüm olması, temel diske veya VM türlerine bağlı değildir. Yedekleme, HANA tarafından oluşturulan akışlar tarafından gerçekleştirilir.
 
-## <a name="using-azure-vm-backup-with-azure-sap-hana-backup"></a>Azure SAP HANA yedeklemesi ile Azure VM yedeklemesi kullanma
+## <a name="using-azure-vm-backup-with-azure-sap-hana-backup"></a>Azure SAP HANA yedekleme ile Azure VM yedeklemesi kullanma
 
-Veritabanı düzeyinde yedekleme ve kurtarma sağlayan Azure'daki SAP HANA yedeklemesini kullanmanın yanı sıra, işletim sistemi ve veritabanı olmayan diskleri yedeklemek için Azure VM yedekleme çözümlerini kullanabilirsiniz.
+Azure 'da veritabanı düzeyinde yedekleme ve kurtarma sağlayan SAP HANA yedeklemesini kullanmanın yanı sıra, işletim sistemi ve veritabanı olmayan diskleri yedeklemek için Azure VM yedekleme çözümünü kullanabilirsiniz.
 
-[Backint sertifikalı Azure SAP HANA yedekleme çözümü](#backup-architecture) veritabanı yedekleme ve kurtarma için kullanılabilir.
+[Backınt sertifikalı Azure SAP HANA yedekleme çözümü](#backup-architecture) veritabanı yedekleme ve kurtarma için kullanılabilir.
 
-[Azure VM yedekleme,](backup-azure-vms-introduction.md) işletim sistemi ve diğer veritabanı olmayan diskleri yedeklemek için kullanılabilir. VM yedeklemesi her gün bir kez alınır ve tüm diskleri yedekler **(Yazma Hızlandırıcı (WA) diskleri** ve **UltraDisk'ler**hariç). Veritabanı Azure SAP HANA yedekleme çözümünün kullanılarak yedeklendiği için, şu anda önizlemede olan dışlama diski özelliğini kullanarak yalnızca işletim sistemi ve veritabanı olmayan disklerin dosya tutarlı yedeklemesini alabilirsiniz.
+[Azure VM yedeklemesi](backup-azure-vms-introduction.md) , işletim sistemini ve diğer veritabanı olmayan diskleri yedeklemek için kullanılabilir. VM yedeklemesi her gün bir kez alınır ve tüm diskleri ( **yazma hızlandırıcısı (WA) diskleri** ve **UltraDisks**hariç) yedekler. Veritabanı Azure SAP HANA yedekleme çözümü kullanılarak yedeklendiğinden, şu anda önizleme aşamasında olan diski hariç tut özelliğini kullanarak yalnızca işletim sistemi ve veritabanı olmayan disklerin dosya ile tutarlı bir yedeğini alabilirsiniz.
 
 >[!NOTE]
-> Azure VM yedeklemesi ile önceden posta komut dosyaları nın kullanılması, veritabanının veri birimlerinin uygulama tutarlı yedeklemelerine olanak tanır. Ancak, günlük alanı WA disklerinde yaşıyorsa, bu disklerin anlık görüntüsünü almak günlük alanı tutarlılığını garanti etmeyebilir. HANA bu nedenle günlük yedekleme oluşturma nın açık bir yolu vardır. SAP HANA'nızda da aynısını etkinleştirin ve Azure SAP HANA yedeklemesi kullanılarak yedeklenebilirler.
+> Azure VM yedekleme ile post öncesi betikleri kullanılması, veritabanının veri birimlerinin uygulamayla tutarlı yedeklemelere izin verir. Ancak, günlük alanı WA disklerinde bulunuyorsa, bu disklerin anlık görüntüsünü almak günlük alanı tutarlılığını garanti edemeyebilir. HANA, bu tam neden için günlük yedeklemeleri oluşturmanın açık bir yoludur. SAP HANA aynı şekilde etkinleştirin ve Azure SAP HANA yedekleme kullanılarak yedeklenebilir.
 
-SAP HANA çalıştıran bir VM'yi geri yüklemek için aşağıdaki adımları izleyin:
+SAP HANA çalıştıran bir VM 'yi geri yüklemek için şu adımları izleyin:
 
-* [Azure VM yedeklemesinden en](backup-azure-arm-restore-vms.md) son kurtarma noktasından yeni bir VM geri yükleyin. Veya yeni bir boş VM oluşturun ve diskleri en son kurtarma noktasından takın.
-* WA diskleri yedeklenmediğinden, geri yüklenmez. Boş WA diskleri ve günlük alanı oluşturun.
-* Diğer tüm yapılandırmalar (IP, sistem adı vb. gibi) ayarlandıktan sonra, VM Azure yedeklemesinden DB verileri alacak şekilde ayarlanır.
-* Şimdi DB'yi Azure SAP [HANA DB yedeklemesinden](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) istenilen zaman noktaya kadar VM'ye geri yükleyin.
+* [Azure VM yedeğinden yeni BIR VM](backup-azure-arm-restore-vms.md) 'yi en son kurtarma noktasından geri yükleyin. Veya yeni bir boş VM oluşturun ve diskleri en son kurtarma noktasından bağlayın.
+* WA diskleri yedeklenmeden bu yana geri yüklenmez. Boş WA diskleri ve günlük alanı oluşturun.
+* Diğer tüm yapılandırmaların (IP, sistem adı, vb.) ayarlanabilmesi için VM, Azure Backup 'tan DB verisi alacak şekilde ayarlanır.
+* Şimdi VERITABANıNı [Azure SAP HANA DB YEDEĞINDEN](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) sanal makineye istediğiniz zaman noktasına geri yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM'de çalışan bir SAP HANA veritabanını nasıl geri yükleyeceğimiz](https://docs.microsoft.com/azure/backup/sap-hana-db-restore) öğrenin
-* [Azure Yedekleme'yi kullanarak yedeklenen SAP HANA veritabanlarını nasıl yöneteceğimize](https://docs.microsoft.com/azure/backup/sap-hana-db-manage) öğrenin
+* [Azure VM 'de çalışan bir SAP HANA veritabanını nasıl geri](https://docs.microsoft.com/azure/backup/sap-hana-db-restore) yükleyeceğinizi öğrenin
+* [Kullanarak yedeklenen SAP HANA veritabanlarını yönetmeyi öğrenin Azure Backup](https://docs.microsoft.com/azure/backup/sap-hana-db-manage)

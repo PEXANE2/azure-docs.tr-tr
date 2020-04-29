@@ -1,6 +1,6 @@
 ---
-title: Kubernetes'e IoT Edge nasıl yüklenir | Microsoft Dokümanlar
-description: Yerel bir geliştirme kümesi ortamı nı kullanarak IoT Edge'in Kubernetes'e nasıl yükleyeceğimiz hakkında bilgi edinin
+title: Kubernetes 'e IoT Edge yüklemesi | Microsoft Docs
+description: Yerel bir geliştirme kümesi ortamı kullanarak Kubernetes 'e IoT Edge nasıl yükleneceğinizi öğrenin
 author: kgremban
 manager: philmea
 ms.author: veyalla
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471294"
 ---
-# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes'e IoT Edge nasıl yüklenir (Önizleme)
+# <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>Kubernetes 'e IoT Edge nasıl yüklenir (Önizleme)
 
-IoT Edge, esnek ve yüksek kullanılabilir bir altyapı katmanı olarak kubernetes ile entegre olabilir. Bu desteğin üst düzey bir IoT Edge çözümüne uyduğu yer:
+IoT Edge, Kubernetes ile, dayanıklı ve yüksek oranda kullanılabilir bir altyapı katmanı olarak yararlanarak tümleştirilebilir. Aşağıda, bu desteğin yüksek düzeyde bir IoT Edge çözümüne uygun olduğu yer verilmiştir:
 
-![k8s giriş](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
+![k8s girişi](./media/how-to-install-iot-edge-kubernetes/kubernetes-model.png)
 
 >[!TIP]
->Bu entegrasyon için iyi bir zihinsel model başka bir çalışma ortamı IoT Edge uygulamaları Linux ve Windows ek olarak çalıştırabilirsiniz olarak Kubernetes düşünmektir.
+>Bu tümleştirme için iyi bir işlem, Kubernetes 'in Linux ve Windows 'un yanı sıra IoT Edge uygulamalar üzerinde çalıştırılabilirler.
 
 ## <a name="architecture"></a>Mimari 
-Kubernetes'te IoT Edge, kenar iş yükü dağıtımları için *Özel Kaynak Tanımı* (CRD) sağlar. IoT Edge Agent, bulut tarafından yönetilen istenen durumu yerel küme durumuyla bağdaştıran bir *CRD denetleyicisi* rolünü üstlenir.
+Kubernetes 'de, IoT Edge Edge iş yükü dağıtımları için *özel kaynak tanımı* (CRD) sağlar. IoT Edge Aracısı, bulut tarafından yönetilen istenen durumu yerel küme durumuyla bağdaştıran bir *CRD denetleyicisinin* rolünü varsayar.
 
-Modül ömrü, modül kullanılabilirliğini koruyan ve yerleşimlerini seçen Kubernetes zamanlayıcısı tarafından yönetilir. IoT Edge, üstte çalışan kenar uygulama platformlarını yönetir ve kenar kümesindeki durumla IoT Hub'da belirtilen istenilen durumu sürekli olarak uzlaştırarak. Uygulama modeli hala IoT Edge modülleri ve yolları dayalı tanıdık modelidir. IoT Edge Aracısı denetleyicisi, *otomatik* çeviri IoT Edge'in uygulama modelini bölmeler, dağıtımlar, hizmetler vb. gibi Kubernetes yerel yapılarına gerçekleştirir.
+Modül ömrü, modül kullanılabilirliğini tutan ve yerleştirmesini seçen Kubernetes Zamanlayıcı tarafından yönetilir. IoT Edge, en üstte çalışan Edge uygulaması platformunu yönetir ve IoT Hub belirtilen istenen durumu, uç kümedeki durumuyla sürekli olarak mutabık kılma. Uygulama modeli, IoT Edge modüller ve rotalar temel alınarak tanıdık bir modeldir. IoT Edge aracısı denetleyicisi, *Otomatik* çeviri IoT Edge uygulama modelini pods, dağıtımlar, hizmetler vb. Kubernetes yerel yapılarına uygular.
 
-Burada üst düzey bir mimari diyagramı verilmiştir:
+Üst düzey bir mimari diyagramı aşağıda verilmiştir:
 
-![kubernetes kemer](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
+![Kubernetes yay](./media/how-to-install-iot-edge-kubernetes/publicpreview-refresh-kubernetes.png)
 
-Kenar dağıtımının her bileşeni, aygıta özgü bir Kubernetes ad alanına kadar genişbir alana sahiptir ve bu da aynı küme kaynaklarını birden çok kenar aygıtı ve bunların dağıtımları arasında paylaşabilmekiçin mümkün kılar.
+Edge dağıtımının her bileşeni, cihaza özel bir Kubernetes ad alanı kapsamına alınır ve aynı küme kaynaklarının birden çok uç cihaz ve dağıtımları arasında paylaşılmasını mümkün kılar.
 
 >[!NOTE]
->Kubernetes üzerinde IoT Edge [genel önizleme](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Kubernetes üzerinde IoT Edge [genel önizlemede](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="tutorials-and-references"></a>Eğitimler ve referanslar 
+## <a name="tutorials-and-references"></a>Öğreticiler ve başvurular 
 
-Ayrıntılı eğitimler ve referanslar da dahil olmak üzere daha fazla bilgi için lütfen [Kubernetes önizleme dokümanları mini sitesine](https://aka.ms/edgek8sdoc) bakın.
+Derinlemesine öğreticiler ve başvurular da dahil olmak üzere daha fazla bilgi için lütfen [Kubernetes Preview docs mini sitesindeki IoT Edge](https://aka.ms/edgek8sdoc) bakın.

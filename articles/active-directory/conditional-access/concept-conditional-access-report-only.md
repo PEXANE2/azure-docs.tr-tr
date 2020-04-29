@@ -1,6 +1,6 @@
 ---
-title: Koşullu Erişim yalnızca rapor modu nedir? - Azure Etkin Dizin
-description: Koşullu Erişim ilkesi dağıtımında yalnızca rapor modu nasıl yardımcı olabilir?
+title: Koşullu erişim yalnızca rapor modu nedir? -Azure Active Directory
+description: Koşullu erişim ilkesi dağıtımıyla ilgili olarak yalnızca rapor moduna yardım edebilir
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,43 +12,43 @@ manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bd41e79a1e08c57e806f6ada32faccfa5fdf5792
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295295"
 ---
-# <a name="what-is-conditional-access-report-only-mode"></a>Koşullu Erişim yalnızca rapor modu nedir?
+# <a name="what-is-conditional-access-report-only-mode"></a>Koşullu erişim yalnızca rapor modu nedir?
 
-Koşullu Erişim, doğru koşullarda doğru erişim denetimlerini uygulayarak müşterilerimiz tarafından güvenli kalmak için yaygın olarak kullanılır. Ancak, kuruluşunuzda Koşullu Erişim ilkesinin dağıtılmasının zorluklarından biri, son kullanıcılar üzerindeki etkiyi belirlemektir. Eski kimlik doğrulamasını engelleme, kullanıcı nüfusu için çok faktörlü kimlik doğrulaması gerektirme veya oturum açma risk ilkeleri uygulama gibi yaygın dağıtım girişimlerinden etkilenen kullanıcıların sayısını ve adlarını tahmin etmek zor olabilir. 
+Koşullu erişim, doğru koşullarda doğru erişim denetimleri uygulanarak güvenli kalmak için müşterilerimiz tarafından yaygın olarak kullanılır. Ancak, kuruluşunuzda koşullu erişim ilkesini dağıtmaya yönelik güçlüklerden biri, son kullanıcılara etkisini belirlemesidir. Eski kimlik doğrulamasını engelleme, bir Kullanıcı popülasyonu için çok faktörlü kimlik doğrulaması gerektirme veya oturum açma risk ilkeleri uygulama gibi yaygın dağıtım girişimleriyle etkilenen kullanıcıların sayısını ve adlarını tahmin etmek zor olabilir. 
 
-Yalnızca rapor modu, yöneticilerin ortamlarında etkinleştirmeden önce Koşullu Erişim ilkelerinin etkisini değerlendirmelerine olanak tanıyan yeni bir Koşullu Erişim ilkesi durumudur.  Yalnızca rapor modunun yayınlanmasıyla:
+Yalnızca rapor modu, yöneticilerin koşullu erişim ilkelerinin ortamlarında etkinleştirilmeden önce etkisini değerlendirmesini sağlayan yeni bir koşullu erişim ilkesi durumudur.  Yalnızca rapor modunun yayınlanmasıyla:
 
-- Koşullu Erişim ilkeleri yalnızca rapor modunda etkinleştirilebilir.
-- Oturum açma sırasında, yalnızca rapor modundaki ilkeler değerlendirilir, ancak uygulanmaz.
-- Sonuçlar, Oturum Açma günlüğü ayrıntılarının **Koşullu Erişim** ve **Yalnızca Rapor (Önizleme)** sekmelerinde günlüğe kaydedilir.
-- Azure Monitör aboneliği olan müşteriler, Koşullu Erişim öngörüleri çalışma kitabını kullanarak Koşullu Erişim ilkelerinin etkisini izleyebilir.
+- Koşullu erişim ilkeleri yalnızca rapor modunda etkinleştirilebilir.
+- Oturum açma sırasında yalnızca rapor modundaki ilkeler değerlendirilir, ancak zorlanmaz.
+- Sonuçlar, oturum açma günlüğü ayrıntılarının **koşullu erişim** ve **yalnızca rapor (Önizleme)** sekmelerinde günlüğe kaydedilir.
+- Azure Izleyici aboneliğine sahip müşteriler, koşullu erişim öngörüleri çalışma kitabını kullanarak koşullu erişim ilkelerinin etkilerini izleyebilir.
 
 > [!WARNING]
-> Uyumlu aygıtlar gerektiren yalnızca rapor modundaki ilkeler, aygıt uyumluluğu zorlanmasa bile, Mac, iOS ve Android'deki kullanıcıları ilke değerlendirmesi sırasında bir aygıt sertifikası seçmeye zorlayabilir. Bu istemler, aygıt uyumlu hale gelene kadar yinelenebilir. Oturum açma sırasında son kullanıcıların istemleri almasını önlemek için, aygıt platformları Mac, iOS ve Android'i aygıt uyumluluk denetimleri gerçekleştiren yalnızca rapor ilkelerinden hariç tutar.
+> Yalnızca rapor modundaki, uyumlu cihazlar gerektiren ilkeler, cihaz uyumluluğu zorlanmasa da, ilke değerlendirmesi sırasında bir cihaz sertifikası seçmesini, Mac, iOS ve Android 'de kullanıcılara istem verebilir. Bu istemler, cihaz uyumlu hale gelene kadar yinelenir. Son kullanıcıların oturum açma sırasında istemler almasını engellemek için cihaz platformları Mac, iOS ve Android cihaz uyumluluk denetimleri yapan yalnızca rapor ilkelerinden hariç tutun.
 
 ![Azure AD oturum açma günlüğünde yalnızca rapor sekmesi](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 
 ## <a name="policy-results"></a>İlke sonuçları
 
-Yalnızca rapor modundaki bir ilke belirli bir oturum açma için değerlendirildiğinde, dört yeni olası sonuç değeri vardır:
+Belirli bir oturum açma işlemi için yalnızca rapor modundaki bir ilke değerlendirildiğinde, dört yeni olası sonuç değeri vardır:
 
 | Sonuç | Açıklama |
 | --- | --- |
-| Yalnızca Rapor: Başarı | Tüm yapılandırılan ilke koşulları, gerekli etkileşimli olmayan hibe denetimleri ve oturum denetimleri karşılandı. Örneğin, çok faktörlü bir kimlik doğrulama gereksinimi, belirteçte zaten mevcut olan bir MFA talebiyle karşılanır veya uyumlu bir aygıt ilkesi uyumlu bir aygıt üzerinde aygıt denetimi gerçekleştirerek karşılanır. |
-| Yalnızca Rapor: Hata | Tüm yapılandırılan ilke koşulları karşılandı, ancak gerekli tüm etkileşimli olmayan hibe denetimleri veya oturum denetimleri yerine getirilmedi. Örneğin, bir ilke, blok denetiminin yapılandırıldığı veya aygıtın uyumlu bir aygıt ilkesinde başarısız olduğu bir kullanıcıya uygulanır. |
-| Yalnızca rapor: Kullanıcı eylemi gereklidir | Yapılandırılan tüm ilke koşulları karşılandı, ancak gerekli hibe denetimlerini veya oturum denetimlerini karşılamak için kullanıcı eylemi gerekli olacaktır. Yalnızca rapor moduyla, kullanıcıdan gerekli denetimleri karşılaması istenmez. Örneğin, kullanıcılardan çok faktörlü kimlik doğrulama zorlukları veya kullanım koşulları istenmez.   |
-| Yalnızca Rapor: Uygulanmadı | Tüm yapılandırılan ilke koşulları yerine getirilmedi. Örneğin, kullanıcı ilkenin dışında tutulur veya ilke yalnızca belirli güvenilen adlandırılmış konumlar için geçerlidir. |
+| Yalnızca rapor: başarılı | Tüm yapılandırılmış ilke koşulları, gerekli etkileşimli olmayan izin denetimleri ve oturum denetimleri karşılandı. Örneğin, bir Multi-Factor Authentication gereksinimi, belirteçte zaten bulunan bir MFA talebi tarafından karşılanır veya uyumlu bir cihazda cihaz denetimi gerçekleştirerek uyumlu bir cihaz ilkesi karşılanır. |
+| Yalnızca rapor: hata | Tüm yapılandırılmış ilke koşulları karşılandı, ancak gerekli etkileşimli olmayan izin denetimleri veya oturum denetimleri karşılanmadı. Örneğin, bir ilke bir blok denetiminin yapılandırıldığı bir kullanıcı için geçerlidir veya bir cihaz uyumlu bir cihaz ilkesiyle başarısız olur. |
+| Yalnızca rapor: Kullanıcı eylemi gerekli | Tüm yapılandırılmış ilke koşulları karşılanmadı, ancak gerekli izin denetimlerini veya oturum denetimlerini karşılamak için Kullanıcı eylemi gerekli olacaktır. Yalnızca rapor modunda, kullanıcıdan gerekli denetimleri karşılaması istenmez. Örneğin, kullanıcılardan Multi-Factor Authentication sorunları veya kullanım koşulları istenmez.   |
+| Yalnızca rapor: uygulanmadı | Yapılandırılmış tüm ilke koşulları karşılanmadı. Örneğin, Kullanıcı ilkeden çıkarılır veya ilke yalnızca belirli güvenilir adlandırılmış konumlar için geçerlidir. |
 
-## <a name="conditional-access-insights-workbook"></a>Koşullu Erişim Öngörüleri çalışma kitabı
+## <a name="conditional-access-insights-workbook"></a>Koşullu erişim öngörüleri çalışma kitabı
 
-Yöneticiler yalnızca rapor modunda birden çok ilke oluşturma yeteneğine sahiptir, bu nedenle hem her ilkenin bireysel etkisini hem de birlikte değerlendirilen birden çok ilkenin birleşik etkisini anlamak gerekir. Yeni Koşullu Erişim Öngörüleri çalışma kitabı, yöneticilerin Koşullu Erişim sorgularını görselleştirmelerine ve belirli bir zaman aralığı, uygulama kümesi ve kullanıcılar için bir ilkenin etkisini izlemelerine olanak tanır. 
+Yöneticiler yalnızca rapor modunda birden çok ilke oluşturma yeteneğine sahiptir, bu nedenle her bir ilkenin her iki etkisinin ve birlikte değerlendirilen birden çok ilkenin birleştirilmiş etkisinin anlaşılması gerekir. Yeni koşullu erişim öngörüleri çalışma kitabı, yöneticilerin koşullu erişim sorgularını görselleştirmesini ve belirli bir zaman aralığı, uygulama kümesi ve Kullanıcı için bir ilkenin etkisini izlemesini sağlar. 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu Erişim ilkesinde yalnızca rapor modunu yapılandırma](howto-conditional-access-report-only.md)
+[Koşullu erişim ilkesinde yalnızca rapor modunu yapılandırma](howto-conditional-access-report-only.md)

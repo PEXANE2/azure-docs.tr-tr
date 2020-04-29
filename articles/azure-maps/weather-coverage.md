@@ -1,6 +1,6 @@
 ---
-title: Hava durumu | Microsoft Azure Haritaları
-description: Bu makalede, Microsoft Azure Haritalar'da Hava Durumu kapsamı hakkında bilgi edineceksiniz.
+title: Hava durumu kapsamı | Microsoft Azure haritaları
+description: Bu makalede, Microsoft Azure haritalar 'da Hava durumu kapsamı hakkında bilgi edineceksiniz.
 author: philmea
 ms.author: philmea
 ms.date: 11/20/2019
@@ -9,28 +9,28 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333578"
 ---
-# <a name="azure-maps-weather-coverage"></a>Azure Haritalar hava durumu kapsamı
+# <a name="azure-maps-weather-coverage"></a>Azure haritalar Hava durumu kapsamı
 
-Bu makalede, Azure Haritalar [Hava durumu hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri verilmektedir. Azure Haritalar Hava durumu veri hizmetleri, radar kutucukları, mevcut hava koşulları, hava tahminleri ve bir rota boyunca hava durumu gibi ayrıntıları döndürür.
+Bu makalede Azure haritalar [Hava durumu Hizmetleri](https://aka.ms/AzureMapsWeatherService)için kapsam bilgileri sağlanmaktadır. Azure haritalar Hava durumu veri Hizmetleri, radar kutucukları, geçerli hava durumu koşulları, hava durumu tahminleri ve bir rota üzerinde hava durumu gibi ayrıntıları getirir.
 
-Azure Haritalar, tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluğa sahip değildir.
+Azure haritalar tüm ülkeler ve bölgeler için aynı düzeyde bilgi ve doğruluk düzeyine sahip değildir.
 
-Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyebileceğiniz hakkında bilgi sağlar.
+Aşağıdaki tabloda, her bir ülke/bölgeden isteyebilmeniz gereken hava durumu bilgileri hakkında bilgi verilmektedir.
 
 | Sembol | Anlamı |
 |--------|---------|
-|*       |Rota Boyunca Hava Durumunu Kapsar, Geçerli Koşullar, Saatlik Tahmini, Çeyrek Günlük Tahmini ve Günlük Tahmin API'leri |
+|*       |Yol, geçerli koşullar, saatlik tahmin, çeyrek günlük tahmin ve günlük tahmin API 'Leri ile hava durumunu ele alır |
 
 
 ## <a name="americas"></a>Kuzey ve Güney Amerika
 
-| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
+| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Anguilla                                 | ✓ |   |  ✓| 
 | Antarktika                               | ✓ |   |  ✓|
@@ -74,11 +74,11 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 | Paraguay                                 | ✓ |   |  ✓| 
 | Peru                                     | ✓ |   |  ✓| 
 | Porto Riko                              | ✓ |   |  ✓| 
-| Aziz Barthélemy                         | ✓ |   |  ✓| 
+| Saint Barthélimy                         | ✓ |   |  ✓| 
 | Saint Kitts ve Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint Martin                             | ✓ |   |  ✓| 
-| Aziz Pierre ve Miquelon                | ✓ |   |  ✓| 
+| Saint Pierre ve Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent ve Grenadinler         | ✓ |   |  ✓| 
 | Sint Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
@@ -86,8 +86,8 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad ve Tobago                      | ✓ |   |  ✓| 
 | Turks ve Caicos Adaları                 | ✓ |   |  ✓| 
-| ABD Dış Adaları                    | ✓ |   |  ✓| 
-| ABD Virjin Adaları                      | ✓ |   |  ✓| 
+| ABD harici Adaları                    | ✓ |   |  ✓| 
+| ABD Virgin Adaları                      | ✓ |   |  ✓| 
 | Amerika Birleşik Devletleri                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
@@ -95,7 +95,7 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 
 ## <a name="middle-east-and-africa"></a>Orta Doğu ve Afrika
 
-| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
+| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Cezayir                     | ✓               |                              |        ✓| 
 | Angola                      | ✓               |                              |        ✓| 
@@ -150,8 +150,8 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 | Katar                       | ✓               |                              |        ✓| 
 | Reunion                     | ✓               |                              |        ✓| 
 | Rwanda                      | ✓               |                              |        ✓| 
-| St Helena, Yükseliş, Tristan da Cunha        | ✓               |                              |        ✓| 
-| São Tomé ve Príncipe       | ✓               |                              |        ✓| 
+| Saint Helena, Ascension ve Tristan da Cunha        | ✓               |                              |        ✓| 
+| Sao Tome ve Principe       | ✓               |                              |        ✓| 
 | Suudi Arabistan                | ✓               |                              |        ✓| 
 | Senegal                     | ✓               |                              |        ✓| 
 | Seyşeller                  | ✓               |                              |        ✓| 
@@ -174,7 +174,7 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 
 ## <a name="asia-pacific"></a>Asya Pasifik
 
-| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
+| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afganistan                       | ✓ |   |  ✓| 
 | Amerikan Samoası                    | ✓ |   |  ✓| 
@@ -241,7 +241,7 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 
 ## <a name="europe"></a>Avrupa
 
-| Ülke/bölge              |  Uydu Karoları | Dakika Tahmini, Radar Karoları | Diğer* | 
+| Ülke/bölge              |  Uydu kutucukları | Dakika tahmini, radar kutucukları | Farklı | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|
 | Arnavutluk                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
@@ -254,7 +254,7 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 | Bulgaristan               | ✓ |   |  ✓| 
 | Hırvatistan                | ✓ | ✓ |  ✓| 
 | Kıbrıs                 | ✓ |   |  ✓| 
-| Çekya                | ✓ | ✓ |  ✓| 
+| Czechia                | ✓ | ✓ |  ✓| 
 | Danimarka                | ✓ | ✓ |  ✓| 
 | Estonya                | ✓ | ✓ |  ✓| 
 | Faroe Adaları          | ✓ |   |  ✓| 
@@ -299,4 +299,4 @@ Aşağıdaki tablo, her ülkeden/bölgeden ne tür hava durumu bilgileri isteyeb
 | Türkiye                 | ✓ |   |  ✓| 
 | Ukrayna                | ✓ |   |  ✓| 
 | Birleşik Krallık         | ✓ | ✓ |  ✓| 
-| Vatikan           | ✓ |   |  ✓| 
+| Vatikan şehri           | ✓ |   |  ✓| 

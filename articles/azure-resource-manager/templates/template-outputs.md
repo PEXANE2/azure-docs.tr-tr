@@ -1,22 +1,22 @@
 ---
-title: Şablonlarda çıktılar
-description: Azure Kaynak Yöneticisi şablonundaki çıktı değerlerinin nasıl tanımlandığını açıklar.
+title: Şablonlarda çıkış çıkışları
+description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460033"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonundaki çıktılar
+# <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki çıktılar
 
-Bu makalede, Azure Kaynak Yöneticisi şablonunuzda çıktı değerlerinin nasıl tanımlanış olduğu açıklanmaktadır. Dağıtılan kaynaklardan değerleri döndürmeniz gerektiğinde çıktıları kullanırsınız.
+Bu makalede, Azure Resource Manager şablonunuzda çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda çıktıları kullanırsınız.
 
-## <a name="define-output-values"></a>Çıktı değerlerini tanımlama
+## <a name="define-output-values"></a>Çıkış değerlerini tanımla
 
-Aşağıdaki örnek, ortak bir IP adresi için kaynak kimliğinin nasıl döndürülecek olduğunu gösterir:
+Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ nasıl dönegösterdiğini göstermektedir:
 
 ```json
 "outputs": {
@@ -27,9 +27,9 @@ Aşağıdaki örnek, ortak bir IP adresi için kaynak kimliğinin nasıl döndü
 }
 ```
 
-## <a name="conditional-output"></a>Koşullu çıktı
+## <a name="conditional-output"></a>Koşullu çıkış
 
-Çıktılar bölümünde, koşullu bir değer döndürebilirsiniz. Genellikle, bir kaynağı [koşullu olarak dağıttığınızda](conditional-resource-deployment.md) çıktılardaki durumu kullanırsınız. Aşağıdaki örnek, yeni bir ip adresinin dağıtılıp dağıtılmadığına bağlı olarak ortak bir IP adresi için kaynak kimliğinin koşullu olarak nasıl döndürülebildiğini gösterir:
+Çıktılar bölümünde, koşullu bir değer döndürebilirsiniz. Genellikle, bir kaynağı [koşullu olarak dağıttığınız](conditional-resource-deployment.md) durumunda çıkışların durumunu kullanırsınız. Aşağıdaki örnek, bir genel IP adresi için kaynak KIMLIĞININ, yeni bir birinin dağıtılıp dağıtıldığına göre nasıl koşullu olarak döndürülüp döndürülmeyeceğini göstermektedir:
 
 ```json
 "outputs": {
@@ -41,11 +41,11 @@ Aşağıdaki örnek, ortak bir IP adresi için kaynak kimliğinin nasıl döndü
 }
 ```
 
-Koşullu çıktının basit bir örneği için [koşullu çıktı şablonuna](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json)bakın.
+Koşullu çıkışın basit bir örneği için bkz. [koşullu çıkış şablonu](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
 
-## <a name="dynamic-number-of-outputs"></a>Dinamik çıktı sayısı
+## <a name="dynamic-number-of-outputs"></a>Dinamik çıkış sayısı
 
-Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin örnek sayısını bilemezsin. **Kopyalama** öğesini kullanarak değişken sayıda değer döndürebilirsiniz.
+Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin örnek sayısını bilemezsiniz. **Copy** öğesini kullanarak, değişken sayıda değer döndürebilirsiniz.
 
 ```json
 "outputs": {
@@ -59,19 +59,19 @@ Bazı senaryolarda, şablonu oluştururken döndürmeniz gereken bir değerin ö
 }
 ```
 
-Daha fazla bilgi için Azure [Kaynak Yöneticisi şablonlarında Çıktı yinelemesi'ne](copy-outputs.md)bakın.
+Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarda çıkış yinelemesi](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Bağlı şablonlar
 
-Bağlı bir şablondan çıktı değerini almak için üst şablondaki [başvuru](template-functions-resource.md#reference) işlevini kullanın. Üst şablondaki sözdizimi:
+Bağlı bir şablondan çıkış değerini almak için, üst şablondaki [başvuru](template-functions-resource.md#reference) işlevini kullanın. Üst şablondaki sözdizimi şöyledir:
 
 ```json
 "[reference('<deploymentName>').outputs.<propertyName>.value]"
 ```
 
-Bağlı bir şablondan çıktı özelliği alırken, özellik adı tire içeremez.
+Bağlantılı şablondan çıkış özelliği alınırken, özellik adı bir tire içeremez.
 
-Aşağıdaki örnek, bağlı bir şablondan bir değer alarak IP adresinin bir yük dengeleyicisi üzerinde nasıl ayarlanıngerektiğini gösterir.
+Aşağıdaki örnek, bir yük dengeleyicide, bağlantılı şablondan bir değer alarak IP adresinin nasıl ayarlanacağını gösterir.
 
 ```json
 "publicIPAddress": {
@@ -79,15 +79,15 @@ Aşağıdaki örnek, bağlı bir şablondan bir değer alarak IP adresinin bir y
 }
 ```
 
-İç içe bir `reference` [şablonun](linked-templates.md#nested-template)çıktılar bölümündeki işlevi kullanamazsınız. İç içe geçmiş bir şablonda dağıtılmış bir kaynağın değerlerini döndürmek için iç içe geçmiş şablonunuzu bağlantılı bir şablona dönüştürün.
+[İç içe geçmiş](linked-templates.md#nested-template)bir `reference` şablonun çıktılar bölümünde işlevini kullanamazsınız. Dağıtılan bir kaynağın değerlerini iç içe yerleştirilmiş bir şablonda döndürmek için, iç içe geçmiş şablonunuzu bağlı bir şablona dönüştürün.
 
-## <a name="get-output-values"></a>Çıktı değerlerini alma
+## <a name="get-output-values"></a>Çıkış değerlerini al
 
-Dağıtım başarılı olduğunda, çıktı değerleri dağıtım sonuçlarında otomatik olarak döndürülür.
+Dağıtım başarılı olduğunda, çıkış değerleri dağıtım sonuçlarında otomatik olarak döndürülür.
 
-Dağıtım geçmişinden çıktı değerlerini almak için komut dosyasını kullanabilirsiniz.
+Dağıtım geçmişinden çıkış değerleri almak için, komut dosyası kullanabilirsiniz.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment `
@@ -106,16 +106,16 @@ az deployment group show \
 
 ---
 
-## <a name="example-templates"></a>Örnek şablonlar
+## <a name="example-templates"></a>Örnek Şablonlar
 
-Aşağıdaki örnekler, çıktıları kullanma senaryolarını gösterir.
+Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
 |Şablon  |Açıklama  |
 |---------|---------|
-|[Kopya değişkenleri](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri çıkar. Herhangi bir kaynak dağıtmaz. |
-|[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Ortak bir IP adresi oluşturur ve kaynak kimliğini çıkartır. |
-|[Yük dengeleyici](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Önceki şablona bağlantılar. Yük dengeleyicisini oluştururken çıktıdaki kaynak kimliğini kullanır. |
+|[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
+|[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |
+|[Yük dengeleyici](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Önceki şablonun bağlantıları. Yük dengeleyiciyi oluştururken çıktıda kaynak KIMLIĞINI kullanır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çıktılar için kullanılabilir özellikler hakkında bilgi edinmek için [bkz.](template-syntax.md)
+* Çıktılar için kullanılabilen özellikler hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
