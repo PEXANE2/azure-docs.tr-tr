@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 kullanarak uzak bir dosyayı kodlayın ve akış
-description: Bir URL'ye dayalı bir dosyayı kodlamak ve REST'i kullanarak Azure Medya Hizmetleri ile içeriğinizi aktarmak için bu öğreticinin adımlarını izleyin.
+title: Azure Media Services v3 kullanarak uzak dosya ve akış kodlama
+description: Bir URL 'yi temel alan bir dosyayı kodlamak ve REST kullanarak Azure Media Services içeriğinizi akışa almak için bu öğreticideki adımları izleyin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,17 +13,17 @@ ms.custom: mvc
 ms.date: 03/16/2020
 ms.author: juliako
 ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79472042"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Öğretici: URL'ye dayalı uzak bir dosyayı kodlayın ve videoyu akışı - REST
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Öğretici: URL 'ye göre uzak bir dosya kodlama ve video geri kalanı
 
-Azure Medya Hizmetleri, medya dosyalarınızı çok çeşitli tarayıcılarda ve aygıtlarda oynatılabilen biçimlerde kodlamanıza olanak tanır. Örneğin, içeriğinizi Apple'ın HLS veya MPEG DASH biçimlerinde akışla göndermek isteyebilirsiniz. Akışla göndermeden önce yüksek kaliteli dijital medya dosyanızı kodlamanız gerekir. Kodlama yönergeleri için bkz. [Kodlama kavramı](encoding-concept.md).
+Azure Media Services, medya dosyalarınızı çok çeşitli tarayıcılarda ve cihazlarda yürütülebilecek biçimlere kodlamanızı sağlar. Örneğin, içeriğinizi Apple'ın HLS veya MPEG DASH biçimlerinde akışla göndermek isteyebilirsiniz. Akışla göndermeden önce yüksek kaliteli dijital medya dosyanızı kodlamanız gerekir. Kodlama yönergeleri için bkz. [Kodlama kavramı](encoding-concept.md).
 
-Bu öğretici, bir URL'ye dayalı bir dosyayı nasıl kodladığınızı ve REST'i kullanarak Azure Medya Hizmetleri ile videoyu nasıl aktarabileceğinizi gösterir. 
+Bu öğreticide, bir URL 'ye göre bir dosyayı kodlama ve REST kullanarak Azure Media Services videoyu akışa alma gösterilmektedir. 
 
 ![Videoyu yürütme](./media/stream-files-tutorial-with-api/final-video.png)
 
@@ -42,9 +42,9 @@ Bu öğretici şunların nasıl yapıldığını gösterir:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md).
 
-    Kaynak grubu adı ve Medya Hizmetleri hesap adı için kullandığınız değerleri hatırladığınızdan emin olun
+    Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun
 
 - AMS REST öğreticilerinden bazılarında gösterilen REST API'lerini yürütmek için [Postman](https://www.getpostman.com/) REST istemcisini yükleyin. 
 
@@ -60,13 +60,13 @@ Postman koleksiyonunu ve ortam dosyalarını içeren bir GitHub deposunu kopyala
 
 ## <a name="access-api"></a>Erişim API’si
 
-Ayrıntılı bilgi için [Bkz. Medya Hizmetleri API'sine erişmek için kimlik bilgileri alın](access-api-howto.md)
+Ayrıntılı bilgi için bkz. [MEDIA SERVICES API 'sine erişmek için kimlik bilgilerini edinme](access-api-howto.md)
 
 ## <a name="configure-postman"></a>Postman'i yapılandırma
 
 ### <a name="configure-the-environment"></a>Ortamı yapılandırma 
 
-1. **Postacı** uygulamasını açın.
+1. **Postman** uygulamasını açın.
 2. Ekranın sağ tarafında **Ortamı yönet** seçeneğini belirleyin.
 
     ![Ortamı yönetme](./media/develop-with-postman/postman-import-env.png)
@@ -96,19 +96,19 @@ Ayrıntılı bilgi için [Bkz. Medya Hizmetleri API'sine erişmek için kimlik b
 Bu bölümde, dosyanızı akışla aktarabilmeniz için kodlama ve URL oluşturma ile ilgili istekler göndereceğiz. Özellikle de aşağıdaki istekleri göndereceğiz:
 
 1. Hizmet Sorumlusu Kimlik Doğrulaması için Azure AD Belirteci alma
-1. Akış Bitiş Noktası Başlat
+1. Akış uç noktası Başlatma
 2. Çıktı varlığı oluşturma
-3. Dönüşüm Oluşturma
-4. İş Oluşturma
-5. Akış Lı Bulucu Oluşturma
-6. Akış Bulucu'nun yollarını listele
+3. Dönüşüm oluşturma
+4. Iş oluşturma
+5. Akış Bulucu oluşturma
+6. Akış Konumlandırıcı 'nın yollarını Listele
 
 > [!Note]
 >  Bu öğretici, tüm kaynakları benzersiz adlarla oluşturmakta olduğunuzu varsayar.  
 
 ### <a name="get-azure-ad-token"></a>Azure AD Belirteci alma 
 
-1. Postacı uygulamasının sol penceresinde "Adım 1: AAD Auth belirteci alın" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "1. Adım: AAD kimlik doğrulama belirteci al" seçeneğini belirleyin.
 2. Sonra, "Hizmet Sorumlusu Kimlik Doğrulaması için Azure AD Belirteci alma"'yı seçin.
 3. **Gönder**’e basın.
 
@@ -123,37 +123,37 @@ Bu bölümde, dosyanızı akışla aktarabilmeniz için kodlama ve URL oluşturm
     ![AAD belirteci alma](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
 
-### <a name="start-a-streaming-endpoint"></a>Akış Bitiş Noktası Başlat
+### <a name="start-a-streaming-endpoint"></a>Akış uç noktası Başlatma
 
-Akışı etkinleştirmek için, önce videoyu akışı istediğiniz [Akış Bitiş Noktasını](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) başlatmanız gerekir.
+Akışı etkinleştirmek için öncelikle videoyu akışını istediğiniz [akış uç noktasını](https://docs.microsoft.com/azure/media-services/latest/streaming-endpoint-concept) başlatmanız gerekir.
 
 > [!NOTE]
-> Yalnızca Akış Bitiş Noktanız çalışan durumdayken faturalandırılırsınız.
+> Yalnızca akış uç noktanız çalışır durumdaysa faturalandırılırsınız.
 
-1. Postacı uygulamasının sol penceresinde "Akış ve Canlı" seçeneğini belirleyin.
-2. Ardından "StreamingEndpoint'i başlat" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "akış ve canlı" seçeneğini belirleyin.
+2. Sonra, "StreamingEndpoint 'i Başlat" seçeneğini belirleyin.
 3. **Gönder**’e basın.
 
-    * Aşağıdaki **POST** işlemi gönderilir:
+    * Aşağıdaki **Post** işlemi gönderilir:
 
         ```
         https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaservices/:accountName/streamingEndpoints/:streamingEndpointName/start?api-version={{api-version}}
         ```
-    * İstek başarılı olursa, `Status: 202 Accepted` döndürülür.
+    * İstek başarılı `Status: 202 Accepted` olursa, döndürülür.
 
-        Bu durum, isteğin işleme için kabul edildiği anlamına gelir; ancak, işleme tamamlanmadı. `Azure-AsyncOperation` Yanıt üstbilgideki değeri temel alan işlem durumunu sorgulayabilirsiniz.
+        Bu durum, isteğin işleme için kabul edildiği anlamına gelir; Ancak, işleme tamamlanmamış. `Azure-AsyncOperation` Yanıt üstbilgisindeki değere göre işlem durumu için sorgulama yapabilirsiniz.
 
-        Örneğin, aşağıdaki GET işlemi işleminizin durumunu döndürür:
+        Örneğin, aşağıdaki GET işlemi işlemin durumunu döndürür:
         
         `https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/<resourceGroupName>/providers/Microsoft.Media/mediaservices/<accountName>/streamingendpointoperations/1be71957-4edc-4f3c-a29d-5c2777136a2e?api-version=2018-07-01`
 
-        [Parça eşzamanlı Azure işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) makalesi, yanıtta döndürülen değerler aracılığıyla eşzamanlı Azure işlemlerinin durumunu nasıl izleyebilirsiniz ayrıntılı olarak açıklar.
+        [Zaman uyumsuz Azure işlemlerini izle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) makalesinde, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz Azure işlemlerinin durumunun nasıl izleneceği ayrıntılı olarak açıklanmaktadır.
 
 ### <a name="create-an-output-asset"></a>Çıktı varlığı oluşturma
 
 Çıktı [Varlığı](https://docs.microsoft.com/rest/api/media/assets), kodlama işinizin sonucunu depolar. 
 
-1. Postacı uygulamasının sol penceresinde "Varlıklar" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "varlıklar" ı seçin.
 2. Ardından "Varlık oluşturma veya güncelleştirme"'yi seçin.
 3. **Gönder**’e basın.
 
@@ -175,7 +175,7 @@ Akışı etkinleştirmek için, önce videoyu akışı istediğiniz [Akış Biti
 
 ### <a name="create-a-transform"></a>Dönüşüm oluşturma
 
-Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni iş göndererek, bu tarifi kitaplığınızdaki tüm videolara uyguluyorsunuz. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler'e](transform-concept.md)bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
+Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolarınıza uygulayacaksanız. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için bkz. [dönüşümler ve işler](transform-concept.md). Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
 
 Yeni bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) örneği oluştururken çıktı olarak neyi üretmesi istediğinizi belirtmeniz gerekir. Gerekli parametre bir **TransformOutput** nesnesidir. Her **TransformOutput** bir **Ön ayar** içerir. **Ön ayar**, video ve/veya ses işleme işlemlerinin istenen **TransformOutput** nesnesini oluşturmak üzere kullanılacak adım adım yönergelerini açıklar. Bu makalede açıklanan örnek, **AdaptiveStreaming** adlı yerleşik bir Ön Ayar kullanır. Ön Ayar, giriş çözünürlüğü ve bit hızını temel alarak, giriş videosunu otomatik olarak oluşturulan bir bit hızı basamağına (bit hızı-çözünürlük çiftleri) kodlar ve her bir bit hızı-çözünürlük çiftine karşılık gelen H.264 video ve AAC sesi ile ISO MP4 dosyaları üretir. Bu Ön Ayar hakkında bilgi için bkz. [otomatik oluşturulan bit hızı basamağı](autogen-bitrate-ladder.md).
 
@@ -184,7 +184,7 @@ Yerleşik bir EncoderNamedPreset ön ayarını veya özel ön ayarları kullanab
 > [!Note]
 > Bir [Dönüşüm](https://docs.microsoft.com/rest/api/media/transforms) oluştururken, önce **Get** yöntemini kullanarak zaten bir tane olup olmadığını denetlemelisiniz. Bu öğretici, dönüştürmeyi benzersiz bir adla oluşturmakta olduğunuzu varsayar.
 
-1. Postacı uygulamasının sol penceresinde "Kodlama ve Analiz" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "kodlama ve analiz" seçeneğini belirleyin.
 2. Ardından, "Dönüşüm Oluşturma"'yı seçin.
 3. **Gönder**’e basın.
 
@@ -217,9 +217,9 @@ Yerleşik bir EncoderNamedPreset ön ayarını veya özel ön ayarları kullanab
 
 Burada [İş](https://docs.microsoft.com/rest/api/media/jobs), oluşturulan **Dönüşümü** belirli bir video girdisine veya ses içeriğine uygulamak için Media Services'e gönderilen istektir. **İş** giriş videosunun konumu ve çıktının konumu gibi bilgileri belirtir.
 
-Bu örnekte, işin girişi bir HTTPS URL'sini ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") temel alınr.
+Bu örnekte, işin girişi bir HTTPS URL 'sini ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.Windows.net/2b533311-B215-4409-80AF-529c3e853622/") temel alır.
 
-1. Postacı uygulamasının sol penceresinde "Kodlama ve Analiz" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "kodlama ve analiz" seçeneğini belirleyin.
 2. Ardından "İş Oluşturma veya Güncelleştirme"'yi seçin.
 3. **Gönder**’e basın.
 
@@ -256,23 +256,23 @@ Bu örnekte, işin girişi bir HTTPS URL'sini ("https:\//nimbuscdn-nimbuspm.stre
 
 #### <a name="job-error-codes"></a>İş hata kodları
 
-[Bkz. Hata kodları.](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
+Bkz. [hata kodları](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="create-a-streaming-locator"></a>Akış bulucusu oluşturma
 
-Kodlama işi tamamlandıktan sonra, bir sonraki adım, çıkış **Varlığı'ndaki** videoyu oynatma katmak için istemcilerin kullanımına açmaktır. Bunu iki adımda gerçekleştirebilirsiniz: ilk olarak, bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturun ve ikinci olarak, istemcilerin kullanabildiği akış URL’lerini derleyin. 
+Kodlama işi tamamlandıktan sonra, bir sonraki adım çıktı **kıymetindeki** videonun kayıttan yürütmeye yönelik olarak kullanılabilmesini sağlar. Bunu iki adımda gerçekleştirebilirsiniz: ilk olarak, bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturun ve ikinci olarak, istemcilerin kullanabildiği akış URL’lerini derleyin. 
 
-Akış bulucu oluşturma işlemine yayımlama denir. Varsayılan olarak, akış bulucu, API aramalarını yaptıktan hemen sonra geçerlidir ve isteğe bağlı başlangıç ve bitiş saatlerini yapılandırmadığınız sürece silinene kadar sürer. 
+Akış Bulucu oluşturma işlemine yayımlama denir. Varsayılan olarak, akış bulucu, API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
 
-Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, açık (veya şifrelenmemiş) içerik akışı olursunuz, böylece önceden tanımlanmış açık akış ilkesi "Predefined_ClearStreamingOnly" kullanılır.
+Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, Açık (veya şifreli olmayan) içerik akışını, böylece önceden tanımlanmış açık akış ilkesi "Predefined_ClearStreamingOnly" kullanılır.
 
 > [!IMPORTANT]
 > Özel [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies)’yi kullanırken Media Service hesabınız için bu tür ilkelerin sınırlı bir kümesini tasarlamanız ve aynı şifreleme seçenekleri ve protokoller gerekli olduğunda StreamingLocators için bunları kullanmanız gerekir. 
 
-Medya Hizmeti hesabınızda **Akış İlkesi** girişi sayısı için bir kota vardır. Her akış bulucu için yeni bir **Akış İlkesi** oluşturmamalısınız.
+Medya hizmeti hesabınızın **akış ilkesi** girişi sayısı için bir kotası vardır. Her bir akış bulucu için yeni bir **akış ilkesi** oluşturmamalısınız.
 
-1. Postacı uygulamasının sol penceresinde "Akış İlkeleri ve Yer Bulucular" seçeneğini belirleyin.
-2. Ardından, "Akış Bulucu Oluştur (açık)" seçeneğini belirleyin.
+1. Postman uygulamasının sol penceresinde "akış Ilkeleri ve Konumlandırıcı" öğesini seçin.
+2. Ardından "akış Bulucu oluştur (Temizle)" öğesini seçin.
 3. **Gönder**’e basın.
 
     * Aşağıdaki **PUT** işlemi gönderilir.
@@ -297,9 +297,9 @@ Medya Hizmeti hesabınızda **Akış İlkesi** girişi sayısı için bir kota v
 
 #### <a name="list-paths"></a>Yolları listeleme
 
-[Artık Akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturulduğuna göre, akış URL'lerini alabilirsiniz
+[Akış bulucunun](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturuldığına göre, akış URL 'lerini alabilirsiniz
 
-1. Postacı uygulamasının sol penceresinde "Akış İlkeleri"ni seçin.
+1. Postman uygulamasının sol penceresinde "akış Ilkeleri" ni seçin.
 2. Ardından, "Yolları Listele"'yi seçin.
 3. **Gönder**’e basın.
 
@@ -368,11 +368,11 @@ https://amsaccount-usw22.streaming.media.azure.net/cdb80234-1d94-42a9-b056-0eefa
 
 
 > [!NOTE]
-> Akış yapmak istediğiniz **Akış Bitiş Noktası'nın** çalışmadığından emin olun.
+> Akışa almak istediğiniz **akış uç noktasının** çalıştığından emin olun.
 
 Bu makalede, akışı test etmek için Azure Media Player kullanılmaktadır. 
 
-1. Bir web tarayıcısı [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)açın ve 'ye gidin.
+1. Bir Web tarayıcısı açın ve adresine [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)gidin.
 2. **URL:** kutusuna derlediğiniz URL'yi yapıştırın. 
 3. **Oynatıcıyı Güncelleştir** düğmesine basın.
 
@@ -380,7 +380,7 @@ Azure Media Player, test için kullanılabilir, ancak üretim ortamında kullan�
 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Media Services hesabınızdaki kaynakları temizleme
 
-Genellikle, yeniden kullanmayı planladığınız nesneler dışındaki her şeyi temizlemeniz gerekir (genellikle **Transforms'u**yeniden kullanırsınız ve Akış Lı Konum **belirlemecileri,** vb.) devam erecektir. Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silmeniz gerekir.  
+Genellikle, yeniden kullanmayı planladığınız nesneler hariç her şeyi temizlemeniz gerekir (genellikle **dönüşümleri**yeniden kullanacaksınız ve **akış bulleyicileri**, vb.). Deneme sonrasında hesabınızın temiz olmasını istiyorsanız, yeniden kullanmayı planlamadığınız kaynakları silmeniz gerekir.  
 
 Bir kaynağı silmek için, silmek istediğiniz kaynağın altından "Sil ..." işlemini seçin.
 
@@ -388,15 +388,15 @@ Bir kaynağı silmek için, silmek istediğiniz kaynağın altından "Sil ..." i
 
 Bu öğreticide oluşturduğunuz Media Services ve depolama hesapları dahil olmak üzere, kaynak grubunuzdaki kaynaklardan herhangi birine artık ihtiyacınız yoksa kaynak grubunu silebilirsiniz.  
 
-Aşağıdaki CLI komutunu uygulayın:
+Aşağıdaki CLı komutunu yürütün:
 
 ```azurecli
 az group delete --name amsResourceGroup
 ```
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

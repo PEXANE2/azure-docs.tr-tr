@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: HighGear ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure Active Directory ve HighGear arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: Highdişli ile tümleştirme Azure Active Directory | Microsoft Docs'
+description: Azure Active Directory ve üst kısımdaki çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,247 +17,247 @@ ms.date: 01/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73159043"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Öğretici: HighGear ile Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Öğretici: Highdişli ile tümleştirme Azure Active Directory
 
-Bu eğitimde, HighGear'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğrenebilirsiniz.
-HighGear'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğrenebilirsiniz.
+Highdişli 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 
-* HighGear erişimi olan Azure AD'de kontrol edebilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla HighGear'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* Azure AD 'de, Highdişli 'a erişimi olan denetim yapabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini HighGear ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Azure AD tümleştirmesini Highdişli ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Kurumsal veya Sınırsız lisansa sahip bir HighGear sistemi
+* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
+* Kurumsal veya sınırsız lisansa sahip bir Highdişli sistem
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu eğitimde, bir test ortamında Azure AD tek oturum açma işlemlerini yapılandırmayı ve test etmeyi öğrenebilirsiniz.
+Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırmayı ve test yapmayı öğrenebilirsiniz.
 
-* **HighGear, SP ve IdP** tarafından başlatılan SSO'ları destekliyor
+* Highdişli **, SP ve IDP** tarafından başlatılan SSO 'yu destekler
 
-## <a name="adding-highgear-from-the-gallery"></a>Galeriden HighGear ekleme
+## <a name="adding-highgear-from-the-gallery"></a>Galeriden üst sınır ekleme
 
-HighGear'ın Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize HighGear eklemeniz gerekir.
+Highdişli 'ın Azure AD ile tümleştirilmesini yapılandırmak için galerideki yönetilen SaaS uygulamaları listenize üst kısımdaki bir üst sınır eklemeniz gerekir.
 
-**Galeriden HighGear eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden üst sınır eklemek için aşağıdaki adımları uygulayın:**
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Etkin Dizin** simgesini tıklatın.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+3. Yeni bir uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusunda **HighGear**yazın, sonuç panelinden **HighGear'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+4. Arama kutusuna **highdişli**yazın, sonuç panelinden **highdişli** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde HighGear](common/search-new-app.png)
+     ![Sonuçlar listesinde Highdişli](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına dayalı olarak Azure AD tek oturum açma işlemini HighGear sisteminizle nasıl yapılandırabileceğinizi ve test edebilirsiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure REKLAM kullanıcısı ile HighGear sisteminizdeki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre highdişli SISTEMINIZLE Azure AD çoklu oturum açmayı yapılandırma ve test etme hakkında bilgi edinebilirsiniz.
+Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, üst düzey sisteminizin kurulması gerekir.
 
-Azure AD oturumunu HighGear sisteminizle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+Azure AD çoklu oturum açma 'yı Highdişli sisteminizle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. HighGear uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[HighGear Tek Oturum Açma'yı yapılandırın.](#configure-highgear-single-sign-on)**
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[HighGear test kullanıcısını oluşturun](#create-highgear-test-user)** - HighGear'da Britta Simon'ın, kullanıcının Azure REKLAM gösterimine bağlı bir muadili olması için. 
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
+2. Üst düzey uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Highdişli çoklu oturum açmayı yapılandırın](#configure-highgear-single-sign-on)** .
+3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+5. Kullanıcının Azure AD gösterimine bağlı olan bir Lüylede bir köken Simon 'ın bir karşılığı olacak şekilde **[highdişli test kullanıcısı oluşturun](#create-highgear-test-user)** . 
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı nasıl etkinleştirebileceğinizi öğrenebilirsiniz.
+Bu bölümde, Azure portal Azure AD çoklu oturum açmayı nasıl etkinleştirebileceğinizi öğrenebilirsiniz.
 
-Azure AD oturumunu HighGear sisteminizle yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD çoklu oturum açma 'yı Highdişli sisteminizle yapılandırmak için aşağıdaki adımları uygulayın:
 
-1. Azure [portalında,](https://portal.azure.com/) **HighGear** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
+1. [Azure Portal](https://portal.azure.com/), **highdişli** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
 
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
+2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
 
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
+    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML sayfasıyla Tek Oturum** Açma'da, **Temel SAML Yapılandırmailetişim** kutusunu açmak için **Düzenleme** simgesini tıklatın.
+3. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![HighGear Domain ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Highdişli etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
 
-    a. **Tanımlayıcı** metin kutusuna, HighGear sisteminizdeki Tek Oturum Açma Ayarları sayfasındaki **Servis Sağlayıcı Varlık Kimliği** alanının değerini yapıştırın.
+    a. **Tanımlayıcı** metin kutusunda, Highdişli sisteminizdeki çoklu oturum açma ayarları sayfasında bulunan **HIZMET sağlayıcısı varlık kimliği** alanının değerini yapıştırın.
 
-    ![Servis Sağlayıcı Varlık Kimliği alanı](media/highgear-tutorial/service-provider-entity-id-field.png)
+    ![Hizmet sağlayıcısı varlık KIMLIĞI alanı](media/highgear-tutorial/service-provider-entity-id-field.png)
     
     > [!NOTE]
-    > Tek Oturum Açma Ayarları sayfasına erişmek için HighGear sisteminizde oturum açmanız gerekir. Oturum açtıktan sonra Farenizi HighGear'da Yönetim sekmesinin üzerinde hareket ettirin ve Tek Oturum Açma Ayarları menü öğesini tıklatın.
+    > Çoklu oturum açma ayarları sayfasına erişmek için Highdişli sisteminizde oturum açmanız gerekir. Oturum açtıktan sonra, farenizi üst kısımdaki Yönetim sekmesinin üzerine taşıyın ve çoklu oturum açma ayarları menü öğesine tıklayın.
     
-    ![Tek Oturum Açma Ayarları menü öğesi](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+    ![Çoklu oturum açma ayarları menü öğesi](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-    b. **Yanıtla URL** metin kutusuna, HighGear sisteminizdeki Tek Oturum Açma Ayarları sayfasından **Assertion Consumer Service (ACS) URL** değerini yapıştırın.
+    b. **Yanıt URL 'si** metin kutusunda, Highdişli sisteminizdeki çoklu oturum açma ayarları sayfasından **onaylama TÜKETICI hizmeti (ACS) URL** 'sinin değerini yapıştırın.
 
-    ![İddia Tüketici Hizmeti (ACS) URL alanı](media/highgear-tutorial/assertion-consumer-service-url-field.png)
+    ![Onaylama tüketici hizmeti (ACS) URL 'SI alanı](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-    c. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+    c. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
 
-     ![HighGear Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+     ![Highdişli etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-     Oturum **Açma URL** metin kutusuna, HighGear sisteminizdeki Tek Oturum Açma Ayarları sayfasındaki **Servis Sağlayıcı Varlık Kimliği** alanının değerini yapıştırın. (Bu Varlık Kimliği aynı zamanda SP tarafından başlatılan oturum açma için kullanılacak Olan HighGear sisteminin temel URL'sidir.)
+     **Oturum açma URL 'si** metin kutusunda, Highdişli sisteminizdeki çoklu oturum açma ayarları sayfasında bulunan **HIZMET sağlayıcısı varlık kimliği** alanının değerini yapıştırın. (Bu varlık KIMLIĞI, SP tarafından başlatılan oturum açma işlemi için kullanılacak olan Highdişli sisteminin temel URL 'sidir.)
 
-    ![Servis Sağlayıcı Varlık Kimliği alanı](media/highgear-tutorial/service-provider-entity-id-field.png)
+    ![Hizmet sağlayıcısı varlık KIMLIĞI alanı](media/highgear-tutorial/service-provider-entity-id-field.png)
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri HighGear sisteminizdeki **Tek Oturum Açma Ayarları** sayfasından gerçek Tanımlayıcı, Yanıt URL'si ve Oturum Açma URL'si ile güncelleştirin. Yardıma ihtiyacınız varsa, lütfen [HighGear Destek Ekibi](mailto:support@highgear.com)ile irtibata geçin.
+    > Bu değerler gerçek değildir. Bu değerleri, Highdişli sisteminizdeki **Çoklu oturum açma ayarları** sayfasından gerçek tanımlayıcı, yanıt URL 'Si ve oturum açma URL 'si ile güncelleştirin. Yardıma ihtiyacınız varsa lütfen [Highdişli destek ekibine](mailto:support@highgear.com)başvurun.
 
-4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Sertifikayı indirmek **(Base64)** ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın. Tek Oturum Açma yapılandırmasının sonraki bir adımında ihtiyacınız olacak.
+4. **SAML Ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifikayı** indirmek için **İndir** ' e tıklayın ve bilgisayarınıza kaydedin. Çoklu oturum açma yapılandırmasının sonraki adımında ihtiyacınız olacak.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-6. **HighGear'ı ayarla** bölümünde, aşağıdaki URL'lerin konumuna dikkat edin.
+6. **Highdişli ayarla** bölümünde, aşağıdaki URL 'lerin konumunu aklınızda edin.
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Giriş URL'si. Aşağıdaki **HighGear Tek Oturum Aç'ı Yapılandırın** altında Adım #2'da bu değere ihtiyacınız olacaktır.
+    a. Oturum açma URL 'SI. Bu değere aşağıdaki #2, aşağıdaki üst düzey üst **oturumu Yapılandır** altında yer alan gerekecektir.
 
-    b. Azure AD Tanımlayıcısı. Aşağıdaki **HighGear Tek Oturum Aç'ı Yapılandırın** altında Adım #3'da bu değere ihtiyacınız olacaktır.
+    b. Azure AD tanımlayıcısı. Bu değere aşağıdaki #3, aşağıdaki üst düzey üst **oturumu Yapılandır** altında yer alan gerekecektir.
 
-    c. Giriş URL'si. Aşağıdaki **HighGear Tek Oturum Aç'ı Yapılandırın** altında Adım #4'da bu değere ihtiyacınız olacaktır.
+    c. Oturum kapatma URL 'SI. Bu değere aşağıdaki #4, aşağıdaki üst düzey üst **oturumu Yapılandır** altında yer alan gerekecektir.
 
-### <a name="configure-highgear-single-sign-on"></a>HighGear Tek İşaretli Yapıla
+### <a name="configure-highgear-single-sign-on"></a>Highdişli çoklu oturum açmayı yapılandırma
 
-Tek Oturum Açma için HighGear'ı yapılandırmak için lütfen HighGear sisteminize giriş yapın. Oturum açtıktan sonra Farenizi HighGear'da Yönetim sekmesinin üzerinde hareket ettirin ve Tek Oturum Açma Ayarları menü öğesini tıklatın.
+Çoklu oturum açma için üst düzey yapılandırmak üzere lütfen Highdişli sisteminizde oturum açın. Oturum açtıktan sonra, farenizi üst kısımdaki Yönetim sekmesinin üzerine taşıyın ve çoklu oturum açma ayarları menü öğesine tıklayın.
 
-![Tek Oturum Açma Ayarları menü öğesi](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+![Çoklu oturum açma ayarları menü öğesi](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Kimlik **Sağlayıcı**Adı'nda, Giriş sayfasında HighGear'ın Tek Oturum Açma düğmesinde görünecek kısa bir açıklama yazın. Örneğin: Azure AD
+1. **Kimlik sağlayıcısı adı**' nda, oturum açma sayfasında, highdişli 'ın çoklu oturum açma düğmesinde görünecek kısa bir açıklama yazın. Örneğin: Azure AD
 
-2. HighGear'daki **Tek Oturum Açma (SSO) URL** alanına, Azure'da **HighGear'ı ayarla** bölümündeki **Giriş URL** alanından değeri yapıştırın.
+2. Üst kısımdaki **Çoklu oturum açma (SSO) URL 'si** alanında, Azure 'Da **highdişli ayarlama** bölümünde bulunan **oturum açma URL 'si** alanından değeri yapıştırın.
 
-3. HighGear'daki **Kimlik Sağlayıcı Varlık Kimliği** alanına, Azure'da **HighGear'ı ayarla** bölümündeki **Azure AD Tanımlayıcı** alanından değeri yapıştırın.
+3. Üst kısımdaki **kimlik sağlayıcısı VARLıK kimliği** alanında, Azure 'Da **highdişli ayarlama** bölümünde yer alan **Azure AD tanımlayıcı** alanından değeri yapıştırın.
 
-4. HighGear'daki **Tek Oturum Açma (SLO) URL** alanına, Azure'da **HighGear'ı ayarla** bölümündeki **Logout URL** alanından değeri yapıştırın.
+4. Üst kısımdaki **Çoklu oturum kapatma (SLO) URL 'si** alanında, Azure 'Da **highdişli ayarlama** bölümünde yer alan **oturum kapatma URL 'si** alanından değeri yapıştırın.
 
-5. Azure'daki **SAML İmza Sertifikası** bölümünden indirdiğiniz sertifikayı açmak için Not Defteri'ni kullanın. **Sertifika (Base64)** biçimini indirmiş olmalısınız. Sertifikanın içeriğini Notepad'den kopyalayın ve HighGear'daki **Kimlik Sağlayıcı Sertifikası** alanına yapıştırın.
+5. Azure 'daki **SAML Imzalama sertifikası** bölümünde indirdiğiniz sertifikayı açmak Için Not defteri ' ni kullanın. **Sertifika (base64)** biçimini indirmiş olmanız gerekir. Sertifikanın içeriğini Not defteri ' nden kopyalayın ve üst kısımdaki **kimlik sağlayıcısı sertifikası** alanına yapıştırın.
 
-6. HighGear Sertifikanızı istemesi için [HighGear Destek Ekibine](mailto:support@highgear.com) e-posta gönder. **HighGear Sertifikası** ve **HighGear Sertifika Şifresi** alanlarını doldurmak için onlardan aldığınız talimatları uygulayın.
+6. Highdişli sertifikanızı istemek için [Highdişli destek ekibine](mailto:support@highgear.com) e-posta gönderin. **Highdişli sertifikası** ve üst **sertifika parolası** alanlarını doldurun için onlardan aldığınız yönergeleri izleyin.
 
-7. HighGear Tek Oturum Açma yapılandırmanızı kaydetmek için **Kaydet** düğmesini tıklatın.
+7. Highdişli çoklu oturum açma yapılandırmanızı kaydetmek için **Kaydet** düğmesine tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+    ![Yeni Kullanıcı düğmesi](common/new-user.png)
 
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanında **BrittaSimon**girin.
+    a. **Ad** alanına **Brittasıon**girin.
   
-    b. Kullanıcı **adı** alanı **türünde\@brittasimon yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alanına **bricompansıon\@yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
-    c. **Parolayı Göster** onay kutusunu seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
+    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur'u**tıklatın.
+    d. **Oluştur**' a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın HighGear'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, üst düzey 'e erişim izni vererek Britta Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştirirsiniz.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **HighGear'ı**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **highdişli**' ı seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **HighGear'ı**seçin.
+2. Uygulamalar listesinde, **Highdişli**' ı seçin.
 
-    ![Uygulamalar listesindeki HighGear bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Highdişli bağlantısı](common/all-applications.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
+7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-### <a name="create-highgear-test-user"></a>HighGear test kullanıcısı oluşturun
+### <a name="create-highgear-test-user"></a>Highdişli test kullanıcısı oluştur
 
-Tek Oturum Açma yapılandırmanızı test etmek için bir HighGear test kullanıcısı oluşturmak için lütfen HighGear sisteminize giriş yapın.
+Çoklu oturum açma yapılandırmanızı test etmek üzere bir Highdişli test kullanıcısı oluşturmak için lütfen Highdişli sisteminizde oturum açın.
 
-1. Yeni **Kişi Oluştur** düğmesini tıklatın.
+1. **Yeni kişi oluştur** düğmesine tıklayın.
 
-    ![Yeni Kişi Oluştur düğmesi](media/highgear-tutorial/create-new-contact-button.png)
+    ![Yeni kişi oluştur düğmesi](media/highgear-tutorial/create-new-contact-button.png)
 
-    Oluşturmak istediğiniz kişi türünü seçmenize olanak tanıyan bir menü görüntülenir.
+    Oluşturmak istediğiniz kişi türünü seçmenize olanak sağlayan bir menü görünür.
 
-2. Bir HighGear kullanıcısı oluşturmak için **Bireysel** menü öğesini tıklatın.
+2. Bir üst öğe Kullanıcı oluşturmak için **bireysel** menü öğesine tıklayın.
 
-    Yeni kullanıcının bilgilerini girebilmeniz için sağda bir bölme açılır.  
-    ![Yeni İletişim formu](media/highgear-tutorial/new-contact-form.png)
+    Yeni Kullanıcı için bilgileri yazabileceğiniz şekilde sağ tarafta bir bölme açılır.  
+    ![Yeni kişi formu](media/highgear-tutorial/new-contact-form.png)
 
-3. **Ad** alanına, ilgili kişi için bir ad yazın. Örneğin: Britta Simon
+3. **Ad** alanına kişi için bir ad yazın. Örneğin: Britta Simon
 
-4. Diğer **Seçenekler** menüsüne tıklayın ve **Hesap Bilgileri** menü öğesini seçin.
+4. **Diğer seçenekler** menüsüne tıklayın ve **hesap bilgisi** menü öğesini seçin.
 
-    ![Hesap Bilgileri menü öğesini tıklatma](media/highgear-tutorial/account-info-menu-item.png)
+    ![Hesap bilgisi menü öğesine tıklanın](media/highgear-tutorial/account-info-menu-item.png)
 
-5. Can **Giriş** alanını Evet olarak ayarlayın.
+5. **Oturum açabilme** alanını Evet olarak ayarlayın.
 
-    **Tek Oturum Açma** alanını etkinleştir mesuliyesi otomatik olarak Evet olarak da ayarlanır.
+    **Çoklu oturum açmayı etkinleştir** alanı otomatik olarak Evet olarak ayarlanır.
 
-6. Tek **Oturum Açma Kullanıcı Kimliği** alanına, kullanıcının kimliğini yazın. Örneğin, BrittaSimon@contoso.com
+6. **Çoklu oturum açma kullanıcı kimliği** alanında, kullanıcının kimliğini yazın. Örneğin, BrittaSimon@contoso.com
 
-    Hesap Bilgileri bölümü şimdi şuna benzer olmalıdır:  
-    ![Bitmiş Hesap Bilgileri bölümü](media/highgear-tutorial/finished-account-info-section.png)
+    Hesap bilgileri bölümü artık şuna benzer görünmelidir:  
+    ![Tamamlanan hesap bilgisi bölümü](media/highgear-tutorial/finished-account-info-section.png)
 
-7. İlgili kişi kaydetmek için bölmenin altındaki **Kaydet** düğmesini tıklatın.
+7. Kişiyi kaydetmek için bölmenin alt kısmındaki **Kaydet** düğmesine tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Access Paneli'ndeki HighGear döşemesini tıklattığınızda, SSO'yu kurduğunuz HighGear'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim panelinde Highdişli kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız üst kısımdaki otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

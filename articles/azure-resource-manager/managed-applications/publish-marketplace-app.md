@@ -1,18 +1,18 @@
 ---
-title: Markette Yönetilen uygulamalar
+title: Market 'te yönetilen uygulamalar
 description: Market’te kullanılabilir olan Azure yönetilen uygulamalarını tanımlar.
 author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
 ms.openlocfilehash: a42ee5d6f7f40d391acb743ef85f671f25804749
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79473005"
 ---
-# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Öğretici: Azure yönetilen uygulamaları Markette yayımlama
+# <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Öğretici: market 'te Azure yönetilen uygulamaları yayımlama
 
 Satıcılar, çözümlerini tüm Azure Market müşterilerine sunmak üzere Azure yönetilen uygulamalarını kullanabilir. Bu satıcılar yönetilen hizmet sağlayıcıları (MSP’ler), bağımsız yazılım satıcıları (ISV’ler) ve sistem tümleştiricilerini (SI’lar) dahil edebilir. Yönetilen uygulamalar müşteriler için bakım ve servis masraflarını azaltır. Satıcılar market aracılığıyla altyapı ve yazılım satar. Yönetilen uygulamalara hizmetler ve işletimsel destek ekleyebilir. Daha fazla bilgi için bkz. [Yönetilen uygulamaya genel bakış](overview.md).
 
@@ -22,9 +22,9 @@ Bu makale bir uygulamayı markette yayımlamayı ve müşterilerin kullanımına
 
 Bu makaleyi tamamlamak için yönetilen uygulama tanımınıza yönelik .zip dosyasına sahip olmanız gerekmektedir. Daha fazla bilgi için bkz. [Hizmet kataloğu uygulaması oluşturma](publish-service-catalog-app.md).
 
-Çeşitli iş ön koşulları vardır. Bunlar:
+Birkaç iş önkoşulu vardır. Bunlar:
 
-* Şirketiniz in veya yan kuruluşunun satışların pazar tarafından desteklendiği bir ülkede/bölgede bulunması gerekir.
+* Şirketiniz veya yan kuruluşu, satışlarının Market tarafından desteklendiği bir ülkede/bölgede yer almalıdır.
 * Ürününüz, marketin desteklediği faturalandırma modelleriyle uyumlu olacak şekilde lisanslandırılmalıdır.
 * Teknik desteği müşterilerin erişimine ticari açıdan sorumlu bir şekilde sunun. Destek ücretsiz, ücretli veya topluluk desteği aracılığıyla olabilir.
 * Yazılımınızı ve tüm üçüncü taraf yazılım bağımlılıklarını lisanslandırın.
@@ -32,7 +32,7 @@ Bu makaleyi tamamlamak için yönetilen uygulama tanımınıza yönelik .zip dos
 * Azure Market Katılım İlkeleri ve Yayımcı Sözleşmesi’nin koşullarını kabul edin.
 * Kullanım Koşulları, Microsoft Gizlilik Bildirimi ve Microsoft Azure Sertifikalı Program Sözleşmesi’ne uymayı kabul edin.
 
-Ayrıca bir Market hesabınız olmalıdır. Hesap oluşturmak için İş [Merkezi'nde Ticari Pazar Yeri hesabı oluşturma](../../marketplace/partner-center-portal/create-account.md)nın bir örneğine bakın.
+Ayrıca bir market hesabınız olmalıdır. Hesap oluşturmak için bkz. [Iş Ortağı Merkezi 'Nde ticari Market hesabı oluşturma](../../marketplace/partner-center-portal/create-account.md).
 
 ## <a name="create-a-new-azure-application-offer"></a>Yeni bir Azure uygulaması teklifi oluşturma
 
@@ -44,7 +44,7 @@ Yönetilen uygulamaya yönelik teklif, bir yayımcının ürün teklifi sınıf�
 
 1. [Bulut İş Ortağı portalında](https://cloudpartner.azure.com/) oturum açın.
 
-1. Soldaki gezinti bölmesinde + **Yeni teklif** > **Azure Uygulamaları'nı**seçin.
+1. Sol taraftaki Gezinti bölmesinde **+ yeni teklif** > **Azure uygulamaları**' nı seçin.
 
 1. **Düzenleyici** görünümünde gereken formları görürsünüz. Her bir form, bu makalenin ilerleyen kısımlarında tanımlanmaktadır.
 
@@ -70,7 +70,7 @@ SKU, bir teklife ilişkin en küçük satın alınabilir birimdir. Şunlar aras�
 
 SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başına satın alınabilir varlık olarak görünür.
 
-1. **SKUs** > **Yeni SKU**seçin.
+1. **SKU 'ları** > **Yeni SKU 'yu**seçin.
 
 1. Bir **SKU Kimliği** girin. SKU Kimliği, teklif içindeki SKU’ya yönelik bir benzersiz tanıtıcıdır. Bu kimlik; ürün URL’leri, Kaynak Yöneticisi şablonları ve faturalandırma raporlarında görünürdür. Yalnızca küçük harfli alfasayısal karakterler veya tirelerden (-) oluşabilir. Kimlik tire ile bitemez ve en fazla 50 karakterle sınırlıdır. Teklif yayımlandıktan sonra bu alan kilitlenir. Bir teklif içinde birden çok SKU’ya sahip olabilirsiniz. Yayımlamayı planladığınız her bir resim için bir SKU seçmeniz gerekir.
 
@@ -82,7 +82,7 @@ SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başı
    * **Özet**: Bu SKU için bir kısa özet girin. Bu metin başlığın altında görünür.
    * **Açıklama **: SKU hakkında ayrıntılı bir açıklama girin.
    * **SKU Türü**: İzin verilen değerler *Yönetilen Uygulama* ve *Çözüm Şablonları*’dır. Bu durum için *Yönetilen Uygulama*’yı seçin.
-   * **Ülke/Bölge kullanılabilirliği**: Yönetilen uygulamanın mevcut olduğu ülkeleri/bölgeleri seçin.
+   * **Ülke/bölge kullanılabilirliği**: yönetilen uygulamanın kullanılabildiği ülkeleri/bölgeleri seçin.
    * **Fiyatlandırma**: Uygulamanın yönetimi için bir fiyat sağlayın. Fiyatı ayarlamadan önce kullanılabilir ülkeleri/bölgeleri seçin.
 
 1. Yeni bir paket ekleyin. Aşağıdaki formda yer alan **Paket Ayrıntıları** bölümünü doldurun:
@@ -91,12 +91,12 @@ SKU, marketteki ana teklifin altında görünür. Azure portalında kendi başı
 
    * **Sürüm**: Yüklediğiniz paket için bir sürüm girin. `{number}.{number}.{number}{number}` biçiminde olmalıdır.
    * **Paket dosyası (.zip)**: Bu paket .zip paketi olarak sıkıştırılmış iki gerekli dosyayı içerir. Dosyalardan biri, yönetilen uygulamaya ilişkin dağıtılacak kaynakları tanımlayan Kaynak Yöneticisi şablonudur. İkinci dosya ise portal aracılığıyla yönetilen uygulamayı dağıtan tüketiciler için [kullanıcı arayüzünü](create-uidefinition-overview.md) tanımlamaktadır. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
-   * **Kiracı Kimliği**: Hesabın erişim için kiracı kimliği.
-   * **JIT Erişimini Etkinleştir**: Hesap için [tam zamanında erişim denetimini](request-just-in-time-access.md) etkinleştirmek için **Evet'i** seçin. Etkinleştirildiğinde, belirli bir süre için tüketicinin hesabına erişim isteğinde bulunabilirsiniz. Yönetilen uygulamanızın tüketicilerinin hesabınıza kalıcı erişim vermesini sağlamak için **No'yu**seçin.
-   * **İzin verilen müşteri eylemlerini özelleştirin?**: Tüketicilerin yönetilen kaynaklarda hangi eylemleri gerçekleştirebileceğini belirtmek için **Evet'i** seçin.
-   * **İzin verilen müşteri eylemleri**: Önceki ayar için **Evet'i** seçerseniz, Azure kaynakları [için reddet atamalarını](../../role-based-access-control/deny-assignments.md)kullanarak tüketicilere hangi eylemlere izin verildiğini belirtebilirsiniz.
+   * **KIRACı kimliği**: erişim izni alınacak HESABıN Kiracı kimliği.
+   * **JIT erişimini etkinleştir**: hesap için [tam zamanında erişim denetimini](request-just-in-time-access.md) etkinleştirmek üzere **Evet** ' i seçin. Etkin olduğunda, belirli bir süre için tüketicinin hesabına erişim isteğinde bulabilirsiniz. Yönetilen uygulamanızın tüketicilerinin hesabınıza kalıcı erişim vermesini gerektirmek için **Hayır**' ı seçin.
+   * **İzin verilen müşteri eylemleri özelleştirsin mi?**: müşterilerin yönetilen kaynaklarda hangi eylemlerin gerçekleştirebileceği belirtmek için **Evet** ' i seçin.
+   * **Izin verilen müşteri eylemleri**: önceki ayar için **Evet** ' i seçerseniz, [Azure kaynakları için atamaları Reddet](../../role-based-access-control/deny-assignments.md)' i kullanarak hangi eylemlerin tüketicilere izin verileceğini belirtebilirsiniz.
 
-     Kullanılabilir eylemler için Azure [Kaynak Yöneticisi kaynak sağlayıcısı işlemlerine](../../role-based-access-control/resource-provider-operations.md)bakın. Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına `Microsoft.Compute/virtualMachines/restart/action` izin vermek için, izin verilen eylemlere ekleyin. Eyleme `*/read` otomatik olarak izin verilir, böylece bu ayarı eklemenize gerek yoktur.
+     Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için izin verilen `Microsoft.Compute/virtualMachines/restart/action` eylemlere ekleyin. Bu `*/read` ayarı eklemeniz gerekmiyorsa eyleme otomatik olarak izin verilir.
    * **PrincipalId**: Bu özellik, müşterinin aboneliğindeki kaynaklara erişimin sağlandığı kullanıcı, kullanıcı grubu veya uygulamalanın Azure Active Directory (Azure AD) tanıtıcısıdır. Rol Tanımı izinleri açıklar.
    * **Rol Tanımı**: Bu özellik, Azure AD tarafından sağlanan tüm yerleşik Rol Tabanlı Erişim Denetimi (RBAC) rollerinin bir listesidir. Müşteri adına kaynakları yönetmek için kullanılması en uygun olan rolü seçebilirsiniz.
    * **İlke Ayarları**: Dağıtılan çözümlerde uyumluluk gereksinimlerini belirtmek için, yönetilen uygulamanıza bir [Azure İlkesi](../../governance/policy/overview.md) uygulayın. Kullanılabilir seçenekler arasından uygulanacak ilkeleri seçin. **İlke Parametreleri** için, parametre değerleriyle bir JSON dizesi sağlayın. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../../governance/policy/samples/index.md).
@@ -111,7 +111,7 @@ Market formu [Azure Market](https://azuremarketplace.microsoft.com) ve [Azure po
 
 ### <a name="preview-subscription-ids"></a>Abonelik kimliklerini önizleme
 
-Yayımlandıktan sonra teklife erişebilen Azure aboneliği kimliklerinin listesini girin. Yayımlamadan önce bu beyaz listelenen abonelikleri kullanarak önizlemesi yapılan teklifi test edebilirsiniz. İş ortağı portalında en fazla 100 abonelikten oluşan bir izin listesi derleyebilirsiniz.
+Yayımlandıktan sonra teklife erişebilen Azure aboneliği kimliklerinin listesini girin. Yayımlamadan önce bu beyaz listelenen abonelikleri kullanarak önizlemesi yapılan teklifi test edebilirsiniz. İş ortağı portalında 100 ' e kadar abonelik için bir izin verilenler listesi derleyebilirsiniz.
 
 ### <a name="suggested-categories"></a>Önerilen kategoriler
 
@@ -131,7 +131,7 @@ Yönetilen uygulamanıza yönelik **Planlar + Fiyatlandırma** sekmesi aşağıd
 
 ![Market planları](./media/publish-marketplace-app/publishvm15.png)
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portalı
 
 Yönetilen uygulamanızın özeti aşağıdaki alanları gösterir:
 
@@ -172,6 +172,6 @@ Tüm bölümleri doldurduktan sonra teklifinizi müşterilerin kullanımına sun
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* **Yayımla'yı**tıklattıktan sonra ne olacağı hakkında bilgi için azure [uygulama teklifini yayımla'ya](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md) bakın
+* **Yayımla**' ya tıkladıktan sonra ne olacağı hakkında daha fazla bilgi için bkz. [Azure Uygulama teklifini yayımlama](../../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)
 * Yönetilen uygulamalara giriş için [Yönetilen uygulamalara genel bakış](overview.md) konusunu inceleyin.
 * Bir Hizmet Kataloğu yönetilen uygulaması yayımlama hakkında bilgi için bkz. [Hizmet kataloğu uygulaması oluşturma ve yayımlama](publish-service-catalog-app.md).

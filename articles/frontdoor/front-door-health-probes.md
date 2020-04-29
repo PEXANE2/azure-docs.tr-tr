@@ -1,6 +1,6 @@
 ---
-title: Azure Ön Kapı - arka uç sağlık izleme | Microsoft Dokümanlar
-description: Bu makale, Azure Ön Kapı'nın arka uçlarınızın durumunu nasıl izlediğini anlamanıza yardımcı olur
+title: Azure ön kapısı-arka uç sistem durumu izleme | Microsoft Docs
+description: Bu makale, Azure ön kapısının arka uçlarınızın sistem durumunu nasıl izlediğini anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,65 +12,65 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471583"
 ---
 # <a name="health-probes"></a>Sistem durumu araştırmaları
 
-Belirli bir Ön Kapı ortamından her bir arka uç sağlığını ve yakınlığını belirlemek için, her Ön Kapı ortamı düzenli olarak yapılandırılmış arka uçlarınızın her birine sentetik bir HTTP/HTTPS isteği gönderir. Front Door bu araştırmalardan gelen yanıtları kullanarak gerçek istemci isteklerini yönlendireceği "en iyi" arka uçları belirler. 
+Belirli bir ön kapıdaki her bir arka ucun durumunu ve yakınlığını tespit etmek için, her bir ön kapı ortamı, yapılandırılmış her bir arka uç ortamında düzenli olarak yapay bir HTTP/HTTPS isteği gönderir. Front Door bu araştırmalardan gelen yanıtları kullanarak gerçek istemci isteklerini yönlendireceği "en iyi" arka uçları belirler. 
 
 > [!WARNING]
-> Front Door küresel olarak birçok kenar ortamına sahip olduğundan, arka uçlarınıza kadar sağlık sondası istekleri hacmi oldukça yüksek olabilir - yapılan sağlık sondası sıklığına bağlı olarak her dakika 25 istekten dakikada 1200 isteke kadar değişen bir hacim. Varsayılan sonda frekansı 30 saniye ile arka uçtaki sonda hacmi dakikada yaklaşık 200 istek olmalıdır.
+> Ön kapıda genel olarak çok uç ortamları olduğundan, arka uçlarınıza yönelik durum araştırma istekleri birimi, yapılandırılan durum araştırma sıklığı uyarınca dakikada her dakikada en fazla 1200 istek kadar yüksek bir biçimde olabilir. Varsayılan araştırma sıklığı 30 saniye ile, arka ucunuzdaki araştırma hacmi, dakikada yaklaşık 200 istek olmalıdır.
 
 ## <a name="supported-protocols"></a>Desteklenen protokoller
 
-Ön Kapı, HTTP veya HTTPS protokolleri üzerinden prob göndermeyi destekler. Bu araştırmalar istemci isteklerini yönlendirmek için yapılandırılmış olan TCP bağlantı noktaları üzerinden gönderilir ve bu ayar geçersiz kılınamaz.
+Ön kapı, HTTP veya HTTPS protokolleri üzerinden araştırmaları göndermeyi destekler. Bu araştırmalar istemci isteklerini yönlendirmek için yapılandırılmış olan TCP bağlantı noktaları üzerinden gönderilir ve bu ayar geçersiz kılınamaz.
 
-## <a name="supported-http-methods-for-health-probes"></a>Sağlık sondaları için desteklenen HTTP yöntemleri
+## <a name="supported-http-methods-for-health-probes"></a>Durum araştırmaları için desteklenen HTTP yöntemleri
 
-Ön Kapı sağlık sondaları göndermek için aşağıdaki HTTP yöntemleri destekler:
+Ön kapı, sistem durumu araştırmalarını göndermek için aşağıdaki HTTP yöntemlerini destekler:
 
-1. **GET:** GET yöntemi, Request-URI tarafından tanımlanan her türlü bilgiyi (varlık biçiminde) almak anlamına gelir.
-2. **BAŞ:** HEAD yöntemi, sunucunun yanıtta bir ileti gövdesi döndürmemesi dışında GET ile aynıdır. Yeni Ön Kapı profilleri için varsayılan olarak sonda yöntemi HEAD olarak ayarlanır.
+1. **Al:** GET yöntemi, Istek URI 'SI tarafından tanımlanan bilgilerin (bir varlık biçiminde) alınması anlamına gelir.
+2. **Baş:** HEAD yöntemi GET ile aynıdır, ancak sunucu yanıtta bir ileti gövdesi döndürmemelidir. Yeni ön kapı profilleri için, varsayılan olarak araştırma yöntemi baş olarak ayarlanır.
 
 > [!NOTE]
-> Arka uçlarınıza daha düşük yük ve maliyet için, Ön Kapı sağlık sondaları için HEAD isteklerini kullanmanızı önerir.
+> Ön kapı, arka uçlarınızın daha düşük yük ve maliyet için sistem durumu araştırmalarının baş isteklerini kullanmanızı önerir.
 
-## <a name="health-probe-responses"></a>Sağlık sondası yanıtları
+## <a name="health-probe-responses"></a>Durum araştırma yanıtları
 
 | Yanıtlar  | Açıklama | 
 | ------------- | ------------- |
-| Sağlığın Belirlenmesi  |  200 Ok durum kodu arka uç sağlıklı olduğunu gösterir. Diğer her şey başarısız olarak kabul edilir. Herhangi bir nedenle (ağ hatası da dahil olmak üzere) bir sonda için geçerli bir HTTP yanıtı alınmazsa, sonda bir hata olarak sayılır.|
-| Gecikme Ölçme  | Gecikme süresi, sonda isteğini yanıtın son baytını aldığımız ana göndermeden hemen önce ölçülen duvar saati süresidir. Her istek için yeni bir TCP bağlantısı kullanırız, bu nedenle bu ölçüm mevcut sıcak bağlantılarla arka uçlara doğru önyargılı değildir.  |
+| Sistem durumunu belirleme  |  200 OK durum kodu arka ucun sağlıklı olduğunu gösterir. Diğer her şey hata olarak kabul edilir. Herhangi bir nedenle (ağ arızası dahil) bir araştırma için geçerli bir HTTP yanıtı alınmıyorsa, araştırma bir hata olarak sayılır.|
+| Ölçüm gecikmesi  | Gecikme süresi, yanıtın son baytını elde ettiğimiz zaman araştırma isteğini gönderdiğimiz zamandan hemen önce ölçülen duvar saati zamanı. Her istek için yeni bir TCP bağlantısı kullanıyoruz ve bu ölçüm, mevcut bir sıcak bağlantıyla arka uçlara doğru değil.  |
 
-## <a name="how-front-door-determines-backend-health"></a>Ön Kapı arka uç sağlığını nasıl belirler?
+## <a name="how-front-door-determines-backend-health"></a>Ön kapı, arka uç durumunu belirler
 
-Azure Ön Kapı, durumu belirlemek için tüm algoritmalarda aşağıdaki üç adımlı işlemi kullanır.
+Azure ön kapısı, sistem durumunu öğrenmek için tüm algoritmalarda aşağıdaki üç adımlı işlemi kullanır.
 
-1. Devre dışı bırakılmış arka uçları hariç tut.
+1. Devre dışı bırakılan arka uçları hariç tut.
 
-2. Sistem durumu sondaları hataları olan arka uçları hariç tut:
-    * Bu seçim son _n_ sağlık sondası yanıtları bakarak yapılır. En azından _x_ sağlıklı ise, arka uç sağlıklı olarak kabul edilir.
+2. Sistem durumu araştırmaları hataları olan arka uçları hariç tut:
+    * Bu seçim, son _n_ durum araştırma yanıtlarına bakarak yapılır. En az _x_ sağlıklı ise, arka uç sağlıklı olarak değerlendirilir.
 
-    * _n,_ yük dengeleme ayarlarında SampleSize özelliği değiştirilerek yapılandırılır.
+    * _n_ , Yük Dengeleme ayarlarındaki SampleSize özelliği değiştirilerek yapılandırılır.
 
-    * _x,_ yük dengeleme ayarlarında Başarılı Örnekler Gerekli özelliği değiştirilerek yapılandırılır.
+    * _x_ , Yük Dengeleme ayarlarında başarılı bir şekilde, gerekli özelliği değiştirilerek yapılandırılır.
 
-3. Arka uç havuzundaki sağlıklı arka uçkümesinin dışında, Ön Kapı her arka uç için gecikme süresini (gidiş-dönüş) da ölçer ve korur.
+3. Arka uç havuzundaki sağlıklı arka uçların kümesinden, ön kapı ek olarak her arka uç için gecikme süresini (gidiş dönüş süresi) ölçer ve korur.
 
 
-## <a name="complete-health-probe-failure"></a>Tam sağlık sondası hatası
+## <a name="complete-health-probe-failure"></a>Tüm sistem durumu araştırma hatası
 
-Sağlık sondaları bir arka uç havuzunda her arka uç için başarısız olursa, o zaman Ön Kapı tüm backends sağlıklı ve hepsi arasında yuvarlak robin dağıtım trafik yolları dikkate alır.
+Bir arka uç havuzundaki her arka uç için sistem durumu araştırmaları başarısız olursa, ön kapı tüm arka uçların sağlıklı olduğunu varsayar ve trafiği tüm bunlar arasında hepsini bir kez deneme dağıtımında yönlendirir.
 
-Herhangi bir arka uç sağlıklı bir duruma döndüğünde, Ön Kapı normal yük dengeleme algoritmasına devam edecektir.
+Arka uç, sağlıklı duruma döndüğünde, ön kapı normal yük dengeleme algoritmasını sürdürür.
 
-## <a name="disabling-health-probes"></a>Sağlık sondalarının devre dışı bırakılması
+## <a name="disabling-health-probes"></a>Durum araştırmalarını devre dışı bırakma
 
-Arka uç havuzunuzda tek bir arka uç varsa, uygulama arka uçunuzdaki yükü azaltan sistem sondalarını devre dışı bırakmayı seçebilirsiniz. Arka uç havuzunda birden çok arka uç olsa, ancak bunlardan yalnızca biri etkin durumda olsa bile, sistem durumu sondalarını devre dışı bırakabilirsiniz.
+Arka uç havuzunuzdaki tek bir arka uç varsa, uygulamanızın arka ucunuzdaki yükünü azaltan sistem durumu araştırmalarını devre dışı bırakmayı seçebilirsiniz. Arka uç havuzunda birden fazla arka uç olsa bile, ancak bunlardan yalnızca biri etkin durumdaysa, sistem durumu araştırmalarını devre dışı bırakabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

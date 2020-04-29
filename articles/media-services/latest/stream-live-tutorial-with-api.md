@@ -1,7 +1,7 @@
 ---
-title: Medya Hizmetleri v3 ile canlı yayın
+title: Media Services v3 ile canlı akış
 titleSuffix: Azure Media Services
-description: Azure Media Services v3 ile nasıl canlı yayın yapacaklarını öğrenin.
+description: Azure Media Services v3 ile canlı akış yapmayı öğrenin.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -16,25 +16,25 @@ ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: 0b6667965ddd1fce30bb2da2593e2a9274b595ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79472025"
 ---
-# <a name="tutorial-stream-live-with-media-services"></a>Öğretici: Medya Hizmetleri ile canlı yayın
+# <a name="tutorial-stream-live-with-media-services"></a>Öğretici: Media Services ile canlı akış
 
 > [!NOTE]
-> Öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örneklerini kullansa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya diğer desteklenen [SDK'lar](media-services-apis-overview.md#sdks)için aynıdır.
+> Öğretici [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) örnekleri kullanıyor olsa da, genel adımlar [REST API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)veya desteklenen diğer [SDK](media-services-apis-overview.md#sdks)'lar için aynıdır.
 
-Azure Medya [Hizmetlerinde, Canlı Etkinlikler](https://docs.microsoft.com/rest/api/media/liveevents) canlı akış içeriğini işlemekle yükümlüdür. Canlı Etkinlik, daha sonra canlı bir kodlayıcıya sağladığınız bir giriş bitiş noktası (URL yutma) sağlar. Canlı Etkinlik, canlı kodlayıcıdan canlı giriş akışları alır ve bir veya daha fazla [Akış Uç Noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)üzerinden akış için kullanılabilir hale getirir. Canlı Etkinlikler ayrıca, daha fazla işleme ve teslim edilmeden önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme bitiş noktası (önizleme URL'si) de sağlar. Bu öğretici, **geçiş** türü bir canlı olay oluşturmak için .NET Core kullanmayı göstermektedir.
+Azure Media Services, canlı [Olaylar](https://docs.microsoft.com/rest/api/media/liveevents) canlı akış içeriğini işlemekten sorumludur. Canlı bir olay, daha sonra canlı bir kodlayıcı için sağladığınız bir giriş uç noktası (alma URL 'SI) sağlar. Canlı olay, canlı kodlayıcıdan canlı giriş akışları alır ve bir veya daha fazla [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints)aracılığıyla akış için kullanılabilir hale getirir. Canlı olaylar ayrıca, daha fazla işlem ve teslim yapmadan önce akışınızı önizlemek ve doğrulamak için kullandığınız bir önizleme uç noktası (önizleme URL 'SI) sağlar. Bu öğretici, **geçiş** türü bir canlı olay oluşturmak için .NET Core kullanmayı göstermektedir.
 
 Öğretici şunların nasıl yapıldığını göstermektedir:
 
 > [!div class="checklist"]
-> * Konuyla açıklanan örnek uygulamayı indirin.
+> * Konusunda açıklanan örnek uygulamayı indirin.
 > * Canlı akış gerçekleştiren kodu inceleyin.
-> * Azure Media [Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ile [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net)etkinliği izleyin.
+> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) ile olayı izleyin [https://ampdemo.azureedge.net](https://ampdemo.azureedge.net).
 > * Kaynakları temizleyin.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -43,11 +43,11 @@ Azure Medya [Hizmetlerinde, Canlı Etkinlikler](https://docs.microsoft.com/rest/
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
-- Visual Studio Code veya Visual Studio'yı yükleyin.
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)<br/>Kaynak grubu adı ve Medya Hizmetleri hesap adı için kullandığınız değerleri hatırladığınızdan emin olun.
-- [Azure CLI ile Azure Medya Hizmetleri API'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API'ye erişmek için bunları kullanmanız gerekir.
-- Bir olayı yayınlamak için kullanılan bir kamera veya aygıt (dizüstü bilgisayar gibi).
-- Kameradaki sinyalleri Medya Hizmetleri canlı akış hizmetine gönderilen akışlara dönüştüren şirket içi canlı kodlayıcı, [önerilen şirket içi canlı kodlayıcılara](recommended-on-premises-live-encoders.md)bakın. Akışın **RTMP** veya **Kesintisiz Akış** biçiminde olması gerekir.
+- Visual Studio Code veya Visual Studio 'Yu yükler.
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md).<br/>Kaynak grubu adı ve Media Services hesap adı için kullandığınız değerleri anımsadığınızdan emin olun.
+- [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
+- Bir olayı yayımlamak için kullanılan bir kamera veya bir cihaz (dizüstü bilgisayar gibi).
+- Kameradan gelen sinyalleri Media Services canlı akış hizmetine gönderilen akışlara dönüştüren, şirket içi bir Live Encoder, bkz. [Önerilen şirket içi canlı kodlayıcılar](recommended-on-premises-live-encoders.md). Akışın **RTMP** veya **Kesintisiz Akış** biçiminde olması gerekir.
 
 > [!TIP]
 > Devam etmeden önce [Media Services v3 ile canlı akış](live-streaming-overview.md) konusunu gözden geçirmeyi unutmayın. 
@@ -62,20 +62,20 @@ Aşağıdaki komutu kullanarak, akış .NET örneğini içeren bir GitHub havuzu
 
 Canlı akış örneği [Live](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live/MediaV3LiveApp) klasöründe bulunabilir.
 
-İndirilen projede [appsettings.json'ı](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) açın. Değerleri [API'lara erişirerek](access-api-cli-how-to.md)aldığınız kimlik bilgileriyle değiştirin.
+İndirilen projenizde [appSettings. JSON](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) ' yı açın. Değerleri, [API 'lere erişirken](access-api-cli-how-to.md)aldığınız kimlik bilgileriyle değiştirin.
 
 > [!IMPORTANT]
-> Bu örnek, her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı çalıştırmadan sonlandırırsanız, hesabınızda birden fazla Canlı Etkinlik olur. <br/>Canlı Etkinlikler'i çalıştırmayı bıraktığından emin olun. Aksi takdirde, **faturalandırılırsınız!**
+> Bu örnek her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı üzerinden çalıştırmadan sonlandırdıysanız, hesabınızda birden çok canlı olayla karşılaşırsınız. <br/>Çalışan canlı olayları durdurduğunuzdan emin olun. Aksi takdirde **faturalandırılırsınız**!
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>Canlı akışı gerçekleştiren kodu inceleme
 
 Bu bölümde, *MediaV3LiveApp* projesinin [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs) dosyasında tanımlı işlevler incelenmektedir.
 
-Örnek, temizlemeden örneği birden çok kez çalıştırıyorsanız ad çakışmalarının olmadığı için her kaynak için benzersiz bir sonek oluşturur.
+Örnek, her kaynak için benzersiz bir sonek oluşturur, böylece örnek birden çok kez temizlemeden çalıştırırsanız ad çarpışmaları olmaz.
 
 > [!IMPORTANT]
-> Bu örnek, her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı çalıştırmadan sonlandırırsanız, hesabınızda birden fazla Canlı Etkinlik olur. <br/>
-> Canlı Etkinlikler'i çalıştırmayı bıraktığından emin olun. Aksi takdirde, **faturalandırılırsınız!**
+> Bu örnek her kaynak için benzersiz bir sonek kullanır. Hata ayıklamayı iptal ederseniz veya uygulamayı üzerinden çalıştırmadan sonlandırdıysanız, hesabınızda birden çok canlı olayla karşılaşırsınız. <br/>
+> Çalışan canlı olayları durdurduğunuzdan emin olun. Aksi takdirde **faturalandırılırsınız**!
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK ile Media Services API’sini kullanmaya başlama
 
@@ -85,21 +85,21 @@ Bu bölümde, *MediaV3LiveApp* projesinin [Program.cs](https://github.com/Azure-
 
 ### <a name="create-a-live-event"></a>Canlı etkinlik oluşturma
 
-Bu bölümde, Canlı Olay (LiveEventEncodingType None olarak ayarlanmış) **geçiş** türü nasıl oluşturulacağını gösterir. Kullanılabilir Canlı Etkinlik türleri hakkında daha fazla bilgi için [Canlı Etkinlik türlerine](live-events-outputs-concept.md#live-event-types)bakın. 
+Bu bölümde, bir **geçişli** canlı etkinlik türünün nasıl oluşturulduğu gösterilir (LiveEventEncodingType None olarak ayarlanır). Kullanılabilir canlı etkinlik türleri hakkında daha fazla bilgi için bkz. [canlı olay türleri](live-events-outputs-concept.md#live-event-types). 
  
-Canlı olay oluştururken belirtmek isteyebileceğin bazı şeyler şunlardır:
+Canlı olay oluştururken belirtmek isteyebileceğiniz bazı şeyler şunlardır:
 
-* Medya Hizmetleri konumu.
-* Canlı Etkinlik için akış protokolü (şu anda RTMP ve Düzgün Akış protokolleri desteklenir).<br/>Canlı Etkinlik veya ilişkili Canlı Çıktılar çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokoller gerektiriyorsanız, her akış protokolü için ayrı Bir Canlı Olay oluşturun.  
-* Alma ve önizleme için IP kısıtlamaları. Bu Canlı Etkinlik'e video yutmasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>IP adresi belirtilmemişse ve kural tanımı yoksa, IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: Dört numaralı IpV4 adresi veya CIDR adres aralığı.
-* Olayı oluştururken, otomatik başlatmayı belirtebilirsiniz. <br/>Otomatik başlatma doğru ayarlandığında, Live Event oluşturulduktan sonra başlatılır. Bu, Faturalandırmanın Canlı Etkinlik çalışmaya başlar başlamaz başladığı anlamına gelir. Daha fazla faturalandırmayı durdurmak için Canlı Etkinlik kaynağında Durdur'u açıkça aramalısınız. Daha fazla bilgi için [Canlı Etkinlik durumları ve faturalandırma konusuna](live-event-states-billing.md)bakın.
-* Bir url'nin tahmine uygun olması için "makyaj" modunu ayarlayın. Ayrıntılı bilgi için Canlı [Etkinlik URL'leri 'ne](live-events-outputs-concept.md#live-event-ingest-urls)bakın.
+* Media Services konumu.
+* Canlı olay için Akış Protokolü (Şu anda, RTMP ve Kesintisiz Akış protokolleri desteklenir).<br/>Canlı olay veya ilişkili canlı çıktıları çalışırken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa, her akış protokolü için ayrı canlı etkinlik oluşturun.  
+* Alma ve önizleme için IP kısıtlamaları. Bu canlı olaya bir video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin '10.0.0.1'), bir IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1/22') veya bir IP adresi ve bir noktalı ondalık alt ağ maskesi kullanan bir IP aralığı (örneğin '10.0.0.1(255.255.252.0)') olabilir.<br/>Hiçbir IP adresi belirtilmemişse ve kural tanımı yoksa, hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.<br/>IP adresleri aşağıdaki biçimlerden birinde olmalıdır: dört sayı veya CıDR adres aralığı olan IPv4 adresi.
+* Olayı oluştururken, başlatmayı belirtebilirsiniz. <br/>Autostart değeri true olarak ayarlandığında, canlı olay oluşturulduktan sonra başlatılır. Bu, canlı olay çalışmaya başladığı anda faturalandırma başladığı anlamına gelir. Daha fazla faturalandırmayı durdurmak için canlı olay kaynağında durdurmayı açıkça çağırmanız gerekir. Daha fazla bilgi için bkz. [canlı olay durumları ve faturalandırma](live-event-states-billing.md).
+* Tahmine dayalı bir URL 'nin tahmin alınması için, "Vanity" modunu ayarlayın. Ayrıntılı bilgi için bkz. [canlı olay alma URL 'leri](live-events-outputs-concept.md#live-event-ingest-urls).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveEvent)]
 
 ### <a name="get-ingest-urls"></a>Alma URL’leri alma
 
-Canlı Etkinlik oluşturulduktan sonra, canlı kodlayıcıya sağlayacağınız URL'leri yutabilirsiniz. Kodlayıcı bu URL'leri canlı akış girişi için kullanır.
+Canlı olay oluşturulduktan sonra, gerçek zamanlı kodlayıcıya sağlayacağınız içe alma URL 'Leri edinebilirsiniz. Kodlayıcı bu URL'leri canlı akış girişi için kullanır.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetIngestURL)]
 
@@ -108,32 +108,32 @@ Canlı Etkinlik oluşturulduktan sonra, canlı kodlayıcıya sağlayacağınız 
 Kodlayıcıdan gelen girişin gerçekten alındığını önizlemek ve doğrulamak için PreviewEndpoint kullanın.
 
 > [!IMPORTANT]
-> Videonun devam etmeden önce Önizleme URL'sine aktığından emin olun.
+> Devam etmeden önce videonun önizleme URL 'sine akmasını sağlayın.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#GetPreviewURLs)]
 
-### <a name="create-and-manage-live-events-and-live-outputs"></a>Canlı Etkinlikler ve Canlı Çıktılar Oluşturma ve Yönetme
+### <a name="create-and-manage-live-events-and-live-outputs"></a>Canlı etkinlikler ve canlı çıktılar oluşturma ve yönetme
 
-Akışı Live Event'e akttındıktan sonra, bir Varlık, Canlı Çıktı ve Akış Bulucu'su oluşturarak akış etkinliğine başlayabilirsiniz. Bu olay, akışı arşivler ve akışın Akış Uç Noktası aracılığıyla izleyiciler tarafından kullanılabilmesini sağlar.
+Akışın canlı olayına akışını tamamladıktan sonra bir varlık, canlı çıkış ve akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Bu olay, akışı arşivler ve akışın Akış Uç Noktası aracılığıyla izleyiciler tarafından kullanılabilmesini sağlar.
 
 #### <a name="create-an-asset"></a>Asset oluşturma
 
-Kullanılacak Canlı Çıktı için bir Varlık Oluşturun.
+Canlı çıktının kullanması için bir varlık oluşturun.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateAsset)]
 
-#### <a name="create-a-live-output"></a>Canlı Çıktı Oluşturma
+#### <a name="create-a-live-output"></a>Canlı çıkış oluştur
 
-Canlı Çıktılar oluşturmayla başlar ve silindiğinde durur. Canlı Çıktıyı sildiğinizde, varlıktaki temel Varlığı ve içeriği silmezsiniz.
+Canlı çıktılar oluşturma sırasında başlar ve silindiğinde durdurulur. Canlı çıktıyı sildiğinizde, ilgili varlık ve varlığın içeriğini silmezsiniz.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateLiveOutput)]
 
-#### <a name="create-a-streaming-locator"></a>Akış Lı Bulucu Oluşturma
+#### <a name="create-a-streaming-locator"></a>Akış Bulucu oluşturma
 
 > [!NOTE]
-> Medya Hizmetleri hesabınız oluşturulduğunda, **Durduruldu** durumunda hesabınıza **varsayılan** bir akış bitiş noktası eklenir. İçeriğinizi akışa başlamak ve [dinamik paketleme](dynamic-packaging-overview.md) ve dinamik şifrelemeden yararlanmak için, içeriği aktarmak istediğiniz akış bitiş **noktasının Çalışan** durumunda olması gerekir.
+> Media Services hesabınız oluşturulduğunda hesabınıza **durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçeriğinizi akışa almak ve [dinamik paketleme](dynamic-packaging-overview.md) ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **çalışıyor** durumda olması gerekir.
 
-Akış Lı Konumlat'ı kullanarak Canlı Çıkış varlığını yayımladığınızda, Akış Lı Kuzak'ın süresi sona erene veya silinene kadar (hangisi önce gerçekleşirse) Canlı Olay (DVR pencere uzunluğuna kadar) görüntülenebilir olmaya devam eder.
+Canlı çıkış varlığını bir akış Bulucuyu kullanarak yayımladığınızda, canlı olay (DVR pencere uzunluğuna kadar), akış bulucunun bitiş tarihi veya silme işlemi, hangisi önce geldiği sürece görüntülenebilir olmaya devam edecektir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateStreamingLocator)]
 
@@ -155,11 +155,11 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ### <a name="cleaning-up-resources-in-your-media-services-account"></a>Media Services hesabınızdaki kaynakları temizleme
 
-Olayları akışı bittiyseniz ve daha önce sağlanan kaynakları temizlemek istiyorsanız, aşağıdaki yordamı izleyin:
+Olayları akışa alma işlemini yaptıysanız ve daha önce sağlanan kaynakları temizlemek istiyorsanız aşağıdaki yordamı izleyin:
 
 * Kodlayıcıdan akışı göndermeyi durdurun.
-* Canlı Etkinliği Durdurun. Canlı Etkinlik durdurulduktan sonra herhangi bir ücrete tabi olmaz. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
-* Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı Etkinlik durdurulmuş durumdaysa, herhangi bir ücrete tabi olmaz.
+* Canlı etkinliği durdurun. Canlı etkinlik durdurulduktan sonra ücret ödemez. Tekrar başlatmanız gerektiğinde, aynı alma URL’sine sahip olacağından kodlayıcıyı yeniden yapılandırmanız gerekmez.
+* Canlı olayınızın arşivini isteğe bağlı bir akış olarak sunmaya devam etmek istemiyorsanız Akış Uç Noktanızı durdurabilirsiniz. Canlı etkinlik durdurulmuş durumdaysa, hiçbir ücret ödemez.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CleanupLiveEventAndOutput)]
 
@@ -167,26 +167,26 @@ Olayları akışı bittiyseniz ve daha önce sağlanan kaynakları temizlemek is
 
 ## <a name="watch-the-event"></a>Olayı izleme
 
-Olayı izlemek için, Akış Bulucu Oluştur'da açıklanan kodu çalıştırdığınızda aldığınız akış URL'sini kopyalayın. Seçtiğiniz bir medya oynatıcık kullanabilirsiniz. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) akışınızı 'da https://ampdemo.azureedge.nettest etmek için kullanılabilir.
+Olayı izlemek için, akış Bulucu oluşturma bölümünde açıklanan kodu çalıştırdığınızda aldığınız akış URL 'sini kopyalayın. Seçtiğiniz bir medya oynatıcı kullanabilirsiniz. [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) , akışınızı test etmek için kullanılabilir https://ampdemo.azureedge.net.
 
-Live Event durdurulduğunda olayları otomatik olarak isteğe bağlı içeriğe dönüştürür. Etkinliği durdurup sildikten sonra bile, kullanıcılar arşivlenmiş içeriğinizi, varlığı silmediğiniz sürece isteğe bağlı olarak video olarak aktarabilirler. Bir varlık bir olay tarafından kullanılıyorsa silinemez; olay önce silinmelidir.
+Canlı olay durdurulduğunda olayları otomatik olarak isteğe bağlı içeriğe dönüştürür. Olayı durdurup sildikten sonra bile, kullanıcılar, varlığı silmemiş olduğu sürece arşivlenmiş içeriğinizi isteğe bağlı bir video olarak akışa alabilir. Bir varlık, bir olay tarafından kullanılıyorsa silinemez; önce olayın silinmesi gerekir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu öğreticide oluşturduğunuz Media Services ve depolama hesapları dahil olmak üzere, kaynak grubunuzdaki kaynaklardan herhangi birine artık ihtiyacınız yoksa kaynak grubunu silebilirsiniz.
 
-Aşağıdaki CLI komutunu uygulayın:
+Aşağıdaki CLı komutunu yürütün:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup
 ```
 
 > [!IMPORTANT]
-> Canlı Etkinliği çalıştırmayı bırakmak faturalandırma maliyetlerine neden oluyor. Proje/program çökerse veya herhangi bir nedenle kapatılırsa, Canlı Etkinlik'in faturalandırma durumunda çalışmasını bırakabilir.
+> Canlı olaydan tasarruf eden faturalandırma maliyetlerini çalıştırmaya çıkılıyor. Göz önünde bulundurulması, proje/program kilitlenirse veya herhangi bir nedenden dolayı kapatılmışsa, bu durum bir faturalandırma durumunda çalışan canlı olayı bırakabilir.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

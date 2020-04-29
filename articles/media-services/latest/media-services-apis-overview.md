@@ -1,7 +1,7 @@
 ---
-title: v3 API'leri ile geliştirin
+title: V3 API 'Leri ile geliştirme
 titleSuffix: Azure Media Services
-description: Media Services v3 ile geliştirirken varlıklar ve API'ler için geçerli olan kurallar hakkında bilgi edinin.
+description: Media Services v3 ile geliştirme sırasında varlıklar ve API 'Ler için uygulanan kurallar hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,57 +14,57 @@ ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472093"
 ---
-# <a name="develop-with-media-services-v3-apis"></a>Medya Hizmetleri v3 API'leri ile geliştirin
+# <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API 'Leri ile geliştirme
 
-Geliştirici olarak, özel medya iş akışlarını kolayca oluşturmak, yönetmek ve korumak için REST API ile etkileşimkurmanıza olanak tanıyan Media Services [REST API](https://docs.microsoft.com/rest/api/media/) veya istemci kitaplıklarını kullanabilirsiniz. [Medya Hizmetleri v3](https://aka.ms/ams-v3-rest-sdk) API OpenAPI belirtimi (eski bir Swagger olarak bilinir) dayanmaktadır.
+Bir geliştirici olarak, özel medya iş akışlarını kolayca oluşturmak, yönetmek ve korumak için REST API ile etkileşime girebilmeniz için Media Services [REST API](https://docs.microsoft.com/rest/api/media/) veya istemci kitaplıklarını kullanabilirsiniz. [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API 'Si, openapı belirtimini temel alır (önceki adı Swagger olarak bilinir).
 
-Bu makalede, Media Services v3 ile geliştirdiğiniz zaman varlıklar ve API'ler için geçerli olan kurallar açıklanır.
+Bu makalede, Media Services v3 ile geliştirirken varlıklar ve API 'Ler için uygulanan kurallar açıklanmaktadır.
 
-## <a name="accessing-the-azure-media-services-api"></a>Azure Medya Hizmetleri API'sine erişim
+## <a name="accessing-the-azure-media-services-api"></a>Azure Media Services API 'sine erişme
 
-Medya Hizmetleri kaynaklarına ve Medya Hizmetleri API'sine erişme yetkisine ulaşmak için öncelikle kimlik doğrulaması yapılması gerekir. Medya [Hizmetleri, Azure Etkin Dizin (Azure AD) tabanlı](../../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulamasını destekler. İki yaygın kimlik doğrulama seçeneği şunlardır:
+Media Services kaynaklarına ve Media Services API 'sine erişme yetkisi sağlamak için, önce kimliğiniz doğrulanmalıdır. Media Services, [Azure Active Directory (Azure AD) tabanlı](../../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulamasını destekler. İki ortak kimlik doğrulama seçeneği şunlardır:
  
-* **Hizmet temel kimlik doğrulaması**: Bir hizmeti doğrulamak için kullanılır (örneğin: web uygulamaları, işlev uygulamaları, mantık uygulamaları, API ve mikro hizmetler). Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar, daemon hizmetlerini, orta katman hizmetlerini veya zamanlanmış işleri çalıştıran uygulamalardır. Örneğin, web uygulamaları için her zaman Bir Hizmet Yöneticisi ile Medya Hizmetleri bağlanan bir orta katman olmalıdır.
-* **Kullanıcı kimlik doğrulaması**: Medya Hizmetleri kaynaklarıyla etkileşimde kalmak için uygulamayı kullanan bir kişinin kimliğini doğrulamak için kullanılır. Etkileşimli uygulama öncelikle kullanıcının kimlik bilgilerini ister. Bir örnek, kodlama işlerini veya canlı akışı izlemek için yetkili kullanıcılar tarafından kullanılan bir yönetim konsolu uygulamasıdır.
+* **Hizmet sorumlusu kimlik doğrulaması**: bir hizmetin kimliğini doğrulamak için kullanılır (örneğin: Web Apps, işlev uygulamaları, Logic Apps, API ve mikro hizmetler). Bu kimlik doğrulama yöntemini yaygın olarak kullanan uygulamalar, Daemon Hizmetleri, orta katman hizmetleri veya zamanlanmış işleri çalıştıran uygulamalardır. Örneğin, Web uygulamaları için her zaman bir hizmet sorumlusu ile Media Services bağlanan bir orta katman olmalıdır.
+* **Kullanıcı kimlik doğrulaması**: Media Services kaynaklarla etkileşim kurmak üzere uygulamayı kullanan bir kişinin kimliğini doğrulamak için kullanılır. Etkileşimli uygulama öncelikle kullanıcıdan kullanıcının kimlik bilgilerini istemelidir. Bu örnek, yetkili kullanıcılar tarafından kodlama işlerini veya canlı akışı izlemek için kullanılan bir yönetim konsolu uygulamasıdır.
 
-Medya Hizmetleri API'si, REST API isteklerini yapan kullanıcının veya uygulamanın Medya Hizmetleri hesap kaynağına erişebulaşmasını ve **Katılımcı** veya **Sahip** rolü kullanmasını gerektirir. API'ye **Reader** rolüyle erişilebilir, ancak yalnızca **Get** or **List** işlemleri kullanılabilir.Daha fazla bilgi için Medya [Hizmetleri hesapları için Rol tabanlı erişim denetimine](rbac-overview.md)bakın.
+Media Services API 'SI, REST API isteklerini yapan kullanıcının veya uygulamanın Media Services hesap kaynağına erişmesini ve **katkıda** bulunan veya **sahip** rolü kullanmasını gerektirir. API 'ye **okuyucu** rolüyle erişilebilir, ancak yalnızca **Get** veya **list** işlemleri kullanılabilir.Daha fazla bilgi için bkz. [Media Services hesapları Için rol tabanlı erişim denetimi](rbac-overview.md).
 
-Bir hizmet ilkesi oluşturmak yerine, Azure Kaynak Yöneticisi aracılığıyla Medya Hizmetleri API'sine erişmek için Azure kaynakları için yönetilen kimlikler kullanmayı düşünün. Azure kaynakları için yönetilen kimlikler hakkında daha fazla bilgi edinmek için Azure [kaynakları için yönetilen kimliklerin ne olduğunu](../../active-directory/managed-identities-azure-resources/overview.md)öğrenin.
+Hizmet sorumlusu oluşturmak yerine, Azure Resource Manager aracılığıyla Media Services API 'sine erişmek için Azure kaynakları için Yönetilen kimlikler kullanmayı göz önünde bulundurun. Azure kaynakları için Yönetilen kimlikler hakkında daha fazla bilgi edinmek için bkz. [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
 
-### <a name="azure-ad-service-principal"></a>Azure AD hizmet ilkesi
+### <a name="azure-ad-service-principal"></a>Azure AD hizmet sorumlusu
 
-Bir Azure AD uygulaması ve hizmet ilkesi oluşturuyorsanız, uygulamanın kendi kiracısında olması gerekir. Uygulamayı oluşturduktan sonra, **uygulamanın Medya** Hizmetleri hesabına Katkıda Bulunan veya **Sahip** rolüne erişim izni verin.
+Bir Azure AD uygulaması ve hizmet sorumlusu oluşturuyorsanız, uygulamanın kendi kiracısında olması gerekir. Uygulamayı oluşturduktan sonra, uygulamaya **katkıda** bulunan veya **sahip** rolü Media Services hesaba erişim izni verin.
 
-Bir Azure AD uygulaması oluşturma izniniz olup olmadığından emin değilseniz, [gerekli izinlere](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)bakın.
+Azure AD uygulaması oluşturma izinlerinizin olup olmadığından emin değilseniz, bkz. [gerekli izinler](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
-Aşağıdaki şekilde, sayılar isteklerin akışını kronolojik sırada temsil emretmek:
+Aşağıdaki şekilde, sayılar isteklerin akışını kronolojik sırada temsil eder:
 
-![Bir web API'sinden AAD ile orta katman uygulama kimlik doğrulaması](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![Web API 'sinden AAD ile orta katmanlı uygulama kimlik doğrulaması](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-1. Orta katmandaki bir uygulama, aşağıdaki parametrelere sahip bir Azure AD erişim belirteci ister:  
+1. Orta katman uygulama, aşağıdaki parametrelere sahip bir Azure AD erişim belirteci ister:  
 
-   * Azure AD kiracı bitiş noktası.
-   * Medya Hizmetleri kaynak URI.
-   * REST Medya Hizmetleri için Kaynak URI.
-   * Azure AD uygulama değerleri: istemci kimliği ve istemci sırrı.
+   * Azure AD kiracı uç noktası.
+   * Kaynak URI 'sini Media Services.
+   * REST Media Services için kaynak URI 'SI.
+   * Azure AD uygulama değerleri: istemci KIMLIĞI ve istemci parolası.
 
-   Gerekli tüm değerleri elde etmek için [Azure CLI ile Azure Medya Hizmetleri API'sine eriş'e](access-api-cli-how-to.md)bakın.
+   Gerekli tüm değerleri almak için bkz. [Azure CLI Ile erişim Azure Media Services API 'si](access-api-cli-how-to.md).
 
-2. Azure AD erişim belirteci orta katmana gönderilir.
-4. Orta katman, Azure AD belirteciyle birlikte Azure Media REST API'sine istek gönderir.
-5. Orta katman, Medya Hizmetleri'nden gelen verileri geri alır.
+2. Azure AD erişim belirteci Orta katmana gönderilir.
+4. Orta katman Azure AD belirteci ile Azure Media REST API isteği gönderir.
+5. Orta katman Media Services verileri geri alır.
 
 ### <a name="samples"></a>Örnekler
 
-Azure AD hizmet ilkesiyle nasıl bağlanılabildiğini gösteren aşağıdaki örneklere bakın:
+Azure AD hizmet sorumlusu ile nasıl bağlanabileceklerini gösteren aşağıdaki örneklere bakın:
 
-* [REST ile bağlanın](media-rest-apis-with-postman.md)  
+* [REST ile bağlan](media-rest-apis-with-postman.md)  
 * [Java ile bağlanma](configure-connect-java-howto.md)
 * [.NET ile bağlanma](configure-connect-dotnet-howto.md)
 * [Node.js ile bağlanma](configure-connect-nodejs-howto.md)
@@ -74,49 +74,49 @@ Azure AD hizmet ilkesiyle nasıl bağlanılabildiğini gösteren aşağıdaki ö
 
 Azure Media Services v3 kaynaklarının adları (Varlıklar, İşler, Dönüşümler gibi), Azure Resource Manager adlandırma kısıtlamalarına tabidir. Azure Resource Manager uyarınca kaynak adları her zaman benzersizdir. Bu nedenle kaynaklarınızda benzersiz tanıtıcı dizeleri (GUID gibi) kullanabilirsiniz.
 
-Medya Hizmetleri kaynak adları şunları içeremez: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.,,..,,,',tek tırnak karakteri veya herhangi bir denetim karakteri. Diğer tüm karakterlere izin verilir. Bir kaynağın adı en fazla 260 karakter olabilir.
+Media Services kaynak adları şunları içeremez: ' < ', ' > ', '% ', ' & ', ': ', ' &#92; ', '? ', '/', ' * ', ' + ', '. ', tek tırnak karakteri veya herhangi bir denetim karakteri. Diğer tüm karakterlere izin verilir. Bir kaynağın adı en fazla 260 karakter olabilir.
 
-Azure Kaynak Yöneticisi adlandırma hakkında daha fazla [Naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)bilgi için [bkz.](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)
+Azure Resource Manager adlandırma hakkında daha fazla bilgi için bkz. [adlandırma gereksinimleri](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) ve [adlandırma kuralları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
 
-### <a name="names-of-filesblobs-within-an-asset"></a>Bir varlık içindeki dosyaların/blobların adları
+### <a name="names-of-filesblobs-within-an-asset"></a>Bir varlık içindeki dosyaların/Blobların adları
 
-Bir varlık içindeki dosyaların/blobs adlarının hem [blob adı gereksinimlerini](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) hem de [NTFS ad gereksinimlerini](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)izlemesi gerekir. Bu gereksinimlerin nedeni, dosyaların blob depolamadan yerel bir NTFS diskine kopyalanabiliyor olmasıdır.
+Bir varlık içindeki dosyaların/Blobların adları, hem [BLOB adı gereksinimlerini](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) hem de [NTFS ad gereksinimlerini](https://docs.microsoft.com/windows/win32/fileio/naming-a-file)izlemelidir. Bu gereksinimlerin nedeni, dosyaların işlenmek üzere blob depolamadan yerel bir NTFS diskine kopyalanmasını sağlayabilir.
 
-## <a name="long-running-operations"></a>Uzun süren operasyonlar
+## <a name="long-running-operations"></a>Uzun süre çalışan işlemler
 
-Azure Medya `x-ms-long-running-operation` Hizmetleri [dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) işaretlenen işlemler uzun süren işlemlerdir. 
+Azure Media Services [Swagger dosyalarında](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) ile `x-ms-long-running-operation` işaretlenen işlemler uzun süren işlemlerdir. 
 
-Eşzamanlı Azure işlemlerinin nasıl izlenir hakkında ayrıntılı bilgi için [Async işlemlerine](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)bakın.
+Zaman uyumsuz Azure işlemlerini izlemeye ilişkin ayrıntılar için bkz. [Async Operations](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
-Medya Hizmetleri'nin aşağıdaki uzun soluklu işlemleri vardır:
+Media Services, aşağıdaki uzun süren işlemlere sahiptir:
 
-* [Canlı Etkinlikler Oluşturun](https://docs.microsoft.com/rest/api/media/liveevents/create)
-* [Canlı Etkinlikleri Güncelleştir](https://docs.microsoft.com/rest/api/media/liveevents/update)
-* [Canlı Etkinliği Silme](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [Canlı Etkinliği Başlat](https://docs.microsoft.com/rest/api/media/liveevents/start)
-* [LiveEvent'i Durdur](https://docs.microsoft.com/rest/api/media/liveevents/stop)
+* [Canlı olaylar oluşturma](https://docs.microsoft.com/rest/api/media/liveevents/create)
+* [Canlı olayları Güncelleştir](https://docs.microsoft.com/rest/api/media/liveevents/update)
+* [Canlı etkinliği sil](https://docs.microsoft.com/rest/api/media/liveevents/delete)
+* [Canlı etkinliği Başlat](https://docs.microsoft.com/rest/api/media/liveevents/start)
+* [LiveEvent 'i durdur](https://docs.microsoft.com/rest/api/media/liveevents/stop)
 
-  Olayı `removeOutputsOnStop` durdururken ilişkili tüm Canlı Çıktıları silmek için parametreyi kullanın.  
-* [LiveEvent'i Sıfırla](https://docs.microsoft.com/rest/api/media/liveevents/reset)
-* [LiveOutput oluşturma](https://docs.microsoft.com/rest/api/media/liveevents/create)
+  Olayı durdururken ilişkili tüm canlı çıkışları silmek için `removeOutputsOnStop` parametresini kullanın.  
+* [LiveEvent 'i Sıfırla](https://docs.microsoft.com/rest/api/media/liveevents/reset)
+* [LiveOutput oluştur](https://docs.microsoft.com/rest/api/media/liveevents/create)
 * [LiveOutput silme](https://docs.microsoft.com/rest/api/media/liveevents/delete)
-* [StreamingEndpoint oluşturma](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
-* [StreamingEndpoint'i güncelleştir](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
-* [StreamingEndpoint silme](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
-* [StreamingEndpoint'i başlat](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
-* [StreamingEndpoint'i Durdur](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
-* [StreamingEndpoint'i Ölçeklendir](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
+* [Streammingendpoint oluşturma](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)
+* [Streammingendpoint 'i Güncelleştir](https://docs.microsoft.com/rest/api/media/streamingendpoints/update)
+* [Streammingendpoint 'i Sil](https://docs.microsoft.com/rest/api/media/streamingendpoints/delete)
+* [Streammingendpoint 'i Başlat](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)
+* [Streammingendpoint 'i durdur](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
+* [Streammingendpoint ölçeklendirin](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
-Uzun bir işlemin başarılı bir şekilde gönderilmesi üzerine bir '202 Kabul Edildi' alırsınız ve döndürülen işlem kimliğini kullanarak işlemin tamamlanması için anket yapmalısınız.
+Uzun bir işlemin başarılı gönderimi sırasında, ' 202 kabul edildi ' ve döndürülen işlem KIMLIĞINI kullanarak işlem tamamlamayı yoklamalıdır.
 
-[Parça eşzamanlı Azure işlemleri](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) makalesi, yanıtta döndürülen değerler aracılığıyla eşzamanlı Azure işlemlerinin durumunu nasıl izleyebilirsiniz ayrıntılı olarak açıklar.
+[Zaman uyumsuz Azure işlemlerini izle](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) makalesinde, yanıtta döndürülen değerler aracılığıyla zaman uyumsuz Azure işlemlerinin durumunun nasıl izleneceği ayrıntılı olarak açıklanmaktadır.
 
-Belirli bir Canlı Etkinlik veya ilişkili Canlı Çıktılarından herhangi biri için yalnızca bir uzun süren işlem desteklenir. Başlatıldıktan sonra, aynı LiveEvent'de veya ilişkili Canlı Çıktılar'da sonraki uzun süren bir işlemi başlatmadan önce uzun süren bir işlemin tamamlanması gerekir. Birden çok Canlı Çıkışa sahip Canlı Etkinlikler için, başka bir Canlı Çıktı üzerinde uzun süren bir işlemi tetiklemeden önce bir Canlı Çıktı üzerinde uzun süren bir işlemin tamamlanmasını beklemeniz gerekir. 
+Belirli bir canlı olay veya ilişkili canlı çıkışları için yalnızca uzun süreli bir işlem desteklenir. Başlatıldıktan sonra, uzun süre çalışan bir işlem, aynı LiveEvent veya ilgili canlı çıkışlar üzerinde sonraki uzun süreli bir işlem başlatmadan önce tamamlanmalıdır. Birden çok canlı çıkışı olan canlı olaylar için, başka bir canlı çıkışta uzun süre çalışan bir işlemi tetiklemeden önce, bir canlı çıkışta uzun süre çalışan bir işlemin tamamlanmasını beklemiş olmanız gerekir. 
 
 ## <a name="sdks"></a>SDK’lar
 
 > [!NOTE]
-> Azure Medya Hizmetleri v3 SDK'larının iş parçacığı için güvenli olduğu garanti edilmez. Çok iş parçacığı uygulaması geliştirirken, istemciyi korumak veya iş parçacığı başına yeni bir AzureMediaServicesClient nesnesi kullanmak için kendi iş parçacığı eşitleme mantığınızı eklemeniz gerekir. Ayrıca, kodunuz tarafından istemciye sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı sorunlarına da dikkat etmelisiniz (.NET'teki bir HttpClient örneği gibi).
+> Azure Media Services v3 SDK 'larının iş parçacığı açısından güvenli olduğu garanti edilmez. Çok iş parçacıklı bir uygulama geliştirirken, istemciyi korumak için kendi iş parçacığı eşitleme mantığınızı eklemeniz veya iş parçacığı başına yeni bir Azudüzeltici Istemci nesnesi kullanmanız gerekir. Ayrıca, kodunuzun istemciye (.NET 'teki bir HttpClient örneği gibi) sağlanan isteğe bağlı nesneler tarafından sunulan çoklu iş parçacığı oluşturma sorunlarından de dikkatli olmanız gerekir.
 
 |SDK|Başvuru|
 |---|---|
@@ -129,22 +129,22 @@ Belirli bir Canlı Etkinlik veya ilişkili Canlı Çıktılarından herhangi bir
 
 ### <a name="see-also"></a>Ayrıca bkz.
 
-- [Medya Hizmeti olaylarını içeren EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
-- [Medya Hizmetleri etkinliklerinin tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Media Service olaylarını içeren EventGrid .NET SDK 'Sı](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
+- [Media Services olaylarının tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
 
 ## <a name="azure-media-services-explorer"></a>Azure Media Services Gezgini
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE), Medya Hizmetleri hakkında bilgi edinmek isteyen Windows müşterileri tarafından kullanılabilen bir araçtır. AMSE, Medya Hizmetleri ile yükleme, indirme, kodlama, VOD akışı ve canlı içerik yükleme, indirme,kodlama, akış yapan bir Winforms/C# uygulamasıdır. AMSE aracı, medya hizmetlerini herhangi bir kod yazmadan test etmek isteyen istemciler içindir. AMSE kodu, Medya Hizmetleri ile geliştirmek isteyen müşteriler için bir kaynak olarak sağlanır.
+[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (amo), Media Services hakkında bilgi edinmek isteyen Windows müşterilerine sunulan bir araçtır. AMO, Media Services ile karşıya yükleme, indirme, kodlama, akış ve canlı içerik akışı yapan bir WinForms/C# uygulamasıdır. AMO Aracı, herhangi bir kod yazmadan Media Services test etmek isteyen istemcilere yöneliktir. AMI kodu, Media Services geliştirmek isteyen müşteriler için bir kaynak olarak sağlanır.
 
-AMSE bir Açık Kaynak projesidir, destek topluluk tarafından sağlanır https://github.com/Azure/Azure-Media-Services-Explorer/issues)(sorunlar rapor edilebilir. Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için, Davranış Kuralları opencode@microsoft.com [SSS'ye](https://opensource.microsoft.com/codeofconduct/faq/) bakın veya diğer soru veya yorumlarla iletişim kurun.
+AMO bir açık kaynak projem, topluluk tarafından destek sağlanır (sorunlar olarak https://github.com/Azure/Azure-Media-Services-Explorer/issues)bildirilebilir. Bu proje [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Açık Kaynak Kullanım Kuralları) belgesinde listelenen kurallara uygundur. Daha fazla bilgi için bkz. [kullanım KURALLARı SSS](https://opensource.microsoft.com/codeofconduct/faq/) veya diğer soru opencode@microsoft.com veya açıklamalarla iletişim kurma.
 
-## <a name="filtering-ordering-paging-of-media-services-entities"></a>Medya Hizmetleri kuruluşlarının filtreleme, sipariş, sayfalama
+## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services varlıkların filtrelenmesi, sıralanması, sayfalama
 
-Bkz. [Azure Medya Hizmetleri varlıklarınıfiltreleme, sıralama, sayfalama.](entities-overview.md)
+Bkz. [Azure Media Services varlıkların filtrelenmesi, sıralanması, sayfalama](entities-overview.md).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde, güncellemeler alın
+## <a name="ask-questions-give-feedback-get-updates"></a>Soru sorun, geri bildirimde bulunun, güncelleştirmeleri al
 
-Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında güncellemeler alabildiğiniz farklı yolları görmek için [Azure Medya Hizmetleri topluluk](media-services-community.md) makalesine göz atın.
+Soru sormak, geri bildirimde bulunmak ve Media Services hakkında güncelleştirmeler almak için [Azure Media Services Community](media-services-community.md) makalesine göz atın.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
@@ -152,7 +152,7 @@ Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında günce
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Java ile Medya Hizmetlerine Bağlanın](configure-connect-java-howto.md)
-* [.NET ile Medya Hizmetlerine Bağlanın](configure-connect-dotnet-howto.md)
-* [Node.js ile Medya Hizmetlerine Bağlanın](configure-connect-nodejs-howto.md)
-* [Python ile Medya Hizmetlerine Bağlanın](configure-connect-python-howto.md)
+* [Java ile Media Services bağlanma](configure-connect-java-howto.md)
+* [.NET ile Media Services bağlanma](configure-connect-dotnet-howto.md)
+* [Node. js ile Media Services bağlanma](configure-connect-nodejs-howto.md)
+* [Python ile Media Services bağlanma](configure-connect-python-howto.md)
